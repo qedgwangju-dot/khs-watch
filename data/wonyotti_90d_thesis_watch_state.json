@@ -1,78 +1,78 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-27T11:28:46+09:00",
+  "updated_at_kst": "2026-10-27T11:32:18+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
         "funding": 0.0001,
-        "index_price": 79970.08,
-        "mark_price": 79936.17,
-        "last_price": 79928.1,
+        "index_price": 79991.28,
+        "mark_price": 79981.0,
+        "last_price": 79981.0,
         "open_interest": 562252360.0,
         "open_interest_value": 4500565320.93844,
-        "turnover24h": 682485424532.0,
+        "turnover24h": 682486600800.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
         "funding": 9.5e-05,
-        "index_price": 2317.01,
-        "mark_price": 2316.05,
-        "last_price": 2315.76,
+        "index_price": 2320.09,
+        "mark_price": 2319.54,
+        "last_price": 2319.64,
         "open_interest": 71803482.0,
         "open_interest_value": 1666321865.7294,
-        "turnover24h": 186723533322.0,
+        "turnover24h": 186723846348.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
         "funding": 0.0001,
-        "index_price": 100.408,
-        "mark_price": 100.39,
-        "last_price": 100.36,
+        "index_price": 100.504,
+        "mark_price": 100.47,
+        "last_price": 100.53,
         "open_interest": 8310888.0,
         "open_interest_value": 836075332.8,
-        "turnover24h": 4530929369.0,
+        "turnover24h": 4530937470.0,
         "source": "Gate.io Futures API"
       }
     },
     "prices": {
       "BTC": {
-        "usd": 79953.0,
-        "change24": 0.5376234378179475,
-        "volume24": 27636887802.116867,
+        "usd": 79862.0,
+        "change24": 0.41743568351037064,
+        "volume24": 27609557984.83737,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 79953.0,
-          "Coinbase": 79872.29,
-          "Gate.io Spot": 79964.1
+          "CoinGecko": 79862.0,
+          "Coinbase": 79834.7,
+          "Gate.io Spot": 79986.8
         },
-        "dispersion_pct": 0.11482996260304458
+        "dispersion_pct": 0.19045353234329948
       },
       "ETH": {
-        "usd": 2317.07,
-        "change24": 0.5802304829186471,
-        "volume24": 9457341490.84305,
+        "usd": 2314.33,
+        "change24": 0.39681305375407944,
+        "volume24": 9424112455.713326,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 2317.47,
-          "Coinbase": 2315.94,
-          "Gate.io Spot": 2317.07
+          "CoinGecko": 2314.33,
+          "Coinbase": 2313.57,
+          "Gate.io Spot": 2319.27
         },
-        "dispersion_pct": 0.06603166930648385
+        "dispersion_pct": 0.24629158330920042
       },
       "SOL": {
-        "usd": 100.4,
-        "change24": -0.2913228903751502,
-        "volume24": 2390054954.6639028,
+        "usd": 100.31,
+        "change24": -0.360749529809221,
+        "volume24": 2385492591.919351,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 100.44,
-          "Coinbase": 100.32,
-          "Gate.io Spot": 100.4
+          "CoinGecko": 100.31,
+          "Coinbase": 100.29,
+          "Gate.io Spot": 100.5
         },
-        "dispersion_pct": 0.11952191235060214
+        "dispersion_pct": 0.20935101186321778
       }
     },
     "price_verified": true,
@@ -96,7 +96,7 @@
         "2026-10-23",
         "2026-10-26"
       ],
-      "stable_obs": 11,
+      "stable_obs": 12,
       "trigger_ready": true
     },
     "eth_etf": {
@@ -113,7 +113,7 @@
         "2026-10-23",
         "2026-10-26"
       ],
-      "stable_obs": 6,
+      "stable_obs": 7,
       "trigger_ready": true
     }
   },
@@ -145,7 +145,7 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-10-27T11:29:33+09:00"
+    "checked_at_kst": "2026-10-27T11:33:08+09:00"
   },
   "news_seen": [
     "0643d30144546ab7115120d2",
