@@ -308,11 +308,16 @@ def extract_metrics(text: str) -> dict:
                 out[key] = v
                 break
 
-    m = re.search(r"(?:annual pace|cagr|annual growth)[^.]{0,50}?([0-9]{1,2}(?:\.[0-9]+)?)%", text, re.I)
-    if m:
+    # CAGR is only the AI data-center *systems* series, not the total worldwide
+    # market-wide CAGR from the separate Oct-23 BofA note.
+    for m in re.finditer(r"(?:annual pace|cagr|annual growth)[^.]{0,50}?([0-9]{1,2}(?:\.[0-9]+)?)%", text, re.I):
+        window = low[max(0, m.start()-160):min(len(low), m.end()+80)]
+        if not any(x in window for x in ("data center systems", "data-center systems", "ai infrastructure systems")):
+            continue
         v = num(m.group(1))
         if v and 10 <= v <= 80:
             out["ai_dc_cagr_pct"] = v
+            break
 
     if re.search(r"(?:1\s*:\s*4|one cpu for every four gpus|four gpus.*one cpu)", text, re.I):
         out["training_cpu_per_gpu"] = 0.25
@@ -337,6 +342,9 @@ def bofa_global_checks() -> None:
         "BofA global data center spending $2.93 trillion by 2030")
     assert extract_metrics("BofA projects $2.2 trillion data center systems by 2030").get(
         "ai_dc_system_tam_2030_usd_t") == 2.2
+    assert "ai_dc_cagr_pct" not in extract_metrics("BofA global data center market CAGR 37% by 2030")
+    assert extract_metrics("BofA AI data center systems CAGR 40% by 2030").get(
+        "ai_dc_cagr_pct") == 40.0
 
 
 def bofa_global_alert(fx: dict) -> str:
