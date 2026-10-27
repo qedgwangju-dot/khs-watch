@@ -9581,6 +9581,27 @@
       "telegram_core_fact": "국세 체납액이 116조원을 넘어선 가운데, 세무서가 세금을 고지하기 전 단계에서 발생한 납부지연가산세만 2021년 이후 21조원이 넘게 부과된 것으로 집계됐다.",
       "title": "\"국세 체납 116조 넘어…법인세 등 지연 가산세 5년여간 22조\" | 연합뉴스"
     },
+    "core:15ff572949d60ee3d68ecb26": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915577",
+      "source": "헤럴드경제",
+      "source_body_digest": "e97ac1e16e098814193347e41e9d5f11f53e83ac34e9a0147522daef4817e9bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a592a50578855345a1b97df907bdcfaa996da2922178ebd360157b7fb0e176cb",
+      "source_fact_keys": [
+        "source_fact:v1:15d421ff2754d77e2329723375b066e9ff912c0119b5d0d65599f6e4068f57a0",
+        "source_fact:v1:424c11a2ca96998d908befc854b1375e030c57b73fe4ab6b018edc324afe5a00"
+      ],
+      "source_published_kst": "2026-10-27T08:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”",
+      "telegram_core_fact": "2018년 유한법인으로 전환 후 2022년 판교 분사무소를 개소한 광장은 2024년 국내 법무법인 최초로 연 매출 4000억원을 돌파하는 등 글로벌 법률 서비스 역량과 시장 내 입지를 지속적으로 확대하고 있다.",
+      "title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”"
+    },
     "core:160237bde3d01d619876b3df": {
       "first_seen_kst": "2026-10-23T12:26:30+09:00",
       "lanes": {
@@ -14146,6 +14167,38 @@
       "source_title": "공공기관 '재생에너지 발전 목표' 생긴다…'부지 제공'도 포함 | 연합뉴스",
       "telegram_core_fact": "RPS 폐지 이후 재생에너지 발전 시장은 정부가 정한 상한가 내에서 경쟁입찰로 물량을 낙찰받은 사업자가 한전과 계약해 장기간 고정된 가격에 전기를 공급하는 방식이 중심이 된다.",
       "title": "공공기관 '재생에너지 발전 목표' 생긴다…'부지 제공'도 포함 | 연합뉴스"
+    },
+    "core:203de86fce07d3d4a2e7d7a3": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
     },
     "core:20439458dc62c1b155c1aa7c": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
@@ -20807,6 +20860,27 @@
       "source_title": "“로봇 D램 수요, 2030년까지 20배 증가”",
       "telegram_core_fact": "고대역폭메모리(HBM)가 인공지능(AI) 데이터센터 수요로 급성장한데 이어 로봇이 삼성전자와 SK하이닉스에 새로운 메모리 수요처로 떠오르고 있다는 분석이다.",
       "title": "“로봇 D램 수요, 2030년까지 20배 증가”"
+    },
+    "core:2cf2d869ed6d15cdc7b28249": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915551",
+      "source": "헤럴드경제",
+      "source_body_digest": "b1a332f7214c3b78d6f58e062f2a15414202f28be093656c9fff7c248da75836",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:efc94042d63cf2ca472ca0cfbbd27ccbf0af94f63b7542d25d465521c0e6806b",
+      "source_fact_keys": [
+        "source_fact:v1:46d06e23411a76b40795c628b6ed749b554f3bdbace1c5f9deca5dcc6275470d",
+        "source_fact:v1:77a9863c6fd275e75036dee0149c6cc7f75860c8b4d96bc1c0c66863e9fafb92"
+      ],
+      "source_published_kst": "2026-10-27T08:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원",
+      "telegram_core_fact": "신성통상의 SPA 브랜드 ‘탑텐(TOPTEN10)’과 아동복 브랜드 ‘탑텐키즈(TOPTEN KIDS)’가 전개하는 하반기 ‘텐텐데이(TENTEN DAY)’가 개막 사흘 만에 매출 309억원을 기록했다고 27일 밝혔다.",
+      "title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원"
     },
     "core:2d1599145bc5259ec3272020": {
       "first_seen_kst": "2026-10-21T15:05:59+09:00",
@@ -49831,6 +49905,29 @@
       "source_title": "디티에스, 코스닥 상장 추진…\"글로벌 열관리 솔루션 기업으로 도약\"",
       "telegram_core_fact": "공랭식 열관리 전문기업 디티에스가 코스닥 상장을 통해 주력 에너지 플랜트 사업의 수주 기반을 강화하고 인공지능(AI) 데이터센터 냉각과 폐열발전 분야로 사업 영역을 확대한다.",
       "title": "디티에스, 코스닥 상장 추진…\"글로벌 열관리 솔루션 기업으로 도약\""
+    },
+    "core:6ffe88ea390682b0a2dc710f": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842204",
+      "source": "뉴시스",
+      "source_body_digest": "6d03f6e084b593fd8232ac56d709c705e7936ab220555395a1b30acb16b3bebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d97c8ce7a71a723f3bc0e21e07b81910633abc56d5592da10e46399c9949e48f",
+      "source_fact_keys": [
+        "source_fact:v1:1b99f6cec7b3b95dc533cd9066f47bcb95dd99c9d08b9aa4a9a3e13ba464c871",
+        "source_fact:v1:56955b9cb7d9b635c84a1ab2ed64c42c1fb6519e74cb3e54bfaef53ac41acfd7",
+        "source_fact:v1:ea703fab65a76bac90a26e08952b4b9f5f6e3bcc7847cfb9ef4eab63c46c18d9",
+        "source_fact:v1:fa36b15e525122ec7d14b219ca73a668f6920182eb9422e0975906dbc210656d"
+      ],
+      "source_published_kst": "2026-10-27T08:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이루트, 엔에스알시 흡수합병 결정",
+      "telegram_core_fact": "에이루트는 앤에스알시의 잔여 지분 30% 인수를 마무리하고 흡수합병하기로 결정했다고 27일 밝혔다.",
+      "title": "에이루트, 엔에스알시 흡수합병 결정"
     },
     "core:7024a3a80d3dd1b4190ba70c": {
       "first_seen_kst": "2026-10-13T08:59:28+09:00",
@@ -95184,6 +95281,33 @@
       "telegram_core_fact": "조직별로는 기획·회계·지원·감사 등 경영지원 기능을 동해공장으로 이전해 생산공장과의 시너지를 확대하고, 회사의 신성장동력인 환경사업부문은 영월공장으로 이전해 복수거점 형태로 각 부문별 핵심 기능을 강화할 계획이다.",
       "title": "쌍용C&E 본사 강원 동해로 이전…영월과 '복수거점'"
     },
+    "core:d60a1a1800f81bb9af45d9dc": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
+    },
     "core:d61c7e7bd726077f0da5d65d": {
       "first_seen_kst": "2026-10-19T11:13:29+09:00",
       "lanes": {
@@ -96379,6 +96503,31 @@
       "source_title": "제이케이시냅스, 44억원 규모 자사 보유 CB 소각…오버행 우려 해소",
       "telegram_core_fact": "제이케이시냅스(060230)가 44억2000만원 자기 보유 전환사채(CB)를 소각하며 잠재적 매도 물량(오버행) 해소와 주주가치 제고에 나선다.",
       "title": "제이케이시냅스, 44억원 규모 자사 보유 CB 소각…오버행 우려 해소"
+    },
+    "core:d897a4a4d4a6d4db5da66c61": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181523",
+      "source": "매일경제",
+      "source_body_digest": "129662deb00faea6f35cb707ed9f460bc5e210eaf2f83da07ea9bac943dcaed4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:607c7005a9e66a2f83a61d538e86209723090aebb32ef7bc8d2e8f76ee8b1044",
+      "source_fact_keys": [
+        "source_fact:v1:22b71a6a974a58c1337b546fe782e1c8d27a4a532f727547f86f3846fcece873",
+        "source_fact:v1:26b9e30665a5d611467e84da1895788b1c8e540bd99bfea92fa26dbcee9ccc93",
+        "source_fact:v1:5a094e4f57ffe418e01adfa14b7b652188537304421f988bd453c8bf21cfc13e",
+        "source_fact:v1:5d0c635513b89abb3851a5c922ef714280b6f1bd85191324f0a8be1693950ead",
+        "source_fact:v1:c222386061f5ec0d3cca2cbd9148390b761196ec6d4a92913ce9a1ec70489310",
+        "source_fact:v1:f7c105c0a08e87558dd425db8027d6bbf0ff554069f04d104403c3dce738c682"
+      ],
+      "source_published_kst": "2026-10-27T05:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행",
+      "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
+      "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
     },
     "core:d8a92b4a0c566ecfd45b99ae": {
       "first_seen_kst": "2026-10-27T00:32:16+09:00",
@@ -109769,6 +109918,29 @@
       "source_title": "\"농어촌기본소득 시범지역 카드매출 29% 증가…청년인구도 늘어\" | 연합뉴스",
       "telegram_core_fact": "농어촌 기본소득 시범사업을 시행한 지역의 신용카드 매출액이 지난해보다 약 29% 증가하고 청년 인구도 늘어난 것으로 나타났다.",
       "title": "\"농어촌기본소득 시범지역 카드매출 29% 증가…청년인구도 늘어\" | 연합뉴스"
+    },
+    "core:f6d54ccccd16654596ff7cb2": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645617184",
+      "source": "이데일리",
+      "source_body_digest": "6c336942f0808481f497dfce447a85a86b478f0ce8bf8ff510417239c78681e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15f943d4e40881c24a061823e3c0e39047046662ef3b04e3b9f90b81c3e90d9a",
+      "source_fact_keys": [
+        "source_fact:v1:0047bb91b7214e7d1102c3677fd76f7ae2c757d0694e657f6d576dcda8837852",
+        "source_fact:v1:96e6b322abc445f6f3372fbe1cc993b8a9ab4f3025c3140c977ec76af3a20400",
+        "source_fact:v1:b81446d8b30b85311d4c0d35861dfe4e55bd226a59b28e8f8809027476a195e8",
+        "source_fact:v1:d841db6a708151c80ca51199c98592da4906f72f54e8d74cd912424e1f674c10"
+      ],
+      "source_published_kst": "2026-10-27T09:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보",
+      "telegram_core_fact": "에임드바이오는 베링거인겔하임과 공동 개발 중인 ADC 후보물질 ‘BI 4060107’의 임상 1상에서 첫 환자 투약이 이뤄졌으며, 이에 따라 계약상 마일스톤 수령 요건을 충족했다고 27일 밝혔다.",
+      "title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보"
     },
     "core:f6d867060309acac77d57e12": {
       "first_seen_kst": "2026-10-15T09:43:41+09:00",
@@ -143464,6 +143636,33 @@
       "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
       "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
     },
+    "fact:096d0019be4d4044b5e73d6a": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
+    },
     "fact:0977e38e464d6871904bd675": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -154260,6 +154459,29 @@
       "source_title": "에버쿼트, 5000만 달러 자사주 매입 승인으로 주주환원 기대감 부각",
       "telegram_core_fact": "이사회가 클래스A 보통주 최대 5000만 달러 자사주 매입 프로그램을 승인했다고 발표했습니다.",
       "title": "에버쿼트, 5000만 달러 자사주 매입 승인으로 주주환원 기대감 부각"
+    },
+    "fact:1f4ae82480699f324b316820": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842204",
+      "source": "뉴시스",
+      "source_body_digest": "6d03f6e084b593fd8232ac56d709c705e7936ab220555395a1b30acb16b3bebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d97c8ce7a71a723f3bc0e21e07b81910633abc56d5592da10e46399c9949e48f",
+      "source_fact_keys": [
+        "source_fact:v1:1b99f6cec7b3b95dc533cd9066f47bcb95dd99c9d08b9aa4a9a3e13ba464c871",
+        "source_fact:v1:56955b9cb7d9b635c84a1ab2ed64c42c1fb6519e74cb3e54bfaef53ac41acfd7",
+        "source_fact:v1:ea703fab65a76bac90a26e08952b4b9f5f6e3bcc7847cfb9ef4eab63c46c18d9",
+        "source_fact:v1:fa36b15e525122ec7d14b219ca73a668f6920182eb9422e0975906dbc210656d"
+      ],
+      "source_published_kst": "2026-10-27T08:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이루트, 엔에스알시 흡수합병 결정",
+      "telegram_core_fact": "에이루트는 앤에스알시의 잔여 지분 30% 인수를 마무리하고 흡수합병하기로 결정했다고 27일 밝혔다.",
+      "title": "에이루트, 엔에스알시 흡수합병 결정"
     },
     "fact:1f5db847997e4b14759a8ff3": {
       "first_seen_kst": "2026-10-19T09:01:52+09:00",
@@ -165957,6 +166179,38 @@
       "source_title": "엠엑스로보틱스, 물류 자동화 기업 OMH와 MOU",
       "telegram_core_fact": "두 회사는 한국, 인도, 미국, 중국 등 주요 시장에서 물류 자동화·반송 설비 분야의 상호 공급 기회를 확대할 방침이다.",
       "title": "엠엑스로보틱스, 물류 자동화 기업 OMH와 MOU"
+    },
+    "fact:3a458b02ecd998cabb0d492a": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
     },
     "fact:3a4655c925d0963de5f26e10": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
@@ -179607,6 +179861,27 @@
       "source_title": "부모급여 아동수당 없어진다…'아이맞이 지원금'으로 통합",
       "telegram_core_fact": "이어진 업무보고에서 복지부는 첫만남이용권, 부모급여, 아동수당 등으로 갈라져 있던 현금성 지원 체계를 ‘아이맞이 지원금’과 ‘아동기본수당’ 두 축으로 단순하게 개편한다고 발표했다.",
       "title": "부모급여 아동수당 없어진다…'아이맞이 지원금'으로 통합"
+    },
+    "fact:5825b7a11cafbef53f3959ee": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915551",
+      "source": "헤럴드경제",
+      "source_body_digest": "b1a332f7214c3b78d6f58e062f2a15414202f28be093656c9fff7c248da75836",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:efc94042d63cf2ca472ca0cfbbd27ccbf0af94f63b7542d25d465521c0e6806b",
+      "source_fact_keys": [
+        "source_fact:v1:46d06e23411a76b40795c628b6ed749b554f3bdbace1c5f9deca5dcc6275470d",
+        "source_fact:v1:77a9863c6fd275e75036dee0149c6cc7f75860c8b4d96bc1c0c66863e9fafb92"
+      ],
+      "source_published_kst": "2026-10-27T08:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원",
+      "telegram_core_fact": "신성통상의 SPA 브랜드 ‘탑텐(TOPTEN10)’과 아동복 브랜드 ‘탑텐키즈(TOPTEN KIDS)’가 전개하는 하반기 ‘텐텐데이(TENTEN DAY)’가 개막 사흘 만에 매출 309억원을 기록했다고 27일 밝혔다.",
+      "title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원"
     },
     "fact:582a355fc79133516caf4072": {
       "first_seen_kst": "2026-10-14T05:08:50+09:00",
@@ -202170,6 +202445,27 @@
       "telegram_core_fact": "폴드8과 폴드8 울트라는 지난 8월7일 출시된 이후 9주간 유럽에서 전년비 45%의 판매 증가율을 기록했다. 삼성전자의 신형 폴더블 스마트폰 '갤럭시 Z 폴드8'과 '갤럭시 Z 폴드8 울트라'가 유럽에서 출시 이후 9주 동안 전년비 45% 늘어난 판매량을 기록했다.",
       "title": "갤폴드8 시리즈, 유럽 판매 45%↑…검색량도 최대 460% 급증"
     },
+    "fact:86b80a7334ab588357a2c052": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915577",
+      "source": "헤럴드경제",
+      "source_body_digest": "e97ac1e16e098814193347e41e9d5f11f53e83ac34e9a0147522daef4817e9bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a592a50578855345a1b97df907bdcfaa996da2922178ebd360157b7fb0e176cb",
+      "source_fact_keys": [
+        "source_fact:v1:15d421ff2754d77e2329723375b066e9ff912c0119b5d0d65599f6e4068f57a0",
+        "source_fact:v1:424c11a2ca96998d908befc854b1375e030c57b73fe4ab6b018edc324afe5a00"
+      ],
+      "source_published_kst": "2026-10-27T08:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”",
+      "telegram_core_fact": "2018년 유한법인으로 전환 후 2022년 판교 분사무소를 개소한 광장은 2024년 국내 법무법인 최초로 연 매출 4000억원을 돌파하는 등 글로벌 법률 서비스 역량과 시장 내 입지를 지속적으로 확대하고 있다.",
+      "title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”"
+    },
     "fact:86cedc90da0ea1fbafa406a5": {
       "first_seen_kst": "2026-10-25T14:08:27+09:00",
       "lanes": {
@@ -206912,6 +207208,29 @@
       ],
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
+    },
+    "fact:90b5c9ea5104fb0bfb7338c8": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645617184",
+      "source": "이데일리",
+      "source_body_digest": "6c336942f0808481f497dfce447a85a86b478f0ce8bf8ff510417239c78681e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15f943d4e40881c24a061823e3c0e39047046662ef3b04e3b9f90b81c3e90d9a",
+      "source_fact_keys": [
+        "source_fact:v1:0047bb91b7214e7d1102c3677fd76f7ae2c757d0694e657f6d576dcda8837852",
+        "source_fact:v1:96e6b322abc445f6f3372fbe1cc993b8a9ab4f3025c3140c977ec76af3a20400",
+        "source_fact:v1:b81446d8b30b85311d4c0d35861dfe4e55bd226a59b28e8f8809027476a195e8",
+        "source_fact:v1:d841db6a708151c80ca51199c98592da4906f72f54e8d74cd912424e1f674c10"
+      ],
+      "source_published_kst": "2026-10-27T09:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보",
+      "telegram_core_fact": "에임드바이오는 베링거인겔하임과 공동 개발 중인 ADC 후보물질 ‘BI 4060107’의 임상 1상에서 첫 환자 투약이 이뤄졌으며, 이에 따라 계약상 마일스톤 수령 요건을 충족했다고 27일 밝혔다.",
+      "title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보"
     },
     "fact:90cc7d54dc91530e0c4d073d": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -213302,6 +213621,31 @@
       ],
       "source_published_kst": "2026-10-05T20:34+09:00",
       "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
+    },
+    "fact:9d6eba2b1d32e12c5a3b56d7": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181523",
+      "source": "매일경제",
+      "source_body_digest": "129662deb00faea6f35cb707ed9f460bc5e210eaf2f83da07ea9bac943dcaed4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:607c7005a9e66a2f83a61d538e86209723090aebb32ef7bc8d2e8f76ee8b1044",
+      "source_fact_keys": [
+        "source_fact:v1:22b71a6a974a58c1337b546fe782e1c8d27a4a532f727547f86f3846fcece873",
+        "source_fact:v1:26b9e30665a5d611467e84da1895788b1c8e540bd99bfea92fa26dbcee9ccc93",
+        "source_fact:v1:5a094e4f57ffe418e01adfa14b7b652188537304421f988bd453c8bf21cfc13e",
+        "source_fact:v1:5d0c635513b89abb3851a5c922ef714280b6f1bd85191324f0a8be1693950ead",
+        "source_fact:v1:c222386061f5ec0d3cca2cbd9148390b761196ec6d4a92913ce9a1ec70489310",
+        "source_fact:v1:f7c105c0a08e87558dd425db8027d6bbf0ff554069f04d104403c3dce738c682"
+      ],
+      "source_published_kst": "2026-10-27T05:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행",
+      "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
+      "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
     },
     "fact:9d7db11ee7785decacab96ee": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -286976,6 +287320,27 @@
       "telegram_core_fact": "한국형발사체 누리호가 지난 7일 5차 발사에 성공하며 초소형군집위성 5기와 큐브위성 9기를 우주로 보냈다.",
       "title": "\"누리호 핵심 위성들도 관제···우주데이터센터 시대에도 지상국 필수\""
     },
+    "link:28803b7c994f7932a0a28964": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915551",
+      "source": "헤럴드경제",
+      "source_body_digest": "b1a332f7214c3b78d6f58e062f2a15414202f28be093656c9fff7c248da75836",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:efc94042d63cf2ca472ca0cfbbd27ccbf0af94f63b7542d25d465521c0e6806b",
+      "source_fact_keys": [
+        "source_fact:v1:46d06e23411a76b40795c628b6ed749b554f3bdbace1c5f9deca5dcc6275470d",
+        "source_fact:v1:77a9863c6fd275e75036dee0149c6cc7f75860c8b4d96bc1c0c66863e9fafb92"
+      ],
+      "source_published_kst": "2026-10-27T08:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원",
+      "telegram_core_fact": "신성통상의 SPA 브랜드 ‘탑텐(TOPTEN10)’과 아동복 브랜드 ‘탑텐키즈(TOPTEN KIDS)’가 전개하는 하반기 ‘텐텐데이(TENTEN DAY)’가 개막 사흘 만에 매출 309억원을 기록했다고 27일 밝혔다.",
+      "title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원"
+    },
     "link:288d4eea0b8726d83cf59139": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -305922,6 +306287,38 @@
       "source_title": "‘멈추지 않는 외인 대탈주’ 코스피 6거래일 연속 하락…‘육천피’ 턱걸이 [투자360]",
       "telegram_core_fact": "코스피가 14일 장중 2% 넘게 반등했다가 상승분을 모두 반납하며 6거래일 연속 하락했다. 지난 6일부터 이날까지 6거래일간 코스피는 총 994.93포인트(14.21%) 하락했다.",
       "title": "‘멈추지 않는 외인 대탈주’ 코스피 6거래일 연속 하락…‘육천피’ 턱걸이 [투자360]"
+    },
+    "link:47102589d204fc9115bc5647": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
     },
     "link:4712b1a0297e975bfb57978c": {
       "first_seen_kst": "2026-10-12T23:57:10+09:00",
@@ -337461,6 +337858,29 @@
       "telegram_core_fact": "쎄크는 자체 개발한 반도체 양산용 인라인(In-line) X-ray 검사장비 '세미 스캔 웨이(Semi-scan Wafer)의 첫 수주에 성공했다고 16일 밝혔다.",
       "title": "쎄크, 글로벌 반도체 기업 양산라인 뚫었다…X-ray 검사장비 첫 수주"
     },
+    "link:7a8891fb97d34d6e7e126f11": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842204",
+      "source": "뉴시스",
+      "source_body_digest": "6d03f6e084b593fd8232ac56d709c705e7936ab220555395a1b30acb16b3bebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d97c8ce7a71a723f3bc0e21e07b81910633abc56d5592da10e46399c9949e48f",
+      "source_fact_keys": [
+        "source_fact:v1:1b99f6cec7b3b95dc533cd9066f47bcb95dd99c9d08b9aa4a9a3e13ba464c871",
+        "source_fact:v1:56955b9cb7d9b635c84a1ab2ed64c42c1fb6519e74cb3e54bfaef53ac41acfd7",
+        "source_fact:v1:ea703fab65a76bac90a26e08952b4b9f5f6e3bcc7847cfb9ef4eab63c46c18d9",
+        "source_fact:v1:fa36b15e525122ec7d14b219ca73a668f6920182eb9422e0975906dbc210656d"
+      ],
+      "source_published_kst": "2026-10-27T08:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이루트, 엔에스알시 흡수합병 결정",
+      "telegram_core_fact": "에이루트는 앤에스알시의 잔여 지분 30% 인수를 마무리하고 흡수합병하기로 결정했다고 27일 밝혔다.",
+      "title": "에이루트, 엔에스알시 흡수합병 결정"
+    },
     "link:7a8949c0b0ca60839c1281c7": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
       "lanes": {
@@ -350678,6 +351098,33 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T06:30+09:00",
       "title": "포스코퓨처엠·엘앤에프, LFP 전환 속도…K 배터리, 美 ESS 양산 본격화"
+    },
+    "link:9080436adb503d7866b0e863": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
     },
     "link:909749cf4a07233fbf450ac3": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
@@ -371487,6 +371934,27 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "대신證 \"삼성바이오, 3분기 실적 컨센서스 부합…4분기 성장폭 확대\""
+    },
+    "link:b15003fe00e19dab7ff7f2dc": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915577",
+      "source": "헤럴드경제",
+      "source_body_digest": "e97ac1e16e098814193347e41e9d5f11f53e83ac34e9a0147522daef4817e9bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a592a50578855345a1b97df907bdcfaa996da2922178ebd360157b7fb0e176cb",
+      "source_fact_keys": [
+        "source_fact:v1:15d421ff2754d77e2329723375b066e9ff912c0119b5d0d65599f6e4068f57a0",
+        "source_fact:v1:424c11a2ca96998d908befc854b1375e030c57b73fe4ab6b018edc324afe5a00"
+      ],
+      "source_published_kst": "2026-10-27T08:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”",
+      "telegram_core_fact": "2018년 유한법인으로 전환 후 2022년 판교 분사무소를 개소한 광장은 2024년 국내 법무법인 최초로 연 매출 4000억원을 돌파하는 등 글로벌 법률 서비스 역량과 시장 내 입지를 지속적으로 확대하고 있다.",
+      "title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”"
     },
     "link:b151e00b171be801fd1111c5": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
@@ -393657,6 +394125,29 @@
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "토스뱅크서도 해킹 시도…일부 보험사도 공격 흔적 포착"
     },
+    "link:d5689d232b6e1d1d5ec90387": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645617184",
+      "source": "이데일리",
+      "source_body_digest": "6c336942f0808481f497dfce447a85a86b478f0ce8bf8ff510417239c78681e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15f943d4e40881c24a061823e3c0e39047046662ef3b04e3b9f90b81c3e90d9a",
+      "source_fact_keys": [
+        "source_fact:v1:0047bb91b7214e7d1102c3677fd76f7ae2c757d0694e657f6d576dcda8837852",
+        "source_fact:v1:96e6b322abc445f6f3372fbe1cc993b8a9ab4f3025c3140c977ec76af3a20400",
+        "source_fact:v1:b81446d8b30b85311d4c0d35861dfe4e55bd226a59b28e8f8809027476a195e8",
+        "source_fact:v1:d841db6a708151c80ca51199c98592da4906f72f54e8d74cd912424e1f674c10"
+      ],
+      "source_published_kst": "2026-10-27T09:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보",
+      "telegram_core_fact": "에임드바이오는 베링거인겔하임과 공동 개발 중인 ADC 후보물질 ‘BI 4060107’의 임상 1상에서 첫 환자 투약이 이뤄졌으며, 이에 따라 계약상 마일스톤 수령 요건을 충족했다고 27일 밝혔다.",
+      "title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보"
+    },
     "link:d56b094bf3a033f4c8e4a25b": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
@@ -413866,6 +414357,31 @@
       "source_title": "[오늘의 증시]美 반도체 약세에…코스피 하락세 이어지나",
       "telegram_core_fact": "MSCI 한국 증시 ETF는 4.02% 하락한 가운데 필라델피아 반도체 지수도 2.67% 내렸다. 미국 뉴욕증시가 주요 기업들의 실적 발표와 물가 지표 공개를 앞두고 혼조세로 마감한 가운데 13일 국내증시 또한 약세를 이어갈 것으로 전망된다.",
       "title": "[오늘의 증시]美 반도체 약세에…코스피 하락세 이어지나"
+    },
+    "link:f8c165a897841542e3568587": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181523",
+      "source": "매일경제",
+      "source_body_digest": "129662deb00faea6f35cb707ed9f460bc5e210eaf2f83da07ea9bac943dcaed4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:607c7005a9e66a2f83a61d538e86209723090aebb32ef7bc8d2e8f76ee8b1044",
+      "source_fact_keys": [
+        "source_fact:v1:22b71a6a974a58c1337b546fe782e1c8d27a4a532f727547f86f3846fcece873",
+        "source_fact:v1:26b9e30665a5d611467e84da1895788b1c8e540bd99bfea92fa26dbcee9ccc93",
+        "source_fact:v1:5a094e4f57ffe418e01adfa14b7b652188537304421f988bd453c8bf21cfc13e",
+        "source_fact:v1:5d0c635513b89abb3851a5c922ef714280b6f1bd85191324f0a8be1693950ead",
+        "source_fact:v1:c222386061f5ec0d3cca2cbd9148390b761196ec6d4a92913ce9a1ec70489310",
+        "source_fact:v1:f7c105c0a08e87558dd425db8027d6bbf0ff554069f04d104403c3dce738c682"
+      ],
+      "source_published_kst": "2026-10-27T05:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행",
+      "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
+      "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
     },
     "link:f8d01e27f2ffb62dbd88d71c": {
       "first_seen_kst": "2026-10-21T14:30:03+09:00",
@@ -437238,6 +437754,27 @@
       "telegram_core_fact": "증권정보업체 에프앤가이드에 따르면 지난 8일 기준 LG이노텍의 3분기 영업이익 컨센서스(증권사 전망치 평균)는 2029억 원으로, 한 달 전 3020억 원보다 32.8% 감소했다.",
       "title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]"
     },
+    "original:2027b29335ecc1e952e6843b": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915551",
+      "source": "헤럴드경제",
+      "source_body_digest": "b1a332f7214c3b78d6f58e062f2a15414202f28be093656c9fff7c248da75836",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:efc94042d63cf2ca472ca0cfbbd27ccbf0af94f63b7542d25d465521c0e6806b",
+      "source_fact_keys": [
+        "source_fact:v1:46d06e23411a76b40795c628b6ed749b554f3bdbace1c5f9deca5dcc6275470d",
+        "source_fact:v1:77a9863c6fd275e75036dee0149c6cc7f75860c8b4d96bc1c0c66863e9fafb92"
+      ],
+      "source_published_kst": "2026-10-27T08:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원",
+      "telegram_core_fact": "신성통상의 SPA 브랜드 ‘탑텐(TOPTEN10)’과 아동복 브랜드 ‘탑텐키즈(TOPTEN KIDS)’가 전개하는 하반기 ‘텐텐데이(TENTEN DAY)’가 개막 사흘 만에 매출 309억원을 기록했다고 27일 밝혔다.",
+      "title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원"
+    },
     "original:202e2f32f192b5b7cd135414": {
       "first_seen_kst": "2026-10-15T15:55:49+09:00",
       "lanes": {
@@ -444577,6 +445114,29 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=05123366645608656",
       "source": "이데일리",
       "title": "서학개미, 美주식 '숨 고르기'… 채권은 15년 만에 최대 순매수"
+    },
+    "original:2bd755097ba3a534009f8e24": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842204",
+      "source": "뉴시스",
+      "source_body_digest": "6d03f6e084b593fd8232ac56d709c705e7936ab220555395a1b30acb16b3bebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d97c8ce7a71a723f3bc0e21e07b81910633abc56d5592da10e46399c9949e48f",
+      "source_fact_keys": [
+        "source_fact:v1:1b99f6cec7b3b95dc533cd9066f47bcb95dd99c9d08b9aa4a9a3e13ba464c871",
+        "source_fact:v1:56955b9cb7d9b635c84a1ab2ed64c42c1fb6519e74cb3e54bfaef53ac41acfd7",
+        "source_fact:v1:ea703fab65a76bac90a26e08952b4b9f5f6e3bcc7847cfb9ef4eab63c46c18d9",
+        "source_fact:v1:fa36b15e525122ec7d14b219ca73a668f6920182eb9422e0975906dbc210656d"
+      ],
+      "source_published_kst": "2026-10-27T08:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이루트, 엔에스알시 흡수합병 결정",
+      "telegram_core_fact": "에이루트는 앤에스알시의 잔여 지분 30% 인수를 마무리하고 흡수합병하기로 결정했다고 27일 밝혔다.",
+      "title": "에이루트, 엔에스알시 흡수합병 결정"
     },
     "original:2bdda5dea75c861f2e2e2004": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -492043,6 +492603,33 @@
       "telegram_core_fact": "연구진은 \"핵심 수치를 공식 공시와 일치시키거나 병기하고, 계약금·마일스톤·로열티를 구분 표시하며, 중요 공시 전후 임원의 지분 매각을 제한하는 등 공식·비공식 공시 간 제도적 공백을 보완하기 위한 제도 개선이 필요하다\"고 제언했다.",
       "title": "부풀린 보도자료, 주가 변동성 키웠다…\"공시와 수치 맞춰야\""
     },
+    "original:7a495636cf22288dbc6ff48a": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
+    },
     "original:7a4a7daf6f8dbd015697c365": {
       "first_seen_kst": "2026-10-20T16:54:02+09:00",
       "lanes": {
@@ -495626,6 +496213,31 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01413686645608984",
       "source": "이데일리",
       "title": "[美특징주]레나, 버크셔 지분 11% 확대에 월가 '매도' 투자의견에도 주가 강세"
+    },
+    "original:80982f1e083d22fa995e9594": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181523",
+      "source": "매일경제",
+      "source_body_digest": "129662deb00faea6f35cb707ed9f460bc5e210eaf2f83da07ea9bac943dcaed4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:607c7005a9e66a2f83a61d538e86209723090aebb32ef7bc8d2e8f76ee8b1044",
+      "source_fact_keys": [
+        "source_fact:v1:22b71a6a974a58c1337b546fe782e1c8d27a4a532f727547f86f3846fcece873",
+        "source_fact:v1:26b9e30665a5d611467e84da1895788b1c8e540bd99bfea92fa26dbcee9ccc93",
+        "source_fact:v1:5a094e4f57ffe418e01adfa14b7b652188537304421f988bd453c8bf21cfc13e",
+        "source_fact:v1:5d0c635513b89abb3851a5c922ef714280b6f1bd85191324f0a8be1693950ead",
+        "source_fact:v1:c222386061f5ec0d3cca2cbd9148390b761196ec6d4a92913ce9a1ec70489310",
+        "source_fact:v1:f7c105c0a08e87558dd425db8027d6bbf0ff554069f04d104403c3dce738c682"
+      ],
+      "source_published_kst": "2026-10-27T05:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행",
+      "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
+      "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
     },
     "original:80a01148ad01b606d7226491": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -539241,6 +539853,29 @@
       "source_event_identity": "",
       "title": "美고용 부진에 금리인상 우려 완화…나스닥 1.2%↑(종합)"
     },
+    "original:c9e34a41fa8aae30fbd7569a": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645617184",
+      "source": "이데일리",
+      "source_body_digest": "6c336942f0808481f497dfce447a85a86b478f0ce8bf8ff510417239c78681e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15f943d4e40881c24a061823e3c0e39047046662ef3b04e3b9f90b81c3e90d9a",
+      "source_fact_keys": [
+        "source_fact:v1:0047bb91b7214e7d1102c3677fd76f7ae2c757d0694e657f6d576dcda8837852",
+        "source_fact:v1:96e6b322abc445f6f3372fbe1cc993b8a9ab4f3025c3140c977ec76af3a20400",
+        "source_fact:v1:b81446d8b30b85311d4c0d35861dfe4e55bd226a59b28e8f8809027476a195e8",
+        "source_fact:v1:d841db6a708151c80ca51199c98592da4906f72f54e8d74cd912424e1f674c10"
+      ],
+      "source_published_kst": "2026-10-27T09:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보",
+      "telegram_core_fact": "에임드바이오는 베링거인겔하임과 공동 개발 중인 ADC 후보물질 ‘BI 4060107’의 임상 1상에서 첫 환자 투약이 이뤄졌으며, 이에 따라 계약상 마일스톤 수령 요건을 충족했다고 27일 밝혔다.",
+      "title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보"
+    },
     "original:c9e392a515cd2d1a0c3f43d8": {
       "first_seen_kst": "2026-10-22T15:55:18+09:00",
       "lanes": {
@@ -545269,6 +545904,38 @@
       "source_title": "대한전선, 美서 초고압 프로젝트 턴키 수주…\"현지 전력망 투자 대응\"",
       "telegram_core_fact": "대한전선 본사와 미국 법인은 약 1200억원 자재 공급 계약을 체결했다.",
       "title": "대한전선, 美서 초고압 프로젝트 턴키 수주…\"현지 전력망 투자 대응\""
+    },
+    "original:d381375ec73b2f63f0688823": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
     },
     "original:d385c981d4e7bb297f8953c0": {
       "first_seen_kst": "2026-10-20T07:37:12+09:00",
@@ -555544,6 +556211,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260918147100003",
       "source": "연합뉴스",
       "title": "D램은 중국에, HBM은 미국에…협공 당하는 K-메모리 | 연합뉴스"
+    },
+    "original:e4a6d1cc8a86b087ccfec92f": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915577",
+      "source": "헤럴드경제",
+      "source_body_digest": "e97ac1e16e098814193347e41e9d5f11f53e83ac34e9a0147522daef4817e9bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a592a50578855345a1b97df907bdcfaa996da2922178ebd360157b7fb0e176cb",
+      "source_fact_keys": [
+        "source_fact:v1:15d421ff2754d77e2329723375b066e9ff912c0119b5d0d65599f6e4068f57a0",
+        "source_fact:v1:424c11a2ca96998d908befc854b1375e030c57b73fe4ab6b018edc324afe5a00"
+      ],
+      "source_published_kst": "2026-10-27T08:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”",
+      "telegram_core_fact": "2018년 유한법인으로 전환 후 2022년 판교 분사무소를 개소한 광장은 2024년 국내 법무법인 최초로 연 매출 4000억원을 돌파하는 등 글로벌 법률 서비스 역량과 시장 내 입지를 지속적으로 확대하고 있다.",
+      "title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”"
     },
     "original:e4c2dea0a91c989afc84199e": {
       "first_seen_kst": "2026-10-20T03:53:09+09:00",
@@ -604640,6 +605328,27 @@
       "telegram_core_fact": "보로노이는 지난 23일부터 오는 27일(현지 시간) 스페인 마드리드에서 개최되는 유럽종양학회 연례학술대회(ESMO Congress 2026)에서 HER2 표적 항암제 'VRN10'의 임상 1상 결과를 포스터 발표했다고 26일 밝혔다. 보로노이가 국제 학회에서 회사가 개발 중인 표적 항암제의 임상 1상 결과를 공개했다.",
       "title": "보로노이 \"ESMO서 표적 항암제 임상 결과 발표\""
     },
+    "source_fact:0d63aad5d8c698e36194bd85": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915577",
+      "source": "헤럴드경제",
+      "source_body_digest": "e97ac1e16e098814193347e41e9d5f11f53e83ac34e9a0147522daef4817e9bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a592a50578855345a1b97df907bdcfaa996da2922178ebd360157b7fb0e176cb",
+      "source_fact_keys": [
+        "source_fact:v1:15d421ff2754d77e2329723375b066e9ff912c0119b5d0d65599f6e4068f57a0",
+        "source_fact:v1:424c11a2ca96998d908befc854b1375e030c57b73fe4ab6b018edc324afe5a00"
+      ],
+      "source_published_kst": "2026-10-27T08:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”",
+      "telegram_core_fact": "2018년 유한법인으로 전환 후 2022년 판교 분사무소를 개소한 광장은 2024년 국내 법무법인 최초로 연 매출 4000억원을 돌파하는 등 글로벌 법률 서비스 역량과 시장 내 입지를 지속적으로 확대하고 있다.",
+      "title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”"
+    },
     "source_fact:0d6787a3865eb4bc57fd2630": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -646177,6 +646886,38 @@
       "telegram_core_fact": "올 상반기 실적 발표 컨퍼런스콜에서 하반기 4나노(㎚·1㎚는 10억분의 1m) 공정 기반의 AI·HPC용 신제품 양산을 본격화하겠다는 계획을 밝힌 바 있다. HPC 사업 부문 매출이 전체의 68%를 차지하면서 실적개선의 일등 공신을 차지했다.",
       "title": "삼성, 파운드리사업 3분의 2 ‘AI·HPC’로 채운다"
     },
+    "source_fact:1ddc0614ec35e4a40005dc5c": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
+    },
     "source_fact:1de00147937100cde0a8a313": {
       "first_seen_kst": "2026-10-23T15:16:59+09:00",
       "lanes": {
@@ -659160,6 +659901,38 @@
       "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
       "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
     },
+    "source_fact:22fc3c21ece20155e97657b5": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
+    },
     "source_fact:22fcd616b98f509eb2ef6109": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -668431,6 +669204,38 @@
       "telegram_core_fact": "농림축산식품부가 포도 수출 1억달러(약 1천351억원) 달성을 위해 생산자와 수출업체 간 표준거래계약서를 도입하고 검역·물류 지원을 확대한다. 농식품부는 경상북도와 함께 15일 경북 상주시의 포도 농장 도영농원에서 '포도 수출 1억달러 도약 현장 결의 행사'를 열었다고 밝혔다.",
       "title": "농식품부, 포도 수출 1억달러 달성 추진…표준계약서 도입 | 연합뉴스"
     },
+    "source_fact:263904f69693a7c5eb34cf12": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
+    },
     "source_fact:2639aaff5e358163d7ed32f7": {
       "first_seen_kst": "2026-10-24T11:50:33+09:00",
       "lanes": {
@@ -672323,6 +673128,29 @@
       ],
       "source_published_kst": "2026-10-06T13:05+09:00",
       "title": "\"양자 산업 키우려면 민관협력 필수…韓 강점 제조업에 집중해야\""
+    },
+    "source_fact:27c79867ff5231f35be8804f": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645617184",
+      "source": "이데일리",
+      "source_body_digest": "6c336942f0808481f497dfce447a85a86b478f0ce8bf8ff510417239c78681e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15f943d4e40881c24a061823e3c0e39047046662ef3b04e3b9f90b81c3e90d9a",
+      "source_fact_keys": [
+        "source_fact:v1:0047bb91b7214e7d1102c3677fd76f7ae2c757d0694e657f6d576dcda8837852",
+        "source_fact:v1:96e6b322abc445f6f3372fbe1cc993b8a9ab4f3025c3140c977ec76af3a20400",
+        "source_fact:v1:b81446d8b30b85311d4c0d35861dfe4e55bd226a59b28e8f8809027476a195e8",
+        "source_fact:v1:d841db6a708151c80ca51199c98592da4906f72f54e8d74cd912424e1f674c10"
+      ],
+      "source_published_kst": "2026-10-27T09:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보",
+      "telegram_core_fact": "에임드바이오는 베링거인겔하임과 공동 개발 중인 ADC 후보물질 ‘BI 4060107’의 임상 1상에서 첫 환자 투약이 이뤄졌으며, 이에 따라 계약상 마일스톤 수령 요건을 충족했다고 27일 밝혔다.",
+      "title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보"
     },
     "source_fact:27c88f28ba2ab7633edabcea": {
       "first_seen_kst": "2026-10-22T14:04:51+09:00",
@@ -715258,6 +716086,38 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "밸류파인더 “메타케어, 저용량 탈모치료제 출시 임박…헬스케어 플랫폼 확장”"
     },
+    "source_fact:38c3e1bb2ee87b2787ebdc4a": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
+    },
     "source_fact:38d284f6cc76ab76c45b7a95": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -717541,6 +718401,33 @@
       "source_title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결",
       "telegram_core_fact": "삼성전기는 올해부터 엔비디아에 차세대 AI 반도체 및 초고속 네트워크용 패키지기판을 다년간 장기 공급한다.",
       "title": "삼성전기, 엔비디아 전용 AI 반도체 기판 생산라인 구축…전략적 파트너십 체결"
+    },
+    "source_fact:39bd8fd0199f79200101933e": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
     },
     "source_fact:39c0274d99a905479c689382": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
@@ -729438,6 +730325,33 @@
       "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 특별경영성과급은 내년 3월 정기주주총회와 이사회 의결을 거쳐 3월 말~4월 초 지급될 예정이다.",
       "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은"
     },
+    "source_fact:3e74e798f31d1bec7b3e5ca9": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
+    },
     "source_fact:3e750837c8ceb790cb22bc80": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -732771,6 +733685,29 @@
       "telegram_core_fact": "인공지능(AI) 투자 확대로 반도체 수요가 급증하는 가운데 앞으로는 메모리 공급보다 자금 조달이 최대 병목이 될 수 있다는 전망이 나왔다.",
       "title": "\"AI 병목, 메모리서 돈으로 이동\"…반도체 호황 흔들 변수는"
     },
+    "source_fact:3fdbce5326f48cbbcebab143": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842204",
+      "source": "뉴시스",
+      "source_body_digest": "6d03f6e084b593fd8232ac56d709c705e7936ab220555395a1b30acb16b3bebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d97c8ce7a71a723f3bc0e21e07b81910633abc56d5592da10e46399c9949e48f",
+      "source_fact_keys": [
+        "source_fact:v1:1b99f6cec7b3b95dc533cd9066f47bcb95dd99c9d08b9aa4a9a3e13ba464c871",
+        "source_fact:v1:56955b9cb7d9b635c84a1ab2ed64c42c1fb6519e74cb3e54bfaef53ac41acfd7",
+        "source_fact:v1:ea703fab65a76bac90a26e08952b4b9f5f6e3bcc7847cfb9ef4eab63c46c18d9",
+        "source_fact:v1:fa36b15e525122ec7d14b219ca73a668f6920182eb9422e0975906dbc210656d"
+      ],
+      "source_published_kst": "2026-10-27T08:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이루트, 엔에스알시 흡수합병 결정",
+      "telegram_core_fact": "에이루트는 앤에스알시의 잔여 지분 30% 인수를 마무리하고 흡수합병하기로 결정했다고 27일 밝혔다.",
+      "title": "에이루트, 엔에스알시 흡수합병 결정"
+    },
     "source_fact:3fdc4af0800719204a6a4e7f": {
       "first_seen_kst": "2026-10-12T06:42:49+09:00",
       "lanes": {
@@ -736001,6 +736938,29 @@
       "source_title": "TSMC, 순이익 65% 급증 전망…AI 반도체 호황 이어질까",
       "telegram_core_fact": "세계 최대 반도체 위탁생산(파운드리) 업체인 대만 TSMC가 올해 3분기 순이익이 65% 급증하는 사상 최대 실적을 거둘 것으로 전망된다.",
       "title": "TSMC, 순이익 65% 급증 전망…AI 반도체 호황 이어질까"
+    },
+    "source_fact:412df86056dcbfe55a6ded89": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645617184",
+      "source": "이데일리",
+      "source_body_digest": "6c336942f0808481f497dfce447a85a86b478f0ce8bf8ff510417239c78681e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15f943d4e40881c24a061823e3c0e39047046662ef3b04e3b9f90b81c3e90d9a",
+      "source_fact_keys": [
+        "source_fact:v1:0047bb91b7214e7d1102c3677fd76f7ae2c757d0694e657f6d576dcda8837852",
+        "source_fact:v1:96e6b322abc445f6f3372fbe1cc993b8a9ab4f3025c3140c977ec76af3a20400",
+        "source_fact:v1:b81446d8b30b85311d4c0d35861dfe4e55bd226a59b28e8f8809027476a195e8",
+        "source_fact:v1:d841db6a708151c80ca51199c98592da4906f72f54e8d74cd912424e1f674c10"
+      ],
+      "source_published_kst": "2026-10-27T09:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보",
+      "telegram_core_fact": "에임드바이오는 베링거인겔하임과 공동 개발 중인 ADC 후보물질 ‘BI 4060107’의 임상 1상에서 첫 환자 투약이 이뤄졌으며, 이에 따라 계약상 마일스톤 수령 요건을 충족했다고 27일 밝혔다.",
+      "title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보"
     },
     "source_fact:4133dfcba9a99a513919ba8d": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
@@ -790791,6 +791751,33 @@
       "telegram_core_fact": "기업공개(IPO)를 앞둔 앤트로픽이 회사 지분 5%를 새로 만드는 공익기금에 출연하기로 했다. 앤트로픽은 18일(현지시간) 공식 블로그를 통해 주주 승인을 거쳐 지분 5%를 '앤트로픽 공익기금'에 출연한다고 밝혔다.",
       "title": "앤트로픽, 지분 5% 공익기금에 출연…\"AI 일자리 충격 대응\" | 연합뉴스"
     },
+    "source_fact:560d99d22d4fa9b13dc220bd": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
+    },
     "source_fact:560dd0c0738daf7f884d3454": {
       "first_seen_kst": "2026-10-19T21:40:31+09:00",
       "lanes": {
@@ -793092,6 +794079,31 @@
       "source_title": "해수부 수산물 자급률 목표 하향…\"수입 의존 심화 우려\"",
       "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 문금주 더불어민주당 의원은 12일 해수부 국정감사에서 자급률 목표 하향 조정을 비판하며 국내 수산물 생산 확대를 위한 정책 전환을 촉구했다.",
       "title": "해수부 수산물 자급률 목표 하향…\"수입 의존 심화 우려\""
+    },
+    "source_fact:5702e750a539aa1e44b2de4e": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181523",
+      "source": "매일경제",
+      "source_body_digest": "129662deb00faea6f35cb707ed9f460bc5e210eaf2f83da07ea9bac943dcaed4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:607c7005a9e66a2f83a61d538e86209723090aebb32ef7bc8d2e8f76ee8b1044",
+      "source_fact_keys": [
+        "source_fact:v1:22b71a6a974a58c1337b546fe782e1c8d27a4a532f727547f86f3846fcece873",
+        "source_fact:v1:26b9e30665a5d611467e84da1895788b1c8e540bd99bfea92fa26dbcee9ccc93",
+        "source_fact:v1:5a094e4f57ffe418e01adfa14b7b652188537304421f988bd453c8bf21cfc13e",
+        "source_fact:v1:5d0c635513b89abb3851a5c922ef714280b6f1bd85191324f0a8be1693950ead",
+        "source_fact:v1:c222386061f5ec0d3cca2cbd9148390b761196ec6d4a92913ce9a1ec70489310",
+        "source_fact:v1:f7c105c0a08e87558dd425db8027d6bbf0ff554069f04d104403c3dce738c682"
+      ],
+      "source_published_kst": "2026-10-27T05:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행",
+      "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
+      "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
     },
     "source_fact:5705a06f31671ec2ffbcb4e7": {
       "first_seen_kst": "2026-10-11T21:28:35+09:00",
@@ -806650,6 +807662,38 @@
       "telegram_core_fact": "대구시가 신세계사이먼의 '대구 프리미엄 아울렛' 건립을 위한 인허가 기간을 통상의 절반 이하로 줄이는 등 사업 추진에 속도를 내기로 했다.",
       "title": "대구 신세계 프리미엄 아울렛 건립 속도…인허가기간 절반 이하로 | 연합뉴스"
     },
+    "source_fact:5be89fbc23d921abfba6e725": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
+    },
     "source_fact:5bea4c9f3cb0e1ed8bb93477": {
       "first_seen_kst": "2026-10-19T07:05:38+09:00",
       "lanes": {
@@ -813849,6 +814893,38 @@
       "source_title": "8년 전 수소 '퍼스트무버' 꿈꾼 정의선 회장…뚝심 투자 성과 가시화",
       "telegram_core_fact": "오는 14일 취임 6주년을 맞는 정 회장은 수소전기차를 중심으로 추진해 온 수소 사업을 상용차와 철도, 수소 생산·충전 인프라 등으로 확대하고 있다. 정의선 현대자동차그룹 회장이 2018년 12월 충북 충주 현대모비스 수소연료전지 제2공장 기공식에서 밝힌 구상이다.",
       "title": "8년 전 수소 '퍼스트무버' 꿈꾼 정의선 회장…뚝심 투자 성과 가시화"
+    },
+    "source_fact:5e9fdc28fdfd92d6d49586e2": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
     },
     "source_fact:5ea940f988fe718bf9076370": {
       "first_seen_kst": "2026-10-09T19:43:36+09:00",
@@ -822002,6 +823078,38 @@
       "source_title": "[마켓인사이트] 삼성전자 역대급 실적에도 짓눌린 코스피, 반등 가능성은 | 연합뉴스",
       "telegram_core_fact": "다행히 8일 장 시작 전 공시된 삼성전자 3분기 영업이익은 107조4천억원으로 작년 동기보다 782.5% 증가, 분기 기준 사상 최고실적을 경신했다.",
       "title": "[마켓인사이트] 삼성전자 역대급 실적에도 짓눌린 코스피, 반등 가능성은 | 연합뉴스"
+    },
+    "source_fact:626e79bfc222b8ef4a9b780c": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
     },
     "source_fact:627030064d62dda4387d903d": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -884204,6 +885312,38 @@
       "telegram_core_fact": "철강 가격이 급등한 것은 트럼프 행정부가 수입산 철강에 50% 관세를 부과한 데 이어 캐나다·멕시코 등 핵심 교역 상대국을 향한 무역 가이드라인을 수시로 바꾸면서 구매업체들이 해외 주문을 대폭 줄였기 때문이다.",
       "title": "트럼프 '50% 관세' 후폭풍…미국 철강 값 4년 만에 최고치"
     },
+    "source_fact:7b0a1297ba477f10b47ef671": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
+    },
     "source_fact:7b0c722b8170db916ff45862": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
       "lanes": {
@@ -941967,6 +943107,27 @@
       "telegram_core_fact": "종합식품기업 하림이 김제·정읍 사료공장의 생산능력을 20% 확대하고 안정적인 사료 공급체계 구축에 나섰다.",
       "title": "사료 공급망 강화…하림, 김제·정읍공장 생산능력 20% 확대"
     },
+    "source_fact:928d0408386496571dcec5ea": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915577",
+      "source": "헤럴드경제",
+      "source_body_digest": "e97ac1e16e098814193347e41e9d5f11f53e83ac34e9a0147522daef4817e9bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a592a50578855345a1b97df907bdcfaa996da2922178ebd360157b7fb0e176cb",
+      "source_fact_keys": [
+        "source_fact:v1:15d421ff2754d77e2329723375b066e9ff912c0119b5d0d65599f6e4068f57a0",
+        "source_fact:v1:424c11a2ca96998d908befc854b1375e030c57b73fe4ab6b018edc324afe5a00"
+      ],
+      "source_published_kst": "2026-10-27T08:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”",
+      "telegram_core_fact": "2018년 유한법인으로 전환 후 2022년 판교 분사무소를 개소한 광장은 2024년 국내 법무법인 최초로 연 매출 4000억원을 돌파하는 등 글로벌 법률 서비스 역량과 시장 내 입지를 지속적으로 확대하고 있다.",
+      "title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”"
+    },
     "source_fact:928e2dd59f5c8cd856520061": {
       "first_seen_kst": "2026-10-21T04:09:57+09:00",
       "lanes": {
@@ -989044,6 +990205,33 @@
       "telegram_core_fact": "키움증권이 연금저축계좌로 상장지수펀드(ETF)를 거래하는 고객에게 상품권을 주는 '연금저축 ETF 자산운용 이벤트'를 12월 30일까지 진행한다고 12일 밝혔다. 이벤트 대상 ETF를 운용사별로 1만원 이상 순매수하면 커피쿠폰을 선착순으로 최대 7잔까지 더 받는다.",
       "title": "키움증권, 연말까지 연금저축 ETF 거래 이벤트"
     },
+    "source_fact:a4ceb3fe9bb969bca1163b37": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
+    },
     "source_fact:a4cf7985a12841c34a92d280": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
       "lanes": {
@@ -1016614,6 +1017802,33 @@
       "telegram_core_fact": "삼성전자가 차세대 고대역폭메모리(HBM)와 컴퓨트익스프레스링크(CXL) 기술을 앞세워 AI 인프라 시장 공략을 강화한다.",
       "title": "삼성전자, HBM5·CXL 앞세워 AI 메모리 혁신⋯AMD와 기술 협력 확대"
     },
+    "source_fact:af844e08dbf28852915dd48c": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
+    },
     "source_fact:af8858369ea8d757670e99fa": {
       "first_seen_kst": "2026-10-15T15:29:27+09:00",
       "lanes": {
@@ -1021797,6 +1023012,29 @@
       "source_published_kst": "2026-10-06T06:29+09:00",
       "title": "사우디 투트랙 수출·G7 비축유 방출 약속에 국제유가 1.8% 하락"
     },
+    "source_fact:b16cc196d8a41d12f0a65154": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645617184",
+      "source": "이데일리",
+      "source_body_digest": "6c336942f0808481f497dfce447a85a86b478f0ce8bf8ff510417239c78681e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15f943d4e40881c24a061823e3c0e39047046662ef3b04e3b9f90b81c3e90d9a",
+      "source_fact_keys": [
+        "source_fact:v1:0047bb91b7214e7d1102c3677fd76f7ae2c757d0694e657f6d576dcda8837852",
+        "source_fact:v1:96e6b322abc445f6f3372fbe1cc993b8a9ab4f3025c3140c977ec76af3a20400",
+        "source_fact:v1:b81446d8b30b85311d4c0d35861dfe4e55bd226a59b28e8f8809027476a195e8",
+        "source_fact:v1:d841db6a708151c80ca51199c98592da4906f72f54e8d74cd912424e1f674c10"
+      ],
+      "source_published_kst": "2026-10-27T09:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보",
+      "telegram_core_fact": "에임드바이오는 베링거인겔하임과 공동 개발 중인 ADC 후보물질 ‘BI 4060107’의 임상 1상에서 첫 환자 투약이 이뤄졌으며, 이에 따라 계약상 마일스톤 수령 요건을 충족했다고 27일 밝혔다.",
+      "title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보"
+    },
     "source_fact:b16e5cccfa8eeaeac7d58ccc": {
       "first_seen_kst": "2026-10-20T20:52:32+09:00",
       "lanes": {
@@ -1023802,6 +1025040,31 @@
       "source_title": "[뉴스줌인]기약 없는 코스피 外人이탈…한 해 200조 팔아치웠다",
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "[뉴스줌인]기약 없는 코스피 外人이탈…한 해 200조 팔아치웠다"
+    },
+    "source_fact:b2386be773da1099c3056da2": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181523",
+      "source": "매일경제",
+      "source_body_digest": "129662deb00faea6f35cb707ed9f460bc5e210eaf2f83da07ea9bac943dcaed4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:607c7005a9e66a2f83a61d538e86209723090aebb32ef7bc8d2e8f76ee8b1044",
+      "source_fact_keys": [
+        "source_fact:v1:22b71a6a974a58c1337b546fe782e1c8d27a4a532f727547f86f3846fcece873",
+        "source_fact:v1:26b9e30665a5d611467e84da1895788b1c8e540bd99bfea92fa26dbcee9ccc93",
+        "source_fact:v1:5a094e4f57ffe418e01adfa14b7b652188537304421f988bd453c8bf21cfc13e",
+        "source_fact:v1:5d0c635513b89abb3851a5c922ef714280b6f1bd85191324f0a8be1693950ead",
+        "source_fact:v1:c222386061f5ec0d3cca2cbd9148390b761196ec6d4a92913ce9a1ec70489310",
+        "source_fact:v1:f7c105c0a08e87558dd425db8027d6bbf0ff554069f04d104403c3dce738c682"
+      ],
+      "source_published_kst": "2026-10-27T05:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행",
+      "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
+      "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
     },
     "source_fact:b23d468eda8573e14685c16b": {
       "first_seen_kst": "2026-10-24T05:00:02+09:00",
@@ -1034796,6 +1036059,29 @@
       "source_title": "반도체 키우고 곳간 채우고…추미애 경기지사, 산업 육성·세입 확충 구상",
       "telegram_core_fact": "근본적으로는 부동산 거래에 좌우되는 취득세 중심의 세입구조를 바꿔야 한다. 반도체 분야에서는 기업 투자 일정에 맞춘 기반시설 공급과 인재 양성을 추진한다.",
       "title": "반도체 키우고 곳간 채우고…추미애 경기지사, 산업 육성·세입 확충 구상"
+    },
+    "source_fact:b67c42776246b73d346f87d0": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842204",
+      "source": "뉴시스",
+      "source_body_digest": "6d03f6e084b593fd8232ac56d709c705e7936ab220555395a1b30acb16b3bebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d97c8ce7a71a723f3bc0e21e07b81910633abc56d5592da10e46399c9949e48f",
+      "source_fact_keys": [
+        "source_fact:v1:1b99f6cec7b3b95dc533cd9066f47bcb95dd99c9d08b9aa4a9a3e13ba464c871",
+        "source_fact:v1:56955b9cb7d9b635c84a1ab2ed64c42c1fb6519e74cb3e54bfaef53ac41acfd7",
+        "source_fact:v1:ea703fab65a76bac90a26e08952b4b9f5f6e3bcc7847cfb9ef4eab63c46c18d9",
+        "source_fact:v1:fa36b15e525122ec7d14b219ca73a668f6920182eb9422e0975906dbc210656d"
+      ],
+      "source_published_kst": "2026-10-27T08:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이루트, 엔에스알시 흡수합병 결정",
+      "telegram_core_fact": "에이루트는 앤에스알시의 잔여 지분 30% 인수를 마무리하고 흡수합병하기로 결정했다고 27일 밝혔다.",
+      "title": "에이루트, 엔에스알시 흡수합병 결정"
     },
     "source_fact:b67c7371fce10677f9dedfa9": {
       "first_seen_kst": "2026-10-26T16:00:15+09:00",
@@ -1060289,6 +1061575,38 @@
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
     },
+    "source_fact:c0b70fc40076b8f0a8daee03": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
+    },
     "source_fact:c0bcd09e5900e12362c89c20": {
       "first_seen_kst": "2026-10-15T15:29:27+09:00",
       "lanes": {
@@ -1070391,6 +1071709,29 @@
       "telegram_core_fact": "그간 미국 내 기존 조선소 인수와 지분 투자, 신규 조선소 설립 등을 놓고 고심하던 HD현대가 신규 조선소 건설을 통해 미국 내 생산 거점을 구축하기로 방향을 잡은 것이다.",
       "title": "‘마스가’ 타고…K-조선, 현지 생산으로 미국 공략 발판"
     },
+    "source_fact:c46e40726c86d15077fd844c": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842204",
+      "source": "뉴시스",
+      "source_body_digest": "6d03f6e084b593fd8232ac56d709c705e7936ab220555395a1b30acb16b3bebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d97c8ce7a71a723f3bc0e21e07b81910633abc56d5592da10e46399c9949e48f",
+      "source_fact_keys": [
+        "source_fact:v1:1b99f6cec7b3b95dc533cd9066f47bcb95dd99c9d08b9aa4a9a3e13ba464c871",
+        "source_fact:v1:56955b9cb7d9b635c84a1ab2ed64c42c1fb6519e74cb3e54bfaef53ac41acfd7",
+        "source_fact:v1:ea703fab65a76bac90a26e08952b4b9f5f6e3bcc7847cfb9ef4eab63c46c18d9",
+        "source_fact:v1:fa36b15e525122ec7d14b219ca73a668f6920182eb9422e0975906dbc210656d"
+      ],
+      "source_published_kst": "2026-10-27T08:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이루트, 엔에스알시 흡수합병 결정",
+      "telegram_core_fact": "에이루트는 앤에스알시의 잔여 지분 30% 인수를 마무리하고 흡수합병하기로 결정했다고 27일 밝혔다.",
+      "title": "에이루트, 엔에스알시 흡수합병 결정"
+    },
     "source_fact:c47557f11c0df6008406c5fc": {
       "first_seen_kst": "2026-10-24T03:26:54+09:00",
       "lanes": {
@@ -1078715,6 +1080056,38 @@
       "source_title": "방사청, '뇌물 부정' LIG D&A에 입찰 제한 24개월 처분…법정 최고 수준",
       "telegram_core_fact": "방위사업청이 뇌물 및 원가 부정 사건에 연루된 LIG 디펜스&에어로스페이스(D&A)에 대해 법정 최고 수준의 제재인 '입찰 참가 자격 제한 24개월(2년)' 처분을 내리기로 결정했다.",
       "title": "방사청, '뇌물 부정' LIG D&A에 입찰 제한 24개월 처분…법정 최고 수준"
+    },
+    "source_fact:c7927f08a38ec9e65d99fe0c": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
     },
     "source_fact:c7930454efdc17d0b8308281": {
       "first_seen_kst": "2026-10-24T05:26:28+09:00",
@@ -1099086,6 +1100459,38 @@
       "telegram_core_fact": "이형일 경제부총리 겸 재정경제부 장관은 12일 “공급망의 취약한 고리를 선제적으로 찾아 단단히 보강함으로써 외부 충격에도 흔들리지 않는 공급망을 구축하는 데 정책 역량을 집중하겠다”고 밝혔다.",
       "title": "이형일 “공급망 취약한 고리 보강”…경제안보품목 340개로 확대"
     },
+    "source_fact:cfa6ce31a4ac430084a8870a": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
+    },
     "source_fact:cfad9f4e9110654934613a1f": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
       "lanes": {
@@ -1111520,6 +1112925,33 @@
       "source_title": "한투운용, 만기채권형 회사채 투자 액티브 ETF 상장 | 연합뉴스",
       "telegram_core_fact": "한국투자신탁운용은 만기매칭형 채권 상장지수펀드(ETF·이하 만기채권형 ETF)인 'ACE 29-11회사채(AA-이상)액티브' ETF를 상장했다고 13일 밝혔다.",
       "title": "한투운용, 만기채권형 회사채 투자 액티브 ETF 상장 | 연합뉴스"
+    },
+    "source_fact:d4b67ef910259d803d0738ea": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
     },
     "source_fact:d4bf40e577326eac1d6078f0": {
       "first_seen_kst": "2026-10-25T14:08:27+09:00",
@@ -1124550,6 +1125982,27 @@
       "source_title": "두나무·네이버파이낸셜 빅딜 내년 3월로 또 연기",
       "telegram_core_fact": "네이버가 공시한 ‘주식교환·이전 결정’ 정정공시에 따르면 네이버파이낸셜과 두나무의 주식교환일은 기존 올해 12월 31일에서 내년 3월 31일로 변경됐다. 주식교환 비율은 네이버파이낸셜 1주당 두나무 2.5422618주다.",
       "title": "두나무·네이버파이낸셜 빅딜 내년 3월로 또 연기"
+    },
+    "source_fact:d9cce57c169c0a3435860726": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915551",
+      "source": "헤럴드경제",
+      "source_body_digest": "b1a332f7214c3b78d6f58e062f2a15414202f28be093656c9fff7c248da75836",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:efc94042d63cf2ca472ca0cfbbd27ccbf0af94f63b7542d25d465521c0e6806b",
+      "source_fact_keys": [
+        "source_fact:v1:46d06e23411a76b40795c628b6ed749b554f3bdbace1c5f9deca5dcc6275470d",
+        "source_fact:v1:77a9863c6fd275e75036dee0149c6cc7f75860c8b4d96bc1c0c66863e9fafb92"
+      ],
+      "source_published_kst": "2026-10-27T08:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원",
+      "telegram_core_fact": "신성통상의 SPA 브랜드 ‘탑텐(TOPTEN10)’과 아동복 브랜드 ‘탑텐키즈(TOPTEN KIDS)’가 전개하는 하반기 ‘텐텐데이(TENTEN DAY)’가 개막 사흘 만에 매출 309억원을 기록했다고 27일 밝혔다.",
+      "title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원"
     },
     "source_fact:d9d154d1cea6fed5a50b9be9": {
       "first_seen_kst": "2026-10-23T09:14:52+09:00",
@@ -1159786,6 +1161239,31 @@
       "telegram_core_fact": "중국은 지난해 4월 특정 희토류 원료와 자석, 관련 가공 기술에 대한 수출통제를 도입하고 수출 허가를 받도록 했다.",
       "title": "[올댓차이나] TSMC, 희토류 자석 쓰지 않은 모터 도입 모색…中 수출통제에 대응"
     },
+    "source_fact:e7d92e89a0d8c1a5cbebb774": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181523",
+      "source": "매일경제",
+      "source_body_digest": "129662deb00faea6f35cb707ed9f460bc5e210eaf2f83da07ea9bac943dcaed4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:607c7005a9e66a2f83a61d538e86209723090aebb32ef7bc8d2e8f76ee8b1044",
+      "source_fact_keys": [
+        "source_fact:v1:22b71a6a974a58c1337b546fe782e1c8d27a4a532f727547f86f3846fcece873",
+        "source_fact:v1:26b9e30665a5d611467e84da1895788b1c8e540bd99bfea92fa26dbcee9ccc93",
+        "source_fact:v1:5a094e4f57ffe418e01adfa14b7b652188537304421f988bd453c8bf21cfc13e",
+        "source_fact:v1:5d0c635513b89abb3851a5c922ef714280b6f1bd85191324f0a8be1693950ead",
+        "source_fact:v1:c222386061f5ec0d3cca2cbd9148390b761196ec6d4a92913ce9a1ec70489310",
+        "source_fact:v1:f7c105c0a08e87558dd425db8027d6bbf0ff554069f04d104403c3dce738c682"
+      ],
+      "source_published_kst": "2026-10-27T05:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행",
+      "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
+      "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
+    },
     "source_fact:e7da446500fe6b76487df37a": {
       "first_seen_kst": "2026-10-23T09:14:52+09:00",
       "lanes": {
@@ -1161805,6 +1163283,27 @@
       "telegram_core_fact": "선샤인 바이오파마(SBFM)는 보통주 유닛 또는 선행출자 유닛 1090만9083개를 유닛당 0.55달러에 공모해 배정대행사 수수료와 발행 비용 차감 전 기준 총 약 600만 달러를 조달한다고 8일(현지시간) 발표했다. 공모가가 0.55달러로 1달러 미만인 점도 투자자가 유의할 대목이다.",
       "title": "선샤인 바이오파마, 600만 달러 공모가 확정..유닛당 0.55달러"
     },
+    "source_fact:e88073f3185392c07d5d11b2": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915551",
+      "source": "헤럴드경제",
+      "source_body_digest": "b1a332f7214c3b78d6f58e062f2a15414202f28be093656c9fff7c248da75836",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:efc94042d63cf2ca472ca0cfbbd27ccbf0af94f63b7542d25d465521c0e6806b",
+      "source_fact_keys": [
+        "source_fact:v1:46d06e23411a76b40795c628b6ed749b554f3bdbace1c5f9deca5dcc6275470d",
+        "source_fact:v1:77a9863c6fd275e75036dee0149c6cc7f75860c8b4d96bc1c0c66863e9fafb92"
+      ],
+      "source_published_kst": "2026-10-27T08:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원",
+      "telegram_core_fact": "신성통상의 SPA 브랜드 ‘탑텐(TOPTEN10)’과 아동복 브랜드 ‘탑텐키즈(TOPTEN KIDS)’가 전개하는 하반기 ‘텐텐데이(TENTEN DAY)’가 개막 사흘 만에 매출 309억원을 기록했다고 27일 밝혔다.",
+      "title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원"
+    },
     "source_fact:e882d65f6e13e2a96e52834d": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
       "lanes": {
@@ -1163203,6 +1164702,38 @@
       "source_title": "[제2서울핀테크랩 스타트업 CEO] 난방약자와 기후투자자를 연결하는 히트펌프 열 구독서비스 운영 기업 ‘모닥불 에너지’",
       "telegram_core_fact": "소상공인, 단독주택, 공장·시설 등 전문성과 자본이 부족한 소비자가 구독료만 납부하면 히트펌프의 금융 및 설치부터 운영 및 에너지 거래까지 통합 서비스를 누릴 수 있는 데이터 기반 재생열에너지 플랫폼을 구축하고 있다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 난방약자와 기후투자자를 연결하는 히트펌프 열 구독서비스 운영 기업 ‘모닥불 에너지’"
+    },
+    "source_fact:e9199b620674d1f2057e3693": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
     },
     "source_fact:e919b5d7f4d85c2776cc002a": {
       "first_seen_kst": "2026-10-16T23:32:01+09:00",
@@ -1168507,6 +1170038,38 @@
       "source_title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나",
       "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
       "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
+    },
+    "source_fact:eb294ba9843f5607217160f9": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
     },
     "source_fact:eb2fd87732e4b74f69c7c5ab": {
       "first_seen_kst": "2026-10-20T19:58:15+09:00",
@@ -1178951,6 +1180514,31 @@
       "telegram_core_fact": "밸리 내셔널 뱅코프(VLY)는 2026년 3분기 순이익이 2억630만 달러, 희석 주당순이익(GAAP)이 0.36달러로 전년비 각각 26.3%, 28.6% 증가해 분기 기준 사상 최대 순이익을 기록했다고 10월 22일 발표했다.",
       "title": "밸리 내셔널 뱅코프, 3분기 순익 2억600만달러 사상 최대"
     },
+    "source_fact:ef27175b678910b7c413135e": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181523",
+      "source": "매일경제",
+      "source_body_digest": "129662deb00faea6f35cb707ed9f460bc5e210eaf2f83da07ea9bac943dcaed4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:607c7005a9e66a2f83a61d538e86209723090aebb32ef7bc8d2e8f76ee8b1044",
+      "source_fact_keys": [
+        "source_fact:v1:22b71a6a974a58c1337b546fe782e1c8d27a4a532f727547f86f3846fcece873",
+        "source_fact:v1:26b9e30665a5d611467e84da1895788b1c8e540bd99bfea92fa26dbcee9ccc93",
+        "source_fact:v1:5a094e4f57ffe418e01adfa14b7b652188537304421f988bd453c8bf21cfc13e",
+        "source_fact:v1:5d0c635513b89abb3851a5c922ef714280b6f1bd85191324f0a8be1693950ead",
+        "source_fact:v1:c222386061f5ec0d3cca2cbd9148390b761196ec6d4a92913ce9a1ec70489310",
+        "source_fact:v1:f7c105c0a08e87558dd425db8027d6bbf0ff554069f04d104403c3dce738c682"
+      ],
+      "source_published_kst": "2026-10-27T05:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행",
+      "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
+      "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
+    },
     "source_fact:ef2e661ea9f71f64537a26c1": {
       "first_seen_kst": "2026-10-22T15:55:18+09:00",
       "lanes": {
@@ -1179153,6 +1180741,29 @@
       ],
       "source_published_kst": "2026-10-06T06:15+09:00",
       "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
+    "source_fact:ef40a303a6f5dc5ee6ce338a": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645617184",
+      "source": "이데일리",
+      "source_body_digest": "6c336942f0808481f497dfce447a85a86b478f0ce8bf8ff510417239c78681e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15f943d4e40881c24a061823e3c0e39047046662ef3b04e3b9f90b81c3e90d9a",
+      "source_fact_keys": [
+        "source_fact:v1:0047bb91b7214e7d1102c3677fd76f7ae2c757d0694e657f6d576dcda8837852",
+        "source_fact:v1:96e6b322abc445f6f3372fbe1cc993b8a9ab4f3025c3140c977ec76af3a20400",
+        "source_fact:v1:b81446d8b30b85311d4c0d35861dfe4e55bd226a59b28e8f8809027476a195e8",
+        "source_fact:v1:d841db6a708151c80ca51199c98592da4906f72f54e8d74cd912424e1f674c10"
+      ],
+      "source_published_kst": "2026-10-27T09:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보",
+      "telegram_core_fact": "에임드바이오는 베링거인겔하임과 공동 개발 중인 ADC 후보물질 ‘BI 4060107’의 임상 1상에서 첫 환자 투약이 이뤄졌으며, 이에 따라 계약상 마일스톤 수령 요건을 충족했다고 27일 밝혔다.",
+      "title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보"
     },
     "source_fact:ef40f75ead8687645b381196": {
       "first_seen_kst": "2026-10-15T14:04:10+09:00",
@@ -1192053,6 +1193664,33 @@
       "telegram_core_fact": "마코 루비오 미국 국무장관이 도널드 트럼프 대통령의 대러시아 제재 시행 유예는 세계 경제에 미칠 영향을 분석하기 위한 조치라고 밝혔다.",
       "title": "루비오 \"트럼프, 세계 경제 영향 분석 위해 대러 제재 유예\""
     },
+    "source_fact:f4d75f9205469431df898803": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
+    },
     "source_fact:f4d9f027105e13f0064ad095": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
       "lanes": {
@@ -1195747,6 +1197385,31 @@
       "telegram_core_fact": "김동원 KB증권 리서치본부장은 이날 보고서를 통해 \"메모리 경쟁력은 단순 신공정 개발이 아닌 안정적인 대량 양산과 수율 확보, 고객사 인증 능력으로 결정된다\"며 \"중국의 기술 추격에 대한 시장의 우려는 과도하다\"고 분석했다.",
       "title": "\"中창신메모리 위협, 종이호랑이 수준\"…아직 삼전·닉스 추월 어려운 이유는"
     },
+    "source_fact:f661665384cbcbf74ec1b50b": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181523",
+      "source": "매일경제",
+      "source_body_digest": "129662deb00faea6f35cb707ed9f460bc5e210eaf2f83da07ea9bac943dcaed4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:607c7005a9e66a2f83a61d538e86209723090aebb32ef7bc8d2e8f76ee8b1044",
+      "source_fact_keys": [
+        "source_fact:v1:22b71a6a974a58c1337b546fe782e1c8d27a4a532f727547f86f3846fcece873",
+        "source_fact:v1:26b9e30665a5d611467e84da1895788b1c8e540bd99bfea92fa26dbcee9ccc93",
+        "source_fact:v1:5a094e4f57ffe418e01adfa14b7b652188537304421f988bd453c8bf21cfc13e",
+        "source_fact:v1:5d0c635513b89abb3851a5c922ef714280b6f1bd85191324f0a8be1693950ead",
+        "source_fact:v1:c222386061f5ec0d3cca2cbd9148390b761196ec6d4a92913ce9a1ec70489310",
+        "source_fact:v1:f7c105c0a08e87558dd425db8027d6bbf0ff554069f04d104403c3dce738c682"
+      ],
+      "source_published_kst": "2026-10-27T05:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행",
+      "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
+      "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
+    },
     "source_fact:f662261e54b7de2a7dba3332": {
       "first_seen_kst": "2026-10-27T05:18:00+09:00",
       "lanes": {
@@ -1196317,6 +1197980,33 @@
       ],
       "source_published_kst": "2026-10-06T16:57+09:00",
       "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
+    },
+    "source_fact:f693e69c3c5437e35a2b0178": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
     },
     "source_fact:f6972d1b4167e0fb3737a894": {
       "first_seen_kst": "2026-10-24T18:06:35+09:00",
@@ -1197898,6 +1199588,29 @@
       "source_title": "수주만 7조, 영업익 132% 폭증…증권가 \"지금이 제일 나쁜 실적\" 극찬한 이 종목",
       "telegram_core_fact": "LS일렉트릭 3분기 신규 수주 규모는 1조6000억원으로 전년비 132.9% 급증했는데, 이 가운데 데이터센터향 비중이 50%를 웃돈다.",
       "title": "수주만 7조, 영업익 132% 폭증…증권가 \"지금이 제일 나쁜 실적\" 극찬한 이 종목"
+    },
+    "source_fact:f7440aa18f5173ebc5d7bca1": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842204",
+      "source": "뉴시스",
+      "source_body_digest": "6d03f6e084b593fd8232ac56d709c705e7936ab220555395a1b30acb16b3bebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d97c8ce7a71a723f3bc0e21e07b81910633abc56d5592da10e46399c9949e48f",
+      "source_fact_keys": [
+        "source_fact:v1:1b99f6cec7b3b95dc533cd9066f47bcb95dd99c9d08b9aa4a9a3e13ba464c871",
+        "source_fact:v1:56955b9cb7d9b635c84a1ab2ed64c42c1fb6519e74cb3e54bfaef53ac41acfd7",
+        "source_fact:v1:ea703fab65a76bac90a26e08952b4b9f5f6e3bcc7847cfb9ef4eab63c46c18d9",
+        "source_fact:v1:fa36b15e525122ec7d14b219ca73a668f6920182eb9422e0975906dbc210656d"
+      ],
+      "source_published_kst": "2026-10-27T08:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이루트, 엔에스알시 흡수합병 결정",
+      "telegram_core_fact": "에이루트는 앤에스알시의 잔여 지분 30% 인수를 마무리하고 흡수합병하기로 결정했다고 27일 밝혔다.",
+      "title": "에이루트, 엔에스알시 흡수합병 결정"
     },
     "source_fact:f7443d05c96d53e7a70fd993": {
       "first_seen_kst": "2026-10-19T17:09:04+09:00",
@@ -1214178,6 +1215891,31 @@
       "source_title": "정보보호 공시 의무, 내년 전체 상장사(2648곳)로 확대",
       "telegram_core_fact": "우선, 상장기업에 적용하던 ‘매출액 3000억 이상’ 요건을 삭제해 매출액 규모와 관계없이 유가증권시장(KOSPI, 코스피) 및 코스닥시장(KOSDAQ, 코스닥) 전체 상장법인을 공시 의무대상에 포함했다.",
       "title": "정보보호 공시 의무, 내년 전체 상장사(2648곳)로 확대"
+    },
+    "source_fact:fdd16abf98a1a91d29874688": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181523",
+      "source": "매일경제",
+      "source_body_digest": "129662deb00faea6f35cb707ed9f460bc5e210eaf2f83da07ea9bac943dcaed4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:607c7005a9e66a2f83a61d538e86209723090aebb32ef7bc8d2e8f76ee8b1044",
+      "source_fact_keys": [
+        "source_fact:v1:22b71a6a974a58c1337b546fe782e1c8d27a4a532f727547f86f3846fcece873",
+        "source_fact:v1:26b9e30665a5d611467e84da1895788b1c8e540bd99bfea92fa26dbcee9ccc93",
+        "source_fact:v1:5a094e4f57ffe418e01adfa14b7b652188537304421f988bd453c8bf21cfc13e",
+        "source_fact:v1:5d0c635513b89abb3851a5c922ef714280b6f1bd85191324f0a8be1693950ead",
+        "source_fact:v1:c222386061f5ec0d3cca2cbd9148390b761196ec6d4a92913ce9a1ec70489310",
+        "source_fact:v1:f7c105c0a08e87558dd425db8027d6bbf0ff554069f04d104403c3dce738c682"
+      ],
+      "source_published_kst": "2026-10-27T05:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행",
+      "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
+      "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
     },
     "source_fact:fddd6bfc393adfe5b0a194f9": {
       "first_seen_kst": "2026-10-14T15:54:32+09:00",
@@ -1238162,6 +1239900,27 @@
       "telegram_core_fact": "증권정보업체 에프앤가이드에 따르면 지난 8일 기준 LG이노텍의 3분기 영업이익 컨센서스(증권사 전망치 평균)는 2029억 원으로, 한 달 전 3020억 원보다 32.8% 감소했다.",
       "title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]"
     },
+    "title:2027b29335ecc1e952e6843b": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915551",
+      "source": "헤럴드경제",
+      "source_body_digest": "b1a332f7214c3b78d6f58e062f2a15414202f28be093656c9fff7c248da75836",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:efc94042d63cf2ca472ca0cfbbd27ccbf0af94f63b7542d25d465521c0e6806b",
+      "source_fact_keys": [
+        "source_fact:v1:46d06e23411a76b40795c628b6ed749b554f3bdbace1c5f9deca5dcc6275470d",
+        "source_fact:v1:77a9863c6fd275e75036dee0149c6cc7f75860c8b4d96bc1c0c66863e9fafb92"
+      ],
+      "source_published_kst": "2026-10-27T08:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원",
+      "telegram_core_fact": "신성통상의 SPA 브랜드 ‘탑텐(TOPTEN10)’과 아동복 브랜드 ‘탑텐키즈(TOPTEN KIDS)’가 전개하는 하반기 ‘텐텐데이(TENTEN DAY)’가 개막 사흘 만에 매출 309억원을 기록했다고 27일 밝혔다.",
+      "title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원"
+    },
     "title:202e2f32f192b5b7cd135414": {
       "first_seen_kst": "2026-10-15T15:55:49+09:00",
       "lanes": {
@@ -1245612,6 +1247371,29 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=05123366645608656",
       "source": "이데일리",
       "title": "서학개미, 美주식 '숨 고르기'… 채권은 15년 만에 최대 순매수"
+    },
+    "title:2bd755097ba3a534009f8e24": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842204",
+      "source": "뉴시스",
+      "source_body_digest": "6d03f6e084b593fd8232ac56d709c705e7936ab220555395a1b30acb16b3bebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d97c8ce7a71a723f3bc0e21e07b81910633abc56d5592da10e46399c9949e48f",
+      "source_fact_keys": [
+        "source_fact:v1:1b99f6cec7b3b95dc533cd9066f47bcb95dd99c9d08b9aa4a9a3e13ba464c871",
+        "source_fact:v1:56955b9cb7d9b635c84a1ab2ed64c42c1fb6519e74cb3e54bfaef53ac41acfd7",
+        "source_fact:v1:ea703fab65a76bac90a26e08952b4b9f5f6e3bcc7847cfb9ef4eab63c46c18d9",
+        "source_fact:v1:fa36b15e525122ec7d14b219ca73a668f6920182eb9422e0975906dbc210656d"
+      ],
+      "source_published_kst": "2026-10-27T08:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이루트, 엔에스알시 흡수합병 결정",
+      "telegram_core_fact": "에이루트는 앤에스알시의 잔여 지분 30% 인수를 마무리하고 흡수합병하기로 결정했다고 27일 밝혔다.",
+      "title": "에이루트, 엔에스알시 흡수합병 결정"
     },
     "title:2bdda5dea75c861f2e2e2004": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -1293998,6 +1295780,33 @@
       "telegram_core_fact": "연구진은 \"핵심 수치를 공식 공시와 일치시키거나 병기하고, 계약금·마일스톤·로열티를 구분 표시하며, 중요 공시 전후 임원의 지분 매각을 제한하는 등 공식·비공식 공시 간 제도적 공백을 보완하기 위한 제도 개선이 필요하다\"고 제언했다.",
       "title": "부풀린 보도자료, 주가 변동성 키웠다…\"공시와 수치 맞춰야\""
     },
+    "title:7a495636cf22288dbc6ff48a": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/27/2026102708565859054",
+      "source": "머니투데이",
+      "source_body_digest": "a69818228cff6a003fe2505f6744db05977ac19c1e2aa038d84f89fdde8beccc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8aa53259a595bc883b44b9b607d8211a3ed6bb4850706321eb5be8d952a10cfb",
+      "source_fact_keys": [
+        "source_fact:v1:2049a69ccd1835a19367f57c86dd3a362a3a509093c9dc1e2c10e52b5c16d7ba",
+        "source_fact:v1:4ad0d287c6539a52fb5063f86ee49ae3c94cffc4170478febd54e0a2ee272063",
+        "source_fact:v1:618a92d4eacfac2f1aa7bb8ab13c631a786e03f6be50ed7720689f63bce853f7",
+        "source_fact:v1:8b54310e491cd685db28448a0dd1cb3c637fee6f3f4b17bd532664480416def2",
+        "source_fact:v1:8c6e3c46152367e9400a28ea5d5652019ce67d2ec27cd6e97746a180715fa0d1",
+        "source_fact:v1:aa884d80df648a7248586d60806cfd6347da9f31ce1d8f17f6cb99bf76e887ee",
+        "source_fact:v1:c5b06f3e30b92f15eb34e92d2ce7aa476645a8c3785ee1f3e5b5a1188ccab134",
+        "source_fact:v1:d9876bbe5606e4fea912047d20a2c24436e2b94fc2796226d38e073246bade99"
+      ],
+      "source_published_kst": "2026-10-27T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\"",
+      "telegram_core_fact": "김 연구원은 \"초도 계약 물량은 5만대 로봇 생산분 75만개로 액추에이터 개당 단가(약 2만6400원) 고려시 200억원 계약 건으로, 로보티즈 2025년 매출액 절반 이상에 해당하는 규모\"라며 이에 따른 가시적 매출 성장이 예상된다고 했다.",
+      "title": "\"로보티즈, 프랑스 기업 공급계약·CAPA 증설로 성장…목표가 35만원\""
+    },
     "title:7a4a7daf6f8dbd015697c365": {
       "first_seen_kst": "2026-10-20T16:54:02+09:00",
       "lanes": {
@@ -1297620,6 +1299429,31 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01413686645608984",
       "source": "이데일리",
       "title": "[美특징주]레나, 버크셔 지분 11% 확대에 월가 '매도' 투자의견에도 주가 강세"
+    },
+    "title:80982f1e083d22fa995e9594": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181523",
+      "source": "매일경제",
+      "source_body_digest": "129662deb00faea6f35cb707ed9f460bc5e210eaf2f83da07ea9bac943dcaed4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:607c7005a9e66a2f83a61d538e86209723090aebb32ef7bc8d2e8f76ee8b1044",
+      "source_fact_keys": [
+        "source_fact:v1:22b71a6a974a58c1337b546fe782e1c8d27a4a532f727547f86f3846fcece873",
+        "source_fact:v1:26b9e30665a5d611467e84da1895788b1c8e540bd99bfea92fa26dbcee9ccc93",
+        "source_fact:v1:5a094e4f57ffe418e01adfa14b7b652188537304421f988bd453c8bf21cfc13e",
+        "source_fact:v1:5d0c635513b89abb3851a5c922ef714280b6f1bd85191324f0a8be1693950ead",
+        "source_fact:v1:c222386061f5ec0d3cca2cbd9148390b761196ec6d4a92913ce9a1ec70489310",
+        "source_fact:v1:f7c105c0a08e87558dd425db8027d6bbf0ff554069f04d104403c3dce738c682"
+      ],
+      "source_published_kst": "2026-10-27T05:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행",
+      "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
+      "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
     },
     "title:80a01148ad01b606d7226491": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -1342352,6 +1344186,29 @@
       "source_event_identity": "",
       "title": "美고용 부진에 금리인상 우려 완화…나스닥 1.2%↑(종합)"
     },
+    "title:c9e34a41fa8aae30fbd7569a": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645617184",
+      "source": "이데일리",
+      "source_body_digest": "6c336942f0808481f497dfce447a85a86b478f0ce8bf8ff510417239c78681e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15f943d4e40881c24a061823e3c0e39047046662ef3b04e3b9f90b81c3e90d9a",
+      "source_fact_keys": [
+        "source_fact:v1:0047bb91b7214e7d1102c3677fd76f7ae2c757d0694e657f6d576dcda8837852",
+        "source_fact:v1:96e6b322abc445f6f3372fbe1cc993b8a9ab4f3025c3140c977ec76af3a20400",
+        "source_fact:v1:b81446d8b30b85311d4c0d35861dfe4e55bd226a59b28e8f8809027476a195e8",
+        "source_fact:v1:d841db6a708151c80ca51199c98592da4906f72f54e8d74cd912424e1f674c10"
+      ],
+      "source_published_kst": "2026-10-27T09:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보",
+      "telegram_core_fact": "에임드바이오는 베링거인겔하임과 공동 개발 중인 ADC 후보물질 ‘BI 4060107’의 임상 1상에서 첫 환자 투약이 이뤄졌으며, 이에 따라 계약상 마일스톤 수령 요건을 충족했다고 27일 밝혔다.",
+      "title": "에임드바이오, 베링거 ADC 임상 진입에 마일스톤 확보"
+    },
     "title:c9e392a515cd2d1a0c3f43d8": {
       "first_seen_kst": "2026-10-22T15:55:18+09:00",
       "lanes": {
@@ -1348414,6 +1350271,38 @@
       "source_title": "대한전선, 美서 초고압 프로젝트 턴키 수주…\"현지 전력망 투자 대응\"",
       "telegram_core_fact": "대한전선 본사와 미국 법인은 약 1200억원 자재 공급 계약을 체결했다.",
       "title": "대한전선, 美서 초고압 프로젝트 턴키 수주…\"현지 전력망 투자 대응\""
+    },
+    "title:d381375ec73b2f63f0688823": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1181548",
+      "source": "매일경제",
+      "source_body_digest": "5fb252ca14c58fa9b0cfebc5a2d4a331da4a831f2233e5139d51a67a69e9aa1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f13388792c10c3b12dec4a183d2fa5cf59626efe16b6369fa66fa99b387bf83d",
+      "source_fact_keys": [
+        "source_fact:v1:0315f0a6d4a202a830181a34383916bac3eb8e4e00c93cf5730c1b00fdfa4eb0",
+        "source_fact:v1:06b3e1b6c95aa474c2230ec7704594f99c6b26b68eed38adaea877525b2a6da5",
+        "source_fact:v1:1cf9cb808bbbe465beab3e77f3b204b243628af23b7bf6e8269ff8f04899d4d0",
+        "source_fact:v1:1e33072c488186b2c32e12c73ff79645fe89df1d39bcc70e7fcc28abb62194de",
+        "source_fact:v1:34ae30d860bd444c4871461afc1bc57c12a8af39d28c4220949007b7f306d615",
+        "source_fact:v1:5b9db822a9b21bf4194a2d904c3f4dccb11c3b30a3d3917a8978f071ad254145",
+        "source_fact:v1:8024912dadc5aebeaade382da7ee3d2385538876cfa136fc2e4234dbc14a36bb",
+        "source_fact:v1:83a0a09dc50154cb50fa65519cc2b9991a0c29f7c871708268c86e0d35bcfb2c",
+        "source_fact:v1:d8aeea6a3333a3803172c66d6bd978abd7ca1cb5fe87626279969a0ad0fad040",
+        "source_fact:v1:db16d64c81ab55bef21baf34c37acf07beb88dbf5eab3fc135915fb69624c3c5",
+        "source_fact:v1:dff0130ec3a04a959e04c0d2f9b4406f0a829a0b3779d2c85d238239079083cf",
+        "source_fact:v1:f21ef79ad2a9a72bf59bdca166d939b6c4205656bb658e5a0a6999cf48dcb6dd",
+        "source_fact:v1:f4ba1a5ae92bfa054a9aaec57a5559d07e802cff1b70c5df38e0477e8f3ebf36"
+      ],
+      "source_published_kst": "2026-10-27T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
+      "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
+      "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
     },
     "title:d385c981d4e7bb297f8953c0": {
       "first_seen_kst": "2026-10-20T07:37:12+09:00",
@@ -1358766,6 +1360655,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260918147100003",
       "source": "연합뉴스",
       "title": "D램은 중국에, HBM은 미국에…협공 당하는 K-메모리 | 연합뉴스"
+    },
+    "title:e4a6d1cc8a86b087ccfec92f": {
+      "first_seen_kst": "2026-10-27T13:52:52+09:00",
+      "lanes": {
+        "live": "2026-10-27T13:52:52+09:00"
+      },
+      "last_seen_kst": "2026-10-27T13:52:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10915577",
+      "source": "헤럴드경제",
+      "source_body_digest": "e97ac1e16e098814193347e41e9d5f11f53e83ac34e9a0147522daef4817e9bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a592a50578855345a1b97df907bdcfaa996da2922178ebd360157b7fb0e176cb",
+      "source_fact_keys": [
+        "source_fact:v1:15d421ff2754d77e2329723375b066e9ff912c0119b5d0d65599f6e4068f57a0",
+        "source_fact:v1:424c11a2ca96998d908befc854b1375e030c57b73fe4ab6b018edc324afe5a00"
+      ],
+      "source_published_kst": "2026-10-27T08:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”",
+      "telegram_core_fact": "2018년 유한법인으로 전환 후 2022년 판교 분사무소를 개소한 광장은 2024년 국내 법무법인 최초로 연 매출 4000억원을 돌파하는 등 글로벌 법률 서비스 역량과 시장 내 입지를 지속적으로 확대하고 있다.",
+      "title": "법무법인 광장, 인도네시아에 현지데스크 개소…“아세안 영토 넓힌다”"
     },
     "title:e4c2dea0a91c989afc84199e": {
       "first_seen_kst": "2026-10-20T03:53:09+09:00",
@@ -1374975,5 +1376885,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-27T13:18:16+09:00"
+  "updated_at_kst": "2026-10-27T13:52:52+09:00"
 }
