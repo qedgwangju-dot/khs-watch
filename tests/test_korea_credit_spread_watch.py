@@ -92,8 +92,8 @@ class CreditWatchTests(unittest.TestCase):
         a=c.decide(rows,{})
         m=c.render(rows,a,dt.datetime(2026,10,19,19,46,tzinfo=ZoneInfo('Asia/Seoul')))
         for text in ('방향: 단기 악화↑ · 회사채 보합→',
-                     'CP–CD <b>47.0bp</b> ↑ 확대',
-                     'AA- 회사채–국고채 <b>68.3bp</b> → 보합',
+                     'CP–CD <b>47.0bp</b> [관찰: 30 이상·50 미만] ↑ 확대',
+                     'AA- 회사채–국고채 <b>68.3bp</b> [안정: 70 미만] → 보합',
                      '전일 +1.0 / 5일 +11.0bp',
                      '전일 -0.4 / 5일 +0.2bp',
                      'CP 91일 3.720% | +1.0/+12.0bp',
@@ -241,5 +241,60 @@ class CreditWatchTests(unittest.TestCase):
         self.assertIn("credit_spread_watch_health_pending.json",workflow)
         self.assertIn("--probe",workflow)
         self.assertIn("DRY_RUN != 'true'",workflow)
+
+    def test_spread_band_at_all_10_boundaries(self):
+        cases=[
+            ("cp_cd",29.999,"안정","30 미만"),
+            ("cp_cd",30.0,"관찰","30 이상·50 미만"),
+            ("cp_cd",49.999,"관찰","30 이상·50 미만"),
+            ("cp_cd",50.0,"주의","50 이상·70 미만"),
+            ("cp_cd",69.999,"주의","50 이상·70 미만"),
+            ("cp_cd",70.0,"악화","70 이상·100 미만"),
+            ("cp_cd",99.999,"악화","70 이상·100 미만"),
+            ("cp_cd",100.0,"심각","100 이상"),
+            ("credit",69.999,"안정","70 미만"),
+            ("credit",70.0,"관찰","70 이상·80 미만"),
+            ("credit",79.999,"관찰","70 이상·80 미만"),
+            ("credit",80.0,"주의","80 이상·90 미만"),
+            ("credit",89.999,"주의","80 이상·90 미만"),
+            ("credit",90.0,"악화","90 이상·120 미만"),
+            ("credit",119.999,"악화","90 이상·120 미만"),
+            ("credit",120.0,"심각","120 이상"),
+        ]
+        for metric,value,label,span in cases:
+            with self.subTest(metric=metric,value=value):
+                got_label,got_span=c.spread_bucket(metric,value)
+                self.assertEqual((got_label,got_span),(label,span))
+                other=-1
+                actual=c.level(value,other) if metric=="cp_cd" else c.level(other,value)
+                self.assertEqual(c.LEVELS[actual],label)
+        with self.assertRaises(ValueError):
+            c.spread_bucket("unknown",52.0)
+        with self.assertRaises(ValueError):
+            c.spread_bucket("cp_cd",float("nan"))
+
+    def test_user_oct26_warning_and_stable_company_yield_are_both_visible(self):
+        rows=sample(47,68.3)
+        rows[-1].update(date="20261026",rates={"cp":3.780,"cd":3.260,"corp":4.476,"gov":3.789},
+                        cp_cd=52.0,credit=68.7,rank=2)
+        action=c.decide(rows,{"notified_rank":2})
+        message=c.render(rows,action,dt.datetime(2026,10,27,16,24,tzinfo=ZoneInfo("Asia/Seoul")),sample=True)
+        self.assertIn("CP–CD <b>52.0bp</b> [주의: 50 이상·70 미만]",message)
+        self.assertIn("AA- 회사채–국고채 <b>68.7bp</b> [안정: 70 미만]",message)
+        self.assertIn("국내 신용금리 경보 | 주의",message)
+        self.assertIn("CP–CD 구간(bp): 안정:30미만 · 관찰:30~50미만 · 주의:50~70미만 · 악화:70~100미만 · 심각:100이상",message)
+        self.assertIn("AA- 구간(bp): 안정:70미만 · 관찰:70~80미만 · 주의:80~90미만 · 악화:90~120미만 · 심각:120이상",message)
+        self.assertNotIn("<30",message)
+        self.assertLessEqual(len(message.splitlines()),29)
+        self.assertLess(len(message),c.MAX_MESSAGE_CHARS)
+        self.assertIn("[양식 검증 · 새 경보가 아닙니다]",message)
+
+    def test_all_rendered_bands_come_from_policy_table(self):
+        for metric in ("cp_cd","credit"):
+            legend=c.spread_legend(metric)
+            for rank in range(5):
+                self.assertIn(c.LEVELS[rank]+":",legend)
+            self.assertNotIn("<",legend)
+            self.assertNotIn(">",legend)
 
 if __name__=='__main__':unittest.main()
