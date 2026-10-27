@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 18,
-    "new_material_items": 0,
-    "raw_items": 221,
+    "material_items": 25,
+    "new_material_items": 6,
+    "raw_items": 310,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -131,6 +131,16 @@
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQRG9fTjV5OXR5VEFUcmhNU3ZxMlp2ZmVReGJMVFc5MU1JTmNEaFZ0UEl5YnlaWnJFUlBqR1ZjcWlyQzRQNXNZREtULVVaelFjMGYwSkozNzVUY0tCaURVRnc4aGNBX2NidWxTRi1vUld2djZFSTlyOVBiMnByTFBFaA?oc=5",
       "vendor": "Anthropic"
     },
+    "133539b81ece8c44aa4784dc": {
+      "category": "국내 AI 악용 개인정보 탈취·피의자 검거",
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "published_at": "2026-10-26T03:00:00+00:00",
+      "severity": 3,
+      "source": "뉴시스",
+      "title": "경찰 생성형 AI ARTEX 사용 국내 업체 90여곳 해킹 개인정보 820만건 탈취 혐의 일당 검거",
+      "url": "https://www.newsis.com/view/NISX20261026_0003841011",
+      "vendor": "국내 수사기관 발표"
+    },
     "13af12b066f7d981bf231ba8": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
@@ -150,6 +160,16 @@
       "title": "Abdulrahman Alfozan: Saudi Engineer Charged With Bugging OpenAI’s Executive Conference Room In ‘Sophisticated’ Spy Operation Targeting AI Secrets - The Sunday Guardian",
       "url": "https://news.google.com/rss/articles/CBMilAJBVV95cUxPXzNWOTRzMHQydVFHMmZ3YkhhSUFlZG5paDVjbGh3bEYyc2RZaHpjY0cyUHFRQzhpRElScXZhV0dRb25IQVNWc3RlQ0gzWV9LOXZ0UWxpQi1Vby1ONTFHaktHLVhHU0tJNk0zSXNZdk9RMXdBSVFma3pOUE81eV9GSTloNTBtY1JmM0dLdHNveGwxODJmLW84UVZwMi1ObVJoMm1rNWlkTGJOendkN1RMRWxSdmdhVVdSTzVfUUQ2UFVibVpjTWZOMkdQMkZVbzhGdGFwWUUtckVQWWUtTTBScXJkdTRxYjZfd0dLOEVSMHlEdkJOMnJaYmhUT1ZyZm94Vjc5aUx1NVgzWWdGaVRBZ3BBWjjSAZoCQVVfeXFMTklfZ0l0cTE5LWoxYW0ycFhDakhXSG1sREF4OHF3SHJuMzViVlQ2R1hhNkx4a3pCLW01MDF2OHB5aEg1RFFrUlh1ODNtSllQMzY0dnpzYUY3Qmc4RFYzN2MyNm53Z1Fac2xGak0tQmNKQ2Y4VUd6TGpXQ3U3c2dhM2VZN19IT0ZIbTJCNl8wNEZsNU9zRVBQWlJ4X0N0MzM2YXNXdFFRRF9Bc19QVXFoa2xUNWVGcGR3M0JCY2NHb3hoXy13SGNhRC1nbTdxbHRVaUpNNFc1UmczQ0FwckpsVzJiTkhxWUNWYkZCcXFRRzBURVpaVDhqYXZVWmhkQ0hOd3hqSjEyMVotZXdiNFdLaUpMYk5CazFzVDFn?oc=5",
       "vendor": "OpenAI"
+    },
+    "14889c6a898855098359a2e2": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "published_at": "2026-10-23T14:03:23+00:00",
+      "severity": 2,
+      "source": "Cyfirma",
+      "title": "CYFIRMA Threat Advisory: Suspected DPRK Campaign staging PHP2Shell Targeting against Global PHP infrastructure - Cyfirma",
+      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNRHlqN1E0YjhJR0piUlBaazRCczBMZllvMEI2ZWgxOTR2S2U3aFd2ZldadUJreW5JS0FMQ0c0MTJLNU5vdmM2Q3dIRVpLeFMwSWg4NFdQaDcyWENLczlwa2tEbTloOTltejZNZXVhXzhmU3JOQVVaUVZQTUtEVWNibWZGSWRDX3o1TVNTY1BUc0cyeVF3S3h6dkNYQ0Y1UENuSl9PczhDMTl5aFBmb0pCdjNiOUxMQ0hvdGQ0cV9ncDdRR2lRT3VSNkRGM3BoMFNpWUFTWmVqVTZzeGM?oc=5",
+      "vendor": "PHP 재단"
     },
     "15c723624ac5cd571c96a3b7": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
@@ -611,6 +631,26 @@
       "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPSko4S0tnZmVqcGg2Vzhscy1KV183SW43OFFzU1BoZjlDd2VUdWtkNllJT3FsQkRJRHNjNEpIY0NMaU92TG5BdWVTa2F4LV9Zb2Yta2V1cUZTUTFHNVZJSzdJUWtzenh0ZWtsTUFoRkR2Vm80SlFxYk9jd0FZTS1mNXpnQ1oySnVLRzlORXhhbjZ5TEVXVm5Cb9IBngFBVV95cUxQb01MWVUxZF90YV9yNDNpcEdEWkJzOEx5VTEzbGRkT3JpX1kyd21Ta2FsSkFDY0tHMGpNNkNOSmpybGcyYUxWbjd0eXhiNnBFZXlLbElVODJmbGJKLTBuU0xUdzBoU3FER19WWEVxSWUtRmhqZjR5R1Q3Nks5WmdSMU5tNldNckk0clRkQ1AyVXVHcXEzVjRlTFliNC1ldw?oc=5",
       "vendor": "PHP 재단"
     },
+    "69fd93ab0a807dce14e05e2e": {
+      "category": "ARTEX 국가 연계 실전 공격·공급망 침해",
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "published_at": "2026-10-21T00:00:00+00:00",
+      "severity": 3,
+      "source": "Microsoft Security",
+      "title": "Microsoft reports Storm-0940 China-state aligned actor used ARTEX against hundreds of organizations",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+      "vendor": "Microsoft 위협정보"
+    },
+    "6c99c54866f4f90928f99b50": {
+      "category": "Claude 승인 없는 유료 공개자료 접근·통제 이탈",
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "published_at": "2026-10-26T03:20:05+00:00",
+      "severity": 2,
+      "source": "Axios",
+      "title": "Anthropic's Claude bypassed a paywall to access Georgia voter data without authorization - Axios",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE4tOWdrOGlYS2tjeWxKTnl1U3YyN3pqMnM1YTYyZU5wQy05X2FvZFhUUV9SNGt1MVd4cEE0UndMTGJiSXRqZmxmWEVPS0NQazVGVUZNWGxGdWF4Q2hMbDVid192UjFKc2hLVlE2OUxyMFdxY0NLUXdJ?oc=5",
+      "vendor": "Anthropic"
+    },
     "707da9e87eaa264e4154794d": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
@@ -620,6 +660,16 @@
       "title": "PHP ships emergency patches for critical PHP2Shell flaws - BleepingComputer",
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPOXNpMEF4NE11UzFkYXVzYV9KMERSSlIxV1dlTXB3VUgtOWtNTTNDNW5ueWliNWp6c2hvWUNSRmF4Zk1TZ1JHZDI0ZnZ0ZG1iUWptQ3ozdHBOcGFvTE1aWmNFYnMzOWw5MGlmQjNMcGI1TjkyN3doQm4zSllTeGJWamZFSVpURW5icUQxS3hEeEVPWHVRa0JlOWVjSW9BcTJjX014R2Y2VQ?oc=5",
       "vendor": "PHP 재단"
+    },
+    "74098c773ea47d42d05a7b6b": {
+      "category": "Anthropic 제3자 업무시스템 보안 연구·모의침투",
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "published_at": "2026-10-26T05:00:00+00:00",
+      "severity": 2,
+      "source": "The Washington Post",
+      "title": "Cathedral researchers reached Anthropic business systems in under 12 hours in security program",
+      "url": "https://www.washingtonpost.com/technology/2026/10/26/researchers-cybersecurity-start-up-cathedral-got-inside-anthropic/",
+      "vendor": "Anthropic"
     },
     "77a79bf6a5991eac43f47ed6": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
@@ -940,6 +990,16 @@
       "title": "FBI says an OpenAI engineer used his wife's ChatGPT account to plot a secret recording device - Fortune",
       "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPc29qbG10Z0twWkNSV2U5Q01rWW0yZzBaSGdhQ2RLV3VfVzVMNnBYU1k4dW12TnpSeGFUbmZuSlhsU0RPTElIaHEwbUEwSjZ0TjQwWE1udW5aY1Q1VkR0NTlESzl0SXZwTFkzZ1JGUXROc19MUmJELU5uNlNnWVBmZU5MZEFkYjlTTDRkcG5lMmhrVHV6TVlIMlJR?oc=5",
       "vendor": "OpenAI"
+    },
+    "b05efca8cbb4744963025006": {
+      "category": "Claude 승인 없는 유료 공개자료 접근·통제 이탈",
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "published_at": "2026-10-25T00:00:00+00:00",
+      "severity": 2,
+      "source": "Axios",
+      "title": "Anthropic Claude accessed paid Georgia aggregate vote counts without human approval",
+      "url": "https://www.axios.com/2026/10/25/anthropic-claude-georgia-voter-data",
+      "vendor": "Anthropic"
     },
     "b23f053e0582436af9243492": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
@@ -1321,6 +1381,16 @@
       "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAzR2tkbXBlSC15bmdLOC15RXdoYWN4RmExYXo2VklpTGlBLTdWV0plN2ZYZ1JpZV9CMG9RLU01T19WWTQwQ051ZDBCTGlFWC0yVkNzMDR2SlNRSmZiY1E?oc=5",
       "vendor": "OpenAI"
     },
+    "f8610bcb3d594757154e11c3": {
+      "category": "PHP2Shell 특정 표적 탐색·공격 준비 보고",
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "published_at": "2026-10-24T00:00:00+00:00",
+      "severity": 2,
+      "source": "CYFIRMA",
+      "title": "CYFIRMA PHP2Shell advisory: 216 candidate target hosts and 21 active scanning nodes",
+      "url": "https://www.cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure/",
+      "vendor": "CYFIRMA"
+    },
     "f8c4d7f740fcc6cd505c7c62": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-23T13:29:22.225144+00:00",
@@ -1372,5 +1442,37 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-27T15:38:28+09:00"
+  "tracked_security_cases": {
+    "anthropic_cathedral:research_access_disclosed_20261026": {
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "source": "The Washington Post",
+      "source_url": "https://www.washingtonpost.com/technology/2026/10/26/researchers-cybersecurity-start-up-cathedral-got-inside-anthropic/",
+      "status": "reported milestone, preserve source confidence"
+    },
+    "artex_korea_820m:police_referral_reported_20261026": {
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "source": "뉴시스",
+      "source_url": "https://www.newsis.com/view/NISX20261026_0003841011",
+      "status": "reported milestone, preserve source confidence"
+    },
+    "artex_storm0940:microsoft_campaign_disclosed_20261021": {
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "source": "Microsoft Security",
+      "source_url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+      "status": "reported milestone, preserve source confidence"
+    },
+    "claude_georgia:paid_aggregate_data_access_20261025": {
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "source": "Axios",
+      "source_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE4tOWdrOGlYS2tjeWxKTnl1U3YyN3pqMnM1YTYyZU5wQy05X2FvZFhUUV9SNGt1MVd4cEE0UndMTGJiSXRqZmxmWEVPS0NQazVGVUZNWGxGdWF4Q2hMbDVid192UjFKc2hLVlE2OUxyMFdxY0NLUXdJ?oc=5",
+      "status": "reported milestone, preserve source confidence"
+    },
+    "php_cyfirma_scanning:216_hosts_21_nodes_assessed_20261024": {
+      "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
+      "source": "CYFIRMA",
+      "source_url": "https://www.cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure/",
+      "status": "reported milestone, preserve source confidence"
+    }
+  },
+  "updated_at_kst": "2026-10-27T15:40:38+09:00"
 }
