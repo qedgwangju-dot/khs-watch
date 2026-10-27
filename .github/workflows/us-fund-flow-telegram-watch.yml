@@ -483,6 +483,9 @@ jobs:
             exit 1
           elif grep -q '"status": "sent"' out/us_tech_etf_proxy_run.log; then
             echo "미 기술주 ETF 발행좌수 경보 전송 · Telegram message_id는 확인증 참조" >> "$GITHUB_STEP_SUMMARY"
+          elif grep -q '"status": "publication_pending"' out/us_tech_etf_proxy_run.log; then
+            echo "::warning::iShares 최신 미국 거래일 자료 게시 대기. 이전 기준일로 설정·환매 재계산 및 Telegram 중복 발송 금지."
+            grep 'us_tech_etf_proxy_status=' out/us_tech_etf_proxy_run.log >> "$GITHUB_STEP_SUMMARY"
           elif grep -q '"status": "validated"' out/us_tech_etf_proxy_run.log; then
             echo "IYW·SOXX 및 EWY(가용 시) 공식 설정·환매 검증 · Telegram 미전송" >> "$GITHUB_STEP_SUMMARY"
           elif grep -Eq '"status": "(baseline_or_no_signal|duplicate_suppressed)"' out/us_tech_etf_proxy_run.log; then
