@@ -60,10 +60,21 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install requests beautifulsoup4 "googlenewsdecoder==0.2.1"
-      - name: AIDC code-push regression only (no Telegram)
+      - name: AIDC and data-center market code-push regression (no Telegram)
         run: |
-          python -m compileall -q scripts/korea_aidc_policy_watch.py scripts/korea_aidc_policy_watch_v2.py
+          python -m compileall -q scripts/korea_aidc_policy_watch.py scripts/korea_aidc_policy_watch_v2.py scripts/ai_dc_tam_revision_watch.py
           python -m unittest discover -s tests -p 'test_korea_aidc_policy_watch_v2.py' -v
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          path = Path("scripts/ai_dc_tam_revision_watch.py")
+          spec = importlib.util.spec_from_file_location("ai_dc_tam_revision_watch", path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          module.bofa_global_checks()
+          module.semia_regression_checks()
+          print("bofa_global_once_only_and_tam_scope_regression=passed")
+          PY
 
   monitor:
     # Code-push validation must never trigger live alert sends.
