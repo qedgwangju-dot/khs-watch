@@ -69,8 +69,14 @@ jobs:
         run: |
           git fetch origin main
           git reset --hard origin/main
-          if [ "$FORMAT_SAMPLE_SEND" = "true" ] && [ "$(git rev-parse HEAD)" != "$GITHUB_SHA" ]; then
-            echo "샘플 트리거 뒤 코드가 변경되어 잘못된 버전 전송 방지를 위해 중단" >&2
+          # 다른 워크플로의 상태파일 커밋은 허용하되, 샘플 트리거 이후
+          # 이 경보의 코드·검증·일정 파일이 변경된 경우에만 송신 차단.
+          if [ "$FORMAT_SAMPLE_SEND" = "true" ] &&
+             ! git diff --quiet "$GITHUB_SHA" HEAD -- \
+               scripts/korea_credit_spread_watch.py \
+               tests/test_korea_credit_spread_watch.py \
+               .github/workflows/korea-credit-spread-telegram-watch.yml; then
+            echo "트리거 후 감시 코드가 변경되어 구버전 샘플 전송 차단" >&2
             exit 1
           fi
       - uses: actions/setup-python@v5
