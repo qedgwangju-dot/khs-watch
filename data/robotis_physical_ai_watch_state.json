@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-27T05:35:20.056968+00:00",
+  "updated_at": "2026-10-27T10:31:56.041963+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -724,22 +724,28 @@
     "e0c6ccc50e8ad7ab7ef6d630e21185eadfa6733753f3f1cb253f40dff021c753",
     "97ed9e5115e065e4ea902d0d9ae62ae88ecd4fd2a82c1d6b14b81ecbb6993e7c",
     "d2fc49c414f29d85a9a1d2144292d6fdadb0cd555411b62b334decbf2d34cd27",
-    "dc4eee9c5753e4d5fa3f107f9934fad76278f266bd5800109cdf0236bf603088"
+    "dc4eee9c5753e4d5fa3f107f9934fad76278f266bd5800109cdf0236bf603088",
+    "94b220df19580551495b597395dab4f56f672ba250ba8fa7230edf26885c09d8",
+    "210fc4fb9cdea8a3c337d7c8cf8b0fe44be404212e5669972dff0d1d928df983",
+    "bc2390ce09dfdcc6cb81ca3e893257249ba2435345d3101ce39228bc899f8a1c",
+    "f4beef213781f1cc6ade3c6877ed7f6348aad7a381dd4fbe9479961f942280e4",
+    "9bed860c2714c7f080cf2c1f6cf4e916307f95a032e66da9700fbe96d25c7461",
+    "b9d4a144cff608fc8e707ad1e62264d97d93fd91277e48cd0b3e47f78162065b"
   ],
   "last_selected": [
-    "4bfe30af1d496652209fa136fd83b2ad5639927e5fa3a2007d9d68174ea865ae",
-    "0017feef11cd4d6eb89c21c28b6bd299288c3052a795f79b3e3086c5dc098fb2",
-    "23f50b33f55bfb97618a83dff2da1c2202524e9ddc6c0d7c237e5ff340c3e87e",
-    "e0c6ccc50e8ad7ab7ef6d630e21185eadfa6733753f3f1cb253f40dff021c753",
-    "97ed9e5115e065e4ea902d0d9ae62ae88ecd4fd2a82c1d6b14b81ecbb6993e7c",
-    "d2fc49c414f29d85a9a1d2144292d6fdadb0cd555411b62b334decbf2d34cd27",
-    "dc4eee9c5753e4d5fa3f107f9934fad76278f266bd5800109cdf0236bf603088"
+    "94b220df19580551495b597395dab4f56f672ba250ba8fa7230edf26885c09d8",
+    "210fc4fb9cdea8a3c337d7c8cf8b0fe44be404212e5669972dff0d1d928df983",
+    "bc2390ce09dfdcc6cb81ca3e893257249ba2435345d3101ce39228bc899f8a1c",
+    "f4beef213781f1cc6ade3c6877ed7f6348aad7a381dd4fbe9479961f942280e4",
+    "9bed860c2714c7f080cf2c1f6cf4e916307f95a032e66da9700fbe96d25c7461",
+    "b9d4a144cff608fc8e707ad1e62264d97d93fd91277e48cd0b3e47f78162065b"
   ],
   "groups": [
     "atlas_actuator_bom",
     "atlas_etnews_parts_report",
     "eka_dexterous_funding",
     "ess_battery",
+    "hyundai_atlas_rollout",
     "lg_factory_loop",
     "lge_nvidia_hsb_robot_sensing",
     "microduck_pollen_robotis_orders",
@@ -747,10 +753,12 @@
     "nvidia_flora_robot_data",
     "raon_wafer_robot_yongin_factory",
     "robotis",
+    "samsung_hand_10_atlas_8_reported",
     "shanghai_physical_ai_2027_policy",
     "tesla_agm_2026",
     "tesla_giga_berlin_modely_week",
     "tesla_optimus_q3_fremont",
+    "tirobotics_dow_reported",
     "wonik"
   ]
 }
