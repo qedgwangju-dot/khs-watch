@@ -3587,6 +3587,72 @@ def korean_trump_story_title(title: str) -> str:
 def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] | None:
     if not items:
         return None
+    if rule.key == "eu_china_hybrid_vehicle_safeguard":
+        signature = semantic_policy_event_key(items[0])
+        original = signature == "eu-china-hybrid-safeguard-understanding-2026-10-09"
+        official = any(
+            item.get("official_direct_verified") is True
+            and item.get("eu_hybrid_stage") == "government-understanding"
+            and str(item.get("link") or "") in {row[0] for row in EU_HYBRID_OFFICIAL}
+            for item in items
+        )
+        return {
+            "title": rule.title if original else rule.title + " · 후속 시행 단계",
+            "core": rule.core if original else "EU 하이브리드차 수입할당 시행 절차에 관한 후속 보도이며, 법적 효력은 EU 집행규정·관보와 별도로 대조해야 합니다.",
+            "stage": ("양측 합의 공식 확인·연 35만 대는 언론 보도·EU 시행규정 대기"
+                      if original and official else "언론 보도 단계·EU 시행규정 원문 확인 전"),
+            "event_date": "2026년 10월 9일" if original else "후속 문서·기사 날짜 확인 필요",
+            "event_date_label": "합의 발표일" if original else "후속 보도 기준",
+            "show_publication_date": not original,
+            "actual_bullets": [
+                "Reuters가 제시한 중국산 첫해 할당량 연 35만 대, 2년 차부터 매년 6% 확대, 총 4년은 합의의 보도상 세부 조건입니다.",
+                "중국 상무부 확인: 중국산 EU 하이브리드차 수입은 2024년 10만7천 대·2025년 30만2천 대. 연 35만 대는 한국 등 모든 수입차의 합계가 아닙니다.",
+                "EU 공식 집행규정·시행일과 한국·일본 등 원산지별 할당량, 일반 하이브리드차/충전식 하이브리드차의 세부 적용은 별도 확인해야 합니다.",
+            ] if original else [
+                "최초 합의와 별개의 집행규정 제안 또는 시행 보도를 감지했습니다.",
+                "정식 EU 관보의 시행일·국가별 쿼터·차종별 코드가 확인되기 전에는 발효 완료로 처리하지 않습니다.",
+            ],
+            "timeline": "2026년 10월 9일 합의 발표 → 10월 12일 중국 정부의 비차별 원칙 확인 → 12월 시행 목표 보도 → EU 집행규정·관보·국가별 배정 대기",
+            "scope_note": rule.counter,
+            "korea_candidates": "현대자동차·기아 한국산 EU 수출량과 체코·슬로바키아 현지생산을 분리하며 신규 수혜 매출은 미확인.",
+            "secondary_source": "Reuters 2026-10-12 · https://www.reuters.com/business/autos-transportation/eu-eyes-december-trade-initiatives-after-china-car-import-deal-2026-10-12/",
+            "next": rule.follow_up,
+            "investment": rule.point, "priced_in": "35만 대 쿼터가 EU 법률로 발효됐다는 뜻이 아니며 국가별 실제 수출·통관으로 손익을 확인합니다.",
+            "counter": rule.counter,
+            "failure": "EU 입법 지연, 한국산 별도 제한, 통관 중단·초과관세 유형 미확정, 유럽 현지생산 전환비용.",
+            "impacts": rule.impacts, "paths": rule.paths, "sectors": rule.sectors,
+        }
+    if rule.key == "eu_china_sector_import_safeguards":
+        signature = semantic_policy_event_key(items[0])
+        furniture = signature == "eu-china-sector-safeguards-furniture-2026-10-26"
+        earlier = signature == "eu-china-sector-safeguards-chemicals-machinery-2026-10-23"
+        return {
+            "title": (rule.title if furniture else "EU, 화학제품·기계류 추가 수입제한 검토" if earlier else rule.title + " · 후속 규제 단계"),
+            "core": (rule.core if furniture else
+                     "Reuters는 EU의 화학제품·기계류·의약품 수입 제한 검토와 산업계의 대응 요구를 보도했습니다." if earlier else
+                     "화학제품·가구·기계류 수입제한에 관한 EU 후속 발표 보도이며 공식 조치의 단계·품목을 별도로 검증해야 합니다."),
+            "stage": "언론 확인·EU 정식 조사·쿼터·관세 확정 전",
+            "event_date": "2026년 10월 26일" if furniture else "2026년 10월 23일" if earlier else "후속 발표일 확인 필요",
+            "event_date_label": "Bloomberg 보도일" if furniture else "Reuters 보도일" if earlier else "후속 보도 기준",
+            "show_publication_date": not (furniture or earlier),
+            "actual_bullets": [
+                "Bloomberg는 중국산 화학제품·가구·기계류 수입할당 또는 관세할당을 이르면 2027년 1분기 제안할 가능성을 보도했습니다.",
+                "EU 집행위원장은 추가 긴급수입제한조치 추진 방침을 밝혔지만 가구·품목별 쿼터나 시행 규정은 발표되지 않았습니다.",
+                "중국만 적용되는 조치가 아니라 다른 EU 역외국에도 적용될 수 있으므로 한국산 품목의 관세·할당·예외를 구분해야 합니다.",
+            ] if furniture else [
+                "EU 차원의 수입증가 평가 및 추가 긴급수입제한 가능성을 보도한 단계입니다.",
+                "화학제품·기계류 중심의 검토와 가구 수입 제한의 구체적인 확정 범위는 분리해 판단합니다.",
+            ],
+            "timeline": "2026년 10월 16일 EU 추가 제한 검토 발언 → 10월 23일 Reuters 산업별 논의 → 10월 26일 Bloomberg 화학·가구·기계류 보도 → 2027년 1분기 제안 가능성",
+            "scope_note": rule.counter,
+            "korea_candidates": "롯데케미칼·LG화학의 유럽 화학제품 수출 및 산업기계 업체 실제 주문은 별도 자료로 검증.",
+            "secondary_source": "EU 집행위원장 2026-10-16 공식 발언 · https://cyprus.representation.ec.europa.eu/news/statement-president-von-der-leyen-joint-press-conference-president-costa-following-meeting-european-2026-10-16_en",
+            "next": rule.follow_up, "investment": rule.point,
+            "priced_in": "수입 제한 시행이 아니라 검토 보도입니다. 시행안의 품목코드·국가별 물량이 없으면 기업 매출 추정은 가정으로 분리합니다.",
+            "counter": rule.counter,
+            "failure": "중국 보복, 한국산 비차별 적용, EU 내 최종 규정 지연, 조달처 인증·검수 지연.",
+            "impacts": rule.impacts, "paths": rule.paths, "sectors": rule.sectors,
+        }
     if rule.key == MOFCOM_TECH_48["key"]:
         semantic_stage = semantic_policy_event_key(items[0])
         baseline = semantic_stage == "china-mofcom-2026-technology-48-draft-preregistration-2026-10-16"
