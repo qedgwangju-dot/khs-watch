@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 21,
+    "material_items": 22,
     "new_material_items": 0,
-    "raw_items": 353,
+    "raw_items": 301,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1071,6 +1071,16 @@
       "url": "https://www.php.net/archive/2026.php#2026-10-21-5",
       "vendor": "PHP 재단"
     },
+    "befc12601d11e65c1cafd379": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-27T16:06:31.379845+00:00",
+      "published_at": "2026-10-27T13:21:45+00:00",
+      "severity": 2,
+      "source": "wiz.io",
+      "title": "PHP2Shell: Exploitation Attempts and Remediation Trends - wiz.io",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5SRFR0ajk2VTVnVXZTVkRHVzZjYWplYmJHSmRRdk8tZjRGcVVFcWtBdG55bWFfdzQ3ZDhIME5IX2ZIZXVPN0w1a3ZubGpJM1BOZDU2SkpQQnZ1TTg5UHdZWU1Edw?oc=5",
+      "vendor": "PHP 재단"
+    },
     "c11671e1cf4be8601e95c49b": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T10:13:12.407995+00:00",
@@ -1494,5 +1504,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-28T00:30:40+09:00"
+  "updated_at_kst": "2026-10-28T01:06:31+09:00"
 }
