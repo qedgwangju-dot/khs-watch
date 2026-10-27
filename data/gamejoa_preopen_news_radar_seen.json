@@ -20569,6 +20569,34 @@
       "telegram_core_fact": "오션팔(SVRN)이 NEAR 프로토콜 네트워크 접속·데이터 인프라 업체 패스트니어(FastNEAR)를 인수해 완전 자회사로 편입했다고 9일 발표했다.",
       "title": "오션팔, NEAR 인프라 업체 패스트니어 인수 완료"
     },
+    "core:2afa0d88517f76b1e381e5b2": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
+    },
     "core:2afdbaed4f41210dd28f3249": {
       "first_seen_kst": "2026-10-17T07:27:10+09:00",
       "lanes": {
@@ -61846,6 +61874,30 @@
       "source_title": "방시혁, 민희진에 42억 대여금 소송…어도어 지분 매입 때 빌려 - 스타투데이",
       "telegram_core_fact": "이번 소송은 민 전 대표가 2023년 어도어 지분을 매입하는 과정에서 방 의장에게 빌린 37억 원과 관련된 것으로 추측된다.",
       "title": "방시혁, 민희진에 42억 대여금 소송…어도어 지분 매입 때 빌려 - 스타투데이"
+    },
+    "core:85b8c00e0794e213d4830b59": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640772",
+      "source": "이투데이",
+      "source_body_digest": "94618bdd47e36a2ce248837470af7285d67cb1b7bced86df3c4c7aa4c40d5a4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae1eba6e7f6174b8bea51377a19259fb41cfadfc45e4d2f1c6edb4659f45f77c",
+      "source_fact_keys": [
+        "source_fact:v1:a5808eeced6cb7345bce07dd36b678006dfa4947b8062d808a9103aeaf7b1b15",
+        "source_fact:v1:b7b3166a99920a81dd7da9f1f1aa390a974dfa6341a4b63d8e3a4021dd8352bc",
+        "source_fact:v1:be7127059d48b54580cfd0918abca4d4c3ce6e995a7385fd1a95261a69f74b83",
+        "source_fact:v1:d13cd12fa98cd60cb7187cac778d217d44cfdb0a0aa5c494120ecd26dec548b6",
+        "source_fact:v1:f0545b5a6c240dd5890a6c441bca32b696d4ea7871ab61374e96ccbace45ee49"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청",
+      "telegram_core_fact": "옵투스제약 관계자는 “고령화로 확대되는 노안 치료 시장을 공략하기 위해 클로시의 국내 인허가 절차를 차질 없이 진행할 것”이라며 “기존 안과 의약품 사업 역량을 바탕으로 점안제 시장 내 경쟁력을 지속해서 강화해 나가겠다”고 밝혔다.",
+      "title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청"
     },
     "core:85be37296f30f355aba7169a": {
       "first_seen_kst": "2026-10-16T15:46:25+09:00",
@@ -103839,6 +103891,30 @@
       "telegram_core_fact": "터톤 캐피탈에 따르면 오리온의 식품사업은 약 22%의 자기자본이익률(ROE)을 기록하고 있지만, 중앙일보 인수는 상각전영업이익(EBITDA)의 약 23배를 지급하면서 세전 수익률은 4% 수준에 그치는 거래다.",
       "title": "오리온, 중앙일보 인수 추진에 주주 반발…해외 투자사도 \"즉각 중단\" 요구"
     },
+    "core:e08a60f1ef6eab48fb33114d": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000420",
+      "source": "전자신문",
+      "source_body_digest": "aea72d171e5d2713507a76a23911603347e2de3a70e0a281f314c1fac0335c84",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d30230978f1180125c167e8fe0a209237b33d6dcde8d6c2347656cfcbefe56",
+      "source_fact_keys": [
+        "source_fact:v1:2ce84e66a33a9830d6b21bf3634b2a9b32e2854b63f659c32d901e748ee91a04",
+        "source_fact:v1:5cb85685319c528725f00face22536f8007fe800e06a397091f54e073b7a4805",
+        "source_fact:v1:980afb2303b5b452006190d637c25322634a974de74504eaead3349a52772025",
+        "source_fact:v1:d25130ecff68d371f4ea7fd3d69cd5d429ffca081582539974fd7db4fbb9b520",
+        "source_fact:v1:fa8a4b65b3728a510d098a63763bf2758be90f1d8af9a5260318e06586b85c34"
+      ],
+      "source_published_kst": "2026-10-27T17:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다",
+      "telegram_core_fact": "포항시와 경북도가 핵심 전략 자산인 희토류 영구자석의 국내 공급망 확보를 위해 대규모 외국인 투자 유치에 성공했다. 포항시와 경북도는 27일 시청 대회의실에서 케이엠엠아이(KMMI)와 3000억 원 생산설비 증설을 위한 투자양해각서(MOU)를 체결했다고 밝혔다.",
+      "title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다"
+    },
     "core:e09a3f1c5c22d5f033a56883": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -107617,6 +107693,26 @@
       "source_title": "\"우주 카르텔 아냐?\"…항우연·천문연 전·현직 직원 일감 몰아주기 논란",
       "telegram_core_fact": "우주항공 분야 공공 연구기관에서 직원이 창업하거나 인수한 기업에 수백억원 계약이 집중되고, 감사에서 부적절한 계약 관행이 적발된 이후에도 관련 기업과의 계약이 이어졌다는 지적이 국회에서 제기됐다.",
       "title": "\"우주 카르텔 아냐?\"…항우연·천문연 전·현직 직원 일감 몰아주기 논란"
+    },
+    "core:e8f2c0877e35b7fbc8a68d57": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027167700371",
+      "source": "연합뉴스",
+      "source_body_digest": "952bc899c93757ceb7fe4af907ead5c21a05bbc6688d9fddfabdf0a2b6ecb8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a0b6230c98af6abab5876dc82b95ba6850d53e14c4a2f5b1f11f48af533b96",
+      "source_fact_keys": [
+        "source_fact:v1:d68ca54a2c254b7650d5746f56a57f355e3b41bb9148f749a09cd29101940cb5"
+      ],
+      "source_published_kst": "2026-10-27T17:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스",
+      "telegram_core_fact": "국회 외교통일위원회 소속 더불어민주당 김준환 의원은 27일 외통위 종합국정감사에서 코이카가 총 180억원을 투입해 몽골에서 진행하는 '울란바타르시 지속가능한 4계절 온실 구축을 통한 농업생산 역량강화 사업'(2026∼2031)의 중복 문제를 짚었다.",
+      "title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스"
     },
     "core:e8f72c7cb5d33fa446660b7a": {
       "first_seen_kst": "2026-10-20T14:54:10+09:00",
@@ -112615,6 +112711,27 @@
       "source_title": "MH머트리얼즈·한국재료연구원, 차세대 영구자석 개발 협약 체결",
       "telegram_core_fact": "경남 창원에 위치한 MH머트리얼즈(구 만호제강)는 16일 한국재료연구원(KIMS)과 차세대 꿈의 영구자석 'MH HIMAG' 공동 개발 및 사업화를 위한 업무협약을 체결했다고 밝혔다.",
       "title": "MH머트리얼즈·한국재료연구원, 차세대 영구자석 개발 협약 체결"
+    },
+    "core:f3f89e29f50433fd79f432e8": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640757",
+      "source": "이투데이",
+      "source_body_digest": "9c80aca2462bf9b0afde5d35fd2247ddba256f87d9f04e734319194f16d84d17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2f9a0e3dc42112d24e57b0439291d158d664c9270d8fc1457a4fef2b86bb9a47",
+      "source_fact_keys": [
+        "source_fact:v1:2e44c63ff0d7306e06bba48a7f29cb0709ac478c6acf73c9f043f42e58b654f3",
+        "source_fact:v1:560f357a53513e4160b5691049556b93260c3aa7b4cbd20e724736e955b98567"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]",
+      "telegram_core_fact": "iM금융은 27일 올해 1~3분기 누적 지배주주지분 당기순이익이 4163억원으로 전년 동기보다 3.6% 감소했다고 밝혔다.",
+      "title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]"
     },
     "core:f406ea25dbbc5a23c4574c55": {
       "first_seen_kst": "2026-10-26T18:53:23+09:00",
@@ -125465,6 +125582,34 @@
       "source_title": "신현송 \"선제 금리인상 적절…정부 예산안, 성장률 0.5%p 높여\"",
       "telegram_core_fact": "신현송 한국은행 총재가 지난 7·8월 두 차례 연속 기준금리 인상으로 미국보다 선제적으로 대응해 경제적 비용을 줄였다고 평가했다.",
       "title": "신현송 \"선제 금리인상 적절…정부 예산안, 성장률 0.5%p 높여\""
+    },
+    "event:46465e9fdb2d1749e21dbe03": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
     },
     "event:465a271095617ee947b1da44": {
       "first_seen_kst": "2026-10-26T21:03:29+09:00",
@@ -160522,6 +160667,27 @@
       "source_title": "워딩턴 스틸, 1분기 매출 27억 달러 212%↑..적자전환",
       "telegram_core_fact": "워딩턴 스틸(WS)은 2027 회계연도 1분기(2026년 6~8월) 계속사업 기준 매출액이 27억2660만 달러로 전년비 212% 증가했으며, 계속사업 기준 GAAP 희석 주당순손실은 0.14달러로 전년 동기 0.73달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "워딩턴 스틸, 1분기 매출 27억 달러 212%↑..적자전환"
+    },
+    "fact:20c7d3c008ebf303afd99a49": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640757",
+      "source": "이투데이",
+      "source_body_digest": "9c80aca2462bf9b0afde5d35fd2247ddba256f87d9f04e734319194f16d84d17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2f9a0e3dc42112d24e57b0439291d158d664c9270d8fc1457a4fef2b86bb9a47",
+      "source_fact_keys": [
+        "source_fact:v1:2e44c63ff0d7306e06bba48a7f29cb0709ac478c6acf73c9f043f42e58b654f3",
+        "source_fact:v1:560f357a53513e4160b5691049556b93260c3aa7b4cbd20e724736e955b98567"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]",
+      "telegram_core_fact": "iM금융은 27일 올해 1~3분기 누적 지배주주지분 당기순이익이 4163억원으로 전년 동기보다 3.6% 감소했다고 밝혔다.",
+      "title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]"
     },
     "fact:20c7ed147e45f11d919bd506": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -211553,6 +211719,30 @@
       "telegram_core_fact": "자동차·패션용 소재사업을 영위해온 유니켐은 미국 유연전자 기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수 계약을 체결하고, 로봇 촉각센서와 학습데이터 사업을 새로운 사업 영역으로 육성한다는 구상이다.",
       "title": "로봇 경쟁력 ‘손끝’에 달렸다…촉각·학습데이터 시장 선점 나선 유니켐"
     },
+    "fact:8a4b29b207a6d77cad1a2cc5": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000420",
+      "source": "전자신문",
+      "source_body_digest": "aea72d171e5d2713507a76a23911603347e2de3a70e0a281f314c1fac0335c84",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d30230978f1180125c167e8fe0a209237b33d6dcde8d6c2347656cfcbefe56",
+      "source_fact_keys": [
+        "source_fact:v1:2ce84e66a33a9830d6b21bf3634b2a9b32e2854b63f659c32d901e748ee91a04",
+        "source_fact:v1:5cb85685319c528725f00face22536f8007fe800e06a397091f54e073b7a4805",
+        "source_fact:v1:980afb2303b5b452006190d637c25322634a974de74504eaead3349a52772025",
+        "source_fact:v1:d25130ecff68d371f4ea7fd3d69cd5d429ffca081582539974fd7db4fbb9b520",
+        "source_fact:v1:fa8a4b65b3728a510d098a63763bf2758be90f1d8af9a5260318e06586b85c34"
+      ],
+      "source_published_kst": "2026-10-27T17:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다",
+      "telegram_core_fact": "포항시와 경북도가 핵심 전략 자산인 희토류 영구자석의 국내 공급망 확보를 위해 대규모 외국인 투자 유치에 성공했다. 포항시와 경북도는 27일 시청 대회의실에서 케이엠엠아이(KMMI)와 3000억 원 생산설비 증설을 위한 투자양해각서(MOU)를 체결했다고 밝혔다.",
+      "title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다"
+    },
     "fact:8a4e6bb7ed1603b5717d67c0": {
       "first_seen_kst": "2026-10-23T13:00:02+09:00",
       "lanes": {
@@ -234337,6 +234527,26 @@
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
     },
+    "fact:b6e8f9b713f24ba6ff222c23": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027167700371",
+      "source": "연합뉴스",
+      "source_body_digest": "952bc899c93757ceb7fe4af907ead5c21a05bbc6688d9fddfabdf0a2b6ecb8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a0b6230c98af6abab5876dc82b95ba6850d53e14c4a2f5b1f11f48af533b96",
+      "source_fact_keys": [
+        "source_fact:v1:d68ca54a2c254b7650d5746f56a57f355e3b41bb9148f749a09cd29101940cb5"
+      ],
+      "source_published_kst": "2026-10-27T17:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스",
+      "telegram_core_fact": "국회 외교통일위원회 소속 더불어민주당 김준환 의원은 27일 외통위 종합국정감사에서 코이카가 총 180억원을 투입해 몽골에서 진행하는 '울란바타르시 지속가능한 4계절 온실 구축을 통한 농업생산 역량강화 사업'(2026∼2031)의 중복 문제를 짚었다.",
+      "title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스"
+    },
     "fact:b6e9e13365da318ed955524b": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
       "lanes": {
@@ -242670,6 +242880,30 @@
       "source_title": "육군 VTC, 사후 보완 뒤에도 보안 의혹…도입 검증 부실 논란",
       "telegram_core_fact": "특히 공급사는 지난해 9월 규격 충족 확인서를 제출하고 육군의 기능점검까지 진행했지만, 실제 부대 운용 전까지 앞선 문제를 걸러내지 못했다는 점에서 군 장비 도입 절차에 허점이 발생했다는 지적이 나온는 대목이다.",
       "title": "육군 VTC, 사후 보완 뒤에도 보안 의혹…도입 검증 부실 논란"
+    },
+    "fact:c7934de6c06a13545fce704d": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640772",
+      "source": "이투데이",
+      "source_body_digest": "94618bdd47e36a2ce248837470af7285d67cb1b7bced86df3c4c7aa4c40d5a4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae1eba6e7f6174b8bea51377a19259fb41cfadfc45e4d2f1c6edb4659f45f77c",
+      "source_fact_keys": [
+        "source_fact:v1:a5808eeced6cb7345bce07dd36b678006dfa4947b8062d808a9103aeaf7b1b15",
+        "source_fact:v1:b7b3166a99920a81dd7da9f1f1aa390a974dfa6341a4b63d8e3a4021dd8352bc",
+        "source_fact:v1:be7127059d48b54580cfd0918abca4d4c3ce6e995a7385fd1a95261a69f74b83",
+        "source_fact:v1:d13cd12fa98cd60cb7187cac778d217d44cfdb0a0aa5c494120ecd26dec548b6",
+        "source_fact:v1:f0545b5a6c240dd5890a6c441bca32b696d4ea7871ab61374e96ccbace45ee49"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청",
+      "telegram_core_fact": "옵투스제약 관계자는 “고령화로 확대되는 노안 치료 시장을 공략하기 위해 클로시의 국내 인허가 절차를 차질 없이 진행할 것”이라며 “기존 안과 의약품 사업 역량을 바탕으로 점안제 시장 내 경쟁력을 지속해서 강화해 나가겠다”고 밝혔다.",
+      "title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청"
     },
     "fact:c794e4ec82343def46c17dbf": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
@@ -259487,6 +259721,34 @@
       "telegram_core_fact": "기존 예비입찰에 참여한 6개 업체가 모두 인수여력을 인정받아 숏리스트에 선정된 가운데 유력 원매자들이 컨소시엄을 통한 추가 입찰 의사를 전하면서 인수전에 불이 붙고 있다.",
       "title": "[단독] CJ, 중앙일보 인수전 뛰어든다…다우키움그룹과 컨소 구성 추진"
     },
+    "fact:e8010c07ea0eea9e30ca82f6": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
+    },
     "fact:e8261fec80e5d2ba3e1583fe": {
       "first_seen_kst": "2026-10-20T17:57:17+09:00",
       "lanes": {
@@ -259532,6 +259794,29 @@
       "source_title": "42%로 치솟은 ETF 거래 비중 …",
       "telegram_core_fact": "국내 증시에서 개별 종목 거래가 위축된 가운데 상장지수펀드(ETF) 거래는 늘면서 전체 거래대금 중 ETF 비중이 40%를 넘어섰다. 한국거래소에 따르면 이달 들어 19일까지 전체 증시 거래에서 ETF 거래대금이 차지하는 비중은 42.1%로 집계됐다.",
       "title": "42%로 치솟은 ETF 거래 비중 …"
+    },
+    "fact:e839fd08e7b2df5345243a8a": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640783",
+      "source": "이투데이",
+      "source_body_digest": "433d663f335e2764dd706de6c94e63ab9a19e0becdf9c30f4f9fb73ae8ef3f68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8de999729aaa6715daab36c471ee84b5ec16f2c225106b0b02edc29911d60532",
+      "source_fact_keys": [
+        "source_fact:v1:14887c218c63b751ee62b30ab89f863b13f86e0eed2ba01ffce86ba7fab7fd85",
+        "source_fact:v1:28977caf0b159f1bc25d96cff988aebe267b6b07b139de5b8c9ae70fcc99ba6e",
+        "source_fact:v1:5943e04a62bee685cfb403a516e391a9fd688d0b5d1bfd7a6f523908cc85e4a7",
+        "source_fact:v1:af9a82f2fcab61cdabd1e434dbc112c8382005dd0ca9bc26bdd4fbb7e7d12285"
+      ],
+      "source_published_kst": "2026-10-27T18:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]",
+      "telegram_core_fact": "JB금융그룹이 3분기 역대 최대 순이익을 기록했다.",
+      "title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]"
     },
     "fact:e8485e1e8dc1f030cc4ff990": {
       "first_seen_kst": "2026-10-11T08:19:03+09:00",
@@ -283375,6 +283660,30 @@
       "telegram_core_fact": "오전 9시10분 기준 외국인은 코스피 시장에서 1738억원 규모로 순매도 중이다.",
       "title": "코스피, 6500선으로 밀려 출발…외국인 매도에 반도체株 하락"
     },
+    "link:12ac51789ba152e6fd0e3c13": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000420",
+      "source": "전자신문",
+      "source_body_digest": "aea72d171e5d2713507a76a23911603347e2de3a70e0a281f314c1fac0335c84",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d30230978f1180125c167e8fe0a209237b33d6dcde8d6c2347656cfcbefe56",
+      "source_fact_keys": [
+        "source_fact:v1:2ce84e66a33a9830d6b21bf3634b2a9b32e2854b63f659c32d901e748ee91a04",
+        "source_fact:v1:5cb85685319c528725f00face22536f8007fe800e06a397091f54e073b7a4805",
+        "source_fact:v1:980afb2303b5b452006190d637c25322634a974de74504eaead3349a52772025",
+        "source_fact:v1:d25130ecff68d371f4ea7fd3d69cd5d429ffca081582539974fd7db4fbb9b520",
+        "source_fact:v1:fa8a4b65b3728a510d098a63763bf2758be90f1d8af9a5260318e06586b85c34"
+      ],
+      "source_published_kst": "2026-10-27T17:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다",
+      "telegram_core_fact": "포항시와 경북도가 핵심 전략 자산인 희토류 영구자석의 국내 공급망 확보를 위해 대규모 외국인 투자 유치에 성공했다. 포항시와 경북도는 27일 시청 대회의실에서 케이엠엠아이(KMMI)와 3000억 원 생산설비 증설을 위한 투자양해각서(MOU)를 체결했다고 밝혔다.",
+      "title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다"
+    },
     "link:12ad857a181c033c184249c8": {
       "first_seen_kst": "2026-10-25T16:08:36+09:00",
       "lanes": {
@@ -287365,6 +287674,29 @@
       "source_title": "뱅크웨어글로벌, OK저축은행과 161억 규모 공급계약",
       "telegram_core_fact": "금융 소프트웨어 전문기업 뱅크웨어글로벌은 OK저축은행과 161억원 '수신(독자)시스템 구축 사업' 공급계약을 체결했다고 13일 밝혔다.",
       "title": "뱅크웨어글로벌, OK저축은행과 161억 규모 공급계약"
+    },
+    "link:18b5cadf8f797db30d87e076": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640783",
+      "source": "이투데이",
+      "source_body_digest": "433d663f335e2764dd706de6c94e63ab9a19e0becdf9c30f4f9fb73ae8ef3f68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8de999729aaa6715daab36c471ee84b5ec16f2c225106b0b02edc29911d60532",
+      "source_fact_keys": [
+        "source_fact:v1:14887c218c63b751ee62b30ab89f863b13f86e0eed2ba01ffce86ba7fab7fd85",
+        "source_fact:v1:28977caf0b159f1bc25d96cff988aebe267b6b07b139de5b8c9ae70fcc99ba6e",
+        "source_fact:v1:5943e04a62bee685cfb403a516e391a9fd688d0b5d1bfd7a6f523908cc85e4a7",
+        "source_fact:v1:af9a82f2fcab61cdabd1e434dbc112c8382005dd0ca9bc26bdd4fbb7e7d12285"
+      ],
+      "source_published_kst": "2026-10-27T18:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]",
+      "telegram_core_fact": "JB금융그룹이 3분기 역대 최대 순이익을 기록했다.",
+      "title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]"
     },
     "link:18b8adeffa2e853897125118": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -306881,6 +307213,27 @@
       "source": "전자신문",
       "title": "우리자산운용, 데이터·AI 플랫폼 WISH 가동…종목분석 6시간→8분"
     },
+    "link:371eb9d225ffb0ba2e6d2002": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640757",
+      "source": "이투데이",
+      "source_body_digest": "9c80aca2462bf9b0afde5d35fd2247ddba256f87d9f04e734319194f16d84d17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2f9a0e3dc42112d24e57b0439291d158d664c9270d8fc1457a4fef2b86bb9a47",
+      "source_fact_keys": [
+        "source_fact:v1:2e44c63ff0d7306e06bba48a7f29cb0709ac478c6acf73c9f043f42e58b654f3",
+        "source_fact:v1:560f357a53513e4160b5691049556b93260c3aa7b4cbd20e724736e955b98567"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]",
+      "telegram_core_fact": "iM금융은 27일 올해 1~3분기 누적 지배주주지분 당기순이익이 4163억원으로 전년 동기보다 3.6% 감소했다고 밝혔다.",
+      "title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]"
+    },
     "link:3754a6f5b2c661122d2c38d7": {
       "first_seen_kst": "2026-10-25T16:42:43+09:00",
       "lanes": {
@@ -307823,6 +308176,26 @@
       "source_title": "한미반도체, 美 세미콘 웨스트 참가…패키징 장비 공개",
       "telegram_core_fact": "한미반도체는 현지시간으로 지난 13일부터 오는 15일까지 미국 샌프란시스코 모스코니센터에서 열리는 '2026 세미콘 웨스트(SEMICON West)'에 참가한다고 14일 밝혔다. 한미반도체는 세미콘 웨스트 참가로 미국 반도체 시장 수요 확대에 대응하고, 첨단 패키징 기술 경쟁력을 알릴 계획이다.",
       "title": "한미반도체, 美 세미콘 웨스트 참가…패키징 장비 공개"
+    },
+    "link:38c925b3ad422e9eee1397e3": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027167700371",
+      "source": "연합뉴스",
+      "source_body_digest": "952bc899c93757ceb7fe4af907ead5c21a05bbc6688d9fddfabdf0a2b6ecb8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a0b6230c98af6abab5876dc82b95ba6850d53e14c4a2f5b1f11f48af533b96",
+      "source_fact_keys": [
+        "source_fact:v1:d68ca54a2c254b7650d5746f56a57f355e3b41bb9148f749a09cd29101940cb5"
+      ],
+      "source_published_kst": "2026-10-27T17:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스",
+      "telegram_core_fact": "국회 외교통일위원회 소속 더불어민주당 김준환 의원은 27일 외통위 종합국정감사에서 코이카가 총 180억원을 투입해 몽골에서 진행하는 '울란바타르시 지속가능한 4계절 온실 구축을 통한 농업생산 역량강화 사업'(2026∼2031)의 중복 문제를 짚었다.",
+      "title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스"
     },
     "link:38d31d18f67805edececbe82": {
       "first_seen_kst": "2026-10-01T21:23:29+09:00",
@@ -335036,6 +335409,34 @@
       "link": "https://biz.chosun.com/it-science/ict/2026/10/02/JQNFHHICERHV7J37HNFIN5WWBI/",
       "source": "조선비즈",
       "title": "어플라이드·베시, AI 반도체 패키징 협력 확대… 美 실리콘밸리서 차세대 본딩 개발"
+    },
+    "link:63b995a51f6493ba69985720": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
     },
     "link:63bbabbb8d7480ce3db993ee": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
@@ -369385,6 +369786,24 @@
       "telegram_core_fact": "최대 4000만 달러 규모 자사주 매입 프로그램이 승인되며 주주환원 의지와 경영진의 저평가 인식이 부각되고 있습니다.",
       "title": "코인셰어즈, 4000만 달러 자사주 매입 승인으로 주주환원 기대 부각"
     },
+    "link:9a7213de8cd0d5cd3f78244d": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000421",
+      "source": "전자신문",
+      "source_body_digest": "8e70836a006af0b0c9cd2710de3d7fde4e9b3e5f212615c630420b18f2a9ae09",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T17:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "지씨셀-튀르키예 보건부, 세포치료제 진출 논의",
+      "telegram_core_fact": "2018년 일본 세포치료제 기업 림포텍을 인수했다.",
+      "title": "지씨셀-튀르키예 보건부, 세포치료제 진출 논의"
+    },
     "link:9a7c732d31d2810b3b208beb": {
       "first_seen_kst": "2026-10-03T21:50:02+09:00",
       "lanes": {
@@ -377657,6 +378076,30 @@
       "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
       "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
       "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
+    },
+    "link:a6ef0a853f2bd285427cb1f2": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640772",
+      "source": "이투데이",
+      "source_body_digest": "94618bdd47e36a2ce248837470af7285d67cb1b7bced86df3c4c7aa4c40d5a4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae1eba6e7f6174b8bea51377a19259fb41cfadfc45e4d2f1c6edb4659f45f77c",
+      "source_fact_keys": [
+        "source_fact:v1:a5808eeced6cb7345bce07dd36b678006dfa4947b8062d808a9103aeaf7b1b15",
+        "source_fact:v1:b7b3166a99920a81dd7da9f1f1aa390a974dfa6341a4b63d8e3a4021dd8352bc",
+        "source_fact:v1:be7127059d48b54580cfd0918abca4d4c3ce6e995a7385fd1a95261a69f74b83",
+        "source_fact:v1:d13cd12fa98cd60cb7187cac778d217d44cfdb0a0aa5c494120ecd26dec548b6",
+        "source_fact:v1:f0545b5a6c240dd5890a6c441bca32b696d4ea7871ab61374e96ccbace45ee49"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청",
+      "telegram_core_fact": "옵투스제약 관계자는 “고령화로 확대되는 노안 치료 시장을 공략하기 위해 클로시의 국내 인허가 절차를 차질 없이 진행할 것”이라며 “기존 안과 의약품 사업 역량을 바탕으로 점안제 시장 내 경쟁력을 지속해서 강화해 나가겠다”고 밝혔다.",
+      "title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청"
     },
     "link:a6f7187af40b11676fec4a38": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
@@ -434462,6 +434905,27 @@
       "telegram_core_fact": "광주경영자총협회(광주경총)는 지역 소규모 제조업체의 중대재해 예방을 위해 안전보건 시설 개선 지원금을 기존 150만 원에서 최대 300만원으로 2배 상향한다고 8일 밝혔다.",
       "title": "광주경총, 제조업 중대재해 예방지원금 150만→300만원"
     },
+    "original:031da5880ff6314da39991f0": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640757",
+      "source": "이투데이",
+      "source_body_digest": "9c80aca2462bf9b0afde5d35fd2247ddba256f87d9f04e734319194f16d84d17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2f9a0e3dc42112d24e57b0439291d158d664c9270d8fc1457a4fef2b86bb9a47",
+      "source_fact_keys": [
+        "source_fact:v1:2e44c63ff0d7306e06bba48a7f29cb0709ac478c6acf73c9f043f42e58b654f3",
+        "source_fact:v1:560f357a53513e4160b5691049556b93260c3aa7b4cbd20e724736e955b98567"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]",
+      "telegram_core_fact": "iM금융은 27일 올해 1~3분기 누적 지배주주지분 당기순이익이 4163억원으로 전년 동기보다 3.6% 감소했다고 밝혔다.",
+      "title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]"
+    },
     "original:032544a95e3f791c39b5851a": {
       "first_seen_kst": "2026-10-27T16:53:55+09:00",
       "lanes": {
@@ -446581,6 +447045,34 @@
       "source_published_kst": "2026-10-05T10:20+09:00",
       "title": "\"명절에 지방 가면 여기부터?\"…10대 매출 200% 폭증한 곳"
     },
+    "original:1733ba676095fe370083be6f": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
+    },
     "original:1738ac9745665fb99f67fb38": {
       "first_seen_kst": "2026-10-18T10:36:52+09:00",
       "lanes": {
@@ -449802,6 +450294,26 @@
       "source_title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파",
       "telegram_core_fact": "8일(현지시간) 파이낸셜타임스를 비롯한 주요 외신들에 따르면 개발사인 오픈AI는 투자자들에게 연간 환산 매출이 500억 달러 수준으로 예상된다고 말했다.",
       "title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파"
+    },
+    "original:1cdef6babf00beca1581ceb3": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027167700371",
+      "source": "연합뉴스",
+      "source_body_digest": "952bc899c93757ceb7fe4af907ead5c21a05bbc6688d9fddfabdf0a2b6ecb8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a0b6230c98af6abab5876dc82b95ba6850d53e14c4a2f5b1f11f48af533b96",
+      "source_fact_keys": [
+        "source_fact:v1:d68ca54a2c254b7650d5746f56a57f355e3b41bb9148f749a09cd29101940cb5"
+      ],
+      "source_published_kst": "2026-10-27T17:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스",
+      "telegram_core_fact": "국회 외교통일위원회 소속 더불어민주당 김준환 의원은 27일 외통위 종합국정감사에서 코이카가 총 180억원을 투입해 몽골에서 진행하는 '울란바타르시 지속가능한 4계절 온실 구축을 통한 농업생산 역량강화 사업'(2026∼2031)의 중복 문제를 짚었다.",
+      "title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스"
     },
     "original:1ce1d06258bfafca39b92848": {
       "first_seen_kst": "2026-10-23T14:14:10+09:00",
@@ -482101,6 +482613,29 @@
       "telegram_core_fact": "한국 정부가 한미 합의의 일환으로 미국 조선업에 1500억달러 투자를 약속했지만, 실제 사업의 성패는 투자 약속의 규모보다 현지 생산 능력과 수주를 얼마나 빠르게 연결하느냐에 달려 있다.",
       "title": "美 조선업 구원투수 된 한화…넘어야 할 비용·발주 장벽"
     },
+    "original:4eee883c6620efefcdca2114": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640783",
+      "source": "이투데이",
+      "source_body_digest": "433d663f335e2764dd706de6c94e63ab9a19e0becdf9c30f4f9fb73ae8ef3f68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8de999729aaa6715daab36c471ee84b5ec16f2c225106b0b02edc29911d60532",
+      "source_fact_keys": [
+        "source_fact:v1:14887c218c63b751ee62b30ab89f863b13f86e0eed2ba01ffce86ba7fab7fd85",
+        "source_fact:v1:28977caf0b159f1bc25d96cff988aebe267b6b07b139de5b8c9ae70fcc99ba6e",
+        "source_fact:v1:5943e04a62bee685cfb403a516e391a9fd688d0b5d1bfd7a6f523908cc85e4a7",
+        "source_fact:v1:af9a82f2fcab61cdabd1e434dbc112c8382005dd0ca9bc26bdd4fbb7e7d12285"
+      ],
+      "source_published_kst": "2026-10-27T18:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]",
+      "telegram_core_fact": "JB금융그룹이 3분기 역대 최대 순이익을 기록했다.",
+      "title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]"
+    },
     "original:4f0a50b0f72e87b39318d103": {
       "first_seen_kst": "2026-10-19T00:10:36+09:00",
       "lanes": {
@@ -498856,6 +499391,24 @@
       "source_title": "[인&아웃] '오뚝이' 룰라 브라질 대통령 | 연합뉴스",
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 지난해 자이르의 재판을 '마녀사냥'이라 비난하며 브라질에 최고 50%의 관세를 부과했다.",
       "title": "[인&아웃] '오뚝이' 룰라 브라질 대통령 | 연합뉴스"
+    },
+    "original:6a7a8496fa9b5e44f18f4273": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000421",
+      "source": "전자신문",
+      "source_body_digest": "8e70836a006af0b0c9cd2710de3d7fde4e9b3e5f212615c630420b18f2a9ae09",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T17:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "지씨셀-튀르키예 보건부, 세포치료제 진출 논의",
+      "telegram_core_fact": "2018년 일본 세포치료제 기업 림포텍을 인수했다.",
+      "title": "지씨셀-튀르키예 보건부, 세포치료제 진출 논의"
     },
     "original:6a7bd7fcccdeb92c57b5b2c2": {
       "first_seen_kst": "2026-10-14T14:29:29+09:00",
@@ -535047,6 +535600,30 @@
       "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
       "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
       "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
+    },
+    "original:a4646c70a783ff912da75502": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640772",
+      "source": "이투데이",
+      "source_body_digest": "94618bdd47e36a2ce248837470af7285d67cb1b7bced86df3c4c7aa4c40d5a4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae1eba6e7f6174b8bea51377a19259fb41cfadfc45e4d2f1c6edb4659f45f77c",
+      "source_fact_keys": [
+        "source_fact:v1:a5808eeced6cb7345bce07dd36b678006dfa4947b8062d808a9103aeaf7b1b15",
+        "source_fact:v1:b7b3166a99920a81dd7da9f1f1aa390a974dfa6341a4b63d8e3a4021dd8352bc",
+        "source_fact:v1:be7127059d48b54580cfd0918abca4d4c3ce6e995a7385fd1a95261a69f74b83",
+        "source_fact:v1:d13cd12fa98cd60cb7187cac778d217d44cfdb0a0aa5c494120ecd26dec548b6",
+        "source_fact:v1:f0545b5a6c240dd5890a6c441bca32b696d4ea7871ab61374e96ccbace45ee49"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청",
+      "telegram_core_fact": "옵투스제약 관계자는 “고령화로 확대되는 노안 치료 시장을 공략하기 위해 클로시의 국내 인허가 절차를 차질 없이 진행할 것”이라며 “기존 안과 의약품 사업 역량을 바탕으로 점안제 시장 내 경쟁력을 지속해서 강화해 나가겠다”고 밝혔다.",
+      "title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청"
     },
     "original:a481c4c674bb5a5fdbf2a0d9": {
       "first_seen_kst": "2026-10-01T21:50:06+09:00",
@@ -584135,6 +584712,30 @@
       "source_title": "TORM, 올해 EBITDA 가이던스 13억~15억 달러 상향",
       "telegram_core_fact": "월가 증권사들은 TORM의 2026년 매출액을 15억2600만 달러로 예상하며, 이는 전년 대비 13.92% 늘어난 수준이다.",
       "title": "TORM, 올해 EBITDA 가이던스 13억~15억 달러 상향"
+    },
+    "original:f5708770c39e38449f01ee65": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000420",
+      "source": "전자신문",
+      "source_body_digest": "aea72d171e5d2713507a76a23911603347e2de3a70e0a281f314c1fac0335c84",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d30230978f1180125c167e8fe0a209237b33d6dcde8d6c2347656cfcbefe56",
+      "source_fact_keys": [
+        "source_fact:v1:2ce84e66a33a9830d6b21bf3634b2a9b32e2854b63f659c32d901e748ee91a04",
+        "source_fact:v1:5cb85685319c528725f00face22536f8007fe800e06a397091f54e073b7a4805",
+        "source_fact:v1:980afb2303b5b452006190d637c25322634a974de74504eaead3349a52772025",
+        "source_fact:v1:d25130ecff68d371f4ea7fd3d69cd5d429ffca081582539974fd7db4fbb9b520",
+        "source_fact:v1:fa8a4b65b3728a510d098a63763bf2758be90f1d8af9a5260318e06586b85c34"
+      ],
+      "source_published_kst": "2026-10-27T17:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다",
+      "telegram_core_fact": "포항시와 경북도가 핵심 전략 자산인 희토류 영구자석의 국내 공급망 확보를 위해 대규모 외국인 투자 유치에 성공했다. 포항시와 경북도는 27일 시청 대회의실에서 케이엠엠아이(KMMI)와 3000억 원 생산설비 증설을 위한 투자양해각서(MOU)를 체결했다고 밝혔다.",
+      "title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다"
     },
     "original:f57df72ce532a7800535614d": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
@@ -655114,6 +655715,26 @@
       "telegram_core_fact": "농림축산식품부가 포도 수출 1억달러(약 1천351억원) 달성을 위해 생산자와 수출업체 간 표준거래계약서를 도입하고 검역·물류 지원을 확대한다. 농식품부는 경상북도와 함께 15일 경북 상주시의 포도 농장 도영농원에서 '포도 수출 1억달러 도약 현장 결의 행사'를 열었다고 밝혔다.",
       "title": "농식품부, 포도 수출 1억달러 달성 추진…표준계약서 도입 | 연합뉴스"
     },
+    "source_fact:1958a0db65f3fad8d88403c1": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027167700371",
+      "source": "연합뉴스",
+      "source_body_digest": "952bc899c93757ceb7fe4af907ead5c21a05bbc6688d9fddfabdf0a2b6ecb8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a0b6230c98af6abab5876dc82b95ba6850d53e14c4a2f5b1f11f48af533b96",
+      "source_fact_keys": [
+        "source_fact:v1:d68ca54a2c254b7650d5746f56a57f355e3b41bb9148f749a09cd29101940cb5"
+      ],
+      "source_published_kst": "2026-10-27T17:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스",
+      "telegram_core_fact": "국회 외교통일위원회 소속 더불어민주당 김준환 의원은 27일 외통위 종합국정감사에서 코이카가 총 180억원을 투입해 몽골에서 진행하는 '울란바타르시 지속가능한 4계절 온실 구축을 통한 농업생산 역량강화 사업'(2026∼2031)의 중복 문제를 짚었다.",
+      "title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스"
+    },
     "source_fact:19596e2f5fa5177f128bdbf1": {
       "first_seen_kst": "2026-10-22T18:25:24+09:00",
       "lanes": {
@@ -676418,6 +677039,30 @@
       "source_title": "프라이빗 뱅코프 오브 아, 3분기 순이익 1140만달러..전년비 18% 증가",
       "telegram_core_fact": "프라이빗 뱅코프 오브 아메리카(PBAM)는 9월 30일 종료된 3분기 순이익이 1140만 달러, 희석 주당순이익이 1.97달러로 전년비 각각 17.6%, 19.4% 증가했다고 16일 발표했다.",
       "title": "프라이빗 뱅코프 오브 아, 3분기 순이익 1140만달러..전년비 18% 증가"
+    },
+    "source_fact:216b038d2bf5eb7a386930d4": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000420",
+      "source": "전자신문",
+      "source_body_digest": "aea72d171e5d2713507a76a23911603347e2de3a70e0a281f314c1fac0335c84",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d30230978f1180125c167e8fe0a209237b33d6dcde8d6c2347656cfcbefe56",
+      "source_fact_keys": [
+        "source_fact:v1:2ce84e66a33a9830d6b21bf3634b2a9b32e2854b63f659c32d901e748ee91a04",
+        "source_fact:v1:5cb85685319c528725f00face22536f8007fe800e06a397091f54e073b7a4805",
+        "source_fact:v1:980afb2303b5b452006190d637c25322634a974de74504eaead3349a52772025",
+        "source_fact:v1:d25130ecff68d371f4ea7fd3d69cd5d429ffca081582539974fd7db4fbb9b520",
+        "source_fact:v1:fa8a4b65b3728a510d098a63763bf2758be90f1d8af9a5260318e06586b85c34"
+      ],
+      "source_published_kst": "2026-10-27T17:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다",
+      "telegram_core_fact": "포항시와 경북도가 핵심 전략 자산인 희토류 영구자석의 국내 공급망 확보를 위해 대규모 외국인 투자 유치에 성공했다. 포항시와 경북도는 27일 시청 대회의실에서 케이엠엠아이(KMMI)와 3000억 원 생산설비 증설을 위한 투자양해각서(MOU)를 체결했다고 밝혔다.",
+      "title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다"
     },
     "source_fact:216c100061ee0ce952780c40": {
       "first_seen_kst": "2026-10-10T05:32:28+09:00",
@@ -704886,6 +705531,34 @@
       "telegram_core_fact": "경제안보와 공급망 협력의 중요성이 부각되면서 전략적 협력국을 중심으로 해외 재경관 파견을 확대할 필요성이 논의되고 있다. 경제외교의 범위를 전통적인 주요국에서 금융·산업·자원 분야의 전략적 협력국으로 확대하고, 현지 정보 수집부터 투자사업 발굴과 금융지원까지 연결하는 경제외교 체계를 강화하려는 시도로 볼 수 있다.",
       "title": "경제외교 다변화 과제 부상…전략적 협력국 재경관 확충 검토"
     },
+    "source_fact:2bae338a3cc3dbae22099577": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
+    },
     "source_fact:2bae8f384a8d3b96e7dc5698": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
       "lanes": {
@@ -716123,6 +716796,30 @@
       "source_title": "트럼프 압박 통했나…IEA, '경유 중심' 전략비축유 방출 가속 합의",
       "telegram_core_fact": "G7은 향후 4개월 동안 비축유 1억배럴을 방출하기로 합의했다.",
       "title": "트럼프 압박 통했나…IEA, '경유 중심' 전략비축유 방출 가속 합의"
+    },
+    "source_fact:3043995f4f812e2fd641262a": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000420",
+      "source": "전자신문",
+      "source_body_digest": "aea72d171e5d2713507a76a23911603347e2de3a70e0a281f314c1fac0335c84",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d30230978f1180125c167e8fe0a209237b33d6dcde8d6c2347656cfcbefe56",
+      "source_fact_keys": [
+        "source_fact:v1:2ce84e66a33a9830d6b21bf3634b2a9b32e2854b63f659c32d901e748ee91a04",
+        "source_fact:v1:5cb85685319c528725f00face22536f8007fe800e06a397091f54e073b7a4805",
+        "source_fact:v1:980afb2303b5b452006190d637c25322634a974de74504eaead3349a52772025",
+        "source_fact:v1:d25130ecff68d371f4ea7fd3d69cd5d429ffca081582539974fd7db4fbb9b520",
+        "source_fact:v1:fa8a4b65b3728a510d098a63763bf2758be90f1d8af9a5260318e06586b85c34"
+      ],
+      "source_published_kst": "2026-10-27T17:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다",
+      "telegram_core_fact": "포항시와 경북도가 핵심 전략 자산인 희토류 영구자석의 국내 공급망 확보를 위해 대규모 외국인 투자 유치에 성공했다. 포항시와 경북도는 27일 시청 대회의실에서 케이엠엠아이(KMMI)와 3000억 원 생산설비 증설을 위한 투자양해각서(MOU)를 체결했다고 밝혔다.",
+      "title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다"
     },
     "source_fact:304444755ec414446f0ad2c6": {
       "first_seen_kst": "2026-10-24T00:05:28+09:00",
@@ -729982,6 +730679,30 @@
       "telegram_core_fact": "듀프리토마스쥴리코리아는 2019년 2월 면세점 운영의 일정 비율 이상을 중소·중견기업에 배정하도록 한 당시 관세법에 따라 김해공항 면세점에 중소기업 자격으로 5년짜리 운영권(특허)을 받았다.",
       "title": "김해공항 면세점 업체 운영권 취소한 세관…법원"
     },
+    "source_fact:35986c0e490853804ee7d562": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000420",
+      "source": "전자신문",
+      "source_body_digest": "aea72d171e5d2713507a76a23911603347e2de3a70e0a281f314c1fac0335c84",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d30230978f1180125c167e8fe0a209237b33d6dcde8d6c2347656cfcbefe56",
+      "source_fact_keys": [
+        "source_fact:v1:2ce84e66a33a9830d6b21bf3634b2a9b32e2854b63f659c32d901e748ee91a04",
+        "source_fact:v1:5cb85685319c528725f00face22536f8007fe800e06a397091f54e073b7a4805",
+        "source_fact:v1:980afb2303b5b452006190d637c25322634a974de74504eaead3349a52772025",
+        "source_fact:v1:d25130ecff68d371f4ea7fd3d69cd5d429ffca081582539974fd7db4fbb9b520",
+        "source_fact:v1:fa8a4b65b3728a510d098a63763bf2758be90f1d8af9a5260318e06586b85c34"
+      ],
+      "source_published_kst": "2026-10-27T17:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다",
+      "telegram_core_fact": "포항시와 경북도가 핵심 전략 자산인 희토류 영구자석의 국내 공급망 확보를 위해 대규모 외국인 투자 유치에 성공했다. 포항시와 경북도는 27일 시청 대회의실에서 케이엠엠아이(KMMI)와 3000억 원 생산설비 증설을 위한 투자양해각서(MOU)를 체결했다고 밝혔다.",
+      "title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다"
+    },
     "source_fact:35a2e2e4104e65f7eecc1f2a": {
       "first_seen_kst": "2026-10-23T05:32:14+09:00",
       "lanes": {
@@ -737214,6 +737935,30 @@
       ],
       "source_published_kst": "2026-10-07T08:35+09:00",
       "title": "유니온바이오메트릭스, 172억 규모 육군 사업 수주"
+    },
+    "source_fact:385a897891e402ea91052b7f": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640772",
+      "source": "이투데이",
+      "source_body_digest": "94618bdd47e36a2ce248837470af7285d67cb1b7bced86df3c4c7aa4c40d5a4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae1eba6e7f6174b8bea51377a19259fb41cfadfc45e4d2f1c6edb4659f45f77c",
+      "source_fact_keys": [
+        "source_fact:v1:a5808eeced6cb7345bce07dd36b678006dfa4947b8062d808a9103aeaf7b1b15",
+        "source_fact:v1:b7b3166a99920a81dd7da9f1f1aa390a974dfa6341a4b63d8e3a4021dd8352bc",
+        "source_fact:v1:be7127059d48b54580cfd0918abca4d4c3ce6e995a7385fd1a95261a69f74b83",
+        "source_fact:v1:d13cd12fa98cd60cb7187cac778d217d44cfdb0a0aa5c494120ecd26dec548b6",
+        "source_fact:v1:f0545b5a6c240dd5890a6c441bca32b696d4ea7871ab61374e96ccbace45ee49"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청",
+      "telegram_core_fact": "옵투스제약 관계자는 “고령화로 확대되는 노안 치료 시장을 공략하기 위해 클로시의 국내 인허가 절차를 차질 없이 진행할 것”이라며 “기존 안과 의약품 사업 역량을 바탕으로 점안제 시장 내 경쟁력을 지속해서 강화해 나가겠다”고 밝혔다.",
+      "title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청"
     },
     "source_fact:385fc6349392511a4c5ac030": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
@@ -787405,6 +788150,30 @@
       "telegram_core_fact": "반도체 호황으로 확보한 막대한 현금 창출력을 바탕으로 인수합병(M&A)과 미래 사업 투자를 확대해 삼성의 새로운 성장동력을 어떻게 확보할 지가 최대 관심사다.",
       "title": "이재용 취임 4년, 반도체 부활 넘어 M&A 승부수…미래사업 확장 가속"
     },
+    "source_fact:4b534a7615174f5e41239f26": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640772",
+      "source": "이투데이",
+      "source_body_digest": "94618bdd47e36a2ce248837470af7285d67cb1b7bced86df3c4c7aa4c40d5a4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae1eba6e7f6174b8bea51377a19259fb41cfadfc45e4d2f1c6edb4659f45f77c",
+      "source_fact_keys": [
+        "source_fact:v1:a5808eeced6cb7345bce07dd36b678006dfa4947b8062d808a9103aeaf7b1b15",
+        "source_fact:v1:b7b3166a99920a81dd7da9f1f1aa390a974dfa6341a4b63d8e3a4021dd8352bc",
+        "source_fact:v1:be7127059d48b54580cfd0918abca4d4c3ce6e995a7385fd1a95261a69f74b83",
+        "source_fact:v1:d13cd12fa98cd60cb7187cac778d217d44cfdb0a0aa5c494120ecd26dec548b6",
+        "source_fact:v1:f0545b5a6c240dd5890a6c441bca32b696d4ea7871ab61374e96ccbace45ee49"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청",
+      "telegram_core_fact": "옵투스제약 관계자는 “고령화로 확대되는 노안 치료 시장을 공략하기 위해 클로시의 국내 인허가 절차를 차질 없이 진행할 것”이라며 “기존 안과 의약품 사업 역량을 바탕으로 점안제 시장 내 경쟁력을 지속해서 강화해 나가겠다”고 밝혔다.",
+      "title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청"
+    },
     "source_fact:4b54eb1e05105ce87579ed9f": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
       "lanes": {
@@ -797703,6 +798472,29 @@
       "source_title": "앤스로픽, 지분 5% 공익기금에 출연…기업가치 오르면 추가 배정",
       "telegram_core_fact": "인공지능(AI) 기업 앤스로픽이 회사 지분 5%를 공익기금에 출연하기로 했다. 18일(현지시간) 로이터통신에 따르면 앤스로픽은 이날 ‘앤스로픽 공익기금(Anthropic Public Benefit Fund)’을 설립하고 주주 승인을 거쳐 회사 지분 5%를 출연할 계획이라고 밝혔다.",
       "title": "앤스로픽, 지분 5% 공익기금에 출연…기업가치 오르면 추가 배정"
+    },
+    "source_fact:4f5a082528210f04bc7b7c72": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640783",
+      "source": "이투데이",
+      "source_body_digest": "433d663f335e2764dd706de6c94e63ab9a19e0becdf9c30f4f9fb73ae8ef3f68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8de999729aaa6715daab36c471ee84b5ec16f2c225106b0b02edc29911d60532",
+      "source_fact_keys": [
+        "source_fact:v1:14887c218c63b751ee62b30ab89f863b13f86e0eed2ba01ffce86ba7fab7fd85",
+        "source_fact:v1:28977caf0b159f1bc25d96cff988aebe267b6b07b139de5b8c9ae70fcc99ba6e",
+        "source_fact:v1:5943e04a62bee685cfb403a516e391a9fd688d0b5d1bfd7a6f523908cc85e4a7",
+        "source_fact:v1:af9a82f2fcab61cdabd1e434dbc112c8382005dd0ca9bc26bdd4fbb7e7d12285"
+      ],
+      "source_published_kst": "2026-10-27T18:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]",
+      "telegram_core_fact": "JB금융그룹이 3분기 역대 최대 순이익을 기록했다.",
+      "title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]"
     },
     "source_fact:4f5d0de70d7a2aa2efd2062c": {
       "first_seen_kst": "2026-10-22T07:08:27+09:00",
@@ -810156,6 +810948,30 @@
       "source_title": "한미반도체, 美 세미콘 웨스트 참가…패키징 장비 공개",
       "telegram_core_fact": "한미반도체는 현지시간으로 지난 13일부터 오는 15일까지 미국 샌프란시스코 모스코니센터에서 열리는 '2026 세미콘 웨스트(SEMICON West)'에 참가한다고 14일 밝혔다. 한미반도체는 세미콘 웨스트 참가로 미국 반도체 시장 수요 확대에 대응하고, 첨단 패키징 기술 경쟁력을 알릴 계획이다.",
       "title": "한미반도체, 美 세미콘 웨스트 참가…패키징 장비 공개"
+    },
+    "source_fact:54112ab43689ffc50cb4f8ce": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000420",
+      "source": "전자신문",
+      "source_body_digest": "aea72d171e5d2713507a76a23911603347e2de3a70e0a281f314c1fac0335c84",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d30230978f1180125c167e8fe0a209237b33d6dcde8d6c2347656cfcbefe56",
+      "source_fact_keys": [
+        "source_fact:v1:2ce84e66a33a9830d6b21bf3634b2a9b32e2854b63f659c32d901e748ee91a04",
+        "source_fact:v1:5cb85685319c528725f00face22536f8007fe800e06a397091f54e073b7a4805",
+        "source_fact:v1:980afb2303b5b452006190d637c25322634a974de74504eaead3349a52772025",
+        "source_fact:v1:d25130ecff68d371f4ea7fd3d69cd5d429ffca081582539974fd7db4fbb9b520",
+        "source_fact:v1:fa8a4b65b3728a510d098a63763bf2758be90f1d8af9a5260318e06586b85c34"
+      ],
+      "source_published_kst": "2026-10-27T17:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다",
+      "telegram_core_fact": "포항시와 경북도가 핵심 전략 자산인 희토류 영구자석의 국내 공급망 확보를 위해 대규모 외국인 투자 유치에 성공했다. 포항시와 경북도는 27일 시청 대회의실에서 케이엠엠아이(KMMI)와 3000억 원 생산설비 증설을 위한 투자양해각서(MOU)를 체결했다고 밝혔다.",
+      "title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다"
     },
     "source_fact:54123591235b7559bc40aace": {
       "first_seen_kst": "2026-10-23T14:14:10+09:00",
@@ -829743,6 +830559,27 @@
       "telegram_core_fact": "트러스트마크(TRMK)가 3분기 순이익 5,810만 달러, 희석 주당순이익(EPS) 1.00달러를 기록했다고 10월 27일 발표했다.",
       "title": "트러스트마크, 3분기 희석 EPS 1달러..전년비 6.4% 증가"
     },
+    "source_fact:5af7cf0c00da83cd2d004623": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640757",
+      "source": "이투데이",
+      "source_body_digest": "9c80aca2462bf9b0afde5d35fd2247ddba256f87d9f04e734319194f16d84d17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2f9a0e3dc42112d24e57b0439291d158d664c9270d8fc1457a4fef2b86bb9a47",
+      "source_fact_keys": [
+        "source_fact:v1:2e44c63ff0d7306e06bba48a7f29cb0709ac478c6acf73c9f043f42e58b654f3",
+        "source_fact:v1:560f357a53513e4160b5691049556b93260c3aa7b4cbd20e724736e955b98567"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]",
+      "telegram_core_fact": "iM금융은 27일 올해 1~3분기 누적 지배주주지분 당기순이익이 4163억원으로 전년 동기보다 3.6% 감소했다고 밝혔다.",
+      "title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]"
+    },
     "source_fact:5afa7f91b799c16ff33690cb": {
       "first_seen_kst": "2026-10-27T23:37:11+09:00",
       "lanes": {
@@ -840814,6 +841651,34 @@
       ],
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
+    },
+    "source_fact:5f3907d8c07f484302083bdf": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
     },
     "source_fact:5f3e0a4d959b4ff1ac95e30f": {
       "first_seen_kst": "2026-10-22T21:15:04+09:00",
@@ -890662,6 +891527,30 @@
       "telegram_core_fact": "모빌리티 라이프 AX(인공지능 전환) 플랫폼 전문기업 오비고는 차량용 소프트웨어에서 축적한 보안·운영 역량을 소프트웨어 공급망과 피지컬 AI 영역으로 확대하고 있다고 27일 밝혔다. 회사는 최근 이같은 역량을 소프트웨어 공급망 보안으로 확대하고 있다.",
       "title": "오비고, 소프트웨어 공급망 보안 역량 확대"
     },
+    "source_fact:7304c2be9563ab44247f6a62": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000420",
+      "source": "전자신문",
+      "source_body_digest": "aea72d171e5d2713507a76a23911603347e2de3a70e0a281f314c1fac0335c84",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d30230978f1180125c167e8fe0a209237b33d6dcde8d6c2347656cfcbefe56",
+      "source_fact_keys": [
+        "source_fact:v1:2ce84e66a33a9830d6b21bf3634b2a9b32e2854b63f659c32d901e748ee91a04",
+        "source_fact:v1:5cb85685319c528725f00face22536f8007fe800e06a397091f54e073b7a4805",
+        "source_fact:v1:980afb2303b5b452006190d637c25322634a974de74504eaead3349a52772025",
+        "source_fact:v1:d25130ecff68d371f4ea7fd3d69cd5d429ffca081582539974fd7db4fbb9b520",
+        "source_fact:v1:fa8a4b65b3728a510d098a63763bf2758be90f1d8af9a5260318e06586b85c34"
+      ],
+      "source_published_kst": "2026-10-27T17:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다",
+      "telegram_core_fact": "포항시와 경북도가 핵심 전략 자산인 희토류 영구자석의 국내 공급망 확보를 위해 대규모 외국인 투자 유치에 성공했다. 포항시와 경북도는 27일 시청 대회의실에서 케이엠엠아이(KMMI)와 3000억 원 생산설비 증설을 위한 투자양해각서(MOU)를 체결했다고 밝혔다.",
+      "title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다"
+    },
     "source_fact:7304de772ce4595d73f0dc30": {
       "first_seen_kst": "2026-10-15T09:43:41+09:00",
       "lanes": {
@@ -918215,6 +919104,34 @@
       "source_title": "[人사이트]정구태 인피닛블록 대표 “디지털자산 결제·정산 통로 만들겠다”",
       "telegram_core_fact": "정구태 인피닛블록 대표는 자사 커스터디(수탁)·지갑 솔루션의 역할을 이같이 설명했다. 인피닛블록은 수협은행이 신규로, iM뱅크가 후속으로 참여한 프리A 투자에서 약 30억원을 유치했다.",
       "title": "[人사이트]정구태 인피닛블록 대표 “디지털자산 결제·정산 통로 만들겠다”"
+    },
+    "source_fact:7d772691232952d9ad32ae61": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
     },
     "source_fact:7d77a85eb798cb85d74ef131": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -971718,6 +972635,30 @@
       "telegram_core_fact": "대웅제약은 경기 화성시 향남읍에 위치한 대웅바이오 3공장에 마이크로니들 전용 무균 제조시설을 구축하고 있다고 14일 밝혔다.",
       "title": "대웅제약, 마이크로니들 무균 제조시설 구축…내년 상반기 GMP 승인 추진"
     },
+    "source_fact:92b7bfce478c2bfb3526ff38": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640772",
+      "source": "이투데이",
+      "source_body_digest": "94618bdd47e36a2ce248837470af7285d67cb1b7bced86df3c4c7aa4c40d5a4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae1eba6e7f6174b8bea51377a19259fb41cfadfc45e4d2f1c6edb4659f45f77c",
+      "source_fact_keys": [
+        "source_fact:v1:a5808eeced6cb7345bce07dd36b678006dfa4947b8062d808a9103aeaf7b1b15",
+        "source_fact:v1:b7b3166a99920a81dd7da9f1f1aa390a974dfa6341a4b63d8e3a4021dd8352bc",
+        "source_fact:v1:be7127059d48b54580cfd0918abca4d4c3ce6e995a7385fd1a95261a69f74b83",
+        "source_fact:v1:d13cd12fa98cd60cb7187cac778d217d44cfdb0a0aa5c494120ecd26dec548b6",
+        "source_fact:v1:f0545b5a6c240dd5890a6c441bca32b696d4ea7871ab61374e96ccbace45ee49"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청",
+      "telegram_core_fact": "옵투스제약 관계자는 “고령화로 확대되는 노안 치료 시장을 공략하기 위해 클로시의 국내 인허가 절차를 차질 없이 진행할 것”이라며 “기존 안과 의약품 사업 역량을 바탕으로 점안제 시장 내 경쟁력을 지속해서 강화해 나가겠다”고 밝혔다.",
+      "title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청"
+    },
     "source_fact:92b83a54f46d59ce8695f927": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -1017000,6 +1017941,34 @@
       "telegram_core_fact": "올해는 SK실트론 지분 70.6%를 두산에 매각하는 계약을 체결하는 등 자산 포트폴리오 재편을 추진하고 있다. 고금리 환경에서 외부 차입 부담을 줄이는 동시에 인공지능(AI)·방산·이차전지·태양광 등 핵심 사업에 자금을 집중하기 위함으로 풀이된다.",
       "title": "차입 대신 지분으로 실탄 확보…기업들, AI·방산·배터리에 쏟는다"
     },
+    "source_fact:a3f8412002e9738107da94ea": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
+    },
     "source_fact:a3fa6f1b1d15ce2c21f52adf": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
       "lanes": {
@@ -1026288,6 +1027257,30 @@
       "telegram_core_fact": "핸콕 휘트니(HWC)가 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 1.36달러, 순이익 1억1006만 달러를 기록했다고 20일 발표했다.",
       "title": "핸콕 휘트니, 3분기 희석 EPS 1.36달러..전년비 8.7% 감소"
     },
+    "source_fact:a72e9601b2be487dd62d25dc": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640772",
+      "source": "이투데이",
+      "source_body_digest": "94618bdd47e36a2ce248837470af7285d67cb1b7bced86df3c4c7aa4c40d5a4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae1eba6e7f6174b8bea51377a19259fb41cfadfc45e4d2f1c6edb4659f45f77c",
+      "source_fact_keys": [
+        "source_fact:v1:a5808eeced6cb7345bce07dd36b678006dfa4947b8062d808a9103aeaf7b1b15",
+        "source_fact:v1:b7b3166a99920a81dd7da9f1f1aa390a974dfa6341a4b63d8e3a4021dd8352bc",
+        "source_fact:v1:be7127059d48b54580cfd0918abca4d4c3ce6e995a7385fd1a95261a69f74b83",
+        "source_fact:v1:d13cd12fa98cd60cb7187cac778d217d44cfdb0a0aa5c494120ecd26dec548b6",
+        "source_fact:v1:f0545b5a6c240dd5890a6c441bca32b696d4ea7871ab61374e96ccbace45ee49"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청",
+      "telegram_core_fact": "옵투스제약 관계자는 “고령화로 확대되는 노안 치료 시장을 공략하기 위해 클로시의 국내 인허가 절차를 차질 없이 진행할 것”이라며 “기존 안과 의약품 사업 역량을 바탕으로 점안제 시장 내 경쟁력을 지속해서 강화해 나가겠다”고 밝혔다.",
+      "title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청"
+    },
     "source_fact:a7314693370cd1c862572235": {
       "first_seen_kst": "2026-10-17T04:08:20+09:00",
       "lanes": {
@@ -1029433,6 +1030426,34 @@
       "source_title": "영국 8월 산업생산 0.8% 증가…\"9개월 만에 최대폭\"",
       "telegram_core_fact": "BBC와 RTT 뉴스, 마켓워치는 영국 통계청(ONS)을 인용해 8월 산업생산이 전월 대비 0.8% 늘어나 2025년 11월 이래 최대 증가율을 기록했다고 전했다. 영국 8월 산업생산은 제조업 생산 호조에 힘입어 9개월 만에 가장 큰폭으로 늘어났다.",
       "title": "영국 8월 산업생산 0.8% 증가…\"9개월 만에 최대폭\""
+    },
+    "source_fact:a8931e5e50d6bcba24c52922": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
     },
     "source_fact:a89768816a34e0072f3eb01e": {
       "first_seen_kst": "2026-10-18T13:51:17+09:00",
@@ -1041216,6 +1042237,29 @@
       "source_title": "“241층 구조대 오나요?”…고점서 36% 빠진 삼성전기, 증권가 전망은",
       "telegram_core_fact": "삼성전기가 최근 글로벌 대형 기업과 인공지능(AI) 서버용 적층세라믹캐패시터(MLCC) 공급 계약을 체결하며 올해 누적 수주액이 약 3조 9000억원으로 급증했다.",
       "title": "“241층 구조대 오나요?”…고점서 36% 빠진 삼성전기, 증권가 전망은"
+    },
+    "source_fact:acfa40674bd451be2a0f0a34": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640783",
+      "source": "이투데이",
+      "source_body_digest": "433d663f335e2764dd706de6c94e63ab9a19e0becdf9c30f4f9fb73ae8ef3f68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8de999729aaa6715daab36c471ee84b5ec16f2c225106b0b02edc29911d60532",
+      "source_fact_keys": [
+        "source_fact:v1:14887c218c63b751ee62b30ab89f863b13f86e0eed2ba01ffce86ba7fab7fd85",
+        "source_fact:v1:28977caf0b159f1bc25d96cff988aebe267b6b07b139de5b8c9ae70fcc99ba6e",
+        "source_fact:v1:5943e04a62bee685cfb403a516e391a9fd688d0b5d1bfd7a6f523908cc85e4a7",
+        "source_fact:v1:af9a82f2fcab61cdabd1e434dbc112c8382005dd0ca9bc26bdd4fbb7e7d12285"
+      ],
+      "source_published_kst": "2026-10-27T18:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]",
+      "telegram_core_fact": "JB금융그룹이 3분기 역대 최대 순이익을 기록했다.",
+      "title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]"
     },
     "source_fact:acfb6a18b87e1502ad09eaa1": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -1054075,6 +1055119,30 @@
       "source_title": "유응준 대표 “피지컬 AI 시대, 데이터·인재 새로운 병목될 것” [2027 테크퀘스트]",
       "telegram_core_fact": "유 대표는 “2023년에는 GPU 공급 부족이 심각했다면 앞으로는 전력 확보가 중요해지고, 피지컬 AI 시대에는 데이터와 인재가 새로운 병목이 될 것”이라고 말했다.",
       "title": "유응준 대표 “피지컬 AI 시대, 데이터·인재 새로운 병목될 것” [2027 테크퀘스트]"
+    },
+    "source_fact:b1cee3d1b3f81f57000a786b": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640772",
+      "source": "이투데이",
+      "source_body_digest": "94618bdd47e36a2ce248837470af7285d67cb1b7bced86df3c4c7aa4c40d5a4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae1eba6e7f6174b8bea51377a19259fb41cfadfc45e4d2f1c6edb4659f45f77c",
+      "source_fact_keys": [
+        "source_fact:v1:a5808eeced6cb7345bce07dd36b678006dfa4947b8062d808a9103aeaf7b1b15",
+        "source_fact:v1:b7b3166a99920a81dd7da9f1f1aa390a974dfa6341a4b63d8e3a4021dd8352bc",
+        "source_fact:v1:be7127059d48b54580cfd0918abca4d4c3ce6e995a7385fd1a95261a69f74b83",
+        "source_fact:v1:d13cd12fa98cd60cb7187cac778d217d44cfdb0a0aa5c494120ecd26dec548b6",
+        "source_fact:v1:f0545b5a6c240dd5890a6c441bca32b696d4ea7871ab61374e96ccbace45ee49"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청",
+      "telegram_core_fact": "옵투스제약 관계자는 “고령화로 확대되는 노안 치료 시장을 공략하기 위해 클로시의 국내 인허가 절차를 차질 없이 진행할 것”이라며 “기존 안과 의약품 사업 역량을 바탕으로 점안제 시장 내 경쟁력을 지속해서 강화해 나가겠다”고 밝혔다.",
+      "title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청"
     },
     "source_fact:b1cfb535042d2f2f84610654": {
       "first_seen_kst": "2026-10-25T08:02:53+09:00",
@@ -1071326,6 +1072394,34 @@
       "telegram_core_fact": "최근 삼성전기가 체결한 약 3600억원 패키지 기판 공급계약이 대표 사례로 꼽혔다.",
       "title": "하나證 “패키지 기판, AI 공급망 핵심 병목 부상⋯삼성전기·대덕전자 최선호”"
     },
+    "source_fact:b8651e42a866057c40402960": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
+    },
     "source_fact:b8675ae78f3a527ba5d5f27d": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
       "lanes": {
@@ -1078134,6 +1079230,34 @@
       "source_title": "솔리다임 미국 상장 준비 속도…주관사 선정 이어 대관 강화 | 연합뉴스",
       "telegram_core_fact": "솔리다임이 기업공개(IPO) 주관사 선정에 이어 미국 사업 확대를 뒷받침할 대관 조직까지 갖춘 가운데 국내에선 여야 정치권이 잇따라 주주 보호를 요구하고 나섰다. 업계와 외신에 따르면 솔리다임은 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정하고, 내년 미국 증시 상장을 검토하고 있다.",
       "title": "솔리다임 미국 상장 준비 속도…주관사 선정 이어 대관 강화 | 연합뉴스"
+    },
+    "source_fact:bb1ca03c8ab1ff80829f706d": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
     },
     "source_fact:bb1f22e77817d7624c55e54f": {
       "first_seen_kst": "2026-10-12T10:37:32+09:00",
@@ -1099627,6 +1100751,29 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:c342a61edeac0b8d4779cdcd": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640783",
+      "source": "이투데이",
+      "source_body_digest": "433d663f335e2764dd706de6c94e63ab9a19e0becdf9c30f4f9fb73ae8ef3f68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8de999729aaa6715daab36c471ee84b5ec16f2c225106b0b02edc29911d60532",
+      "source_fact_keys": [
+        "source_fact:v1:14887c218c63b751ee62b30ab89f863b13f86e0eed2ba01ffce86ba7fab7fd85",
+        "source_fact:v1:28977caf0b159f1bc25d96cff988aebe267b6b07b139de5b8c9ae70fcc99ba6e",
+        "source_fact:v1:5943e04a62bee685cfb403a516e391a9fd688d0b5d1bfd7a6f523908cc85e4a7",
+        "source_fact:v1:af9a82f2fcab61cdabd1e434dbc112c8382005dd0ca9bc26bdd4fbb7e7d12285"
+      ],
+      "source_published_kst": "2026-10-27T18:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]",
+      "telegram_core_fact": "JB금융그룹이 3분기 역대 최대 순이익을 기록했다.",
+      "title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]"
     },
     "source_fact:c3437358301f406f1645aefe": {
       "first_seen_kst": "2026-10-27T22:30:07+09:00",
@@ -1200315,6 +1201462,34 @@
       "telegram_core_fact": "글로벌 PE들은 한국 기업을 인수한 뒤 해외시장 진출을 지원하는 방식으로 기업가치를 높일 수 있다는 점에도 주목하고 있다.",
       "title": "경영권 승계·재벌 사업 재편 활발…한국에 눈 돌리는 글로벌 PE"
     },
+    "source_fact:e997a324bb8462997ddf7be2": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
+    },
     "source_fact:e99a87ebe14ab9f8702cbf46": {
       "first_seen_kst": "2026-10-20T10:11:13+09:00",
       "lanes": {
@@ -1202353,6 +1203528,29 @@
       "source_title": "KB證 “마이크론 파업 예고⋯삼성전자·SK하이닉스 반사이익 기대”",
       "telegram_core_fact": "KB증권은 마이크론 대만 공장의 파업이 현실화될 경우 글로벌 D램 공급 부족이 심화되면서 삼성전자와 SK하이닉스의 가격 결정력과 공급 협상력이 강화될 수 있다고 21일 밝혔다.",
       "title": "KB證 “마이크론 파업 예고⋯삼성전자·SK하이닉스 반사이익 기대”"
+    },
+    "source_fact:ea82db36d9ba0e3784c4f2f0": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640783",
+      "source": "이투데이",
+      "source_body_digest": "433d663f335e2764dd706de6c94e63ab9a19e0becdf9c30f4f9fb73ae8ef3f68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8de999729aaa6715daab36c471ee84b5ec16f2c225106b0b02edc29911d60532",
+      "source_fact_keys": [
+        "source_fact:v1:14887c218c63b751ee62b30ab89f863b13f86e0eed2ba01ffce86ba7fab7fd85",
+        "source_fact:v1:28977caf0b159f1bc25d96cff988aebe267b6b07b139de5b8c9ae70fcc99ba6e",
+        "source_fact:v1:5943e04a62bee685cfb403a516e391a9fd688d0b5d1bfd7a6f523908cc85e4a7",
+        "source_fact:v1:af9a82f2fcab61cdabd1e434dbc112c8382005dd0ca9bc26bdd4fbb7e7d12285"
+      ],
+      "source_published_kst": "2026-10-27T18:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]",
+      "telegram_core_fact": "JB금융그룹이 3분기 역대 최대 순이익을 기록했다.",
+      "title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]"
     },
     "source_fact:ea834d3e2f4dd5d132edf69b": {
       "first_seen_kst": "2026-10-17T11:37:20+09:00",
@@ -1207231,6 +1208429,27 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:ec5a3dc9b63ba52f3197646a": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640757",
+      "source": "이투데이",
+      "source_body_digest": "9c80aca2462bf9b0afde5d35fd2247ddba256f87d9f04e734319194f16d84d17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2f9a0e3dc42112d24e57b0439291d158d664c9270d8fc1457a4fef2b86bb9a47",
+      "source_fact_keys": [
+        "source_fact:v1:2e44c63ff0d7306e06bba48a7f29cb0709ac478c6acf73c9f043f42e58b654f3",
+        "source_fact:v1:560f357a53513e4160b5691049556b93260c3aa7b4cbd20e724736e955b98567"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]",
+      "telegram_core_fact": "iM금융은 27일 올해 1~3분기 누적 지배주주지분 당기순이익이 4163억원으로 전년 동기보다 3.6% 감소했다고 밝혔다.",
+      "title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]"
     },
     "source_fact:ec5ad78383c3a45fe783588b": {
       "first_seen_kst": "2026-10-13T02:27:34+09:00",
@@ -1249884,6 +1251103,34 @@
       "telegram_core_fact": "특히 대한전선 대표이사 재임 기간에는 초고압·해저케이블 등 고부가가치 사업에 대한 투자를 확대하고 글로벌 시장 진출 기반을 강화하는 데 주력했다.",
       "title": "호반그룹, 핵심 경영진 역할 확대…사업 다각화·미래 성장 가속"
     },
+    "source_fact:fd58ddb2d5285d25f07e4df1": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
+    },
     "source_fact:fd59ccf02d3f3fd1e14492f9": {
       "first_seen_kst": "2026-10-23T04:40:39+09:00",
       "lanes": {
@@ -1258301,6 +1259548,27 @@
       "source_title": "광주경총, 제조업 중대재해 예방지원금 150만→300만원",
       "telegram_core_fact": "광주경영자총협회(광주경총)는 지역 소규모 제조업체의 중대재해 예방을 위해 안전보건 시설 개선 지원금을 기존 150만 원에서 최대 300만원으로 2배 상향한다고 8일 밝혔다.",
       "title": "광주경총, 제조업 중대재해 예방지원금 150만→300만원"
+    },
+    "title:031da5880ff6314da39991f0": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640757",
+      "source": "이투데이",
+      "source_body_digest": "9c80aca2462bf9b0afde5d35fd2247ddba256f87d9f04e734319194f16d84d17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2f9a0e3dc42112d24e57b0439291d158d664c9270d8fc1457a4fef2b86bb9a47",
+      "source_fact_keys": [
+        "source_fact:v1:2e44c63ff0d7306e06bba48a7f29cb0709ac478c6acf73c9f043f42e58b654f3",
+        "source_fact:v1:560f357a53513e4160b5691049556b93260c3aa7b4cbd20e724736e955b98567"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]",
+      "telegram_core_fact": "iM금융은 27일 올해 1~3분기 누적 지배주주지분 당기순이익이 4163억원으로 전년 동기보다 3.6% 감소했다고 밝혔다.",
+      "title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]"
     },
     "title:032544a95e3f791c39b5851a": {
       "first_seen_kst": "2026-10-27T16:53:55+09:00",
@@ -1270648,6 +1271916,34 @@
       "source_published_kst": "2026-10-05T10:20+09:00",
       "title": "\"명절에 지방 가면 여기부터?\"…10대 매출 200% 폭증한 곳"
     },
+    "title:1733ba676095fe370083be6f": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.hankyung.com/article/2026102892456",
+      "source": "한국경제",
+      "source_body_digest": "475d30cf473fb4384ec241dd813ddd97ad17aa0d013bceb281123959e33f0162",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-27:nasdaq=26477.81:change=1.18",
+      "source_fact_identity": "source_facts:v1:f061140512753f2e30e23205e81eb8832e702123c2006cbf748f3be6d074eaf5",
+      "source_fact_keys": [
+        "source_fact:v1:022dcc57d9c036615f18908a5a81cbde11c2842e8bf656a468b9cbdd1615cc79",
+        "source_fact:v1:1a397903717117ee9f9d4abf9db89f18a12a6efe5d2089b8443621831f49f83d",
+        "source_fact:v1:1b23db7083fbf48401229018c8a7147d0e33538e2ffb17505d40d0cf3c969521",
+        "source_fact:v1:3341137ba48fe9a94d47015891512f74d05b2c65808815db563c8f84b1d1c8b5",
+        "source_fact:v1:9b3551a43b686c07f9134ae5cf481c055c8d499ae811ed073683e0ff3b506f3d",
+        "source_fact:v1:af82dcd6eccc25eb95d8a472757cd7cab5b1d4e4cefd382e4ab2ec12d1296344",
+        "source_fact:v1:c6b344ecb28b8b2266488b2a57d924e7f4fdeb4db9bab887f4c10f0708315b44",
+        "source_fact:v1:dac28c078ca28f418d4b71a8ebd8c2faa2bec739aef4655300a1dfeb68be8843",
+        "source_fact:v1:efda41d4c3a0aec1434a0afb05fa9f2eaf559f6fa71210bf2be31d1db1e193a2"
+      ],
+      "source_published_kst": "2026-10-28T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 45.83포인트(0.60%) 상승한 7722.60에, 기술주 중심의 나스닥종합지수는 308.43포인트(1.18%) 뛴 2만6477.81에 거래를 마쳤다.",
+      "title": "앤트로픽 훈풍에 기술주 강세 지속…나스닥 1.18%↑ [뉴욕증시 브리핑]"
+    },
     "title:1738ac9745665fb99f67fb38": {
       "first_seen_kst": "2026-10-18T10:36:52+09:00",
       "lanes": {
@@ -1273909,6 +1275205,26 @@
       "source_title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파",
       "telegram_core_fact": "8일(현지시간) 파이낸셜타임스를 비롯한 주요 외신들에 따르면 개발사인 오픈AI는 투자자들에게 연간 환산 매출이 500억 달러 수준으로 예상된다고 말했다.",
       "title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파"
+    },
+    "title:1cdef6babf00beca1581ceb3": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027167700371",
+      "source": "연합뉴스",
+      "source_body_digest": "952bc899c93757ceb7fe4af907ead5c21a05bbc6688d9fddfabdf0a2b6ecb8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a0b6230c98af6abab5876dc82b95ba6850d53e14c4a2f5b1f11f48af533b96",
+      "source_fact_keys": [
+        "source_fact:v1:d68ca54a2c254b7650d5746f56a57f355e3b41bb9148f749a09cd29101940cb5"
+      ],
+      "source_published_kst": "2026-10-27T17:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스",
+      "telegram_core_fact": "국회 외교통일위원회 소속 더불어민주당 김준환 의원은 27일 외통위 종합국정감사에서 코이카가 총 180억원을 투입해 몽골에서 진행하는 '울란바타르시 지속가능한 4계절 온실 구축을 통한 농업생산 역량강화 사업'(2026∼2031)의 중복 문제를 짚었다.",
+      "title": "\"코이카 몽골 사업 부처 중복\"…100억원대 선금 미정산도 지적 | 연합뉴스"
     },
     "title:1ce1d06258bfafca39b92848": {
       "first_seen_kst": "2026-10-23T14:14:10+09:00",
@@ -1306737,6 +1308053,29 @@
       "telegram_core_fact": "한국 정부가 한미 합의의 일환으로 미국 조선업에 1500억달러 투자를 약속했지만, 실제 사업의 성패는 투자 약속의 규모보다 현지 생산 능력과 수주를 얼마나 빠르게 연결하느냐에 달려 있다.",
       "title": "美 조선업 구원투수 된 한화…넘어야 할 비용·발주 장벽"
     },
+    "title:4eee883c6620efefcdca2114": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640783",
+      "source": "이투데이",
+      "source_body_digest": "433d663f335e2764dd706de6c94e63ab9a19e0becdf9c30f4f9fb73ae8ef3f68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8de999729aaa6715daab36c471ee84b5ec16f2c225106b0b02edc29911d60532",
+      "source_fact_keys": [
+        "source_fact:v1:14887c218c63b751ee62b30ab89f863b13f86e0eed2ba01ffce86ba7fab7fd85",
+        "source_fact:v1:28977caf0b159f1bc25d96cff988aebe267b6b07b139de5b8c9ae70fcc99ba6e",
+        "source_fact:v1:5943e04a62bee685cfb403a516e391a9fd688d0b5d1bfd7a6f523908cc85e4a7",
+        "source_fact:v1:af9a82f2fcab61cdabd1e434dbc112c8382005dd0ca9bc26bdd4fbb7e7d12285"
+      ],
+      "source_published_kst": "2026-10-27T18:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]",
+      "telegram_core_fact": "JB금융그룹이 3분기 역대 최대 순이익을 기록했다.",
+      "title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]"
+    },
     "title:4f0a50b0f72e87b39318d103": {
       "first_seen_kst": "2026-10-19T00:10:36+09:00",
       "lanes": {
@@ -1307207,6 +1308546,27 @@
       ],
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
+    },
+    "title:4fc82e0855ee417de8bf120c": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640757",
+      "source": "이투데이",
+      "source_body_digest": "9c80aca2462bf9b0afde5d35fd2247ddba256f87d9f04e734319194f16d84d17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2f9a0e3dc42112d24e57b0439291d158d664c9270d8fc1457a4fef2b86bb9a47",
+      "source_fact_keys": [
+        "source_fact:v1:2e44c63ff0d7306e06bba48a7f29cb0709ac478c6acf73c9f043f42e58b654f3",
+        "source_fact:v1:560f357a53513e4160b5691049556b93260c3aa7b4cbd20e724736e955b98567"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]",
+      "telegram_core_fact": "iM금융은 27일 올해 1~3분기 누적 지배주주지분 당기순이익이 4163억원으로 전년 동기보다 3.6% 감소했다고 밝혔다.",
+      "title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]"
     },
     "title:4fc8c541b71e50a19250109e": {
       "first_seen_kst": "2026-10-25T16:42:43+09:00",
@@ -1318755,6 +1320115,29 @@
       "telegram_core_fact": "이날 이스라엘 총리실은 군에 서안 지구의 전면 폐쇄에 대비하라고 지시했다고 밝혔으며, 총격이 발생한 서안지구 점령지를 군이 봉쇄하도록 지시했다고 덧붙였다.",
       "title": "이스라엘, 총격 발생 헤브론 위협될 수 있는 기반 시설 철거"
     },
+    "title:6250de1c597640c3e153d0b2": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640783",
+      "source": "이투데이",
+      "source_body_digest": "433d663f335e2764dd706de6c94e63ab9a19e0becdf9c30f4f9fb73ae8ef3f68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8de999729aaa6715daab36c471ee84b5ec16f2c225106b0b02edc29911d60532",
+      "source_fact_keys": [
+        "source_fact:v1:14887c218c63b751ee62b30ab89f863b13f86e0eed2ba01ffce86ba7fab7fd85",
+        "source_fact:v1:28977caf0b159f1bc25d96cff988aebe267b6b07b139de5b8c9ae70fcc99ba6e",
+        "source_fact:v1:5943e04a62bee685cfb403a516e391a9fd688d0b5d1bfd7a6f523908cc85e4a7",
+        "source_fact:v1:af9a82f2fcab61cdabd1e434dbc112c8382005dd0ca9bc26bdd4fbb7e7d12285"
+      ],
+      "source_published_kst": "2026-10-27T18:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]",
+      "telegram_core_fact": "JB금융그룹이 3분기 역대 최대 순이익을 기록했다.",
+      "title": "JB금융, 3분기 순익 '역대 최대'…김기홍 회장 “연간 7500억원 달성 자신” [종합]"
+    },
     "title:6253e1c15dbc6f9926accbbe": {
       "first_seen_kst": "2026-10-03T11:43:26+09:00",
       "lanes": {
@@ -1323830,6 +1325213,24 @@
       "source_title": "[인&아웃] '오뚝이' 룰라 브라질 대통령 | 연합뉴스",
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 지난해 자이르의 재판을 '마녀사냥'이라 비난하며 브라질에 최고 50%의 관세를 부과했다.",
       "title": "[인&아웃] '오뚝이' 룰라 브라질 대통령 | 연합뉴스"
+    },
+    "title:6a7a8496fa9b5e44f18f4273": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000421",
+      "source": "전자신문",
+      "source_body_digest": "8e70836a006af0b0c9cd2710de3d7fde4e9b3e5f212615c630420b18f2a9ae09",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T17:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "지씨셀-튀르키예 보건부, 세포치료제 진출 논의",
+      "telegram_core_fact": "2018년 일본 세포치료제 기업 림포텍을 인수했다.",
+      "title": "지씨셀-튀르키예 보건부, 세포치료제 진출 논의"
     },
     "title:6a7bd7fcccdeb92c57b5b2c2": {
       "first_seen_kst": "2026-10-14T14:29:29+09:00",
@@ -1360829,6 +1362230,30 @@
       "source_title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스",
       "telegram_core_fact": "경북도는 대기업의 로봇 분야 투자 확대에 대응해 지역 기업의 로봇 부품 공급망 참여 방안을 논의하는 '인공지능(AI) 로봇 기업협의회'를 권역별로 출범했다고 25일 밝혔다. 도는 지난 8월 '경북 로봇산업 공급망 대응 태스크포스(TF)'의 후속 조치로 협의회를 발족해 기업 의견을 수렴하고 지원 방안을 협의하고 있다.",
       "title": "경북 'AI 로봇 기업협의회' 출범…부품 공급망 참여 지원 | 연합뉴스"
+    },
+    "title:a4646c70a783ff912da75502": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640772",
+      "source": "이투데이",
+      "source_body_digest": "94618bdd47e36a2ce248837470af7285d67cb1b7bced86df3c4c7aa4c40d5a4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae1eba6e7f6174b8bea51377a19259fb41cfadfc45e4d2f1c6edb4659f45f77c",
+      "source_fact_keys": [
+        "source_fact:v1:a5808eeced6cb7345bce07dd36b678006dfa4947b8062d808a9103aeaf7b1b15",
+        "source_fact:v1:b7b3166a99920a81dd7da9f1f1aa390a974dfa6341a4b63d8e3a4021dd8352bc",
+        "source_fact:v1:be7127059d48b54580cfd0918abca4d4c3ce6e995a7385fd1a95261a69f74b83",
+        "source_fact:v1:d13cd12fa98cd60cb7187cac778d217d44cfdb0a0aa5c494120ecd26dec548b6",
+        "source_fact:v1:f0545b5a6c240dd5890a6c441bca32b696d4ea7871ab61374e96ccbace45ee49"
+      ],
+      "source_published_kst": "2026-10-27T17:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청",
+      "telegram_core_fact": "옵투스제약 관계자는 “고령화로 확대되는 노안 치료 시장을 공략하기 위해 클로시의 국내 인허가 절차를 차질 없이 진행할 것”이라며 “기존 안과 의약품 사업 역량을 바탕으로 점안제 시장 내 경쟁력을 지속해서 강화해 나가겠다”고 밝혔다.",
+      "title": "옵투스제약, 노안 치료제 ‘클로시’ 식약처 품목허가 신청"
     },
     "title:a481c4c674bb5a5fdbf2a0d9": {
       "first_seen_kst": "2026-10-01T21:50:06+09:00",
@@ -1410896,6 +1412321,30 @@
       "telegram_core_fact": "월가 증권사들은 TORM의 2026년 매출액을 15억2600만 달러로 예상하며, 이는 전년 대비 13.92% 늘어난 수준이다.",
       "title": "TORM, 올해 EBITDA 가이던스 13억~15억 달러 상향"
     },
+    "title:f5708770c39e38449f01ee65": {
+      "first_seen_kst": "2026-10-28T07:37:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T07:37:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T07:37:30+09:00",
+      "link": "https://www.etnews.com/20261027000420",
+      "source": "전자신문",
+      "source_body_digest": "aea72d171e5d2713507a76a23911603347e2de3a70e0a281f314c1fac0335c84",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d30230978f1180125c167e8fe0a209237b33d6dcde8d6c2347656cfcbefe56",
+      "source_fact_keys": [
+        "source_fact:v1:2ce84e66a33a9830d6b21bf3634b2a9b32e2854b63f659c32d901e748ee91a04",
+        "source_fact:v1:5cb85685319c528725f00face22536f8007fe800e06a397091f54e073b7a4805",
+        "source_fact:v1:980afb2303b5b452006190d637c25322634a974de74504eaead3349a52772025",
+        "source_fact:v1:d25130ecff68d371f4ea7fd3d69cd5d429ffca081582539974fd7db4fbb9b520",
+        "source_fact:v1:fa8a4b65b3728a510d098a63763bf2758be90f1d8af9a5260318e06586b85c34"
+      ],
+      "source_published_kst": "2026-10-27T17:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다",
+      "telegram_core_fact": "포항시와 경북도가 핵심 전략 자산인 희토류 영구자석의 국내 공급망 확보를 위해 대규모 외국인 투자 유치에 성공했다. 포항시와 경북도는 27일 시청 대회의실에서 케이엠엠아이(KMMI)와 3000억 원 생산설비 증설을 위한 투자양해각서(MOU)를 체결했다고 밝혔다.",
+      "title": "포항시, 3000억 규모 외자 유치…KMMI와 '희토류 자석' 국내 공급망 세운다"
+    },
     "title:f57df72ce532a7800535614d": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
       "lanes": {
@@ -1417361,5 +1418810,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-28T07:11:08+09:00"
+  "updated_at_kst": "2026-10-28T07:37:30+09:00"
 }
