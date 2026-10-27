@@ -42,6 +42,38 @@ class ABFHistoricalModelVintageTests(unittest.TestCase):
         self.assertEqual(w.explicit_goldman_report_vintage("Goldman Sachs research report dated 2026-02-03 forecast"),"2026-02-03")
         self.assertEqual(w.explicit_goldman_report_vintage("Goldman Sachs research report dated 2026-99-99 forecast"),"")
 
+    def test_article_date_and_firm_quote_are_not_research_vintage(self):
+        misleading = (
+            "Article published on 2026-10-27. Goldman Sachs February 2026 "
+            "research forecast 10%/21%/42% for ABF shortages."
+        )
+        self.assertEqual(w.explicit_goldman_report_vintage(misleading), "")
+        after = (
+            "Goldman Sachs old forecast as of February 2026 and story "
+            "published 2026-10-27. The source release date is unknown."
+        )
+        self.assertEqual(w.explicit_goldman_report_vintage(after), "")
+        actual = "Goldman Sachs research report dated 2026-10-26 raises its ABF assumptions."
+        self.assertEqual(w.explicit_goldman_report_vintage(actual), "2026-10-26")
+
+    def test_later_article_must_not_change_previously_confirmed_model(self):
+        item={
+            "url":"https://www.skis.com.tw/skis/Report/industry/example.html",
+            "title":"October 2026 latest chip shortage discussion",
+            "full_text":"Article published 2026-10-27, citing Goldman Sachs February research report 10% in 2H26, 21% in 2027, 42% in 2028.",
+            "parsed":{"kind":"research_update",
+                      "goldman_abf_shortfall_2h2026_pct":10.0,
+                      "goldman_abf_shortfall_2027_pct":21.0,
+                      "goldman_abf_shortfall_2028_pct":42.0},
+        }
+        filtered=w.guard_stale_goldman_recap(item)
+        self.assertNotIn("goldman_abf_shortfall_2027_pct", filtered["parsed"])
+        prev={**w.BASELINE,"area_structure":w.ABF_AREA_STRUCTURE_BASELINE}
+        updated=w.merge_state(prev,[filtered],[])
+        self.assertEqual(updated["area_structure"]["research_forecast"]["abf_shortfall_2h2026_pct"],14.0)
+        self.assertEqual(updated["area_structure"]["research_forecast"]["abf_shortfall_2027_pct"],34.0)
+        self.assertEqual(updated["area_structure"]["research_forecast"]["abf_shortfall_2028_pct"],51.0)
+
     def test_new_verified_goldman_raises_forecast_after_explicit_date(self):
         item = {
             "url":"https://www.skis.com.tw/skis/Report/industry/example.html",

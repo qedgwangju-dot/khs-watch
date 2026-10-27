@@ -715,18 +715,21 @@ def explicit_goldman_report_vintage(text: str) -> str:
     already verified baseline with a recycled forecast.
     """
     clean = clean_text(text or "")
-    for chunk in re.split(r"[\n.!?]", clean):
-        if not re.search(r"Goldman(?:\s+Sachs)?|高盛|골드만삭스", chunk, re.I):
+    firm = r"(?:Goldman(?:\s+Sachs)?|高盛|골드만삭스)"
+    report = r"(?:research\s+report|research\s+note|report|forecast\s+report|issued|dated|報告|报告|리포트|보고서|발간)"
+    date = r"(?<!\d)(20\d{2})[\-/년.]\s*(\d{1,2})[\-/월.]\s*(\d{1,2})(?!\d)"
+    # A dated article frequently puts "published 2026-10-27" BEFORE the
+    # attribution "Goldman Sachs said ...". A generic first-date match would
+    # misclassify that article date as the research vintage. Accept ONLY a
+    # date that follows the issuer and a research-report attribution in the
+    # same clause. This is deliberately a fail-closed rule.
+    bound = re.compile(firm + r"[^.;\n]{0,100}?" + report + r"[^.;\n]{0,65}?" + date, re.I)
+    for match in bound.finditer(clean):
+        yy, mm, dd = [int(x) for x in match.groups()]
+        try:
+            return datetime(yy, mm, dd).strftime("%Y-%m-%d")
+        except ValueError:
             continue
-        if not re.search(r"\b(?:report|research|note|forecast|issued|dated|發布|發布|報告|发布|리포트|보고서|발간)\b", chunk, re.I):
-            continue
-        m = re.search(r"(?<!\d)(20\d{2})[\-/년.]\s*(\d{1,2})[\-/월.]\s*(\d{1,2})(?!\d)", chunk)
-        if m:
-            yy, mm, dd = [int(x) for x in m.groups()]
-            try:
-                return datetime(yy, mm, dd).strftime("%Y-%m-%d")
-            except ValueError:
-                continue
     return ""
 
 
