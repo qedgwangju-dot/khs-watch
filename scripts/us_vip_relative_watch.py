@@ -36,6 +36,22 @@ class SourceError(RuntimeError):
     pass
 
 
+class OfficialPublicationPending(SourceError):
+    """The two Nasdaq ETF closing series have not synchronized after U.S. close."""
+    pass
+
+
+def recent_publication_gap(expected: str, g_last: str, s_last: str) -> bool:
+    """Only an at-most-one-business-session lag is an expected release delay."""
+    day = dt.date.fromisoformat(expected)
+    prior = day - dt.timedelta(days=1)
+    while prior.weekday() >= 5:
+        prior -= dt.timedelta(days=1)
+    dates = {g_last, s_last}
+    return (all(value in (expected, prior.isoformat()) for value in (g_last, s_last))
+            and (g_last != expected or s_last != expected))
+
+
 def last_completed_us_weekday(now: dt.datetime) -> dt.date:
     local = now.astimezone(ET)
     d = local.date()
@@ -102,6 +118,11 @@ def collect(now: dt.datetime | None = None, client=requests):
             rows[ticker] = parse_nasdaq(ticker, response.json())
         except (requests.RequestException, ValueError) as exc:
             raise SourceError(ticker + ": official source unavailable: " + type(exc).__name__) from exc
+    g_last = max(rows["GVIP"]) if rows["GVIP"] else ""
+    s_last = max(rows["SPY"]) if rows["SPY"] else ""
+    if recent_publication_gap(expected, g_last, s_last):
+        raise OfficialPublicationPending(
+            f"Nasdaq GVIP/SPY published {g_last}/{s_last}; awaiting completed US session {expected}")
     return evaluate(rows["GVIP"], rows["SPY"], expected)
 
 
@@ -253,6 +274,9 @@ def run(validate_only=False, now=None, state_path=STATE, source=collect):
     state = load_state(state_path)
     try:
         snapshot = source(now)
+    except OfficialPublicationPending as exc:
+        return {"status": "publication_pending", "reason": str(exc)[:150],
+                "telegram_sent": False}
     except (SourceError, requests.RequestException, ValueError, TimeoutError) as exc:
         return {"status": "source_withheld", "reason": f"{type(exc).__name__}: {str(exc)[:150]}",
                 "telegram_sent": False}
