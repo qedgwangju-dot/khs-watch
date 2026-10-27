@@ -3,6 +3,7 @@ import importlib.util
 import pathlib
 import unittest
 from zoneinfo import ZoneInfo
+from unittest.mock import patch
 
 spec=importlib.util.spec_from_file_location("credit",pathlib.Path(__file__).parents[1]/"scripts/korea_credit_spread_watch.py")
 c=importlib.util.module_from_spec(spec);spec.loader.exec_module(c)
@@ -178,5 +179,67 @@ class CreditWatchTests(unittest.TestCase):
         series['cp']['20261020']=3.2
         with self.assertRaisesRegex(ValueError,"최신 공식 기준일 불일치"):
             c.aligned(series,dt.datetime(2026,10,20,20,tzinfo=ZoneInfo('Asia/Seoul')))
+
+    def test_successful_source_health_snapshot_is_deterministic(self):
+        rows=sample(52,68.7)
+        now=dt.datetime(2026,10,27,7,37,tzinfo=ZoneInfo("Asia/Seoul"))
+        act=c.decide(rows,{"notified_rank":2})
+        codes={"cp":"010503000","cd":"010502000","corp":"010300000","gov":"010200000"}
+        a=c.verified_health_snapshot(rows,codes,now,act)
+        b=c.verified_health_snapshot(rows,codes,now+dt.timedelta(hours=1),act)
+        self.assertEqual(a["fingerprint"],b["fingerprint"])
+        self.assertEqual(a["official_date"],rows[-1]["date"])
+        self.assertEqual(a["rate_values"]["cp_cd_bp"],52)
+        self.assertEqual(a["rate_values"]["aa_spread_bp"],68.7)
+        self.assertEqual(a["alert_rank"],2)
+        self.assertNotEqual(a["verified_at_kst"],b["verified_at_kst"])
+
+    def test_weekday_close_does_not_reuse_yesterday_as_today(self):
+        end=dt.date(2026,10,23)
+        days=[end-dt.timedelta(days=i) for i in range(15,-1,-1)
+              if (end-dt.timedelta(days=i)).weekday()<5]
+        series={kind:{day.strftime("%Y%m%d"):3.0 for day in days} for kind in c.KINDS}
+        with self.assertRaisesRegex(ValueError,"공식 금리 기준일 지연"):
+            c.aligned(series,dt.datetime(2026,10,26,19,0,tzinfo=ZoneInfo("Asia/Seoul")))
+        good=c.aligned(series,dt.datetime(2026,10,26,7,37,tzinfo=ZoneInfo("Asia/Seoul")))
+        self.assertEqual(good[-1]["date"],"20261023")
+
+    def test_authorization_probe_does_not_send_a_message(self):
+        calls=[]
+        def fake(url,params=None):
+            action=url.rsplit("/",1)[-1]
+            calls.append(action)
+            if action=="getMe":
+                return {"ok":True,"result":{"username":c.BOT}}
+            if action=="getChat":
+                self.assertEqual(params,{"chat_id":"-1234567"})
+                return {"ok":True,"result":{"id":-1234567}}
+            raise AssertionError("Unauthorized Telegram API operation: "+action)
+        with patch.dict(c.os.environ,{"TELEGRAM_BOT_TOKEN":"TESTONLY","TELEGRAM_CHAT_ID":"-1234567"}):
+            with patch.object(c,"telegram",side_effect=fake):
+                c.verify_telegram_route()
+        self.assertEqual(calls,["getMe","getChat"])
+
+    def test_auth_probe_rejects_wrong_bot_or_wrong_chat(self):
+        with patch.dict(c.os.environ,{"TELEGRAM_BOT_TOKEN":"TESTONLY","TELEGRAM_CHAT_ID":"12345"}):
+            with patch.object(c,"telegram",return_value={"ok":True,"result":{"username":"bad_bot"}}):
+                with self.assertRaisesRegex(RuntimeError,"예상 텔레그램 봇"):
+                    c.verify_telegram_route()
+            seq=[{"ok":True,"result":{"username":c.BOT}},
+                 {"ok":True,"result":{"id":67890}}]
+            with patch.object(c,"telegram",side_effect=seq):
+                with self.assertRaisesRegex(RuntimeError,"대화방 ID 불일치"):
+                    c.verify_telegram_route()
+
+    def test_utc_cron_mapping_and_health_persistence_declared(self):
+        path=pathlib.Path(__file__).parents[1]/".github/workflows/korea-credit-spread-telegram-watch.yml"
+        workflow=path.read_text(encoding="utf-8")
+        self.assertIn('cron: "10 9-12 * * 1-5"',workflow)
+        self.assertIn('cron: "37 13 * * 1-5"',workflow)
+        self.assertIn('cron: "37 22 * * 1-5"',workflow)
+        self.assertNotIn('timezone: "Asia/Seoul"',workflow)
+        self.assertIn("credit_spread_watch_health_pending.json",workflow)
+        self.assertIn("--probe",workflow)
+        self.assertIn("DRY_RUN != 'true'",workflow)
 
 if __name__=='__main__':unittest.main()
