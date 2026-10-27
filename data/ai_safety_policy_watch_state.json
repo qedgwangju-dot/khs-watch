@@ -9,7 +9,7 @@
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 89,
+    "raw_items": 86,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -42,9 +42,9 @@
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/README.md"
     },
     "NVIDIA OpenShell 보안정책": {
-      "candidate_count": 0,
-      "candidate_digest": null,
-      "candidate_first_seen_at": null,
+      "candidate_count": 1,
+      "candidate_digest": "b034c6a68b34960d2497ab2a5cdb3d94708f13c392446a066a86a5a9a124977c",
+      "candidate_first_seen_at": "2026-10-27T14:57:46.051098+00:00",
       "digest": "172efba937a4421fbb0a09484dd1f1c29a635638854011f53f6d1c35b3f876cc",
       "updated_at": "2026-10-03T04:48:31.561189+00:00",
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/SECURITY.md"
@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-27T14:49:23.315298+00:00",
+    "updated_at": "2026-10-27T14:57:46.051098+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -373,11 +373,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-10-27T23:49:23+09:00",
+  "updated_at_kst": "2026-10-27T23:57:46+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-10-27T14:50:08.011471+00:00",
+    "last_success_at": "2026-10-27T14:58:29.762399+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
