@@ -332,7 +332,7 @@ def verify_telegram_route():
     target=response.get("result") or {}
     if response.get("ok") is not True or not target.get("id"):
         raise RuntimeError("Telegram getChat으로 수신 대화방 접근 확인 실패")
-    if re.fullmatch(r"-?\\d+",chat) and str(target.get("id"))!=chat:
+    if re.fullmatch(r"-?\d+",chat) and str(target.get("id"))!=chat:
         raise RuntimeError("Telegram 수신 대화방 ID 불일치")
     print(f"telegram_route_verified=true bot=@{got} destination_accessible=true no_message_sent=true")
 
