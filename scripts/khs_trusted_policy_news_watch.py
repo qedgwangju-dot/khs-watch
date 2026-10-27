@@ -4824,6 +4824,64 @@ def _self_test_mofcom_tech_48() -> None:
     assert semantic_policy_event_key(later) != expected, "final export catalogue must not merge with the draft"
     assert "후속 보도" in str(item_story_profile(rule, [later])["stage"])
 
+def _self_test_eu_china_trade_events() -> None:
+    rules = {r.key: r for r in STORY_RULES}
+    hybrid = rules["eu_china_hybrid_vehicle_safeguard"]
+    sector = rules["eu_china_sector_import_safeguards"]
+    official = {
+        "title": hybrid.title,
+        "description": "中国商务部 中欧混动汽车 2024年10.7万辆 2025年30.2万辆 非歧视 世贸组织",
+        "link": EU_HYBRID_OFFICIAL[0][0], "source": "중국 상무부",
+        "published_kst": "2026-10-12T00:00:00+09:00",
+        "official_direct_verified": True, "eu_hybrid_stage": "government-understanding",
+    }
+    expected = "eu-china-hybrid-safeguard-understanding-2026-10-09"
+    assert semantic_policy_event_key(official) == expected
+    assert alert_confirmation_status(hybrid, [official])[0] == "공식 확인"
+    assert alert_confirmation_status(hybrid, [{**official, "official_direct_verified": False}])[0] == "공식 확인 전"
+    reprint = {
+        "title": "EU agrees to cap China hybrid vehicle quota at 350,000 annually",
+        "description": "European Union and China hybrid import safeguard 350,000 cap",
+        "source": "Reuters", "link": "https://example.org/reprinted-headline",
+        "published_kst": "2026-10-13T10:00:00+09:00",
+    }
+    assert semantic_policy_event_key(reprint) == expected
+    assert story_event_fingerprint(hybrid, [official]) == story_event_fingerprint(hybrid, [reprint])
+    next_stage = {
+        **reprint,
+        "title": "European Commission proposes draft implementing regulation on China hybrid quota",
+    }
+    assert semantic_policy_event_key(next_stage) != expected
+    assert "집행규정" in str(item_story_profile(hybrid, [next_stage])["actual_bullets"])
+    plan = {
+        "title": "EU plans more Chinese import curbs on chemicals, furniture and machinery",
+        "description": "EU China chemicals furniture machinery safeguard import quotas could come in early 2027",
+        "link": EU_SECTOR_PRESS_CASES[0][0], "source": "BusinessMirror (Bloomberg 보도 인용)",
+        "published_kst": "2026-10-26T00:00:00+09:00",
+        "eu_sector_stage": "furniture-reported",
+    }
+    older = {
+        **plan, "title": "EU ministers discuss chemical and machinery safeguards",
+        "description": "EU China chemicals and machinery import safeguard talks",
+        "eu_sector_stage": "chemicals-discussed",
+        "published_kst": "2026-10-23T00:00:00+09:00",
+    }
+    assert semantic_policy_event_key(plan) != semantic_policy_event_key(older)
+    assert alert_confirmation_status(sector, [plan])[0] == "공식 확인 전"
+    assert "확정 전" in str(item_story_profile(sector, [plan])["stage"])
+    seen = {
+        "furniture": semantic_policy_event_key(plan),
+        "hybrid": semantic_policy_event_key(official),
+    }
+    assert len(set(seen.values())) == 2
+    observed = [round(350000 * 1.06 ** year) for year in range(4)]
+    assert observed == [350000, 371000, 393260, 416856]
+    assert sum(observed) == 1531116
+    # No Korea-wide 350k cap or retroactive legal effectiveness in the report.
+    assert "모든 수입차의 합계가 아닙니다" in " ".join(item_story_profile(hybrid, [official])["actual_bullets"])
+    assert "시행규정" in hybrid.follow_up
+
+
 def _self_test_mofcom_2026_notices() -> None:
     _self_test_mofcom_tech_48()
     rules = {rule.key: rule for rule in STORY_RULES}
