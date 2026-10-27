@@ -71,6 +71,38 @@ BASELINE = {
     ],
 }
 
+
+# The 10/21/42% series is Goldman's February 2026 vintage, not the
+# October 27 2026 outlook. The September-reported 14/34/51% estimates
+# are already in area_structure.research_forecast. Preserve both vintages.
+ABF_VINTAGE_CONTEXT_VERSION = 1
+ABF_VINTAGE_CONTEXT = {
+    "version": 1,
+    "article_date": "2026-10-27",
+    "article_url": "https://finance.technews.tw/2026/10/27/taiwan-pcb-output-value-breaks-trillion-mark-faces-ai-challenges/",
+    "original_article_full_text_access": "blocked_by_robots",
+    "issuer": "Goldman Sachs",
+    "old_estimate_vintage": "2026-02-03",
+    "old_estimate_scope": "2026H2/2027/2028; broker estimate, not observed supply",
+    "old_shortfall_pct": {"2026H2": 10.0, "2027": 21.0, "2028": 42.0},
+    "old_secondary_url": "https://money.udn.com/money/story/5607/9309170",
+    "recent_public_recap_as_of": "2026-09-30",
+    "recent_shortfall_pct": {"2026H2": 14.0, "2027": 34.0, "2028": 51.0},
+    "recent_secondary_url": "https://www.skis.com.tw/Report/industry/20260930.html",
+    "source_class": "secondary_recap_of_broker_forecasts",
+    "denominator_and_product_mix_not_fully_disclosed": True,
+    "pcb_industry_total_is_not_abf_tam": True,
+    "tpca_industry_scope_source": "https://www.cna.com.tw/news/afe/202609240233.aspx",
+    "tpca_2026_taiwan_pcb_output_ntd_100m": 11365,
+    "event_id": "goldman-feb-vs-sep-2026|10-21-42|14-34-51",
+    "process_bottleneck_vs_grid_energization_separate": True,
+}
+GOLDMAN_SHORTFALL_KEYS = (
+    "goldman_abf_shortfall_2h2026_pct",
+    "goldman_abf_shortfall_2027_pct",
+    "goldman_abf_shortfall_2028_pct",
+)
+
 # Structural ABF capacity baseline added from the user's 2026-10-06 follow-up.
 # Keep physical/official facts separate from broker forecasts.  The 2021 and 2028
 # shortage percentages are not treated as a like-for-like consensus series.
@@ -674,6 +706,83 @@ def build_nvidia_abf_alert(changes: list[str], progress: dict) -> str:
     return "\n".join(lines)+"\n"
 
 
+
+def explicit_goldman_report_vintage(text: str) -> str:
+    """A fresh article publication date is NOT the cited research report date.
+
+    Accept a firm-attributed full YYYY-MM-DD research-vintage only. This
+    deliberately misses ambiguous research recaps rather than corrupting an
+    already verified baseline with a recycled forecast.
+    """
+    clean = clean_text(text or "")
+    for chunk in re.split(r"[\n.!?]", clean):
+        if not re.search(r"Goldman(?:\s+Sachs)?|高盛|골드만삭스", chunk, re.I):
+            continue
+        if not re.search(r"\b(?:report|research|note|forecast|issued|dated|發布|發布|報告|发布|리포트|보고서|발간)\b", chunk, re.I):
+            continue
+        m = re.search(r"(?<!\d)(20\d{2})[\-/년.]\s*(\d{1,2})[\-/월.]\s*(\d{1,2})(?!\d)", chunk)
+        if m:
+            yy, mm, dd = [int(x) for x in m.groups()]
+            try:
+                return datetime(yy, mm, dd).strftime("%Y-%m-%d")
+            except ValueError:
+                continue
+    return ""
+
+
+def guard_stale_goldman_recap(item: dict) -> dict:
+    """Filter out unverified Goldman 'revisions' from republished old models.
+
+    Keep unrelated BofA, Ibiden and Nvidia evidence untouched.
+    """
+    updated = dict(item)
+    parsed = dict(item.get("parsed") or {})
+    goldman_keys = [k for k in GOLDMAN_SHORTFALL_KEYS if k in parsed]
+    if not goldman_keys:
+        return updated
+    report_vintage = explicit_goldman_report_vintage(
+        str(item.get("full_text") or item.get("title") or "")
+    )
+    trusted = source_rank(str(item.get("url") or "")) >= 2
+    confirmed_new = trusted and report_vintage > ABF_VINTAGE_CONTEXT["recent_public_recap_as_of"]
+    if not confirmed_new:
+        for key in goldman_keys:
+            parsed.pop(key, None)
+        if len(parsed) == 1 and parsed.get("kind") == "research_update":
+            parsed = {}
+    else:
+        parsed["goldman_report_vintage"] = report_vintage
+    updated["parsed"] = parsed
+    return updated
+
+
+def build_abf_vintage_context_alert(state: dict) -> str:
+    """One-time compact historical-model correction, separate from new forecast alerts."""
+    ctx = state.get("goldman_vintage_context") or ABF_VINTAGE_CONTEXT
+    old = ctx["old_shortfall_pct"]
+    newer = ctx["recent_shortfall_pct"]
+    parts = [f"{int(newer[period]-old[period]):+d}%p" for period in ("2026H2","2027","2028")]
+    lines = [
+        "<b>ABF 기판 공급부족 전망 — 구형 수치 재인용 점검</b>",
+        "• <b>판정: 10%·21%·42%는 2026년 2월 Goldman Sachs 추정치</b>이며 신규 확정 통계가 아님.",
+        f"• 과거: 2026 하반기 {old['2026H2']:.0f}% / 2027 {old['2027']:.0f}% / 2028 {old['2028']:.0f}%.",
+        f"• 최근(9월 말 공개 재인용): {newer['2026H2']:.0f}% / {newer['2027']:.0f}% / {newer['2028']:.0f}%.",
+        f"• 동일 기관의 인용 추정치 차이: {parts[0]}, {parts[1]}, {parts[2]}. 실제 확정 부족률 아님.",
+        "• 분모·규격 혼합은 원 보고서 미열람으로 완전 확인되지 않아 물리적 부족수량·매출을 단정하지 않음.",
+        "• 10/27 TechNews 기사 직접 본문은 접속 제한. 기사 날짜로 2월 추정치를 최신값으로 승격 금지.",
+        "• 별도 산업자료: TPCA 2026 대만 PCB 제조업 생산액 전망은 ABF만의 매출·부족률이 아님.",
+        "• NVIDIA 10/21 공식: IBIDEN·삼성전기·Unimicron 공급망의 기판능력 3년간 2.5배 목표.",
+        "  삼성전기 세종·부산 전용라인 2026년부터 공급 계획, 실제 고객검수·매출은 별도 점검.",
+        "• 공정 병목: T-glass·ABF 소재 → 적층·SAP·휨 → 검사·신뢰성·수율 → 고객 승인.",
+        "  전력 병목: 계통접속·변전소·전원 인가·냉각. 기판 제약과 전력 제약은 별개.",
+        "• 조기경보: 최신 리서치 버전, 2027년 기판 실출하·평균판매단가·수율·고객 승인.",
+        f'• <a href="{html.escape(ctx["old_secondary_url"],quote=True)}">2월 인용 기사</a>'
+        f' / <a href="{html.escape(ctx["recent_secondary_url"],quote=True)}">9월말 전망 인용</a>',
+        f'• <a href="{NVIDIA_ABF_SOURCE}">NVIDIA 공식 공급망 확대</a>',
+    ]
+    return "\n".join(lines)
+
+
 def material_events(previous: dict, updates: list[dict]) -> list[dict]:
     official = previous.get("official") or {}
     research = previous.get("research") or {}
@@ -1068,9 +1177,10 @@ def discover(now: datetime, seen_urls: set[str]) -> list[dict]:
                     "title": item.get("title") or "",
                     "rank": source_rank(url),
                     "parsed": parsed,
+                    "full_text": text,
                 })
     out.sort(key=lambda x: (x["rank"], x.get("published_at_kst") or ""), reverse=True)
-    return out
+    return [guard_stale_goldman_recap(item) for item in out]
 
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
@@ -1079,7 +1189,7 @@ def main() -> None:
     previous = committed.get("abf_cpu_monetization") or copy.deepcopy(BASELINE)
     seen_urls = set(previous.get("seen_urls") or [])
 
-    updates = discover(now, seen_urls)
+    updates = [guard_stale_goldman_recap(u) for u in discover(now, seen_urls)]
     events = material_events(previous, updates)
     verified, source_checks = verify_nvidia_abf_press()
     old_partner = previous.get("nvidia_substrate_supply") or {}
@@ -1105,19 +1215,24 @@ def main() -> None:
     }
     if structure_upgrade:
         latest["area_structure"] = copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE)
+    vintage_upgrade = int((previous.get("goldman_vintage_context") or {}).get("version") or 0) < ABF_VINTAGE_CONTEXT_VERSION
+    if vintage_upgrade:
+        latest["goldman_vintage_context"] = copy.deepcopy(ABF_VINTAGE_CONTEXT)
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
     latest["candidate_count"] = len(updates)
-    latest["event_count"] = len(events) + len(new_partner_events)
+    latest["event_count"] = len(events) + len(new_partner_events) + int(vintage_upgrade)
 
     pending["abf_cpu_monetization"] = latest
     write_json(PENDING_PATH, pending)
 
-    if events or new_partner_events:
+    if events or new_partner_events or vintage_upgrade:
         blocks = []
         if events:
             blocks.append(build_alert(events,latest).strip())
         if new_partner_events:
             blocks.append(build_nvidia_abf_alert(new_partner_events,partner).strip())
+        if vintage_upgrade:
+            blocks.append(build_abf_vintage_context_alert(latest).strip())
         block = "\n\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n".join(blocks)
         existing = ALERT_PATH.read_text(encoding="utf-8").strip() if ALERT_PATH.exists() else ""
         merged = (existing + "\n\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n" + block).strip() if existing else block
@@ -1125,7 +1240,7 @@ def main() -> None:
 
     print(
         "abf_cpu_monetization_watch=true "
-        f"candidates={len(updates)} events={len(events)+len(new_partner_events)} notify={str(bool(events or new_partner_events)).lower()} official_checks={source_checks}"
+        f"candidates={len(updates)} events={len(events)+len(new_partner_events)+int(vintage_upgrade)} notify={str(bool(events or new_partner_events or vintage_upgrade)).lower()} official_checks={source_checks}"
     )
 
 if __name__ == "__main__":

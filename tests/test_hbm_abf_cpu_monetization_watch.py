@@ -6,6 +6,84 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import abf_cpu_monetization_watch as w
 
 
+
+class ABFHistoricalModelVintageTests(unittest.TestCase):
+    def test_old_and_new_goldman_are_distinct_broker_forecasts(self):
+        ctx = w.ABF_VINTAGE_CONTEXT
+        self.assertEqual(ctx["old_shortfall_pct"], {"2026H2":10.0,"2027":21.0,"2028":42.0})
+        self.assertEqual(ctx["recent_shortfall_pct"], {"2026H2":14.0,"2027":34.0,"2028":51.0})
+        self.assertEqual(ctx["old_estimate_vintage"], "2026-02-03")
+        self.assertEqual(ctx["recent_public_recap_as_of"], "2026-09-30")
+        self.assertTrue(ctx["denominator_and_product_mix_not_fully_disclosed"])
+        self.assertTrue(ctx["pcb_industry_total_is_not_abf_tam"])
+
+    def test_october_reprint_does_not_reset_recent_goldman_facts(self):
+        previous = {**w.BASELINE,"area_structure":w.ABF_AREA_STRUCTURE_BASELINE}
+        item = {
+            "url": "https://finance.technews.tw/2026/10/27/example",
+            "title": "2026 October 27 PCB output article",
+            "published_at_kst": "2026-10-27T18:00:00+09:00",
+            "full_text": "February 2026 Goldman Sachs report forecast 10% in 2H26, 21% in 2027, 42% in 2028.",
+            "parsed": {"kind":"research_update",
+                       "goldman_abf_shortfall_2h2026_pct":10.0,
+                       "goldman_abf_shortfall_2027_pct":21.0,
+                       "goldman_abf_shortfall_2028_pct":42.0},
+        }
+        filt = w.guard_stale_goldman_recap(item)
+        self.assertNotIn("goldman_abf_shortfall_2028_pct", filt["parsed"])
+        self.assertEqual(w.material_events(previous,[filt]), [])
+        merged = w.merge_state(previous,[filt],[])
+        self.assertEqual(merged["area_structure"]["research_forecast"]["abf_shortfall_2028_pct"],51.0)
+
+    def test_goldman_date_must_belong_to_named_research_and_beat_sept(self):
+        dated = "Goldman Sachs research report dated 2026-10-27 projects revised shortfall"
+        self.assertEqual(w.explicit_goldman_report_vintage(dated),"2026-10-27")
+        self.assertEqual(w.explicit_goldman_report_vintage("Article published 2026-10-27, Goldman Sachs February forecast."),"")
+        self.assertEqual(w.explicit_goldman_report_vintage("Goldman Sachs research report dated 2026-02-03 forecast"),"2026-02-03")
+        self.assertEqual(w.explicit_goldman_report_vintage("Goldman Sachs research report dated 2026-99-99 forecast"),"")
+
+    def test_new_verified_goldman_raises_forecast_after_explicit_date(self):
+        item = {
+            "url":"https://www.skis.com.tw/skis/Report/industry/example.html",
+            "published_at_kst":"2026-10-27T19:30:00+09:00",
+            "full_text":"Goldman Sachs research report dated 2026-10-26 sees ABF 20% in 2H26 40% in 2027 60% in 2028.",
+            "parsed":{"kind":"research_update","goldman_abf_shortfall_2h2026_pct":20.0,
+                      "goldman_abf_shortfall_2027_pct":40.0,
+                      "goldman_abf_shortfall_2028_pct":60.0},
+        }
+        approved = w.guard_stale_goldman_recap(item)
+        self.assertEqual(approved["parsed"]["goldman_report_vintage"],"2026-10-26")
+        old = {**w.BASELINE,"area_structure":w.ABF_AREA_STRUCTURE_BASELINE}
+        events = w.material_events(old,[approved])
+        self.assertEqual(len([x for x in events if x["type"]=="supply_gap_forecast"]),3)
+        merged = w.merge_state(old,[approved],events)
+        self.assertEqual(merged["area_structure"]["research_forecast"]["abf_shortfall_2028_pct"],60.0)
+
+    def test_same_tuples_no_false_revision_and_no_double_event(self):
+        ctx={"goldman_vintage_context":w.ABF_VINTAGE_CONTEXT}
+        self.assertEqual(ctx["goldman_vintage_context"]["version"],w.ABF_VINTAGE_CONTEXT_VERSION)
+        alert=w.build_abf_vintage_context_alert(ctx)
+        for phrase in ("10%", "21%", "42%", "14%", "34%", "51%", "4%p", "13%p", "9%p", "2월", "9월말", "2.5배"):
+            self.assertIn(phrase,alert)
+        self.assertIn("계통접속",alert)
+        self.assertIn("TechNews 기사 직접 본문은 접속 제한",alert)
+        self.assertIn("실제 확정 부족률 아님",alert)
+        self.assertLess(len(alert),2600)
+
+    def test_forecast_update_filter_does_not_remove_bofa_or_physical_facts(self):
+        item={
+           "url":"https://www.xxquant.com/en/institution/example",
+           "full_text":"Goldman Sachs report dated 2026-02-03 forecast",
+           "parsed":{"kind":"research_update",
+                     "goldman_abf_shortfall_2027_pct":21.0,
+                     "bofa_abf_shortfall_2028_pct":22.0,
+                     "feynman_2028_area_vs_2026_min_multiple":3.0},
+        }
+        approved=w.guard_stale_goldman_recap(item)
+        self.assertNotIn("goldman_abf_shortfall_2027_pct",approved["parsed"])
+        self.assertEqual(approved["parsed"]["bofa_abf_shortfall_2028_pct"],22.0)
+        self.assertEqual(approved["parsed"]["feynman_2028_area_vs_2026_min_multiple"],3.0)
+
 class AbfCpuMonetizationParseTests(unittest.TestCase):
     def test_official_ibiden_capex_and_sap(self):
         text = (
