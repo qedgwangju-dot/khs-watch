@@ -69,7 +69,7 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-27T19:30:48+09:00",
+  "updated_at_kst": "2026-10-28T01:01:35+09:00",
   "last_scan_count": 5,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
@@ -114,7 +114,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 1,
+  "last_held_count": 0,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -151,14 +151,7 @@
     "f3274f98949ddbb5ad284b00"
   ],
   "delivered_event_keys": [],
-  "last_held": [
-    {
-      "event_key": "taiwan|disruption|TSMC|core",
-      "source": "The Tribune",
-      "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-10-27T13:03:10+09:00"
-    }
-  ],
+  "last_held": [],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
   "telegram_message_ids": [
     292
