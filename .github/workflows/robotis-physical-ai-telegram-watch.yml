@@ -141,8 +141,27 @@ jobs:
               with urllib.request.urlopen(req, timeout=30) as r:
                   data = json.loads(r.read().decode())
               if not data.get("ok"):
-                  raise SystemExit(f"Telegram send failed: {data}")
-              print(f"Telegram sent: message_id={data['result']['message_id']}")
+                  raise SystemExit("Telegram API returned ok=false")
+              reply = data.get("result") or {}
+              reply_chat = reply.get("chat") or {}
+              reply_id = reply_chat.get("id")
+              if reply_id is None:
+                  raise SystemExit("Telegram success reply missing chat.id")
+              # Do not expose private numeric chat IDs in public Actions logs.
+              if chat.lstrip("-").isdigit():
+                  if str(reply_id) != chat:
+                      raise SystemExit("Telegram recipient mismatch (IDs redacted)")
+                  print("Telegram recipient: configured numeric chat matches API reply")
+              elif chat.startswith("@") and reply_chat.get("username"):
+                  if reply_chat["username"].casefold() != chat[1:].casefold():
+                      raise SystemExit("Telegram recipient username mismatch")
+                  print("Telegram recipient: configured alias matches API reply")
+              else:
+                  print("Telegram recipient: reply chat.id present; alias comparison unverified")
+              message_id = reply.get("message_id")
+              if not isinstance(message_id, int) or message_id <= 0:
+                  raise SystemExit("Telegram success reply missing valid message_id")
+              print(f"Telegram sent: message_id={message_id}")
           PY
           else
             echo "No meaningful new physical-AI/battery/grid/ROBOTIS-NVIDIA/Figure-AI/Tesla-Optimus-China change; Telegram silent."
