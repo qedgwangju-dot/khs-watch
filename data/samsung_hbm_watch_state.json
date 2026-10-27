@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-28T04:36:29+09:00",
+  "updated_at_kst": "2026-10-28T08:11:13+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -323,7 +323,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202609",
-  "last_successful_official_at_kst": "2026-10-27T05:45:19+09:00",
+  "last_successful_official_at_kst": "2026-10-28T08:11:13+09:00",
   "malaysia_official_month": "202609",
   "malaysia_hsk10_amount_usd": 1609624385.0,
   "malaysia_public_available": true,
@@ -1838,7 +1838,7 @@
         },
         "unit": "USD/kg",
         "period": "2026-09",
-        "as_of": "2026-10-27",
+        "as_of": "2026-10-28",
         "evidence": "official",
         "source_url": "https://www.data.go.kr/data/15100475/openapi.do",
         "source_title": "관세청 품목별 국가별 수출입실적 HSK 8542323000 말레이시아",
@@ -2779,11 +2779,11 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-28T04:36:29+09:00",
+      "last_checked_at_kst": "2026-10-28T08:11:13+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
-      "observations": 3,
+      "observations": 4,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
@@ -2855,7 +2855,7 @@
     "payload_hash": "08c94d7d5f106ad04399827011a0052b881cd709068e4702216b313bba084d6b"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-28T04:37:30+09:00",
+    "checked_at_kst": "2026-10-28T08:13:20+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": 4756.0,
@@ -2946,12 +2946,12 @@
     "version": 4,
     "status": "ok",
     "target_month": "202609",
-    "last_checked_at_kst": "2026-10-27T05:45:19+09:00",
+    "last_checked_at_kst": "2026-10-28T08:11:13+09:00",
     "selected_official_month": "202609"
   },
   "official_source_health_version": 4,
   "official_poll_interval_hours": 24,
-  "last_official_poll_attempt_kst": "2026-10-27T05:45:19+09:00",
+  "last_official_poll_attempt_kst": "2026-10-28T08:11:13+09:00",
   "official_availability_notes": [],
   "optional_source_errors": [
     "이천 202609 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
@@ -2961,7 +2961,7 @@
   ],
   "export_alert_format_version": 4,
   "official_revision_due": false,
-  "official_observed_this_run": false,
+  "official_observed_this_run": true,
   "last_official_alert_snapshot": {
     "month": "202609",
     "hs": "8542323000",
