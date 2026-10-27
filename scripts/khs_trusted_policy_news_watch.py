@@ -2387,6 +2387,12 @@ def semantic_policy_event_key(item: dict) -> str:
         stage = str(item.get("mofcom_stage") or "announced")
         if stage in {"announced", "effective-date-arrived"}:
             return f"china-mofcom-2026-notice-{number}-{stage}"
+    if item.get("eu_hybrid_stage") == "government-understanding" and item.get("official_direct_verified") is True:
+        return "eu-china-hybrid-safeguard-understanding-2026-10-09"
+    if item.get("eu_sector_stage") == "furniture-reported":
+        return "eu-china-sector-safeguards-furniture-2026-10-26"
+    if item.get("eu_sector_stage") == "chemicals-discussed":
+        return "eu-china-sector-safeguards-chemicals-machinery-2026-10-23"
     if item.get("mofcom_tech_48_stage") == "draft-with-registration-active" and item.get("official_direct_verified") is True:
         return "china-mofcom-2026-technology-48-draft-preregistration-2026-10-16"
     title_text = clean_text(str(item.get("title") or "")).lower()
