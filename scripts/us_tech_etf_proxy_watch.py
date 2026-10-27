@@ -96,6 +96,16 @@ def collect(now=None, fetcher=ishares.get_ishares):
             v = row.get(col)
             if not isinstance(v, (float, int)) or not math.isfinite(v) or v <= 0:
                 raise ValueError(f"{ticker}: invalid official {col}")
+        # The issuer also publishes total fund net assets. When available,
+        # shares × NAV must reconcile to the same issuer's asset figure.
+        assets = row.get("net_assets")
+        if assets is not None:
+            if not isinstance(assets, (int, float)) or not math.isfinite(assets) or assets <= 0:
+                raise ValueError(f"{ticker}: invalid official fund net assets")
+            discrepancy = abs(row["shares"] * row["nav"] / assets - 1.0) * 100
+            if discrepancy > 1.0:
+                raise ValueError(f"{ticker}: official fund net assets differ from NAV × outstanding shares by {discrepancy:.2f}%")
+            row["asset_check_pct"] = discrepancy
         fund_rows[ticker] = row
     observed = {v["date"] for v in fund_rows.values()}
     if len(observed) != 1:
@@ -190,6 +200,8 @@ def calculate(observations, state):
         pct = None if delta is None else (delta / old["shares"] * 100)
         obs = {
             "date": today, "nav": row["nav"], "shares": row["shares"],
+            "previous_shares": old["shares"] if old else None,
+            "asset_check_pct": row.get("asset_check_pct"),
             "prev_date": old["date"] if old else None,
             "elapsed_calendar_days": period_days,
             "shares_delta": delta, "estimated_creation_value_usd": value_usd,
@@ -307,6 +319,13 @@ def render(result, fx, fx_date):
                 f"/ 비교 {x['prev_date']}→{x['date']}"
             )
         lines.append(f"• <b>{ticker}</b> ({all_funds[ticker]['label']}): {html.escape(v)}")
+        if x["shares_delta"] is not None and x["previous_shares"] is not None:
+            lines.append(
+                f"  검산: 발행좌수 {x['previous_shares']:,.0f}→{x['shares']:,.0f}주"
+                f" (증감 {x['shares_delta']:+,.0f}주) × 당일 기준가격 ${x['nav']:,.2f}"
+            )
+        if x.get("asset_check_pct") is not None:
+            lines.append(f"  발행사 순자산과 발행좌수×기준가격 차이 {x['asset_check_pct']:.3f}%")
         v5 = x["five_observations_creation_usd"]
         if v5 is not None:
             lines.append(
