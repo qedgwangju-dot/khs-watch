@@ -3024,6 +3024,8 @@ def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
         "us_treasury_coins_biotechnology_outbound_nprm",
         "us_fcc_hisilicon_first_component_enforcement",
         "us_fcc_intel_agv_one_year_waiver",
+        "eu_china_hybrid_vehicle_safeguard",
+        "eu_china_sector_import_safeguards",
         "china_mofcom_2026_technology_catalogue48",
     }:
         grouped: dict[str, list[dict]] = {}
@@ -4362,10 +4364,10 @@ def dedupe_alerts_for_display(alerts: list[dict]) -> list[dict]:
         items = alert.get("items") or []
         if not rule or not items:
             continue
-        key = (
-            str(getattr(rule, "key", "") or ""),
-            story_display_title(rule, items).strip(),
-        )
+        if rule.key in {"eu_china_hybrid_vehicle_safeguard", "eu_china_sector_import_safeguards"}:
+            key = (rule.key, semantic_policy_event_key(items[0]) or story_display_title(rule, items).strip())
+        else:
+            key = (str(getattr(rule, "key", "") or ""), story_display_title(rule, items).strip())
         if key in seen:
             continue
         seen.add(key)
@@ -5131,6 +5133,8 @@ def main() -> int:
         "us_treasury_outbound_ai_robotics_enforcement": 3,
         "us_fcc_chinese_optical_transceiver_ban": 2,
         "uk_china_ev_tariff_review": 1,
+        "eu_china_hybrid_vehicle_safeguard": 10,
+        "eu_china_sector_import_safeguards": 11,
         "china_mofcom_2026_drone_controls": 8,
         "china_mofcom_2026_tunnel_machine_controls": 8,
         "china_mofcom_2026_dredging_controls": 8,
