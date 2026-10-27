@@ -8,7 +8,7 @@
     "errors": [],
     "material_items": 16,
     "new_material_items": 0,
-    "raw_items": 225,
+    "raw_items": 248,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -410,6 +410,16 @@
       "title": "Office of Public Affairs | Saudi National Arrested for Installing Surreptitious Audio Recording Device at OpenAI - Department of Justice (.gov)",
       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxONExsQ3JIYllVOU9YWjREWWNUd0pNajJYOUZrUWNxVzlxN1dzd0xseXJ5UzR0Wnk0NDFoc1hmRkZjY19qaWxKTlF2VnNjdDBoSHJTYjZWSmFmNmFFOVBwLW12QjhoT1JMZ1NfT3lDbUhQZlN6WmN4UmQ0ODhVaUt6b041Y3kxVjY2VXpaQ0VyaHpMS2l3QmtadXBHRHVmRjlwdHJKMTBrdVdteEpIQVE?oc=5",
       "vendor": "OpenAI"
+    },
+    "48f74f0bb312870ac1077c0c": {
+      "category": "PHP 취약점 실전 악용 보도·추가 검증",
+      "first_seen_at": "2026-10-27T05:11:53.630435+00:00",
+      "published_at": "2026-10-27T04:37:00+00:00",
+      "severity": 3,
+      "source": "The Hacker News",
+      "title": "CISA Confirms Active Exploitation of Two PHP2Shell Flaws Enabling Remote Code Execution - The Hacker News",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQLVhZWGlpeC1icnJacEFkTFhyXzk4M0NUUjlhTDhxbnZSQmE2ZjFmTTRDZ29Fa3l4TVhTUzZSSG5KRjVtcEYxRGpLMWh6aVJ5WndTaGdsSThLUmQ0a0E0VmJEZmx2aTJmaXp6TkdlRFRZT0FGZjJ4Unh4SzVZT045Yw?oc=5",
+      "vendor": "PHP 재단"
     },
     "4abec9b774ac0231e94bc724": {
       "category": "금융·핵심인프라 AI 사이버 위험 경보",
@@ -1362,5 +1372,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-27T13:31:00+09:00"
+  "updated_at_kst": "2026-10-27T14:11:53+09:00"
 }
