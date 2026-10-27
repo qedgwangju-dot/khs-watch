@@ -9,8 +9,13 @@ on:
       - "scripts/us_positioning_options_sox_watch.py"
       - "scripts/us_tech_etf_proxy_watch.py"
       - "tests/test_us_tech_etf_proxy_watch.py"
+      - "scripts/us_vip_relative_watch.py"
+      - "tests/test_us_vip_relative_watch.py"
   schedule:
     - cron: "17 12,15,18,21 * * 1-5"
+    # Additional official ETF publication catch-up checks only; no other delivery lanes.
+    - cron: "37 23 * * 1-5"
+    - cron: "37 0 * * 2-6"
   pull_request:
     paths:
       - "scripts/us_fund_flow_watch.py"
@@ -190,7 +195,12 @@ jobs:
 
   watch:
     # Suppress unrelated US fund-flow delivery during tech ETF integration-only pushes.
-    if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '[tech-etf-proxy-validate]')
+    if: >-
+      github.event_name != 'pull_request' &&
+      !contains(github.event.head_commit.message, '[tech-etf-proxy-validate]') &&
+      !(github.event_name == 'schedule' &&
+        (github.event.schedule == '37 23 * * 1-5' ||
+         github.event.schedule == '37 0 * * 2-6'))
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -535,7 +545,9 @@ jobs:
   vip-relative-proxy:
     if: >-
       ${{
-        github.event_name == 'schedule' ||
+        (github.event_name == 'schedule' &&
+         github.event.schedule != '37 23 * * 1-5' &&
+         github.event.schedule != '37 0 * * 2-6') ||
         github.event_name == 'workflow_dispatch' ||
         (github.event_name == 'push' &&
          contains(github.event.head_commit.message, '[tech-etf-proxy-validate]'))
@@ -577,6 +589,9 @@ jobs:
           if grep -q '"status": "source_withheld"' out/us_vip_relative_runtime.log; then
             echo "::warning::GVIP/SPY official source missing or inconsistent; no Telegram sent."
             exit 1
+          elif grep -q '"status": "publication_pending"' out/us_vip_relative_runtime.log; then
+            echo "::warning::GVIP/SPY 공식 종가 비동기 게시 대기; Telegram 미전송·상태 유지."
+            grep 'gvip_relative_status=' out/us_vip_relative_runtime.log >> "$GITHUB_STEP_SUMMARY"
           elif grep -q '"status": "validated"' out/us_vip_relative_runtime.log; then
             echo "GVIP/SPY 75거래일 공식 종가 비교 성공 · 테스트 Telegram 미전송" >> "$GITHUB_STEP_SUMMARY"
           elif grep -q '"status": "sent"' out/us_vip_relative_runtime.log; then
