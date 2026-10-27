@@ -3,7 +3,7 @@
     "Nasdaq SOX|sox": "4b338c61e915b4109e0a33579952a7803c7f4036ac4ece9f0c720b579acaf9d5",
     "Cboe|options": "a3c165ca09da79dd4c05b60d2c867c7741ab192e7a86fcf4e705c2aab69bc10b",
     "CFTC|cot": "9017b5deb0029722f811a2abd8e0224ff89aea10deec17040e91b9efd6ed1cdc",
-    "미국 주요지수·시장 확산·옵션 과거 비교|context": "7a9027452c02482db00fe880abd2c1a4b34a7b42c90435a6b44641f0ec48cdd9"
+    "미국 주요지수·시장 확산·옵션 과거 비교|context": "2280ee1f8ac58acb43e1a6e105d4779525407f1cc5605c8cdb272f85b6e208fd"
   },
   "values": {
     "Nasdaq SOX|sox": {
@@ -23927,11 +23927,31 @@
             }
           },
           "fx": {
-            "status": "unavailable",
+            "status": "verified",
             "requested_date": "2026-10-26",
-            "date": null,
-            "reason_code": "collection",
-            "reason": "ECOS 원자료 조회에 실패함 · 원화 환산 보류"
+            "date": "2026-10-26",
+            "krw_per_usd": "1324.3",
+            "base_currency": "USD",
+            "quote_currency": "KRW",
+            "unit": "원/미국달러",
+            "basis": "정확히 요청일의 공식 일별 매매기준율 · 1미국달러당 원",
+            "source": "한국은행 ECOS 원/미국달러(매매기준율)",
+            "source_url": "https://ecos.bok.or.kr/",
+            "operands": {
+              "StatisticSearch": {
+                "list_total_count": 1,
+                "row": [
+                  {
+                    "STAT_CODE": "731Y001",
+                    "ITEM_CODE1": "0000001",
+                    "ITEM_NAME1": "원/미국달러(매매기준율)",
+                    "UNIT_NAME": "원",
+                    "TIME": "20261026",
+                    "DATA_VALUE": "1324.3"
+                  }
+                ]
+              }
+            }
           },
           "nq_reference": {
             "status": "verified",
@@ -23944,19 +23964,39 @@
             "secondary_close": 29490.279296875
           },
           "nq_fx": {
-            "status": "unavailable",
+            "status": "verified",
             "requested_date": "2026-10-20",
-            "date": null,
-            "reason_code": "collection",
-            "reason": "ECOS 원자료 조회에 실패함 · 원화 환산 보류"
+            "date": "2026-10-20",
+            "krw_per_usd": "1332.1",
+            "base_currency": "USD",
+            "quote_currency": "KRW",
+            "unit": "원/미국달러",
+            "basis": "정확히 요청일의 공식 일별 매매기준율 · 1미국달러당 원",
+            "source": "한국은행 ECOS 원/미국달러(매매기준율)",
+            "source_url": "https://ecos.bok.or.kr/",
+            "operands": {
+              "StatisticSearch": {
+                "list_total_count": 1,
+                "row": [
+                  {
+                    "STAT_CODE": "731Y001",
+                    "ITEM_CODE1": "0000001",
+                    "ITEM_NAME1": "원/미국달러(매매기준율)",
+                    "UNIT_NAME": "원",
+                    "TIME": "20261020",
+                    "DATA_VALUE": "1332.1"
+                  }
+                ]
+              }
+            }
           }
         }
       },
       "url": "https://www.cboe.com/markets/us/options/market-statistics/daily",
-      "fingerprint": "7a9027452c02482db00fe880abd2c1a4b34a7b42c90435a6b44641f0ec48cdd9"
+      "fingerprint": "2280ee1f8ac58acb43e1a6e105d4779525407f1cc5605c8cdb272f85b6e208fd"
     }
   },
-  "updated_at_kst": "2026-10-27T10:38:31.712591+09:00",
+  "updated_at_kst": "2026-10-27T10:42:12.204010+09:00",
   "presentation_version": "us-positioning-auto-direction-20261016-v1",
   "daily_digest_sent_date_kst": "2026-10-27"
 }
