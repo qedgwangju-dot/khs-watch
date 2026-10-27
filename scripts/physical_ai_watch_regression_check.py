@@ -5971,7 +5971,10 @@ try:
         _g,_s,_cat,_k=classify(_rows[0])
         assert _g==_group and _s>=11,(_code,_g,_s,_cat)
         assert _label in _cat,(_code,_cat)
-        assert "승인서" in base.risk(_cat) or "신뢰성" in base.risk(_cat)
+        if _group=="tirobotics_dow_reported":
+            assert "승인서" in base.risk(_cat), (_group,_cat,base.risk(_cat))
+        else:
+            assert "수율" in base.risk(_cat), (_group,_cat,base.risk(_cat))
     _t2=make("티로보틱스 AMR 미국 조건부 승인 재보도",
              "티로보틱스 AGV AMR DoW 조건부 승인 보도 재인용","언론사")
     assert classify(_t2)[0]=="tirobotics_dow_reported"
