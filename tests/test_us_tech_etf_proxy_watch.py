@@ -329,5 +329,35 @@ class TechEtfProxyTests(unittest.TestCase):
         self.assertEqual(x["movements"]["SOXX"]["estimated_creation_value_usd"],1_895_162_500)
         self.assertIn("SOXX 발행좌수 당일 +1% 이상",x["signals"])
 
+
+    def test_issuer_net_assets_reconciles_with_official_soxx_oct26(self):
+        payload=snap("2026-10-26",iyw_shares=98_000_000,soxx_shares=94_200_000)
+        payload["SOXX"]["nav"]=492.25
+        payload["SOXX"]["net_assets"]=46_369_679_654
+        payload["IYW"]["net_assets"]=payload["IYW"]["nav"]*payload["IYW"]["shares"]
+        def fetch(t,meta,retry_budget=None):
+            return payload[t]
+        now=dt.datetime(2026,10,27,14,0,tzinfo=dt.timezone.utc)
+        fresh=w.collect(now=now,fetcher=fetch)
+        self.assertLess(fresh["SOXX"]["asset_check_pct"],0.001)
+        state=prior_state("2026-10-23")
+        state["history"]["SOXX"][-1]["shares"]=90_350_000
+        result=w.calculate(fresh,state)
+        body=w.render(result,1327.75,"2026-10-27 ECB")
+        for snippet in ("90,350,000", "94,200,000", "+3,850,000", "$492.25",
+                        "순자산과 발행좌수", "+1,895.2백만달러"):
+            self.assertIn(snippet,body)
+
+    def test_inconsistent_issuer_assets_block_inflated_setting(self):
+        payload=snap("2026-10-26",iyw_shares=98_000_000,soxx_shares=94_200_000)
+        payload["SOXX"]["nav"]=492.25
+        payload["SOXX"]["net_assets"]=40_000_000_000
+        def fetch(t,meta,retry_budget=None):
+            return payload[t]
+        now=dt.datetime(2026,10,27,14,0,tzinfo=dt.timezone.utc)
+        with self.assertRaisesRegex(ValueError,"net assets differ"):
+            w.collect(now=now,fetcher=fetch)
+
+
 if __name__=="__main__":
     unittest.main()
