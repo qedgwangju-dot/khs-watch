@@ -122,7 +122,7 @@ def collect(now: dt.datetime | None = None, client=requests):
     s_last = max(rows["SPY"]) if rows["SPY"] else ""
     if recent_publication_gap(expected, g_last, s_last):
         raise OfficialPublicationPending(
-            f"Nasdaq GVIP/SPY published {g_last}/{s_last}; awaiting completed US session {expected}")
+            f"Nasdaq GVIP/SPY latest completed US session {expected} publication pending; observed {g_last}/{s_last}")
     return evaluate(rows["GVIP"], rows["SPY"], expected)
 
 
