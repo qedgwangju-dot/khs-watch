@@ -4613,6 +4613,15 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
+    if rule.key == "eu_china_hybrid_vehicle_safeguard" and any(
+        item.get("official_direct_verified") is True
+        and item.get("eu_hybrid_stage") == "government-understanding"
+        and str(item.get("link") or "") in {row[0] for row in EU_HYBRID_OFFICIAL}
+        for item in items
+    ):
+        return "공식 확인", "정부 간 수출조정 합의 공식 확인·35만 대와 시행 일정은 언론 보도"
+    # Sector/furniture import quotas have no confirmed implementing regulation.
+    # A verified Bloomberg story remains media-stage, not a final EU act.
     if rule.key == MOFCOM_TECH_48["key"] and any(
         item.get("official_direct_verified") is True
         and item.get("mofcom_tech_48_stage") == "draft-with-registration-active"
