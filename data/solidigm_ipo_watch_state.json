@@ -112,14 +112,16 @@
   "ipo_source_link_version": 1,
   "_delivery": {
     "id": "1affa0c654bd98a6f045e68d730dd1d1cc9ef2962ad7a088020a5e4a1e87e615",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-28T08:13:48+09:00",
     "chunks": [
       "🚨 <b>솔리다임 IPO 검토 중단 — 공식 발표</b>\n━━━━━━━━━━━━━━━━\n• SK하이닉스 2026년 10월 23일 공식 발표: 솔리다임의 Pre-IPO·IPO 검토를 중단했습니다.\n• 10월 8일 주관사·2027 상장·공모 추정액은 과거 보도이며 현재 진행 중인 확정 공모계획이 아닙니다.\n• 미국 공장 투자 필요성은 유지되며, 직접 출자·차입·협력투자 등 자금조달 대안을 계속 평가합니다.\n• 향후 공식적인 IPO 검토 재개가 확인되지 않으면 과거 주관사 선정 보도로 IPO 단계를 복원하지 않습니다.\n• 이번 변화: 상장 단계 대표주관사·주관단 선정→기업공개 검토 중단(회사 공식) · 신뢰보도→회사·SEC 공식 확인\n• 공식 원문: <a href=\"https://news.skhynix.com/en/fact-12/\">원문</a>\n• 조회: 2026-10-28 08:13 KST",
       "🚨 <b>솔리다임 미국 NAND 공장·다롄 장비 허가 감시</b>\n━━━━━━━━━━━━━━━━\n• 단계: <b>미국 상무부 협상·검토(투자 미확정)</b>\n• 총사업비 협상안: <b>450억달러(약 59조7,488억원)</b> (회사 확정 설비투자 아님)\n• 장기 확대 가능성: 1,000억달러(약 132조7,750억원) (추가 보도상 가능성, 투자 약정 아님)\n• 다롄 장비 수출허가: <b>requested_reported</b>\n• 연결구조: 중국 다롄 장비 반입 허가→판매량·현금창출 확대→미국 공장 투자재원 마련(업계 보도상의 제안)\n• 부지·공정: 뉴욕주 등 후보 / 2027년 착공 가능성 보도 / 부지 확정·최종 투자결정·실제 착공 미확인\n• 자금: 10월 23일 SK하이닉스 공식 IPO 검토 중단. 직접 출자·차입·외부 조달 비중은 미공개\n• 구분: 중국 NAND 웨이퍼 팹 증설·미국 NAND 신규 팹·대만 SSD 위탁조립은 각기 별도\n• 실패 경로: 미 상무부의 중국 기술·증설용 장비 허가 제한, 대규모 자금조달·전력·초순수·수율·고객 인증 지연\n• 후속 감시: BIS 허가·거부→회사 투자결정→부지·지원금·자금조달→장비 발주→착공→양산\n• 변화: <b>Bloomberg 450억달러(약 59조7,488억원) 미국 NAND 공장 협상안 신규 확인(투자 확정 아님)</b>\n• 원보도: <a href=\"https://www.bloomberg.com/news/articles/2026-10-27/solidigm-dangles-new-45-billion-us-plant-to-upgrade-china-site\">Bloomberg</a>\n• 원문 계보: Bloomberg 원보도·Bloomberg Law 재게시 같은 1개 사실 원천, 별개 2곳 아님\n• 기존 독립 취재: <a href=\"https://www.investing.com/news/stock-market-news/exclusivesk-hynix-conditions-new-us-factory-on-more-us-chip-equipment-exports-to-china-sources-say-4950396\">Reuters 10월 14일</a>\n• 회사 공식: <a href=\"https://news.skhynix.com/en/fact-12/\">SK하이닉스 10월 23일</a>\n• 미국 수출규정: <a href=\"https://www.bis.gov/press-release/department-commerce-closes-export-controls-loophole-foreign-owned-semiconductor-fabs-china\">BIS 공식</a>\n• 환율: 2026-10-27 일일 기준 · ECB/Frankfurter · 조회 2026-10-28 08:13 KST · 보조 API 2026-10-27 · 차이 0.19% · 일중 기준시각 차이 가능\n• 확인 시각: 2026-10-28 08:13 KST\n\n환율 기준: USD/KRW 1,327.7500원 · 2026-10-27 일일 기준 · ECB/Frankfurter · 조회 2026-10-28 08:13 KST · 보조 API 2026-10-27 · 차이 0.19% · 일중 기준시각 차이 가능"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      344
+    ],
     "candidate": {
       "watch_version": 5,
       "topic": "Solidigm IPO + eSSD manufacturing",
