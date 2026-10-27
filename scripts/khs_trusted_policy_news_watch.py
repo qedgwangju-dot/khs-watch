@@ -504,7 +504,7 @@ STORY_RULES = (
         impacts=("돈 버는 능력", "수급", "시간표"),
         paths=("양측 합의", "EU 집행규정 제안", "관보 확정·발효", "원산지별 배정", "통관·판매", "계약·실적"),
         follow_up="EU 집행위원회·EUR-Lex의 정식 시행규정과 CELEX 번호, 첫 적용일, 국별 수량(한국·일본 포함), PHEV/HEV 범위, 초과물량 관세 또는 통관중단, 현지생산 예외와 6% 연간 증가를 확인합니다.",
-        trusted_sources=("Reuters", "Bloomberg", "Associated Press", "The Guardian", "European Commission", "MOFCOM"),
+        trusted_sources=("Reuters", "Bloomberg", "Associated Press", "The Guardian", "European Commission", "MOFCOM", "EUR-Lex", "Official Journal of the European Union"),
     ),
     StoryRule(
         key="eu_china_sector_import_safeguards",
@@ -528,7 +528,7 @@ STORY_RULES = (
         impacts=("돈 버는 능력", "수급", "시간표"),
         paths=("EU 통계 평가", "세이프가드 조사", "규칙 제안", "관보·발효", "원산지별 통관·수주"),
         follow_up="EU 집행위원회·EUR-Lex의 품목별 조사개시·잠정·최종 시행규정, PET/에폭시/유리섬유·가구·기계류의 관세품목코드, 수입쿼터·관세할당 여부, 한국산 적용·예외, 중국 보복과 실제 수주 변화를 추적합니다.",
-        trusted_sources=("Reuters", "Bloomberg", "European Commission", "Financial Times", "South China Morning Post"),
+        trusted_sources=("Reuters", "Bloomberg", "European Commission", "Financial Times", "South China Morning Post", "EUR-Lex", "Official Journal of the European Union"),
     ),
     StoryRule(
         key="china_mofcom_2026_technology_catalogue48",
@@ -2426,7 +2426,7 @@ def semantic_policy_event_key(item: dict) -> str:
     ) and any(x in text for x in ("quota", "cap", "safeguard", "350,000", "350000", "쿼터", "수입 제한")):
         if any(x in title_text for x in ("draft implementing", "proposed implementation", "implementing proposal", "집행규정안")):
             return "eu-china-hybrid-safeguard-implementing-proposal-reported"
-        if any(x in title_text for x in ("comes into force", "enters into force", "becomes effective", "final regulation", "adopts implementing", "발효", "확정 시행")):
+        if any(x in title_text for x in ("comes into force", "enters into force", "becomes effective", "final regulation", "adopts implementing", "adopts safeguard", "official journal", "final quota", "발효", "확정 시행")):
             return "eu-china-hybrid-safeguard-implementation-reported"
         return "eu-china-hybrid-safeguard-understanding-2026-10-09"
     if eu_context and china_context and any(
@@ -2434,7 +2434,7 @@ def semantic_policy_event_key(item: dict) -> str:
     ) and any(x in text for x in ("safeguard", "import curbs", "import quotas", "import cap", "tariff", "수입 제한", "수입규제")):
         if any(x in title_text for x in ("proposes safeguard", "proposes import curbs", "launches safeguard investigation", "formal proposal", "조사 개시", "공식 제안")):
             return "eu-china-sector-safeguards-formal-proposal-reported"
-        if any(x in title_text for x in ("imposes", "adopts final safeguard", "final regulations", "enters into force", "발효", "최종 시행")):
+        if any(x in title_text for x in ("imposes", "adopts final safeguard", "final regulations", "enters into force", "provisional safeguard", "sets import quotas", "tariffs take effect", "발효", "최종 시행")):
             return "eu-china-sector-safeguards-implementation-reported"
         if "furniture" in text or "가구" in text:
             return "eu-china-sector-safeguards-furniture-2026-10-26"
