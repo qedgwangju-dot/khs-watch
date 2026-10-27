@@ -13,9 +13,11 @@ on:
       - "scripts/korea_credit_spread_watch.py"
       - "tests/test_korea_credit_spread_watch.py"
   schedule:
-    # 18:10, 19:10, 20:10, 21:10 (한국시간), 공식자료 공표 지연 대비 재조회
-    - cron: "10 18-21 * * 1-5"
-      timezone: "Asia/Seoul"
+    # UTC 명시: 한국시간 월~금 18:10 / 19:10 / 20:10 / 21:10
+    # GitHub 지연·누락 대비 보완 한국시간 22:37, 다음날(화~토) 07:37
+    - cron: "10 9-12 * * 1-5"
+    - cron: "37 13 * * 1-5"
+    - cron: "37 22 * * 1-5"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -123,6 +125,32 @@ jobs:
           done
           echo "텔레그램 전송은 확인됐으나 상태 저장이 실패했습니다. 다음 실행 전에 복구 필요." >&2
           exit 1
+      - name: Save verified latest official rates even when no alert was triggered
+        if: success() && env.DRY_RUN != 'true' && env.FORMAT_SAMPLE_SEND != 'true' && hashFiles('out/korea_credit_spread_watch_health_pending.json') != ''
+        run: |
+          set -euo pipefail
+          cp out/korea_credit_spread_watch_health_pending.json /tmp/korea_credit_spread_health_verified.json
+          git config user.name "korea-credit-spread-watch[bot]"
+          git config user.email "korea-credit-spread-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p data
+            cp /tmp/korea_credit_spread_health_verified.json data/korea_credit_spread_watch_health.json
+            git add data/korea_credit_spread_watch_health.json
+            if git diff --cached --quiet; then
+              echo "credit_spread_health_unchanged=true"
+              exit 0
+            fi
+            git commit -m "Record verified CP-CD daily market source checkpoint"
+            if git push origin HEAD:main; then
+              echo "credit_spread_health_persisted=true"
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "검증된 공식 금리 상태 저장 실패. 이전 시점으로 표시하지 마세요." >&2
+          exit 1
       - name: Mark one-off format verification receipt
         if: success() && env.FORMAT_SAMPLE_SEND == 'true' && hashFiles('out/korea_credit_spread_watch_confirmed.json') != ''
         run: |
@@ -135,6 +163,7 @@ jobs:
           name: korea-credit-spread-watch-${{ github.run_id }}
           path: |
             out/korea_credit_spread_watch_status.md
+            out/korea_credit_spread_watch_health_pending.json
             out/korea_credit_spread_watch_alert.html
             out/korea_credit_spread_watch_pending.json
             out/korea_credit_spread_watch_confirmed.json
