@@ -4534,6 +4534,27 @@
       "telegram_core_fact": "BNK금융그룹은 26일 실적공시를 통해 올 1~3분기 누적 그룹 연결 당기순이익(지배기업지분)이 6223억원으로, 전년 대비 1477억원(19.2%) 감소했다고 밝혔다.",
       "title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓"
     },
+    "core:0b3201449a02e9187338f8a7": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05070886645617184",
+      "source": "이데일리",
+      "source_body_digest": "ae39ed45fb9999278a8c67c0b4bc87bb5e827c39ab2cd9e1121d34cc873fa19d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80fa605b2357ebc87a38791ed924af012e4b36b367576b18cc02834ac8d018be",
+      "source_fact_keys": [
+        "source_fact:v1:14e770b700f128724204f73b2d71381e34b00e273578e179a5260cffd0900e93",
+        "source_fact:v1:b1e3f16d6d583c4bd6010e881348ad990e19504bdb2c5b2c7bbddba39ed19986"
+      ],
+      "source_published_kst": "2026-10-27T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 KCC는 이날 총 2000억원 회사채 발행을 위한 기관투자자 대상 수요예측에서 총 1조3800억원의 주문을 받았다. KCC(002380)(AA-)가 회사채 수요예측에서 모집액의 7배에 가까운 자금을 끌어모으며 흥행에 성공했다.",
+      "title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’"
+    },
     "core:0b613d96c5ee313c07ebc4da": {
       "first_seen_kst": "2026-10-12T22:29:29+09:00",
       "lanes": {
@@ -5250,6 +5271,28 @@
       "source_title": "AI챗봇 유해콘텐츠 신고 64% '검토 중'…최장 494일 방치 논란 | 연합뉴스",
       "telegram_core_fact": "김 의원은 \"아동·청소년 보호를 우려하는 신고가 1년 넘게 검토 단계에 머무는 동안 청소년 보호를 사업자의 자율규제에만 맡겨둘 수는 없다\"며 \"방미심위는 신고 접수 후 심의결정까지의 처리기한과 연장 기준을 마련하고 장기 미처리 민원의 지연 사유와 처리 예정일을 명확히 안내해야 한다\"고 말했다.",
       "title": "AI챗봇 유해콘텐츠 신고 64% '검토 중'…최장 494일 방치 논란 | 연합뉴스"
+    },
+    "core:0ca1a491e3a0b7f81a843992": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640765",
+      "source": "이투데이",
+      "source_body_digest": "dcdd6af588e4602732c21aa3692b9ff1b2c5781c8549ee6c1fdf9b44a63bb094",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df2599e56f35023edb82c85f34dd0f25bf5b6f0cf3574fb1725b3a6d6f4c5548",
+      "source_fact_keys": [
+        "source_fact:v1:15e8e036e2c77a2f78125afd871f3bfbf125a5676180f51e09b5ea0aa90283a2",
+        "source_fact:v1:d32ead2ddd272fac75149aacb92dde785f223c3bbd1acd30207140ab73843714",
+        "source_fact:v1:ecb55a6255f8f05b59ecbf0084d54a59e57660e39a64f0b79777c645b847f66b"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대",
+      "telegram_core_fact": "경진기계는 최근 급변하는 자동차 산업의 전동화 트렌드에 선제적으로 대응하기 위해 이번 영천 투자를 결정했으며, 이를 계기로 친환경 미래차 부품 분야의 생산 역량을 한층 더 끌어올릴 방침이다.",
+      "title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대"
     },
     "core:0cb2cc2667265c3ea93d0269": {
       "first_seen_kst": "2026-10-24T13:43:04+09:00",
@@ -20275,6 +20318,24 @@
       "source_title": "중진공·하림산업·은행 3곳, 전북 K-푸드 中企 지원 협력 | 연합뉴스",
       "telegram_core_fact": "중소벤처기업진흥공단은 하림산업, 신한은행, 하나은행, 한국수출입은행과 'K-푸드 상생협력 거버넌스' 구축을 위한 업무협약을 체결하고 전북 지역 식품 중소기업의 자금 조달과 수출, 인력 양성 등을 지원하기로 했다고 21일 밝혔다.",
       "title": "중진공·하림산업·은행 3곳, 전북 K-푸드 中企 지원 협력 | 연합뉴스"
+    },
+    "core:2a6540d017de06ff147c5760": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027162400008",
+      "source": "연합뉴스",
+      "source_body_digest": "38a9b5e58e005a71133ed928e249d8faaf7e6e72b42a399c20e8c282d9ecf52c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "인천도시가스 \"청라아이디씨피에프브이 주식 120억원에 취득\" | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 인천도시가스[034590]는 비주거용 건물 개발 및 공급업 업체 청라아이디씨피에프브이의 주식 30만주를 120억원에 취득한다고 27일 공시했다.",
+      "title": "인천도시가스 \"청라아이디씨피에프브이 주식 120억원에 취득\" | 연합뉴스"
     },
     "core:2a7289f6917fdf3581408289": {
       "first_seen_kst": "2026-10-12T21:44:29+09:00",
@@ -39824,6 +39885,26 @@
       "telegram_core_fact": "LG전자가 GS건설, 미국 액침냉각 전문기업 GRC와 손잡고 인공지능(AI) 데이터센터용 액침 냉각 기술 고도화와 표준설계 개발에 나선다. LG전자에 따르면 , 이들 3사는 서울 종로구 GS건설 본사에서 ‘데이터센터 액침냉각 기술과 설비 기술 개발 및 협력을 위한 업무협약(MOU)’을 체결했다.",
       "title": "LG전자, GS건설·美 GRC와 AI 데이터센터 액침냉각 기술 개발…차세대 냉각시장 공략 가속"
     },
+    "core:5673606afd36614a73d73d58": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182656",
+      "source": "매일경제",
+      "source_body_digest": "d1d015f1e4cc0fe808e7c5b6fc5825cac14daf5dbe1578adb2145bb1456ae2f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0a47cbfb9220a9e33429e5bf29aa5d516c2bfb0d49282e3c128ac73ef69b233",
+      "source_fact_keys": [
+        "source_fact:v1:0430bc750d165703dc8e106e04f0307431c883001382b12294c717d8fbfdd206"
+      ],
+      "source_published_kst": "2026-10-28T06:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각",
+      "telegram_core_fact": "50만 달러 규모 사모 유상증자 대금을 전액 수령했고, 8만6207주를 주당 5.80달러에 발행할 예정입니다. 조달 규모가 작아 재무 구조 개선 효과는 제한적인 반면, 신주 발행에 따른 지분 희석과 자금 조달 의존도 부담이 커지며 매도세가 나타나고 있습니다.",
+      "title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각"
+    },
     "core:568736b079c65b3086027219": {
       "first_seen_kst": "2026-10-27T01:10:06+09:00",
       "lanes": {
@@ -41466,6 +41547,24 @@
       "source_title": "中 YMTC, 기업용 SSD 낸드 출하량 2년간 8배 전망…삼전닉스 '맹추격'",
       "telegram_core_fact": "시장조사업체 카운터포인트에 따르면 YMTC의 올 2분기 글로벌 낸드 출하량 점유율은 비트 기준 약 17％로 지난해 1분기(11％)보다 6%포인트 올랐다.",
       "title": "中 YMTC, 기업용 SSD 낸드 출하량 2년간 8배 전망…삼전닉스 '맹추격'"
+    },
+    "core:5a6cd5f2e231e5720a2da376": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640693",
+      "source": "이투데이",
+      "source_body_digest": "6d2898d6cb508b97e418c8b5bcfea4efc19d6b7d57d270ac7776f3410bc23588",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T17:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 서버 열 식히고 폐열은 에너지로…귀뚜라미그룹, 냉동공조 기술 확대",
+      "telegram_core_fact": "귀뚜라미그룹이 AI 데이터센터 냉각과 폐열 회수, 원자력발전소용 냉동기 등으로 냉동공조 사업 영역을 확대한다. 냉동공조 계열사 3사를 중심으로 서버 발열 관리부터 에너지 재활용, 설비 관리까지 관련 기술을 개발하며 산업용 냉난방 시장에 대응한다.",
+      "title": "AI 서버 열 식히고 폐열은 에너지로…귀뚜라미그룹, 냉동공조 기술 확대"
     },
     "core:5a72d555d83824a3b59c8f0d": {
       "first_seen_kst": "2026-10-13T12:38:24+09:00",
@@ -78843,6 +78942,27 @@
       "telegram_core_fact": "이형일 경제부총리 겸 재정경제부 장관이 반도체 호황이 적어도 내년까지 이어질 것으로 전망했다. 이 부총리는 \"현재로서는 적어도 내년까지 이런 성장세를 유지할 수 있다고 본다\"며 \"반도체 수요와 공급 간 격차가 여전히 매우 크고 공급 능력도 계속 확대되는 과정이기 때문\"이라고 말했다.",
       "title": "이형일 \"반도체 호황 적어도 내년까지…증시 변동성에도 견조\""
     },
+    "core:ab6138fa3be75619bc2a0e28": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843360",
+      "source": "뉴시스",
+      "source_body_digest": "3bd568e91fc5599a0dd157866cf5b178bc8dc0d2220196f5c0216202b738f98d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:677ed3a371c2c529e1f562e3fa4ba2675cf61943208d6ded510ee863590debf4",
+      "source_fact_keys": [
+        "source_fact:v1:73d1a0b912d69a287c97cf3679182a9bc27b3a0eb7f856ba481205d0448174e9",
+        "source_fact:v1:efe3de654096b410dfa9c515e1118ff422ceda9a08fb37b1b932d708a68ee1ad"
+      ],
+      "source_published_kst": "2026-10-27T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침",
+      "telegram_core_fact": "전남광주통합특별시가 앰코테크놀로지코리아㈜의 3조원 규모 증설 투자 계획에 맞춰 'RE100'(전력 100% 재생에너지 조달) 실현’에 함께 나선다.",
+      "title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침"
+    },
     "core:ab774527a3b7c9985df9fbb7": {
       "first_seen_kst": "2026-10-20T00:04:45+09:00",
       "lanes": {
@@ -109664,6 +109784,29 @@
       "source_title": "오리온, '카스타드' 해외 인기에 생산라인 증설…연3천억원 규모 | 연합뉴스",
       "telegram_core_fact": "오리온[271560]은 국내외 수요 증가에 대응해 카스타드 생산라인을 한국과 베트남, 인도에서 증설했다고 22일 밝혔다.",
       "title": "오리온, '카스타드' 해외 인기에 생산라인 증설…연3천억원 규모 | 연합뉴스"
+    },
+    "core:ee387109ef15d912852a098c": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843457",
+      "source": "뉴시스",
+      "source_body_digest": "5363f1c247ef1dc717a128fd79604248c0664a484dae54b3bf14be031db29400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a35fb48b76338c772b96549544005a43694603a7cb8024aca37969e3caef4a22",
+      "source_fact_keys": [
+        "source_fact:v1:098db413f26559ad0fa69f9184240ba656a721108f9a4b91ecc7249435e944a0",
+        "source_fact:v1:1d665ded323493d827f5a5acf59c7acd167c33db8249c5ae36ba56019b81adf9",
+        "source_fact:v1:5c5383c00aaebacc65711c3bf83e6881f438d175c7c9099c0ddbf85af3502730",
+        "source_fact:v1:c0a468877a3f8af2d5d82bec5f185e58cf07012e82a576c37052beeda5ba3fa7"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성",
+      "telegram_core_fact": "iM금융그룹은 실적 발표를 통해 2026년도 3분기(누적) 지배주주지분 당기순이익 4163억원을 달성했다고 27일 밝혔다.",
+      "title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성"
     },
     "core:ee3bc1c687cc3786a6ee3684": {
       "first_seen_kst": "2026-10-20T21:25:35+09:00",
@@ -146520,6 +146663,28 @@
       "source_title": "일본 화성 위성 탐사선 발사 성공⋯사상 첫 시료 채취 시도",
       "telegram_core_fact": "(미나미타네(일본)/로이터연합뉴스 )일본이 화성의 위성 포보스에서 토양과 암석을 채취해 지구로 가져오는 탐사선 발사에 성공해 사상 처음으로 화성 위성에서 시료를 채취해 지구로 가져오는 임무에 착수했다.",
       "title": "일본 화성 위성 탐사선 발사 성공⋯사상 첫 시료 채취 시도"
+    },
+    "fact:063b8986f827c016071f7149": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640765",
+      "source": "이투데이",
+      "source_body_digest": "dcdd6af588e4602732c21aa3692b9ff1b2c5781c8549ee6c1fdf9b44a63bb094",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df2599e56f35023edb82c85f34dd0f25bf5b6f0cf3574fb1725b3a6d6f4c5548",
+      "source_fact_keys": [
+        "source_fact:v1:15e8e036e2c77a2f78125afd871f3bfbf125a5676180f51e09b5ea0aa90283a2",
+        "source_fact:v1:d32ead2ddd272fac75149aacb92dde785f223c3bbd1acd30207140ab73843714",
+        "source_fact:v1:ecb55a6255f8f05b59ecbf0084d54a59e57660e39a64f0b79777c645b847f66b"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대",
+      "telegram_core_fact": "경진기계는 최근 급변하는 자동차 산업의 전동화 트렌드에 선제적으로 대응하기 위해 이번 영천 투자를 결정했으며, 이를 계기로 친환경 미래차 부품 분야의 생산 역량을 한층 더 끌어올릴 방침이다.",
+      "title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대"
     },
     "fact:06404cae290d6205a5fd302e": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
@@ -205124,6 +205289,27 @@
       "telegram_core_fact": "이번 사태에 대해 AI 수요 자체의 붕괴라기보단 데이터센터 건설에 투입되는 수백억달러 규모 차입금을 시장이 다시 평가하기 시작한 신호라는 진단이 나온다.",
       "title": "\"AI 인프라 70조 빚 감당 되나?\"…코어위브 사태에 쏟아진 우려"
     },
+    "fact:8005a55d719024fbbf8e04fc": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843360",
+      "source": "뉴시스",
+      "source_body_digest": "3bd568e91fc5599a0dd157866cf5b178bc8dc0d2220196f5c0216202b738f98d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:677ed3a371c2c529e1f562e3fa4ba2675cf61943208d6ded510ee863590debf4",
+      "source_fact_keys": [
+        "source_fact:v1:73d1a0b912d69a287c97cf3679182a9bc27b3a0eb7f856ba481205d0448174e9",
+        "source_fact:v1:efe3de654096b410dfa9c515e1118ff422ceda9a08fb37b1b932d708a68ee1ad"
+      ],
+      "source_published_kst": "2026-10-27T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침",
+      "telegram_core_fact": "전남광주통합특별시가 앰코테크놀로지코리아㈜의 3조원 규모 증설 투자 계획에 맞춰 'RE100'(전력 100% 재생에너지 조달) 실현’에 함께 나선다.",
+      "title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침"
+    },
     "fact:800f18241531761d5d8a46f0": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
       "lanes": {
@@ -211698,6 +211884,27 @@
       "source_title": "금감원 \"바젤위, 한국 은행 자본규제 평가에 '최고등급' 부여\"",
       "telegram_core_fact": "바젤위원회는 회원국의 은행 건전성 규제가 국제기준에 맞게 도입됐는지 확인하기 위해 규제이행평가(RCAP)를 실시하고 있다.",
       "title": "금감원 \"바젤위, 한국 은행 자본규제 평가에 '최고등급' 부여\""
+    },
+    "fact:8c340561f359872e04282394": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05070886645617184",
+      "source": "이데일리",
+      "source_body_digest": "ae39ed45fb9999278a8c67c0b4bc87bb5e827c39ab2cd9e1121d34cc873fa19d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80fa605b2357ebc87a38791ed924af012e4b36b367576b18cc02834ac8d018be",
+      "source_fact_keys": [
+        "source_fact:v1:14e770b700f128724204f73b2d71381e34b00e273578e179a5260cffd0900e93",
+        "source_fact:v1:b1e3f16d6d583c4bd6010e881348ad990e19504bdb2c5b2c7bbddba39ed19986"
+      ],
+      "source_published_kst": "2026-10-27T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 KCC는 이날 총 2000억원 회사채 발행을 위한 기관투자자 대상 수요예측에서 총 1조3800억원의 주문을 받았다. KCC(002380)(AA-)가 회사채 수요예측에서 모집액의 7배에 가까운 자금을 끌어모으며 흥행에 성공했다.",
+      "title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’"
     },
     "fact:8c6c9dcf7cacec5a06ab0bee": {
       "first_seen_kst": "2026-10-06T16:20:22+09:00",
@@ -218784,6 +218991,29 @@
       "telegram_core_fact": "워싱턴 트러스트 뱅코프(WASH)는 2026년 3분기 순이익이 1940만 달러로 전년비 78.7% 증가했고, 희석 주당순이익(EPS)은 1.01달러로 전년 동기(0.56달러)보다 80.4% 늘었다고 10월 19일 발표했다. 직전 분기와 비교하면 순이익은 340만 달러(21%), 희석 EPS는 0.18달러 각각 증가했다.",
       "title": "워싱턴 트러스트 뱅코프, 3분기 희석 EPS 1.01달러..전년비 80% 증가"
     },
+    "fact:99805ffbb521d6b2d296e065": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843457",
+      "source": "뉴시스",
+      "source_body_digest": "5363f1c247ef1dc717a128fd79604248c0664a484dae54b3bf14be031db29400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a35fb48b76338c772b96549544005a43694603a7cb8024aca37969e3caef4a22",
+      "source_fact_keys": [
+        "source_fact:v1:098db413f26559ad0fa69f9184240ba656a721108f9a4b91ecc7249435e944a0",
+        "source_fact:v1:1d665ded323493d827f5a5acf59c7acd167c33db8249c5ae36ba56019b81adf9",
+        "source_fact:v1:5c5383c00aaebacc65711c3bf83e6881f438d175c7c9099c0ddbf85af3502730",
+        "source_fact:v1:c0a468877a3f8af2d5d82bec5f185e58cf07012e82a576c37052beeda5ba3fa7"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성",
+      "telegram_core_fact": "iM금융그룹은 실적 발표를 통해 2026년도 3분기(누적) 지배주주지분 당기순이익 4163억원을 달성했다고 27일 밝혔다.",
+      "title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성"
+    },
     "fact:998863bc6d79f61591cf3a63": {
       "first_seen_kst": "2026-10-19T20:38:33+09:00",
       "lanes": {
@@ -219052,6 +219282,26 @@
       ],
       "source_published_kst": "2026-10-05T21:34+09:00",
       "title": "北지뢰에 '대북 사이버 독자제재' 내부 검토…외교부·통일부 이견"
+    },
+    "fact:9a18554cd7deadcf3bb56cbd": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182656",
+      "source": "매일경제",
+      "source_body_digest": "d1d015f1e4cc0fe808e7c5b6fc5825cac14daf5dbe1578adb2145bb1456ae2f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0a47cbfb9220a9e33429e5bf29aa5d516c2bfb0d49282e3c128ac73ef69b233",
+      "source_fact_keys": [
+        "source_fact:v1:0430bc750d165703dc8e106e04f0307431c883001382b12294c717d8fbfdd206"
+      ],
+      "source_published_kst": "2026-10-28T06:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각",
+      "telegram_core_fact": "50만 달러 규모 사모 유상증자 대금을 전액 수령했고, 8만6207주를 주당 5.80달러에 발행할 예정입니다. 조달 규모가 작아 재무 구조 개선 효과는 제한적인 반면, 신주 발행에 따른 지분 희석과 자금 조달 의존도 부담이 커지며 매도세가 나타나고 있습니다.",
+      "title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각"
     },
     "fact:9a34815dcee5c8aabb426978": {
       "first_seen_kst": "2026-10-19T07:05:38+09:00",
@@ -301384,6 +301634,28 @@
       "telegram_core_fact": "하이트진로에 따르면 기린 이치방 시보리의 2020∼2026년 연평균 판매량 증가율은 82.4%로 추산됐다.",
       "title": "하이트진로, 日맥주 '기린' 전주공장서 생산…판매 확대 추진 | 연합뉴스"
     },
+    "link:2f7c2d3d4ba4d5cb25ee3fce": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640765",
+      "source": "이투데이",
+      "source_body_digest": "dcdd6af588e4602732c21aa3692b9ff1b2c5781c8549ee6c1fdf9b44a63bb094",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df2599e56f35023edb82c85f34dd0f25bf5b6f0cf3574fb1725b3a6d6f4c5548",
+      "source_fact_keys": [
+        "source_fact:v1:15e8e036e2c77a2f78125afd871f3bfbf125a5676180f51e09b5ea0aa90283a2",
+        "source_fact:v1:d32ead2ddd272fac75149aacb92dde785f223c3bbd1acd30207140ab73843714",
+        "source_fact:v1:ecb55a6255f8f05b59ecbf0084d54a59e57660e39a64f0b79777c645b847f66b"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대",
+      "telegram_core_fact": "경진기계는 최근 급변하는 자동차 산업의 전동화 트렌드에 선제적으로 대응하기 위해 이번 영천 투자를 결정했으며, 이를 계기로 친환경 미래차 부품 분야의 생산 역량을 한층 더 끌어올릴 방침이다.",
+      "title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대"
+    },
     "link:2f9e75eeca8f2b320adf244f": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -319988,6 +320260,24 @@
       "telegram_core_fact": "재경부는 \"중동전쟁 장기화, 물가·금리 상승으로 민생 부담이 지속되고, 양극화와 잠재성장률 둔화 등 구조적 문제도 상존한다\"며 \"정부는 주거·일자리·서민금융 3대 핵심 사회정책 추진 등 양극화 완화 및 민생안정, 잠재성장률 반등에 총력을 다할 계획\"이라고 밝혔다.",
       "title": "성장 3%, 소득 4만弗 청신호 켜졌지만…민생 회복은 숙제"
     },
+    "link:4d4176d5ef00e171f613874a": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027162400008",
+      "source": "연합뉴스",
+      "source_body_digest": "38a9b5e58e005a71133ed928e249d8faaf7e6e72b42a399c20e8c282d9ecf52c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "인천도시가스 \"청라아이디씨피에프브이 주식 120억원에 취득\" | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 인천도시가스[034590]는 비주거용 건물 개발 및 공급업 업체 청라아이디씨피에프브이의 주식 30만주를 120억원에 취득한다고 27일 공시했다.",
+      "title": "인천도시가스 \"청라아이디씨피에프브이 주식 120억원에 취득\" | 연합뉴스"
+    },
     "link:4d5f073734505be8cb89c87a": {
       "first_seen_kst": "2026-09-20T08:23:48+09:00",
       "lanes": {
@@ -329544,6 +329834,24 @@
       "source_published_kst": "2026-10-03T20:30+09:00",
       "title": "AI 해킹에 비상 걸린 韓금융…은행 이어 현대캐피탈·예가람저축은행도 뚫렸다"
     },
+    "link:5bbb390215bfce502124fa6f": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640693",
+      "source": "이투데이",
+      "source_body_digest": "6d2898d6cb508b97e418c8b5bcfea4efc19d6b7d57d270ac7776f3410bc23588",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T17:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 서버 열 식히고 폐열은 에너지로…귀뚜라미그룹, 냉동공조 기술 확대",
+      "telegram_core_fact": "귀뚜라미그룹이 AI 데이터센터 냉각과 폐열 회수, 원자력발전소용 냉동기 등으로 냉동공조 사업 영역을 확대한다. 냉동공조 계열사 3사를 중심으로 서버 발열 관리부터 에너지 재활용, 설비 관리까지 관련 기술을 개발하며 산업용 냉난방 시장에 대응한다.",
+      "title": "AI 서버 열 식히고 폐열은 에너지로…귀뚜라미그룹, 냉동공조 기술 확대"
+    },
     "link:5bbedf469b2c8674b3b4c3be": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -338208,6 +338516,29 @@
       "source_title": "9월 주식·회사채 발행 28.5조…한달 새 75% 증가",
       "telegram_core_fact": "일반회사채 발행자금 가운데 차환 목적이 1조1799억원으로 68.2%를 차지했다.",
       "title": "9월 주식·회사채 발행 28.5조…한달 새 75% 증가"
+    },
+    "link:6a10bc0858d440006513893d": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843457",
+      "source": "뉴시스",
+      "source_body_digest": "5363f1c247ef1dc717a128fd79604248c0664a484dae54b3bf14be031db29400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a35fb48b76338c772b96549544005a43694603a7cb8024aca37969e3caef4a22",
+      "source_fact_keys": [
+        "source_fact:v1:098db413f26559ad0fa69f9184240ba656a721108f9a4b91ecc7249435e944a0",
+        "source_fact:v1:1d665ded323493d827f5a5acf59c7acd167c33db8249c5ae36ba56019b81adf9",
+        "source_fact:v1:5c5383c00aaebacc65711c3bf83e6881f438d175c7c9099c0ddbf85af3502730",
+        "source_fact:v1:c0a468877a3f8af2d5d82bec5f185e58cf07012e82a576c37052beeda5ba3fa7"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성",
+      "telegram_core_fact": "iM금융그룹은 실적 발표를 통해 2026년도 3분기(누적) 지배주주지분 당기순이익 4163억원을 달성했다고 27일 밝혔다.",
+      "title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성"
     },
     "link:6a12d49e8a9f8b82d1398aba": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
@@ -351637,6 +351968,27 @@
       "source_title": "AI데이터센터 ETF 20% 급락 '비명'…소프트웨어는 선방[ETF업&다운]",
       "telegram_core_fact": "인공지능(AI) 산업의 자금조달 불안이 확산하면서 미국 데이터센터 관련 상장지수펀드(ETF)가 일주일 새 20% 가까이 급락했다. 가장 낙폭이 컸던 데이터센터 ETF와 소프트웨어 ETF의 수익률 격차는 19.20%포인트에 달했다.",
       "title": "AI데이터센터 ETF 20% 급락 '비명'…소프트웨어는 선방[ETF업&다운]"
+    },
+    "link:7ef3f25c42962af930b8fa67": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05070886645617184",
+      "source": "이데일리",
+      "source_body_digest": "ae39ed45fb9999278a8c67c0b4bc87bb5e827c39ab2cd9e1121d34cc873fa19d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80fa605b2357ebc87a38791ed924af012e4b36b367576b18cc02834ac8d018be",
+      "source_fact_keys": [
+        "source_fact:v1:14e770b700f128724204f73b2d71381e34b00e273578e179a5260cffd0900e93",
+        "source_fact:v1:b1e3f16d6d583c4bd6010e881348ad990e19504bdb2c5b2c7bbddba39ed19986"
+      ],
+      "source_published_kst": "2026-10-27T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 KCC는 이날 총 2000억원 회사채 발행을 위한 기관투자자 대상 수요예측에서 총 1조3800억원의 주문을 받았다. KCC(002380)(AA-)가 회사채 수요예측에서 모집액의 7배에 가까운 자금을 끌어모으며 흥행에 성공했다.",
+      "title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’"
     },
     "link:7f03b23b74072ad8a6343c38": {
       "first_seen_kst": "2026-10-20T20:52:32+09:00",
@@ -388467,6 +388819,27 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03207846645582416",
       "source": "이데일리",
       "title": "中, 휴머노이드 로봇 IPO 속도조절…고평가·매출 지속성 점검"
+    },
+    "link:b8ff9f1d936cc87dd3a5cb48": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843360",
+      "source": "뉴시스",
+      "source_body_digest": "3bd568e91fc5599a0dd157866cf5b178bc8dc0d2220196f5c0216202b738f98d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:677ed3a371c2c529e1f562e3fa4ba2675cf61943208d6ded510ee863590debf4",
+      "source_fact_keys": [
+        "source_fact:v1:73d1a0b912d69a287c97cf3679182a9bc27b3a0eb7f856ba481205d0448174e9",
+        "source_fact:v1:efe3de654096b410dfa9c515e1118ff422ceda9a08fb37b1b932d708a68ee1ad"
+      ],
+      "source_published_kst": "2026-10-27T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침",
+      "telegram_core_fact": "전남광주통합특별시가 앰코테크놀로지코리아㈜의 3조원 규모 증설 투자 계획에 맞춰 'RE100'(전력 100% 재생에너지 조달) 실현’에 함께 나선다.",
+      "title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침"
     },
     "link:b910f58386889c338666322d": {
       "first_seen_kst": "2026-10-23T12:26:30+09:00",
@@ -429812,6 +430185,26 @@
       "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
       "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
     },
+    "link:fd7b16838f88e9261f49ab8c": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182656",
+      "source": "매일경제",
+      "source_body_digest": "d1d015f1e4cc0fe808e7c5b6fc5825cac14daf5dbe1578adb2145bb1456ae2f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0a47cbfb9220a9e33429e5bf29aa5d516c2bfb0d49282e3c128ac73ef69b233",
+      "source_fact_keys": [
+        "source_fact:v1:0430bc750d165703dc8e106e04f0307431c883001382b12294c717d8fbfdd206"
+      ],
+      "source_published_kst": "2026-10-28T06:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각",
+      "telegram_core_fact": "50만 달러 규모 사모 유상증자 대금을 전액 수령했고, 8만6207주를 주당 5.80달러에 발행할 예정입니다. 조달 규모가 작아 재무 구조 개선 효과는 제한적인 반면, 신주 발행에 따른 지분 희석과 자금 조달 의존도 부담이 커지며 매도세가 나타나고 있습니다.",
+      "title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각"
+    },
     "link:fd7d41a1a74728dec19d1b90": {
       "first_seen_kst": "2026-10-13T10:05:20+09:00",
       "lanes": {
@@ -444460,6 +444853,27 @@
       "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
       "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
       "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
+    },
+    "original:15380fe6eab81d9acba12d40": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843360",
+      "source": "뉴시스",
+      "source_body_digest": "3bd568e91fc5599a0dd157866cf5b178bc8dc0d2220196f5c0216202b738f98d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:677ed3a371c2c529e1f562e3fa4ba2675cf61943208d6ded510ee863590debf4",
+      "source_fact_keys": [
+        "source_fact:v1:73d1a0b912d69a287c97cf3679182a9bc27b3a0eb7f856ba481205d0448174e9",
+        "source_fact:v1:efe3de654096b410dfa9c515e1118ff422ceda9a08fb37b1b932d708a68ee1ad"
+      ],
+      "source_published_kst": "2026-10-27T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침",
+      "telegram_core_fact": "전남광주통합특별시가 앰코테크놀로지코리아㈜의 3조원 규모 증설 투자 계획에 맞춰 'RE100'(전력 100% 재생에너지 조달) 실현’에 함께 나선다.",
+      "title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침"
     },
     "original:1540ff6b50378bb1d85dc044": {
       "first_seen_kst": "2026-10-20T01:09:59+09:00",
@@ -461159,6 +461573,24 @@
       "source_published_kst": "2026-10-06T11:14+09:00",
       "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
+    "original:2fa5f463b1ef152202d2e9cf": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027162400008",
+      "source": "연합뉴스",
+      "source_body_digest": "38a9b5e58e005a71133ed928e249d8faaf7e6e72b42a399c20e8c282d9ecf52c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "인천도시가스 \"청라아이디씨피에프브이 주식 120억원에 취득\" | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 인천도시가스[034590]는 비주거용 건물 개발 및 공급업 업체 청라아이디씨피에프브이의 주식 30만주를 120억원에 취득한다고 27일 공시했다.",
+      "title": "인천도시가스 \"청라아이디씨피에프브이 주식 120억원에 취득\" | 연합뉴스"
+    },
     "original:2faa55f0138ec6fd5d9f9ed1": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
       "lanes": {
@@ -476241,6 +476673,29 @@
       "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
       "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
       "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
+    },
+    "original:473268e471cfd65cc9855207": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843457",
+      "source": "뉴시스",
+      "source_body_digest": "5363f1c247ef1dc717a128fd79604248c0664a484dae54b3bf14be031db29400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a35fb48b76338c772b96549544005a43694603a7cb8024aca37969e3caef4a22",
+      "source_fact_keys": [
+        "source_fact:v1:098db413f26559ad0fa69f9184240ba656a721108f9a4b91ecc7249435e944a0",
+        "source_fact:v1:1d665ded323493d827f5a5acf59c7acd167c33db8249c5ae36ba56019b81adf9",
+        "source_fact:v1:5c5383c00aaebacc65711c3bf83e6881f438d175c7c9099c0ddbf85af3502730",
+        "source_fact:v1:c0a468877a3f8af2d5d82bec5f185e58cf07012e82a576c37052beeda5ba3fa7"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성",
+      "telegram_core_fact": "iM금융그룹은 실적 발표를 통해 2026년도 3분기(누적) 지배주주지분 당기순이익 4163억원을 달성했다고 27일 밝혔다.",
+      "title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성"
     },
     "original:47354c4f75d35fe4b046d8be": {
       "first_seen_kst": "2026-10-15T16:25:35+09:00",
@@ -502716,6 +503171,26 @@
       "telegram_core_fact": "국내 증시 급락과 거래대금 감소에도 NH투자증권이 올해 3분기 전년비 30% 넘게 증가한 영업이익을 거뒀다. 금융투자업계에 따르면 NH투자증권의 올해 3분기 연결 기준 영업이익은 5211억원으로 전년비 33.2% 증가한 것으로 잠정 집계됐다.",
       "title": "NH투자證, 3분기 증시 급락에도 이익 질주"
     },
+    "original:728fc7c4409e63541ece5403": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182656",
+      "source": "매일경제",
+      "source_body_digest": "d1d015f1e4cc0fe808e7c5b6fc5825cac14daf5dbe1578adb2145bb1456ae2f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0a47cbfb9220a9e33429e5bf29aa5d516c2bfb0d49282e3c128ac73ef69b233",
+      "source_fact_keys": [
+        "source_fact:v1:0430bc750d165703dc8e106e04f0307431c883001382b12294c717d8fbfdd206"
+      ],
+      "source_published_kst": "2026-10-28T06:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각",
+      "telegram_core_fact": "50만 달러 규모 사모 유상증자 대금을 전액 수령했고, 8만6207주를 주당 5.80달러에 발행할 예정입니다. 조달 규모가 작아 재무 구조 개선 효과는 제한적인 반면, 신주 발행에 따른 지분 희석과 자금 조달 의존도 부담이 커지며 매도세가 나타나고 있습니다.",
+      "title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각"
+    },
     "original:7293487551853756e5644825": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -521749,6 +522224,27 @@
       ],
       "source_published_kst": "2026-10-06T12:15+09:00",
       "title": "세아베스틸, 로봇 구동 핵심 부품 소재 국산화…\"특수강 신사업 확장\""
+    },
+    "original:912f0dbd96a01290ea70a521": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05070886645617184",
+      "source": "이데일리",
+      "source_body_digest": "ae39ed45fb9999278a8c67c0b4bc87bb5e827c39ab2cd9e1121d34cc873fa19d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80fa605b2357ebc87a38791ed924af012e4b36b367576b18cc02834ac8d018be",
+      "source_fact_keys": [
+        "source_fact:v1:14e770b700f128724204f73b2d71381e34b00e273578e179a5260cffd0900e93",
+        "source_fact:v1:b1e3f16d6d583c4bd6010e881348ad990e19504bdb2c5b2c7bbddba39ed19986"
+      ],
+      "source_published_kst": "2026-10-27T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 KCC는 이날 총 2000억원 회사채 발행을 위한 기관투자자 대상 수요예측에서 총 1조3800억원의 주문을 받았다. KCC(002380)(AA-)가 회사채 수요예측에서 모집액의 7배에 가까운 자금을 끌어모으며 흥행에 성공했다.",
+      "title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’"
     },
     "original:9134cf9ee6cb669451852863": {
       "first_seen_kst": "2026-10-23T19:07:25+09:00",
@@ -565989,6 +566485,24 @@
       "telegram_core_fact": "자일럼(XYL)이 9월 30일 종료된 3분기 매출액이 22억100만 달러로 전년비 3% 감소했고, 같은 분기 일반회계기준(GAAP) 희석 주당순이익은 1.25달러로 34% 증가했다고 10월 27일 발표했다.",
       "title": "자일럼, 3분기 매출 22억 달러 3% 감소..연간 가이던스 하향"
     },
+    "original:d95a5a15038820295de3ca29": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640693",
+      "source": "이투데이",
+      "source_body_digest": "6d2898d6cb508b97e418c8b5bcfea4efc19d6b7d57d270ac7776f3410bc23588",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T17:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 서버 열 식히고 폐열은 에너지로…귀뚜라미그룹, 냉동공조 기술 확대",
+      "telegram_core_fact": "귀뚜라미그룹이 AI 데이터센터 냉각과 폐열 회수, 원자력발전소용 냉동기 등으로 냉동공조 사업 영역을 확대한다. 냉동공조 계열사 3사를 중심으로 서버 발열 관리부터 에너지 재활용, 설비 관리까지 관련 기술을 개발하며 산업용 냉난방 시장에 대응한다.",
+      "title": "AI 서버 열 식히고 폐열은 에너지로…귀뚜라미그룹, 냉동공조 기술 확대"
+    },
     "original:d95d569dce4024f170b3d583": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
@@ -566748,6 +567262,28 @@
       "source_title": "충남 서천 기산면서 산불…주불 진화",
       "telegram_core_fact": "(서천=뉴스1) 9일 오후 2시 53분께 충남 서천군 기산면 월기리 한 산에서 발생한 산불이 56분 만에 진화됐다. 당국은 잔불 진화를 마치는 즉시 산림보호법 제42조에 따라 투입해 정확한 산불 피해 면적과 재산 피해 등을 조사할 계획이다.",
       "title": "충남 서천 기산면서 산불…주불 진화"
+    },
+    "original:da69be0f7e92a5cd3cd8940a": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640765",
+      "source": "이투데이",
+      "source_body_digest": "dcdd6af588e4602732c21aa3692b9ff1b2c5781c8549ee6c1fdf9b44a63bb094",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df2599e56f35023edb82c85f34dd0f25bf5b6f0cf3574fb1725b3a6d6f4c5548",
+      "source_fact_keys": [
+        "source_fact:v1:15e8e036e2c77a2f78125afd871f3bfbf125a5676180f51e09b5ea0aa90283a2",
+        "source_fact:v1:d32ead2ddd272fac75149aacb92dde785f223c3bbd1acd30207140ab73843714",
+        "source_fact:v1:ecb55a6255f8f05b59ecbf0084d54a59e57660e39a64f0b79777c645b847f66b"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대",
+      "telegram_core_fact": "경진기계는 최근 급변하는 자동차 산업의 전동화 트렌드에 선제적으로 대응하기 위해 이번 영천 투자를 결정했으며, 이를 계기로 친환경 미래차 부품 분야의 생산 역량을 한층 더 끌어올릴 방침이다.",
+      "title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대"
     },
     "original:da706165a0b7806249d6299e": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -598104,6 +598640,26 @@
       "source_title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다",
       "telegram_core_fact": "지수가 상승했더라도 환노출형 상품은 원화 강세에 따른 환차손으로 손실을 기록한 반면 환헤지형 상품은 지수 상승분을 오롯이 반영하며 수익률 차이가 10%포인트 가까이 벌어진 모습이다.",
       "title": "환헤지 ETF 사길 잘했네…수익률 10%P 더 높았다"
+    },
+    "source_fact:0377a4eaf3474a50858f0fe4": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182656",
+      "source": "매일경제",
+      "source_body_digest": "d1d015f1e4cc0fe808e7c5b6fc5825cac14daf5dbe1578adb2145bb1456ae2f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0a47cbfb9220a9e33429e5bf29aa5d516c2bfb0d49282e3c128ac73ef69b233",
+      "source_fact_keys": [
+        "source_fact:v1:0430bc750d165703dc8e106e04f0307431c883001382b12294c717d8fbfdd206"
+      ],
+      "source_published_kst": "2026-10-28T06:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각",
+      "telegram_core_fact": "50만 달러 규모 사모 유상증자 대금을 전액 수령했고, 8만6207주를 주당 5.80달러에 발행할 예정입니다. 조달 규모가 작아 재무 구조 개선 효과는 제한적인 반면, 신주 발행에 따른 지분 희석과 자금 조달 의존도 부담이 커지며 매도세가 나타나고 있습니다.",
+      "title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각"
     },
     "source_fact:037c11ac722ac631259a461e": {
       "first_seen_kst": "2026-10-15T17:19:13+09:00",
@@ -670069,6 +670625,28 @@
       "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
       "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
       "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
+    },
+    "source_fact:1fa780e21edd9a346d65c9bf": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640765",
+      "source": "이투데이",
+      "source_body_digest": "dcdd6af588e4602732c21aa3692b9ff1b2c5781c8549ee6c1fdf9b44a63bb094",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df2599e56f35023edb82c85f34dd0f25bf5b6f0cf3574fb1725b3a6d6f4c5548",
+      "source_fact_keys": [
+        "source_fact:v1:15e8e036e2c77a2f78125afd871f3bfbf125a5676180f51e09b5ea0aa90283a2",
+        "source_fact:v1:d32ead2ddd272fac75149aacb92dde785f223c3bbd1acd30207140ab73843714",
+        "source_fact:v1:ecb55a6255f8f05b59ecbf0084d54a59e57660e39a64f0b79777c645b847f66b"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대",
+      "telegram_core_fact": "경진기계는 최근 급변하는 자동차 산업의 전동화 트렌드에 선제적으로 대응하기 위해 이번 영천 투자를 결정했으며, 이를 계기로 친환경 미래차 부품 분야의 생산 역량을 한층 더 끌어올릴 방침이다.",
+      "title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대"
     },
     "source_fact:1fa806d6581e76bd5556a978": {
       "first_seen_kst": "2026-10-11T10:13:01+09:00",
@@ -840243,6 +840821,27 @@
       "telegram_core_fact": "미국향 PAFC 수주 규모는 약 240~250MW, 유럽향 고체산화물 연료전지(SOFC)는 약 30MW로 추정됐다.",
       "title": "유진證 “두산퓨얼셀, 미·유럽 수주 대응 준비 완료⋯내년 하반기 흑자전환 기대”"
     },
+    "source_fact:5fbf85683ff89b0ff004176b": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843360",
+      "source": "뉴시스",
+      "source_body_digest": "3bd568e91fc5599a0dd157866cf5b178bc8dc0d2220196f5c0216202b738f98d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:677ed3a371c2c529e1f562e3fa4ba2675cf61943208d6ded510ee863590debf4",
+      "source_fact_keys": [
+        "source_fact:v1:73d1a0b912d69a287c97cf3679182a9bc27b3a0eb7f856ba481205d0448174e9",
+        "source_fact:v1:efe3de654096b410dfa9c515e1118ff422ceda9a08fb37b1b932d708a68ee1ad"
+      ],
+      "source_published_kst": "2026-10-27T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침",
+      "telegram_core_fact": "전남광주통합특별시가 앰코테크놀로지코리아㈜의 3조원 규모 증설 투자 계획에 맞춰 'RE100'(전력 100% 재생에너지 조달) 실현’에 함께 나선다.",
+      "title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침"
+    },
     "source_fact:5fc75367846f7054225fd05a": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
       "lanes": {
@@ -880478,6 +881077,29 @@
       "telegram_core_fact": "분석 결과 중동 리스크가 현실화해 고유가가 고착화될 경우, 내년 실질 국내총생산(GDP) 성장률은 기준 시나리오(유가 연평균 배럴당 76.7달러 내외) 대비 0.16%포인트(p) 하락하고, 소비자물가 상승률은 0.32%p 상승할 것으로 추정됐다.",
       "title": "\"중동 악화시 내년 성장률 0.16%p 깎이고 물가 0.32%p 올라\" | 연합뉴스"
     },
+    "source_fact:6fa06ac5f8343968a29e6bc2": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843457",
+      "source": "뉴시스",
+      "source_body_digest": "5363f1c247ef1dc717a128fd79604248c0664a484dae54b3bf14be031db29400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a35fb48b76338c772b96549544005a43694603a7cb8024aca37969e3caef4a22",
+      "source_fact_keys": [
+        "source_fact:v1:098db413f26559ad0fa69f9184240ba656a721108f9a4b91ecc7249435e944a0",
+        "source_fact:v1:1d665ded323493d827f5a5acf59c7acd167c33db8249c5ae36ba56019b81adf9",
+        "source_fact:v1:5c5383c00aaebacc65711c3bf83e6881f438d175c7c9099c0ddbf85af3502730",
+        "source_fact:v1:c0a468877a3f8af2d5d82bec5f185e58cf07012e82a576c37052beeda5ba3fa7"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성",
+      "telegram_core_fact": "iM금융그룹은 실적 발표를 통해 2026년도 3분기(누적) 지배주주지분 당기순이익 4163억원을 달성했다고 27일 밝혔다.",
+      "title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성"
+    },
     "source_fact:6fa0b3735250e5a4f1a1fb6b": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -904734,6 +905356,28 @@
       "source_title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도",
       "telegram_core_fact": "젤렌스키 대통령은 “러시아가 에너지 수출로 벌어들인 돈을 무기와 공격용 드론 생산에 쓸 것”이라며 미국의 경유 제재 완화 합의를 비판했다.",
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
+    },
+    "source_fact:78efdd989414b2da4fafe0b6": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640765",
+      "source": "이투데이",
+      "source_body_digest": "dcdd6af588e4602732c21aa3692b9ff1b2c5781c8549ee6c1fdf9b44a63bb094",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df2599e56f35023edb82c85f34dd0f25bf5b6f0cf3574fb1725b3a6d6f4c5548",
+      "source_fact_keys": [
+        "source_fact:v1:15e8e036e2c77a2f78125afd871f3bfbf125a5676180f51e09b5ea0aa90283a2",
+        "source_fact:v1:d32ead2ddd272fac75149aacb92dde785f223c3bbd1acd30207140ab73843714",
+        "source_fact:v1:ecb55a6255f8f05b59ecbf0084d54a59e57660e39a64f0b79777c645b847f66b"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대",
+      "telegram_core_fact": "경진기계는 최근 급변하는 자동차 산업의 전동화 트렌드에 선제적으로 대응하기 위해 이번 영천 투자를 결정했으며, 이를 계기로 친환경 미래차 부품 분야의 생산 역량을 한층 더 끌어올릴 방침이다.",
+      "title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대"
     },
     "source_fact:78f50366e269b126673087c8": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -936364,6 +937008,28 @@
       "source_title": "쓰리엠, 3분기 GAAP 희석 EPS 2.63달러..전년비 70% 증가",
       "telegram_core_fact": "쓰리엠(MMM)은 3분기 GAAP 기준 매출액이 65억8400만 달러로 전년비 1.0% 증가했고, GAAP 희석 주당순이익(EPS)은 2.63달러로 70% 늘었다고 10월 20일 발표했다.",
       "title": "쓰리엠, 3분기 GAAP 희석 EPS 2.63달러..전년비 70% 증가"
+    },
+    "source_fact:8573da8dd4496e8b7fa2af90": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640765",
+      "source": "이투데이",
+      "source_body_digest": "dcdd6af588e4602732c21aa3692b9ff1b2c5781c8549ee6c1fdf9b44a63bb094",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df2599e56f35023edb82c85f34dd0f25bf5b6f0cf3574fb1725b3a6d6f4c5548",
+      "source_fact_keys": [
+        "source_fact:v1:15e8e036e2c77a2f78125afd871f3bfbf125a5676180f51e09b5ea0aa90283a2",
+        "source_fact:v1:d32ead2ddd272fac75149aacb92dde785f223c3bbd1acd30207140ab73843714",
+        "source_fact:v1:ecb55a6255f8f05b59ecbf0084d54a59e57660e39a64f0b79777c645b847f66b"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대",
+      "telegram_core_fact": "경진기계는 최근 급변하는 자동차 산업의 전동화 트렌드에 선제적으로 대응하기 위해 이번 영천 투자를 결정했으며, 이를 계기로 친환경 미래차 부품 분야의 생산 역량을 한층 더 끌어올릴 방침이다.",
+      "title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대"
     },
     "source_fact:85751968983aedbdddbca71d": {
       "first_seen_kst": "2026-10-22T07:08:27+09:00",
@@ -1030449,6 +1031115,29 @@
       "telegram_core_fact": "RLI(RLI)는 3분기 비GAAP 기준 주당영업이익이 0.86달러로 전년 동기 0.82달러보다 4.9% 증가했으며, 합산비율은 86.2를 기록했다고 21일(현지시간) 발표했다.",
       "title": "RLI, 3분기 영업EPS 0.86달러..전년비 4.9% 증가"
     },
+    "source_fact:a9d8f589aaba623ad9183b9b": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843457",
+      "source": "뉴시스",
+      "source_body_digest": "5363f1c247ef1dc717a128fd79604248c0664a484dae54b3bf14be031db29400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a35fb48b76338c772b96549544005a43694603a7cb8024aca37969e3caef4a22",
+      "source_fact_keys": [
+        "source_fact:v1:098db413f26559ad0fa69f9184240ba656a721108f9a4b91ecc7249435e944a0",
+        "source_fact:v1:1d665ded323493d827f5a5acf59c7acd167c33db8249c5ae36ba56019b81adf9",
+        "source_fact:v1:5c5383c00aaebacc65711c3bf83e6881f438d175c7c9099c0ddbf85af3502730",
+        "source_fact:v1:c0a468877a3f8af2d5d82bec5f185e58cf07012e82a576c37052beeda5ba3fa7"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성",
+      "telegram_core_fact": "iM금융그룹은 실적 발표를 통해 2026년도 3분기(누적) 지배주주지분 당기순이익 4163억원을 달성했다고 27일 밝혔다.",
+      "title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성"
+    },
     "source_fact:a9d9469e849d5d1d417c6934": {
       "first_seen_kst": "2026-10-20T17:57:17+09:00",
       "lanes": {
@@ -1068821,6 +1069510,27 @@
       ],
       "source_published_kst": "2026-10-06T20:03+09:00",
       "title": "[TODAY테슬라]테슬라, 3분기 실적보단 로보택시·FSD 중요…‘중립’-골드만"
+    },
+    "source_fact:b83d82caa2236b42a76ac712": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843360",
+      "source": "뉴시스",
+      "source_body_digest": "3bd568e91fc5599a0dd157866cf5b178bc8dc0d2220196f5c0216202b738f98d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:677ed3a371c2c529e1f562e3fa4ba2675cf61943208d6ded510ee863590debf4",
+      "source_fact_keys": [
+        "source_fact:v1:73d1a0b912d69a287c97cf3679182a9bc27b3a0eb7f856ba481205d0448174e9",
+        "source_fact:v1:efe3de654096b410dfa9c515e1118ff422ceda9a08fb37b1b932d708a68ee1ad"
+      ],
+      "source_published_kst": "2026-10-27T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침",
+      "telegram_core_fact": "전남광주통합특별시가 앰코테크놀로지코리아㈜의 3조원 규모 증설 투자 계획에 맞춰 'RE100'(전력 100% 재생에너지 조달) 실현’에 함께 나선다.",
+      "title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침"
     },
     "source_fact:b84146cc263f4da3f16c19c8": {
       "first_seen_kst": "2026-10-10T16:57:05+09:00",
@@ -1152809,6 +1153519,29 @@
       "telegram_core_fact": "국내 기업은 톡신 해외 기술수출이나 현지 생산시설·합작법인 설립, 투자 유치 때마다 정부 승인을 필수로 거쳐야 했다.",
       "title": "수출 5억달러 눈앞 'K-톡신' 족쇄 풀리나…국가핵심기술 해제 '속도'"
     },
+    "source_fact:d8415b9a0574ea36b096842f": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843457",
+      "source": "뉴시스",
+      "source_body_digest": "5363f1c247ef1dc717a128fd79604248c0664a484dae54b3bf14be031db29400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a35fb48b76338c772b96549544005a43694603a7cb8024aca37969e3caef4a22",
+      "source_fact_keys": [
+        "source_fact:v1:098db413f26559ad0fa69f9184240ba656a721108f9a4b91ecc7249435e944a0",
+        "source_fact:v1:1d665ded323493d827f5a5acf59c7acd167c33db8249c5ae36ba56019b81adf9",
+        "source_fact:v1:5c5383c00aaebacc65711c3bf83e6881f438d175c7c9099c0ddbf85af3502730",
+        "source_fact:v1:c0a468877a3f8af2d5d82bec5f185e58cf07012e82a576c37052beeda5ba3fa7"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성",
+      "telegram_core_fact": "iM금융그룹은 실적 발표를 통해 2026년도 3분기(누적) 지배주주지분 당기순이익 4163억원을 달성했다고 27일 밝혔다.",
+      "title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성"
+    },
     "source_fact:d8437c53047c90ac999dd858": {
       "first_seen_kst": "2026-10-22T15:08:48+09:00",
       "lanes": {
@@ -1156246,6 +1156979,29 @@
       ],
       "source_published_kst": "2026-10-06T00:51+09:00",
       "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
+    },
+    "source_fact:d9896e0e4fc52ed484a4fac5": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843457",
+      "source": "뉴시스",
+      "source_body_digest": "5363f1c247ef1dc717a128fd79604248c0664a484dae54b3bf14be031db29400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a35fb48b76338c772b96549544005a43694603a7cb8024aca37969e3caef4a22",
+      "source_fact_keys": [
+        "source_fact:v1:098db413f26559ad0fa69f9184240ba656a721108f9a4b91ecc7249435e944a0",
+        "source_fact:v1:1d665ded323493d827f5a5acf59c7acd167c33db8249c5ae36ba56019b81adf9",
+        "source_fact:v1:5c5383c00aaebacc65711c3bf83e6881f438d175c7c9099c0ddbf85af3502730",
+        "source_fact:v1:c0a468877a3f8af2d5d82bec5f185e58cf07012e82a576c37052beeda5ba3fa7"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성",
+      "telegram_core_fact": "iM금융그룹은 실적 발표를 통해 2026년도 3분기(누적) 지배주주지분 당기순이익 4163억원을 달성했다고 27일 밝혔다.",
+      "title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성"
     },
     "source_fact:d99903ec020be590292130c4": {
       "first_seen_kst": "2026-10-21T22:56:44+09:00",
@@ -1181535,6 +1182291,27 @@
       "source_title": "한진, 중소상공인 물류 지원사업 3개 수행…수출·배송비 부담 완화",
       "telegram_core_fact": "한진은 소상공인 물류서비스 지원사업에서 기존 풀필먼트 이용이 어려운 소규모 물량 취급 업체와 수산물 등 보관이 어려운 화물을 고려해 3차 모집부터 '방문택배' 부문을 신설했다.",
       "title": "한진, 중소상공인 물류 지원사업 3개 수행…수출·배송비 부담 완화"
+    },
+    "source_fact:e359b929bd4d44dce92473ec": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05070886645617184",
+      "source": "이데일리",
+      "source_body_digest": "ae39ed45fb9999278a8c67c0b4bc87bb5e827c39ab2cd9e1121d34cc873fa19d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80fa605b2357ebc87a38791ed924af012e4b36b367576b18cc02834ac8d018be",
+      "source_fact_keys": [
+        "source_fact:v1:14e770b700f128724204f73b2d71381e34b00e273578e179a5260cffd0900e93",
+        "source_fact:v1:b1e3f16d6d583c4bd6010e881348ad990e19504bdb2c5b2c7bbddba39ed19986"
+      ],
+      "source_published_kst": "2026-10-27T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 KCC는 이날 총 2000억원 회사채 발행을 위한 기관투자자 대상 수요예측에서 총 1조3800억원의 주문을 받았다. KCC(002380)(AA-)가 회사채 수요예측에서 모집액의 7배에 가까운 자금을 끌어모으며 흥행에 성공했다.",
+      "title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’"
     },
     "source_fact:e35b6339e47800034d4a2cd0": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
@@ -1210439,25 +1211216,23 @@
     "source_fact:ee854045386e9ff81965133b": {
       "first_seen_kst": "2026-10-20T23:32:55+09:00",
       "lanes": {
-        "live": "2026-10-20T23:32:55+09:00"
+        "live": "2026-10-28T06:34:49+09:00"
       },
-      "last_seen_kst": "2026-10-20T23:32:55+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=04726486645614888",
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05070886645617184",
       "source": "이데일리",
-      "source_body_digest": "8a2112e4a3e0a7919458c8261a8d3bebbc8da4e70bd9d0d1027295747ce5d700",
+      "source_body_digest": "ae39ed45fb9999278a8c67c0b4bc87bb5e827c39ab2cd9e1121d34cc873fa19d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8fd4403f037a814146575966ce9ee8a742a1ae773182e9b4b4a8529350947962",
+      "source_fact_identity": "source_facts:v1:80fa605b2357ebc87a38791ed924af012e4b36b367576b18cc02834ac8d018be",
       "source_fact_keys": [
         "source_fact:v1:14e770b700f128724204f73b2d71381e34b00e273578e179a5260cffd0900e93",
-        "source_fact:v1:2d3b359de0f9028b862f44e9bce626812168786e9d2fc502df390c068194a5eb",
-        "source_fact:v1:6f5099d598aa8b18e9eabd429f022cfc3fc6ddfc9604623e912c408ccb6aef29",
-        "source_fact:v1:a28592e9f91c3504eb8e6561c8160a6890b1050b21dc1165dd4032ee873879c0"
+        "source_fact:v1:b1e3f16d6d583c4bd6010e881348ad990e19504bdb2c5b2c7bbddba39ed19986"
       ],
-      "source_published_kst": "2026-10-20T17:39+09:00",
+      "source_published_kst": "2026-10-27T17:27+09:00",
       "source_supply_terms": {},
-      "source_title": "[마켓인]롯데렌탈, 회사채에 6440억 몰려…목표액 4배",
-      "telegram_core_fact": "투자은행(IB) 업계에 따르면 롯데렌탈은 이날 총 1500억원 회사채 발행을 위한 기관투자자 대상 수요예측에서 총 6440억원의 주문을 받았다. 롯데렌탈은 희망 금리밴드로 전 구간 개별 민평금리 대비 -30bp(1bp=0.01%포인트)를~+30bp 제시했다.",
-      "title": "[마켓인]롯데렌탈, 회사채에 6440억 몰려…목표액 4배"
+      "source_title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 KCC는 이날 총 2000억원 회사채 발행을 위한 기관투자자 대상 수요예측에서 총 1조3800억원의 주문을 받았다. KCC(002380)(AA-)가 회사채 수요예측에서 모집액의 7배에 가까운 자금을 끌어모으며 흥행에 성공했다.",
+      "title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’"
     },
     "source_fact:ee87b9be3903c38e0d34b3a1": {
       "first_seen_kst": "2026-10-11T16:47:25+09:00",
@@ -1266968,6 +1267743,27 @@
       "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
       "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
     },
+    "title:15380fe6eab81d9acba12d40": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843360",
+      "source": "뉴시스",
+      "source_body_digest": "3bd568e91fc5599a0dd157866cf5b178bc8dc0d2220196f5c0216202b738f98d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:677ed3a371c2c529e1f562e3fa4ba2675cf61943208d6ded510ee863590debf4",
+      "source_fact_keys": [
+        "source_fact:v1:73d1a0b912d69a287c97cf3679182a9bc27b3a0eb7f856ba481205d0448174e9",
+        "source_fact:v1:efe3de654096b410dfa9c515e1118ff422ceda9a08fb37b1b932d708a68ee1ad"
+      ],
+      "source_published_kst": "2026-10-27T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침",
+      "telegram_core_fact": "전남광주통합특별시가 앰코테크놀로지코리아㈜의 3조원 규모 증설 투자 계획에 맞춰 'RE100'(전력 100% 재생에너지 조달) 실현’에 함께 나선다.",
+      "title": "전남광주시, '3조 투자' 앰코 증설 맞춰 RE100 실현 뒷받침"
+    },
     "title:1540ff6b50378bb1d85dc044": {
       "first_seen_kst": "2026-10-20T01:09:59+09:00",
       "lanes": {
@@ -1283933,6 +1284729,24 @@
       "source_published_kst": "2026-10-06T11:14+09:00",
       "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
+    "title:2fa5f463b1ef152202d2e9cf": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027162400008",
+      "source": "연합뉴스",
+      "source_body_digest": "38a9b5e58e005a71133ed928e249d8faaf7e6e72b42a399c20e8c282d9ecf52c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "인천도시가스 \"청라아이디씨피에프브이 주식 120억원에 취득\" | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 인천도시가스[034590]는 비주거용 건물 개발 및 공급업 업체 청라아이디씨피에프브이의 주식 30만주를 120억원에 취득한다고 27일 공시했다.",
+      "title": "인천도시가스 \"청라아이디씨피에프브이 주식 120억원에 취득\" | 연합뉴스"
+    },
     "title:2faa55f0138ec6fd5d9f9ed1": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
       "lanes": {
@@ -1299252,6 +1300066,29 @@
       "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
       "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
       "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
+    },
+    "title:473268e471cfd65cc9855207": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843457",
+      "source": "뉴시스",
+      "source_body_digest": "5363f1c247ef1dc717a128fd79604248c0664a484dae54b3bf14be031db29400",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a35fb48b76338c772b96549544005a43694603a7cb8024aca37969e3caef4a22",
+      "source_fact_keys": [
+        "source_fact:v1:098db413f26559ad0fa69f9184240ba656a721108f9a4b91ecc7249435e944a0",
+        "source_fact:v1:1d665ded323493d827f5a5acf59c7acd167c33db8249c5ae36ba56019b81adf9",
+        "source_fact:v1:5c5383c00aaebacc65711c3bf83e6881f438d175c7c9099c0ddbf85af3502730",
+        "source_fact:v1:c0a468877a3f8af2d5d82bec5f185e58cf07012e82a576c37052beeda5ba3fa7"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성",
+      "telegram_core_fact": "iM금융그룹은 실적 발표를 통해 2026년도 3분기(누적) 지배주주지분 당기순이익 4163억원을 달성했다고 27일 밝혔다.",
+      "title": "iM금융그룹, 올해 3분기 누적 당기순이익 4163억 달성"
     },
     "title:47354c4f75d35fe4b046d8be": {
       "first_seen_kst": "2026-10-15T16:25:35+09:00",
@@ -1326266,6 +1327103,26 @@
       "telegram_core_fact": "국내 증시 급락과 거래대금 감소에도 NH투자증권이 올해 3분기 전년비 30% 넘게 증가한 영업이익을 거뒀다. 금융투자업계에 따르면 NH투자증권의 올해 3분기 연결 기준 영업이익은 5211억원으로 전년비 33.2% 증가한 것으로 잠정 집계됐다.",
       "title": "NH투자證, 3분기 증시 급락에도 이익 질주"
     },
+    "title:728fc7c4409e63541ece5403": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182656",
+      "source": "매일경제",
+      "source_body_digest": "d1d015f1e4cc0fe808e7c5b6fc5825cac14daf5dbe1578adb2145bb1456ae2f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0a47cbfb9220a9e33429e5bf29aa5d516c2bfb0d49282e3c128ac73ef69b233",
+      "source_fact_keys": [
+        "source_fact:v1:0430bc750d165703dc8e106e04f0307431c883001382b12294c717d8fbfdd206"
+      ],
+      "source_published_kst": "2026-10-28T06:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각",
+      "telegram_core_fact": "50만 달러 규모 사모 유상증자 대금을 전액 수령했고, 8만6207주를 주당 5.80달러에 발행할 예정입니다. 조달 규모가 작아 재무 구조 개선 효과는 제한적인 반면, 신주 발행에 따른 지분 희석과 자금 조달 의존도 부담이 커지며 매도세가 나타나고 있습니다.",
+      "title": "차우차우클라우드, 소규모 사모 유상증자에 지분 희석 우려 부각"
+    },
     "title:7293487551853756e5644825": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -1345655,6 +1346512,27 @@
       ],
       "source_published_kst": "2026-10-06T12:15+09:00",
       "title": "세아베스틸, 로봇 구동 핵심 부품 소재 국산화…\"특수강 신사업 확장\""
+    },
+    "title:912f0dbd96a01290ea70a521": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05070886645617184",
+      "source": "이데일리",
+      "source_body_digest": "ae39ed45fb9999278a8c67c0b4bc87bb5e827c39ab2cd9e1121d34cc873fa19d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80fa605b2357ebc87a38791ed924af012e4b36b367576b18cc02834ac8d018be",
+      "source_fact_keys": [
+        "source_fact:v1:14e770b700f128724204f73b2d71381e34b00e273578e179a5260cffd0900e93",
+        "source_fact:v1:b1e3f16d6d583c4bd6010e881348ad990e19504bdb2c5b2c7bbddba39ed19986"
+      ],
+      "source_published_kst": "2026-10-27T17:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 KCC는 이날 총 2000억원 회사채 발행을 위한 기관투자자 대상 수요예측에서 총 1조3800억원의 주문을 받았다. KCC(002380)(AA-)가 회사채 수요예측에서 모집액의 7배에 가까운 자금을 끌어모으며 흥행에 성공했다.",
+      "title": "[마켓인]KCC, 회사채 수요예측에 1.4兆 몰려 ‘흥행’"
     },
     "title:9134cf9ee6cb669451852863": {
       "first_seen_kst": "2026-10-23T19:07:25+09:00",
@@ -1390966,6 +1391844,24 @@
       "telegram_core_fact": "자일럼(XYL)이 9월 30일 종료된 3분기 매출액이 22억100만 달러로 전년비 3% 감소했고, 같은 분기 일반회계기준(GAAP) 희석 주당순이익은 1.25달러로 34% 증가했다고 10월 27일 발표했다.",
       "title": "자일럼, 3분기 매출 22억 달러 3% 감소..연간 가이던스 하향"
     },
+    "title:d95a5a15038820295de3ca29": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640693",
+      "source": "이투데이",
+      "source_body_digest": "6d2898d6cb508b97e418c8b5bcfea4efc19d6b7d57d270ac7776f3410bc23588",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T17:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 서버 열 식히고 폐열은 에너지로…귀뚜라미그룹, 냉동공조 기술 확대",
+      "telegram_core_fact": "귀뚜라미그룹이 AI 데이터센터 냉각과 폐열 회수, 원자력발전소용 냉동기 등으로 냉동공조 사업 영역을 확대한다. 냉동공조 계열사 3사를 중심으로 서버 발열 관리부터 에너지 재활용, 설비 관리까지 관련 기술을 개발하며 산업용 냉난방 시장에 대응한다.",
+      "title": "AI 서버 열 식히고 폐열은 에너지로…귀뚜라미그룹, 냉동공조 기술 확대"
+    },
     "title:d95cc8b1f263e8ed81fce253": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
       "lanes": {
@@ -1391757,6 +1392653,28 @@
       "source_title": "트럼프 韓참여 압박 알래스카 LNG⋯사업비 최대 2배 가능성 [종합]",
       "telegram_core_fact": "알래스카 LNG 개발사인 글렌판은 사업비를 445억~545억달러(약 59조~72조원)로 추산했다.",
       "title": "트럼프 韓참여 압박 알래스카 LNG⋯사업비 최대 2배 가능성 [종합]"
+    },
+    "title:da69be0f7e92a5cd3cd8940a": {
+      "first_seen_kst": "2026-10-28T06:34:49+09:00",
+      "lanes": {
+        "live": "2026-10-28T06:34:49+09:00"
+      },
+      "last_seen_kst": "2026-10-28T06:34:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640765",
+      "source": "이투데이",
+      "source_body_digest": "dcdd6af588e4602732c21aa3692b9ff1b2c5781c8549ee6c1fdf9b44a63bb094",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df2599e56f35023edb82c85f34dd0f25bf5b6f0cf3574fb1725b3a6d6f4c5548",
+      "source_fact_keys": [
+        "source_fact:v1:15e8e036e2c77a2f78125afd871f3bfbf125a5676180f51e09b5ea0aa90283a2",
+        "source_fact:v1:d32ead2ddd272fac75149aacb92dde785f223c3bbd1acd30207140ab73843714",
+        "source_fact:v1:ecb55a6255f8f05b59ecbf0084d54a59e57660e39a64f0b79777c645b847f66b"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대",
+      "telegram_core_fact": "경진기계는 최근 급변하는 자동차 산업의 전동화 트렌드에 선제적으로 대응하기 위해 이번 영천 투자를 결정했으며, 이를 계기로 친환경 미래차 부품 분야의 생산 역량을 한층 더 끌어올릴 방침이다.",
+      "title": "영천시-경진기계 92억 MOU 체결, 전기차·하이브리드 부품 생산 확대"
     },
     "title:da706165a0b7806249d6299e": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -1414611,5 +1415529,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-28T05:54:37+09:00"
+  "updated_at_kst": "2026-10-28T06:34:49+09:00"
 }
