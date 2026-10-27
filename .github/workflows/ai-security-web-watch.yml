@@ -624,6 +624,53 @@ jobs:
           print("ai_security_php_followup_and_attack_attempts_regression=PASS")
           PY
 
+      - name: Verify security research vs crime and event-stage dedup
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_security_web_watch import (
+              SECURITY_REFERENCE_EVENTS, cluster_alert_events, incident_fact,
+              material, normalize_item, same_event, security_case_key,
+              security_case_publisher_verified,
+          )
+          expected = [
+              "anthropic_cathedral:research_access_disclosed_20261026",
+              "claude_georgia:paid_aggregate_data_access_20261025",
+              "artex_storm0940:microsoft_campaign_disclosed_20261021",
+              "artex_korea_820m:police_referral_reported_20261026",
+              "php_cyfirma_scanning:216_hosts_21_nodes_assessed_20261024",
+          ]
+          rows = [normalize_item(dict(x)) for x in SECURITY_REFERENCE_EVENTS]
+          assert [security_case_key(x) for x in rows] == expected
+          assert all(material(x) and security_case_publisher_verified(x) for x in rows)
+          assert [x["severity"] for x in rows] == [2, 2, 3, 3, 2]
+          assert len(cluster_alert_events(rows)) == 5
+          assert not same_event(rows[2], rows[3]), "Storm-0940 and Korean criminal suspects conflated"
+          assert not same_event(rows[0], rows[1]), "Research access and Georgia paywall conflated"
+          assert "모델 가중치" in incident_fact(rows[0])
+          assert "개별 투표 기록" in incident_fact(rows[1])
+          assert "820만건" in incident_fact(rows[3])
+          assert "중간" in incident_fact(rows[4])
+          for i in range(len(rows)):
+              spoof = dict(SECURITY_REFERENCE_EVENTS[i])
+              spoof["publisher_url"] = "https://evil.example.org/news"
+              assert not material(normalize_item(spoof)), f"Brand spoof accepted: {i}"
+          reprint = dict(SECURITY_REFERENCE_EVENTS[0])
+          reprint["url"] = "https://www.washingtonpost.com/technology/2026/10/26/other-story/"
+          reprint["title"] = "Cathedral Anthropic security test: researchers in business systems"
+          assert same_event(normalize_item(reprint), rows[0])
+          speculative = normalize_item({
+              "kind":"news", "source":"Unknown blog",
+              "title":"Cathedral claims Anthropic attacked in 12 hours",
+              "description":"The Cathedral Anthropic AI security claim is unverified",
+              "url":"https://unverified.example.net/",
+              "publisher_url":"https://unverified.example.net/",
+          })
+          assert not material(speculative)
+          print("ai_security_research_crime_source_stage_dedup_regression=PASS")
+          PY
+
       - name: Verify alert overflow deferral
         shell: bash
         run: |

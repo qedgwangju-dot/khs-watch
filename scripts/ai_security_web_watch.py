@@ -62,12 +62,85 @@ PHP_PATCHED_RELEASES = "8.5.12·8.4.27·8.3.36·8.2.35"
 PHP_SESSION_CVE = "CVE-2026-115560"
 PHP_SESSION_ADVISORY_URL = "https://www.php.net/archive/2026.php#2026-10-23-1"
 
+# Dated source-backed references. These are five distinct observed milestones,
+# never generic allegations of a model breach or a confirmed DPRK compromise.
+# State keys, not headlines, prevent repeated transmissions on future runs.
+SECURITY_REFERENCE_EVENTS = (
+    {
+        "kind": "news", "query": "dated primary reporting reference",
+        "title": "Cathedral researchers reached Anthropic business systems in under 12 hours in security program",
+        "description": "Cathedral AI security test via third-party enterprise applications; Anthropic confirmed limited sales HR IT access, no Claude chats or model weights, no evidence of other attackers.",
+        "source": "The Washington Post",
+        "publisher_url": "https://www.washingtonpost.com/",
+        "url": "https://www.washingtonpost.com/technology/2026/10/26/researchers-cybersecurity-start-up-cathedral-got-inside-anthropic/",
+        "published_at": "2026-10-26T05:00:00+00:00",
+    },
+    {
+        "kind": "news", "query": "dated primary reporting reference",
+        "title": "Anthropic Claude accessed paid Georgia aggregate vote counts without human approval",
+        "description": "Claude bypassed a paid public data dashboard during internal statistical work; Anthropic says no voter registration records accessed or changed.",
+        "source": "Axios",
+        "publisher_url": "https://www.axios.com/",
+        "url": "https://www.axios.com/2026/10/25/anthropic-claude-georgia-voter-data",
+        "published_at": "2026-10-25T00:00:00+00:00",
+    },
+    {
+        "kind": "official", "query": "dated first-party threat report reference",
+        "title": "Microsoft reports Storm-0940 China-state aligned actor used ARTEX against hundreds of organizations",
+        "description": "Microsoft Threat Intelligence Oct 21: agentic ARTEX used in attacks and ConnectWise supply-chain compromise; some cloud privileged access obtained in under three hours, not all targets compromised.",
+        "source": "Microsoft Security",
+        "publisher_url": "https://www.microsoft.com/",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+        "published_at": "2026-10-21T00:00:00+00:00",
+    },
+    {
+        "kind": "news", "query": "dated police-reporting reference",
+        "title": "경찰 생성형 AI ARTEX 사용 국내 업체 90여곳 해킹 개인정보 820만건 탈취 혐의 일당 검거",
+        "description": "서울경찰청 2026-10-26 발표 보도: 약 60곳은 AI 이용, 820만건 유출 혐의, 총책 구속 송치와 6명 추가 수사; 국가배후 여부 미확정.",
+        "source": "뉴시스",
+        "publisher_url": "https://www.newsis.com/",
+        "url": "https://www.newsis.com/view/NISX20261026_0003841011",
+        "published_at": "2026-10-26T03:00:00+00:00",
+    },
+    {
+        "kind": "news", "query": "dated threat-intelligence reference",
+        "title": "CYFIRMA PHP2Shell advisory: 216 candidate target hosts and 21 active scanning nodes",
+        "description": "CYFIRMA Oct 24 v3 assesses targeted reconnaissance with 216 hosts and 21 scan nodes; Lazarus affiliation only moderate confidence, no confirmed mass compromise by this actor.",
+        "source": "CYFIRMA",
+        "publisher_url": "https://www.cyfirma.com/",
+        "url": "https://www.cyfirma.com/research/cyfirma-threat-advisory-suspected-dprk-campaign-staging-php2shell-targeting-against-global-php-infrastructure/",
+        "published_at": "2026-10-24T00:00:00+00:00",
+    },
+)
+
+SECURITY_CASE_LABELS = {
+    "anthropic_cathedral": ("Anthropic 제3자 업무시스템 보안 연구·모의침투", "Anthropic", 2),
+    "claude_georgia": ("Claude 승인 없는 유료 공개자료 접근·통제 이탈", "Anthropic", 2),
+    "artex_storm0940": ("ARTEX 국가 연계 실전 공격·공급망 침해", "Microsoft 위협정보", 3),
+    "artex_korea_820m": ("국내 AI 악용 개인정보 탈취·피의자 검거", "국내 수사기관 발표", 3),
+    "php_cyfirma_scanning": ("PHP2Shell 특정 표적 탐색·공격 준비 보고", "CYFIRMA", 2),
+}
+
+SECURITY_CASE_FACTS = {
+    "anthropic_cathedral": "Cathedral의 AI 보안 연구진이 12시간 이내에 Anthropic의 제3자 업무용 소프트웨어를 통해 영업·인사·정보기술 시스템 일부에 접근. 공식 연구 프로그램 내 활동이며 모델 가중치·고객 대화 탈취 및 외부 악용은 확인되지 않음. 범위·공개 준수 여부에는 이견",
+    "claude_georgia": "Claude가 조지아주 유료 공개 집계 투표수 자료에 사람의 지시 없이 접근. 유권자 등록 DB 침입·개별 투표 기록 조회·변경은 아니며, 접근 제한 우회와 에이전트 통제 실패로 분류",
+    "artex_storm0940": "Microsoft 위협보고: 중국 연계 Storm-0940이 ARTEX로 수백 개 조직을 표적화하고 일부 클라우드 권한 탈취·ConnectWise 공급망 침해에 관여. 표적 수를 실제 피해 조직 수로 환산 금지",
+    "artex_korea_820m": "서울경찰청 발표를 인용한 10월 26일 보도: 약 90곳 침입·개인정보 820만건 탈취 혐의, 그중 약 60곳 AI 사용, 총책 구속 송치. 경찰 수사 결과와 법원 유죄판결은 구분",
+    "php_cyfirma_scanning": "CYFIRMA 10월 24일 3차 권고문: PHP2Shell 표적 후보 216개 서버·스캔 노드 21개 보고. 라자루스 연계 신뢰도는 중간이며 이 행위자의 대규모 침해 성공은 미확인",
+}
+
+
 NEWS_QUERIES = [
     '("CVE-2026-109618" OR "CVE-2026-109619" OR "php2shell") (PHP OR patch OR exploitation)',
     '"php2shell" (CISA OR CERT-EU OR exploit OR update OR attack)',
     '"CVE-2026-115560" PHP (advisory OR patch OR fix OR exploit)',
     '("php2shell" OR "CVE-2026-109618") ("10 million" OR "100 million") attack attempts',
     '"AI agent" security vulnerability exploit "data leak" "prompt injection"',
+    '"Cathedral" "Anthropic" (security research OR breach OR bug bounty OR third-party)',
+    '"Claude" "Georgia" (vote counts OR voter data OR unauthorized OR paywall)',
+    '"ARTEX" "Storm-0940" (ConnectWise OR Microsoft OR breach OR supply chain)',
+    '"아르텍스" (820만 OR 90곳 OR 검거 OR 추가 수사)',
+    '"CYFIRMA" "PHP2Shell" (216 OR scanning OR Lazarus OR confirmed compromise)',
     '"Meta Muse" security vulnerability exploit privacy patch',
     '(OpenAI OR ChatGPT OR Codex) security vulnerability exploit "data leak"',
     '(Anthropic OR Claude) security vulnerability exploit "prompt injection"',
@@ -219,6 +292,7 @@ HARD_SECURITY_TERMS = (
 
 TRUSTED_SOURCE_HINTS = (
     "reuters", "the information", "axios", "associated press", "ap news",
+    "the washington post", "washington post", "뉴시스", "newsis", "cyfirma",
     "aitimes", "ai타임스", "ai times", "ai타임즈",
     "yonhap", "연합뉴스", "chosunbiz", "조선비즈",
     "the verge", "wired", "ars technica", "techcrunch", "fortune",
@@ -624,6 +698,61 @@ def source_official(source: str) -> bool:
     return any(hint in low for hint in OFFICIAL_SOURCE_HINTS)
 
 
+def security_case_stage(item: dict) -> tuple[str, str] | None:
+    """Return stable, distinct milestones; no inference of victim compromise."""
+    title = str(item.get("title") or "").lower()
+    context = f" {title} {item.get('description','')} ".lower()
+    if "cathedral" in context and "anthropic" in context and any(
+        x in context for x in ("security", "penetrat", "third-party", "third party", "12 hours", "12시간")
+    ):
+        if any(x in title for x in ("independent criminal exploitation confirmed", "confirmed external attacker", "외부 범죄 공격 확인")):
+            return "anthropic_cathedral", "external_abuse_confirmed"
+        return "anthropic_cathedral", "research_access_disclosed_20261026"
+    if "georgia" in context and ("claude" in context or "anthropic" in context) and any(
+        x in context for x in ("voter", "vote counts", "voting data", "투표", "유권자")
+    ) and any(x in context for x in ("unauthorized", "without human", "paywall", "paid", "승인 없이")):
+        return "claude_georgia", "paid_aggregate_data_access_20261025"
+    if "storm-0940" in context and "artex" in context:
+        return "artex_storm0940", "microsoft_campaign_disclosed_20261021"
+    if any(x in context for x in ("820만", "8.2 million")) and any(
+        x in context for x in ("90여", "90곳", "90개", "90 organizations", "90 companies")
+    ) and any(x in context for x in ("art ex", "artex", "아르텍스", "생성형 ai", "ai 해킹")):
+        return "artex_korea_820m", "police_referral_reported_20261026"
+    if "cyfirma" in context and "php2shell" in context and "216" in context and (
+        "scan" in context or "스캔" in context or "점검" in context
+    ):
+        return "php_cyfirma_scanning", "216_hosts_21_nodes_assessed_20261024"
+    return None
+
+
+def security_case_key(item: dict) -> str | None:
+    stage = security_case_stage(item)
+    return f"{stage[0]}:{stage[1]}" if stage else None
+
+
+def security_case_publisher_verified(item: dict) -> bool:
+    """Require authentic publisher domain for brand-labelled case reports."""
+    if not security_case_stage(item):
+        return True
+    source = str(item.get("source") or "").strip().lower()
+    url = str(item.get("publisher_url") or item.get("url") or "").strip()
+    try:
+        host = (urllib.parse.urlsplit(url).hostname or "").lower()
+    except ValueError:
+        return False
+    publisher_domains = (
+        (("washington post",), "washingtonpost.com"),
+        (("axios",), "axios.com"),
+        (("microsoft security", "microsoft threat intelligence"), "microsoft.com"),
+        (("cyfirma",), "cyfirma.com"),
+        (("뉴시스", "newsis"), "newsis.com"),
+    )
+    for aliases, domain in publisher_domains:
+        if any(alias in source for alias in aliases):
+            return host == domain or host.endswith("." + domain)
+    return source_trusted(source) and bool(host)
+
+
 def detect_vendor(text: str) -> str:
     low = f" {text.lower()} "
     for vendor, patterns in VENDOR_PATTERNS:
@@ -926,6 +1055,8 @@ def material(item: dict) -> bool:
         return False
     if is_policy_program_announcement(item):
         return False
+    if security_case_stage(item):
+        return source_trusted(item.get("source", "")) and security_case_publisher_verified(item)
     php_stage = php_critical_stage(item)
     if php_stage:
         return item.get("kind") in ("official", "official_direct") or source_trusted(item.get("source", ""))
@@ -1050,7 +1181,8 @@ def normalize_item(item: dict) -> dict:
     out["vendor"] = detect_vendor(combined)
     out["category"] = detect_category(combined)
     stage = replication_stage(item)
-    php_stage = php_critical_stage(item)
+    case_stage = security_case_stage(item)
+    php_stage = php_critical_stage(item) if not case_stage else None
     if stage == "research":
         out["category"] = "AI 자율복제·사물인터넷 모의평가"
         sev_num, sev_label = 1, "주의"
@@ -1081,11 +1213,17 @@ def normalize_item(item: dict) -> dict:
             "patch_released", "reported_exploitation", "confirmed_exploitation",
             "session_exploitation_confirmed",
         ) else (2, "높음")
+    if case_stage:
+        label, vendor, rating = SECURITY_CASE_LABELS[case_stage[0]]
+        out["category"] = label
+        out["vendor"] = vendor
+        sev_num, sev_label = rating, ("긴급" if rating == 3 else "높음")
+    out["security_case_key"] = security_case_key(item)
     out["php_stage"] = php_stage
     out["replication_stage"] = stage
     out["severity"] = sev_num
     out["severity_label"] = sev_label
-    out["official"] = source_official(item.get("source", "")) or item.get("kind") in ("official", "official_direct")
+    out["official"] = (source_official(item.get("source", "")) or item.get("kind") in ("official", "official_direct")) and security_case_publisher_verified(item)
     return out
 
 
@@ -1256,6 +1394,9 @@ def event_token_set(text: str) -> set[str]:
 
 
 def same_event(a: dict, b: dict) -> bool:
+    a_case, b_case = security_case_key(a), security_case_key(b)
+    if a_case or b_case:
+        return bool(a_case and a_case == b_case)
     a_php, b_php = php_critical_stage(a), php_critical_stage(b)
     if a_php or b_php:
         return bool(a_php and b_php and a_php == b_php)
@@ -1327,6 +1468,9 @@ def source_label(source: str) -> str:
 
 
 def incident_fact(item: dict) -> str | None:
+    case = security_case_stage(item)
+    if case:
+        return SECURITY_CASE_FACTS[case[0]]
     text = f" {item.get('title','')} {item.get('description','')} ".lower()
     php_stage = php_critical_stage(item)
     if php_stage == "session_advisory":
@@ -1750,6 +1894,7 @@ def main() -> int:
             "published_at": "2026-10-12T00:00:00+00:00",
         })
     raw_items.extend(direct_items)
+    raw_items.extend(dict(item) for item in SECURITY_REFERENCE_EVENTS)
     # Pinned first-party release prevents news-RSS outages from silently
     # omitting this verified urgent patch. The durable stage key stops replays.
     raw_items.append({
@@ -1778,6 +1923,7 @@ def main() -> int:
     replication_baseline_suppressed = 0
     insider_stages = dict(state.get("openai_insider_case_stages") or {})
     php_stages = dict(state.get("php_critical_stages") or {})
+    security_cases = dict(state.get("tracked_security_cases") or {})
     # Existing Oct-23 official disclosure is a historical baseline, not a new
     # patch or confirmed attack. Preserve every prior stage/seen entry.
     php_stages.setdefault("session_advisory", {
@@ -1795,6 +1941,12 @@ def main() -> int:
             continue
         if is_known_replication_research_baseline(item):
             replication_baseline_suppressed += 1
+            continue
+        case_key = security_case_key(item)
+        if case_key:
+            if case_key in security_cases:
+                continue
+            new_items.append(item)
             continue
         php_stage = php_critical_stage(item)
         if php_stage:
@@ -1839,6 +1991,15 @@ def main() -> int:
     # Record a PHP lifecycle stage only if the event was selected for delivery.
     for cluster in alert_events:
         for item in cluster:
+            case_key = security_case_key(item)
+            if case_key:
+                security_cases.setdefault(case_key, {
+                    "source_url": item.get("url"),
+                    "source": item.get("source"),
+                    "first_seen_at": now.isoformat(),
+                    "status": "reported milestone, preserve source confidence",
+                })
+                continue
             php_stage = php_critical_stage(item)
             if php_stage and php_stage != "initial_disclosure":
                 php_stages.setdefault(php_stage, {
@@ -1898,6 +2059,7 @@ def main() -> int:
         "quantum_mna_seen": quantum_seen,
         "openai_insider_case_stages": insider_stages,
         "php_critical_stages": php_stages,
+        "tracked_security_cases": security_cases,
         "last_collection": {
             "raw_items": len(raw_items),
             "direct_official_items": len(direct_items),
