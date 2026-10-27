@@ -54,6 +54,8 @@ EU_HYBRID_OFFICIAL = (
      ("混动汽车", "2024", "2025", "30.2万", "非歧视", "世贸组织")),
     ("https://english.mofcom.gov.cn/News/SpokesmansRemarks/art/2026/art_9c5d95356d984390af922150976cc853.html",
      ("hybrid vehicles", "2024", "2025", "302,000", "non-discrimination", "wto")),
+    ("https://audiovisual.ec.europa.eu/en/media/video/I-295803",
+     ("hybrid", "china", "commissioner", "09/10/2026")),
 )
 EU_SECTOR_PRESS_CASES = (
     ("https://businessmirror.com.ph/2026/10/26/eu-plans-to-hit-china-with-more-import-curbs/",
@@ -1734,12 +1736,14 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 if not has_required_terms(f"{rule.title} {clean_text(raw)}", rule):
                     print("trusted_policy_news=eu_hybrid_official_rejected reason=rule_terms_mismatch")
                     continue
+                official_is_eu = "audiovisual.ec.europa.eu" in url
+                primary_date = dt.datetime(2026, 10, 9, tzinfo=KST) if official_is_eu else baseline
                 items.append({
                     "title": rule.title,
                     "description": clean_text(raw)[:50000],
                     "link": url,
-                    "source": "중국 상무부",
-                    "published_kst": baseline.isoformat(timespec="seconds"),
+                    "source": "EU 집행위원회" if official_is_eu else "중국 상무부",
+                    "published_kst": primary_date.isoformat(timespec="seconds"),
                     "published_precision": "date",
                     "priority": 0,
                     "official_direct_verified": True,
