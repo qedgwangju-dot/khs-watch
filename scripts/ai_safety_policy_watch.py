@@ -73,6 +73,10 @@ NEWS_QUERIES = [
     '"PHP" "사이버위기 경보" (과학기술정보통신부 OR 과기정통부 OR KISA) (상향 OR 하향 OR 해제)',
     '"PHP" (범부처 종합대책 OR 의무 점검 OR 정부 지원 예산 OR 보안 의무화) (확정 OR 발표 OR 시행)',
     '네이버클라우드 S2W 샌즈랩 LG CNS 사이버보안 AI 계약 실증',
+    '("지니언스" OR "Genians") ("넥서스 프레임워크" OR "Nexus Framework") (고객 OR 계약 OR 수주 OR 실증 OR 상용 운영)',
+    '("케이사인" OR "KSign") ("전기차 충전" OR "EV charging") (취약점 OR 보안) (계약 OR 상용화 OR 고객 실증)',
+    '("샌즈랩" OR "SandLab") ("네이버클라우드" OR "보안 특화 AI") (유료 OR 계약 OR 실증 OR 수주 OR 상용)',
+
     '"AI 안전연구소" 한국 국제 표준 평가',
     # English company / paid-contract paths.
     '(NAVER Cloud OR S2W OR SandLab OR "LG CNS") cybersecurity AI contract pilot procurement',
@@ -142,6 +146,18 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "genians_nexus:development_complete_20260916": {
+        "source_url": "https://www.genians.co.kr/pr-room/press/260916",
+        "status": "2026-09-16 issuer announcement: Nexus Framework developed and demonstrated at GISEC; no disclosed incremental Nexus-only paid contract",
+    },
+    "ksign_evsec:demonstration_announced_20261020": {
+        "source_url": "https://www.newswire.co.kr/newsRead.php?no=1045070",
+        "status": "2026-10-20 issuer-distributed EV charging security analysis demo at KOAA SHOW Oct 21-23; demo is not customer purchase",
+    },
+    "ksign_sandslab:naver_security_model_selected_20260903": {
+        "source_url": "https://www.yna.co.kr/view/AKR20260903037252017",
+        "status": "2026-09-03 NAVER Cloud consortium selected; SandLab participating and KSign owns 42.01% of SandLab (not separate KSign contract)",
+    },
     "php_korea_response:caution_elevated_20261022": {
         "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148974113",
         "status": "2026-10-22 12:00 KST: 민간 분야 사이버위기 경보 관심→주의 상향; 기존 기준선",
@@ -181,6 +197,7 @@ OFFICIAL_SOURCE_HINTS = (
     "crowdstrike", "ibm", "nvidia", "microsoft", "openshell",
     "nemoclaw", "sentry", "sap", "canonical", "red hat",
     "trail of bits", "trailofbits.com", "cohere", "aisle",
+    "genians", "지니언스", "ksign", "케이사인", "sandslab",
 )
 
 TRUSTED_SOURCE_HINTS = (
@@ -192,6 +209,7 @@ TRUSTED_SOURCE_HINTS = (
     "associated press", "ap news", "guardian", "cbs news", "wall street journal", "wsj",
     "crowdstrike", "ibm", "nvidia", "microsoft", "mbc", "ytn",
     "trail of bits", "trailofbits.com", "cnbc",
+    "genians", "지니언스", "ksign", "케이사인", "sandslab", "newswire", "뉴스와이어", "thelec", "디일렉",
 )
 
 AI_TOPIC_TERMS = (
@@ -791,6 +809,113 @@ def php_korea_publisher_verified(item: dict) -> bool:
     ))
 
 
+
+def k_security_business_stage(item: dict) -> tuple[str, str] | None:
+    """Track commercial stages, never equate demonstrations with contracts."""
+    title = str(item.get("title") or "").lower()
+    context = f" {title} {item.get('description','')} ".lower()
+    nexus = (("genians" in context or "지니언스" in context) and
+             ("nexus framework" in context or "넥서스 프레임워크" in context))
+    evsec = (("ksign" in context or "케이사인" in context) and
+             any(x in context for x in ("전기차 충전", "ev charging", "charging infrastructure")) and
+             any(x in context for x in ("보안", "security", "취약점", "vulnerabil")))
+    sandslab = (("샌즈랩" in context or "sandslab" in context) and
+                any(x in context for x in ("네이버클라우드", "naver cloud", "navercloud", "보안 특화 ai",
+                                           "사이버보안 특화 ai", "cybersecurity foundation")))
+    if not (nexus or evsec or sandslab):
+        return None
+    group = "genians_nexus" if nexus else "ksign_evsec" if evsec else "ksign_sandslab"
+
+    # Speculative headlines cannot be promoted from plans to actual orders.
+    uncertain = any(x in title for x in (
+        "예정", "추진", "검토", "논의", "기대", "전망", "목표", "계획",
+        "may ", "could ", "plans ", "planning", "expected", "proposes",
+        "rumor", "rumour", "가능성", "협의",
+    ))
+    if not uncertain:
+        if any(x in title for x in (
+            "유료 계약 체결", "유료 공급 계약", "유료 공급계약", "고객 계약 체결",
+            "공급계약 체결", "공급 계약 체결", "상용 계약 체결", "신규 수주",
+            "signed paid", "signs paid", "signed customer contract",
+            "commercial contract signed", "wins enterprise contract",
+        )):
+            return group, "paid_customer_contract_reported"
+        if any(x in title for x in (
+            "현장 상용 운영 개시", "고객 운영 개시", "정식 서비스 출시",
+            "상용 서비스 출시", "정식 출시", "production deployment live",
+            "production rollout live", "commercial service launched",
+            "generally available",
+        )):
+            return group, "production_live_reported"
+        if any(x in title for x in (
+            "고객 실증 착수", "유료 실증 착수", "유료 실증 계약",
+            "유료 개념검증", "pilot customer signed",
+            "paid pilot begins", "customer pilot starts", "고객 검증 완료",
+        )):
+            return group, "customer_pilot_reported"
+    if group == "genians_nexus":
+        return group, "development_complete_20260916"
+    if group == "ksign_evsec":
+        return group, "demonstration_announced_20261020"
+    return group, "naver_security_model_selected_20260903"
+
+
+def k_security_business_publisher_verified(item: dict) -> bool:
+    """Check corporate-branded feeds against issuer/publisher domain."""
+    stage = k_security_business_stage(item)
+    if not stage:
+        return True
+    source = str(item.get("source") or "").strip().lower()
+    link = str(item.get("publisher_url") or item.get("url") or "").strip()
+    try:
+        host = (urllib.parse.urlsplit(link).hostname or "").lower()
+    except ValueError:
+        return False
+    if not host:
+        return False
+    def is_domain(domain):
+        return host == domain or host.endswith("." + domain)
+    if source in ("genians", "지니언스", "genians inc.", "genians inc"):
+        return is_domain("genians.co.kr")
+    if source in ("ksign", "케이사인"):
+        return is_domain("ksign.com") or is_domain("newswire.co.kr")
+    if source in ("sandslab", "샌즈랩"):
+        return is_domain("sandslab.io") or is_domain("sandslab.co.kr")
+    if source in ("naver cloud", "navercloud", "네이버클라우드"):
+        return is_domain("navercorp.com") or is_domain("ncloud.com")
+    publisher_domains = (
+        (("전자신문", "etnews"), "etnews.com"),
+        (("thelec", "디일렉", "더일렉"), "thelec.kr"),
+        (("연합뉴스", "yonhap"), "yna.co.kr"),
+        (("뉴스와이어", "newswire"), "newswire.co.kr"),
+        (("한국경제", "hankyung"), "hankyung.com"),
+        (("zdnet",), "zdnet.co.kr"),
+    )
+    for aliases, domain in publisher_domains:
+        if any(alias in source for alias in aliases):
+            return is_domain(domain)
+    return True
+
+
+def k_security_business_official(item: dict) -> bool:
+    stage = k_security_business_stage(item)
+    if not stage:
+        return True
+    source = str(item.get("source") or "").lower().strip()
+    try:
+        host = (urllib.parse.urlsplit(str(item.get("publisher_url") or item.get("url") or "")).hostname or "").lower()
+    except ValueError:
+        return False
+    if source in ("genians", "지니언스", "genians inc.", "genians inc"):
+        return host == "genians.co.kr" or host.endswith(".genians.co.kr")
+    if source in ("ksign", "케이사인"):
+        return host == "ksign.com" or host.endswith(".ksign.com")
+    if source in ("sandslab", "샌즈랩"):
+        return host in ("sandslab.io", "sandslab.co.kr") or host.endswith((".sandslab.io", ".sandslab.co.kr"))
+    if source in ("naver cloud", "navercloud", "네이버클라우드"):
+        return host in ("navercorp.com", "ncloud.com") or host.endswith((".navercorp.com", ".ncloud.com"))
+    return not source_official(source)
+
 def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """Classify a new *reported* milestone from the headline, never from a
     speculative paragraph about what could happen. No issuer/legislative
@@ -798,6 +923,10 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
+
+    commercial_stage = k_security_business_stage(item)
+    if commercial_stage:
+        return commercial_stage
 
     # The known October 22/23 notices are historical baselines, not fresh
     # regulations or a second emergency broadcast.
@@ -1053,6 +1182,13 @@ def detect_category(text: str) -> str:
         t in low for t in ("subpoena", "complaint", "investigation", "sues", "settlement", "consent order")
     ):
         return "FTC 프런티어 AI 소비자보호 조사·집행 단계"
+    commercial_stage = k_security_business_stage({"title": text})
+    if commercial_stage:
+        return {
+            "genians_nexus": "지니언스 AI 보안 운영 자동화·사업화 단계",
+            "ksign_evsec": "케이사인 충전 인프라 AI 취약점 검사·사업화 단계",
+            "ksign_sandslab": "샌즈랩·네이버클라우드 보안 특화 AI 사업화 단계",
+        }[commercial_stage[0]]
     if is_php_korea_policy({"title": text}):
         return "국내 PHP 보안위기 대응·정책 단계"
     if "cohere" in low and re.search(r"\baisle\b", low):
@@ -1089,6 +1225,13 @@ def detect_entity(text: str) -> str:
         if "openai" in low and "anthropic" in low:
             return "FTC–OpenAI·Anthropic"
         return "FTC–OpenAI" if "openai" in low else "FTC–Anthropic"
+    commercial_stage = k_security_business_stage({"title": text})
+    if commercial_stage:
+        return {
+            "genians_nexus": "지니언스",
+            "ksign_evsec": "케이사인",
+            "ksign_sandslab": "샌즈랩·네이버클라우드(케이사인 관계)",
+        }[commercial_stage[0]]
     if is_php_korea_policy({"title": text}):
         return "과학기술정보통신부·한국인터넷진흥원"
     if "cohere" in low and re.search(r"\baisle\b", low):
@@ -1188,6 +1331,8 @@ def material(item: dict) -> bool:
         return False
     milestone = tracked_policy_event_stage(item)
     if milestone:
+        if milestone[0] in ("genians_nexus", "ksign_evsec", "ksign_sandslab") and not k_security_business_publisher_verified(item):
+            return False
         if milestone[0] == "cohere_aisle" and not cohere_aisle_publisher_verified(item):
             return False
         if milestone[0] == "php_korea_response" and not php_korea_publisher_verified(item):
@@ -1257,7 +1402,9 @@ def normalize(item: dict) -> dict:
     out["entity"] = detect_entity(combined)
     out["official"] = (source_official(item.get("source","")) and
         cohere_aisle_publisher_verified(item) and crowdstrike_nvidia_publisher_verified(item)
-        and php_korea_publisher_verified(item))
+        and php_korea_publisher_verified(item)
+        and k_security_business_publisher_verified(item)
+        and k_security_business_official(item))
     return out
 
 
@@ -1626,7 +1773,27 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "국내 PHP 보안위기 대응·정책 단계":
+        if rep["category"] in (
+            "지니언스 AI 보안 운영 자동화·사업화 단계",
+            "케이사인 충전 인프라 AI 취약점 검사·사업화 단계",
+            "샌즈랩·네이버클라우드 보안 특화 AI 사업화 단계",
+        ):
+            stage = tracked_policy_event_stage(rep)
+            labels = {
+                "paid_customer_contract_reported": "유료 고객 공급계약 보도",
+                "customer_pilot_reported": "고객 실증·유료 검증 보도",
+                "production_live_reported": "고객 현장 상용 운영 개시 보도",
+            }
+            detail = labels.get(stage[1], "과거 공개 사업 재확인") if stage else "사업 단계 추가 검증"
+            lines.append(f"• <b>신규 단계</b>: {html.escape(detail)} · 공급계약 원문과 실제 매출을 별도 확인")
+            if stage and stage[0] == "genians_nexus":
+                lines.append("• <b>기존 기준선</b>: 2026년 9월 16일 Nexus Framework 개발 완료·GISEC 공개. 종전 NAC·EDR 유료 매출을 새 플랫폼 신규 매출로 오인 금지")
+            elif stage and stage[0] == "ksign_evsec":
+                lines.append("• <b>기존 기준선</b>: 2026년 10월 20일 충전 인프라 취약점 분석 솔루션 시연 발표. 시연은 유료 계약 아님")
+            else:
+                lines.append("• <b>기존 기준선</b>: 2026년 9월 3일 네이버클라우드 AI 보안 컨소시엄 선정. 샌즈랩은 케이사인 종속회사이나 케이사인 본체 직접 계약과 구분")
+            lines.append("• <b>실적 확인</b>: 개별 고객·계약액·검수·유료 운영 대수·유지보수·사용권 갱신·현금 회수·재계약 여부")
+        elif rep["category"] == "국내 PHP 보안위기 대응·정책 단계":
             stage = tracked_policy_event_stage(rep)
             labels = {
                 "warning_elevated_reported": "사이버위기 경보 경계 상향 보도",

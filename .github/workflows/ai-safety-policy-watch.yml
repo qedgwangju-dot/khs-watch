@@ -637,6 +637,60 @@ jobs:
           print("ai_policy_php_government_stage_and_source_regression=PASS")
           PY
 
+      - name: Verify K-security commercial stage, old baselines, and spoof guard
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_safety_policy_watch import (
+              POLICY_EVENT_BASELINES, k_security_business_stage,
+              k_security_business_publisher_verified, cluster_events,
+              material, normalize, tracked_policy_event_key,
+          )
+          def article(title, source="전자신문", publisher="https://www.etnews.com/", desc=""):
+              return normalize({
+                  "kind":"news", "title":title, "description":desc,
+                  "source":source, "url":publisher+"story",
+                  "publisher_url":publisher,
+              })
+          g=article("지니언스 넥서스 프레임워크 개발 완료, 중동 전시회 첫 공개")
+          k=article("케이사인 전기차 충전 인프라 보안 취약점 솔루션 시연")
+          s=article("네이버클라우드 샌즈랩 사이버보안 특화 AI 컨소시엄 선정")
+          expected=(
+              "genians_nexus:development_complete_20260916",
+              "ksign_evsec:demonstration_announced_20261020",
+              "ksign_sandslab:naver_security_model_selected_20260903",
+          )
+          assert tuple(tracked_policy_event_key(x) for x in (g,k,s)) == expected
+          assert all(key in POLICY_EVENT_BASELINES for key in expected)
+          assert all(material(x) for x in (g,k,s))
+          paid=article("지니언스 넥서스 프레임워크 중동 고객 유료 공급계약 체결")
+          planned=article("지니언스 넥서스 프레임워크 유료 공급계약 추진 전망")
+          pilot=article("케이사인 전기차 충전기 보안 고객 실증 착수")
+          spaid=article("네이버클라우드 샌즈랩 보안 특화 AI 유료 공급계약 체결")
+          assert tracked_policy_event_key(paid) == "genians_nexus:paid_customer_contract_reported"
+          assert tracked_policy_event_key(planned) == expected[0]
+          assert tracked_policy_event_key(pilot) == "ksign_evsec:customer_pilot_reported"
+          assert tracked_policy_event_key(spaid) == "ksign_sandslab:paid_customer_contract_reported"
+          assert len(cluster_events([g, paid])) == 2
+          assert len(cluster_events([k, pilot])) == 2
+          assert len(cluster_events([s, spaid])) == 2
+          assert tracked_policy_event_key(article("지니언스 AI 보안 플랫폼으로 해킹 탐지 대응 자동화")) is None
+          spoof=article("지니언스 넥서스 프레임워크 유료 공급계약 체결",
+                        source="지니언스",publisher="https://attacker.example/")
+          assert not k_security_business_publisher_verified(spoof)
+          assert not spoof["official"] and not material(spoof)
+          issuer=article("지니언스 넥서스 프레임워크 유료 공급계약 체결",
+                         source="지니언스",publisher="https://www.genians.co.kr/")
+          assert issuer["official"] and material(issuer)
+          fake_press=article("지니언스 넥서스 프레임워크 유료 공급계약 체결",
+                             source="전자신문",publisher="https://false-etnews.example.org/")
+          assert not material(fake_press), "Forged newspaper attribution was trusted"
+          true_press=article("지니언스 넥서스 프레임워크 유료 공급계약 체결",
+                             source="전자신문",publisher="https://www.etnews.com/")
+          assert material(true_press) and not true_press["official"]
+          print("ai_policy_k_security_commercial_stage_dedup_source_regression=PASS")
+          PY
+
       - name: Verify CrowdStrike NVIDIA software vs silicon commercialization stages
         shell: bash
         run: |
@@ -1382,23 +1436,35 @@ jobs:
                       "disable_web_page_preview":"true",
                   }).encode("utf-8")
                   req=urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage",data=payload,method="POST")
+                  # Timeout can occur after Telegram accepts a message. Reposting
+                  # after ambiguous errors risks duplicate alerts. Fail closed.
+                  import urllib.error
                   result=None
-                  last=None
                   for attempt in range(1,4):
                       try:
                           with urllib.request.urlopen(req,timeout=30) as r:
                               result=json.loads(r.read().decode("utf-8"))
-                          if result.get("ok"): break
-                          last=RuntimeError(str(result))
-                      except Exception as exc:
-                          last=exc
-                      if attempt<3: time.sleep(attempt*3)
+                          break
+                      except urllib.error.HTTPError as exc:
+                          if exc.code == 429 and attempt < 3:
+                              time.sleep(attempt*3)
+                              continue
+                          raise RuntimeError(f"Telegram HTTP {exc.code}, no automatic replay") from exc
+                      except (urllib.error.URLError, TimeoutError, OSError, ValueError) as exc:
+                          raise RuntimeError(
+                              "Telegram delivery outcome uncertain; verify history before any resend"
+                          ) from exc
                   if not result or not result.get("ok"):
-                      raise RuntimeError(f"Telegram send failed after 3 attempts: {last}")
-                  mid=(result.get("result") or {}).get("message_id")
-                  if mid is None:
-                      raise RuntimeError("Telegram success without message_id")
-                  ids.append({"kind":kind,"message_id":mid})
+                      raise RuntimeError("Telegram sendMessage returned non-success")
+                  response=result.get("result") or {}
+                  mid=response.get("message_id")
+                  response_chat_id=(response.get("chat") or {}).get("id")
+                  if mid is None or response_chat_id is None:
+                      raise RuntimeError("Telegram success without message_id or chat.id")
+                  if str(response_chat_id)!=str(chat_id):
+                      raise RuntimeError("Telegram chat.id mismatch, no state checkpoint")
+                  # Do not expose private numeric chat ID in public artifacts.
+                  ids.append({"kind":kind,"message_id":mid,"chat_id_verified":True})
 
           if alert.exists():
               alert_ids=[x for x in ids if x["kind"]=="alert"]
