@@ -319,6 +319,23 @@ def telegram(url,params=None):
     except urllib.error.URLError as exc:
         raise RuntimeError("Telegram 연결 실패: "+type(exc).__name__) from None
 
+def verify_telegram_route():
+    """실제 메시지를 보내지 않고 현재 봇·수신대화방 권한을 재확인한다."""
+    token=os.environ.get("TELEGRAM_BOT_TOKEN","").strip()
+    chat=os.environ.get("TELEGRAM_CHAT_ID","").strip()
+    if not token or not chat: raise RuntimeError("텔레그램 봇·수신 대화방 인증정보 누락")
+    who=telegram(f"https://api.telegram.org/bot{token}/getMe")
+    got=str((who.get("result") or {}).get("username") or "")
+    if who.get("ok") is not True or got.lower()!=BOT.lower():
+        raise RuntimeError("예상 텔레그램 봇과 현재 인증계정 불일치")
+    response=telegram(f"https://api.telegram.org/bot{token}/getChat",{"chat_id":chat})
+    target=response.get("result") or {}
+    if response.get("ok") is not True or not target.get("id"):
+        raise RuntimeError("Telegram getChat으로 수신 대화방 접근 확인 실패")
+    if re.fullmatch(r"-?\\d+",chat) and str(target.get("id"))!=chat:
+        raise RuntimeError("Telegram 수신 대화방 ID 불일치")
+    print(f"telegram_route_verified=true bot=@{got} destination_accessible=true no_message_sent=true")
+
 def send(now):
     token=os.environ.get("TELEGRAM_BOT_TOKEN","").strip()
     chat=os.environ.get("TELEGRAM_CHAT_ID","").strip()
@@ -397,7 +414,14 @@ def watch(now):
 if __name__=="__main__":
     try:
         now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
-        send(now) if sys.argv[1:]==["--send"] else watch(now)
+        if sys.argv[1:]==["--probe"]:
+            verify_telegram_route()
+        elif sys.argv[1:]==["--send"]:
+            send(now)
+        elif not sys.argv[1:]:
+            watch(now)
+        else:
+            raise ValueError("알 수 없는 실행 인자; 경보 중단")
     except Exception as exc:
         print(f"credit_watch_failed={type(exc).__name__}: {exc}",file=sys.stderr)
         sys.exit(1)
