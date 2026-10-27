@@ -125,27 +125,27 @@
       "reference_week": "2026-10-15",
       "reference_week_verified": true,
       "published": "2026-10-27",
-      "url": "https://www.investing.com/news/stock-market-news/hedge-funds-cut-tech-stocks-at-record-pace-goldman-says-4958101",
+      "url": "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade",
       "comparison_note": "복수 공개 보도의 인용치. Goldman 고객 전용 원자료·업종별 표준편차 수치 미확보",
       "metrics": {
         "tech_net_allocation_pct": 23.5,
         "net_leverage_pct": 48.6
       },
       "crosschecked_sources": [
-        "https://www.investing.com/news/stock-market-news/hedge-funds-cut-tech-stocks-at-record-pace-goldman-says-4958101",
-        "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade"
+        "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade",
+        "https://www.tokenpost.com/news/investing/35230"
       ],
       "fingerprint": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
     }
   },
-  "updated_at_kst": "2026-10-28T03:04:17.862033+09:00",
+  "updated_at_kst": "2026-10-28T07:14:50.934742+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
     "sp500_last_date": "2026-10-27",
-    "sp500_last_value": 7720.31982421875,
+    "sp500_last_value": 7722.60009765625,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -1.26,
+    "sp500_drawdown_pct": -1.23,
     "hartnett_tracking_version": "2026-10-09-v1",
     "hartnett_treasury_date": "2026-10-26",
     "hartnett_10y_pct": 5.0,
