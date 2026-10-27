@@ -44,6 +44,10 @@ OPTIONAL_KOREA_FUND = {
     }
 }
 EXPECTED_BOT = "khs887900887900008879_bot"
+class OfficialPublicationPending(RuntimeError):
+    """A newly closed U.S. market session has not yet appeared in iShares data."""
+
+
 ET = ZoneInfo("America/New_York")
 KST = ZoneInfo("Asia/Seoul")
 
@@ -99,6 +103,14 @@ def collect(now=None, fetcher=ishares.get_ishares):
     date = dt.date.fromisoformat(next(iter(observed)))
     latest = latest_us_close(now)
     if date > latest or (latest - date).days > 4:
+        raise ValueError(f"ETF official data unavailable/stale: {date} vs US last close {latest}")
+    if date < latest:
+        prev_day = latest - dt.timedelta(days=1)
+        while prev_day.weekday() >= 5:
+            prev_day -= dt.timedelta(days=1)
+        if date == prev_day:
+            raise OfficialPublicationPending(
+                f"iShares official observation {date} awaits latest completed US session {latest}")
         raise ValueError(f"ETF official data unavailable/stale: {date} vs US last close {latest}")
     try:
         meta = OPTIONAL_KOREA_FUND["EWY"]
@@ -160,7 +172,7 @@ def calculate(observations, state):
         period_days = None
         if old:
             period_days = (current_date - dt.date.fromisoformat(old["date"])).days
-            if 0 < period_days <= 4:
+            if 0 < period_days <= 4 and _consecutive_weekday_dates([old, {"date":today}]):
                 delta = row["shares"] - old["shares"]
         # SOXX officially announced a forward split effective November 5, 2026.
         # Freeze the comparison across this event until adjusted history exists.
@@ -380,6 +392,8 @@ def run(validate_only=False, now=None, state_path=STATE, getter=collect):
     try:
         current=getter(now)
         outcome=calculate(current,state)
+    except OfficialPublicationPending as e:
+        return {"status":"publication_pending","reason":str(e)[:220],"telegram_sent":False}
     except (ValueError, RuntimeError, OSError, TimeoutError, ConnectionError) as e:
         return {"status":"source_withheld","reason":f"{type(e).__name__}: {str(e)[:220]}","telegram_sent":False}
     except Exception as e:
