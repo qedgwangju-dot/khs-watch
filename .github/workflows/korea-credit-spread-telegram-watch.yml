@@ -69,6 +69,10 @@ jobs:
         run: |
           git fetch origin main
           git reset --hard origin/main
+          if [ "$FORMAT_SAMPLE_SEND" = "true" ] && [ "$(git rev-parse HEAD)" != "$GITHUB_SHA" ]; then
+            echo "샘플 트리거 뒤 코드가 변경되어 잘못된 버전 전송 방지를 위해 중단" >&2
+            exit 1
+          fi
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -132,7 +136,9 @@ jobs:
           echo "텔레그램 전송은 확인됐으나 상태 저장이 실패했습니다. 다음 실행 전에 복구 필요." >&2
           exit 1
       - name: Save verified latest official rates even when no alert was triggered
-        if: success() && env.DRY_RUN != 'true' && env.FORMAT_SAMPLE_SEND != 'true' && hashFiles('out/korea_credit_spread_watch_health_pending.json') != ''
+        # 코드 수정 검증도 실제 ECOS 자료 검증 성공 시 비발송 현황 기록은 갱신한다.
+        # 이는 텔레그램 경보 상태 또는 중복키를 변경하지 않는다.
+        if: success() && env.FORMAT_SAMPLE_SEND != 'true' && hashFiles('out/korea_credit_spread_watch_health_pending.json') != ''
         run: |
           set -euo pipefail
           cp out/korea_credit_spread_watch_health_pending.json /tmp/korea_credit_spread_health_verified.json
