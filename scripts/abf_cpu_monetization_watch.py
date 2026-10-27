@@ -716,14 +716,14 @@ def explicit_goldman_report_vintage(text: str) -> str:
     """
     clean = clean_text(text or "")
     firm = r"(?:Goldman(?:\s+Sachs)?|高盛|골드만삭스)"
-    report = r"(?:research\s+report|research\s+note|report|forecast\s+report|issued|dated|報告|报告|리포트|보고서|발간)"
+    # A general "forecast" or "issued" word anywhere in the article is not
+    # enough to bind its publication date to the sell-side research report.
+    report = r"(?:research\s+report|research\s+note|report|研究報告|研究报告|리서치\s+보고서|리포트|보고서)"
     date = r"(?<!\d)(20\d{2})[\-/년.]\s*(\d{1,2})[\-/월.]\s*(\d{1,2})(?!\d)"
-    # A dated article frequently puts "published 2026-10-27" BEFORE the
-    # attribution "Goldman Sachs said ...". A generic first-date match would
-    # misclassify that article date as the research vintage. Accept ONLY a
-    # date that follows the issuer and a research-report attribution in the
-    # same clause. This is deliberately a fail-closed rule.
-    bound = re.compile(firm + r"[^.;\n]{0,100}?" + report + r"[^.;\n]{0,65}?" + date, re.I)
+    # The report date must appear IMMEDIATELY after its named attribution
+    # and a dated/issued/as-of cue, never later in a recap sentence.
+    date_intro = r"\s*(?:(?:issued|dated|on|as\s+of|발간|발표)\s*)?[:：(\s]*"
+    bound = re.compile(firm + r"[^.;\n]{0,90}?" + report + date_intro + date, re.I)
     for match in bound.finditer(clean):
         yy, mm, dd = [int(x) for x in match.groups()]
         try:
@@ -1189,6 +1189,10 @@ def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     committed = load_json(STATE_PATH)
     pending = load_json(PENDING_PATH)
+    # Standalone collectors must preserve existing HBM route receipts and all
+    # unrelated monitored modules if an upstream pending file is absent.
+    if not pending and committed:
+        pending = copy.deepcopy(committed)
     previous = committed.get("abf_cpu_monetization") or copy.deepcopy(BASELINE)
     seen_urls = set(previous.get("seen_urls") or [])
 

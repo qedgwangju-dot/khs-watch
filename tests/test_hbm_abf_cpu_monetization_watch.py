@@ -74,6 +74,42 @@ class ABFHistoricalModelVintageTests(unittest.TestCase):
         self.assertEqual(updated["area_structure"]["research_forecast"]["abf_shortfall_2027_pct"],34.0)
         self.assertEqual(updated["area_structure"]["research_forecast"]["abf_shortfall_2028_pct"],51.0)
 
+    def test_research_title_cannot_borrow_a_later_news_publication_date(self):
+        self.assertEqual(w.explicit_goldman_report_vintage(
+            "Goldman Sachs old forecast as of February 2026 and story published 2026-10-27."),"")
+        self.assertEqual(w.explicit_goldman_report_vintage(
+            "An article on 2026-10-27 quotes Goldman Sachs research report dated 2026-02-03."),"2026-02-03")
+        self.assertEqual(w.explicit_goldman_report_vintage(
+            "Goldman Sachs research report dated 2026-10-26 raised ABF assumptions."),"2026-10-26")
+
+    def test_standalone_abf_collection_never_wipes_other_rubin_state(self):
+        import copy, json, tempfile
+        from unittest import mock
+        with tempfile.TemporaryDirectory() as folder:
+            root = pathlib.Path(folder)
+            state, pending, alert = root/"rubin.json", root/"pending.json", root/"alert.md"
+            old = copy.deepcopy(w.BASELINE)
+            old["area_structure"] = copy.deepcopy(w.ABF_AREA_STRUCTURE_BASELINE)
+            old["goldman_vintage_context"] = copy.deepcopy(w.ABF_VINTAGE_CONTEXT)
+            original = {
+                "abf_cpu_monetization": old,
+                "ai_component_leadtime": {"as_of":"2026-10-19","components":{"HDD":{"current":"50"}}},
+                "telegram_message_id": 340,
+                "unrelated_module": {"protect":True},
+            }
+            state.write_text(json.dumps(original,ensure_ascii=False),encoding="utf-8")
+            with mock.patch.object(w,"STATE_PATH",state), \
+                 mock.patch.object(w,"PENDING_PATH",pending), \
+                 mock.patch.object(w,"ALERT_PATH",alert), \
+                 mock.patch.object(w,"discover",return_value=[]), \
+                 mock.patch.object(w,"verify_nvidia_abf_press",return_value=({},{})):
+                w.main()
+                result=json.loads(pending.read_text(encoding="utf-8"))
+            self.assertEqual(result["telegram_message_id"],340)
+            self.assertEqual(result["unrelated_module"],{"protect":True})
+            self.assertEqual(result["ai_component_leadtime"]["components"]["HDD"]["current"],"50")
+            self.assertEqual(result["abf_cpu_monetization"]["goldman_vintage_context"]["version"],1)
+
     def test_new_verified_goldman_raises_forecast_after_explicit_date(self):
         item = {
             "url":"https://www.skis.com.tw/skis/Report/industry/example.html",
