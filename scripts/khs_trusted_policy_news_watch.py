@@ -47,6 +47,25 @@ ALERT_PATH = OUT_DIR / "khs_trusted_policy_news_alert.md"
 AI_FORCE_ALERT_PATH = OUT_DIR / "khs_ai_force_policy_alert.md"
 AI_FORCE_TITLE_PATH = OUT_DIR / "khs_ai_force_policy_title.txt"
 
+# EU-China cases share the existing policy delivery lane and state files.
+# Official agreement is separate from press estimates and a binding EU legal act.
+EU_HYBRID_OFFICIAL = (
+    ("https://www.mofcom.gov.cn/syxwfb/art/2026/art_d6a5e2c4e62740868c7f1a7cd061f84a.html",
+     ("混动汽车", "2024", "2025", "30.2万", "非歧视", "世贸组织")),
+    ("https://english.mofcom.gov.cn/News/SpokesmansRemarks/art/2026/art_9c5d95356d984390af922150976cc853.html",
+     ("hybrid vehicles", "2024", "2025", "302,000", "non-discrimination", "wto")),
+)
+EU_SECTOR_PRESS_CASES = (
+    ("https://businessmirror.com.ph/2026/10/26/eu-plans-to-hit-china-with-more-import-curbs/",
+     "2026-10-26", "BusinessMirror (Bloomberg 보도 인용)",
+     ("eu plans to hit china with more import curbs", "chemicals", "furniture", "machinery", "2027", "bloomberg"),
+     "furniture-reported"),
+    ("https://www.investing.com/news/economic-indicators/eu-ministers-vow-to-tackle-china-shock-20-through-talks-with-beijing-4969048",
+     "2026-10-23", "Investing.com (Reuters 보도 인용)",
+     ("eu ministers vow", "china shock", "chemicals", "machinery", "reuters"),
+     "chemicals-discussed"),
+)
+
 OFFICIAL_DIRECT_STORIES = {
     "us_dhs_deepseek_federal_civilian_exclusion": (
         ("https://www.govinfo.gov/content/pkg/FR-2026-10-20/html/2026-21447.htm",
@@ -320,6 +339,8 @@ ALERTS_JSON_PATH = OUT_DIR / "khs_trusted_policy_news_alerts.json"
 
 MAX_AGE_HOURS = int(os.getenv("KHS_TRUSTED_NEWS_MAX_AGE_HOURS", "72"))
 RULE_MAX_AGE_HOURS = {
+    "eu_china_hybrid_vehicle_safeguard": 24 * 45,
+    "eu_china_sector_import_safeguards": 24 * 30,
     # One-time recovery lane for the already-official Auction 115 schedule plus
     # the later FCC Chair $100B multi-auction context that was missed on Telegram.
     "us_fcc_upper_c_band_auction115": 24 * 75,
@@ -459,6 +480,54 @@ class StoryRule:
 
 
 STORY_RULES = (
+    StoryRule(
+        key="eu_china_hybrid_vehicle_safeguard",
+        title="EU·중국 하이브리드차 수입쿼터 합의·한국산 원산지별 배정 감시",
+        google_queries=(
+            '"EU" "China" "hybrid" "350,000" "quota" Reuters October 2026',
+            '"European Commission" hybrid car safeguard 350000 implementation regulation Korea Japan origin December 2026',
+            'site:eur-lex.europa.eu hybrid cars safeguard quota implementing regulation China Korea 2026',
+        ),
+        required_groups=(
+            ("eu", "european union", "european commission", "유럽연합", "欧盟", "중유럽"),
+            ("china", "chinese", "중국", "中欧", "对华"),
+            ("hybrid", "plug-in", "phev", "하이브리드", "混动"),
+            ("quota", "cap", "limit", "safeguard", "restriction", "restriction measure", "쿼터", "할당", "제한", "配额", "非歧视"),
+        ),
+        core="EU와 중국은 하이브리드·플러그인하이브리드차 수입 축소에 합의했습니다. Reuters가 전한 중국산 첫해 연 35만 대·2년 차부터 연 6% 증가·4년 조건과 EU 법적 시행일은 구분해야 합니다.",
+        impact="현대자동차·기아의 한국산 하이브리드 EU 수출, 중국 생산 차량, 유럽 현지공장·자동차부품 | 물량·평균판매단가·시간표",
+        point="2026년 중국산 수입 전망 80만 대 대비 첫해 35만 대는 물량상 45만 대 차이지만 실제 판매 감소는 시행·국가별 배정·모델 수요를 확인해야 합니다. EU 생산 차량과 한국에서 EU로 수출하는 차량을 분리합니다.",
+        counter="35만 대는 중국산 할당량이라는 외신 보도이며 한국 등 모든 역외국의 합산 총한도가 아닙니다. 한국에 대한 별도 할당량·대상 차종·예외·EU 시행규정은 확정 여부를 재조회해야 합니다.",
+        sectors="한국 자동차 수출, 하이브리드차, 자동차부품, 유럽 현지생산, 무역구제",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("양측 합의", "EU 집행규정 제안", "관보 확정·발효", "원산지별 배정", "통관·판매", "계약·실적"),
+        follow_up="EU 집행위원회·EUR-Lex의 정식 시행규정과 CELEX 번호, 첫 적용일, 국별 수량(한국·일본 포함), PHEV/HEV 범위, 초과물량 관세 또는 통관중단, 현지생산 예외와 6% 연간 증가를 확인합니다.",
+        trusted_sources=("Reuters", "Bloomberg", "Associated Press", "The Guardian", "European Commission", "MOFCOM"),
+    ),
+    StoryRule(
+        key="eu_china_sector_import_safeguards",
+        title="EU, 중국산 화학제품·가구·기계류 수입제한 확대 검토",
+        google_queries=(
+            '"EU Plans to Hit China With More Import Curbs in Early 2027" Bloomberg furniture chemicals',
+            'EU China chemicals furniture machinery safeguards import quotas tariffs Bloomberg October 26 2026',
+            'site:ec.europa.eu chemicals furniture machinery PET safeguard China 2026 2027',
+        ),
+        required_groups=(
+            ("eu", "european union", "european commission", "유럽연합"),
+            ("china", "chinese", "중국"),
+            ("chemical", "chemicals", "pet", "plastics", "furniture", "machinery", "기계", "화학", "가구", "에폭시"),
+            ("safeguard", "quota", "import curbs", "import cap", "tariff", "restrict imports", "import restrictions", "세이프가드", "수입 제한", "쿼터", "관세"),
+        ),
+        core="EU가 중국산 화학제품·가구·기계류에 수입할당 또는 관세할당 등의 긴급수입제한조치를 검토하고 있으며, Bloomberg는 이르면 2027년 1분기 제안 가능성을 보도했습니다.",
+        impact="EU 화학수지·PET·에폭시·유리섬유·가구·산업기계 수급과 한국 수출기업의 가격·물량 | 돈 버는 능력·시간표",
+        point="EU 내 제조업을 보호하는 대중국 수입대체 가능성과 동시에 한국산을 포함한 역외국 규제 적용 위험이 공존합니다. 한국 업체의 확정 신규 수주·매출은 별도 확인해야 합니다.",
+        counter="화학제품·가구·기계류에 대해 10월 26일 기준 EU가 최종 쿼터·관세를 부과한 것은 아닙니다. 특정 품목 코드, 국가별 할당량, 초과 물량의 처리 및 회원국 합의는 미확정입니다.",
+        sectors="석유화학·PET·합성수지·에폭시·유리섬유, 가구, 산업기계, 유럽 수입시장",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("EU 통계 평가", "세이프가드 조사", "규칙 제안", "관보·발효", "원산지별 통관·수주"),
+        follow_up="EU 집행위원회·EUR-Lex의 품목별 조사개시·잠정·최종 시행규정, PET/에폭시/유리섬유·가구·기계류의 관세품목코드, 수입쿼터·관세할당 여부, 한국산 적용·예외, 중국 보복과 실제 수주 변화를 추적합니다.",
+        trusted_sources=("Reuters", "Bloomberg", "European Commission", "Financial Times", "South China Morning Post"),
+    ),
     StoryRule(
         key="china_mofcom_2026_technology_catalogue48",
         title="중국, 바이오·AI·태양광 기술 40개 수출목록 개정안과 수출 전 등록 시행",
