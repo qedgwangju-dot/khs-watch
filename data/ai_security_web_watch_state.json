@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 25,
+    "material_items": 26,
     "new_material_items": 0,
-    "raw_items": 318,
+    "raw_items": 314,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -580,6 +580,16 @@
       "title": "Anthropic Threat Intelligence: threat intelligence report september 2026",
       "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
       "vendor": "Anthropic"
+    },
+    "5e2d0361473b181f4ff30100": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-27T10:26:53.288772+00:00",
+      "published_at": "2026-10-27T10:03:02+00:00",
+      "severity": 2,
+      "source": "Fortune India",
+      "title": "PHP2Shell shows how AI is shrinking the window for Indian enterprises to respond to cyber threats - Fortune India",
+      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxORTh5TEZWdll1RkVMSjJzenU0eFJOTmhLOXRpZi1yWWpHSEtfNDVaMXA1bkRkYVFJYXNUWXNISTRqdFZQZmZGSkJ2dFk5b1MzRG0tUy11dmNobUpNSFRkdFBTZmlBOGtWNmZkOU1UM0VnZnFmYWMxUkRkTFNmTUppQUYzbGUyZ0xqd3V5SWU0VXc4ai1CMXE0Z1BSUjh6dEI2Rzgwa2h6anJjd2lXcmlXaUY1QVRLdzhtZm9oSHVlNGlIRVVPZFZFY2VEMUtvSjVZemVMaUNsWE51dnZV0gHqAUFVX3lxTE80WHNpRThUYkNZYi1CbmdEaHA2cDhDdmVkM01kMTZVWG1fY2U0UG9qMXdoX1NjVEFVdnNGMnV4QWRjcVpFNVNadjRmMGVWcUpjX3g5ZkpLSE9DUDBpMWRiMUF6SVZoM3dvT2RqajhxQVBPNG5TWU1DX1RVaDltdUg2ZWc3akpZTkh4clpzcnpsTFRZTmtrR1hWNUtlM2RRT25PVHFnVWVPbVhQcWdSZnAtMGNzQlRnam5qajhpS1VUME5YRFVoQzBmcUpMWWY1Ylk0Vl9iZHpJZGNXbU9uRDVZZ1FXaGxMemM3UQ?oc=5",
+      "vendor": "PHP 재단"
     },
     "636cc0f0bf58e929b31622aa": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
@@ -1484,5 +1494,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-27T18:49:59+09:00"
+  "updated_at_kst": "2026-10-27T19:26:53+09:00"
 }
