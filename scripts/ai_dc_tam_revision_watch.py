@@ -64,7 +64,7 @@ BOFA_GLOBAL_REFERENCE = {
     "standard_dc_network_usd_m_per_mw": 4.8,
     "component_range_usd_m_per_mw": [0.1, 1.1],
     "geography": "전 세계",
-    "source_grade": "Reuters 10월 23일 및 TechTimes 10월 26일 공개보도. BofA 원보고서 미확보",
+    "source_grade": "Reuters 10월 23일 전재 보도 확인, TechTimes 10월 26일 URL 직접 열람 실패·검색 공개본 대조. BofA 원보고서 미확보",
     "scope_warning": "종전 BofA 2030 AI 데이터센터 시스템시장 2.2조달러와 전체 시장 2.93조달러는 동일 분모 미확인",
     "sources": [BOFA_GLOBAL_REUTERS, BOFA_GLOBAL_TECHTIMES, BOFA_GLOBAL_SYNDICATED],
 }
@@ -396,8 +396,8 @@ def bofa_global_alert(fx: dict) -> str:
         "",
         "■ 환율과 확인 수준",
         f"• 1달러={rate:,.2f}원 · {fx.get('basis','확인 불가')}",
-        "• Reuters 10월 23일 보도, TechTimes 10월 26일 기사 교차 확인."
-        " BofA 리서치 보고서 원문은 미열람, 증권사 추정의 신뢰보도 단계.",
+        "• Reuters 10월 23일 전재 보도 확인, TechTimes 10월 26일 사용자 URL은 직접 열람 실패·검색 공개본 대조."
+        " BofA 리서치 원문도 미열람이므로 증권사 추정의 신뢰보도 단계.",
         "원문: "+BOFA_GLOBAL_REUTERS,
         "원문: "+BOFA_GLOBAL_TECHTIMES,
         "원문: "+BOFA_GLOBAL_SYNDICATED,
