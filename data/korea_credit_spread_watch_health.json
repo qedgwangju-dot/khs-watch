@@ -1,0 +1,25 @@
+{
+  "official_date": "20261026",
+  "rate_values": {
+    "date": "20261026",
+    "cp": 3.78,
+    "cd": 3.26,
+    "corp": 4.476,
+    "gov": 3.789,
+    "cp_cd_bp": 52.0,
+    "aa_spread_bp": 68.7,
+    "observed_rank": 2
+  },
+  "fingerprint": "db36fe515b4cfd427ebcd906e5a222e24bda3a3e2a81e07e0aa504fd8e2f2556",
+  "alert_rank": 2,
+  "verified_at_kst": "2026-10-27T16:19:19+09:00",
+  "source": "https://ecos.bok.or.kr/#/SearchStat",
+  "stat_code": "817Y002",
+  "codes": {
+    "cp": "010503000",
+    "cd": "010502000",
+    "corp": "010300000",
+    "gov": "010200000"
+  },
+  "note": "원자료 검증 성공 기록. 텔레그램 발송 확인과는 별개"
+}
