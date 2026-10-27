@@ -137,6 +137,7 @@ class SolidigmIPOTests(unittest.TestCase):
                 patch.object(w, "article_text", return_value=""),
                 patch.object(w, "read_events", return_value=[self._bloomberg_selected_event()]),
                 patch.object(w, "read_manufacturing_events", return_value=[]),
+                patch.object(w, "read_us_nand_fab_events", return_value=[]),
                 patch.object(w, "load_state", side_effect=load),
                 patch.object(w, "save_state", side_effect=save),
                 patch.object(w, "fx_quote", return_value=(1340.0, "테스트 환율")),
@@ -252,6 +253,7 @@ class SolidigmIPOTests(unittest.TestCase):
                 patch.object(w, "save_state", side_effect=record_state),
                 patch.object(w, "read_events", return_value=[]),
                 patch.object(w, "read_manufacturing_events", return_value=[]),
+                patch.object(w, "read_us_nand_fab_events", return_value=[]),
                 patch.object(w, "fx_quote", return_value=(1340.0, "테스트 환율")),
             ):
                 w.main()
@@ -428,6 +430,87 @@ class SolidigmIPOTests(unittest.TestCase):
         with patch.object(w, "article_text", return_value="Solidigm sells enterprise SSDs for AI data centers."):
             patch_data = w.extract_patch(item)
         self.assertNotIn("use_of_proceeds", patch_data)
+
+
+    def test_official_oct23_ipo_review_discontinued_is_not_generic_withdrawal(self):
+        event={"id":"official","is_curated_official_ipo_stop":True}
+        patch_data=w.extract_patch(event)
+        self.assertEqual(patch_data["stage"],"review_discontinued")
+        self.assertEqual(patch_data["evidence_state"],"official")
+        old={"stage":"underwriters_selected","evidence_state":"top_tier_report",
+             "raise_target_usd":10_000_000_000,"target_year":2027}
+        new=w.merge_state(old,patch_data)
+        self.assertEqual(new["stage"],"review_discontinued")
+        self.assertEqual(new["raise_target_usd"],10_000_000_000)
+        stale=w.merge_state(new,{"stage":"underwriters_selected",
+                                 "evidence_state":"top_tier_report",
+                                 "raise_target_usd":15_000_000_000})
+        self.assertEqual(stale,new)
+        notice=w.alert_text(old,new,w.material_changes(old,new),w.now_kst())
+        self.assertIn("검토 중단",notice)
+        self.assertNotIn("목표 시점: <b>이르면 2027년</b>",notice)
+
+    def test_curated_bloomberg_us_fab_is_report_not_approved_45b_fid(self):
+        ev={"id":"solidigm","is_curated_bloomberg_us_nand":True}
+        p=w.extract_us_nand_fab_patch(ev)
+        self.assertEqual(p["proposed_capex_usd"],45_000_000_000)
+        self.assertEqual(p["possible_long_term_total_usd"],100_000_000_000)
+        self.assertFalse(p["investment_final_decision_confirmed"])
+        self.assertFalse(p["dalian_export_license_approved"])
+        self.assertFalse(p["selected_site_confirmed"])
+        self.assertEqual(p["independent_origin_count"],1)
+        self.assertEqual(p["project_scope"],"new_US_NAND_wafer_fab_not_Taiwan_SSD_ODM")
+
+    def test_us_fab_first_alert_then_stable_no_repeat(self):
+        value=w.merge_us_nand_fab({},w.extract_us_nand_fab_patch({"is_curated_bloomberg_us_nand":True}))
+        self.assertEqual(len(w.us_nand_fab_changes({},value)),1)
+        self.assertEqual(w.us_nand_fab_changes(value,value),[])
+        msg=w.us_nand_fab_alert({},value,["보도 신규 확인"],w.now_kst())
+        self.assertIn("상무부",msg)
+        self.assertIn(w.BLOOMBERG_US_NAND_ORIGINAL,msg)
+        self.assertIn(w.SK_IPO_STOP_OFFICIAL,msg)
+        self.assertIn("총사업비",msg)
+        self.assertTrue(delivery.chunks(msg))
+
+    def test_us_fab_45b_never_pollutes_taiwan_ssd_assembly(self):
+        value=w.merge_us_nand_fab({},w.extract_us_nand_fab_patch({"is_curated_bloomberg_us_nand":True}))
+        self.assertEqual(value["project_scope"],"new_US_NAND_wafer_fab_not_Taiwan_SSD_ODM")
+        self.assertEqual(w.MANUFACTURING_BASELINE["manufacturing_scope"],
+                         "ssd_manufacturing_not_nand_wafer_fab")
+
+    def test_bis_license_upgrade_needs_official_issuer_not_report(self):
+        news={"title":"Solidigm Dalian license approved for China","description":"Solidigm NAND US factory",
+              "direct_link":"https://www.bloomberg.com/news/test","source":"Bloomberg"}
+        self.assertFalse(w.extract_us_nand_fab_patch(news).get("dalian_export_license_approved"))
+        official=dict(news,direct_link="https://www.bis.gov/press-release/solidigm-dalian",
+                      title="BIS has approved Solidigm Dalian equipment license for US NAND fab")
+        p=w.extract_us_nand_fab_patch(official)
+        self.assertEqual(p["dalian_equipment_license_status"],"approved_official")
+        self.assertTrue(p["dalian_export_license_approved"])
+
+    def test_no_official_fid_from_unconfirmed_bloomberg_2027_timetable(self):
+        news={"title":"Solidigm plans 2027 US NAND fab new construction",
+              "description":"Solidigm $45 billion Dalian approval sought",
+              "direct_link":"https://www.reuters.com/business/example","source":"Reuters"}
+        self.assertNotIn("official_project_decision",str(w.extract_us_nand_fab_patch(news)))
+        official=dict(news,direct_link="https://news.skhynix.com/en/press-plant/",
+                      title="Solidigm final investment decision confirmed for US NAND fab")
+        p=w.extract_us_nand_fab_patch(official)
+        self.assertTrue(p["investment_final_decision_confirmed"])
+        self.assertEqual(p["stage"],"official_project_decision")
+
+    def test_old_report_cannot_downgrade_real_fid_or_bis_license(self):
+        p=w.extract_us_nand_fab_patch({"is_curated_bloomberg_us_nand":True})
+        newer=dict(p,stage="official_project_decision",
+                   investment_final_decision_confirmed=True,
+                   dalian_equipment_license_status="approved_official",
+                   dalian_export_license_approved=True,evidence_state="official")
+        merged=w.merge_us_nand_fab(newer,p)
+        self.assertEqual(merged["stage"],"official_project_decision")
+        self.assertTrue(merged["investment_final_decision_confirmed"])
+        self.assertTrue(merged["dalian_export_license_approved"])
+        self.assertEqual(merged["dalian_equipment_license_status"],"approved_official")
+
 
 
 if __name__ == "__main__":

@@ -21,7 +21,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE = ROOT / "data" / "solidigm_ipo_watch_state.json"
 ALERT = ROOT / "out" / "solidigm_ipo_alert.html"
 UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
-WATCH_VERSION = 4
+WATCH_VERSION = 5
 IPO_ALERT_FORMAT_VERSION = 2
 IPO_SOURCE_LINK_VERSION = 1
 CANONICAL_REUTERS_URL = "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/"
@@ -36,6 +36,14 @@ BLOOMBERG_BANK_EVENT_KST = "2026-10-08T07:48:01+09:00"
 # been compared with Bloomberg-attributed Reuters/Investing.com coverage.
 BLOOMBERG_ORIGINAL_URL = "https://www.bloomberg.com/news/articles/2026-10-07/sk-hynix-s-solidigm-is-said-to-pick-banks-for-us-ipo-next-year"
 BLOOMBERG_ORIGINAL_TITLE = "SK Hynix’s Solidigm Is Said to Pick Banks for US IPO Next Year"
+SK_IPO_STOP_OFFICIAL = "https://news.skhynix.com/en/fact-12/"
+SK_IPO_STOP_AT_KST = "2026-10-23T09:00:00+09:00"
+BLOOMBERG_US_NAND_ORIGINAL = "https://www.bloomberg.com/news/articles/2026-10-27/solidigm-dangles-new-45-billion-us-plant-to-upgrade-china-site"
+BLOOMBERG_US_NAND_SYNDICATED = "https://news.bloomberglaw.com/tech-and-telecom-law/solidigm-dangles-new-45-billion-us-plant-to-upgrade-china-site"
+REUTERS_DALIAN_OCT14 = "https://www.investing.com/news/stock-market-news/exclusivesk-hynix-conditions-new-us-factory-on-more-us-chip-equipment-exports-to-china-sources-say-4950396"
+BIS_EQUIPMENT_POLICY = "https://www.bis.gov/press-release/department-commerce-closes-export-controls-loophole-foreign-owned-semiconductor-fabs-china"
+US_NAND_FAB_BASELINE_VERSION = 1
+US_NAND_FAB_NEWS_AT_KST = "2026-10-28T00:18:00+09:00"
 MANUFACTURING_BASELINE = {
     "stage": "pcn_announced",
     "pcn_number": "0000048112-00",
@@ -86,6 +94,7 @@ QUERIES = [
     '"Solidigm" pre-IPO SK hynix',
     'site:news.skhynix.com Solidigm IPO',
     'site:solidigm.com Solidigm IPO',
+    'site:news.skhynix.com Solidigm discontinued IPO review',
 ]
 
 TRUSTED = (
@@ -101,6 +110,7 @@ STAGE_RANK = {
     "exploring": 1,
     "bank_bakeoff": 2,
     "underwriters_selected": 3,
+    "review_discontinued": 0,
     "confidential_filing": 4,
     "public_filing": 5,
     "roadshow": 6,
@@ -120,6 +130,7 @@ STAGE_KO = {
     "listed": "상장·거래 개시",
     "postponed": "상장 연기",
     "withdrawn": "상장 철회",
+    "review_discontinued": "기업공개 검토 중단(회사 공식)",
 }
 
 def now_kst():
@@ -258,6 +269,17 @@ def read_events():
     }
     if now_kst().date().isoformat() >= "2026-10-08" and now_kst().date().isoformat() <= "2026-10-18":
         rows[event["id"]] = event
+    # Issuer-owned statement is a separate, later dated fact. A bank-selection
+    # headline from October 8 can never reinstate a discontinued IPO review.
+    if "2026-10-23" <= now_kst().date().isoformat() <= "2026-11-15":
+        rows["solidigm_ipo_official_discontinued_20261023"] = {
+            "id":"solidigm_ipo_official_discontinued_20261023",
+            "title":"Solidigm to Discontinue Review of Potential IPO",
+            "description":"SK hynix and Solidigm discontinued review of possible Pre-IPO and IPO options on October 23, 2026.",
+            "source":"SK hynix official", "published_at_kst":SK_IPO_STOP_AT_KST,
+            "direct_link":SK_IPO_STOP_OFFICIAL, "rank":100,
+            "is_curated_official_ipo_stop":True,
+        }
     return sorted(rows.values(), key=lambda x: (x.get("published_at_kst") or "", x.get("rank", 0)))
 
 
@@ -328,6 +350,8 @@ def stage_from_text(text):
         r"(?:Solidigm[^.]{0,180}?(?:IPO|initial public offering|listing|상장)|"
         r"(?:IPO|initial public offering|listing|상장)[^.]{0,180}?Solidigm)"
     )
+    if re.search(r"solidigm[^.]{0,130}?(?:discontinue(?:d)?\s+(?:the\s+)?review|halt(?:ed)?[^.]{0,50}review)|(?:ipo|pre-ipo)[^.]{0,100}?(?:review[^.]{0,40}?discontinued|검토\s*중단)", text, re.I):
+        return "review_discontinued"
     if re.search(solidigm_ipo_context + r"[^.]{0,120}?(?:withdrawn|withdraws|cancelled|canceled|철회|취소)", text, re.I) or re.search(r"(?:withdrawn|withdraws|cancelled|canceled|철회|취소)[^.]{0,120}?" + solidigm_ipo_context, text, re.I):
         return "withdrawn"
     if re.search(solidigm_ipo_context + r"[^.]{0,120}?(?:postponed|delayed|연기|미뤘)", text, re.I) or re.search(r"(?:postponed|delayed|연기|미뤘)[^.]{0,120}?" + solidigm_ipo_context, text, re.I):
@@ -360,6 +384,14 @@ def stage_from_text(text):
     return ""
 
 def extract_patch(event):
+    if event.get("is_curated_official_ipo_stop"):
+        return {
+            "stage":"review_discontinued", "evidence_state":"official",
+            "ipo_officially_confirmed":False,
+            "official_review_discontinued":True,
+            "source_name":"SK hynix", "source_url":SK_IPO_STOP_OFFICIAL,
+            "source_published_at_kst":SK_IPO_STOP_AT_KST,
+        }
     base = clean(f"{event.get('title','')} {event.get('description','')}")
     page = article_text(event)
     text = (base + " " + page).strip()
@@ -694,6 +726,8 @@ def merge_state(current, patch):
     new_evidence = patch.get("evidence_state", "reported")
     can_replace_source = EVIDENCE_RANK.get(new_evidence, 0) >= EVIDENCE_RANK.get(old_evidence, 0)
 
+    if old_stage == "review_discontinued" and new_evidence != "official":
+        return out
     # A stale or generic company denial cannot downgrade IPO stage, replace
     # newer deal parameters, or masquerade as official IPO approval.
     if (
@@ -709,10 +743,10 @@ def merge_state(current, patch):
             out[k] = v
 
     if new_stage:
-        if new_stage in ("postponed", "withdrawn"):
+        if new_stage in ("postponed", "withdrawn", "review_discontinued"):
             if can_replace_source:
                 out["stage"] = new_stage
-        elif old_stage in ("postponed", "withdrawn") and new_stage not in ("listed",):
+        elif old_stage in ("postponed", "withdrawn", "review_discontinued") and new_stage not in ("listed",):
             pass
         elif not old_stage or STAGE_RANK.get(new_stage, 0) >= STAGE_RANK.get(old_stage, 0):
             out["stage"] = new_stage
@@ -796,6 +830,18 @@ def alert_text(old, new, reasons, checked):
         "top_tier_report": "Reuters·Bloomberg 등 신뢰 보도 단계(회사 미확정)",
         "reported": "신뢰 보도 단계",
     }.get(new.get("evidence_state"), "확인 단계")
+    if new.get("stage") == "review_discontinued":
+        return "\n".join([
+            "🚨 <b>솔리다임 IPO 검토 중단 — 공식 발표</b>",
+            "━━━━━━━━━━━━━━━━",
+            "• SK하이닉스 2026년 10월 23일 공식 발표: 솔리다임의 Pre-IPO·IPO 검토를 중단했습니다.",
+            "• 10월 8일 주관사·2027 상장·공모 추정액은 과거 보도이며 현재 진행 중인 확정 공모계획이 아닙니다.",
+            "• 미국 공장 투자 필요성은 유지되며, 직접 출자·차입·협력투자 등 자금조달 대안을 계속 평가합니다.",
+            "• 향후 공식적인 IPO 검토 재개가 확인되지 않으면 과거 주관사 선정 보도로 IPO 단계를 복원하지 않습니다.",
+            "• 이번 변화: " + html.escape(" · ".join(reasons)),
+            "• 공식 원문: " + href(SK_IPO_STOP_OFFICIAL),
+            "• 조회: " + checked.strftime("%Y-%m-%d %H:%M KST"),
+        ]) + "\n"
     lines = [
         "🚨 <b>Solidigm IPO 상태 변화</b>",
         "━━━━━━━━━━━━━━━━",
@@ -860,6 +906,207 @@ def alert_text(old, new, reasons, checked):
     lines.append("• 환율: " + html.escape(fx_basis))
     lines.append("• 조회: " + checked.strftime("%Y-%m-%d %H:%M KST"))
     return "\n".join(lines) + "\n"
+
+
+# The factory is a NAND wafer-fab proposal; keep it independent of the
+# officially documented Taiwan SSD assembly PCN and of the discontinued IPO.
+FAB_STAGE = {"reported_talks":1,"official_project_decision":2,
+             "construction_started":3,"equipment_installation":4,
+             "pilot_production":5,"volume_production":6}
+FAB_MONITOR_QUERIES = [
+    '"Solidigm" "Dalian" "US plant" license Commerce',
+    '"Solidigm" "$45 billion" "NAND" factory New York',
+    '"SK hynix" "Solidigm" "fab" export license approved denied',
+    '"솔리다임" "다롄" 미국 낸드 공장 투자 승인',
+]
+
+def _trusted_fab_event(item):
+    headline=clean((item.get("title") or "")+" "+(item.get("description") or ""))
+    low=headline.lower()
+    return (("solidigm" in low or "솔리다임" in low)
+            and any(v in low for v in ("dalian","다롄","us plant","u.s. fab","us fab","미국 공장",
+                                         "us factory","nand fab","license","라이선스","허가","450억"))
+            and any(v in low for v in ("nand","flash","chip","반도체","낸드","fab","factory","plant","공장"))
+            and any(v in ((item.get("source") or "")+" "+str(urllib.parse.urlparse(item.get("direct_link") or "").hostname)).lower()
+                    for v in TRUSTED+("commerce","bis.gov",)))
+
+def read_us_nand_fab_events():
+    events={}
+    for query in FAB_MONITOR_QUERIES:
+        for lang in ("en","ko"):
+            try:
+                root=ET.fromstring(fetch(rss_url(query,lang)))
+            except Exception:
+                continue
+            for xml_item in root.findall("./channel/item"):
+                title=clean(xml_item.findtext("title") or "")
+                description=clean(xml_item.findtext("description") or "")
+                raw=clean(xml_item.findtext("link") or "")
+                src=xml_item.find("source")
+                source=clean(src.text or "") if src is not None else ""
+                published=parse_pub(clean(xml_item.findtext("pubDate") or ""))
+                direct=decode_google(raw)
+                if not direct:
+                    continue
+                item={"title":title,"description":description,"source":source,
+                      "direct_link":direct,
+                      "published_at_kst":published.isoformat(timespec="seconds") if published else ""}
+                if not _trusted_fab_event(item):
+                    continue
+                key=hashlib.sha256((title+"|"+source).encode()).hexdigest()[:24]
+                events[key]=item
+    # Attributed Bloomberg original + Bloomberg Law syndication are one report,
+    # not independently confirmed contracts or a Commerce approval.
+    if "2026-10-27" <= now_kst().date().isoformat() <= "2026-11-12":
+        events["solidigm_bloomberg_us_nand_45b_20261027"]={
+            "id":"solidigm_bloomberg_us_nand_45b_20261027",
+            "title":"Solidigm Dangles New $45 Billion US Plant to Upgrade China Site",
+            "description":(
+                "Bloomberg October 27 reports Solidigm in talks with the US Commerce Department "
+                "about a $45 billion US NAND fab proposal. It seeks equipment export approval "
+                "for the Dalian China site first, arguing additional sales can support US plant financing. "
+                "New York among candidate states; possible 2027 construction, not a final decision. "
+                "Longer-term investment could approach $100 billion according to the report."
+            ),
+            "source":"Bloomberg News (one original report)",
+            "published_at_kst":US_NAND_FAB_NEWS_AT_KST,
+            "direct_link":BLOOMBERG_US_NAND_SYNDICATED,
+            "is_curated_bloomberg_us_nand":True,
+        }
+    return sorted(events.values(),key=lambda x:x.get("published_at_kst") or "")
+
+def extract_us_nand_fab_patch(event):
+    if event.get("is_curated_bloomberg_us_nand"):
+        return {
+            "stage":"reported_talks","proposed_capex_usd":45_000_000_000,
+            "possible_long_term_total_usd":100_000_000_000,
+            "investment_final_decision_confirmed":False,
+            "construction_start_year_target":2027,"construction_start_year_confirmed":False,
+            "site_candidate_states":["New York"],"selected_site_confirmed":False,
+            "dalian_equipment_license_status":"requested_reported",
+            "dalian_export_license_approved":False,
+            "reported_dalian_financing_link":True,
+            "issuer_funding_committed_usd":None,
+            "project_scope":"new_US_NAND_wafer_fab_not_Taiwan_SSD_ODM",
+            "evidence_state":"top_tier_report",
+            "independent_origin_count":1,
+            "source_date":"2026-10-27",
+            "source_url":BLOOMBERG_US_NAND_SYNDICATED,
+            "original_url":BLOOMBERG_US_NAND_ORIGINAL,
+            "related_reuters_url":REUTERS_DALIAN_OCT14,
+            "issuer_official_source":SK_IPO_STOP_OFFICIAL,
+            "bis_policy_url":BIS_EQUIPMENT_POLICY,
+        }
+    base=clean((event.get("title") or "")+" "+(event.get("description") or ""))
+    if not _trusted_fab_event(event):
+        return {}
+    url=event.get("direct_link") or ""
+    host=(urllib.parse.urlparse(url).hostname or "").lower()
+    company_official=host in ("news.skhynix.com","www.skhynix.com","skhynix.com",
+                              "www.solidigm.com","solidigm.com")
+    regulator_official=host in ("bis.gov","www.bis.gov")
+    text=base.lower()
+    patch={}
+    if company_official and re.search(r"solidigm|솔리다임",text):
+        if re.search(r"(?:(?:investment|construction) (?:decision|approved|confirmed)|"
+                     r"final investment decision|fid|투자\s*최종\s*결정|투자\s*확정)",text,re.I):
+            if not re.search(r"\b(?:not|no|without|pending|awaiting)\b.{0,35}"
+                             r"(?:decision|approved|confirmed)|아직.{0,35}미확정",text,re.I):
+                patch["stage"]="official_project_decision"
+                patch["investment_final_decision_confirmed"]=True
+        if re.search(r"(?:broke ground|breaking ground|construction began|착공\s*(?:시작|완료|개시))",text,re.I):
+            patch["stage"]="construction_started"
+        if re.search(r"(?:mass production began|volume production started|양산\s*(?:시작|개시))",text,re.I):
+            patch["stage"]="volume_production"
+    if regulator_official and re.search(r"dalian|다롄",text,re.I) and re.search(r"solidigm|솔리다임",text,re.I):
+        if re.search(r"(?:has approved|license approved|approval granted|허가\s*승인|허가\s*발급)",text,re.I):
+            patch["dalian_equipment_license_status"]="approved_official"
+            patch["dalian_export_license_approved"]=True
+        elif re.search(r"(?:denied|refused|rejected|허가\s*거부|신청\s*반려)",text,re.I):
+            patch["dalian_equipment_license_status"]="denied_official"
+            patch["dalian_export_license_approved"]=False
+    if not patch:
+        return {}
+    patch.update({"source_url":url,"source_date":(event.get("published_at_kst") or "")[:10],
+                  "evidence_state":"official"})
+    return patch
+
+def merge_us_nand_fab(current,patch):
+    new=dict(current or {})
+    if not patch:
+        return new
+    old_stage=new.get("stage","")
+    stage=patch.get("stage","")
+    if stage and patch.get("evidence_state") == "official" and (
+        FAB_STAGE.get(stage,0)>=FAB_STAGE.get(old_stage,0)
+    ):
+        new["stage"]=stage
+    elif stage=="reported_talks" and not old_stage:
+        new["stage"]=stage
+    for field,value in patch.items():
+        if field=="stage" or value is None:
+            continue
+        if field in ("dalian_equipment_license_status","dalian_export_license_approved") and (
+            new.get("dalian_equipment_license_status") in ("approved_official","denied_official")
+            and patch.get("evidence_state") != "official"
+        ):
+            continue
+        if field in ("investment_final_decision_confirmed","construction_start_year_confirmed") and (
+            new.get(field) and not value):
+            continue
+        if field in ("evidence_state","source_url","source_date") and new.get("evidence_state")=="official" and patch.get("evidence_state")!="official":
+            continue
+        new[field]=value
+    return new
+
+def us_nand_fab_changes(old,new):
+    if not old and new:
+        return ["Bloomberg 450억달러 미국 NAND 공장 협상안 신규 확인(투자 확정 아님)"]
+    reasons=[]
+    if new.get("stage") != old.get("stage") and FAB_STAGE.get(new.get("stage",""),0)>FAB_STAGE.get(old.get("stage",""),0):
+        reasons.append("미국 NAND 신규공장 단계 "+str(old.get("stage"))+"→"+str(new.get("stage")))
+    if new.get("dalian_equipment_license_status") != old.get("dalian_equipment_license_status"):
+        if new.get("evidence_state")=="official":
+            reasons.append("미국 다롄 장비 수출허가 판정 "+str(new.get("dalian_equipment_license_status")))
+    if new.get("investment_final_decision_confirmed") and not old.get("investment_final_decision_confirmed"):
+        reasons.append("미국 NAND 공장 최종 투자결정 공식 확인")
+    old_amount=old.get("proposed_capex_usd")
+    new_amount=new.get("proposed_capex_usd")
+    if old_amount and new_amount and abs(new_amount/old_amount-1)>=0.10:
+        reasons.append(f"보도상 총사업비 변경 {new_amount/old_amount-1:+.0%}")
+    return reasons
+
+def us_nand_fab_alert(old,new,reasons,checked):
+    rate,basis=fx_quote()
+    stage_text={
+        "reported_talks":"미국 상무부 협상·검토(투자 미확정)",
+        "official_project_decision":"회사 최종 투자결정",
+        "construction_started":"실제 착공","equipment_installation":"장비 반입",
+        "pilot_production":"시험생산","volume_production":"양산",
+    }
+    lines=[
+        "🚨 <b>솔리다임 미국 NAND 공장·다롄 장비 허가 감시</b>",
+        "━━━━━━━━━━━━━━━━",
+        "• 단계: <b>"+html.escape(stage_text.get(new.get("stage"),"검토"))+"</b>",
+        "• 총사업비 협상안: <b>"+usd_display(new.get("proposed_capex_usd"),rate)+"</b> (회사 확정 설비투자 아님)",
+        "• 장기 확대 가능성: "+usd_display(new.get("possible_long_term_total_usd"),rate)+" (추가 보도상 가능성, 투자 약정 아님)",
+        "• 다롄 장비 수출허가: <b>"+html.escape(new.get("dalian_equipment_license_status") or "미확인")+"</b>",
+        "• 연결구조: 중국 다롄 장비 반입 허가→판매량·현금창출 확대→미국 공장 투자재원 마련(업계 보도상의 제안)",
+        "• 부지·공정: 뉴욕주 등 후보 / 2027년 착공 가능성 보도 / 부지 확정·최종 투자결정·실제 착공 미확인",
+        "• 자금: 10월 23일 SK하이닉스 공식 IPO 검토 중단. 직접 출자·차입·외부 조달 비중은 미공개",
+        "• 구분: 중국 NAND 웨이퍼 팹 증설·미국 NAND 신규 팹·대만 SSD 위탁조립은 각기 별도",
+        "• 실패 경로: 미 상무부의 중국 기술·증설용 장비 허가 제한, 대규모 자금조달·전력·초순수·수율·고객 인증 지연",
+        "• 후속 감시: BIS 허가·거부→회사 투자결정→부지·지원금·자금조달→장비 발주→착공→양산",
+        "• 변화: <b>"+html.escape(" · ".join(reasons))+"</b>",
+        "• 원보도: "+href(new.get("original_url") or BLOOMBERG_US_NAND_ORIGINAL,"Bloomberg"),
+        "• 원문 계보: Bloomberg 원보도·Bloomberg Law 재게시 같은 1개 사실 원천, 별개 2곳 아님",
+        "• 기존 독립 취재: "+href(REUTERS_DALIAN_OCT14,"Reuters 10월 14일"),
+        "• 회사 공식: "+href(SK_IPO_STOP_OFFICIAL,"SK하이닉스 10월 23일"),
+        "• 미국 수출규정: "+href(BIS_EQUIPMENT_POLICY,"BIS 공식"),
+        "• 환율: "+html.escape(basis),
+        "• 확인 시각: "+checked.strftime("%Y-%m-%d %H:%M KST"),
+    ]
+    return "\n".join(lines)+"\n"
 
 def main():
     checked = now_kst()
@@ -935,6 +1182,22 @@ def main():
 
     manufacturing_reasons = manufacturing_material_changes(manufacturing_current, manufacturing_candidate)
 
+    # Separate US NAND wafer-fab investment talks from Taiwan SSD assembly PCN.
+    fab_current=dict(state.get("us_nand_fab_state") or {})
+    fab_candidate=dict(fab_current)
+    for event in read_us_nand_fab_events():
+        try:
+            dt=datetime.fromisoformat(event.get("published_at_kst") or "")
+        except Exception:
+            continue
+        if dt<cutoff or dt>checked+timedelta(minutes=10):
+            continue
+        patch=extract_us_nand_fab_patch(event)
+        if not patch:
+            continue
+        fab_candidate=merge_us_nand_fab(fab_candidate,patch)
+    fab_reasons=us_nand_fab_changes(fab_current,fab_candidate)
+
     state["watch_version"] = WATCH_VERSION
     if ipo_format_refresh:
         state["ipo_alert_format_version"] = IPO_ALERT_FORMAT_VERSION
@@ -943,6 +1206,8 @@ def main():
     state["last_checked_at_kst"] = checked.isoformat(timespec="seconds")
     state["current_state"] = candidate
     state["manufacturing_state"] = manufacturing_candidate
+    state["us_nand_fab_state"] = fab_candidate
+    state["us_nand_fab_track_version"] = US_NAND_FAB_BASELINE_VERSION
 
     if best_source:
         state["last_evidence_url"] = best_source.get("direct_link") or ""
@@ -960,6 +1225,10 @@ def main():
         sections.append(manufacturing_alert_text(manufacturing_current, manufacturing_candidate, manufacturing_reasons, checked).strip())
         state["last_manufacturing_alert_reasons"] = manufacturing_reasons
         state["last_manufacturing_alert_at_kst"] = checked.isoformat(timespec="seconds")
+    if fab_reasons:
+        sections.append(us_nand_fab_alert(fab_current,fab_candidate,fab_reasons,checked).strip())
+        state["last_us_nand_fab_alert_reasons"]=fab_reasons
+        state["last_us_nand_fab_alert_at_kst"]=checked.isoformat(timespec="seconds")
 
     ALERT.parent.mkdir(exist_ok=True)
     if sections:
@@ -971,6 +1240,7 @@ def main():
     print(
         "solidigm_ipo_watch=true ipo_changes=" + str(len(ipo_reasons))
         + " manufacturing_changes=" + str(len(manufacturing_reasons))
+        + " us_nand_fab_changes=" + str(len(fab_reasons))
     )
 
 
