@@ -1716,6 +1716,75 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     items: list[dict] = []
     seen_links: set[str] = set()
 
+    # Agreement by governments (October 9) versus media-reported quota size
+    # (October 12) and a legally effective EU import safeguard are distinct.
+    if rule.key == "eu_china_hybrid_vehicle_safeguard":
+        baseline = dt.datetime(2026, 10, 12, tzinfo=KST)
+        if (now - baseline).total_seconds() / 3600 <= max_age_hours_for_rule(rule):
+            for url, markers in EU_HYBRID_OFFICIAL:
+                try:
+                    raw = fetch_text(url, timeout=12)
+                except Exception as exc:
+                    print(f"trusted_policy_news=eu_hybrid_official_failed error={type(exc).__name__}: {exc}")
+                    continue
+                normalized = re.sub(r"\s+", "", clean_text(raw)).lower()
+                if not all(re.sub(r"\s+", "", marker).lower() in normalized for marker in markers):
+                    print("trusted_policy_news=eu_hybrid_official_rejected reason=case_marker_mismatch")
+                    continue
+                if not has_required_terms(f"{rule.title} {clean_text(raw)}", rule):
+                    print("trusted_policy_news=eu_hybrid_official_rejected reason=rule_terms_mismatch")
+                    continue
+                items.append({
+                    "title": rule.title,
+                    "description": clean_text(raw)[:50000],
+                    "link": url,
+                    "source": "중국 상무부",
+                    "published_kst": baseline.isoformat(timespec="seconds"),
+                    "published_precision": "date",
+                    "priority": 0,
+                    "official_direct_verified": True,
+                    "eu_hybrid_stage": "government-understanding",
+                })
+                seen_links.add(url)
+                print("trusted_policy_news=eu_hybrid_official_verified scope=agreement_only")
+                break
+
+    # Bloomberg's dated report is verified as press, not as a Commission
+    # safeguard regulation. A Reuters article supplies an independent stage.
+    if rule.key == "eu_china_sector_import_safeguards":
+        for url, published_day, source_label, markers, stage in EU_SECTOR_PRESS_CASES:
+            published = dt.datetime.fromisoformat(published_day).replace(tzinfo=KST)
+            if (now - published).total_seconds() / 3600 > max_age_hours_for_rule(rule):
+                continue
+            try:
+                raw = fetch_text(url, timeout=12)
+            except Exception as exc:
+                print(f"trusted_policy_news=eu_sector_press_failed stage={stage} error={type(exc).__name__}: {exc}")
+                continue
+            body = clean_text(raw)
+            low = body.lower()
+            if not all(marker.lower() in low for marker in markers):
+                print(f"trusted_policy_news=eu_sector_press_rejected stage={stage} reason=article_identity_mismatch")
+                continue
+            if not has_required_terms(f"{rule.title} {body}", rule):
+                print(f"trusted_policy_news=eu_sector_press_rejected stage={stage} reason=rule_terms_mismatch")
+                continue
+            items.append({
+                "title": ("EU plans more Chinese import curbs on chemicals, furniture and machinery"
+                          if stage == "furniture-reported"
+                          else "EU ministers discuss further safeguards for chemicals and machinery"),
+                "description": body[:50000],
+                "link": url,
+                "source": source_label,
+                "published_kst": published.isoformat(timespec="seconds"),
+                "published_precision": "date",
+                "priority": 0 if stage == "furniture-reported" else 1,
+                "eu_sector_stage": stage,
+                "official_direct_verified": False,
+            })
+            seen_links.add(url)
+            print(f"trusted_policy_news=eu_sector_press_verified stage={stage} status=report_only")
+
     # Exact first-party notices are identified by all three: document number,
     # subject-specific technical codes, and its published effective date.
     # The separate Ministry-hosted mirror is NOT an independent policy event.
