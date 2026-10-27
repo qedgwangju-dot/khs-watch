@@ -29,7 +29,7 @@
     "agentic_cpu_per_gpu": 1.0
   },
   "baseline_source": "BofA Global Research 2차 공개보도 기준",
-  "updated_at_kst": "2026-10-27T14:01:07+09:00",
+  "updated_at_kst": "2026-10-27T14:45:12+09:00",
   "seen_ids": [
     "66d627057937a9e600c63eac",
     "08d5cbf40c85943b346ecc01",
@@ -69,6 +69,35 @@
     "networking_alert_id": "jpm-cloud-dc-networking-2026-10-13-nine-suppliers",
     "networking_alert_at_kst": "2026-10-18T18:27:51+09:00"
   },
+  "bofa_global_spending": {
+    "reference": {
+      "research_note_date": "2026-10-23",
+      "global_spending_2026_usd_t": 1.0,
+      "global_spending_2028_usd_t": 2.1,
+      "global_market_2030_usd_t": 2.93,
+      "global_market_2022_usd_b": 275.0,
+      "market_2025_2030_cagr_pct": 37.0,
+      "standard_dc_total_usd_m_per_mw": 49.0,
+      "ai_dc_total_usd_m_per_mw": 57.0,
+      "standard_dc_it_cost_pct": 78.0,
+      "standard_dc_server_usd_m_per_mw": 31.4,
+      "standard_dc_network_usd_m_per_mw": 4.8,
+      "component_range_usd_m_per_mw": [
+        0.1,
+        1.1
+      ],
+      "geography": "전 세계",
+      "source_grade": "Reuters 10월 23일 및 TechTimes 10월 26일 공개보도. BofA 원보고서 미확보",
+      "scope_warning": "종전 BofA 2030 AI 데이터센터 시스템시장 2.2조달러와 전체 시장 2.93조달러는 동일 분모 미확인",
+      "sources": [
+        "https://www.reuters.com/business/data-center-spending-more-than-double-21-trillion-by-2028-2026-10-23/",
+        "https://www.techtimes.com/articles/329486/20261026/bank-america-data-center-market-will-top-2-trillion-2028-ai-driven-build.htm",
+        "https://www.channelnewsasia.com/business/data-center-spending-more-double-21-trillion-2028-bofa-says-6487191"
+      ]
+    },
+    "delivered_id": "bofa-global-dc-spending-20261023-reuters-cost-per-mw",
+    "delivered_at_kst": "2026-10-27T14:45:12+09:00"
+  },
   "semianalysis_2027": {
     "user_excerpt": {
       "2027_new_capacity_headline_gw": 50,
@@ -90,7 +119,7 @@
       "60gw",
       "24gw"
     ],
-    "last_primary_checked_kst": "2026-10-27T14:01:07+09:00",
+    "last_primary_checked_kst": "2026-10-27T14:45:12+09:00",
     "primary_errors": [],
     "publisher_release": "2026-10-19T05:39:38+00:00",
     "publisher_article_url": "https://newsletter.semianalysis.com/p/datacenters-2027-the-year-of-acceleration",
@@ -132,7 +161,7 @@
   },
   "fx": {
     "usdkrw": 1325.28,
-    "basis": "2026-10-26 일일 기준 · ECB/Frankfurter · 조회 2026-10-27 14:01 KST · 보조 API 2026-10-27 · 차이 0.01% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-26 일일 기준 · ECB/Frankfurter · 조회 2026-10-27 14:45 KST · 보조 API 2026-10-27 · 차이 0.01% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "quality": "교차검증 일일 기준환율"
   },
