@@ -121,6 +121,8 @@ jobs:
           m._self_test_defense_future_warfare_event_model()
           m._self_test_fcc_optical_transceiver_event_model()
           m._self_test_mofcom_2026_notices()
+          m._self_test_eu_china_trade_events()
+          print("eu_china_import_safeguards_regression=passed")
           from scripts.khs_policy_telegram_formatter import prepare_telegram_html
           import datetime as dt
           from zoneinfo import ZoneInfo
