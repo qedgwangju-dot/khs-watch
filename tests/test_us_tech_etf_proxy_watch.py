@@ -283,5 +283,51 @@ class TechEtfProxyTests(unittest.TestCase):
             w.urllib.request,"urlopen",side_effect=responses):
             self.assertEqual(w.send_exact("testing recipient verification"),1284)
 
+
+    def test_old_ishares_snapshot_after_us_close_is_publication_pending(self):
+        now = dt.datetime(2026, 10, 27, 23, 10, tzinfo=dt.timezone.utc)
+        def fetch(ticker, meta, retry_budget=None):
+            return snap("2026-10-26")[ticker]
+        with self.assertRaisesRegex(w.OfficialPublicationPending,"2026-10-27"):
+            w.collect(now=now,fetcher=fetch)
+
+    def test_missing_two_us_business_sessions_is_source_withheld(self):
+        now = dt.datetime(2026, 10, 28, 23, 10, tzinfo=dt.timezone.utc)
+        def fetch(ticker, meta, retry_budget=None):
+            return snap("2026-10-26")[ticker]
+        with self.assertRaisesRegex(ValueError,"unavailable/stale"):
+            w.collect(now=now,fetcher=fetch)
+
+    def test_publication_pending_does_not_reuse_saved_values_or_send(self):
+        original = prior_state("2026-10-23")
+        w.save_state(original,self.state)
+        before = self.state.read_text()
+        def unavailable(_):
+            raise w.OfficialPublicationPending("2026-10-27 source not yet published")
+        with patch.object(w,"send_exact") as send, patch.object(w.ishares,"get_usdkrw") as fx:
+            result=w.run(state_path=self.state,getter=unavailable)
+        self.assertEqual(result["status"],"publication_pending")
+        self.assertFalse(result["telegram_sent"])
+        self.assertIn("2026-10-27",result["reason"])
+        send.assert_not_called()
+        fx.assert_not_called()
+        self.assertEqual(before,self.state.read_text())
+
+    def test_missing_weekday_within_four_calendar_days_blocks_daily_signal(self):
+        prior=prior_state("2026-10-22")
+        x=w.calculate(snap("2026-10-26",iyw_shares=101_000_000),prior)
+        self.assertIsNone(x["movements"]["IYW"]["shares_delta"])
+        self.assertNotIn("IYW 발행좌수 당일 +1% 이상",x["signals"])
+
+    def test_friday_to_monday_is_one_valid_comparison_session(self):
+        prior=prior_state("2026-10-23")
+        prior["history"]["SOXX"][-1]["shares"]=90_350_000
+        sample=snap("2026-10-26",soxx_shares=94_200_000)
+        sample["SOXX"]["nav"]=492.25
+        x=w.calculate(sample,prior)
+        self.assertAlmostEqual(x["movements"]["SOXX"]["outstanding_shares_change_pct"],4.2612064195)
+        self.assertEqual(x["movements"]["SOXX"]["estimated_creation_value_usd"],1_895_162_500)
+        self.assertIn("SOXX 발행좌수 당일 +1% 이상",x["signals"])
+
 if __name__=="__main__":
     unittest.main()
