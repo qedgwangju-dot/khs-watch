@@ -86,6 +86,12 @@ jobs:
           else
             echo "공식 원문 조회·검증 실패: 텔레그램 미발송" >> "$GITHUB_STEP_SUMMARY"
           fi
+      - name: Verify correct Telegram bot and recipient without sending
+        if: env.DRY_RUN != 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: python scripts/korea_credit_spread_watch.py --probe
       - name: Preview alert without delivery on dry run
         if: env.DRY_RUN == 'true' && hashFiles('out/korea_credit_spread_watch_alert.html') != ''
         run: |
