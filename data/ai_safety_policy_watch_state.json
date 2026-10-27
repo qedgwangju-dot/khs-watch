@@ -9,7 +9,7 @@
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 92,
+    "raw_items": 93,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-27T08:13:18.591235+00:00",
+    "updated_at": "2026-10-27T08:22:30.142991+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -338,6 +338,18 @@
       "source_url": "https://www.reuters.com/business/us-ftc-subpoenas-openai-anthropic-over-consumer-harms-axios-reports-2026-10-15/",
       "status": "2026-10-15 Axios/Reuters civil subpoena reporting only; investigation is not a liability finding"
     },
+    "genians_nexus:development_complete_20260916": {
+      "source_url": "https://www.genians.co.kr/pr-room/press/260916",
+      "status": "2026-09-16 issuer announcement: Nexus Framework developed and demonstrated at GISEC; no disclosed incremental Nexus-only paid contract"
+    },
+    "ksign_evsec:demonstration_announced_20261020": {
+      "source_url": "https://www.newswire.co.kr/newsRead.php?no=1045070",
+      "status": "2026-10-20 issuer-distributed EV charging security analysis demo at KOAA SHOW Oct 21-23; demo is not customer purchase"
+    },
+    "ksign_sandslab:naver_security_model_selected_20260903": {
+      "source_url": "https://www.yna.co.kr/view/AKR20260903037252017",
+      "status": "2026-09-03 NAVER Cloud consortium selected; SandLab participating and KSign owns 42.01% of SandLab (not separate KSign contract)"
+    },
     "php_korea_response:caution_elevated_20261022": {
       "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148974113",
       "status": "2026-10-22 12:00 KST: 민간 분야 사이버위기 경보 관심→주의 상향; 기존 기준선"
@@ -361,11 +373,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-10-27T17:13:18+09:00",
+  "updated_at_kst": "2026-10-27T17:22:30+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-10-27T08:13:57.790092+00:00",
+    "last_success_at": "2026-10-27T08:23:07.355958+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
