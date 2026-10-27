@@ -187,5 +187,37 @@ class VipRelativeRegression(unittest.TestCase):
             w.load_state(self.state)
 
 
+    def test_one_official_session_lag_is_pending_not_source_failure(self):
+        now=dt.datetime(2026,10,27,23,0,tzinfo=dt.timezone.utc)
+        g,s,_=market_rows()
+        g["2026-10-26"]={"close":177.2,"volume":9000}
+        s["2026-10-26"]={"close":110.0,"volume":50000000}
+        with self.assertRaisesRegex(w.OfficialPublicationPending,"2026-10-27"):
+            w.collect(now,client=Source(g,s))
+
+    def test_asynchronous_close_publication_is_pending_not_false_relative_signal(self):
+        now=dt.datetime(2026,10,27,23,0,tzinfo=dt.timezone.utc)
+        g,s,_=market_rows()
+        g["2026-10-27"]={"close":176.5,"volume":9000}
+        s["2026-10-26"]={"close":110.0,"volume":50000000}
+        with self.assertRaises(w.OfficialPublicationPending):
+            w.collect(now,client=Source(g,s))
+
+    def test_older_than_one_completed_business_session_is_actual_source_failure(self):
+        self.assertFalse(w.recent_publication_gap("2026-10-27","2026-10-23","2026-10-26"))
+        self.assertFalse(w.recent_publication_gap("2026-10-27","2026-10-27","2026-10-27"))
+
+    def test_pending_never_sends_or_changes_state(self):
+        def stale(_):
+            raise w.OfficialPublicationPending("Nasdaq GVIP/SPY pending completed close")
+        with patch.object(w,"send_telegram") as send:
+            result=w.run(state_path=self.state,source=stale)
+        self.assertEqual(result["status"],"publication_pending")
+        self.assertFalse(result["telegram_sent"])
+        self.assertFalse(self.state.exists())
+        send.assert_not_called()
+
+
+
 if __name__ == "__main__":
     unittest.main()
