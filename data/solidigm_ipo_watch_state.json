@@ -43,15 +43,15 @@
     "bloomberg_original_body_directly_verified": false,
     "official_review_discontinued": true
   },
-  "last_checked_at_kst": "2026-10-28T08:13:22+09:00",
+  "last_checked_at_kst": "2026-10-28T08:21:00+09:00",
   "last_alert_at_kst": "2026-10-28T08:13:22+09:00",
   "last_alert_reasons": [
     "상장 단계 대표주관사·주관단 선정→기업공개 검토 중단(회사 공식)",
     "신뢰보도→회사·SEC 공식 확인"
   ],
   "delivery_check": {
-    "checked_at_kst": "2026-10-28T08:13:56+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-28T08:21:13+09:00",
+    "status": "no_message_due"
   },
   "false_positive_audit": {
     "message_id": 149,
@@ -132,7 +132,7 @@
     "evidence_state": "top_tier_report",
     "independent_origin_count": 1,
     "source_date": "2026-10-27",
-    "source_url": "https://news.bloomberglaw.com/tech-and-telecom-law/solidigm-dangles-new-45-billion-us-plant-to-upgrade-china-site",
+    "source_url": "https://news.bloomberglaw.com/capital-markets/solidigm-dangles-new-45-billion-us-plant-to-upgrade-china-site",
     "original_url": "https://www.bloomberg.com/news/articles/2026-10-27/solidigm-dangles-new-45-billion-us-plant-to-upgrade-china-site",
     "related_reuters_url": "https://www.investing.com/news/stock-market-news/exclusivesk-hynix-conditions-new-us-factory-on-more-us-chip-equipment-exports-to-china-sources-say-4950396",
     "issuer_official_source": "https://news.skhynix.com/en/fact-12/",
