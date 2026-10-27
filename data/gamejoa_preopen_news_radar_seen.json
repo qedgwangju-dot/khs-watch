@@ -1298,6 +1298,31 @@
       "telegram_core_fact": "서한(011370)은 대치동 AIDC 9MW 데이터센터 신축사업에 관한 단일판매ㆍ공급계약체결 을 21일에 공시했다.",
       "title": "서한 수주공시 - 대치동 AIDC 9MW 데이터센터 신축사업 1,296억원 (매출액대비 20.09 %)"
     },
+    "core:03996b26e02aaf2ad4ae1e0e": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842824",
+      "source": "뉴시스",
+      "source_body_digest": "3d6c2fe12c3d992be57d7d480ee79230c5a355884c584b36749dae4269678d57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336d678d3dad26509d05f35be9cfabb049034d58271676c7888d520bdf29af05",
+      "source_fact_keys": [
+        "source_fact:v1:3b5082ffda4de16169455bf5b80bfda4f5013a991cdca1c0a4e594dffb849d13",
+        "source_fact:v1:5f71b129a279f944759b5929ac7cb06b6230515852330e6e4dd47e528d48722c",
+        "source_fact:v1:7064afccd2909909027121772e22b9d467900551c3142597a983d21208508521",
+        "source_fact:v1:c66badbcb3a4912a8777a91ed367bf6567a6b581bfd81328a00bf8f4a52702a4",
+        "source_fact:v1:d34b5f00c30ae0a609afcc393289d548905e1908e6bd55341e13b8e908d80c33",
+        "source_fact:v1:d8c8df84ff8d26e6dfec97cd7ef1020cd3e0b3b67bd0f396843cb1cb9a69eb51"
+      ],
+      "source_published_kst": "2026-10-27T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진",
+      "telegram_core_fact": "향후 대형 원전뿐 아니라 SMR을 활용해 안전성과 지역 균형을 고려한 전력 공급 체계를 구축하는 방안이 중요해질 것이라는 설명이다.",
+      "title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진"
+    },
     "core:039fec55a182a602e19d7e83": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
       "lanes": {
@@ -1706,6 +1731,28 @@
       "source_title": "KFC, 코카콜라와 계약…30년 협력 펩시와 결별",
       "telegram_core_fact": "코카콜라가 최근 주요 유통·외식업체와 잇따라 공급 계약을 체결하면서 미국 음료 시장에서 펩시코의 입지가 더욱 좁아지는 모양새다.15일(현지시간) 월스트리트저널(WSJ)은 KFC는 코카콜라와 미국 내 음료 공급 계약을 체결했다고 보도했다.",
       "title": "KFC, 코카콜라와 계약…30년 협력 펩시와 결별"
+    },
+    "core:04c6c9473f034a673a168901": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12186882",
+      "source": "매일경제",
+      "source_body_digest": "a542c5df96f3c9f982fa030d23176ff0edf7528e1679505b567fd4baf9e9c9b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b18e42bf5717781760a482a5b07658890844408d296be797dda7fe2acc97e1e",
+      "source_fact_keys": [
+        "source_fact:v1:330f2ef58591bd4b977bc0dae31195f73742c3cfc61583287c7e64be12b0d8ce",
+        "source_fact:v1:4622fd8b2e82a6c15216f9e6920f3f77f3d111a90eaaa94c176395dbea9f2c3f",
+        "source_fact:v1:d58f8e9e83dae582971b46ff762f0b1cd2bbeeb8d1f160e1735ce198e92b3967"
+      ],
+      "source_published_kst": "2026-10-27T13:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가",
+      "telegram_core_fact": "대우건설은 올해 3분기 영업이익이 1832억원으로 전년 동기(566억원) 대비 223.7% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가"
     },
     "core:04d32eb6cae07c5e3643c930": {
       "first_seen_kst": "2026-10-27T10:02:05+09:00",
@@ -7666,6 +7713,26 @@
       "source_title": "반도체 초일류 삼성 내다본 이건희 회장의 신경영 DNA",
       "telegram_core_fact": "삼성전자는 1977년 미국 ICII가 들고 있던 나머지 지분 50%까지 인수해 사명을 삼성반도체로 바꿨다.",
       "title": "반도체 초일류 삼성 내다본 이건희 회장의 신경영 DNA"
+    },
+    "core:11167b436a6425090f1613d0": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102500527",
+      "source": "연합뉴스",
+      "source_body_digest": "2ecfd9a06a67f270d1e161027a3ff6a344518c75f5e5c4360d39a6854f11a03f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f881760a2327472eee69e83d254d678d2a0a187a644116d10b87db6592a8e2e6",
+      "source_fact_keys": [
+        "source_fact:v1:84087ac181fd661f3befc5b6b32c0a2bb906ca5a7bcc56b687cb5fa23a5eec89"
+      ],
+      "source_published_kst": "2026-10-27T13:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한은행이 연결 기준 올해 3분기 영업이익 1조5천917억원으로 지난해 동기보다 8.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스"
     },
     "core:11427526ca8420572d2c3678": {
       "first_seen_kst": "2026-10-22T00:31:22+09:00",
@@ -29388,6 +29455,27 @@
       "telegram_core_fact": "신화망과 인민망, 홍콩경제일보에 따르면 중국 국가통계국은 19일 9월 산업생산이 전년 동월 대비 5.5% 늘어났다고 발표했다. 소매판매는 9월에 전년 동월보다 1.1% 증가해 시장 예상 0.5%를 웃돌았다.",
       "title": "중국 9월 산업생산 5.5%↑·소매판매 1.1%↑…예상 웃돌아"
     },
+    "core:3e4b5d6b855c8cd5f0b99945": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640586",
+      "source": "이투데이",
+      "source_body_digest": "2b5db79da2c1ee8cb2cb88d362ab048c3fe27b6742a9685a28b51219ec81213c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ba9ae0adf6c09a905fad9e79a1949ce0c4fc171869567e2ca9b0515ff996f539",
+      "source_fact_identity": "source_facts:v1:0f9f0db43997d93c03232c56972958ab62bce9fd3f0a840f0bb9a839d3d86918",
+      "source_fact_keys": [
+        "source_fact:v1:3e00241eb871ce5999a017b10e1a470546cd36059c64bb31b13d0937e26943c5",
+        "source_fact:v1:f7edd73ef052d5b1d852f2e1435a7fd820032dd772bb669c07a70836347d7f07"
+      ],
+      "source_published_kst": "2026-10-27T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑",
+      "telegram_core_fact": "한화오션은 올해 3분기 연결 기준 영업이익이 4857억원으로 전년비 67.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑"
+    },
     "core:3e4c53e9a7362d28cd8e5737": {
       "first_seen_kst": "2026-10-27T19:09:26+09:00",
       "lanes": {
@@ -41804,6 +41892,26 @@
       "source_title": "한미양행, 남원 기회발전특구 '1호' 191억 투자…화장품·건강기능식품 생산공장 건립",
       "telegram_core_fact": "전북특별자치도는 남원시청에서 건강기능식품 전문기업 한미양행과 남원일반산업단지 내 화장품·건강기능식품 생산공장 건립을 위한 투자협약을 체결했다고 23일 밝혔다.",
       "title": "한미양행, 남원 기회발전특구 '1호' 191억 투자…화장품·건강기능식품 생산공장 건립"
+    },
+    "core:5c0a4af6879240f3c5f9bfa3": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027103100527",
+      "source": "연합뉴스",
+      "source_body_digest": "c0ea40e2325b7e0e70467bfd5ef07ffe1c1f52d9d3e15851adc12a3826462575",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:5c22d446b1b975bdad8e2c385df9cddce96f18484be0b532b790612527a69174",
+      "source_fact_identity": "source_facts:v1:6f6d4a9f9290a55d6dd4e73e198e2427d773ac844c86bcb92c9c45ba4d2469c2",
+      "source_fact_keys": [
+        "source_fact:v1:f75e850569d038fa985244d489d69c3837668776d0799bff7b1c1ecfe47f9288"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한카드가 연결 기준 올해 3분기 영업이익 1천296억원으로 지난해 동기보다 27.2% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스"
     },
     "core:5c106e1493584d7a8356e864": {
       "first_seen_kst": "2026-10-27T14:25:53+09:00",
@@ -83898,6 +84006,26 @@
       "telegram_core_fact": "전현영 의정부도시공사 사장은 \"앞으로도 시민들이 체감할 수 있는 주차환경 개선과 주차공간 확보를 위해 지속적으로 노력하겠다\"고 말했다.",
       "title": "의정부도시공사, 공영주차장 등 운영 환경 변경"
     },
+    "core:b8bbf0f571a5149616a46b7e": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027104700527",
+      "source": "연합뉴스",
+      "source_body_digest": "7696240752ac86ca414d8bc08134fb02e5e7659abee690a2d534c48e509570fb",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:65c8356bfd094f7039dd073f0981d6606697b873a2076938868887323ed6b51c",
+      "source_fact_identity": "source_facts:v1:8cb586470553ce7331cc26ae83721e07ec93e148634f2f448526bfefcbc53cea",
+      "source_fact_keys": [
+        "source_fact:v1:f5305f42483c8affa5d252d2cf13ba0367396e888d7f194f5766dabeb89254f6"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한라이프가 연결 기준 올해 3분기 영업이익 1천711억원으로 지난해 동기보다 27% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스"
+    },
     "core:b8c49a77df73183f96aa6b28": {
       "first_seen_kst": "2026-10-22T11:47:17+09:00",
       "lanes": {
@@ -105957,6 +106085,27 @@
       "source_title": "시지메드텍, 척추 고정 시스템 콜롬비아 허가…중남미 시장 확대",
       "telegram_core_fact": "유현승 시지메드텍 대표는 “현지 파트너와 협력해 콜롬비아 의료진의 수요에 대응하고 중남미에서 장기적인 공급·교육 체계를 구축하겠다”고 말했다.",
       "title": "시지메드텍, 척추 고정 시스템 콜롬비아 허가…중남미 시장 확대"
+    },
+    "core:e8e83471990b06496d45a97a": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102100527",
+      "source": "연합뉴스",
+      "source_body_digest": "61fc2a913504561a485bb2ea3d0094c04e4bcbbafd333d8abefc693b91579318",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:4fa272182727f3cf0b13d938213bdbe867a00598b62ea4444d3579e4b85132cb",
+      "source_fact_identity": "source_facts:v1:db529bafbfdbd05ebc4b2d2520181a87905a8141436bf9c0768cf463f85e7450",
+      "source_fact_keys": [
+        "source_fact:v1:a28302195e5dc986eab223d53df0422ffd2bcb2f2dac3049e91bcf7123a7e13a",
+        "source_fact:v1:c2afa640eb556ac6e8dc6ba2b361a1b30de40a5aee4567f0e8239af482bd0e7e"
+      ],
+      "source_published_kst": "2026-10-27T13:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대일렉트릭[267260]은 연결 기준 올해 3분기 영업이익이 2천845억원으로 지난해 동기보다 15.1% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스"
     },
     "core:e8ec81b793d06e49cfedaccf": {
       "first_seen_kst": "2026-10-19T06:02:38+09:00",
@@ -129063,6 +129212,26 @@
       "source_published_kst": "2026-10-06T16:47+09:00",
       "title": "상장폐지 기준 강화에 법원 제동…거래소"
     },
+    "event:7f807369bd70afec59933683": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027104700527",
+      "source": "연합뉴스",
+      "source_body_digest": "7696240752ac86ca414d8bc08134fb02e5e7659abee690a2d534c48e509570fb",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:65c8356bfd094f7039dd073f0981d6606697b873a2076938868887323ed6b51c",
+      "source_fact_identity": "source_facts:v1:8cb586470553ce7331cc26ae83721e07ec93e148634f2f448526bfefcbc53cea",
+      "source_fact_keys": [
+        "source_fact:v1:f5305f42483c8affa5d252d2cf13ba0367396e888d7f194f5766dabeb89254f6"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한라이프가 연결 기준 올해 3분기 영업이익 1천711억원으로 지난해 동기보다 27% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스"
+    },
     "event:7fb12baca26427e75de41ba7": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
       "lanes": {
@@ -130152,6 +130321,26 @@
       "source_title": "러 외무 \"美·이란 갈등 해결 지원 가능…우크라, 협상 준비 안 돼\"",
       "telegram_core_fact": "\"우크라이나 정권이나 유럽의 후원자들 어느 쪽도 협상을 할 준비가 돼 있지 않다는 것은 분명하다\"며 \"우리는 우크라이나가 현재 통제하는 지역에 남아 있는 사람들을 포함해 러시아인과 러시아 문화권 사람들의 권리, 그리고 러시아 역사의 일부가 될 그들의 권리를 위해 싸우고 있다\"고 했다.",
       "title": "러 외무 \"美·이란 갈등 해결 지원 가능…우크라, 협상 준비 안 돼\""
+    },
+    "event:8acd392fb12f1aee6535668e": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027103100527",
+      "source": "연합뉴스",
+      "source_body_digest": "c0ea40e2325b7e0e70467bfd5ef07ffe1c1f52d9d3e15851adc12a3826462575",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:5c22d446b1b975bdad8e2c385df9cddce96f18484be0b532b790612527a69174",
+      "source_fact_identity": "source_facts:v1:6f6d4a9f9290a55d6dd4e73e198e2427d773ac844c86bcb92c9c45ba4d2469c2",
+      "source_fact_keys": [
+        "source_fact:v1:f75e850569d038fa985244d489d69c3837668776d0799bff7b1c1ecfe47f9288"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한카드가 연결 기준 올해 3분기 영업이익 1천296억원으로 지난해 동기보다 27.2% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스"
     },
     "event:8aeceaa5ebdee3e4d93e16f4": {
       "first_seen_kst": "2026-10-22T14:04:51+09:00",
@@ -131528,6 +131717,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260928031100008",
       "source": "연합뉴스",
       "title": "한투운용 \"'ACE 머니마켓액티브ETF' 순자산 1조원 돌파\" | 연합뉴스"
+    },
+    "event:98d1d4f95e389474a7c99a78": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640586",
+      "source": "이투데이",
+      "source_body_digest": "2b5db79da2c1ee8cb2cb88d362ab048c3fe27b6742a9685a28b51219ec81213c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ba9ae0adf6c09a905fad9e79a1949ce0c4fc171869567e2ca9b0515ff996f539",
+      "source_fact_identity": "source_facts:v1:0f9f0db43997d93c03232c56972958ab62bce9fd3f0a840f0bb9a839d3d86918",
+      "source_fact_keys": [
+        "source_fact:v1:3e00241eb871ce5999a017b10e1a470546cd36059c64bb31b13d0937e26943c5",
+        "source_fact:v1:f7edd73ef052d5b1d852f2e1435a7fd820032dd772bb669c07a70836347d7f07"
+      ],
+      "source_published_kst": "2026-10-27T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑",
+      "telegram_core_fact": "한화오션은 올해 3분기 연결 기준 영업이익이 4857억원으로 전년비 67.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑"
     },
     "event:98dfe9fc663d0ae318aeffed": {
       "event_alias_evidence_message_id": 2282,
@@ -135009,6 +135219,27 @@
       ],
       "source_published_kst": "2026-10-06T19:04+09:00",
       "title": "이형일 “美 원전 선급금, 국내 절차·상업성 충족돼야 송금”"
+    },
+    "event:bd2f1849766ea73913540f20": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102100527",
+      "source": "연합뉴스",
+      "source_body_digest": "61fc2a913504561a485bb2ea3d0094c04e4bcbbafd333d8abefc693b91579318",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:4fa272182727f3cf0b13d938213bdbe867a00598b62ea4444d3579e4b85132cb",
+      "source_fact_identity": "source_facts:v1:db529bafbfdbd05ebc4b2d2520181a87905a8141436bf9c0768cf463f85e7450",
+      "source_fact_keys": [
+        "source_fact:v1:a28302195e5dc986eab223d53df0422ffd2bcb2f2dac3049e91bcf7123a7e13a",
+        "source_fact:v1:c2afa640eb556ac6e8dc6ba2b361a1b30de40a5aee4567f0e8239af482bd0e7e"
+      ],
+      "source_published_kst": "2026-10-27T13:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대일렉트릭[267260]은 연결 기준 올해 3분기 영업이익이 2천845억원으로 지난해 동기보다 15.1% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스"
     },
     "event:bd57e57fd4faa092c5f45da4": {
       "first_seen_kst": "2026-09-29T17:06:52+09:00",
@@ -147734,6 +147965,26 @@
       "source_published_kst": "2026-10-06T08:50+09:00",
       "title": "외식 프랜차이즈, 가맹점 매출 줄 때 본사 매출은 늘었다"
     },
+    "fact:0bc199ffeba43f240b3d9c6b": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027104700527",
+      "source": "연합뉴스",
+      "source_body_digest": "7696240752ac86ca414d8bc08134fb02e5e7659abee690a2d534c48e509570fb",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:65c8356bfd094f7039dd073f0981d6606697b873a2076938868887323ed6b51c",
+      "source_fact_identity": "source_facts:v1:8cb586470553ce7331cc26ae83721e07ec93e148634f2f448526bfefcbc53cea",
+      "source_fact_keys": [
+        "source_fact:v1:f5305f42483c8affa5d252d2cf13ba0367396e888d7f194f5766dabeb89254f6"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한라이프가 연결 기준 올해 3분기 영업이익 1천711억원으로 지난해 동기보다 27% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스"
+    },
     "fact:0bca0f630dd96d0c22f85e6b": {
       "first_seen_kst": "2026-10-16T23:32:01+09:00",
       "lanes": {
@@ -154735,6 +154986,28 @@
       "source_title": "SK하이닉스 안현 사장 '전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인'",
       "telegram_core_fact": "안 사장은 'AI 시대, 메모리 기술의 진화 방향'을 주제로 진행한 기조연설에서 AI 추론 수요 확대에 따라 기존 메모리 계층의 성능과 용량 측면에서 새로운 병목이 발생하고 있다고 설명함.",
       "title": "SK하이닉스 안현 사장 '전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인'"
+    },
+    "fact:196e9f7fefab1f2a68abb3a7": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12186882",
+      "source": "매일경제",
+      "source_body_digest": "a542c5df96f3c9f982fa030d23176ff0edf7528e1679505b567fd4baf9e9c9b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b18e42bf5717781760a482a5b07658890844408d296be797dda7fe2acc97e1e",
+      "source_fact_keys": [
+        "source_fact:v1:330f2ef58591bd4b977bc0dae31195f73742c3cfc61583287c7e64be12b0d8ce",
+        "source_fact:v1:4622fd8b2e82a6c15216f9e6920f3f77f3d111a90eaaa94c176395dbea9f2c3f",
+        "source_fact:v1:d58f8e9e83dae582971b46ff762f0b1cd2bbeeb8d1f160e1735ce198e92b3967"
+      ],
+      "source_published_kst": "2026-10-27T13:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가",
+      "telegram_core_fact": "대우건설은 올해 3분기 영업이익이 1832억원으로 전년 동기(566억원) 대비 223.7% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가"
     },
     "fact:1991a9a0e4a93598ca56f9f7": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -165604,6 +165877,26 @@
       "telegram_core_fact": "서울시는 2013년 관련 조례를 개정해 외국인 관광객의 택시 부당요금 신고가 행정처분으로 이어지면 신고자에게 50만원의 포상금을 지급할 수 있도록 했다.",
       "title": "외국인 택시 바가지 신고 5년간 6천건 넘는데…행정처분은 3% | 연합뉴스"
     },
+    "fact:318485abbc059ae50aa0eadb": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102500527",
+      "source": "연합뉴스",
+      "source_body_digest": "2ecfd9a06a67f270d1e161027a3ff6a344518c75f5e5c4360d39a6854f11a03f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f881760a2327472eee69e83d254d678d2a0a187a644116d10b87db6592a8e2e6",
+      "source_fact_keys": [
+        "source_fact:v1:84087ac181fd661f3befc5b6b32c0a2bb906ca5a7bcc56b687cb5fa23a5eec89"
+      ],
+      "source_published_kst": "2026-10-27T13:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한은행이 연결 기준 올해 3분기 영업이익 1조5천917억원으로 지난해 동기보다 8.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스"
+    },
     "fact:318d0d224c51b477f34a8fd1": {
       "first_seen_kst": "2026-10-25T15:00:08+09:00",
       "lanes": {
@@ -174820,6 +175113,26 @@
       "source_title": "델테크놀러지스, 엔비디아 AI팩토리 고객 6500곳 돌파에 주목",
       "telegram_core_fact": "엔비디아와 협력한 델 AI 팩토리 도입 기업이 6500곳을 넘어서며 직전 분기보다 30% 늘었습니다. 2027년 1월 결산 매출은 전년 대비 70% 증가한 1934억 달러가 전망되어 AI 서버 수요 지속 기대가 커지고 있습니다.",
       "title": "델테크놀러지스, 엔비디아 AI팩토리 고객 6500곳 돌파에 주목"
+    },
+    "fact:465dfa8540b824fa982fb8ce": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027103100527",
+      "source": "연합뉴스",
+      "source_body_digest": "c0ea40e2325b7e0e70467bfd5ef07ffe1c1f52d9d3e15851adc12a3826462575",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:5c22d446b1b975bdad8e2c385df9cddce96f18484be0b532b790612527a69174",
+      "source_fact_identity": "source_facts:v1:6f6d4a9f9290a55d6dd4e73e198e2427d773ac844c86bcb92c9c45ba4d2469c2",
+      "source_fact_keys": [
+        "source_fact:v1:f75e850569d038fa985244d489d69c3837668776d0799bff7b1c1ecfe47f9288"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한카드가 연결 기준 올해 3분기 영업이익 1천296억원으로 지난해 동기보다 27.2% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스"
     },
     "fact:467c46f1434d29b1b2e83032": {
       "first_seen_kst": "2026-10-26T13:56:11+09:00",
@@ -220868,6 +221181,27 @@
       "telegram_core_fact": "블룸버그통신에 따르면 중국 국가통계국은 3분기 국내총생산(GDP)이 전년비 4.5% 증가했다고 발표했다. 1~3분기 전체 증가율은 4.6%로 집계돼 중국 정부가 연간 목표치로 제시한 4.5~5%에 부합했다.",
       "title": "중국, 3분기 경제성장률 4.5%⋯예상 웃돌았지만 소비·투자 냉랭 [종합]"
     },
+    "fact:a3d6d4395c3088d347a51a8f": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640586",
+      "source": "이투데이",
+      "source_body_digest": "2b5db79da2c1ee8cb2cb88d362ab048c3fe27b6742a9685a28b51219ec81213c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ba9ae0adf6c09a905fad9e79a1949ce0c4fc171869567e2ca9b0515ff996f539",
+      "source_fact_identity": "source_facts:v1:0f9f0db43997d93c03232c56972958ab62bce9fd3f0a840f0bb9a839d3d86918",
+      "source_fact_keys": [
+        "source_fact:v1:3e00241eb871ce5999a017b10e1a470546cd36059c64bb31b13d0937e26943c5",
+        "source_fact:v1:f7edd73ef052d5b1d852f2e1435a7fd820032dd772bb669c07a70836347d7f07"
+      ],
+      "source_published_kst": "2026-10-27T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑",
+      "telegram_core_fact": "한화오션은 올해 3분기 연결 기준 영업이익이 4857억원으로 전년비 67.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑"
+    },
     "fact:a3eff5bb38070ae2d99270f5": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
       "lanes": {
@@ -231368,6 +231702,31 @@
       "source_title": "이브이첨단소재, 최대주주 유증 등 85억 자금 조달 완료…책임경영 본격화",
       "telegram_core_fact": "이번 자금 조달로 발행되는 신주는 제3자배정 77만5740주, 소액공모 40만2144주 등 총 117만7884주다.",
       "title": "이브이첨단소재, 최대주주 유증 등 85억 자금 조달 완료…책임경영 본격화"
+    },
+    "fact:b806f9e377f779b19b20a346": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842824",
+      "source": "뉴시스",
+      "source_body_digest": "3d6c2fe12c3d992be57d7d480ee79230c5a355884c584b36749dae4269678d57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336d678d3dad26509d05f35be9cfabb049034d58271676c7888d520bdf29af05",
+      "source_fact_keys": [
+        "source_fact:v1:3b5082ffda4de16169455bf5b80bfda4f5013a991cdca1c0a4e594dffb849d13",
+        "source_fact:v1:5f71b129a279f944759b5929ac7cb06b6230515852330e6e4dd47e528d48722c",
+        "source_fact:v1:7064afccd2909909027121772e22b9d467900551c3142597a983d21208508521",
+        "source_fact:v1:c66badbcb3a4912a8777a91ed367bf6567a6b581bfd81328a00bf8f4a52702a4",
+        "source_fact:v1:d34b5f00c30ae0a609afcc393289d548905e1908e6bd55341e13b8e908d80c33",
+        "source_fact:v1:d8c8df84ff8d26e6dfec97cd7ef1020cd3e0b3b67bd0f396843cb1cb9a69eb51"
+      ],
+      "source_published_kst": "2026-10-27T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진",
+      "telegram_core_fact": "향후 대형 원전뿐 아니라 SMR을 활용해 안전성과 지역 균형을 고려한 전력 공급 체계를 구축하는 방안이 중요해질 것이라는 설명이다.",
+      "title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진"
     },
     "fact:b8075d5745187527b0d2b1c8": {
       "first_seen_kst": "2026-10-11T15:10:51+09:00",
@@ -251370,6 +251729,27 @@
       "source_title": "한화3남 김동선, 1285억 투입해 한화M&S 최대주주로…'책임경영’ 승부수(종합)",
       "telegram_core_fact": "2024년에는 한화갤러리아의 실적 부진에 따른 책임경영에 초점을 맞췄다면, 이번에는 주가 하락에 대한 주주 불만을 해소하고 한화M&S의 성장 가능성에 대한 확신을 보여주려는 취지다. 김동선 한화(000880)머시너리앤서비스홀딩스(한화M&S) 미래전략총괄 사장이 1285억원을 들여 자사 주식 공개매수에 나선다.",
       "title": "한화3남 김동선, 1285억 투입해 한화M&S 최대주주로…'책임경영’ 승부수(종합)"
+    },
+    "fact:df6f31625cdc47e35f04b296": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102100527",
+      "source": "연합뉴스",
+      "source_body_digest": "61fc2a913504561a485bb2ea3d0094c04e4bcbbafd333d8abefc693b91579318",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:4fa272182727f3cf0b13d938213bdbe867a00598b62ea4444d3579e4b85132cb",
+      "source_fact_identity": "source_facts:v1:db529bafbfdbd05ebc4b2d2520181a87905a8141436bf9c0768cf463f85e7450",
+      "source_fact_keys": [
+        "source_fact:v1:a28302195e5dc986eab223d53df0422ffd2bcb2f2dac3049e91bcf7123a7e13a",
+        "source_fact:v1:c2afa640eb556ac6e8dc6ba2b361a1b30de40a5aee4567f0e8239af482bd0e7e"
+      ],
+      "source_published_kst": "2026-10-27T13:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대일렉트릭[267260]은 연결 기준 올해 3분기 영업이익이 2천845억원으로 지난해 동기보다 15.1% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스"
     },
     "fact:df8abed445b88936f9e4088c": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -277102,6 +277482,31 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미서 5GW 규모 AI 데이터센터 냉각 솔루션 수주"
     },
+    "link:0e292b9961cb45f37ccb59aa": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842824",
+      "source": "뉴시스",
+      "source_body_digest": "3d6c2fe12c3d992be57d7d480ee79230c5a355884c584b36749dae4269678d57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336d678d3dad26509d05f35be9cfabb049034d58271676c7888d520bdf29af05",
+      "source_fact_keys": [
+        "source_fact:v1:3b5082ffda4de16169455bf5b80bfda4f5013a991cdca1c0a4e594dffb849d13",
+        "source_fact:v1:5f71b129a279f944759b5929ac7cb06b6230515852330e6e4dd47e528d48722c",
+        "source_fact:v1:7064afccd2909909027121772e22b9d467900551c3142597a983d21208508521",
+        "source_fact:v1:c66badbcb3a4912a8777a91ed367bf6567a6b581bfd81328a00bf8f4a52702a4",
+        "source_fact:v1:d34b5f00c30ae0a609afcc393289d548905e1908e6bd55341e13b8e908d80c33",
+        "source_fact:v1:d8c8df84ff8d26e6dfec97cd7ef1020cd3e0b3b67bd0f396843cb1cb9a69eb51"
+      ],
+      "source_published_kst": "2026-10-27T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진",
+      "telegram_core_fact": "향후 대형 원전뿐 아니라 SMR을 활용해 안전성과 지역 균형을 고려한 전력 공급 체계를 구축하는 방안이 중요해질 것이라는 설명이다.",
+      "title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진"
+    },
     "link:0e2a9b64d2c653f98c8cc2de": {
       "first_seen_kst": "2026-10-14T02:42:17+09:00",
       "lanes": {
@@ -285522,6 +285927,28 @@
       "telegram_core_fact": "구글은 미국 원전 운영사와 장기 전력공급 계약을 체결하고 기존 원전의 출력증강을 통해 추가 전력을 확보하기로 했다.",
       "title": "[ESGX 용어 5] 탄소집약도·원전 출력증강·계통영향평가·준수 또는 설명·GST"
     },
+    "link:1c41157495cb70fc2759c7d4": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12186882",
+      "source": "매일경제",
+      "source_body_digest": "a542c5df96f3c9f982fa030d23176ff0edf7528e1679505b567fd4baf9e9c9b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b18e42bf5717781760a482a5b07658890844408d296be797dda7fe2acc97e1e",
+      "source_fact_keys": [
+        "source_fact:v1:330f2ef58591bd4b977bc0dae31195f73742c3cfc61583287c7e64be12b0d8ce",
+        "source_fact:v1:4622fd8b2e82a6c15216f9e6920f3f77f3d111a90eaaa94c176395dbea9f2c3f",
+        "source_fact:v1:d58f8e9e83dae582971b46ff762f0b1cd2bbeeb8d1f160e1735ce198e92b3967"
+      ],
+      "source_published_kst": "2026-10-27T13:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가",
+      "telegram_core_fact": "대우건설은 올해 3분기 영업이익이 1832억원으로 전년 동기(566억원) 대비 223.7% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가"
+    },
     "link:1c495749b0de29170f82c387": {
       "first_seen_kst": "2026-10-24T13:43:04+09:00",
       "lanes": {
@@ -291171,6 +291598,26 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812425",
       "source": "뉴시스",
       "title": "일본 8월 실업률 2.5%·0.1%P '악화'…\"1인당 일자리 1.18개 보합\""
+    },
+    "link:25c0f90d8500113bba781b40": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027103100527",
+      "source": "연합뉴스",
+      "source_body_digest": "c0ea40e2325b7e0e70467bfd5ef07ffe1c1f52d9d3e15851adc12a3826462575",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:5c22d446b1b975bdad8e2c385df9cddce96f18484be0b532b790612527a69174",
+      "source_fact_identity": "source_facts:v1:6f6d4a9f9290a55d6dd4e73e198e2427d773ac844c86bcb92c9c45ba4d2469c2",
+      "source_fact_keys": [
+        "source_fact:v1:f75e850569d038fa985244d489d69c3837668776d0799bff7b1c1ecfe47f9288"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한카드가 연결 기준 올해 3분기 영업이익 1천296억원으로 지난해 동기보다 27.2% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스"
     },
     "link:25c664e7d5425553b6a2fee5": {
       "first_seen_kst": "2026-10-10T11:21:03+09:00",
@@ -298680,6 +299127,27 @@
       "source_title": "中 나우라, 하이브리드 본딩 장비기업 인수…첨단 패키징 사업 강화",
       "telegram_core_fact": "선전증권거래소에 따르면 나우라 자회사 북방화창마이크로전자를 통해 베이징 노허젠웨이 지분 100%를 4억456만위안(약 810억원)에 인수하는 계약을 체결했다.",
       "title": "中 나우라, 하이브리드 본딩 장비기업 인수…첨단 패키징 사업 강화"
+    },
+    "link:309169b90c969f0ca4325422": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640586",
+      "source": "이투데이",
+      "source_body_digest": "2b5db79da2c1ee8cb2cb88d362ab048c3fe27b6742a9685a28b51219ec81213c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ba9ae0adf6c09a905fad9e79a1949ce0c4fc171869567e2ca9b0515ff996f539",
+      "source_fact_identity": "source_facts:v1:0f9f0db43997d93c03232c56972958ab62bce9fd3f0a840f0bb9a839d3d86918",
+      "source_fact_keys": [
+        "source_fact:v1:3e00241eb871ce5999a017b10e1a470546cd36059c64bb31b13d0937e26943c5",
+        "source_fact:v1:f7edd73ef052d5b1d852f2e1435a7fd820032dd772bb669c07a70836347d7f07"
+      ],
+      "source_published_kst": "2026-10-27T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑",
+      "telegram_core_fact": "한화오션은 올해 3분기 연결 기준 영업이익이 4857억원으로 전년비 67.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑"
     },
     "link:3093d105f50fbdba98deb63b": {
       "first_seen_kst": "2026-10-26T14:29:10+09:00",
@@ -308201,6 +308669,27 @@
       "telegram_core_fact": "“재경부의 최종 판단이 남아 있는 만큼 관세 부과와 함께 HGI 우회 수입을 막기 위한 보완 조치도 신속히 이뤄져야 한다”고 말했다.",
       "title": "中 도금·컬러강판 ‘반덤핑 철퇴’에도…HGI 사각지대 남아"
     },
+    "link:3fb991df600d08934dcdc9ff": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102100527",
+      "source": "연합뉴스",
+      "source_body_digest": "61fc2a913504561a485bb2ea3d0094c04e4bcbbafd333d8abefc693b91579318",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:4fa272182727f3cf0b13d938213bdbe867a00598b62ea4444d3579e4b85132cb",
+      "source_fact_identity": "source_facts:v1:db529bafbfdbd05ebc4b2d2520181a87905a8141436bf9c0768cf463f85e7450",
+      "source_fact_keys": [
+        "source_fact:v1:a28302195e5dc986eab223d53df0422ffd2bcb2f2dac3049e91bcf7123a7e13a",
+        "source_fact:v1:c2afa640eb556ac6e8dc6ba2b361a1b30de40a5aee4567f0e8239af482bd0e7e"
+      ],
+      "source_published_kst": "2026-10-27T13:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대일렉트릭[267260]은 연결 기준 올해 3분기 영업이익이 2천845억원으로 지난해 동기보다 15.1% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스"
+    },
     "link:3fc8cfe17183a1b2c9c4717b": {
       "first_seen_kst": "2026-10-20T16:22:04+09:00",
       "lanes": {
@@ -313856,6 +314345,26 @@
       "source_title": "블랙록, 3분기 매출 78억 달러…조정 EPS 38% 증가",
       "telegram_core_fact": "블랙록(BLK)은 3분기(7~9월) 매출액이 77억5200만 달러로 전년비 19% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 10.57달러로 25% 늘었다고 10월 14일 발표했다.",
       "title": "블랙록, 3분기 매출 78억 달러…조정 EPS 38% 증가"
+    },
+    "link:498edf6ea3ccd174573ad956": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102500527",
+      "source": "연합뉴스",
+      "source_body_digest": "2ecfd9a06a67f270d1e161027a3ff6a344518c75f5e5c4360d39a6854f11a03f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f881760a2327472eee69e83d254d678d2a0a187a644116d10b87db6592a8e2e6",
+      "source_fact_keys": [
+        "source_fact:v1:84087ac181fd661f3befc5b6b32c0a2bb906ca5a7bcc56b687cb5fa23a5eec89"
+      ],
+      "source_published_kst": "2026-10-27T13:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한은행이 연결 기준 올해 3분기 영업이익 1조5천917억원으로 지난해 동기보다 8.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스"
     },
     "link:498ffce881c52ca016d692d8": {
       "first_seen_kst": "2026-09-21T10:10:34+09:00",
@@ -333640,6 +334149,26 @@
       "source_title": "\"해외 사업화 넘어 후속 투자로\"…중진공, AI 스타트업 성장 지원",
       "telegram_core_fact": "중진공은 행사에 앞서 기업별 투자유치 발표자료인 IR 피치덱의 설계·보완과 발표 역량 강화 교육을 지원했다.",
       "title": "\"해외 사업화 넘어 후속 투자로\"…중진공, AI 스타트업 성장 지원"
+    },
+    "link:693c1b0a66fb39397fd6b03d": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027104700527",
+      "source": "연합뉴스",
+      "source_body_digest": "7696240752ac86ca414d8bc08134fb02e5e7659abee690a2d534c48e509570fb",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:65c8356bfd094f7039dd073f0981d6606697b873a2076938868887323ed6b51c",
+      "source_fact_identity": "source_facts:v1:8cb586470553ce7331cc26ae83721e07ec93e148634f2f448526bfefcbc53cea",
+      "source_fact_keys": [
+        "source_fact:v1:f5305f42483c8affa5d252d2cf13ba0367396e888d7f194f5766dabeb89254f6"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한라이프가 연결 기준 올해 3분기 영업이익 1천711억원으로 지난해 동기보다 27% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스"
     },
     "link:69469fd118c32c0e327d44a1": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
@@ -440844,6 +441373,27 @@
       "source": "이데일리",
       "title": "“비트코인 ETF 19배 커진다”…금도 제친다는 월가 전망"
     },
+    "original:177e99be11ad63465ee68a1d": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102100527",
+      "source": "연합뉴스",
+      "source_body_digest": "61fc2a913504561a485bb2ea3d0094c04e4bcbbafd333d8abefc693b91579318",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:4fa272182727f3cf0b13d938213bdbe867a00598b62ea4444d3579e4b85132cb",
+      "source_fact_identity": "source_facts:v1:db529bafbfdbd05ebc4b2d2520181a87905a8141436bf9c0768cf463f85e7450",
+      "source_fact_keys": [
+        "source_fact:v1:a28302195e5dc986eab223d53df0422ffd2bcb2f2dac3049e91bcf7123a7e13a",
+        "source_fact:v1:c2afa640eb556ac6e8dc6ba2b361a1b30de40a5aee4567f0e8239af482bd0e7e"
+      ],
+      "source_published_kst": "2026-10-27T13:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대일렉트릭[267260]은 연결 기준 올해 3분기 영업이익이 2천845억원으로 지난해 동기보다 15.1% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스"
+    },
     "original:17814196e2537313f3069d2e": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
       "lanes": {
@@ -447038,6 +447588,31 @@
       "link": "https://www.dt.co.kr/article/12087236",
       "source": "디지털타임스",
       "title": "암살자(들) 투자한 기업은행·산업은행 “외부 요청 없었다”"
+    },
+    "original:21d801ecc78fc3cf757d590c": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842824",
+      "source": "뉴시스",
+      "source_body_digest": "3d6c2fe12c3d992be57d7d480ee79230c5a355884c584b36749dae4269678d57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336d678d3dad26509d05f35be9cfabb049034d58271676c7888d520bdf29af05",
+      "source_fact_keys": [
+        "source_fact:v1:3b5082ffda4de16169455bf5b80bfda4f5013a991cdca1c0a4e594dffb849d13",
+        "source_fact:v1:5f71b129a279f944759b5929ac7cb06b6230515852330e6e4dd47e528d48722c",
+        "source_fact:v1:7064afccd2909909027121772e22b9d467900551c3142597a983d21208508521",
+        "source_fact:v1:c66badbcb3a4912a8777a91ed367bf6567a6b581bfd81328a00bf8f4a52702a4",
+        "source_fact:v1:d34b5f00c30ae0a609afcc393289d548905e1908e6bd55341e13b8e908d80c33",
+        "source_fact:v1:d8c8df84ff8d26e6dfec97cd7ef1020cd3e0b3b67bd0f396843cb1cb9a69eb51"
+      ],
+      "source_published_kst": "2026-10-27T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진",
+      "telegram_core_fact": "향후 대형 원전뿐 아니라 SMR을 활용해 안전성과 지역 균형을 고려한 전력 공급 체계를 구축하는 방안이 중요해질 것이라는 설명이다.",
+      "title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진"
     },
     "original:21e58bb07af871a4a31f1c07": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -469495,6 +470070,26 @@
       "telegram_core_fact": "울산시는 동북아 에너지 물류거점(허브) 조성의 핵심 기반사업인 '남신항 에너지거점 2단계' 구축을 위한 3대 방향을 설정하고 사업 추진을 본격화한다고 7일 밝혔다. 남신항 에너지거점 2단계는 민선 9기 공약인 '동북아 에너지 물류거점 조성'과 연계해 울산 에너지 산업과 항만 경쟁력을 강화하기 위한 사업이다.",
       "title": "울산 남신항 에너지거점 2단계 본격화…동북아 물류허브 승부수 | 연합뉴스"
     },
+    "original:45223a5156dca17d57b817c3": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027103100527",
+      "source": "연합뉴스",
+      "source_body_digest": "c0ea40e2325b7e0e70467bfd5ef07ffe1c1f52d9d3e15851adc12a3826462575",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:5c22d446b1b975bdad8e2c385df9cddce96f18484be0b532b790612527a69174",
+      "source_fact_identity": "source_facts:v1:6f6d4a9f9290a55d6dd4e73e198e2427d773ac844c86bcb92c9c45ba4d2469c2",
+      "source_fact_keys": [
+        "source_fact:v1:f75e850569d038fa985244d489d69c3837668776d0799bff7b1c1ecfe47f9288"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한카드가 연결 기준 올해 3분기 영업이익 1천296억원으로 지난해 동기보다 27.2% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스"
+    },
     "original:45361e3a4430a1fa386ab042": {
       "first_seen_kst": "2026-10-13T14:05:30+09:00",
       "lanes": {
@@ -478942,6 +479537,26 @@
       "source_title": "NH투자증권 3분기 영업익 5천211억원…전년비 33.2%↑ | 연합뉴스",
       "telegram_core_fact": "코스피 상장사 NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
       "title": "NH투자증권 3분기 영업익 5천211억원…전년비 33.2%↑ | 연합뉴스"
+    },
+    "original:54aa94cc824c632b9ad17f09": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027104700527",
+      "source": "연합뉴스",
+      "source_body_digest": "7696240752ac86ca414d8bc08134fb02e5e7659abee690a2d534c48e509570fb",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:65c8356bfd094f7039dd073f0981d6606697b873a2076938868887323ed6b51c",
+      "source_fact_identity": "source_facts:v1:8cb586470553ce7331cc26ae83721e07ec93e148634f2f448526bfefcbc53cea",
+      "source_fact_keys": [
+        "source_fact:v1:f5305f42483c8affa5d252d2cf13ba0367396e888d7f194f5766dabeb89254f6"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한라이프가 연결 기준 올해 3분기 영업이익 1천711억원으로 지난해 동기보다 27% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스"
     },
     "original:54ae2d6337f5303111d69918": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -506978,6 +507593,28 @@
       "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
       "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
       "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
+    },
+    "original:8376e29529308411603d96cb": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12186882",
+      "source": "매일경제",
+      "source_body_digest": "a542c5df96f3c9f982fa030d23176ff0edf7528e1679505b567fd4baf9e9c9b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b18e42bf5717781760a482a5b07658890844408d296be797dda7fe2acc97e1e",
+      "source_fact_keys": [
+        "source_fact:v1:330f2ef58591bd4b977bc0dae31195f73742c3cfc61583287c7e64be12b0d8ce",
+        "source_fact:v1:4622fd8b2e82a6c15216f9e6920f3f77f3d111a90eaaa94c176395dbea9f2c3f",
+        "source_fact:v1:d58f8e9e83dae582971b46ff762f0b1cd2bbeeb8d1f160e1735ce198e92b3967"
+      ],
+      "source_published_kst": "2026-10-27T13:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가",
+      "telegram_core_fact": "대우건설은 올해 3분기 영업이익이 1832억원으로 전년 동기(566억원) 대비 223.7% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가"
     },
     "original:839cd105ae59946ef28e669e": {
       "first_seen_kst": "2026-10-17T08:00:41+09:00",
@@ -545659,6 +546296,27 @@
       "telegram_core_fact": "미국 주택건설·모기지 업체 엔브이알(NVR)이 3분기(9월 30일 종료) 순이익 2억4860만 달러, 희석 주당순이익 89.45달러, 연결 매출액 24억 달러를 기록했다고 10월 22일 발표했다.",
       "title": "엔브이알, 3분기 희석 EPS 89.45달러..전년비 20% 감소"
     },
+    "original:c269f47d5e8e38e464fea183": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640586",
+      "source": "이투데이",
+      "source_body_digest": "2b5db79da2c1ee8cb2cb88d362ab048c3fe27b6742a9685a28b51219ec81213c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ba9ae0adf6c09a905fad9e79a1949ce0c4fc171869567e2ca9b0515ff996f539",
+      "source_fact_identity": "source_facts:v1:0f9f0db43997d93c03232c56972958ab62bce9fd3f0a840f0bb9a839d3d86918",
+      "source_fact_keys": [
+        "source_fact:v1:3e00241eb871ce5999a017b10e1a470546cd36059c64bb31b13d0937e26943c5",
+        "source_fact:v1:f7edd73ef052d5b1d852f2e1435a7fd820032dd772bb669c07a70836347d7f07"
+      ],
+      "source_published_kst": "2026-10-27T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑",
+      "telegram_core_fact": "한화오션은 올해 3분기 연결 기준 영업이익이 4857억원으로 전년비 67.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑"
+    },
     "original:c26a15703492cd6f42d2c52e": {
       "first_seen_kst": "2026-10-24T16:15:28+09:00",
       "lanes": {
@@ -551979,6 +552637,26 @@
       ],
       "source_published_kst": "2026-10-07T05:17+09:00",
       "title": "기업 실적발표 앞두고 S&P500·나스닥 또 사상 최고치 | 연합뉴스"
+    },
+    "original:cccd7111736925030cbc3c3b": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102500527",
+      "source": "연합뉴스",
+      "source_body_digest": "2ecfd9a06a67f270d1e161027a3ff6a344518c75f5e5c4360d39a6854f11a03f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f881760a2327472eee69e83d254d678d2a0a187a644116d10b87db6592a8e2e6",
+      "source_fact_keys": [
+        "source_fact:v1:84087ac181fd661f3befc5b6b32c0a2bb906ca5a7bcc56b687cb5fa23a5eec89"
+      ],
+      "source_published_kst": "2026-10-27T13:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한은행이 연결 기준 올해 3분기 영업이익 1조5천917억원으로 지난해 동기보다 8.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스"
     },
     "original:cccda7235618994f1a1554b1": {
       "first_seen_kst": "2026-10-22T01:52:01+09:00",
@@ -593746,6 +594424,27 @@
       "source_title": "머스크 \"ASML, 테라팹에 장비 공급 앞당겨\" | 연합뉴스",
       "telegram_core_fact": "테슬라와 스페이스X에 필요한 반도체를 자체 생산하기 위한 일론 머스크 최고경영자(CEO)의 야심 찬 프로젝트인 테라팹 장비 공급이 앞당겨지고 있다고 머스크가 20일(현지시간) 밝혔다.",
       "title": "머스크 \"ASML, 테라팹에 장비 공급 앞당겨\" | 연합뉴스"
+    },
+    "source_fact:04a137090ca8f63ff73dd704": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102100527",
+      "source": "연합뉴스",
+      "source_body_digest": "61fc2a913504561a485bb2ea3d0094c04e4bcbbafd333d8abefc693b91579318",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:4fa272182727f3cf0b13d938213bdbe867a00598b62ea4444d3579e4b85132cb",
+      "source_fact_identity": "source_facts:v1:db529bafbfdbd05ebc4b2d2520181a87905a8141436bf9c0768cf463f85e7450",
+      "source_fact_keys": [
+        "source_fact:v1:a28302195e5dc986eab223d53df0422ffd2bcb2f2dac3049e91bcf7123a7e13a",
+        "source_fact:v1:c2afa640eb556ac6e8dc6ba2b361a1b30de40a5aee4567f0e8239af482bd0e7e"
+      ],
+      "source_published_kst": "2026-10-27T13:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대일렉트릭[267260]은 연결 기준 올해 3분기 영업이익이 2천845억원으로 지난해 동기보다 15.1% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스"
     },
     "source_fact:04a3612e2841343550319df5": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
@@ -655713,6 +656412,27 @@
       "source_title": "'반도체 밸류체인 투자' 등 ETF 4종 13일 신규 상장 | 연합뉴스",
       "telegram_core_fact": "한국거래소는 DS자산운용, 한국투자신탁운용, 키움투자자산운용, 삼성자산운용의 상장지수펀드(ETF) 4종목을 오는 13일 유가증권시장에 상장한다고 8일 밝혔다.",
       "title": "'반도체 밸류체인 투자' 등 ETF 4종 13일 신규 상장 | 연합뉴스"
+    },
+    "source_fact:1c9e248494a4952970a382d6": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640586",
+      "source": "이투데이",
+      "source_body_digest": "2b5db79da2c1ee8cb2cb88d362ab048c3fe27b6742a9685a28b51219ec81213c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ba9ae0adf6c09a905fad9e79a1949ce0c4fc171869567e2ca9b0515ff996f539",
+      "source_fact_identity": "source_facts:v1:0f9f0db43997d93c03232c56972958ab62bce9fd3f0a840f0bb9a839d3d86918",
+      "source_fact_keys": [
+        "source_fact:v1:3e00241eb871ce5999a017b10e1a470546cd36059c64bb31b13d0937e26943c5",
+        "source_fact:v1:f7edd73ef052d5b1d852f2e1435a7fd820032dd772bb669c07a70836347d7f07"
+      ],
+      "source_published_kst": "2026-10-27T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑",
+      "telegram_core_fact": "한화오션은 올해 3분기 연결 기준 영업이익이 4857억원으로 전년비 67.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑"
     },
     "source_fact:1ca2002f280e12b0fb9f8a0f": {
       "first_seen_kst": "2026-10-22T03:23:27+09:00",
@@ -743735,6 +744455,27 @@
       "telegram_core_fact": "이번 제재 대상에는 EU 입국 제한과 역내 자산 동결, 자금 및 경제적 자원 제공 금지 등의 조치가 적용된다.",
       "title": "EU, 러시아 군수기업·경영진 '역대급 제재'…북·러 밀착도 정조준"
     },
+    "source_fact:3e80fb8d1e90b9caa03fd4e9": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640586",
+      "source": "이투데이",
+      "source_body_digest": "2b5db79da2c1ee8cb2cb88d362ab048c3fe27b6742a9685a28b51219ec81213c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ba9ae0adf6c09a905fad9e79a1949ce0c4fc171869567e2ca9b0515ff996f539",
+      "source_fact_identity": "source_facts:v1:0f9f0db43997d93c03232c56972958ab62bce9fd3f0a840f0bb9a839d3d86918",
+      "source_fact_keys": [
+        "source_fact:v1:3e00241eb871ce5999a017b10e1a470546cd36059c64bb31b13d0937e26943c5",
+        "source_fact:v1:f7edd73ef052d5b1d852f2e1435a7fd820032dd772bb669c07a70836347d7f07"
+      ],
+      "source_published_kst": "2026-10-27T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑",
+      "telegram_core_fact": "한화오션은 올해 3분기 연결 기준 영업이익이 4857억원으로 전년비 67.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑"
+    },
     "source_fact:3e8282f1de87cfaf3161e25f": {
       "first_seen_kst": "2026-10-22T11:13:08+09:00",
       "lanes": {
@@ -747196,6 +747937,28 @@
       "source_title": "‘AI발 먹구름’ 美 반도체지수, 금융위기 이후 최장 하락",
       "telegram_core_fact": "필라델피아 반도체 지수는 8거래일 연속 하락세를 이어가며 글로벌 금융위기 당시인 2008년 이후 최장기 연속 하락을 기록했다. 인공지능(AI) 인프라 투자 기업의 부채 우려와 유가 급등 여파로 16일(현지시간) 미국 뉴욕 증시의 주요 지수가 일제히 하락했다.",
       "title": "‘AI발 먹구름’ 美 반도체지수, 금융위기 이후 최장 하락"
+    },
+    "source_fact:3ff1f7c7277c6b827835b558": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12186882",
+      "source": "매일경제",
+      "source_body_digest": "a542c5df96f3c9f982fa030d23176ff0edf7528e1679505b567fd4baf9e9c9b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b18e42bf5717781760a482a5b07658890844408d296be797dda7fe2acc97e1e",
+      "source_fact_keys": [
+        "source_fact:v1:330f2ef58591bd4b977bc0dae31195f73742c3cfc61583287c7e64be12b0d8ce",
+        "source_fact:v1:4622fd8b2e82a6c15216f9e6920f3f77f3d111a90eaaa94c176395dbea9f2c3f",
+        "source_fact:v1:d58f8e9e83dae582971b46ff762f0b1cd2bbeeb8d1f160e1735ce198e92b3967"
+      ],
+      "source_published_kst": "2026-10-27T13:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가",
+      "telegram_core_fact": "대우건설은 올해 3분기 영업이익이 1832억원으로 전년 동기(566억원) 대비 223.7% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가"
     },
     "source_fact:3ff208052790ef49634a4cc1": {
       "first_seen_kst": "2026-10-25T17:53:48+09:00",
@@ -875151,6 +875914,27 @@
       "telegram_core_fact": "동해지방해양수산청은 올해 3분기 동해·묵호항의 항만물동량은 총 755만t으로 전년 동기(838만t)보다 83만t(9.8%) 감소했다고 26일 밝혔다. 이 기간 동해·묵호항에서 처리된 주요 화물은 석회석 255만t, 석탄 238만t, 시멘트 173만t순으로 나타났다.",
       "title": "동해·묵호항 3분기 항만물동량 83만t 줄어 | 연합뉴스"
     },
+    "source_fact:70ee7c9c83c422513923d971": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102100527",
+      "source": "연합뉴스",
+      "source_body_digest": "61fc2a913504561a485bb2ea3d0094c04e4bcbbafd333d8abefc693b91579318",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:4fa272182727f3cf0b13d938213bdbe867a00598b62ea4444d3579e4b85132cb",
+      "source_fact_identity": "source_facts:v1:db529bafbfdbd05ebc4b2d2520181a87905a8141436bf9c0768cf463f85e7450",
+      "source_fact_keys": [
+        "source_fact:v1:a28302195e5dc986eab223d53df0422ffd2bcb2f2dac3049e91bcf7123a7e13a",
+        "source_fact:v1:c2afa640eb556ac6e8dc6ba2b361a1b30de40a5aee4567f0e8239af482bd0e7e"
+      ],
+      "source_published_kst": "2026-10-27T13:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대일렉트릭[267260]은 연결 기준 올해 3분기 영업이익이 2천845억원으로 지난해 동기보다 15.1% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스"
+    },
     "source_fact:70f27e542ee866bd8eddd503": {
       "first_seen_kst": "2026-10-18T06:42:56+09:00",
       "lanes": {
@@ -934943,6 +935727,26 @@
       "telegram_core_fact": "증권가 컨센서스에 따르면 리졸브 AI의 2026년 연간 매출액은 3억5995만 달러로 전년 대비 669.12% 증가할 전망이다.",
       "title": "리졸브 AI, 상반기 매출 1억3100만 달러·전년비 20배 급증"
     },
+    "source_fact:88861abfec5ee9c42ab16ead": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102500527",
+      "source": "연합뉴스",
+      "source_body_digest": "2ecfd9a06a67f270d1e161027a3ff6a344518c75f5e5c4360d39a6854f11a03f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f881760a2327472eee69e83d254d678d2a0a187a644116d10b87db6592a8e2e6",
+      "source_fact_keys": [
+        "source_fact:v1:84087ac181fd661f3befc5b6b32c0a2bb906ca5a7bcc56b687cb5fa23a5eec89"
+      ],
+      "source_published_kst": "2026-10-27T13:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한은행이 연결 기준 올해 3분기 영업이익 1조5천917억원으로 지난해 동기보다 8.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스"
+    },
     "source_fact:888a3d107df136fa5d57abf6": {
       "first_seen_kst": "2026-10-13T14:05:30+09:00",
       "lanes": {
@@ -943014,6 +943818,31 @@
       "source_title": "AI 투자 거품 우려에 美 반도체주 '와르르'…필라델피아 지수 6.72% 급락",
       "telegram_core_fact": "메타는 3분기 매출과 순이익 모두 월가 예상치를 웃돌았지만 올해 자본지출이 1350억~1450억달러에 이를 것으로 전망하면서 투자자들의 우려를 키웠다.",
       "title": "AI 투자 거품 우려에 美 반도체주 '와르르'…필라델피아 지수 6.72% 급락"
+    },
+    "source_fact:8bd385e8ee9b5da48fbbc258": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842824",
+      "source": "뉴시스",
+      "source_body_digest": "3d6c2fe12c3d992be57d7d480ee79230c5a355884c584b36749dae4269678d57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336d678d3dad26509d05f35be9cfabb049034d58271676c7888d520bdf29af05",
+      "source_fact_keys": [
+        "source_fact:v1:3b5082ffda4de16169455bf5b80bfda4f5013a991cdca1c0a4e594dffb849d13",
+        "source_fact:v1:5f71b129a279f944759b5929ac7cb06b6230515852330e6e4dd47e528d48722c",
+        "source_fact:v1:7064afccd2909909027121772e22b9d467900551c3142597a983d21208508521",
+        "source_fact:v1:c66badbcb3a4912a8777a91ed367bf6567a6b581bfd81328a00bf8f4a52702a4",
+        "source_fact:v1:d34b5f00c30ae0a609afcc393289d548905e1908e6bd55341e13b8e908d80c33",
+        "source_fact:v1:d8c8df84ff8d26e6dfec97cd7ef1020cd3e0b3b67bd0f396843cb1cb9a69eb51"
+      ],
+      "source_published_kst": "2026-10-27T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진",
+      "telegram_core_fact": "향후 대형 원전뿐 아니라 SMR을 활용해 안전성과 지역 균형을 고려한 전력 공급 체계를 구축하는 방안이 중요해질 것이라는 설명이다.",
+      "title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진"
     },
     "source_fact:8bd7497d7ea4d574033fa31e": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
@@ -984274,6 +985103,31 @@
       "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
       "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
     },
+    "source_fact:9c1301d9b6f3ba48f0d5b079": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842824",
+      "source": "뉴시스",
+      "source_body_digest": "3d6c2fe12c3d992be57d7d480ee79230c5a355884c584b36749dae4269678d57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336d678d3dad26509d05f35be9cfabb049034d58271676c7888d520bdf29af05",
+      "source_fact_keys": [
+        "source_fact:v1:3b5082ffda4de16169455bf5b80bfda4f5013a991cdca1c0a4e594dffb849d13",
+        "source_fact:v1:5f71b129a279f944759b5929ac7cb06b6230515852330e6e4dd47e528d48722c",
+        "source_fact:v1:7064afccd2909909027121772e22b9d467900551c3142597a983d21208508521",
+        "source_fact:v1:c66badbcb3a4912a8777a91ed367bf6567a6b581bfd81328a00bf8f4a52702a4",
+        "source_fact:v1:d34b5f00c30ae0a609afcc393289d548905e1908e6bd55341e13b8e908d80c33",
+        "source_fact:v1:d8c8df84ff8d26e6dfec97cd7ef1020cd3e0b3b67bd0f396843cb1cb9a69eb51"
+      ],
+      "source_published_kst": "2026-10-27T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진",
+      "telegram_core_fact": "향후 대형 원전뿐 아니라 SMR을 활용해 안전성과 지역 균형을 고려한 전력 공급 체계를 구축하는 방안이 중요해질 것이라는 설명이다.",
+      "title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진"
+    },
     "source_fact:9c134fbc80acb121a856d3a3": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -990643,6 +991497,26 @@
       "source_title": "UAE 날아간 이재용 삼성그룹 회장… AI·반도체 살릴 전력 시장 집중 점검",
       "telegram_core_fact": "AI 데이터센터와 반도체 팹 등 1GW(기가와트)급 전력이 필요한 대규모 시설이 등장하면서 안정적인 전력 공급을 위한 인프라 구축이 핵심 과제로 떠올랐다.",
       "title": "UAE 날아간 이재용 삼성그룹 회장… AI·반도체 살릴 전력 시장 집중 점검"
+    },
+    "source_fact:9e7320c60d2209c5283dd098": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027104700527",
+      "source": "연합뉴스",
+      "source_body_digest": "7696240752ac86ca414d8bc08134fb02e5e7659abee690a2d534c48e509570fb",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:65c8356bfd094f7039dd073f0981d6606697b873a2076938868887323ed6b51c",
+      "source_fact_identity": "source_facts:v1:8cb586470553ce7331cc26ae83721e07ec93e148634f2f448526bfefcbc53cea",
+      "source_fact_keys": [
+        "source_fact:v1:f5305f42483c8affa5d252d2cf13ba0367396e888d7f194f5766dabeb89254f6"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한라이프가 연결 기준 올해 3분기 영업이익 1천711억원으로 지난해 동기보다 27% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스"
     },
     "source_fact:9e74231ab3c548907cb549be": {
       "first_seen_kst": "2026-10-21T09:27:16+09:00",
@@ -1006063,6 +1006937,28 @@
       "source_title": "'100조 영업익'에도 삼성전자 주가 주춤…'HBM 가격'에 운명 달렸다",
       "telegram_core_fact": "사상 처음으로 분기 영업이익 '100조 원' 돌파가 유력한 삼성전자 주가가 실적발표를 앞두고 주춤한 모습이다.",
       "title": "'100조 영업익'에도 삼성전자 주가 주춤…'HBM 가격'에 운명 달렸다"
+    },
+    "source_fact:a4374c1e4eab029710b9ae7d": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12186882",
+      "source": "매일경제",
+      "source_body_digest": "a542c5df96f3c9f982fa030d23176ff0edf7528e1679505b567fd4baf9e9c9b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b18e42bf5717781760a482a5b07658890844408d296be797dda7fe2acc97e1e",
+      "source_fact_keys": [
+        "source_fact:v1:330f2ef58591bd4b977bc0dae31195f73742c3cfc61583287c7e64be12b0d8ce",
+        "source_fact:v1:4622fd8b2e82a6c15216f9e6920f3f77f3d111a90eaaa94c176395dbea9f2c3f",
+        "source_fact:v1:d58f8e9e83dae582971b46ff762f0b1cd2bbeeb8d1f160e1735ce198e92b3967"
+      ],
+      "source_published_kst": "2026-10-27T13:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가",
+      "telegram_core_fact": "대우건설은 올해 3분기 영업이익이 1832억원으로 전년 동기(566억원) 대비 223.7% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가"
     },
     "source_fact:a4381921a8ad0cc5851ceb22": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
@@ -1059651,6 +1060547,26 @@
       "telegram_core_fact": "하나증권은 국내 통신사들의 기대 배당수익률이 최근 5%에 육박하는데도 주가가 좀처럼 상승하지 못하는 배경에는 시중 금리가 있다고 22일 진단했다.",
       "title": "하나증권 \"통신서비스주, 고금리 환경에 배당 매력 제한\" | 연합뉴스"
     },
+    "source_fact:b8a7e3eb02228a302ece0828": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027103100527",
+      "source": "연합뉴스",
+      "source_body_digest": "c0ea40e2325b7e0e70467bfd5ef07ffe1c1f52d9d3e15851adc12a3826462575",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:5c22d446b1b975bdad8e2c385df9cddce96f18484be0b532b790612527a69174",
+      "source_fact_identity": "source_facts:v1:6f6d4a9f9290a55d6dd4e73e198e2427d773ac844c86bcb92c9c45ba4d2469c2",
+      "source_fact_keys": [
+        "source_fact:v1:f75e850569d038fa985244d489d69c3837668776d0799bff7b1c1ecfe47f9288"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한카드가 연결 기준 올해 3분기 영업이익 1천296억원으로 지난해 동기보다 27.2% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스"
+    },
     "source_fact:b8b1462590e2bd0fef30ade1": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
       "lanes": {
@@ -1068851,6 +1069767,31 @@
       "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
       "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
       "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
+    },
+    "source_fact:bc4e35893a78e44d5a0ca404": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842824",
+      "source": "뉴시스",
+      "source_body_digest": "3d6c2fe12c3d992be57d7d480ee79230c5a355884c584b36749dae4269678d57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336d678d3dad26509d05f35be9cfabb049034d58271676c7888d520bdf29af05",
+      "source_fact_keys": [
+        "source_fact:v1:3b5082ffda4de16169455bf5b80bfda4f5013a991cdca1c0a4e594dffb849d13",
+        "source_fact:v1:5f71b129a279f944759b5929ac7cb06b6230515852330e6e4dd47e528d48722c",
+        "source_fact:v1:7064afccd2909909027121772e22b9d467900551c3142597a983d21208508521",
+        "source_fact:v1:c66badbcb3a4912a8777a91ed367bf6567a6b581bfd81328a00bf8f4a52702a4",
+        "source_fact:v1:d34b5f00c30ae0a609afcc393289d548905e1908e6bd55341e13b8e908d80c33",
+        "source_fact:v1:d8c8df84ff8d26e6dfec97cd7ef1020cd3e0b3b67bd0f396843cb1cb9a69eb51"
+      ],
+      "source_published_kst": "2026-10-27T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진",
+      "telegram_core_fact": "향후 대형 원전뿐 아니라 SMR을 활용해 안전성과 지역 균형을 고려한 전력 공급 체계를 구축하는 방안이 중요해질 것이라는 설명이다.",
+      "title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진"
     },
     "source_fact:bc537c726122ce51d7dda62f": {
       "first_seen_kst": "2026-10-19T17:39:56+09:00",
@@ -1083530,6 +1084471,31 @@
       "source_title": "삼성전자, 아파트 냉난방 전기화 나선다…2028년 히트펌프 전국 보급",
       "telegram_core_fact": "내년까지 국내 공급 기반을 구축하고 2028년부터 전국 단위 보급을 본격화한다는 계획이다.",
       "title": "삼성전자, 아파트 냉난방 전기화 나선다…2028년 히트펌프 전국 보급"
+    },
+    "source_fact:c20848517a5fb2b29c28435b": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842824",
+      "source": "뉴시스",
+      "source_body_digest": "3d6c2fe12c3d992be57d7d480ee79230c5a355884c584b36749dae4269678d57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336d678d3dad26509d05f35be9cfabb049034d58271676c7888d520bdf29af05",
+      "source_fact_keys": [
+        "source_fact:v1:3b5082ffda4de16169455bf5b80bfda4f5013a991cdca1c0a4e594dffb849d13",
+        "source_fact:v1:5f71b129a279f944759b5929ac7cb06b6230515852330e6e4dd47e528d48722c",
+        "source_fact:v1:7064afccd2909909027121772e22b9d467900551c3142597a983d21208508521",
+        "source_fact:v1:c66badbcb3a4912a8777a91ed367bf6567a6b581bfd81328a00bf8f4a52702a4",
+        "source_fact:v1:d34b5f00c30ae0a609afcc393289d548905e1908e6bd55341e13b8e908d80c33",
+        "source_fact:v1:d8c8df84ff8d26e6dfec97cd7ef1020cd3e0b3b67bd0f396843cb1cb9a69eb51"
+      ],
+      "source_published_kst": "2026-10-27T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진",
+      "telegram_core_fact": "향후 대형 원전뿐 아니라 SMR을 활용해 안전성과 지역 균형을 고려한 전력 공급 체계를 구축하는 방안이 중요해질 것이라는 설명이다.",
+      "title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진"
     },
     "source_fact:c20881382dece4b67e38ad3e": {
       "first_seen_kst": "2026-10-19T19:37:05+09:00",
@@ -1139147,6 +1140113,31 @@
       "telegram_core_fact": "LS일렉트릭은 미국 빅테크 기업과 1천700억원 북미 데이터센터 배전 솔루션 공급계약을 체결했다고 19일 밝혔다.",
       "title": "LS일렉트릭, 북미 데이터센터에 1천700억 규모 배전솔루션 공급 | 연합뉴스"
     },
+    "source_fact:d72515a85acd791aa4e4b2c0": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842824",
+      "source": "뉴시스",
+      "source_body_digest": "3d6c2fe12c3d992be57d7d480ee79230c5a355884c584b36749dae4269678d57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336d678d3dad26509d05f35be9cfabb049034d58271676c7888d520bdf29af05",
+      "source_fact_keys": [
+        "source_fact:v1:3b5082ffda4de16169455bf5b80bfda4f5013a991cdca1c0a4e594dffb849d13",
+        "source_fact:v1:5f71b129a279f944759b5929ac7cb06b6230515852330e6e4dd47e528d48722c",
+        "source_fact:v1:7064afccd2909909027121772e22b9d467900551c3142597a983d21208508521",
+        "source_fact:v1:c66badbcb3a4912a8777a91ed367bf6567a6b581bfd81328a00bf8f4a52702a4",
+        "source_fact:v1:d34b5f00c30ae0a609afcc393289d548905e1908e6bd55341e13b8e908d80c33",
+        "source_fact:v1:d8c8df84ff8d26e6dfec97cd7ef1020cd3e0b3b67bd0f396843cb1cb9a69eb51"
+      ],
+      "source_published_kst": "2026-10-27T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진",
+      "telegram_core_fact": "향후 대형 원전뿐 아니라 SMR을 활용해 안전성과 지역 균형을 고려한 전력 공급 체계를 구축하는 방안이 중요해질 것이라는 설명이다.",
+      "title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진"
+    },
     "source_fact:d72e701446cd6bbbd8594e0e": {
       "first_seen_kst": "2026-10-27T12:20:39+09:00",
       "lanes": {
@@ -1155171,6 +1156162,31 @@
       ],
       "source_published_kst": "2026-10-07T05:31+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
+    },
+    "source_fact:dd98e66805a2145985fd179f": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842824",
+      "source": "뉴시스",
+      "source_body_digest": "3d6c2fe12c3d992be57d7d480ee79230c5a355884c584b36749dae4269678d57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336d678d3dad26509d05f35be9cfabb049034d58271676c7888d520bdf29af05",
+      "source_fact_keys": [
+        "source_fact:v1:3b5082ffda4de16169455bf5b80bfda4f5013a991cdca1c0a4e594dffb849d13",
+        "source_fact:v1:5f71b129a279f944759b5929ac7cb06b6230515852330e6e4dd47e528d48722c",
+        "source_fact:v1:7064afccd2909909027121772e22b9d467900551c3142597a983d21208508521",
+        "source_fact:v1:c66badbcb3a4912a8777a91ed367bf6567a6b581bfd81328a00bf8f4a52702a4",
+        "source_fact:v1:d34b5f00c30ae0a609afcc393289d548905e1908e6bd55341e13b8e908d80c33",
+        "source_fact:v1:d8c8df84ff8d26e6dfec97cd7ef1020cd3e0b3b67bd0f396843cb1cb9a69eb51"
+      ],
+      "source_published_kst": "2026-10-27T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진",
+      "telegram_core_fact": "향후 대형 원전뿐 아니라 SMR을 활용해 안전성과 지역 균형을 고려한 전력 공급 체계를 구축하는 방안이 중요해질 것이라는 설명이다.",
+      "title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진"
     },
     "source_fact:dd9eabc36243e5e3b67cb647": {
       "first_seen_kst": "2026-10-10T18:57:12+09:00",
@@ -1199796,24 +1200812,24 @@
     "source_fact:eebdb753f37cd10b06e5c7c0": {
       "first_seen_kst": "2026-10-27T14:25:53+09:00",
       "lanes": {
-        "live": "2026-10-27T14:25:53+09:00"
+        "live": "2026-10-28T00:13:29+09:00"
       },
-      "last_seen_kst": "2026-10-27T14:25:53+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2640390",
-      "source": "이투데이",
-      "source_body_digest": "e638ea31274554d54db8282d7a9331aa8512fcd3bf827fa02a19292edf15e767",
-      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:16f452093cfbe86f022271192f52f3106ac9385ff0af5c24448fa96a623930ec",
-      "source_fact_identity": "source_facts:v1:f0937a9993c532f32d7f7637b9e134f096f8f4c9ec21e250d79ec4804e09e84b",
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12186882",
+      "source": "매일경제",
+      "source_body_digest": "a542c5df96f3c9f982fa030d23176ff0edf7528e1679505b567fd4baf9e9c9b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b18e42bf5717781760a482a5b07658890844408d296be797dda7fe2acc97e1e",
       "source_fact_keys": [
-        "source_fact:v1:2cc39f319b37ac4ffa86384c5d5fd28f290fbda03f316004d5de2a20536286cd",
-        "source_fact:v1:995c4193165b2df109c2968a538a7d093923dd7943a06988fdbb2a9fb600f4b3",
+        "source_fact:v1:330f2ef58591bd4b977bc0dae31195f73742c3cfc61583287c7e64be12b0d8ce",
+        "source_fact:v1:4622fd8b2e82a6c15216f9e6920f3f77f3d111a90eaaa94c176395dbea9f2c3f",
         "source_fact:v1:d58f8e9e83dae582971b46ff762f0b1cd2bbeeb8d1f160e1735ce198e92b3967"
       ],
-      "source_published_kst": "2026-10-27T09:10+09:00",
+      "source_published_kst": "2026-10-27T13:36+09:00",
       "source_supply_terms": {},
-      "source_title": "대우건설, 3분기 영업익 1832억원…전년 比 223.7% 급증",
-      "telegram_core_fact": "대우건설은 27일 잠정실적 공시를 통해 올해 3분기 연결 기준 영업이익이 1832억원으로 전년 동기(566억원) 대비 223.7% 증가했다고 밝혔다.",
-      "title": "대우건설, 3분기 영업익 1832억원…전년 比 223.7% 급증"
+      "source_title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가",
+      "telegram_core_fact": "대우건설은 올해 3분기 영업이익이 1832억원으로 전년 동기(566억원) 대비 223.7% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가"
     },
     "source_fact:eebe9b810cfdf1c6116fea40": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -1256488,6 +1257504,27 @@
       "source": "이데일리",
       "title": "“비트코인 ETF 19배 커진다”…금도 제친다는 월가 전망"
     },
+    "title:177e99be11ad63465ee68a1d": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102100527",
+      "source": "연합뉴스",
+      "source_body_digest": "61fc2a913504561a485bb2ea3d0094c04e4bcbbafd333d8abefc693b91579318",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:4fa272182727f3cf0b13d938213bdbe867a00598b62ea4444d3579e4b85132cb",
+      "source_fact_identity": "source_facts:v1:db529bafbfdbd05ebc4b2d2520181a87905a8141436bf9c0768cf463f85e7450",
+      "source_fact_keys": [
+        "source_fact:v1:a28302195e5dc986eab223d53df0422ffd2bcb2f2dac3049e91bcf7123a7e13a",
+        "source_fact:v1:c2afa640eb556ac6e8dc6ba2b361a1b30de40a5aee4567f0e8239af482bd0e7e"
+      ],
+      "source_published_kst": "2026-10-27T13:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대일렉트릭[267260]은 연결 기준 올해 3분기 영업이익이 2천845억원으로 지난해 동기보다 15.1% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "HD현대일렉트릭 3분기 영업이익 2천845억원…작년 대비 15%↑ | 연합뉴스"
+    },
     "title:17814196e2537313f3069d2e": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
       "lanes": {
@@ -1262746,6 +1263783,31 @@
       "link": "https://www.dt.co.kr/article/12087236",
       "source": "디지털타임스",
       "title": "암살자(들) 투자한 기업은행·산업은행 “외부 요청 없었다”"
+    },
+    "title:21d801ecc78fc3cf757d590c": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842824",
+      "source": "뉴시스",
+      "source_body_digest": "3d6c2fe12c3d992be57d7d480ee79230c5a355884c584b36749dae4269678d57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:336d678d3dad26509d05f35be9cfabb049034d58271676c7888d520bdf29af05",
+      "source_fact_keys": [
+        "source_fact:v1:3b5082ffda4de16169455bf5b80bfda4f5013a991cdca1c0a4e594dffb849d13",
+        "source_fact:v1:5f71b129a279f944759b5929ac7cb06b6230515852330e6e4dd47e528d48722c",
+        "source_fact:v1:7064afccd2909909027121772e22b9d467900551c3142597a983d21208508521",
+        "source_fact:v1:c66badbcb3a4912a8777a91ed367bf6567a6b581bfd81328a00bf8f4a52702a4",
+        "source_fact:v1:d34b5f00c30ae0a609afcc393289d548905e1908e6bd55341e13b8e908d80c33",
+        "source_fact:v1:d8c8df84ff8d26e6dfec97cd7ef1020cd3e0b3b67bd0f396843cb1cb9a69eb51"
+      ],
+      "source_published_kst": "2026-10-27T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진",
+      "telegram_core_fact": "향후 대형 원전뿐 아니라 SMR을 활용해 안전성과 지역 균형을 고려한 전력 공급 체계를 구축하는 방안이 중요해질 것이라는 설명이다.",
+      "title": "배경훈 \"韓, 글로벌 SMR 공급기지로\"…원전 기술 민간 이전·운영 확대도 추진"
     },
     "title:21e58bb07af871a4a31f1c07": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -1285571,6 +1286633,26 @@
       "telegram_core_fact": "울산시는 동북아 에너지 물류거점(허브) 조성의 핵심 기반사업인 '남신항 에너지거점 2단계' 구축을 위한 3대 방향을 설정하고 사업 추진을 본격화한다고 7일 밝혔다. 남신항 에너지거점 2단계는 민선 9기 공약인 '동북아 에너지 물류거점 조성'과 연계해 울산 에너지 산업과 항만 경쟁력을 강화하기 위한 사업이다.",
       "title": "울산 남신항 에너지거점 2단계 본격화…동북아 물류허브 승부수 | 연합뉴스"
     },
+    "title:45223a5156dca17d57b817c3": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027103100527",
+      "source": "연합뉴스",
+      "source_body_digest": "c0ea40e2325b7e0e70467bfd5ef07ffe1c1f52d9d3e15851adc12a3826462575",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:5c22d446b1b975bdad8e2c385df9cddce96f18484be0b532b790612527a69174",
+      "source_fact_identity": "source_facts:v1:6f6d4a9f9290a55d6dd4e73e198e2427d773ac844c86bcb92c9c45ba4d2469c2",
+      "source_fact_keys": [
+        "source_fact:v1:f75e850569d038fa985244d489d69c3837668776d0799bff7b1c1ecfe47f9288"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한카드가 연결 기준 올해 3분기 영업이익 1천296억원으로 지난해 동기보다 27.2% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한카드 3분기 영업이익 1천296억원…작년 동기 대비 27.2%↓ | 연합뉴스"
+    },
     "title:45361e3a4430a1fa386ab042": {
       "first_seen_kst": "2026-10-13T14:05:30+09:00",
       "lanes": {
@@ -1295236,6 +1296318,26 @@
       "source_title": "NH투자증권 3분기 영업익 5천211억원…전년비 33.2%↑ | 연합뉴스",
       "telegram_core_fact": "코스피 상장사 NH투자증권[005940]은 연결 기준 올해 3분기 영업이익이 5천211억원으로 지난해 동기보다 33.2% 증가한 것으로 잠정 집계됐다고 26일 공시했다.",
       "title": "NH투자증권 3분기 영업익 5천211억원…전년비 33.2%↑ | 연합뉴스"
+    },
+    "title:54aa94cc824c632b9ad17f09": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027104700527",
+      "source": "연합뉴스",
+      "source_body_digest": "7696240752ac86ca414d8bc08134fb02e5e7659abee690a2d534c48e509570fb",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:65c8356bfd094f7039dd073f0981d6606697b873a2076938868887323ed6b51c",
+      "source_fact_identity": "source_facts:v1:8cb586470553ce7331cc26ae83721e07ec93e148634f2f448526bfefcbc53cea",
+      "source_fact_keys": [
+        "source_fact:v1:f5305f42483c8affa5d252d2cf13ba0367396e888d7f194f5766dabeb89254f6"
+      ],
+      "source_published_kst": "2026-10-27T13:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한라이프가 연결 기준 올해 3분기 영업이익 1천711억원으로 지난해 동기보다 27% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한라이프 3분기 영업이익 1천711억원…작년 동기 대비 27%↓ | 연합뉴스"
     },
     "title:54ae2d6337f5303111d69918": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -1323784,6 +1324886,28 @@
       "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
       "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
       "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
+    },
+    "title:8376e29529308411603d96cb": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12186882",
+      "source": "매일경제",
+      "source_body_digest": "a542c5df96f3c9f982fa030d23176ff0edf7528e1679505b567fd4baf9e9c9b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b18e42bf5717781760a482a5b07658890844408d296be797dda7fe2acc97e1e",
+      "source_fact_keys": [
+        "source_fact:v1:330f2ef58591bd4b977bc0dae31195f73742c3cfc61583287c7e64be12b0d8ce",
+        "source_fact:v1:4622fd8b2e82a6c15216f9e6920f3f77f3d111a90eaaa94c176395dbea9f2c3f",
+        "source_fact:v1:d58f8e9e83dae582971b46ff762f0b1cd2bbeeb8d1f160e1735ce198e92b3967"
+      ],
+      "source_published_kst": "2026-10-27T13:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가",
+      "telegram_core_fact": "대우건설은 올해 3분기 영업이익이 1832억원으로 전년 동기(566억원) 대비 223.7% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "‘내실경영 성과’ 대우건설 3분기 영업익 223% 증가"
     },
     "title:839cd105ae59946ef28e669e": {
       "first_seen_kst": "2026-10-17T08:00:41+09:00",
@@ -1363486,6 +1364610,27 @@
       "telegram_core_fact": "미국 주택건설·모기지 업체 엔브이알(NVR)이 3분기(9월 30일 종료) 순이익 2억4860만 달러, 희석 주당순이익 89.45달러, 연결 매출액 24억 달러를 기록했다고 10월 22일 발표했다.",
       "title": "엔브이알, 3분기 희석 EPS 89.45달러..전년비 20% 감소"
     },
+    "title:c269f47d5e8e38e464fea183": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640586",
+      "source": "이투데이",
+      "source_body_digest": "2b5db79da2c1ee8cb2cb88d362ab048c3fe27b6742a9685a28b51219ec81213c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ba9ae0adf6c09a905fad9e79a1949ce0c4fc171869567e2ca9b0515ff996f539",
+      "source_fact_identity": "source_facts:v1:0f9f0db43997d93c03232c56972958ab62bce9fd3f0a840f0bb9a839d3d86918",
+      "source_fact_keys": [
+        "source_fact:v1:3e00241eb871ce5999a017b10e1a470546cd36059c64bb31b13d0937e26943c5",
+        "source_fact:v1:f7edd73ef052d5b1d852f2e1435a7fd820032dd772bb669c07a70836347d7f07"
+      ],
+      "source_published_kst": "2026-10-27T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑",
+      "telegram_core_fact": "한화오션은 올해 3분기 연결 기준 영업이익이 4857억원으로 전년비 67.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "한화오션, 3Q 영업익 4857억원…전년 대비 67.6%↑"
+    },
     "title:c26a15703492cd6f42d2c52e": {
       "first_seen_kst": "2026-10-24T16:15:28+09:00",
       "lanes": {
@@ -1369976,6 +1371121,26 @@
       ],
       "source_published_kst": "2026-10-07T05:17+09:00",
       "title": "기업 실적발표 앞두고 S&P500·나스닥 또 사상 최고치 | 연합뉴스"
+    },
+    "title:cccd7111736925030cbc3c3b": {
+      "first_seen_kst": "2026-10-28T00:13:29+09:00",
+      "lanes": {
+        "live": "2026-10-28T00:13:29+09:00"
+      },
+      "last_seen_kst": "2026-10-28T00:13:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027102500527",
+      "source": "연합뉴스",
+      "source_body_digest": "2ecfd9a06a67f270d1e161027a3ff6a344518c75f5e5c4360d39a6854f11a03f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f881760a2327472eee69e83d254d678d2a0a187a644116d10b87db6592a8e2e6",
+      "source_fact_keys": [
+        "source_fact:v1:84087ac181fd661f3befc5b6b32c0a2bb906ca5a7bcc56b687cb5fa23a5eec89"
+      ],
+      "source_published_kst": "2026-10-27T13:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 자회사 신한은행이 연결 기준 올해 3분기 영업이익 1조5천917억원으로 지난해 동기보다 8.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한은행 3분기 영업이익 1조5천917억원…작년 동기 대비 8.6%↑ | 연합뉴스"
     },
     "title:cccda7235618994f1a1554b1": {
       "first_seen_kst": "2026-10-22T01:52:01+09:00",
@@ -1401123,5 +1402288,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-27T23:37:11+09:00"
+  "updated_at_kst": "2026-10-28T00:13:29+09:00"
 }
