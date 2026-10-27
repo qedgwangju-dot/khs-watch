@@ -45,6 +45,30 @@ BASELINE = {
     "agentic_cpu_per_gpu": 1.0,
 }
 
+# Global data-center spending and whole-facility cost are NOT the existing BofA AI systems TAM.
+BOFA_GLOBAL_ID = "bofa-global-dc-spending-20261023-reuters-cost-per-mw"
+BOFA_GLOBAL_REUTERS = "https://www.reuters.com/business/data-center-spending-more-than-double-21-trillion-by-2028-2026-10-23/"
+BOFA_GLOBAL_TECHTIMES = "https://www.techtimes.com/articles/329486/20261026/bank-america-data-center-market-will-top-2-trillion-2028-ai-driven-build.htm"
+BOFA_GLOBAL_SYNDICATED = "https://www.channelnewsasia.com/business/data-center-spending-more-double-21-trillion-2028-bofa-says-6487191"
+BOFA_GLOBAL_REFERENCE = {
+    "research_note_date": "2026-10-23",
+    "global_spending_2026_usd_t": 1.0,
+    "global_spending_2028_usd_t": 2.1,
+    "global_market_2030_usd_t": 2.93,
+    "global_market_2022_usd_b": 275.0,
+    "market_2025_2030_cagr_pct": 37.0,
+    "standard_dc_total_usd_m_per_mw": 49.0,
+    "ai_dc_total_usd_m_per_mw": 57.0,
+    "standard_dc_it_cost_pct": 78.0,
+    "standard_dc_server_usd_m_per_mw": 31.4,
+    "standard_dc_network_usd_m_per_mw": 4.8,
+    "component_range_usd_m_per_mw": [0.1, 1.1],
+    "geography": "전 세계",
+    "source_grade": "Reuters 10월 23일 및 TechTimes 10월 26일 공개보도. BofA 원보고서 미확보",
+    "scope_warning": "종전 BofA 2030 AI 데이터센터 시스템시장 2.2조달러와 전체 시장 2.93조달러는 동일 분모 미확인",
+    "sources": [BOFA_GLOBAL_REUTERS, BOFA_GLOBAL_TECHTIMES, BOFA_GLOBAL_SYNDICATED],
+}
+
 # 13 October 2026 JPMorgan Hardware & Networking research, independently repeated
 # by multiple secondary outlets. The paywalled original is NOT verified.
 JPM_REFERENCE = {
@@ -109,6 +133,8 @@ QUERIES = (
     'Bank of America data center systems TAM AI 2030',
     'BofA server CPU 2030 agentic AI',
     'BofA cloud capex 2027 AI infrastructure',
+    'BofA global data center spending 2028 2.1 trillion 2030 2.93 trillion',
+    'Bank of America data center 49 million MW 57 million neocloud servers networking',
     'Vivek Arya AI data center systems 2030',
 )
 
@@ -256,8 +282,8 @@ def extract_metrics(text: str) -> dict:
 
     patterns = [
         ("ai_dc_system_tam_2030_usd_t", [
-            r"(?:2030[^.]{0,120}?)?\$?([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|t)[^.]{0,120}?(?:data center systems|ai data center|data-center systems)",
-            r"(?:data center systems|ai data center|data-center systems)[^.]{0,120}?\$?([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|t)[^.]{0,80}?2030",
+            r"(?:2030[^.]{0,120}?)?\$?([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|t)[^.]{0,120}?(?:data center systems|ai data center systems|data-center systems)",
+            r"(?:data center systems|ai data center systems|data-center systems)[^.]{0,120}?\$?([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|t)[^.]{0,80}?2030",
         ], 0.5, 5.0),
         ("server_cpu_tam_2030_usd_b", [
             r"(?:server cpu|cpu)[^.]{0,120}?(?:2030[^.]{0,80}?)?\$?([0-9]{2,4}(?:\.[0-9]+)?)\s*(?:billion|bn)",
@@ -293,6 +319,90 @@ def extract_metrics(text: str) -> dict:
     if re.search(r"(?:1\s*:\s*1|one-to-one|1-to-1)", text, re.I) and ("agent" in low or "agentic" in low):
         out["agentic_cpu_per_gpu"] = 1.0
     return out
+
+
+def bofa_global_due(prev: dict, fx: dict, first: bool) -> bool:
+    return bool(not first and fx.get("usdkrw") and prev.get("delivered_id") != BOFA_GLOBAL_ID)
+
+
+def bofa_global_checks() -> None:
+    assert BOFA_GLOBAL_REFERENCE["global_spending_2028_usd_t"] == 2.1
+    assert abs(49 * .78 - 38.22) < 1e-9
+    assert abs(31.4 + 4.8 + 2.02 + 10.78 - 49) < 1e-9
+    assert bofa_global_due({}, {"usdkrw": 1325}, False)
+    assert not bofa_global_due({"delivered_id": BOFA_GLOBAL_ID}, {"usdkrw":1325}, False)
+    assert not bofa_global_due({}, {}, False)
+    assert not bofa_global_due({}, {"usdkrw":1325}, True)
+    assert "ai_dc_system_tam_2030_usd_t" not in extract_metrics(
+        "BofA global data center spending $2.93 trillion by 2030")
+    assert extract_metrics("BofA projects $2.2 trillion data center systems by 2030").get(
+        "ai_dc_system_tam_2030_usd_t") == 2.2
+
+
+def bofa_global_alert(fx: dict) -> str:
+    rate = float(fx["usdkrw"])
+    m = lambda v: krw_from_usd_b(v / 1000, rate)
+    lines = [
+        "BofA 데이터센터 글로벌 지출·1MW 비용 별도 보강 (2026년 10월 23일 전망)",
+        "",
+        "■ 핵심 수치",
+        f"• 2026년 세계 지출 1조달러({krw_from_usd_t(1,rate)}) →"
+        f" 2028년 2조1,000억달러({krw_from_usd_t(2.1,rate)})."
+        " 110% 증가 전망이며 확정 발주·가동물량 아님.",
+        f"• 2030년 세계 시장 2조9,300억달러({krw_from_usd_t(2.93,rate)}),"
+        " 2025~2030년 예상 연평균 성장률 37%.",
+        f"• 일반 데이터센터 1MW 전체 구축비 4,900만달러({m(49)}),"
+        f" AI 특화형 5,700만달러({m(57)}). AI형 프리미엄 약 16.3%.",
+        "",
+        "■ 일반형 1MW 비용 분해 (서버·네트워크는 전체 총사업비 비중)",
+        f"• 서버 3,140만달러({m(31.4)}) · 64.1%.",
+        f"• 네트워크 480만달러({m(4.8)}) · 9.8%.",
+        f"• 기타 IT 자체 역산 202만달러({m(2.02)}) · 4.1%.",
+        f"• 비IT 물리시설 자체 역산 1,078만달러({m(10.78)}) · 22.0%.",
+        "• IT 전체 78%; 비IT는 건설·전력기기·냉각·설비·안전·소방 등."
+        " 품목별 배분비율 미공개. 부품별 10만~110만달러/MW는 개별 품목 구간.",
+        "",
+        "■ 단위 물량 × 단가 감도 (미확정 지출 시나리오)",
+        f"• 일반형 100MW 49억달러({krw_from_usd_b(4.9,rate)}),"
+        f" 1GW 490억달러({krw_from_usd_b(49,rate)}).",
+        f"• AI형 100MW 57억달러({krw_from_usd_b(5.7,rate)}),"
+        f" 1GW 570억달러({krw_from_usd_b(57,rate)}).",
+        "• 연간 지출액에 교체·확장 장비 등이 포함될 수 있어 지출÷MW단가로"
+        " 신규 가동 GW를 산정하면 안 됨. IT 전력/총전력도 구분 필요.",
+        "",
+        "■ 기존 BofA 시스템 시장과 완전히 별도",
+        f"• 기존 2030년 AI 데이터센터 시스템시장 2조2,000억달러"
+        f"({krw_from_usd_t(2.2,rate)})는 유지. 이번 2조9,300억달러는 글로벌 전체 시장.",
+        "• BofA 원본 유료 보고서를 확보하지 못해 세부 포함범위는 확인 불가."
+        " 이번 수치를 기존 시스템시장 전망의 상향 조정으로 저장하지 않음.",
+        "",
+        "■ 실제 수익화·실패 경로",
+        "• 칩·HBM·서버·기업용 SSD·통신이 큰 지출처."
+        " 전력변환·개폐기·변압기·발전기·냉각도 준공에 필수.",
+        "• 계획 MW → 금융종결 → 변전소·송전선 → 전원 인가"
+        " → 장비 검수 → 임대·운영 매출; 계획과 인식 매출 구분.",
+        "• 역풍: 접속 지연, 발열·냉각 안정성, 소방·보험·고객 승인."
+        " 6~24개월 구간에서 전원 인가 MW·신규수주·검수 기간을 조기 확인.",
+        "• 초기장비·설계·조달·시공과 장기 유지보수·교체부품·원격관제"
+        " 반복매출을 구분하며 BofA 전망을 개별기업 확정 수주로 간주하지 않음.",
+        "",
+        "■ 환율과 확인 수준",
+        f"• 1달러={rate:,.2f}원 · {fx.get('basis','확인 불가')}",
+        "• Reuters 10월 23일 보도, TechTimes 10월 26일 기사 교차 확인."
+        " BofA 리서치 보고서 원문은 미열람, 증권사 추정의 신뢰보도 단계.",
+        "원문: "+BOFA_GLOBAL_REUTERS,
+        "원문: "+BOFA_GLOBAL_TECHTIMES,
+        "원문: "+BOFA_GLOBAL_SYNDICATED,
+    ]
+    rendered = "\n".join(lines)+"\n"
+    mandatory=("2조1,000억달러","2조9,300억달러","4,900만달러",
+               "5,700만달러","3,140만달러","480만달러","78%","22.0%",
+               BOFA_GLOBAL_REUTERS,BOFA_GLOBAL_TECHTIMES)
+    if any(t not in rendered for t in mandatory):
+        raise RuntimeError("BofA 새 알림 숫자·출처 누락")
+    if max(map(len,lines))>3000:
+        raise RuntimeError("BofA 새 알림 단일 줄 길이 초과")
+    return rendered
 
 
 def load_state() -> dict:
@@ -894,8 +1004,10 @@ def main() -> int:
     now = datetime.now(timezone.utc)
     jpm_guard()
     semia_regression_checks()
+    bofa_global_checks()
     old = load_state()
     first = not bool(old)
+    old_bofa_global = dict(old.get('bofa_global_spending') or {})
     baseline_metrics = {k: v for k, v in BASELINE.items() if k not in {"source", "as_of"}}
     metrics = dict(old.get("metrics") or baseline_metrics)
     for k, v in baseline_metrics.items():
@@ -910,6 +1022,12 @@ def main() -> int:
         fx = {}
         print(f"ai_dc_tam_fx_error={type(exc).__name__}: {exc}")
 
+    bofa_new_due = bofa_global_due(old_bofa_global, fx, first)
+    bofa_global_next = dict(old_bofa_global)
+    bofa_global_next["reference"] = BOFA_GLOBAL_REFERENCE
+    if bofa_new_due:
+        bofa_global_next["delivered_id"] = BOFA_GLOBAL_ID
+        bofa_global_next["delivered_at_kst"] = now.astimezone(KST).isoformat(timespec="seconds")
     rows = collect(now)
     seen_ordered = list(old.get("seen_ids") or [])
     seen = set(seen_ordered)
@@ -1029,6 +1147,7 @@ def main() -> int:
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen_ids": list(dict.fromkeys(seen_ordered + [r["id"] for r in rows]))[-1000:],
         "jpm_capex": jpm_next,
+        "bofa_global_spending": bofa_global_next,
         "semianalysis_2027": semi_next,
         "fx": fx,
         "last_collection": {
@@ -1054,6 +1173,8 @@ def main() -> int:
         alerts.append(semia_verified_alert_text(semi_live, fx))
     if semi_lease_correction:
         alerts.append(semia_lease_correction_alert(semi_live, fx))
+    if bofa_new_due:
+        alerts.append(bofa_global_alert(fx))
     if alerts:
         ALERT.write_text("\n\n".join(alerts), encoding="utf-8")
 
@@ -1062,6 +1183,7 @@ def main() -> int:
         f"- 최초 기준선: **{'예' if first else '아니오'}**\n"
         f"- 신뢰자료 수집: **{len(rows)}건**\n"
         f"- 신규 자료: **{len(new_rows)}건**\n"
+        f"- BofA 글로벌 투자액·단위 구축비 별도 1회 알림: **{'예' if bofa_new_due else '중복 제외'}**\n"
         f"- 숫자 후보: **{len(candidates)}건**\n"
         f"- 중요 전망 변경: **{len(changes)}건**\n"
         f"- JP모건 현재 성장률 2026/2027: **{jpm_metrics['top4_growth_2026_pct']:g}% / {jpm_metrics['top4_growth_2027_pct']:g}%**\n"
