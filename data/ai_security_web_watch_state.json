@@ -8,7 +8,7 @@
     "errors": [],
     "material_items": 23,
     "new_material_items": 0,
-    "raw_items": 359,
+    "raw_items": 310,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -811,6 +811,16 @@
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBaSXRUMkVsWkF3TjhoV29oTXdyZHhrMGZINFBHNVVrNmZubTA4SkFzMzlWMlNMLW15ZWdISDJYeURJbVdpTFB5ZzNTU21aazFfTmc4R0VkLWVyMVY4S1JRYTZ5UjJqWk82SlR5Q0ZMOTJrNEJVeXNV?oc=5",
       "vendor": "PHP 재단"
     },
+    "88a309f55614fdcb4bc77a98": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-27T08:47:29.795907+00:00",
+      "published_at": "2026-10-27T08:20:54+00:00",
+      "severity": 2,
+      "source": "BleepingComputer",
+      "title": "CISA confirms PHP2Shell vulnerabilities now exploited in attacks - BleepingComputer",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQU1JMQ1hydmZTdDJDYkMxLXBfUDdRU0RlSGhUWHA3Q2ZHRlAxM2VkdjNKWldXU2N5YVgxUU9VQlR0ampTbXBqWUU4TEV5eDBOWkV3U001cHRjdHNHRWozWVpiYlNtUUVsZXRDR2NYajkxSVY4VHdUN3BUOVc5czJmOTE2SmtsbFpKZXJfQVYxTlZkd0dzMDdJN1NNSUlXQlBHaERMNGs1UTgzUEdCa1lQWkx30gG3AUFVX3lxTE1SdlRkY0pfVWN2T3RiT1VrX1JCaUV5Q2tZX0M3Q3dsUDEwbFZjcnZJYVVXdGVzZzBlMmY0RzNwVFNfWUt4bDNPZEY0RnRLOW4yc0tWWWlSTmpxdjY5Sk8ySDdJS2x3MEFkN2RTV3cwNjgyalVNS2VQaTNuR1lPRG9XYmx3YjRpNmtyTHZld3lPMEhBNEhIRm5OSXFkajAxbFhPSG9MMWhRMS1kTHc1OUdOQUVOUk9SMA?oc=5",
+      "vendor": "PHP 재단"
+    },
     "88d65434b1f26800a658640b": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
@@ -1474,5 +1484,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-27T17:10:48+09:00"
+  "updated_at_kst": "2026-10-27T17:47:29+09:00"
 }
