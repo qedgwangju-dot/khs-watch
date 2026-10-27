@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-27T15:13:19+09:00",
+  "updated_at_kst": "2026-10-27T21:27:29+09:00",
   "initial_alert_sent": true,
   "preorder_at_kst": "2026-10-16T21:00:00+09:00",
   "launch_date": "2026-10-23",
@@ -27,6 +27,7 @@
     "291d0b0e31bd24cd8d01a44f",
     "2c963da200a9807bc7b5d194",
     "2d41a83800980bf567f509f7",
+    "2e4ed5186b35b93da988e259",
     "2fba751e544b2c1eb936f000",
     "301ecc3616e6cbb5fbd5067f",
     "31246a097aa42a4b8f134e6a",
@@ -35,6 +36,7 @@
     "33c8822a08bb94477bd20ed3",
     "34271bd3d23f37678c2a5e7d",
     "34bc2fdf71f30807f9520968",
+    "36825715c5e02aabd430cf85",
     "383916b6ebb417a5b04a44e9",
     "3a77374a5d7899584bc8fee5",
     "3b445693a6903a8f5041ae1f",
@@ -67,6 +69,7 @@
     "68d6a986f2ccc9865bdfd6e9",
     "68e56fb6e2116cca9c5e6fdf",
     "69f9e7e4455e6596098f75aa",
+    "71e49bc337cd6c34e31ff62f",
     "72800f592213b09664f15b3f",
     "72cb31cb56b50c5bbf182c3a",
     "746b2c2682256b12e98da40a",
@@ -75,6 +78,7 @@
     "79825419608d583f9de3fbb8",
     "79b11ae7578f7fbc678d9ca2",
     "79fdccf8d0a21880f6875559",
+    "7bcf687e861c06d08e1bfa46",
     "7c278e61a3960bfb573278dc",
     "7db4a6d9da297eea13c897bf",
     "81f287833bf39bbe2a3694ce",
@@ -100,6 +104,7 @@
     "9c2d10785d75244a307c1112",
     "9d1c4c9f2e8d784f5d46da9f",
     "9ea97a8715f2e39bfce554b4",
+    "9f3eca72e7bdcef1f9034f80",
     "9f7a951099974ffefe268a49",
     "a088a5f970fcb994f1db7a0b",
     "a1685e3cf0b1dd3a227b30a2",
@@ -110,6 +115,7 @@
     "a7bda024448ba5f0eeede9bb",
     "a8c9d735371e17ee9995b135",
     "abc0deae902f7e11861ea167",
+    "acbe35ab396752eef7db739d",
     "ad14f5ec7ae6b178a791b072",
     "af66ad2563e3f82c8dce5547",
     "b1a731512f51a94751d90538",
@@ -167,6 +173,7 @@
     "fa0af90127e54bd2e2180d80",
     "faf214aa8475b6c2fd8d78d8",
     "fdfc39f54ba21516d484595f",
+    "fe822c8a5ef048c27250f447",
     "fede0acc4416cc1373a28752"
   ],
   "metrics": {
@@ -186,7 +193,7 @@
     "counterpoint_duo": "Reuters가 Counterpoint 전망 약 600만대 인용",
     "trendforce_duo": "TrendForce 공식 2026 출하 약 500만대"
   },
-  "last_scan_items": 4,
+  "last_scan_items": 9,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-09-30T13:10:14+09:00",
