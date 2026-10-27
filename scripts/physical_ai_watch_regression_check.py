@@ -5955,4 +5955,56 @@ try:
 finally:
   base.NOW=_atlas_save_now
 
+# Oct 26-27 added robotics lanes: press vs official upgrade, recurring press
+# aliases, and source-unverified customer speculation must not become sales.
+_oct27_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,27,7,0,tzinfo=dt.timezone.utc)
+    for _code,_group,_label in (
+        ("DIRECT_TIROBOTICS_DOW_PRESS_20261026","tirobotics_dow_reported",
+         "조건부 승인 회사발표"),
+        ("DIRECT_SAMSUNG_ATLAS_FINGER_PRESS_20261026",
+         "samsung_hand_10_atlas_8_reported","10개 대 8개"),
+    ):
+        _rows=base.query_news(_code)
+        assert len(_rows)==1,(_code,_rows)
+        _g,_s,_cat,_k=classify(_rows[0])
+        assert _g==_group and _s>=11,(_code,_g,_s,_cat)
+        assert _label in _cat,(_code,_cat)
+        assert "공급" in base.risk(_cat) or "신뢰성" in base.risk(_cat)
+    _t2=make("티로보틱스 AMR 미국 조건부 승인 재보도",
+             "티로보틱스 AGV AMR DoW 조건부 승인 보도 재인용","언론사")
+    assert classify(_t2)[0]=="tirobotics_dow_reported"
+    assert classify(_t2)[1]==0,classify(_t2)
+    _on=make("티로보틱스 AMR 정부 공식 승인번호 공개",
+             "티로보틱스 AMR DoW 조건부 승인 공식 승인번호 제품별 승인 목록 공개",
+             "티로보틱스")
+    _og,_os,_oc,_ok=classify(_on)
+    assert _og=="tirobotics_dow_reported" and _os>=11 and _ok!=classify(_t2)[3]
+    _ep=make("LG에너지솔루션 에너직스 유럽 ESS 공급 협력",
+             "LG에너지솔루션 에너직스 2GWh ESS 최대 4.5GWh 협력 추진","전자신문")
+    _ep2=make("LG에너지솔루션 Energix 최대 4.5GWh 협력",
+              "LG Energy Solution Energix ESS 2GWh 유럽 북미","조세일보")
+    for _r in (_ep,_ep2):
+        _rg,_rs,_rc,_rk=classify(_r)
+        assert _rg=="lges_energix_ess_20261027" and _rs==0,(_rg,_rs)
+        assert _rk==watcher.LGES_ENERGIX_ALREADY_SENT_KEY,(_rk,_rg)
+    _contract=make("LG에너지솔루션 Energix ESS 정식 공급계약 체결",
+                   "LG에너지솔루션은 Energix ESS 2GWh 정식 공급 계약 체결", "LG에너지솔루션")
+    _cg,_cs,_cc,_ck=classify(_contract)
+    assert _cg=="lges_energix_ess_20261027" and _cs>=11,(_cg,_cs)
+    assert _ck!=watcher.LGES_ENERGIX_ALREADY_SENT_KEY
+    _pim=make("한국피아이엠 북미 휴머노이드 관절부품 3종 개발 공급",
+              "한국피아이엠 북미 고객 손 관절용 감속기 3종 개발 협력","일반 보도")
+    assert classify(_pim)[1]==0, "Unverified PIM customer must not become contracted sales"
+    _pim_signed=make("한국피아이엠 북미 휴머노이드 감속기 공식 계약",
+              "한국피아이엠 북미 고객 휴머노이드 손 감속기 3종 정식 공급계약 체결",
+              "한국피아이엠")
+    assert classify(_pim_signed)[1]>=11
+    base.NOW=dt.datetime(2026,11,2,0,0,tzinfo=dt.timezone.utc)
+    for _code in watcher.OCT27_UPDATES:
+        assert base.query_news(_code)==[],_code
+finally:
+    base.NOW=_oct27_now
+
 print("Physical-AI watcher regression guards: PASS")

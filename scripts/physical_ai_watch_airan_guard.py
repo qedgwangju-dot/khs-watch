@@ -8513,6 +8513,246 @@ for _q in (
   if _q not in base.QUERIES:base.QUERIES.append(_q)
 
 
+# October 26-27 robotics supplier/regulation follow-ups.
+# Preserve contract/press/official-model evidence as separate stages.
+OCT27_UPDATES = {
+    "DIRECT_TIROBOTICS_DOW_PRESS_20261026": {
+        "group": "tirobotics_dow_reported",
+        "tag": "티로보틱스 미국 승인(회사발표 보도)",
+        "title": "티로보틱스 AMR·AGV 미국 전쟁부 조건부 승인 발표(정부 승인서 별도 확인)",
+        "source": "티로보틱스 발표 인용·로봇신문",
+        "link": "https://www.irobotnews.com/news/articleView.html?idxno=49217",
+        "description": (
+            "2026-10-26 티로보틱스가 자사 AMR·AGV 제품군에 대해 미국 전쟁부 "
+            "(DoW)의 조건부 승인을 받았다고 밝혔다고 로봇신문·뉴스핌·뉴시스가 보도. "
+            "이는 회사측 발표를 인용한 보도이며 승인번호·승인대상 모델·유효기간·"
+            "조건 전문과 미국 정부의 직접 발급 자료는 별도로 확인해야 한다. "
+            "대량 납품·미국 내 전 제품 판매허가·공식 FCC 인증·고객 확정 발주가 아니다. "
+            "이전에 기사화된 RB-Y1 조건부 승인 신청과 별개 사건."
+        ),
+        "cat": "티로보틱스 · 미국 로봇 조건부 승인 회사발표(공문·매출 별도 검증)",
+        "meaning": (
+            "AMR·AGV 북미 공급에 필요한 규제장벽 완화 가능성이 제기됐습니다. "
+            "정부 승인문서, 구체 모델·조건, 고객 납품계약과 검수일이 공개되면 "
+            "회사 매출과 연결할 수 있습니다."
+        ),
+        "risk": (
+            "기종·조건·만료일 미공개와 통신·보안 인증 변경, 현지 설치·보험·"
+            "고객사 수주 지연이 위험입니다. 승인서 번호와 납품·매출 인식이 우선 지표."
+        ),
+    },
+    "DIRECT_SAMSUNG_ATLAS_FINGER_PRESS_20261026": {
+        "group": "samsung_hand_10_atlas_8_reported",
+        "tag": "삼성전자·Atlas 로봇 손 구조",
+        "title": "삼성 휴머노이드 손가락 10개·Atlas 8개 설계 대비(언론 취재)",
+        "source": "한겨레",
+        "link": "https://www.hani.co.kr/arti/economy/marketing/1284276.html",
+        "description": (
+            "2026-10-26 한겨레의 취재에 따르면 삼성전자 RX 개발 휴머노이드는 "
+            "양손 합계 손가락 10개(한 손 5개), 보스턴다이내믹스 Atlas는 "
+            "양손 합계 8개(한 손 4개)를 적용. 삼성은 케이블 구동을 통한 "
+            "인간 손작업 모사, Atlas는 부품·정비 복잡도 절감이라는 개발 선택을 설명. "
+            "삼성 로봇 손 양산과 국내 감속기·모터 공급계약을 의미하지 않고, "
+            "이재용 방문 예정 보도 역시 방문 완료나 상용화를 뜻하지 않는다."
+        ),
+        "cat": "삼성전자·Atlas · 로봇 손 10개 대 8개 연구개발 구조 보도",
+        "meaning": (
+            "손가락 수는 설계 선택이며 구동 자유도·힘 제어·촉각·학습 데이터·"
+            "실제 작업 성공률이 중요합니다. 삼성의 로봇 손 관련 수요는 "
+            "제품 양산과 부품 공급사 공식 선정 후에만 매출로 계산합니다."
+        ),
+        "risk": (
+            "10개 손가락의 추가 부품·열·무게·전력·수율·고장 확률, "
+            "고객 검증 지연이 역풍입니다. 양산 손 모듈 수율과 작업 성공률·"
+            "무고장 운전시간·실제 공급 발주를 확인합니다."
+        ),
+    },
+}
+OCT27_FIRST_KEY = {
+    "tirobotics_dow_reported": "tirobotics|20261026|company-announced-conditional-approval-press",
+    "samsung_hand_10_atlas_8_reported": "samsung-atlas|20261026|10vs8-finger-report",
+}
+# This precise key was already sent as Telegram #286, first item, 2026-10-27.
+# Retain its existing delivery identity; never replay the five press rewrites.
+LGES_ENERGIX_ALREADY_SENT_KEY="4bfe30af1d496652209fa136fd83b2ad5639927e5fa3a2007d9d68174ea865ae"
+OCT27_LGES_GROUP="lges_energix_ess_20261027"
+OCT27_PIM_GROUP="korean_pim_us_hand_three_parts"
+_OCT27_NEW_GROUPS={x["group"]:x for x in OCT27_UPDATES.values()}
+_oct27_query_prev=base.query_news
+_oct27_group_prev=base.topic_group
+_oct27_score_prev=base.score
+_oct27_key_prev=base.key
+_oct27_cat_prev=base.category
+_oct27_meaning_prev=base.meaning
+_oct27_risk_prev=base.risk
+_oct27_verify_prev=base.verification
+_oct27_tag_prev=base.tag_for
+_oct27_select_prev=base.select_diverse
+
+def _oct27_body(item):
+    return " ".join(str(item.get(k) or "") for k in ("title","description"))
+
+def _oct27_energix(text):
+    return bool(re.search(r"LG에너지솔루션|LG\s*Energy\s*Solution",text,re.I)
+                and re.search(r"에너직스|Energix",text,re.I)
+                and re.search(r"\bESS\b|에너지\s*저장|GWh",text,re.I))
+
+def _oct27_pim(text):
+    return bool(re.search(r"한국피아이엠|Korea\s*PIM",text,re.I)
+                and re.search(r"북미|North\s*America|미국",text,re.I)
+                and re.search(r"휴머노이드|humanoid",text,re.I)
+                and re.search(r"3\s*종|세\s*종|관절|감속기",text,re.I))
+
+def _oct27_new_group(text):
+    if _oct27_energix(text): return OCT27_LGES_GROUP
+    if _oct27_pim(text): return OCT27_PIM_GROUP
+    if (re.search(r"티로보틱스|T[\s-]?Robotics",text,re.I)
+        and re.search(r"\bAMR\b|\bAGV\b|자율이동로봇|무인운반",text,re.I)
+        and re.search(r"조건부\s*승인|conditional\s*approval",text,re.I)):
+        return "tirobotics_dow_reported"
+    if (re.search(r"삼성전자|Samsung\s*Electronics|삼성\s*휴머노이드",text,re.I)
+        and re.search(r"아틀라스|Atlas",text,re.I)
+        and re.search(r"손가락|finger",text,re.I)
+        and re.search(r"(?:10|열)\s*(?:개|손가락)|10\s*fingers?",text,re.I)
+        and re.search(r"8\s*개|여덟|eight\s*fingers?",text,re.I)):
+        return "samsung_hand_10_atlas_8_reported"
+    return None
+
+def _oct27_real_upgrade(item,group):
+    src=str(item.get("source") or "").strip()
+    text=_oct27_body(item)
+    if group==OCT27_LGES_GROUP and src in {
+        "LG에너지솔루션","LG Energy Solution","LG Newsroom","Energix","Energix Renewables"
+    }:
+        if re.search(r"실제\s*첫\s*출하|초도\s*출하\s*완료|first\s+shipment\s+completed",text,re.I):return "shipment"
+        if re.search(r"정식\s*공급\s*계약\s*체결|확정\s*구매\s*발주|signed\s+(?:binding\s+)?(?:supply|purchase)\s+contract",text,re.I):return "signed"
+    if group=="tirobotics_dow_reported" and src in {
+        "티로보틱스","T-Robotics","FCC","Federal Communications Commission",
+        "미국 전쟁부","Department of War"
+    }:
+        if re.search(r"실제\s*납품\s*완료|first\s+shipment\s+completed",text,re.I):return "shipment"
+        if re.search(r"공식\s*(?:승인\s*문서|승인번호)|approval\s*(?:document|number|ID)|"
+                     r"발급\s*공문|제품별\s*승인\s*목록",text,re.I):return "official_document"
+    if group=="samsung_hand_10_atlas_8_reported" and src in {
+        "삼성전자","Samsung Electronics","Samsung Newsroom"
+    }:
+        if re.search(r"양산\s*(?:시작|개시)|mass\s*production\s*started",text,re.I):return "production"
+        if re.search(r"공식\s*(?:시연|공개)|official\s*(?:demo|unveil)",text,re.I):return "official_demo"
+    if group==OCT27_PIM_GROUP and src in {"한국피아이엠","Korea PIM"}:
+        if re.search(r"초도\s*납품\s*완료|first\s+shipment\s+completed",text,re.I):return "shipment"
+        if re.search(r"정식\s*공급계약\s*체결|구매\s*발주\s*확정|signed\s+purchase\s+order",text,re.I):return "signed"
+    return ""
+
+def _oct27_query(q):
+    if q in OCT27_UPDATES:
+        if base.NOW.astimezone(base.KST).date()>dt.date(2026,11,1):
+            return []
+        item=OCT27_UPDATES[q]
+        return [{
+            "title":item["title"],"description":item["description"],
+            "source":item["source"],"link":item["link"],"published":None,
+            "oct27_press_recovery":q,
+        }]
+    return _oct27_query_prev(q)
+
+def _oct27_group(text):
+    return _oct27_new_group(text) or _oct27_group_prev(text)
+
+def _oct27_score(item):
+    if item.get("oct27_press_recovery") in OCT27_UPDATES:return 22
+    group=_oct27_new_group(_oct27_body(item))
+    if group:
+        if _oct27_real_upgrade(item,group):return 25
+        # All newspaper retellings of an already-reported development are silent.
+        return 0
+    return _oct27_score_prev(item)
+
+def _oct27_key(item):
+    sentinel=item.get("oct27_press_recovery")
+    if sentinel in OCT27_UPDATES:
+        return hashlib.sha256(OCT27_FIRST_KEY[OCT27_UPDATES[sentinel]["group"]].encode()).hexdigest()
+    group=_oct27_new_group(_oct27_body(item))
+    if group==OCT27_LGES_GROUP:
+        stage=_oct27_real_upgrade(item,group)
+        return (hashlib.sha256(f"lges|energix|{stage}".encode()).hexdigest()
+                if stage else LGES_ENERGIX_ALREADY_SENT_KEY)
+    if group:
+        stage=_oct27_real_upgrade(item,group)
+        if not stage and group in OCT27_FIRST_KEY:
+            return hashlib.sha256(OCT27_FIRST_KEY[group].encode()).hexdigest()
+        return hashlib.sha256(f"robot-alert|{group}|{stage or 'press'}".encode()).hexdigest()
+    return _oct27_key_prev(item)
+
+def _oct27_category(text,group):
+    if group in _OCT27_NEW_GROUPS:return _OCT27_NEW_GROUPS[group]["cat"]
+    if group==OCT27_LGES_GROUP:return "LG에너지솔루션–Energix · 실제 ESS 공급계약·납품"
+    if group==OCT27_PIM_GROUP:return "한국피아이엠 · 북미 휴머노이드 고객 공식 납품 단계"
+    return _oct27_cat_prev(text,group)
+
+def _oct27_meaning(cat):
+    for rec in OCT27_UPDATES.values():
+        if cat==rec["cat"]:return rec["meaning"]
+    if cat=="LG에너지솔루션–Energix · 실제 ESS 공급계약·납품":
+        return "동일 고객의 최대 공급계획과 실제 구속력 있는 본계약·발주·출하·매출 인식은 별개입니다. 중국 가격 영향이 아니라 상대 고객과 ESS 납품 실적을 확인합니다."
+    if cat=="한국피아이엠 · 북미 휴머노이드 고객 공식 납품 단계":
+        return "공식 고객사·구체 관절부품 모델·공급 수량·평균판매단가가 확인되면 개발 단계에서 실제 매출 가시성으로 전환됩니다."
+    return _oct27_meaning_prev(cat)
+
+def _oct27_risk(cat):
+    for rec in OCT27_UPDATES.values():
+        if cat==rec["cat"]:return rec["risk"]
+    if cat=="LG에너지솔루션–Energix · 실제 ESS 공급계약·납품":
+        return "기대 물량과 발주서의 불일치, 공장 증설·검수·전원 인가 지연, 화재·안전·보험비 증가를 확인합니다."
+    if cat=="한국피아이엠 · 북미 휴머노이드 고객 공식 납품 단계":
+        return "익명 고객·미공개 구매수량, 초소형 기어 수율·마모·발열·신뢰성 시험과 가동률이 병목입니다."
+    return _oct27_risk_prev(cat)
+
+def _oct27_verify(item,group,text):
+    sentinel=item.get("oct27_press_recovery")
+    if sentinel in OCT27_UPDATES:
+        if group=="tirobotics_dow_reported":
+            return "회사발표 인용: 로봇신문·뉴스핌·뉴시스(10/26). 미국 기관 승인서·모델번호·발주 확인 전"
+        return "한겨레(10/26) 현장 취재와 Atlas 10/1 공개 비교. 삼성 양산·부품공급 공식 확인 전"
+    stage=_oct27_real_upgrade(item,group)
+    if stage:return "발표주체 공식자료 기반 주장. 발주서·승인번호·납품·매출 원문 교차검증 필요"
+    return _oct27_verify_prev(item,group,text)
+
+def _oct27_tag(group):
+    if group in _OCT27_NEW_GROUPS:return _OCT27_NEW_GROUPS[group]["tag"]
+    if group==OCT27_LGES_GROUP:return "LG에너지솔루션–Energix"
+    if group==OCT27_PIM_GROUP:return "한국피아이엠 북미 관절부품"
+    return _oct27_tag_prev(group)
+
+def _oct27_select(items,seen,force,limit):
+    chosen=_oct27_select_prev(items,seen,force,limit)
+    eligible=items if force else [x for x in items if x.get("key") not in seen]
+    for code in OCT27_UPDATES:
+        hit=next((x for x in eligible if x.get("oct27_press_recovery")==code
+                  and x.get("score",0)>=11),None)
+        if hit and not any(x.get("key")==hit.get("key") for x in chosen):
+            chosen=[hit,*chosen][:limit]
+    return chosen
+
+base.query_news=_oct27_query
+base.topic_group=_oct27_group
+base.score=_oct27_score
+base.key=_oct27_key
+base.category=_oct27_category
+base.meaning=_oct27_meaning
+base.risk=_oct27_risk
+base.verification=_oct27_verify
+base.tag_for=_oct27_tag
+base.select_diverse=_oct27_select
+for _q in (
+    *OCT27_UPDATES,
+    '(티로보틱스 OR "T-Robotics") (AMR OR AGV) (DoW OR 조건부 승인 OR 승인번호 OR 북미 납품)',
+    '(삼성전자 OR "Samsung Electronics") (로봇 손 OR 손가락 OR dexterous hand) (공식 시연 OR 양산 OR 공급계약 OR Atlas)',
+    '(한국피아이엠 OR "Korea PIM") (북미 OR North America) (휴머노이드 OR humanoid) (3종 OR 감속기 OR 공급계약 OR 납품)',
+    '(Elon Musk OR 머스크) (robot RAM OR 로봇 RAM) (LPDDR OR DRAM OR 로봇 당 메모리 OR actual orders OR 구매계약)',
+):
+    if _q not in base.QUERIES:base.QUERIES.append(_q)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
