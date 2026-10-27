@@ -731,7 +731,8 @@ def merge_state(current, patch):
     # A stale or generic company denial cannot downgrade IPO stage, replace
     # newer deal parameters, or masquerade as official IPO approval.
     if (
-        new_stage in STAGE_RANK and old_stage in STAGE_RANK
+        new_stage not in ("postponed", "withdrawn", "review_discontinued")
+        and new_stage in STAGE_RANK and old_stage in STAGE_RANK
         and STAGE_RANK[new_stage] < STAGE_RANK[old_stage]
     ):
         return out
