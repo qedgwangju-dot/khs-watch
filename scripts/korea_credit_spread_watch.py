@@ -211,10 +211,10 @@ def spread_legend(metric):
     parts=[]
     for k in range(5):
         lo,hi=(UP[k][col] if k else None),(UP[k+1][col] if k<4 else None)
-        if lo is None: span=f"<{hi:g}"
-        elif hi is None: span=f"≥{lo:g}"
-        else: span=f"{lo:g}~<{hi:g}"
-        parts.append(f"{LEVELS[k]}{span}")
+        if lo is None: span=f"{hi:g}미만"
+        elif hi is None: span=f"{lo:g}이상"
+        else: span=f"{lo:g}~{hi:g}미만"
+        parts.append(f"{LEVELS[k]}:{span}")
     return " · ".join(parts)
 
 def direction_overview(rows):
