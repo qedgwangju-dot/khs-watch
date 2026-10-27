@@ -799,11 +799,23 @@
       "source": "BigGo Finance",
       "published_kst": "2026-10-26T03:15:00+09:00",
       "first_seen_kst": "2026-10-26T10:15:11+09:00"
+    },
+    "51a4975dff342baec742a83b": {
+      "title": "Memory Chip Shortage Extends Into 2027 as SK Hynix Price Target Raised 40% - BigGo Finance",
+      "source": "BigGo Finance",
+      "published_kst": "2026-10-27T12:56:00+09:00",
+      "first_seen_kst": "2026-10-27T23:57:33+09:00"
+    },
+    "54259ff9455fcef899090922": {
+      "title": "RAM Shortage [2026]: DRAM Supply Up Just 16%, Prices Soar - shattered.io",
+      "source": "shattered.io",
+      "published_kst": "2026-10-27T12:00:32+09:00",
+      "first_seen_kst": "2026-10-27T23:57:33+09:00"
     }
   },
-  "updated_at_kst": "2026-10-27T17:24:41+09:00",
-  "last_scan_count": 10,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-27T23:57:33+09:00",
+  "last_scan_count": 11,
+  "last_new_count": 2,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -863,20 +875,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-26T08:17:41+09:00",
+  "last_successful_delivery_kst": "2026-10-27T23:57:47+09:00",
   "telegram_message_ids": [
-    338
+    343
   ],
-  "telegram_message_id": 338,
+  "telegram_message_id": 343,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      338
+      343
     ],
-    "confirmed_at_kst": "2026-10-26T08:17:41+09:00",
-    "alert_signature": "20a45d40dd683815a6593038ba81044213a3c05e770ea48126ec5d6beb1b3ab3"
+    "confirmed_at_kst": "2026-10-27T23:57:47+09:00",
+    "alert_signature": "ea6056e79e594b2b214c286537e05bafa3cc50e0e85af47666ff5f2fc496a270"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
