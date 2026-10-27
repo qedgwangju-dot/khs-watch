@@ -187,6 +187,36 @@ def day_word(delta):
     d=round(float(delta),1)
     return "확대" if d>0 else ("축소" if d<0 else "불변")
 
+def spread_bucket(metric,value):
+    """한 곳의 UP 임계값에서 숫자 옆에 표시할 단계와 정확한 반개구간을 도출한다."""
+    if metric not in ("cp_cd","credit"):
+        raise ValueError("지원하지 않는 신용스프레드")
+    if not math.isfinite(float(value)):
+        raise ValueError("유효하지 않은 신용스프레드")
+    col=0 if metric=="cp_cd" else 1
+    rank=next((k for k in (4,3,2,1) if value>=UP[k][col]),0)
+    if rank==0:
+        span=f"{UP[1][col]:g} 미만"
+    elif rank==4:
+        span=f"{UP[4][col]:g} 이상"
+    else:
+        span=f"{UP[rank][col]:g} 이상·{UP[rank+1][col]:g} 미만"
+    return LEVELS[rank],span
+
+def spread_legend(metric):
+    """부문별 전체 5단계 기준을 기존 UP 상수에서 자동 생성한다."""
+    if metric not in ("cp_cd","credit"):
+        raise ValueError("지원하지 않는 신용스프레드")
+    col=0 if metric=="cp_cd" else 1
+    parts=[]
+    for k in range(5):
+        lo,hi=(UP[k][col] if k else None),(UP[k+1][col] if k<4 else None)
+        if lo is None: span=f"<{hi:g}"
+        elif hi is None: span=f"≥{lo:g}"
+        else: span=f"{lo:g}~<{hi:g}"
+        parts.append(f"{LEVELS[k]}{span}")
+    return " · ".join(parts)
+
 def direction_overview(rows):
     if len(rows)<6: raise ValueError("방향 분석을 위한 5영업일 기준 데이터 부족")
     latest,week=rows[-1],rows[-6]
@@ -234,6 +264,8 @@ def render(rows,decision,now,sample=False):
     measured=LEVELS[latest["rank"]]
     applied=LEVELS[decision["rank"]]
     d=direction_overview(rows)
+    cp_bucket,cp_band=spread_bucket("cp_cd",latest["cp_cd"])
+    aa_bucket,aa_band=spread_bucket("credit",latest["credit"])
     date=dt.datetime.strptime(latest["date"],"%Y%m%d").strftime("%Y-%m-%d")
     diff1=lambda key:latest[key]-prev[key]
     diff5=lambda key:latest[key]-week[key]
@@ -256,11 +288,12 @@ def render(rows,decision,now,sample=False):
         "<b>① 핵심 신용스프레드</b>",
         "CP(기업어음: 기업의 단기 자금조달)",
         "CD(양도성예금증서: 은행의 단기 자금조달)",
-        f"CP–CD <b>{latest['cp_cd']:.1f}bp</b> {d['cp'][1]} {d['cp'][2]}",
+        f"CP–CD <b>{latest['cp_cd']:.1f}bp</b> [{cp_bucket}: {cp_band}] {d['cp'][1]} {d['cp'][2]}",
         f"  전일 {signed(diff1('cp_cd'))} / 5일 {signed(diff5('cp_cd'))}bp",
-        f"AA- 회사채–국고채 <b>{latest['credit']:.1f}bp</b> {d['aa'][1]} {d['aa'][2]}",
+        f"AA- 회사채–국고채 <b>{latest['credit']:.1f}bp</b> [{aa_bucket}: {aa_band}] {d['aa'][1]} {d['aa'][2]}",
         f"  전일 {signed(diff1('credit'))} / 5일 {signed(diff5('credit'))}bp",
-        "",
+        "CP–CD 구간(bp): "+spread_legend("cp_cd"),
+        "AA- 구간(bp): "+spread_legend("credit"),
         "<b>② 실제 금리 (연% · 전일/5일 변화)</b>",
     ]
     for kind,short in (("cp","CP 91일"),("cd","CD 91일"),
@@ -268,7 +301,6 @@ def render(rows,decision,now,sample=False):
         lines.append(f"{short} {latest['rates'][kind]:.3f}% | "
                      f"{signed(rate_delta(kind,prev))}/{signed(rate_delta(kind,week))}bp")
     lines += [
-        "",
         "<b>③ 다음 경계</b>",
         next_boundary(latest)
     ]
