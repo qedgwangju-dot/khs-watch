@@ -8232,7 +8232,7 @@ MICRODUCK_OCT26_EVENT={
         "2026-10-26 로보티즈 서울 본사에서 Pollen Robotics와 MicroDuck "
         "액추에이터 XL330 공급·조달 계약 체결식을 진행. "
         "초기 고객 요청 로봇 50000대×관절 구동기 15개=750000개 소요. "
-        "시장 보도에 약 35억원이 언급됐으나 공식 계약서·공시에서 확인되지 않은 미확정 참고치다. 이는 계약·조달 협력 발표이며 "
+        "2026-10-27 한화투자증권은 액추에이터 개당 26400원 가정으로 750000개×26400원=198억원(약 200억원) 잠재 공급액을 추정했다. 이는 회사 확정 계약금액이 아니고 실제 납품단가·발주서 확인 전이다. 계약·조달 협력 발표로서 "
         "750000개 전량의 구속력 있는 취소불가 발주, 기출하·기인식 매출이 아님. "
         "실제 확정 발주서 물량·평균판매단가·선수금·납품 시점은 별도 확인. "
         "로보티즈 측은 공급능력 증강을 추진하며 2027년 2~3분기 "
@@ -8282,14 +8282,14 @@ def _md_key(item:dict)->str:
     return _md_prev_key(item)
 
 def _md_category(text:str,group:str)->str:
-    if group==_MD_GROUP and "750000개" in text and "35억원" in text and "공급계약 체결" in text:
+    if group==_MD_GROUP and "750000개" in text and "198억원" in text and "공급계약 체결" in text:
         return _MD_CAT
     return _md_prev_category(text,group)
 
 def _md_meaning(cat:str)->str:
     if cat==_MD_CAT:
         return ("MicroDuck 로봇 5만대에 XL330 15개씩 초기 75만개 조달 수요가 "
-                "실제 양사 공급계약 체결로 진전했습니다. 보도된 약 35억원은 "
+                "실제 양사 공급계약 체결로 진전했습니다. 증권사 가정에 따른 약 198억원은 "
                 "납품 완료 매출이 아니며 발주서·인도·검수·매출인식을 구분합니다.")
     return _md_prev_meaning(cat)
 
@@ -8302,7 +8302,7 @@ def _md_risk(cat:str)->str:
 
 def _md_verification(item:dict,group:str,text:str)->str:
     if item.get("microduck_oct26_verified"):
-        return ("2026-10-26 현장 계약식·당사자 발언, 뉴스핌·조선비즈 "
+        return ("2026-10-26 현장 계약식·당사자 발언, 뉴스핌·조선비즈와 2026-10-27 한화투자증권 추정치 "
                 "교차확인; 구속력 발주서·기출하·매출인식은 아직 별도 검증")
     return _md_prev_verify(item,group,text)
 
