@@ -63624,6 +63624,26 @@
       "telegram_core_fact": "TI는 21일(현지시간) 3분기 매출이 60억5500만달러로 전년비 28% 증가했다고 밝혔다.",
       "title": "TI, 3분기 매출 60억달러 돌파… 데이터센터·산업용 수요 회복 확인"
     },
+    "core:8e9edc507061493e9b048011": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842645",
+      "source": "뉴시스",
+      "source_body_digest": "65c942c8d82e482c8c9d747ec82cda1ed726de1aaec265f49af63e6bb72efd49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5c063a47147f8398ee044363c6b194c98b5c23a21a782357030cb8d2f8b6c11",
+      "source_fact_keys": [
+        "source_fact:v1:a6bd95ce0f5b1e021ed88667b55cdb55484ccddd2fccf483cd3f4d54d6a9d409"
+      ],
+      "source_published_kst": "2026-10-27T11:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\"",
+      "telegram_core_fact": "LG에너지솔루션이 북미에 이어 유럽에서도 에너지저장장치(ESS) 배터리 수주 확대를 본격화한다. 인공지능(AI) 데이터센터 확대, 재생에너지 확장 등과 연계한 ESS 수요에 적극 대응하며 관련 수주를 확대하고 있다는 분석이 나온다.",
+      "title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\""
+    },
     "core:8eaa38ba1b9ecd2704d1b8d2": {
       "first_seen_kst": "2026-10-25T09:55:02+09:00",
       "lanes": {
@@ -64096,6 +64116,28 @@
       "source_title": "패스워드 파이낸셜, 4분기 희석 EPS 1.85달러·9.5%↑..부실자산 4%로 확대",
       "telegram_core_fact": "이번 실적은 수수료 수익 확대와 비용 절감, 자사주 매입으로 주당 이익이 개선된 반면 순이자이익 감소와 신재생에너지 프로젝트 관련 부실자산 확대라는 부담이 공존하는 내용이다.",
       "title": "패스워드 파이낸셜, 4분기 희석 EPS 1.85달러·9.5%↑..부실자산 4%로 확대"
+    },
+    "core:8fc7042d6a7e6fce4e1793f1": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.hankyung.com/article/2026102765546",
+      "source": "한국경제",
+      "source_body_digest": "e17af71dfbb03172313a7fec8f2c4895a3d397f9cdf9ebd7c1adf3b47196d1bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f00245635610009551f75dda649780d0fc27ec3fcbdda8dacc2e9057dafadc1",
+      "source_fact_keys": [
+        "source_fact:v1:1088a1c41ae49ab4e50cf4cc05763d6c2215f3ff3cdae45b8e78376b56d6abb9",
+        "source_fact:v1:1936efe2c1b5c55d61f00bd3a8bac3072f3151dbf6e3c9576e75770d44b7e46d",
+        "source_fact:v1:c448c0b8cd4aaa7929e2cbf4cae7d23f26fb5769483561c2af7d5e0b0c1c8b83"
+      ],
+      "source_published_kst": "2026-10-27T07:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\"",
+      "telegram_core_fact": "안 연구원은 \"밸류에이션(실적대비 주가 수준), 주주환원수익률, 증시 거래대금 회전율 등을 통해 펀더멘털(기초체력)에 기반한 주가가 바닥권에 충분히 가까워졌음을 추론해볼 수 있다\"며 \"향후 증시와 거래대금 회전율이 재상승하는 모습을 보인다면 반등을 기대해볼 수 있다\"고 말했다.",
+      "title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\""
     },
     "core:8fc79d41fd1d45d35f875c83": {
       "first_seen_kst": "2026-10-17T00:21:55+09:00",
@@ -66086,6 +66128,26 @@
       "source_title": "“주가 떨어져야 더 받는다?”…삼성 직원 글에 주주들 ‘부글부글’- 매경ECONOMY",
       "telegram_core_fact": "삼성전자 주가가 지난 15일 하루 만에 9% 이상 내린 가운데 일부 직원으로 추정되는 이들이 주가가 떨어져야 이득이라는 글을 올려 갑론을박이 벌어졌다. 삼성전자 노사는 올해 DS부문 영업이익의 10.5%를 재원으로 내년 3월 말에서 4월 초 사이 성과급을 추가 지급할 예정이다.",
       "title": "“주가 떨어져야 더 받는다?”…삼성 직원 글에 주주들 ‘부글부글’- 매경ECONOMY"
+    },
+    "core:94aadbdee044f4cc852f8ed1": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842045",
+      "source": "뉴시스",
+      "source_body_digest": "81f45924ef23a96a0cbb4ad0d23570af000c0aa4400ebad07c8a792fa5b0cd18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:538d04d6ed88bf23f9c2da356cbe390e211ff836c83062954e56b1ec81610ed1",
+      "source_fact_keys": [
+        "source_fact:v1:fde77638f25cc222a141f125aa43df38e2ce2a8c0c4897294830a947f3c89752"
+      ],
+      "source_published_kst": "2026-10-27T07:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "션, 사업 200억 매출에도 부자 못 된 이유 고백",
+      "telegram_core_fact": "그룹 지누션 출신 가수 션이 연 매출 200억원을 기록했던 의류 사업과 코스닥 상장이 무산된 사연을 공개했다.",
+      "title": "션, 사업 200억 매출에도 부자 못 된 이유 고백"
     },
     "core:94b60f02680907b2cb0a290f": {
       "first_seen_kst": "2026-10-21T11:24:12+09:00",
@@ -71496,6 +71558,24 @@
       "source_title": "유안타證 \"LIG D&A, 4분기 신규 수주 가속화\"",
       "telegram_core_fact": "백 연구원은 \"4분기부터는 상반기 부진했던 수주 흐름이 본격적으로 반전될 전망\"이라며 \"국내에서는 1조9000억원 장거리공대공 체계개발 사업 우선협상대상자로 선정돼 12월 최종 계약 체결이 예상된다\"고 분석했다.",
       "title": "유안타證 \"LIG D&A, 4분기 신규 수주 가속화\""
+    },
+    "core:a1b67081d64aae2c037b86a3": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645617184",
+      "source": "이데일리",
+      "source_body_digest": "f4d1209ee605c127859333681dc35433c21574d4bde3255a472314a1f90365c1",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T07:38+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 5개월 새 64% 급감…“증권주 반등 기대”",
+      "telegram_core_fact": "거래대금이 최고치를 기록했던 지난 5월 106조 2000억원과 비교하면 64% 급감했다. 국내 증시 거래대금이 5개월 연속 감소하며 지난 5월 고점 대비 60% 넘게 급감했다.",
+      "title": "증시 거래대금 5개월 새 64% 급감…“증권주 반등 기대”"
     },
     "core:a1b7479ea67c26a0abd10d6d": {
       "first_seen_kst": "2026-10-19T06:02:38+09:00",
@@ -91948,6 +92028,35 @@
       "source_title": "서울시, 테헤란로서 스타트업 투자 도울 벤처투자사 등 9곳 모집 | 연합뉴스",
       "telegram_core_fact": "서울시는 강남구 테헤란로의 '서울창업허브 스케일업센터'에 입주해 유망 스타트업 발굴과 투자유치를 지원할 전문 투자기관 9곳을 다음 달 2일까지 모집한다고 26일 밝혔다. 김현우 서울시 경제실장은 \"전문 투자기관과의 협력을 강화해 서울의 유망 스타트업이 더 많은 투자유치와 성장 기회를 얻도록 지원하겠다\"고 말했다.",
       "title": "서울시, 테헤란로서 스타트업 투자 도울 벤처투자사 등 9곳 모집 | 연합뉴스"
+    },
+    "core:d031b017fd63fa2a4942e1d6": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
     },
     "core:d04a547b28988102b15e1cbd": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -145669,6 +145778,28 @@
       "telegram_core_fact": "이란 측은 상선과 에너지 시설을 넘어 데이터센터와 해저 인터넷 케이블까지 공격 대상을 확대할 수 있다고 경고했다.",
       "title": "\"美·이스라엘, 중간선거 후 이란 공격 준비\"…곡괭이산·핵시설 때리나"
     },
+    "fact:0f682d0b46d040109332754d": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.hankyung.com/article/2026102765546",
+      "source": "한국경제",
+      "source_body_digest": "e17af71dfbb03172313a7fec8f2c4895a3d397f9cdf9ebd7c1adf3b47196d1bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f00245635610009551f75dda649780d0fc27ec3fcbdda8dacc2e9057dafadc1",
+      "source_fact_keys": [
+        "source_fact:v1:1088a1c41ae49ab4e50cf4cc05763d6c2215f3ff3cdae45b8e78376b56d6abb9",
+        "source_fact:v1:1936efe2c1b5c55d61f00bd3a8bac3072f3151dbf6e3c9576e75770d44b7e46d",
+        "source_fact:v1:c448c0b8cd4aaa7929e2cbf4cae7d23f26fb5769483561c2af7d5e0b0c1c8b83"
+      ],
+      "source_published_kst": "2026-10-27T07:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\"",
+      "telegram_core_fact": "안 연구원은 \"밸류에이션(실적대비 주가 수준), 주주환원수익률, 증시 거래대금 회전율 등을 통해 펀더멘털(기초체력)에 기반한 주가가 바닥권에 충분히 가까워졌음을 추론해볼 수 있다\"며 \"향후 증시와 거래대금 회전율이 재상승하는 모습을 보인다면 반등을 기대해볼 수 있다\"고 말했다.",
+      "title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\""
+    },
     "fact:0f78c04f619d7a4156e9f1a2": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
       "lanes": {
@@ -168312,6 +168443,26 @@
       "source_title": "정부 \"석유정제제품 對러 수출통제 품목 아냐…전략물자 수출은 전면 불허\"",
       "telegram_core_fact": "정부는 8일 한국이 러시아에 석유 제품을 공급했다는 영국 가디언의 보도와 관련해 수출통제 대상에 해당하지 않는 것은 물론 경유 등 한국산 연료의 수출여부도 확인된 사실이 아니라고 반박했다.",
       "title": "정부 \"석유정제제품 對러 수출통제 품목 아냐…전략물자 수출은 전면 불허\""
+    },
+    "fact:40a48948ce63acfaabb4a115": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842045",
+      "source": "뉴시스",
+      "source_body_digest": "81f45924ef23a96a0cbb4ad0d23570af000c0aa4400ebad07c8a792fa5b0cd18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:538d04d6ed88bf23f9c2da356cbe390e211ff836c83062954e56b1ec81610ed1",
+      "source_fact_keys": [
+        "source_fact:v1:fde77638f25cc222a141f125aa43df38e2ce2a8c0c4897294830a947f3c89752"
+      ],
+      "source_published_kst": "2026-10-27T07:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "션, 사업 200억 매출에도 부자 못 된 이유 고백",
+      "telegram_core_fact": "그룹 지누션 출신 가수 션이 연 매출 200억원을 기록했던 의류 사업과 코스닥 상장이 무산된 사연을 공개했다.",
+      "title": "션, 사업 200억 매출에도 부자 못 된 이유 고백"
     },
     "fact:40a67a27a8f3bf844a28a85b": {
       "first_seen_kst": "2026-10-21T02:41:49+09:00",
@@ -208904,6 +209055,35 @@
       ],
       "source_published_kst": "2026-10-06T14:22+09:00",
       "title": "한은 \"IMF 제도 개편, 한국 경상수지 평가에 불리\""
+    },
+    "fact:958f354eb53c9b7e2d38c823": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
     },
     "fact:95a86289bcc467dab7025695": {
       "first_seen_kst": "2026-10-19T05:12:02+09:00",
@@ -254399,6 +254579,26 @@
       "telegram_core_fact": "국세청은 쿠팡이 로켓그로스 확대와 유료 회원 서비스인 ‘와우(WOW)’ 멤버십 가입을 유도하기 위한 대규모 할인 행사 등을 추진하는 과정에서 발생한 손실을 줄이기 위해 쿠팡풀필먼트서비스와 세금계산서를 허위로 주고 받은 것으로 의심하고 있다.",
       "title": "[단독] 중수청 조세범칙 1호 사건은 '쿠팡'…국세청 고발"
     },
+    "fact:f203a5ad9594328949dbc0e1": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842645",
+      "source": "뉴시스",
+      "source_body_digest": "65c942c8d82e482c8c9d747ec82cda1ed726de1aaec265f49af63e6bb72efd49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5c063a47147f8398ee044363c6b194c98b5c23a21a782357030cb8d2f8b6c11",
+      "source_fact_keys": [
+        "source_fact:v1:a6bd95ce0f5b1e021ed88667b55cdb55484ccddd2fccf483cd3f4d54d6a9d409"
+      ],
+      "source_published_kst": "2026-10-27T11:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\"",
+      "telegram_core_fact": "LG에너지솔루션이 북미에 이어 유럽에서도 에너지저장장치(ESS) 배터리 수주 확대를 본격화한다. 인공지능(AI) 데이터센터 확대, 재생에너지 확장 등과 연계한 ESS 수요에 적극 대응하며 관련 수주를 확대하고 있다는 분석이 나온다.",
+      "title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\""
+    },
     "fact:f21535ecce8cd17eb00d91cd": {
       "first_seen_kst": "2026-10-19T08:00:35+09:00",
       "lanes": {
@@ -256859,6 +257059,28 @@
       ],
       "source_published_kst": "2026-10-05T17:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "fact:f7726a8dd8617cbcaeb44e9b": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645617184",
+      "source": "이데일리",
+      "source_body_digest": "686cc43cf56b545929a8bef5c3fd0ad5de1a83e6f9a31d3b5c76c91fc4a9a358",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d4f6a4a9319b54136bdba982fabdbc8e76e07edd6fd051e46427e7d9bf80fe6",
+      "source_fact_keys": [
+        "source_fact:v1:06854515ca4280d3cd9972eeafd7f4df4fd8d62a89296c4da79aa72b663457a1",
+        "source_fact:v1:0a6047357a380ae47d61eddd536b61f5aa38869e45db586546cd3182a50d08b0",
+        "source_fact:v1:48c73344bc55adaa0e823f2729aac56f47ba1bc462e256f2bdc5570d4cd9c342"
+      ],
+      "source_published_kst": "2026-10-27T10:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만",
+      "telegram_core_fact": "코스피가 5.05% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만"
     },
     "fact:f78e6be8cba2a668930d2628": {
       "first_seen_kst": "2026-10-19T19:03:47+09:00",
@@ -286499,6 +286721,26 @@
       "telegram_core_fact": "서울 여의도 ABL타워 인수 우선협상대상자로 코람코자산신탁이 선정됐다.",
       "title": "코람코자산신탁, 여의도 ABL타워 인수 우선협상대상자로 선정 | 연합뉴스"
     },
+    "link:29de8cc075a9e2607b299398": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842045",
+      "source": "뉴시스",
+      "source_body_digest": "81f45924ef23a96a0cbb4ad0d23570af000c0aa4400ebad07c8a792fa5b0cd18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:538d04d6ed88bf23f9c2da356cbe390e211ff836c83062954e56b1ec81610ed1",
+      "source_fact_keys": [
+        "source_fact:v1:fde77638f25cc222a141f125aa43df38e2ce2a8c0c4897294830a947f3c89752"
+      ],
+      "source_published_kst": "2026-10-27T07:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "션, 사업 200억 매출에도 부자 못 된 이유 고백",
+      "telegram_core_fact": "그룹 지누션 출신 가수 션이 연 매출 200억원을 기록했던 의류 사업과 코스닥 상장이 무산된 사연을 공개했다.",
+      "title": "션, 사업 200억 매출에도 부자 못 된 이유 고백"
+    },
     "link:29f4d166c97d8078854029af": {
       "first_seen_kst": "2026-09-28T13:07:46+09:00",
       "lanes": {
@@ -286974,6 +287216,24 @@
       "source_title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’",
       "telegram_core_fact": "영국 경쟁당국이 마이크로소프트(MSFT)의 기업용 소프트웨어 시장 지배력에 대한 규제 강화에 나섰다.",
       "title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’"
+    },
+    "link:2a8227cf506ecfcc0098451f": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645617184",
+      "source": "이데일리",
+      "source_body_digest": "f4d1209ee605c127859333681dc35433c21574d4bde3255a472314a1f90365c1",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T07:38+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 5개월 새 64% 급감…“증권주 반등 기대”",
+      "telegram_core_fact": "거래대금이 최고치를 기록했던 지난 5월 106조 2000억원과 비교하면 64% 급감했다. 국내 증시 거래대금이 5개월 연속 감소하며 지난 5월 고점 대비 60% 넘게 급감했다.",
+      "title": "증시 거래대금 5개월 새 64% 급감…“증권주 반등 기대”"
     },
     "link:2a82a2164901b9f6b02b6ff8": {
       "first_seen_kst": "2026-10-20T16:54:02+09:00",
@@ -321162,6 +321422,24 @@
       "telegram_core_fact": "박석길 이코노미스트는 11월 인상에 이어 내년 1분기·2분기 0.25%p씩 인상해 최종 금리가 3.75%가 될 것으로 예상했다.",
       "title": "\"10월 넘기고 11월에\"…전문가들, 금리 인상 '숨고르기' 전망 | 연합뉴스"
     },
+    "link:61aa09a548defbd3580fe2e3": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640307",
+      "source": "이투데이",
+      "source_body_digest": "7cc4c033dc276e856ab3f4db693520014f47722210dabafe745a9e3f327a9d72",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "고개 든 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국제 금값이 유가 하락과 저가 매수세에 힘입어 반등했다.",
+      "title": "고개 든 국제 금값…국내 금시세는?"
+    },
     "link:61b7811920d877130009d1fd": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
       "lanes": {
@@ -331174,6 +331452,35 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "거제·통영 호우피해 中企·소상공인 정책자금 우대…금리 1.5%로 인하"
     },
+    "link:71eb3fac1ebcf9bef379f72b": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
+    },
     "link:71fcc3629c5a62576f111a1f": {
       "first_seen_kst": "2026-10-21T13:24:59+09:00",
       "lanes": {
@@ -332717,6 +333024,28 @@
       "source_title": "R&D 인력 30% 투입한 中 YMTC…낸드 점유율 20% 정조준",
       "telegram_core_fact": "독자 적층 기술을 앞세워 낸드 시장 점유율을 20%까지 확대하는 동시에 D램 시장 진출도 추진하면서 삼성전자와 SK하이닉스 등 국내 메모리 업체들과의 경쟁이 한층 치열해질 전망이다.",
       "title": "R&D 인력 30% 투입한 中 YMTC…낸드 점유율 20% 정조준"
+    },
+    "link:74b5efa03afbdd2766131e63": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.hankyung.com/article/2026102765546",
+      "source": "한국경제",
+      "source_body_digest": "e17af71dfbb03172313a7fec8f2c4895a3d397f9cdf9ebd7c1adf3b47196d1bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f00245635610009551f75dda649780d0fc27ec3fcbdda8dacc2e9057dafadc1",
+      "source_fact_keys": [
+        "source_fact:v1:1088a1c41ae49ab4e50cf4cc05763d6c2215f3ff3cdae45b8e78376b56d6abb9",
+        "source_fact:v1:1936efe2c1b5c55d61f00bd3a8bac3072f3151dbf6e3c9576e75770d44b7e46d",
+        "source_fact:v1:c448c0b8cd4aaa7929e2cbf4cae7d23f26fb5769483561c2af7d5e0b0c1c8b83"
+      ],
+      "source_published_kst": "2026-10-27T07:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\"",
+      "telegram_core_fact": "안 연구원은 \"밸류에이션(실적대비 주가 수준), 주주환원수익률, 증시 거래대금 회전율 등을 통해 펀더멘털(기초체력)에 기반한 주가가 바닥권에 충분히 가까워졌음을 추론해볼 수 있다\"며 \"향후 증시와 거래대금 회전율이 재상승하는 모습을 보인다면 반등을 기대해볼 수 있다\"고 말했다.",
+      "title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\""
     },
     "link:74c596d61af8a9c7e4746d15": {
       "first_seen_kst": "2026-10-13T06:17:31+09:00",
@@ -388067,6 +388396,28 @@
       "telegram_core_fact": "컴테크 커뮤니케이션(CMTL)은 7월 31일 종료된 2026 회계연도 4분기(계속사업 기준) 매출액이 6620만 달러로 전년비 12.1% 감소했으나, 조정 EBITDA(비GAAP)는 920만 달러로 22.3% 증가했다고 10월 14일 발표했다.",
       "title": "컴테크 커뮤니케이션, 4분기 조정 EBITDA 920만달러..22% 증가"
     },
+    "link:ce349c5032455691f837ea79": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645617184",
+      "source": "이데일리",
+      "source_body_digest": "686cc43cf56b545929a8bef5c3fd0ad5de1a83e6f9a31d3b5c76c91fc4a9a358",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d4f6a4a9319b54136bdba982fabdbc8e76e07edd6fd051e46427e7d9bf80fe6",
+      "source_fact_keys": [
+        "source_fact:v1:06854515ca4280d3cd9972eeafd7f4df4fd8d62a89296c4da79aa72b663457a1",
+        "source_fact:v1:0a6047357a380ae47d61eddd536b61f5aa38869e45db586546cd3182a50d08b0",
+        "source_fact:v1:48c73344bc55adaa0e823f2729aac56f47ba1bc462e256f2bdc5570d4cd9c342"
+      ],
+      "source_published_kst": "2026-10-27T10:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만",
+      "telegram_core_fact": "코스피가 5.05% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만"
+    },
     "link:ce38773992c4f20282b5a6e1": {
       "first_seen_kst": "2026-10-19T23:09:43+09:00",
       "lanes": {
@@ -413625,6 +413976,26 @@
       "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
       "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
     },
+    "link:fb0adbc22a8f459dfeeaa4bc": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842645",
+      "source": "뉴시스",
+      "source_body_digest": "65c942c8d82e482c8c9d747ec82cda1ed726de1aaec265f49af63e6bb72efd49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5c063a47147f8398ee044363c6b194c98b5c23a21a782357030cb8d2f8b6c11",
+      "source_fact_keys": [
+        "source_fact:v1:a6bd95ce0f5b1e021ed88667b55cdb55484ccddd2fccf483cd3f4d54d6a9d409"
+      ],
+      "source_published_kst": "2026-10-27T11:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\"",
+      "telegram_core_fact": "LG에너지솔루션이 북미에 이어 유럽에서도 에너지저장장치(ESS) 배터리 수주 확대를 본격화한다. 인공지능(AI) 데이터센터 확대, 재생에너지 확장 등과 연계한 ESS 수요에 적극 대응하며 관련 수주를 확대하고 있다는 분석이 나온다.",
+      "title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\""
+    },
     "link:fb1737040651410c9daa9069": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
       "lanes": {
@@ -427458,6 +427829,35 @@
       "telegram_core_fact": "시지바이오는 칼슘 하이드록시아파타이트(CaHA) 기반 필러 ‘페이스템’(FACETEM)이 대만 식품의약품청(TFDA)으로부터 의료기기 품목허가를 획득했다고 13일 밝혔다. 현지 파트너와 제품 공급 및 의료진 교육을 추진하고, 향후 3년간 대만에서 누적 공급매출 50억원 이상을 달성하는 것이 목표다.",
       "title": "시지바이오 필러 '페이스템', 대만 품목허가 획득"
     },
+    "original:12c16c52317fcf7a0e72402c": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
+    },
     "original:12cd39b2848e7bd9fb22f9eb": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
       "lanes": {
@@ -433006,6 +433406,28 @@
       "source_published_kst": "2026-10-05T17:20+09:00",
       "title": "리사 수 AMD 회장 7개월 만에 방한…'AI 동맹' 넓히나(종합) | 연합뉴스"
     },
+    "original:1c764f2ad4fb9ed530f0c1db": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645617184",
+      "source": "이데일리",
+      "source_body_digest": "686cc43cf56b545929a8bef5c3fd0ad5de1a83e6f9a31d3b5c76c91fc4a9a358",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d4f6a4a9319b54136bdba982fabdbc8e76e07edd6fd051e46427e7d9bf80fe6",
+      "source_fact_keys": [
+        "source_fact:v1:06854515ca4280d3cd9972eeafd7f4df4fd8d62a89296c4da79aa72b663457a1",
+        "source_fact:v1:0a6047357a380ae47d61eddd536b61f5aa38869e45db586546cd3182a50d08b0",
+        "source_fact:v1:48c73344bc55adaa0e823f2729aac56f47ba1bc462e256f2bdc5570d4cd9c342"
+      ],
+      "source_published_kst": "2026-10-27T10:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만",
+      "telegram_core_fact": "코스피가 5.05% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만"
+    },
     "original:1c7f62d3a8e797dda48dd1f9": {
       "first_seen_kst": "2026-10-14T12:34:00+09:00",
       "lanes": {
@@ -433317,6 +433739,24 @@
       "source_title": "\"2028년까지 주문 못 따라간다\"…ASML, AI 반도체 장비 공급난",
       "telegram_core_fact": "ASML 4분기 매출은 8000억원 전망입니다.",
       "title": "\"2028년까지 주문 못 따라간다\"…ASML, AI 반도체 장비 공급난"
+    },
+    "original:1ce6a1e102a2843173ef781e": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645617184",
+      "source": "이데일리",
+      "source_body_digest": "f4d1209ee605c127859333681dc35433c21574d4bde3255a472314a1f90365c1",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T07:38+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 5개월 새 64% 급감…“증권주 반등 기대”",
+      "telegram_core_fact": "거래대금이 최고치를 기록했던 지난 5월 106조 2000억원과 비교하면 64% 급감했다. 국내 증시 거래대금이 5개월 연속 감소하며 지난 5월 고점 대비 60% 넘게 급감했다.",
+      "title": "증시 거래대금 5개월 새 64% 급감…“증권주 반등 기대”"
     },
     "original:1cefa5fe85864f55b272165e": {
       "first_seen_kst": "2026-10-17T05:25:35+09:00",
@@ -439479,6 +439919,26 @@
       "source_title": "박현숙 세포바이오 대표 “국내 2상 넘어 日 임상 준비…파트너와 공동개발 논의”[바이오재팬 2026]",
       "telegram_core_fact": "박 대표는 “마스터·워킹 셀뱅크와 제조·품질관리(CMC) 기술, 국내 우수의약품제조및품질관리기준(GMP) 센터를 통해 임상·상업용 동결 완제품을 을괄 생산 및 공급한다”며 “반면 일본 파트너사는 현지 임상 네트워크를 기반으로 PMDA 임상시험 진행과 의약품·조건부 품목허가 및 유통망 구축을 전담하게 된다”고 말했다.",
       "title": "박현숙 세포바이오 대표 “국내 2상 넘어 日 임상 준비…파트너와 공동개발 논의”[바이오재팬 2026]"
+    },
+    "original:26d4e46be6e0fbcdb5c3a477": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842045",
+      "source": "뉴시스",
+      "source_body_digest": "81f45924ef23a96a0cbb4ad0d23570af000c0aa4400ebad07c8a792fa5b0cd18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:538d04d6ed88bf23f9c2da356cbe390e211ff836c83062954e56b1ec81610ed1",
+      "source_fact_keys": [
+        "source_fact:v1:fde77638f25cc222a141f125aa43df38e2ce2a8c0c4897294830a947f3c89752"
+      ],
+      "source_published_kst": "2026-10-27T07:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "션, 사업 200억 매출에도 부자 못 된 이유 고백",
+      "telegram_core_fact": "그룹 지누션 출신 가수 션이 연 매출 200억원을 기록했던 의류 사업과 코스닥 상장이 무산된 사연을 공개했다.",
+      "title": "션, 사업 200억 매출에도 부자 못 된 이유 고백"
     },
     "original:26e351a0d3ba9af1f36d2a1d": {
       "first_seen_kst": "2026-10-21T18:59:41+09:00",
@@ -507265,6 +507725,26 @@
       "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
       "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
     },
+    "original:96d1d2f17066e98e7dbd2205": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842645",
+      "source": "뉴시스",
+      "source_body_digest": "65c942c8d82e482c8c9d747ec82cda1ed726de1aaec265f49af63e6bb72efd49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5c063a47147f8398ee044363c6b194c98b5c23a21a782357030cb8d2f8b6c11",
+      "source_fact_keys": [
+        "source_fact:v1:a6bd95ce0f5b1e021ed88667b55cdb55484ccddd2fccf483cd3f4d54d6a9d409"
+      ],
+      "source_published_kst": "2026-10-27T11:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\"",
+      "telegram_core_fact": "LG에너지솔루션이 북미에 이어 유럽에서도 에너지저장장치(ESS) 배터리 수주 확대를 본격화한다. 인공지능(AI) 데이터센터 확대, 재생에너지 확장 등과 연계한 ESS 수요에 적극 대응하며 관련 수주를 확대하고 있다는 분석이 나온다.",
+      "title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\""
+    },
     "original:96d4eb7c69cd52773772f448": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
       "lanes": {
@@ -510856,6 +511336,28 @@
       "source_title": "이소영 중기장관 \"'납품대금 연동제' 제재 약해…실효성 부족\" | 연합뉴스",
       "telegram_core_fact": "이 장관은 \"발동 요건에 대한 제도 보완과 제재나 계약에서의 자동 적용 제도까지 포함해서 납품 대금 연동제에 대해서는 전체적인 검토를 다시 하겠다\"며 \"일본의 관련 제도는 법적인 구속력이 없는 권고적인 제도지만, 정부가 가격 지표를 공표하는 부분 등 벤치마킹할 수 있는 부분은 그렇게 하겠다\"고 말했다.",
       "title": "이소영 중기장관 \"'납품대금 연동제' 제재 약해…실효성 부족\" | 연합뉴스"
+    },
+    "original:9c7e5c4b1b5613f5d5a17b68": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.hankyung.com/article/2026102765546",
+      "source": "한국경제",
+      "source_body_digest": "e17af71dfbb03172313a7fec8f2c4895a3d397f9cdf9ebd7c1adf3b47196d1bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f00245635610009551f75dda649780d0fc27ec3fcbdda8dacc2e9057dafadc1",
+      "source_fact_keys": [
+        "source_fact:v1:1088a1c41ae49ab4e50cf4cc05763d6c2215f3ff3cdae45b8e78376b56d6abb9",
+        "source_fact:v1:1936efe2c1b5c55d61f00bd3a8bac3072f3151dbf6e3c9576e75770d44b7e46d",
+        "source_fact:v1:c448c0b8cd4aaa7929e2cbf4cae7d23f26fb5769483561c2af7d5e0b0c1c8b83"
+      ],
+      "source_published_kst": "2026-10-27T07:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\"",
+      "telegram_core_fact": "안 연구원은 \"밸류에이션(실적대비 주가 수준), 주주환원수익률, 증시 거래대금 회전율 등을 통해 펀더멘털(기초체력)에 기반한 주가가 바닥권에 충분히 가까워졌음을 추론해볼 수 있다\"며 \"향후 증시와 거래대금 회전율이 재상승하는 모습을 보인다면 반등을 기대해볼 수 있다\"고 말했다.",
+      "title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\""
     },
     "original:9c95b27a352c04e0dbbeb5c4": {
       "first_seen_kst": "2026-10-05T10:39:16+09:00",
@@ -518609,6 +519111,24 @@
       "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
       "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
       "title": "엠엑스온, 전사 공급망 관리 체계 구축"
+    },
+    "original:a96bbc70b3d7c8d1afddf478": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640307",
+      "source": "이투데이",
+      "source_body_digest": "7cc4c033dc276e856ab3f4db693520014f47722210dabafe745a9e3f327a9d72",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "고개 든 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국제 금값이 유가 하락과 저가 매수세에 힘입어 반등했다.",
+      "title": "고개 든 국제 금값…국내 금시세는?"
     },
     "original:a970ef5ac1caa531da2cea69": {
       "first_seen_kst": "2026-10-23T13:50:43+09:00",
@@ -572109,6 +572629,28 @@
       "source_title": "영풍·MBK, 고려아연 상대 주주대표소송 1심 패소",
       "telegram_core_fact": "서울중앙지법 민사합의30부(김석범 부장판사)는 22일 영풍이 최윤범 고려아연 회장을 비롯한 고려아연 이사들을 상대로 약 8370억 손해를 배상하라며 제기한 주주대표소송에서 원고 패소로 판결했다. 영풍이 고려아연 자기주식 공개매수와 일반공모 유상증자를 결의한 이사들을 상대로 소송을 제기했으나 패소했다.",
       "title": "영풍·MBK, 고려아연 상대 주주대표소송 1심 패소"
+    },
+    "source_fact:01591c68593bfd768aa1a754": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.hankyung.com/article/2026102765546",
+      "source": "한국경제",
+      "source_body_digest": "e17af71dfbb03172313a7fec8f2c4895a3d397f9cdf9ebd7c1adf3b47196d1bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f00245635610009551f75dda649780d0fc27ec3fcbdda8dacc2e9057dafadc1",
+      "source_fact_keys": [
+        "source_fact:v1:1088a1c41ae49ab4e50cf4cc05763d6c2215f3ff3cdae45b8e78376b56d6abb9",
+        "source_fact:v1:1936efe2c1b5c55d61f00bd3a8bac3072f3151dbf6e3c9576e75770d44b7e46d",
+        "source_fact:v1:c448c0b8cd4aaa7929e2cbf4cae7d23f26fb5769483561c2af7d5e0b0c1c8b83"
+      ],
+      "source_published_kst": "2026-10-27T07:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\"",
+      "telegram_core_fact": "안 연구원은 \"밸류에이션(실적대비 주가 수준), 주주환원수익률, 증시 거래대금 회전율 등을 통해 펀더멘털(기초체력)에 기반한 주가가 바닥권에 충분히 가까워졌음을 추론해볼 수 있다\"며 \"향후 증시와 거래대금 회전율이 재상승하는 모습을 보인다면 반등을 기대해볼 수 있다\"고 말했다.",
+      "title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\""
     },
     "source_fact:015dac4254ef98dd72c087c3": {
       "first_seen_kst": "2026-10-15T00:12:18+09:00",
@@ -627862,6 +628404,28 @@
       "telegram_core_fact": "K-푸드 전문기업 바이오포트는 최근 인수한 패밀리팜의 생산능력(CAPA)을 기존 대비 약 2.3배 확대하고 건강스낵 사업 확장에 속도를 낸다고 26일 밝혔다.",
       "title": "바이오포트, 패밀리팜 CAPA 증설…건강스낵 사업 확장 속도"
     },
+    "source_fact:17d4fff7c664f61f6b03a3db": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.hankyung.com/article/2026102765546",
+      "source": "한국경제",
+      "source_body_digest": "e17af71dfbb03172313a7fec8f2c4895a3d397f9cdf9ebd7c1adf3b47196d1bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f00245635610009551f75dda649780d0fc27ec3fcbdda8dacc2e9057dafadc1",
+      "source_fact_keys": [
+        "source_fact:v1:1088a1c41ae49ab4e50cf4cc05763d6c2215f3ff3cdae45b8e78376b56d6abb9",
+        "source_fact:v1:1936efe2c1b5c55d61f00bd3a8bac3072f3151dbf6e3c9576e75770d44b7e46d",
+        "source_fact:v1:c448c0b8cd4aaa7929e2cbf4cae7d23f26fb5769483561c2af7d5e0b0c1c8b83"
+      ],
+      "source_published_kst": "2026-10-27T07:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\"",
+      "telegram_core_fact": "안 연구원은 \"밸류에이션(실적대비 주가 수준), 주주환원수익률, 증시 거래대금 회전율 등을 통해 펀더멘털(기초체력)에 기반한 주가가 바닥권에 충분히 가까워졌음을 추론해볼 수 있다\"며 \"향후 증시와 거래대금 회전율이 재상승하는 모습을 보인다면 반등을 기대해볼 수 있다\"고 말했다.",
+      "title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\""
+    },
     "source_fact:17d75d9474ab77f120ae403b": {
       "first_seen_kst": "2026-10-17T04:08:20+09:00",
       "lanes": {
@@ -632097,6 +632661,28 @@
       "source_title": "서울 주택난 놓고 與 “오세훈 탓” vs 吳 “박원순 탓”(종합)",
       "telegram_core_fact": "서울 주택난을 놓고 오세훈 서울시장과 여당이 맞붙었다. 더불어민주당은 서울의 주택 공급 부족에 대한 책임이 오 시장에게 있다고 따졌고 오 시장은 고(故) 박원순 전 시장 시절 대규모 정비구역 해제가 원인이라고 반박했다.",
       "title": "서울 주택난 놓고 與 “오세훈 탓” vs 吳 “박원순 탓”(종합)"
+    },
+    "source_fact:1988753d81bae2701a29adb0": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645617184",
+      "source": "이데일리",
+      "source_body_digest": "686cc43cf56b545929a8bef5c3fd0ad5de1a83e6f9a31d3b5c76c91fc4a9a358",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d4f6a4a9319b54136bdba982fabdbc8e76e07edd6fd051e46427e7d9bf80fe6",
+      "source_fact_keys": [
+        "source_fact:v1:06854515ca4280d3cd9972eeafd7f4df4fd8d62a89296c4da79aa72b663457a1",
+        "source_fact:v1:0a6047357a380ae47d61eddd536b61f5aa38869e45db586546cd3182a50d08b0",
+        "source_fact:v1:48c73344bc55adaa0e823f2729aac56f47ba1bc462e256f2bdc5570d4cd9c342"
+      ],
+      "source_published_kst": "2026-10-27T10:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만",
+      "telegram_core_fact": "코스피가 5.05% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만"
     },
     "source_fact:198c2906d00e9eda9ee276f6": {
       "first_seen_kst": "2026-10-17T10:36:25+09:00",
@@ -742842,6 +743428,28 @@
       "telegram_core_fact": "임 의장은 최근 국민의힘 주도로 여야 의원 19명이 개정안을 공동 발의했다며 “전 세계가 자국 생산 지원과 고율 관세로 방파제를 쌓는 동안 우리는 안방 시장마저 내줄 위기에 처했다”고 강조했다.",
       "title": "국힘, 與에 “전기차 생산 지원법 11월 처리하자”"
     },
+    "source_fact:44f6d0336b53a1369aa8d7c3": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645617184",
+      "source": "이데일리",
+      "source_body_digest": "686cc43cf56b545929a8bef5c3fd0ad5de1a83e6f9a31d3b5c76c91fc4a9a358",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d4f6a4a9319b54136bdba982fabdbc8e76e07edd6fd051e46427e7d9bf80fe6",
+      "source_fact_keys": [
+        "source_fact:v1:06854515ca4280d3cd9972eeafd7f4df4fd8d62a89296c4da79aa72b663457a1",
+        "source_fact:v1:0a6047357a380ae47d61eddd536b61f5aa38869e45db586546cd3182a50d08b0",
+        "source_fact:v1:48c73344bc55adaa0e823f2729aac56f47ba1bc462e256f2bdc5570d4cd9c342"
+      ],
+      "source_published_kst": "2026-10-27T10:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만",
+      "telegram_core_fact": "코스피가 5.05% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만"
+    },
     "source_fact:44f8e4c4f7b7fa5600ca7de5": {
       "first_seen_kst": "2026-10-21T15:05:59+09:00",
       "lanes": {
@@ -761141,6 +761749,35 @@
       ],
       "source_published_kst": "2026-10-06T15:32+09:00",
       "title": "빙판·모래판 스타들, 의성 알리는 홍보대사 됐다"
+    },
+    "source_fact:4bbfb319ba65975347ec873a": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
     },
     "source_fact:4bc2edae01885db61a3d7641": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
@@ -859745,6 +860382,35 @@
       "telegram_core_fact": "DL이앤씨가 경기도 광명시 하안주공9단지 재건축 사업 시공사 선정에 단독 참여했다.",
       "title": "DL이앤씨, 광명 하안주공9단지 시공사 입찰 단독 참여 | 연합뉴스"
     },
+    "source_fact:72d7915fc78cf607099d2084": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
+    },
     "source_fact:72dd5b98e4d38ae2b2a3bed6": {
       "first_seen_kst": "2026-10-13T08:34:55+09:00",
       "lanes": {
@@ -914813,6 +915479,35 @@
       "source_published_kst": "2026-10-07T09:35+09:00",
       "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
+    "source_fact:88e770ce5a2251cf58593499": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
+    },
     "source_fact:88e78708f64c5813dbc30f26": {
       "first_seen_kst": "2026-10-13T02:50:52+09:00",
       "lanes": {
@@ -921037,6 +921732,35 @@
       "source_title": "노스포인트 뱅크셰어스, 3000만 달러 자사주 매입 승인..2027년 10월까지",
       "telegram_core_fact": "노스포인트 뱅크셰어스(NPB)가 이사회에서 최대 3000만 달러 보통주 자사주 매입 프로그램을 승인했다고 10월 26일 발표했다.",
       "title": "노스포인트 뱅크셰어스, 3000만 달러 자사주 매입 승인..2027년 10월까지"
+    },
+    "source_fact:8b89e5fcb567459a32b8692a": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
     },
     "source_fact:8b8d37fc2d88083020286355": {
       "first_seen_kst": "2026-10-26T18:53:23+09:00",
@@ -932320,6 +933044,28 @@
       "source_title": "경북도·안동시, 헴프 재배부터 의약품 생산까지 전 주기 산업체계 구축 나서",
       "telegram_core_fact": "사업을 맡은 네오켄바이오는 헴프 규제자유특구 핵심 참여기업으로 의료용 CBD 원료의약품 국산화 사업을 추진하고 있어 향후 의약품 상용화와 산업 생태계 조성에 속도가 붙을 것으로 기대된다.",
       "title": "경북도·안동시, 헴프 재배부터 의약품 생산까지 전 주기 산업체계 구축 나서"
+    },
+    "source_fact:903bd2f96704ed1cb24dd94a": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.hankyung.com/article/2026102765546",
+      "source": "한국경제",
+      "source_body_digest": "e17af71dfbb03172313a7fec8f2c4895a3d397f9cdf9ebd7c1adf3b47196d1bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f00245635610009551f75dda649780d0fc27ec3fcbdda8dacc2e9057dafadc1",
+      "source_fact_keys": [
+        "source_fact:v1:1088a1c41ae49ab4e50cf4cc05763d6c2215f3ff3cdae45b8e78376b56d6abb9",
+        "source_fact:v1:1936efe2c1b5c55d61f00bd3a8bac3072f3151dbf6e3c9576e75770d44b7e46d",
+        "source_fact:v1:c448c0b8cd4aaa7929e2cbf4cae7d23f26fb5769483561c2af7d5e0b0c1c8b83"
+      ],
+      "source_published_kst": "2026-10-27T07:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\"",
+      "telegram_core_fact": "안 연구원은 \"밸류에이션(실적대비 주가 수준), 주주환원수익률, 증시 거래대금 회전율 등을 통해 펀더멘털(기초체력)에 기반한 주가가 바닥권에 충분히 가까워졌음을 추론해볼 수 있다\"며 \"향후 증시와 거래대금 회전율이 재상승하는 모습을 보인다면 반등을 기대해볼 수 있다\"고 말했다.",
+      "title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\""
     },
     "source_fact:903c6aa6166d6f2ce1368a49": {
       "first_seen_kst": "2026-10-17T05:02:37+09:00",
@@ -966852,6 +967598,26 @@
       "telegram_core_fact": "중국 국영 기업이 수년간 멈춰 있던 베네수엘라 최대 화력발전소를 일부 재가동한다. 블룸버그통신은 중국기계설비공정(CMEC)이 다음달 베네수엘라 플란타센트로 발전단지의 600메가와트(MW)급 석유 화력발전기 1기를 재가동할 계획이라고 보도했다.",
       "title": "美 '중국 지우기'에도…베네수 최대 화력발전소, 中 손으로 재가동"
     },
+    "source_fact:9dcd1b85b50dda9043e8e05e": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842645",
+      "source": "뉴시스",
+      "source_body_digest": "65c942c8d82e482c8c9d747ec82cda1ed726de1aaec265f49af63e6bb72efd49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5c063a47147f8398ee044363c6b194c98b5c23a21a782357030cb8d2f8b6c11",
+      "source_fact_keys": [
+        "source_fact:v1:a6bd95ce0f5b1e021ed88667b55cdb55484ccddd2fccf483cd3f4d54d6a9d409"
+      ],
+      "source_published_kst": "2026-10-27T11:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\"",
+      "telegram_core_fact": "LG에너지솔루션이 북미에 이어 유럽에서도 에너지저장장치(ESS) 배터리 수주 확대를 본격화한다. 인공지능(AI) 데이터센터 확대, 재생에너지 확장 등과 연계한 ESS 수요에 적극 대응하며 관련 수주를 확대하고 있다는 분석이 나온다.",
+      "title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\""
+    },
     "source_fact:9dcf8322e15e1f369c3a3fca": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -983028,6 +983794,28 @@
       "source_title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스",
       "telegram_core_fact": "트럼프 대통령의 이날 게시글은 러시아산 에너지 구매국에 고율 관세를 부과하는 등 강력한 대러 제재가 담긴 '린지 그레이엄 법'의 시행을 보류하고, 러시아가 경유를 세계에 판매할 수 있도록 하는 이른바 '경유딜'을 합의한 것을 두고 미국 내 비판이 고조되는 것에 대한 반박으로 풀이된다.",
       "title": "트럼프 \"내 대러 결정은 간단…종전협상서 러 떠나길 원치 않아\" | 연합뉴스"
+    },
+    "source_fact:a3ffacf359084332acaa635d": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645617184",
+      "source": "이데일리",
+      "source_body_digest": "686cc43cf56b545929a8bef5c3fd0ad5de1a83e6f9a31d3b5c76c91fc4a9a358",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d4f6a4a9319b54136bdba982fabdbc8e76e07edd6fd051e46427e7d9bf80fe6",
+      "source_fact_keys": [
+        "source_fact:v1:06854515ca4280d3cd9972eeafd7f4df4fd8d62a89296c4da79aa72b663457a1",
+        "source_fact:v1:0a6047357a380ae47d61eddd536b61f5aa38869e45db586546cd3182a50d08b0",
+        "source_fact:v1:48c73344bc55adaa0e823f2729aac56f47ba1bc462e256f2bdc5570d4cd9c342"
+      ],
+      "source_published_kst": "2026-10-27T10:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만",
+      "telegram_core_fact": "코스피가 5.05% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만"
     },
     "source_fact:a403952f7518b7d150d64a3d": {
       "first_seen_kst": "2026-10-26T15:05:11+09:00",
@@ -1040504,6 +1041292,35 @@
       "source_published_kst": "2026-10-06T15:02+09:00",
       "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
     },
+    "source_fact:ba54a4f57fcd6a2985e8cc97": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
+    },
     "source_fact:ba618ddde2a38b43dbc93f60": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -1077768,6 +1078585,35 @@
       "source_title": "속초 고용 지표 개선…상용직 늘고 청년고용률 강원 최고 유지 | 연합뉴스",
       "telegram_core_fact": "12일 시에 따르면 국가데이터처의 지역별고용조사 자료를 조사한 결과 올해 상반기 속초시의 상용직 비중은 68.5%로 지난해 같은 기간(65.6%)보다 2.9%포인트 상승했다.",
       "title": "속초 고용 지표 개선…상용직 늘고 청년고용률 강원 최고 유지 | 연합뉴스"
+    },
+    "source_fact:c8af0102bdc532d9cda82eed": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
     },
     "source_fact:c8b816be0b2517a580564441": {
       "first_seen_kst": "2026-10-17T12:40:29+09:00",
@@ -1126067,6 +1126913,35 @@
       "telegram_core_fact": "충주공장의 전략적 가치를 높이는 동시에 최소 1000억원을 확보해 재무 건전성을 강화하고 바이오 사업 투자를 늘리겠단 전략이다. 이연제약은 신성장동력을 확보하기 위해 충주공장에 약 3500억원을 투자하고 2021년 준공했다.",
       "title": "이연제약, 충주공장 일부 유동화 추진…\"1000억 확보, 사업 시너지 낼 것\""
     },
+    "source_fact:dc2ca6cff810f2fc23592e94": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
+    },
     "source_fact:dc2d1007251c3c3301f3bd16": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
       "lanes": {
@@ -1137998,6 +1138873,35 @@
       "source_published_kst": "2026-10-06T16:40+09:00",
       "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
     },
+    "source_fact:e0de85c796ee7474c2496963": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
+    },
     "source_fact:e0e8a6365af86a5d27a7b2ed": {
       "first_seen_kst": "2026-10-23T06:00:11+09:00",
       "lanes": {
@@ -1143711,6 +1144615,35 @@
       "source_title": "“매출 27조원 더 부풀려진 거였어?”…오픈AI 실적에 기술주 일제히 ‘휘청’",
       "telegram_core_fact": "로스 메이필드 베어드 투자 전략가는 “오픈AI가 예상했던 것보다 매출이 적다는 사실 등으로 (AI 수요 상승) 서사에 균열이 생기면 AI 공급사슬 전체에 파장이 미칠 수 있다”며 “이번 소식은 분명 AI 산업 전체에 큰 영향을 줄 것”이라고 지적했다.",
       "title": "“매출 27조원 더 부풀려진 거였어?”…오픈AI 실적에 기술주 일제히 ‘휘청’"
+    },
+    "source_fact:e314433e07735820498cc7c4": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
     },
     "source_fact:e31653eb19663908c4120742": {
       "first_seen_kst": "2026-10-25T15:00:08+09:00",
@@ -1192319,6 +1193252,35 @@
       "telegram_core_fact": "할리버튼(HAL)이 3분기 매출액 57억300만 달러로 전년비 1.8% 증가했고, GAAP 기준 희석 주당순이익(EPS) 0.50달러, Non-GAAP 조정 희석 EPS 0.60달러를 기록했다고 10월 20일 발표했다.",
       "title": "할리버튼, 3분기 매출 57억 달러..조정 EPS 0.60달러"
     },
+    "source_fact:f6a16183f68692bfa6b095bb": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
+    },
     "source_fact:f6ac460ded4c947379db440e": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
       "lanes": {
@@ -1198221,6 +1199183,26 @@
       "source_title": "반도체株 던진 외국인… 코스피 6400 밑으로 끌어내렸다",
       "telegram_core_fact": "이재원 유안타증권 연구원은 \"현재 국내 주식시장의 가장 큰 고민은 반도체 실적이 아닌 외국인 수급\"이라며 \"삼성전자 3·4분기 영업이익이 시장 기대를 상회했고 메모리 가격과 AI 인프라 투자도 견조하지만, 외국인 매도 지속에 코스피의 상대적 부진이 지속되고 있다\"고 말했다.",
       "title": "반도체株 던진 외국인… 코스피 6400 밑으로 끌어내렸다"
+    },
+    "source_fact:f967b3194a665862eab687b3": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842045",
+      "source": "뉴시스",
+      "source_body_digest": "81f45924ef23a96a0cbb4ad0d23570af000c0aa4400ebad07c8a792fa5b0cd18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:538d04d6ed88bf23f9c2da356cbe390e211ff836c83062954e56b1ec81610ed1",
+      "source_fact_keys": [
+        "source_fact:v1:fde77638f25cc222a141f125aa43df38e2ce2a8c0c4897294830a947f3c89752"
+      ],
+      "source_published_kst": "2026-10-27T07:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "션, 사업 200억 매출에도 부자 못 된 이유 고백",
+      "telegram_core_fact": "그룹 지누션 출신 가수 션이 연 매출 200억원을 기록했던 의류 사업과 코스닥 상장이 무산된 사연을 공개했다.",
+      "title": "션, 사업 200억 매출에도 부자 못 된 이유 고백"
     },
     "source_fact:f96901f8b483cdea26813c6b": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -1225666,6 +1226648,35 @@
       "telegram_core_fact": "시지바이오는 칼슘 하이드록시아파타이트(CaHA) 기반 필러 ‘페이스템’(FACETEM)이 대만 식품의약품청(TFDA)으로부터 의료기기 품목허가를 획득했다고 13일 밝혔다. 현지 파트너와 제품 공급 및 의료진 교육을 추진하고, 향후 3년간 대만에서 누적 공급매출 50억원 이상을 달성하는 것이 목표다.",
       "title": "시지바이오 필러 '페이스템', 대만 품목허가 획득"
     },
+    "title:12c16c52317fcf7a0e72402c": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645617184",
+      "source": "이데일리",
+      "source_body_digest": "364d8d31140420c7ae3b89ad2b8a7079a4d98ba09ae7d94f0191bf16749e1433",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c05f02c6953bcac525404a0c16499be4e68371e1cff36f2e74918713c30908df",
+      "source_fact_keys": [
+        "source_fact:v1:175846acf19b6c5847b59364d7dfecfce8a9efb1af357c6430ce50febc874cea",
+        "source_fact:v1:2028e29d793c4405776777e18f1e6ceb964688c5dcbc6a6724a6910088b02f83",
+        "source_fact:v1:32514fa6af040cf834dbaf60146ce3917f1a6c12f4d6010a20dd08a53beab4f0",
+        "source_fact:v1:36880d82852511f25a421543cd38b01b84c82a34b2bd0f3bd6ed6b10baa67f93",
+        "source_fact:v1:7ab16b238ae7d62bcbbf1d964d1c18bdca88f195fb00d31d8c9cd601e5f1c50d",
+        "source_fact:v1:871f0618f4f7cc66b15704039ca4f85703a150f21e4eff6dd6bbcdcf63933ecd",
+        "source_fact:v1:921e462d822165a0c7eecff4e38d51179d491f9c9f90e2d00ce6cb299131e9fe",
+        "source_fact:v1:a71ad15683c2568adf6b450f3c123a422294c99cbd297c653fab07ecb021aac0",
+        "source_fact:v1:b60e223d8cf08089ec60dc319bbb67e9e84020283e49719ad9e3ce80c3b26835",
+        "source_fact:v1:e7786cb654598e95da6dc35127c0285fe7aae736f1c68981b763d03a99849369"
+      ],
+      "source_published_kst": "2026-10-27T07:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+      "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
+      "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
+    },
     "title:12cd39b2848e7bd9fb22f9eb": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
       "lanes": {
@@ -1231355,6 +1232366,28 @@
       "source_published_kst": "2026-10-05T17:20+09:00",
       "title": "리사 수 AMD 회장 7개월 만에 방한…'AI 동맹' 넓히나(종합) | 연합뉴스"
     },
+    "title:1c764f2ad4fb9ed530f0c1db": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645617184",
+      "source": "이데일리",
+      "source_body_digest": "686cc43cf56b545929a8bef5c3fd0ad5de1a83e6f9a31d3b5c76c91fc4a9a358",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d4f6a4a9319b54136bdba982fabdbc8e76e07edd6fd051e46427e7d9bf80fe6",
+      "source_fact_keys": [
+        "source_fact:v1:06854515ca4280d3cd9972eeafd7f4df4fd8d62a89296c4da79aa72b663457a1",
+        "source_fact:v1:0a6047357a380ae47d61eddd536b61f5aa38869e45db586546cd3182a50d08b0",
+        "source_fact:v1:48c73344bc55adaa0e823f2729aac56f47ba1bc462e256f2bdc5570d4cd9c342"
+      ],
+      "source_published_kst": "2026-10-27T10:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만",
+      "telegram_core_fact": "코스피가 5.05% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "[속보]코스피, 4%대 급등에 매수 사이드카…4거래일 만"
+    },
     "title:1c7f62d3a8e797dda48dd1f9": {
       "first_seen_kst": "2026-10-14T12:34:00+09:00",
       "lanes": {
@@ -1231666,6 +1232699,24 @@
       "source_title": "\"2028년까지 주문 못 따라간다\"…ASML, AI 반도체 장비 공급난",
       "telegram_core_fact": "ASML 4분기 매출은 8000억원 전망입니다.",
       "title": "\"2028년까지 주문 못 따라간다\"…ASML, AI 반도체 장비 공급난"
+    },
+    "title:1ce6a1e102a2843173ef781e": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645617184",
+      "source": "이데일리",
+      "source_body_digest": "f4d1209ee605c127859333681dc35433c21574d4bde3255a472314a1f90365c1",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T07:38+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 거래대금 5개월 새 64% 급감…“증권주 반등 기대”",
+      "telegram_core_fact": "거래대금이 최고치를 기록했던 지난 5월 106조 2000억원과 비교하면 64% 급감했다. 국내 증시 거래대금이 5개월 연속 감소하며 지난 5월 고점 대비 60% 넘게 급감했다.",
+      "title": "증시 거래대금 5개월 새 64% 급감…“증권주 반등 기대”"
     },
     "title:1cefa5fe85864f55b272165e": {
       "first_seen_kst": "2026-10-17T05:25:35+09:00",
@@ -1237939,6 +1238990,26 @@
       "source_title": "박현숙 세포바이오 대표 “국내 2상 넘어 日 임상 준비…파트너와 공동개발 논의”[바이오재팬 2026]",
       "telegram_core_fact": "박 대표는 “마스터·워킹 셀뱅크와 제조·품질관리(CMC) 기술, 국내 우수의약품제조및품질관리기준(GMP) 센터를 통해 임상·상업용 동결 완제품을 을괄 생산 및 공급한다”며 “반면 일본 파트너사는 현지 임상 네트워크를 기반으로 PMDA 임상시험 진행과 의약품·조건부 품목허가 및 유통망 구축을 전담하게 된다”고 말했다.",
       "title": "박현숙 세포바이오 대표 “국내 2상 넘어 日 임상 준비…파트너와 공동개발 논의”[바이오재팬 2026]"
+    },
+    "title:26d4e46be6e0fbcdb5c3a477": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842045",
+      "source": "뉴시스",
+      "source_body_digest": "81f45924ef23a96a0cbb4ad0d23570af000c0aa4400ebad07c8a792fa5b0cd18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:538d04d6ed88bf23f9c2da356cbe390e211ff836c83062954e56b1ec81610ed1",
+      "source_fact_keys": [
+        "source_fact:v1:fde77638f25cc222a141f125aa43df38e2ce2a8c0c4897294830a947f3c89752"
+      ],
+      "source_published_kst": "2026-10-27T07:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "션, 사업 200억 매출에도 부자 못 된 이유 고백",
+      "telegram_core_fact": "그룹 지누션 출신 가수 션이 연 매출 200억원을 기록했던 의류 사업과 코스닥 상장이 무산된 사연을 공개했다.",
+      "title": "션, 사업 200억 매출에도 부자 못 된 이유 고백"
     },
     "title:26e351a0d3ba9af1f36d2a1d": {
       "first_seen_kst": "2026-10-21T18:59:41+09:00",
@@ -1306951,6 +1308022,26 @@
       "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
       "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
     },
+    "title:96d1d2f17066e98e7dbd2205": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003842645",
+      "source": "뉴시스",
+      "source_body_digest": "65c942c8d82e482c8c9d747ec82cda1ed726de1aaec265f49af63e6bb72efd49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5c063a47147f8398ee044363c6b194c98b5c23a21a782357030cb8d2f8b6c11",
+      "source_fact_keys": [
+        "source_fact:v1:a6bd95ce0f5b1e021ed88667b55cdb55484ccddd2fccf483cd3f4d54d6a9d409"
+      ],
+      "source_published_kst": "2026-10-27T11:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\"",
+      "telegram_core_fact": "LG에너지솔루션이 북미에 이어 유럽에서도 에너지저장장치(ESS) 배터리 수주 확대를 본격화한다. 인공지능(AI) 데이터센터 확대, 재생에너지 확장 등과 연계한 ESS 수요에 적극 대응하며 관련 수주를 확대하고 있다는 분석이 나온다.",
+      "title": "LG에너지솔루션, 북미 이어 유럽서도 ESS 수주 확대…\"에너직스에 2GWh 공급\""
+    },
     "title:96d4eb7c69cd52773772f448": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
       "lanes": {
@@ -1310689,6 +1311780,28 @@
       "source_title": "이소영 중기장관 \"'납품대금 연동제' 제재 약해…실효성 부족\" | 연합뉴스",
       "telegram_core_fact": "이 장관은 \"발동 요건에 대한 제도 보완과 제재나 계약에서의 자동 적용 제도까지 포함해서 납품 대금 연동제에 대해서는 전체적인 검토를 다시 하겠다\"며 \"일본의 관련 제도는 법적인 구속력이 없는 권고적인 제도지만, 정부가 가격 지표를 공표하는 부분 등 벤치마킹할 수 있는 부분은 그렇게 하겠다\"고 말했다.",
       "title": "이소영 중기장관 \"'납품대금 연동제' 제재 약해…실효성 부족\" | 연합뉴스"
+    },
+    "title:9c7e5c4b1b5613f5d5a17b68": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.hankyung.com/article/2026102765546",
+      "source": "한국경제",
+      "source_body_digest": "e17af71dfbb03172313a7fec8f2c4895a3d397f9cdf9ebd7c1adf3b47196d1bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f00245635610009551f75dda649780d0fc27ec3fcbdda8dacc2e9057dafadc1",
+      "source_fact_keys": [
+        "source_fact:v1:1088a1c41ae49ab4e50cf4cc05763d6c2215f3ff3cdae45b8e78376b56d6abb9",
+        "source_fact:v1:1936efe2c1b5c55d61f00bd3a8bac3072f3151dbf6e3c9576e75770d44b7e46d",
+        "source_fact:v1:c448c0b8cd4aaa7929e2cbf4cae7d23f26fb5769483561c2af7d5e0b0c1c8b83"
+      ],
+      "source_published_kst": "2026-10-27T07:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\"",
+      "telegram_core_fact": "안 연구원은 \"밸류에이션(실적대비 주가 수준), 주주환원수익률, 증시 거래대금 회전율 등을 통해 펀더멘털(기초체력)에 기반한 주가가 바닥권에 충분히 가까워졌음을 추론해볼 수 있다\"며 \"향후 증시와 거래대금 회전율이 재상승하는 모습을 보인다면 반등을 기대해볼 수 있다\"고 말했다.",
+      "title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\""
     },
     "title:9c95b27a352c04e0dbbeb5c4": {
       "first_seen_kst": "2026-10-05T10:39:16+09:00",
@@ -1318647,6 +1319760,24 @@
       "source_title": "엠엑스온, 전사 공급망 관리 체계 구축",
       "telegram_core_fact": "HMI(휴먼머신인터페이스) 기업 엠엑스온은 전사 공급망 관리(SCM) 체계를 구축하며 고객 대응 경쟁력 강화에 나섰다고 19일 밝혔다.",
       "title": "엠엑스온, 전사 공급망 관리 체계 구축"
+    },
+    "title:a96bbc70b3d7c8d1afddf478": {
+      "first_seen_kst": "2026-10-27T11:48:42+09:00",
+      "lanes": {
+        "live": "2026-10-27T11:48:42+09:00"
+      },
+      "last_seen_kst": "2026-10-27T11:48:42+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640307",
+      "source": "이투데이",
+      "source_body_digest": "7cc4c033dc276e856ab3f4db693520014f47722210dabafe745a9e3f327a9d72",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "고개 든 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국제 금값이 유가 하락과 저가 매수세에 힘입어 반등했다.",
+      "title": "고개 든 국제 금값…국내 금시세는?"
     },
     "title:a970ef5ac1caa531da2cea69": {
       "first_seen_kst": "2026-10-23T13:50:43+09:00",
@@ -1370094,5 +1371225,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-27T11:16:06+09:00"
+  "updated_at_kst": "2026-10-27T11:48:42+09:00"
 }
