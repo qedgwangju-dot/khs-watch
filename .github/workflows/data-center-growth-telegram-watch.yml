@@ -80,8 +80,8 @@ jobs:
           assert all(x in report for x in (
               "2조1,000억달러", "2조9,300억달러", "4,900만달러",
               "5,700만달러", "3,140만달러", "480만달러", "1GW",
-              "원본 유료 보고서", "원화",
-          ) if x != "원본 유료 보고서" and x != "원화")
+              "BofA 원본 유료 보고서를", "2026-10-26 ECB test basis",
+          ))
           assert len(report) > 1200
           print("bofa_global_once_only_and_tam_scope_report_regression=passed")
           PY
