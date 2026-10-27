@@ -2414,6 +2414,28 @@ def semantic_policy_event_key(item: dict) -> str:
         if any(s in title_text for s in ("延长征求意见", "comment period extended", "意见期限延长", "延期")):
             return "china-mofcom-technology-catalogue-comment-extension-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
         return "china-mofcom-2026-technology-48-draft-preregistration-2026-10-16"
+    # News reports are not a legally effective EU safeguard regulation.
+    eu_context = any(x in text for x in ("european union", "european commission", "eu ", "eu-", "eu·", "유럽연합"))
+    china_context = any(x in text for x in ("china", "chinese", "중국"))
+    if eu_context and china_context and any(
+        x in text for x in ("hybrid", "phev", "plug-in hybrid", "하이브리드")
+    ) and any(x in text for x in ("quota", "cap", "safeguard", "350,000", "350000", "쿼터", "수입 제한")):
+        if any(x in title_text for x in ("draft implementing", "proposed implementation", "implementing proposal", "집행규정안")):
+            return "eu-china-hybrid-safeguard-implementing-proposal-reported"
+        if any(x in title_text for x in ("comes into force", "enters into force", "becomes effective", "final regulation", "adopts implementing", "발효", "확정 시행")):
+            return "eu-china-hybrid-safeguard-implementation-reported"
+        return "eu-china-hybrid-safeguard-understanding-2026-10-09"
+    if eu_context and china_context and any(
+        x in text for x in ("chemicals", "chemical", "furniture", "machinery", "plastics", "pet resin", "화학제품", "가구", "기계류", "합성수지")
+    ) and any(x in text for x in ("safeguard", "import curbs", "import quotas", "import cap", "tariff", "수입 제한", "수입규제")):
+        if any(x in title_text for x in ("proposes safeguard", "proposes import curbs", "launches safeguard investigation", "formal proposal", "조사 개시", "공식 제안")):
+            return "eu-china-sector-safeguards-formal-proposal-reported"
+        if any(x in title_text for x in ("imposes", "adopts final safeguard", "final regulations", "enters into force", "발효", "최종 시행")):
+            return "eu-china-sector-safeguards-implementation-reported"
+        if "furniture" in text or "가구" in text:
+            return "eu-china-sector-safeguards-furniture-2026-10-26"
+        return "eu-china-sector-safeguards-chemicals-machinery-2026-10-23"
+
     # Preserve distinct FCC enforcement and plant-waiver cases across reprints.
     if ("hisilicon" in text or "하이실리콘" in text) and "fcc" in text and (
         "dashboard camera" in text or "차량용 블랙박스" in text
