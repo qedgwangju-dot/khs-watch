@@ -22,6 +22,8 @@ ALERT=pathlib.Path("out/korea_credit_spread_watch_alert.html")
 PENDING=pathlib.Path("out/korea_credit_spread_watch_pending.json")
 ACK=pathlib.Path("out/korea_credit_spread_watch_confirmed.json")
 STATUS=pathlib.Path("out/korea_credit_spread_watch_status.md")
+HEALTH=pathlib.Path("data/korea_credit_spread_watch_health.json")
+HEALTH_PENDING=pathlib.Path("out/korea_credit_spread_watch_health_pending.json")
 LEVELS=("안정","관찰","주의","악화","심각")
 UP=((0,0),(30,70),(50,80),(70,90),(100,120))
 DOWN={0:(30,70,5),1:(40,75,3),2:(60,85,3),3:(90,110,3)}
@@ -118,6 +120,11 @@ def aligned(series,now):
         result.append({"date":day,"rates":rates,"cp_cd":cp_cd,"credit":credit,"rank":level(cp_cd,credit)})
     latest=dt.datetime.strptime(days[-1],"%Y%m%d").date()
     if latest>now.date() or (now.date()-latest).days>7: raise ValueError("공식자료 시점이 오래됨")
+    # 장 종료 후 평일에는 당일 공표가 늦어지는 경우 과거 거래일의 경보를
+    # 최신 경보로 재발송하지 않는다. 한국 휴장일에는 일시적인 조회 실패가
+    # 될 수 있으나 잘못된 시장경보 발송보다 안전한 실패방식이다.
+    if now.weekday()<5 and now.hour>=18 and latest!=now.date():
+        raise ValueError("장 종료 후 공식 금리 기준일 지연 또는 휴장: 당일 미공표 데이터를 경보에 사용하지 않음")
     for a,b in zip(days[-7:],days[-6:]):
         d1=dt.datetime.strptime(a,"%Y%m%d").date()
         d2=dt.datetime.strptime(b,"%Y%m%d").date()
@@ -205,6 +212,21 @@ def next_boundary(latest):
     aa_gap=max(0,aa_lim-latest["credit"])
     return (f"{LEVELS[k+1]}: CP–CD {cp_lim:.0f}bp(+{cp_gap:.1f}bp) "
             f"또는 AA- {aa_lim:.0f}bp(+{aa_gap:.1f}bp)")
+
+def verified_health_snapshot(rows,codes,now,decision):
+    """경보가 없는 날도 공식자료 성공을 기록하되 같은 자료는 새 상태로 만들지 않는다."""
+    latest=rows[-1]
+    if len(rows)<7: raise ValueError("공식 금리 비교 자료 부족")
+    values={"date":latest["date"],"cp":latest["rates"]["cp"],
+            "cd":latest["rates"]["cd"],"corp":latest["rates"]["corp"],
+            "gov":latest["rates"]["gov"],"cp_cd_bp":latest["cp_cd"],
+            "aa_spread_bp":latest["credit"],"observed_rank":latest["rank"]}
+    fingerprint=hashlib.sha256(json.dumps(values,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
+    return {"official_date":latest["date"],"rate_values":values,
+            "fingerprint":fingerprint,"alert_rank":decision["rank"],
+            "verified_at_kst":now.isoformat(timespec="seconds"),
+            "source":SOURCE,"stat_code":TABLE,
+            "codes":codes,"note":"원자료 검증 성공 기록. 텔레그램 발송 확인과는 별개"}
 
 def render(rows,decision,now,sample=False):
     if len(rows)<7: raise ValueError("원문 통계가 7공표일 미만이라 메시지 생성 불가")
@@ -335,13 +357,17 @@ def send(now):
 
 def watch(now):
     ALERT.parent.mkdir(parents=True,exist_ok=True)
-    for p in (ALERT,PENDING,ACK): p.unlink(missing_ok=True)
+    for p in (ALERT,PENDING,ACK,HEALTH_PENDING): p.unlink(missing_ok=True)
     key=os.environ.get("ECOS_API_KEY","").strip()
     if not key: raise RuntimeError("기존 ECOS_API_KEY 보안 설정 누락")
     values,codes=fetch_rates(key,now)
     rows=aligned(values,now)
     state=json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
     action=decide(rows,state)
+    health=verified_health_snapshot(rows,codes,now,action)
+    prior=json.loads(HEALTH.read_text(encoding="utf-8")) if HEALTH.exists() else {}
+    if prior.get("fingerprint")!=health["fingerprint"] or prior.get("alert_rank")!=health["alert_rank"]:
+        HEALTH_PENDING.write_text(json.dumps(health,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     latest=rows[-1]
     d=direction_overview(rows)
     sample=os.environ.get("FORMAT_SAMPLE_SEND","").strip().lower()=="true"
@@ -349,6 +375,7 @@ def watch(now):
     STATUS.write_text("\n\n".join([
         "# 국내 CP·회사채 신용스프레드",
         f"공식 기준일: {latest['date']}",
+        f"데이터 지문: {health['fingerprint'][:12]} / 상태 저장 필요: {HEALTH_PENDING.exists()}",
         f"실측 단계: {LEVELS[latest['rank']]} / 경보 단계: {LEVELS[action['rank']]}",
         f"단기 방향: {d['cp'][0]} / 회사채 방향: {d['aa'][0]} (5영업일 기준)",
         f"추가 신호: {'; '.join(action['events']) or '없음'}",
