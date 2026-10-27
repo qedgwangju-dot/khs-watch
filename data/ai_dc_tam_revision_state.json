@@ -29,7 +29,7 @@
     "agentic_cpu_per_gpu": 1.0
   },
   "baseline_source": "BofA Global Research 2차 공개보도 기준",
-  "updated_at_kst": "2026-10-27T14:45:12+09:00",
+  "updated_at_kst": "2026-10-27T15:54:01+09:00",
   "seen_ids": [
     "66d627057937a9e600c63eac",
     "08d5cbf40c85943b346ecc01",
@@ -41,7 +41,8 @@
     "9e0ff2dd6547bbf2f495031c",
     "d9f2bbc7e11214c2c27550bc",
     "7b7c26db8b084e36d80d2b0d",
-    "ae1d36c1ca4b5d40f1d9a7d8"
+    "ae1d36c1ca4b5d40f1d9a7d8",
+    "f788aa36b2ffc981ca224042"
   ],
   "jpm_capex": {
     "metrics": {
@@ -87,7 +88,7 @@
         1.1
       ],
       "geography": "전 세계",
-      "source_grade": "Reuters 10월 23일 및 TechTimes 10월 26일 공개보도. BofA 원보고서 미확보",
+      "source_grade": "Reuters 10월 23일 전재 보도 확인, TechTimes 10월 26일 URL 직접 열람 실패·검색 공개본 대조. BofA 원보고서 미확보",
       "scope_warning": "종전 BofA 2030 AI 데이터센터 시스템시장 2.2조달러와 전체 시장 2.93조달러는 동일 분모 미확인",
       "sources": [
         "https://www.reuters.com/business/data-center-spending-more-than-double-21-trillion-by-2028-2026-10-23/",
@@ -119,7 +120,7 @@
       "60gw",
       "24gw"
     ],
-    "last_primary_checked_kst": "2026-10-27T14:45:12+09:00",
+    "last_primary_checked_kst": "2026-10-27T15:54:01+09:00",
     "primary_errors": [],
     "publisher_release": "2026-10-19T05:39:38+00:00",
     "publisher_article_url": "https://newsletter.semianalysis.com/p/datacenters-2027-the-year-of-acceleration",
@@ -161,14 +162,14 @@
   },
   "fx": {
     "usdkrw": 1325.28,
-    "basis": "2026-10-26 일일 기준 · ECB/Frankfurter · 조회 2026-10-27 14:45 KST · 보조 API 2026-10-27 · 차이 0.01% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-26 일일 기준 · ECB/Frankfurter · 조회 2026-10-27 15:54 KST · 보조 API 2026-10-27 · 차이 0.01% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "quality": "교차검증 일일 기준환율"
   },
   "last_collection": {
-    "trusted_rows": 4,
-    "new_rows": 0,
-    "candidate_metric_rows": 3,
+    "trusted_rows": 7,
+    "new_rows": 1,
+    "candidate_metric_rows": 5,
     "material_changes": 0
   }
 }
