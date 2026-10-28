@@ -1381,11 +1381,17 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
     # retain the original Monday 07:00 schedule, but do not silently lose the
     # entire week. The first fresh Tue-Sat regular poll may deliver one
     # explicitly labelled late weekly report. Never replay old-week data.
+    manual_recovery = (
+        trigger_event == "workflow_dispatch"
+        and (os.getenv("CTA_WEEKLY_RECOVERY") or "").strip().lower() == "true"
+    )
     weekly_catchup_candidate = (
-        trigger_event == "schedule"
-        and 1 <= d.weekday() <= 5
+        1 <= d.weekday() <= 5
         and weekly_missing
-        and trigger_schedule in regular_crons
+        and (
+            (trigger_event == "schedule" and trigger_schedule in regular_crons)
+            or manual_recovery
+        )
     )
     weekly_catchup_due = bool(
         weekly_catchup_candidate
