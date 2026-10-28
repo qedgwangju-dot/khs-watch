@@ -68,5 +68,49 @@ class HynixLTAWatchTests(unittest.TestCase):
         self.assertIn('전체 CAPA',t)
         self.assertIn('HBM만의',t)
         self.assertIn(w.HYNIX_Q3_2026_URL,t)
+
+    def test_fab_shell_acceleration_is_not_m17_equipment_or_cleanroom_revised_date(self):
+        item=self.item(w.HYNIX_FAB_SHELL_PRESS_URLS[0])
+        body=("SK하이닉스는 용인 클러스터와 청주 M17을 포함한 신규 팹은 "
+              "건물 골조 등 건설 일정을 앞당기되 클린룸은 단계별로 나누어 오픈할 예정이라고 밝혔다. "
+              "장비 반입과 양산 확대 등 실제 공급 증가는 수요에 따라 조정한다.")
+        rec=w.parse_skhynix_fab_shell_2026(item,body)[0]
+        v=rec['value']
+        self.assertEqual(rec['evidence'],'reported')
+        self.assertTrue(v['shell_acceleration_reported'])
+        self.assertEqual(v['original_y2_cleanroom_month'],'2029-06')
+        self.assertEqual(v['original_m17_cleanroom_month'],'2028-12')
+        self.assertEqual(v['y2_approved_investment_krw'],35_200_000_000_000)
+        self.assertEqual(v['m17_approved_investment_krw'],19_100_000_000_000)
+        self.assertIsNone(v['new_m17_cleanroom_month'])
+        self.assertFalse(v['m17_equipment_move_in_date_confirmed'])
+        self.assertFalse(v['production_ramp_accelerated_confirmed'])
+        message=w.render({'record':rec,'old':None,'reasons':['신규 보도 확인']})
+        self.assertIn('장비 반입 날짜·양산 시점은 아직 미공개',message)
+        self.assertIn('35조2,000억원',message)
+        self.assertIn('19조1,000억원',message)
+    def test_generic_equipment_acceleration_rumour_not_fab_issuer_confirmation(self):
+        item=self.item('https://www.unverified-example.com/news')
+        text=('SK하이닉스 M17 장비반입 조기화와 2027 양산 확정이라는 주장')
+        self.assertEqual(w.parse_skhynix_fab_shell_2026(item,text),[])
+    def test_fab_shell_report_same_state_does_not_duplicate(self):
+        item=self.item(w.HYNIX_FAB_SHELL_PRESS_URLS[0])
+        body=('SK하이닉스 용인 및 M17 건물 골조 공사 일정을 앞당기고 클린룸은 단계별 개방하며 '
+              '장비 반입은 수요에 따라 조정')
+        rec=w.parse_skhynix_fab_shell_2026(item,body)[0]
+        now=datetime(2026,10,28,15,0,0)
+        a=w.update_state({},[rec],now,[])
+        self.assertIn(rec['key'],a['pending'])
+        a['last_notified'][rec['key']]=a['pending'].pop(rec['key'])['record']
+        b=w.update_state(a,[rec],now,[])
+        self.assertFalse(b['pending'])
+    def test_fab_shell_parser_does_not_overwrite_existing_lta_track(self):
+        item=self.item(w.HYNIX_FAB_SHELL_PRESS_URLS[0])
+        text=('SK하이닉스 용인과 M17 신규 팹 셸 건설 일정을 앞당기고 클린룸을 단계별로 개방')
+        r=w.parse_skhynix_fab_shell_2026(item,text)
+        self.assertEqual(len(r),1)
+        self.assertEqual(r[0]['key'],'skhynix_fab_shell_2026|skhynix|Y2_M17')
+        self.assertNotIn('skhynix_lta',r[0]['key'])
+
 if __name__=='__main__':
     unittest.main()

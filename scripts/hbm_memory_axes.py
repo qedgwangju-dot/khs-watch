@@ -26,6 +26,8 @@ HBF_TRACK_VERSION = 1
 NVIDIA_HBM4_8HI_TRACK_VERSION = 1
 HYNIX_FINANCE_VERSION = 1
 HYNIX_Q3_2026_URL = 'https://news.skhynix.com/en/q3-2026-business-results/'
+HYNIX_FAB_SHELL_PRESS_URLS = ('https://www.news1.kr/industry/general-industry/6334489', 'https://biz.sbs.co.kr/article/20000342599')
+HYNIX_Y2_M17_OFFICIAL_PLAN = 'https://news.skhynix.com/en/fab-facility-investment-2026/'
 HYNIX_2029_PRESS_URLS = ('https://www.yna.co.kr/view/AKR20261028057352003', 'https://www.yna.co.kr/view/AKR20261028057351003', 'https://m.newspim.com/news/view/20261028000342')
 HYNIX_FINANCE_GOV = "https://www.korea.kr/news/policyNewsView.do?newsId=148973781"
 HYNIX_FINANCE_PRESS = "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156785695"
@@ -73,6 +75,8 @@ EXTRA_QUERIES = [
     '(site:news.samsung.com OR site:news.skhynix.co.kr OR site:nvidianews.nvidia.com) HBM4 (8-Hi OR 8단) NVIDIA (contract OR shipment OR qualified OR 2027)',
     '(SK하이닉스 OR SK hynix) (수출공급망 강화보증 OR 상생 무역금융 OR 2조원 보증 OR 무역보험공사) (협약 OR 보증서 OR 발급 OR 지원) when:30d',
     '(SK하이닉스 OR SK hynix) (트리니티팹 OR Trinity Fab OR R&D 도전 보상제) (개소 OR 검증 OR 양산 OR 사업화) when:90d',
+    '(SK하이닉스 OR SK hynix) (용인 Y2 OR 청주 M17) (셸 OR 골조 OR 클린룸 OR 장비 반입 OR 착공) (조기화 OR 앞당겨 OR 일정 변경)',
+
 
     '(SemiAnalysis OR TrendForce OR Micron OR Citi OR JPMorgan OR "J.P. Morgan" OR BofA) 2027 (HBM3E OR HBM4 OR HBM4E) (price OR pricing OR ASP OR "$/Gb" OR "per Gb" OR 가격)',
     '"HBM3E" "HBM4" "HBM4E" 2027 (price OR ASP OR "$/Gb")',
@@ -1981,6 +1985,45 @@ def parse_skhynix_2029_earnings_call_news(item,body):
     return [r]
 
 
+
+def parse_skhynix_fab_shell_2026(item, body):
+    """Q3 call: earlier building shells, not earlier equipment installation or HVM."""
+    h=host(item.get('direct_link',''))
+    if h not in ('news1.kr','biz.sbs.co.kr','news.skhynix.com','news.skhynix.co.kr'):
+        return []
+    text=re.sub(r'\s+',' ',body or '')
+    if not (re.search(r'SK하이닉스|SK\s*hynix',text,re.I)
+            and re.search(r'용인',text) and re.search(r'\bM17\b',text,re.I)
+            and re.search(r'셸|건물\s*골조',text)
+            and re.search(r'앞당기|앞당겨|조기화',text)
+            and re.search(r'클린룸',text) and re.search(r'단계별|단계적으로',text)):
+        return []
+    # An acceleration of the structure alone does not move cleanroom or
+    # equipment-move-in dates without an issuer-confirmed new dated milestone.
+    val={
+      'shell_acceleration_reported':True,
+      'cleanroom_phased_opening_reported':True,
+      'equipment_move_in_follows_demand':bool(re.search(r'장비\s*반입',text)
+                                                 and re.search(r'수요에\s*따라|수요에\s*맞춰',text)),
+      'y2_approved_investment_krw':35_200_000_000_000,
+      'm17_approved_investment_krw':19_100_000_000_000,
+      'original_y2_cleanroom_month':'2029-06',
+      'original_m17_cleanroom_month':'2028-12',
+      'new_y2_cleanroom_month':None,
+      'new_m17_cleanroom_month':None,
+      'm17_equipment_move_in_date_confirmed':False,
+      'production_ramp_accelerated_confirmed':False,
+      'official_baseline_url':HYNIX_Y2_M17_OFFICIAL_PLAN,
+    }
+    row=make_record('skhynix_fab_shell_2026',['skhynix','Y2_M17'],val,
+       'KRW,month,stage','2027-2029',item,
+       '용인·M17 골조공사 일정 조기화 보도, 클린룸·장비 반입 확정 변경과 별개',
+       as_of=(item.get('published_at_kst') or '')[:10],
+       scope='earnings_call_shell_acceleration_not_tool_move_in_or_revised_cleanroom_dates')
+    row['evidence']='official' if h in ('news.skhynix.com','news.skhynix.co.kr') else 'reported'
+    return [row]
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -2003,6 +2046,7 @@ def parse_records(item, body):
     records.extend(parse_hynix_supplier_program(item, body))
     records.extend(parse_skhynix_q3_2026_official(item, body))
     records.extend(parse_skhynix_2029_earnings_call_news(item, body))
+    records.extend(parse_skhynix_fab_shell_2026(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
         p = resolve_relative_years(original, published)
@@ -2190,6 +2234,15 @@ def comparison(old, new):
             ('hbm4_q4_overtake_actual','HBM4 출하·매출 HBM3E 실제 역전'),
             ('m15x_max_capacity_achieved','M15X 최대 생산능력 실제 도달'))
             if b.get(k) and not a.get(k)]
+    if new['axis']=='skhynix_fab_shell_2026':
+        reasons=[]
+        if not a.get('shell_acceleration_reported') and b.get('shell_acceleration_reported'):
+            reasons.append('Y2·M17 건물 골조공사 일정 조기화 보도 확인')
+        for field,label in (('new_y2_cleanroom_month','Y2 클린룸 확정 변경월'),
+                            ('new_m17_cleanroom_month','M17 클린룸 확정 변경월')):
+            if b.get(field) and a.get(field)!=b.get(field):
+                reasons.append(f"{label} {a.get(field) or '미확인'}→{b[field]}")
+        return reasons
     if new['axis']=='skhynix_2029_outlook':
         return ([f"2029 수요전망 기준연도 {a.get('outlook_year')}→{b.get('outlook_year')}"] if a.get('outlook_year')!=b.get('outlook_year') else []) + (
             ['HBM4 수율 목표 상향 보도 추가'] if b.get('hbm4_yield_target_raised_reported') and not a.get('hbm4_yield_target_raised_reported') else [])
@@ -2800,6 +2853,21 @@ def update_state(state, records, now, seeds=None):
 
 def render(change, rate=None):
     r, old = change['record'], change.get('old')
+    if r['axis']=='skhynix_fab_shell_2026':
+        v=r['value']
+        detail=('용인 Y2·청주 M17 건물 골조공사 일정 조기화 보도 / 클린룸 단계별 개방 / '
+                '장비 반입·실제 생산능력 확대는 수요에 맞춰 결정')
+        caution=('기존 회사 공식 계획: Y2 35조2,000억원(첫 클린룸 2029년 6월), '
+                 'M17 19조1,000억원(첫 클린룸 2028년 12월). '
+                 '변경된 개방 날짜·장비 반입 날짜·양산 시점은 아직 미공개. '
+                 '건물 조기 건설을 HBM 추가 양산확정으로 해석하지 않습니다.')
+        return (f"<b>SK하이닉스 용인·M17 골조공사 조기화 단계 감시</b>\n"
+                f"• 현재: {html.escape(detail)}\n"
+                f"• 변화: {html.escape(' / '.join(change['reasons']))}\n"
+                f"• 주의: {html.escape(caution)}\n"
+                f"• 기준일: {html.escape(r['as_of'])} · 원문 "
+                f"<a href=\"{html.escape(r['source_url'],quote=True)}\">보도</a>"
+                f" · <a href=\"{html.escape(HYNIX_Y2_M17_OFFICIAL_PLAN,quote=True)}\">회사 투자계획</a>")
     if r['axis'] in ('skhynix_lta_2026','skhynix_hbm4_q4_2026','skhynix_2029_outlook'):
         v=r['value']
         if r['axis']=='skhynix_lta_2026':
@@ -3385,6 +3453,10 @@ def main():
         structured_hbf = (
             'hbf' in text or 'high bandwidth flash' in text or '고대역폭 플래시' in text
         )
+        structured_skhynix_fab=(
+            any(k in text for k in ('sk하이닉스','sk hynix'))
+            and 'm17' in text and any(k in text for k in ('골조','셸','클린룸'))
+        )
         structured_skhynix_3q = (
             any(k in text for k in ('sk hynix','sk하이닉스','하이닉스'))
             and any(k in text for k in ('lta','장기공급계약','2029','m15x'))
@@ -3412,7 +3484,7 @@ def main():
                 )
             )
         )
-        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_nvidia_glass or structured_foplp or structured_hbf or structured_partner or structured_8hi or structured_skhynix_3q:
+        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_nvidia_glass or structured_foplp or structured_hbf or structured_partner or structured_8hi or structured_skhynix_3q or structured_skhynix_fab:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
@@ -3498,6 +3570,21 @@ def main():
             else: coverage.append('SK하이닉스 공식 3Q26 LTA·HBM4 원문 구조 확인 보류')
         except Exception as exc:
             coverage.append('SK하이닉스 공식 3Q26 본문 조회 실패: '+type(exc).__name__+' / 다음 회차 재시도')
+        if 'skhynix_fab_shell_2026|skhynix|Y2_M17' not in ((initial.get('memory_axes') or {}).get('last_notified') or {}):
+            for url in HYNIX_FAB_SHELL_PRESS_URLS:
+                try:
+                    raw=legacy.fetch(url,timeout=10).decode('utf-8',errors='replace')
+                    body,_=read_document(raw)
+                    item={'direct_link':url,'source':'회사 컨퍼런스콜 인용 보도',
+                          'published_at_kst':'2026-10-28T10:07:00+09:00',
+                          'title':'SK하이닉스 용인·M17 골조공사 조기화 및 클린룸 단계별 개방'}
+                    rows=parse_skhynix_fab_shell_2026(item,body)
+                    if rows:
+                        observed.extend(rows)
+                        break
+                    coverage.append('SK하이닉스 Y2·M17 조기화 본문 직접 확인 대기: '+host(url))
+                except Exception as exc:
+                    coverage.append('SK하이닉스 Y2·M17 조기화 보도 조회 실패: '+host(url)+' '+type(exc).__name__)
         if 'skhynix_2029_outlook|skhynix|2029' not in ((initial.get('memory_axes') or {}).get('last_notified') or {}):
             for url in HYNIX_2029_PRESS_URLS:
                 try:
