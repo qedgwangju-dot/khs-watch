@@ -24,7 +24,8 @@
     "gdp_2026": 2.3
   },
   "followups_sent": [
-    "30분"
+    "30분",
+    "90분"
   ],
   "previous_statement": {
     "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
@@ -104,28 +105,28 @@
   },
   "followup_90분_market": {
     "10년물": {
-      "value": 5.00600004196167,
-      "timestamp": "2026-09-16T18:55:00+00:00"
+      "value": 5.045000076293945,
+      "timestamp": "2026-10-28T18:55:00+00:00"
     },
     "S&P 500": {
-      "value": 7551.81005859375,
-      "timestamp": "2026-09-16T20:00:00+00:00"
+      "value": 7743.97998046875,
+      "timestamp": "2026-10-28T20:00:00+00:00"
     },
     "나스닥": {
-      "value": 25978.423828125,
-      "timestamp": "2026-09-16T20:00:00+00:00"
+      "value": 26549.8515625,
+      "timestamp": "2026-10-28T20:00:00+00:00"
     },
     "달러지수": {
-      "value": 100.31500244140625,
-      "timestamp": "2026-09-16T21:30:39+00:00"
+      "value": 102.13999938964844,
+      "timestamp": "2026-10-28T20:37:22+00:00"
     },
     "금": {
-      "value": 4302.5,
-      "timestamp": "2026-09-16T20:59:59+00:00"
+      "value": 4077.10009765625,
+      "timestamp": "2026-10-28T20:37:20+00:00"
     },
     "비트코인": {
-      "value": 75921.3984375,
-      "timestamp": "2026-09-16T21:40:38+00:00"
+      "value": 80934.578125,
+      "timestamp": "2026-10-28T20:47:19+00:00"
     }
   },
   "fomc_v3_statement_delta_correction": {
@@ -203,5 +204,6 @@
   "followup_24시간_verdict": "혼합 — 지속성 추가 확인 필요",
   "followup_24시간_at_utc": "2026-09-17T21:35:20.611686+00:00",
   "active_event_date": "2026-10-28",
-  "last_pre_event_capture": false
+  "last_pre_event_capture": false,
+  "followup_90분_news_class": "추가 긴축 시사"
 }
