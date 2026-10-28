@@ -835,7 +835,10 @@ class KOSDAQPrealertTierTests(unittest.TestCase):
                 self.assertIn("100억원 이상", text)
                 if actor in ("투신", "금융투자"):
                     self.assertIn(actor + "(기관 내)", text)
-                self.assertIn("기관과 하위 항목을 합산하거나", text)
+                if actor == "금융투자":
+                    self.assertIn("기관과 하위 항목을 합산하거나", text)
+                else:
+                    self.assertIn("기관·투신을 합산하거나", text)
 
     def test_prealert_cooldown_does_not_hide_confirmed_alert(self):
         w = self.new_watch()
