@@ -739,6 +739,7 @@ class WarshOctoberFOMCRegressionTests(unittest.TestCase):
             'classification':cls,
             'transcript':None,
             'structural_sent_key':press_v3.STRUCTURAL_KEY,
+            'balance_addendum_sent_key':press_v3.BALANCE_ADDENDUM_KEY,
             'structural_message_id':109
         }
         with patch.object(press_v3.base,'load',return_value=old), \
@@ -759,7 +760,8 @@ class WarshOctoberFOMCRegressionTests(unittest.TestCase):
             'meeting_date':press_v3.STRUCTURAL_DATE,
             'classification':{'inflation_priority':False},
             'transcript':None,
-            'structural_sent_key':press_v3.STRUCTURAL_KEY
+            'structural_sent_key':press_v3.STRUCTURAL_KEY,
+            'balance_addendum_sent_key':press_v3.BALANCE_ADDENDUM_KEY
         }
         with patch.object(press_v3.base,'load',return_value=old), \
              patch.object(press_v3,'current_meeting',return_value=(
