@@ -946,12 +946,11 @@ def _fomc_report_day(snapshot: dict) -> date:
     """
     d = _checked_date(snapshot)
     previous_day = d - timedelta(days=1)
-    if (
-        d.isoformat() not in FOMC_END_DATES
-        and previous_day.isoformat() in FOMC_END_DATES
-        and datetime.now(KST).time() < time(3, 0)
-    ):
-        return previous_day
+    if d.isoformat() not in FOMC_END_DATES and previous_day.isoformat() in FOMC_END_DATES:
+        decision_kst, _ = _fomc_times(previous_day)
+        now_kst = datetime.now(KST)
+        if now_kst.date() == d and now_kst < decision_kst:
+            return previous_day
     return d
 
 
@@ -1375,10 +1374,25 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
             }
         )
     )
-    fomc_key = _fomc_report_day(snapshot).isoformat()
+    fomc_day = _fomc_report_day(snapshot)
+    fomc_key = fomc_day.isoformat()
+    # Protect the 20:40 pre-decision check from GitHub dropping both
+    # dedicated crons. First normal 21:00+ market poll can retry, strictly
+    # before the actual FOMC 14:00 ET statement; success dedupe is unchanged.
+    regular_crons = {
+        "*/15 12-23 * * 1-5",
+        "7,22,37,52 12-22 * * 1-5",
+        "7,22,37 23 * * 1-5",
+    }
+    decision_kst, _ = _fomc_times(fomc_day)
+    regular_backup_due = bool(
+        trigger_schedule in regular_crons
+        and now_kst >= datetime.combine(fomc_day, time(20, 40), tzinfo=KST)
+        and now_kst < decision_kst
+    )
     fomc_due = (
         trigger_event == "schedule"
-        and trigger_schedule in fomc_crons
+        and (trigger_schedule in fomc_crons or regular_backup_due)
         and fomc_key in FOMC_END_DATES
         and current_state.get("last_fomc_eve_report") != fomc_key
     )
