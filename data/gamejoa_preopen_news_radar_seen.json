@@ -10863,6 +10863,32 @@
       "telegram_core_fact": "김정관(사진) 산업통상부 장관이 서남권 반도체 산업단지 후보지를 찾아 부지 조성과 전력·용수 공급 등 투자 기반을 차질 없이 마련하겠다고 밝혔다. 김 장관은 기업 투자가 적기에 이뤄질 수 있도록 부지 조성과 전력·용수 공급 인프라 확보, 주민 수용성 제고에 힘써 달라고 당부했다.",
       "title": "김정관 “메가프로젝트 투자 적기 이행 뒷받침”"
     },
+    "core:172111c35f294c71260cecc4": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
+    },
     "core:1722180f20eff12587862e63": {
       "first_seen_kst": "2026-10-20T13:30:14+09:00",
       "lanes": {
@@ -10904,6 +10930,30 @@
       "source_title": "[TODAY엔비디아]리플렉션 AI 인수나 추가 투자 검토…개장전 '강보합'",
       "telegram_core_fact": "엔비디아(NVDA)가 인공지능(AI) 스타트업 리플렉션 AI(Reflection AI) 인수나 지분 투자를 확대하는 방안을 검토하고 있다고 파이낸셜타임스(FT)가 12일(현지시간) 보도했다.",
       "title": "[TODAY엔비디아]리플렉션 AI 인수나 추가 투자 검토…개장전 '강보합'"
+    },
+    "core:172870cda5201423b7b58099": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02866726645617512",
+      "source": "이데일리",
+      "source_body_digest": "f31ab219d423207969901e689066aaabc182cae8ca71319990246af691a57e31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ecd4e0f71207372a53752f8c081f6240ac4f854a60000a3a87231f011d66f36",
+      "source_fact_keys": [
+        "source_fact:v1:237d3e0f54a84bbd742ee26cd5813068c6de9fbdbf722ef55f07991dad738f83",
+        "source_fact:v1:60dd9e7a0e73456196df07c305fa82d3d82bb564151631852926d54e66a7d3c7",
+        "source_fact:v1:7d03f549f8a06f0849ad5bfccd95e7c8e805286f5d9cd733487023eeffaf446d",
+        "source_fact:v1:a30dfe3ddb11091a89030b4c8f482b8f7f99d459be55f48bbb807d2fcfadbb3f",
+        "source_fact:v1:fe5449cb47b3e8a1e5ed914cb5f18bab0404dca7af4e28cd633b491906c28e16"
+      ],
+      "source_published_kst": "2026-10-28T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나",
+      "telegram_core_fact": "알테오젠(196170)이 피하주사(SC) 제형 전환 기술을 제공한 항체약물접합체(ADC) 항암제 '엔허투'(Enhertu)가 유럽에서 조기 유방암 치료제로 승인받았다. 알테오젠은 2024년 11월 다이이찌산쿄와 엔허투의 SC 제형 개발을 위한 독점 기술이전 계약을 체결했다.",
+      "title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나"
     },
     "core:174320f998b4818f3092a7e8": {
       "first_seen_kst": "2026-10-15T19:21:06+09:00",
@@ -45081,6 +45131,31 @@
       "telegram_core_fact": "이성훈 한국토지주택공사(LH) 사장이 최근 주택 매매가격과 전월세 가격 상승의 주요 원인으로 공급 부족을 지목했다. 그는 \"집값이 오르고 전월세 가격이 오르는 것은 단연코 공급 부족 때문\"이라며 \"완공 물량이 부족해서 그렇다\"고 설명했다.",
       "title": "LH 사장 \"집값 상승은 공급 부족 탓…3년 뒤 하락할 것\" [국감]"
     },
+    "core:6022e4521f44f41d22aaf6e8": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
+    },
     "core:6034c7c53bb084270674b3cf": {
       "first_seen_kst": "2026-10-23T13:28:10+09:00",
       "lanes": {
@@ -64305,6 +64380,32 @@
       "telegram_core_fact": "피지컬 AI 산업 육성과 AI 데이터센터(AIDC) 투자 지원, AI 연구개발 규제 완화 등이 주요 과제로 담겼다.",
       "title": "경제계 “피지컬 AI 지원법 연내 통과 시급”…내년 AI 정책과제 11건 건의"
     },
+    "core:87c5dd093048c11e0e6ca5e0": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
+    },
     "core:87d557b9a9c3376484a10637": {
       "first_seen_kst": "2026-10-23T16:42:18+09:00",
       "lanes": {
@@ -67533,6 +67634,26 @@
       "source_title": "美 10년물, 올해 말 5.1% 찍고 내년 말 4.78%…고금리 오래 간다",
       "telegram_core_fact": "시나이 사장은 10년물 국채금리가 2027년 6%에 근접할 수 있고 2020년대 말까지 5%를 웃돌 수 있다고 내다봤다.",
       "title": "美 10년물, 올해 말 5.1% 찍고 내년 말 4.78%…고금리 오래 간다"
+    },
+    "core:8e79a8c5480a6e49c3c3c429": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843250",
+      "source": "뉴시스",
+      "source_body_digest": "23d7f09489a4bdaf8dc5e6f9439f2792c516bba33d15fd9815dda19c5c4af201",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d56df8d9fee9216e938bf737af4b8893429ee0b2a8f72a2b82819deb99430bf",
+      "source_fact_keys": [
+        "source_fact:v1:59be4a0a84c41a791118243dbfbb9b012357accc35bdeeaa0fc436b045799291"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다",
+      "telegram_core_fact": "트럼프 대통령은 지난달 캐나다의 EU 준회원 구상을 “웃기는 일”이라고 일축하면서 실현될 경우 유럽에 매우 높은 관세를 부과하겠다고 경고했다.",
+      "title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다"
     },
     "core:8e8bd823bce7ed52d63fb290": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -104392,6 +104513,29 @@
       "telegram_core_fact": "10년물 금리는 연 4.032%로 4.2bp 하락하며 5월 11일(3.950%) 이후 최저를 기록했다.",
       "title": "코스피 반등에도 국고채 금리 일제히↓…3년물 2개월래 최저(종합) | 연합뉴스"
     },
+    "core:dd73ffb369df96b14a5c3201": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844691",
+      "source": "뉴시스",
+      "source_body_digest": "41ef284c0b97a2b61a001f837b5917b17fe20a543da3e9686a84b68c1ad7a2f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f62b8321e503ff68c93d6aa6f4a90a7890844b42876b66d91ca3d099285a1c1",
+      "source_fact_keys": [
+        "source_fact:v1:7e95375cf7145fd6fa51b6949d597ef01328b14a49a40d96411d24a1f5df0c70",
+        "source_fact:v1:ba2f3afbed470bc366db45a5454b79f3821e6391f06638f1acc7de9355145653",
+        "source_fact:v1:dbb0334082cf52293d94f2d298e6261a395261c071d5696f002e9a6a9dcb2708",
+        "source_fact:v1:f2783248a8032c8297bf86502b60ce91cdfde72268ea0db68d2a41e247396a23"
+      ],
+      "source_published_kst": "2026-10-28T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드",
+      "telegram_core_fact": "미국에 대한 불신 속에 호르무즈해협 통항과 미국 중간선거를 지렛대 삼아 양보를 끌어내려는 전략이라는 분석이 나왔다.",
+      "title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드"
+    },
     "core:dd7751ae8b5354953776c86c": {
       "first_seen_kst": "2026-10-11T18:58:34+09:00",
       "lanes": {
@@ -122431,6 +122575,29 @@
       "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
       "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
     },
+    "event:11fa91a7783ade69b586a9b9": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844691",
+      "source": "뉴시스",
+      "source_body_digest": "41ef284c0b97a2b61a001f837b5917b17fe20a543da3e9686a84b68c1ad7a2f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f62b8321e503ff68c93d6aa6f4a90a7890844b42876b66d91ca3d099285a1c1",
+      "source_fact_keys": [
+        "source_fact:v1:7e95375cf7145fd6fa51b6949d597ef01328b14a49a40d96411d24a1f5df0c70",
+        "source_fact:v1:ba2f3afbed470bc366db45a5454b79f3821e6391f06638f1acc7de9355145653",
+        "source_fact:v1:dbb0334082cf52293d94f2d298e6261a395261c071d5696f002e9a6a9dcb2708",
+        "source_fact:v1:f2783248a8032c8297bf86502b60ce91cdfde72268ea0db68d2a41e247396a23"
+      ],
+      "source_published_kst": "2026-10-28T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드",
+      "telegram_core_fact": "미국에 대한 불신 속에 호르무즈해협 통항과 미국 중간선거를 지렛대 삼아 양보를 끌어내려는 전략이라는 분석이 나왔다.",
+      "title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드"
+    },
     "event:11fb8f22fe25e6d1e341cdac": {
       "first_seen_kst": "2026-10-23T06:00:11+09:00",
       "lanes": {
@@ -128973,6 +129140,31 @@
       "telegram_core_fact": "내년 반도체 수출 물량 증가율이 당초 예상치인 10%대 초중반에서 10% 내외로 낮아지고, 반도체 단가도 예상치 대비 10% 내외 하락하는 상황을 가정했다.",
       "title": "[단독] \"AI 꺾이면 반도체 수출 1천억弗 타격\""
     },
+    "event:4f1370c2301111d6875781a0": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
+    },
     "event:4f3b9f84d9b642db80737c9b": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -131335,37 +131527,26 @@
     "event:68832cf716b50ba295693466": {
       "first_seen_kst": "2026-10-28T07:11:08+09:00",
       "lanes": {
-        "live": "2026-10-28T15:37:41+09:00",
+        "live": "2026-10-28T16:03:52+09:00",
         "preopen": "2026-10-28T07:11:08+09:00"
       },
-      "last_seen_kst": "2026-10-28T15:37:41+09:00",
-      "link": "https://biz.heraldcorp.com/article/10917533",
-      "source": "헤럴드경제",
-      "source_body_digest": "5b448dde6673278657ffd9e17e36a3ae1c97cbb17d3764ebf2f13e6b3f40bbfb",
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=03024166645617512&parentid=04890486645617512&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "6b97be07d2e6efcf7053219187d9e39e43c5c278216790cd04920a978414f15d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9e14b5efbdcb108e1d8aa772818d93766a57ab81e61a0898bbbf407780608510",
+      "source_fact_identity": "source_facts:v1:5a1a3a17758c3a5273f38d292fa52a669b1adf29528cc8d5f5e2e12cf2be64fe",
       "source_fact_keys": [
-        "source_fact:v1:55dfc1c0ca7a13f1f759139b93925db874674a3b81b802c961cefb9812d0a909",
-        "source_fact:v1:601785b9d4541ce8ab328ea26826c493c1d8778656f7c476952d1cc23907116c",
-        "source_fact:v1:61a52b7f9969e012d651b429b88635fa897c881b9ddd39c8d5e95e0b5555acc8",
-        "source_fact:v1:79d907e358817c7cbfbeb5cee4154ad858f8e30e39cf5e38c5b984c889aa41a8",
-        "source_fact:v1:79e14d1114abb41d769049d65d36f6606555914f106c09b0d9f70f28838cd897",
-        "source_fact:v1:7d5babd74da6c397437670d7c3eb60034c42a70009ab37759cd222e4c0cd157e",
-        "source_fact:v1:a474c6db80c81bb853c125ec57b72563af6108aedbe9a28adf3700394bb6e5cf",
-        "source_fact:v1:b08ceb43a5f8d6b603212d020f4b2ec81cee0393aa7986024d25e6d18059ad39",
-        "source_fact:v1:bb868073bd3ab23485b32b74bb83bb50cc0313a78c84cdb38333441325019a52",
-        "source_fact:v1:c2c5a212c6a71b4693d7133781a6120b174f79e9b3cfaa23d2a2923e7d0a5682",
-        "source_fact:v1:c372584ae96452dfb03e5a50b0d2eb51b13c1a7ecd265afc456fe1e8ac472681",
-        "source_fact:v1:ca2673a7afd982d00f634a67af7b017aade1ce6df0ec48fe80e48d121698d510",
-        "source_fact:v1:caa0822d37b792851ce3d38d56efd32a6920935fb2dc008c441a9856355ebd51",
-        "source_fact:v1:f45558d16973ac93b72ba9595c590573f9af83c91d8469f2aa3abe1a3500e3d4",
-        "source_fact:v1:fbe269bc250ed7fd648d19f722a834cc4db1112d5ff674ba4db4efe4b8710c15"
+        "source_fact:v1:60e698690c0ddf936f9c6fc1a41a641d36ccda58d70e017b54048bb2edd6ba78",
+        "source_fact:v1:9e1d983b1096b776f4863fdc76f31433431595a34a719fccbd3a26b32dec9d25",
+        "source_fact:v1:c60d4e22d7e807f6b6df89ec2f6f91c9aed7a5c863438a1ce7bf38e4af5cfa35",
+        "source_fact:v1:dd1d66347f463e406e06d2aaed6da0151e0c4e0e9f3ed0c9714d07046f2315d8"
       ],
-      "source_published_kst": "2026-10-28T11:38+09:00",
+      "source_published_kst": "2026-10-28T08:58+09:00",
       "source_supply_terms": {},
-      "source_title": "곽노정 SK하이닉스 사장 “2029년까지 D램·HBM 솔드아웃…100조 주주환원” [SK하이닉스 3분기 실적]",
-      "telegram_core_fact": "SK하이닉스가 오는 2029년까지 향후 3년간 D램과 고대역폭메모리(HBM) 물량이 사실상 솔드아웃(완판)됐다고 밝혔다.",
-      "title": "곽노정 SK하이닉스 사장 “2029년까지 D램·HBM 솔드아웃…100조 주주환원” [SK하이닉스 3분기 실적]"
+      "source_title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)",
+      "telegram_core_fact": "SK하이닉스가 올해 전체 주주환원 규모는 100조원에 달할 것이라고 28일 공시했다.",
+      "title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)"
     },
     "event:68b3ff1292ddc5b8b6a0c1b5": {
       "first_seen_kst": "2026-10-02T07:53:13+09:00",
@@ -133831,6 +134012,32 @@
       "source_title": "CALISA ACQUISITION CORP, 합병 대상 굿비전AI 텍사스 AI 인프라 협력 2건",
       "telegram_core_fact": "CALISA ACQUISITION CORP는 협력 계약의 구속력이 없어 실제 매출 기여까지는 불확실성이 크며, 합병이 완료되지 않거나 지연될 가능성도 위험 요인으로 제시됐다.",
       "title": "CALISA ACQUISITION CORP, 합병 대상 굿비전AI 텍사스 AI 인프라 협력 2건"
+    },
+    "event:7ef8269d7d0b620c2d856024": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
     },
     "event:7f60ce86312f7571c69ce8d5": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
@@ -139663,25 +139870,22 @@
     "event:b9d64c8693aa52d8ccfdc5e8": {
       "first_seen_kst": "2026-10-27T15:38:53+09:00",
       "lanes": {
-        "live": "2026-10-27T15:38:53+09:00"
+        "live": "2026-10-28T16:03:52+09:00"
       },
-      "last_seen_kst": "2026-10-27T15:38:53+09:00",
-      "link": "https://www.mt.co.kr/index.php/thebio/2026/10/27/2026102709032664985",
-      "source": "머니투데이",
-      "source_body_digest": "8c3bfbc3ba25a4cf1aa5b927aa2c703210dff67f8ca98a90f71727cd139bb9df",
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843250",
+      "source": "뉴시스",
+      "source_body_digest": "23d7f09489a4bdaf8dc5e6f9439f2792c516bba33d15fd9815dda19c5c4af201",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:150c41e8a1aa07bba74bdd74ec79b8db0397e199f1ca6a511e0969f2ca4b917b",
+      "source_fact_identity": "source_facts:v1:2d56df8d9fee9216e938bf737af4b8893429ee0b2a8f72a2b82819deb99430bf",
       "source_fact_keys": [
-        "source_fact:v1:18730c9c9e44a91ea03a0a8ff742c69c88fb65a93f3b15aa3ccb236b6c15318a",
-        "source_fact:v1:43670a5698c0f2f283bd7d2ff175e4c3734293d1f7a185bcb1b7721e0c88976a",
-        "source_fact:v1:88a0ac4e9fb12993a2db24e058f39d76cfa285ece3c4eaafa719390178587abd",
-        "source_fact:v1:aaf6540657e5acf514c1fa51f8d8720b802c8953f0cd023c168cc802fbe2368b"
+        "source_fact:v1:59be4a0a84c41a791118243dbfbb9b012357accc35bdeeaa0fc436b045799291"
       ],
-      "source_published_kst": "2026-10-27T09:40+09:00",
+      "source_published_kst": "2026-10-27T17:18+09:00",
       "source_supply_terms": {},
-      "source_title": "3분기 누적 바이오헬스 수출 33兆…화장품·바이오의약품 견인",
-      "telegram_core_fact": "유럽에서는 바이오시밀러 수요 증가와 바이오의약품 위탁개발생산(CDMO) 공급 확대가 수출 증가에 기여했다.",
-      "title": "3분기 누적 바이오헬스 수출 33兆…화장품·바이오의약품 견인"
+      "source_title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다",
+      "telegram_core_fact": "트럼프 대통령은 지난달 캐나다의 EU 준회원 구상을 “웃기는 일”이라고 일축하면서 실현될 경우 유럽에 매우 높은 관세를 부과하겠다고 경고했다.",
+      "title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다"
     },
     "event:b9e1adca94db93e47181181a": {
       "first_seen_kst": "2026-10-28T15:06:31+09:00",
@@ -149152,6 +149356,31 @@
       "source_title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여",
       "telegram_core_fact": "지난달 진행된 예비입찰에는 참여하지 않았으나 적격 인수 후보로 선정된 다우키움그룹과 손잡고 본입찰에 나서게 됐다.",
       "title": "CJ그룹, 다우키움과 컨소시엄 구성…중앙일보 본입찰 참여"
+    },
+    "fact:04214105648cf735230433c1": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
     },
     "fact:04283815e304431d1d9d053e": {
       "first_seen_kst": "2026-10-21T13:24:59+09:00",
@@ -158813,6 +159042,26 @@
       "source_title": "신형보다 더 뛴 구형 D램…AI발 공급난에 재활용까지",
       "telegram_core_fact": "삼성전자와 SK하이닉스, 마이크론 등이 부가가치가 높은 HBM과 서버용 D램 중심으로 생산 능력을 확대하면서 구형 D램 공급이 줄었다.",
       "title": "신형보다 더 뛴 구형 D램…AI발 공급난에 재활용까지"
+    },
+    "fact:1617b2c96395fd6791adad60": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843250",
+      "source": "뉴시스",
+      "source_body_digest": "23d7f09489a4bdaf8dc5e6f9439f2792c516bba33d15fd9815dda19c5c4af201",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d56df8d9fee9216e938bf737af4b8893429ee0b2a8f72a2b82819deb99430bf",
+      "source_fact_keys": [
+        "source_fact:v1:59be4a0a84c41a791118243dbfbb9b012357accc35bdeeaa0fc436b045799291"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다",
+      "telegram_core_fact": "트럼프 대통령은 지난달 캐나다의 EU 준회원 구상을 “웃기는 일”이라고 일축하면서 실현될 경우 유럽에 매우 높은 관세를 부과하겠다고 경고했다.",
+      "title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다"
     },
     "fact:164325f8ba4807655d76985e": {
       "first_seen_kst": "2026-10-21T21:09:15+09:00",
@@ -198144,6 +198393,32 @@
       "telegram_core_fact": "영국계 데이터센터 운영업체인 엔스케일이 앤트로픽에 컴퓨팅 용량을 공급하는 약 450억달러(약 60조4천억원) 계약을 협상 중이라고 블룸버그 통신이 19일(현지시간) 보도했다.",
       "title": "\"엔스케일, 앤트로픽과 60조원 규모 컴퓨팅 계약 협상중\" | 연합뉴스"
     },
+    "fact:68d1ccde25808cef63c63bc0": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
+    },
     "fact:68deab85a9ac8b89671839e0": {
       "first_seen_kst": "2026-10-21T10:53:33+09:00",
       "lanes": {
@@ -222242,6 +222517,29 @@
       "telegram_core_fact": "정부가 정부사업으로 구축한 인공지능(AI) 학습용 데이터 공급을 늘리고, 공공·민간 데이터의 소재 정보도 통합적으로 제공하기로 했다. 과학기술정보통신부는 국가 데이터 연계 및 AI 학습·활용 촉진을 위한 'AI기본법'과 '데이터산업법 개정안이 13일 국무회의를 통과했다고 밝혔다.",
       "title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다"
     },
+    "fact:96415c6b4576bd58da9321ee": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=03024166645617512&parentid=04890486645617512&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "6b97be07d2e6efcf7053219187d9e39e43c5c278216790cd04920a978414f15d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a1a3a17758c3a5273f38d292fa52a669b1adf29528cc8d5f5e2e12cf2be64fe",
+      "source_fact_keys": [
+        "source_fact:v1:60e698690c0ddf936f9c6fc1a41a641d36ccda58d70e017b54048bb2edd6ba78",
+        "source_fact:v1:9e1d983b1096b776f4863fdc76f31433431595a34a719fccbd3a26b32dec9d25",
+        "source_fact:v1:c60d4e22d7e807f6b6df89ec2f6f91c9aed7a5c863438a1ce7bf38e4af5cfa35",
+        "source_fact:v1:dd1d66347f463e406e06d2aaed6da0151e0c4e0e9f3ed0c9714d07046f2315d8"
+      ],
+      "source_published_kst": "2026-10-28T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)",
+      "telegram_core_fact": "SK하이닉스가 올해 전체 주주환원 규모는 100조원에 달할 것이라고 28일 공시했다.",
+      "title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)"
+    },
     "fact:96436584142751cdc930633f": {
       "first_seen_kst": "2026-10-28T11:04:35+09:00",
       "lanes": {
@@ -234832,6 +235130,30 @@
       "source_title": "누리호 5차 발사 부탑재위성 9기 모두 교신 성공…우주청 확인",
       "telegram_core_fact": "우주항공청과 한국항공우주연구원은 지난 7일 누리호 5차 발사에 실려 발사된 부탑재위성 9기 모두 교신에 성공했다고 13일 공식 발표했다.",
       "title": "누리호 5차 발사 부탑재위성 9기 모두 교신 성공…우주청 확인"
+    },
+    "fact:af8c9c7638236f9a3b08258c": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02866726645617512",
+      "source": "이데일리",
+      "source_body_digest": "f31ab219d423207969901e689066aaabc182cae8ca71319990246af691a57e31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ecd4e0f71207372a53752f8c081f6240ac4f854a60000a3a87231f011d66f36",
+      "source_fact_keys": [
+        "source_fact:v1:237d3e0f54a84bbd742ee26cd5813068c6de9fbdbf722ef55f07991dad738f83",
+        "source_fact:v1:60dd9e7a0e73456196df07c305fa82d3d82bb564151631852926d54e66a7d3c7",
+        "source_fact:v1:7d03f549f8a06f0849ad5bfccd95e7c8e805286f5d9cd733487023eeffaf446d",
+        "source_fact:v1:a30dfe3ddb11091a89030b4c8f482b8f7f99d459be55f48bbb807d2fcfadbb3f",
+        "source_fact:v1:fe5449cb47b3e8a1e5ed914cb5f18bab0404dca7af4e28cd633b491906c28e16"
+      ],
+      "source_published_kst": "2026-10-28T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나",
+      "telegram_core_fact": "알테오젠(196170)이 피하주사(SC) 제형 전환 기술을 제공한 항체약물접합체(ADC) 항암제 '엔허투'(Enhertu)가 유럽에서 조기 유방암 치료제로 승인받았다. 알테오젠은 2024년 11월 다이이찌산쿄와 엔허투의 SC 제형 개발을 위한 독점 기술이전 계약을 체결했다.",
+      "title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나"
     },
     "fact:afaf4c404617758ab60f31b3": {
       "first_seen_kst": "2026-10-20T11:44:43+09:00",
@@ -262158,6 +262480,32 @@
       "telegram_core_fact": "향후 10년간 1600조원 대형 투자 계획이 담긴 메가 프로젝트가 메모리 반도체와 첨단 패키징, 컴퓨팅 인프라, 제조 데이터, 피지컬 AI로 이어지는 전략적 AI 회랑을 구축하는 승부수라는 분석이다.",
       "title": "\"1600조 메가 프로젝트, 투자 넘어 산업판 바꿔야\""
     },
+    "fact:e361d3f51276d1ec4218b7f0": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
+    },
     "fact:e366540faeab88afaad26def": {
       "first_seen_kst": "2026-10-19T11:13:29+09:00",
       "lanes": {
@@ -269334,6 +269682,29 @@
       "source_title": "[2026 국감] 통합 앞둔 발전5사, 자회사 부채 8020억…고용·부채 승계계획 아직 없어",
       "telegram_core_fact": "남동발전은 액화천연가스(LNG) 건설 대체사업장 등을 통한 적정 재배치를 검토하고, 남부발전은 통합 용역계약에 고용유지·승계 조항을 반영하는 방안을 언급했다.",
       "title": "[2026 국감] 통합 앞둔 발전5사, 자회사 부채 8020억…고용·부채 승계계획 아직 없어"
+    },
+    "fact:f0f43a964221e6b54c025591": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844691",
+      "source": "뉴시스",
+      "source_body_digest": "41ef284c0b97a2b61a001f837b5917b17fe20a543da3e9686a84b68c1ad7a2f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f62b8321e503ff68c93d6aa6f4a90a7890844b42876b66d91ca3d099285a1c1",
+      "source_fact_keys": [
+        "source_fact:v1:7e95375cf7145fd6fa51b6949d597ef01328b14a49a40d96411d24a1f5df0c70",
+        "source_fact:v1:ba2f3afbed470bc366db45a5454b79f3821e6391f06638f1acc7de9355145653",
+        "source_fact:v1:dbb0334082cf52293d94f2d298e6261a395261c071d5696f002e9a6a9dcb2708",
+        "source_fact:v1:f2783248a8032c8297bf86502b60ce91cdfde72268ea0db68d2a41e247396a23"
+      ],
+      "source_published_kst": "2026-10-28T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드",
+      "telegram_core_fact": "미국에 대한 불신 속에 호르무즈해협 통항과 미국 중간선거를 지렛대 삼아 양보를 끌어내려는 전략이라는 분석이 나왔다.",
+      "title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드"
     },
     "fact:f10545fe6c491290b326881c": {
       "first_seen_kst": "2026-10-21T11:47:49+09:00",
@@ -312456,6 +312827,32 @@
       "telegram_core_fact": "로이터는 트럼프 행정부가 첨단 반도체 수출 규제 등 엔비디아의 사업에 직접 영향을 미칠 수 있는 정책을 검토하는 상황에서 대통령 명의 계좌의 주식거래가 공개됐다고 전했다.",
       "title": "트럼프, 마이크론·AMD 주식 팔고 메타 최대 2500만달러 샀다"
     },
+    "link:367edb4bdf64a49857e26218": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
+    },
     "link:369367a567f0555efa941108": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -315066,6 +315463,29 @@
       "source_title": "트럼프 \"세계에 좋은 결정 있을 것\"…대러 제재 완화 움직임",
       "telegram_core_fact": "트럼프 대통령은 앞서 16일 러시아산 에너지 구매국 등에 고율 관세를 부과하는 내용을 담은 대러 제재법인 이른바 '그레이엄법'의 시행을 유예하기로 했다.",
       "title": "트럼프 \"세계에 좋은 결정 있을 것\"…대러 제재 완화 움직임"
+    },
+    "link:3a98b16a6c39d367681ceae3": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844691",
+      "source": "뉴시스",
+      "source_body_digest": "41ef284c0b97a2b61a001f837b5917b17fe20a543da3e9686a84b68c1ad7a2f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f62b8321e503ff68c93d6aa6f4a90a7890844b42876b66d91ca3d099285a1c1",
+      "source_fact_keys": [
+        "source_fact:v1:7e95375cf7145fd6fa51b6949d597ef01328b14a49a40d96411d24a1f5df0c70",
+        "source_fact:v1:ba2f3afbed470bc366db45a5454b79f3821e6391f06638f1acc7de9355145653",
+        "source_fact:v1:dbb0334082cf52293d94f2d298e6261a395261c071d5696f002e9a6a9dcb2708",
+        "source_fact:v1:f2783248a8032c8297bf86502b60ce91cdfde72268ea0db68d2a41e247396a23"
+      ],
+      "source_published_kst": "2026-10-28T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드",
+      "telegram_core_fact": "미국에 대한 불신 속에 호르무즈해협 통항과 미국 중간선거를 지렛대 삼아 양보를 끌어내려는 전략이라는 분석이 나왔다.",
+      "title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드"
     },
     "link:3a9adb0be92feb798508c659": {
       "first_seen_kst": "2026-10-12T12:09:58+09:00",
@@ -325808,6 +326228,29 @@
       ],
       "source_published_kst": "2026-10-05T13:25+09:00",
       "title": "'北 책임 추궁'과 '한반도 긴장 완화'…DMZ 지뢰사고 대응 딜레마"
+    },
+    "link:4b640d56d19221e472ce6555": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=03024166645617512&parentid=04890486645617512&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "6b97be07d2e6efcf7053219187d9e39e43c5c278216790cd04920a978414f15d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a1a3a17758c3a5273f38d292fa52a669b1adf29528cc8d5f5e2e12cf2be64fe",
+      "source_fact_keys": [
+        "source_fact:v1:60e698690c0ddf936f9c6fc1a41a641d36ccda58d70e017b54048bb2edd6ba78",
+        "source_fact:v1:9e1d983b1096b776f4863fdc76f31433431595a34a719fccbd3a26b32dec9d25",
+        "source_fact:v1:c60d4e22d7e807f6b6df89ec2f6f91c9aed7a5c863438a1ce7bf38e4af5cfa35",
+        "source_fact:v1:dd1d66347f463e406e06d2aaed6da0151e0c4e0e9f3ed0c9714d07046f2315d8"
+      ],
+      "source_published_kst": "2026-10-28T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)",
+      "telegram_core_fact": "SK하이닉스가 올해 전체 주주환원 규모는 100조원에 달할 것이라고 28일 공시했다.",
+      "title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)"
     },
     "link:4b67f874c5dc380463eb765a": {
       "first_seen_kst": "2026-10-24T08:52:22+09:00",
@@ -363684,6 +364127,32 @@
       "telegram_core_fact": "제주신보는 이를 재원으로 75억원 신용보증을 공급한다.",
       "title": "네이버페이, 제주도·제주은행과 손잡고 지역 소상공인에 75억 신용보증"
     },
+    "link:862858d50eec334766f9161f": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
+    },
     "link:862d561250d7ff889e6f0901": {
       "first_seen_kst": "2026-10-14T06:36:25+09:00",
       "lanes": {
@@ -384321,6 +384790,31 @@
       "source_published_kst": "2026-10-07T10:00+09:00",
       "title": "테크다스 AI 가상센서, 정유공장 가열로서 안전성 향상·온실가스 저감 효과 동시 입증"
     },
+    "link:a60dcbe434438b6bdb062a1c": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
+    },
     "link:a6240d2d06066d0c603027b2": {
       "first_seen_kst": "2026-10-11T13:40:09+09:00",
       "lanes": {
@@ -390521,6 +391015,30 @@
       "telegram_core_fact": "HK이노엔은 미국 파트너사인 세벨라 파마슈티컬스가 지난 9~14일(현지 시간) 미국 테네시주에서 개최되는 미국 소화기학회 연례학술대회(ACG 2026)에서 케이캡의 비미란성 위식도역류질환(NERD) 미국 임상 3상 결과를 발표한다고 12일 밝혔다.",
       "title": "HK이노엔 \"케이캡, 美 임상 3상 평가지표 충족\""
     },
+    "link:af3bb7698c9b5721b97344cc": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02866726645617512",
+      "source": "이데일리",
+      "source_body_digest": "f31ab219d423207969901e689066aaabc182cae8ca71319990246af691a57e31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ecd4e0f71207372a53752f8c081f6240ac4f854a60000a3a87231f011d66f36",
+      "source_fact_keys": [
+        "source_fact:v1:237d3e0f54a84bbd742ee26cd5813068c6de9fbdbf722ef55f07991dad738f83",
+        "source_fact:v1:60dd9e7a0e73456196df07c305fa82d3d82bb564151631852926d54e66a7d3c7",
+        "source_fact:v1:7d03f549f8a06f0849ad5bfccd95e7c8e805286f5d9cd733487023eeffaf446d",
+        "source_fact:v1:a30dfe3ddb11091a89030b4c8f482b8f7f99d459be55f48bbb807d2fcfadbb3f",
+        "source_fact:v1:fe5449cb47b3e8a1e5ed914cb5f18bab0404dca7af4e28cd633b491906c28e16"
+      ],
+      "source_published_kst": "2026-10-28T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나",
+      "telegram_core_fact": "알테오젠(196170)이 피하주사(SC) 제형 전환 기술을 제공한 항체약물접합체(ADC) 항암제 '엔허투'(Enhertu)가 유럽에서 조기 유방암 치료제로 승인받았다. 알테오젠은 2024년 11월 다이이찌산쿄와 엔허투의 SC 제형 개발을 위한 독점 기술이전 계약을 체결했다.",
+      "title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나"
+    },
     "link:af4671a23e1f0f201babe338": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
       "lanes": {
@@ -390816,6 +391334,29 @@
       "source_title": "에이지아이, 300만주 자사주 매입 승인…내년 10월까지 1년간",
       "telegram_core_fact": "에이지아이(AGBK)는 이사회가 최대 300만 주 클래스A 보통주 자사주 매입 프로그램을 승인했다고 10월 27일 발표했다.",
       "title": "에이지아이, 300만주 자사주 매입 승인…내년 10월까지 1년간"
+    },
+    "link:afa08574e806a9008944f2da": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=03024166645617512&parentid=04890486645617512&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "6b97be07d2e6efcf7053219187d9e39e43c5c278216790cd04920a978414f15d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a1a3a17758c3a5273f38d292fa52a669b1adf29528cc8d5f5e2e12cf2be64fe",
+      "source_fact_keys": [
+        "source_fact:v1:60e698690c0ddf936f9c6fc1a41a641d36ccda58d70e017b54048bb2edd6ba78",
+        "source_fact:v1:9e1d983b1096b776f4863fdc76f31433431595a34a719fccbd3a26b32dec9d25",
+        "source_fact:v1:c60d4e22d7e807f6b6df89ec2f6f91c9aed7a5c863438a1ce7bf38e4af5cfa35",
+        "source_fact:v1:dd1d66347f463e406e06d2aaed6da0151e0c4e0e9f3ed0c9714d07046f2315d8"
+      ],
+      "source_published_kst": "2026-10-28T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)",
+      "telegram_core_fact": "SK하이닉스가 올해 전체 주주환원 규모는 100조원에 달할 것이라고 28일 공시했다.",
+      "title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)"
     },
     "link:afaf16be299e2f083e2f1779": {
       "first_seen_kst": "2026-10-15T00:12:18+09:00",
@@ -411649,6 +412190,32 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01587526645583728",
       "source": "이데일리",
       "title": "추석에도 24시간…삼성·SK하닉 반도체, 수출 최전선 지킨다"
+    },
+    "link:cfc58f42be4880a67e7fb54c": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
     },
     "link:cfcd6d2223e77652ed8673a6": {
       "first_seen_kst": "2026-10-24T07:58:32+09:00",
@@ -437300,6 +437867,32 @@
       "telegram_core_fact": "월가 컨센서스에 따르면 바이오미아 퓨전은 임상 단계 기업으로 2026년과 2027년 예상 매출액은 제공되지 않았다.",
       "title": "바이오미아 퓨전, 경구 GLP-1 BMF-650 4주 체중 6.1% 감소"
     },
+    "link:fa90a74873d4d860bd20865e": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
+    },
     "link:faab3e81c71cd1e22b407c0a": {
       "first_seen_kst": "2026-10-19T21:40:31+09:00",
       "lanes": {
@@ -437472,6 +438065,26 @@
       "source_title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\"",
       "telegram_core_fact": "21일(현지시간) CNBC에 따르면 스페이스X는 올해 3분기 매출이 145억8000만달러로 전년비 161% 증가했다고 발표했다.",
       "title": "스페이스X, 3분기 매출 161% 폭증…머스크 \"테슬라와 합병 논의\""
+    },
+    "link:faffd4cb8b52a32203b7c712": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843250",
+      "source": "뉴시스",
+      "source_body_digest": "23d7f09489a4bdaf8dc5e6f9439f2792c516bba33d15fd9815dda19c5c4af201",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d56df8d9fee9216e938bf737af4b8893429ee0b2a8f72a2b82819deb99430bf",
+      "source_fact_keys": [
+        "source_fact:v1:59be4a0a84c41a791118243dbfbb9b012357accc35bdeeaa0fc436b045799291"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다",
+      "telegram_core_fact": "트럼프 대통령은 지난달 캐나다의 EU 준회원 구상을 “웃기는 일”이라고 일축하면서 실현될 경우 유럽에 매우 높은 관세를 부과하겠다고 경고했다.",
+      "title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다"
     },
     "link:fb002752b263de4ed40626d7": {
       "first_seen_kst": "2026-10-21T00:42:39+09:00",
@@ -454936,6 +455549,30 @@
       "source_title": "지지부진 KDB생명·기사회생 케이조선…매각전 ‘마침표’ 찍을까 [M&A복덕방]",
       "telegram_core_fact": "OK금융그룹이 예별손해보험 인수 본계약을 체결한 가운데 KDB생명은 우선협상대상자 선정 이후 두 달째 주식매매계약(SPA) 단계로 나아가지 못하고 있다.",
       "title": "지지부진 KDB생명·기사회생 케이조선…매각전 ‘마침표’ 찍을까 [M&A복덕방]"
+    },
+    "original:1721c3fffd44d128dc30b314": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02866726645617512",
+      "source": "이데일리",
+      "source_body_digest": "f31ab219d423207969901e689066aaabc182cae8ca71319990246af691a57e31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ecd4e0f71207372a53752f8c081f6240ac4f854a60000a3a87231f011d66f36",
+      "source_fact_keys": [
+        "source_fact:v1:237d3e0f54a84bbd742ee26cd5813068c6de9fbdbf722ef55f07991dad738f83",
+        "source_fact:v1:60dd9e7a0e73456196df07c305fa82d3d82bb564151631852926d54e66a7d3c7",
+        "source_fact:v1:7d03f549f8a06f0849ad5bfccd95e7c8e805286f5d9cd733487023eeffaf446d",
+        "source_fact:v1:a30dfe3ddb11091a89030b4c8f482b8f7f99d459be55f48bbb807d2fcfadbb3f",
+        "source_fact:v1:fe5449cb47b3e8a1e5ed914cb5f18bab0404dca7af4e28cd633b491906c28e16"
+      ],
+      "source_published_kst": "2026-10-28T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나",
+      "telegram_core_fact": "알테오젠(196170)이 피하주사(SC) 제형 전환 기술을 제공한 항체약물접합체(ADC) 항암제 '엔허투'(Enhertu)가 유럽에서 조기 유방암 치료제로 승인받았다. 알테오젠은 2024년 11월 다이이찌산쿄와 엔허투의 SC 제형 개발을 위한 독점 기술이전 계약을 체결했다.",
+      "title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나"
     },
     "original:17282018e11cd93db391e53b": {
       "first_seen_kst": "2026-10-21T17:12:46+09:00",
@@ -490836,6 +491473,32 @@
       "telegram_core_fact": "TTM 테크놀러지스(TTMI)가 인공지능(AI) 인프라 수요 급증에 대응해 중국 4개 공장과 말레이시아 페낭 공장의 생산능력을 확충하는 4억 달러 추가 투자 계획을 12일(현지시간) 발표했다.",
       "title": "TTM 테크놀러지스, AI 인프라 증설에 4억달러 추가 투자"
     },
+    "original:4eb22ebf606785a1b1de5126": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
+    },
     "original:4eb4baa5b35e051541dc7f27": {
       "first_seen_kst": "2026-10-03T07:39:51+09:00",
       "lanes": {
@@ -504530,6 +505193,26 @@
       "source_title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스",
       "telegram_core_fact": "코스피 상장사 신한지주[055550]는 연결 기준 올해 3분기 영업이익이 1조9천70억원으로 지난해 동기보다 2.4% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
       "title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스"
+    },
+    "original:64dced84edad8cf58f019ac8": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843250",
+      "source": "뉴시스",
+      "source_body_digest": "23d7f09489a4bdaf8dc5e6f9439f2792c516bba33d15fd9815dda19c5c4af201",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d56df8d9fee9216e938bf737af4b8893429ee0b2a8f72a2b82819deb99430bf",
+      "source_fact_keys": [
+        "source_fact:v1:59be4a0a84c41a791118243dbfbb9b012357accc35bdeeaa0fc436b045799291"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다",
+      "telegram_core_fact": "트럼프 대통령은 지난달 캐나다의 EU 준회원 구상을 “웃기는 일”이라고 일축하면서 실현될 경우 유럽에 매우 높은 관세를 부과하겠다고 경고했다.",
+      "title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다"
     },
     "original:64dedd6e6366b0c1ab0b4355": {
       "first_seen_kst": "2026-10-20T18:31:59+09:00",
@@ -521968,6 +522651,29 @@
       "source_title": "TTM 테크놀러지스, MKS 광학사업 6억5000만 달러 인수",
       "telegram_core_fact": "TTM 테크놀러지스(TTMI)가 MKS(MKSI)의 적외선 광학 사업부 오피르 옵틱스(Ophir Optics)를 약 6억5000만 달러 전액 현금 거래로 인수하는 확정 계약을 체결했다고 10월 19일 발표했다.",
       "title": "TTM 테크놀러지스, MKS 광학사업 6억5000만 달러 인수"
+    },
+    "original:811d872bc4ac9052174bd4df": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844691",
+      "source": "뉴시스",
+      "source_body_digest": "41ef284c0b97a2b61a001f837b5917b17fe20a543da3e9686a84b68c1ad7a2f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f62b8321e503ff68c93d6aa6f4a90a7890844b42876b66d91ca3d099285a1c1",
+      "source_fact_keys": [
+        "source_fact:v1:7e95375cf7145fd6fa51b6949d597ef01328b14a49a40d96411d24a1f5df0c70",
+        "source_fact:v1:ba2f3afbed470bc366db45a5454b79f3821e6391f06638f1acc7de9355145653",
+        "source_fact:v1:dbb0334082cf52293d94f2d298e6261a395261c071d5696f002e9a6a9dcb2708",
+        "source_fact:v1:f2783248a8032c8297bf86502b60ce91cdfde72268ea0db68d2a41e247396a23"
+      ],
+      "source_published_kst": "2026-10-28T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드",
+      "telegram_core_fact": "미국에 대한 불신 속에 호르무즈해협 통항과 미국 중간선거를 지렛대 삼아 양보를 끌어내려는 전략이라는 분석이 나왔다.",
+      "title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드"
     },
     "original:811dad3dab7c580154ec9106": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
@@ -554776,6 +555482,32 @@
       "telegram_core_fact": "석유 최고가격제 등 직접적인 가격관리 정책을 시행한 국가들의 에너지 가격 상승률이 그렇지 않은 국가보다 9.9%포인트 낮았다는 분석이 나왔다. 비축유 방출과 한시적 감세 등으로 대응한 미국·독일의 평균 상승률 24.9%보다 9.9%포인트 낮은 수준이다.",
       "title": "석유 최고가격제 시행, 에너지가격 상승률 9.9%p 낮았다…출구전략은 숙제"
     },
+    "original:b387f5640e28fe1a00bd5e0c": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
+    },
     "original:b38bf7d1b98ae74bec02b0c1": {
       "first_seen_kst": "2026-10-03T01:03:39+09:00",
       "lanes": {
@@ -565385,6 +566117,31 @@
       "link": "https://www.mt.co.kr/stock/2026/09/24/2026092309245569145",
       "source": "머니투데이",
       "title": "\"개인투자 거의 없어\"...2.2경원 미국 ETF시장, 단종레는 '0.21%'"
+    },
+    "original:c5d8e2d39665d35da9c1da21": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
     },
     "original:c5decf38e9b1251ec57edc84": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -590366,6 +591123,29 @@
       "telegram_core_fact": "BNK금융그룹은 26일 실적공시를 통해 올 1~3분기 누적 그룹 연결 당기순이익(지배기업지분)이 6223억원으로, 전년 대비 1477억원(19.2%) 감소했다고 밝혔다.",
       "title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓"
     },
+    "original:ede2fc7bedd3758ceaf303c9": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=03024166645617512&parentid=04890486645617512&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "6b97be07d2e6efcf7053219187d9e39e43c5c278216790cd04920a978414f15d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a1a3a17758c3a5273f38d292fa52a669b1adf29528cc8d5f5e2e12cf2be64fe",
+      "source_fact_keys": [
+        "source_fact:v1:60e698690c0ddf936f9c6fc1a41a641d36ccda58d70e017b54048bb2edd6ba78",
+        "source_fact:v1:9e1d983b1096b776f4863fdc76f31433431595a34a719fccbd3a26b32dec9d25",
+        "source_fact:v1:c60d4e22d7e807f6b6df89ec2f6f91c9aed7a5c863438a1ce7bf38e4af5cfa35",
+        "source_fact:v1:dd1d66347f463e406e06d2aaed6da0151e0c4e0e9f3ed0c9714d07046f2315d8"
+      ],
+      "source_published_kst": "2026-10-28T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)",
+      "telegram_core_fact": "SK하이닉스가 올해 전체 주주환원 규모는 100조원에 달할 것이라고 28일 공시했다.",
+      "title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)"
+    },
     "original:edec30cdc2a2224e6f9d8eb4": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -608287,6 +609067,29 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:02a2a948238c736267824d4d": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844691",
+      "source": "뉴시스",
+      "source_body_digest": "41ef284c0b97a2b61a001f837b5917b17fe20a543da3e9686a84b68c1ad7a2f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f62b8321e503ff68c93d6aa6f4a90a7890844b42876b66d91ca3d099285a1c1",
+      "source_fact_keys": [
+        "source_fact:v1:7e95375cf7145fd6fa51b6949d597ef01328b14a49a40d96411d24a1f5df0c70",
+        "source_fact:v1:ba2f3afbed470bc366db45a5454b79f3821e6391f06638f1acc7de9355145653",
+        "source_fact:v1:dbb0334082cf52293d94f2d298e6261a395261c071d5696f002e9a6a9dcb2708",
+        "source_fact:v1:f2783248a8032c8297bf86502b60ce91cdfde72268ea0db68d2a41e247396a23"
+      ],
+      "source_published_kst": "2026-10-28T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드",
+      "telegram_core_fact": "미국에 대한 불신 속에 호르무즈해협 통항과 미국 중간선거를 지렛대 삼아 양보를 끌어내려는 전략이라는 분석이 나왔다.",
+      "title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드"
     },
     "source_fact:02a2ca647b5f9ba12c3645fe": {
       "first_seen_kst": "2026-10-27T08:49:21+09:00",
@@ -665432,6 +666235,31 @@
       "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
       "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
     },
+    "source_fact:18a72ae32e0232b405201935": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
+    },
     "source_fact:18ab91beb715f75014f413e4": {
       "first_seen_kst": "2026-10-20T19:58:15+09:00",
       "lanes": {
@@ -672623,6 +673451,32 @@
       "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
       "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
       "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
+    },
+    "source_fact:1b5e1b6a7c5c48da22db3973": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
     },
     "source_fact:1b5fa6ba370acfb73b408c3d": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
@@ -719316,6 +720170,32 @@
       ],
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "샌프란시스코 연은 총재 \"AI발 인플레, 단발성 아닐 수도\""
+    },
+    "source_fact:2c12d0af32d151982c58dad7": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
     },
     "source_fact:2c1973974323222a0962dc14": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
@@ -771433,6 +772313,31 @@
       "telegram_core_fact": "엠씨넥스(대표 민동욱)는 주주가치 제고를 위해 약 161억원 자기주식 90만 1500주를 소각한다고 21일 금융감독원 전자공시시스템을 통해 공시했다.",
       "title": "엠씨넥스, 161억원 자사주 소각…주주환원 약속이행"
     },
+    "source_fact:4029954236848128875c055c": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
+    },
     "source_fact:402a0201b595c23d57d1017c": {
       "first_seen_kst": "2026-10-16T17:33:02+09:00",
       "lanes": {
@@ -771764,6 +772669,32 @@
       "source_title": "SK ‘전력 자급자족’… 연료전지 인프라 구축에 속도",
       "telegram_core_fact": "인공지능(AI) 데이터센터 확대로 전력 확보 경쟁이 치열한 가운데 연료전지가 전력 공급의 대안으로 부상하고 있다.",
       "title": "SK ‘전력 자급자족’… 연료전지 인프라 구축에 속도"
+    },
+    "source_fact:40455e2a9f2f77e39bed5b02": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
     },
     "source_fact:4045f3721d7d32b234bc6c78": {
       "first_seen_kst": "2026-10-23T00:33:48+09:00",
@@ -774176,6 +775107,32 @@
       "source_title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\"",
       "telegram_core_fact": "씨어스는 이번 용인 신공장 개소로 평택 본사와 용인 신공장을 연계한 주요 생산기반을 확보한 만큼, 향후 스마트팩토리 고도화와 글로벌사업 확대에 투자 역량을 집중할 방침이다.",
       "title": "[BioS]씨어스, 용인 신공장 개소..웨어러블패치 캐파 \"1.6배↑\""
+    },
+    "source_fact:4140ad4e46d76b3542188ec4": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
     },
     "source_fact:41421bb95a849898518f3814": {
       "first_seen_kst": "2026-10-14T21:14:31+09:00",
@@ -786499,6 +787456,32 @@
       "telegram_core_fact": "사상 최고치 부근까지 오른 주가와 5%를 웃도는 장기금리가 공존하려면 기업들이 높아진 기대를 실적으로 증명해야 한다. 특히 AI에 쏟아부은 막대한 자금이 실제 매출과 이익으로 연결되고 있는지가 이번 실적시즌의 핵심 시험대가 될 전망이다.",
       "title": "사상 최고치 달리던 美증시 제동…AI 랠리 시험대[월스트리트in]"
     },
+    "source_fact:45ddbbf70684d95284e2e9bb": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
+    },
     "source_fact:45de2ff6805a174154149e0a": {
       "first_seen_kst": "2026-10-24T14:37:56+09:00",
       "lanes": {
@@ -798686,6 +799669,32 @@
       "telegram_core_fact": "이는 전 세계적인 인공지능(AI) 인프라 투자 확대로 D램과 낸드 등 메모리 전반의 공급이 부족해지며 가격 오름세를 이어간 영향으로 해석된다.",
       "title": "메모리 대호황 올라탄 삼성…엔비디아 넘어 영업익 세계1위 눈앞 | 연합뉴스"
     },
+    "source_fact:49efa890d37c875b75403582": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
+    },
     "source_fact:49efad24ba37f1f498efe592": {
       "first_seen_kst": "2026-10-14T19:15:46+09:00",
       "lanes": {
@@ -806993,6 +808002,30 @@
       "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
       "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
       "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
+    },
+    "source_fact:4d6a082ce68d74dc7f0b9fce": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02866726645617512",
+      "source": "이데일리",
+      "source_body_digest": "f31ab219d423207969901e689066aaabc182cae8ca71319990246af691a57e31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ecd4e0f71207372a53752f8c081f6240ac4f854a60000a3a87231f011d66f36",
+      "source_fact_keys": [
+        "source_fact:v1:237d3e0f54a84bbd742ee26cd5813068c6de9fbdbf722ef55f07991dad738f83",
+        "source_fact:v1:60dd9e7a0e73456196df07c305fa82d3d82bb564151631852926d54e66a7d3c7",
+        "source_fact:v1:7d03f549f8a06f0849ad5bfccd95e7c8e805286f5d9cd733487023eeffaf446d",
+        "source_fact:v1:a30dfe3ddb11091a89030b4c8f482b8f7f99d459be55f48bbb807d2fcfadbb3f",
+        "source_fact:v1:fe5449cb47b3e8a1e5ed914cb5f18bab0404dca7af4e28cd633b491906c28e16"
+      ],
+      "source_published_kst": "2026-10-28T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나",
+      "telegram_core_fact": "알테오젠(196170)이 피하주사(SC) 제형 전환 기술을 제공한 항체약물접합체(ADC) 항암제 '엔허투'(Enhertu)가 유럽에서 조기 유방암 치료제로 승인받았다. 알테오젠은 2024년 11월 다이이찌산쿄와 엔허투의 SC 제형 개발을 위한 독점 기술이전 계약을 체결했다.",
+      "title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나"
     },
     "source_fact:4d6babc40ac081bf6cc65340": {
       "first_seen_kst": "2026-10-12T11:51:53+09:00",
@@ -861758,6 +862791,31 @@
       "telegram_core_fact": "한국토지주택공사(LH)가 올해 4분기 전국 16개 단지에서 공공임대주택 4663가구를 공급한다.",
       "title": "LH, 4분기 전국 16개 단지서 임대주택 4663가구 공급"
     },
+    "source_fact:61626469f78fcc3c98414391": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
+    },
     "source_fact:61631a8d8a40f52a3b34e767": {
       "first_seen_kst": "2026-10-26T23:18:52+09:00",
       "lanes": {
@@ -863950,6 +865008,32 @@
       "source_title": "국가필수의약품 공급 차질 4년 새 2.8배…식약처는 상당수 '조치 불필요'",
       "telegram_core_fact": "일부 의약품은 공급 차질이 반복되고 있지만 식품의약품안전처가 상당수 사례를 별도 조치가 필요하지 않은 것으로 판단하면서 공급 안정화를 위한 관리체계 개선이 필요하다는 지적이 나온다. 그가 제시한 자료에서는 국가필수의약품 공급 중단·부족 보고 56건 가운데 38건이 '조치 불필요'로 분류됐다.",
       "title": "국가필수의약품 공급 차질 4년 새 2.8배…식약처는 상당수 '조치 불필요'"
+    },
+    "source_fact:626567bd3d7a73c9e97a9ba1": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
     },
     "source_fact:6268226e4db85d6391b0278e": {
       "first_seen_kst": "2026-10-10T22:01:04+09:00",
@@ -934319,6 +935403,32 @@
       "telegram_core_fact": "K-푸드 전문기업 바이오포트는 최근 인수한 패밀리팜의 생산능력(CAPA)을 기존 대비 약 2.3배 확대하고 건강스낵 사업 확장에 속도를 낸다고 26일 밝혔다.",
       "title": "바이오포트, 패밀리팜 CAPA 증설…건강스낵 사업 확장 속도"
     },
+    "source_fact:7cb212c0c158dded293406b9": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
+    },
     "source_fact:7cb4b21ecf48c32b876f847f": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -955978,6 +957088,32 @@
       "telegram_core_fact": "네팔 정부가 대홍수로 실종된 피해자들의 법적 사망선고 대기기간을 기존 12년에서 약 45일로 대폭 단축했다. 8월 발생한 대홍수로 5000명 넘는 실종자가 발생한 가운데 유족들이 보상금을 받거나 재산 문제를 해결할 수 있도록 하기 위한 조치다.",
       "title": "네팔, 대홍수 실종자 사망선고 대기기간 12년→45일 단축"
     },
+    "source_fact:855914a5d500b855f12ecbc2": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
+    },
     "source_fact:856097160ba06d6e7717aca5": {
       "first_seen_kst": "2026-10-22T06:35:46+09:00",
       "lanes": {
@@ -960649,6 +961785,31 @@
       "source_title": "SK하이닉스 \"D램·HBM 3년치 물량 솔드아웃, 높은 수익 지속가능\"",
       "telegram_core_fact": "4·4분기에는 HBM4가 출하 물량과 매출 비중 모두 HBM3E를 넘어설 것으로 예상한 SK하이닉스 측은 \"HBM4는 계획 수율을 상회해 목표를 상향 조정했고, HBM3E 역시 당초 계획했던 성숙 수율을 초과 달성했다. 지금은 높은 고객 수요에 대응하기 위해 생산성을 극대화하는 데 집중하고 있다\"고 말했다.",
       "title": "SK하이닉스 \"D램·HBM 3년치 물량 솔드아웃, 높은 수익 지속가능\""
+    },
+    "source_fact:86e91e8d028a1951eb5fb573": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
     },
     "source_fact:86ee7f62983eb2ac5a787aa1": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -978202,6 +979363,29 @@
       "source_title": "영풍·MBK, 고려아연 상대 주주대표소송 1심 패소...최윤범 이사진 '선방'",
       "telegram_core_fact": "[파이낸셜뉴스] 영풍과 MBK파트너스가 고려아연의 대항 자기주식(자사주) 공개매수 결의와 관련해 제기한 손해배상 청구 주주대표소송에서 패소했다.",
       "title": "영풍·MBK, 고려아연 상대 주주대표소송 1심 패소...최윤범 이사진 '선방'"
+    },
+    "source_fact:8e12c8ba7207866c92a90126": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=03024166645617512&parentid=04890486645617512&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "6b97be07d2e6efcf7053219187d9e39e43c5c278216790cd04920a978414f15d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a1a3a17758c3a5273f38d292fa52a669b1adf29528cc8d5f5e2e12cf2be64fe",
+      "source_fact_keys": [
+        "source_fact:v1:60e698690c0ddf936f9c6fc1a41a641d36ccda58d70e017b54048bb2edd6ba78",
+        "source_fact:v1:9e1d983b1096b776f4863fdc76f31433431595a34a719fccbd3a26b32dec9d25",
+        "source_fact:v1:c60d4e22d7e807f6b6df89ec2f6f91c9aed7a5c863438a1ce7bf38e4af5cfa35",
+        "source_fact:v1:dd1d66347f463e406e06d2aaed6da0151e0c4e0e9f3ed0c9714d07046f2315d8"
+      ],
+      "source_published_kst": "2026-10-28T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)",
+      "telegram_core_fact": "SK하이닉스가 올해 전체 주주환원 규모는 100조원에 달할 것이라고 28일 공시했다.",
+      "title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)"
     },
     "source_fact:8e13dafc778b6597e7d77acf": {
       "first_seen_kst": "2026-10-16T18:28:57+09:00",
@@ -1037739,6 +1038923,29 @@
       "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 약 11조원 저대역 주파수 인수를 추진하며 미국 이동통신 시장 공략에 나섰다.",
       "title": "스페이스X, 저대역 주파수 11조원에 인수 추진…통신업계 긴장"
     },
+    "source_fact:a434707be836f95c315583b6": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=03024166645617512&parentid=04890486645617512&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "6b97be07d2e6efcf7053219187d9e39e43c5c278216790cd04920a978414f15d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a1a3a17758c3a5273f38d292fa52a669b1adf29528cc8d5f5e2e12cf2be64fe",
+      "source_fact_keys": [
+        "source_fact:v1:60e698690c0ddf936f9c6fc1a41a641d36ccda58d70e017b54048bb2edd6ba78",
+        "source_fact:v1:9e1d983b1096b776f4863fdc76f31433431595a34a719fccbd3a26b32dec9d25",
+        "source_fact:v1:c60d4e22d7e807f6b6df89ec2f6f91c9aed7a5c863438a1ce7bf38e4af5cfa35",
+        "source_fact:v1:dd1d66347f463e406e06d2aaed6da0151e0c4e0e9f3ed0c9714d07046f2315d8"
+      ],
+      "source_published_kst": "2026-10-28T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)",
+      "telegram_core_fact": "SK하이닉스가 올해 전체 주주환원 규모는 100조원에 달할 것이라고 28일 공시했다.",
+      "title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)"
+    },
     "source_fact:a43530223350aa38f3b45e13": {
       "first_seen_kst": "2026-10-16T22:28:52+09:00",
       "lanes": {
@@ -1055563,6 +1056770,32 @@
       "telegram_core_fact": "나스닥100 지수의 일일 수익률을 2배로 추종하는 QLD도 가격은 4.36% 하락했으나 환율을 반영하면 손실률이 18.31%로 커졌다.",
       "title": "엔비디아 올라도 원화로는 손실… 서학개미 울리는 환율"
     },
+    "source_fact:aadf41231ceff26780fc1201": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
+    },
     "source_fact:aae16e0b8b88a17d86ec6da8": {
       "first_seen_kst": "2026-10-20T08:37:36+09:00",
       "lanes": {
@@ -1069652,6 +1070885,29 @@
       "telegram_core_fact": "시는 앰코 공장 증설에 따른 폐수처리 문제를 신속히 해결한 데 이어 RE100 지원에 선제적으로 나서는 등 투자 기업 애로사항 해결에 행정력을 집중하고 있다. 전남광주통합특별시가 앰코테크놀로지코리아㈜의 3조원 규모 투자 계획에 발맞춰 'RE100(재생에너지 100% 사용)실현'에 함께 나선다.",
       "title": "폐수 이어 RE100까지…전남광주시, 앰코 투자 전방위 지원"
     },
+    "source_fact:b004f4ec009c59d8c37eb17f": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=03024166645617512&parentid=04890486645617512&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "6b97be07d2e6efcf7053219187d9e39e43c5c278216790cd04920a978414f15d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a1a3a17758c3a5273f38d292fa52a669b1adf29528cc8d5f5e2e12cf2be64fe",
+      "source_fact_keys": [
+        "source_fact:v1:60e698690c0ddf936f9c6fc1a41a641d36ccda58d70e017b54048bb2edd6ba78",
+        "source_fact:v1:9e1d983b1096b776f4863fdc76f31433431595a34a719fccbd3a26b32dec9d25",
+        "source_fact:v1:c60d4e22d7e807f6b6df89ec2f6f91c9aed7a5c863438a1ce7bf38e4af5cfa35",
+        "source_fact:v1:dd1d66347f463e406e06d2aaed6da0151e0c4e0e9f3ed0c9714d07046f2315d8"
+      ],
+      "source_published_kst": "2026-10-28T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)",
+      "telegram_core_fact": "SK하이닉스가 올해 전체 주주환원 규모는 100조원에 달할 것이라고 28일 공시했다.",
+      "title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)"
+    },
     "source_fact:b0050cf6117720fb2adf0380": {
       "first_seen_kst": "2026-10-28T12:04:13+09:00",
       "lanes": {
@@ -1082675,6 +1083931,29 @@
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
       "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
     },
+    "source_fact:b49a59966b98b03f2f7450d7": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844691",
+      "source": "뉴시스",
+      "source_body_digest": "41ef284c0b97a2b61a001f837b5917b17fe20a543da3e9686a84b68c1ad7a2f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f62b8321e503ff68c93d6aa6f4a90a7890844b42876b66d91ca3d099285a1c1",
+      "source_fact_keys": [
+        "source_fact:v1:7e95375cf7145fd6fa51b6949d597ef01328b14a49a40d96411d24a1f5df0c70",
+        "source_fact:v1:ba2f3afbed470bc366db45a5454b79f3821e6391f06638f1acc7de9355145653",
+        "source_fact:v1:dbb0334082cf52293d94f2d298e6261a395261c071d5696f002e9a6a9dcb2708",
+        "source_fact:v1:f2783248a8032c8297bf86502b60ce91cdfde72268ea0db68d2a41e247396a23"
+      ],
+      "source_published_kst": "2026-10-28T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드",
+      "telegram_core_fact": "미국에 대한 불신 속에 호르무즈해협 통항과 미국 중간선거를 지렛대 삼아 양보를 끌어내려는 전략이라는 분석이 나왔다.",
+      "title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드"
+    },
     "source_fact:b49a68b79417678e75a8cc82": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
       "lanes": {
@@ -1088416,6 +1089695,26 @@
       "telegram_core_fact": "정보보호 공시는 기업의 정보보호 투자액과 전담인력, 보안 인증·평가·점검 및 관련 활동 현황을 공개하는 제도다.",
       "title": "정보보호 공시 의무 확대…내년부터 모든 상장사 적용"
     },
+    "source_fact:b6d79148527f1f21a91a0413": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843250",
+      "source": "뉴시스",
+      "source_body_digest": "23d7f09489a4bdaf8dc5e6f9439f2792c516bba33d15fd9815dda19c5c4af201",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d56df8d9fee9216e938bf737af4b8893429ee0b2a8f72a2b82819deb99430bf",
+      "source_fact_keys": [
+        "source_fact:v1:59be4a0a84c41a791118243dbfbb9b012357accc35bdeeaa0fc436b045799291"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다",
+      "telegram_core_fact": "트럼프 대통령은 지난달 캐나다의 EU 준회원 구상을 “웃기는 일”이라고 일축하면서 실현될 경우 유럽에 매우 높은 관세를 부과하겠다고 경고했다.",
+      "title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다"
+    },
     "source_fact:b6d92da4ab9b3e38bf700f03": {
       "first_seen_kst": "2026-10-22T21:42:35+09:00",
       "lanes": {
@@ -1093845,6 +1095144,29 @@
       "source_title": "원/달러 환율, 하루 만에 10원 급등…외국인 순매도·달러 강세",
       "telegram_core_fact": "외국인 투자자들은 하루 동안 4조5000억원 넘는 주식을 순매도하며 6거래일 연속 매도세를 이어갔다.",
       "title": "원/달러 환율, 하루 만에 10원 급등…외국인 순매도·달러 강세"
+    },
+    "source_fact:b8e63d1f7bfe70f5fd1ceda2": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844691",
+      "source": "뉴시스",
+      "source_body_digest": "41ef284c0b97a2b61a001f837b5917b17fe20a543da3e9686a84b68c1ad7a2f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f62b8321e503ff68c93d6aa6f4a90a7890844b42876b66d91ca3d099285a1c1",
+      "source_fact_keys": [
+        "source_fact:v1:7e95375cf7145fd6fa51b6949d597ef01328b14a49a40d96411d24a1f5df0c70",
+        "source_fact:v1:ba2f3afbed470bc366db45a5454b79f3821e6391f06638f1acc7de9355145653",
+        "source_fact:v1:dbb0334082cf52293d94f2d298e6261a395261c071d5696f002e9a6a9dcb2708",
+        "source_fact:v1:f2783248a8032c8297bf86502b60ce91cdfde72268ea0db68d2a41e247396a23"
+      ],
+      "source_published_kst": "2026-10-28T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드",
+      "telegram_core_fact": "미국에 대한 불신 속에 호르무즈해협 통항과 미국 중간선거를 지렛대 삼아 양보를 끌어내려는 전략이라는 분석이 나왔다.",
+      "title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드"
     },
     "source_fact:b8e6407cfd84d45bd3ee24e9": {
       "first_seen_kst": "2026-10-21T20:02:19+09:00",
@@ -1100250,6 +1101572,31 @@
       "source_title": "이재용, UAE 발전소 현장 찾아…중동서 AI·에너지 신사업 확대 모색",
       "telegram_core_fact": "이재용 삼성전자 회장이 아랍에미리트(UAE)를 찾아 발전소 건설현장을 점검하고 인공지능(AI) 데이터센터와 에너지 인프라 등 미래 신사업 확대 방안을 논의했다. 삼성E&A 역시 지난해 UAE에서 2조5000억원 이상이 투입되는 TA‘ZIZ 메탄올 프로젝트를 수주하는 등 중동 에너지 시장에서 사업을 확대하고 있다.",
       "title": "이재용, UAE 발전소 현장 찾아…중동서 AI·에너지 신사업 확대 모색"
+    },
+    "source_fact:bb5fe6982477c8c922f36713": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
     },
     "source_fact:bb60426cd7e897aa69a89ea1": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
@@ -1119897,6 +1121244,32 @@
       "telegram_core_fact": "민 시장은 \"앰코코리아의 과감한 투자와 제조라인 대규모 증설은 전남광주 반도체 메가프로젝트의 첫 실행이자, 전남광주가 대한민국 반도체의 새로운 중심으로 나아가는 출발점\"이라며 \"앞으로도 기업의 애로사항을 신속히 해결하고, 공장 증설과 투자가 차질 없이 이뤄질 수 있도록 모든 행정 역량을 집중하겠다\"고 말했다.",
       "title": "앰코 광주공장 증설 3조 투자, 외투기업 단일투자 국내 최대"
     },
+    "source_fact:c2de2be8375c17cc6b8dc6fe": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
+    },
     "source_fact:c2df7106f55ea733aa9f26bb": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
       "lanes": {
@@ -1121923,6 +1123296,30 @@
       "source_title": "한투증권, 베슬AI와 'GPU 파이낸싱' 협약…AI 인프라 구축",
       "telegram_core_fact": "한국투자증권은 네오클라우드 기업 베슬AI와 'GPU 파이낸싱' 업무협약(MOU)을 체결했다고 16일 밝혔다. 방창진 한투증권 PF그룹장은 \"GPU 중심의 AI 컴퓨팅 인프라는 글로벌 금융시장에서 핵심 투자 영역으로 부상하고 있다\"며 \"이번 협약을 계기로 국내 AI 인프라 산업 성장에도 적극 기여하겠다\"고 말했다.",
       "title": "한투증권, 베슬AI와 'GPU 파이낸싱' 협약…AI 인프라 구축"
+    },
+    "source_fact:c3727796e8880e6edda8cdf7": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02866726645617512",
+      "source": "이데일리",
+      "source_body_digest": "f31ab219d423207969901e689066aaabc182cae8ca71319990246af691a57e31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ecd4e0f71207372a53752f8c081f6240ac4f854a60000a3a87231f011d66f36",
+      "source_fact_keys": [
+        "source_fact:v1:237d3e0f54a84bbd742ee26cd5813068c6de9fbdbf722ef55f07991dad738f83",
+        "source_fact:v1:60dd9e7a0e73456196df07c305fa82d3d82bb564151631852926d54e66a7d3c7",
+        "source_fact:v1:7d03f549f8a06f0849ad5bfccd95e7c8e805286f5d9cd733487023eeffaf446d",
+        "source_fact:v1:a30dfe3ddb11091a89030b4c8f482b8f7f99d459be55f48bbb807d2fcfadbb3f",
+        "source_fact:v1:fe5449cb47b3e8a1e5ed914cb5f18bab0404dca7af4e28cd633b491906c28e16"
+      ],
+      "source_published_kst": "2026-10-28T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나",
+      "telegram_core_fact": "알테오젠(196170)이 피하주사(SC) 제형 전환 기술을 제공한 항체약물접합체(ADC) 항암제 '엔허투'(Enhertu)가 유럽에서 조기 유방암 치료제로 승인받았다. 알테오젠은 2024년 11월 다이이찌산쿄와 엔허투의 SC 제형 개발을 위한 독점 기술이전 계약을 체결했다.",
+      "title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나"
     },
     "source_fact:c372b6723e577c5e9859cfc0": {
       "first_seen_kst": "2026-10-23T19:07:25+09:00",
@@ -1130944,6 +1132341,30 @@
       "source_title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스",
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔다. 젤렌스키 대통령은 또 이날 저녁 영상 연설에서 러시아가 트럼프 대통령의 발표 이후에도 우크라이나 제2의 도시 하르키우의 열병합발전소를 공격하는 등 에너지 시설 공격을 지속했다고 밝혔다.",
       "title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스"
+    },
+    "source_fact:c6b445a30d74ed3307edd5a9": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02866726645617512",
+      "source": "이데일리",
+      "source_body_digest": "f31ab219d423207969901e689066aaabc182cae8ca71319990246af691a57e31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ecd4e0f71207372a53752f8c081f6240ac4f854a60000a3a87231f011d66f36",
+      "source_fact_keys": [
+        "source_fact:v1:237d3e0f54a84bbd742ee26cd5813068c6de9fbdbf722ef55f07991dad738f83",
+        "source_fact:v1:60dd9e7a0e73456196df07c305fa82d3d82bb564151631852926d54e66a7d3c7",
+        "source_fact:v1:7d03f549f8a06f0849ad5bfccd95e7c8e805286f5d9cd733487023eeffaf446d",
+        "source_fact:v1:a30dfe3ddb11091a89030b4c8f482b8f7f99d459be55f48bbb807d2fcfadbb3f",
+        "source_fact:v1:fe5449cb47b3e8a1e5ed914cb5f18bab0404dca7af4e28cd633b491906c28e16"
+      ],
+      "source_published_kst": "2026-10-28T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나",
+      "telegram_core_fact": "알테오젠(196170)이 피하주사(SC) 제형 전환 기술을 제공한 항체약물접합체(ADC) 항암제 '엔허투'(Enhertu)가 유럽에서 조기 유방암 치료제로 승인받았다. 알테오젠은 2024년 11월 다이이찌산쿄와 엔허투의 SC 제형 개발을 위한 독점 기술이전 계약을 체결했다.",
+      "title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나"
     },
     "source_fact:c6b4996b65145342aeae2651": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
@@ -1164206,6 +1165627,30 @@
       "telegram_core_fact": "국토부 관계자는 \"계획된 주택 공급이 실제 착공과 입주로 이어지도록 주요 사업장을 점검하고 인허가 지연, 공사비 갈등, 자금조달 문제 등을 해소할 방침\"이라며 \"전월세 가격 상승에 따른 무주택자의 주거비 부담을 완화하기 위해 지난달 발표한 주거안정플랜의 후속 조치도 추진하겠다\"고 밝혔다.",
       "title": "강남 집값 10주째 하락에…국토부 \"중장기 시장 안정 기반 강화\""
     },
+    "source_fact:d35d519677fc400f3b94e47c": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02866726645617512",
+      "source": "이데일리",
+      "source_body_digest": "f31ab219d423207969901e689066aaabc182cae8ca71319990246af691a57e31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ecd4e0f71207372a53752f8c081f6240ac4f854a60000a3a87231f011d66f36",
+      "source_fact_keys": [
+        "source_fact:v1:237d3e0f54a84bbd742ee26cd5813068c6de9fbdbf722ef55f07991dad738f83",
+        "source_fact:v1:60dd9e7a0e73456196df07c305fa82d3d82bb564151631852926d54e66a7d3c7",
+        "source_fact:v1:7d03f549f8a06f0849ad5bfccd95e7c8e805286f5d9cd733487023eeffaf446d",
+        "source_fact:v1:a30dfe3ddb11091a89030b4c8f482b8f7f99d459be55f48bbb807d2fcfadbb3f",
+        "source_fact:v1:fe5449cb47b3e8a1e5ed914cb5f18bab0404dca7af4e28cd633b491906c28e16"
+      ],
+      "source_published_kst": "2026-10-28T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나",
+      "telegram_core_fact": "알테오젠(196170)이 피하주사(SC) 제형 전환 기술을 제공한 항체약물접합체(ADC) 항암제 '엔허투'(Enhertu)가 유럽에서 조기 유방암 치료제로 승인받았다. 알테오젠은 2024년 11월 다이이찌산쿄와 엔허투의 SC 제형 개발을 위한 독점 기술이전 계약을 체결했다.",
+      "title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나"
+    },
     "source_fact:d35d89a4b2b7bb9540299391": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -1166673,6 +1168118,32 @@
       "source_title": "텔레다인 테크놀러지스, 3분기 매출 16억8000만 달러..9% 증가·가이던스 상향",
       "telegram_core_fact": "텔레다인 테크놀러지스(TDY)가 3분기 매출액 16억8490만 달러로 전년비 9.4% 증가했고, Non-GAAP 희석 주당순이익은 6.72달러로 20.6% 늘어 분기 기준 역대 최대 실적을 기록했다고 10월 21일 발표했다.",
       "title": "텔레다인 테크놀러지스, 3분기 매출 16억8000만 달러..9% 증가·가이던스 상향"
+    },
+    "source_fact:d43c6320dbc061a67ae85df6": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
     },
     "source_fact:d43c77823dd756fe96fc3ecc": {
       "first_seen_kst": "2026-10-19T08:28:33+09:00",
@@ -1188785,6 +1190256,32 @@
       "telegram_core_fact": "즉 한국에 관심이 높아진 ‘외국인’과 ‘호캉스’를 즐기는 내국인 증가라는 두 가지 핵심축이 호텔의 평일과 주말 수요를 모두 채우며 전례 없는 매출 성장을 견인하고 있다는 설명이다. 외국인 관광객이 밀려들고 국내에서는 호텔에서 휴식을 취하는 ‘호캉스’가 일상적인 여가 문화로 자리 잡았다.",
       "title": "‘외국인’과 ‘호캉스’…K호텔 전성시대[호텔, 서울을 점령하다]"
     },
+    "source_fact:dcb24efdbc67b4e83f32d206": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
+    },
     "source_fact:dcb2b558b79f9d450f5c43d3": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -1194323,6 +1195820,29 @@
       "source_title": "“주가 떨어져야 더 받는다?”…삼성 직원 글에 주주들 ‘부글부글’- 매경ECONOMY",
       "telegram_core_fact": "삼성전자 주가가 지난 15일 하루 만에 9% 이상 내린 가운데 일부 직원으로 추정되는 이들이 주가가 떨어져야 이득이라는 글을 올려 갑론을박이 벌어졌다. 삼성전자 노사는 올해 DS부문 영업이익의 10.5%를 재원으로 내년 3월 말에서 4월 초 사이 성과급을 추가 지급할 예정이다.",
       "title": "“주가 떨어져야 더 받는다?”…삼성 직원 글에 주주들 ‘부글부글’- 매경ECONOMY"
+    },
+    "source_fact:deca4ee8d5f829b04bac5209": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=03024166645617512&parentid=04890486645617512&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "6b97be07d2e6efcf7053219187d9e39e43c5c278216790cd04920a978414f15d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a1a3a17758c3a5273f38d292fa52a669b1adf29528cc8d5f5e2e12cf2be64fe",
+      "source_fact_keys": [
+        "source_fact:v1:60e698690c0ddf936f9c6fc1a41a641d36ccda58d70e017b54048bb2edd6ba78",
+        "source_fact:v1:9e1d983b1096b776f4863fdc76f31433431595a34a719fccbd3a26b32dec9d25",
+        "source_fact:v1:c60d4e22d7e807f6b6df89ec2f6f91c9aed7a5c863438a1ce7bf38e4af5cfa35",
+        "source_fact:v1:dd1d66347f463e406e06d2aaed6da0151e0c4e0e9f3ed0c9714d07046f2315d8"
+      ],
+      "source_published_kst": "2026-10-28T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)",
+      "telegram_core_fact": "SK하이닉스가 올해 전체 주주환원 규모는 100조원에 달할 것이라고 28일 공시했다.",
+      "title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)"
     },
     "source_fact:decbcf4c3e02774405b53e7f": {
       "first_seen_kst": "2026-10-19T12:29:34+09:00",
@@ -1204565,6 +1206085,32 @@
       "source_title": "리오틴토, 3분기 구리 20만5000t 보합..오유톨고이 27%↑",
       "telegram_core_fact": "리오틴토(RIO)는 3분기 연결 기준 구리 생산량이 20만5000t으로 전년 동기와 같은 수준을 유지했고, 오유톨고이 구리 생산량은 전년비 27% 늘었으며 전 세계 철광석 판매량은 9080만t으로 3% 증가했다고 14일(현지시간) 발표했다.",
       "title": "리오틴토, 3분기 구리 20만5000t 보합..오유톨고이 27%↑"
+    },
+    "source_fact:e2633ee976662d1fbbe7eaf2": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
     },
     "source_fact:e266793fc206f66beef110ee": {
       "first_seen_kst": "2026-10-10T09:51:21+09:00",
@@ -1244232,6 +1245778,31 @@
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
     },
+    "source_fact:f12b5f3381c38b7d87934eee": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
+    },
     "source_fact:f12ec5bb17775842eb9957cd": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
       "lanes": {
@@ -1256309,6 +1257880,30 @@
       "source_published_kst": "2026-10-06T17:47+09:00",
       "title": "치킨업계 “산지 닭값 내려도 매입단가는 달라”…담합 조사에 비용 부담 강조"
     },
+    "source_fact:f632e179ccd5e29163f2a3b5": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02866726645617512",
+      "source": "이데일리",
+      "source_body_digest": "f31ab219d423207969901e689066aaabc182cae8ca71319990246af691a57e31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ecd4e0f71207372a53752f8c081f6240ac4f854a60000a3a87231f011d66f36",
+      "source_fact_keys": [
+        "source_fact:v1:237d3e0f54a84bbd742ee26cd5813068c6de9fbdbf722ef55f07991dad738f83",
+        "source_fact:v1:60dd9e7a0e73456196df07c305fa82d3d82bb564151631852926d54e66a7d3c7",
+        "source_fact:v1:7d03f549f8a06f0849ad5bfccd95e7c8e805286f5d9cd733487023eeffaf446d",
+        "source_fact:v1:a30dfe3ddb11091a89030b4c8f482b8f7f99d459be55f48bbb807d2fcfadbb3f",
+        "source_fact:v1:fe5449cb47b3e8a1e5ed914cb5f18bab0404dca7af4e28cd633b491906c28e16"
+      ],
+      "source_published_kst": "2026-10-28T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나",
+      "telegram_core_fact": "알테오젠(196170)이 피하주사(SC) 제형 전환 기술을 제공한 항체약물접합체(ADC) 항암제 '엔허투'(Enhertu)가 유럽에서 조기 유방암 치료제로 승인받았다. 알테오젠은 2024년 11월 다이이찌산쿄와 엔허투의 SC 제형 개발을 위한 독점 기술이전 계약을 체결했다.",
+      "title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나"
+    },
     "source_fact:f6348fc81d2fe580089fb90f": {
       "first_seen_kst": "2026-10-19T10:00:18+09:00",
       "lanes": {
@@ -1262940,6 +1264535,29 @@
       "source_title": "머스크 “마이크론 빼고 메모리값 터무니없어”…삼전닉스 저격?- 매경ECONOMY",
       "telegram_core_fact": "HBM 매출 점유율은 SK하이닉스 50%, 마이크론 18%였지만 마이크론은 AI 확산에 따른 메모리 수요 증가에 힘입어 점유율을 확대하는 중이다.",
       "title": "머스크 “마이크론 빼고 메모리값 터무니없어”…삼전닉스 저격?- 매경ECONOMY"
+    },
+    "source_fact:f90921d8af0327291da5b612": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844691",
+      "source": "뉴시스",
+      "source_body_digest": "41ef284c0b97a2b61a001f837b5917b17fe20a543da3e9686a84b68c1ad7a2f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f62b8321e503ff68c93d6aa6f4a90a7890844b42876b66d91ca3d099285a1c1",
+      "source_fact_keys": [
+        "source_fact:v1:7e95375cf7145fd6fa51b6949d597ef01328b14a49a40d96411d24a1f5df0c70",
+        "source_fact:v1:ba2f3afbed470bc366db45a5454b79f3821e6391f06638f1acc7de9355145653",
+        "source_fact:v1:dbb0334082cf52293d94f2d298e6261a395261c071d5696f002e9a6a9dcb2708",
+        "source_fact:v1:f2783248a8032c8297bf86502b60ce91cdfde72268ea0db68d2a41e247396a23"
+      ],
+      "source_published_kst": "2026-10-28T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드",
+      "telegram_core_fact": "미국에 대한 불신 속에 호르무즈해협 통항과 미국 중간선거를 지렛대 삼아 양보를 끌어내려는 전략이라는 분석이 나왔다.",
+      "title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드"
     },
     "source_fact:f909ebba9763298c072402d8": {
       "first_seen_kst": "2026-10-19T20:10:12+09:00",
@@ -1295948,6 +1297566,30 @@
       "source_title": "지지부진 KDB생명·기사회생 케이조선…매각전 ‘마침표’ 찍을까 [M&A복덕방]",
       "telegram_core_fact": "OK금융그룹이 예별손해보험 인수 본계약을 체결한 가운데 KDB생명은 우선협상대상자 선정 이후 두 달째 주식매매계약(SPA) 단계로 나아가지 못하고 있다.",
       "title": "지지부진 KDB생명·기사회생 케이조선…매각전 ‘마침표’ 찍을까 [M&A복덕방]"
+    },
+    "title:1721c3fffd44d128dc30b314": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02866726645617512",
+      "source": "이데일리",
+      "source_body_digest": "f31ab219d423207969901e689066aaabc182cae8ca71319990246af691a57e31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6ecd4e0f71207372a53752f8c081f6240ac4f854a60000a3a87231f011d66f36",
+      "source_fact_keys": [
+        "source_fact:v1:237d3e0f54a84bbd742ee26cd5813068c6de9fbdbf722ef55f07991dad738f83",
+        "source_fact:v1:60dd9e7a0e73456196df07c305fa82d3d82bb564151631852926d54e66a7d3c7",
+        "source_fact:v1:7d03f549f8a06f0849ad5bfccd95e7c8e805286f5d9cd733487023eeffaf446d",
+        "source_fact:v1:a30dfe3ddb11091a89030b4c8f482b8f7f99d459be55f48bbb807d2fcfadbb3f",
+        "source_fact:v1:fe5449cb47b3e8a1e5ed914cb5f18bab0404dca7af4e28cd633b491906c28e16"
+      ],
+      "source_published_kst": "2026-10-28T08:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나",
+      "telegram_core_fact": "알테오젠(196170)이 피하주사(SC) 제형 전환 기술을 제공한 항체약물접합체(ADC) 항암제 '엔허투'(Enhertu)가 유럽에서 조기 유방암 치료제로 승인받았다. 알테오젠은 2024년 11월 다이이찌산쿄와 엔허투의 SC 제형 개발을 위한 독점 기술이전 계약을 체결했다.",
+      "title": "'엔허투' 유럽서 조기 유방암까지 승인…알테오젠 SC 기술 가치 커지나"
     },
     "title:17282018e11cd93db391e53b": {
       "first_seen_kst": "2026-10-21T17:12:46+09:00",
@@ -1332470,6 +1334112,32 @@
       "telegram_core_fact": "TTM 테크놀러지스(TTMI)가 인공지능(AI) 인프라 수요 급증에 대응해 중국 4개 공장과 말레이시아 페낭 공장의 생산능력을 확충하는 4억 달러 추가 투자 계획을 12일(현지시간) 발표했다.",
       "title": "TTM 테크놀러지스, AI 인프라 증설에 4억달러 추가 투자"
     },
+    "title:4eb22ebf606785a1b1de5126": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02801126645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "721f0aa8231c522f9f2ca1fc5bec8fbcaeabf68df4e3dbcf8065866030507ec4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8693f51cca2698557b154b65da2fca61d1679e44defb660235fde8cc0cc94b8",
+      "source_fact_keys": [
+        "source_fact:v1:17e75f4a83136aac85bba23267f51b2f4347c5e8807e1da298cfc1ba73933b09",
+        "source_fact:v1:2b448d46f6238fa25819299f41ba59b065316461ffb15cbceac0639018b10829",
+        "source_fact:v1:522cb50924d16910a2a8e2711f396bcd442cb8cca72174cb33bd44db5cc6fa69",
+        "source_fact:v1:7b0beec42b8c6769eddbe7f8afa1f9549073244a32ef396f6a97a7c7beab09a2",
+        "source_fact:v1:d7c7c92787a00208be5d2e72836d322546e3a4c4c2e4dbe8dcf70ee426fbd69a",
+        "source_fact:v1:db34cfd23da8a9efc66d959893f212898bbd96f354f043445326457c8bd8ddbf",
+        "source_fact:v1:f7a4e616131348ef0857cc81c714424a93b19c73398bdf324ff16baf5e4c302d"
+      ],
+      "source_published_kst": "2026-10-28T08:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH",
+      "telegram_core_fact": "이민재 NH투자증권 연구원은 투자의견을 유지하는 이유에 대해 “북미 빅테크와 유틸리티 중심 고객사 확대, 초고압부터 중저압까지 진행되는 전반적인 설비투자 때문”이라고 설명했다.",
+      "title": "HD현대일렉트릭, 초고압·중저압 전력기기의 고른 확대-NH"
+    },
     "title:4eb4baa5b35e051541dc7f27": {
       "first_seen_kst": "2026-10-03T07:39:51+09:00",
       "lanes": {
@@ -1346489,6 +1348157,26 @@
       "telegram_core_fact": "코스피 상장사 신한지주[055550]는 연결 기준 올해 3분기 영업이익이 1조9천70억원으로 지난해 동기보다 2.4% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
       "title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스"
     },
+    "title:64dced84edad8cf58f019ac8": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843250",
+      "source": "뉴시스",
+      "source_body_digest": "23d7f09489a4bdaf8dc5e6f9439f2792c516bba33d15fd9815dda19c5c4af201",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d56df8d9fee9216e938bf737af4b8893429ee0b2a8f72a2b82819deb99430bf",
+      "source_fact_keys": [
+        "source_fact:v1:59be4a0a84c41a791118243dbfbb9b012357accc35bdeeaa0fc436b045799291"
+      ],
+      "source_published_kst": "2026-10-27T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다",
+      "telegram_core_fact": "트럼프 대통령은 지난달 캐나다의 EU 준회원 구상을 “웃기는 일”이라고 일축하면서 실현될 경우 유럽에 매우 높은 관세를 부과하겠다고 경고했다.",
+      "title": "캐나다 '중견국 연대' vs EU '유럽 중심'…동맹 설계도부터 엇갈렸다"
+    },
     "title:64dedd6e6366b0c1ab0b4355": {
       "first_seen_kst": "2026-10-20T18:31:59+09:00",
       "lanes": {
@@ -1348045,6 +1349733,29 @@
       "link": "https://www.inews24.com/view/2008158",
       "source": "아이뉴스24",
       "title": "[특징주] 삼성전기, MLCC 수요 급증 타고 8%대 강세"
+    },
+    "title:6758888920fa729467872530": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=03024166645617512&parentid=04890486645617512&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "6b97be07d2e6efcf7053219187d9e39e43c5c278216790cd04920a978414f15d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a1a3a17758c3a5273f38d292fa52a669b1adf29528cc8d5f5e2e12cf2be64fe",
+      "source_fact_keys": [
+        "source_fact:v1:60e698690c0ddf936f9c6fc1a41a641d36ccda58d70e017b54048bb2edd6ba78",
+        "source_fact:v1:9e1d983b1096b776f4863fdc76f31433431595a34a719fccbd3a26b32dec9d25",
+        "source_fact:v1:c60d4e22d7e807f6b6df89ec2f6f91c9aed7a5c863438a1ce7bf38e4af5cfa35",
+        "source_fact:v1:dd1d66347f463e406e06d2aaed6da0151e0c4e0e9f3ed0c9714d07046f2315d8"
+      ],
+      "source_published_kst": "2026-10-28T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)",
+      "telegram_core_fact": "SK하이닉스가 올해 전체 주주환원 규모는 100조원에 달할 것이라고 28일 공시했다.",
+      "title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)"
     },
     "title:67650e0e1411bd4d89893b0a": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -1364197,6 +1365908,29 @@
       "source_title": "TTM 테크놀러지스, MKS 광학사업 6억5000만 달러 인수",
       "telegram_core_fact": "TTM 테크놀러지스(TTMI)가 MKS(MKSI)의 적외선 광학 사업부 오피르 옵틱스(Ophir Optics)를 약 6억5000만 달러 전액 현금 거래로 인수하는 확정 계약을 체결했다고 10월 19일 발표했다.",
       "title": "TTM 테크놀러지스, MKS 광학사업 6억5000만 달러 인수"
+    },
+    "title:811d872bc4ac9052174bd4df": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844691",
+      "source": "뉴시스",
+      "source_body_digest": "41ef284c0b97a2b61a001f837b5917b17fe20a543da3e9686a84b68c1ad7a2f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f62b8321e503ff68c93d6aa6f4a90a7890844b42876b66d91ca3d099285a1c1",
+      "source_fact_keys": [
+        "source_fact:v1:7e95375cf7145fd6fa51b6949d597ef01328b14a49a40d96411d24a1f5df0c70",
+        "source_fact:v1:ba2f3afbed470bc366db45a5454b79f3821e6391f06638f1acc7de9355145653",
+        "source_fact:v1:dbb0334082cf52293d94f2d298e6261a395261c071d5696f002e9a6a9dcb2708",
+        "source_fact:v1:f2783248a8032c8297bf86502b60ce91cdfde72268ea0db68d2a41e247396a23"
+      ],
+      "source_published_kst": "2026-10-28T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드",
+      "telegram_core_fact": "미국에 대한 불신 속에 호르무즈해협 통항과 미국 중간선거를 지렛대 삼아 양보를 끌어내려는 전략이라는 분석이 나왔다.",
+      "title": "이란은 왜 협상 서두르지 않나…美 불신·중간선거·호르무즈 카드"
     },
     "title:811dad3dab7c580154ec9106": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
@@ -1397931,6 +1399665,32 @@
       "telegram_core_fact": "석유 최고가격제 등 직접적인 가격관리 정책을 시행한 국가들의 에너지 가격 상승률이 그렇지 않은 국가보다 9.9%포인트 낮았다는 분석이 나왔다. 비축유 방출과 한시적 감세 등으로 대응한 미국·독일의 평균 상승률 24.9%보다 9.9%포인트 낮은 수준이다.",
       "title": "석유 최고가격제 시행, 에너지가격 상승률 9.9%p 낮았다…출구전략은 숙제"
     },
+    "title:b387f5640e28fe1a00bd5e0c": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www1.edaily.co.kr/News/Read?newsId=02843766645617512&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4afcf33e97631fe242b63a3430e8cb873c87ec774bdf6795978bd28877f95637",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:420147cd7b66e880cd29118d13340763dc6cf3459cfbd5fb4c4c72fb419bbf1b",
+      "source_fact_keys": [
+        "source_fact:v1:00de265470c4491c6e44c693a68644cae0834c2a2eecbc2b27c3d894deb0408f",
+        "source_fact:v1:1477d5c142bb00617f6eed386e31152982d3db17f9db0903b0b6a0ba2f0590d5",
+        "source_fact:v1:26d9e4a1814df84e1214d032ed6b1bd6783ed568a3cebfaca34ef8ec125385fc",
+        "source_fact:v1:469cc7d75a635fa9c2ed2caf607e07e070d70d67adcf15d9a1a0d24e169959cf",
+        "source_fact:v1:48da2f60247ff480edac1636bc7cfde6b78f93c3984818d870fba2ae65e2cf4d",
+        "source_fact:v1:6ad54bf52fbfc5f18b91d723d131a9f92117099e80a91da94700bbe6ae8d2eca",
+        "source_fact:v1:932a7942ccef0c250c9576e81f734eae23665ea21c43f7a4c3482af97482f48b"
+      ],
+      "source_published_kst": "2026-10-28T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속",
+      "telegram_core_fact": "이곳에서 선박 안전이 흔들리면 원유 공급 차질 우려가 곧바로 국제 유가에 반영되는 구조다.",
+      "title": "이란 \"금지구역 유조선 기뢰 피격\"…유가 압력 지속"
+    },
     "title:b38bf7d1b98ae74bec02b0c1": {
       "first_seen_kst": "2026-10-03T01:03:39+09:00",
       "lanes": {
@@ -1408747,6 +1410507,31 @@
       "link": "https://www.mt.co.kr/stock/2026/09/24/2026092309245569145",
       "source": "머니투데이",
       "title": "\"개인투자 거의 없어\"...2.2경원 미국 ETF시장, 단종레는 '0.21%'"
+    },
+    "title:c5d8e2d39665d35da9c1da21": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845028",
+      "source": "뉴시스",
+      "source_body_digest": "96de6cabe2795023f2fe4b06c54fae5c459092e92631211590fa214c3d6a76e2",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:fc78309426f844010fe4ebca2549f18b9172704ab6b9982edb3606da8322b8e3",
+      "source_fact_identity": "source_facts:v1:304135b806ecc2de43ea1f2f79b8a5a321c47d33ba9dc3abdb9994c7af0721b0",
+      "source_fact_keys": [
+        "source_fact:v1:293c46d18fc81456caf64fa7f731d17a5918fc041050a6d97491ba32accf0559",
+        "source_fact:v1:30acabac424099d677444ddbe8f34796e73e30cecd6f03c6c2fedbc3c7f0cdef",
+        "source_fact:v1:43cf262ee1a5f6137bfc1eb7d8b3eeaa17083fc201cf23cbf3e9fa9eecf2ed45",
+        "source_fact:v1:53195c9ba35288d9e8c7400b3680be04e4d112517ac3736437ba241b46252e36",
+        "source_fact:v1:58aa1719d5573a03f9f00318bdfae5e9ce78c30d7cda4ec393d814e9bcb3d5fd",
+        "source_fact:v1:b99e654fa1413d4bf87d7cbccde23b028bc0552b3c96cce4a26305bc3e2bdadb"
+      ],
+      "source_published_kst": "2026-10-28T15:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\"",
+      "telegram_core_fact": "HD현대가 올해 3분기 매출 22조800억원, 영업이익 2조9197억원을 기록했다고 28일 밝혔다.",
+      "title": "HD현대, 3Q 매출·영업익 전년比 '동반 성장'…\"조선·에너지 성장세 주도\""
     },
     "title:c5decf38e9b1251ec57edc84": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -1434070,6 +1435855,29 @@
       "telegram_core_fact": "BNK금융그룹은 26일 실적공시를 통해 올 1~3분기 누적 그룹 연결 당기순이익(지배기업지분)이 6223억원으로, 전년 대비 1477억원(19.2%) 감소했다고 밝혔다.",
       "title": "BNK금융, 1~3분기 당기순이익 6223억원…전년비 19.2%↓"
     },
+    "title:ede2fc7bedd3758ceaf303c9": {
+      "first_seen_kst": "2026-10-28T16:03:52+09:00",
+      "lanes": {
+        "live": "2026-10-28T16:03:52+09:00"
+      },
+      "last_seen_kst": "2026-10-28T16:03:52+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=03024166645617512&parentid=04890486645617512&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "6b97be07d2e6efcf7053219187d9e39e43c5c278216790cd04920a978414f15d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a1a3a17758c3a5273f38d292fa52a669b1adf29528cc8d5f5e2e12cf2be64fe",
+      "source_fact_keys": [
+        "source_fact:v1:60e698690c0ddf936f9c6fc1a41a641d36ccda58d70e017b54048bb2edd6ba78",
+        "source_fact:v1:9e1d983b1096b776f4863fdc76f31433431595a34a719fccbd3a26b32dec9d25",
+        "source_fact:v1:c60d4e22d7e807f6b6df89ec2f6f91c9aed7a5c863438a1ce7bf38e4af5cfa35",
+        "source_fact:v1:dd1d66347f463e406e06d2aaed6da0151e0c4e0e9f3ed0c9714d07046f2315d8"
+      ],
+      "source_published_kst": "2026-10-28T08:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)",
+      "telegram_core_fact": "SK하이닉스가 올해 전체 주주환원 규모는 100조원에 달할 것이라고 28일 공시했다.",
+      "title": "“주당 2만원 쏜다”…SK하이닉스, 올해 주주환원 100조(종합)"
+    },
     "title:edec30cdc2a2224e6f9d8eb4": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -1445278,5 +1447086,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-28T15:37:41+09:00"
+  "updated_at_kst": "2026-10-28T16:03:52+09:00"
 }
