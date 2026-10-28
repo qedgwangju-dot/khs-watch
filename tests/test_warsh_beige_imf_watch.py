@@ -8,6 +8,16 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import warsh_beige_book_watch as beige
 import warsh_imf_policy_shift_watch as imf
 
+import datetime as _dt
+
+
+class FixedIMFEventDatetime(_dt.datetime):
+    """Keep event-window tests independent of the date CI is executed."""
+    @classmethod
+    def now(cls, tz=None):
+        return cls(2026, 10, 16, 12, 0, tzinfo=tz)
+
+
 BEIGE_HTML='''<html><h1>Beige Book - October 2026</h1>
 <h2>National Summary</h2>
 <h3>Overall Economic Activity</h3>
@@ -83,7 +93,8 @@ class TestIMF(unittest.TestCase):
     def test_dedup_does_not_send_twice(self):
         memory={}
         def save(x): memory.clear();memory.update(x)
-        with patch.object(imf,'read_state',side_effect=lambda: memory.copy()),\
+        with patch.object(imf,'datetime',FixedIMFEventDatetime),\
+             patch.object(imf,'read_state',side_effect=lambda: memory.copy()),\
              patch.object(imf,'save',side_effect=save),\
              patch.object(imf,'official_event',return_value='공식 확인'),\
              patch.object(imf,'dated_coverage',return_value=[
@@ -105,7 +116,8 @@ class TestIMF(unittest.TestCase):
             'citi_reported':False,'delivery_status':'confirmed'
         }
         def save(x): memory.clear(); memory.update(x)
-        with patch.object(imf,'read_state',side_effect=lambda: memory.copy()),\
+        with patch.object(imf,'datetime',FixedIMFEventDatetime),\
+             patch.object(imf,'read_state',side_effect=lambda: memory.copy()),\
              patch.object(imf,'save',side_effect=save),\
              patch.object(imf,'citi_reported',return_value=imf.CITI_REUTERS_MIRRORS[0]),\
              patch.object(imf,'ai_policy_sources',side_effect=RuntimeError('not yet verified')),\
