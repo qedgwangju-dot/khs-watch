@@ -772,5 +772,67 @@ class WarshOctoberFOMCRegressionTests(unittest.TestCase):
         sender.assert_not_called()
 
 
+class WarshBalanceAddendumRegressionTests(unittest.TestCase):
+    def test_syndicated_reuters_zero_width_characters_are_normalized(self):
+        url=press_v3.STRUCTURAL_URLS['balance']
+        raw='<html>Oct 28, 2026 Reuters Warsh balance sheet first &#8204;quarter</html>'
+        with patch.object(press_v3.base,'fetch',return_value=(raw,url)):
+            text=press_v3.source_text(url)
+        self.assertIn('first quarter',text)
+
+    def test_balance_addendum_marks_implementation_as_unconfirmed(self):
+        msg=press_v3.balance_addendum_message({'balance':True,'korea':False})
+        self.assertIn('2027년 1분기',msg)
+        self.assertIn('2027년 2분기 대차대조표 축소 시행은 확정되지',msg)
+        self.assertIn('연준 공식 시행지침',msg)
+        self.assertLess(len(msg),3900)
+
+    def test_confirmed_balance_addendum_cannot_resend(self):
+        stmt={'text':'Inflation remains elevated.'}
+        old={
+            'meeting_date':press_v3.STRUCTURAL_DATE,
+            'classification':press_v3.classify(stmt['text'],[]),
+            'transcript':None,
+            'structural_sent_key':press_v3.STRUCTURAL_KEY,
+            'structural_verified_topics':['strategy','ai_rates'],
+            'balance_addendum_sent_key':press_v3.BALANCE_ADDENDUM_KEY,
+            'balance_addendum_message_id':118
+        }
+        with patch.object(press_v3.base,'load',return_value=old), \
+             patch.object(press_v3,'current_meeting',return_value=(
+                 press_v3.STRUCTURAL_DATE,'https://www.federalreserve.gov/',stmt)), \
+             patch.object(press_v3,'transcript_link',return_value=None), \
+             patch.object(press_v3,'reuters_rows',return_value=[]), \
+             patch.object(press_v3.base,'save'), \
+             patch.object(press_v3.base,'send') as sender, \
+             patch.object(press_v3,'verified_structural_sources') as proof:
+            press_v3.main()
+        sender.assert_not_called()
+        proof.assert_not_called()
+
+    def test_ambiguous_balance_delivery_stays_blocked(self):
+        stmt={'text':'Inflation remains elevated.'}
+        old={
+            'meeting_date':press_v3.STRUCTURAL_DATE,
+            'classification':press_v3.classify(stmt['text'],[]),
+            'transcript':None,
+            'structural_sent_key':press_v3.STRUCTURAL_KEY,
+            'structural_verified_topics':['strategy','ai_rates'],
+            'balance_addendum_pending_key':press_v3.BALANCE_ADDENDUM_KEY,
+            'balance_addendum_delivery_status':'sending'
+        }
+        with patch.object(press_v3.base,'load',return_value=old), \
+             patch.object(press_v3,'current_meeting',return_value=(
+                 press_v3.STRUCTURAL_DATE,'https://www.federalreserve.gov/',stmt)), \
+             patch.object(press_v3,'transcript_link',return_value=None), \
+             patch.object(press_v3,'reuters_rows',return_value=[]), \
+             patch.object(press_v3.base,'save'), \
+             patch.object(press_v3.base,'send') as sender, \
+             patch.object(press_v3,'verified_structural_sources') as proof:
+            press_v3.main()
+        sender.assert_not_called()
+        proof.assert_not_called()
+
+
 if __name__ == "__main__":
     unittest.main()

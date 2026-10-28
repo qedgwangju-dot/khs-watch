@@ -18,6 +18,8 @@ FED_HOME='https://www.federalreserve.gov/'
 STRUCTURAL_DATE='2026-10-28'
 STRUCTURAL_KEY='2026-10-28|Warsh|FOMC-Structural-Verified-v1'
 STRUCTURAL_FED='https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm'
+STRUCTURAL_IMPL='https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a1.htm'
+BALANCE_ADDENDUM_KEY='2026-10-28|Warsh|BalanceTaskforceQ1-Verified-v1'
 STRUCTURAL_URLS={
     'productivity':'https://www.investing.com/news/economy-news/feds-warsh-says-us-economy-not-running-too-hot-4980529',
     'balance':'https://kfgo.com/2026/10/28/feds-policy-committee-to-weigh-balance-sheet-issues-early-next-year-warsh-says/',
@@ -45,7 +47,10 @@ def source_text(url):
         if expected != actual:
             return ''
         cleaned = re.sub(r'(?is)<script\b[^>]*>.*?</script>|<style\b[^>]*>.*?</style>', ' ', raw)
-        return ' '.join(html.unescape(re.sub(r'(?s)<[^>]+>', ' ', cleaned)).split()).lower()
+        cleaned = html.unescape(re.sub(r'(?s)<[^>]+>', ' ', cleaned))
+        # Reuters syndication embeds invisible format characters inside words.
+        cleaned = re.sub(r'[\u200b-\u200f\u2060\ufeff]', '', cleaned)
+        return ' '.join(cleaned.split()).lower()
     except Exception:
         return ''
 
@@ -124,6 +129,36 @@ def structural_message(verified):
 def structural_eligible(verified):
     return bool(verified and sum(bool(verified.get(x)) for x in (
         'balance','strategy','korea','ai_rates','hearing'))>=2)
+
+
+def balance_addendum_message(verified):
+    lines=[
+        '<b>[Warsh | 대차대조표 TF 일정 추가 검증]</b>',
+        '2026년 10월 28일 기자회견 · 앞서 보낸 AI·FOMC 운영 알림과 다른 추가 확인',
+        '',
+        '• <b>권고안 일정</b>: Reuters에 따르면 태스크포스 권고가 2027년 1분기 초 FOMC에 전달될 가능성이 있습니다. 워시는 일정이 바뀔 수 있다고 밝혔습니다.',
+        '• <b>현재 시행지침</b>: 충분한 은행 준비금 유지, 미 국채 원금의 만기 재투자, 기관채 원금의 단기국채 재투자를 지속합니다.',
+        '• <b>중요한 구분</b>: 2027년 2분기 대차대조표 축소 시행은 확정되지 않았습니다. 권고 제출·FOMC 채택·시행지침 변경·실제 자산 감소는 각각 다른 단계입니다.',
+        '• <b>시장 영향</b>: 국채 보유량·은행 준비금·단기자금 조달비용을 함께 봅니다. 단순 자산 구성 변경을 새로운 양적긴축으로 부르지 않습니다.',
+    ]
+    if verified.get('korea'):
+        lines.append('• <b>한국 공급망</b>: 워시의 한국·일본·싱가포르 기술 투입재 언급은 공급망 중요성에 관한 발언이지 특정 기업의 수주 확정은 아닙니다.')
+    lines += [
+        '',
+        '<b>다음 실제 알림 조건</b>',
+        '• 공식 태스크포스 권고안 공개, FOMC 승인, 시행지침 변경 또는 H.4.1 준비금·보유증권의 유의미한 변화',
+        '',
+        '<b>원천</b>',
+        base.link('연준 FOMC 성명',STRUCTURAL_FED),
+        base.link('연준 공식 시행지침',STRUCTURAL_IMPL),
+        base.link('Reuters 태스크포스 보도',STRUCTURAL_URLS['balance']),
+    ]
+    if verified.get('korea'):
+        lines.append(base.link('뉴스1 한국 공급망 보도',STRUCTURAL_URLS['korea']))
+    msg='\n'.join(lines)
+    if len(msg)>3900:
+        raise RuntimeError('대차대조표 보충 알림 길이 초과')
+    return msg
 
 
 def load_json(path):
@@ -303,10 +338,58 @@ def main():
     elif old.get('structural_sent_key')==STRUCTURAL_KEY:
         structural_status='already_sent'
 
+    balance_addendum_sent=False
+    balance_addendum_status='not_applicable'
+    old_topics=set(old.get('structural_verified_topics') or [])
+    balance_needed=(
+        date==STRUCTURAL_DATE and in_window
+        and old.get('structural_sent_key')==STRUCTURAL_KEY
+        and 'balance' not in old_topics
+        and old.get('balance_addendum_sent_key')!=BALANCE_ADDENDUM_KEY
+    )
+    if balance_needed:
+        if (old.get('balance_addendum_pending_key')==BALANCE_ADDENDUM_KEY
+                and old.get('balance_addendum_delivery_status')=='sending'):
+            balance_addendum_status='delivery_uncertain'
+        else:
+            balance_proof=verified_structural_sources()
+            implementation=source_text(STRUCTURAL_IMPL)
+            impl_verified=all(x in implementation for x in (
+                'maintain an ample level of reserves',
+                'roll over at auction all principal payments',
+                'reinvest all principal payments'
+            ))
+            if balance_proof and balance_proof.get('balance') and impl_verified:
+                new.update({
+                    'balance_addendum_pending_key':BALANCE_ADDENDUM_KEY,
+                    'balance_addendum_delivery_status':'sending'
+                })
+                base.save(new)
+                mid=base.send(balance_addendum_message(balance_proof))
+                if not isinstance(mid,int):
+                    raise RuntimeError('대차대조표 보충 Telegram message_id 미확인')
+                new.update({
+                    'balance_addendum_pending_key':None,
+                    'balance_addendum_delivery_status':'confirmed',
+                    'balance_addendum_sent_key':BALANCE_ADDENDUM_KEY,
+                    'balance_addendum_message_id':mid,
+                    'balance_addendum_sources':[
+                        STRUCTURAL_FED,STRUCTURAL_IMPL,STRUCTURAL_URLS['balance']
+                    ]+([STRUCTURAL_URLS['korea']] if balance_proof.get('korea') else []),
+                    'balance_addendum_sent_at_utc':datetime.now(timezone.utc).isoformat()
+                })
+                balance_addendum_sent=True
+                balance_addendum_status='confirmed'
+            else:
+                balance_addendum_status='source_verification_pending'
+    elif old.get('balance_addendum_sent_key')==BALANCE_ADDENDUM_KEY:
+        balance_addendum_status='already_sent'
+
     new.update({
         'meeting_date':date,'meeting_page':page,'classification':cls,'transcript':tr,
         'sent':should,'reuters_count':len(rows),
-        'structural_source_status':structural_status
+        'structural_source_status':structural_status,
+        'balance_addendum_status':balance_addendum_status
     })
     base.save(new)
     print(json.dumps({
@@ -314,6 +397,9 @@ def main():
         'transcript_new':transcript_new,'sent':should,'classification':cls,
         'structural_sent':structural_sent,'structural_status':structural_status,
         'structural_message_id':new.get('structural_message_id'),
+        'balance_addendum_sent':balance_addendum_sent,
+        'balance_addendum_status':balance_addendum_status,
+        'balance_addendum_message_id':new.get('balance_addendum_message_id'),
     },ensure_ascii=False))
 
 
