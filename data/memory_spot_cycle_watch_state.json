@@ -110,15 +110,15 @@
       "first_seen_kst": "2026-09-27T00:10:35+09:00"
     },
     "151d45f322185e990de7ee8b": {
-      "title": "NAND Flash Market Bulletin - Oct. 21, 2026",
+      "title": "NAND Flash Market Bulletin - Oct. 28, 2026",
       "source": "TrendForce Research",
-      "published_kst": "2026-10-21T09:00:00+09:00",
+      "published_kst": "2026-10-28T09:00:00+09:00",
       "first_seen_kst": "2026-09-27T00:10:35+09:00"
     },
     "4634b7d554050c4406f1a803": {
-      "title": "DRAM Market Bulletin - Oct. 21, 2026",
+      "title": "DRAM Market Bulletin - Oct. 28, 2026",
       "source": "TrendForce Research",
-      "published_kst": "2026-10-21T09:00:00+09:00",
+      "published_kst": "2026-10-28T09:00:00+09:00",
       "first_seen_kst": "2026-09-27T00:10:35+09:00"
     },
     "7f775cdafa333a3587426d98": {
@@ -817,11 +817,23 @@
       "source": "Chosunbiz",
       "published_kst": "2026-10-20T18:08:00+09:00",
       "first_seen_kst": "2026-10-28T05:07:36+09:00"
+    },
+    "e4848ebfd7f48d27ab5c8d2f": {
+      "title": "NAND Shortage Sends SSD Prices Up 303% [2026] - https://tech-insider.org/",
+      "source": "https://tech-insider.org/",
+      "published_kst": "2026-10-22T10:35:16+09:00",
+      "first_seen_kst": "2026-10-28T15:46:56+09:00"
+    },
+    "73bc19a67189cd98940dd28a": {
+      "title": "CXMT will expand its DRAM capacity and put pressure on global memory supply - Foro3D",
+      "source": "Foro3D",
+      "published_kst": "2026-10-21T16:00:00+09:00",
+      "first_seen_kst": "2026-10-28T15:46:56+09:00"
     }
   },
-  "updated_at_kst": "2026-10-28T11:38:36+09:00",
-  "last_scan_count": 10,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-28T15:46:56+09:00",
+  "last_scan_count": 12,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -870,31 +882,31 @@
     "secondary_industry_new_fab_timeline_official": false,
     "secondary_fab_timeline_source_kind": "뉴시스 업계 관계자 익명 발언 · TrendForce 공식 가이던스 아님",
     "secondary_fab_timeline_source_url": "https://www.newsis.com/view/NISX20261002_0003812363",
-    "source": "TrendForce",
-    "source_url": "https://www.trendforce.com/presscenter/news/20261008-13264.html",
+    "source": "TrendForce Research",
+    "source_url": "https://www.trendforce.com/research/download/RP261028TH",
     "research_url": "https://www.trendforce.com/research/download/RP260924PL",
     "capacity_source_url": "https://www.trendforce.com/research/download/RP260819HW",
     "easing_source_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
     "secondary_source_url": "https://www.trendforce.com/presscenter/news/20260921-13246.html",
     "source_rank": 3,
-    "as_of": "2026-10-08"
+    "as_of": "2026-10-28"
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-27T23:57:47+09:00",
+  "last_successful_delivery_kst": "2026-10-28T15:47:09+09:00",
   "telegram_message_ids": [
-    343
+    348
   ],
-  "telegram_message_id": 343,
+  "telegram_message_id": 348,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      343
+      348
     ],
-    "confirmed_at_kst": "2026-10-27T23:57:47+09:00",
-    "alert_signature": "ea6056e79e594b2b214c286537e05bafa3cc50e0e85af47666ff5f2fc496a270"
+    "confirmed_at_kst": "2026-10-28T15:47:09+09:00",
+    "alert_signature": "9d8ec9ca967cd8831674312f2fc6a0ede39acea40c614d391e3caecf8b4449fd"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1136,5 +1148,24 @@
     "government_consumer_policy_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202512/t20251230_1402851.html",
     "source_rank": 2,
     "as_of": "2026-10-19"
+  },
+  "russia_memory_import_track_version": 1,
+  "russia_memory_import": {
+    "stage": "working_group_discussion",
+    "brand_scope": "Samsung, SK hynix / Hynix",
+    "server_customs_code": "8471 49 000 0",
+    "storage_customs_code": "8471 70",
+    "separate_memory_chip_codes": true,
+    "order_number": "4769",
+    "order_signed_date": "2025-09-26",
+    "server_storage_restriction_effective_date": "2026-05-27",
+    "official_restoration_confirmed": false,
+    "commercial_supply_confirmed": false,
+    "news_source": "Forbes 취재 재인용·러시아 AI 실무그룹 논의",
+    "news_url": "https://www.cnews.ru/news/top/2026-10-20_vlasti_zakrutili_gajki_i",
+    "ministry_source": "Interfax 러시아 산업통상부 설명",
+    "ministry_url": "https://www.interfax.ru/1092170",
+    "legal_reference_url": "https://www.kontur-extern.ru/info/normativ/document/1/502969-prikaz-minpromtorga-rf-ot-26-09-2025-n-4769",
+    "source_kind": "비공식 논의·공식 개정령 미확인"
   }
 }
