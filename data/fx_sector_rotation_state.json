@@ -20,56 +20,60 @@
     {
       "ts": "2026-10-28T16:28:04+09:00",
       "value": 1336.0
+    },
+    {
+      "ts": "2026-10-28T17:40:53+09:00",
+      "value": 1339.6
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-10-28T16:28:04+09:00",
+    "checked_at": "2026-10-28T17:40:53+09:00",
     "market_phase": "장마감 후",
     "fx": {
-      "value": 1336.0,
+      "value": 1339.6,
       "prev_close": 1323.7,
       "naver_prev_close": 1328.0,
       "date": "2026-10-28",
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
-      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
+      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가 · 시장 스트레스 감시 검증값 재사용",
       "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20261027153517398",
       "basis_error": null,
-      "basis_reused": false
+      "basis_reused": true
     },
     "session_low": 1335.2,
-    "rebound_krw": 0.7999999999999545,
-    "rebound_pct": 0.05991611743558778,
-    "daily_krw": 12.299999999999955,
-    "daily_pct": 0.929213568028997,
+    "rebound_krw": 4.399999999999864,
+    "rebound_pct": 0.3295386458957328,
+    "daily_krw": 15.899999999999864,
+    "daily_pct": 1.2011785147691967,
     "kospi_pct": 6.63,
     "ship": {
-      "avg": -0.8775000000000001,
+      "avg": -1.16,
       "positive": 1,
-      "relative": -7.5075,
+      "relative": -7.79,
       "valid": 4,
       "confirmed": false
     },
     "defense": {
-      "avg": 2.735,
+      "avg": 2.62,
       "positive": 4,
-      "relative": -3.895,
+      "relative": -4.01,
       "valid": 4,
       "confirmed": false
     },
     "auto": {
-      "avg": 3.185,
+      "avg": 3.3175,
       "positive": 4,
-      "relative": -3.445,
+      "relative": -3.3125,
       "valid": 4,
       "confirmed": false
     },
     "counter": {
-      "avg": 2.7925,
+      "avg": 2.815,
       "positive": 4,
-      "relative": -3.8375,
+      "relative": -3.815,
       "valid": 4,
       "confirmed": false
     }
