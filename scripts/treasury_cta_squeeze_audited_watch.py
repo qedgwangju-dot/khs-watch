@@ -121,17 +121,40 @@ def _data_freshness(snapshot: dict) -> tuple[bool, list[str]]:
 
 
 def _repo_not_worse(current: dict, previous: dict) -> tuple[bool, list[str]]:
+    """Official prior-session repo moves, not last successful CTA polling state."""
     curr = current.get("repo") or {}
     prev = previous.get("repo") or {}
-    worsened: list[str] = []
+    concerns: list[str] = []
     for key in ("SOFR", "BGCR", "TGCR"):
-        c = (curr.get(key) or {}).get("rate")
-        p = (prev.get(key) or {}).get("rate")
-        if c is None or p is None:
+        row = curr.get(key) or {}
+        rate = row.get("rate")
+        if rate is None:
+            concerns.append(f"{key} 공식 당일 금리 없음")
             continue
-        if float(c) - float(p) >= 0.10:
-            worsened.append(f"{key} {float(p):.2f}%→{float(c):.2f}%")
-    return not worsened, worsened
+        move_bp = row.get("change_bp")
+        if move_bp is None:
+            prev_row = prev.get(key) or {}
+            old_rate, old_day = prev_row.get("rate"), prev_row.get("date")
+            try:
+                from datetime import date as _date
+                day_gap = (_date.fromisoformat(str(row.get("date"))) - _date.fromisoformat(str(old_day))).days
+                if old_rate is not None and 1 <= day_gap <= 4:
+                    move_bp = (float(rate) - float(old_rate)) * 100.0
+            except (ValueError, TypeError):
+                pass
+        if move_bp is None:
+            concerns.append(f"{key} 전 영업일 변화 미확인")
+            continue
+        if float(move_bp) >= 10.0:
+            concerns.append(f"{key} 공식 전영업일 {float(move_bp):+.1f}bp")
+    sofr = (curr.get("SOFR") or {}).get("rate")
+    for other in ("BGCR", "TGCR"):
+        other_rate = (curr.get(other) or {}).get("rate")
+        if sofr is not None and other_rate is not None:
+            spread = (float(sofr) - float(other_rate)) * 100.0
+            if spread >= 10.0:
+                concerns.append(f"SOFR-{other} 스프레드 {spread:+.1f}bp")
+    return not concerns, concerns
 
 
 def _price_up_count(snapshot: dict) -> int:
