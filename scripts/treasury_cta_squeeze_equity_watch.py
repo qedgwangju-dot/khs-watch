@@ -1045,7 +1045,7 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
 
     lines = [
         "<b>👀 지금 쉽게 보면</b>",
-        f"• 10년물 <b>{float(y.get('yield') or 0):.3f}%</b> · z={float(y.get('z20') or 0):+.2f}σ",
+        f"• 미 재무부 10년물 <b>{float(y.get('yield') or 0):.3f}%</b> (관측 {y.get('date','날짜 확인 불가')}) · z={float(y.get('z20') or 0):+.2f}σ",
         f"• CTA/국채 스퀴즈: <b>{audited._direction_label(snapshot, previous, reasons)[0]}</b>",
         f"• 채권→Nasdaq: <b>{cross.get('label')}</b>",
         f"• 기본 원천(CFTC·미 재무부·Repo) 신선도: {'통과' if data_fresh else '차단'}"
@@ -1105,7 +1105,7 @@ def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str]
 
     lines = [
         "<b>👀 지금 쉽게 보면</b>",
-        f"• 10년물 <b>{float(y.get('yield') or 0):.3f}%</b> · z={float(y.get('z20') or 0):+.2f}σ · 4.30%까지 {max(0.0,(float(y.get('yield') or 0)-4.30)*100):.1f}bp",
+        f"• 미 재무부 10년물 <b>{float(y.get('yield') or 0):.3f}%</b> (관측 {y.get('date','날짜 확인 불가')}) · z={float(y.get('z20') or 0):+.2f}σ · 4.30%까지 {max(0.0,(float(y.get('yield') or 0)-4.30)*100):.1f}bp",
         f"• 채권→Nasdaq: <b>{cross.get('label')}</b>",
         f"• 자료 신선도: {'통과' if data_fresh else '차단'}" + (f" ({', '.join(stale)})" if stale else ""),
         "",
@@ -1120,7 +1120,7 @@ def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str]
         _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=True).rstrip(),
         "",
         "<b>💵 Repo</b>",
-        f"• SOFR {(repo.get('SOFR') or {}).get('rate','확인 불가')}% · "
+        f"• NY Fed {(repo.get('SOFR') or {}).get('date','날짜 확인 불가')} · SOFR {(repo.get('SOFR') or {}).get('rate','확인 불가')}% · "
         f"BGCR {(repo.get('BGCR') or {}).get('rate','확인 불가')}% · "
         f"TGCR {(repo.get('TGCR') or {}).get('rate','확인 불가')}%"
         f" → {'안정' if repo_ok else '주의 ' + ', '.join(repo_worse)}",
@@ -1274,7 +1274,7 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
     lines = [
         "<b>👀 지금 쉽게 보면</b>",
         f"• 판정: <b>{direction}</b>",
-        f"• 10년물: <b>{yld:.3f}%</b> · 20일 z={z:+.2f}σ · {regime_line}",
+        f"• 미 재무부 10년물: <b>{yld:.3f}%</b> (관측 {y.get('date','날짜 확인 불가')}) · 20일 z={z:+.2f}σ · {regime_line}",
         f"• 하향 확인선: {milestone_line} · 4.30%는 과거 시장 시나리오의 보조 하단({distance:.1f}bp 거리)",
         f"• 선물: ZN {_fmt_pct((cme.get('ZN') or {}).get('pct_change'))} · ZB {_fmt_pct((cme.get('ZB') or {}).get('pct_change'))} · UB {_fmt_pct((cme.get('UB') or {}).get('pct_change'))}",
         "• 선물 가격·OI 근거: 공식 CME 일일 OI가 없으면 Yahoo 지연가격과 CFTC 주간 OI를 별개로 보며 확정판정에 사용하지 않음",
@@ -1283,7 +1283,7 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
         "<b>📍 포지션은 얼마나 쌓였나</b>",
         f"• CFTC {cftc_date}: 2Y {_fmt_net_with_krw((cftc.get('2Y') or {}).get('leveraged_net'), '2Y', fx)} · 5Y {_fmt_net_with_krw((cftc.get('5Y') or {}).get('leveraged_net'), '5Y', fx)}",
         f"• 10Y {_fmt_net_with_krw((cftc.get('10Y') or {}).get('leveraged_net'), '10Y', fx)} · Bond {_fmt_net_with_krw((cftc.get('BOND') or {}).get('leveraged_net'), 'BOND', fx)} · Ultra {_fmt_net_with_krw((cftc.get('ULTRABOND') or {}).get('leveraged_net'), 'ULTRABOND', fx)}",
-        f"• SOFR {(repo.get('SOFR') or {}).get('rate', '확인 불가')}% · BGCR {(repo.get('BGCR') or {}).get('rate', '확인 불가')}% · TGCR {(repo.get('TGCR') or {}).get('rate', '확인 불가')}%",
+        f"• NY Fed {(repo.get('SOFR') or {}).get('date','날짜 확인 불가')} · SOFR {(repo.get('SOFR') or {}).get('rate', '확인 불가')}% · BGCR {(repo.get('BGCR') or {}).get('rate', '확인 불가')}% · TGCR {(repo.get('TGCR') or {}).get('rate', '확인 불가')}%",
         f"• 원화는 계약수×CME 계약 액면×환율 기준 ({fx_date or '환율일 확인 불가'}, 1달러={float(fx):,.2f}원)" if fx is not None else "• 원화 환산: 환율 확인 불가",
         "※ 2Y는 계약당 20만달러, 5Y·10Y·Bond·Ultra는 10만달러 액면 기준. 실제 투입자금·손익·DV01이 아닙니다.",
         "",
