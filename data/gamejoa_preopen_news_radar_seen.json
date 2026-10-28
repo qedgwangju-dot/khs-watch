@@ -689,6 +689,32 @@
       "telegram_core_fact": "에이루트의 반도체 장비 자회사 앤에스알시(NSRC)는 대만 반도체 기업 P사의 생산공장(팹)에 적용되는 노광장비를 수주했다고 19일 밝혔다.",
       "title": "에이루트 子 NSRC, 대만 반도체 기업향 노광장비 수주"
     },
+    "core:01820791f376d9631d3693f1": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
+    },
     "core:0184f34928e30926591de484": {
       "first_seen_kst": "2026-10-26T06:06:42+09:00",
       "lanes": {
@@ -12773,6 +12799,27 @@
       "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
       "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
       "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
+    },
+    "core:1aa4bdf47eb770bd27a2d97e": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028105600527",
+      "source": "연합뉴스",
+      "source_body_digest": "899208bd05e5be79719d7b77d3e2a1fa2938363b32a7705a3043f1fcbb67298a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c441b61ae624d5e8a85ef93210fb8d03712ecabc43ab9d3281b8d107d56844a",
+      "source_fact_keys": [
+        "source_fact:v1:52c17501cc7215ac02abd409b2b4725675f44d214c6c26a928b4260583607e1f",
+        "source_fact:v1:9e274fc9c6c89940de81aa57d800277450ca6e6566700510608490fe4c1e255f"
+      ],
+      "source_published_kst": "2026-10-28T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD한국조선해양[009540]은 연결 기준 올해 3분기 영업이익이 1조4천472억원으로 지난해 동기보다 37.3% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스"
     },
     "core:1ac9a7c8866eecfa41600223": {
       "first_seen_kst": "2026-10-16T22:57:47+09:00",
@@ -79696,6 +79743,45 @@
       "telegram_core_fact": "에라약 파워 솔루션 그룹(RAYA)은 6월 30일 종료된 상반기(6개월) 매출액이 1217만 달러로 전년비 39.17% 증가했으나, 같은 기간 순손실은 76만1221달러로 전년 동기(51만6655달러)보다 47.34% 확대됐다고 10월 14일 발표했다.",
       "title": "에라약 파워 솔루션 그룹, 상반기 매출 39% 증가·순손실 76만 달러 확대"
     },
+    "core:a55d6751432628543f981f78": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844681",
+      "source": "뉴시스",
+      "source_body_digest": "b8206265b6c67309c80773554fa0d4c746afcffa06d1a4f33728b78d48704762",
+      "source_event_identity": "source_event:v2:named_supply_order:b08eb5fbfcdab89012a9d8233b7303b062df464d9a6a3efa0faf220208d95193",
+      "source_fact_identity": "source_facts:v1:7907fa98feb37bb3ec9d32d1557989fdb469c2158edbc7ae7bdf9080861cee9a",
+      "source_fact_keys": [
+        "source_fact:v1:47c55749e6129b1fb755f66940c7a434c5378ba754008a1e9dbb88cea1bff4c5",
+        "source_fact:v1:6802a8389ae9a5354a77a22dedca70f28066d0178362e5bbc1e2e99a83dea9e1",
+        "source_fact:v1:f75b97a7dbb2aec8d92d2494ad7575f9a81897a80989f50d6fdada81bdb89e3c"
+      ],
+      "source_published_kst": "2026-10-28T13:48+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "10000000000"
+          ]
+        ],
+        "customer": "삼성디스플레이",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-28",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "파인텍",
+        "product": "베트남과oled제조장비",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "파인텍, 100억 규모 OLED 제조장비 공급계약",
+      "telegram_core_fact": "파인텍은 삼성디스플레이 베트남(SAMSUNG DISPLAY VIETNAM)과 100억원 규모 OLED(유기발광다이오드) 제조장비 공급계약을 체결했다고 28일 공시했다. 계약 기간은 내년 10월 27일까지이며 지난해 매출의 21.63% 규모다.",
+      "title": "파인텍, 100억 규모 OLED 제조장비 공급계약"
+    },
     "core:a5646942dcc22f3e3d4f927b": {
       "first_seen_kst": "2026-10-27T08:27:48+09:00",
       "lanes": {
@@ -98384,6 +98470,32 @@
       "telegram_core_fact": "하지만 주가가 계속 오르자 조급해진 나머지 열흘 사이에 자금을 모두 투입했고, 한 달 만에 시장이 하락세로 돌아서며 3000만원가량의 평가 손실을 입었다. 퇴직금 3억으로 주식에 뛰어들었다가 한 달 만에 손실을 본 50대 사연자의 이야기가 전해지며 은퇴자들의 자산 운용 방식에 이목이 쏠리고 있다.",
       "title": "\"퇴직금 3억 몰빵했다가 열흘 만에 3000만원 날려\"…50대 명퇴자의 눈물"
     },
+    "core:cc8e900f687f584a906355d5": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
+    },
     "core:cc915fdcc2e71ae7405b9938": {
       "first_seen_kst": "2026-10-24T20:02:24+09:00",
       "lanes": {
@@ -98758,6 +98870,27 @@
       "source_title": "코트라, 체코서 차 부품 공급망 진입 지원…스코다 등과 상담회 | 연합뉴스",
       "telegram_core_fact": "대한무역투자진흥공사(코트라)는 지난 23일 체코 프라하에서 한국 자동차부품 기업들의 유럽 공급망 진입 확대를 위한 '체코 미래차 포럼 및 글로벌 파트너링 데이' 행사를 열었다고 26일 밝혔다.",
       "title": "코트라, 체코서 차 부품 공급망 진입 지원…스코다 등과 상담회 | 연합뉴스"
+    },
+    "core:cd3f3a1f9315e004e3693a4e": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/28/ELENDZX345FZ5BOGK57HGA7TF4/",
+      "source": "조선비즈",
+      "source_body_digest": "89f208e33596302a004b3a9c89cf9765a41cc5051e98f8f9bf868b1b4ecdba20",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3a1f093030ee8cae378338c014330c523bc6b4ba8299801e6939067a0fb90f5b",
+      "source_fact_identity": "source_facts:v1:878100e72e910ead6bb564e20fab0280307b3386d105841d2078968595651e70",
+      "source_fact_keys": [
+        "source_fact:v1:7d51f9724fab7649da5c14ec48e72c66fc37e8fa0d9ce357c01f4d910da2d8cd",
+        "source_fact:v1:8cce70211b360e955eed1b931efd5da6777dd109d4eea75a12b7c4f030caae84"
+      ],
+      "source_published_kst": "2026-10-28T13:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가",
+      "telegram_core_fact": "HK이노엔(195940)은 올해 3분기 영업이익이 260억원으로 전년비 0.6% 증가한 것으로 잠정 집계됐다고 28일 밝혔다.",
+      "title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가"
     },
     "core:cd42d995ec049e802e472d79": {
       "first_seen_kst": "2026-10-20T13:59:52+09:00",
@@ -114745,6 +114878,26 @@
       "telegram_core_fact": "산업통상부에 따르면 올해 3분기까지 누적 해외플랜트 수주 금액은 약 250억달러로 전년(384억달러) 대비 34.8% 감소했다.",
       "title": "플랜트 수출, 미주 3배 늘 동안 중동은 40% 급감…전쟁 장기화 여파"
     },
+    "core:ee1b34505b7b3fb03136555f": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028108600527",
+      "source": "연합뉴스",
+      "source_body_digest": "ec82550a4766ce37cf02c797e6960183c73d969fef2a6a337a615cee719d7d9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccdbb4801ecc99492aa0ef180271ad265d55f6ed794fa2ac722f5d480b98a99",
+      "source_fact_keys": [
+        "source_fact:v1:8d745c7637eddfa16def60a88d7d1a8f0bd19387b820d9741838583613acacd3"
+      ],
+      "source_published_kst": "2026-10-28T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 SKC[011790]는 연결 기준 올해 3분기 영업손실이 496억원으로 지난해 동기(-549억원)와 비교해 적자 폭이 감소한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스"
+    },
     "core:ee24fa81f6cf89fde5f760df": {
       "first_seen_kst": "2026-10-15T14:04:10+09:00",
       "lanes": {
@@ -129172,6 +129325,32 @@
       "telegram_core_fact": "이찬진 금융감독원장이 SK하이닉스 손자회사 솔리다임의 미국 나스닥 상장 추진을 중복상장으로 판단하고 있다고 밝혔다.",
       "title": "금감원장 \"솔리다임 나스닥 상장은 중복상장\" [ESG 뉴스 5]"
     },
+    "event:338f8a6adb1d44d33027bdea": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
+    },
     "event:3394a6c18554462729eb04a1": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
       "lanes": {
@@ -131108,6 +131287,45 @@
       "source": "이투데이",
       "title": "기타법인 ‘삼전닉스’ 홀로 1.1조 순매수⋯코스닥은 880선 밀려"
     },
+    "event:4826b72597baac3d22371dd6": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844681",
+      "source": "뉴시스",
+      "source_body_digest": "b8206265b6c67309c80773554fa0d4c746afcffa06d1a4f33728b78d48704762",
+      "source_event_identity": "source_event:v2:named_supply_order:b08eb5fbfcdab89012a9d8233b7303b062df464d9a6a3efa0faf220208d95193",
+      "source_fact_identity": "source_facts:v1:7907fa98feb37bb3ec9d32d1557989fdb469c2158edbc7ae7bdf9080861cee9a",
+      "source_fact_keys": [
+        "source_fact:v1:47c55749e6129b1fb755f66940c7a434c5378ba754008a1e9dbb88cea1bff4c5",
+        "source_fact:v1:6802a8389ae9a5354a77a22dedca70f28066d0178362e5bbc1e2e99a83dea9e1",
+        "source_fact:v1:f75b97a7dbb2aec8d92d2494ad7575f9a81897a80989f50d6fdada81bdb89e3c"
+      ],
+      "source_published_kst": "2026-10-28T13:48+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "10000000000"
+          ]
+        ],
+        "customer": "삼성디스플레이",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-28",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "파인텍",
+        "product": "베트남과oled제조장비",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "파인텍, 100억 규모 OLED 제조장비 공급계약",
+      "telegram_core_fact": "파인텍은 삼성디스플레이 베트남(SAMSUNG DISPLAY VIETNAM)과 100억원 규모 OLED(유기발광다이오드) 제조장비 공급계약을 체결했다고 28일 공시했다. 계약 기간은 내년 10월 27일까지이며 지난해 매출의 21.63% 규모다.",
+      "title": "파인텍, 100억 규모 OLED 제조장비 공급계약"
+    },
     "event:483d1c01ae8bd23721b59aa5": {
       "first_seen_kst": "2026-10-11T08:19:03+09:00",
       "lanes": {
@@ -132715,6 +132933,27 @@
       "source_title": "삼성전기, 3605억 규모 패키지 기판 공급계약",
       "telegram_core_fact": "삼성전기는 글로벌 대형기업과 3605억원 패키지 기판 공급계약을 체결했다고 19일 공시했다.",
       "title": "삼성전기, 3605억 규모 패키지 기판 공급계약"
+    },
+    "event:5850aecd70600cfd94212e2a": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/28/ELENDZX345FZ5BOGK57HGA7TF4/",
+      "source": "조선비즈",
+      "source_body_digest": "89f208e33596302a004b3a9c89cf9765a41cc5051e98f8f9bf868b1b4ecdba20",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3a1f093030ee8cae378338c014330c523bc6b4ba8299801e6939067a0fb90f5b",
+      "source_fact_identity": "source_facts:v1:878100e72e910ead6bb564e20fab0280307b3386d105841d2078968595651e70",
+      "source_fact_keys": [
+        "source_fact:v1:7d51f9724fab7649da5c14ec48e72c66fc37e8fa0d9ce357c01f4d910da2d8cd",
+        "source_fact:v1:8cce70211b360e955eed1b931efd5da6777dd109d4eea75a12b7c4f030caae84"
+      ],
+      "source_published_kst": "2026-10-28T13:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가",
+      "telegram_core_fact": "HK이노엔(195940)은 올해 3분기 영업이익이 260억원으로 전년비 0.6% 증가한 것으로 잠정 집계됐다고 28일 밝혔다.",
+      "title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가"
     },
     "event:589b707f6ee96bbc0289f1d0": {
       "first_seen_kst": "2026-10-15T07:08:31+09:00",
@@ -154143,6 +154382,32 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "fact:08056552ae3dbc5f2dd721d8": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
+    },
     "fact:080ad17b7b1ab6cda84dcc78": {
       "first_seen_kst": "2026-10-14T14:53:15+09:00",
       "lanes": {
@@ -155068,6 +155333,27 @@
       "source_title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고",
       "telegram_core_fact": "S&T 뱅코프(STBA)는 3분기 GAAP 희석 주당순이익이 1.09달러로 역대 최고치를 기록해 전년 동기 0.91달러보다 19.8% 늘었고, 순이익은 3860만 달러로 전년 동기 3500만 달러보다 10.4% 증가했다고 10월 22일 발표했다.",
       "title": "S&T 뱅코프, 3분기 희석 EPS 1.09달러…역대 최고"
+    },
+    "fact:096773125b5ea0f5d87c4556": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028105600527",
+      "source": "연합뉴스",
+      "source_body_digest": "899208bd05e5be79719d7b77d3e2a1fa2938363b32a7705a3043f1fcbb67298a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c441b61ae624d5e8a85ef93210fb8d03712ecabc43ab9d3281b8d107d56844a",
+      "source_fact_keys": [
+        "source_fact:v1:52c17501cc7215ac02abd409b2b4725675f44d214c6c26a928b4260583607e1f",
+        "source_fact:v1:9e274fc9c6c89940de81aa57d800277450ca6e6566700510608490fe4c1e255f"
+      ],
+      "source_published_kst": "2026-10-28T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD한국조선해양[009540]은 연결 기준 올해 3분기 영업이익이 1조4천472억원으로 지난해 동기보다 37.3% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스"
     },
     "fact:096d0019be4d4044b5e73d6a": {
       "first_seen_kst": "2026-10-27T13:52:52+09:00",
@@ -156656,6 +156942,32 @@
       "source_title": "‘저가폰 시대’ 이제 끝나나…“메모리값 상승에 2030년 출하량 40% 줄 듯”",
       "telegram_core_fact": "메모리 반도체 가격이 올라 제조 원가 부담이 같이 커지면서 오는 2030년까지 글로벌 저가 스마트폰 출하량이 2억3000만대 이상 감소할 수 있다는 전망이 나왔다.",
       "title": "‘저가폰 시대’ 이제 끝나나…“메모리값 상승에 2030년 출하량 40% 줄 듯”"
+    },
+    "fact:0c5c50b08013891e4c4492e8": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
     },
     "fact:0c79f0d77a39d6b3ee15c7c8": {
       "first_seen_kst": "2026-10-10T12:12:57+09:00",
@@ -210826,6 +211138,26 @@
       "telegram_core_fact": "펜스케오토모티브그룹(PAG)이 최대주주인 펜스케코퍼레이션, 미쓰이물산과 기업가치 약 163억 달러 비상장 전환(Going Private) 합병 계약을 체결하고, 소액주주에게 주당 212달러를 현금으로 지급하기로 했다고 15일 발표했다.",
       "title": "펜스케오토모티브그룹, 비상장 전환 추진..주당 212달러 현금인수"
     },
+    "fact:79544ebf4a9cf6e5ba1a0169": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028108600527",
+      "source": "연합뉴스",
+      "source_body_digest": "ec82550a4766ce37cf02c797e6960183c73d969fef2a6a337a615cee719d7d9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccdbb4801ecc99492aa0ef180271ad265d55f6ed794fa2ac722f5d480b98a99",
+      "source_fact_keys": [
+        "source_fact:v1:8d745c7637eddfa16def60a88d7d1a8f0bd19387b820d9741838583613acacd3"
+      ],
+      "source_published_kst": "2026-10-28T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 SKC[011790]는 연결 기준 올해 3분기 영업손실이 496억원으로 지난해 동기(-549억원)와 비교해 적자 폭이 감소한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스"
+    },
     "fact:795d9c604e54394baadc32ed": {
       "first_seen_kst": "2026-10-21T00:42:39+09:00",
       "lanes": {
@@ -244686,6 +245018,27 @@
       "telegram_core_fact": "캠시스는 3분기 연결기준 실적을 잠정 집계한 결과, 매출 1536억원과 영업이익 74억원을 기록했다고 19일 밝혔다.",
       "title": "캠시스, 3분기 영업익 74억…“연간 손익도 흑자 목표”"
     },
+    "fact:b881820f68fcb9cc1f389546": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/28/ELENDZX345FZ5BOGK57HGA7TF4/",
+      "source": "조선비즈",
+      "source_body_digest": "89f208e33596302a004b3a9c89cf9765a41cc5051e98f8f9bf868b1b4ecdba20",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3a1f093030ee8cae378338c014330c523bc6b4ba8299801e6939067a0fb90f5b",
+      "source_fact_identity": "source_facts:v1:878100e72e910ead6bb564e20fab0280307b3386d105841d2078968595651e70",
+      "source_fact_keys": [
+        "source_fact:v1:7d51f9724fab7649da5c14ec48e72c66fc37e8fa0d9ce357c01f4d910da2d8cd",
+        "source_fact:v1:8cce70211b360e955eed1b931efd5da6777dd109d4eea75a12b7c4f030caae84"
+      ],
+      "source_published_kst": "2026-10-28T13:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가",
+      "telegram_core_fact": "HK이노엔(195940)은 올해 3분기 영업이익이 260억원으로 전년비 0.6% 증가한 것으로 잠정 집계됐다고 28일 밝혔다.",
+      "title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가"
+    },
     "fact:b88644b505723f03360f2325": {
       "first_seen_kst": "2026-10-28T00:49:27+09:00",
       "lanes": {
@@ -275957,6 +276310,45 @@
       "source_title": "송재혁 삼성전자 사장 \"반도체 적기 투자 중요…정부 지원 절실\"",
       "telegram_core_fact": "송재혁 한국반도체산업협회장 겸 삼성전자 최고기술책임자(CTO) 사장이 \"기업이 신기술을 개발하고 적기에 투자할 수 있도록 선제적인 인프라 조성, 신속한 인허가 등 과감하고 신속한 정책 지원이 뒷받침되기를 기대하고 부탁드린다\"고 밝혔다.",
       "title": "송재혁 삼성전자 사장 \"반도체 적기 투자 중요…정부 지원 절실\""
+    },
+    "fact:f3014898e1c6b565a83c74c3": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844681",
+      "source": "뉴시스",
+      "source_body_digest": "b8206265b6c67309c80773554fa0d4c746afcffa06d1a4f33728b78d48704762",
+      "source_event_identity": "source_event:v2:named_supply_order:b08eb5fbfcdab89012a9d8233b7303b062df464d9a6a3efa0faf220208d95193",
+      "source_fact_identity": "source_facts:v1:7907fa98feb37bb3ec9d32d1557989fdb469c2158edbc7ae7bdf9080861cee9a",
+      "source_fact_keys": [
+        "source_fact:v1:47c55749e6129b1fb755f66940c7a434c5378ba754008a1e9dbb88cea1bff4c5",
+        "source_fact:v1:6802a8389ae9a5354a77a22dedca70f28066d0178362e5bbc1e2e99a83dea9e1",
+        "source_fact:v1:f75b97a7dbb2aec8d92d2494ad7575f9a81897a80989f50d6fdada81bdb89e3c"
+      ],
+      "source_published_kst": "2026-10-28T13:48+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "10000000000"
+          ]
+        ],
+        "customer": "삼성디스플레이",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-28",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "파인텍",
+        "product": "베트남과oled제조장비",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "파인텍, 100억 규모 OLED 제조장비 공급계약",
+      "telegram_core_fact": "파인텍은 삼성디스플레이 베트남(SAMSUNG DISPLAY VIETNAM)과 100억원 규모 OLED(유기발광다이오드) 제조장비 공급계약을 체결했다고 28일 공시했다. 계약 기간은 내년 10월 27일까지이며 지난해 매출의 21.63% 규모다.",
+      "title": "파인텍, 100억 규모 OLED 제조장비 공급계약"
     },
     "fact:f306f6a320e173f2c1e3a78f": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -310989,6 +311381,32 @@
       "source_title": "한진, 중소상공인 물류 지원사업 3개 수행…수출·배송비 부담 완화",
       "telegram_core_fact": "한진은 소상공인 물류서비스 지원사업에서 기존 풀필먼트 이용이 어려운 소규모 물량 취급 업체와 수산물 등 보관이 어려운 화물을 고려해 3차 모집부터 '방문택배' 부문을 신설했다.",
       "title": "한진, 중소상공인 물류 지원사업 3개 수행…수출·배송비 부담 완화"
+    },
+    "link:2b619571ef3f964ba1795413": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
     },
     "link:2b6789a638163b5bd58f5bbe": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
@@ -347023,6 +347441,26 @@
       "telegram_core_fact": "현재 경기도 화성에 50MW급 태양광 모듈 생산라인을 구축하고, 초경량·고출력 태양광 모듈과 건물일체형 태양광 모듈을 개발·생산하고 있다. 에이스인벤터는 아이템을 인정받아 한국건설기술연구원 스마트건설지원센터 보육기업으로 선정됐다.",
       "title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’"
     },
+    "link:61b9daeea8c8d8d88f9ea02e": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028108600527",
+      "source": "연합뉴스",
+      "source_body_digest": "ec82550a4766ce37cf02c797e6960183c73d969fef2a6a337a615cee719d7d9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccdbb4801ecc99492aa0ef180271ad265d55f6ed794fa2ac722f5d480b98a99",
+      "source_fact_keys": [
+        "source_fact:v1:8d745c7637eddfa16def60a88d7d1a8f0bd19387b820d9741838583613acacd3"
+      ],
+      "source_published_kst": "2026-10-28T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 SKC[011790]는 연결 기준 올해 3분기 영업손실이 496억원으로 지난해 동기(-549억원)와 비교해 적자 폭이 감소한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스"
+    },
     "link:61c0e34b85d9464026a4e08a": {
       "first_seen_kst": "2026-10-12T00:45:57+09:00",
       "lanes": {
@@ -352631,6 +353069,32 @@
       "link": "https://www.etnews.com/20260919000018",
       "source": "전자신문",
       "title": "벤협, 신규 임원사 6곳 선임…하이브·뮤직카우 포함"
+    },
+    "link:6a5cffaed82403858c00d9c0": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
     },
     "link:6a5df47d3aac416a098524ad": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
@@ -368377,6 +368841,24 @@
       "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
       "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
     },
+    "link:81ebc803c3e6e1155c91f81c": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12188326",
+      "source": "매일경제",
+      "source_body_digest": "4c97fd13caa06dfed0d328f0444f00563e47a777d755abdf7041777150a483f2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부여당, 가상자산 과세 유예 이번에도 결론 못내",
+      "telegram_core_fact": "가상자산에 대한 세금 부과에 대해 정부와 여당이 이번에도 결론을 내지 못했다.",
+      "title": "정부여당, 가상자산 과세 유예 이번에도 결론 못내"
+    },
     "link:81ec601be4c70ac6e4258d6e": {
       "first_seen_kst": "2026-10-01T16:31:12+09:00",
       "lanes": {
@@ -384122,6 +384604,27 @@
       "telegram_core_fact": "우리 정부가 저가 물량 공세를 앞세운 중국산 아연도금냉연(CGI)에 향후 5년간 덤핑방지관세(최대 33.67%)를 부과하기로 했음에도 철강주 주가는 지지부진하다.",
       "title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는"
     },
+    "link:9adc958b2f09e3870c9fe420": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/28/ELENDZX345FZ5BOGK57HGA7TF4/",
+      "source": "조선비즈",
+      "source_body_digest": "89f208e33596302a004b3a9c89cf9765a41cc5051e98f8f9bf868b1b4ecdba20",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3a1f093030ee8cae378338c014330c523bc6b4ba8299801e6939067a0fb90f5b",
+      "source_fact_identity": "source_facts:v1:878100e72e910ead6bb564e20fab0280307b3386d105841d2078968595651e70",
+      "source_fact_keys": [
+        "source_fact:v1:7d51f9724fab7649da5c14ec48e72c66fc37e8fa0d9ce357c01f4d910da2d8cd",
+        "source_fact:v1:8cce70211b360e955eed1b931efd5da6777dd109d4eea75a12b7c4f030caae84"
+      ],
+      "source_published_kst": "2026-10-28T13:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가",
+      "telegram_core_fact": "HK이노엔(195940)은 올해 3분기 영업이익이 260억원으로 전년비 0.6% 증가한 것으로 잠정 집계됐다고 28일 밝혔다.",
+      "title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가"
+    },
     "link:9ae451cfd449a1385bb5415b": {
       "first_seen_kst": "2026-10-02T22:41:43+09:00",
       "lanes": {
@@ -397410,6 +397913,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T07:52+09:00",
       "title": "\"누가 좀 사가세요\"…11조 규모 '엔비디아 칩' 파는 아마존"
+    },
+    "link:ae1ad2a31662a603fb35be97": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028105600527",
+      "source": "연합뉴스",
+      "source_body_digest": "899208bd05e5be79719d7b77d3e2a1fa2938363b32a7705a3043f1fcbb67298a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c441b61ae624d5e8a85ef93210fb8d03712ecabc43ab9d3281b8d107d56844a",
+      "source_fact_keys": [
+        "source_fact:v1:52c17501cc7215ac02abd409b2b4725675f44d214c6c26a928b4260583607e1f",
+        "source_fact:v1:9e274fc9c6c89940de81aa57d800277450ca6e6566700510608490fe4c1e255f"
+      ],
+      "source_published_kst": "2026-10-28T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD한국조선해양[009540]은 연결 기준 올해 3분기 영업이익이 1조4천472억원으로 지난해 동기보다 37.3% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스"
     },
     "link:ae2044d96b8836f9f94778c4": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
@@ -434458,6 +434982,45 @@
       "source_published_kst": "2026-10-07T14:51+09:00",
       "title": "한투증권, 글로벌 퀀트 운용사 AQR과 파트너십"
     },
+    "link:e843dc98d8f770e0ba807c55": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844681",
+      "source": "뉴시스",
+      "source_body_digest": "b8206265b6c67309c80773554fa0d4c746afcffa06d1a4f33728b78d48704762",
+      "source_event_identity": "source_event:v2:named_supply_order:b08eb5fbfcdab89012a9d8233b7303b062df464d9a6a3efa0faf220208d95193",
+      "source_fact_identity": "source_facts:v1:7907fa98feb37bb3ec9d32d1557989fdb469c2158edbc7ae7bdf9080861cee9a",
+      "source_fact_keys": [
+        "source_fact:v1:47c55749e6129b1fb755f66940c7a434c5378ba754008a1e9dbb88cea1bff4c5",
+        "source_fact:v1:6802a8389ae9a5354a77a22dedca70f28066d0178362e5bbc1e2e99a83dea9e1",
+        "source_fact:v1:f75b97a7dbb2aec8d92d2494ad7575f9a81897a80989f50d6fdada81bdb89e3c"
+      ],
+      "source_published_kst": "2026-10-28T13:48+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "10000000000"
+          ]
+        ],
+        "customer": "삼성디스플레이",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-28",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "파인텍",
+        "product": "베트남과oled제조장비",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "파인텍, 100억 규모 OLED 제조장비 공급계약",
+      "telegram_core_fact": "파인텍은 삼성디스플레이 베트남(SAMSUNG DISPLAY VIETNAM)과 100억원 규모 OLED(유기발광다이오드) 제조장비 공급계약을 체결했다고 28일 공시했다. 계약 기간은 내년 10월 27일까지이며 지난해 매출의 21.63% 규모다.",
+      "title": "파인텍, 100억 규모 OLED 제조장비 공급계약"
+    },
     "link:e8475ce0d814eb7ac0e52770": {
       "first_seen_kst": "2026-10-12T21:20:33+09:00",
       "lanes": {
@@ -449867,6 +450430,24 @@
       "telegram_core_fact": "퍼스트 유나이티드(FUNC)는 3분기(7~9월) 일반회계기준(GAAP) 희석 주당순이익이 1.11달러로 전년 동기 1.07달러보다 3.7% 늘었고, 순이익은 718만1000달러로 전년 동기 694만8000달러 대비 3.4% 증가했다고 10월 19일 발표했다.",
       "title": "퍼스트 유나이티드, 3분기 희석 EPS 1.11달러..전년비 3.7% 증가"
     },
+    "original:01170e3b9c739df23fbf7d16": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12188326",
+      "source": "매일경제",
+      "source_body_digest": "4c97fd13caa06dfed0d328f0444f00563e47a777d755abdf7041777150a483f2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부여당, 가상자산 과세 유예 이번에도 결론 못내",
+      "telegram_core_fact": "가상자산에 대한 세금 부과에 대해 정부와 여당이 이번에도 결론을 내지 못했다.",
+      "title": "정부여당, 가상자산 과세 유예 이번에도 결론 못내"
+    },
     "original:0118c97c18f1e66149ec2898": {
       "first_seen_kst": "2026-09-22T06:53:39+09:00",
       "lanes": {
@@ -452268,6 +452849,27 @@
       "source_title": "홍지선 국토장관 “신축매입임대 착공·입주 속도 더 높이겠다”",
       "telegram_core_fact": "현장에서 홍 장관은 LH로부터 올해 신축 매입임대주택 착공·약정 실적과 연내 공급계획을 보고받은 뒤 입주 예정 세대를 둘러보며 구조와 마감재, 수납공간을 확인했다.",
       "title": "홍지선 국토장관 “신축매입임대 착공·입주 속도 더 높이겠다”"
+    },
+    "original:04bfc863bfba07a24aae67f3": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/28/ELENDZX345FZ5BOGK57HGA7TF4/",
+      "source": "조선비즈",
+      "source_body_digest": "89f208e33596302a004b3a9c89cf9765a41cc5051e98f8f9bf868b1b4ecdba20",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3a1f093030ee8cae378338c014330c523bc6b4ba8299801e6939067a0fb90f5b",
+      "source_fact_identity": "source_facts:v1:878100e72e910ead6bb564e20fab0280307b3386d105841d2078968595651e70",
+      "source_fact_keys": [
+        "source_fact:v1:7d51f9724fab7649da5c14ec48e72c66fc37e8fa0d9ce357c01f4d910da2d8cd",
+        "source_fact:v1:8cce70211b360e955eed1b931efd5da6777dd109d4eea75a12b7c4f030caae84"
+      ],
+      "source_published_kst": "2026-10-28T13:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가",
+      "telegram_core_fact": "HK이노엔(195940)은 올해 3분기 영업이익이 260억원으로 전년비 0.6% 증가한 것으로 잠정 집계됐다고 28일 밝혔다.",
+      "title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가"
     },
     "original:04bffab95be271fe357cdbcc": {
       "first_seen_kst": "2026-10-21T04:09:57+09:00",
@@ -490936,6 +491538,26 @@
       "telegram_core_fact": "씨케이솔루션은 미국 인디애나에서 삼성SDI·스텔란티스 합작사 스타플러스에너지(SPE)의 전기차 배터리 생산라인을 에너지저장장치(ESS)용으로 전환하는 사업을 약 571억원에 수주했다.",
       "title": "안근표 씨케이솔루션 대표, “올해는 제2의 창업…반도체·데이터센터로 성장축 확대”"
     },
+    "original:40b1b7419e301e2ab22e2c27": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028108600527",
+      "source": "연합뉴스",
+      "source_body_digest": "ec82550a4766ce37cf02c797e6960183c73d969fef2a6a337a615cee719d7d9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccdbb4801ecc99492aa0ef180271ad265d55f6ed794fa2ac722f5d480b98a99",
+      "source_fact_keys": [
+        "source_fact:v1:8d745c7637eddfa16def60a88d7d1a8f0bd19387b820d9741838583613acacd3"
+      ],
+      "source_published_kst": "2026-10-28T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 SKC[011790]는 연결 기준 올해 3분기 영업손실이 496억원으로 지난해 동기(-549억원)와 비교해 적자 폭이 감소한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스"
+    },
     "original:40bb49fc91a1c5cbd02c2e8b": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
       "lanes": {
@@ -506895,6 +507517,45 @@
       "telegram_core_fact": "퍼스트 인터스테이트 뱅크시스템(FIBK)은 올해 3분기(7~9월) 순이익이 6,220만 달러, 희석 주당순이익(GAAP)이 0.65달러로 전년비 각각 12.9%, 5.8% 감소했다고 10월 22일 발표했다.",
       "title": "퍼스트 인터스테이트 뱅크, 3분기 희석 EPS 0.65달러..전년비 5.8% 감소"
     },
+    "original:5950b37d0d8f79b96996ed5e": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844681",
+      "source": "뉴시스",
+      "source_body_digest": "b8206265b6c67309c80773554fa0d4c746afcffa06d1a4f33728b78d48704762",
+      "source_event_identity": "source_event:v2:named_supply_order:b08eb5fbfcdab89012a9d8233b7303b062df464d9a6a3efa0faf220208d95193",
+      "source_fact_identity": "source_facts:v1:7907fa98feb37bb3ec9d32d1557989fdb469c2158edbc7ae7bdf9080861cee9a",
+      "source_fact_keys": [
+        "source_fact:v1:47c55749e6129b1fb755f66940c7a434c5378ba754008a1e9dbb88cea1bff4c5",
+        "source_fact:v1:6802a8389ae9a5354a77a22dedca70f28066d0178362e5bbc1e2e99a83dea9e1",
+        "source_fact:v1:f75b97a7dbb2aec8d92d2494ad7575f9a81897a80989f50d6fdada81bdb89e3c"
+      ],
+      "source_published_kst": "2026-10-28T13:48+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "10000000000"
+          ]
+        ],
+        "customer": "삼성디스플레이",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-28",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "파인텍",
+        "product": "베트남과oled제조장비",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "파인텍, 100억 규모 OLED 제조장비 공급계약",
+      "telegram_core_fact": "파인텍은 삼성디스플레이 베트남(SAMSUNG DISPLAY VIETNAM)과 100억원 규모 OLED(유기발광다이오드) 제조장비 공급계약을 체결했다고 28일 공시했다. 계약 기간은 내년 10월 27일까지이며 지난해 매출의 21.63% 규모다.",
+      "title": "파인텍, 100억 규모 OLED 제조장비 공급계약"
+    },
     "original:59540309def79441cb108565": {
       "first_seen_kst": "2026-10-15T06:12:33+09:00",
       "lanes": {
@@ -513322,6 +513983,27 @@
       "source_title": "AGCO, PTx 2029년 20억달러 목표 유지 속 업황 회복 부담 부각",
       "telegram_core_fact": "장기 전략 설명회에서 2029년 PTx 매출 20억 달러 목표를 유지했지만, 올해 PTx 매출은 8억6000만 달러 안팎으로 보합에 그칠 전망입니다. 목표 달성이 농기계 업황 회복에 달려 있다는 점도 부담입니다.",
       "title": "AGCO, PTx 2029년 20억달러 목표 유지 속 업황 회복 부담 부각"
+    },
+    "original:62e613e5b6c6b11989e4f36d": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028105600527",
+      "source": "연합뉴스",
+      "source_body_digest": "899208bd05e5be79719d7b77d3e2a1fa2938363b32a7705a3043f1fcbb67298a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c441b61ae624d5e8a85ef93210fb8d03712ecabc43ab9d3281b8d107d56844a",
+      "source_fact_keys": [
+        "source_fact:v1:52c17501cc7215ac02abd409b2b4725675f44d214c6c26a928b4260583607e1f",
+        "source_fact:v1:9e274fc9c6c89940de81aa57d800277450ca6e6566700510608490fe4c1e255f"
+      ],
+      "source_published_kst": "2026-10-28T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD한국조선해양[009540]은 연결 기준 올해 3분기 영업이익이 1조4천472억원으로 지난해 동기보다 37.3% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스"
     },
     "original:62ed5b4f8ab9d5ac275618f8": {
       "first_seen_kst": "2026-10-23T15:16:59+09:00",
@@ -537248,6 +537930,32 @@
       "source_title": "트레코메탈스, 깁랠터 구리 가이던스 상향에 플로렌스 상업 생산 기대 확대",
       "telegram_core_fact": "3분기 구리 4100만 파운드를 생산했고, 깁랠터 연간 구리 생산 가이던스를 상향했습니다.",
       "title": "트레코메탈스, 깁랠터 구리 가이던스 상향에 플로렌스 상업 생산 기대 확대"
+    },
+    "original:88c74b170603a0d74875df21": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
     },
     "original:88cede7637643a74caa71731": {
       "first_seen_kst": "2026-10-26T06:06:42+09:00",
@@ -567350,6 +568058,32 @@
       "source_title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지",
       "telegram_core_fact": "농림축산식품부는 이날부터 농협이 무기질비료 판매가격을 평균 5.1% 인하한다고 밝혔다. 20일부터 무기질비료 판매가격이 평균 5.1% 인하된다.",
       "title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지"
+    },
+    "original:b72cc95499a80226af63b0b1": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
     },
     "original:b73078eb1b4adeb32add74f9": {
       "first_seen_kst": "2026-10-20T15:25:58+09:00",
@@ -703819,6 +704553,32 @@
       "telegram_core_fact": "중국 메모리 반도체 기업들의 기술력이 한국보다 약 3년 뒤처져 있는 데다 인공지능(AI) 투자 확대에 따른 메모리 공급 부족이 2029년까지 이어질 것이라는 판단에서다.",
       "title": "댄 아이브스 \"삼성·SK하이닉스 과도한 조정…中 메모리 3년 뒤처져\" [fn마켓워치]"
     },
+    "source_fact:21c86e38a5daf9232192d928": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
+    },
     "source_fact:21c8f053b5f3002193d46ab9": {
       "first_seen_kst": "2026-10-23T01:05:59+09:00",
       "lanes": {
@@ -786987,6 +787747,27 @@
       "telegram_core_fact": "미 모기지은행협회(MBA)에 따르면 지난 2일 기준 30년물 고정 모기지 평균 금리는 전주 대비 19bp 오른 7.49%를 기록했다.",
       "title": "美 주담대 금리 폭등에…트럼프 \"연준, 나라 경제 망치려는 듯\""
     },
+    "source_fact:400dbca63a9ff9db757f3ccd": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028105600527",
+      "source": "연합뉴스",
+      "source_body_digest": "899208bd05e5be79719d7b77d3e2a1fa2938363b32a7705a3043f1fcbb67298a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c441b61ae624d5e8a85ef93210fb8d03712ecabc43ab9d3281b8d107d56844a",
+      "source_fact_keys": [
+        "source_fact:v1:52c17501cc7215ac02abd409b2b4725675f44d214c6c26a928b4260583607e1f",
+        "source_fact:v1:9e274fc9c6c89940de81aa57d800277450ca6e6566700510608490fe4c1e255f"
+      ],
+      "source_published_kst": "2026-10-28T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD한국조선해양[009540]은 연결 기준 올해 3분기 영업이익이 1조4천472억원으로 지난해 동기보다 37.3% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스"
+    },
     "source_fact:400efa961025c33d9bf8334c": {
       "first_seen_kst": "2026-10-23T07:02:23+09:00",
       "lanes": {
@@ -819183,6 +819964,32 @@
       "telegram_core_fact": "정부가 반도체 메가프로젝트의 신속한 투자를 위해 산업단지 인허가 패스트트랙을 꺼내 들었지만, 초격차 확보의 핵심인 연구개발(R&D) 인력 근로시간 특례를 둘러싸고는 노사정 간 이견이 팽팽해 최종 합의까지 적잖은 진통이 예상된다.",
       "title": "메가프로젝트 속도전에 ‘산단 인허가 패스트트랙’ 카드⋯‘R&D 근로시간 특례’가 최대 쟁점[320개 규제특례의 명암]"
     },
+    "source_fact:4b8fd50614e371c6e2b615b5": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
+    },
     "source_fact:4b90272883b9c881130d8286": {
       "first_seen_kst": "2026-10-13T10:05:20+09:00",
       "lanes": {
@@ -831805,6 +832612,32 @@
       "telegram_core_fact": "대우건설의 연간 수주가 15조원을 웃돈 사례가 2011년 이후 없었다는 점을 감안하면 20조원 돌파 자체가 의미 있는 성장 신호라는 평가다.",
       "title": "NH證 “대우건설, 이익 체력 입증⋯20조원 수주 가시권”"
     },
+    "source_fact:501c1877f6c893241201b205": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
+    },
     "source_fact:501c7597dbc8e986c4124867": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -837391,6 +838224,27 @@
       "source_title": "키움證 “삼성전기 계약은 BT기판 쇼티지 신호탄⋯대덕전자·심텍 수혜”",
       "telegram_core_fact": "키움증권은 삼성전기의 대규모 공급계약 공시가 비티(BT)기판 공급 부족의 시작을 알리는 신호라며 향후 물량 증가와 가격 인상이 동시에 나타나는 실적 상승 사이클이 본격화할 것으로 전망한다고 20일 밝혔다.",
       "title": "키움證 “삼성전기 계약은 BT기판 쇼티지 신호탄⋯대덕전자·심텍 수혜”"
+    },
+    "source_fact:520415f5fe61de190e1d0c04": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/28/ELENDZX345FZ5BOGK57HGA7TF4/",
+      "source": "조선비즈",
+      "source_body_digest": "89f208e33596302a004b3a9c89cf9765a41cc5051e98f8f9bf868b1b4ecdba20",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3a1f093030ee8cae378338c014330c523bc6b4ba8299801e6939067a0fb90f5b",
+      "source_fact_identity": "source_facts:v1:878100e72e910ead6bb564e20fab0280307b3386d105841d2078968595651e70",
+      "source_fact_keys": [
+        "source_fact:v1:7d51f9724fab7649da5c14ec48e72c66fc37e8fa0d9ce357c01f4d910da2d8cd",
+        "source_fact:v1:8cce70211b360e955eed1b931efd5da6777dd109d4eea75a12b7c4f030caae84"
+      ],
+      "source_published_kst": "2026-10-28T13:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가",
+      "telegram_core_fact": "HK이노엔(195940)은 올해 3분기 영업이익이 260억원으로 전년비 0.6% 증가한 것으로 잠정 집계됐다고 28일 밝혔다.",
+      "title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가"
     },
     "source_fact:5204af62e86d3f0848c89f85": {
       "first_seen_kst": "2026-10-20T15:49:58+09:00",
@@ -889123,6 +889977,26 @@
       "telegram_core_fact": "반면 런던 ICE선물거래소에서 12월 인도분 브렌트유는 전장보다 0.96달러(0.9%) 하락한 배럴당 105.69달러에 거래를 마감했다.",
       "title": "미러 경유 거래 주시…국제유가, 혼조 마감"
     },
+    "source_fact:64bbd746c6799eb51c404c2b": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028108600527",
+      "source": "연합뉴스",
+      "source_body_digest": "ec82550a4766ce37cf02c797e6960183c73d969fef2a6a337a615cee719d7d9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccdbb4801ecc99492aa0ef180271ad265d55f6ed794fa2ac722f5d480b98a99",
+      "source_fact_keys": [
+        "source_fact:v1:8d745c7637eddfa16def60a88d7d1a8f0bd19387b820d9741838583613acacd3"
+      ],
+      "source_published_kst": "2026-10-28T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 SKC[011790]는 연결 기준 올해 3분기 영업손실이 496억원으로 지난해 동기(-549억원)와 비교해 적자 폭이 감소한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스"
+    },
     "source_fact:64c0bebe5b7c68736cb5f602": {
       "first_seen_kst": "2026-10-13T21:34:27+09:00",
       "lanes": {
@@ -931989,6 +932863,45 @@
       "telegram_core_fact": "향후 10년간 1600조원 대형 투자 계획이 담긴 메가 프로젝트가 메모리 반도체와 첨단 패키징, 컴퓨팅 인프라, 제조 데이터, 피지컬 AI로 이어지는 전략적 AI 회랑을 구축하는 승부수라는 분석이다.",
       "title": "\"1600조 메가 프로젝트, 투자 넘어 산업판 바꿔야\""
     },
+    "source_fact:7490136aede97d0ac6f77e26": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844681",
+      "source": "뉴시스",
+      "source_body_digest": "b8206265b6c67309c80773554fa0d4c746afcffa06d1a4f33728b78d48704762",
+      "source_event_identity": "source_event:v2:named_supply_order:b08eb5fbfcdab89012a9d8233b7303b062df464d9a6a3efa0faf220208d95193",
+      "source_fact_identity": "source_facts:v1:7907fa98feb37bb3ec9d32d1557989fdb469c2158edbc7ae7bdf9080861cee9a",
+      "source_fact_keys": [
+        "source_fact:v1:47c55749e6129b1fb755f66940c7a434c5378ba754008a1e9dbb88cea1bff4c5",
+        "source_fact:v1:6802a8389ae9a5354a77a22dedca70f28066d0178362e5bbc1e2e99a83dea9e1",
+        "source_fact:v1:f75b97a7dbb2aec8d92d2494ad7575f9a81897a80989f50d6fdada81bdb89e3c"
+      ],
+      "source_published_kst": "2026-10-28T13:48+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "10000000000"
+          ]
+        ],
+        "customer": "삼성디스플레이",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-28",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "파인텍",
+        "product": "베트남과oled제조장비",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "파인텍, 100억 규모 OLED 제조장비 공급계약",
+      "telegram_core_fact": "파인텍은 삼성디스플레이 베트남(SAMSUNG DISPLAY VIETNAM)과 100억원 규모 OLED(유기발광다이오드) 제조장비 공급계약을 체결했다고 28일 공시했다. 계약 기간은 내년 10월 27일까지이며 지난해 매출의 21.63% 규모다.",
+      "title": "파인텍, 100억 규모 OLED 제조장비 공급계약"
+    },
     "source_fact:7492178066d62de5f7a00117": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -964894,6 +965807,45 @@
       "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
       "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
       "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
+    },
+    "source_fact:80c3212ec4cb93973674e6e4": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844681",
+      "source": "뉴시스",
+      "source_body_digest": "b8206265b6c67309c80773554fa0d4c746afcffa06d1a4f33728b78d48704762",
+      "source_event_identity": "source_event:v2:named_supply_order:b08eb5fbfcdab89012a9d8233b7303b062df464d9a6a3efa0faf220208d95193",
+      "source_fact_identity": "source_facts:v1:7907fa98feb37bb3ec9d32d1557989fdb469c2158edbc7ae7bdf9080861cee9a",
+      "source_fact_keys": [
+        "source_fact:v1:47c55749e6129b1fb755f66940c7a434c5378ba754008a1e9dbb88cea1bff4c5",
+        "source_fact:v1:6802a8389ae9a5354a77a22dedca70f28066d0178362e5bbc1e2e99a83dea9e1",
+        "source_fact:v1:f75b97a7dbb2aec8d92d2494ad7575f9a81897a80989f50d6fdada81bdb89e3c"
+      ],
+      "source_published_kst": "2026-10-28T13:48+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "10000000000"
+          ]
+        ],
+        "customer": "삼성디스플레이",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-28",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "파인텍",
+        "product": "베트남과oled제조장비",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "파인텍, 100억 규모 OLED 제조장비 공급계약",
+      "telegram_core_fact": "파인텍은 삼성디스플레이 베트남(SAMSUNG DISPLAY VIETNAM)과 100억원 규모 OLED(유기발광다이오드) 제조장비 공급계약을 체결했다고 28일 공시했다. 계약 기간은 내년 10월 27일까지이며 지난해 매출의 21.63% 규모다.",
+      "title": "파인텍, 100억 규모 OLED 제조장비 공급계약"
     },
     "source_fact:80c80961f8d1f993db2646bf": {
       "first_seen_kst": "2026-10-19T10:23:26+09:00",
@@ -1026773,6 +1027725,32 @@
       "telegram_core_fact": "\"세컨더리 시장은 자금만 공급한다고 거래가 이뤄지는 구조가 아니다\"라며 \"실제 매도 물량과 매수자의 가격 제시, 거래 성사 사례가 축적돼 시장에서 신뢰할 수 있는 가격 정보가 형성돼야 한다\"고 강조했다.",
       "title": "\"벤처투자 늘어도 회수는 제자리…세컨더리 시장 활성화 시급\""
     },
+    "source_fact:980ca0b42006d3ea6135af02": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
+    },
     "source_fact:98131b0bacc5a488ea54b312": {
       "first_seen_kst": "2026-10-13T10:49:34+09:00",
       "lanes": {
@@ -1079910,6 +1080888,45 @@
       "telegram_core_fact": "D램을 수직으로 쌓아 대역폭을 끌어올린 HBM처럼 낸드를 수직 적층한 '고대역폭낸드플래시(HBF)'가 주인공이다.",
       "title": "[SEDEX 2026]SK하이닉스, HBM만으로는 부족…'신개념 AI 메모리' 꺼냈다"
     },
+    "source_fact:ab4659f6b0a3269503e3839c": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844681",
+      "source": "뉴시스",
+      "source_body_digest": "b8206265b6c67309c80773554fa0d4c746afcffa06d1a4f33728b78d48704762",
+      "source_event_identity": "source_event:v2:named_supply_order:b08eb5fbfcdab89012a9d8233b7303b062df464d9a6a3efa0faf220208d95193",
+      "source_fact_identity": "source_facts:v1:7907fa98feb37bb3ec9d32d1557989fdb469c2158edbc7ae7bdf9080861cee9a",
+      "source_fact_keys": [
+        "source_fact:v1:47c55749e6129b1fb755f66940c7a434c5378ba754008a1e9dbb88cea1bff4c5",
+        "source_fact:v1:6802a8389ae9a5354a77a22dedca70f28066d0178362e5bbc1e2e99a83dea9e1",
+        "source_fact:v1:f75b97a7dbb2aec8d92d2494ad7575f9a81897a80989f50d6fdada81bdb89e3c"
+      ],
+      "source_published_kst": "2026-10-28T13:48+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "10000000000"
+          ]
+        ],
+        "customer": "삼성디스플레이",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-28",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "파인텍",
+        "product": "베트남과oled제조장비",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "파인텍, 100억 규모 OLED 제조장비 공급계약",
+      "telegram_core_fact": "파인텍은 삼성디스플레이 베트남(SAMSUNG DISPLAY VIETNAM)과 100억원 규모 OLED(유기발광다이오드) 제조장비 공급계약을 체결했다고 28일 공시했다. 계약 기간은 내년 10월 27일까지이며 지난해 매출의 21.63% 규모다.",
+      "title": "파인텍, 100억 규모 OLED 제조장비 공급계약"
+    },
     "source_fact:ab477db297678d387e1a86f2": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
       "lanes": {
@@ -1081801,6 +1082818,32 @@
       "source_title": "[단독]호남 반도체 산단 6GW 전력 공급 협약 연내 확정…용인은 내년 마무리",
       "telegram_core_fact": "한국전력공사가 연내 삼성전자·SK하이닉스와 호남 반도체 산단의 2단계 전력 공급 협약 체결을 추진한다. SK하이닉스의 용인 일반산단은 앞서 협약을 마친 만큼, 내년 삼성전자와의 계약이 체결되면 용인 반도체 클러스터 전체의 전력 공급 계획도 완성되는 셈이다.",
       "title": "[단독]호남 반도체 산단 6GW 전력 공급 협약 연내 확정…용인은 내년 마무리"
+    },
+    "source_fact:abf509c4132e601d6a9aa592": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
     },
     "source_fact:abf7a26a1c790c0c8c2c6d3b": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -1096460,6 +1097503,32 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:b11a4b2f2ca8a94aac92649f": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
     },
     "source_fact:b11aa55fce34e86e286e9aff": {
       "first_seen_kst": "2026-10-15T01:00:58+09:00",
@@ -1130452,6 +1131521,32 @@
       "telegram_core_fact": "HLB가 미국 식품의약국(FDA)의 거듭된 보완 요구를 딛고 간암 1차 치료제 신약 승인을 위한 네 번째 도전에 나섰다.",
       "title": "HLB 간암 신약, FDA 4번째 문 두드린다…제조시설 보완 후 재신청"
     },
+    "source_fact:bd95858356631104ca10e0d7": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
+    },
     "source_fact:bd95cdc6c5a469661b533655": {
       "first_seen_kst": "2026-10-21T02:06:57+09:00",
       "lanes": {
@@ -1148915,6 +1150010,32 @@
       "source_title": "대웅제약, 마이크로니들 무균 제조시설 구축…내년 상반기 GMP 승인 추진",
       "telegram_core_fact": "대웅제약은 경기 화성시 향남읍에 위치한 대웅바이오 3공장에 마이크로니들 전용 무균 제조시설을 구축하고 있다고 14일 밝혔다.",
       "title": "대웅제약, 마이크로니들 무균 제조시설 구축…내년 상반기 GMP 승인 추진"
+    },
+    "source_fact:c42704f67e97c00a53c45342": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
     },
     "source_fact:c427c9dd395e8cbf96547cd1": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
@@ -1170494,6 +1171615,32 @@
       "telegram_core_fact": "국제유가 상승에 따른 휘발유 가격 반등으로 헤드라인 물가 상승률은 전년 동월 대비 3% 중후반까지 확대될 것으로 예상된다.",
       "title": "美물가·연준 발언에 쏠린 눈…환율 하락세 이어질까[주간외환전망]"
     },
+    "source_fact:cc12fcb96aa43db1abac5d26": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
+    },
     "source_fact:cc1afc8fd658aaa8c473aff6": {
       "first_seen_kst": "2026-10-14T03:10:24+09:00",
       "lanes": {
@@ -1187818,6 +1188965,32 @@
       "source_title": "\"작년 역대급 기록 넘었다\" 동아시아 황금연휴에 백화점·면세점 '방긋'",
       "telegram_core_fact": "동아시아 주요국의 연휴가 집중된 이번 10월에도 외국인 관광객의 소비가 백화점과 면세점 매출 증가에 힘을 보탠 것으로 분석된다.",
       "title": "\"작년 역대급 기록 넘었다\" 동아시아 황금연휴에 백화점·면세점 '방긋'"
+    },
+    "source_fact:d27933a071d2d42ebdba3074": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
     },
     "source_fact:d27c61e91c59376503ddd221": {
       "first_seen_kst": "2026-10-09T20:24:58+09:00",
@@ -1207137,6 +1208310,32 @@
       "telegram_core_fact": "경제통과 재신쾌보, 인베스팅 닷컴, 트레이딩 이코노믹스에 따르면 중국 국가통계국은 14일 체감경기를 반영하는 9월 소비자 물가지수(CPI)가 전년 동월보다 0.9% 상승했다고 발표했다.",
       "title": "[올댓차이나] 9월 中 소비자물가 0.9%↑…\"연휴 소비에도 예상 하회\""
     },
+    "source_fact:d99d602ea2bfdbe006bd48c3": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
+    },
     "source_fact:d9a5af9ab4ca948afc67460b": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
       "lanes": {
@@ -1213953,6 +1215152,27 @@
       "telegram_core_fact": "트럼프 대통령은 \"우리는 장난치지 않는다\"면서 11월 3일 중간선거 이후 이란 공습을 재개할 가능성을 시사했다. 도널드 트럼프 미국 대통령은 이란과 협상할지 공습을 재개할지 \"결정을 내려야 할 시점이 다가오고 있다\"고 말했다.",
       "title": "트럼프 \"결정할 시점 다가와\"…중간선거 후 이란 공습 재개 시사"
     },
+    "source_fact:dc4fca6fd091d7493b3a97b3": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/28/ELENDZX345FZ5BOGK57HGA7TF4/",
+      "source": "조선비즈",
+      "source_body_digest": "89f208e33596302a004b3a9c89cf9765a41cc5051e98f8f9bf868b1b4ecdba20",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3a1f093030ee8cae378338c014330c523bc6b4ba8299801e6939067a0fb90f5b",
+      "source_fact_identity": "source_facts:v1:878100e72e910ead6bb564e20fab0280307b3386d105841d2078968595651e70",
+      "source_fact_keys": [
+        "source_fact:v1:7d51f9724fab7649da5c14ec48e72c66fc37e8fa0d9ce357c01f4d910da2d8cd",
+        "source_fact:v1:8cce70211b360e955eed1b931efd5da6777dd109d4eea75a12b7c4f030caae84"
+      ],
+      "source_published_kst": "2026-10-28T13:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가",
+      "telegram_core_fact": "HK이노엔(195940)은 올해 3분기 영업이익이 260억원으로 전년비 0.6% 증가한 것으로 잠정 집계됐다고 28일 밝혔다.",
+      "title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가"
+    },
     "source_fact:dc509b62ad9e3e4285610439": {
       "first_seen_kst": "2026-10-25T06:23:11+09:00",
       "lanes": {
@@ -1216053,6 +1217273,32 @@
       "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
       "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
       "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
+    },
+    "source_fact:dd1fcd967d2c138dfd1b6772": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
     },
     "source_fact:dd2444791cd3a27f06f51c7e": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
@@ -1221411,6 +1222657,27 @@
       "source_title": "“겨울이 온다”…중동發 에너지 쇼크에 전 세계 금융수장들 '비상'",
       "telegram_core_fact": "주요 7개국(G7)은 도널드 트럼프 미국 대통령의 압박에 따라 비상 비축유에서 경유와 원유 1억배럴을 방출하기로 합의했다. 중동 전쟁 장기화에 따른 에너지 공급 충격과 고금리, 부채 급증이 세계 경제를 위협하고 있다.",
       "title": "“겨울이 온다”…중동發 에너지 쇼크에 전 세계 금융수장들 '비상'"
+    },
+    "source_fact:df18fbaa9fe2a9fa87e1a144": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028105600527",
+      "source": "연합뉴스",
+      "source_body_digest": "899208bd05e5be79719d7b77d3e2a1fa2938363b32a7705a3043f1fcbb67298a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c441b61ae624d5e8a85ef93210fb8d03712ecabc43ab9d3281b8d107d56844a",
+      "source_fact_keys": [
+        "source_fact:v1:52c17501cc7215ac02abd409b2b4725675f44d214c6c26a928b4260583607e1f",
+        "source_fact:v1:9e274fc9c6c89940de81aa57d800277450ca6e6566700510608490fe4c1e255f"
+      ],
+      "source_published_kst": "2026-10-28T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD한국조선해양[009540]은 연결 기준 올해 3분기 영업이익이 1조4천472억원으로 지난해 동기보다 37.3% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스"
     },
     "source_fact:df1a0681bd179ca09e98df98": {
       "first_seen_kst": "2026-10-20T21:48:37+09:00",
@@ -1231174,6 +1232441,32 @@
       ],
       "source_published_kst": "2026-10-06T18:28+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 원 규모 LFP 공급 계약 체결… K-배터리 핵심 도약"
+    },
+    "source_fact:e289846d3d11fca1954c28f2": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
     },
     "source_fact:e28eb975974b3aac352123ea": {
       "first_seen_kst": "2026-10-19T10:00:18+09:00",
@@ -1296880,6 +1298173,32 @@
       "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
       "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
+    "source_fact:fb621d34017c43127509fd2f": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
+    },
     "source_fact:fb6844db4d21f82528a65f04": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -1310109,6 +1311428,24 @@
       "telegram_core_fact": "퍼스트 유나이티드(FUNC)는 3분기(7~9월) 일반회계기준(GAAP) 희석 주당순이익이 1.11달러로 전년 동기 1.07달러보다 3.7% 늘었고, 순이익은 718만1000달러로 전년 동기 694만8000달러 대비 3.4% 증가했다고 10월 19일 발표했다.",
       "title": "퍼스트 유나이티드, 3분기 희석 EPS 1.11달러..전년비 3.7% 증가"
     },
+    "title:01170e3b9c739df23fbf7d16": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12188326",
+      "source": "매일경제",
+      "source_body_digest": "4c97fd13caa06dfed0d328f0444f00563e47a777d755abdf7041777150a483f2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T14:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부여당, 가상자산 과세 유예 이번에도 결론 못내",
+      "telegram_core_fact": "가상자산에 대한 세금 부과에 대해 정부와 여당이 이번에도 결론을 내지 못했다.",
+      "title": "정부여당, 가상자산 과세 유예 이번에도 결론 못내"
+    },
     "title:0118c97c18f1e66149ec2898": {
       "first_seen_kst": "2026-09-22T06:53:39+09:00",
       "lanes": {
@@ -1312564,6 +1313901,27 @@
       "source_title": "홍지선 국토장관 “신축매입임대 착공·입주 속도 더 높이겠다”",
       "telegram_core_fact": "현장에서 홍 장관은 LH로부터 올해 신축 매입임대주택 착공·약정 실적과 연내 공급계획을 보고받은 뒤 입주 예정 세대를 둘러보며 구조와 마감재, 수납공간을 확인했다.",
       "title": "홍지선 국토장관 “신축매입임대 착공·입주 속도 더 높이겠다”"
+    },
+    "title:04bfc863bfba07a24aae67f3": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/28/ELENDZX345FZ5BOGK57HGA7TF4/",
+      "source": "조선비즈",
+      "source_body_digest": "89f208e33596302a004b3a9c89cf9765a41cc5051e98f8f9bf868b1b4ecdba20",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3a1f093030ee8cae378338c014330c523bc6b4ba8299801e6939067a0fb90f5b",
+      "source_fact_identity": "source_facts:v1:878100e72e910ead6bb564e20fab0280307b3386d105841d2078968595651e70",
+      "source_fact_keys": [
+        "source_fact:v1:7d51f9724fab7649da5c14ec48e72c66fc37e8fa0d9ce357c01f4d910da2d8cd",
+        "source_fact:v1:8cce70211b360e955eed1b931efd5da6777dd109d4eea75a12b7c4f030caae84"
+      ],
+      "source_published_kst": "2026-10-28T13:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가",
+      "telegram_core_fact": "HK이노엔(195940)은 올해 3분기 영업이익이 260억원으로 전년비 0.6% 증가한 것으로 잠정 집계됐다고 28일 밝혔다.",
+      "title": "HK이노엔, 3분기 영업익 260억원…전년比 0.6% 증가"
     },
     "title:04bffab95be271fe357cdbcc": {
       "first_seen_kst": "2026-10-21T04:09:57+09:00",
@@ -1351853,6 +1353211,26 @@
       "telegram_core_fact": "씨케이솔루션은 미국 인디애나에서 삼성SDI·스텔란티스 합작사 스타플러스에너지(SPE)의 전기차 배터리 생산라인을 에너지저장장치(ESS)용으로 전환하는 사업을 약 571억원에 수주했다.",
       "title": "안근표 씨케이솔루션 대표, “올해는 제2의 창업…반도체·데이터센터로 성장축 확대”"
     },
+    "title:40b1b7419e301e2ab22e2c27": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028108600527",
+      "source": "연합뉴스",
+      "source_body_digest": "ec82550a4766ce37cf02c797e6960183c73d969fef2a6a337a615cee719d7d9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bccdbb4801ecc99492aa0ef180271ad265d55f6ed794fa2ac722f5d480b98a99",
+      "source_fact_keys": [
+        "source_fact:v1:8d745c7637eddfa16def60a88d7d1a8f0bd19387b820d9741838583613acacd3"
+      ],
+      "source_published_kst": "2026-10-28T13:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 SKC[011790]는 연결 기준 올해 3분기 영업손실이 496억원으로 지난해 동기(-549억원)와 비교해 적자 폭이 감소한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "SKC 3분기 영업손실 496억원…적자 축소 | 연합뉴스"
+    },
     "title:40bb49fc91a1c5cbd02c2e8b": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
       "lanes": {
@@ -1368126,6 +1369504,45 @@
       "telegram_core_fact": "퍼스트 인터스테이트 뱅크시스템(FIBK)은 올해 3분기(7~9월) 순이익이 6,220만 달러, 희석 주당순이익(GAAP)이 0.65달러로 전년비 각각 12.9%, 5.8% 감소했다고 10월 22일 발표했다.",
       "title": "퍼스트 인터스테이트 뱅크, 3분기 희석 EPS 0.65달러..전년비 5.8% 감소"
     },
+    "title:5950b37d0d8f79b96996ed5e": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844681",
+      "source": "뉴시스",
+      "source_body_digest": "b8206265b6c67309c80773554fa0d4c746afcffa06d1a4f33728b78d48704762",
+      "source_event_identity": "source_event:v2:named_supply_order:b08eb5fbfcdab89012a9d8233b7303b062df464d9a6a3efa0faf220208d95193",
+      "source_fact_identity": "source_facts:v1:7907fa98feb37bb3ec9d32d1557989fdb469c2158edbc7ae7bdf9080861cee9a",
+      "source_fact_keys": [
+        "source_fact:v1:47c55749e6129b1fb755f66940c7a434c5378ba754008a1e9dbb88cea1bff4c5",
+        "source_fact:v1:6802a8389ae9a5354a77a22dedca70f28066d0178362e5bbc1e2e99a83dea9e1",
+        "source_fact:v1:f75b97a7dbb2aec8d92d2494ad7575f9a81897a80989f50d6fdada81bdb89e3c"
+      ],
+      "source_published_kst": "2026-10-28T13:48+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "10000000000"
+          ]
+        ],
+        "customer": "삼성디스플레이",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-28",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "파인텍",
+        "product": "베트남과oled제조장비",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "파인텍, 100억 규모 OLED 제조장비 공급계약",
+      "telegram_core_fact": "파인텍은 삼성디스플레이 베트남(SAMSUNG DISPLAY VIETNAM)과 100억원 규모 OLED(유기발광다이오드) 제조장비 공급계약을 체결했다고 28일 공시했다. 계약 기간은 내년 10월 27일까지이며 지난해 매출의 21.63% 규모다.",
+      "title": "파인텍, 100억 규모 OLED 제조장비 공급계약"
+    },
     "title:59540309def79441cb108565": {
       "first_seen_kst": "2026-10-15T06:12:33+09:00",
       "lanes": {
@@ -1374718,6 +1376135,27 @@
       "source_title": "AGCO, PTx 2029년 20억달러 목표 유지 속 업황 회복 부담 부각",
       "telegram_core_fact": "장기 전략 설명회에서 2029년 PTx 매출 20억 달러 목표를 유지했지만, 올해 PTx 매출은 8억6000만 달러 안팎으로 보합에 그칠 전망입니다. 목표 달성이 농기계 업황 회복에 달려 있다는 점도 부담입니다.",
       "title": "AGCO, PTx 2029년 20억달러 목표 유지 속 업황 회복 부담 부각"
+    },
+    "title:62e613e5b6c6b11989e4f36d": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028105600527",
+      "source": "연합뉴스",
+      "source_body_digest": "899208bd05e5be79719d7b77d3e2a1fa2938363b32a7705a3043f1fcbb67298a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c441b61ae624d5e8a85ef93210fb8d03712ecabc43ab9d3281b8d107d56844a",
+      "source_fact_keys": [
+        "source_fact:v1:52c17501cc7215ac02abd409b2b4725675f44d214c6c26a928b4260583607e1f",
+        "source_fact:v1:9e274fc9c6c89940de81aa57d800277450ca6e6566700510608490fe4c1e255f"
+      ],
+      "source_published_kst": "2026-10-28T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD한국조선해양[009540]은 연결 기준 올해 3분기 영업이익이 1조4천472억원으로 지난해 동기보다 37.3% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD한국조선해양 3분기 영업익 1조4천472억원…작년 대비 37%↑ | 연합뉴스"
     },
     "title:62ed5b4f8ab9d5ac275618f8": {
       "first_seen_kst": "2026-10-23T15:16:59+09:00",
@@ -1399033,6 +1400471,32 @@
       "source_title": "트레코메탈스, 깁랠터 구리 가이던스 상향에 플로렌스 상업 생산 기대 확대",
       "telegram_core_fact": "3분기 구리 4100만 파운드를 생산했고, 깁랠터 연간 구리 생산 가이던스를 상향했습니다.",
       "title": "트레코메탈스, 깁랠터 구리 가이던스 상향에 플로렌스 상업 생산 기대 확대"
+    },
+    "title:88c74b170603a0d74875df21": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844672",
+      "source": "뉴시스",
+      "source_body_digest": "27858a305f58688580b37a244092a1305abf5457f75523e3c7408e8c66f2d343",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:933d767b249a6bd43a536e61d4b192b8e70434cbb2b6ffb978c193734d140e07",
+      "source_fact_identity": "source_facts:v1:bec59f9f6ebbfda3f656a7381fdfd1ac1c4bf9212c950504a04023103c27a3e1",
+      "source_fact_keys": [
+        "source_fact:v1:0639421f6ba47b3ce2ea9c8124f4cc4c4663311cfac894cdaa6de42636429a09",
+        "source_fact:v1:13296c02fed36a1687ae3e8334d183b52e7417d0165bffb42593e4f69111107d",
+        "source_fact:v1:2562116fde6d0c163c00de4584bef2cb95bc0236c74546007730945b511207dc",
+        "source_fact:v1:86d887029234259a254738fb8f43435edf9147d5ae1a62e744615b29f2fee579",
+        "source_fact:v1:8edbb5c83410455bd61aee982b3775d8e90184dc9328da2183de78a4d4398f47",
+        "source_fact:v1:ba68fb5ec2f4cb37ff0668c32da25dce43669512e3f00cb41fb639bb99230d4a",
+        "source_fact:v1:ec9f1e2fee3bdc4c48e3b4526d543e8c08463f0b0ca312537a10457eeef6ce62"
+      ],
+      "source_published_kst": "2026-10-28T13:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\"",
+      "telegram_core_fact": "HD한국조선해양이 올해 3분기 매출 8조2862억원, 영업이익 1조4472억원을 기록했다고 28일 밝혔다.",
+      "title": "HD한국조선해양, 3Q 영업익 1.4조 전년比 37%↑…\"환율 여파에도 성장 유지\""
     },
     "title:88cede7637643a74caa71731": {
       "first_seen_kst": "2026-10-26T06:06:42+09:00",
@@ -1430023,6 +1431487,32 @@
       "source_title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지",
       "telegram_core_fact": "농림축산식품부는 이날부터 농협이 무기질비료 판매가격을 평균 5.1% 인하한다고 밝혔다. 20일부터 무기질비료 판매가격이 평균 5.1% 인하된다.",
       "title": "비료값 오늘부터 평균 5.1% 인하…가격보조도 유지"
+    },
+    "title:b72cc95499a80226af63b0b1": {
+      "first_seen_kst": "2026-10-29T01:33:45+09:00",
+      "lanes": {
+        "live": "2026-10-29T01:33:45+09:00"
+      },
+      "last_seen_kst": "2026-10-29T01:33:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03939286645617512",
+      "source": "이데일리",
+      "source_body_digest": "9a97af59302848eccfa49d7a04172d3a8b91300067c94a6409cb5872dd75eb04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca0a688652aa8050d007a704d104696d20641321c4251b6239e012dcc8e991a8",
+      "source_fact_keys": [
+        "source_fact:v1:33d1ad1acf35abde0fb8dadf22047b1f8f65a215ce0643bbe1df129fc23024d3",
+        "source_fact:v1:6089af5d7bbc0ead9e7ae38eeee1e5fc294df23e761456ddd661b3023b5a41bf",
+        "source_fact:v1:94399594915fd6de7337d75d1a06c391dffac3bc4ec426aae6890ff198ef3848",
+        "source_fact:v1:af1a9b4052bd2a5351b3387ec2de9a2aa5619ec3d79ed3442f5fd40d7930527d",
+        "source_fact:v1:b88038cbbe8a57581cc0ad2c0afe128f7cfb351b2442282d097860b478cbd5b1",
+        "source_fact:v1:d4dd5a4e4c21559a26309ccae20e8a4c66a9d7d8bd8b111159d7c66d93b44a60",
+        "source_fact:v1:d8d103f83cd1fce2e22537ae32c891c4a3931ff3c668f901e276fe3e55c5c84b"
+      ],
+      "source_published_kst": "2026-10-28T10:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오",
+      "telegram_core_fact": "규제 완화에 신중한 민주당의 승리는 증시에 악재로 꼽히지만, 이기는 방식에 따라선 ‘민주당이 이겨도 주가는 오르는’ 시나리오도 가능하다는 분석이 나온다.",
+      "title": "\"민주 이겨도 주가 오른다\"…월가가 짠 美중간선거 시나리오"
     },
     "title:b73078eb1b4adeb32add74f9": {
       "first_seen_kst": "2026-10-20T15:25:58+09:00",
@@ -1476224,5 +1477714,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-29T00:55:27+09:00"
+  "updated_at_kst": "2026-10-29T01:33:45+09:00"
 }
