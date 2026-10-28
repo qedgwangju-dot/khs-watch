@@ -49477,6 +49477,29 @@
       "telegram_core_fact": "일본 정부가 자국의 첨단 반도체 업체 라피더스에 4000억 엔(약 3조3500억 원)을 추가 투입하기로 했다. 일본 정부는 라피더스에 2026년까지 총 2500억 엔을 출자했으며, 2027년 예산 개산요구안에는 추가 출자금으로 1500억 엔을 반영했다.",
       "title": "日정부, 반도체 기업 라피더스에 3조3000억원 추가 투입"
     },
+    "core:679998f107a3c93d9905809c": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028087600002",
+      "source": "연합뉴스",
+      "source_body_digest": "aee8842a9b6584621ecd8becefd4e275aba7bf3e950a4bf2b56985f7dd5f237f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28d5b1d03d626b7520e03b8855385296d1fc84b83b157d91a3016ad6449bca8",
+      "source_fact_keys": [
+        "source_fact:v1:4d2258989040b82729029226054fb01260949bdd01e2adff8cb5c3e1de3d7b73",
+        "source_fact:v1:750f4e543bd5f49b4b2853671e60802e3cc33627287f4eb75f9514040ad68f33",
+        "source_fact:v1:b3625bf6106943889976046ec56acf8ebc5c5ef0e3dfd9ce4714d182ef908556",
+        "source_fact:v1:d3bbec573c9882e8385ec96ab4fbd9ed84705c407592db9074386f36e8eff833"
+      ],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스",
+      "telegram_core_fact": "탄소중립 정책이 2060년까지 경제성장률을 연평균 0.06∼0.07%p 낮추고, 생산자물가 상승률은 0.04%p 높일 것이라는 한국은행 분석이 나왔다.",
+      "title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스"
+    },
     "core:679d73967acd93363d7e8641": {
       "first_seen_kst": "2026-10-23T02:56:16+09:00",
       "lanes": {
@@ -75050,6 +75073,29 @@
       "source_title": "운영부터 매출 개선까지…카페24, '책임지는 엔터프라이즈' 출시",
       "telegram_core_fact": "육아용품 브랜드는 운영 개선 이후 알림톡 순방문자가 15.1% 증가했고, 재구매 매출 비중도 18% 늘었다.",
       "title": "운영부터 매출 개선까지…카페24, '책임지는 엔터프라이즈' 출시"
+    },
+    "core:9c089740ae109ca1548db926": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844422",
+      "source": "뉴시스",
+      "source_body_digest": "a3a8e21f8ef18fc137066473aa35fa7c3ad55c6feb7d7d275f6aa766f6fb261b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2de735b957d4ebea18f489594978521cc48f79511569a7650b8b192fba1238a7",
+      "source_fact_keys": [
+        "source_fact:v1:0ce1f049ae9c29371b367cba2492b6a3f8a6d79f43eb53281dd03d5e931e9cf2",
+        "source_fact:v1:14922fa2f3ce2218f632602dcb2ba51899ff0b934415a44e0ae857daf63b9eab",
+        "source_fact:v1:b23c0c4a84cdf95be32b97705f89c680704fb3f1c3e5aacae10ff5b7366b28e1",
+        "source_fact:v1:f9948edf80a7bdb0561b7e83392f852efc9bd79f5c8e69505ae126874f9bdfd3"
+      ],
+      "source_published_kst": "2026-10-28T14:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\"",
+      "telegram_core_fact": "초기에는 상대적으로 느슨한 감축 규제로 경제적 영향이 제한되지만, 저탄소 기술 개발 및 보급이 지연되며 2050년경에 집중된다는 것이 한은의 시각이다.",
+      "title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\""
     },
     "core:9c0b3d83b49fa47db77e1b00": {
       "first_seen_kst": "2026-10-20T11:16:24+09:00",
@@ -175203,6 +175249,29 @@
       "source_published_kst": "2026-10-06T07:35+09:00",
       "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
     },
+    "fact:3216609674ca7eae51516103": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028087600002",
+      "source": "연합뉴스",
+      "source_body_digest": "aee8842a9b6584621ecd8becefd4e275aba7bf3e950a4bf2b56985f7dd5f237f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28d5b1d03d626b7520e03b8855385296d1fc84b83b157d91a3016ad6449bca8",
+      "source_fact_keys": [
+        "source_fact:v1:4d2258989040b82729029226054fb01260949bdd01e2adff8cb5c3e1de3d7b73",
+        "source_fact:v1:750f4e543bd5f49b4b2853671e60802e3cc33627287f4eb75f9514040ad68f33",
+        "source_fact:v1:b3625bf6106943889976046ec56acf8ebc5c5ef0e3dfd9ce4714d182ef908556",
+        "source_fact:v1:d3bbec573c9882e8385ec96ab4fbd9ed84705c407592db9074386f36e8eff833"
+      ],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스",
+      "telegram_core_fact": "탄소중립 정책이 2060년까지 경제성장률을 연평균 0.06∼0.07%p 낮추고, 생산자물가 상승률은 0.04%p 높일 것이라는 한국은행 분석이 나왔다.",
+      "title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스"
+    },
     "fact:32218aedbe8a9e8d17128caa": {
       "first_seen_kst": "2026-10-16T16:08:38+09:00",
       "lanes": {
@@ -266140,6 +266209,29 @@
       "telegram_core_fact": "투자은행(IB) 업계에 따르면 삼양홀딩스는 이날 1천억원 회사채 발행을 위한 수요예측에서 총 5천600억원의 수요를 확인했다. 삼양홀딩스[000070](AA-)의 무보증사채 수요예측에서 모집예정액의 5.6배 자금이 몰렸다.",
       "title": "삼양홀딩스, 수요예측에 5천600억 몰려…모집예정액 5.6배 | 연합뉴스"
     },
+    "fact:e291b156100eac962422fbdc": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844422",
+      "source": "뉴시스",
+      "source_body_digest": "a3a8e21f8ef18fc137066473aa35fa7c3ad55c6feb7d7d275f6aa766f6fb261b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2de735b957d4ebea18f489594978521cc48f79511569a7650b8b192fba1238a7",
+      "source_fact_keys": [
+        "source_fact:v1:0ce1f049ae9c29371b367cba2492b6a3f8a6d79f43eb53281dd03d5e931e9cf2",
+        "source_fact:v1:14922fa2f3ce2218f632602dcb2ba51899ff0b934415a44e0ae857daf63b9eab",
+        "source_fact:v1:b23c0c4a84cdf95be32b97705f89c680704fb3f1c3e5aacae10ff5b7366b28e1",
+        "source_fact:v1:f9948edf80a7bdb0561b7e83392f852efc9bd79f5c8e69505ae126874f9bdfd3"
+      ],
+      "source_published_kst": "2026-10-28T14:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\"",
+      "telegram_core_fact": "초기에는 상대적으로 느슨한 감축 규제로 경제적 영향이 제한되지만, 저탄소 기술 개발 및 보급이 지연되며 2050년경에 집중된다는 것이 한은의 시각이다.",
+      "title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\""
+    },
     "fact:e2925c7298492ec1f92c644b": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -302383,6 +302475,29 @@
       "telegram_core_fact": "도공복 투자를 검토한다면 △철회 가능성·동의율 △승계요건 △가격(사업성) 등 여러 변수를 꼼꼼히 살펴봐야 한다.",
       "title": "[부동산 손품노트] 서울 핵심지역 공공 재개발 '도공복' 투자 100가지 사실"
     },
+    "link:1f8ccde656d8a4bc23379098": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844422",
+      "source": "뉴시스",
+      "source_body_digest": "a3a8e21f8ef18fc137066473aa35fa7c3ad55c6feb7d7d275f6aa766f6fb261b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2de735b957d4ebea18f489594978521cc48f79511569a7650b8b192fba1238a7",
+      "source_fact_keys": [
+        "source_fact:v1:0ce1f049ae9c29371b367cba2492b6a3f8a6d79f43eb53281dd03d5e931e9cf2",
+        "source_fact:v1:14922fa2f3ce2218f632602dcb2ba51899ff0b934415a44e0ae857daf63b9eab",
+        "source_fact:v1:b23c0c4a84cdf95be32b97705f89c680704fb3f1c3e5aacae10ff5b7366b28e1",
+        "source_fact:v1:f9948edf80a7bdb0561b7e83392f852efc9bd79f5c8e69505ae126874f9bdfd3"
+      ],
+      "source_published_kst": "2026-10-28T14:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\"",
+      "telegram_core_fact": "초기에는 상대적으로 느슨한 감축 규제로 경제적 영향이 제한되지만, 저탄소 기술 개발 및 보급이 지연되며 2050년경에 집중된다는 것이 한은의 시각이다.",
+      "title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\""
+    },
     "link:1fa5dfde46b0b24d1efcb230": {
       "first_seen_kst": "2026-10-21T12:30:59+09:00",
       "lanes": {
@@ -324818,6 +324933,29 @@
       ],
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
+    },
+    "link:40cd6c3eb1b42936b6aa0045": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028087600002",
+      "source": "연합뉴스",
+      "source_body_digest": "aee8842a9b6584621ecd8becefd4e275aba7bf3e950a4bf2b56985f7dd5f237f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28d5b1d03d626b7520e03b8855385296d1fc84b83b157d91a3016ad6449bca8",
+      "source_fact_keys": [
+        "source_fact:v1:4d2258989040b82729029226054fb01260949bdd01e2adff8cb5c3e1de3d7b73",
+        "source_fact:v1:750f4e543bd5f49b4b2853671e60802e3cc33627287f4eb75f9514040ad68f33",
+        "source_fact:v1:b3625bf6106943889976046ec56acf8ebc5c5ef0e3dfd9ce4714d182ef908556",
+        "source_fact:v1:d3bbec573c9882e8385ec96ab4fbd9ed84705c407592db9074386f36e8eff833"
+      ],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스",
+      "telegram_core_fact": "탄소중립 정책이 2060년까지 경제성장률을 연평균 0.06∼0.07%p 낮추고, 생산자물가 상승률은 0.04%p 높일 것이라는 한국은행 분석이 나왔다.",
+      "title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스"
     },
     "link:40d7bb2f561b43fc2e983113": {
       "first_seen_kst": "2026-10-19T16:36:04+09:00",
@@ -402406,6 +402544,24 @@
       "telegram_core_fact": "KT는 최대 800Gbps 대역폭을 제공하는 AI 전용회선 서비스를 출시했다고 14일 밝혔다. 전용회선 대역폭을 최대 800Gbps까지 확대해 여러 지역에 분산된 AI 데이터센터를 안정적으로 연결할 수 있도록 지원한다.",
       "title": "KT, AI 데이터센터 연결 속도 최대 8배 높인다…전용회선 출시"
     },
+    "link:b75a1aebf1e26cea10696720": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.etnews.com/20261028000094",
+      "source": "전자신문",
+      "source_body_digest": "797a01b607c3d0fd4928f76fc077f7b4ce40995c51271b23ee34934da188fa0e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "국세청, 고용·투자 늘린 중소기업 정기 세무조사 제외",
+      "telegram_core_fact": "디지털 전환 우수기업에는 고용 증가율 기준을 0.5%포인트(P) 낮춰 적용한다.",
+      "title": "국세청, 고용·투자 늘린 중소기업 정기 세무조사 제외"
+    },
     "link:b765c4472d9de4183b02b09b": {
       "first_seen_kst": "2026-10-26T15:29:43+09:00",
       "lanes": {
@@ -452981,6 +453137,24 @@
       "telegram_core_fact": "애즈위메이크 회계기록에는 2024년 캐시카우를 상대로 잡은 4억8000만원 상당의 용역매출 기록이 있는 것으로 파악됐다.",
       "title": "[단독]'사기의혹' 애즈위메이크...'가짜매출 기업' 지분 산 뒤 매출 폭증"
     },
+    "original:0813e9d7f0f98f6aa938bd4f": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.etnews.com/20261028000094",
+      "source": "전자신문",
+      "source_body_digest": "797a01b607c3d0fd4928f76fc077f7b4ce40995c51271b23ee34934da188fa0e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "국세청, 고용·투자 늘린 중소기업 정기 세무조사 제외",
+      "telegram_core_fact": "디지털 전환 우수기업에는 고용 증가율 기준을 0.5%포인트(P) 낮춰 적용한다.",
+      "title": "국세청, 고용·투자 늘린 중소기업 정기 세무조사 제외"
+    },
     "original:08298688c322448f81a638d4": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
@@ -458965,6 +459139,29 @@
       "source_title": "‘그래도 믿을 건 AI’ 스페이스X 이어 메타도 주가 쑥쑥…투자 심리 개선 기대 [투자360]",
       "telegram_core_fact": "메타는 올해 3분기에만 AI 모델 개발과 이를 뒷받침할 데이터센터 구축 등에 349억1000만달러의 자본지출(Capex)을 집행했다.",
       "title": "‘그래도 믿을 건 AI’ 스페이스X 이어 메타도 주가 쑥쑥…투자 심리 개선 기대 [투자360]"
+    },
+    "original:10dd69d6443d4e3da4491f1d": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028087600002",
+      "source": "연합뉴스",
+      "source_body_digest": "aee8842a9b6584621ecd8becefd4e275aba7bf3e950a4bf2b56985f7dd5f237f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28d5b1d03d626b7520e03b8855385296d1fc84b83b157d91a3016ad6449bca8",
+      "source_fact_keys": [
+        "source_fact:v1:4d2258989040b82729029226054fb01260949bdd01e2adff8cb5c3e1de3d7b73",
+        "source_fact:v1:750f4e543bd5f49b4b2853671e60802e3cc33627287f4eb75f9514040ad68f33",
+        "source_fact:v1:b3625bf6106943889976046ec56acf8ebc5c5ef0e3dfd9ce4714d182ef908556",
+        "source_fact:v1:d3bbec573c9882e8385ec96ab4fbd9ed84705c407592db9074386f36e8eff833"
+      ],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스",
+      "telegram_core_fact": "탄소중립 정책이 2060년까지 경제성장률을 연평균 0.06∼0.07%p 낮추고, 생산자물가 상승률은 0.04%p 높일 것이라는 한국은행 분석이 나왔다.",
+      "title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스"
     },
     "original:10e0f9aa091a2c269254821b": {
       "first_seen_kst": "2026-09-20T06:33:23+09:00",
@@ -585225,6 +585422,29 @@
       "telegram_core_fact": "이를 위해 대한전선 본사와 미국 법인은 1천200억원 자재 공급 계약을 체결했다.",
       "title": "대한전선, 미국서 대규모 초고압 전력망 프로젝트 턴키 수주 | 연합뉴스"
     },
+    "original:d68577ec1dce19a238cf6dec": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844422",
+      "source": "뉴시스",
+      "source_body_digest": "a3a8e21f8ef18fc137066473aa35fa7c3ad55c6feb7d7d275f6aa766f6fb261b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2de735b957d4ebea18f489594978521cc48f79511569a7650b8b192fba1238a7",
+      "source_fact_keys": [
+        "source_fact:v1:0ce1f049ae9c29371b367cba2492b6a3f8a6d79f43eb53281dd03d5e931e9cf2",
+        "source_fact:v1:14922fa2f3ce2218f632602dcb2ba51899ff0b934415a44e0ae857daf63b9eab",
+        "source_fact:v1:b23c0c4a84cdf95be32b97705f89c680704fb3f1c3e5aacae10ff5b7366b28e1",
+        "source_fact:v1:f9948edf80a7bdb0561b7e83392f852efc9bd79f5c8e69505ae126874f9bdfd3"
+      ],
+      "source_published_kst": "2026-10-28T14:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\"",
+      "telegram_core_fact": "초기에는 상대적으로 느슨한 감축 규제로 경제적 영향이 제한되지만, 저탄소 기술 개발 및 보급이 지연되며 2050년경에 집중된다는 것이 한은의 시각이다.",
+      "title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\""
+    },
     "original:d692cca6e092ddc4c5ddaee1": {
       "first_seen_kst": "2026-10-02T11:10:58+09:00",
       "lanes": {
@@ -707249,6 +707469,29 @@
       "telegram_core_fact": "후티는 전날에도 리야드 공항과 사우디의 동서 원유 송유관, 아람코 석유시설 등을 공격했다고 주장했다.",
       "title": "사우디 리야드공항 재개 첫날 폭발음⋯“후티 미사일 요격”"
     },
+    "source_fact:2385cc208c7208063b781df9": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028087600002",
+      "source": "연합뉴스",
+      "source_body_digest": "aee8842a9b6584621ecd8becefd4e275aba7bf3e950a4bf2b56985f7dd5f237f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28d5b1d03d626b7520e03b8855385296d1fc84b83b157d91a3016ad6449bca8",
+      "source_fact_keys": [
+        "source_fact:v1:4d2258989040b82729029226054fb01260949bdd01e2adff8cb5c3e1de3d7b73",
+        "source_fact:v1:750f4e543bd5f49b4b2853671e60802e3cc33627287f4eb75f9514040ad68f33",
+        "source_fact:v1:b3625bf6106943889976046ec56acf8ebc5c5ef0e3dfd9ce4714d182ef908556",
+        "source_fact:v1:d3bbec573c9882e8385ec96ab4fbd9ed84705c407592db9074386f36e8eff833"
+      ],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스",
+      "telegram_core_fact": "탄소중립 정책이 2060년까지 경제성장률을 연평균 0.06∼0.07%p 낮추고, 생산자물가 상승률은 0.04%p 높일 것이라는 한국은행 분석이 나왔다.",
+      "title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스"
+    },
     "source_fact:2385cecee90ee46781b733c4": {
       "first_seen_kst": "2026-10-24T13:43:04+09:00",
       "lanes": {
@@ -781989,6 +782232,29 @@
       "telegram_core_fact": "이런 가운데 반복적으로 담합 사건에 이름을 올리는 사업자에 제재 실효성을 높여야 한다는 지적도 나온다.",
       "title": "담합 걸리고 또 걸려…7년간 3건 이상 적발 사업자 65곳 | 연합뉴스"
     },
+    "source_fact:3eed328a4a53673a8ab76e5e": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844422",
+      "source": "뉴시스",
+      "source_body_digest": "a3a8e21f8ef18fc137066473aa35fa7c3ad55c6feb7d7d275f6aa766f6fb261b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2de735b957d4ebea18f489594978521cc48f79511569a7650b8b192fba1238a7",
+      "source_fact_keys": [
+        "source_fact:v1:0ce1f049ae9c29371b367cba2492b6a3f8a6d79f43eb53281dd03d5e931e9cf2",
+        "source_fact:v1:14922fa2f3ce2218f632602dcb2ba51899ff0b934415a44e0ae857daf63b9eab",
+        "source_fact:v1:b23c0c4a84cdf95be32b97705f89c680704fb3f1c3e5aacae10ff5b7366b28e1",
+        "source_fact:v1:f9948edf80a7bdb0561b7e83392f852efc9bd79f5c8e69505ae126874f9bdfd3"
+      ],
+      "source_published_kst": "2026-10-28T14:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\"",
+      "telegram_core_fact": "초기에는 상대적으로 느슨한 감축 규제로 경제적 영향이 제한되지만, 저탄소 기술 개발 및 보급이 지연되며 2050년경에 집중된다는 것이 한은의 시각이다.",
+      "title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\""
+    },
     "source_fact:3eefcce47adf7b7cbde85c53": {
       "first_seen_kst": "2026-10-24T22:11:43+09:00",
       "lanes": {
@@ -854509,6 +854775,29 @@
       "telegram_core_fact": "중국 메모리 반도체 기업 CXMT(창신메모리테크놀로지)의 차세대 D램 기술 발표로 반도체 증시가 출렁였지만 D램 현물가격은 더 올랐다.",
       "title": "무섭게 추격하는 중국 CXMT?…D램 현물가격은 더 올랐다"
     },
+    "source_fact:58fbe52078040b6b21d2e6d9": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844422",
+      "source": "뉴시스",
+      "source_body_digest": "a3a8e21f8ef18fc137066473aa35fa7c3ad55c6feb7d7d275f6aa766f6fb261b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2de735b957d4ebea18f489594978521cc48f79511569a7650b8b192fba1238a7",
+      "source_fact_keys": [
+        "source_fact:v1:0ce1f049ae9c29371b367cba2492b6a3f8a6d79f43eb53281dd03d5e931e9cf2",
+        "source_fact:v1:14922fa2f3ce2218f632602dcb2ba51899ff0b934415a44e0ae857daf63b9eab",
+        "source_fact:v1:b23c0c4a84cdf95be32b97705f89c680704fb3f1c3e5aacae10ff5b7366b28e1",
+        "source_fact:v1:f9948edf80a7bdb0561b7e83392f852efc9bd79f5c8e69505ae126874f9bdfd3"
+      ],
+      "source_published_kst": "2026-10-28T14:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\"",
+      "telegram_core_fact": "초기에는 상대적으로 느슨한 감축 규제로 경제적 영향이 제한되지만, 저탄소 기술 개발 및 보급이 지연되며 2050년경에 집중된다는 것이 한은의 시각이다.",
+      "title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\""
+    },
     "source_fact:58fc66c8b3b0164357a4b0f8": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
       "lanes": {
@@ -861342,6 +861631,29 @@
       "source_title": "국제유가, 호르무즈 유조선 피격·美 허리케인에 급등…브렌트 4.07%↑",
       "telegram_core_fact": "CNBC는 최근 호르무즈 해협과 그 주변에서 유조선 9척이 공격을 받았다면서 회복세를 보이던 호르무즈 해협을 통한 원유 수송이 위협받고 있다고 전했다.",
       "title": "국제유가, 호르무즈 유조선 피격·美 허리케인에 급등…브렌트 4.07%↑"
+    },
+    "source_fact:5b374664354343fa26feba28": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028087600002",
+      "source": "연합뉴스",
+      "source_body_digest": "aee8842a9b6584621ecd8becefd4e275aba7bf3e950a4bf2b56985f7dd5f237f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28d5b1d03d626b7520e03b8855385296d1fc84b83b157d91a3016ad6449bca8",
+      "source_fact_keys": [
+        "source_fact:v1:4d2258989040b82729029226054fb01260949bdd01e2adff8cb5c3e1de3d7b73",
+        "source_fact:v1:750f4e543bd5f49b4b2853671e60802e3cc33627287f4eb75f9514040ad68f33",
+        "source_fact:v1:b3625bf6106943889976046ec56acf8ebc5c5ef0e3dfd9ce4714d182ef908556",
+        "source_fact:v1:d3bbec573c9882e8385ec96ab4fbd9ed84705c407592db9074386f36e8eff833"
+      ],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스",
+      "telegram_core_fact": "탄소중립 정책이 2060년까지 경제성장률을 연평균 0.06∼0.07%p 낮추고, 생산자물가 상승률은 0.04%p 높일 것이라는 한국은행 분석이 나왔다.",
+      "title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스"
     },
     "source_fact:5b3f03b7c55ebfa606f1f12b": {
       "first_seen_kst": "2026-10-27T00:32:16+09:00",
@@ -959258,6 +959570,29 @@
       "source_published_kst": "2026-10-06T14:14+09:00",
       "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
     },
+    "source_fact:7f746095abdeb09900758dbf": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028087600002",
+      "source": "연합뉴스",
+      "source_body_digest": "aee8842a9b6584621ecd8becefd4e275aba7bf3e950a4bf2b56985f7dd5f237f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28d5b1d03d626b7520e03b8855385296d1fc84b83b157d91a3016ad6449bca8",
+      "source_fact_keys": [
+        "source_fact:v1:4d2258989040b82729029226054fb01260949bdd01e2adff8cb5c3e1de3d7b73",
+        "source_fact:v1:750f4e543bd5f49b4b2853671e60802e3cc33627287f4eb75f9514040ad68f33",
+        "source_fact:v1:b3625bf6106943889976046ec56acf8ebc5c5ef0e3dfd9ce4714d182ef908556",
+        "source_fact:v1:d3bbec573c9882e8385ec96ab4fbd9ed84705c407592db9074386f36e8eff833"
+      ],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스",
+      "telegram_core_fact": "탄소중립 정책이 2060년까지 경제성장률을 연평균 0.06∼0.07%p 낮추고, 생산자물가 상승률은 0.04%p 높일 것이라는 한국은행 분석이 나왔다.",
+      "title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스"
+    },
     "source_fact:7f78b66203be652154f7d746": {
       "first_seen_kst": "2026-10-18T07:09:00+09:00",
       "lanes": {
@@ -988262,6 +988597,29 @@
       "source_title": "아큐먼 파마슈티컬스, 3분기 주당순손실 0.35달러..11월 2상 결과 공개",
       "telegram_core_fact": "알츠하이머 치료제 개발사 아큐먼 파마슈티컬스(ABOS)는 3분기(7~9월) GAAP 기준 기본 및 희석 주당순손실이 0.35달러로 전년 동기 0.44달러보다 적자 폭을 줄였다며, 핵심 임상 2상 ALTITUDE-AD의 톱라인 결과를 11월 중 공개한다고 10월 26일 발표했다.",
       "title": "아큐먼 파마슈티컬스, 3분기 주당순손실 0.35달러..11월 2상 결과 공개"
+    },
+    "source_fact:8abbd934292d1fee3de727d2": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844422",
+      "source": "뉴시스",
+      "source_body_digest": "a3a8e21f8ef18fc137066473aa35fa7c3ad55c6feb7d7d275f6aa766f6fb261b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2de735b957d4ebea18f489594978521cc48f79511569a7650b8b192fba1238a7",
+      "source_fact_keys": [
+        "source_fact:v1:0ce1f049ae9c29371b367cba2492b6a3f8a6d79f43eb53281dd03d5e931e9cf2",
+        "source_fact:v1:14922fa2f3ce2218f632602dcb2ba51899ff0b934415a44e0ae857daf63b9eab",
+        "source_fact:v1:b23c0c4a84cdf95be32b97705f89c680704fb3f1c3e5aacae10ff5b7366b28e1",
+        "source_fact:v1:f9948edf80a7bdb0561b7e83392f852efc9bd79f5c8e69505ae126874f9bdfd3"
+      ],
+      "source_published_kst": "2026-10-28T14:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\"",
+      "telegram_core_fact": "초기에는 상대적으로 느슨한 감축 규제로 경제적 영향이 제한되지만, 저탄소 기술 개발 및 보급이 지연되며 2050년경에 집중된다는 것이 한은의 시각이다.",
+      "title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\""
     },
     "source_fact:8abf5df32908971f09c6bfa2": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
@@ -1075767,6 +1076125,29 @@
       "telegram_core_fact": "이어지는 궤도상시험(IOT) 과정에선 엔진 역할을 하는 추력기를 점검하고 다섯 기의 위성이 같은 등 간격으로 배치되도록 조정한다.",
       "title": "누리호가 쏘아올린 위성 14기, 수개월 '준비운동' 거쳐 임무 투입"
     },
+    "source_fact:aad076ef4e27d6e6e1b003f1": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844422",
+      "source": "뉴시스",
+      "source_body_digest": "a3a8e21f8ef18fc137066473aa35fa7c3ad55c6feb7d7d275f6aa766f6fb261b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2de735b957d4ebea18f489594978521cc48f79511569a7650b8b192fba1238a7",
+      "source_fact_keys": [
+        "source_fact:v1:0ce1f049ae9c29371b367cba2492b6a3f8a6d79f43eb53281dd03d5e931e9cf2",
+        "source_fact:v1:14922fa2f3ce2218f632602dcb2ba51899ff0b934415a44e0ae857daf63b9eab",
+        "source_fact:v1:b23c0c4a84cdf95be32b97705f89c680704fb3f1c3e5aacae10ff5b7366b28e1",
+        "source_fact:v1:f9948edf80a7bdb0561b7e83392f852efc9bd79f5c8e69505ae126874f9bdfd3"
+      ],
+      "source_published_kst": "2026-10-28T14:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\"",
+      "telegram_core_fact": "초기에는 상대적으로 느슨한 감축 규제로 경제적 영향이 제한되지만, 저탄소 기술 개발 및 보급이 지연되며 2050년경에 집중된다는 것이 한은의 시각이다.",
+      "title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\""
+    },
     "source_fact:aad10b1e49cc288e57d4bf37": {
       "first_seen_kst": "2026-10-28T16:38:48+09:00",
       "lanes": {
@@ -1129360,6 +1129741,29 @@
       "source_title": "한화 필리 등 트럼프 '제조업 부활책' 시험대…고비용에 난항",
       "telegram_core_fact": "한국 기업 한화는 필라델피아의 필리조선소를 인수한 뒤 50억 달러를 투자해 상선 생산량을 연간 2척에서 20척으로 확대하겠다고 밝혔다. 백악관 측은 WSJ에 \"역사적인 투자를 유치하고 고임금 일자리를 창출하고 제조업을 미국으로 되돌려 놓는 검증된 실력을 갖추고 있다\"고 밝혔다.",
       "title": "한화 필리 등 트럼프 '제조업 부활책' 시험대…고비용에 난항"
+    },
+    "source_fact:be424b996d58c831cbdd8bee": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028087600002",
+      "source": "연합뉴스",
+      "source_body_digest": "aee8842a9b6584621ecd8becefd4e275aba7bf3e950a4bf2b56985f7dd5f237f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28d5b1d03d626b7520e03b8855385296d1fc84b83b157d91a3016ad6449bca8",
+      "source_fact_keys": [
+        "source_fact:v1:4d2258989040b82729029226054fb01260949bdd01e2adff8cb5c3e1de3d7b73",
+        "source_fact:v1:750f4e543bd5f49b4b2853671e60802e3cc33627287f4eb75f9514040ad68f33",
+        "source_fact:v1:b3625bf6106943889976046ec56acf8ebc5c5ef0e3dfd9ce4714d182ef908556",
+        "source_fact:v1:d3bbec573c9882e8385ec96ab4fbd9ed84705c407592db9074386f36e8eff833"
+      ],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스",
+      "telegram_core_fact": "탄소중립 정책이 2060년까지 경제성장률을 연평균 0.06∼0.07%p 낮추고, 생산자물가 상승률은 0.04%p 높일 것이라는 한국은행 분석이 나왔다.",
+      "title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스"
     },
     "source_fact:be4481ddc13facc181934260": {
       "first_seen_kst": "2026-10-22T14:38:13+09:00",
@@ -1311251,6 +1311655,24 @@
       "telegram_core_fact": "애즈위메이크 회계기록에는 2024년 캐시카우를 상대로 잡은 4억8000만원 상당의 용역매출 기록이 있는 것으로 파악됐다.",
       "title": "[단독]'사기의혹' 애즈위메이크...'가짜매출 기업' 지분 산 뒤 매출 폭증"
     },
+    "title:0813e9d7f0f98f6aa938bd4f": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.etnews.com/20261028000094",
+      "source": "전자신문",
+      "source_body_digest": "797a01b607c3d0fd4928f76fc077f7b4ce40995c51271b23ee34934da188fa0e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "국세청, 고용·투자 늘린 중소기업 정기 세무조사 제외",
+      "telegram_core_fact": "디지털 전환 우수기업에는 고용 증가율 기준을 0.5%포인트(P) 낮춰 적용한다.",
+      "title": "국세청, 고용·투자 늘린 중소기업 정기 세무조사 제외"
+    },
     "title:08298688c322448f81a638d4": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
@@ -1317307,6 +1317729,29 @@
       "source_title": "‘그래도 믿을 건 AI’ 스페이스X 이어 메타도 주가 쑥쑥…투자 심리 개선 기대 [투자360]",
       "telegram_core_fact": "메타는 올해 3분기에만 AI 모델 개발과 이를 뒷받침할 데이터센터 구축 등에 349억1000만달러의 자본지출(Capex)을 집행했다.",
       "title": "‘그래도 믿을 건 AI’ 스페이스X 이어 메타도 주가 쑥쑥…투자 심리 개선 기대 [투자360]"
+    },
+    "title:10dd69d6443d4e3da4491f1d": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028087600002",
+      "source": "연합뉴스",
+      "source_body_digest": "aee8842a9b6584621ecd8becefd4e275aba7bf3e950a4bf2b56985f7dd5f237f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28d5b1d03d626b7520e03b8855385296d1fc84b83b157d91a3016ad6449bca8",
+      "source_fact_keys": [
+        "source_fact:v1:4d2258989040b82729029226054fb01260949bdd01e2adff8cb5c3e1de3d7b73",
+        "source_fact:v1:750f4e543bd5f49b4b2853671e60802e3cc33627287f4eb75f9514040ad68f33",
+        "source_fact:v1:b3625bf6106943889976046ec56acf8ebc5c5ef0e3dfd9ce4714d182ef908556",
+        "source_fact:v1:d3bbec573c9882e8385ec96ab4fbd9ed84705c407592db9074386f36e8eff833"
+      ],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스",
+      "telegram_core_fact": "탄소중립 정책이 2060년까지 경제성장률을 연평균 0.06∼0.07%p 낮추고, 생산자물가 상승률은 0.04%p 높일 것이라는 한국은행 분석이 나왔다.",
+      "title": "한은 \"탄소중립 전환에 성장률 연 0.06%p↓·물가 0.04%p↑\" | 연합뉴스"
     },
     "title:10e0f9aa091a2c269254821b": {
       "first_seen_kst": "2026-09-20T06:33:23+09:00",
@@ -1446186,6 +1446631,29 @@
       "telegram_core_fact": "이를 위해 대한전선 본사와 미국 법인은 1천200억원 자재 공급 계약을 체결했다.",
       "title": "대한전선, 미국서 대규모 초고압 전력망 프로젝트 턴키 수주 | 연합뉴스"
     },
+    "title:d68577ec1dce19a238cf6dec": {
+      "first_seen_kst": "2026-10-28T23:54:22+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:54:22+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:54:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844422",
+      "source": "뉴시스",
+      "source_body_digest": "a3a8e21f8ef18fc137066473aa35fa7c3ad55c6feb7d7d275f6aa766f6fb261b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2de735b957d4ebea18f489594978521cc48f79511569a7650b8b192fba1238a7",
+      "source_fact_keys": [
+        "source_fact:v1:0ce1f049ae9c29371b367cba2492b6a3f8a6d79f43eb53281dd03d5e931e9cf2",
+        "source_fact:v1:14922fa2f3ce2218f632602dcb2ba51899ff0b934415a44e0ae857daf63b9eab",
+        "source_fact:v1:b23c0c4a84cdf95be32b97705f89c680704fb3f1c3e5aacae10ff5b7366b28e1",
+        "source_fact:v1:f9948edf80a7bdb0561b7e83392f852efc9bd79f5c8e69505ae126874f9bdfd3"
+      ],
+      "source_published_kst": "2026-10-28T14:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\"",
+      "telegram_core_fact": "초기에는 상대적으로 느슨한 감축 규제로 경제적 영향이 제한되지만, 저탄소 기술 개발 및 보급이 지연되며 2050년경에 집중된다는 것이 한은의 시각이다.",
+      "title": "한은 \"탄소중립, 경제 성장률 연평균 0.06~0.07%p 낮춰\""
+    },
     "title:d692cca6e092ddc4c5ddaee1": {
       "first_seen_kst": "2026-10-02T11:10:58+09:00",
       "lanes": {
@@ -1472615,5 +1473083,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-28T23:29:55+09:00"
+  "updated_at_kst": "2026-10-28T23:54:22+09:00"
 }
