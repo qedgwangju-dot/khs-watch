@@ -222,7 +222,9 @@ def fetch_current_aaii_allocation(fetch, now):
         return value
     except ValueError:
         pass
-    for listing in (current, fetch(AAII_OFFICIAL_ARCHIVE)):
+    for listing in (current, None):
+        if listing is None:
+            listing = fetch(AAII_OFFICIAL_ARCHIVE)
         for official_url in aaii_latest_official_article_links(listing):
             try:
                 value = parse_aaii_monthly_article(fetch(official_url))
