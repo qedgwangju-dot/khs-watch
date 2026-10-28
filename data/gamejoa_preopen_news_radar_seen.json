@@ -24519,6 +24519,32 @@
       "telegram_core_fact": "생산자물가는 지난 7월 0.4% 하락했다가 8월 0.1% 상승 전환한 데 이어 두 달 연속 오름세를 이어갔다.",
       "title": "생산자물가 두 달 연속 상승…배추 42.9%·쇠고기 10.4%↑"
     },
+    "core:3297ff6bb4d90bed6eb348f6": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
+    },
     "core:32a1f321c2da04b2eb1680d8": {
       "first_seen_kst": "2026-10-15T18:18:04+09:00",
       "lanes": {
@@ -37340,6 +37366,31 @@
       "telegram_core_fact": "신세계그룹에 따르면 신세계프라퍼티는 데이비드 엘리슨 스카이댄스 공동 최고경영자(CEO), 미국 투자운용사 레드버드 등, 추진하는 워너브라더스 인수에 투자한다.",
       "title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은"
     },
+    "core:4f462fb666be19bed1cce976": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/27/F4KODOTWUBBLLCXYIFCFBZSAH4/",
+      "source": "조선비즈",
+      "source_body_digest": "044b0858d918824f58369462ca10bda0fb273377067dd6b127639d6024ea8482",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03360fed12ad0c3f5684911cc3f74aa9f9ef5ec681509e6eb026aff164e95696",
+      "source_fact_keys": [
+        "source_fact:v1:074641a2a15613da3606e318221a0944de611d10524a5568a8c4f9b39d375835",
+        "source_fact:v1:2acba877120417966c8d2d9af49bbc31eed91bafe874feb72ef4c88a9d074d6e",
+        "source_fact:v1:8dd6610e9dceec3dcbfeb603b6304b5151b9b513c2be0a7eeea802af2869262b",
+        "source_fact:v1:b92c2bc4a62c5af4a5f2f521429a03ab86fc2b694948dce907e6c1ba2c6c9a14",
+        "source_fact:v1:d3c0cbe9e938c208160e353c5a8d0ce9955dd93ae5468435832546f0bd614d0e",
+        "source_fact:v1:fc3f2c721a03298c3ab069e190be93920b8d92003f9ec90b5966321e042c9702"
+      ],
+      "source_published_kst": "2026-10-27T17:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
+      "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
+      "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
+    },
     "core:4f48549c428595182013be69": {
       "first_seen_kst": "2026-10-16T23:57:27+09:00",
       "lanes": {
@@ -44955,6 +45006,32 @@
       "telegram_core_fact": "제재 대상의 EU 내 자산은 동결되며, 이들에게 직간접적으로 자금이나 경제적 자원을 제공하는 행위가 금지된다.",
       "title": "EU, 북러 군사·경제 협력 관련 3명·4개 단체 추가 제재"
     },
+    "core:60f1ac5d64583730cbf1be53": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
+    },
     "core:6121ddd4674a70afef62d304": {
       "first_seen_kst": "2026-10-19T19:03:47+09:00",
       "lanes": {
@@ -51799,6 +51876,39 @@
       "telegram_core_fact": "범광진 KB자산운용 연금WM본부장은 \"국민참여형 국민성장펀드는 미래 핵심 산업에 장기 투자하면서 소득공제와 분리과세 혜택까지 받을 수 있는 절세상품\"이라며 \"2호 펀드는 후순위 출자 확대로 손실 완화 구조를 강화한 만큼 국민들의 장기 자산 형성에 도움이 될 수 있을 것\"이라고 말했다.",
       "title": "KB운용, 국민성장펀드 2호 일반 판매…후순위 출자 늘려 손실 방어 강화"
     },
+    "core:6f4d22f9f1e9f991ce1b39c8": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
+    },
     "core:6f5d856464c6fcd979957c61": {
       "first_seen_kst": "2026-10-08T05:17:22+09:00",
       "lanes": {
@@ -52653,6 +52763,27 @@
       "source_title": "트럼프 '러 에너지 유화책'에 공화 반발기류…美여권 내분 양상(종합) | 연합뉴스",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 원유·천연가스 주요 수입국에 대한 고율관세 부과를 전격 취소한 것을 놓고 미 공화당과 행정부가 내분 양상을 드러내고 있다.",
       "title": "트럼프 '러 에너지 유화책'에 공화 반발기류…美여권 내분 양상(종합) | 연합뉴스"
+    },
+    "core:71330a6792c4ac8ecfeb2420": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102808472971712",
+      "source": "머니투데이",
+      "source_body_digest": "3c401ac68b422e2ef82850b92d69d1f9ba471d20d9d72172a5978237e5b4bb6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8191cc13e526367c119334c0c095487a6862acce148239ae1de8387d4ebb2357",
+      "source_fact_keys": [
+        "source_fact:v1:20b73e054e8560b184e05a2b6289a27193f79db5b53ed403277cfb542b00ea11",
+        "source_fact:v1:aa20b73c45b4401cf0ffc98b9a4ed36e0c2026e199c16037d6a67a728bd87a16"
+      ],
+      "source_published_kst": "2026-10-28T08:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상",
+      "telegram_core_fact": "SK하이닉스가 28일 현재 글로벌 대형 클라우드 서비스 제공업체(CSP, Cloud Service Provider)를 포함한 14개 주요 고객과 LTA(장기공급계약)를 체결했다고 밝혔다.",
+      "title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상"
     },
     "core:71384a1314b2eed7d2156852": {
       "first_seen_kst": "2026-10-16T20:17:17+09:00",
@@ -67186,6 +67317,34 @@
       "source_title": "FF EAI 로보틱스 에코시스, FFAI 로봇사업 2억 달러 인수 계약",
       "telegram_core_fact": "FF EAI 로보틱스 에코시스템(FFR)이 패러데이 퓨처 인텔리전트 일렉트릭(FFAI)의 로봇 사업 전체를 약 2억 달러 가치로 인수하는 최종 계약을 체결했다고 14일 발표했다.",
       "title": "FF EAI 로보틱스 에코시스, FFAI 로봇사업 2억 달러 인수 계약"
+    },
+    "core:8f206a063608b7b4590bc2eb": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
     },
     "core:8f26f96bcaab5e0279e61bfb": {
       "first_seen_kst": "2026-10-20T18:31:59+09:00",
@@ -88264,6 +88423,24 @@
       "source_title": "로봇전문 ‘원익로보틱스’ 완주에 둥지…1000억 투자",
       "telegram_core_fact": "전북특별자치도는 26일 로봇 전문기업 ㈜원익로보틱스, 완주군과 피지컬 AI 기반 로봇 생산거점 조성을 위한 투자 협약을 체결했다고 밝혔다.",
       "title": "로봇전문 ‘원익로보틱스’ 완주에 둥지…1000억 투자"
+    },
+    "core:bd814a7f44e8798695d39370": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187811",
+      "source": "매일경제",
+      "source_body_digest": "a498980f1436cf64eb4dc553fc353d8c19c359802a7da074c27d8807fd0e054e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T01:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HCA헬스케어, 실적 예상치 상회에도 성장 둔화 우려와 차익실현 매물에 약세",
+      "telegram_core_fact": "조정 EBITDA 증가율이 1.2%에 그치고 매출 증가율도 3.6%에 머물러 성장 둔화 우려가 부각되며, 발표 직후 단기 차익실현 매물이 나오고 있습니다.",
+      "title": "HCA헬스케어, 실적 예상치 상회에도 성장 둔화 우려와 차익실현 매물에 약세"
     },
     "core:bdacb28fe75003fab8e64b4d": {
       "first_seen_kst": "2026-10-19T09:33:44+09:00",
@@ -128167,24 +128344,28 @@
     "event:53c3d030744ffe108150970b": {
       "first_seen_kst": "2026-10-28T09:46:40+09:00",
       "lanes": {
-        "live": "2026-10-28T09:46:40+09:00"
+        "live": "2026-10-28T12:04:13+09:00"
       },
-      "last_seen_kst": "2026-10-28T09:46:40+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=06724006645617184",
-      "source": "이데일리",
-      "source_body_digest": "c93561bec14e4de8623e2ada58cd51d455afe16c8e29525d4655210a6b2102f9",
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c328fb96eece4ae5c6e863bc9c7d2a94207537b6b60f9c9799b226ddf2ff0ce7",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
       "source_fact_keys": [
-        "source_fact:v1:125cc0faa2ca09e17b63800ab3039e8f9b21c664b925569eb713eb52abdbac9c",
-        "source_fact:v1:4176192b447fd0e3c22e270c2044c0142917a7204e89be571ef5d6ab48c9ebe6",
-        "source_fact:v1:89faeed5515ab185af71073f6a03c71aaffc54458cf3df9a25c989bf0b3a0a2c"
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
       ],
-      "source_published_kst": "2026-10-27T22:55+09:00",
+      "source_published_kst": "2026-10-27T17:40+09:00",
       "source_supply_terms": {},
-      "source_title": "유가 하락·반도체주 강세 속 美증시 혼조 출발…연준 결정 주시",
-      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 미국 뉴욕증시가 27일(현지시간) 국제유가 하락과 인공지능(AI) 반도체주 강세 속에 장 초반 혼조세를 보이고 있다.",
-      "title": "유가 하락·반도체주 강세 속 美증시 혼조 출발…연준 결정 주시"
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
     },
     "event:53f0634c5b86af754e40ee4f": {
       "first_seen_kst": "2026-10-19T23:09:43+09:00",
@@ -130082,27 +130263,36 @@
     "event:68832cf716b50ba295693466": {
       "first_seen_kst": "2026-10-28T07:11:08+09:00",
       "lanes": {
-        "live": "2026-10-28T11:34:14+09:00",
+        "live": "2026-10-28T12:04:13+09:00",
         "preopen": "2026-10-28T07:11:08+09:00"
       },
-      "last_seen_kst": "2026-10-28T11:34:14+09:00",
-      "link": "https://biz.heraldcorp.com/article/10917149",
-      "source": "헤럴드경제",
-      "source_body_digest": "d820d975c77827b24229d995062c09e3c9bce9891ca56937a26248ae2c298275",
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6c3576172babff841dc564c12ff1419b2fa17829385a7efc793c34c726ff049d",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
       "source_fact_keys": [
-        "source_fact:v1:3ed26547290cea8ff6e8d33f1450fd5fdf19a12923ecf5bf2319872a3b369086",
-        "source_fact:v1:456a46459000bf401003b0f06eed550091f4f3c7958eb3a93a8ad10f0d65b6b2",
-        "source_fact:v1:5fcb201a34ec50acedfbaa344fc207acf9f1f30501fedae86686b07bb9527439",
-        "source_fact:v1:b0e1f0305d2996e4502e84652bdff5697180befd4b8c316f4914f8c5c3fb91d7",
-        "source_fact:v1:f043883d95c94d40853c8cb51bf8c9792f9d6239dca09e08134a779b7366d6c7"
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
       ],
-      "source_published_kst": "2026-10-28T09:36+09:00",
+      "source_published_kst": "2026-10-28T11:10+09:00",
       "source_supply_terms": {},
-      "source_title": "‘삼전 특별배당 효과’ 미래에셋 ‘TIGER 200 ETF’, 10월 주당 725원 분배…5배↑",
-      "telegram_core_fact": "지난 27일에는 ‘TIGER 배당커버드콜액티브 ETF’의 연초 이후 개인 순매수 규모가 2조원을 돌파, 2조4044억원을 기록했다.",
-      "title": "‘삼전 특별배당 효과’ 미래에셋 ‘TIGER 200 ETF’, 10월 주당 725원 분배…5배↑"
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
     },
     "event:68b3ff1292ddc5b8b6a0c1b5": {
       "first_seen_kst": "2026-10-02T07:53:13+09:00",
@@ -131879,29 +132069,23 @@
     "event:79abea60144537d42bd79643": {
       "first_seen_kst": "2026-10-28T11:34:14+09:00",
       "lanes": {
-        "live": "2026-10-28T11:34:14+09:00"
+        "live": "2026-10-28T12:04:13+09:00"
       },
-      "last_seen_kst": "2026-10-28T11:34:14+09:00",
-      "link": "https://www.fnnews.com/news/202610281058005942",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "e1130d0459484ce74dbcb11908af75bb09c45734f084fbfca2fcc3852ee07ff4",
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102808472971712",
+      "source": "머니투데이",
+      "source_body_digest": "3c401ac68b422e2ef82850b92d69d1f9ba471d20d9d72172a5978237e5b4bb6b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6140def26c419750370a30a3486a8ac856c1f239412e35671abf0667d8228aa8",
+      "source_fact_identity": "source_facts:v1:8191cc13e526367c119334c0c095487a6862acce148239ae1de8387d4ebb2357",
       "source_fact_keys": [
-        "source_fact:v1:02b62358554041c2e815e699fa267ab43e94955085b2c6034b070cf50850022e",
-        "source_fact:v1:0d4efe293cdf0d1ac3dddd01d134a287b5ea875767ac86ba63e628057f191a32",
-        "source_fact:v1:20d0dc64a1baa59719c690c72e6df2129dab9b0c8f2d7053cae4bf557178326e",
-        "source_fact:v1:5e011f3d9dbbdd4a85a9690779e3aa3f1a6941a6a41174f7e1a7998ea155fd65",
-        "source_fact:v1:9b7617b475d96640cf9be41501524fdef48e9fb4bfbc2095557772f3c46938ee",
-        "source_fact:v1:b0a76d3bef83653d2a2fd7560c1cbd434057edf5ce3b54a30a921a8c138d921a",
-        "source_fact:v1:bdc5bbcb6036ddbcd3617444dd7acd04c6ae382487690886a5f5f66f281d225a",
-        "source_fact:v1:ea9871e1549a3c3b9ed2345889e7bc673742e72f775198798bbca2c446b4b14b"
+        "source_fact:v1:20b73e054e8560b184e05a2b6289a27193f79db5b53ed403277cfb542b00ea11",
+        "source_fact:v1:aa20b73c45b4401cf0ffc98b9a4ed36e0c2026e199c16037d6a67a728bd87a16"
       ],
-      "source_published_kst": "2026-10-28T11:02+09:00",
+      "source_published_kst": "2026-10-28T08:54+09:00",
       "source_supply_terms": {},
-      "source_title": "SK하이닉스 \"D램·HBM 3년치 물량 솔드아웃, 높은 수익 지속가능\"",
-      "telegram_core_fact": "4·4분기에는 HBM4가 출하 물량과 매출 비중 모두 HBM3E를 넘어설 것으로 예상한 SK하이닉스 측은 \"HBM4는 계획 수율을 상회해 목표를 상향 조정했고, HBM3E 역시 당초 계획했던 성숙 수율을 초과 달성했다. 지금은 높은 고객 수요에 대응하기 위해 생산성을 극대화하는 데 집중하고 있다\"고 말했다.",
-      "title": "SK하이닉스 \"D램·HBM 3년치 물량 솔드아웃, 높은 수익 지속가능\""
+      "source_title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상",
+      "telegram_core_fact": "SK하이닉스가 28일 현재 글로벌 대형 클라우드 서비스 제공업체(CSP, Cloud Service Provider)를 포함한 14개 주요 고객과 LTA(장기공급계약)를 체결했다고 밝혔다.",
+      "title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상"
     },
     "event:79bc37a30fd7aed2a24a2412": {
       "first_seen_kst": "2026-10-05T10:49:34+09:00",
@@ -133452,6 +133636,34 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T13:42+09:00",
       "title": "“연준이 10월은 쉬어도 인상 끝 아니다”…시장 관심은 ‘금리 상단’으로[디브리핑]"
+    },
+    "event:8776416201492283eb273eac": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
     },
     "event:877b8321fdf5fa4b2b73a7f8": {
       "first_seen_kst": "2026-09-28T17:51:03+09:00",
@@ -145090,6 +145302,32 @@
       "telegram_core_fact": "외국인이 최근 두 달 새 코스피에서 40조 원 가까이 순매도했지만, 원화는 주요국 통화 가운데 '나홀로 강세'를 이어가고 있다.",
       "title": "외국인 40조 팔아도 원화 '나홀로 강세'…환율 내년 1250원 전망까지"
     },
+    "event:fa909b6b96b5b8b00b01a17c": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
+    },
     "event:faaa088ab6586246146d1439": {
       "first_seen_kst": "2026-10-11T13:40:09+09:00",
       "lanes": {
@@ -147306,6 +147544,34 @@
       "source_title": "오텍그룹, 노이리움과 냉동·냉장 설비 공급 협약 체결",
       "telegram_core_fact": "오텍그룹 계열사 오텍캐리어와 씨알케이가 건축·인테리어용 내·외장재 기업인 노이리움에 설비를 공급한다.",
       "title": "오텍그룹, 노이리움과 냉동·냉장 설비 공급 협약 체결"
+    },
+    "fact:0360745807c02c8f30682af8": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
     },
     "fact:037dc432c88c97834f26355c": {
       "first_seen_kst": "2026-10-20T17:57:17+09:00",
@@ -151248,6 +151514,32 @@
       "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
       "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
       "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
+    },
+    "fact:0ad4ef4798c0888449d13819": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
     },
     "fact:0ae3a3a01adbc86b3abe094e": {
       "first_seen_kst": "2026-10-21T14:30:03+09:00",
@@ -168693,6 +168985,27 @@
       "telegram_core_fact": "삼성전기와 엔비디아는 지난 21일 AI 반도체 패키지기판 생산을 위한 세종·부산 전용 생산시설 공동투자와 다년간 공급계약을 발표했다. 메모리 제조사와 고객사의 공동개발을 넘어 반도체 장비 업체 간 지분투자, 패키지기판 생산시설 공동투자 등으로 협력 방식도 다양해지는 모습이다.",
       "title": "AI칩 '각자도생' 끝났다…개발·생산·패키징 전방위 협력 확대"
     },
+    "fact:2e6e8b81418f1126aac21de0": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102808472971712",
+      "source": "머니투데이",
+      "source_body_digest": "3c401ac68b422e2ef82850b92d69d1f9ba471d20d9d72172a5978237e5b4bb6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8191cc13e526367c119334c0c095487a6862acce148239ae1de8387d4ebb2357",
+      "source_fact_keys": [
+        "source_fact:v1:20b73e054e8560b184e05a2b6289a27193f79db5b53ed403277cfb542b00ea11",
+        "source_fact:v1:aa20b73c45b4401cf0ffc98b9a4ed36e0c2026e199c16037d6a67a728bd87a16"
+      ],
+      "source_published_kst": "2026-10-28T08:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상",
+      "telegram_core_fact": "SK하이닉스가 28일 현재 글로벌 대형 클라우드 서비스 제공업체(CSP, Cloud Service Provider)를 포함한 14개 주요 고객과 LTA(장기공급계약)를 체결했다고 밝혔다.",
+      "title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상"
+    },
     "fact:2e7aaff51f50e6898a429d65": {
       "first_seen_kst": "2026-10-19T17:39:56+09:00",
       "lanes": {
@@ -183093,6 +183406,39 @@
       "telegram_core_fact": "중국이 인공지능(AI)과 바이오의약, 태양광 분야 핵심 기술 40개를 수출통제 대상에 추가하는 방안을 추진한다.",
       "title": "中, AI·바이오·태양광 기술 40개 수출통제 추진"
     },
+    "fact:4d2a22f748734c0c1de6b7c4": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
+    },
     "fact:4d30afe8d4bafe6b5fc28f90": {
       "first_seen_kst": "2026-10-15T13:08:36+09:00",
       "lanes": {
@@ -187077,6 +187423,31 @@
       ],
       "source_published_kst": "2026-10-05T20:07+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
+    },
+    "fact:55c50e849a08557335df6499": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/27/F4KODOTWUBBLLCXYIFCFBZSAH4/",
+      "source": "조선비즈",
+      "source_body_digest": "044b0858d918824f58369462ca10bda0fb273377067dd6b127639d6024ea8482",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03360fed12ad0c3f5684911cc3f74aa9f9ef5ec681509e6eb026aff164e95696",
+      "source_fact_keys": [
+        "source_fact:v1:074641a2a15613da3606e318221a0944de611d10524a5568a8c4f9b39d375835",
+        "source_fact:v1:2acba877120417966c8d2d9af49bbc31eed91bafe874feb72ef4c88a9d074d6e",
+        "source_fact:v1:8dd6610e9dceec3dcbfeb603b6304b5151b9b513c2be0a7eeea802af2869262b",
+        "source_fact:v1:b92c2bc4a62c5af4a5f2f521429a03ab86fc2b694948dce907e6c1ba2c6c9a14",
+        "source_fact:v1:d3c0cbe9e938c208160e353c5a8d0ce9955dd93ae5468435832546f0bd614d0e",
+        "source_fact:v1:fc3f2c721a03298c3ab069e190be93920b8d92003f9ec90b5966321e042c9702"
+      ],
+      "source_published_kst": "2026-10-27T17:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
+      "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
+      "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
     },
     "fact:55c585f8fb3bfccc38fe592b": {
       "first_seen_kst": "2026-10-13T22:04:42+09:00",
@@ -211624,6 +211995,32 @@
       "source_title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다",
       "telegram_core_fact": "국민연금이 지분 5% 이상을 보유한 상장사 287곳의 주식 평가액도 6월 말 515조9293억원에서 10월15일 333조5330억원으로 182조3963억원 줄어든 것으로 관측된다.보유주식 평가액이 급감하면서 국민연금이 매도 속도를 높여 위험을 분산했어야 한다는 비판으로 이어졌다.",
       "title": "국민연금, 올해 국내주식 순매도…리밸런싱 전 재량 매도했다"
+    },
+    "fact:8680a2591412322e8b168f7e": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
     },
     "fact:8682b92b8a6b99d90bed2b77": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -288935,6 +289332,27 @@
       "telegram_core_fact": "사업은 울산 AI 데이터센터를 출발점으로 영남권에 2GW 이상 클러스터를 조성하고, 충청권과 서남권으로 확대한다.",
       "title": "SK하이퍼, AI 데이터센터 투자 유치 추진… 첫 5GW 구축에 463조원 예상"
     },
+    "link:1686f0d4ae680916a355fe91": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102808472971712",
+      "source": "머니투데이",
+      "source_body_digest": "3c401ac68b422e2ef82850b92d69d1f9ba471d20d9d72172a5978237e5b4bb6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8191cc13e526367c119334c0c095487a6862acce148239ae1de8387d4ebb2357",
+      "source_fact_keys": [
+        "source_fact:v1:20b73e054e8560b184e05a2b6289a27193f79db5b53ed403277cfb542b00ea11",
+        "source_fact:v1:aa20b73c45b4401cf0ffc98b9a4ed36e0c2026e199c16037d6a67a728bd87a16"
+      ],
+      "source_published_kst": "2026-10-28T08:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상",
+      "telegram_core_fact": "SK하이닉스가 28일 현재 글로벌 대형 클라우드 서비스 제공업체(CSP, Cloud Service Provider)를 포함한 14개 주요 고객과 LTA(장기공급계약)를 체결했다고 밝혔다.",
+      "title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상"
+    },
     "link:16891d11305f1420ceedee8c": {
       "first_seen_kst": "2026-10-16T18:58:56+09:00",
       "lanes": {
@@ -293069,6 +293487,32 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T14:10+09:00",
       "title": "고금리도 삼킨 AI 열풍⋯월가 랠리, 10년물 美국채 금리 6%가 ‘고비’"
+    },
+    "link:1cfeeda6d1b416b295ebef30": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
     },
     "link:1d06706568940985bd7f7055": {
       "first_seen_kst": "2026-10-13T06:41:52+09:00",
@@ -346296,6 +346740,32 @@
       "telegram_core_fact": "투자은행(IB) 업계에 따르면 미래에셋자산운용은 최근 스테이트타워 남산 매각 가능성을 검토 중인 것으로 알려졌다. 미래에셋자산운용이 서울 도심권(CBD)의 대형 오피스인 스테이트타워 남산을 인수한 지 7년여 만에 매각한다.",
       "title": "미래운용, '스테이트타워 남산' 매각 추진…KIC 등 입주 | 연합뉴스"
     },
+    "link:6f85c6999b799d642f6c517f": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
+    },
     "link:6f93e6137bbbb2b926a30e61": {
       "first_seen_kst": "2026-10-01T17:14:46+09:00",
       "lanes": {
@@ -365384,6 +365854,31 @@
       "telegram_core_fact": "AP 통신은 “이번 지지가 접전이 예상되는 선거에서 어떤 영향을 미칠지는 당장 명확하지 않다”며 “트럼프는 여전히 이스라엘에서 인기가 높지만, 주요 평론가들을 포함해 많은 이스라엘인은 이란 전쟁의 불완전한 성과와 트럼프 대통령의 휴전 제안에 대해 실망감을 표해왔다”고 짚었다.",
       "title": "트럼프, 이스라엘 총선 앞두고 네타냐후 지지…“위대한 전사” [1일1트]"
     },
+    "link:8e4b731ae348aeaa93fa00ae": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/27/F4KODOTWUBBLLCXYIFCFBZSAH4/",
+      "source": "조선비즈",
+      "source_body_digest": "044b0858d918824f58369462ca10bda0fb273377067dd6b127639d6024ea8482",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03360fed12ad0c3f5684911cc3f74aa9f9ef5ec681509e6eb026aff164e95696",
+      "source_fact_keys": [
+        "source_fact:v1:074641a2a15613da3606e318221a0944de611d10524a5568a8c4f9b39d375835",
+        "source_fact:v1:2acba877120417966c8d2d9af49bbc31eed91bafe874feb72ef4c88a9d074d6e",
+        "source_fact:v1:8dd6610e9dceec3dcbfeb603b6304b5151b9b513c2be0a7eeea802af2869262b",
+        "source_fact:v1:b92c2bc4a62c5af4a5f2f521429a03ab86fc2b694948dce907e6c1ba2c6c9a14",
+        "source_fact:v1:d3c0cbe9e938c208160e353c5a8d0ce9955dd93ae5468435832546f0bd614d0e",
+        "source_fact:v1:fc3f2c721a03298c3ab069e190be93920b8d92003f9ec90b5966321e042c9702"
+      ],
+      "source_published_kst": "2026-10-27T17:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
+      "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
+      "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
+    },
     "link:8e5ba20eec720f8a8ea10148": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -367579,6 +368074,24 @@
       "source_title": "후티 공습에 ‘사막의 다보스’ 흔들⋯월가 거물들 사우디행 주저",
       "telegram_core_fact": "WSJ는 후티 반군의 공격과 원유 수출 둔화가 사우디의 경제 전환에 미칠 영향에 월가가 주목하고 있다고 전했다.",
       "title": "후티 공습에 ‘사막의 다보스’ 흔들⋯월가 거물들 사우디행 주저"
+    },
+    "link:91b2aec05a83d35c45c66850": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187811",
+      "source": "매일경제",
+      "source_body_digest": "a498980f1436cf64eb4dc553fc353d8c19c359802a7da074c27d8807fd0e054e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T01:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HCA헬스케어, 실적 예상치 상회에도 성장 둔화 우려와 차익실현 매물에 약세",
+      "telegram_core_fact": "조정 EBITDA 증가율이 1.2%에 그치고 매출 증가율도 3.6%에 머물러 성장 둔화 우려가 부각되며, 발표 직후 단기 차익실현 매물이 나오고 있습니다.",
+      "title": "HCA헬스케어, 실적 예상치 상회에도 성장 둔화 우려와 차익실현 매물에 약세"
     },
     "link:91b3ffdae4d76013bbd26130": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -414804,6 +415317,34 @@
       "telegram_core_fact": "중국이 자국과 분쟁 관계에 있는 국가 또는 지역에 이중용도 성격을 띠고 있는 터널 굴착기, 특수 굴착 장비 등의 수출을 제한한다.",
       "title": "中, '분쟁국'에 일부 굴착장비 수출 제한…고성능 드론 통제 강화"
     },
+    "link:daf676aac72d97a52b31741b": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
+    },
     "link:daf8c6ddb20fd5406385fe18": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
       "lanes": {
@@ -417043,6 +417584,39 @@
       "source_title": "9월 국고채 금리 일제히 상승…외국인 채권 보유잔고 7.8조 감소",
       "telegram_core_fact": "금융투자협회가 발표한 '9월 장외채권시장 동향'에 따르면 지난달 말 국고채 3년물 금리는 연 4.011%로 전월 말 대비 17.3bp(1bp=0.01%포인트) 상승했다.",
       "title": "9월 국고채 금리 일제히 상승…외국인 채권 보유잔고 7.8조 감소"
+    },
+    "link:df3b4682154d66430ce4fd26": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
     },
     "link:df3c876e5a095ee707d77efd": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
@@ -438019,6 +438593,32 @@
       "source_title": "젤렌스키, 트럼프 맞서지만…\"미국지원 없으면 우크라 못버텨\" | 연합뉴스",
       "telegram_core_fact": "젤렌스키 대통령은 러시아의 정유시설에 대한 공격을 재개하겠다며 트럼프 대통령을 향해 날 선 비판을 내놓았지만, 우크라이나로서는 마땅한 대책이 없다는 게 문제다.",
       "title": "젤렌스키, 트럼프 맞서지만…\"미국지원 없으면 우크라 못버텨\" | 연합뉴스"
+    },
+    "original:01db5578452c341b6c981898": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
     },
     "original:01deabfde223c5868dda9c8f": {
       "first_seen_kst": "2026-10-01T19:33:29+09:00",
@@ -486365,6 +486965,27 @@
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
     },
+    "original:4dfa3f35ad40d28f8ff96f1d": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102808472971712",
+      "source": "머니투데이",
+      "source_body_digest": "3c401ac68b422e2ef82850b92d69d1f9ba471d20d9d72172a5978237e5b4bb6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8191cc13e526367c119334c0c095487a6862acce148239ae1de8387d4ebb2357",
+      "source_fact_keys": [
+        "source_fact:v1:20b73e054e8560b184e05a2b6289a27193f79db5b53ed403277cfb542b00ea11",
+        "source_fact:v1:aa20b73c45b4401cf0ffc98b9a4ed36e0c2026e199c16037d6a67a728bd87a16"
+      ],
+      "source_published_kst": "2026-10-28T08:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상",
+      "telegram_core_fact": "SK하이닉스가 28일 현재 글로벌 대형 클라우드 서비스 제공업체(CSP, Cloud Service Provider)를 포함한 14개 주요 고객과 LTA(장기공급계약)를 체결했다고 밝혔다.",
+      "title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상"
+    },
     "original:4e1cb2e57becad3dab74af97": {
       "first_seen_kst": "2026-10-28T04:02:25+09:00",
       "lanes": {
@@ -530379,6 +531000,24 @@
       "source": "이데일리",
       "title": "\"中정유업체들, 석유제품 수출 중단…재고 확보 목적\""
     },
+    "original:94bc5a1bde3d35eb4d7abb96": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187811",
+      "source": "매일경제",
+      "source_body_digest": "a498980f1436cf64eb4dc553fc353d8c19c359802a7da074c27d8807fd0e054e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T01:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HCA헬스케어, 실적 예상치 상회에도 성장 둔화 우려와 차익실현 매물에 약세",
+      "telegram_core_fact": "조정 EBITDA 증가율이 1.2%에 그치고 매출 증가율도 3.6%에 머물러 성장 둔화 우려가 부각되며, 발표 직후 단기 차익실현 매물이 나오고 있습니다.",
+      "title": "HCA헬스케어, 실적 예상치 상회에도 성장 둔화 우려와 차익실현 매물에 약세"
+    },
     "original:94c33b765e00cba38f682cbb": {
       "first_seen_kst": "2026-10-25T03:16:17+09:00",
       "lanes": {
@@ -533168,6 +533807,39 @@
       "telegram_core_fact": "업계에 따르면 삼성SDI 미주 법인 삼성SDI 아메리카는 최근 미국 에너지 전문 기업 알파오메가파워(AOP)와 1기가와트시(GWh) ESS 솔루션 공급 계약을 체결했다.",
       "title": "삼성SDI, 美서 ESS 수주 확대 지속…'각형 기술·현지 생산' 효과 본격화"
     },
+    "original:991f3b79bd0594451ce6383e": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
+    },
     "original:9939b868b071961b8e12fa4d": {
       "first_seen_kst": "2026-10-12T21:44:29+09:00",
       "lanes": {
@@ -534106,6 +534778,32 @@
       "source_title": "트렉세이드 그룹, 헬스케어 IP 인수 LOI 재체결..4분기 종결 목표",
       "telegram_core_fact": "셋째, 스칠렉스로부터 웨어러블 기반으로 약물 효과를 생체정보로 확인하는 QOLPOM IP를 인수한다.",
       "title": "트렉세이드 그룹, 헬스케어 IP 인수 LOI 재체결..4분기 종결 목표"
+    },
+    "original:9ad63b511706a85e49310125": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
     },
     "original:9ae719dc27ae2ce378c00e36": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
@@ -550849,6 +551547,31 @@
       "telegram_core_fact": "AI 데이터센터와 반도체 팹 등 1GW(기가와트)급 전력이 필요한 대규모 시설이 등장하면서 안정적인 전력 공급을 위한 인프라 구축이 핵심 과제로 떠올랐다.",
       "title": "UAE 날아간 이재용 삼성그룹 회장… AI·반도체 살릴 전력 시장 집중 점검"
     },
+    "original:b4f5b4d17d18de74fbebc8e9": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/27/F4KODOTWUBBLLCXYIFCFBZSAH4/",
+      "source": "조선비즈",
+      "source_body_digest": "044b0858d918824f58369462ca10bda0fb273377067dd6b127639d6024ea8482",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03360fed12ad0c3f5684911cc3f74aa9f9ef5ec681509e6eb026aff164e95696",
+      "source_fact_keys": [
+        "source_fact:v1:074641a2a15613da3606e318221a0944de611d10524a5568a8c4f9b39d375835",
+        "source_fact:v1:2acba877120417966c8d2d9af49bbc31eed91bafe874feb72ef4c88a9d074d6e",
+        "source_fact:v1:8dd6610e9dceec3dcbfeb603b6304b5151b9b513c2be0a7eeea802af2869262b",
+        "source_fact:v1:b92c2bc4a62c5af4a5f2f521429a03ab86fc2b694948dce907e6c1ba2c6c9a14",
+        "source_fact:v1:d3c0cbe9e938c208160e353c5a8d0ce9955dd93ae5468435832546f0bd614d0e",
+        "source_fact:v1:fc3f2c721a03298c3ab069e190be93920b8d92003f9ec90b5966321e042c9702"
+      ],
+      "source_published_kst": "2026-10-27T17:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
+      "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
+      "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
+    },
     "original:b503f10ef4aefd1adbd45d64": {
       "first_seen_kst": "2026-10-23T02:21:19+09:00",
       "lanes": {
@@ -566325,6 +567048,34 @@
       "source_title": "“엔화 지금이 제일 싸” 일본여행 경비 모으기? 엔화예금 한달 새 5000억↑ [머니뭐니]",
       "telegram_core_fact": "원/엔 환율이 100엔당 840원대 초반까지 떨어지자 5대 은행의 엔화예금 잔액이 한 달여 사이 6% 가까이 증가했다. 금융권에 따르면 , KB국민·신한·하나·우리·NH농협 등 5대 은행의 엔화예금 잔액은 이달 7일 1조1439억엔으로 집계됐다.",
       "title": "“엔화 지금이 제일 싸” 일본여행 경비 모으기? 엔화예금 한달 새 5000억↑ [머니뭐니]"
+    },
+    "original:cebce5fa922b02cc1fc7588b": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
     },
     "original:cebd21a6b99a46a1ce95ea8d": {
       "first_seen_kst": "2026-10-18T09:22:47+09:00",
@@ -618440,6 +619191,32 @@
       "telegram_core_fact": "현대글로비스가 미국 동부의 완성차 물류 거점인 필라델피아 항만 확장 개발 사업에 참여, 완성차 터미널 운영 사업 진출을 추진하는 등 물류 허브 구축에 속도를 낸다.",
       "title": "현대글로비스, 필라델피아 항만 개발 참여…물류 허브 구축 속도 | 연합뉴스"
     },
+    "source_fact:088aef7b2644dd89b0642eed": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
+    },
     "source_fact:088d591b16e1a9bf6aa5da9a": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
       "lanes": {
@@ -626403,6 +627180,34 @@
       "source_title": "LH 사장 \"집값 급락 가능성 커…2028년부터 공급 체감\"(종합)",
       "telegram_core_fact": "김 실장은 \"2024년부터 LH 정규 인력을 400여명을 증원하고 최근 핵심 사업 중심으로 인력을 전환했으나 공급량 확대에 따라 인력이 더 필요한 게 맞다\"며 \"정규직과 비정규직 채용을 병행하는 방안을 관계 기관과 협의할 예정\"이라고 밝혔다.",
       "title": "LH 사장 \"집값 급락 가능성 커…2028년부터 공급 체감\"(종합)"
+    },
+    "source_fact:0bcac26502f6d7c198a94b1e": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
     },
     "source_fact:0bce05e27a9a2cba3c2cc29a": {
       "first_seen_kst": "2026-10-25T10:59:05+09:00",
@@ -643979,6 +644784,34 @@
       "telegram_core_fact": "이재명 대통령은 20일 주택 공급 정책과 관련해 \"기존의 관행과 절차에 얽매이지 말고, 택지 조성부터 각종 인허가와 착공에 소요되는 기간을 획기적으로 최대한 단축해 공급 전격전을 펼쳐주길 바란다\"고 말했다.",
       "title": "李대통령 \"관행·절차 얽매이지 말고 주택공급 전격전 펼치길\" | 연합뉴스"
     },
+    "source_fact:12155664c48c08e477d9864d": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
+    },
     "source_fact:121658790eff97911acbde67": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -656778,6 +657611,32 @@
       "telegram_core_fact": "한무경 산업융합촉진 옴부즈만은 “산업단지 기업들이 새로운 기술을 도입하고 투자를 확대하는 과정에서 산업환경 변화를 제도가 뒷받침할 수 있도록 세심하게 살펴야 한다”며, “산단공과 협력해 기업의 구체적인 애로를 발굴하고, 관계부처와의 협의를 통해 현장에서 체감할 수 있는 개선으로 이어지도록 노력하겠다”고 밝혔다.",
       "title": "산업융합촉진 옴부즈만-한국산업단지공단-KIBA구미, 산단 기업의 현장 규제애로 해소에 함께 나선다"
     },
+    "source_fact:177e594a23a822dabc4e34f4": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
+    },
     "source_fact:1780ef9af4100b42547a495d": {
       "first_seen_kst": "2026-10-13T02:27:34+09:00",
       "lanes": {
@@ -661247,6 +662106,32 @@
       "telegram_core_fact": "노조는 법원을 향해 \"보안작업이라는 이름으로 주요 생산 공정을 평소대로 가동하라고 했다\"며 헌법이 보장한 단체행동권을 무력화한 이 같은 판단을 바로잡아야 한다고 밝혔다. 노조는 26일부터 3주간 2차 총파업에 돌입하겠다고 예고했으나, 쟁의 행위 금지 작업을 확대한 법원 판결 직후 파업을 연기했다.",
       "title": "삼성바이오 노조, 법원 파업 제동에 \"단체행동권 보장해야\" | 연합뉴스"
     },
+    "source_fact:191f9437ef1f5817dfef3fcd": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
+    },
     "source_fact:191f9a6c4bc560d75b329b93": {
       "first_seen_kst": "2026-10-14T16:58:19+09:00",
       "lanes": {
@@ -663589,6 +664474,32 @@
       "source_title": "'스트레스테스트 미비' 지적에… 이억원 \"레버리지 ETF 위험성 점검했다\"[2026국감]",
       "telegram_core_fact": "금융위원회가 단일종목 레버리지 상장지수펀드(ETF) 도입 전 스트레스테스트를 시행하지 않았다는 지적에 이억원 금융위 위원장이 투자자 위험성, 시장 영향 등을 점검했다고 반박했다.",
       "title": "'스트레스테스트 미비' 지적에… 이억원 \"레버리지 ETF 위험성 점검했다\"[2026국감]"
+    },
+    "source_fact:1a17a7397b99d58729c36eb5": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
     },
     "source_fact:1a1a1055670c4233ddac68d6": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
@@ -667001,6 +667912,31 @@
       "telegram_core_fact": "반도체는 AI 서버용 메모리 수요와 가격 상승에 힘입어 147을 기록한 반면, 휴대폰은 판매 둔화와 원가 부담으로 73에 그쳤다.",
       "title": "11월 제조업 회복 기대 꺾였다…반도체 ‘웃고’ 휴대폰 ‘울고’"
     },
+    "source_fact:1b5cedd23f6ed25b531ab08e": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/27/F4KODOTWUBBLLCXYIFCFBZSAH4/",
+      "source": "조선비즈",
+      "source_body_digest": "044b0858d918824f58369462ca10bda0fb273377067dd6b127639d6024ea8482",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03360fed12ad0c3f5684911cc3f74aa9f9ef5ec681509e6eb026aff164e95696",
+      "source_fact_keys": [
+        "source_fact:v1:074641a2a15613da3606e318221a0944de611d10524a5568a8c4f9b39d375835",
+        "source_fact:v1:2acba877120417966c8d2d9af49bbc31eed91bafe874feb72ef4c88a9d074d6e",
+        "source_fact:v1:8dd6610e9dceec3dcbfeb603b6304b5151b9b513c2be0a7eeea802af2869262b",
+        "source_fact:v1:b92c2bc4a62c5af4a5f2f521429a03ab86fc2b694948dce907e6c1ba2c6c9a14",
+        "source_fact:v1:d3c0cbe9e938c208160e353c5a8d0ce9955dd93ae5468435832546f0bd614d0e",
+        "source_fact:v1:fc3f2c721a03298c3ab069e190be93920b8d92003f9ec90b5966321e042c9702"
+      ],
+      "source_published_kst": "2026-10-27T17:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
+      "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
+      "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
+    },
     "source_fact:1b5fa6ba370acfb73b408c3d": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
       "lanes": {
@@ -668612,6 +669548,32 @@
       ],
       "source_published_kst": "2026-10-07T08:36+09:00",
       "title": "롯데바이오로직스, 알보텍 바이오시밀러 생산 수주"
+    },
+    "source_fact:1be3b4316dbc2e6efff9ac1d": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
     },
     "source_fact:1be643cc0174059bb4c68491": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -688073,6 +689035,32 @@
       "source_title": "전자만 잘 나가는게 아니다…삼성, 그룹 전반 실적 대도약",
       "telegram_core_fact": "이로써 삼성E&A는 사상 최대 수주 실적은 물론 연간 영업이익 첫 1조원 달성을 노리고 있다.",
       "title": "전자만 잘 나가는게 아니다…삼성, 그룹 전반 실적 대도약"
+    },
+    "source_fact:230c6a2b79ff8a28233691dd": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
     },
     "source_fact:230e16dcb8b1602a1fc9e57f": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -731055,6 +732043,39 @@
       "telegram_core_fact": "글로벌파운드리도 이날 보도자료를 통해 뉴욕주 몰타에 신설되는 반도체 공장 2곳의 기술 공급·운영 사업자로 선정됐다고 밝혔다.",
       "title": "트럼프 “日 투자로 美 뉴욕에 반도체 공장 2곳 건설… 한국·대만 약속도 사업화”"
     },
+    "source_fact:32ef3e8b77a29b860e314c26": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
+    },
     "source_fact:32f34c3607dbb29997f7c62f": {
       "first_seen_kst": "2026-10-26T18:53:23+09:00",
       "lanes": {
@@ -739100,6 +740121,31 @@
       "telegram_core_fact": "FVC뱅코프(FVCB)가 2026년 9월 30일 종료된 3분기 일반회계기준(GAAP) 순이익이 660만 달러로 전년 동기(560만 달러) 대비 19% 증가했고, 희석 주당순이익(EPS)은 0.37달러로 전년 동기 0.31달러보다 20% 늘었다고 10월 22일 발표했다.",
       "title": "FVC뱅코프, 3분기 희석 EPS 0.37달러..전년비 20% 증가"
     },
+    "source_fact:36371900d1004e57aec8aeee": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/27/F4KODOTWUBBLLCXYIFCFBZSAH4/",
+      "source": "조선비즈",
+      "source_body_digest": "044b0858d918824f58369462ca10bda0fb273377067dd6b127639d6024ea8482",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03360fed12ad0c3f5684911cc3f74aa9f9ef5ec681509e6eb026aff164e95696",
+      "source_fact_keys": [
+        "source_fact:v1:074641a2a15613da3606e318221a0944de611d10524a5568a8c4f9b39d375835",
+        "source_fact:v1:2acba877120417966c8d2d9af49bbc31eed91bafe874feb72ef4c88a9d074d6e",
+        "source_fact:v1:8dd6610e9dceec3dcbfeb603b6304b5151b9b513c2be0a7eeea802af2869262b",
+        "source_fact:v1:b92c2bc4a62c5af4a5f2f521429a03ab86fc2b694948dce907e6c1ba2c6c9a14",
+        "source_fact:v1:d3c0cbe9e938c208160e353c5a8d0ce9955dd93ae5468435832546f0bd614d0e",
+        "source_fact:v1:fc3f2c721a03298c3ab069e190be93920b8d92003f9ec90b5966321e042c9702"
+      ],
+      "source_published_kst": "2026-10-27T17:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
+      "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
+      "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
+    },
     "source_fact:36375597436326a173c0b9c2": {
       "first_seen_kst": "2026-10-14T00:59:56+09:00",
       "lanes": {
@@ -742674,6 +743720,34 @@
       "source_title": "3주 만에 32% 뛰어올라…한섬 주가 들썩이는 이유",
       "telegram_core_fact": "주주환원 정책 공시 이후 한섬 보고서를 낸 증권사 5곳은 모두 ‘매수’ 의견을 냈고, 이 가운데 4곳이 목표주가를 올렸다.",
       "title": "3주 만에 32% 뛰어올라…한섬 주가 들썩이는 이유"
+    },
+    "source_fact:3790486ce10a25b548f88ba8": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
     },
     "source_fact:37911e8e8e792720603ff70d": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
@@ -757104,6 +758178,31 @@
       "telegram_core_fact": "하지만 회원국이 자국 경제 피해를 최소화할 제재 대상을 찾기 어려워지면서 대규모 추가 제재를 추진할 동력이 떨어지고 있다는 우려가 커지고 있다.",
       "title": "EU, 러 제재 대상 1600곳 무더기 추가… 단일 최대 규모"
     },
+    "source_fact:3d503edb6e2a3cb94963bb51": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/27/F4KODOTWUBBLLCXYIFCFBZSAH4/",
+      "source": "조선비즈",
+      "source_body_digest": "044b0858d918824f58369462ca10bda0fb273377067dd6b127639d6024ea8482",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03360fed12ad0c3f5684911cc3f74aa9f9ef5ec681509e6eb026aff164e95696",
+      "source_fact_keys": [
+        "source_fact:v1:074641a2a15613da3606e318221a0944de611d10524a5568a8c4f9b39d375835",
+        "source_fact:v1:2acba877120417966c8d2d9af49bbc31eed91bafe874feb72ef4c88a9d074d6e",
+        "source_fact:v1:8dd6610e9dceec3dcbfeb603b6304b5151b9b513c2be0a7eeea802af2869262b",
+        "source_fact:v1:b92c2bc4a62c5af4a5f2f521429a03ab86fc2b694948dce907e6c1ba2c6c9a14",
+        "source_fact:v1:d3c0cbe9e938c208160e353c5a8d0ce9955dd93ae5468435832546f0bd614d0e",
+        "source_fact:v1:fc3f2c721a03298c3ab069e190be93920b8d92003f9ec90b5966321e042c9702"
+      ],
+      "source_published_kst": "2026-10-27T17:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
+      "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
+      "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
+    },
     "source_fact:3d50bbbebc44662d3ce0632c": {
       "first_seen_kst": "2026-10-18T11:10:24+09:00",
       "lanes": {
@@ -770748,6 +771847,32 @@
       "source_title": "AI칩 '각자도생' 끝났다…개발·생산·패키징 전방위 협력 확대",
       "telegram_core_fact": "삼성전기와 엔비디아는 지난 21일 AI 반도체 패키지기판 생산을 위한 세종·부산 전용 생산시설 공동투자와 다년간 공급계약을 발표했다. 메모리 제조사와 고객사의 공동개발을 넘어 반도체 장비 업체 간 지분투자, 패키지기판 생산시설 공동투자 등으로 협력 방식도 다양해지는 모습이다.",
       "title": "AI칩 '각자도생' 끝났다…개발·생산·패키징 전방위 협력 확대"
+    },
+    "source_fact:426b7122ee3ff04282e9f34e": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
     },
     "source_fact:426d7fda0926f4b2472da0e6": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -815635,6 +816760,39 @@
       "telegram_core_fact": "김 연구원은 \"최근 삼성전기와 일본 무라타는 급증하는 수요에 대응하기 위해 내년 생산능력 확대 목표를 기존 약 20%에서 25% 수준으로 높였다\"며 \"생산능력을 늘려도 AI 가속기의 전력 소비 증가와 서버용 부품 수요 확대 속도를 따라가기 어려워 공급 부족이 오히려 심해질 수 있다\"고 봤다.",
       "title": "\"삼성전기, 엔비디아 공급망 진입…FC-BGA 시장 영향력 확대\"-하나"
     },
+    "source_fact:52e4648b5d908fa0a39fb688": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
+    },
     "source_fact:52e4f4bed07bf1863d938f16": {
       "first_seen_kst": "2026-10-24T08:28:55+09:00",
       "lanes": {
@@ -829704,6 +830862,39 @@
       ],
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
+    "source_fact:583bb8513f840a8b2571a008": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
     },
     "source_fact:583d8eeb840f8382b65bd1ed": {
       "first_seen_kst": "2026-10-21T01:36:25+09:00",
@@ -849867,6 +851058,32 @@
       "telegram_core_fact": "레이언스의 서영권 대표는 \"2026년 AXI 사업은 매출 성장뿐 아니라 수익성 측면에서도 의미 있는 성과를 달성했다\"며 \"AI 반도체와 첨단 전자산업 확대에 따른 검사 수요 증가를 기반으로 글로벌 시장 공략을 더욱 강화할 계획\"이라고 말했다.",
       "title": "레이언스, AI 반도체 검사 수요 확대에 AXI 사업 성장 가속"
     },
+    "source_fact:5f825c286490c0257e7a17a9": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
+    },
     "source_fact:5f85bc8228d82fdd13ff8a34": {
       "first_seen_kst": "2026-10-13T11:53:28+09:00",
       "lanes": {
@@ -854737,6 +855954,32 @@
       ],
       "source_published_kst": "2026-10-07T08:45+09:00",
       "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
+    },
+    "source_fact:61943d9cebf3a4b844238648": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
     },
     "source_fact:6199d0eeeb40b5d618bd3cc2": {
       "first_seen_kst": "2026-10-16T18:07:43+09:00",
@@ -863094,6 +864337,34 @@
       "telegram_core_fact": "신 총재는 “중앙은행은 전체 경제 총량을 보고 통화정책을 펴는 것이 옳다”며, 소득 여건 개선에 다소 시간이 걸리더라도 전반적인 경제 흐름과 금융안정 리스크, 물가 상승세 확산 방지를 고려해 금리 인상이 불가피했음을 설명했다.",
       "title": "\"물가 상승, 유가·환율 때문인데 왜 금리 올렸나\"…한은 답변은"
     },
+    "source_fact:64cadfae133bc9c8234efc99": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
+    },
     "source_fact:64d24dcf6883a9b1bbb143c2": {
       "first_seen_kst": "2026-10-10T19:20:50+09:00",
       "lanes": {
@@ -866322,6 +867593,34 @@
       ],
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "개미는 반도체 ‘팔자’…美 지수·파킹형에 몰린 돈 [ETF 지형도 변화]①"
+    },
+    "source_fact:662878c390133270353be42d": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
     },
     "source_fact:6628a7a455edee40bcd94457": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -884453,6 +885752,34 @@
       "source_title": "울산항만공사 직원 4명, 인권경영 운영전문가 자격 취득",
       "telegram_core_fact": "울산항만공사는 외부 전문강사를 초빙해 인권경영체계 구축 및 운영, 인권영향평가, 인권침해 구제절차 등 실무 중심의 교육과정을 통해 인권경영 전반의 전문성을 강화했다.",
       "title": "울산항만공사 직원 4명, 인권경영 운영전문가 자격 취득"
+    },
+    "source_fact:6cd3e108463199bcc9f6bc70": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
     },
     "source_fact:6cd6174ff9e05d6af88ae033": {
       "first_seen_kst": "2026-10-22T11:13:08+09:00",
@@ -912571,6 +913898,39 @@
       "source_published_kst": "2026-10-06T21:25+09:00",
       "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
     },
+    "source_fact:77c58fe0d19f7d202d5df12f": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
+    },
     "source_fact:77c848bb1adee07a5ccff21c": {
       "first_seen_kst": "2026-10-24T08:52:22+09:00",
       "lanes": {
@@ -913947,6 +915307,32 @@
       "source_title": "핌코 \"미 10년물 국채금리 6% 도달 가능성\" | 연합뉴스",
       "telegram_core_fact": "이바신 CIO는 \"미 10년물 국채 금리가 5.5%를 넘어설 경우 신용 시장과 주식 시장 등 위험자산 시장이 상당한 약세를 보일 것\"이라며 \"신용등급이 가장 낮은 기업들의 채권 발행 금리는 이달 들어 17%까지 치솟으며 2020년 5월 이후 최고치를 기록했다\"고 전했다.",
       "title": "핌코 \"미 10년물 국채금리 6% 도달 가능성\" | 연합뉴스"
+    },
+    "source_fact:7860a40163102a89cb3691ac": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
     },
     "source_fact:78642a3e7911039b1ad8b16d": {
       "first_seen_kst": "2026-10-21T06:55:09+09:00",
@@ -954243,6 +955629,32 @@
       "telegram_core_fact": "투자 상품으로는 주변의 추천을 받아 국내 반도체 관련 상장지수펀드(ETF)를 집중적으로 매수했다. 코스피 지수가 9000을 넘어 1만을 넘어선다는 국내외 경제 전문가의 전망과 달리 한때 6000초반까지 떨어졌다.",
       "title": "“코스피 9000 찍자 예금 깨고 ‘반도체 ETF’에 다 걸었는데” 김 차장, 폭락 장서 생존했을까 [이연부]"
     },
+    "source_fact:87ccc151b29d5fdee21962a9": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
+    },
     "source_fact:87cd97cf8f3f2d1c51d4abe0": {
       "first_seen_kst": "2026-10-23T21:02:19+09:00",
       "lanes": {
@@ -966973,6 +968385,39 @@
       "telegram_core_fact": "4대 은행과 SK하이닉스는 공동으로 재원을 출연하고, 무보는 이를 바탕으로 총 2조원 수출신용보증을 공급한다.",
       "title": "4대 은행, SK하이닉스와 반도체 협력기업에 2조 금융지원"
     },
+    "source_fact:8d0e658e2f6c5a21a549545f": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
+    },
     "source_fact:8d0f9d0891c9e109ed7c5fea": {
       "first_seen_kst": "2026-10-23T06:00:11+09:00",
       "lanes": {
@@ -976772,6 +978217,31 @@
       "source_title": "이스트 웨스트 뱅코프, 3분기 희석 EPS 2.76달러..전년비 4% 증가",
       "telegram_core_fact": "이스트 웨스트 뱅코프(EWBC)가 3분기 순이익 3억8200만 달러, 희석 주당순이익(EPS) 2.76달러로 분기 기준 사상 최대 실적을 기록했다고 10월 20일 발표했다.",
       "title": "이스트 웨스트 뱅코프, 3분기 희석 EPS 2.76달러..전년비 4% 증가"
+    },
+    "source_fact:90e30648339e466c45edf63d": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/27/F4KODOTWUBBLLCXYIFCFBZSAH4/",
+      "source": "조선비즈",
+      "source_body_digest": "044b0858d918824f58369462ca10bda0fb273377067dd6b127639d6024ea8482",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03360fed12ad0c3f5684911cc3f74aa9f9ef5ec681509e6eb026aff164e95696",
+      "source_fact_keys": [
+        "source_fact:v1:074641a2a15613da3606e318221a0944de611d10524a5568a8c4f9b39d375835",
+        "source_fact:v1:2acba877120417966c8d2d9af49bbc31eed91bafe874feb72ef4c88a9d074d6e",
+        "source_fact:v1:8dd6610e9dceec3dcbfeb603b6304b5151b9b513c2be0a7eeea802af2869262b",
+        "source_fact:v1:b92c2bc4a62c5af4a5f2f521429a03ab86fc2b694948dce907e6c1ba2c6c9a14",
+        "source_fact:v1:d3c0cbe9e938c208160e353c5a8d0ce9955dd93ae5468435832546f0bd614d0e",
+        "source_fact:v1:fc3f2c721a03298c3ab069e190be93920b8d92003f9ec90b5966321e042c9702"
+      ],
+      "source_published_kst": "2026-10-27T17:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
+      "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
+      "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
     },
     "source_fact:90e313ea58e9186ecffb79f5": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
@@ -995220,6 +996690,39 @@
       "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
       "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
       "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
+    },
+    "source_fact:97e941c9c5f2ba6712d596b4": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
     },
     "source_fact:97ebfb4239d9ba2281d0de27": {
       "first_seen_kst": "2026-10-22T03:57:32+09:00",
@@ -1018665,6 +1020168,39 @@
       "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
       "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
+    "source_fact:a0db19ac06b3a5efa9c3d5fd": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
+    },
     "source_fact:a0dc08a5e4ed7ea9305253f0": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
@@ -1031317,6 +1032853,34 @@
       "telegram_core_fact": "국제에너지기구(IEA)에 따르면 AI 전용 데이터센터의 전력 사용량은 2025년 전년보다 50% 증가했다. 국제 통계 분석 사이트 아워월드인데이터는 2025년 AI 전용 데이터센터가 전 세계 전력의 약 0.5%를 소비했다고 추산했다.",
       "title": "美 데이터센터 주변 기온 최대 2.2도 높았다…AI 전력·물 부담도 확대"
     },
+    "source_fact:a570a299c877d296720dd3bb": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
+    },
     "source_fact:a57101ad40dc2708e1709f54": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
       "lanes": {
@@ -1033629,6 +1035193,39 @@
       ],
       "source_published_kst": "2026-10-06T11:47+09:00",
       "title": "재경부 국감, '대미투자' 여야 질타…野 \"사업성 미달시 국정조사 사안\""
+    },
+    "source_fact:a6281aadb5dcaaa9c8e60979": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
     },
     "source_fact:a62ad4410a5f97a88ecbe056": {
       "first_seen_kst": "2026-10-25T20:53:01+09:00",
@@ -1038603,6 +1040200,34 @@
       "source_title": "\"日증시 아직 저평가…반도체 소재·방산 유망\"",
       "telegram_core_fact": "엔화 약세와 저평가 매력을 넘어 반도체 장비·소재 기업이 글로벌 AI 투자 확대의 수혜를 받는 가운데 자사주 매입과 배당 확대, 비핵심 사업 매각이 기업가치를 높이고 있다는 설명이다.",
       "title": "\"日증시 아직 저평가…반도체 소재·방산 유망\""
+    },
+    "source_fact:a7f210d62a9450f3001062c8": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
     },
     "source_fact:a7f347618cc05f040c053d45": {
       "first_seen_kst": "2026-10-14T12:59:52+09:00",
@@ -1059524,6 +1061149,32 @@
       "telegram_core_fact": "시는 앰코 공장 증설에 따른 폐수처리 문제를 신속히 해결한 데 이어 RE100 지원에 선제적으로 나서는 등 투자 기업 애로사항 해결에 행정력을 집중하고 있다. 전남광주통합특별시가 앰코테크놀로지코리아㈜의 3조원 규모 투자 계획에 발맞춰 'RE100(재생에너지 100% 사용)실현'에 함께 나선다.",
       "title": "폐수 이어 RE100까지…전남광주시, 앰코 투자 전방위 지원"
     },
+    "source_fact:b0050cf6117720fb2adf0380": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
+    },
     "source_fact:b0066ef67f3304a2682d2b47": {
       "first_seen_kst": "2026-10-14T06:58:10+09:00",
       "lanes": {
@@ -1060501,6 +1062152,39 @@
       "source_title": "“신규 셀러 첫해 매출 100만달러 달성 돕는다\"…아마존, K뷰티 지원 전략 고도화",
       "telegram_core_fact": "아마존은 내년 신규 국내 판매업체(셀러) 50개의 아마존 미국 스토어 입점 첫해 매출 100만달러(약 13억원) 초과 달성 지원과 기존 K뷰티 선도 브랜드 7개의 글로벌 기업 성장을 뒷받침한다.",
       "title": "“신규 셀러 첫해 매출 100만달러 달성 돕는다\"…아마존, K뷰티 지원 전략 고도화"
+    },
+    "source_fact:b059ed1e81621c17683354b8": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
     },
     "source_fact:b05a0a91083f47a3e82f6741": {
       "first_seen_kst": "2026-10-24T00:05:28+09:00",
@@ -1075031,6 +1076715,27 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 경유가격을 잡기 위해 러시아 에너지 수출 연계 대규모 관세를 면제했다.",
       "title": "트럼프, 러시아 에너지 연계 '관세 폭탄' 유예…\"경유 가격 때문\""
     },
+    "source_fact:b584454b290c249c4d1fea84": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102808472971712",
+      "source": "머니투데이",
+      "source_body_digest": "3c401ac68b422e2ef82850b92d69d1f9ba471d20d9d72172a5978237e5b4bb6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8191cc13e526367c119334c0c095487a6862acce148239ae1de8387d4ebb2357",
+      "source_fact_keys": [
+        "source_fact:v1:20b73e054e8560b184e05a2b6289a27193f79db5b53ed403277cfb542b00ea11",
+        "source_fact:v1:aa20b73c45b4401cf0ffc98b9a4ed36e0c2026e199c16037d6a67a728bd87a16"
+      ],
+      "source_published_kst": "2026-10-28T08:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상",
+      "telegram_core_fact": "SK하이닉스가 28일 현재 글로벌 대형 클라우드 서비스 제공업체(CSP, Cloud Service Provider)를 포함한 14개 주요 고객과 LTA(장기공급계약)를 체결했다고 밝혔다.",
+      "title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상"
+    },
     "source_fact:b589db2498a13859639e5e15": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -1082300,6 +1084005,39 @@
       "telegram_core_fact": "램버스(RMBS)는 3분기(7~9월) 매출액이 2억1830만 달러로 전년비 22% 증가해 분기 기준 사상 최대를 기록했고, 일반회계기준(GAAP) 희석 주당순이익은 0.69달러, 비일반회계기준(Non-GAAP) 희석 주당순이익은 0.84달러를 기록했다고 10월 26일 발표했다.",
       "title": "램버스, 3분기 매출 2억1800만 달러 사상 최대·22%↑"
     },
+    "source_fact:b8702fe95614d19f66cd4c95": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
+    },
     "source_fact:b8733ed64859d8931fe9b6de": {
       "first_seen_kst": "2026-10-17T08:22:42+09:00",
       "lanes": {
@@ -1088680,6 +1090418,39 @@
       "source_title": "국제유가, 미·이란 외교적 해결 기대에 하락…WTI 1.8%↓",
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI)는 전장 대비 1.8% 하락한 배럴당 101.79달러에 거래를 마쳤다.",
       "title": "국제유가, 미·이란 외교적 해결 기대에 하락…WTI 1.8%↓"
+    },
+    "source_fact:baf86c892f381c940c247535": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
     },
     "source_fact:bafeb1eebcafeb0c7cc73a62": {
       "first_seen_kst": "2026-10-22T07:08:27+09:00",
@@ -1120633,6 +1122404,32 @@
       "telegram_core_fact": "XTI 에어로스페이스(XTIA)는 9월 30일 종료된 2026년 3분기 잠정 매출액이 3530만 달러로 전분기 대비 약 9% 증가했다고 10월 22일 발표했다.",
       "title": "XTI 에어로스페이스, 3분기 잠정 매출 3530만 달러..전분기비 9% 증가"
     },
+    "source_fact:c6da9a5999c3c68703a20dca": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
+    },
     "source_fact:c6db25823e72ce6d80578a11": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
       "lanes": {
@@ -1127707,6 +1129504,32 @@
       "source_title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓",
       "telegram_core_fact": "온라인 증권거래 플랫폼 로빈후드(HOOD)가 최고경영자(CEO)의 지분 전량 매각설이 확산된 가운데 주가는 하락하고 있다.",
       "title": "[美특징주]로빈후드, CEO 지분 전량 매각설 확산 속 주가 2%↓"
+    },
+    "source_fact:c95dde27de6fd58e6e9d45b8": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
     },
     "source_fact:c95df47f0e5a341ccdf7672a": {
       "first_seen_kst": "2026-10-27T04:20:45+09:00",
@@ -1147127,6 +1148950,31 @@
       "telegram_core_fact": "동아시아 주요국의 연휴가 집중된 이번 10월에도 외국인 관광객의 소비가 백화점과 면세점 매출 증가에 힘을 보탠 것으로 분석된다.",
       "title": "\"작년 역대급 기록 넘었다\" 동아시아 황금연휴에 백화점·면세점 '방긋'"
     },
+    "source_fact:d0fefc1e26349a7e0bc4f1b8": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/27/F4KODOTWUBBLLCXYIFCFBZSAH4/",
+      "source": "조선비즈",
+      "source_body_digest": "044b0858d918824f58369462ca10bda0fb273377067dd6b127639d6024ea8482",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03360fed12ad0c3f5684911cc3f74aa9f9ef5ec681509e6eb026aff164e95696",
+      "source_fact_keys": [
+        "source_fact:v1:074641a2a15613da3606e318221a0944de611d10524a5568a8c4f9b39d375835",
+        "source_fact:v1:2acba877120417966c8d2d9af49bbc31eed91bafe874feb72ef4c88a9d074d6e",
+        "source_fact:v1:8dd6610e9dceec3dcbfeb603b6304b5151b9b513c2be0a7eeea802af2869262b",
+        "source_fact:v1:b92c2bc4a62c5af4a5f2f521429a03ab86fc2b694948dce907e6c1ba2c6c9a14",
+        "source_fact:v1:d3c0cbe9e938c208160e353c5a8d0ce9955dd93ae5468435832546f0bd614d0e",
+        "source_fact:v1:fc3f2c721a03298c3ab069e190be93920b8d92003f9ec90b5966321e042c9702"
+      ],
+      "source_published_kst": "2026-10-27T17:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
+      "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
+      "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
+    },
     "source_fact:d1007d61433ccc2f4f366c19": {
       "first_seen_kst": "2026-10-09T19:43:36+09:00",
       "lanes": {
@@ -1156404,6 +1158252,27 @@
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령이 18일(현지시간) 백악관 특사 스티브 윗코프, 도널드 트럼프 대통령의 사위 재러드 쿠슈너와 전화통화했다고 악시오스가 보도했다. 악시오스는 약 40분간 이어진 이 통화에서 미국과 우크라이나 간 갈등, 러시아와 평화협상을 재개하려는 미국의 노력을 논의했다고 전했다.",
       "title": "젤렌스키, 미·우크라 갈등 속 윗코프·쿠슈너와 통화 | 연합뉴스"
     },
+    "source_fact:d48d694b6e310dd8dd581150": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102808472971712",
+      "source": "머니투데이",
+      "source_body_digest": "3c401ac68b422e2ef82850b92d69d1f9ba471d20d9d72172a5978237e5b4bb6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8191cc13e526367c119334c0c095487a6862acce148239ae1de8387d4ebb2357",
+      "source_fact_keys": [
+        "source_fact:v1:20b73e054e8560b184e05a2b6289a27193f79db5b53ed403277cfb542b00ea11",
+        "source_fact:v1:aa20b73c45b4401cf0ffc98b9a4ed36e0c2026e199c16037d6a67a728bd87a16"
+      ],
+      "source_published_kst": "2026-10-28T08:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상",
+      "telegram_core_fact": "SK하이닉스가 28일 현재 글로벌 대형 클라우드 서비스 제공업체(CSP, Cloud Service Provider)를 포함한 14개 주요 고객과 LTA(장기공급계약)를 체결했다고 밝혔다.",
+      "title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상"
+    },
     "source_fact:d48e75f61d1287c08c335325": {
       "first_seen_kst": "2026-10-22T14:04:51+09:00",
       "lanes": {
@@ -1158720,6 +1160589,39 @@
       "source_title": "홍지선 국토장관 “신축매입임대 착공·입주 속도 더 높이겠다”",
       "telegram_core_fact": "현장에서 홍 장관은 LH로부터 올해 신축 매입임대주택 착공·약정 실적과 연내 공급계획을 보고받은 뒤 입주 예정 세대를 둘러보며 구조와 마감재, 수납공간을 확인했다.",
       "title": "홍지선 국토장관 “신축매입임대 착공·입주 속도 더 높이겠다”"
+    },
+    "source_fact:d55c10f53713f85c2d5c9a19": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
     },
     "source_fact:d55f9ed002eac1d2b682b778": {
       "first_seen_kst": "2026-10-20T17:57:17+09:00",
@@ -1164390,6 +1166292,39 @@
       ],
       "source_published_kst": "2026-10-06T11:33+09:00",
       "title": "李대통령 치킨값 점검 예고했는데…중량도 최대 30% 차이"
+    },
+    "source_fact:d775d2076e6a4ad378318f45": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
     },
     "source_fact:d776112042d976057de68d72": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -1222492,6 +1224427,34 @@
       "telegram_core_fact": "금융권에 따르면 신한금융은 이날 사모펀드 운용사 JKL파트너스가 보유한 롯데손보 지분 77.04%를 6933억원에 인수하는 주식매매계약(SPA)을 체결했다. 신한인도네시아은행이 금융지주회사 역할을 겸하는 사업지주회사로 전환하면서 신한인도파이낸스와 신한투자증권 인도네시아의 지분을 각각 50%+1주씩 확보했다.",
       "title": "롯데손보 품고 인니 지주 출범⋯진옥동 신한 회장 '국내외 영토확장 승부수'"
     },
+    "source_fact:ed7aeb00c8def8d40b76bff6": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
+    },
     "source_fact:ed85315befad344994b7a31b": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
@@ -1233381,6 +1235344,39 @@
       "source_title": "허성무 \"웨스팅하우스 상장시 추가 지분 확보 계획 필요\"",
       "telegram_core_fact": "국회 산업통상자원중소벤처기업위원회 소속 더불어민주당 허성무(경남 창원 성산) 의원은 산업통상부 국정감사에서 김정관 산업통상부 장관에게 윤석열 정부 당시 미국 웨스팅하우스와 체결한 노예계약을 변경하고 원전 수출 주권을 회복하기 위해 웨스팅하우스 지분 확보 계획을 마련해야 한다고 촉구했다.",
       "title": "허성무 \"웨스팅하우스 상장시 추가 지분 확보 계획 필요\""
+    },
+    "source_fact:f1940d30b79c6215eb4f989c": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
     },
     "source_fact:f194b567af2db8a5fcee519b": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -1248510,6 +1250506,31 @@
       "source_title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해",
       "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 사망자 4명 가운데 2명은 플로리다주와 앨라배마에서 허리케인으로 인해 거대한 나무가 집 위로 쓰러지는 사고로 사망했다.",
       "title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해"
+    },
+    "source_fact:f7e567066f4479b292e26725": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/27/F4KODOTWUBBLLCXYIFCFBZSAH4/",
+      "source": "조선비즈",
+      "source_body_digest": "044b0858d918824f58369462ca10bda0fb273377067dd6b127639d6024ea8482",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03360fed12ad0c3f5684911cc3f74aa9f9ef5ec681509e6eb026aff164e95696",
+      "source_fact_keys": [
+        "source_fact:v1:074641a2a15613da3606e318221a0944de611d10524a5568a8c4f9b39d375835",
+        "source_fact:v1:2acba877120417966c8d2d9af49bbc31eed91bafe874feb72ef4c88a9d074d6e",
+        "source_fact:v1:8dd6610e9dceec3dcbfeb603b6304b5151b9b513c2be0a7eeea802af2869262b",
+        "source_fact:v1:b92c2bc4a62c5af4a5f2f521429a03ab86fc2b694948dce907e6c1ba2c6c9a14",
+        "source_fact:v1:d3c0cbe9e938c208160e353c5a8d0ce9955dd93ae5468435832546f0bd614d0e",
+        "source_fact:v1:fc3f2c721a03298c3ab069e190be93920b8d92003f9ec90b5966321e042c9702"
+      ],
+      "source_published_kst": "2026-10-27T17:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
+      "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
+      "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
     },
     "source_fact:f7e5901537b26d3b388e1fa0": {
       "first_seen_kst": "2026-10-15T07:35:02+09:00",
@@ -1270340,6 +1272361,32 @@
       "telegram_core_fact": "젤렌스키 대통령은 러시아의 정유시설에 대한 공격을 재개하겠다며 트럼프 대통령을 향해 날 선 비판을 내놓았지만, 우크라이나로서는 마땅한 대책이 없다는 게 문제다.",
       "title": "젤렌스키, 트럼프 맞서지만…\"미국지원 없으면 우크라 못버텨\" | 연합뉴스"
     },
+    "title:01db5578452c341b6c981898": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/it/12187327",
+      "source": "매일경제",
+      "source_body_digest": "8ec2468486621cdb8d57252caa6ba4469cdd79269cf660d3f65a808d03936532",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:2d7f8efa54075f5110efe4dcb15f44e5a2b49c488ce19aef0365890592ed1145",
+      "source_fact_identity": "source_facts:v1:5ce8d78f6da47d830b401f9d968b86aba892497492614ffbaad73d59714c932f",
+      "source_fact_keys": [
+        "source_fact:v1:12b4e90eaeb799e03dc7be8ae32ea22bd497d5d6fc6647f11f4b265213c0d143",
+        "source_fact:v1:442c5faa426aee6f64ad8621cbb6a7c90264d31b5c538461f3b90b0d176bb6a3",
+        "source_fact:v1:61618666fc098cce3487869a9a393171367894ea70bf8fc4b80ae9cfa3e61682",
+        "source_fact:v1:8669c4aa1fb5b4e25c8541141f3cab2c6ad3dd413a684ee286508f926919e27b",
+        "source_fact:v1:99cc6dc60be472d08d4b7bc7df4723227a7903890a0252dbf2a203058de33fa1",
+        "source_fact:v1:9e23fc052a8c7ad39defe18da4e45f7095cf0905dca58d8015fa6352205b3b65",
+        "source_fact:v1:9ed615a4c282e07aec68f14a32269097eca20f04b076ec9d4ce79bde09b1f2d9"
+      ],
+      "source_published_kst": "2026-10-27T17:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
+      "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
+      "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
+    },
     "title:01deabfde223c5868dda9c8f": {
       "first_seen_kst": "2026-10-01T19:33:29+09:00",
       "lanes": {
@@ -1284863,6 +1286910,39 @@
       "link": "https://www.etoday.co.kr/news/view/2631625",
       "source": "이투데이",
       "title": "알래스카 LNG 기대 선반영했나…철강주 美 투자 언급에도 하락"
+    },
+    "title:194bdbc3eb30d8add662c5b9": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
     },
     "title:194f9a9a841a43404b450c2e": {
       "first_seen_kst": "2026-10-20T01:09:59+09:00",
@@ -1319440,6 +1321520,27 @@
       ],
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
+    },
+    "title:4dfa3f35ad40d28f8ff96f1d": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102808472971712",
+      "source": "머니투데이",
+      "source_body_digest": "3c401ac68b422e2ef82850b92d69d1f9ba471d20d9d72172a5978237e5b4bb6b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8191cc13e526367c119334c0c095487a6862acce148239ae1de8387d4ebb2357",
+      "source_fact_keys": [
+        "source_fact:v1:20b73e054e8560b184e05a2b6289a27193f79db5b53ed403277cfb542b00ea11",
+        "source_fact:v1:aa20b73c45b4401cf0ffc98b9a4ed36e0c2026e199c16037d6a67a728bd87a16"
+      ],
+      "source_published_kst": "2026-10-28T08:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상",
+      "telegram_core_fact": "SK하이닉스가 28일 현재 글로벌 대형 클라우드 서비스 제공업체(CSP, Cloud Service Provider)를 포함한 14개 주요 고객과 LTA(장기공급계약)를 체결했다고 밝혔다.",
+      "title": "SK하이닉스, 글로벌 업체 14곳과 장기공급계약…생산량 절반 이상"
     },
     "title:4e093954981635f438de7401": {
       "first_seen_kst": "2026-10-20T15:25:58+09:00",
@@ -1364374,6 +1366475,24 @@
       "source": "이데일리",
       "title": "\"中정유업체들, 석유제품 수출 중단…재고 확보 목적\""
     },
+    "title:94bc5a1bde3d35eb4d7abb96": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187811",
+      "source": "매일경제",
+      "source_body_digest": "a498980f1436cf64eb4dc553fc353d8c19c359802a7da074c27d8807fd0e054e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T01:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "HCA헬스케어, 실적 예상치 상회에도 성장 둔화 우려와 차익실현 매물에 약세",
+      "telegram_core_fact": "조정 EBITDA 증가율이 1.2%에 그치고 매출 증가율도 3.6%에 머물러 성장 둔화 우려가 부각되며, 발표 직후 단기 차익실현 매물이 나오고 있습니다.",
+      "title": "HCA헬스케어, 실적 예상치 상회에도 성장 둔화 우려와 차익실현 매물에 약세"
+    },
     "title:94c33b765e00cba38f682cbb": {
       "first_seen_kst": "2026-10-25T03:16:17+09:00",
       "lanes": {
@@ -1367253,6 +1369372,39 @@
       "telegram_core_fact": "업계에 따르면 삼성SDI 미주 법인 삼성SDI 아메리카는 최근 미국 에너지 전문 기업 알파오메가파워(AOP)와 1기가와트시(GWh) ESS 솔루션 공급 계약을 체결했다.",
       "title": "삼성SDI, 美서 ESS 수주 확대 지속…'각형 기술·현지 생산' 효과 본격화"
     },
+    "title:991f3b79bd0594451ce6383e": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.fnnews.com/news/202610281110185219",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "13ce811a37c10c41fb7487cd567c9c9071d094df2208d173fa5d031776711d66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a38a32a17406bf9ead1cd4792d142711f22e1472317354e2d0c1985ae4b40829",
+      "source_fact_keys": [
+        "source_fact:v1:175b37610440f9b79476a834dadfdb80c9ca031c9396b9dcfa236d4a8b64c7fe",
+        "source_fact:v1:1f42ae67e4220f9d6140776b537fb91b56b2013d36bb2388472908d3abab632b",
+        "source_fact:v1:2fc4f33dda00d991fb83c4c38eec8da70d9fa609f225843dced0b34bcf5ee413",
+        "source_fact:v1:5a692ba15294ec5a5ce3f136a86e7db96fb4efb4fa7e29c455d74ceb400bb171",
+        "source_fact:v1:5f74804c9fb8a429b5ba88326dbf90e2d65e4c1465710f245432228cc0d47fc6",
+        "source_fact:v1:6010b35e8795f429a2a55223cf0b2d9fd46632c5482e8797bee5c3ea6668fe47",
+        "source_fact:v1:6be27ebe7226ae388df21bff90fa42368ecdf96a0e42eadd1d3970012d4855ec",
+        "source_fact:v1:7b3cc917e489d05d7afa4ef0a0957a8ffc33ce56443a6f3750f411aecf2762bb",
+        "source_fact:v1:942cd587f700ede309b235565ab38abe2f04c0693195e1f5a16bd948037f4d5a",
+        "source_fact:v1:9e9389f992268f6056b8983392b664c1870ffa37696a3de44fc7ef7457f03941",
+        "source_fact:v1:c0b84157d3796dfa0bb05109725822948d8267b21090b38a84c337a3bb18a8f0",
+        "source_fact:v1:cc4b2a4627961c99d4af0fb3d6ea8fb5b76c3f63d1361431b92ba54c2afddb2a",
+        "source_fact:v1:de7049f6176deb4f3d9d4bd9c884600365053089402aa59457907e693c7d1d33",
+        "source_fact:v1:ea88fea72cda76e09d0e4f4a16758f7824bc4382f359ebac68f2c0d7af38ae1b"
+      ],
+      "source_published_kst": "2026-10-28T11:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)",
+      "telegram_core_fact": "박준덕 SK하이닉스 D램 마케팅 담당은 28일 오전 진행된 올해 3분기 실적발표 콘퍼런스 콜에서 \"이미 확보한 장기공급계약(LTA) 물량과 현재 고객사들과 구체적으로 협의 중인 수요를 종합하면 향후 3년 동안 D램과 HBM 물량은 사실상 모두 솔드아웃(매진)된 상황\"이라고 밝혔다.",
+      "title": "SK하이닉스 \"2029년까지 D램·HBM 완판…매분기 자사주 매입\"(종합)"
+    },
     "title:9939b868b071961b8e12fa4d": {
       "first_seen_kst": "2026-10-12T21:44:29+09:00",
       "lanes": {
@@ -1368219,6 +1370371,32 @@
       "source_title": "트렉세이드 그룹, 헬스케어 IP 인수 LOI 재체결..4분기 종결 목표",
       "telegram_core_fact": "셋째, 스칠렉스로부터 웨어러블 기반으로 약물 효과를 생체정보로 확인하는 QOLPOM IP를 인수한다.",
       "title": "트렉세이드 그룹, 헬스케어 IP 인수 LOI 재체결..4분기 종결 목표"
+    },
+    "title:9ad63b511706a85e49310125": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187389",
+      "source": "매일경제",
+      "source_body_digest": "17b6608a0db9e5169f4084772ec495b21ee8fb63bb00098a76be932bd7b56458",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f91c8c9e8064b2a73beb80b6648a673325c0dc73c7573104b4d88080e62eeeb4",
+      "source_fact_keys": [
+        "source_fact:v1:0dac830d92544f066caa3acc1825a6d7b2d68bed01edb740cd09ad9621fe72fc",
+        "source_fact:v1:1e10c123490dedb413fa3618f208b33874b8fd1b94bb2ce7de6f54bdfd52ad95",
+        "source_fact:v1:233f107bba032a43f91de11df271a313ab07485cf3a3eeedb9930b9d38e62ad6",
+        "source_fact:v1:2c863fbe709b084842884eb14d7efcb563c0cd9d8b3a0f9f38884af3d0156a0d",
+        "source_fact:v1:54e68cdf09fd6df0d6fc48818bf1f9179b8e73f0c2adad278716159e764ca89e",
+        "source_fact:v1:78e21789da67b7a003dfcd3096a83b99558f930eee097e35aec00355f9121943",
+        "source_fact:v1:a9d06201c90bfc99579bb544c9fd59aab86b7a94e2684c81ce4b63240d10d117"
+      ],
+      "source_published_kst": "2026-10-27T17:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가",
+      "telegram_core_fact": "미국 중간선거와 연방공개시장위원회(FOMC) 기준금리 결정 등 굵직한 대외 변수로 인해 위험자산 투자심리가 위축되자 비트코인 상장지수펀드(ETF) 시장에서 1조원 넘는 자금이 순유출됐다. 수급 악화로 인해 비트코인 가격은 8만달러 밑으로 떨어졌다.",
+      "title": "美 중간선거 D-7 … 비트코인 ETF서 1조원 빠져나가"
     },
     "title:9ae719dc27ae2ce378c00e36": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
@@ -1385504,6 +1387682,31 @@
       "telegram_core_fact": "AI 데이터센터와 반도체 팹 등 1GW(기가와트)급 전력이 필요한 대규모 시설이 등장하면서 안정적인 전력 공급을 위한 인프라 구축이 핵심 과제로 떠올랐다.",
       "title": "UAE 날아간 이재용 삼성그룹 회장… AI·반도체 살릴 전력 시장 집중 점검"
     },
+    "title:b4f5b4d17d18de74fbebc8e9": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/27/F4KODOTWUBBLLCXYIFCFBZSAH4/",
+      "source": "조선비즈",
+      "source_body_digest": "044b0858d918824f58369462ca10bda0fb273377067dd6b127639d6024ea8482",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03360fed12ad0c3f5684911cc3f74aa9f9ef5ec681509e6eb026aff164e95696",
+      "source_fact_keys": [
+        "source_fact:v1:074641a2a15613da3606e318221a0944de611d10524a5568a8c4f9b39d375835",
+        "source_fact:v1:2acba877120417966c8d2d9af49bbc31eed91bafe874feb72ef4c88a9d074d6e",
+        "source_fact:v1:8dd6610e9dceec3dcbfeb603b6304b5151b9b513c2be0a7eeea802af2869262b",
+        "source_fact:v1:b92c2bc4a62c5af4a5f2f521429a03ab86fc2b694948dce907e6c1ba2c6c9a14",
+        "source_fact:v1:d3c0cbe9e938c208160e353c5a8d0ce9955dd93ae5468435832546f0bd614d0e",
+        "source_fact:v1:fc3f2c721a03298c3ab069e190be93920b8d92003f9ec90b5966321e042c9702"
+      ],
+      "source_published_kst": "2026-10-27T17:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전",
+      "telegram_core_fact": "한미약품(128940)이 올해 3분기 매출 성장세를 이어갔지만 영업이익과 순이익은 큰 폭으로 감소했다.",
+      "title": "한미약품, 누적 매출 1조2000억원 돌파…북경한미 리스크 여전"
+    },
     "title:b503f10ef4aefd1adbd45d64": {
       "first_seen_kst": "2026-10-23T02:21:19+09:00",
       "lanes": {
@@ -1401295,6 +1403498,34 @@
       "source_title": "“엔화 지금이 제일 싸” 일본여행 경비 모으기? 엔화예금 한달 새 5000억↑ [머니뭐니]",
       "telegram_core_fact": "원/엔 환율이 100엔당 840원대 초반까지 떨어지자 5대 은행의 엔화예금 잔액이 한 달여 사이 6% 가까이 증가했다. 금융권에 따르면 , KB국민·신한·하나·우리·NH농협 등 5대 은행의 엔화예금 잔액은 이달 7일 1조1439억엔으로 집계됐다.",
       "title": "“엔화 지금이 제일 싸” 일본여행 경비 모으기? 엔화예금 한달 새 5000억↑ [머니뭐니]"
+    },
+    "title:cebce5fa922b02cc1fc7588b": {
+      "first_seen_kst": "2026-10-28T12:04:13+09:00",
+      "lanes": {
+        "live": "2026-10-28T12:04:13+09:00"
+      },
+      "last_seen_kst": "2026-10-28T12:04:13+09:00",
+      "link": "https://core.asiae.co.kr/article/2026102718015502099",
+      "source": "아시아경제",
+      "source_body_digest": "5b1970aab22d121e198ba533748a80cd7752b7742dece2e90399dfb10f6caff8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05b353547c12f27457507f6a9f482e3a1649c5d13aaae3b23ddd6738573e1d7a",
+      "source_fact_keys": [
+        "source_fact:v1:5becf5527504ba2fbe65a865d0287c3eddbc972c6d284191d12874e2b9496433",
+        "source_fact:v1:5d9829a025d69a1f9128ef6c74482d2a866b6bcd7ff6c0cb529f076a959b57bd",
+        "source_fact:v1:632870273baa15011913c7f10d3c861713aa083ef947ce26e0bf6553cc4e3315",
+        "source_fact:v1:7b2451117e92e9c3eef914c9fc7e98600d9d04623affc80e6449f276f411e6ae",
+        "source_fact:v1:82d4f02718cde572285d25bca66397ec0d90637741dd180128ecbf5cfbe10931",
+        "source_fact:v1:9f3235e9e68202c2ef8ef5e758b466d3213c3212eb3f50ac16cf5af59e6f4d61",
+        "source_fact:v1:c2bdf3988ce4d59a70291d31734a7fb7f4b18280bbfe0d614c16d3da2365cf05",
+        "source_fact:v1:cc42d71c374be6a42872a123500ccdfbde47a37113fdce54c95f9a92e8676352",
+        "source_fact:v1:d865417fe11260fd19c1e1de7a20193f578ef0170385a2849acf716f3f069936"
+      ],
+      "source_published_kst": "2026-10-28T03:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]",
+      "telegram_core_fact": "우리나라 경제가 반도체 중심의 수출 호조와 설비투자 확대에 힘입어 내년까지 3%대 성장세를 이어갈 것이란 증권가 분석이 나왔다. 한국은행에 따르면 올해 3분기 GDP는 직전 분기 대비 0.97%(전년비 3.38% 증가) 성장하며 시장 전망치인 0.8%를 웃돌았다.",
+      "title": "\"내 지갑은 닫혔는데\"…반도체가 이끈 3%대 성장[클릭 e시장]"
     },
     "title:cebd21a6b99a46a1ce95ea8d": {
       "first_seen_kst": "2026-10-18T09:22:47+09:00",
@@ -1431726,5 +1433957,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-28T11:34:14+09:00"
+  "updated_at_kst": "2026-10-28T12:04:13+09:00"
 }
