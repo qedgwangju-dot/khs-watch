@@ -195,9 +195,22 @@ def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[s
         f" · 일부 종목 미보고 거래일 최근 {partial}/직전 {prev_partial}"
         if partial or prev_partial else ""
     )
-    dates = item.get("partial_dates") or []
-    if dates and len(dates) <= 3:
-        caveat += " (" + ", ".join(dates) + ")"
+    date_details = []
+    for period, count, dates in (
+        ("최근", partial, item.get("partial_dates") or []),
+        ("직전", prev_partial, item.get("prev_partial_dates") or []),
+    ):
+        if not count:
+            continue
+        if not dates:
+            date_details.append(f"{period} 날짜 확인 불가")
+            continue
+        listed = ", ".join(dates[:3])
+        if len(dates) > 3 or len(dates) < count:
+            listed += " 등"
+        date_details.append(f"{period} {listed}")
+    if date_details:
+        caveat += " (" + " / ".join(date_details) + ")"
     current_avg = item.get("avg_usd_m_per_session")
     previous_avg = item.get("prev_avg_usd_m_per_session")
     if label == "3m" and current_avg is not None and previous_avg is not None:
