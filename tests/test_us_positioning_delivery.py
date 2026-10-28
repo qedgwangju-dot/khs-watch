@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from us_positioning_delivery import daily_digest_due, daily_event_label, parse_aaii_allocation, parse_conference_board_confidence, evaluate_retail_crowding, update_retail_survey_overlay, AAII_ALLOCATIONS_URL, BOARD_CONFIDENCE_URL
+from us_positioning_delivery import daily_digest_due, daily_event_label, parse_aaii_allocation, parse_conference_board_confidence, evaluate_retail_crowding, update_retail_survey_overlay, AAII_ALLOCATIONS_URL, BOARD_CONFIDENCE_URL, AAII_OFFICIAL_ARCHIVE, parse_aaii_monthly_article, aaii_latest_official_article_links, fetch_current_aaii_allocation
 
 
 class DailyDigestDeliveryTests(unittest.TestCase):
@@ -169,6 +169,80 @@ class RetailMonthlyOverlayRouteTests(unittest.TestCase):
         self.assertFalse(self.pending.exists())
         self.assertFalse(self.alert.exists())
         self.assertEqual(__import__("json").loads(self.saved.read_text()), self.original)
+
+
+
+AAII_ARTICLE_PUBLIC = (
+    "September AAII Asset Allocation Survey: Cash Allocations Fall "
+    "by AAII Staff | October 01, 2026 "
+    "Individual investors' allocations to cash decreased. "
+    "September AAII Asset Allocation Survey results: "
+    "Stocks and Stock Funds: 71.8%, up 0.7 percentage points "
+    "Bonds and Bond Funds: 14.9%, up 0.2 percentage points "
+    "Cash: 13.3%, down 1.0 percentage points "
+    "September AAII Asset Allocation Details: "
+    "Stocks: 33.4%, down 0.0 percentage points "
+    "Stocks Funds: 38.3%, up 0.7 percentage points "
+    "Bonds: 5.7% Bond Funds: 9.1%"
+)
+AAII_MAIN_WITH_LINK = (
+    '<html><body><h2>Asset Allocation Survey</h2>'
+    '<a href="/latest/article/548658-september-aaii-asset-allocation-survey-cash-allocations-fall">'
+    'September AAII Asset Allocation Survey: Cash Allocations Fall</a>'
+    '</body></html>'
+)
+
+
+class AAIIPrimaryArticleRecoveryTests(unittest.TestCase):
+    def test_article_keeps_one_decimal_precision_and_month_year(self):
+        data = parse_aaii_monthly_article(AAII_ARTICLE_PUBLIC)
+        self.assertEqual(data["period"], "2026-09")
+        self.assertEqual(data["stocks_pct"], 71.8)
+        self.assertEqual(data["cash_pct"], 13.3)
+        self.assertIn("소수 첫째", data["source_precision"])
+
+    def test_dynamic_overview_link_resolves_aaaii_only(self):
+        links = aaii_latest_official_article_links(
+            AAII_MAIN_WITH_LINK
+            + '<a href="https://evil.example/latest/article/12-steal">September AAII Asset Allocation Survey: Fake</a>')
+        self.assertEqual(links, [
+            "https://www.aaii.com/latest/article/548658-september-aaii-asset-allocation-survey-cash-allocations-fall"
+        ])
+
+    def test_live_style_page_without_table_uses_verified_official_article(self):
+        requests = []
+        url = "https://www.aaii.com/latest/article/548658-september-aaii-asset-allocation-survey-cash-allocations-fall"
+        def fetch(request):
+            requests.append(request)
+            if request == AAII_ALLOCATIONS_URL:
+                return AAII_MAIN_WITH_LINK
+            if request == url:
+                return AAII_ARTICLE_PUBLIC
+            raise AssertionError("Unnecessary fallback archive request")
+        data=fetch_current_aaii_allocation(fetch,date(2026,10,28))
+        self.assertEqual(data["period"],"2026-09")
+        self.assertEqual(data["source_url"],url)
+        self.assertEqual(len(requests),2)
+
+    def test_old_official_article_must_not_be_called_current(self):
+        old = AAII_ARTICLE_PUBLIC.replace("September 2026","July 2026").replace(
+            "September AAII Asset Allocation","July AAII Asset Allocation").replace(
+            "October 01, 2026","August 01, 2026")
+        # An old official link is found but cannot qualify as a fresh basis.
+        url = "https://www.aaii.com/latest/article/548658-september-aaii-asset-allocation-survey-cash-allocations-fall"
+        def fetch(req):
+            if req == AAII_ALLOCATIONS_URL or req == AAII_OFFICIAL_ARCHIVE:
+                return AAII_MAIN_WITH_LINK
+            if req == url:
+                return old
+            raise AssertionError(req)
+        with self.assertRaisesRegex(ValueError,"unavailable"):
+            fetch_current_aaii_allocation(fetch,date(2026,10,28))
+
+    def test_article_bad_total_is_rejected(self):
+        with self.assertRaisesRegex(ValueError,"totals"):
+            parse_aaii_monthly_article(
+                AAII_ARTICLE_PUBLIC.replace("Stocks and Stock Funds: 71.8%", "Stocks and Stock Funds: 78.8%"))
 
 
 if __name__ == "__main__":
