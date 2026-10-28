@@ -194,6 +194,7 @@ jobs:
               "aaii_main":"https://www.aaii.com/assetallocationsurvey",
               "aaii_alt":"https://www.aaii.com/assetallocationsurvey?a=10126side",
               "aaii_archive":"https://www.aaii.com/latest/updatearchive?category=487",
+              "aaii_sept_article":"https://www.aaii.com/latest/article/548658-september-aaii-asset-allocation-survey-cash-allocations-fall",
               "tcb_main":"https://www.conference-board.org/topics/consumer-confidence/",
               "tcb_tags":"https://www.conference-board.org/topics/tags.cfm?parent=consumer-confidence",
           }
@@ -204,6 +205,17 @@ jobs:
                       "Accept-Language":"en-US,en;q=0.9"},timeout=(5,12))
                   body=BeautifulSoup(response.text,"html.parser").get_text(" ",strip=True)
                   months=re.findall(r"Asset Allocation Results for\s+\w+\s+20\d\d",body)
+                  if name.startswith("aaii"):
+                      links=[(a.get_text(" ",strip=True)[:95],a.get("href","")[:140])
+                             for a in BeautifulSoup(response.text,"html.parser").find_all("a")
+                             if "AAII Asset Allocation Survey" in a.get_text(" ",strip=True)]
+                      print(f"retail_probe_links={name} {links[:4]}")
+                      marker=body.find("Asset Allocation Results for")
+                      print(f"retail_probe_summary={name} {body[marker:marker+350] if marker>=0 else body[-430:]}")
+                  if name=="tcb_main":
+                      for marker_text in ("Updated:", "Consumer Confidence Index", "Expectations Index", "more consumers"):
+                          marker=body.find(marker_text)
+                          print(f"retail_probe_tcb={marker_text!r} {body[marker:marker+180] if marker>=0 else 'not_found'}")
                   print(f"retail_probe={name} http={response.status_code} chars={len(body)} "
                         f"asset_months={months[:2]} cb_updated={'Updated:' in body} "
                         f"has_aaii_title={'Asset Allocation Survey' in body} "
