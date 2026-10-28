@@ -888,3 +888,32 @@ def test_authorized_manual_weekly_recovery_requires_current_fresh_data(monkeypat
         {"last_weekly_report_key": "2026-W42"}, snapshot,
     )
     assert no_push is False
+
+
+def test_nq_net_long_amount_is_never_labeled_short(monkeypatch):
+    raw = _raw(
+        report_date="October 20, 2026",
+        history_end="2026-10-20",
+        trade_date="2026-10-27",
+    )
+    raw["nq_cftc"].update({
+        "leveraged_long": 51_749,
+        "leveraged_short": 50_799,
+        "leveraged_net": 950,
+        "leveraged_net_wow": 12_543,
+        "leveraged_short_wow": -8_900,
+    })
+    raw["history_3y"]["verified_current"] = True
+    _patch_common(monkeypatch, raw)
+    monkeypatch.setattr(equity, "_latest_completed_us_session_date", lambda: date(2026, 10, 27))
+    body = equity._cross_asset_block(_snapshot(z20=-1.61), {}, fx=1327.75, compact=False)
+    assert "NQ LF 순 +950계약" in body
+    assert "NQ 현재주 명목 참고: 순롱" in body
+    assert "NQ 현재주 명목 참고: 순숏" not in body
+    assert "총숏" in body
+
+
+def test_next_cta_yield_confirmation_never_repeats_already_crossed_thresholds():
+    assert equity._next_confirmation_thresholds(4.99, -1.61) == "-2σ 진입 또는 4.75% 하향"
+    assert equity._next_confirmation_thresholds(5.24, 0.71) == "-1σ 진입 또는 5.00% 하향"
+    assert equity._next_confirmation_thresholds(4.40, -2.12) == "-2σ 이하 유지 또는 4.30% 하향"
