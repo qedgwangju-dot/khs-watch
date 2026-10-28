@@ -496,3 +496,94 @@ def test_latch_preserved_on_same_date_cftc_crosscheck_mismatch():
     assert alerted == 1
 
 
+
+
+def test_gap_between_cftc_reports_uses_official_week_change_not_stale_snapshot():
+    previous = {
+        "cftc": {"report_date": "October 6, 2026", "markets": {
+            "10Y": {"leveraged_net": -2_000_000},
+            "BOND": {"leveraged_net": -100_000},
+        }}
+    }
+    current = {
+        "cftc": {"report_date": "October 20, 2026", "markets": {
+            "10Y": {"leveraged_net": -2_100_000, "leveraged_net_wow": +20_000,
+                    "previous_period": "October 13, 2026"},
+            "BOND": {"leveraged_net": -70_000, "leveraged_net_wow": -10_000,
+                     "previous_period": "October 13, 2026"},
+            "ULTRABOND": {"leveraged_net": -200_000},
+        }}
+    }
+    reduced, lines = equity.audited._cftc_short_reduction(current, previous)
+    assert reduced == {"10Y"}
+    assert "주간 +20,000" in lines[0]
+    assert "2026-10-13" in lines[0]
+    assert "BOND" not in reduced
+
+
+def test_stale_two_week_snapshot_cannot_replace_missing_official_week_change():
+    previous = {"cftc": {"report_date": "October 6, 2026", "markets": {
+        "10Y": {"leveraged_net": -2_000_000},
+    }}}
+    current = {"cftc": {"report_date": "October 20, 2026", "markets": {
+        "10Y": {"leveraged_net": -1_900_000},
+    }}}
+    assert equity.audited._cftc_short_reduction(current, previous) == (set(), [])
+
+
+def test_immediately_prior_cftc_snapshot_can_be_used_if_week_change_missing():
+    previous = {"cftc": {"report_date": "October 13, 2026", "markets": {
+        "10Y": {"leveraged_net": -2_000_000},
+    }}}
+    current = {"cftc": {"report_date": "October 20, 2026", "markets": {
+        "10Y": {"leveraged_net": -1_990_000},
+    }}}
+    reduced, lines = equity.audited._cftc_short_reduction(current, previous)
+    assert reduced == {"10Y"}
+    assert "주간 +10,000" in lines[0]
+
+
+def test_compact_monday_report_fallback_has_yield_milestone(monkeypatch):
+    snap = _snapshot(z20=-1.1, zn_pct=0.2)
+    snap["checked_kst"] = "2026-10-26T07:13:00+09:00"
+    snap["cftc"]["report_date"] = "October 20, 2026"
+    snap["yield10"]["yield"] = 4.99
+    monkeypatch.setattr(equity, "_cross_asset_snapshot", lambda *_: {"label": "미확인"})
+    monkeypatch.setattr(equity, "_cross_asset_block", lambda *args, **kw: "• NQ 포지션 확인 보류\n")
+    monkeypatch.setattr(equity, "_equity_impact", lambda *_: ("중립", "스퀴즈 미확인"))
+    monkeypatch.setattr(equity.audited, "_repo_not_worse", lambda *_: (True, []))
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda *_: (True, []))
+    title, body = equity._compact_scheduled_report(snap, {}, ["월요일 정기점검"])
+    assert "월요일" in title
+    assert "하향 확인선" in body
+    assert "미확인" in body
+    assert len(title) + 2 + len(body) < 4096
+
+
+def test_delayed_fomc_cron_fires_before_decision_not_after(monkeypatch):
+    from datetime import datetime as RealDateTime
+    class FakeNow(RealDateTime):
+        hour_local = 1
+
+        @classmethod
+        def now(cls, tz=None):
+            return RealDateTime(2026, 10, 29, cls.hour_local, 30, tzinfo=tz)
+
+    monkeypatch.setattr(equity, "datetime", FakeNow)
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "schedule")
+    monkeypatch.setenv("CTA_TRIGGER_SCHEDULE", "40 11 * * 1-5")
+    snapshot = {"checked_kst": "2026-10-29T01:30:00+09:00"}
+    assert equity._fomc_report_day(snapshot) == date(2026, 10, 28)
+    _, due, _, key = equity._scheduled_due(
+        {"last_fomc_eve_report": "2026-09-16"},
+        {"snapshot": snapshot}
+    )
+    assert due is True and key == "2026-10-28"
+
+    FakeNow.hour_local = 3
+    snapshot["checked_kst"] = "2026-10-29T03:30:00+09:00"
+    _, due_after, _, _ = equity._scheduled_due(
+        {"last_fomc_eve_report": "2026-09-16"},
+        {"snapshot": snapshot}
+    )
+    assert due_after is False
