@@ -20,8 +20,8 @@ STRUCTURAL_KEY='2026-10-28|Warsh|FOMC-Structural-Verified-v1'
 STRUCTURAL_FED='https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm'
 STRUCTURAL_URLS={
     'productivity':'https://www.investing.com/news/economy-news/feds-warsh-says-us-economy-not-running-too-hot-4980529',
-    'balance':'https://www.investing.com/news/economy-news/feds-policy-committee-to-weigh-balance-sheet-issues-early-next-year-warsh-says-4980804',
-    'strategy':'https://www.marketscreener.com/news/fed-s-warsh-announces-changes-in-how-future-fomc-meetings-will-go-ce785cd3d88bf623',
+    'balance':'https://kfgo.com/2026/10/28/feds-policy-committee-to-weigh-balance-sheet-issues-early-next-year-warsh-says/',
+    'strategy':'https://kfgo.com/2026/10/28/feds-warsh-announces-changes-in-how-future-fomc-meetings-will-go/',
     'korea':'https://www.news1.kr/world/international-economy/6335584',
     'ai_rates':'https://www2.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01538326645617840',
     'hearing':'https://www.investing.com/news/economy-news/warsh-to-attend-fed-jobs-and-productivity-task-force-hearing-to-refine-views-4980494',
@@ -293,7 +293,13 @@ def main():
                 structural_sent=True
                 structural_status='confirmed'
             else:
-                structural_status='source_verification_pending'
+                if verified is None:
+                    structural_status='official_source_verification_pending'
+                else:
+                    structural_status='article_verification_pending'
+                    new['structural_candidate_topics']=[
+                        topic for topic,ok in verified.items() if ok
+                    ]
     elif old.get('structural_sent_key')==STRUCTURAL_KEY:
         structural_status='already_sent'
 
