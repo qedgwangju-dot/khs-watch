@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-28T13:14:16+09:00",
+  "updated_at_kst": "2026-10-28T14:31:09+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -2921,11 +2921,13 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-28T13:14:16+09:00",
+      "last_checked_at_kst": "2026-10-28T14:31:09+09:00",
       "gaps": [
+        "SK하이닉스 Y2·M17 조기화 본문 직접 확인 대기: news1.kr",
+        "SK하이닉스 Y2·M17 조기화 본문 직접 확인 대기: biz.sbs.co.kr",
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
-      "observations": 6,
+      "observations": 5,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
@@ -2997,8 +2999,8 @@
     "payload_hash": "bc182fbc7946cf570a6da069afe0968b8358c7baf4eae950b5045f28018c9695"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-28T13:15:25+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-28T14:32:07+09:00",
+    "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": 4756.0,
   "state_corrections": [
