@@ -31504,6 +31504,30 @@
       "telegram_core_fact": "엔비디아의 지원을 받는 인공지능(AI) 클라우드 기업 코어위브의 주가와 채권 가격이 동반 급락하면서, 거대한 AI 인프라 투자가 ‘숨은 빚’에 대한 우려가 시장 전반으로 번지고 있다.",
       "title": "'AI 인프라 70조 빚 감당 되나?'…코어위브 사태에 쏟아진 우려"
     },
+    "core:4023be3a150f009d1ef2e55c": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028032000017",
+      "source": "연합뉴스",
+      "source_body_digest": "b724096fb5e1a09a7cac9ca0131a450fc1cb463994567fb2ccc846c88d558036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ea2ccac1a633225a0793780cdbf6f64fc49d9f98f03bab43364b1ba9bdf05c",
+      "source_fact_keys": [
+        "source_fact:v1:0010a69f527217a32183908b9c4c9e78b13aca2b789ce846f64f0add4587e6b8",
+        "source_fact:v1:5474b113ede9b4649454035052aa12b53c50f2302de7afea2ad157e574fbe656",
+        "source_fact:v1:bb21063da69eb0e7ce9e73c7bdad5c50c44a6e92fc5758057121f3315791b62c",
+        "source_fact:v1:d20bc96fa0df0a9e6221df443088d21ef3978c3facba88084ace97f7505462aa",
+        "source_fact:v1:f81a5333fe0de1ed7289538d03df10862cca7188c808f5bee84955c00970b7b9"
+      ],
+      "source_published_kst": "2026-10-28T09:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스",
+      "telegram_core_fact": "LG유플러스는 한국이콜랩과 AI 데이터센터(AIDC) 냉각 시스템 운영 최적화를 위한 업무협약(MOU)을 체결했다고 28일 밝혔다. LG유플러스[032640]가 한국이콜랩과 손잡고 인공지능(AI) 데이터센터 액체냉각 운영표준 개발에 나선다.",
+      "title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스"
+    },
     "core:402419d49f7a319eb6cd9aef": {
       "first_seen_kst": "2026-10-15T08:51:43+09:00",
       "lanes": {
@@ -32883,6 +32907,26 @@
       "source_title": "현대로템, 3Q 영업익 2471억 전년比 11%↓…\"수출 다변화로 성장 추진\"",
       "telegram_core_fact": "현대로템이 올해 3분기 매출은 전년 동기 수준을 유지했지만 영업이익은 소폭 감소한 가운데, 수출 다변화를 통해 중장기 성장 기반을 확대한다.",
       "title": "현대로템, 3Q 영업익 2471억 전년比 11%↓…\"수출 다변화로 성장 추진\""
+    },
+    "core:4358d4816820b0f01bb4787f": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028044500527",
+      "source": "연합뉴스",
+      "source_body_digest": "790bc66103d9819afcb5a77f7e9b58776b57dd1dd00481e09e6bc72661fd1946",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d55a51f9c6f2e95e44a173aed55091e221ea93d4807c4a67147a52db71f688f",
+      "source_fact_identity": "source_facts:v1:c5d5ed599753ce31dd4728ba45e65e3c8db672e8de32173314b2932dd6d7c097",
+      "source_fact_keys": [
+        "source_fact:v1:ce438a07a89b8a33e7f0600c9a4691a5c0bf0815083ed9754869f8cf0ae8c9ea"
+      ],
+      "source_published_kst": "2026-10-28T09:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스",
+      "telegram_core_fact": "코스닥 상장사 안랩[053800]은 연결 기준 올해 3분기 영업이익이 109억원으로 지난해 동기보다 38.7% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스"
     },
     "core:437ee740eee58acf704f9400": {
       "first_seen_kst": "2026-10-22T00:55:31+09:00",
@@ -87878,6 +87922,26 @@
       "telegram_core_fact": "한국과 일본 경제계가 공동성명을 통해 한국의 포괄적·점진적 환태평양경제동반자협정(CPTPP) 가입을 지원하겠다는 뜻을 밝혔다. 보호무역 확산과 에너지 공급망 불안에 공동 대응하고 첨단산업과 제3국 시장에서도 협력을 확대하기로 했다.",
       "title": "한일 경제계 “한국 CPTPP 가입 협력”…통상·에너지 공동 대응"
     },
+    "core:b9d847e39c5a50564e2306ec": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.mt.co.kr/index.php/thebio/2026/10/28/2026102809002677674",
+      "source": "머니투데이",
+      "source_body_digest": "a24b932f0a218f2273dc37ad18e474273b7307545fa0dda3a960909892cb6943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd52523f6cdbb6cd47ed3f0425362e22ff01aa4d36c3759fd927ef18198d95d7",
+      "source_fact_keys": [
+        "source_fact:v1:705e1d2c3537af2ef4fef0450bbf22961266b3a29976b9d4502e576bf220cf3d"
+      ],
+      "source_published_kst": "2026-10-28T09:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장",
+      "telegram_core_fact": "메디포스트는 위탁개발생산(CDMO) 신규 사업으로 '국산 화학조성배지 기반 AOF(Animal Origin Free) 줄기세포 세포은행(Master/Working Cell Bank) 구축 서비스'를 내달 출시한다고 28일 밝혔다.",
+      "title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장"
+    },
     "core:b9e0cbd4f42141bfee2e9b41": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
       "lanes": {
@@ -90019,6 +90083,38 @@
       "source_title": "코스맥스 `계절성을 깨트리다` 증권사 발표에 강세…3.52%",
       "telegram_core_fact": "당일 하나증권 박종대 애널리스트는 '계절성을 깨트리다' 라고 목표가를 380,000원으로 상향 조정한 바 있다.",
       "title": "코스맥스 `계절성을 깨트리다` 증권사 발표에 강세…3.52%"
+    },
+    "core:be0718a6b4aebb532a44d414": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
     },
     "core:be0930ed7ab0b989567f221b": {
       "first_seen_kst": "2026-10-12T17:17:29+09:00",
@@ -140439,6 +140535,26 @@
       "source_published_kst": "2026-10-06T09:01+09:00",
       "title": "“코스피, 11월부터 연말 랠리…외국인 돌아온다”"
     },
+    "event:b8e286daf0bb45ca75490c51": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028044500527",
+      "source": "연합뉴스",
+      "source_body_digest": "790bc66103d9819afcb5a77f7e9b58776b57dd1dd00481e09e6bc72661fd1946",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d55a51f9c6f2e95e44a173aed55091e221ea93d4807c4a67147a52db71f688f",
+      "source_fact_identity": "source_facts:v1:c5d5ed599753ce31dd4728ba45e65e3c8db672e8de32173314b2932dd6d7c097",
+      "source_fact_keys": [
+        "source_fact:v1:ce438a07a89b8a33e7f0600c9a4691a5c0bf0815083ed9754869f8cf0ae8c9ea"
+      ],
+      "source_published_kst": "2026-10-28T09:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스",
+      "telegram_core_fact": "코스닥 상장사 안랩[053800]은 연결 기준 올해 3분기 영업이익이 109억원으로 지난해 동기보다 38.7% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스"
+    },
     "event:b9055f487e5d265acdbd20e5": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
       "lanes": {
@@ -179685,6 +179801,26 @@
       "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
       "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
+    "fact:3f39e410202e5dd41443c7a8": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.mt.co.kr/index.php/thebio/2026/10/28/2026102809002677674",
+      "source": "머니투데이",
+      "source_body_digest": "a24b932f0a218f2273dc37ad18e474273b7307545fa0dda3a960909892cb6943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd52523f6cdbb6cd47ed3f0425362e22ff01aa4d36c3759fd927ef18198d95d7",
+      "source_fact_keys": [
+        "source_fact:v1:705e1d2c3537af2ef4fef0450bbf22961266b3a29976b9d4502e576bf220cf3d"
+      ],
+      "source_published_kst": "2026-10-28T09:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장",
+      "telegram_core_fact": "메디포스트는 위탁개발생산(CDMO) 신규 사업으로 '국산 화학조성배지 기반 AOF(Animal Origin Free) 줄기세포 세포은행(Master/Working Cell Bank) 구축 서비스'를 내달 출시한다고 28일 밝혔다.",
+      "title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장"
+    },
     "fact:3f4f18917d32193b3dfbb95b": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
       "lanes": {
@@ -194145,6 +194281,30 @@
       "source_title": "TTM 테크놀러지스, MKS 광학사업 6억5000만 달러 인수",
       "telegram_core_fact": "TTM 테크놀러지스(TTMI)가 MKS(MKSI)의 적외선 광학 사업부 오피르 옵틱스(Ophir Optics)를 약 6억5000만 달러 전액 현금 거래로 인수하는 확정 계약을 체결했다고 10월 19일 발표했다.",
       "title": "TTM 테크놀러지스, MKS 광학사업 6억5000만 달러 인수"
+    },
+    "fact:5dae80de97c1993148a76d69": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028032000017",
+      "source": "연합뉴스",
+      "source_body_digest": "b724096fb5e1a09a7cac9ca0131a450fc1cb463994567fb2ccc846c88d558036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ea2ccac1a633225a0793780cdbf6f64fc49d9f98f03bab43364b1ba9bdf05c",
+      "source_fact_keys": [
+        "source_fact:v1:0010a69f527217a32183908b9c4c9e78b13aca2b789ce846f64f0add4587e6b8",
+        "source_fact:v1:5474b113ede9b4649454035052aa12b53c50f2302de7afea2ad157e574fbe656",
+        "source_fact:v1:bb21063da69eb0e7ce9e73c7bdad5c50c44a6e92fc5758057121f3315791b62c",
+        "source_fact:v1:d20bc96fa0df0a9e6221df443088d21ef3978c3facba88084ace97f7505462aa",
+        "source_fact:v1:f81a5333fe0de1ed7289538d03df10862cca7188c808f5bee84955c00970b7b9"
+      ],
+      "source_published_kst": "2026-10-28T09:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스",
+      "telegram_core_fact": "LG유플러스는 한국이콜랩과 AI 데이터센터(AIDC) 냉각 시스템 운영 최적화를 위한 업무협약(MOU)을 체결했다고 28일 밝혔다. LG유플러스[032640]가 한국이콜랩과 손잡고 인공지능(AI) 데이터센터 액체냉각 운영표준 개발에 나선다.",
+      "title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스"
     },
     "fact:5db99c878894369504d02134": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
@@ -218980,6 +219140,38 @@
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "“관세 낮추려면 대가 내야”…트럼프, 한국 1500억달러 또 꺼냈다"
     },
+    "fact:8e5f19de468a075305558039": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
+    },
     "fact:8e60902a7fddfec4e34fb666": {
       "first_seen_kst": "2026-10-11T19:59:25+09:00",
       "lanes": {
@@ -238391,6 +238583,26 @@
       "source_title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\"",
       "telegram_core_fact": "한국이 미국 알래스카 액화천연가스(LNG) 개발 사업에 최소 500억달러를 투자하기로 약속했다는 도널드 트럼프 대통령 발표와 달리, 한국 측은 투자 결정을 내리지 않은 것으로 보인다는 알래스카 현지 매체의 보도가 나왔다.",
       "title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\""
+    },
+    "fact:b32912b38537e628eda38fe7": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028044500527",
+      "source": "연합뉴스",
+      "source_body_digest": "790bc66103d9819afcb5a77f7e9b58776b57dd1dd00481e09e6bc72661fd1946",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d55a51f9c6f2e95e44a173aed55091e221ea93d4807c4a67147a52db71f688f",
+      "source_fact_identity": "source_facts:v1:c5d5ed599753ce31dd4728ba45e65e3c8db672e8de32173314b2932dd6d7c097",
+      "source_fact_keys": [
+        "source_fact:v1:ce438a07a89b8a33e7f0600c9a4691a5c0bf0815083ed9754869f8cf0ae8c9ea"
+      ],
+      "source_published_kst": "2026-10-28T09:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스",
+      "telegram_core_fact": "코스닥 상장사 안랩[053800]은 연결 기준 올해 3분기 영업이익이 109억원으로 지난해 동기보다 38.7% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스"
     },
     "fact:b32ee6df58f8113474776a71": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -301720,6 +301932,30 @@
       "telegram_core_fact": "삼성자산운용은 'KODEX 전고체배터리ESS TOP2플러스' 상장지수펀드(ETF)가 순자산 2000억원을 돌파했다고 21일 밝혔다.",
       "title": "삼성운용, 'KODEX 전고체배터리ESS TOP2플러스' ETF 순자산 2000억 돌파"
     },
+    "link:23cff472bdf476ed340d5b69": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028032000017",
+      "source": "연합뉴스",
+      "source_body_digest": "b724096fb5e1a09a7cac9ca0131a450fc1cb463994567fb2ccc846c88d558036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ea2ccac1a633225a0793780cdbf6f64fc49d9f98f03bab43364b1ba9bdf05c",
+      "source_fact_keys": [
+        "source_fact:v1:0010a69f527217a32183908b9c4c9e78b13aca2b789ce846f64f0add4587e6b8",
+        "source_fact:v1:5474b113ede9b4649454035052aa12b53c50f2302de7afea2ad157e574fbe656",
+        "source_fact:v1:bb21063da69eb0e7ce9e73c7bdad5c50c44a6e92fc5758057121f3315791b62c",
+        "source_fact:v1:d20bc96fa0df0a9e6221df443088d21ef3978c3facba88084ace97f7505462aa",
+        "source_fact:v1:f81a5333fe0de1ed7289538d03df10862cca7188c808f5bee84955c00970b7b9"
+      ],
+      "source_published_kst": "2026-10-28T09:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스",
+      "telegram_core_fact": "LG유플러스는 한국이콜랩과 AI 데이터센터(AIDC) 냉각 시스템 운영 최적화를 위한 업무협약(MOU)을 체결했다고 28일 밝혔다. LG유플러스[032640]가 한국이콜랩과 손잡고 인공지능(AI) 데이터센터 액체냉각 운영표준 개발에 나선다.",
+      "title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스"
+    },
     "link:23def07638d91763bb9c63b5": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
       "lanes": {
@@ -306522,6 +306758,38 @@
       "link": "https://www.yna.co.kr/view/MYH20261001015000038",
       "source": "연합뉴스",
       "title": "트럼프 \"알래스카 LNG 韓투자\" 대못…공식문서엔 조건부 | 연합뉴스"
+    },
+    "link:2ade64e57e4078ad1ea18327": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
     },
     "link:2ae4027397950b29483ef41c": {
       "first_seen_kst": "2026-10-24T08:52:22+09:00",
@@ -313477,6 +313745,24 @@
       "source_title": "영진약품, 프랑스 아테나와 라세카도트릴 산제 국내 도입 계약 체결",
       "telegram_core_fact": "영진약품은 프랑스 제약사 아테나와 라세카도트릴 산제의 국내 도입을 위한 라이선스 계약 및 제품 공급계약을 체결했다.",
       "title": "영진약품, 프랑스 아테나와 라세카도트릴 산제 국내 도입 계약 체결"
+    },
+    "link:350db23682747a58cc8e30a6": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182645",
+      "source": "매일경제",
+      "source_body_digest": "43427b21c8a78afc14d7afdcfd8fc451546641bb3997af255f19da731c5867b3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "롯데마트, 내달 11일까지 '메가통큰' 행사…최대 60% 할인",
+      "telegram_core_fact": "상반기 메가통큰 행사 기간 매출은 전년보다 22% 증가했다.",
+      "title": "롯데마트, 내달 11일까지 '메가통큰' 행사…최대 60% 할인"
     },
     "link:3513fe788066edd0098eb040": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
@@ -374779,6 +375065,26 @@
       "telegram_core_fact": "렌탈을 취급하는 여전사들은 자금조달여력이 부족한 중소형 렌터카사를 대상으로 한도대출 확대, 대출원금 상환유예 등 렌탈시장에서의 상생체계도 구축할 예정이다.",
       "title": "여전사 부동산·건설업 대출한도 죈다…카드사 PG업체 평가 의무화"
     },
+    "link:949a684db746731409caebc5": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028044500527",
+      "source": "연합뉴스",
+      "source_body_digest": "790bc66103d9819afcb5a77f7e9b58776b57dd1dd00481e09e6bc72661fd1946",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d55a51f9c6f2e95e44a173aed55091e221ea93d4807c4a67147a52db71f688f",
+      "source_fact_identity": "source_facts:v1:c5d5ed599753ce31dd4728ba45e65e3c8db672e8de32173314b2932dd6d7c097",
+      "source_fact_keys": [
+        "source_fact:v1:ce438a07a89b8a33e7f0600c9a4691a5c0bf0815083ed9754869f8cf0ae8c9ea"
+      ],
+      "source_published_kst": "2026-10-28T09:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스",
+      "telegram_core_fact": "코스닥 상장사 안랩[053800]은 연결 기준 올해 3분기 영업이익이 109억원으로 지난해 동기보다 38.7% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스"
+    },
     "link:94a05bbde3c215ba4f48402e": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -406704,6 +407010,26 @@
       "source_title": "伊 멜로니, 시위엔 강경 대응·생계난엔 지원…'당근과 채찍'",
       "telegram_core_fact": "고속도로와 항구, 물류센터 봉쇄로 식료품과 연료 공급에 차질이 빚어지자 조르자 멜로니 이탈리아 총리는 강경 대응과 재정 지원을 병행하는 이른바 '당근과 채찍' 전략에 나섰다.",
       "title": "伊 멜로니, 시위엔 강경 대응·생계난엔 지원…'당근과 채찍'"
+    },
+    "link:c4909391f366626b16c316b1": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.mt.co.kr/index.php/thebio/2026/10/28/2026102809002677674",
+      "source": "머니투데이",
+      "source_body_digest": "a24b932f0a218f2273dc37ad18e474273b7307545fa0dda3a960909892cb6943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd52523f6cdbb6cd47ed3f0425362e22ff01aa4d36c3759fd927ef18198d95d7",
+      "source_fact_keys": [
+        "source_fact:v1:705e1d2c3537af2ef4fef0450bbf22961266b3a29976b9d4502e576bf220cf3d"
+      ],
+      "source_published_kst": "2026-10-28T09:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장",
+      "telegram_core_fact": "메디포스트는 위탁개발생산(CDMO) 신규 사업으로 '국산 화학조성배지 기반 AOF(Animal Origin Free) 줄기세포 세포은행(Master/Working Cell Bank) 구축 서비스'를 내달 출시한다고 28일 밝혔다.",
+      "title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장"
     },
     "link:c4924237baf6ecfc19898c9e": {
       "first_seen_kst": "2026-10-03T07:39:51+09:00",
@@ -458999,6 +459325,38 @@
       ],
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
+    },
+    "original:18fcf3a4d93fcc6a2ac3291d": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
     },
     "original:19039f6e0c9ddc7eabcc1087": {
       "first_seen_kst": "2026-10-20T08:05:53+09:00",
@@ -512693,6 +513051,30 @@
       "telegram_core_fact": "블룸버그통신에 따르면 월러 이사는 “경제지표가 예상대로 나온다면 인플레이션을 2% 목표치로 더 신속하게 되돌리기 위해 추가 금리 인상이 필요할 것으로 예상한다”고 말했다.",
       "title": "연준 무살렘·월러 \"추가 금리 인상 필요\"…시점엔 유연성"
     },
+    "original:6ceea8b8966294b7bab527fc": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028032000017",
+      "source": "연합뉴스",
+      "source_body_digest": "b724096fb5e1a09a7cac9ca0131a450fc1cb463994567fb2ccc846c88d558036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ea2ccac1a633225a0793780cdbf6f64fc49d9f98f03bab43364b1ba9bdf05c",
+      "source_fact_keys": [
+        "source_fact:v1:0010a69f527217a32183908b9c4c9e78b13aca2b789ce846f64f0add4587e6b8",
+        "source_fact:v1:5474b113ede9b4649454035052aa12b53c50f2302de7afea2ad157e574fbe656",
+        "source_fact:v1:bb21063da69eb0e7ce9e73c7bdad5c50c44a6e92fc5758057121f3315791b62c",
+        "source_fact:v1:d20bc96fa0df0a9e6221df443088d21ef3978c3facba88084ace97f7505462aa",
+        "source_fact:v1:f81a5333fe0de1ed7289538d03df10862cca7188c808f5bee84955c00970b7b9"
+      ],
+      "source_published_kst": "2026-10-28T09:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스",
+      "telegram_core_fact": "LG유플러스는 한국이콜랩과 AI 데이터센터(AIDC) 냉각 시스템 운영 최적화를 위한 업무협약(MOU)을 체결했다고 28일 밝혔다. LG유플러스[032640]가 한국이콜랩과 손잡고 인공지능(AI) 데이터센터 액체냉각 운영표준 개발에 나선다.",
+      "title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스"
+    },
     "original:6cf2be14be1fa3a83bb5d263": {
       "first_seen_kst": "2026-10-19T21:40:31+09:00",
       "lanes": {
@@ -555710,6 +556092,26 @@
       "source_published_kst": "2026-10-06T18:31+09:00",
       "title": "김정관 “전쟁 후 알래스카 LNG 전략적 가치 생겨”…‘상업성 검토’ 착수"
     },
+    "original:afbf7c6900345fb73dce8ffa": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028044500527",
+      "source": "연합뉴스",
+      "source_body_digest": "790bc66103d9819afcb5a77f7e9b58776b57dd1dd00481e09e6bc72661fd1946",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d55a51f9c6f2e95e44a173aed55091e221ea93d4807c4a67147a52db71f688f",
+      "source_fact_identity": "source_facts:v1:c5d5ed599753ce31dd4728ba45e65e3c8db672e8de32173314b2932dd6d7c097",
+      "source_fact_keys": [
+        "source_fact:v1:ce438a07a89b8a33e7f0600c9a4691a5c0bf0815083ed9754869f8cf0ae8c9ea"
+      ],
+      "source_published_kst": "2026-10-28T09:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스",
+      "telegram_core_fact": "코스닥 상장사 안랩[053800]은 연결 기준 올해 3분기 영업이익이 109억원으로 지난해 동기보다 38.7% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스"
+    },
     "original:afc28252045483faff2ed78f": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -566831,6 +567233,26 @@
       "telegram_core_fact": "포스코그룹은 계열사를 통해 광산부터 배터리 소재 생산과 재활용까지 이어지는 공급망을 구축하고 있다.",
       "title": "'리사이클'로 광물사업 공급망 갖춘 포스코..순환경제 기여 어떻게[르포]"
     },
+    "original:c2b46dea05ea50d6bbe11696": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.mt.co.kr/index.php/thebio/2026/10/28/2026102809002677674",
+      "source": "머니투데이",
+      "source_body_digest": "a24b932f0a218f2273dc37ad18e474273b7307545fa0dda3a960909892cb6943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd52523f6cdbb6cd47ed3f0425362e22ff01aa4d36c3759fd927ef18198d95d7",
+      "source_fact_keys": [
+        "source_fact:v1:705e1d2c3537af2ef4fef0450bbf22961266b3a29976b9d4502e576bf220cf3d"
+      ],
+      "source_published_kst": "2026-10-28T09:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장",
+      "telegram_core_fact": "메디포스트는 위탁개발생산(CDMO) 신규 사업으로 '국산 화학조성배지 기반 AOF(Animal Origin Free) 줄기세포 세포은행(Master/Working Cell Bank) 구축 서비스'를 내달 출시한다고 28일 밝혔다.",
+      "title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장"
+    },
     "original:c2bc45ccc56c1a737976de8e": {
       "first_seen_kst": "2026-10-25T08:54:30+09:00",
       "lanes": {
@@ -574728,6 +575150,24 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03224246645608984",
       "source": "이데일리",
       "title": "네이버 노조 \"본사도 통합교섭 나서라\"…지노위에 시정신청"
+    },
+    "original:cef67859b6e96349e11c0f47": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182645",
+      "source": "매일경제",
+      "source_body_digest": "43427b21c8a78afc14d7afdcfd8fc451546641bb3997af255f19da731c5867b3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "롯데마트, 내달 11일까지 '메가통큰' 행사…최대 60% 할인",
+      "telegram_core_fact": "상반기 메가통큰 행사 기간 매출은 전년보다 22% 증가했다.",
+      "title": "롯데마트, 내달 11일까지 '메가통큰' 행사…최대 60% 할인"
     },
     "original:cef6e96b57cf97354c15685b": {
       "first_seen_kst": "2026-10-17T10:06:46+09:00",
@@ -712175,6 +712615,30 @@
       "telegram_core_fact": "뉴욕증시는 AI주에 대한 저가 매수세 유입으로 나스닥이 1.1% 반등하는 등 혼조세를 보였다. 지난주 급락했던 AI주에 저가 매수세가 유입되며 나스닥은 1.1%, S&P500은 0.4% 상승했습니다.",
       "title": "[뉴스프레소] 뉴욕증시, 저가 매수 유입에 혼조… 머스크의 통 근 결단"
     },
+    "source_fact:27c3baab854629afc3f49fbc": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028032000017",
+      "source": "연합뉴스",
+      "source_body_digest": "b724096fb5e1a09a7cac9ca0131a450fc1cb463994567fb2ccc846c88d558036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ea2ccac1a633225a0793780cdbf6f64fc49d9f98f03bab43364b1ba9bdf05c",
+      "source_fact_keys": [
+        "source_fact:v1:0010a69f527217a32183908b9c4c9e78b13aca2b789ce846f64f0add4587e6b8",
+        "source_fact:v1:5474b113ede9b4649454035052aa12b53c50f2302de7afea2ad157e574fbe656",
+        "source_fact:v1:bb21063da69eb0e7ce9e73c7bdad5c50c44a6e92fc5758057121f3315791b62c",
+        "source_fact:v1:d20bc96fa0df0a9e6221df443088d21ef3978c3facba88084ace97f7505462aa",
+        "source_fact:v1:f81a5333fe0de1ed7289538d03df10862cca7188c808f5bee84955c00970b7b9"
+      ],
+      "source_published_kst": "2026-10-28T09:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스",
+      "telegram_core_fact": "LG유플러스는 한국이콜랩과 AI 데이터센터(AIDC) 냉각 시스템 운영 최적화를 위한 업무협약(MOU)을 체결했다고 28일 밝혔다. LG유플러스[032640]가 한국이콜랩과 손잡고 인공지능(AI) 데이터센터 액체냉각 운영표준 개발에 나선다.",
+      "title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스"
+    },
     "source_fact:27c712bcbcdf8da68273f16b": {
       "first_seen_kst": "2026-10-25T19:13:35+09:00",
       "lanes": {
@@ -728909,6 +729373,38 @@
       "telegram_core_fact": "연성회로기판(FPCB) 전문기업 이브이첨단소재가 피부에 접촉하지 않고 혈류를 측정하는 자기혈류파 기술 상용화에 나선다.",
       "title": "이브이첨단소재, 비접촉 심혈관 진단센서 국책과제 주관…상용화 추진"
     },
+    "source_fact:2dd789552035574081eca690": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
+    },
     "source_fact:2dd8be6a372756baf953b9d5": {
       "first_seen_kst": "2026-10-11T06:07:21+09:00",
       "lanes": {
@@ -735201,6 +735697,26 @@
       "source_title": "한투운용, 미국 빅테크 집중 ETF 순자산 1조2000억 돌파",
       "telegram_core_fact": "한국투자신탁운용은 7일 ACE 미국빅테크TOP7Plus 상장지수펀드(ETF)의 순자산액이 1조2000억원을 돌파했다고 밝혔다. ACE 미국빅테크TOP7Plus ETF는 미국 나스닥 시장에 상장된 빅테크 기업에 집중적으로 투자하는 상품으로 2023년 9월 상장했다.",
       "title": "한투운용, 미국 빅테크 집중 ETF 순자산 1조2000억 돌파"
+    },
+    "source_fact:307a6e2d85a53ba2bcd299fd": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.mt.co.kr/index.php/thebio/2026/10/28/2026102809002677674",
+      "source": "머니투데이",
+      "source_body_digest": "a24b932f0a218f2273dc37ad18e474273b7307545fa0dda3a960909892cb6943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd52523f6cdbb6cd47ed3f0425362e22ff01aa4d36c3759fd927ef18198d95d7",
+      "source_fact_keys": [
+        "source_fact:v1:705e1d2c3537af2ef4fef0450bbf22961266b3a29976b9d4502e576bf220cf3d"
+      ],
+      "source_published_kst": "2026-10-28T09:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장",
+      "telegram_core_fact": "메디포스트는 위탁개발생산(CDMO) 신규 사업으로 '국산 화학조성배지 기반 AOF(Animal Origin Free) 줄기세포 세포은행(Master/Working Cell Bank) 구축 서비스'를 내달 출시한다고 28일 밝혔다.",
+      "title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장"
     },
     "source_fact:307b2432c24fb194772574be": {
       "first_seen_kst": "2026-10-22T20:40:52+09:00",
@@ -768134,6 +768650,30 @@
       "source_title": "[영상] 대규모 열병식에 AI 무기까지…중동 흔드는 후티 반군 | 연합뉴스",
       "telegram_core_fact": "중동의 빈국 예멘의 후티 반군이 중동의 맹주 사우디아라비아를 궁지로 몰아넣고 있습니다. 후티 반군은 지난달 홍해의 핵심 원유 수송로 바브엘만데브 해협 인근 요충지를 장악하더니 이달 들어서는 사우디의 주요 공항과 정유 시설에 드론과 미사일 공격을 퍼붓고 있습니다.",
       "title": "[영상] 대규모 열병식에 AI 무기까지…중동 흔드는 후티 반군 | 연합뉴스"
+    },
+    "source_fact:3ce29c697c803e4eafb45590": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028032000017",
+      "source": "연합뉴스",
+      "source_body_digest": "b724096fb5e1a09a7cac9ca0131a450fc1cb463994567fb2ccc846c88d558036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ea2ccac1a633225a0793780cdbf6f64fc49d9f98f03bab43364b1ba9bdf05c",
+      "source_fact_keys": [
+        "source_fact:v1:0010a69f527217a32183908b9c4c9e78b13aca2b789ce846f64f0add4587e6b8",
+        "source_fact:v1:5474b113ede9b4649454035052aa12b53c50f2302de7afea2ad157e574fbe656",
+        "source_fact:v1:bb21063da69eb0e7ce9e73c7bdad5c50c44a6e92fc5758057121f3315791b62c",
+        "source_fact:v1:d20bc96fa0df0a9e6221df443088d21ef3978c3facba88084ace97f7505462aa",
+        "source_fact:v1:f81a5333fe0de1ed7289538d03df10862cca7188c808f5bee84955c00970b7b9"
+      ],
+      "source_published_kst": "2026-10-28T09:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스",
+      "telegram_core_fact": "LG유플러스는 한국이콜랩과 AI 데이터센터(AIDC) 냉각 시스템 운영 최적화를 위한 업무협약(MOU)을 체결했다고 28일 밝혔다. LG유플러스[032640]가 한국이콜랩과 손잡고 인공지능(AI) 데이터센터 액체냉각 운영표준 개발에 나선다.",
+      "title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스"
     },
     "source_fact:3ce34e9acf3b2062cb313959": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -839355,6 +839895,30 @@
       "source_published_kst": "2026-10-06T12:58+09:00",
       "title": "동화약품 자회사 메디쎄이 '일체형 경추 임플란트', 美 FDA 인증"
     },
+    "source_fact:56db7b890095aed53485f9dd": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028032000017",
+      "source": "연합뉴스",
+      "source_body_digest": "b724096fb5e1a09a7cac9ca0131a450fc1cb463994567fb2ccc846c88d558036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ea2ccac1a633225a0793780cdbf6f64fc49d9f98f03bab43364b1ba9bdf05c",
+      "source_fact_keys": [
+        "source_fact:v1:0010a69f527217a32183908b9c4c9e78b13aca2b789ce846f64f0add4587e6b8",
+        "source_fact:v1:5474b113ede9b4649454035052aa12b53c50f2302de7afea2ad157e574fbe656",
+        "source_fact:v1:bb21063da69eb0e7ce9e73c7bdad5c50c44a6e92fc5758057121f3315791b62c",
+        "source_fact:v1:d20bc96fa0df0a9e6221df443088d21ef3978c3facba88084ace97f7505462aa",
+        "source_fact:v1:f81a5333fe0de1ed7289538d03df10862cca7188c808f5bee84955c00970b7b9"
+      ],
+      "source_published_kst": "2026-10-28T09:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스",
+      "telegram_core_fact": "LG유플러스는 한국이콜랩과 AI 데이터센터(AIDC) 냉각 시스템 운영 최적화를 위한 업무협약(MOU)을 체결했다고 28일 밝혔다. LG유플러스[032640]가 한국이콜랩과 손잡고 인공지능(AI) 데이터센터 액체냉각 운영표준 개발에 나선다.",
+      "title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스"
+    },
     "source_fact:56e06dd0a22dca2150ea666f": {
       "first_seen_kst": "2026-10-17T19:47:24+09:00",
       "lanes": {
@@ -839433,6 +839997,38 @@
       "source_title": "애플, 티타늄·가변조리개 소재 美생산…핵심부품 '메이드 인 USA'",
       "telegram_core_fact": "페리먼은 아이폰 듀오를 포함한 애플 제품용 티타늄을 공급한다.",
       "title": "애플, 티타늄·가변조리개 소재 美생산…핵심부품 '메이드 인 USA'"
+    },
+    "source_fact:56e9283bf2a92b14d72b4f41": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
     },
     "source_fact:56e93e81a4e31032519d3b2c": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -848007,6 +848603,26 @@
       "source_title": "\"인도에 약 21조원 베팅\"…현대차그룹, 미래차 성장거점으로 키운다 [푸네 新공장 준공]",
       "telegram_core_fact": "현대차는 14일(현지시간) 인도 마하라슈트라주 탈레가온에서 열린 푸네 신공장 준공식에서 이 같은 내용의 중장기 투자계획을 발표했다. 현대차는 이날 준공한 푸네 신공장의 연간 생산능력을 현재 17만대에서 2028년 25만대, 2030년 32만대까지 확대할 계획이다.",
       "title": "\"인도에 약 21조원 베팅\"…현대차그룹, 미래차 성장거점으로 키운다 [푸네 新공장 준공]"
+    },
+    "source_fact:59d5e68d759a776a245d2869": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028044500527",
+      "source": "연합뉴스",
+      "source_body_digest": "790bc66103d9819afcb5a77f7e9b58776b57dd1dd00481e09e6bc72661fd1946",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d55a51f9c6f2e95e44a173aed55091e221ea93d4807c4a67147a52db71f688f",
+      "source_fact_identity": "source_facts:v1:c5d5ed599753ce31dd4728ba45e65e3c8db672e8de32173314b2932dd6d7c097",
+      "source_fact_keys": [
+        "source_fact:v1:ce438a07a89b8a33e7f0600c9a4691a5c0bf0815083ed9754869f8cf0ae8c9ea"
+      ],
+      "source_published_kst": "2026-10-28T09:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스",
+      "telegram_core_fact": "코스닥 상장사 안랩[053800]은 연결 기준 올해 3분기 영업이익이 109억원으로 지난해 동기보다 38.7% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스"
     },
     "source_fact:59d775c6c80d8233a036dc3b": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
@@ -877310,6 +877926,38 @@
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
     },
+    "source_fact:64df613f05bb6083a2ba888d": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
+    },
     "source_fact:64e451da662ddd9f42d6938f": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
@@ -899227,6 +899875,38 @@
       "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
       "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
     },
+    "source_fact:6ce7ddf7b12b80b38d9f234c": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
+    },
     "source_fact:6cea17d6c0f886e2a5bc9bac": {
       "first_seen_kst": "2026-10-19T20:10:12+09:00",
       "lanes": {
@@ -907016,6 +907696,30 @@
       ],
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
+    },
+    "source_fact:70161e4bc0feae064536dec9": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028032000017",
+      "source": "연합뉴스",
+      "source_body_digest": "b724096fb5e1a09a7cac9ca0131a450fc1cb463994567fb2ccc846c88d558036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ea2ccac1a633225a0793780cdbf6f64fc49d9f98f03bab43364b1ba9bdf05c",
+      "source_fact_keys": [
+        "source_fact:v1:0010a69f527217a32183908b9c4c9e78b13aca2b789ce846f64f0add4587e6b8",
+        "source_fact:v1:5474b113ede9b4649454035052aa12b53c50f2302de7afea2ad157e574fbe656",
+        "source_fact:v1:bb21063da69eb0e7ce9e73c7bdad5c50c44a6e92fc5758057121f3315791b62c",
+        "source_fact:v1:d20bc96fa0df0a9e6221df443088d21ef3978c3facba88084ace97f7505462aa",
+        "source_fact:v1:f81a5333fe0de1ed7289538d03df10862cca7188c808f5bee84955c00970b7b9"
+      ],
+      "source_published_kst": "2026-10-28T09:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스",
+      "telegram_core_fact": "LG유플러스는 한국이콜랩과 AI 데이터센터(AIDC) 냉각 시스템 운영 최적화를 위한 업무협약(MOU)을 체결했다고 28일 밝혔다. LG유플러스[032640]가 한국이콜랩과 손잡고 인공지능(AI) 데이터센터 액체냉각 운영표준 개발에 나선다.",
+      "title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스"
     },
     "source_fact:70184689e732de5285950a5f": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -918329,6 +919033,38 @@
       "source_title": "폼팩터, 테라다인 3억 달러 지분투자 유치..테스트 협력",
       "telegram_core_fact": "반도체 테스트·측정 기술 업체 폼팩터(FORM)가 자동화 테스트 장비 업체 테라다인(TER)으로부터 3억 달러 전략적 지분 투자를 유치하고, 차세대 반도체 테스트 분야에서 포괄적 기술 협력에 나선다고 13일 발표했다.",
       "title": "폼팩터, 테라다인 3억 달러 지분투자 유치..테스트 협력"
+    },
+    "source_fact:744e9a124e5d9c18ace6580b": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
     },
     "source_fact:744ffdd2521b442c8f9a5030": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
@@ -937594,6 +938330,38 @@
       "source_title": "트럼프 \"뉴욕주에 반도체 공장 2곳 신설\"…日 210억달러 투자",
       "telegram_core_fact": "트럼프 대통령은 14일(현지시간) 소셜미디어 트루스소셜 계정에 올린 글에서 \"하워드 러트닉 상무부 장관과 글로벌파운드리가 뉴욕주 말타에 2개의 대형 반도체 제조 공장을 신설하기로 합의했다\"며 \"미국 산업 기반을 부흥시키고 국가 안보를 강화할 역사적 무역 협상의 성과\"라고 밝혔다.",
       "title": "트럼프 \"뉴욕주에 반도체 공장 2곳 신설\"…日 210억달러 투자"
+    },
+    "source_fact:7b46862e360e771d00673b8b": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
     },
     "source_fact:7b48291d545da953d1da7653": {
       "first_seen_kst": "2026-10-11T15:29:02+09:00",
@@ -1012780,6 +1013548,38 @@
       "telegram_core_fact": "트럼프 미국 대통령이 우크라이나에 '에너지 휴전'을 압박하기 위해 무기 공급까지 차단할지 주목된다.",
       "title": "\"젤렌스키 패트리엇 다 썼다\"…트럼프, 무기차단해 종전 압박할까"
     },
+    "source_fact:985a31c3f7c2474e65176f67": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
+    },
     "source_fact:985e61d9b74767a469a3232f": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -1061564,6 +1062364,38 @@
       "telegram_core_fact": "올가을 미국 기술기업 기업공개(IPO) 일정이 사실상 앤트로픽 한 곳만 남은 가운데 앤트로픽이 이달 말 투자설명서(S-1)를 공개할 예정인 것으로 알려졌다.",
       "title": "\"美 신규상장 앤트로픽만 남았다…이달말 증권신고서 공개\" | 연합뉴스"
     },
+    "source_fact:aa448666635b2b993b22201d": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
+    },
     "source_fact:aa47bac7b2cb2aaa41d45442": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
       "lanes": {
@@ -1090913,6 +1091745,38 @@
       "telegram_core_fact": "금융당국이 SK하이닉스(000660)의 미국 반도체 자회사(손자회사) 솔리다임의 나스닥 상장 추진을 놓고 “중복상장에 해당한다”고 판단을 내린 가운데 실질적 제재 조치가 무엇일지 시장의 관심이 쏠리고 있다.",
       "title": "“솔리다임, 중복상장”…당국, 'SK 하닉 거래 정지' 규제 카드까지 만지작"
     },
+    "source_fact:b4a463701ccc80d8f97c17cb": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
+    },
     "source_fact:b4a578f4ed731e520cc59d95": {
       "first_seen_kst": "2026-10-19T17:39:56+09:00",
       "lanes": {
@@ -1110220,6 +1111084,38 @@
       "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
       "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
     },
+    "source_fact:bbf0bf3c260b0d7efb2724a2": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
+    },
     "source_fact:bbf15ecf7a655fa44806aaae": {
       "first_seen_kst": "2026-10-23T06:00:11+09:00",
       "lanes": {
@@ -1117554,6 +1118450,38 @@
       "source_title": "스테이블코인 이자 지급 규제 마련한 미국…디지털자산법 발의도 못한 한국 [크립토360]",
       "telegram_core_fact": "미국이 스테이블코인 규제법인 지니어스법(GENIUS Act)의 최종 시행규정을 확정하며 디지털자산 시장 양성화에 속도를 내고 있다.",
       "title": "스테이블코인 이자 지급 규제 마련한 미국…디지털자산법 발의도 못한 한국 [크립토360]"
+    },
+    "source_fact:bed23b527f95bd4f43055160": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
     },
     "source_fact:bed8c1e38fe3e2e2d16f6fa1": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
@@ -1171081,6 +1172009,30 @@
       "source_title": "[속보] 국제유가 하락⋯WTI 1.3%↓",
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI)는 전장보다 1.16달러(1.3%) 내린 배럴당 88.28달러에 장을 마감했다.",
       "title": "[속보] 국제유가 하락⋯WTI 1.3%↓"
+    },
+    "source_fact:d2811ddf6b901a140a5b1956": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028032000017",
+      "source": "연합뉴스",
+      "source_body_digest": "b724096fb5e1a09a7cac9ca0131a450fc1cb463994567fb2ccc846c88d558036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ea2ccac1a633225a0793780cdbf6f64fc49d9f98f03bab43364b1ba9bdf05c",
+      "source_fact_keys": [
+        "source_fact:v1:0010a69f527217a32183908b9c4c9e78b13aca2b789ce846f64f0add4587e6b8",
+        "source_fact:v1:5474b113ede9b4649454035052aa12b53c50f2302de7afea2ad157e574fbe656",
+        "source_fact:v1:bb21063da69eb0e7ce9e73c7bdad5c50c44a6e92fc5758057121f3315791b62c",
+        "source_fact:v1:d20bc96fa0df0a9e6221df443088d21ef3978c3facba88084ace97f7505462aa",
+        "source_fact:v1:f81a5333fe0de1ed7289538d03df10862cca7188c808f5bee84955c00970b7b9"
+      ],
+      "source_published_kst": "2026-10-28T09:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스",
+      "telegram_core_fact": "LG유플러스는 한국이콜랩과 AI 데이터센터(AIDC) 냉각 시스템 운영 최적화를 위한 업무협약(MOU)을 체결했다고 28일 밝혔다. LG유플러스[032640]가 한국이콜랩과 손잡고 인공지능(AI) 데이터센터 액체냉각 운영표준 개발에 나선다.",
+      "title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스"
     },
     "source_fact:d2838dfe2ed65e09a9f9c972": {
       "first_seen_kst": "2026-10-17T12:40:29+09:00",
@@ -1225273,6 +1226225,38 @@
       "telegram_core_fact": "러시아와 우크라이나의 상선 공격이 격화하면서 흑해가 호르무즈 해협을 제치고 올해 세계에서 선원 사망자가 가장 많이 발생한 해상 항로가 됐다.",
       "title": "\"호르무즈보다도 위험\"…흑해, 전세계 가장 치명적 항로 | 연합뉴스"
     },
+    "source_fact:e6af338370ab8dd4d0274270": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
+    },
     "source_fact:e6af9d8ff497ab6d4df86f7d": {
       "first_seen_kst": "2026-10-22T18:58:18+09:00",
       "lanes": {
@@ -1235879,6 +1236863,38 @@
       "source_title": "신형보다 더 뛴 구형 D램…AI발 공급난에 재활용까지",
       "telegram_core_fact": "삼성전자와 SK하이닉스, 마이크론 등이 부가가치가 높은 HBM과 서버용 D램 중심으로 생산 능력을 확대하면서 구형 D램 공급이 줄었다.",
       "title": "신형보다 더 뛴 구형 D램…AI발 공급난에 재활용까지"
+    },
+    "source_fact:eaaeb93c535fa3ad81e5c15d": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
     },
     "source_fact:eab12125f2888f9b43af3b2e": {
       "first_seen_kst": "2026-10-21T06:55:09+09:00",
@@ -1307134,6 +1308150,38 @@
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
     },
+    "title:18fcf3a4d93fcc6a2ac3291d": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.hankyung.com/article/202610289708P",
+      "source": "한국경제",
+      "source_body_digest": "80ae5e5f68edc4adf66bae85d168b2714323855eb44f331161a23a7e09e470b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8c4cb968fa1767d61e4c50380c8460fd5ca8f68465fa47e711f4010e44b8993",
+      "source_fact_keys": [
+        "source_fact:v1:05f05ee4dcee88039d7df8d88da1dfaf9842302a970b07ed179b7065080d34da",
+        "source_fact:v1:39363a9ed5019a58fde70e5d5c74f1da371070baa72828455261d7c78058a888",
+        "source_fact:v1:68af40487592de363aa3a43e6ed6adf411f9cd438b855a7e160a398fc61646f7",
+        "source_fact:v1:767050efcd2b5089e2fe335473380ffdb12424e24635849bd069c3a9592a3ed0",
+        "source_fact:v1:7cb8b6e71ff311778fbd29021a9c424e26badb452a98393e7bdc1c6a4397d2fc",
+        "source_fact:v1:946e68b2b4bc65a3eace105a4ba0647a72d423dd31b85cb716d6d753e511d904",
+        "source_fact:v1:b6a7934ef5406ff148fee9824f8c34f84bff649024b25df924dd3ee41d0960dd",
+        "source_fact:v1:b9b4f9276ad9e0c0ff08f1247957d61c1b1fe4f9c649685686c14b153373cd40",
+        "source_fact:v1:bad84f1305592dba88ff4b023398285abe9dd6b0afd63d2c120ac122132adfa1",
+        "source_fact:v1:bf94f82f359ae2019a88ee651e95baec23c230ff01a3a877d901e09d3e4d4bbe",
+        "source_fact:v1:cc7baa6ad6c28d62cc1e1fae40390279107983ab15ac2941e3ff07ef4271564a",
+        "source_fact:v1:d014dbdb4e1ab8364f159b63de77963bf03dd0ca46db7bbe0aac630f8e9f084d",
+        "source_fact:v1:f28355b8726e91d4664ce257fd3ecf280cfb29fc69fa88468161f807c09be79d"
+      ],
+      "source_published_kst": "2026-10-28T09:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입",
+      "telegram_core_fact": "이번 지정으로 이엔셀은 글로벌 제약사의 상업용 CAR-T 치료제 생산체계에서 세포처리 역할을 수행하게 됐으며, 그동안 축적한 세포처리 및 품질관리 역량을 바탕으로 글로벌 고객사와의 협력을 확대할 계획이다.",
+      "title": "이엔셀, 글로벌 제약사 CAR-T 상업용 CCPC 지정…임상 넘어 생산 밸류 체인 진입"
+    },
     "title:19039f6e0c9ddc7eabcc1087": {
       "first_seen_kst": "2026-10-20T08:05:53+09:00",
       "lanes": {
@@ -1361854,6 +1362902,30 @@
       "telegram_core_fact": "블룸버그통신에 따르면 월러 이사는 “경제지표가 예상대로 나온다면 인플레이션을 2% 목표치로 더 신속하게 되돌리기 위해 추가 금리 인상이 필요할 것으로 예상한다”고 말했다.",
       "title": "연준 무살렘·월러 \"추가 금리 인상 필요\"…시점엔 유연성"
     },
+    "title:6ceea8b8966294b7bab527fc": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028032000017",
+      "source": "연합뉴스",
+      "source_body_digest": "b724096fb5e1a09a7cac9ca0131a450fc1cb463994567fb2ccc846c88d558036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ea2ccac1a633225a0793780cdbf6f64fc49d9f98f03bab43364b1ba9bdf05c",
+      "source_fact_keys": [
+        "source_fact:v1:0010a69f527217a32183908b9c4c9e78b13aca2b789ce846f64f0add4587e6b8",
+        "source_fact:v1:5474b113ede9b4649454035052aa12b53c50f2302de7afea2ad157e574fbe656",
+        "source_fact:v1:bb21063da69eb0e7ce9e73c7bdad5c50c44a6e92fc5758057121f3315791b62c",
+        "source_fact:v1:d20bc96fa0df0a9e6221df443088d21ef3978c3facba88084ace97f7505462aa",
+        "source_fact:v1:f81a5333fe0de1ed7289538d03df10862cca7188c808f5bee84955c00970b7b9"
+      ],
+      "source_published_kst": "2026-10-28T09:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스",
+      "telegram_core_fact": "LG유플러스는 한국이콜랩과 AI 데이터센터(AIDC) 냉각 시스템 운영 최적화를 위한 업무협약(MOU)을 체결했다고 28일 밝혔다. LG유플러스[032640]가 한국이콜랩과 손잡고 인공지능(AI) 데이터센터 액체냉각 운영표준 개발에 나선다.",
+      "title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스"
+    },
     "title:6cf2be14be1fa3a83bb5d263": {
       "first_seen_kst": "2026-10-19T21:40:31+09:00",
       "lanes": {
@@ -1405950,6 +1407022,26 @@
       "source_published_kst": "2026-10-06T18:31+09:00",
       "title": "김정관 “전쟁 후 알래스카 LNG 전략적 가치 생겨”…‘상업성 검토’ 착수"
     },
+    "title:afbf7c6900345fb73dce8ffa": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028044500527",
+      "source": "연합뉴스",
+      "source_body_digest": "790bc66103d9819afcb5a77f7e9b58776b57dd1dd00481e09e6bc72661fd1946",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d55a51f9c6f2e95e44a173aed55091e221ea93d4807c4a67147a52db71f688f",
+      "source_fact_identity": "source_facts:v1:c5d5ed599753ce31dd4728ba45e65e3c8db672e8de32173314b2932dd6d7c097",
+      "source_fact_keys": [
+        "source_fact:v1:ce438a07a89b8a33e7f0600c9a4691a5c0bf0815083ed9754869f8cf0ae8c9ea"
+      ],
+      "source_published_kst": "2026-10-28T09:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스",
+      "telegram_core_fact": "코스닥 상장사 안랩[053800]은 연결 기준 올해 3분기 영업이익이 109억원으로 지난해 동기보다 38.7% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "안랩 3분기 영업이익 109억원…작년 동기 대비 38.7%↑ | 연합뉴스"
+    },
     "title:afc28252045483faff2ed78f": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -1417294,6 +1418386,26 @@
       "telegram_core_fact": "포스코그룹은 계열사를 통해 광산부터 배터리 소재 생산과 재활용까지 이어지는 공급망을 구축하고 있다.",
       "title": "'리사이클'로 광물사업 공급망 갖춘 포스코..순환경제 기여 어떻게[르포]"
     },
+    "title:c2b46dea05ea50d6bbe11696": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://www.mt.co.kr/index.php/thebio/2026/10/28/2026102809002677674",
+      "source": "머니투데이",
+      "source_body_digest": "a24b932f0a218f2273dc37ad18e474273b7307545fa0dda3a960909892cb6943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd52523f6cdbb6cd47ed3f0425362e22ff01aa4d36c3759fd927ef18198d95d7",
+      "source_fact_keys": [
+        "source_fact:v1:705e1d2c3537af2ef4fef0450bbf22961266b3a29976b9d4502e576bf220cf3d"
+      ],
+      "source_published_kst": "2026-10-28T09:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장",
+      "telegram_core_fact": "메디포스트는 위탁개발생산(CDMO) 신규 사업으로 '국산 화학조성배지 기반 AOF(Animal Origin Free) 줄기세포 세포은행(Master/Working Cell Bank) 구축 서비스'를 내달 출시한다고 28일 밝혔다.",
+      "title": "메디포스트, 국산 AOF 줄기세포은행 구축 서비스 출시...CDMO 확장"
+    },
     "title:c2bc45ccc56c1a737976de8e": {
       "first_seen_kst": "2026-10-25T08:54:30+09:00",
       "lanes": {
@@ -1425361,6 +1426473,24 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03224246645608984",
       "source": "이데일리",
       "title": "네이버 노조 \"본사도 통합교섭 나서라\"…지노위에 시정신청"
+    },
+    "title:cef67859b6e96349e11c0f47": {
+      "first_seen_kst": "2026-10-28T19:02:24+09:00",
+      "lanes": {
+        "live": "2026-10-28T19:02:24+09:00"
+      },
+      "last_seen_kst": "2026-10-28T19:02:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182645",
+      "source": "매일경제",
+      "source_body_digest": "43427b21c8a78afc14d7afdcfd8fc451546641bb3997af255f19da731c5867b3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "롯데마트, 내달 11일까지 '메가통큰' 행사…최대 60% 할인",
+      "telegram_core_fact": "상반기 메가통큰 행사 기간 매출은 전년보다 22% 증가했다.",
+      "title": "롯데마트, 내달 11일까지 '메가통큰' 행사…최대 60% 할인"
     },
     "title:cef6e96b57cf97354c15685b": {
       "first_seen_kst": "2026-10-17T10:06:46+09:00",
@@ -1456005,5 +1457135,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-28T18:25:12+09:00"
+  "updated_at_kst": "2026-10-28T19:02:24+09:00"
 }
