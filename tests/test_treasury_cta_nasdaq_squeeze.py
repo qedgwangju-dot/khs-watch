@@ -688,3 +688,83 @@ def test_fomc_evening_normal_poll_retries_dropped_primary_cron(monkeypatch):
         {"snapshot": snap},
     )
     assert premature is False
+
+
+def test_missed_monday_report_recovers_once_on_first_fresh_regular_poll(monkeypatch):
+    from datetime import datetime as RealDateTime
+    class FakeNow(RealDateTime):
+        @classmethod
+        def now(cls, tz=None):
+            return RealDateTime(2026, 10, 28, 21, 7, tzinfo=tz)
+
+    monkeypatch.setattr(equity, "datetime", FakeNow)
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snapshot: (True, []))
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "schedule")
+    monkeypatch.setenv("CTA_TRIGGER_SCHEDULE", "7,22,37,52 12-22 * * 1-5")
+    snap = {"snapshot": {
+        "checked_kst": "2026-10-28T21:07:00+09:00",
+        "cftc": {"report_date": "October 20, 2026"},
+        "yield10": {"date": "2026-10-27", "yield": 4.99},
+        "repo": {"SOFR": {"date": "2026-10-26"}},
+    }}
+    due, _, week, _ = equity._scheduled_due({"last_weekly_report_key": "2026-W42"}, snap)
+    assert due is True and week == "2026-W44"
+    repeated, _, _, _ = equity._scheduled_due({"last_weekly_report_key": "2026-W44"}, snap)
+    assert repeated is False
+
+
+def test_weekly_catchup_respects_original_monday_and_excludes_push_dispatch(monkeypatch):
+    from datetime import datetime as RealDateTime
+
+    class FakeNow(RealDateTime):
+        current_date = (2026, 10, 26, 7, 13)
+        @classmethod
+        def now(cls, tz=None):
+            return RealDateTime(*cls.current_date, tzinfo=tz)
+
+    monkeypatch.setattr(equity, "datetime", FakeNow)
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snapshot: (True, []))
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "schedule")
+    monkeypatch.setenv("CTA_TRIGGER_SCHEDULE", "13 22 * * 0")
+    snap = {"snapshot": {"checked_kst": "2026-10-26T07:13:00+09:00"}}
+    due, _, week, _ = equity._scheduled_due({"last_weekly_report_key": "2026-W42"}, snap)
+    assert due is True and week == "2026-W44"
+
+    FakeNow.current_date = (2026, 10, 28, 21, 7)
+    snap["snapshot"]["checked_kst"] = "2026-10-28T21:07:00+09:00"
+    monkeypatch.setenv("CTA_TRIGGER_SCHEDULE", "7,22,37,52 12-22 * * 1-5")
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "push")
+    assert equity._scheduled_due({"last_weekly_report_key": "2026-W42"}, snap)[0] is False
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "workflow_dispatch")
+    assert equity._scheduled_due({"last_weekly_report_key": "2026-W42"}, snap)[0] is False
+
+
+def test_weekly_catchup_fails_closed_on_stale_official_inputs(monkeypatch):
+    from datetime import datetime as RealDateTime
+    class FakeNow(RealDateTime):
+        @classmethod
+        def now(cls, tz=None):
+            return RealDateTime(2026, 10, 28, 21, 7, tzinfo=tz)
+
+    monkeypatch.setattr(equity, "datetime", FakeNow)
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "schedule")
+    monkeypatch.setenv("CTA_TRIGGER_SCHEDULE", "7,22,37,52 12-22 * * 1-5")
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snapshot: (False, ["CFTC stale"]))
+    snap = {"snapshot": {"checked_kst": "2026-10-28T21:07:00+09:00"}}
+    assert equity._scheduled_due({"last_weekly_report_key": "2026-W42"}, snap)[0] is False
+
+
+def test_late_weekly_report_title_is_not_falsely_monday(monkeypatch):
+    snap = _snapshot(z20=-1.1, zn_pct=0.2)
+    snap["checked_kst"] = "2026-10-28T21:07:00+09:00"
+    snap["cftc"]["report_date"] = "October 20, 2026"
+    snap["yield10"]["yield"] = 4.99
+    monkeypatch.setattr(equity, "_cross_asset_snapshot", lambda *_: {"label": "미확인"})
+    monkeypatch.setattr(equity, "_cross_asset_block", lambda *args, **kw: "• NQ 포지션 확인 보류\n")
+    monkeypatch.setattr(equity, "_equity_impact", lambda *_: ("중립", "스퀴즈 미확인"))
+    monkeypatch.setattr(equity.audited, "_repo_not_worse", lambda *_: (True, []))
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda *_: (True, []))
+    title, body = equity._compact_scheduled_report(snap, {}, ["월요일 정기점검 지연 복구"])
+    assert "주간 점검 지연 복구" in title
+    assert "월요일 07:00" not in title
+    assert len(title) + 2 + len(body) < 4096
