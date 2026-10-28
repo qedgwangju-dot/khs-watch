@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 23,
+    "material_items": 24,
     "new_material_items": 0,
-    "raw_items": 336,
+    "raw_items": 335,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -169,6 +169,16 @@
       "source": "Cyfirma",
       "title": "CYFIRMA Threat Advisory: Suspected DPRK Campaign staging PHP2Shell Targeting against Global PHP infrastructure - Cyfirma",
       "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNRHlqN1E0YjhJR0piUlBaazRCczBMZllvMEI2ZWgxOTR2S2U3aFd2ZldadUJreW5JS0FMQ0c0MTJLNU5vdmM2Q3dIRVpLeFMwSWg4NFdQaDcyWENLczlwa2tEbTloOTltejZNZXVhXzhmU3JOQVVaUVZQTUtEVWNibWZGSWRDX3o1TVNTY1BUc0cyeVF3S3h6dkNYQ0Y1UENuSl9PczhDMTl5aFBmb0pCdjNiOUxMQ0hvdGQ0cV9ncDdRR2lRT3VSNkRGM3BoMFNpWUFTWmVqVTZzeGM?oc=5",
+      "vendor": "PHP 재단"
+    },
+    "1538554fc5f002c1755dbe8b": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-28T21:45:12.590328+00:00",
+      "published_at": "2026-10-28T21:38:37+00:00",
+      "severity": 2,
+      "source": "Snyk",
+      "title": "PHP2Shell: Prepare for the Next Vulnerability - Snyk",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5fSzlWNmRtS21wMmcyMXRNVld5U2dnYmp2NkE5aW9tNEpTdjlOQ1EwalpEOW1Eek9OcVVCR28xbURDVTlzZ05kLXphUHlVSGhkbzVHOFA2b1BFT2dQR0pBdnNmZldsRWJZZzhZVGFndHJEUQ?oc=5",
       "vendor": "PHP 재단"
     },
     "15c723624ac5cd571c96a3b7": {
@@ -1564,5 +1574,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-29T06:22:08+09:00"
+  "updated_at_kst": "2026-10-29T06:45:12+09:00"
 }
