@@ -25,6 +25,8 @@ FOPLP_TRACK_VERSION = 1
 HBF_TRACK_VERSION = 1
 NVIDIA_HBM4_8HI_TRACK_VERSION = 1
 HYNIX_FINANCE_VERSION = 1
+HYNIX_Q3_2026_URL = 'https://news.skhynix.com/en/q3-2026-business-results/'
+HYNIX_2029_PRESS_URLS = ('https://www.yna.co.kr/view/AKR20261028057352003', 'https://www.yna.co.kr/view/AKR20261028057351003', 'https://m.newspim.com/news/view/20261028000342')
 HYNIX_FINANCE_GOV = "https://www.korea.kr/news/policyNewsView.do?newsId=148973781"
 HYNIX_FINANCE_PRESS = "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156785695"
 HYNIX_FINANCE_YNA = "https://www.yna.co.kr/view/AKR20261019072200003"
@@ -226,6 +228,9 @@ def local_period(text, published):
 
 
 def is_axis_text(text):
+    if re.search(r'SK\s*hynix|SK\s*하이닉스|하이닉스',text,re.I) and re.search(
+          r'\bLTA\b|장기\s*공급\s*계약|\bM15X\b|2029.{0,55}완판',text,re.I):
+        return True
     if (re.search(r'\bHBM4\b',text,re.I) and
         re.search(r'8[- ]?(?:Hi|high)|8\s*단',text,re.I) and
         re.search(r'NVIDIA|엔비디아',text,re.I)):
@@ -1913,6 +1918,69 @@ def parse_nvidia_hbm4_8hi(item,body):
     return rows
 
 
+
+def parse_skhynix_q3_2026_official(item, body):
+    """Accept issuer text; never infer 2029 firm sales, HBM-only CAPA or M17."""
+    if host(item.get('direct_link','')) not in ('news.skhynix.com','news.skhynix.co.kr'):
+        return []
+    t=re.sub(r'\s+',' ',body or '')
+    if not re.search(r'SK\s*hynix',t,re.I):
+        return []
+    signed=re.search(r'signed\s+LTAs\s+with\s+(\d{1,3})\s+major\s+customers',t,re.I)
+    cover=re.search(r'more\s+than\s+(\d{1,3})%\s+of\s+total\s+production\s+capacity\s+for\s+2027\s+and\s+2028',t,re.I)
+    rows=[]
+    asof=(item.get('published_at_kst') or '')[:10]
+    if signed and cover:
+        value={'signed_customer_count':int(signed[1]),'contracted_capacity_strictly_above_pct':int(cover[1]),
+               'contract_scope':'2027_2028_total_capacity_not_HBM_only',
+               'market_linked_price_bands':bool(re.search(r'market\s+conditions\s+within\s+a\s+price\s+range',t,re.I)),
+               'contract_duration_typical_years':5 if re.search(r'typically\s+five\s+years',t,re.I) else None,
+               'all_2029_production_signed':False,'deposits_amount_krw':None,'named_customers_confirmed':[]}
+        rows.append(make_record('skhynix_lta_2026',['skhynix','2027_2028'],value,
+            'clients,percent,stage','2027-2028',item,
+            '14개 주요 고객 장기공급계약·2027~2028년 전체 CAPA 50% 초과 체결',
+            as_of=asof,scope='issuer_signed_LTA_total_CAPA_not_full_2029_or_HBM_only'))
+    if (re.search(r'\bHBM4\b',t,re.I) and 'M15X' in t and
+        re.search(r'\bHBM3E\b',t,re.I) and re.search(r'321[- ]layer',t,re.I)):
+        vals={'hbm4_q4_ramp_expected':bool(re.search(r'HBM4\s+to\s+surpass\s+HBM3E',t,re.I)),
+              'hbm4_q4_overtake_actual':None,
+              'm15x_max_capacity_target_2026':bool(re.search(r'ramp\s+up\s+M15X\s+to\s+maximum\s+capacity\s+by\s+the\s+end\s+of\s+the\s+year',t,re.I)),
+              'm15x_max_capacity_achieved':None,
+              'nand_321layers_domestic_capacity_over_half_target':bool(re.search(
+                   r'321[- ]layer[^.]{0,125}more\s+than\s+half',t,re.I)),
+              'q3_revenue_krw':104_615_500_000_000 if re.search(r'104[.]6155\s+trillion\s+won',t,re.I) else None,
+              'q3_operating_profit_krw':83_333_800_000_000 if re.search(r'83[.]3338\s+trillion\s+won',t,re.I) else None,
+              'q3_net_profit_krw':39_775_600_000_000 if re.search(r'39[.]7756\s+trillion\s+won',t,re.I) else None,
+              'financial_period':'2026Q3_not_cumulative',
+              'hbm4_16hi_shipment_confirmed':False,'m17_equipment_move_in_confirmed':False,
+              'hbm4_yield_pct_confirmed':None}
+        rows.append(make_record('skhynix_hbm4_q4_2026',['skhynix','2026Q4'],vals,
+            'stage,KRW','2026Q4',item,'HBM4·M15X 주력 전환, 321단 낸드·3분기 단독 실적',
+            as_of=asof,scope='issuer_q4_target_not_16hi_or_M17_confirmed'))
+    return rows
+
+
+def parse_skhynix_2029_earnings_call_news(item,body):
+    if host(item.get('direct_link','')) not in ('yna.co.kr','newspim.com','m.newspim.com'):
+        return []
+    t=re.sub(r'\s+',' ',body or '')
+    if not (re.search(r'SK\s*하이닉스|SK\s*hynix',t,re.I) and
+            re.search(r'2029',t) and re.search(r'완판|솔드아웃|sold[- ]out',t,re.I)
+            and re.search(r'협의\s*중|negotiating',t,re.I)
+            and re.search(r'\bLTA\b|장기공급계약',t,re.I)):
+        return []
+    v={'outlook_year':2029,'firm_signed_for_all_output':False,
+       'includes_unsigned_customer_negotiations':True,
+       'requested_hbm_gt_2x_available_reported':bool(re.search(r'(?:두|2)\s*배.{0,100}공급|공급.{0,100}(?:두|2)\s*배',t,re.I)),
+       'hbm4_yield_target_raised_reported':bool(re.search(r'HBM4.{0,130}수율.{0,80}상향',t,re.I)),
+       'hbm4_yield_exact_pct':None}
+    r=make_record('skhynix_2029_outlook',['skhynix','2029'],v,'stage','2027-2029',item,
+        '2029년 완판 전망은 장기계약+협의 중 물량이며 전량 확정 계약 아님',
+        as_of=(item.get('published_at_kst') or '')[:10],scope='earnings_call_news_not_all_signed')
+    r['evidence']='reported'
+    return [r]
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -1933,6 +2001,8 @@ def parse_records(item, body):
     records.extend(parse_hbf_company_milestones(item, body))
     records.extend(parse_nvidia_hbm4_8hi(item, body))
     records.extend(parse_hynix_supplier_program(item, body))
+    records.extend(parse_skhynix_q3_2026_official(item, body))
+    records.extend(parse_skhynix_2029_earnings_call_news(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
         p = resolve_relative_years(original, published)
@@ -2107,6 +2177,22 @@ def comparison(old, new):
         if av is not None and bv is not None and int(av) != int(bv):
             reasons.append(f"가격 곡선 확인 세대 수 {int(av)}→{int(bv)}개")
         return reasons
+    if new['axis']=='skhynix_lta_2026':
+        res=[]
+        for field,label in (('signed_customer_count','LTA 고객 수'),('contracted_capacity_strictly_above_pct','전체 생산능력 계약 하한')):
+            if b.get(field) is not None and b.get(field)!=a.get(field):
+                res.append(f"{label} {a.get(field)}→{b[field]}")
+        if b.get('market_linked_price_bands') and not a.get('market_linked_price_bands'):
+            res.append('시황 연동 가격범위 계약 구조 신규 확인')
+        return res
+    if new['axis']=='skhynix_hbm4_q4_2026':
+        return [label+' 신규 확인' for k,label in (
+            ('hbm4_q4_overtake_actual','HBM4 출하·매출 HBM3E 실제 역전'),
+            ('m15x_max_capacity_achieved','M15X 최대 생산능력 실제 도달'))
+            if b.get(k) and not a.get(k)]
+    if new['axis']=='skhynix_2029_outlook':
+        return ([f"2029 수요전망 기준연도 {a.get('outlook_year')}→{b.get('outlook_year')}"] if a.get('outlook_year')!=b.get('outlook_year') else []) + (
+            ['HBM4 수율 목표 상향 보도 추가'] if b.get('hbm4_yield_target_raised_reported') and not a.get('hbm4_yield_target_raised_reported') else [])
     if new['axis'] == 'hynix_supplier_guarantee':
         result=[]
         if HYNIX_GUARANTEE_STAGE.get(b.get('stage'),0)>HYNIX_GUARANTEE_STAGE.get(a.get('stage'),0):
@@ -2714,6 +2800,35 @@ def update_state(state, records, now, seeds=None):
 
 def render(change, rate=None):
     r, old = change['record'], change.get('old')
+    if r['axis'] in ('skhynix_lta_2026','skhynix_hbm4_q4_2026','skhynix_2029_outlook'):
+        v=r['value']
+        if r['axis']=='skhynix_lta_2026':
+            title='SK하이닉스 2027~2028 장기공급계약'
+            detail=f"체결 주요 고객 {v['signed_customer_count']}곳 / 해당 연도 전체 CAPA {v['contracted_capacity_strictly_above_pct']}% 초과"
+            caution='전체 생산능력 비율이며 HBM만의 계약 비율이 아닙니다. 2029년 전량 계약·고객명·선수금 금액 미확인.'
+        elif r['axis']=='skhynix_hbm4_q4_2026':
+            title='SK하이닉스 HBM4·M15X·321단 낸드 전환'
+            parts=['HBM4 4분기 출하·매출 HBM3E 역전 목표','M15X 연말 최대 가동 목표',
+                   '321단 낸드 국내 생산능력 50% 초과 목표']
+            if v.get('q3_revenue_krw') is not None:
+                parts.append('2026년 3분기 단독 매출 '+f"{v['q3_revenue_krw']/1e12:.4f}조원"+' / 영업이익 '+
+                             f"{v['q3_operating_profit_krw']/1e12:.4f}조원" if v.get('q3_operating_profit_krw') is not None else '')
+            detail=' / '.join(x for x in parts if x)
+            caution='12단 출하 보도와 16단 양산 확정은 별개. M17 장비 반입·HBM4 양산 수율 백분율 미공개.'
+        else:
+            title='SK하이닉스 2029년 수요·HBM4 수율 보도'
+            detail='LTA 체결분과 협의 중 구매계획을 합친 사실상 완판 전망'
+            if v.get('requested_hbm_gt_2x_available_reported'):
+                detail+=' / 요청 물량 공급 가능량 2배 초과 보도'
+            if v.get('hbm4_yield_target_raised_reported'):
+                detail+=' / HBM4 수율 목표 상향 보도'
+            caution='전량 서명계약 아님. 회사 공식 실적자료와 별도의 컨퍼런스콜 보도이며 실제 수율 %는 미공개.'
+        url=html.escape(r['source_url'],quote=True)
+        return (f"<b>{html.escape(title)}</b>\n• 현재: {html.escape(detail)}\n"
+                f"• 변화: {html.escape(' / '.join(change['reasons']))}\n"
+                f"• 주의: {html.escape(caution)}\n"
+                f"• 기준일: {html.escape(r['as_of'])} · 근거: "
+                f"<a href=\"{url}\">원문</a>")
     names = {'rdimm_quote': '서버 RDIMM 공개 현물가격', 'ddr5_chip_quote': 'DDR5 16Gb 칩 현물가격', 'rdimm': '서버 DDR5 가격·프리미엄', 'hbm_config': 'HBM 칩 용량·적층 구성',
              'wafer_share': 'HBM 웨이퍼 배분 전망', 'bit_share': 'HBM 비트 공급 비중 전망',
              'carrier_cleaning': 'HBM 유리 지지판 세정 처리량', 'fab_stage': 'P5 Fab1 공급 일정',
@@ -3270,6 +3385,10 @@ def main():
         structured_hbf = (
             'hbf' in text or 'high bandwidth flash' in text or '고대역폭 플래시' in text
         )
+        structured_skhynix_3q = (
+            any(k in text for k in ('sk hynix','sk하이닉스','하이닉스'))
+            and any(k in text for k in ('lta','장기공급계약','2029','m15x'))
+        )
         structured_foplp = (
             any(k in text for k in ('foplp','fan-out panel-level','扇出型面板級封裝','패널형 팬아웃'))
             and any(k in text for k in ('tsmc','copos','pmic','rf','ai','hpc','pilot','양산','量產','量产','고객'))
@@ -3293,7 +3412,7 @@ def main():
                 )
             )
         )
-        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_nvidia_glass or structured_foplp or structured_hbf or structured_partner or structured_8hi:
+        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_nvidia_glass or structured_foplp or structured_hbf or structured_partner or structured_8hi or structured_skhynix_3q:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
@@ -3366,6 +3485,33 @@ def main():
         return [e for e in events if original_relevant(e.get('title', '') + ' ' + e.get('description', ''))]
     legacy.read_events = gather
     legacy.main()
+    # Direct official-source check: news-feed snippets omit the LTA denominator.
+    if now.date().isoformat()>='2026-10-28':
+        try:
+            raw=legacy.fetch(HYNIX_Q3_2026_URL,timeout=12).decode('utf-8',errors='replace')
+            body,_=read_document(raw)
+            item={'direct_link':HYNIX_Q3_2026_URL,'source':'SK하이닉스 뉴스룸',
+                  'published_at_kst':'2026-10-28T08:45:00+09:00',
+                  'title':'SK hynix 3Q26 Financial Results'}
+            rows=parse_skhynix_q3_2026_official(item,body)
+            if rows: observed.extend(rows)
+            else: coverage.append('SK하이닉스 공식 3Q26 LTA·HBM4 원문 구조 확인 보류')
+        except Exception as exc:
+            coverage.append('SK하이닉스 공식 3Q26 본문 조회 실패: '+type(exc).__name__+' / 다음 회차 재시도')
+        if 'skhynix_2029_outlook|skhynix|2029' not in ((initial.get('memory_axes') or {}).get('last_notified') or {}):
+            for url in HYNIX_2029_PRESS_URLS:
+                try:
+                    body,_=read_document(legacy.fetch(url,timeout=10).decode('utf-8',errors='replace'))
+                    item={'direct_link':url,'source':'컨퍼런스콜 보도',
+                          'published_at_kst':'2026-10-28T11:35:00+09:00',
+                          'title':'SK하이닉스 2029년까지 완판 보도'}
+                    rows=parse_skhynix_2029_earnings_call_news(item,body)
+                    if rows:
+                        observed.extend(rows)
+                        break
+                    coverage.append('2029년 협의 포함 보도 원문 확인 대기: '+host(url))
+                except Exception as exc:
+                    coverage.append('2029년 보도 조회 실패: '+host(url)+' '+type(exc).__name__)
     # Recheck only until the verified reported pair has been acknowledged.
     # A failed page read is a coverage gap; no HBM issuer revenue is invented.
     prior_pairs=(initial.get('memory_axes') or {}).get('last_notified') or {}
