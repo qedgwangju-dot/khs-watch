@@ -130,7 +130,7 @@ jobs:
           exit 1
 
       - name: Trigger one-time missed CTA weekly recovery
-        if: github.event_name == 'push' && github.event.head_commit.message == 'Run one-time missed CTA weekly recovery'
+        if: github.event_name == 'push' && github.event.head_commit.message == 'Retry one-time CTA weekly recovery after hermetic tests'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
