@@ -330,7 +330,8 @@ def update_retail_survey_overlay(*, repo_root=None, fetch=None, on_date=None):
         with status.open("a", encoding="utf-8") as writer:
             writer.write(
                 f"\n- 월간 개인 수급 공식검증: AAII {asset['period']} 주식 {asset['stocks_pct']:.2f}%"
-                f" / 현금 {asset['cash_pct']:.2f}% · Conference Board {confidence['period']}"
+                f" / 현금 {asset['cash_pct']:.2f}% · 원천 {asset.get('source_url', AAII_ALLOCATIONS_URL)}"
+                f" · 정밀도 {asset.get('source_precision', '확인 대기')} · Conference Board {confidence['period']}"
                 f" 신뢰 {confidence['confidence_index']:.1f} · 기존 대비"
                 f" {'신규 경보' if evaluated['alert'] else '초기 기준선 또는 관찰 업데이트'}\n"
             )
