@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-28T08:08:36+09:00",
+  "updated_at_kst": "2026-10-28T11:11:10+09:00",
   "correction_pending": false,
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
@@ -22,87 +22,91 @@
     "five_day_30y_bp": -12.0
   },
   "btc_etf": {
-    "date": "2026-10-26",
-    "total_usd_m": 110.3,
-    "status": "complete",
-    "reported_funds": 12,
-    "missing_funds": 0,
-    "missing_tickers": [],
-    "prev_date": "2026-10-23",
-    "prev_total_usd_m": -137.9,
-    "day_change_usd_m": 248.2,
-    "day_change_pct": 180.0,
+    "date": "2026-10-27",
+    "total_usd_m": 24.5,
+    "status": "partial",
+    "reported_funds": 11,
+    "missing_funds": 1,
+    "missing_tickers": [
+      "IBIT"
+    ],
+    "prev_date": "2026-10-26",
+    "prev_total_usd_m": 110.3,
+    "day_change_usd_m": -85.8,
+    "day_change_pct": -77.8,
     "source_latest_date": "2026-10-27",
-    "source_latest_status": "pending",
-    "pending_date": "2026-10-27",
-    "latest_recomputed_total_usd_m": 110.3,
+    "source_latest_status": "partial",
+    "pending_date": null,
+    "latest_recomputed_total_usd_m": 24.5,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
-    "last5_usd_m": -115.2,
+    "last5_usd_m": -113.9,
     "last5_dates": [
-      "2026-10-20",
       "2026-10-21",
       "2026-10-22",
       "2026-10-23",
-      "2026-10-26"
+      "2026-10-26",
+      "2026-10-27"
     ],
     "last5_values_usd_m": [
-      23.2,
       524.8,
       -635.6,
       -137.9,
-      110.3
+      110.3,
+      24.5
     ],
-    "prev5_usd_m": 363.7,
+    "prev5_usd_m": 211.2,
     "prev5_dates": [
-      "2026-10-13",
       "2026-10-14",
       "2026-10-15",
       "2026-10-16",
-      "2026-10-19"
+      "2026-10-19",
+      "2026-10-20"
     ],
     "prev5_values_usd_m": [
-      175.7,
       -261.4,
       5.1,
       -82.4,
-      526.7
+      526.7,
+      23.2
     ],
     "five_day_compare_valid": true,
-    "five_day_change_usd_m": -478.9,
+    "five_day_change_usd_m": -325.1,
     "five_day_change_pct": null,
     "five_day_direction": "순유입→순유출 전환",
     "windows": {
       "1m": {
         "valid": true,
-        "start": "2026-09-27",
-        "end": "2026-10-26",
-        "trading_days": 21,
-        "expected_trading_days": 21,
+        "start": "2026-09-28",
+        "end": "2026-10-27",
+        "trading_days": 22,
+        "expected_trading_days": 22,
         "missing_trading_dates": [],
         "unexpected_trading_dates": [],
         "validation_issue": "",
-        "partial_days": 0,
-        "partial_dates": [],
-        "value_usd_m": -254.7,
-        "prev_start": "2026-08-27",
-        "prev_end": "2026-09-26",
-        "prev_trading_days": 21,
+        "partial_days": 1,
+        "partial_dates": [
+          "2026-10-27"
+        ],
+        "value_usd_m": -230.2,
+        "prev_start": "2026-08-28",
+        "prev_end": "2026-09-27",
+        "prev_trading_days": 20,
         "prev_partial_days": 0,
         "prev_partial_dates": [],
-        "prev_expected_trading_days": 21,
+        "prev_expected_trading_days": 20,
         "prev_missing_trading_dates": [],
-        "prev_value_usd_m": 2956.3,
-        "change_usd_m": -3211.0,
+        "prev_value_usd_m": 2714.0,
+        "change_usd_m": -2944.2,
         "direction": "순유입→순유출 전환",
-        "status": "집계완료(수정가능)",
-        "avg_usd_m_per_session": -12.1,
-        "prev_avg_usd_m_per_session": 140.8
+        "status": "잠정",
+        "avg_usd_m_per_session": -10.5,
+        "prev_avg_usd_m_per_session": 135.7
       },
       "3m": {
         "valid": true,
-        "start": "2026-07-27",
-        "end": "2026-10-26",
+        "start": "2026-07-28",
+        "end": "2026-10-27",
         "trading_days": 65,
         "expected_trading_days": 65,
         "missing_trading_dates": [],
@@ -110,29 +114,39 @@
         "validation_issue": "",
         "partial_days": 2,
         "partial_dates": [
-          "2026-07-27",
-          "2026-08-07"
+          "2026-08-07",
+          "2026-10-27"
         ],
-        "value_usd_m": 5922.1,
-        "prev_start": "2026-04-27",
-        "prev_end": "2026-07-26",
+        "value_usd_m": 5958.2,
+        "prev_start": "2026-04-28",
+        "prev_end": "2026-07-27",
         "prev_trading_days": 62,
-        "prev_partial_days": 0,
-        "prev_partial_dates": [],
+        "prev_partial_days": 1,
+        "prev_partial_dates": [
+          "2026-07-27"
+        ],
         "prev_expected_trading_days": 62,
         "prev_missing_trading_dates": [],
-        "prev_value_usd_m": -7148.4,
-        "change_usd_m": 13070.5,
+        "prev_value_usd_m": -6896.8,
+        "change_usd_m": 12855.0,
         "direction": "순유출→순유입 전환",
         "status": "잠정",
-        "avg_usd_m_per_session": 91.1,
-        "prev_avg_usd_m_per_session": -115.3
+        "avg_usd_m_per_session": 91.7,
+        "prev_avg_usd_m_per_session": -111.2
       }
     },
     "history_source": "https://farside.co.uk/bitcoin-etf-flow-all-data/",
     "history_row_count": 1434,
     "history_error": "",
-    "provisional_history": []
+    "provisional_history": [
+      {
+        "observed_at_kst": "2026-10-28T11:11:10+09:00",
+        "total_usd_m": 24.5,
+        "reported_funds": 11,
+        "missing_funds": 1,
+        "coverage": "11/12"
+      }
+    ]
   },
   "sources": {
     "treasury_buyback_xml": "https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.xml",
