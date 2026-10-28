@@ -36,9 +36,15 @@ on:
         required: false
         default: "false"
         type: boolean
+      recover_fomc:
+        description: "Recover a missed FOMC pre-decision CTA report before 14:00 ET with fresh official data"
+        required: false
+        default: "false"
+        type: boolean
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   # Code-push verification must not cancel a scheduled production alert.
@@ -54,6 +60,7 @@ jobs:
       CTA_TRIGGER_EVENT: ${{ github.event_name }}
       CTA_TRIGGER_SCHEDULE: ${{ github.event.schedule || '' }}
       CTA_WEEKLY_RECOVERY: ${{ github.event_name == 'workflow_dispatch' && inputs.recover_weekly && 'true' || 'false' }}
+      CTA_FOMC_RECOVERY: ${{ github.event_name == 'workflow_dispatch' && inputs.recover_fomc && 'true' || 'false' }}
 
     steps:
       - uses: actions/checkout@v4
@@ -127,6 +134,15 @@ jobs:
             sleep $((attempt * 4))
           done
           exit 1
+
+      - name: Dispatch one-time missed 2026-10-28 FOMC notice
+        if: github.event_name == 'push' && github.event.head_commit.message == 'Activate one-time FOMC recovery 2026-10-28'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X POST "repos/${{ github.repository }}/actions/workflows/treasury-cta-squeeze-telegram-alert.yml/dispatches" \
+            -f ref=main -f 'inputs[recover_fomc]=true'
+          echo "cta_fomc_recovery_dispatch_accepted=true"
 
       - name: Send interpreted Telegram alert
         if: github.event_name != 'push' && hashFiles('out/treasury_cta_squeeze_alert.html') != ''
