@@ -8,7 +8,7 @@
     "errors": [],
     "material_items": 24,
     "new_material_items": 0,
-    "raw_items": 335,
+    "raw_items": 296,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -871,6 +871,16 @@
       "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQQVVWR2dJMXQ5N3plYkRnb1ZMdmVTWlNXS2JseFRMaTV5WmdZVkp3MVhyVk1FQ09XcFQzN3N3Rko3Vl9mTnF3dndiVVVaVU1Rem5Qdk1FU2VzcDJXZjhBeXhURUtRSFNIR3dOc0VadE14ZHQteGltSkd3VzhMbzNEcmhva2xteWVJM1N6T3J4eXc2VUU0VTE1LVhSNzFnRVRnMS12UDJoSFV3QXE5Mnl4VVVHcThUMmdvZEtvMmZ6RjBtVHo0RjdfNkg0UWlEaGN3Smc?oc=5",
       "vendor": "PHP 재단"
     },
+    "8a5622a3ce6323a967c86961": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-28T22:20:41.912482+00:00",
+      "published_at": "2026-10-28T21:38:37+00:00",
+      "severity": 2,
+      "source": "Snyk",
+      "title": "PHP2Shell: Prepare for the Next Vulnerability - Snyk",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9ObGtCeVJWdHM1T1Z0WlNuNHc4T1p2Nlhka0c1R0hhRm9NbUN0d3lwNFEtREUtalEyWFdrTmpTMDY0ZjZ5M2k3T1hKSzhNUHFfQnhQOXpwMFR3ZXB4UGFCLW1JcHoxNC02LWp5QzNzRDRBVTg?oc=5",
+      "vendor": "PHP 재단"
+    },
     "8be5131a3a38fe9b291b985c": {
       "category": "PHP 취약점 실전 악용 공식 확인",
       "first_seen_at": "2026-10-28T19:53:19.464622+00:00",
@@ -1574,5 +1584,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-29T06:45:12+09:00"
+  "updated_at_kst": "2026-10-29T07:20:41+09:00"
 }
