@@ -67,6 +67,7 @@ CONTRACT_FACE_USD = {
     "2Y": 200_000,
     "5Y": 100_000,
     "10Y": 100_000,
+    "ULTRA10Y": 100_000,
     "BOND": 100_000,
     "ULTRABOND": 100_000,
 }
@@ -879,6 +880,7 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, fx_date=None, co
         f"• CFTC {cftc_date}: 10Y LF 순 {_fmt_net_with_krw(treasury10.get('leveraged_net'), '10Y', fx)}"
         f" · NQ LF 순 {fmt_nq(nq.get('leveraged_net'), context='NQ 순포지션 명목')}",
         f"• NQ CFTC 주간: 순포지션 {net_wow_text} · 총숏 {short_wow_text}",
+        f"• NQ 총숏 잔고 {fmt_nq(nq.get('leveraged_short'), context='총숏 명목')}",
         hist_line,
     ]
     if hist_ok and hist.get("ten_year_complete"):
@@ -890,6 +892,11 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, fx_date=None, co
                 + (" · 10년 주간 최대 증가" if hist.get("gross_short_weekly_record_10y") and week_change > 0 else "")
             )
     rows.append(price_line)
+    if cross.get("nq_price_fresh") and fx is not None:
+        rows.append(
+            f"• NQ 원화 명목 참조: CFTC 주간 {cftc_date}, CME 정산 {raw_price_date} · "
+            "실제 투자금·증거금·손익이 아닌 별도 시점 보조 계산"
+        )
     if not cross.get("nq_crosscheck_match"):
         rows.append("• NQ 확인 제한: 공식 최신 이력 검증 대기 · 스퀴즈 단계 자동 차단")
 
@@ -1137,7 +1144,8 @@ def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str]
         f"2Y {_fmt_net_with_krw((cftc.get('2Y') or {}).get('leveraged_net'),'2Y',fx)} · "
         f"5Y {_fmt_net_with_krw((cftc.get('5Y') or {}).get('leveraged_net'),'5Y',fx)}",
         f"• 10Y {_fmt_net_with_krw((cftc.get('10Y') or {}).get('leveraged_net'),'10Y',fx)} · "
-        f"Bond {_fmt_net_with_krw((cftc.get('BOND') or {}).get('leveraged_net'),'BOND',fx)} · "
+        f"Ultra10Y {_fmt_net_with_krw((cftc.get('ULTRA10Y') or {}).get('leveraged_net'),'ULTRA10Y',fx)}",
+        f"• Bond {_fmt_net_with_krw((cftc.get('BOND') or {}).get('leveraged_net'),'BOND',fx)} · "
         f"Ultra {_fmt_net_with_krw((cftc.get('ULTRABOND') or {}).get('leveraged_net'),'ULTRABOND',fx)}",
         "",
         _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=True).rstrip(),
@@ -1359,10 +1367,11 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
         "",
         "<b>📍 포지션은 얼마나 쌓였나</b>",
         f"• CFTC {cftc_date}: 2Y {_fmt_net_with_krw((cftc.get('2Y') or {}).get('leveraged_net'), '2Y', fx)} · 5Y {_fmt_net_with_krw((cftc.get('5Y') or {}).get('leveraged_net'), '5Y', fx)}",
-        f"• 10Y {_fmt_net_with_krw((cftc.get('10Y') or {}).get('leveraged_net'), '10Y', fx)} · Bond {_fmt_net_with_krw((cftc.get('BOND') or {}).get('leveraged_net'), 'BOND', fx)} · Ultra {_fmt_net_with_krw((cftc.get('ULTRABOND') or {}).get('leveraged_net'), 'ULTRABOND', fx)}",
+        f"• 10Y {_fmt_net_with_krw((cftc.get('10Y') or {}).get('leveraged_net'), '10Y', fx)} · Ultra10Y {_fmt_net_with_krw((cftc.get('ULTRA10Y') or {}).get('leveraged_net'), 'ULTRA10Y', fx)}",
+        f"• Bond {_fmt_net_with_krw((cftc.get('BOND') or {}).get('leveraged_net'), 'BOND', fx)} · Ultra {_fmt_net_with_krw((cftc.get('ULTRABOND') or {}).get('leveraged_net'), 'ULTRABOND', fx)}",
         f"• NY Fed {(repo.get('SOFR') or {}).get('date','날짜 확인 불가')} · SOFR {(repo.get('SOFR') or {}).get('rate', '확인 불가')}% · BGCR {(repo.get('BGCR') or {}).get('rate', '확인 불가')}% · TGCR {(repo.get('TGCR') or {}).get('rate', '확인 불가')}%",
         f"• 원화는 계약수×CME 계약 액면×환율 기준 ({fx_date or '환율일 확인 불가'}, 1달러={float(fx):,.2f}원)" if fx is not None else "• 원화 환산: 환율 확인 불가",
-        "※ 2Y는 계약당 20만달러, 5Y·10Y·Bond·Ultra는 10만달러 액면 기준. 실제 투입자금·손익·DV01이 아닙니다.",
+        "※ 국채 2Y는 계약당 20만달러, 그 외 만기는 10만달러 액면. NQ는 CME 정산지수×20달러. CFTC 잔고일과 정산일이 다른 보조 명목이며 실제 투자금·증거금·손익·DV01이 아닙니다.",
         "",
         cross_block,
     ]
