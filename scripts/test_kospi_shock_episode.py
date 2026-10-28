@@ -726,13 +726,41 @@ import tempfile as _surge_tempfile
 from pathlib import Path as _surge_Path
 from kospi_shock_episode_watch import flow_surge_candidates as _surge_scan
 
+# A real 11:50 alert used numerically aligned program values whose source
+# publication times were unavailable.  The market event remains valid, but
+# those lookup times must not raise its confidence.
+import json as _surge_json
+_surge_fixture_path = _surge_Path(__file__).resolve().parent.parent / "tests/fixtures/kospi_surge_program_time_20261028.json"
+_surge_fixture = _surge_json.loads(_surge_fixture_path.read_text(encoding="utf-8"))
+_surge_real = next(c for c in _surge_scan(_surge_fixture["rows"], _surge_fixture["now_ts"],
+                                          _surge_fixture["session_open_ts"])
+                   if c["actor"] == "외국인")
+assert _surge_real["spot"] == 338 and _surge_real["futures"] == 625, _surge_real
+assert _surge_real["program"]["valid"] and _surge_real["program"]["delta"] == 42225, _surge_real
+assert _surge_real["confidence"] == "중간", _surge_real
+_surge_render = Watch("unused", [], "", False).build_flow_surge_alert(_surge_real, _surge_fixture["now_ts"])
+assert "원천 공표시각 미확인" in _surge_render and "확신도 상향 보류" in _surge_render, _surge_render
+assert _surge_real["program"]["source_time_verified"] is False, _surge_real
+# Missing evidence at either endpoint must not silently become a verified time.
+import copy as _surge_copy
+for _unverified_index in (2, 3):
+    _partial = _surge_copy.deepcopy(_surge_fixture["rows"])
+    _partial[2]["프로그램"]["source_time_verified"] = True
+    _partial[3]["프로그램"]["source_time_verified"] = True
+    _partial[_unverified_index]["프로그램"].pop("source_time_verified")
+    _partial_c = next(c for c in _surge_scan(_partial, _surge_fixture["now_ts"],
+                                               _surge_fixture["session_open_ts"])
+                      if c["actor"] == "외국인")
+    assert _partial_c["confidence"] == "중간" and not _partial_c["program"]["source_time_verified"], _partial_c
+print("kospi_20261028_program_unverified_time_holds_confidence=true")
+
 def _surge_row(ts, spot, future, program):
     return {
         "ts":ts,
         "현물":{"sample_ts":ts,"외국인":spot,"기관":-spot*.3,"개인":-spot*.7},
         "선물":{"sample_ts":ts,"외국인":future,"기관":-future*.4,"개인":-future*.6},
         "프로그램":{"sample_ts":ts,"전체":program,"차익":program*.4,
-                    "비차익":program*.6,"표본시차초":3.0},
+                    "비차익":program*.6,"표본시차초":3.0,"source_time_verified":True},
     }
 
 _surge_rows=[
