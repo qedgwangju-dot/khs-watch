@@ -293,6 +293,7 @@ def run(*, validate_only=False, getter=get_official, state_path=STATE, now=None,
               "errors": errors, "events": [x["key"] for x in events],
               "telegram_sent": False}
     if validate_only:
+        result["status"] = "validated" if len(observations) == 2 else "source_withheld"
         return result
     if not observations:
         result["status"] = "source_withheld"
