@@ -564,8 +564,15 @@ def threshold_bucket(y: float) -> str:
 
 
 def nyfed_rate(url: str) -> dict | None:
+    """Latest official NY Fed funding rate and previous distinct effective day.
+
+    A 15-minute CTA polling snapshot is not a previous trading day's rate.
+    Retrieve official history so stale CTA state after an outage cannot
+    conceal an actual one-session repo funding shock.
+    """
+    history_url = url.replace("/last/1.json", "/last/4.json")
     try:
-        data = fetch_json(url)
+        data = fetch_json(history_url)
     except Exception:
         return None
     records = []
@@ -576,19 +583,36 @@ def nyfed_rate(url: str) -> dict | None:
                 break
     if not records and isinstance(data, list):
         records = data
-    if not records:
+    parsed: dict[str, dict] = {}
+    for row in records:
+        if not isinstance(row, dict):
+            continue
+        rate = row.get("percentRate")
+        if rate is None:
+            rate = row.get("rate") or row.get("Rate")
+        trade_date = row.get("effectiveDate") or row.get("date") or row.get("businessDate")
+        if not trade_date or rate is None:
+            continue
+        try:
+            parsed[str(trade_date)[:10]] = {
+                "date": str(trade_date)[:10],
+                "rate": float(rate),
+                "volume_bn": row.get("volumeInBillions") or row.get("volume"),
+            }
+        except (TypeError, ValueError):
+            continue
+    if not parsed:
         return None
-    row = records[0]
-    if not isinstance(row, dict):
-        return None
-    rate = row.get("percentRate") or row.get("rate") or row.get("Rate")
-    date = row.get("effectiveDate") or row.get("date") or row.get("businessDate")
-    volume = row.get("volumeInBillions") or row.get("volume")
-    try:
-        rate = float(rate)
-    except Exception:
-        return None
-    return {"date": str(date or ""), "rate": rate, "volume_bn": volume}
+    dates = sorted(parsed)
+    latest = dict(parsed[dates[-1]])
+    if len(dates) >= 2:
+        prior = parsed[dates[-2]]
+        latest["previous_date"] = prior["date"]
+        latest["previous_rate"] = prior["rate"]
+        latest["change_bp"] = round((latest["rate"] - prior["rate"]) * 100.0, 6)
+    else:
+        latest["change_bp"] = None
+    return latest
 
 
 def repo_snapshot() -> dict:
