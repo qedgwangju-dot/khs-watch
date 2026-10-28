@@ -41,6 +41,8 @@ SEARCHES = [
     ('"台積電" "嘉科" (P1 OR P2 OR P3 OR P4 OR P5 OR P6 OR P7 OR P8 OR P9 OR P10)', "zh"),
     ('"TSMC" "Chiayi" "advanced packaging"', "en"),
     ('"TSMC" CoWoS capacity advanced packaging', "en"),
+    ('"TSMC" "CoWoS" "price hike" 2026', "en"),
+    ('"台積電" "CoWoS" "喊漲" "2成"', "zh"),
     ('"TSMC" SoIC capacity advanced packaging', "en"),
     ('"TSMC" advanced packaging tester bottleneck shortage', "en"),
     ('"TSMC" CoWoS substrate HBM bottleneck shortage', "en"),
@@ -55,6 +57,7 @@ TRUSTED = (
     "reuters", "bloomberg", "cna.com.tw", "中央社",
     "ec.ltn.com.tw", "stock.ltn.com.tw", "自由時報", "自由財經",
     "trendforce", "digitimes", "udn.com", "經濟日報",
+    "ctee.com.tw", "工商時報", "money-link.com.tw", "時報新聞",
 )
 
 EVIDENCE_RANK = {
@@ -211,7 +214,7 @@ def evidence_state(source, url):
         return "research"
     if any(x in text for x in ("reuters", "bloomberg", "cna.com.tw", "中央社")):
         return "top_tier_report"
-    if any(x in text for x in ("ec.ltn.com.tw", "stock.ltn.com.tw", "自由時報", "自由財經", "trendforce", "digitimes")):
+    if any(x in text for x in ("ec.ltn.com.tw", "stock.ltn.com.tw", "自由時報", "自由財經", "trendforce", "digitimes", "ctee.com.tw", "工商時報", "money-link.com.tw", "時報新聞")):
         return "supply_chain_report"
     return "reported"
 
@@ -448,6 +451,44 @@ def monthly_capacity(text, tech):
     return None
 
 
+def extract_cowos_price_report(event, text):
+    """Keep CoWoS package price reports separate from official contract prices."""
+    low = str(text or "").lower()
+    source_url = event.get("direct_link") or ""
+    source_name = event.get("source") or ""
+    if "cowos" not in low:
+        return {}
+    if not any(x in (source_name + " " + source_url).lower() for x in (
+        "工商時報", "ctee.com.tw", "money-link.com.tw", "trendforce",
+        "reuters", "bloomberg", "digitimes", "tsmc.com",
+    )):
+        return {}
+    hit = False
+    for m in re.finditer(r"cowos", low):
+        window = low[max(0, m.start() - 110):min(len(low), m.end() + 170)]
+        if not re.search(r"price|pricing|quote|hike|increase|報價|报价|調漲|调涨|喊漲|喊涨|漲價|涨价", window, re.I):
+            continue
+        if re.search(r"(?<!\d)20\s*%|2\s*成", window, re.I):
+            hit = True
+            break
+    if not hit:
+        return {}
+    explicit_band = bool(re.search(
+        r"10\s*%\s*(?:to|[-–~至])\s*20\s*%|1\s*(?:至|到|[-–~])\s*2\s*成",
+        low, re.I
+    ))
+    official = bool(evidence_state(source_name, source_url) == "official" and
+                    re.search(r"officially announced|confirmed a price|正式公告|正式宣布|已公告", low, re.I))
+    return {
+        "cowos_price_upper_pct": 20,
+        "cowos_price_lower_pct": 10 if explicit_band else None,
+        "cowos_price_stage": "confirmed" if official else "reported_discussion",
+        "cowos_price_source_url": source_url,
+        "cowos_price_source_name": source_name,
+        "cowos_price_as_of": event.get("published_at_kst") or "",
+    }
+
+
 def bottleneck_status(text, key):
     terms = {
         "tester": ("tester", "test equipment", "테스터", "測試機", "测试机"),
@@ -591,6 +632,14 @@ def extract_patch(event):
         patch["soic_capacity_wpm"] = soic
         patch["soic_capacity_evidence_state"] = ev
 
+    price_report = extract_cowos_price_report(event, base + " " + page)
+    if price_report:
+        patch.update(price_report)
+        # Analyst targets in the pricing story are NOT verified current WPM.
+        if re.search(r"法人推估|法人預估|analyst estimates|analysts estimate|industry estimates", low, re.I):
+            patch.pop("cowos_capacity_wpm", None)
+            patch.pop("cowos_capacity_evidence_state", None)
+
     b = {}
     for key in ("tester", "substrate", "hbm", "cowos"):
         status = bottleneck_status(text, key)
@@ -624,6 +673,20 @@ def merge_state(current, patch):
     merge_evidenced_scalar(out, patch, "chiayi_additional_fabs", "fab_count_evidence_state")
     merge_evidenced_scalar(out, patch, "cowos_capacity_wpm", "cowos_capacity_evidence_state")
     merge_evidenced_scalar(out, patch, "soic_capacity_wpm", "soic_capacity_evidence_state")
+
+    if patch.get("cowos_price_upper_pct") is not None:
+        incoming = patch.get("cowos_price_stage")
+        previous = out.get("cowos_price_stage")
+        if not (previous == "confirmed" and incoming != "confirmed"):
+            newer = str(patch.get("cowos_price_as_of") or "") >= str(out.get("cowos_price_as_of") or "")
+            if incoming == "confirmed" or newer:
+                for k in (
+                    "cowos_price_upper_pct", "cowos_price_lower_pct",
+                    "cowos_price_stage", "cowos_price_source_url",
+                    "cowos_price_source_name", "cowos_price_as_of",
+                ):
+                    if k in patch:
+                        out[k] = patch[k]
 
     if patch.get("chiayi_phase3_status"):
         new = patch["chiayi_phase3_status"]
@@ -701,6 +764,15 @@ def merge_state(current, patch):
 
 def material_changes(old, new):
     reasons = []
+    if new.get("cowos_price_upper_pct") is not None:
+        stage_changed = old.get("cowos_price_stage") != new.get("cowos_price_stage")
+        price_changed = old.get("cowos_price_upper_pct") != new.get("cowos_price_upper_pct")
+        lower_changed = old.get("cowos_price_lower_pct") != new.get("cowos_price_lower_pct")
+        if price_changed or stage_changed or (lower_changed and old.get("cowos_price_upper_pct") is not None):
+            lo, hi = new.get("cowos_price_lower_pct"), new["cowos_price_upper_pct"]
+            band = f"{int(lo)}~{int(hi)}%" if lo is not None else f"최대 {int(hi)}%"
+            phase = "TSMC 공식 가격 인상 확정" if new.get("cowos_price_stage") == "confirmed" else "인상 추진 보도·공식 미확정"
+            reasons.append(f"CoWoS 가격 {band} {phase}")
     if old.get("chiayi_total_fabs") != new.get("chiayi_total_fabs") and new.get("chiayi_total_fabs") is not None:
         reasons.append(f"자이 첨단패키징 공장 총계 {old.get('chiayi_total_fabs','미확인')}→{new['chiayi_total_fabs']}개")
     if old.get("chiayi_additional_fabs") != new.get("chiayi_additional_fabs") and new.get("chiayi_additional_fabs") is not None:
@@ -847,6 +919,14 @@ def package_alert_text(new, reasons, checked):
         lines.append(f"• CoWoS 월 생산능력: {int(new['cowos_capacity_wpm']):,}장")
     if new.get("soic_capacity_wpm"):
         lines.append(f"• SoIC 월 생산능력: {int(new['soic_capacity_wpm']):,}장")
+    if new.get("cowos_price_upper_pct") is not None:
+        lo, hi = new.get("cowos_price_lower_pct"), int(new["cowos_price_upper_pct"])
+        band = f"{int(lo)}~{hi}%" if lo is not None else f"최대 {hi}%"
+        stage = "TSMC 공식 확정" if new.get("cowos_price_stage") == "confirmed" else "공급망·언론 보도, TSMC 공식 확정 전"
+        lines.append("• CoWoS 패키징 가격: <b>" + band + "</b> · " + stage)
+        if new.get("cowos_price_source_url"):
+            lines.append("• 가격 출처: " + href(new["cowos_price_source_url"], "보도 근거"))
+        lines.append("• 주의: 2026년 월 13만 장·2027년 월 20만 장은 업계 추정·목표로 실제 가동 실적과 다름")
     changed_fabs = [r for r in reasons if re.match(r"P\d+ ", r)]
     if changed_fabs:
         lines.append("• 공장별 단계: " + html.escape(" · ".join(changed_fabs)))
