@@ -39,6 +39,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   # Code-push verification must not cancel a scheduled production alert.
@@ -127,6 +128,16 @@ jobs:
             sleep $((attempt * 4))
           done
           exit 1
+
+      - name: Trigger one-time missed CTA weekly recovery
+        if: github.event_name == 'push' && github.event.head_commit.message == 'Run one-time missed CTA weekly recovery'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/actions/workflows/treasury-cta-squeeze-telegram-alert.yml/dispatches" --input - <<'JSON'
+          {"ref":"main","inputs":{"recover_weekly":"true"}}
+          JSON
+          echo "cta_missed_weekly_recovery_dispatch_accepted=true"
 
       - name: Send interpreted Telegram alert
         if: github.event_name != 'push' && hashFiles('out/treasury_cta_squeeze_alert.html') != ''
