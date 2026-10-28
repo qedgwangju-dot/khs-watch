@@ -7,12 +7,15 @@ from zoneinfo import ZoneInfo
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from boj_policy_lead_alert import (
+    QUERIES,
     Item,
     build,
     classify,
     enrich_decision_context,
     extract_rate,
     extract_vote,
+    friendly_market_error,
+    next_official_check,
     signal_signature,
     should_alert,
     verified_event_signals,
@@ -31,6 +34,26 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             published=dt.datetime(2026, 9, 18, 12 + hour, tzinfo=KST),
             description=desc,
         )
+
+    def test_october_meeting_schedule_and_queries_are_current(self):
+        queries = " ".join(QUERIES)
+        self.assertNotIn("1.25 Reuters", queries)
+        self.assertNotIn("7-2 Asada Sato", queries)
+        self.assertIn("rate decision", queries)
+        next_check = next_official_check(
+            dt.datetime(2026, 10, 29, 12, 0, tzinfo=KST)
+        )
+        self.assertIn("10월 30일", next_check)
+        self.assertIn("15:30", next_check)
+
+    def test_market_errors_never_expose_long_provider_urls(self):
+        raw = (
+            "RuntimeError: https://query1.finance.yahoo.com/v8/finance/chart: "
+            "event reference too old: 603m"
+        )
+        friendly = friendly_market_error(raw)
+        self.assertNotIn("http", friendly)
+        self.assertIn("기준시점", friendly)
 
     def test_reuters_october_19_parliament_remarks_not_press_conference(self):
         item = Item(
