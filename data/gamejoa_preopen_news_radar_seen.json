@@ -35213,6 +35213,35 @@
       "telegram_core_fact": "소식통들에 따르면 CXMT가 생산하는 HBM3E의 수율, 즉 생산라인에서 나온 칩 가운데 규격을 충족하는 제품의 비율은 약 20~30%에 불과함에도 생산을 추진한다.",
       "title": "“중국 CXMT, HBM3E 수율 20~30%에도 생산 강행”"
     },
+    "core:463947679aeda2111365b78f": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
+    },
     "core:464e2cd68adafef86c3506c6": {
       "first_seen_kst": "2026-10-23T13:50:43+09:00",
       "lanes": {
@@ -57675,6 +57704,34 @@
       "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
       "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
     },
+    "core:77af36cc73e8a8a380c3fcbc": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
+    },
     "core:77bd6b682ac827eeeb53775c": {
       "first_seen_kst": "2026-10-16T21:12:58+09:00",
       "lanes": {
@@ -62990,6 +63047,26 @@
       "telegram_core_fact": "애즈위메이크 회계기록에는 2024년 캐시카우를 상대로 잡은 4억8000만원 상당의 용역매출 기록이 있는 것으로 파악됐다.",
       "title": "[단독]'사기의혹' 애즈위메이크...'가짜매출 기업' 지분 산 뒤 매출 폭증"
     },
+    "core:8160028c96a1d9b6e025d0e2": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845045",
+      "source": "뉴시스",
+      "source_body_digest": "7e698dee7721360fb3a96a129c590d6b2b046127b2aed877dd88134f3b77b8e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:108a00aec413fba56444a136a2e3d5f1a532e57a450dfeac931247439a5ed9b8",
+      "source_fact_keys": [
+        "source_fact:v1:4ae510929bef6b833b77087e479caeb6db0ca1409f57ddb97090a826366f6b8f"
+      ],
+      "source_published_kst": "2026-10-28T15:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)",
+      "telegram_core_fact": "은행과 비은행 계열사의 균형 있는 성장으로 지난해 최대를 기록한 연간 순이익(2조5112억원)을 3분기 만에 초과 달성했다는 설명이다.",
+      "title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)"
+    },
     "core:8165834d88651bce6e96bd57": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
       "lanes": {
@@ -65347,6 +65424,24 @@
       "source_title": "제주시 용담·오라동 일대 단수…최소 4700여가구 불편",
       "telegram_core_fact": "이 여파로 정수장으로 물이 제대로 공급되지 못하면서 오후 3시께부터 용담1·2동과 오라동 일대 수돗물이 끊겼다. 제주시 도심 일대 수원지 펌프가 고장 나 4700곳이 넘는 수용가에 수돗물 공급이 중단됐다.",
       "title": "제주시 용담·오라동 일대 단수…최소 4700여가구 불편"
+    },
+    "core:8642bf0344abc48368608b58": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845082",
+      "source": "뉴시스",
+      "source_body_digest": "56534d60cc58621257756c339bf1c57a930ef66358379a6906286302d6d7f51d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T16:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성물산 패션부문, 3Q 영업익 200억…전년比 66.7% 증가",
+      "telegram_core_fact": "삼성물산 패션부문은 올해 3기 매출 4980억, 영업이익 200억원을 기록했다고 28일 공시했다.",
+      "title": "삼성물산 패션부문, 3Q 영업익 200억…전년比 66.7% 증가"
     },
     "core:864de991f3cf85e8e4498755": {
       "first_seen_kst": "2026-10-10T16:38:23+09:00",
@@ -79054,6 +79149,33 @@
       "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
       "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
     },
+    "core:a3119b5e4a8264b8d6ebe566": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "core:a3154353091dfe8a000afb6a": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -81439,6 +81561,27 @@
       "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
       "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
       "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
+    },
+    "core:a8943eabaf642ecb3a04671c": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028145400057",
+      "source": "연합뉴스",
+      "source_body_digest": "6702e2a8ea2d5e94438bfc33c859e48bda1a485ec16d3490d20d59341d814b5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa5fa2b3b585b155a8839752ee03757ddb1fa05f3f0525c02dec494be4294df4",
+      "source_fact_keys": [
+        "source_fact:v1:2fc055128f29f1332c99a046e8b54196b063d22b860c4a8ddb6dbd7d5122512d",
+        "source_fact:v1:ba747a19b5fb06506930c5ced66722b72de54c7bbe7df166e70eb160ca274ba1"
+      ],
+      "source_published_kst": "2026-10-28T16:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스",
+      "telegram_core_fact": "울주군의회에 따르면 온산읍 로컬브랜딩 거점시설의 경우 전체 11개 공간 가운데 1개만 낙찰돼 나머지 공간 입찰을 반복하고, 언양 상권활성화센터는 현재 사용되지 않는 것으로 조사됐다.",
+      "title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스"
     },
     "core:a8bf3fec7dd21875d5221dec": {
       "first_seen_kst": "2026-10-13T11:53:28+09:00",
@@ -138763,28 +138906,22 @@
     "event:8776416201492283eb273eac": {
       "first_seen_kst": "2026-10-28T12:04:13+09:00",
       "lanes": {
-        "live": "2026-10-28T19:38:50+09:00"
+        "live": "2026-10-29T05:21:25+09:00"
       },
-      "last_seen_kst": "2026-10-28T19:38:50+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12187991",
-      "source": "매일경제",
-      "source_body_digest": "5292fb260e93ae5a4cc1284d55c07fb27d22215675bc8da1ab5bcd40bf03d857",
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845045",
+      "source": "뉴시스",
+      "source_body_digest": "7e698dee7721360fb3a96a129c590d6b2b046127b2aed877dd88134f3b77b8e8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:684fe6696c5854a6bdb7d0ab970b7b18ddf7004ad9c95e411b3dc361c8a39ff2",
+      "source_fact_identity": "source_facts:v1:108a00aec413fba56444a136a2e3d5f1a532e57a450dfeac931247439a5ed9b8",
       "source_fact_keys": [
-        "source_fact:v1:155ad8ac3127184cb33ad1d9f4d85cc2685fec158af2e8824524aa202f35c563",
-        "source_fact:v1:18afce061a9a8f9508a8409850d5a77657752059204499b1c09ca521421031e0",
-        "source_fact:v1:456d4c4e44a6e37468bc9db7ed90704c150b9be6b52075b86461e103df554288",
-        "source_fact:v1:493c428e13072a55618e297e99fb738b8a8dffb467da4be35467333dff3d5844",
-        "source_fact:v1:aae7355577eaab8fd479a2aae98ab38bc350ca490a20de9804ad4cc432472248",
-        "source_fact:v1:bab21e6c98100f248590a3325e037719a6df0da93282f06a256785c1c9022961",
-        "source_fact:v1:fb499511ad416590ef3541c03631fc8b3e6dff2a744044d30803628dd6cd1782"
+        "source_fact:v1:4ae510929bef6b833b77087e479caeb6db0ca1409f57ddb97090a826366f6b8f"
       ],
-      "source_published_kst": "2026-10-28T07:15+09:00",
+      "source_published_kst": "2026-10-28T15:59+09:00",
       "source_supply_terms": {},
-      "source_title": "“앤트로픽 효과는 찐이네” 이틀째 AI 랠리…나스닥 1.2% 상승, 보잉 11% 급락 [월가월부]",
-      "telegram_core_fact": "개별 종목에서는 보잉이 약 11% 급락했다. 앤트로픽의 기업공개(IPO) 추진을 계기로 되살아난 AI 투자 열기가 이틀째 이어지면서 반도체와 데이터센터 관련주가 상승을 주도했다.",
-      "title": "“앤트로픽 효과는 찐이네” 이틀째 AI 랠리…나스닥 1.2% 상승, 보잉 11% 급락 [월가월부]"
+      "source_title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)",
+      "telegram_core_fact": "은행과 비은행 계열사의 균형 있는 성장으로 지난해 최대를 기록한 연간 순이익(2조5112억원)을 3분기 만에 초과 달성했다는 설명이다.",
+      "title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)"
     },
     "event:877b8321fdf5fa4b2b73a7f8": {
       "first_seen_kst": "2026-09-28T17:51:03+09:00",
@@ -142594,25 +142731,31 @@
     "event:ad3a4c9651bca2cdf7fc6ec0": {
       "first_seen_kst": "2026-10-28T08:44:02+09:00",
       "lanes": {
-        "live": "2026-10-28T20:54:15+09:00"
+        "live": "2026-10-29T05:21:25+09:00"
       },
-      "last_seen_kst": "2026-10-28T20:54:15+09:00",
-      "link": "https://www.hankyung.com/article/202610281647i",
-      "source": "한국경제",
-      "source_body_digest": "41e361f3b80c322f4b22de641fe09398b95839ffc5ccb6c2c7231e12be69a59d",
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4961a04c81a4c0b264794bec4db3a46520d6877bb37ad81b3daeae06f51c9ddc",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
       "source_fact_keys": [
-        "source_fact:v1:00c7b94f29d72ff8b2ffff30e992119383ea5ca0a5d88dc177698543ffeefb70",
-        "source_fact:v1:06d9f6f937f8700675f75d21dfb28dd4c397d97faa08485ff3fdbb92205b6795",
-        "source_fact:v1:0774eb1179caecfaf1f2b9043f5ba352162970c803641e8dc0ec44e46dcd7e0c",
-        "source_fact:v1:4dd725d2bdaa08b762776a22d900ed69e6762f7f1f71ec864594f2ab4a759fb8"
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
       ],
-      "source_published_kst": "2026-10-28T19:34+09:00",
+      "source_published_kst": "2026-10-28T10:14+09:00",
       "source_supply_terms": {},
-      "source_title": "中CXMT, HBM3E 생산 강행…수율 25%,양산 빠르면 2028년?",
-      "telegram_core_fact": "중국의 창신메모리(CXMT)가 인공지능(AI) 프로세서에 사용되는 고대역폭 메모리(HBM) 칩인 HBM3E 생산을 시작할 계획이다.",
-      "title": "中CXMT, HBM3E 생산 강행…수율 25%,양산 빠르면 2028년?"
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
     },
     "event:ad3fd9c7aa9202967054f0fc": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
@@ -143860,24 +144003,25 @@
     "event:bb149554d07f23b51db2f33c": {
       "first_seen_kst": "2026-10-28T20:54:15+09:00",
       "lanes": {
-        "live": "2026-10-28T20:54:15+09:00"
+        "live": "2026-10-29T05:21:25+09:00"
       },
-      "last_seen_kst": "2026-10-28T20:54:15+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/28/2026102719551632247",
-      "source": "머니투데이",
-      "source_body_digest": "9dc6442e4dd0de3ff5e68cb0fd81673401a51a62c297599b70c416d8d455a77a",
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12188151",
+      "source": "매일경제",
+      "source_body_digest": "5499b242b17d347fb4f4e3ad92bfa1fd3cec57913c57efc0ed739fe41b82fed7",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ddd192decd9b393b2c392f5cef2ec616d2610fb0379088bc80e9da22278d3e52",
+      "source_fact_identity": "source_facts:v1:10a8aa5bdbd8a0f4a52cdea252afbbafd40c92f97771c426af0ead4f1f7c1048",
       "source_fact_keys": [
-        "source_fact:v1:7eb63800405981ed05204e0cb1899c0766ba24b8e2e4910cc097b6347ebc405e",
-        "source_fact:v1:7fb70a49e1eb92b8c9f06eba22f6a9a0a3f1660a9e1c8bbe4e630d291df9c578",
-        "source_fact:v1:f8cb51c29b9d25f8a521c0d5eab12d13086c09815bafd12709d6d9dd9443349a"
+        "source_fact:v1:31e64b8d3ab99e4b4048f8380d180c958e4ac468593f9ba1b3372e9a5687458d",
+        "source_fact:v1:6814b6ac203cfe76eb84d87ae674b61c1b6617927d9450e84cab477fe8766825",
+        "source_fact:v1:ab292c65086d6b0226c0a433e1122cb6a80ab8ed385fc1689c93f530b8578d99",
+        "source_fact:v1:dd931fc3f193475981944c5dadb02c73a512af90291a87931c03e53417bf8c66"
       ],
-      "source_published_kst": "2026-10-28T04:00+09:00",
+      "source_published_kst": "2026-10-28T09:58+09:00",
       "source_supply_terms": {},
-      "source_title": "\"안전한 AI 가치 지킨다\" 앤트로픽 창업자 7명 '슈퍼 의결권' 명시",
-      "telegram_core_fact": "앤트로픽은 구글 클라우드, 아마존웹서비스 등 빅테크와 앞으로 7~10년 동안 최소 4500억달러(약 600조원) 이상의 취소 불가능한 장기 컴퓨팅 자원 이용계약을 했다는 사실도 밝혔다. 앤트로픽은 매출액이 급증했고 매출총이익률 또한 올해 상반기 기준 85.4%를 기록했다고 설명했다.",
-      "title": "\"안전한 AI 가치 지킨다\" 앤트로픽 창업자 7명 '슈퍼 의결권' 명시"
+      "source_title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동",
+      "telegram_core_fact": "코스피가 4.80% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동"
     },
     "event:bb3a6fb2c44fc7700eef6853": {
       "first_seen_kst": "2026-10-18T08:07:27+09:00",
@@ -171257,6 +171401,26 @@
       "telegram_core_fact": "2026년 상반기 재무자료 확인이 가능한 관리종목 지정 59개사 중 88.1%에 달하는 52개사가 자본잠식이 없는 것으로 나타났다. 이 중 11개사는 매출 증가와 함께 영업이익 및 영업활동현금흐름 흑자를 모두 달성했다.",
       "title": "‘시총 미달 63곳’ 상폐 한숨 돌렸지만...코스닥 관리종목 88% 자본잠식 ‘無’"
     },
+    "fact:25be3f7dbfb6a15e9f09c311": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845045",
+      "source": "뉴시스",
+      "source_body_digest": "7e698dee7721360fb3a96a129c590d6b2b046127b2aed877dd88134f3b77b8e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:108a00aec413fba56444a136a2e3d5f1a532e57a450dfeac931247439a5ed9b8",
+      "source_fact_keys": [
+        "source_fact:v1:4ae510929bef6b833b77087e479caeb6db0ca1409f57ddb97090a826366f6b8f"
+      ],
+      "source_published_kst": "2026-10-28T15:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)",
+      "telegram_core_fact": "은행과 비은행 계열사의 균형 있는 성장으로 지난해 최대를 기록한 연간 순이익(2조5112억원)을 3분기 만에 초과 달성했다는 설명이다.",
+      "title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)"
+    },
     "fact:25bfade2e9e7dac6e8fba366": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
       "lanes": {
@@ -178157,6 +178321,27 @@
       ],
       "source_published_kst": "2026-10-06T10:17+09:00",
       "title": "[바이오스냅] JW중외제약, 당뇨병약 '엠파가드' 임상 3상 결과 발표 | 연합뉴스"
+    },
+    "fact:343a5b90caa1a7d1ff0e41c3": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028145400057",
+      "source": "연합뉴스",
+      "source_body_digest": "6702e2a8ea2d5e94438bfc33c859e48bda1a485ec16d3490d20d59341d814b5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa5fa2b3b585b155a8839752ee03757ddb1fa05f3f0525c02dec494be4294df4",
+      "source_fact_keys": [
+        "source_fact:v1:2fc055128f29f1332c99a046e8b54196b063d22b860c4a8ddb6dbd7d5122512d",
+        "source_fact:v1:ba747a19b5fb06506930c5ced66722b72de54c7bbe7df166e70eb160ca274ba1"
+      ],
+      "source_published_kst": "2026-10-28T16:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스",
+      "telegram_core_fact": "울주군의회에 따르면 온산읍 로컬브랜딩 거점시설의 경우 전체 11개 공간 가운데 1개만 낙찰돼 나머지 공간 입찰을 반복하고, 언양 상권활성화센터는 현재 사용되지 않는 것으로 조사됐다.",
+      "title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스"
     },
     "fact:34488c6ed2a1b1fbe92902a6": {
       "first_seen_kst": "2026-10-28T12:33:19+09:00",
@@ -197635,6 +197820,35 @@
       "telegram_core_fact": "\"기업 관계자들이 수사 대상이 되면서 투자 유치 대화를 나누기도 미안하다\"며 \"이런 일이 반복되면 강원도의 투자 환경이 악화할 수 있다\"고 우려했다. 우상호 강원도지사는 26일 강릉 인공지능(AI) 데이터센터 유치와 관련한 잇단 고발에 대해 \"기업 유치를 정쟁의 대상으로 삼는 것은 바람직하지 않다\"며 유감을 표했다.",
       "title": "우상호 \"AI 데이터센터 유치 고발전 유감…투자 환경 악화 우려\" | 연합뉴스"
     },
+    "fact:5c0ebb5000cd3ba8dfbaec2f": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
+    },
     "fact:5c142d919352bd37ecffbea0": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
       "lanes": {
@@ -213689,6 +213903,29 @@
       "telegram_core_fact": "한진은 소상공인 물류서비스 지원사업에서 기존 풀필먼트 이용이 어려운 소규모 물량 취급 업체와 수산물 등 보관이 어려운 화물을 고려해 3차 모집부터 '방문택배' 부문을 신설했다.",
       "title": "한진, 중소상공인 물류 지원사업 3개 수행…수출·배송비 부담 완화"
     },
+    "fact:7b5489e13d35fdc2ee27430f": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12188151",
+      "source": "매일경제",
+      "source_body_digest": "5499b242b17d347fb4f4e3ad92bfa1fd3cec57913c57efc0ed739fe41b82fed7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10a8aa5bdbd8a0f4a52cdea252afbbafd40c92f97771c426af0ead4f1f7c1048",
+      "source_fact_keys": [
+        "source_fact:v1:31e64b8d3ab99e4b4048f8380d180c958e4ac468593f9ba1b3372e9a5687458d",
+        "source_fact:v1:6814b6ac203cfe76eb84d87ae674b61c1b6617927d9450e84cab477fe8766825",
+        "source_fact:v1:ab292c65086d6b0226c0a433e1122cb6a80ab8ed385fc1689c93f530b8578d99",
+        "source_fact:v1:dd931fc3f193475981944c5dadb02c73a512af90291a87931c03e53417bf8c66"
+      ],
+      "source_published_kst": "2026-10-28T09:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동",
+      "telegram_core_fact": "코스피가 4.80% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동"
+    },
     "fact:7b55f358ce480d360bffdd3a": {
       "first_seen_kst": "2026-10-28T22:37:35+09:00",
       "lanes": {
@@ -216215,6 +216452,34 @@
       ],
       "source_published_kst": "2026-10-07T06:06+09:00",
       "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
+    },
+    "fact:80b2cf3edb896dd5a699a351": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "fact:8109717c49d558317c1ec838": {
       "first_seen_kst": "2026-10-14T23:19:07+09:00",
@@ -280747,6 +281012,33 @@
       "telegram_core_fact": "미국서 인공지능(AI) 모델 '클로드' 개발사인 앤트로픽이 기업공개(IPO) 신청서를 냈다는 소식에 투자 심리가 살아난 것으로 보인다.",
       "title": "코스피, '앤트로픽 IPO' 훈풍에 4%대 급반등…코스닥도 3%↑(종합) | 연합뉴스"
     },
+    "fact:f8be99983fc717294bd849d8": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "fact:f8c2ae53550499cbfe01ff63": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -288588,6 +288880,34 @@
       "source_title": "[올댓차이나] 홍콩 증시, 中 정책 기대에 2거래일째 상승세… H주 0.18%↑",
       "telegram_core_fact": "H주 지수도 오전 10시59분 시점에 13.68 포인트, 0.18% 상승한 7769.93을 기록했다. 홍콩 증시 상장 중국기업주 중심의 H주 지수는 전장보다 21.43 포인트, 0.28% 오른 7777.68로 거래를 시작했다.",
       "title": "[올댓차이나] 홍콩 증시, 中 정책 기대에 2거래일째 상승세… H주 0.18%↑"
+    },
+    "link:05f30a6a7658313b6d3e5308": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "link:05fe4126ef9af814d584f552": {
       "first_seen_kst": "2026-10-12T17:38:53+09:00",
@@ -297636,6 +297956,27 @@
       "source_title": "한전 \"전기요금 인상 필요\" 정부 \"인하\"…재무구조 개선 관건",
       "telegram_core_fact": "반면 중동전쟁으로 인한 물가 부담과 민생, 산업 경쟁력 등을 고려하면 정부가 전기요금 인상을 결정하기도 쉽지 않다.",
       "title": "한전 \"전기요금 인상 필요\" 정부 \"인하\"…재무구조 개선 관건"
+    },
+    "link:13c8c9a40e2408dcd7b80658": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028145400057",
+      "source": "연합뉴스",
+      "source_body_digest": "6702e2a8ea2d5e94438bfc33c859e48bda1a485ec16d3490d20d59341d814b5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa5fa2b3b585b155a8839752ee03757ddb1fa05f3f0525c02dec494be4294df4",
+      "source_fact_keys": [
+        "source_fact:v1:2fc055128f29f1332c99a046e8b54196b063d22b860c4a8ddb6dbd7d5122512d",
+        "source_fact:v1:ba747a19b5fb06506930c5ced66722b72de54c7bbe7df166e70eb160ca274ba1"
+      ],
+      "source_published_kst": "2026-10-28T16:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스",
+      "telegram_core_fact": "울주군의회에 따르면 온산읍 로컬브랜딩 거점시설의 경우 전체 11개 공간 가운데 1개만 낙찰돼 나머지 공간 입찰을 반복하고, 언양 상권활성화센터는 현재 사용되지 않는 것으로 조사됐다.",
+      "title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스"
     },
     "link:13cc59d9105c1c42a7ead337": {
       "first_seen_kst": "2026-10-22T06:35:46+09:00",
@@ -360138,6 +360479,26 @@
       "telegram_core_fact": "포르투갈축구협회(FPF)는 지난 19일(현지시간) 징계위원회가 대표팀 소집 기간 중 무단이탈한 호날두의 혐의를 인정해 30일간의 출전정지 징계와 제재금 255유로(약 38만원)를 부과했다고 밝혔다.",
       "title": "\"하루 8억 버는 호날두인데\"…대표팀 무단이탈 벌금 고작 '38만원'"
     },
+    "link:7212eed4a40f409f829a639d": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845045",
+      "source": "뉴시스",
+      "source_body_digest": "7e698dee7721360fb3a96a129c590d6b2b046127b2aed877dd88134f3b77b8e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:108a00aec413fba56444a136a2e3d5f1a532e57a450dfeac931247439a5ed9b8",
+      "source_fact_keys": [
+        "source_fact:v1:4ae510929bef6b833b77087e479caeb6db0ca1409f57ddb97090a826366f6b8f"
+      ],
+      "source_published_kst": "2026-10-28T15:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)",
+      "telegram_core_fact": "은행과 비은행 계열사의 균형 있는 성장으로 지난해 최대를 기록한 연간 순이익(2조5112억원)을 3분기 만에 초과 달성했다는 설명이다.",
+      "title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)"
+    },
     "link:7218866075464837f81c3c56": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
       "lanes": {
@@ -369539,6 +369900,29 @@
       "telegram_core_fact": "[파이낸셜뉴스] 홍라희 리움미술관 명예관장이 이재용 삼성전자 회장에게 삼성전자 지분 0.17%를 증여한다. 삼성전자는 13일 홍 명예관장이 보유한 삼성전자 주식 1115만8000주(0.17%)를 이 회장에게 증여한다고 공시했다.",
       "title": "홍라희 명예관장, 이재용 회장에 삼성전자 지분 0.17% 증여..증여세 1.56조원대 추산"
     },
+    "link:8059d926c18e354d2f323518": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12188151",
+      "source": "매일경제",
+      "source_body_digest": "5499b242b17d347fb4f4e3ad92bfa1fd3cec57913c57efc0ed739fe41b82fed7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10a8aa5bdbd8a0f4a52cdea252afbbafd40c92f97771c426af0ead4f1f7c1048",
+      "source_fact_keys": [
+        "source_fact:v1:31e64b8d3ab99e4b4048f8380d180c958e4ac468593f9ba1b3372e9a5687458d",
+        "source_fact:v1:6814b6ac203cfe76eb84d87ae674b61c1b6617927d9450e84cab477fe8766825",
+        "source_fact:v1:ab292c65086d6b0226c0a433e1122cb6a80ab8ed385fc1689c93f530b8578d99",
+        "source_fact:v1:dd931fc3f193475981944c5dadb02c73a512af90291a87931c03e53417bf8c66"
+      ],
+      "source_published_kst": "2026-10-28T09:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동",
+      "telegram_core_fact": "코스피가 4.80% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동"
+    },
     "link:805f6eaceeaa5215853dfb7a": {
       "first_seen_kst": "2026-10-19T22:37:34+09:00",
       "lanes": {
@@ -369725,6 +370109,24 @@
       "telegram_core_fact": "노을은 운영자금 조달을 위해 지구홀딩스를 대상으로 27억5000만원 제3자배정 유상증자를 결정했다고 23일 공시했다. 신주 발행가액은 2500원으로 납입일은 다음 달 9일이다.",
       "title": "노을, 28억 규모 제3자배정 유상증자 결정"
     },
+    "link:80a6908bf0bfe32bc94d9fb3": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845082",
+      "source": "뉴시스",
+      "source_body_digest": "56534d60cc58621257756c339bf1c57a930ef66358379a6906286302d6d7f51d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T16:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성물산 패션부문, 3Q 영업익 200억…전년比 66.7% 증가",
+      "telegram_core_fact": "삼성물산 패션부문은 올해 3기 매출 4980억, 영업이익 200억원을 기록했다고 28일 공시했다.",
+      "title": "삼성물산 패션부문, 3Q 영업익 200억…전년比 66.7% 증가"
+    },
     "link:80ae710f1ba5e8f8ec830bfc": {
       "first_seen_kst": "2026-10-26T14:29:10+09:00",
       "lanes": {
@@ -369880,6 +370282,35 @@
       "source_title": "반도체 소부장 ETF에 한 달 새 2200억…개인 매수세 이어져",
       "telegram_core_fact": "한국거래소에 따르면 신한자산운용의 'SOL AI반도체소부장', 'SOL 반도체전공정', 'SOL 반도체후공정' ETF 3종의 최근 1개월 개인 순매수액이 전날 기준 총 2231억원으로 집계됐다.",
       "title": "반도체 소부장 ETF에 한 달 새 2200억…개인 매수세 이어져"
+    },
+    "link:80d2ac97c3a685032693d3d1": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
     },
     "link:80d86ecfe6f71ec90b9c6f17": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
@@ -437873,6 +438304,33 @@
       "telegram_core_fact": "그렉 브록먼 오픈AI 공동창업자 겸 사장은 “이번 협력은 고객이 이미 사용하고 있는 개발 환경에서 우리의 가장 뛰어난 모델과 코덱스를 이용할 수 있게 하는 중요한 진전”이라며 “에이전트 생태계를 함께 확장하며 고객에게 첨단 AI를 활용하는 더 많은 선택권을 제공할 것”이라고 밝혔다.",
       "title": "구글 클라우드, 오픈AI 모델 품는다…기업용 AI 선택지 확대"
     },
+    "link:e8cc8616863d808e634c09df": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "link:e8db76e7b2fc0c8807d18e87": {
       "first_seen_kst": "2026-10-23T18:13:19+09:00",
       "lanes": {
@@ -456589,6 +457047,33 @@
       "source": "머니투데이",
       "title": "中·홍콩 휴장 속 日 증시 3% 급등…마이크론 실적호재[Asia마감]"
     },
+    "original:06fe5d2ba9e1f66ab2c2d72f": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "original:070975aa519a3a217e6ad946": {
       "first_seen_kst": "2026-10-23T04:06:25+09:00",
       "lanes": {
@@ -464124,6 +464609,27 @@
       "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
       "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
       "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
+    },
+    "original:12c91170c7b4d498d106f017": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028145400057",
+      "source": "연합뉴스",
+      "source_body_digest": "6702e2a8ea2d5e94438bfc33c859e48bda1a485ec16d3490d20d59341d814b5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa5fa2b3b585b155a8839752ee03757ddb1fa05f3f0525c02dec494be4294df4",
+      "source_fact_keys": [
+        "source_fact:v1:2fc055128f29f1332c99a046e8b54196b063d22b860c4a8ddb6dbd7d5122512d",
+        "source_fact:v1:ba747a19b5fb06506930c5ced66722b72de54c7bbe7df166e70eb160ca274ba1"
+      ],
+      "source_published_kst": "2026-10-28T16:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스",
+      "telegram_core_fact": "울주군의회에 따르면 온산읍 로컬브랜딩 거점시설의 경우 전체 11개 공간 가운데 1개만 낙찰돼 나머지 공간 입찰을 반복하고, 언양 상권활성화센터는 현재 사용되지 않는 것으로 조사됐다.",
+      "title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스"
     },
     "original:12cd39b2848e7bd9fb22f9eb": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
@@ -511990,6 +512496,24 @@
       "source": "뉴시스",
       "title": "한은 \"10월 소비자물가 3% 내외의 높은 수준 이어갈 것\""
     },
+    "original:5c8748e752eff7728a3bf456": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845082",
+      "source": "뉴시스",
+      "source_body_digest": "56534d60cc58621257756c339bf1c57a930ef66358379a6906286302d6d7f51d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T16:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성물산 패션부문, 3Q 영업익 200억…전년比 66.7% 증가",
+      "telegram_core_fact": "삼성물산 패션부문은 올해 3기 매출 4980억, 영업이익 200억원을 기록했다고 28일 공시했다.",
+      "title": "삼성물산 패션부문, 3Q 영업익 200억…전년比 66.7% 증가"
+    },
     "original:5c8a1663113958a3703b7198": {
       "first_seen_kst": "2026-10-20T22:42:26+09:00",
       "lanes": {
@@ -534283,6 +534807,29 @@
       "source_published_kst": "2026-10-03T10:31+09:00",
       "title": "JYP, 중대 결정...파격 '보이콧' 선언"
     },
+    "original:7ed610ff3f9cd90cf4150471": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12188151",
+      "source": "매일경제",
+      "source_body_digest": "5499b242b17d347fb4f4e3ad92bfa1fd3cec57913c57efc0ed739fe41b82fed7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10a8aa5bdbd8a0f4a52cdea252afbbafd40c92f97771c426af0ead4f1f7c1048",
+      "source_fact_keys": [
+        "source_fact:v1:31e64b8d3ab99e4b4048f8380d180c958e4ac468593f9ba1b3372e9a5687458d",
+        "source_fact:v1:6814b6ac203cfe76eb84d87ae674b61c1b6617927d9450e84cab477fe8766825",
+        "source_fact:v1:ab292c65086d6b0226c0a433e1122cb6a80ab8ed385fc1689c93f530b8578d99",
+        "source_fact:v1:dd931fc3f193475981944c5dadb02c73a512af90291a87931c03e53417bf8c66"
+      ],
+      "source_published_kst": "2026-10-28T09:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동",
+      "telegram_core_fact": "코스피가 4.80% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동"
+    },
     "original:7edadbfb01968d21f5c243a9": {
       "first_seen_kst": "2026-10-17T06:31:57+09:00",
       "lanes": {
@@ -544856,6 +545403,34 @@
       "source_title": "BMW, 국내 전동화 누적 1만대 돌파…전기차만 56% 급증",
       "telegram_core_fact": "BMW코리아의 국내 전동화 누적 판매량이 1만대를 돌파했다.",
       "title": "BMW, 국내 전동화 누적 1만대 돌파…전기차만 56% 급증"
+    },
+    "original:8e5a0bfe6e447e58282d4f27": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "original:8e5a50eb058fc6568e2be28a": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -579508,6 +580083,26 @@
       "telegram_core_fact": "PI첨단소재는 2026년 3분기 연결기준 매출액 555억원, 영업이익 125억원을 기록했다고 28일 밝혔다.",
       "title": "PI첨단소재, 3분기 영업이익 125억원"
     },
+    "original:c5199e064bffb42f348e6237": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845045",
+      "source": "뉴시스",
+      "source_body_digest": "7e698dee7721360fb3a96a129c590d6b2b046127b2aed877dd88134f3b77b8e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:108a00aec413fba56444a136a2e3d5f1a532e57a450dfeac931247439a5ed9b8",
+      "source_fact_keys": [
+        "source_fact:v1:4ae510929bef6b833b77087e479caeb6db0ca1409f57ddb97090a826366f6b8f"
+      ],
+      "source_published_kst": "2026-10-28T15:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)",
+      "telegram_core_fact": "은행과 비은행 계열사의 균형 있는 성장으로 지난해 최대를 기록한 연간 순이익(2조5112억원)을 3분기 만에 초과 달성했다는 설명이다.",
+      "title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)"
+    },
     "original:c52443dbd44ae03a863037e1": {
       "first_seen_kst": "2026-09-19T12:24:36+09:00",
       "lanes": {
@@ -589245,6 +589840,35 @@
       "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
       "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
       "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
+    },
+    "original:d424b0fe32cf417b1b0b1ca4": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
     },
     "original:d425381327063191ad064857": {
       "first_seen_kst": "2026-10-26T10:56:52+09:00",
@@ -624893,6 +625517,35 @@
       "telegram_core_fact": "글로벌 채권운용사 핌코(PIMCO)는 지난 22일 보고서에서 연준이 이번 회의에서 금리를 동결한 뒤 12월에 0.25%포인트 추가 인상할 것으로 내다봤다.",
       "title": "美연준, 내주 금리 동결할까…시장은 '12월 추가 인상' 전망 | 연합뉴스"
     },
+    "source_fact:02f6d44194d19ff71d8792a6": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
+    },
     "source_fact:02f9725638c9ba99aeab8722": {
       "first_seen_kst": "2026-10-22T09:17:40+09:00",
       "lanes": {
@@ -643720,6 +644373,29 @@
       "telegram_core_fact": "특히 캐터필러는 데이터센터 건설 장비뿐 아니라 전력 공급에 필요한 가스터빈 등도 공급하고 있어 AI 인프라 투자 확대의 수혜 기업으로 평가받고 있다. 미국 중장비 제조업체 캐터필러(CAT)가 인공지능(AI) 데이터센터 투자 확대와 글로벌 인프라 건설 수요에 힘입어 추가 상승할 가능성이 있다는 분석이 나왔다.",
       "title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑"
     },
+    "source_fact:0a0f28768d6c9e67afa35061": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12188151",
+      "source": "매일경제",
+      "source_body_digest": "5499b242b17d347fb4f4e3ad92bfa1fd3cec57913c57efc0ed739fe41b82fed7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10a8aa5bdbd8a0f4a52cdea252afbbafd40c92f97771c426af0ead4f1f7c1048",
+      "source_fact_keys": [
+        "source_fact:v1:31e64b8d3ab99e4b4048f8380d180c958e4ac468593f9ba1b3372e9a5687458d",
+        "source_fact:v1:6814b6ac203cfe76eb84d87ae674b61c1b6617927d9450e84cab477fe8766825",
+        "source_fact:v1:ab292c65086d6b0226c0a433e1122cb6a80ab8ed385fc1689c93f530b8578d99",
+        "source_fact:v1:dd931fc3f193475981944c5dadb02c73a512af90291a87931c03e53417bf8c66"
+      ],
+      "source_published_kst": "2026-10-28T09:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동",
+      "telegram_core_fact": "코스피가 4.80% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동"
+    },
     "source_fact:0a10abdc71ffc5e941321a9c": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -656363,6 +657039,33 @@
       "telegram_core_fact": "[파이낸셜뉴스] JB금융그룹 계열사인 전북은행과 광주은행, JB우리캐피탈이 국내 인공지능(AI) 기술 기업 업스테이지에 총 400억원을 투자한다. 금융권에 따르면 JB금융은 이번 투자를 통해 업스테이지 지분 약 2%를 확보하게 됐다.",
       "title": "JB금융, AI 기업 업스테이지에 400억원 투자"
     },
+    "source_fact:0eae6e8fed9db5c57e5b9f46": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "source_fact:0eb01d0de18c98ba4084d844": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
@@ -658502,6 +659205,29 @@
       "source_title": "[뉴스프레소] 뉴욕증시 혼조… 기술주 밖으로 번진 매수세",
       "telegram_core_fact": "뉴욕증시는 유가와 국채금리 하락 속에 다우 지수가 1% 넘게 상승했으나 나스닥은 소폭 하락하며 혼조세로 마감했다.",
       "title": "[뉴스프레소] 뉴욕증시 혼조… 기술주 밖으로 번진 매수세"
+    },
+    "source_fact:0f6fe503a87d5eac4631b02a": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12188151",
+      "source": "매일경제",
+      "source_body_digest": "5499b242b17d347fb4f4e3ad92bfa1fd3cec57913c57efc0ed739fe41b82fed7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10a8aa5bdbd8a0f4a52cdea252afbbafd40c92f97771c426af0ead4f1f7c1048",
+      "source_fact_keys": [
+        "source_fact:v1:31e64b8d3ab99e4b4048f8380d180c958e4ac468593f9ba1b3372e9a5687458d",
+        "source_fact:v1:6814b6ac203cfe76eb84d87ae674b61c1b6617927d9450e84cab477fe8766825",
+        "source_fact:v1:ab292c65086d6b0226c0a433e1122cb6a80ab8ed385fc1689c93f530b8578d99",
+        "source_fact:v1:dd931fc3f193475981944c5dadb02c73a512af90291a87931c03e53417bf8c66"
+      ],
+      "source_published_kst": "2026-10-28T09:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동",
+      "telegram_core_fact": "코스피가 4.80% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동"
     },
     "source_fact:0f6ff7cbfe04feb2bd1df40e": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -661529,6 +662255,29 @@
       "source_title": "삼전·SK하닉 부진에도…반도체 소부장 강세에 KRX 반도체 11%↑",
       "telegram_core_fact": "KRX 반도체에는 삼성전자와 SK하이닉스를 비롯해 주성엔지니어링, 리노공업, 원익IPS, 심텍, 이오테크닉스 등 소부장 종목이 다수 편입돼 있다. 한국거래소에 따르면 지난 한 달간 KRX 주가지수 가운데 수익률이 가장 높았던 지수는 ‘KRX 반도체’로 11.42% 상승했다.",
       "title": "삼전·SK하닉 부진에도…반도체 소부장 강세에 KRX 반도체 11%↑"
+    },
+    "source_fact:1068d53c1ac7227e8881a3ec": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12188151",
+      "source": "매일경제",
+      "source_body_digest": "5499b242b17d347fb4f4e3ad92bfa1fd3cec57913c57efc0ed739fe41b82fed7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10a8aa5bdbd8a0f4a52cdea252afbbafd40c92f97771c426af0ead4f1f7c1048",
+      "source_fact_keys": [
+        "source_fact:v1:31e64b8d3ab99e4b4048f8380d180c958e4ac468593f9ba1b3372e9a5687458d",
+        "source_fact:v1:6814b6ac203cfe76eb84d87ae674b61c1b6617927d9450e84cab477fe8766825",
+        "source_fact:v1:ab292c65086d6b0226c0a433e1122cb6a80ab8ed385fc1689c93f530b8578d99",
+        "source_fact:v1:dd931fc3f193475981944c5dadb02c73a512af90291a87931c03e53417bf8c66"
+      ],
+      "source_published_kst": "2026-10-28T09:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동",
+      "telegram_core_fact": "코스피가 4.80% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동"
     },
     "source_fact:10691df4429413011fa76116": {
       "first_seen_kst": "2026-10-21T18:34:10+09:00",
@@ -716749,6 +717498,35 @@
       "telegram_core_fact": "삼성바이오에피스는 지난 23일부터 27일까지 스페인 마드리드에서 열리는 유럽종양학회(ESMO) 2026 학술대회에서 SB27(성분명 펨브롤리주맙)의 임상 1상 결과를 포스터로 발표했다고 27일 밝혔다.",
       "title": "삼성바이오에피스, 키트루다 바이오시밀러 임상 1상 결과 공개…약동학적 동등성 확인"
     },
+    "source_fact:24978e32aab5db1b3b07f764": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
+    },
     "source_fact:2498fe61d811f5cceafccfd8": {
       "first_seen_kst": "2026-10-13T00:22:20+09:00",
       "lanes": {
@@ -746091,6 +746869,33 @@
       "telegram_core_fact": "사상 최고치 부근까지 오른 주가와 5%를 웃도는 장기금리가 공존하려면 기업들이 높아진 기대를 실적으로 증명해야 한다. 특히 AI에 쏟아부은 막대한 자금이 실제 매출과 이익으로 연결되고 있는지가 이번 실적시즌의 핵심 시험대가 될 전망이다.",
       "title": "사상 최고치 달리던 美증시 제동…AI 랠리 시험대[월스트리트in]"
     },
+    "source_fact:2f21ba7f44375282f7d92ca5": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "source_fact:2f2e19053ae27e0746339f30": {
       "first_seen_kst": "2026-10-19T21:40:31+09:00",
       "lanes": {
@@ -746937,6 +747742,34 @@
       "source_title": "BW LPG, 3분기 트레이딩 총이익 1억6400만 달러 달성",
       "telegram_core_fact": "BW LPG(BWLP)가 제품서비스(BW Product Services) 부문의 2026년 3분기(9월 30일 종료) 총 트레이딩 이익이 약 1억6400만 달러, 일반관리비와 법인세 차감 후 추정 순이익이 약 1억1800만 달러를 기록했다고 10월 19일 발표했다.",
       "title": "BW LPG, 3분기 트레이딩 총이익 1억6400만 달러 달성"
+    },
+    "source_fact:2f7752e72dda929d06cc345e": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "source_fact:2f781200717a0b0a86835232": {
       "first_seen_kst": "2026-10-19T06:02:38+09:00",
@@ -758665,6 +759498,26 @@
       "source_title": "TSMC, 3분기 매출 전년대비 41% 증가…2나노 비중 확대",
       "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 기업 TSMC가 첨단 반도체 수요에 힘입어 3분기 매출 467억달러(약 63조원)를 기록했다.",
       "title": "TSMC, 3분기 매출 전년대비 41% 증가…2나노 비중 확대"
+    },
+    "source_fact:33bad8bdf51cbbf6f102aca0": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845045",
+      "source": "뉴시스",
+      "source_body_digest": "7e698dee7721360fb3a96a129c590d6b2b046127b2aed877dd88134f3b77b8e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:108a00aec413fba56444a136a2e3d5f1a532e57a450dfeac931247439a5ed9b8",
+      "source_fact_keys": [
+        "source_fact:v1:4ae510929bef6b833b77087e479caeb6db0ca1409f57ddb97090a826366f6b8f"
+      ],
+      "source_published_kst": "2026-10-28T15:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)",
+      "telegram_core_fact": "은행과 비은행 계열사의 균형 있는 성장으로 지난해 최대를 기록한 연간 순이익(2조5112억원)을 3분기 만에 초과 달성했다는 설명이다.",
+      "title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)"
     },
     "source_fact:33cb6ca62a66fbff31127d95": {
       "first_seen_kst": "2026-10-20T13:59:52+09:00",
@@ -813396,6 +814249,35 @@
       "telegram_core_fact": "4대 은행과 SK하이닉스는 공동으로 재원을 출연하고, 무보는 이를 바탕으로 총 2조원 수출신용보증을 공급한다.",
       "title": "4대 은행, SK하이닉스와 반도체 협력기업에 2조 금융지원"
     },
+    "source_fact:47c16249515e7925a234424e": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
+    },
     "source_fact:47c2ca77f42a0a1a7dd08c94": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
       "lanes": {
@@ -835264,6 +836146,34 @@
       "source_title": "\"1600조 메가 프로젝트, 투자 넘어 산업판 바꿔야\"",
       "telegram_core_fact": "향후 10년간 1600조원 대형 투자 계획이 담긴 메가 프로젝트가 메모리 반도체와 첨단 패키징, 컴퓨팅 인프라, 제조 데이터, 피지컬 AI로 이어지는 전략적 AI 회랑을 구축하는 승부수라는 분석이다.",
       "title": "\"1600조 메가 프로젝트, 투자 넘어 산업판 바꿔야\""
+    },
+    "source_fact:4f906cc6806155ffebf6e9a9": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "source_fact:4f91489055151dbd80fa5dcf": {
       "first_seen_kst": "2026-10-16T20:17:17+09:00",
@@ -859814,6 +860724,33 @@
       "telegram_core_fact": "전기차와 하이브리드차에 이어 수소차까지 친환경차 동력원을 확대하는 한편 국내 생산공장도 전기차와 군수차 중심으로 재편한다.",
       "title": "기아, 2029년 카니발 수소차 첫 양산…국내 공장도 미래차 체제로 재편"
     },
+    "source_fact:58512ef60f4e96695261a6af": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "source_fact:5851b4d44cc7f15ee2be8021": {
       "first_seen_kst": "2026-10-09T21:11:52+09:00",
       "lanes": {
@@ -873991,6 +874928,35 @@
       "source_title": "뜨거운 실적에도 주가는 싸늘…삼전 정리하고 하닉 담을까 [플러스 관심종목]",
       "telegram_core_fact": "잠정 실적을 발표한 삼전의 영업이익률이 55.1%인데 하닉은 무려 78.3%다.",
       "title": "뜨거운 실적에도 주가는 싸늘…삼전 정리하고 하닉 담을까 [플러스 관심종목]"
+    },
+    "source_fact:5cff5101ef782d24854b3a15": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
     },
     "source_fact:5d015845574e301f3a41ba6e": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -893981,6 +894947,27 @@
       "source_title": "솔리다임 상장 멈춰도 증설이 숙제..SK하이닉스, 투자재원 마련 고심 깊어져",
       "telegram_core_fact": "시장에선 상장을 통해 100억~150억달러(한화 약 13조~20조원)를 조달할 가능성도 거론돼, 솔리다임 IPO는 미국 신규 생산거점 구축에 활용할 대규모 재원을 마련할 기회로 주목받았다.",
       "title": "솔리다임 상장 멈춰도 증설이 숙제..SK하이닉스, 투자재원 마련 고심 깊어져"
+    },
+    "source_fact:64a3f66dcf058146fb1080bc": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028145400057",
+      "source": "연합뉴스",
+      "source_body_digest": "6702e2a8ea2d5e94438bfc33c859e48bda1a485ec16d3490d20d59341d814b5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa5fa2b3b585b155a8839752ee03757ddb1fa05f3f0525c02dec494be4294df4",
+      "source_fact_keys": [
+        "source_fact:v1:2fc055128f29f1332c99a046e8b54196b063d22b860c4a8ddb6dbd7d5122512d",
+        "source_fact:v1:ba747a19b5fb06506930c5ced66722b72de54c7bbe7df166e70eb160ca274ba1"
+      ],
+      "source_published_kst": "2026-10-28T16:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스",
+      "telegram_core_fact": "울주군의회에 따르면 온산읍 로컬브랜딩 거점시설의 경우 전체 11개 공간 가운데 1개만 낙찰돼 나머지 공간 입찰을 반복하고, 언양 상권활성화센터는 현재 사용되지 않는 것으로 조사됐다.",
+      "title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스"
     },
     "source_fact:64a4baf32d8fde3227d4ffe5": {
       "first_seen_kst": "2026-10-22T21:42:35+09:00",
@@ -939273,6 +940260,33 @@
       "telegram_core_fact": "마코 루비오 미국 국무장관이 도널드 트럼프 대통령의 대러시아 제재 시행 유예는 세계 경제에 미칠 영향을 분석하기 위한 조치라고 밝혔다.",
       "title": "루비오 \"트럼프, 세계 경제 영향 분석 위해 대러 제재 유예\""
     },
+    "source_fact:7552d94b2920f4ad7bc3524f": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "source_fact:7555758fe5476928e6c5d7ca": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
       "lanes": {
@@ -943134,6 +944148,34 @@
       "source_title": "삼성물산, '2조' 여의도 시범 품었다…정비사업 수주 성과 '10조' 눈앞",
       "telegram_core_fact": "압구정과 성수에 이어 여의도에서도 대형 정비사업을 따내면서 올해 정비사업 수주액을 9조6055억원으로 늘렸다.",
       "title": "삼성물산, '2조' 여의도 시범 품었다…정비사업 수주 성과 '10조' 눈앞"
+    },
+    "source_fact:76b920b9783f5eef231238d7": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "source_fact:76ba435a56be46e59d825d3f": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -950807,6 +951849,34 @@
       "source_title": "정의선 회장, 印 모디 총리와 면담 \"인도는 전략 국가…7년간 20조 투자 계획\" [푸네 新공장 준공]",
       "telegram_core_fact": "정의선 현대자동차그룹 회장이 나렌드라 모디 인도 총리와 만나 현대차그룹의 현지 성장 전략을 설명하고 155억달러(약 20조7855억원) 대규모 투자 계획을 발표했다. 그러면서 \"인도는 현대차그룹의 미래 성장과 신흥국 시장 확대를 견인할 전략 국가\"라며 \"올해부터 7년간 약 155억 달러 투자를 계획하고 있다\"고 강조했다.",
       "title": "정의선 회장, 印 모디 총리와 면담 \"인도는 전략 국가…7년간 20조 투자 계획\" [푸네 新공장 준공]"
+    },
+    "source_fact:796d1a08292a2d11d8c3852f": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "source_fact:79717318bcf315af46ad358c": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -973338,6 +974408,34 @@
       "source_title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자",
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
+    },
+    "source_fact:81a746cac5ca9ffdd7b0a062": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "source_fact:81a7d0fd4b3f8cc6e6869d0a": {
       "first_seen_kst": "2026-10-26T04:34:28+09:00",
@@ -1038131,6 +1039229,35 @@
       "source_published_kst": "2026-10-06T21:44+09:00",
       "title": "이형일 \"프리랜서 세금 줄이고 직장인에 더 걷는다? 사실 아냐\""
     },
+    "source_fact:9a1958bb1aaeb0ee591818e3": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
+    },
     "source_fact:9a1ab1b918cf84196c373174": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -1074030,6 +1075157,33 @@
       "source_title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스",
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔다. 젤렌스키 대통령은 또 이날 저녁 영상 연설에서 러시아가 트럼프 대통령의 발표 이후에도 우크라이나 제2의 도시 하르키우의 열병합발전소를 공격하는 등 에너지 시설 공격을 지속했다고 밝혔다.",
       "title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스"
+    },
+    "source_fact:a6c963ee2e05a660abcf2ff2": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
     },
     "source_fact:a6cad7b1c635905c6be3be25": {
       "first_seen_kst": "2026-10-26T05:29:29+09:00",
@@ -1130524,6 +1131678,29 @@
       "telegram_core_fact": "이재용 삼성전자 회장이 올해 약 5조원 삼성 계열사 주식을 순취득해 국내 대기업 오너일가 가운데 취득액이 가장 많은 것으로 나타났다.",
       "title": "이재용, 올해 삼성 주식 5조 순취득…대기업 오너일가 중 최대"
     },
+    "source_fact:bb3488ad04475cc98bd68c45": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12188151",
+      "source": "매일경제",
+      "source_body_digest": "5499b242b17d347fb4f4e3ad92bfa1fd3cec57913c57efc0ed739fe41b82fed7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10a8aa5bdbd8a0f4a52cdea252afbbafd40c92f97771c426af0ead4f1f7c1048",
+      "source_fact_keys": [
+        "source_fact:v1:31e64b8d3ab99e4b4048f8380d180c958e4ac468593f9ba1b3372e9a5687458d",
+        "source_fact:v1:6814b6ac203cfe76eb84d87ae674b61c1b6617927d9450e84cab477fe8766825",
+        "source_fact:v1:ab292c65086d6b0226c0a433e1122cb6a80ab8ed385fc1689c93f530b8578d99",
+        "source_fact:v1:dd931fc3f193475981944c5dadb02c73a512af90291a87931c03e53417bf8c66"
+      ],
+      "source_published_kst": "2026-10-28T09:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동",
+      "telegram_core_fact": "코스피가 4.80% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동"
+    },
     "source_fact:bb36b9995f68957aee3be4d5": {
       "first_seen_kst": "2026-10-12T03:14:53+09:00",
       "lanes": {
@@ -1131726,6 +1132903,34 @@
       "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
       "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
       "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
+    },
+    "source_fact:bb9ddd23fb225bd92f64ceba": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "source_fact:bba5c704af7086cd76059b81": {
       "first_seen_kst": "2026-10-28T22:13:25+09:00",
@@ -1155299,6 +1156504,34 @@
       "telegram_core_fact": "중국은 지난해 4월 특정 희토류 원료와 자석, 관련 가공 기술에 대한 수출통제를 도입하고 수출 허가를 받도록 했다.",
       "title": "[올댓차이나] TSMC, 희토류 자석 쓰지 않은 모터 도입 모색…中 수출통제에 대응"
     },
+    "source_fact:c41c2609320a3a0fe8ec60df": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
+    },
     "source_fact:c41e1a1ba895900a67114787": {
       "first_seen_kst": "2026-10-17T02:26:33+09:00",
       "lanes": {
@@ -1169285,6 +1170518,35 @@
       "telegram_core_fact": "트럼프미국 도널드 트럼프 행정부가 오는 11월 중간선거를 앞두고 일부 캐나다산 제품에 부과한 50% 관세를 철폐할 것으로 전해졌다.",
       "title": "11월 선거 앞두고…\"트럼프, 캐나다 관세 일부 철폐 추진\""
     },
+    "source_fact:c9173e247e48c1b065ebe17e": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
+    },
     "source_fact:c9192e11d35d2869868a0269": {
       "first_seen_kst": "2026-10-26T17:47:13+09:00",
       "lanes": {
@@ -1183103,6 +1184365,33 @@
       "telegram_core_fact": "중국 메모리 반도체 기업 창신메모리테크놀로지(CXMT)가 삼성전자와 SK하이닉스를 추월할 수 있다는 전망이 나오는 가운데, 실제 양산 경쟁력에 대해서는 회의적인 평가가 잇따르고 있다. 신기술 상용화를 위해서는 성능과 수율, 원가 경쟁력, 고객사 인증, 대량생산 능력 등을 검증해야 한다는 설명이다.",
       "title": "삼성·SK 넘어선다던 中 CXMT …“수율·생산규모·원가 경쟁력 전부 물음표”"
     },
+    "source_fact:ce6b6dc3a8ae21e025e2d102": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "source_fact:ce6bcfd18d353b2c4e4205d8": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
@@ -1185039,6 +1186328,27 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
+    "source_fact:cf026c6ce7c4683b3f821dda": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028145400057",
+      "source": "연합뉴스",
+      "source_body_digest": "6702e2a8ea2d5e94438bfc33c859e48bda1a485ec16d3490d20d59341d814b5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa5fa2b3b585b155a8839752ee03757ddb1fa05f3f0525c02dec494be4294df4",
+      "source_fact_keys": [
+        "source_fact:v1:2fc055128f29f1332c99a046e8b54196b063d22b860c4a8ddb6dbd7d5122512d",
+        "source_fact:v1:ba747a19b5fb06506930c5ced66722b72de54c7bbe7df166e70eb160ca274ba1"
+      ],
+      "source_published_kst": "2026-10-28T16:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스",
+      "telegram_core_fact": "울주군의회에 따르면 온산읍 로컬브랜딩 거점시설의 경우 전체 11개 공간 가운데 1개만 낙찰돼 나머지 공간 입찰을 반복하고, 언양 상권활성화센터는 현재 사용되지 않는 것으로 조사됐다.",
+      "title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스"
     },
     "source_fact:cf03e38c5bb7d3e566e7184a": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
@@ -1203976,6 +1205286,35 @@
       "telegram_core_fact": "하나증권의 3분기 연결 재무제표 기준 누적 순이익이 2834억원으로 잠정 집계됐다.",
       "title": "하나증권, 3분기 누적 순이익 2834억…전년比 67.1%↑"
     },
+    "source_fact:d5ee0977270f051574380df4": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
+    },
     "source_fact:d5ef03b93c4ce04ff29d1c9e": {
       "first_seen_kst": "2026-10-22T11:47:17+09:00",
       "lanes": {
@@ -1222310,6 +1223649,35 @@
       "source_title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력",
       "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
       "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
+    },
+    "source_fact:dce227b941f52fc9bbe1f7a8": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
     },
     "source_fact:dce2900d1d0203df1377e2ef": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -1258687,6 +1260055,35 @@
       "source_published_kst": "2026-10-06T17:22+09:00",
       "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
     },
+    "source_fact:ea1423aa84185c70ba2ae9ae": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
+    },
     "source_fact:ea1cfd33d1d7fbb166a41615": {
       "first_seen_kst": "2026-10-26T07:17:46+09:00",
       "lanes": {
@@ -1262638,6 +1264035,33 @@
       "telegram_core_fact": "삼정KPMG는 28일 'AI 시대 반도체 산업이 직면한 6대 이슈' 보고서를 내고 이같이 밝혔다. 올 상반기에는 글로벌 AI 데이터센터 확충에 따른 서버용 메모리 출하 확대 등으로 1924억 달러를 기록하며 전년비 162.6% 늘었다.",
       "title": "삼정KPMG \"글로벌 반도체 2000조 시대…美거점 확대·M&A 나서야\""
     },
+    "source_fact:eb7441de54c20f03e48a2ef0": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "source_fact:eb7483c6ed3df66d89c016fe": {
       "first_seen_kst": "2026-10-22T23:00:45+09:00",
       "lanes": {
@@ -1262806,6 +1264230,34 @@
       "source_title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스",
       "telegram_core_fact": "시는 임대 수입 등을 감안해 기존과 유사한 판매시설로 활용하기로 하고, 새 임대 사업자 선정을 위한 공개 입찰을 준비했다.",
       "title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스"
+    },
+    "source_fact:eb8a9298d246bc9fc7dc4d6f": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "source_fact:eb8d56191e36f95eced15243": {
       "first_seen_kst": "2026-10-21T11:24:12+09:00",
@@ -1280436,6 +1281888,33 @@
       "telegram_core_fact": "국내에서 축적한 선박 설계·건조 기술을 미국 생산 현장에 접목하면서 K조선의 역할도 확대되는 모습이다.",
       "title": "美 조선업 재건 뛰어든 K조선…HD현대·한화, 현지 생산 '박차'"
     },
+    "source_fact:f215d92cba24cec4ed2c7482": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "source_fact:f216b0991327e8d7adcc7148": {
       "first_seen_kst": "2026-10-07T05:59:02+09:00",
       "lanes": {
@@ -1296138,6 +1297617,35 @@
       "telegram_core_fact": "X-ray(엑스레이) 검사장비 선도기업 자비스(254120, 대표이사 김형철)가 글로벌 화학기업에 반도체 유리기판의 TGV(Through Glass Via, 유리 관통 전극) 검사장비 'XSCAN SEMI'(모델명 H110-OCT)를 공급하는 계약을 체결했다고 밝혔다.",
       "title": "자비스, 글로벌 화학기업에 유리기판 TGV 검사장비 공급계약 체결"
     },
+    "source_fact:f84d5beb1230dda85a489206": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
+    },
     "source_fact:f84f88d8db6bf4d6cfdc7dbe": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
       "lanes": {
@@ -1305437,6 +1306945,34 @@
       "source_title": "자사주 계속 갖겠다는 기업들…국민연금, 주주가치 따진다[마켓인]",
       "telegram_core_fact": "개정 상법에 따라 자사주 소각이 원칙으로 자리 잡은 가운데 국민연금도 주주가치 제고 여부를 중심으로 의결권 행사 기준을 정비한 것이다.",
       "title": "자사주 계속 갖겠다는 기업들…국민연금, 주주가치 따진다[마켓인]"
+    },
+    "source_fact:fbfd9907156a67c2098caf4a": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "source_fact:fbfe272cfa0d54a5eda0eddc": {
       "first_seen_kst": "2026-10-13T00:22:20+09:00",
@@ -1321061,6 +1322597,33 @@
       "source": "머니투데이",
       "title": "中·홍콩 휴장 속 日 증시 3% 급등…마이크론 실적호재[Asia마감]"
     },
+    "title:06fe5d2ba9e1f66ab2c2d72f": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845135",
+      "source": "뉴시스",
+      "source_body_digest": "40824f9b6d670440368871133cbfc7b7326e815ae8a4bf5004658aed5f8e25f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cbb454b3f0bbc846d8d029716d5e83b550120cec4c2a50b3ab977445a6a12d1",
+      "source_fact_keys": [
+        "source_fact:v1:0db5babb028e271f87ec32a8e777f0e27179eab1a79f7eecb073048866139f08",
+        "source_fact:v1:0ee992b111c5c82c0efd9f9ed39103318d9acde22607f10937b5ed20fff26cf7",
+        "source_fact:v1:37534d2534be4313a4dd3aa92132818a3b848637da158dbe2789ce24bf85fb73",
+        "source_fact:v1:3ad5992f5dfc8b46081e2257e04bb82a1cbff38fa7d311f6317f0f035452d41d",
+        "source_fact:v1:5d6fbba28ec848c87bf41c9f16f6474f0305980653353ed375fb36dd4cd5a74a",
+        "source_fact:v1:7cefc173829ed7d9b96517400c399d0b97469a8489f9a0350151864ad922d9fe",
+        "source_fact:v1:90633ba147e86fc596ce4211f2462ccc9fe66254b2199e40e02bd862514e86f4",
+        "source_fact:v1:e845e6160d1d23c9daad22475ed8e80046f512ea0d8308b7e8fe7d65b912b938"
+      ],
+      "source_published_kst": "2026-10-28T16:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최",
+      "telegram_core_fact": "식약처는 지난 23일 청와대 영빈관에서 열린 제2차 규제합리화위원회 전체회의에서 발표한 '바이오분야 경쟁국 수준 규제합리화 방안'의 과제 이행을 위해 바이오의약품 제조에 필수적인 배지의 인증을 준비하는 업체를 방문해 간담회를 개최했다고 28일 밝혔다.",
+      "title": "\"바이오의약품 진출 지원\"…식약처, 간담회 개최"
+    },
     "title:070975aa519a3a217e6ad946": {
       "first_seen_kst": "2026-10-23T04:06:25+09:00",
       "lanes": {
@@ -1328668,6 +1330231,27 @@
       "source_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
       "telegram_core_fact": "강 연구원은 “해상 운임의 정점이 지나가고 있다고 판단해 팬오션의 2027년 영업이익 전망치를 기존보다 0.4% 하향한다”고 설명했다.",
       "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB"
+    },
+    "title:12c91170c7b4d498d106f017": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028145400057",
+      "source": "연합뉴스",
+      "source_body_digest": "6702e2a8ea2d5e94438bfc33c859e48bda1a485ec16d3490d20d59341d814b5c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa5fa2b3b585b155a8839752ee03757ddb1fa05f3f0525c02dec494be4294df4",
+      "source_fact_keys": [
+        "source_fact:v1:2fc055128f29f1332c99a046e8b54196b063d22b860c4a8ddb6dbd7d5122512d",
+        "source_fact:v1:ba747a19b5fb06506930c5ced66722b72de54c7bbe7df166e70eb160ca274ba1"
+      ],
+      "source_published_kst": "2026-10-28T16:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스",
+      "telegram_core_fact": "울주군의회에 따르면 온산읍 로컬브랜딩 거점시설의 경우 전체 11개 공간 가운데 1개만 낙찰돼 나머지 공간 입찰을 반복하고, 언양 상권활성화센터는 현재 사용되지 않는 것으로 조사됐다.",
+      "title": "울주군, 거점시설 조성 뒤 운영은 난항…행감서 활용 대책 요구 | 연합뉴스"
     },
     "title:12cd39b2848e7bd9fb22f9eb": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
@@ -1377447,6 +1379031,24 @@
       "source": "뉴시스",
       "title": "한은 \"10월 소비자물가 3% 내외의 높은 수준 이어갈 것\""
     },
+    "title:5c8748e752eff7728a3bf456": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845082",
+      "source": "뉴시스",
+      "source_body_digest": "56534d60cc58621257756c339bf1c57a930ef66358379a6906286302d6d7f51d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T16:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성물산 패션부문, 3Q 영업익 200억…전년比 66.7% 증가",
+      "telegram_core_fact": "삼성물산 패션부문은 올해 3기 매출 4980억, 영업이익 200억원을 기록했다고 28일 공시했다.",
+      "title": "삼성물산 패션부문, 3Q 영업익 200억…전년比 66.7% 증가"
+    },
     "title:5c8a1663113958a3703b7198": {
       "first_seen_kst": "2026-10-20T22:42:26+09:00",
       "lanes": {
@@ -1400137,6 +1401739,29 @@
       "source_published_kst": "2026-10-03T10:31+09:00",
       "title": "JYP, 중대 결정...파격 '보이콧' 선언"
     },
+    "title:7ed610ff3f9cd90cf4150471": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12188151",
+      "source": "매일경제",
+      "source_body_digest": "5499b242b17d347fb4f4e3ad92bfa1fd3cec57913c57efc0ed739fe41b82fed7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10a8aa5bdbd8a0f4a52cdea252afbbafd40c92f97771c426af0ead4f1f7c1048",
+      "source_fact_keys": [
+        "source_fact:v1:31e64b8d3ab99e4b4048f8380d180c958e4ac468593f9ba1b3372e9a5687458d",
+        "source_fact:v1:6814b6ac203cfe76eb84d87ae674b61c1b6617927d9450e84cab477fe8766825",
+        "source_fact:v1:ab292c65086d6b0226c0a433e1122cb6a80ab8ed385fc1689c93f530b8578d99",
+        "source_fact:v1:dd931fc3f193475981944c5dadb02c73a512af90291a87931c03e53417bf8c66"
+      ],
+      "source_published_kst": "2026-10-28T09:58+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동",
+      "telegram_core_fact": "코스피가 4.80% 급등해 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.",
+      "title": "‘4%대 급등’ 코스피, 이틀 연속 매수 사이드카 발동"
+    },
     "title:7edadbfb01968d21f5c243a9": {
       "first_seen_kst": "2026-10-17T06:31:57+09:00",
       "lanes": {
@@ -1410904,6 +1412529,34 @@
       "source_title": "BMW, 국내 전동화 누적 1만대 돌파…전기차만 56% 급증",
       "telegram_core_fact": "BMW코리아의 국내 전동화 누적 판매량이 1만대를 돌파했다.",
       "title": "BMW, 국내 전동화 누적 1만대 돌파…전기차만 56% 급증"
+    },
+    "title:8e5a0bfe6e447e58282d4f27": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.etnews.com/20261028000318",
+      "source": "전자신문",
+      "source_body_digest": "b6f58dad9ce84a7cbc5cfcf2a9e28e67add29e68bc26370ca11660d2abcdb811",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1412482dcd38a2f2dd1b6e6de440dadd05d02c44e53537e7a1124860c43393e",
+      "source_fact_keys": [
+        "source_fact:v1:1c9e31cbb9bebb07a2e1cb7e020b6b7dc82aaf590e722c93f2b87ee240c2b4ee",
+        "source_fact:v1:22e74ef47ecf4fa1d5198556e8662aac8043868b6ccb5032ccee42767c031d0a",
+        "source_fact:v1:6f52bd5e062ade8bed49b76a8cc6c9926284ae89ca27878273fce3f1a6e050bf",
+        "source_fact:v1:7c7dd60ac4185010c65e4fdca55c745472417500e1d178d616b9e1ad9091e07b",
+        "source_fact:v1:89aeeacd8d49fa89ad8ed30d8ce550f9b18c20dcfc04e002a69bb536a1e157b8",
+        "source_fact:v1:9d762765cf7d3a69e0d5822e7ffb1ce5f00d6ac944382fad177450dabddc264c",
+        "source_fact:v1:a562bed2945ca6c11860b930adf54d1b128ffb7727f288bf1df5f9cdda308d17",
+        "source_fact:v1:b08433d1034c2dcf3248d0576a490031681c4a7687d3064f6a5e40ca5d28f1a9",
+        "source_fact:v1:ca6eb8b45c839f8b23b57ebb481317b613d66ee4ebd57d97fc9f6639e3979180"
+      ],
+      "source_published_kst": "2026-10-28T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”",
+      "telegram_core_fact": "김 정책관은 “미국은 상장 이후에도 기업들이 더 많은 투자를 유치하며 성장하지만 우리나라는 아직 부족하다”며 “벤처정책의 궁극적인 목표는 IPO 자체가 아니라 상장 이후 세계적인 기업으로 성장하도록 지원하는 데 있어야 한다”고 말했다.",
+      "title": "김봉덕 중기부 벤처정책관 “IPO가 끝 아닌 시작…상장 이후 초고속 성장 지원해야”"
     },
     "title:8e5a50eb058fc6568e2be28a": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -1446526,6 +1448179,26 @@
       "telegram_core_fact": "PI첨단소재는 2026년 3분기 연결기준 매출액 555억원, 영업이익 125억원을 기록했다고 28일 밝혔다.",
       "title": "PI첨단소재, 3분기 영업이익 125억원"
     },
+    "title:c5199e064bffb42f348e6237": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845045",
+      "source": "뉴시스",
+      "source_body_digest": "7e698dee7721360fb3a96a129c590d6b2b046127b2aed877dd88134f3b77b8e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:108a00aec413fba56444a136a2e3d5f1a532e57a450dfeac931247439a5ed9b8",
+      "source_fact_keys": [
+        "source_fact:v1:4ae510929bef6b833b77087e479caeb6db0ca1409f57ddb97090a826366f6b8f"
+      ],
+      "source_published_kst": "2026-10-28T15:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)",
+      "telegram_core_fact": "은행과 비은행 계열사의 균형 있는 성장으로 지난해 최대를 기록한 연간 순이익(2조5112억원)을 3분기 만에 초과 달성했다는 설명이다.",
+      "title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)"
+    },
     "title:c52443dbd44ae03a863037e1": {
       "first_seen_kst": "2026-09-19T12:24:36+09:00",
       "lanes": {
@@ -1456389,6 +1458062,35 @@
       "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
       "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
       "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
+    },
+    "title:d424b0fe32cf417b1b0b1ca4": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844212",
+      "source": "뉴시스",
+      "source_body_digest": "728c45f07d75617fa7833bf2e36aabba68469aa020851b91a236f3d044e0c91a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90d154a574de1dea32776eedcebe7ef8b6a9166cbe254959df7d572c6b71c296",
+      "source_fact_keys": [
+        "source_fact:v1:02e5305399f4ecc23309264e5c91991e9ddf25b52f4dfb9522e24ec7d5c5fb11",
+        "source_fact:v1:0dd6440c47548e02685ca7b4a7468bc6894c3709d019a2ac7324334640e9a08a",
+        "source_fact:v1:1a4b4b04e1ca9e4aa1ab09c7a04273744372b1cbf7e14cf5d8ce0b08c73c3d0c",
+        "source_fact:v1:54b3ccf40a1513d11d3588b576f09f3f8e4c06d939b1973b7a9410d7745fd227",
+        "source_fact:v1:68a0a9dc20bf8de08ca91b0ddd1118b755bbe7dc4dd1259a4c7290cf91bbb6a3",
+        "source_fact:v1:69663f1c67aaeb22c4dd5630a244b971d105c55064814e5fce1d99a888230a72",
+        "source_fact:v1:69ebdeb617d9fbcab07d9bbb6e647e459975fa46876350e5b9a17f9abc5cd7d5",
+        "source_fact:v1:76558128fe8b4063e9e857e5b9e8f0c00ff4ad2550b0e8a17f33414d51d72740",
+        "source_fact:v1:877a42179d42a72bd54adfcccbca72c834bf6bb81e518e16db1004d85ca8108f",
+        "source_fact:v1:abd36d4d56d157180bfa2f97d75ef6f3a76cdcd26902c5729d56104e983eef75"
+      ],
+      "source_published_kst": "2026-10-28T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\"",
+      "telegram_core_fact": "이와 함께 \"낸드는 321단 공정 비중을 4분기 국내 생산능력의 50% 이상으로 확대할 계획\"이라며 \"이를 통해 321단 기반 제품의 공급이 확대되면서 4분기 출하량은 전 분기 대비 한 자릿수 수준의 증가가 예상된다\"고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"4분기 HBM4 매출·출하량, HBM3E 추월할 듯\""
     },
     "title:d425381327063191ad064857": {
       "first_seen_kst": "2026-10-26T10:56:52+09:00",
@@ -1483493,6 +1485195,26 @@
       "telegram_core_fact": "엘로메이 캐피탈(ELLO)이 이스라엘 발전회사 도라드(Dorad) 지분 16.9%를 7억4250만 셰켈에 매각하고, 이를 반영한 2026년 연결 EBITDA(비IFRS 기준) 전망치를 1억3100만 유로로 제시한 투자자 설명자료를 14일 발표했다.",
       "title": "엘로메이 캐피탈, 도라드 지분 매각..올 EBITDA 1억3100만 유로 전망"
     },
+    "title:fe9f0480f2b829d450c58f1d": {
+      "first_seen_kst": "2026-10-29T05:21:25+09:00",
+      "lanes": {
+        "live": "2026-10-29T05:21:25+09:00"
+      },
+      "last_seen_kst": "2026-10-29T05:21:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845045",
+      "source": "뉴시스",
+      "source_body_digest": "7e698dee7721360fb3a96a129c590d6b2b046127b2aed877dd88134f3b77b8e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:108a00aec413fba56444a136a2e3d5f1a532e57a450dfeac931247439a5ed9b8",
+      "source_fact_keys": [
+        "source_fact:v1:4ae510929bef6b833b77087e479caeb6db0ca1409f57ddb97090a826366f6b8f"
+      ],
+      "source_published_kst": "2026-10-28T15:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)",
+      "telegram_core_fact": "은행과 비은행 계열사의 균형 있는 성장으로 지난해 최대를 기록한 연간 순이익(2조5112억원)을 3분기 만에 초과 달성했다는 설명이다.",
+      "title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)"
+    },
     "title:fea23085548ea1693092d69d": {
       "first_seen_kst": "2026-10-19T11:13:29+09:00",
       "lanes": {
@@ -1484346,5 +1486068,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-29T04:44:12+09:00"
+  "updated_at_kst": "2026-10-29T05:21:25+09:00"
 }
