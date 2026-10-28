@@ -52,7 +52,7 @@
     "https://stock.ltn.com.tw/article/gqpj9vhyk1ku",
     "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
   ],
-  "last_checked_at_kst": "2026-10-28T16:02:03+09:00",
+  "last_checked_at_kst": "2026-10-28T16:09:05+09:00",
   "last_evidence_url": "https://ec.ltn.com.tw/article/paper/1772416",
   "last_evidence_published_at_kst": "2026-09-28T06:30:00+09:00",
   "last_alert_reasons": [
@@ -75,8 +75,8 @@
     "payload_hash": "74c3737ae9eccbe701c6878bd46cc46025e6e15ac48e43c461762cafe49d1c5f"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-28T16:02:11+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-28T16:09:10+09:00",
+    "status": "no_message_due"
   },
   "bottleneck_parser_version": 2,
   "bottleneck_parser_migration_note": "v2: 기사 전체 HTML의 관련기사·사이드바 문구를 병목 방향으로 오인하던 문제를 제거하고 명시적 현재 공급상태 기준선으로 재설정.",
