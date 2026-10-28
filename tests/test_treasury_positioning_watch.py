@@ -180,3 +180,71 @@ def test_funding_freshness_fails_for_future_date_and_real_staleness():
         watch.ensure_recent_funding_date(
             "OFR DVP Repo", "2026-10-08", publish_hour=15, max_lag=2, now_ny=now
         )
+
+def test_covering_candidate_requires_falling_gross_shorts_not_just_net_change():
+    row={"net":-500000,"long_change":-10,"short_change":-110,"net_change":100}
+    assert "숏 축소 우세" in watch.gross_position_driver(row)
+    assert "신규 롱 증가 아님" in watch.position_note(row)
+
+
+def test_new_long_addition_with_more_shorts_is_not_short_covering():
+    row={"net":-1000,"long_change":150,"short_change":100,"net_change":50}
+    assert watch.position_note(row)=="롱 증가 중심(숏 축소 아님)"
+
+
+def test_simultaneous_long_addition_short_reduction_identified():
+    row={"net":-1000,"long_change":20,"short_change":-100,"net_change":120}
+    assert watch.position_note(row)=="숏 축소 우세·롱 증가 동반"
+
+
+def test_oct20_ultra_public_cftc_does_not_imply_jpm_client_neutrality():
+    row={"net":-804808,"long_change":6234,"short_change":95313,"net_change":-89079}
+    assert watch.gross_position_driver(row)=="숏 증가가 롱 증가 앞섬"
+    assert "중립" not in watch.gross_position_driver(row)
+
+
+def test_bad_gross_net_arithmetic_fails_closed():
+    row={"long_change":30,"short_change":-20,"net_change":100}
+    with pytest.raises(ValueError,match="gross long/short"):
+        watch.gross_position_driver(row)
+
+
+def test_telegram_ack_requires_correct_chat_and_positive_message_id(monkeypatch):
+    import json
+
+    class FakeResponse:
+        def __init__(self,payload): self.raw=json.dumps(payload).encode("utf-8")
+        def __enter__(self): return self
+        def __exit__(self,*args): return False
+        def read(self): return self.raw
+
+    monkeypatch.setenv("TELEGRAM_BOT_TOKEN","test-fixture-only")
+    monkeypatch.setenv("TELEGRAM_CHAT_ID","-10012345")
+    correct={"ok":True,"result":{"message_id":488,"chat":{"id":-10012345}}}
+    monkeypatch.setattr(
+        watch.urllib.request,"urlopen",
+        lambda *args,**kwargs: FakeResponse(correct)
+    )
+    assert watch.send_telegram("CFTC fixture") == 488
+    invalid=[
+        {"ok":False,"result":correct["result"]},
+        {"ok":True,"result":{"chat":{"id":-10012345}}},
+        {"ok":True,"result":{"message_id":True,"chat":{"id":-10012345}}},
+        {"ok":True,"result":{"message_id":488,"chat":{"id":-10098765}}},
+        {"ok":True,"result":{"message_id":488,"chat":{}}},
+    ]
+    for bad in invalid:
+        monkeypatch.setattr(
+            watch.urllib.request,"urlopen",
+            lambda *args,_bad=bad,**kwargs: FakeResponse(_bad)
+        )
+        with pytest.raises(RuntimeError):
+            watch.send_telegram("CFTC fixture")
+
+
+def test_contracts_and_observation_scope_stay_separate():
+    assert watch.CONTRACTS["30년"]["code"] == "020601"
+    assert watch.CONTRACTS["초장기(UB)"]["code"] == "020604"
+    row={"net":-100000,"long_change":0,"short_change":-200,"net_change":200}
+    assert watch.position_note(row)=="숏 축소 우세(신규 롱 증가 아님)"
+
