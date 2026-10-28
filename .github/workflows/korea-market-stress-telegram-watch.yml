@@ -16,6 +16,8 @@ on:
       - "scripts/korea_market_stress_watch_v15.py"
       - "scripts/korea_market_stress_watch_v16.py"
       - "scripts/fx_sector_rotation_watch.py"
+      - "scripts/korea_equity_fx_hedge_signal.py"
+      - "tests/test_korea_equity_fx_hedge_signal.py"
       - "scripts/kospi_rapid_fallback_watch.py"
       - "scripts/kospi_flow_attribution_ls.py"
   schedule:
@@ -372,15 +374,21 @@ jobs:
       - name: Run market stress and FX sector rotation watchers
         run: |
           rm -f out/korea_market_stress_alert.html out/korea_market_stress_errors.log out/korea_market_stress_connection_test.html
-          rm -f out/fx_sector_rotation_alert.html out/fx_sector_rotation_status.md out/fx_sector_rotation_pending_state.json
+          rm -f out/fx_sector_rotation_alert.html out/fx_sector_rotation_status.md out/fx_sector_rotation_pending_state.json out/korea_equity_fx_hedge_status.md
           python -m py_compile scripts/global_rates_watch.py scripts/korea_market_stress_watch_v4.py scripts/korea_market_stress_watch_v5.py scripts/korea_market_stress_watch_v6.py scripts/korea_market_stress_watch_v9.py scripts/korea_market_stress_watch_v10.py scripts/korea_market_stress_watch_v11.py scripts/korea_market_stress_watch_v12.py scripts/korea_market_stress_watch_v13.py scripts/korea_market_stress_watch_v14.py scripts/korea_market_stress_watch_v15.py scripts/korea_market_stress_watch_v16.py scripts/fx_sector_rotation_watch.py scripts/kospi_flow_attribution_ls.py
           PYTHONPATH=scripts python -m unittest discover -s tests -p "test_korea_market_stress_fx_quote.py" -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p "test_korea_equity_fx_hedge_signal.py" -v
           python scripts/korea_market_stress_watch_v16.py
           python scripts/fx_sector_rotation_watch.py
+          python scripts/korea_equity_fx_hedge_signal.py
           cat out/korea_market_stress_status.md >> "$GITHUB_STEP_SUMMARY"
           if [ -s out/fx_sector_rotation_status.md ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
             cat out/fx_sector_rotation_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -s out/korea_equity_fx_hedge_status.md ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            cat out/korea_equity_fx_hedge_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -s out/korea_market_stress_errors.log ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
@@ -548,6 +556,7 @@ jobs:
             out/fx_sector_rotation_status.md
             out/fx_sector_rotation_alert.html
             out/fx_sector_rotation_pending_state.json
+            out/korea_equity_fx_hedge_status.md
             out/kospi_rapid_fallback_status.md
             out/kospi_rapid_fallback_pending_state.json
             out/market_source_evidence/
