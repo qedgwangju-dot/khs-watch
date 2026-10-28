@@ -768,3 +768,26 @@ def test_late_weekly_report_title_is_not_falsely_monday(monkeypatch):
     assert "주간 점검 지연 복구" in title
     assert "월요일 07:00" not in title
     assert len(title) + 2 + len(body) < 4096
+
+
+def test_fomc_priority_does_not_consume_missed_weekly_report(monkeypatch):
+    from datetime import datetime as RealDateTime
+    class FakeNow(RealDateTime):
+        @classmethod
+        def now(cls, tz=None):
+            return RealDateTime(2026, 10, 28, 21, 7, tzinfo=tz)
+    monkeypatch.setattr(equity, "datetime", FakeNow)
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snapshot: (True, []))
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "schedule")
+    monkeypatch.setenv("CTA_TRIGGER_SCHEDULE", "7,22,37,52 12-22 * * 1-5")
+    snap = {"snapshot": {"checked_kst": "2026-10-28T21:07:00+09:00"}}
+    both_missing = {"last_weekly_report_key": "2026-W42", "last_fomc_eve_report": "2026-09-16"}
+    weekly, fomc, week_key, fomc_key = equity._scheduled_due(both_missing, snap)
+    assert weekly is False
+    assert fomc is True and fomc_key == "2026-10-28"
+    assert week_key == "2026-W44"
+
+    # Only after successful FOMC delivery is the weekly catch-up eligible.
+    done_fomc = {**both_missing, "last_fomc_eve_report": "2026-10-28"}
+    weekly_after, fomc_after, _, _ = equity._scheduled_due(done_fomc, snap)
+    assert weekly_after is True and fomc_after is False
