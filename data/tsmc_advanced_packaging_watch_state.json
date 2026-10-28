@@ -87,5 +87,113 @@
       "substrate": "tight"
     },
     "note": "기존 전송 이력은 감사 추적용으로 보존하되 현재 상태 기준선과 재알림 판정에는 사용하지 않음"
+  },
+  "_delivery": {
+    "id": "0f7848b3cca87b91f124640a8de308ccb027e985ff89b9a5fbb1868dfbe3b838",
+    "status": "queued",
+    "created_at_kst": "2026-10-28T16:02:07+09:00",
+    "chunks": [
+      "🚨 <b>TSMC 첨단패키징·자이 상태 변화</b>\n━━━━━━━━━━━━━━━━\n• 이번 변화: <b>CoWoS 가격 10~20% 인상 추진 보도·공식 미확정</b>\n• 자이 공장 수: <b>총 10개 · 추가 5개</b>\n• 공장 수 확인 수준: 공급망·업계 보도\n• 자이 과학단지 확대 단계: <b>부지 확대 의견수렴</b>\n• 확대 단계 확인 수준: 공식자료\n• CoWoS 패키징 가격: <b>10~20%</b> · 공급망·언론 보도, TSMC 공식 확정 전\n• 가격 출처: <a href=\"https://ww2.money-link.com.tw/RealtimeNews/NewsContent.aspx?pu=News_0002_3&amp;sn=6340272001\">보도 근거</a>\n• 주의: 2026년 월 13만 장·2027년 월 20만 장은 업계 추정·목표로 실제 가동 실적과 다름\n• 다음 확인: TSMC 공식 투자결정·환경영향평가·착공·장비 발주/반입·시험생산·양산·실제 월 생산능력\n• 중복 방지: 같은 기사 재배포·제목 변경만으로는 다시 알리지 않습니다.\n• 조회: 2026-10-28 16:02 KST"
+    ],
+    "next_chunk": 0,
+    "message_ids": [],
+    "candidate": {
+      "watch_version": 2,
+      "baseline_seeded_at_kst": "2026-09-27T18:02:00+09:00",
+      "baseline_note": "2026-09-27 LTN 공급망 보도의 嘉義 총 10개·추가 5개를 현재값으로 잠금. 같은 보도의 재배포는 최초 알림으로 역송출하지 않음. 2026-09-24 NSTC의 嘉義園區擴建計畫(二期擴大) 의견수렴은 공식 단계로 별도 잠금.",
+      "current_state": {
+        "chiayi_total_fabs": 10,
+        "chiayi_additional_fabs": 5,
+        "chiayi_phase3_status": "public_comment",
+        "fab_count_evidence_state": "supply_chain_report",
+        "phase3_evidence_state": "official",
+        "last_evidence_state": "supply_chain_report",
+        "last_source_url": "https://ec.ltn.com.tw/article/paper/1772416",
+        "last_source_name": "ec.ltn.com.tw",
+        "last_event_title": "嘉科三期擴建起跑 台積電再加碼5座先進封裝廠 - ec.ltn.com.tw",
+        "official_source_url": "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch",
+        "last_source_published_at_kst": "2026-09-28T06:30:00+09:00",
+        "bottlenecks": {
+          "hbm": {
+            "status": "tight",
+            "evidence_state": "research",
+            "source_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+            "source_name": "TrendForce",
+            "source_title": "HBM Supply Constraints Persist, 2027 Price Outlook Revised Upward",
+            "source_published_at_kst": "2026-09-29T00:00:00+09:00"
+          },
+          "cowos": {
+            "status": "tight",
+            "evidence_state": "research",
+            "source_url": "https://www.trendforce.com/presscenter/news/20260918-13241.html",
+            "source_name": "TrendForce",
+            "source_title": "AI Chip Packaging Pushes Beyond Reticle Limits",
+            "source_published_at_kst": "2026-09-18T00:00:00+09:00"
+          },
+          "substrate": {
+            "status": "tight",
+            "evidence_state": "supply_chain_report",
+            "source_url": "https://www.trendforce.com/news/2026/09/03/news-tsmc-equipment-demand-reportedly-jumps-90-in-just-over-half-a-year-substrate-capacity-faces-ai-squeeze/",
+            "source_name": "TrendForce News",
+            "source_title": "Substrate Capacity Faces AI Squeeze",
+            "source_published_at_kst": "2026-09-03T00:00:00+09:00"
+          }
+        },
+        "cowos_price_upper_pct": 20,
+        "cowos_price_lower_pct": 10,
+        "cowos_price_stage": "reported_discussion",
+        "cowos_price_source_url": "https://ww2.money-link.com.tw/RealtimeNews/NewsContent.aspx?pu=News_0002_3&sn=6340272001",
+        "cowos_price_source_name": "工商時報·時報新聞 동일 기사 재게시",
+        "cowos_price_as_of": "2026-10-27T09:04:00+09:00"
+      },
+      "baseline_sources": [
+        "https://ec.ltn.com.tw/article/breakingnews/5586843",
+        "https://stock.ltn.com.tw/article/gqpj9vhyk1ku",
+        "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
+      ],
+      "last_checked_at_kst": "2026-10-28T16:02:03+09:00",
+      "last_evidence_url": "https://ec.ltn.com.tw/article/paper/1772416",
+      "last_evidence_published_at_kst": "2026-09-28T06:30:00+09:00",
+      "last_alert_reasons": [
+        "CoWoS 가격 10~20% 인상 추진 보도·공식 미확정"
+      ],
+      "last_alert_at_kst": "2026-10-28T16:02:03+09:00",
+      "last_successful_delivery_kst": "2026-10-01T22:18:08+09:00",
+      "telegram_message_ids": [
+        201
+      ],
+      "telegram_message_id": 201,
+      "bot_username": "khs88798879887988798879_bot",
+      "delivery_receipt": {
+        "status": "confirmed",
+        "bot_username": "khs88798879887988798879_bot",
+        "message_ids": [
+          201
+        ],
+        "confirmed_at_kst": "2026-10-01T22:18:08+09:00",
+        "payload_hash": "43de116977a5e5fa3884a6bf47eb263cf857a0ebe5b0880c3543d172bd94713e"
+      },
+      "delivery_check": {
+        "checked_at_kst": "2026-10-28T15:54:13+09:00",
+        "status": "no_message_due"
+      },
+      "bottleneck_parser_version": 2,
+      "bottleneck_parser_migration_note": "v2: 기사 전체 HTML의 관련기사·사이드바 문구를 병목 방향으로 오인하던 문제를 제거하고 명시적 현재 공급상태 기준선으로 재설정.",
+      "false_alert_correction": {
+        "corrected_at_kst": "2026-10-01T22:30:00+09:00",
+        "issue": "병목 키워드와 easing/tight 문구를 기사 전체 HTML에서 독립 검색해 관련기사·사이드바 문구가 서로 결합되는 false positive 및 동일 근거 재처리 시 상태 왕복 발생",
+        "invalid_package_alert_message_ids": [
+          197,
+          201
+        ],
+        "corrected_current_state": {
+          "hbm": "tight",
+          "cowos": "tight",
+          "substrate": "tight"
+        },
+        "note": "기존 전송 이력은 감사 추적용으로 보존하되 현재 상태 기준선과 재알림 판정에는 사용하지 않음"
+      },
+      "cowos_price_report_version": 1
+    }
   }
 }
