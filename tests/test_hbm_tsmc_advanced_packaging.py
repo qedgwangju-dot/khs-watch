@@ -306,6 +306,28 @@ class TSMCAdvancedPackagingTests(unittest.TestCase):
         reverted = w.merge_state(official, reprint)
         self.assertEqual(reverted["cowos_price_stage"], "confirmed")
 
+    def test_cowos_price_article_pinned_once_when_feed_misses_it(self):
+        current = {"chiayi_total_fabs": 10}
+        first = w.merge_state(current, w.COWOS_PRICE_REPORT_BASELINE)
+        self.assertEqual(first["cowos_price_stage"], "reported_discussion")
+        self.assertEqual(first["cowos_price_upper_pct"], 20)
+        self.assertEqual(first["cowos_price_lower_pct"], 10)
+        reasons = w.material_changes(current, first)
+        self.assertEqual(len([x for x in reasons if x.startswith("CoWoS 가격 ")]), 1)
+        self.assertEqual(w.material_changes(first, w.merge_state(first, w.COWOS_PRICE_REPORT_BASELINE)), [])
+        self.assertEqual(w.hbm_cross_reasons(current, first), [])
+
+    def test_price_only_alert_does_not_cite_old_unrelated_ltn_source(self):
+        old = {
+            "chiayi_total_fabs": 10,
+            "last_source_url": "https://ec.ltn.com.tw/article/paper/1772416",
+            "last_source_name": "LTN",
+        }
+        current = w.merge_state(old, w.COWOS_PRICE_REPORT_BASELINE)
+        out = w.package_alert_text(current, ["CoWoS 가격 10~20% 인상 추진 보도·공식 미확정"], w.now_kst())
+        self.assertIn("money-link.com.tw", out)
+        self.assertNotIn("paper/1772416", out)
+
     def test_price_increase_requires_cowos_and_trusted_report(self):
         text = "TSMC CoWoS price hike of 20% is under discussion."
         self.assertFalse(w.extract_cowos_price_report(event("CoWoS price hike", source="rumor-blog",
