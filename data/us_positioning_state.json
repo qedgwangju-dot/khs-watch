@@ -1,114 +1,109 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "4b338c61e915b4109e0a33579952a7803c7f4036ac4ece9f0c720b579acaf9d5",
-    "Cboe|options": "a3c165ca09da79dd4c05b60d2c867c7741ab192e7a86fcf4e705c2aab69bc10b",
+    "Nasdaq SOX|sox": "bb4d9eb8f92aa358c272486d88c4a06c6495583c34435af06e3f9ad35e5bbcb9",
+    "Cboe|options": "859ce7be195681d878c7baeb269d9f0de7e05c445b1a0be820cb5660332bfb70",
     "CFTC|cot": "9017b5deb0029722f811a2abd8e0224ff89aea10deec17040e91b9efd6ed1cdc",
-    "미국 주요지수·시장 확산·옵션 과거 비교|context": "2280ee1f8ac58acb43e1a6e105d4779525407f1cc5605c8cdb272f85b6e208fd"
+    "미국 주요지수·시장 확산·옵션 과거 비교|context": "d35bd9f0d658fee0c400e6116fcaf029193244ddb329743c38c82d3354f0b5b0"
   },
   "values": {
     "Nasdaq SOX|sox": {
       "source": "Nasdaq SOX",
       "kind": "sox",
-      "period": "10/26/2026",
+      "period": "10/27/2026",
       "metrics": {
-        "value": 11083.47,
-        "previous_close": 10779.4599609375,
+        "value": 11482.51,
+        "previous_close": 11083.4697265625,
         "previous_close_source": "Yahoo daily close cross-check",
-        "net_change": 304.01003906249935,
+        "net_change": 399.0402734375002,
         "net_change_source": "Nasdaq official completed close minus Yahoo prior daily close",
-        "pct": 2.8202715179069138,
-        "d1_pct": 2.8202715179069138,
+        "pct": 3.6003190632728055,
+        "d1_pct": 3.6003190632728055,
         "official_overview_url": "https://indexes.nasdaq.com/Index/History/SOX",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=6mo&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": 0.0002734374993451638,
+        "crosscheck_close_diff": 0.005117187500218279,
         "final_close_confirmed": true,
-        "expected_completed_session": "2026-10-26",
-        "d3_pct": -3.668572929204661,
-        "d5_pct": -2.0578218788304903,
+        "expected_completed_session": "2026-10-27",
+        "d3_pct": 6.993344949219016,
+        "d5_pct": 1.7608885657089068,
         "month_windows": {
           "1m": {
             "calendar_months": 1,
-            "cutoff_date": "2026-09-26",
-            "end_date": "2026-10-26",
-            "end_close": 11083.47,
+            "cutoff_date": "2026-09-27",
+            "end_date": "2026-10-27",
+            "end_close": 11482.51,
             "basis": "calendar months; latest observed close on or before cutoff",
             "status": "verified",
             "base_date": "2026-09-25",
             "yahoo_base_close": 12668.9296875,
             "nasdaq_base_close": 12668.93,
-            "cutoff_gap_days": 1,
+            "cutoff_gap_days": 2,
             "base_close": 12668.93,
             "base_crosscheck_diff": 0.0003125000002910383,
-            "return_pct": -12.514553320604039
+            "return_pct": -9.36480034225463
           },
           "3m": {
             "calendar_months": 3,
-            "cutoff_date": "2026-07-26",
-            "end_date": "2026-10-26",
-            "end_close": 11083.47,
+            "cutoff_date": "2026-07-27",
+            "end_date": "2026-10-27",
+            "end_close": 11482.51,
             "basis": "calendar months; latest observed close on or before cutoff",
             "status": "verified",
-            "base_date": "2026-07-24",
-            "yahoo_base_close": 11818.8798828125,
-            "nasdaq_base_close": 11818.89,
-            "cutoff_gap_days": 2,
-            "base_close": 11818.89,
-            "base_crosscheck_diff": 0.010117187499417923,
-            "return_pct": -6.222411749326717
+            "base_date": "2026-07-27",
+            "yahoo_base_close": 11554.8798828125,
+            "nasdaq_base_close": 11554.88,
+            "cutoff_gap_days": 0,
+            "base_close": 11554.88,
+            "base_crosscheck_diff": 0.00011718749919964466,
+            "return_pct": -0.6263154615192779
           }
         },
-        "month_window_history_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-07-16&todate=2026-10-26&limit=200",
+        "month_window_history_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-07-17&todate=2026-10-27&limit=200",
         "price_path": {
           "status": "verified",
-          "end_date": "2026-10-26",
+          "end_date": "2026-10-27",
           "symbol": "SOX",
           "tolerance_points": 0.1,
           "price_basis": "unadjusted completed-session close",
           "values": {
-            "d1_pct": 2.820271145307829,
-            "d3_pct": -3.668574150236925,
-            "d5_pct": -2.057820814857103,
-            "ma20": 12071.269,
-            "ma20_prior5": 12444.595,
-            "ma20_change5_pct": -2.999904777937723,
-            "price_vs_ma20_pct": -8.183058467175252,
-            "ma60": 11959.103666666666,
-            "ma60_prior5": 11963.567666666668,
-            "ma60_change5_pct": -0.037313284167228566,
-            "price_vs_ma60_pct": -7.321900462384157,
-            "close": 11083.47,
+            "d1_pct": 3.6003165073754007,
+            "d3_pct": 6.993397304132132,
+            "d5_pct": 1.7609300404739292,
+            "ma20": 12013.9365,
+            "ma20_prior5": 12374.2945,
+            "ma20_change5_pct": -2.9121498603415397,
+            "price_vs_ma20_pct": -4.423416920840218,
+            "ma60": 11959.973,
+            "ma60_prior5": 11959.049833333333,
+            "ma60_change5_pct": 0.007719398108818609,
+            "price_vs_ma60_pct": -3.992174564273676,
+            "close": 11482.51,
             "peak63_close": 13217.82,
             "peak63_date": "2026-10-06",
-            "drawdown63_pct": -16.147519031126166,
+            "drawdown63_pct": -13.128564316959979,
             "trend": "혼재"
           },
           "month_windows": {
             "1m": {
               "status": "verified",
               "base_date": "2026-09-25",
-              "end_date": "2026-10-26",
+              "end_date": "2026-10-27",
               "base_primary_close": 12668.93,
               "base_secondary_close": 12668.9296875,
-              "end_close": 11083.47,
-              "return_pct": -12.514553320604039
+              "end_close": 11482.51,
+              "return_pct": -9.36480034225463
             },
             "3m": {
               "status": "verified",
-              "base_date": "2026-07-24",
-              "end_date": "2026-10-26",
-              "base_primary_close": 11818.89,
-              "base_secondary_close": 11818.8798828125,
-              "end_close": 11083.47,
-              "return_pct": -6.222411749326717
+              "base_date": "2026-07-27",
+              "end_date": "2026-10-27",
+              "base_primary_close": 11554.88,
+              "base_secondary_close": 11554.8798828125,
+              "end_close": 11482.51,
+              "return_pct": -0.6263154615192779
             }
           },
           "operands": [
-            [
-              "2026-07-24",
-              11818.89,
-              11818.8798828125
-            ],
             [
               "2026-07-27",
               11554.88,
@@ -433,10 +428,14 @@
               "2026-10-26",
               11083.47,
               11083.4697265625
+            ],
+            [
+              "2026-10-27",
+              11482.51,
+              11482.5048828125
             ]
           ],
           "session_dates": [
-            "2026-07-27",
             "2026-07-28",
             "2026-07-29",
             "2026-07-30",
@@ -500,42 +499,43 @@
             "2026-10-21",
             "2026-10-22",
             "2026-10-23",
-            "2026-10-26"
+            "2026-10-26",
+            "2026-10-27"
           ]
         }
       },
       "url": "https://indexes.nasdaq.com/Index/History/SOX",
-      "fingerprint": "4b338c61e915b4109e0a33579952a7803c7f4036ac4ece9f0c720b579acaf9d5"
+      "fingerprint": "bb4d9eb8f92aa358c272486d88c4a06c6495583c34435af06e3f9ad35e5bbcb9"
     },
     "Cboe|options": {
       "source": "Cboe",
       "kind": "options",
-      "period": "Monday, October 26, 2026",
+      "period": "Tuesday, October 27, 2026",
       "metrics": {
-        "total_pc_ratio": 0.86,
-        "total_calls": 6425254,
-        "total_puts": 5554901,
+        "total_pc_ratio": 0.93,
+        "total_calls": 6654616,
+        "total_puts": 6161509,
         "total_time_ct": "일별 마감",
-        "equity_pc_ratio": 0.6,
-        "equity_calls": 2117482,
-        "equity_puts": 1261189,
+        "equity_pc_ratio": 0.59,
+        "equity_calls": 1969246,
+        "equity_puts": 1162839,
         "equity_time_ct": "일별 마감",
-        "index_pc_ratio": 0.96,
-        "index_calls": 3075251,
-        "index_puts": 2948760,
+        "index_pc_ratio": 1.06,
+        "index_calls": 3235168,
+        "index_puts": 3423619,
         "index_time_ct": "일별 마감",
         "snapshot_type": "cboe_daily_eod",
         "final_snapshot": true,
         "daily_ratio_crosscheck": {
-          "date": "2026-10-26",
-          "total": 0.86,
-          "index": 0.96,
-          "equity": 0.6,
-          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-26"
+          "date": "2026-10-27",
+          "total": 0.93,
+          "index": 1.06,
+          "equity": 0.59,
+          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-27"
         }
       },
-      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-26",
-      "fingerprint": "a3c165ca09da79dd4c05b60d2c867c7741ab192e7a86fcf4e705c2aab69bc10b"
+      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-27",
+      "fingerprint": "859ce7be195681d878c7baeb269d9f0de7e05c445b1a0be820cb5660332bfb70"
     },
     "CFTC|cot": {
       "source": "CFTC",
@@ -748,76 +748,71 @@
     "미국 주요지수·시장 확산·옵션 과거 비교|context": {
       "source": "미국 주요지수·시장 확산·옵션 과거 비교",
       "kind": "context",
-      "period": "2026-10-26",
+      "period": "2026-10-27",
       "metrics": {
         "indices": {
           "NDX": {
             "status": "unavailable",
-            "end_date": "2026-10-26",
+            "end_date": "2026-10-27",
             "symbol": "NDX",
             "tolerance_points": 0.1,
             "price_basis": "unadjusted completed-session close",
             "reason": "제공처 종가 불일치: 2026-10-06",
-            "primary_url": "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&fromdate=2026-04-19&todate=2026-10-26&limit=200",
+            "primary_url": "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&fromdate=2026-04-20&todate=2026-10-27&limit=200",
             "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ENDX?range=6mo&interval=1d",
             "returns": {
               "status": "unavailable",
               "symbol": "NDX",
-              "end_date": "2026-10-26",
+              "end_date": "2026-10-27",
               "windows": {},
               "reason": "현재 종가 누락·제공처 불일치"
             }
           },
           "SPX": {
             "status": "verified",
-            "end_date": "2026-10-26",
+            "end_date": "2026-10-27",
             "symbol": "SPX",
             "tolerance_points": 0.1,
             "price_basis": "unadjusted completed-session close",
             "values": {
-              "d1_pct": 0.6963828492276614,
-              "d3_pct": -1.0364604617405515,
-              "d5_pct": -0.18151722918369195,
-              "ma20": 7727.128999999999,
-              "ma20_prior5": 7735.543,
-              "ma20_change5_pct": -0.10877064480154797,
-              "price_vs_ma20_pct": -0.6517168278153296,
-              "ma60": 7703.594833333334,
-              "ma60_prior5": 7681.1255,
-              "ma60_change5_pct": 0.2925265748272565,
-              "price_vs_ma60_pct": -0.348211892157968,
-              "close": 7676.77,
+              "d1_pct": 0.5969958719617807,
+              "d3_pct": 0.7721085727931287,
+              "d5_pct": 0.13004744203295449,
+              "ma20": 7729.717,
+              "ma20_prior5": 7732.9395,
+              "ma20_change5_pct": -0.04167238085854841,
+              "price_vs_ma20_pct": -0.092073228554157,
+              "ma60": 7705.629833333333,
+              "ma60_prior5": 7686.115333333333,
+              "ma60_change5_pct": 0.2538928854654232,
+              "price_vs_ma60_pct": 0.220230753795847,
+              "close": 7722.6,
               "peak63_close": 7818.93,
               "peak63_date": "2026-10-06",
-              "drawdown63_pct": -1.818151588516581,
+              "drawdown63_pct": -1.2320100064842632,
               "trend": "혼재"
             },
             "month_windows": {
               "1m": {
                 "status": "verified",
                 "base_date": "2026-09-25",
-                "end_date": "2026-10-26",
+                "end_date": "2026-10-27",
                 "base_primary_close": 7743.41,
                 "base_secondary_close": 7743.41015625,
-                "end_close": 7676.77,
-                "return_pct": -0.8606027576997688
+                "end_close": 7722.6,
+                "return_pct": -0.26874464867544523
               },
               "3m": {
                 "status": "verified",
-                "base_date": "2026-07-24",
-                "end_date": "2026-10-26",
-                "base_primary_close": 7411.98,
-                "base_secondary_close": 7411.97998046875,
-                "end_close": 7676.77,
-                "return_pct": 3.572459720614485
+                "base_date": "2026-07-27",
+                "end_date": "2026-10-27",
+                "base_primary_close": 7413.18,
+                "base_secondary_close": 7413.18017578125,
+                "end_close": 7722.6,
+                "return_pct": 4.173917266274385
               }
             },
             "operands": [
-              [
-                "2026-07-24",
-                7411.98,
-                7411.97998046875
-              ],
               [
                 "2026-07-27",
                 7413.18,
@@ -1142,10 +1137,14 @@
                 "2026-10-26",
                 7676.77,
                 7676.77001953125
+              ],
+              [
+                "2026-10-27",
+                7722.6,
+                7722.60009765625
               ]
             ],
             "session_dates": [
-              "2026-07-27",
               "2026-07-28",
               "2026-07-29",
               "2026-07-30",
@@ -1209,73 +1208,74 @@
               "2026-10-21",
               "2026-10-22",
               "2026-10-23",
-              "2026-10-26"
+              "2026-10-26",
+              "2026-10-27"
             ],
             "primary_url": "https://cdn.cboe.com/api/global/delayed_quotes/charts/historical/_SPX.json",
             "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=6mo&interval=1d",
             "returns": {
               "status": "verified",
               "symbol": "SPX",
-              "end_date": "2026-10-26",
+              "end_date": "2026-10-27",
               "windows": {
                 "1d": {
                   "status": "verified",
-                  "base_date": "2026-10-23",
-                  "end_date": "2026-10-26",
-                  "base_primary": 7623.68,
-                  "base_secondary": 7623.68017578125,
-                  "end_primary": 7676.77,
-                  "end_secondary": 7676.77001953125,
-                  "return_pct": 0.6963828492276614
+                  "base_date": "2026-10-26",
+                  "end_date": "2026-10-27",
+                  "base_primary": 7676.77,
+                  "base_secondary": 7676.77001953125,
+                  "end_primary": 7722.6,
+                  "end_secondary": 7722.60009765625,
+                  "return_pct": 0.5969958719617807
                 },
                 "3d": {
                   "status": "verified",
-                  "base_date": "2026-10-21",
-                  "end_date": "2026-10-26",
-                  "base_primary": 7757.17,
-                  "base_secondary": 7757.169921875,
-                  "end_primary": 7676.77,
-                  "end_secondary": 7676.77001953125,
-                  "return_pct": -1.0364604617405515
+                  "base_date": "2026-10-22",
+                  "end_date": "2026-10-27",
+                  "base_primary": 7663.43,
+                  "base_secondary": 7663.43017578125,
+                  "end_primary": 7722.6,
+                  "end_secondary": 7722.60009765625,
+                  "return_pct": 0.7721085727931287
                 },
                 "5d": {
                   "status": "verified",
-                  "base_date": "2026-10-19",
-                  "end_date": "2026-10-26",
-                  "base_primary": 7690.73,
-                  "base_secondary": 7690.72998046875,
-                  "end_primary": 7676.77,
-                  "end_secondary": 7676.77001953125,
-                  "return_pct": -0.18151722918369195
+                  "base_date": "2026-10-20",
+                  "end_date": "2026-10-27",
+                  "base_primary": 7712.57,
+                  "base_secondary": 7712.56982421875,
+                  "end_primary": 7722.6,
+                  "end_secondary": 7722.60009765625,
+                  "return_pct": 0.13004744203295449
                 },
                 "1m": {
                   "status": "verified",
                   "base_date": "2026-09-25",
-                  "end_date": "2026-10-26",
+                  "end_date": "2026-10-27",
                   "base_primary": 7743.41,
                   "base_secondary": 7743.41015625,
-                  "end_primary": 7676.77,
-                  "end_secondary": 7676.77001953125,
-                  "return_pct": -0.8606027576997688
+                  "end_primary": 7722.6,
+                  "end_secondary": 7722.60009765625,
+                  "return_pct": -0.26874464867544523
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-07-24",
-                  "end_date": "2026-10-26",
-                  "base_primary": 7411.98,
-                  "base_secondary": 7411.97998046875,
-                  "end_primary": 7676.77,
-                  "end_secondary": 7676.77001953125,
-                  "return_pct": 3.572459720614485
+                  "base_date": "2026-07-27",
+                  "end_date": "2026-10-27",
+                  "base_primary": 7413.18,
+                  "base_secondary": 7413.18017578125,
+                  "end_primary": 7722.6,
+                  "end_secondary": 7722.60009765625,
+                  "return_pct": 4.173917266274385
                 }
               },
-              "close": 7676.77,
-              "peer_close": 7676.77001953125,
+              "close": 7722.6,
+              "peer_close": 7722.60009765625,
               "operands": [
                 [
-                  "2026-07-24",
-                  7411.98,
-                  7411.97998046875
+                  "2026-07-27",
+                  7413.18,
+                  7413.18017578125
                 ],
                 [
                   "2026-09-25",
@@ -1283,24 +1283,24 @@
                   7743.41015625
                 ],
                 [
-                  "2026-10-19",
-                  7690.73,
-                  7690.72998046875
+                  "2026-10-20",
+                  7712.57,
+                  7712.56982421875
                 ],
                 [
-                  "2026-10-21",
-                  7757.17,
-                  7757.169921875
-                ],
-                [
-                  "2026-10-23",
-                  7623.68,
-                  7623.68017578125
+                  "2026-10-22",
+                  7663.43,
+                  7663.43017578125
                 ],
                 [
                   "2026-10-26",
                   7676.77,
                   7676.77001953125
+                ],
+                [
+                  "2026-10-27",
+                  7722.6,
+                  7722.60009765625
                 ]
               ]
             }
@@ -1310,54 +1310,49 @@
           "series": {
             "RSP": {
               "status": "verified",
-              "end_date": "2026-10-26",
+              "end_date": "2026-10-27",
               "symbol": "RSP",
               "tolerance_points": 0.1,
               "price_basis": "unadjusted completed-session close",
               "values": {
-                "d1_pct": 0.3463563313937268,
-                "d3_pct": 0.3000369276218606,
-                "d5_pct": 1.8228678537956844,
-                "ma20": 213.04149999999998,
-                "ma20_prior5": 211.575,
-                "ma20_change5_pct": 0.6931348221670852,
-                "price_vs_ma20_pct": 1.99421239523756,
-                "ma60": 216.09,
-                "ma60_prior5": 215.99733333333333,
-                "ma60_change5_pct": 0.04290176421930525,
-                "price_vs_ma60_pct": 0.5553241704845169,
-                "close": 217.29,
+                "d1_pct": 0.10584932578583395,
+                "d3_pct": -0.32077719732379606,
+                "d5_pct": 0.7690169554340764,
+                "ma20": 213.44250000000002,
+                "ma20_prior5": 211.728,
+                "ma20_change5_pct": 0.8097653593289511,
+                "price_vs_ma20_pct": 1.9103505627979356,
+                "ma60": 216.09683333333334,
+                "ma60_prior5": 216.00866666666667,
+                "ma60_change5_pct": 0.04081626354497381,
+                "price_vs_ma60_pct": 0.6585782145504204,
+                "close": 217.52,
                 "peak63_close": 222.77,
                 "peak63_date": "2026-08-14",
-                "drawdown63_pct": -2.459936257126194,
+                "drawdown63_pct": -2.3566907572832974,
                 "trend": "혼재"
               },
               "month_windows": {
                 "1m": {
                   "status": "verified",
                   "base_date": "2026-09-25",
-                  "end_date": "2026-10-26",
+                  "end_date": "2026-10-27",
                   "base_primary_close": 211.11,
                   "base_secondary_close": 211.11000061035156,
-                  "end_close": 217.29,
-                  "return_pct": 2.9273838283359277
+                  "end_close": 217.52,
+                  "return_pct": 3.0363317701672
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-07-24",
-                  "end_date": "2026-10-26",
-                  "base_primary_close": 213.57,
-                  "base_secondary_close": 213.57000732421875,
-                  "end_close": 217.29,
-                  "return_pct": 1.7418176710212174
+                  "base_date": "2026-07-27",
+                  "end_date": "2026-10-27",
+                  "base_primary_close": 215.18,
+                  "base_secondary_close": 215.17999267578125,
+                  "end_close": 217.52,
+                  "return_pct": 1.087461660005573
                 }
               },
               "operands": [
-                [
-                  "2026-07-24",
-                  213.57,
-                  213.57000732421875
-                ],
                 [
                   "2026-07-27",
                   215.18,
@@ -1682,10 +1677,14 @@
                   "2026-10-26",
                   217.29,
                   217.2899932861328
+                ],
+                [
+                  "2026-10-27",
+                  217.52,
+                  217.52000427246094
                 ]
               ],
               "session_dates": [
-                "2026-07-27",
                 "2026-07-28",
                 "2026-07-29",
                 "2026-07-30",
@@ -1749,73 +1748,74 @@
                 "2026-10-21",
                 "2026-10-22",
                 "2026-10-23",
-                "2026-10-26"
+                "2026-10-26",
+                "2026-10-27"
               ],
-              "primary_url": "https://api.nasdaq.com/api/quote/RSP/historical?assetclass=etf&fromdate=2026-04-19&todate=2026-10-26&limit=200",
+              "primary_url": "https://api.nasdaq.com/api/quote/RSP/historical?assetclass=etf&fromdate=2026-04-20&todate=2026-10-27&limit=200",
               "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/RSP?range=6mo&interval=1d",
               "returns": {
                 "status": "verified",
                 "symbol": "RSP",
-                "end_date": "2026-10-26",
+                "end_date": "2026-10-27",
                 "windows": {
                   "1d": {
                     "status": "verified",
-                    "base_date": "2026-10-23",
-                    "end_date": "2026-10-26",
-                    "base_primary": 216.54,
-                    "base_secondary": 216.5399932861328,
-                    "end_primary": 217.29,
-                    "end_secondary": 217.2899932861328,
-                    "return_pct": 0.3463563313937268
+                    "base_date": "2026-10-26",
+                    "end_date": "2026-10-27",
+                    "base_primary": 217.29,
+                    "base_secondary": 217.2899932861328,
+                    "end_primary": 217.52,
+                    "end_secondary": 217.52000427246094,
+                    "return_pct": 0.10584932578583395
                   },
                   "3d": {
                     "status": "verified",
-                    "base_date": "2026-10-21",
-                    "end_date": "2026-10-26",
-                    "base_primary": 216.64,
-                    "base_secondary": 216.63999938964844,
-                    "end_primary": 217.29,
-                    "end_secondary": 217.2899932861328,
-                    "return_pct": 0.3000369276218606
+                    "base_date": "2026-10-22",
+                    "end_date": "2026-10-27",
+                    "base_primary": 218.22,
+                    "base_secondary": 218.22000122070312,
+                    "end_primary": 217.52,
+                    "end_secondary": 217.52000427246094,
+                    "return_pct": -0.32077719732379606
                   },
                   "5d": {
                     "status": "verified",
-                    "base_date": "2026-10-19",
-                    "end_date": "2026-10-26",
-                    "base_primary": 213.4,
-                    "base_secondary": 213.39999389648438,
-                    "end_primary": 217.29,
-                    "end_secondary": 217.2899932861328,
-                    "return_pct": 1.8228678537956844
+                    "base_date": "2026-10-20",
+                    "end_date": "2026-10-27",
+                    "base_primary": 215.86,
+                    "base_secondary": 215.86000061035156,
+                    "end_primary": 217.52,
+                    "end_secondary": 217.52000427246094,
+                    "return_pct": 0.7690169554340764
                   },
                   "1m": {
                     "status": "verified",
                     "base_date": "2026-09-25",
-                    "end_date": "2026-10-26",
+                    "end_date": "2026-10-27",
                     "base_primary": 211.11,
                     "base_secondary": 211.11000061035156,
-                    "end_primary": 217.29,
-                    "end_secondary": 217.2899932861328,
-                    "return_pct": 2.9273838283359277
+                    "end_primary": 217.52,
+                    "end_secondary": 217.52000427246094,
+                    "return_pct": 3.0363317701672
                   },
                   "3m": {
                     "status": "verified",
-                    "base_date": "2026-07-24",
-                    "end_date": "2026-10-26",
-                    "base_primary": 213.57,
-                    "base_secondary": 213.57000732421875,
-                    "end_primary": 217.29,
-                    "end_secondary": 217.2899932861328,
-                    "return_pct": 1.7418176710212174
+                    "base_date": "2026-07-27",
+                    "end_date": "2026-10-27",
+                    "base_primary": 215.18,
+                    "base_secondary": 215.17999267578125,
+                    "end_primary": 217.52,
+                    "end_secondary": 217.52000427246094,
+                    "return_pct": 1.087461660005573
                   }
                 },
-                "close": 217.29,
-                "peer_close": 217.2899932861328,
+                "close": 217.52,
+                "peer_close": 217.52000427246094,
                 "operands": [
                   [
-                    "2026-07-24",
-                    213.57,
-                    213.57000732421875
+                    "2026-07-27",
+                    215.18,
+                    215.17999267578125
                   ],
                   [
                     "2026-09-25",
@@ -1823,32 +1823,28 @@
                     211.11000061035156
                   ],
                   [
-                    "2026-10-19",
-                    213.4,
-                    213.39999389648438
+                    "2026-10-20",
+                    215.86,
+                    215.86000061035156
                   ],
                   [
-                    "2026-10-21",
-                    216.64,
-                    216.63999938964844
-                  ],
-                  [
-                    "2026-10-23",
-                    216.54,
-                    216.5399932861328
+                    "2026-10-22",
+                    218.22,
+                    218.22000122070312
                   ],
                   [
                     "2026-10-26",
                     217.29,
                     217.2899932861328
+                  ],
+                  [
+                    "2026-10-27",
+                    217.52,
+                    217.52000427246094
                   ]
                 ]
               },
               "adjusted_operands": [
-                [
-                  "2026-04-27",
-                  200.25875854492188
-                ],
                 [
                   "2026-04-28",
                   199.23655700683594
@@ -2352,59 +2348,58 @@
                 [
                   "2026-10-26",
                   217.2899932861328
+                ],
+                [
+                  "2026-10-27",
+                  217.52000427246094
                 ]
               ]
             },
             "SPY": {
               "status": "verified",
-              "end_date": "2026-10-26",
+              "end_date": "2026-10-27",
               "symbol": "SPY",
               "tolerance_points": 0.1,
               "price_basis": "unadjusted completed-session close",
               "values": {
-                "d1_pct": 0.7105543639880585,
-                "d3_pct": -0.9985900736007469,
-                "d5_pct": -0.1448178686984658,
-                "ma20": 770.1385,
-                "ma20_prior5": 770.833,
-                "ma20_change5_pct": -0.09009733625829908,
-                "price_vs_ma20_pct": -0.6191743433161756,
-                "ma60": 768.1726666666667,
-                "ma60_prior5": 765.9508333333334,
-                "ma60_change5_pct": 0.2900751897695786,
-                "price_vs_ma60_pct": -0.36484852797852296,
-                "close": 765.37,
+                "d1_pct": 0.5605132158302384,
+                "d3_pct": 0.7461123619037613,
+                "d5_pct": 0.0793186398803769,
+                "ma20": 770.4114999999999,
+                "ma20_prior5": 770.6165,
+                "ma20_change5_pct": -0.0266020776871545,
+                "price_vs_ma20_pct": -0.09754527288338144,
+                "ma60": 768.3725,
+                "ma60_prior5": 766.4501666666667,
+                "ma60_change5_pct": 0.25080995698565367,
+                "price_vs_ma60_pct": 0.1675619572538034,
+                "close": 769.66,
                 "peak63_close": 779.09,
                 "peak63_date": "2026-10-06",
-                "drawdown63_pct": -1.7610288926824924,
+                "drawdown63_pct": -1.210386476530323,
                 "trend": "혼재"
               },
               "month_windows": {
                 "1m": {
                   "status": "verified",
                   "base_date": "2026-09-25",
-                  "end_date": "2026-10-26",
+                  "end_date": "2026-10-27",
                   "base_primary_close": 771.35,
                   "base_secondary_close": 771.3499755859375,
-                  "end_close": 765.37,
-                  "return_pct": -0.7752641472742572
+                  "end_close": 769.66,
+                  "return_pct": -0.2190963894470821
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-07-24",
-                  "end_date": "2026-10-26",
-                  "base_primary_close": 738.93,
-                  "base_secondary_close": 738.9299926757812,
-                  "end_close": 765.37,
-                  "return_pct": 3.5781467798032374
+                  "base_date": "2026-07-27",
+                  "end_date": "2026-10-27",
+                  "base_primary_close": 739.09,
+                  "base_secondary_close": 739.0900268554688,
+                  "end_close": 769.66,
+                  "return_pct": 4.136167449160455
                 }
               },
               "operands": [
-                [
-                  "2026-07-24",
-                  738.93,
-                  738.9299926757812
-                ],
                 [
                   "2026-07-27",
                   739.09,
@@ -2729,10 +2724,14 @@
                   "2026-10-26",
                   765.37,
                   765.3699951171875
+                ],
+                [
+                  "2026-10-27",
+                  769.66,
+                  769.6599731445312
                 ]
               ],
               "session_dates": [
-                "2026-07-27",
                 "2026-07-28",
                 "2026-07-29",
                 "2026-07-30",
@@ -2796,73 +2795,74 @@
                 "2026-10-21",
                 "2026-10-22",
                 "2026-10-23",
-                "2026-10-26"
+                "2026-10-26",
+                "2026-10-27"
               ],
-              "primary_url": "https://api.nasdaq.com/api/quote/SPY/historical?assetclass=etf&fromdate=2026-04-19&todate=2026-10-26&limit=200",
+              "primary_url": "https://api.nasdaq.com/api/quote/SPY/historical?assetclass=etf&fromdate=2026-04-20&todate=2026-10-27&limit=200",
               "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?range=6mo&interval=1d",
               "returns": {
                 "status": "verified",
                 "symbol": "SPY",
-                "end_date": "2026-10-26",
+                "end_date": "2026-10-27",
                 "windows": {
                   "1d": {
                     "status": "verified",
-                    "base_date": "2026-10-23",
-                    "end_date": "2026-10-26",
-                    "base_primary": 759.97,
-                    "base_secondary": 759.969970703125,
-                    "end_primary": 765.37,
-                    "end_secondary": 765.3699951171875,
-                    "return_pct": 0.7105543639880585
+                    "base_date": "2026-10-26",
+                    "end_date": "2026-10-27",
+                    "base_primary": 765.37,
+                    "base_secondary": 765.3699951171875,
+                    "end_primary": 769.66,
+                    "end_secondary": 769.6599731445312,
+                    "return_pct": 0.5605132158302384
                   },
                   "3d": {
                     "status": "verified",
-                    "base_date": "2026-10-21",
-                    "end_date": "2026-10-26",
-                    "base_primary": 773.09,
-                    "base_secondary": 773.0900268554688,
-                    "end_primary": 765.37,
-                    "end_secondary": 765.3699951171875,
-                    "return_pct": -0.9985900736007469
+                    "base_date": "2026-10-22",
+                    "end_date": "2026-10-27",
+                    "base_primary": 763.96,
+                    "base_secondary": 763.9600219726562,
+                    "end_primary": 769.66,
+                    "end_secondary": 769.6599731445312,
+                    "return_pct": 0.7461123619037613
                   },
                   "5d": {
                     "status": "verified",
-                    "base_date": "2026-10-19",
-                    "end_date": "2026-10-26",
-                    "base_primary": 766.48,
-                    "base_secondary": 766.47998046875,
-                    "end_primary": 765.37,
-                    "end_secondary": 765.3699951171875,
-                    "return_pct": -0.1448178686984658
+                    "base_date": "2026-10-20",
+                    "end_date": "2026-10-27",
+                    "base_primary": 769.05,
+                    "base_secondary": 769.0499877929688,
+                    "end_primary": 769.66,
+                    "end_secondary": 769.6599731445312,
+                    "return_pct": 0.0793186398803769
                   },
                   "1m": {
                     "status": "verified",
                     "base_date": "2026-09-25",
-                    "end_date": "2026-10-26",
+                    "end_date": "2026-10-27",
                     "base_primary": 771.35,
                     "base_secondary": 771.3499755859375,
-                    "end_primary": 765.37,
-                    "end_secondary": 765.3699951171875,
-                    "return_pct": -0.7752641472742572
+                    "end_primary": 769.66,
+                    "end_secondary": 769.6599731445312,
+                    "return_pct": -0.2190963894470821
                   },
                   "3m": {
                     "status": "verified",
-                    "base_date": "2026-07-24",
-                    "end_date": "2026-10-26",
-                    "base_primary": 738.93,
-                    "base_secondary": 738.9299926757812,
-                    "end_primary": 765.37,
-                    "end_secondary": 765.3699951171875,
-                    "return_pct": 3.5781467798032374
+                    "base_date": "2026-07-27",
+                    "end_date": "2026-10-27",
+                    "base_primary": 739.09,
+                    "base_secondary": 739.0900268554688,
+                    "end_primary": 769.66,
+                    "end_secondary": 769.6599731445312,
+                    "return_pct": 4.136167449160455
                   }
                 },
-                "close": 765.37,
-                "peer_close": 765.3699951171875,
+                "close": 769.66,
+                "peer_close": 769.6599731445312,
                 "operands": [
                   [
-                    "2026-07-24",
-                    738.93,
-                    738.9299926757812
+                    "2026-07-27",
+                    739.09,
+                    739.0900268554688
                   ],
                   [
                     "2026-09-25",
@@ -2870,32 +2870,28 @@
                     771.3499755859375
                   ],
                   [
-                    "2026-10-19",
-                    766.48,
-                    766.47998046875
+                    "2026-10-20",
+                    769.05,
+                    769.0499877929688
                   ],
                   [
-                    "2026-10-21",
-                    773.09,
-                    773.0900268554688
-                  ],
-                  [
-                    "2026-10-23",
-                    759.97,
-                    759.969970703125
+                    "2026-10-22",
+                    763.96,
+                    763.9600219726562
                   ],
                   [
                     "2026-10-26",
                     765.37,
                     765.3699951171875
+                  ],
+                  [
+                    "2026-10-27",
+                    769.66,
+                    769.6599731445312
                   ]
                 ]
               },
               "adjusted_operands": [
-                [
-                  "2026-04-27",
-                  711.5653076171875
-                ],
                 [
                   "2026-04-28",
                   708.1028442382812
@@ -3399,48 +3395,52 @@
                 [
                   "2026-10-26",
                   765.3699951171875
+                ],
+                [
+                  "2026-10-27",
+                  769.6599731445312
                 ]
               ]
             }
           },
           "comparison": {
             "status": "verified",
-            "end_date": "2026-10-26",
+            "end_date": "2026-10-27",
             "basis": "RSP vs SPY; Yahoo dividend/split-adjusted closes; Nasdaq raw-close cross-check",
             "population": "ETF relative performance; not advancing-stock percentage",
             "windows": {
               "5d": {
-                "base_date": "2026-10-19",
-                "end_date": "2026-10-26",
-                "rsp_base": 213.39999389648438,
-                "rsp_end": 217.2899932861328,
-                "spy_base": 766.47998046875,
-                "spy_end": 765.3699951171875,
-                "rsp_return_pct": 1.822867619919144,
-                "spy_return_pct": -0.14481596125754947,
-                "difference_pp": 1.9676835811766935
+                "base_date": "2026-10-20",
+                "end_date": "2026-10-27",
+                "rsp_base": 215.86000061035156,
+                "rsp_end": 217.52000427246094,
+                "spy_base": 769.0499877929688,
+                "spy_end": 769.6599731445312,
+                "rsp_return_pct": 0.7690186497802509,
+                "spy_return_pct": 0.07931673639487435,
+                "difference_pp": 0.6897019133853766
               },
               "1m": {
                 "base_date": "2026-09-25",
-                "end_date": "2026-10-26",
+                "end_date": "2026-10-27",
                 "rsp_base": 211.11000061035156,
-                "rsp_end": 217.2899932861328,
+                "rsp_end": 217.52000427246094,
                 "spy_base": 771.3499755859375,
-                "spy_end": 765.3699951171875,
-                "rsp_return_pct": 2.927380350487385,
-                "spy_return_pct": -0.775261639725533,
-                "difference_pp": 3.702641990212918
+                "spy_end": 769.6599731445312,
+                "rsp_return_pct": 3.0363334960812116,
+                "spy_return_pct": -0.2190967128925414,
+                "difference_pp": 3.255430208973753
               },
               "3m": {
-                "base_date": "2026-07-24",
-                "end_date": "2026-10-26",
-                "rsp_base": 212.77020263671875,
-                "rsp_end": 217.2899932861328,
-                "spy_base": 737.099609375,
-                "spy_end": 765.3699951171875,
-                "rsp_return_pct": 2.124259221170699,
-                "spy_return_pct": 3.835354866916618,
-                "difference_pp": -1.7110956457459192
+                "base_date": "2026-07-27",
+                "end_date": "2026-10-27",
+                "rsp_base": 214.37416076660156,
+                "rsp_end": 217.52000427246094,
+                "spy_base": 737.25927734375,
+                "spy_end": 769.6599731445312,
+                "rsp_return_pct": 1.46745461048563,
+                "spy_return_pct": 4.394749146801757,
+                "difference_pp": -2.9272945363161273
               }
             }
           }
@@ -3448,16 +3448,16 @@
         "options": {
           "1m": {
             "status": "verified",
-            "start_date": "2026-09-26",
-            "end_exclusive": "2026-10-26",
-            "expected_sessions": 20,
+            "start_date": "2026-09-27",
+            "end_exclusive": "2026-10-27",
+            "expected_sessions": 21,
             "basis": "published daily P/C; current day excluded; <= tie convention",
             "values": {
               "equity": {
-                "current_pc": 0.6,
-                "sample_n": 20,
+                "current_pc": 0.59,
+                "sample_n": 21,
                 "median_pc": 0.58,
-                "current_le_percent": 60.0,
+                "current_le_percent": 57.14285714285714,
                 "min_pc": 0.38,
                 "max_pc": 0.69,
                 "operands": [
@@ -3580,14 +3580,20 @@
                     "calls": 2197255,
                     "puts": 1482825,
                     "pc_ratio": 0.67
+                  },
+                  {
+                    "date": "2026-10-26",
+                    "calls": 2117482,
+                    "puts": 1261189,
+                    "pc_ratio": 0.6
                   }
                 ]
               },
               "index": {
-                "current_pc": 0.96,
-                "sample_n": 20,
+                "current_pc": 1.06,
+                "sample_n": 21,
                 "median_pc": 1.01,
-                "current_le_percent": 20.0,
+                "current_le_percent": 90.47619047619048,
                 "min_pc": 0.86,
                 "max_pc": 1.13,
                 "operands": [
@@ -3710,14 +3716,20 @@
                     "calls": 2932114,
                     "puts": 3232795,
                     "pc_ratio": 1.1
+                  },
+                  {
+                    "date": "2026-10-26",
+                    "calls": 3075251,
+                    "puts": 2948760,
+                    "pc_ratio": 0.96
                   }
                 ]
               },
               "total": {
-                "current_pc": 0.86,
-                "sample_n": 20,
+                "current_pc": 0.93,
+                "sample_n": 21,
                 "median_pc": 0.87,
-                "current_le_percent": 35.0,
+                "current_le_percent": 95.23809523809523,
                 "min_pc": 0.76,
                 "max_pc": 0.94,
                 "operands": [
@@ -3840,6 +3852,12 @@
                     "calls": 6899437,
                     "puts": 6400131,
                     "pc_ratio": 0.93
+                  },
+                  {
+                    "date": "2026-10-26",
+                    "calls": 6425254,
+                    "puts": 5554901,
+                    "pc_ratio": 0.86
                   }
                 ]
               }
@@ -3848,16 +3866,16 @@
           },
           "3m": {
             "status": "verified",
-            "start_date": "2026-07-26",
-            "end_exclusive": "2026-10-26",
-            "expected_sessions": 64,
+            "start_date": "2026-07-27",
+            "end_exclusive": "2026-10-27",
+            "expected_sessions": 65,
             "basis": "published daily P/C; current day excluded; <= tie convention",
             "values": {
               "equity": {
-                "current_pc": 0.6,
-                "sample_n": 64,
+                "current_pc": 0.59,
+                "sample_n": 65,
                 "median_pc": 0.58,
-                "current_le_percent": 59.375,
+                "current_le_percent": 55.38461538461539,
                 "min_pc": 0.38,
                 "max_pc": 0.71,
                 "operands": [
@@ -4244,14 +4262,20 @@
                     "calls": 2197255,
                     "puts": 1482825,
                     "pc_ratio": 0.67
+                  },
+                  {
+                    "date": "2026-10-26",
+                    "calls": 2117482,
+                    "puts": 1261189,
+                    "pc_ratio": 0.6
                   }
                 ]
               },
               "index": {
-                "current_pc": 0.96,
-                "sample_n": 64,
+                "current_pc": 1.06,
+                "sample_n": 65,
                 "median_pc": 0.99,
-                "current_le_percent": 37.5,
+                "current_le_percent": 90.76923076923077,
                 "min_pc": 0.78,
                 "max_pc": 1.13,
                 "operands": [
@@ -4638,14 +4662,20 @@
                     "calls": 2932114,
                     "puts": 3232795,
                     "pc_ratio": 1.1
+                  },
+                  {
+                    "date": "2026-10-26",
+                    "calls": 3075251,
+                    "puts": 2948760,
+                    "pc_ratio": 0.96
                   }
                 ]
               },
               "total": {
-                "current_pc": 0.86,
-                "sample_n": 64,
-                "median_pc": 0.85,
-                "current_le_percent": 57.8125,
+                "current_pc": 0.93,
+                "sample_n": 65,
+                "median_pc": 0.86,
+                "current_le_percent": 89.23076923076924,
                 "min_pc": 0.69,
                 "max_pc": 1.05,
                 "operands": [
@@ -5032,6 +5062,12 @@
                     "calls": 6899437,
                     "puts": 6400131,
                     "pc_ratio": 0.93
+                  },
+                  {
+                    "date": "2026-10-26",
+                    "calls": 6425254,
+                    "puts": 5554901,
+                    "pc_ratio": 0.86
                   }
                 ]
               }
@@ -5042,7 +5078,7 @@
         "amounts": {
           "turnover": {
             "status": "unavailable",
-            "end_date": "2026-10-26",
+            "end_date": "2026-10-27",
             "currency": "USD",
             "scope": "US consolidated equities; all exchanges and TRFs; Tapes A/B/C",
             "basis": "sum of each execution price times shares; Cboe published notional",
@@ -5051,7 +5087,7 @@
           },
           "turnover_comparisons": {
             "status": "unavailable",
-            "end_date": "2026-10-26",
+            "end_date": "2026-10-27",
             "currency": "USD",
             "scope": "US consolidated equities; all exchanges and TRFs; Tapes A/B/C",
             "basis": "adjacent nonoverlapping periods; comparison of average daily actual turnover",
@@ -5061,170 +5097,25 @@
                 "status": "unavailable",
                 "reason": "기간 거래일·거래소 완결 미확인",
                 "missing_dates": [
-                  "2026-10-26"
+                  "2026-10-27"
                 ]
               },
               "1m": {
                 "status": "unavailable",
                 "reason": "기간 거래일·거래소 완결 미확인",
                 "missing_dates": [
-                  "2026-10-26"
+                  "2026-10-27"
                 ]
               },
               "3m": {
                 "status": "unavailable",
                 "reason": "기간 거래일·거래소 완결 미확인",
                 "missing_dates": [
-                  "2026-10-26"
+                  "2026-10-27"
                 ]
               }
             },
             "daily_operands": [
-              [
-                "2026-04-27",
-                [
-                  [
-                    "A",
-                    "379461183.725100",
-                    "337549374.826000",
-                    "489356201.413000",
-                    "1206366759.964100"
-                  ],
-                  [
-                    "B",
-                    "977034797.496600",
-                    "516648219.253100",
-                    "1283720856.575300",
-                    "2777403873.325000"
-                  ],
-                  [
-                    "C",
-                    "788120222.375100",
-                    "444734727.876800",
-                    "823839707.695700",
-                    "2056694657.947600"
-                  ],
-                  [
-                    "DB",
-                    "756913343.027288",
-                    "584761959.713497",
-                    "3410590433.926373",
-                    "4752265736.667158"
-                  ],
-                  [
-                    "DN",
-                    "5246576937.621756",
-                    "3239982488.055277",
-                    "8544352607.816184",
-                    "17030912033.493217"
-                  ],
-                  [
-                    "DQ",
-                    "120454168739.427778",
-                    "64020039616.042555",
-                    "207108549498.095565",
-                    "391582757853.565898"
-                  ],
-                  [
-                    "G",
-                    "94251471.082400",
-                    "135431523.384600",
-                    "248129524.449000",
-                    "477812518.916000"
-                  ],
-                  [
-                    "H",
-                    "875137439.157100",
-                    "1369913072.479100",
-                    "2044819877.713899",
-                    "4289870389.350099"
-                  ],
-                  [
-                    "J",
-                    "1277094721.717800",
-                    "1063196715.091900",
-                    "1869142164.241800",
-                    "4209433601.051500"
-                  ],
-                  [
-                    "K",
-                    "7205873688.119300",
-                    "6903749037.915307",
-                    "19795761966.234413",
-                    "33905384692.269020"
-                  ],
-                  [
-                    "L",
-                    "25205346.639000",
-                    "8088217.565000",
-                    "39791045.210500",
-                    "73084609.414500"
-                  ],
-                  [
-                    "M",
-                    "1548656421.326600",
-                    "2494772644.780001",
-                    "5981400686.745602",
-                    "10024829752.852203"
-                  ],
-                  [
-                    "N",
-                    "71360737895.562197",
-                    "3050119332.401001",
-                    "6018717574.084499",
-                    "80429574802.047697"
-                  ],
-                  [
-                    "P",
-                    "13087854873.952801",
-                    "26096552031.242722",
-                    "33883209259.578788",
-                    "73067616164.774311"
-                  ],
-                  [
-                    "Q",
-                    "28473500664.677504",
-                    "14840702454.423103",
-                    "127371521143.556530",
-                    "170685724262.657137"
-                  ],
-                  [
-                    "U",
-                    "2971992358.620000",
-                    "3111572765.377000",
-                    "8205696807.236492",
-                    "14289261931.233492"
-                  ],
-                  [
-                    "V",
-                    "14590070123.408401",
-                    "5087476723.687901",
-                    "15711327462.145302",
-                    "35388874309.241604"
-                  ],
-                  [
-                    "X",
-                    "341349091.419000",
-                    "320163928.495800",
-                    "524542003.827900",
-                    "1186055023.742700"
-                  ],
-                  [
-                    "Y",
-                    "1578751401.494200",
-                    "1001203094.763900",
-                    "1988243520.087399",
-                    "4568198016.345499"
-                  ],
-                  [
-                    "Z",
-                    "10363452862.499999",
-                    "7542392344.090806",
-                    "17510368720.619705",
-                    "35416213927.210510"
-                  ]
-                ]
-              ],
               [
                 "2026-04-28",
                 [
@@ -23874,6 +23765,158 @@
                     "35302821045.205999"
                   ]
                 ]
+              ],
+              [
+                "2026-10-26",
+                [
+                  [
+                    "A",
+                    "427130178.750900",
+                    "348466506.325700",
+                    "520346343.966300",
+                    "1295943029.042900"
+                  ],
+                  [
+                    "B",
+                    "906011586.778800",
+                    "491286417.653000",
+                    "1099419226.569100",
+                    "2496717231.000900"
+                  ],
+                  [
+                    "C",
+                    "955983540.980500",
+                    "456802577.460100",
+                    "840747267.091100",
+                    "2253533385.531700"
+                  ],
+                  [
+                    "DB",
+                    "870202147.197514",
+                    "553450279.813532",
+                    "2969261999.059444",
+                    "4392914426.070490"
+                  ],
+                  [
+                    "DN",
+                    "6258634622.428288",
+                    "4691232136.895173",
+                    "9458210899.995627",
+                    "20408077659.319088"
+                  ],
+                  [
+                    "DQ",
+                    "124764538153.100768",
+                    "79501045127.587615",
+                    "198706517798.253607",
+                    "402972101078.941990"
+                  ],
+                  [
+                    "F",
+                    "178558453.197200",
+                    "342645210.229300",
+                    "308783248.682100",
+                    "829986912.108600"
+                  ],
+                  [
+                    "G",
+                    "48872379.629800",
+                    "91341117.357500",
+                    "131796152.575100",
+                    "272009649.562400"
+                  ],
+                  [
+                    "H",
+                    "857232537.947100",
+                    "1244935838.128000",
+                    "1661487154.427100",
+                    "3763655530.502200"
+                  ],
+                  [
+                    "J",
+                    "1423138600.613000",
+                    "1431843962.310899",
+                    "1909675541.390500",
+                    "4764658104.314399"
+                  ],
+                  [
+                    "K",
+                    "6871647637.823904",
+                    "7015883259.356005",
+                    "16430537530.447307",
+                    "30318068427.627216"
+                  ],
+                  [
+                    "L",
+                    "23827021.020000",
+                    "9371275.225200",
+                    "11823112.915000",
+                    "45021409.160200"
+                  ],
+                  [
+                    "M",
+                    "1980325495.107000",
+                    "1366257906.374000",
+                    "4264307557.778601",
+                    "7610890959.259601"
+                  ],
+                  [
+                    "N",
+                    "74608450584.616288",
+                    "3532995510.934900",
+                    "5548608448.131999",
+                    "83690054543.683187"
+                  ],
+                  [
+                    "P",
+                    "13297542356.154406",
+                    "30031959465.810104",
+                    "33269924613.454705",
+                    "76599426435.419215"
+                  ],
+                  [
+                    "Q",
+                    "25105671706.582281",
+                    "18777048944.649901",
+                    "120955812084.640950",
+                    "164838532735.873132"
+                  ],
+                  [
+                    "U",
+                    "2391073170.682500",
+                    "2677979060.249800",
+                    "5133172052.540500",
+                    "10202224283.472800"
+                  ],
+                  [
+                    "V",
+                    "16670026939.187499",
+                    "7726435492.346999",
+                    "17498513736.237007",
+                    "41894976167.771505"
+                  ],
+                  [
+                    "X",
+                    "421475979.996700",
+                    "287409738.968000",
+                    "576644579.311400",
+                    "1285530298.276100"
+                  ],
+                  [
+                    "Y",
+                    "1896979196.036799",
+                    "1367457998.914600",
+                    "2341198056.475000",
+                    "5605635251.426399"
+                  ],
+                  [
+                    "Z",
+                    "10875103095.453400",
+                    "8763958228.773602",
+                    "17287913179.726506",
+                    "36926974503.953508"
+                  ]
+                ]
               ]
             ],
             "venue_roster": {
@@ -23928,9 +23971,9 @@
           },
           "fx": {
             "status": "verified",
-            "requested_date": "2026-10-26",
-            "date": "2026-10-26",
-            "krw_per_usd": "1324.3",
+            "requested_date": "2026-10-27",
+            "date": "2026-10-27",
+            "krw_per_usd": "1322.6",
             "base_currency": "USD",
             "quote_currency": "KRW",
             "unit": "원/미국달러",
@@ -23946,8 +23989,8 @@
                     "ITEM_CODE1": "0000001",
                     "ITEM_NAME1": "원/미국달러(매매기준율)",
                     "UNIT_NAME": "원",
-                    "TIME": "20261026",
-                    "DATA_VALUE": "1324.3"
+                    "TIME": "20261027",
+                    "DATA_VALUE": "1322.6"
                   }
                 ]
               }
@@ -23993,10 +24036,10 @@
         }
       },
       "url": "https://www.cboe.com/markets/us/options/market-statistics/daily",
-      "fingerprint": "2280ee1f8ac58acb43e1a6e105d4779525407f1cc5605c8cdb272f85b6e208fd"
+      "fingerprint": "d35bd9f0d658fee0c400e6116fcaf029193244ddb329743c38c82d3354f0b5b0"
     }
   },
-  "updated_at_kst": "2026-10-27T10:42:12.204010+09:00",
+  "updated_at_kst": "2026-10-28T10:37:44.159778+09:00",
   "presentation_version": "us-positioning-auto-direction-20261016-v1",
-  "daily_digest_sent_date_kst": "2026-10-27"
+  "daily_digest_sent_date_kst": "2026-10-28"
 }
