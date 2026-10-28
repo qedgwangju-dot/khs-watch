@@ -342,7 +342,7 @@ jobs:
           # A source check may have started before another run committed delivery.
           # Compare pending semantic fingerprints against the freshest remote state.
           git fetch --quiet origin main
-          python - <<'PY'
+          PYTHONPATH=scripts python - <<'PY'
           import json, os, pathlib, subprocess
           if (os.getenv("FORCE_SEND") or "").lower() in ("true", "1", "yes"):
               print("pre_send_dedup_bypassed_by_explicit_force=true")
@@ -359,13 +359,24 @@ jobs:
                   for obj in (committed, candidate):
                       if not isinstance(obj, dict) or not isinstance(obj.get("seen"), dict):
                           raise RuntimeError("Invalid fund-flow state during pre-send verification")
-                  if (
-                      candidate.get("seen") == committed.get("seen")
-                      and candidate.get("derived", {}) == committed.get("derived", {})
-                  ):
+                  from us_positioning_delivery import classify_fund_flow_presend
+                  has_retail_event = (
+                      "미국 개인투자자 주식비중·주가 기대 변화"
+                      in alert.read_text(encoding="utf-8")
+                  )
+                  mode = classify_fund_flow_presend(committed, candidate, has_retail_event)
+                  if mode == "DUPLICATE":
                       alert.unlink()
                       pending.unlink()
                       print("pre_send_duplicate_blocked=true reason=same_committed_source_fingerprints_and_derived")
+                  elif mode == "BASELINE_ONLY":
+                      # Preserve any other newer fund-flow data from origin/main.
+                      # The only added field is the verified silent survey snapshot.
+                      merged = json.loads(json.dumps(committed))
+                      merged.setdefault("derived", {})["retail_survey"] = candidate["derived"]["retail_survey"]
+                      pending.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+                      alert.unlink()
+                      print("retail_survey_baseline_saved_silently=true telegram_sent=false")
                   else:
                       print("pre_send_duplicate_blocked=false reason=new_verified_semantic_change")
           PY
