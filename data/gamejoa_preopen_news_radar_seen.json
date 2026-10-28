@@ -1263,6 +1263,29 @@
       "telegram_core_fact": "이 대통령은 김 소방위의 딸이 “7살”이라는 답을 듣자 한동안 먹먹한 표정으로 침묵했다. 이재명 대통령이 화재 진압 중 순직한 고(故) 김진석 소방위의 빈소를 찾아 고인을 애도하고 유가족을 위로했다.",
       "title": "순직 소방관 딸 나이 묻던 李…“7살” 답에 한동안 침묵"
     },
+    "core:0317eab295120158d149b23b": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641005",
+      "source": "이투데이",
+      "source_body_digest": "884d7526e0340bef9d9e19e45ed44eb99f6058d7a61d6377a21599125b57590e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61653fc8dd2a2b4aec8bf5b2f2a875491c6143222cfa1d91f2cc919c21011ac",
+      "source_fact_keys": [
+        "source_fact:v1:56424855305ff4a1fcfd1dc7978515c3c5c6945ad5fbb605bfe4c9db3c28c45e",
+        "source_fact:v1:8923e88ea3b6c7184e96842119773076299b357ff360085c05aa0bf31854a3f5",
+        "source_fact:v1:b2a01c7f2e580419e0208e72e5664944f24a04c4fe7b35e06d87ba31ee80f5f8",
+        "source_fact:v1:cf58537b7ca7768585ab9689c81428cb5a01484bf840f468aae6019810e626d5"
+      ],
+      "source_published_kst": "2026-10-28T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’",
+      "telegram_core_fact": "산업통상부가 28일 발표한 '2026년 9월 주요 유통업체 매출 동향'에 따르면 지난달 주요 온·오프라인 유통업체의 전체 매출은 전년 동월 대비 4.5% 늘어났다.",
+      "title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’"
+    },
     "core:0350d4fcb5ddf3b66ac04c7e": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
       "lanes": {
@@ -31916,6 +31939,27 @@
       "source_title": "日 우에다 총재 \"물가 2% 목표 근접\"…12월 추가 금리 인상 가능성",
       "telegram_core_fact": "우에다 가즈오 일본은행(BOJ) 총재가 일본의 기조적 물가상승률이 목표치인 2%에 상당히 근접했다고 밝혔다.",
       "title": "日 우에다 총재 \"물가 2% 목표 근접\"…12월 추가 금리 인상 가능성"
+    },
+    "core:3f714fc06f5cebdf6c52d293": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000299",
+      "source": "전자신문",
+      "source_body_digest": "ef51fbebfc232d57a82a754f3d34a2123be2e9746ddbb04db31d35e7ddd4a50c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f701cc4c7d158603156d07a19bf99cd37100845301e1c0c757df060f44b92825",
+      "source_fact_keys": [
+        "source_fact:v1:3a9bf38ff0d6ea070fa4169555b4066d4f3c3cefe0a804ddd02957ee12b07597",
+        "source_fact:v1:e3f1f1b21d249ec89a9feaa8392509610b798fc8a9b0b4359878c28266bf0329"
+      ],
+      "source_published_kst": "2026-10-28T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화",
+      "telegram_core_fact": "세븐일레븐은 건강 간편식 브랜드 '밸런스푼'이 론칭 5개월 만에 누적 판매량 80만개를 돌파했다고 28일 밝혔다. 상권별 매출 구성비는 주택가 30%, 오피스 21%, 독신 상권 8% 순이었다.",
+      "title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화"
     },
     "core:3f81ecac7525069efab58a84": {
       "first_seen_kst": "2026-10-21T09:52:31+09:00",
@@ -74040,6 +74084,24 @@
       "telegram_core_fact": "기업공개(IPO)를 앞둔 앤트로픽이 회사 지분 5%를 새로 만드는 공익기금에 출연하기로 했다. 앤트로픽은 18일(현지시간) 공식 블로그를 통해 주주 승인을 거쳐 지분 5%를 '앤트로픽 공익기금'에 출연한다고 밝혔다.",
       "title": "앤트로픽, 지분 5% 공익기금에 출연…\"AI 일자리 충격 대응\" | 연합뉴스"
     },
+    "core:9947ef6be61e0a589977ebdf": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640808",
+      "source": "이투데이",
+      "source_body_digest": "29a53a097cd747622f2cc745bda364a7e2e2dd947d27ce081d49678f98062c85",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "직원 더 뽑는 중소기업, 국세청 ‘정기 세무조사’ 제외 혜택",
+      "telegram_core_fact": "국세청은 일자리창출 계획서 또는 투자확대 계획서를 제출한 중소기업을 2025사업연도 법인세와 2025년 귀속 종합소득세 정기 세무조사 선정에서 제외한다고 28일 밝혔다. 직원을 더 뽑거나 투자를 늘리는 중소기업이 정기 세무조사 부담을 덜게 된다.",
+      "title": "직원 더 뽑는 중소기업, 국세청 ‘정기 세무조사’ 제외 혜택"
+    },
     "core:994c730cbdd7bd07a257c2a4": {
       "first_seen_kst": "2026-10-27T08:49:21+09:00",
       "lanes": {
@@ -89777,6 +89839,27 @@
       "telegram_core_fact": "씨티그룹(5.6%)과 웰스파고(3.1%), 골드만삭스(0.2%) 등 대형 은행은 지난해보다 증가한 순이익을 발표했음에도 주가가 하락했다.",
       "title": "中 반도체 추격·은행 실적 실망에 3대 지수 일제 하락 [뉴욕증시 브리핑]"
     },
+    "core:ba6c8f9bbbe93549d2ace7dd": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641123",
+      "source": "이투데이",
+      "source_body_digest": "10f80f2be4034c212c28a77e1648d29d34ba33daf318d39a3249aa4893e94987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25a2dd3070963e2f00581da7332e2d1b13c0d565a356e5a84310066b377efc0b",
+      "source_fact_keys": [
+        "source_fact:v1:3ce1b9eae216b448f7c8796e8c5f97ddd449b889e75ba33e31eda57bf0df9526",
+        "source_fact:v1:4c95cd713022142bb34a912ebfdfb1c6b61e0ada624c76b637033d7699e18c53"
+      ],
+      "source_published_kst": "2026-10-28T13:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인",
+      "telegram_core_fact": "보령파마솔루션은 국내 영업·마케팅과 제품 도입, 유통을 전담하고, 보령은 연구개발과 생산, 글로벌 사업을 직접 수행한다.",
+      "title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인"
+    },
     "core:ba75bbb7f17c2b5d76c7f07f": {
       "first_seen_kst": "2026-10-13T22:04:42+09:00",
       "lanes": {
@@ -100020,6 +100103,28 @@
       "source_title": "헥셀, 3분기 매출액 4억9640만 달러..전년비 8.8% 증가",
       "telegram_core_fact": "헥셀(HXL)이 3분기(7~9월) 매출액 4억9640만 달러로 전년비 8.8% 증가했고, Non-GAAP 희석 주당순이익은 0.50달러로 전년 동기 0.37달러보다 35.1% 늘었다고 10월 21일 발표했다.",
       "title": "헥셀, 3분기 매출액 4억9640만 달러..전년비 8.8% 증가"
+    },
+    "core:cfb0fafede44fe4189702601": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000290",
+      "source": "전자신문",
+      "source_body_digest": "cd0e7c0abec9255902ae62542d7eb53cc3941b55509de4e36d4ba5f084604d53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766c76318b81ab5b80948b24cdd966b3dab6dbdec010e4d3075c42fe87251978",
+      "source_fact_keys": [
+        "source_fact:v1:4da03432adcf42ba1a3169a8c3bffedafb18b6781ac41dff4b1050e08165a0a9",
+        "source_fact:v1:898cbe35b31989d7384eb20d23684df26c09b19a0343bccd080fe825d5e1da12",
+        "source_fact:v1:beb3e6d82b20ec396766f8d12604c176b1504893d31df69620d750dd2bfe98da"
+      ],
+      "source_published_kst": "2026-10-28T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로",
+      "telegram_core_fact": "40여년간 축적한 해저케이블 운용 경험에 신규 국제망과 육양국, 국내 통신망, AI데이터센터(AIDC)를 연계해 해외 AI·클라우드 거점부터 국내 AI 인프라까지 잇는 초연결 네트워크를 구축한다는 전략이다.",
+      "title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로"
     },
     "core:cfb144cc91d8b66284124ac4": {
       "first_seen_kst": "2026-10-12T16:50:12+09:00",
@@ -118459,6 +118564,27 @@
       "source_title": "이브이첨단소재, 비접촉 심혈관 진단센서 국책과제 주관…상용화 추진",
       "telegram_core_fact": "연성회로기판(FPCB) 전문기업 이브이첨단소재가 피부에 접촉하지 않고 혈류를 측정하는 자기혈류파 기술 상용화에 나선다.",
       "title": "이브이첨단소재, 비접촉 심혈관 진단센서 국책과제 주관…상용화 추진"
+    },
+    "core:f512c675c29c29ef63d9ad00": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04700246645617512",
+      "source": "이데일리",
+      "source_body_digest": "590cd23d2c28957fc6734c2dad91b8fac02b91040f6844e53f262a2f6ce0b1d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:baefbd2dedfb907d59418edf660e4a6974f7b84dc10f9d4d617d1d3c5f1ccbfc",
+      "source_fact_keys": [
+        "source_fact:v1:49080d17458b6340f85a3831f6e93458fafd69747736d59b4a39fad2005eb557",
+        "source_fact:v1:f5ba2f3e36f1f319a90c8d25dabe9f1b651d2f5b0b8e33580243726c7fbbf36c"
+      ],
+      "source_published_kst": "2026-10-28T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도",
+      "telegram_core_fact": "이번 행정지도는 SK하이닉스 용인 반도체클러스터 일반산단의 생산시설(Fab) 가동이 본격화 된 후 안성 고삼저수지에 방류수가 유입될 경우를 대비한 조치다.",
+      "title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도"
     },
     "core:f5153e29bd805c85689b23de": {
       "first_seen_kst": "2026-10-21T22:34:18+09:00",
@@ -148697,25 +148823,23 @@
     "event:ee06d367401735370af93404": {
       "first_seen_kst": "2026-10-28T15:06:31+09:00",
       "lanes": {
-        "live": "2026-10-28T15:06:31+09:00"
+        "live": "2026-10-29T02:40:31+09:00"
       },
-      "last_seen_kst": "2026-10-28T15:06:31+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02696166645617512",
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04700246645617512",
       "source": "이데일리",
-      "source_body_digest": "40b0056b0aeabe789d4e439fb6a8107d21d97fb0976d54f9f08c95d6ec5a7afc",
+      "source_body_digest": "590cd23d2c28957fc6734c2dad91b8fac02b91040f6844e53f262a2f6ce0b1d0",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8616b85d121fe2348a723fb7077e2fb5a1beef5af7e46727f35b39652e99f2f6",
+      "source_fact_identity": "source_facts:v1:baefbd2dedfb907d59418edf660e4a6974f7b84dc10f9d4d617d1d3c5f1ccbfc",
       "source_fact_keys": [
-        "source_fact:v1:205c21d4148456eaad1387cd9c532fae679053c7812eb37a54598a10ad08f225",
-        "source_fact:v1:4e11f0cfa49a31af7221fdae33a5a613cd70f5319da83e82f47b7b471dff380b",
-        "source_fact:v1:61502fe3ce094c34a70afce6ace5ae4ae11c7067663e22f7b5166aa460b190ba",
-        "source_fact:v1:fb4395b4a7c6021e6542c0fe895359f41e5c9c818e54abfe58159543af93764e"
+        "source_fact:v1:49080d17458b6340f85a3831f6e93458fafd69747736d59b4a39fad2005eb557",
+        "source_fact:v1:f5ba2f3e36f1f319a90c8d25dabe9f1b651d2f5b0b8e33580243726c7fbbf36c"
       ],
-      "source_published_kst": "2026-10-28T07:27+09:00",
+      "source_published_kst": "2026-10-28T14:27+09:00",
       "source_supply_terms": {},
-      "source_title": "\"SK하이닉스, 미국에 60조원 솔리다임 낸드 공장 건설 추진\"",
-      "telegram_core_fact": "솔리다임은 “전 세계 여러 후보 지역에서 낸드 메모리 공장 건설 가능성을 검토하고 있다”며 “아직 구체적으로 결정된 사항은 없다”고 밝혔다.",
-      "title": "\"SK하이닉스, 미국에 60조원 솔리다임 낸드 공장 건설 추진\""
+      "source_title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도",
+      "telegram_core_fact": "이번 행정지도는 SK하이닉스 용인 반도체클러스터 일반산단의 생산시설(Fab) 가동이 본격화 된 후 안성 고삼저수지에 방류수가 유입될 경우를 대비한 조치다.",
+      "title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도"
     },
     "event:ee14ca1398eb72eb9482cedb": {
       "first_seen_kst": "2026-10-26T07:17:46+09:00",
@@ -204741,6 +204865,29 @@
       "source_published_kst": "2026-10-07T14:58+09:00",
       "title": "미래에셋, '미국 타겟데일리 커버드콜 ETF' 3종 개인 순매수 1조 돌파"
     },
+    "fact:6c94fab6c0d6d4faa0b5d848": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641005",
+      "source": "이투데이",
+      "source_body_digest": "884d7526e0340bef9d9e19e45ed44eb99f6058d7a61d6377a21599125b57590e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61653fc8dd2a2b4aec8bf5b2f2a875491c6143222cfa1d91f2cc919c21011ac",
+      "source_fact_keys": [
+        "source_fact:v1:56424855305ff4a1fcfd1dc7978515c3c5c6945ad5fbb605bfe4c9db3c28c45e",
+        "source_fact:v1:8923e88ea3b6c7184e96842119773076299b357ff360085c05aa0bf31854a3f5",
+        "source_fact:v1:b2a01c7f2e580419e0208e72e5664944f24a04c4fe7b35e06d87ba31ee80f5f8",
+        "source_fact:v1:cf58537b7ca7768585ab9689c81428cb5a01484bf840f468aae6019810e626d5"
+      ],
+      "source_published_kst": "2026-10-28T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’",
+      "telegram_core_fact": "산업통상부가 28일 발표한 '2026년 9월 주요 유통업체 매출 동향'에 따르면 지난달 주요 온·오프라인 유통업체의 전체 매출은 전년 동월 대비 4.5% 늘어났다.",
+      "title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’"
+    },
     "fact:6c96b1094273bb32b21ae966": {
       "first_seen_kst": "2026-10-16T16:08:38+09:00",
       "lanes": {
@@ -215314,6 +215461,28 @@
       "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
       "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
     },
+    "fact:812f1f42a2533bd73564261e": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000290",
+      "source": "전자신문",
+      "source_body_digest": "cd0e7c0abec9255902ae62542d7eb53cc3941b55509de4e36d4ba5f084604d53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766c76318b81ab5b80948b24cdd966b3dab6dbdec010e4d3075c42fe87251978",
+      "source_fact_keys": [
+        "source_fact:v1:4da03432adcf42ba1a3169a8c3bffedafb18b6781ac41dff4b1050e08165a0a9",
+        "source_fact:v1:898cbe35b31989d7384eb20d23684df26c09b19a0343bccd080fe825d5e1da12",
+        "source_fact:v1:beb3e6d82b20ec396766f8d12604c176b1504893d31df69620d750dd2bfe98da"
+      ],
+      "source_published_kst": "2026-10-28T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로",
+      "telegram_core_fact": "40여년간 축적한 해저케이블 운용 경험에 신규 국제망과 육양국, 국내 통신망, AI데이터센터(AIDC)를 연계해 해외 AI·클라우드 거점부터 국내 AI 인프라까지 잇는 초연결 네트워크를 구축한다는 전략이다.",
+      "title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로"
+    },
     "fact:813814288a8f63200f349c2f": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
       "lanes": {
@@ -217998,6 +218167,27 @@
       "source_title": "오션팔, NEAR 인프라 업체 패스트니어 인수 완료",
       "telegram_core_fact": "오션팔(SVRN)이 NEAR 프로토콜 네트워크 접속·데이터 인프라 업체 패스트니어(FastNEAR)를 인수해 완전 자회사로 편입했다고 9일 발표했다.",
       "title": "오션팔, NEAR 인프라 업체 패스트니어 인수 완료"
+    },
+    "fact:85795e5137e9ea8d053f6365": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641123",
+      "source": "이투데이",
+      "source_body_digest": "10f80f2be4034c212c28a77e1648d29d34ba33daf318d39a3249aa4893e94987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25a2dd3070963e2f00581da7332e2d1b13c0d565a356e5a84310066b377efc0b",
+      "source_fact_keys": [
+        "source_fact:v1:3ce1b9eae216b448f7c8796e8c5f97ddd449b889e75ba33e31eda57bf0df9526",
+        "source_fact:v1:4c95cd713022142bb34a912ebfdfb1c6b61e0ada624c76b637033d7699e18c53"
+      ],
+      "source_published_kst": "2026-10-28T13:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인",
+      "telegram_core_fact": "보령파마솔루션은 국내 영업·마케팅과 제품 도입, 유통을 전담하고, 보령은 연구개발과 생산, 글로벌 사업을 직접 수행한다.",
+      "title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인"
     },
     "fact:8579b13615b121dfa8f93494": {
       "first_seen_kst": "2026-10-26T16:36:06+09:00",
@@ -265044,6 +265234,27 @@
       "telegram_core_fact": "우리투자증권은 올해 3분기 누적 당기순이익이 282억 원으로 전년비 27.3% 증가했다고 23일 밝혔다.",
       "title": "우리투자증권, 3분기 누적 순이익 282억…전년比 27.3% 증가"
     },
+    "fact:ddcc0714db95a33aaf7634a6": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000299",
+      "source": "전자신문",
+      "source_body_digest": "ef51fbebfc232d57a82a754f3d34a2123be2e9746ddbb04db31d35e7ddd4a50c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f701cc4c7d158603156d07a19bf99cd37100845301e1c0c757df060f44b92825",
+      "source_fact_keys": [
+        "source_fact:v1:3a9bf38ff0d6ea070fa4169555b4066d4f3c3cefe0a804ddd02957ee12b07597",
+        "source_fact:v1:e3f1f1b21d249ec89a9feaa8392509610b798fc8a9b0b4359878c28266bf0329"
+      ],
+      "source_published_kst": "2026-10-28T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화",
+      "telegram_core_fact": "세븐일레븐은 건강 간편식 브랜드 '밸런스푼'이 론칭 5개월 만에 누적 판매량 80만개를 돌파했다고 28일 밝혔다. 상권별 매출 구성비는 주택가 30%, 오피스 21%, 독신 상권 8% 순이었다.",
+      "title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화"
+    },
     "fact:dddc948ea805a22b96b4f056": {
       "first_seen_kst": "2026-10-20T06:12:02+09:00",
       "lanes": {
@@ -283131,6 +283342,27 @@
       "source_title": "경남도, 동남권 4대 성장엔진 육성 본격화…점검회의 개최",
       "telegram_core_fact": "경남도는 26일 도청 중앙회의실에서 '5극3특 성장엔진 육성계획 추진상황 점검회의'를 열었다. 도는 이날 회의에서 논의한 투자유치, 연구개발 과제를 구체화하고, 정부의 정책 지원방안과 연계한 동남권 성장엔진 육성계획을 수립해 나갈 방침이다.",
       "title": "경남도, 동남권 4대 성장엔진 육성 본격화…점검회의 개최"
+    },
+    "fact:ffc00fc45ff1e65180716460": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04700246645617512",
+      "source": "이데일리",
+      "source_body_digest": "590cd23d2c28957fc6734c2dad91b8fac02b91040f6844e53f262a2f6ce0b1d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:baefbd2dedfb907d59418edf660e4a6974f7b84dc10f9d4d617d1d3c5f1ccbfc",
+      "source_fact_keys": [
+        "source_fact:v1:49080d17458b6340f85a3831f6e93458fafd69747736d59b4a39fad2005eb557",
+        "source_fact:v1:f5ba2f3e36f1f319a90c8d25dabe9f1b651d2f5b0b8e33580243726c7fbbf36c"
+      ],
+      "source_published_kst": "2026-10-28T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도",
+      "telegram_core_fact": "이번 행정지도는 SK하이닉스 용인 반도체클러스터 일반산단의 생산시설(Fab) 가동이 본격화 된 후 안성 고삼저수지에 방류수가 유입될 경우를 대비한 조치다.",
+      "title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도"
     },
     "fact:ffd3de477f25e2b21774bc94": {
       "first_seen_kst": "2026-10-13T08:34:55+09:00",
@@ -312175,6 +312407,24 @@
       "source_published_kst": "2026-10-07T06:00+09:00",
       "title": "롯데하이마트, 물류센터에 ‘휴머노이드 로봇’ 투입…2028년 실증"
     },
+    "link:2c01309850ac356a3e63df3f": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187909",
+      "source": "매일경제",
+      "source_body_digest": "35a267cd2752d15bdfa51d5642edbb33e5b5566997beb7b8408e31b5309b1322",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T05:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "록키브랜즈, 3분기 순이익 큰 폭 증가에 투자자 관심 집중",
+      "telegram_core_fact": "희석 주당순이익은 1.69달러로 76.0% 증가했고 순이익도 78% 급증했습니다.",
+      "title": "록키브랜즈, 3분기 순이익 큰 폭 증가에 투자자 관심 집중"
+    },
     "link:2c0ceff7fd0aad5e8a6a377c": {
       "first_seen_kst": "2026-10-20T19:03:19+09:00",
       "lanes": {
@@ -318082,6 +318332,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "美 인상 기대 꺾였지만 장기금리 5.28%…환율 어디로[주간외환전망]"
+    },
+    "link:34550a4dbf04a3f36ca5fdba": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000290",
+      "source": "전자신문",
+      "source_body_digest": "cd0e7c0abec9255902ae62542d7eb53cc3941b55509de4e36d4ba5f084604d53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766c76318b81ab5b80948b24cdd966b3dab6dbdec010e4d3075c42fe87251978",
+      "source_fact_keys": [
+        "source_fact:v1:4da03432adcf42ba1a3169a8c3bffedafb18b6781ac41dff4b1050e08165a0a9",
+        "source_fact:v1:898cbe35b31989d7384eb20d23684df26c09b19a0343bccd080fe825d5e1da12",
+        "source_fact:v1:beb3e6d82b20ec396766f8d12604c176b1504893d31df69620d750dd2bfe98da"
+      ],
+      "source_published_kst": "2026-10-28T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로",
+      "telegram_core_fact": "40여년간 축적한 해저케이블 운용 경험에 신규 국제망과 육양국, 국내 통신망, AI데이터센터(AIDC)를 연계해 해외 AI·클라우드 거점부터 국내 AI 인프라까지 잇는 초연결 네트워크를 구축한다는 전략이다.",
+      "title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로"
     },
     "link:345e2a75083f18ee82e7c6ea": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
@@ -357127,6 +357399,27 @@
       "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
       "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
     },
+    "link:6fe22501366fb68f97b3f360": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04700246645617512",
+      "source": "이데일리",
+      "source_body_digest": "590cd23d2c28957fc6734c2dad91b8fac02b91040f6844e53f262a2f6ce0b1d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:baefbd2dedfb907d59418edf660e4a6974f7b84dc10f9d4d617d1d3c5f1ccbfc",
+      "source_fact_keys": [
+        "source_fact:v1:49080d17458b6340f85a3831f6e93458fafd69747736d59b4a39fad2005eb557",
+        "source_fact:v1:f5ba2f3e36f1f319a90c8d25dabe9f1b651d2f5b0b8e33580243726c7fbbf36c"
+      ],
+      "source_published_kst": "2026-10-28T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도",
+      "telegram_core_fact": "이번 행정지도는 SK하이닉스 용인 반도체클러스터 일반산단의 생산시설(Fab) 가동이 본격화 된 후 안성 고삼저수지에 방류수가 유입될 경우를 대비한 조치다.",
+      "title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도"
+    },
     "link:6feaa47a845f093907b91fe3": {
       "first_seen_kst": "2026-10-01T16:31:12+09:00",
       "lanes": {
@@ -357981,6 +358274,29 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "'KIWOOM 미국AI테크하이베타 ETF', 마이크론·스페이스X 편입"
+    },
+    "link:7110ecd934feec63a2c10616": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641005",
+      "source": "이투데이",
+      "source_body_digest": "884d7526e0340bef9d9e19e45ed44eb99f6058d7a61d6377a21599125b57590e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61653fc8dd2a2b4aec8bf5b2f2a875491c6143222cfa1d91f2cc919c21011ac",
+      "source_fact_keys": [
+        "source_fact:v1:56424855305ff4a1fcfd1dc7978515c3c5c6945ad5fbb605bfe4c9db3c28c45e",
+        "source_fact:v1:8923e88ea3b6c7184e96842119773076299b357ff360085c05aa0bf31854a3f5",
+        "source_fact:v1:b2a01c7f2e580419e0208e72e5664944f24a04c4fe7b35e06d87ba31ee80f5f8",
+        "source_fact:v1:cf58537b7ca7768585ab9689c81428cb5a01484bf840f468aae6019810e626d5"
+      ],
+      "source_published_kst": "2026-10-28T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’",
+      "telegram_core_fact": "산업통상부가 28일 발표한 '2026년 9월 주요 유통업체 매출 동향'에 따르면 지난달 주요 온·오프라인 유통업체의 전체 매출은 전년 동월 대비 4.5% 늘어났다.",
+      "title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’"
     },
     "link:7112b9ff13822062458aaf5f": {
       "first_seen_kst": "2026-10-11T19:59:25+09:00",
@@ -383323,6 +383639,27 @@
       ],
       "source_published_kst": "2026-10-06T09:07+09:00",
       "title": "'MSVP 세계 1위' 한미반도체, 삼성전기 245억 장비 수주"
+    },
+    "link:97f0ea44eedc41d27da06440": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641123",
+      "source": "이투데이",
+      "source_body_digest": "10f80f2be4034c212c28a77e1648d29d34ba33daf318d39a3249aa4893e94987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25a2dd3070963e2f00581da7332e2d1b13c0d565a356e5a84310066b377efc0b",
+      "source_fact_keys": [
+        "source_fact:v1:3ce1b9eae216b448f7c8796e8c5f97ddd449b889e75ba33e31eda57bf0df9526",
+        "source_fact:v1:4c95cd713022142bb34a912ebfdfb1c6b61e0ada624c76b637033d7699e18c53"
+      ],
+      "source_published_kst": "2026-10-28T13:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인",
+      "telegram_core_fact": "보령파마솔루션은 국내 영업·마케팅과 제품 도입, 유통을 전담하고, 보령은 연구개발과 생산, 글로벌 사업을 직접 수행한다.",
+      "title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인"
     },
     "link:97f4a636c7d98eda79d4d98a": {
       "first_seen_kst": "2026-10-28T04:02:25+09:00",
@@ -423951,6 +424288,27 @@
       "source_published_kst": "2026-10-07T01:50+09:00",
       "title": "C.H.로빈슨, RXO 대규모 인수 재무 부담 우려에 약세"
     },
+    "link:d539c685ba2fa00014a70088": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000299",
+      "source": "전자신문",
+      "source_body_digest": "ef51fbebfc232d57a82a754f3d34a2123be2e9746ddbb04db31d35e7ddd4a50c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f701cc4c7d158603156d07a19bf99cd37100845301e1c0c757df060f44b92825",
+      "source_fact_keys": [
+        "source_fact:v1:3a9bf38ff0d6ea070fa4169555b4066d4f3c3cefe0a804ddd02957ee12b07597",
+        "source_fact:v1:e3f1f1b21d249ec89a9feaa8392509610b798fc8a9b0b4359878c28266bf0329"
+      ],
+      "source_published_kst": "2026-10-28T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화",
+      "telegram_core_fact": "세븐일레븐은 건강 간편식 브랜드 '밸런스푼'이 론칭 5개월 만에 누적 판매량 80만개를 돌파했다고 28일 밝혔다. 상권별 매출 구성비는 주택가 30%, 오피스 21%, 독신 상권 8% 순이었다.",
+      "title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화"
+    },
     "link:d557eff66e5b0e7de117dd65": {
       "first_seen_kst": "2026-10-24T20:27:04+09:00",
       "lanes": {
@@ -438096,6 +438454,24 @@
       "source_title": "신화숙 아마존 \"K뷰티 열풍 의심할 때 아냐...내년 유럽 진출 지원\"",
       "telegram_core_fact": "신 대표는 \"유럽은 그동안 수요가 없었던 것이 아니라 부가가치세(VAT)와 규제 준수 등 진입 장벽 때문에 성장이 제한됐던 시장\"이라며 \"이러한 장벽을 넘어서면서 K뷰티 수요가 빠르게 확대되고 있다\"고 평가했다.",
       "title": "신화숙 아마존 \"K뷰티 열풍 의심할 때 아냐...내년 유럽 진출 지원\""
+    },
+    "link:ec20f963b991299501d26e91": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640808",
+      "source": "이투데이",
+      "source_body_digest": "29a53a097cd747622f2cc745bda364a7e2e2dd947d27ce081d49678f98062c85",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "직원 더 뽑는 중소기업, 국세청 ‘정기 세무조사’ 제외 혜택",
+      "telegram_core_fact": "국세청은 일자리창출 계획서 또는 투자확대 계획서를 제출한 중소기업을 2025사업연도 법인세와 2025년 귀속 종합소득세 정기 세무조사 선정에서 제외한다고 28일 밝혔다. 직원을 더 뽑거나 투자를 늘리는 중소기업이 정기 세무조사 부담을 덜게 된다.",
+      "title": "직원 더 뽑는 중소기업, 국세청 ‘정기 세무조사’ 제외 혜택"
     },
     "link:ec2bf780b5698d06449133b8": {
       "first_seen_kst": "2026-10-15T13:40:20+09:00",
@@ -458397,6 +458773,27 @@
       "telegram_core_fact": "800조원대 호남 반도체 클러스터의 용수 해법으로 하수처리수 재이용이 부상하면서 물 확보와 함께 수질과 가격, 관리 책임을 정비해야 한다는 의견이 제시됐다. 정부는 현재 광주 제1하수처리장에서 하루 30만t의 재이용수를 생산해 호남 반도체 산단에 공급하는 방안을 추진 중이다.",
       "title": "호남반도체, 하수 재이용수 뜬다…\"수질·가격·관리정비\""
     },
+    "original:0cc5c7d2904b07b26abbc03e": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641123",
+      "source": "이투데이",
+      "source_body_digest": "10f80f2be4034c212c28a77e1648d29d34ba33daf318d39a3249aa4893e94987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25a2dd3070963e2f00581da7332e2d1b13c0d565a356e5a84310066b377efc0b",
+      "source_fact_keys": [
+        "source_fact:v1:3ce1b9eae216b448f7c8796e8c5f97ddd449b889e75ba33e31eda57bf0df9526",
+        "source_fact:v1:4c95cd713022142bb34a912ebfdfb1c6b61e0ada624c76b637033d7699e18c53"
+      ],
+      "source_published_kst": "2026-10-28T13:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인",
+      "telegram_core_fact": "보령파마솔루션은 국내 영업·마케팅과 제품 도입, 유통을 전담하고, 보령은 연구개발과 생산, 글로벌 사업을 직접 수행한다.",
+      "title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인"
+    },
     "original:0ccbe4aa593feb2c5e94c231": {
       "first_seen_kst": "2026-10-14T03:39:25+09:00",
       "lanes": {
@@ -464485,6 +464882,29 @@
       ],
       "source_published_kst": "2026-10-07T09:15+09:00",
       "title": "[태백소식]서학골 36홀 파크골프장 현장 점검 등"
+    },
+    "original:1654c5dee3020f7dbe0cfa5a": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641005",
+      "source": "이투데이",
+      "source_body_digest": "884d7526e0340bef9d9e19e45ed44eb99f6058d7a61d6377a21599125b57590e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61653fc8dd2a2b4aec8bf5b2f2a875491c6143222cfa1d91f2cc919c21011ac",
+      "source_fact_keys": [
+        "source_fact:v1:56424855305ff4a1fcfd1dc7978515c3c5c6945ad5fbb605bfe4c9db3c28c45e",
+        "source_fact:v1:8923e88ea3b6c7184e96842119773076299b357ff360085c05aa0bf31854a3f5",
+        "source_fact:v1:b2a01c7f2e580419e0208e72e5664944f24a04c4fe7b35e06d87ba31ee80f5f8",
+        "source_fact:v1:cf58537b7ca7768585ab9689c81428cb5a01484bf840f468aae6019810e626d5"
+      ],
+      "source_published_kst": "2026-10-28T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’",
+      "telegram_core_fact": "산업통상부가 28일 발표한 '2026년 9월 주요 유통업체 매출 동향'에 따르면 지난달 주요 온·오프라인 유통업체의 전체 매출은 전년 동월 대비 4.5% 늘어났다.",
+      "title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’"
     },
     "original:165aeda091fad5b6f4b686a7": {
       "first_seen_kst": "2026-10-18T06:42:56+09:00",
@@ -511182,6 +511602,24 @@
       "telegram_core_fact": "더불어민주당 김현정 의원(경기 평택병)이 SK하이닉스 미국 손자회사 솔리다임의 나스닥 상장 추진에 제동을 걸고 나섰다. 김 의원은 19일 국회 정무위원회 금융감독원 국정감사에서 \"솔리다임 상장 자체보다 SK하이닉스 일반주주 보호장치 없이 해외 상장이 추진되는 점이 문제\"라며 금융당국의 적극적인 대응을 촉구했다.",
       "title": "김현정 의원 \"솔리다임 상장, 주주보호 없이 추진해선 안 돼\""
     },
+    "original:5e65880016d5a2edbafb3582": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187909",
+      "source": "매일경제",
+      "source_body_digest": "35a267cd2752d15bdfa51d5642edbb33e5b5566997beb7b8408e31b5309b1322",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T05:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "록키브랜즈, 3분기 순이익 큰 폭 증가에 투자자 관심 집중",
+      "telegram_core_fact": "희석 주당순이익은 1.69달러로 76.0% 증가했고 순이익도 78% 급증했습니다.",
+      "title": "록키브랜즈, 3분기 순이익 큰 폭 증가에 투자자 관심 집중"
+    },
     "original:5e6cfd261dbae0563b87f146": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -513255,6 +513693,27 @@
       "source_title": "中 인민은행, 환율 조작 우려에 발끈 “필요도 없고 할 수도 없어”",
       "telegram_core_fact": "중국 관영 신화통신에 따르면 인민은행은 전날 발표한 ‘위안화 환율에 대한 중국 인민은행의 정책 입장’을 통해 “환율 형성 과정에서 시장이 결정적인 역할을 하도록 견지할 것이며 중국은 환율 평가절하를 통해 무역 경쟁 우위를 확보할 필요도 의도도 없고 통화 평가절하를 절대 하지 않는다”고 밝혔다.",
       "title": "中 인민은행, 환율 조작 우려에 발끈 “필요도 없고 할 수도 없어”"
+    },
+    "original:60fcb7f207228c0615178d36": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000299",
+      "source": "전자신문",
+      "source_body_digest": "ef51fbebfc232d57a82a754f3d34a2123be2e9746ddbb04db31d35e7ddd4a50c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f701cc4c7d158603156d07a19bf99cd37100845301e1c0c757df060f44b92825",
+      "source_fact_keys": [
+        "source_fact:v1:3a9bf38ff0d6ea070fa4169555b4066d4f3c3cefe0a804ddd02957ee12b07597",
+        "source_fact:v1:e3f1f1b21d249ec89a9feaa8392509610b798fc8a9b0b4359878c28266bf0329"
+      ],
+      "source_published_kst": "2026-10-28T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화",
+      "telegram_core_fact": "세븐일레븐은 건강 간편식 브랜드 '밸런스푼'이 론칭 5개월 만에 누적 판매량 80만개를 돌파했다고 28일 밝혔다. 상권별 매출 구성비는 주택가 30%, 오피스 21%, 독신 상권 8% 순이었다.",
+      "title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화"
     },
     "original:60fec8357045bedd3b0c2eb4": {
       "first_seen_kst": "2026-10-16T22:57:47+09:00",
@@ -520834,6 +521293,24 @@
       "source_title": "\"방치 계좌 해소 핵심 과제...위험자산 투자한도 현 70%보다 늘려야\"",
       "telegram_core_fact": "송 전무는 현 70%인 위험자산 비중을 늘려야 한다며 “금융기관의 투자교육을 확대하여 고객으로 하여금 다양한 자산에 투자하는 방법을 안내할 필요가 있다”고 했다. 퇴직연금은 노후 대비 성격이 강하다 보니 현행 규정상 전체 적립금의 최대 70%까지만 주식형 ETF나 주식형 펀드 같은 위험자산에 투자할 수 있다.",
       "title": "\"방치 계좌 해소 핵심 과제...위험자산 투자한도 현 70%보다 늘려야\""
+    },
+    "original:6d0ddd306871e9f32afebe45": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640808",
+      "source": "이투데이",
+      "source_body_digest": "29a53a097cd747622f2cc745bda364a7e2e2dd947d27ce081d49678f98062c85",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "직원 더 뽑는 중소기업, 국세청 ‘정기 세무조사’ 제외 혜택",
+      "telegram_core_fact": "국세청은 일자리창출 계획서 또는 투자확대 계획서를 제출한 중소기업을 2025사업연도 법인세와 2025년 귀속 종합소득세 정기 세무조사 선정에서 제외한다고 28일 밝혔다. 직원을 더 뽑거나 투자를 늘리는 중소기업이 정기 세무조사 부담을 덜게 된다.",
+      "title": "직원 더 뽑는 중소기업, 국세청 ‘정기 세무조사’ 제외 혜택"
     },
     "original:6d213afb3a293ce0d2e296f0": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
@@ -533980,6 +534457,28 @@
       "source_title": "휴매나, 블랙록 WCAS 지분 28억 달러 인수..센터웰 합작 재편",
       "telegram_core_fact": "휴매나(HUM)는 자회사 센터웰의 시니어 일차의료 클리닉 약 150곳을 운영할 새 합작법인을 블랙록 산하 HPS 인베스트먼트 파트너스와 설립하고, 블랙록이 기존 파트너 WCAS의 센터웰 합작법인 지분(약 28억 달러 규모)을 인수하는 계약을 체결했다고 10월 13일 발표했다.",
       "title": "휴매나, 블랙록 WCAS 지분 28억 달러 인수..센터웰 합작 재편"
+    },
+    "original:81ebb34e96528fa8275eda69": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000290",
+      "source": "전자신문",
+      "source_body_digest": "cd0e7c0abec9255902ae62542d7eb53cc3941b55509de4e36d4ba5f084604d53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766c76318b81ab5b80948b24cdd966b3dab6dbdec010e4d3075c42fe87251978",
+      "source_fact_keys": [
+        "source_fact:v1:4da03432adcf42ba1a3169a8c3bffedafb18b6781ac41dff4b1050e08165a0a9",
+        "source_fact:v1:898cbe35b31989d7384eb20d23684df26c09b19a0343bccd080fe825d5e1da12",
+        "source_fact:v1:beb3e6d82b20ec396766f8d12604c176b1504893d31df69620d750dd2bfe98da"
+      ],
+      "source_published_kst": "2026-10-28T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로",
+      "telegram_core_fact": "40여년간 축적한 해저케이블 운용 경험에 신규 국제망과 육양국, 국내 통신망, AI데이터센터(AIDC)를 연계해 해외 AI·클라우드 거점부터 국내 AI 인프라까지 잇는 초연결 네트워크를 구축한다는 전략이다.",
+      "title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로"
     },
     "original:81edc67792f0cfe73e29f8fe": {
       "first_seen_kst": "2026-10-27T10:39:09+09:00",
@@ -601098,6 +601597,27 @@
       "source_title": "아이폰 듀오 '품귀'에 삼성도 웃는다…갤Z폴드8 관심 300%↑",
       "telegram_core_fact": "창 부사장은 \"지난 한 달 동안 삼성 폴더블폰에 대한 구글 검색량이 300% 증가했다\"며 \"삼성의 폴더블 시장 리더십은 어느 때보다 강력하다\"고 말했다. GF증권의 제프 푸 애널리스트는 힌지 공급 제약에 따른 생산 지연을 이유로 올해 아이폰 듀오 출하량 전망치를 기존 700만 대에서 600만 대로 낮췄다.",
       "title": "아이폰 듀오 '품귀'에 삼성도 웃는다…갤Z폴드8 관심 300%↑"
+    },
+    "original:ea3da2091aba0385623142e5": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04700246645617512",
+      "source": "이데일리",
+      "source_body_digest": "590cd23d2c28957fc6734c2dad91b8fac02b91040f6844e53f262a2f6ce0b1d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:baefbd2dedfb907d59418edf660e4a6974f7b84dc10f9d4d617d1d3c5f1ccbfc",
+      "source_fact_keys": [
+        "source_fact:v1:49080d17458b6340f85a3831f6e93458fafd69747736d59b4a39fad2005eb557",
+        "source_fact:v1:f5ba2f3e36f1f319a90c8d25dabe9f1b651d2f5b0b8e33580243726c7fbbf36c"
+      ],
+      "source_published_kst": "2026-10-28T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도",
+      "telegram_core_fact": "이번 행정지도는 SK하이닉스 용인 반도체클러스터 일반산단의 생산시설(Fab) 가동이 본격화 된 후 안성 고삼저수지에 방류수가 유입될 경우를 대비한 조치다.",
+      "title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도"
     },
     "original:ea40782a0e830a1e95cf9ab0": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
@@ -730392,6 +730912,29 @@
       "source_title": "“겨울이 온다”…중동發 에너지 쇼크에 전 세계 금융수장들 '비상'",
       "telegram_core_fact": "주요 7개국(G7)은 도널드 트럼프 미국 대통령의 압박에 따라 비상 비축유에서 경유와 원유 1억배럴을 방출하기로 합의했다. 중동 전쟁 장기화에 따른 에너지 공급 충격과 고금리, 부채 급증이 세계 경제를 위협하고 있다.",
       "title": "“겨울이 온다”…중동發 에너지 쇼크에 전 세계 금융수장들 '비상'"
+    },
+    "source_fact:2a730d06ba5bc9c7376f8d01": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641005",
+      "source": "이투데이",
+      "source_body_digest": "884d7526e0340bef9d9e19e45ed44eb99f6058d7a61d6377a21599125b57590e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61653fc8dd2a2b4aec8bf5b2f2a875491c6143222cfa1d91f2cc919c21011ac",
+      "source_fact_keys": [
+        "source_fact:v1:56424855305ff4a1fcfd1dc7978515c3c5c6945ad5fbb605bfe4c9db3c28c45e",
+        "source_fact:v1:8923e88ea3b6c7184e96842119773076299b357ff360085c05aa0bf31854a3f5",
+        "source_fact:v1:b2a01c7f2e580419e0208e72e5664944f24a04c4fe7b35e06d87ba31ee80f5f8",
+        "source_fact:v1:cf58537b7ca7768585ab9689c81428cb5a01484bf840f468aae6019810e626d5"
+      ],
+      "source_published_kst": "2026-10-28T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’",
+      "telegram_core_fact": "산업통상부가 28일 발표한 '2026년 9월 주요 유통업체 매출 동향'에 따르면 지난달 주요 온·오프라인 유통업체의 전체 매출은 전년 동월 대비 4.5% 늘어났다.",
+      "title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’"
     },
     "source_fact:2a7442fa786d1111d70a9795": {
       "first_seen_kst": "2026-10-23T14:14:10+09:00",
@@ -884404,6 +884947,27 @@
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
+    "source_fact:6283255925891a31b830a203": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000299",
+      "source": "전자신문",
+      "source_body_digest": "ef51fbebfc232d57a82a754f3d34a2123be2e9746ddbb04db31d35e7ddd4a50c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f701cc4c7d158603156d07a19bf99cd37100845301e1c0c757df060f44b92825",
+      "source_fact_keys": [
+        "source_fact:v1:3a9bf38ff0d6ea070fa4169555b4066d4f3c3cefe0a804ddd02957ee12b07597",
+        "source_fact:v1:e3f1f1b21d249ec89a9feaa8392509610b798fc8a9b0b4359878c28266bf0329"
+      ],
+      "source_published_kst": "2026-10-28T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화",
+      "telegram_core_fact": "세븐일레븐은 건강 간편식 브랜드 '밸런스푼'이 론칭 5개월 만에 누적 판매량 80만개를 돌파했다고 28일 밝혔다. 상권별 매출 구성비는 주택가 30%, 오피스 21%, 독신 상권 8% 순이었다.",
+      "title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화"
+    },
     "source_fact:6287aca4167f00be04c59dbf": {
       "first_seen_kst": "2026-10-18T03:10:20+09:00",
       "lanes": {
@@ -962635,6 +963199,29 @@
       "telegram_core_fact": "PPI 발표 뒤 시카고상품거래소(CME) 페드워치가 반영하는 10월 연방공개시장위원회(FOMC) 금리 인상 확률은 67%에서 72%로 상승했다.",
       "title": "물가 쇼크에도 美금리 급락…AI서 국채로 피신한 돈 '양날의 검'"
     },
+    "source_fact:7ef62791001e47e0677d7de6": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641005",
+      "source": "이투데이",
+      "source_body_digest": "884d7526e0340bef9d9e19e45ed44eb99f6058d7a61d6377a21599125b57590e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61653fc8dd2a2b4aec8bf5b2f2a875491c6143222cfa1d91f2cc919c21011ac",
+      "source_fact_keys": [
+        "source_fact:v1:56424855305ff4a1fcfd1dc7978515c3c5c6945ad5fbb605bfe4c9db3c28c45e",
+        "source_fact:v1:8923e88ea3b6c7184e96842119773076299b357ff360085c05aa0bf31854a3f5",
+        "source_fact:v1:b2a01c7f2e580419e0208e72e5664944f24a04c4fe7b35e06d87ba31ee80f5f8",
+        "source_fact:v1:cf58537b7ca7768585ab9689c81428cb5a01484bf840f468aae6019810e626d5"
+      ],
+      "source_published_kst": "2026-10-28T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’",
+      "telegram_core_fact": "산업통상부가 28일 발표한 '2026년 9월 주요 유통업체 매출 동향'에 따르면 지난달 주요 온·오프라인 유통업체의 전체 매출은 전년 동월 대비 4.5% 늘어났다.",
+      "title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’"
+    },
     "source_fact:7efa64897b20388a1ac5ae72": {
       "first_seen_kst": "2026-10-28T20:54:15+09:00",
       "lanes": {
@@ -979835,6 +980422,27 @@
       "source_title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\"",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재법 시행을 단 이틀 앞두고 전격 유예 결정을 내려 동맹국들의 강력한 반발을 사고 있다.",
       "title": "\"트럼프의 대러 제재 중단…美 리더십 스스로 흔드는 격\""
+    },
+    "source_fact:85b02b72e474187a27096922": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641123",
+      "source": "이투데이",
+      "source_body_digest": "10f80f2be4034c212c28a77e1648d29d34ba33daf318d39a3249aa4893e94987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25a2dd3070963e2f00581da7332e2d1b13c0d565a356e5a84310066b377efc0b",
+      "source_fact_keys": [
+        "source_fact:v1:3ce1b9eae216b448f7c8796e8c5f97ddd449b889e75ba33e31eda57bf0df9526",
+        "source_fact:v1:4c95cd713022142bb34a912ebfdfb1c6b61e0ada624c76b637033d7699e18c53"
+      ],
+      "source_published_kst": "2026-10-28T13:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인",
+      "telegram_core_fact": "보령파마솔루션은 국내 영업·마케팅과 제품 도입, 유통을 전담하고, 보령은 연구개발과 생산, 글로벌 사업을 직접 수행한다.",
+      "title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인"
     },
     "source_fact:85b1eb1bd8531f7dec6dc19a": {
       "first_seen_kst": "2026-10-18T15:17:26+09:00",
@@ -1035613,6 +1036221,29 @@
       "telegram_core_fact": "금융감독원 전자공시시스템에 따르면 삼성전자는 전날 자기주식취득결과보고서를 제출하고 총 15조원 자사주 매입을 완료했다고 밝혔다.",
       "title": "“삼전 쓸어담던 큰손 빠지니 폭락?”…‘자사주 매입 끝’ 증시, 누가 받치나"
     },
+    "source_fact:9aa82a32fcc57b245ac99695": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641005",
+      "source": "이투데이",
+      "source_body_digest": "884d7526e0340bef9d9e19e45ed44eb99f6058d7a61d6377a21599125b57590e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61653fc8dd2a2b4aec8bf5b2f2a875491c6143222cfa1d91f2cc919c21011ac",
+      "source_fact_keys": [
+        "source_fact:v1:56424855305ff4a1fcfd1dc7978515c3c5c6945ad5fbb605bfe4c9db3c28c45e",
+        "source_fact:v1:8923e88ea3b6c7184e96842119773076299b357ff360085c05aa0bf31854a3f5",
+        "source_fact:v1:b2a01c7f2e580419e0208e72e5664944f24a04c4fe7b35e06d87ba31ee80f5f8",
+        "source_fact:v1:cf58537b7ca7768585ab9689c81428cb5a01484bf840f468aae6019810e626d5"
+      ],
+      "source_published_kst": "2026-10-28T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’",
+      "telegram_core_fact": "산업통상부가 28일 발표한 '2026년 9월 주요 유통업체 매출 동향'에 따르면 지난달 주요 온·오프라인 유통업체의 전체 매출은 전년 동월 대비 4.5% 늘어났다.",
+      "title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’"
+    },
     "source_fact:9aaa255e67966d266cef8c0f": {
       "first_seen_kst": "2026-10-28T11:34:14+09:00",
       "lanes": {
@@ -1060813,6 +1061444,28 @@
       "source_title": "\"2028년까지 주문 못 따라간다\"…ASML, AI 반도체 장비 공급난",
       "telegram_core_fact": "ASML 4분기 매출은 8000억원 전망입니다.",
       "title": "\"2028년까지 주문 못 따라간다\"…ASML, AI 반도체 장비 공급난"
+    },
+    "source_fact:a3c444b47cdd1cbdb5a80bb2": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000290",
+      "source": "전자신문",
+      "source_body_digest": "cd0e7c0abec9255902ae62542d7eb53cc3941b55509de4e36d4ba5f084604d53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766c76318b81ab5b80948b24cdd966b3dab6dbdec010e4d3075c42fe87251978",
+      "source_fact_keys": [
+        "source_fact:v1:4da03432adcf42ba1a3169a8c3bffedafb18b6781ac41dff4b1050e08165a0a9",
+        "source_fact:v1:898cbe35b31989d7384eb20d23684df26c09b19a0343bccd080fe825d5e1da12",
+        "source_fact:v1:beb3e6d82b20ec396766f8d12604c176b1504893d31df69620d750dd2bfe98da"
+      ],
+      "source_published_kst": "2026-10-28T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로",
+      "telegram_core_fact": "40여년간 축적한 해저케이블 운용 경험에 신규 국제망과 육양국, 국내 통신망, AI데이터센터(AIDC)를 연계해 해외 AI·클라우드 거점부터 국내 AI 인프라까지 잇는 초연결 네트워크를 구축한다는 전략이다.",
+      "title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로"
     },
     "source_fact:a3c537ec503bd0c9b7a937ca": {
       "first_seen_kst": "2026-10-22T10:36:33+09:00",
@@ -1088860,6 +1089513,28 @@
       "source_title": "대명화학의 기묘한 패션 재편…레이어 이어 마뗑킴도 ‘모회사 역합병’",
       "telegram_core_fact": "8월 핵심 계열사 레이어가 모회사인 어센틱브랜즈코리아를 흡수합병한 데 이어, 이번에는 간판 브랜드 마뗑킴이 모회사인 하고하우스를 역합병하기로 결정했다.",
       "title": "대명화학의 기묘한 패션 재편…레이어 이어 마뗑킴도 ‘모회사 역합병’"
+    },
+    "source_fact:adbaec613e79eabe724c6191": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000290",
+      "source": "전자신문",
+      "source_body_digest": "cd0e7c0abec9255902ae62542d7eb53cc3941b55509de4e36d4ba5f084604d53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766c76318b81ab5b80948b24cdd966b3dab6dbdec010e4d3075c42fe87251978",
+      "source_fact_keys": [
+        "source_fact:v1:4da03432adcf42ba1a3169a8c3bffedafb18b6781ac41dff4b1050e08165a0a9",
+        "source_fact:v1:898cbe35b31989d7384eb20d23684df26c09b19a0343bccd080fe825d5e1da12",
+        "source_fact:v1:beb3e6d82b20ec396766f8d12604c176b1504893d31df69620d750dd2bfe98da"
+      ],
+      "source_published_kst": "2026-10-28T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로",
+      "telegram_core_fact": "40여년간 축적한 해저케이블 운용 경험에 신규 국제망과 육양국, 국내 통신망, AI데이터센터(AIDC)를 연계해 해외 AI·클라우드 거점부터 국내 AI 인프라까지 잇는 초연결 네트워크를 구축한다는 전략이다.",
+      "title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로"
     },
     "source_fact:adbb94b5921505c7c82a31ba": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
@@ -1124453,6 +1125128,29 @@
       "source_title": "생산자물가 두 달 연속 상승⋯배추 43%·주택용전력 13% '쑥'",
       "telegram_core_fact": "한은에 따르면 9월 국내 생산자물가지수(잠정)는 129.78(2020년=100)로 전월(129.58) 대비 0.2% 상승한 것으로 집계됐다.",
       "title": "생산자물가 두 달 연속 상승⋯배추 43%·주택용전력 13% '쑥'"
+    },
+    "source_fact:baa522a824010265a9f026ce": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641005",
+      "source": "이투데이",
+      "source_body_digest": "884d7526e0340bef9d9e19e45ed44eb99f6058d7a61d6377a21599125b57590e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61653fc8dd2a2b4aec8bf5b2f2a875491c6143222cfa1d91f2cc919c21011ac",
+      "source_fact_keys": [
+        "source_fact:v1:56424855305ff4a1fcfd1dc7978515c3c5c6945ad5fbb605bfe4c9db3c28c45e",
+        "source_fact:v1:8923e88ea3b6c7184e96842119773076299b357ff360085c05aa0bf31854a3f5",
+        "source_fact:v1:b2a01c7f2e580419e0208e72e5664944f24a04c4fe7b35e06d87ba31ee80f5f8",
+        "source_fact:v1:cf58537b7ca7768585ab9689c81428cb5a01484bf840f468aae6019810e626d5"
+      ],
+      "source_published_kst": "2026-10-28T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’",
+      "telegram_core_fact": "산업통상부가 28일 발표한 '2026년 9월 주요 유통업체 매출 동향'에 따르면 지난달 주요 온·오프라인 유통업체의 전체 매출은 전년 동월 대비 4.5% 늘어났다.",
+      "title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’"
     },
     "source_fact:baa59b61368be4bf92359334": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
@@ -1172853,6 +1173551,27 @@
       "telegram_core_fact": "롯데하이마트가 가전 물류 현장에 사람을 닮은 휴머노이드 로봇을 투입한다. 롯데하이마트는 5월 정부의 ‘AI 응용제품 신속 상용화 지원사업’에 선정돼 근력 증강 웨어러블 로봇의 가전 물류 적용을 추진하고 있다.",
       "title": "가전 고르고 포장까지…롯데하이마트, 물류센터에 휴머노이드 투입"
     },
+    "source_fact:cc26a7d9f151645309077f6a": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04700246645617512",
+      "source": "이데일리",
+      "source_body_digest": "590cd23d2c28957fc6734c2dad91b8fac02b91040f6844e53f262a2f6ce0b1d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:baefbd2dedfb907d59418edf660e4a6974f7b84dc10f9d4d617d1d3c5f1ccbfc",
+      "source_fact_keys": [
+        "source_fact:v1:49080d17458b6340f85a3831f6e93458fafd69747736d59b4a39fad2005eb557",
+        "source_fact:v1:f5ba2f3e36f1f319a90c8d25dabe9f1b651d2f5b0b8e33580243726c7fbbf36c"
+      ],
+      "source_published_kst": "2026-10-28T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도",
+      "telegram_core_fact": "이번 행정지도는 SK하이닉스 용인 반도체클러스터 일반산단의 생산시설(Fab) 가동이 본격화 된 후 안성 고삼저수지에 방류수가 유입될 경우를 대비한 조치다.",
+      "title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도"
+    },
     "source_fact:cc27df9c5345a809cd667fd8": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
       "lanes": {
@@ -1185038,6 +1185757,27 @@
       "telegram_core_fact": "bhc는 지난해에도 '콰삭킹', '스윗칠리킹' 등 신제품을 선보였으며, 연 매출 6천억원을 넘어서며 치킨 프랜차이즈 업계 최초로 6천억원대 매출을 기록했다.",
       "title": "bhc \"'콰삭모짜킹', 출시 3주 만에 20만개 판매\" | 연합뉴스"
     },
+    "source_fact:d09c238d1354839edd009937": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641123",
+      "source": "이투데이",
+      "source_body_digest": "10f80f2be4034c212c28a77e1648d29d34ba33daf318d39a3249aa4893e94987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25a2dd3070963e2f00581da7332e2d1b13c0d565a356e5a84310066b377efc0b",
+      "source_fact_keys": [
+        "source_fact:v1:3ce1b9eae216b448f7c8796e8c5f97ddd449b889e75ba33e31eda57bf0df9526",
+        "source_fact:v1:4c95cd713022142bb34a912ebfdfb1c6b61e0ada624c76b637033d7699e18c53"
+      ],
+      "source_published_kst": "2026-10-28T13:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인",
+      "telegram_core_fact": "보령파마솔루션은 국내 영업·마케팅과 제품 도입, 유통을 전담하고, 보령은 연구개발과 생산, 글로벌 사업을 직접 수행한다.",
+      "title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인"
+    },
     "source_fact:d0a073eb20e8c243fedcc3c7": {
       "first_seen_kst": "2026-10-28T05:16:14+09:00",
       "lanes": {
@@ -1190125,6 +1190865,27 @@
       "source_title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스",
       "telegram_core_fact": "LG유플러스는 한국이콜랩과 AI 데이터센터(AIDC) 냉각 시스템 운영 최적화를 위한 업무협약(MOU)을 체결했다고 28일 밝혔다. LG유플러스[032640]가 한국이콜랩과 손잡고 인공지능(AI) 데이터센터 액체냉각 운영표준 개발에 나선다.",
       "title": "LGU+, 이콜랩과 AIDC 액체 냉각 최적화 기술 개발 | 연합뉴스"
+    },
+    "source_fact:d282a1db2bf5c494a68a7890": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000299",
+      "source": "전자신문",
+      "source_body_digest": "ef51fbebfc232d57a82a754f3d34a2123be2e9746ddbb04db31d35e7ddd4a50c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f701cc4c7d158603156d07a19bf99cd37100845301e1c0c757df060f44b92825",
+      "source_fact_keys": [
+        "source_fact:v1:3a9bf38ff0d6ea070fa4169555b4066d4f3c3cefe0a804ddd02957ee12b07597",
+        "source_fact:v1:e3f1f1b21d249ec89a9feaa8392509610b798fc8a9b0b4359878c28266bf0329"
+      ],
+      "source_published_kst": "2026-10-28T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화",
+      "telegram_core_fact": "세븐일레븐은 건강 간편식 브랜드 '밸런스푼'이 론칭 5개월 만에 누적 판매량 80만개를 돌파했다고 28일 밝혔다. 상권별 매출 구성비는 주택가 30%, 오피스 21%, 독신 상권 8% 순이었다.",
+      "title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화"
     },
     "source_fact:d2838dfe2ed65e09a9f9c972": {
       "first_seen_kst": "2026-10-17T12:40:29+09:00",
@@ -1211218,6 +1211979,28 @@
       "source_title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’",
       "telegram_core_fact": "현재 경기도 화성에 50MW급 태양광 모듈 생산라인을 구축하고, 초경량·고출력 태양광 모듈과 건물일체형 태양광 모듈을 개발·생산하고 있다. 에이스인벤터는 아이템을 인정받아 한국건설기술연구원 스마트건설지원센터 보육기업으로 선정됐다.",
       "title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’"
+    },
+    "source_fact:da5bfd525d7dd3bc6bfe1a63": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000290",
+      "source": "전자신문",
+      "source_body_digest": "cd0e7c0abec9255902ae62542d7eb53cc3941b55509de4e36d4ba5f084604d53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766c76318b81ab5b80948b24cdd966b3dab6dbdec010e4d3075c42fe87251978",
+      "source_fact_keys": [
+        "source_fact:v1:4da03432adcf42ba1a3169a8c3bffedafb18b6781ac41dff4b1050e08165a0a9",
+        "source_fact:v1:898cbe35b31989d7384eb20d23684df26c09b19a0343bccd080fe825d5e1da12",
+        "source_fact:v1:beb3e6d82b20ec396766f8d12604c176b1504893d31df69620d750dd2bfe98da"
+      ],
+      "source_published_kst": "2026-10-28T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로",
+      "telegram_core_fact": "40여년간 축적한 해저케이블 운용 경험에 신규 국제망과 육양국, 국내 통신망, AI데이터센터(AIDC)를 연계해 해외 AI·클라우드 거점부터 국내 AI 인프라까지 잇는 초연결 네트워크를 구축한다는 전략이다.",
+      "title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로"
     },
     "source_fact:da5e86808416f9e2517d64d2": {
       "first_seen_kst": "2026-10-23T08:04:49+09:00",
@@ -1255955,6 +1256738,27 @@
       "source_title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)",
       "telegram_core_fact": "이어 \"개인의 지배력 사수를 위해 회사에 1조6000억원이 넘는 막대한 차입금 부담을 지운 행위는 결코 '선관주의의무'에 부합하는 정당한 경영 판단이 될 수 없다\"며 \"자사주를 주당 89만원에 매입하며 회사에 8300억원 이상의 실질적 손해를 끼쳤다\"고 주장했다.",
       "title": "영풍, '자사주 공개매수 맞불' 고려아연에 1심 패소…\"즉각 항소\"(종합)"
+    },
+    "source_fact:eac4cc253b2c93bbee39f1d9": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04700246645617512",
+      "source": "이데일리",
+      "source_body_digest": "590cd23d2c28957fc6734c2dad91b8fac02b91040f6844e53f262a2f6ce0b1d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:baefbd2dedfb907d59418edf660e4a6974f7b84dc10f9d4d617d1d3c5f1ccbfc",
+      "source_fact_keys": [
+        "source_fact:v1:49080d17458b6340f85a3831f6e93458fafd69747736d59b4a39fad2005eb557",
+        "source_fact:v1:f5ba2f3e36f1f319a90c8d25dabe9f1b651d2f5b0b8e33580243726c7fbbf36c"
+      ],
+      "source_published_kst": "2026-10-28T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도",
+      "telegram_core_fact": "이번 행정지도는 SK하이닉스 용인 반도체클러스터 일반산단의 생산시설(Fab) 가동이 본격화 된 후 안성 고삼저수지에 방류수가 유입될 경우를 대비한 조치다.",
+      "title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도"
     },
     "source_fact:eac5dce77a8199a3d1427afe": {
       "first_seen_kst": "2026-10-26T11:28:23+09:00",
@@ -1320151,6 +1320955,27 @@
       "telegram_core_fact": "800조원대 호남 반도체 클러스터의 용수 해법으로 하수처리수 재이용이 부상하면서 물 확보와 함께 수질과 가격, 관리 책임을 정비해야 한다는 의견이 제시됐다. 정부는 현재 광주 제1하수처리장에서 하루 30만t의 재이용수를 생산해 호남 반도체 산단에 공급하는 방안을 추진 중이다.",
       "title": "호남반도체, 하수 재이용수 뜬다…\"수질·가격·관리정비\""
     },
+    "title:0cc5c7d2904b07b26abbc03e": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641123",
+      "source": "이투데이",
+      "source_body_digest": "10f80f2be4034c212c28a77e1648d29d34ba33daf318d39a3249aa4893e94987",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25a2dd3070963e2f00581da7332e2d1b13c0d565a356e5a84310066b377efc0b",
+      "source_fact_keys": [
+        "source_fact:v1:3ce1b9eae216b448f7c8796e8c5f97ddd449b889e75ba33e31eda57bf0df9526",
+        "source_fact:v1:4c95cd713022142bb34a912ebfdfb1c6b61e0ada624c76b637033d7699e18c53"
+      ],
+      "source_published_kst": "2026-10-28T13:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인",
+      "telegram_core_fact": "보령파마솔루션은 국내 영업·마케팅과 제품 도입, 유통을 전담하고, 보령은 연구개발과 생산, 글로벌 사업을 직접 수행한다.",
+      "title": "보령, 내년 1월 ‘보령파마솔루션’ 출범⋯자회사 물적분할 승인"
+    },
     "title:0ccbe4aa593feb2c5e94c231": {
       "first_seen_kst": "2026-10-14T03:39:25+09:00",
       "lanes": {
@@ -1326316,6 +1327141,29 @@
       ],
       "source_published_kst": "2026-10-07T09:15+09:00",
       "title": "[태백소식]서학골 36홀 파크골프장 현장 점검 등"
+    },
+    "title:1654c5dee3020f7dbe0cfa5a": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641005",
+      "source": "이투데이",
+      "source_body_digest": "884d7526e0340bef9d9e19e45ed44eb99f6058d7a61d6377a21599125b57590e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d61653fc8dd2a2b4aec8bf5b2f2a875491c6143222cfa1d91f2cc919c21011ac",
+      "source_fact_keys": [
+        "source_fact:v1:56424855305ff4a1fcfd1dc7978515c3c5c6945ad5fbb605bfe4c9db3c28c45e",
+        "source_fact:v1:8923e88ea3b6c7184e96842119773076299b357ff360085c05aa0bf31854a3f5",
+        "source_fact:v1:b2a01c7f2e580419e0208e72e5664944f24a04c4fe7b35e06d87ba31ee80f5f8",
+        "source_fact:v1:cf58537b7ca7768585ab9689c81428cb5a01484bf840f468aae6019810e626d5"
+      ],
+      "source_published_kst": "2026-10-28T11:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’",
+      "telegram_core_fact": "산업통상부가 28일 발표한 '2026년 9월 주요 유통업체 매출 동향'에 따르면 지난달 주요 온·오프라인 유통업체의 전체 매출은 전년 동월 대비 4.5% 늘어났다.",
+      "title": "‘추석 특수’ 유통업체, 지난달 매출 4.5%↑⋯오프라인 전 업태 ‘방긋’"
     },
     "title:1657db059ce19bb968aebb08": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -1373898,6 +1374746,24 @@
       "telegram_core_fact": "더불어민주당 김현정 의원(경기 평택병)이 SK하이닉스 미국 손자회사 솔리다임의 나스닥 상장 추진에 제동을 걸고 나섰다. 김 의원은 19일 국회 정무위원회 금융감독원 국정감사에서 \"솔리다임 상장 자체보다 SK하이닉스 일반주주 보호장치 없이 해외 상장이 추진되는 점이 문제\"라며 금융당국의 적극적인 대응을 촉구했다.",
       "title": "김현정 의원 \"솔리다임 상장, 주주보호 없이 추진해선 안 돼\""
     },
+    "title:5e65880016d5a2edbafb3582": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187909",
+      "source": "매일경제",
+      "source_body_digest": "35a267cd2752d15bdfa51d5642edbb33e5b5566997beb7b8408e31b5309b1322",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T05:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "록키브랜즈, 3분기 순이익 큰 폭 증가에 투자자 관심 집중",
+      "telegram_core_fact": "희석 주당순이익은 1.69달러로 76.0% 증가했고 순이익도 78% 급증했습니다.",
+      "title": "록키브랜즈, 3분기 순이익 큰 폭 증가에 투자자 관심 집중"
+    },
     "title:5e6cfd261dbae0563b87f146": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -1376015,6 +1376881,27 @@
       "source_title": "中 인민은행, 환율 조작 우려에 발끈 “필요도 없고 할 수도 없어”",
       "telegram_core_fact": "중국 관영 신화통신에 따르면 인민은행은 전날 발표한 ‘위안화 환율에 대한 중국 인민은행의 정책 입장’을 통해 “환율 형성 과정에서 시장이 결정적인 역할을 하도록 견지할 것이며 중국은 환율 평가절하를 통해 무역 경쟁 우위를 확보할 필요도 의도도 없고 통화 평가절하를 절대 하지 않는다”고 밝혔다.",
       "title": "中 인민은행, 환율 조작 우려에 발끈 “필요도 없고 할 수도 없어”"
+    },
+    "title:60fcb7f207228c0615178d36": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000299",
+      "source": "전자신문",
+      "source_body_digest": "ef51fbebfc232d57a82a754f3d34a2123be2e9746ddbb04db31d35e7ddd4a50c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f701cc4c7d158603156d07a19bf99cd37100845301e1c0c757df060f44b92825",
+      "source_fact_keys": [
+        "source_fact:v1:3a9bf38ff0d6ea070fa4169555b4066d4f3c3cefe0a804ddd02957ee12b07597",
+        "source_fact:v1:e3f1f1b21d249ec89a9feaa8392509610b798fc8a9b0b4359878c28266bf0329"
+      ],
+      "source_published_kst": "2026-10-28T14:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화",
+      "telegram_core_fact": "세븐일레븐은 건강 간편식 브랜드 '밸런스푼'이 론칭 5개월 만에 누적 판매량 80만개를 돌파했다고 28일 밝혔다. 상권별 매출 구성비는 주택가 30%, 오피스 21%, 독신 상권 8% 순이었다.",
+      "title": "세븐일레븐 '밸런스푼' 5개월 만에 80만개 판매…건강 간편식 강화"
     },
     "title:60fec8357045bedd3b0c2eb4": {
       "first_seen_kst": "2026-10-16T22:57:47+09:00",
@@ -1383742,6 +1384629,24 @@
       "source_title": "\"방치 계좌 해소 핵심 과제...위험자산 투자한도 현 70%보다 늘려야\"",
       "telegram_core_fact": "송 전무는 현 70%인 위험자산 비중을 늘려야 한다며 “금융기관의 투자교육을 확대하여 고객으로 하여금 다양한 자산에 투자하는 방법을 안내할 필요가 있다”고 했다. 퇴직연금은 노후 대비 성격이 강하다 보니 현행 규정상 전체 적립금의 최대 70%까지만 주식형 ETF나 주식형 펀드 같은 위험자산에 투자할 수 있다.",
       "title": "\"방치 계좌 해소 핵심 과제...위험자산 투자한도 현 70%보다 늘려야\""
+    },
+    "title:6d0ddd306871e9f32afebe45": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640808",
+      "source": "이투데이",
+      "source_body_digest": "29a53a097cd747622f2cc745bda364a7e2e2dd947d27ce081d49678f98062c85",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "직원 더 뽑는 중소기업, 국세청 ‘정기 세무조사’ 제외 혜택",
+      "telegram_core_fact": "국세청은 일자리창출 계획서 또는 투자확대 계획서를 제출한 중소기업을 2025사업연도 법인세와 2025년 귀속 종합소득세 정기 세무조사 선정에서 제외한다고 28일 밝혔다. 직원을 더 뽑거나 투자를 늘리는 중소기업이 정기 세무조사 부담을 덜게 된다.",
+      "title": "직원 더 뽑는 중소기업, 국세청 ‘정기 세무조사’ 제외 혜택"
     },
     "title:6d213afb3a293ce0d2e296f0": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
@@ -1397124,6 +1398029,28 @@
       "source_title": "휴매나, 블랙록 WCAS 지분 28억 달러 인수..센터웰 합작 재편",
       "telegram_core_fact": "휴매나(HUM)는 자회사 센터웰의 시니어 일차의료 클리닉 약 150곳을 운영할 새 합작법인을 블랙록 산하 HPS 인베스트먼트 파트너스와 설립하고, 블랙록이 기존 파트너 WCAS의 센터웰 합작법인 지분(약 28억 달러 규모)을 인수하는 계약을 체결했다고 10월 13일 발표했다.",
       "title": "휴매나, 블랙록 WCAS 지분 28억 달러 인수..센터웰 합작 재편"
+    },
+    "title:81ebb34e96528fa8275eda69": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.etnews.com/20261028000290",
+      "source": "전자신문",
+      "source_body_digest": "cd0e7c0abec9255902ae62542d7eb53cc3941b55509de4e36d4ba5f084604d53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:766c76318b81ab5b80948b24cdd966b3dab6dbdec010e4d3075c42fe87251978",
+      "source_fact_keys": [
+        "source_fact:v1:4da03432adcf42ba1a3169a8c3bffedafb18b6781ac41dff4b1050e08165a0a9",
+        "source_fact:v1:898cbe35b31989d7384eb20d23684df26c09b19a0343bccd080fe825d5e1da12",
+        "source_fact:v1:beb3e6d82b20ec396766f8d12604c176b1504893d31df69620d750dd2bfe98da"
+      ],
+      "source_published_kst": "2026-10-28T14:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로",
+      "telegram_core_fact": "40여년간 축적한 해저케이블 운용 경험에 신규 국제망과 육양국, 국내 통신망, AI데이터센터(AIDC)를 연계해 해외 AI·클라우드 거점부터 국내 AI 인프라까지 잇는 초연결 네트워크를 구축한다는 전략이다.",
+      "title": "[리빌딩 KT, 육해공 인프라 혁신]〈2〉해저망, 글로벌 AI 데이터 연결 인프라로"
     },
     "title:81edc67792f0cfe73e29f8fe": {
       "first_seen_kst": "2026-10-27T10:39:09+09:00",
@@ -1465652,6 +1466579,27 @@
       "telegram_core_fact": "창 부사장은 \"지난 한 달 동안 삼성 폴더블폰에 대한 구글 검색량이 300% 증가했다\"며 \"삼성의 폴더블 시장 리더십은 어느 때보다 강력하다\"고 말했다. GF증권의 제프 푸 애널리스트는 힌지 공급 제약에 따른 생산 지연을 이유로 올해 아이폰 듀오 출하량 전망치를 기존 700만 대에서 600만 대로 낮췄다.",
       "title": "아이폰 듀오 '품귀'에 삼성도 웃는다…갤Z폴드8 관심 300%↑"
     },
+    "title:ea3da2091aba0385623142e5": {
+      "first_seen_kst": "2026-10-29T02:40:31+09:00",
+      "lanes": {
+        "live": "2026-10-29T02:40:31+09:00"
+      },
+      "last_seen_kst": "2026-10-29T02:40:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04700246645617512",
+      "source": "이데일리",
+      "source_body_digest": "590cd23d2c28957fc6734c2dad91b8fac02b91040f6844e53f262a2f6ce0b1d0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:baefbd2dedfb907d59418edf660e4a6974f7b84dc10f9d4d617d1d3c5f1ccbfc",
+      "source_fact_keys": [
+        "source_fact:v1:49080d17458b6340f85a3831f6e93458fafd69747736d59b4a39fad2005eb557",
+        "source_fact:v1:f5ba2f3e36f1f319a90c8d25dabe9f1b651d2f5b0b8e33580243726c7fbbf36c"
+      ],
+      "source_published_kst": "2026-10-28T14:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도",
+      "telegram_core_fact": "이번 행정지도는 SK하이닉스 용인 반도체클러스터 일반산단의 생산시설(Fab) 가동이 본격화 된 후 안성 고삼저수지에 방류수가 유입될 경우를 대비한 조치다.",
+      "title": "\"방류수 수질관리하라\" 추미애, 삼전·하닉에 세 번째 행정지도"
+    },
     "title:ea40782a0e830a1e95cf9ab0": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
       "lanes": {
@@ -1479007,5 +1479955,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-29T02:09:19+09:00"
+  "updated_at_kst": "2026-10-29T02:40:31+09:00"
 }
