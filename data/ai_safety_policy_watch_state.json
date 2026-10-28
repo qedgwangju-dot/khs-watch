@@ -3,13 +3,13 @@
   "last_collection": {
     "deferred_events": 0,
     "errors": [],
-    "material_items": 5,
+    "material_items": 15,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 68,
+    "raw_items": 142,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-28T04:46:57.674228+00:00",
+    "updated_at": "2026-10-28T04:52:11.673853+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -127,6 +127,24 @@
       "title": "SoftBank weighs $18 billion acquisition of Allied Universal, source says - Reuters",
       "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQWXdNdHpBa2pKc200dGJ6aDlPYUNpNTlla3ZxM2ZWQzdXNDBxclZxc3pSRlZNelgwSnIzSzdmRVFhdzRVNVhJckNMTjhFOTNsdWlkMWxJSkJRa3huaXd6d3R6cktEODVnUE5aMGMwWEw0ZzRwTTJnX1ZoQ2F5UVhpMUZNNzNLNGNDT2RhdGZnMHZtTHZjcm9PNFk4bldiTjZ4TnJ6SF9zV0owWERWXzgyYmpYLVpFOE9ITG1kanhfOWdfME40Tmh0eTF5cjNfa3AxdFJV?oc=5"
     },
+    "33ea9716948b3485a85a1d51": {
+      "category": "파이오링크 관리형 탐지·대응 상용화 단계",
+      "entity": "파이오링크",
+      "first_seen_at": "2026-10-28T04:52:11.673853+00:00",
+      "published_at": "2026-10-28T02:01:34+00:00",
+      "source": "뉴시스",
+      "title": "\"위협 경보 받아도 대응 막막\"…파이오링크, 관리형 탐지·대응 사업 확대 - 뉴시스",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFB3c3ZXVGVrUGRXVXp0aHZvVExjZWtOYWRUbTZOMEVZcXQ3NjRtSEJfVzJPbG5CMUVzdTZQbktJQlNhWHIwUml3eTgzOGhIN0htZUJhNlVncFFqdnJ6akY0X2tTVWhoU1JvMWFFQWZ2ZDB5SWc3SGV3dtIBeEFVX3lxTFB3c3ZXVGVrUGRXVXp0aHZvVExjZWtOYWRUbTZOMEVZcXQ3NjRtSEJfVzJPbG5CMUVzdTZQbktJQlNhWHIwUml3eTgzOGhIN0htZUJhNlVncFFqdnJ6akY0X2tTVWhoU1JvMWFFQWZ2ZDB5SWc3SGV3dg?oc=5"
+    },
+    "398e72dbd0ed264ad464f190": {
+      "category": "이스트시큐리티 PHP 점검 도구·유료 전환 단계",
+      "entity": "이스트시큐리티",
+      "first_seen_at": "2026-10-28T04:52:11.673853+00:00",
+      "published_at": "2026-10-28T00:04:43+00:00",
+      "source": "서울경제",
+      "title": "이스트시큐리티, ‘PHP2Shell’ 대응 강화…전용 스캐너 배포 - 서울경제",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBkakVsQlJuaTB1UThzSzBMdm9mZHdKa0J0MjVOWHNMLWpYMXYyTjBfVjA3VnhUYWxia29MQUdGSGtNRHV4a1Bnb0czeXd2VmY5bWfSAVNBVV95cUxNSjNVQVJQbkY5eWd6ajc2QzdKLWdYblFsTUtjemJDVDlQQUl1bG1OSGtFaXI1U1JweUxnLV9Kd0hQNVlUZ2xobmo1QkxVVm9qVUNKSQ?oc=5"
+    },
     "3a527c295589b48d3fa697ae": {
       "category": "미국 Super Intelligence Force 정책지휘체계",
       "entity": "미국 Super Intelligence Force",
@@ -146,6 +164,15 @@
       "title": "오픈AI \"AI 국제표준, 미국이 주도해야\" - zdnet.co.kr",
       "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE85czZ3RWsxcEw3U05aZ0FWVGh4b3ZTcU0yRmF5YWg5bDEwX21zQjVib1dxeDdrTlI2NHkyRDkzN2Zsc05lTXFpa29oWlI0X1VYYnFaNzB3?oc=5"
     },
+    "4acd0b2270d69e36708df975": {
+      "category": "파이오링크 PHP 보안 점검 사업화 단계",
+      "entity": "파이오링크",
+      "first_seen_at": "2026-10-28T04:52:11.673853+00:00",
+      "published_at": "2026-10-22T23:55:54+00:00",
+      "source": "뉴시스",
+      "title": "\"우리 홈페이지도 위험할까\"…파이오링크, PHP 취약점 점검 페이지 공개 - 뉴시스",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1Gdnd3X3dMNmZQaFI3M1piMGMyUkhxZDZIcU03VzNRUHlHanFuWFZRdjh5Nm4wM05tay12UUhTNU9DLTF4YlZoRjNlX3lJclYxazVmVWQyTWF1anRmdVV0S9IBeEFVX3lxTE1maXhZOVZOS1hZTm5vbDRzcU9VcTJZQTVsb0h0YkV6a1ltOGlpUl9JUVo4NWNtbEZHR3VJbm5sc3gzc1Z4cXYySkM1Y0VvNTRodkJfbXgyXzB0dkdRUkdjM21QNFl4S28wSndieEVYaV96UTlZc3Q0WQ?oc=5"
+    },
     "67af2488bca49f90e4a88f86": {
       "category": "법규·의무 보고·감사",
       "entity": "AI 안전·보안 생태계",
@@ -154,6 +181,24 @@
       "source": "매일경제",
       "title": "단호한 트럼프 \"AI규제 안 만든다 … 기업 '셀프 제재'로 충분\" - 매일경제",
       "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBWUHZ6OHZtR2VXWmNoRnEzQ2ROV3dDRG9KWEM0a1cxVnJGNE5yaFVzMEtQeUFEYnk1cnlLNTBoZmF2NUdaTFE?oc=5"
+    },
+    "6f1d97c63173fdc087496f81": {
+      "category": "이스트시큐리티 PHP 점검 도구·유료 전환 단계",
+      "entity": "이스트시큐리티",
+      "first_seen_at": "2026-10-28T04:52:11.673853+00:00",
+      "published_at": "2026-10-28T00:44:04+00:00",
+      "source": "전자신문",
+      "title": "이스트시큐리티, PHP2Shell 취약점 점검 도구 무료 배포 - 전자신문",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1uN0JvWFgwdDlQbEJ6M2kxMUYzYS1qbGhhRGItcWs5TGVaS3NtcWhBeEREbjBQZU02SE5OMHhmdlJlMk1lWFg1emRvSGR3Zw?oc=5"
+    },
+    "7851838e985dae845adfb73c": {
+      "category": "파이오링크 PHP 보안 점검 사업화 단계",
+      "entity": "파이오링크",
+      "first_seen_at": "2026-10-28T04:52:11.673853+00:00",
+      "published_at": "2026-10-22T23:55:54+00:00",
+      "source": "뉴시스",
+      "title": "\"우리 홈페이지도 위험할까\"…파이오링크, PHP 취약점 점검 페이지 공개 - 뉴시스",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBhUDkzRXkxdGR6STNuUjQ0VnJIempEZERtVjltSHJqZ3NHQk03SW9uN1gwY3liOVhUdk1XRW1GaV82SlZfVDJKRzRaMUhQWTA4c1Y4N1c3Q3d6RHk3QXh5WWR3?oc=5"
     },
     "78ccee5c0ddfc82e11dd85e7": {
       "category": "Anthropic 프런티어 AI 안전법안 입법 단계",
@@ -191,6 +236,15 @@
       "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcENENWdpRlloLVpNclIyQWpIM3JSV3VHZklqOWZlQ0NJYnB2TWg2ZlhPMndNbS1qM2pWM0dTTVFZQ2l1SmxTT1h3VjZJNVpXTWhZTHRnLThqYm9UeFJ4ZEp0U3JROG1sUFJrN3Z6SEFKN2tPcU5teHZ6cU9JUDh4X1laZVZJMkZNNXNSZnJlZDdOX0dFMlM5REZCSGRHR3AydkdCbUY3RU9zYTRoNzdz?oc=5"
     },
+    "b7301c7daa9682a1ad91eb9d": {
+      "category": "이스트시큐리티 PHP 점검 도구·유료 전환 단계",
+      "entity": "이스트시큐리티",
+      "first_seen_at": "2026-10-28T04:52:11.673853+00:00",
+      "published_at": "2026-10-28T00:29:31+00:00",
+      "source": "보안뉴스",
+      "title": "“조작된 HTTP 요청 위협”... 이스트시큐리티, ‘PHP2Shell’ 스캐너 배포 - 보안뉴스",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9MMGVVNXFzNHpScEZSRWZKYkdOa3g4Zks1MGVlS3d4TXZRdDVMTjE2US1Ib3haV1d4bUtnV2pLTGcxU0dFcmtNRW40XzFtWkI3clNKVG96NzdhWmo1NUtRV0dGWG1mYWQteERN?oc=5"
+    },
     "b8222b47bb3f325fd1464a5a": {
       "category": "국내 PHP 보안위기 대응·정책 단계",
       "entity": "과학기술정보통신부·한국인터넷진흥원",
@@ -219,6 +273,15 @@
       "source": "Semafor",
       "title": "SIF 첫 회의·헌장 채택(보도 단계)",
       "url": "https://www.semafor.com/article/10/15/2026/white-houses-ai-task-force-gets-to-work"
+    },
+    "cba3d526d701b9af5caca15f": {
+      "category": "SGA솔루션즈 PHP 가상패치 사업화 단계",
+      "entity": "SGA솔루션즈",
+      "first_seen_at": "2026-10-28T04:52:11.673853+00:00",
+      "published_at": "2026-10-28T00:29:36+00:00",
+      "source": "보안뉴스",
+      "title": "SGA솔루션즈, ‘PHP2Shell’ 서버 침투 막는 ‘가상패치’ 긴급 지원 - 보안뉴스",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5NNDRVc2Uzbmh4SGVjVDdUWnIyVjR3TUVGaG5YQk1RTldtbjB4czgwa2YtNW5WaHo3VnNNTTJtLXR3bnRnY3VQYzBwSDV4SUotRm9hTFFfbWY3Ym9Za3dTV1l1MmxQSnJmcXRZ?oc=5"
     },
     "cc21ec7e177238bab94db16e": {
       "category": "Anthropic 프런티어 AI 안전법안 입법 단계",
@@ -256,6 +319,15 @@
       "title": "전 세계 PHP 보안 비상…정부, 사이버위기 경보 '주의' 상향 - 연합뉴스",
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE83TDljdU9iUmR0WExxc1QwMXp2RDFvSmlOanlCMlZWTXM5TDR3RTYyTmhUM19USmdNQUg3MDl5dklVaTRjSEt1VWo3bzY1UE5XU2lqTjAyMjFzdm_SAWBBVV95cUxQaU4zZ0xBMVJEdlo2VXpjLUhSNGhWbk1IZG56SW91bDFPRUtvS3VEZUtoazNYcTZ2ellUYzRMS1RvSktrYldEbl9taHB2ajRaSko4SnpYMWtmczd0ZXFsdlk?oc=5"
     },
+    "d2cb86ab390540c201720663": {
+      "category": "SGA솔루션즈 PHP 가상패치 사업화 단계",
+      "entity": "SGA솔루션즈",
+      "first_seen_at": "2026-10-28T04:52:11.673853+00:00",
+      "published_at": "2026-10-28T00:32:11+00:00",
+      "source": "전자신문",
+      "title": "SGA솔루션즈, PHP2Shell 대응 가상패치 지원 - 전자신문",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBnSGJIaDNFZGNlRjh6YkNCRmJUZnZGdUJVLTY4SWJPY2hiSTJPdWR2a1M3VEYyVmE1S0NCLWxrdjVmOXRiN0gwSDN5WEo0QQ?oc=5"
+    },
     "e01fdbce5cef9d158f5b29f0": {
       "category": "CrowdStrike–NVIDIA AI 에이전트 보안 통합 단계",
       "entity": "CrowdStrike–NVIDIA",
@@ -264,6 +336,15 @@
       "source": "CrowdStrike",
       "title": "CrowdStrike and NVIDIA Expand AI Agent Security from Software to Silicon",
       "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-and-nvidia-expand-ai-agent-security-software-silicon"
+    },
+    "e0d2831ef6af363f6adba34d": {
+      "category": "파이오링크 관리형 탐지·대응 상용화 단계",
+      "entity": "파이오링크",
+      "first_seen_at": "2026-10-28T04:52:11.673853+00:00",
+      "published_at": "2026-10-28T02:19:22+00:00",
+      "source": "보안뉴스",
+      "title": "파이오링크, EDR과 MDR 결합한 보안관제 제공 - 보안뉴스",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9ZaWdJU1ZYRFFNXzFXTkE4ZmxtbGU3c2stNi1iRjMwOFlFaUtEYjc1YnE2ejI5Mko2T2U4ek9QclJmeEVXTF9ERUdOMG5MOUhVTm01UGo1RFZBMGE0Tk53YzZiVEhaaVBSRGhZ?oc=5"
     },
     "e8fd84957f3bd0c1872f97e0": {
       "category": "Anthropic 프런티어 AI 안전법안 입법 단계",
@@ -309,12 +390,25 @@
       "source": "Reuters",
       "title": "Anthropic quietly pitches its own AI safety bill to lawmakers, Politico reports - Reuters",
       "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPOGgzckNkaE5BdjZxdVMta2hsdVczMHFrZ2U4aFgzY2VsLVF5VEFpd1FMQVc1V084YTZQU0IyMkdWbXZTbEtpdlhFWHR2SUI1SDdsczFmeERfNHhfOXRpR2NLTVhjRWF4YWNYaDBPWXJDSXpqLUgtSERBY1lHejU3MTl0T2pPMzlKRDlsdmFNM3kwQk1YSFlyMnpDN1FSVG0xM2xqNTZrbnNxQTVkT3drcVJSVm0zNFlYOUstZzlDYldrc1p5OWJR?oc=5"
+    },
+    "f22b41b6b92a9f06fd485943": {
+      "category": "파이오링크 PHP 보안 점검 사업화 단계",
+      "entity": "파이오링크",
+      "first_seen_at": "2026-10-28T04:52:11.673853+00:00",
+      "published_at": "2026-10-23T00:48:27+00:00",
+      "source": "이데일리",
+      "title": "파이오링크 PHP 취약점 점검 지원…\"조치 방법까지 안내\" - 이데일리",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOVDZOZGk0b0NwQlFHWENnWmdYeVJ2cXZncjV5UWY0alpsS21jMnZKcWxoM1ZzR2plSjctb2NjcXh3MFpVR1ktVXp2TEQ3TUpQdHR1bGZSY1UzVTZDZUFIYVl5YmFMOEM5WkFJMWpTQjMwTWM1bG55bTNPcHh5dzBWRQ?oc=5"
     }
   },
   "tracked_policy_event_stages": {
     "anthropic_frontier_bill:private_draft_reported": {
       "source_url": "https://www.reuters.com/legal/litigation/anthropic-quietly-pitches-its-own-ai-safety-bill-lawmakers-politico-reports-2026-10-16/",
       "status": "2026-10-16 Politico/Reuters private draft; not introduced or enacted"
+    },
+    "axgate_php:theme_reaction_20261028": {
+      "source_url": "https://www.financialpost.co.kr/news/articleView.html?idxno=282981",
+      "status": "Intraday rally on PHP security theme, no new issuer PHP-specific contract"
     },
     "cohere_aisle:letter_of_intent_announced": {
       "source_url": "https://cohere.com/blog/cohere-and-aisle-sign-letter-of-intent-to-advance-cyber-resilient-sovereign-ai",
@@ -325,6 +419,10 @@
       "source": "CrowdStrike",
       "source_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-and-nvidia-expand-ai-agent-security-software-silicon",
       "status": "issuer_official_announced_openshell_integrating_sentry_planned"
+    },
+    "estsecurity_php:free_scanner_20261028": {
+      "source_url": "https://www.estsecurity.com/public/security-center/download",
+      "status": "Free four-mode scanner supports three CVEs, no direct revenue confirmed"
     },
     "ftc_ai_safety_anthropic:subpoenas_reported": {
       "source_url": "https://www.reuters.com/business/us-ftc-subpoenas-openai-anthropic-over-consumer-harms-axios-reports-2026-10-15/",
@@ -342,6 +440,10 @@
       "source_url": "https://www.genians.co.kr/pr-room/press/260916",
       "status": "2026-09-16 issuer announcement: Nexus Framework developed and demonstrated at GISEC; no disclosed incremental Nexus-only paid contract"
     },
+    "infra172:inspection_started_20261028": {
+      "source_url": "https://www.yna.co.kr/view/AKR20261028025200017",
+      "status": "111 institutions, 172 facilities, existing government inspection; incremental procurement unconfirmed"
+    },
     "ksign_evsec:demonstration_announced_20261020": {
       "source_url": "https://www.newswire.co.kr/newsRead.php?no=1045070",
       "status": "2026-10-20 issuer-distributed EV charging security analysis demo at KOAA SHOW Oct 21-23; demo is not customer purchase"
@@ -358,6 +460,18 @@
       "source_url": "https://imnews.imbc.com/news/2026/econo/article/6860231_36933.html",
       "status": "2026-10-23 범부처 종합대책 마련·조직 정비 검토 발언; 시행 확정 아님"
     },
+    "piolink_mdr:expansion_announced_20261028": {
+      "source_url": "https://www.newsis.com/view/NISX20261028_0003844426",
+      "status": "Multivendor EDR + MDR expansion; no standalone paid contract amount verified"
+    },
+    "piolink_php:free_check_page_20261023": {
+      "source_url": "https://www.piolink.com/kr/company/News.php?bbsCode=media_press&idx=925&vType=view",
+      "status": "Free PHP2Shell public check page, not paid contract"
+    },
+    "sga_php:virtual_patch_free_20261028": {
+      "source_url": "https://www.etnews.com/20261028000059",
+      "status": "vAegis and RedCastle virtual patch support, trial not paid revenue"
+    },
     "softbank_allied:initial_talks_reported": {
       "source_url": "https://www.ft.com/content/e44a17f9-5be0-4a78-89fb-41c4578838ca",
       "status": "2026-10-17 FT / 2026-10-16 Bloomberg and Reuters early discussions; no signed deal"
@@ -373,11 +487,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-10-28T13:46:57+09:00",
+  "updated_at_kst": "2026-10-28T13:52:11+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-10-28T04:47:41.287293+00:00",
+    "last_success_at": "2026-10-28T04:52:54.888244+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
