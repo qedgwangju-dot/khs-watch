@@ -392,6 +392,43 @@ def _flow_interpretation_panel(flows, fund_dates):
     return lines
 
 
+def _clear_overall_direction(overall_head, overall_reason, credit_head, flows, fund_dates):
+    """Keep confirmed credit appetite separate from Treasury duration flows."""
+    if "신용 위험선호 회복 확인" not in credit_head:
+        return overall_head, overall_reason
+
+    tickers = ("SHY", "IEF", "TLT")
+    dates = [fund_dates.get(ticker) for ticker in tickers]
+    if not all(dates) or len(set(dates)) != 1:
+        treasury_view = "국채 만기 판단 보류"
+        treasury_reason = "SHY·IEF·TLT 기준일 불일치 또는 미확인"
+    else:
+        day = tuple(_period_flow_direction(flows[ticker][0]) for ticker in tickers)
+        recent = tuple(_period_flow_direction(flows[ticker][1]) for ticker in tickers)
+        short_intermediate = ("유입", "유입", "유출")
+        if "확인 대기" in day or "확인 대기" in recent:
+            treasury_view = "국채 만기 확인 대기"
+            treasury_reason = "일간 또는 최근 5회 자금 자료 미확인"
+        elif day == short_intermediate and recent == short_intermediate:
+            treasury_view = "국채 단·중기 유입 · 장기 유출 지속"
+            treasury_reason = "당일과 최근 5회 모두 SHY·IEF 유입 / TLT 유출"
+        elif day == short_intermediate:
+            treasury_view = "당일 국채 단·중기 유입 · 장기 유출"
+            treasury_reason = f"당일 SHY·IEF 유입 / TLT 유출; 최근 5회 {', '.join(recent)}"
+        elif recent == short_intermediate:
+            treasury_view = "최근 5회 국채 단·중기 유입 · 장기 유출"
+            treasury_reason = f"당일 만기 흐름 {', '.join(day)}; 최근 5회 SHY·IEF 유입 / TLT 유출"
+        else:
+            treasury_view = "국채 만기별 수급 혼조"
+            treasury_reason = f"당일 만기 흐름 {', '.join(day)} / 최근 5회 {', '.join(recent)}"
+
+    return (
+        f"회사채 위험선호 회복 · {treasury_view}",
+        f"LQD·HYG 동반 유입과 신용가격 개선은 위험선호 회복 신호. "
+        f"국채 ETF는 {treasury_reason}; 따라서 위험선호와 듀레이션 수요를 같은 방향으로 합산하지 않음",
+    )
+
+
 def _rate_direction(move):
     if move is None:
         return "확인 대기"
@@ -567,6 +604,9 @@ def _compact_report(raw_text):
     overall_head, overall_reason = readable._direction_pair("전체 자금 방향", raw_text)
     overall_head = _display_overall_head(overall_head)
     credit_head, _ = readable._direction_pair("신용자금 방향", raw_text)
+    overall_head, overall_reason = _clear_overall_direction(
+        overall_head, overall_reason, credit_head, flows, fund_dates
+    )
     hyg_fund_date = _fund_date("HYG", raw_text)
     credit_alert_line = _credit_alert_line(flows["HYG"][0], hyg_oas, hyg_fund_date)
 
