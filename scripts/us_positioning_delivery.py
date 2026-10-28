@@ -125,3 +125,107 @@ def evaluate_retail_crowding(previous, aaii, conference, on_date):
     }
     return {"state": upcoming, "alert": notify, "baseline": not prior_initialized,
             "source_period_changed": bool(prior_initialized and pair != old_pair)}
+
+
+AAII_ALLOCATIONS_URL = "https://www.aaii.com/assetallocationsurvey"
+BOARD_CONFIDENCE_URL = "https://www.conference-board.org/topics/consumer-confidence/"
+
+
+def update_retail_survey_overlay(*, repo_root=None, fetch=None, on_date=None):
+    """Optional verified monthly overlay on the existing US fund-flow delivery.
+
+    Reads/writes only existing state and pending paths. No Telegram API call,
+    new bot, or additional schedule; existing workflow owns send and commit.
+    """
+    import json
+    from pathlib import Path
+    from html import escape
+    from zoneinfo import ZoneInfo
+
+    if repo_root is None:
+        repo_root = Path(__file__).resolve().parents[1]
+    root = Path(repo_root)
+    saved = root / "data" / "us_fund_flow_state.json"
+    pending = root / "out" / "us_fund_flow_pending_state.json"
+    alert = root / "out" / "us_fund_flow_alert.html"
+    status = root / "out" / "us_fund_flow_status.md"
+    if not saved.is_file():
+        raise RuntimeError("Existing US fund-flow state missing; refuse to create new baseline")
+    candidate = json.loads(pending.read_text(encoding="utf-8") if pending.exists()
+                           else saved.read_text(encoding="utf-8"))
+    if not isinstance(candidate, dict) or not isinstance(candidate.get("seen"), dict) or not isinstance(candidate.get("values"), dict):
+        raise RuntimeError("Existing US fund-flow state malformed; refuse to overwrite")
+
+    if fetch is None:
+        import requests
+        from bs4 import BeautifulSoup
+        session = requests.Session()
+        session.headers.update({
+            "User-Agent": "Mozilla/5.0 (compatible; khs-watch-retail-survey/1.0)",
+            "Accept-Language": "en-US,en;q=0.9",
+        })
+        def fetch(url):
+            response = session.get(url, timeout=(7, 19))
+            response.raise_for_status()
+            return BeautifulSoup(response.text, "html.parser").get_text(" ", strip=True)
+
+    # Both dated primary sources must be valid. A failure here does not silence
+    # existing ICI, margin, Goldman, or options/SOX watchers.
+    try:
+        asset = parse_aaii_allocation(fetch(AAII_ALLOCATIONS_URL))
+        confidence = parse_conference_board_confidence(fetch(BOARD_CONFIDENCE_URL))
+        today = on_date or datetime.now(ZoneInfo("America/New_York")).date()
+        previous = (candidate.get("derived") or {}).get("retail_survey")
+        evaluated = evaluate_retail_crowding(previous, asset, confidence, today)
+    except Exception as exc:
+        detail = f"retail_survey_source_withheld=true reason={type(exc).__name__} {str(exc)[:125]}"
+        print(detail)
+        if status.exists():
+            with status.open("a", encoding="utf-8") as writer:
+                writer.write("\n- 월간 AAII/Conference Board: 공식 원문 검증 실패, 새 경보·상태 갱신 보류\n")
+        return {"status": "source_withheld", "telegram_sent": False, "reason": type(exc).__name__}
+
+    next_snapshot = evaluated["state"]
+    old_snapshot = (candidate.get("derived") or {}).get("retail_survey")
+    if old_snapshot == next_snapshot:
+        print("retail_survey_status=unchanged monthly_periods_verified=true")
+        return {"status": "unchanged", "telegram_sent": False, "pair": next_snapshot["pair"]}
+
+    # Only an official new period triggers. An initial read never replays
+    # months-old survey observations as an alleged new market event.
+    candidate.setdefault("derived", {})["retail_survey"] = next_snapshot
+    if evaluated["alert"]:
+        a, c = next_snapshot["aaii"], next_snapshot["conference"]
+        lines = [
+            "<b>미국 개인투자자 주식비중·주가 기대 변화</b>",
+            f"• AAII {escape(a['period'])}: 주식·주식형펀드 {a['stocks_pct']:.2f}% / 현금 {a['cash_pct']:.2f}%",
+            f"• Conference Board {escape(c['period'])}: 소비자신뢰지수 {c['confidence_index']:.1f} / 기대지수 {c['expectations_index']:.1f}",
+            "• 12개월 주가 전망: 상승 예상 응답이 하락 예상 응답보다 많음" if c["stock_up_vs_down_majority"] is True
+            else "• 12개월 주가 전망: 최신 원문만으로 우위 확인 보류",
+            f"• 감시 판정: {escape(next_snapshot['regime'])}; 기준월 변동이 확인됨",
+            "• AAII 자산배분 월간 조사와 Conference Board 소비자 기대는 표본·질문·기간이 다르며"
+            " 신규 순매수액, 역사적 최고치 또는 증시 하락 확정 신호가 아닙니다.",
+            "• Goldman Prime 헤지펀드 포지션은 별도 기준주간의 공개보도이며 같은 날 수치로 합산하지 않습니다.",
+            f'• <a href="{AAII_ALLOCATIONS_URL}">AAII 월간 자산배분 공식</a> · '
+            f'<a href="{BOARD_CONFIDENCE_URL}">Conference Board 공식 발표</a>',
+        ]
+        previous_body = alert.read_text(encoding="utf-8").strip() if alert.exists() else ""
+        alert.write_text((previous_body + "\n\n" if previous_body else "")
+                         + "\n".join(lines) + "\n", encoding="utf-8")
+
+    # Pending state is persisted only by the existing workflow after successful
+    # send (or safely with no alert), preserving historic source fingerprints.
+    pending.parent.mkdir(parents=True, exist_ok=True)
+    pending.write_text(json.dumps(candidate, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if status.exists():
+        with status.open("a", encoding="utf-8") as writer:
+            writer.write(
+                f"\n- 월간 개인 수급 공식검증: AAII {asset['period']} 주식 {asset['stocks_pct']:.2f}%"
+                f" / 현금 {asset['cash_pct']:.2f}% · Conference Board {confidence['period']}"
+                f" 신뢰 {confidence['confidence_index']:.1f} · 기존 대비"
+                f" {'신규 경보' if evaluated['alert'] else '초기 기준선 또는 관찰 업데이트'}\n"
+            )
+    result = {"status": "alert_ready" if evaluated["alert"] else "baseline_saved",
+              "pair": next_snapshot["pair"], "telegram_sent": False}
+    print("retail_survey_status=" + json.dumps(result, ensure_ascii=False))
+    return result
