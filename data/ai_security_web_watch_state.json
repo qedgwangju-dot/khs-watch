@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 21,
+    "material_items": 20,
     "new_material_items": 0,
-    "raw_items": 320,
+    "raw_items": 296,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -349,6 +349,16 @@
       "source": "SecurityWeek",
       "title": "PHP2Shell Exploitation Started Days Before Patches - SecurityWeek",
       "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNVFFaQk5XdjZEVVRNcG03Q2FrMlRPOGxFVmRZTnNDSjZ6LWVyYWdrV0U2eFFwY2JqRnNlU09XVWlWVVlKVDB0dlVkU2RDY3NXY2JIMnZOVFFnRDk1a0pkMUlWeHB1cW1TcHdTYklQd3VaRktRX3NuOW93ZXNrVmc4RTkyVDlwNnZqWUVjY9IBjAFBVV95cUxNVFFaQk5XdjZEVVRNcG03Q2FrMlRPOGxFVmRZTnNDSjZ6LWVyYWdrV0U2eFFwY2JqRnNlU09XVWlWVVlKVDB0dlVkU2RDY3NXY2JIMnZOVFFnRDk1a0pkMUlWeHB1cW1TcHdTYklQd3VaRktRX3NuOW93ZXNrVmc4RTkyVDlwNnZqWUVjYw?oc=5",
+      "vendor": "PHP 재단"
+    },
+    "3dbe452f4d132248db69a95f": {
+      "category": "PHP 코어 취약점·공식 보안패치",
+      "first_seen_at": "2026-10-28T01:45:49.323376+00:00",
+      "published_at": "2026-10-28T01:18:00+00:00",
+      "severity": 3,
+      "source": "Chosunbiz",
+      "title": "ESTsecurity releases PHP2Shell tool to counter PHP RCE in South Korea - Chosunbiz",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE93STB2TjBjSFdIdGV3TmZTUncwVHZoXzVidDRKaVRxa05KUW9oV0Eza1U2Q1VuZ1R1QzZYb013UXJMUkdBRnNZMHlqb2hpMDhxb3VGQnBVVWdLVTlSRjVNeW5jWDBFbVRHVVFjQWJJZmlDMmstOW8wSmR30gGOAUFVX3lxTE9WYTdiaXpoektjYjlzZ1kxVGVxX24weGo3eDdNNV9lT0dkSXg2b1R4VlE1d292OUVWYWxjcXdIUDJ4bXk2dGpVYWhoMC1XNWtuUXlVS2JnSGE5NFpNVkVrb2tyTnpHYzdLbC1GX2JHbmcwcEt4MDZTRXFfZ0c3ZThFYUs0NHY5bTFjWW9nVGc?oc=5",
       "vendor": "PHP 재단"
     },
     "3dce20e7d23c67e88f130d06": {
@@ -1504,5 +1514,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-28T10:30:59+09:00"
+  "updated_at_kst": "2026-10-28T10:45:49+09:00"
 }
