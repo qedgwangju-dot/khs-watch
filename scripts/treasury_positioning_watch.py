@@ -447,7 +447,39 @@ def technical_positioning(rows, repo, y30):
     return "기술·포지셔닝 혼조", f"30년물 {y30:.2f}% / 숏 확대 {expansions}개·축소 {reductions}개 / Repo {repo['state']}"
 
 
+def gross_position_driver(row):
+    """Label observable CFTC gross-side changes without assuming JPM client flows."""
+    long_delta = int(row["long_change"])
+    short_delta = int(row["short_change"])
+    net_delta = int(row["net_change"])
+    if long_delta - short_delta != net_delta:
+        raise ValueError("CFTC gross long/short and net changes disagree")
+    if long_delta > 0 and short_delta < 0:
+        return ("숏 축소 우세·롱 증가 동반" if -short_delta > long_delta
+                else "롱 증가 우세·숏 축소 동반" if -short_delta < long_delta
+                else "롱 증가·숏 축소 기여 동률")
+    if short_delta < 0 and long_delta <= 0:
+        if net_delta > 0:
+            return "숏 축소 우세(신규 롱 증가 아님)"
+        if net_delta < 0:
+            return "롱 축소 우세·숏도 축소"
+        return "롱·숏 동반 축소(순포지션 보합)"
+    if long_delta > 0 and short_delta >= 0:
+        if net_delta > 0:
+            return "롱 증가 중심(숏 축소 아님)"
+        if net_delta < 0:
+            return "숏 증가가 롱 증가 앞섬"
+        return "롱·숏 동반 증가(순포지션 보합)"
+    if short_delta > 0:
+        return "숏 증가 중심(롱 신규 증가 없음)"
+    if long_delta < 0:
+        return "롱 축소(숏 변화 없음)"
+    return "매수·매도 변화 없음"
+
+
 def position_note(row):
+    if {"long_change", "short_change", "net_change"}.issubset(row):
+        return gross_position_driver(row)
     cur, ch = row["net"], row["net_change"]
     if cur < 0:
         return "숏 축소" if ch > 0 else "숏 확대" if ch < 0 else "변화 없음"
@@ -532,9 +564,24 @@ def send_telegram(text):
     )
     with urllib.request.urlopen(req, timeout=30) as response:
         result = json.loads(response.read().decode("utf-8"))
-    if not result.get("ok"):
+    if result.get("ok") is not True:
         raise RuntimeError("Telegram send failed")
-    return (result.get("result") or {}).get("message_id")
+    receipt = result.get("result") or {}
+    message_id = receipt.get("message_id")
+    actual_chat = receipt.get("chat") or {}
+    if type(message_id) is not int or message_id <= 0:
+        raise RuntimeError("Telegram receipt missing positive message_id")
+    if type(actual_chat.get("id")) is not int:
+        raise RuntimeError("Telegram receipt missing numeric chat.id")
+    if chat_id.lstrip("-").isdigit():
+        matching = actual_chat["id"] == int(chat_id)
+    elif chat_id.startswith("@"):
+        matching = str(actual_chat.get("username") or "").casefold() == chat_id[1:].casefold()
+    else:
+        raise RuntimeError("Unrecognized Telegram destination")
+    if not matching:
+        raise RuntimeError("Telegram acknowledged wrong chat.id")
+    return message_id
 
 
 def main():
@@ -544,6 +591,11 @@ def main():
     curve = fetch_ust_curve()
     y30 = curve["ust30"].value
     y30_date = curve["ust30"].date
+    y10 = curve["ust10"].value
+    y10_date = curve["ust10"].date
+    if y10_date != y30_date:
+        raise RuntimeError("U.S. Treasury 10Y/30Y source dates differ")
+    ensure_recent_date("U.S. Treasury 10Y", y10_date, 4)
     ensure_recent_date("U.S. Treasury 30Y", y30_date, 4)
     jpm_signal = jpm_30y_signal(y30)
     tech_head, tech_reason = technical_positioning(rows, repo, y30)
@@ -556,6 +608,7 @@ def main():
         f"→ {reason}",
         f"기술·포지셔닝: {tech_head}",
         f"→ {tech_reason}",
+        f"미국 재무부 공식 10년 {y10:.3f}% / 30년 {y30:.3f}% (동일 기준일 {y30_date})",
         f"JPM 30년 기술선: 현재 {y30:.2f}% ({y30_date}) | {jpm_signal} | 상단 5.59→5.78→6.00 / 하단 5.25→5.15",
         "",
         "[CFTC Leveraged Funds]",
@@ -564,7 +617,10 @@ def main():
         x = rows[label]
         pct = f"{x['net_oi_pct']:+.1f}%" if x["net_oi_pct"] is not None else "확인 대기"
         lines.append(
-            f"{label}: 순포지션 {fmt_contracts(x['net'])} | OI 대비 {pct} | 전주 {fmt_contracts(x['net_change'])} 변화 → {position_note(x)}"
+            f"{label}: 순포지션 {fmt_contracts(x['net'])} | OI 대비 {pct} | 순변화 {fmt_contracts(x['net_change'])}"
+        )
+        lines.append(
+            f"  롱 변화 {fmt_contracts(x['long_change'])} / 숏 변화 {fmt_contracts(x['short_change'])} → {position_note(x)}"
         )
 
     spread_sign = "+" if repo["spread_bp"] >= 0 else ""
@@ -574,6 +630,8 @@ def main():
         f"Repo: {repo['state']} | SOFR {repo['sofr']:.2f}% / TGCR {repo['tgcr']:.2f}% | 스프레드 {spread_sign}{repo['spread_bp']:.0f}bp | SOFR 전일 {move_sign}{repo['move_bp']:.0f}bp",
         "DVP Repo: $" + f"{repo['dvp_value']/1e12:.2f}T | 약 1주 {repo['dvp_week_pct']:+.1f}% ({repo['dvp_old_date']}→{repo['dvp_date']}) | {repo['dvp_date']}",
         "",
+        "주의: JPM 고객 포지셔닝 z점수와 CFTC 레버리지 펀드 주간 공개수치는 모집단·관측시점이 다릅니다.",
+        "→ CFTC 순숏 감소만으로 숏커버링·신규 롱·완전 중립을 확정하지 않습니다.",
         "베이시스 해석: CFTC 선물 숏만으로 금리상승 베팅으로 단정하지 않음",
         "→ 숏↓ + Repo 안정 = 질서 있는 베이시스 축소 가능성",
         "→ 숏↓ + Repo 스트레스 = 강제 디레버리징 경계",
@@ -603,6 +661,15 @@ def main():
             "rows": rows,
         },
         "repo": repo,
+        "treasury_10y": {
+            "date": y10_date,
+            "yield": y10,
+            "source": curve["ust10"].source,
+        },
+        "gross_position_drivers": {
+            label: gross_position_driver(rows[label]) for label in CONTRACTS
+        },
+        "jpm_private_client_zscore_verified": False,
         "treasury_30y": {
             "date": y30_date,
             "yield": y30,
@@ -645,6 +712,7 @@ def main():
     mid = send_telegram(text)
     delivery = {
         "message_id": mid,
+        "chat_id_verified": True,
         "cftc_date": latest,
         "confirmed_at_kst": dt.datetime.now(KST).isoformat(),
     }
