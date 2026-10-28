@@ -30,6 +30,12 @@ on:
     - cron: "30 22 * * 0"
     - cron: "0 23 * * 0"
   workflow_dispatch:
+    inputs:
+      recover_weekly:
+        description: "Manually deliver the current week's missed Monday CTA report only with fresh official data"
+        required: false
+        default: "false"
+        type: boolean
 
 permissions:
   contents: write
@@ -47,6 +53,7 @@ jobs:
       EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
       CTA_TRIGGER_EVENT: ${{ github.event_name }}
       CTA_TRIGGER_SCHEDULE: ${{ github.event.schedule || '' }}
+      CTA_WEEKLY_RECOVERY: ${{ github.event_name == 'workflow_dispatch' && inputs.recover_weekly && 'true' || 'false' }}
 
     steps:
       - uses: actions/checkout@v4
