@@ -31,6 +31,15 @@ FOUNDRY_STATE = ROOT / "data" / "tsmc_leading_node_watch_state.json"
 UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
 WATCH_VERSION = 2
 BOTTLENECK_PARSER_VERSION = 2
+COWOS_PRICE_REPORT_VERSION = 1
+COWOS_PRICE_REPORT_BASELINE = {
+    "cowos_price_upper_pct": 20,
+    "cowos_price_lower_pct": 10,
+    "cowos_price_stage": "reported_discussion",
+    "cowos_price_source_url": "https://ww2.money-link.com.tw/RealtimeNews/NewsContent.aspx?pu=News_0002_3&sn=6340272001",
+    "cowos_price_source_name": "工商時報·時報新聞 동일 기사 재게시",
+    "cowos_price_as_of": "2026-10-27T09:04:00+09:00",
+}
 LTN_CANONICAL_URL = "https://ec.ltn.com.tw/article/breakingnews/5586843"
 LTN_ALT_URL = "https://stock.ltn.com.tw/article/gqpj9vhyk1ku"
 NSTC_OFFICIAL_URL = "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
@@ -937,8 +946,8 @@ def package_alert_text(new, reasons, checked):
         lines.append("• 공장별 단계: " + html.escape(" · ".join(changed_fabs)))
     lines.append("• 다음 확인: TSMC 공식 투자결정·환경영향평가·착공·장비 발주/반입·시험생산·양산·실제 월 생산능력")
     lines.append("• 중복 방지: 같은 기사 재배포·제목 변경만으로는 다시 알리지 않습니다.")
-    if new.get("last_source_url"):
-        lines.append("• 근거: " + html.escape(source_name_ko(new.get("last_source_name"), new.get("last_source_url"))) + " · " + href(new["last_source_url"]))
+    if new.get("last_source_url") and any(not str(r).startswith("CoWoS 가격 ") for r in reasons):
+        lines.append("• 기타 변화 근거: " + html.escape(source_name_ko(new.get("last_source_name"), new.get("last_source_url"))) + " · " + href(new["last_source_url"]))
     lines.append("• 조회: " + checked.strftime("%Y-%m-%d %H:%M KST"))
     return koreanize_alert_text("\n".join(lines) + "\n")
 
@@ -994,6 +1003,10 @@ def run(mode):
         )
     current = dict(state.get("current_state") or {})
     candidate = dict(current)
+    if mode == "package" and int(state.get("cowos_price_report_version") or 0) < COWOS_PRICE_REPORT_VERSION:
+        # Pin the verified original publication even if the Google News RSS
+        # decoder fails. This is NOT an official TSMC price announcement.
+        candidate = merge_state(candidate, COWOS_PRICE_REPORT_BASELINE)
     last_event = None
 
     cutoff = checked - timedelta(days=21)
@@ -1017,6 +1030,8 @@ def run(mode):
     foundry_reasons = _foundry_hbm_cross_reasons(state.get("foundry_snapshot") or {}, foundry_snapshot) if mode == "hbm" else []
     reasons = material_changes(current, candidate) if mode == "package" else (hbm_cross_reasons(current, candidate) + foundry_reasons)
     state["watch_version"] = WATCH_VERSION
+    if mode == "package":
+        state["cowos_price_report_version"] = COWOS_PRICE_REPORT_VERSION
     if mode == "hbm":
         state["foundry_snapshot"] = foundry_snapshot
     state["last_checked_at_kst"] = checked.isoformat(timespec="seconds")
