@@ -11,7 +11,7 @@ import textwrap
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import AsyncMock, Mock, patch
 
 import kospi_shock_episode_watch as watcher
 from kosdaq_surge_industries import KST, industry_buy_context, industry_context_lines
@@ -784,6 +784,138 @@ class ProductionAuditTests(unittest.TestCase):
                             exec(script, {})
             finally:
                 os.chdir(original)
+
+
+class KOSDAQPrealertTierTests(unittest.TestCase):
+    """Offline checks: neither LS nor Telegram is contacted."""
+
+    def new_watch(self):
+        w = watcher.Watch("unused", [], "", False)
+        w.session_open_ts = OPEN
+        w.session_close_ts = OPEN + 6.5 * 3600
+        w.session_continuous_end_ts = w.session_close_ts - 600
+        w._surge_industry_context = AsyncMock(return_value=None)
+        w._try_send_event = AsyncMock(side_effect=[81001, 81002, 81003, 81004])
+        w._record_delivery = Mock()
+        w._checkpoint_handoff = Mock()
+        for ts in (START - 20, START, START + 20, START + 40, START + 60):
+            self.add_tick(w, ts)
+        return w
+
+    @staticmethod
+    def add_tick(w, ts, actor=None, value=0.0, *, bad_financial=False):
+        values = {"외국인": 0.0, "기관": 0.0, "개인": 0.0,
+                  "투신": 0.0, "금융투자": 0.0}
+        if actor:
+            values[actor] = float(value)
+        source_row = {"sv_03": values["투신"],
+                      "sv_01": values["금융투자"] + (1 if bad_financial else 0)}
+        w.kosdaq_flows.append({"ts": ts, "market": "KOSDAQ", "현물": {
+            "sample_ts": ts, "source_tr": "t1602", "unit": "억원",
+            "source_row": source_row, **values,
+        }})
+
+    def process(self, w, ts, actor, value, *, bad_financial=False):
+        self.add_tick(w, ts, actor, value, bad_financial=bad_financial)
+        asyncio.run(w.maybe_alert_kosdaq_prealert(ts + 3))
+        asyncio.run(w.maybe_alert_kosdaq_surge(ts + 3))
+
+    def test_institution_trust_and_financial_investment_generate_prealerts(self):
+        for actor in ("기관", "투신", "금융투자"):
+            with self.subTest(actor=actor):
+                w = self.new_watch()
+                self.process(w, END - 20, actor, 110)
+                w._try_send_event.assert_not_awaited()
+                self.process(w, END, actor, 120)
+                self.assertEqual(w._try_send_event.await_count, 1)
+                stage, event, _, text = w._try_send_event.await_args.args
+                self.assertEqual(stage, "kosdaq_flow_prealert")
+                self.assertEqual(event["actor"], actor)
+                self.assertIn("예비 경보", text)
+                self.assertIn("100억원 이상", text)
+                if actor in ("투신", "금융투자"):
+                    self.assertIn(actor + "(기관 내)", text)
+                if actor == "금융투자":
+                    self.assertIn("기관과 하위 항목을 합산하거나", text)
+                else:
+                    self.assertIn("기관·투신을 합산하거나", text)
+
+    def test_prealert_cooldown_does_not_hide_confirmed_alert(self):
+        w = self.new_watch()
+        self.process(w, END - 20, "금융투자", 110)
+        self.process(w, END, "금융투자", 120)
+        self.process(w, END + 20, "금융투자", 160)
+        self.assertEqual(w._try_send_event.await_count, 1)
+        self.process(w, END + 40, "금융투자", 170)
+        self.assertEqual([call.args[0] for call in w._try_send_event.await_args_list],
+                         ["kosdaq_flow_prealert", "kosdaq_flow_surge"])
+        self.assertEqual(w._try_send_event.await_args_list[1].args[1]["actor"], "금융투자")
+        self.assertIn("150억원 이상", w._try_send_event.await_args_list[1].args[3])
+
+    def test_confirmed_tier_requires_two_samples_above_150(self):
+        w = self.new_watch()
+        self.process(w, END - 20, "기관", 120)
+        self.process(w, END, "기관", 160)
+        w._try_send_event.assert_not_awaited()
+        self.process(w, END + 20, "기관", 170)
+        self.assertEqual(w._try_send_event.await_count, 1)
+        self.assertEqual(w._try_send_event.await_args.args[0], "kosdaq_flow_surge")
+
+    def test_invalid_financial_source_is_not_a_candidate(self):
+        w = self.new_watch()
+        self.process(w, END - 20, "금융투자", 110, bad_financial=True)
+        self.process(w, END, "금융투자", 120, bad_financial=True)
+        w._try_send_event.assert_not_awaited()
+        self.assertNotIn("금융투자", w.kosdaq_prealert_pending)
+
+    def test_recent_confirmed_alert_suppresses_lower_prealert(self):
+        w = self.new_watch()
+        w.kosdaq_surge_sent_at["기관"] = END - 60
+        self.process(w, END - 20, "기관", 110)
+        self.process(w, END, "기관", 120)
+        w._try_send_event.assert_not_awaited()
+
+    def test_financial_state_survives_handoff(self):
+        w = self.new_watch()
+        now = watcher.time.time()
+        w.kosdaq_prealert_sent_at["금융투자"] = now - 20
+        w.kosdaq_surge_sent_at["금융투자"] = now - 30
+        pending = {"sample_ts": now - 15, "seen_at": now - 10,
+                   "end_value": 120.0, "end_values": {"spot": 120.0}}
+        w.kosdaq_prealert_pending["금융투자"] = dict(pending)
+        w.kosdaq_surge_pending["금융투자"] = dict(pending)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "handoff.json"
+            w.save_handoff(path)
+            restored = watcher.Watch("unused", [], "", False)
+            restored.load_handoff(path)
+        self.assertEqual(restored.kosdaq_prealert_sent_at["금융투자"], now - 20)
+        self.assertEqual(restored.kosdaq_surge_sent_at["금융투자"], now - 30)
+        self.assertEqual(restored.kosdaq_prealert_pending["금융투자"]["end_value"], 120.0)
+        self.assertEqual(restored.kosdaq_surge_pending["금융투자"]["end_value"], 120.0)
+
+    def test_uncertain_prealert_does_not_block_confirmed_delivery(self):
+        w = watcher.Watch("unused", [], "", False)
+        w._checkpoint_handoff = Mock()
+        event = {"market": "KOSDAQ", "actor": "금융투자", "start_ts": START}
+        with patch.object(watcher, "telegram_send",
+                          side_effect=[watcher.DeliveryUncertain("offline uncertain"), 81005]), \
+                patch.object(watcher.time, "time", return_value=END):
+            pre = asyncio.run(w._try_send_event("kosdaq_flow_prealert", event, END, "prealert"))
+            confirmed = asyncio.run(w._try_send_event("kosdaq_flow_surge", event, END + 20, "confirmed"))
+        self.assertIsNone(pre)
+        self.assertEqual(confirmed, 81005)
+        self.assertEqual(w._surge_delivery_hold_at("KOSDAQ", "금융투자", "kosdaq_flow_prealert"), END)
+        self.assertEqual(w._surge_delivery_hold_at("KOSDAQ", "금융투자"), 0.0)
+
+    def test_unverified_financial_industry_data_is_held(self):
+        w = watcher.Watch("unused", [], "", False)
+        with patch.object(watcher, "industry_buy_context", side_effect=AssertionError("must not query")):
+            context = asyncio.run(w._surge_industry_context(
+                "KOSDAQ", "금융투자", 120.0, (START, END), OPEN))
+        self.assertFalse(context["available"])
+        self.assertEqual(context["requested_window"], [START, END])
+        self.assertIn("금융투자 업종 원자료 확인 불가", context["reason"])
 
 
 if __name__ == "__main__":
