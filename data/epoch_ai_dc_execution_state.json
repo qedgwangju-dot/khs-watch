@@ -4,12 +4,12 @@
   "source_url": "https://epoch.ai/data/ai-data-centers",
   "data_url": "https://epoch.ai/data/data_centers/data_centers.csv",
   "timeline_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
-  "as_of_kst": "2026-10-29T04:13:10+09:00",
+  "as_of_kst": "2026-10-29T04:56:56+09:00",
   "site_count": 77,
-  "current_it_mw": 12009.3,
-  "planned_it_mw_2030": 33147.3,
-  "remaining_it_mw": 21138.0,
-  "execution_ratio_pct": 36.23,
+  "current_it_mw": 12206.3,
+  "planned_it_mw_2030": 33128.3,
+  "remaining_it_mw": 20922.0,
+  "execution_ratio_pct": 36.85,
   "top_remaining_sites": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -354,8 +354,8 @@
       "current": 50.0
     },
     "OpenAI Stargate Abilene": {
-      "planned": 843.0,
-      "current": 421.0
+      "planned": 824.0,
+      "current": 618.0
     },
     "OpenAI Stargate Lordstown": {
       "planned": 214.0,
