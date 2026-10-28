@@ -882,8 +882,10 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, fx_date=None, co
 
     if not compact:
         if cross.get("nq_price_fresh") and fx is not None:
+            net = int(nq.get("leveraged_net") or 0)
+            net_label = "순롱" if net > 0 else "순숏" if net < 0 else "중립"
             rows.append(
-                "• NQ 현재주 명목 참고: 순숏 "
+                f"• NQ 현재주 명목 참고: {net_label} "
                 + _nq_notional_krw(nq, price, fx, "leveraged_net")
                 + " · 총숏 "
                 + _nq_notional_krw(nq, price, fx, "leveraged_short")
@@ -1146,7 +1148,7 @@ def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str]
         lines += [
             "",
             "<b>📅 이번 주 확인</b>",
-            f"• 현재 금리 레짐 기준 하향 확인선: {milestone_line} · -1σ/-2σ 진입",
+            f"• 현재 금리 레짐 기준 하향 확인선: {milestone_line} · 다음 단계 {_next_confirmation_thresholds(float(y.get('yield') or 0), float(y.get('z20') or 0))}",
             "• ZN·NQ 각각 공식 같은 거래일 가격↑+OI↓ 여부",
             "• 다음 CFTC에서 10Y·NQ 순숏이 실제로 줄었는지",
         ]
@@ -1252,6 +1254,17 @@ def _yield_milestones(yld: float) -> str:
         return "현재 주요 하향 경보선 아래"
     return " → ".join(f"{level:.2f}%" for level in below)
 
+def _next_confirmation_thresholds(yld: float, z20: float) -> str:
+    """Only mention unbroken thresholds as future confirmation steps."""
+    z_trigger = "-1σ 진입" if z20 > -1.0 else "-2σ 진입" if z20 > -2.0 else "-2σ 이하 유지"
+    next_yield = _yield_milestones(yld).split(" → ")[0]
+    yield_trigger = (
+        "금리 추가 하락" if next_yield.startswith("현재 주요") else f"{next_yield} 하향"
+    )
+    return f"{z_trigger} 또는 {yield_trigger}"
+
+
+
 def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=None, fx_date=None) -> tuple[str, str]:
     y = snapshot.get("yield10") or {}
     yld = float(y.get("yield") or 0.0)
@@ -1314,7 +1327,7 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
         lines.extend([
             "",
             "<b>📅 이번 주에 볼 것</b>",
-            f"• 현재 금리 레짐 기준 하향 확인선: {milestone_line}. -1σ/-2σ 진입을 함께 봅니다.",
+            f"• 현재 금리 레짐 기준 하향 확인선: {milestone_line}. 다음 확인은 {_next_confirmation_thresholds(yld, z)}.",
             "• 월요일에는 신호가 없어도 1회 보고하고, 주중에는 복합 조건이 강화될 때만 추가 발송합니다.",
         ])
 
@@ -1331,7 +1344,7 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
         "• 반대로 repo·신용 스트레스 때문에 금리가 내려가면 주식 호재로 보지 않습니다.",
         "",
         "<b>🚦 다음 확인 신호</b>",
-        "• 10Y -1σ 진입 또는 4.50% 하향 + 선물 상승 + 동일범위 OI 감소",
+        f"• 10Y {_next_confirmation_thresholds(yld, z)} + 공식 선물 상승·같은 거래일 OI 감소",
         "• 이후 CFTC 순숏 추가 축소까지 붙으면 ‘실제 숏 스퀴즈 강화’로 격상",
         "",
         "<b>⚠️ 실패모드</b>",
