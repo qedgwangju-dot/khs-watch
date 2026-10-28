@@ -1115,5 +1115,60 @@ class AppleCXMTPriceIntegrityTests(unittest.TestCase):
         self.assertNotIn("samsung",key)
 
 
+    def test_russia_parallel_import_headlines_do_not_confirm_amendment(self):
+        press = {
+            "title": "Russia considers restoring Samsung and SK Hynix parallel imports for servers and SSD",
+            "description": "Working group discussing imports; the Ministry has not adopted a decision.",
+            "source": "Forbes / CNews",
+            "link": "https://www.cnews.ru/news/top/2026-10-20_vlasti_zakrutili_gajki_i",
+            "published_kst": "2026-10-20T12:00:00+09:00",
+        }
+        self.assertTrue(w._is_russia_memory_import_item(press))
+        self.assertIsNone(w._extract_russia_memory_import_update(press))
+        self.assertFalse(w.RUSSIA_MEMORY_IMPORT_BASELINE["official_restoration_confirmed"])
+        self.assertTrue(w.RUSSIA_MEMORY_IMPORT_BASELINE["separate_memory_chip_codes"])
+        self.assertEqual(w._russia_memory_import_changes(
+            w.RUSSIA_MEMORY_IMPORT_BASELINE, {"stage": "working_group_discussion"}), [])
+
+    def test_russia_old_ministry_order_does_not_become_restoration(self):
+        original = {
+            "title": "Россия: Приказ Минпромторга 4769 параллельного импорта",
+            "description": "SAMSUNG HYNIX исключены из перечня 8471 70. Restrictions entered into force.",
+            "source": "Минпромторг",
+            "link": "https://minpromtorg.gov.ru/press-centre/news/4769/",
+            "published_kst": "2026-05-27T12:00:00+09:00",
+        }
+        self.assertIsNone(w._extract_russia_memory_import_update(original))
+
+    def test_russia_official_restore_and_effective_distinct(self):
+        announcement = {
+            "title": "Россия: приказ Минпромторга 4769 о параллельном импорте",
+            "description": "SAMSUNG HYNIX возвращены в перечень параллельного импорта 8471 70",
+            "source": "Минпромторг",
+            "link": "https://minpromtorg.gov.ru/press-centre/news/real-decision/",
+            "published_kst": "2026-11-15T09:00:00+09:00",
+        }
+        obs = w._extract_russia_memory_import_update(announcement)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["stage"], "official_amendment")
+        merged = w._merge_russia_memory_import(w.RUSSIA_MEMORY_IMPORT_BASELINE, obs)
+        self.assertEqual(len(w._russia_memory_import_changes(w.RUSSIA_MEMORY_IMPORT_BASELINE, merged)), 1)
+        assert merged["official_restoration_confirmed"]
+        self.assertEqual(w._merge_russia_memory_import(merged, {"stage": "working_group_discussion"}), merged)
+        effective = dict(obs, stage="effective")
+        final = w._merge_russia_memory_import(merged, effective)
+        self.assertEqual(final["stage"], "effective")
+        self.assertEqual(w._russia_memory_import_changes(final, effective), [])
+
+    def test_russia_newspaper_cannot_promote_official_state(self):
+        report = {
+            "title": "Russia Samsung SK Hynix parallel import restored",
+            "description": "Government reportedly permits all SSD brands again, 8471 70.",
+            "source": "News syndication",
+            "link": "https://news.example.com/russia-policy",
+            "published_kst": "2026-10-27T10:00:00+09:00",
+        }
+        self.assertIsNone(w._extract_russia_memory_import_update(report))
+
 if __name__ == "__main__":
     unittest.main()
