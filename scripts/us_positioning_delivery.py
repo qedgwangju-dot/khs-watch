@@ -101,14 +101,14 @@ def evaluate_retail_crowding(previous, aaii, conference, on_date):
     observed_date = date.fromisoformat(str(on_date)[:10])
     aaii_day = date.fromisoformat(aaii["period"] + "-01")
     conference_day = date.fromisoformat(conference["published_date"])
-    if (not 0 <= (observed_date - aaii_day).days <= 75
-            or not 0 <= (observed_date - conference_day).days <= 50):
-        raise ValueError("AAII/Conference Board survey is stale or future-dated")
     old_a, old_c = previous.get("aaii") or {}, previous.get("conference") or {}
     if old_a.get("period") and aaii["period"] < old_a["period"]:
         raise ValueError("AAII official period rolled back")
     if old_c.get("period") and conference["period"] < old_c["period"]:
         raise ValueError("Conference Board official period rolled back")
+    if (not 0 <= (observed_date - aaii_day).days <= 75
+            or not 0 <= (observed_date - conference_day).days <= 50):
+        raise ValueError("AAII/Conference Board survey is stale or future-dated")
     crowded = aaii["stocks_pct"] >= 70 and aaii["cash_pct"] <= 15
     up = conference["stock_up_vs_down_majority"]
     # Absence of an official numeric stock-expectations table is NOT ATH evidence.
