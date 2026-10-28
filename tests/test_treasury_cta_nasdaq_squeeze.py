@@ -1067,3 +1067,52 @@ def test_compact_weekly_report_includes_all_six_maturities_krw(monkeypatch):
     assert "Ultra10Y -318,477계약(순숏 액면 약 42.3조원)" in body
     assert "Ultra -804,808계약(순숏 액면 약 106.9조원)" in body
     assert len(title) + 2 + len(body) <= 4096
+
+
+def test_cta_trusted_independent_schedule_heartbeat_fomc_and_weekly(monkeypatch):
+    from datetime import datetime as RealDateTime
+    class FakeNow(RealDateTime):
+        at = RealDateTime(2026, 10, 28, 21, 20, tzinfo=equity.KST)
+        @classmethod
+        def now(cls, tz=None):
+            return cls.at.astimezone(tz) if tz else cls.at.replace(tzinfo=None)
+
+    monkeypatch.setattr(equity, "datetime", FakeNow)
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "workflow_run")
+    monkeypatch.setenv("CTA_TRIGGER_SCHEDULE", "")
+    monkeypatch.setenv("CTA_TRUSTED_HEARTBEAT", "true")
+    monkeypatch.setenv("CTA_WEEKLY_RECOVERY", "false")
+    monkeypatch.setenv("CTA_FOMC_RECOVERY", "false")
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snap: (True, []))
+    fresh = {"snapshot": {"checked_kst": "2026-10-28T21:20:00+09:00"}}
+    state = {"last_weekly_report_key": "2026-W44", "last_fomc_eve_report": "2026-09-16"}
+    assert equity._scheduled_due(state, fresh)[1] is True
+
+    monkeypatch.setenv("CTA_TRUSTED_HEARTBEAT", "false")
+    assert equity._scheduled_due(state, fresh)[1] is False
+    monkeypatch.setenv("CTA_TRUSTED_HEARTBEAT", "true")
+    assert equity._scheduled_due({**state, "last_fomc_eve_report": "2026-10-28"}, fresh)[1] is False
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snap: (False, ["stale"]))
+    assert equity._scheduled_due(state, fresh)[1] is False
+
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snap: (True, []))
+    FakeNow.at = RealDateTime(2026, 10, 26, 7, 11, tzinfo=equity.KST)
+    monday = {"snapshot": {"checked_kst": "2026-10-26T07:11:00+09:00"}}
+    due, fomc, key, _ = equity._scheduled_due(
+        {"last_weekly_report_key": "2026-W43", "last_fomc_eve_report": "2026-09-16"}, monday
+    )
+    assert due is True and fomc is False and key == "2026-W44"
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snap: (False, ["stale"]))
+    assert equity._scheduled_due({"last_weekly_report_key": "2026-W43"}, monday)[0] is False
+
+
+def test_cta_global_rates_heartbeat_is_restricted_to_same_repo_scheduled_main():
+    text = (ROOT / ".github/workflows/treasury-cta-squeeze-telegram-alert.yml").read_text(
+        encoding="utf-8"
+    )
+    assert 'workflows: ["Global Rates & Yen Carry Telegram Watch"]' in text
+    assert "github.event.workflow_run.event == 'schedule'" in text
+    assert "github.event.workflow_run.head_repository.full_name == github.repository" in text
+    assert "github.event.workflow_run.head_branch == 'main'" in text
+    assert "CTA_TRUSTED_HEARTBEAT" in text
+    assert "github.event_name != 'push' && hashFiles('out/treasury_cta_squeeze_alert.html')" in text
