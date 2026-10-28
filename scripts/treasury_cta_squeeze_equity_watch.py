@@ -1100,7 +1100,7 @@ def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str]
     data_fresh, stale = audited._data_freshness(snapshot)
 
     is_fomc = any("FOMC 전날 점검" in r for r in reasons)
-    is_catchup = any("주간점검 지연 복구" in r for r in reasons)
+    is_catchup = any("정기점검 지연 복구" in r for r in reasons)
     title = (
         "🚨 미 국채 CTA · FOMC 전날 점검" if is_fomc else
         "📅 미 국채 CTA · 주간 점검 지연 복구" if is_catchup else
@@ -1272,7 +1272,7 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
 
     if any("FOMC 전날 점검" in r for r in reasons):
         title = "🚨 미 국채 CTA · FOMC 전날 점검"
-    elif any("주간점검 지연 복구" in r for r in reasons):
+    elif any("정기점검 지연 복구" in r for r in reasons):
         title = "📅 미 국채 CTA · 주간 점검 지연 복구"
     else:
         title = "📅 미 국채 CTA · 월요일 주간 점검"
