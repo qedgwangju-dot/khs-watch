@@ -11,8 +11,8 @@
   "transcript": null,
   "sent": false,
   "reuters_count": 8,
-  "updated_at_utc": "2026-10-28T23:14:04.278174+00:00",
-  "structural_source_status": "confirmed",
+  "updated_at_utc": "2026-10-28T23:23:35.969584+00:00",
+  "structural_source_status": "already_sent",
   "structural_pending_key": null,
   "structural_delivery_status": "confirmed",
   "structural_sent_key": "2026-10-28|Warsh|FOMC-Structural-Verified-v1",
@@ -26,5 +26,16 @@
     "strategy",
     "ai_rates"
   ],
-  "structural_sent_at_utc": "2026-10-28T23:14:04.278097+00:00"
+  "structural_sent_at_utc": "2026-10-28T23:14:04.278097+00:00",
+  "balance_addendum_pending_key": null,
+  "balance_addendum_delivery_status": "confirmed",
+  "balance_addendum_sent_key": "2026-10-28|Warsh|BalanceTaskforceQ1-Verified-v1",
+  "balance_addendum_message_id": 118,
+  "balance_addendum_sources": [
+    "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+    "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a1.htm",
+    "https://kfgo.com/2026/10/28/feds-policy-committee-to-weigh-balance-sheet-issues-early-next-year-warsh-says/"
+  ],
+  "balance_addendum_sent_at_utc": "2026-10-28T23:23:35.969507+00:00",
+  "balance_addendum_status": "confirmed"
 }
