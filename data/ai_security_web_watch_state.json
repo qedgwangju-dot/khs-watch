@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 22,
+    "material_items": 23,
     "new_material_items": 0,
-    "raw_items": 339,
+    "raw_items": 335,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -861,6 +861,16 @@
       "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQQVVWR2dJMXQ5N3plYkRnb1ZMdmVTWlNXS2JseFRMaTV5WmdZVkp3MVhyVk1FQ09XcFQzN3N3Rko3Vl9mTnF3dndiVVVaVU1Rem5Qdk1FU2VzcDJXZjhBeXhURUtRSFNIR3dOc0VadE14ZHQteGltSkd3VzhMbzNEcmhva2xteWVJM1N6T3J4eXc2VUU0VTE1LVhSNzFnRVRnMS12UDJoSFV3QXE5Mnl4VVVHcThUMmdvZEtvMmZ6RjBtVHo0RjdfNkg0UWlEaGN3Smc?oc=5",
       "vendor": "PHP 재단"
     },
+    "8be5131a3a38fe9b291b985c": {
+      "category": "PHP 취약점 실전 악용 공식 확인",
+      "first_seen_at": "2026-10-28T19:53:19.464622+00:00",
+      "published_at": "2026-10-28T12:00:00+00:00",
+      "severity": 3,
+      "source": "CISA",
+      "title": "Linux Kernel Linux Kernel Missing Initialization of a Variable Vulnerability",
+      "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+      "vendor": "PHP 재단"
+    },
     "8f57a741b2f60ded4d76b05b": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-25T17:39:01.799911+00:00",
@@ -1554,5 +1564,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-29T04:28:57+09:00"
+  "updated_at_kst": "2026-10-29T04:53:19+09:00"
 }
