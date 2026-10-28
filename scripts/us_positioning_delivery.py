@@ -128,7 +128,112 @@ def evaluate_retail_crowding(previous, aaii, conference, on_date):
 
 
 AAII_ALLOCATIONS_URL = "https://www.aaii.com/assetallocationsurvey"
+AAII_OFFICIAL_ARCHIVE = "https://www.aaii.com/latest/updatearchive?category=487"
 BOARD_CONFIDENCE_URL = "https://www.conference-board.org/topics/consumer-confidence/"
+
+
+def official_page_text(raw):
+    """Normalize verified first-party HTML without substituting a search snippet."""
+    if "<" not in raw:
+        return " ".join(raw.split())
+    from bs4 import BeautifulSoup
+    return BeautifulSoup(raw, "html.parser").get_text(" ", strip=True)
+
+
+def parse_aaii_monthly_article(raw):
+    """Read numeric AAII official monthly release at its PUBLISHED precision.
+
+    Unlike the dynamic overview, the staff article may report rounded 0.1pp
+    allocations. Do not rewrite them as the more precise webpage figures.
+    """
+    from calendar import month_name
+    text = official_page_text(raw)
+    months = "|".join(month_name[i] for i in range(1, 13))
+    title = re.search(r"\b(" + months + r") AAII Asset Allocation Survey results:", text, re.I)
+    if not title:
+        raise ValueError("AAII official article monthly results title missing")
+    before = text[max(0, title.start() - 1100):title.start()]
+    published_candidates = re.findall(
+        r"\b(?:" + months + r")\s+\d{1,2},\s+20\d{2}\b", before, re.I)
+    if not published_candidates:
+        raise ValueError("AAII official article publication date missing")
+    published = datetime.strptime(published_candidates[-1].title(), "%B %d, %Y").date()
+    survey_month = datetime.strptime(title.group(1).title(), "%B").month
+    expected_release_month = (survey_month % 12) + 1
+    expected_year = published.year if expected_release_month != 1 else published.year - 1
+    if published.month != expected_release_month or published.day > 12:
+        raise ValueError("AAII release date not aligned to survey month")
+    section = text[title.end():title.end() + 1500]
+
+    def get(name):
+        match = re.search(name + r"\s*:\s*(\d+(?:\.\d+)?)\s*%", section, re.I)
+        if not match:
+            raise ValueError("AAII official article missing allocation component")
+        return float(match.group(1))
+    stocks = get(r"Stocks and Stock Funds")
+    bonds = get(r"Bonds and Bond Funds")
+    cash = get(r"Cash")
+    direct = get(r"Stocks")
+    stock_funds = get(r"Stocks Funds?")
+    if not all(0 <= v <= 100 for v in (stocks, bonds, cash, direct, stock_funds)):
+        raise ValueError("AAII official article percentage out of bounds")
+    if abs(stocks + bonds + cash - 100.0) > 0.4:
+        raise ValueError("AAII article totals do not approximately sum to 100")
+    if abs(direct + stock_funds - stocks) > 0.25:
+        raise ValueError("AAII article direct stock and fund subtotals disagree")
+    return {
+        "period": f"{expected_year:04d}-{survey_month:02d}",
+        "stocks_pct": stocks, "stock_funds_pct": stock_funds,
+        "direct_stock_pct": direct, "bonds_pct": bonds, "cash_pct": cash,
+        "source_precision": "AAII 공식 해설 기사 소수 첫째 자리",
+    }
+
+
+def aaii_latest_official_article_links(raw):
+    """Select only AAII official dated monthly asset-allocation articles."""
+    from bs4 import BeautifulSoup
+    from urllib.parse import urljoin, urlsplit
+    from calendar import month_name
+    matches = []
+    for a in BeautifulSoup(raw, "html.parser").find_all("a", href=True):
+        title = a.get_text(" ", strip=True)
+        if not re.match(r"^(" + "|".join(month_name[i] for i in range(1, 13))
+                        + r") AAII Asset Allocation Survey:", title, re.I):
+            continue
+        url = urljoin("https://www.aaii.com/", a["href"])
+        parts = urlsplit(url)
+        if (parts.scheme == "https" and parts.hostname == "www.aaii.com"
+                and re.fullmatch(r"/latest/article/\d+-[a-z0-9-]+/?", parts.path)
+                and not parts.query and not parts.fragment):
+            matches.append(url)
+    return list(dict.fromkeys(matches))[:3]
+
+
+def fetch_current_aaii_allocation(fetch, now):
+    """Prefer dated exact official table, use independently dated AAII article."""
+    current = fetch(AAII_ALLOCATIONS_URL)
+    try:
+        value = parse_aaii_allocation(official_page_text(current))
+        month_date = date.fromisoformat(value["period"] + "-01")
+        if not 0 <= (now - month_date).days <= 75:
+            raise ValueError("AAII exact table stale; retry dated official article")
+        value["source_url"] = AAII_ALLOCATIONS_URL
+        value["source_precision"] = "AAII 공식 자산배분 표 소수 둘째 자리"
+        return value
+    except ValueError:
+        pass
+    for listing in (current, fetch(AAII_OFFICIAL_ARCHIVE)):
+        for official_url in aaii_latest_official_article_links(listing):
+            try:
+                value = parse_aaii_monthly_article(fetch(official_url))
+                month_date = date.fromisoformat(value["period"] + "-01")
+                if not 0 <= (now - month_date).days <= 75:
+                    continue
+                value["source_url"] = official_url
+                return value
+            except (ValueError, RuntimeError):
+                continue
+    raise ValueError("AAII current official allocation table and dated article unavailable")
 
 
 def update_retail_survey_overlay(*, repo_root=None, fetch=None, on_date=None):
@@ -167,14 +272,15 @@ def update_retail_survey_overlay(*, repo_root=None, fetch=None, on_date=None):
         def fetch(url):
             response = session.get(url, timeout=(7, 19))
             response.raise_for_status()
-            return BeautifulSoup(response.text, "html.parser").get_text(" ", strip=True)
+            return response.text
 
     # Both dated primary sources must be valid. A failure here does not silence
     # existing ICI, margin, Goldman, or options/SOX watchers.
     try:
-        asset = parse_aaii_allocation(fetch(AAII_ALLOCATIONS_URL))
-        confidence = parse_conference_board_confidence(fetch(BOARD_CONFIDENCE_URL))
         today = on_date or datetime.now(ZoneInfo("America/New_York")).date()
+        asset = fetch_current_aaii_allocation(fetch, today)
+        confidence = parse_conference_board_confidence(
+            official_page_text(fetch(BOARD_CONFIDENCE_URL)))
         previous = (candidate.get("derived") or {}).get("retail_survey")
         evaluated = evaluate_retail_crowding(previous, asset, confidence, today)
     except Exception as exc:
@@ -198,7 +304,8 @@ def update_retail_survey_overlay(*, repo_root=None, fetch=None, on_date=None):
         a, c = next_snapshot["aaii"], next_snapshot["conference"]
         lines = [
             "<b>미국 개인투자자 주식비중·주가 기대 변화</b>",
-            f"• AAII {escape(a['period'])}: 주식·주식형펀드 {a['stocks_pct']:.2f}% / 현금 {a['cash_pct']:.2f}%",
+            f"• AAII {escape(a['period'])}: 주식·주식형펀드 {a['stocks_pct']:.2f}% / 현금 {a['cash_pct']:.2f}% "
+            f"({escape(a.get('source_precision','공식 자료'))})",
             f"• Conference Board {escape(c['period'])}: 소비자신뢰지수 {c['confidence_index']:.1f} / 기대지수 {c['expectations_index']:.1f}",
             "• 12개월 주가 전망: 상승 예상 응답이 하락 예상 응답보다 많음" if c["stock_up_vs_down_majority"] is True
             else "• 12개월 주가 전망: 최신 원문만으로 우위 확인 보류",
@@ -206,7 +313,7 @@ def update_retail_survey_overlay(*, repo_root=None, fetch=None, on_date=None):
             "• AAII 자산배분 월간 조사와 Conference Board 소비자 기대는 표본·질문·기간이 다르며"
             " 신규 순매수액, 역사적 최고치 또는 증시 하락 확정 신호가 아닙니다.",
             "• Goldman Prime 헤지펀드 포지션은 별도 기준주간의 공개보도이며 같은 날 수치로 합산하지 않습니다.",
-            f'• <a href="{AAII_ALLOCATIONS_URL}">AAII 월간 자산배분 공식</a> · '
+            f'• <a href="{escape(a.get("source_url", AAII_ALLOCATIONS_URL),quote=True)}">AAII 월간 자산배분 공식</a> · '
             f'<a href="{BOARD_CONFIDENCE_URL}">Conference Board 공식 발표</a>',
         ]
         previous_body = alert.read_text(encoding="utf-8").strip() if alert.exists() else ""
