@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from us_positioning_delivery import daily_digest_due, daily_event_label, parse_aaii_allocation, parse_conference_board_confidence, evaluate_retail_crowding, update_retail_survey_overlay, AAII_ALLOCATIONS_URL, BOARD_CONFIDENCE_URL, AAII_OFFICIAL_ARCHIVE, parse_aaii_monthly_article, aaii_latest_official_article_links, fetch_current_aaii_allocation
+from us_positioning_delivery import daily_digest_due, daily_event_label, parse_aaii_allocation, parse_conference_board_confidence, evaluate_retail_crowding, update_retail_survey_overlay, AAII_ALLOCATIONS_URL, BOARD_CONFIDENCE_URL, AAII_OFFICIAL_ARCHIVE, parse_aaii_monthly_article, aaii_latest_official_article_links, fetch_current_aaii_allocation, classify_fund_flow_presend
 
 
 class DailyDigestDeliveryTests(unittest.TestCase):
@@ -243,6 +243,42 @@ class AAIIPrimaryArticleRecoveryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"totals"):
             parse_aaii_monthly_article(
                 AAII_ARTICLE_PUBLIC.replace("Stocks and Stock Funds: 71.8%", "Stocks and Stock Funds: 78.8%"))
+
+
+
+class RetailPresendGuardTests(unittest.TestCase):
+    def setup_states(self):
+        current = {"seen":{"ICI|mmf":"latest"}, "values":{},
+                   "derived":{"hartnett_10y_pct":5.0}}
+        baseline = __import__("json").loads(__import__("json").dumps(current))
+        baseline["derived"]["retail_survey"] = {
+            "pair":"2026-09|2026-10",
+            "regime":"동반 높은 주식노출·상승기대"
+        }
+        return current, baseline
+
+    def test_first_official_baseline_saves_silently(self):
+        old, new = self.setup_states()
+        self.assertEqual(classify_fund_flow_presend(old, new, False), "BASELINE_ONLY")
+        self.assertEqual(classify_fund_flow_presend(new, new, False), "DUPLICATE")
+
+    def test_only_unacknowledged_new_official_monthly_event_sends(self):
+        old, new = self.setup_states()
+        self.assertEqual(classify_fund_flow_presend(old, new, True), "SEND")
+        self.assertEqual(classify_fund_flow_presend(new, new, True), "DUPLICATE")
+
+    def test_real_other_fund_flow_change_is_not_suppressed(self):
+        old, new = self.setup_states()
+        new["seen"]["ICI|mmf"]="changed-new-official-source"
+        self.assertEqual(classify_fund_flow_presend(old, new, False), "SEND")
+        old, new = self.setup_states()
+        new["derived"]["hartnett_10y_pct"]=5.15
+        self.assertEqual(classify_fund_flow_presend(old, new, False), "SEND")
+
+    def test_invalid_fund_flow_state_fails_closed(self):
+        old, new = self.setup_states()
+        with self.assertRaisesRegex(ValueError,"Invalid saved"):
+            classify_fund_flow_presend({}, new, False)
 
 
 if __name__ == "__main__":
