@@ -69,7 +69,7 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-29T02:26:03+09:00",
+  "updated_at_kst": "2026-10-29T06:55:58+09:00",
   "last_scan_count": 8,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
@@ -114,7 +114,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 1,
+  "last_held_count": 0,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -158,14 +158,7 @@
     "fbb3374837c522b4bf3b2884"
   ],
   "delivered_event_keys": [],
-  "last_held": [
-    {
-      "event_key": "taiwan|diversification|TSMC|arizona",
-      "source": "BigGo Finance",
-      "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-10-28T20:25:00+09:00"
-    }
-  ],
+  "last_held": [],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
   "telegram_message_ids": [
     292
