@@ -128,52 +128,6 @@ jobs:
           done
           exit 1
 
-      - name: Send verified CTA W44 correction once
-        if: github.event_name == 'push' && github.event.head_commit.message == 'Send verified CTA W44 correction once' && github.run_attempt == 1
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
-          PRIMARY_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
-          FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
-        run: |
-          python - <<'PY'
-          import json, os, urllib.parse, urllib.request
-          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
-          chat = (os.getenv("PRIMARY_CHAT_ID") or os.getenv("FALLBACK_CHAT_ID") or "").strip()
-          if not token or not chat:
-              raise RuntimeError("CTA correction route missing")
-          base = "https://api.telegram.org/bot" + token + "/"
-          with urllib.request.urlopen(base + "getMe", timeout=25) as response:
-              identity = json.load(response)
-          username = str((identity.get("result") or {}).get("username") or "")
-          if not identity.get("ok") or username.lower() != "hs88798879887988798879_bot":
-              raise RuntimeError("CTA correction bot identity mismatch")
-          message = (
-              "<b>미 국채 CTA 주간 점검 · 정정 안내</b>\n"
-              "10월 28일 20:25 KST에 보낸 주간 점검(기존 message_id=117)의 "
-              "두 표기를 바로잡습니다.\n\n"
-              "① 10월 20일 CFTC NQ Leveraged Funds 순포지션 <b>+950계약은 순롱</b>입니다. "
-              "명목금액 약 7,521억원 역시 순롱 참고값이며 ‘순숏’이 아닙니다. "
-              "총숏 명목금액은 별도 값입니다.\n"
-              "② 10월 27일 미 재무부 10년물 <b>4.990%, 20일 z=-1.61σ</b>에서는 "
-              "-1σ에 이미 진입했습니다. 다음 하락 확인은 <b>-2σ 진입 또는 4.75% 하향</b>입니다.\n\n"
-              "③ ZN 공식 같은 거래일 가격↑·OI↓는 CME 일일자료 접근 제한으로 확인되지 않아 "
-              "<b>실제 CTA·채권→Nasdaq 이중 숏 스퀴즈 미확인</b> 판정은 유지합니다."
-          )
-          data=urllib.parse.urlencode({
-              "chat_id":chat, "text":message, "parse_mode":"HTML",
-              "disable_web_page_preview":"true",
-          }).encode("utf-8")
-          req=urllib.request.Request(base+"sendMessage",data=data,method="POST")
-          with urllib.request.urlopen(req, timeout=25) as response:
-              result=json.load(response)
-          msg=(result.get("result") or {})
-          if not result.get("ok") or not isinstance(msg.get("message_id"),int):
-              raise RuntimeError("CTA correction Telegram delivery unconfirmed")
-          print("cta_correction_delivery_confirmed=true bot=@"
-                +username+" new_message_id="+str(msg["message_id"])
-                +" corrected_message_id=117")
-          PY
-
       - name: Send interpreted Telegram alert
         if: github.event_name != 'push' && hashFiles('out/treasury_cta_squeeze_alert.html') != ''
         env:
