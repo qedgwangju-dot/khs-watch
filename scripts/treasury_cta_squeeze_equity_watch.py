@@ -937,6 +937,24 @@ def _checked_date(snapshot: dict) -> date:
         return datetime.now(KST).date()
 
 
+def _fomc_report_day(snapshot: dict) -> date:
+    """Protect the FOMC pre-decision report from delayed GitHub cron runs.
+
+    A 20:40 KST scheduled run delayed past midnight remains a pre-decision
+    report until 03:00 KST the following day (14:00 ET in October).
+    A later run must not masquerade as a pre-decision notice.
+    """
+    d = _checked_date(snapshot)
+    previous_day = d - timedelta(days=1)
+    if (
+        d.isoformat() not in FOMC_END_DATES
+        and previous_day.isoformat() in FOMC_END_DATES
+        and datetime.now(KST).time() < time(3, 0)
+    ):
+        return previous_day
+    return d
+
+
 def _fomc_times(end_day: date) -> tuple[datetime, datetime]:
     decision_et = datetime.combine(end_day, time(14, 0), tzinfo=NY)
     press_et = datetime.combine(end_day, time(14, 30), tzinfo=NY)
@@ -1074,6 +1092,7 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
 
 def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=None, fx_date=None) -> tuple[str, str]:
     y = snapshot.get("yield10") or {}
+    milestone_line = _yield_milestones(float(y.get("yield") or 0.0))
     cftc = (snapshot.get("cftc") or {}).get("markets", {})
     repo = snapshot.get("repo") or {}
     cross = _cross_asset_snapshot(snapshot, previous)
@@ -1108,7 +1127,7 @@ def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str]
     ]
 
     if is_fomc:
-        d = _checked_date(snapshot)
+        d = _fomc_report_day(snapshot)
         start = d - timedelta(days=1)
         decision_kst, press_kst = _fomc_times(d)
         sep = " · 점도표·경제전망 동반" if d.isoformat() in FOMC_SEP_END_DATES else ""
@@ -1272,7 +1291,7 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
     ]
 
     if any("FOMC 전날 점검" in r for r in reasons):
-        d = _checked_date(snapshot)
+        d = _fomc_report_day(snapshot)
         start = d - timedelta(days=1)
         decision_kst, press_kst = _fomc_times(d)
         sep = " · 점도표·경제전망 동반" if d.isoformat() in FOMC_SEP_END_DATES else ""
@@ -1356,13 +1375,14 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
             }
         )
     )
+    fomc_key = _fomc_report_day(snapshot).isoformat()
     fomc_due = (
         trigger_event == "schedule"
         and trigger_schedule in fomc_crons
-        and date_key in FOMC_END_DATES
-        and current_state.get("last_fomc_eve_report") != date_key
+        and fomc_key in FOMC_END_DATES
+        and current_state.get("last_fomc_eve_report") != fomc_key
     )
-    return monday_due, fomc_due, week_key, date_key
+    return monday_due, fomc_due, week_key, fomc_key
 
 
 def _cross_alert_gate(current_state: dict, cross: dict) -> tuple[bool, int, int, bool]:
