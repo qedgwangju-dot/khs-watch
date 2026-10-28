@@ -2018,7 +2018,7 @@ class Watch:
             f"• 확인 수준: {html.escape(confidence)}",
         ]
         lines.extend(extra_lines or [])
-        if market == "KOSDAQ":
+        if market == "KOSDAQ" and actor == "금융투자":
             lines.extend(["• " + SUBGROUP_NOTE, "• " + FINANCIAL_NOTE])
         else:
             lines.append("• " + TRUST_NOTE)
