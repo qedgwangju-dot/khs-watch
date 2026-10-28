@@ -268,22 +268,63 @@ def format_alert(snapshot, previous, fx, fx_date, reasons):
 
 
 def _cftc_short_reduction(current: dict, previous: dict) -> tuple[set[str], list[str]]:
-    """Return only long-end markets whose leveraged net short actually reduced."""
-    curr = (current.get("cftc") or {}).get("markets", {})
-    prev = (previous.get("cftc") or {}).get("markets", {})
+    """Compare the actual CFTC report week, never unrelated stored polling snapshots.
+
+    After an outage, persisted CTA CFTC data may lag the newest CFTC release by
+    several weeks. A positive change since that old snapshot is NOT a weekly
+    leveraged-fund short cover. Trust the latest report's own weekly delta, or
+    compare saved snapshots only if their CFTC report dates differ by 7 days.
+    """
+    curr_obj = current.get("cftc") or {}
+    prev_obj = previous.get("cftc") or {}
+    curr = curr_obj.get("markets") or {}
+    prev = prev_obj.get("markets") or {}
+
+    def report_day(raw):
+        for fmt in ("%B %d, %Y", "%Y-%m-%d"):
+            try:
+                return datetime.strptime(str(raw or ""), fmt).date()
+            except ValueError:
+                pass
+        return None
+
+    current_date = report_day(curr_obj.get("report_date"))
+    previous_date = report_day(prev_obj.get("report_date"))
+    one_week_apart = bool(
+        current_date and previous_date and (current_date - previous_date).days == 7
+    )
     reduced: set[str] = set()
     lines: list[str] = []
     for key in ("10Y", "BOND", "ULTRABOND"):
         c = curr.get(key) or {}
         p = prev.get(key) or {}
         c_net = c.get("leveraged_net")
-        p_net = p.get("leveraged_net")
-        if c_net is None or p_net is None:
+        if c_net is None:
             continue
-        # Less negative / more positive = net-short reduction.
-        if int(c_net) > int(p_net):
+        delta = c.get("leveraged_net_wow")
+        report_previous = report_day(c.get("previous_period"))
+        if delta is not None:
+            # An explicit previous-period date must refer to the immediately
+            # preceding CFTC reporting week, not to an arbitrary historical week.
+            if current_date and report_previous and (current_date - report_previous).days != 7:
+                continue
+            change = int(delta)
+            from_net = int(c_net) - change
+            prior_label = report_previous.isoformat() if report_previous else "직전 CFTC 주"
+        elif one_week_apart and p.get("leveraged_net") is not None:
+            from_net = int(p["leveraged_net"])
+            change = int(c_net) - from_net
+            prior_label = previous_date.isoformat()
+        else:
+            # Missing official weekly change plus a multi-week old state
+            # must not be disguised as one-week short covering.
+            continue
+        if change > 0 and from_net < 0:
             reduced.add(key)
-            lines.append(f"{key} 순포지션 {int(p_net):+,}→{int(c_net):+,}계약")
+            lines.append(
+                f"{key} 순포지션 {from_net:+,}→{int(c_net):+,}계약"
+                f" (주간 {change:+,}; {prior_label} 기준)"
+            )
     return reduced, lines
 
 
