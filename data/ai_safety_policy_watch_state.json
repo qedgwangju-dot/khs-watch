@@ -3,13 +3,13 @@
   "last_collection": {
     "deferred_events": 0,
     "errors": [],
-    "material_items": 16,
+    "material_items": 17,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 142,
+    "raw_items": 146,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-28T08:39:09.651717+00:00",
+    "updated_at": "2026-10-28T09:11:38.612257+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -199,6 +199,15 @@
       "source": "전자신문",
       "title": "이스트시큐리티, PHP2Shell 취약점 점검 도구 무료 배포 - 전자신문",
       "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1uN0JvWFgwdDlQbEJ6M2kxMUYzYS1qbGhhRGItcWs5TGVaS3NtcWhBeEREbjBQZU02SE5OMHhmdlJlMk1lWFg1emRvSGR3Zw?oc=5"
+    },
+    "6f45ff76d13e53cad4c2a9bf": {
+      "category": "민간 기반시설 172개 보안 점검·조달 단계",
+      "entity": "과학기술정보통신부",
+      "first_seen_at": "2026-10-28T09:11:38.612257+00:00",
+      "published_at": "2026-10-28T05:58:06+00:00",
+      "source": "매일경제",
+      "title": "정부, 민간기반시설 172곳 긴급 점검...이찬진 “IT 보안 강화를” - 매일경제",
+      "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9wWjJuemtudVJTZ2JhMkk3Q242VFk5QXI4OUFTN2IxamR4U2hWamxuMFdWbUt0YmpTZFB6WnZXdE54ZVNCTnc?oc=5"
     },
     "7851838e985dae845adfb73c": {
       "category": "파이오링크 PHP 보안 점검 사업화 단계",
@@ -514,11 +523,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-10-28T17:39:09+09:00",
+  "updated_at_kst": "2026-10-28T18:11:38+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-10-28T08:39:51.817076+00:00",
+    "last_success_at": "2026-10-28T09:12:10.026617+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
