@@ -8,6 +8,8 @@ on:
     # Generic Wednesday FOMC event window. The watcher cross-checks the official
     # FOMC calendar before capturing/sending, so non-meeting Wednesdays stay silent.
     # Covers both U.S. daylight-saving and standard-time 2:00 p.m. ET decisions.
+    # 13:35 ET early capture mitigates cron delay at the former 13:50 slot.
+    - cron: '35 17,18 * * 3'
     - cron: '50 17 * * 3'
     - cron: '5,20,35,50 18 * * 3'
     - cron: '5,20,35,50 19 * * 3'
@@ -75,6 +77,7 @@ on:
       - 'scripts/warsh_fomc_event_watch_v2.py'
       - 'scripts/warsh_fomc_event_watch_v3.py'
       - 'scripts/warsh_fomc_event_watch_v4.py'
+      - 'scripts/warsh_fomc_persistence_watch.py'
       - 'scripts/warsh_fomc_minutes_watch.py'
       - 'tests/test_warsh_fomc_minutes_watch.py'
       - 'scripts/warsh_press_conference_watch.py'
@@ -205,6 +208,7 @@ jobs:
             scripts/warsh_policy_path_watch_v3.py \
             scripts/warsh_policy_path_watch_v4.py \
             scripts/warsh_fomc_event_watch_v4.py \
+            scripts/warsh_fomc_persistence_watch.py \
             scripts/warsh_fomc_minutes_watch.py \
             scripts/warsh_press_conference_watch_v3.py
           python scripts/test_warsh_policy_safety.py

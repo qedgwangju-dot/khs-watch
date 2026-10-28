@@ -60,12 +60,61 @@ def capture_pre_event_if_due(state, event_date, now):
     if state.get('pre_event_market_event_date') == event_date and state.get('pre_event_market'):
         return False
     try:
-        state['pre_event_market'] = base.market_snapshot()
+        snap = base.market_snapshot()
+        # Do not label an empty or stale snapshot as the pre-decision market.
+        if not snap:
+            return False
+        fresh = False
+        for row in snap.values():
+            try:
+                stamp = datetime.fromisoformat(row['timestamp'])
+                age = (now - stamp).total_seconds()
+                fresh = fresh or (0 <= age <= 20 * 60)
+            except (KeyError, TypeError, ValueError):
+                continue
+        if not fresh:
+            return False
+        state['pre_event_market'] = snap
         state['pre_event_market_captured_at_utc'] = now.isoformat()
         state['pre_event_market_event_date'] = event_date
         return True
     except Exception:
         return False
+
+
+FOLLOWUP_LABELS = ('30분', '90분', '6시간', '24시간')
+FOLLOWUP_SUFFIXES = ('market', 'brent', 'verdict', 'at_utc', 'news_class', 'message_id', 'delivery_status', 'event_date')
+
+
+def clear_event_scoped_snapshots(state, new_date):
+    """Keep only a genuinely captured pre-event baseline for this meeting."""
+    for label in FOLLOWUP_LABELS:
+        for suffix in FOLLOWUP_SUFFIXES:
+            state.pop(f'followup_{label}_{suffix}', None)
+    state['followups_sent'] = []
+    if state.get('pre_event_market_event_date') != new_date:
+        for field in ('pre_event_market', 'pre_event_market_captured_at_utc', 'pre_event_market_event_date'):
+            state.pop(field, None)
+
+
+def prune_stale_snapshots(state, upcoming_date=None):
+    """Older meeting snapshots must never masquerade as this event's follow-ups."""
+    labels = set(state.get('followups_sent') or [])
+    detected = state.get('event_detected_at_utc')
+    for label in FOLLOWUP_LABELS:
+        stamp = state.get(f'followup_{label}_at_utc')
+        stale_stamp = False
+        if stamp and detected:
+            try:
+                stale_stamp = datetime.fromisoformat(stamp) < datetime.fromisoformat(detected)
+            except (TypeError, ValueError):
+                stale_stamp = True
+        if label not in labels or stale_stamp:
+            for suffix in FOLLOWUP_SUFFIXES:
+                state.pop(f'followup_{label}_{suffix}', None)
+    if state.get('pre_event_market_event_date') not in (state.get('event_statement_date'), upcoming_date):
+        for field in ('pre_event_market', 'pre_event_market_captured_at_utc', 'pre_event_market_event_date'):
+            state.pop(field, None)
 
 
 def main():
@@ -109,7 +158,21 @@ def main():
             previous_statement, stmt, previous_sep, event_sep,
             state.get('pre_event_market'), cur_market
         )
-        base.send(msg)
+        event_key = f"{stmt.get('date')}|decision"
+        if state.get('delivery_pending_key') == event_key:
+            raise RuntimeError('FOMC 결정 알림 전송 결과 불명확 — 재전송 보류')
+        state['delivery_pending_key'] = event_key
+        state['delivery_status'] = 'sending'
+        base.save_state(state)
+        receipt = base.send(msg)
+        if not isinstance(receipt, int):
+            raise RuntimeError('FOMC 결정 Telegram message_id 미확인 — 중복 방지 보류')
+        clear_event_scoped_snapshots(state, stmt.get('date'))
+        state['decision_sent_key'] = event_key
+        state['decision_message_id'] = receipt
+        state['decision_delivery_status'] = 'confirmed'
+        state['delivery_pending_key'] = None
+        state['delivery_status'] = 'confirmed'
         sent.append('decision')
         state['previous_statement'] = previous_statement
         state['previous_sep'] = previous_sep
@@ -118,7 +181,6 @@ def main():
         state['event_detected_at_utc'] = now.isoformat()
         state['event_statement_date'] = stmt.get('date')
         state['decision_market'] = cur_market
-        state['followups_sent'] = []
         event_date = stmt.get('date') or event_date
         if event_date:
             base.EVENT_DATE = event_date
@@ -126,6 +188,14 @@ def main():
         if sep and sep.get('date') == stmt.get('date'):
             state['current_sep'] = sep
             state['last_sep_url'] = sep_url
+    else:
+        # Silent repair of an existing event's omitted vote, never a new alert.
+        existing = state.get('current_statement') or {}
+        if stmt.get('against') and not existing.get('against'):
+            for field in ('against', 'vote_for', 'vote_against'):
+                existing[field] = stmt.get(field)
+            state['current_statement'] = existing
+        prune_stale_snapshots(state, event_date)
 
     # SEP can be published shortly after the statement on projection meetings.
     if (
@@ -168,11 +238,28 @@ def main():
         fset = set(state.get('followups_sent') or [])
         for label, threshold in [('30분', 25), ('90분', 75)]:
             if elapsed >= threshold and label not in fset:
+                # Without a same-meeting pre-event quote, no valid market delta exists.
+                if (not state.get('pre_event_market')
+                        or state.get('pre_event_market_event_date') != detected_date):
+                    continue
                 msg, cur_market, cls = base.followup_message(state, label)
-                base.send(msg)
+                followup_key = f'{detected_date}|{label}'
+                if state.get('delivery_pending_key') == followup_key:
+                    raise RuntimeError('FOMC 후속 알림 전송 불명확 — 재전송 보류')
+                state['delivery_pending_key'] = followup_key
+                state['delivery_status'] = 'sending'
+                base.save_state(state)
+                receipt = base.send(msg)
+                if not isinstance(receipt, int):
+                    raise RuntimeError('FOMC 후속 Telegram message_id 미확인')
                 sent.append(label)
                 fset.add(label)
                 state['followups_sent'] = sorted(fset)
+                state[f'followup_{label}_message_id'] = receipt
+                state[f'followup_{label}_delivery_status'] = 'confirmed'
+                state[f'followup_{label}_event_date'] = detected_date
+                state['delivery_pending_key'] = None
+                state['delivery_status'] = 'confirmed'
                 state[f'followup_{label}_market'] = cur_market
                 if cls:
                     state[f'followup_{label}_news_class'] = cls

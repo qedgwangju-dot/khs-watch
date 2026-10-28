@@ -2,6 +2,7 @@
 """네트워크에 의존하지 않는 Warsh 금리·대차대조표 회귀검증."""
 import unittest
 import urllib.parse
+import json
 import os
 from datetime import date, datetime, timedelta, timezone
 from unittest.mock import MagicMock, patch
@@ -16,6 +17,9 @@ import warsh_sep_path_watch_v2 as sep
 import warsh_post_fomc_ib_reaction_watch as post_ib
 import warsh_energy_shock_watch as energy
 import warsh_ai_taskforce_watch_v2 as gartner
+import warsh_fomc_event_watch as fomc_base
+import warsh_fomc_event_watch_v4 as fomc_v4
+import warsh_press_conference_watch_v3 as press_v3
 
 
 class WarshSafetyTests(unittest.TestCase):
@@ -610,6 +614,162 @@ class WarshSafetyTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,"갱신시각"):
             state_sync.reconcile(x,{"last_health_message_id":80})
 
+
+
+class WarshOctoberFOMCRegressionTests(unittest.TestCase):
+    def test_october_vote_and_full_dissent_names_from_official_statement(self):
+        url='https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm'
+        raw=(
+            '<html>October 28, 2026 The Federal Open Market Committee approved '
+            'the following statement for release by a 10 – 2 vote: '
+            'The Committee decided to maintain the target range for the federal funds rate '
+            'at 3-3/4 to 4 percent. Productivity growth is strong. '
+            'Voting against the monetary policy action were Lisa D. Cook and '
+            'Beth M. Hammack, who preferred to raise the target range for the federal '
+            'funds rate by 1/4 percentage point at this meeting. '
+            'For media inquiries, contact the Board.</html>'
+        )
+        with patch.object(fomc_base,'fetch',return_value=(raw,url)):
+            stmt=fomc_base.parse_statement(url)
+        self.assertEqual(stmt['date'],'2026-10-28')
+        self.assertEqual((stmt['low'],stmt['high']),(3.75,4.0))
+        self.assertEqual((stmt['vote_for'],stmt['vote_against']),(10,2))
+        self.assertIn('Lisa D. Cook and Beth M. Hammack',stmt['against'])
+        self.assertNotIn('For media inquiries',stmt['against'])
+
+    def test_old_meeting_followup_market_is_scrubbed_without_new_alert(self):
+        state={
+            'event_statement_date':'2026-10-28',
+            'event_detected_at_utc':'2026-10-28T19:14:08+00:00',
+            'followups_sent':['30분','90분'],
+            'followup_30분_market':{'S&P 500':{'value':7700}},
+            'followup_6시간_market':{'S&P 500':{'value':7500}},
+            'followup_6시간_at_utc':'2026-09-17T00:00:00+00:00',
+            'pre_event_market_event_date':'2026-09-16',
+            'pre_event_market':{'S&P 500':{'value':7500}},
+        }
+        fomc_v4.prune_stale_snapshots(state,'2026-10-28')
+        self.assertNotIn('followup_6시간_market',state)
+        self.assertNotIn('pre_event_market',state)
+        self.assertIn('followup_30분_market',state)
+        state['pre_event_market_event_date']='2026-11-18'
+        state['pre_event_market']={'S&P 500':{'value':7600}}
+        fomc_v4.prune_stale_snapshots(state,'2026-11-18')
+        self.assertIn('pre_event_market',state)
+        fomc_v4.clear_event_scoped_snapshots(state,'2026-11-18')
+        self.assertEqual(state['followups_sent'],[])
+        self.assertIn('pre_event_market',state)
+
+    def test_pre_event_market_capture_requires_fresh_quote(self):
+        now=datetime(2026,10,28,17,40,tzinfo=timezone.utc)
+        stale={'S&P 500':{'value':7700,'timestamp':'2026-10-27T17:40:00+00:00'}}
+        state={}
+        with patch.object(fomc_v4.base,'market_snapshot',return_value=stale):
+            self.assertFalse(fomc_v4.capture_pre_event_if_due(state,'2026-10-28',now))
+        fresh={'S&P 500':{'value':7700,'timestamp':now.isoformat()}}
+        with patch.object(fomc_v4.base,'market_snapshot',return_value=fresh):
+            self.assertTrue(fomc_v4.capture_pre_event_if_due(state,'2026-10-28',now))
+        self.assertEqual(state['pre_event_market_event_date'],'2026-10-28')
+
+    def test_2y_down_10y_up_is_not_mislabeled_as_easing(self):
+        msg=fomc_base.market_read({
+            '2년물':{'change_bp':-5.2},
+            '10년물':{'change_bp':2.7}
+        })
+        self.assertIn('가팔라짐',msg)
+        self.assertNotIn('함께 하락',msg)
+
+    def test_fomc_telegram_receipt_must_match_numeric_chat(self):
+        response=MagicMock()
+        response.__enter__.return_value.read.return_value=json.dumps({
+            'ok':True,'result':{'message_id':109,'chat':{'id':-10055}}
+        }).encode()
+        with patch.object(fomc_base,'TOKEN','fake'), \
+             patch.object(fomc_base,'CHAT_ID','-10055'), \
+             patch.object(fomc_base,'EXPECTED_BOT','hshs8879_bot'), \
+             patch.object(fomc_base,'botname',return_value='hshs8879_bot'), \
+             patch.object(fomc_base.urllib.request,'urlopen',return_value=response):
+            self.assertEqual(fomc_base.send('test'),109)
+        with patch.object(fomc_base,'TOKEN','fake'), \
+             patch.object(fomc_base,'CHAT_ID','-10066'), \
+             patch.object(fomc_base,'EXPECTED_BOT','hshs8879_bot'), \
+             patch.object(fomc_base,'botname',return_value='hshs8879_bot'), \
+             patch.object(fomc_base.urllib.request,'urlopen',return_value=response):
+            with self.assertRaisesRegex(RuntimeError,'chat.id'):
+                fomc_base.send('test')
+
+    def test_october_structural_supplement_requires_official_and_reports(self):
+        samples={
+            press_v3.STRUCTURAL_FED:(
+                'October 28, 2026 10 – 2 vote Lisa D. Cook Beth M. Hammack '
+                'Productivity growth is strong 3-3/4 to 4 percent'
+            ),
+            press_v3.STRUCTURAL_URLS['productivity']:
+                'Oct 28, 2026 Reuters Warsh productivity not running too hot',
+            press_v3.STRUCTURAL_URLS['balance']:
+                'Oct 28, 2026 Reuters Warsh balance sheet task force first quarter',
+            press_v3.STRUCTURAL_URLS['strategy']:
+                'Oct 28, 2026 Reuters Warsh 2027 2028 strategy meetings',
+            press_v3.STRUCTURAL_URLS['korea']:
+                '2026.10.28 워시 한국 일본 싱가포르 공급망',
+            press_v3.STRUCTURAL_URLS['ai_rates']:
+                '2026-10-29 워시 AI 금리 투자 변화',
+            press_v3.STRUCTURAL_URLS['hearing']:
+                'Oct 28, 2026 Reuters Warsh November 16 productivity hearing',
+        }
+        def fake_fetch(url,timeout=8):
+            return samples.get(url,''),url
+        with patch.object(press_v3.base,'fetch',side_effect=fake_fetch):
+            verified=press_v3.verified_structural_sources()
+        self.assertTrue(press_v3.structural_eligible(verified))
+        self.assertTrue(all(verified.values()))
+        msg=press_v3.structural_message(verified)
+        self.assertIn('2027년 1분기',msg)
+        self.assertIn('2분기 시행은 확정되지',msg)
+        self.assertIn('한국·일본·싱가포르',msg)
+        self.assertLess(len(msg),3900)
+        with patch.object(press_v3.base,'fetch',return_value=('unverified','https://www.federalreserve.gov/')):
+            self.assertIsNone(press_v3.verified_structural_sources())
+
+    def test_existing_press_and_structural_delivery_are_not_repeated(self):
+        stmt={'text':'Inflation remains elevated. Productivity growth is strong.'}
+        cls=press_v3.classify(stmt['text'],[])
+        old={
+            'meeting_date':press_v3.STRUCTURAL_DATE,
+            'classification':cls,
+            'transcript':None,
+            'structural_sent_key':press_v3.STRUCTURAL_KEY,
+            'structural_message_id':109
+        }
+        with patch.object(press_v3.base,'load',return_value=old), \
+             patch.object(press_v3,'current_meeting',return_value=(
+                 press_v3.STRUCTURAL_DATE,'https://www.federalreserve.gov/',stmt)), \
+             patch.object(press_v3,'transcript_link',return_value=None), \
+             patch.object(press_v3,'reuters_rows',return_value=[]), \
+             patch.object(press_v3.base,'save'), \
+             patch.object(press_v3.base,'send') as sender, \
+             patch.object(press_v3,'verified_structural_sources') as source_check:
+            press_v3.main()
+        sender.assert_not_called()
+        source_check.assert_not_called()
+
+    def test_rss_classification_churn_does_not_resend_press_release(self):
+        stmt={'text':'Inflation remains elevated.'}
+        old={
+            'meeting_date':press_v3.STRUCTURAL_DATE,
+            'classification':{'inflation_priority':False},
+            'transcript':None,
+            'structural_sent_key':press_v3.STRUCTURAL_KEY
+        }
+        with patch.object(press_v3.base,'load',return_value=old), \
+             patch.object(press_v3,'current_meeting',return_value=(
+                 press_v3.STRUCTURAL_DATE,'https://www.federalreserve.gov/',stmt)), \
+             patch.object(press_v3,'transcript_link',return_value=None), \
+             patch.object(press_v3,'reuters_rows',return_value=[]), \
+             patch.object(press_v3.base,'save'), \
+             patch.object(press_v3.base,'send') as sender:
+            press_v3.main()
+        sender.assert_not_called()
 
 
 if __name__ == "__main__":

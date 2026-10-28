@@ -6,11 +6,124 @@ import re
 import urllib.parse
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from datetime import datetime, timezone, date as date_type
 
 import warsh_press_conference_watch as base
 
 FOMC_STATE=Path('data/warsh_fomc_event_watch_state.json')
 FED_HOME='https://www.federalreserve.gov/'
+
+# One verified supplement for the Oct 28 policy-framework developments.
+# The ordinary FOMC decision and press-conference alerts have already run.
+STRUCTURAL_DATE='2026-10-28'
+STRUCTURAL_KEY='2026-10-28|Warsh|FOMC-Structural-Verified-v1'
+STRUCTURAL_FED='https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm'
+STRUCTURAL_URLS={
+    'productivity':'https://www.investing.com/news/economy-news/feds-warsh-says-us-economy-not-running-too-hot-4980529',
+    'balance':'https://www.investing.com/news/economy-news/feds-policy-committee-to-weigh-balance-sheet-issues-early-next-year-warsh-says-4980804',
+    'strategy':'https://www.marketscreener.com/news/fed-s-warsh-announces-changes-in-how-future-fomc-meetings-will-go-ce785cd3d88bf623',
+    'korea':'https://www.news1.kr/world/international-economy/6335584',
+    'ai_rates':'https://www2.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01538326645617840',
+    'hearing':'https://www.investing.com/news/economy-news/warsh-to-attend-fed-jobs-and-productivity-task-force-hearing-to-refine-views-4980494',
+}
+STRUCTURAL_PROOFS={
+    'productivity':('reuters','warsh','productivity','not running too hot'),
+    'balance':('reuters','warsh','balance sheet','first quarter'),
+    'strategy':('reuters','warsh','2027','2028','strategy'),
+    'korea':('워시','한국','일본','싱가포르'),
+    'ai_rates':('워시','ai','금리','투자'),
+    'hearing':('reuters','warsh','november 16','productivity'),
+}
+
+
+def source_text(url):
+    """Only a directly fetched, correctly hosted article can prove an alert."""
+    try:
+        raw, final = base.fetch(url, timeout=8)
+        expected = (urllib.parse.urlsplit(url).hostname or '').lower()
+        actual = (urllib.parse.urlsplit(final).hostname or '').lower()
+        if expected != actual:
+            return ''
+        cleaned = re.sub(r'(?is)<script\b[^>]*>.*?</script>|<style\b[^>]*>.*?</style>', ' ', raw)
+        return ' '.join(html.unescape(re.sub(r'(?s)<[^>]+>', ' ', cleaned)).split()).lower()
+    except Exception:
+        return ''
+
+
+def verified_structural_sources():
+    """Official FOMC vote + independent report texts, not search snippets."""
+    fed = source_text(STRUCTURAL_FED)
+    if not (re.search(r'10\s*[–—-]\s*2\s+vote', fed)
+            and all(x in fed for x in (
+                'lisa d. cook','beth m. hammack',
+                'productivity growth is strong','3-3/4 to 4 percent'))):
+        return None
+    verified = {}
+    for topic, url in STRUCTURAL_URLS.items():
+        text = source_text(url)
+        # Date and exact article vocabulary protect against paywalls, nav text
+        # and a publisher landing page being mistaken for the reported speech.
+        dated = bool(re.search(
+            r'oct(?:ober)?\s+28|2026[-./ ]10[-./ ]2[89]|2026년\s*10월\s*2[89]일',
+            text
+        ))
+        verified[topic] = dated and all(term in text for term in STRUCTURAL_PROOFS[topic])
+    return verified
+
+
+def structural_message(verified):
+    lines=[
+        '<b>[Warsh | 10월 FOMC 구조 변화 추가 검증]</b>',
+        '기준: 2026년 10월 28일 FOMC · 기존 결정·기자회견 알림의 중복 없는 보충',
+        '',
+        '<b>공식 확정</b>',
+        '• 금리 3.75~4.00% 동결, 찬성 10명·반대 2명. Lisa Cook·Beth Hammack은 0.25%포인트 인상을 요구했습니다.',
+        '• 연준 성명은 생산성·설비투자 강세와 여전히 높은 물가를 동시에 명시했습니다.',
+    ]
+    if verified.get('productivity'):
+        lines.append('• <b>성장 해석</b>: 워시는 높은 성장률 자체를 수요 과열로 단정하지 않았습니다. 생산성 향상 규모는 불확실합니다.')
+    if verified.get('ai_rates'):
+        lines.append('• <b>AI 자금조달</b>: AI 설비투자도 금리·신용비용에 영향을 받습니다. 투자계획보다 실제 집행·신용스프레드를 함께 확인합니다.')
+    if verified.get('balance'):
+        lines.append('• <b>대차대조표</b>: 태스크포스 권고안은 2027년 1분기 초 논의 가능성이 제시됐습니다. 정책 채택·2027년 2분기 시행은 확정되지 않았습니다.')
+    if verified.get('strategy'):
+        lines.append('• <b>FOMC 운영</b>: 워시는 2027년 8회 중 1회, 2028년 2회를 금리표결 없는 전략 논의 회의로 운영할 계획을 설명했습니다. 공식 달력 반영은 별도 확인 대상입니다.')
+    if verified.get('hearing'):
+        lines.append('• <b>후속 일정</b>: 11월 16일 생산성·고용 태스크포스 현장 청문회에서 AI 생산성·고용 영향을 추가 검토할 계획입니다.')
+    if verified.get('korea'):
+        lines.append('• <b>한국 공급망</b>: 워시는 한국·일본·싱가포르의 신기술 투입재를 미국 경제 판단의 단서로 언급했습니다. 특정 기업 수주 확정 발언은 아닙니다.')
+    lines += [
+        '',
+        '<b>시장·정책 구분</b>',
+        '• 2년물 하락과 10년물 상승은 단기 인상 기대와 장기 기간프리미엄의 분리를 시사할 수 있으나, 이 알림에는 미검증 실시간 금리를 기입하지 않습니다.',
+        '• Cook의 반대 이유를 정치적 동기라고 단정하지 않습니다. 금리 동결은 추가 인상 종료 선언도 아닙니다.',
+        '',
+        '<b>다음 검증</b>',
+        '• 공식 기자회견 전문·태스크포스 보고서·FOMC 시행지침과 실제 대차대조표 H.4.1',
+        '• AI 설비투자 실제 집행, 신용스프레드, 미국 2년·10년물과 한국 반도체 수출 물량',
+        '',
+        '<b>원천</b>',
+        base.link('연준 10월 FOMC 성명',STRUCTURAL_FED),
+    ]
+    for topic in ('productivity','ai_rates','balance','strategy','hearing','korea'):
+        if verified.get(topic):
+            lines.append(base.link({
+                'productivity':'Reuters 생산성 발언',
+                'ai_rates':'이데일리 AI 금리 민감도',
+                'balance':'Reuters 대차대조표',
+                'strategy':'Reuters FOMC 운영 변경',
+                'hearing':'Reuters 생산성 청문회',
+                'korea':'뉴스1 한국 공급망 발언'
+            }[topic],STRUCTURAL_URLS[topic]))
+    msg='\n'.join(lines)
+    if len(msg)>3900:
+        raise RuntimeError('FOMC 구조변화 보충 알림 길이 초과')
+    return msg
+
+
+def structural_eligible(verified):
+    return bool(verified and sum(bool(verified.get(x)) for x in (
+        'balance','strategy','korea','ai_rates','hearing'))>=2)
 
 
 def load_json(path):
@@ -124,23 +237,77 @@ def main():
     migrated=bool(old and not old.get('meeting_date'))
     meeting_changed=bool(old.get('meeting_date') and old.get('meeting_date')!=date)
     transcript_new=bool(tr and tr!=old.get('transcript'))
-    meaningful=bool(old.get('classification') and old.get('classification')!=cls)
+    # Rotating Reuters RSS headlines are not a fresh policy decision.
+    # A new official transcript, not a transient headline, can reopen coverage.
     first=not bool(old)
-
-    should=base.FORCE or meeting_changed or transcript_new or meaningful
-    # Migration from the old hard-coded September watcher is silent.
+    should=base.FORCE or meeting_changed or transcript_new
     if first or migrated:
         should=base.FORCE
 
+    new=dict(old)
     if should:
-        base.send(message(date,page,stmt,rows,cls,tr))
-    base.save({
+        generic_key=date+'|press-conference'
+        if old.get('generic_pending_key')==generic_key and old.get('generic_delivery_status')=='sending':
+            raise RuntimeError('기자회견 알림 전송 결과 불명확 — 재전송 보류')
+        new.update({'generic_pending_key':generic_key,'generic_delivery_status':'sending'})
+        base.save(new)
+        mid=base.send(message(date,page,stmt,rows,cls,tr))
+        if not isinstance(mid,int):
+            raise RuntimeError('기자회견 Telegram message_id 미확인')
+        new.update({
+            'generic_pending_key':None,'generic_delivery_status':'confirmed',
+            'generic_sent_key':generic_key,'generic_message_id':mid,
+            'generic_sent_at_utc':datetime.now(timezone.utc).isoformat(),
+        })
+
+    structural_sent=False
+    structural_status='not_applicable'
+    in_window=(datetime.now(timezone.utc).date()<=date_type(2026,11,5))
+    if date==STRUCTURAL_DATE and in_window and old.get('structural_sent_key')!=STRUCTURAL_KEY:
+        if old.get('structural_pending_key')==STRUCTURAL_KEY and old.get('structural_delivery_status')=='sending':
+            structural_status='delivery_uncertain'
+        else:
+            verified=verified_structural_sources()
+            if structural_eligible(verified):
+                new.update({
+                    'structural_pending_key':STRUCTURAL_KEY,
+                    'structural_delivery_status':'sending'
+                })
+                base.save(new)
+                mid=base.send(structural_message(verified))
+                if not isinstance(mid,int):
+                    raise RuntimeError('구조변화 보충 Telegram message_id 미확인')
+                new.update({
+                    'structural_pending_key':None,
+                    'structural_delivery_status':'confirmed',
+                    'structural_sent_key':STRUCTURAL_KEY,
+                    'structural_message_id':mid,
+                    'structural_sources':[STRUCTURAL_FED]+[
+                        url for topic,url in STRUCTURAL_URLS.items() if verified.get(topic)
+                    ],
+                    'structural_verified_topics':[
+                        topic for topic in STRUCTURAL_URLS if verified.get(topic)
+                    ],
+                    'structural_sent_at_utc':datetime.now(timezone.utc).isoformat(),
+                })
+                structural_sent=True
+                structural_status='confirmed'
+            else:
+                structural_status='source_verification_pending'
+    elif old.get('structural_sent_key')==STRUCTURAL_KEY:
+        structural_status='already_sent'
+
+    new.update({
         'meeting_date':date,'meeting_page':page,'classification':cls,'transcript':tr,
-        'sent':should,'reuters_count':len(rows)
+        'sent':should,'reuters_count':len(rows),
+        'structural_source_status':structural_status
     })
+    base.save(new)
     print(json.dumps({
         'meeting_date':date,'migrated':migrated,'meeting_changed':meeting_changed,
-        'transcript_new':transcript_new,'sent':should,'classification':cls
+        'transcript_new':transcript_new,'sent':should,'classification':cls,
+        'structural_sent':structural_sent,'structural_status':structural_status,
+        'structural_message_id':new.get('structural_message_id'),
     },ensure_ascii=False))
 
 

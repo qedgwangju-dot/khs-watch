@@ -88,7 +88,16 @@ def send(msg):
     d=urllib.parse.urlencode({'chat_id':CHAT,'text':msg[:4090],'parse_mode':'HTML','disable_web_page_preview':'true'}).encode(); q=urllib.request.Request(f'https://api.telegram.org/bot{TOKEN}/sendMessage',data=d,method='POST')
     with urllib.request.urlopen(q,timeout=20) as r:
         x=json.loads(r.read().decode())
-        if not x.get('ok'):raise RuntimeError('Telegram 전송 실패')
+    if not x.get('ok'):
+        raise RuntimeError('Telegram 전송 성공 확인 실패')
+    result=x.get('result') or {}
+    message_id=result.get('message_id')
+    if not isinstance(message_id,int):
+        raise RuntimeError('Telegram message_id 누락 — 중복 방지를 위해 성공 처리 보류')
+    actual_chat=str((result.get('chat') or {}).get('id') or '')
+    if CHAT.lstrip('-').isdigit() and actual_chat!=CHAT:
+        raise RuntimeError('Telegram 수신 chat.id 불일치')
+    return message_id
 def load():
     try:return json.loads(STATE.read_text(encoding='utf-8')) if STATE.exists() else {}
     except:return {}

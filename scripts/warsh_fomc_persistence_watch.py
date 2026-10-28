@@ -138,6 +138,14 @@ def main():
         return
 
     elapsed = (now - detected).total_seconds() / 60.0
+    # The September event's market snapshots must not be reused for October.
+    if (not state.get('pre_event_market')
+            or state.get('pre_event_market_event_date') != base.EVENT_DATE):
+        print(json.dumps({
+            'active': True, 'sent': [], 'reason': 'same-meeting pre-event market baseline unavailable',
+            'event_date': base.EVENT_DATE
+        }, ensure_ascii=False))
+        return
     followups = set(state.get('followups_sent') or [])
     sent = []
     for label, threshold in [('6시간', 360), ('24시간', 1440)]:
@@ -146,7 +154,20 @@ def main():
         cur = base.market_snapshot()
         brent = brent_snapshot()
         msg, verdict, changes = message(state, label, cur, brent)
-        base.send(msg)
+        key = f'{base.EVENT_DATE}|{label}'
+        if state.get('delivery_pending_key') == key:
+            raise RuntimeError('FOMC 장기 후속 알림 전송 결과 불명확 — 재전송 보류')
+        state['delivery_pending_key'] = key
+        state['delivery_status'] = 'sending'
+        base.save_state(state)
+        receipt = base.send(msg)
+        if not isinstance(receipt, int):
+            raise RuntimeError('FOMC 장기 후속 Telegram message_id 미확인')
+        state['delivery_pending_key'] = None
+        state['delivery_status'] = 'confirmed'
+        state[f'followup_{label}_message_id'] = receipt
+        state[f'followup_{label}_delivery_status'] = 'confirmed'
+        state[f'followup_{label}_event_date'] = base.EVENT_DATE
         sent.append(label)
         followups.add(label)
         state['followups_sent'] = sorted(followups)

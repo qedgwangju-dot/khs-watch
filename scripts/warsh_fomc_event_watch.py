@@ -94,10 +94,20 @@ def parse_statement(url):
         if m:
             low, high = parse_mixed_rate(m.group(1)), parse_mixed_rate(m.group(2))
             break
+    # Preserve initials (Lisa D. Cook) and both singular/plural dissent forms.
+    # The former [^.]* pattern silently truncated names at the first initial.
     against = None
-    m = re.search(r'(Voting against this action were[^.]*\.)', text, re.I)
+    m = re.search(r'Voting against (?:this|the monetary policy) action (?:was|were)\b', text, re.I)
     if m:
-        against = re.sub(r'\s+', ' ', m.group(1)).strip()
+        tail = re.split(
+            r'\b(?:For media inquiries|Implementation Note|Last Update)\b',
+            text[m.start():], maxsplit=1, flags=re.I
+        )[0]
+        against = re.sub(r'\s+', ' ', tail).strip()[:700] or None
+    vote = re.search(
+        r'approved the following statement for release by a\s+(\d+)\s*[–—-]\s*(\d+)\s+vote',
+        text, re.I
+    )
     return {
         'url': final,
         'date': date_from_url(final),
@@ -105,6 +115,8 @@ def parse_statement(url):
         'high': high,
         'mid': (low + high) / 2 if low is not None and high is not None else None,
         'against': against,
+        'vote_for': int(vote.group(1)) if vote else None,
+        'vote_against': int(vote.group(2)) if vote else None,
     }
 
 
@@ -185,6 +197,8 @@ def market_read(ch):
     y10 = ch.get('10년물', {}).get('change_bp')
     sp = ch.get('S&P 500', {}).get('change_pct')
     if y2 is not None and y10 is not None:
+        if y2 <= -5 and y10 >= 2:
+            return '2년물 하락·10년물 상승 → 단기 인상 기대는 완화됐지만 장기 기간프리미엄·국채 공급 부담은 커질 수 있습니다. 수익률곡선 가팔라짐을 무조건 완화로 해석하지 않습니다.'
         if y2 >= 5 and y10 <= 0:
             return '2년물은 오르지만 10년물이 안정/하락 → 단기 정책금리 기대는 올라가도 장기 물가·할인율 불안은 완화되는 비교적 주식 우호적 조합입니다.'
         if y2 >= 5 and y10 >= 5:
@@ -283,7 +297,16 @@ def send(text):
     with urllib.request.urlopen(req, timeout=25) as r:
         out = json.loads(r.read().decode())
     if not out.get('ok'):
-        raise RuntimeError(f'Telegram send failed: {out}')
+        raise RuntimeError('Telegram API 전송 성공 확인 실패')
+    result = out.get('result') or {}
+    message_id = result.get('message_id')
+    if not isinstance(message_id, int):
+        raise RuntimeError('Telegram message_id 응답 누락 — 중복 방지를 위해 성공 처리 보류')
+    # Numeric chat ids must match the configured destination. Never print either id.
+    actual_chat_id = str((result.get('chat') or {}).get('id') or '')
+    if CHAT_ID.lstrip('-').isdigit() and actual_chat_id != CHAT_ID:
+        raise RuntimeError('Telegram 수신 chat.id가 지정한 대상과 다름')
+    return message_id
 
 
 def fmt_market(ch):
@@ -324,10 +347,16 @@ def decision_message(old_stmt, new_stmt, sep_old, sep_new, pre, cur, news_cls=No
             lines.append(f"• 현재 회의 후 금리보다 연말 중앙값이 {extra:+.0f}bp 높음 → 연내 추가 인상 경로를 얼마나 남겼는지 보여줍니다.")
     else:
         lines.append('• 새 점도표 공식 페이지 확인 대기')
-    if new_stmt.get('against'):
-        lines += ['', '<b>투표</b>', f"• {html.escape(new_stmt['against'])}"]
+    if new_stmt.get('against') or new_stmt.get('vote_for') is not None:
+        lines += ['', '<b>투표</b>']
+        if new_stmt.get('vote_for') is not None:
+            lines.append(f"• 찬성 {new_stmt['vote_for']}명 · 반대 {new_stmt['vote_against']}명")
+        if new_stmt.get('against'):
+            lines.append(f"• {html.escape(new_stmt['against'])}")
     lines += ['', '<b>시장 반응</b>']
     lines += fmt_market(ch) or ['• 발표 직후 시장 데이터 확인 대기']
+    if '2년물' not in ch:
+        lines.append('• 미국 국채 2년물: 동시각 검증된 호가 미확보 — 추정 수치 사용 금지')
     lines += ['', '<b>쉽게 말하면</b>', f"• {market_read(ch)}"]
     if sc == '25bp 인상 + 가이던스 부재/제한':
         lines.append('• 0.25%포인트 인상은 이미 시장이 크게 예상한 조치라, 추가 인상을 강하게 약속하지 않으면 “예상했던 악재가 끝났다”는 안도 반응이 나올 수 있습니다.')
@@ -361,6 +390,8 @@ def followup_message(state, label):
     sc = scenario(rate_change, new_stmt.get('mid'), sep_new, sep_old, cls)
     lines = [f'<b>[FOMC 시장 반응 재확인 · {label}]</b>', '', '<b>현재 판정</b>', f'• <b>{html.escape(sc)}</b>', '', '<b>발표 전 대비</b>']
     lines += fmt_market(ch) or ['• 시장 데이터 확인 불가']
+    if '2년물' not in ch:
+        lines.append('• 미국 국채 2년물: 동시각 검증된 호가 미확보 — 방향 판정 유보')
     lines += ['', '<b>쉽게 말하면</b>', f'• {market_read(ch)}']
     if headlines:
         lines += ['', '<b>워시 기자회견·보도 확인</b>']
