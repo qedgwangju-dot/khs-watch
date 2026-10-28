@@ -710,6 +710,27 @@
       "telegram_core_fact": "전북지역 돼지 사육 마릿수가 1년새 5만여마리(3.9%) 감소하면서 축산업의 생산기반 변화에 관심이 쏠리고 있다. 국가데이터처의 '2026년 3분기 가축동향조사'에 따르면 지난 9월 1일 기준 전북의 돼지 사육 마릿수는 124만1000마리로, 지난해 같은 기간 129만2000마리보다 5만1000마리(3.9%) 감소했다.",
       "title": "돼지 사육 1년새 3.9% 감소…전북 축산업, 사육기반 변화"
     },
+    "core:0196e0525cb45ab23c34b07a": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.etnews.com/20261028000174",
+      "source": "전자신문",
+      "source_body_digest": "00085b4ae231c1d2e40c9d9e53e4948c8307651fdf49dbf52494171e95a06b7a",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:8ea9fe0efbef2172d71bd7c5eba98ce284f2478183479ad20c9c18fe2689fc03",
+      "source_fact_identity": "source_facts:v1:3a287cbb64ca43f12f55c1e7d126bcfb91784f09eadadedee6663170cf2f3f4d",
+      "source_fact_keys": [
+        "source_fact:v1:39ebfeaf37f34145b68cfb2f392efb376ddbdc64eaaeb0d85705c56e9e6a0138",
+        "source_fact:v1:d89edadb78ffb90093d02313db816b928c32480119002f6530e2ed0a10c4f31b"
+      ],
+      "source_published_kst": "2026-10-28T11:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "PI첨단소재, 3분기 영업이익 125억원",
+      "telegram_core_fact": "PI첨단소재는 2026년 3분기 연결기준 매출액 555억원, 영업이익 125억원을 기록했다고 28일 밝혔다.",
+      "title": "PI첨단소재, 3분기 영업이익 125억원"
+    },
     "core:01982c6ebe79aea9c8635eed": {
       "first_seen_kst": "2026-10-22T09:17:40+09:00",
       "lanes": {
@@ -5242,6 +5263,31 @@
       "source_title": "대우건설, 3분기 영업익 1832억원…전년 比 223.7% 급증",
       "telegram_core_fact": "대우건설은 27일 잠정실적 공시를 통해 올해 3분기 연결 기준 영업이익이 1832억원으로 전년 동기(566억원) 대비 223.7% 증가했다고 밝혔다.",
       "title": "대우건설, 3분기 영업익 1832억원…전년 比 223.7% 급증"
+    },
+    "core:0c3e8dd4bd0d8949a2b118aa": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.mk.co.kr/news/business/12188243",
+      "source": "매일경제",
+      "source_body_digest": "e30a7b6f619a1c0be56cd410166eab7a42748937651851bad4e53b0e81919750",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9a762d0da888584f5cf2dddb517363407ee315986266d52f0e6f6a38f40438f",
+      "source_fact_keys": [
+        "source_fact:v1:2001d8d7cebf532298f284c4cfb0fb899a155a006dc23eae10315158d8907905",
+        "source_fact:v1:5bd3cda17ffa503add88d8a42cd0b85b92f348401f63dea8bbf1923e0f93b33c",
+        "source_fact:v1:66c3203912ef043f5bcd5125d48f7d5614ceba33417584c4f4f911955f2bf238",
+        "source_fact:v1:a85d995071af93b40118d78775cb66f70c6d04b60088feff557dc2aa5a0770d2",
+        "source_fact:v1:b1e261b4d197a666852350bee581007e886915e635d41f4e698c51f4a8d3b393",
+        "source_fact:v1:f9e00d9d8646707d12ba3f84e8976effe1012dfa7becf4e04290062a2b12b1ea"
+      ],
+      "source_published_kst": "2026-10-28T11:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략",
+      "telegram_core_fact": "K2 전차용 국산 엔진을 공급하는 HD건설기계는 신공장을 통해 방산 엔진의 중장기 물량 증가에도 대응한다.",
+      "title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략"
     },
     "core:0c448d9ac7c518ed1d0b441b": {
       "first_seen_kst": "2026-10-20T05:37:55+09:00",
@@ -55487,6 +55533,26 @@
       "telegram_core_fact": "당장 관세 인상 시행을 염두에 두고 내놓은 발언이라기보다는 다음 주로 다가온 중간선거를 앞두고 관세를 인상해서도 미국의 산업을 보호하겠다는 의지를 강조하기 위한 것으로 보입니다.",
       "title": "트럼프 “미국 투자 기업들, 미국 이용하면 관세 50%로“"
     },
+    "core:747428383474bd727d009285": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844487",
+      "source": "뉴시스",
+      "source_body_digest": "ba53560e62c5bc3d30b8c0057e428850faa56a98e2db6e82b328927321b06f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a4fa428d05a189531b2cb1d08d899da2b15c95a2f3b95604e9fde286108c0ad",
+      "source_fact_keys": [
+        "source_fact:v1:c3266043304bbc8b6fabc908ec59056e43b5f25979320e755ce70df1b8cc93d1"
+      ],
+      "source_published_kst": "2026-10-28T14:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안",
+      "telegram_core_fact": "시장에선 이 같은 공급 부족과 편중이 내년 서울 정비사업 이주 수요와 맞물릴 경우 권역에 따라 전월세 수급 불균형이 심화할 수 있다고 본다.",
+      "title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안"
+    },
     "core:748a7f56445e34746eb5e471": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
       "lanes": {
@@ -62935,6 +63001,31 @@
       "source_title": "[AI 고속도로] 앤트로픽, AI 인프라 확충에 60조원 베팅…엔스케일과 협력 확대",
       "telegram_core_fact": "19일(현지시간) 블룸버그통신에 따르면 앤트로픽과 엔스케일은 미국 웨스트버지니아주에 조성 중인 '모나크(Monarch)' 데이터센터 캠퍼스의 두 번째 시설에서 AI 컴퓨팅 자원을 공급하는 방안을 협의 중이다.",
       "title": "[AI 고속도로] 앤트로픽, AI 인프라 확충에 60조원 베팅…엔스케일과 협력 확대"
+    },
+    "core:82b0f59c09dcbccfdf3d28f1": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182728",
+      "source": "매일경제",
+      "source_body_digest": "65412d7a5943eb9f6701a03ea6a3fd2ec1d957749668ae529cfc98e30225d59b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7967a4bb17e8f629f0c3c8bdadd349ba757498f300a2a86172164c84ebdb1f8d",
+      "source_fact_keys": [
+        "source_fact:v1:065da7001ecc6e3f16714cca6f305ef2b54534910c7f5767a32780f72caa1e34",
+        "source_fact:v1:2fb6d02d38bdba651deb3809cd01eb0fa316fce10fc29571c037ccad1b54825f",
+        "source_fact:v1:33465d5e249d8c6f763e863e1a18bc58e379b9dc43067931752b7d46ff899665",
+        "source_fact:v1:515de942630129b17d3fac60ba1d7340641bc7727f3b3290fc5d329e46626a31",
+        "source_fact:v1:592647d4f617c147d254a8fcd7e5d916d1b45b33fd2ab35740fa6f11ea6a7c4a",
+        "source_fact:v1:aab218e72c0f0834f33c73596315268b9221ffb4ee2c237b633fb0b499142214"
+      ],
+      "source_published_kst": "2026-10-28T08:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약",
+      "telegram_core_fact": "협약에 따라 이들 기업은 천안과 아산의 산업단지 등에 총 3억9천630만 달러(약 5천382억원)를 투자해 생산시설을 신설하거나 증설한다. 충남도는 미국에서 글로벌 첨단소재 기업 3곳과 약 5천억원 투자협약을 체결했다고 28일 밝혔다.",
+      "title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약"
     },
     "core:82b18f3dbf6cdcbd35e72669": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -88496,6 +88587,31 @@
       "telegram_core_fact": "SKK홀딩스는 약 2억5880만 달러 드론 자산 인수를 마무리하고 사명을 랜티조로 바꿨습니다.",
       "title": "SKK홀딩스, 드론 자산 인수 완료와 사명 변경으로 새 성장 기대감 부각"
     },
+    "core:b91a3c249cc6e9aae3394865": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028096100009",
+      "source": "연합뉴스",
+      "source_body_digest": "54f713c8c0528daecaecd865da183f4e7893c9251699ae506c77feba0bb7474a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06684a2a785eb67b054198d79a682fda381a29de28f61f5b4d5b249678ec2e11",
+      "source_fact_keys": [
+        "source_fact:v1:1695939468bc99df8a08a3c21f58576a5012d19babf242fc00fed5f50d991023",
+        "source_fact:v1:17b7b53a498953a0e6e470e1cdcfc5094bf4eae9115a7f4dd85fbd098f5e55f1",
+        "source_fact:v1:3126f4750b1ab135af10857637cc8ccaad6008551328c96a709af34ff9089e75",
+        "source_fact:v1:950c4348b23cd78cea5cd53d028a13269b20e495cce8f9271009e654f0fe2857",
+        "source_fact:v1:b4c4dbe3af12ee23349d34927e97bf0c1d344dd2fb311086d2fc5c931d445b74",
+        "source_fact:v1:eea3c400faca7f1f2e1a767309c988db0bb3a4969e65abb532ee377a935cdd2e"
+      ],
+      "source_published_kst": "2026-10-28T11:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스",
+      "telegram_core_fact": "미 환경보호청(EPA)은 메탄을 대량 방출하는 유정에 대한 규제를 완화하는 방안을 준비하고 있다.",
+      "title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스"
+    },
     "core:b92b2b9fc9a873956360a70f": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
       "lanes": {
@@ -112435,6 +112551,24 @@
       "telegram_core_fact": "일본 정부는 이 밖에도 ▲원유 등의 해상 운송과 관련해 보험 계약을 체결하기 쉽도록 하는 법안 ▲원유 송유관 건설을 지원하는 방안 등을 추진하고 있다. 중동 정세가 악화되면서 에너지의 안정적인 확보가 과제로 떠오르자 일본 정부는 원유 등의 조달처 다양화를 지원하기 위한 법안을 마련했다.",
       "title": "日, 에너지 조달처 다양화 촉진 법안 결정…송유관 건설 등 지원"
     },
+    "core:ea44b093b42f1c4a43b1f5b7": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183513",
+      "source": "매일경제",
+      "source_body_digest": "b231dc70c3625b0ea3caeb674bd59162ae73f667933a5e137b96ce11015c2524",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T22:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "원스파월드, 사상 최대 분기 실적에 가이던스 상향·주주환원 확대 소식에 강세",
+      "telegram_core_fact": "연간 매출과 EBITDA 가이던스 하단을 올렸고, 1억 달러 규모 신규 자사주 매입과 분기 배당금 25% 인상도 발표했습니다.",
+      "title": "원스파월드, 사상 최대 분기 실적에 가이던스 상향·주주환원 확대 소식에 강세"
+    },
     "core:ea4c95800d74cf125c0d4bb0": {
       "first_seen_kst": "2026-10-10T18:36:56+09:00",
       "lanes": {
@@ -121027,6 +121161,36 @@
       "telegram_core_fact": "국내 채권시장이 연휴로 휴장하는 동안 미국 장기금리 상승세가 진정된 영향도 있지만, 외국인의 국채선물 매수세가 투자 심리를 뒷받침했다.",
       "title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스"
     },
+    "core:fc5f19bde6df0beb39d98a98": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
+    },
     "core:fc8850b4831de57bb3e77cea": {
       "first_seen_kst": "2026-10-19T20:10:12+09:00",
       "lanes": {
@@ -127954,6 +128118,36 @@
       "telegram_core_fact": "인공지능(AI) 수요 급증으로 메모리 반도체를 넘어 전자부품 산업 전반이 초호황기에 진입하면서 고부가가치 제품뿐만 아니라 범용 제품까지 공급 부족에 시달리며 납기가 길어지고 있다.",
       "title": "지금 주문하면 1년 뒤 받는다…메모리 못지 않은 ‘귀한 몸’ MLCC·기판"
     },
+    "event:2e36e73e978fac9361e6687a": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
+    },
     "event:2e9a7e78720391c0b0d0dc75": {
       "first_seen_kst": "2026-10-10T22:01:04+09:00",
       "lanes": {
@@ -133453,6 +133647,27 @@
       "link": "https://www.etnews.com/20260927000035",
       "source": "전자신문",
       "title": "'가전 특별시' 광주, 삼성 투자로 공조·반도체까지 산업지도 넓힌다"
+    },
+    "event:675ad2abe87053d4cfb938ed": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.etnews.com/20261028000174",
+      "source": "전자신문",
+      "source_body_digest": "00085b4ae231c1d2e40c9d9e53e4948c8307651fdf49dbf52494171e95a06b7a",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:8ea9fe0efbef2172d71bd7c5eba98ce284f2478183479ad20c9c18fe2689fc03",
+      "source_fact_identity": "source_facts:v1:3a287cbb64ca43f12f55c1e7d126bcfb91784f09eadadedee6663170cf2f3f4d",
+      "source_fact_keys": [
+        "source_fact:v1:39ebfeaf37f34145b68cfb2f392efb376ddbdc64eaaeb0d85705c56e9e6a0138",
+        "source_fact:v1:d89edadb78ffb90093d02313db816b928c32480119002f6530e2ed0a10c4f31b"
+      ],
+      "source_published_kst": "2026-10-28T11:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "PI첨단소재, 3분기 영업이익 125억원",
+      "telegram_core_fact": "PI첨단소재는 2026년 3분기 연결기준 매출액 555억원, 영업이익 125억원을 기록했다고 28일 밝혔다.",
+      "title": "PI첨단소재, 3분기 영업이익 125억원"
     },
     "event:679790a2a778f1c02622dd4a": {
       "first_seen_kst": "2026-10-21T20:37:27+09:00",
@@ -162134,6 +162349,26 @@
       "source_published_kst": "2026-10-07T09:48+09:00",
       "title": "러 북한에 제트 드론 기술 대거 이전 가능성"
     },
+    "fact:182b62379e3cd9545e8296ad": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844487",
+      "source": "뉴시스",
+      "source_body_digest": "ba53560e62c5bc3d30b8c0057e428850faa56a98e2db6e82b328927321b06f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a4fa428d05a189531b2cb1d08d899da2b15c95a2f3b95604e9fde286108c0ad",
+      "source_fact_keys": [
+        "source_fact:v1:c3266043304bbc8b6fabc908ec59056e43b5f25979320e755ce70df1b8cc93d1"
+      ],
+      "source_published_kst": "2026-10-28T14:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안",
+      "telegram_core_fact": "시장에선 이 같은 공급 부족과 편중이 내년 서울 정비사업 이주 수요와 맞물릴 경우 권역에 따라 전월세 수급 불균형이 심화할 수 있다고 본다.",
+      "title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안"
+    },
     "fact:182c247a15c949a4254f597d": {
       "first_seen_kst": "2026-10-19T20:10:12+09:00",
       "lanes": {
@@ -164287,6 +164522,31 @@
       "telegram_core_fact": "카펜터 테크놀러지(CRS)가 2027 회계연도 1분기(2026년 7~9월) 매출액 7억9820만 달러, 영업이익 1억9640만 달러, 희석 주당순이익 3.25달러를 기록했다고 10월 22일 발표했다.",
       "title": "카펜터 테크놀러지, 1분기 희석 EPS 3.25달러..전년비 34% 증가"
     },
+    "fact:1c53bf818b24832a1c85f0d8": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028096100009",
+      "source": "연합뉴스",
+      "source_body_digest": "54f713c8c0528daecaecd865da183f4e7893c9251699ae506c77feba0bb7474a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06684a2a785eb67b054198d79a682fda381a29de28f61f5b4d5b249678ec2e11",
+      "source_fact_keys": [
+        "source_fact:v1:1695939468bc99df8a08a3c21f58576a5012d19babf242fc00fed5f50d991023",
+        "source_fact:v1:17b7b53a498953a0e6e470e1cdcfc5094bf4eae9115a7f4dd85fbd098f5e55f1",
+        "source_fact:v1:3126f4750b1ab135af10857637cc8ccaad6008551328c96a709af34ff9089e75",
+        "source_fact:v1:950c4348b23cd78cea5cd53d028a13269b20e495cce8f9271009e654f0fe2857",
+        "source_fact:v1:b4c4dbe3af12ee23349d34927e97bf0c1d344dd2fb311086d2fc5c931d445b74",
+        "source_fact:v1:eea3c400faca7f1f2e1a767309c988db0bb3a4969e65abb532ee377a935cdd2e"
+      ],
+      "source_published_kst": "2026-10-28T11:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스",
+      "telegram_core_fact": "미 환경보호청(EPA)은 메탄을 대량 방출하는 유정에 대한 규제를 완화하는 방안을 준비하고 있다.",
+      "title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스"
+    },
     "fact:1c788521c64a18233c5a6a02": {
       "first_seen_kst": "2026-10-19T13:26:21+09:00",
       "lanes": {
@@ -166429,6 +166689,36 @@
       "source_title": "美 \"MS·어도비 전문직 근로자 영주권 후원 자격 중단\"",
       "telegram_core_fact": "8일(현지 시간) AP통신과 폴리티코에 따르면 JD 밴스 부통령은 이날 백악관에서 비자 사기 관련 기자회견을 열고 MS가 H-1B 비자 근로자의 영주권을 신청하는 프로그램에서 배제된다고 발표했다.",
       "title": "美 \"MS·어도비 전문직 근로자 영주권 후원 자격 중단\""
+    },
+    "fact:2057142ad16e47c60f0d9684": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
     },
     "fact:2057b55eb914712b7e3fca05": {
       "first_seen_kst": "2026-10-23T07:02:23+09:00",
@@ -181373,6 +181663,31 @@
       "source_published_kst": "2026-10-07T14:11+09:00",
       "title": "HD건설기계, 美 데이터센터에 발전엔진 공급…3900억원 수주"
     },
+    "fact:3f532da84ea5cf9d7b463f06": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.mk.co.kr/news/business/12188243",
+      "source": "매일경제",
+      "source_body_digest": "e30a7b6f619a1c0be56cd410166eab7a42748937651851bad4e53b0e81919750",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9a762d0da888584f5cf2dddb517363407ee315986266d52f0e6f6a38f40438f",
+      "source_fact_keys": [
+        "source_fact:v1:2001d8d7cebf532298f284c4cfb0fb899a155a006dc23eae10315158d8907905",
+        "source_fact:v1:5bd3cda17ffa503add88d8a42cd0b85b92f348401f63dea8bbf1923e0f93b33c",
+        "source_fact:v1:66c3203912ef043f5bcd5125d48f7d5614ceba33417584c4f4f911955f2bf238",
+        "source_fact:v1:a85d995071af93b40118d78775cb66f70c6d04b60088feff557dc2aa5a0770d2",
+        "source_fact:v1:b1e261b4d197a666852350bee581007e886915e635d41f4e698c51f4a8d3b393",
+        "source_fact:v1:f9e00d9d8646707d12ba3f84e8976effe1012dfa7becf4e04290062a2b12b1ea"
+      ],
+      "source_published_kst": "2026-10-28T11:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략",
+      "telegram_core_fact": "K2 전차용 국산 엔진을 공급하는 HD건설기계는 신공장을 통해 방산 엔진의 중장기 물량 증가에도 대응한다.",
+      "title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략"
+    },
     "fact:3f635531c8358279121aed41": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -183136,6 +183451,31 @@
       "source_title": "셀트리온 3분기 영업이익 5천100억원…69.2%↑ | 연합뉴스",
       "telegram_core_fact": "코스피 상장사 셀트리온[068270]은 연결 기준 올해 3분기 영업이익이 5천100억원으로 지난해 동기보다 69.2% 증가한 것으로 잠정 집계됐다고 12일 공시했다.",
       "title": "셀트리온 3분기 영업이익 5천100억원…69.2%↑ | 연합뉴스"
+    },
+    "fact:431f8e960869ea5e32036153": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182728",
+      "source": "매일경제",
+      "source_body_digest": "65412d7a5943eb9f6701a03ea6a3fd2ec1d957749668ae529cfc98e30225d59b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7967a4bb17e8f629f0c3c8bdadd349ba757498f300a2a86172164c84ebdb1f8d",
+      "source_fact_keys": [
+        "source_fact:v1:065da7001ecc6e3f16714cca6f305ef2b54534910c7f5767a32780f72caa1e34",
+        "source_fact:v1:2fb6d02d38bdba651deb3809cd01eb0fa316fce10fc29571c037ccad1b54825f",
+        "source_fact:v1:33465d5e249d8c6f763e863e1a18bc58e379b9dc43067931752b7d46ff899665",
+        "source_fact:v1:515de942630129b17d3fac60ba1d7340641bc7727f3b3290fc5d329e46626a31",
+        "source_fact:v1:592647d4f617c147d254a8fcd7e5d916d1b45b33fd2ab35740fa6f11ea6a7c4a",
+        "source_fact:v1:aab218e72c0f0834f33c73596315268b9221ffb4ee2c237b633fb0b499142214"
+      ],
+      "source_published_kst": "2026-10-28T08:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약",
+      "telegram_core_fact": "협약에 따라 이들 기업은 천안과 아산의 산업단지 등에 총 3억9천630만 달러(약 5천382억원)를 투자해 생산시설을 신설하거나 증설한다. 충남도는 미국에서 글로벌 첨단소재 기업 3곳과 약 5천억원 투자협약을 체결했다고 28일 밝혔다.",
+      "title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약"
     },
     "fact:43217009a9984d3cb9d05e5e": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
@@ -222382,6 +222722,27 @@
       "source_title": "신동국, 한미사이언스 주식 가압류·자본시장법 위반 논란…대주단도 '촉각'",
       "telegram_core_fact": "위반 사실이 인정되면 관련 주식의 의결권 제한이나 처분명령 등의 제재 가능성이 거론된다.",
       "title": "신동국, 한미사이언스 주식 가압류·자본시장법 위반 논란…대주단도 '촉각'"
+    },
+    "fact:90f0757854a16edef2323096": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.etnews.com/20261028000174",
+      "source": "전자신문",
+      "source_body_digest": "00085b4ae231c1d2e40c9d9e53e4948c8307651fdf49dbf52494171e95a06b7a",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:8ea9fe0efbef2172d71bd7c5eba98ce284f2478183479ad20c9c18fe2689fc03",
+      "source_fact_identity": "source_facts:v1:3a287cbb64ca43f12f55c1e7d126bcfb91784f09eadadedee6663170cf2f3f4d",
+      "source_fact_keys": [
+        "source_fact:v1:39ebfeaf37f34145b68cfb2f392efb376ddbdc64eaaeb0d85705c56e9e6a0138",
+        "source_fact:v1:d89edadb78ffb90093d02313db816b928c32480119002f6530e2ed0a10c4f31b"
+      ],
+      "source_published_kst": "2026-10-28T11:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "PI첨단소재, 3분기 영업이익 125억원",
+      "telegram_core_fact": "PI첨단소재는 2026년 3분기 연결기준 매출액 555억원, 영업이익 125억원을 기록했다고 28일 밝혔다.",
+      "title": "PI첨단소재, 3분기 영업이익 125억원"
     },
     "fact:90f886a08723ee40ac17abff": {
       "first_seen_kst": "2026-10-26T05:29:29+09:00",
@@ -312154,6 +312515,26 @@
       "telegram_core_fact": "ASML 4분기 매출은 8000억원 전망입니다.",
       "title": "\"2028년까지 주문 못 따라간다\"…ASML, AI 반도체 장비 공급난"
     },
+    "link:2e6f0af2d93eadcfca6a576b": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844487",
+      "source": "뉴시스",
+      "source_body_digest": "ba53560e62c5bc3d30b8c0057e428850faa56a98e2db6e82b328927321b06f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a4fa428d05a189531b2cb1d08d899da2b15c95a2f3b95604e9fde286108c0ad",
+      "source_fact_keys": [
+        "source_fact:v1:c3266043304bbc8b6fabc908ec59056e43b5f25979320e755ce70df1b8cc93d1"
+      ],
+      "source_published_kst": "2026-10-28T14:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안",
+      "telegram_core_fact": "시장에선 이 같은 공급 부족과 편중이 내년 서울 정비사업 이주 수요와 맞물릴 경우 권역에 따라 전월세 수급 불균형이 심화할 수 있다고 본다.",
+      "title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안"
+    },
     "link:2e70b20478ba155809e9f1b6": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -315349,6 +315730,31 @@
       "telegram_core_fact": "SK하이닉스가 고대역폭메모리(HBM) 발열을 줄일 차세대 기술 'iHBM' 적용·생산 대응을 위해 공급망과 협의에 착수했다.",
       "title": "SK하이닉스, 발열 잡는 'iHBM' 공급망 협의 착수…HBM 선두 수성 승부수"
     },
+    "link:328e0d6935717d925df60020": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182728",
+      "source": "매일경제",
+      "source_body_digest": "65412d7a5943eb9f6701a03ea6a3fd2ec1d957749668ae529cfc98e30225d59b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7967a4bb17e8f629f0c3c8bdadd349ba757498f300a2a86172164c84ebdb1f8d",
+      "source_fact_keys": [
+        "source_fact:v1:065da7001ecc6e3f16714cca6f305ef2b54534910c7f5767a32780f72caa1e34",
+        "source_fact:v1:2fb6d02d38bdba651deb3809cd01eb0fa316fce10fc29571c037ccad1b54825f",
+        "source_fact:v1:33465d5e249d8c6f763e863e1a18bc58e379b9dc43067931752b7d46ff899665",
+        "source_fact:v1:515de942630129b17d3fac60ba1d7340641bc7727f3b3290fc5d329e46626a31",
+        "source_fact:v1:592647d4f617c147d254a8fcd7e5d916d1b45b33fd2ab35740fa6f11ea6a7c4a",
+        "source_fact:v1:aab218e72c0f0834f33c73596315268b9221ffb4ee2c237b633fb0b499142214"
+      ],
+      "source_published_kst": "2026-10-28T08:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약",
+      "telegram_core_fact": "협약에 따라 이들 기업은 천안과 아산의 산업단지 등에 총 3억9천630만 달러(약 5천382억원)를 투자해 생산시설을 신설하거나 증설한다. 충남도는 미국에서 글로벌 첨단소재 기업 3곳과 약 5천억원 투자협약을 체결했다고 28일 밝혔다.",
+      "title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약"
+    },
     "link:3296c3460b82be8cb0564828": {
       "first_seen_kst": "2026-10-19T23:09:43+09:00",
       "lanes": {
@@ -315617,6 +316023,31 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:20+09:00",
       "title": "3분기 약달러에 ETF 상승률 1∼3위 모두 '달러 곱버스' 차지"
+    },
+    "link:331b00424bcc7cb028c26f52": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028096100009",
+      "source": "연합뉴스",
+      "source_body_digest": "54f713c8c0528daecaecd865da183f4e7893c9251699ae506c77feba0bb7474a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06684a2a785eb67b054198d79a682fda381a29de28f61f5b4d5b249678ec2e11",
+      "source_fact_keys": [
+        "source_fact:v1:1695939468bc99df8a08a3c21f58576a5012d19babf242fc00fed5f50d991023",
+        "source_fact:v1:17b7b53a498953a0e6e470e1cdcfc5094bf4eae9115a7f4dd85fbd098f5e55f1",
+        "source_fact:v1:3126f4750b1ab135af10857637cc8ccaad6008551328c96a709af34ff9089e75",
+        "source_fact:v1:950c4348b23cd78cea5cd53d028a13269b20e495cce8f9271009e654f0fe2857",
+        "source_fact:v1:b4c4dbe3af12ee23349d34927e97bf0c1d344dd2fb311086d2fc5c931d445b74",
+        "source_fact:v1:eea3c400faca7f1f2e1a767309c988db0bb3a4969e65abb532ee377a935cdd2e"
+      ],
+      "source_published_kst": "2026-10-28T11:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스",
+      "telegram_core_fact": "미 환경보호청(EPA)은 메탄을 대량 방출하는 유정에 대한 규제를 완화하는 방안을 준비하고 있다.",
+      "title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스"
     },
     "link:3329f64b4ac0dca6b5b78569": {
       "first_seen_kst": "2026-10-21T01:11:06+09:00",
@@ -322952,6 +323383,31 @@
       "source_title": "李 대통령 \"한일 첨단산업 공급망 협력 필수…경제협력 확대해야\"",
       "telegram_core_fact": "이재명 대통령이 한국과 일본의 첨단산업 공급망 협력 필요성을 강조하며 양국 경제계에 미래지향적인 협력 확대를 당부했다. 특히 한국과 일본은 첨단산업 공급망 측면에서 상호 협력이 필수적인 국가라고 강조했다.",
       "title": "李 대통령 \"한일 첨단산업 공급망 협력 필수…경제협력 확대해야\""
+    },
+    "link:3e94717f05c267316651ebec": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.mk.co.kr/news/business/12188243",
+      "source": "매일경제",
+      "source_body_digest": "e30a7b6f619a1c0be56cd410166eab7a42748937651851bad4e53b0e81919750",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9a762d0da888584f5cf2dddb517363407ee315986266d52f0e6f6a38f40438f",
+      "source_fact_keys": [
+        "source_fact:v1:2001d8d7cebf532298f284c4cfb0fb899a155a006dc23eae10315158d8907905",
+        "source_fact:v1:5bd3cda17ffa503add88d8a42cd0b85b92f348401f63dea8bbf1923e0f93b33c",
+        "source_fact:v1:66c3203912ef043f5bcd5125d48f7d5614ceba33417584c4f4f911955f2bf238",
+        "source_fact:v1:a85d995071af93b40118d78775cb66f70c6d04b60088feff557dc2aa5a0770d2",
+        "source_fact:v1:b1e261b4d197a666852350bee581007e886915e635d41f4e698c51f4a8d3b393",
+        "source_fact:v1:f9e00d9d8646707d12ba3f84e8976effe1012dfa7becf4e04290062a2b12b1ea"
+      ],
+      "source_published_kst": "2026-10-28T11:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략",
+      "telegram_core_fact": "K2 전차용 국산 엔진을 공급하는 HD건설기계는 신공장을 통해 방산 엔진의 중장기 물량 증가에도 대응한다.",
+      "title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략"
     },
     "link:3e99e4542e68c0fb265d47a1": {
       "first_seen_kst": "2026-10-27T03:50:22+09:00",
@@ -415546,6 +416002,24 @@
       "telegram_core_fact": "롯데바이오로직스가 글로벌 바이오시밀러 기업 알보텍과 생산 수주 계약을 체결했다고 7일 밝혔다.",
       "title": "롯데바이오로직스, 알보텍 바이오시밀러 생산 수주"
     },
+    "link:cc1c1fda6bdd6701c2507f6b": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183513",
+      "source": "매일경제",
+      "source_body_digest": "b231dc70c3625b0ea3caeb674bd59162ae73f667933a5e137b96ce11015c2524",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T22:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "원스파월드, 사상 최대 분기 실적에 가이던스 상향·주주환원 확대 소식에 강세",
+      "telegram_core_fact": "연간 매출과 EBITDA 가이던스 하단을 올렸고, 1억 달러 규모 신규 자사주 매입과 분기 배당금 25% 인상도 발표했습니다.",
+      "title": "원스파월드, 사상 최대 분기 실적에 가이던스 상향·주주환원 확대 소식에 강세"
+    },
     "link:cc2ed721b220e58161cd6780": {
       "first_seen_kst": "2026-10-11T15:10:51+09:00",
       "lanes": {
@@ -421476,6 +421950,36 @@
       "link": "https://www.mk.co.kr/news/stock/12163310",
       "source": "매일경제",
       "title": "레버리지ETF랑 스페이스X에 속이 ‘부글부글’ …금융투자 민원 86% 급증"
+    },
+    "link:d5890b818290e2d83ced72e8": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
     },
     "link:d597a237ccb27b7abc972278": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -447092,6 +447596,27 @@
       "source_published_kst": "2026-10-04T15:39+09:00",
       "title": "가상자산 업계도 금융권 해킹 확산에 '촉각'…보안태세 재정비"
     },
+    "link:ff5c83702ff35df37d366cf5": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.etnews.com/20261028000174",
+      "source": "전자신문",
+      "source_body_digest": "00085b4ae231c1d2e40c9d9e53e4948c8307651fdf49dbf52494171e95a06b7a",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:8ea9fe0efbef2172d71bd7c5eba98ce284f2478183479ad20c9c18fe2689fc03",
+      "source_fact_identity": "source_facts:v1:3a287cbb64ca43f12f55c1e7d126bcfb91784f09eadadedee6663170cf2f3f4d",
+      "source_fact_keys": [
+        "source_fact:v1:39ebfeaf37f34145b68cfb2f392efb376ddbdc64eaaeb0d85705c56e9e6a0138",
+        "source_fact:v1:d89edadb78ffb90093d02313db816b928c32480119002f6530e2ed0a10c4f31b"
+      ],
+      "source_published_kst": "2026-10-28T11:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "PI첨단소재, 3분기 영업이익 125억원",
+      "telegram_core_fact": "PI첨단소재는 2026년 3분기 연결기준 매출액 555억원, 영업이익 125억원을 기록했다고 28일 밝혔다.",
+      "title": "PI첨단소재, 3분기 영업이익 125억원"
+    },
     "link:ff5df9401f4ec394ffe6db8f": {
       "first_seen_kst": "2026-10-12T12:56:34+09:00",
       "lanes": {
@@ -465254,6 +465779,31 @@
       "source": "머니투데이",
       "title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비"
     },
+    "original:1c55babe1a93ab54e271b80a": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.mk.co.kr/news/business/12188243",
+      "source": "매일경제",
+      "source_body_digest": "e30a7b6f619a1c0be56cd410166eab7a42748937651851bad4e53b0e81919750",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9a762d0da888584f5cf2dddb517363407ee315986266d52f0e6f6a38f40438f",
+      "source_fact_keys": [
+        "source_fact:v1:2001d8d7cebf532298f284c4cfb0fb899a155a006dc23eae10315158d8907905",
+        "source_fact:v1:5bd3cda17ffa503add88d8a42cd0b85b92f348401f63dea8bbf1923e0f93b33c",
+        "source_fact:v1:66c3203912ef043f5bcd5125d48f7d5614ceba33417584c4f4f911955f2bf238",
+        "source_fact:v1:a85d995071af93b40118d78775cb66f70c6d04b60088feff557dc2aa5a0770d2",
+        "source_fact:v1:b1e261b4d197a666852350bee581007e886915e635d41f4e698c51f4a8d3b393",
+        "source_fact:v1:f9e00d9d8646707d12ba3f84e8976effe1012dfa7becf4e04290062a2b12b1ea"
+      ],
+      "source_published_kst": "2026-10-28T11:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략",
+      "telegram_core_fact": "K2 전차용 국산 엔진을 공급하는 HD건설기계는 신공장을 통해 방산 엔진의 중장기 물량 증가에도 대응한다.",
+      "title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략"
+    },
     "original:1c5f7ea4bcfe17bfb7a0919b": {
       "first_seen_kst": "2026-10-03T19:34:33+09:00",
       "lanes": {
@@ -481772,6 +482322,36 @@
       ],
       "source_published_kst": "2026-10-06T15:48+09:00",
       "title": "LG이노텍, 美서 HBM 적용 패키지 특허 공개…AI 기판 IP 넓힌다"
+    },
+    "original:35481541a96d33f9c8b20f48": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
     },
     "original:354e98cf5133d0e4e3f6391a": {
       "first_seen_kst": "2026-10-27T15:38:53+09:00",
@@ -505688,6 +506268,24 @@
       "source": "연합뉴스",
       "title": "엔비디아 경쟁사 AMD, 시총 1조달러 첫 돌파…美반도체사 4번째 | 연합뉴스"
     },
+    "original:5a63bdcad8e149c3c7265aeb": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183513",
+      "source": "매일경제",
+      "source_body_digest": "b231dc70c3625b0ea3caeb674bd59162ae73f667933a5e137b96ce11015c2524",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T22:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "원스파월드, 사상 최대 분기 실적에 가이던스 상향·주주환원 확대 소식에 강세",
+      "telegram_core_fact": "연간 매출과 EBITDA 가이던스 하단을 올렸고, 1억 달러 규모 신규 자사주 매입과 분기 배당금 25% 인상도 발표했습니다.",
+      "title": "원스파월드, 사상 최대 분기 실적에 가이던스 상향·주주환원 확대 소식에 강세"
+    },
     "original:5a691fdf5866aeda6da408bc": {
       "first_seen_kst": "2026-10-25T18:34:20+09:00",
       "lanes": {
@@ -529521,6 +530119,31 @@
       "source_title": "미래운용, '스테이트타워 남산' 매각 추진…KIC 등 입주 | 연합뉴스",
       "telegram_core_fact": "투자은행(IB) 업계에 따르면 미래에셋자산운용은 최근 스테이트타워 남산 매각 가능성을 검토 중인 것으로 알려졌다. 미래에셋자산운용이 서울 도심권(CBD)의 대형 오피스인 스테이트타워 남산을 인수한 지 7년여 만에 매각한다.",
       "title": "미래운용, '스테이트타워 남산' 매각 추진…KIC 등 입주 | 연합뉴스"
+    },
+    "original:80036553178c1726be85a64b": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182728",
+      "source": "매일경제",
+      "source_body_digest": "65412d7a5943eb9f6701a03ea6a3fd2ec1d957749668ae529cfc98e30225d59b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7967a4bb17e8f629f0c3c8bdadd349ba757498f300a2a86172164c84ebdb1f8d",
+      "source_fact_keys": [
+        "source_fact:v1:065da7001ecc6e3f16714cca6f305ef2b54534910c7f5767a32780f72caa1e34",
+        "source_fact:v1:2fb6d02d38bdba651deb3809cd01eb0fa316fce10fc29571c037ccad1b54825f",
+        "source_fact:v1:33465d5e249d8c6f763e863e1a18bc58e379b9dc43067931752b7d46ff899665",
+        "source_fact:v1:515de942630129b17d3fac60ba1d7340641bc7727f3b3290fc5d329e46626a31",
+        "source_fact:v1:592647d4f617c147d254a8fcd7e5d916d1b45b33fd2ab35740fa6f11ea6a7c4a",
+        "source_fact:v1:aab218e72c0f0834f33c73596315268b9221ffb4ee2c237b633fb0b499142214"
+      ],
+      "source_published_kst": "2026-10-28T08:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약",
+      "telegram_core_fact": "협약에 따라 이들 기업은 천안과 아산의 산업단지 등에 총 3억9천630만 달러(약 5천382억원)를 투자해 생산시설을 신설하거나 증설한다. 충남도는 미국에서 글로벌 첨단소재 기업 3곳과 약 5천억원 투자협약을 체결했다고 28일 밝혔다.",
+      "title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약"
     },
     "original:80074c1b626f4f602e148aa0": {
       "first_seen_kst": "2026-10-23T03:32:06+09:00",
@@ -573601,6 +574224,27 @@
       "telegram_core_fact": "분기배당을 12% 올린 0.48달러로 결정하고 2억 달러 규모 자사주 매입도 새로 승인해 주주환원 강화 기대가 커지고 있습니다.",
       "title": "셀렉티브인슈런스, 3분기 이익 급증에 배당 인상·자사주 매입까지 주목"
     },
+    "original:c50cd37d97555ff263e1b8bd": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.etnews.com/20261028000174",
+      "source": "전자신문",
+      "source_body_digest": "00085b4ae231c1d2e40c9d9e53e4948c8307651fdf49dbf52494171e95a06b7a",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:8ea9fe0efbef2172d71bd7c5eba98ce284f2478183479ad20c9c18fe2689fc03",
+      "source_fact_identity": "source_facts:v1:3a287cbb64ca43f12f55c1e7d126bcfb91784f09eadadedee6663170cf2f3f4d",
+      "source_fact_keys": [
+        "source_fact:v1:39ebfeaf37f34145b68cfb2f392efb376ddbdc64eaaeb0d85705c56e9e6a0138",
+        "source_fact:v1:d89edadb78ffb90093d02313db816b928c32480119002f6530e2ed0a10c4f31b"
+      ],
+      "source_published_kst": "2026-10-28T11:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "PI첨단소재, 3분기 영업이익 125억원",
+      "telegram_core_fact": "PI첨단소재는 2026년 3분기 연결기준 매출액 555억원, 영업이익 125억원을 기록했다고 28일 밝혔다.",
+      "title": "PI첨단소재, 3분기 영업이익 125억원"
+    },
     "original:c52443dbd44ae03a863037e1": {
       "first_seen_kst": "2026-09-19T12:24:36+09:00",
       "lanes": {
@@ -591956,6 +592600,31 @@
       "telegram_core_fact": "이처럼 시는 법적 테두리 안에서 사업을 안정적으로 관리하되, 동시 착공·동시 준공 약속이 지켜지지 않을 경우에는 사업 포기 요구를 비롯한 강력한 행정적 제재와 조치에 나선 방침이어서 향후 자광의 대응과 시공사 선정 결과에 지역사회의 이목이 쏠리고 있다.",
       "title": "전주시장, 약속 어긴 자광에 '초강수'…\"사업 포기 요구할 수도\" | 연합뉴스"
     },
+    "original:e19e882528a03bbc7e8c295f": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028096100009",
+      "source": "연합뉴스",
+      "source_body_digest": "54f713c8c0528daecaecd865da183f4e7893c9251699ae506c77feba0bb7474a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06684a2a785eb67b054198d79a682fda381a29de28f61f5b4d5b249678ec2e11",
+      "source_fact_keys": [
+        "source_fact:v1:1695939468bc99df8a08a3c21f58576a5012d19babf242fc00fed5f50d991023",
+        "source_fact:v1:17b7b53a498953a0e6e470e1cdcfc5094bf4eae9115a7f4dd85fbd098f5e55f1",
+        "source_fact:v1:3126f4750b1ab135af10857637cc8ccaad6008551328c96a709af34ff9089e75",
+        "source_fact:v1:950c4348b23cd78cea5cd53d028a13269b20e495cce8f9271009e654f0fe2857",
+        "source_fact:v1:b4c4dbe3af12ee23349d34927e97bf0c1d344dd2fb311086d2fc5c931d445b74",
+        "source_fact:v1:eea3c400faca7f1f2e1a767309c988db0bb3a4969e65abb532ee377a935cdd2e"
+      ],
+      "source_published_kst": "2026-10-28T11:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스",
+      "telegram_core_fact": "미 환경보호청(EPA)은 메탄을 대량 방출하는 유정에 대한 규제를 완화하는 방안을 준비하고 있다.",
+      "title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스"
+    },
     "original:e19eae2d7fa7c3452be74e91": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
       "lanes": {
@@ -592594,6 +593263,26 @@
       "source_title": "\"결국 美 지수 추종 ETF가 최고 성과\"…계좌 30개 굴려본 저자의 고백",
       "telegram_core_fact": "그는 \"최선을 다해 공부하고 뉴스를 보면서 직접 투자한 결과보다 아무것도 하지 않고 자동으로 매수한 계좌의 성과가 더 좋았다\"며 \"이때부터 미국 지수에 꾸준히 투자하는 것이 더 낫겠다는 확신을 갖게 됐다\"고 설명했다.",
       "title": "\"결국 美 지수 추종 ETF가 최고 성과\"…계좌 30개 굴려본 저자의 고백"
+    },
+    "original:e2e3e17e0c98c42970d90c9d": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844487",
+      "source": "뉴시스",
+      "source_body_digest": "ba53560e62c5bc3d30b8c0057e428850faa56a98e2db6e82b328927321b06f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a4fa428d05a189531b2cb1d08d899da2b15c95a2f3b95604e9fde286108c0ad",
+      "source_fact_keys": [
+        "source_fact:v1:c3266043304bbc8b6fabc908ec59056e43b5f25979320e755ce70df1b8cc93d1"
+      ],
+      "source_published_kst": "2026-10-28T14:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안",
+      "telegram_core_fact": "시장에선 이 같은 공급 부족과 편중이 내년 서울 정비사업 이주 수요와 맞물릴 경우 권역에 따라 전월세 수급 불균형이 심화할 수 있다고 본다.",
+      "title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안"
     },
     "original:e2e59e4da8303686414acb0b": {
       "first_seen_kst": "2026-10-22T08:01:37+09:00",
@@ -641939,6 +642628,36 @@
       "telegram_core_fact": "LG전자는 이번 계약에 따라 북미에서 구축되는 여러 AIDC에 총 5GW 고효율 칠러를 순차적으로 공급한다.",
       "title": "계약 한방에 수년치 먹거리 확보…삼성·LG, ‘AIDC 칠러’서 기회"
     },
+    "source_fact:0bf0c651e865ad56b7594d9b": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
+    },
     "source_fact:0bf15de9a60c53f3ffef7e0d": {
       "first_seen_kst": "2026-10-18T15:17:26+09:00",
       "lanes": {
@@ -642887,6 +643606,36 @@
       "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
       "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 총수익(순이자이익+비이자수익) 65억6200만 달러, 순이익 20억9700만 달러, 희석 주당순이익(EPS) 4.97달러를 기록했다고 10월 15일 발표했다.",
       "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
+    },
+    "source_fact:0c4b0c282de4d94271a0c231": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
     },
     "source_fact:0c4fe37f063b39ae10a285ba": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -650944,6 +651693,36 @@
       "telegram_core_fact": "일본 정부는 이 밖에도 ▲원유 등의 해상 운송과 관련해 보험 계약을 체결하기 쉽도록 하는 법안 ▲원유 송유관 건설을 지원하는 방안 등을 추진하고 있다. 중동 정세가 악화되면서 에너지의 안정적인 확보가 과제로 떠오르자 일본 정부는 원유 등의 조달처 다양화를 지원하기 위한 법안을 마련했다.",
       "title": "日, 에너지 조달처 다양화 촉진 법안 결정…송유관 건설 등 지원"
     },
+    "source_fact:0f33f3100db3888749d7b2cb": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
+    },
     "source_fact:0f35726e4037dc3045ffe95f": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
       "lanes": {
@@ -651952,6 +652731,31 @@
       "source_title": "이재용, 올해 삼성 주식 5조 순취득…대기업 오너일가 중 최대",
       "telegram_core_fact": "이재용 삼성전자 회장이 올해 약 5조원 삼성 계열사 주식을 순취득해 국내 대기업 오너일가 가운데 취득액이 가장 많은 것으로 나타났다.",
       "title": "이재용, 올해 삼성 주식 5조 순취득…대기업 오너일가 중 최대"
+    },
+    "source_fact:0f7f028445d0c83d1a67934d": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182728",
+      "source": "매일경제",
+      "source_body_digest": "65412d7a5943eb9f6701a03ea6a3fd2ec1d957749668ae529cfc98e30225d59b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7967a4bb17e8f629f0c3c8bdadd349ba757498f300a2a86172164c84ebdb1f8d",
+      "source_fact_keys": [
+        "source_fact:v1:065da7001ecc6e3f16714cca6f305ef2b54534910c7f5767a32780f72caa1e34",
+        "source_fact:v1:2fb6d02d38bdba651deb3809cd01eb0fa316fce10fc29571c037ccad1b54825f",
+        "source_fact:v1:33465d5e249d8c6f763e863e1a18bc58e379b9dc43067931752b7d46ff899665",
+        "source_fact:v1:515de942630129b17d3fac60ba1d7340641bc7727f3b3290fc5d329e46626a31",
+        "source_fact:v1:592647d4f617c147d254a8fcd7e5d916d1b45b33fd2ab35740fa6f11ea6a7c4a",
+        "source_fact:v1:aab218e72c0f0834f33c73596315268b9221ffb4ee2c237b633fb0b499142214"
+      ],
+      "source_published_kst": "2026-10-28T08:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약",
+      "telegram_core_fact": "협약에 따라 이들 기업은 천안과 아산의 산업단지 등에 총 3억9천630만 달러(약 5천382억원)를 투자해 생산시설을 신설하거나 증설한다. 충남도는 미국에서 글로벌 첨단소재 기업 3곳과 약 5천억원 투자협약을 체결했다고 28일 밝혔다.",
+      "title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약"
     },
     "source_fact:0f808e93236504c29437629b": {
       "first_seen_kst": "2026-10-27T07:40:55+09:00",
@@ -734143,6 +734947,31 @@
       "telegram_core_fact": "이번에 보고된 주식 수는 직전 대비 35만주 감소했고, 지분율은 3.08%포인트 하락했다.",
       "title": "동일금속 10%이상주주 오순택, 소유 주식 수량 35만주 감소…소유 지분율 3.08%p 하락"
     },
+    "source_fact:2d39365a536fb2d7cff78641": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028096100009",
+      "source": "연합뉴스",
+      "source_body_digest": "54f713c8c0528daecaecd865da183f4e7893c9251699ae506c77feba0bb7474a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06684a2a785eb67b054198d79a682fda381a29de28f61f5b4d5b249678ec2e11",
+      "source_fact_keys": [
+        "source_fact:v1:1695939468bc99df8a08a3c21f58576a5012d19babf242fc00fed5f50d991023",
+        "source_fact:v1:17b7b53a498953a0e6e470e1cdcfc5094bf4eae9115a7f4dd85fbd098f5e55f1",
+        "source_fact:v1:3126f4750b1ab135af10857637cc8ccaad6008551328c96a709af34ff9089e75",
+        "source_fact:v1:950c4348b23cd78cea5cd53d028a13269b20e495cce8f9271009e654f0fe2857",
+        "source_fact:v1:b4c4dbe3af12ee23349d34927e97bf0c1d344dd2fb311086d2fc5c931d445b74",
+        "source_fact:v1:eea3c400faca7f1f2e1a767309c988db0bb3a4969e65abb532ee377a935cdd2e"
+      ],
+      "source_published_kst": "2026-10-28T11:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스",
+      "telegram_core_fact": "미 환경보호청(EPA)은 메탄을 대량 방출하는 유정에 대한 규제를 완화하는 방안을 준비하고 있다.",
+      "title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스"
+    },
     "source_fact:2d39a524f791f896e09df264": {
       "first_seen_kst": "2026-10-21T22:01:46+09:00",
       "lanes": {
@@ -751705,6 +752534,36 @@
       "source_title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑",
       "telegram_core_fact": "특히 캐터필러는 데이터센터 건설 장비뿐 아니라 전력 공급에 필요한 가스터빈 등도 공급하고 있어 AI 인프라 투자 확대의 수혜 기업으로 평가받고 있다. 미국 중장비 제조업체 캐터필러(CAT)가 인공지능(AI) 데이터센터 투자 확대와 글로벌 인프라 건설 수요에 힘입어 추가 상승할 가능성이 있다는 분석이 나왔다.",
       "title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑"
+    },
+    "source_fact:33fdbaaf8d2d099895dc608f": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
     },
     "source_fact:3400b8361530d3be193afcd7": {
       "first_seen_kst": "2026-10-16T06:50:52+09:00",
@@ -775133,6 +775992,36 @@
       "telegram_core_fact": "\"향후 파업 규모와 실제 생산 감소 여부는 메모리 수급에 직접적 영향을 미치는 핵심 변수로 판단된다\"며 \"메모리 공급 부족이 지속되는 상황에서 마이크론의 생산 차질이 현실화된다면 삼성전자와 SK하이닉스의 가격 결정력과 공급 협상력은 한층 강화될 것\"이라고 전망했다.",
       "title": "KB證 \"마이크론 파업하면 삼전·닉스 반사이익…가격결정력 강화\""
     },
+    "source_fact:3cc1472f6d9e122f507d827d": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
+    },
     "source_fact:3cc1ca31a4e5dacfecd9033e": {
       "first_seen_kst": "2026-10-22T20:40:52+09:00",
       "lanes": {
@@ -787522,6 +788411,36 @@
       "source_title": "최태원 이어 산업장관 광주行… 서남권 반도체 현장 ‘탄력’",
       "telegram_core_fact": "김 장관은 이날 광주 군공항 부지를 찾아 서남권 반도체 클러스터 조성 여건을 확인하고, 부지·전력·용수 등 핵심 기반 시설 공급 계획을 점검했다.",
       "title": "최태원 이어 산업장관 광주行… 서남권 반도체 현장 ‘탄력’"
+    },
+    "source_fact:4176d77c6f10cce555172bff": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
     },
     "source_fact:4179cee536792bb8828e9d4c": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
@@ -859222,6 +860141,36 @@
       "telegram_core_fact": "공개매수에 투입되는 자금은 최대 약 560억원이다. 아이패밀리에스씨, 마루베니의 100% 자회사인 웰라이언트가 공개매수를 통해 회사 지분 최대 28%를 확보할 계획이라고 공시했다.",
       "title": "'채시라 남편' 김태욱 회사에 日 마루베니 560억원 규모 투자 추진"
     },
+    "source_fact:5ac9e17aaa1f085d8aae3e1c": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
+    },
     "source_fact:5acc8563d1e51586592bc8b1": {
       "first_seen_kst": "2026-10-21T09:52:31+09:00",
       "lanes": {
@@ -874883,6 +875832,31 @@
       "source_title": "케이메디허브가 키운 스마틴바이오, 한림제약 투자 유치 성공",
       "telegram_core_fact": "대구경북첨단의료산업진흥재단(케이메디허브·이사장 박구선)의 연구과제 지원기업 스마틴바이오(대표 강병현·유제민)가 최근 한림제약으로부터 2억원의 투자를 유치했다. 스마틴바이오에 대한 한림제약의 이번 투자는 투자액을 떠나 스마틴바이오가 중견 제약사와 생산, 규제 대응역량 협력을 통해 기업 성장기반을 확대한 점에서 의미가 있다.",
       "title": "케이메디허브가 키운 스마틴바이오, 한림제약 투자 유치 성공"
+    },
+    "source_fact:609c141f1267f381cad80bde": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028096100009",
+      "source": "연합뉴스",
+      "source_body_digest": "54f713c8c0528daecaecd865da183f4e7893c9251699ae506c77feba0bb7474a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06684a2a785eb67b054198d79a682fda381a29de28f61f5b4d5b249678ec2e11",
+      "source_fact_keys": [
+        "source_fact:v1:1695939468bc99df8a08a3c21f58576a5012d19babf242fc00fed5f50d991023",
+        "source_fact:v1:17b7b53a498953a0e6e470e1cdcfc5094bf4eae9115a7f4dd85fbd098f5e55f1",
+        "source_fact:v1:3126f4750b1ab135af10857637cc8ccaad6008551328c96a709af34ff9089e75",
+        "source_fact:v1:950c4348b23cd78cea5cd53d028a13269b20e495cce8f9271009e654f0fe2857",
+        "source_fact:v1:b4c4dbe3af12ee23349d34927e97bf0c1d344dd2fb311086d2fc5c931d445b74",
+        "source_fact:v1:eea3c400faca7f1f2e1a767309c988db0bb3a4969e65abb532ee377a935cdd2e"
+      ],
+      "source_published_kst": "2026-10-28T11:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스",
+      "telegram_core_fact": "미 환경보호청(EPA)은 메탄을 대량 방출하는 유정에 대한 규제를 완화하는 방안을 준비하고 있다.",
+      "title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스"
     },
     "source_fact:609e580718b72495212101c9": {
       "first_seen_kst": "2026-10-28T22:37:35+09:00",
@@ -941458,6 +942432,26 @@
       "telegram_core_fact": "금융당국이 물적분할 자회사의 중복상장 규제를 대폭 강화한 상황까지 감안하면 ‘2027년 IPO’라는 목표가 실제로 가능할지에 의구심이 제기된다.",
       "title": "10년 끈 차헬스케어 IPO, 의무 사라졌다…회수 부담은 모회사에[차바이오 딥시크①]"
     },
+    "source_fact:79369d63fedc1120be8eb0a8": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844487",
+      "source": "뉴시스",
+      "source_body_digest": "ba53560e62c5bc3d30b8c0057e428850faa56a98e2db6e82b328927321b06f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a4fa428d05a189531b2cb1d08d899da2b15c95a2f3b95604e9fde286108c0ad",
+      "source_fact_keys": [
+        "source_fact:v1:c3266043304bbc8b6fabc908ec59056e43b5f25979320e755ce70df1b8cc93d1"
+      ],
+      "source_published_kst": "2026-10-28T14:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안",
+      "telegram_core_fact": "시장에선 이 같은 공급 부족과 편중이 내년 서울 정비사업 이주 수요와 맞물릴 경우 권역에 따라 전월세 수급 불균형이 심화할 수 있다고 본다.",
+      "title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안"
+    },
     "source_fact:79394be8452858b6758bf13b": {
       "first_seen_kst": "2026-10-14T22:15:19+09:00",
       "lanes": {
@@ -960561,6 +961555,36 @@
       "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
       "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
       "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
+    },
+    "source_fact:806a04677e47fa05c0bb592f": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
     },
     "source_fact:806c6c4f767e5a1b83ab5255": {
       "first_seen_kst": "2026-10-13T21:34:27+09:00",
@@ -992942,6 +993966,31 @@
       "telegram_core_fact": "정부가 국가안보와 개인·기업의 정보 보호를 위협하는 물품의 수출입을 제한할 수 있도록 관련 제도를 정비했다.",
       "title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다"
     },
+    "source_fact:8ce9ff07f604ec42fb4d354c": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182728",
+      "source": "매일경제",
+      "source_body_digest": "65412d7a5943eb9f6701a03ea6a3fd2ec1d957749668ae529cfc98e30225d59b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7967a4bb17e8f629f0c3c8bdadd349ba757498f300a2a86172164c84ebdb1f8d",
+      "source_fact_keys": [
+        "source_fact:v1:065da7001ecc6e3f16714cca6f305ef2b54534910c7f5767a32780f72caa1e34",
+        "source_fact:v1:2fb6d02d38bdba651deb3809cd01eb0fa316fce10fc29571c037ccad1b54825f",
+        "source_fact:v1:33465d5e249d8c6f763e863e1a18bc58e379b9dc43067931752b7d46ff899665",
+        "source_fact:v1:515de942630129b17d3fac60ba1d7340641bc7727f3b3290fc5d329e46626a31",
+        "source_fact:v1:592647d4f617c147d254a8fcd7e5d916d1b45b33fd2ab35740fa6f11ea6a7c4a",
+        "source_fact:v1:aab218e72c0f0834f33c73596315268b9221ffb4ee2c237b633fb0b499142214"
+      ],
+      "source_published_kst": "2026-10-28T08:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약",
+      "telegram_core_fact": "협약에 따라 이들 기업은 천안과 아산의 산업단지 등에 총 3억9천630만 달러(약 5천382억원)를 투자해 생산시설을 신설하거나 증설한다. 충남도는 미국에서 글로벌 첨단소재 기업 3곳과 약 5천억원 투자협약을 체결했다고 28일 밝혔다.",
+      "title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약"
+    },
     "source_fact:8cec2bcb80c0003d9dfa237e": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
@@ -1002276,6 +1003325,27 @@
       "telegram_core_fact": "스튜어트 인포메이션 서비스(STC)는 2026년 3분기 GAAP 기준 총수익이 9억70만 달러로 전년비 13% 증가했지만, 희석 주당순이익(EPS)은 0.98달러로 전년 동기(1.55달러)보다 37% 감소했다고 10월 21일 발표했다.",
       "title": "스튜어트 인포메이션 서비, 3분기 총수익 9억달러 13% 증가..EPS 37% 감소"
     },
+    "source_fact:907f0328ca87500bc5ccdd4c": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.etnews.com/20261028000174",
+      "source": "전자신문",
+      "source_body_digest": "00085b4ae231c1d2e40c9d9e53e4948c8307651fdf49dbf52494171e95a06b7a",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:8ea9fe0efbef2172d71bd7c5eba98ce284f2478183479ad20c9c18fe2689fc03",
+      "source_fact_identity": "source_facts:v1:3a287cbb64ca43f12f55c1e7d126bcfb91784f09eadadedee6663170cf2f3f4d",
+      "source_fact_keys": [
+        "source_fact:v1:39ebfeaf37f34145b68cfb2f392efb376ddbdc64eaaeb0d85705c56e9e6a0138",
+        "source_fact:v1:d89edadb78ffb90093d02313db816b928c32480119002f6530e2ed0a10c4f31b"
+      ],
+      "source_published_kst": "2026-10-28T11:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "PI첨단소재, 3분기 영업이익 125억원",
+      "telegram_core_fact": "PI첨단소재는 2026년 3분기 연결기준 매출액 555억원, 영업이익 125억원을 기록했다고 28일 밝혔다.",
+      "title": "PI첨단소재, 3분기 영업이익 125억원"
+    },
     "source_fact:90810150878006af699e85b3": {
       "first_seen_kst": "2026-10-17T00:21:55+09:00",
       "lanes": {
@@ -1009668,6 +1010738,31 @@
       "source_title": "美연준, 내주 금리 동결할까…시장은 '12월 추가 인상' 전망 | 연합뉴스",
       "telegram_core_fact": "글로벌 채권운용사 핌코(PIMCO)는 지난 22일 보고서에서 연준이 이번 회의에서 금리를 동결한 뒤 12월에 0.25%포인트 추가 인상할 것으로 내다봤다.",
       "title": "美연준, 내주 금리 동결할까…시장은 '12월 추가 인상' 전망 | 연합뉴스"
+    },
+    "source_fact:9320701d9096e1e8942e5b5a": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028096100009",
+      "source": "연합뉴스",
+      "source_body_digest": "54f713c8c0528daecaecd865da183f4e7893c9251699ae506c77feba0bb7474a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06684a2a785eb67b054198d79a682fda381a29de28f61f5b4d5b249678ec2e11",
+      "source_fact_keys": [
+        "source_fact:v1:1695939468bc99df8a08a3c21f58576a5012d19babf242fc00fed5f50d991023",
+        "source_fact:v1:17b7b53a498953a0e6e470e1cdcfc5094bf4eae9115a7f4dd85fbd098f5e55f1",
+        "source_fact:v1:3126f4750b1ab135af10857637cc8ccaad6008551328c96a709af34ff9089e75",
+        "source_fact:v1:950c4348b23cd78cea5cd53d028a13269b20e495cce8f9271009e654f0fe2857",
+        "source_fact:v1:b4c4dbe3af12ee23349d34927e97bf0c1d344dd2fb311086d2fc5c931d445b74",
+        "source_fact:v1:eea3c400faca7f1f2e1a767309c988db0bb3a4969e65abb532ee377a935cdd2e"
+      ],
+      "source_published_kst": "2026-10-28T11:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스",
+      "telegram_core_fact": "미 환경보호청(EPA)은 메탄을 대량 방출하는 유정에 대한 규제를 완화하는 방안을 준비하고 있다.",
+      "title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스"
     },
     "source_fact:9322ca692ed3f85f2c09bece": {
       "first_seen_kst": "2026-10-07T12:28:05+09:00",
@@ -1018096,6 +1019191,31 @@
       "source_title": "\"엔스케일, IPO 기업가치 낮추라 압박 직면\" | 연합뉴스",
       "telegram_core_fact": "블룸버그 통신은 소식통을 인용해 엔스케일이 약 300억달러(약 40조3천억원)의 IPO 기업가치를 추진해 왔으나 일부 투자자가 160억∼190억달러(약 21조5천억∼25조5천억원)의 기업가치를 제시하며 반대하고 있다고 보도했다.",
       "title": "\"엔스케일, IPO 기업가치 낮추라 압박 직면\" | 연합뉴스"
+    },
+    "source_fact:9659f2be19ebe95a0b4bf6c9": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182728",
+      "source": "매일경제",
+      "source_body_digest": "65412d7a5943eb9f6701a03ea6a3fd2ec1d957749668ae529cfc98e30225d59b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7967a4bb17e8f629f0c3c8bdadd349ba757498f300a2a86172164c84ebdb1f8d",
+      "source_fact_keys": [
+        "source_fact:v1:065da7001ecc6e3f16714cca6f305ef2b54534910c7f5767a32780f72caa1e34",
+        "source_fact:v1:2fb6d02d38bdba651deb3809cd01eb0fa316fce10fc29571c037ccad1b54825f",
+        "source_fact:v1:33465d5e249d8c6f763e863e1a18bc58e379b9dc43067931752b7d46ff899665",
+        "source_fact:v1:515de942630129b17d3fac60ba1d7340641bc7727f3b3290fc5d329e46626a31",
+        "source_fact:v1:592647d4f617c147d254a8fcd7e5d916d1b45b33fd2ab35740fa6f11ea6a7c4a",
+        "source_fact:v1:aab218e72c0f0834f33c73596315268b9221ffb4ee2c237b633fb0b499142214"
+      ],
+      "source_published_kst": "2026-10-28T08:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약",
+      "telegram_core_fact": "협약에 따라 이들 기업은 천안과 아산의 산업단지 등에 총 3억9천630만 달러(약 5천382억원)를 투자해 생산시설을 신설하거나 증설한다. 충남도는 미국에서 글로벌 첨단소재 기업 3곳과 약 5천억원 투자협약을 체결했다고 28일 밝혔다.",
+      "title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약"
     },
     "source_fact:965b2a21d7aed1764fff7f7e": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
@@ -1031937,6 +1033057,31 @@
       "source_title": "필립 모리스 인터내셔널, 3분기 매출 114억달러·5.5%↑..배당 8.8% 인상",
       "telegram_core_fact": "필립 모리스 인터내셔널(PM)이 3분기 매출액 114억3800만 달러로 전년비 5.5% 증가했고, 비GAAP 조정 희석 주당순이익(EPS)은 2.36달러로 5.4% 늘어 분기 기준 역대 최고치를 새로 썼다고 10월 21일 발표했다.",
       "title": "필립 모리스 인터내셔널, 3분기 매출 114억달러·5.5%↑..배당 8.8% 인상"
+    },
+    "source_fact:9b63b5f4340aff80a3be1b84": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.mk.co.kr/news/business/12188243",
+      "source": "매일경제",
+      "source_body_digest": "e30a7b6f619a1c0be56cd410166eab7a42748937651851bad4e53b0e81919750",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9a762d0da888584f5cf2dddb517363407ee315986266d52f0e6f6a38f40438f",
+      "source_fact_keys": [
+        "source_fact:v1:2001d8d7cebf532298f284c4cfb0fb899a155a006dc23eae10315158d8907905",
+        "source_fact:v1:5bd3cda17ffa503add88d8a42cd0b85b92f348401f63dea8bbf1923e0f93b33c",
+        "source_fact:v1:66c3203912ef043f5bcd5125d48f7d5614ceba33417584c4f4f911955f2bf238",
+        "source_fact:v1:a85d995071af93b40118d78775cb66f70c6d04b60088feff557dc2aa5a0770d2",
+        "source_fact:v1:b1e261b4d197a666852350bee581007e886915e635d41f4e698c51f4a8d3b393",
+        "source_fact:v1:f9e00d9d8646707d12ba3f84e8976effe1012dfa7becf4e04290062a2b12b1ea"
+      ],
+      "source_published_kst": "2026-10-28T11:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략",
+      "telegram_core_fact": "K2 전차용 국산 엔진을 공급하는 HD건설기계는 신공장을 통해 방산 엔진의 중장기 물량 증가에도 대응한다.",
+      "title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략"
     },
     "source_fact:9b672d50f111adb4b3da48e5": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
@@ -1068031,6 +1069176,31 @@
       "telegram_core_fact": "이날 닛케이 아시아에 따르면 애플은 지난 9월 초부터 출하량에 대해 보수적인 태도를 취해왔으며, 10월 부품 주문량은 당초 예상보다 15%에서 20%가량 줄어든 것으로 나타났다. 애플이 최근 출시한 아이폰 18 프로와 프로 맥스 부품 생산을 일부 협력사에 감축하라고 통보했다고 전해지며 개장 전 하락세다.",
       "title": "[美특징주]애플, 아이폰18 프로 부품 주문 20% 감축 보도에 개장전↓"
     },
+    "source_fact:a84c68074af84f912e076ea2": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.mk.co.kr/news/business/12188243",
+      "source": "매일경제",
+      "source_body_digest": "e30a7b6f619a1c0be56cd410166eab7a42748937651851bad4e53b0e81919750",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9a762d0da888584f5cf2dddb517363407ee315986266d52f0e6f6a38f40438f",
+      "source_fact_keys": [
+        "source_fact:v1:2001d8d7cebf532298f284c4cfb0fb899a155a006dc23eae10315158d8907905",
+        "source_fact:v1:5bd3cda17ffa503add88d8a42cd0b85b92f348401f63dea8bbf1923e0f93b33c",
+        "source_fact:v1:66c3203912ef043f5bcd5125d48f7d5614ceba33417584c4f4f911955f2bf238",
+        "source_fact:v1:a85d995071af93b40118d78775cb66f70c6d04b60088feff557dc2aa5a0770d2",
+        "source_fact:v1:b1e261b4d197a666852350bee581007e886915e635d41f4e698c51f4a8d3b393",
+        "source_fact:v1:f9e00d9d8646707d12ba3f84e8976effe1012dfa7becf4e04290062a2b12b1ea"
+      ],
+      "source_published_kst": "2026-10-28T11:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략",
+      "telegram_core_fact": "K2 전차용 국산 엔진을 공급하는 HD건설기계는 신공장을 통해 방산 엔진의 중장기 물량 증가에도 대응한다.",
+      "title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략"
+    },
     "source_fact:a852fc7fe9c3a36a3fff5308": {
       "first_seen_kst": "2026-10-23T03:32:06+09:00",
       "lanes": {
@@ -1080087,6 +1081257,31 @@
       "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
       "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
     },
+    "source_fact:acaf501d4d1a1fda7b90aa50": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028096100009",
+      "source": "연합뉴스",
+      "source_body_digest": "54f713c8c0528daecaecd865da183f4e7893c9251699ae506c77feba0bb7474a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06684a2a785eb67b054198d79a682fda381a29de28f61f5b4d5b249678ec2e11",
+      "source_fact_keys": [
+        "source_fact:v1:1695939468bc99df8a08a3c21f58576a5012d19babf242fc00fed5f50d991023",
+        "source_fact:v1:17b7b53a498953a0e6e470e1cdcfc5094bf4eae9115a7f4dd85fbd098f5e55f1",
+        "source_fact:v1:3126f4750b1ab135af10857637cc8ccaad6008551328c96a709af34ff9089e75",
+        "source_fact:v1:950c4348b23cd78cea5cd53d028a13269b20e495cce8f9271009e654f0fe2857",
+        "source_fact:v1:b4c4dbe3af12ee23349d34927e97bf0c1d344dd2fb311086d2fc5c931d445b74",
+        "source_fact:v1:eea3c400faca7f1f2e1a767309c988db0bb3a4969e65abb532ee377a935cdd2e"
+      ],
+      "source_published_kst": "2026-10-28T11:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스",
+      "telegram_core_fact": "미 환경보호청(EPA)은 메탄을 대량 방출하는 유정에 대한 규제를 완화하는 방안을 준비하고 있다.",
+      "title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스"
+    },
     "source_fact:acb0425c61a99ecbd7792360": {
       "first_seen_kst": "2026-10-12T13:36:34+09:00",
       "lanes": {
@@ -1091193,6 +1092388,31 @@
       "telegram_core_fact": "이상재 드림텍 DS사업 부문장은 “이번 출하는 북미 하이퍼스케일러의 퀄 테스트와 최종 승인을 거쳐 실제 공급을 시작했다는 데 의미가 있다”며 “이번에 양산공급하는 D램 모듈뿐 아니라 SSD, PSSD 등 지속적으로 메모리 산업 내에서 생산할 수 있는 제품군을 확대해 나갈 계획이다”고 밝혔다.",
       "title": "드림텍, 북미 하이퍼스케일러향 서버 메모리 출하…“인도 생산능력 3배 확대”"
     },
+    "source_fact:b0a7b538f4ba6c17ae3305c4": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182728",
+      "source": "매일경제",
+      "source_body_digest": "65412d7a5943eb9f6701a03ea6a3fd2ec1d957749668ae529cfc98e30225d59b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7967a4bb17e8f629f0c3c8bdadd349ba757498f300a2a86172164c84ebdb1f8d",
+      "source_fact_keys": [
+        "source_fact:v1:065da7001ecc6e3f16714cca6f305ef2b54534910c7f5767a32780f72caa1e34",
+        "source_fact:v1:2fb6d02d38bdba651deb3809cd01eb0fa316fce10fc29571c037ccad1b54825f",
+        "source_fact:v1:33465d5e249d8c6f763e863e1a18bc58e379b9dc43067931752b7d46ff899665",
+        "source_fact:v1:515de942630129b17d3fac60ba1d7340641bc7727f3b3290fc5d329e46626a31",
+        "source_fact:v1:592647d4f617c147d254a8fcd7e5d916d1b45b33fd2ab35740fa6f11ea6a7c4a",
+        "source_fact:v1:aab218e72c0f0834f33c73596315268b9221ffb4ee2c237b633fb0b499142214"
+      ],
+      "source_published_kst": "2026-10-28T08:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약",
+      "telegram_core_fact": "협약에 따라 이들 기업은 천안과 아산의 산업단지 등에 총 3억9천630만 달러(약 5천382억원)를 투자해 생산시설을 신설하거나 증설한다. 충남도는 미국에서 글로벌 첨단소재 기업 3곳과 약 5천억원 투자협약을 체결했다고 28일 밝혔다.",
+      "title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약"
+    },
     "source_fact:b0a8625e7f4b962d49f5fa3e": {
       "first_seen_kst": "2026-10-21T17:12:46+09:00",
       "lanes": {
@@ -1095169,6 +1096389,31 @@
       "source_title": "3959억 장성 데이터센터 출자안 통과…회수·상생은 과제",
       "telegram_core_fact": "3959억원 장성 데이터센터 건립을 위한 전남광주통합특별시의 출자 동의안이 의회 본회의를 통과했다. 박정환 AI모빌리티국장은 이에 \"62억원은 현 단계 예상치\"라며 \"보통주는 배당이 없는 대신 청산 시 예상 수익률이 종류주보다 높고, 시 출자 한도는 48억원으로 추가 출자나 손실 보전 의무는 없다\"고 밝혔다.",
       "title": "3959억 장성 데이터센터 출자안 통과…회수·상생은 과제"
+    },
+    "source_fact:b20fac3368844d7713028b33": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.mk.co.kr/news/business/12188243",
+      "source": "매일경제",
+      "source_body_digest": "e30a7b6f619a1c0be56cd410166eab7a42748937651851bad4e53b0e81919750",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9a762d0da888584f5cf2dddb517363407ee315986266d52f0e6f6a38f40438f",
+      "source_fact_keys": [
+        "source_fact:v1:2001d8d7cebf532298f284c4cfb0fb899a155a006dc23eae10315158d8907905",
+        "source_fact:v1:5bd3cda17ffa503add88d8a42cd0b85b92f348401f63dea8bbf1923e0f93b33c",
+        "source_fact:v1:66c3203912ef043f5bcd5125d48f7d5614ceba33417584c4f4f911955f2bf238",
+        "source_fact:v1:a85d995071af93b40118d78775cb66f70c6d04b60088feff557dc2aa5a0770d2",
+        "source_fact:v1:b1e261b4d197a666852350bee581007e886915e635d41f4e698c51f4a8d3b393",
+        "source_fact:v1:f9e00d9d8646707d12ba3f84e8976effe1012dfa7becf4e04290062a2b12b1ea"
+      ],
+      "source_published_kst": "2026-10-28T11:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략",
+      "telegram_core_fact": "K2 전차용 국산 엔진을 공급하는 HD건설기계는 신공장을 통해 방산 엔진의 중장기 물량 증가에도 대응한다.",
+      "title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략"
     },
     "source_fact:b2100b93c33246a09f6909f8": {
       "first_seen_kst": "2026-10-28T22:13:25+09:00",
@@ -1130187,6 +1131432,31 @@
       "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
       "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
     },
+    "source_fact:bf08e922663d92ac8febdfeb": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028096100009",
+      "source": "연합뉴스",
+      "source_body_digest": "54f713c8c0528daecaecd865da183f4e7893c9251699ae506c77feba0bb7474a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06684a2a785eb67b054198d79a682fda381a29de28f61f5b4d5b249678ec2e11",
+      "source_fact_keys": [
+        "source_fact:v1:1695939468bc99df8a08a3c21f58576a5012d19babf242fc00fed5f50d991023",
+        "source_fact:v1:17b7b53a498953a0e6e470e1cdcfc5094bf4eae9115a7f4dd85fbd098f5e55f1",
+        "source_fact:v1:3126f4750b1ab135af10857637cc8ccaad6008551328c96a709af34ff9089e75",
+        "source_fact:v1:950c4348b23cd78cea5cd53d028a13269b20e495cce8f9271009e654f0fe2857",
+        "source_fact:v1:b4c4dbe3af12ee23349d34927e97bf0c1d344dd2fb311086d2fc5c931d445b74",
+        "source_fact:v1:eea3c400faca7f1f2e1a767309c988db0bb3a4969e65abb532ee377a935cdd2e"
+      ],
+      "source_published_kst": "2026-10-28T11:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스",
+      "telegram_core_fact": "미 환경보호청(EPA)은 메탄을 대량 방출하는 유정에 대한 규제를 완화하는 방안을 준비하고 있다.",
+      "title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스"
+    },
     "source_fact:bf09dbf0fa47cc7977b3a615": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
       "lanes": {
@@ -1155762,6 +1157032,36 @@
       "telegram_core_fact": "증권가 컨센서스에 따르면 글로벌 십 리즈의 2026년 매출액은 7억6450만 달러로 전년 대비 0.26% 감소할 것으로 예상된다.",
       "title": "글로벌 십 리즈, 중형선 2척 추가 발주..1억6300만 달러 투입"
     },
+    "source_fact:c80c32b0ef22f1ccad170771": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
+    },
     "source_fact:c8101524319d02079fc4666b": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -1156809,6 +1158109,31 @@
       "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
       "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
       "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
+    "source_fact:c8800db697a4cb49c88fdec0": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.mk.co.kr/news/business/12188243",
+      "source": "매일경제",
+      "source_body_digest": "e30a7b6f619a1c0be56cd410166eab7a42748937651851bad4e53b0e81919750",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9a762d0da888584f5cf2dddb517363407ee315986266d52f0e6f6a38f40438f",
+      "source_fact_keys": [
+        "source_fact:v1:2001d8d7cebf532298f284c4cfb0fb899a155a006dc23eae10315158d8907905",
+        "source_fact:v1:5bd3cda17ffa503add88d8a42cd0b85b92f348401f63dea8bbf1923e0f93b33c",
+        "source_fact:v1:66c3203912ef043f5bcd5125d48f7d5614ceba33417584c4f4f911955f2bf238",
+        "source_fact:v1:a85d995071af93b40118d78775cb66f70c6d04b60088feff557dc2aa5a0770d2",
+        "source_fact:v1:b1e261b4d197a666852350bee581007e886915e635d41f4e698c51f4a8d3b393",
+        "source_fact:v1:f9e00d9d8646707d12ba3f84e8976effe1012dfa7becf4e04290062a2b12b1ea"
+      ],
+      "source_published_kst": "2026-10-28T11:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략",
+      "telegram_core_fact": "K2 전차용 국산 엔진을 공급하는 HD건설기계는 신공장을 통해 방산 엔진의 중장기 물량 증가에도 대응한다.",
+      "title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략"
     },
     "source_fact:c882a48bc4a2550a4c13e5fa": {
       "first_seen_kst": "2026-10-22T07:08:27+09:00",
@@ -1178376,6 +1179701,36 @@
       "telegram_core_fact": "현대차·기아는 2026년 11월 개발을 목표로 하고 있으며, 2027년 6월 화성 공장에서 양산 검증을 시작한 뒤 울산 등으로 확대할 계획이다.",
       "title": "AI가 판단하고 로봇이 움직여 車만든다…현대차·기아 2032년 자율공장 도입"
     },
+    "source_fact:d09182569b724be153f7c2dc": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
+    },
     "source_fact:d09220e76da28abe2c7e5676": {
       "first_seen_kst": "2026-10-28T13:58:54+09:00",
       "lanes": {
@@ -1187140,6 +1188495,31 @@
       "source_title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목",
       "telegram_core_fact": "삼성전자와 SK하이닉스가 총 55조원 자사주 매입을 마무리하면서, 이달 말 실적발표를 통해 추가로 주주환원 정책을 내놓을 지 주목되고 있다.",
       "title": "삼성전자·SK하이닉스, 55조 자사주 매입 완료…이달 말 주주환원 발표에 이목"
+    },
+    "source_fact:d3f74909aea8d157d944dfb9": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182728",
+      "source": "매일경제",
+      "source_body_digest": "65412d7a5943eb9f6701a03ea6a3fd2ec1d957749668ae529cfc98e30225d59b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7967a4bb17e8f629f0c3c8bdadd349ba757498f300a2a86172164c84ebdb1f8d",
+      "source_fact_keys": [
+        "source_fact:v1:065da7001ecc6e3f16714cca6f305ef2b54534910c7f5767a32780f72caa1e34",
+        "source_fact:v1:2fb6d02d38bdba651deb3809cd01eb0fa316fce10fc29571c037ccad1b54825f",
+        "source_fact:v1:33465d5e249d8c6f763e863e1a18bc58e379b9dc43067931752b7d46ff899665",
+        "source_fact:v1:515de942630129b17d3fac60ba1d7340641bc7727f3b3290fc5d329e46626a31",
+        "source_fact:v1:592647d4f617c147d254a8fcd7e5d916d1b45b33fd2ab35740fa6f11ea6a7c4a",
+        "source_fact:v1:aab218e72c0f0834f33c73596315268b9221ffb4ee2c237b633fb0b499142214"
+      ],
+      "source_published_kst": "2026-10-28T08:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약",
+      "telegram_core_fact": "협약에 따라 이들 기업은 천안과 아산의 산업단지 등에 총 3억9천630만 달러(약 5천382억원)를 투자해 생산시설을 신설하거나 증설한다. 충남도는 미국에서 글로벌 첨단소재 기업 3곳과 약 5천억원 투자협약을 체결했다고 28일 밝혔다.",
+      "title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약"
     },
     "source_fact:d3f966863e9697e7e313d3d0": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
@@ -1230054,6 +1231434,31 @@
       "source_title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’",
       "telegram_core_fact": "코스피가 12일 삼성전자(005930)와 SK하이닉스(000660) 동반 약세로 인해 장중 3% 넘게 급락해 결국 6400선까지 밀렸다.",
       "title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’"
+    },
+    "source_fact:e3bd23db649a7a2d63520fb8": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.mk.co.kr/news/business/12188243",
+      "source": "매일경제",
+      "source_body_digest": "e30a7b6f619a1c0be56cd410166eab7a42748937651851bad4e53b0e81919750",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9a762d0da888584f5cf2dddb517363407ee315986266d52f0e6f6a38f40438f",
+      "source_fact_keys": [
+        "source_fact:v1:2001d8d7cebf532298f284c4cfb0fb899a155a006dc23eae10315158d8907905",
+        "source_fact:v1:5bd3cda17ffa503add88d8a42cd0b85b92f348401f63dea8bbf1923e0f93b33c",
+        "source_fact:v1:66c3203912ef043f5bcd5125d48f7d5614ceba33417584c4f4f911955f2bf238",
+        "source_fact:v1:a85d995071af93b40118d78775cb66f70c6d04b60088feff557dc2aa5a0770d2",
+        "source_fact:v1:b1e261b4d197a666852350bee581007e886915e635d41f4e698c51f4a8d3b393",
+        "source_fact:v1:f9e00d9d8646707d12ba3f84e8976effe1012dfa7becf4e04290062a2b12b1ea"
+      ],
+      "source_published_kst": "2026-10-28T11:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략",
+      "telegram_core_fact": "K2 전차용 국산 엔진을 공급하는 HD건설기계는 신공장을 통해 방산 엔진의 중장기 물량 증가에도 대응한다.",
+      "title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략"
     },
     "source_fact:e3be336c6744dc24abe9dae0": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -1283882,6 +1285287,27 @@
       "telegram_core_fact": "함펠 총괄은 “한국 고객들이 최신 도미노 기술을 기반으로 성공적인 디지털 전환과 AI 도입을 추진할 수 있도록 본사 차원의 관심과 지원을 지속적으로 확대할 계획”이라며 “KDUG 커뮤니티 활성화와 함께 국내 파트너들과의 기술 협력을 강화해 한국 고객들의 요구에 보다 긴밀하게 대응하겠다”고 말했다.",
       "title": "HCL소프트웨어, 소버린 AI로 한국 공략…“도미노 고객·파트너 지원 확대”"
     },
+    "source_fact:f81b169940a605838e74a8ee": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.etnews.com/20261028000174",
+      "source": "전자신문",
+      "source_body_digest": "00085b4ae231c1d2e40c9d9e53e4948c8307651fdf49dbf52494171e95a06b7a",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:8ea9fe0efbef2172d71bd7c5eba98ce284f2478183479ad20c9c18fe2689fc03",
+      "source_fact_identity": "source_facts:v1:3a287cbb64ca43f12f55c1e7d126bcfb91784f09eadadedee6663170cf2f3f4d",
+      "source_fact_keys": [
+        "source_fact:v1:39ebfeaf37f34145b68cfb2f392efb376ddbdc64eaaeb0d85705c56e9e6a0138",
+        "source_fact:v1:d89edadb78ffb90093d02313db816b928c32480119002f6530e2ed0a10c4f31b"
+      ],
+      "source_published_kst": "2026-10-28T11:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "PI첨단소재, 3분기 영업이익 125억원",
+      "telegram_core_fact": "PI첨단소재는 2026년 3분기 연결기준 매출액 555억원, 영업이익 125억원을 기록했다고 28일 밝혔다.",
+      "title": "PI첨단소재, 3분기 영업이익 125억원"
+    },
     "source_fact:f81f61f3bf6101843f3a2be5": {
       "first_seen_kst": "2026-10-17T08:22:42+09:00",
       "lanes": {
@@ -1285070,6 +1286496,31 @@
       ],
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
+    },
+    "source_fact:f8a02e2f752d030f71c49193": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028096100009",
+      "source": "연합뉴스",
+      "source_body_digest": "54f713c8c0528daecaecd865da183f4e7893c9251699ae506c77feba0bb7474a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06684a2a785eb67b054198d79a682fda381a29de28f61f5b4d5b249678ec2e11",
+      "source_fact_keys": [
+        "source_fact:v1:1695939468bc99df8a08a3c21f58576a5012d19babf242fc00fed5f50d991023",
+        "source_fact:v1:17b7b53a498953a0e6e470e1cdcfc5094bf4eae9115a7f4dd85fbd098f5e55f1",
+        "source_fact:v1:3126f4750b1ab135af10857637cc8ccaad6008551328c96a709af34ff9089e75",
+        "source_fact:v1:950c4348b23cd78cea5cd53d028a13269b20e495cce8f9271009e654f0fe2857",
+        "source_fact:v1:b4c4dbe3af12ee23349d34927e97bf0c1d344dd2fb311086d2fc5c931d445b74",
+        "source_fact:v1:eea3c400faca7f1f2e1a767309c988db0bb3a4969e65abb532ee377a935cdd2e"
+      ],
+      "source_published_kst": "2026-10-28T11:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스",
+      "telegram_core_fact": "미 환경보호청(EPA)은 메탄을 대량 방출하는 유정에 대한 규제를 완화하는 방안을 준비하고 있다.",
+      "title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스"
     },
     "source_fact:f8a4e1b918e76b557b2b4fd6": {
       "first_seen_kst": "2026-10-25T18:34:20+09:00",
@@ -1290860,6 +1292311,31 @@
       "source_published_kst": "2026-10-06T20:29+09:00",
       "title": "[올댓차이나] 홍콩 증시, 뉴욕 증시 강세에 이틀째 상승 마감… H주 0.96%↑"
     },
+    "source_fact:fafbbc094f5b0259b2a9b8d0": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182728",
+      "source": "매일경제",
+      "source_body_digest": "65412d7a5943eb9f6701a03ea6a3fd2ec1d957749668ae529cfc98e30225d59b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7967a4bb17e8f629f0c3c8bdadd349ba757498f300a2a86172164c84ebdb1f8d",
+      "source_fact_keys": [
+        "source_fact:v1:065da7001ecc6e3f16714cca6f305ef2b54534910c7f5767a32780f72caa1e34",
+        "source_fact:v1:2fb6d02d38bdba651deb3809cd01eb0fa316fce10fc29571c037ccad1b54825f",
+        "source_fact:v1:33465d5e249d8c6f763e863e1a18bc58e379b9dc43067931752b7d46ff899665",
+        "source_fact:v1:515de942630129b17d3fac60ba1d7340641bc7727f3b3290fc5d329e46626a31",
+        "source_fact:v1:592647d4f617c147d254a8fcd7e5d916d1b45b33fd2ab35740fa6f11ea6a7c4a",
+        "source_fact:v1:aab218e72c0f0834f33c73596315268b9221ffb4ee2c237b633fb0b499142214"
+      ],
+      "source_published_kst": "2026-10-28T08:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약",
+      "telegram_core_fact": "협약에 따라 이들 기업은 천안과 아산의 산업단지 등에 총 3억9천630만 달러(약 5천382억원)를 투자해 생산시설을 신설하거나 증설한다. 충남도는 미국에서 글로벌 첨단소재 기업 3곳과 약 5천억원 투자협약을 체결했다고 28일 밝혔다.",
+      "title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약"
+    },
     "source_fact:fafcff598986d649da05c27a": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -1292983,6 +1294459,31 @@
       "telegram_core_fact": "구체적인 내용은 공개되지 않았지만, 외신 보도를 종합하면 미국의 해상봉쇄 해제, 동결자금 즉시 반환, 이란산 원유 수출 제재 면제, 모든 전선에서 전투 중단 등의 조건을 미국이 이행하면 호르무즈 해협을 재개방하겠다는 내용이 담긴 것으로 추정된다.",
       "title": "이란, 美에 \"호르무즈 개방 '7일 계획' 여전히 유효\" | 연합뉴스"
     },
+    "source_fact:fbaf30815c2b9614bc5340d6": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.mk.co.kr/news/business/12188243",
+      "source": "매일경제",
+      "source_body_digest": "e30a7b6f619a1c0be56cd410166eab7a42748937651851bad4e53b0e81919750",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9a762d0da888584f5cf2dddb517363407ee315986266d52f0e6f6a38f40438f",
+      "source_fact_keys": [
+        "source_fact:v1:2001d8d7cebf532298f284c4cfb0fb899a155a006dc23eae10315158d8907905",
+        "source_fact:v1:5bd3cda17ffa503add88d8a42cd0b85b92f348401f63dea8bbf1923e0f93b33c",
+        "source_fact:v1:66c3203912ef043f5bcd5125d48f7d5614ceba33417584c4f4f911955f2bf238",
+        "source_fact:v1:a85d995071af93b40118d78775cb66f70c6d04b60088feff557dc2aa5a0770d2",
+        "source_fact:v1:b1e261b4d197a666852350bee581007e886915e635d41f4e698c51f4a8d3b393",
+        "source_fact:v1:f9e00d9d8646707d12ba3f84e8976effe1012dfa7becf4e04290062a2b12b1ea"
+      ],
+      "source_published_kst": "2026-10-28T11:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략",
+      "telegram_core_fact": "K2 전차용 국산 엔진을 공급하는 HD건설기계는 신공장을 통해 방산 엔진의 중장기 물량 증가에도 대응한다.",
+      "title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략"
+    },
     "source_fact:fbb29df4ff5d364b9d6a753b": {
       "first_seen_kst": "2026-10-13T00:43:08+09:00",
       "lanes": {
@@ -1295097,6 +1296598,36 @@
       "source_title": "하나證 “패키지 기판, AI 공급망 핵심 병목 부상⋯삼성전기·대덕전자 최선호”",
       "telegram_core_fact": "최근 삼성전기가 체결한 약 3600억원 패키지 기판 공급계약이 대표 사례로 꼽혔다.",
       "title": "하나證 “패키지 기판, AI 공급망 핵심 병목 부상⋯삼성전기·대덕전자 최선호”"
+    },
+    "source_fact:fc6c9425457484b7f2aeee62": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
     },
     "source_fact:fc6fd5123e0e9a449ae8cf06": {
       "first_seen_kst": "2026-10-24T12:47:38+09:00",
@@ -1322764,6 +1324295,31 @@
       "source": "머니투데이",
       "title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비"
     },
+    "title:1c55babe1a93ab54e271b80a": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.mk.co.kr/news/business/12188243",
+      "source": "매일경제",
+      "source_body_digest": "e30a7b6f619a1c0be56cd410166eab7a42748937651851bad4e53b0e81919750",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9a762d0da888584f5cf2dddb517363407ee315986266d52f0e6f6a38f40438f",
+      "source_fact_keys": [
+        "source_fact:v1:2001d8d7cebf532298f284c4cfb0fb899a155a006dc23eae10315158d8907905",
+        "source_fact:v1:5bd3cda17ffa503add88d8a42cd0b85b92f348401f63dea8bbf1923e0f93b33c",
+        "source_fact:v1:66c3203912ef043f5bcd5125d48f7d5614ceba33417584c4f4f911955f2bf238",
+        "source_fact:v1:a85d995071af93b40118d78775cb66f70c6d04b60088feff557dc2aa5a0770d2",
+        "source_fact:v1:b1e261b4d197a666852350bee581007e886915e635d41f4e698c51f4a8d3b393",
+        "source_fact:v1:f9e00d9d8646707d12ba3f84e8976effe1012dfa7becf4e04290062a2b12b1ea"
+      ],
+      "source_published_kst": "2026-10-28T11:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략",
+      "telegram_core_fact": "K2 전차용 국산 엔진을 공급하는 HD건설기계는 신공장을 통해 방산 엔진의 중장기 물량 증가에도 대응한다.",
+      "title": "HD건설기계, 군산 엔진 신공장 준공…AI 데이터센터 시장 공략"
+    },
     "title:1c5f7ea4bcfe17bfb7a0919b": {
       "first_seen_kst": "2026-10-03T19:34:33+09:00",
       "lanes": {
@@ -1339544,6 +1341100,36 @@
       ],
       "source_published_kst": "2026-10-06T15:48+09:00",
       "title": "LG이노텍, 美서 HBM 적용 패키지 특허 공개…AI 기판 IP 넓힌다"
+    },
+    "title:35481541a96d33f9c8b20f48": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183510",
+      "source": "매일경제",
+      "source_body_digest": "3b2a1f4f0cb48dcb7f3acad79302d9703fba6f616f5149d8c9b17ab6f0c8297e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bda506db6f4d5a3c44a8fe5cc93f8a2b2b03cb4a2a02a628070d561a8d93e11",
+      "source_fact_keys": [
+        "source_fact:v1:1baff622f153a44b170e1b5f8347453f05964ad9edf7fec926a3b71600a618d6",
+        "source_fact:v1:1d585af1966aa35d84685bbb47ccc0619d99bfd7af3e0f56fcff4b32a544b8f4",
+        "source_fact:v1:67336b6386675141d3f5e75c0b4af9842ae890ef9cc1ec0b149dcdf5ba9c9053",
+        "source_fact:v1:89255065b33b3ba48255baa2f8d922891810f11e61060c2c5bc7cb41fca34338",
+        "source_fact:v1:8fb338f4efbb398107b8f44c005b39f93df73ba79ab3d2321f7a2b23290d8721",
+        "source_fact:v1:96e83c3d0426e79eab10edb7b87cf682c95a82e28e613d1dc9b9d6d13055830e",
+        "source_fact:v1:ba6804f3763f2026a3cb1913392e149bb87fe7d4b79e49a29b57a4a7fb941b15",
+        "source_fact:v1:bf5328601a5fa75a526892457b31b7af83a5a293c238b0e66399f4db351f64c7",
+        "source_fact:v1:ee80b4ac69913b773901986be121ebfa2045af1615f68256f05f1b051630eb58",
+        "source_fact:v1:f85024610338a10bdd9565ec68a32f252c46067c244efffec1c4f0a3af183dcf",
+        "source_fact:v1:ff59405110f6965b82fd2db98b8aaf2676fa1db9c66c5e306d29363ab3f134dc"
+      ],
+      "source_published_kst": "2026-10-28T22:45+09:00",
+      "source_supply_terms": {},
+      "source_title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상",
+      "telegram_core_fact": "암페놀(APH)은 올해 3분기 매출액이 102억2970만 달러로 전년비 65% 증가했고, Non-GAAP 조정 희석 주당순이익이 0.80달러로 74% 늘어 분기 기준 사상 최대치를 기록했다고 10월 28일 발표했다.",
+      "title": "암페놀, 3분기 매출 102억 달러·65%↑..배당 20% 인상"
     },
     "title:354e98cf5133d0e4e3f6391a": {
       "first_seen_kst": "2026-10-27T15:38:53+09:00",
@@ -1363913,6 +1365499,24 @@
       "source": "연합뉴스",
       "title": "엔비디아 경쟁사 AMD, 시총 1조달러 첫 돌파…美반도체사 4번째 | 연합뉴스"
     },
+    "title:5a63bdcad8e149c3c7265aeb": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183513",
+      "source": "매일경제",
+      "source_body_digest": "b231dc70c3625b0ea3caeb674bd59162ae73f667933a5e137b96ce11015c2524",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T22:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "원스파월드, 사상 최대 분기 실적에 가이던스 상향·주주환원 확대 소식에 강세",
+      "telegram_core_fact": "연간 매출과 EBITDA 가이던스 하단을 올렸고, 1억 달러 규모 신규 자사주 매입과 분기 배당금 25% 인상도 발표했습니다.",
+      "title": "원스파월드, 사상 최대 분기 실적에 가이던스 상향·주주환원 확대 소식에 강세"
+    },
     "title:5a691fdf5866aeda6da408bc": {
       "first_seen_kst": "2026-10-25T18:34:20+09:00",
       "lanes": {
@@ -1388167,6 +1389771,31 @@
       "source_title": "미래운용, '스테이트타워 남산' 매각 추진…KIC 등 입주 | 연합뉴스",
       "telegram_core_fact": "투자은행(IB) 업계에 따르면 미래에셋자산운용은 최근 스테이트타워 남산 매각 가능성을 검토 중인 것으로 알려졌다. 미래에셋자산운용이 서울 도심권(CBD)의 대형 오피스인 스테이트타워 남산을 인수한 지 7년여 만에 매각한다.",
       "title": "미래운용, '스테이트타워 남산' 매각 추진…KIC 등 입주 | 연합뉴스"
+    },
+    "title:80036553178c1726be85a64b": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182728",
+      "source": "매일경제",
+      "source_body_digest": "65412d7a5943eb9f6701a03ea6a3fd2ec1d957749668ae529cfc98e30225d59b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7967a4bb17e8f629f0c3c8bdadd349ba757498f300a2a86172164c84ebdb1f8d",
+      "source_fact_keys": [
+        "source_fact:v1:065da7001ecc6e3f16714cca6f305ef2b54534910c7f5767a32780f72caa1e34",
+        "source_fact:v1:2fb6d02d38bdba651deb3809cd01eb0fa316fce10fc29571c037ccad1b54825f",
+        "source_fact:v1:33465d5e249d8c6f763e863e1a18bc58e379b9dc43067931752b7d46ff899665",
+        "source_fact:v1:515de942630129b17d3fac60ba1d7340641bc7727f3b3290fc5d329e46626a31",
+        "source_fact:v1:592647d4f617c147d254a8fcd7e5d916d1b45b33fd2ab35740fa6f11ea6a7c4a",
+        "source_fact:v1:aab218e72c0f0834f33c73596315268b9221ffb4ee2c237b633fb0b499142214"
+      ],
+      "source_published_kst": "2026-10-28T08:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약",
+      "telegram_core_fact": "협약에 따라 이들 기업은 천안과 아산의 산업단지 등에 총 3억9천630만 달러(약 5천382억원)를 투자해 생산시설을 신설하거나 증설한다. 충남도는 미국에서 글로벌 첨단소재 기업 3곳과 약 5천억원 투자협약을 체결했다고 28일 밝혔다.",
+      "title": "충남도, 미국서 5천382억원 규모 외자유치…3개 기업과 협약"
     },
     "title:80074c1b626f4f602e148aa0": {
       "first_seen_kst": "2026-10-23T03:32:06+09:00",
@@ -1433411,6 +1435040,27 @@
       "telegram_core_fact": "분기배당을 12% 올린 0.48달러로 결정하고 2억 달러 규모 자사주 매입도 새로 승인해 주주환원 강화 기대가 커지고 있습니다.",
       "title": "셀렉티브인슈런스, 3분기 이익 급증에 배당 인상·자사주 매입까지 주목"
     },
+    "title:c50cd37d97555ff263e1b8bd": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.etnews.com/20261028000174",
+      "source": "전자신문",
+      "source_body_digest": "00085b4ae231c1d2e40c9d9e53e4948c8307651fdf49dbf52494171e95a06b7a",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:8ea9fe0efbef2172d71bd7c5eba98ce284f2478183479ad20c9c18fe2689fc03",
+      "source_fact_identity": "source_facts:v1:3a287cbb64ca43f12f55c1e7d126bcfb91784f09eadadedee6663170cf2f3f4d",
+      "source_fact_keys": [
+        "source_fact:v1:39ebfeaf37f34145b68cfb2f392efb376ddbdc64eaaeb0d85705c56e9e6a0138",
+        "source_fact:v1:d89edadb78ffb90093d02313db816b928c32480119002f6530e2ed0a10c4f31b"
+      ],
+      "source_published_kst": "2026-10-28T11:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "PI첨단소재, 3분기 영업이익 125억원",
+      "telegram_core_fact": "PI첨단소재는 2026년 3분기 연결기준 매출액 555억원, 영업이익 125억원을 기록했다고 28일 밝혔다.",
+      "title": "PI첨단소재, 3분기 영업이익 125억원"
+    },
     "title:c52443dbd44ae03a863037e1": {
       "first_seen_kst": "2026-09-19T12:24:36+09:00",
       "lanes": {
@@ -1451969,6 +1453619,31 @@
       "telegram_core_fact": "이처럼 시는 법적 테두리 안에서 사업을 안정적으로 관리하되, 동시 착공·동시 준공 약속이 지켜지지 않을 경우에는 사업 포기 요구를 비롯한 강력한 행정적 제재와 조치에 나선 방침이어서 향후 자광의 대응과 시공사 선정 결과에 지역사회의 이목이 쏠리고 있다.",
       "title": "전주시장, 약속 어긴 자광에 '초강수'…\"사업 포기 요구할 수도\" | 연합뉴스"
     },
+    "title:e19e882528a03bbc7e8c295f": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028096100009",
+      "source": "연합뉴스",
+      "source_body_digest": "54f713c8c0528daecaecd865da183f4e7893c9251699ae506c77feba0bb7474a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06684a2a785eb67b054198d79a682fda381a29de28f61f5b4d5b249678ec2e11",
+      "source_fact_keys": [
+        "source_fact:v1:1695939468bc99df8a08a3c21f58576a5012d19babf242fc00fed5f50d991023",
+        "source_fact:v1:17b7b53a498953a0e6e470e1cdcfc5094bf4eae9115a7f4dd85fbd098f5e55f1",
+        "source_fact:v1:3126f4750b1ab135af10857637cc8ccaad6008551328c96a709af34ff9089e75",
+        "source_fact:v1:950c4348b23cd78cea5cd53d028a13269b20e495cce8f9271009e654f0fe2857",
+        "source_fact:v1:b4c4dbe3af12ee23349d34927e97bf0c1d344dd2fb311086d2fc5c931d445b74",
+        "source_fact:v1:eea3c400faca7f1f2e1a767309c988db0bb3a4969e65abb532ee377a935cdd2e"
+      ],
+      "source_published_kst": "2026-10-28T11:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스",
+      "telegram_core_fact": "미 환경보호청(EPA)은 메탄을 대량 방출하는 유정에 대한 규제를 완화하는 방안을 준비하고 있다.",
+      "title": "트럼프, 석유·가스업계 메탄 배출 규제 완화 선언 | 연합뉴스"
+    },
     "title:e19eae2d7fa7c3452be74e91": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
       "lanes": {
@@ -1452607,6 +1454282,26 @@
       "source_title": "\"결국 美 지수 추종 ETF가 최고 성과\"…계좌 30개 굴려본 저자의 고백",
       "telegram_core_fact": "그는 \"최선을 다해 공부하고 뉴스를 보면서 직접 투자한 결과보다 아무것도 하지 않고 자동으로 매수한 계좌의 성과가 더 좋았다\"며 \"이때부터 미국 지수에 꾸준히 투자하는 것이 더 낫겠다는 확신을 갖게 됐다\"고 설명했다.",
       "title": "\"결국 美 지수 추종 ETF가 최고 성과\"…계좌 30개 굴려본 저자의 고백"
+    },
+    "title:e2e3e17e0c98c42970d90c9d": {
+      "first_seen_kst": "2026-10-28T23:29:55+09:00",
+      "lanes": {
+        "live": "2026-10-28T23:29:55+09:00"
+      },
+      "last_seen_kst": "2026-10-28T23:29:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844487",
+      "source": "뉴시스",
+      "source_body_digest": "ba53560e62c5bc3d30b8c0057e428850faa56a98e2db6e82b328927321b06f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a4fa428d05a189531b2cb1d08d899da2b15c95a2f3b95604e9fde286108c0ad",
+      "source_fact_keys": [
+        "source_fact:v1:c3266043304bbc8b6fabc908ec59056e43b5f25979320e755ce70df1b8cc93d1"
+      ],
+      "source_published_kst": "2026-10-28T14:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안",
+      "telegram_core_fact": "시장에선 이 같은 공급 부족과 편중이 내년 서울 정비사업 이주 수요와 맞물릴 경우 권역에 따라 전월세 수급 불균형이 심화할 수 있다고 본다.",
+      "title": "내년 도봉·동작·송파 등 서울 6개구 입주 '제로'…전월세 불안"
     },
     "title:e2e59e4da8303686414acb0b": {
       "first_seen_kst": "2026-10-22T08:01:37+09:00",
@@ -1470920,5 +1472615,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-28T23:03:01+09:00"
+  "updated_at_kst": "2026-10-28T23:29:55+09:00"
 }
