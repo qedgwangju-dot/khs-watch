@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-29T04:48:40+09:00",
+  "last_checked_kst": "2026-10-29T08:39:37+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": true,
@@ -365,7 +365,7 @@
       },
       {
         "date": "2026-10-28",
-        "value": 3.38
+        "value": 3.36
       }
     ],
     "it10": [
@@ -523,7 +523,7 @@
     "de10": 3.37,
     "uk10": 5.3048,
     "fr_mkt": 4.94,
-    "de_mkt": 3.38,
+    "de_mkt": 3.36,
     "it10": 4.52,
     "uk_mkt": 5.35
   },
@@ -568,8 +568,8 @@
       "review_unverified_after_due:2026-10-23",
       "government_notice:2026-10-23:5c2852fb1bc60309"
     ],
-    "checked_at_kst": "2026-10-29T04:48:45+09:00",
-    "source_fail_streak": 108,
+    "checked_at_kst": "2026-10-29T08:39:52+09:00",
+    "source_fail_streak": 109,
     "source_access": "access_restricted"
   }
 }
