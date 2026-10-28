@@ -1100,7 +1100,12 @@ def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str]
     data_fresh, stale = audited._data_freshness(snapshot)
 
     is_fomc = any("FOMC 전날 점검" in r for r in reasons)
-    title = "🚨 미 국채 CTA · FOMC 전날 점검" if is_fomc else "📅 미 국채 CTA · 월요일 07:00 주간 점검"
+    is_catchup = any("주간점검 지연 복구" in r for r in reasons)
+    title = (
+        "🚨 미 국채 CTA · FOMC 전날 점검" if is_fomc else
+        "📅 미 국채 CTA · 주간 점검 지연 복구" if is_catchup else
+        "📅 미 국채 CTA · 월요일 07:00 주간 점검"
+    )
 
     lines = [
         "<b>👀 지금 쉽게 보면</b>",
@@ -1267,6 +1272,8 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
 
     if any("FOMC 전날 점검" in r for r in reasons):
         title = "🚨 미 국채 CTA · FOMC 전날 점검"
+    elif any("주간점검 지연 복구" in r for r in reasons):
+        title = "📅 미 국채 CTA · 주간 점검 지연 복구"
     else:
         title = "📅 미 국채 CTA · 월요일 주간 점검"
 
@@ -1357,33 +1364,39 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
     }
     fomc_crons = {"40 11 * * 1-5", "47 11 * * 1-5"}
 
-    weekly_missing = current_state.get("last_weekly_report_key") != week_key
-    monday_due = (
-        trigger_event == "schedule"
-        and d.weekday() == 0
-        and now_kst.time() >= time(7, 0)
-        and weekly_missing
-        and (
-            trigger_schedule in weekly_crons
-            # Final safety net: if every dedicated morning cron is dropped,
-            # the first ordinary Monday scheduled poll still sends the report.
-            or trigger_schedule in {
-                "*/15 12-23 * * 1-5",
-                "7,22,37,52 12-22 * * 1-5",
-                "7,22,37 23 * * 1-5",
-            }
-        )
-    )
-    fomc_day = _fomc_report_day(snapshot)
-    fomc_key = fomc_day.isoformat()
-    # Protect the 20:40 pre-decision check from GitHub dropping both
-    # dedicated crons. First normal 21:00+ market poll can retry, strictly
-    # before the actual FOMC 14:00 ET statement; success dedupe is unchanged.
     regular_crons = {
         "*/15 12-23 * * 1-5",
         "7,22,37,52 12-22 * * 1-5",
         "7,22,37 23 * * 1-5",
     }
+    weekly_missing = current_state.get("last_weekly_report_key") != week_key
+    monday_primary_due = (
+        trigger_event == "schedule"
+        and d.weekday() == 0
+        and now_kst.time() >= time(7, 0)
+        and weekly_missing
+        and (trigger_schedule in weekly_crons or trigger_schedule in regular_crons)
+    )
+    # Recovery after a Monday scheduling, validation or delivery failure:
+    # retain the original Monday 07:00 schedule, but do not silently lose the
+    # entire week. The first fresh Tue-Sat regular poll may deliver one
+    # explicitly labelled late weekly report. Never replay old-week data.
+    weekly_catchup_candidate = (
+        trigger_event == "schedule"
+        and 1 <= d.weekday() <= 5
+        and weekly_missing
+        and trigger_schedule in regular_crons
+    )
+    weekly_catchup_due = bool(
+        weekly_catchup_candidate
+        and audited._data_freshness(snapshot)[0]
+    )
+    monday_due = bool(monday_primary_due or weekly_catchup_due)
+    fomc_day = _fomc_report_day(snapshot)
+    fomc_key = fomc_day.isoformat()
+    # Protect the 20:40 pre-decision check from GitHub dropping both
+    # dedicated crons. First normal 21:00+ market poll can retry, strictly
+    # before the actual FOMC 14:00 ET statement; success dedupe is unchanged.
     decision_kst, _ = _fomc_times(fomc_day)
     regular_backup_due = bool(
         trigger_schedule in regular_crons
@@ -1488,8 +1501,9 @@ def scheduled_main() -> int:
             reasons.extend(detail_existing.get("alert_reasons") or [])
         except Exception:
             pass
+    weekly_catchup = bool(monday_due and _checked_date(snapshot).weekday() != 0)
     if monday_due:
-        reasons.append("월요일 정기점검")
+        reasons.append("월요일 정기점검 지연 복구" if weekly_catchup else "월요일 정기점검")
     if fomc_due:
         reasons.append("FOMC 전날 점검")
     if cross_due:
@@ -1542,7 +1556,11 @@ def scheduled_main() -> int:
                 **snapshot,
                 "dedupe_gate": next_state.get("last_gate") or {},
                 "alert_reasons": reasons,
-                "scheduled_delivery": {"monday_weekly": monday_due, "fomc_eve": fomc_due},
+                "scheduled_delivery": {
+                    "monday_weekly": monday_due,
+                    "weekly_catchup": weekly_catchup,
+                    "fomc_eve": fomc_due,
+                },
             },
             ensure_ascii=False,
             indent=2,
@@ -1558,7 +1576,7 @@ def scheduled_main() -> int:
 
     with watcher.STATUS.open("a", encoding="utf-8") as f:
         if monday_due:
-            f.write("- 예약 발송: 월요일 주간 점검\n")
+            f.write("- 예약 발송: 주간 점검 지연 복구\n" if weekly_catchup else "- 예약 발송: 월요일 주간 점검\n")
         if fomc_due:
             f.write("- 예약 발송: FOMC 전날 점검\n")
         if cross_due:
