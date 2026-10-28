@@ -464,12 +464,17 @@ def extract_cowos_price_report(event, text):
     )):
         return {}
     hit = False
-    for m in re.finditer(r"cowos", low):
-        window = low[max(0, m.start() - 110):min(len(low), m.end() + 170)]
-        if not re.search(r"price|pricing|quote|hike|increase|報價|报价|調漲|调涨|喊漲|喊涨|漲價|涨价", window, re.I):
-            continue
-        if re.search(r"(?<!\d)20\s*%|2\s*成", window, re.I):
-            hit = True
+    # Do not combine a 20% throughput claim in one sentence with wafer
+    # pricing elsewhere in the article into a fake CoWoS price increase.
+    for sentence in re.split(r"(?<=[.!?。；;])\s*|[\r\n]+", low):
+        for m in re.finditer(r"cowos", sentence):
+            window = sentence[max(0, m.start() - 110):min(len(sentence), m.end() + 170)]
+            if not re.search(r"price|pricing|quote|hike|報價|报价|調漲|调涨|喊漲|喊涨|漲價|涨价", window, re.I):
+                continue
+            if re.search(r"(?<!\d)20\s*%|2\s*成", window, re.I):
+                hit = True
+                break
+        if hit:
             break
     if not hit:
         return {}
