@@ -654,3 +654,37 @@ def test_cftc_socrata_fallback_uses_7day_report_delta(monkeypatch):
         assert row["leveraged_net_wow"] == 20
         assert row["leveraged_short_wow"] == 0
         assert row["previous_period"] == "October 13, 2026"
+
+
+def test_fomc_evening_normal_poll_retries_dropped_primary_cron(monkeypatch):
+    from datetime import datetime as RealDateTime
+
+    class FakeNow(RealDateTime):
+        hour_local = 21
+
+        @classmethod
+        def now(cls, tz=None):
+            return RealDateTime(2026, 10, 28, cls.hour_local, 7, tzinfo=tz)
+
+    monkeypatch.setattr(equity, "datetime", FakeNow)
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "schedule")
+    monkeypatch.setenv("CTA_TRIGGER_SCHEDULE", "7,22,37,52 12-22 * * 1-5")
+    snap = {"checked_kst": "2026-10-28T21:07:00+09:00"}
+    _, due, _, key = equity._scheduled_due(
+        {"last_fomc_eve_report": "2026-09-16"},
+        {"snapshot": snap},
+    )
+    assert due is True and key == "2026-10-28"
+    _, second_due, _, _ = equity._scheduled_due(
+        {"last_fomc_eve_report": "2026-10-28"},
+        {"snapshot": snap},
+    )
+    assert second_due is False
+
+    FakeNow.hour_local = 18
+    snap["checked_kst"] = "2026-10-28T18:07:00+09:00"
+    _, premature, _, _ = equity._scheduled_due(
+        {"last_fomc_eve_report": "2026-09-16"},
+        {"snapshot": snap},
+    )
+    assert premature is False
