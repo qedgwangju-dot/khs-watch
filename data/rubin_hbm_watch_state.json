@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-28T22:22:21+09:00",
+  "updated_at_kst": "2026-10-29T04:03:05+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -185,6 +185,7 @@
     "c1b542c6c9cf3b1e5f5eec1a",
     "c1d173fd17a8a8cd17f5cd5b",
     "c1ede00bdbacc4e73f3e3732",
+    "c2eae768c40d3cea01998d98",
     "c3d140a064e98999aa4ea37b",
     "c3fdc10b0f54b88815487911",
     "c4b8ad2c2e0ed61e954595fe",
@@ -277,17 +278,20 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1327.75,
-    "date": "2026-10-27 일일 기준 · ECB/Frankfurter · 조회 2026-10-28 22:22 KST · 보조 API 2026-10-28 · 차이 0.07% · 일중 기준시각 차이 가능",
-    "source": "ECB/Frankfurter",
-    "error": ""
+    "rate": null,
+    "date": "",
+    "source": "환율 API",
+    "error": "동일 날짜 API 환율 1% 초과 불일치—환산 보류"
   },
-  "errors": [],
+  "errors": [
+    "원문 URL 확인 실패: 머니투데이 | [Conference Call] SK hynix: 2027 HBM supply talks are complete, with pricing to reflect value - 머니투데이",
+    "동일 날짜 API 환율 1% 초과 불일치—환산 보류"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-10-19",
     "source": "https://insights.trendforce.com/p/weekly-radar-006",
@@ -413,7 +417,7 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-28T22:22:37+09:00",
+    "last_checked_at_kst": "2026-10-29T04:03:22+09:00",
     "candidate_count": 2,
     "mlcc_vendor_watch": {
       "version": 2,
@@ -463,7 +467,7 @@
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-28T22:23:47+09:00",
+    "checked_at_kst": "2026-10-29T04:04:10+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-27T21:33:58+09:00",
@@ -530,8 +534,8 @@
       "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
-    "last_validation_cutoff": "2026-10-28",
-    "last_checked_at_kst": "2026-10-28T22:23:09+09:00",
+    "last_validation_cutoff": "2026-10-29",
+    "last_checked_at_kst": "2026-10-29T04:03:56+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -590,7 +594,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-28T22:23:09+09:00",
+        "checked_at_kst": "2026-10-29T04:03:56+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -667,8 +671,8 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461",
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
-    "last_checked_cutoff": "2026-10-28",
-    "last_checked_at_kst": "2026-10-28T22:23:37+09:00",
+    "last_checked_cutoff": "2026-10-29",
+    "last_checked_at_kst": "2026-10-29T04:04:02+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -712,7 +716,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-28T22:23:39+09:00",
+    "last_checked_at_kst": "2026-10-29T04:04:04+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -836,7 +840,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-10-28T22:23:39+09:00",
+      "checked_at_kst": "2026-10-29T04:04:04+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
