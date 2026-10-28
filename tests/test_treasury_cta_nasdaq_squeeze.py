@@ -917,3 +917,43 @@ def test_next_cta_yield_confirmation_never_repeats_already_crossed_thresholds():
     assert equity._next_confirmation_thresholds(4.99, -1.61) == "-2σ 진입 또는 4.75% 하향"
     assert equity._next_confirmation_thresholds(5.24, 0.71) == "-1σ 진입 또는 5.00% 하향"
     assert equity._next_confirmation_thresholds(4.40, -2.12) == "-2σ 이하 유지 또는 4.30% 하향"
+
+
+def test_explicit_fomc_recovery_obeys_freshness_and_deadline(monkeypatch):
+    from datetime import datetime as RealDateTime
+    class FakeNow(RealDateTime):
+        at = RealDateTime(2026, 10, 28, 21, 20, tzinfo=equity.KST)
+
+        @classmethod
+        def now(cls, tz=None):
+            return cls.at.astimezone(tz) if tz else cls.at.replace(tzinfo=None)
+
+    monkeypatch.setattr(equity, "datetime", FakeNow)
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "workflow_dispatch")
+    monkeypatch.setenv("CTA_TRIGGER_SCHEDULE", "")
+    monkeypatch.setenv("CTA_WEEKLY_RECOVERY", "false")
+    monkeypatch.setenv("CTA_FOMC_RECOVERY", "true")
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snap: (True, []))
+    snapshot = {"snapshot": {"checked_kst": "2026-10-28T21:20:00+09:00"}}
+    state = {"last_weekly_report_key": "2026-W44", "last_fomc_eve_report": "2026-09-16"}
+
+    weekly, fomc, _, key = equity._scheduled_due(state, snapshot)
+    assert weekly is False
+    assert fomc is True and key == "2026-10-28"
+    assert equity._scheduled_due({**state, "last_fomc_eve_report": "2026-10-28"}, snapshot)[1] is False
+
+    monkeypatch.setenv("CTA_FOMC_RECOVERY", "false")
+    assert equity._scheduled_due(state, snapshot)[1] is False
+    monkeypatch.setenv("CTA_FOMC_RECOVERY", "true")
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snap: (False, ["repo stale"]))
+    assert equity._scheduled_due(state, snapshot)[1] is False
+
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snap: (True, []))
+    FakeNow.at = RealDateTime(2026, 10, 29, 3, 5, tzinfo=equity.KST)
+    snapshot["snapshot"]["checked_kst"] = "2026-10-29T03:05:00+09:00"
+    assert equity._scheduled_due(state, snapshot)[1] is False
+
+    FakeNow.at = RealDateTime(2026, 10, 28, 21, 20, tzinfo=equity.KST)
+    snapshot["snapshot"]["checked_kst"] = "2026-10-28T21:20:00+09:00"
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "push")
+    assert equity._scheduled_due(state, snapshot)[1] is False
