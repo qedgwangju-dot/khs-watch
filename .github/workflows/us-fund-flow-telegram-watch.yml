@@ -280,6 +280,7 @@ jobs:
 
       - name: Check official AAII allocation and Conference Board stock expectations
         run: |
+          python -m py_compile scripts/us_positioning_delivery.py
           PYTHONPATH=scripts python - <<'PY'
           from us_positioning_delivery import update_retail_survey_overlay
           result = update_retail_survey_overlay()
