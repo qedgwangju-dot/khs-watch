@@ -33,7 +33,7 @@ from market_flow_channels import (
 )
 from market_program_close import collect as collect_program_close, render as render_program_close
 from market_alert_delivery import DeliveryUncertain, delivery_context, receipt_for, send_message
-from market_investors import (ALERT_ACTORS, DISPLAY_ACTORS, PRIMARY_ACTORS, LEADER_NOTE,
+from market_investors import (DISPLAY_ACTORS, PRIMARY_ACTORS, LEADER_NOTE,
                               TRUST_NOTE, SUBGROUP_NOTE, FINANCIAL_NOTE, actor_label,
                               trust_direction_lines, trust_value, subgroup_value, subgroup_direction_lines)
 from market_supplementary_flow import enrich_snapshot, cash_lines
@@ -58,7 +58,7 @@ MAX_PROGRAM_SNAPSHOT_SKEW_SEC = 8.0
 MAX_PROGRAM_CROSSCHECK_RATIO_PCT = 1.0  # 1% 초과면 방향이 같아도 높은 확신도 부여 금지
 OPEN_GAP_ALERT_PCT = -1.0
 # 장중 가격 급락과 독립된 5분 수급 급유입 감시 (최초 보수적 기준값).
-# t1602 현물/선물은 억원 표기, t1640 프로그램은 원값을 유지한다.
+# t1602 현물은 억원으로 사용한다. 별도 선물 계열은 단위·상품 범위 미확인 원값이다.
 SURGE_WINDOW_SEC = 5 * 60
 SURGE_MAX_SAMPLE_SKEW_SEC = 30.0
 SURGE_MAX_END_AGE_SEC = 45.0
@@ -72,6 +72,7 @@ SURGE_SINGLE_FUT_EOK = 1300.0
 KOSDAQ_SURGE_PREALERT_SPOT_EOK = 100.0
 KOSDAQ_SURGE_SINGLE_SPOT_EOK = 150.0
 KOSDAQ_SURGE_ACTORS = DISPLAY_ACTORS
+KOSPI_SURGE_ACTORS = DISPLAY_ACTORS
 KOSDAQ_URL = "https://m.stock.naver.com/domestic/index/KOSDAQ/total"
 KOSDAQ_NEWS_URL = "https://search.naver.com/search.naver?where=news&query=" + urllib.parse.quote("코스닥 급락")
 # 코스닥 가격/수급은 같은 기존 프로세스의 독립 상태로 관리하며 코스피 수급·파생과 합산하지 않는다.
@@ -173,6 +174,22 @@ def continuous_flow_guard_active(now: dt.datetime, session: dict[str, Any]) -> b
     continuous_end = session.get("continuous_end")
     return bool(session.get("is_session") and open_dt and continuous_end
                 and open_dt <= now < continuous_end)
+
+
+def kosdaq_feed_health_issues(now_ts: float, started_ts: float,
+                              price_received_ts: float | None,
+                              spot_source_ts: float | None,
+                              flow_guard_active: bool) -> list[str]:
+    """Separate local price receipt age from the provider's cash-flow clock."""
+    elapsed = max(0.0, now_ts - started_ts)
+    issues = []
+    if elapsed >= 90 and (price_received_ts is None or not -5 <= now_ts - price_received_ts <= 90):
+        issues.append("코스닥 시세 정상 조회 90초 초과")
+    if flow_guard_active and elapsed >= 180 and (
+        spot_source_ts is None or not -5 <= now_ts - spot_source_ts <= 180
+    ):
+        issues.append("코스닥 현물 수급 원자료 180초 초과")
+    return issues
 
 
 def fmt_duration(seconds: float) -> str:
@@ -835,16 +852,19 @@ def flow_surge_candidates(
         return []
     program = _flow_surge_program(rows, now_ts, session_open_ts)
     result = []
-    for actor in ALERT_ACTORS:
+    for actor in KOSPI_SURGE_ACTORS:
+        # 금융투자 현물은 검증된 sv_01 항목이다. 별도 KOSPI 선물의
+        # 상품 범위와 금액 단위는 미확인이므로 이 주체에는 사용하지 않는다.
+        actor_fut = None if actor == "금융투자" else fut
         ds = fnum((spot or {}).get("deltas", {}).get(actor))
-        df = fnum((fut or {}).get("deltas", {}).get(actor))
+        df = fnum((actor_fut or {}).get("deltas", {}).get(actor))
         # 현물과 선물 표본 종료시점이 서로 멀면 하나의 동시 유입으로 합치지 않는다.
         # 각 채널은 독립적으로는 신선해도 서로 최대 90초 어긋날 수 있다.
         both = (
             ds is not None and df is not None
             and ds >= SURGE_COMBINED_SPOT_EOK
             and df >= SURGE_COMBINED_FUT_EOK
-            and abs(float(spot["end_ts"]) - float(fut["end_ts"])) <= SURGE_MAX_SAMPLE_SKEW_SEC
+            and abs(float(spot["end_ts"]) - float(actor_fut["end_ts"])) <= SURGE_MAX_SAMPLE_SKEW_SEC
         )
         spot_only = ds is not None and ds >= SURGE_SINGLE_SPOT_EOK
         fut_only = df is not None and df >= SURGE_SINGLE_FUT_EOK
@@ -852,13 +872,13 @@ def flow_surge_candidates(
             continue
         if both:
             mode = "현물·선물 동시"
-            key_ts = min(float(spot["end_ts"]), float(fut["end_ts"]))
+            key_ts = min(float(spot["end_ts"]), float(actor_fut["end_ts"]))
         elif spot_only and (not fut_only or ds / SURGE_SINGLE_SPOT_EOK >= df / SURGE_SINGLE_FUT_EOK):
             mode = "현물 중심"
             key_ts = float(spot["end_ts"])
         else:
             mode = "선물 중심"
-            key_ts = float(fut["end_ts"])
+            key_ts = float(actor_fut["end_ts"])
         # 프로그램 자체의 차익·비차익 검산이 일치해도 사건 기준시점과
         # 30초 이상 어긋난 프로그램 데이터를 동시 매수 근거로 사용하지 않는다.
         program_aligned = bool(
@@ -870,12 +890,12 @@ def flow_surge_candidates(
             "actor": actor, "mode": mode,
             "spot": ds, "futures": df, "sample_ts": key_ts,
             "spot_window": (float(spot["start_ts"]), float(spot["end_ts"])) if spot else None,
-            "futures_window": (float(fut["start_ts"]), float(fut["end_ts"])) if fut else None,
+            "futures_window": (float(actor_fut["start_ts"]), float(actor_fut["end_ts"])) if actor_fut else None,
             "spot_start_skew_sec": (spot or {}).get("start_skew_sec"),
-            "futures_start_skew_sec": (fut or {}).get("start_skew_sec"),
+            "futures_start_skew_sec": (actor_fut or {}).get("start_skew_sec"),
             "spot_end_cumulative": fnum((spot or {}).get("end", {}).get(actor)),
             "spot_start_cumulative": fnum((spot or {}).get("start", {}).get(actor)),
-            "futures_end_cumulative": fnum((fut or {}).get("end", {}).get(actor)),
+            "futures_end_cumulative": fnum((actor_fut or {}).get("end", {}).get(actor)),
             "program": program,
             "cash_supplement": (spot or {}).get("end", {}).get("cash_supplement"),
             # 프로그램 매수는 투자자별 매수주체 확증이 아니라 별도의 시장 보조정보.
@@ -969,6 +989,8 @@ class Watch:
         self.kosdaq_price_task: asyncio.Task | None = None
         self.kosdaq_backfill_task: asyncio.Task | None = None
         self.kosdaq_last_price_snapshot: dict[str, Any] = {}
+        self.kosdaq_health_incident: dict[str, Any] | None = None
+        self.kosdaq_health_notice_task: asyncio.Task | None = None
         self.daily_close: dict[str, Any] = {}
 
 
@@ -1731,6 +1753,17 @@ class Watch:
         self.flow_task = asyncio.create_task(run_one())
 
 
+    def _record_kosdaq_flow_fragment(self, snap: dict[str, Any]) -> None:
+        """Keep usable cash data independently of slower futures/program calls."""
+        self.kosdaq_flows.append(snap)
+        spot = snap.get("현물")
+        if not isinstance(spot, dict) or spot.get("market") != "KOSDAQ" or spot.get("source_tr") != "t1602":
+            return
+        sample_ts = fnum(spot.get("sample_ts"))
+        if (sample_ts is not None and -5 <= time.time() - sample_ts <= MAX_FLOW_HEALTH_AGE_SEC
+                and all(fnum(spot.get(actor)) is not None for actor in PRIMARY_ACTORS)):
+            self.kosdaq_last_success_ts = max(self.kosdaq_last_success_ts or 0.0, sample_ts)
+
     async def maybe_kosdaq_flow(self) -> None:
         """코스닥 자체의 3개 채널을 독립 조회. 가격 감시는 기다리지 않는다."""
         # 기존 가격·급락 회귀시험의 __new__ 부분 객체에는 신규 필드가 없다.
@@ -1746,15 +1779,13 @@ class Watch:
         async def run_one():
             try:
                 loop = asyncio.get_running_loop()
-                publish = lambda point: loop.call_soon_threadsafe(self.kosdaq_flows.append, point)
+                publish = lambda point: loop.call_soon_threadsafe(self._record_kosdaq_flow_fragment, point)
                 snap = await asyncio.to_thread(fetch_flow_snapshot, self.token, "KOSDAQ", publish)
                 ok, issues = flow_snapshot_health(snap)
                 self.raw["last_kosdaq_flow_snapshot"] = snap
                 spot = snap.get("현물") or {}
                 # Spot surge continuity remains independent of unavailable derivatives.
                 sample_ts = fnum(spot.get("sample_ts"))
-                if sample_ts and -5 <= time.time()-sample_ts <= MAX_FLOW_HEALTH_AGE_SEC:
-                    self.kosdaq_last_success_ts = sample_ts
                 self.raw["last_kosdaq_flow"] = {
                     "sample_at_kst": fmt_clock(sample_ts),
                     "last_received_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
@@ -1773,6 +1804,63 @@ class Watch:
                 self.raw["last_kosdaq_flow_error"] = f"{type(exc).__name__}: {exc}"
 
         self.kosdaq_flow_task = asyncio.create_task(run_one())
+
+    def _check_kosdaq_feed_health(self, now_ts: float, started_ts: float,
+                                  flow_guard_active: bool) -> None:
+        """Warn once per outage while independent source retries continue."""
+        issues = kosdaq_feed_health_issues(
+            now_ts, started_ts, self.kosdaq_last_idx_tick_ts,
+            self.kosdaq_last_success_ts, flow_guard_active,
+        )
+        if not issues:
+            price_ts, spot_ts = self.kosdaq_last_idx_tick_ts, self.kosdaq_last_success_ts
+            healthy_now = (price_ts is not None and -5 <= now_ts - price_ts <= 90 and
+                           (not flow_guard_active or (spot_ts is not None and -5 <= now_ts - spot_ts <= 180)))
+            if healthy_now:
+                self.raw.pop("kosdaq_feed_health_issues", None)
+            if healthy_now and self.kosdaq_health_incident is not None:
+                self.raw["kosdaq_feed_recovered_at_kst"] = fmt_clock(now_ts)
+                self.kosdaq_health_incident = None
+                self._checkpoint_handoff(force=True)
+            return
+        self.raw["kosdaq_feed_health_issues"] = issues
+        incident = self.kosdaq_health_incident
+        if incident is None:
+            incident = {"market": "KOSDAQ", "start_ts": now_ts, "low_ts": now_ts,
+                        "issues": list(issues), "delivery_status": "pending"}
+            self.kosdaq_health_incident = incident
+            self._checkpoint_handoff(force=True)
+        if (incident.get("delivery_status") != "pending" or
+                (self.kosdaq_health_notice_task and not self.kosdaq_health_notice_task.done())):
+            return
+        # A pending incident restored from handoff uses the same delivery identity.
+        observed_ts = float(incident["start_ts"])
+        notice_issues = list(incident.get("issues") or issues)
+
+        async def notify():
+            text = "\n".join([
+                "⚠️ <b>코스닥 감시 자료 지연</b>",
+                f"<code>{dt.datetime.fromtimestamp(observed_ts, KST):%Y-%m-%d %H:%M:%S} KST</code>",
+                *["• " + html.escape(issue) for issue in notice_issues],
+                "• 해당 자료의 알림 포착이 제한될 수 있어 조회 상태를 계속 확인합니다.",
+                "• 코스피 자료의 정상 여부는 별도로 확인합니다.",
+            ])
+            try:
+                mid = await self._try_send_event("kosdaq_feed_gap", incident, observed_ts, text)
+                incident["delivery_status"] = "confirmed" if mid is not None else "unconfirmed"
+                if mid is not None:
+                    self.msg_ids.append(mid)
+                    self._record_delivery("kosdaq_feed_gap", mid, incident, observed_ts,
+                                          evidence={"issues": notice_issues})
+            except Exception as exc:
+                incident["delivery_status"] = "unconfirmed"
+                self.raw["kosdaq_feed_warning_error"] = f"{type(exc).__name__}: {exc}"
+            self._checkpoint_handoff(force=True)
+
+        task = asyncio.create_task(notify())
+        self.kosdaq_health_notice_task = task
+        self.enrichment_tasks.add(task)
+        task.add_done_callback(self.enrichment_tasks.discard)
 
     async def seed_kosdaq_backfill(self) -> None:
         """코스닥도 오늘의 1분봉으로 최근 고점을 복원한다. KOSPI 수집은 독립 실행."""
@@ -2023,7 +2111,7 @@ class Watch:
             f"• 확인 수준: {html.escape(confidence)}",
         ]
         lines.extend(extra_lines or [])
-        if market == "KOSDAQ" and actor == "금융투자":
+        if actor == "금융투자":
             lines.extend(["• " + SUBGROUP_NOTE, "• " + FINANCIAL_NOTE])
         else:
             lines.append("• " + TRUST_NOTE)
@@ -2040,7 +2128,7 @@ class Watch:
                                       session_open_ts: float) -> dict[str, Any] | None:
         if fnum(spot) is None or spot <= 0 or not spot_window:
             return None
-        if market == "KOSDAQ" and actor == "금융투자":
+        if actor == "금융투자":
             return {
                 "market": market, "investor": actor, "requested_window": list(spot_window),
                 "available": False, "rows": [], "top": [], "covered_industries": 0,
@@ -2257,7 +2345,10 @@ class Watch:
         if cand.get("futures_window"):
             window = cand["futures_window"]
             windows.append(f"선물 {fmt_clock(window[0])}~{fmt_clock(window[1])}")
-        lines = [f"• KOSPI200 선물 {fmt_eok(fut)} (현물 업종 순위와 분리)"]
+        if cand["actor"] == "금융투자":
+            lines = ["• 금융투자 선물: 상품 범위·단위 확인 전으로 감지에 사용하지 않음"]
+        else:
+            lines = [f"• LS 선물 수급 원값 {fmt_raw(fut)} (상품 범위·단위 미확인; 현물 업종 순위와 분리)"]
         p = cand.get("program") or {}
         if p.get("valid"):
             trend = "순매수 증가" if p["delta"] > 0 else "순매도 증가" if p["delta"] < 0 else "변화 없음"
@@ -2276,13 +2367,14 @@ class Watch:
                     change = pct(prior[1], now_price)
                     if change is not None:
                         lines.append(f"• 같은 구간 KOSPI {change:+.2f}% (가격 보조지표)")
-        threshold = (f"현물 {SURGE_SINGLE_SPOT_EOK:,.0f}억원 또는 선물 {SURGE_SINGLE_FUT_EOK:,.0f}억원 이상, "
-                     f"또는 현물 {SURGE_COMBINED_SPOT_EOK:,.0f}억원·선물 {SURGE_COMBINED_FUT_EOK:,.0f}억원 동시 증가")
+        threshold = (f"현물 {SURGE_SINGLE_SPOT_EOK:,.0f}억원 이상" if cand["actor"] == "금융투자" else
+                     f"현물 {SURGE_SINGLE_SPOT_EOK:,.0f}억원 또는 LS 선물 원값 {SURGE_SINGLE_FUT_EOK:,.0f} 이상, "
+                     f"또는 현물 {SURGE_COMBINED_SPOT_EOK:,.0f}억원·LS 선물 원값 {SURGE_COMBINED_FUT_EOK:,.0f} 동시 증가")
         return self._build_market_flow_surge_alert(
             "KOSPI", str(cand["actor"]), spot, cand.get("spot_window"), now_ts, industries,
             mode=str(cand["mode"]),
             confidence=("현물 단독 신호" if cand["mode"] == "현물 중심" else
-                        "선물 단독 신호" if cand["mode"] == "선물 중심" else str(cand["confidence"])),
+                        "잠정 · 선물 상품 범위·단위 미확인"),
             threshold=threshold,
             extra_windows=windows, extra_lines=lines + cash_lines(cand.get("cash_supplement"), "KOSPI", now_ts),
         )
@@ -2341,8 +2433,11 @@ class Watch:
                 "alert_contract": FLOW_SURGE_ALERT_CONTRACT,
                 "market": "KOSPI", "actor": actor, "mode": cand["mode"],
                 "sample_ts": sample_ts, "message_id": msg_id,
-                "spot_5m_eok": cand["spot"], "futures_5m_eok": cand["futures"],
-                "confidence": cand["confidence"],
+                "spot_5m_eok": cand["spot"], "futures_5m_raw": cand["futures"],
+                "futures_unit_verified": False, "futures_scope_verified": False,
+                "confidence": ("현물 단독 신호" if cand["mode"] == "현물 중심" else
+                               "잠정 · 선물 상품 범위·단위 미확인"),
+                "correlation_confidence": cand["confidence"],
                 "spot_window": spot_window, "futures_window": cand.get("futures_window"),
                 "industry_context": industries,
             }
@@ -2356,8 +2451,10 @@ class Watch:
                     "alert_contract": FLOW_SURGE_ALERT_CONTRACT,
                     "market": "KOSPI", "actor": actor,
                     "spot_window": spot_window, "futures_window": cand.get("futures_window"),
-                    "spot_delta_eok": cand.get("spot"), "futures_delta_eok": cand.get("futures"),
+                    "spot_delta_eok": cand.get("spot"), "futures_delta_raw": cand.get("futures"),
+                    "futures_unit_verified": False, "futures_scope_verified": False,
                     "display_unit": "억원",
+                    "display_unit_scope": "spot_only",
                     "spot_start_cumulative": cand.get("spot_start_cumulative"),
                     "spot_end_cumulative": cand.get("spot_end_cumulative"),
                     "confirmation_first": confirmation_first,
@@ -2655,6 +2752,8 @@ class Watch:
             "kospi_futures_price_age_sec": age(getattr(self, "last_fut_tick_ts", None)),
             "kospi_flow_success_age_sec": age(getattr(self, "last_flow_success_ts", None)),
             "kosdaq_price_age_sec": age(self.kosdaq_idx[-1][0] if self.kosdaq_idx else None),
+            "kosdaq_spot_source_age_sec": age(getattr(self, "kosdaq_last_success_ts", None)),
+            "kosdaq_feed_health_issues": self.raw.get("kosdaq_feed_health_issues", []),
             "kospi_episode_active": self.episode is not None,
             "kosdaq_episode_active": self.kosdaq_episode is not None,
             "delivery_holds": len(self.raw.get("delivery_holds", {})),
@@ -2693,6 +2792,7 @@ class Watch:
             "kosdaq_opening_gap_sent": self.kosdaq_opening_gap_sent,
             "kosdaq_last_price_processed_ts": self.kosdaq_last_price_processed_ts,
             "kosdaq_last_price_snapshot": self.kosdaq_last_price_snapshot,
+            "kosdaq_health_incident": self.kosdaq_health_incident,
             "daily_close": getattr(self, "daily_close", {}),
             "delivery_holds": self.raw.get("delivery_holds", {}),
         }
@@ -2727,6 +2827,11 @@ class Watch:
                     and isinstance(row.get("context"), dict)
                     and fnum(row.get("held_at_ts")) is not None
                 }
+            incident = data.get("kosdaq_health_incident")
+            if (isinstance(incident, dict) and fnum(incident.get("start_ts")) is not None
+                    and incident.get("delivery_status") in {"pending", "confirmed", "unconfirmed"}
+                    and isinstance(incident.get("issues"), list)):
+                self.kosdaq_health_incident = incident
             daily_close = data.get("daily_close")
             if isinstance(daily_close, dict) and daily_close.get("date") == today:
                 self.daily_close = daily_close
@@ -2749,7 +2854,7 @@ class Watch:
             self.surge_last_processed_ts = fnum(data.get("surge_last_processed_ts")) or 0.0
             self.surge_sent_at = {
                 str(k): float(v) for k, v in (data.get("surge_sent_at") or {}).items()
-                if str(k) in ALERT_ACTORS and fnum(v) is not None
+                if str(k) in KOSPI_SURGE_ACTORS and fnum(v) is not None
             }
             self.surge_pending = {
                 str(k): {"sample_ts": float(v["sample_ts"]), "seen_at": float(v["seen_at"]),
@@ -2758,7 +2863,7 @@ class Watch:
                                         (v.get("end_values") if isinstance(v.get("end_values"), dict) else {}).items()
                                         if channel in {"spot", "futures"} and fnum(value) is not None}}
                 for k, v in (data.get("surge_pending") or {}).items()
-                if str(k) in ALERT_ACTORS and isinstance(v, dict)
+                if str(k) in KOSPI_SURGE_ACTORS and isinstance(v, dict)
                 and fnum(v.get("sample_ts")) is not None and fnum(v.get("seen_at")) is not None
             }
             # 기존 KOSPI handoff 형식도 정상 복원하고 코스닥은 독립 보관한다.
@@ -3002,6 +3107,8 @@ class Watch:
                 if continuous_flow_guard_active(now, session):
                     if self.last_flow_success_ts is None or now_ts - self.last_flow_success_ts > 180:
                         raise RuntimeError("LS spot/futures/program flow snapshot stale >180s")
+                self._check_kosdaq_feed_health(now_ts, started,
+                                               continuous_flow_guard_active(now, session))
 
             self._log_market_health()
             await asyncio.sleep(0.6)

@@ -821,7 +821,8 @@ try:
     assert _surge_delivery and _surge_delivery[0][0:2]==("flow_surge",888),_surge_delivery
     assert _surge_delivery[0][2]["market"]=="KOSPI" and _surge_delivery[0][2]["actor"]=="외국인"
     assert "현물(통합) <b>+550억원</b>" in _surge_sent[0],_surge_sent[0]
-    assert "KOSPI200 선물 +720억원" in _surge_sent[0],_surge_sent[0]
+    assert "LS 선물 수급 원값 +720" in _surge_sent[0],_surge_sent[0]
+    assert "상품 범위·단위 미확인" in _surge_sent[0],_surge_sent[0]
     assert "KOSPI +0.00%" in _surge_sent[0],_surge_sent[0]
     assert "외부 신규자금 유입" in _surge_sent[0],_surge_sent[0]
     # 같은 샘플 반복 및 20분 안쪽의 새로운 샘플은 중복 금지.

@@ -483,7 +483,9 @@ class KOSPIIndustryTests(IndustryFixture, unittest.TestCase):
         text = w.build_flow_surge_alert(cand, END + 5, result)
         self.assertIn("전기전자", text)
         self.assertIn("선물·프로그램의 업종별 자금 배분을 뜻하지", text)
-        self.assertIn("KOSPI200 선물 +720억원", text)
+        self.assertIn("LS 선물 수급 원값 +720", text)
+        self.assertIn("상품 범위·단위 미확인", text)
+        self.assertNotIn("KOSPI200 선물 +720억원", text)
         cand["spot"] = -10
         text = w.build_flow_surge_alert(cand, END + 5, result)
         self.assertNotIn("전기전자", text)
@@ -567,7 +569,7 @@ class MarketSurgeParityTests(IndustryFixture, unittest.TestCase):
                     self.assertIn("현물 10:14:00~10:19:00", text)
                     # Market-specific thresholds/channels remain explicit extras.
                     common = [line for line in text.splitlines() if not any(key in line for key in
-                              ("감지 기준:", "프로그램:", "KOSPI200 선물", "프로그램 교차검증:", "href="))]
+                              ("감지 기준:", "프로그램:", "LS 선물 수급 원값", "프로그램 교차검증:", "href="))]
                     normalized = "\n".join(common).replace("코스피", "시장").replace("코스닥", "시장")
                     normalized = normalized.replace("전기전자", "업종").replace("화학", "업종")
                     bodies.append(normalized)
@@ -916,6 +918,122 @@ class KOSDAQPrealertTierTests(unittest.TestCase):
         self.assertFalse(context["available"])
         self.assertEqual(context["requested_window"], [START, END])
         self.assertIn("금융투자 업종 원자료 확인 불가", context["reason"])
+
+
+class IndependentMarketRecoveryTests(unittest.TestCase):
+    def test_kosdaq_cash_fragment_updates_health_without_futures_completion(self):
+        w = watcher.Watch("unused", [], "", False)
+        def fragment(market, ts, foreign=1):
+            return {"ts": ts, "현물": {"market": market, "source_tr": "t1602",
+                    "sample_ts": ts, "개인": 0, "기관": 0, "외국인": foreign}}
+        with patch.object(watcher.time, "time", return_value=1000):
+            w._record_kosdaq_flow_fragment(fragment("KOSDAQ", 980))
+            self.assertEqual(w.kosdaq_last_success_ts, 980)
+            w._record_kosdaq_flow_fragment(fragment("KOSPI", 990))
+            w._record_kosdaq_flow_fragment(fragment("KOSDAQ", 995, foreign=None))
+            w._record_kosdaq_flow_fragment(fragment("KOSDAQ", 800))
+            self.assertEqual(w.kosdaq_last_success_ts, 980)
+
+    def test_health_uses_cash_source_time_and_price_receipt_independently(self):
+        check = watcher.kosdaq_feed_health_issues
+        self.assertEqual(check(1000, 850, 940, 900, True), [])
+        self.assertIn("시세", check(1000, 850, 909, 900, True)[0])
+        self.assertIn("수급", check(1000, 800, 990, 819, True)[0])
+        self.assertEqual(check(1000, 800, 990, 819, False), [])
+        self.assertEqual(check(1000, 920, None, None, True), [])  # startup grace
+        self.assertEqual(len(check(1000, 800, None, None, True)), 2)
+
+    def test_health_warning_once_and_recovers_without_stopping_kospi(self):
+        w = watcher.Watch("unused", [], "", False)
+        w._try_send_event = AsyncMock(side_effect=[81011, 81012])
+        w._record_delivery = Mock()
+        w._checkpoint_handoff = Mock()
+
+        async def exercise():
+            w.kosdaq_last_idx_tick_ts = 899
+            w.kosdaq_last_success_ts = 990
+            w._check_kosdaq_feed_health(1000, 800, True)
+            await asyncio.gather(*list(w.enrichment_tasks))
+            self.assertEqual(w.kosdaq_health_incident["delivery_status"], "confirmed")
+            self.assertIn("코스닥 시세", w._try_send_event.await_args.args[3])
+            w._check_kosdaq_feed_health(1010, 800, True)
+            self.assertEqual(w._try_send_event.await_count, 1)
+            w.kosdaq_last_idx_tick_ts = 1010
+            w.kosdaq_last_success_ts = 1000
+            w._check_kosdaq_feed_health(1010, 800, True)
+            self.assertIsNone(w.kosdaq_health_incident)
+            w._check_kosdaq_feed_health(1201, 800, True)
+            await asyncio.gather(*list(w.enrichment_tasks))
+            self.assertEqual(w._try_send_event.await_count, 2)
+        asyncio.run(exercise())
+
+    def test_existing_outage_is_preserved_across_restart_and_grace(self):
+        w = watcher.Watch("unused", [], "", False)
+        w.kosdaq_health_incident = {"market": "KOSDAQ", "start_ts": 1000.0,
+                                    "low_ts": 1000.0, "issues": ["시세 지연"],
+                                    "delivery_status": "confirmed"}
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "handoff.json"
+            w.save_handoff(path)
+            restored = watcher.Watch("unused", [], "", False)
+            restored.load_handoff(path)
+            restored._checkpoint_handoff = Mock()
+            restored._check_kosdaq_feed_health(1100, 1050, True)
+            self.assertEqual(restored.kosdaq_health_incident["start_ts"], 1000.0)
+            self.assertEqual(restored.kosdaq_health_incident["delivery_status"], "confirmed")
+
+    def test_kospi_financial_investment_requires_verified_spot_and_ignores_futures(self):
+        def point(ts, cash, future, raw=None):
+            spot = {"sample_ts": ts, "source_tr": "t1602", "unit": "억원",
+                    "개인": 0, "외국인": 0, "기관": 0, "투신": 0,
+                    "금융투자": cash, "source_row": {"sv_01": cash if raw is None else raw}}
+            fut = {"sample_ts": ts, "source_tr": "t1602", "unit": "억원",
+                   "개인": 0, "외국인": 0, "기관": 0, "투신": 0,
+                   "금융투자": future, "source_row": {"sv_01": future}}
+            return {"ts": ts, "현물": spot, "선물": fut}
+        before = point(START, 0, 0)
+        for end in [point(END, 899, 5000), point(END, 1000, 5000, raw=999),
+                    point(END, None, 5000)]:
+            self.assertFalse(any(x["actor"] == "금융투자" for x in
+                                 watcher.flow_surge_candidates([before, end], END + 1, OPEN)))
+        candidate = next(x for x in watcher.flow_surge_candidates(
+            [before, point(END, 1000, 5000)], END + 1, OPEN) if x["actor"] == "금융투자")
+        self.assertEqual(candidate["mode"], "현물 중심")
+        self.assertIsNone(candidate["futures"])
+        self.assertIsNone(candidate["futures_window"])
+        w = watcher.Watch("unused", [], "", False)
+        text = w.build_flow_surge_alert(candidate, END + 1)
+        self.assertIn("금융투자(기관 내)", text)
+        self.assertIn("현물 900억원 이상", text)
+        self.assertIn("상품 범위·단위 확인 전", text)
+        self.assertIn("금융투자는 원자료의 증권 항목", text)
+        with patch.object(watcher, "industry_buy_context", side_effect=AssertionError("not verified")):
+            context = asyncio.run(w._surge_industry_context("KOSPI", "금융투자", 1000, (START, END), OPEN))
+        self.assertFalse(context["available"])
+
+        # Exercise the actual two-sample sender and its financial-investment cooldown.
+        w.session_open_ts, w.session_close_ts = OPEN, END + 1800
+        w.session_continuous_end_ts = END + 1200
+        w._try_send_event = AsyncMock(return_value=81013)
+        w._record_delivery = Mock()
+        for ts, cash in ((START - 20, 0), (START, 0), (END - 20, 950), (END, 1000)):
+            w.flows.append(point(ts, cash, 5000))
+            asyncio.run(w.maybe_alert_flow_surge(ts + 3))
+        self.assertEqual(w._try_send_event.await_count, 1)
+        self.assertEqual(w.surge_sent_at["금융투자"], END + 3)
+        evidence = w._record_delivery.call_args.kwargs["evidence"]
+        self.assertEqual(evidence["confirmation_first"]["end_values"], {"spot": 950.0})
+        self.assertEqual(evidence["confirmation_second"]["end_values"], {"spot": 1000.0})
+        self.assertIsNone(evidence["futures_delta_raw"])
+        self.assertFalse(evidence["futures_unit_verified"])
+        self.assertFalse(evidence["futures_scope_verified"])
+        self.assertEqual(evidence["display_unit_scope"], "spot_only")
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "handoff.json"
+            w.save_handoff(path)
+            restored = watcher.Watch("unused", [], "", False)
+            restored.load_handoff(path)
+            self.assertEqual(restored.surge_sent_at["금융투자"], END + 3)
 
 
 if __name__ == "__main__":
