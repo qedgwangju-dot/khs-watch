@@ -1432,6 +1432,13 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
 
     trigger_event = (os.getenv("CTA_TRIGGER_EVENT") or "").strip()
     trigger_schedule = (os.getenv("CTA_TRIGGER_SCHEDULE") or "").strip()
+    # GitHub may drop CTA cron jobs while independent Global Rates crons
+    # continue. Only a trusted same-repository scheduled completed run
+    # can supply a heartbeat. The job-level workflow filter is mandatory.
+    independent_heartbeat = bool(
+        trigger_event == "workflow_run"
+        and (os.getenv("CTA_TRUSTED_HEARTBEAT") or "").strip().lower() == "true"
+    )
 
     # Exact cron-source gating:
     # - weekly report only from the dedicated Sunday 22:00 UTC cron (= Monday 07:00 KST)
@@ -1451,11 +1458,14 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
     }
     weekly_missing = current_state.get("last_weekly_report_key") != week_key
     monday_primary_due = (
-        trigger_event == "schedule"
-        and d.weekday() == 0
+        d.weekday() == 0
         and now_kst.time() >= time(7, 0)
         and weekly_missing
-        and (trigger_schedule in weekly_crons or trigger_schedule in regular_crons)
+        and (
+            (trigger_event == "schedule" and (trigger_schedule in weekly_crons or trigger_schedule in regular_crons))
+            or independent_heartbeat
+        )
+        and audited._data_freshness(snapshot)[0]
     )
     # Recovery after a Monday scheduling, validation or delivery failure:
     # retain the original Monday 07:00 schedule, but do not silently lose the
@@ -1470,6 +1480,7 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
         and weekly_missing
         and (
             (trigger_event == "schedule" and trigger_schedule in regular_crons)
+            or independent_heartbeat
             or manual_recovery
         )
     )
@@ -1485,7 +1496,7 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
     # before the actual FOMC 14:00 ET statement; success dedupe is unchanged.
     decision_kst, _ = _fomc_times(fomc_day)
     regular_backup_due = bool(
-        trigger_schedule in regular_crons
+        (trigger_schedule in regular_crons or independent_heartbeat)
         and now_kst >= datetime.combine(fomc_day, time(20, 40), tzinfo=KST)
         and now_kst < decision_kst
     )
@@ -1506,6 +1517,8 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
             (trigger_event == "schedule"
              and (trigger_schedule in fomc_crons or regular_backup_due)
              and now_kst < decision_kst)
+            or (independent_heartbeat and regular_backup_due
+                and audited._data_freshness(snapshot)[0])
             or manual_fomc_recovery
         )
     )
