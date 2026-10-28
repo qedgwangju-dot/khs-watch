@@ -16,6 +16,8 @@ on:
     # Additional official ETF publication catch-up checks only; no other delivery lanes.
     - cron: "37 23 * * 1-5"
     - cron: "37 0 * * 2-6"
+    # Extra official publication checks after U.S. close; tech ETF only.
+    - cron: "37 2,4 * * 2-6"
   pull_request:
     paths:
       - "scripts/us_fund_flow_watch.py"
@@ -200,7 +202,8 @@ jobs:
       !contains(github.event.head_commit.message, '[tech-etf-proxy-validate]') &&
       !(github.event_name == 'schedule' &&
         (github.event.schedule == '37 23 * * 1-5' ||
-         github.event.schedule == '37 0 * * 2-6'))
+         github.event.schedule == '37 0 * * 2-6' ||
+         github.event.schedule == '37 2,4 * * 2-6'))
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -547,7 +550,8 @@ jobs:
       ${{
         (github.event_name == 'schedule' &&
          github.event.schedule != '37 23 * * 1-5' &&
-         github.event.schedule != '37 0 * * 2-6') ||
+         github.event.schedule != '37 0 * * 2-6' &&
+         github.event.schedule != '37 2,4 * * 2-6') ||
         github.event_name == 'workflow_dispatch' ||
         (github.event_name == 'push' &&
          contains(github.event.head_commit.message, '[tech-etf-proxy-validate]'))
