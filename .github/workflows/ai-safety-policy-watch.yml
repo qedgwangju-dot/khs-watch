@@ -637,6 +637,70 @@ jobs:
           print("ai_policy_php_government_stage_and_source_regression=PASS")
           PY
 
+      - name: Verify PHP security vendor commercialization and infrastructure stage
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_safety_policy_watch import (
+              POLICY_EVENT_BASELINES, cluster_events, material, normalize,
+              php_business_event_stage, php_business_publisher_verified,
+              tracked_policy_event_key,
+          )
+          def article(title, source, domain):
+              return normalize({
+                  "kind": "news", "title": title, "description": title,
+                  "source": source, "url": domain + "story", "publisher_url": domain,
+              })
+          examples = [
+              article("과기정통부 민간 주요정보통신기반시설 111개 기관 172개 보안 점검 착수",
+                      "연합뉴스", "https://www.yna.co.kr/"),
+              article("파이오링크 멀티 EDR 기반 MDR 관리형 탐지 대응 사업 확대",
+                      "뉴시스", "https://www.newsis.com/"),
+              article("파이오링크 PHP2Shell 무료 점검 페이지 공개",
+                      "파이오링크", "https://www.piolink.com/"),
+              article("이스트시큐리티 PHP2Shell 점검도구 무료 배포",
+                      "이스트시큐리티", "https://www.estsecurity.com/"),
+              article("SGA솔루션즈 PHP2Shell 가상패치 한달 무료 지원",
+                      "전자신문", "https://www.etnews.com/"),
+              article("특징주 엑스게이트 PHP2Shell 방화벽 기대감에 7% 강세",
+                      "파이낸셜포스트", "https://www.financialpost.co.kr/"),
+          ]
+          expected = [
+              "infra172:inspection_started_20261028",
+              "piolink_mdr:expansion_announced_20261028",
+              "piolink_php:free_check_page_20261023",
+              "estsecurity_php:free_scanner_20261028",
+              "sga_php:virtual_patch_free_20261028",
+              "axgate_php:theme_reaction_20261028",
+          ]
+          assert [tracked_policy_event_key(x) for x in examples] == expected
+          assert all(x in POLICY_EVENT_BASELINES for x in expected)
+          assert all(material(x) for x in examples)
+          assert len(cluster_events(examples)) == 6
+          paid = article("파이오링크 MDR 유료 공급계약 체결",
+                         "뉴시스", "https://www.newsis.com/")
+          speculative = article("파이오링크 MDR 유료 공급계약 추진 계획",
+                                "뉴시스", "https://www.newsis.com/")
+          after = article("과기정통부 민간 주요정보통신기반시설 172개 점검 결과 발표",
+                          "연합뉴스", "https://www.yna.co.kr/")
+          scanner_contract = article("이스트시큐리티 PHP2Shell 유료 고객 계약 체결",
+                                     "이스트시큐리티", "https://www.estsecurity.com/")
+          assert tracked_policy_event_key(paid) == "piolink_mdr:paid_contract_reported"
+          assert tracked_policy_event_key(speculative) == expected[1]
+          assert tracked_policy_event_key(after) == "infra172:inspection_results_reported"
+          assert tracked_policy_event_key(scanner_contract) == "estsecurity_php:paid_contract_reported"
+          assert len(cluster_events([examples[1], paid, speculative])) == 2
+          spoof = article("이스트시큐리티 PHP2Shell 유료 고객 계약 체결",
+                          "이스트시큐리티", "https://imposter.invalid/")
+          assert not php_business_publisher_verified(spoof)
+          assert not spoof["official"] and not material(spoof)
+          newspaper_spoof = article("파이오링크 MDR 유료 공급계약 체결",
+                                    "뉴시스", "https://newsis.imposter.invalid/")
+          assert not material(newspaper_spoof)
+          assert paid["official"] is False
+          print("ai_policy_php_vendor_stages_dedup_source_spoof_regression=PASS")
+          PY
+
       - name: Verify K-security commercial stage, old baselines, and spoof guard
         shell: bash
         run: |

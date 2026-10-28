@@ -73,6 +73,14 @@ NEWS_QUERIES = [
     '"PHP" "사이버위기 경보" (과학기술정보통신부 OR 과기정통부 OR KISA) (상향 OR 하향 OR 해제)',
     '"PHP" (범부처 종합대책 OR 의무 점검 OR 정부 지원 예산 OR 보안 의무화) (확정 OR 발표 OR 시행)',
     '네이버클라우드 S2W 샌즈랩 LG CNS 사이버보안 AI 계약 실증',
+    '"파이오링크" (MDR OR "관리형 탐지" OR 보안관제) (고객 OR 계약 OR 유료 OR 확대)',
+    '"파이오링크" "PHP2Shell" (점검 OR 계약 OR 유료)',
+    '"이스트시큐리티" "PHP2Shell" (무료 OR 점검 OR 계약 OR 유료)',
+    '"SGA솔루션즈" "PHP2Shell" (가상패치 OR 유료 OR 계약)',
+    '"엑스게이트" (PHP2Shell OR "PHP 취약점") (수주 OR 방화벽 OR 계약)',
+    '"111개 기관" "172개" 기반시설 점검',
+    '"주요정보통신기반시설" (점검 완료 OR 낙찰 OR 계약 OR 결과)',
+
     '("지니언스" OR "Genians") ("넥서스 프레임워크" OR "Nexus Framework") (고객 OR 계약 OR 수주 OR 실증 OR 상용 운영)',
     '("케이사인" OR "KSign") ("전기차 충전" OR "EV charging") (취약점 OR 보안) (계약 OR 상용화 OR 고객 실증)',
     '("샌즈랩" OR "SandLab") ("네이버클라우드" OR "보안 특화 AI") (유료 OR 계약 OR 실증 OR 수주 OR 상용)',
@@ -146,6 +154,13 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "infra172:inspection_started_20261028": {"source_url":"https://www.yna.co.kr/view/AKR20261028025200017","status":"111 institutions, 172 facilities, existing government inspection; incremental procurement unconfirmed"},
+    "piolink_mdr:expansion_announced_20261028": {"source_url":"https://www.newsis.com/view/NISX20261028_0003844426","status":"Multivendor EDR + MDR expansion; no standalone paid contract amount verified"},
+    "piolink_php:free_check_page_20261023": {"source_url":"https://www.piolink.com/kr/company/News.php?bbsCode=media_press&idx=925&vType=view","status":"Free PHP2Shell public check page, not paid contract"},
+    "estsecurity_php:free_scanner_20261028": {"source_url":"https://www.estsecurity.com/public/security-center/download","status":"Free four-mode scanner supports three CVEs, no direct revenue confirmed"},
+    "sga_php:virtual_patch_free_20261028": {"source_url":"https://www.etnews.com/20261028000059","status":"vAegis and RedCastle virtual patch support, trial not paid revenue"},
+    "axgate_php:theme_reaction_20261028": {"source_url":"https://www.financialpost.co.kr/news/articleView.html?idxno=282981","status":"Intraday rally on PHP security theme, no new issuer PHP-specific contract"},
+
     "genians_nexus:development_complete_20260916": {
         "source_url": "https://www.genians.co.kr/pr-room/press/260916",
         "status": "2026-09-16 issuer announcement: Nexus Framework developed and demonstrated at GISEC; no disclosed incremental Nexus-only paid contract",
@@ -197,6 +212,7 @@ OFFICIAL_SOURCE_HINTS = (
     "crowdstrike", "ibm", "nvidia", "microsoft", "openshell",
     "nemoclaw", "sentry", "sap", "canonical", "red hat",
     "trail of bits", "trailofbits.com", "cohere", "aisle",
+    "piolink", "파이오링크", "estsecurity", "이스트시큐리티", "axgate", "엑스게이트",
     "genians", "지니언스", "ksign", "케이사인", "sandslab",
 )
 
@@ -209,6 +225,9 @@ TRUSTED_SOURCE_HINTS = (
     "associated press", "ap news", "guardian", "cbs news", "wall street journal", "wsj",
     "crowdstrike", "ibm", "nvidia", "microsoft", "mbc", "ytn",
     "trail of bits", "trailofbits.com", "cnbc",
+    "piolink", "파이오링크", "estsecurity", "이스트시큐리티",
+    "axgate", "엑스게이트", "sga솔루션즈", "SGA솔루션즈",
+    "뉴시스", "newsis", "보안뉴스", "파이낸셜포스트",
     "genians", "지니언스", "ksign", "케이사인", "sandslab", "newswire", "뉴스와이어", "thelec", "디일렉",
 )
 
@@ -916,6 +935,86 @@ def k_security_business_official(item: dict) -> bool:
         return host in ("navercorp.com", "ncloud.com") or host.endswith((".navercorp.com", ".ncloud.com"))
     return not source_official(source)
 
+def php_business_event_stage(item: dict) -> tuple[str, str] | None:
+    """Commercial and public-inspection stages, separated from PHP exploitation."""
+    title = str(item.get("title") or "").lower()
+    body = f"{title} {item.get('description','')}".lower()
+    php = any(x in body for x in ("php2shell", "php 취약점", "php투셸"))
+    if (any(x in body for x in ("기반시설", "information infrastructure"))
+            and any(x in body for x in ("172", "170여", "111개"))
+            and any(x in body for x in ("점검", "inspection", "취약점"))):
+        group = "infra172"
+    elif any(x in body for x in ("piolink", "파이오링크")):
+        group = "piolink_mdr" if any(x in body for x in ("mdr", "관리형 탐지", "멀티 edr")) else "piolink_php" if php else None
+    elif any(x in body for x in ("estsecurity", "이스트시큐리티")) and php:
+        group = "estsecurity_php"
+    elif any(x in body for x in ("sga솔루션즈", "sga solutions")) and php:
+        group = "sga_php"
+    elif any(x in body for x in ("axgate", "엑스게이트")) and php:
+        group = "axgate_php"
+    else:
+        group = None
+    if not group:
+        return None
+    plans = any(x in title for x in ("계획", "예정", "검토", "추진", "전망", "기대", "목표", "협의", "could ", "may ", "plans ", "expected "))
+    if group == "infra172":
+        for stage, words in (
+            ("inspection_completed_reported", ("점검 완료", "점검 종료")),
+            ("inspection_results_reported", ("점검 결과 발표", "점검 결과 공개")),
+            ("procurement_awarded_reported", ("낙찰", "조달 계약", "계약 체결")),
+            ("budget_approved_reported", ("예산 확정", "사업비 확정")),
+            ("checklist_sent_reported", ("체크리스트 배포 완료", "점검 동의 확보")),
+        ):
+            if any(w in title for w in words) and not plans:
+                return group, stage
+        return group, "inspection_started_20261028"
+    if not plans:
+        for stage, words in (
+            ("paid_contract_reported", ("유료 공급계약", "유료 공급 계약", "신규 수주 확정", "공급 계약 체결", "유료 고객 계약 체결", "paid contract signed", "customer contract awarded")),
+            ("renewal_reported", ("재계약 체결", "유료 계약 갱신", "subscription renewal signed")),
+            ("customer_pilot_reported", ("고객 실증 착수", "유료 실증 계약", "customer pilot started")),
+            ("paying_customers_reported", ("유료 고객 수 공개", "유료 고객 확보", "paid customers disclosed")),
+            ("production_live_reported", ("상용 운영 개시", "정식 유료 서비스 출시", "production rollout live")),
+        ):
+            if any(w in title for w in words):
+                return group, stage
+    historical = {
+        "piolink_mdr": "expansion_announced_20261028",
+        "piolink_php": "free_check_page_20261023",
+        "estsecurity_php": "free_scanner_20261028",
+        "sga_php": "virtual_patch_free_20261028",
+        "axgate_php": "theme_reaction_20261028",
+    }
+    return group, historical[group]
+
+
+def php_business_publisher_verified(item: dict) -> bool:
+    """Verify brand attribution, not a syndicated RSS label alone."""
+    if not php_business_event_stage(item):
+        return True
+    source = str(item.get("source") or "").lower()
+    url = str(item.get("publisher_url") or item.get("url") or "")
+    try:
+        host = (urllib.parse.urlsplit(url).hostname or "").lower()
+    except ValueError:
+        return False
+    if not host:
+        return False
+    for aliases, domain in (
+        (("파이오링크", "piolink"), "piolink.com"),
+        (("이스트시큐리티", "estsecurity"), "estsecurity.com"),
+        (("엑스게이트", "axgate"), "axgate.com"),
+        (("연합뉴스", "yonhap"), "yna.co.kr"),
+        (("뉴시스", "newsis"), "newsis.com"),
+        (("전자신문", "etnews"), "etnews.com"),
+        (("파이낸셜포스트", "financialpost"), "financialpost.co.kr"),
+        (("보안뉴스",), "boannews.com"),
+    ):
+        if any(x in source for x in aliases):
+            return host == domain or host.endswith("." + domain)
+    return source_trusted(source)
+
+
 def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """Classify a new *reported* milestone from the headline, never from a
     speculative paragraph about what could happen. No issuer/legislative
@@ -924,6 +1023,9 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
 
+    business = php_business_event_stage(item)
+    if business:
+        return business
     commercial_stage = k_security_business_stage(item)
     if commercial_stage:
         return commercial_stage
@@ -1182,6 +1284,16 @@ def detect_category(text: str) -> str:
         t in low for t in ("subpoena", "complaint", "investigation", "sues", "settlement", "consent order")
     ):
         return "FTC 프런티어 AI 소비자보호 조사·집행 단계"
+    business = php_business_event_stage({"title": text})
+    if business:
+        return {
+            "infra172": "민간 기반시설 172개 보안 점검·조달 단계",
+            "piolink_mdr": "파이오링크 관리형 탐지·대응 상용화 단계",
+            "piolink_php": "파이오링크 PHP 보안 점검 사업화 단계",
+            "estsecurity_php": "이스트시큐리티 PHP 점검 도구·유료 전환 단계",
+            "sga_php": "SGA솔루션즈 PHP 가상패치 사업화 단계",
+            "axgate_php": "엑스게이트 PHP 방화벽 수주 검증 단계",
+        }[business[0]]
     commercial_stage = k_security_business_stage({"title": text})
     if commercial_stage:
         return {
@@ -1225,6 +1337,16 @@ def detect_entity(text: str) -> str:
         if "openai" in low and "anthropic" in low:
             return "FTC–OpenAI·Anthropic"
         return "FTC–OpenAI" if "openai" in low else "FTC–Anthropic"
+    business = php_business_event_stage({"title": text})
+    if business:
+        return {
+            "infra172": "과학기술정보통신부",
+            "piolink_mdr": "파이오링크",
+            "piolink_php": "파이오링크",
+            "estsecurity_php": "이스트시큐리티",
+            "sga_php": "SGA솔루션즈",
+            "axgate_php": "엑스게이트",
+        }[business[0]]
     commercial_stage = k_security_business_stage({"title": text})
     if commercial_stage:
         return {
@@ -1331,6 +1453,8 @@ def material(item: dict) -> bool:
         return False
     milestone = tracked_policy_event_stage(item)
     if milestone:
+        if milestone[0] in ("infra172", "piolink_mdr", "piolink_php", "estsecurity_php", "sga_php", "axgate_php") and not php_business_publisher_verified(item):
+            return False
         if milestone[0] in ("genians_nexus", "ksign_evsec", "ksign_sandslab") and not k_security_business_publisher_verified(item):
             return False
         if milestone[0] == "cohere_aisle" and not cohere_aisle_publisher_verified(item):
@@ -1404,7 +1528,8 @@ def normalize(item: dict) -> dict:
         cohere_aisle_publisher_verified(item) and crowdstrike_nvidia_publisher_verified(item)
         and php_korea_publisher_verified(item)
         and k_security_business_publisher_verified(item)
-        and k_security_business_official(item))
+        and k_security_business_official(item)
+        and php_business_publisher_verified(item))
     return out
 
 
@@ -1774,6 +1899,25 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"• {html.escape(concise_fact(rep))}",
         ]
         if rep["category"] in (
+            "민간 기반시설 172개 보안 점검·조달 단계",
+            "파이오링크 관리형 탐지·대응 상용화 단계",
+            "파이오링크 PHP 보안 점검 사업화 단계",
+            "이스트시큐리티 PHP 점검 도구·유료 전환 단계",
+            "SGA솔루션즈 PHP 가상패치 사업화 단계",
+            "엑스게이트 PHP 방화벽 수주 검증 단계",
+        ):
+            stage = php_business_event_stage(rep)
+            lines.append(f"• <b>새 진행 단계</b>: {html.escape(stage[1] if stage else '확인 필요')} · 시장 테마·무료 점검·유료 계약 구분")
+            if stage and stage[0] == "infra172":
+                lines.append("• <b>기존 기준선</b>: 111개 기관·약 172개 민간 기반시설 점검. 연말 완료 목표, 신규 발주예산·낙찰사는 아직 확인되지 않음")
+            elif stage and stage[0] == "piolink_mdr":
+                lines.append("• <b>기존 기준선</b>: 다중 제조사 단말 탐지·대응을 결합한 관리형 탐지·대응 사업 확대. 추가 유료 고객·계약금액·정기 갱신은 미확인")
+            elif stage and stage[0] == "estsecurity_php":
+                lines.append("• <b>기존 기준선</b>: PHP2Shell 무료 점검 도구 공개. 서버·원격·컨테이너·이미지 4가지 검사 지원. 무료 배포를 매출로 계산하지 않음")
+            else:
+                lines.append("• <b>기존 기준선</b>: PHP 보안 테마 반응·무료 점검·임시 패치 지원과 신규 유료 공급계약은 별개")
+            lines.append("• <b>수익 확인</b>: 계약고객·원화 계약액·검수·구독료·관리형 관제 월 과금·장기 유지보수 계약·갱신률")
+        elif rep["category"] in (
             "지니언스 AI 보안 운영 자동화·사업화 단계",
             "케이사인 충전 인프라 AI 취약점 검사·사업화 단계",
             "샌즈랩·네이버클라우드 보안 특화 AI 사업화 단계",
