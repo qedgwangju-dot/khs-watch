@@ -10,6 +10,7 @@ on:
       - "scripts/treasury_cta_squeeze_equity_watch.py"
       - ".github/workflows/treasury-cta-squeeze-telegram-alert.yml"
       - "tests/test_treasury_alert_root_guards.py"
+      - "tests/test_treasury_cta_nasdaq_squeeze.py"
   schedule:
     # Regular market-hours monitoring: 21:00~08:45 KST, every 15 minutes.
     - cron: "*/15 12-23 * * 1-5"
@@ -98,7 +99,12 @@ jobs:
           python -m py_compile scripts/treasury_cta_squeeze_audited_watch.py
           python -m py_compile scripts/treasury_cta_squeeze_equity_watch.py
           pytest -q tests/test_treasury_cta_nasdaq_squeeze.py
-          pytest -q tests/test_treasury_alert_root_guards.py
+          # Isolate CTA production from buyback-policy and yen-carry tests.
+          # Those other reports are still covered by Treasury architecture CI.
+          pytest -q \
+            tests/test_treasury_alert_root_guards.py::test_yahoo_contract_oi_never_enters_cta_gate \
+            tests/test_treasury_alert_root_guards.py::test_cta_headline_does_not_present_4_3_as_live_policy_target \
+            tests/test_treasury_alert_root_guards.py::test_cta_scheduled_thresholds_adapt_to_live_yield_regime
 
       - name: Check CTA squeeze chain
         run: |
