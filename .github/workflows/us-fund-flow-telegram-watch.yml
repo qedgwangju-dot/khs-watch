@@ -72,6 +72,7 @@ jobs:
           python-version: "3.12"
       - name: Verify monthly AAII and Conference Board parsers without Telegram
         run: |
+          python -m pip install --disable-pip-version-check --quiet beautifulsoup4
           python -m py_compile scripts/us_positioning_delivery.py
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_us_positioning_delivery.py' -v
       - name: Compile and test proprietary-report gate offline without secrets or Telegram
