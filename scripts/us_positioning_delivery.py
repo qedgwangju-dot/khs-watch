@@ -76,7 +76,7 @@ def parse_conference_board_confidence(text):
     value = float(headline.group(2))
     if not (1 <= value <= 200) or not (0 <= change_points <= 100):
         raise ValueError("Conference Board index out of bounds")
-    exp = re.search(r"Expectations Index.{0,220}?\bto\s+([\d.]+)", text, re.I | re.S)
+    exp = re.search(r"Expectations Index.{0,220}?\bto\s+(\d+(?:\.\d+)?)", text, re.I | re.S)
     if not exp:
         raise ValueError("Conference Board expectations index unavailable")
     expectation_value = float(exp.group(1))
