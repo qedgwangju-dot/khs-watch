@@ -2,7 +2,7 @@
   "seen": {
     "ICI|mmf": "c74fdbe2b237ba409f2d1626063ed0872de5268b138d59e41bf8a74b2cdd78cd",
     "FINRA|margin": "b821af0c360e808de172b9db2034d0a5abdff56be88dcbb9b2694aeb20f952c4",
-    "ICI|combined": "1f787f3eb7e310857552da1c89ffd96145828013c7837536a3768e749627bc00",
+    "ICI|combined": "b099cf10637683d59bcc1b40cd8de395ce4daef0d1c29d1c2bb2f44dfafc2dad",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
     "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64",
     "LSEG Lipper via Reuters|lipper": "322bb6e2516a3f327007042522d224c50a05c059d5697b540dd5b8be9b515502",
@@ -44,17 +44,17 @@
     "ICI|combined": {
       "source": "ICI",
       "kind": "combined",
-      "period": "October 14, 2026",
-      "published": "October 21, 2026",
+      "period": "October 21, 2026",
+      "published": "October 28, 2026",
       "url": "https://www.ici.org/research/stats/combined_flows",
       "metrics": {
-        "equity": -476.417,
-        "domestic": -479.392,
-        "world": 2.975,
-        "hybrid": -2.332,
-        "bond": 7.922,
-        "commodity": -0.85,
-        "total": -471.677
+        "equity": 13.892,
+        "domestic": 7.09,
+        "world": 6.802,
+        "hybrid": -2.088,
+        "bond": -0.166,
+        "commodity": 0.686,
+        "total": 12.324
       },
       "domestic_4w": null,
       "quality_checks": [
@@ -63,7 +63,7 @@
         "categories_total",
         "prose_total"
       ],
-      "fingerprint": "1f787f3eb7e310857552da1c89ffd96145828013c7837536a3768e749627bc00"
+      "fingerprint": "b099cf10637683d59bcc1b40cd8de395ce4daef0d1c29d1c2bb2f44dfafc2dad"
     },
     "JPMorganChase Institute|household_withdrawals": {
       "source": "JPMorganChase Institute",
@@ -124,7 +124,7 @@
       "period": "October 15, 2026",
       "reference_week": "2026-10-15",
       "reference_week_verified": true,
-      "published": "2026-10-27",
+      "published": "2026-10-28",
       "url": "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade",
       "comparison_note": "복수 공개 보도의 인용치. Goldman 고객 전용 원자료·업종별 표준편차 수치 미확보",
       "metrics": {
@@ -138,23 +138,23 @@
       "fingerprint": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
     }
   },
-  "updated_at_kst": "2026-10-28T07:14:50.934742+09:00",
+  "updated_at_kst": "2026-10-29T03:23:58.417662+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-10-27",
-    "sp500_last_value": 7722.60009765625,
+    "sp500_last_date": "2026-10-28",
+    "sp500_last_value": 7727.1201171875,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -1.23,
+    "sp500_drawdown_pct": -1.17,
     "hartnett_tracking_version": "2026-10-09-v1",
-    "hartnett_treasury_date": "2026-10-26",
-    "hartnett_10y_pct": 5.0,
-    "hartnett_10y_5d_bp": -15.0,
+    "hartnett_treasury_date": "2026-10-27",
+    "hartnett_10y_pct": 4.99,
+    "hartnett_10y_5d_bp": -13.0,
     "hartnett_bond_level": "below_5_30",
     "hartnett_bond_momentum": "neutral",
     "hartnett_fed_target_upper_pct": 4.0,
-    "hartnett_fed_effective_date": "2026-09-16",
-    "hartnett_election_stage": "outside",
+    "hartnett_fed_effective_date": "2026-10-28",
+    "hartnett_election_stage": "within_7_days",
     "retail_survey": {
       "aaii": {
         "period": "2026-09",
