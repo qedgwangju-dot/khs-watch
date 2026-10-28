@@ -587,3 +587,70 @@ def test_delayed_fomc_cron_fires_before_decision_not_after(monkeypatch):
         {"snapshot": snapshot}
     )
     assert due_after is False
+
+
+def test_nyfed_daily_change_uses_official_previous_session(monkeypatch):
+    received = []
+    def official_history(url):
+        received.append(url)
+        return {"refRates": [
+            {"effectiveDate": "2026-10-26", "percentRate": 3.87, "volumeInBillions": 2000},
+            {"effectiveDate": "2026-10-27", "percentRate": 4.00, "volumeInBillions": 2150},
+        ]}
+    monkeypatch.setattr(base_watch, "fetch_json", official_history)
+    row = base_watch.nyfed_rate("https://markets.newyorkfed.org/api/rates/secured/sofr/last/1.json")
+    assert received[0].endswith("/sofr/last/4.json")
+    assert row["date"] == "2026-10-27"
+    assert row["previous_date"] == "2026-10-26"
+    assert row["change_bp"] == pytest.approx(13.0)
+
+
+def test_repo_stress_uses_official_daily_change_after_stale_state():
+    snapshot = {
+        "repo": {
+            "SOFR": {"date": "2026-10-27", "rate": 4.00, "change_bp": 13.0},
+            "BGCR": {"date": "2026-10-27", "rate": 3.96, "change_bp": 2.0},
+            "TGCR": {"date": "2026-10-27", "rate": 3.96, "change_bp": 2.0},
+        }
+    }
+    old_state = {"repo": {
+        "SOFR": {"date": "2026-10-14", "rate": 3.99},
+        "BGCR": {"date": "2026-10-14", "rate": 3.96},
+        "TGCR": {"date": "2026-10-14", "rate": 3.96},
+    }}
+    ok, concerns = equity.audited._repo_not_worse(snapshot, old_state)
+    assert ok is False
+    assert any("SOFR 공식 전영업일 +13.0bp" in s for s in concerns)
+
+
+def test_missing_official_repo_history_never_counts_as_stable():
+    snapshot = {"repo": {
+        "SOFR": {"date": "2026-10-27", "rate": 3.90},
+        "BGCR": None,
+        "TGCR": {"date": "2026-10-27", "rate": 3.86},
+    }}
+    ok, reasons = equity.audited._repo_not_worse(snapshot, {})
+    assert ok is False
+    assert any("BGCR 공식 당일 금리 없음" in r for r in reasons)
+    assert any("전 영업일 변화 미확인" in r for r in reasons)
+
+
+def test_cftc_socrata_fallback_uses_7day_report_delta(monkeypatch):
+    rows = []
+    for code in base_watch.CFTC_TREASURY_CODES.values():
+        for day, lng in [("2026-10-13", 100), ("2026-10-20", 120)]:
+            rows.append({
+                "cftc_contract_market_code": code,
+                "report_date_as_yyyy_mm_dd": day,
+                "open_interest_all": "10000",
+                "lev_money_positions_long": str(lng),
+                "lev_money_positions_short": "300",
+                "lev_money_positions_spread": "40",
+            })
+    monkeypatch.setattr(base_watch, "fetch_json", lambda url: rows)
+    result = base_watch._socrata_cftc_snapshot()
+    assert result["report_date"] == "October 20, 2026"
+    for row in result["markets"].values():
+        assert row["leveraged_net_wow"] == 20
+        assert row["leveraged_short_wow"] == 0
+        assert row["previous_period"] == "October 13, 2026"
