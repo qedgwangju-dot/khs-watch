@@ -722,6 +722,10 @@ def test_missed_monday_report_recovers_once_on_first_fresh_regular_poll(monkeypa
 def test_weekly_catchup_respects_original_monday_and_excludes_push_dispatch(monkeypatch):
     from datetime import datetime as RealDateTime
 
+    # This case checks ordinary dispatch, not explicitly approved recovery.
+    # Do not inherit CTA_WEEKLY_RECOVERY=true from a real dispatch job.
+    monkeypatch.setenv("CTA_WEEKLY_RECOVERY", "false")
+
     class FakeNow(RealDateTime):
         current_date = (2026, 10, 26, 7, 13)
         @classmethod
