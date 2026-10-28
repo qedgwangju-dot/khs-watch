@@ -26175,6 +26175,31 @@
       "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
       "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
     },
+    "core:3597aec4683c2e0b3f595302": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
+      "source_fact_keys": [
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
+      ],
+      "source_published_kst": "2026-10-28T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
+    },
     "core:35b033d6139d72815536f53d": {
       "first_seen_kst": "2026-10-24T22:11:43+09:00",
       "lanes": {
@@ -67691,6 +67716,26 @@
       "telegram_core_fact": "미국 비트코인과 이더리움 현물 상장지수펀드(ETF)에서 최근 2주 동안 2조3000억원이 빠져나갔다. 비트코인과 이더리움 ETF의 지난 2주간 유출금액을 합치면 17억3730만달러, 약 2조3083억원에 달한다.",
       "title": "美 비트코인·이더리움 ETF서 2주새 2조3000억원 빠져나가"
     },
+    "core:8f59c8a79d5be584720815ed": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.hankyung.com/article/202610278302i",
+      "source": "한국경제",
+      "source_body_digest": "368c3aff049fb295264207f0c0879f69d222a17c12e6065ece1817e8eea9f45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77388e6e8ed1ee68ff97f5045f02105be09980f5050bee32df92b32b52a1553c",
+      "source_fact_keys": [
+        "source_fact:v1:c093de4b0684a45fd379bb69a47a35edb0e2cbae1fd9cede95dc09c9f3e19e01"
+      ],
+      "source_published_kst": "2026-10-28T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는",
+      "telegram_core_fact": "우리 정부가 저가 물량 공세를 앞세운 중국산 아연도금냉연(CGI)에 향후 5년간 덤핑방지관세(최대 33.67%)를 부과하기로 했음에도 철강주 주가는 지지부진하다.",
+      "title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는"
+    },
     "core:8f670f6b9acb75a3c28a3f0c": {
       "first_seen_kst": "2026-10-13T13:44:57+09:00",
       "lanes": {
@@ -72292,6 +72337,34 @@
       "source_title": "NH농협은행, 美 천연가스 파이프라인 금융참여…6000만달러 대출 실행",
       "telegram_core_fact": "이번 거래는 농협은행이 기존 액화천연가스(LNG) 수출터미널 중심의 프로젝트파이낸싱(PF)에서 나아가 가스 운송 인프라인 미드스트림 영역으로 역량을 확대한 점에서 의미가 있다.",
       "title": "NH농협은행, 美 천연가스 파이프라인 금융참여…6000만달러 대출 실행"
+    },
+    "core:99cba7197477c33aaa674424": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
     },
     "core:99d386196c9455d8326e3485": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
@@ -82839,6 +82912,39 @@
       "telegram_core_fact": "테크크런치 등 외신에 따르면 클라우드플레어는 프로그래밍 실행 환경을 개발하는 스타트업 '디노'를 인수한다고 발표했다. 디노 팀은 클라우드플레어 합류 후 워커스를 활용한 서버 개발 방식 확산에 주력할 계획이다.",
       "title": "클라우드플레어, 디노 인수…'워커스' 고도화 주력"
     },
+    "core:b0775a3d2c7aaf74e963f1c0": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "core:b07d7a47d6d223e201b8b697": {
       "first_seen_kst": "2026-10-18T17:16:37+09:00",
       "lanes": {
@@ -85726,6 +85832,31 @@
       "source_title": "LIG D&A, 입찰제한에 법적대응 예고…수주·개발 차질 비상 | 연합뉴스",
       "telegram_core_fact": "검찰은 LIG D&A 관계자들이 평가 조작을 발판으로 1조7천억원 '한국형 전자전기' 핵심 기술 사업을 수주한 것으로 보고 있다.",
       "title": "LIG D&A, 입찰제한에 법적대응 예고…수주·개발 차질 비상 | 연합뉴스"
+    },
+    "core:b705dadf4d6442058554c68f": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.fnnews.com/news/202610280601347907",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "86d43db2864aae5690dde1cf4f1e3e3a509d82f268dd403be1491725f0943021",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:525e95c18c16253cb2427ed4cb52d3deddd21a8004e350789f0f62fa8277c82d",
+      "source_fact_keys": [
+        "source_fact:v1:0957c0f9313c060f1ac5d3e2231c8d9dfd62bad4442d928a22861866fbdad359",
+        "source_fact:v1:6370fac5da262421bcd9915d4b94c1b987f6978976b7887b995c73ff27482f3f",
+        "source_fact:v1:7f5321c66ecaf61dec88ac0c2ff4c92dd28c48f41eb98655e0939bd2c753d8b2",
+        "source_fact:v1:9145d7801e708cb237ac58f5f97757ba17119c2905f6a2ba7d0a94a11cd67df5",
+        "source_fact:v1:f51f69aa07d23873067ee7d2db26db2e95efee0766fe752dd0bc1bf94ba67957",
+        "source_fact:v1:ff4e75633585aac9a7feeed63ef8b188121e15cb7d24ec2dd77b0307624348d0"
+      ],
+      "source_published_kst": "2026-10-28T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위",
+      "telegram_core_fact": "28일 기업데이터연구소 CEO스코어가 2026년 지정 공시대상기업집단(대기업) 오너 일가 중 지분 변동이 확인된 222명을 대상으로 올해 1월 1일 이후 주식 취득·처분 내역을 조사한 결과, 이재용 삼성전자 회장의 주식 순취득 규모가 총 4조9천524억원으로 집계돼 1위를 기록했다.",
+      "title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위"
     },
     "core:b70dbcb1bfd0149fa1459b08": {
       "first_seen_kst": "2026-10-28T00:49:27+09:00",
@@ -101092,6 +101223,26 @@
       "telegram_core_fact": "올해 1분기 47억달러에서 2분기 116억달러로 매출이 두 배 이상 증가한 것과 비교하면 상승세가 둔화했다고 본 것이다. 발표된 실적은 인공지능(AI) 개발 비용에 대한 우려를 일부 완화해줬지만, 일각에서는 매출 성장세가 둔화했다는 점에 실망감도 드러난 것으로 전해졌다.",
       "title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\""
     },
+    "core:d79da5b26291e6879a5d383a": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843378",
+      "source": "뉴시스",
+      "source_body_digest": "c1345ab316a4c7057a7511693a4a64b676ff9cafefe5ee5a3587427ee2ed419c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f9d23569047fe38b69edeadcaa4fb10a0ae56dad86db35ba830c06d18c14755",
+      "source_fact_keys": [
+        "source_fact:v1:d7832719b7bc729295badbc2bec92791f28cc41f0214909a36a850c691f4af68"
+      ],
+      "source_published_kst": "2026-10-28T06:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파",
+      "telegram_core_fact": "아이파크몰 용산점의 취향·취미 특화 공간 '도파민 스테이션'이 누적 매출 1000억원을 돌파했다.",
+      "title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파"
+    },
     "core:d7a559b54023656e5a03d857": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
       "lanes": {
@@ -107299,6 +107450,26 @@
       "source_title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'",
       "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스의 미국 주식예탁증서(ADR) 상장 이후 국내 투자자들이 고려해야 할 주가 변수가 늘어났다는 증권가의 분석이 나왔다.",
       "title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'"
+    },
+    "core:e4297f901aec68ba27b55e41": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/28/2026102813554864004",
+      "source": "머니투데이",
+      "source_body_digest": "4c592d907ecde5c23f39b5bceaf341851d755a6a7f533cb132a0ab7d3dec2448",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0233844c8ae2f9d619c06ab197aacebea5ddaa701d31885988032de38aebaa05",
+      "source_fact_keys": [
+        "source_fact:v1:2849c1af3f3ecd9f87f27d812d9cb2be9838548c57d082013b52b5d0bc89ec4f"
+      ],
+      "source_published_kst": "2026-10-28T14:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위",
+      "telegram_core_fact": "한화자산운용은 'PLUS 글로벌HBM반도체' ETF(상장지수펀드)가 지난 26일 기준 올해 해외 투자 반도체 ETF 중 5933억원의 개인 순매수 1위를 기록했다고 28일 밝혔다.",
+      "title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위"
     },
     "core:e440b47beef78e2f3dd896c7": {
       "first_seen_kst": "2026-10-23T20:01:54+09:00",
@@ -130870,26 +131041,28 @@
     "event:68832cf716b50ba295693466": {
       "first_seen_kst": "2026-10-28T07:11:08+09:00",
       "lanes": {
-        "live": "2026-10-28T13:58:54+09:00",
+        "live": "2026-10-28T14:34:00+09:00",
         "preopen": "2026-10-28T07:11:08+09:00"
       },
-      "last_seen_kst": "2026-10-28T13:58:54+09:00",
-      "link": "https://busan.fnnews.com/news/202610281052156221",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "6c00d57b664ae84ce8332fc1ceff2c9cb8975f43657988786570e9a4861bcc4f",
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ab7df812348aa773207f20529483dd202ee9401e334ca474a1b2b78b77de18ce",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
       "source_fact_keys": [
-        "source_fact:v1:00b451a92b9690fe9fb161a67a26b721d49c2fea77d00f86f28593afb29c2acd",
-        "source_fact:v1:0c20153a24536a33a0b34c35bb237f9d4087eb7dcc45e4b41fe26b56b6159065",
-        "source_fact:v1:5ca2a2f7b17356f4b1b42059e46ff9133a5e387d8e39cb564aa706a5a6365ba8",
-        "source_fact:v1:6381d04cd8f7d1090065a46a52ad365c56caf7d624997b308700a2ce4b47c1ed"
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
       ],
-      "source_published_kst": "2026-10-28T09:00+09:00",
+      "source_published_kst": "2026-10-28T06:07+09:00",
       "source_supply_terms": {},
-      "source_title": "앤트로픽이 끌고 SK하이닉스가 밀고…반도체 투심 되살아나나",
-      "telegram_core_fact": "미국의 AI 기업 앤트로픽이 불을 붙인 투심이 SK하이닉스[000660]의 호실적 지속과 대규모 추가 주주환원책 발표에 개선되면서 반도체주를 중심으로 매수세가 유입되는 모양새다.",
-      "title": "앤트로픽이 끌고 SK하이닉스가 밀고…반도체 투심 되살아나나"
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
     },
     "event:68b3ff1292ddc5b8b6a0c1b5": {
       "first_seen_kst": "2026-10-02T07:53:13+09:00",
@@ -137551,36 +137724,22 @@
     "event:a7db7fac4ae76515383a488e": {
       "first_seen_kst": "2026-10-28T12:57:58+09:00",
       "lanes": {
-        "live": "2026-10-28T12:57:58+09:00"
+        "live": "2026-10-28T14:34:00+09:00"
       },
-      "last_seen_kst": "2026-10-28T12:57:58+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2638537",
-      "source": "이투데이",
-      "source_body_digest": "b32424b847a8d309e4bba13723819c66c51306e6a2a54eb3479136e9bc6d8261",
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/28/2026102813554864004",
+      "source": "머니투데이",
+      "source_body_digest": "4c592d907ecde5c23f39b5bceaf341851d755a6a7f533cb132a0ab7d3dec2448",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f0d62129850e646299728aa360f8c1c719d372a8805ed84835c93e144c64a54a",
+      "source_fact_identity": "source_facts:v1:0233844c8ae2f9d619c06ab197aacebea5ddaa701d31885988032de38aebaa05",
       "source_fact_keys": [
-        "source_fact:v1:0c9194649ea0472850a7994df6fdbea7ba2aa0200f6a2d50d6b06b1910745764",
-        "source_fact:v1:2642a9182f8cc266d41850e0f437f0acdb5daedd373a47a69c2a0551015671bd",
-        "source_fact:v1:2b0673a99b366c61d7908276a7d25caf6c7a4256001933116e88d7d2e813794a",
-        "source_fact:v1:2de12a54ac28c98e820c033746d0ecad043e15e24a762febaed096f01727043e",
-        "source_fact:v1:331ca6447cc2cee2f58baf7e8c491a421b75897cee29ccacbaecc55eb7678263",
-        "source_fact:v1:412de83c845fc70b301d8f6181b52ef0dec25158e863270b58513dbc4cbcdeb0",
-        "source_fact:v1:4adeb7d67b60cbf2e6d325c4996067459e1ef87b7bf4c5fbb966f15b0926d2dd",
-        "source_fact:v1:656d1bba0788267689610b1762fc02f4c4d3af887fa64c4a7c16db64660b584f",
-        "source_fact:v1:66b6a9c3e50505619a576586742d97695706bd3072ce41f92c860d034830a85e",
-        "source_fact:v1:8f71ae6ba6827929a1f271e32158ff4eb196aad215d6c172df2143a166c6de3a",
-        "source_fact:v1:976d62c6c2b7c24e68d3ef9ec21d41e496226259f6da40e84ca6617b0ba22e05",
-        "source_fact:v1:cbb928bdd1f833bbea22c63c1310fbbd3f57486ad83aec3d26dd19a6d0383c75",
-        "source_fact:v1:d4ed6f9bddcbcdb8bb08f19cea83a0788796ee46052d6137530f2933c24d0d04",
-        "source_fact:v1:f3bfc32bd26523be932a572169b385b597a77478997e4cf83f25231b4a4234a5",
-        "source_fact:v1:f8953880bce0d69b83d99b74447a9ac4e138931a35d8fac82ed133beae7ec821"
+        "source_fact:v1:2849c1af3f3ecd9f87f27d812d9cb2be9838548c57d082013b52b5d0bc89ec4f"
       ],
-      "source_published_kst": "2026-10-28T05:00+09:00",
+      "source_published_kst": "2026-10-28T14:26+09:00",
       "source_supply_terms": {},
-      "source_title": "반도체 소부장 AI 호황에 날개...넘어야할 산은 더 높다",
-      "telegram_core_fact": "대표적인 소부장 반도체 기업인 엘케이켐은 올해 상반기 매출이 137억원으로 전년 동기보다 50% 증가했다.",
-      "title": "반도체 소부장 AI 호황에 날개...넘어야할 산은 더 높다"
+      "source_title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위",
+      "telegram_core_fact": "한화자산운용은 'PLUS 글로벌HBM반도체' ETF(상장지수펀드)가 지난 26일 기준 올해 해외 투자 반도체 ETF 중 5933억원의 개인 순매수 1위를 기록했다고 28일 밝혔다.",
+      "title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위"
     },
     "event:a8586842e02b79008da66772": {
       "first_seen_kst": "2026-10-20T17:22:47+09:00",
@@ -142149,24 +142308,35 @@
     "event:d7248dec71f198b51a40e421": {
       "first_seen_kst": "2026-10-28T08:11:07+09:00",
       "lanes": {
-        "live": "2026-10-28T08:11:07+09:00"
+        "live": "2026-10-28T14:34:00+09:00"
       },
-      "last_seen_kst": "2026-10-28T08:11:07+09:00",
-      "link": "https://biz.chosun.com/stock/stock_general/2026/10/28/TULHATHL4VADVE4ZGUFFN2IWZE/",
-      "source": "조선비즈",
-      "source_body_digest": "695a945808e78c42f8f99beb162c4c77cc966a291ac0a1977561ad1581e82a12",
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9526a43aed355fe91bd6938ae408e2e4444bca859e1696d30a8eefcd1fcabc31",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
       "source_fact_keys": [
-        "source_fact:v1:52e51e96910268a8675a3e72246b66000e8c1004f95f362c3776e07fc36fc829",
-        "source_fact:v1:b2d65d0e3cd330d3a51e287361e217208b6baccdca1ca5a262877396020c37fb",
-        "source_fact:v1:c24cb473985c5a6b6a82781272ab4601860a29af442616c06082c1c781ac0631"
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
       ],
-      "source_published_kst": "2026-10-27T16:12+09:00",
+      "source_published_kst": "2026-10-27T21:32+09:00",
       "source_supply_terms": {},
-      "source_title": "빛과전자, 美 광통신업체서 25G 광트랜시버 초도 양산 수주",
-      "telegram_core_fact": "광통신 전문기업 빛과전자(069540)가 미국 광통신 업체로부터 케이블TV망에 사용하는 광트랜시버의 초도 양산 물량을 수주했다고 28일 밝혔다.",
-      "title": "빛과전자, 美 광통신업체서 25G 광트랜시버 초도 양산 수주"
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
     },
     "event:d72d4fb25acbbe584ed15cc9": {
       "first_seen_kst": "2026-09-26T05:54:52+09:00",
@@ -151783,6 +151953,26 @@
       "telegram_core_fact": "삼성바이오에피스는 약 2500억원에 달하는 브라질 에쿨리주맙 시장에 10년간 제품 단독 공급 계약을 체결하며 안정적인 매출 확보를 기대할 수 있게 됐다.",
       "title": "삼성바이오에피스, 브라질에 희귀질환 치료제 10년간 단독 공급"
     },
+    "fact:0a46083ad8ead01f779a8205": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.hankyung.com/article/202610278302i",
+      "source": "한국경제",
+      "source_body_digest": "368c3aff049fb295264207f0c0879f69d222a17c12e6065ece1817e8eea9f45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77388e6e8ed1ee68ff97f5045f02105be09980f5050bee32df92b32b52a1553c",
+      "source_fact_keys": [
+        "source_fact:v1:c093de4b0684a45fd379bb69a47a35edb0e2cbae1fd9cede95dc09c9f3e19e01"
+      ],
+      "source_published_kst": "2026-10-28T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는",
+      "telegram_core_fact": "우리 정부가 저가 물량 공세를 앞세운 중국산 아연도금냉연(CGI)에 향후 5년간 덤핑방지관세(최대 33.67%)를 부과하기로 했음에도 철강주 주가는 지지부진하다.",
+      "title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는"
+    },
     "fact:0a4d49c74aa60dc4d8a3a256": {
       "first_seen_kst": "2026-10-28T05:16:14+09:00",
       "lanes": {
@@ -156388,6 +156578,26 @@
       "source_title": "엔비디아 비중 25% 고정…하나운용, 美 AI반도체 ETF 상장",
       "telegram_core_fact": "하나자산운용은 오는 20일 '1Q 엔비디아고정미국AI반도체' ETF를 신규 상장한다고 19일 밝혔다.",
       "title": "엔비디아 비중 25% 고정…하나운용, 美 AI반도체 ETF 상장"
+    },
+    "fact:12c61e07aa1e71c542dae9fc": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/28/2026102813554864004",
+      "source": "머니투데이",
+      "source_body_digest": "4c592d907ecde5c23f39b5bceaf341851d755a6a7f533cb132a0ab7d3dec2448",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0233844c8ae2f9d619c06ab197aacebea5ddaa701d31885988032de38aebaa05",
+      "source_fact_keys": [
+        "source_fact:v1:2849c1af3f3ecd9f87f27d812d9cb2be9838548c57d082013b52b5d0bc89ec4f"
+      ],
+      "source_published_kst": "2026-10-28T14:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위",
+      "telegram_core_fact": "한화자산운용은 'PLUS 글로벌HBM반도체' ETF(상장지수펀드)가 지난 26일 기준 올해 해외 투자 반도체 ETF 중 5933억원의 개인 순매수 1위를 기록했다고 28일 밝혔다.",
+      "title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위"
     },
     "fact:12cac147efbfabdafce05272": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -161024,6 +161234,31 @@
       "source_title": "솔리다임 IPO 접은 SK하이닉스…美 낸드 투자 재원 확보 '새 과제’",
       "telegram_core_fact": "SK하이닉스, 솔리다임의 상장 전 투자유치 및 IPO 추진 검토를 중단하기로 했다고 밝혔다.",
       "title": "솔리다임 IPO 접은 SK하이닉스…美 낸드 투자 재원 확보 '새 과제’"
+    },
+    "fact:1bdd7f1ce39778cd8ef69073": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.fnnews.com/news/202610280601347907",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "86d43db2864aae5690dde1cf4f1e3e3a509d82f268dd403be1491725f0943021",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:525e95c18c16253cb2427ed4cb52d3deddd21a8004e350789f0f62fa8277c82d",
+      "source_fact_keys": [
+        "source_fact:v1:0957c0f9313c060f1ac5d3e2231c8d9dfd62bad4442d928a22861866fbdad359",
+        "source_fact:v1:6370fac5da262421bcd9915d4b94c1b987f6978976b7887b995c73ff27482f3f",
+        "source_fact:v1:7f5321c66ecaf61dec88ac0c2ff4c92dd28c48f41eb98655e0939bd2c753d8b2",
+        "source_fact:v1:9145d7801e708cb237ac58f5f97757ba17119c2905f6a2ba7d0a94a11cd67df5",
+        "source_fact:v1:f51f69aa07d23873067ee7d2db26db2e95efee0766fe752dd0bc1bf94ba67957",
+        "source_fact:v1:ff4e75633585aac9a7feeed63ef8b188121e15cb7d24ec2dd77b0307624348d0"
+      ],
+      "source_published_kst": "2026-10-28T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위",
+      "telegram_core_fact": "28일 기업데이터연구소 CEO스코어가 2026년 지정 공시대상기업집단(대기업) 오너 일가 중 지분 변동이 확인된 222명을 대상으로 올해 1월 1일 이후 주식 취득·처분 내역을 조사한 결과, 이재용 삼성전자 회장의 주식 순취득 규모가 총 4조9천524억원으로 집계돼 1위를 기록했다.",
+      "title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위"
     },
     "fact:1be3f3ce772abe57fd0fc93d": {
       "first_seen_kst": "2026-10-25T18:34:20+09:00",
@@ -174078,6 +174313,34 @@
       "source_published_kst": "2026-10-07T06:00+09:00",
       "title": "최수진 \"강원랜드, 영업이익 급감에도 성과급 195％…방만경영\" | 연합뉴스"
     },
+    "fact:37913aa7dcc6ca2964684eeb": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
+    },
     "fact:37a08255c6429d3b5092a8b6": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
@@ -181782,6 +182045,26 @@
       "source_title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”",
       "telegram_core_fact": "반도체 호황과 정부 재정지출 확대로 물가 상승 압력이 커지면서 통화당국의 긴축 기조가 이어질 수 있다는 분석이 나왔다.",
       "title": "“수출·재정 확대가 수요 측 물가 압력 키워…건전성 관리 유의해야”"
+    },
+    "fact:47abc154c9710a7a1578401a": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843378",
+      "source": "뉴시스",
+      "source_body_digest": "c1345ab316a4c7057a7511693a4a64b676ff9cafefe5ee5a3587427ee2ed419c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f9d23569047fe38b69edeadcaa4fb10a0ae56dad86db35ba830c06d18c14755",
+      "source_fact_keys": [
+        "source_fact:v1:d7832719b7bc729295badbc2bec92791f28cc41f0214909a36a850c691f4af68"
+      ],
+      "source_published_kst": "2026-10-28T06:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파",
+      "telegram_core_fact": "아이파크몰 용산점의 취향·취미 특화 공간 '도파민 스테이션'이 누적 매출 1000억원을 돌파했다.",
+      "title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파"
     },
     "fact:47c45cbcf0a14eae90da1737": {
       "first_seen_kst": "2026-10-23T06:33:28+09:00",
@@ -259599,6 +259882,39 @@
       "telegram_core_fact": "쿠팡풀필먼트서비스(CFS)는 전문대 졸업생을 대상으로 첫 정규직 공개채용에 나선다고 21일 밝혔다. CFS는 지난달 22일부터 이달 11일까지 기수제 공채 프로그램인 '물류리더 START 1기'의 지원자를 모집했으며, 청년 인재 선발을 확대하기 위해 이날부터 11월 8일까지 추가 모집을 결정했다.",
       "title": "쿠팡CFS, 첫 전문대졸 정규직 공채…내달 8일까지 접수 | 연합뉴스"
     },
+    "fact:e063b7d565067aece157e66d": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "fact:e068e46c8adffa7bdafe6acf": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
       "lanes": {
@@ -260020,6 +260336,31 @@
       "source_title": "1000억불 앞둔 대미 무역흑자⋯트럼프 투자 압박 가중 우려",
       "telegram_core_fact": "설상가상으로 5500억달러의 대미 투자를 약속한 일본의 올해 상반기 대미 무역흑자가 전년비 23% 이상 감소한 점도 우리 정부의 협상 입지를 좁히는 요인이다.",
       "title": "1000억불 앞둔 대미 무역흑자⋯트럼프 투자 압박 가중 우려"
+    },
+    "fact:e16b31eb7052f4c5810347e5": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
+      "source_fact_keys": [
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
+      ],
+      "source_published_kst": "2026-10-28T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
     },
     "fact:e1712281880953a69ba256e0": {
       "first_seen_kst": "2026-10-14T18:43:50+09:00",
@@ -291664,6 +292005,26 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "SK에너지·현대오일뱅크 44조 정유 담합 심의 착수…과징금 최대 4.6조"
+    },
+    "link:18001ab56a823d021e521e62": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843378",
+      "source": "뉴시스",
+      "source_body_digest": "c1345ab316a4c7057a7511693a4a64b676ff9cafefe5ee5a3587427ee2ed419c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f9d23569047fe38b69edeadcaa4fb10a0ae56dad86db35ba830c06d18c14755",
+      "source_fact_keys": [
+        "source_fact:v1:d7832719b7bc729295badbc2bec92791f28cc41f0214909a36a850c691f4af68"
+      ],
+      "source_published_kst": "2026-10-28T06:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파",
+      "telegram_core_fact": "아이파크몰 용산점의 취향·취미 특화 공간 '도파민 스테이션'이 누적 매출 1000억원을 돌파했다.",
+      "title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파"
     },
     "link:1801512d9e6f833d749db741": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -328026,6 +328387,34 @@
       "source_title": "셀트리온 \"4분기 영업이익 6천억원 이상 달성 목표\" | 연합뉴스",
       "telegram_core_fact": "셀트리온[068270]은 올해 4분기 6천억원 이상의 영업이익을 달성하겠다고 19일 밝혔다.",
       "title": "셀트리온 \"4분기 영업이익 6천억원 이상 달성 목표\" | 연합뉴스"
+    },
+    "link:50eaff0da1df1a310aef7503": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
     },
     "link:50edc7edb9ede12899791ea7": {
       "first_seen_kst": "2026-10-17T07:27:10+09:00",
@@ -374068,6 +374457,31 @@
       "telegram_core_fact": "담합 제재를 강화하는 동시에 공정위에 집중된 법 집행 권한을 분산하는 구상이다.",
       "title": "[2026 국감]주병기 “반복 담합 사업자 영업정지 추진…전속고발제 개편”"
     },
+    "link:980ec8cafda6909c3d558663": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.fnnews.com/news/202610280601347907",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "86d43db2864aae5690dde1cf4f1e3e3a509d82f268dd403be1491725f0943021",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:525e95c18c16253cb2427ed4cb52d3deddd21a8004e350789f0f62fa8277c82d",
+      "source_fact_keys": [
+        "source_fact:v1:0957c0f9313c060f1ac5d3e2231c8d9dfd62bad4442d928a22861866fbdad359",
+        "source_fact:v1:6370fac5da262421bcd9915d4b94c1b987f6978976b7887b995c73ff27482f3f",
+        "source_fact:v1:7f5321c66ecaf61dec88ac0c2ff4c92dd28c48f41eb98655e0939bd2c753d8b2",
+        "source_fact:v1:9145d7801e708cb237ac58f5f97757ba17119c2905f6a2ba7d0a94a11cd67df5",
+        "source_fact:v1:f51f69aa07d23873067ee7d2db26db2e95efee0766fe752dd0bc1bf94ba67957",
+        "source_fact:v1:ff4e75633585aac9a7feeed63ef8b188121e15cb7d24ec2dd77b0307624348d0"
+      ],
+      "source_published_kst": "2026-10-28T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위",
+      "telegram_core_fact": "28일 기업데이터연구소 CEO스코어가 2026년 지정 공시대상기업집단(대기업) 오너 일가 중 지분 변동이 확인된 222명을 대상으로 올해 1월 1일 이후 주식 취득·처분 내역을 조사한 결과, 이재용 삼성전자 회장의 주식 순취득 규모가 총 4조9천524억원으로 집계돼 1위를 기록했다.",
+      "title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위"
+    },
     "link:98117ec25c72bee6fdf34161": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -375631,6 +376045,26 @@
       "link": "https://www.mt.co.kr/world/2026/09/18/2026091822140042805",
       "source": "머니투데이",
       "title": "버크셔 \"버핏, 명예회장이자 이사회 일원…그의 관점 계속 제공\""
+    },
+    "link:9acec156e3d141dbfc83f682": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.hankyung.com/article/202610278302i",
+      "source": "한국경제",
+      "source_body_digest": "368c3aff049fb295264207f0c0879f69d222a17c12e6065ece1817e8eea9f45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77388e6e8ed1ee68ff97f5045f02105be09980f5050bee32df92b32b52a1553c",
+      "source_fact_keys": [
+        "source_fact:v1:c093de4b0684a45fd379bb69a47a35edb0e2cbae1fd9cede95dc09c9f3e19e01"
+      ],
+      "source_published_kst": "2026-10-28T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는",
+      "telegram_core_fact": "우리 정부가 저가 물량 공세를 앞세운 중국산 아연도금냉연(CGI)에 향후 5년간 덤핑방지관세(최대 33.67%)를 부과하기로 했음에도 철강주 주가는 지지부진하다.",
+      "title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는"
     },
     "link:9ae451cfd449a1385bb5415b": {
       "first_seen_kst": "2026-10-02T22:41:43+09:00",
@@ -392552,6 +392986,26 @@
       ],
       "source_published_kst": "2026-10-07T11:22+09:00",
       "title": "LG전자 3분기 영업익 7천818억…3분기 누적 첫 4조 넘어(종합)"
+    },
+    "link:b49464b37cf8ce53a2617446": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/28/2026102813554864004",
+      "source": "머니투데이",
+      "source_body_digest": "4c592d907ecde5c23f39b5bceaf341851d755a6a7f533cb132a0ab7d3dec2448",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0233844c8ae2f9d619c06ab197aacebea5ddaa701d31885988032de38aebaa05",
+      "source_fact_keys": [
+        "source_fact:v1:2849c1af3f3ecd9f87f27d812d9cb2be9838548c57d082013b52b5d0bc89ec4f"
+      ],
+      "source_published_kst": "2026-10-28T14:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위",
+      "telegram_core_fact": "한화자산운용은 'PLUS 글로벌HBM반도체' ETF(상장지수펀드)가 지난 26일 기준 올해 해외 투자 반도체 ETF 중 5933억원의 개인 순매수 1위를 기록했다고 28일 밝혔다.",
+      "title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위"
     },
     "link:b4ac4428211bcdc2c436713f": {
       "first_seen_kst": "2026-10-02T18:30:04+09:00",
@@ -414842,6 +415296,39 @@
       "source_published_kst": "2026-10-04T10:40+09:00",
       "title": "美 증시 사상 최고치의 착시…AI 빼면 이미 구멍 숭숭[디브리핑]"
     },
+    "link:d7233c7f8ae9ba7c560d7b5c": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "link:d72c79a8c495d911e1fa0701": {
       "first_seen_kst": "2026-10-28T03:25:07+09:00",
       "lanes": {
@@ -433997,6 +434484,31 @@
       "telegram_core_fact": "시는 앰코 공장 증설에 따른 폐수처리 문제를 신속히 해결한 데 이어 RE100 지원에 선제적으로 나서는 등 투자 기업 애로사항 해결에 행정력을 집중하고 있다. 전남광주통합특별시가 앰코테크놀로지코리아㈜의 3조원 규모 투자 계획에 발맞춰 'RE100(재생에너지 100% 사용)실현'에 함께 나선다.",
       "title": "폐수 이어 RE100까지…전남광주시, 앰코 투자 전방위 지원"
     },
+    "link:f7bf9116697ddd24e6d3d888": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
+      "source_fact_keys": [
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
+      ],
+      "source_published_kst": "2026-10-28T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
+    },
     "link:f7c2854b1838ed0c6f80784e": {
       "first_seen_kst": "2026-10-28T11:04:35+09:00",
       "lanes": {
@@ -442844,6 +443356,34 @@
       "source_title": "빗디어, AI 클라우드 수주잔고 29억달러 확대에 채굴량 급증까지 주목",
       "telegram_core_fact": "A201 데이터센터 70% 오프테이크를 확보하며 AI 클라우드 수주잔고가 29억 달러로 커졌고, 노르웨이 티달과 총 47억 달러 16년 임대계약도 체결해 AI 사업 전환 기대가 커지고 있습니다.",
       "title": "빗디어, AI 클라우드 수주잔고 29억달러 확대에 채굴량 급증까지 주목"
+    },
+    "original:059b4e3cc04b40a515dfe7e8": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
     },
     "original:05a2d1af65d2b9149d777f7c": {
       "first_seen_kst": "2026-10-17T09:15:26+09:00",
@@ -482991,6 +483531,26 @@
       "telegram_core_fact": "한국거래소 기준 12일 오전 9시6분 DN오토모티브는 8.74% 내린 4만4900원에 거래됐다. 등락률은 전 거래일 대비다.",
       "title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락"
     },
+    "original:44ec4a0da4a61b405dc9da31": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/28/2026102813554864004",
+      "source": "머니투데이",
+      "source_body_digest": "4c592d907ecde5c23f39b5bceaf341851d755a6a7f533cb132a0ab7d3dec2448",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0233844c8ae2f9d619c06ab197aacebea5ddaa701d31885988032de38aebaa05",
+      "source_fact_keys": [
+        "source_fact:v1:2849c1af3f3ecd9f87f27d812d9cb2be9838548c57d082013b52b5d0bc89ec4f"
+      ],
+      "source_published_kst": "2026-10-28T14:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위",
+      "telegram_core_fact": "한화자산운용은 'PLUS 글로벌HBM반도체' ETF(상장지수펀드)가 지난 26일 기준 올해 해외 투자 반도체 ETF 중 5933억원의 개인 순매수 1위를 기록했다고 28일 밝혔다.",
+      "title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위"
+    },
     "original:450263976aae7e756eccd846": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
       "lanes": {
@@ -509119,6 +509679,31 @@
       "source_title": "퀀텀 이모션, 플루리록 인수 계약 체결..1주당 신주 0.0763주",
       "telegram_core_fact": "퀀텀 이모션(QNC)이 캐나다 사이버보안 업체 플루리록 시큐리티(Plurilock Security)를 인수하는 계획 합병(Plan of Arrangement) 계약을 9월 28일 체결했으며, 플루리록 1주당 퀀텀 이모션 신주 0.0763주와 현금 0.084캐나다달러를 지급한다고 10월 13일 발표했다.",
       "title": "퀀텀 이모션, 플루리록 인수 계약 체결..1주당 신주 0.0763주"
+    },
+    "original:6ee5cce35681c2acda6dbe1c": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
+      "source_fact_keys": [
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
+      ],
+      "source_published_kst": "2026-10-28T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
     },
     "original:6ee6f5e580f4c7fb1a5fd540": {
       "first_seen_kst": "2026-10-08T11:06:13+09:00",
@@ -551419,6 +552004,31 @@
       "source": "뉴시스",
       "title": "美무역수장 \"과잉생산 수용 못 해, 행동할 것…수주 내 발표\""
     },
+    "original:b1170ec405ffaa15497ee2af": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.fnnews.com/news/202610280601347907",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "86d43db2864aae5690dde1cf4f1e3e3a509d82f268dd403be1491725f0943021",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:525e95c18c16253cb2427ed4cb52d3deddd21a8004e350789f0f62fa8277c82d",
+      "source_fact_keys": [
+        "source_fact:v1:0957c0f9313c060f1ac5d3e2231c8d9dfd62bad4442d928a22861866fbdad359",
+        "source_fact:v1:6370fac5da262421bcd9915d4b94c1b987f6978976b7887b995c73ff27482f3f",
+        "source_fact:v1:7f5321c66ecaf61dec88ac0c2ff4c92dd28c48f41eb98655e0939bd2c753d8b2",
+        "source_fact:v1:9145d7801e708cb237ac58f5f97757ba17119c2905f6a2ba7d0a94a11cd67df5",
+        "source_fact:v1:f51f69aa07d23873067ee7d2db26db2e95efee0766fe752dd0bc1bf94ba67957",
+        "source_fact:v1:ff4e75633585aac9a7feeed63ef8b188121e15cb7d24ec2dd77b0307624348d0"
+      ],
+      "source_published_kst": "2026-10-28T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위",
+      "telegram_core_fact": "28일 기업데이터연구소 CEO스코어가 2026년 지정 공시대상기업집단(대기업) 오너 일가 중 지분 변동이 확인된 222명을 대상으로 올해 1월 1일 이후 주식 취득·처분 내역을 조사한 결과, 이재용 삼성전자 회장의 주식 순취득 규모가 총 4조9천524억원으로 집계돼 1위를 기록했다.",
+      "title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위"
+    },
     "original:b12584a0caca9a081d78b724": {
       "first_seen_kst": "2026-09-20T03:01:27+09:00",
       "lanes": {
@@ -556672,6 +557282,26 @@
       "source_published_kst": "2026-10-04T12:13+09:00",
       "title": "고금리·고유가에도 나스닥100 굳건한 이유- 매경ECONOMY"
     },
+    "original:ba544ed5f677d084369145ec": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.hankyung.com/article/202610278302i",
+      "source": "한국경제",
+      "source_body_digest": "368c3aff049fb295264207f0c0879f69d222a17c12e6065ece1817e8eea9f45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77388e6e8ed1ee68ff97f5045f02105be09980f5050bee32df92b32b52a1553c",
+      "source_fact_keys": [
+        "source_fact:v1:c093de4b0684a45fd379bb69a47a35edb0e2cbae1fd9cede95dc09c9f3e19e01"
+      ],
+      "source_published_kst": "2026-10-28T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는",
+      "telegram_core_fact": "우리 정부가 저가 물량 공세를 앞세운 중국산 아연도금냉연(CGI)에 향후 5년간 덤핑방지관세(최대 33.67%)를 부과하기로 했음에도 철강주 주가는 지지부진하다.",
+      "title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는"
+    },
     "original:ba55b1bd426e1baf83390146": {
       "first_seen_kst": "2026-10-27T01:37:26+09:00",
       "lanes": {
@@ -559974,6 +560604,39 @@
       "source_title": "JB금융지주 \"자회사 JB우리캐피탈 주식 2천200억원에 추가취득\" | 연합뉴스",
       "telegram_core_fact": "주식 취득 뒤 JB금융지주의 JB우리캐피탈 지분율은 100%가 된다.",
       "title": "JB금융지주 \"자회사 JB우리캐피탈 주식 2천200억원에 추가취득\" | 연합뉴스"
+    },
+    "original:bfe57bb30f46f5bb34bfbadc": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
     },
     "original:bff71fa470818174eb102bf3": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
@@ -575323,6 +575986,26 @@
       "source_title": "동해·묵호항 3분기 항만물동량 83만t 줄어 | 연합뉴스",
       "telegram_core_fact": "동해지방해양수산청은 올해 3분기 동해·묵호항의 항만물동량은 총 755만t으로 전년 동기(838만t)보다 83만t(9.8%) 감소했다고 26일 밝혔다. 이 기간 동해·묵호항에서 처리된 주요 화물은 석회석 255만t, 석탄 238만t, 시멘트 173만t순으로 나타났다.",
       "title": "동해·묵호항 3분기 항만물동량 83만t 줄어 | 연합뉴스"
+    },
+    "original:d8aa87d866d3516d51f6821a": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843378",
+      "source": "뉴시스",
+      "source_body_digest": "c1345ab316a4c7057a7511693a4a64b676ff9cafefe5ee5a3587427ee2ed419c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f9d23569047fe38b69edeadcaa4fb10a0ae56dad86db35ba830c06d18c14755",
+      "source_fact_keys": [
+        "source_fact:v1:d7832719b7bc729295badbc2bec92791f28cc41f0214909a36a850c691f4af68"
+      ],
+      "source_published_kst": "2026-10-28T06:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파",
+      "telegram_core_fact": "아이파크몰 용산점의 취향·취미 특화 공간 '도파민 스테이션'이 누적 매출 1000억원을 돌파했다.",
+      "title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파"
     },
     "original:d8ac1ea1e3441bc75dfa6d46": {
       "first_seen_kst": "2026-10-17T20:19:17+09:00",
@@ -611261,6 +611944,34 @@
       "telegram_core_fact": "중소벤처기업진흥공단은 하림산업, 신한은행, 하나은행, 한국수출입은행과 'K-푸드 상생협력 거버넌스' 구축을 위한 업무협약을 체결하고 전북 지역 식품 중소기업의 자금 조달과 수출, 인력 양성 등을 지원하기로 했다고 21일 밝혔다.",
       "title": "중진공·하림산업·은행 3곳, 전북 K-푸드 中企 지원 협력 | 연합뉴스"
     },
+    "source_fact:04d2d87df6664f3223b51804": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
+    },
     "source_fact:04d3bc38908ffb666401d3dc": {
       "first_seen_kst": "2026-10-28T04:40:04+09:00",
       "lanes": {
@@ -625361,29 +626072,35 @@
     "source_fact:0a009d219adb8639aa85af59": {
       "first_seen_kst": "2026-10-28T02:13:03+09:00",
       "lanes": {
-        "live": "2026-10-28T02:13:03+09:00"
+        "live": "2026-10-28T14:34:00+09:00"
       },
-      "last_seen_kst": "2026-10-28T02:13:03+09:00",
-      "link": "https://www.etnews.com/20261027000386",
-      "source": "전자신문",
-      "source_body_digest": "3fda733d76eac59c0eae2c4cd4a4d509210192377903e9e02776e486360629df",
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c64b096e4bfe7bf078558a828278afda38451681abc8480c89869c37da1378dc",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
       "source_fact_keys": [
-        "source_fact:v1:09c7c5251c0cc00419b555e89b672a37a7556627faf72bea23ff9083068931f2",
-        "source_fact:v1:34946209d04e15e92242662a97b37516cb18d6c76c8dbe4285636ced2a828621",
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
         "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
-        "source_fact:v1:5c8c9b955618de3d1dc83db6b1b7bdfd6b315b62a79298fdefc1a66885b884f6",
-        "source_fact:v1:b195d75e75648d4235fd1f17dd266ace95b49fa489a1ac12ab77df94598e6b53",
-        "source_fact:v1:dcd5281775e1724e66b8c9acb832788e69531880e13b4bd12a292160bc69075c",
-        "source_fact:v1:e35e6583fd8e69bdb9ba4726b47eebd085ac77449d9fcceebc96d1c2e1762f1e",
-        "source_fact:v1:e679057de8b9611b501905ba9ccb23fbe18554f5a44da16b846ca78107eab2ef"
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
       ],
-      "source_published_kst": "2026-10-27T15:54+09:00",
+      "source_published_kst": "2026-10-27T21:32+09:00",
       "source_supply_terms": {},
-      "source_title": "두산, 김제에 AI 데이터센터용 광모듈 CCL 전용 라인 구축",
-      "telegram_core_fact": "두산은 전북특별자치도, 김제시와 광모듈용 CCL 전용 생산라인 구축을 위한 투자협약을 체결했다고 27일 밝혔다. ㈜두산이 인공지능(AI) 데이터센터용 광모듈 동박적층판(CCL)의 생산능력을 키우기 위한 김제공장 증설에 들어간다.",
-      "title": "두산, 김제에 AI 데이터센터용 광모듈 CCL 전용 라인 구축"
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
     },
     "source_fact:0a05b3383b482efcde84669c": {
       "first_seen_kst": "2026-10-22T14:38:13+09:00",
@@ -657053,6 +657770,34 @@
       "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
       "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
     },
+    "source_fact:162aeaf4a5a5206df4ec4aea": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
+    },
     "source_fact:162f48d68b4bcaeb94307016": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
       "lanes": {
@@ -669354,6 +670099,39 @@
       "telegram_core_fact": "엑스와이지(XYZ)가 엔비디아의 피지컬 인공지능(AI) 로보틱스 교육 과정에 휴머노이드 로봇을 공급했다.",
       "title": "엑스와이지, 엔비디아 교육과정에 휴머노이드 10대 공급"
     },
+    "source_fact:1ae39176d03d69d1e1690b0c": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "source_fact:1aec4dfac5a796245b6d8454": {
       "first_seen_kst": "2026-10-27T01:10:06+09:00",
       "lanes": {
@@ -669624,6 +670402,31 @@
       "source_title": "삼성전자 주가 19% 떨어졌는데…KB증권 “내년 이익성장 이미 확보”",
       "telegram_core_fact": "KB증권에 따르면 삼성전자는 D램, 낸드 등 범용 메모리의 내년 생산물량 중 70%에 대해 글로벌 빅테크사와 5년 장기공급계약을 맺었다.",
       "title": "삼성전자 주가 19% 떨어졌는데…KB증권 “내년 이익성장 이미 확보”"
+    },
+    "source_fact:1b049814b2bb4ec810ba6998": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.fnnews.com/news/202610280601347907",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "86d43db2864aae5690dde1cf4f1e3e3a509d82f268dd403be1491725f0943021",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:525e95c18c16253cb2427ed4cb52d3deddd21a8004e350789f0f62fa8277c82d",
+      "source_fact_keys": [
+        "source_fact:v1:0957c0f9313c060f1ac5d3e2231c8d9dfd62bad4442d928a22861866fbdad359",
+        "source_fact:v1:6370fac5da262421bcd9915d4b94c1b987f6978976b7887b995c73ff27482f3f",
+        "source_fact:v1:7f5321c66ecaf61dec88ac0c2ff4c92dd28c48f41eb98655e0939bd2c753d8b2",
+        "source_fact:v1:9145d7801e708cb237ac58f5f97757ba17119c2905f6a2ba7d0a94a11cd67df5",
+        "source_fact:v1:f51f69aa07d23873067ee7d2db26db2e95efee0766fe752dd0bc1bf94ba67957",
+        "source_fact:v1:ff4e75633585aac9a7feeed63ef8b188121e15cb7d24ec2dd77b0307624348d0"
+      ],
+      "source_published_kst": "2026-10-28T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위",
+      "telegram_core_fact": "28일 기업데이터연구소 CEO스코어가 2026년 지정 공시대상기업집단(대기업) 오너 일가 중 지분 변동이 확인된 222명을 대상으로 올해 1월 1일 이후 주식 취득·처분 내역을 조사한 결과, 이재용 삼성전자 회장의 주식 순취득 규모가 총 4조9천524억원으로 집계돼 1위를 기록했다.",
+      "title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위"
     },
     "source_fact:1b06a90f8a92963f938a0aa8": {
       "first_seen_kst": "2026-10-19T10:23:26+09:00",
@@ -671519,6 +672322,31 @@
       ],
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "NH투자證, “LS일렉트릭, 3분기 영업익 106%↑⋯북미 수혜”"
+    },
+    "source_fact:1bb2b7d548b1036d482a8d6a": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.fnnews.com/news/202610280601347907",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "86d43db2864aae5690dde1cf4f1e3e3a509d82f268dd403be1491725f0943021",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:525e95c18c16253cb2427ed4cb52d3deddd21a8004e350789f0f62fa8277c82d",
+      "source_fact_keys": [
+        "source_fact:v1:0957c0f9313c060f1ac5d3e2231c8d9dfd62bad4442d928a22861866fbdad359",
+        "source_fact:v1:6370fac5da262421bcd9915d4b94c1b987f6978976b7887b995c73ff27482f3f",
+        "source_fact:v1:7f5321c66ecaf61dec88ac0c2ff4c92dd28c48f41eb98655e0939bd2c753d8b2",
+        "source_fact:v1:9145d7801e708cb237ac58f5f97757ba17119c2905f6a2ba7d0a94a11cd67df5",
+        "source_fact:v1:f51f69aa07d23873067ee7d2db26db2e95efee0766fe752dd0bc1bf94ba67957",
+        "source_fact:v1:ff4e75633585aac9a7feeed63ef8b188121e15cb7d24ec2dd77b0307624348d0"
+      ],
+      "source_published_kst": "2026-10-28T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위",
+      "telegram_core_fact": "28일 기업데이터연구소 CEO스코어가 2026년 지정 공시대상기업집단(대기업) 오너 일가 중 지분 변동이 확인된 222명을 대상으로 올해 1월 1일 이후 주식 취득·처분 내역을 조사한 결과, 이재용 삼성전자 회장의 주식 순취득 규모가 총 4조9천524억원으로 집계돼 1위를 기록했다.",
+      "title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위"
     },
     "source_fact:1bb59643fe5962a1e402b31d": {
       "first_seen_kst": "2026-10-27T16:53:55+09:00",
@@ -693407,6 +694235,39 @@
       "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
       "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
     },
+    "source_fact:2395b9cb7a5ef4aa0906bf8a": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "source_fact:2395ff48737187a5ad8772c1": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
       "lanes": {
@@ -697857,6 +698718,39 @@
       "source_title": "한국 천주교, 50년만 미사주 교체…호주 '세븐힐'·伊 '알라냐 비니'",
       "telegram_core_fact": "주교회의는 오는 19일 오후 2시 서울 중구 한국천주교중앙협의회에서 수입·유통 전담 기업인 동원와인플러스와 공급 계약을 체결한다.",
       "title": "한국 천주교, 50년만 미사주 교체…호주 '세븐힐'·伊 '알라냐 비니'"
+    },
+    "source_fact:25335b0734f897c359a5d88b": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
     },
     "source_fact:2533bec91479ebaa3e720fb5": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -707984,6 +708878,34 @@
       "telegram_core_fact": "도널드 트럼프 미 대통령은 지난 9일 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
       "title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스"
     },
+    "source_fact:28cd6345f92b4da5c915ffac": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
+    },
     "source_fact:28d243ee112dd95b6306decf": {
       "first_seen_kst": "2026-10-26T23:18:52+09:00",
       "lanes": {
@@ -717483,6 +718405,31 @@
       "source_title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’",
       "telegram_core_fact": "코스피가 12일 삼성전자(005930)와 SK하이닉스(000660) 동반 약세로 인해 장중 3% 넘게 급락해 결국 6400선까지 밀렸다.",
       "title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’"
+    },
+    "source_fact:2c51057a8ab2eb76d7c40f0a": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.fnnews.com/news/202610280601347907",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "86d43db2864aae5690dde1cf4f1e3e3a509d82f268dd403be1491725f0943021",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:525e95c18c16253cb2427ed4cb52d3deddd21a8004e350789f0f62fa8277c82d",
+      "source_fact_keys": [
+        "source_fact:v1:0957c0f9313c060f1ac5d3e2231c8d9dfd62bad4442d928a22861866fbdad359",
+        "source_fact:v1:6370fac5da262421bcd9915d4b94c1b987f6978976b7887b995c73ff27482f3f",
+        "source_fact:v1:7f5321c66ecaf61dec88ac0c2ff4c92dd28c48f41eb98655e0939bd2c753d8b2",
+        "source_fact:v1:9145d7801e708cb237ac58f5f97757ba17119c2905f6a2ba7d0a94a11cd67df5",
+        "source_fact:v1:f51f69aa07d23873067ee7d2db26db2e95efee0766fe752dd0bc1bf94ba67957",
+        "source_fact:v1:ff4e75633585aac9a7feeed63ef8b188121e15cb7d24ec2dd77b0307624348d0"
+      ],
+      "source_published_kst": "2026-10-28T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위",
+      "telegram_core_fact": "28일 기업데이터연구소 CEO스코어가 2026년 지정 공시대상기업집단(대기업) 오너 일가 중 지분 변동이 확인된 222명을 대상으로 올해 1월 1일 이후 주식 취득·처분 내역을 조사한 결과, 이재용 삼성전자 회장의 주식 순취득 규모가 총 4조9천524억원으로 집계돼 1위를 기록했다.",
+      "title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위"
     },
     "source_fact:2c530d62ca2e091d8a24cc6b": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
@@ -742720,6 +743667,39 @@
       "telegram_core_fact": "특히 한 대학에서 부정행위로 적발돼 수년간 응시 제한을 받더라도 다른 대학에는 제재가 적용되지 않는 것으로 확인되면서 입시 관리의 허점이 도마에 올랐다.",
       "title": "서울시립대 논술서 AI 안경 추가 적발…입시 부정행위 확산에 관리 허점 논란"
     },
+    "source_fact:361b7adc47db67604df1e6c5": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "source_fact:361d71ce82fe9faa600fdb32": {
       "first_seen_kst": "2026-10-20T10:11:13+09:00",
       "lanes": {
@@ -749888,6 +750868,34 @@
       "source_title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가",
       "telegram_core_fact": "회계연도 2027 상반기(8월 31일 종료 6개월) 메탈 코팅스 매출액은 4억4400만 달러로 17.7% 증가했고 조정 EBITDA 마진은 30.5%였다.",
       "title": "AZZ, 12개월 조정 EBITDA 3억8300만 달러..7% 증가"
+    },
+    "source_fact:38d124b4f8c46ca9989f6500": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
     },
     "source_fact:38d284f6cc76ab76c45b7a95": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -763333,6 +764341,26 @@
       "source_published_kst": "2026-10-07T09:31+09:00",
       "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
     },
+    "source_fact:3e0f3b0e529b161ac95e41b1": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.hankyung.com/article/202610278302i",
+      "source": "한국경제",
+      "source_body_digest": "368c3aff049fb295264207f0c0879f69d222a17c12e6065ece1817e8eea9f45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77388e6e8ed1ee68ff97f5045f02105be09980f5050bee32df92b32b52a1553c",
+      "source_fact_keys": [
+        "source_fact:v1:c093de4b0684a45fd379bb69a47a35edb0e2cbae1fd9cede95dc09c9f3e19e01"
+      ],
+      "source_published_kst": "2026-10-28T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는",
+      "telegram_core_fact": "우리 정부가 저가 물량 공세를 앞세운 중국산 아연도금냉연(CGI)에 향후 5년간 덤핑방지관세(최대 33.67%)를 부과하기로 했음에도 철강주 주가는 지지부진하다.",
+      "title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는"
+    },
     "source_fact:3e1189e1975d46160f4b44a0": {
       "first_seen_kst": "2026-10-23T00:33:48+09:00",
       "lanes": {
@@ -763933,6 +764961,31 @@
       "source_title": "이번엔 위험관리…블랙록, 하방손실 낮춘 비트코인 ETF 출시",
       "telegram_core_fact": "세계 최대 자산운용사인 블랙록(BlackRock)이 투자 위험관리에 방점을 찍으면서 비트코인 가격 하락에 따른 손실을 완화할 수 있는 새로운 상장지수펀드(ETF)를 출시할 계획이다.",
       "title": "이번엔 위험관리…블랙록, 하방손실 낮춘 비트코인 ETF 출시"
+    },
+    "source_fact:3e3d2ace2919484494c9c0fa": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.fnnews.com/news/202610280601347907",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "86d43db2864aae5690dde1cf4f1e3e3a509d82f268dd403be1491725f0943021",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:525e95c18c16253cb2427ed4cb52d3deddd21a8004e350789f0f62fa8277c82d",
+      "source_fact_keys": [
+        "source_fact:v1:0957c0f9313c060f1ac5d3e2231c8d9dfd62bad4442d928a22861866fbdad359",
+        "source_fact:v1:6370fac5da262421bcd9915d4b94c1b987f6978976b7887b995c73ff27482f3f",
+        "source_fact:v1:7f5321c66ecaf61dec88ac0c2ff4c92dd28c48f41eb98655e0939bd2c753d8b2",
+        "source_fact:v1:9145d7801e708cb237ac58f5f97757ba17119c2905f6a2ba7d0a94a11cd67df5",
+        "source_fact:v1:f51f69aa07d23873067ee7d2db26db2e95efee0766fe752dd0bc1bf94ba67957",
+        "source_fact:v1:ff4e75633585aac9a7feeed63ef8b188121e15cb7d24ec2dd77b0307624348d0"
+      ],
+      "source_published_kst": "2026-10-28T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위",
+      "telegram_core_fact": "28일 기업데이터연구소 CEO스코어가 2026년 지정 공시대상기업집단(대기업) 오너 일가 중 지분 변동이 확인된 222명을 대상으로 올해 1월 1일 이후 주식 취득·처분 내역을 조사한 결과, 이재용 삼성전자 회장의 주식 순취득 규모가 총 4조9천524억원으로 집계돼 1위를 기록했다.",
+      "title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위"
     },
     "source_fact:3e40b9f70b12956e4fddd87d": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
@@ -812395,6 +813448,26 @@
       "source_published_kst": "2026-10-06T11:31+09:00",
       "title": "[2026 국감]산업부, 대미투자 국익 최우선 추진…호남 반도체 등 1600조 속도전"
     },
+    "source_fact:5033a7389acb6a933d2d0115": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843378",
+      "source": "뉴시스",
+      "source_body_digest": "c1345ab316a4c7057a7511693a4a64b676ff9cafefe5ee5a3587427ee2ed419c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f9d23569047fe38b69edeadcaa4fb10a0ae56dad86db35ba830c06d18c14755",
+      "source_fact_keys": [
+        "source_fact:v1:d7832719b7bc729295badbc2bec92791f28cc41f0214909a36a850c691f4af68"
+      ],
+      "source_published_kst": "2026-10-28T06:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파",
+      "telegram_core_fact": "아이파크몰 용산점의 취향·취미 특화 공간 '도파민 스테이션'이 누적 매출 1000억원을 돌파했다.",
+      "title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파"
+    },
     "source_fact:5033aa7d6fdd67fa6177f65b": {
       "first_seen_kst": "2026-10-13T23:22:47+09:00",
       "lanes": {
@@ -822097,6 +823170,31 @@
       "source_title": "베터웨어 드 멕시코, 3분기 매출 48억 페소..전년비 43% 증가",
       "telegram_core_fact": "베터웨어 드 멕시코(BWMX)는 9월 30일 종료된 2026년 3분기 순매출액이 48억3230만 멕시코 페소로 전년비 43.1% 증가해 분기 기준 사상 최고치를 기록했고, 같은 기간 EBITDA는 10억840만 페소로 39.6% 늘었다고 10월 22일 발표했다.",
       "title": "베터웨어 드 멕시코, 3분기 매출 48억 페소..전년비 43% 증가"
+    },
+    "source_fact:53ae96fa5cff06729c42dc68": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.fnnews.com/news/202610280601347907",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "86d43db2864aae5690dde1cf4f1e3e3a509d82f268dd403be1491725f0943021",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:525e95c18c16253cb2427ed4cb52d3deddd21a8004e350789f0f62fa8277c82d",
+      "source_fact_keys": [
+        "source_fact:v1:0957c0f9313c060f1ac5d3e2231c8d9dfd62bad4442d928a22861866fbdad359",
+        "source_fact:v1:6370fac5da262421bcd9915d4b94c1b987f6978976b7887b995c73ff27482f3f",
+        "source_fact:v1:7f5321c66ecaf61dec88ac0c2ff4c92dd28c48f41eb98655e0939bd2c753d8b2",
+        "source_fact:v1:9145d7801e708cb237ac58f5f97757ba17119c2905f6a2ba7d0a94a11cd67df5",
+        "source_fact:v1:f51f69aa07d23873067ee7d2db26db2e95efee0766fe752dd0bc1bf94ba67957",
+        "source_fact:v1:ff4e75633585aac9a7feeed63ef8b188121e15cb7d24ec2dd77b0307624348d0"
+      ],
+      "source_published_kst": "2026-10-28T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위",
+      "telegram_core_fact": "28일 기업데이터연구소 CEO스코어가 2026년 지정 공시대상기업집단(대기업) 오너 일가 중 지분 변동이 확인된 222명을 대상으로 올해 1월 1일 이후 주식 취득·처분 내역을 조사한 결과, 이재용 삼성전자 회장의 주식 순취득 규모가 총 4조9천524억원으로 집계돼 1위를 기록했다.",
+      "title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위"
     },
     "source_fact:53b083b514b441021aae01c5": {
       "first_seen_kst": "2026-10-22T18:58:18+09:00",
@@ -846092,6 +847190,31 @@
       "source_title": "고려아연, 산소공장 증설 발주 87% 완료…내년 상업운전 시동",
       "telegram_core_fact": "본지 취재에 따르면 고려아연은 온산제련소 산소공장 증설을 위해 지난달 말까지 총 1170억원 규모 발주를 진행했다.",
       "title": "고려아연, 산소공장 증설 발주 87% 완료…내년 상업운전 시동"
+    },
+    "source_fact:5c4c86459ec145251a533173": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
+      "source_fact_keys": [
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
+      ],
+      "source_published_kst": "2026-10-28T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
     },
     "source_fact:5c5b6a61dc909d7939ea2aab": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
@@ -880040,6 +881163,39 @@
       "source_published_kst": "2026-10-07T11:31+09:00",
       "title": "역외IB, 국내 인가 없인 한국물 영업 제한…당국 의견수렴 | 연합뉴스"
     },
+    "source_fact:692788e54bd476a9d15037f0": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "source_fact:692c2fe505b2f63d07a3fa9d": {
       "first_seen_kst": "2026-10-22T10:36:33+09:00",
       "lanes": {
@@ -888551,6 +889707,34 @@
       "source_title": "외국인, 올해 국내 주식 200조 넘게 팔았지만 ETF 계속 샀다(종합)",
       "telegram_core_fact": "기간별로 보면 '불장'이었던 올해 상반기(1∼6월) 금액 기준 외국인 최다 순매수 ETF는 국내 대형·중형 우량주에 투자하는 'TIGER MSCI Korea TR'(1조7천379억원)이었다.",
       "title": "외국인, 올해 국내 주식 200조 넘게 팔았지만 ETF 계속 샀다(종합)"
+    },
+    "source_fact:6c5c57344068aeaf5ca6b6ad": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
     },
     "source_fact:6c5e98dc81879f4e948bec02": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
@@ -899599,6 +900783,39 @@
       "source_title": "서천군의회, 군 출자·출연기관장 인사청문회 도입",
       "telegram_core_fact": "서천군의회가 서천군 출자·출연기관장에 대한 인사청문회를 도입하기로 했다. 박노찬 의장은 \"출자·출연기관장은 군민의 복리 증진과 직결되는 역할을 맡는 만큼, 임용 과정에서부터 철저한 검증이 뒷받침될 필요가 있다\"며 \"인사 운영의 투명성을 높이고 각 기관들이 책임 있는 운영을 이어갈 수 있도록 감시하고 협력하겠다\"고 했다.",
       "title": "서천군의회, 군 출자·출연기관장 인사청문회 도입"
+    },
+    "source_fact:70de55e8a3bdd77cad9f865f": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
     },
     "source_fact:70deffc4d1a40e1a8fcd2028": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
@@ -913628,6 +914845,39 @@
       "telegram_core_fact": "코스피·코스닥은 각각 5.27%·6.25% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "미국발 한풍에 코스피·코스닥서 잇단 매도 사이드카 발동"
     },
+    "source_fact:7624516149d71b776e2e4063": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "source_fact:76250de71823f1c17645c3ed": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
       "lanes": {
@@ -922626,6 +923876,39 @@
       "telegram_core_fact": "20일(현지시간) CNBC에 따르면 이날 오전 7시38분 기준 미국 서부텍사스산원유(WTI) 11월물 선물은 전장 대비 6.58% 급등한 배럴당 110.48달러에 거래됐다.",
       "title": "호르무즈 긴장에 유가 110달러 돌파…AI 불안 겹쳐 美증시 선물↓"
     },
+    "source_fact:7985bd18b37f2e8fb053c519": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "source_fact:7988f715663221113cbdfe72": {
       "first_seen_kst": "2026-10-21T01:11:06+09:00",
       "lanes": {
@@ -926752,6 +928035,26 @@
       "source_title": "트럼프 '50% 관세' 후폭풍…미국 철강 값 4년 만에 최고치",
       "telegram_core_fact": "철강 가격이 급등한 것은 트럼프 행정부가 수입산 철강에 50% 관세를 부과한 데 이어 캐나다·멕시코 등 핵심 교역 상대국을 향한 무역 가이드라인을 수시로 바꾸면서 구매업체들이 해외 주문을 대폭 줄였기 때문이다.",
       "title": "트럼프 '50% 관세' 후폭풍…미국 철강 값 4년 만에 최고치"
+    },
+    "source_fact:7b04cd8c39aed605564950e6": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/28/2026102813554864004",
+      "source": "머니투데이",
+      "source_body_digest": "4c592d907ecde5c23f39b5bceaf341851d755a6a7f533cb132a0ab7d3dec2448",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0233844c8ae2f9d619c06ab197aacebea5ddaa701d31885988032de38aebaa05",
+      "source_fact_keys": [
+        "source_fact:v1:2849c1af3f3ecd9f87f27d812d9cb2be9838548c57d082013b52b5d0bc89ec4f"
+      ],
+      "source_published_kst": "2026-10-28T14:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위",
+      "telegram_core_fact": "한화자산운용은 'PLUS 글로벌HBM반도체' ETF(상장지수펀드)가 지난 26일 기준 올해 해외 투자 반도체 ETF 중 5933억원의 개인 순매수 1위를 기록했다고 28일 밝혔다.",
+      "title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위"
     },
     "source_fact:7b0a1297ba477f10b47ef671": {
       "first_seen_kst": "2026-10-27T13:52:52+09:00",
@@ -932877,6 +934180,31 @@
       "telegram_core_fact": "6억2500만 달러 규모 10.25% 2031년 만기 선순위 무담보 채권 약정서에서도 연결 총 레버리지 비율이 2.00배 이하이고 채무불이행이 없으면 자사주 매입 등 제한적 지급을 무제한으로 할 수 있다.",
       "title": "지오 그룹, 6억5000만 달러 채권 상환·자사주 한도 확대"
     },
+    "source_fact:7d63abd62da71085a4200aaa": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
+      "source_fact_keys": [
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
+      ],
+      "source_published_kst": "2026-10-28T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
+    },
     "source_fact:7d6873140b50c0667760d4b2": {
       "first_seen_kst": "2026-10-24T05:52:40+09:00",
       "lanes": {
@@ -935214,6 +936542,34 @@
       "source_title": "메이페어 골드, 맥쿼리 1000만 캐나다달러 투자 유치 완료",
       "telegram_core_fact": "메이페어 골드(MINE)가 호주계 투자은행 맥쿼리은행(Macquarie Bank Limited)을 대상으로 한 전략적 지분투자를 완료하고 총 약 1000만 캐나다달러를 조달했다고 14일(현지시간) 발표했다. 맥쿼리은행은 메이페어 골드 보통주 234만6701주를 주당 4.26캐나다달러에 인수했다.",
       "title": "메이페어 골드, 맥쿼리 1000만 캐나다달러 투자 유치 완료"
+    },
+    "source_fact:7e35e88db8484ccd6e52036e": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
     },
     "source_fact:7e39689fc6ab7574e34d01e5": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
@@ -973285,6 +974641,34 @@
       "source_published_kst": "2026-10-06T09:04+09:00",
       "title": "현대글로비스, 美 LGL과 원자력 자동차운반선 한·미 운항 검토"
     },
+    "source_fact:8d55f4658aadd58704dcd4cf": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
+    },
     "source_fact:8d6199915b760bea6798885f": {
       "first_seen_kst": "2026-10-20T19:03:19+09:00",
       "lanes": {
@@ -983236,6 +984620,31 @@
       "source_title": "뮬러 워터 프로덕츠, 분기배당 14% 인상·자사주 매입 3억달러 확대",
       "telegram_core_fact": "뮬러 워터 프로덕츠(MWA)가 분기 배당금을 주당 0.07달러에서 0.08달러로 14.3% 인상하고, 자사주 매입 승인 한도를 3억 달러 늘려 총 승인액을 3억3450만 달러로 확대한다고 10월 22일 발표했다.",
       "title": "뮬러 워터 프로덕츠, 분기배당 14% 인상·자사주 매입 3억달러 확대"
+    },
+    "source_fact:9124475b300747ffe924feb0": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.fnnews.com/news/202610280601347907",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "86d43db2864aae5690dde1cf4f1e3e3a509d82f268dd403be1491725f0943021",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:525e95c18c16253cb2427ed4cb52d3deddd21a8004e350789f0f62fa8277c82d",
+      "source_fact_keys": [
+        "source_fact:v1:0957c0f9313c060f1ac5d3e2231c8d9dfd62bad4442d928a22861866fbdad359",
+        "source_fact:v1:6370fac5da262421bcd9915d4b94c1b987f6978976b7887b995c73ff27482f3f",
+        "source_fact:v1:7f5321c66ecaf61dec88ac0c2ff4c92dd28c48f41eb98655e0939bd2c753d8b2",
+        "source_fact:v1:9145d7801e708cb237ac58f5f97757ba17119c2905f6a2ba7d0a94a11cd67df5",
+        "source_fact:v1:f51f69aa07d23873067ee7d2db26db2e95efee0766fe752dd0bc1bf94ba67957",
+        "source_fact:v1:ff4e75633585aac9a7feeed63ef8b188121e15cb7d24ec2dd77b0307624348d0"
+      ],
+      "source_published_kst": "2026-10-28T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위",
+      "telegram_core_fact": "28일 기업데이터연구소 CEO스코어가 2026년 지정 공시대상기업집단(대기업) 오너 일가 중 지분 변동이 확인된 222명을 대상으로 올해 1월 1일 이후 주식 취득·처분 내역을 조사한 결과, 이재용 삼성전자 회장의 주식 순취득 규모가 총 4조9천524억원으로 집계돼 1위를 기록했다.",
+      "title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위"
     },
     "source_fact:91258a63a540c67b6f2f4812": {
       "first_seen_kst": "2026-10-15T19:53:29+09:00",
@@ -993442,6 +994851,31 @@
       "telegram_core_fact": "정부가 경쟁입찰을 통해 선정한 액화천연가스(LNG) 열병합발전소 두 곳이 약 2년이 지나도록 제대로 착공과정을 밟지 못한 것으로 파악됐다.",
       "title": "[단독] 전력 수요 느는데…낙찰된 LNG 열병합발전소 2년째 삽도 못 떠"
     },
+    "source_fact:95162f5ffc908b10f56275e2": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
+      "source_fact_keys": [
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
+      ],
+      "source_published_kst": "2026-10-28T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
+    },
     "source_fact:9516c26f76f1ac09e5a3bfcc": {
       "first_seen_kst": "2026-10-14T02:21:39+09:00",
       "lanes": {
@@ -999855,6 +1001289,31 @@
       "source_title": "TI, 3분기 매출 60억달러 돌파… 데이터센터·산업용 수요 회복 확인",
       "telegram_core_fact": "TI는 21일(현지시간) 3분기 매출이 60억5500만달러로 전년비 28% 증가했다고 밝혔다.",
       "title": "TI, 3분기 매출 60억달러 돌파… 데이터센터·산업용 수요 회복 확인"
+    },
+    "source_fact:977d11a27b880f0d78af6de8": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
+      "source_fact_keys": [
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
+      ],
+      "source_published_kst": "2026-10-28T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
     },
     "source_fact:9782687e5c26564815307700": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -1048778,6 +1050237,31 @@
       "telegram_core_fact": "자율주행 트럭 기업 마스오토가 미국 교통부와 자율주행 트럭 상용화 확대 방안을 논의한다. 노제경 마스오토 부대표는 21일 ‘자율주행에 대비한 운송 노선 구축’ 세션과 22일 ‘실증에서 상용화로: 자율주행 글로벌 투어’ 세션에 한국 측 연사로 참여한다.",
       "title": "마스오토, 美 교통부와 자율주행 협력 모색"
     },
+    "source_fact:a9b6cd4c481ae4b7c09b6e26": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
+      "source_fact_keys": [
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
+      ],
+      "source_published_kst": "2026-10-28T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
+    },
     "source_fact:a9b8547f8869a655d91fe30f": {
       "first_seen_kst": "2026-10-14T18:43:50+09:00",
       "lanes": {
@@ -1061336,6 +1062820,34 @@
       "source_title": "[오늘의 증시]코스피, 낙폭 과대에 반등 시도 전망…6800선 회복 주목",
       "telegram_core_fact": "서 연구원은 \"AI 관련 콘퍼런스와 미국 소비자물가지수 발표, 본격적인 실적 시즌 등을 고려하면 추세적인 상승보다는 낙폭 과대에 따른 반등과 종목별 차별화가 진행될 것\"이라며 \"특히 반도체 업종의 변화와 외국인 수급이 중요하다\"고 짚었다.",
       "title": "[오늘의 증시]코스피, 낙폭 과대에 반등 시도 전망…6800선 회복 주목"
+    },
+    "source_fact:ae4e89e84ec5c8f82ab71d86": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
     },
     "source_fact:ae5042565f349f6f97db51a7": {
       "first_seen_kst": "2026-10-22T21:42:35+09:00",
@@ -1086417,6 +1087929,39 @@
       "source_title": "커뮤니티 트러스트 뱅코프, 3분기 희석 EPS 1.43달러..전년비 8.3% 증가",
       "telegram_core_fact": "커뮤니티 트러스트 뱅코프(CTBI)는 올해 3분기(7~9월) 희석 주당순이익이 1.43달러로 전년 동기 1.32달러보다 8.3% 늘었고, 순이익은 2589만 달러로 전년 동기 2391만 달러 대비 8.3% 증가했다고 10월 21일 발표했다.",
       "title": "커뮤니티 트러스트 뱅코프, 3분기 희석 EPS 1.43달러..전년비 8.3% 증가"
+    },
+    "source_fact:b7636f17e9d614eef2d5e9a3": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
     },
     "source_fact:b7666ab0e18289bc86d9fb87": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
@@ -1126869,6 +1128414,31 @@
       "source_published_kst": "2026-10-06T13:27+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업서 각형 장비 수주"
     },
+    "source_fact:c69cd2c0d5ae7c0a0f2980a8": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
+      "source_fact_keys": [
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
+      ],
+      "source_published_kst": "2026-10-28T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
+    },
     "source_fact:c69da58f64ae01ed6ab9dfde": {
       "first_seen_kst": "2026-10-19T13:56:52+09:00",
       "lanes": {
@@ -1149384,6 +1150954,39 @@
       "telegram_core_fact": "빠르게 늘어나는 반도체 수요에 대응하기 위해 여건이 갖춰지는 대로 최대한 신속하게 건설하겠다는 의지도 강조했다.",
       "title": "최태원 \"호남 반도체 공장, 용인 3분의 2 규모…최대한 빨리 건설\""
     },
+    "source_fact:cf22d77b925d805786bbcfb4": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "source_fact:cf2589a8d1a706becc794a2d": {
       "first_seen_kst": "2026-10-15T09:43:41+09:00",
       "lanes": {
@@ -1154682,6 +1156285,34 @@
       "source_title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다",
       "telegram_core_fact": "애플이 첫 폴더블 스마트폰 '아이폰 듀오'에 사용되는 티타늄을 미국에서 조달하기 위해 최대 1억 달러 공급 계약을 체결했다.",
       "title": "애플, 아이폰 듀오 핵심소재 미국산 티타늄 쓴다"
+    },
+    "source_fact:d11e09f761d8080bd83d0804": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
     },
     "source_fact:d1203b4fcce6a114c148f3bc": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
@@ -1160658,6 +1162289,39 @@
       ],
       "source_published_kst": "2026-10-07T06:15+09:00",
       "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
+    },
+    "source_fact:d388a512fc343c0c196c58e1": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
     },
     "source_fact:d3891450cb43e17fb93dd70f": {
       "first_seen_kst": "2026-10-22T19:31:34+09:00",
@@ -1231000,6 +1232664,39 @@
       "telegram_core_fact": "현장에서 홍 장관은 LH로부터 올해 신축 매입임대주택 착공·약정 실적과 연내 공급계획을 보고받은 뒤 입주 예정 세대를 둘러보며 구조와 마감재, 수납공간을 확인했다.",
       "title": "홍지선 국토장관 “신축매입임대 착공·입주 속도 더 높이겠다”"
     },
+    "source_fact:edcdff4dc411f569c5372fa8": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "source_fact:edd3792f9ebe05b7c1d1422c": {
       "first_seen_kst": "2026-10-22T19:31:34+09:00",
       "lanes": {
@@ -1276674,6 +1278371,39 @@
       "telegram_core_fact": "글로벌 디지털자산 시황 사이트 코인마켓캡에 따르면 이날 오전 7시50분께 비트코인 가격은 24시간 전보다 0.82% 오른 8만3582달러에서 거래되고 있다. 도널드 트럼프 미국 대통령이 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝히면서 투심이 회복돼서다.",
       "title": "트럼프 “러·우 에너지 휴전 합의”…비트코인 반등[코인 모닝콜]"
     },
+    "source_fact:ffaedd4a27e720ac49d25e56": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
+    },
     "source_fact:ffb9ae6a343b4162a64cba62": {
       "first_seen_kst": "2026-10-14T20:10:22+09:00",
       "lanes": {
@@ -1280783,6 +1282513,34 @@
       "source_title": "빗디어, AI 클라우드 수주잔고 29억달러 확대에 채굴량 급증까지 주목",
       "telegram_core_fact": "A201 데이터센터 70% 오프테이크를 확보하며 AI 클라우드 수주잔고가 29억 달러로 커졌고, 노르웨이 티달과 총 47억 달러 16년 임대계약도 체결해 AI 사업 전환 기대가 커지고 있습니다.",
       "title": "빗디어, AI 클라우드 수주잔고 29억달러 확대에 채굴량 급증까지 주목"
+    },
+    "title:059b4e3cc04b40a515dfe7e8": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187987",
+      "source": "매일경제",
+      "source_body_digest": "aeff579932006ecda96b0466635a640083e43d6dd5f34553b46080fb60fba1a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c162e3f189b15bebfcfdf75e1b4374140312a349ac7f634f2ccf2ff002a2db03",
+      "source_fact_keys": [
+        "source_fact:v1:1fc4c529bf769edb8e5e3167a35035e45d0c47c96d0e9fb3827161ef17b587cb",
+        "source_fact:v1:7427bc6eb1a32e213b4b950c045df12aa83c31cd69bb20471571144434b0609c",
+        "source_fact:v1:a4f2edc266934ef2f8d360a65a29cfbf41ca1c17b4724a8dd026e39f49fa6499",
+        "source_fact:v1:c76a739744092b1f7e5932f914c5f374917a33e21da69a72268a3e36cb016613",
+        "source_fact:v1:d3a9ed1070bc0fc54a01215e81e3759577da6cc2aa85ead31aaf1b1127b8466a",
+        "source_fact:v1:d8ba67ec58c1ff382eb8bfcee27fc87887d7a986dccec4722a14350e2258f616",
+        "source_fact:v1:e08788bbafb09b3ad76d3e0b865894f95971bd2aca56f37af4de6b4721dd6ce7",
+        "source_fact:v1:e2a615a0b7dbf92d3963c35556014c11596494589f61f589029251a9affb561b",
+        "source_fact:v1:f32729272822a761f9cd8d81e3cc08d8519fb763b680452b22383c7247b42275"
+      ],
+      "source_published_kst": "2026-10-28T06:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가",
+      "telegram_core_fact": "러쉬 엔터프라이즈(RUSHA)가 9월 30일 종료된 2026년 3분기 매출액이 21억1300만 달러로 전년비 12.4% 증가했고, 같은 분기 희석 주당순이익(GAAP)은 0.65달러로 전년 동기 0.55달러보다 18.2% 늘었다고 10월 27일 발표했다.",
+      "title": "러쉬 엔터프라이즈, 3분기 매출 21억 달러..전년비 12% 증가"
     },
     "title:05a2d1af65d2b9149d777f7c": {
       "first_seen_kst": "2026-10-17T09:15:26+09:00",
@@ -1321588,6 +1323346,26 @@
       "telegram_core_fact": "한국거래소 기준 12일 오전 9시6분 DN오토모티브는 8.74% 내린 4만4900원에 거래됐다. 등락률은 전 거래일 대비다.",
       "title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락"
     },
+    "title:44ec4a0da4a61b405dc9da31": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/28/2026102813554864004",
+      "source": "머니투데이",
+      "source_body_digest": "4c592d907ecde5c23f39b5bceaf341851d755a6a7f533cb132a0ab7d3dec2448",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0233844c8ae2f9d619c06ab197aacebea5ddaa701d31885988032de38aebaa05",
+      "source_fact_keys": [
+        "source_fact:v1:2849c1af3f3ecd9f87f27d812d9cb2be9838548c57d082013b52b5d0bc89ec4f"
+      ],
+      "source_published_kst": "2026-10-28T14:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위",
+      "telegram_core_fact": "한화자산운용은 'PLUS 글로벌HBM반도체' ETF(상장지수펀드)가 지난 26일 기준 올해 해외 투자 반도체 ETF 중 5933억원의 개인 순매수 1위를 기록했다고 28일 밝혔다.",
+      "title": "'PLUS 글로벌HBM반도체', 해외 반도체 ETF 중 개인 순매수 1위"
+    },
     "title:450263976aae7e756eccd846": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
       "lanes": {
@@ -1348299,6 +1350077,31 @@
       "source_title": "퀀텀 이모션, 플루리록 인수 계약 체결..1주당 신주 0.0763주",
       "telegram_core_fact": "퀀텀 이모션(QNC)이 캐나다 사이버보안 업체 플루리록 시큐리티(Plurilock Security)를 인수하는 계획 합병(Plan of Arrangement) 계약을 9월 28일 체결했으며, 플루리록 1주당 퀀텀 이모션 신주 0.0763주와 현금 0.084캐나다달러를 지급한다고 10월 13일 발표했다.",
       "title": "퀀텀 이모션, 플루리록 인수 계약 체결..1주당 신주 0.0763주"
+    },
+    "title:6ee5cce35681c2acda6dbe1c": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640822",
+      "source": "이투데이",
+      "source_body_digest": "73af6547974e3b4c74296e6923b9bb01814149368b88eb82a4b8d9bc7dd68eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c848be5e32341a398c5f86fe4db7c60e230adf9f3421f2fd54e430e459fbf574",
+      "source_fact_keys": [
+        "source_fact:v1:1310a2bcdc24cedd17c818bb538a5fbf666f48e2be9d0eec31e28964fbd5a08c",
+        "source_fact:v1:2e42376bf38a29874e34c17e568fd55dc22ccd74654aa7dab4f8e29740ba7333",
+        "source_fact:v1:6f73277b9fa87b4c244e0e144dd9460d24f81c114b161361a32c96ee078377c9",
+        "source_fact:v1:83f595ffc9cd29def02aabb63e63b702750870791acc3201a2c7f5b991acf4bd",
+        "source_fact:v1:8fea446039fa4587a89847a5f8061e48869719ee39c1e8cb6406edc0007ad23e",
+        "source_fact:v1:dd16c25bf0e9bb8dc03a733a110c331d7e2df121d04028ddecdd101b9b7d270b"
+      ],
+      "source_published_kst": "2026-10-28T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓",
+      "telegram_core_fact": "뉴욕상업거래소(NYMEX)에서 12월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 1.86달러(1.83%) 내린 배럴당 99.90달러에 마감했다.",
+      "title": "[속보] 국제유가, 중동 평화 기대에 하락⋯WTI 1.8%↓"
     },
     "title:6ee6f5e580f4c7fb1a5fd540": {
       "first_seen_kst": "2026-10-08T11:06:13+09:00",
@@ -1391614,6 +1393417,31 @@
       "source": "뉴시스",
       "title": "美무역수장 \"과잉생산 수용 못 해, 행동할 것…수주 내 발표\""
     },
+    "title:b1170ec405ffaa15497ee2af": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.fnnews.com/news/202610280601347907",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "86d43db2864aae5690dde1cf4f1e3e3a509d82f268dd403be1491725f0943021",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:525e95c18c16253cb2427ed4cb52d3deddd21a8004e350789f0f62fa8277c82d",
+      "source_fact_keys": [
+        "source_fact:v1:0957c0f9313c060f1ac5d3e2231c8d9dfd62bad4442d928a22861866fbdad359",
+        "source_fact:v1:6370fac5da262421bcd9915d4b94c1b987f6978976b7887b995c73ff27482f3f",
+        "source_fact:v1:7f5321c66ecaf61dec88ac0c2ff4c92dd28c48f41eb98655e0939bd2c753d8b2",
+        "source_fact:v1:9145d7801e708cb237ac58f5f97757ba17119c2905f6a2ba7d0a94a11cd67df5",
+        "source_fact:v1:f51f69aa07d23873067ee7d2db26db2e95efee0766fe752dd0bc1bf94ba67957",
+        "source_fact:v1:ff4e75633585aac9a7feeed63ef8b188121e15cb7d24ec2dd77b0307624348d0"
+      ],
+      "source_published_kst": "2026-10-28T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위",
+      "telegram_core_fact": "28일 기업데이터연구소 CEO스코어가 2026년 지정 공시대상기업집단(대기업) 오너 일가 중 지분 변동이 확인된 222명을 대상으로 올해 1월 1일 이후 주식 취득·처분 내역을 조사한 결과, 이재용 삼성전자 회장의 주식 순취득 규모가 총 4조9천524억원으로 집계돼 1위를 기록했다.",
+      "title": "올해 오너일가 222명 주식 지분변동…5조원 취득한 이재용 1위"
+    },
     "title:b12584a0caca9a081d78b724": {
       "first_seen_kst": "2026-09-20T03:01:27+09:00",
       "lanes": {
@@ -1396997,6 +1398825,26 @@
       "source_published_kst": "2026-10-04T12:13+09:00",
       "title": "고금리·고유가에도 나스닥100 굳건한 이유- 매경ECONOMY"
     },
+    "title:ba544ed5f677d084369145ec": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.hankyung.com/article/202610278302i",
+      "source": "한국경제",
+      "source_body_digest": "368c3aff049fb295264207f0c0879f69d222a17c12e6065ece1817e8eea9f45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77388e6e8ed1ee68ff97f5045f02105be09980f5050bee32df92b32b52a1553c",
+      "source_fact_keys": [
+        "source_fact:v1:c093de4b0684a45fd379bb69a47a35edb0e2cbae1fd9cede95dc09c9f3e19e01"
+      ],
+      "source_published_kst": "2026-10-28T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는",
+      "telegram_core_fact": "우리 정부가 저가 물량 공세를 앞세운 중국산 아연도금냉연(CGI)에 향후 5년간 덤핑방지관세(최대 33.67%)를 부과하기로 했음에도 철강주 주가는 지지부진하다.",
+      "title": "\"'초저가 공세' 中 관세 철퇴에도\"…철강주 지지부진 이유는"
+    },
     "title:ba55b1bd426e1baf83390146": {
       "first_seen_kst": "2026-10-27T01:37:26+09:00",
       "lanes": {
@@ -1400373,6 +1402221,39 @@
       "source_title": "JB금융지주 \"자회사 JB우리캐피탈 주식 2천200억원에 추가취득\" | 연합뉴스",
       "telegram_core_fact": "주식 취득 뒤 JB금융지주의 JB우리캐피탈 지분율은 100%가 된다.",
       "title": "JB금융지주 \"자회사 JB우리캐피탈 주식 2천200억원에 추가취득\" | 연합뉴스"
+    },
+    "title:bfe57bb30f46f5bb34bfbadc": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610279025b",
+      "source": "한국경제",
+      "source_body_digest": "20bb52d55cb23efc4f202f08f790e5b1dbdf0e6b2bd1037a699ffd25d0b35925",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78d118a068b2698263cc5d65e7d945744f17475d3df8860472aed5602c30cfdf",
+      "source_fact_keys": [
+        "source_fact:v1:2852dd5034a8623bb795be177844e22b73b14e80648ec8c93a8205459547656f",
+        "source_fact:v1:391fa8364f15b08aad3e932d3cffb38d4b5a1cbc08c119bd1c12d2d73ab959ac",
+        "source_fact:v1:4585be8bcd3eeb3d9e1a8065c70e3957b10b8a3013e108ff3305931ce9076275",
+        "source_fact:v1:5185a9d220a8be0ff00d0b7a2f0557be5399666558370645607b43d76ce7af4d",
+        "source_fact:v1:5da4031d56da6800486c12f03c6b77aa1c299e949198dbcad6a80c589994a0fa",
+        "source_fact:v1:65a778d5b17dc6511e37604174c487855d9b2d9219336ab3d55596200a550efb",
+        "source_fact:v1:7878e28d4029336d9e839e874dceafeb5af4af01bc11212e44df57702e75b624",
+        "source_fact:v1:7b38b755ecf91fc0ea07390364823569db29d05f070b833948e7f7fe203a1f0e",
+        "source_fact:v1:86e23db253bb33bfd426254821a3c49ec71e45bfb9ce127119c4722c2ce01510",
+        "source_fact:v1:b55b07cbdf0a23bbd9ceb61c30749753e890106f0d940e53de34ffdb6f711759",
+        "source_fact:v1:c745fb75222d56c5c5af3e5e76d3aba6cd1f344cdf4c1a24a5b38443ed0a745e",
+        "source_fact:v1:eae04bfeeaa1fcf1997483191998e4c377123aff07b2fe1edf7aec2f64fcac86",
+        "source_fact:v1:fd1d5b09f44a0d4375a4b8fd362cb9382d8807dc218c2585e7167d15e49475db",
+        "source_fact:v1:fdfc91ed8caa1be387795544516f6aa2c290db42b54434d119a1a16542e0cf63"
+      ],
+      "source_published_kst": "2026-10-27T21:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대",
+      "telegram_core_fact": "2028년까지 약 4000억 원을 투자해 광모듈용 동박적층판(CCL) 전용 생산시설을 구축하고 공급 능력을 확대할 계획이다. 이번 증설로 김제공장은 FCCL과 광모듈용 CCL을 함께 생산하게 되며, 두 차례 투자협약 규모는 총 4685억 원이다.",
+      "title": "㈜두산, 김제에 3992억 투자…AI 데이터센터 CCL 생산 확대"
     },
     "title:bff71fa470818174eb102bf3": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
@@ -1415930,6 +1417811,26 @@
       "source_title": "동해·묵호항 3분기 항만물동량 83만t 줄어 | 연합뉴스",
       "telegram_core_fact": "동해지방해양수산청은 올해 3분기 동해·묵호항의 항만물동량은 총 755만t으로 전년 동기(838만t)보다 83만t(9.8%) 감소했다고 26일 밝혔다. 이 기간 동해·묵호항에서 처리된 주요 화물은 석회석 255만t, 석탄 238만t, 시멘트 173만t순으로 나타났다.",
       "title": "동해·묵호항 3분기 항만물동량 83만t 줄어 | 연합뉴스"
+    },
+    "title:d8aa87d866d3516d51f6821a": {
+      "first_seen_kst": "2026-10-28T14:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-28T14:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-28T14:34:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843378",
+      "source": "뉴시스",
+      "source_body_digest": "c1345ab316a4c7057a7511693a4a64b676ff9cafefe5ee5a3587427ee2ed419c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f9d23569047fe38b69edeadcaa4fb10a0ae56dad86db35ba830c06d18c14755",
+      "source_fact_keys": [
+        "source_fact:v1:d7832719b7bc729295badbc2bec92791f28cc41f0214909a36a850c691f4af68"
+      ],
+      "source_published_kst": "2026-10-28T06:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파",
+      "telegram_core_fact": "아이파크몰 용산점의 취향·취미 특화 공간 '도파민 스테이션'이 누적 매출 1000억원을 돌파했다.",
+      "title": "하루 3만명 몰리는 이곳 어디…'도파민 스테이션' 매출 1000억 돌파"
     },
     "title:d8ac1ea1e3441bc75dfa6d46": {
       "first_seen_kst": "2026-10-17T20:19:17+09:00",
@@ -1440503,5 +1442404,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-28T13:58:54+09:00"
+  "updated_at_kst": "2026-10-28T14:34:00+09:00"
 }
