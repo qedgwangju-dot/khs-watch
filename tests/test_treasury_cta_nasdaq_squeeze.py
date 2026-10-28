@@ -707,9 +707,15 @@ def test_missed_monday_report_recovers_once_on_first_fresh_regular_poll(monkeypa
         "yield10": {"date": "2026-10-27", "yield": 4.99},
         "repo": {"SOFR": {"date": "2026-10-26"}},
     }}
-    due, _, week, _ = equity._scheduled_due({"last_weekly_report_key": "2026-W42"}, snap)
+    due, _, week, _ = equity._scheduled_due({
+        "last_weekly_report_key": "2026-W42",
+        "last_fomc_eve_report": "2026-10-28",
+    }, snap)
     assert due is True and week == "2026-W44"
-    repeated, _, _, _ = equity._scheduled_due({"last_weekly_report_key": "2026-W44"}, snap)
+    repeated, _, _, _ = equity._scheduled_due({
+        "last_weekly_report_key": "2026-W44",
+        "last_fomc_eve_report": "2026-10-28",
+    }, snap)
     assert repeated is False
 
 
