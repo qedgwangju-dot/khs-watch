@@ -26,7 +26,7 @@ HBF_TRACK_VERSION = 1
 NVIDIA_HBM4_8HI_TRACK_VERSION = 1
 HYNIX_FINANCE_VERSION = 1
 HYNIX_Q3_2026_URL = 'https://news.skhynix.com/en/q3-2026-business-results/'
-HYNIX_FAB_SHELL_PRESS_URLS = ('https://www.news1.kr/industry/general-industry/6334489', 'https://biz.sbs.co.kr/article/20000342599', 'https://stockanalysis.com/quote/krx/000660/transcripts/717350-q3-2026/', 'https://v2.www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03686726645617512')
+HYNIX_FAB_SHELL_PRESS_URLS = ('https://biz.sbs.co.kr/amp/article/20000342599', 'https://www.fnnews.com/news/202610281007175460', 'https://biz.chosun.com/en/en-it/2026/10/28/ST4EGUUSHBAMVPE26CMFOHP7HA/?outputType=amp', 'https://stockanalysis.com/quote/krx/000660/transcripts/717350-q3-2026/', 'https://www.news1.kr/industry/general-industry/6334489')
 HYNIX_Y2_M17_OFFICIAL_PLAN = 'https://news.skhynix.com/en/fab-facility-investment-2026/'
 HYNIX_2029_PRESS_URLS = ('https://www.yna.co.kr/view/AKR20261028057352003', 'https://www.yna.co.kr/view/AKR20261028057351003', 'https://m.newspim.com/news/view/20261028000342')
 HYNIX_FINANCE_GOV = "https://www.korea.kr/news/policyNewsView.do?newsId=148973781"
@@ -1989,22 +1989,22 @@ def parse_skhynix_2029_earnings_call_news(item,body):
 def parse_skhynix_fab_shell_2026(item, body):
     """Q3 call: earlier building shells, not earlier equipment installation or HVM."""
     h=host(item.get('direct_link',''))
-    if h not in ('news1.kr','biz.sbs.co.kr','stockanalysis.com','v2.www.edaily.co.kr','news.skhynix.com','news.skhynix.co.kr'):
+    if h not in ('news1.kr','biz.sbs.co.kr','stockanalysis.com','biz.chosun.com','fnnews.com','news.skhynix.com','news.skhynix.co.kr'):
         return []
     text=re.sub(r'\s+',' ',body or '')
     if not (re.search(r'SK하이닉스|SK\s*hynix',text,re.I)
-            and re.search(r'용인',text) and re.search(r'(?<![A-Za-z0-9])M17(?![A-Za-z0-9])',text,re.I)
-            and re.search(r'셸|쉘|건물\s*골조',text)
-            and re.search(r'앞당기|앞당겨|조기화',text)
-            and re.search(r'클린룸',text) and re.search(r'단계별|단계적으로|페이즈별',text)):
+            and re.search(r'용인|Yongin',text,re.I) and re.search(r'(?<![A-Za-z0-9])M17(?![A-Za-z0-9])',text,re.I)
+            and re.search(r'셸|쉘|건물\s*골조|shell|building\s+frame',text,re.I)
+            and re.search(r'앞당기|앞당겨|조기화|accelerat|bring\s+forward|fast.track',text,re.I)
+            and re.search(r'클린룸|clean\s*rooms?',text,re.I) and re.search(r'단계별|단계적으로|페이즈별|in\s+phases|phased',text,re.I)):
         return []
     # An acceleration of the structure alone does not move cleanroom or
     # equipment-move-in dates without an issuer-confirmed new dated milestone.
     val={
       'shell_acceleration_reported':True,
       'cleanroom_phased_opening_reported':True,
-      'equipment_move_in_follows_demand':bool(re.search(r'장비\s*반입',text)
-                                                 and re.search(r'수요에\s*따라|수요에\s*맞춰',text)),
+      'equipment_move_in_follows_demand':bool(re.search(r'장비\s*반입|equipment\s*(?:moving|installation|move.in)',text,re.I)
+                                                 and re.search(r'수요에\s*따라|수요에\s*맞춰|in\s+line\s+with\s+demand|based\s+on\s+demand|according\s+to\s+demand',text,re.I)),
       'y2_approved_investment_krw':35_200_000_000_000,
       'm17_approved_investment_krw':19_100_000_000_000,
       'original_y2_cleanroom_month':'2029-06',
@@ -3582,7 +3582,14 @@ def main():
                     if rows:
                         observed.extend(rows)
                         break
-                    coverage.append('SK하이닉스 Y2·M17 조기화 본문 직접 확인 대기: '+host(url))
+                    # Diagnose source extraction gaps without storing URL tokens or inventing a positive.
+                    marker_count=sum(bool(re.search(p,body,re.I)) for p in
+                         ('SK하이닉스|SK\\s*hynix','용인|Yongin','M17',
+                          '셸|쉘|shell|건물\\s*골조','앞당기|accelerat|조기화',
+                          '클린룸|clean\\s*room','단계별|페이즈별|in\\s+phases'))
+                    coverage.append('SK하이닉스 Y2·M17 조기화 본문 검증 보류: '+
+                         host(url)+' 본문길이='+str(len(body))+
+                         ' 핵심표현수='+str(marker_count)+'/7')
                 except Exception as exc:
                     coverage.append('SK하이닉스 Y2·M17 조기화 보도 조회 실패: '+host(url)+' '+type(exc).__name__)
         if 'skhynix_2029_outlook|skhynix|2029' not in ((initial.get('memory_axes') or {}).get('last_notified') or {}):

@@ -110,6 +110,24 @@ class HynixLTAWatchTests(unittest.TestCase):
             i, "A semiconductor company will accelerate M17 buildings in Yongin; "
                "쉘 일정을 앞당기고 클린룸은 페이즈별 개방."),[])
 
+    def test_fab_shell_english_press_quote_not_misclassified_as_hbm_mass_output(self):
+        item=self.item('https://biz.chosun.com/en/en-it/2026/10/28/ST4EGUUSHBAMVPE26CMFOHP7HA/?outputType=amp')
+        body=("SK hynix plans to accelerate construction of the shell that forms the building frame "
+              "for the Yongin cluster and M17 while opening clean rooms in phases. "
+              "Equipment installation and mass production ramp-ups will be adjusted "
+              "in line with demand.")
+        rows=w.parse_skhynix_fab_shell_2026(item,body)
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]['evidence'],'reported')
+        self.assertTrue(rows[0]['value']['equipment_move_in_follows_demand'])
+        self.assertFalse(rows[0]['value']['production_ramp_accelerated_confirmed'])
+
+    def test_fab_shell_english_quote_wrong_host_rejected(self):
+        item=self.item('https://www.unknown-investor-forum.example/20261028')
+        body=("SK hynix accelerate construction of the shell at Yongin and M17 "
+              "but open clean rooms in phases.")
+        self.assertEqual(w.parse_skhynix_fab_shell_2026(item,body),[])
+
     def test_generic_equipment_acceleration_rumour_not_fab_issuer_confirmation(self):
         item=self.item('https://www.unverified-example.com/news')
         text=('SK하이닉스 M17 장비반입 조기화와 2027 양산 확정이라는 주장')
