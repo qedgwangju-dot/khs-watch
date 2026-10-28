@@ -33,7 +33,6 @@ on:
 
 permissions:
   contents: write
-  actions: write
 
 concurrency:
   # Code-push verification must not cancel a scheduled production alert.
@@ -121,15 +120,6 @@ jobs:
             sleep $((attempt * 4))
           done
           exit 1
-
-      - name: Run one-time CTA recovery on existing production workflow
-        if: github.event_name == 'push' && github.event.head_commit.message == 'CTA recovery production verification once'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPOSITORY: ${{ github.repository }}
-        run: |
-          gh api -X POST "repos/${REPOSITORY}/actions/workflows/treasury-cta-squeeze-telegram-alert.yml/dispatches" -f ref=main
-          echo "cta_recovery_dispatch_accepted=true"
 
       - name: Send interpreted Telegram alert
         if: github.event_name != 'push' && hashFiles('out/treasury_cta_squeeze_alert.html') != ''
