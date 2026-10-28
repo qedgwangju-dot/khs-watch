@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-28T09:00:30+09:00",
-  "last_scan_count": 5,
+  "updated_at_kst": "2026-10-28T14:32:54+09:00",
+  "last_scan_count": 7,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
     "vintage": "3Q26",
@@ -114,7 +114,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 2,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -125,8 +125,11 @@
     "2cd2b0f9d66a3572fe285d81",
     "2e4ce20f85e2413b949cc500",
     "2ff967f0a83d4f9d09737f69",
+    "3547810262aea5ccef036765",
     "3721dcaa772b61f44f972d28",
     "3c256fe8dff8e167b043d264",
+    "47dbd1ba8dd5c3df6d41d0b9",
+    "4e45cbd21e7fd6755e4b41a7",
     "51e0a57c2a721f4c77c22710",
     "54bea3d4ab4510e9d52b3b53",
     "55bbf1575d333d5e4db815d4",
@@ -152,7 +155,20 @@
     "f3274f98949ddbb5ad284b00"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "korea|capacity|SK hynix|hbm4",
+      "source": "Chosunbiz",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-10-28T10:00:00+09:00"
+    },
+    {
+      "event_key": "korea|capacity|SK hynix|core",
+      "source": "Chosunbiz",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-10-28T10:00:00+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
   "telegram_message_ids": [
     292
