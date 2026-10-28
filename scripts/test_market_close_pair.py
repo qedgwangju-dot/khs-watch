@@ -174,6 +174,33 @@ class DailyClosePair(unittest.TestCase):
             self.assertIn('공식 종가 독립 대조는 미완료', row['text'])
             self.assertIn('조회 15:31:', row['text'])
 
+    def test_quote_received_while_program_close_is_loading_is_not_falsely_stale(self):
+        # 10/28 production receipt 1413 held an actual 15:32:03.643 KOSDAQ
+        # observation of 771.28. The precise pre-await clock was not saved;
+        # one second before the observation reproduces the same clock ordering.
+        observed_ts = 1793169123.6431866
+        close = REAL_DATETIME(2026, 10, 28, 15, 30, tzinfo=monitor.KST)
+
+        class AdvancingDatetime(REAL_DATETIME):
+            calls = 0
+
+            @classmethod
+            def now(cls, tz=None):
+                cls.calls += 1
+                at = observed_ts - 1 if cls.calls == 1 else observed_ts + 10
+                return REAL_DATETIME.fromtimestamp(at, tz)
+
+        async def prepare(*_args):
+            self.w.kosdaq_idx = deque([(observed_ts, 771.28)])
+
+        self.w._prepare_program_close = AsyncMock(side_effect=prepare)
+        with patch.object(monitor.dt, 'datetime', AdvancingDatetime):
+            asyncio.run(self.w._finalize_daily_close(close))
+        quote = self.w.daily_close['plans']['KOSDAQ']['quote']
+        self.assertTrue(quote['available'], quote)
+        self.assertEqual(quote['observed_price'], 771.28)
+        self.assertFalse(quote['independent_official_close_verified'])
+
     def test_program_source_failure_in_one_market_does_not_skip_other(self):
         def collect(_token, market, *_):
             if market == 'KOSPI': raise RuntimeError('source failure fixture')
