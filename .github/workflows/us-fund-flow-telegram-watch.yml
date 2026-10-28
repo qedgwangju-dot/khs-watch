@@ -278,6 +278,21 @@ jobs:
             rm -f out/us_positioning_options_sox_alert.html out/us_positioning_options_sox_pending_state.json
           fi
 
+      - name: Check official AAII allocation and Conference Board stock expectations
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          from us_positioning_delivery import update_retail_survey_overlay
+          result = update_retail_survey_overlay()
+          if result["status"] == "source_withheld":
+              print("::warning::AAII/Conference Board primary monthly survey unavailable; no new retail-sentiment alarm or checkpoint")
+          elif result["status"] == "baseline_saved":
+              print("retail_survey_first_baseline_silent=true")
+          elif result["status"] == "alert_ready":
+              print("retail_survey_new_official_monthly_condition=true existing_telegram_lane=true")
+          else:
+              print("retail_survey_unchanged=true")
+          PY
+
       - name: Recheck committed state before sending
         run: |
           # A source check may have started before another run committed delivery.
