@@ -363,7 +363,7 @@ def _socrata_cftc_snapshot(live_error: Exception | None = None) -> dict:
         lev_long = iv(row, "lev_money_positions_long")
         lev_short = iv(row, "lev_money_positions_short")
         lev_spread = iv(row, "lev_money_positions_spread")
-        result["markets"][key] = {
+        entry = {
             "open_interest": oi,
             "leveraged_long": lev_long,
             "leveraged_short": lev_short,
@@ -371,6 +371,21 @@ def _socrata_cftc_snapshot(live_error: Exception | None = None) -> dict:
             "leveraged_net": lev_long - lev_short,
             "short_share_oi_pct": lev_short / oi * 100 if oi else None,
         }
+        previous_rows = [
+            r for r in rows
+            if reverse.get(code(r)) == key and dkey(r) and dkey(r) < latest_date
+        ]
+        if previous_rows:
+            prior = max(previous_rows, key=dkey)
+            prev_day = datetime.strptime(dkey(prior), "%Y-%m-%d").date()
+            now_day = datetime.strptime(latest_date, "%Y-%m-%d").date()
+            if (now_day - prev_day).days == 7:
+                prev_long = iv(prior, "lev_money_positions_long")
+                prev_short = iv(prior, "lev_money_positions_short")
+                entry["leveraged_net_wow"] = (lev_long - lev_short) - (prev_long - prev_short)
+                entry["leveraged_short_wow"] = lev_short - prev_short
+                entry["previous_period"] = prev_day.strftime("%B %d, %Y").replace(" 0", " ")
+        result["markets"][key] = entry
     if live_error is not None:
         result["live_source_error"] = f"{type(live_error).__name__}: {live_error}"
     return result
@@ -452,7 +467,7 @@ def _history_cftc_snapshot(live_error: Exception | None = None) -> dict:
         lev_long = intval(row, "Lev_Money_Positions_Long_All")
         lev_short = intval(row, "Lev_Money_Positions_Short_All")
         lev_spread = intval(row, "Lev_Money_Positions_Spread_All")
-        result["markets"][key] = {
+        entry = {
             "open_interest": oi,
             "leveraged_long": lev_long,
             "leveraged_short": lev_short,
@@ -460,6 +475,17 @@ def _history_cftc_snapshot(live_error: Exception | None = None) -> dict:
             "leveraged_net": lev_long - lev_short,
             "short_share_oi_pct": lev_short / oi * 100 if oi else None,
         }
+        candidates = by_key.get(key) or []
+        if len(candidates) >= 2:
+            prior = candidates[-2]
+            prev_day = parse_date(prior.get(date_col))
+            if (latest_date - prev_day).days == 7:
+                prev_long = intval(prior, "Lev_Money_Positions_Long_All")
+                prev_short = intval(prior, "Lev_Money_Positions_Short_All")
+                entry["leveraged_net_wow"] = (lev_long - lev_short) - (prev_long - prev_short)
+                entry["leveraged_short_wow"] = lev_short - prev_short
+                entry["previous_period"] = prev_day.strftime("%B %d, %Y").replace(" 0", " ")
+        result["markets"][key] = entry
     if live_error is not None:
         result["live_source_error"] = f"{type(live_error).__name__}: {live_error}"
     return result
