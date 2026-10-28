@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import io
 import json
+import math
 import os
 import re
 import urllib.request
@@ -832,7 +833,13 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, fx_date=None, co
         pct_text = f"{float(nq_pct):+.2f}%" if nq_pct is not None else "확인 불가"
         oi = price.get("oi_change")
         oi_text = f"{int(oi):+,}" if oi is not None else "확인 불가"
-        price_line = f"• NQ CME {raw_price_date} 정산: {pct_text} · 같은 날 일일 OI {oi_text}계약"
+        price_line = (
+            f"• NQ CME {raw_price_date} 정산: {pct_text} · 같은 날 일일 OI "
+            + _fmt_contracts_with_krw(
+                oi, fx, nq_price=price.get("price"), nq_fresh=True,
+                context="당일 OI 증감 명목",
+            )
+        )
     elif raw_price_date:
         price_line = (
             f"• NQ CME 최신 거래일 자료 미확보: 마지막 {raw_price_date} · "
@@ -843,8 +850,13 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, fx_date=None, co
 
     net_wow = nq.get("leveraged_net_wow")
     short_wow = nq.get("leveraged_short_wow")
-    net_wow_text = f"{int(net_wow):+,}" if net_wow is not None else "확인 불가"
-    short_wow_text = f"{int(short_wow):+,}" if short_wow is not None else "확인 불가"
+    def fmt_nq(value, *, context="명목"):
+        return _fmt_contracts_with_krw(
+            value, fx, nq_price=price.get("price"),
+            nq_fresh=bool(cross.get("nq_price_fresh")), context=context,
+        )
+    net_wow_text = fmt_nq(net_wow, context="주간 순포지션 변동 명목")
+    short_wow_text = fmt_nq(short_wow, context="주간 총숏 변동 명목")
     hist_ok = bool(cross.get("nq_history_fresh") and cross.get("nq_crosscheck_match") and hist.get("verified_current"))
     if hist_ok:
         net_pct = hist.get("net_short_percentile_3y")
@@ -864,8 +876,9 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, fx_date=None, co
     rows = [
         "<b>📈 채권→Nasdaq 전이</b>",
         f"• {cross.get('label')}",
-        f"• CFTC {cftc_date}: 10Y LF 순 {int(treasury10.get('leveraged_net') or 0):+,}계약 · NQ LF 순 {int(nq.get('leveraged_net') or 0):+,}계약",
-        f"• NQ CFTC 주간: 순포지션 {net_wow_text}계약 · 총숏 {short_wow_text}계약",
+        f"• CFTC {cftc_date}: 10Y LF 순 {_fmt_net_with_krw(treasury10.get('leveraged_net'), '10Y', fx)}"
+        f" · NQ LF 순 {fmt_nq(nq.get('leveraged_net'), context='NQ 순포지션 명목')}",
+        f"• NQ CFTC 주간: 순포지션 {net_wow_text} · 총숏 {short_wow_text}",
         hist_line,
     ]
     if hist_ok and hist.get("ten_year_complete"):
@@ -873,7 +886,7 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, fx_date=None, co
         pctile = hist.get("gross_short_weekly_build_percentile_10y")
         if isinstance(week_change, (int, float)) and isinstance(pctile, (int, float)):
             rows.append(
-                f"• NQ 총숏 이번 주 {int(week_change):+,}계약 · 10년 주간 증감 {float(pctile):.0f}백분위"
+                f"• NQ 총숏 이번 주 {fmt_nq(week_change, context='총숏 변동 명목')} · 10년 주간 증감 {float(pctile):.0f}백분위"
                 + (" · 10년 주간 최대 증가" if hist.get("gross_short_weekly_record_10y") and week_change > 0 else "")
             )
     rows.append(price_line)
@@ -1016,7 +1029,10 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
         pct = row.get("pct_change")
         pct_txt = f"{float(pct):+.2f}%" if pct is not None else "변화율 확인 불가"
         oi = row.get("open_interest")
-        oi_txt = f"{int(oi):,}" if oi is not None else "확인 불가"
+        oi_txt = _fmt_contracts_with_krw(
+            oi, fx, tenor={"ZN": "10Y", "ZB": "BOND", "UB": "ULTRABOND"}.get(symbol),
+            context="전체시장 OI 액면",
+        )
         src = row.get("oi_source") or row.get("source_type") or "출처 확인 불가"
         price_date = row.get("trade_date_iso") or row.get("trade_date")
         if not price_date and row.get("market_time"):
@@ -1035,7 +1051,7 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
     t10 = cftc.get("10Y") or {}
     delta10 = t10.get("leveraged_net_wow")
     t10_delta_text = (
-        f" · 전주 순포지션 {int(delta10):+,}계약"
+        f" · 전주 순포지션 {_fmt_contracts_with_krw(delta10, fx, tenor='10Y', context='주간 순포지션 변동 액면')}"
         if delta10 is not None else " · 전주 변동 확인 불가"
     )
     repo_bits = []
@@ -1055,7 +1071,8 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
         f" · CME 최신완료일 {'일치' if cross.get('nq_price_fresh') else '미확보'}",
         "",
         "<b>📍 핵심 포지션</b>",
-        f"• CFTC {(snapshot.get('cftc') or {}).get('report_date','기준일 미확인')} · 10Y Leveraged Funds 순 {int(t10.get('leveraged_net') or 0):+,}계약"
+        f"• CFTC {(snapshot.get('cftc') or {}).get('report_date','기준일 미확인')} · 10Y Leveraged Funds 순 "
+        f"{_fmt_net_with_krw(t10.get('leveraged_net'), '10Y', fx)}"
         f" · 숏/OI {float(t10.get('short_share_oi_pct') or 0):.1f}%{t10_delta_text}",
         "• Leveraged Funds 전체가 CTA 방향성 매매인 것은 아니며 베이시스 거래도 포함",
         _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=True).rstrip(),
@@ -1223,17 +1240,58 @@ def _fmt_krw_amount(won: float) -> str:
     return f"약 {won:,.0f}원"
 
 
-def _fmt_net_with_krw(value, tenor: str, fx) -> str:
-    """Contract count plus KRW face-value notional for readability."""
+def _fmt_contracts_with_krw(
+    value, fx, *, tenor: str | None = None, nq_price=None,
+    nq_fresh: bool = False, context: str = "명목",
+) -> str:
+    """Append KRW magnitude immediately after the contract count.
+
+    Treasury = CME face amount, NQ = verified daily settlement × USD20.
+    Neither amount is cash invested, margin, profit, or DV01. A missing rate
+    or unverified NQ reference price MUST NOT silently become a zero amount.
+    """
+    if value is None:
+        return "계약 수 확인 불가"
     try:
-        contracts = int(value)
+        n = int(value)
+    except (ValueError, TypeError, OverflowError):
+        return "계약 수 확인 불가"
+    qty = f"{n:+,}계약" if n else "0계약"
+    try:
         rate = float(fx)
-        face_usd = CONTRACT_FACE_USD[tenor]
-    except Exception:
-        return _fmt_net(value) + " (원화 환산 확인 불가)"
-    direction = "숏" if contracts < 0 else "롱" if contracts > 0 else "중립"
-    won = abs(contracts) * face_usd * rate
-    return f"{contracts:+,}계약 ({direction} 액면기준 {_fmt_krw_amount(won)})"
+        if not math.isfinite(rate) or rate <= 0:
+            raise ValueError("invalid exchange rate")
+    except (TypeError, ValueError, OverflowError):
+        return f"{qty}(원화 환산 보류: 환율 미확인)"
+    if tenor is not None:
+        face = CONTRACT_FACE_USD.get(tenor)
+        if face is None:
+            return f"{qty}(원화 환산 보류: 계약 규격 미확인)"
+        usd_per_contract = float(face)
+    elif nq_fresh:
+        try:
+            price = float(nq_price)
+            if not math.isfinite(price) or price <= 0:
+                raise ValueError("invalid official settlement")
+            usd_per_contract = price * 20.0
+        except (TypeError, ValueError, OverflowError):
+            return f"{qty}(원화 환산 보류: CME 공식 정산가격 미확인)"
+    else:
+        return f"{qty}(원화 환산 보류: CME 최신 공식 거래일 미확보)"
+    magnitude = abs(n) * usd_per_contract * rate
+    return f"{qty}({context} {_fmt_krw_amount(magnitude)})"
+
+
+def _fmt_net_with_krw(value, tenor: str, fx) -> str:
+    """Treasury futures net position and face-value KRW notional, side by side."""
+    if value is None:
+        return "계약 수 확인 불가"
+    try:
+        n = int(value)
+    except (TypeError, ValueError, OverflowError):
+        return "계약 수 확인 불가"
+    direction = "순숏 액면" if n < 0 else "순롱 액면" if n > 0 else "중립 액면"
+    return _fmt_contracts_with_krw(n, fx, tenor=tenor, context=direction)
 
 
 def _yield_regime_line(yld: float) -> str:
