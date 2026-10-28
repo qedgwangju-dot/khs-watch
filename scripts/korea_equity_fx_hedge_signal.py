@@ -163,7 +163,7 @@ def render(obs: dict, signal: tuple[str, int]) -> str:
         flow_note = f"외국인 현물 참고: {direction} {abs(value):,.0f}억원 ({finality}, 경보 트리거로 사용하지 않음)"
 
     return "\n".join([
-        f"<b>주가·환율 괴리 {level}단계 | {html.escape(heading)}</b>",
+        f"<b>주가·환율 {html.escape(label)} {level}단계 | {html.escape(heading)}</b>",
         f"• 관측시각: {html.escape(obs['checked_at'])} 한국시간 (장중, 종가 아님)",
         f"• KOSPI: <b>{obs['kospi_pct']:+.2f}%</b> / 원·달러: "
         f"<b>{obs['usdkrw']:,.2f}원</b> (전일 15:30 기준가 "
