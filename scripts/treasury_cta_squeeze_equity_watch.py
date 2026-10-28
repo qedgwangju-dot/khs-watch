@@ -1422,11 +1422,25 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
         and now_kst >= datetime.combine(fomc_day, time(20, 40), tzinfo=KST)
         and now_kst < decision_kst
     )
+    # Emergency recovery is explicitly opted in through the existing workflow.
+    # Never let ordinary manual dispatch, push or stale/after-decision data
+    # consume a scheduled FOMC one-time delivery key.
+    manual_fomc_recovery = bool(
+        trigger_event == "workflow_dispatch"
+        and (os.getenv("CTA_FOMC_RECOVERY") or "").strip().lower() == "true"
+        and now_kst >= datetime.combine(fomc_day, time(20, 40), tzinfo=KST)
+        and now_kst < decision_kst
+        and audited._data_freshness(snapshot)[0]
+    )
     fomc_due = (
-        trigger_event == "schedule"
-        and (trigger_schedule in fomc_crons or regular_backup_due)
-        and fomc_key in FOMC_END_DATES
+        fomc_key in FOMC_END_DATES
         and current_state.get("last_fomc_eve_report") != fomc_key
+        and (
+            (trigger_event == "schedule"
+             and (trigger_schedule in fomc_crons or regular_backup_due)
+             and now_kst < decision_kst)
+            or manual_fomc_recovery
+        )
     )
     # A compact FOMC alert cannot also represent a completed weekly report.
     # Prioritise the FOMC alert; the next successful regular poll retries the
