@@ -80,8 +80,7 @@ class RetailSentimentTests(unittest.TestCase):
                 CB_HTML.replace("up from 84.2", "down from 84.2"), NOW)
 
     def test_no_stock_outlook_percent_created_when_sentence_missing(self):
-        raw = CB_HTML.replace("Overall, more consumers in October expected stock prices to "
-                              "increase rather than decrease in the next 12 months.", "")
+        raw = CB_HTML.replace("increase rather than decrease", "change rather than remain")
         observation = w.parse_conference_board(raw, NOW)
         self.assertEqual(observation["stock_outlook_12m"], "미확인")
         self.assertIsNone(observation["stock_outlook_12m_percent"])
