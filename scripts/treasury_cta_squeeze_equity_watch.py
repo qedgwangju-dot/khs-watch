@@ -1409,6 +1409,11 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
         and fomc_key in FOMC_END_DATES
         and current_state.get("last_fomc_eve_report") != fomc_key
     )
+    # A compact FOMC alert cannot also represent a completed weekly report.
+    # Prioritise the FOMC alert; the next successful regular poll retries the
+    # same week's outstanding report without consuming its deduplication key.
+    if weekly_catchup_due and fomc_due:
+        monday_due = False
     return monday_due, fomc_due, week_key, fomc_key
 
 
