@@ -89,6 +89,27 @@ class HynixLTAWatchTests(unittest.TestCase):
         self.assertIn('장비 반입 날짜·양산 시점은 아직 미공개',message)
         self.assertIn('35조2,000억원',message)
         self.assertIn('19조1,000억원',message)
+    def test_fab_shell_actual_q3_transcript_korean_shell_phase_wording(self):
+        # The literal Q3 call uses 'M17을', '쉘' and '페이즈별'.
+        item=self.item("https://stockanalysis.com/quote/krx/000660/transcripts/717350-q3-2026/")
+        body=("SK하이닉스 투자 집행은 단계적으로 이루어질 예정입니다. 기반 인프라는 "
+              "중장기 수요에 대비해서 선제적으로 준비하고, 장비 반입과 양산 확대 등 "
+              "실제 공급 증가로 연결되는 핵심 자원은 수요에 따라 조정한다는 방침입니다. "
+              "예를 들어서 용인 클러스터와 M17을 포함한 신규 팹은 건물 골조에 해당되는 "
+              "쉘 건설 일정을 앞당기되, 클린룸은 페이즈별로 나누어 오픈할 예정입니다.")
+        rows=w.parse_skhynix_fab_shell_2026(item,body)
+        self.assertEqual(len(rows),1)
+        self.assertTrue(rows[0]["value"]["equipment_move_in_follows_demand"])
+        self.assertEqual(rows[0]["evidence"],"reported")
+        self.assertFalse(rows[0]["value"]["m17_equipment_move_in_date_confirmed"])
+        self.assertIsNone(rows[0]["value"]["new_m17_cleanroom_month"])
+
+    def test_fab_shell_transcript_wrong_company_rejected(self):
+        i=self.item("https://stockanalysis.com/quote/krx/000660/transcripts/717350-q3-2026/")
+        self.assertEqual(w.parse_skhynix_fab_shell_2026(
+            i, "A semiconductor company will accelerate M17 buildings in Yongin; "
+               "쉘 일정을 앞당기고 클린룸은 페이즈별 개방."),[])
+
     def test_generic_equipment_acceleration_rumour_not_fab_issuer_confirmation(self):
         item=self.item('https://www.unverified-example.com/news')
         text=('SK하이닉스 M17 장비반입 조기화와 2027 양산 확정이라는 주장')

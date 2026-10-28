@@ -26,7 +26,7 @@ HBF_TRACK_VERSION = 1
 NVIDIA_HBM4_8HI_TRACK_VERSION = 1
 HYNIX_FINANCE_VERSION = 1
 HYNIX_Q3_2026_URL = 'https://news.skhynix.com/en/q3-2026-business-results/'
-HYNIX_FAB_SHELL_PRESS_URLS = ('https://www.news1.kr/industry/general-industry/6334489', 'https://biz.sbs.co.kr/article/20000342599')
+HYNIX_FAB_SHELL_PRESS_URLS = ('https://www.news1.kr/industry/general-industry/6334489', 'https://biz.sbs.co.kr/article/20000342599', 'https://stockanalysis.com/quote/krx/000660/transcripts/717350-q3-2026/', 'https://v2.www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03686726645617512')
 HYNIX_Y2_M17_OFFICIAL_PLAN = 'https://news.skhynix.com/en/fab-facility-investment-2026/'
 HYNIX_2029_PRESS_URLS = ('https://www.yna.co.kr/view/AKR20261028057352003', 'https://www.yna.co.kr/view/AKR20261028057351003', 'https://m.newspim.com/news/view/20261028000342')
 HYNIX_FINANCE_GOV = "https://www.korea.kr/news/policyNewsView.do?newsId=148973781"
@@ -1989,14 +1989,14 @@ def parse_skhynix_2029_earnings_call_news(item,body):
 def parse_skhynix_fab_shell_2026(item, body):
     """Q3 call: earlier building shells, not earlier equipment installation or HVM."""
     h=host(item.get('direct_link',''))
-    if h not in ('news1.kr','biz.sbs.co.kr','news.skhynix.com','news.skhynix.co.kr'):
+    if h not in ('news1.kr','biz.sbs.co.kr','stockanalysis.com','v2.www.edaily.co.kr','news.skhynix.com','news.skhynix.co.kr'):
         return []
     text=re.sub(r'\s+',' ',body or '')
     if not (re.search(r'SK하이닉스|SK\s*hynix',text,re.I)
             and re.search(r'용인',text) and re.search(r'(?<![A-Za-z0-9])M17(?![A-Za-z0-9])',text,re.I)
-            and re.search(r'셸|건물\s*골조',text)
+            and re.search(r'셸|쉘|건물\s*골조',text)
             and re.search(r'앞당기|앞당겨|조기화',text)
-            and re.search(r'클린룸',text) and re.search(r'단계별|단계적으로',text)):
+            and re.search(r'클린룸',text) and re.search(r'단계별|단계적으로|페이즈별',text)):
         return []
     # An acceleration of the structure alone does not move cleanroom or
     # equipment-move-in dates without an issuer-confirmed new dated milestone.
