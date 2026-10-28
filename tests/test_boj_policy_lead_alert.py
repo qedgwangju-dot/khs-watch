@@ -734,6 +734,18 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIn("--guard-state /tmp/boj_remote_state.json", workflow)
         self.assertIn("|| 'main' }}", workflow)
 
+    def test_workflow_renders_clean_clickable_links(self):
+        workflow = (
+            Path(__file__).resolve().parents[1]
+            / ".github"
+            / "workflows"
+            / "boj-policy-lead-alert.yml"
+        ).read_text(encoding="utf-8")
+        self.assertIn('>원문</a>', workflow)
+        self.assertIn('>링크</a>', workflow)
+        self.assertIn('url_pattern = re.compile', workflow)
+        self.assertIn('parse_mode": "HTML"', workflow)
+
     def test_provisional_statement_detail_does_not_alert_before_official_verification(self):
         signal = verified_event_signals(dt.datetime(2026, 9, 18, 14, 0, tzinfo=KST))[0]
         previous = signal_signature(signal)
