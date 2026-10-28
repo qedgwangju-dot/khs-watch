@@ -33,7 +33,9 @@ from market_flow_channels import (
 )
 from market_program_close import collect as collect_program_close, render as render_program_close
 from market_alert_delivery import DeliveryUncertain, delivery_context, receipt_for, send_message
-from market_investors import ALERT_ACTORS, DISPLAY_ACTORS, PRIMARY_ACTORS, LEADER_NOTE, TRUST_NOTE, actor_label, trust_direction_lines, trust_value, subgroup_value, subgroup_direction_lines
+from market_investors import (ALERT_ACTORS, DISPLAY_ACTORS, PRIMARY_ACTORS, LEADER_NOTE,
+                              TRUST_NOTE, SUBGROUP_NOTE, FINANCIAL_NOTE, actor_label,
+                              trust_direction_lines, trust_value, subgroup_value, subgroup_direction_lines)
 from market_supplementary_flow import enrich_snapshot, cash_lines
 
 KST = ZoneInfo("Asia/Seoul")
@@ -69,6 +71,7 @@ SURGE_SINGLE_FUT_EOK = 1300.0
 # 코스닥은 KOSPI200 선물과 섞지 않고 현물 독립 신호로 감시한다.
 KOSDAQ_SURGE_PREALERT_SPOT_EOK = 100.0
 KOSDAQ_SURGE_SINGLE_SPOT_EOK = 150.0
+KOSDAQ_SURGE_ACTORS = DISPLAY_ACTORS
 KOSDAQ_URL = "https://m.stock.naver.com/domestic/index/KOSDAQ/total"
 KOSDAQ_NEWS_URL = "https://search.naver.com/search.naver?where=news&query=" + urllib.parse.quote("코스닥 급락")
 # 코스닥 가격/수급은 같은 기존 프로세스의 독립 상태로 관리하며 코스피 수급·파생과 합산하지 않는다.
@@ -2015,8 +2018,11 @@ class Watch:
             f"• 확인 수준: {html.escape(confidence)}",
         ]
         lines.extend(extra_lines or [])
+        if market == "KOSDAQ":
+            lines.extend(["• " + SUBGROUP_NOTE, "• " + FINANCIAL_NOTE])
+        else:
+            lines.append("• " + TRUST_NOTE)
         lines += [
-            "• " + TRUST_NOTE,
             f"• 감지 기준: {html.escape(threshold)} · 두 차례 연속 확인",
             "• 당일 누적 순매수의 5분 변화량입니다. 총거래대금·외부 신규자금 유입·주가 상승 확정값이 아닙니다.",
             "• " + " · ".join([link(KOSPI_URL if market == "KOSPI" else KOSDAQ_URL, market),
@@ -2029,6 +2035,13 @@ class Watch:
                                       session_open_ts: float) -> dict[str, Any] | None:
         if fnum(spot) is None or spot <= 0 or not spot_window:
             return None
+        if market == "KOSDAQ" and actor == "금융투자":
+            return {
+                "market": market, "investor": actor, "requested_window": list(spot_window),
+                "available": False, "rows": [], "top": [], "covered_industries": 0,
+                "expected_industries": None, "coverage_complete": False,
+                "reason": "금융투자 업종 원자료 확인 불가",
+            }
         try:
             return await asyncio.to_thread(
                 industry_buy_context, *spot_window, actor,
@@ -2075,7 +2088,7 @@ class Watch:
         pair = _flow_surge_channel_pair(list(self.kosdaq_flows), "현물", now_ts, start)
         candidates = {}
         if pair is not None:
-            for actor in ALERT_ACTORS:
+            for actor in KOSDAQ_SURGE_ACTORS:
                 delta = fnum((pair.get("deltas") or {}).get(actor))
                 if (delta is not None
                         and KOSDAQ_SURGE_PREALERT_SPOT_EOK <= delta < KOSDAQ_SURGE_SINGLE_SPOT_EOK):
@@ -2085,13 +2098,16 @@ class Watch:
                 self.kosdaq_prealert_pending.pop(actor, None)
         for actor, delta in candidates.items():
             sample_ts = float(pair["end_ts"])
-            end_value = fnum(pair["end"].get(actor))
+            end_value = (subgroup_value(pair["end"], actor) if actor in {"투신", "금융투자"}
+                         else fnum(pair["end"].get(actor)))
             if not confirm_flow_surge(self.kosdaq_prealert_pending, actor, sample_ts, now_ts,
                                       {"spot": end_value}):
                 continue
             last_attempt = max(
                 self.kosdaq_prealert_sent_at.get(actor, 0.0),
                 self._surge_delivery_hold_at("KOSDAQ", actor, "kosdaq_flow_prealert"),
+                self.kosdaq_surge_sent_at.get(actor, 0.0),
+                self._surge_delivery_hold_at("KOSDAQ", actor),
             )
             if now_ts - last_attempt < SURGE_COOLDOWN_SEC:
                 continue
@@ -2145,6 +2161,7 @@ class Watch:
                     "message_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
                 },
             )
+            self._checkpoint_handoff(force=True)
 
     async def maybe_alert_kosdaq_surge(self, now_ts: float | None = None) -> None:
         if getattr(self, "test", False) or not getattr(self, "kosdaq_flows", None):
@@ -2163,7 +2180,7 @@ class Watch:
         pair = _flow_surge_channel_pair(list(self.kosdaq_flows), "현물", now_ts, start)
         candidates = {}
         if pair is not None:
-            for actor in ALERT_ACTORS:
+            for actor in KOSDAQ_SURGE_ACTORS:
                 delta = fnum((pair.get("deltas") or {}).get(actor))
                 if delta is not None and delta >= KOSDAQ_SURGE_SINGLE_SPOT_EOK:
                     candidates[actor] = delta
@@ -2172,7 +2189,8 @@ class Watch:
                 self.kosdaq_surge_pending.pop(actor, None)
         for actor, delta in candidates.items():
             sample_ts = float(pair["end_ts"])
-            end_value = fnum(pair["end"].get(actor))
+            end_value = (subgroup_value(pair["end"], actor) if actor in {"투신", "금융투자"}
+                         else fnum(pair["end"].get(actor)))
             if not confirm_flow_surge(self.kosdaq_surge_pending, actor, sample_ts, now_ts,
                                       {"spot": end_value}):
                 continue
@@ -2743,28 +2761,28 @@ class Watch:
             self.kosdaq_surge_last_processed_ts = fnum(data.get("kosdaq_surge_last_processed_ts")) or 0.0
             self.kosdaq_surge_sent_at = {
                 str(k): float(v) for k,v in (data.get("kosdaq_surge_sent_at") or {}).items()
-                if str(k) in ALERT_ACTORS and fnum(v) is not None
+                if str(k) in KOSDAQ_SURGE_ACTORS and fnum(v) is not None
             }
             self.kosdaq_surge_pending = {
                 str(k): {"sample_ts": float(v["sample_ts"]), "seen_at": float(v["seen_at"]),
                          "end_value": float(v["end_value"]),
                          "end_values": {"spot": float(v["end_value"])}}
                 for k,v in (data.get("kosdaq_surge_pending") or {}).items()
-                if str(k) in ALERT_ACTORS and isinstance(v,dict)
+                if str(k) in KOSDAQ_SURGE_ACTORS and isinstance(v,dict)
                 and fnum(v.get("sample_ts")) is not None and fnum(v.get("seen_at")) is not None
                 and fnum(v.get("end_value")) is not None
             }
             self.kosdaq_prealert_last_processed_ts = fnum(data.get("kosdaq_prealert_last_processed_ts")) or 0.0
             self.kosdaq_prealert_sent_at = {
                 str(k): float(v) for k,v in (data.get("kosdaq_prealert_sent_at") or {}).items()
-                if str(k) in ALERT_ACTORS and fnum(v) is not None
+                if str(k) in KOSDAQ_SURGE_ACTORS and fnum(v) is not None
             }
             self.kosdaq_prealert_pending = {
                 str(k): {"sample_ts": float(v["sample_ts"]), "seen_at": float(v["seen_at"]),
                          "end_value": float(v["end_value"]),
                          "end_values": {"spot": float(v["end_value"])} }
                 for k,v in (data.get("kosdaq_prealert_pending") or {}).items()
-                if str(k) in ALERT_ACTORS and isinstance(v,dict)
+                if str(k) in KOSDAQ_SURGE_ACTORS and isinstance(v,dict)
                 and fnum(v.get("sample_ts")) is not None and fnum(v.get("seen_at")) is not None
                 and fnum(v.get("end_value")) is not None
             }
