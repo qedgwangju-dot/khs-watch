@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 20,
+    "material_items": 22,
     "new_material_items": 0,
-    "raw_items": 286,
+    "raw_items": 328,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1251,6 +1251,16 @@
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNbjN3SkNMZnRrQWkwSmJjQWtoOFJQeHN3VWM0VG84eGJwcERUUFRVelVoU1QxM19FRXdwYmdkVVpmNjJjWkhhQXFkeHh5bmxwSmp3NmRaMjdnNGdwV2hkNDY1TENadEFiSUhESy1ydVItYVl4RUFQdVV2M0R3d0Uycg?oc=5",
       "vendor": "PHP 재단"
     },
+    "d40a35a29ffdd91a01ae1f0c": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-28T14:32:43.421144+00:00",
+      "published_at": "2026-10-28T13:50:00+00:00",
+      "severity": 2,
+      "source": "BleepingComputer",
+      "title": "Even after PHP2Shell, blast radius matters more than a CVSS score - BleepingComputer",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNbXhSTDdfcHVwbG4yRUYyeVRHeFRJWVFNYmRJWFRLc29EaDl2NFh3MkJwZ3lGaVkxbS1PdzZKY2NWa1ZrRHRVNVBwU0ZwbWFPMlhCbktaNzNScVZna0gxRTdWVHRhN3hwUlhOWk1qWUQxcGhOdWpsWVJZRlBmUDJMRlk0UjExQWJuTEZDbVZoemdkdnpuWU8tVmZianZ6YXBaQXczVmowLTRzQzU3bmE4ZVJ3?oc=5",
+      "vendor": "PHP 재단"
+    },
     "d4863ba12a27c745b2a7a741": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
@@ -1534,5 +1544,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-28T23:15:48+09:00"
+  "updated_at_kst": "2026-10-28T23:32:43+09:00"
 }
