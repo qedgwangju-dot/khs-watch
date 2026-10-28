@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-27T21:30:17.340628+00:00",
+  "updated_at": "2026-10-28T00:45:05.419608+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -730,13 +730,32 @@
     "bc2390ce09dfdcc6cb81ca3e893257249ba2435345d3101ce39228bc899f8a1c",
     "f4beef213781f1cc6ade3c6877ed7f6348aad7a381dd4fbe9479961f942280e4",
     "9bed860c2714c7f080cf2c1f6cf4e916307f95a032e66da9700fbe96d25c7461",
-    "b9d4a144cff608fc8e707ad1e62264d97d93fd91277e48cd0b3e47f78162065b"
+    "b9d4a144cff608fc8e707ad1e62264d97d93fd91277e48cd0b3e47f78162065b",
+    "4e5bb970eaf2d2fea4a4c4d6a1126c2e7f0f8bc082593994410cdc165f6c0418",
+    "92b6ef746265a8a7be0e01341f49299645575de56a4a0988d70747a19e90a0f0",
+    "f261af4d82fa8d6d8dfbd1beb9fab3eacb25d68f8f2e1c8b12a5a14456047645",
+    "4cfa406b19056b5ca27be06091fd0db42f9153f3ac7a6eee4a2a47331e2d6602",
+    "99bd2c2477bab9779d5adc4010e568c3c58190af9d8e31c2fbf5f1a4ab0627f9",
+    "afbfd79b45f6599967bb5c56d43caa0cc4e7957de9b08494c7180b238be831bd",
+    "f0532dbfed7dcd9687d781cb517e03c9e2acb7b4be27c5e8b5b2a211e5acafff",
+    "c8f1db76de14554228a7e39bc3460005d4011cc547dccf6b14edc8b109a02f64"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "4e5bb970eaf2d2fea4a4c4d6a1126c2e7f0f8bc082593994410cdc165f6c0418",
+    "92b6ef746265a8a7be0e01341f49299645575de56a4a0988d70747a19e90a0f0",
+    "f261af4d82fa8d6d8dfbd1beb9fab3eacb25d68f8f2e1c8b12a5a14456047645",
+    "4cfa406b19056b5ca27be06091fd0db42f9153f3ac7a6eee4a2a47331e2d6602",
+    "99bd2c2477bab9779d5adc4010e568c3c58190af9d8e31c2fbf5f1a4ab0627f9",
+    "afbfd79b45f6599967bb5c56d43caa0cc4e7957de9b08494c7180b238be831bd",
+    "f0532dbfed7dcd9687d781cb517e03c9e2acb7b4be27c5e8b5b2a211e5acafff",
+    "c8f1db76de14554228a7e39bc3460005d4011cc547dccf6b14edc8b109a02f64"
+  ],
   "groups": [
+    "airan",
     "atlas_etnews_parts_report",
     "ess_battery",
     "hyundai_atlas_rollout",
+    "lg_factory_loop",
     "lge_nvidia_hsb_robot_sensing",
     "microduck_pollen_robotis_orders",
     "mobilint_lge_humanoid_npu",
