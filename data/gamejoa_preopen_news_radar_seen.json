@@ -15268,6 +15268,31 @@
       "telegram_core_fact": "선박들이 공격을 피해 항로를 바꾸면서 초대형 유조선의 하루 평균 운임 수입도 지난 9일 80만5000달러(약 11억원)로 사상 최고치를 기록했다고 선박 중개업체 클락슨스가 밝혔다.",
       "title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보"
     },
+    "core:20ca9d86a036fe7b621ccbb4": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182587",
+      "source": "매일경제",
+      "source_body_digest": "e6abbb461648c99fe44caa75c9ae8d6683f21861d4b2dca74fbf1f11f14a084e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e630727f12c13f7624e17ad2510535ede3c5602ba722d1af0ca8851bd3c41c4",
+      "source_fact_keys": [
+        "source_fact:v1:029391d75c74282ca6a072761c83ae8e1d5e4a147771a8d171af3ddc2860879c",
+        "source_fact:v1:0b7ba9749f0b9546994a544755499027f6e1c598a4800a9f3c886c91c1f01701",
+        "source_fact:v1:26405bd59814cade089de2d071912c3b43c53b8769f1982afb792d88553dab2b",
+        "source_fact:v1:2f6e1b16c0e4d4af74ffff227d1348bd4da76c4836a1b43cdefe8fb32d385def",
+        "source_fact:v1:5ad26906bcac0fe3bd5ec760a8e51ec3623727e989cb5154aa5455f045bfa03e",
+        "source_fact:v1:af66fc6af2d627005b66b205e237bd25f6f222248a7acf0ad3bfc1ad95377af8"
+      ],
+      "source_published_kst": "2026-10-28T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가",
+      "telegram_core_fact": "NBT 뱅코프(NBTB)가 3분기 순이익 5800만 달러, 희석 주당순이익(EPS) 1.11달러를 기록하며 분기 사상 최대 실적을 달성했다고 10월 27일 발표했다.",
+      "title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가"
+    },
     "core:20dcc41f6dac3f907fd0e3f4": {
       "first_seen_kst": "2026-10-12T23:57:10+09:00",
       "lanes": {
@@ -25741,6 +25766,31 @@
       "source_title": "롯데百, LA에 K-뷰티 전초기지…유망 브랜드 글로벌 진출 지원",
       "telegram_core_fact": "롯데백화점이 미국 로스앤젤레스(LA)에서 K-뷰티 팝업을 열고 국내 뷰티 브랜드의 글로벌 시장 진출 지원에 나선다고 8일 밝혔다. 롯데백화점의 K-뷰티 상품군 외국인 매출은 최근 3개월간 전년 대비 110% 증가했다.",
       "title": "롯데百, LA에 K-뷰티 전초기지…유망 브랜드 글로벌 진출 지원"
+    },
+    "core:35386551f21c10e5a9e75ecc": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843735",
+      "source": "뉴시스",
+      "source_body_digest": "f1feb87e5bfe1d74c41bd8f03061b12656a341bdd06c64bd64e2b55312840b4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43fc9672374d2f4a5d52b4f552f06bb53f65b259f072c29b4188efefca957916",
+      "source_fact_keys": [
+        "source_fact:v1:058589bcb36a0ea5304612ed3ba720522a6d574f6eeec987fe6bc0b4535101a7",
+        "source_fact:v1:40f94f980d77460fae7547709cfab008667973a7b021b5ee3d3d45700c016c23",
+        "source_fact:v1:4faca1af9a2ccf96fd7e7261ef093c80890d949ba2f0d1b7f50d5ed210f95f2b",
+        "source_fact:v1:72ffdf9a723ed05b381ce51506f99883b6e17898135dd6b6e924dcf69ffd4ce2",
+        "source_fact:v1:8cc050f791812f8562020c2ef85efba08434a3646fba271472e6b97542f6a443",
+        "source_fact:v1:cedb1f7314e9bfcd30bbc843d9bcf2ee26cc6dc0edccf2cd2148b4e6c32f0bce"
+      ],
+      "source_published_kst": "2026-10-27T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세",
+      "telegram_core_fact": "일본 정부가 중국과 대만에서 수입하는 스테인리스 냉연강 제품에 반덤핑 관세를 부과하기로 했다.",
+      "title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세"
     },
     "core:357e7879cabc26aec989ea1b": {
       "first_seen_kst": "2026-10-27T08:06:35+09:00",
@@ -80564,6 +80614,32 @@
       "telegram_core_fact": "국내 중견 해운사 장금상선이 종합물류기업 (주)한진 지분을 5% 이상 확보하면서 투자 배경에 관심이 쏠리고 있다.",
       "title": "장금상선, 한진 지분 5.58% 확보…20년 물류동맹 더 끈끈해지나"
     },
+    "core:adeab6da0d4f5e18b616a39f": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
+    },
     "core:adf3bed59594305e990f50db": {
       "first_seen_kst": "2026-10-17T08:22:42+09:00",
       "lanes": {
@@ -85624,6 +85700,24 @@
       "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
       "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
       "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
+    },
+    "core:b9347ac225fd63be3e90d3be": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187783",
+      "source": "매일경제",
+      "source_body_digest": "d29a49c03bd238188fa2dc00e34bd93fe53b0f3ff5930e6568f4e00dd8b1e9a3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T23:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "블루문메탈스, 스프링어 텅스텐 재가동 시공사 선정·숙소 확보로 주목",
+      "telegram_core_fact": "스프링어 텅스텐 공장 재단장을 맡을 시공사로 RAM을 선정하고, 170만 달러 현금으로 현장 숙소 부지를 인수하는 계약을 맺었습니다. 시공사와 인력 숙소가 확정되면서 프로젝트 실행력이 높아졌다는 평가입니다.",
+      "title": "블루문메탈스, 스프링어 텅스텐 재가동 시공사 선정·숙소 확보로 주목"
     },
     "core:b942c9e2df4dff52380923ad": {
       "first_seen_kst": "2026-10-12T11:27:57+09:00",
@@ -103668,6 +103762,40 @@
       "telegram_core_fact": "보도에 따르면 위트코프 특사는 오슬로에서 우크라이나 전쟁 종식을 위한 평화안을 조율한 뒤 곧이어 러시아를 방문해 푸틴 대통령과 협상을 이어갈 계획이다.",
       "title": "러시아 \"푸틴-美 특사 회담 희망\"…종전 협상 탄력받나"
     },
+    "core:deff83736a39b55e03d0290d": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
+    },
     "core:df191e7462ebe6edbddf6e6d": {
       "first_seen_kst": "2026-10-22T19:31:34+09:00",
       "lanes": {
@@ -108821,6 +108949,37 @@
       "telegram_core_fact": "이창용 전 한국은행 총재가 최근 반도체 호황에 따른 경제성장률 급등과 관련해 산업 양극화와 미·중 갈등 완화에 따른 판도 변화 가능성을 지적하며 \"국가 차원에서 낙관론 이면의 리스크에 철저히 대비해야 한다\"고 경고했다.",
       "title": "이창용 전 총재 \"반도체발 착시 경계⋯양극화·수퍼사이클 중단 대비해야\""
     },
+    "core:ea6236028608839c21785803": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
+    },
     "core:ea653380bf091865d1fb1954": {
       "first_seen_kst": "2026-10-14T12:34:00+09:00",
       "lanes": {
@@ -111781,6 +111940,28 @@
       "source_title": "크렘린, \"미국 행 러시아 경유 실은 유조선 출항\"…내달 7일 뉴욕 도착",
       "telegram_core_fact": "[AP/뉴시스] 미국으로 가는 러시아 경유(디젤) 선적 유조선이 출항했다고 23일 러시아 크렘린이 발표했다.",
       "title": "크렘린, \"미국 행 러시아 경유 실은 유조선 출항\"…내달 7일 뉴욕 도착"
+    },
+    "core:f11fc1d212f7b71ef4881976": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182434",
+      "source": "매일경제",
+      "source_body_digest": "5e0beefbfa9b854bdf9178af4f2dfb2dcfb2211e336a73520bbec01669b0f0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd88c271f7f8d5750fb65e44364ce59927731c1acf5ea53309e843fe7afc6a9e",
+      "source_fact_keys": [
+        "source_fact:v1:04c4c484b627c6b736707792e50ae805b29254625c0c6c6e629734ffe05d86f0",
+        "source_fact:v1:4f9e3213817ace9fc34bc5b21e72a5c53e5f7afabe52e9c2f7972face2412ee0",
+        "source_fact:v1:75cf4ae7690b3aa6d02984f68052bccc64a0b8f8b69ab35d2db3319abd20cb3a"
+      ],
+      "source_published_kst": "2026-10-27T22:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가",
+      "telegram_core_fact": "파이브 스타 뱅코프(FSBC)가 3분기(7~9월) 순이익이 2190만 달러로 전년비 34.05% 증가했고, 희석 주당순이익(EPS)은 0.92달러로 전년 동기 0.77달러보다 19.48% 늘었다고 10월 26일 발표했다.",
+      "title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가"
     },
     "core:f13f1d992ea27641f2d2f27b": {
       "first_seen_kst": "2026-10-17T10:06:46+09:00",
@@ -129395,24 +129576,29 @@
     "event:68832cf716b50ba295693466": {
       "first_seen_kst": "2026-10-28T07:11:08+09:00",
       "lanes": {
-        "live": "2026-10-28T09:46:40+09:00",
+        "live": "2026-10-28T10:13:53+09:00",
         "preopen": "2026-10-28T07:11:08+09:00"
       },
-      "last_seen_kst": "2026-10-28T09:46:40+09:00",
-      "link": "https://www.dt.co.kr/article/12091711",
-      "source": "디지털타임스",
-      "source_body_digest": "42dd87ff5fcecfbbc715d6e665773e7fcdc0fb1fb269ecfc7d7cb3c74eb6dd6a",
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:aab3f40e51ced9c60ed1095389cb0ebdc1fca7715277ffadc18af49187f7a8f4",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
       "source_fact_keys": [
-        "source_fact:v1:70056eacc430f976612d58f877e7a7bc08b5720e119aff728f4dcb92e3b872f8",
-        "source_fact:v1:dbf53536036a43e8ed634d1409c077e3a030f88d1693503577f9aac115161521"
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
       ],
-      "source_published_kst": "2026-10-28T08:53+09:00",
+      "source_published_kst": "2026-10-28T09:51+09:00",
       "source_supply_terms": {},
-      "source_title": "SK하이닉스, 3분기 영업익 83조…“올해 100조 주주환원”",
-      "telegram_core_fact": "SK하이닉스가 올 3분기 83조3338억원의 영업이익을 기록하며 역대 최대 실적을 기록했다고 28일 밝혔다.",
-      "title": "SK하이닉스, 3분기 영업익 83조…“올해 100조 주주환원”"
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
     },
     "event:68b3ff1292ddc5b8b6a0c1b5": {
       "first_seen_kst": "2026-10-02T07:53:13+09:00",
@@ -136517,24 +136703,33 @@
     "event:ad3a4c9651bca2cdf7fc6ec0": {
       "first_seen_kst": "2026-10-28T08:44:02+09:00",
       "lanes": {
-        "live": "2026-10-28T08:44:02+09:00"
+        "live": "2026-10-28T10:13:53+09:00"
       },
-      "last_seen_kst": "2026-10-28T08:44:02+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261028028051527",
-      "source": "연합뉴스",
-      "source_body_digest": "5d9031c572c3501d1f13d68397c0a89c65b0c7fc056ebffe7f6302ae0663b531",
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f9a22670af066afe1f1af493d05f21e538d831d6803f99de3e97426f882bf61b",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
       "source_fact_keys": [
-        "source_fact:v1:18f3a9000951d78f7af54b94687e4ee727beaa26714b6d65f6fe7a4ccadde4b5",
-        "source_fact:v1:bd38fcadd7b935c81a7b0ae704a244fc3e0b5e5100c94f28a4fbd8896472af31",
-        "source_fact:v1:e9644aa9afcc4d3caa906ddf238d6687640859b6a7f0f098954bcd50d76cbbd8"
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
       ],
-      "source_published_kst": "2026-10-28T08:37+09:00",
+      "source_published_kst": "2026-10-28T10:04+09:00",
       "source_supply_terms": {},
-      "source_title": "[2보] SK하이닉스 3분기 영업익 83조3천억…매출 104조6천억 | 연합뉴스",
-      "telegram_core_fact": "SK하이닉스[000660]는 연결 기준 올해 3분기 영업이익이 83조3천338억원으로 지난해 동기보다 632.1% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
-      "title": "[2보] SK하이닉스 3분기 영업익 83조3천억…매출 104조6천억 | 연합뉴스"
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
     },
     "event:ad3fd9c7aa9202967054f0fc": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
@@ -145615,6 +145810,31 @@
       "source_title": "[오늘의 투자전략] 美 AI주 급락·CPI 충격…\"코스피, 전저점 지지력 시험\"",
       "telegram_core_fact": "간밤 미국 뉴욕증시는 ASML의 분기 호실적과 장비 수요 상향에도 불구하고 9월 CPI의 컨센서스 상회, 코어위브(-15.5%)의 회사채 수익률 급등에 따른 AI 신용 위험 재부각, 가트너 보고서발 AI 투자수익률 약화 불안감 등으로 일제히 하락 마감했다.",
       "title": "[오늘의 투자전략] 美 AI주 급락·CPI 충격…\"코스피, 전저점 지지력 시험\""
+    },
+    "fact:016064ba3982014e4e6a0502": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182587",
+      "source": "매일경제",
+      "source_body_digest": "e6abbb461648c99fe44caa75c9ae8d6683f21861d4b2dca74fbf1f11f14a084e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e630727f12c13f7624e17ad2510535ede3c5602ba722d1af0ca8851bd3c41c4",
+      "source_fact_keys": [
+        "source_fact:v1:029391d75c74282ca6a072761c83ae8e1d5e4a147771a8d171af3ddc2860879c",
+        "source_fact:v1:0b7ba9749f0b9546994a544755499027f6e1c598a4800a9f3c886c91c1f01701",
+        "source_fact:v1:26405bd59814cade089de2d071912c3b43c53b8769f1982afb792d88553dab2b",
+        "source_fact:v1:2f6e1b16c0e4d4af74ffff227d1348bd4da76c4836a1b43cdefe8fb32d385def",
+        "source_fact:v1:5ad26906bcac0fe3bd5ec760a8e51ec3623727e989cb5154aa5455f045bfa03e",
+        "source_fact:v1:af66fc6af2d627005b66b205e237bd25f6f222248a7acf0ad3bfc1ad95377af8"
+      ],
+      "source_published_kst": "2026-10-28T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가",
+      "telegram_core_fact": "NBT 뱅코프(NBTB)가 3분기 순이익 5800만 달러, 희석 주당순이익(EPS) 1.11달러를 기록하며 분기 사상 최대 실적을 달성했다고 10월 27일 발표했다.",
+      "title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가"
     },
     "fact:017324bb3b2bafd88e032a2d": {
       "first_seen_kst": "2026-10-12T19:07:06+09:00",
@@ -169864,6 +170084,32 @@
       "telegram_core_fact": "키트루다는 지난해 세계 매출이 317억 달러(약 42조원)에 달했고, 올해 상반기 매출도 164억 달러(약 22조원)로 집계됐다.",
       "title": "42조원 항암제 시장 열린다…'키트루다' 복제약 경쟁 본격화 | 연합뉴스"
     },
+    "fact:329f47db3ace691fcf6c812b": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
+    },
     "fact:32a13d5c553c0067439147ab": {
       "first_seen_kst": "2026-10-14T06:09:46+09:00",
       "lanes": {
@@ -190576,6 +190822,37 @@
       "source_title": "트럼프, 대러 제재 완화…러 \"역사적 순간\" 우크라 \"푸틴 공격 부추길 뿐\"",
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 이날 '린지 O. 그레이엄 러시아·이란 제재법'의 일부 조항 시행을 유예하기로 했다.",
       "title": "트럼프, 대러 제재 완화…러 \"역사적 순간\" 우크라 \"푸틴 공격 부추길 뿐\""
+    },
+    "fact:5eed306eebd8641d2c5f55cc": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
     },
     "fact:5f0ee45c0b99fb9b80cee7ff": {
       "first_seen_kst": "2026-10-14T20:43:11+09:00",
@@ -259490,6 +259767,31 @@
       "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 문금주 더불어민주당 의원은 12일 해수부 국정감사에서 자급률 목표 하향 조정을 비판하며 국내 수산물 생산 확대를 위한 정책 전환을 촉구했다.",
       "title": "해수부 수산물 자급률 목표 하향…\"수입 의존 심화 우려\""
     },
+    "fact:e526936f1d1281ba3fb7f270": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843735",
+      "source": "뉴시스",
+      "source_body_digest": "f1feb87e5bfe1d74c41bd8f03061b12656a341bdd06c64bd64e2b55312840b4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43fc9672374d2f4a5d52b4f552f06bb53f65b259f072c29b4188efefca957916",
+      "source_fact_keys": [
+        "source_fact:v1:058589bcb36a0ea5304612ed3ba720522a6d574f6eeec987fe6bc0b4535101a7",
+        "source_fact:v1:40f94f980d77460fae7547709cfab008667973a7b021b5ee3d3d45700c016c23",
+        "source_fact:v1:4faca1af9a2ccf96fd7e7261ef093c80890d949ba2f0d1b7f50d5ed210f95f2b",
+        "source_fact:v1:72ffdf9a723ed05b381ce51506f99883b6e17898135dd6b6e924dcf69ffd4ce2",
+        "source_fact:v1:8cc050f791812f8562020c2ef85efba08434a3646fba271472e6b97542f6a443",
+        "source_fact:v1:cedb1f7314e9bfcd30bbc843d9bcf2ee26cc6dc0edccf2cd2148b4e6c32f0bce"
+      ],
+      "source_published_kst": "2026-10-27T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세",
+      "telegram_core_fact": "일본 정부가 중국과 대만에서 수입하는 스테인리스 냉연강 제품에 반덤핑 관세를 부과하기로 했다.",
+      "title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세"
+    },
     "fact:e52a3a2f151b245e654f7ef3": {
       "first_seen_kst": "2026-10-11T16:47:25+09:00",
       "lanes": {
@@ -262670,6 +262972,40 @@
       "source_title": "삼성중공업, 셔틀탱커 하이브리드 시스템 기본인증 획득 | 연합뉴스",
       "telegram_core_fact": "김승혁 삼성중공업 기장설계팀장(상무)은 \"배터리와 엔진의 하이브리드 운용으로 안정적 전력 공급이 가능하다\"며 \"탄소 배출을 최소화하는 등 친환경 솔루션 개발을 확대해 나갈 것\"이라고 말했다.",
       "title": "삼성중공업, 셔틀탱커 하이브리드 시스템 기본인증 획득 | 연합뉴스"
+    },
+    "fact:eb5d4c1bd573b17276deceae": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
     "fact:eb6893786ea0048674076ead": {
       "first_seen_kst": "2026-10-20T19:58:15+09:00",
@@ -270213,6 +270549,28 @@
       "source_title": "KT클라우드, 50MW 규모 '안산 AIDC' 착공…2029년 준공",
       "telegram_core_fact": "kt cloud는 자체 보유 데이터센터인 '안산 AI 데이터센터' 착공에 나선다고 22일 밝혔다.",
       "title": "KT클라우드, 50MW 규모 '안산 AIDC' 착공…2029년 준공"
+    },
+    "fact:f9e48c4cd9531f004ed28fc9": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182434",
+      "source": "매일경제",
+      "source_body_digest": "5e0beefbfa9b854bdf9178af4f2dfb2dcfb2211e336a73520bbec01669b0f0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd88c271f7f8d5750fb65e44364ce59927731c1acf5ea53309e843fe7afc6a9e",
+      "source_fact_keys": [
+        "source_fact:v1:04c4c484b627c6b736707792e50ae805b29254625c0c6c6e629734ffe05d86f0",
+        "source_fact:v1:4f9e3213817ace9fc34bc5b21e72a5c53e5f7afabe52e9c2f7972face2412ee0",
+        "source_fact:v1:75cf4ae7690b3aa6d02984f68052bccc64a0b8f8b69ab35d2db3319abd20cb3a"
+      ],
+      "source_published_kst": "2026-10-27T22:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가",
+      "telegram_core_fact": "파이브 스타 뱅코프(FSBC)가 3분기(7~9월) 순이익이 2190만 달러로 전년비 34.05% 증가했고, 희석 주당순이익(EPS)은 0.92달러로 전년 동기 0.77달러보다 19.48% 늘었다고 10월 26일 발표했다.",
+      "title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가"
     },
     "fact:f9e709b89cb50c4bbf11314e": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
@@ -306684,6 +307042,31 @@
       "telegram_core_fact": "오드리 찰스 램리서치 기업전략 및 첨단 패키징 부문 수석 부사장 겸 램캐피탈 사장(사진)은 지난 7일 한국경제신문과의 인터뷰에서 \"인공지능(AI) 반도체 성능이 고도화될수록 첨단 패키징이 매우 중요해지고 있다\"며 이같이 말했다.",
       "title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\""
     },
+    "link:33b21f29b684e9c4d9ca6f01": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843735",
+      "source": "뉴시스",
+      "source_body_digest": "f1feb87e5bfe1d74c41bd8f03061b12656a341bdd06c64bd64e2b55312840b4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43fc9672374d2f4a5d52b4f552f06bb53f65b259f072c29b4188efefca957916",
+      "source_fact_keys": [
+        "source_fact:v1:058589bcb36a0ea5304612ed3ba720522a6d574f6eeec987fe6bc0b4535101a7",
+        "source_fact:v1:40f94f980d77460fae7547709cfab008667973a7b021b5ee3d3d45700c016c23",
+        "source_fact:v1:4faca1af9a2ccf96fd7e7261ef093c80890d949ba2f0d1b7f50d5ed210f95f2b",
+        "source_fact:v1:72ffdf9a723ed05b381ce51506f99883b6e17898135dd6b6e924dcf69ffd4ce2",
+        "source_fact:v1:8cc050f791812f8562020c2ef85efba08434a3646fba271472e6b97542f6a443",
+        "source_fact:v1:cedb1f7314e9bfcd30bbc843d9bcf2ee26cc6dc0edccf2cd2148b4e6c32f0bce"
+      ],
+      "source_published_kst": "2026-10-27T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세",
+      "telegram_core_fact": "일본 정부가 중국과 대만에서 수입하는 스테인리스 냉연강 제품에 반덤핑 관세를 부과하기로 했다.",
+      "title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세"
+    },
     "link:33b47e3d96e15398937a1df2": {
       "first_seen_kst": "2026-10-08T15:53:45+09:00",
       "lanes": {
@@ -312539,6 +312922,40 @@
       "source": "매일경제",
       "title": "퍼스트 머천트, 1억 달러 후순위채 발행..자사주 매입 추진"
     },
+    "link:3cee998d15a9b6d665871008": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
+    },
     "link:3cf3fc183773dfcd950ca351": {
       "first_seen_kst": "2026-10-10T18:36:56+09:00",
       "lanes": {
@@ -315591,6 +316008,31 @@
       "source_title": "엔비디아, 모듈형 AI 데이터센터 설계 공개…구축 기간 6개월→14일",
       "telegram_core_fact": "엔비디아가 AI(인공지능) 데이터센터 구축 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 모듈형 인프라 설계를 공개했다. 그는 \"1GW(기가와트) AI 데이터센터에는 500억달러가 들어간다\"며 \"연간 400억달러의 매출이 발생한다고 가정하면 가동이 3개월만 지연돼도 100억달러의 매출 기회를 잃는다\"고 말했다.",
       "title": "엔비디아, 모듈형 AI 데이터센터 설계 공개…구축 기간 6개월→14일"
+    },
+    "link:424e89c5b8f19264a6911b1c": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182587",
+      "source": "매일경제",
+      "source_body_digest": "e6abbb461648c99fe44caa75c9ae8d6683f21861d4b2dca74fbf1f11f14a084e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e630727f12c13f7624e17ad2510535ede3c5602ba722d1af0ca8851bd3c41c4",
+      "source_fact_keys": [
+        "source_fact:v1:029391d75c74282ca6a072761c83ae8e1d5e4a147771a8d171af3ddc2860879c",
+        "source_fact:v1:0b7ba9749f0b9546994a544755499027f6e1c598a4800a9f3c886c91c1f01701",
+        "source_fact:v1:26405bd59814cade089de2d071912c3b43c53b8769f1982afb792d88553dab2b",
+        "source_fact:v1:2f6e1b16c0e4d4af74ffff227d1348bd4da76c4836a1b43cdefe8fb32d385def",
+        "source_fact:v1:5ad26906bcac0fe3bd5ec760a8e51ec3623727e989cb5154aa5455f045bfa03e",
+        "source_fact:v1:af66fc6af2d627005b66b205e237bd25f6f222248a7acf0ad3bfc1ad95377af8"
+      ],
+      "source_published_kst": "2026-10-28T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가",
+      "telegram_core_fact": "NBT 뱅코프(NBTB)가 3분기 순이익 5800만 달러, 희석 주당순이익(EPS) 1.11달러를 기록하며 분기 사상 최대 실적을 달성했다고 10월 27일 발표했다.",
+      "title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가"
     },
     "link:4254efecb65a3b036eae14d2": {
       "first_seen_kst": "2026-10-27T01:37:26+09:00",
@@ -328369,6 +328811,24 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T14:10+09:00",
       "title": "롯데백화점, 업계 최초 외국인 매출 1조 넘었다"
+    },
+    "link:56041524fb0be07b60977e87": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187783",
+      "source": "매일경제",
+      "source_body_digest": "d29a49c03bd238188fa2dc00e34bd93fe53b0f3ff5930e6568f4e00dd8b1e9a3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T23:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "블루문메탈스, 스프링어 텅스텐 재가동 시공사 선정·숙소 확보로 주목",
+      "telegram_core_fact": "스프링어 텅스텐 공장 재단장을 맡을 시공사로 RAM을 선정하고, 170만 달러 현금으로 현장 숙소 부지를 인수하는 계약을 맺었습니다. 시공사와 인력 숙소가 확정되면서 프로젝트 실행력이 높아졌다는 평가입니다.",
+      "title": "블루문메탈스, 스프링어 텅스텐 재가동 시공사 선정·숙소 확보로 주목"
     },
     "link:560fb775678103914a4977ff": {
       "first_seen_kst": "2026-10-18T09:22:47+09:00",
@@ -406823,6 +407283,28 @@
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "김정관 \"서남권 반도체 최종 결정은 기업…알래스카 LNG 투자 확정 아냐\"(종합)"
     },
+    "link:d05d50da639c72ca03c56416": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182434",
+      "source": "매일경제",
+      "source_body_digest": "5e0beefbfa9b854bdf9178af4f2dfb2dcfb2211e336a73520bbec01669b0f0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd88c271f7f8d5750fb65e44364ce59927731c1acf5ea53309e843fe7afc6a9e",
+      "source_fact_keys": [
+        "source_fact:v1:04c4c484b627c6b736707792e50ae805b29254625c0c6c6e629734ffe05d86f0",
+        "source_fact:v1:4f9e3213817ace9fc34bc5b21e72a5c53e5f7afabe52e9c2f7972face2412ee0",
+        "source_fact:v1:75cf4ae7690b3aa6d02984f68052bccc64a0b8f8b69ab35d2db3319abd20cb3a"
+      ],
+      "source_published_kst": "2026-10-27T22:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가",
+      "telegram_core_fact": "파이브 스타 뱅코프(FSBC)가 3분기(7~9월) 순이익이 2190만 달러로 전년비 34.05% 증가했고, 희석 주당순이익(EPS)은 0.92달러로 전년 동기 0.77달러보다 19.48% 늘었다고 10월 26일 발표했다.",
+      "title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가"
+    },
     "link:d067e8c8741819aeb44c3896": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -408958,6 +409440,32 @@
       "source_title": "트럼프, 선거용 \"에너지 휴전\" 일방발표…꿈쩍않는 러·우 공방 지속",
       "telegram_core_fact": "휴전 합의 발표에 앞서 트럼프 대통령은 러시아가 미국과 세계 시장에 경유 480만톤을 공급키로 했다고 밝혔다. 도널드 트럼프 대통령의 '러시아-우크라이나 에너지 휴전' 발표에도 러시아·우크라이나간 충돌이 계속되고 있다.",
       "title": "트럼프, 선거용 \"에너지 휴전\" 일방발표…꿈쩍않는 러·우 공방 지속"
+    },
+    "link:d426425798a86a5e8c6023f3": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
     },
     "link:d4329a3ddca09d023883ba42": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -424553,6 +425061,37 @@
       "source_title": "韓증시 때린 美 '물가 쇼크'…증권가 \"금리 추가 인상·AI 신용 비상\"",
       "telegram_core_fact": "박상현 iM증권 연구원은 \"금융시장은 코어 CPI 0.1%p 상회를 유가 상승발 물가 압력의 전방위 확산으로 받아들였다\"며 \"10월 동결 가능성은 높지만 12월에 이어 내년 1월 FOMC 회의에서 추가 인상이 단행될 확률이 50%를 웃돌고 있다. 결국 긴축 지속 여부는 유가 불안 장기화에 달렸다\"고 짚었다.",
       "title": "韓증시 때린 美 '물가 쇼크'…증권가 \"금리 추가 인상·AI 신용 비상\""
+    },
+    "link:ee4fbd94243d9f41766891e0": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
     },
     "link:ee58f18e41ebe1f03a76ae6e": {
       "first_seen_kst": "2026-09-27T06:32:53+09:00",
@@ -511296,6 +511835,31 @@
       "telegram_core_fact": "연구진은 \"핵심 수치를 공식 공시와 일치시키거나 병기하고, 계약금·마일스톤·로열티를 구분 표시하며, 중요 공시 전후 임원의 지분 매각을 제한하는 등 공식·비공식 공시 간 제도적 공백을 보완하기 위한 제도 개선이 필요하다\"고 제언했다.",
       "title": "부풀린 보도자료, 주가 변동성 키웠다…\"공시와 수치 맞춰야\""
     },
+    "original:7a4842be82debfa5b96ef507": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843735",
+      "source": "뉴시스",
+      "source_body_digest": "f1feb87e5bfe1d74c41bd8f03061b12656a341bdd06c64bd64e2b55312840b4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43fc9672374d2f4a5d52b4f552f06bb53f65b259f072c29b4188efefca957916",
+      "source_fact_keys": [
+        "source_fact:v1:058589bcb36a0ea5304612ed3ba720522a6d574f6eeec987fe6bc0b4535101a7",
+        "source_fact:v1:40f94f980d77460fae7547709cfab008667973a7b021b5ee3d3d45700c016c23",
+        "source_fact:v1:4faca1af9a2ccf96fd7e7261ef093c80890d949ba2f0d1b7f50d5ed210f95f2b",
+        "source_fact:v1:72ffdf9a723ed05b381ce51506f99883b6e17898135dd6b6e924dcf69ffd4ce2",
+        "source_fact:v1:8cc050f791812f8562020c2ef85efba08434a3646fba271472e6b97542f6a443",
+        "source_fact:v1:cedb1f7314e9bfcd30bbc843d9bcf2ee26cc6dc0edccf2cd2148b4e6c32f0bce"
+      ],
+      "source_published_kst": "2026-10-27T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세",
+      "telegram_core_fact": "일본 정부가 중국과 대만에서 수입하는 스테인리스 냉연강 제품에 반덤핑 관세를 부과하기로 했다.",
+      "title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세"
+    },
     "original:7a495636cf22288dbc6ff48a": {
       "first_seen_kst": "2026-10-27T13:52:52+09:00",
       "lanes": {
@@ -522955,6 +523519,28 @@
       "link": "https://www.mt.co.kr/index.php/finance/2026/09/17/2026091717172515184",
       "source": "머니투데이",
       "title": "국민성장펀드, 야월해상풍력 등 5건에 1조원 지원 승인"
+    },
+    "original:8c7ec4baf82e675bdf79f444": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182434",
+      "source": "매일경제",
+      "source_body_digest": "5e0beefbfa9b854bdf9178af4f2dfb2dcfb2211e336a73520bbec01669b0f0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd88c271f7f8d5750fb65e44364ce59927731c1acf5ea53309e843fe7afc6a9e",
+      "source_fact_keys": [
+        "source_fact:v1:04c4c484b627c6b736707792e50ae805b29254625c0c6c6e629734ffe05d86f0",
+        "source_fact:v1:4f9e3213817ace9fc34bc5b21e72a5c53e5f7afabe52e9c2f7972face2412ee0",
+        "source_fact:v1:75cf4ae7690b3aa6d02984f68052bccc64a0b8f8b69ab35d2db3319abd20cb3a"
+      ],
+      "source_published_kst": "2026-10-27T22:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가",
+      "telegram_core_fact": "파이브 스타 뱅코프(FSBC)가 3분기(7~9월) 순이익이 2190만 달러로 전년비 34.05% 증가했고, 희석 주당순이익(EPS)은 0.92달러로 전년 동기 0.77달러보다 19.48% 늘었다고 10월 26일 발표했다.",
+      "title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가"
     },
     "original:8c83364c5c562df04f7f85f8": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -544128,6 +544714,24 @@
       "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
       "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
     },
+    "original:adc08ddcf796fc7fb70f7625": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187783",
+      "source": "매일경제",
+      "source_body_digest": "d29a49c03bd238188fa2dc00e34bd93fe53b0f3ff5930e6568f4e00dd8b1e9a3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T23:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "블루문메탈스, 스프링어 텅스텐 재가동 시공사 선정·숙소 확보로 주목",
+      "telegram_core_fact": "스프링어 텅스텐 공장 재단장을 맡을 시공사로 RAM을 선정하고, 170만 달러 현금으로 현장 숙소 부지를 인수하는 계약을 맺었습니다. 시공사와 인력 숙소가 확정되면서 프로젝트 실행력이 높아졌다는 평가입니다.",
+      "title": "블루문메탈스, 스프링어 텅스텐 재가동 시공사 선정·숙소 확보로 주목"
+    },
     "original:adcaf4c49faa244d824bab9a": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -554088,6 +554692,40 @@
       "telegram_core_fact": "CPU(중앙처리장치)와 GPU(그래픽처리장치), 메모리를 유기적으로 연결해 대역폭과 용량을 키운다.",
       "title": "삼성전자 ‘서버 메모리 용량 수백TB 확장’ CXL·이더넷 결합 ‘메모리 월’ 극복 신기술 [기업 해외상장 변수]"
     },
+    "original:bf4db04eff3acb3a193843c7": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
+    },
     "original:bf5f98c9216050137a273126": {
       "first_seen_kst": "2026-10-19T10:51:05+09:00",
       "lanes": {
@@ -559868,6 +560506,37 @@
       ],
       "source_published_kst": "2026-10-07T06:30+09:00",
       "title": "“세금 억울” 권리구제 요청한 사장님…국민신문고에 “국세청 직원에 감동”"
+    },
+    "original:c94d4250b856544b3ca20088": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
     },
     "original:c9561a91798f9643f04c14a1": {
       "first_seen_kst": "2026-10-27T22:30:07+09:00",
@@ -583507,6 +584176,32 @@
       "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
       "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
     },
+    "original:ef62fee6e45df15906123d47": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
+    },
     "original:ef68753ec3709ed06e0e8817": {
       "first_seen_kst": "2026-10-21T14:30:03+09:00",
       "lanes": {
@@ -587499,6 +588194,31 @@
       "link": "https://www.yna.co.kr/view/AKR20260930043100008",
       "source": "연합뉴스",
       "title": "[게시판] 한투운용, 라이브 세미나…\"美대표지수 투자 소개\" | 연합뉴스"
+    },
+    "original:f5e9b12e7c477b443bbdd556": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182587",
+      "source": "매일경제",
+      "source_body_digest": "e6abbb461648c99fe44caa75c9ae8d6683f21861d4b2dca74fbf1f11f14a084e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e630727f12c13f7624e17ad2510535ede3c5602ba722d1af0ca8851bd3c41c4",
+      "source_fact_keys": [
+        "source_fact:v1:029391d75c74282ca6a072761c83ae8e1d5e4a147771a8d171af3ddc2860879c",
+        "source_fact:v1:0b7ba9749f0b9546994a544755499027f6e1c598a4800a9f3c886c91c1f01701",
+        "source_fact:v1:26405bd59814cade089de2d071912c3b43c53b8769f1982afb792d88553dab2b",
+        "source_fact:v1:2f6e1b16c0e4d4af74ffff227d1348bd4da76c4836a1b43cdefe8fb32d385def",
+        "source_fact:v1:5ad26906bcac0fe3bd5ec760a8e51ec3623727e989cb5154aa5455f045bfa03e",
+        "source_fact:v1:af66fc6af2d627005b66b205e237bd25f6f222248a7acf0ad3bfc1ad95377af8"
+      ],
+      "source_published_kst": "2026-10-28T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가",
+      "telegram_core_fact": "NBT 뱅코프(NBTB)가 3분기 순이익 5800만 달러, 희석 주당순이익(EPS) 1.11달러를 기록하며 분기 사상 최대 실적을 달성했다고 10월 27일 발표했다.",
+      "title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가"
     },
     "original:f5f1524d8a844f3c8a037948": {
       "first_seen_kst": "2026-09-29T16:25:24+09:00",
@@ -598469,6 +599189,37 @@
       "telegram_core_fact": "코오롱바이오텍이 초기 개발부터 상업화까지 세포·유전자치료제 개발을 지원하는 전 주기 위탁개발·생산(CDMO) 역량을 바탕으로 글로벌 파트너십 확대에 나선다.",
       "title": "코오롱바이오텍, BIX 2026 참가"
     },
+    "source_fact:01e980d9dec1e1f382d1905e": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
+    },
     "source_fact:01ece4f5e92c6759456af448": {
       "first_seen_kst": "2026-10-24T00:05:28+09:00",
       "lanes": {
@@ -607319,6 +608070,37 @@
       "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
       "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
     },
+    "source_fact:056745c3b944fe8377d0cb47": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
+    },
     "source_fact:056bec34a4174f4a6d832c7a": {
       "first_seen_kst": "2026-10-17T06:31:57+09:00",
       "lanes": {
@@ -613383,6 +614165,40 @@
       "source_title": "'120만닉스' 6개월 만에 깨졌다…SK하이닉스, 118만원까지 하락 [종목 NOW]",
       "telegram_core_fact": "이날 AI 관련주가 약세를 보이는 와중, SK하이닉스의 자사주 매입 종료가 임박한 것이 주가 하락으로 이어진 것으로 해석된다.",
       "title": "'120만닉스' 6개월 만에 깨졌다…SK하이닉스, 118만원까지 하락 [종목 NOW]"
+    },
+    "source_fact:07c899e659d11a27e782f49d": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
     "source_fact:07cd2fbef1d18cc960a4f113": {
       "first_seen_kst": "2026-10-21T10:53:33+09:00",
@@ -621580,6 +622396,32 @@
       "source_published_kst": "2026-10-06T09:10+09:00",
       "title": "호르무즈 셔틀운항 특수…\"1회 왕복 500억에 선원도 3400만원씩\""
     },
+    "source_fact:0b0441516fde7c3d51eb9151": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
+    },
     "source_fact:0b06cc7a6a891b25ec2619c2": {
       "first_seen_kst": "2026-10-21T06:23:27+09:00",
       "lanes": {
@@ -624538,6 +625380,40 @@
       "source_title": "멕시코산 車 25% 관세 낮추는 협상, 러트닉 급제동에 난항",
       "telegram_core_fact": "멕시코 정부는 협상 과정에서 관세율을 15% 이하로 낮추고, 미국·멕시코·캐나다 3개국에서 생산된 부품을 모두 관세 환급 대상에 포함하는 포괄적인 제도 도입을 요구했다.",
       "title": "멕시코산 車 25% 관세 낮추는 협상, 러트닉 급제동에 난항"
+    },
+    "source_fact:0c309bbd4620d90a5a7c7ce6": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
     "source_fact:0c323d9fa41dfa1a67cb8ace": {
       "first_seen_kst": "2026-10-20T03:53:09+09:00",
@@ -628893,6 +629769,40 @@
       "telegram_core_fact": "최지영 국제통화기금(IMF) 이사는 \"다른 나라는 재정 여력이 줄어들고 있는데, 한국만 (반도체 호황 덕분에) 재정 여력이 유일하게 늘어났다\"고 평가했다.",
       "title": "최지영 IMF 이사 \"한국만 재정 여력 늘어나…AI붐 당장 안 꺾여\" | 연합뉴스"
     },
+    "source_fact:0dba82c0b1ff18bb9188b968": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
+    },
     "source_fact:0dbc5f5bb158a2e10a950d06": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
       "lanes": {
@@ -629425,6 +630335,37 @@
       "source_title": "하이퍼스케일 데이터, ATM 한도 3억→1억 달러 축소·희석 부담 완화",
       "telegram_core_fact": "하이퍼스케일 데이터(GPUS)가 시장가 지분매각(ATM) 계약에 따라 발행할 수 있는 클래스A 보통주 한도를 기존 3억 달러에서 1억 달러로 2억 달러 줄이기로 했다고 12일 발표했다. ATM 한도를 2억 달러 줄여 추가 지분 희석 우려가 낮아진 점은 주가에 긍정적인 신호예요.",
       "title": "하이퍼스케일 데이터, ATM 한도 3억→1억 달러 축소·희석 부담 완화"
+    },
+    "source_fact:0dfe9b6535fab1f342cbfa5c": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
     },
     "source_fact:0e03703540a40fcca180dc0c": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
@@ -630145,6 +631086,40 @@
       "source_title": "베슬AI, 한국투자증권과 ‘GPU 파이낸싱’ MOU...내년까지 5만장 확보",
       "telegram_core_fact": "베슬AI는 한국투자증권(대표 김성환)과 ‘GPU 파이낸싱(GPU Financing)’ 업무협약(MOU)을 체결했다고 15일 밝혔다.",
       "title": "베슬AI, 한국투자증권과 ‘GPU 파이낸싱’ MOU...내년까지 5만장 확보"
+    },
+    "source_fact:0e40c4f05369bc23a742bf49": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
     "source_fact:0e42aa44facdb72ace8f41bc": {
       "first_seen_kst": "2026-10-27T13:18:16+09:00",
@@ -631270,6 +632245,28 @@
       ],
       "source_published_kst": "2026-10-07T12:44+09:00",
       "title": "인도 9월 서비스업 PMI 55.2·1.1P↑…\"3개월 만에 최고\""
+    },
+    "source_fact:0ec35c066c823a0b5cbe2aae": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182434",
+      "source": "매일경제",
+      "source_body_digest": "5e0beefbfa9b854bdf9178af4f2dfb2dcfb2211e336a73520bbec01669b0f0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd88c271f7f8d5750fb65e44364ce59927731c1acf5ea53309e843fe7afc6a9e",
+      "source_fact_keys": [
+        "source_fact:v1:04c4c484b627c6b736707792e50ae805b29254625c0c6c6e629734ffe05d86f0",
+        "source_fact:v1:4f9e3213817ace9fc34bc5b21e72a5c53e5f7afabe52e9c2f7972face2412ee0",
+        "source_fact:v1:75cf4ae7690b3aa6d02984f68052bccc64a0b8f8b69ab35d2db3319abd20cb3a"
+      ],
+      "source_published_kst": "2026-10-27T22:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가",
+      "telegram_core_fact": "파이브 스타 뱅코프(FSBC)가 3분기(7~9월) 순이익이 2190만 달러로 전년비 34.05% 증가했고, 희석 주당순이익(EPS)은 0.92달러로 전년 동기 0.77달러보다 19.48% 늘었다고 10월 26일 발표했다.",
+      "title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가"
     },
     "source_fact:0ec3912b7612bff7fd0c012d": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
@@ -667284,6 +668281,31 @@
       "telegram_core_fact": "마켓워치와 RTT 뉴스, dpa 통신은 23일 튀르키예 중앙은행은 전날 금융정책 회의를 열어 기준금리인 7일물 환매조건부채권(레포) 금리 종전 37.0%에서 36.1%로 1.0% 포인트 인하하기로 결정했다고 전했다.",
       "title": "튀르키예, 기준금리 36%로 1%P↓…\"9개월 만에 인하\""
     },
+    "source_fact:1c7aa73f5fe766945feaa37c": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182587",
+      "source": "매일경제",
+      "source_body_digest": "e6abbb461648c99fe44caa75c9ae8d6683f21861d4b2dca74fbf1f11f14a084e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e630727f12c13f7624e17ad2510535ede3c5602ba722d1af0ca8851bd3c41c4",
+      "source_fact_keys": [
+        "source_fact:v1:029391d75c74282ca6a072761c83ae8e1d5e4a147771a8d171af3ddc2860879c",
+        "source_fact:v1:0b7ba9749f0b9546994a544755499027f6e1c598a4800a9f3c886c91c1f01701",
+        "source_fact:v1:26405bd59814cade089de2d071912c3b43c53b8769f1982afb792d88553dab2b",
+        "source_fact:v1:2f6e1b16c0e4d4af74ffff227d1348bd4da76c4836a1b43cdefe8fb32d385def",
+        "source_fact:v1:5ad26906bcac0fe3bd5ec760a8e51ec3623727e989cb5154aa5455f045bfa03e",
+        "source_fact:v1:af66fc6af2d627005b66b205e237bd25f6f222248a7acf0ad3bfc1ad95377af8"
+      ],
+      "source_published_kst": "2026-10-28T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가",
+      "telegram_core_fact": "NBT 뱅코프(NBTB)가 3분기 순이익 5800만 달러, 희석 주당순이익(EPS) 1.11달러를 기록하며 분기 사상 최대 실적을 달성했다고 10월 27일 발표했다.",
+      "title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가"
+    },
     "source_fact:1c7bbdbc2e6d1062520d2f4d": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
       "lanes": {
@@ -668371,6 +669393,32 @@
       "source_title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\"",
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 중간선거를 앞두고 미국 내 경유가격 급등에 대한 불만이 커지자 트럼프 대통령이 푸틴 대통령에게 손을 내민 모양새다.",
       "title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\""
+    },
+    "source_fact:1cecc6ac0ba20cf2d33df65e": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
     },
     "source_fact:1ced8cac72e824a5ed39a146": {
       "first_seen_kst": "2026-10-27T08:49:21+09:00",
@@ -670709,6 +671757,37 @@
       "source_title": "'파킹형' ETF 자금 유입 지속…증시 박스권 장세 영향 | 연합뉴스",
       "telegram_core_fact": "SOL AI반도체소부장[455850]과 KODEX 미국나스닥100[409810]도 순매수가 636억원과 528억원에 달하는 등 개인 투자자 자금은 커버드콜과 미국 대표지수 추종 ETF에 쏠렸다.",
       "title": "'파킹형' ETF 자금 유입 지속…증시 박스권 장세 영향 | 연합뉴스"
+    },
+    "source_fact:1dd26e648a368eb6b95d15c1": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
     },
     "source_fact:1dd3d3677f3da46a95070c0c": {
       "first_seen_kst": "2026-10-13T12:38:24+09:00",
@@ -676718,6 +677797,28 @@
       ],
       "source_published_kst": "2026-10-06T07:40+09:00",
       "title": "엔비디아 이틀째 신고가…美국채금리 급등에도 나스닥 사상 최고[투자360]"
+    },
+    "source_fact:2033caac0de26f316eca9603": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182434",
+      "source": "매일경제",
+      "source_body_digest": "5e0beefbfa9b854bdf9178af4f2dfb2dcfb2211e336a73520bbec01669b0f0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd88c271f7f8d5750fb65e44364ce59927731c1acf5ea53309e843fe7afc6a9e",
+      "source_fact_keys": [
+        "source_fact:v1:04c4c484b627c6b736707792e50ae805b29254625c0c6c6e629734ffe05d86f0",
+        "source_fact:v1:4f9e3213817ace9fc34bc5b21e72a5c53e5f7afabe52e9c2f7972face2412ee0",
+        "source_fact:v1:75cf4ae7690b3aa6d02984f68052bccc64a0b8f8b69ab35d2db3319abd20cb3a"
+      ],
+      "source_published_kst": "2026-10-27T22:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가",
+      "telegram_core_fact": "파이브 스타 뱅코프(FSBC)가 3분기(7~9월) 순이익이 2190만 달러로 전년비 34.05% 증가했고, 희석 주당순이익(EPS)은 0.92달러로 전년 동기 0.77달러보다 19.48% 늘었다고 10월 26일 발표했다.",
+      "title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가"
     },
     "source_fact:203480fd518e6d03e81b2ae5": {
       "first_seen_kst": "2026-10-27T12:53:34+09:00",
@@ -688700,6 +689801,40 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국 등에 고율 관세를 부과하는 등 내용을 담은 대러시아 제재 조항 상당수를 시행하지 않고 적용을 면제하기로 했다고 전격 발표했습니다.",
       "title": "트럼프, ’그레이엄법’ 대러제재·고율관세 면제 발표"
     },
+    "source_fact:2480331c75ebcd9f8e4d7e9b": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
+    },
     "source_fact:2482f67355eae0f34fd68e40": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
       "lanes": {
@@ -689931,6 +691066,40 @@
       ],
       "source_published_kst": "2026-10-06T15:04+09:00",
       "title": "파업에도 한 달 새 약 30% 껑충…반전 쓴 '이 종목'"
+    },
+    "source_fact:24e9862bb915f775183afc9b": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
     "source_fact:24e9aad9fbd876adce0a581e": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -756847,6 +758016,31 @@
       "telegram_core_fact": "이찬진 금융감독원장이 SK하이닉스 손자회사 솔리다임의 미국 나스닥 상장 추진을 중복상장으로 판단하고 있다고 밝혔다.",
       "title": "금감원장 \"솔리다임 나스닥 상장은 중복상장\" [ESG 뉴스 5]"
     },
+    "source_fact:3e89f11c2b780da0a1740897": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843735",
+      "source": "뉴시스",
+      "source_body_digest": "f1feb87e5bfe1d74c41bd8f03061b12656a341bdd06c64bd64e2b55312840b4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43fc9672374d2f4a5d52b4f552f06bb53f65b259f072c29b4188efefca957916",
+      "source_fact_keys": [
+        "source_fact:v1:058589bcb36a0ea5304612ed3ba720522a6d574f6eeec987fe6bc0b4535101a7",
+        "source_fact:v1:40f94f980d77460fae7547709cfab008667973a7b021b5ee3d3d45700c016c23",
+        "source_fact:v1:4faca1af9a2ccf96fd7e7261ef093c80890d949ba2f0d1b7f50d5ed210f95f2b",
+        "source_fact:v1:72ffdf9a723ed05b381ce51506f99883b6e17898135dd6b6e924dcf69ffd4ce2",
+        "source_fact:v1:8cc050f791812f8562020c2ef85efba08434a3646fba271472e6b97542f6a443",
+        "source_fact:v1:cedb1f7314e9bfcd30bbc843d9bcf2ee26cc6dc0edccf2cd2148b4e6c32f0bce"
+      ],
+      "source_published_kst": "2026-10-27T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세",
+      "telegram_core_fact": "일본 정부가 중국과 대만에서 수입하는 스테인리스 냉연강 제품에 반덤핑 관세를 부과하기로 했다.",
+      "title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세"
+    },
     "source_fact:3e8f8017b32e46b96a7f7246": {
       "first_seen_kst": "2026-10-18T12:31:06+09:00",
       "lanes": {
@@ -767878,6 +769072,40 @@
       "source_title": "대만 사업장 노조 파업 앞둔 美마이크론…韓엔지니어 확보에 속도",
       "telegram_core_fact": "인공지능(AI) 반도체 수요 확대로 메모리 업체 간 기술 경쟁이 치열해지면서 마이크론도 대만과 가까운 한국에서 인력 확보를 지속하는 모습이다.",
       "title": "대만 사업장 노조 파업 앞둔 美마이크론…韓엔지니어 확보에 속도"
+    },
+    "source_fact:42c8f8480cf39b62f5d4918e": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
     "source_fact:42c9597f5b27c8c736837902": {
       "first_seen_kst": "2026-10-20T19:03:19+09:00",
@@ -783095,6 +784323,37 @@
       "source_published_kst": "2026-10-06T10:49+09:00",
       "title": "군인공제회 자금 불법추심 대부업체까지…김병기 \"운용 적정성 점검해야\""
     },
+    "source_fact:4843673f34ce436763240acd": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
+    },
     "source_fact:4847a2824c5b9df75fd4504b": {
       "first_seen_kst": "2026-10-26T17:47:13+09:00",
       "lanes": {
@@ -787991,6 +789250,31 @@
       "source_title": "상반기 부진 딛고 수익률 상위권 차지한 ETF는?",
       "telegram_core_fact": "이충재 한국투자증권 연구원은 \"미국 전기차 판매 부진으로 줄어든 매출은 늘어난 ESS 판매량이 상쇄했다\"며 \"3분기 전사 설비 가동률은 66%로 상반기 52.8%에서 대폭 증가했다\"고 설명했다.",
       "title": "상반기 부진 딛고 수익률 상위권 차지한 ETF는?"
+    },
+    "source_fact:4a001ece9c191910c06a140a": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182587",
+      "source": "매일경제",
+      "source_body_digest": "e6abbb461648c99fe44caa75c9ae8d6683f21861d4b2dca74fbf1f11f14a084e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e630727f12c13f7624e17ad2510535ede3c5602ba722d1af0ca8851bd3c41c4",
+      "source_fact_keys": [
+        "source_fact:v1:029391d75c74282ca6a072761c83ae8e1d5e4a147771a8d171af3ddc2860879c",
+        "source_fact:v1:0b7ba9749f0b9546994a544755499027f6e1c598a4800a9f3c886c91c1f01701",
+        "source_fact:v1:26405bd59814cade089de2d071912c3b43c53b8769f1982afb792d88553dab2b",
+        "source_fact:v1:2f6e1b16c0e4d4af74ffff227d1348bd4da76c4836a1b43cdefe8fb32d385def",
+        "source_fact:v1:5ad26906bcac0fe3bd5ec760a8e51ec3623727e989cb5154aa5455f045bfa03e",
+        "source_fact:v1:af66fc6af2d627005b66b205e237bd25f6f222248a7acf0ad3bfc1ad95377af8"
+      ],
+      "source_published_kst": "2026-10-28T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가",
+      "telegram_core_fact": "NBT 뱅코프(NBTB)가 3분기 순이익 5800만 달러, 희석 주당순이익(EPS) 1.11달러를 기록하며 분기 사상 최대 실적을 달성했다고 10월 27일 발표했다.",
+      "title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가"
     },
     "source_fact:4a0af146b50a78eb02607ef1": {
       "first_seen_kst": "2026-10-21T10:53:33+09:00",
@@ -793175,6 +794459,32 @@
       "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
       "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
       "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
+    },
+    "source_fact:4c2fc0bd2035a9bb0d9ffac3": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
     },
     "source_fact:4c3126a6b7c484b003ed5b34": {
       "first_seen_kst": "2026-10-16T14:45:17+09:00",
@@ -802176,6 +803486,32 @@
       "telegram_core_fact": "YMTC는 D램을 포함해 웨이퍼 생산능력을 월 약 50만장 규모까지 늘려 낸드 점유율 20% 목표 달성을 노리고 있다.",
       "title": "\"삼전닉스 턱밑 노린다\"…中 YMTC, 낸드 점유율 20% 정조준"
     },
+    "source_fact:4f7de6a69ea58eb67854ca32": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
+    },
     "source_fact:4f7fe4d1b1367e383b47a7bb": {
       "first_seen_kst": "2026-10-16T18:58:56+09:00",
       "lanes": {
@@ -804637,6 +805973,28 @@
       "telegram_core_fact": "하나자산운용은 ‘1Q 엔비디아고정미국AI반도체’ 상장지수펀드(ETF)를 20일 신규 상장한다고 19일 밝혔다.",
       "title": "하나운용, 엔비디아 25% 담는 AI반도체 ETF 20일 상장"
     },
+    "source_fact:508be0031376965b48d3b861": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182434",
+      "source": "매일경제",
+      "source_body_digest": "5e0beefbfa9b854bdf9178af4f2dfb2dcfb2211e336a73520bbec01669b0f0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd88c271f7f8d5750fb65e44364ce59927731c1acf5ea53309e843fe7afc6a9e",
+      "source_fact_keys": [
+        "source_fact:v1:04c4c484b627c6b736707792e50ae805b29254625c0c6c6e629734ffe05d86f0",
+        "source_fact:v1:4f9e3213817ace9fc34bc5b21e72a5c53e5f7afabe52e9c2f7972face2412ee0",
+        "source_fact:v1:75cf4ae7690b3aa6d02984f68052bccc64a0b8f8b69ab35d2db3319abd20cb3a"
+      ],
+      "source_published_kst": "2026-10-27T22:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가",
+      "telegram_core_fact": "파이브 스타 뱅코프(FSBC)가 3분기(7~9월) 순이익이 2190만 달러로 전년비 34.05% 증가했고, 희석 주당순이익(EPS)은 0.92달러로 전년 동기 0.77달러보다 19.48% 늘었다고 10월 26일 발표했다.",
+      "title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가"
+    },
     "source_fact:508d5cc5020b52cf69b8c71f": {
       "first_seen_kst": "2026-10-21T13:24:59+09:00",
       "lanes": {
@@ -804829,6 +806187,40 @@
       ],
       "source_published_kst": "2026-10-07T08:31+09:00",
       "title": "한성크린텍, 삼성전기 베트남 공장 초순수 시스템 230억원 수주"
+    },
+    "source_fact:50970273d76f61c6402e7a1f": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
     "source_fact:50974771d7b44330f438d51a": {
       "first_seen_kst": "2026-10-07T19:47:02+09:00",
@@ -857420,6 +858812,37 @@
       "telegram_core_fact": "스타벅스 매출은 탱크데이 논란 직후 한 주(5월 21∼27일) 동안 전주보다 23.5% 줄어 급감한 뒤 저점인 6월 4∼10일 주에는 전년 같은 주보다 33.2% 감소했다.",
       "title": "\"스벅은 타격 여전…버거킹은 '암살자들' 불매운동에도 매출↑\" | 연합뉴스"
     },
+    "source_fact:64481f905663bfb8b51fb64e": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
+    },
     "source_fact:64487ae6f2ccfb0ba3cb7fd3": {
       "first_seen_kst": "2026-10-12T15:20:09+09:00",
       "lanes": {
@@ -857624,6 +859047,31 @@
       "source_title": "대명화학의 기묘한 패션 재편…레이어 이어 마뗑킴도 ‘모회사 역합병’",
       "telegram_core_fact": "8월 핵심 계열사 레이어가 모회사인 어센틱브랜즈코리아를 흡수합병한 데 이어, 이번에는 간판 브랜드 마뗑킴이 모회사인 하고하우스를 역합병하기로 결정했다.",
       "title": "대명화학의 기묘한 패션 재편…레이어 이어 마뗑킴도 ‘모회사 역합병’"
+    },
+    "source_fact:646d52d41aacb285158f5028": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843735",
+      "source": "뉴시스",
+      "source_body_digest": "f1feb87e5bfe1d74c41bd8f03061b12656a341bdd06c64bd64e2b55312840b4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43fc9672374d2f4a5d52b4f552f06bb53f65b259f072c29b4188efefca957916",
+      "source_fact_keys": [
+        "source_fact:v1:058589bcb36a0ea5304612ed3ba720522a6d574f6eeec987fe6bc0b4535101a7",
+        "source_fact:v1:40f94f980d77460fae7547709cfab008667973a7b021b5ee3d3d45700c016c23",
+        "source_fact:v1:4faca1af9a2ccf96fd7e7261ef093c80890d949ba2f0d1b7f50d5ed210f95f2b",
+        "source_fact:v1:72ffdf9a723ed05b381ce51506f99883b6e17898135dd6b6e924dcf69ffd4ce2",
+        "source_fact:v1:8cc050f791812f8562020c2ef85efba08434a3646fba271472e6b97542f6a443",
+        "source_fact:v1:cedb1f7314e9bfcd30bbc843d9bcf2ee26cc6dc0edccf2cd2148b4e6c32f0bce"
+      ],
+      "source_published_kst": "2026-10-27T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세",
+      "telegram_core_fact": "일본 정부가 중국과 대만에서 수입하는 스테인리스 냉연강 제품에 반덤핑 관세를 부과하기로 했다.",
+      "title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세"
     },
     "source_fact:646fa79e34797a2d797c9d2c": {
       "first_seen_kst": "2026-10-25T09:55:02+09:00",
@@ -862241,6 +863689,40 @@
       "telegram_core_fact": "인근 데이터센터 건설에 찬성하는 공화당 후보를 제시받은 응답자의 41%가 해당 후보를 지지할 가능성이 낮아진다고 답했다. 정당별 인식을 물은 문항에서는 응답자의 거의 절반이 데이터센터 건설에 가장 적극적인 정당으로 공화당을 꼽았다.",
       "title": "美 절반 '우리 동네엔 안 돼'…트럼프표 데이터센터, 공화당 발목 잡는다"
     },
+    "source_fact:664873938b7186c879fc8d0e": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
+    },
     "source_fact:6658ab6989732e556505b752": {
       "first_seen_kst": "2026-10-22T23:00:45+09:00",
       "lanes": {
@@ -864801,6 +866283,37 @@
       "telegram_core_fact": "페이스북과 인스타그램의 모회사 메타는 시장 예상치를 웃도는 실적을 발표하고도 대규모 AI 투자에 따른 현금흐름 악화 우려로 주가가 7% 가까이 급락했다.",
       "title": "“돈은 버는데 남는 현금이 없다”…메타 AI투자탓 13년만에 현금흐름 적자"
     },
+    "source_fact:67476fc98dd651fe6106858a": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
+    },
     "source_fact:6747d0c6c5b83626f2c4d70c": {
       "first_seen_kst": "2026-10-25T00:24:20+09:00",
       "lanes": {
@@ -865652,6 +867165,40 @@
       "source_title": "“겁먹을 때 아니다”…월가, 연말 증시 낙관하는 이유",
       "telegram_core_fact": "미국 월가에서 연말까지 증시가 상승세를 이어갈 것이라는 전망이 나오고 있다.",
       "title": "“겁먹을 때 아니다”…월가, 연말 증시 낙관하는 이유"
+    },
+    "source_fact:67933c670e6f5f5a9fdc4ec3": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
     "source_fact:67942ba0653c5efef7e5560a": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -912918,6 +914465,37 @@
       "telegram_core_fact": "현대차는 14일(현지시간) 인도 마하라슈트라주 탈레가온에서 열린 푸네 신공장 준공식에서 이 같은 내용의 중장기 투자계획을 발표했다. 현대차는 이날 준공한 푸네 신공장의 연간 생산능력을 현재 17만대에서 2028년 25만대, 2030년 32만대까지 확대할 계획이다.",
       "title": "\"인도에 약 21조원 베팅\"…현대차그룹, 미래차 성장거점으로 키운다 [푸네 新공장 준공]"
     },
+    "source_fact:79a7b0bf5431b550dbfe1ada": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
+    },
     "source_fact:79ab7b68cd3a78780d941d74": {
       "first_seen_kst": "2026-10-14T18:12:32+09:00",
       "lanes": {
@@ -919591,6 +921169,31 @@
       "source_title": "사우디, 리야드 국제공항 운영 재개…첫날부터 폭발음",
       "telegram_core_fact": "후티 반군은 지난달부터 사우디 송유관뿐만 아니라 킹칼리드 국제공항 등 수도 리야드 인프라를 겨냥한 공격을 계속하고 있다.",
       "title": "사우디, 리야드 국제공항 운영 재개…첫날부터 폭발음"
+    },
+    "source_fact:7c2fe9f6bdc8cce699477c83": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182587",
+      "source": "매일경제",
+      "source_body_digest": "e6abbb461648c99fe44caa75c9ae8d6683f21861d4b2dca74fbf1f11f14a084e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e630727f12c13f7624e17ad2510535ede3c5602ba722d1af0ca8851bd3c41c4",
+      "source_fact_keys": [
+        "source_fact:v1:029391d75c74282ca6a072761c83ae8e1d5e4a147771a8d171af3ddc2860879c",
+        "source_fact:v1:0b7ba9749f0b9546994a544755499027f6e1c598a4800a9f3c886c91c1f01701",
+        "source_fact:v1:26405bd59814cade089de2d071912c3b43c53b8769f1982afb792d88553dab2b",
+        "source_fact:v1:2f6e1b16c0e4d4af74ffff227d1348bd4da76c4836a1b43cdefe8fb32d385def",
+        "source_fact:v1:5ad26906bcac0fe3bd5ec760a8e51ec3623727e989cb5154aa5455f045bfa03e",
+        "source_fact:v1:af66fc6af2d627005b66b205e237bd25f6f222248a7acf0ad3bfc1ad95377af8"
+      ],
+      "source_published_kst": "2026-10-28T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가",
+      "telegram_core_fact": "NBT 뱅코프(NBTB)가 3분기 순이익 5800만 달러, 희석 주당순이익(EPS) 1.11달러를 기록하며 분기 사상 최대 실적을 달성했다고 10월 27일 발표했다.",
+      "title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가"
     },
     "source_fact:7c31c41cc2e5770d78663676": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
@@ -928409,6 +930012,32 @@
       "source_title": "\"바겐세일이다\" 6000억 샀는데…\"또 떨어지네\" 레버리지 개미 어쩌나",
       "telegram_core_fact": "코스피지수가 5% 넘게 급락한 지난 13일 개인투자자들이 레버리지ETF(상장지수펀드)를 6000억원 넘게 순매수했다.",
       "title": "\"바겐세일이다\" 6000억 샀는데…\"또 떨어지네\" 레버리지 개미 어쩌나"
+    },
+    "source_fact:7fb092486064ac7be9586a49": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
     },
     "source_fact:7fb7859310878df62920bb73": {
       "first_seen_kst": "2026-10-20T01:42:36+09:00",
@@ -975003,6 +976632,31 @@
       "telegram_core_fact": "협상에서 트럼프 특사인 스티브 윗코프와 사위 재러드 쿠슈너는 우크라이나가 미국의 러시아 정유설비 공습 중단 경고를 무시하면 정보 공유를 중단할 수 있다고 경고했다. 우크라이나는 미국이 제공하는 정보의 도움을 받아 러시아 전쟁비용의 핵심 원천인 석유 산업을 공격해왔다.",
       "title": "미, 우크라에 \"러 정유설비 공격하면 핵심 정보 끊겠다\" 경고"
     },
+    "source_fact:921aa3a60fd246a5d4ce04fc": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182587",
+      "source": "매일경제",
+      "source_body_digest": "e6abbb461648c99fe44caa75c9ae8d6683f21861d4b2dca74fbf1f11f14a084e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e630727f12c13f7624e17ad2510535ede3c5602ba722d1af0ca8851bd3c41c4",
+      "source_fact_keys": [
+        "source_fact:v1:029391d75c74282ca6a072761c83ae8e1d5e4a147771a8d171af3ddc2860879c",
+        "source_fact:v1:0b7ba9749f0b9546994a544755499027f6e1c598a4800a9f3c886c91c1f01701",
+        "source_fact:v1:26405bd59814cade089de2d071912c3b43c53b8769f1982afb792d88553dab2b",
+        "source_fact:v1:2f6e1b16c0e4d4af74ffff227d1348bd4da76c4836a1b43cdefe8fb32d385def",
+        "source_fact:v1:5ad26906bcac0fe3bd5ec760a8e51ec3623727e989cb5154aa5455f045bfa03e",
+        "source_fact:v1:af66fc6af2d627005b66b205e237bd25f6f222248a7acf0ad3bfc1ad95377af8"
+      ],
+      "source_published_kst": "2026-10-28T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가",
+      "telegram_core_fact": "NBT 뱅코프(NBTB)가 3분기 순이익 5800만 달러, 희석 주당순이익(EPS) 1.11달러를 기록하며 분기 사상 최대 실적을 달성했다고 10월 27일 발표했다.",
+      "title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가"
+    },
     "source_fact:921b1e49a4e659aaf6056169": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
       "lanes": {
@@ -975361,6 +977015,31 @@
       "source_title": "[속보] 론스타, 1682억 세금 반환 소송 파기환송심서 패소",
       "telegram_core_fact": "론스타는 국내 기업에 투자해 받아낸 배당금과 주식 매각 차익에 부과된 세금의 일부를 돌려달라며 소장을 접수했다.",
       "title": "[속보] 론스타, 1682억 세금 반환 소송 파기환송심서 패소"
+    },
+    "source_fact:92366117b51958846356b1ba": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843735",
+      "source": "뉴시스",
+      "source_body_digest": "f1feb87e5bfe1d74c41bd8f03061b12656a341bdd06c64bd64e2b55312840b4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43fc9672374d2f4a5d52b4f552f06bb53f65b259f072c29b4188efefca957916",
+      "source_fact_keys": [
+        "source_fact:v1:058589bcb36a0ea5304612ed3ba720522a6d574f6eeec987fe6bc0b4535101a7",
+        "source_fact:v1:40f94f980d77460fae7547709cfab008667973a7b021b5ee3d3d45700c016c23",
+        "source_fact:v1:4faca1af9a2ccf96fd7e7261ef093c80890d949ba2f0d1b7f50d5ed210f95f2b",
+        "source_fact:v1:72ffdf9a723ed05b381ce51506f99883b6e17898135dd6b6e924dcf69ffd4ce2",
+        "source_fact:v1:8cc050f791812f8562020c2ef85efba08434a3646fba271472e6b97542f6a443",
+        "source_fact:v1:cedb1f7314e9bfcd30bbc843d9bcf2ee26cc6dc0edccf2cd2148b4e6c32f0bce"
+      ],
+      "source_published_kst": "2026-10-27T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세",
+      "telegram_core_fact": "일본 정부가 중국과 대만에서 수입하는 스테인리스 냉연강 제품에 반덤핑 관세를 부과하기로 했다.",
+      "title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세"
     },
     "source_fact:92368b4dc899625cab002fbf": {
       "first_seen_kst": "2026-10-14T04:36:31+09:00",
@@ -976083,6 +977762,37 @@
       "source_title": "사료 공급망 강화…하림, 김제·정읍공장 생산능력 20% 확대",
       "telegram_core_fact": "종합식품기업 하림이 김제·정읍 사료공장의 생산능력을 20% 확대하고 안정적인 사료 공급체계 구축에 나섰다.",
       "title": "사료 공급망 강화…하림, 김제·정읍공장 생산능력 20% 확대"
+    },
+    "source_fact:9288c56345069d8ca0dff6e7": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
     },
     "source_fact:928af020897c51e0ab22a1f6": {
       "first_seen_kst": "2026-10-28T07:11:08+09:00",
@@ -1045281,6 +1046991,31 @@
       "telegram_core_fact": "2026년 상반기 재무자료 확인이 가능한 관리종목 지정 59개사 중 88.1%에 달하는 52개사가 자본잠식이 없는 것으로 나타났다. 이 중 11개사는 매출 증가와 함께 영업이익 및 영업활동현금흐름 흑자를 모두 달성했다.",
       "title": "‘시총 미달 63곳’ 상폐 한숨 돌렸지만...코스닥 관리종목 88% 자본잠식 ‘無’"
     },
+    "source_fact:acb3286ced6cf9e3703ef319": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182587",
+      "source": "매일경제",
+      "source_body_digest": "e6abbb461648c99fe44caa75c9ae8d6683f21861d4b2dca74fbf1f11f14a084e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e630727f12c13f7624e17ad2510535ede3c5602ba722d1af0ca8851bd3c41c4",
+      "source_fact_keys": [
+        "source_fact:v1:029391d75c74282ca6a072761c83ae8e1d5e4a147771a8d171af3ddc2860879c",
+        "source_fact:v1:0b7ba9749f0b9546994a544755499027f6e1c598a4800a9f3c886c91c1f01701",
+        "source_fact:v1:26405bd59814cade089de2d071912c3b43c53b8769f1982afb792d88553dab2b",
+        "source_fact:v1:2f6e1b16c0e4d4af74ffff227d1348bd4da76c4836a1b43cdefe8fb32d385def",
+        "source_fact:v1:5ad26906bcac0fe3bd5ec760a8e51ec3623727e989cb5154aa5455f045bfa03e",
+        "source_fact:v1:af66fc6af2d627005b66b205e237bd25f6f222248a7acf0ad3bfc1ad95377af8"
+      ],
+      "source_published_kst": "2026-10-28T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가",
+      "telegram_core_fact": "NBT 뱅코프(NBTB)가 3분기 순이익 5800만 달러, 희석 주당순이익(EPS) 1.11달러를 기록하며 분기 사상 최대 실적을 달성했다고 10월 27일 발표했다.",
+      "title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가"
+    },
     "source_fact:acb4492b85590a5dc11f9f06": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
       "lanes": {
@@ -1059626,6 +1061361,37 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "밸류파인더 “메타케어, 저용량 탈모치료제 출시 임박…헬스케어 플랫폼 확장”"
     },
+    "source_fact:b2060392399592759d04900b": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
+    },
     "source_fact:b20691990d37f9cfdc821f35": {
       "first_seen_kst": "2026-10-22T09:17:40+09:00",
       "lanes": {
@@ -1063060,6 +1064826,32 @@
       ],
       "source_published_kst": "2026-10-06T15:43+09:00",
       "title": "李대통령, 알시시 이집트 대통령과 정상회담…인프라·공급망 협력 확대"
+    },
+    "source_fact:b351688efb12f17470e3daaf": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
     },
     "source_fact:b3542a9ba207a9506ef8fb4b": {
       "first_seen_kst": "2026-10-27T09:23:22+09:00",
@@ -1070109,6 +1071901,31 @@
       ],
       "source_published_kst": "2026-10-07T14:39+09:00",
       "title": "\"美, 사우디-후티 분쟁 개입 꺼려…사우디에 지상군 투입 만류도\""
+    },
+    "source_fact:b60285516c4738c3861cd7da": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843735",
+      "source": "뉴시스",
+      "source_body_digest": "f1feb87e5bfe1d74c41bd8f03061b12656a341bdd06c64bd64e2b55312840b4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43fc9672374d2f4a5d52b4f552f06bb53f65b259f072c29b4188efefca957916",
+      "source_fact_keys": [
+        "source_fact:v1:058589bcb36a0ea5304612ed3ba720522a6d574f6eeec987fe6bc0b4535101a7",
+        "source_fact:v1:40f94f980d77460fae7547709cfab008667973a7b021b5ee3d3d45700c016c23",
+        "source_fact:v1:4faca1af9a2ccf96fd7e7261ef093c80890d949ba2f0d1b7f50d5ed210f95f2b",
+        "source_fact:v1:72ffdf9a723ed05b381ce51506f99883b6e17898135dd6b6e924dcf69ffd4ce2",
+        "source_fact:v1:8cc050f791812f8562020c2ef85efba08434a3646fba271472e6b97542f6a443",
+        "source_fact:v1:cedb1f7314e9bfcd30bbc843d9bcf2ee26cc6dc0edccf2cd2148b4e6c32f0bce"
+      ],
+      "source_published_kst": "2026-10-27T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세",
+      "telegram_core_fact": "일본 정부가 중국과 대만에서 수입하는 스테인리스 냉연강 제품에 반덤핑 관세를 부과하기로 했다.",
+      "title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세"
     },
     "source_fact:b603b16885014f3a54d93b88": {
       "first_seen_kst": "2026-10-24T13:13:38+09:00",
@@ -1107597,6 +1109414,40 @@
       "telegram_core_fact": "니오코프 디벨롭먼츠(NB)는 9월 30일 종료된 3개월간 모회사 귀속 순이익이 370만 달러, 기본 주당순이익이 0.03달러로 집계됐다는 미감사 잠정 실적을 16일 발표했다.",
       "title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕"
     },
+    "source_fact:c43bb2fdb130335b179a2281": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
+    },
     "source_fact:c43c344fc70e618dd9d76023": {
       "first_seen_kst": "2026-10-17T13:39:20+09:00",
       "lanes": {
@@ -1131600,6 +1133451,40 @@
       "source_title": "한화오션 하청노조, 한 달 넘는 생산시설 점거…\"산재·교섭 오해, 대화 필요\"",
       "telegram_core_fact": "협력사 단가도 2023년 이후 연평균 5% 수준으로 인상해 왔다고 설명했다. 한화오션 거제사업장에서 하청노조의 고공농성이 이어지는 가운데 성과급과 임금, 산업재해 처리, 교섭 절차 등을 둘러싼 노사 간 입장차가 이어지고 있다.",
       "title": "한화오션 하청노조, 한 달 넘는 생산시설 점거…\"산재·교섭 오해, 대화 필요\""
+    },
+    "source_fact:cd6d510aefe904cf9436a4be": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
     "source_fact:cd6e2413db4229a6ae8ef621": {
       "first_seen_kst": "2026-10-20T10:11:13+09:00",
@@ -1209141,6 +1211026,31 @@
       "telegram_core_fact": "유희태 군수는 \"사업을 통해 농촌 주민이 안전하고 편리하게 LPG를 사용하고 난방비 걱정도 덜 것\"이라며 \"도시가스 미공급 지역의 에너지 복지를 위해 소형 저장탱크 보급을 확대하겠다\"고 말했다.",
       "title": "완주군, 도시가스 취약 농촌에 LPG 소형 저장탱크 보급 | 연합뉴스"
     },
+    "source_fact:eafe4b2436ef6f546e62e2a5": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843735",
+      "source": "뉴시스",
+      "source_body_digest": "f1feb87e5bfe1d74c41bd8f03061b12656a341bdd06c64bd64e2b55312840b4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43fc9672374d2f4a5d52b4f552f06bb53f65b259f072c29b4188efefca957916",
+      "source_fact_keys": [
+        "source_fact:v1:058589bcb36a0ea5304612ed3ba720522a6d574f6eeec987fe6bc0b4535101a7",
+        "source_fact:v1:40f94f980d77460fae7547709cfab008667973a7b021b5ee3d3d45700c016c23",
+        "source_fact:v1:4faca1af9a2ccf96fd7e7261ef093c80890d949ba2f0d1b7f50d5ed210f95f2b",
+        "source_fact:v1:72ffdf9a723ed05b381ce51506f99883b6e17898135dd6b6e924dcf69ffd4ce2",
+        "source_fact:v1:8cc050f791812f8562020c2ef85efba08434a3646fba271472e6b97542f6a443",
+        "source_fact:v1:cedb1f7314e9bfcd30bbc843d9bcf2ee26cc6dc0edccf2cd2148b4e6c32f0bce"
+      ],
+      "source_published_kst": "2026-10-27T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세",
+      "telegram_core_fact": "일본 정부가 중국과 대만에서 수입하는 스테인리스 냉연강 제품에 반덤핑 관세를 부과하기로 했다.",
+      "title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세"
+    },
     "source_fact:eb0021a216602c3c6638e9f4": {
       "first_seen_kst": "2026-10-25T09:55:02+09:00",
       "lanes": {
@@ -1209507,6 +1211417,37 @@
       "source_title": "핀다, 대원저축은행 품고 여수신 기능 탑재…금융위 최종 승인 | 연합뉴스",
       "telegram_core_fact": "핀다의 2대 주주인 JB금융그룹이 전체 인수액 120억원 가운데 40%에 해당하는 지분을 인수했다.",
       "title": "핀다, 대원저축은행 품고 여수신 기능 탑재…금융위 최종 승인 | 연합뉴스"
+    },
+    "source_fact:eb0ccf4b872c916d83bfe783": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
     },
     "source_fact:eb104985caa749824f351da9": {
       "first_seen_kst": "2026-10-26T14:29:10+09:00",
@@ -1214081,6 +1216022,40 @@
       ],
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
+    "source_fact:ecc6b62100f7830e48b85465": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
     "source_fact:ecc9b2201d3662e3ced24767": {
       "first_seen_kst": "2026-10-17T19:47:24+09:00",
@@ -1232550,6 +1234525,37 @@
       "telegram_core_fact": "이란 이슬람혁명수비대(IRGC)가 호르무즈 해협에서 상선 7척이 불에 타 무력화됐다고 발표했다.",
       "title": "이란 혁명수비대 \"호르무즈서 7척 피해…침략자 미군 책임\""
     },
+    "source_fact:f40f0c4873a986ec4d20fb67": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
+    },
     "source_fact:f4128aadfbc0123b8ad5aa41": {
       "first_seen_kst": "2026-10-22T15:30:56+09:00",
       "lanes": {
@@ -1250143,6 +1252149,40 @@
       "telegram_core_fact": "글로벌 4족 보행 로봇 시장에서 중국 기업이 전체 출하량의 90% 이상을 차지한 것으로 나타났다. 시장조사업체 카운터포인트리서치에 따르면 지난해 글로벌 4족 보행 로봇 출하량은 4만6000대로 집계됐다.",
       "title": "\"열 대 중 아홉 대는 중국산\"…4족 보행 로봇 시장 장악"
     },
+    "source_fact:fb60f9ba1dc347fe70938f41": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
+    },
     "source_fact:fb6844db4d21f82528a65f04": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -1251461,6 +1253501,31 @@
       "telegram_core_fact": "HD한국조선해양이 올해 3분기 1조6000억원에 육박하는 영업이익을 달성할 전망이다.",
       "title": "HD한국조선해양 올 1~3분기 영업익, 작년 전체 실적 넘는다 \"고속 성장에도 불확실성 대비\""
     },
+    "source_fact:fbf36d86c44fc3793b7d9c27": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843735",
+      "source": "뉴시스",
+      "source_body_digest": "f1feb87e5bfe1d74c41bd8f03061b12656a341bdd06c64bd64e2b55312840b4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43fc9672374d2f4a5d52b4f552f06bb53f65b259f072c29b4188efefca957916",
+      "source_fact_keys": [
+        "source_fact:v1:058589bcb36a0ea5304612ed3ba720522a6d574f6eeec987fe6bc0b4535101a7",
+        "source_fact:v1:40f94f980d77460fae7547709cfab008667973a7b021b5ee3d3d45700c016c23",
+        "source_fact:v1:4faca1af9a2ccf96fd7e7261ef093c80890d949ba2f0d1b7f50d5ed210f95f2b",
+        "source_fact:v1:72ffdf9a723ed05b381ce51506f99883b6e17898135dd6b6e924dcf69ffd4ce2",
+        "source_fact:v1:8cc050f791812f8562020c2ef85efba08434a3646fba271472e6b97542f6a443",
+        "source_fact:v1:cedb1f7314e9bfcd30bbc843d9bcf2ee26cc6dc0edccf2cd2148b4e6c32f0bce"
+      ],
+      "source_published_kst": "2026-10-27T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세",
+      "telegram_core_fact": "일본 정부가 중국과 대만에서 수입하는 스테인리스 냉연강 제품에 반덤핑 관세를 부과하기로 했다.",
+      "title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세"
+    },
     "source_fact:fbf387db5ae56ad507a6900a": {
       "first_seen_kst": "2026-10-25T10:27:47+09:00",
       "lanes": {
@@ -1251874,6 +1253939,32 @@
       "source_title": "MHS, 냉각수 60% 절감할 수 있는 AI 반도체 냉각판 개발",
       "telegram_core_fact": "AI 연산에 쓰이는 GPU 한 개의 발열 수준이 1kW를 넘어서면서 데이터센터는 칩에 냉각수를 직접 흘려 식히는 액체 냉각 수요가 빠르게 늘고 있다.",
       "title": "MHS, 냉각수 60% 절감할 수 있는 AI 반도체 냉각판 개발"
+    },
+    "source_fact:fc0cc426fe6c89c845b16152": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
     },
     "source_fact:fc0d4004f6528edc5c54200f": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
@@ -1261626,6 +1263717,40 @@
       "telegram_core_fact": "글로벌 채권 시장의 벤치마크인 10년물 금리는 장중 5.36%까지 올랐다.",
       "title": "글로벌 채권 공포…美 10년·30년물 장기금리 장중 24년 만 최고"
     },
+    "source_fact:ff9c0fa0af041f45b9858e45": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
+    },
     "source_fact:ffa25f1cec6a87697efcd01e": {
       "first_seen_kst": "2026-10-23T04:40:39+09:00",
       "lanes": {
@@ -1262186,6 +1264311,31 @@
       "source_title": "\"사우디 수도 리야드 공항 또 공격받아…수십 명 부상·항공편 차질\"",
       "telegram_core_fact": "지난 5일 후티 반군이 사우디의 공항·정유 시설 등을 겨냥한 대대적인 공격 계획을 발표한 이후 킹칼리드 공항이 공격받은 것은 이날이 최소 세 번째다.",
       "title": "\"사우디 수도 리야드 공항 또 공격받아…수십 명 부상·항공편 차질\""
+    },
+    "source_fact:ffe6ac2eb64fca53b598ccfb": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182587",
+      "source": "매일경제",
+      "source_body_digest": "e6abbb461648c99fe44caa75c9ae8d6683f21861d4b2dca74fbf1f11f14a084e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e630727f12c13f7624e17ad2510535ede3c5602ba722d1af0ca8851bd3c41c4",
+      "source_fact_keys": [
+        "source_fact:v1:029391d75c74282ca6a072761c83ae8e1d5e4a147771a8d171af3ddc2860879c",
+        "source_fact:v1:0b7ba9749f0b9546994a544755499027f6e1c598a4800a9f3c886c91c1f01701",
+        "source_fact:v1:26405bd59814cade089de2d071912c3b43c53b8769f1982afb792d88553dab2b",
+        "source_fact:v1:2f6e1b16c0e4d4af74ffff227d1348bd4da76c4836a1b43cdefe8fb32d385def",
+        "source_fact:v1:5ad26906bcac0fe3bd5ec760a8e51ec3623727e989cb5154aa5455f045bfa03e",
+        "source_fact:v1:af66fc6af2d627005b66b205e237bd25f6f222248a7acf0ad3bfc1ad95377af8"
+      ],
+      "source_published_kst": "2026-10-28T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가",
+      "telegram_core_fact": "NBT 뱅코프(NBTB)가 3분기 순이익 5800만 달러, 희석 주당순이익(EPS) 1.11달러를 기록하며 분기 사상 최대 실적을 달성했다고 10월 27일 발표했다.",
+      "title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가"
     },
     "source_fact:ffe7bf69d8413efb9b47044c": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -1340035,6 +1342185,31 @@
       "telegram_core_fact": "연구진은 \"핵심 수치를 공식 공시와 일치시키거나 병기하고, 계약금·마일스톤·로열티를 구분 표시하며, 중요 공시 전후 임원의 지분 매각을 제한하는 등 공식·비공식 공시 간 제도적 공백을 보완하기 위한 제도 개선이 필요하다\"고 제언했다.",
       "title": "부풀린 보도자료, 주가 변동성 키웠다…\"공시와 수치 맞춰야\""
     },
+    "title:7a4842be82debfa5b96ef507": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261027_0003843735",
+      "source": "뉴시스",
+      "source_body_digest": "f1feb87e5bfe1d74c41bd8f03061b12656a341bdd06c64bd64e2b55312840b4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43fc9672374d2f4a5d52b4f552f06bb53f65b259f072c29b4188efefca957916",
+      "source_fact_keys": [
+        "source_fact:v1:058589bcb36a0ea5304612ed3ba720522a6d574f6eeec987fe6bc0b4535101a7",
+        "source_fact:v1:40f94f980d77460fae7547709cfab008667973a7b021b5ee3d3d45700c016c23",
+        "source_fact:v1:4faca1af9a2ccf96fd7e7261ef093c80890d949ba2f0d1b7f50d5ed210f95f2b",
+        "source_fact:v1:72ffdf9a723ed05b381ce51506f99883b6e17898135dd6b6e924dcf69ffd4ce2",
+        "source_fact:v1:8cc050f791812f8562020c2ef85efba08434a3646fba271472e6b97542f6a443",
+        "source_fact:v1:cedb1f7314e9bfcd30bbc843d9bcf2ee26cc6dc0edccf2cd2148b4e6c32f0bce"
+      ],
+      "source_published_kst": "2026-10-27T23:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세",
+      "telegram_core_fact": "일본 정부가 중국과 대만에서 수입하는 스테인리스 냉연강 제품에 반덤핑 관세를 부과하기로 했다.",
+      "title": "[올댓차이나] 日, 중국·대만산 스테인리스 냉연강에 42.1~3.6% 반덤핑관세"
+    },
     "title:7a495636cf22288dbc6ff48a": {
       "first_seen_kst": "2026-10-27T13:52:52+09:00",
       "lanes": {
@@ -1351889,6 +1354064,28 @@
       "link": "https://www.mt.co.kr/index.php/finance/2026/09/17/2026091717172515184",
       "source": "머니투데이",
       "title": "국민성장펀드, 야월해상풍력 등 5건에 1조원 지원 승인"
+    },
+    "title:8c7ec4baf82e675bdf79f444": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182434",
+      "source": "매일경제",
+      "source_body_digest": "5e0beefbfa9b854bdf9178af4f2dfb2dcfb2211e336a73520bbec01669b0f0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bd88c271f7f8d5750fb65e44364ce59927731c1acf5ea53309e843fe7afc6a9e",
+      "source_fact_keys": [
+        "source_fact:v1:04c4c484b627c6b736707792e50ae805b29254625c0c6c6e629734ffe05d86f0",
+        "source_fact:v1:4f9e3213817ace9fc34bc5b21e72a5c53e5f7afabe52e9c2f7972face2412ee0",
+        "source_fact:v1:75cf4ae7690b3aa6d02984f68052bccc64a0b8f8b69ab35d2db3319abd20cb3a"
+      ],
+      "source_published_kst": "2026-10-27T22:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가",
+      "telegram_core_fact": "파이브 스타 뱅코프(FSBC)가 3분기(7~9월) 순이익이 2190만 달러로 전년비 34.05% 증가했고, 희석 주당순이익(EPS)은 0.92달러로 전년 동기 0.77달러보다 19.48% 늘었다고 10월 26일 발표했다.",
+      "title": "파이브 스타 뱅코프, 3분기 순이익 2190만 달러..전년비 34% 증가"
     },
     "title:8c83364c5c562df04f7f85f8": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -1373706,6 +1375903,24 @@
       "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
       "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
     },
+    "title:adc08ddcf796fc7fb70f7625": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12187783",
+      "source": "매일경제",
+      "source_body_digest": "d29a49c03bd238188fa2dc00e34bd93fe53b0f3ff5930e6568f4e00dd8b1e9a3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-27T23:41+09:00",
+      "source_supply_terms": {},
+      "source_title": "블루문메탈스, 스프링어 텅스텐 재가동 시공사 선정·숙소 확보로 주목",
+      "telegram_core_fact": "스프링어 텅스텐 공장 재단장을 맡을 시공사로 RAM을 선정하고, 170만 달러 현금으로 현장 숙소 부지를 인수하는 계약을 맺었습니다. 시공사와 인력 숙소가 확정되면서 프로젝트 실행력이 높아졌다는 평가입니다.",
+      "title": "블루문메탈스, 스프링어 텅스텐 재가동 시공사 선정·숙소 확보로 주목"
+    },
     "title:adcaf4c49faa244d824bab9a": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -1383946,6 +1386161,40 @@
       "telegram_core_fact": "CPU(중앙처리장치)와 GPU(그래픽처리장치), 메모리를 유기적으로 연결해 대역폭과 용량을 키운다.",
       "title": "삼성전자 ‘서버 메모리 용량 수백TB 확장’ CXL·이더넷 결합 ‘메모리 월’ 극복 신기술 [기업 해외상장 변수]"
     },
+    "title:bf4db04eff3acb3a193843c7": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.news1.kr/it-science/cc-newmedia/6334351",
+      "source": "뉴스1",
+      "source_body_digest": "ace781bfd56eb90457b366c17af611120783639739b90bde77bc8bdd43435093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0e362f85a3ad47168bbd003b6fbae6af5a2678743e68813c2586f3129cf2af2",
+      "source_fact_keys": [
+        "source_fact:v1:15a1f24ec8a3ea2857bda8bae00b147b4d66c876679394b56389f8b8fb1fd23a",
+        "source_fact:v1:3425558625130cffd94f52b459bca191a8eb1bbb57026cc5fdd70729b1ab066b",
+        "source_fact:v1:42a8dbec22e9aaa1fd3f7c52eb8f93ef85888b5477fb089aaca2c99db0b8892a",
+        "source_fact:v1:5c3ae78141a1dd4a1655c7c8d2b82a1e45d505849e1300222ebadf1fc1388383",
+        "source_fact:v1:6682de842c27c962e53f781170a2fa7a426218330df42b7286b4a126ec96a176",
+        "source_fact:v1:6830e901e05bc7dd175e3dd0e5babe1904fd4705af4532925a83db69d2a68ece",
+        "source_fact:v1:71bc0dd2a78cfad41394173b871dc254eb8722986e07d0389963e3cc5f15ded4",
+        "source_fact:v1:83de6888e0a7477bc203f705ea9192ba15df8bc994a80f48671d3ea01528ff7c",
+        "source_fact:v1:90f3d0058044092907c6f4ff954c7b69d057bc57468d93bada72a8d9fb81fcf7",
+        "source_fact:v1:9876ebc9c5e944014859e206b475b2864ac14a1639663d5cf446de6524c36ab8",
+        "source_fact:v1:a5d95cad51aef44a45f574353b67d5eec6ca4b14b6f389ce19c2094ecb03426b",
+        "source_fact:v1:be2e47431ac363ea6e043663f6aacd695659c3867b55b3eb7cacb001cf24d455",
+        "source_fact:v1:dd258691fd1fa44bc0b2017b00fbc13bdbceb1699d9f6ac8b43a0388bfb4ba68",
+        "source_fact:v1:eab1dcb1c451f6ed96656844710ec89d0fea3c4fb3adfe71d103467ea6ebf6b3",
+        "source_fact:v1:eddba7a2248f1cd8503b4fbee83708167c318b25e795aaf106e22be362a0d982"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화",
+      "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
+      "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
+    },
     "title:bf5f98c9216050137a273126": {
       "first_seen_kst": "2026-10-19T10:51:05+09:00",
       "lanes": {
@@ -1389850,6 +1392099,37 @@
       ],
       "source_published_kst": "2026-10-07T06:30+09:00",
       "title": "“세금 억울” 권리구제 요청한 사장님…국민신문고에 “국세청 직원에 감동”"
+    },
+    "title:c94d4250b856544b3ca20088": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844161",
+      "source": "뉴시스",
+      "source_body_digest": "8bd45866e7407c906012d9e38582560485676ffa41e748781f37855217e48ce2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da2f370c25be0530c85ec2bcaf2ca5fe014618c918937340e3816c380dfb65",
+      "source_fact_keys": [
+        "source_fact:v1:0ec2794d69009342468f8a91c529f93e70e73186fc2693cc281dd0a7f7191640",
+        "source_fact:v1:3fff5bd2e7cc493322866928ab0309664d7da9a215e4cd7dd416ec6969cedd79",
+        "source_fact:v1:473aa47bd3570d093559f3b23e82d91b6d0a14be89b903ea5df3b3c30b7b0251",
+        "source_fact:v1:60e0341f3f7706a48769a92306da4a0dd8939f947dfa22b17a6a0c5e40f76526",
+        "source_fact:v1:62a495c6c93bbd2df4a4e2562d9e32e72be0520b33b6e12719448533ca200fb6",
+        "source_fact:v1:62cab90a30a72aa6b840949059def64ecb71be4d1619f88983303e165534ebe8",
+        "source_fact:v1:9c9e96d08af6504fc20aecab01fdac4600fe621c9f5a27c280384d3b9858e6ec",
+        "source_fact:v1:a6a0e84019442f88782a27fd419cf4f47c444439e3ddf8fe9ab105ce5a4e8b3d",
+        "source_fact:v1:a83b4427cd6e8a1ec63b00478ad7fe685e88608b5a00372e6efb860260c82fbf",
+        "source_fact:v1:e6c39b5e4b429804bd41023dccef6edd90d03191cd34d03e04407d8d6c7d5da3",
+        "source_fact:v1:f4e31b08895c9feb48d5306bde2e3a32db1f6f96aae533ad34f666cffb924ca8",
+        "source_fact:v1:f4e58fa1b4afbdd0722533d0eb2159dfdadca14a8d60da05ee735b1ff4df3ae8"
+      ],
+      "source_published_kst": "2026-10-28T10:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\"",
+      "telegram_core_fact": "SK하이닉스는 이날 올해 3분기 실적발표 콘퍼런스콜에서 \"내년 투자 규모는 올해 대비 상당한 증가가 예상된다\"며 \"투자 규모와 집행 시점은 고객과의 협의를 통해 확보한 중장기 수요 가시성을 바탕으로 결정할 것\"이라고 전했다.",
+      "title": "[컨콜]SK하이닉스 \"내년 투자, 올해 대비 상당히 커질 듯…국내외 인프라 확대 본격화\""
     },
     "title:c9561a91798f9643f04c14a1": {
       "first_seen_kst": "2026-10-27T22:30:07+09:00",
@@ -1413770,6 +1416050,32 @@
       "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
       "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
     },
+    "title:ef62fee6e45df15906123d47": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844219",
+      "source": "뉴시스",
+      "source_body_digest": "69c1f24823097422e016f2eade1d7ab003d6b08ddf8052004224b286465d5b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b5ffe317017673f2d766cec1d7736fe4a789c1446f613118f0af0b825e6b160",
+      "source_fact_keys": [
+        "source_fact:v1:2ae857e099c5b31f8d5a1733b045d84cb3251210ef4c80a832d6b2ef59d98960",
+        "source_fact:v1:518c002e683448410c69c9070c96e336f35521cdc764d432b565b828b86da0ec",
+        "source_fact:v1:52b2bb91cb4590e263332da44c30ff292f042e5e533aecb7f0210ca71a392347",
+        "source_fact:v1:7222cd401b0fe11e19730737a067b29d98b896196267b420311b3fa1b234e484",
+        "source_fact:v1:9a1c02ca3d3bcde4a081870cc7c2bbc3da7ff552feb3f076cf4b331270d8e48c",
+        "source_fact:v1:cd977405d1781348fb238b4aa328280ab31d0a7527000d8c9962b0a55ebe5dc6",
+        "source_fact:v1:fb379368fe5938643d99fb4f3aacff0e6bcd5b99136e9b139d428df2b4af7b05"
+      ],
+      "source_published_kst": "2026-10-28T09:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\"",
+      "telegram_core_fact": "SK하이닉스는 28일 열린 3분기 실적발표 콘퍼런스콜에서 주가와 관련해 \"회사가 창출하고 있는 이익과 현금 흐름을 충분히 반영하지 못하고 저평가 돼 있다고 보고 있다\"며 \"이러한 상황에서 자사주를 매입해 소각하는게 주당 가치를 높이는 효과적인 방법이라고 판단했다\"고 밝혔다.",
+      "title": "[컨콜]SK하이닉스 \"주가 저평가 판단…자사주 소각이 주당 가치 높이는 방법\""
+    },
     "title:ef68753ec3709ed06e0e8817": {
       "first_seen_kst": "2026-10-21T14:30:03+09:00",
       "lanes": {
@@ -1417886,6 +1420192,31 @@
       "link": "https://www.yna.co.kr/view/AKR20260930043100008",
       "source": "연합뉴스",
       "title": "[게시판] 한투운용, 라이브 세미나…\"美대표지수 투자 소개\" | 연합뉴스"
+    },
+    "title:f5e9b12e7c477b443bbdd556": {
+      "first_seen_kst": "2026-10-28T10:13:53+09:00",
+      "lanes": {
+        "live": "2026-10-28T10:13:53+09:00"
+      },
+      "last_seen_kst": "2026-10-28T10:13:53+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182587",
+      "source": "매일경제",
+      "source_body_digest": "e6abbb461648c99fe44caa75c9ae8d6683f21861d4b2dca74fbf1f11f14a084e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4e630727f12c13f7624e17ad2510535ede3c5602ba722d1af0ca8851bd3c41c4",
+      "source_fact_keys": [
+        "source_fact:v1:029391d75c74282ca6a072761c83ae8e1d5e4a147771a8d171af3ddc2860879c",
+        "source_fact:v1:0b7ba9749f0b9546994a544755499027f6e1c598a4800a9f3c886c91c1f01701",
+        "source_fact:v1:26405bd59814cade089de2d071912c3b43c53b8769f1982afb792d88553dab2b",
+        "source_fact:v1:2f6e1b16c0e4d4af74ffff227d1348bd4da76c4836a1b43cdefe8fb32d385def",
+        "source_fact:v1:5ad26906bcac0fe3bd5ec760a8e51ec3623727e989cb5154aa5455f045bfa03e",
+        "source_fact:v1:af66fc6af2d627005b66b205e237bd25f6f222248a7acf0ad3bfc1ad95377af8"
+      ],
+      "source_published_kst": "2026-10-28T05:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가",
+      "telegram_core_fact": "NBT 뱅코프(NBTB)가 3분기 순이익 5800만 달러, 희석 주당순이익(EPS) 1.11달러를 기록하며 분기 사상 최대 실적을 달성했다고 10월 27일 발표했다.",
+      "title": "NBT 뱅코프, 3분기 희석 EPS 1.11달러..전년비 7.8% 증가"
     },
     "title:f5f1524d8a844f3c8a037948": {
       "first_seen_kst": "2026-09-29T16:25:24+09:00",
@@ -1424085,5 +1426416,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-28T09:46:40+09:00"
+  "updated_at_kst": "2026-10-28T10:13:53+09:00"
 }
