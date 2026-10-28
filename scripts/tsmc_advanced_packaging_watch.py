@@ -238,7 +238,7 @@ def read_events():
             source = clean(source_node.text if source_node is not None and source_node.text else "")
             pub = parse_pub(clean(item.findtext("pubDate") or ""))
             low = (title + " " + desc).lower()
-            is_tsmc = any(k in low for k in ("tsmc", "台積電", "台积电"))
+            is_tsmc = any(k in low for k in ("tsmc", "台積電", "台积电", "台積", "台积"))
             supply_signal = (
                 any(k in low for k in ("hbm", "cowos", "substrate", "abf", "기판"))
                 and any(k in low for k in (
@@ -565,7 +565,7 @@ def extract_patch(event):
     page = article_text(event)
     text = (base + " " + page).strip()
     low = text.lower()
-    is_tsmc = any(k in low for k in ("tsmc", "台積電", "台积电"))
+    is_tsmc = any(k in low for k in ("tsmc", "台積電", "台积电", "台積", "台积"))
     supply_signal = (
         any(k in low for k in ("hbm", "cowos", "substrate", "abf", "기판"))
         and any(k in low for k in (
