@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-28T14:32:54+09:00",
-  "last_scan_count": 7,
+  "updated_at_kst": "2026-10-28T20:37:40+09:00",
+  "last_scan_count": 9,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
     "vintage": "3Q26",
@@ -133,6 +133,7 @@
     "51e0a57c2a721f4c77c22710",
     "54bea3d4ab4510e9d52b3b53",
     "55bbf1575d333d5e4db815d4",
+    "591d05e5e3f4eaa51513ff0b",
     "6cb3f9fee458cbd5414c2744",
     "89e73411422b9d710eee6410",
     "8e83ced6f5ddad839f021a48",
@@ -149,6 +150,7 @@
     "d48264b617e856e8ce2d499e",
     "d598b87380cce293712421fa",
     "e3172365bd8c10ce9681459f",
+    "e4009352aa0ce40c6ab54a73",
     "ede3b0fedd83163d4bff4e78",
     "ef0347fedd892f8507e3e383",
     "f2fefec91a3da1f1885a7a2a",
@@ -157,16 +159,16 @@
   "delivered_event_keys": [],
   "last_held": [
     {
-      "event_key": "korea|capacity|SK hynix|hbm4",
-      "source": "Chosunbiz",
+      "event_key": "taiwan|diversification|TSMC|arizona",
+      "source": "finance.biggo.com",
       "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-10-28T10:00:00+09:00"
+      "published_kst": "2026-10-28T20:25:00+09:00"
     },
     {
-      "event_key": "korea|capacity|SK hynix|core",
-      "source": "Chosunbiz",
+      "event_key": "korea|capacity|SK hynix|hbm4",
+      "source": "Moomoo",
       "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-10-28T10:00:00+09:00"
+      "published_kst": "2026-10-28T16:16:27+09:00"
     }
   ],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
