@@ -1558,12 +1558,20 @@ class Watch:
     async def _finalize_daily_close(self, close_dt: dt.datetime | None,
                                     test_seconds: int | None = None,
                                     now: dt.datetime | None = None) -> None:
+        supplied_now = now is not None
         now = now or dt.datetime.now(KST)
         if (not should_finalize_market_close(now, close_dt, test_seconds)
                 or now.date() != close_dt.date()):
             return
         state = self._daily_close_state(close_dt.date().isoformat())
         await self._prepare_program_close(close_dt, test_seconds, now)
+        # Other market-price tasks can finish while program data is awaited.
+        # Compare those receipts against the clock at plan creation, not the
+        # earlier clock captured before the await. Explicit test clocks remain fixed.
+        if not supplied_now:
+            now = dt.datetime.now(KST)
+            if now.date() != close_dt.date():
+                return
         for market in ("KOSPI", "KOSDAQ"):
             if market not in state["plans"] and market not in state["message_ids"]:
                 state["plans"][market] = self._build_daily_close_plan(market, close_dt, now)
