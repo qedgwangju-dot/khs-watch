@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from us_positioning_delivery import daily_digest_due, daily_event_label, parse_aaii_allocation, parse_conference_board_confidence, evaluate_retail_crowding
+from us_positioning_delivery import daily_digest_due, daily_event_label, parse_aaii_allocation, parse_conference_board_confidence, evaluate_retail_crowding, update_retail_survey_overlay, AAII_ALLOCATIONS_URL, BOARD_CONFIDENCE_URL
 
 
 class DailyDigestDeliveryTests(unittest.TestCase):
@@ -99,6 +99,76 @@ class RetailSentimentSurveyTests(unittest.TestCase):
         result=evaluate_retail_crowding({},a,{**b,"stock_up_vs_down_majority":None},"2026-10-28")
         self.assertFalse(result["alert"])
         self.assertIn("확인 대기", result["state"]["regime"])
+
+
+
+
+class RetailMonthlyOverlayRouteTests(unittest.TestCase):
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        (self.root / "data").mkdir()
+        (self.root / "out").mkdir()
+        self.saved = self.root / "data" / "us_fund_flow_state.json"
+        self.pending = self.root / "out" / "us_fund_flow_pending_state.json"
+        self.alert = self.root / "out" / "us_fund_flow_alert.html"
+        self.original = {"seen":{"ICI|mmf":"already-delivered"}, "values":{"ICI|mmf":{"period":"October 21, 2026"}},
+                         "derived":{"hartnett_10y_pct":5.0}}
+        self.saved.write_text(__import__("json").dumps(self.original), encoding="utf-8")
+
+    def fetch(self, url):
+        if url == AAII_ALLOCATIONS_URL:
+            return AAII_SAMPLE
+        if url == BOARD_CONFIDENCE_URL:
+            return CB_SAMPLE
+        raise AssertionError("unexpected source URL")
+
+    def test_first_month_baselines_silently_without_erasing_other_state(self):
+        result = update_retail_survey_overlay(
+            repo_root=self.root, fetch=self.fetch, on_date=date(2026, 10, 28))
+        self.assertEqual(result["status"], "baseline_saved")
+        self.assertFalse(result["telegram_sent"])
+        self.assertFalse(self.alert.exists())
+        data = __import__("json").loads(self.pending.read_text())
+        self.assertEqual(data["seen"], self.original["seen"])
+        self.assertEqual(data["derived"]["hartnett_10y_pct"], 5.0)
+        self.assertEqual(data["derived"]["retail_survey"]["pair"], "2026-09|2026-10")
+
+    def test_following_month_can_emit_single_dated_existing_route_alert(self):
+        update_retail_survey_overlay(repo_root=self.root, fetch=self.fetch, on_date=date(2026,10,28))
+        self.saved.write_text(self.pending.read_text(encoding="utf-8"), encoding="utf-8")
+        self.pending.unlink()
+        def next_month(url):
+            page = self.fetch(url)
+            return page.replace("Results for September 2026", "Results for October 2026")
+        result=update_retail_survey_overlay(
+            repo_root=self.root, fetch=next_month, on_date=date(2026,11,2))
+        self.assertEqual(result["status"], "alert_ready")
+        alert = self.alert.read_text()
+        self.assertIn("AAII 2026-10", alert)
+        self.assertIn("2026-10", alert)
+        self.assertIn("기준월", alert)
+        self.assertIn(AAII_ALLOCATIONS_URL, alert)
+        self.assertIn(BOARD_CONFIDENCE_URL, alert)
+        self.saved.write_text(self.pending.read_text(encoding="utf-8"), encoding="utf-8")
+        self.pending.unlink()
+        self.alert.unlink()
+        again=update_retail_survey_overlay(
+            repo_root=self.root, fetch=next_month, on_date=date(2026,11,2))
+        self.assertEqual(again["status"], "unchanged")
+        self.assertFalse(self.alert.exists())
+
+    def test_primary_source_failure_cannot_advance_pending_or_alert(self):
+        result=update_retail_survey_overlay(
+            repo_root=self.root,
+            fetch=lambda url: (_ for _ in ()).throw(TimeoutError("official source offline")),
+            on_date=date(2026,10,28))
+        self.assertEqual(result["status"], "source_withheld")
+        self.assertFalse(self.pending.exists())
+        self.assertFalse(self.alert.exists())
+        self.assertEqual(__import__("json").loads(self.saved.read_text()), self.original)
 
 
 if __name__ == "__main__":
