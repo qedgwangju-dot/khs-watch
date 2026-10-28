@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-28T21:37:13+09:00",
+  "last_checked_kst": "2026-10-28T22:31:22+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3525,6 +3525,15 @@
       "event_signature": "cck|general|general",
       "material_stage": 1,
       "first_seen_kst": "2026-10-28T02:32:07+09:00",
+      "suppressed_duplicate": "same_url"
+    },
+    "4ff647b6280fc42e0e255399": {
+      "title": "리벨리온, KB금융과 ‘차세대 AI·금융 생태계 구축’ MOU 체결 - Chosunbiz",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOZnhZVjRsekVLdjl4ZGltWlV6NTNFdHkxMG1WR2RzLUFLeHRvUndETmNlRm5ZeTN6bURqMUdFZE1HWmd1YzdoNEpHYm9ESFlmUzN3TEU3Wmc2MTlDalFKTzZNb1JTYzJYYlh1RU1rUzhjcVEzNjF6N2Vwbl9BbWpuZ3Fn0gGWAUFVX3lxTE51c0dDU1NsRzdLTlZKRjFoOGNVVzdoMW5CZllfeF9LeVlXdDZBMjd3WHBpZ18yUU1qczBFdC1Rbk1xTksySHV6cEhHY0diTHJHVkttdGZNY0Y4QzNuRVV6QXF2MFVoeHN3VmdnODFreWpZUHFiUHpTU2NtX2ltckpCOTk0SGpNVzJ2NFVZMkE0UTItVGZGUQ?oc=5",
+      "summary": "리벨리온, KB금융과 ‘차세대 AI·금융 생태계 구축’ MOU 체결 Chosunbiz",
+      "event_signature": "kb|general|finance",
+      "material_stage": 1,
+      "first_seen_kst": "2026-10-28T22:31:22+09:00",
       "suppressed_duplicate": "same_url"
     }
   }
