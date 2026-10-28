@@ -12025,6 +12025,28 @@
       "telegram_core_fact": "지역 미분양률이 줄어들고 있는 상황에서 입주 물량은 올해 1만752호에서 다음 해 2천846호로 급감하는 등 감소세가 이어지면서 2∼3년 뒤 공급 공백 현상이 발생할 수 있다고 보고 이번 정책을 마련했다고 시는 설명했다.",
       "title": "내년 대구 입주 물량 74% 급감…인허가 속도 높인다 | 연합뉴스"
     },
+    "core:1a8240e42884bd12804e9ff3": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etnews.com/20261028000032",
+      "source": "전자신문",
+      "source_body_digest": "6b35b456a8f84e151d0f4f94bd677b129349b2c13679bc5bbe0a80e420f88e6c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ca0566c893f2db46803055cf1063c3de07b38fb39042477145aa16033af21a4b",
+      "source_fact_identity": "source_facts:v1:32a70644a624b0bcbc1fb481d3937fbba21611d0b6570666b9f47a8997b1bf4c",
+      "source_fact_keys": [
+        "source_fact:v1:a0148969f27f1aad300780ef624dcabfc44c4dc11da5b472ff2691d8bd246b6b",
+        "source_fact:v1:eadfe04f0f51b443462f8d497eb84febb1f5d153cdb9bfae34d8113b9a56e24c",
+        "source_fact:v1:fda8c8fe52c2eb6206eb0dbf5cee0ca506dedef85505a2be9cc9cce2cd0233bd"
+      ],
+      "source_published_kst": "2026-10-28T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진",
+      "telegram_core_fact": "SK하이닉스가 2026년 3분기 매출액 104조6155억원, 영업이익 83조3338억원(영업이익률 80%), 순이익 39조7756억원(순이익률 38%)을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진"
+    },
     "core:1a8a77ac92ec4451aafb4d4b": {
       "first_seen_kst": "2026-10-17T13:39:20+09:00",
       "lanes": {
@@ -54349,6 +54371,35 @@
       "telegram_core_fact": "메모리 반도체 가격 상승으로 제조 원가 부담이 커지면서 2030년까지 글로벌 저가 스마트폰 출하량이 2억3천만대 넘게 감소할 수 있다는 전망이 나왔다.",
       "title": "메모리값 상승에 저가폰 직격탄…2030년 출하량 40% 급감 전망 | 연합뉴스"
     },
+    "core:75f9e7f32243d35c4661ebe1": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
+    },
     "core:75faba2cfea4057971eb6b29": {
       "first_seen_kst": "2026-10-13T20:49:52+09:00",
       "lanes": {
@@ -55813,6 +55864,24 @@
       "source_title": "[ET특징주] LS머트리얼즈, 美 기업에 690억 규모 UC 공급… 업계 최대 규모에 주가 3%↑",
       "telegram_core_fact": "LS머트리얼즈는 이날 미국 수소연료전지 기업에 약 5150만 달러(약 690억원) AI 데이터센터용 울트라캐패시터(UC)를 공급한다고 밝혔다.",
       "title": "[ET특징주] LS머트리얼즈, 美 기업에 690억 규모 UC 공급… 업계 최대 규모에 주가 3%↑"
+    },
+    "core:79a5ac1773bfae6a024713bf": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=676912",
+      "source": "블로터",
+      "source_body_digest": "665a9be7b037a0e52e8d0cae5b07027375ab21ec6afc240b3be217fae9935893",
+      "source_event_identity": "source_event:v2:robot_dram_demand_outlook:5e21ea3fd17c61fab481fe19b4afc1d4a14d0af86206015ac8b118c67bfea1ee",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 분기 매출 첫 100조 돌파…주주환원도 '100조 시대’",
+      "telegram_core_fact": "SK하이닉스는 올해 3분기 연결 기준 매출 104조6155억원, 영업이익 83조3338억원을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스, 분기 매출 첫 100조 돌파…주주환원도 '100조 시대’"
     },
     "core:79b338269d24f7715f892eba": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
@@ -59318,6 +59387,27 @@
       "telegram_core_fact": "12일 시에 따르면 국가데이터처의 지역별고용조사 자료를 조사한 결과 올해 상반기 속초시의 상용직 비중은 68.5%로 지난해 같은 기간(65.6%)보다 2.9%포인트 상승했다.",
       "title": "속초 고용 지표 개선…상용직 늘고 청년고용률 강원 최고 유지 | 연합뉴스"
     },
+    "core:7fc0b50c58bfd301555e0852": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027101900527",
+      "source": "연합뉴스",
+      "source_body_digest": "b3f66d30c4df66a33f6e12dba8e53a3ab172567445628eb99b80820cf1779f3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a480d7d9e1a1db3424d953c4db0bdc654e94f9e46745f3376e922bd38bd562f0",
+      "source_fact_keys": [
+        "source_fact:v1:16dcc41a0d22653d55166bd66c83595f2654387cf70837fa8a3cea12a1f676b8",
+        "source_fact:v1:a016680e1e287290d2bd9660313e6f7857e6c8ad337fb6d9acfcb4429dab6e20"
+      ],
+      "source_published_kst": "2026-10-27T13:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 연결 기준 올해 3분기 영업이익이 1조9천70억원으로 지난해 동기보다 2.4% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스"
+    },
     "core:7fcee7481b3b2eee2da7996a": {
       "first_seen_kst": "2026-10-18T11:10:24+09:00",
       "lanes": {
@@ -61699,6 +61789,28 @@
       "source_title": "LG에너지솔루션, 3분기 영업익 7560억원…분기 최대 매출",
       "telegram_core_fact": "LG에너지솔루션은 연결 기준 올해 3분기 영업이익이 지난해 동기보다 25.7% 증가한 7560억원으로 잠정 집계됐다고 8일 공시했다.",
       "title": "LG에너지솔루션, 3분기 영업익 7560억원…분기 최대 매출"
+    },
+    "core:84c2e5885cb145408b37f7a3": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.hankyung.com/article/202610289272g",
+      "source": "한국경제",
+      "source_body_digest": "426a9ad82d8098a0bd8cb96bed83a7b2304943347d5a0957f78b09d779833d8e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:659c4946924802dcd88db37849fc50f3b4dcb2567465af7e21a67271a1faf3b7",
+      "source_fact_identity": "source_facts:v1:2b5ff713435d03b0e24dbe5718d52171ad1000217af40c31cdb5face33cb19de",
+      "source_fact_keys": [
+        "source_fact:v1:0d5bf40431c8222bfb3e64761f37321416adf00eec4b0366a96052d445f1b0e7",
+        "source_fact:v1:29334332e9508e525fa9d3e51d002e9a17d9ed5119680437326317ba5159da02",
+        "source_fact:v1:51d903470bd7b8dc3a6ec06d9f0b686c3f44c9182390e1cac66a32b6256f86cf"
+      ],
+      "source_published_kst": "2026-10-28T08:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적",
+      "telegram_core_fact": "SK하이닉스는 28일 연결 기준 3분기 잠정 매출 104조6155억원, 영업이익 83조3333억원을 기록했다고 공시했다.",
+      "title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적"
     },
     "core:84c825bbd89cbf3a054b81da": {
       "first_seen_kst": "2026-10-17T01:17:18+09:00",
@@ -94846,6 +94958,30 @@
       "telegram_core_fact": "한국석유공사 유가정보시스템 오피넷에 따르면 10월 첫째 주(10월 4일∼8일) 전국 주유소 휘발유 평균 판매가는 지난주보다 L당 0.4원 내린 1857.6원이었다.",
       "title": "기름값 21주째 하락…휘발유·경유 1800원대"
     },
+    "core:ccdea69933b318e7a3aa60f1": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04729766645617184",
+      "source": "이데일리",
+      "source_body_digest": "0531b43585cb5937abb90db35bc872d4cea55474cd58169889d078ef726022b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59377091fbbf0a7b1161a500839a28167805d0781fc923fe4930d21a6a3895fc",
+      "source_fact_keys": [
+        "source_fact:v1:3569f4c7cd104baf487d3d047e439fee953e99817761871f09d12b5b563f75a7",
+        "source_fact:v1:9d31e7e10a0d5e689cfada74aa147997b604ff198f54fb837445a1a0ab7a5869",
+        "source_fact:v1:b65f4169216135b9154e48e1bfd694833a184b2fa9bcefd1384175bffdd698b8",
+        "source_fact:v1:bd649845eeb9899a48a7aa8fcc2ba0a88503d8e34eda8244495cf4a81852bf14",
+        "source_fact:v1:c37fbf990002c40827a1da133ca13870610beffe0f3b2a3848599259344fc224"
+      ],
+      "source_published_kst": "2026-10-27T16:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족",
+      "telegram_core_fact": "네이버는 자체 GPU 클러스터 구축·운영 역량과 데이터센터 운영 노하우를 바탕으로 AI 팩토리 사업을 주도한다.",
+      "title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족"
+    },
     "core:cce4a9d4228278f0a751b561": {
       "first_seen_kst": "2026-10-15T01:00:58+09:00",
       "lanes": {
@@ -109147,6 +109283,29 @@
       "telegram_core_fact": "현대글로비스가 미국 동부의 완성차 물류 거점인 필라델피아 항만 확장 개발 사업에 참여, 완성차 터미널 운영 사업 진출을 추진하는 등 물류 허브 구축에 속도를 낸다.",
       "title": "현대글로비스, 필라델피아 항만 개발 참여…물류 허브 구축 속도 | 연합뉴스"
     },
+    "core:eb736e2cbd46d495a7b053e7": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06366486645617184",
+      "source": "이데일리",
+      "source_body_digest": "0cfd7dfaad055b08869f74ad8f36adf83344a313a2718961f799812b5e30861a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4e1041a800a2845a79312637a3f355c6f6b72c596941644b053ddb58a136858",
+      "source_fact_keys": [
+        "source_fact:v1:44b3515995e7db58d79461fc59a535a0d018e9432672e05793c99328bceb6ec5",
+        "source_fact:v1:4a96530f5b2b0397624c99dd7d0ff0aab666f03f35354f98f6b0d3504b96f7c0",
+        "source_fact:v1:b664019e123e6614773b6f2b67f0878a7be4beb43a593b0e2927b5eca18f18a7",
+        "source_fact:v1:d9452742c8f894b30b220a694d83dc51d4219fb6f126b2125af2beaa94d377a4"
+      ],
+      "source_published_kst": "2026-10-27T21:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'",
+      "telegram_core_fact": "페이팔의 3분기 조정 주당순이익(EPS)은 1.45달러로, 지난해 같은 기간의 1.34달러와 시장 예상치인 1.31달러를 모두 웃돌았다.",
+      "title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'"
+    },
     "core:eb742f2c4b02da30f577353b": {
       "first_seen_kst": "2026-10-27T07:40:55+09:00",
       "lanes": {
@@ -121337,6 +121496,24 @@
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
+    "event:19e54ff9828c688820713157": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=676912",
+      "source": "블로터",
+      "source_body_digest": "665a9be7b037a0e52e8d0cae5b07027375ab21ec6afc240b3be217fae9935893",
+      "source_event_identity": "source_event:v2:robot_dram_demand_outlook:5e21ea3fd17c61fab481fe19b4afc1d4a14d0af86206015ac8b118c67bfea1ee",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 분기 매출 첫 100조 돌파…주주환원도 '100조 시대’",
+      "telegram_core_fact": "SK하이닉스는 올해 3분기 연결 기준 매출 104조6155억원, 영업이익 83조3338억원을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스, 분기 매출 첫 100조 돌파…주주환원도 '100조 시대’"
+    },
     "event:19e84bb4ef03379bba312e43": {
       "first_seen_kst": "2026-10-19T06:02:38+09:00",
       "lanes": {
@@ -124740,6 +124917,28 @@
       "source_title": "반도체 소부장도 옥석 가리기…KB운용, 액티브 ETF 출시",
       "telegram_core_fact": "KB자산운용은 국내 반도체 소부장 기업에 투자하는 ‘RISE 반도체소부장액티브 ETF’를 20일 상장한다고 밝혔다.",
       "title": "반도체 소부장도 옥석 가리기…KB운용, 액티브 ETF 출시"
+    },
+    "event:3af4e305764e5ad6252905b6": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.hankyung.com/article/202610289272g",
+      "source": "한국경제",
+      "source_body_digest": "426a9ad82d8098a0bd8cb96bed83a7b2304943347d5a0957f78b09d779833d8e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:659c4946924802dcd88db37849fc50f3b4dcb2567465af7e21a67271a1faf3b7",
+      "source_fact_identity": "source_facts:v1:2b5ff713435d03b0e24dbe5718d52171ad1000217af40c31cdb5face33cb19de",
+      "source_fact_keys": [
+        "source_fact:v1:0d5bf40431c8222bfb3e64761f37321416adf00eec4b0366a96052d445f1b0e7",
+        "source_fact:v1:29334332e9508e525fa9d3e51d002e9a17d9ed5119680437326317ba5159da02",
+        "source_fact:v1:51d903470bd7b8dc3a6ec06d9f0b686c3f44c9182390e1cac66a32b6256f86cf"
+      ],
+      "source_published_kst": "2026-10-28T08:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적",
+      "telegram_core_fact": "SK하이닉스는 28일 연결 기준 3분기 잠정 매출 104조6155억원, 영업이익 83조3333억원을 기록했다고 공시했다.",
+      "title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적"
     },
     "event:3af9e9acfbe10c728cf4465e": {
       "first_seen_kst": "2026-10-28T04:02:25+09:00",
@@ -128399,6 +128598,30 @@
       "source_title": "스페이스X-테슬라 합병 성사될까?…주주 설득부터 中 승인 필요",
       "telegram_core_fact": "스페이스X가 인수한 AI모델 '그록(Grok)'은 테슬라 차량에 무료로 제공된다.",
       "title": "스페이스X-테슬라 합병 성사될까?…주주 설득부터 中 승인 필요"
+    },
+    "event:61c38401f396d45a56e60dae": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04729766645617184",
+      "source": "이데일리",
+      "source_body_digest": "0531b43585cb5937abb90db35bc872d4cea55474cd58169889d078ef726022b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59377091fbbf0a7b1161a500839a28167805d0781fc923fe4930d21a6a3895fc",
+      "source_fact_keys": [
+        "source_fact:v1:3569f4c7cd104baf487d3d047e439fee953e99817761871f09d12b5b563f75a7",
+        "source_fact:v1:9d31e7e10a0d5e689cfada74aa147997b604ff198f54fb837445a1a0ab7a5869",
+        "source_fact:v1:b65f4169216135b9154e48e1bfd694833a184b2fa9bcefd1384175bffdd698b8",
+        "source_fact:v1:bd649845eeb9899a48a7aa8fcc2ba0a88503d8e34eda8244495cf4a81852bf14",
+        "source_fact:v1:c37fbf990002c40827a1da133ca13870610beffe0f3b2a3848599259344fc224"
+      ],
+      "source_published_kst": "2026-10-27T16:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족",
+      "telegram_core_fact": "네이버는 자체 GPU 클러스터 구축·운영 역량과 데이터센터 운영 노하우를 바탕으로 AI 팩토리 사업을 주도한다.",
+      "title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족"
     },
     "event:61d007ad6a6b9db1776ffceb": {
       "first_seen_kst": "2026-10-02T21:04:53+09:00",
@@ -144456,6 +144679,28 @@
       "source_title": "에스티팜 3분기 영업이익 157억원…작년 동기 대비 6.6%↑ | 연합뉴스",
       "telegram_core_fact": "코스닥 상장사 에스티팜[237690]은 연결 기준 올해 3분기 영업이익이 157억원으로 지난해 동기보다 6.6% 증가한 것으로 잠정 집계됐다고 27일 공시했다.",
       "title": "에스티팜 3분기 영업이익 157억원…작년 동기 대비 6.6%↑ | 연합뉴스"
+    },
+    "event:feab936caee83c62ea01d83d": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etnews.com/20261028000032",
+      "source": "전자신문",
+      "source_body_digest": "6b35b456a8f84e151d0f4f94bd677b129349b2c13679bc5bbe0a80e420f88e6c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ca0566c893f2db46803055cf1063c3de07b38fb39042477145aa16033af21a4b",
+      "source_fact_identity": "source_facts:v1:32a70644a624b0bcbc1fb481d3937fbba21611d0b6570666b9f47a8997b1bf4c",
+      "source_fact_keys": [
+        "source_fact:v1:a0148969f27f1aad300780ef624dcabfc44c4dc11da5b472ff2691d8bd246b6b",
+        "source_fact:v1:eadfe04f0f51b443462f8d497eb84febb1f5d153cdb9bfae34d8113b9a56e24c",
+        "source_fact:v1:fda8c8fe52c2eb6206eb0dbf5cee0ca506dedef85505a2be9cc9cce2cd0233bd"
+      ],
+      "source_published_kst": "2026-10-28T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진",
+      "telegram_core_fact": "SK하이닉스가 2026년 3분기 매출액 104조6155억원, 영업이익 83조3338억원(영업이익률 80%), 순이익 39조7756억원(순이익률 38%)을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진"
     },
     "event:febc28af8331c3cd3ae5eb71": {
       "first_seen_kst": "2026-09-30T23:32:53+09:00",
@@ -166747,6 +166992,29 @@
       "telegram_core_fact": "개인정보 원본을 제출하지 않고 지원금 신청 자격을 증명하거나, 다른 세입자의 보증금을 공개하지 않은 채 전세 계약의 위험도를 확인하는 블록체인 활용 사례가 공개됐다.",
       "title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개"
     },
+    "fact:2d80bd6b98ed0700432ea115": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06366486645617184",
+      "source": "이데일리",
+      "source_body_digest": "0cfd7dfaad055b08869f74ad8f36adf83344a313a2718961f799812b5e30861a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4e1041a800a2845a79312637a3f355c6f6b72c596941644b053ddb58a136858",
+      "source_fact_keys": [
+        "source_fact:v1:44b3515995e7db58d79461fc59a535a0d018e9432672e05793c99328bceb6ec5",
+        "source_fact:v1:4a96530f5b2b0397624c99dd7d0ff0aab666f03f35354f98f6b0d3504b96f7c0",
+        "source_fact:v1:b664019e123e6614773b6f2b67f0878a7be4beb43a593b0e2927b5eca18f18a7",
+        "source_fact:v1:d9452742c8f894b30b220a694d83dc51d4219fb6f126b2125af2beaa94d377a4"
+      ],
+      "source_published_kst": "2026-10-27T21:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'",
+      "telegram_core_fact": "페이팔의 3분기 조정 주당순이익(EPS)은 1.45달러로, 지난해 같은 기간의 1.34달러와 시장 예상치인 1.31달러를 모두 웃돌았다.",
+      "title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'"
+    },
     "fact:2d810b689094f68513676877": {
       "first_seen_kst": "2026-10-23T06:00:11+09:00",
       "lanes": {
@@ -177529,6 +177797,28 @@
       ],
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
+    },
+    "fact:44a5acf01b02f3ba5026777b": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etnews.com/20261028000032",
+      "source": "전자신문",
+      "source_body_digest": "6b35b456a8f84e151d0f4f94bd677b129349b2c13679bc5bbe0a80e420f88e6c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ca0566c893f2db46803055cf1063c3de07b38fb39042477145aa16033af21a4b",
+      "source_fact_identity": "source_facts:v1:32a70644a624b0bcbc1fb481d3937fbba21611d0b6570666b9f47a8997b1bf4c",
+      "source_fact_keys": [
+        "source_fact:v1:a0148969f27f1aad300780ef624dcabfc44c4dc11da5b472ff2691d8bd246b6b",
+        "source_fact:v1:eadfe04f0f51b443462f8d497eb84febb1f5d153cdb9bfae34d8113b9a56e24c",
+        "source_fact:v1:fda8c8fe52c2eb6206eb0dbf5cee0ca506dedef85505a2be9cc9cce2cd0233bd"
+      ],
+      "source_published_kst": "2026-10-28T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진",
+      "telegram_core_fact": "SK하이닉스가 2026년 3분기 매출액 104조6155억원, 영업이익 83조3338억원(영업이익률 80%), 순이익 39조7756억원(순이익률 38%)을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진"
     },
     "fact:44ce3a3e6b3c2a077c05b38b": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
@@ -215593,6 +215883,27 @@
       "source_published_kst": "2026-10-07T05:31+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
     },
+    "fact:91d0978fb4cf5fd3e2ee1a94": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027101900527",
+      "source": "연합뉴스",
+      "source_body_digest": "b3f66d30c4df66a33f6e12dba8e53a3ab172567445628eb99b80820cf1779f3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a480d7d9e1a1db3424d953c4db0bdc654e94f9e46745f3376e922bd38bd562f0",
+      "source_fact_keys": [
+        "source_fact:v1:16dcc41a0d22653d55166bd66c83595f2654387cf70837fa8a3cea12a1f676b8",
+        "source_fact:v1:a016680e1e287290d2bd9660313e6f7857e6c8ad337fb6d9acfcb4429dab6e20"
+      ],
+      "source_published_kst": "2026-10-27T13:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 연결 기준 올해 3분기 영업이익이 1조9천70억원으로 지난해 동기보다 2.4% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스"
+    },
     "fact:91f06455035f2cffc689112d": {
       "first_seen_kst": "2026-10-17T18:59:01+09:00",
       "lanes": {
@@ -240160,6 +240471,28 @@
       "telegram_core_fact": "유가증권시장 매도 사이드카는 코스피200선물 지수가 5% 이상 하락해 1분간 지속되는 경우 발동된다.",
       "title": "'검은 목요일' 코스피·코스닥 매도 사이드카 잇단 발동"
     },
+    "fact:c106632c5dfd19a352de245a": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.hankyung.com/article/202610289272g",
+      "source": "한국경제",
+      "source_body_digest": "426a9ad82d8098a0bd8cb96bed83a7b2304943347d5a0957f78b09d779833d8e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:659c4946924802dcd88db37849fc50f3b4dcb2567465af7e21a67271a1faf3b7",
+      "source_fact_identity": "source_facts:v1:2b5ff713435d03b0e24dbe5718d52171ad1000217af40c31cdb5face33cb19de",
+      "source_fact_keys": [
+        "source_fact:v1:0d5bf40431c8222bfb3e64761f37321416adf00eec4b0366a96052d445f1b0e7",
+        "source_fact:v1:29334332e9508e525fa9d3e51d002e9a17d9ed5119680437326317ba5159da02",
+        "source_fact:v1:51d903470bd7b8dc3a6ec06d9f0b686c3f44c9182390e1cac66a32b6256f86cf"
+      ],
+      "source_published_kst": "2026-10-28T08:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적",
+      "telegram_core_fact": "SK하이닉스는 28일 연결 기준 3분기 잠정 매출 104조6155억원, 영업이익 83조3333억원을 기록했다고 공시했다.",
+      "title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적"
+    },
     "fact:c10bad0897aebae10cd3e44b": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -247068,6 +247401,35 @@
       "telegram_core_fact": "시는 사전 검토를 마치는 대로 대상지를 순차적으로 방문해 건축물과 토지의 실제 이용 현황과 관련 인허가 여부 등을 확인할 계획이다.",
       "title": "부천시, 개발제한구역 내 건축물·토지 변동 61곳 현장 조사"
     },
+    "fact:cecd1c2f61523a110a48b161": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
+    },
     "fact:ced7abd6bd47d72a2b51665e": {
       "first_seen_kst": "2026-10-20T07:06:59+09:00",
       "lanes": {
@@ -250077,6 +250439,30 @@
       "source_title": "삼진식품, 중국 상하이 핵심 상권에 ‘화동 1호점’ 오픈 현지 유통망 확대 본격화",
       "telegram_core_fact": "오프라인 매장으로 브랜드 경험을 넓히는 동시에 코스트코·허마·로손 등 주요 유통채널을 통해 제품 공급망을 확대하며 중국 사업의 외연을 넓히고 있다.",
       "title": "삼진식품, 중국 상하이 핵심 상권에 ‘화동 1호점’ 오픈 현지 유통망 확대 본격화"
+    },
+    "fact:d3db598b4f15450d5ed92b74": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04729766645617184",
+      "source": "이데일리",
+      "source_body_digest": "0531b43585cb5937abb90db35bc872d4cea55474cd58169889d078ef726022b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59377091fbbf0a7b1161a500839a28167805d0781fc923fe4930d21a6a3895fc",
+      "source_fact_keys": [
+        "source_fact:v1:3569f4c7cd104baf487d3d047e439fee953e99817761871f09d12b5b563f75a7",
+        "source_fact:v1:9d31e7e10a0d5e689cfada74aa147997b604ff198f54fb837445a1a0ab7a5869",
+        "source_fact:v1:b65f4169216135b9154e48e1bfd694833a184b2fa9bcefd1384175bffdd698b8",
+        "source_fact:v1:bd649845eeb9899a48a7aa8fcc2ba0a88503d8e34eda8244495cf4a81852bf14",
+        "source_fact:v1:c37fbf990002c40827a1da133ca13870610beffe0f3b2a3848599259344fc224"
+      ],
+      "source_published_kst": "2026-10-27T16:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족",
+      "telegram_core_fact": "네이버는 자체 GPU 클러스터 구축·운영 역량과 데이터센터 운영 노하우를 바탕으로 AI 팩토리 사업을 주도한다.",
+      "title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족"
     },
     "fact:d3e92c83361e876d4d075e96": {
       "first_seen_kst": "2026-10-15T16:25:35+09:00",
@@ -285692,6 +286078,27 @@
       "telegram_core_fact": "현재 추진 중인 4천 호에 6천 호를 추가해 2030년까지 모두 1만 호를 공급한다는 계획입니다.",
       "title": "청년 주택이 곧 미래…강원 공공임대 1만 호 공급 | 연합뉴스"
     },
+    "link:1488bbbcf61750e272c64195": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027101900527",
+      "source": "연합뉴스",
+      "source_body_digest": "b3f66d30c4df66a33f6e12dba8e53a3ab172567445628eb99b80820cf1779f3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a480d7d9e1a1db3424d953c4db0bdc654e94f9e46745f3376e922bd38bd562f0",
+      "source_fact_keys": [
+        "source_fact:v1:16dcc41a0d22653d55166bd66c83595f2654387cf70837fa8a3cea12a1f676b8",
+        "source_fact:v1:a016680e1e287290d2bd9660313e6f7857e6c8ad337fb6d9acfcb4429dab6e20"
+      ],
+      "source_published_kst": "2026-10-27T13:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 연결 기준 올해 3분기 영업이익이 1조9천70억원으로 지난해 동기보다 2.4% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스"
+    },
     "link:14aeb8976dbc9e89da2dffc6": {
       "first_seen_kst": "2026-10-05T08:24:29+09:00",
       "lanes": {
@@ -301331,6 +301738,24 @@
       "source_title": "유니슨, '한국형 녹색대전환 전략 국민보고회' 참여",
       "telegram_core_fact": "풍력터빈 전문기업 유니슨은 전날 대한상공회의소에서 열린 '한국형 녹색대전환(K-GX) 전략 국민보고회'에 풍력 분야 기업으로 참여했다고 8일 밝혔다. 이 가운데 해상풍력 분야에서는 유니슨을 포함한 참여기업들이 약 2조8500억원 민간 투자를 추진한다.",
       "title": "유니슨, '한국형 녹색대전환 전략 국민보고회' 참여"
+    },
+    "link:2d28e4fa429236d1e5224949": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=676912",
+      "source": "블로터",
+      "source_body_digest": "665a9be7b037a0e52e8d0cae5b07027375ab21ec6afc240b3be217fae9935893",
+      "source_event_identity": "source_event:v2:robot_dram_demand_outlook:5e21ea3fd17c61fab481fe19b4afc1d4a14d0af86206015ac8b118c67bfea1ee",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 분기 매출 첫 100조 돌파…주주환원도 '100조 시대’",
+      "telegram_core_fact": "SK하이닉스는 올해 3분기 연결 기준 매출 104조6155억원, 영업이익 83조3338억원을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스, 분기 매출 첫 100조 돌파…주주환원도 '100조 시대’"
     },
     "link:2d2f6188a2b61f96bf616df5": {
       "first_seen_kst": "2026-10-20T14:54:10+09:00",
@@ -322735,6 +323160,35 @@
       ],
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
+    "link:4ef9b31d989830b3ebff40ed": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
     },
     "link:4efe5e62f9491947eb0a7fb3": {
       "first_seen_kst": "2026-10-03T01:23:19+09:00",
@@ -357242,6 +357696,29 @@
       "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
+    "link:84bbb8330230497d48f4997b": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06366486645617184",
+      "source": "이데일리",
+      "source_body_digest": "0cfd7dfaad055b08869f74ad8f36adf83344a313a2718961f799812b5e30861a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4e1041a800a2845a79312637a3f355c6f6b72c596941644b053ddb58a136858",
+      "source_fact_keys": [
+        "source_fact:v1:44b3515995e7db58d79461fc59a535a0d018e9432672e05793c99328bceb6ec5",
+        "source_fact:v1:4a96530f5b2b0397624c99dd7d0ff0aab666f03f35354f98f6b0d3504b96f7c0",
+        "source_fact:v1:b664019e123e6614773b6f2b67f0878a7be4beb43a593b0e2927b5eca18f18a7",
+        "source_fact:v1:d9452742c8f894b30b220a694d83dc51d4219fb6f126b2125af2beaa94d377a4"
+      ],
+      "source_published_kst": "2026-10-27T21:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'",
+      "telegram_core_fact": "페이팔의 3분기 조정 주당순이익(EPS)은 1.45달러로, 지난해 같은 기간의 1.34달러와 시장 예상치인 1.31달러를 모두 웃돌았다.",
+      "title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'"
+    },
     "link:84bc64056d0c99ffe2fc8451": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -360287,6 +360764,28 @@
       "telegram_core_fact": "정희철 무역협회 무역진흥본부장은 \"EU 환경 규제가 강화되면서 수출 현장의 행정·비용 부담이 커지고 있다\"며 \"패키지를 통해 우리 기업들이 규제에 스스로 대응할 역량을 갖추도록 적극 지원하겠다\"고 말했다.",
       "title": "무역협회, EU 포장재 규제에 수출기업 대응 원스톱 지원"
     },
+    "link:89b59c270460d51225e136d6": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etnews.com/20261028000032",
+      "source": "전자신문",
+      "source_body_digest": "6b35b456a8f84e151d0f4f94bd677b129349b2c13679bc5bbe0a80e420f88e6c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ca0566c893f2db46803055cf1063c3de07b38fb39042477145aa16033af21a4b",
+      "source_fact_identity": "source_facts:v1:32a70644a624b0bcbc1fb481d3937fbba21611d0b6570666b9f47a8997b1bf4c",
+      "source_fact_keys": [
+        "source_fact:v1:a0148969f27f1aad300780ef624dcabfc44c4dc11da5b472ff2691d8bd246b6b",
+        "source_fact:v1:eadfe04f0f51b443462f8d497eb84febb1f5d153cdb9bfae34d8113b9a56e24c",
+        "source_fact:v1:fda8c8fe52c2eb6206eb0dbf5cee0ca506dedef85505a2be9cc9cce2cd0233bd"
+      ],
+      "source_published_kst": "2026-10-28T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진",
+      "telegram_core_fact": "SK하이닉스가 2026년 3분기 매출액 104조6155억원, 영업이익 83조3338억원(영업이익률 80%), 순이익 39조7756억원(순이익률 38%)을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진"
+    },
     "link:89b6562bd4135f0f0270531b": {
       "first_seen_kst": "2026-10-28T02:49:10+09:00",
       "lanes": {
@@ -360571,6 +361070,30 @@
       "source_title": "\"매일 4시간 걸리던 계좌 조회 단번에\"…웹케시, 미래에셋 베트남에 'WeCMS' 공급",
       "telegram_core_fact": "웹케시글로벌의 베트남 법인 웹케시베트남은 미래에셋증권 베트남에 자금관리 솔루션 'WeCMS'를 공급했다고 26일 밝혔다.",
       "title": "\"매일 4시간 걸리던 계좌 조회 단번에\"…웹케시, 미래에셋 베트남에 'WeCMS' 공급"
+    },
+    "link:8a978ec0efced22131b8a9e4": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04729766645617184",
+      "source": "이데일리",
+      "source_body_digest": "0531b43585cb5937abb90db35bc872d4cea55474cd58169889d078ef726022b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59377091fbbf0a7b1161a500839a28167805d0781fc923fe4930d21a6a3895fc",
+      "source_fact_keys": [
+        "source_fact:v1:3569f4c7cd104baf487d3d047e439fee953e99817761871f09d12b5b563f75a7",
+        "source_fact:v1:9d31e7e10a0d5e689cfada74aa147997b604ff198f54fb837445a1a0ab7a5869",
+        "source_fact:v1:b65f4169216135b9154e48e1bfd694833a184b2fa9bcefd1384175bffdd698b8",
+        "source_fact:v1:bd649845eeb9899a48a7aa8fcc2ba0a88503d8e34eda8244495cf4a81852bf14",
+        "source_fact:v1:c37fbf990002c40827a1da133ca13870610beffe0f3b2a3848599259344fc224"
+      ],
+      "source_published_kst": "2026-10-27T16:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족",
+      "telegram_core_fact": "네이버는 자체 GPU 클러스터 구축·운영 역량과 데이터센터 운영 노하우를 바탕으로 AI 팩토리 사업을 주도한다.",
+      "title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족"
     },
     "link:8a9ad78bc80ef50b826590b4": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
@@ -376068,6 +376591,28 @@
       ],
       "source_published_kst": "2026-10-05T18:03+09:00",
       "title": "'빚의 제국 빛을 잃다' 보도 인상적 … 고금리 위험요인 더 짚어달라"
+    },
+    "link:a263a0725bd983dae55e5564": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.hankyung.com/article/202610289272g",
+      "source": "한국경제",
+      "source_body_digest": "426a9ad82d8098a0bd8cb96bed83a7b2304943347d5a0957f78b09d779833d8e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:659c4946924802dcd88db37849fc50f3b4dcb2567465af7e21a67271a1faf3b7",
+      "source_fact_identity": "source_facts:v1:2b5ff713435d03b0e24dbe5718d52171ad1000217af40c31cdb5face33cb19de",
+      "source_fact_keys": [
+        "source_fact:v1:0d5bf40431c8222bfb3e64761f37321416adf00eec4b0366a96052d445f1b0e7",
+        "source_fact:v1:29334332e9508e525fa9d3e51d002e9a17d9ed5119680437326317ba5159da02",
+        "source_fact:v1:51d903470bd7b8dc3a6ec06d9f0b686c3f44c9182390e1cac66a32b6256f86cf"
+      ],
+      "source_published_kst": "2026-10-28T08:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적",
+      "telegram_core_fact": "SK하이닉스는 28일 연결 기준 3분기 잠정 매출 104조6155억원, 영업이익 83조3333억원을 기록했다고 공시했다.",
+      "title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적"
     },
     "link:a266b1d1257dba41468128e1": {
       "first_seen_kst": "2026-10-26T09:34:29+09:00",
@@ -441936,6 +442481,29 @@
       "source": "머니투데이",
       "title": "\"삼성전자, 3Q 예상 영업익 107조…환율·D램 강세 둔화\"-키움"
     },
+    "original:0d46eb7f2042d537cb56d2f6": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06366486645617184",
+      "source": "이데일리",
+      "source_body_digest": "0cfd7dfaad055b08869f74ad8f36adf83344a313a2718961f799812b5e30861a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4e1041a800a2845a79312637a3f355c6f6b72c596941644b053ddb58a136858",
+      "source_fact_keys": [
+        "source_fact:v1:44b3515995e7db58d79461fc59a535a0d018e9432672e05793c99328bceb6ec5",
+        "source_fact:v1:4a96530f5b2b0397624c99dd7d0ff0aab666f03f35354f98f6b0d3504b96f7c0",
+        "source_fact:v1:b664019e123e6614773b6f2b67f0878a7be4beb43a593b0e2927b5eca18f18a7",
+        "source_fact:v1:d9452742c8f894b30b220a694d83dc51d4219fb6f126b2125af2beaa94d377a4"
+      ],
+      "source_published_kst": "2026-10-27T21:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'",
+      "telegram_core_fact": "페이팔의 3분기 조정 주당순이익(EPS)은 1.45달러로, 지난해 같은 기간의 1.34달러와 시장 예상치인 1.31달러를 모두 웃돌았다.",
+      "title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'"
+    },
     "original:0d4a7bf8582f41279362efb2": {
       "first_seen_kst": "2026-10-23T06:33:28+09:00",
       "lanes": {
@@ -471395,6 +471963,30 @@
       "telegram_core_fact": "편의점업계에 따르면 세븐일레븐이 운영하는 아이돌 포토카드 뽑기 서비스 '포카아이'와 캐릭터·K굿즈 가챠 서비스 '액션플레이존'의 누적 판매량은 최근 5만개를 넘어섰다. 후발 오픈한 2개점을 제외한 서비스 운영 점포 4곳의 올해 1~9월 전체 매출은 전년비 31% 증가했다.",
       "title": "\"포카·가챠 뽑아볼까\"…'뽑파민'에 놀이터 된 편의점"
     },
+    "original:3c6cc16171ea1fc61ebf396f": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04729766645617184",
+      "source": "이데일리",
+      "source_body_digest": "0531b43585cb5937abb90db35bc872d4cea55474cd58169889d078ef726022b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59377091fbbf0a7b1161a500839a28167805d0781fc923fe4930d21a6a3895fc",
+      "source_fact_keys": [
+        "source_fact:v1:3569f4c7cd104baf487d3d047e439fee953e99817761871f09d12b5b563f75a7",
+        "source_fact:v1:9d31e7e10a0d5e689cfada74aa147997b604ff198f54fb837445a1a0ab7a5869",
+        "source_fact:v1:b65f4169216135b9154e48e1bfd694833a184b2fa9bcefd1384175bffdd698b8",
+        "source_fact:v1:bd649845eeb9899a48a7aa8fcc2ba0a88503d8e34eda8244495cf4a81852bf14",
+        "source_fact:v1:c37fbf990002c40827a1da133ca13870610beffe0f3b2a3848599259344fc224"
+      ],
+      "source_published_kst": "2026-10-27T16:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족",
+      "telegram_core_fact": "네이버는 자체 GPU 클러스터 구축·운영 역량과 데이터센터 운영 노하우를 바탕으로 AI 팩토리 사업을 주도한다.",
+      "title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족"
+    },
     "original:3c7b40ad60634175465bd9c4": {
       "first_seen_kst": "2026-10-22T02:53:34+09:00",
       "lanes": {
@@ -496583,6 +497175,28 @@
       "source": "뉴시스",
       "title": "SG \"삼성전자 온양캠퍼스 에코스틸아스콘 1차 시공 완료\""
     },
+    "original:64594af1890b2ea5fe5d8057": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etnews.com/20261028000032",
+      "source": "전자신문",
+      "source_body_digest": "6b35b456a8f84e151d0f4f94bd677b129349b2c13679bc5bbe0a80e420f88e6c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ca0566c893f2db46803055cf1063c3de07b38fb39042477145aa16033af21a4b",
+      "source_fact_identity": "source_facts:v1:32a70644a624b0bcbc1fb481d3937fbba21611d0b6570666b9f47a8997b1bf4c",
+      "source_fact_keys": [
+        "source_fact:v1:a0148969f27f1aad300780ef624dcabfc44c4dc11da5b472ff2691d8bd246b6b",
+        "source_fact:v1:eadfe04f0f51b443462f8d497eb84febb1f5d153cdb9bfae34d8113b9a56e24c",
+        "source_fact:v1:fda8c8fe52c2eb6206eb0dbf5cee0ca506dedef85505a2be9cc9cce2cd0233bd"
+      ],
+      "source_published_kst": "2026-10-28T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진",
+      "telegram_core_fact": "SK하이닉스가 2026년 3분기 매출액 104조6155억원, 영업이익 83조3338억원(영업이익률 80%), 순이익 39조7756억원(순이익률 38%)을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진"
+    },
     "original:645bdccd9c06896eb78ba7eb": {
       "first_seen_kst": "2026-10-20T11:44:43+09:00",
       "lanes": {
@@ -496932,6 +497546,27 @@
       "source_title": "신현송 \"통화정책, 효과 내고 있어…금리 인상 행위보다 정책 기조가 중요\"",
       "telegram_core_fact": "신현송 한국은행 총재는 12일 \"통화정책은 한두번의 금리 인상 행위보다 전체적인 통화정책 기조가 중요하다\"고 밝혔다.",
       "title": "신현송 \"통화정책, 효과 내고 있어…금리 인상 행위보다 정책 기조가 중요\""
+    },
+    "original:64d9c991c27937297a147ee8": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027101900527",
+      "source": "연합뉴스",
+      "source_body_digest": "b3f66d30c4df66a33f6e12dba8e53a3ab172567445628eb99b80820cf1779f3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a480d7d9e1a1db3424d953c4db0bdc654e94f9e46745f3376e922bd38bd562f0",
+      "source_fact_keys": [
+        "source_fact:v1:16dcc41a0d22653d55166bd66c83595f2654387cf70837fa8a3cea12a1f676b8",
+        "source_fact:v1:a016680e1e287290d2bd9660313e6f7857e6c8ad337fb6d9acfcb4429dab6e20"
+      ],
+      "source_published_kst": "2026-10-27T13:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 연결 기준 올해 3분기 영업이익이 1조9천70억원으로 지난해 동기보다 2.4% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스"
     },
     "original:64dedd6e6366b0c1ab0b4355": {
       "first_seen_kst": "2026-10-20T18:31:59+09:00",
@@ -523881,6 +524516,28 @@
       "telegram_core_fact": "홍콩 증시 상장 중국기업주 중심의 H주 지수는 전일보다 46.57 포인트, 0.57% 떨어진 8082.40으로 장을 끝냈다. 홍콩 증시는 7일 중국 증시가 국경절 연휴를 끝내고거래 재개를 하루 앞둔 가운데 지분조정 매물이 선행하면서 3거래일 만에 반락 마감했다.",
       "title": "[올댓차이나] 홍콩 증시, 지분조정 매도로 사흘 만에 반락 마감… H주 0.57%↓"
     },
+    "original:901750702e4cb445fdb59d82": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.hankyung.com/article/202610289272g",
+      "source": "한국경제",
+      "source_body_digest": "426a9ad82d8098a0bd8cb96bed83a7b2304943347d5a0957f78b09d779833d8e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:659c4946924802dcd88db37849fc50f3b4dcb2567465af7e21a67271a1faf3b7",
+      "source_fact_identity": "source_facts:v1:2b5ff713435d03b0e24dbe5718d52171ad1000217af40c31cdb5face33cb19de",
+      "source_fact_keys": [
+        "source_fact:v1:0d5bf40431c8222bfb3e64761f37321416adf00eec4b0366a96052d445f1b0e7",
+        "source_fact:v1:29334332e9508e525fa9d3e51d002e9a17d9ed5119680437326317ba5159da02",
+        "source_fact:v1:51d903470bd7b8dc3a6ec06d9f0b686c3f44c9182390e1cac66a32b6256f86cf"
+      ],
+      "source_published_kst": "2026-10-28T08:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적",
+      "telegram_core_fact": "SK하이닉스는 28일 연결 기준 3분기 잠정 매출 104조6155억원, 영업이익 83조3333억원을 기록했다고 공시했다.",
+      "title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적"
+    },
     "original:901b61690ae0187edf6cc93e": {
       "first_seen_kst": "2026-09-24T10:55:51+09:00",
       "lanes": {
@@ -533706,6 +534363,24 @@
       "source_title": "나스닥 급락 속 ‘나홀로 상승’ 애플, 시총 5조달러 첫 돌파…엔비디아 이어 두번째",
       "telegram_core_fact": "이날 기술주 중심의 나스닥종합지수가 1.88% 급락하는 등 뉴욕증시 전반에 약세가 나타난 상황에서도 애플은 상승 마감하며 시가총액 5조달러 고지를 넘어섰다. 미국 상장기업 가운데 종가 기준 시가총액 5조달러를 돌파한 것은 AI 반도체 기업 엔비디아에 이어 애플이 두 번째다.",
       "title": "나스닥 급락 속 ‘나홀로 상승’ 애플, 시총 5조달러 첫 돌파…엔비디아 이어 두번째"
+    },
+    "original:9f4bc5e360516bce49baa9fa": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=676912",
+      "source": "블로터",
+      "source_body_digest": "665a9be7b037a0e52e8d0cae5b07027375ab21ec6afc240b3be217fae9935893",
+      "source_event_identity": "source_event:v2:robot_dram_demand_outlook:5e21ea3fd17c61fab481fe19b4afc1d4a14d0af86206015ac8b118c67bfea1ee",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 분기 매출 첫 100조 돌파…주주환원도 '100조 시대’",
+      "telegram_core_fact": "SK하이닉스는 올해 3분기 연결 기준 매출 104조6155억원, 영업이익 83조3338억원을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스, 분기 매출 첫 100조 돌파…주주환원도 '100조 시대’"
     },
     "original:9f4f6f95e2886c676c05bf7d": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -582748,6 +583423,35 @@
       "source": "전자신문",
       "title": "은행 예금 넣어두면 3.5%인데…“배당수익률 21%, 비교불가 ETF 나왔다”"
     },
+    "original:f04005511f82eea24a43c42a": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
+    },
     "original:f04aba7ee0a599070d7d64d3": {
       "first_seen_kst": "2026-10-01T17:28:33+09:00",
       "lanes": {
@@ -592936,6 +593640,35 @@
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
     },
+    "source_fact:004cc3728518164aa2b3dd34": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
+    },
     "source_fact:004d6a705c391c5ad6bc0058": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -597835,6 +598568,30 @@
       "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
       "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
+    "source_fact:02296e757d82372b2cda1bce": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04729766645617184",
+      "source": "이데일리",
+      "source_body_digest": "0531b43585cb5937abb90db35bc872d4cea55474cd58169889d078ef726022b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59377091fbbf0a7b1161a500839a28167805d0781fc923fe4930d21a6a3895fc",
+      "source_fact_keys": [
+        "source_fact:v1:3569f4c7cd104baf487d3d047e439fee953e99817761871f09d12b5b563f75a7",
+        "source_fact:v1:9d31e7e10a0d5e689cfada74aa147997b604ff198f54fb837445a1a0ab7a5869",
+        "source_fact:v1:b65f4169216135b9154e48e1bfd694833a184b2fa9bcefd1384175bffdd698b8",
+        "source_fact:v1:bd649845eeb9899a48a7aa8fcc2ba0a88503d8e34eda8244495cf4a81852bf14",
+        "source_fact:v1:c37fbf990002c40827a1da133ca13870610beffe0f3b2a3848599259344fc224"
+      ],
+      "source_published_kst": "2026-10-27T16:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족",
+      "telegram_core_fact": "네이버는 자체 GPU 클러스터 구축·운영 역량과 데이터센터 운영 노하우를 바탕으로 AI 팩토리 사업을 주도한다.",
+      "title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족"
     },
     "source_fact:022a2ae909b53fe0a5810362": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -618181,6 +618938,27 @@
       "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
       "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
     },
+    "source_fact:0a313fa96c59e646fa4e2942": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027101900527",
+      "source": "연합뉴스",
+      "source_body_digest": "b3f66d30c4df66a33f6e12dba8e53a3ab172567445628eb99b80820cf1779f3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a480d7d9e1a1db3424d953c4db0bdc654e94f9e46745f3376e922bd38bd562f0",
+      "source_fact_keys": [
+        "source_fact:v1:16dcc41a0d22653d55166bd66c83595f2654387cf70837fa8a3cea12a1f676b8",
+        "source_fact:v1:a016680e1e287290d2bd9660313e6f7857e6c8ad337fb6d9acfcb4429dab6e20"
+      ],
+      "source_published_kst": "2026-10-27T13:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 연결 기준 올해 3분기 영업이익이 1조9천70억원으로 지난해 동기보다 2.4% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스"
+    },
     "source_fact:0a3371f07a8af19f925ca7fe": {
       "first_seen_kst": "2026-10-23T15:44:53+09:00",
       "lanes": {
@@ -620282,6 +621060,28 @@
       "source_title": "중간선거 앞둔 트럼프 ‘폭주’…꼬여만 가는 러-우크라戰",
       "telegram_core_fact": "로이터통신에 따르면 트럼프 대통령은 지난 9일(현지시간) 블라디미르 푸틴 러시아 대통령과의 통화 후 러시아가 즉시 30만톤(t) 이상의 경유를 미국과 글로벌 시장에 공급한다고 자신의 사회관계망서비스(SNS) ‘트루스소셜’을 통해 발표했다.",
       "title": "중간선거 앞둔 트럼프 ‘폭주’…꼬여만 가는 러-우크라戰"
+    },
+    "source_fact:0b14be39020819284854cb83": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.hankyung.com/article/202610289272g",
+      "source": "한국경제",
+      "source_body_digest": "426a9ad82d8098a0bd8cb96bed83a7b2304943347d5a0957f78b09d779833d8e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:659c4946924802dcd88db37849fc50f3b4dcb2567465af7e21a67271a1faf3b7",
+      "source_fact_identity": "source_facts:v1:2b5ff713435d03b0e24dbe5718d52171ad1000217af40c31cdb5face33cb19de",
+      "source_fact_keys": [
+        "source_fact:v1:0d5bf40431c8222bfb3e64761f37321416adf00eec4b0366a96052d445f1b0e7",
+        "source_fact:v1:29334332e9508e525fa9d3e51d002e9a17d9ed5119680437326317ba5159da02",
+        "source_fact:v1:51d903470bd7b8dc3a6ec06d9f0b686c3f44c9182390e1cac66a32b6256f86cf"
+      ],
+      "source_published_kst": "2026-10-28T08:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적",
+      "telegram_core_fact": "SK하이닉스는 28일 연결 기준 3분기 잠정 매출 104조6155억원, 영업이익 83조3333억원을 기록했다고 공시했다.",
+      "title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적"
     },
     "source_fact:0b1759e72635aacf7e358373": {
       "first_seen_kst": "2026-10-22T03:23:27+09:00",
@@ -674648,6 +675448,28 @@
       "telegram_core_fact": "국토부의 전수조사 결과에 따르면 이미 시공사를 선정한 전국 568곳의 재건축·재개발 사업장 중 공사비 검증 대상인데도 검증을 진행하지 않은 사업장이 총 138곳으로 집계됐다.",
       "title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검"
     },
+    "source_fact:200d5bbbfd018d8002a62f46": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.hankyung.com/article/202610289272g",
+      "source": "한국경제",
+      "source_body_digest": "426a9ad82d8098a0bd8cb96bed83a7b2304943347d5a0957f78b09d779833d8e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:659c4946924802dcd88db37849fc50f3b4dcb2567465af7e21a67271a1faf3b7",
+      "source_fact_identity": "source_facts:v1:2b5ff713435d03b0e24dbe5718d52171ad1000217af40c31cdb5face33cb19de",
+      "source_fact_keys": [
+        "source_fact:v1:0d5bf40431c8222bfb3e64761f37321416adf00eec4b0366a96052d445f1b0e7",
+        "source_fact:v1:29334332e9508e525fa9d3e51d002e9a17d9ed5119680437326317ba5159da02",
+        "source_fact:v1:51d903470bd7b8dc3a6ec06d9f0b686c3f44c9182390e1cac66a32b6256f86cf"
+      ],
+      "source_published_kst": "2026-10-28T08:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적",
+      "telegram_core_fact": "SK하이닉스는 28일 연결 기준 3분기 잠정 매출 104조6155억원, 영업이익 83조3333억원을 기록했다고 공시했다.",
+      "title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적"
+    },
     "source_fact:200e31e62a26a3a6155b4a4c": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -727161,6 +727983,35 @@
       "telegram_core_fact": "이재원 유안타증권 연구원은 “현재 국내 주식시장의 가장 큰 고민은 반도체 실적이 아닌 외국인 수급”이라며 “삼성전자 3분기 영업이익이 시장 기대를 상회했고 메모리 가격과 AI 인프라 투자도 견조하지만, 외국인 매도 지속에 코스피의 상대적 부진이 지속되고 있다”고 말했다.",
       "title": "코스피 199조 던진 외국인 이건 계속 샀다는데…10조 가량 담은 ‘ETF’"
     },
+    "source_fact:33717bf60a081faeb888f0a6": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
+    },
     "source_fact:3371e18e0c293a8b9c6818ce": {
       "first_seen_kst": "2026-10-13T06:17:31+09:00",
       "lanes": {
@@ -764673,6 +765524,29 @@
       "telegram_core_fact": "한 정유업계 관계자는 \"경유를 더 생산하려면 원유를 더 투입해야 하고, 그 과정에서 휘발유와 등유 등 다른 제품도 함께 생산된다\"며 \"경유뿐 아니라 휘발유·등유의 수출 제한도 함께 완화하는 것이 필요하다\"고 말했다.",
       "title": "국내 경유 판매 7.6% 줄자…정부, 수출 빗장 먼저 푼다"
     },
+    "source_fact:423ab51052bbff5645bbde45": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06366486645617184",
+      "source": "이데일리",
+      "source_body_digest": "0cfd7dfaad055b08869f74ad8f36adf83344a313a2718961f799812b5e30861a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4e1041a800a2845a79312637a3f355c6f6b72c596941644b053ddb58a136858",
+      "source_fact_keys": [
+        "source_fact:v1:44b3515995e7db58d79461fc59a535a0d018e9432672e05793c99328bceb6ec5",
+        "source_fact:v1:4a96530f5b2b0397624c99dd7d0ff0aab666f03f35354f98f6b0d3504b96f7c0",
+        "source_fact:v1:b664019e123e6614773b6f2b67f0878a7be4beb43a593b0e2927b5eca18f18a7",
+        "source_fact:v1:d9452742c8f894b30b220a694d83dc51d4219fb6f126b2125af2beaa94d377a4"
+      ],
+      "source_published_kst": "2026-10-27T21:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'",
+      "telegram_core_fact": "페이팔의 3분기 조정 주당순이익(EPS)은 1.45달러로, 지난해 같은 기간의 1.34달러와 시장 예상치인 1.31달러를 모두 웃돌았다.",
+      "title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'"
+    },
     "source_fact:423f983f3c74c9807f45cdcb": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -772854,6 +773728,35 @@
       "source_published_kst": "2026-10-07T08:37+09:00",
       "title": "LS에코에너지, AI데이터센터용 대용량 버스덕트에 80억원 투자 | 연합뉴스"
     },
+    "source_fact:45740b80cdffba4f0cbfbcc2": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
+    },
     "source_fact:4574f2039e54742fcfe53dee": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
       "lanes": {
@@ -778770,6 +779673,29 @@
       "source_title": "이스라엘 중앙은행, '가상화폐로 제재 우회' 네타냐후 제동 | 연합뉴스",
       "telegram_core_fact": "이스라엘에 대한 금융 제재가 부과됐을 때 가상화폐로 우회하자는 베냐민 네타냐후 총리의 구상에 대해 이스라엘 중앙은행이 제동을 걸었다.",
       "title": "이스라엘 중앙은행, '가상화폐로 제재 우회' 네타냐후 제동 | 연합뉴스"
+    },
+    "source_fact:4783b69f95dea9cbdfea7a31": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06366486645617184",
+      "source": "이데일리",
+      "source_body_digest": "0cfd7dfaad055b08869f74ad8f36adf83344a313a2718961f799812b5e30861a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4e1041a800a2845a79312637a3f355c6f6b72c596941644b053ddb58a136858",
+      "source_fact_keys": [
+        "source_fact:v1:44b3515995e7db58d79461fc59a535a0d018e9432672e05793c99328bceb6ec5",
+        "source_fact:v1:4a96530f5b2b0397624c99dd7d0ff0aab666f03f35354f98f6b0d3504b96f7c0",
+        "source_fact:v1:b664019e123e6614773b6f2b67f0878a7be4beb43a593b0e2927b5eca18f18a7",
+        "source_fact:v1:d9452742c8f894b30b220a694d83dc51d4219fb6f126b2125af2beaa94d377a4"
+      ],
+      "source_published_kst": "2026-10-27T21:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'",
+      "telegram_core_fact": "페이팔의 3분기 조정 주당순이익(EPS)은 1.45달러로, 지난해 같은 기간의 1.34달러와 시장 예상치인 1.31달러를 모두 웃돌았다.",
+      "title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'"
     },
     "source_fact:4784c40f80b3895501f806e5": {
       "first_seen_kst": "2026-10-15T11:11:30+09:00",
@@ -827481,6 +828407,28 @@
       "telegram_core_fact": "일본은 지난해 트럼프 행정부의 상호관세 부과에 5500억달러 대미투자를 약속하며 무역합의를 체결했다.",
       "title": "트럼프 \"日, 뉴욕주 반도체 공장 건설에 210억달러 투자\""
     },
+    "source_fact:597414b21af8373680f8988e": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.hankyung.com/article/202610289272g",
+      "source": "한국경제",
+      "source_body_digest": "426a9ad82d8098a0bd8cb96bed83a7b2304943347d5a0957f78b09d779833d8e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:659c4946924802dcd88db37849fc50f3b4dcb2567465af7e21a67271a1faf3b7",
+      "source_fact_identity": "source_facts:v1:2b5ff713435d03b0e24dbe5718d52171ad1000217af40c31cdb5face33cb19de",
+      "source_fact_keys": [
+        "source_fact:v1:0d5bf40431c8222bfb3e64761f37321416adf00eec4b0366a96052d445f1b0e7",
+        "source_fact:v1:29334332e9508e525fa9d3e51d002e9a17d9ed5119680437326317ba5159da02",
+        "source_fact:v1:51d903470bd7b8dc3a6ec06d9f0b686c3f44c9182390e1cac66a32b6256f86cf"
+      ],
+      "source_published_kst": "2026-10-28T08:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적",
+      "telegram_core_fact": "SK하이닉스는 28일 연결 기준 3분기 잠정 매출 104조6155억원, 영업이익 83조3333억원을 기록했다고 공시했다.",
+      "title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적"
+    },
     "source_fact:5974d8eb326def541de17dca": {
       "first_seen_kst": "2026-10-21T08:30:35+09:00",
       "lanes": {
@@ -852840,6 +853788,35 @@
       ],
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "엠투클라우드 \"백신 유통 이력 '디지털 관리' 의료기관까지 확대\""
+    },
+    "source_fact:6353db7eb28682bf21d97c2a": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
     },
     "source_fact:63540224d9036e9014a2037a": {
       "first_seen_kst": "2026-10-19T16:05:04+09:00",
@@ -883697,6 +884674,28 @@
       "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스가 일본 키옥시아 지분 차익을 활용한 16조원 특별배당 추진 보도에 대해 확정된 사항이 없다고 밝혔다.",
       "title": "SK하이닉스, '16조 특별배당' 보도에 \"확정된 사항 없어\" [공시]"
     },
+    "source_fact:6f2d56fcbb9ddbc98af845d6": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etnews.com/20261028000032",
+      "source": "전자신문",
+      "source_body_digest": "6b35b456a8f84e151d0f4f94bd677b129349b2c13679bc5bbe0a80e420f88e6c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ca0566c893f2db46803055cf1063c3de07b38fb39042477145aa16033af21a4b",
+      "source_fact_identity": "source_facts:v1:32a70644a624b0bcbc1fb481d3937fbba21611d0b6570666b9f47a8997b1bf4c",
+      "source_fact_keys": [
+        "source_fact:v1:a0148969f27f1aad300780ef624dcabfc44c4dc11da5b472ff2691d8bd246b6b",
+        "source_fact:v1:eadfe04f0f51b443462f8d497eb84febb1f5d153cdb9bfae34d8113b9a56e24c",
+        "source_fact:v1:fda8c8fe52c2eb6206eb0dbf5cee0ca506dedef85505a2be9cc9cce2cd0233bd"
+      ],
+      "source_published_kst": "2026-10-28T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진",
+      "telegram_core_fact": "SK하이닉스가 2026년 3분기 매출액 104조6155억원, 영업이익 83조3338억원(영업이익률 80%), 순이익 39조7756억원(순이익률 38%)을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진"
+    },
     "source_fact:6f30b7c5ef21bfef2a7f46fd": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
       "lanes": {
@@ -894706,6 +895705,30 @@
       ],
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:73975f3868eba46674dae840": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04729766645617184",
+      "source": "이데일리",
+      "source_body_digest": "0531b43585cb5937abb90db35bc872d4cea55474cd58169889d078ef726022b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59377091fbbf0a7b1161a500839a28167805d0781fc923fe4930d21a6a3895fc",
+      "source_fact_keys": [
+        "source_fact:v1:3569f4c7cd104baf487d3d047e439fee953e99817761871f09d12b5b563f75a7",
+        "source_fact:v1:9d31e7e10a0d5e689cfada74aa147997b604ff198f54fb837445a1a0ab7a5869",
+        "source_fact:v1:b65f4169216135b9154e48e1bfd694833a184b2fa9bcefd1384175bffdd698b8",
+        "source_fact:v1:bd649845eeb9899a48a7aa8fcc2ba0a88503d8e34eda8244495cf4a81852bf14",
+        "source_fact:v1:c37fbf990002c40827a1da133ca13870610beffe0f3b2a3848599259344fc224"
+      ],
+      "source_published_kst": "2026-10-27T16:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족",
+      "telegram_core_fact": "네이버는 자체 GPU 클러스터 구축·운영 역량과 데이터센터 운영 노하우를 바탕으로 AI 팩토리 사업을 주도한다.",
+      "title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족"
     },
     "source_fact:7398545659970cbe79f58bf0": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
@@ -914740,6 +915763,28 @@
       ],
       "source_published_kst": "2026-10-07T00:55+09:00",
       "title": "국제 유가·美 국채 수익률 동반 하락…뉴욕 증시 사상 최고"
+    },
+    "source_fact:7b11cfe824df201782df37d7": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etnews.com/20261028000032",
+      "source": "전자신문",
+      "source_body_digest": "6b35b456a8f84e151d0f4f94bd677b129349b2c13679bc5bbe0a80e420f88e6c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ca0566c893f2db46803055cf1063c3de07b38fb39042477145aa16033af21a4b",
+      "source_fact_identity": "source_facts:v1:32a70644a624b0bcbc1fb481d3937fbba21611d0b6570666b9f47a8997b1bf4c",
+      "source_fact_keys": [
+        "source_fact:v1:a0148969f27f1aad300780ef624dcabfc44c4dc11da5b472ff2691d8bd246b6b",
+        "source_fact:v1:eadfe04f0f51b443462f8d497eb84febb1f5d153cdb9bfae34d8113b9a56e24c",
+        "source_fact:v1:fda8c8fe52c2eb6206eb0dbf5cee0ca506dedef85505a2be9cc9cce2cd0233bd"
+      ],
+      "source_published_kst": "2026-10-28T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진",
+      "telegram_core_fact": "SK하이닉스가 2026년 3분기 매출액 104조6155억원, 영업이익 83조3338억원(영업이익률 80%), 순이익 39조7756억원(순이익률 38%)을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진"
     },
     "source_fact:7b14b7ea63d5c113eb7e4644": {
       "first_seen_kst": "2026-10-28T07:11:08+09:00",
@@ -948068,6 +949113,35 @@
       "telegram_core_fact": "앤트로픽이 다음 달 기업공개(IPO)를 앞두고 3분기 매출이 50% 오르면서 2분기 연속 흑자를 기록한 것으로 전해졌다.",
       "title": "앤트로픽, 3분기 매출 50% 성장…IPO 앞두고 2분기 연속 흑자"
     },
+    "source_fact:884593616484fe6d9b04f7c3": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
+    },
     "source_fact:884713db687091c238448e10": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
       "lanes": {
@@ -959034,6 +960108,35 @@
       "source_title": "JP모간, 실적 부진에도 '매수'…내년 전망 긍정적-웰스파고",
       "telegram_core_fact": "전날 JP모간은 3분기 주당순이익(EPS)이 5.57달러로 시장 전망치였던 5.90~5.94달러를 밑돌았다고 밝혔다.",
       "title": "JP모간, 실적 부진에도 '매수'…내년 전망 긍정적-웰스파고"
+    },
+    "source_fact:8ca61587e2ef36bc1f4e0bd1": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
     },
     "source_fact:8ca6bdcae45f6914d5933835": {
       "first_seen_kst": "2026-10-24T01:49:56+09:00",
@@ -1027210,6 +1028313,30 @@
       "telegram_core_fact": "홈 뱅크셰어(HOMB)는 3분기(7~9월) GAAP 기준 순이익이 1억2950만 달러로 전년비 4.7% 늘어 분기 기준 사상 최대를 기록했으며, 희석 주당순이익(EPS)은 0.65달러로 전년 동기(0.63달러)보다 3.2% 증가했다고 14일(현지시간) 발표했다.",
       "title": "홈 뱅크셰어, 3분기 순이익 1억3000만 달러..역대 최고"
     },
+    "source_fact:a674c53a53aff707a0b448be": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04729766645617184",
+      "source": "이데일리",
+      "source_body_digest": "0531b43585cb5937abb90db35bc872d4cea55474cd58169889d078ef726022b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59377091fbbf0a7b1161a500839a28167805d0781fc923fe4930d21a6a3895fc",
+      "source_fact_keys": [
+        "source_fact:v1:3569f4c7cd104baf487d3d047e439fee953e99817761871f09d12b5b563f75a7",
+        "source_fact:v1:9d31e7e10a0d5e689cfada74aa147997b604ff198f54fb837445a1a0ab7a5869",
+        "source_fact:v1:b65f4169216135b9154e48e1bfd694833a184b2fa9bcefd1384175bffdd698b8",
+        "source_fact:v1:bd649845eeb9899a48a7aa8fcc2ba0a88503d8e34eda8244495cf4a81852bf14",
+        "source_fact:v1:c37fbf990002c40827a1da133ca13870610beffe0f3b2a3848599259344fc224"
+      ],
+      "source_published_kst": "2026-10-27T16:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족",
+      "telegram_core_fact": "네이버는 자체 GPU 클러스터 구축·운영 역량과 데이터센터 운영 노하우를 바탕으로 AI 팩토리 사업을 주도한다.",
+      "title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족"
+    },
     "source_fact:a678ad27e718d2b2ab00b6b3": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
       "lanes": {
@@ -1062046,6 +1063173,29 @@
       "source_published_kst": "2026-10-06T21:25+09:00",
       "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
     },
+    "source_fact:b3bf839e0cac4ccdf820ec0a": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06366486645617184",
+      "source": "이데일리",
+      "source_body_digest": "0cfd7dfaad055b08869f74ad8f36adf83344a313a2718961f799812b5e30861a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4e1041a800a2845a79312637a3f355c6f6b72c596941644b053ddb58a136858",
+      "source_fact_keys": [
+        "source_fact:v1:44b3515995e7db58d79461fc59a535a0d018e9432672e05793c99328bceb6ec5",
+        "source_fact:v1:4a96530f5b2b0397624c99dd7d0ff0aab666f03f35354f98f6b0d3504b96f7c0",
+        "source_fact:v1:b664019e123e6614773b6f2b67f0878a7be4beb43a593b0e2927b5eca18f18a7",
+        "source_fact:v1:d9452742c8f894b30b220a694d83dc51d4219fb6f126b2125af2beaa94d377a4"
+      ],
+      "source_published_kst": "2026-10-27T21:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'",
+      "telegram_core_fact": "페이팔의 3분기 조정 주당순이익(EPS)은 1.45달러로, 지난해 같은 기간의 1.34달러와 시장 예상치인 1.31달러를 모두 웃돌았다.",
+      "title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'"
+    },
     "source_fact:b3c2249a7459035b19d26075": {
       "first_seen_kst": "2026-10-13T08:34:55+09:00",
       "lanes": {
@@ -1069394,6 +1070544,30 @@
       "source_title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급",
       "telegram_core_fact": "무선통신 인프라 장비 전문기업 티제이이노베이션(TJ Innovation)은 일본 이동통신사업자 소프트뱅크(SoftBank)에 고출력 광 DAS(분산안테나시스템)를 공급한다고 12일 밝혔다.",
       "title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급"
+    },
+    "source_fact:b67ee3ecbd5f0fa2d9bdba9d": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04729766645617184",
+      "source": "이데일리",
+      "source_body_digest": "0531b43585cb5937abb90db35bc872d4cea55474cd58169889d078ef726022b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59377091fbbf0a7b1161a500839a28167805d0781fc923fe4930d21a6a3895fc",
+      "source_fact_keys": [
+        "source_fact:v1:3569f4c7cd104baf487d3d047e439fee953e99817761871f09d12b5b563f75a7",
+        "source_fact:v1:9d31e7e10a0d5e689cfada74aa147997b604ff198f54fb837445a1a0ab7a5869",
+        "source_fact:v1:b65f4169216135b9154e48e1bfd694833a184b2fa9bcefd1384175bffdd698b8",
+        "source_fact:v1:bd649845eeb9899a48a7aa8fcc2ba0a88503d8e34eda8244495cf4a81852bf14",
+        "source_fact:v1:c37fbf990002c40827a1da133ca13870610beffe0f3b2a3848599259344fc224"
+      ],
+      "source_published_kst": "2026-10-27T16:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족",
+      "telegram_core_fact": "네이버는 자체 GPU 클러스터 구축·운영 역량과 데이터센터 운영 노하우를 바탕으로 AI 팩토리 사업을 주도한다.",
+      "title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족"
     },
     "source_fact:b68068a0055df998ae0cc4d6": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
@@ -1095386,6 +1096560,27 @@
       "source_title": "하나카드, 3분기 순이익 494억원⋯전년比 17.4%↓",
       "telegram_core_fact": "하나카드의 올해 3분기 당기순이익이 494억원으로 전년비 17.4% 감소했다.",
       "title": "하나카드, 3분기 순이익 494억원⋯전년比 17.4%↓"
+    },
+    "source_fact:c09d1fc3c323e0fe3dd206dc": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027101900527",
+      "source": "연합뉴스",
+      "source_body_digest": "b3f66d30c4df66a33f6e12dba8e53a3ab172567445628eb99b80820cf1779f3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a480d7d9e1a1db3424d953c4db0bdc654e94f9e46745f3376e922bd38bd562f0",
+      "source_fact_keys": [
+        "source_fact:v1:16dcc41a0d22653d55166bd66c83595f2654387cf70837fa8a3cea12a1f676b8",
+        "source_fact:v1:a016680e1e287290d2bd9660313e6f7857e6c8ad337fb6d9acfcb4429dab6e20"
+      ],
+      "source_published_kst": "2026-10-27T13:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 연결 기준 올해 3분기 영업이익이 1조9천70억원으로 지난해 동기보다 2.4% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스"
     },
     "source_fact:c0a26e55601edcc26a863908": {
       "first_seen_kst": "2026-10-24T22:41:02+09:00",
@@ -1157063,6 +1158258,35 @@
       "telegram_core_fact": "프랑스의 이번 나포 작전은 도널드 트럼프 미국 대통령이 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 푸틴 대통령과 합의했다고 발표해 유럽 내 우려가 커진 상황에서 이뤄졌다.",
       "title": "'경유딜' 트럼프 보란 듯…마크롱, 러 그림자 함대 나포 발표 | 연합뉴스"
     },
+    "source_fact:d7e3309325c60c8bb87cc2f2": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
+    },
     "source_fact:d7e3e18f494b625ef1965aef": {
       "first_seen_kst": "2026-10-17T04:08:20+09:00",
       "lanes": {
@@ -1167858,6 +1169082,35 @@
       "telegram_core_fact": "메타는 올해 3분기에만 AI 모델 개발과 이를 뒷받침할 데이터센터 구축 등에 349억1000만달러의 자본지출(Capex)을 집행했다.",
       "title": "‘그래도 믿을 건 AI’ 스페이스X 이어 메타도 주가 쑥쑥…투자 심리 개선 기대 [투자360]"
     },
+    "source_fact:dc33313ff11cfb77531e0216": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
+    },
     "source_fact:dc35b23ccaa6f63ed856767b": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -1169950,6 +1171203,35 @@
       "source_title": "[오늘의 증시]美 반도체 약세에…코스피 하락세 이어지나",
       "telegram_core_fact": "MSCI 한국 증시 ETF는 4.02% 하락한 가운데 필라델피아 반도체 지수도 2.67% 내렸다. 미국 뉴욕증시가 주요 기업들의 실적 발표와 물가 지표 공개를 앞두고 혼조세로 마감한 가운데 13일 국내증시 또한 약세를 이어갈 것으로 전망된다.",
       "title": "[오늘의 증시]美 반도체 약세에…코스피 하락세 이어지나"
+    },
+    "source_fact:dd0e22eaa174f47e24a2c20e": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
     },
     "source_fact:dd15f871c20e4f7bf9630854": {
       "first_seen_kst": "2026-10-27T04:53:25+09:00",
@@ -1219421,6 +1220703,30 @@
       "telegram_core_fact": "한국거래소에 따르면 미국 원유·천연가스 탐사·생산 기업에 투자하는 ‘RISE 미국S&P원유생산기업(합성 H)’은 이달 들어 전날까지 12.42% 상승했다.",
       "title": "중동 불안 장기화…원유 ETF 강세"
     },
+    "source_fact:ef8f1dad79d991edad4053da": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04729766645617184",
+      "source": "이데일리",
+      "source_body_digest": "0531b43585cb5937abb90db35bc872d4cea55474cd58169889d078ef726022b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59377091fbbf0a7b1161a500839a28167805d0781fc923fe4930d21a6a3895fc",
+      "source_fact_keys": [
+        "source_fact:v1:3569f4c7cd104baf487d3d047e439fee953e99817761871f09d12b5b563f75a7",
+        "source_fact:v1:9d31e7e10a0d5e689cfada74aa147997b604ff198f54fb837445a1a0ab7a5869",
+        "source_fact:v1:b65f4169216135b9154e48e1bfd694833a184b2fa9bcefd1384175bffdd698b8",
+        "source_fact:v1:bd649845eeb9899a48a7aa8fcc2ba0a88503d8e34eda8244495cf4a81852bf14",
+        "source_fact:v1:c37fbf990002c40827a1da133ca13870610beffe0f3b2a3848599259344fc224"
+      ],
+      "source_published_kst": "2026-10-27T16:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족",
+      "telegram_core_fact": "네이버는 자체 GPU 클러스터 구축·운영 역량과 데이터센터 운영 노하우를 바탕으로 AI 팩토리 사업을 주도한다.",
+      "title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족"
+    },
     "source_fact:ef9adf9e862a4b89d38b3d39": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -1221685,6 +1222991,29 @@
       "telegram_core_fact": "HD현대마린솔루션 3분기 매출은 6501억원으로 전년비 26.7% 증가했습니다.",
       "title": "NH투자증권 \"HD현대마린솔루션, 성장 동력 유효…저평가 국면\""
     },
+    "source_fact:f08e9161ffa27cf44f7be75c": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06366486645617184",
+      "source": "이데일리",
+      "source_body_digest": "0cfd7dfaad055b08869f74ad8f36adf83344a313a2718961f799812b5e30861a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4e1041a800a2845a79312637a3f355c6f6b72c596941644b053ddb58a136858",
+      "source_fact_keys": [
+        "source_fact:v1:44b3515995e7db58d79461fc59a535a0d018e9432672e05793c99328bceb6ec5",
+        "source_fact:v1:4a96530f5b2b0397624c99dd7d0ff0aab666f03f35354f98f6b0d3504b96f7c0",
+        "source_fact:v1:b664019e123e6614773b6f2b67f0878a7be4beb43a593b0e2927b5eca18f18a7",
+        "source_fact:v1:d9452742c8f894b30b220a694d83dc51d4219fb6f126b2125af2beaa94d377a4"
+      ],
+      "source_published_kst": "2026-10-27T21:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'",
+      "telegram_core_fact": "페이팔의 3분기 조정 주당순이익(EPS)은 1.45달러로, 지난해 같은 기간의 1.34달러와 시장 예상치인 1.31달러를 모두 웃돌았다.",
+      "title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'"
+    },
     "source_fact:f090f03a4cc65c4ba2ef5fe9": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -1222980,6 +1224309,35 @@
       "source_title": "외국인 208조 매도세, 올해만 특별한걸까…최근 3년 외인 투자 방향은?",
       "telegram_core_fact": "올해 4309.63으로 출발해 최고 9114.55까지 치솟았던 코스피가 외국인 투자자의 208조원대 순매도 폭탄에 밀려 5500선까지 급락했다.",
       "title": "외국인 208조 매도세, 올해만 특별한걸까…최근 3년 외인 투자 방향은?"
+    },
+    "source_fact:f102a0fec84b64f52fd590bc": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
     },
     "source_fact:f1040c0149e7913b77317d42": {
       "first_seen_kst": "2026-10-21T06:23:27+09:00",
@@ -1246898,6 +1248256,28 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:fb2071149e00a9c1487af441": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etnews.com/20261028000032",
+      "source": "전자신문",
+      "source_body_digest": "6b35b456a8f84e151d0f4f94bd677b129349b2c13679bc5bbe0a80e420f88e6c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ca0566c893f2db46803055cf1063c3de07b38fb39042477145aa16033af21a4b",
+      "source_fact_identity": "source_facts:v1:32a70644a624b0bcbc1fb481d3937fbba21611d0b6570666b9f47a8997b1bf4c",
+      "source_fact_keys": [
+        "source_fact:v1:a0148969f27f1aad300780ef624dcabfc44c4dc11da5b472ff2691d8bd246b6b",
+        "source_fact:v1:eadfe04f0f51b443462f8d497eb84febb1f5d153cdb9bfae34d8113b9a56e24c",
+        "source_fact:v1:fda8c8fe52c2eb6206eb0dbf5cee0ca506dedef85505a2be9cc9cce2cd0233bd"
+      ],
+      "source_published_kst": "2026-10-28T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진",
+      "telegram_core_fact": "SK하이닉스가 2026년 3분기 매출액 104조6155억원, 영업이익 83조3338억원(영업이익률 80%), 순이익 39조7756억원(순이익률 38%)을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진"
+    },
     "source_fact:fb208a6201632064730e86d3": {
       "first_seen_kst": "2026-10-23T22:13:57+09:00",
       "lanes": {
@@ -1267977,6 +1269357,29 @@
       "link": "https://www.mt.co.kr/stock/2026/09/23/2026092308381066303",
       "source": "머니투데이",
       "title": "\"삼성전자, 3Q 예상 영업익 107조…환율·D램 강세 둔화\"-키움"
+    },
+    "title:0d46eb7f2042d537cb56d2f6": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06366486645617184",
+      "source": "이데일리",
+      "source_body_digest": "0cfd7dfaad055b08869f74ad8f36adf83344a313a2718961f799812b5e30861a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4e1041a800a2845a79312637a3f355c6f6b72c596941644b053ddb58a136858",
+      "source_fact_keys": [
+        "source_fact:v1:44b3515995e7db58d79461fc59a535a0d018e9432672e05793c99328bceb6ec5",
+        "source_fact:v1:4a96530f5b2b0397624c99dd7d0ff0aab666f03f35354f98f6b0d3504b96f7c0",
+        "source_fact:v1:b664019e123e6614773b6f2b67f0878a7be4beb43a593b0e2927b5eca18f18a7",
+        "source_fact:v1:d9452742c8f894b30b220a694d83dc51d4219fb6f126b2125af2beaa94d377a4"
+      ],
+      "source_published_kst": "2026-10-27T21:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'",
+      "telegram_core_fact": "페이팔의 3분기 조정 주당순이익(EPS)은 1.45달러로, 지난해 같은 기간의 1.34달러와 시장 예상치인 1.31달러를 모두 웃돌았다.",
+      "title": "[美특징주]페이팔, 실적 개선 불구 경영 정상화 우려에 개장 전 반응 '미미'"
     },
     "title:0d4a7bf8582f41279362efb2": {
       "first_seen_kst": "2026-10-23T06:33:28+09:00",
@@ -1297949,6 +1299352,30 @@
       "telegram_core_fact": "편의점업계에 따르면 세븐일레븐이 운영하는 아이돌 포토카드 뽑기 서비스 '포카아이'와 캐릭터·K굿즈 가챠 서비스 '액션플레이존'의 누적 판매량은 최근 5만개를 넘어섰다. 후발 오픈한 2개점을 제외한 서비스 운영 점포 4곳의 올해 1~9월 전체 매출은 전년비 31% 증가했다.",
       "title": "\"포카·가챠 뽑아볼까\"…'뽑파민'에 놀이터 된 편의점"
     },
+    "title:3c6cc16171ea1fc61ebf396f": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04729766645617184",
+      "source": "이데일리",
+      "source_body_digest": "0531b43585cb5937abb90db35bc872d4cea55474cd58169889d078ef726022b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59377091fbbf0a7b1161a500839a28167805d0781fc923fe4930d21a6a3895fc",
+      "source_fact_keys": [
+        "source_fact:v1:3569f4c7cd104baf487d3d047e439fee953e99817761871f09d12b5b563f75a7",
+        "source_fact:v1:9d31e7e10a0d5e689cfada74aa147997b604ff198f54fb837445a1a0ab7a5869",
+        "source_fact:v1:b65f4169216135b9154e48e1bfd694833a184b2fa9bcefd1384175bffdd698b8",
+        "source_fact:v1:bd649845eeb9899a48a7aa8fcc2ba0a88503d8e34eda8244495cf4a81852bf14",
+        "source_fact:v1:c37fbf990002c40827a1da133ca13870610beffe0f3b2a3848599259344fc224"
+      ],
+      "source_published_kst": "2026-10-27T16:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족",
+      "telegram_core_fact": "네이버는 자체 GPU 클러스터 구축·운영 역량과 데이터센터 운영 노하우를 바탕으로 AI 팩토리 사업을 주도한다.",
+      "title": "네이버, 브룩필드와 AI 인프라 계약…엔비디아 투자 선결조건 충족"
+    },
     "title:3c7b40ad60634175465bd9c4": {
       "first_seen_kst": "2026-10-22T02:53:34+09:00",
       "lanes": {
@@ -1323645,6 +1325072,28 @@
       "source": "뉴시스",
       "title": "SG \"삼성전자 온양캠퍼스 에코스틸아스콘 1차 시공 완료\""
     },
+    "title:64594af1890b2ea5fe5d8057": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etnews.com/20261028000032",
+      "source": "전자신문",
+      "source_body_digest": "6b35b456a8f84e151d0f4f94bd677b129349b2c13679bc5bbe0a80e420f88e6c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:ca0566c893f2db46803055cf1063c3de07b38fb39042477145aa16033af21a4b",
+      "source_fact_identity": "source_facts:v1:32a70644a624b0bcbc1fb481d3937fbba21611d0b6570666b9f47a8997b1bf4c",
+      "source_fact_keys": [
+        "source_fact:v1:a0148969f27f1aad300780ef624dcabfc44c4dc11da5b472ff2691d8bd246b6b",
+        "source_fact:v1:eadfe04f0f51b443462f8d497eb84febb1f5d153cdb9bfae34d8113b9a56e24c",
+        "source_fact:v1:fda8c8fe52c2eb6206eb0dbf5cee0ca506dedef85505a2be9cc9cce2cd0233bd"
+      ],
+      "source_published_kst": "2026-10-28T09:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진",
+      "telegram_core_fact": "SK하이닉스가 2026년 3분기 매출액 104조6155억원, 영업이익 83조3338억원(영업이익률 80%), 순이익 39조7756억원(순이익률 38%)을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스 분기 매출 100조원 돌파…주주환원도 100조원 추진"
+    },
     "title:645bdccd9c06896eb78ba7eb": {
       "first_seen_kst": "2026-10-20T11:44:43+09:00",
       "lanes": {
@@ -1323994,6 +1325443,27 @@
       "source_title": "신현송 \"통화정책, 효과 내고 있어…금리 인상 행위보다 정책 기조가 중요\"",
       "telegram_core_fact": "신현송 한국은행 총재는 12일 \"통화정책은 한두번의 금리 인상 행위보다 전체적인 통화정책 기조가 중요하다\"고 밝혔다.",
       "title": "신현송 \"통화정책, 효과 내고 있어…금리 인상 행위보다 정책 기조가 중요\""
+    },
+    "title:64d9c991c27937297a147ee8": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261027101900527",
+      "source": "연합뉴스",
+      "source_body_digest": "b3f66d30c4df66a33f6e12dba8e53a3ab172567445628eb99b80820cf1779f3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a480d7d9e1a1db3424d953c4db0bdc654e94f9e46745f3376e922bd38bd562f0",
+      "source_fact_keys": [
+        "source_fact:v1:16dcc41a0d22653d55166bd66c83595f2654387cf70837fa8a3cea12a1f676b8",
+        "source_fact:v1:a016680e1e287290d2bd9660313e6f7857e6c8ad337fb6d9acfcb4429dab6e20"
+      ],
+      "source_published_kst": "2026-10-27T13:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 신한지주[055550]는 연결 기준 올해 3분기 영업이익이 1조9천70억원으로 지난해 동기보다 2.4% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
+      "title": "신한지주 3분기 영업이익 1조9천70억원…작년 동기 대비 2.4%↓ | 연합뉴스"
     },
     "title:64dedd6e6366b0c1ab0b4355": {
       "first_seen_kst": "2026-10-20T18:31:59+09:00",
@@ -1351377,6 +1352847,28 @@
       "telegram_core_fact": "홍콩 증시 상장 중국기업주 중심의 H주 지수는 전일보다 46.57 포인트, 0.57% 떨어진 8082.40으로 장을 끝냈다. 홍콩 증시는 7일 중국 증시가 국경절 연휴를 끝내고거래 재개를 하루 앞둔 가운데 지분조정 매물이 선행하면서 3거래일 만에 반락 마감했다.",
       "title": "[올댓차이나] 홍콩 증시, 지분조정 매도로 사흘 만에 반락 마감… H주 0.57%↓"
     },
+    "title:901750702e4cb445fdb59d82": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.hankyung.com/article/202610289272g",
+      "source": "한국경제",
+      "source_body_digest": "426a9ad82d8098a0bd8cb96bed83a7b2304943347d5a0957f78b09d779833d8e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:659c4946924802dcd88db37849fc50f3b4dcb2567465af7e21a67271a1faf3b7",
+      "source_fact_identity": "source_facts:v1:2b5ff713435d03b0e24dbe5718d52171ad1000217af40c31cdb5face33cb19de",
+      "source_fact_keys": [
+        "source_fact:v1:0d5bf40431c8222bfb3e64761f37321416adf00eec4b0366a96052d445f1b0e7",
+        "source_fact:v1:29334332e9508e525fa9d3e51d002e9a17d9ed5119680437326317ba5159da02",
+        "source_fact:v1:51d903470bd7b8dc3a6ec06d9f0b686c3f44c9182390e1cac66a32b6256f86cf"
+      ],
+      "source_published_kst": "2026-10-28T08:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적",
+      "telegram_core_fact": "SK하이닉스는 28일 연결 기준 3분기 잠정 매출 104조6155억원, 영업이익 83조3333억원을 기록했다고 공시했다.",
+      "title": "[속보] SK하이닉스, 3분기 영업익 83조 돌파…사상 최대 실적"
+    },
     "title:901b61690ae0187edf6cc93e": {
       "first_seen_kst": "2026-09-24T10:55:51+09:00",
       "lanes": {
@@ -1361577,6 +1363069,24 @@
       "source_title": "나스닥 급락 속 ‘나홀로 상승’ 애플, 시총 5조달러 첫 돌파…엔비디아 이어 두번째",
       "telegram_core_fact": "이날 기술주 중심의 나스닥종합지수가 1.88% 급락하는 등 뉴욕증시 전반에 약세가 나타난 상황에서도 애플은 상승 마감하며 시가총액 5조달러 고지를 넘어섰다. 미국 상장기업 가운데 종가 기준 시가총액 5조달러를 돌파한 것은 AI 반도체 기업 엔비디아에 이어 애플이 두 번째다.",
       "title": "나스닥 급락 속 ‘나홀로 상승’ 애플, 시총 5조달러 첫 돌파…엔비디아 이어 두번째"
+    },
+    "title:9f4bc5e360516bce49baa9fa": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=676912",
+      "source": "블로터",
+      "source_body_digest": "665a9be7b037a0e52e8d0cae5b07027375ab21ec6afc240b3be217fae9935893",
+      "source_event_identity": "source_event:v2:robot_dram_demand_outlook:5e21ea3fd17c61fab481fe19b4afc1d4a14d0af86206015ac8b118c67bfea1ee",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-28T08:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK하이닉스, 분기 매출 첫 100조 돌파…주주환원도 '100조 시대’",
+      "telegram_core_fact": "SK하이닉스는 올해 3분기 연결 기준 매출 104조6155억원, 영업이익 83조3338억원을 기록했다고 28일 밝혔다.",
+      "title": "SK하이닉스, 분기 매출 첫 100조 돌파…주주환원도 '100조 시대’"
     },
     "title:9f4f6f95e2886c676c05bf7d": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -1411556,6 +1413066,35 @@
       "source": "전자신문",
       "title": "은행 예금 넣어두면 3.5%인데…“배당수익률 21%, 비교불가 ETF 나왔다”"
     },
+    "title:f04005511f82eea24a43c42a": {
+      "first_seen_kst": "2026-10-28T09:19:30+09:00",
+      "lanes": {
+        "live": "2026-10-28T09:19:30+09:00"
+      },
+      "last_seen_kst": "2026-10-28T09:19:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2640895?trc=main_market_lnews",
+      "source": "이투데이",
+      "source_body_digest": "5eab0896a96ee02029d86ab19b7d922a9a1e2ad8ee43f4082b8c03890b80e3a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6333fc3a6a10fc673939e7d887c403b4c6fc57fe5f8ca3f82648d072a91bc41f",
+      "source_fact_keys": [
+        "source_fact:v1:06454b252cbb6d8033b90a11629498c47f0fd5056c797fbe32978d6d6666e7f9",
+        "source_fact:v1:3c566853ea8d1bf62ae1c25a5d73d603be0e13a1d73520bc3f34ee4eb5781887",
+        "source_fact:v1:4882c26a1e37a941704efc995a3d81388eaf57331de2762ec087ebbb7f6e5a0f",
+        "source_fact:v1:4e52853a189d687ac64202fbdf7d1019f96b7a63b9d3d9b24545c6bf5afbdcf1",
+        "source_fact:v1:57e65d7d234473094f7c6341c78b2782f17d0fb1870c9f5acd12b4929ddddf0f",
+        "source_fact:v1:603f82c4c97f6fd5f36bd3e098af744b19a1c9b9f9d66455563f5c618359bcff",
+        "source_fact:v1:92b33773ecdcbb62cddd95bef8cf9d72f3f0d8f0af33061a39cb2484c6a92d31",
+        "source_fact:v1:a0bfa08d30c200264805b0de5aae3613c54f315594690e3d8ad6154ff4168027",
+        "source_fact:v1:c544c60ae76b2d2eceecbbbe83bddbc8622fdb1aed7d3afb94e1197e46455d1d",
+        "source_fact:v1:d9bcd33b48f8d60e0b4800424ed07ee8a634c68e455971d4ce0f1312ae4fa45a"
+      ],
+      "source_published_kst": "2026-10-28T08:39+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥",
+      "telegram_core_fact": "우주산업과 AI 로봇 산업이 차세대 성장 분야로 주목받으면서 스페이스X와 테슬라에 동시에 투자하는 상장지수펀드(ETF)에 관심이 쏠린다. 해당 ETF는 우주산업 대표 기업인 스페이스X와 AI 기반 로봇 산업을 추진하는 테슬라에 각각 25%씩 투자하고, 나머지 50%를 미국 단기국채 ETF에 배분하는 채권혼합형 상품이다.",
+      "title": "KB운용, 스페이스X·테슬라 동시 투자 ETF 주목…우주·로봇 성장성 겨냥"
+    },
     "title:f04aba7ee0a599070d7d64d3": {
       "first_seen_kst": "2026-10-01T17:28:33+09:00",
       "lanes": {
@@ -1421321,5 +1422860,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-28T08:44:02+09:00"
+  "updated_at_kst": "2026-10-28T09:19:30+09:00"
 }
