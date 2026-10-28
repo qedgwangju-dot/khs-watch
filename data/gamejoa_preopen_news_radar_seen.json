@@ -7828,6 +7828,34 @@
       "telegram_core_fact": "로보AI(AIIO)가 9월 한 달 잠정 매출(미감사)이 1억 달러를 넘어섰으며, 연초 이후 실적을 토대로 2026년 연간 매출을 약 6억 달러로 예상한다고 7일 발표했다.",
       "title": "로보AI, 9월 매출 1억달러 돌파..올 매출 6억달러 전망"
     },
+    "core:106bd61bfaf324e699bddd76": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
+    },
     "core:108438da41e85092d670f256": {
       "first_seen_kst": "2026-10-21T01:36:25+09:00",
       "lanes": {
@@ -17761,6 +17789,28 @@
       "source_title": "테크 리소시즈, 하이랜드밸리 구리광산 파업 돌입..가동 축소",
       "telegram_core_fact": "회사는 이번 파업이 전체 생산량에 미치는 영향이 노동 쟁의 기간에 따라 달라질 것이라고 밝혔다.",
       "title": "테크 리소시즈, 하이랜드밸리 구리광산 파업 돌입..가동 축소"
+    },
+    "core:23f7aba91c527ac3939fcfa1": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844646",
+      "source": "뉴시스",
+      "source_body_digest": "10dfd2eb1d9fc41f9742d498514145210c7d2614e3254e58fca6270256762445",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d011e5f23afc12c951240a8075c5d2325289a0746dad14731e08332edd67126",
+      "source_fact_identity": "source_facts:v1:da9d993bfff654e2c1c8331db2a55e8ebb1ad4f38df344ecaa2c241d91a2be07",
+      "source_fact_keys": [
+        "source_fact:v1:a8c60af4da237188eea93fa7cefebdcf40b315b3fd23e4d6802359b17f34c911",
+        "source_fact:v1:c8b3c2d3c47463b91852af9ceafa7d2a2d7be880eb79a2ed6fc75e9a1fd0d5a8",
+        "source_fact:v1:ee6a6644bdefa96f18221139b8cb3f0abc8fef7a70117624c5c8657feac0ed84"
+      ],
+      "source_published_kst": "2026-10-28T13:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑",
+      "telegram_core_fact": "HD현대중공업은 올해 3분기 연결 기준 매출 5조7536억원, 영업이익 8992억원을 기록했다고 28일 공시했다.",
+      "title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑"
     },
     "core:23f7ff3c171131d29b5842c7": {
       "first_seen_kst": "2026-10-13T09:21:17+09:00",
@@ -32056,6 +32106,28 @@
       "source_title": "美배당에 액티브 더한 ETF 상장",
       "telegram_core_fact": "삼성자산운용은 오는 20일 'KODEX 미국배당다우존스액티브' ETF를 신규 상장한다고 19일 밝혔다.",
       "title": "美배당에 액티브 더한 ETF 상장"
+    },
+    "core:400c0fb586bec0f7ee70c5d7": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102813241264728",
+      "source": "머니투데이",
+      "source_body_digest": "fb74674320cbecf6b024c6d0450d577f581cc69c0420ea7462c89b708fb2a819",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48e6472bf89a79996072fdb70e4bc9686b2df9bc724ab4e059c1d416c92806e4",
+      "source_fact_keys": [
+        "source_fact:v1:510768e0cb3e11c2d2fd44285208469ce519e996c63cc65a24b39f379d05bba8",
+        "source_fact:v1:743f34467fca0433156c1bb18d68e74879e4d5e2defa07cf0709463d774a10e7",
+        "source_fact:v1:c8eb31029dd879ad1cb9b736fde50733bb12f4503a09b5bbbb5442bb56469113"
+      ],
+      "source_published_kst": "2026-10-28T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\"",
+      "telegram_core_fact": "해운협회는 최근 이란이 호르무즈 해협 통항 규정 위반을 이유로 한국 해운사 장금상선 소속 선박들에 법적조치를 취할 수 있다고 경고했다는 보도와 관련해 장금상선 측에 사실관계를 확인했다고 밝혔다.",
+      "title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\""
     },
     "core:40163a79f06d7b0437ff710c": {
       "first_seen_kst": "2026-10-17T12:11:32+09:00",
@@ -46361,6 +46433,28 @@
       "telegram_core_fact": "트리플 플래그 프레셔스 메탈스(TFPM)는 3분기 잠정 매출액이 1억670만 달러, 금 환산 온스(GEO) 기준 판매량이 2만5030온스로 집계됐다고 10월 7일 발표했다.",
       "title": "트리플 플래그 프레셔스, 3분기 잠정 매출 1억700만 달러..라벤스우드 첫 인도"
     },
+    "core:60b11450fdddb8907f51cca6": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000207",
+      "source": "전자신문",
+      "source_body_digest": "439545fd65f2536b4713e0e54021d43caafe38912f8d68fb9670d64bccc47000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:55de82f81ccdc796be1542e58db28bba0e83892e94a70d77489271deeb10f6f3",
+      "source_fact_keys": [
+        "source_fact:v1:2bb55206460eeb4e7e0b0f99e69506d866f229b0a74cad50affe273cccd70ea4",
+        "source_fact:v1:c1ff9002d963b7d7181ceb2a22adae7db36c465957f2a0862601b898056e83c6",
+        "source_fact:v1:cc46e956c574edd02c3204449f7ed4bf643a8f97f4e0d8cbfa6a4b62fb4bb637"
+      ],
+      "source_published_kst": "2026-10-28T13:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소",
+      "telegram_core_fact": "주요 증권사들의 순이익이 전분기 대비 일제히 감소했고, 증시 거래대금이 고점 대비 60% 넘게 줄어들면서 증권업종 주가가 바닥권에 근접했다는 분석도 나온다.",
+      "title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소"
+    },
     "core:60eda3cd6714aad9dc186929": {
       "first_seen_kst": "2026-10-13T00:22:20+09:00",
       "lanes": {
@@ -53183,6 +53277,28 @@
       "telegram_core_fact": "중국 외골격 로봇 기업 지케 테크놀로지(极?科技)는 70여개 국가에 제품을 공급하고 있으며, B라운드 투자에서 앤트그룹과 메이퇀룽주, 세쿼이아차이나 등의 투자를 유치했다. 시장조사업체 IDC에 따르면 2025년 중국 외골격 로봇 출하량은 약 2만6000대로 집계됐다.",
       "title": "[테크 차이나] 일상 속으로 파고드는 외골격 로봇…소비자용 제품 중심으로 시장 확대"
     },
+    "core:6edb6085794f563a557c786e": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000226",
+      "source": "전자신문",
+      "source_body_digest": "272fabad12aba849c4d0fa6045742eb28aafc2729966d04963a73d7b3973b6b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72957b2f362fc6df14ac81b01112c6406c290f7bc17c12b4408c801fa3d67c96",
+      "source_fact_keys": [
+        "source_fact:v1:0a514191f2a9238c639a17f65b7842146b37b7d7804691659db26c53c323e1a1",
+        "source_fact:v1:215f9a5e81ecd5f90fe18a60868a6a70e81903767ce3bb50e8f0e17dd882677c",
+        "source_fact:v1:52bdb4df9d9cbbb042d22b85a06049cf4e9434af549d0c9dbee0ad9b05266dde"
+      ],
+      "source_published_kst": "2026-10-28T13:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입",
+      "telegram_core_fact": "현대차는 지난해 186조 2545억 원의 사상 최대 매출을 달성했고, 하이브리드 라인업 확대에 힘입어 미국 시장 연간 100만 대 및 글로벌 친환경차 96만 대 판매를 돌파했다.",
+      "title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입"
+    },
     "core:6efe8a10c95810c513127276": {
       "first_seen_kst": "2026-10-20T19:58:15+09:00",
       "lanes": {
@@ -59670,6 +59786,27 @@
       "source_title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표",
       "telegram_core_fact": "블룸버그(Bloomberg)에 따르면 앤트로픽은 이르면 11월 중순 기업공개(IPO)를 추진한다.",
       "title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표"
+    },
+    "core:7c3e04b0ac7c3c6e0a6de537": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/28/2026102813083890974",
+      "source": "머니투데이",
+      "source_body_digest": "d98879fe2774ccc0b8d5e4e413c87784cf5ede132a41c83ff4757186ed561210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07b32eb127cf0f44e1bf0ce1fbde86f09b42139f198ac6799725cebfa527a1a9",
+      "source_fact_keys": [
+        "source_fact:v1:4659657f851d31a11b2c71050f52f9e4ca14bc5c871a4ab52fc60a1bd2fd75dd",
+        "source_fact:v1:9e93723c5eeb388e05fd58f6da561b8eea3386c2a33aa654439375cc28856d28"
+      ],
+      "source_published_kst": "2026-10-28T13:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\"",
+      "telegram_core_fact": "렌터카업체의 주요 자금조달 창구인 캐피탈사가 여신 규모와 자금 공급 조건을 결정하는 상황에서 렌탈 취급한도까지 확대되면, 중소업체가 캐피탈사와 경쟁하기 더 어려워질 수 있다는 것이다.",
+      "title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\""
     },
     "core:7c3f8aec35eadf977724cfb1": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
@@ -104079,6 +104216,27 @@
       "telegram_core_fact": "브랜치아웃 푸드(BOF)가 주당 1.70달러에 보통주 294만1177주를 발행하는 총 500만 달러 인수 방식 공모 유상증자 가격을 확정했다고 10월 23일 발표했다. 공모가 1.70달러가 시장에서 어떻게 소화되는지가 향후 주가 흐름의 변수가 될 전망이다.",
       "title": "브랜치아웃 푸드, 500만 달러 공모 확정..주당 1.70달러 신주 발행"
     },
+    "core:d89c960a3db515036443148a": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028104400527",
+      "source": "연합뉴스",
+      "source_body_digest": "4529b352fa2a771e757614bbf1229413a79f59bc1c8a8e99a5b9e280fd02e407",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:f754c5bfed1c9c293a589725d65ae3a7bab35a3495d71785b5ca0baf64a45f7d",
+      "source_fact_identity": "source_facts:v1:0f4a8304fc97239a4dfe200e1de3532ce383f8d278d0807958fdcc39f1d74a32",
+      "source_fact_keys": [
+        "source_fact:v1:21716b1a2ede954d1bdde4cedd0d4510ff55f4d760954836e39da75f1ce77cb1",
+        "source_fact:v1:858a6fa780aa9133cc07d7125e8980459ac0a221a6a317aff3eebe7d9e54a313"
+      ],
+      "source_published_kst": "2026-10-28T13:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대마린엔진[071970]은 연결 기준 올해 3분기 영업이익이 603억원으로 지난해 동기보다 197.2% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스"
+    },
     "core:d8a92b4a0c566ecfd45b99ae": {
       "first_seen_kst": "2026-10-27T00:32:16+09:00",
       "lanes": {
@@ -124229,6 +124387,28 @@
       "telegram_core_fact": "폴더블·롤러블·스트레처블 등 화면 형태를 바꾸는 기술이 스마트폰과 TV를 넘어 차량·웨어러블·확장현실(XR)·로봇 등으로 적용 영역을 넓히면서 국내 디스플레이 기업들이 프리미엄 기술 경쟁력뿐 아니라 새로운 폼팩터의 양산 역량과 산업별 AI 대응력을 확보해야 한다는 분석이 나왔다.",
       "title": "삼정KPMG \"디스플레이 경쟁, 화질 넘어 폼팩터·AI로…양산 역량이 관건\""
     },
+    "event:0aa913192a595b1436ac5687": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844646",
+      "source": "뉴시스",
+      "source_body_digest": "10dfd2eb1d9fc41f9742d498514145210c7d2614e3254e58fca6270256762445",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d011e5f23afc12c951240a8075c5d2325289a0746dad14731e08332edd67126",
+      "source_fact_identity": "source_facts:v1:da9d993bfff654e2c1c8331db2a55e8ebb1ad4f38df344ecaa2c241d91a2be07",
+      "source_fact_keys": [
+        "source_fact:v1:a8c60af4da237188eea93fa7cefebdcf40b315b3fd23e4d6802359b17f34c911",
+        "source_fact:v1:c8b3c2d3c47463b91852af9ceafa7d2a2d7be880eb79a2ed6fc75e9a1fd0d5a8",
+        "source_fact:v1:ee6a6644bdefa96f18221139b8cb3f0abc8fef7a70117624c5c8657feac0ed84"
+      ],
+      "source_published_kst": "2026-10-28T13:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑",
+      "telegram_core_fact": "HD현대중공업은 올해 3분기 연결 기준 매출 5조7536억원, 영업이익 8992억원을 기록했다고 28일 공시했다.",
+      "title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑"
+    },
     "event:0ab5425c85cc7485aff3a765": {
       "first_seen_kst": "2026-10-22T09:39:54+09:00",
       "lanes": {
@@ -137256,6 +137436,28 @@
       "telegram_core_fact": "내년 순이익 증가율로 따지면 화학·2차전지·전력기기가 반도체보다 높을 것으로 예상했다.",
       "title": "\"내년 순익 증가율, 화학·전력기기株가 반도체 추월\""
     },
+    "event:8508e27afcacb86a8fa00d72": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000226",
+      "source": "전자신문",
+      "source_body_digest": "272fabad12aba849c4d0fa6045742eb28aafc2729966d04963a73d7b3973b6b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72957b2f362fc6df14ac81b01112c6406c290f7bc17c12b4408c801fa3d67c96",
+      "source_fact_keys": [
+        "source_fact:v1:0a514191f2a9238c639a17f65b7842146b37b7d7804691659db26c53c323e1a1",
+        "source_fact:v1:215f9a5e81ecd5f90fe18a60868a6a70e81903767ce3bb50e8f0e17dd882677c",
+        "source_fact:v1:52bdb4df9d9cbbb042d22b85a06049cf4e9434af549d0c9dbee0ad9b05266dde"
+      ],
+      "source_published_kst": "2026-10-28T13:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입",
+      "telegram_core_fact": "현대차는 지난해 186조 2545억 원의 사상 최대 매출을 달성했고, 하이브리드 라인업 확대에 힘입어 미국 시장 연간 100만 대 및 글로벌 친환경차 96만 대 판매를 돌파했다.",
+      "title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입"
+    },
     "event:853a54f1c3d8d6dcf1e07baf": {
       "first_seen_kst": "2026-09-18T06:33:53+09:00",
       "lanes": {
@@ -137365,6 +137567,27 @@
       "source_title": "한미사이언스 3분기 영업익 192억원…올해 매출 1조원 돌파(종합) | 연합뉴스",
       "telegram_core_fact": "한미약품[128940] 지주사인 한미사이언스[008930]는 연결 기준 올해 3분기 영업이익이 192억원으로 지난해 동기보다 51.3% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
       "title": "한미사이언스 3분기 영업익 192억원…올해 매출 1조원 돌파(종합) | 연합뉴스"
+    },
+    "event:865880520ab7037227429a1a": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028104400527",
+      "source": "연합뉴스",
+      "source_body_digest": "4529b352fa2a771e757614bbf1229413a79f59bc1c8a8e99a5b9e280fd02e407",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:f754c5bfed1c9c293a589725d65ae3a7bab35a3495d71785b5ca0baf64a45f7d",
+      "source_fact_identity": "source_facts:v1:0f4a8304fc97239a4dfe200e1de3532ce383f8d278d0807958fdcc39f1d74a32",
+      "source_fact_keys": [
+        "source_fact:v1:21716b1a2ede954d1bdde4cedd0d4510ff55f4d760954836e39da75f1ce77cb1",
+        "source_fact:v1:858a6fa780aa9133cc07d7125e8980459ac0a221a6a317aff3eebe7d9e54a313"
+      ],
+      "source_published_kst": "2026-10-28T13:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대마린엔진[071970]은 연결 기준 올해 3분기 영업이익이 603억원으로 지난해 동기보다 197.2% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스"
     },
     "event:86e5cc54b71f1936c0895962": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
@@ -150415,6 +150638,28 @@
       "telegram_core_fact": "NYT는 미국 고위 당국자들을 인용해 트럼프 대통령이 비공개 석상에서 이란 본토를 겨냥한 추가 공습에 무게를 두고 있는 것으로 보인다고 전했다. 미국과 이란의 군사적 긴장이 다시 고조되면서 전면전으로 번질 수 있다는 우려가 커지고 있다.",
       "title": "\"트럼프, 이란 추가 공습에 무게\"…美·이란 전면전 위기 고조"
     },
+    "fact:00d5b449f5a7472e358268f6": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000207",
+      "source": "전자신문",
+      "source_body_digest": "439545fd65f2536b4713e0e54021d43caafe38912f8d68fb9670d64bccc47000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:55de82f81ccdc796be1542e58db28bba0e83892e94a70d77489271deeb10f6f3",
+      "source_fact_keys": [
+        "source_fact:v1:2bb55206460eeb4e7e0b0f99e69506d866f229b0a74cad50affe273cccd70ea4",
+        "source_fact:v1:c1ff9002d963b7d7181ceb2a22adae7db36c465957f2a0862601b898056e83c6",
+        "source_fact:v1:cc46e956c574edd02c3204449f7ed4bf643a8f97f4e0d8cbfa6a4b62fb4bb637"
+      ],
+      "source_published_kst": "2026-10-28T13:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소",
+      "telegram_core_fact": "주요 증권사들의 순이익이 전분기 대비 일제히 감소했고, 증시 거래대금이 고점 대비 60% 넘게 줄어들면서 증권업종 주가가 바닥권에 근접했다는 분석도 나온다.",
+      "title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소"
+    },
     "fact:00ed08f7a5fe5931791b6817": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -153363,6 +153608,27 @@
       "telegram_core_fact": "8일(현지시간) 파이낸셜타임스를 비롯한 주요 외신들에 따르면 개발사인 오픈AI는 투자자들에게 연간 환산 매출이 500억 달러 수준으로 예상된다고 말했다.",
       "title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파"
     },
+    "fact:06eb652045d1f52ac4df178a": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028104400527",
+      "source": "연합뉴스",
+      "source_body_digest": "4529b352fa2a771e757614bbf1229413a79f59bc1c8a8e99a5b9e280fd02e407",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:f754c5bfed1c9c293a589725d65ae3a7bab35a3495d71785b5ca0baf64a45f7d",
+      "source_fact_identity": "source_facts:v1:0f4a8304fc97239a4dfe200e1de3532ce383f8d278d0807958fdcc39f1d74a32",
+      "source_fact_keys": [
+        "source_fact:v1:21716b1a2ede954d1bdde4cedd0d4510ff55f4d760954836e39da75f1ce77cb1",
+        "source_fact:v1:858a6fa780aa9133cc07d7125e8980459ac0a221a6a317aff3eebe7d9e54a313"
+      ],
+      "source_published_kst": "2026-10-28T13:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대마린엔진[071970]은 연결 기준 올해 3분기 영업이익이 603억원으로 지난해 동기보다 197.2% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스"
+    },
     "fact:06efba198a0f0f3f75186586": {
       "first_seen_kst": "2026-10-18T12:55:00+09:00",
       "lanes": {
@@ -155625,6 +155891,27 @@
       "source_title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장",
       "telegram_core_fact": "동아제약(구 동아쏘시오홀딩스)은 올해 3분기 연결 기준 매출 4310억원, 영업이익 351억원을 기록했다고 27일 공시했다.",
       "title": "동아제약 3분기 매출 12.7% 증가…동아ST는 영업익 27.7% 성장"
+    },
+    "fact:0ad59e2cce96c9fea184b8bb": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/28/2026102813083890974",
+      "source": "머니투데이",
+      "source_body_digest": "d98879fe2774ccc0b8d5e4e413c87784cf5ede132a41c83ff4757186ed561210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07b32eb127cf0f44e1bf0ce1fbde86f09b42139f198ac6799725cebfa527a1a9",
+      "source_fact_keys": [
+        "source_fact:v1:4659657f851d31a11b2c71050f52f9e4ca14bc5c871a4ab52fc60a1bd2fd75dd",
+        "source_fact:v1:9e93723c5eeb388e05fd58f6da561b8eea3386c2a33aa654439375cc28856d28"
+      ],
+      "source_published_kst": "2026-10-28T13:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\"",
+      "telegram_core_fact": "렌터카업체의 주요 자금조달 창구인 캐피탈사가 여신 규모와 자금 공급 조건을 결정하는 상황에서 렌탈 취급한도까지 확대되면, 중소업체가 캐피탈사와 경쟁하기 더 어려워질 수 있다는 것이다.",
+      "title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\""
     },
     "fact:0ae3a3a01adbc86b3abe094e": {
       "first_seen_kst": "2026-10-21T14:30:03+09:00",
@@ -171869,6 +172156,28 @@
       "telegram_core_fact": "하이트진로에 따르면 기린 이치방 시보리의 2020∼2026년 연평균 판매량 증가율은 82.4%로 추산됐다.",
       "title": "하이트진로, 日맥주 '기린' 전주공장서 생산…판매 확대 추진 | 연합뉴스"
     },
+    "fact:2ae5c56971d1dad5d40209d7": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844646",
+      "source": "뉴시스",
+      "source_body_digest": "10dfd2eb1d9fc41f9742d498514145210c7d2614e3254e58fca6270256762445",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d011e5f23afc12c951240a8075c5d2325289a0746dad14731e08332edd67126",
+      "source_fact_identity": "source_facts:v1:da9d993bfff654e2c1c8331db2a55e8ebb1ad4f38df344ecaa2c241d91a2be07",
+      "source_fact_keys": [
+        "source_fact:v1:a8c60af4da237188eea93fa7cefebdcf40b315b3fd23e4d6802359b17f34c911",
+        "source_fact:v1:c8b3c2d3c47463b91852af9ceafa7d2a2d7be880eb79a2ed6fc75e9a1fd0d5a8",
+        "source_fact:v1:ee6a6644bdefa96f18221139b8cb3f0abc8fef7a70117624c5c8657feac0ed84"
+      ],
+      "source_published_kst": "2026-10-28T13:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑",
+      "telegram_core_fact": "HD현대중공업은 올해 3분기 연결 기준 매출 5조7536억원, 영업이익 8992억원을 기록했다고 28일 공시했다.",
+      "title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑"
+    },
     "fact:2ae90a023ff6eee186149c8e": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
       "lanes": {
@@ -176825,6 +177134,28 @@
       "source_title": "증시 오늘 '핫이슈'…",
       "telegram_core_fact": "8시 50분에는 오픈AI의 매출 집계 해프닝을 통해 AI 산업과 증시 영향을 심층 분석합니다. 국내외 주요 이슈와 함께 주목할 종목<증시 오늘>을 통해 자세히 확인할 수 있습니다.",
       "title": "증시 오늘 '핫이슈'…"
+    },
+    "fact:34f9d849d5c3685d4f48a96f": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000226",
+      "source": "전자신문",
+      "source_body_digest": "272fabad12aba849c4d0fa6045742eb28aafc2729966d04963a73d7b3973b6b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72957b2f362fc6df14ac81b01112c6406c290f7bc17c12b4408c801fa3d67c96",
+      "source_fact_keys": [
+        "source_fact:v1:0a514191f2a9238c639a17f65b7842146b37b7d7804691659db26c53c323e1a1",
+        "source_fact:v1:215f9a5e81ecd5f90fe18a60868a6a70e81903767ce3bb50e8f0e17dd882677c",
+        "source_fact:v1:52bdb4df9d9cbbb042d22b85a06049cf4e9434af549d0c9dbee0ad9b05266dde"
+      ],
+      "source_published_kst": "2026-10-28T13:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입",
+      "telegram_core_fact": "현대차는 지난해 186조 2545억 원의 사상 최대 매출을 달성했고, 하이브리드 라인업 확대에 힘입어 미국 시장 연간 100만 대 및 글로벌 친환경차 96만 대 판매를 돌파했다.",
+      "title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입"
     },
     "fact:34fa9f8eb7cc7c1a23d006fa": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
@@ -195997,6 +196328,34 @@
       "telegram_core_fact": "방위사업청으로부터 2년간 입찰참가자격 제한 처분을 받은 LIG 디펜스&에어로스페이스(LIG D&A)가 법적 대응에 나선 가운데, 이번 제재가 약 2조원 '한국형 전자전기' 등 주요 국방 연구개발(R&D) 사업의 향방을 가를 변수로 떠올랐다.",
       "title": "'비위 제재' LIG D&A 법적 공방…'제2의 KDDX 사태' 우려에 K방산도 부담"
     },
+    "fact:5c1e8889a619a289d16d36b8": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
+    },
     "fact:5c34e50aebad6bb8e0016bde": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -202069,6 +202428,28 @@
       "source_title": "비타 코코 컴퍼니, 3분기 매출 2억4400만 달러..연간 전망 상향",
       "telegram_core_fact": "비타 코코 컴퍼니(COCO)는 올해 3분기(7~9월) 매출액이 2억4380만 달러로 전년비 34% 증가했고, 순이익은 3500만 달러로 46% 늘었으며 희석 주당순이익은 0.58달러로 전년 동기 0.40달러에서 증가했다고 10월 22일 발표했다.",
       "title": "비타 코코 컴퍼니, 3분기 매출 2억4400만 달러..연간 전망 상향"
+    },
+    "fact:694de6361469251f022df9f7": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102813241264728",
+      "source": "머니투데이",
+      "source_body_digest": "fb74674320cbecf6b024c6d0450d577f581cc69c0420ea7462c89b708fb2a819",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48e6472bf89a79996072fdb70e4bc9686b2df9bc724ab4e059c1d416c92806e4",
+      "source_fact_keys": [
+        "source_fact:v1:510768e0cb3e11c2d2fd44285208469ce519e996c63cc65a24b39f379d05bba8",
+        "source_fact:v1:743f34467fca0433156c1bb18d68e74879e4d5e2defa07cf0709463d774a10e7",
+        "source_fact:v1:c8eb31029dd879ad1cb9b736fde50733bb12f4503a09b5bbbb5442bb56469113"
+      ],
+      "source_published_kst": "2026-10-28T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\"",
+      "telegram_core_fact": "해운협회는 최근 이란이 호르무즈 해협 통항 규정 위반을 이유로 한국 해운사 장금상선 소속 선박들에 법적조치를 취할 수 있다고 경고했다는 보도와 관련해 장금상선 측에 사실관계를 확인했다고 밝혔다.",
+      "title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\""
     },
     "fact:6956dd26f0af89ee6623cb97": {
       "first_seen_kst": "2026-10-17T05:25:35+09:00",
@@ -294349,6 +294730,28 @@
       "telegram_core_fact": "런던 ICE선물거래소에서 브렌트유 선물은 전일보다 4.35달러(4.00%) 오른 배럴당 113.17달러에 거래를 마감했다.",
       "title": "국제유가, 후티의 사우디 공격에 껑충⋯브렌트유 4% [상보]"
     },
+    "link:12e3bfd48e27f6909a476d1f": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844646",
+      "source": "뉴시스",
+      "source_body_digest": "10dfd2eb1d9fc41f9742d498514145210c7d2614e3254e58fca6270256762445",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d011e5f23afc12c951240a8075c5d2325289a0746dad14731e08332edd67126",
+      "source_fact_identity": "source_facts:v1:da9d993bfff654e2c1c8331db2a55e8ebb1ad4f38df344ecaa2c241d91a2be07",
+      "source_fact_keys": [
+        "source_fact:v1:a8c60af4da237188eea93fa7cefebdcf40b315b3fd23e4d6802359b17f34c911",
+        "source_fact:v1:c8b3c2d3c47463b91852af9ceafa7d2a2d7be880eb79a2ed6fc75e9a1fd0d5a8",
+        "source_fact:v1:ee6a6644bdefa96f18221139b8cb3f0abc8fef7a70117624c5c8657feac0ed84"
+      ],
+      "source_published_kst": "2026-10-28T13:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑",
+      "telegram_core_fact": "HD현대중공업은 올해 3분기 연결 기준 매출 5조7536억원, 영업이익 8992억원을 기록했다고 28일 공시했다.",
+      "title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑"
+    },
     "link:12eaf90a17d347bf467a0a3c": {
       "first_seen_kst": "2026-10-18T13:16:48+09:00",
       "lanes": {
@@ -325614,6 +326017,28 @@
       "telegram_core_fact": "지난 12개월 동안 직원 1인당 660만 달러의 매출을 기록했다.",
       "title": "1인당 매출 660만 달러…앤트로픽 직원은 '개미'라 불린다"
     },
+    "link:417f15cc404150bc0a3ef91a": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000207",
+      "source": "전자신문",
+      "source_body_digest": "439545fd65f2536b4713e0e54021d43caafe38912f8d68fb9670d64bccc47000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:55de82f81ccdc796be1542e58db28bba0e83892e94a70d77489271deeb10f6f3",
+      "source_fact_keys": [
+        "source_fact:v1:2bb55206460eeb4e7e0b0f99e69506d866f229b0a74cad50affe273cccd70ea4",
+        "source_fact:v1:c1ff9002d963b7d7181ceb2a22adae7db36c465957f2a0862601b898056e83c6",
+        "source_fact:v1:cc46e956c574edd02c3204449f7ed4bf643a8f97f4e0d8cbfa6a4b62fb4bb637"
+      ],
+      "source_published_kst": "2026-10-28T13:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소",
+      "telegram_core_fact": "주요 증권사들의 순이익이 전분기 대비 일제히 감소했고, 증시 거래대금이 고점 대비 60% 넘게 줄어들면서 증권업종 주가가 바닥권에 근접했다는 분석도 나온다.",
+      "title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소"
+    },
     "link:41857fa220fc497163cd5c87": {
       "first_seen_kst": "2026-10-28T11:34:14+09:00",
       "lanes": {
@@ -343793,6 +344218,27 @@
       "source_title": "HD한국조선해양 올 1~3분기 영업익, 작년 전체 실적 넘는다 \"고속 성장에도 불확실성 대비\"",
       "telegram_core_fact": "HD한국조선해양이 올해 3분기 1조6000억원에 육박하는 영업이익을 달성할 전망이다.",
       "title": "HD한국조선해양 올 1~3분기 영업익, 작년 전체 실적 넘는다 \"고속 성장에도 불확실성 대비\""
+    },
+    "link:5cc950531b9b8e9e78388984": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/28/2026102813083890974",
+      "source": "머니투데이",
+      "source_body_digest": "d98879fe2774ccc0b8d5e4e413c87784cf5ede132a41c83ff4757186ed561210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07b32eb127cf0f44e1bf0ce1fbde86f09b42139f198ac6799725cebfa527a1a9",
+      "source_fact_keys": [
+        "source_fact:v1:4659657f851d31a11b2c71050f52f9e4ca14bc5c871a4ab52fc60a1bd2fd75dd",
+        "source_fact:v1:9e93723c5eeb388e05fd58f6da561b8eea3386c2a33aa654439375cc28856d28"
+      ],
+      "source_published_kst": "2026-10-28T13:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\"",
+      "telegram_core_fact": "렌터카업체의 주요 자금조달 창구인 캐피탈사가 여신 규모와 자금 공급 조건을 결정하는 상황에서 렌탈 취급한도까지 확대되면, 중소업체가 캐피탈사와 경쟁하기 더 어려워질 수 있다는 것이다.",
+      "title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\""
     },
     "link:5ccaf6ae63a86d0af4958d0f": {
       "first_seen_kst": "2026-10-27T13:18:16+09:00",
@@ -388424,6 +388870,34 @@
       "telegram_core_fact": "이노스페이스는 내달 준궤도 발사체 '세빛' 시험에 나설 예정이며 내년 상반기 한빛-나노를 브라질에서 발사하는 방안을 검토중이다.",
       "title": "민간 우주로켓 보험금 첫 고시 추진…한빛-나노 최대 238억원 | 연합뉴스"
     },
+    "link:a1a7c1262062ea25595c0815": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
+    },
     "link:a1aa2b5e1ff3fc4e008fc511": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -401217,6 +401691,28 @@
       "telegram_core_fact": "중국은 지난해 4월 특정 희토류 원료와 자석, 관련 가공 기술에 대한 수출통제를 도입하고 수출 허가를 받도록 했다.",
       "title": "[올댓차이나] TSMC, 희토류 자석 쓰지 않은 모터 도입 모색…中 수출통제에 대응"
     },
+    "link:b50ce79b63cb464fedf00684": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000226",
+      "source": "전자신문",
+      "source_body_digest": "272fabad12aba849c4d0fa6045742eb28aafc2729966d04963a73d7b3973b6b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72957b2f362fc6df14ac81b01112c6406c290f7bc17c12b4408c801fa3d67c96",
+      "source_fact_keys": [
+        "source_fact:v1:0a514191f2a9238c639a17f65b7842146b37b7d7804691659db26c53c323e1a1",
+        "source_fact:v1:215f9a5e81ecd5f90fe18a60868a6a70e81903767ce3bb50e8f0e17dd882677c",
+        "source_fact:v1:52bdb4df9d9cbbb042d22b85a06049cf4e9434af549d0c9dbee0ad9b05266dde"
+      ],
+      "source_published_kst": "2026-10-28T13:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입",
+      "telegram_core_fact": "현대차는 지난해 186조 2545억 원의 사상 최대 매출을 달성했고, 하이브리드 라인업 확대에 힘입어 미국 시장 연간 100만 대 및 글로벌 친환경차 96만 대 판매를 돌파했다.",
+      "title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입"
+    },
     "link:b512dd0ba685f668dd260204": {
       "first_seen_kst": "2026-10-23T05:11:11+09:00",
       "lanes": {
@@ -404421,6 +404917,27 @@
       "source_title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스",
       "telegram_core_fact": "특히 고객 방문 증가와 수익성 개선을 통해 확보한 자금을 재투자하면서 지속적인 매출 성장과 시장점유율 확대를 이끄는 선순환 구조가 형성되고 있다고 설명했다.",
       "title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스"
+    },
+    "link:b999ea1605b694c3d40d6f10": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028104400527",
+      "source": "연합뉴스",
+      "source_body_digest": "4529b352fa2a771e757614bbf1229413a79f59bc1c8a8e99a5b9e280fd02e407",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:f754c5bfed1c9c293a589725d65ae3a7bab35a3495d71785b5ca0baf64a45f7d",
+      "source_fact_identity": "source_facts:v1:0f4a8304fc97239a4dfe200e1de3532ce383f8d278d0807958fdcc39f1d74a32",
+      "source_fact_keys": [
+        "source_fact:v1:21716b1a2ede954d1bdde4cedd0d4510ff55f4d760954836e39da75f1ce77cb1",
+        "source_fact:v1:858a6fa780aa9133cc07d7125e8980459ac0a221a6a317aff3eebe7d9e54a313"
+      ],
+      "source_published_kst": "2026-10-28T13:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대마린엔진[071970]은 연결 기준 올해 3분기 영업이익이 603억원으로 지난해 동기보다 197.2% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스"
     },
     "link:b9a98d8f26e3d7167c1dbc8d": {
       "first_seen_kst": "2026-09-25T00:00:00+09:00",
@@ -420981,6 +421498,28 @@
       "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
       "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
       "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
+    },
+    "link:d2a13e71c2261fe2bcc19252": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102813241264728",
+      "source": "머니투데이",
+      "source_body_digest": "fb74674320cbecf6b024c6d0450d577f581cc69c0420ea7462c89b708fb2a819",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48e6472bf89a79996072fdb70e4bc9686b2df9bc724ab4e059c1d416c92806e4",
+      "source_fact_keys": [
+        "source_fact:v1:510768e0cb3e11c2d2fd44285208469ce519e996c63cc65a24b39f379d05bba8",
+        "source_fact:v1:743f34467fca0433156c1bb18d68e74879e4d5e2defa07cf0709463d774a10e7",
+        "source_fact:v1:c8eb31029dd879ad1cb9b736fde50733bb12f4503a09b5bbbb5442bb56469113"
+      ],
+      "source_published_kst": "2026-10-28T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\"",
+      "telegram_core_fact": "해운협회는 최근 이란이 호르무즈 해협 통항 규정 위반을 이유로 한국 해운사 장금상선 소속 선박들에 법적조치를 취할 수 있다고 경고했다는 보도와 관련해 장금상선 측에 사실관계를 확인했다고 밝혔다.",
+      "title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\""
     },
     "link:d2c620a21905387adcbaa6a6": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -475708,6 +476247,28 @@
       "telegram_core_fact": "반도체와 이차전지 생산설비에 요구되는 최고 수준의 청정 성능을 검증받은 데 이어 부산 제2공장 증설을 통해 생산능력을 확대하고 국내외 공급을 늘릴 계획이다.",
       "title": "씨피시스템, 독일 프라운호퍼서 클린룸 최고 청정등급 인증…반도체·이차전지 공급 확대"
     },
+    "original:2a25c5588ac4bac9efb9d8b7": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844646",
+      "source": "뉴시스",
+      "source_body_digest": "10dfd2eb1d9fc41f9742d498514145210c7d2614e3254e58fca6270256762445",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d011e5f23afc12c951240a8075c5d2325289a0746dad14731e08332edd67126",
+      "source_fact_identity": "source_facts:v1:da9d993bfff654e2c1c8331db2a55e8ebb1ad4f38df344ecaa2c241d91a2be07",
+      "source_fact_keys": [
+        "source_fact:v1:a8c60af4da237188eea93fa7cefebdcf40b315b3fd23e4d6802359b17f34c911",
+        "source_fact:v1:c8b3c2d3c47463b91852af9ceafa7d2a2d7be880eb79a2ed6fc75e9a1fd0d5a8",
+        "source_fact:v1:ee6a6644bdefa96f18221139b8cb3f0abc8fef7a70117624c5c8657feac0ed84"
+      ],
+      "source_published_kst": "2026-10-28T13:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑",
+      "telegram_core_fact": "HD현대중공업은 올해 3분기 연결 기준 매출 5조7536억원, 영업이익 8992억원을 기록했다고 28일 공시했다.",
+      "title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑"
+    },
     "original:2a26b1d1eee162cd68c893b7": {
       "first_seen_kst": "2026-10-24T03:26:54+09:00",
       "lanes": {
@@ -480353,6 +480914,27 @@
       "source_title": "노스포인트 뱅크셰어스, 3분기 희석 EPS 0.39달러..32% 감소·모기지 매각 추진",
       "telegram_core_fact": "공정가치 변동분과 포트폴리오 대출 매각 손익을 제외한 대출 매각 순이익은 1152만 달러로 전년 동기(1749만 달러)보다 34% 적었으며, 주거용 모기지 금리고정약정(IRLC) 물량 감소가 원인이다.",
       "title": "노스포인트 뱅크셰어스, 3분기 희석 EPS 0.39달러..32% 감소·모기지 매각 추진"
+    },
+    "original:3135f58501f415f6efe1986f": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028104400527",
+      "source": "연합뉴스",
+      "source_body_digest": "4529b352fa2a771e757614bbf1229413a79f59bc1c8a8e99a5b9e280fd02e407",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:f754c5bfed1c9c293a589725d65ae3a7bab35a3495d71785b5ca0baf64a45f7d",
+      "source_fact_identity": "source_facts:v1:0f4a8304fc97239a4dfe200e1de3532ce383f8d278d0807958fdcc39f1d74a32",
+      "source_fact_keys": [
+        "source_fact:v1:21716b1a2ede954d1bdde4cedd0d4510ff55f4d760954836e39da75f1ce77cb1",
+        "source_fact:v1:858a6fa780aa9133cc07d7125e8980459ac0a221a6a317aff3eebe7d9e54a313"
+      ],
+      "source_published_kst": "2026-10-28T13:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대마린엔진[071970]은 연결 기준 올해 3분기 영업이익이 603억원으로 지난해 동기보다 197.2% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스"
     },
     "original:3139263bd963370152cedc85": {
       "first_seen_kst": "2026-10-03T23:33:26+09:00",
@@ -517302,6 +517884,28 @@
       "telegram_core_fact": "관세청이 발표한 '9월 해상 수출입 운송비용'에 따르면 , 지난달 미국 서부행 해상 수출 컨테이너(2TEU 기준) 운임은 951만1천원으로 전월보다 12.3% 상승했다.",
       "title": "9월 해상운임 미국 서부행 오르고 동부행 내려…중동행은 상승 | 연합뉴스"
     },
+    "original:6a72887aa424e1ac2e45a3ff": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000226",
+      "source": "전자신문",
+      "source_body_digest": "272fabad12aba849c4d0fa6045742eb28aafc2729966d04963a73d7b3973b6b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72957b2f362fc6df14ac81b01112c6406c290f7bc17c12b4408c801fa3d67c96",
+      "source_fact_keys": [
+        "source_fact:v1:0a514191f2a9238c639a17f65b7842146b37b7d7804691659db26c53c323e1a1",
+        "source_fact:v1:215f9a5e81ecd5f90fe18a60868a6a70e81903767ce3bb50e8f0e17dd882677c",
+        "source_fact:v1:52bdb4df9d9cbbb042d22b85a06049cf4e9434af549d0c9dbee0ad9b05266dde"
+      ],
+      "source_published_kst": "2026-10-28T13:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입",
+      "telegram_core_fact": "현대차는 지난해 186조 2545억 원의 사상 최대 매출을 달성했고, 하이브리드 라인업 확대에 힘입어 미국 시장 연간 100만 대 및 글로벌 친환경차 96만 대 판매를 돌파했다.",
+      "title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입"
+    },
     "original:6a7403f41fd68b4831dd7c94": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
       "lanes": {
@@ -521103,6 +521707,27 @@
       "source_title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \"",
       "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
       "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
+    },
+    "original:70c1d2ef92ad911f720e7e63": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/28/2026102813083890974",
+      "source": "머니투데이",
+      "source_body_digest": "d98879fe2774ccc0b8d5e4e413c87784cf5ede132a41c83ff4757186ed561210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07b32eb127cf0f44e1bf0ce1fbde86f09b42139f198ac6799725cebfa527a1a9",
+      "source_fact_keys": [
+        "source_fact:v1:4659657f851d31a11b2c71050f52f9e4ca14bc5c871a4ab52fc60a1bd2fd75dd",
+        "source_fact:v1:9e93723c5eeb388e05fd58f6da561b8eea3386c2a33aa654439375cc28856d28"
+      ],
+      "source_published_kst": "2026-10-28T13:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\"",
+      "telegram_core_fact": "렌터카업체의 주요 자금조달 창구인 캐피탈사가 여신 규모와 자금 공급 조건을 결정하는 상황에서 렌탈 취급한도까지 확대되면, 중소업체가 캐피탈사와 경쟁하기 더 어려워질 수 있다는 것이다.",
+      "title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\""
     },
     "original:70c4221906de4aa35a14a3d5": {
       "first_seen_kst": "2026-10-01T17:28:33+09:00",
@@ -546023,6 +546648,28 @@
       "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
       "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
       "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
+    "original:9700bcff29060d42d4e1952e": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102813241264728",
+      "source": "머니투데이",
+      "source_body_digest": "fb74674320cbecf6b024c6d0450d577f581cc69c0420ea7462c89b708fb2a819",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48e6472bf89a79996072fdb70e4bc9686b2df9bc724ab4e059c1d416c92806e4",
+      "source_fact_keys": [
+        "source_fact:v1:510768e0cb3e11c2d2fd44285208469ce519e996c63cc65a24b39f379d05bba8",
+        "source_fact:v1:743f34467fca0433156c1bb18d68e74879e4d5e2defa07cf0709463d774a10e7",
+        "source_fact:v1:c8eb31029dd879ad1cb9b736fde50733bb12f4503a09b5bbbb5442bb56469113"
+      ],
+      "source_published_kst": "2026-10-28T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\"",
+      "telegram_core_fact": "해운협회는 최근 이란이 호르무즈 해협 통항 규정 위반을 이유로 한국 해운사 장금상선 소속 선박들에 법적조치를 취할 수 있다고 경고했다는 보도와 관련해 장금상선 측에 사실관계를 확인했다고 밝혔다.",
+      "title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\""
     },
     "original:9708b79b4bc6a96c7836abc4": {
       "first_seen_kst": "2026-10-23T21:39:03+09:00",
@@ -578853,6 +579500,28 @@
       "telegram_core_fact": "재판부는 당시 광주 방문이 대통령 권한대행 겸 국무총리로서 미국의 관세 부과 조치에 대응하기 위한 일정이었고, 백반집 방문도 공보실이 민생 행보의 하나로 계획했다고 판단했다.",
       "title": "공소청, '광주 백반집 150만원 기부' 한덕수 1심 무죄에 항소"
     },
+    "original:cb3c7482df6ebb5820fa359c": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000207",
+      "source": "전자신문",
+      "source_body_digest": "439545fd65f2536b4713e0e54021d43caafe38912f8d68fb9670d64bccc47000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:55de82f81ccdc796be1542e58db28bba0e83892e94a70d77489271deeb10f6f3",
+      "source_fact_keys": [
+        "source_fact:v1:2bb55206460eeb4e7e0b0f99e69506d866f229b0a74cad50affe273cccd70ea4",
+        "source_fact:v1:c1ff9002d963b7d7181ceb2a22adae7db36c465957f2a0862601b898056e83c6",
+        "source_fact:v1:cc46e956c574edd02c3204449f7ed4bf643a8f97f4e0d8cbfa6a4b62fb4bb637"
+      ],
+      "source_published_kst": "2026-10-28T13:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소",
+      "telegram_core_fact": "주요 증권사들의 순이익이 전분기 대비 일제히 감소했고, 증시 거래대금이 고점 대비 60% 넘게 줄어들면서 증권업종 주가가 바닥권에 근접했다는 분석도 나온다.",
+      "title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소"
+    },
     "original:cb3cd598f5f2a17e8d264e68": {
       "first_seen_kst": "2026-10-26T09:34:29+09:00",
       "lanes": {
@@ -598811,6 +599480,34 @@
       ],
       "source_published_kst": "2026-10-06T18:10+09:00",
       "title": "\"알래스카 LNG 전략적 가치 생겼지만… 상업성이 전제\" [李정부 2년차 국감]"
+    },
+    "original:e9f3e1ac4604eca4ffdabc7f": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
     },
     "original:e9ff1381c33dbb33bcf273d7": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
@@ -621361,6 +622058,28 @@
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "엠투클라우드 \"백신 유통 이력 '디지털 관리' 의료기관까지 확대\""
     },
+    "source_fact:0364ad2d93422afee4e6c393": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844646",
+      "source": "뉴시스",
+      "source_body_digest": "10dfd2eb1d9fc41f9742d498514145210c7d2614e3254e58fca6270256762445",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d011e5f23afc12c951240a8075c5d2325289a0746dad14731e08332edd67126",
+      "source_fact_identity": "source_facts:v1:da9d993bfff654e2c1c8331db2a55e8ebb1ad4f38df344ecaa2c241d91a2be07",
+      "source_fact_keys": [
+        "source_fact:v1:a8c60af4da237188eea93fa7cefebdcf40b315b3fd23e4d6802359b17f34c911",
+        "source_fact:v1:c8b3c2d3c47463b91852af9ceafa7d2a2d7be880eb79a2ed6fc75e9a1fd0d5a8",
+        "source_fact:v1:ee6a6644bdefa96f18221139b8cb3f0abc8fef7a70117624c5c8657feac0ed84"
+      ],
+      "source_published_kst": "2026-10-28T13:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑",
+      "telegram_core_fact": "HD현대중공업은 올해 3분기 연결 기준 매출 5조7536억원, 영업이익 8992억원을 기록했다고 28일 공시했다.",
+      "title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑"
+    },
     "source_fact:0367bb15584e52605c63d2b8": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
       "lanes": {
@@ -632052,6 +632771,28 @@
       "telegram_core_fact": "[AP/뉴시스] 미국으로 가는 러시아 경유(디젤) 선적 유조선이 출항했다고 23일 러시아 크렘린이 발표했다.",
       "title": "크렘린, \"미국 행 러시아 경유 실은 유조선 출항\"…내달 7일 뉴욕 도착"
     },
+    "source_fact:07866746fe9f59a4f24ea91a": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000207",
+      "source": "전자신문",
+      "source_body_digest": "439545fd65f2536b4713e0e54021d43caafe38912f8d68fb9670d64bccc47000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:55de82f81ccdc796be1542e58db28bba0e83892e94a70d77489271deeb10f6f3",
+      "source_fact_keys": [
+        "source_fact:v1:2bb55206460eeb4e7e0b0f99e69506d866f229b0a74cad50affe273cccd70ea4",
+        "source_fact:v1:c1ff9002d963b7d7181ceb2a22adae7db36c465957f2a0862601b898056e83c6",
+        "source_fact:v1:cc46e956c574edd02c3204449f7ed4bf643a8f97f4e0d8cbfa6a4b62fb4bb637"
+      ],
+      "source_published_kst": "2026-10-28T13:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소",
+      "telegram_core_fact": "주요 증권사들의 순이익이 전분기 대비 일제히 감소했고, 증시 거래대금이 고점 대비 60% 넘게 줄어들면서 증권업종 주가가 바닥권에 근접했다는 분석도 나온다.",
+      "title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소"
+    },
     "source_fact:078738e8a464a283c7b3b5dc": {
       "first_seen_kst": "2026-10-24T16:15:28+09:00",
       "lanes": {
@@ -634802,6 +635543,28 @@
       ],
       "source_published_kst": "2026-10-07T13:33+09:00",
       "title": "KT클라우드, 50㎿급 '청라 AIDC' 구축 참여…수도권 AI 인프라 수요 대응"
+    },
+    "source_fact:087d6647970c54f838eb109c": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000226",
+      "source": "전자신문",
+      "source_body_digest": "272fabad12aba849c4d0fa6045742eb28aafc2729966d04963a73d7b3973b6b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72957b2f362fc6df14ac81b01112c6406c290f7bc17c12b4408c801fa3d67c96",
+      "source_fact_keys": [
+        "source_fact:v1:0a514191f2a9238c639a17f65b7842146b37b7d7804691659db26c53c323e1a1",
+        "source_fact:v1:215f9a5e81ecd5f90fe18a60868a6a70e81903767ce3bb50e8f0e17dd882677c",
+        "source_fact:v1:52bdb4df9d9cbbb042d22b85a06049cf4e9434af549d0c9dbee0ad9b05266dde"
+      ],
+      "source_published_kst": "2026-10-28T13:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입",
+      "telegram_core_fact": "현대차는 지난해 186조 2545억 원의 사상 최대 매출을 달성했고, 하이브리드 라인업 확대에 힘입어 미국 시장 연간 100만 대 및 글로벌 친환경차 96만 대 판매를 돌파했다.",
+      "title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입"
     },
     "source_fact:0880ffce0d856479a047b54d": {
       "first_seen_kst": "2026-10-20T14:54:10+09:00",
@@ -654508,6 +655271,27 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 8일(현지 시간) 블라디미르 푸틴 러시아 대통령과 통화에서 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 합의됐다\"고 발표했다.",
       "title": "트럼프 \"푸틴과 러시아 경유 미국·세계 시장 공급 합의\""
     },
+    "source_fact:0fb9f7dbf9669b55ba291d7c": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/28/2026102813083890974",
+      "source": "머니투데이",
+      "source_body_digest": "d98879fe2774ccc0b8d5e4e413c87784cf5ede132a41c83ff4757186ed561210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07b32eb127cf0f44e1bf0ce1fbde86f09b42139f198ac6799725cebfa527a1a9",
+      "source_fact_keys": [
+        "source_fact:v1:4659657f851d31a11b2c71050f52f9e4ca14bc5c871a4ab52fc60a1bd2fd75dd",
+        "source_fact:v1:9e93723c5eeb388e05fd58f6da561b8eea3386c2a33aa654439375cc28856d28"
+      ],
+      "source_published_kst": "2026-10-28T13:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\"",
+      "telegram_core_fact": "렌터카업체의 주요 자금조달 창구인 캐피탈사가 여신 규모와 자금 공급 조건을 결정하는 상황에서 렌탈 취급한도까지 확대되면, 중소업체가 캐피탈사와 경쟁하기 더 어려워질 수 있다는 것이다.",
+      "title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\""
+    },
     "source_fact:0fbaf76aa3fc106691fcff47": {
       "first_seen_kst": "2026-10-27T16:16:54+09:00",
       "lanes": {
@@ -659468,6 +660252,28 @@
       "source_title": "이달 환율 2년1개월만에 최저…원/엔 19년만에 가장 낮아 | 연합뉴스",
       "telegram_core_fact": "NH농협은행 이낙원 FX파생전문위원은 \"반도체 중심의 달러공급이 대외재료와 수급을 압도했다\"며 \"9월 이후 미 금리상승, 달러인덱스도 4% 넘게 올랐지만, 환율 반등 압력이 있을 때마다 매도물량이 대량 나왔고, 반도체기업의 국내투자 확대 계획도 영향을 줬다\"고 설명했다.",
       "title": "이달 환율 2년1개월만에 최저…원/엔 19년만에 가장 낮아 | 연합뉴스"
+    },
+    "source_fact:11696a453f2c7150e86222e9": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000226",
+      "source": "전자신문",
+      "source_body_digest": "272fabad12aba849c4d0fa6045742eb28aafc2729966d04963a73d7b3973b6b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72957b2f362fc6df14ac81b01112c6406c290f7bc17c12b4408c801fa3d67c96",
+      "source_fact_keys": [
+        "source_fact:v1:0a514191f2a9238c639a17f65b7842146b37b7d7804691659db26c53c323e1a1",
+        "source_fact:v1:215f9a5e81ecd5f90fe18a60868a6a70e81903767ce3bb50e8f0e17dd882677c",
+        "source_fact:v1:52bdb4df9d9cbbb042d22b85a06049cf4e9434af549d0c9dbee0ad9b05266dde"
+      ],
+      "source_published_kst": "2026-10-28T13:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입",
+      "telegram_core_fact": "현대차는 지난해 186조 2545억 원의 사상 최대 매출을 달성했고, 하이브리드 라인업 확대에 힘입어 미국 시장 연간 100만 대 및 글로벌 친환경차 96만 대 판매를 돌파했다.",
+      "title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입"
     },
     "source_fact:116b6db58376416ea74d6267": {
       "first_seen_kst": "2026-10-12T22:29:29+09:00",
@@ -666271,6 +667077,34 @@
       "source_title": "대전시, 지역 기업 6곳 '방산혁신기업 100' 선정…K-방산 미래기술 이끈다",
       "telegram_core_fact": "방산혁신기업의 첨단기술 개발 역량과 특화단지를 중심으로 한 소재·부품·장비 기업의 생산·기술 역량이 결합하면 기술사업화 기회 확대는 물론 지역 방산 공급망 고도화에도 시너지 효과가 나타날 전망이다.",
       "title": "대전시, 지역 기업 6곳 '방산혁신기업 100' 선정…K-방산 미래기술 이끈다"
+    },
+    "source_fact:14027ec76ae1a51921710e0a": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
     },
     "source_fact:1404c1254ec4834787861b47": {
       "first_seen_kst": "2026-10-21T00:42:39+09:00",
@@ -722437,6 +723271,34 @@
       "telegram_core_fact": "박광래 신한투자증권 연구위원은 \"현대모비스의 2026년 3분기 연결 기준 매출액은 15조5332억원으로 전년비 3.3% 증가하고 영업이익은 9041억원으로 15.9% 늘어날 것으로 추정된다\"며 \"완성차 생산과 판매 부진, 환율 하락에도 불구하고 양호한 수익성을 기록할 것\"이라고 말했다.",
       "title": "신한투자證 \"현대모비스, 제조부문 수익성 개선\""
     },
+    "source_fact:286678b92b57615de74f6dd4": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
+    },
     "source_fact:2866b2bfab55e043bfb61df3": {
       "first_seen_kst": "2026-10-21T04:09:57+09:00",
       "lanes": {
@@ -731168,6 +732030,28 @@
       "source_title": "SK하이닉스, 솔리다임 상장 전격중단…\"시장여건 고려\"(종합) | 연합뉴스",
       "telegram_core_fact": "SK하이닉스는 23일 \"해외 종속회사인 솔리다임은 생산능력 확대 및 경쟁력 강화를 위한 다양한 자금조달 방안을 검토해 왔으나, 자본시장 여건 등을 종합적으로 고려해 상장 전 투자유치(프리IPO) 및 기업공개(IPO)에 대한 검토를 중단하기로 결정했다\"고 공시했다.",
       "title": "SK하이닉스, 솔리다임 상장 전격중단…\"시장여건 고려\"(종합) | 연합뉴스"
+    },
+    "source_fact:2b82584e41eebdf39b2cc036": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844646",
+      "source": "뉴시스",
+      "source_body_digest": "10dfd2eb1d9fc41f9742d498514145210c7d2614e3254e58fca6270256762445",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d011e5f23afc12c951240a8075c5d2325289a0746dad14731e08332edd67126",
+      "source_fact_identity": "source_facts:v1:da9d993bfff654e2c1c8331db2a55e8ebb1ad4f38df344ecaa2c241d91a2be07",
+      "source_fact_keys": [
+        "source_fact:v1:a8c60af4da237188eea93fa7cefebdcf40b315b3fd23e4d6802359b17f34c911",
+        "source_fact:v1:c8b3c2d3c47463b91852af9ceafa7d2a2d7be880eb79a2ed6fc75e9a1fd0d5a8",
+        "source_fact:v1:ee6a6644bdefa96f18221139b8cb3f0abc8fef7a70117624c5c8657feac0ed84"
+      ],
+      "source_published_kst": "2026-10-28T13:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑",
+      "telegram_core_fact": "HD현대중공업은 올해 3분기 연결 기준 매출 5조7536억원, 영업이익 8992억원을 기록했다고 28일 공시했다.",
+      "title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑"
     },
     "source_fact:2b82994dfeaaa290d4a5cc5b": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -772033,6 +772917,34 @@
       "telegram_core_fact": "기간별로 보면 '불장'이었던 올해 상반기(1∼6월) 금액 기준 외국인 최다 순매수 ETF는 국내 대형·중형 우량주에 투자하는 'TIGER MSCI Korea TR'(1조7천379억원)이었다.",
       "title": "외국인, 올해 국내 주식 200조 넘게 팔았지만 ETF 계속 샀다(종합)"
     },
+    "source_fact:3add2fc20a500b0bc21f65b1": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
+    },
     "source_fact:3ae2d73ee98e99eac4dedb1e": {
       "first_seen_kst": "2026-10-16T21:38:15+09:00",
       "lanes": {
@@ -789311,6 +790223,27 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:415875ffcfc3f040eeaa77c2": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028104400527",
+      "source": "연합뉴스",
+      "source_body_digest": "4529b352fa2a771e757614bbf1229413a79f59bc1c8a8e99a5b9e280fd02e407",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:f754c5bfed1c9c293a589725d65ae3a7bab35a3495d71785b5ca0baf64a45f7d",
+      "source_fact_identity": "source_facts:v1:0f4a8304fc97239a4dfe200e1de3532ce383f8d278d0807958fdcc39f1d74a32",
+      "source_fact_keys": [
+        "source_fact:v1:21716b1a2ede954d1bdde4cedd0d4510ff55f4d760954836e39da75f1ce77cb1",
+        "source_fact:v1:858a6fa780aa9133cc07d7125e8980459ac0a221a6a317aff3eebe7d9e54a313"
+      ],
+      "source_published_kst": "2026-10-28T13:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대마린엔진[071970]은 연결 기준 올해 3분기 영업이익이 603억원으로 지난해 동기보다 197.2% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스"
     },
     "source_fact:4158dce611dfc57b5309b659": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
@@ -821535,6 +822468,28 @@
       "telegram_core_fact": "트럼프 대통령은 지난주 러시아와의 '경유 딜'에 합의하고 대러 제재를 전격 유예했고, 우크라이나는 이런 결정에 크게 반발한 바 있다.",
       "title": "우크라, 트럼프 만류에도 푸틴 고향 인프라 역대급 공습"
     },
+    "source_fact:4cea082af4c940a452a42298": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844646",
+      "source": "뉴시스",
+      "source_body_digest": "10dfd2eb1d9fc41f9742d498514145210c7d2614e3254e58fca6270256762445",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d011e5f23afc12c951240a8075c5d2325289a0746dad14731e08332edd67126",
+      "source_fact_identity": "source_facts:v1:da9d993bfff654e2c1c8331db2a55e8ebb1ad4f38df344ecaa2c241d91a2be07",
+      "source_fact_keys": [
+        "source_fact:v1:a8c60af4da237188eea93fa7cefebdcf40b315b3fd23e4d6802359b17f34c911",
+        "source_fact:v1:c8b3c2d3c47463b91852af9ceafa7d2a2d7be880eb79a2ed6fc75e9a1fd0d5a8",
+        "source_fact:v1:ee6a6644bdefa96f18221139b8cb3f0abc8fef7a70117624c5c8657feac0ed84"
+      ],
+      "source_published_kst": "2026-10-28T13:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑",
+      "telegram_core_fact": "HD현대중공업은 올해 3분기 연결 기준 매출 5조7536억원, 영업이익 8992억원을 기록했다고 28일 공시했다.",
+      "title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑"
+    },
     "source_fact:4cec6a47dd4fe43bb8316ef0": {
       "first_seen_kst": "2026-10-25T10:27:47+09:00",
       "lanes": {
@@ -824892,6 +825847,34 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "source_fact:4e1031343361bff52a8e1a07": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
     },
     "source_fact:4e128391960a730c9d51b47d": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
@@ -917392,6 +918375,34 @@
       "telegram_core_fact": "포스코홀딩스는 염수리튬 2공장 상공정을 준공하고, 2033년 연산 10만톤 생산체제 구축을 공식화했다. 장인화 포스코그룹 회장이 글로벌 핵심광물 확보전 한복판인 아르헨티나에서 리튬 사업의 확장 신호탄을 쐈다.",
       "title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공"
     },
+    "source_fact:6f937b46b4bec92dee8a0fde": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
+    },
     "source_fact:6f9577184534fc2139afdacb": {
       "first_seen_kst": "2026-10-14T12:34:00+09:00",
       "lanes": {
@@ -959732,6 +960743,27 @@
       "telegram_core_fact": "중소기업 옴부즈만이 관계부처의 '장기검토' 답변으로 사실상 방치된 규제개선 과제에 대한 전면 재점검에 착수했다.",
       "title": "최승재 옴부즈만, '장기검토' 규제 전면 재점검…“캐비닛 속 묵은 과제 꺼낸다”"
     },
+    "source_fact:7ef195e5e4d64f7aaedc67a3": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/28/2026102813083890974",
+      "source": "머니투데이",
+      "source_body_digest": "d98879fe2774ccc0b8d5e4e413c87784cf5ede132a41c83ff4757186ed561210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07b32eb127cf0f44e1bf0ce1fbde86f09b42139f198ac6799725cebfa527a1a9",
+      "source_fact_keys": [
+        "source_fact:v1:4659657f851d31a11b2c71050f52f9e4ca14bc5c871a4ab52fc60a1bd2fd75dd",
+        "source_fact:v1:9e93723c5eeb388e05fd58f6da561b8eea3386c2a33aa654439375cc28856d28"
+      ],
+      "source_published_kst": "2026-10-28T13:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\"",
+      "telegram_core_fact": "렌터카업체의 주요 자금조달 창구인 캐피탈사가 여신 규모와 자금 공급 조건을 결정하는 상황에서 렌탈 취급한도까지 확대되면, 중소업체가 캐피탈사와 경쟁하기 더 어려워질 수 있다는 것이다.",
+      "title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\""
+    },
     "source_fact:7ef4368eba2508fe9120cc62": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
       "lanes": {
@@ -963395,6 +964427,28 @@
       "source_title": "정의선 회장, 印 모디 총리와 면담 \"인도는 전략 국가…7년간 20조 투자 계획\" [푸네 新공장 준공]",
       "telegram_core_fact": "정의선 현대자동차그룹 회장이 나렌드라 모디 인도 총리와 만나 현대차그룹의 현지 성장 전략을 설명하고 155억달러(약 20조7855억원) 대규모 투자 계획을 발표했다. 그러면서 \"인도는 현대차그룹의 미래 성장과 신흥국 시장 확대를 견인할 전략 국가\"라며 \"올해부터 7년간 약 155억 달러 투자를 계획하고 있다\"고 강조했다.",
       "title": "정의선 회장, 印 모디 총리와 면담 \"인도는 전략 국가…7년간 20조 투자 계획\" [푸네 新공장 준공]"
+    },
+    "source_fact:807f656d3ec25e6a858ac981": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102813241264728",
+      "source": "머니투데이",
+      "source_body_digest": "fb74674320cbecf6b024c6d0450d577f581cc69c0420ea7462c89b708fb2a819",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48e6472bf89a79996072fdb70e4bc9686b2df9bc724ab4e059c1d416c92806e4",
+      "source_fact_keys": [
+        "source_fact:v1:510768e0cb3e11c2d2fd44285208469ce519e996c63cc65a24b39f379d05bba8",
+        "source_fact:v1:743f34467fca0433156c1bb18d68e74879e4d5e2defa07cf0709463d774a10e7",
+        "source_fact:v1:c8eb31029dd879ad1cb9b736fde50733bb12f4503a09b5bbbb5442bb56469113"
+      ],
+      "source_published_kst": "2026-10-28T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\"",
+      "telegram_core_fact": "해운협회는 최근 이란이 호르무즈 해협 통항 규정 위반을 이유로 한국 해운사 장금상선 소속 선박들에 법적조치를 취할 수 있다고 경고했다는 보도와 관련해 장금상선 측에 사실관계를 확인했다고 밝혔다.",
+      "title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\""
     },
     "source_fact:807f7a4c165216aa31e7f8f6": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
@@ -1014624,6 +1015678,27 @@
       "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
+    "source_fact:93f30420178b57fa5c9f7448": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028104400527",
+      "source": "연합뉴스",
+      "source_body_digest": "4529b352fa2a771e757614bbf1229413a79f59bc1c8a8e99a5b9e280fd02e407",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:f754c5bfed1c9c293a589725d65ae3a7bab35a3495d71785b5ca0baf64a45f7d",
+      "source_fact_identity": "source_facts:v1:0f4a8304fc97239a4dfe200e1de3532ce383f8d278d0807958fdcc39f1d74a32",
+      "source_fact_keys": [
+        "source_fact:v1:21716b1a2ede954d1bdde4cedd0d4510ff55f4d760954836e39da75f1ce77cb1",
+        "source_fact:v1:858a6fa780aa9133cc07d7125e8980459ac0a221a6a317aff3eebe7d9e54a313"
+      ],
+      "source_published_kst": "2026-10-28T13:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대마린엔진[071970]은 연결 기준 올해 3분기 영업이익이 603억원으로 지난해 동기보다 197.2% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스"
+    },
     "source_fact:93fc37e373f71fc5fe90657a": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
       "lanes": {
@@ -1060050,6 +1061125,28 @@
       "telegram_core_fact": "이탈리아 'CPHI 밀라노 2026'에서 글로벌 생명공학 기업 알보텍과 생산 수주 계약을 체결한 직후 일본으로 날아온 그는 아침부터 고객사 미팅에 참여했다.",
       "title": "韓·中·日 바이오 수주 삼국지 …\"올해 키워드는 생산 유연성\""
     },
+    "source_fact:a4727bdb2f7056792eb5f5ec": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102813241264728",
+      "source": "머니투데이",
+      "source_body_digest": "fb74674320cbecf6b024c6d0450d577f581cc69c0420ea7462c89b708fb2a819",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48e6472bf89a79996072fdb70e4bc9686b2df9bc724ab4e059c1d416c92806e4",
+      "source_fact_keys": [
+        "source_fact:v1:510768e0cb3e11c2d2fd44285208469ce519e996c63cc65a24b39f379d05bba8",
+        "source_fact:v1:743f34467fca0433156c1bb18d68e74879e4d5e2defa07cf0709463d774a10e7",
+        "source_fact:v1:c8eb31029dd879ad1cb9b736fde50733bb12f4503a09b5bbbb5442bb56469113"
+      ],
+      "source_published_kst": "2026-10-28T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\"",
+      "telegram_core_fact": "해운협회는 최근 이란이 호르무즈 해협 통항 규정 위반을 이유로 한국 해운사 장금상선 소속 선박들에 법적조치를 취할 수 있다고 경고했다는 보도와 관련해 장금상선 측에 사실관계를 확인했다고 밝혔다.",
+      "title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\""
+    },
     "source_fact:a4730a9a31ab3d5be370a25f": {
       "first_seen_kst": "2026-10-24T05:00:02+09:00",
       "lanes": {
@@ -1083809,6 +1084906,28 @@
       "source_title": "롯데이노베이트, 국내외 데이터센터 사업확대…\"성장동력 육성\"",
       "telegram_core_fact": "롯데이노베이트[286940]는 안산 글로벌 클라우드 센터(GCC) 운영과 향후 데이터센터 사업 협력을 위해 IT 인프라 전문기업 아이티센씨티에스[031820]와 업무협약(MOU)을 체결했다고 16일 밝혔다. 롯데이노베이트는 이지스자산운용과 5년간의 위탁운영 계약을 체결해 센터 운영 전반을 총괄할 예정이다.",
       "title": "롯데이노베이트, 국내외 데이터센터 사업확대…\"성장동력 육성\""
+    },
+    "source_fact:acf26949dec98590a3327ac9": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102813241264728",
+      "source": "머니투데이",
+      "source_body_digest": "fb74674320cbecf6b024c6d0450d577f581cc69c0420ea7462c89b708fb2a819",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48e6472bf89a79996072fdb70e4bc9686b2df9bc724ab4e059c1d416c92806e4",
+      "source_fact_keys": [
+        "source_fact:v1:510768e0cb3e11c2d2fd44285208469ce519e996c63cc65a24b39f379d05bba8",
+        "source_fact:v1:743f34467fca0433156c1bb18d68e74879e4d5e2defa07cf0709463d774a10e7",
+        "source_fact:v1:c8eb31029dd879ad1cb9b736fde50733bb12f4503a09b5bbbb5442bb56469113"
+      ],
+      "source_published_kst": "2026-10-28T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\"",
+      "telegram_core_fact": "해운협회는 최근 이란이 호르무즈 해협 통항 규정 위반을 이유로 한국 해운사 장금상선 소속 선박들에 법적조치를 취할 수 있다고 경고했다는 보도와 관련해 장금상선 측에 사실관계를 확인했다고 밝혔다.",
+      "title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\""
     },
     "source_fact:acf300e6c7b3597c3becb027": {
       "first_seen_kst": "2026-10-26T05:29:29+09:00",
@@ -1112453,6 +1113572,28 @@
       "telegram_core_fact": "대만 9월 수출이 인공지능(AI) 반도체와 서버 수요 확대에 힘입어 사상 최대를 기록했다.",
       "title": "[올댓차이나] 9월 대만 수출 60% 급증…AI 열풍에 사상 최대"
     },
+    "source_fact:b73c7083859568e5e0790da7": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000207",
+      "source": "전자신문",
+      "source_body_digest": "439545fd65f2536b4713e0e54021d43caafe38912f8d68fb9670d64bccc47000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:55de82f81ccdc796be1542e58db28bba0e83892e94a70d77489271deeb10f6f3",
+      "source_fact_keys": [
+        "source_fact:v1:2bb55206460eeb4e7e0b0f99e69506d866f229b0a74cad50affe273cccd70ea4",
+        "source_fact:v1:c1ff9002d963b7d7181ceb2a22adae7db36c465957f2a0862601b898056e83c6",
+        "source_fact:v1:cc46e956c574edd02c3204449f7ed4bf643a8f97f4e0d8cbfa6a4b62fb4bb637"
+      ],
+      "source_published_kst": "2026-10-28T13:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소",
+      "telegram_core_fact": "주요 증권사들의 순이익이 전분기 대비 일제히 감소했고, 증시 거래대금이 고점 대비 60% 넘게 줄어들면서 증권업종 주가가 바닥권에 근접했다는 분석도 나온다.",
+      "title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소"
+    },
     "source_fact:b73cfa514d2b70f4157ec8ab": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
       "lanes": {
@@ -1127119,6 +1128260,28 @@
       "source_title": "레이크머티리얼즈, 글로벌 석유화학사 촉매 요구 품목 늘어…제품군 확대 대응",
       "telegram_core_fact": "유기금속 화합물 전문기업 레이크머티리얼즈가 글로벌 석유화학사를 대상으로 메탈로센 촉매 소재 공급 품목 확대에 나서고 있다. 회사는 글로벌 석유화학사와의 협의를 이어가는 동시에 고객사별 공정과 요구 사양에 맞춘 촉매 소재 제품군을 확대한다는 방침이다.",
       "title": "레이크머티리얼즈, 글로벌 석유화학사 촉매 요구 품목 늘어…제품군 확대 대응"
+    },
+    "source_fact:bce2c632936df20ef9c9c853": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000207",
+      "source": "전자신문",
+      "source_body_digest": "439545fd65f2536b4713e0e54021d43caafe38912f8d68fb9670d64bccc47000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:55de82f81ccdc796be1542e58db28bba0e83892e94a70d77489271deeb10f6f3",
+      "source_fact_keys": [
+        "source_fact:v1:2bb55206460eeb4e7e0b0f99e69506d866f229b0a74cad50affe273cccd70ea4",
+        "source_fact:v1:c1ff9002d963b7d7181ceb2a22adae7db36c465957f2a0862601b898056e83c6",
+        "source_fact:v1:cc46e956c574edd02c3204449f7ed4bf643a8f97f4e0d8cbfa6a4b62fb4bb637"
+      ],
+      "source_published_kst": "2026-10-28T13:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소",
+      "telegram_core_fact": "주요 증권사들의 순이익이 전분기 대비 일제히 감소했고, 증시 거래대금이 고점 대비 60% 넘게 줄어들면서 증권업종 주가가 바닥권에 근접했다는 분석도 나온다.",
+      "title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소"
     },
     "source_fact:bce397c989ff883989c929eb": {
       "first_seen_kst": "2026-10-15T08:51:43+09:00",
@@ -1156048,6 +1157211,34 @@
       "telegram_core_fact": "LH의 매입확약에 따라 건설사의 착공 의사결정 부담이 줄어들며 민간 주택 공급의 조기화 효과가 있을 것으로 예상된다.",
       "title": "LH “수도권 미분양 저희가 사드립니다”…민간건설사 1만8000가구"
     },
+    "source_fact:c72bba0828468eabeb2ca70b": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
+    },
     "source_fact:c72d19e5f0fb2386770b56c9": {
       "first_seen_kst": "2026-10-21T06:55:09+09:00",
       "lanes": {
@@ -1172979,6 +1174170,28 @@
       "source_title": "트럼프, 러시아 에너지 연계 '관세 폭탄' 유예…\"경유 가격 때문\"",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 경유가격을 잡기 위해 러시아 에너지 수출 연계 대규모 관세를 면제했다.",
       "title": "트럼프, 러시아 에너지 연계 '관세 폭탄' 유예…\"경유 가격 때문\""
+    },
+    "source_fact:cd7ce20532f685254c60ac91": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000226",
+      "source": "전자신문",
+      "source_body_digest": "272fabad12aba849c4d0fa6045742eb28aafc2729966d04963a73d7b3973b6b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72957b2f362fc6df14ac81b01112c6406c290f7bc17c12b4408c801fa3d67c96",
+      "source_fact_keys": [
+        "source_fact:v1:0a514191f2a9238c639a17f65b7842146b37b7d7804691659db26c53c323e1a1",
+        "source_fact:v1:215f9a5e81ecd5f90fe18a60868a6a70e81903767ce3bb50e8f0e17dd882677c",
+        "source_fact:v1:52bdb4df9d9cbbb042d22b85a06049cf4e9434af549d0c9dbee0ad9b05266dde"
+      ],
+      "source_published_kst": "2026-10-28T13:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입",
+      "telegram_core_fact": "현대차는 지난해 186조 2545억 원의 사상 최대 매출을 달성했고, 하이브리드 라인업 확대에 힘입어 미국 시장 연간 100만 대 및 글로벌 친환경차 96만 대 판매를 돌파했다.",
+      "title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입"
     },
     "source_fact:cd7fcc21ff5338cc278a7ee6": {
       "first_seen_kst": "2026-10-17T22:48:00+09:00",
@@ -1199906,6 +1201119,34 @@
       "telegram_core_fact": "감정가가 50억8300만원으로 책정된 해당 아파트는 최저 입찰가가 32억원까지 떨어졌고, 최종적으로 40억2000만원에 낙찰됐다.",
       "title": "\"감정가 50억 아파트, 40억에 낙찰\"…전문가가 본 서울 부동산의 이상 징후"
     },
+    "source_fact:d7619db794ad7ce3ea973f9f": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
+    },
     "source_fact:d7643271ff565618ea253e4c": {
       "first_seen_kst": "2026-10-27T19:09:26+09:00",
       "lanes": {
@@ -1212975,6 +1214216,34 @@
       "source_title": "애플 “모든 선택지 고려”…메모리 3사, ‘절대 갑’과 헤어질 결심? | 중앙일보",
       "telegram_core_fact": "전자업계에 따르면 삼성전자·SK하이닉스·마이크론 등 메모리 3사는 최근 애플과의 모바일 D램 가격 협상에서 기존 기가비트(Gb)당 약 1.4달러였던 제품에 2.4~2.6달러 수준을 제시한 것으로 파악됐다.",
       "title": "애플 “모든 선택지 고려”…메모리 3사, ‘절대 갑’과 헤어질 결심? | 중앙일보"
+    },
+    "source_fact:dc6a17dd7aed3f0ab24e9564": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
     },
     "source_fact:dc6b6bf8129b6592a6712d3d": {
       "first_seen_kst": "2026-10-22T06:35:46+09:00",
@@ -1256198,6 +1257467,34 @@
       "source_title": "대한전선, 독일서 초고압 전력망 수주…유럽시장 공략 속도",
       "telegram_core_fact": "대한전선 본사는 네덜란드 법인과 약 1150억원 계약을 체결했다.",
       "title": "대한전선, 독일서 초고압 전력망 수주…유럽시장 공략 속도"
+    },
+    "source_fact:ec29daaf3484c7e8f5a8f30f": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
     },
     "source_fact:ec2b6c437e44a62f17520ea2": {
       "first_seen_kst": "2026-10-29T00:20:14+09:00",
@@ -1335603,6 +1336900,28 @@
       "telegram_core_fact": "반도체와 이차전지 생산설비에 요구되는 최고 수준의 청정 성능을 검증받은 데 이어 부산 제2공장 증설을 통해 생산능력을 확대하고 국내외 공급을 늘릴 계획이다.",
       "title": "씨피시스템, 독일 프라운호퍼서 클린룸 최고 청정등급 인증…반도체·이차전지 공급 확대"
     },
+    "title:2a25c5588ac4bac9efb9d8b7": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844646",
+      "source": "뉴시스",
+      "source_body_digest": "10dfd2eb1d9fc41f9742d498514145210c7d2614e3254e58fca6270256762445",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:1d011e5f23afc12c951240a8075c5d2325289a0746dad14731e08332edd67126",
+      "source_fact_identity": "source_facts:v1:da9d993bfff654e2c1c8331db2a55e8ebb1ad4f38df344ecaa2c241d91a2be07",
+      "source_fact_keys": [
+        "source_fact:v1:a8c60af4da237188eea93fa7cefebdcf40b315b3fd23e4d6802359b17f34c911",
+        "source_fact:v1:c8b3c2d3c47463b91852af9ceafa7d2a2d7be880eb79a2ed6fc75e9a1fd0d5a8",
+        "source_fact:v1:ee6a6644bdefa96f18221139b8cb3f0abc8fef7a70117624c5c8657feac0ed84"
+      ],
+      "source_published_kst": "2026-10-28T13:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑",
+      "telegram_core_fact": "HD현대중공업은 올해 3분기 연결 기준 매출 5조7536억원, 영업이익 8992억원을 기록했다고 28일 공시했다.",
+      "title": "HD현대중공업, 3분기 영업익 8992억원…전년比 61.3%↑"
+    },
     "title:2a26b1d1eee162cd68c893b7": {
       "first_seen_kst": "2026-10-24T03:26:54+09:00",
       "lanes": {
@@ -1340292,6 +1341611,27 @@
       "source_title": "노스포인트 뱅크셰어스, 3분기 희석 EPS 0.39달러..32% 감소·모기지 매각 추진",
       "telegram_core_fact": "공정가치 변동분과 포트폴리오 대출 매각 손익을 제외한 대출 매각 순이익은 1152만 달러로 전년 동기(1749만 달러)보다 34% 적었으며, 주거용 모기지 금리고정약정(IRLC) 물량 감소가 원인이다.",
       "title": "노스포인트 뱅크셰어스, 3분기 희석 EPS 0.39달러..32% 감소·모기지 매각 추진"
+    },
+    "title:3135f58501f415f6efe1986f": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028104400527",
+      "source": "연합뉴스",
+      "source_body_digest": "4529b352fa2a771e757614bbf1229413a79f59bc1c8a8e99a5b9e280fd02e407",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:f754c5bfed1c9c293a589725d65ae3a7bab35a3495d71785b5ca0baf64a45f7d",
+      "source_fact_identity": "source_facts:v1:0f4a8304fc97239a4dfe200e1de3532ce383f8d278d0807958fdcc39f1d74a32",
+      "source_fact_keys": [
+        "source_fact:v1:21716b1a2ede954d1bdde4cedd0d4510ff55f4d760954836e39da75f1ce77cb1",
+        "source_fact:v1:858a6fa780aa9133cc07d7125e8980459ac0a221a6a317aff3eebe7d9e54a313"
+      ],
+      "source_published_kst": "2026-10-28T13:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 HD현대마린엔진[071970]은 연결 기준 올해 3분기 영업이익이 603억원으로 지난해 동기보다 197.2% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스"
     },
     "title:3139263bd963370152cedc85": {
       "first_seen_kst": "2026-10-03T23:33:26+09:00",
@@ -1378018,6 +1379358,28 @@
       "telegram_core_fact": "관세청이 발표한 '9월 해상 수출입 운송비용'에 따르면 , 지난달 미국 서부행 해상 수출 컨테이너(2TEU 기준) 운임은 951만1천원으로 전월보다 12.3% 상승했다.",
       "title": "9월 해상운임 미국 서부행 오르고 동부행 내려…중동행은 상승 | 연합뉴스"
     },
+    "title:6a72887aa424e1ac2e45a3ff": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000226",
+      "source": "전자신문",
+      "source_body_digest": "272fabad12aba849c4d0fa6045742eb28aafc2729966d04963a73d7b3973b6b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72957b2f362fc6df14ac81b01112c6406c290f7bc17c12b4408c801fa3d67c96",
+      "source_fact_keys": [
+        "source_fact:v1:0a514191f2a9238c639a17f65b7842146b37b7d7804691659db26c53c323e1a1",
+        "source_fact:v1:215f9a5e81ecd5f90fe18a60868a6a70e81903767ce3bb50e8f0e17dd882677c",
+        "source_fact:v1:52bdb4df9d9cbbb042d22b85a06049cf4e9434af549d0c9dbee0ad9b05266dde"
+      ],
+      "source_published_kst": "2026-10-28T13:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입",
+      "telegram_core_fact": "현대차는 지난해 186조 2545억 원의 사상 최대 매출을 달성했고, 하이브리드 라인업 확대에 힘입어 미국 시장 연간 100만 대 및 글로벌 친환경차 96만 대 판매를 돌파했다.",
+      "title": "현대차, 브랜드 가치 사상 첫 250억 달러 돌파…글로벌 종합 29위 진입"
+    },
     "title:6a7403f41fd68b4831dd7c94": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
       "lanes": {
@@ -1381905,6 +1383267,27 @@
       "source_title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \"",
       "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
       "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
+    },
+    "title:70c1d2ef92ad911f720e7e63": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/28/2026102813083890974",
+      "source": "머니투데이",
+      "source_body_digest": "d98879fe2774ccc0b8d5e4e413c87784cf5ede132a41c83ff4757186ed561210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07b32eb127cf0f44e1bf0ce1fbde86f09b42139f198ac6799725cebfa527a1a9",
+      "source_fact_keys": [
+        "source_fact:v1:4659657f851d31a11b2c71050f52f9e4ca14bc5c871a4ab52fc60a1bd2fd75dd",
+        "source_fact:v1:9e93723c5eeb388e05fd58f6da561b8eea3386c2a33aa654439375cc28856d28"
+      ],
+      "source_published_kst": "2026-10-28T13:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\"",
+      "telegram_core_fact": "렌터카업체의 주요 자금조달 창구인 캐피탈사가 여신 규모와 자금 공급 조건을 결정하는 상황에서 렌탈 취급한도까지 확대되면, 중소업체가 캐피탈사와 경쟁하기 더 어려워질 수 있다는 것이다.",
+      "title": "렌터카업계 \"캐피탈사 렌탈 한도 확대 철회해야…중소업체 생존 위협\""
     },
     "title:70c4221906de4aa35a14a3d5": {
       "first_seen_kst": "2026-10-01T17:28:33+09:00",
@@ -1407277,6 +1408660,28 @@
       "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
       "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
       "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
+    "title:9700bcff29060d42d4e1952e": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/28/2026102813241264728",
+      "source": "머니투데이",
+      "source_body_digest": "fb74674320cbecf6b024c6d0450d577f581cc69c0420ea7462c89b708fb2a819",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48e6472bf89a79996072fdb70e4bc9686b2df9bc724ab4e059c1d416c92806e4",
+      "source_fact_keys": [
+        "source_fact:v1:510768e0cb3e11c2d2fd44285208469ce519e996c63cc65a24b39f379d05bba8",
+        "source_fact:v1:743f34467fca0433156c1bb18d68e74879e4d5e2defa07cf0709463d774a10e7",
+        "source_fact:v1:c8eb31029dd879ad1cb9b736fde50733bb12f4503a09b5bbbb5442bb56469113"
+      ],
+      "source_published_kst": "2026-10-28T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\"",
+      "telegram_core_fact": "해운협회는 최근 이란이 호르무즈 해협 통항 규정 위반을 이유로 한국 해운사 장금상선 소속 선박들에 법적조치를 취할 수 있다고 경고했다는 보도와 관련해 장금상선 측에 사실관계를 확인했다고 밝혔다.",
+      "title": "해운협회 \"이란 법적조치 경고 선박, 장금상선 소유 선박 아냐\""
     },
     "title:9708b79b4bc6a96c7836abc4": {
       "first_seen_kst": "2026-10-23T21:39:03+09:00",
@@ -1441041,6 +1442446,28 @@
       "telegram_core_fact": "재판부는 당시 광주 방문이 대통령 권한대행 겸 국무총리로서 미국의 관세 부과 조치에 대응하기 위한 일정이었고, 백반집 방문도 공보실이 민생 행보의 하나로 계획했다고 판단했다.",
       "title": "공소청, '광주 백반집 150만원 기부' 한덕수 1심 무죄에 항소"
     },
+    "title:cb3c7482df6ebb5820fa359c": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://www.etnews.com/20261028000207",
+      "source": "전자신문",
+      "source_body_digest": "439545fd65f2536b4713e0e54021d43caafe38912f8d68fb9670d64bccc47000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:55de82f81ccdc796be1542e58db28bba0e83892e94a70d77489271deeb10f6f3",
+      "source_fact_keys": [
+        "source_fact:v1:2bb55206460eeb4e7e0b0f99e69506d866f229b0a74cad50affe273cccd70ea4",
+        "source_fact:v1:c1ff9002d963b7d7181ceb2a22adae7db36c465957f2a0862601b898056e83c6",
+        "source_fact:v1:cc46e956c574edd02c3204449f7ed4bf643a8f97f4e0d8cbfa6a4b62fb4bb637"
+      ],
+      "source_published_kst": "2026-10-28T13:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소",
+      "telegram_core_fact": "주요 증권사들의 순이익이 전분기 대비 일제히 감소했고, 증시 거래대금이 고점 대비 60% 넘게 줄어들면서 증권업종 주가가 바닥권에 근접했다는 분석도 나온다.",
+      "title": "증시 열기 식자 증권사 실적도 '뚝'…3분기 순익 일제히 감소"
+    },
     "title:cb3cd598f5f2a17e8d264e68": {
       "first_seen_kst": "2026-10-26T09:34:29+09:00",
       "lanes": {
@@ -1461195,6 +1462622,34 @@
       "source_published_kst": "2026-10-06T18:10+09:00",
       "title": "\"알래스카 LNG 전략적 가치 생겼지만… 상업성이 전제\" [李정부 2년차 국감]"
     },
+    "title:e9f3e1ac4604eca4ffdabc7f": {
+      "first_seen_kst": "2026-10-29T00:55:27+09:00",
+      "lanes": {
+        "live": "2026-10-29T00:55:27+09:00"
+      },
+      "last_seen_kst": "2026-10-29T00:55:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182556",
+      "source": "매일경제",
+      "source_body_digest": "2a358efbca2033f1fefdbee6bc1e4be52522dd1732e22e41a3142a8d0cf4bbd7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:117fa264ce067d5b3426cb25b5d739ffa3af1ec8aafc94a3afefddb70d3b9356",
+      "source_fact_keys": [
+        "source_fact:v1:06fd98fb546ee7ac240d8623f4d56648f93c84f35cc98011e04bde1a0b4b06ed",
+        "source_fact:v1:22ee8b2494a6befb8a19410a2d2b4a550305506944aa124b4e2d9edfa775d311",
+        "source_fact:v1:9036a431ac8ddb037ee4fc2744befb657a4fa024f9dfe88163ef44dd8efed9d4",
+        "source_fact:v1:9a2b640b221c8997da932b08b964082e6d785b391b0702ca8b918bc63af05a7e",
+        "source_fact:v1:abb2f3b0f568a4dbe2ac97ac009b2007c2bcd7d89e93fb4b71962f70489327a4",
+        "source_fact:v1:c1b269bc0d1d9e142057e19d9217da24f2f6d0a9aad7a10390847d95d98497ca",
+        "source_fact:v1:e1d4ef8c7dc676d388b5b71160570dc1048652da3a3c71052cd2ddea05b624a7",
+        "source_fact:v1:fcae918748b1556b6095389a98ee425f09f8b925c2ffb6b903ad4f954f63286b",
+        "source_fact:v1:fec68ea910b4a4f1fc5b2e31754abcc9f196cdc367a65f0de4e9f94da08524ed"
+      ],
+      "source_published_kst": "2026-10-28T05:19+09:00",
+      "source_supply_terms": {},
+      "source_title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가",
+      "telegram_core_fact": "뱅크 오브 캘리포니아(BANC)가 2026년 3분기 일반회계기준(GAAP) 희석 주당순이익(EPS) 0.46달러를 기록해 전년 동기 0.38달러보다 21% 증가했다고 10월 27일 발표했다.",
+      "title": "뱅크 오브 캘리포니아, 3분기 희석 EPS 0.46달러..전년비 21% 증가"
+    },
     "title:e9ff1381c33dbb33bcf273d7": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
       "lanes": {
@@ -1474769,5 +1476224,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-29T00:20:14+09:00"
+  "updated_at_kst": "2026-10-29T00:55:27+09:00"
 }
