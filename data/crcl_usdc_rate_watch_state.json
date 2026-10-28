@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-29T01:04:02+09:00",
+  "updated_at_kst": "2026-10-29T06:06:11+09:00",
   "circle": {
     "date": "2026-10-26",
     "circulation_usd_b": 71.0,
@@ -39,37 +39,37 @@
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-10-27",
-    "three_month": 4.22,
-    "ten_year": 4.99,
-    "prev_date": "2026-10-26",
+    "date": "2026-10-28",
+    "three_month": 4.18,
+    "ten_year": 5.05,
+    "prev_date": "2026-10-27",
     "prev_three_month": 4.22,
-    "prev_ten_year": 5.0,
-    "daily_3m_bp": 0.0,
-    "daily_10y_bp": -1.0,
+    "prev_ten_year": 4.99,
+    "daily_3m_bp": -4.0,
+    "daily_10y_bp": 6.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
     "date": "2026-10-28",
-    "close": 79.71,
+    "close": 81.73,
     "prev_date": "2026-10-27",
     "prev_close": 81.58,
-    "daily_pct": -2.29,
+    "daily_pct": 0.18,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
     "crosscheck_date": "2026-10-28",
-    "crosscheck_close": 79.66000366210938,
-    "crosscheck_daily_pct": -2.35,
-    "crosscheck_gap_pct": 0.063,
+    "crosscheck_close": 81.70999908447266,
+    "crosscheck_daily_pct": 0.16,
+    "crosscheck_gap_pct": 0.024,
     "crosscheck_status": "confirmed"
   },
   "tbx": {
     "date": "2026-10-28",
-    "close": 29.339500427246094,
+    "close": 29.389999389648438,
     "prev_date": "2026-10-27",
     "prev_close": 29.31999969482422,
-    "daily_pct": 0.07
+    "daily_pct": 0.24
   },
   "fx": {
     "rate": 1322.6,
@@ -80,7 +80,9 @@
     "official": true,
     "crosscheck": "Yahoo Finance 1,324.77원, 차이 0.16%"
   },
-  "crcl_last_alerted_close_date": "2026-10-27",
+  "crcl_last_alerted_close_date": "2026-10-28",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "fx: 2026-10-28 한국은행 ECOS 원/미국달러 매매기준율 조회 실패"
+  ]
 }
