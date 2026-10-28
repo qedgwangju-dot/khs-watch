@@ -6,6 +6,8 @@ on:
     paths:
       - ".github/workflows/us-fund-flow-telegram-watch.yml"
       - "scripts/us_fund_flow_watch.py"
+      - "scripts/us_positioning_delivery.py"
+      - "tests/test_us_positioning_delivery.py"
       - "scripts/us_positioning_options_sox_watch.py"
       - "scripts/us_tech_etf_proxy_watch.py"
       - "tests/test_us_tech_etf_proxy_watch.py"
@@ -21,6 +23,8 @@ on:
   pull_request:
     paths:
       - "scripts/us_fund_flow_watch.py"
+      - "scripts/us_positioning_delivery.py"
+      - "tests/test_us_positioning_delivery.py"
       - "scripts/us_tech_etf_proxy_watch.py"
       - "tests/test_us_tech_etf_proxy_watch.py"
       - "scripts/us_vip_relative_watch.py"
@@ -52,7 +56,9 @@ concurrency:
 
 jobs:
   offline-regressions:
-    if: github.event_name == 'pull_request'
+    if: >-
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'push' && contains(github.event.head_commit.message, '[retail-survey-validate]'))
     runs-on: ubuntu-latest
     timeout-minutes: 3
     permissions:
@@ -64,6 +70,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Verify monthly AAII and Conference Board parsers without Telegram
+        run: |
+          python -m py_compile scripts/us_positioning_delivery.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_us_positioning_delivery.py' -v
       - name: Compile and test proprietary-report gate offline without secrets or Telegram
         run: |
           python -m py_compile scripts/us_fund_flow_watch.py
@@ -200,6 +210,7 @@ jobs:
     if: >-
       github.event_name != 'pull_request' &&
       !contains(github.event.head_commit.message, '[tech-etf-proxy-validate]') &&
+      !contains(github.event.head_commit.message, '[retail-survey-validate]') &&
       !(github.event_name == 'schedule' &&
         (github.event.schedule == '37 23 * * 1-5' ||
          github.event.schedule == '37 0 * * 2-6' ||
