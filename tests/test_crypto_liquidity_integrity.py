@@ -315,6 +315,25 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         self.assertEqual(alert.count("+1,191억원"), 1)
         self.assertEqual(alert.count("-1,173억원"), 1)
 
+    def test_partial_dates_are_labeled_for_both_comparison_periods(self):
+        # Reproduces the 2026-10-28 natural alert: one partial day in each
+        # period. The older date must not be silently omitted or attributed
+        # to the recent period.
+        window = {
+            "valid": True, "start": "2026-07-28", "end": "2026-10-27",
+            "trading_days": 65, "value_usd_m": 6109.7,
+            "prev_value_usd_m": -6896.8, "change_usd_m": 13006.5,
+            "direction": "순유출→순유입 전환", "status": "잠정",
+            "partial_days": 1, "partial_dates": ["2026-08-07"],
+            "prev_partial_days": 1, "prev_partial_dates": ["2026-07-27"],
+        }
+        output = "\n".join(fmt.calendar_window_reading({"windows": {"3m": window}}, "3m", None))
+        self.assertIn("최근 1/직전 1 (최근 2026-08-07 / 직전 2026-07-27)", output)
+
+        window.update(partial_days=0, partial_dates=[])
+        output = "\n".join(fmt.calendar_window_reading({"windows": {"3m": window}}, "3m", None))
+        self.assertIn("최근 0/직전 1 (직전 2026-07-27)", output)
+
     def test_middle_gap_blocks_three_month_only(self):
         import datetime as dt
         day,end=dt.date(2026,4,10),dt.date(2026,10,9)
