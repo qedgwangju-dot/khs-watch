@@ -338,3 +338,29 @@ def update_retail_survey_overlay(*, repo_root=None, fetch=None, on_date=None):
               "pair": next_snapshot["pair"], "telegram_sent": False}
     print("retail_survey_status=" + json.dumps(result, ensure_ascii=False))
     return result
+
+
+def classify_fund_flow_presend(committed, candidate, has_retail_alert):
+    """Return SEND, BASELINE_ONLY or DUPLICATE without changing other lanes.
+
+    A silent new monthly survey baseline must be committed, but must not turn
+    yesterday's unchanged fund-flow report into a newly sent Telegram alert.
+    """
+    for obj in (committed, candidate):
+        if not isinstance(obj, dict) or not isinstance(obj.get("seen"), dict):
+            raise ValueError("Invalid saved fund-flow source fingerprints")
+        if not isinstance(obj.get("derived", {}), dict):
+            raise ValueError("Invalid saved fund-flow derived context")
+    source_changed = candidate.get("seen") != committed.get("seen")
+    def other_derived(obj):
+        return {key: value for key,value in obj.get("derived", {}).items()
+                if key != "retail_survey"}
+    other_changed = other_derived(candidate) != other_derived(committed)
+    retail_old = committed.get("derived", {}).get("retail_survey")
+    retail_new = candidate.get("derived", {}).get("retail_survey")
+    if source_changed or other_changed:
+        return "SEND"
+    if retail_new != retail_old:
+        return "SEND" if has_retail_alert else "BASELINE_ONLY"
+    return "DUPLICATE"
+
