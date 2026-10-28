@@ -809,6 +809,10 @@ def _flow_surge_program(
         "start_ts": start_ts,
         "end_ts": end_ts,
         "valid": aligned,
+        # A query receipt timestamp can establish lookup order, not when the
+        # upstream program value was published. Require proof at both ends.
+        "source_time_verified": (start.get("source_time_verified") is True
+                                 and end.get("source_time_verified") is True),
         "unit": end.get("unit"),
         "source_tr": end.get("source_tr"),
     }
@@ -859,6 +863,7 @@ def flow_surge_candidates(
         # 30초 이상 어긋난 프로그램 데이터를 동시 매수 근거로 사용하지 않는다.
         program_aligned = bool(
             program and program["valid"] and program["delta"] > 0
+            and program.get("source_time_verified") is True
             and abs(float(program["end_ts"]) - key_ts) <= SURGE_MAX_SAMPLE_SKEW_SEC
         )
         result.append({
@@ -2261,6 +2266,8 @@ class Watch:
             lines.append(f"• 프로그램 {trend} {amount} ({provider}, 투자자 미구분)")
         else:
             lines.append("• 프로그램 교차검증: 미충족·보류 (매수주체 판정에 사용하지 않음)")
+        if p and p.get("source_time_verified") is not True:
+            lines.append("• 프로그램 원천 공표시각 미확인·조회시각 기준 — 확신도 상향 보류")
         if self.idx:
             now_price_ts, now_price = self.idx[-1]
             if 0 <= now_ts - now_price_ts <= SURGE_MAX_END_AGE_SEC:

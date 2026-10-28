@@ -1,0 +1,27 @@
+{
+  "provenance": {
+    "run_id": 40599803134,
+    "artifact_id": 12788714095,
+    "artifact_sha256": "02468a613453b7896d065e19d6e5b20689a475dce507d55784bdb4929cc7798b",
+    "telegram_message_id": 1395,
+    "scope": "Selected original saved t1602 and t1640 source blocks for the 11:50 KST KOSPI foreign-investor alert; other payload and credentials omitted."
+  },
+  "now_ts": 1793155810.73,
+  "session_open_ts": 1793145600.0,
+  "rows": [
+    {
+      "현물": {"sample_ts": 1793155500.0, "source_tr": "t1602", "외국인": 7613.0, "기관": 9682.0, "개인": -17090.0},
+      "선물": {"sample_ts": 1793155500.0, "source_tr": "t1602", "외국인": 10730.0, "기관": -13158.0, "개인": 2031.0}
+    },
+    {
+      "현물": {"sample_ts": 1793155800.0, "source_tr": "t1602", "외국인": 7951.0, "기관": 10178.0, "개인": -17914.0},
+      "선물": {"sample_ts": 1793155800.0, "source_tr": "t1602", "외국인": 11355.0, "기관": -13765.0, "개인": 2040.0}
+    },
+    {
+      "프로그램": {"sample_ts": 1793155489.7877223, "source_tr": "t1640", "unit": "LS_raw_amount", "source_time_verified": false, "timestamp_basis": "query_interval", "전체": 691319.0, "차익": 174066.0, "비차익": 517268.0, "표본시차초": 5.788305759429932}
+    },
+    {
+      "프로그램": {"sample_ts": 1793155791.9647157, "source_tr": "t1640", "unit": "LS_raw_amount", "source_time_verified": false, "timestamp_basis": "query_interval", "전체": 733553.0, "차익": 176953.0, "비차익": 556606.0, "표본시차초": 3.091167688369751}
+    }
+  ]
+}
