@@ -2413,6 +2413,32 @@
       "telegram_core_fact": "유나이티드헬스 그룹(UNH)은 3분기 매출액이 1126억9400만 달러로 전년비 0.4% 감소했지만, 영업이익은 65억6300만 달러로 52.1% 늘고 GAAP 희석 주당순이익(EPS)은 4.56달러로 76.1% 증가했다고 10월 13일 발표했다.",
       "title": "유나이티드헬스 그룹, 3분기 희석 EPS 4.56달러..전년비 76% 증가"
     },
+    "core:05ea2b651d5a6a034e0ae69d": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
+    },
     "core:05eb8c154d9f11d0b541d84f": {
       "first_seen_kst": "2026-10-13T20:25:44+09:00",
       "lanes": {
@@ -13967,6 +13993,28 @@
       "source_title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 134.4억원 (매출액대비 13.42 %)",
       "telegram_core_fact": "윤성에프앤씨(372170)는 2차전지 믹싱시스템에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 134.4억원이다.",
       "title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 134.4억원 (매출액대비 13.42 %)"
+    },
+    "core:1dd5fe832a263474b0884bca": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.etnews.com/20261028000085",
+      "source": "전자신문",
+      "source_body_digest": "b012dd204547c29760eebbbe756f2ad3fc6997850dd484fcb2a93c03e535956f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cd662228b6e98735e7af3f3c7a0466e4374f448866094ab13061fc045e3401f",
+      "source_fact_keys": [
+        "source_fact:v1:15187c30ba5efa916acb5f6b53dfa202e953179ebac431690702ee33bc5fae1c",
+        "source_fact:v1:d78b68a306a64163a4f2ec07e0008f3156c2cdf679fa05b92cb743a1553f4470",
+        "source_fact:v1:db117001262a69b0faaae1a515a54c5c09c37baeba44d1bbdcbcc01b5a289d00"
+      ],
+      "source_published_kst": "2026-10-28T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위",
+      "telegram_core_fact": "에코백스 로보틱스가 지난해 전 세계 롤러 물걸레 로봇청소기 시장에서 판매량 1위를 기록했다고 28일 밝혔다.",
+      "title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위"
     },
     "core:1dd8570d01844b7dbc7b7b86": {
       "first_seen_kst": "2026-10-22T22:04:33+09:00",
@@ -78396,6 +78444,30 @@
       "telegram_core_fact": "[파이낸셜뉴스] 홍라희 리움미술관 명예관장이 이재용 삼성전자 회장에게 삼성전자 지분 0.17%를 증여한다. 삼성전자는 13일 홍 명예관장이 보유한 삼성전자 주식 1115만8000주(0.17%)를 이 회장에게 증여한다고 공시했다.",
       "title": "홍라희 명예관장, 이재용 회장에 삼성전자 지분 0.17% 증여..증여세 1.56조원대 추산"
     },
+    "core:a4f69df11c250d4eb88e7443": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844202",
+      "source": "뉴시스",
+      "source_body_digest": "3c074ade232e7b8f148566cdb85cb1a63212742005d9d9cd53a92318bd2e8c41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3fdb1bc60f4409c0df1971ecd6124d446a70bf817122b528b29e0641341a2e6",
+      "source_fact_keys": [
+        "source_fact:v1:0525e83b9d72a2a63cd912876897e43f109666853338f23123cc15b7668ad9af",
+        "source_fact:v1:09e42727aae7481b5dc167dd4b36e277fe7aeb371f2abecb88b58724e325dd2d",
+        "source_fact:v1:1dbb5e18df7df3c571a7152dfad0fba63d199cfd48bb06c1856a97d3da89832d",
+        "source_fact:v1:93afe46e6748d4914ac443b20340e55c82c3ef53e43f46b5dcefcf8a61975379",
+        "source_fact:v1:d644646d7458c0dda12c488f998354a2b410aa18c8e8304512915ad0b642ff3e"
+      ],
+      "source_published_kst": "2026-10-28T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유",
+      "telegram_core_fact": "카드업계에 따르면 신한카드의 지난 3분기 당기순이익은 2324억원으로 전년비 73.7% 증가했다.",
+      "title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유"
+    },
     "core:a507f80c15f1357cc0a759cc": {
       "first_seen_kst": "2026-10-22T02:53:34+09:00",
       "lanes": {
@@ -85187,6 +85259,31 @@
       "telegram_core_fact": "WaFd(WAFD)는 2026 회계연도 4분기(7~9월) 희석 주당순이익(GAAP)이 0.76달러로 전년 동기 0.72달러 대비 5.6% 증가했으며, 같은 분기 순이익은 5999만 달러로 전년 동기보다 1.0% 줄었다고 16일(현지시간) 발표했다.",
       "title": "WaFd, 4분기 희석 주당순이익 0.76달러..전년비 5.6% 증가"
     },
+    "core:b44075c16a20854d5459e283": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182551",
+      "source": "매일경제",
+      "source_body_digest": "be0c6f1a885043774330b3fb6c597434a5d9e225258ccf4803039adc7ffecf38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6417fab8cd8b956185d62dfc92104a144222e982664cf14dc0204f889c2fda93",
+      "source_fact_keys": [
+        "source_fact:v1:06be58acff313dead93f6b814dd2c3d0f6245869979119a091a71f404d8686ca",
+        "source_fact:v1:17fb16faa48f206ff03bc1926d24b9f906b07962e1ab11e587675cc7c89bd93e",
+        "source_fact:v1:551ba2e25a50f34b76cd7cadd44eee0daf7fd550185c70dbf3b41eb341647752",
+        "source_fact:v1:670e42f01423410f2c80b9df46a85988f7e3a7f90f0fe84c3212577c54d048cd",
+        "source_fact:v1:7d3235bcfe2fa31753749a744e43b23bf8e126ff313d24663661b7f859fb08af",
+        "source_fact:v1:88e53a9c6e054274362df5245d0f17c510bc4d07470762382605ac6b931bf966"
+      ],
+      "source_published_kst": "2026-10-28T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가",
+      "telegram_core_fact": "소아 정형외과 전문 의료기기 업체 오쏘피디애트릭스(KIDS)가 2026년 3분기 매출액이 7270만 달러로 전년비 19% 증가했고, GAAP 기준 희석 주당순손실은 0.25달러로 전년 동기 0.50달러에서 줄었다고 10월 27일 발표했다.",
+      "title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가"
+    },
     "core:b450768c1eaf8bc618dd0372": {
       "first_seen_kst": "2026-10-12T00:21:39+09:00",
       "lanes": {
@@ -90401,6 +90498,31 @@
       "source_title": "국제유가, 미국 원유 재고 급감 속 혼조⋯WTI 3.03%↑ [상보]",
       "telegram_core_fact": "15일(현지시간) 뉴욕상업거래소에서 11월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 2.88달러(3.03%) 상승한 배럴당 97.97달러에 마감했다.",
       "title": "국제유가, 미국 원유 재고 급감 속 혼조⋯WTI 3.03%↑ [상보]"
+    },
+    "core:be3326f256c37e211b8f9f64": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844197",
+      "source": "뉴시스",
+      "source_body_digest": "a6cb415cb69516d84492db182ac08943dd0b4220cfd09a822542c104a718dc8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07ab179eae8052719f6f3003a2fbd206bcdfe910756571834e10c4f3cf39270e",
+      "source_fact_keys": [
+        "source_fact:v1:3e74d4aa93660f7d2c5e1a74661463fa58c6a7e930353fb35a68d7be50a68503",
+        "source_fact:v1:86b116baaef5d07a0637e627625fe79eab409046218509c35433b10add22e992",
+        "source_fact:v1:a73836cd53ea4763be230846c86ed1c721807108fe5441664c49285b51570a7a",
+        "source_fact:v1:ba8c8a677ae5414dafffc529c5ff922f189208f5c23c5d0f624069d12a471282",
+        "source_fact:v1:e2f0df7254d4764e04699b7f3233998f5673ecbe696375200264ce8f4eddc00e",
+        "source_fact:v1:edc1a62b26743baf475a335510811a0e3c2791a75cf2d9091e84f9a87cb67c04"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "태성, 유리기판 제조용 습식공정 장비 日 공급",
+      "telegram_core_fact": "태성은 일본 첨단기판 제조사 F사에 글라스기판 제조용 습식공정 장비를 공급한다고 28일 밝혔다.",
+      "title": "태성, 유리기판 제조용 습식공정 장비 日 공급"
     },
     "core:be3448d0e08fdfad7d5997bd": {
       "first_seen_kst": "2026-10-23T04:06:25+09:00",
@@ -99929,6 +100051,27 @@
       "source_title": "美국방부, 이란 대규모 공습 준비 지시⋯중간선거 전 공격 가능성",
       "telegram_core_fact": "로이터 통신은 이란이 호르무즈 해협을 항해하는 유조선에 대한 공격을 늘려 주간 공격 건수가 2월 미·이란 군사 충돌 이후 가장 많아졌다고 보도했다.",
       "title": "美국방부, 이란 대규모 공습 준비 지시⋯중간선거 전 공격 가능성"
+    },
+    "core:d2a4b5c815569c488e012d12": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182637",
+      "source": "매일경제",
+      "source_body_digest": "52492fe2fec93ff76c44b9999b88fe27e701b6f5b7e1e3aee5ae324c3da995d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bf2b35d1a132018c109716fe7ee6cc147e8796943c6ddd7add46a909a0f26dc2",
+      "source_fact_keys": [
+        "source_fact:v1:e2b314a7c3735b5f228e9fa0e9735b528540ff6695b6c098a9d5a2c3c7af4949",
+        "source_fact:v1:e37af65235119a8beda2bb871aab42fd10cd86623cc21cad5d8ac9e8b5df4c1c"
+      ],
+      "source_published_kst": "2026-10-28T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환",
+      "telegram_core_fact": "르네상스리 홀딩스(RNR)는 3분기 일반회계기준(GAAP) 희석 주당순손실이 4.02달러로 전년 동기 19.40달러 흑자에서 적자전환했다고 10월 27일 발표했다.",
+      "title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환"
     },
     "core:d2a85698592c2998c1fd54ec": {
       "first_seen_kst": "2026-10-17T05:25:35+09:00",
@@ -119870,6 +120013,27 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T08:53+09:00",
       "title": "유나이티드 마이크로일렉, 9월 매출 254억 대만달러…전년비 27% 증가"
+    },
+    "core:fc2db90bdb1420c9a1850250": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028030000009",
+      "source": "연합뉴스",
+      "source_body_digest": "c097b7cfa02843943c7565ea514466becacb2891cf7b27b5822891116b8b6e88",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a55c4ee264d681fb63752ea68ed09dbb38248f06da8dd66e56add2484c2ee90",
+      "source_fact_keys": [
+        "source_fact:v1:0bfe397dd9fb7e343d2beb7e2d938fdf35d3f766eeb518d11a5620378d7f1e51",
+        "source_fact:v1:a1f1b2cbb49a00d616db32d550f5304acbbe17388530b72a6e42ac62e265e306"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스",
+      "telegram_core_fact": "시장 거래자들에 따르면 사우디산 공급 증가로 이번 주 유럽에서 일부 원유 유종의 가격이 하락했다.",
+      "title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스"
     },
     "core:fc434a5fc6ebe9b551e7f9ad": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -176248,6 +176412,32 @@
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
+    "fact:37de23878018702d364cec08": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
+    },
     "fact:37f6911ea0f77ba3b901d1ec": {
       "first_seen_kst": "2026-10-20T23:32:55+09:00",
       "lanes": {
@@ -205852,6 +206042,31 @@
       "telegram_core_fact": "주로 개발사업 인허가 과정에서 불법행위나 특혜가 있었는지 등을 확인하고 재발 방지 대책을 강구하는 역할을 하게 된다.",
       "title": "'30억 뇌물' 비리 터지자…안성시, 개발사업 인허가 보류 | 연합뉴스"
     },
+    "fact:74b7a003d3ea29099eedbc2a": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844197",
+      "source": "뉴시스",
+      "source_body_digest": "a6cb415cb69516d84492db182ac08943dd0b4220cfd09a822542c104a718dc8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07ab179eae8052719f6f3003a2fbd206bcdfe910756571834e10c4f3cf39270e",
+      "source_fact_keys": [
+        "source_fact:v1:3e74d4aa93660f7d2c5e1a74661463fa58c6a7e930353fb35a68d7be50a68503",
+        "source_fact:v1:86b116baaef5d07a0637e627625fe79eab409046218509c35433b10add22e992",
+        "source_fact:v1:a73836cd53ea4763be230846c86ed1c721807108fe5441664c49285b51570a7a",
+        "source_fact:v1:ba8c8a677ae5414dafffc529c5ff922f189208f5c23c5d0f624069d12a471282",
+        "source_fact:v1:e2f0df7254d4764e04699b7f3233998f5673ecbe696375200264ce8f4eddc00e",
+        "source_fact:v1:edc1a62b26743baf475a335510811a0e3c2791a75cf2d9091e84f9a87cb67c04"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "태성, 유리기판 제조용 습식공정 장비 日 공급",
+      "telegram_core_fact": "태성은 일본 첨단기판 제조사 F사에 글라스기판 제조용 습식공정 장비를 공급한다고 28일 밝혔다.",
+      "title": "태성, 유리기판 제조용 습식공정 장비 日 공급"
+    },
     "fact:74c8ae299604577665920c09": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
       "lanes": {
@@ -208854,6 +209069,28 @@
       "source_title": "익스텐드 AI 로보틱스, 9개월 잠정매출 최대 2650만달러·수주 8400만",
       "telegram_core_fact": "익스텐드 AI 로보틱스(XTND)가 2026년 1~9월 9개월 누적 잠정 매출액이 2450만~2650만 달러로 지난해 연간 매출액을 이미 넘어섰고, 9월 30일 기준 AI 로보틱스 부문 수주잔고는 약 8400만 달러에 달한다고 10월 26일 발표했다.",
       "title": "익스텐드 AI 로보틱스, 9개월 잠정매출 최대 2650만달러·수주 8400만"
+    },
+    "fact:7a9bd6de365594607316ae8c": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.etnews.com/20261028000085",
+      "source": "전자신문",
+      "source_body_digest": "b012dd204547c29760eebbbe756f2ad3fc6997850dd484fcb2a93c03e535956f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cd662228b6e98735e7af3f3c7a0466e4374f448866094ab13061fc045e3401f",
+      "source_fact_keys": [
+        "source_fact:v1:15187c30ba5efa916acb5f6b53dfa202e953179ebac431690702ee33bc5fae1c",
+        "source_fact:v1:d78b68a306a64163a4f2ec07e0008f3156c2cdf679fa05b92cb743a1553f4470",
+        "source_fact:v1:db117001262a69b0faaae1a515a54c5c09c37baeba44d1bbdcbcc01b5a289d00"
+      ],
+      "source_published_kst": "2026-10-28T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위",
+      "telegram_core_fact": "에코백스 로보틱스가 지난해 전 세계 롤러 물걸레 로봇청소기 시장에서 판매량 1위를 기록했다고 28일 밝혔다.",
+      "title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위"
     },
     "fact:7a9facb8f63e0166e90cedb5": {
       "first_seen_kst": "2026-10-23T10:22:46+09:00",
@@ -213110,6 +213347,30 @@
       "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
       "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
       "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
+    },
+    "fact:8330a1e2f8304926af637277": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844202",
+      "source": "뉴시스",
+      "source_body_digest": "3c074ade232e7b8f148566cdb85cb1a63212742005d9d9cd53a92318bd2e8c41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3fdb1bc60f4409c0df1971ecd6124d446a70bf817122b528b29e0641341a2e6",
+      "source_fact_keys": [
+        "source_fact:v1:0525e83b9d72a2a63cd912876897e43f109666853338f23123cc15b7668ad9af",
+        "source_fact:v1:09e42727aae7481b5dc167dd4b36e277fe7aeb371f2abecb88b58724e325dd2d",
+        "source_fact:v1:1dbb5e18df7df3c571a7152dfad0fba63d199cfd48bb06c1856a97d3da89832d",
+        "source_fact:v1:93afe46e6748d4914ac443b20340e55c82c3ef53e43f46b5dcefcf8a61975379",
+        "source_fact:v1:d644646d7458c0dda12c488f998354a2b410aa18c8e8304512915ad0b642ff3e"
+      ],
+      "source_published_kst": "2026-10-28T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유",
+      "telegram_core_fact": "카드업계에 따르면 신한카드의 지난 3분기 당기순이익은 2324억원으로 전년비 73.7% 증가했다.",
+      "title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유"
     },
     "fact:8348dbc70a47ab248425b303": {
       "first_seen_kst": "2026-10-11T08:19:03+09:00",
@@ -238514,6 +238775,31 @@
       "telegram_core_fact": "아마존이 이스라엘계 인공지능(AI) 스타트업 데카르트를 70억달러(약 9조4천억원)에 인수하는 방안을 논의 중이라고 월스트리트저널(WSJ)이 소식통들을 인용해 11일(현지시간) 보도했다.",
       "title": "\"아마존, 가상환경 생성 AI 개발사 데카르트 9조원에 인수 논의\""
     },
+    "fact:b26fba3abd49f6b7baa5eed9": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182551",
+      "source": "매일경제",
+      "source_body_digest": "be0c6f1a885043774330b3fb6c597434a5d9e225258ccf4803039adc7ffecf38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6417fab8cd8b956185d62dfc92104a144222e982664cf14dc0204f889c2fda93",
+      "source_fact_keys": [
+        "source_fact:v1:06be58acff313dead93f6b814dd2c3d0f6245869979119a091a71f404d8686ca",
+        "source_fact:v1:17fb16faa48f206ff03bc1926d24b9f906b07962e1ab11e587675cc7c89bd93e",
+        "source_fact:v1:551ba2e25a50f34b76cd7cadd44eee0daf7fd550185c70dbf3b41eb341647752",
+        "source_fact:v1:670e42f01423410f2c80b9df46a85988f7e3a7f90f0fe84c3212577c54d048cd",
+        "source_fact:v1:7d3235bcfe2fa31753749a744e43b23bf8e126ff313d24663661b7f859fb08af",
+        "source_fact:v1:88e53a9c6e054274362df5245d0f17c510bc4d07470762382605ac6b931bf966"
+      ],
+      "source_published_kst": "2026-10-28T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가",
+      "telegram_core_fact": "소아 정형외과 전문 의료기기 업체 오쏘피디애트릭스(KIDS)가 2026년 3분기 매출액이 7270만 달러로 전년비 19% 증가했고, GAAP 기준 희석 주당순손실은 0.25달러로 전년 동기 0.50달러에서 줄었다고 10월 27일 발표했다.",
+      "title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가"
+    },
     "fact:b270e6ebb1931e28364239df": {
       "first_seen_kst": "2026-10-21T07:55:35+09:00",
       "lanes": {
@@ -243816,6 +244102,27 @@
       "source_title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스",
       "telegram_core_fact": "특이사항이 없이 금융위 의결이 마무리되면, 핀다는 대원저축은행 인수를 위한 금융당국의 인허가 절차를 마무리하게 된다.",
       "title": "핀다, 핀테크 최초 저축은행 인수 눈앞…AI 활용 비대면 영업 | 연합뉴스"
+    },
+    "fact:bd6ba77da5115dd6700a749d": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028030000009",
+      "source": "연합뉴스",
+      "source_body_digest": "c097b7cfa02843943c7565ea514466becacb2891cf7b27b5822891116b8b6e88",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a55c4ee264d681fb63752ea68ed09dbb38248f06da8dd66e56add2484c2ee90",
+      "source_fact_keys": [
+        "source_fact:v1:0bfe397dd9fb7e343d2beb7e2d938fdf35d3f766eeb518d11a5620378d7f1e51",
+        "source_fact:v1:a1f1b2cbb49a00d616db32d550f5304acbbe17388530b72a6e42ac62e265e306"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스",
+      "telegram_core_fact": "시장 거래자들에 따르면 사우디산 공급 증가로 이번 주 유럽에서 일부 원유 유종의 가격이 하락했다.",
+      "title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스"
     },
     "fact:bd8c3d82589992f1bd602296": {
       "first_seen_kst": "2026-10-27T04:53:25+09:00",
@@ -265787,6 +266094,27 @@
       "source_published_kst": "2026-10-05T12:55+09:00",
       "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
     },
+    "fact:e5ed72d30699913bc338bb38": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182637",
+      "source": "매일경제",
+      "source_body_digest": "52492fe2fec93ff76c44b9999b88fe27e701b6f5b7e1e3aee5ae324c3da995d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bf2b35d1a132018c109716fe7ee6cc147e8796943c6ddd7add46a909a0f26dc2",
+      "source_fact_keys": [
+        "source_fact:v1:e2b314a7c3735b5f228e9fa0e9735b528540ff6695b6c098a9d5a2c3c7af4949",
+        "source_fact:v1:e37af65235119a8beda2bb871aab42fd10cd86623cc21cad5d8ac9e8b5df4c1c"
+      ],
+      "source_published_kst": "2026-10-28T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환",
+      "telegram_core_fact": "르네상스리 홀딩스(RNR)는 3분기 일반회계기준(GAAP) 희석 주당순손실이 4.02달러로 전년 동기 19.40달러 흑자에서 적자전환했다고 10월 27일 발표했다.",
+      "title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환"
+    },
     "fact:e5fa9d3c6c3b87ff068d180f": {
       "first_seen_kst": "2026-10-26T15:05:11+09:00",
       "lanes": {
@@ -283034,6 +283362,32 @@
       "source_title": "반도체 수출 호조…8월 경상수지 461.1억달러 흑자 역대 2위",
       "telegram_core_fact": "통관수출의 전년 대비 증가율을 보면 8월 IT는 컴퓨터주변기기SSD(+366.8%), 반도체(206.1%), 무선통신기기(+3.9%) 등을 중심으로 162.6% 늘었다.",
       "title": "반도체 수출 호조…8월 경상수지 461.1억달러 흑자 역대 2위"
+    },
+    "link:05bf30c599fb02783847852b": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
     },
     "link:05c514f7337beb78381d3920": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -322489,6 +322843,30 @@
       "telegram_core_fact": "엔비디아가 AI(인공지능) 데이터센터 구축 기간을 기존 6개월에서 최단 14일로 단축할 수 있는 모듈형 인프라 설계를 공개했다. 그는 \"1GW(기가와트) AI 데이터센터에는 500억달러가 들어간다\"며 \"연간 400억달러의 매출이 발생한다고 가정하면 가동이 3개월만 지연돼도 100억달러의 매출 기회를 잃는다\"고 말했다.",
       "title": "엔비디아, 모듈형 AI 데이터센터 설계 공개…구축 기간 6개월→14일"
     },
+    "link:424964f3505ebf0b6617ee71": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844202",
+      "source": "뉴시스",
+      "source_body_digest": "3c074ade232e7b8f148566cdb85cb1a63212742005d9d9cd53a92318bd2e8c41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3fdb1bc60f4409c0df1971ecd6124d446a70bf817122b528b29e0641341a2e6",
+      "source_fact_keys": [
+        "source_fact:v1:0525e83b9d72a2a63cd912876897e43f109666853338f23123cc15b7668ad9af",
+        "source_fact:v1:09e42727aae7481b5dc167dd4b36e277fe7aeb371f2abecb88b58724e325dd2d",
+        "source_fact:v1:1dbb5e18df7df3c571a7152dfad0fba63d199cfd48bb06c1856a97d3da89832d",
+        "source_fact:v1:93afe46e6748d4914ac443b20340e55c82c3ef53e43f46b5dcefcf8a61975379",
+        "source_fact:v1:d644646d7458c0dda12c488f998354a2b410aa18c8e8304512915ad0b642ff3e"
+      ],
+      "source_published_kst": "2026-10-28T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유",
+      "telegram_core_fact": "카드업계에 따르면 신한카드의 지난 3분기 당기순이익은 2324억원으로 전년비 73.7% 증가했다.",
+      "title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유"
+    },
     "link:424e89c5b8f19264a6911b1c": {
       "first_seen_kst": "2026-10-28T10:13:53+09:00",
       "lanes": {
@@ -334594,6 +334972,27 @@
       "link": "https://www.etnews.com/20261002000129",
       "source": "전자신문",
       "title": "[ET특징주] 국제유가 급등… 에쓰오일 등 정유株 강세"
+    },
+    "link:5479966d00a461171d36caf2": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182637",
+      "source": "매일경제",
+      "source_body_digest": "52492fe2fec93ff76c44b9999b88fe27e701b6f5b7e1e3aee5ae324c3da995d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bf2b35d1a132018c109716fe7ee6cc147e8796943c6ddd7add46a909a0f26dc2",
+      "source_fact_keys": [
+        "source_fact:v1:e2b314a7c3735b5f228e9fa0e9735b528540ff6695b6c098a9d5a2c3c7af4949",
+        "source_fact:v1:e37af65235119a8beda2bb871aab42fd10cd86623cc21cad5d8ac9e8b5df4c1c"
+      ],
+      "source_published_kst": "2026-10-28T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환",
+      "telegram_core_fact": "르네상스리 홀딩스(RNR)는 3분기 일반회계기준(GAAP) 희석 주당순손실이 4.02달러로 전년 동기 19.40달러 흑자에서 적자전환했다고 10월 27일 발표했다.",
+      "title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환"
     },
     "link:547fa6281a470f7182fe01e4": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
@@ -357883,6 +358282,28 @@
       "source_title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스",
       "telegram_core_fact": "코스피 상장사 BNK금융지주[138930]는 자회사 BNK투자증권이 연결 기준 올해 3분기 영업이익 33억원으로 지난해 동기보다 46.3% 감소한 것으로 잠정 집계됐다고 26일 공시했다.",
       "title": "BNK투자증권 3분기 영업이익 33억원…작년 동기 대비 46.3%↓ | 연합뉴스"
+    },
+    "link:792018f25ca63daeb6e3a62b": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.etnews.com/20261028000085",
+      "source": "전자신문",
+      "source_body_digest": "b012dd204547c29760eebbbe756f2ad3fc6997850dd484fcb2a93c03e535956f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cd662228b6e98735e7af3f3c7a0466e4374f448866094ab13061fc045e3401f",
+      "source_fact_keys": [
+        "source_fact:v1:15187c30ba5efa916acb5f6b53dfa202e953179ebac431690702ee33bc5fae1c",
+        "source_fact:v1:d78b68a306a64163a4f2ec07e0008f3156c2cdf679fa05b92cb743a1553f4470",
+        "source_fact:v1:db117001262a69b0faaae1a515a54c5c09c37baeba44d1bbdcbcc01b5a289d00"
+      ],
+      "source_published_kst": "2026-10-28T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위",
+      "telegram_core_fact": "에코백스 로보틱스가 지난해 전 세계 롤러 물걸레 로봇청소기 시장에서 판매량 1위를 기록했다고 28일 밝혔다.",
+      "title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위"
     },
     "link:792c25411418e46558700342": {
       "first_seen_kst": "2026-10-21T05:48:08+09:00",
@@ -398843,6 +399264,31 @@
       "telegram_core_fact": "산업통상부와 관계기관 등에 따르면 정부는 23일 규제합리화위원회 제2차 전체회의에서 반도체 산단 기획·인허가·보상·설계 등을 병행해 조성 기간을 5년 이내로 단축하는 방안을 발표했다.",
       "title": "반도체 산단 조성 5년 이내 단축에도…송전망 갈등·기업 이전 '산 넘어 산’[320개 규제특례의 명암]"
     },
+    "link:b726a1827d49a0dc6bf36c7d": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182551",
+      "source": "매일경제",
+      "source_body_digest": "be0c6f1a885043774330b3fb6c597434a5d9e225258ccf4803039adc7ffecf38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6417fab8cd8b956185d62dfc92104a144222e982664cf14dc0204f889c2fda93",
+      "source_fact_keys": [
+        "source_fact:v1:06be58acff313dead93f6b814dd2c3d0f6245869979119a091a71f404d8686ca",
+        "source_fact:v1:17fb16faa48f206ff03bc1926d24b9f906b07962e1ab11e587675cc7c89bd93e",
+        "source_fact:v1:551ba2e25a50f34b76cd7cadd44eee0daf7fd550185c70dbf3b41eb341647752",
+        "source_fact:v1:670e42f01423410f2c80b9df46a85988f7e3a7f90f0fe84c3212577c54d048cd",
+        "source_fact:v1:7d3235bcfe2fa31753749a744e43b23bf8e126ff313d24663661b7f859fb08af",
+        "source_fact:v1:88e53a9c6e054274362df5245d0f17c510bc4d07470762382605ac6b931bf966"
+      ],
+      "source_published_kst": "2026-10-28T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가",
+      "telegram_core_fact": "소아 정형외과 전문 의료기기 업체 오쏘피디애트릭스(KIDS)가 2026년 3분기 매출액이 7270만 달러로 전년비 19% 증가했고, GAAP 기준 희석 주당순손실은 0.25달러로 전년 동기 0.50달러에서 줄었다고 10월 27일 발표했다.",
+      "title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가"
+    },
     "link:b73572ebf99e02a25e11d983": {
       "first_seen_kst": "2026-10-16T21:59:28+09:00",
       "lanes": {
@@ -414393,6 +414839,31 @@
       "source_title": "“GPU는 있는데 전기가 없다”⋯美 AIDC 32GW 전력난, HBM 새 변수 [AI 호황의 역설]",
       "telegram_core_fact": "그동안 엔비디아의 그래픽처리장치(GPU)와 고대역폭메모리(HBM) 확보가 AI 인프라 구축의 최대 과제였다면 이제는 확보한 반도체를 실제로 가동할 전력 공급 능력이 관건이 되고 있다.",
       "title": "“GPU는 있는데 전기가 없다”⋯美 AIDC 32GW 전력난, HBM 새 변수 [AI 호황의 역설]"
+    },
+    "link:cec8772e0b21fc879dbd1672": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844197",
+      "source": "뉴시스",
+      "source_body_digest": "a6cb415cb69516d84492db182ac08943dd0b4220cfd09a822542c104a718dc8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07ab179eae8052719f6f3003a2fbd206bcdfe910756571834e10c4f3cf39270e",
+      "source_fact_keys": [
+        "source_fact:v1:3e74d4aa93660f7d2c5e1a74661463fa58c6a7e930353fb35a68d7be50a68503",
+        "source_fact:v1:86b116baaef5d07a0637e627625fe79eab409046218509c35433b10add22e992",
+        "source_fact:v1:a73836cd53ea4763be230846c86ed1c721807108fe5441664c49285b51570a7a",
+        "source_fact:v1:ba8c8a677ae5414dafffc529c5ff922f189208f5c23c5d0f624069d12a471282",
+        "source_fact:v1:e2f0df7254d4764e04699b7f3233998f5673ecbe696375200264ce8f4eddc00e",
+        "source_fact:v1:edc1a62b26743baf475a335510811a0e3c2791a75cf2d9091e84f9a87cb67c04"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "태성, 유리기판 제조용 습식공정 장비 日 공급",
+      "telegram_core_fact": "태성은 일본 첨단기판 제조사 F사에 글라스기판 제조용 습식공정 장비를 공급한다고 28일 밝혔다.",
+      "title": "태성, 유리기판 제조용 습식공정 장비 日 공급"
     },
     "link:ced0a4a432371293e97d01fa": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
@@ -433956,6 +434427,27 @@
       "telegram_core_fact": "유철종 전문위원 = 일본 방위성이 우크라이나 방산업체 '스카이폴'(SkyFall)이 생산하는 요격 드론 구매 계약을 체결하고 신속한 도입을 추진 중인 것으로 전해졌다.",
       "title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\""
     },
+    "link:ef2916f3c6f05bf80faed9fe": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028030000009",
+      "source": "연합뉴스",
+      "source_body_digest": "c097b7cfa02843943c7565ea514466becacb2891cf7b27b5822891116b8b6e88",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a55c4ee264d681fb63752ea68ed09dbb38248f06da8dd66e56add2484c2ee90",
+      "source_fact_keys": [
+        "source_fact:v1:0bfe397dd9fb7e343d2beb7e2d938fdf35d3f766eeb518d11a5620378d7f1e51",
+        "source_fact:v1:a1f1b2cbb49a00d616db32d550f5304acbbe17388530b72a6e42ac62e265e306"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스",
+      "telegram_core_fact": "시장 거래자들에 따르면 사우디산 공급 증가로 이번 주 유럽에서 일부 원유 유종의 가격이 하락했다.",
+      "title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스"
+    },
     "link:ef36d797b9a6dde158b6e053": {
       "first_seen_kst": "2026-10-23T13:00:02+09:00",
       "lanes": {
@@ -447656,6 +448148,31 @@
       "link": "https://www.mt.co.kr/finance/2026/09/20/2026091715274866375",
       "source": "머니투데이",
       "title": "은행 방카슈랑스 '활기'…저축성보험 자금 유입에 생보사도 '반색'"
+    },
+    "original:056aeafdf9e448b09cf1a99f": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844197",
+      "source": "뉴시스",
+      "source_body_digest": "a6cb415cb69516d84492db182ac08943dd0b4220cfd09a822542c104a718dc8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07ab179eae8052719f6f3003a2fbd206bcdfe910756571834e10c4f3cf39270e",
+      "source_fact_keys": [
+        "source_fact:v1:3e74d4aa93660f7d2c5e1a74661463fa58c6a7e930353fb35a68d7be50a68503",
+        "source_fact:v1:86b116baaef5d07a0637e627625fe79eab409046218509c35433b10add22e992",
+        "source_fact:v1:a73836cd53ea4763be230846c86ed1c721807108fe5441664c49285b51570a7a",
+        "source_fact:v1:ba8c8a677ae5414dafffc529c5ff922f189208f5c23c5d0f624069d12a471282",
+        "source_fact:v1:e2f0df7254d4764e04699b7f3233998f5673ecbe696375200264ce8f4eddc00e",
+        "source_fact:v1:edc1a62b26743baf475a335510811a0e3c2791a75cf2d9091e84f9a87cb67c04"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "태성, 유리기판 제조용 습식공정 장비 日 공급",
+      "telegram_core_fact": "태성은 일본 첨단기판 제조사 F사에 글라스기판 제조용 습식공정 장비를 공급한다고 28일 밝혔다.",
+      "title": "태성, 유리기판 제조용 습식공정 장비 日 공급"
     },
     "original:056be3e8383d4389e1893897": {
       "first_seen_kst": "2026-10-25T20:53:01+09:00",
@@ -462948,6 +463465,28 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811103",
       "source": "뉴시스",
       "title": "스위스 빙하 올해 5.5% 감소 '역대 두 번째'…\"10~15년내 사라질 수도\""
+    },
+    "original:1e537bd23c1465f80267c7f9": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.etnews.com/20261028000085",
+      "source": "전자신문",
+      "source_body_digest": "b012dd204547c29760eebbbe756f2ad3fc6997850dd484fcb2a93c03e535956f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cd662228b6e98735e7af3f3c7a0466e4374f448866094ab13061fc045e3401f",
+      "source_fact_keys": [
+        "source_fact:v1:15187c30ba5efa916acb5f6b53dfa202e953179ebac431690702ee33bc5fae1c",
+        "source_fact:v1:d78b68a306a64163a4f2ec07e0008f3156c2cdf679fa05b92cb743a1553f4470",
+        "source_fact:v1:db117001262a69b0faaae1a515a54c5c09c37baeba44d1bbdcbcc01b5a289d00"
+      ],
+      "source_published_kst": "2026-10-28T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위",
+      "telegram_core_fact": "에코백스 로보틱스가 지난해 전 세계 롤러 물걸레 로봇청소기 시장에서 판매량 1위를 기록했다고 28일 밝혔다.",
+      "title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위"
     },
     "original:1e5c60e388f60f5a30afdd6b": {
       "first_seen_kst": "2026-10-22T22:04:33+09:00",
@@ -503799,6 +504338,31 @@
       "source_published_kst": "2026-10-05T09:55+09:00",
       "title": "日라피더스, 삼성·TSMC식 설계동맹 생태계 구축"
     },
+    "original:5dd5fd21443d9f59924f695f": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182551",
+      "source": "매일경제",
+      "source_body_digest": "be0c6f1a885043774330b3fb6c597434a5d9e225258ccf4803039adc7ffecf38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6417fab8cd8b956185d62dfc92104a144222e982664cf14dc0204f889c2fda93",
+      "source_fact_keys": [
+        "source_fact:v1:06be58acff313dead93f6b814dd2c3d0f6245869979119a091a71f404d8686ca",
+        "source_fact:v1:17fb16faa48f206ff03bc1926d24b9f906b07962e1ab11e587675cc7c89bd93e",
+        "source_fact:v1:551ba2e25a50f34b76cd7cadd44eee0daf7fd550185c70dbf3b41eb341647752",
+        "source_fact:v1:670e42f01423410f2c80b9df46a85988f7e3a7f90f0fe84c3212577c54d048cd",
+        "source_fact:v1:7d3235bcfe2fa31753749a744e43b23bf8e126ff313d24663661b7f859fb08af",
+        "source_fact:v1:88e53a9c6e054274362df5245d0f17c510bc4d07470762382605ac6b931bf966"
+      ],
+      "source_published_kst": "2026-10-28T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가",
+      "telegram_core_fact": "소아 정형외과 전문 의료기기 업체 오쏘피디애트릭스(KIDS)가 2026년 3분기 매출액이 7270만 달러로 전년비 19% 증가했고, GAAP 기준 희석 주당순손실은 0.25달러로 전년 동기 0.50달러에서 줄었다고 10월 27일 발표했다.",
+      "title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가"
+    },
     "original:5de900547650cfcbe5dc369c": {
       "first_seen_kst": "2026-10-11T05:45:39+09:00",
       "lanes": {
@@ -519480,6 +520044,27 @@
       "telegram_core_fact": "[파이낸셜뉴스] 안현 SK하이닉스 개발총괄 사장이 인공지능(AI) 추론 수요 증가에 대응해 고대역폭메모리(HBM)를 넘어 차세대 메모리 개발을 확대하겠다는 구상을 제시했다.",
       "title": "안현 SK하이닉스 사장 \"메모리 계층 최적화로 데이터 병목 극복해야\""
     },
+    "original:75ea3c5bc24243b854d45424": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028030000009",
+      "source": "연합뉴스",
+      "source_body_digest": "c097b7cfa02843943c7565ea514466becacb2891cf7b27b5822891116b8b6e88",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a55c4ee264d681fb63752ea68ed09dbb38248f06da8dd66e56add2484c2ee90",
+      "source_fact_keys": [
+        "source_fact:v1:0bfe397dd9fb7e343d2beb7e2d938fdf35d3f766eeb518d11a5620378d7f1e51",
+        "source_fact:v1:a1f1b2cbb49a00d616db32d550f5304acbbe17388530b72a6e42ac62e265e306"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스",
+      "telegram_core_fact": "시장 거래자들에 따르면 사우디산 공급 증가로 이번 주 유럽에서 일부 원유 유종의 가격이 하락했다.",
+      "title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스"
+    },
     "original:75efa7fefeb9dc196871a25c": {
       "first_seen_kst": "2026-10-18T14:22:20+09:00",
       "lanes": {
@@ -521961,6 +522546,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T05:28+09:00",
       "title": "\"알래스카 등 트럼프 프로젝트, 선거 판도 뒤집기엔 역부족\""
+    },
+    "original:7a317df81646afa8a0530679": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182637",
+      "source": "매일경제",
+      "source_body_digest": "52492fe2fec93ff76c44b9999b88fe27e701b6f5b7e1e3aee5ae324c3da995d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bf2b35d1a132018c109716fe7ee6cc147e8796943c6ddd7add46a909a0f26dc2",
+      "source_fact_keys": [
+        "source_fact:v1:e2b314a7c3735b5f228e9fa0e9735b528540ff6695b6c098a9d5a2c3c7af4949",
+        "source_fact:v1:e37af65235119a8beda2bb871aab42fd10cd86623cc21cad5d8ac9e8b5df4c1c"
+      ],
+      "source_published_kst": "2026-10-28T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환",
+      "telegram_core_fact": "르네상스리 홀딩스(RNR)는 3분기 일반회계기준(GAAP) 희석 주당순손실이 4.02달러로 전년 동기 19.40달러 흑자에서 적자전환했다고 10월 27일 발표했다.",
+      "title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환"
     },
     "original:7a334cb4b500308ad6b44254": {
       "first_seen_kst": "2026-10-20T17:22:47+09:00",
@@ -572210,6 +572816,32 @@
       "telegram_core_fact": "영풍과 MBK파트너스는 고려아연 경영진들이 경영권 다툼 과정에서 자기주식을 고가에 매수하고, 보유하던 다른 주식은 헐값에 팔아 회사에 손해를 입혔다고 주장했지만 재판부는 받아들이지 않았다.",
       "title": "영풍·MBK, 고려아연 상대 1兆 소송전 잇따라 패소(종합2보)"
     },
+    "original:c9f285e65e2eaa4a18621586": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
+    },
     "original:c9f93792362fde041886b332": {
       "first_seen_kst": "2026-10-21T19:28:26+09:00",
       "lanes": {
@@ -603165,6 +603797,30 @@
       "telegram_core_fact": "도는 2025년부터 2년 연속 투자유치 실적 10조원을 달성하는데 투자자문위가 큰 뒷받침을 했다고 평가했다. 민선 9기 경남도정에 투자유치 전략, 기업 협력 방안을 조언할 제3기 투자유치자문위원회(이하 투자자문위)가 23일 출범했다.",
       "title": "경남 2년 연속 10조 투자유치 뒷받침…투자유치자문위 3기 출범 | 연합뉴스"
     },
+    "original:fb744f2e83754de2177f5689": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844202",
+      "source": "뉴시스",
+      "source_body_digest": "3c074ade232e7b8f148566cdb85cb1a63212742005d9d9cd53a92318bd2e8c41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3fdb1bc60f4409c0df1971ecd6124d446a70bf817122b528b29e0641341a2e6",
+      "source_fact_keys": [
+        "source_fact:v1:0525e83b9d72a2a63cd912876897e43f109666853338f23123cc15b7668ad9af",
+        "source_fact:v1:09e42727aae7481b5dc167dd4b36e277fe7aeb371f2abecb88b58724e325dd2d",
+        "source_fact:v1:1dbb5e18df7df3c571a7152dfad0fba63d199cfd48bb06c1856a97d3da89832d",
+        "source_fact:v1:93afe46e6748d4914ac443b20340e55c82c3ef53e43f46b5dcefcf8a61975379",
+        "source_fact:v1:d644646d7458c0dda12c488f998354a2b410aa18c8e8304512915ad0b642ff3e"
+      ],
+      "source_published_kst": "2026-10-28T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유",
+      "telegram_core_fact": "카드업계에 따르면 신한카드의 지난 3분기 당기순이익은 2324억원으로 전년비 73.7% 증가했다.",
+      "title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유"
+    },
     "original:fb8327004dea6888f47dc3f4": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
       "lanes": {
@@ -608827,6 +609483,31 @@
       "source_title": "‘솔리다임 미국 상장 못하나’ 해외 IPO 추진 기업들 촉각 [투자360]",
       "telegram_core_fact": "금융투자업계에 따르면 이찬진 금융감독원장은 전날 국회 정무위원회 국정감사에서 솔리다임의 미국 증시 상장 추진과 관련해 금융위원회와 금감원 모두 중복상장에 저촉된다는 판단을 하고 있다는 취지로 밝혔다.",
       "title": "‘솔리다임 미국 상장 못하나’ 해외 IPO 추진 기업들 촉각 [투자360]"
+    },
+    "source_fact:01304ad98b516208264cf177": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182551",
+      "source": "매일경제",
+      "source_body_digest": "be0c6f1a885043774330b3fb6c597434a5d9e225258ccf4803039adc7ffecf38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6417fab8cd8b956185d62dfc92104a144222e982664cf14dc0204f889c2fda93",
+      "source_fact_keys": [
+        "source_fact:v1:06be58acff313dead93f6b814dd2c3d0f6245869979119a091a71f404d8686ca",
+        "source_fact:v1:17fb16faa48f206ff03bc1926d24b9f906b07962e1ab11e587675cc7c89bd93e",
+        "source_fact:v1:551ba2e25a50f34b76cd7cadd44eee0daf7fd550185c70dbf3b41eb341647752",
+        "source_fact:v1:670e42f01423410f2c80b9df46a85988f7e3a7f90f0fe84c3212577c54d048cd",
+        "source_fact:v1:7d3235bcfe2fa31753749a744e43b23bf8e126ff313d24663661b7f859fb08af",
+        "source_fact:v1:88e53a9c6e054274362df5245d0f17c510bc4d07470762382605ac6b931bf966"
+      ],
+      "source_published_kst": "2026-10-28T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가",
+      "telegram_core_fact": "소아 정형외과 전문 의료기기 업체 오쏘피디애트릭스(KIDS)가 2026년 3분기 매출액이 7270만 달러로 전년비 19% 증가했고, GAAP 기준 희석 주당순손실은 0.25달러로 전년 동기 0.50달러에서 줄었다고 10월 27일 발표했다.",
+      "title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가"
     },
     "source_fact:01329b51ac550fad993c5dd6": {
       "first_seen_kst": "2026-10-11T13:18:03+09:00",
@@ -629279,6 +629960,28 @@
       "source_title": "삼성물산, 2조원 '여의도 시범' 시공사 선정…한강변에 래미안 벨트",
       "telegram_core_fact": "서울 여의도 최대 재건축 사업지로 꼽히는 시범아파트 재건축 시공사로 삼성물산 건설부문이 선정됐다.",
       "title": "삼성물산, 2조원 '여의도 시범' 시공사 선정…한강변에 래미안 벨트"
+    },
+    "source_fact:08e87de6fa71d5119daea5a9": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.etnews.com/20261028000085",
+      "source": "전자신문",
+      "source_body_digest": "b012dd204547c29760eebbbe756f2ad3fc6997850dd484fcb2a93c03e535956f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cd662228b6e98735e7af3f3c7a0466e4374f448866094ab13061fc045e3401f",
+      "source_fact_keys": [
+        "source_fact:v1:15187c30ba5efa916acb5f6b53dfa202e953179ebac431690702ee33bc5fae1c",
+        "source_fact:v1:d78b68a306a64163a4f2ec07e0008f3156c2cdf679fa05b92cb743a1553f4470",
+        "source_fact:v1:db117001262a69b0faaae1a515a54c5c09c37baeba44d1bbdcbcc01b5a289d00"
+      ],
+      "source_published_kst": "2026-10-28T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위",
+      "telegram_core_fact": "에코백스 로보틱스가 지난해 전 세계 롤러 물걸레 로봇청소기 시장에서 판매량 1위를 기록했다고 28일 밝혔다.",
+      "title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위"
     },
     "source_fact:08ea0fb6b452a0ccbfa5f322": {
       "first_seen_kst": "2026-10-22T23:00:45+09:00",
@@ -655584,6 +656287,31 @@
       "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
       "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
+    "source_fact:129e53f3e8e5837dc725d9e3": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182551",
+      "source": "매일경제",
+      "source_body_digest": "be0c6f1a885043774330b3fb6c597434a5d9e225258ccf4803039adc7ffecf38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6417fab8cd8b956185d62dfc92104a144222e982664cf14dc0204f889c2fda93",
+      "source_fact_keys": [
+        "source_fact:v1:06be58acff313dead93f6b814dd2c3d0f6245869979119a091a71f404d8686ca",
+        "source_fact:v1:17fb16faa48f206ff03bc1926d24b9f906b07962e1ab11e587675cc7c89bd93e",
+        "source_fact:v1:551ba2e25a50f34b76cd7cadd44eee0daf7fd550185c70dbf3b41eb341647752",
+        "source_fact:v1:670e42f01423410f2c80b9df46a85988f7e3a7f90f0fe84c3212577c54d048cd",
+        "source_fact:v1:7d3235bcfe2fa31753749a744e43b23bf8e126ff313d24663661b7f859fb08af",
+        "source_fact:v1:88e53a9c6e054274362df5245d0f17c510bc4d07470762382605ac6b931bf966"
+      ],
+      "source_published_kst": "2026-10-28T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가",
+      "telegram_core_fact": "소아 정형외과 전문 의료기기 업체 오쏘피디애트릭스(KIDS)가 2026년 3분기 매출액이 7270만 달러로 전년비 19% 증가했고, GAAP 기준 희석 주당순손실은 0.25달러로 전년 동기 0.50달러에서 줄었다고 10월 27일 발표했다.",
+      "title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가"
+    },
     "source_fact:12a030f8a852647836f15cd0": {
       "first_seen_kst": "2026-10-27T12:53:34+09:00",
       "lanes": {
@@ -660769,6 +661497,30 @@
       "source_title": "\"서울 아파트 월세 거래 비중 50%↑…낙관 말고 '내 집 마련' 결단할 때\"",
       "telegram_core_fact": "너나위는 \"내년 서울 입주 물량이 올해의 반토막 수준으로 줄어드는 데다, 토지거래허가구역 규제 등으로 사서 임대를 놓는 물량 자체가 사라졌다\"며 \"전세 매물이 마르다 보니 보증금 인상분을 감당하지 못한 수요자들이 대출 이자 부담까지 겹쳐 월세로 내몰리고 있다\"고 분석했다.",
       "title": "\"서울 아파트 월세 거래 비중 50%↑…낙관 말고 '내 집 마련' 결단할 때\""
+    },
+    "source_fact:14b5b9c11693f46c977e65e7": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844202",
+      "source": "뉴시스",
+      "source_body_digest": "3c074ade232e7b8f148566cdb85cb1a63212742005d9d9cd53a92318bd2e8c41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3fdb1bc60f4409c0df1971ecd6124d446a70bf817122b528b29e0641341a2e6",
+      "source_fact_keys": [
+        "source_fact:v1:0525e83b9d72a2a63cd912876897e43f109666853338f23123cc15b7668ad9af",
+        "source_fact:v1:09e42727aae7481b5dc167dd4b36e277fe7aeb371f2abecb88b58724e325dd2d",
+        "source_fact:v1:1dbb5e18df7df3c571a7152dfad0fba63d199cfd48bb06c1856a97d3da89832d",
+        "source_fact:v1:93afe46e6748d4914ac443b20340e55c82c3ef53e43f46b5dcefcf8a61975379",
+        "source_fact:v1:d644646d7458c0dda12c488f998354a2b410aa18c8e8304512915ad0b642ff3e"
+      ],
+      "source_published_kst": "2026-10-28T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유",
+      "telegram_core_fact": "카드업계에 따르면 신한카드의 지난 3분기 당기순이익은 2324억원으로 전년비 73.7% 증가했다.",
+      "title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유"
     },
     "source_fact:14b7974ba6c58db5ccb4ab7a": {
       "first_seen_kst": "2026-10-10T03:00:37+09:00",
@@ -668296,6 +669048,31 @@
       "source_title": "머스크 \"내년 말 옵티머스 외부 공급\"…테슬라, AI·로봇 승부수",
       "telegram_core_fact": "머스크 CEO는 21일(현지시간) 3분기 실적 발표 후 진행한 어닝 콜에서 옵티머스의 생산 및 상용화 계획을 공개했다.",
       "title": "머스크 \"내년 말 옵티머스 외부 공급\"…테슬라, AI·로봇 승부수"
+    },
+    "source_fact:17b5d1a126ed286edd937458": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182551",
+      "source": "매일경제",
+      "source_body_digest": "be0c6f1a885043774330b3fb6c597434a5d9e225258ccf4803039adc7ffecf38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6417fab8cd8b956185d62dfc92104a144222e982664cf14dc0204f889c2fda93",
+      "source_fact_keys": [
+        "source_fact:v1:06be58acff313dead93f6b814dd2c3d0f6245869979119a091a71f404d8686ca",
+        "source_fact:v1:17fb16faa48f206ff03bc1926d24b9f906b07962e1ab11e587675cc7c89bd93e",
+        "source_fact:v1:551ba2e25a50f34b76cd7cadd44eee0daf7fd550185c70dbf3b41eb341647752",
+        "source_fact:v1:670e42f01423410f2c80b9df46a85988f7e3a7f90f0fe84c3212577c54d048cd",
+        "source_fact:v1:7d3235bcfe2fa31753749a744e43b23bf8e126ff313d24663661b7f859fb08af",
+        "source_fact:v1:88e53a9c6e054274362df5245d0f17c510bc4d07470762382605ac6b931bf966"
+      ],
+      "source_published_kst": "2026-10-28T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가",
+      "telegram_core_fact": "소아 정형외과 전문 의료기기 업체 오쏘피디애트릭스(KIDS)가 2026년 3분기 매출액이 7270만 달러로 전년비 19% 증가했고, GAAP 기준 희석 주당순손실은 0.25달러로 전년 동기 0.50달러에서 줄었다고 10월 27일 발표했다.",
+      "title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가"
     },
     "source_fact:17bce7f920535d5ee89b885b": {
       "first_seen_kst": "2026-10-28T05:54:37+09:00",
@@ -697263,6 +698040,31 @@
       "source_title": "넘치는 기업 곳간…여윳돈 석달 새 3배 늘어 67조 '최대'",
       "telegram_core_fact": "전례 없는 반도체 호황에 국내 기업이 2분기(4~6월)에만 67조 원 넘는 여윳돈을 쌓았다.",
       "title": "넘치는 기업 곳간…여윳돈 석달 새 3배 늘어 67조 '최대'"
+    },
+    "source_fact:222fd6462fa2fedc1f211bf7": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182551",
+      "source": "매일경제",
+      "source_body_digest": "be0c6f1a885043774330b3fb6c597434a5d9e225258ccf4803039adc7ffecf38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6417fab8cd8b956185d62dfc92104a144222e982664cf14dc0204f889c2fda93",
+      "source_fact_keys": [
+        "source_fact:v1:06be58acff313dead93f6b814dd2c3d0f6245869979119a091a71f404d8686ca",
+        "source_fact:v1:17fb16faa48f206ff03bc1926d24b9f906b07962e1ab11e587675cc7c89bd93e",
+        "source_fact:v1:551ba2e25a50f34b76cd7cadd44eee0daf7fd550185c70dbf3b41eb341647752",
+        "source_fact:v1:670e42f01423410f2c80b9df46a85988f7e3a7f90f0fe84c3212577c54d048cd",
+        "source_fact:v1:7d3235bcfe2fa31753749a744e43b23bf8e126ff313d24663661b7f859fb08af",
+        "source_fact:v1:88e53a9c6e054274362df5245d0f17c510bc4d07470762382605ac6b931bf966"
+      ],
+      "source_published_kst": "2026-10-28T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가",
+      "telegram_core_fact": "소아 정형외과 전문 의료기기 업체 오쏘피디애트릭스(KIDS)가 2026년 3분기 매출액이 7270만 달러로 전년비 19% 증가했고, GAAP 기준 희석 주당순손실은 0.25달러로 전년 동기 0.50달러에서 줄었다고 10월 27일 발표했다.",
+      "title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가"
     },
     "source_fact:223564993ec11e6163eac1f7": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
@@ -822549,6 +823351,31 @@
       "telegram_core_fact": "레이크랜드 파이낸셜(LKFN)이 1~9월 누적 순이익 8,378만 달러, 희석 주당순이익(EPS) 3.31달러로 각각 전년비 14%, 16% 증가했다고 3분기 투자자 설명자료를 통해 10월 26일 발표했다. 증권가 컨센서스에 따르면 2026년 매출액은 2억9,076만 달러로 전년 대비 13.05% 증가할 전망이다.",
       "title": "레이크랜드 파이낸셜, 3분기 누적 희석 EPS 3.31달러..전년비 16% 증가"
     },
+    "source_fact:5050957f8b88b68e6b7bb5bb": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844197",
+      "source": "뉴시스",
+      "source_body_digest": "a6cb415cb69516d84492db182ac08943dd0b4220cfd09a822542c104a718dc8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07ab179eae8052719f6f3003a2fbd206bcdfe910756571834e10c4f3cf39270e",
+      "source_fact_keys": [
+        "source_fact:v1:3e74d4aa93660f7d2c5e1a74661463fa58c6a7e930353fb35a68d7be50a68503",
+        "source_fact:v1:86b116baaef5d07a0637e627625fe79eab409046218509c35433b10add22e992",
+        "source_fact:v1:a73836cd53ea4763be230846c86ed1c721807108fe5441664c49285b51570a7a",
+        "source_fact:v1:ba8c8a677ae5414dafffc529c5ff922f189208f5c23c5d0f624069d12a471282",
+        "source_fact:v1:e2f0df7254d4764e04699b7f3233998f5673ecbe696375200264ce8f4eddc00e",
+        "source_fact:v1:edc1a62b26743baf475a335510811a0e3c2791a75cf2d9091e84f9a87cb67c04"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "태성, 유리기판 제조용 습식공정 장비 日 공급",
+      "telegram_core_fact": "태성은 일본 첨단기판 제조사 F사에 글라스기판 제조용 습식공정 장비를 공급한다고 28일 밝혔다.",
+      "title": "태성, 유리기판 제조용 습식공정 장비 日 공급"
+    },
     "source_fact:5050a8d42233cfb86032cae5": {
       "first_seen_kst": "2026-10-22T17:29:13+09:00",
       "lanes": {
@@ -839206,6 +840033,31 @@
       "source_title": "삼성에피스 \"희귀질환약 브라질 단독 공급 계약\"",
       "telegram_core_fact": "삼성바이오에피스가 브라질 정부와 희귀질환 치료제에 대해 10년간 단독 공급 계약을 체결했다.",
       "title": "삼성에피스 \"희귀질환약 브라질 단독 공급 계약\""
+    },
+    "source_fact:56415051f98cc0e2e47718fa": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182551",
+      "source": "매일경제",
+      "source_body_digest": "be0c6f1a885043774330b3fb6c597434a5d9e225258ccf4803039adc7ffecf38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6417fab8cd8b956185d62dfc92104a144222e982664cf14dc0204f889c2fda93",
+      "source_fact_keys": [
+        "source_fact:v1:06be58acff313dead93f6b814dd2c3d0f6245869979119a091a71f404d8686ca",
+        "source_fact:v1:17fb16faa48f206ff03bc1926d24b9f906b07962e1ab11e587675cc7c89bd93e",
+        "source_fact:v1:551ba2e25a50f34b76cd7cadd44eee0daf7fd550185c70dbf3b41eb341647752",
+        "source_fact:v1:670e42f01423410f2c80b9df46a85988f7e3a7f90f0fe84c3212577c54d048cd",
+        "source_fact:v1:7d3235bcfe2fa31753749a744e43b23bf8e126ff313d24663661b7f859fb08af",
+        "source_fact:v1:88e53a9c6e054274362df5245d0f17c510bc4d07470762382605ac6b931bf966"
+      ],
+      "source_published_kst": "2026-10-28T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가",
+      "telegram_core_fact": "소아 정형외과 전문 의료기기 업체 오쏘피디애트릭스(KIDS)가 2026년 3분기 매출액이 7270만 달러로 전년비 19% 증가했고, GAAP 기준 희석 주당순손실은 0.25달러로 전년 동기 0.50달러에서 줄었다고 10월 27일 발표했다.",
+      "title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가"
     },
     "source_fact:5641ddcab0c665c986878530": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
@@ -861674,6 +862526,31 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 디젤 수출 제한을 일시적으로 완화한 결정에 대한 미국 정치권의 비판이 확산하자 \"미국 국민을 위한 올바른 선택\"이라며 반박했다.",
       "title": "트럼프, 러시아산 디젤 제재 완화 비판에 \"미국 위한 올바른 선택\""
     },
+    "source_fact:5e0f6918085050f6fe537677": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844197",
+      "source": "뉴시스",
+      "source_body_digest": "a6cb415cb69516d84492db182ac08943dd0b4220cfd09a822542c104a718dc8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07ab179eae8052719f6f3003a2fbd206bcdfe910756571834e10c4f3cf39270e",
+      "source_fact_keys": [
+        "source_fact:v1:3e74d4aa93660f7d2c5e1a74661463fa58c6a7e930353fb35a68d7be50a68503",
+        "source_fact:v1:86b116baaef5d07a0637e627625fe79eab409046218509c35433b10add22e992",
+        "source_fact:v1:a73836cd53ea4763be230846c86ed1c721807108fe5441664c49285b51570a7a",
+        "source_fact:v1:ba8c8a677ae5414dafffc529c5ff922f189208f5c23c5d0f624069d12a471282",
+        "source_fact:v1:e2f0df7254d4764e04699b7f3233998f5673ecbe696375200264ce8f4eddc00e",
+        "source_fact:v1:edc1a62b26743baf475a335510811a0e3c2791a75cf2d9091e84f9a87cb67c04"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "태성, 유리기판 제조용 습식공정 장비 日 공급",
+      "telegram_core_fact": "태성은 일본 첨단기판 제조사 F사에 글라스기판 제조용 습식공정 장비를 공급한다고 28일 밝혔다.",
+      "title": "태성, 유리기판 제조용 습식공정 장비 日 공급"
+    },
     "source_fact:5e1dceb7372307eea85ee449": {
       "first_seen_kst": "2026-10-26T15:29:43+09:00",
       "lanes": {
@@ -866576,6 +867453,27 @@
       ],
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "임귀현 완주군의원, 친환경 액비 자원화 확대 점검 나서"
+    },
+    "source_fact:602f6879bb0291faab860949": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182637",
+      "source": "매일경제",
+      "source_body_digest": "52492fe2fec93ff76c44b9999b88fe27e701b6f5b7e1e3aee5ae324c3da995d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bf2b35d1a132018c109716fe7ee6cc147e8796943c6ddd7add46a909a0f26dc2",
+      "source_fact_keys": [
+        "source_fact:v1:e2b314a7c3735b5f228e9fa0e9735b528540ff6695b6c098a9d5a2c3c7af4949",
+        "source_fact:v1:e37af65235119a8beda2bb871aab42fd10cd86623cc21cad5d8ac9e8b5df4c1c"
+      ],
+      "source_published_kst": "2026-10-28T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환",
+      "telegram_core_fact": "르네상스리 홀딩스(RNR)는 3분기 일반회계기준(GAAP) 희석 주당순손실이 4.02달러로 전년 동기 19.40달러 흑자에서 적자전환했다고 10월 27일 발표했다.",
+      "title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환"
     },
     "source_fact:602f74b9e035070f09139817": {
       "first_seen_kst": "2026-10-12T03:58:42+09:00",
@@ -887984,6 +888882,32 @@
       "telegram_core_fact": "안기태 NH투자증권 이코노미스트는 “인공지능(AI) 관련 투자가 확대되는 가운데 한국의 수출 증가율도 높아지고 있다”며 “수출 확대가 설비투자와 정부지출 증가로 이어지면서 한국 경제성장률은 올해 3.5%, 내년 3.0%로 2년 연속 3% 이상을 기록할 것”이라고 전망했다.",
       "title": "반도체주 급락에도 원화 '강세'…수출 달러 공급이 관건"
     },
+    "source_fact:682ff2b143df470bb38a3109": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
+    },
     "source_fact:68328c0e5ce90cb5442cd044": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -888219,6 +889143,32 @@
       "source_title": "러시아 크렘린궁 \"우크라와 에너지 휴전 접촉 진행 중\"",
       "telegram_core_fact": "러시아가 12일(현지시간) 도널드 트럼프 미국 대통령이 발표한 러시아와 우크라이나 간의 에너지 분야 휴전 가능성에 대해 \"접촉이 진행 중\"이라고 밝혔다. 더불어 이날 러시아는 선거 운동을 위해 2개월간 휴전하자는 우크라이나의 요구를 거부, 대통령 선거를 치르기 위해 단 하루 동안의 휴전만을 제공하겠다고 밝혔다.",
       "title": "러시아 크렘린궁 \"우크라와 에너지 휴전 접촉 진행 중\""
+    },
+    "source_fact:68465aae0b67b82417f97eca": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
     },
     "source_fact:6849ce594fda59980cee6ba4": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
@@ -893069,6 +894019,27 @@
       "telegram_core_fact": "X-ray(엑스레이) 검사장비 선도기업 자비스(254120, 대표이사 김형철)가 글로벌 화학기업에 반도체 유리기판의 TGV(Through Glass Via, 유리 관통 전극) 검사장비 'XSCAN SEMI'(모델명 H110-OCT)를 공급하는 계약을 체결했다고 밝혔다.",
       "title": "자비스, 글로벌 화학기업에 유리기판 TGV 검사장비 공급계약 체결"
     },
+    "source_fact:6a2478a8774165daf66b0ea2": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028030000009",
+      "source": "연합뉴스",
+      "source_body_digest": "c097b7cfa02843943c7565ea514466becacb2891cf7b27b5822891116b8b6e88",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a55c4ee264d681fb63752ea68ed09dbb38248f06da8dd66e56add2484c2ee90",
+      "source_fact_keys": [
+        "source_fact:v1:0bfe397dd9fb7e343d2beb7e2d938fdf35d3f766eeb518d11a5620378d7f1e51",
+        "source_fact:v1:a1f1b2cbb49a00d616db32d550f5304acbbe17388530b72a6e42ac62e265e306"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스",
+      "telegram_core_fact": "시장 거래자들에 따르면 사우디산 공급 증가로 이번 주 유럽에서 일부 원유 유종의 가격이 하락했다.",
+      "title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스"
+    },
     "source_fact:6a25ca7abfe709b5b7fc14a2": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
       "lanes": {
@@ -893566,6 +894537,32 @@
       "source_title": "[종목상담 주식민원처리반] 반도체 후공정 테스트 전문기업 '두산테스나'",
       "telegram_core_fact": "두산테스나는 반도체 후공정 테스트 전문기업으로 ADAS용 물량 회복과 모바일 수요 개선에 따라 4분기 실적 회복이 전망된다. 박진섭 MTNW 어드바이저가 '종목상담 주식민원처리반'에 출연하여 두산테스나를 추천주로 제시했다.",
       "title": "[종목상담 주식민원처리반] 반도체 후공정 테스트 전문기업 '두산테스나'"
+    },
+    "source_fact:6a380448190ee0635967d60b": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
     },
     "source_fact:6a3a2402e08dc2353877debe": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
@@ -900409,6 +901406,31 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 디젤 수출 제한을 일시적으로 완화한 결정에 대한 미국 정치권의 비판이 확산하자 \"미국 국민을 위한 올바른 선택\"이라며 반박했다.",
       "title": "트럼프, 러시아산 디젤 제재 완화 비판에 \"미국 위한 올바른 선택\""
     },
+    "source_fact:6cbd90ebba38f342d3fcb2d7": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182551",
+      "source": "매일경제",
+      "source_body_digest": "be0c6f1a885043774330b3fb6c597434a5d9e225258ccf4803039adc7ffecf38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6417fab8cd8b956185d62dfc92104a144222e982664cf14dc0204f889c2fda93",
+      "source_fact_keys": [
+        "source_fact:v1:06be58acff313dead93f6b814dd2c3d0f6245869979119a091a71f404d8686ca",
+        "source_fact:v1:17fb16faa48f206ff03bc1926d24b9f906b07962e1ab11e587675cc7c89bd93e",
+        "source_fact:v1:551ba2e25a50f34b76cd7cadd44eee0daf7fd550185c70dbf3b41eb341647752",
+        "source_fact:v1:670e42f01423410f2c80b9df46a85988f7e3a7f90f0fe84c3212577c54d048cd",
+        "source_fact:v1:7d3235bcfe2fa31753749a744e43b23bf8e126ff313d24663661b7f859fb08af",
+        "source_fact:v1:88e53a9c6e054274362df5245d0f17c510bc4d07470762382605ac6b931bf966"
+      ],
+      "source_published_kst": "2026-10-28T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가",
+      "telegram_core_fact": "소아 정형외과 전문 의료기기 업체 오쏘피디애트릭스(KIDS)가 2026년 3분기 매출액이 7270만 달러로 전년비 19% 증가했고, GAAP 기준 희석 주당순손실은 0.25달러로 전년 동기 0.50달러에서 줄었다고 10월 27일 발표했다.",
+      "title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가"
+    },
     "source_fact:6cbdf7c6838e7c4b1630cb00": {
       "first_seen_kst": "2026-10-10T08:48:09+09:00",
       "lanes": {
@@ -904400,6 +905422,31 @@
       "source_title": "이환성 세라젬 회장, 전문경영인에게 지분 일부 승계, 기업 미래 맡긴다",
       "telegram_core_fact": "세라젬 창업주 이환성 회장이 전문경영인인 이경수 대표이사를 양자로 입양하고 지분을 승계하기로 했다. 두 사람은 2025년 양자 입양 절차를 완료했으며, 2026년에는 이 대표에게 세라젬 전체 발행주식 10%를 증여하는 1차 지분승계를 마쳤다.",
       "title": "이환성 세라젬 회장, 전문경영인에게 지분 일부 승계, 기업 미래 맡긴다"
+    },
+    "source_fact:6e3c21c2ab21ab076540fd65": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844197",
+      "source": "뉴시스",
+      "source_body_digest": "a6cb415cb69516d84492db182ac08943dd0b4220cfd09a822542c104a718dc8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07ab179eae8052719f6f3003a2fbd206bcdfe910756571834e10c4f3cf39270e",
+      "source_fact_keys": [
+        "source_fact:v1:3e74d4aa93660f7d2c5e1a74661463fa58c6a7e930353fb35a68d7be50a68503",
+        "source_fact:v1:86b116baaef5d07a0637e627625fe79eab409046218509c35433b10add22e992",
+        "source_fact:v1:a73836cd53ea4763be230846c86ed1c721807108fe5441664c49285b51570a7a",
+        "source_fact:v1:ba8c8a677ae5414dafffc529c5ff922f189208f5c23c5d0f624069d12a471282",
+        "source_fact:v1:e2f0df7254d4764e04699b7f3233998f5673ecbe696375200264ce8f4eddc00e",
+        "source_fact:v1:edc1a62b26743baf475a335510811a0e3c2791a75cf2d9091e84f9a87cb67c04"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "태성, 유리기판 제조용 습식공정 장비 日 공급",
+      "telegram_core_fact": "태성은 일본 첨단기판 제조사 F사에 글라스기판 제조용 습식공정 장비를 공급한다고 28일 밝혔다.",
+      "title": "태성, 유리기판 제조용 습식공정 장비 日 공급"
     },
     "source_fact:6e48f8ff73c9eada71284d8a": {
       "first_seen_kst": "2026-10-22T21:15:04+09:00",
@@ -916980,6 +918027,30 @@
       "telegram_core_fact": "사이토메드 테라퓨틱스(GDTC)가 최근 30거래일 연속 보통주 종가 기준 최소 매수호가가 나스닥 상장 유지 요건인 주당 1달러를 밑돌아 나스닥 상장자격심사부로부터 요건 미달 통보를 받았으며, 상장 유지 시한은 2027년 4월 5일까지라고 13일 발표했다.",
       "title": "사이토메드 테라퓨틱스, 나스닥 1달러 요건 미달 통보..2027년 4월 5일 유예"
     },
+    "source_fact:733ec0c6b8a3e854d37d5b54": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844202",
+      "source": "뉴시스",
+      "source_body_digest": "3c074ade232e7b8f148566cdb85cb1a63212742005d9d9cd53a92318bd2e8c41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3fdb1bc60f4409c0df1971ecd6124d446a70bf817122b528b29e0641341a2e6",
+      "source_fact_keys": [
+        "source_fact:v1:0525e83b9d72a2a63cd912876897e43f109666853338f23123cc15b7668ad9af",
+        "source_fact:v1:09e42727aae7481b5dc167dd4b36e277fe7aeb371f2abecb88b58724e325dd2d",
+        "source_fact:v1:1dbb5e18df7df3c571a7152dfad0fba63d199cfd48bb06c1856a97d3da89832d",
+        "source_fact:v1:93afe46e6748d4914ac443b20340e55c82c3ef53e43f46b5dcefcf8a61975379",
+        "source_fact:v1:d644646d7458c0dda12c488f998354a2b410aa18c8e8304512915ad0b642ff3e"
+      ],
+      "source_published_kst": "2026-10-28T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유",
+      "telegram_core_fact": "카드업계에 따르면 신한카드의 지난 3분기 당기순이익은 2324억원으로 전년비 73.7% 증가했다.",
+      "title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유"
+    },
     "source_fact:733ecf047ee0aa1163213709": {
       "first_seen_kst": "2026-10-24T07:58:32+09:00",
       "lanes": {
@@ -926907,6 +927978,32 @@
       "source_title": "인도 스마트폰 시장 20% 급감했는데…삼성, 9개 분기 만에 1위 탈환",
       "telegram_core_fact": "같은 기간 인도 전체 스마트폰 출하량은 20% 감소해 최근 10년간 3분기 기준 최저 수준을 기록했다. 지난 23일 시장조사업체 카운터포인트리서치에 따르면 삼성전자는 올해 3분기 인도 스마트폰 시장에서 점유율 17%를 기록하며 9개 분기 만에 출하량 기준 1위를 탈환했다.",
       "title": "인도 스마트폰 시장 20% 급감했는데…삼성, 9개 분기 만에 1위 탈환"
+    },
+    "source_fact:76d8e13ef60852239affd7b7": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
     },
     "source_fact:76da9f316bae7f6302296ced": {
       "first_seen_kst": "2026-10-25T15:00:08+09:00",
@@ -949340,6 +950437,27 @@
       "source_title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\"",
       "telegram_core_fact": "업계에 따르면 현대로템은 전날 현대위아 특수사업부를 3584억원이 인수하는 계약을 체결했다고 공시했다. 현대로템이 현대위아 특수사업부(방산사업) 인수를 추진하며 K2 전차에 이어 주포 등 핵심 부품까지 생산 역량을 확보한다.",
       "title": "'K2' 전차에 주포까지 품은 현대로템…\"방산 수직계열화로 수출 지형 넓힌다\""
+    },
+    "source_fact:7f1001f91e8cf1322d6e24ce": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028030000009",
+      "source": "연합뉴스",
+      "source_body_digest": "c097b7cfa02843943c7565ea514466becacb2891cf7b27b5822891116b8b6e88",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a55c4ee264d681fb63752ea68ed09dbb38248f06da8dd66e56add2484c2ee90",
+      "source_fact_keys": [
+        "source_fact:v1:0bfe397dd9fb7e343d2beb7e2d938fdf35d3f766eeb518d11a5620378d7f1e51",
+        "source_fact:v1:a1f1b2cbb49a00d616db32d550f5304acbbe17388530b72a6e42ac62e265e306"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스",
+      "telegram_core_fact": "시장 거래자들에 따르면 사우디산 공급 증가로 이번 주 유럽에서 일부 원유 유종의 가격이 하락했다.",
+      "title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스"
     },
     "source_fact:7f1179395ce330c9d3d69492": {
       "first_seen_kst": "2026-10-15T01:00:58+09:00",
@@ -982583,6 +983701,32 @@
       "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
       "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
     },
+    "source_fact:8c22d329ec9f015ff3a63e29": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
+    },
     "source_fact:8c24a9647c554d4b883e5b5f": {
       "first_seen_kst": "2026-10-14T13:28:53+09:00",
       "lanes": {
@@ -992000,6 +993144,31 @@
       ],
       "source_published_kst": "2026-10-06T11:22+09:00",
       "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
+    "source_fact:8fdcf7dd364b2c8dc4e3d10c": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844197",
+      "source": "뉴시스",
+      "source_body_digest": "a6cb415cb69516d84492db182ac08943dd0b4220cfd09a822542c104a718dc8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07ab179eae8052719f6f3003a2fbd206bcdfe910756571834e10c4f3cf39270e",
+      "source_fact_keys": [
+        "source_fact:v1:3e74d4aa93660f7d2c5e1a74661463fa58c6a7e930353fb35a68d7be50a68503",
+        "source_fact:v1:86b116baaef5d07a0637e627625fe79eab409046218509c35433b10add22e992",
+        "source_fact:v1:a73836cd53ea4763be230846c86ed1c721807108fe5441664c49285b51570a7a",
+        "source_fact:v1:ba8c8a677ae5414dafffc529c5ff922f189208f5c23c5d0f624069d12a471282",
+        "source_fact:v1:e2f0df7254d4764e04699b7f3233998f5673ecbe696375200264ce8f4eddc00e",
+        "source_fact:v1:edc1a62b26743baf475a335510811a0e3c2791a75cf2d9091e84f9a87cb67c04"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "태성, 유리기판 제조용 습식공정 장비 日 공급",
+      "telegram_core_fact": "태성은 일본 첨단기판 제조사 F사에 글라스기판 제조용 습식공정 장비를 공급한다고 28일 밝혔다.",
+      "title": "태성, 유리기판 제조용 습식공정 장비 日 공급"
     },
     "source_fact:8fde32ee13397125298dbb51": {
       "first_seen_kst": "2026-10-19T00:10:36+09:00",
@@ -1010776,6 +1011945,28 @@
       "telegram_core_fact": "씨어스는 앞서 현지 파트너와 3년간 약 220억원 모비케어 공급계약을 체결했다.",
       "title": "씨어스, 1100억 CB 발행… 美 AI 진단 시장 진출 본격화"
     },
+    "source_fact:96c85110f376f5c6f510975c": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.etnews.com/20261028000085",
+      "source": "전자신문",
+      "source_body_digest": "b012dd204547c29760eebbbe756f2ad3fc6997850dd484fcb2a93c03e535956f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cd662228b6e98735e7af3f3c7a0466e4374f448866094ab13061fc045e3401f",
+      "source_fact_keys": [
+        "source_fact:v1:15187c30ba5efa916acb5f6b53dfa202e953179ebac431690702ee33bc5fae1c",
+        "source_fact:v1:d78b68a306a64163a4f2ec07e0008f3156c2cdf679fa05b92cb743a1553f4470",
+        "source_fact:v1:db117001262a69b0faaae1a515a54c5c09c37baeba44d1bbdcbcc01b5a289d00"
+      ],
+      "source_published_kst": "2026-10-28T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위",
+      "telegram_core_fact": "에코백스 로보틱스가 지난해 전 세계 롤러 물걸레 로봇청소기 시장에서 판매량 1위를 기록했다고 28일 밝혔다.",
+      "title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위"
+    },
     "source_fact:96c99c2520e93e48b106bb2e": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -1016402,6 +1017593,30 @@
       "source_title": "빈 라덴 잡은 이 기업…AI 시대 승자 될까 [박신영의 월가 아나토미]",
       "telegram_core_fact": "앞으로 팔란티어를 평가할 핵심 기준은 AI 시대의 성장 가능성 자체보다, 실제 매출과 이익 증가가 높은 밸류에이션을 얼마나 빠르게 뒷받침할 수 있느냐가 될 전망입니다.",
       "title": "빈 라덴 잡은 이 기업…AI 시대 승자 될까 [박신영의 월가 아나토미]"
+    },
+    "source_fact:98f5ec3eadc1bfe576b33f46": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844202",
+      "source": "뉴시스",
+      "source_body_digest": "3c074ade232e7b8f148566cdb85cb1a63212742005d9d9cd53a92318bd2e8c41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3fdb1bc60f4409c0df1971ecd6124d446a70bf817122b528b29e0641341a2e6",
+      "source_fact_keys": [
+        "source_fact:v1:0525e83b9d72a2a63cd912876897e43f109666853338f23123cc15b7668ad9af",
+        "source_fact:v1:09e42727aae7481b5dc167dd4b36e277fe7aeb371f2abecb88b58724e325dd2d",
+        "source_fact:v1:1dbb5e18df7df3c571a7152dfad0fba63d199cfd48bb06c1856a97d3da89832d",
+        "source_fact:v1:93afe46e6748d4914ac443b20340e55c82c3ef53e43f46b5dcefcf8a61975379",
+        "source_fact:v1:d644646d7458c0dda12c488f998354a2b410aa18c8e8304512915ad0b642ff3e"
+      ],
+      "source_published_kst": "2026-10-28T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유",
+      "telegram_core_fact": "카드업계에 따르면 신한카드의 지난 3분기 당기순이익은 2324억원으로 전년비 73.7% 증가했다.",
+      "title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유"
     },
     "source_fact:98f9f1f3a6224ee8f6ee7a8a": {
       "first_seen_kst": "2026-10-27T10:39:09+09:00",
@@ -1032126,6 +1033341,27 @@
       "source_title": "[속보]유가 하락에 다우 1% 상승…AI 불안 속 헬스케어·산업주 강세",
       "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 뉴욕증시가 20일(현지시간) 국제유가 하락과 주요 기업들의 실적 호조에 힘입어 대체로 상승 마감했다.",
       "title": "[속보]유가 하락에 다우 1% 상승…AI 불안 속 헬스케어·산업주 강세"
+    },
+    "source_fact:9eba4ab283ab64332dcf5d2a": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182637",
+      "source": "매일경제",
+      "source_body_digest": "52492fe2fec93ff76c44b9999b88fe27e701b6f5b7e1e3aee5ae324c3da995d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bf2b35d1a132018c109716fe7ee6cc147e8796943c6ddd7add46a909a0f26dc2",
+      "source_fact_keys": [
+        "source_fact:v1:e2b314a7c3735b5f228e9fa0e9735b528540ff6695b6c098a9d5a2c3c7af4949",
+        "source_fact:v1:e37af65235119a8beda2bb871aab42fd10cd86623cc21cad5d8ac9e8b5df4c1c"
+      ],
+      "source_published_kst": "2026-10-28T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환",
+      "telegram_core_fact": "르네상스리 홀딩스(RNR)는 3분기 일반회계기준(GAAP) 희석 주당순손실이 4.02달러로 전년 동기 19.40달러 흑자에서 적자전환했다고 10월 27일 발표했다.",
+      "title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환"
     },
     "source_fact:9eba5a4416b440f36f997b03": {
       "first_seen_kst": "2026-10-20T15:25:58+09:00",
@@ -1061439,6 +1062675,31 @@
       "source_title": "텔레다인 테크놀러지스, 3분기 매출 16억8000만 달러..9% 증가·가이던스 상향",
       "telegram_core_fact": "텔레다인 테크놀러지스(TDY)가 3분기 매출액 16억8490만 달러로 전년비 9.4% 증가했고, Non-GAAP 희석 주당순이익은 6.72달러로 20.6% 늘어 분기 기준 역대 최대 실적을 기록했다고 10월 21일 발표했다.",
       "title": "텔레다인 테크놀러지스, 3분기 매출 16억8000만 달러..9% 증가·가이던스 상향"
+    },
+    "source_fact:a983205af74463202e5b9d4f": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844197",
+      "source": "뉴시스",
+      "source_body_digest": "a6cb415cb69516d84492db182ac08943dd0b4220cfd09a822542c104a718dc8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07ab179eae8052719f6f3003a2fbd206bcdfe910756571834e10c4f3cf39270e",
+      "source_fact_keys": [
+        "source_fact:v1:3e74d4aa93660f7d2c5e1a74661463fa58c6a7e930353fb35a68d7be50a68503",
+        "source_fact:v1:86b116baaef5d07a0637e627625fe79eab409046218509c35433b10add22e992",
+        "source_fact:v1:a73836cd53ea4763be230846c86ed1c721807108fe5441664c49285b51570a7a",
+        "source_fact:v1:ba8c8a677ae5414dafffc529c5ff922f189208f5c23c5d0f624069d12a471282",
+        "source_fact:v1:e2f0df7254d4764e04699b7f3233998f5673ecbe696375200264ce8f4eddc00e",
+        "source_fact:v1:edc1a62b26743baf475a335510811a0e3c2791a75cf2d9091e84f9a87cb67c04"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "태성, 유리기판 제조용 습식공정 장비 日 공급",
+      "telegram_core_fact": "태성은 일본 첨단기판 제조사 F사에 글라스기판 제조용 습식공정 장비를 공급한다고 28일 밝혔다.",
+      "title": "태성, 유리기판 제조용 습식공정 장비 日 공급"
     },
     "source_fact:a9846310b466e1f7a23b9b83": {
       "first_seen_kst": "2026-10-15T18:47:56+09:00",
@@ -1102205,6 +1103466,28 @@
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
+    "source_fact:b82f237379e648a53c01ef75": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.etnews.com/20261028000085",
+      "source": "전자신문",
+      "source_body_digest": "b012dd204547c29760eebbbe756f2ad3fc6997850dd484fcb2a93c03e535956f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cd662228b6e98735e7af3f3c7a0466e4374f448866094ab13061fc045e3401f",
+      "source_fact_keys": [
+        "source_fact:v1:15187c30ba5efa916acb5f6b53dfa202e953179ebac431690702ee33bc5fae1c",
+        "source_fact:v1:d78b68a306a64163a4f2ec07e0008f3156c2cdf679fa05b92cb743a1553f4470",
+        "source_fact:v1:db117001262a69b0faaae1a515a54c5c09c37baeba44d1bbdcbcc01b5a289d00"
+      ],
+      "source_published_kst": "2026-10-28T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위",
+      "telegram_core_fact": "에코백스 로보틱스가 지난해 전 세계 롤러 물걸레 로봇청소기 시장에서 판매량 1위를 기록했다고 28일 밝혔다.",
+      "title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위"
+    },
     "source_fact:b8318d5bd6520b7df77bda61": {
       "first_seen_kst": "2026-10-19T06:02:38+09:00",
       "lanes": {
@@ -1114944,6 +1116227,30 @@
       "source_title": "\"AI한테 욕하는 것도 학대?\"…앤트로픽 새 정책에 의견 분분",
       "telegram_core_fact": "인공지능(AI) 기업 앤트로픽이 AI 챗봇을 상대로 지속적인 폭언이나 학대 행위를 하는 사용자를 제재할 수 있도록 이용 정책을 개정했다.",
       "title": "\"AI한테 욕하는 것도 학대?\"…앤트로픽 새 정책에 의견 분분"
+    },
+    "source_fact:bd0d799b686a23370a22d64b": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844202",
+      "source": "뉴시스",
+      "source_body_digest": "3c074ade232e7b8f148566cdb85cb1a63212742005d9d9cd53a92318bd2e8c41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3fdb1bc60f4409c0df1971ecd6124d446a70bf817122b528b29e0641341a2e6",
+      "source_fact_keys": [
+        "source_fact:v1:0525e83b9d72a2a63cd912876897e43f109666853338f23123cc15b7668ad9af",
+        "source_fact:v1:09e42727aae7481b5dc167dd4b36e277fe7aeb371f2abecb88b58724e325dd2d",
+        "source_fact:v1:1dbb5e18df7df3c571a7152dfad0fba63d199cfd48bb06c1856a97d3da89832d",
+        "source_fact:v1:93afe46e6748d4914ac443b20340e55c82c3ef53e43f46b5dcefcf8a61975379",
+        "source_fact:v1:d644646d7458c0dda12c488f998354a2b410aa18c8e8304512915ad0b642ff3e"
+      ],
+      "source_published_kst": "2026-10-28T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유",
+      "telegram_core_fact": "카드업계에 따르면 신한카드의 지난 3분기 당기순이익은 2324억원으로 전년비 73.7% 증가했다.",
+      "title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유"
     },
     "source_fact:bd0ee7787ed4e7e18d413b3e": {
       "first_seen_kst": "2026-10-20T09:12:50+09:00",
@@ -1149037,6 +1150344,31 @@
       ],
       "source_published_kst": "2026-10-07T06:25+09:00",
       "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
+    "source_fact:c93cb12cd33cfa07d5347ac7": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844197",
+      "source": "뉴시스",
+      "source_body_digest": "a6cb415cb69516d84492db182ac08943dd0b4220cfd09a822542c104a718dc8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07ab179eae8052719f6f3003a2fbd206bcdfe910756571834e10c4f3cf39270e",
+      "source_fact_keys": [
+        "source_fact:v1:3e74d4aa93660f7d2c5e1a74661463fa58c6a7e930353fb35a68d7be50a68503",
+        "source_fact:v1:86b116baaef5d07a0637e627625fe79eab409046218509c35433b10add22e992",
+        "source_fact:v1:a73836cd53ea4763be230846c86ed1c721807108fe5441664c49285b51570a7a",
+        "source_fact:v1:ba8c8a677ae5414dafffc529c5ff922f189208f5c23c5d0f624069d12a471282",
+        "source_fact:v1:e2f0df7254d4764e04699b7f3233998f5673ecbe696375200264ce8f4eddc00e",
+        "source_fact:v1:edc1a62b26743baf475a335510811a0e3c2791a75cf2d9091e84f9a87cb67c04"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "태성, 유리기판 제조용 습식공정 장비 日 공급",
+      "telegram_core_fact": "태성은 일본 첨단기판 제조사 F사에 글라스기판 제조용 습식공정 장비를 공급한다고 28일 밝혔다.",
+      "title": "태성, 유리기판 제조용 습식공정 장비 日 공급"
     },
     "source_fact:c93f28af1d9519f59de2f540": {
       "first_seen_kst": "2026-10-20T05:02:52+09:00",
@@ -1188406,6 +1189738,32 @@
       "source_published_kst": "2026-10-06T08:50+09:00",
       "title": "외식 프랜차이즈, 가맹점 매출 줄 때 본사 매출은 늘었다"
     },
+    "source_fact:d803a163d02a7c6432766be4": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
+    },
     "source_fact:d806c346e091a643a803f47a": {
       "first_seen_kst": "2026-10-23T04:06:25+09:00",
       "lanes": {
@@ -1198950,6 +1200308,32 @@
       "source_title": "‘그래도 믿을 건 AI’ 스페이스X 이어 메타도 주가 쑥쑥…투자 심리 개선 기대 [투자360]",
       "telegram_core_fact": "메타는 올해 3분기에만 AI 모델 개발과 이를 뒷받침할 데이터센터 구축 등에 349억1000만달러의 자본지출(Capex)을 집행했다.",
       "title": "‘그래도 믿을 건 AI’ 스페이스X 이어 메타도 주가 쑥쑥…투자 심리 개선 기대 [투자360]"
+    },
+    "source_fact:dc32562081f879b06e9334c3": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
     },
     "source_fact:dc33313ff11cfb77531e0216": {
       "first_seen_kst": "2026-10-28T09:19:30+09:00",
@@ -1271840,6 +1273224,30 @@
       "telegram_core_fact": "우크라이나 대통령실이 러시아에 석유제품을 공급했다는 외신 보도를 인용해 한국 정부를 비판한 가운데 청와대는 사실과 다르다며 전면 반박했습니다.",
       "title": "靑, 우크라 '대러 유류수송' 주장에 \"사실과 달라\" | 연합뉴스"
     },
+    "source_fact:f79a0f77eda949d0679d9849": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844202",
+      "source": "뉴시스",
+      "source_body_digest": "3c074ade232e7b8f148566cdb85cb1a63212742005d9d9cd53a92318bd2e8c41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3fdb1bc60f4409c0df1971ecd6124d446a70bf817122b528b29e0641341a2e6",
+      "source_fact_keys": [
+        "source_fact:v1:0525e83b9d72a2a63cd912876897e43f109666853338f23123cc15b7668ad9af",
+        "source_fact:v1:09e42727aae7481b5dc167dd4b36e277fe7aeb371f2abecb88b58724e325dd2d",
+        "source_fact:v1:1dbb5e18df7df3c571a7152dfad0fba63d199cfd48bb06c1856a97d3da89832d",
+        "source_fact:v1:93afe46e6748d4914ac443b20340e55c82c3ef53e43f46b5dcefcf8a61975379",
+        "source_fact:v1:d644646d7458c0dda12c488f998354a2b410aa18c8e8304512915ad0b642ff3e"
+      ],
+      "source_published_kst": "2026-10-28T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유",
+      "telegram_core_fact": "카드업계에 따르면 신한카드의 지난 3분기 당기순이익은 2324억원으로 전년비 73.7% 증가했다.",
+      "title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유"
+    },
     "source_fact:f79d80d002b5c2b21e463fe8": {
       "first_seen_kst": "2026-10-19T04:40:52+09:00",
       "lanes": {
@@ -1297308,6 +1298716,31 @@
       "source": "머니투데이",
       "title": "은행 방카슈랑스 '활기'…저축성보험 자금 유입에 생보사도 '반색'"
     },
+    "title:056aeafdf9e448b09cf1a99f": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844197",
+      "source": "뉴시스",
+      "source_body_digest": "a6cb415cb69516d84492db182ac08943dd0b4220cfd09a822542c104a718dc8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07ab179eae8052719f6f3003a2fbd206bcdfe910756571834e10c4f3cf39270e",
+      "source_fact_keys": [
+        "source_fact:v1:3e74d4aa93660f7d2c5e1a74661463fa58c6a7e930353fb35a68d7be50a68503",
+        "source_fact:v1:86b116baaef5d07a0637e627625fe79eab409046218509c35433b10add22e992",
+        "source_fact:v1:a73836cd53ea4763be230846c86ed1c721807108fe5441664c49285b51570a7a",
+        "source_fact:v1:ba8c8a677ae5414dafffc529c5ff922f189208f5c23c5d0f624069d12a471282",
+        "source_fact:v1:e2f0df7254d4764e04699b7f3233998f5673ecbe696375200264ce8f4eddc00e",
+        "source_fact:v1:edc1a62b26743baf475a335510811a0e3c2791a75cf2d9091e84f9a87cb67c04"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "태성, 유리기판 제조용 습식공정 장비 日 공급",
+      "telegram_core_fact": "태성은 일본 첨단기판 제조사 F사에 글라스기판 제조용 습식공정 장비를 공급한다고 28일 밝혔다.",
+      "title": "태성, 유리기판 제조용 습식공정 장비 日 공급"
+    },
     "title:056be3e8383d4389e1893897": {
       "first_seen_kst": "2026-10-25T20:53:01+09:00",
       "lanes": {
@@ -1312845,6 +1314278,28 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811103",
       "source": "뉴시스",
       "title": "스위스 빙하 올해 5.5% 감소 '역대 두 번째'…\"10~15년내 사라질 수도\""
+    },
+    "title:1e537bd23c1465f80267c7f9": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.etnews.com/20261028000085",
+      "source": "전자신문",
+      "source_body_digest": "b012dd204547c29760eebbbe756f2ad3fc6997850dd484fcb2a93c03e535956f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cd662228b6e98735e7af3f3c7a0466e4374f448866094ab13061fc045e3401f",
+      "source_fact_keys": [
+        "source_fact:v1:15187c30ba5efa916acb5f6b53dfa202e953179ebac431690702ee33bc5fae1c",
+        "source_fact:v1:d78b68a306a64163a4f2ec07e0008f3156c2cdf679fa05b92cb743a1553f4470",
+        "source_fact:v1:db117001262a69b0faaae1a515a54c5c09c37baeba44d1bbdcbcc01b5a289d00"
+      ],
+      "source_published_kst": "2026-10-28T09:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위",
+      "telegram_core_fact": "에코백스 로보틱스가 지난해 전 세계 롤러 물걸레 로봇청소기 시장에서 판매량 1위를 기록했다고 28일 밝혔다.",
+      "title": "에코백스, 롤러 물걸레 로봇청소기 세계 판매량 1위"
     },
     "title:1e5c60e388f60f5a30afdd6b": {
       "first_seen_kst": "2026-10-22T22:04:33+09:00",
@@ -1354458,6 +1355913,31 @@
       "source_published_kst": "2026-10-05T09:55+09:00",
       "title": "日라피더스, 삼성·TSMC식 설계동맹 생태계 구축"
     },
+    "title:5dd5fd21443d9f59924f695f": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182551",
+      "source": "매일경제",
+      "source_body_digest": "be0c6f1a885043774330b3fb6c597434a5d9e225258ccf4803039adc7ffecf38",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6417fab8cd8b956185d62dfc92104a144222e982664cf14dc0204f889c2fda93",
+      "source_fact_keys": [
+        "source_fact:v1:06be58acff313dead93f6b814dd2c3d0f6245869979119a091a71f404d8686ca",
+        "source_fact:v1:17fb16faa48f206ff03bc1926d24b9f906b07962e1ab11e587675cc7c89bd93e",
+        "source_fact:v1:551ba2e25a50f34b76cd7cadd44eee0daf7fd550185c70dbf3b41eb341647752",
+        "source_fact:v1:670e42f01423410f2c80b9df46a85988f7e3a7f90f0fe84c3212577c54d048cd",
+        "source_fact:v1:7d3235bcfe2fa31753749a744e43b23bf8e126ff313d24663661b7f859fb08af",
+        "source_fact:v1:88e53a9c6e054274362df5245d0f17c510bc4d07470762382605ac6b931bf966"
+      ],
+      "source_published_kst": "2026-10-28T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가",
+      "telegram_core_fact": "소아 정형외과 전문 의료기기 업체 오쏘피디애트릭스(KIDS)가 2026년 3분기 매출액이 7270만 달러로 전년비 19% 증가했고, GAAP 기준 희석 주당순손실은 0.25달러로 전년 동기 0.50달러에서 줄었다고 10월 27일 발표했다.",
+      "title": "오쏘피디애트릭스, 3분기 매출액 7270만 달러..전년비 19% 증가"
+    },
     "title:5de900547650cfcbe5dc369c": {
       "first_seen_kst": "2026-10-11T05:45:39+09:00",
       "lanes": {
@@ -1370471,6 +1371951,27 @@
       "telegram_core_fact": "[파이낸셜뉴스] 안현 SK하이닉스 개발총괄 사장이 인공지능(AI) 추론 수요 증가에 대응해 고대역폭메모리(HBM)를 넘어 차세대 메모리 개발을 확대하겠다는 구상을 제시했다.",
       "title": "안현 SK하이닉스 사장 \"메모리 계층 최적화로 데이터 병목 극복해야\""
     },
+    "title:75ea3c5bc24243b854d45424": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028030000009",
+      "source": "연합뉴스",
+      "source_body_digest": "c097b7cfa02843943c7565ea514466becacb2891cf7b27b5822891116b8b6e88",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a55c4ee264d681fb63752ea68ed09dbb38248f06da8dd66e56add2484c2ee90",
+      "source_fact_keys": [
+        "source_fact:v1:0bfe397dd9fb7e343d2beb7e2d938fdf35d3f766eeb518d11a5620378d7f1e51",
+        "source_fact:v1:a1f1b2cbb49a00d616db32d550f5304acbbe17388530b72a6e42ac62e265e306"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스",
+      "telegram_core_fact": "시장 거래자들에 따르면 사우디산 공급 증가로 이번 주 유럽에서 일부 원유 유종의 가격이 하락했다.",
+      "title": "\"아람코, 유럽에 현물원유 추가 제안\" | 연합뉴스"
+    },
     "title:75efa7fefeb9dc196871a25c": {
       "first_seen_kst": "2026-10-18T14:22:20+09:00",
       "lanes": {
@@ -1372976,6 +1374477,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T05:28+09:00",
       "title": "\"알래스카 등 트럼프 프로젝트, 선거 판도 뒤집기엔 역부족\""
+    },
+    "title:7a317df81646afa8a0530679": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1182637",
+      "source": "매일경제",
+      "source_body_digest": "52492fe2fec93ff76c44b9999b88fe27e701b6f5b7e1e3aee5ae324c3da995d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bf2b35d1a132018c109716fe7ee6cc147e8796943c6ddd7add46a909a0f26dc2",
+      "source_fact_keys": [
+        "source_fact:v1:e2b314a7c3735b5f228e9fa0e9735b528540ff6695b6c098a9d5a2c3c7af4949",
+        "source_fact:v1:e37af65235119a8beda2bb871aab42fd10cd86623cc21cad5d8ac9e8b5df4c1c"
+      ],
+      "source_published_kst": "2026-10-28T05:57+09:00",
+      "source_supply_terms": {},
+      "source_title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환",
+      "telegram_core_fact": "르네상스리 홀딩스(RNR)는 3분기 일반회계기준(GAAP) 희석 주당순손실이 4.02달러로 전년 동기 19.40달러 흑자에서 적자전환했다고 10월 27일 발표했다.",
+      "title": "르네상스리 홀딩스, 3분기 GAAP 주당순손실 4.02달러 적자전환"
     },
     "title:7a334cb4b500308ad6b44254": {
       "first_seen_kst": "2026-10-20T17:22:47+09:00",
@@ -1424499,6 +1426021,32 @@
       "telegram_core_fact": "영풍과 MBK파트너스는 고려아연 경영진들이 경영권 다툼 과정에서 자기주식을 고가에 매수하고, 보유하던 다른 주식은 헐값에 팔아 회사에 손해를 입혔다고 주장했지만 재판부는 받아들이지 않았다.",
       "title": "영풍·MBK, 고려아연 상대 1兆 소송전 잇따라 패소(종합2보)"
     },
+    "title:c9f285e65e2eaa4a18621586": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844196",
+      "source": "뉴시스",
+      "source_body_digest": "534113a652143d4969cc854b84e103e3fffa2295038abb990952627dd9f28c6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1791f2db2c10826d83fe2468d8320d47df1fc43aa8fd6bb6d701f09b913b778c",
+      "source_fact_keys": [
+        "source_fact:v1:125d734bdbcd3ed2a2ec8e15ee3e889ad675abb3dce0a1003dd31bbb5fc3ec77",
+        "source_fact:v1:2356a564c7ee3b797b05661f2bb8c57f91f08ac7268cb7c0838696739087c6c5",
+        "source_fact:v1:41957718b0b7626c9857304b83dd71ddea8e35e1ac4a9b7dc81360db178a6894",
+        "source_fact:v1:73549a35fa99750e99592b693fc53f9c71f483a05e873a98acbf1322af26d4fb",
+        "source_fact:v1:d5ec57adeff1bfd1596d4e7c51ea690ec3ae7d0f8f6a3ae22b61f70abc89cd42",
+        "source_fact:v1:d6e7466c7548ed9a7632d978d83d045f2b52e32b25552b36100993256e47ce4b",
+        "source_fact:v1:d8a216ca04813d55286f3f2597e5fd84f5958ba8b2be7a298c92c26ce7dfd3b3"
+      ],
+      "source_published_kst": "2026-10-28T09:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응",
+      "telegram_core_fact": "방사성의약품 전문기업 듀켐바이오가 7억6780만원을 들여 정읍 부지를 매입하고, 방사성의약품 위탁개발생산(CDMO) 시설 건립을 위한 첫 단계에 돌입했다. 이번 정읍 신규시설 투자에는 알츠하이머병 치료제 ‘키순라’(성분명 도나네맙)의 국내 출시에 대응하기 위한 치매 진단용 방사성의약품 공급능력 확보도 포함됐다.",
+      "title": "듀켐바이오, 정읍 부지 매입…'키순라' 출시 대응"
+    },
     "title:c9f93792362fde041886b332": {
       "first_seen_kst": "2026-10-21T19:28:26+09:00",
       "lanes": {
@@ -1455843,6 +1457391,30 @@
       "telegram_core_fact": "도는 2025년부터 2년 연속 투자유치 실적 10조원을 달성하는데 투자자문위가 큰 뒷받침을 했다고 평가했다. 민선 9기 경남도정에 투자유치 전략, 기업 협력 방안을 조언할 제3기 투자유치자문위원회(이하 투자자문위)가 23일 출범했다.",
       "title": "경남 2년 연속 10조 투자유치 뒷받침…투자유치자문위 3기 출범 | 연합뉴스"
     },
+    "title:fb744f2e83754de2177f5689": {
+      "first_seen_kst": "2026-10-28T20:16:10+09:00",
+      "lanes": {
+        "live": "2026-10-28T20:16:10+09:00"
+      },
+      "last_seen_kst": "2026-10-28T20:16:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003844202",
+      "source": "뉴시스",
+      "source_body_digest": "3c074ade232e7b8f148566cdb85cb1a63212742005d9d9cd53a92318bd2e8c41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3fdb1bc60f4409c0df1971ecd6124d446a70bf817122b528b29e0641341a2e6",
+      "source_fact_keys": [
+        "source_fact:v1:0525e83b9d72a2a63cd912876897e43f109666853338f23123cc15b7668ad9af",
+        "source_fact:v1:09e42727aae7481b5dc167dd4b36e277fe7aeb371f2abecb88b58724e325dd2d",
+        "source_fact:v1:1dbb5e18df7df3c571a7152dfad0fba63d199cfd48bb06c1856a97d3da89832d",
+        "source_fact:v1:93afe46e6748d4914ac443b20340e55c82c3ef53e43f46b5dcefcf8a61975379",
+        "source_fact:v1:d644646d7458c0dda12c488f998354a2b410aa18c8e8304512915ad0b642ff3e"
+      ],
+      "source_published_kst": "2026-10-28T09:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유",
+      "telegram_core_fact": "카드업계에 따르면 신한카드의 지난 3분기 당기순이익은 2324억원으로 전년비 73.7% 증가했다.",
+      "title": "신한카드, 카드사 순이익 1위에도…웃지 못하는 이유"
+    },
     "title:fb8327004dea6888f47dc3f4": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
       "lanes": {
@@ -1458768,5 +1460340,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-28T19:38:50+09:00"
+  "updated_at_kst": "2026-10-28T20:16:10+09:00"
 }
