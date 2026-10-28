@@ -360,6 +360,26 @@ CHINA_DRAM_CYCLE_BASELINE = {
     "source_rank": 2,
 }
 
+RUSSIA_MEMORY_IMPORT_TRACK_VERSION = 1
+RUSSIA_MEMORY_IMPORT_BASELINE = {
+    "stage": "working_group_discussion",
+    "brand_scope": "Samsung, SK hynix / Hynix",
+    "server_customs_code": "8471 49 000 0",
+    "storage_customs_code": "8471 70",
+    "separate_memory_chip_codes": True,
+    "order_number": "4769",
+    "order_signed_date": "2025-09-26",
+    "server_storage_restriction_effective_date": "2026-05-27",
+    "official_restoration_confirmed": False,
+    "commercial_supply_confirmed": False,
+    "news_source": "Forbes 취재 재인용·러시아 AI 실무그룹 논의",
+    "news_url": "https://www.cnews.ru/news/top/2026-10-20_vlasti_zakrutili_gajki_i",
+    "ministry_source": "Interfax 러시아 산업통상부 설명",
+    "ministry_url": "https://www.interfax.ru/1092170",
+    "legal_reference_url": "https://www.kontur-extern.ru/info/normativ/document/1/502969-prikaz-minpromtorga-rf-ot-26-09-2025-n-4769",
+    "source_kind": "비공식 논의·공식 개정령 미확인",
+}
+
 TREND_PINNED_PRESS_URLS = [
     "https://www.trendforce.com/presscenter/news/20261008-13264.html",
     "https://www.trendforce.com/presscenter/news/20260930-13258.html",
@@ -387,6 +407,8 @@ QUERIES = [
     ("ko", '캐시 우드 ARK 중국 CXMT DRAM 메모리 공급과잉 홍콩 10월 13일'),
     ("ko", '창신메모리 CXMT 4F² 서버 DDR5 RDIMM 실제 양산 고객 검증 2027'),
     ("ko", 'CXMT DRAM 웨이퍼 월 생산능력 2027 32만 42만 4F2'),
+    ("ko", '러시아 병행수입 삼성전자 SK하이닉스 서버 SSD 4769 산업통상부 승인 발표'),
+    ("en", 'Russia Samsung SK Hynix parallel import reinstatement 2026 storage server decree 4769'),
     ("ko", 'CXMT 창신메모리 대만 서버 DDR5 주문 거절 공식 확인 고객 실명'),
     ("en", 'CXMT Taiwanese server maker DDR5 rejected confirmed order domestic allocation'),
     ("en", 'CXMT Apple quote refusal 2026 independent confirmation supplier allocation'),
@@ -2885,6 +2907,82 @@ def _china_dram_cycle_changes(old: dict, new: dict) -> list[str]:
     return changes
 
 
+def _is_russia_memory_import_item(item: dict) -> bool:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}").lower()
+    return (
+        any(x in text for x in ("russia", "russian", "росси", "러시아"))
+        and any(x in text for x in (
+            "parallel import", "parallel-import", "параллельн",
+            "병행수입", "минпромторг",
+        ))
+        and any(x in text for x in (
+            "samsung", "hynix", "삼성", "하이닉스", "сервер",
+            "server", "ssd", "накопител", "storage",
+        ))
+    )
+
+
+def _extract_russia_memory_import_update(item: dict) -> dict | None:
+    """Do not promote a newspaper's prediction to an official import permission."""
+    if not _is_russia_memory_import_item(item):
+        return None
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    host = urllib.parse.urlparse(item.get("link") or "").netloc.lower().removeprefix("www.")
+    if host not in {
+        "publication.pravo.gov.ru", "minpromtorg.gov.ru",
+        "minprom.gov.ru", "government.ru",
+    }:
+        return None
+    if not all((
+        re.search(r"samsung|самсунг|самсун", low, re.I),
+        re.search(r"hynix|хайникс|хайник", low, re.I),
+        re.search(r"8471\s*(?:49|70)|4769", low, re.I),
+        re.search(r"parallel.{0,8}import|параллельн|병행수입", low, re.I),
+    )):
+        return None
+    # Original Order 4769 EXCLUDED the brands. A reference to that order,
+    # even on a government website, is not evidence that they were restored.
+    if re.search(r"исключен|исключили|исключаются|excluded|removed|выведен", low, re.I):
+        return None
+    restored = re.search(
+        r"возвращен|возвращены|восстановлен|включен(?:ы|а|о)?\s+в\s+перечень"
+        r"|reinstat(?:e|ed)|restor(?:e|ed)|added\s+to\s+the\s+list|재허용|복원",
+        low, re.I
+    )
+    if not restored:
+        return None
+    effective = bool(re.search(
+        r"вступил(?:и)?\s+в\s+силу|вступает\s+в\s+силу|takes?\s+effect"
+        r"|effective\s+(?:from|on)|발효|시행",
+        low, re.I
+    ))
+    return {
+        "stage": "effective" if effective else "official_amendment",
+        "official_restoration_confirmed": True,
+        "official_source_url": item.get("link") or "",
+        "official_source_date": (item.get("published_kst") or "")[:10],
+        "source_kind": "러시아 정부 공식 개정·법령 발표",
+    }
+
+
+def _russia_memory_import_changes(old: dict, new: dict) -> list[str]:
+    stage_rank = {"working_group_discussion": 0, "official_amendment": 1, "effective": 2}
+    if stage_rank.get(new.get("stage"), 0) <= stage_rank.get(old.get("stage"), 0):
+        return []
+    label = "공식 개정령 확인" if new["stage"] == "official_amendment" else "개정 효력 발생 확인"
+    return ["러시아 서버·저장장치 병행수입: " + label]
+
+
+def _merge_russia_memory_import(old: dict, obs: dict) -> dict:
+    changes = _russia_memory_import_changes(old, obs)
+    if not changes:
+        return dict(old)
+    merged = dict(old)
+    merged.update(obs)
+    return merged
+
+
 def _extract_nand_divergence(item: dict) -> dict | None:
     text = _clean(f"{item.get('title','')} {item.get('description','')}")
     low = text.lower()
@@ -3321,6 +3419,12 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     if pc_notebook_upgrade_due:
         state["pc_notebook_demand_track_version"] = PC_NOTEBOOK_DEMAND_TRACK_VERSION
 
+    russian_state = dict(RUSSIA_MEMORY_IMPORT_BASELINE)
+    russian_state.update(state.get("russia_memory_import") or {})
+    russian_install_due = int(state.get("russia_memory_import_track_version") or 0) < RUSSIA_MEMORY_IMPORT_TRACK_VERSION
+    if russian_install_due:
+        state["russia_memory_import_track_version"] = RUSSIA_MEMORY_IMPORT_TRACK_VERSION
+
     legacy_state = dict(state.get("legacy_dram") or {})
     if int(state.get("legacy_dram_track_version") or 0) < LEGACY_DRAM_TRACK_VERSION:
         state["legacy_dram_track_version"] = LEGACY_DRAM_TRACK_VERSION
@@ -3524,6 +3628,16 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
                 china_cycle_changes.extend(changes)
                 china_cycle_source = obs.get("source_url") or ""
 
+    russian_changes: list[str] = []
+    if russian_install_due:
+        russian_changes.append("러시아 서버·eSSD 병행수입 재허용 검토 보도 기준선 신규: 아직 공식 법령 개정 아님")
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_russia_memory_import_update(item)
+        if obs:
+            updated = _merge_russia_memory_import(russian_state, obs)
+            russian_changes.extend(_russia_memory_import_changes(russian_state, updated))
+            russian_state = updated
+
     reclaimed_changes: list[str] = []
     reclaimed_source_url = ""
     if reclaimed_upgrade_due:
@@ -3621,6 +3735,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         if _is_china_dram_cycle_item(x):
             continue
+        if _is_russia_memory_import_item(x):
+            # Source headlines are context, not proof a legal amendment passed.
+            continue
         if _extract_nand_divergence(x) or _extract_legacy_dram_state(x):
             continue
         new_items.append(x)
@@ -3677,6 +3794,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "china_dram_cycle": china_cycle_state,
         "pc_notebook_demand_track_version": PC_NOTEBOOK_DEMAND_TRACK_VERSION,
         "pc_notebook_demand": pc_notebook_state,
+        "russia_memory_import_track_version": RUSSIA_MEMORY_IMPORT_TRACK_VERSION,
+        "russia_memory_import": russian_state,
         "nand_divergence_track_version": NAND_DIVERGENCE_TRACK_VERSION,
         "nand_divergence": divergence_state,
         "legacy_dram_track_version": LEGACY_DRAM_TRACK_VERSION,
@@ -3713,6 +3832,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- CXMT DRAM·ARK 투자 회피 역풍 변화: {len(china_cycle_changes)}건",
         f"- 중국 회수 메모리칩 거래·제조사 실제 채택 변화: {len(reclaimed_changes)}건",
         f"- PC 메모리·CPU 원가→노트북 수요 역풍 변화: {len(pc_notebook_changes)}건",
+        f"- 러시아 서버·eSSD 병행수입 규제 변화: {len(russian_changes)}건",
         f"- 구세대 DRAM EOL·배정 변화: {len(legacy_changes)}건",
         f"- 원천 오류: {len(errors)}건",
     ]
@@ -3722,11 +3842,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not russian_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(russian_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if trend_4q26_changes:
@@ -3767,6 +3887,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("한눈에: <b>" + html.escape(china_cycle_changes[0]) + "</b>")
     elif reclaimed_changes:
         lines.append("한눈에: <b>" + html.escape(reclaimed_changes[0]) + "</b>")
+    elif russian_changes:
+        lines.append("한눈에: <b>" + html.escape(russian_changes[0]) + "</b>")
     elif pc_notebook_changes:
         lines.append("한눈에: <b>" + html.escape(pc_notebook_changes[0]) + "</b>")
     elif legacy_changes:
@@ -4194,6 +4316,40 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if secondary_url:
             lines.append('  <a href="' + html.escape(str(secondary_url), quote=True) + '">뉴시스 업계 관계자 발언</a>')
 
+    if russian_changes:
+        lines.append("• <b>러시아 삼성전자·SK하이닉스 서버·eSSD 병행수입 규제</b>")
+        for change in list(dict.fromkeys(russian_changes)):
+            lines.append("  " + html.escape(change))
+        stage = russian_state.get("stage")
+        stage_ko = {
+            "working_group_discussion": "정부 실무그룹 논의·공식 변경 미확인",
+            "official_amendment": "정부 공식 개정 발표·발효일 별도 확인",
+            "effective": "정부 발표상 개정 효력 발생",
+        }.get(stage, "확인 전")
+        lines.append("  현재 단계: <b>" + stage_ko + "</b>")
+        lines.append(
+            "  규제 범위: 2025-09-26 러 산업통상부 명령 №4769; 2026-05-27 서버·저장장치 관련 규정 적용."
+            " 서버 통관품목 8471 49 000 0, 저장장치 8471 70; 개별 DRAM·NAND·HBM 칩은 별도 코드"
+        )
+        lines.append(
+            "  경제적 의미: 서버·기업용 SSD 조달 경로가 열릴 수 있지만, 제3국 수입은"
+            " 한국 기업의 직접 신규 공급계약·양산매출을 뜻하지 않음"
+        )
+        lines.append("  별도 제약: 미국 수출통제·금융결제·유통망 재고·원산지와 보험·재수출 규정 확인 필요")
+        lines.append(
+            "  먼저 확인: 러 산업통상부 개정 고시·품목코드·발효일, 실제 통관/조달계약과"
+            " 삼성전자·SK하이닉스 공식 판매 여부"
+        )
+        for label, url in (
+            ("러시아 실무그룹 논의 보도", RUSSIA_MEMORY_IMPORT_BASELINE["news_url"]),
+            ("산업통상부 기존 규제 설명", RUSSIA_MEMORY_IMPORT_BASELINE["ministry_url"]),
+            ("명령 №4769 규정 원문 재현", RUSSIA_MEMORY_IMPORT_BASELINE["legal_reference_url"]),
+        ):
+            lines.append('  <a href="' + html.escape(url, quote=True) + '">' + label + '</a>')
+        if russian_state.get("official_source_url"):
+            url = str(russian_state["official_source_url"])
+            lines.append('  <a href="' + html.escape(url, quote=True) + '">신규 정부 공식 원문</a>')
+
     if china_cycle_changes:
         lines.append("• <b>중국 DRAM·HBM 경쟁과 ARK 메모리 사이클 역풍</b>")
         for change in list(dict.fromkeys(china_cycle_changes)):
@@ -4333,7 +4489,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not russian_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
