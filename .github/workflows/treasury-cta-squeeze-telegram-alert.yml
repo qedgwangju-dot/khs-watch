@@ -29,6 +29,11 @@ on:
     - cron: "13 22 * * 0"
     - cron: "30 22 * * 0"
     - cron: "0 23 * * 0"
+  # Independent schedule heartbeat: this existing workflow was observed
+  # running when CTA native crons were absent. It is not modified by this link.
+  workflow_run:
+    workflows: ["Global Rates & Yen Carry Telegram Watch"]
+    types: [completed]
   workflow_dispatch:
     inputs:
       recover_weekly:
@@ -52,6 +57,9 @@ concurrency:
 
 jobs:
   monitor:
+    # Never allow an upstream push, manual execution, fork or foreign branch
+    # to trigger our privileged Telegram/state-write lane.
+    if: ${{ github.event_name != 'workflow_run' || (github.event.workflow_run.event == 'schedule' && github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.head_branch == 'main') }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -60,6 +68,7 @@ jobs:
       CTA_TRIGGER_SCHEDULE: ${{ github.event.schedule || '' }}
       CTA_WEEKLY_RECOVERY: ${{ github.event_name == 'workflow_dispatch' && inputs.recover_weekly && 'true' || 'false' }}
       CTA_FOMC_RECOVERY: ${{ github.event_name == 'workflow_dispatch' && inputs.recover_fomc && 'true' || 'false' }}
+      CTA_TRUSTED_HEARTBEAT: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.event == 'schedule' && github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.head_branch == 'main' && 'true' || 'false' }}
 
     steps:
       - uses: actions/checkout@v4
