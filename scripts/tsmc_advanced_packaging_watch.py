@@ -641,7 +641,7 @@ def extract_patch(event):
     if price_report:
         patch.update(price_report)
         # Analyst targets in the pricing story are NOT verified current WPM.
-        if re.search(r"法人推估|法人預估|analyst estimates|analysts estimate|industry estimates", low, re.I):
+        if re.search(r"法人推估|法人預估|預估|预估|預計|预计|目標|目标|forecast|estimate|target|goal", low, re.I):
             patch.pop("cowos_capacity_wpm", None)
             patch.pop("cowos_capacity_evidence_state", None)
 
