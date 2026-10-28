@@ -11,6 +11,20 @@
   "transcript": null,
   "sent": false,
   "reuters_count": 8,
-  "updated_at_utc": "2026-10-28T23:09:06.589041+00:00",
-  "structural_source_status": "source_verification_pending"
+  "updated_at_utc": "2026-10-28T23:14:04.278174+00:00",
+  "structural_source_status": "confirmed",
+  "structural_pending_key": null,
+  "structural_delivery_status": "confirmed",
+  "structural_sent_key": "2026-10-28|Warsh|FOMC-Structural-Verified-v1",
+  "structural_message_id": 117,
+  "structural_sources": [
+    "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+    "https://kfgo.com/2026/10/28/feds-warsh-announces-changes-in-how-future-fomc-meetings-will-go/",
+    "https://www2.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01538326645617840"
+  ],
+  "structural_verified_topics": [
+    "strategy",
+    "ai_rates"
+  ],
+  "structural_sent_at_utc": "2026-10-28T23:14:04.278097+00:00"
 }
