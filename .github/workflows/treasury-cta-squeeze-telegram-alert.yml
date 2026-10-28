@@ -51,7 +51,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          # The state commit step fetches current main explicitly.
+          # Avoid downloading the entire history on every 15-minute poll.
+          fetch-depth: 1
 
       - uses: actions/setup-python@v5
         with:
@@ -224,5 +226,6 @@ jobs:
             out/treasury_cta_squeeze_alert.html
             out/treasury_cta_squeeze_detail.json
             out/treasury_cta_squeeze_telegram_confirmed.json
+            data/treasury_cta_squeeze_state_next.json
           if-no-files-found: ignore
           retention-days: 14
