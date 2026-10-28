@@ -3380,10 +3380,14 @@ def main() -> None:
     new_infra_event_candidates = {k: 0 for k in NEW_OPTICAL_INFRA_SCOPES}
     taihan_direct_verified = False
     taihan_direct_status = "기존 기사 기준선"
+    # Query-level evidence: a successful RSS HTTP response can legitimately
+    # contain zero articles. Record that separately from a failed query.
+    query_health: dict[str, dict] = {}
 
     cutoff = NOW - dt.timedelta(days=7)
     for company, meta in COMPANIES.items():
         attempted_company_queries += 1
+        query_health[company] = {"attempted": 0, "successful": 0, "failed": 0, "raw_articles": 0}
         try:
             feed_items = []
             locales = meta.get("locales") or [{"hl": "en-US", "gl": "US", "ceid": "US:en"}]
@@ -3394,6 +3398,7 @@ def main() -> None:
             infra_query_failed = False
             for query in [q for q in queries if q]:
                 for locale in locales:
+                    query_health[company]["attempted"] += 1
                     try:
                         rows = query_google_news(
                             query,
@@ -3402,11 +3407,14 @@ def main() -> None:
                             ceid=locale.get("ceid", "US:en"),
                         )
                         feed_items.extend(rows)
+                        query_health[company]["successful"] += 1
+                        query_health[company]["raw_articles"] += len(rows)
                         if company == POWER_COMPANY:
                             power_locales_ok.add(locale.get("gl", "US"))
                         if company in NEW_OPTICAL_INFRA_SCOPES:
                             infra_locales_ok.add(locale.get("gl", "US"))
                     except Exception as exc:
+                        query_health[company]["failed"] += 1
                         if company not in (NEW_OPTICAL_INFRA_SCOPES | {POWER_COMPANY}):
                             raise
                         info = f"{locale.get('gl', 'US')} query: {type(exc).__name__}: {exc}"
@@ -3836,6 +3844,8 @@ def main() -> None:
         "seen_story_records": merged_story_records,
         "relevant_item_count": len(deduped),
         "source_errors": errors,
+        "query_health": query_health,
+        "query_diagnostics_version": 1,
         # The one-time correction is committed only after a Telegram API
         # delivery confirmation (push validation never persists any state).
         "aaoi_power_prior_alert_correction_done": True,
@@ -4102,6 +4112,9 @@ def main() -> None:
         f"- NVIDIA OOI·DWDM 전용 조회: {'정상' if ooi_source_healthy else '검색 실패·별도 기준선 유지'}",
         f"- OOI 시제품: 2026-10-13 SEMICON West · DWDM 8×32=256Gb/s: 기존 OFC 연구 · Feynman OOI 탑재: 미확정",
         f"- 소스 오류: {len(errors)}건",
+        f"- 원천 조회: {sum(v['successful'] for v in query_health.values())}/"
+        f"{sum(v['attempted'] for v in query_health.values())}건 성공 · "
+        f"원시 기사 {sum(v['raw_articles'] for v in query_health.values())}건",
     ]
     if errors:
         status_lines.extend(["", "## 소스 오류"] + [f"- {e}" for e in errors])
