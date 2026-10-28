@@ -101,16 +101,16 @@ VERIFIED_EVENT_FALLBACKS = {
 }
 
 QUERIES = (
-    'BOJ raises interest rates 1.25 Reuters when:1d',
-    'BOJ 7-2 Asada Sato rate hike Reuters when:1d',
-    '"Bank of Japan" Reuters 1.25 rate decision when:2d',
-    'BOJ Ueda press conference rate path Reuters when:2d',
+    '"Bank of Japan" Reuters rate decision when:1d',
+    'BOJ Reuters policy meeting interest rate when:2d',
+    'BOJ Ueda press conference Reuters when:1d',
     '"Bank of Japan" additional rate hikes Reuters when:2d',
     '"Bank of Japan" neutral rate Ueda Reuters when:3d',
     '"Summary of Opinions" BOJ Reuters when:7d',
-    'BOJ economic assessment vote inflation 2% Reuters when:2d',
-    'BOJ investors react 7-2 dissent yen Reuters when:1d',
-    'BOJ 50 basis point half-point internal calls Reuters when:3d',
+    'BOJ dissent vote Reuters when:2d',
+    'BOJ inflation underlying 2% Reuters when:2d',
+    'BOJ investors react yen Reuters when:1d',
+    'BOJ 50 basis point half-point Reuters when:3d',
 )
 
 LEVEL_EMOJI = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}
@@ -1494,8 +1494,11 @@ def next_official_check(now: dt.datetime) -> str:
         (dt.datetime(2026, 9, 18, 15, 30, tzinfo=KST), "우에다 총재 기자회견 9월 18일 15:30 KST"),
         (dt.datetime(2026, 9, 24, 0, 0, tzinfo=KST), "9월 18일 우에다 총재 기자회견 기록 9월 24일 공개 예정"),
         (dt.datetime(2026, 10, 1, 8, 50, tzinfo=KST), "9월 회의 주요 의견 10월 1일 08:50 JST"),
-        (dt.datetime(2026, 10, 29, 0, 0, tzinfo=KST), "다음 금융정책결정회의 10월 29~30일"),
-        (dt.datetime(2026, 11, 10, 8, 50, tzinfo=KST), "10월 회의 주요 의견 11월 10일 08:50 JST"),
+        (dt.datetime(2026, 10, 29, 0, 0, tzinfo=KST), "금융정책결정회의 10월 29~30일 · 30일 정책결정·전망보고서 수시 확인"),
+        (dt.datetime(2026, 10, 30, 15, 30, tzinfo=KST), "10월 30일 정책결정·전망보고서 수시 확인 + 우에다 총재 기자회견 15:30 KST"),
+        (dt.datetime(2026, 11, 2, 14, 0, tzinfo=KST), "10월 전망보고서 전체본 11월 2일 14:00 KST"),
+        (dt.datetime(2026, 11, 5, 8, 50, tzinfo=KST), "9월 회의 의사록 11월 5일 08:50 KST"),
+        (dt.datetime(2026, 11, 10, 8, 50, tzinfo=KST), "10월 회의 주요 의견 11월 10일 08:50 KST"),
         (dt.datetime(2026, 12, 17, 0, 0, tzinfo=KST), "금융정책결정회의 12월 17~18일"),
         (dt.datetime(2026, 12, 28, 8, 50, tzinfo=KST), "12월 회의 주요 의견 12월 28일 08:50 JST"),
     ]
