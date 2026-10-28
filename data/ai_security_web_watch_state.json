@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 19,
+    "material_items": 20,
     "new_material_items": 0,
-    "raw_items": 315,
+    "raw_items": 311,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1181,6 +1181,16 @@
       "url": "https://www.anthropic.com/threat-intelligence",
       "vendor": "Anthropic"
     },
+    "cc187387cb8a9991f59d2d25": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-28T12:14:08.462570+00:00",
+      "published_at": "2026-10-28T12:00:59+00:00",
+      "severity": 2,
+      "source": "SecurityWeek",
+      "title": "China-Linked Hackers Exploit PHP2Shell to Root Firewalls - SecurityWeek",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPS2NIXzhYZHFsOE5nblFXNzQ2QVRHNThRYXdWZ1RzWDJ6R3pyVGFGcGkzRTF5OXhtbmNiRjVfRUdpcjZoX0E1NVJhTXoxdUZIdUxpTlRqaTdSQngzaWZlMzdJM2VCaUtVazZHMFc0VE51SEV4ZGFNR2FWc1EtcWxnWFNRRE1hYWJPWW1mc1QzTdIBlAFBVV95cUxNTi1Ea2haTGZSaHlIaDBIRVBIdURnS2JELXdDU1dXM2p4X09mSENNODRlUzFFYUYzdHNrZlU3T3hWTzRRbmxmVC1nX2xuQnY4eF9iQ2lpS0pIcHFIWnZyOGwybVVqR0ZVMHVhUFZ5ZjQ5T2prdFEySVhIRnQxbjU2RkNDekJ3N3JCU20xMlU4M01lNHBC?oc=5",
+      "vendor": "PHP 재단"
+    },
     "cdace3f6cdae54d1274235f5": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
@@ -1524,5 +1534,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-28T20:33:58+09:00"
+  "updated_at_kst": "2026-10-28T21:14:08+09:00"
 }
