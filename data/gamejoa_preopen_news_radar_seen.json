@@ -14546,6 +14546,31 @@
       "telegram_core_fact": "코스피 상장사 삼성에피스홀딩스[0126Z0]는 자회사 삼성바이오에피스가 연결 기준 올해 3분기 영업이익 1천326억원으로 지난해 동기보다 2.8% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
       "title": "삼성바이오에피스 3분기 영업이익 1천326억원…작년 대비 2.8%↑ | 연합뉴스"
     },
+    "core:1e29ea5c9a16e75030ec8d07": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
+    },
     "core:1e2b167b1a015543d947c98c": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -17360,6 +17385,26 @@
       "source_title": "중기부, 전국서 '모두의 창업' 오디션…3라운드 진출 200명 선발 | 연합뉴스",
       "telegram_core_fact": "오디션 현장을 진출자뿐만 아니라 지역 창업 생태계 구성원이 함께 참여할 수 있는 개방형 교류 공간으로 운영한다.",
       "title": "중기부, 전국서 '모두의 창업' 오디션…3라운드 진출 200명 선발 | 연합뉴스"
+    },
+    "core:22efbd92c76dcab3d0f1d6c8": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028167300527",
+      "source": "연합뉴스",
+      "source_body_digest": "28c8223332282bf3ae27db48221177352fbf169e6aa1ca1eadb881608ef01021",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:be8e1c5d6a7eb950090e5bd4525b61de364564cce2cbfb5178abbd788c8048de",
+      "source_fact_identity": "source_facts:v1:9399c59e6e5f04329a1e0c48f0452831aaf156f8d730ee257a19623236c1bcfa",
+      "source_fact_keys": [
+        "source_fact:v1:4445676ebc4efbab0f456cc3517a86ac56655345864d083606807e4dd21eaf38"
+      ],
+      "source_published_kst": "2026-10-28T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 한올바이오파마[009420]는 연결 기준 올해 3분기 영업이익이 13억원으로 지난해 동기보다 265% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스"
     },
     "core:22fb8fbd2f5579585653db1d": {
       "first_seen_kst": "2026-10-27T10:39:09+09:00",
@@ -43368,6 +43413,28 @@
       "telegram_core_fact": "경기 전체적으로 미분양 물량이 늘고 있지만 신규 공급이 제한적인 지역에서는 미분양 '제로' 행진이 이어지며 분양시장 양극화가 뚜렷해지는 모습이다.",
       "title": "경기 미분양 쌓이는데⋯안산·과천은 수년째 '무풍지대'"
     },
+    "core:59187fac5820ecdf1ec674c6": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845218",
+      "source": "뉴시스",
+      "source_body_digest": "b8273ef8232debc09f72e78591293668563010617507ae62e18411db3957d971",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb9085d80038441f27fd9c1846812822b5b88cf7023b8128914179c25e847a9b",
+      "source_fact_keys": [
+        "source_fact:v1:2c93f03ae4635c5d28edfdaffb63bc7f1faa97497d2a75398b629af4bb2f1b16",
+        "source_fact:v1:8a9550389922c6a533d26583984797ab0a6f2ff66f512616fc8f33302d26cf2f",
+        "source_fact:v1:f8c41dda1dd3cc5fcd939e35174ffc15361f9d1b7916170d42aa2cea1955e124"
+      ],
+      "source_published_kst": "2026-10-28T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가",
+      "telegram_core_fact": "삼성물산 건설부문은 올해 3분기(7~9월) 매출 4조4650억원, 영업이익 2770억원을 기록했다고 28일 공시했다.",
+      "title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가"
+    },
     "core:591ed4787e0e4ccc0c986c5b": {
       "first_seen_kst": "2026-10-11T21:07:10+09:00",
       "lanes": {
@@ -50405,6 +50472,36 @@
       "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
       "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
       "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
+    },
+    "core:67deb98cb284c5ddba3a92fc": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
     },
     "core:67e265f1ae5b0db247a9d613": {
       "first_seen_kst": "2026-10-20T17:22:47+09:00",
@@ -92843,6 +92940,28 @@
       "telegram_core_fact": "미국 공휴일인 콜럼버스의 날로 대체로 거래가 한산했던 가운데, 국제유가 상승과 메모리 반도체주의 매도세로 S&P 500지수와 나스닥 종합지수가 약세를 보였다.",
       "title": "유가 상승·반도체 약세 속 뉴욕증시 혼조…다우 홀로 상승 | 연합뉴스"
     },
+    "core:bedff1bba9cf8805cf9fe347": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12189335",
+      "source": "매일경제",
+      "source_body_digest": "1e327edea49e5b80ba1559d4ee4db2a4c870d22b723e0189ef5bc6fb4f6f8c9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78fed683feb3cf913e9ee527facf67a9cb11f9f0582f98a926e3b87b181a12ce",
+      "source_fact_keys": [
+        "source_fact:v1:35cd345aeca1c09604301bf8811571e2ba9bb05da627fb7c4298f1fa82b274c1",
+        "source_fact:v1:a934293393329956e9da86a20d706e08fb8fc142d36f6f47b619233f6aea1d8b",
+        "source_fact:v1:d7c3b5bbe1c372b7433c416384f193a561af3164a39a28c89f066dec5a6b0bd1"
+      ],
+      "source_published_kst": "2026-10-29T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상",
+      "telegram_core_fact": "스콜피오 탱커스(STNG)가 국제회계기준(IFRS) 기준 3분기(7~9월) 순이익 2억2430만 달러, 희석 주당순이익(EPS) 4.60달러를 기록해 전년비 166% 증가했으며, 분기 현금배당을 주당 0.75달러로 결정했다고 28일 발표했다.",
+      "title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상"
+    },
     "core:bee60bd330f8ae30bb7babc4": {
       "first_seen_kst": "2026-10-17T05:02:37+09:00",
       "lanes": {
@@ -102625,6 +102744,28 @@
       "source_published_kst": "2026-10-07T11:58+09:00",
       "title": "LG전자, 3분기 누적 매출·영업익 '사상 최대'…가전·전장 호조"
     },
+    "core:d36d8f7390bc0a9bd92bf8e6": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028163000052",
+      "source": "연합뉴스",
+      "source_body_digest": "7b07f442957e155619286eed4bc3e12955fc8819313d1325a3bb7b06c733ccdc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82924c5370b9f01142d5604c056778bad82ca9abed9e84ec97af475845197a87",
+      "source_fact_keys": [
+        "source_fact:v1:c76a4c1abda0339bcd21a9f5c1bb251aca8e56ff0288f194be199012f35c5492",
+        "source_fact:v1:fc9594570d5ba58d43347fb4bdc1408a2e886bb6b4716e9212b982a9f75323e2",
+        "source_fact:v1:fd93a8d7495b3aad56e19f954908cbaadfb99a1fa3c73c59094effe69c5bdea7"
+      ],
+      "source_published_kst": "2026-10-28T16:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스",
+      "telegram_core_fact": "이 협약에 따라 카이랩스는 금서면 일원 매촌일반산업단지 내 1만1천28㎡ 부지에 내년 12월까지 70억원을 투입해 공장을 증설한다.",
+      "title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스"
+    },
     "core:d39484f8985be1afa54ae79b": {
       "first_seen_kst": "2026-10-22T02:27:56+09:00",
       "lanes": {
@@ -108028,6 +108169,40 @@
       "source_title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\"",
       "telegram_core_fact": "스몰인사이트리서치는 26일 이노메트리에 대해 본업의 매출이 회복되는 가운데 유리기판과 고대역폭메모리(HBM) 등 반도체 분야로 사업영역을 넓히고 있다고 분석했다. 신사업에서는 유리기판 검사장비의 초기 공급 실적이 나타나고 있다.",
       "title": "스몰인사이트 \"이노메트리, 반도체 분야 사업 영역 확대\""
+    },
+    "core:de30e45db149ca76fb8bc7fd": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
     },
     "core:de30f0c7cf07c52d7b08293a": {
       "first_seen_kst": "2026-10-20T08:37:36+09:00",
@@ -138349,6 +138524,31 @@
       "source": "뉴시스",
       "title": "'배우 은퇴' 장동주, 기업 대표 반전 근황"
     },
+    "event:8176ea674a7a6c320a41a024": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
+    },
     "event:81a14294d83f2398d9c007c0": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -139074,22 +139274,32 @@
     "event:8776416201492283eb273eac": {
       "first_seen_kst": "2026-10-28T12:04:13+09:00",
       "lanes": {
-        "live": "2026-10-29T05:21:25+09:00"
+        "live": "2026-10-29T06:29:16+09:00"
       },
-      "last_seen_kst": "2026-10-29T05:21:25+09:00",
-      "link": "https://www.newsis.com/view/NISX20261028_0003845045",
-      "source": "뉴시스",
-      "source_body_digest": "7e698dee7721360fb3a96a129c590d6b2b046127b2aed877dd88134f3b77b8e8",
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:108a00aec413fba56444a136a2e3d5f1a532e57a450dfeac931247439a5ed9b8",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
       "source_fact_keys": [
-        "source_fact:v1:4ae510929bef6b833b77087e479caeb6db0ca1409f57ddb97090a826366f6b8f"
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
       ],
-      "source_published_kst": "2026-10-28T15:59+09:00",
+      "source_published_kst": "2026-10-28T17:08+09:00",
       "source_supply_terms": {},
-      "source_title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)",
-      "telegram_core_fact": "은행과 비은행 계열사의 균형 있는 성장으로 지난해 최대를 기록한 연간 순이익(2조5112억원)을 3분기 만에 초과 달성했다는 설명이다.",
-      "title": "농협금융, 3분기까지 순이익 2조5278억…전년比 11.9%↑'역대 최대'(종합)"
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
     },
     "event:877b8321fdf5fa4b2b73a7f8": {
       "first_seen_kst": "2026-09-28T17:51:03+09:00",
@@ -140532,6 +140742,40 @@
       "link": "https://www.etnews.com/20260930000159",
       "source": "전자신문",
       "title": "엔비디아, 11월 서울서 AI 데이 연다…삼성·SK·네이버 등 20개사 참여"
+    },
+    "event:9742d63b6e4dbe4c3a972971": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
     },
     "event:9772fab072bdd1cc5a37368d": {
       "first_seen_kst": "2026-10-20T19:03:19+09:00",
@@ -151582,6 +151826,26 @@
       "telegram_core_fact": "리사 수 AMD 최고경영자(CEO)가 한국을 인공지능(AI)과 반도체 공급망에서 핵심적인 파트너로 꼽았다. 최근 수 CEO가 한국을 잇따라 찾는 배경에도 장기적인 공급망 협력이 있다고 설명했다.",
       "title": "리사 수 AMD CEO “반도체는 팀 스포츠, 한국은 핵심 파트너”"
     },
+    "event:ff0e4a9d623c435bbadaeed0": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028167300527",
+      "source": "연합뉴스",
+      "source_body_digest": "28c8223332282bf3ae27db48221177352fbf169e6aa1ca1eadb881608ef01021",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:be8e1c5d6a7eb950090e5bd4525b61de364564cce2cbfb5178abbd788c8048de",
+      "source_fact_identity": "source_facts:v1:9399c59e6e5f04329a1e0c48f0452831aaf156f8d730ee257a19623236c1bcfa",
+      "source_fact_keys": [
+        "source_fact:v1:4445676ebc4efbab0f456cc3517a86ac56655345864d083606807e4dd21eaf38"
+      ],
+      "source_published_kst": "2026-10-28T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 한올바이오파마[009420]는 연결 기준 올해 3분기 영업이익이 13억원으로 지난해 동기보다 265% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스"
+    },
     "event:ff20a2d1458d9b2f18e14eb7": {
       "first_seen_kst": "2026-10-22T08:49:50+09:00",
       "lanes": {
@@ -153329,6 +153593,36 @@
       "source_title": "\"입어보면 다르다\" 닥스골프, 경량 다운 '소프트 애티튜드' 선봬",
       "telegram_core_fact": "생활문화기업 LF의 모던 브리티시 클래식 골프웨어 브랜드 닥스골프(DAKS GOLF)가 소재와 제작 공법을 정교화한 26FW '소프트 애티튜드(SOFT ATTITUDE)' 경량 다운 시리즈를 선보였다고 20일 밝혔다. 올해 9월부터 10월 중순까지 경량 다운 판매는 전년비 약 15% 증가했다고 한다.",
       "title": "\"입어보면 다르다\" 닥스골프, 경량 다운 '소프트 애티튜드' 선봬"
+    },
+    "fact:0383c7a0d57a65f51d9f09f2": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
     },
     "fact:03952514a0f2ee05b4e853d3": {
       "first_seen_kst": "2026-10-27T02:46:53+09:00",
@@ -168331,6 +168625,28 @@
       "telegram_core_fact": "에이루트는 앤에스알시의 잔여 지분 30% 인수를 마무리하고 흡수합병하기로 결정했다고 27일 밝혔다.",
       "title": "에이루트, 엔에스알시 흡수합병 결정"
     },
+    "fact:1f522e6866769c978de69cc0": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028163000052",
+      "source": "연합뉴스",
+      "source_body_digest": "7b07f442957e155619286eed4bc3e12955fc8819313d1325a3bb7b06c733ccdc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82924c5370b9f01142d5604c056778bad82ca9abed9e84ec97af475845197a87",
+      "source_fact_keys": [
+        "source_fact:v1:c76a4c1abda0339bcd21a9f5c1bb251aca8e56ff0288f194be199012f35c5492",
+        "source_fact:v1:fc9594570d5ba58d43347fb4bdc1408a2e886bb6b4716e9212b982a9f75323e2",
+        "source_fact:v1:fd93a8d7495b3aad56e19f954908cbaadfb99a1fa3c73c59094effe69c5bdea7"
+      ],
+      "source_published_kst": "2026-10-28T16:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스",
+      "telegram_core_fact": "이 협약에 따라 카이랩스는 금서면 일원 매촌일반산업단지 내 1만1천28㎡ 부지에 내년 12월까지 70억원을 투입해 공장을 증설한다.",
+      "title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스"
+    },
     "fact:1f5a5dd1916712ad42a86c9f": {
       "first_seen_kst": "2026-10-27T16:53:55+09:00",
       "lanes": {
@@ -174270,6 +174586,26 @@
       "telegram_core_fact": "최 이사는 “AI 붐이 내년이나 내후년에 당장 꺾일 것이냐에 대해서는 그렇게 되지 않을 것이라는 시각이 강하다”며 “기업들이 데이터센터를 경쟁적으로 짓고 있는데 건설에 10년 정도 걸릴 수도 있다고 한다”고 말했다.",
       "title": "최지영 IMF 이사 “韓, 선진국 중 유일하게 재정여력 확대…AI 붐 당장 안 꺾일 것”"
     },
+    "fact:2bb6143f552f17024545efad": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028167300527",
+      "source": "연합뉴스",
+      "source_body_digest": "28c8223332282bf3ae27db48221177352fbf169e6aa1ca1eadb881608ef01021",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:be8e1c5d6a7eb950090e5bd4525b61de364564cce2cbfb5178abbd788c8048de",
+      "source_fact_identity": "source_facts:v1:9399c59e6e5f04329a1e0c48f0452831aaf156f8d730ee257a19623236c1bcfa",
+      "source_fact_keys": [
+        "source_fact:v1:4445676ebc4efbab0f456cc3517a86ac56655345864d083606807e4dd21eaf38"
+      ],
+      "source_published_kst": "2026-10-28T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 한올바이오파마[009420]는 연결 기준 올해 3분기 영업이익이 13억원으로 지난해 동기보다 265% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스"
+    },
     "fact:2bcea9cbdc38dd1d7e90f086": {
       "first_seen_kst": "2026-10-17T01:51:48+09:00",
       "lanes": {
@@ -178513,6 +178849,31 @@
       "source_title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범",
       "telegram_core_fact": "제주자치경찰단은 감귤 수확철을 맞아 농가의 결실을 지키고 농산물 절도를 막기 위해 '감귤 수확기 맞춤형 특별방범 순찰'을 추진한다고 26일 밝혔다. 자치경찰에 따르면 올해 노지감귤 생산량은 44만3000t 안팎으로 지난해보다 7.8% 증가한 것으로 나타났다.",
       "title": "제주도자치경찰, 감귤 수확기 맞춤형 특별방범"
+    },
+    "fact:342c91abf15cdc68a171a9d0": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
     },
     "fact:342cebe4f2504a4b924e31ac": {
       "first_seen_kst": "2026-10-16T06:50:52+09:00",
@@ -185756,6 +186117,40 @@
       "source_title": "美 '중국 지우기'에도…베네수 최대 화력발전소, 中 손으로 재가동",
       "telegram_core_fact": "중국 국영 기업이 수년간 멈춰 있던 베네수엘라 최대 화력발전소를 일부 재가동한다. 블룸버그통신은 중국기계설비공정(CMEC)이 다음달 베네수엘라 플란타센트로 발전단지의 600메가와트(MW)급 석유 화력발전기 1기를 재가동할 계획이라고 보도했다.",
       "title": "美 '중국 지우기'에도…베네수 최대 화력발전소, 中 손으로 재가동"
+    },
+    "fact:42d945067c90055bcf6405c0": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
     },
     "fact:42e351422d82a3d4b3a79396": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
@@ -223821,6 +224216,28 @@
       "telegram_core_fact": "한미사이언스 개인 최대주주인 신동국 한양정밀 회장 측이 장외 지분 매입에 따른 공개매수 의무 위반 논란에 입장을 밝혔다.",
       "title": "신동국 측 “특수관계인 거래 제외시 10명 미만”…공개매수 논란 설명"
     },
+    "fact:8dd0fb35bd3f8e12f619d850": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12189335",
+      "source": "매일경제",
+      "source_body_digest": "1e327edea49e5b80ba1559d4ee4db2a4c870d22b723e0189ef5bc6fb4f6f8c9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78fed683feb3cf913e9ee527facf67a9cb11f9f0582f98a926e3b87b181a12ce",
+      "source_fact_keys": [
+        "source_fact:v1:35cd345aeca1c09604301bf8811571e2ba9bb05da627fb7c4298f1fa82b274c1",
+        "source_fact:v1:a934293393329956e9da86a20d706e08fb8fc142d36f6f47b619233f6aea1d8b",
+        "source_fact:v1:d7c3b5bbe1c372b7433c416384f193a561af3164a39a28c89f066dec5a6b0bd1"
+      ],
+      "source_published_kst": "2026-10-29T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상",
+      "telegram_core_fact": "스콜피오 탱커스(STNG)가 국제회계기준(IFRS) 기준 3분기(7~9월) 순이익 2억2430만 달러, 희석 주당순이익(EPS) 4.60달러를 기록해 전년비 166% 증가했으며, 분기 현금배당을 주당 0.75달러로 결정했다고 28일 발표했다.",
+      "title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상"
+    },
     "fact:8dd203a0838ef3752eca2d33": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -249832,6 +250249,28 @@
       "source_title": "물가 뛰어도 금리 동결…미·유럽·일본 중앙은행 신중론",
       "telegram_core_fact": "미국과 유럽, 일본의 중앙은행들이 에너지 가격 급등에 따른 인플레이션 압력에도 이번 주 기준금리를 동결할 것이라는 전망이 우세하다.",
       "title": "물가 뛰어도 금리 동결…미·유럽·일본 중앙은행 신중론"
+    },
+    "fact:be7d28ebc8d3cb955956f35f": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845218",
+      "source": "뉴시스",
+      "source_body_digest": "b8273ef8232debc09f72e78591293668563010617507ae62e18411db3957d971",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb9085d80038441f27fd9c1846812822b5b88cf7023b8128914179c25e847a9b",
+      "source_fact_keys": [
+        "source_fact:v1:2c93f03ae4635c5d28edfdaffb63bc7f1faa97497d2a75398b629af4bb2f1b16",
+        "source_fact:v1:8a9550389922c6a533d26583984797ab0a6f2ff66f512616fc8f33302d26cf2f",
+        "source_fact:v1:f8c41dda1dd3cc5fcd939e35174ffc15361f9d1b7916170d42aa2cea1955e124"
+      ],
+      "source_published_kst": "2026-10-28T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가",
+      "telegram_core_fact": "삼성물산 건설부문은 올해 3분기(7~9월) 매출 4조4650억원, 영업이익 2770억원을 기록했다고 28일 공시했다.",
+      "title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가"
     },
     "fact:be8ccd9e049b7cd3bd8c9da1": {
       "first_seen_kst": "2026-10-27T16:53:55+09:00",
@@ -293846,6 +294285,26 @@
       "source": "아시아경제",
       "title": "\"2028년엔 더 부족\"…마이크론까지 '공급자 우위', 메모리 상승 국면 계속된다"
     },
+    "link:0c6d4171fb2e989dd7491794": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028167300527",
+      "source": "연합뉴스",
+      "source_body_digest": "28c8223332282bf3ae27db48221177352fbf169e6aa1ca1eadb881608ef01021",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:be8e1c5d6a7eb950090e5bd4525b61de364564cce2cbfb5178abbd788c8048de",
+      "source_fact_identity": "source_facts:v1:9399c59e6e5f04329a1e0c48f0452831aaf156f8d730ee257a19623236c1bcfa",
+      "source_fact_keys": [
+        "source_fact:v1:4445676ebc4efbab0f456cc3517a86ac56655345864d083606807e4dd21eaf38"
+      ],
+      "source_published_kst": "2026-10-28T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 한올바이오파마[009420]는 연결 기준 올해 3분기 영업이익이 13억원으로 지난해 동기보다 265% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스"
+    },
     "link:0c71244e583498ed57a7fa47": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
       "lanes": {
@@ -313902,6 +314361,28 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=04116406645608656&parentid=05556326645608656&gubun=E",
       "source": "이데일리",
       "title": "호텔인데 매출 7%가 김치?…조선호텔, 연 540억 '김치 잭팟'"
+    },
+    "link:2b792e1346d2ffc4d957d561": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028163000052",
+      "source": "연합뉴스",
+      "source_body_digest": "7b07f442957e155619286eed4bc3e12955fc8819313d1325a3bb7b06c733ccdc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82924c5370b9f01142d5604c056778bad82ca9abed9e84ec97af475845197a87",
+      "source_fact_keys": [
+        "source_fact:v1:c76a4c1abda0339bcd21a9f5c1bb251aca8e56ff0288f194be199012f35c5492",
+        "source_fact:v1:fc9594570d5ba58d43347fb4bdc1408a2e886bb6b4716e9212b982a9f75323e2",
+        "source_fact:v1:fd93a8d7495b3aad56e19f954908cbaadfb99a1fa3c73c59094effe69c5bdea7"
+      ],
+      "source_published_kst": "2026-10-28T16:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스",
+      "telegram_core_fact": "이 협약에 따라 카이랩스는 금서면 일원 매촌일반산업단지 내 1만1천28㎡ 부지에 내년 12월까지 70억원을 투입해 공장을 증설한다.",
+      "title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스"
     },
     "link:2b7a258ef83589b15817d0ac": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -349591,6 +350072,36 @@
       "source_published_kst": "2026-10-06T16:57+09:00",
       "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
     },
+    "link:6070a1abdca587726a30f952": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
+    },
     "link:6075808010d39fc920914f74": {
       "first_seen_kst": "2026-10-17T16:35:53+09:00",
       "lanes": {
@@ -373930,6 +374441,31 @@
       "source_published_kst": "2026-10-06T11:39+09:00",
       "title": "\"방산 중기 육성\"…투자전문회사 설립법안 발의"
     },
+    "link:8599dc0759a716263b548a11": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
+    },
     "link:859b48a74de62f32124d24eb": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
       "lanes": {
@@ -381810,6 +382346,28 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
+    "link:92729abf92f83b71d375eb07": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845218",
+      "source": "뉴시스",
+      "source_body_digest": "b8273ef8232debc09f72e78591293668563010617507ae62e18411db3957d971",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb9085d80038441f27fd9c1846812822b5b88cf7023b8128914179c25e847a9b",
+      "source_fact_keys": [
+        "source_fact:v1:2c93f03ae4635c5d28edfdaffb63bc7f1faa97497d2a75398b629af4bb2f1b16",
+        "source_fact:v1:8a9550389922c6a533d26583984797ab0a6f2ff66f512616fc8f33302d26cf2f",
+        "source_fact:v1:f8c41dda1dd3cc5fcd939e35174ffc15361f9d1b7916170d42aa2cea1955e124"
+      ],
+      "source_published_kst": "2026-10-28T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가",
+      "telegram_core_fact": "삼성물산 건설부문은 올해 3분기(7~9월) 매출 4조4650억원, 영업이익 2770억원을 기록했다고 28일 공시했다.",
+      "title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가"
+    },
     "link:92862a620532ccf737c65cc7": {
       "first_seen_kst": "2026-10-27T17:31:03+09:00",
       "lanes": {
@@ -388458,6 +389016,28 @@
       "source_title": "박용진 “부처간 꼬여있는 규제, 풀려면 ‘차르’ 필요” | 중앙일보",
       "telegram_core_fact": "지난달 30일 서울 태평로에 있는 규제합리화위원회 사무실에서 만난 그는 “규제 차르에게 대통령이 권한을 주고, 국무회의에도 참관할 수 있도록 해서 낡은 규제를 풀어야 한다”고 제안했다.",
       "title": "박용진 “부처간 꼬여있는 규제, 풀려면 ‘차르’ 필요” | 중앙일보"
+    },
+    "link:9c0ec1854ac168498862698b": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12189335",
+      "source": "매일경제",
+      "source_body_digest": "1e327edea49e5b80ba1559d4ee4db2a4c870d22b723e0189ef5bc6fb4f6f8c9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78fed683feb3cf913e9ee527facf67a9cb11f9f0582f98a926e3b87b181a12ce",
+      "source_fact_keys": [
+        "source_fact:v1:35cd345aeca1c09604301bf8811571e2ba9bb05da627fb7c4298f1fa82b274c1",
+        "source_fact:v1:a934293393329956e9da86a20d706e08fb8fc142d36f6f47b619233f6aea1d8b",
+        "source_fact:v1:d7c3b5bbe1c372b7433c416384f193a561af3164a39a28c89f066dec5a6b0bd1"
+      ],
+      "source_published_kst": "2026-10-29T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상",
+      "telegram_core_fact": "스콜피오 탱커스(STNG)가 국제회계기준(IFRS) 기준 3분기(7~9월) 순이익 2억2430만 달러, 희석 주당순이익(EPS) 4.60달러를 기록해 전년비 166% 증가했으며, 분기 현금배당을 주당 0.75달러로 결정했다고 28일 발표했다.",
+      "title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상"
     },
     "link:9c27c0926480f4524d8ebfa2": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -423288,6 +423868,40 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01587526645583728",
       "source": "이데일리",
       "title": "추석에도 24시간…삼성·SK하닉 반도체, 수출 최전선 지킨다"
+    },
+    "link:cfba117ae34cde0090136d04": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
     },
     "link:cfc58f42be4880a67e7fb54c": {
       "first_seen_kst": "2026-10-28T16:03:52+09:00",
@@ -517442,6 +518056,26 @@
       "telegram_core_fact": "이날 이스라엘 총리실은 군에 서안 지구의 전면 폐쇄에 대비하라고 지시했다고 밝혔으며, 총격이 발생한 서안지구 점령지를 군이 봉쇄하도록 지시했다고 덧붙였다.",
       "title": "이스라엘, 총격 발생 헤브론 위협될 수 있는 기반 시설 철거"
     },
+    "original:62483736e20868c8eb4c82e3": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028167300527",
+      "source": "연합뉴스",
+      "source_body_digest": "28c8223332282bf3ae27db48221177352fbf169e6aa1ca1eadb881608ef01021",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:be8e1c5d6a7eb950090e5bd4525b61de364564cce2cbfb5178abbd788c8048de",
+      "source_fact_identity": "source_facts:v1:9399c59e6e5f04329a1e0c48f0452831aaf156f8d730ee257a19623236c1bcfa",
+      "source_fact_keys": [
+        "source_fact:v1:4445676ebc4efbab0f456cc3517a86ac56655345864d083606807e4dd21eaf38"
+      ],
+      "source_published_kst": "2026-10-28T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 한올바이오파마[009420]는 연결 기준 올해 3분기 영업이익이 13억원으로 지난해 동기보다 265% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스"
+    },
     "original:6253e1c15dbc6f9926accbbe": {
       "first_seen_kst": "2026-10-03T11:43:26+09:00",
       "lanes": {
@@ -525735,6 +526369,28 @@
       "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019046",
       "source": "국민일보",
       "title": "시흥시, 앵커기업 투자유치 보조금 조례 본격 시행"
+    },
+    "original:6fa565520ef0a268407cd6e8": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845218",
+      "source": "뉴시스",
+      "source_body_digest": "b8273ef8232debc09f72e78591293668563010617507ae62e18411db3957d971",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb9085d80038441f27fd9c1846812822b5b88cf7023b8128914179c25e847a9b",
+      "source_fact_keys": [
+        "source_fact:v1:2c93f03ae4635c5d28edfdaffb63bc7f1faa97497d2a75398b629af4bb2f1b16",
+        "source_fact:v1:8a9550389922c6a533d26583984797ab0a6f2ff66f512616fc8f33302d26cf2f",
+        "source_fact:v1:f8c41dda1dd3cc5fcd939e35174ffc15361f9d1b7916170d42aa2cea1955e124"
+      ],
+      "source_published_kst": "2026-10-28T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가",
+      "telegram_core_fact": "삼성물산 건설부문은 올해 3분기(7~9월) 매출 4조4650억원, 영업이익 2770억원을 기록했다고 28일 공시했다.",
+      "title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가"
     },
     "original:6fa802b6f3fff2abd4d3cf8f": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -549359,6 +550015,40 @@
       "telegram_core_fact": "6억2500만 달러 규모 10.25% 2031년 만기 선순위 무담보 채권 약정서에서도 연결 총 레버리지 비율이 2.00배 이하이고 채무불이행이 없으면 자사주 매입 등 제한적 지급을 무제한으로 할 수 있다.",
       "title": "지오 그룹, 6억5000만 달러 채권 상환·자사주 한도 확대"
     },
+    "original:9389d613df894abd5cc333ed": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
+    },
     "original:938c982f13b4b8c1d8034ed3": {
       "first_seen_kst": "2026-10-19T20:10:12+09:00",
       "lanes": {
@@ -552233,6 +552923,36 @@
       "source_title": "주병기 공정위원장 “반복 담합 업체 영업정지·등록취소 추진” [국감]",
       "telegram_core_fact": "주병기 공정거래위원장이 담합을 반복한 사업자에게 영업정지나 등록취소 처분을 내릴 수 있도록 제도를 도입하겠다고 밝혔다. 주 위원장은 12일 국회 정무위원회의 공정위 국정감사 인사말에서 “우리 경제에 만연한 고질적 담합을 근본적으로 뿌리 뽑기 위해 반복 담합 사업자에 대한 등록취소·영업정지 제도를 도입하겠다”고 말했다.",
       "title": "주병기 공정위원장 “반복 담합 업체 영업정지·등록취소 추진” [국감]"
+    },
+    "original:97d7c53d9844874a349e5ff8": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
     },
     "original:97dffd99cb209a18c17106f9": {
       "first_seen_kst": "2026-10-21T02:06:57+09:00",
@@ -563480,6 +564200,31 @@
       "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
       "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
       "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
+    },
+    "original:a927c4e3acdf1b81291ab9f8": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
     },
     "original:a92e7f09f142e207e8c701d6": {
       "first_seen_kst": "2026-10-21T15:40:18+09:00",
@@ -605447,6 +606192,28 @@
       "telegram_core_fact": "미국의 인공지능(AI) 대표 기업이자 ‘챗GPT’ 개발사인 오픈AI의 연 매출이 예상보다 200억달러(약 27조원) 적은 것으로 나타났다.",
       "title": "‘예상보다 29%↓’…오픈AI 매출 우려에 뉴욕 증시까지 ‘찬물’"
     },
+    "original:eb1abf9e992db4e7fb268101": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028163000052",
+      "source": "연합뉴스",
+      "source_body_digest": "7b07f442957e155619286eed4bc3e12955fc8819313d1325a3bb7b06c733ccdc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82924c5370b9f01142d5604c056778bad82ca9abed9e84ec97af475845197a87",
+      "source_fact_keys": [
+        "source_fact:v1:c76a4c1abda0339bcd21a9f5c1bb251aca8e56ff0288f194be199012f35c5492",
+        "source_fact:v1:fc9594570d5ba58d43347fb4bdc1408a2e886bb6b4716e9212b982a9f75323e2",
+        "source_fact:v1:fd93a8d7495b3aad56e19f954908cbaadfb99a1fa3c73c59094effe69c5bdea7"
+      ],
+      "source_published_kst": "2026-10-28T16:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스",
+      "telegram_core_fact": "이 협약에 따라 카이랩스는 금서면 일원 매촌일반산업단지 내 1만1천28㎡ 부지에 내년 12월까지 70억원을 투입해 공장을 증설한다.",
+      "title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스"
+    },
     "original:eb287b877e1f8b3178b3aeee": {
       "first_seen_kst": "2026-10-17T08:00:41+09:00",
       "lanes": {
@@ -607087,6 +607854,28 @@
       "source_title": "아이큐비아 홀딩스, 3분기 매출 44억 달러·8% 증가..가이던스 상향",
       "telegram_core_fact": "아이큐비아 홀딩스(IQV)가 3분기(9월 30일 종료) 매출액이 44억2800만 달러로 전년비 8.0% 증가했고, 비일반회계기준(Non-GAAP) 희석 주당순이익(EPS)은 3.34달러로 11.3% 늘었다고 10월 27일 발표했다.",
       "title": "아이큐비아 홀딩스, 3분기 매출 44억 달러·8% 증가..가이던스 상향"
+    },
+    "original:ee304ba0a28340e005db6352": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12189335",
+      "source": "매일경제",
+      "source_body_digest": "1e327edea49e5b80ba1559d4ee4db2a4c870d22b723e0189ef5bc6fb4f6f8c9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78fed683feb3cf913e9ee527facf67a9cb11f9f0582f98a926e3b87b181a12ce",
+      "source_fact_keys": [
+        "source_fact:v1:35cd345aeca1c09604301bf8811571e2ba9bb05da627fb7c4298f1fa82b274c1",
+        "source_fact:v1:a934293393329956e9da86a20d706e08fb8fc142d36f6f47b619233f6aea1d8b",
+        "source_fact:v1:d7c3b5bbe1c372b7433c416384f193a561af3164a39a28c89f066dec5a6b0bd1"
+      ],
+      "source_published_kst": "2026-10-29T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상",
+      "telegram_core_fact": "스콜피오 탱커스(STNG)가 국제회계기준(IFRS) 기준 3분기(7~9월) 순이익 2억2430만 달러, 희석 주당순이익(EPS) 4.60달러를 기록해 전년비 166% 증가했으며, 분기 현금배당을 주당 0.75달러로 결정했다고 28일 발표했다.",
+      "title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상"
     },
     "original:ee5a0db47d46320543a7fe9a": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
@@ -627546,6 +628335,36 @@
       "source_title": "[급등락주 짚어보기] 유니켐, 美 기업 인수에 상한가⋯‘시총 상폐’ 유예에 변동성↑",
       "telegram_core_fact": "유니켐은 이달 12일 미국 루미아 테크놀로지스 지분 100% 인수를 위해 루미아 창업자 등 주요 당사자와 본계약을 체결했다고 밝혔다. 유니켐은 인수를 통해 로봇용 소재·부품의 고객사 검증과 양산 수주를 추진하고, 향후 납품을 통한 매출 창출에 나선다는 계획이다.",
       "title": "[급등락주 짚어보기] 유니켐, 美 기업 인수에 상한가⋯‘시총 상폐’ 유예에 변동성↑"
+    },
+    "source_fact:037017d299aaef995c7f1c60": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
     },
     "source_fact:0373c3f3bebe974b4d1b8125": {
       "first_seen_kst": "2026-10-21T10:53:33+09:00",
@@ -686050,6 +686869,40 @@
       "telegram_core_fact": "하지만 일부 투자자들은 최근 호주 AI 데이터센터 기업 퍼머스의 IPO 계획 무산 등을 이유로 목표 기업가치를 160억~190억달러(21조3000억~25조3000억원) 수준으로 낮출 것을 요구했다고 한다.",
       "title": "英 클라우드 기업, MS 데이터센터 무산·IPO '삐걱'…번지는 불안"
     },
+    "source_fact:192e43a039c7231b1a4c3b83": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
+    },
     "source_fact:193383a33bdd8e4312accb6a": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -690302,6 +691155,31 @@
       "telegram_core_fact": "리오틴토(RIO)는 3분기 연결 기준 구리 생산량이 20만5000t으로 전년 동기와 같은 수준을 유지했고, 오유톨고이 구리 생산량은 전년비 27% 늘었으며 전 세계 철광석 판매량은 9080만t으로 3% 증가했다고 14일(현지시간) 발표했다.",
       "title": "리오틴토, 3분기 구리 20만5000t 보합..오유톨고이 27%↑"
     },
+    "source_fact:1ac5e3bc7773285b9bef83f6": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
+    },
     "source_fact:1ac5e8482fd5727ec04bfe81": {
       "first_seen_kst": "2026-10-14T23:19:07+09:00",
       "lanes": {
@@ -691513,6 +692391,36 @@
       "source_title": "IMF, 한국 성장률 3.3%로 상향…AI·반도체 수출 호조 영향",
       "telegram_core_fact": "IMF는 13일 발표한 '10월 세계경제전망(World Economic Outlook)'에서 올해 한국 경제성장률을 3.3%로 제시했다. 중동전쟁 장기화와 국제유가 상승에도 인공지능(AI) 투자 확대에 따른 반도체 수출 호조가 한국 경제의 성장을 견인할 것으로 전망했다.",
       "title": "IMF, 한국 성장률 3.3%로 상향…AI·반도체 수출 호조 영향"
+    },
+    "source_fact:1b327a52e41497d51c14ed61": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
     },
     "source_fact:1b34cf7677591b01296411c4": {
       "first_seen_kst": "2026-10-10T02:34:57+09:00",
@@ -697220,6 +698128,31 @@
       ],
       "source_published_kst": "2026-10-07T06:22+09:00",
       "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
+    "source_fact:1d1bea177e29a93d3c9fdff3": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
     },
     "source_fact:1d1c6550c39b828a358454e5": {
       "first_seen_kst": "2026-10-26T19:26:23+09:00",
@@ -706449,6 +707382,28 @@
       "source_title": "제조업 만으론 성장·고용 한계…서비스업 '레벨업' 속도 붙나",
       "telegram_core_fact": "특히 반도체 수출 호황이 고용과 가계소득 증가로 이어지는 순환 구조가 제대로 작동하지 않고 있다는 지적이다.",
       "title": "제조업 만으론 성장·고용 한계…서비스업 '레벨업' 속도 붙나"
+    },
+    "source_fact:20947dab4810cbe5b6a2d734": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845218",
+      "source": "뉴시스",
+      "source_body_digest": "b8273ef8232debc09f72e78591293668563010617507ae62e18411db3957d971",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb9085d80038441f27fd9c1846812822b5b88cf7023b8128914179c25e847a9b",
+      "source_fact_keys": [
+        "source_fact:v1:2c93f03ae4635c5d28edfdaffb63bc7f1faa97497d2a75398b629af4bb2f1b16",
+        "source_fact:v1:8a9550389922c6a533d26583984797ab0a6f2ff66f512616fc8f33302d26cf2f",
+        "source_fact:v1:f8c41dda1dd3cc5fcd939e35174ffc15361f9d1b7916170d42aa2cea1955e124"
+      ],
+      "source_published_kst": "2026-10-28T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가",
+      "telegram_core_fact": "삼성물산 건설부문은 올해 3분기(7~9월) 매출 4조4650억원, 영업이익 2770억원을 기록했다고 28일 공시했다.",
+      "title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가"
     },
     "source_fact:2095b63512fad1d683c91dd1": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
@@ -755495,6 +756450,31 @@
       "telegram_core_fact": "(클리블랜드=뉴스1) 이훈철 특파원 = 버락 오바마 전 미국 대통령이 11월 3일 중간선거를 열흘 앞둔 24일(현지시간) 경합지 오하이오주를 찾아 도널드 트럼프 대통령의 이란 전쟁과 관세 정책이 물가 상승을 초래했다며 맹공을 퍼부었다.",
       "title": "오바마 \"이란 전쟁·관세로 물가 폭등…트럼프, 백악관 금칠만 몰두\""
     },
+    "source_fact:31c8ca6ee747f5d443897012": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
+    },
     "source_fact:31ca117bc4ea50ed4af5ba92": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
       "lanes": {
@@ -770050,6 +771030,36 @@
       "telegram_core_fact": "20일(현지시간) 스페이스X가 발표한 3분기 실적에 따르면 AI를 담당하는 초지능(SI) 사업부 매출은 75억6000만달러(약 10조210억원)로 전년비 830% 급증했다.",
       "title": "스페이스X, 우주기업에서 AI 기업으로…머스크는 1조달러 꿈꾼다(종합)"
     },
+    "source_fact:3768a50efcc88a3d3419218d": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
+    },
     "source_fact:3769ea91a8ee6b0fc4dddbb1": {
       "first_seen_kst": "2026-10-14T20:43:11+09:00",
       "lanes": {
@@ -773198,6 +774208,28 @@
       "source_title": "중동발 고유가에 급등한 공사비…내년에도 5% 상승?",
       "telegram_core_fact": "대한건설정책연구원(건정연)에 따르면 지난 8월 말 기준 우레탄발포제품(66.5%), 아스팔트(50.8%), 아스콘(38.1%) 등은 중동전쟁 장기화와 유가·원재료 가격 상승 영향으로 큰 폭의 오름세를 기록했다.",
       "title": "중동발 고유가에 급등한 공사비…내년에도 5% 상승?"
+    },
+    "source_fact:388c2d5038c7a9a12f944153": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028163000052",
+      "source": "연합뉴스",
+      "source_body_digest": "7b07f442957e155619286eed4bc3e12955fc8819313d1325a3bb7b06c733ccdc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82924c5370b9f01142d5604c056778bad82ca9abed9e84ec97af475845197a87",
+      "source_fact_keys": [
+        "source_fact:v1:c76a4c1abda0339bcd21a9f5c1bb251aca8e56ff0288f194be199012f35c5492",
+        "source_fact:v1:fc9594570d5ba58d43347fb4bdc1408a2e886bb6b4716e9212b982a9f75323e2",
+        "source_fact:v1:fd93a8d7495b3aad56e19f954908cbaadfb99a1fa3c73c59094effe69c5bdea7"
+      ],
+      "source_published_kst": "2026-10-28T16:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스",
+      "telegram_core_fact": "이 협약에 따라 카이랩스는 금서면 일원 매촌일반산업단지 내 1만1천28㎡ 부지에 내년 12월까지 70억원을 투입해 공장을 증설한다.",
+      "title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스"
     },
     "source_fact:3890ba1349a0da419921cd4b": {
       "first_seen_kst": "2026-10-29T03:39:02+09:00",
@@ -778058,6 +779090,31 @@
       "source_title": "\"ASML 호실적에도 시간외 하락\" 삼전·닉스 반등 실패[핫스탁](종합)",
       "telegram_core_fact": "이경민 대신증권 연구원은 \"장중 발표된 ASML 3분기 실적과 다음 분기 가이던스가 모두 시장 예상치를 웃돌았지만 높아진 시장 기대치에 따른 차익실현 매물로 주가가 하락하며 반도체 업종 투자심리가 위축됐다\"고 설명했다.",
       "title": "\"ASML 호실적에도 시간외 하락\" 삼전·닉스 반등 실패[핫스탁](종합)"
+    },
+    "source_fact:3a58a04796bfd2c777547d8c": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
     },
     "source_fact:3a598cee8427ac50ccae95f5": {
       "first_seen_kst": "2026-10-12T15:02:00+09:00",
@@ -783177,6 +784234,28 @@
       "telegram_core_fact": "정굳건 남부발전 기후환경처장은 “이번 실증사업은 전기버스 사용 후 배터리의 잔존 가치를 재창출하고 안전기술을 접목해 자원순환의 실효성을 높였다는 데 의미가 있다”며, “앞으로도 실증설비의 안전한 운영과 사용후 배터리의 활용 확대를 통해 자원순환 경제 활성화 및 친환경 에너지 인프라 구축에 기여하겠다”고 말했다.",
       "title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도"
     },
+    "source_fact:3c507082a73f1a29428a1012": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12189335",
+      "source": "매일경제",
+      "source_body_digest": "1e327edea49e5b80ba1559d4ee4db2a4c870d22b723e0189ef5bc6fb4f6f8c9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78fed683feb3cf913e9ee527facf67a9cb11f9f0582f98a926e3b87b181a12ce",
+      "source_fact_keys": [
+        "source_fact:v1:35cd345aeca1c09604301bf8811571e2ba9bb05da627fb7c4298f1fa82b274c1",
+        "source_fact:v1:a934293393329956e9da86a20d706e08fb8fc142d36f6f47b619233f6aea1d8b",
+        "source_fact:v1:d7c3b5bbe1c372b7433c416384f193a561af3164a39a28c89f066dec5a6b0bd1"
+      ],
+      "source_published_kst": "2026-10-29T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상",
+      "telegram_core_fact": "스콜피오 탱커스(STNG)가 국제회계기준(IFRS) 기준 3분기(7~9월) 순이익 2억2430만 달러, 희석 주당순이익(EPS) 4.60달러를 기록해 전년비 166% 증가했으며, 분기 현금배당을 주당 0.75달러로 결정했다고 28일 발표했다.",
+      "title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상"
+    },
     "source_fact:3c529e02cf9eab46aa12df45": {
       "first_seen_kst": "2026-10-19T07:05:38+09:00",
       "lanes": {
@@ -785025,6 +786104,40 @@
       "source_title": "\"비싸도 애플이니까?\"…329만원 아이폰 듀오 통할까",
       "telegram_core_fact": "아이폰 듀오의 국내 출고가는 256GB 329만원, 512GB 359만원, 1TB 419만원, 2TB 509만원이다. UBS는 아이폰 듀오의 미국 시작 가격인 1999달러가 판매량 증가를 제한할 수 있다고 분석했다.",
       "title": "\"비싸도 애플이니까?\"…329만원 아이폰 듀오 통할까"
+    },
+    "source_fact:3d099db921fe4ba8c6870dfb": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
     },
     "source_fact:3d0b2713335b3cb0403f0379": {
       "first_seen_kst": "2026-10-21T12:53:55+09:00",
@@ -791227,6 +792340,36 @@
       "source_title": "[속보] SK하닉 올해 주주환원 100조…현금배당 30조 이상",
       "telegram_core_fact": "SK하이닉스는 현금 배당 30조원 이상, 자사주 매입·소각 60조원 이상이라고 밝혔다.",
       "title": "[속보] SK하닉 올해 주주환원 100조…현금배당 30조 이상"
+    },
+    "source_fact:3f2e9dd741285109c5ad55c5": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
     },
     "source_fact:3f33642366290f9358421e60": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
@@ -826966,6 +828109,28 @@
       "telegram_core_fact": "엘앤씨바이오는 미국 인체조직 및 바이오 제품 전문기업, 조직은행과 리투오 시리즈의 미국 독점 공급계약을 체결했다고 12일 밝혔다.",
       "title": "엘앤씨바이오, ‘리투오’ 美 진출 본격화…820억원 공급계약"
     },
+    "source_fact:4bfefe6fae839901f24efdc1": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12189335",
+      "source": "매일경제",
+      "source_body_digest": "1e327edea49e5b80ba1559d4ee4db2a4c870d22b723e0189ef5bc6fb4f6f8c9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78fed683feb3cf913e9ee527facf67a9cb11f9f0582f98a926e3b87b181a12ce",
+      "source_fact_keys": [
+        "source_fact:v1:35cd345aeca1c09604301bf8811571e2ba9bb05da627fb7c4298f1fa82b274c1",
+        "source_fact:v1:a934293393329956e9da86a20d706e08fb8fc142d36f6f47b619233f6aea1d8b",
+        "source_fact:v1:d7c3b5bbe1c372b7433c416384f193a561af3164a39a28c89f066dec5a6b0bd1"
+      ],
+      "source_published_kst": "2026-10-29T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상",
+      "telegram_core_fact": "스콜피오 탱커스(STNG)가 국제회계기준(IFRS) 기준 3분기(7~9월) 순이익 2억2430만 달러, 희석 주당순이익(EPS) 4.60달러를 기록해 전년비 166% 증가했으며, 분기 현금배당을 주당 0.75달러로 결정했다고 28일 발표했다.",
+      "title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상"
+    },
     "source_fact:4c0042e516d09fb412ed1b4b": {
       "first_seen_kst": "2026-10-23T16:42:18+09:00",
       "lanes": {
@@ -827915,6 +829080,26 @@
       "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
       "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
       "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
+    },
+    "source_fact:4c744875d4a10d2873187138": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028167300527",
+      "source": "연합뉴스",
+      "source_body_digest": "28c8223332282bf3ae27db48221177352fbf169e6aa1ca1eadb881608ef01021",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:be8e1c5d6a7eb950090e5bd4525b61de364564cce2cbfb5178abbd788c8048de",
+      "source_fact_identity": "source_facts:v1:9399c59e6e5f04329a1e0c48f0452831aaf156f8d730ee257a19623236c1bcfa",
+      "source_fact_keys": [
+        "source_fact:v1:4445676ebc4efbab0f456cc3517a86ac56655345864d083606807e4dd21eaf38"
+      ],
+      "source_published_kst": "2026-10-28T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 한올바이오파마[009420]는 연결 기준 올해 3분기 영업이익이 13억원으로 지난해 동기보다 265% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스"
     },
     "source_fact:4c7632954287a14dbd8c0cb2": {
       "first_seen_kst": "2026-10-26T18:22:52+09:00",
@@ -891396,6 +892581,40 @@
       "telegram_core_fact": "솔리다임은 기존 사업부를 물적분할한 '쪼개기 상장'과 출발점이 다른 데다, 지분 희석이 반드시 주주가치 하락으로 이어지는 것은 아니라는 분석도 나온다.",
       "title": "'쪼개기 상장'과 다른 솔리다임⋯지분 줄어도 주주 몫은 커질 수 있어 [AI 반도체 자본 경쟁]"
     },
+    "source_fact:632b8b8b4543c3bec7571b56": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
+    },
     "source_fact:633008902c589d59d4948ce7": {
       "first_seen_kst": "2026-10-22T02:27:56+09:00",
       "lanes": {
@@ -897104,6 +898323,28 @@
       "source_title": "머피 오일, 베트남 첫 원유 생산·코트디부아르 유층 확인",
       "telegram_core_fact": "머피 오일(MUR)이 베트남 해상 락다방 유전에서 9월 27일 첫 원유 생산에 성공하고, 코트디부아르 부발레 웨스트-1X 평가정에서 순 유층 약 88피트(27미터)를, 베트남 락다트랑 노스-1X 탐사정에서 순 유층 131피트(40미터)를 각각 확인했으며 멕시코만 치누크 8번 개발정도 생산을 시작했다고 13일 발표했다.",
       "title": "머피 오일, 베트남 첫 원유 생산·코트디부아르 유층 확인"
+    },
+    "source_fact:65218837d7f2da01b2b0254e": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028163000052",
+      "source": "연합뉴스",
+      "source_body_digest": "7b07f442957e155619286eed4bc3e12955fc8819313d1325a3bb7b06c733ccdc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82924c5370b9f01142d5604c056778bad82ca9abed9e84ec97af475845197a87",
+      "source_fact_keys": [
+        "source_fact:v1:c76a4c1abda0339bcd21a9f5c1bb251aca8e56ff0288f194be199012f35c5492",
+        "source_fact:v1:fc9594570d5ba58d43347fb4bdc1408a2e886bb6b4716e9212b982a9f75323e2",
+        "source_fact:v1:fd93a8d7495b3aad56e19f954908cbaadfb99a1fa3c73c59094effe69c5bdea7"
+      ],
+      "source_published_kst": "2026-10-28T16:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스",
+      "telegram_core_fact": "이 협약에 따라 카이랩스는 금서면 일원 매촌일반산업단지 내 1만1천28㎡ 부지에 내년 12월까지 70억원을 투입해 공장을 증설한다.",
+      "title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스"
     },
     "source_fact:6522ff312cbd1f01f4938ea5": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
@@ -912890,6 +914131,40 @@
       "telegram_core_fact": "내년까지 국내 공급 기반을 구축하고 2028년부터 전국 단위 보급을 본격화한다는 계획이다.",
       "title": "삼성전자, 아파트 냉난방 전기화 나선다…2028년 히트펌프 전국 보급"
     },
+    "source_fact:6addd12f78edbe41f056a26b": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
+    },
     "source_fact:6adf398c0ce1c8c89495258d": {
       "first_seen_kst": "2026-10-24T03:01:20+09:00",
       "lanes": {
@@ -924464,6 +925739,36 @@
       "telegram_core_fact": "2019년 10월 국세청의 세금 부과 처분에 억울함을 호소하며 조세심판원에 불복청구한 A법인은 올해 6월에야 결정을 받았다.",
       "title": "법은 90일, 현실은 6년…조세심판원, 세금불복 ‘늑장심판’[단독]"
     },
+    "source_fact:6f10fab72241eb5ba201cef4": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
+    },
     "source_fact:6f1295c4174eef6930fe137b": {
       "first_seen_kst": "2026-10-17T11:37:20+09:00",
       "lanes": {
@@ -930056,6 +931361,28 @@
       "source_title": "커뮤니티 트러스트 뱅코프, 3분기 희석 EPS 1.43달러..전년비 8.3% 증가",
       "telegram_core_fact": "커뮤니티 트러스트 뱅코프(CTBI)는 올해 3분기(7~9월) 희석 주당순이익이 1.43달러로 전년 동기 1.32달러보다 8.3% 늘었고, 순이익은 2589만 달러로 전년 동기 2391만 달러 대비 8.3% 증가했다고 10월 21일 발표했다.",
       "title": "커뮤니티 트러스트 뱅코프, 3분기 희석 EPS 1.43달러..전년비 8.3% 증가"
+    },
+    "source_fact:713eeef2dd5597b6f49150f5": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12189335",
+      "source": "매일경제",
+      "source_body_digest": "1e327edea49e5b80ba1559d4ee4db2a4c870d22b723e0189ef5bc6fb4f6f8c9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78fed683feb3cf913e9ee527facf67a9cb11f9f0582f98a926e3b87b181a12ce",
+      "source_fact_keys": [
+        "source_fact:v1:35cd345aeca1c09604301bf8811571e2ba9bb05da627fb7c4298f1fa82b274c1",
+        "source_fact:v1:a934293393329956e9da86a20d706e08fb8fc142d36f6f47b619233f6aea1d8b",
+        "source_fact:v1:d7c3b5bbe1c372b7433c416384f193a561af3164a39a28c89f066dec5a6b0bd1"
+      ],
+      "source_published_kst": "2026-10-29T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상",
+      "telegram_core_fact": "스콜피오 탱커스(STNG)가 국제회계기준(IFRS) 기준 3분기(7~9월) 순이익 2억2430만 달러, 희석 주당순이익(EPS) 4.60달러를 기록해 전년비 166% 증가했으며, 분기 현금배당을 주당 0.75달러로 결정했다고 28일 발표했다.",
+      "title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상"
     },
     "source_fact:71444568ca801d89cb3bedf6": {
       "first_seen_kst": "2026-10-26T22:48:11+09:00",
@@ -963754,6 +965081,36 @@
       "source_title": "반도체 키우고 곳간 채우고…추미애 경기지사, 산업 육성·세입 확충 구상",
       "telegram_core_fact": "근본적으로는 부동산 거래에 좌우되는 취득세 중심의 세입구조를 바꿔야 한다. 반도체 분야에서는 기업 투자 일정에 맞춘 기반시설 공급과 인재 양성을 추진한다.",
       "title": "반도체 키우고 곳간 채우고…추미애 경기지사, 산업 육성·세입 확충 구상"
+    },
+    "source_fact:7d7464455faf0fe2890d516f": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
     },
     "source_fact:7d75643837578373571a27b3": {
       "first_seen_kst": "2026-10-24T00:43:35+09:00",
@@ -1012141,6 +1013498,36 @@
       "telegram_core_fact": "포스코그룹은 한국형 수소환원제철 기술인 '하이렉스(HyREX)'를 중심으로 정부와 협력해 청정에너지 공급부터 저탄소 철강 활용까지 아우르는 생태계를 구축한다.",
       "title": "포스코그룹, K-GX 참여…철강 탈탄소 전환 선도"
     },
+    "source_fact:8fe52f72ec2eb3818c1a8455": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
+    },
     "source_fact:8fe5675a95ed3a21bdbb3456": {
       "first_seen_kst": "2026-10-19T06:35:52+09:00",
       "lanes": {
@@ -1013096,6 +1014483,31 @@
       "source_title": "프라이빗 뱅코프 오브 아, 3분기 순이익 1140만달러..전년비 18% 증가",
       "telegram_core_fact": "프라이빗 뱅코프 오브 아메리카(PBAM)는 9월 30일 종료된 3분기 순이익이 1140만 달러, 희석 주당순이익이 1.97달러로 전년비 각각 17.6%, 19.4% 증가했다고 16일 발표했다.",
       "title": "프라이빗 뱅코프 오브 아, 3분기 순이익 1140만달러..전년비 18% 증가"
+    },
+    "source_fact:9040b0bba703b16c6ca8d20d": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
     },
     "source_fact:9041554b35cbc0d9b3f1e051": {
       "first_seen_kst": "2026-10-23T14:14:10+09:00",
@@ -1019259,6 +1020671,28 @@
       "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
       "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
       "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
+    },
+    "source_fact:924ce1eda3cd689da91f4d21": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028163000052",
+      "source": "연합뉴스",
+      "source_body_digest": "7b07f442957e155619286eed4bc3e12955fc8819313d1325a3bb7b06c733ccdc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82924c5370b9f01142d5604c056778bad82ca9abed9e84ec97af475845197a87",
+      "source_fact_keys": [
+        "source_fact:v1:c76a4c1abda0339bcd21a9f5c1bb251aca8e56ff0288f194be199012f35c5492",
+        "source_fact:v1:fc9594570d5ba58d43347fb4bdc1408a2e886bb6b4716e9212b982a9f75323e2",
+        "source_fact:v1:fd93a8d7495b3aad56e19f954908cbaadfb99a1fa3c73c59094effe69c5bdea7"
+      ],
+      "source_published_kst": "2026-10-28T16:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스",
+      "telegram_core_fact": "이 협약에 따라 카이랩스는 금서면 일원 매촌일반산업단지 내 1만1천28㎡ 부지에 내년 12월까지 70억원을 투입해 공장을 증설한다.",
+      "title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스"
     },
     "source_fact:924fc135d525da18de9cebd0": {
       "first_seen_kst": "2026-10-19T11:13:29+09:00",
@@ -1060301,6 +1061735,40 @@
       "telegram_core_fact": "특히 투자액 3000억원은 미국 나스닥 상장사인 EMAT로부터 조달하는 외국인 투자로, 대규모 외자 유치로 국내 희토류 자석 산업의 생산 기반을 강화한다.",
       "title": "경북도·포항시-케이엠엠아이 '3000억 투자 영구자석 생산 설비' 증설"
     },
+    "source_fact:a165f36a300fcebfb9490aa9": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
+    },
     "source_fact:a167e1407bbf1accee6ea695": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
       "lanes": {
@@ -1062105,6 +1063573,36 @@
       ],
       "source_published_kst": "2026-10-07T07:43+09:00",
       "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
+    "source_fact:a20c29bd0496013f578c97f7": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
     },
     "source_fact:a20e06eda2e606c9ee3e5d46": {
       "first_seen_kst": "2026-10-25T12:06:55+09:00",
@@ -1073965,6 +1075463,28 @@
       "source_published_kst": "2026-10-06T15:03+09:00",
       "title": "“연봉 최대 2배” 중국행 삼전닉스 기술인재의 결말"
     },
+    "source_fact:a616e2b43d50ff68f92e206b": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845218",
+      "source": "뉴시스",
+      "source_body_digest": "b8273ef8232debc09f72e78591293668563010617507ae62e18411db3957d971",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb9085d80038441f27fd9c1846812822b5b88cf7023b8128914179c25e847a9b",
+      "source_fact_keys": [
+        "source_fact:v1:2c93f03ae4635c5d28edfdaffb63bc7f1faa97497d2a75398b629af4bb2f1b16",
+        "source_fact:v1:8a9550389922c6a533d26583984797ab0a6f2ff66f512616fc8f33302d26cf2f",
+        "source_fact:v1:f8c41dda1dd3cc5fcd939e35174ffc15361f9d1b7916170d42aa2cea1955e124"
+      ],
+      "source_published_kst": "2026-10-28T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가",
+      "telegram_core_fact": "삼성물산 건설부문은 올해 3분기(7~9월) 매출 4조4650억원, 영업이익 2770억원을 기록했다고 28일 공시했다.",
+      "title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가"
+    },
     "source_fact:a61a6c8d42311fca21518291": {
       "first_seen_kst": "2026-10-19T20:10:12+09:00",
       "lanes": {
@@ -1083603,6 +1085123,40 @@
       "source_title": "AI가 판단하는 공장…삼성전자의 2030년 제조 혁신 청사진은? [미리 보는 테크퀘스트]",
       "telegram_core_fact": "삼성전자가 AI을 활용해 생산부터 품질관리, 설비 운영까지 스스로 판단하고 실행하는 'AI 자율공장' 구축에 속도를 낸다.",
       "title": "AI가 판단하는 공장…삼성전자의 2030년 제조 혁신 청사진은? [미리 보는 테크퀘스트]"
+    },
+    "source_fact:a9a8e7cf7eb083f6756c2864": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
     },
     "source_fact:a9aa785c19dd3968e88d00ef": {
       "first_seen_kst": "2026-10-27T01:10:06+09:00",
@@ -1110845,6 +1112399,40 @@
       "source_title": "국제유가 혼조…러시아 경유 공급 확대 기대에도 사우디·후티 충돌 우려",
       "telegram_core_fact": "이날 국제유가 기준물인 브렌트유 선물은 전장 대비 96센트(약 0.90%) 하락한 배럴당 105.69달러에 거래를 마쳤다.",
       "title": "국제유가 혼조…러시아 경유 공급 확대 기대에도 사우디·후티 충돌 우려"
+    },
+    "source_fact:b3229dad72ccd0e1c0089d45": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
     },
     "source_fact:b326f2319b6057aaccad83a3": {
       "first_seen_kst": "2026-10-27T19:09:26+09:00",
@@ -1146337,6 +1147925,40 @@
       "telegram_core_fact": "현재 유예 법안이 다수 올라왔지만 만약 추가적으로 법 개정이 이뤄지지 않으면 내년 1월부터 가상자산에 대한 세금을 내야한다.",
       "title": "내년 1월 '가상자산 과세' 예고했지만...'네 번째 유예' 기로, 왜?"
     },
+    "source_fact:c03871c73e642238c7a55425": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
+    },
     "source_fact:c0391820cabb605ac8cac1a1": {
       "first_seen_kst": "2026-10-23T16:42:18+09:00",
       "lanes": {
@@ -1162032,6 +1163654,36 @@
       "telegram_core_fact": "27일 iM금융지주의 연결재무제표 기준 영업(잠정)실적 공정공시 및 iM증권에 따르면 올해 3분기 iM증권의 별도 기준 영업이익은 338억원으로 전 분기 대비 22.9% 증가했다.",
       "title": "iM증권, 3분기 영업익 전분기比 23%↑…건전성 개선"
     },
+    "source_fact:c5b75675f023564381196cf9": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
+    },
     "source_fact:c5b8081de46318d6f9850dbd": {
       "first_seen_kst": "2026-10-11T16:47:25+09:00",
       "lanes": {
@@ -1176908,6 +1178560,31 @@
       "source_title": "트럼프 \"내달 3일까지 이란 공격 안해\"",
       "telegram_core_fact": "트럼프 대통령은 8일(현지시간) SNS에서 “이란에 대한 봉쇄 조치는 전면적으로 유지될 것”이라면서도 “11월 3일 치러지는 중간선거 이전에는 어떤 시점에도 이란을 공격하지 않을 것”이라고 밝혔다. 도널드 트럼프 미국 대통령이 다음달 3일 중간선거 전까지 이란을 공격하지 않겠다고 밝히면서 급등하던 국제 유가가 하락했다.",
       "title": "트럼프 \"내달 3일까지 이란 공격 안해\""
+    },
+    "source_fact:cb1a48f3d670fc17bf1e0c18": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
     },
     "source_fact:cb1f456ed97f730d882513b8": {
       "first_seen_kst": "2026-10-14T03:39:25+09:00",
@@ -1201992,6 +1203669,40 @@
       "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
       "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
     },
+    "source_fact:d447dd85acf7fb9023d10b65": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
+    },
     "source_fact:d448cd592e9d9884cdf2a1aa": {
       "first_seen_kst": "2026-10-26T09:01:21+09:00",
       "lanes": {
@@ -1216340,6 +1218051,40 @@
       "telegram_core_fact": "한국은행이 지난 7월과 8월 두 차례 연속 금리를 인상하면서 기준금리는 5월 2.50%에서 7월 2.75%, 8월 3.00%로 상승했다.",
       "title": "금리 상승에 떨어진 채권 평가액…보험사 3분기 실적 '먹구름'"
     },
+    "source_fact:d97aacfe2b68b76d65c6fa6d": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
+    },
     "source_fact:d97e5ec3f8fa44771153e5f7": {
       "first_seen_kst": "2026-10-08T05:17:22+09:00",
       "lanes": {
@@ -1222525,6 +1224270,40 @@
       "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
       "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
+    },
+    "source_fact:dc059afa31e4ab8cedc5b51e": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
     },
     "source_fact:dc0623a1646d289aabf1c4d2": {
       "first_seen_kst": "2026-10-21T02:41:49+09:00",
@@ -1232453,6 +1234232,40 @@
       "source_title": "\"삼성전기, 엔비디아 공급망 진입…FC-BGA 시장 영향력 확대\"-하나",
       "telegram_core_fact": "김 연구원은 \"최근 삼성전기와 일본 무라타는 급증하는 수요에 대응하기 위해 내년 생산능력 확대 목표를 기존 약 20%에서 25% 수준으로 높였다\"며 \"생산능력을 늘려도 AI 가속기의 전력 소비 증가와 서버용 부품 수요 확대 속도를 따라가기 어려워 공급 부족이 오히려 심해질 수 있다\"고 봤다.",
       "title": "\"삼성전기, 엔비디아 공급망 진입…FC-BGA 시장 영향력 확대\"-하나"
+    },
+    "source_fact:dfab9ef9f6aa9a2044c40c0b": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
     },
     "source_fact:dfabbee9e934ce2fefd2ebc1": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
@@ -1251157,6 +1252970,40 @@
       "telegram_core_fact": "트러스트코 뱅크 NY(TRST)는 2026년 3분기(7~9월) 희석 주당순이익(EPS)이 1.02달러로 전년 동기 0.86달러보다 18.6% 늘었고, 순이익은 1730만 달러로 6.5% 증가했다고 10월 21일 발표했다.",
       "title": "트러스트코 뱅크 NY, 3분기 희석 EPS 1.02달러..전년비 18.6% 증가"
     },
+    "source_fact:e64f68e4610379bcf02d4152": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
+    },
     "source_fact:e64fdbcfb2b22b614d7cbc45": {
       "first_seen_kst": "2026-10-17T09:37:15+09:00",
       "lanes": {
@@ -1266351,6 +1268198,36 @@
       "telegram_core_fact": "선샤인 바이오파마(SBFM)는 보통주 유닛 또는 선행출자 유닛 1090만9083개를 유닛당 0.55달러에 공모해 배정대행사 수수료와 발행 비용 차감 전 기준 총 약 600만 달러를 조달한다고 8일(현지시간) 발표했다. 공모가가 0.55달러로 1달러 미만인 점도 투자자가 유의할 대목이다.",
       "title": "선샤인 바이오파마, 600만 달러 공모가 확정..유닛당 0.55달러"
     },
+    "source_fact:ebcb5d908731dfc7d65d603f": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
+    },
     "source_fact:ebd3b6aa9ebd77a51748f6ea": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
       "lanes": {
@@ -1273091,6 +1274968,28 @@
       "source_title": "피팩-글래드스톤 파이낸셜, 3분기 희석 EPS 0.99달러..전년비 83% 증가",
       "telegram_core_fact": "피팩-글래드스톤 파이낸셜(PGC)이 3분기 보통주 귀속 순이익 1850만 달러, 희석 주당순이익(EPS) 0.99달러를 기록해 전년 동기(0.54달러) 대비 83% 증가했다고 10월 27일 발표했다.",
       "title": "피팩-글래드스톤 파이낸셜, 3분기 희석 EPS 0.99달러..전년비 83% 증가"
+    },
+    "source_fact:ee44bf31ee5e27c862884884": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845218",
+      "source": "뉴시스",
+      "source_body_digest": "b8273ef8232debc09f72e78591293668563010617507ae62e18411db3957d971",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb9085d80038441f27fd9c1846812822b5b88cf7023b8128914179c25e847a9b",
+      "source_fact_keys": [
+        "source_fact:v1:2c93f03ae4635c5d28edfdaffb63bc7f1faa97497d2a75398b629af4bb2f1b16",
+        "source_fact:v1:8a9550389922c6a533d26583984797ab0a6f2ff66f512616fc8f33302d26cf2f",
+        "source_fact:v1:f8c41dda1dd3cc5fcd939e35174ffc15361f9d1b7916170d42aa2cea1955e124"
+      ],
+      "source_published_kst": "2026-10-28T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가",
+      "telegram_core_fact": "삼성물산 건설부문은 올해 3분기(7~9월) 매출 4조4650억원, 영업이익 2770억원을 기록했다고 28일 공시했다.",
+      "title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가"
     },
     "source_fact:ee47b0d78c875eedcd1de0fe": {
       "first_seen_kst": "2026-10-22T11:47:17+09:00",
@@ -1289696,6 +1291595,36 @@
       "telegram_core_fact": "이날 미 국채 10년물 금리는 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "S&P 사상 최고 하루만에 후퇴…24년만의 금리 발작[뉴욕마감]"
     },
+    "source_fact:f4989a7f8eaa0e51f57ed7d2": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
+    },
     "source_fact:f4a268b9750e2c290ecde374": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
@@ -1300394,6 +1302323,40 @@
       "telegram_core_fact": "이네오바 홀딩스(INEO)는 6월 30일 종료된 2026년 상반기(6개월) 매출액이 2579만5000달러로 전년비 16.2% 감소했고, 영업이익은 71만1000달러로 35.5% 줄었으나 순이익은 27만4000달러로 12.8% 늘었다고 10월 14일 발표했다.",
       "title": "이네오바 홀딩스, 상반기 매출 2580만 달러·16% 감소"
     },
+    "source_fact:f8f7def63a9a476004557689": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
+    },
     "source_fact:f8fd2cd7450703b63022f6df": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -1302652,6 +1304615,40 @@
       "source_title": "뉴욕증시, 인플레 충격ㆍ반도체 약세에 하락⋯나스닥 1.88%↓[상보]",
       "telegram_core_fact": "S&P500지수는 86.51포인트(1.11%) 하락한 7718.94에, 기술주 중심의 나스닥종합지수는 511.51포인트(1.88%) 떨어진 2만6692.87에 마감했다. 뉴욕증시는 14일(현지시간) 물가가 예상보다 높게 나온 데 따른 충격으로 큰 폭으로 하락 종료했다.",
       "title": "뉴욕증시, 인플레 충격ㆍ반도체 약세에 하락⋯나스닥 1.88%↓[상보]"
+    },
+    "source_fact:f9fff3362fd4e565a98083f1": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
     },
     "source_fact:fa012824c43e2099ceefb72c": {
       "first_seen_kst": "2026-10-18T19:24:30+09:00",
@@ -1384992,6 +1386989,26 @@
       "telegram_core_fact": "이날 이스라엘 총리실은 군에 서안 지구의 전면 폐쇄에 대비하라고 지시했다고 밝혔으며, 총격이 발생한 서안지구 점령지를 군이 봉쇄하도록 지시했다고 덧붙였다.",
       "title": "이스라엘, 총격 발생 헤브론 위협될 수 있는 기반 시설 철거"
     },
+    "title:62483736e20868c8eb4c82e3": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028167300527",
+      "source": "연합뉴스",
+      "source_body_digest": "28c8223332282bf3ae27db48221177352fbf169e6aa1ca1eadb881608ef01021",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:be8e1c5d6a7eb950090e5bd4525b61de364564cce2cbfb5178abbd788c8048de",
+      "source_fact_identity": "source_facts:v1:9399c59e6e5f04329a1e0c48f0452831aaf156f8d730ee257a19623236c1bcfa",
+      "source_fact_keys": [
+        "source_fact:v1:4445676ebc4efbab0f456cc3517a86ac56655345864d083606807e4dd21eaf38"
+      ],
+      "source_published_kst": "2026-10-28T17:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 한올바이오파마[009420]는 연결 기준 올해 3분기 영업이익이 13억원으로 지난해 동기보다 265% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
+      "title": "한올바이오파마 3분기 영업이익 13억원…265%↑ | 연합뉴스"
+    },
     "title:6250de1c597640c3e153d0b2": {
       "first_seen_kst": "2026-10-28T07:37:30+09:00",
       "lanes": {
@@ -1393497,6 +1395514,28 @@
       "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019046",
       "source": "국민일보",
       "title": "시흥시, 앵커기업 투자유치 보조금 조례 본격 시행"
+    },
+    "title:6fa565520ef0a268407cd6e8": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261028_0003845218",
+      "source": "뉴시스",
+      "source_body_digest": "b8273ef8232debc09f72e78591293668563010617507ae62e18411db3957d971",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb9085d80038441f27fd9c1846812822b5b88cf7023b8128914179c25e847a9b",
+      "source_fact_keys": [
+        "source_fact:v1:2c93f03ae4635c5d28edfdaffb63bc7f1faa97497d2a75398b629af4bb2f1b16",
+        "source_fact:v1:8a9550389922c6a533d26583984797ab0a6f2ff66f512616fc8f33302d26cf2f",
+        "source_fact:v1:f8c41dda1dd3cc5fcd939e35174ffc15361f9d1b7916170d42aa2cea1955e124"
+      ],
+      "source_published_kst": "2026-10-28T16:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가",
+      "telegram_core_fact": "삼성물산 건설부문은 올해 3분기(7~9월) 매출 4조4650억원, 영업이익 2770억원을 기록했다고 28일 공시했다.",
+      "title": "'반도체 효과' 삼성물산 건설부문, 3분기 영업익 150% 증가"
     },
     "title:6fa802b6f3fff2abd4d3cf8f": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -1417526,6 +1419565,40 @@
       "telegram_core_fact": "6억2500만 달러 규모 10.25% 2031년 만기 선순위 무담보 채권 약정서에서도 연결 총 레버리지 비율이 2.00배 이하이고 채무불이행이 없으면 자사주 매입 등 제한적 지급을 무제한으로 할 수 있다.",
       "title": "지오 그룹, 6억5000만 달러 채권 상환·자사주 한도 확대"
     },
+    "title:9389d613df894abd5cc333ed": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01708886645617840",
+      "source": "이데일리",
+      "source_body_digest": "f11bf6c48980ea6b544bdb15b51679f01affb600e88bda49fcb2f70718dac154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a2d2a1d8d065c59c8bfd9067a0e08ea74bfb9fdadab9f8c1754c1310e198636",
+      "source_fact_keys": [
+        "source_fact:v1:1878ed0d8da35672536e2b9210252076d9a0b80bf3cb87cd42261e65e33809cf",
+        "source_fact:v1:1eb949d55d8f987b7dcf9dc7c6dc5bd237cb18f6a793a219c43080511ca5be02",
+        "source_fact:v1:3a7ec8faa038dc7c8176e36e810ec96a4787efff2dc9f73f4ae354e4f55ed09b",
+        "source_fact:v1:4f158ddf44c2dad7056a14c9c9b142b0493c781da88a549ea6afba07b7c3c494",
+        "source_fact:v1:50fbdc8a2607b06593393a92207d5fe77df199b116f57d03fa4990bf0572dcba",
+        "source_fact:v1:7cd88c29448ee96c055d0dc26fbbccf43598cb28f3a4bbdfc6357f4c63f081e1",
+        "source_fact:v1:b17e8cdbff9df97f348bdc946c3d8c3f8024ecdf86dce0262677525d58a9ce7d",
+        "source_fact:v1:b7938e8de90e003a49672070781a6a5700613c4b108fac97ea4a144ebfa6c6f3",
+        "source_fact:v1:d606586a71f9bf099e6e20df2a1ffe0822ed7576fb39e45a94c0f1fee0437a92",
+        "source_fact:v1:db4624de82b3daa0d48cdfd43bba0b6547e932a37920a3eed3a6c95ea90b9dfe",
+        "source_fact:v1:de96c9a21e1d5044cd9faa32b3b34049109b00af272e7794bf4c39656dfd7153",
+        "source_fact:v1:e11ef5a8681ff2c9accf04b9399d211f2da4f1bf209d09d7f2d4b5d68d8372fe",
+        "source_fact:v1:f0eda0cc74965e2658006dde67365ba541cd4cc267b80dc67034ad56ac49987b",
+        "source_fact:v1:f957d0a8c51a4f588ced1de165a121f28334ba67b64adfd32a7054ed87416bf8",
+        "source_fact:v1:f992def269fbef757a7ddc77d545ddc14982a34cf6e29a3f966f8702f26a8f70"
+      ],
+      "source_published_kst": "2026-10-29T05:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑",
+      "telegram_core_fact": "SK하이닉스(000660)가 분기 영업이익이 전년비 7배 이상 증가한 호실적을 발표하면서 미국에서 거래되는 SK하이닉스 주식예탁증서(ADR)가 13% 넘게 뛰었다.",
+      "title": "[속보]美증시, 연준 동결 속 소폭 상승…SK하이닉스 ADR 13%↑"
+    },
     "title:938c982f13b4b8c1d8034ed3": {
       "first_seen_kst": "2026-10-19T20:10:12+09:00",
       "lanes": {
@@ -1420470,6 +1422543,36 @@
       "source_title": "주병기 공정위원장 “반복 담합 업체 영업정지·등록취소 추진” [국감]",
       "telegram_core_fact": "주병기 공정거래위원장이 담합을 반복한 사업자에게 영업정지나 등록취소 처분을 내릴 수 있도록 제도를 도입하겠다고 밝혔다. 주 위원장은 12일 국회 정무위원회의 공정위 국정감사 인사말에서 “우리 경제에 만연한 고질적 담합을 근본적으로 뿌리 뽑기 위해 반복 담합 사업자에 대한 등록취소·영업정지 제도를 도입하겠다”고 말했다.",
       "title": "주병기 공정위원장 “반복 담합 업체 영업정지·등록취소 추진” [국감]"
+    },
+    "title:97d7c53d9844874a349e5ff8": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05520246645617512",
+      "source": "이데일리",
+      "source_body_digest": "fec59b34e475166f5f00e6aff1cc2ce09da55dff5397301ac665c02ee6cdfa22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9991c156d82db5dd83eebb22d0eacb8fab75de1875d5a7d6be7d12565bda517",
+      "source_fact_keys": [
+        "source_fact:v1:09660aff5da1656452684a750bf1a7405eba0e142e71d0f48ef17c0f8cf875bc",
+        "source_fact:v1:1ee553a97062e0a9d8e96885f2bcabaa466f1e88ab9c0dc671f451f9b393a6f4",
+        "source_fact:v1:2e17bf5b08ea37c0a8dfb148a2d9f6c7e425bfb0282f6278832492d33a06f68d",
+        "source_fact:v1:31c508b9e9e0d4bedf695753bf369c0d42d74ea21d6670e1d6e19eab5335ee86",
+        "source_fact:v1:47a1c3fa79903edb878010dc2a4e67b6c13bb730c8b5f188d9aa2bf9b6099f7a",
+        "source_fact:v1:5733aa4b3f59f669f747bc485b306b3bb0ef93cde456d397c55600feea8566ff",
+        "source_fact:v1:63e87bbb8c0caef56ce75aaaaf10a4509fd737d068c5b94cd3d584c5a94976d1",
+        "source_fact:v1:76feebfcc6f56489de6c06c6de0f53962e52f77ba2f44e31972f1bdabb9148e8",
+        "source_fact:v1:825bb65bee9fcb046f85dcdf997e01bfa730abc2ef5b59d8dfcfed535fcd2f39",
+        "source_fact:v1:90c66ee880d1c0d2cbc95df3ffef671a050e2bac52f2aa5d3b94acf7a5ecd6eb",
+        "source_fact:v1:f0ecb3a7d660773907cfd514b052036df3667160ddd930361535f79fa05b50d8"
+      ],
+      "source_published_kst": "2026-10-28T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다",
+      "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
+      "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
     },
     "title:97dffd99cb209a18c17106f9": {
       "first_seen_kst": "2026-10-21T02:06:57+09:00",
@@ -1432096,6 +1434199,31 @@
       "source_title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\"",
       "telegram_core_fact": "아나돌루통신에 따르면 트럼프 대통령은 이날 플로리다주에서 유세를 가지고 이란과의 협상 문제를 언급하며 이같이 밝혔다.",
       "title": "트럼프 \"이란에 또 한번 작은 '장대한 분노' 실시할수도\""
+    },
+    "title:a927c4e3acdf1b81291ab9f8": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.fnnews.com/news/202610290540330264",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "80d00a613111357defea11752a9e76c29207ff09c003ff5b956a22263c820118",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-28:nasdaq=26549.85:change=0.27",
+      "source_fact_identity": "source_facts:v1:7f809c921de72f44e96e089091b02f4209f6e68e84698aecf4a04cee0684af14",
+      "source_fact_keys": [
+        "source_fact:v1:1ce1519b8e72bd5485a356436d09f5ea801c3536e8baaa69b20a2575f4bbc9b7",
+        "source_fact:v1:25fd9bbb633e324e979057afaea519b1892be98720db22db6e74e507f3ec5f23",
+        "source_fact:v1:8d1415f928aedfccccfb59ded092d4a37233a1062bb6961f363ff7da02e5bc47",
+        "source_fact:v1:b2de0fe98db319c833ad91f9226c108f6c6197bbbfb11ceed2deebe48711086a",
+        "source_fact:v1:d45b1590ab938de75526255ad46ac93713bed37d1266183982a65c95221376f9",
+        "source_fact:v1:fa0fdfc24a2c73d3578362f7f96fe5877bf07cdaef8af4e353b1ba07bfaae682"
+      ],
+      "source_published_kst": "2026-10-29T05:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등",
+      "telegram_core_fact": "연준은 이날 연방공개시장위원회(FOMC)에서 기준금리를 연 3.75~4.00%로 동결했다.",
+      "title": "[뉴욕마감]연준 금리 동결에 나스닥 0.3%↑·사흘째 상승…SK하닉 ADR 13% 급등"
     },
     "title:a92e7f09f142e207e8c701d6": {
       "first_seen_kst": "2026-10-21T15:40:18+09:00",
@@ -1474790,6 +1476918,28 @@
       "telegram_core_fact": "미국의 인공지능(AI) 대표 기업이자 ‘챗GPT’ 개발사인 오픈AI의 연 매출이 예상보다 200억달러(약 27조원) 적은 것으로 나타났다.",
       "title": "‘예상보다 29%↓’…오픈AI 매출 우려에 뉴욕 증시까지 ‘찬물’"
     },
+    "title:eb1abf9e992db4e7fb268101": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261028163000052",
+      "source": "연합뉴스",
+      "source_body_digest": "7b07f442957e155619286eed4bc3e12955fc8819313d1325a3bb7b06c733ccdc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82924c5370b9f01142d5604c056778bad82ca9abed9e84ec97af475845197a87",
+      "source_fact_keys": [
+        "source_fact:v1:c76a4c1abda0339bcd21a9f5c1bb251aca8e56ff0288f194be199012f35c5492",
+        "source_fact:v1:fc9594570d5ba58d43347fb4bdc1408a2e886bb6b4716e9212b982a9f75323e2",
+        "source_fact:v1:fd93a8d7495b3aad56e19f954908cbaadfb99a1fa3c73c59094effe69c5bdea7"
+      ],
+      "source_published_kst": "2026-10-28T16:53+09:00",
+      "source_supply_terms": {},
+      "source_title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스",
+      "telegram_core_fact": "이 협약에 따라 카이랩스는 금서면 일원 매촌일반산업단지 내 1만1천28㎡ 부지에 내년 12월까지 70억원을 투입해 공장을 증설한다.",
+      "title": "산청군, 카이랩스와 70억 규모 투자협약…매촌산단 공장 증설 | 연합뉴스"
+    },
     "title:eb25d3f8b23df019cfb70ebf": {
       "first_seen_kst": "2026-09-25T00:00:00+09:00",
       "lanes": {
@@ -1476473,6 +1478623,28 @@
       "source_title": "아이큐비아 홀딩스, 3분기 매출 44억 달러·8% 증가..가이던스 상향",
       "telegram_core_fact": "아이큐비아 홀딩스(IQV)가 3분기(9월 30일 종료) 매출액이 44억2800만 달러로 전년비 8.0% 증가했고, 비일반회계기준(Non-GAAP) 희석 주당순이익(EPS)은 3.34달러로 11.3% 늘었다고 10월 27일 발표했다.",
       "title": "아이큐비아 홀딩스, 3분기 매출 44억 달러·8% 증가..가이던스 상향"
+    },
+    "title:ee304ba0a28340e005db6352": {
+      "first_seen_kst": "2026-10-29T06:29:16+09:00",
+      "lanes": {
+        "live": "2026-10-29T06:29:16+09:00"
+      },
+      "last_seen_kst": "2026-10-29T06:29:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12189335",
+      "source": "매일경제",
+      "source_body_digest": "1e327edea49e5b80ba1559d4ee4db2a4c870d22b723e0189ef5bc6fb4f6f8c9e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78fed683feb3cf913e9ee527facf67a9cb11f9f0582f98a926e3b87b181a12ce",
+      "source_fact_keys": [
+        "source_fact:v1:35cd345aeca1c09604301bf8811571e2ba9bb05da627fb7c4298f1fa82b274c1",
+        "source_fact:v1:a934293393329956e9da86a20d706e08fb8fc142d36f6f47b619233f6aea1d8b",
+        "source_fact:v1:d7c3b5bbe1c372b7433c416384f193a561af3164a39a28c89f066dec5a6b0bd1"
+      ],
+      "source_published_kst": "2026-10-29T05:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상",
+      "telegram_core_fact": "스콜피오 탱커스(STNG)가 국제회계기준(IFRS) 기준 3분기(7~9월) 순이익 2억2430만 달러, 희석 주당순이익(EPS) 4.60달러를 기록해 전년비 166% 증가했으며, 분기 현금배당을 주당 0.75달러로 결정했다고 28일 발표했다.",
+      "title": "스콜피오 탱커스, 3분기 희석 EPS 4.60달러..배당 67% 인상"
     },
     "title:ee5a0db47d46320543a7fe9a": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
@@ -1487721,5 +1489893,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-29T05:59:15+09:00"
+  "updated_at_kst": "2026-10-29T06:29:16+09:00"
 }
