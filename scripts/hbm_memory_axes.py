@@ -1993,7 +1993,7 @@ def parse_skhynix_fab_shell_2026(item, body):
         return []
     text=re.sub(r'\s+',' ',body or '')
     if not (re.search(r'SK하이닉스|SK\s*hynix',text,re.I)
-            and re.search(r'용인',text) and re.search(r'\bM17\b',text,re.I)
+            and re.search(r'용인',text) and re.search(r'(?<![A-Za-z0-9])M17(?![A-Za-z0-9])',text,re.I)
             and re.search(r'셸|건물\s*골조',text)
             and re.search(r'앞당기|앞당겨|조기화',text)
             and re.search(r'클린룸',text) and re.search(r'단계별|단계적으로',text)):
