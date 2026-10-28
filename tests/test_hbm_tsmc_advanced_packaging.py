@@ -272,6 +272,48 @@ class TSMCAdvancedPackagingTests(unittest.TestCase):
         self.assertIn("20260929-13255", out)
         self.assertNotIn("paper/1772416", out)
 
+    def test_cowos_twenty_percent_report_stays_unconfirmed(self):
+        item = event(
+            "台積CoWoS傳喊漲上看2成",
+            "CoWoS報價醞釀調漲1至2成；法人推估2026年CoWoS月產能朝逾13萬片、2027年以20萬片為目標。",
+            source="工商時報",
+            url="https://www.ctee.com.tw/news/20261027700053-439901",
+        )
+        with patch.object(w, "article_text", return_value=""):
+            result = w.extract_patch(item)
+        self.assertEqual(result.get("cowos_price_upper_pct"), 20)
+        self.assertEqual(result.get("cowos_price_lower_pct"), 10)
+        self.assertEqual(result.get("cowos_price_stage"), "reported_discussion")
+        self.assertNotIn("cowos_capacity_wpm", result)
+        updated = w.merge_state({}, result)
+        self.assertTrue(any("공식 미확정" in x for x in w.material_changes({}, updated)))
+        self.assertEqual(w.hbm_cross_reasons({}, updated), [])
+
+    def test_price_reprint_no_duplicate_and_official_upgrade_only(self):
+        reported = {
+            "cowos_price_upper_pct": 20,
+            "cowos_price_lower_pct": 10,
+            "cowos_price_stage": "reported_discussion",
+            "cowos_price_as_of": "2026-10-27T08:00:00+09:00",
+        }
+        reprint = dict(reported, cowos_price_source_url="https://news.example.com/reprint",
+                       cowos_price_as_of="2026-10-28T07:00:00+09:00")
+        updated = w.merge_state(reported, reprint)
+        self.assertEqual(w.material_changes(reported, updated), [])
+        confirmed = dict(reprint, cowos_price_stage="confirmed")
+        official = w.merge_state(updated, confirmed)
+        self.assertTrue(any("공식 가격 인상 확정" in x for x in w.material_changes(updated, official)))
+        reverted = w.merge_state(official, reprint)
+        self.assertEqual(reverted["cowos_price_stage"], "confirmed")
+
+    def test_price_increase_requires_cowos_and_trusted_report(self):
+        text = "TSMC CoWoS price hike of 20% is under discussion."
+        self.assertFalse(w.extract_cowos_price_report(event("CoWoS price hike", source="rumor-blog",
+                                                         url="https://example.com/rumor"), text))
+        unrelated = "TSMC CoWoS throughput rose 20%. Wafer prices are unchanged."
+        self.assertFalse(w.extract_cowos_price_report(event("TSMC CoWoS throughput", source="DIGITIMES",
+                                                         url="https://www.digitimes.com/example"), unrelated))
+
     def test_research_evidence_rank_is_above_supply_chain(self):
         self.assertGreater(w.EVIDENCE_RANK["research"], w.EVIDENCE_RANK["supply_chain_report"])
 
