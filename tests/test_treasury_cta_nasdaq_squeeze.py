@@ -957,3 +957,113 @@ def test_explicit_fomc_recovery_obeys_freshness_and_deadline(monkeypatch):
     snapshot["snapshot"]["checked_kst"] = "2026-10-28T21:20:00+09:00"
     monkeypatch.setenv("CTA_TRIGGER_EVENT", "push")
     assert equity._scheduled_due(state, snapshot)[1] is False
+
+
+def test_treasury_face_notional_is_placed_immediately_after_contract_count():
+    assert equity._fmt_net_with_krw(-1_285_548, "2Y", 1327.75) == (
+        "-1,285,548계약(순숏 액면 약 341.4조원)"
+    )
+    assert equity._fmt_net_with_krw(-2_107_224, "10Y", 1327.75) == (
+        "-2,107,224계약(순숏 액면 약 279.8조원)"
+    )
+    assert equity._fmt_net_with_krw(-318_477, "ULTRA10Y", 1327.75) == (
+        "-318,477계약(순숏 액면 약 42.3조원)"
+    )
+    assert equity._fmt_contracts_with_krw(
+        98_713, 1327.75, tenor="10Y", context="주간 순포지션 변동 액면"
+    ) == "+98,713계약(주간 순포지션 변동 액면 약 13.1조원)"
+
+
+def test_nq_notional_uses_official_index_times_20_and_krw_rate():
+    net = equity._fmt_contracts_with_krw(
+        950, 1327.75, nq_price=29812.0, nq_fresh=True, context="NQ 순포지션 명목"
+    )
+    short = equity._fmt_contracts_with_krw(
+        50_799, 1327.75, nq_price=29812.0, nq_fresh=True, context="총숏 명목"
+    )
+    assert net.startswith("+950계약(NQ 순포지션 명목 약 ")
+    assert "억원)" in net
+    assert short == "+50,799계약(총숏 명목 약 40.2조원)"
+
+
+def test_nq_stale_or_missing_fx_cannot_claim_current_krw_notional():
+    stale = equity._fmt_contracts_with_krw(
+        -19_212, 1341.49, nq_price=30969.5, nq_fresh=False
+    )
+    assert stale.startswith("-19,212계약(")
+    assert "원화 환산 보류" in stale
+    assert "조원" not in stale
+    missing_fx = equity._fmt_contracts_with_krw(
+        950, None, nq_price=29812.0, nq_fresh=True
+    )
+    assert missing_fx == "+950계약(원화 환산 보류: 환율 미확인)"
+    assert equity._fmt_contracts_with_krw(
+        950, float("nan"), nq_price=29812.0, nq_fresh=True
+    ).endswith("(원화 환산 보류: 환율 미확인)")
+    assert equity._fmt_contracts_with_krw(
+        None, 1327.75, tenor="10Y"
+    ) == "계약 수 확인 불가"
+
+
+def test_compact_event_includes_10y_and_nq_amounts_and_remains_sendable(monkeypatch):
+    raw = _raw(
+        report_date="October 20, 2026",
+        history_end="2026-10-20",
+        trade_date="2026-10-27",
+    )
+    raw["nq_cftc"].update({
+        "leveraged_long": 51_749,
+        "leveraged_short": 50_799,
+        "leveraged_net": 950,
+        "leveraged_net_wow": 12_543,
+        "leveraged_short_wow": -8_900,
+    })
+    raw["nq_price"]["price"] = 29812.0
+    raw["history_3y"]["verified_current"] = True
+    _patch_common(monkeypatch, raw)
+    monkeypatch.setattr(equity, "_latest_completed_us_session_date", lambda: date(2026, 10, 27))
+    snap = _snapshot(z20=-1.61)
+    snap["cftc"]["report_date"] = "October 20, 2026"
+    snap["cftc"]["markets"]["10Y"].update({
+        "leveraged_net": -2_107_224,
+        "leveraged_net_wow": 98_713,
+    })
+    snap["yield10"].update({"yield": 4.99, "date": "2026-10-27"})
+    snap["repo"] = {
+        k: {"date": "2026-10-26", "rate": 3.93}
+        for k in ("SOFR", "BGCR", "TGCR")
+    }
+    body = equity._compact_event_body(
+        snap, {}, 1327.75, "2026-10-27 ECB 기준 · 검증 2026-10-28", ["최신 CTA 검산"]
+    )
+    assert "-2,107,224계약(순숏 액면 약 279.8조원)" in body
+    assert "+98,713계약(주간 순포지션 변동 액면 약 13.1조원)" in body
+    assert "NQ LF 순 +950계약(NQ 순포지션 명목 약 " in body
+    assert "NQ 총숏 잔고 +50,799계약(총숏 명목 약 40.2조원)" in body
+    assert "CME 정산 2026-10-27" in body
+    assert len("CTA 정정 알림") + 2 + len(body) <= 4096
+
+
+def test_compact_weekly_report_includes_all_six_maturities_krw(monkeypatch):
+    raw = _raw(
+        report_date="October 20, 2026", history_end="2026-10-20",
+        trade_date="2026-10-27"
+    )
+    raw["history_3y"]["verified_current"] = True
+    _patch_common(monkeypatch, raw)
+    monkeypatch.setattr(equity, "_latest_completed_us_session_date", lambda: date(2026, 10, 27))
+    snap = _snapshot(z20=-1.61)
+    snap["yield10"].update({"yield": 4.99, "date": "2026-10-27"})
+    snap["cftc"]["report_date"] = "October 20, 2026"
+    for k, v in {
+        "2Y": -1_285_548, "5Y": -2_117_544, "10Y": -2_107_224,
+        "ULTRA10Y": -318_477, "BOND": -162_757, "ULTRABOND": -804_808,
+    }.items():
+        snap["cftc"]["markets"].setdefault(k, {})["leveraged_net"] = v
+    title, body = equity._compact_scheduled_report(
+        snap, {}, ["월요일 정기점검"], 1327.75, "2026-10-27 ECB 기준"
+    )
+    assert "2Y -1,285,548계약(순숏 액면 약 341.4조원)" in body
+    assert "Ultra10Y -318,477계약(순숏 액면 약 42.3조원)" in body
+    assert "Ultra -804,808계약(순숏 액면 약 106.9조원)" in body
+    assert len(title) + 2 + len(body) <= 4096
