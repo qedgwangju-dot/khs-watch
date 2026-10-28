@@ -838,3 +838,49 @@ def test_cta_scheduled_recovery_and_backups_remain_registered():
     assert "cancel-in-progress: ${{ github.event_name == 'push' }}" in workflow
     assert "treasury_cta_squeeze_telegram_confirmed.json" in workflow
     assert "CTA 중요신호 감지 후 텔레그램 확인 없음" in workflow
+
+
+def test_authorized_manual_weekly_recovery_requires_current_fresh_data(monkeypatch):
+    from datetime import datetime as RealDateTime
+    class FixedDatetime(RealDateTime):
+        @classmethod
+        def now(cls, tz=None):
+            local = RealDateTime(2026, 10, 28, 20, 24, tzinfo=equity.KST)
+            return local.astimezone(tz) if tz else local.replace(tzinfo=None)
+
+    monkeypatch.setattr(equity, "datetime", FixedDatetime)
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "workflow_dispatch")
+    monkeypatch.setenv("CTA_TRIGGER_SCHEDULE", "")
+    monkeypatch.setenv("CTA_WEEKLY_RECOVERY", "true")
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snapshot: (True, []))
+    snapshot = {"snapshot": {"checked_kst": "2026-10-28T20:24:00+09:00"}}
+
+    weekly, fomc, key, _ = equity._scheduled_due(
+        {"last_weekly_report_key": "2026-W42", "last_fomc_eve_report": "2026-09-16"},
+        snapshot,
+    )
+    assert weekly is True and fomc is False and key == "2026-W44"
+    already_sent, _, _, _ = equity._scheduled_due(
+        {"last_weekly_report_key": "2026-W44"}, snapshot,
+    )
+    assert already_sent is False
+
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snapshot: (False, ["stale"]))
+    withheld, _, _, _ = equity._scheduled_due(
+        {"last_weekly_report_key": "2026-W42"}, snapshot,
+    )
+    assert withheld is False
+
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snapshot: (True, []))
+    monkeypatch.setenv("CTA_WEEKLY_RECOVERY", "false")
+    not_requested, _, _, _ = equity._scheduled_due(
+        {"last_weekly_report_key": "2026-W42"}, snapshot,
+    )
+    assert not_requested is False
+
+    monkeypatch.setenv("CTA_WEEKLY_RECOVERY", "true")
+    monkeypatch.setenv("CTA_TRIGGER_EVENT", "push")
+    no_push, _, _, _ = equity._scheduled_due(
+        {"last_weekly_report_key": "2026-W42"}, snapshot,
+    )
+    assert no_push is False
