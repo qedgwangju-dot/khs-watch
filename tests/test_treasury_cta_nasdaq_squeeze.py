@@ -797,3 +797,44 @@ def test_fomc_priority_does_not_consume_missed_weekly_report(monkeypatch):
     done_fomc = {**both_missing, "last_fomc_eve_report": "2026-10-28"}
     weekly_after, fomc_after, _, _ = equity._scheduled_due(done_fomc, snap)
     assert weekly_after is True and fomc_after is False
+
+
+def test_cta_production_isolation_from_unrelated_policy_tests():
+    # The 2026-10-19 and 2026-10-26 weekly reports failed because a
+    # buyback-policy presentation test was run inside the CTA production gate.
+    # Never let a different alert family's changed fixture suppress CTA delivery.
+    workflow = (ROOT / ".github/workflows/treasury-cta-squeeze-telegram-alert.yml").read_text(
+        encoding="utf-8"
+    )
+    assert "pytest -q tests/test_treasury_cta_nasdaq_squeeze.py" in workflow
+    assert "pytest -q tests/test_treasury_alert_root_guards.py\n" not in workflow
+    for targeted in (
+        "::test_yahoo_contract_oi_never_enters_cta_gate",
+        "::test_cta_headline_does_not_present_4_3_as_live_policy_target",
+        "::test_cta_scheduled_thresholds_adapt_to_live_yield_regime",
+    ):
+        assert targeted in workflow
+    assert "::test_treasury_compact_alert_uses_data_dates_not_false_latest_causality" not in workflow
+    assert "github.event_name != 'push' && hashFiles('out/treasury_cta_squeeze_alert.html')" in workflow
+    assert "github.event_name != 'push' && success()" in workflow
+
+
+def test_cta_scheduled_recovery_and_backups_remain_registered():
+    workflow = (ROOT / ".github/workflows/treasury-cta-squeeze-telegram-alert.yml").read_text(
+        encoding="utf-8"
+    )
+    for cron in (
+        'cron: "*/15 12-23 * * 1-5"',
+        'cron: "7,22,37,52 12-22 * * 1-5"',
+        'cron: "7,22,37 23 * * 1-5"',
+        'cron: "0 22 * * 0"',
+        'cron: "3 22 * * 0"',
+        'cron: "13 22 * * 0"',
+        'cron: "30 22 * * 0"',
+        'cron: "0 23 * * 0"',
+    ):
+        assert cron in workflow
+    assert "'code-audit' || 'production'" in workflow
+    assert "cancel-in-progress: ${{ github.event_name == 'push' }}" in workflow
+    assert "treasury_cta_squeeze_telegram_confirmed.json" in workflow
+    assert "CTA 중요신호 감지 후 텔레그램 확인 없음" in workflow
