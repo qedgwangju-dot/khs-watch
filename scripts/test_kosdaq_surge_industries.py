@@ -894,6 +894,20 @@ class KOSDAQPrealertTierTests(unittest.TestCase):
         self.assertEqual(restored.kosdaq_prealert_pending["금융투자"]["end_value"], 120.0)
         self.assertEqual(restored.kosdaq_surge_pending["금융투자"]["end_value"], 120.0)
 
+    def test_uncertain_prealert_does_not_block_confirmed_delivery(self):
+        w = watcher.Watch("unused", [], "", False)
+        w._checkpoint_handoff = Mock()
+        event = {"market": "KOSDAQ", "actor": "금융투자", "start_ts": START}
+        with patch.object(watcher, "telegram_send",
+                          side_effect=[watcher.DeliveryUncertain("offline uncertain"), 81005]), \
+                patch.object(watcher.time, "time", return_value=END):
+            pre = asyncio.run(w._try_send_event("kosdaq_flow_prealert", event, END, "prealert"))
+            confirmed = asyncio.run(w._try_send_event("kosdaq_flow_surge", event, END + 20, "confirmed"))
+        self.assertIsNone(pre)
+        self.assertEqual(confirmed, 81005)
+        self.assertEqual(w._surge_delivery_hold_at("KOSDAQ", "금융투자", "kosdaq_flow_prealert"), END)
+        self.assertEqual(w._surge_delivery_hold_at("KOSDAQ", "금융투자"), 0.0)
+
     def test_unverified_financial_industry_data_is_held(self):
         w = watcher.Watch("unused", [], "", False)
         with patch.object(watcher, "industry_buy_context", side_effect=AssertionError("must not query")):
