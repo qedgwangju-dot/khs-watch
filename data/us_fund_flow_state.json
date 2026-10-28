@@ -154,6 +154,28 @@
     "hartnett_bond_momentum": "neutral",
     "hartnett_fed_target_upper_pct": 4.0,
     "hartnett_fed_effective_date": "2026-09-16",
-    "hartnett_election_stage": "outside"
+    "hartnett_election_stage": "outside",
+    "retail_survey": {
+      "aaii": {
+        "period": "2026-09",
+        "stocks_pct": 71.8,
+        "stock_funds_pct": 38.3,
+        "direct_stock_pct": 33.4,
+        "bonds_pct": 14.9,
+        "cash_pct": 13.3,
+        "source_precision": "AAII 공식 해설 기사 소수 첫째 자리",
+        "source_url": "https://www.aaii.com/latest/article/548658-september-aaii-asset-allocation-survey-cash-allocations-fall"
+      },
+      "conference": {
+        "period": "2026-10",
+        "published_date": "2026-10-27",
+        "confidence_index": 91.7,
+        "headline_move_abs_points": 7.5,
+        "expectations_index": 72.6,
+        "stock_up_vs_down_majority": true
+      },
+      "pair": "2026-09|2026-10",
+      "regime": "동반 높은 주식노출·상승기대"
+    }
   }
 }
