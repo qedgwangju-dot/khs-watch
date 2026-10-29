@@ -1517,6 +1517,7 @@ if quality_gate_ok:
 
 updates = []
 context_history_only_change = False
+context_transient_fx_only_change = False
 for x in results:
     key = f"{x['source']}|{x['kind']}"
     if state.get("seen", {}).get(key) != x["fingerprint"]:
@@ -1524,9 +1525,12 @@ for x in results:
         if (x.get("kind") == "context" and prior
                 and state.get("seen", {}).get(key) == prior.get("fingerprint")
                 and prior.get("period") == x.get("period")):
-            from us_positioning_context import context_change_key
+            from us_positioning_context import context_change_key, context_equal_except_transient_fx
             if context_change_key(prior.get("metrics"), x["period"]) == context_change_key(x.get("metrics"), x["period"]):
                 context_history_only_change = True
+                continue
+            if context_equal_except_transient_fx(prior.get("metrics"), x.get("metrics"), x["period"], state.get("last_verified_context_fx")):
+                context_transient_fx_only_change = True
                 continue
         updates.append(x)
 
@@ -1544,6 +1548,7 @@ STATUS.write_text(
             f"- parsed sources: {len(results)}",
             f"- updates: {len(updates)}",
             f"- context_history_only_change: {context_history_only_change}",
+            f"- context_transient_fx_only_change: {context_transient_fx_only_change}",
             f"- presentation_version: {PRESENTATION_VERSION}",
             f"- presentation_changed: {presentation_changed}",
             f"- quality_gate_ok: {quality_gate_ok}",
@@ -1604,6 +1609,13 @@ if quality_gate_ok and (updates or force or presentation_changed):
     ns = state
     ns.setdefault("seen", {})
     ns.setdefault("values", {})
+    from us_positioning_context import remember_verified_context_fx
+    context_key = "미국 주요지수·시장 확산·옵션 과거 비교|context"
+    prior_context = ns["values"].get(context_key) or {}
+    prior_metrics = prior_context.get("metrics") if ns["seen"].get(context_key) == prior_context.get("fingerprint") else None
+    verified_fx = remember_verified_context_fx(ns.get("last_verified_context_fx"), prior_metrics, market_context)
+    if verified_fx:
+        ns["last_verified_context_fx"] = verified_fx
     for x in results:
         key = f"{x['source']}|{x['kind']}"
         ns["seen"][key] = x["fingerprint"]
