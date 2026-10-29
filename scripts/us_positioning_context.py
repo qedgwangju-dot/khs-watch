@@ -498,6 +498,64 @@ def context_change_key(context, end_date):
     return value
 
 
+def remember_verified_context_fx(existing, *contexts):
+    """Keep verified FX operands for comparison, never for report rendering."""
+    from us_positioning_fx import checked_fx
+
+    saved = {}
+    if isinstance(existing, dict):
+        for name in ("fx", "nq_fx"):
+            value = existing.get(name)
+            if isinstance(value, dict) and checked_fx(value, value.get("requested_date")):
+                saved[name] = deepcopy(value)
+    for context in contexts:
+        amounts = context.get("amounts", {}) if isinstance(context, dict) else {}
+        if not isinstance(amounts, dict):
+            continue
+        for name in ("fx", "nq_fx"):
+            value = amounts.get(name)
+            if isinstance(value, dict) and checked_fx(value, value.get("requested_date")):
+                saved[name] = deepcopy(value)
+    return saved
+
+
+def context_equal_except_transient_fx(previous, current, end_date, verified_fx=None):
+    """Ignore a same-date ECOS collection failure for change detection only.
+
+    On recovery, suppress it only when the verified rate equals a retained,
+    independently checked observation. No old value enters the report itself.
+    """
+    from us_positioning_fx import checked_fx
+
+    before = context_change_key(previous, end_date)
+    after = context_change_key(current, end_date)
+    if not isinstance(before, dict) or not isinstance(after, dict):
+        return False
+    old_amounts, new_amounts = before.get("amounts"), after.get("amounts")
+    if not isinstance(old_amounts, dict) or not isinstance(new_amounts, dict):
+        return False
+    baselines = verified_fx if isinstance(verified_fx, dict) else {}
+    replaced = False
+    for name in ("fx", "nq_fx"):
+        old, new = old_amounts.get(name), new_amounts.get(name)
+        if not isinstance(old, dict) or not isinstance(new, dict):
+            continue
+        date = old.get("requested_date")
+        if not date or date != new.get("requested_date"):
+            continue
+        old_failed = old.get("status") == "unavailable" and old.get("reason_code") == "collection"
+        new_failed = new.get("status") == "unavailable" and new.get("reason_code") == "collection"
+        if new_failed and checked_fx(old, date):
+            new_amounts[name] = deepcopy(old)
+            replaced = True
+        elif old_failed and checked_fx(new, date):
+            baseline = baselines.get(name)
+            if checked_fx(baseline, date):
+                old_amounts[name] = deepcopy(baseline)
+                replaced = True
+    return replaced and before == after
+
+
 def price_returns(end_date, primary_rows, secondary_rows, symbol):
     """Verify each return independently of an intermediate trend-history conflict."""
     end = day(end_date)
