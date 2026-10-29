@@ -265,6 +265,92 @@ def assert_dpa_grid_delivery_semantic_dedupe() -> None:
 
 
 
+def assert_robotics_232_presidential_alert_reaches_delivery_guard() -> None:
+    """Reproduce the 2026-10-29 miss: detected proclamation wrongly became FCC,
+    then a legitimate numbered Executive Order caused full-bundle deletion."""
+    original = {
+        "source": "White House proclamations",
+        "title": "ADJUSTING IMPORTS OF ROBOTICS, INDUSTRIAL MACHINERY, AND THEIR PARTS AND COMPONENTS INTO THE UNITED STATES",
+        "source_title": "ADJUSTING IMPORTS OF ROBOTICS, INDUSTRIAL MACHINERY, AND THEIR PARTS AND COMPONENTS INTO THE UNITED STATES",
+        "link": khs_policy_watch.ROBOTICS_232_PROCLAMATION_URL,
+        "document_type": "Proclamation",
+        "presidential_document_type": "Proclamation",
+        "published_kst": "2026-10-29T00:00:00+09:00",
+        "body_verified": True,
+        "source_body": (
+            "Section 232 investigation of imports of robotics, industrial machinery and components. "
+            "The Secretary of Commerce and USTR shall negotiate with countries and report within 180 days. "
+            "Future tariffs quotas and fees may be recommended, but no immediate rate is imposed."
+        ),
+    }
+    factsheet = dict(original)
+    factsheet.update({
+        "source": "White House fact sheets",
+        "title": "Fact Sheet: President Donald J. Trump Adjusts Imports of Robotics, Industrial Machinery, and their Parts and Components into the United States",
+        "source_title": "Fact Sheet: President Donald J. Trump Adjusts Imports of Robotics, Industrial Machinery, and their Parts and Components into the United States",
+        "link": "https://www.whitehouse.gov/fact-sheets/2026/10/fact-sheet-president-donald-j-trump-adjusts-imports-of-robotics-industrial-machinery-and-their-parts-and-components-into-the-united-states/",
+        "document_type": "Fact Sheet",
+        "presidential_document_type": "Fact Sheet",
+    })
+    entries = []
+    for source in (original, factsheet):
+        alert = khs_policy_watch.classify_item(source)
+        assert alert is not None, "Verified Section 232 primary source must classify"
+        khs_policy_alert_explainer.ensure_explained(alert)
+        alert["sectors"] = khs_policy_alert_guardrails.direct_sectors(alert)
+        khs_policy_alert_guardrails.normalize_title(alert)
+        assert "로봇" in alert["title"], f"Wrong official event title: {alert['title']}"
+        assert "FCC" not in alert["title"] and "SMR" not in alert["title"]
+        assert "즉시 확정하지" in alert["policy_plain_summary"]
+        entries.append(alert)
+
+    assert entries[0]["fingerprint"] == entries[1]["fingerprint"]
+    assert khs_policy_alert_guardrails.dedup_key(entries[0]) == khs_policy_alert_guardrails.dedup_key(entries[1])
+    unique = khs_policy_alert_router.dedupe_alerts(entries)
+    assert len(unique) == 1, "Original proclamation and fact sheet double-alerted"
+    assert unique[0]["source"].lower().startswith("white house proclamations"), "Use original proclamation as lead"
+    rendered = khs_policy_alert_router.render_policy_report(
+        unique, dt.datetime(2026, 10, 29, 16, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+    )
+    for marker in ("Section 232", "2025년 9월 2일", "2026년 10월 28일", "2027년 4월 26일", "- 타임라인:"):
+        assert marker in rendered, f"Missing correct robotics Section 232 chronology: {marker}"
+    assert "FCC, 통신" not in rendered and "SMR 배치 협력" not in rendered
+    cleanup()
+    title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+    body_path = OUT_DIR / "khs_policy_watch_alert.md"
+    try:
+        title_path.write_text("로봇·산업기계 Section 232 협상 지시\n", encoding="utf-8")
+        body_path.write_text(rendered, encoding="utf-8")
+        lane = next(lane for lane in khs_telegram_delivery_guard.LANES if lane.name == "policy")
+        khs_telegram_delivery_guard.guard_lane(lane)
+        assert title_path.exists() and body_path.exists(), (
+            "Validated Section 232 source was still blocked before Telegram"
+        )
+        prepared = body_path.read_text(encoding="utf-8")
+        assert "2027년 4월 26일" in prepared, "Report deadline lost in final Telegram"
+        assert "로봇" in prepared and "FCC, 통신" not in prepared
+        assert not khs_policy_telegram_formatter.validate_final_policy_message(
+            title_path.read_text(encoding="utf-8"), prepared
+        ), "Official robotics proclamation failed final Telegram validation"
+    finally:
+        cleanup()
+
+    # The exact pre-fix blind spot: allow identifiers only on dated timeline
+    # bullets; raw standalone English policy titles must still be quarantined.
+    english = "  • 2025년 1월 20일: 기반 · Executive Order 14156 국가비상사태"
+    scrubbed = english
+    import re
+    if re.match(r"^\s*[•·]\s*20\d{2}년\s*\d{1,2}월\s*\d{1,2}일\s*:", scrubbed):
+        scrubbed = re.sub(r"(?i)\bExecutive Order\s+\d{4,6}\b", "행정명령 번호", scrubbed)
+    assert not khs_telegram_delivery_guard.has_blocker(
+        scrubbed, khs_telegram_delivery_guard.VISIBLE_ENGLISH_BLOCKERS, include_urls=False
+    )
+    assert khs_telegram_delivery_guard.has_blocker(
+        "Executive Order announced without source number",
+        khs_telegram_delivery_guard.VISIBLE_ENGLISH_BLOCKERS, include_urls=False
+    ) == "executive order"
+
+
 def assert_presidential_policy_timeline_contract() -> None:
     alert = {
         "source": "DOE news",
@@ -465,6 +551,7 @@ def assert_energy_month_document_keeps_identity() -> None:
 
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
+    assert_robotics_232_presidential_alert_reaches_delivery_guard()
     khs_policy_watch._self_test_doe_grid_dpa_event_model()
     assert_dpa_grid_delivery_semantic_dedupe()
     assert_energy_month_document_keeps_identity()
