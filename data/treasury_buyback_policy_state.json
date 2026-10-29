@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-29T11:54:20+09:00",
+  "last_checked_kst": "2026-10-30T02:57:15+09:00",
   "schedule_sha256": "3461c9a9822dec08b3059d2dd367baadd0d0967193913ce8fe95702f000366d7",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -24,7 +24,7 @@
       "bei_bp": 1.000000000000023,
       "real_bp": -2.0000000000000018,
       "nom_bp": -0.9999999999999787,
-      "term_bp": -2.391022748706817
+      "term_bp": 8.51225244529239
     },
     "changes_5d": {
       "start_date": "2026-10-20",
@@ -36,11 +36,11 @@
     "verdict_basis": "5거래일 공통창",
     "term_latest": {
       "available": true,
-      "prev_date": "2026-10-26",
-      "prev": 0.6299755876394606,
-      "date": "2026-10-27",
-      "value": 0.6060653601523924,
-      "change_bp": -2.391022748706817,
+      "prev_date": "2026-10-27",
+      "prev": 0.6060653601523924,
+      "date": "2026-10-28",
+      "value": 0.6911878846053163,
+      "change_bp": 8.51225244529239,
       "source": "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs",
       "data_source": "NY Fed ACM primary XLS"
     },
