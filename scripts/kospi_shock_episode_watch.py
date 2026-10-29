@@ -582,6 +582,11 @@ def backfill_index_bars(token: str, max_rows: int = 500, upcode: str = "001") ->
             ts = (ts + "000000")[:6]
             when = dt.datetime(day.year, day.month, day.day,
                                int(ts[:2]), int(ts[2:4]), int(ts[4:6]), tzinfo=KST)
+            # A future-dated bar is not an observed price. Pre-open t8409 may
+            # return a later minute containing yesterday's close; admitting it
+            # can create a false opening shock in either market.
+            if when > local_now:
+                continue
             if first_reliable_bar is not None and when < first_reliable_bar:
                 continue
             out.append((when.timestamp(), close))
