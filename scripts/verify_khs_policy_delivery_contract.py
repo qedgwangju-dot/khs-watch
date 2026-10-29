@@ -317,6 +317,7 @@ def assert_robotics_232_presidential_alert_reaches_delivery_guard() -> None:
         "presidential_document_type": "Proclamation",
         "published_kst": "2026-10-29T00:00:00+09:00",
         "body_verified": True,
+        "source_abstract": "National Adoption Month 2025 unrelated prior White House teaser",
         "source_body": (
             "Section 232 investigation of imports of robotics, industrial machinery and components. "
             "The Secretary of Commerce and USTR shall negotiate with countries and report within 180 days. "
@@ -342,6 +343,8 @@ def assert_robotics_232_presidential_alert_reaches_delivery_guard() -> None:
         assert "로봇" in alert["title"], f"Wrong official event title: {alert['title']}"
         assert "FCC" not in alert["title"] and "SMR" not in alert["title"]
         assert "즉시 확정하지" in alert["policy_plain_summary"]
+        assert "National Adoption Month" not in str(alert.get("summary") or "")
+        assert not alert.get("source_abstract"), "Mismatched official teaser was retained"
         entries.append(alert)
 
     assert entries[0]["fingerprint"] == entries[1]["fingerprint"]
@@ -369,6 +372,8 @@ def assert_robotics_232_presidential_alert_reaches_delivery_guard() -> None:
         prepared = body_path.read_text(encoding="utf-8")
         assert "2027년 4월 26일" in prepared, "Report deadline lost in final Telegram"
         assert "로봇" in prepared and "FCC, 통신" not in prepared
+        for fact in ("- 실제 내용:", "신규 관세", "수입할당량", "휴머노이드", "국가별 협상"):
+            assert fact in prepared, f"Verified source fact lost before Telegram: {fact}"
         assert not khs_policy_telegram_formatter.validate_final_policy_message(
             title_path.read_text(encoding="utf-8"), prepared
         ), "Official robotics proclamation failed final Telegram validation"
