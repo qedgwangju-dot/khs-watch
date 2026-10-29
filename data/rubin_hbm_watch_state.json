@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-29T08:26:29+09:00",
+  "updated_at_kst": "2026-10-29T11:43:35+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -21,6 +21,7 @@
     "160b71780027009949391286",
     "171462b92b4f33a8c0aab2b6",
     "1914475064f5fc1fb3b5041f",
+    "19359da0d8f41aa1aab87320",
     "19e4c5760301d7456781b5df",
     "1a7355b983f5d9b5a7d4a97f",
     "1a740e6eaff99a7fffe1b7b7",
@@ -57,6 +58,7 @@
     "38fbb0f677e5dae3aaa5a826",
     "3918e201cc6dd4337a0fda14",
     "3939cd9ef4ce57de0ff64a39",
+    "3e558cd323572ee3ece83f3f",
     "40660e881b3fe6bde98047a2",
     "4127757df616e22a61ff42e4",
     "4247585e3b18e9cad642ceec",
@@ -66,6 +68,7 @@
     "44974ccaa7ba66fe19dffd08",
     "45ba5c60ce8b21a79021bfee",
     "460ed817d323c8e04fb77eac",
+    "46c993b2d7ceb963c8774771",
     "4796a391bc93f89ffc36c200",
     "480c176eee3a5d4929892cf4",
     "49c50f6656a4701e9e025a3b",
@@ -103,6 +106,7 @@
     "6a3a0e34ffe7846cdd79e44e",
     "6b11b11dc56800c8ba33ef81",
     "6b3790289403fb21cb553ae9",
+    "6bdf8e7a10950b6ca334d063",
     "6c31c0bc458f7594ee609fbe",
     "6ca8b0e81b3ce0c8b0b04326",
     "6d5b2615f6eeda6fb7676f49",
@@ -278,18 +282,21 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 4,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": null,
-    "date": "",
-    "source": "환율 API",
-    "error": "동일 날짜 API 환율 1% 초과 불일치—환산 보류"
+    "rate": 1340.47,
+    "date": "2026-10-28 일일 기준 · ECB/Frankfurter · 조회 2026-10-29 11:43 KST · 보조 API 2026-10-29 · 차이 0.02% · 일중 기준시각 차이 가능",
+    "source": "ECB/Frankfurter",
+    "error": ""
   },
   "errors": [
-    "동일 날짜 API 환율 1% 초과 불일치—환산 보류"
+    "원문 URL 확인 실패: 머니투데이 | [Conference Call] SK hynix: 2027 HBM supply talks are complete, with pricing to reflect value - 머니투데이",
+    "원문 URL 확인 실패: Chosunbiz | Samsung forecasts AI memory shortage, accelerates HBM4E mass production - Chosunbiz",
+    "원문 URL 확인 실패: 머니투데이 | Samsung Electronics sees memory shortage continuing next year, targets HBM4E mass production in first half [Conference Call] - 머니투데이",
+    "원문 URL 확인 실패: Chosunbiz | Samsung Electronics triples 3Q HBM4 sales, locks in 2027 supply - Chosunbiz"
   ],
   "ai_component_leadtime": {
     "as_of": "2026-10-19",
@@ -416,7 +423,7 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-29T08:26:44+09:00",
+    "last_checked_at_kst": "2026-10-29T11:43:52+09:00",
     "candidate_count": 2,
     "mlcc_vendor_watch": {
       "version": 2,
@@ -466,7 +473,7 @@
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-29T08:27:58+09:00",
+    "checked_at_kst": "2026-10-29T11:44:31+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-27T21:33:58+09:00",
@@ -534,7 +541,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-29",
-    "last_checked_at_kst": "2026-10-29T08:27:26+09:00",
+    "last_checked_at_kst": "2026-10-29T11:44:17+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -593,7 +600,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-29T08:27:26+09:00",
+        "checked_at_kst": "2026-10-29T11:44:17+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -671,7 +678,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-29",
-    "last_checked_at_kst": "2026-10-29T08:27:50+09:00",
+    "last_checked_at_kst": "2026-10-29T11:44:23+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -715,7 +722,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-29T08:27:52+09:00",
+    "last_checked_at_kst": "2026-10-29T11:44:25+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -839,7 +846,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-10-29T08:27:52+09:00",
+      "checked_at_kst": "2026-10-29T11:44:25+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
