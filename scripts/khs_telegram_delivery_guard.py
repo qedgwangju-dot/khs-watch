@@ -596,7 +596,19 @@ def guard_lane(lane: Lane) -> None:
         delete_lane(lane, f"raw_detector:{marker}")
         return
 
-    marker = has_blocker(visible, VISIBLE_ENGLISH_BLOCKERS, include_urls=False)
+    # Preserve official Executive Order identifiers inside dated Korean policy
+    # timelines, while still rejecting unnumbered raw English narrative.
+    english_inspection_lines = []
+    for visible_line in visible.splitlines():
+        if re.match(r"^\s*[•·]\s*20\d{2}년\s*\d{1,2}월\s*\d{1,2}일\s*:", visible_line):
+            visible_line = re.sub(
+                r"(?i)\bExecutive Order\s+\d{4,6}\b",
+                "행정명령 번호",
+                visible_line,
+            )
+        english_inspection_lines.append(visible_line)
+    english_inspection = "\n".join(english_inspection_lines)
+    marker = has_blocker(english_inspection, VISIBLE_ENGLISH_BLOCKERS, include_urls=False)
     if marker:
         delete_lane(lane, f"raw_english:{marker}")
         return
