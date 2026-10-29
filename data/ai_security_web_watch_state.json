@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 24,
+    "material_items": 25,
     "new_material_items": 0,
-    "raw_items": 334,
+    "raw_items": 347,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1281,6 +1281,16 @@
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQYVB0TUhEWXF3eXlPVmlDb1F4WGpidkNZanF3RllsQWh3SHN5dWhvSFlzSFY0VUJYeUh3ejZiRmtVRTBXclMyVFU4VHhKZ196bmNNWF9WeExJelVmalluN0JZWnZhZHVRaUhZalp0Rm1YckpZeHJFbTFqUzdyUW5mTVRraDc?oc=5",
       "vendor": "Meta"
     },
+    "d0295c73c44e16bff64057c1": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-29T05:59:56.418967+00:00",
+      "published_at": "2026-10-29T05:50:00+00:00",
+      "severity": 2,
+      "source": "The Hacker News",
+      "title": "Attackers Exploit PHP2Shell Flaws in Internet-Exposed Palo Alto Networks Management Interfaces - The Hacker News",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNaTI3NHZ5UmVjWTZiWGY0XzFNaWYtRkpuU1gzVzFHdkJZNFdVLTg4S1paYWdpZmhkczh3d2Z1SGdVLTAycFRmbnhrVFhMOEh0bzJCTDlOT1E1amVNbmRiSGxuVmdlM1VmXzdWVERHTnZRVzdVVFJpNTBXUkpTTU1OQw?oc=5",
+      "vendor": "PHP 재단"
+    },
     "d322522f7a99c3fd6616df94": {
       "category": "PHP 코어 취약점·공식 보안패치",
       "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
@@ -1584,5 +1594,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-29T14:42:01+09:00"
+  "updated_at_kst": "2026-10-29T14:59:56+09:00"
 }
