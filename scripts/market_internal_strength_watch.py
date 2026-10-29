@@ -24,7 +24,6 @@ CBOE_VIX_QUOTE='https://cdn.cboe.com/api/global/delayed_quotes/quotes/_VIX.json'
 STOCKANALYSIS_HISTORY='https://stockanalysis.com/etf/{}/history/'
 METHODOLOGY_VERSION='2026-10-07-v7'
 SECTOR_MOVE_EPS_PCT=0.01
-
 SYMBOLS={
     'S&P500':'SPY','동일가중 S&P500':'RSP','중소형주':'IWM','하이일드 회사채':'HYG','VIX':'^VIX',
     '커뮤니케이션':'XLC','경기소비재':'XLY','필수소비재':'XLP','에너지':'XLE','금융':'XLF','헬스케어':'XLV',
@@ -36,6 +35,7 @@ SECTORS=['커뮤니케이션','경기소비재','필수소비재','에너지','�
 def fetch(url):
     req=urllib.request.Request(url,headers={'User-Agent':UA,'Accept-Language':'en-US,en;q=0.9'})
     with urllib.request.urlopen(req,timeout=25) as r:return r.read().decode('utf-8','replace')
+
 
 def series(symbol, adjusted=False):
     yahoo_url=YAHOO.format(urllib.parse.quote(symbol,safe='')) + f'&cb={int(time.time())}'
@@ -52,46 +52,34 @@ def series(symbol, adjusted=False):
         values=adj
     else:
         values=closes
-
     meta=r.get('meta') or {}
     regular=((meta.get('currentTradingPeriod') or {}).get('regular') or {})
-    regular_start=regular.get('start'); regular_end=regular.get('end')
+    regular_end=regular.get('end')
     now=time.time()
     ny=ZoneInfo('America/New_York')
     ny_now=datetime.now(ny)
     ny_today=ny_now.date().isoformat()
-    before_settlement=bool(regular_end and now < regular_end + 2700)  # 45m post-close guard
-
+    # A missing session-end field is not permission to treat an intraday bar as final.
+    before_settlement=(now < regular_end + 2700 if regular_end else ny_now.hour*60+ny_now.minute < 16*60+45)
     by_date={}
     for t,v in zip(ts,values):
         if v is None:
             continue
         row_date=datetime.fromtimestamp(t,ny).date().isoformat()
-        if row_date == ny_today and before_settlement:
+        if row_date > ny_today or (row_date == ny_today and before_settlement):
             continue
         by_date[row_date]=float(v)
-
-    # Yahoo's daily-array bar can stay stale or retain an intraday value after the
-    # closing bell. Once the session has had a 45-minute settlement buffer, use the
-    # chart meta regularMarketPrice/regularMarketTime as the authoritative Yahoo
-    # completed-session close for that latest session. For adjusted series (HYG),
-    # the current post-distribution adjusted close equals the current close, so this
-    # safely extends an otherwise lagging adjusted-close array.
     reg_price=meta.get('regularMarketPrice')
     reg_time=meta.get('regularMarketTime')
-    if (
-        not before_settlement
-        and isinstance(reg_price,(int,float))
-        and isinstance(reg_time,(int,float))
-    ):
+    if not before_settlement and isinstance(reg_price,(int,float)) and isinstance(reg_time,(int,float)):
         reg_date=datetime.fromtimestamp(int(reg_time),ny).date().isoformat()
         if reg_date <= ny_today:
             by_date[reg_date]=float(reg_price)
-
     rows=sorted(by_date.items())
     if len(rows)<7:
         raise RuntimeError(f'{symbol} completed-session history too short')
     return rows
+
 
 def cboe_vix_series():
     raw=fetch(CBOE_VIX_CSV)
@@ -99,25 +87,22 @@ def cboe_vix_series():
     for row in csv.DictReader(io.StringIO(raw)):
         raw_date=str(row.get('DATE') or '').strip()
         raw_close=str(row.get('CLOSE') or '').strip()
-        if not raw_date or not raw_close:
-            continue
+        if not raw_date or not raw_close:continue
         try:
             d=datetime.strptime(raw_date,'%m/%d/%Y').date().isoformat()
             v=float(raw_close)
-        except Exception:
-            continue
+        except Exception:continue
         rows.append((d,v))
     rows.sort(key=lambda x:x[0])
-    if len(rows)<7:
-        raise RuntimeError('Cboe VIX official history too short')
+    if len(rows)<7:raise RuntimeError('Cboe VIX official history too short')
     return rows
+
 
 def cboe_vix_quote():
     j=json.loads(fetch(CBOE_VIX_QUOTE))
     d=j.get('data') or {}
     price=d.get('close')
-    if not isinstance(price,(int,float)):
-        price=d.get('current_price')
+    if not isinstance(price,(int,float)):price=d.get('current_price')
     stamp=str(j.get('timestamp') or d.get('last_trade_time') or '').strip()
     if not isinstance(price,(int,float)) or not stamp:
         raise RuntimeError('Cboe VIX delayed quote missing price/timestamp')
@@ -126,73 +111,66 @@ def cboe_vix_quote():
         try:
             parsed=datetime.strptime(stamp[:19],fmt)
             break
-        except Exception:
-            pass
-    if parsed is None:
-        raise RuntimeError(f'Cboe VIX delayed quote timestamp parse failed: {stamp}')
+        except Exception:pass
+    if parsed is None:raise RuntimeError(f'Cboe VIX delayed quote timestamp parse failed: {stamp}')
     return {'date':parsed.date().isoformat(),'close':float(price),'timestamp':stamp}
+
+
+def parse_stockanalysis_completed(raw, symbol, adjusted=False, now=None):
+    now=(now or datetime.now(ZoneInfo('America/New_York'))).astimezone(ZoneInfo('America/New_York'))
+    today=now.date().isoformat()
+    plain=html.unescape(re.sub(r'<[^>]+>',' ',raw))
+    plain=re.sub(r'\s+',' ',plain)
+    today_settled=(now.hour*60+now.minute >= 16*60+45 and not re.search(r'\bmarket\s+open\b',plain,re.I))
+    pattern=(r'([A-Z][a-z]{2}\s+\d{1,2},\s+20\d{2})\s+'
+             r'([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)')
+    eligible=[]
+    for m in re.finditer(pattern,plain):
+        d=datetime.strptime(m.group(1),'%b %d, %Y').date().isoformat()
+        if d > today or (d == today and not today_settled):continue
+        close=float(m.group(5)); adj=float(m.group(6))
+        value=adj if adjusted else close
+        if value <= 0:raise RuntimeError(f'{symbol} invalid completed close')
+        eligible.append((d,value))
+    if not eligible:
+        raise RuntimeError(f'{symbol} StockAnalysis completed-history row unavailable')
+    return max(eligible,key=lambda row:row[0])
 
 
 def stockanalysis_latest(symbol, adjusted=False):
     raw=fetch(STOCKANALYSIS_HISTORY.format(symbol.lower()))
-    plain=html.unescape(re.sub(r'<[^>]+>',' ',raw))
-    plain=re.sub(r'\s+',' ',plain)
-    m=re.search(
-        r'([A-Z][a-z]{2}\s+\d{1,2},\s+20\d{2})\s+'
-        r'([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)',
-        plain
-    )
-    if not m:
-        raise RuntimeError(f'{symbol} StockAnalysis final-history row unavailable')
-    d=datetime.strptime(m.group(1),'%b %d, %Y').date().isoformat()
-    close=float(m.group(5))
-    adj=float(m.group(6))
-    return d,(adj if adjusted else close)
+    return parse_stockanalysis_completed(raw,symbol,adjusted)
+
 
 def ret(rows,n): return (rows[-1][1]/rows[-1-n][1]-1)*100.0
 
-def sector_is_up(return_pct):
-    return return_pct > SECTOR_MOVE_EPS_PCT
+def sector_is_up(return_pct):return return_pct > SECTOR_MOVE_EPS_PCT
 
-# Regression guard: microscopic floating noise must be flat, real >1bp moves are directional.
 if sector_is_up(0.000003) or not sector_is_up(0.02):
     raise RuntimeError('sector breadth tolerance self-test failed')
 
+
 def snapshot():
-    data={}
-    final_rows={}
+    data={}; final_rows={}
     for name,symbol in SYMBOLS.items():
         if name == '하이일드 회사채':
-            # HYG is monthly-distributing. Use adjusted close so ex-dividend drops
-            # are not misread as credit deterioration.
             data[name]=series(symbol, adjusted=True)
             final_rows[name]=stockanalysis_latest(symbol, adjusted=True)
-        elif name == 'VIX':
-            data[name]=series(symbol)
+        elif name == 'VIX':data[name]=series(symbol)
         else:
             data[name]=series(symbol)
             final_rows[name]=stockanalysis_latest(symbol)
-
-    # Require every ETF lane to have the same independently settled daily close.
-    # StockAnalysis states its history is sourced from S&P Global Market Intelligence.
     final_dates={d for d,_ in final_rows.values()}
     if len(final_dates) != 1:
         raise RuntimeError(f'ETF final-close source dates are not aligned: {sorted(final_dates)}')
     final_date=next(iter(final_dates))
     settlement_overrides={}
     for name,(d,v) in final_rows.items():
-        m={x:y for x,y in data[name]}
-        old=m.get(d)
-        if old is None or abs(old-v) > 1e-8:
-            settlement_overrides[name]={'yahoo':old,'final':v}
+        m={x:y for x,y in data[name]}; old=m.get(d)
+        if old is None or abs(old-v) > 1e-8:settlement_overrides[name]={'yahoo':old,'final':v}
         m[d]=v
         data[name]=sorted(m.items())
-
     cboe_vix=cboe_vix_series()
-
-    # 일부 ETF/지수의 Yahoo 종가 반영이 하루 늦을 수 있다.
-    # 서로 다른 기준일을 억지로 섞지 말고, 모든 시계열에 공통으로 존재하는
-    # 가장 최근 '완료 정규장' 날짜에 맞춰 정렬한다.
     common_dates=None
     for rows in data.values():
         dates={d for d,_ in rows}
@@ -201,111 +179,69 @@ def snapshot():
         latest_dates=sorted({rows[-1][0] for rows in data.values()})
         raise RuntimeError(f'공통 완료 종가 기준일 없음: {latest_dates}')
     common_dates=sorted(common_dates)
-    if len(common_dates)<6:
-        raise RuntimeError(f'공통 완료 거래일 부족: {common_dates}')
+    if len(common_dates)<6:raise RuntimeError(f'공통 완료 거래일 부족: {common_dates}')
     common_date=common_dates[-1]
+    # A source validated for another day cannot validate this snapshot's prices.
+    if common_date != final_date:
+        raise RuntimeError(f'ETF final-close source dates are not aligned: snapshot={common_date}, verified={final_date}')
     d1,d3,d5=common_dates[-2],common_dates[-4],common_dates[-6]
-
-    # 모든 자산을 정확히 같은 시작일/종료일로 비교한다.
-    # 한 종목의 데이터 누락 때문에 "5거래일"의 시작일이 달라지는 것을 금지한다.
     maps={name:{d:v for d,v in rows} for name,rows in data.items()}
-
-    # VIX timing guard: use Yahoo's completed-session close so all market lanes
-    # stay on the same trading date, while validating the latest overlapping date
-    # against Cboe's official daily-history file. Cboe's CSV can publish one session late;
-    # never roll the whole snapshot back to a stale date just because that file lags.
-    yahoo_vix=maps['VIX']
-    cboe_map={d:v for d,v in cboe_vix}
+    yahoo_vix=maps['VIX']; cboe_map={d:v for d,v in cboe_vix}
     overlap=[d for d in cboe_map if d in yahoo_vix and d <= common_date]
-    if not overlap:
-        raise RuntimeError('VIX Cboe/Yahoo overlapping completed date unavailable')
+    if not overlap:raise RuntimeError('VIX Cboe/Yahoo overlapping completed date unavailable')
     official_check_date=max(overlap)
     official_diff=abs(cboe_map[official_check_date]-yahoo_vix[official_check_date])
     if official_diff > 0.05:
-        raise RuntimeError(
-            f'VIX Cboe/Yahoo mismatch {official_check_date}: '
-            f'Cboe={cboe_map[official_check_date]:.2f} Yahoo={yahoo_vix[official_check_date]:.2f}'
-        )
+        raise RuntimeError(f'VIX Cboe/Yahoo mismatch {official_check_date}: Cboe={cboe_map[official_check_date]:.2f} Yahoo={yahoo_vix[official_check_date]:.2f}')
     official_same_day=common_date in cboe_map
     lag_days=(datetime.fromisoformat(common_date).date()-datetime.fromisoformat(official_check_date).date()).days
     if lag_days < 0 or lag_days > 4:
-        raise RuntimeError(
-            f'Cboe VIX official history lag too large: market={common_date} official={official_check_date}'
-        )
-
-    # Cboe's delayed quote endpoint is an additional same-session check when its
-    # daily-history CSV has not rolled forward yet.
-    quote=cboe_vix_quote()
-    quote_same_day=(quote['date']==common_date)
-    quote_diff=None
+        raise RuntimeError(f'Cboe VIX official history lag too large: market={common_date} official={official_check_date}')
+    quote=cboe_vix_quote(); quote_same_day=(quote['date']==common_date); quote_diff=None
     if quote_same_day:
         quote_diff=abs(float(quote['close'])-float(maps['VIX'][common_date]))
         if quote_diff > 0.05:
-            raise RuntimeError(
-                f'VIX Cboe delayed-quote/Yahoo mismatch {common_date}: '
-                f'Cboe={quote["close"]:.2f} Yahoo={maps["VIX"][common_date]:.2f}'
-            )
-
+            raise RuntimeError(f'VIX Cboe delayed-quote/Yahoo mismatch {common_date}: Cboe={quote["close"]:.2f} Yahoo={maps["VIX"][common_date]:.2f}')
     out={'date':common_date,'window':{'1d':d1,'3d':d3,'5d':d5},'returns':{},
-         'methodology_version':METHODOLOGY_VERSION,
-         'hyg_basis':'Yahoo adjusted close total return',
+         'methodology_version':METHODOLOGY_VERSION,'hyg_basis':'Yahoo adjusted close total return',
          'vix_source':'Yahoo completed close with Cboe official history/quote validation',
-         'vix_official_crosscheck_date':official_check_date,
-         'vix_official_same_day':official_same_day,
-         'vix_official_lag_days':lag_days,
-         'vix_cboe_quote_date':quote['date'],
-         'vix_cboe_quote_same_day':quote_same_day,
-         'vix_cboe_quote_diff':quote_diff,
+         'vix_official_crosscheck_date':official_check_date,'vix_official_same_day':official_same_day,
+         'vix_official_lag_days':lag_days,'vix_cboe_quote_date':quote['date'],
+         'vix_cboe_quote_same_day':quote_same_day,'vix_cboe_quote_diff':quote_diff,
          'vix_crosscheck_max_abs_diff':official_diff,
          'etf_final_close_source':'StockAnalysis / S&P Global Market Intelligence',
-         'etf_final_close_date':final_date,
-         'settlement_overrides':settlement_overrides}
+         'etf_final_close_date':final_date,'settlement_overrides':settlement_overrides}
     for name,m in maps.items():
         for d in (common_date,d1,d3,d5):
-            if d not in m:
-                raise RuntimeError(f'{name} 공통 비교일 {d} 종가 누락')
-        out['returns'][name]={
-            '1d':(m[common_date]/m[d1]-1)*100.0,
-            '3d':(m[common_date]/m[d3]-1)*100.0,
-            '5d':(m[common_date]/m[d5]-1)*100.0,
-        }
+            if d not in m:raise RuntimeError(f'{name} 공통 비교일 {d} 종가 누락')
+        out['returns'][name]={'1d':(m[common_date]/m[d1]-1)*100.0,
+                              '3d':(m[common_date]/m[d3]-1)*100.0,
+                              '5d':(m[common_date]/m[d5]-1)*100.0}
     spy=out['returns']['S&P500']; rsp=out['returns']['동일가중 S&P500']; iwm=out['returns']['중소형주']; hyg=out['returns']['하이일드 회사채']; vix=out['returns']['VIX']
     out['rsp_rel_5d']=rsp['5d']-spy['5d']; out['iwm_rel_5d']=iwm['5d']-spy['5d']
-    # Treat sub-1bp floating-point noise as flat. This prevents an unchanged ETF
-    # (e.g. same cent-level close at both endpoints) from being counted as "up".
     out['sector_up_1d']=sum(1 for s in SECTORS if sector_is_up(out['returns'][s]['1d']))
     out['sector_up_5d']=sum(1 for s in SECTORS if sector_is_up(out['returns'][s]['5d']))
-    rsp_warn=out['rsp_rel_5d']<=-1.0
-    iwm_warn=out['iwm_rel_5d']<=-1.0
-    breadth_warn=rsp_warn or iwm_warn
-    credit_stress=hyg['5d']<=-1.0
-    vol_stress=vix['5d']>=15.0
-    sector_narrow=out['sector_up_5d']<=4
-    out['breadth_warning']=breadth_warn
-    out['rsp_warning']=rsp_warn
-    out['iwm_warning']=iwm_warn
-    out['credit_stress']=credit_stress
-    out['vol_stress']=vol_stress
-
+    rsp_warn=out['rsp_rel_5d']<=-1.0; iwm_warn=out['iwm_rel_5d']<=-1.0
+    breadth_warn=rsp_warn or iwm_warn; credit_stress=hyg['5d']<=-1.0
+    vol_stress=vix['5d']>=15.0; sector_narrow=out['sector_up_5d']<=4
+    out['breadth_warning']=breadth_warn; out['rsp_warning']=rsp_warn; out['iwm_warning']=iwm_warn
+    out['credit_stress']=credit_stress; out['vol_stress']=vol_stress
     if spy['5d']<0 and rsp_warn and iwm_warn and credit_stress and vol_stress and sector_narrow:
         verdict='광범위 위험회피 — 순환매보다 자금 이탈 경계'
     elif rsp_warn and iwm_warn and out['sector_up_5d']<=5:
         verdict='대형주 편중 — 시장 폭 약화'
     elif breadth_warn and out['sector_up_5d']>=6 and not credit_stress and not vol_stress:
-        if iwm_warn and not rsp_warn:
-            verdict='업종 순환 유지·중소형주 확산 약화'
-        elif rsp_warn and not iwm_warn:
-            verdict='업종 순환 유지·동일가중 확산 약화'
-        else:
-            verdict='업종 순환 유지·시장 폭 약화'
+        if iwm_warn and not rsp_warn:verdict='업종 순환 유지·중소형주 확산 약화'
+        elif rsp_warn and not iwm_warn:verdict='업종 순환 유지·동일가중 확산 약화'
+        else:verdict='업종 순환 유지·시장 폭 약화'
     elif (out['rsp_rel_5d']>=0.75 or out['iwm_rel_5d']>=0.75) and not credit_stress and not vol_stress and out['sector_up_5d']>=6:
         verdict='순환매·시장 내부 체력 양호'
     elif out['sector_up_5d']>=7 and hyg['5d']>-0.5 and not vol_stress and not breadth_warn:
         verdict='종목·업종 순환매 유지'
-    else:
-        verdict='혼합 — 뚜렷한 순환매/위험회피 미확인'
+    else:verdict='혼합 — 뚜렷한 순환매/위험회피 미확인'
     out['verdict']=verdict
     return out
+
 
 def load_state():
     try:return json.loads(STATE_PATH.read_text(encoding='utf-8')) if STATE_PATH.exists() else {}
@@ -324,12 +260,12 @@ def send(msg):
     if actual.lower()!=EXPECTED_BOT.lower(): raise RuntimeError(f'Wrong Telegram bot: expected @{EXPECTED_BOT}, got @{actual}')
     data=urllib.parse.urlencode({'chat_id':CHAT_ID,'text':msg[:4090],'parse_mode':'HTML','disable_web_page_preview':'true'}).encode()
     req=urllib.request.Request(f'https://api.telegram.org/bot{TOKEN}/sendMessage',data=data,method='POST')
-    with urllib.request.urlopen(req,timeout=25) as r:
-        out=json.loads(r.read().decode())
+    with urllib.request.urlopen(req,timeout=25) as r:out=json.loads(r.read().decode())
     if not out.get('ok'): raise RuntimeError(f'Telegram send failed: {out}')
     mid=(out.get('result') or {}).get('message_id')
     print(f'market_internal_telegram_delivery_confirmed=true bot=@{actual} id={mid}')
     return mid
+
 
 def easy_read(s):
     r=s['returns']; hyg=r['하이일드 회사채']; vix=r['VIX']
@@ -348,6 +284,7 @@ def easy_read(s):
     if s['verdict'].startswith('대형주 편중'):
         return '지수는 버텨 보여도 동일가중과 여러 업종이 뒤처져, 소수 대형주가 지수를 받치는 장에 가깝습니다.'
     return '좋은 업종과 약한 업종이 섞여 있어, 순환매가 살아 있다고 단정하기도 전면 위험회피라고 보기도 이릅니다.'
+
 
 def message(s, correction=False, old_date=None, correction_reason=None):
     r=s['returns']; spy=r['S&P500']; rsp=r['동일가중 S&P500']; iwm=r['중소형주']; hyg=r['하이일드 회사채']; vix=r['VIX']
@@ -369,7 +306,7 @@ def message(s, correction=False, old_date=None, correction_reason=None):
            '<b>왜 보나</b>',
            '• RSP가 SPY보다 강하면 몇몇 초대형주만 오르는 게 아니라 종목 전체로 상승이 퍼지는지 보는 대용지표입니다.',
            '• HYG(하이일드 회사채)는 월별 분배금 때문에 단순 가격수익률이 왜곡될 수 있어 분배금을 반영한 조정종가 총수익으로 봅니다.',
-           '• ETF 종가는 Yahoo 일봉만 믿지 않고 StockAnalysis의 S&P Global Market Intelligence 마감 종가로 확정합니다. Yahoo 일봉이 장중값 또는 지연값이면 마감값으로 교정합니다.',
+           '• ETF 종가는 Yahoo 일봉과 독립 제공처의 같은 완료 거래일 값을 대조하며, 당일 장중 행은 확정종가로 사용하지 않습니다.',
            '• VIX는 같은 완료 거래일의 종가를 쓰고, Cboe 공식 일별자료가 같은 날까지 갱신됐으면 당일값을 직접 검산합니다. 공식 파일이 하루 늦으면 최신 겹치는 날짜를 검산하고 지수 전체 기준일은 뒤로 돌리지 않습니다.', '',
            '<b>판정이 나빠지는 조건</b>',
            '• RSP 또는 IWM 중 하나라도 S&P보다 5거래일 기준 1%포인트 이상 더 약해지면 시장 폭 경고',
@@ -381,21 +318,15 @@ def message(s, correction=False, old_date=None, correction_reason=None):
            f"{link('Cboe VIX','https://www.cboe.com/tradable-products/vix/vix-historical-data/')}"]
     return '\n'.join(lines)
 
+
 def main():
-    # StockAnalysis ETF closes arrive at different moments after the US close.
-    # Mixed source dates are not a valid synchronized snapshot; do not emit,
-    # overwrite the last verified market state, or fail the unrelated Warsh jobs.
-    try:
-        s=snapshot()
+    try:s=snapshot()
     except RuntimeError as exc:
-        message=str(exc)
-        if message.startswith('ETF final-close source dates are not aligned:'):
-            print(json.dumps({
-                'data_valid':False,'sent':False,'retry_later':True,
+        source_error=str(exc)
+        if source_error.startswith('ETF final-close source dates are not aligned:'):
+            print(json.dumps({'data_valid':False,'sent':False,'retry_later':True,
                 'waiting':'ETF별 확정종가 게시 날짜가 달라 같은 기준일 확보 전까지 판정·송출·상태 갱신 보류',
-                'source_error':message,
-                'rule':'서로 다른 완료 거래일은 합산하지 않으며 기존 성공 상태 보존',
-            },ensure_ascii=False))
+                'source_error':source_error,'rule':'서로 다른 완료 거래일은 합산하지 않으며 기존 성공 상태 보존'},ensure_ascii=False))
             return
         raise
     old=load_state(); first=not bool(old)
@@ -407,23 +338,18 @@ def main():
     correction=stale_date_correction or method_correction
     correction_reason=None
     if method_correction:
-        correction_reason=(
-            "HYG는 분배금 반영 조정종가 총수익으로 재계산하고, RSP 또는 IWM의 상대약세를 시장 폭 경고에 반영했습니다. "
+        correction_reason=("HYG는 분배금 반영 조정종가 총수익으로 재계산하고, RSP 또는 IWM의 상대약세를 시장 폭 경고에 반영했습니다. "
             "VIX는 모든 자산과 같은 완료 거래일의 Yahoo 종가를 사용하되 Cboe 공식 일별자료의 최신 겹치는 날짜와 0.05포인트 이내로 교차검증하며, "
-            "Cboe 파일 갱신이 하루 늦어도 전체 기준일을 과거로 되돌리지 않도록 수정했습니다."
-        )
+            "Cboe 파일 갱신이 하루 늦어도 전체 기준일을 과거로 되돌리지 않도록 수정했습니다.")
     elif stale_date_correction:
         correction_reason=f"직전 {old.get('date')} 값보다 최신 완료 종가 기준일이 뒤로 돌아가 데이터 시점 오류를 정정했습니다."
     shock=(s['returns']['VIX']['5d']>=20 or s['returns']['하이일드 회사채']['5d']<=-2.0)
     old_shock=bool(old.get('shock'))
     should=FORCE or correction or (not first and (changed or (shock and not old_shock)))
-    if should:
-        send(message(s, correction=correction, old_date=old.get('date'), correction_reason=correction_reason))
-    validation_changed=(
-        old.get('vix_cboe_quote_date') != s.get('vix_cboe_quote_date')
+    if should:send(message(s, correction=correction, old_date=old.get('date'), correction_reason=correction_reason))
+    validation_changed=(old.get('vix_cboe_quote_date') != s.get('vix_cboe_quote_date')
         or old.get('vix_cboe_quote_same_day') != s.get('vix_cboe_quote_same_day')
-        or old.get('vix_cboe_quote_diff') != s.get('vix_cboe_quote_diff')
-    )
+        or old.get('vix_cboe_quote_diff') != s.get('vix_cboe_quote_diff'))
     if first or new_day or changed or shock!=old_shock or method_changed or validation_changed:
         save_state({
             'date':s['date'],'window':s.get('window'),'verdict':s['verdict'],'shock':shock,
@@ -441,8 +367,7 @@ def main():
             'settlement_overrides':s.get('settlement_overrides'),
             'breadth_warning':s.get('breadth_warning'),'rsp_warning':s.get('rsp_warning'),'iwm_warning':s.get('iwm_warning'),
             'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],
-            'sector_up_1d':s['sector_up_1d'],'sector_up_5d':s['sector_up_5d'],'returns':s['returns']
-        })
+            'sector_up_1d':s['sector_up_1d'],'sector_up_5d':s['sector_up_5d'],'returns':s['returns']})
     print(json.dumps({
         'first_run':first,'date':s['date'],'verdict':s['verdict'],'shock':shock,
         'methodology_version':METHODOLOGY_VERSION,'hyg_basis':s.get('hyg_basis'),
@@ -452,11 +377,26 @@ def main():
         'vix_cboe_quote_diff':s.get('vix_cboe_quote_diff'),
         'vix_crosscheck_max_abs_diff':s.get('vix_crosscheck_max_abs_diff'),
         'etf_final_close_source':s.get('etf_final_close_source'),
-        'etf_final_close_date':s.get('etf_final_close_date'),
-        'settlement_overrides':s.get('settlement_overrides'),
+        'etf_final_close_date':s.get('etf_final_close_date'),'settlement_overrides':s.get('settlement_overrides'),
         'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],
         'rsp_warning':s.get('rsp_warning'),'iwm_warning':s.get('iwm_warning'),
-        'sector_up_5d':s['sector_up_5d'],'correction':correction,'sent':should
-    },ensure_ascii=False))
+        'sector_up_5d':s['sector_up_5d'],'correction':correction,'sent':should},ensure_ascii=False))
 
-if __name__=='__main__': main()
+
+def _completed_close_self_test():
+    ny=ZoneInfo('America/New_York')
+    raw='Oct 30, 2026 200 210 190 205 204 Oct 29, 2026 100 105 95 103 102 Oct 28, 2026 90 95 85 93 92'
+    assert parse_stockanalysis_completed(raw,'SPY',now=datetime(2026,10,29,12,tzinfo=ny)) == ('2026-10-28',93.0)
+    assert parse_stockanalysis_completed(raw,'HYG',True,datetime(2026,10,29,12,tzinfo=ny)) == ('2026-10-28',92.0)
+    assert parse_stockanalysis_completed(raw,'SPY',now=datetime(2026,10,29,16,44,tzinfo=ny))[0] == '2026-10-28'
+    assert parse_stockanalysis_completed(raw,'SPY',now=datetime(2026,10,29,16,45,tzinfo=ny)) == ('2026-10-29',103.0)
+    assert parse_stockanalysis_completed('Market open '+raw,'SPY',now=datetime(2026,10,29,17,tzinfo=ny))[0] == '2026-10-28'
+    try:parse_stockanalysis_completed('Oct 30, 2026 200 210 190 205 204','SPY',now=datetime(2026,10,29,12,tzinfo=ny))
+    except RuntimeError:pass
+    else:raise AssertionError('future row accepted')
+    print(json.dumps({'completed_close_regression':'passed','cases':6},ensure_ascii=False))
+
+
+if __name__=='__main__':
+    _completed_close_self_test()
+    main()
