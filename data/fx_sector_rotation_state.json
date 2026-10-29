@@ -4,56 +4,60 @@
     {
       "ts": "2026-10-29T09:19:22+09:00",
       "value": 1339.2
+    },
+    {
+      "ts": "2026-10-29T11:59:48+09:00",
+      "value": 1333.8
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-10-29T09:19:22+09:00",
+    "checked_at": "2026-10-29T11:59:48+09:00",
     "market_phase": "정규장",
     "fx": {
-      "value": 1339.2,
+      "value": 1333.8,
       "prev_close": 1337.7,
       "naver_prev_close": 1343.5,
       "date": "2026-10-29",
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
-      "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20261028153514838",
+      "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20261028153050073",
       "basis_error": null,
       "basis_reused": false
     },
-    "session_low": 1339.2,
+    "session_low": 1333.8,
     "rebound_krw": 0.0,
     "rebound_pct": 0.0,
-    "daily_krw": 1.5,
-    "daily_pct": 0.11213276519399518,
-    "kospi_pct": 0.79,
+    "daily_krw": -3.900000000000091,
+    "daily_pct": -0.291545189504383,
+    "kospi_pct": -2.07,
     "ship": {
-      "avg": -2.4575,
+      "avg": -4.1325,
       "positive": 0,
-      "relative": -3.2475,
+      "relative": -2.0625000000000004,
       "valid": 4,
       "confirmed": false
     },
     "defense": {
-      "avg": -3.3575,
+      "avg": -4.8575,
       "positive": 0,
-      "relative": -4.1475,
+      "relative": -2.7875,
       "valid": 4,
       "confirmed": false
     },
     "auto": {
-      "avg": -0.7,
+      "avg": -1.9325,
       "positive": 0,
-      "relative": -1.49,
+      "relative": 0.13749999999999973,
       "valid": 4,
       "confirmed": false
     },
     "counter": {
-      "avg": -0.74,
+      "avg": -0.24999999999999994,
       "positive": 1,
-      "relative": -1.53,
+      "relative": 1.8199999999999998,
       "valid": 4,
       "confirmed": false
     }
