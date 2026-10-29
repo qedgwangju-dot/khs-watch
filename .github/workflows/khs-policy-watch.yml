@@ -79,9 +79,11 @@ jobs:
           import khs_policy_watch as policy
           from verify_khs_policy_delivery_contract import (
               assert_robotics_232_presidential_alert_reaches_delivery_guard,
+              assert_robotics_232_isolated_from_unrelated_policy_bundle,
           )
           policy._self_test_robotics_232_proclamation()
           assert_robotics_232_presidential_alert_reaches_delivery_guard()
+          assert_robotics_232_isolated_from_unrelated_policy_bundle()
           print("robotics_232_source_to_telegram_guard_regression=passed")
           PY
 
