@@ -920,5 +920,48 @@ class WarshKoreaQAFollowupTests(unittest.TestCase):
         sender.assert_not_called()
 
 
+class WarshBalanceDeliveryReceiptTests(unittest.TestCase):
+    def test_telegram_message_and_chat_receipt_required(self):
+        fake=MagicMock()
+        fake.__enter__.return_value=fake
+        fake.read.return_value=json.dumps({
+            'ok':True,'result':{'message_id':123,'chat':{'id':-10055}}
+        }).encode()
+        with patch.object(balance.base,'TOKEN','fake'), \
+             patch.object(balance.base,'CHAT','-10055'), \
+             patch.object(balance.base,'BOT','hshs8879_bot'), \
+             patch.object(balance.base,'botname',return_value='hshs8879_bot'), \
+             patch.object(balance.base.urllib.request,'urlopen',return_value=fake):
+            self.assertEqual(balance.base.send('검증'),123)
+            fake.read.return_value=json.dumps({
+                'ok':True,'result':{'chat':{'id':-10055}}
+            }).encode()
+            with self.assertRaisesRegex(RuntimeError,'message_id'):
+                balance.base.send('검증')
+            fake.read.return_value=json.dumps({
+                'ok':True,'result':{'message_id':124,'chat':{'id':-10066}}
+            }).encode()
+            with self.assertRaisesRegex(RuntimeError,'chat.id'):
+                balance.base.send('검증')
+
+    def test_pending_balance_send_blocks_all_retrievals(self):
+        prior={'pending_key':'opaque-event','delivery_status':'sending'}
+        with patch.object(balance.base,'load_state',return_value=prior), \
+             patch.object(balance.base,'h41_snapshot') as fetch, \
+             patch.object(balance.base,'send') as sender:
+            with self.assertRaisesRegex(RuntimeError,'중복 재전송 보류'):
+                balance.base.main()
+        fetch.assert_not_called()
+        sender.assert_not_called()
+
+    def test_balance_alert_key_is_stable(self):
+        cur={'date':'2026-10-28'}
+        impl={'fingerprint':'a'}
+        task={'fingerprint':'b'}
+        a=balance.base.alert_key(cur,impl,task,'구성 전환',['A','B'])
+        self.assertEqual(a,balance.base.alert_key(cur,impl,task,'구성 전환',['B','A']))
+        self.assertNotEqual(a,balance.base.alert_key(cur,impl,task,'총량 축소',['A','B']))
+
+
 if __name__ == "__main__":
     unittest.main()

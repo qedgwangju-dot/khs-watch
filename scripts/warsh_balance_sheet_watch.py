@@ -264,12 +264,31 @@ def botname():
     raise last
 def link(label,url):return f'<a href="{html.escape(url,quote=True)}">{html.escape(label)}</a>'
 def send(msg):
-    if not TOKEN or not CHAT:raise RuntimeError('Telegram 비밀값 없음')
-    if botname().lower()!=BOT.lower():raise RuntimeError('Telegram 봇 불일치')
-    d=urllib.parse.urlencode({'chat_id':CHAT,'text':msg[:4090],'parse_mode':'HTML','disable_web_page_preview':'true'}).encode(); q=urllib.request.Request(f'https://api.telegram.org/bot{TOKEN}/sendMessage',data=d,method='POST')
-    with urllib.request.urlopen(q,timeout=20) as r:
-        x=json.loads(r.read().decode())
-        if not x.get('ok'):raise RuntimeError('Telegram 전송 실패')
+    if not TOKEN or not CHAT:
+        raise RuntimeError('Telegram 비밀값 없음')
+    if len(msg)>4090:
+        raise RuntimeError('Telegram 메시지 길이 초과 — 잘라 보내지 않음')
+    if botname().lower()!=BOT.lower():
+        raise RuntimeError('Telegram 봇 불일치')
+    payload=urllib.parse.urlencode({
+        'chat_id':CHAT,'text':msg,'parse_mode':'HTML',
+        'disable_web_page_preview':'true'
+    }).encode()
+    req=urllib.request.Request(
+        f'https://api.telegram.org/bot{TOKEN}/sendMessage',data=payload,method='POST')
+    with urllib.request.urlopen(req,timeout=20) as response:
+        data=json.loads(response.read().decode('utf-8'))
+    if data.get('ok') is not True:
+        raise RuntimeError('Telegram API 전송 실패')
+    receipt=data.get('result') or {}
+    message_id=receipt.get('message_id')
+    if not isinstance(message_id,int) or isinstance(message_id,bool):
+        raise RuntimeError('Telegram message_id 미확인 — 성공 처리 보류')
+    real_chat=str((receipt.get('chat') or {}).get('id') or '')
+    if CHAT.lstrip('-').isdigit() and real_chat!=CHAT:
+        raise RuntimeError('Telegram chat.id 불일치 — 성공 처리 보류')
+    return message_id
+
 
 def usd_level(v_mn):
     v=float(v_mn)
@@ -339,29 +358,89 @@ def summary_message(cur,impl,task,regime,four,reason):
     ]
     return '\n'.join(lines)
 
+def alert_key(cur,impl,task,regime,reasons):
+    """Deterministic content key, not an execution timestamp."""
+    core={
+        'h41_date':cur.get('date'),
+        'implementation':impl.get('fingerprint'),
+        'task_force':task.get('fingerprint'),
+        'regime':regime,
+        'reasons':sorted(set(reasons)),
+    }
+    return hashlib.sha256(
+        json.dumps(core,sort_keys=True,ensure_ascii=False).encode('utf-8')
+    ).hexdigest()
+
+
 def main():
-    old=load_state(); first=not bool(old); old_schema=old.get('schema_version',1)
-    cur=h41_snapshot(); impl=latest_impl_note(); task=task_snapshot()
+    old=load_state()
+    # A possibly accepted Telegram send must be reconciled before any retry.
+    if old.get('pending_key') and old.get('delivery_status')=='sending':
+        raise RuntimeError('과거 대차대조표 전송 응답 불명확 — 중복 재전송 보류')
+    first=not bool(old)
+    old_schema=old.get('schema_version',1)
+    cur=h41_snapshot()
+    impl=latest_impl_note()
+    task=task_snapshot()
 
-    # Schema 4 switches every stock variable to the same Wednesday-level basis.
-    # Discard pre-v4 history so weekly/4-week comparisons never mix averages and point-in-time balances.
     history=[] if old_schema<SCHEMA_VERSION else old.get('history',[])
-    prev=previous_observation(history, cur.get('date'))
+    prev=previous_observation(history,cur.get('date'))
     if prev:
-        for key in ['total_assets','treasury','bills','mbs','reserves','securities']:
-            if cur.get(key) is not None and prev.get(key) is not None:
-                cur[key+'_weekly']=cur[key]-prev[key]
-
+        for name in ['total_assets','treasury','bills','mbs','reserves','securities']:
+            if cur.get(name) is not None and prev.get(name) is not None:
+                cur[name+'_weekly']=cur[name]-prev[name]
     regime,four=classify_h41(cur,history)
     reasons=[]
-    if old.get('implementation',{}).get('url') not in (None,impl['url']):reasons.append('새 FOMC 시행지침')
-    if old.get('implementation',{}).get('mode') not in (None,impl['mode']):reasons.append('대차대조표 정책문구 판정 변경')
-    if old.get('task_force',{}).get('fingerprint') not in (None,task['fingerprint']):reasons.append('대차대조표 태스크포스 공식내용 변경')
-    if old.get('regime') not in (None,regime) and old.get('h41',{}).get('date')!=cur.get('date'):reasons.append('H.4.1 구조 판정 변경')
-    if '대차대조표 총량 축소/QT 명시'==impl['mode'] and old.get('implementation',{}).get('mode')!=impl['mode']:reasons.append('QT 명시 감지')
-    if FORCE or (not first and reasons):send(summary_message(cur,impl,task,regime,four,' · '.join(dict.fromkeys(reasons)) or '강제 점검'))
-    newhist=[h for h in history if h.get('date')!=cur.get('date')][-11:]+[cur]
-    save_state({'schema_version':SCHEMA_VERSION,'measurement_basis':'수요일 잔액','h41':cur,'history':newhist,'regime':regime,'four_week_change_bn':four,'implementation':impl,'task_force':task})
-    print(json.dumps({'first_run':first,'reasons':reasons,'h41_date':cur.get('date'),'regime':regime,'implementation_mode':impl['mode'],'implementation_date':impl.get('date')},ensure_ascii=False))
+    if old.get('implementation',{}).get('url') not in (None,impl['url']):
+        reasons.append('새 FOMC 시행지침')
+    if old.get('implementation',{}).get('mode') not in (None,impl['mode']):
+        reasons.append('대차대조표 정책문구 판정 변경')
+    if old.get('task_force',{}).get('fingerprint') not in (None,task['fingerprint']):
+        reasons.append('대차대조표 태스크포스 공식내용 변경')
+    if old.get('regime') not in (None,regime) and old.get('h41',{}).get('date')!=cur.get('date'):
+        reasons.append('H.4.1 구조 판정 변경')
+    if impl['mode']=='대차대조표 총량 축소/QT 명시' and old.get('implementation',{}).get('mode')!=impl['mode']:
+        reasons.append('QT 명시 감지')
+
+    history_new=[h for h in history if h.get('date')!=cur.get('date')][-11:]+[cur]
+    new={
+        'schema_version':SCHEMA_VERSION,
+        'measurement_basis':'수요일 잔액',
+        'h41':cur,'history':history_new,'regime':regime,
+        'four_week_change_bn':four,
+        'implementation':impl,'task_force':task,
+    }
+    for k in ('last_sent_key','last_sent_message_id','last_sent_at_utc',
+              'delivery_status','pending_key'):
+        if k in old:
+            new[k]=old[k]
+    sent=False
+    receipt=None
+    key=alert_key(cur,impl,task,regime,reasons)
+    should_notify=FORCE or (not first and bool(reasons))
+    if should_notify and (FORCE or old.get('last_sent_key')!=key):
+        pending=dict(old)
+        pending.update({'pending_key':key,'delivery_status':'sending'})
+        save_state(pending)
+        receipt=send(summary_message(cur,impl,task,regime,four,
+                                     ' · '.join(dict.fromkeys(reasons)) or '강제 점검'))
+        if not isinstance(receipt,int) or isinstance(receipt,bool):
+            raise RuntimeError('Telegram 전송 영수증 미확인')
+        new.update({
+            'last_sent_key':key,'last_sent_message_id':receipt,
+            'last_sent_at_utc':datetime.now(timezone.utc).isoformat(),
+            'pending_key':None,'delivery_status':'confirmed'
+        })
+        sent=True
+    save_state(new)
+    print(json.dumps({
+        'first_run':first,'reasons':reasons,
+        'h41_date':cur.get('date'),'regime':regime,
+        'implementation_mode':impl['mode'],
+        'implementation_date':impl.get('date'),
+        'sent':sent,'message_id':receipt,
+        'delivery_status':new.get('delivery_status'),
+    },ensure_ascii=False))
+
 
 if __name__=='__main__':main()
