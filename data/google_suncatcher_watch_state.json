@@ -1,6 +1,6 @@
 {
   "parser_version": 3,
-  "updated_at_utc": "2026-10-29T11:47:27+00:00",
+  "updated_at_utc": "2026-10-29T18:27:34+00:00",
   "mission_status": {
     "launch_success": true,
     "contact_confirmed": true,
@@ -67,13 +67,6 @@
       "story_key": "suncatcher|orbit-launch-confirmation"
     },
     {
-      "title": "SpaceX launches Google AI chips into orbit in push toward space-based data centers - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNUkdhZGNReVpJcWxxUzVmZjljcURHdm5oc3ZjMzFWZ3lTd08zUUVISno0QU5LUklld1JSVGc2LVprclc2REVPZW1LN1hveWNpNXhncTlJZjgwMUtvRlJCWHBRUXFLWGVjcXNnNl9mQ0k3VTh0SnBiTmowOFVVZEhseVZLbzM3dkdjaWJNaTZ2aFY2ZmlrTHhscEN6WEpZUlUyVVctWXh5d3hQd9IBrwFBVV95cUxQYVJadHZIVjJjd1dIQUR3cHZiWTZUNzhSMkxVdzV4czFEWDVCajdVNEFPR1ExaERiZE5UbERZNFlwOEoxQkRnMVpfOU1TbTFHcUpGQjNyZHljdWd4aTJTX0lMelRZdUJFSkhYLWlYdk9BdjVfZ21WYzlGN1lYNWJ5Wk1Ud3dFYVRsZ0dGWlVlcW9fckhVcG5teG5JU0RHYzVGNE5NSEkxOHFCT2NlNmFj?oc=5",
-      "source": "CNBC",
-      "published": "Thu, 01 Oct 2026 07:00:00 GMT",
-      "story_key": "suncatcher|news|spacex-launches-google-ai-chips-into-orbit-in-push-toward-space-based-data-centers-cnbc"
-    },
-    {
       "title": "Google Launches Suncatcher Satellite, 4 TPUs in Orbit [2026] - https://tech-insider.org/",
       "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5YOHZ1M1Q5M2JSOVJmZUdQY1BBZFFxcDJSXzY0YjdnVXJGQW0tTUh6dmh5RlRsekFyeVUzaXY3d1hRd0o4a0dkdTJIVHhkaDlycTlHRjBuYTgzdFdrZEN0YTFVdDFEWlFxbW44VkVZRkh5VlZTazBkMnA4NXI5VjQ?oc=5",
       "source": "https://tech-insider.org/",
@@ -95,18 +88,18 @@
       "story_key": "suncatcher|news|behind-project-suncatcher-our-moonshot-to-put-ai-in-space-blog-google"
     },
     {
-      "title": "Google Takes the A.I. Data Center Race to Outer Space - The New York Times",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQUEx1YzkwWVhOQ25ocmRXYkJ6SWh1Q01wRG1QY096aW9UZkVDbTdNWnoyRWJtcEIwZVVoVEJJUmNpWlhnQVRXTkpzYTg3QzR5OThOS1JXMVc0bnF2dDNXVFU1QnE5bjVpZ2pCUVZwYnZ2bjhUckwwNG02S01MbmY3ckdaRzM5c2Q1c2xmZ05LenBpVEk?oc=5",
-      "source": "The New York Times",
-      "published": "Thu, 24 Sep 2026 07:00:00 GMT",
-      "story_key": "suncatcher|news|google-takes-the-a-i-data-center-race-to-outer-space-the-new-york-times"
-    },
-    {
       "title": "Google’s Project Suncatcher Is Sending AI Chips Into Space Next Week - Gizmodo",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNQ0xscjZHZjd2dm5hSUJscTRPa3h6cGVKYmctVEJrb1B1d3R0SjRxR0Q0YTFZWFEtTjdfRTM0YjQ0eHRIZFVVRG9iVnpzRVdnN2dJeHVPbmtlTXE4VHZKNmwtUkhCdVlFRTk2U0dDTEpzZ0xIeVJDT1k1U0VqM181UWxtdk1ZRmY1SUtxQlFRLVhGR1ZPR25ISHFyZlktajg?oc=5",
       "source": "Gizmodo",
       "published": "Thu, 24 Sep 2026 07:00:00 GMT",
       "story_key": "suncatcher|news|google-s-project-suncatcher-is-sending-ai-chips-into-space-next-week-gizmodo"
+    },
+    {
+      "title": "Google Takes the A.I. Data Center Race to Outer Space - The New York Times",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQUEx1YzkwWVhOQ25ocmRXYkJ6SWh1Q01wRG1QY096aW9UZkVDbTdNWnoyRWJtcEIwZVVoVEJJUmNpWlhnQVRXTkpzYTg3QzR5OThOS1JXMVc0bnF2dDNXVFU1QnE5bjVpZ2pCUVZwYnZ2bjhUckwwNG02S01MbmY3ckdaRzM5c2Q1c2xmZ05LenBpVEk?oc=5",
+      "source": "The New York Times",
+      "published": "Thu, 24 Sep 2026 07:00:00 GMT",
+      "story_key": "suncatcher|news|google-takes-the-a-i-data-center-race-to-outer-space-the-new-york-times"
     },
     {
       "title": "Google’s first Project Suncatcher AI satellite set to blast off into orbit next week - SiliconANGLE",
@@ -123,6 +116,13 @@
       "story_key": "suncatcher|news|google-thinks-spacex-s-starship-has-to-launch-1-800-times-before-space-data-centers-get-off-the-ground-techcrunch"
     },
     {
+      "title": "Project Suncatcher: Google’s First Step Toward AI Data Centers in Space - Intelligent Living",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE91UUhnS2VaZE42MVgzOFNkMDJBNnpJNlRWcVdPSkdWaFFDdzRwMF9WOF9iclNfTGhxRXJaRDBFLWJqV0dqOGI1aWU3NnAtN1RUQVpsMUFPWm1laURCVHZqZF9sZmFQV2JkVTlsS2pxNWYxMnJjZWM1RWJvdjhoY00?oc=5",
+      "source": "Intelligent Living",
+      "published": "Fri, 16 Oct 2026 07:00:00 GMT",
+      "story_key": "suncatcher|news|project-suncatcher-google-s-first-step-toward-ai-data-centers-in-space-intelligent-living"
+    },
+    {
       "title": "Google Project Suncatcher: 4 TPUs Launch to Orbit Oct 1 - https://tech-insider.org/",
       "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNRWN3R0VadU0zN1R2dWtKUFNoTkF6VTYzeWwyS2swanA1OXZIWXdFY2ZHdHRmVmdDVDZVVUFHSlNDcE9zSzBnMm1Pc29hMkZLcTk5N281eWJHSU9JSHhkUFpaNS1OdXpkV0MzNkRiMG5PdkhoYVN2SWtNeTYzb3A4T09oOFlyUQ?oc=5",
       "source": "https://tech-insider.org/",
@@ -137,11 +137,11 @@
       "story_key": "suncatcher|orbit-launch-confirmation"
     },
     {
-      "title": "Project Suncatcher: Google’s First Step Toward AI Data Centers in Space - Intelligent Living",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE91UUhnS2VaZE42MVgzOFNkMDJBNnpJNlRWcVdPSkdWaFFDdzRwMF9WOF9iclNfTGhxRXJaRDBFLWJqV0dqOGI1aWU3NnAtN1RUQVpsMUFPWm1laURCVHZqZF9sZmFQV2JkVTlsS2pxNWYxMnJjZWM1RWJvdjhoY00?oc=5",
-      "source": "Intelligent Living",
-      "published": "Fri, 16 Oct 2026 07:00:00 GMT",
-      "story_key": "suncatcher|news|project-suncatcher-google-s-first-step-toward-ai-data-centers-in-space-intelligent-living"
+      "title": "Google Suncatcher’s Next Act: 2 Satellites by 2027 [2026] - shattered.io",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE52WXJIWDNEUHRMLU9NOGhBZjFTRWttRkxac1ZIMUNnc2hwT1pDbGZ3c2FKVnNrSGp2UW5NeDEwY0gtYmFqZTk2SzNUQnpoeTh3c0hKcTQtSDBIZGFVU2laNXNURVlvTm1IV2dKWjZfWG5Malp0a2VUZw?oc=5",
+      "source": "shattered.io",
+      "published": "Thu, 01 Oct 2026 07:00:00 GMT",
+      "story_key": "suncatcher|news|google-suncatcher-s-next-act-2-satellites-by-2027-2026-shattered-io"
     },
     {
       "title": "Google Sends Its AI Chips Into Orbit for Project Suncatcher’s First Test - Technology Org",
@@ -186,13 +186,6 @@
       "story_key": "suncatcher|news|google-sends-tpus-into-space-project-suncatcher-begins-first-orbital-test-for-ai-data-centers-igor-slab"
     },
     {
-      "title": "Google Suncatcher’s Next Act: 2 Satellites by 2027 [2026] - shattered.io",
-      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE52WXJIWDNEUHRMLU9NOGhBZjFTRWttRkxac1ZIMUNnc2hwT1pDbGZ3c2FKVnNrSGp2UW5NeDEwY0gtYmFqZTk2SzNUQnpoeTh3c0hKcTQtSDBIZGFVU2laNXNURVlvTm1IV2dKWjZfWG5Malp0a2VUZw?oc=5",
-      "source": "shattered.io",
-      "published": "Thu, 01 Oct 2026 07:00:00 GMT",
-      "story_key": "suncatcher|news|google-suncatcher-s-next-act-2-satellites-by-2027-2026-shattered-io"
-    },
-    {
       "title": "Google’s Suncatcher aims for datacentres in space with TPU moonshot - Electronics Weekly",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOWlBNN2VkZHh2bUNhQXlhTkRoRHh6ZGtKTDNHeWxWWDRPN255dkR5cGhFTk9HdDRneUdFWDltWFdUVTB1ZndVbzRJaTh4a0pYQmpteWlRQmRtY29vNU5IU001eFV4NHJKdzdDbEFPMVlDNk5fSmowcmNPbk41V1IycFpXVWFfVjRLc2Yza3BUamhpa3hfeEM5N3pIOHlROEVKXzlHanZpLUNUMUhnNVlDU05TdU4?oc=5",
       "source": "Electronics Weekly",
@@ -200,18 +193,18 @@
       "story_key": "suncatcher|news|google-s-suncatcher-aims-for-datacentres-in-space-with-tpu-moonshot-electronics-weekly"
     },
     {
-      "title": "Google Launches AI Chips Into Orbit to Test Space Data Centers - TechRepublic",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPY29WWFhTRnRQS3BtNHBTbDE0SjZ2TmlQUWRHLTc4ZXFxWFlnYnBzb2diakpIbjNDdmNFRnlOR2U3WWVLeEJnVFZFOHBfQWJMZ2pwUkxneERpaWw5eUxmdU00eWVPQUo5bUJ1M3Ziajl0S0k0SDNJLVVBdWtTc1VwMDM4bU5QZlhQdzY4?oc=5",
-      "source": "TechRepublic",
-      "published": "Fri, 02 Oct 2026 07:00:00 GMT",
-      "story_key": "suncatcher|news|google-launches-ai-chips-into-orbit-to-test-space-data-centers-techrepublic"
-    },
-    {
       "title": "Google Takes First Step Toward Space Data Centers with TPU Satellite Launch on October 1 - BigGo Finance",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9CajR2UkVHaG5BRjM5SnRpWUoxWFhNR21KTzhJYWludHIxdDR4bmZYaTJDV1JXdzFaZ0FORFAwYmh6am5tcUloOG5Pajh0OUtzUHpRcjNPb3k3UXdHVzcwREhMTTZaMFRHXzB3N2hKZEQtT3VuUGc?oc=5",
       "source": "BigGo Finance",
       "published": "Fri, 25 Sep 2026 07:00:00 GMT",
       "story_key": "suncatcher|news|google-takes-first-step-toward-space-data-centers-with-tpu-satellite-launch-on-october-1-biggo-finance"
+    },
+    {
+      "title": "Google Launches AI Chips Into Orbit to Test Space Data Centers - TechRepublic",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPY29WWFhTRnRQS3BtNHBTbDE0SjZ2TmlQUWRHLTc4ZXFxWFlnYnBzb2diakpIbjNDdmNFRnlOR2U3WWVLeEJnVFZFOHBfQWJMZ2pwUkxneERpaWw5eUxmdU00eWVPQUo5bUJ1M3Ziajl0S0k0SDNJLVVBdWtTc1VwMDM4bU5QZlhQdzY4?oc=5",
+      "source": "TechRepublic",
+      "published": "Fri, 02 Oct 2026 07:00:00 GMT",
+      "story_key": "suncatcher|news|google-launches-ai-chips-into-orbit-to-test-space-data-centers-techrepublic"
     },
     {
       "title": "Google Suncatcher: 15-Min Bursts Raise Cost Doubts [2026] - https://tech-insider.org/",
@@ -226,6 +219,13 @@
       "source": "Startup Fortune",
       "published": "Fri, 02 Oct 2026 07:00:00 GMT",
       "story_key": "suncatcher|news|google-launches-four-tpus-into-orbit-to-test-ai-data-centers-in-space-startup-fortune"
+    },
+    {
+      "title": "Google launches satellites for Project Suncatcher: Could AI data centers eventually operate in space? - Notebookcheck",
+      "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOU09YTDdURU03QjY2Nkl0aG4wX25WRnlJX1VsNXladzg1Z21JcjExSU52VG5Lb3U1Z3Bxd2RzeURQaEdlSHk5NjBrOVFUZmlyVlBjS0d5Y1k2UGthbTRUcTBFQThtRjZrbmljQnJEaGZCSEU3RGVvQmR1YnJkcEFfRXRLeV9yNGJzenFPVktpNEVGOE0yZE0wcm9vT1RoOWpWa0JSSkMwTGFMcGNLQ2FiQm1wVHlJa3FjUmxLMmZBWWQ5ZDN2aXp3QTJUT2lLNEFtYXJieUF6QXJfb3NW?oc=5",
+      "source": "Notebookcheck",
+      "published": "Fri, 02 Oct 2026 07:00:00 GMT",
+      "story_key": "suncatcher|orbit-launch-confirmation"
     },
     {
       "title": "Google sends TPUs into space for testing - Techzine Global",
@@ -247,77 +247,84 @@
       "source": "Forkast News",
       "published": "Mon, 28 Sep 2026 07:00:00 GMT",
       "story_key": "suncatcher|news|google-project-suncatcher-the-first-physical-step-toward-orbital-ai-compute-forkast-news"
+    },
+    {
+      "title": "Google to test AI chips in space with first Suncatcher satellite mission - ET Enterprise AI",
+      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNYzBILXNNNXBtRUlMN1FXdGp3UXU5MTFoaC1nSGUtOWc4SEpSSzdZY0J0aXU3ZTdsRF8wWFlmdDVlVWV4b2NGdklWV01VZWpGZkotU215OUY3U1k4WmlqbGYzc3lxeURrUGhKM2NKSi11T1VsMzkta19NQkdPeUJjVnZxVy1fdFFoSTI0LXV6UFJodi0xakxYT3lNUGtwUlUzX2hYMGRyaTR1WV9pRGpJUlYzZmFFUE94bnVUdzZ0Z3BBdVNqbHpITGlPVUpLc2xHSGE3b0FYLVUyVUZXR2t30gHkAUFVX3lxTFBuWk1ZZXp2bDJNTGNUWnItQ2d0TE90azBSbWM3QV8yNXl4S2ZaUERTb0UweUtSX2R5X3dZOEI1MGxhclMzc1V3N3VDazJocmZCcU0zZ3VzeXgyRGNOQ2NhRXNpem1Cc2ZxcTZDcTRwNjRxNXhVQmhHWWJ2YktyOEtjLTZBclpMWnlaN1ZKTmhyamQwaE5VeVd4OVZnY0lneVNsalQ1WnU2VzBsdml1eUwtak0tSnJPMTdZeDVENW1JRGZGM19TaFgzYmo2d0oxQ2hXUWlZSlNKMVNjMERTYmNyc1ZUdQ?oc=5",
+      "source": "ET Enterprise AI",
+      "published": "Fri, 25 Sep 2026 07:00:00 GMT",
+      "story_key": "suncatcher|news|google-to-test-ai-chips-in-space-with-first-suncatcher-satellite-mission-et-enterprise-ai"
     }
   ],
   "seen_news_story_keys": [
     "suncatcher|orbit-launch-confirmation",
-    "suncatcher|news|spacex-launches-google-ai-chips-into-orbit-in-push-toward-space-based-data-centers-cnbc",
     "suncatcher|news|ai-data-centers-in-space-google-kicks-off-the-race-with-a-key-test-cnn",
     "suncatcher|news|behind-project-suncatcher-our-moonshot-to-put-ai-in-space-blog-google",
-    "suncatcher|news|google-takes-the-a-i-data-center-race-to-outer-space-the-new-york-times",
     "suncatcher|news|google-s-project-suncatcher-is-sending-ai-chips-into-space-next-week-gizmodo",
+    "suncatcher|news|google-takes-the-a-i-data-center-race-to-outer-space-the-new-york-times",
     "suncatcher|news|google-s-first-project-suncatcher-ai-satellite-set-to-blast-off-into-orbit-next-week-siliconangle",
     "suncatcher|news|google-thinks-spacex-s-starship-has-to-launch-1-800-times-before-space-data-centers-get-off-the-ground-techcrunch",
     "suncatcher|news|project-suncatcher-google-s-first-step-toward-ai-data-centers-in-space-intelligent-living",
+    "suncatcher|news|google-suncatcher-s-next-act-2-satellites-by-2027-2026-shattered-io",
     "suncatcher|news|google-sends-its-ai-chips-into-orbit-for-project-suncatcher-s-first-test-technology-org",
     "suncatcher|news|project-suncatcher-google-sends-tpus-into-space-stratnews-global",
     "suncatcher|news|google-s-project-suncatcher-prototype-heads-to-orbit-for-ai-chip-tests-unite-ai",
     "suncatcher|news|google-sends-tpus-into-space-project-suncatcher-begins-first-orbital-test-for-ai-data-centers-igor-slab",
-    "suncatcher|news|google-suncatcher-s-next-act-2-satellites-by-2027-2026-shattered-io",
     "suncatcher|news|google-s-suncatcher-aims-for-datacentres-in-space-with-tpu-moonshot-electronics-weekly",
-    "suncatcher|news|google-launches-ai-chips-into-orbit-to-test-space-data-centers-techrepublic",
     "suncatcher|news|google-takes-first-step-toward-space-data-centers-with-tpu-satellite-launch-on-october-1-biggo-finance",
+    "suncatcher|news|google-launches-ai-chips-into-orbit-to-test-space-data-centers-techrepublic",
     "suncatcher|news|google-suncatcher-15-min-bursts-raise-cost-doubts-2026-https-tech-insider-org",
     "suncatcher|news|google-launches-four-tpus-into-orbit-to-test-ai-data-centers-in-space-startup-fortune",
     "suncatcher|news|google-sends-tpus-into-space-for-testing-techzine-global",
     "suncatcher|news|google-project-suncatcher-the-first-physical-step-toward-orbital-ai-compute-forkast-news",
-    "suncatcher|news|google-will-launch-four-tpus-into-orbit-on-october-1-aboard-a-spacex-rocket-startup-fortune",
-    "suncatcher|news|project-suncatcher-google-bets-gemini-can-run-on-sunlight-15-minutes-at-a-time-martin-cid-magazine",
-    "suncatcher|news|google-sends-four-tpus-to-orbit-on-oct-1-for-project-suncatcher-test-pasquale-pillitteri",
-    "suncatcher|news|google-suncatcher-15-min-bursts-raise-cost-doubts-2026-tech-insider-org",
-    "suncatcher|telemetry|google-project-suncatcher-reaches-orbit-cooling-not-radiation-now-defines-mission-tech-times",
-    "suncatcher|news|google-will-launch-four-tpus-into-orbit-on-october-1-aboard-a-spacex-rocket-startupfortune-com",
-    "suncatcher|news|google-will-test-ai-chips-in-space-with-project-suncatcher-tbreak-uae",
+    "suncatcher|news|google-to-test-ai-chips-in-space-with-first-suncatcher-satellite-mission-et-enterprise-ai",
     "suncatcher|news|google-to-test-ai-chips-in-space-with-first-suncatcher-satellite-mission-enterpriseai-economictimes-indiatimes-com",
-    "suncatcher|news|google-hitches-a-ride-aboard-elon-musk-s-spacex-sends-tpus-to-space-ceo-sundar-pichai-says-well-we-ar-the-times-of-india",
-    "suncatcher|news|google-to-test-ai-chips-in-space-with-project-suncatcher-analytics-india-magazine",
-    "suncatcher|news|google-to-launch-first-tpu-satellite-on-spacex-transporter-18-quartz",
-    "suncatcher|news|meet-project-suncatcher-google-s-plan-to-put-ai-data-centers-in-space-ars-technica",
-    "suncatcher|news|google-plans-first-test-of-ai-chips-in-space-under-project-suncatcher-reuters-com",
-    "suncatcher|news|google-launches-four-tpus-into-orbit-to-test-ai-data-centers-in-space-startupfortune-com",
-    "suncatcher|news|google-is-preparing-to-test-whether-its-tensor-processing-units-tpus-can-operate-in-space-as-part-of-project-suncatcher-",
-    "suncatcher|news|google-prepares-first-in-orbit-tpu-test-for-project-suncatcher-findarticles",
-    "suncatcher|news|google-unveils-project-suncatcher-envisioning-ai-models-running-in-space-infoq-com",
-    "suncatcher|news|google-sends-tpus-into-space-project-suncatcher-begins-first-orbital-test-for-ai-data-centers-igorslab-de",
     "suncatcher|news|google-in-talks-with-spacex-regarding-suncatcher-orbital-data-center-project-data-center-dynamics",
-    "suncatcher|news|google-s-suncatcher-aims-for-datacentres-in-space-with-tpu-moonshot-electronicsweekly-com",
-    "suncatcher|news|google-takes-first-step-toward-space-data-centers-with-tpu-satellite-launch-on-october-1-finance-biggo-com",
-    "suncatcher|news|google-sends-tpu-chips-into-orbit-to-test-hardware-for-future-space-data-centers-interestingengineering-com",
-    "suncatcher|news|google-moves-project-suncatcher-toward-first-in-orbit-ai-chip-test-konsulteer",
-    "suncatcher|news|google-tests-tpu-reliability-in-space-with-project-suncatcher-electronicsforyou-biz",
-    "suncatcher|news|google-hitches-a-ride-aboard-elon-musk-s-spacex-sends-tpus-to-space-ceo-sundar-pichai-says-well-we-are-going-to-find-the",
-    "suncatcher|news|google-launches-tpu-to-test-space-data-center-vision-with-spacex-chosunbiz-chosunbiz",
+    "suncatcher|news|ai-data-centers-in-space-google-kicks-off-the-race-with-a-key-test-cnn-com",
+    "suncatcher|news|one-small-step-for-tpus-google-ceo-sundar-pichai-announces-project-suncatcher-to-test-ai-compute-in-space-dd-news",
+    "suncatcher|news|google-will-launch-four-tpus-into-orbit-on-october-1-aboard-a-spacex-rocket-startupfortune-com",
     "suncatcher|news|elon-musk-responds-with-two-emojis-as-google-ceo-sundar-pichai-says-project-suncatcher-heads-to-space-c-benzinga",
+    "suncatcher|news|meet-project-suncatcher-a-research-moonshot-to-scale-machine-learning-compute-in-space-blog-google",
+    "suncatcher|news|google-launches-four-tpus-into-orbit-to-test-ai-data-centers-in-space-startupfortune-com",
     "suncatcher|news|google-launches-tpu-to-test-space-data-center-vision-with-spacex-chosunbiz-biz-chosun-com",
     "suncatcher|news|one-small-step-for-tpus-google-ceo-sundar-pichai-announces-project-suncatcher-to-test-ai-compute-in-spa-the-economic-tim",
-    "suncatcher|news|ai-data-centers-in-space-google-kicks-off-the-race-with-a-key-test-cnn-com",
-    "suncatcher|news|google-tests-tpu-reliability-in-space-with-project-suncatcher-electronics-for-you-business",
-    "suncatcher|news|google-sends-tpu-chips-into-orbit-to-test-hardware-for-future-space-data-centers-interesting-engineering",
-    "suncatcher|news|google-to-send-ai-chips-into-orbit-next-week-aboard-spacex-rocket-eyes-data-center-in-space-tradingview",
-    "suncatcher|news|google-takes-the-a-i-data-center-race-to-outer-space-nytimes-com",
-    "suncatcher|news|one-small-step-for-tpus-google-ceo-sundar-pichai-announces-project-suncatcher-to-test-ai-compute-in-space-dd-news",
-    "suncatcher|news|google-advances-project-suncatcher-with-first-orbital-ai-hardware-test-konsulteer",
-    "suncatcher|news|meet-project-suncatcher-a-research-moonshot-to-scale-machine-learning-compute-in-space-blog-google",
-    "suncatcher|news|google-s-project-suncatcher-is-sending-ai-chips-into-space-next-week-aol-com",
-    "suncatcher|news|one-small-step-for-tpus-google-ceo-sundar-pichai-announces-project-suncatcher-to-test-ai-compute-in-space-the-economic-t",
-    "suncatcher|news|google-sends-ai-chips-to-space-testing-orbital-data-centers-aktualita-co",
-    "suncatcher|news|planet-to-build-and-operate-advanced-space-platform-for-google-s-project-suncatcher-moonshot-planet-labs",
-    "suncatcher|news|project-suncatcher-google-sends-tpus-into-space-stratnewsglobal-com",
-    "suncatcher|news|google-to-test-ai-chips-in-space-with-first-suncatcher-satellite-mission-et-enterprise-ai",
+    "suncatcher|telemetry|google-project-suncatcher-reaches-orbit-cooling-not-radiation-now-defines-mission-tech-times",
     "suncatcher|news|google-s-first-project-suncatcher-ai-satellite-set-to-blast-off-into-orbit-next-week-siliconangle-com",
-    "suncatcher|news|google-sends-tpus-into-space-to-check-if-their-gpu-challenger-functions-in-space-cxotoday-com",
+    "suncatcher|news|google-s-suncatcher-aims-for-datacentres-in-space-with-tpu-moonshot-electronicsweekly-com",
+    "suncatcher|news|google-sends-tpu-chips-into-orbit-to-test-hardware-for-future-space-data-centers-interestingengineering-com",
+    "suncatcher|news|google-tests-tpu-reliability-in-space-with-project-suncatcher-electronicsforyou-biz",
+    "suncatcher|news|google-hitches-a-ride-aboard-elon-musk-s-spacex-sends-tpus-to-space-ceo-sundar-pichai-says-well-we-are-going-to-find-the",
+    "suncatcher|news|google-tests-tpu-reliability-in-space-with-project-suncatcher-electronics-for-you-business",
+    "suncatcher|news|project-suncatcher-google-bets-gemini-can-run-on-sunlight-15-minutes-at-a-time-martin-cid-magazine",
+    "suncatcher|news|google-launches-tpu-to-test-space-data-center-vision-with-spacex-chosunbiz-chosunbiz",
+    "suncatcher|news|google-takes-first-step-toward-space-data-centers-with-tpu-satellite-launch-on-october-1-finance-biggo-com",
+    "suncatcher|news|google-sends-tpu-chips-into-orbit-to-test-hardware-for-future-space-data-centers-interesting-engineering",
+    "suncatcher|news|google-plans-first-test-of-ai-chips-in-space-under-project-suncatcher-reuters",
+    "suncatcher|news|google-sends-ai-chips-to-space-testing-orbital-data-centers-aktualita-co",
+    "suncatcher|news|google-to-send-ai-chips-into-orbit-next-week-aboard-spacex-rocket-eyes-data-center-in-space-tradingview",
     "suncatcher|news|google-to-launch-first-tpu-satellite-on-spacex-transporter-18-qz-com",
-    "suncatcher|news|google-plans-first-test-of-ai-chips-in-space-under-project-suncatcher-reuters"
+    "suncatcher|news|google-sends-tpus-into-space-project-suncatcher-begins-first-orbital-test-for-ai-data-centers-igorslab-de",
+    "suncatcher|news|spacex-launches-google-ai-chips-into-orbit-in-push-toward-space-based-data-centers-cnbc",
+    "suncatcher|news|google-to-test-ai-chips-in-space-with-project-suncatcher-analytics-india-magazine",
+    "suncatcher|news|google-suncatcher-15-min-bursts-raise-cost-doubts-2026-tech-insider-org",
+    "suncatcher|news|google-to-launch-first-tpu-satellite-on-spacex-transporter-18-quartz",
+    "suncatcher|news|google-will-launch-four-tpus-into-orbit-on-october-1-aboard-a-spacex-rocket-startup-fortune",
+    "suncatcher|news|google-prepares-first-in-orbit-tpu-test-for-project-suncatcher-findarticles",
+    "suncatcher|news|planet-to-build-and-operate-advanced-space-platform-for-google-s-project-suncatcher-moonshot-planet-labs",
+    "suncatcher|news|google-is-preparing-to-test-whether-its-tensor-processing-units-tpus-can-operate-in-space-as-part-of-project-suncatcher-",
+    "suncatcher|news|google-unveils-project-suncatcher-envisioning-ai-models-running-in-space-infoq-com",
+    "suncatcher|news|google-moves-project-suncatcher-toward-first-in-orbit-ai-chip-test-konsulteer",
+    "suncatcher|news|google-sends-tpus-into-space-to-check-if-their-gpu-challenger-functions-in-space-cxotoday-com",
+    "suncatcher|news|one-small-step-for-tpus-google-ceo-sundar-pichai-announces-project-suncatcher-to-test-ai-compute-in-space-the-economic-t",
+    "suncatcher|news|meet-project-suncatcher-google-s-plan-to-put-ai-data-centers-in-space-ars-technica",
+    "suncatcher|news|google-plans-first-test-of-ai-chips-in-space-under-project-suncatcher-reuters-com",
+    "suncatcher|news|google-advances-project-suncatcher-with-first-orbital-ai-hardware-test-konsulteer",
+    "suncatcher|news|project-suncatcher-google-sends-tpus-into-space-stratnewsglobal-com",
+    "suncatcher|news|google-hitches-a-ride-aboard-elon-musk-s-spacex-sends-tpus-to-space-ceo-sundar-pichai-says-well-we-ar-the-times-of-india",
+    "suncatcher|news|google-takes-the-a-i-data-center-race-to-outer-space-nytimes-com",
+    "suncatcher|news|google-will-test-ai-chips-in-space-with-project-suncatcher-tbreak-uae",
+    "suncatcher|news|google-s-project-suncatcher-is-sending-ai-chips-into-space-next-week-aol-com",
+    "suncatcher|news|google-sends-four-tpus-to-orbit-on-oct-1-for-project-suncatcher-test-pasquale-pillitteri"
   ],
   "watch": "Google Project Suncatcher orbital TPU mission and verified in-orbit telemetry"
 }
