@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-29T09:58:14+09:00",
+  "updated_at_kst": "2026-10-29T16:07:32+09:00",
   "circle": {
     "date": "2026-10-26",
     "circulation_usd_b": 71.0,
@@ -13,11 +13,11 @@
     "date": "2026-10-28",
     "sec_yield_7d": 3.89,
     "yield_7d": 3.89,
-    "yield_1d": null,
+    "yield_1d": 3.9,
     "yield_crosscheck_gap_bp": 0.0,
     "visible_nav_date": "2026-10-28",
-    "fund_size_usd_m": 59867.5,
-    "fund_size_date": "2026-10-27",
+    "fund_size_usd_m": 59867.6,
+    "fund_size_date": "2026-10-28",
     "source_url": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund",
     "product": "Circle Reserve Fund",
     "ticker": "USDXX",
@@ -58,11 +58,11 @@
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
-    "crosscheck_date": "2026-10-27",
-    "crosscheck_close": 81.58000183105469,
-    "crosscheck_daily_pct": 2.18,
-    "crosscheck_gap_pct": 0.184,
-    "crosscheck_status": "yahoo_lagging"
+    "crosscheck_date": "2026-10-28",
+    "crosscheck_close": 81.70999908447266,
+    "crosscheck_daily_pct": 0.16,
+    "crosscheck_gap_pct": 0.024,
+    "crosscheck_status": "confirmed"
   },
   "tbx": {
     "date": "2026-10-28",
@@ -82,7 +82,5 @@
   },
   "crcl_last_alerted_close_date": "2026-10-28",
   "correction_pending": false,
-  "errors": [
-    "tbx: source date regressed 2026-10-27 < 2026-10-28; previous snapshot kept"
-  ]
+  "errors": []
 }
