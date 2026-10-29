@@ -1,9 +1,10 @@
 {
-  "updated_at_kst": "2026-10-29T12:58:05+09:00",
+  "updated_at_kst": "2026-10-29T19:13:42+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
     "0477059e619a2672dbae4b30",
+    "0527753197df20c2d33ac829",
     "06a59b34b1c9e4bb0d3987bd",
     "0707081c2597b206714e9fb5",
     "081d98bf0cc1d36b72de1345",
@@ -42,6 +43,7 @@
     "26c54e01df4302a688940e35",
     "27f85e070f62c260de7cb002",
     "2b939f56287ecd7e580d3744",
+    "2bbcf7558c4c7a8dec5398c4",
     "2be3c9dce3ee541c0e8e9e37",
     "2c8d0e3b6f70ed5720ba30bd",
     "2d27da4b09baa1d0f61ace3d",
@@ -81,6 +83,7 @@
     "4fe97fd15d2908c836b720ee",
     "5010456efcf2a9cd4b3c6336",
     "5023a6731fb7ba7cd4a95b5d",
+    "50699e8ba71028b1ea49553d",
     "508271da4f03e4e64f5e8e39",
     "51472fa7253bfc2a1683afa7",
     "522f97838fde7703c1842a9e",
@@ -212,6 +215,7 @@
     "d3d3dee3de412005e6f96385",
     "d438811610a9bd1cc60718b5",
     "d47a34c8b0086d71ea6dd5a5",
+    "d5004e72493fd9b89406c82b",
     "d526b99cb83540d8a82e2492",
     "d5bb9608cc828c7b4cd00446",
     "d6a7588c8d5d4c51180c5a1a",
@@ -240,7 +244,9 @@
     "e9f1478bb2d4988d9cb80d94",
     "ea2caba6fe4c8f6761890aac",
     "eb80659ed37b000ba4f95d63",
+    "ebbc47ae02d421138ae03282",
     "ec0854ae5cc1e577d7a21818",
+    "edc776bf990bf1994af4e79a",
     "ee416c90729cbdb83e8db5f8",
     "ee8f3f503800495cae563507",
     "eed867761a24cbad33b1c104",
@@ -263,6 +269,7 @@
     "fba8f6c1543032c6c55f62c9",
     "fbd920db100fb7204a37af3d",
     "fd0ab513604f145f508ff4dd",
+    "fdb33e2ce95c8e8cd5320a32",
     "fe56173d9b7f7777f313ff43",
     "ff6008725169b36e97b5c3ce",
     "ff9744abe3535e79694d130b"
@@ -283,18 +290,24 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 1,
+  "last_unseen_raw_count": 7,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1340.47,
-    "date": "2026-10-28 일일 기준 · ECB/Frankfurter · 조회 2026-10-29 12:58 KST · 보조 API 2026-10-29 · 차이 0.02% · 일중 기준시각 차이 가능",
+    "date": "2026-10-28 일일 기준 · ECB/Frankfurter · 조회 2026-10-29 19:13 KST · 보조 API 2026-10-29 · 차이 0.02% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
   "errors": [
-    "원문 URL 확인 실패: 헤럴드경제 | Samsung Electronics to begin HBM4E mass production in H1 next year, targets double-digit foundry growth - 헤럴드경제"
+    "원문 URL 확인 실패: Seoul Economic Daily | Samsung Says 2027 HBM Supply Sold Out, HBM4 to Reach 60% - Seoul Economic Daily",
+    "원문 URL 확인 실패: 오피니언뉴스 | 삼성전자 \"2027년 HBM 이미 완판\"...메모리 공급 부족 2028년까지 이어진다 - 오피니언뉴스",
+    "원문 URL 확인 실패: BigGo Finance | [삼성전자 Q3 2026 Earnings Call] Samsung Posts First-Ever KRW 100 Trillion Quarterly Operating Profit as AI Memory Demand Sells Out 2027 HBM Supply - BigGo Finance",
+    "원문 URL 확인 실패: KED Global | Samsung sees memory supply tight through 2028 as 2027 HBM sells out - KED Global",
+    "원문 URL 확인 실패: KuCoin | Samsung Electronics' HBM capacity for 2027 is fully sold out, with memory supply expected to remain tight in 2028. - KuCoin",
+    "원문 URL 확인 실패: TOKENPOST | Samsung Says 2027 HBM Supply Is Already Sold Out at Agreed Target Prices - TOKENPOST",
+    "원문 URL 확인 실패: 매일경제 | Samsung's Confidence...\"HBM4E is negotiating 10 additional long-term contracts for mass production next year.\" - 매일경제"
   ],
   "ai_component_leadtime": {
     "as_of": "2026-10-19",
@@ -421,7 +434,7 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-29T12:58:21+09:00",
+    "last_checked_at_kst": "2026-10-29T19:13:56+09:00",
     "candidate_count": 2,
     "mlcc_vendor_watch": {
       "version": 2,
@@ -487,8 +500,8 @@
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-29T12:59:05+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-29T19:14:48+09:00",
+    "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-29T12:59:05+09:00",
   "telegram_message_ids": [
@@ -557,7 +570,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-29",
-    "last_checked_at_kst": "2026-10-29T12:58:46+09:00",
+    "last_checked_at_kst": "2026-10-29T19:14:15+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -616,7 +629,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-29T12:58:46+09:00",
+        "checked_at_kst": "2026-10-29T19:14:15+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -625,7 +638,7 @@
         "rss_coverage_unavailable": false
       },
       "primary_source_audit": {
-        "checked_at_kst": "2026-10-29T08:27:26+09:00",
+        "checked_at_kst": "2026-10-29T19:14:15+09:00",
         "sources": {
           "bnpp_public": {
             "status": "retrieval_unavailable",
@@ -694,7 +707,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-29",
-    "last_checked_at_kst": "2026-10-29T12:58:51+09:00",
+    "last_checked_at_kst": "2026-10-29T19:14:41+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -738,9 +751,9 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-29T12:58:52+09:00",
+    "last_checked_at_kst": "2026-10-29T19:14:42+09:00",
     "candidate_count": 0,
-    "event_count": 1,
+    "event_count": 0,
     "area_structure": {
       "version": 3,
       "primary_capacity_metric": "substrate_area_x_buildup_layers_and_SAP_process_load",
@@ -862,7 +875,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-10-29T12:58:52+09:00",
+      "checked_at_kst": "2026-10-29T19:14:42+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
