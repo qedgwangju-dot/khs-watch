@@ -2413,7 +2413,7 @@ def semantic_policy_event_key(item: dict) -> str:
                                     "人工智能", "artificial intelligence", "인공지능",
                                     "光伏", "photovoltaic", "태양광"))
     ):
-        if any(s in title_text for s in ("正式修订", "正式发布", "修订发布", "final rule", "final catalogue", "finalized")):
+        if any(s in title_text for s in ("正式修订", "正式发布", "修订发布", "final rule", "final catalogue", "finalized", "adopts final", "adopted final", "issues final technology", "final technology export catalogue")):
             return "china-mofcom-technology-catalogue-final-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
         if any(s in title_text for s in ("延长征求意见", "comment period extended", "意见期限延长", "延期")):
             return "china-mofcom-technology-catalogue-comment-extension-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
