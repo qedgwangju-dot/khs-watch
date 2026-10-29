@@ -993,6 +993,11 @@ def apply_robotics_section232_profile(item: dict) -> None:
             {"date": "2027-04-26", "stage": "향후 기한", "detail": "180일 이내 협상 진행 상황 보고 예정·관세 자동 발효일 아님"},
         ],
     })
+    # An unrelated prior article can leak into the og:description teaser.
+    # Keep only the title-aligned, verified official proclamation body.
+    if item.get("body_verified") and item.get("source_body"):
+        item["source_abstract"] = ""
+        item["summary"] = clean_text(str(item["source_body"]))[:24000]
 
 
 def is_energy_dominance_month_proclamation(item: dict) -> bool:
