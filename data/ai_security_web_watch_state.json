@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 26,
+    "material_items": 27,
     "new_material_items": 0,
-    "raw_items": 321,
+    "raw_items": 314,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1131,6 +1131,16 @@
       "url": "https://www.php.net/archive/2026.php#2026-10-21-5",
       "vendor": "PHP 재단"
     },
+    "bd54e3b04cec0488b3f41c95": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-29T15:25:57.640731+00:00",
+      "published_at": "2026-10-29T13:59:48+00:00",
+      "severity": 2,
+      "source": "BleepingComputer",
+      "title": "CISA warns of Fragnesia Linux flaw chained in PHP2Shell attacks - BleepingComputer",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNSndlRlhJZDB1NjlZbm9TR084NUVuYjRiTHFyRU5EbjNia1YzdF9HcmtCXy1CbTFzc0hXMlZmeHcwS3hyQ2s1SVNIS2FtY0dlTHA0emt0MGJCRzVDTTV0OFFlNFlJODdBUVFnRGVtcVNDT1dyci03akQtU3praW1VV3pHNm94d0RQRUNtckVvakwxZUVGQlI2bzBOOUczMTM0dzYxb1o1cVg4VUFTUHdxR2lGM3U4QdIBtgFBVV95cUxNSndlRlhJZDB1NjlZbm9TR084NUVuYjRiTHFyRU5EbjNia1YzdF9HcmtCXy1CbTFzc0hXMlZmeHcwS3hyQ2s1SVNIS2FtY0dlTHA0emt0MGJCRzVDTTV0OFFlNFlJODdBUVFnRGVtcVNDT1dyci03akQtU3praW1VV3pHNm94d0RQRUNtckVvakwxZUVGQlI2bzBOOUczMTM0dzYxb1o1cVg4VUFTUHdxR2lGM3U4QQ?oc=5",
+      "vendor": "PHP 재단"
+    },
     "bd99af38d3ba37bb41c570ca": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-28T16:15:05.476532+00:00",
@@ -1604,5 +1614,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-29T23:55:14+09:00"
+  "updated_at_kst": "2026-10-30T00:25:57+09:00"
 }
