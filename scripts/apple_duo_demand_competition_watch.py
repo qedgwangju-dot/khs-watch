@@ -80,7 +80,7 @@ DOWN_WORDS = (
 )
 
 HIGH_SOURCES = (
-    "apple", "samsung", "reuters", "연합뉴스", "yonhap", "counterpoint", "idc",
+    "samsung", "reuters", "연합뉴스", "yonhap", "counterpoint", "idc",
     "omdia", "canalys", "bloomberg", "financial times", "wall street journal", "wsj",
 )
 MID_SOURCES = (
@@ -152,6 +152,10 @@ def _fingerprint(item: dict) -> str:
 
 def _source_rank(source: str) -> int:
     low = _normalize(source)
+    if low in {"apple", "apple inc", "apple newsroom", "apple com"}:
+        return 3
+    if "applemagazine" in low or "apple magazine" in low:
+        return 1
     if any(x in low for x in HIGH_SOURCES):
         return 3
     if any(x in low for x in MID_SOURCES):

@@ -46,7 +46,7 @@ QUERIES = [
 
 HIGH_SOURCES = {
     "counterpoint", "trendforce", "reuters", "nikkei", "bloomberg", "financial times",
-    "idc", "omdia", "apple", "the information", "wall street journal", "wsj",
+    "idc", "omdia", "the information", "wall street journal", "wsj",
 }
 MID_SOURCES = {
     "financialpost", "파이낸셜포스트", "zdnet", "zdnet korea", "서울경제",
@@ -133,6 +133,10 @@ def _parse_date(value: str | None) -> dt.datetime | None:
 
 def _source_rank(source: str) -> int:
     low = _normalize(source)
+    if low in {"apple", "apple inc", "apple newsroom", "apple com"}:
+        return 3
+    if "applemagazine" in low or "apple magazine" in low:
+        return 1
     if any(x in low for x in HIGH_SOURCES):
         return 3
     if any(x in low for x in MID_SOURCES):

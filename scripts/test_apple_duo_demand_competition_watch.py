@@ -111,6 +111,20 @@ class AppleDuoDemandRegressionTests(unittest.TestCase):
         self.assertIsNone(m._signal(item, self.base_state()))
 
 
+    def test_applemagazine_cannot_trigger_duo_direct_demand_as_official(self):
+        self.assertEqual(m._source_rank("AppleMagazine"),1)
+        self.assertEqual(m._source_rank("Apple"),3)
+        self.assertEqual(m._source_rank("Apple Newsroom"),3)
+        item={
+            "title":"iPhone Duo Korea preorders rise 29% from launch",
+            "description":"China Pro sales and premium demand shifted",
+            "source":"AppleMagazine",
+            "link":"https://news.google.com/rss/articles/syndicated",
+            "published_at_kst":"2026-10-29T09:00:00+09:00",
+        }
+        self.assertIsNone(m._signal(item,self.base_state()))
+
+
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(AppleDuoDemandRegressionTests)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

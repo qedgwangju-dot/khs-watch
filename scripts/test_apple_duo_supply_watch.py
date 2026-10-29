@@ -133,6 +133,27 @@ class AppleDuoSupplyRegressionTests(unittest.TestCase):
         self.assertIn("assembly_yield_60", keys)
 
 
+    def test_applemagazine_is_not_official_in_production_or_panel_sources(self):
+        self.assertEqual(m._source_rank("AppleMagazine"),1)
+        self.assertEqual(m._source_rank("Apple"),3)
+        self.assertEqual(m._source_rank("Apple Newsroom"),3)
+        article={
+            "title":"iPhone Duo production ramp raised shipments",
+            "description":"Apple foldable assembly and panel output increased",
+            "source":"AppleMagazine",
+        }
+        self.assertFalse(m._meaningful(article,self.state())[0])
+        spec=importlib.util.spec_from_file_location(
+            "apple_duo_panel_leading_watch",
+            ROOT/"scripts"/"apple_duo_panel_leading_watch.py",
+        )
+        panel=importlib.util.module_from_spec(spec)
+        assert spec and spec.loader
+        spec.loader.exec_module(panel)
+        self.assertEqual(panel._source_rank("AppleMagazine"),1)
+        self.assertEqual(panel._source_rank("Apple"),3)
+
+
 if __name__ == "__main__":
     result = unittest.TextTestRunner(verbosity=2).run(
         unittest.defaultTestLoader.loadTestsFromTestCase(AppleDuoSupplyRegressionTests)

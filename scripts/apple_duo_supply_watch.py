@@ -73,7 +73,7 @@ CHANGE_WORDS = {
 }
 HIGH_SOURCES = {
     "reuters", "nikkei", "bloomberg", "financial times", "trendforce",
-    "counterpoint", "idc", "apple", "the information", "wall street journal",
+    "counterpoint", "idc", "the information", "wall street journal",
     "wsj", "omdia",
 }
 MID_SOURCES = {
@@ -187,8 +187,12 @@ def _fingerprint(item: dict) -> str:
 
 
 def _source_rank(source: str) -> int:
-    raw = _clean(source).lower()
+    raw = _clean(source).lower().strip()
     low = _normalize(source)
+    if raw in {"apple", "apple inc", "apple inc.", "apple newsroom", "apple.com"}:
+        return 3
+    if "applemagazine" in raw or "apple magazine" in raw:
+        return 1
     if any(x in raw or x in low for x in HIGH_SOURCES):
         return 3
     if any(x in raw or x in low for x in MID_SOURCES):
