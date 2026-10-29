@@ -1830,6 +1830,7 @@ class Watch:
                         latest["현물"] = {**latest["현물"], "cash_supplement": enriched["cash_supplement"]}
                     alternate = enriched.get("program_supplement")
                     stamp = fnum((alternate or {}).get("sample_ts")) if isinstance(alternate, dict) else None
+                    recovered_program = False
                     if (isinstance(alternate, dict) and enriched.get("프로그램") == alternate
                             and alternate.get("market") == market
                             and alternate.get("source_scope_verified") is True
@@ -1841,16 +1842,14 @@ class Watch:
                         previous_error = latest.get("errors", {}).pop("프로그램", None)
                         if previous_error:
                             latest.setdefault("recovered_source_errors", {})["프로그램_LS"] = previous_error
-                    healthy, issues = flow_snapshot_health(latest)
-                    if market == "KOSPI" and healthy:
-                        self.last_flow_success_ts = time.time()
-                        self.raw.pop("last_flow_health_issue", None)
-                        prior_error = self.raw.pop("last_flow_error", None)
-                        if prior_error:
-                            self.raw["last_flow_recovered_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
-                    elif market == "KOSDAQ" and healthy:
-                        self.raw.pop("last_kosdaq_flow_health_issue", None)
-                        self.raw.pop("last_kosdaq_flow_error", None)
+                        recovered_program = True
+                    if recovered_program:
+                        healthy, _ = flow_snapshot_health(latest)
+                        if market == "KOSPI" and healthy and not self.raw.get("last_flow_error"):
+                            self.last_flow_success_ts = time.time()
+                            self.raw.pop("last_flow_health_issue", None)
+                        elif market == "KOSDAQ" and healthy and not self.raw.get("last_kosdaq_flow_error"):
+                            self.raw.pop("last_kosdaq_flow_health_issue", None)
                 self.raw.pop(error_name, None)
             except Exception as exc:
                 # A supplementary source or diagnostic failure is not an LS failure.
