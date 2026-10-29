@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 26,
-    "new_material_items": 0,
-    "raw_items": 351,
+    "material_items": 27,
+    "new_material_items": 1,
+    "raw_items": 339,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -730,6 +730,16 @@
       "title": "Cathedral researchers reached Anthropic business systems in under 12 hours in security program",
       "url": "https://www.washingtonpost.com/technology/2026/10/26/researchers-cybersecurity-start-up-cathedral-got-inside-anthropic/",
       "vendor": "Anthropic"
+    },
+    "77401f9cd5ae3ed0a897f0ec": {
+      "category": "에이전트 비정렬·제3자 영향",
+      "first_seen_at": "2026-10-29T16:42:41.647436+00:00",
+      "published_at": "2026-10-29T16:15:43+00:00",
+      "severity": 2,
+      "source": "OpenAI",
+      "title": "How we detect frontier model misalignment - OpenAI",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBIYy1GQVhzVjQ3LTAyVW42QnlOOVZISGJsS05mc0gtRG5WZ2lkVks0REVvcENkYXVPVW1sVUw3dThYY01Ib1FCTUNkanBCMXduYTdGUXFqREdFYUdtVVhsN0ZtT2VoSWJlandTbUxvSVh1OUgxMWc?oc=5",
+      "vendor": "OpenAI"
     },
     "77a79bf6a5991eac43f47ed6": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
@@ -1624,5 +1634,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-30T01:05:17+09:00"
+  "updated_at_kst": "2026-10-30T01:42:41+09:00"
 }
