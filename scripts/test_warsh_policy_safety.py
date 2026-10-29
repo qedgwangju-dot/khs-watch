@@ -850,7 +850,7 @@ class WarshKoreaQAFollowupTests(unittest.TestCase):
         }
 
     def test_two_independent_sources_and_official_required(self):
-        fed='Oct 28, 2026 FOMC approved statement by a 10 - 2 vote Lisa D. Cook Beth M. Hammack 3-3/4 to 4 percent'
+        fed='oct 28, 2026 fomc approved statement by a 10 - 2 vote lisa d. cook beth m. hammack 3-3/4 to 4 percent'
         news='2026.10.29 워시 한국 경제 일본 싱가포르 비행기와 선박'
         yonhap='2026.10.29 워시 한국 경제 일본 싱가포르 항공기와 선박'
         proofs={
