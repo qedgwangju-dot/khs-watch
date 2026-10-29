@@ -87,6 +87,14 @@ jobs:
           print("robotics_232_source_to_telegram_guard_regression=passed")
           PY
 
+      - name: Verify MOFCOM technology-catalogue stage logic on push
+        if: github.event_name == 'push'
+        run: |
+          PYTHONPATH=scripts:. python - <<'PY'
+          import khs_trusted_policy_news_watch as watcher
+          watcher._self_test_mofcom_tech_48()
+          print('mofcom_technology_48_stage_regression=passed')
+          PY
       - name: Validate policy regression tests
         run: |
           python -m py_compile scripts/khs_policy_watch.py
@@ -395,36 +403,42 @@ jobs:
         run: python scripts/khs_policy_watch.py
 
       - name: Run trusted policy news watch
+        id: trusted_news_watch
         if: always()
         timeout-minutes: 8
         continue-on-error: true
         run: python scripts/khs_trusted_policy_news_watch.py
 
       - name: Run domestic telecom policy watch
+        id: domestic_telecom_watch
         if: always()
         timeout-minutes: 5
         continue-on-error: true
         run: python scripts/khs_domestic_telecom_policy_watch.py
 
       - name: Run domestic stablecoin policy watch
+        id: domestic_stablecoin_watch
         if: always()
         timeout-minutes: 6
         continue-on-error: true
         run: python scripts/khs_domestic_stablecoin_policy_watch.py
 
       - name: Run domestic nuclear siting policy watch
+        id: domestic_nuclear_siting_watch
         if: always()
         timeout-minutes: 4
         continue-on-error: true
         run: python scripts/khs_korea_nuclear_siting_policy_watch.py
 
       - name: Run transformer tariff policy watch
+        id: transformer_tariff_watch
         if: always()
         timeout-minutes: 4
         continue-on-error: true
         run: python scripts/khs_transformer_tariff_policy_watch.py
 
       - name: Run nuclear AI power watch
+        id: nuclear_ai_power_watch
         if: always()
         timeout-minutes: 4
         continue-on-error: true
@@ -1118,6 +1132,26 @@ jobs:
           echo "Hanul silent state was not persisted after eight attempts." >&2
           exit 1
 
+      - name: Audit isolated policy subwatch failures after alert and state handling
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          failed=()
+          if [ "${{ steps.trusted_news_watch.outcome }}" = "failure" ]; then failed+=("Run trusted policy news watch"); fi
+          if [ "${{ steps.domestic_telecom_watch.outcome }}" = "failure" ]; then failed+=("Run domestic telecom policy watch"); fi
+          if [ "${{ steps.domestic_stablecoin_watch.outcome }}" = "failure" ]; then failed+=("Run domestic stablecoin policy watch"); fi
+          if [ "${{ steps.domestic_nuclear_siting_watch.outcome }}" = "failure" ]; then failed+=("Run domestic nuclear siting policy watch"); fi
+          if [ "${{ steps.transformer_tariff_watch.outcome }}" = "failure" ]; then failed+=("Run transformer tariff policy watch"); fi
+          if [ "${{ steps.nuclear_ai_power_watch.outcome }}" = "failure" ]; then failed+=("Run nuclear AI power watch"); fi
+          if [ "${#failed[@]}" -gt 0 ]; then
+            echo '::error::One or more policy subwatches failed; other lanes completed independently.'
+            printf '%s\n' '### 일부 정책 감시 실패 (다른 정상 알림은 독립 처리)' >> "$GITHUB_STEP_SUMMARY"
+            printf -- '- %s\n' "${failed[@]}" >> "$GITHUB_STEP_SUMMARY"
+            printf 'policy_subwatch_failures=%s\n' "${failed[*]}"
+            exit 1
+          fi
+          echo 'policy_subwatch_outcomes=passed_or_skipped'
       - name: Record manual runtime verification
         if: github.event_name == 'workflow_dispatch' && success()
         run: |
