@@ -265,6 +265,46 @@ def assert_dpa_grid_delivery_semantic_dedupe() -> None:
 
 
 
+def assert_robotics_232_isolated_from_unrelated_policy_bundle() -> None:
+    """Keep an unrelated bad policy article from suppressing a confirmed event."""
+    from unittest import mock
+    event = {
+        "source": "White House proclamations",
+        "title": "Section 232 Robotics Proclamation",
+        "importance": "상",
+        "fingerprint": "verified-robotics-fingerprint",
+        "policy_event_key": "us-section232-robotics-machinery-proclamation-2026-10-28",
+        "age_hours": 2,
+    }
+    another = {
+        "source": "Federal Register presidential documents",
+        "title": "Unrelated raw-English petroleum determination",
+        "importance": "상",
+        "fingerprint": "unrelated-pending-fingerprint",
+        "age_hours": 1,
+    }
+    energy = khs_policy_watch.hashlib.sha256(
+        b"policy-event-v1|us-energy-dominance-month-proclamation-2026-10-07"
+    ).hexdigest()[:16]
+    now = dt.datetime(2026, 10, 29, 16, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+    old_seen = {"seen": {energy: {"source": "White House proclamations"}}}
+    with (
+        mock.patch.object(khs_policy_watch, "now_kst", return_value=now),
+        mock.patch.object(khs_policy_watch, "load_seen", return_value=old_seen),
+        mock.patch.object(khs_policy_watch, "collect_candidates", return_value=([another, event], [])),
+        mock.patch.object(khs_policy_watch, "write_outputs") as write,
+        mock.patch.object(khs_policy_watch, "write_pending_seen") as checkpoint,
+    ):
+        assert khs_policy_watch.main() == 0
+    selected = write.call_args.args[0]
+    assert len(selected) == 1 and selected[0]["fingerprint"] == "verified-robotics-fingerprint", selected
+    checkpoint.assert_called_once()
+    assert checkpoint.call_args.args[0] == selected
+    assert "unrelated-pending-fingerprint" not in old_seen["seen"], (
+        "An unsent unrelated event was checkpointed as delivered"
+    )
+
+
 def assert_robotics_232_presidential_alert_reaches_delivery_guard() -> None:
     """Reproduce the 2026-10-29 miss: detected proclamation wrongly became FCC,
     then a legitimate numbered Executive Order caused full-bundle deletion."""
@@ -552,6 +592,7 @@ def assert_energy_month_document_keeps_identity() -> None:
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     assert_robotics_232_presidential_alert_reaches_delivery_guard()
+    assert_robotics_232_isolated_from_unrelated_policy_bundle()
     khs_policy_watch._self_test_doe_grid_dpa_event_model()
     assert_dpa_grid_delivery_semantic_dedupe()
     assert_energy_month_document_keeps_identity()
