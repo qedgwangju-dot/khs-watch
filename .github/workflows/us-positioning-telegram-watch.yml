@@ -56,7 +56,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # Scheduled events can queue behind another run. Read the state that
+          # was confirmed by that run, not the SHA captured when this was queued.
+          ref: main
           fetch-depth: 0
+
+      - name: Record the checked-out revision
+        run: echo "US_POSITIONING_CHECKOUT_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
 
       - name: Set up Python
         uses: actions/setup-python@v5

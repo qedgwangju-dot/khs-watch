@@ -372,7 +372,9 @@ class SourceReader:
     def save(self):
         ledger = dict(requests=sorted(self.records,key=lambda x:x["url"]),
             raw_HTTP_bytes_gzip_preserved=True, price_basis="completed sessions only",
-            github_run_id=os.getenv("GITHUB_RUN_ID"), github_code_sha=os.getenv("GITHUB_SHA"))
+            github_run_id=os.getenv("GITHUB_RUN_ID"),
+            github_code_sha=os.getenv("US_POSITIONING_CHECKOUT_SHA") or os.getenv("GITHUB_SHA"),
+            github_event_sha=os.getenv("GITHUB_SHA"))
         (self.output/"us_positioning_source_evidence.json").write_text(
             json.dumps(ledger, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
 
