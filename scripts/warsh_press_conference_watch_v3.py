@@ -20,6 +20,14 @@ STRUCTURAL_KEY='2026-10-28|Warsh|FOMC-Structural-Verified-v1'
 STRUCTURAL_FED='https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm'
 STRUCTURAL_IMPL='https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a1.htm'
 BALANCE_ADDENDUM_KEY='2026-10-28|Warsh|BalanceTaskforceQ1-Verified-v1'
+KOREA_ADDENDUM_KEY='2026-10-28|Warsh|Korea-AI-SupplyChain-QA-Verified-v1'
+KOREA_REPORTS=(
+    ('뉴스1','https://www.news1.kr/world/international-economy/6335584','ko'),
+    ('연합뉴스','https://stock.mk.co.kr/news/view/1183879','ko'),
+    ('코리아헤럴드','https://www.koreaherald.com/article/10919364','en'),
+    ('아주프레스','https://m.ajupress.com/amp/20261029104304880','en'),
+)
+
 STRUCTURAL_URLS={
     'productivity':'https://www.investing.com/news/economy-news/feds-warsh-says-us-economy-not-running-too-hot-4980529',
     'balance':'https://kfgo.com/2026/10/28/feds-policy-committee-to-weigh-balance-sheet-issues-early-next-year-warsh-says/',
@@ -74,6 +82,56 @@ def verified_structural_sources():
         ))
         verified[topic] = dated and all(term in text for term in STRUCTURAL_PROOFS[topic])
     return verified
+
+
+def verified_korea_addendum_sources():
+    """Verify event via Fed statement plus two distinct, directly read reports."""
+    fed=source_text(STRUCTURAL_FED)
+    if not (re.search(r'10\s*[–—-]\s*2\s+vote',fed)
+            and 'lisa d. cook' in fed and 'beth m. hammack' in fed
+            and '3-3/4 to 4 percent' in fed):
+        return None
+    evidence=[]
+    for publisher,url,lang in KOREA_REPORTS:
+        body=source_text(url)
+        dated=bool(re.search(r'2026[./ -]10[./ -]2[89]|oct(?:ober)?\.?\s+2[89],?\s+2026',body))
+        if lang=='ko':
+            quoted=(all(x in body for x in ('워시','한국 경제','일본','싱가포르','선박'))
+                    and any(x in body for x in ('비행기','항공기')))
+        else:
+            quoted=(all(x in body for x in ('warsh','korea','japan','singapore','ship'))
+                    and ('plane' in body or 'aircraft' in body))
+        if dated and quoted:
+            evidence.append({'publisher':publisher,'url':url})
+    return evidence if len(evidence)>=2 else None
+
+
+def korea_addendum_message(evidence):
+    lines=[
+        '<b>[Warsh | 한국 첨단기술 공급망 발언 추가 검증]</b>',
+        '2026년 10월 28일 FOMC 기자회견 · 앞선 정책·대차대조표 알림과 별개의 내용',
+        '',
+        '<b>추가 확인</b>',
+        '• 워시는 신기술 투자에 필요한 투입재가 한국·일본, 일부는 싱가포르에서 온다고 설명했습니다.',
+        '• 한국 경제와 미국행 항공기·선박의 화물 흐름이 미국 기술투자 현황을 읽는 단서라고 말했습니다.',
+        '• 한국 기자는 대차대조표 축소가 해외 국채 보유자·달러 조달시장에 미칠 영향을 물었습니다. 워시는 구체적인 시장 안정 조치를 제시하지 않았습니다.',
+        '',
+        '<b>정책과 실적 구분</b>',
+        '• 해당 발언은 한국 첨단기술 공급망의 중요성을 인정한 것이며 특정 회사 수주·매출 발표가 아닙니다.',
+        '• 태스크포스 권고안의 2027년 1분기 검토는 기존 알림으로 처리됐습니다. 2027년 2분기 정책 시행은 확정되지 않았습니다.',
+        '',
+        '<b>후속 확인</b>',
+        '• 한국 반도체 수출 물량·평균판매단가, 미국 AI 설비투자 실제 집행과 신용 스프레드',
+        '• 연준 공식 태스크포스 보고서·시행지침, 미국 2년물·장기금리와 달러 조달시장',
+        '',
+        '<b>근거</b>',
+        base.link('연준 FOMC 공식 성명',STRUCTURAL_FED),
+    ]
+    lines.extend(base.link(x['publisher']+' 독립 보도',x['url']) for x in evidence)
+    result='\n'.join(lines)
+    if len(result)>3900:
+        raise RuntimeError('한국 공급망 후속 Telegram 메시지 길이 초과')
+    return result
 
 
 def structural_message(verified):
@@ -385,11 +443,56 @@ def main():
     elif old.get('balance_addendum_sent_key')==BALANCE_ADDENDUM_KEY:
         balance_addendum_status='already_sent'
 
+    # A new, narrower Korea Q&A event only after BOTH prior messages have
+    # confirmed receipts. Existing #117/#118 cannot be resent.
+    korea_addendum_sent=False
+    korea_addendum_status='not_applicable'
+    korea_needed=(
+        date==STRUCTURAL_DATE and in_window
+        and old.get('structural_sent_key')==STRUCTURAL_KEY
+        and old.get('structural_delivery_status')=='confirmed'
+        and isinstance(old.get('structural_message_id'),int)
+        and old.get('balance_addendum_sent_key')==BALANCE_ADDENDUM_KEY
+        and old.get('balance_addendum_delivery_status')=='confirmed'
+        and isinstance(old.get('balance_addendum_message_id'),int)
+        and isinstance(old.get('structural_verified_topics'),list)
+        and 'korea' not in old.get('structural_verified_topics',[])
+        and old.get('korea_addendum_sent_key')!=KOREA_ADDENDUM_KEY
+    )
+    if korea_needed:
+        if (old.get('korea_addendum_pending_key')==KOREA_ADDENDUM_KEY
+                and old.get('korea_addendum_delivery_status')=='sending'):
+            korea_addendum_status='delivery_uncertain'
+        else:
+            evidence=verified_korea_addendum_sources()
+            if evidence:
+                new.update({'korea_addendum_pending_key':KOREA_ADDENDUM_KEY,
+                            'korea_addendum_delivery_status':'sending'})
+                base.save(new)
+                mid=base.send(korea_addendum_message(evidence))
+                if not isinstance(mid,int):
+                    raise RuntimeError('한국 공급망 Telegram message_id 미확인')
+                new.update({
+                    'korea_addendum_pending_key':None,
+                    'korea_addendum_delivery_status':'confirmed',
+                    'korea_addendum_sent_key':KOREA_ADDENDUM_KEY,
+                    'korea_addendum_message_id':mid,
+                    'korea_addendum_sources':[STRUCTURAL_FED]+[x['url'] for x in evidence],
+                    'korea_addendum_sent_at_utc':datetime.now(timezone.utc).isoformat(),
+                })
+                korea_addendum_sent=True
+                korea_addendum_status='confirmed'
+            else:
+                korea_addendum_status='source_verification_pending'
+    elif old.get('korea_addendum_sent_key')==KOREA_ADDENDUM_KEY:
+        korea_addendum_status='already_sent'
+
     new.update({
         'meeting_date':date,'meeting_page':page,'classification':cls,'transcript':tr,
         'sent':should,'reuters_count':len(rows),
         'structural_source_status':structural_status,
-        'balance_addendum_status':balance_addendum_status
+        'balance_addendum_status':balance_addendum_status,
+        'korea_addendum_status':korea_addendum_status
     })
     base.save(new)
     print(json.dumps({
@@ -400,6 +503,9 @@ def main():
         'balance_addendum_sent':balance_addendum_sent,
         'balance_addendum_status':balance_addendum_status,
         'balance_addendum_message_id':new.get('balance_addendum_message_id'),
+        'korea_addendum_sent':korea_addendum_sent,
+        'korea_addendum_status':korea_addendum_status,
+        'korea_addendum_message_id':new.get('korea_addendum_message_id'),
     },ensure_ascii=False))
 
 

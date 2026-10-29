@@ -836,5 +836,89 @@ class WarshBalanceAddendumRegressionTests(unittest.TestCase):
         proof.assert_not_called()
 
 
+class WarshKoreaQAFollowupTests(unittest.TestCase):
+    def prior(self):
+        return {
+            'meeting_date':press_v3.STRUCTURAL_DATE,
+            'structural_sent_key':press_v3.STRUCTURAL_KEY,
+            'structural_delivery_status':'confirmed',
+            'structural_message_id':117,
+            'structural_verified_topics':['strategy','ai_rates'],
+            'balance_addendum_sent_key':press_v3.BALANCE_ADDENDUM_KEY,
+            'balance_addendum_delivery_status':'confirmed',
+            'balance_addendum_message_id':118,
+        }
+
+    def test_two_independent_sources_and_official_required(self):
+        fed='Oct 28, 2026 FOMC approved statement by a 10 - 2 vote Lisa D. Cook Beth M. Hammack 3-3/4 to 4 percent'
+        news='2026.10.29 워시 한국 경제 일본 싱가포르 비행기와 선박'
+        yonhap='2026.10.29 워시 한국 경제 일본 싱가포르 항공기와 선박'
+        proofs={
+            press_v3.STRUCTURAL_FED:fed,
+            press_v3.KOREA_REPORTS[0][1]:news,
+            press_v3.KOREA_REPORTS[1][1]:yonhap,
+        }
+        with patch.object(press_v3,'source_text',side_effect=lambda u:proofs.get(u,'')):
+            verified=press_v3.verified_korea_addendum_sources()
+            self.assertEqual(len(verified),2)
+            self.assertIn('한국',press_v3.korea_addendum_message(verified))
+            self.assertLess(len(press_v3.korea_addendum_message(verified)),3900)
+            proofs.pop(press_v3.KOREA_REPORTS[1][1])
+            self.assertIsNone(press_v3.verified_korea_addendum_sources())
+            proofs.pop(press_v3.STRUCTURAL_FED)
+            self.assertIsNone(press_v3.verified_korea_addendum_sources())
+
+    def test_korea_sent_once_and_previous_receipts_preserved(self):
+        import datetime as _dt
+        class FixedDatetime(_dt.datetime):
+            @classmethod
+            def now(cls,tz=None):
+                return cls(2026,10,29,12,0,tzinfo=tz)
+        saved=self.prior()
+        proof=[{'publisher':'뉴스1','url':press_v3.KOREA_REPORTS[0][1]},
+               {'publisher':'연합뉴스','url':press_v3.KOREA_REPORTS[1][1]}]
+        def load():return dict(saved)
+        def save(v):saved.clear();saved.update(v)
+        with patch.object(press_v3,'datetime',FixedDatetime), \
+             patch.object(press_v3.base,'load',side_effect=load), \
+             patch.object(press_v3.base,'save',side_effect=save), \
+             patch.object(press_v3,'current_meeting',return_value=(
+                 press_v3.STRUCTURAL_DATE,'https://www.federalreserve.gov/',{'text':'Inflation remains elevated.'})), \
+             patch.object(press_v3,'transcript_link',return_value=None), \
+             patch.object(press_v3,'reuters_rows',return_value=[]), \
+             patch.object(press_v3,'verified_korea_addendum_sources',return_value=proof) as validator, \
+             patch.object(press_v3.base,'send',return_value=119) as sender:
+            press_v3.main()
+            press_v3.main()
+        sender.assert_called_once()
+        validator.assert_called_once()
+        self.assertEqual(saved['korea_addendum_message_id'],119)
+        self.assertEqual(saved['korea_addendum_delivery_status'],'confirmed')
+        self.assertEqual(saved['structural_message_id'],117)
+        self.assertEqual(saved['balance_addendum_message_id'],118)
+
+    def test_unknown_korea_delivery_never_retries(self):
+        import datetime as _dt
+        class FixedDatetime(_dt.datetime):
+            @classmethod
+            def now(cls,tz=None):
+                return cls(2026,10,29,12,0,tzinfo=tz)
+        old=self.prior()
+        old.update({'korea_addendum_pending_key':press_v3.KOREA_ADDENDUM_KEY,
+                    'korea_addendum_delivery_status':'sending'})
+        with patch.object(press_v3,'datetime',FixedDatetime), \
+             patch.object(press_v3.base,'load',return_value=old), \
+             patch.object(press_v3.base,'save'), \
+             patch.object(press_v3,'current_meeting',return_value=(
+                 press_v3.STRUCTURAL_DATE,'https://www.federalreserve.gov/',{'text':'Inflation remains elevated.'})), \
+             patch.object(press_v3,'transcript_link',return_value=None), \
+             patch.object(press_v3,'reuters_rows',return_value=[]), \
+             patch.object(press_v3,'verified_korea_addendum_sources') as validator, \
+             patch.object(press_v3.base,'send') as sender:
+            press_v3.main()
+        validator.assert_not_called()
+        sender.assert_not_called()
+
+
 if __name__ == "__main__":
     unittest.main()
