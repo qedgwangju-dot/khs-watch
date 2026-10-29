@@ -382,7 +382,23 @@ def message(s, correction=False, old_date=None, correction_reason=None):
     return '\n'.join(lines)
 
 def main():
-    s=snapshot(); old=load_state(); first=not bool(old)
+    # StockAnalysis ETF closes arrive at different moments after the US close.
+    # Mixed source dates are not a valid synchronized snapshot; do not emit,
+    # overwrite the last verified market state, or fail the unrelated Warsh jobs.
+    try:
+        s=snapshot()
+    except RuntimeError as exc:
+        message=str(exc)
+        if message.startswith('ETF final-close source dates are not aligned:'):
+            print(json.dumps({
+                'data_valid':False,'sent':False,'retry_later':True,
+                'waiting':'ETF별 확정종가 게시 날짜가 달라 같은 기준일 확보 전까지 판정·송출·상태 갱신 보류',
+                'source_error':message,
+                'rule':'서로 다른 완료 거래일은 합산하지 않으며 기존 성공 상태 보존',
+            },ensure_ascii=False))
+            return
+        raise
+    old=load_state(); first=not bool(old)
     new_day=old.get('date') not in (None,s['date'])
     changed=old.get('verdict') not in (None,s['verdict'])
     method_changed=old.get('methodology_version') != METHODOLOGY_VERSION

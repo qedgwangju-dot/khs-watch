@@ -963,5 +963,36 @@ class WarshBalanceDeliveryReceiptTests(unittest.TestCase):
         self.assertNotEqual(a,balance.base.alert_key(cur,impl,task,'총량 축소',['A','B']))
 
 
+class MarketInternalFinalCloseStaggerTests(unittest.TestCase):
+    def test_staggered_etf_dates_skip_without_sending_or_state_write(self):
+        import io
+        from contextlib import redirect_stdout
+        import market_internal_strength_watch as market_internal
+        buf=io.StringIO()
+        with patch.object(market_internal,'snapshot',side_effect=RuntimeError(
+                 "ETF final-close source dates are not aligned: ['2026-10-28', '2026-10-29']")), \
+             patch.object(market_internal,'load_state') as old_state, \
+             patch.object(market_internal,'save_state') as saver, \
+             patch.object(market_internal,'send') as sender, \
+             redirect_stdout(buf):
+            market_internal.main()
+        result=json.loads(buf.getvalue().strip())
+        self.assertFalse(result['data_valid'])
+        self.assertFalse(result['sent'])
+        self.assertTrue(result['retry_later'])
+        old_state.assert_not_called()
+        saver.assert_not_called()
+        sender.assert_not_called()
+
+    def test_unrelated_data_error_remains_failure(self):
+        import market_internal_strength_watch as market_internal
+        with patch.object(market_internal,'snapshot',
+                          side_effect=RuntimeError('VIX Cboe/Yahoo mismatch')), \
+             patch.object(market_internal,'send') as sender:
+            with self.assertRaisesRegex(RuntimeError,'VIX Cboe/Yahoo mismatch'):
+                market_internal.main()
+            sender.assert_not_called()
+
+
 if __name__ == "__main__":
     unittest.main()
