@@ -935,7 +935,10 @@ def merge_duplicate_alert(current: dict, incoming: dict) -> dict:
         if source and source not in sources:
             sources.append(source)
     if sources:
-        current["source"] = " / ".join(sources[:3])
+        if current.get("policy_event_key") == "us-section232-robotics-machinery-proclamation-2026-10-28":
+            current["source"] = "White House proclamations"
+        else:
+            current["source"] = " / ".join(sources[:3])
     if not current.get("link") and incoming.get("link"):
         current["link"] = incoming.get("link")
     current["matched"] = merge_matched(current.get("matched") or {}, incoming.get("matched") or {})
