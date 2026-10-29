@@ -464,6 +464,10 @@ def safe_title(alert: dict) -> str:
 
 def display_source(source: object) -> str:
     raw = str(source or "source").strip()
+    # Multiple corroborating official sources must retain Korean display labels,
+    # not leak raw English labels into Telegram and trigger bundle-wide rejection.
+    if " / " in raw:
+        return " / ".join(SOURCE_LABELS.get(part.strip().lower(), part.strip()) for part in raw.split(" / "))
     return SOURCE_LABELS.get(raw.lower(), raw)
 
 
