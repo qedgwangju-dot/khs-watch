@@ -87,6 +87,8 @@ PH_NEWS_MLCC_TIMING_URL = "https://en.sedaily.com/finance/2026/08/02/samsung-ele
 MLCC_OFFICIAL_Q2_URL = "https://www.sem.samsung.com/kr/newsroom/news/view.do?id=10461"
 MLCC_OFFICIAL_FCBGA_URL = "https://www.sem.samsung.com/global/newsroom/news/view.do?id=10562"
 CASPA_ORIGINAL_URL = "https://newsletter.chipstrat.com/p/my-conversation-with-dylan-patel"
+CASPA_VIDEO_URL = "https://www.youtube.com/watch?v=NXv0qvam9yg"
+CASPA_PANEL_CONTEXT_VERSION = 2
 CASPA_AGENDA_URL = "https://caspaceosummit.com/agenda/"
 SHARON_SEC_URL = "https://www.sec.gov/Archives/edgar/data/2068385/000149315226037203/forms-1a.htm"
 MLCC_VENDOR_QUERIES = (
@@ -120,7 +122,19 @@ MLCC_VENDOR_BASELINE = {
     },
 }
 CASPA_PANEL_BASELINE = {
-    "version": 1, "as_of": "2026-10-23", "source_url": CASPA_ORIGINAL_URL,
+    "version": 2, "as_of": "2026-10-23", "source_url": CASPA_ORIGINAL_URL,
+    "video_url": CASPA_VIDEO_URL,
+    "video_verification_level": "event and moderator's transcript corroborated; video full audiovisual comparison not independently certified",
+    "bottleneck_ranking": ["패키지기판·PCB 소재", "메모리", "광결합·레이저"],
+    "power_constraint_exists": True,
+    "power_on_site_generation_partial_workaround_not_universal": True,
+    "supply_relief_initial_2027_then_more_2028_2029": True,
+    "hbm_3_4x_denominator_same_capacity_with_wafer_budget_fixed": True,
+    "memory_total_output_decline_unconditional": False,
+    "hyperscaler_offtake_mitigates_risk_not_automatic_credit_guarantee": True,
+    "neocloud_debt_risk_not_eliminated_by_offtake": True,
+    "nvidia_can_gain_absolute_profit_despite_losing_component_spend_share": True,
+    "source_kind": "2026-10-23 CASPA participant statements; not company guidance",
     "kind": "panel_opinion_not_signed_purchase_order",
     "wafer_hbm_relative_ddr5_min": 3, "wafer_hbm_relative_ddr5_max": 4,
     "dc_2024_1gw_usd_bn": 40, "dc_2026_1gw_usd_bn_over": 60,
@@ -1099,14 +1113,39 @@ def usd_bn_krw_text(bn: float, rate: float | None) -> str:
 
 
 def caspa_panel_update(previous: dict, fx: dict) -> tuple[dict, str]:
-    if int((previous or {}).get("version") or 0) >= 1:
+    old_version = int((previous or {}).get("version") or 0)
+    if old_version >= CASPA_PANEL_CONTEXT_VERSION:
         return previous, ""
+    if old_version == 1:
+        # Migration of a delivered 10/25 baseline: only material corrections,
+        # no replay of 1GW cost estimates or previous initial notification.
+        record = copy.deepcopy(previous)
+        for key, value in CASPA_PANEL_BASELINE.items():
+            if key not in record:
+                record[key] = copy.deepcopy(value)
+        record["version"] = CASPA_PANEL_CONTEXT_VERSION
+        note = [
+            "<b>CASPA 2026 병목 발언 후속 검증 — 기존 알림 보강</b>",
+            "• <b>판단:</b> 패키지기판·PCB 소재 → 메모리 → CPO 레이저·광섬유 결합은 Dylan Patel의 산업 병목 순위 전망입니다. 모든 프로젝트의 실측 순위는 아닙니다.",
+            "• <b>전력:</b> 여전히 중요한 제약. 터빈·왕복동 엔진·연료전지로 일부 우회할 수 있으나 계통접속·인허가·전원 인가가 없어지는 것은 아닙니다.",
+            "• <b>HBM:</b> 일반 DDR5와 동일 저장 용량 대비 웨이퍼 사용량 3~4배라는 발표자 비교. 총 메모리 생산량 감소는 웨이퍼 총투입이 고정될 때의 조건부 해석입니다.",
+            "• <b>클린룸:</b> 2027년 일부 공급 가능, 2028~2029년 확대라는 전망. 2028년 이전 일괄 증설 불가로 단정하지 않습니다.",
+            "• <b>금융:</b> 네오클라우드는 신용도 높은 장기 이용계약이 필요할 수 있으나 차입금리 13~15% 사례처럼 계약만으로 금융 위험이 사라지지 않습니다.",
+            "• <b>가치 배분:</b> 메모리·기판·광학 공급사의 협상력이 좋아져도 NVIDIA 절대이익 감소가 필연적이지 않습니다.",
+            "• <b>알림 구분:</b> 발언·전망 / 공식 투자·공급계약 / 실제 출하·단가·현금흐름을 각각 독립 추적합니다.",
+            f'• <a href="{CASPA_VIDEO_URL}">CASPA 영상</a> / <a href="{CASPA_ORIGINAL_URL}">사회자 공개 대담록</a>',
+        ]
+        return record, "\n".join(note)
     record = copy.deepcopy(CASPA_PANEL_BASELINE)
     rate = (fx or {}).get("rate")
     a, b, c = [usd_bn_krw_text(x, rate) for x in (40, 60, 20)]
     lines = [
         "<b>CASPA 2026 반도체 공급·금융 병목 검증 알림</b>",
         "• 10월 23일 Dylan Patel·Stacy Rasgon 대담. 계약 공시가 아닌 발언·전망.",
+        "• 전력은 큰 제약이나 현장 발전이 일부 우회 가능. 기판·메모리·CPO를 산업 관점의 최우선 공급 병목으로 지목.",
+        "• 신규 클린룸 공급은 2027년 일부, 2028~2029년 확대 전망. 증설 완전 불가능 주장 아님.",
+        "• 장기 이용계약은 자금조달의 필요조건일 수 있으나 과잉증설·손실을 원천 차단하지 않음.",
+        "• 공급사 협상력 강화와 NVIDIA의 절대이익 증가가 동시에 가능.",
         "• 기판·PCB 소재, HBM, 광학 연결이 주요 병목. 자금조달과 전력 접속은 별도 제약.",
         "• HBM의 웨이퍼 사용량은 DDR5 같은 용량 대비 <b>3~4배</b>; 전달문 '34배'는 원문 오기.",
         "• 네오클라우드 금융비용 13~15%는 대담에서 제시한 일부 사례이지 산업 전체 일률 금리 아님.",
@@ -1122,7 +1161,7 @@ def caspa_panel_update(previous: dict, fx: dict) -> tuple[dict, str]:
     lines += [
         "• 수익배분율·GPU당 3.50달러는 대담 진술이며 계약상 정산단위 공개자료와 미대조.",
         "• 다음 확인: 수주→발주→클린룸 설치·수율, 금융 종결·차입비용·실제 전원 인가.",
-        f'• <a href="{CASPA_ORIGINAL_URL}">진행자 공개 원문</a>'
+        f'• <a href="{CASPA_VIDEO_URL}">공식 발표 영상</a> / <a href="{CASPA_ORIGINAL_URL}">진행자 공개 원문</a>'
         f' / <a href="{SHARON_SEC_URL}">Sharon AI SEC 공시</a>',
     ]
     return record, "\n".join(lines)

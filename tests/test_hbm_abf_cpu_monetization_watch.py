@@ -7,6 +7,64 @@ import abf_cpu_monetization_watch as w
 
 
 
+
+class UnimicronTargetAndCapexEvidenceTests(unittest.TestCase):
+    """Price targets ≠ substrate ASP. Board equipment preorders ≠ paid capex."""
+
+    def test_broker_target_math_and_reported_eps_do_not_become_actual_prices(self):
+        context = w.UNIMICRON_TARGET_CONTEXT
+        self.assertEqual((context["target_previous_twd"], context["target_new_twd"]), (1010, 1300))
+        self.assertAlmostEqual((1300 / 1010 - 1) * 100, 28.7128712871, places=5)
+        self.assertEqual((context["broker_pe_prior"], context["broker_pe_current"]), (28, 30))
+        self.assertEqual((context["broker_eps_2026_twd"], context["broker_eps_2027_twd"]), (25.22, 43.36))
+        self.assertFalse(context["official_contract_price_change_confirmed"])
+        self.assertIn("broker note", context["source_kind"])
+
+    def test_company_capex_preorder_not_cash_payment_and_not_nvidia_revenue(self):
+        context = w.UNIMICRON_TARGET_CONTEXT
+        self.assertTrue(context["board_preorder_not_cash_paid_or_committed_customer_revenue"])
+        self.assertEqual(context["board_incremental_preorder_twd_100m"], 509)
+        msg = w.unimicron_broker_notice(context)
+        self.assertIn("509억대만달러(약 2조1,090억원)", msg)
+        self.assertIn("실제 지급액·ABF 전용 투자액·확정 고객매출 아님", msg)
+        self.assertIn("자체 자금 + 은행 융자", msg)
+        self.assertIn("10/27 이사회", msg)
+
+    def test_2026_oct_28_forecast_message_preserves_report_date_and_currency(self):
+        msg = w.unimicron_broker_notice(w.UNIMICRON_TARGET_CONTEXT)
+        self.assertIn("1,010대만달러(약 41,848원)", msg)
+        self.assertIn("1,300대만달러(약 53,864원)", msg)
+        self.assertIn("28.7%", msg)
+        self.assertIn("28배 → 30배", msg)
+        self.assertIn("526.5억대만달러(약 2조1,815억원)", msg)
+        self.assertIn("Unimicron", msg)
+        self.assertIn("증권사 실명 미공개", msg)
+        self.assertNotIn("NVIDIA 단독 계약", msg)
+        self.assertNotIn("ABF 가격 28.7%", msg)
+        self.assertIn("실시간 환율 아님", msg)
+
+    def test_existing_state_receipts_and_all_modules_are_not_reinitialized(self):
+        prev = {"version":0,"already_seen_event_key":"keep","internal_last_message_id":342}
+        new, first = w.unimicron_broker_update(prev)
+        self.assertEqual(new["version"],1)
+        self.assertEqual(new["already_seen_event_key"],"keep")
+        self.assertEqual(new["internal_last_message_id"],342)
+        self.assertIn("기판", first)
+        again, second = w.unimicron_broker_update(new)
+        self.assertEqual(second,"")
+        self.assertEqual(again,new)
+
+    def test_forecast_observation_does_not_trigger_goldman_or_customer_as_price_change(self):
+        note = {
+            "url":w.UNIMICRON_SOURCE_ARTICLE,
+            "published_at_kst":"2026-10-28T09:00:00+09:00",
+            "parsed":{"kind":"research_update"},
+        }
+        original = {**w.BASELINE,"area_structure":w.ABF_AREA_STRUCTURE_BASELINE}
+        self.assertEqual(w.material_events(original,[note]),[])
+        merged = w.merge_state(original,[note],[])
+        self.assertEqual(merged["area_structure"]["research_forecast"]["abf_shortfall_2028_pct"],51.0)
+
 class ABFHistoricalModelVintageTests(unittest.TestCase):
     def test_old_and_new_goldman_are_distinct_broker_forecasts(self):
         ctx = w.ABF_VINTAGE_CONTEXT

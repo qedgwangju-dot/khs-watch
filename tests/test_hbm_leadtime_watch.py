@@ -564,10 +564,41 @@ class VendorMLCCAndCASPAGuards(unittest.TestCase):
         self.assertIn("400억달러(약", text)
         self.assertIn("600억달러 이상(약", text)
         self.assertIn("200억달러(약", text)
-        self.assertEqual(state["version"], 1)
+        self.assertEqual(state["version"], 2)
         state2, alert2 = w.caspa_panel_update(state, {"rate": 1324.6})
         self.assertEqual(alert2, "")
         self.assertEqual(state2, state)
+
+    def test_caspa_previous_delivery_version_one_migrates_once_without_reposting_old_costs(self):
+        previous = {
+            "version": 1, "as_of": "2026-10-23",
+            "source_url": w.CASPA_ORIGINAL_URL,
+            "wafer_hbm_relative_ddr5_min": 3, "wafer_hbm_relative_ddr5_max": 4,
+            "existing_user_setting": "must_not_delete",
+        }
+        updated, note = w.caspa_panel_update(previous, {"rate": 1324.6})
+        self.assertEqual(updated["version"], 2)
+        self.assertEqual(updated["existing_user_setting"], "must_not_delete")
+        self.assertTrue(updated["power_constraint_exists"])
+        self.assertFalse(updated["memory_total_output_decline_unconditional"])
+        self.assertTrue(updated["nvidia_can_gain_absolute_profit_despite_losing_component_spend_share"])
+        self.assertIn("기판", note)
+        self.assertIn("전력", note)
+        self.assertIn("조건부", note)
+        self.assertIn("2027년 일부", note)
+        self.assertIn("CASPA 영상", note)
+        self.assertNotIn("400억달러", note)
+        same, repeat = w.caspa_panel_update(updated, {"rate": 1324.6})
+        self.assertEqual(repeat, "")
+        self.assertEqual(same, updated)
+
+    def test_caspa_context_cannot_be_mistaken_for_company_capex_guidance(self):
+        state, _ = w.caspa_panel_update({}, {"rate": 1324.6})
+        self.assertEqual(state["source_kind"], "2026-10-23 CASPA participant statements; not company guidance")
+        self.assertEqual(state["bottleneck_ranking"], ["패키지기판·PCB 소재", "메모리", "광결합·레이저"])
+        self.assertTrue(state["power_on_site_generation_partial_workaround_not_universal"])
+        self.assertTrue(state["neocloud_debt_risk_not_eliminated_by_offtake"])
+        self.assertEqual(state["video_url"], "https://www.youtube.com/watch?v=NXv0qvam9yg")
 
     def test_caspa_without_fx_omits_unconverted_usd_amounts(self):
         _, text = w.caspa_panel_update({}, {})

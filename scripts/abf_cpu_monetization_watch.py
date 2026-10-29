@@ -103,6 +103,55 @@ GOLDMAN_SHORTFALL_KEYS = (
     "goldman_abf_shortfall_2028_pct",
 )
 
+
+# 2026-10-28 unnamed Taiwanese brokerage price-target recap is NOT a
+# factory selling-price change or a signed NVIDIA supply agreement.
+# Preserve independent 2026-10-27 stock-exchange material disclosure.
+UNIMICRON_TARGET_CONTEXT_VERSION = 1
+UNIMICRON_REFERENCE_KRW_PER_TWD = 41.434
+UNIMICRON_REFERENCE_FX_DAY = "2026-10-28"
+UNIMICRON_REFERENCE_FX_URL = "https://kr.investing.com/currencies/twd-krw-historical-data"
+UNIMICRON_SOURCE_ARTICLE = "https://wantrich.chinatimes.com/news/20261028900159-420101"
+UNIMICRON_SOURCE_CORROBORATION = "https://www.ftnn.com.tw/news/591016"
+UNIMICRON_TWSE_DISCLOSURE = "https://news.cnyes.com/news/id/6638756"
+UNIMICRON_TWSE_SECONDARY = "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=dd152f8a-da87-4241-b1e3-10a9546ecb0a"
+UNIMICRON_TARGET_CONTEXT = {
+    "version": 1,
+    "company": "Unimicron Technology",
+    "ticker": "3037.TW",
+    "story_as_of": "2026-10-28",
+    "source_url": UNIMICRON_SOURCE_ARTICLE,
+    "source_kind": "2026-10-28 news recap of a broker note, not a company target or guaranteed return",
+    "broker_identity": "unnamed leading Taiwanese securities research unit; cannot match UBS/Bernstein/other sell-side targets",
+    "recommendation": "Buy (broker estimate)",
+    "target_previous_twd": 1010,
+    "target_new_twd": 1300,
+    "reported_target_raise_pct_rounded": 29,
+    "broker_pe_prior": 28,
+    "broker_pe_current": 30,
+    "broker_eps_2026_twd": 25.22,
+    "broker_eps_2027_twd": 43.36,
+    "q3_2026_revenue_twd_100m": 526.5,
+    "q3_2026_gross_margin_pct_reported": 28.8,
+    "q3_2026_margin_one_time_staff_compensation_reported": True,
+    "broker_abf_hdi_sales_share_est_pct": 80,
+    "broker_abf_capacity_util_pct_floor": 90,
+    "broker_q4_2026_margin_forecast_pct": 31.9,
+    "broker_q1_2027_margin_forecast_pct": 32.8,
+    "long_lead_equipment_disclosure_as_of": "2026-10-27",
+    "board_incremental_preorder_twd_100m": 509,
+    "board_preorder_not_cash_paid_or_committed_customer_revenue": True,
+    "preorder_funding": "own funds and bank financing",
+    "preorder_scope": "new factories and process capability; not exclusively ABF/NVIDIA",
+    "official_contract_price_change_confirmed": False,
+    "reference_twdkrw": UNIMICRON_REFERENCE_KRW_PER_TWD,
+    "reference_twdkrw_as_of": UNIMICRON_REFERENCE_FX_DAY,
+    "reference_fx_url": UNIMICRON_REFERENCE_FX_URL,
+    "mops_reposted_url": UNIMICRON_TWSE_DISCLOSURE,
+    "mops_secondary_url": UNIMICRON_TWSE_SECONDARY,
+    "independent_study_forecast_not_supply_gap_measurement": True,
+}
+
 # Structural ABF capacity baseline added from the user's 2026-10-06 follow-up.
 # Keep physical/official facts separate from broker forecasts.  The 2021 and 2028
 # shortage percentages are not treated as a like-for-like consensus series.
@@ -786,6 +835,79 @@ def build_abf_vintage_context_alert(state: dict) -> str:
     return "\n".join(lines)
 
 
+
+def _unimicron_twd_reference(amount: float) -> str:
+    """Historic TWD→KRW reference from 2026-10-28, not a live exchange quote."""
+    return f"약 {round(amount * UNIMICRON_REFERENCE_KRW_PER_TWD):,}원"
+
+
+def _unimicron_capex_reference(large_twd_100m: float) -> str:
+    won_eok = round(large_twd_100m * UNIMICRON_REFERENCE_KRW_PER_TWD)
+    jo, rest = divmod(won_eok, 10000)
+    return f"약 {jo}조{rest:,}억원" if jo else f"약 {rest:,}억원"
+
+
+def unimicron_broker_notice(state: dict) -> str:
+    """One factual recap per underlying analyst note and stock-exchange decision."""
+    old = int(state["target_previous_twd"])
+    new = int(state["target_new_twd"])
+    pct = (new / old - 1) * 100
+    if abs(pct - 28.7128712871) > 0.01:
+        raise ValueError("unimicron_broker_target_delta_mismatch")
+    if state.get("board_preorder_not_cash_paid_or_committed_customer_revenue") is not True:
+        raise ValueError("unimicron_preorder_accounting_scope_not_secured")
+    latest = _unimicron_twd_reference(new)
+    previous = _unimicron_twd_reference(old)
+    capex = _unimicron_capex_reference(state["board_incremental_preorder_twd_100m"])
+    q3_sales = _unimicron_capex_reference(state["q3_2026_revenue_twd_100m"])
+    lines = [
+        "<b>Unimicron(3037.TW) — ABF 패키지기판 이익 전망·설비 선주문 분리 알림</b>",
+        "",
+        "<b>1. 증권사 전망(회사 공식 판매가격 아님)</b>",
+        f"• 목표주가: <b>{old:,}대만달러({previous}) → {new:,}대만달러({latest})</b>"
+        f" (정확히 +{pct:.1f}%, 기사 반올림 +29%).",
+        f"• 적용 PER: {state['broker_pe_prior']}배 → {state['broker_pe_current']}배."
+        " EPS 추정 상향·평가배수 상향을 함께 반영.",
+        f"• 2026·2027 예상 EPS: {state['broker_eps_2026_twd']:.2f}대만달러"
+        f"({_unimicron_twd_reference(state['broker_eps_2026_twd'])}) / "
+        f"{state['broker_eps_2027_twd']:.2f}대만달러"
+        f"({_unimicron_twd_reference(state['broker_eps_2027_twd'])}).",
+        "• 인용 기사상 증권사 실명 미공개. UBS·Bernstein 등 다른 증권사 목표주가와 동일 기관 수정치로 합치지 않음.",
+        "",
+        "<b>2. 실제 3Q26 실적과 공시 범위</b>",
+        f"• 3분기 매출 {state['q3_2026_revenue_twd_100m']:,.1f}억대만달러({q3_sales}); "
+        f"매출총이익률 {state['q3_2026_gross_margin_pct_reported']:.1f}%."
+        " 직원보수 일회성 반영 보도와 본업 수율·판가를 분리.",
+        f"• 10/27 이사회: 장기 납기 설비 선주문 금액 <b>추가 "
+        f"{state['board_incremental_preorder_twd_100m']:,.0f}억대만달러({capex})</b> 승인.",
+        "  신규공장·공정능력 목적. <b>실제 지급액·ABF 전용 투자액·확정 고객매출 아님.</b>",
+        "  자금 조달: 자체 자금 + 은행 융자. 실제 지급과 장비 반입·검수 시점 별도 추적.",
+        "",
+        "<b>3. 다음 감시·실패경로</b>",
+        "• 고부가 ABF·HDI 장비 반입 → 수율·고객승인 → 실제 납품·평균판매단가·현금흐름 순으로 검증.",
+        "• 6~24개월 위험: 저열팽창 유리섬유·ABF 소재·SAP·휨·고온 신뢰성 검증 지연.",
+        "• 이는 10/23 CASPA 병목 발언 및 Goldman 14/34/51% 전망과 별개 증거.",
+        f"• 환율 참고: 1대만달러={UNIMICRON_REFERENCE_KRW_PER_TWD:.3f}원"
+        f" ({UNIMICRON_REFERENCE_FX_DAY} 종가; 현재 실시간 환율 아님).",
+        f'• <a href="{UNIMICRON_SOURCE_ARTICLE}">사용자 제공 기사</a> / '
+        f'<a href="{UNIMICRON_SOURCE_CORROBORATION}">교차 확인 기사</a>',
+        f'• <a href="{UNIMICRON_TWSE_DISCLOSURE}">509억대만달러 공시 재게시</a>',
+    ]
+    return "\n".join(lines)
+
+
+def unimicron_broker_update(previous: dict) -> tuple[dict, str]:
+    """Send exactly one attributable baseline; do not infer future broker prices."""
+    if int((previous or {}).get("version") or 0) >= UNIMICRON_TARGET_CONTEXT_VERSION:
+        return previous, ""
+    latest = copy.deepcopy(previous or {})
+    for key, value in UNIMICRON_TARGET_CONTEXT.items():
+        if key not in latest:
+            latest[key] = copy.deepcopy(value)
+    latest["version"] = UNIMICRON_TARGET_CONTEXT_VERSION
+    return latest, unimicron_broker_notice(latest)
+
+
 def material_events(previous: dict, updates: list[dict]) -> list[dict]:
     official = previous.get("official") or {}
     research = previous.get("research") or {}
@@ -1225,14 +1347,18 @@ def main() -> None:
     vintage_upgrade = int((previous.get("goldman_vintage_context") or {}).get("version") or 0) < ABF_VINTAGE_CONTEXT_VERSION
     if vintage_upgrade:
         latest["goldman_vintage_context"] = copy.deepcopy(ABF_VINTAGE_CONTEXT)
+    broker_state, broker_alert = unimicron_broker_update(
+        previous.get("unimicron_broker_context") or {},
+    )
+    latest["unimicron_broker_context"] = broker_state
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
     latest["candidate_count"] = len(updates)
-    latest["event_count"] = len(events) + len(new_partner_events) + int(vintage_upgrade)
+    latest["event_count"] = len(events) + len(new_partner_events) + int(vintage_upgrade) + int(bool(broker_alert))
 
     pending["abf_cpu_monetization"] = latest
     write_json(PENDING_PATH, pending)
 
-    if events or new_partner_events or vintage_upgrade:
+    if events or new_partner_events or vintage_upgrade or broker_alert:
         blocks = []
         if events:
             blocks.append(build_alert(events,latest).strip())
@@ -1240,6 +1366,8 @@ def main() -> None:
             blocks.append(build_nvidia_abf_alert(new_partner_events,partner).strip())
         if vintage_upgrade:
             blocks.append(build_abf_vintage_context_alert(latest).strip())
+        if broker_alert:
+            blocks.append(broker_alert.strip())
         block = "\n\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n".join(blocks)
         existing = ALERT_PATH.read_text(encoding="utf-8").strip() if ALERT_PATH.exists() else ""
         merged = (existing + "\n\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n" + block).strip() if existing else block
@@ -1247,7 +1375,7 @@ def main() -> None:
 
     print(
         "abf_cpu_monetization_watch=true "
-        f"candidates={len(updates)} events={len(events)+len(new_partner_events)+int(vintage_upgrade)} notify={str(bool(events or new_partner_events or vintage_upgrade)).lower()} official_checks={source_checks}"
+        f"candidates={len(updates)} events={len(events)+len(new_partner_events)+int(vintage_upgrade)+int(bool(broker_alert))} notify={str(bool(events or new_partner_events or vintage_upgrade or broker_alert)).lower()} official_checks={source_checks}"
     )
 
 if __name__ == "__main__":
