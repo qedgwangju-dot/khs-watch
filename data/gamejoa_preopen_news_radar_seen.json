@@ -14338,6 +14338,30 @@
       "telegram_core_fact": "코스피 상장사 삼성카드[029780]는 연결 기준 올해 3분기 영업이익이 1천871억원으로 지난해 동기보다 12.4% 감소한 것으로 잠정 집계됐다고 27일 공시했다.",
       "title": "삼성카드 3분기 영업이익 1천871억원…작년 동기 대비 12.4%↓ | 연합뉴스"
     },
+    "core:1cf2779034036e26e99f264c": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003846347",
+      "source": "뉴시스",
+      "source_body_digest": "71467646726a3bfc7381d74e87e046a9cb98282a1895ff7759703a9357da3542",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7da2e1d15c1a03f2f473c649403782c06a54a803f6aaf19a62032c33c7d9881f",
+      "source_fact_keys": [
+        "source_fact:v1:1b2f89553768ba61798f85da2f804e44e793f7216610c3ca284742d61bae40a3",
+        "source_fact:v1:229dc192438fc7346ea39e6ae04ce5fa2a52bce472a15d5d731d674ddf6b59f6",
+        "source_fact:v1:74e9910a3866c016de9df40a9c3ed628831abab1657fa499d48e3eb4383b9f3c",
+        "source_fact:v1:9200dc76ffcd256d5e05365adc1f01773c32fc1159076a5a523d61b7bc8a5aea",
+        "source_fact:v1:e950f5d99890ae854126b0baeb3fc3bdc2c50ca01c5ffae9f85d8d779ac78372"
+      ],
+      "source_published_kst": "2026-10-29T11:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑",
+      "telegram_core_fact": "미국 공급망과 경제활동 흐름을 가늠할 수 있는 2026년 9월 도매재고가 전월보다 0.6% 증가했다. 9월 소매재고액 8853억 달러로 8월에 비해 0.3% 많았다.",
+      "title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑"
+    },
     "core:1cf74d8931f68773b86bf317": {
       "first_seen_kst": "2026-10-21T11:24:12+09:00",
       "lanes": {
@@ -56898,6 +56922,28 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 원유·천연가스 주요 수입국에 대한 고율관세 부과를 전격 취소한 것을 놓고 미 공화당과 행정부가 내분 양상을 드러내고 있다.",
       "title": "트럼프 '러 에너지 유화책'에 공화 반발기류…美여권 내분 양상(종합) | 연합뉴스"
     },
+    "core:712a44a6ae6f7e0822822f14": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.fnnews.com/news/202610291014001421",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae1a0bc60ea3acb799efbe8dda136f4a7cacf8262860bb5a015437d1a131c4a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ef4578faa82c467851c121594493b1f3b31c451c957d933255bf537a960733b",
+      "source_fact_keys": [
+        "source_fact:v1:93a27ffc48be4b94998048c55caf2045189ca2811208bd8836a206578bd44ed2",
+        "source_fact:v1:d58886f20e5903f9dbf0c282dda7aa7f8b6af0b43d1281748b03495d7ff7d7d7",
+        "source_fact:v1:ed85461f69634bc7e66d2a91fb1ffc0ec4fbb3b4e3ccfd61b2754576445804b3"
+      ],
+      "source_published_kst": "2026-10-29T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위",
+      "telegram_core_fact": "김정현 신한자산운용 ETF사업그룹장은 \"반도체·AI 관련주의 변동성이 확대되는 국면에서는 필수소비재·헬스케어 등 안정적인 수요와 배당 기반을 갖춘 업종의 분산투자 역할이 부각될 수 있다\"고 말했다.",
+      "title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위"
+    },
     "core:71330a6792c4ac8ecfeb2420": {
       "first_seen_kst": "2026-10-28T12:04:13+09:00",
       "lanes": {
@@ -64363,6 +64409,35 @@
       "source_title": "제이케이시냅스, 상반기 반도체 소재 매출 50억 돌파…2분기 90% 급증",
       "telegram_core_fact": "코스닥 상장사 제이케이시냅스가 반도체 공정 소재 국산화와 전방 산업 가동률 회복에 힘입어 올해 상반기 반도체 공정 소재 부문에서만 50억원이 넘는 매출을 달성했다.",
       "title": "제이케이시냅스, 상반기 반도체 소재 매출 50억 돌파…2분기 90% 급증"
+    },
+    "core:7f38c66a4796ae2e615c01a5": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
     },
     "core:7f3cfed0685d895bd3c83183": {
       "first_seen_kst": "2026-10-26T06:42:55+09:00",
@@ -77518,6 +77593,27 @@
       "source_title": "에이씨엔비, 3분기 희석 EPS 1.55달러..분기 최대 이익",
       "telegram_core_fact": "에이씨엔비(ACNB)가 9월 30일 종료된 3분기(3개월) 순이익 1570만 달러, 희석 주당순이익 1.55달러로 창사 169년 만에 최대 분기 이익을 기록했다고 10월 22일 발표했다.",
       "title": "에이씨엔비, 3분기 희석 EPS 1.55달러..분기 최대 이익"
+    },
+    "core:99a7c86d278915076af1e3a5": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029098400527",
+      "source": "연합뉴스",
+      "source_body_digest": "793b014d01e41ee8000c7afb6058a08a7ce84680c1172ec9da8f08fad741de14",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:072fd2c8d6ed8ec566fa04c6c838e3c966a470e72d8a747430be4520488476d9",
+      "source_fact_identity": "source_facts:v1:151c5e35bb538924733313a8b581a8e7ed4d06ad4502d2b6825739c4368cec82",
+      "source_fact_keys": [
+        "source_fact:v1:dce0f50fad1302cdd5b941124572f90a0b49e0655a38e6b9476f94c965c76f4e",
+        "source_fact:v1:eb2ea0a80bbfb88c546ad6666b1be610393808894287930cb3beb4163ee5bbbd"
+      ],
+      "source_published_kst": "2026-10-29T11:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 세아베스틸지주[001430]는 연결 기준 올해 3분기 영업이익이 144억원으로 지난해 동기보다 46.4% 감소한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스"
     },
     "core:99aafe13e7d04dd78a729601": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -92285,6 +92381,30 @@
       "source_title": "이영호 엔라이튼 대표 “태양광 8GW 연결… 전력 유통 시장 승부”",
       "telegram_core_fact": "태양광 발전소를 짓고 관리하는 데서 나아가 생산된 전기를 기업에 판매하는 에너지 IT 플랫폼 기업 엔라이튼의 이야기다.",
       "title": "이영호 엔라이튼 대표 “태양광 8GW 연결… 전력 유통 시장 승부”"
+    },
+    "core:b7711d701ff06157466074a3": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.etnews.com/20261029000193",
+      "source": "전자신문",
+      "source_body_digest": "dcf8588be1e12d59ae6abafdcdee707e1514a3094afc4d108ead82f0a6cb57a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dddb55dc0e9a8cb83f4db857ab2937cd29ee9f41b5b6edfc8587798ed57c85c",
+      "source_fact_keys": [
+        "source_fact:v1:494728aa2b085cf457904ecc4b69a65583a0034ff258a6a32ddb94412032c176",
+        "source_fact:v1:673cb39b56287e2da6ace06ea6610fdf27351a89ccafd7a3f14fe602066aca1e",
+        "source_fact:v1:af054efd9eefb6d3766dcbe9398b3c06e3cacd4f6ba2667dde2df84be378fb87",
+        "source_fact:v1:b4effdc7bd14e5422627a8dc0a6ef2951579fa444212aa5aa94226bc160db780",
+        "source_fact:v1:f398a0ec17c6badbe738464c41708088d36376caa7a2b691374dda22334a39fb"
+      ],
+      "source_published_kst": "2026-10-29T11:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화",
+      "telegram_core_fact": "조달청 다수공급자계약(MAS) 등록을 기반으로 지역별 서비스 제공 체계를 확대하고, 제품 유형에 따른 세척 단가도 인하했다.",
+      "title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화"
     },
     "core:b773ac36e3c9ece1f1705548": {
       "first_seen_kst": "2026-10-13T00:43:08+09:00",
@@ -108982,6 +109102,24 @@
       "source_title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제",
       "telegram_core_fact": "이 법률에 담긴 핵심 제재 조항은 러시아산 원유·천연가스의 상위 5개 수입국에서 미국으로 들어오는 모든 상품에 최고 100%의 높은 관세를 부과하는 것이다.",
       "title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제"
+    },
+    "core:d88e053c7921875c7aa79299": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029096500064",
+      "source": "연합뉴스",
+      "source_body_digest": "c483a5142fda4449373353bdc519b3b5c4264db4a7b314deb4ffe12e4105984f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-29T11:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "제천시, 화장품 생산공장 투자협약…AI데이터센터도 유치 추진 | 연합뉴스",
+      "telegram_core_fact": "충북 제천시는 바이오, 인공지능(AI) 분야를 중심으로 투자 유치를 본격화한다고 29일 밝혔다. 시는 이날 화장품 생산 기업인 바이오파마코리아와 220억원 투자협약을 했다.",
+      "title": "제천시, 화장품 생산공장 투자협약…AI데이터센터도 유치 추진 | 연합뉴스"
     },
     "core:d88efdee1eb50b33480d0554": {
       "first_seen_kst": "2026-10-24T03:01:20+09:00",
@@ -138328,6 +138466,27 @@
       "telegram_core_fact": "이란이 호르무즈 해협을 통과하는 선박들을 겨냥한 새로운 공격 전술을 도입했다고 로이터통신이 이란 고위 관계자들을 인용해 14일(현지시간) 보도했다.",
       "title": "\"유가로 美중간선거 흔든다\"…이란, 해협 활용한 '새 전략' 감행"
     },
+    "event:5215c85b02fecba09d10a9e8": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029098400527",
+      "source": "연합뉴스",
+      "source_body_digest": "793b014d01e41ee8000c7afb6058a08a7ce84680c1172ec9da8f08fad741de14",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:072fd2c8d6ed8ec566fa04c6c838e3c966a470e72d8a747430be4520488476d9",
+      "source_fact_identity": "source_facts:v1:151c5e35bb538924733313a8b581a8e7ed4d06ad4502d2b6825739c4368cec82",
+      "source_fact_keys": [
+        "source_fact:v1:dce0f50fad1302cdd5b941124572f90a0b49e0655a38e6b9476f94c965c76f4e",
+        "source_fact:v1:eb2ea0a80bbfb88c546ad6666b1be610393808894287930cb3beb4163ee5bbbd"
+      ],
+      "source_published_kst": "2026-10-29T11:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 세아베스틸지주[001430]는 연결 기준 올해 3분기 영업이익이 144억원으로 지난해 동기보다 46.4% 감소한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스"
+    },
     "event:52198871a62779c989d66c8f": {
       "first_seen_kst": "2026-10-21T15:40:18+09:00",
       "lanes": {
@@ -141080,23 +141239,24 @@
     "event:6c8ba86371bd82ccbf9c2cdc": {
       "first_seen_kst": "2026-10-29T16:31:44+09:00",
       "lanes": {
-        "live": "2026-10-29T16:31:44+09:00"
+        "live": "2026-10-30T01:23:08+09:00"
       },
-      "last_seen_kst": "2026-10-29T16:31:44+09:00",
-      "link": "https://www.hankyung.com/article/2026102931006",
-      "source": "한국경제",
-      "source_body_digest": "bdbadeac6ff601c5212b7cf36b3f1ad0f0f2f6edb9c9518e3f9a42facb4bb8b7",
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.fnnews.com/news/202610291014001421",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae1a0bc60ea3acb799efbe8dda136f4a7cacf8262860bb5a015437d1a131c4a7",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:473645177deacd34b93e17cb28e5767ab38dd3098bd837ea0392a10452c9cf70",
+      "source_fact_identity": "source_facts:v1:2ef4578faa82c467851c121594493b1f3b31c451c957d933255bf537a960733b",
       "source_fact_keys": [
-        "source_fact:v1:a93e8c1b3b0a43b64402c78be50c742facab2acd6b8b764e0ef3c50753982fc9",
-        "source_fact:v1:bd7f6cd48051bfeb64d36259d02d9bf5f548d4b67d378ca72cfaff4815a4089d"
+        "source_fact:v1:93a27ffc48be4b94998048c55caf2045189ca2811208bd8836a206578bd44ed2",
+        "source_fact:v1:d58886f20e5903f9dbf0c282dda7aa7f8b6af0b43d1281748b03495d7ff7d7d7",
+        "source_fact:v1:ed85461f69634bc7e66d2a91fb1ffc0ec4fbb3b4e3ccfd61b2754576445804b3"
       ],
-      "source_published_kst": "2026-10-29T14:39+09:00",
+      "source_published_kst": "2026-10-29T10:14+09:00",
       "source_supply_terms": {},
-      "source_title": "'퇴근길 ETF 거래' 결국 해 넘긴다…NXT, 인가 신청 지연",
-      "telegram_core_fact": "NXT에 따르면 월별 일평균 거래대금은 1월(20조3499억원), 2월(22조9538억원), 3월(23조6446억원), 4월(24조2840억원), 5월(40조3989억원)까지 증가한 뒤 6월(37조6241억원), 7월(22조8475억원), 8월(17조7248억원), 9월(11조6901억원)을 거쳐 줄었다.",
-      "title": "'퇴근길 ETF 거래' 결국 해 넘긴다…NXT, 인가 신청 지연"
+      "source_title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위",
+      "telegram_core_fact": "김정현 신한자산운용 ETF사업그룹장은 \"반도체·AI 관련주의 변동성이 확대되는 국면에서는 필수소비재·헬스케어 등 안정적인 수요와 배당 기반을 갖춘 업종의 분산투자 역할이 부각될 수 있다\"고 말했다.",
+      "title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위"
     },
     "event:6c97ed34469babf9fa9dea5e": {
       "first_seen_kst": "2026-10-01T17:28:33+09:00",
@@ -144427,28 +144587,25 @@
     "event:8a58d96ae4902613d6efc8c0": {
       "first_seen_kst": "2026-10-30T00:09:19+09:00",
       "lanes": {
-        "live": "2026-10-30T00:09:19+09:00"
+        "live": "2026-10-30T01:23:08+09:00"
       },
-      "last_seen_kst": "2026-10-30T00:09:19+09:00",
-      "link": "https://www.newsis.com/view/NISX20261029_0003846073",
-      "source": "뉴시스",
-      "source_body_digest": "3484265ec7b7e65b169a0cea20fb238f1402a51893983703eed631ebae447303",
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184106",
+      "source": "매일경제",
+      "source_body_digest": "89269392b57e63efa19864e03bb709478171bb31f37a6e6a7d7bcabe5488646d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a628c815ae3299f3f9b324dd26abef71d88c41cbd9b7916a55ec16acbf87cc16",
+      "source_fact_identity": "source_facts:v1:87030433f17ca6a4473a15c6a86a0eb75f8622d65d5dc4761a03358078aa2d22",
       "source_fact_keys": [
-        "source_fact:v1:15c178e2ea50e26a57f5d08f09b115726a566d37d046fa7eabca253d78fad668",
-        "source_fact:v1:307164e53acb87fa07a488a0ec07fa472fe4d9ed193b4d52be22b2f0d20fb36f",
-        "source_fact:v1:7fc2a5dff265a9670def63c82fc35fd3adb5834e222adb3e17b494f4e945ae88",
-        "source_fact:v1:9eed50207404b3d73b7b2d2cf84229942a3ce7a91d2a6f9ad86360aa72b3b73b",
-        "source_fact:v1:d07fb885c973128dd4790f1d16c2b02a4bb7a939beb760258397cc6b932f60e5",
-        "source_fact:v1:d3ae51fad59dd00e50c7786a37335c00da7506551009a46d5cef5cf5faf948de",
-        "source_fact:v1:e010645e32d330bf5b2fc3903c2f809920683b79287bdbb488932b5fecbe59de"
+        "source_fact:v1:086ad694ce6aafc15de3d024b46c10ca9ada3e14e893c6138cbc6ef514b95687",
+        "source_fact:v1:1f68180ee1b28d0f54091bdb4fab4cb047cd661cbdb7a71df2f3dbbb1a936ca6",
+        "source_fact:v1:6098ec0de92b4b18677e00c0c4a13c1e7fec9790e09a21f03068b7bf7f53c73c",
+        "source_fact:v1:9d2a3aef872634330e9650985efe2f81ba16992c72827d5e9d231fe1821c3302"
       ],
-      "source_published_kst": "2026-10-29T10:38+09:00",
+      "source_published_kst": "2026-10-29T10:42+09:00",
       "source_supply_terms": {},
-      "source_title": "MBK파트너스, 골프존홀딩스 주장 반박…\"골프존카운티 매각은 계약 따른 절차\"",
-      "telegram_core_fact": "외부 매각 절차에 앞서 골프존홀딩스에 인수 기회를 제공했지만, 골프존홀딩스가 구체적인 인수 조건을 제시하지 않고 IPO 추진 의사만 전달했다는 설명이다.",
-      "title": "MBK파트너스, 골프존홀딩스 주장 반박…\"골프존카운티 매각은 계약 따른 절차\""
+      "source_title": "미래에셋, 日 산코증권 품는다…",
+      "telegram_core_fact": "미래에셋증권[006800]이 일본 산코증권 인수를 공식 발표했다.",
+      "title": "미래에셋, 日 산코증권 품는다…"
     },
     "event:8a87c7fdf2df4ded76281e4a": {
       "first_seen_kst": "2026-10-20T05:37:55+09:00",
@@ -193239,6 +193396,30 @@
       "telegram_core_fact": "이성민(49·대구)씨는 \"불꽃축제 기간 부산은 서울보다 객실 단가가 훨씬 많이 급등한다\"며 \"불꽃축제에 타지역 사람들도 많이 끌어모으려면 합리적인 숙박 요금 관리가 꼭 필요하다고 본다\"고 말했다.",
       "title": "[현장In] 부산불꽃축제 숙박 요금 폭등…'바가지' 논란 언제까지 | 연합뉴스"
     },
+    "fact:44d3976d6b66358a44c1f0ec": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.etnews.com/20261029000193",
+      "source": "전자신문",
+      "source_body_digest": "dcf8588be1e12d59ae6abafdcdee707e1514a3094afc4d108ead82f0a6cb57a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dddb55dc0e9a8cb83f4db857ab2937cd29ee9f41b5b6edfc8587798ed57c85c",
+      "source_fact_keys": [
+        "source_fact:v1:494728aa2b085cf457904ecc4b69a65583a0034ff258a6a32ddb94412032c176",
+        "source_fact:v1:673cb39b56287e2da6ace06ea6610fdf27351a89ccafd7a3f14fe602066aca1e",
+        "source_fact:v1:af054efd9eefb6d3766dcbe9398b3c06e3cacd4f6ba2667dde2df84be378fb87",
+        "source_fact:v1:b4effdc7bd14e5422627a8dc0a6ef2951579fa444212aa5aa94226bc160db780",
+        "source_fact:v1:f398a0ec17c6badbe738464c41708088d36376caa7a2b691374dda22334a39fb"
+      ],
+      "source_published_kst": "2026-10-29T11:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화",
+      "telegram_core_fact": "조달청 다수공급자계약(MAS) 등록을 기반으로 지역별 서비스 제공 체계를 확대하고, 제품 유형에 따른 세척 단가도 인하했다.",
+      "title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화"
+    },
     "fact:44d6a7370c757fb1aed1f1eb": {
       "first_seen_kst": "2026-10-10T01:06:33+09:00",
       "lanes": {
@@ -210687,6 +210868,28 @@
       "source_title": "아이온큐, 사이버보안 스타트업 엘리시티 13억달러 인수에 9% 급락",
       "telegram_core_fact": "미국의 양자컴퓨터 기업 아이온큐가 12일(현지시간) 사이버보안 스타트업 엘리시티를 13억달러에 주식 교환 방식으로 인수한다고 발표했다. 이 날 아이온큐의 주가는 나스닥 정규장에서 9.14% 급락한 36.27달러에 거래를 마쳤다.",
       "title": "아이온큐, 사이버보안 스타트업 엘리시티 13억달러 인수에 9% 급락"
+    },
+    "fact:673aac8aba63447688c1e2bf": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.fnnews.com/news/202610291014001421",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae1a0bc60ea3acb799efbe8dda136f4a7cacf8262860bb5a015437d1a131c4a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ef4578faa82c467851c121594493b1f3b31c451c957d933255bf537a960733b",
+      "source_fact_keys": [
+        "source_fact:v1:93a27ffc48be4b94998048c55caf2045189ca2811208bd8836a206578bd44ed2",
+        "source_fact:v1:d58886f20e5903f9dbf0c282dda7aa7f8b6af0b43d1281748b03495d7ff7d7d7",
+        "source_fact:v1:ed85461f69634bc7e66d2a91fb1ffc0ec4fbb3b4e3ccfd61b2754576445804b3"
+      ],
+      "source_published_kst": "2026-10-29T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위",
+      "telegram_core_fact": "김정현 신한자산운용 ETF사업그룹장은 \"반도체·AI 관련주의 변동성이 확대되는 국면에서는 필수소비재·헬스케어 등 안정적인 수요와 배당 기반을 갖춘 업종의 분산투자 역할이 부각될 수 있다\"고 말했다.",
+      "title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위"
     },
     "fact:67425eb6f3164b5c841f6acf": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -256042,6 +256245,35 @@
       "telegram_core_fact": "이어 \"이에 따라 하나머티리얼즈의 2027년 매출액은 4740억원으로 25.6%, 영업이익은 1472억원으로 43.7% 증가해 사상 최대치를 경신할 것으로 추정됐다\"라며 \"TEL과 램리서치, 국내 장비사의 출하 증가와 메모리 팹 가동률 상승에 따른 교체 수요가 동시에 늘면서 영업 레버리지가 확대될 것\"이라고 덧붙였다.",
       "title": "유안타 \"하나머티리얼즈, 메모리 투자 확대에 내년 최대 실적 전망\""
     },
+    "fact:b9328d18de09a1a6697d0d4f": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
+    },
     "fact:b938f4e3ed7fe6897107b64c": {
       "first_seen_kst": "2026-10-20T21:25:35+09:00",
       "lanes": {
@@ -266328,6 +266560,27 @@
       ],
       "source_published_kst": "2026-10-06T11:20+09:00",
       "title": "엠플러스, 유럽 배터리 기업 각형 노칭·스태킹 장비 수주"
+    },
+    "fact:cc7bdafd2ad4d4a8f7b5d3e4": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029098400527",
+      "source": "연합뉴스",
+      "source_body_digest": "793b014d01e41ee8000c7afb6058a08a7ce84680c1172ec9da8f08fad741de14",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:072fd2c8d6ed8ec566fa04c6c838e3c966a470e72d8a747430be4520488476d9",
+      "source_fact_identity": "source_facts:v1:151c5e35bb538924733313a8b581a8e7ed4d06ad4502d2b6825739c4368cec82",
+      "source_fact_keys": [
+        "source_fact:v1:dce0f50fad1302cdd5b941124572f90a0b49e0655a38e6b9476f94c965c76f4e",
+        "source_fact:v1:eb2ea0a80bbfb88c546ad6666b1be610393808894287930cb3beb4163ee5bbbd"
+      ],
+      "source_published_kst": "2026-10-29T11:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 세아베스틸지주[001430]는 연결 기준 올해 3분기 영업이익이 144억원으로 지난해 동기보다 46.4% 감소한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스"
     },
     "fact:cc9101479d6dc3d34f15c5fd": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
@@ -277355,6 +277608,29 @@
       "telegram_core_fact": "전남광주통합특별시에 따르면 특별시의회가 본회를 통해 집행부가 제출한 '전남광주특별시 출자·출연 기관 임원의 임기에 관한 특별조례안'을 의결했다.",
       "title": "'버티기 방지' 전남광주시장·기관장 임기 일치 조례 통과"
     },
+    "fact:e049619e5bf6cd4f897fa319": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184106",
+      "source": "매일경제",
+      "source_body_digest": "89269392b57e63efa19864e03bb709478171bb31f37a6e6a7d7bcabe5488646d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87030433f17ca6a4473a15c6a86a0eb75f8622d65d5dc4761a03358078aa2d22",
+      "source_fact_keys": [
+        "source_fact:v1:086ad694ce6aafc15de3d024b46c10ca9ada3e14e893c6138cbc6ef514b95687",
+        "source_fact:v1:1f68180ee1b28d0f54091bdb4fab4cb047cd661cbdb7a71df2f3dbbb1a936ca6",
+        "source_fact:v1:6098ec0de92b4b18677e00c0c4a13c1e7fec9790e09a21f03068b7bf7f53c73c",
+        "source_fact:v1:9d2a3aef872634330e9650985efe2f81ba16992c72827d5e9d231fe1821c3302"
+      ],
+      "source_published_kst": "2026-10-29T10:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "미래에셋, 日 산코증권 품는다…",
+      "telegram_core_fact": "미래에셋증권[006800]이 일본 산코증권 인수를 공식 발표했다.",
+      "title": "미래에셋, 日 산코증권 품는다…"
+    },
     "fact:e05976b3818e4d0ec33fc898": {
       "first_seen_kst": "2026-10-21T16:39:53+09:00",
       "lanes": {
@@ -279946,6 +280222,30 @@
       "source_title": "“어, 강남 아니었네?”…대출 옥죄자 매입자금 의존 더 커진 지역은",
       "telegram_core_fact": "국토교통부의 주택취득자금 조달·입주계획서 현황 자료에 따르면 올해 들어 8월까지 노원구 주택 구매자의 전체 매입자금 가운데 금융기관 대출액이 차지하는 비율은 38.2%로 집계됐다.",
       "title": "“어, 강남 아니었네?”…대출 옥죄자 매입자금 의존 더 커진 지역은"
+    },
+    "fact:e4bdb9b4cfc0fef819f310f5": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003846347",
+      "source": "뉴시스",
+      "source_body_digest": "71467646726a3bfc7381d74e87e046a9cb98282a1895ff7759703a9357da3542",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7da2e1d15c1a03f2f473c649403782c06a54a803f6aaf19a62032c33c7d9881f",
+      "source_fact_keys": [
+        "source_fact:v1:1b2f89553768ba61798f85da2f804e44e793f7216610c3ca284742d61bae40a3",
+        "source_fact:v1:229dc192438fc7346ea39e6ae04ce5fa2a52bce472a15d5d731d674ddf6b59f6",
+        "source_fact:v1:74e9910a3866c016de9df40a9c3ed628831abab1657fa499d48e3eb4383b9f3c",
+        "source_fact:v1:9200dc76ffcd256d5e05365adc1f01773c32fc1159076a5a523d61b7bc8a5aea",
+        "source_fact:v1:e950f5d99890ae854126b0baeb3fc3bdc2c50ca01c5ffae9f85d8d779ac78372"
+      ],
+      "source_published_kst": "2026-10-29T11:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑",
+      "telegram_core_fact": "미국 공급망과 경제활동 흐름을 가늠할 수 있는 2026년 9월 도매재고가 전월보다 0.6% 증가했다. 9월 소매재고액 8853억 달러로 8월에 비해 0.3% 많았다.",
+      "title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑"
     },
     "fact:e4cb15c07e146d9f1c5d26c5": {
       "first_seen_kst": "2026-10-20T01:09:59+09:00",
@@ -295478,6 +295778,24 @@
       "telegram_core_fact": "총사업비의 75%를 대출로 조달하는 3천959억원 장성 데이터센터 건립사업에 전남광주통합특별시가 48억원을 출자하기로 하면서 사업성 검증에 대한 요구가 시의회에서 나왔다. 상임위 심사에서는 2030년 데이터센터 매각을 전제로 통합시 몫의 청산이익이 62억원으로 예상돼 사업성 검증이 필요하다는 지적이 제기됐다.",
       "title": "전남광주시, 장성데이터센터 출자에 시의회서 '사업성' 우려 | 연합뉴스"
     },
+    "link:014d7377e1d5c84d2337e1d9": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029096500064",
+      "source": "연합뉴스",
+      "source_body_digest": "c483a5142fda4449373353bdc519b3b5c4264db4a7b314deb4ffe12e4105984f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-29T11:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "제천시, 화장품 생산공장 투자협약…AI데이터센터도 유치 추진 | 연합뉴스",
+      "telegram_core_fact": "충북 제천시는 바이오, 인공지능(AI) 분야를 중심으로 투자 유치를 본격화한다고 29일 밝혔다. 시는 이날 화장품 생산 기업인 바이오파마코리아와 220억원 투자협약을 했다.",
+      "title": "제천시, 화장품 생산공장 투자협약…AI데이터센터도 유치 추진 | 연합뉴스"
+    },
     "link:014f16ed88fc6ff1624e647e": {
       "first_seen_kst": "2026-10-29T13:04:16+09:00",
       "lanes": {
@@ -296656,6 +296974,29 @@
       "source_title": "삼성 '엑시노스 2700', 성능 시험서 퀄컴 최신칩 앞서 | 연합뉴스",
       "telegram_core_fact": "내년 초 출시될 삼성전자[005930]의 플래그십 스마트폰 '갤럭시 S27' 시리즈에 탑재될 예정인 자체 개발 모바일 애플리케이션 프로세서(AP) '엑시노스 2700'이 중국 샤오미 스마트폰을 활용한 성능 시험에서 퀄컴의 최신 칩셋을 앞선 것으로 나타났다.",
       "title": "삼성 '엑시노스 2700', 성능 시험서 퀄컴 최신칩 앞서 | 연합뉴스"
+    },
+    "link:02e774c43a5a06ad0f8bf48a": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184106",
+      "source": "매일경제",
+      "source_body_digest": "89269392b57e63efa19864e03bb709478171bb31f37a6e6a7d7bcabe5488646d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87030433f17ca6a4473a15c6a86a0eb75f8622d65d5dc4761a03358078aa2d22",
+      "source_fact_keys": [
+        "source_fact:v1:086ad694ce6aafc15de3d024b46c10ca9ada3e14e893c6138cbc6ef514b95687",
+        "source_fact:v1:1f68180ee1b28d0f54091bdb4fab4cb047cd661cbdb7a71df2f3dbbb1a936ca6",
+        "source_fact:v1:6098ec0de92b4b18677e00c0c4a13c1e7fec9790e09a21f03068b7bf7f53c73c",
+        "source_fact:v1:9d2a3aef872634330e9650985efe2f81ba16992c72827d5e9d231fe1821c3302"
+      ],
+      "source_published_kst": "2026-10-29T10:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "미래에셋, 日 산코증권 품는다…",
+      "telegram_core_fact": "미래에셋증권[006800]이 일본 산코증권 인수를 공식 발표했다.",
+      "title": "미래에셋, 日 산코증권 품는다…"
     },
     "link:02ee6d847c2b2fd386fa3c4f": {
       "first_seen_kst": "2026-10-23T01:05:59+09:00",
@@ -329628,6 +329969,30 @@
       "telegram_core_fact": "HLB그룹이 올해 연말부터 내년 상반기까지 신약 상업화와 허가, 후속 후보물질 임상 성과를 동시에 검증받는다. 신경영양성각막염 치료제와 차세대 세포치료제 임상 결과 발표도 앞두고 있어 신약 개발사로서 역량을 재확인하는 시험대에 오를 전망이다.",
       "title": "HLB그룹, 간암신약 美 재도전·임상 발표…연말·연초 성장 시험대"
     },
+    "link:320eed72ccba281b134b6ad5": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.etnews.com/20261029000193",
+      "source": "전자신문",
+      "source_body_digest": "dcf8588be1e12d59ae6abafdcdee707e1514a3094afc4d108ead82f0a6cb57a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dddb55dc0e9a8cb83f4db857ab2937cd29ee9f41b5b6edfc8587798ed57c85c",
+      "source_fact_keys": [
+        "source_fact:v1:494728aa2b085cf457904ecc4b69a65583a0034ff258a6a32ddb94412032c176",
+        "source_fact:v1:673cb39b56287e2da6ace06ea6610fdf27351a89ccafd7a3f14fe602066aca1e",
+        "source_fact:v1:af054efd9eefb6d3766dcbe9398b3c06e3cacd4f6ba2667dde2df84be378fb87",
+        "source_fact:v1:b4effdc7bd14e5422627a8dc0a6ef2951579fa444212aa5aa94226bc160db780",
+        "source_fact:v1:f398a0ec17c6badbe738464c41708088d36376caa7a2b691374dda22334a39fb"
+      ],
+      "source_published_kst": "2026-10-29T11:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화",
+      "telegram_core_fact": "조달청 다수공급자계약(MAS) 등록을 기반으로 지역별 서비스 제공 체계를 확대하고, 제품 유형에 따른 세척 단가도 인하했다.",
+      "title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화"
+    },
     "link:32142621f126df667931e0f3": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
       "lanes": {
@@ -341416,6 +341781,28 @@
       "telegram_core_fact": "삼성전기는 올해 3분기 연결 기준 매출 3조7633억원, 영업이익 6910억원을 기록했다고 28일 밝혔다.",
       "title": "삼성전기, 3Q 영업익 6910억원 '전년比 165.5%↑'…\"AI용 제품, 실적 성장 이끌어\""
     },
+    "link:43b39cdfb6712167a4161e6b": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.fnnews.com/news/202610291014001421",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae1a0bc60ea3acb799efbe8dda136f4a7cacf8262860bb5a015437d1a131c4a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ef4578faa82c467851c121594493b1f3b31c451c957d933255bf537a960733b",
+      "source_fact_keys": [
+        "source_fact:v1:93a27ffc48be4b94998048c55caf2045189ca2811208bd8836a206578bd44ed2",
+        "source_fact:v1:d58886f20e5903f9dbf0c282dda7aa7f8b6af0b43d1281748b03495d7ff7d7d7",
+        "source_fact:v1:ed85461f69634bc7e66d2a91fb1ffc0ec4fbb3b4e3ccfd61b2754576445804b3"
+      ],
+      "source_published_kst": "2026-10-29T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위",
+      "telegram_core_fact": "김정현 신한자산운용 ETF사업그룹장은 \"반도체·AI 관련주의 변동성이 확대되는 국면에서는 필수소비재·헬스케어 등 안정적인 수요와 배당 기반을 갖춘 업종의 분산투자 역할이 부각될 수 있다\"고 말했다.",
+      "title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위"
+    },
     "link:43ba43b3fd6baee10017ea29": {
       "first_seen_kst": "2026-10-05T15:34:30+09:00",
       "lanes": {
@@ -343388,6 +343775,35 @@
       "source_title": "'120만닉스' 6개월 만에 깨졌다…SK하이닉스, 118만원까지 하락 [종목 NOW]",
       "telegram_core_fact": "이날 AI 관련주가 약세를 보이는 와중, SK하이닉스의 자사주 매입 종료가 임박한 것이 주가 하락으로 이어진 것으로 해석된다.",
       "title": "'120만닉스' 6개월 만에 깨졌다…SK하이닉스, 118만원까지 하락 [종목 NOW]"
+    },
+    "link:46ff2e1af582ea9add79d4c8": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
     },
     "link:47092b03813223b846db3aea": {
       "first_seen_kst": "2026-10-03T10:53:56+09:00",
@@ -460009,6 +460425,27 @@
       "source_published_kst": "2026-10-05T15:01+09:00",
       "title": "포항시, 하수 찌꺼기를 친환경 에너지로…\"연 37억 절감\""
     },
+    "link:f3ca34fc3cfe5a91bd5c8384": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029098400527",
+      "source": "연합뉴스",
+      "source_body_digest": "793b014d01e41ee8000c7afb6058a08a7ce84680c1172ec9da8f08fad741de14",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:072fd2c8d6ed8ec566fa04c6c838e3c966a470e72d8a747430be4520488476d9",
+      "source_fact_identity": "source_facts:v1:151c5e35bb538924733313a8b581a8e7ed4d06ad4502d2b6825739c4368cec82",
+      "source_fact_keys": [
+        "source_fact:v1:dce0f50fad1302cdd5b941124572f90a0b49e0655a38e6b9476f94c965c76f4e",
+        "source_fact:v1:eb2ea0a80bbfb88c546ad6666b1be610393808894287930cb3beb4163ee5bbbd"
+      ],
+      "source_published_kst": "2026-10-29T11:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 세아베스틸지주[001430]는 연결 기준 올해 3분기 영업이익이 144억원으로 지난해 동기보다 46.4% 감소한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스"
+    },
     "link:f3cd7146c23cee3ddfc7817e": {
       "first_seen_kst": "2026-09-29T10:32:56+09:00",
       "lanes": {
@@ -466655,6 +467092,30 @@
       ],
       "source_published_kst": "2026-10-07T09:47+09:00",
       "title": "8월 공장·창고 거래 규모 대폭 증가…거래량은 감소"
+    },
+    "link:fe8259f18e0fb118afd061ee": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003846347",
+      "source": "뉴시스",
+      "source_body_digest": "71467646726a3bfc7381d74e87e046a9cb98282a1895ff7759703a9357da3542",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7da2e1d15c1a03f2f473c649403782c06a54a803f6aaf19a62032c33c7d9881f",
+      "source_fact_keys": [
+        "source_fact:v1:1b2f89553768ba61798f85da2f804e44e793f7216610c3ca284742d61bae40a3",
+        "source_fact:v1:229dc192438fc7346ea39e6ae04ce5fa2a52bce472a15d5d731d674ddf6b59f6",
+        "source_fact:v1:74e9910a3866c016de9df40a9c3ed628831abab1657fa499d48e3eb4383b9f3c",
+        "source_fact:v1:9200dc76ffcd256d5e05365adc1f01773c32fc1159076a5a523d61b7bc8a5aea",
+        "source_fact:v1:e950f5d99890ae854126b0baeb3fc3bdc2c50ca01c5ffae9f85d8d779ac78372"
+      ],
+      "source_published_kst": "2026-10-29T11:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑",
+      "telegram_core_fact": "미국 공급망과 경제활동 흐름을 가늠할 수 있는 2026년 9월 도매재고가 전월보다 0.6% 증가했다. 9월 소매재고액 8853억 달러로 8월에 비해 0.3% 많았다.",
+      "title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑"
     },
     "link:fe89056829119603ab3b98ff": {
       "first_seen_kst": "2026-10-14T20:10:22+09:00",
@@ -478663,6 +479124,30 @@
       "source_title": "스테이블코인 발행사, 10년간 64억 달러 동결 '77%는 사유 미확인'",
       "telegram_core_fact": "비트쿼리가 OFAC 제재 명단과 공개된 수사·법원 자료, 자체 지갑 식별 정보를 대조한 결과 전체 동결액의 77%에 대해서는 구체적인 사유를 확인하지 못했다.",
       "title": "스테이블코인 발행사, 10년간 64억 달러 동결 '77%는 사유 미확인'"
+    },
+    "original:0fef52bb0cc7811438e3a7ff": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.etnews.com/20261029000193",
+      "source": "전자신문",
+      "source_body_digest": "dcf8588be1e12d59ae6abafdcdee707e1514a3094afc4d108ead82f0a6cb57a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dddb55dc0e9a8cb83f4db857ab2937cd29ee9f41b5b6edfc8587798ed57c85c",
+      "source_fact_keys": [
+        "source_fact:v1:494728aa2b085cf457904ecc4b69a65583a0034ff258a6a32ddb94412032c176",
+        "source_fact:v1:673cb39b56287e2da6ace06ea6610fdf27351a89ccafd7a3f14fe602066aca1e",
+        "source_fact:v1:af054efd9eefb6d3766dcbe9398b3c06e3cacd4f6ba2667dde2df84be378fb87",
+        "source_fact:v1:b4effdc7bd14e5422627a8dc0a6ef2951579fa444212aa5aa94226bc160db780",
+        "source_fact:v1:f398a0ec17c6badbe738464c41708088d36376caa7a2b691374dda22334a39fb"
+      ],
+      "source_published_kst": "2026-10-29T11:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화",
+      "telegram_core_fact": "조달청 다수공급자계약(MAS) 등록을 기반으로 지역별 서비스 제공 체계를 확대하고, 제품 유형에 따른 세척 단가도 인하했다.",
+      "title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화"
     },
     "original:0ff1b4646153c09647a2daaf": {
       "first_seen_kst": "2026-10-12T15:02:00+09:00",
@@ -493213,6 +493698,35 @@
       "telegram_core_fact": "홈 뱅코프(HBCP)는 3분기 순이익이 1010만 달러, 희석 주당순이익(EPS)이 1.28달러로 집계돼 전년비 각각 18.3%, 19.5% 감소했다고 19일 발표했다. 2026년 예상 주당배당금은 1.28달러, 예상 시가배당률은 1.94%다.",
       "title": "홈 뱅코프, 3분기 EPS 1.28달러..전년비 19.5% 감소"
     },
+    "original:2627638f3d6de932b39660e2": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
+    },
     "original:26339b904f3ce2deb25d0260": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -494444,6 +494958,28 @@
       "source_title": "셀트리온, 유럽서 사업 다변화 속도⋯4분기 성장세 잇는다",
       "telegram_core_fact": "셀트리온은 프랑스 헬스케어 기업 지프레와 스위스 유통 제약사 아이콘을 인수한 이후 유럽 내 유통 네트워크와 제품 포트폴리오를 확장하는 등 사업 다변화를 추진해 왔다.",
       "title": "셀트리온, 유럽서 사업 다변화 속도⋯4분기 성장세 잇는다"
+    },
+    "original:27d9c57201c07d5a11e24d16": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.fnnews.com/news/202610291014001421",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae1a0bc60ea3acb799efbe8dda136f4a7cacf8262860bb5a015437d1a131c4a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ef4578faa82c467851c121594493b1f3b31c451c957d933255bf537a960733b",
+      "source_fact_keys": [
+        "source_fact:v1:93a27ffc48be4b94998048c55caf2045189ca2811208bd8836a206578bd44ed2",
+        "source_fact:v1:d58886f20e5903f9dbf0c282dda7aa7f8b6af0b43d1281748b03495d7ff7d7d7",
+        "source_fact:v1:ed85461f69634bc7e66d2a91fb1ffc0ec4fbb3b4e3ccfd61b2754576445804b3"
+      ],
+      "source_published_kst": "2026-10-29T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위",
+      "telegram_core_fact": "김정현 신한자산운용 ETF사업그룹장은 \"반도체·AI 관련주의 변동성이 확대되는 국면에서는 필수소비재·헬스케어 등 안정적인 수요와 배당 기반을 갖춘 업종의 분산투자 역할이 부각될 수 있다\"고 말했다.",
+      "title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위"
     },
     "original:27dbcb816e5405c3306ffa5e": {
       "first_seen_kst": "2026-10-16T15:46:25+09:00",
@@ -524756,6 +525292,24 @@
       "source_published_kst": "2026-10-07T10:56+09:00",
       "title": "8월 대구 제조업 생산 4.8%↑·경북 3.2%↓…수출은 동반 증가 | 연합뉴스"
     },
+    "original:54e66c0ee30244fb45c21df3": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029096500064",
+      "source": "연합뉴스",
+      "source_body_digest": "c483a5142fda4449373353bdc519b3b5c4264db4a7b314deb4ffe12e4105984f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-29T11:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "제천시, 화장품 생산공장 투자협약…AI데이터센터도 유치 추진 | 연합뉴스",
+      "telegram_core_fact": "충북 제천시는 바이오, 인공지능(AI) 분야를 중심으로 투자 유치를 본격화한다고 29일 밝혔다. 시는 이날 화장품 생산 기업인 바이오파마코리아와 220억원 투자협약을 했다.",
+      "title": "제천시, 화장품 생산공장 투자협약…AI데이터센터도 유치 추진 | 연합뉴스"
+    },
     "original:54e7e5c070269c41231c7c2c": {
       "first_seen_kst": "2026-10-29T13:04:16+09:00",
       "lanes": {
@@ -535841,6 +536395,27 @@
       "telegram_core_fact": "블룸버그 통신은 소식통을 인용해 엔스케일이 약 300억달러(약 40조3천억원)의 IPO 기업가치를 추진해 왔으나 일부 투자자가 160억∼190억달러(약 21조5천억∼25조5천억원)의 기업가치를 제시하며 반대하고 있다고 보도했다.",
       "title": "\"엔스케일, IPO 기업가치 낮추라 압박 직면\" | 연합뉴스"
     },
+    "original:6530db2a4b7978272f18bea2": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029098400527",
+      "source": "연합뉴스",
+      "source_body_digest": "793b014d01e41ee8000c7afb6058a08a7ce84680c1172ec9da8f08fad741de14",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:072fd2c8d6ed8ec566fa04c6c838e3c966a470e72d8a747430be4520488476d9",
+      "source_fact_identity": "source_facts:v1:151c5e35bb538924733313a8b581a8e7ed4d06ad4502d2b6825739c4368cec82",
+      "source_fact_keys": [
+        "source_fact:v1:dce0f50fad1302cdd5b941124572f90a0b49e0655a38e6b9476f94c965c76f4e",
+        "source_fact:v1:eb2ea0a80bbfb88c546ad6666b1be610393808894287930cb3beb4163ee5bbbd"
+      ],
+      "source_published_kst": "2026-10-29T11:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 세아베스틸지주[001430]는 연결 기준 올해 3분기 영업이익이 144억원으로 지난해 동기보다 46.4% 감소한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스"
+    },
     "original:65402e6f008e9b6ddd0470fa": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -538701,6 +539276,30 @@
       "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
       "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
       "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
+    },
+    "original:69903254c9574d8f055fba76": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003846347",
+      "source": "뉴시스",
+      "source_body_digest": "71467646726a3bfc7381d74e87e046a9cb98282a1895ff7759703a9357da3542",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7da2e1d15c1a03f2f473c649403782c06a54a803f6aaf19a62032c33c7d9881f",
+      "source_fact_keys": [
+        "source_fact:v1:1b2f89553768ba61798f85da2f804e44e793f7216610c3ca284742d61bae40a3",
+        "source_fact:v1:229dc192438fc7346ea39e6ae04ce5fa2a52bce472a15d5d731d674ddf6b59f6",
+        "source_fact:v1:74e9910a3866c016de9df40a9c3ed628831abab1657fa499d48e3eb4383b9f3c",
+        "source_fact:v1:9200dc76ffcd256d5e05365adc1f01773c32fc1159076a5a523d61b7bc8a5aea",
+        "source_fact:v1:e950f5d99890ae854126b0baeb3fc3bdc2c50ca01c5ffae9f85d8d779ac78372"
+      ],
+      "source_published_kst": "2026-10-29T11:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑",
+      "telegram_core_fact": "미국 공급망과 경제활동 흐름을 가늠할 수 있는 2026년 9월 도매재고가 전월보다 0.6% 증가했다. 9월 소매재고액 8853억 달러로 8월에 비해 0.3% 많았다.",
+      "title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑"
     },
     "original:699b1656924a3b670360a809": {
       "first_seen_kst": "2026-10-21T18:34:10+09:00",
@@ -555194,6 +555793,29 @@
       "source_title": "사업 접은 뒤에도 세금 다시 본다…폐업 사업자 환급 조회 70%↑",
       "telegram_core_fact": "사업을 정리한 뒤 과거 납부한 세금을 다시 확인하는 사업자가 늘고 있다.",
       "title": "사업 접은 뒤에도 세금 다시 본다…폐업 사업자 환급 조회 70%↑"
+    },
+    "original:82f6b7947674f23cb17057bd": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184106",
+      "source": "매일경제",
+      "source_body_digest": "89269392b57e63efa19864e03bb709478171bb31f37a6e6a7d7bcabe5488646d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87030433f17ca6a4473a15c6a86a0eb75f8622d65d5dc4761a03358078aa2d22",
+      "source_fact_keys": [
+        "source_fact:v1:086ad694ce6aafc15de3d024b46c10ca9ada3e14e893c6138cbc6ef514b95687",
+        "source_fact:v1:1f68180ee1b28d0f54091bdb4fab4cb047cd661cbdb7a71df2f3dbbb1a936ca6",
+        "source_fact:v1:6098ec0de92b4b18677e00c0c4a13c1e7fec9790e09a21f03068b7bf7f53c73c",
+        "source_fact:v1:9d2a3aef872634330e9650985efe2f81ba16992c72827d5e9d231fe1821c3302"
+      ],
+      "source_published_kst": "2026-10-29T10:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "미래에셋, 日 산코증권 품는다…",
+      "telegram_core_fact": "미래에셋증권[006800]이 일본 산코증권 인수를 공식 발표했다.",
+      "title": "미래에셋, 日 산코증권 품는다…"
     },
     "original:82f9b667d8152e2f38c78fa1": {
       "first_seen_kst": "2026-10-27T06:29:31+09:00",
@@ -684040,6 +684662,28 @@
       "telegram_core_fact": "DHT 홀딩스(DHT)는 3분기 선단 전체 시간용선 등가(TCE) 수익이 하루 평균 14만1300달러로 추정되며, 4분기 현재까지 예약된 현물(스폿) 운항일의 평균 운임이 하루 50만9100달러에 달한다고 13일 발표했다.",
       "title": "DHT 홀딩스, 3분기 TCE 일 14만달러·4분기 현물 51만달러 예약"
     },
+    "source_fact:1075ceae8562ffd35b0d87c9": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.fnnews.com/news/202610291014001421",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae1a0bc60ea3acb799efbe8dda136f4a7cacf8262860bb5a015437d1a131c4a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ef4578faa82c467851c121594493b1f3b31c451c957d933255bf537a960733b",
+      "source_fact_keys": [
+        "source_fact:v1:93a27ffc48be4b94998048c55caf2045189ca2811208bd8836a206578bd44ed2",
+        "source_fact:v1:d58886f20e5903f9dbf0c282dda7aa7f8b6af0b43d1281748b03495d7ff7d7d7",
+        "source_fact:v1:ed85461f69634bc7e66d2a91fb1ffc0ec4fbb3b4e3ccfd61b2754576445804b3"
+      ],
+      "source_published_kst": "2026-10-29T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위",
+      "telegram_core_fact": "김정현 신한자산운용 ETF사업그룹장은 \"반도체·AI 관련주의 변동성이 확대되는 국면에서는 필수소비재·헬스케어 등 안정적인 수요와 배당 기반을 갖춘 업종의 분산투자 역할이 부각될 수 있다\"고 말했다.",
+      "title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위"
+    },
     "source_fact:10796d6b4a2d7054fb4cebb0": {
       "first_seen_kst": "2026-10-24T01:49:56+09:00",
       "lanes": {
@@ -701665,6 +702309,35 @@
       "telegram_core_fact": "TCGX ACQUISITION CORP는 합병이 완료되면 트라이젬엑스바이오는 나스닥 상장사가 되며, 합병법인은 '트라이젬엑스바이오 인코포레이티드(TriGemX Bio, Inc.)'로 사명을 바꾸고 새 티커 'TGEM'으로 거래될 예정이다.",
       "title": "TCGX ACQUISITION CORP, 트라이젬엑스바이오 합병 계약·PIPE 1억6000만 달러"
     },
+    "source_fact:17420b206f061223c69e0220": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
+    },
     "source_fact:1743232b292eeb500eb58e48": {
       "first_seen_kst": "2026-10-23T00:33:48+09:00",
       "lanes": {
@@ -703994,6 +704667,35 @@
       ],
       "source_published_kst": "2026-10-05T22:45+09:00",
       "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
+    },
+    "source_fact:17ea77d7ce32e1829d9b996f": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
     },
     "source_fact:17ebb1d8eea220284ab4f357": {
       "first_seen_kst": "2026-10-13T06:41:52+09:00",
@@ -724738,6 +725440,35 @@
       ],
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
+    },
+    "source_fact:1f307b2b6078debb9b6d237e": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
     },
     "source_fact:1f3699c40e7477b38de8e929": {
       "first_seen_kst": "2026-10-12T16:29:45+09:00",
@@ -755155,6 +755886,30 @@
       "source_title": "'애플 효과' OLED 출하량 늘었지만…삼성·LGD 3분기 성적표 주목",
       "telegram_core_fact": "시장조사업체 유비리서치에 따르면 올해 3분기 삼성디스플레이의 스마트폰·폴더블폰용 OLED 출하량은 9135만대로 전 분기 대비 7.8% 증가했다.",
       "title": "'애플 효과' OLED 출하량 늘었지만…삼성·LGD 3분기 성적표 주목"
+    },
+    "source_fact:2951810154a817bdebea0ed0": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003846347",
+      "source": "뉴시스",
+      "source_body_digest": "71467646726a3bfc7381d74e87e046a9cb98282a1895ff7759703a9357da3542",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7da2e1d15c1a03f2f473c649403782c06a54a803f6aaf19a62032c33c7d9881f",
+      "source_fact_keys": [
+        "source_fact:v1:1b2f89553768ba61798f85da2f804e44e793f7216610c3ca284742d61bae40a3",
+        "source_fact:v1:229dc192438fc7346ea39e6ae04ce5fa2a52bce472a15d5d731d674ddf6b59f6",
+        "source_fact:v1:74e9910a3866c016de9df40a9c3ed628831abab1657fa499d48e3eb4383b9f3c",
+        "source_fact:v1:9200dc76ffcd256d5e05365adc1f01773c32fc1159076a5a523d61b7bc8a5aea",
+        "source_fact:v1:e950f5d99890ae854126b0baeb3fc3bdc2c50ca01c5ffae9f85d8d779ac78372"
+      ],
+      "source_published_kst": "2026-10-29T11:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑",
+      "telegram_core_fact": "미국 공급망과 경제활동 흐름을 가늠할 수 있는 2026년 9월 도매재고가 전월보다 0.6% 증가했다. 9월 소매재고액 8853억 달러로 8월에 비해 0.3% 많았다.",
+      "title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑"
     },
     "source_fact:2951853963c4fa89f49f09b8": {
       "first_seen_kst": "2026-10-22T18:25:24+09:00",
@@ -803549,6 +804304,29 @@
       "telegram_core_fact": "외국인 투자자들이 올해 국내 주식시장에서 200조원 넘게 팔아치우는 동안 상장지수펀드(ETF)는 10조원 가까이 사들였다. 올해 들어 국내 상장 주식을 사들인 금액보다 팔아치운 금액이 200조원 이상 많았다는 의미다.",
       "title": "올해 韓 주식 200조 던진 외인…ETF는 10조 사들인 이유는?"
     },
+    "source_fact:3aaacc2e5aa158ccfe406c12": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184106",
+      "source": "매일경제",
+      "source_body_digest": "89269392b57e63efa19864e03bb709478171bb31f37a6e6a7d7bcabe5488646d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87030433f17ca6a4473a15c6a86a0eb75f8622d65d5dc4761a03358078aa2d22",
+      "source_fact_keys": [
+        "source_fact:v1:086ad694ce6aafc15de3d024b46c10ca9ada3e14e893c6138cbc6ef514b95687",
+        "source_fact:v1:1f68180ee1b28d0f54091bdb4fab4cb047cd661cbdb7a71df2f3dbbb1a936ca6",
+        "source_fact:v1:6098ec0de92b4b18677e00c0c4a13c1e7fec9790e09a21f03068b7bf7f53c73c",
+        "source_fact:v1:9d2a3aef872634330e9650985efe2f81ba16992c72827d5e9d231fe1821c3302"
+      ],
+      "source_published_kst": "2026-10-29T10:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "미래에셋, 日 산코증권 품는다…",
+      "telegram_core_fact": "미래에셋증권[006800]이 일본 산코증권 인수를 공식 발표했다.",
+      "title": "미래에셋, 日 산코증권 품는다…"
+    },
     "source_fact:3aacf9443a01d0bc25380030": {
       "first_seen_kst": "2026-10-12T20:14:14+09:00",
       "lanes": {
@@ -823249,6 +824027,29 @@
       "telegram_core_fact": "CU에 따르면 군고구마 매출은 전년 대비 2024년 23.9%, 2025년 35.0% 증가했다.",
       "title": "CU 군고구마·호빵 매출 3배…한여름 외국인도 찾았다"
     },
+    "source_fact:41d2ff12fde40ea4b1c6542a": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184106",
+      "source": "매일경제",
+      "source_body_digest": "89269392b57e63efa19864e03bb709478171bb31f37a6e6a7d7bcabe5488646d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87030433f17ca6a4473a15c6a86a0eb75f8622d65d5dc4761a03358078aa2d22",
+      "source_fact_keys": [
+        "source_fact:v1:086ad694ce6aafc15de3d024b46c10ca9ada3e14e893c6138cbc6ef514b95687",
+        "source_fact:v1:1f68180ee1b28d0f54091bdb4fab4cb047cd661cbdb7a71df2f3dbbb1a936ca6",
+        "source_fact:v1:6098ec0de92b4b18677e00c0c4a13c1e7fec9790e09a21f03068b7bf7f53c73c",
+        "source_fact:v1:9d2a3aef872634330e9650985efe2f81ba16992c72827d5e9d231fe1821c3302"
+      ],
+      "source_published_kst": "2026-10-29T10:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "미래에셋, 日 산코증권 품는다…",
+      "telegram_core_fact": "미래에셋증권[006800]이 일본 산코증권 인수를 공식 발표했다.",
+      "title": "미래에셋, 日 산코증권 품는다…"
+    },
     "source_fact:41d39a4864bf53382c8c0f90": {
       "first_seen_kst": "2026-10-10T16:38:23+09:00",
       "lanes": {
@@ -823400,6 +824201,35 @@
       "source_title": "코트라, 유럽 방산 기업 초청 수출 상담·설명회",
       "telegram_core_fact": "참가사들은 총 5건 상담을 통해 글로벌 방산기업의 구체적인 구매 요구사항과 공급망 진입 절차를 확인하고, 향후 기술 검토 및 추가 협의를 이어가기로 했다.",
       "title": "코트라, 유럽 방산 기업 초청 수출 상담·설명회"
+    },
+    "source_fact:41e6d2352b69d02ba9d401f5": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
     },
     "source_fact:41e79e261f441b9f5c6cc2b6": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -849670,6 +850500,35 @@
       "telegram_core_fact": "반도체 산업 호황에 따른 추가 세수를 미래 세대를 위한 투자 재원으로 활용하는 정부의 미래대응기금의 사용 계획에 한국전력[015760] 지원 등의 내용이 포함돼 있다고 국회 재정경제기획위원회 소속 국민의힘 박수영 의원이 7일 밝혔다.",
       "title": "\"미래기금으로 한전·관사·공연관람·농어촌 기본소득 지원\"(종합)"
     },
+    "source_fact:4aad726e2ba539b81040a918": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
+    },
     "source_fact:4aaf63664537ebd5b011deec": {
       "first_seen_kst": "2026-10-21T12:53:55+09:00",
       "lanes": {
@@ -853415,6 +854274,30 @@
       "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
       "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
+    "source_fact:4c1f3d6a528e5c3806de2fab": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003846347",
+      "source": "뉴시스",
+      "source_body_digest": "71467646726a3bfc7381d74e87e046a9cb98282a1895ff7759703a9357da3542",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7da2e1d15c1a03f2f473c649403782c06a54a803f6aaf19a62032c33c7d9881f",
+      "source_fact_keys": [
+        "source_fact:v1:1b2f89553768ba61798f85da2f804e44e793f7216610c3ca284742d61bae40a3",
+        "source_fact:v1:229dc192438fc7346ea39e6ae04ce5fa2a52bce472a15d5d731d674ddf6b59f6",
+        "source_fact:v1:74e9910a3866c016de9df40a9c3ed628831abab1657fa499d48e3eb4383b9f3c",
+        "source_fact:v1:9200dc76ffcd256d5e05365adc1f01773c32fc1159076a5a523d61b7bc8a5aea",
+        "source_fact:v1:e950f5d99890ae854126b0baeb3fc3bdc2c50ca01c5ffae9f85d8d779ac78372"
+      ],
+      "source_published_kst": "2026-10-29T11:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑",
+      "telegram_core_fact": "미국 공급망과 경제활동 흐름을 가늠할 수 있는 2026년 9월 도매재고가 전월보다 0.6% 증가했다. 9월 소매재고액 8853억 달러로 8월에 비해 0.3% 많았다.",
+      "title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑"
+    },
     "source_fact:4c2fc0bd2035a9bb0d9ffac3": {
       "first_seen_kst": "2026-10-28T10:13:53+09:00",
       "lanes": {
@@ -854285,6 +855168,30 @@
       ],
       "source_published_kst": "2026-10-07T12:57+09:00",
       "title": "“청라에 50MW급 AI 데이터센터 들어선다…kt cloud, 설계·운영 맡는다”"
+    },
+    "source_fact:4c80481589f37021e6c05048": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.etnews.com/20261029000193",
+      "source": "전자신문",
+      "source_body_digest": "dcf8588be1e12d59ae6abafdcdee707e1514a3094afc4d108ead82f0a6cb57a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dddb55dc0e9a8cb83f4db857ab2937cd29ee9f41b5b6edfc8587798ed57c85c",
+      "source_fact_keys": [
+        "source_fact:v1:494728aa2b085cf457904ecc4b69a65583a0034ff258a6a32ddb94412032c176",
+        "source_fact:v1:673cb39b56287e2da6ace06ea6610fdf27351a89ccafd7a3f14fe602066aca1e",
+        "source_fact:v1:af054efd9eefb6d3766dcbe9398b3c06e3cacd4f6ba2667dde2df84be378fb87",
+        "source_fact:v1:b4effdc7bd14e5422627a8dc0a6ef2951579fa444212aa5aa94226bc160db780",
+        "source_fact:v1:f398a0ec17c6badbe738464c41708088d36376caa7a2b691374dda22334a39fb"
+      ],
+      "source_published_kst": "2026-10-29T11:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화",
+      "telegram_core_fact": "조달청 다수공급자계약(MAS) 등록을 기반으로 지역별 서비스 제공 체계를 확대하고, 제품 유형에 따른 세척 단가도 인하했다.",
+      "title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화"
     },
     "source_fact:4c80e3782e44402b8a7b4c96": {
       "first_seen_kst": "2026-10-13T23:47:09+09:00",
@@ -862882,6 +863789,35 @@
       "source_title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상",
       "telegram_core_fact": "21일(현지시간) 로이터통신 등에 따르면 머스크는 전날 스페이스X의 3분기 실적 발표에서 테슬라와의 합병에 대해 긍정적인 입장을 밝혔다. 그는 테슬라 지분 약 20%를 보유한 반면 스페이스X에서는 의결권 지배력을 확보하고 있다.",
       "title": "머스크는 왜 테슬라·스페이스X 합치려 하나…4600조원 AI 제국 구상"
+    },
+    "source_fact:4f5f5b36351933ce61f92cfb": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
     },
     "source_fact:4f632d424c21a2b11d41b89b": {
       "first_seen_kst": "2026-10-17T10:06:46+09:00",
@@ -877048,6 +877984,27 @@
       "telegram_core_fact": "운전자 의무 규정을 완화하고 차량 운행허가 절차를 줄여 내년부터 실증도시에 자율주행차 3000대 이상을 투입한다.",
       "title": "무인 로보택시 상용화 속도…내년 실증차 3000대 투입"
     },
+    "source_fact:543ad9a3867a808d649050cb": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029098400527",
+      "source": "연합뉴스",
+      "source_body_digest": "793b014d01e41ee8000c7afb6058a08a7ce84680c1172ec9da8f08fad741de14",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:072fd2c8d6ed8ec566fa04c6c838e3c966a470e72d8a747430be4520488476d9",
+      "source_fact_identity": "source_facts:v1:151c5e35bb538924733313a8b581a8e7ed4d06ad4502d2b6825739c4368cec82",
+      "source_fact_keys": [
+        "source_fact:v1:dce0f50fad1302cdd5b941124572f90a0b49e0655a38e6b9476f94c965c76f4e",
+        "source_fact:v1:eb2ea0a80bbfb88c546ad6666b1be610393808894287930cb3beb4163ee5bbbd"
+      ],
+      "source_published_kst": "2026-10-29T11:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 세아베스틸지주[001430]는 연결 기준 올해 3분기 영업이익이 144억원으로 지난해 동기보다 46.4% 감소한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스"
+    },
     "source_fact:543b37ebe420dad3ef8c706d": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
       "lanes": {
@@ -878272,6 +879229,27 @@
       "source_title": "삼성전자·SK하이닉스 자사주 매입에만 매달린 코스피 [증시 덮친 ‘AI 수익성 공포’]",
       "telegram_core_fact": "한국거래소 기업공시채널(KIND)에 따르면 SK하이닉스의 자사주 매입 체결률은 전날 기준 96.59%에 달했다.",
       "title": "삼성전자·SK하이닉스 자사주 매입에만 매달린 코스피 [증시 덮친 ‘AI 수익성 공포’]"
+    },
+    "source_fact:549c7fb44d454ba1c99ca461": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029098400527",
+      "source": "연합뉴스",
+      "source_body_digest": "793b014d01e41ee8000c7afb6058a08a7ce84680c1172ec9da8f08fad741de14",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:072fd2c8d6ed8ec566fa04c6c838e3c966a470e72d8a747430be4520488476d9",
+      "source_fact_identity": "source_facts:v1:151c5e35bb538924733313a8b581a8e7ed4d06ad4502d2b6825739c4368cec82",
+      "source_fact_keys": [
+        "source_fact:v1:dce0f50fad1302cdd5b941124572f90a0b49e0655a38e6b9476f94c965c76f4e",
+        "source_fact:v1:eb2ea0a80bbfb88c546ad6666b1be610393808894287930cb3beb4163ee5bbbd"
+      ],
+      "source_published_kst": "2026-10-29T11:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 세아베스틸지주[001430]는 연결 기준 올해 3분기 영업이익이 144억원으로 지난해 동기보다 46.4% 감소한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스"
     },
     "source_fact:549d926aae0e14c203fe6412": {
       "first_seen_kst": "2026-10-20T07:06:59+09:00",
@@ -904043,6 +905021,35 @@
       "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
       "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
       "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
+    },
+    "source_fact:5d20137170a9a60dbe8e3474": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
     },
     "source_fact:5d207d41b8a07f0f3a30f2e6": {
       "first_seen_kst": "2026-10-11T06:36:16+09:00",
@@ -929922,6 +930929,35 @@
       "source_title": "두산·원익 등 전북에 7700억 투자…첨단기업 몰린다",
       "telegram_core_fact": "두산과 원익로보틱스 등 주요 기업들이 생산시설 신설과 증설을 결정하면서 최근 3개월간 확인된 투자협약 규모만 7700억원을 넘어섰다. 가장 최근에는 두산이 김제에 3992억원을 추가 투자하기로 했다.",
       "title": "두산·원익 등 전북에 7700억 투자…첨단기업 몰린다"
+    },
+    "source_fact:66a1a678cc91a34c561b9711": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
     },
     "source_fact:66a66b5d4997ed31d0bb830f": {
       "first_seen_kst": "2026-10-21T10:53:33+09:00",
@@ -960229,6 +961265,35 @@
       ],
       "source_published_kst": "2026-10-06T15:34+09:00",
       "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
+    "source_fact:7139273f0c132398fe3b7c79": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
     },
     "source_fact:713c39b3cdfd0208dcb6b280": {
       "first_seen_kst": "2026-10-21T22:01:46+09:00",
@@ -990957,6 +992022,30 @@
       "telegram_core_fact": "업종별로 보면 코스피 전기전자·의료정밀·제조는 4%대, 기계장비는 3%대, 건설·금융·유통·일반서비스·통신은 2%대, 금속·운송장비·보험·증권은 1%대 강세다. 코스피200 야간선물은 22.35포인트(2.63%) 오른 872.35에서 거래를 마쳤다.",
       "title": "\"생큐 앤트로픽\" 코스피 3% 급등…22만전자·138만닉스 회복"
     },
+    "source_fact:7bddc9122b56c8d87f2ec4d5": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.etnews.com/20261029000193",
+      "source": "전자신문",
+      "source_body_digest": "dcf8588be1e12d59ae6abafdcdee707e1514a3094afc4d108ead82f0a6cb57a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dddb55dc0e9a8cb83f4db857ab2937cd29ee9f41b5b6edfc8587798ed57c85c",
+      "source_fact_keys": [
+        "source_fact:v1:494728aa2b085cf457904ecc4b69a65583a0034ff258a6a32ddb94412032c176",
+        "source_fact:v1:673cb39b56287e2da6ace06ea6610fdf27351a89ccafd7a3f14fe602066aca1e",
+        "source_fact:v1:af054efd9eefb6d3766dcbe9398b3c06e3cacd4f6ba2667dde2df84be378fb87",
+        "source_fact:v1:b4effdc7bd14e5422627a8dc0a6ef2951579fa444212aa5aa94226bc160db780",
+        "source_fact:v1:f398a0ec17c6badbe738464c41708088d36376caa7a2b691374dda22334a39fb"
+      ],
+      "source_published_kst": "2026-10-29T11:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화",
+      "telegram_core_fact": "조달청 다수공급자계약(MAS) 등록을 기반으로 지역별 서비스 제공 체계를 확대하고, 제품 유형에 따른 세척 단가도 인하했다.",
+      "title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화"
+    },
     "source_fact:7be082036b951e9eee45a9ea": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -1004640,6 +1005729,30 @@
       "source_title": "엔비디아 신형 제품 수출 막아놨더니…'구형' 싹쓸이하는 中 빅테크",
       "telegram_core_fact": "\"미국 기업들은 거의 5년 전에 출시된 게임용 제품까지 포함하는 낡은 미국 수출 통제와 중국 자체의 미국산 제품 수입 제한이 결합된 제약을 계속 받고 있다\"고 말했다.",
       "title": "엔비디아 신형 제품 수출 막아놨더니…'구형' 싹쓸이하는 中 빅테크"
+    },
+    "source_fact:80faea6197e4c9e4416bca40": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.etnews.com/20261029000193",
+      "source": "전자신문",
+      "source_body_digest": "dcf8588be1e12d59ae6abafdcdee707e1514a3094afc4d108ead82f0a6cb57a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dddb55dc0e9a8cb83f4db857ab2937cd29ee9f41b5b6edfc8587798ed57c85c",
+      "source_fact_keys": [
+        "source_fact:v1:494728aa2b085cf457904ecc4b69a65583a0034ff258a6a32ddb94412032c176",
+        "source_fact:v1:673cb39b56287e2da6ace06ea6610fdf27351a89ccafd7a3f14fe602066aca1e",
+        "source_fact:v1:af054efd9eefb6d3766dcbe9398b3c06e3cacd4f6ba2667dde2df84be378fb87",
+        "source_fact:v1:b4effdc7bd14e5422627a8dc0a6ef2951579fa444212aa5aa94226bc160db780",
+        "source_fact:v1:f398a0ec17c6badbe738464c41708088d36376caa7a2b691374dda22334a39fb"
+      ],
+      "source_published_kst": "2026-10-29T11:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화",
+      "telegram_core_fact": "조달청 다수공급자계약(MAS) 등록을 기반으로 지역별 서비스 제공 체계를 확대하고, 제품 유형에 따른 세척 단가도 인하했다.",
+      "title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화"
     },
     "source_fact:80fb3304a21fe30581da5553": {
       "first_seen_kst": "2026-10-13T02:27:34+09:00",
@@ -1072652,6 +1073765,30 @@
       "source_title": "바이오미아 퓨전, 경구 GLP-1 BMF-650 4주 체중 6.1% 감소",
       "telegram_core_fact": "월가 컨센서스에 따르면 바이오미아 퓨전은 임상 단계 기업으로 2026년과 2027년 예상 매출액은 제공되지 않았다.",
       "title": "바이오미아 퓨전, 경구 GLP-1 BMF-650 4주 체중 6.1% 감소"
+    },
+    "source_fact:9966472bec178577746e0a59": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003846347",
+      "source": "뉴시스",
+      "source_body_digest": "71467646726a3bfc7381d74e87e046a9cb98282a1895ff7759703a9357da3542",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7da2e1d15c1a03f2f473c649403782c06a54a803f6aaf19a62032c33c7d9881f",
+      "source_fact_keys": [
+        "source_fact:v1:1b2f89553768ba61798f85da2f804e44e793f7216610c3ca284742d61bae40a3",
+        "source_fact:v1:229dc192438fc7346ea39e6ae04ce5fa2a52bce472a15d5d731d674ddf6b59f6",
+        "source_fact:v1:74e9910a3866c016de9df40a9c3ed628831abab1657fa499d48e3eb4383b9f3c",
+        "source_fact:v1:9200dc76ffcd256d5e05365adc1f01773c32fc1159076a5a523d61b7bc8a5aea",
+        "source_fact:v1:e950f5d99890ae854126b0baeb3fc3bdc2c50ca01c5ffae9f85d8d779ac78372"
+      ],
+      "source_published_kst": "2026-10-29T11:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑",
+      "telegram_core_fact": "미국 공급망과 경제활동 흐름을 가늠할 수 있는 2026년 9월 도매재고가 전월보다 0.6% 증가했다. 9월 소매재고액 8853억 달러로 8월에 비해 0.3% 많았다.",
+      "title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑"
     },
     "source_fact:996890a8fa4c132c19f5c89c": {
       "first_seen_kst": "2026-10-26T18:53:23+09:00",
@@ -1144968,6 +1146105,30 @@
       "telegram_core_fact": "경제안보와 공급망 협력의 중요성이 부각되면서 전략적 협력국을 중심으로 해외 재경관 파견을 확대할 필요성이 논의되고 있다. 경제외교의 범위를 전통적인 주요국에서 금융·산업·자원 분야의 전략적 협력국으로 확대하고, 현지 정보 수집부터 투자사업 발굴과 금융지원까지 연결하는 경제외교 체계를 강화하려는 시도로 볼 수 있다.",
       "title": "경제외교 다변화 과제 부상…전략적 협력국 재경관 확충 검토"
     },
+    "source_fact:b2939352e6823a69c737f939": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.etnews.com/20261029000193",
+      "source": "전자신문",
+      "source_body_digest": "dcf8588be1e12d59ae6abafdcdee707e1514a3094afc4d108ead82f0a6cb57a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dddb55dc0e9a8cb83f4db857ab2937cd29ee9f41b5b6edfc8587798ed57c85c",
+      "source_fact_keys": [
+        "source_fact:v1:494728aa2b085cf457904ecc4b69a65583a0034ff258a6a32ddb94412032c176",
+        "source_fact:v1:673cb39b56287e2da6ace06ea6610fdf27351a89ccafd7a3f14fe602066aca1e",
+        "source_fact:v1:af054efd9eefb6d3766dcbe9398b3c06e3cacd4f6ba2667dde2df84be378fb87",
+        "source_fact:v1:b4effdc7bd14e5422627a8dc0a6ef2951579fa444212aa5aa94226bc160db780",
+        "source_fact:v1:f398a0ec17c6badbe738464c41708088d36376caa7a2b691374dda22334a39fb"
+      ],
+      "source_published_kst": "2026-10-29T11:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화",
+      "telegram_core_fact": "조달청 다수공급자계약(MAS) 등록을 기반으로 지역별 서비스 제공 체계를 확대하고, 제품 유형에 따른 세척 단가도 인하했다.",
+      "title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화"
+    },
     "source_fact:b295142e86a61de5b952ce0e": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -1204793,6 +1205954,30 @@
       "telegram_core_fact": "삼성전기는 올해부터 다년간 엔비디아에 패키지 기판을 공급한다.",
       "title": "엔비디아와 '기판 동맹'…삼성전기, 코스피 약세에도 4% 상승"
     },
+    "source_fact:c76beae6aefe9cec38dd5906": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003846347",
+      "source": "뉴시스",
+      "source_body_digest": "71467646726a3bfc7381d74e87e046a9cb98282a1895ff7759703a9357da3542",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7da2e1d15c1a03f2f473c649403782c06a54a803f6aaf19a62032c33c7d9881f",
+      "source_fact_keys": [
+        "source_fact:v1:1b2f89553768ba61798f85da2f804e44e793f7216610c3ca284742d61bae40a3",
+        "source_fact:v1:229dc192438fc7346ea39e6ae04ce5fa2a52bce472a15d5d731d674ddf6b59f6",
+        "source_fact:v1:74e9910a3866c016de9df40a9c3ed628831abab1657fa499d48e3eb4383b9f3c",
+        "source_fact:v1:9200dc76ffcd256d5e05365adc1f01773c32fc1159076a5a523d61b7bc8a5aea",
+        "source_fact:v1:e950f5d99890ae854126b0baeb3fc3bdc2c50ca01c5ffae9f85d8d779ac78372"
+      ],
+      "source_published_kst": "2026-10-29T11:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑",
+      "telegram_core_fact": "미국 공급망과 경제활동 흐름을 가늠할 수 있는 2026년 9월 도매재고가 전월보다 0.6% 증가했다. 9월 소매재고액 8853억 달러로 8월에 비해 0.3% 많았다.",
+      "title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑"
+    },
     "source_fact:c76d5d8cf062d2eb7324fb71": {
       "first_seen_kst": "2026-10-25T12:06:55+09:00",
       "lanes": {
@@ -1228205,6 +1229390,29 @@
       "telegram_core_fact": "KB증권은 마이크론 대만 공장의 파업이 현실화될 경우 글로벌 D램 공급 부족이 심화되면서 삼성전자와 SK하이닉스의 가격 결정력과 공급 협상력이 강화될 수 있다고 21일 밝혔다.",
       "title": "KB證 “마이크론 파업 예고⋯삼성전자·SK하이닉스 반사이익 기대”"
     },
+    "source_fact:cf9e5e26f63830aa2de91194": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184106",
+      "source": "매일경제",
+      "source_body_digest": "89269392b57e63efa19864e03bb709478171bb31f37a6e6a7d7bcabe5488646d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87030433f17ca6a4473a15c6a86a0eb75f8622d65d5dc4761a03358078aa2d22",
+      "source_fact_keys": [
+        "source_fact:v1:086ad694ce6aafc15de3d024b46c10ca9ada3e14e893c6138cbc6ef514b95687",
+        "source_fact:v1:1f68180ee1b28d0f54091bdb4fab4cb047cd661cbdb7a71df2f3dbbb1a936ca6",
+        "source_fact:v1:6098ec0de92b4b18677e00c0c4a13c1e7fec9790e09a21f03068b7bf7f53c73c",
+        "source_fact:v1:9d2a3aef872634330e9650985efe2f81ba16992c72827d5e9d231fe1821c3302"
+      ],
+      "source_published_kst": "2026-10-29T10:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "미래에셋, 日 산코증권 품는다…",
+      "telegram_core_fact": "미래에셋증권[006800]이 일본 산코증권 인수를 공식 발표했다.",
+      "title": "미래에셋, 日 산코증권 품는다…"
+    },
     "source_fact:cfa2925cdeb33f8f26ddf909": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
       "lanes": {
@@ -1228640,6 +1229848,35 @@
       "source_title": "두산·원익 등 전북에 7700억 투자…첨단기업 몰린다",
       "telegram_core_fact": "두산과 원익로보틱스 등 주요 기업들이 생산시설 신설과 증설을 결정하면서 최근 3개월간 확인된 투자협약 규모만 7700억원을 넘어섰다. 가장 최근에는 두산이 김제에 3992억원을 추가 투자하기로 했다.",
       "title": "두산·원익 등 전북에 7700억 투자…첨단기업 몰린다"
+    },
+    "source_fact:cfd5c9c5f4e68e5869666b03": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
     },
     "source_fact:cfd76ae01e98b8736a8d6f1d": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -1275766,6 +1277003,29 @@
       "telegram_core_fact": "이런 차이점을 고려하지 않고 투자자들이 두 회사의 매출을 비교하는 과정에서 오픈AI의 연 매출이 400억달러로 산출됐고, 오픈AI의 '매출 70% 성장' 발표로 매출 700억달러 설까지 나왔다는 것이다.",
       "title": "\"매출 27조원 부풀렸나\"…오픈AI 실적에 'AI 수익성' 의문 재점화"
     },
+    "source_fact:e0b4a2cd230a74c288ceedf9": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184106",
+      "source": "매일경제",
+      "source_body_digest": "89269392b57e63efa19864e03bb709478171bb31f37a6e6a7d7bcabe5488646d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87030433f17ca6a4473a15c6a86a0eb75f8622d65d5dc4761a03358078aa2d22",
+      "source_fact_keys": [
+        "source_fact:v1:086ad694ce6aafc15de3d024b46c10ca9ada3e14e893c6138cbc6ef514b95687",
+        "source_fact:v1:1f68180ee1b28d0f54091bdb4fab4cb047cd661cbdb7a71df2f3dbbb1a936ca6",
+        "source_fact:v1:6098ec0de92b4b18677e00c0c4a13c1e7fec9790e09a21f03068b7bf7f53c73c",
+        "source_fact:v1:9d2a3aef872634330e9650985efe2f81ba16992c72827d5e9d231fe1821c3302"
+      ],
+      "source_published_kst": "2026-10-29T10:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "미래에셋, 日 산코증권 품는다…",
+      "telegram_core_fact": "미래에셋증권[006800]이 일본 산코증권 인수를 공식 발표했다.",
+      "title": "미래에셋, 日 산코증권 품는다…"
+    },
     "source_fact:e0b4fb125a4faf5d420b42f5": {
       "first_seen_kst": "2026-10-28T07:11:08+09:00",
       "lanes": {
@@ -1279217,6 +1280477,30 @@
       "source_title": "솔리다임 상장 논란에 주주 한숨 커지는데…BI",
       "telegram_core_fact": "최근 SK하이닉스[000660] 주가가 급락, 투자자 손실이 커지면서 미국 자회사 솔리다임의 기업공개(IPO) 여부를 둘러싼 주주가치 훼손 우려가 커지는 가운데, 솔리다임 상장을 통한 자금 조달이 오히려 SK하이닉스의 중장기 실적에 긍정적으로 작용할 수 있다는 해외 분석이 나왔다.",
       "title": "솔리다임 상장 논란에 주주 한숨 커지는데…BI"
+    },
+    "source_fact:e1da68809445b5a67230c306": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.etnews.com/20261029000193",
+      "source": "전자신문",
+      "source_body_digest": "dcf8588be1e12d59ae6abafdcdee707e1514a3094afc4d108ead82f0a6cb57a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dddb55dc0e9a8cb83f4db857ab2937cd29ee9f41b5b6edfc8587798ed57c85c",
+      "source_fact_keys": [
+        "source_fact:v1:494728aa2b085cf457904ecc4b69a65583a0034ff258a6a32ddb94412032c176",
+        "source_fact:v1:673cb39b56287e2da6ace06ea6610fdf27351a89ccafd7a3f14fe602066aca1e",
+        "source_fact:v1:af054efd9eefb6d3766dcbe9398b3c06e3cacd4f6ba2667dde2df84be378fb87",
+        "source_fact:v1:b4effdc7bd14e5422627a8dc0a6ef2951579fa444212aa5aa94226bc160db780",
+        "source_fact:v1:f398a0ec17c6badbe738464c41708088d36376caa7a2b691374dda22334a39fb"
+      ],
+      "source_published_kst": "2026-10-29T11:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화",
+      "telegram_core_fact": "조달청 다수공급자계약(MAS) 등록을 기반으로 지역별 서비스 제공 체계를 확대하고, 제품 유형에 따른 세척 단가도 인하했다.",
+      "title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화"
     },
     "source_fact:e1dc466024f7f8bdab9e0f2b": {
       "first_seen_kst": "2026-10-26T15:05:11+09:00",
@@ -1322051,6 +1323335,30 @@
       "telegram_core_fact": "다나허(DHR)가 3분기 매출액 65억5400만 달러로 전년비 8.5% 증가했고, Non-GAAP 조정 희석 주당순이익은 2.11달러로 11.5% 늘었다고 10월 21일 발표했다.",
       "title": "다나허, 3분기 매출 66억달러·8.5%↑...연간 EPS 전망 상향"
     },
+    "source_fact:f0b5e67defbd7d3021a4e60d": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003846347",
+      "source": "뉴시스",
+      "source_body_digest": "71467646726a3bfc7381d74e87e046a9cb98282a1895ff7759703a9357da3542",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7da2e1d15c1a03f2f473c649403782c06a54a803f6aaf19a62032c33c7d9881f",
+      "source_fact_keys": [
+        "source_fact:v1:1b2f89553768ba61798f85da2f804e44e793f7216610c3ca284742d61bae40a3",
+        "source_fact:v1:229dc192438fc7346ea39e6ae04ce5fa2a52bce472a15d5d731d674ddf6b59f6",
+        "source_fact:v1:74e9910a3866c016de9df40a9c3ed628831abab1657fa499d48e3eb4383b9f3c",
+        "source_fact:v1:9200dc76ffcd256d5e05365adc1f01773c32fc1159076a5a523d61b7bc8a5aea",
+        "source_fact:v1:e950f5d99890ae854126b0baeb3fc3bdc2c50ca01c5ffae9f85d8d779ac78372"
+      ],
+      "source_published_kst": "2026-10-29T11:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑",
+      "telegram_core_fact": "미국 공급망과 경제활동 흐름을 가늠할 수 있는 2026년 9월 도매재고가 전월보다 0.6% 증가했다. 9월 소매재고액 8853억 달러로 8월에 비해 0.3% 많았다.",
+      "title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑"
+    },
     "source_fact:f0bc800af6ee1958fd81a939": {
       "first_seen_kst": "2026-10-11T06:36:16+09:00",
       "lanes": {
@@ -1332298,6 +1333606,28 @@
       "telegram_core_fact": "최근 세 차례 분기 조사에서 내년 물가 전망 중간값은 영국이 0.7%포인트, 유로존이 0.5%포인트, 미국이 0.2%포인트 상승했다.",
       "title": "이란 전쟁에 전 세계 장바구니 물가 치솟는다"
     },
+    "source_fact:f49c63db14ff68e1d108ff39": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.fnnews.com/news/202610291014001421",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae1a0bc60ea3acb799efbe8dda136f4a7cacf8262860bb5a015437d1a131c4a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ef4578faa82c467851c121594493b1f3b31c451c957d933255bf537a960733b",
+      "source_fact_keys": [
+        "source_fact:v1:93a27ffc48be4b94998048c55caf2045189ca2811208bd8836a206578bd44ed2",
+        "source_fact:v1:d58886f20e5903f9dbf0c282dda7aa7f8b6af0b43d1281748b03495d7ff7d7d7",
+        "source_fact:v1:ed85461f69634bc7e66d2a91fb1ffc0ec4fbb3b4e3ccfd61b2754576445804b3"
+      ],
+      "source_published_kst": "2026-10-29T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위",
+      "telegram_core_fact": "김정현 신한자산운용 ETF사업그룹장은 \"반도체·AI 관련주의 변동성이 확대되는 국면에서는 필수소비재·헬스케어 등 안정적인 수요와 배당 기반을 갖춘 업종의 분산투자 역할이 부각될 수 있다\"고 말했다.",
+      "title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위"
+    },
     "source_fact:f4a268b9750e2c290ecde374": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
@@ -1332464,6 +1333794,28 @@
       "source_title": "삼성전자 우선주 사볼까…소각 기대감에 본주와 괴리율 절반 축소",
       "telegram_core_fact": "김수현 DS투자증권 리서치센터장은 “보통주 소각 시 발생하는 금산법 문제를 고려하면 삼성전자 자사주 소각 재원에서 우선주의 자사주 매입·소각량이 늘어날 가능성을 배제할 수 없다”고 말했다.",
       "title": "삼성전자 우선주 사볼까…소각 기대감에 본주와 괴리율 절반 축소"
+    },
+    "source_fact:f4ad9d7d732cca5e716d1f80": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.fnnews.com/news/202610291014001421",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae1a0bc60ea3acb799efbe8dda136f4a7cacf8262860bb5a015437d1a131c4a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ef4578faa82c467851c121594493b1f3b31c451c957d933255bf537a960733b",
+      "source_fact_keys": [
+        "source_fact:v1:93a27ffc48be4b94998048c55caf2045189ca2811208bd8836a206578bd44ed2",
+        "source_fact:v1:d58886f20e5903f9dbf0c282dda7aa7f8b6af0b43d1281748b03495d7ff7d7d7",
+        "source_fact:v1:ed85461f69634bc7e66d2a91fb1ffc0ec4fbb3b4e3ccfd61b2754576445804b3"
+      ],
+      "source_published_kst": "2026-10-29T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위",
+      "telegram_core_fact": "김정현 신한자산운용 ETF사업그룹장은 \"반도체·AI 관련주의 변동성이 확대되는 국면에서는 필수소비재·헬스케어 등 안정적인 수요와 배당 기반을 갖춘 업종의 분산투자 역할이 부각될 수 있다\"고 말했다.",
+      "title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위"
     },
     "source_fact:f4afcb42ecb60eea470b9bde": {
       "first_seen_kst": "2026-10-26T09:34:29+09:00",
@@ -1374433,6 +1375785,30 @@
       "telegram_core_fact": "비트쿼리가 OFAC 제재 명단과 공개된 수사·법원 자료, 자체 지갑 식별 정보를 대조한 결과 전체 동결액의 77%에 대해서는 구체적인 사유를 확인하지 못했다.",
       "title": "스테이블코인 발행사, 10년간 64억 달러 동결 '77%는 사유 미확인'"
     },
+    "title:0fef52bb0cc7811438e3a7ff": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.etnews.com/20261029000193",
+      "source": "전자신문",
+      "source_body_digest": "dcf8588be1e12d59ae6abafdcdee707e1514a3094afc4d108ead82f0a6cb57a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6dddb55dc0e9a8cb83f4db857ab2937cd29ee9f41b5b6edfc8587798ed57c85c",
+      "source_fact_keys": [
+        "source_fact:v1:494728aa2b085cf457904ecc4b69a65583a0034ff258a6a32ddb94412032c176",
+        "source_fact:v1:673cb39b56287e2da6ace06ea6610fdf27351a89ccafd7a3f14fe602066aca1e",
+        "source_fact:v1:af054efd9eefb6d3766dcbe9398b3c06e3cacd4f6ba2667dde2df84be378fb87",
+        "source_fact:v1:b4effdc7bd14e5422627a8dc0a6ef2951579fa444212aa5aa94226bc160db780",
+        "source_fact:v1:f398a0ec17c6badbe738464c41708088d36376caa7a2b691374dda22334a39fb"
+      ],
+      "source_published_kst": "2026-10-29T11:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화",
+      "telegram_core_fact": "조달청 다수공급자계약(MAS) 등록을 기반으로 지역별 서비스 제공 체계를 확대하고, 제품 유형에 따른 세척 단가도 인하했다.",
+      "title": "클라우스로보틱스, 에어컨 세척 서비스 전국 공급…공공·국방 조달시장 대응 강화"
+    },
     "title:0ff1b4646153c09647a2daaf": {
       "first_seen_kst": "2026-10-12T15:02:00+09:00",
       "lanes": {
@@ -1389286,6 +1390662,35 @@
       "telegram_core_fact": "홈 뱅코프(HBCP)는 3분기 순이익이 1010만 달러, 희석 주당순이익(EPS)이 1.28달러로 집계돼 전년비 각각 18.3%, 19.5% 감소했다고 19일 발표했다. 2026년 예상 주당배당금은 1.28달러, 예상 시가배당률은 1.94%다.",
       "title": "홈 뱅코프, 3분기 EPS 1.28달러..전년비 19.5% 감소"
     },
+    "title:2627638f3d6de932b39660e2": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184594",
+      "source": "매일경제",
+      "source_body_digest": "094e8e467b8fb747293d556be27a9654aad19c6590c7dd91ed861c37570f29c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:303236b5b59f3b5e113969c7efd0f4e85d21d2c3c1461a8a7a306380e70a33b7",
+      "source_fact_keys": [
+        "source_fact:v1:20529220c2f806430019485a10a2555967cca54b2bf9a990c0f9061bf5e4d497",
+        "source_fact:v1:32238de4ab52bcd9e5d5d71574eb99089720149fb07cf88a5aff6a242eb017f2",
+        "source_fact:v1:5563b7151bbf39aa432e8b4369746556f351dd27e50a2631f2eaf3bdb99e7a00",
+        "source_fact:v1:6c791965760c00329fb77204dd244dce30b5c99e01b78e18c28fea5c6da2107c",
+        "source_fact:v1:8a802925471d0783e4e4a0791f05cd265f2b9a479b8b315081cee3d66fb9816b",
+        "source_fact:v1:8e9b56e725644d2fbd35fbf3191864df8b8f6450cbd6580b3e070ec475d095f8",
+        "source_fact:v1:97abb556dc086a5a8cae357275924ec74a645fd8bc6fd92d78414dc98062d20f",
+        "source_fact:v1:a7e01ca9b3c3001bb54da95c4e615b358387264441ff9ff25923b9fdfa3337d6",
+        "source_fact:v1:b377558ff3210a68c15431236be8ac5059e7a9f7e5526387d3d420c3a3439b9f",
+        "source_fact:v1:b98b00cac8657e0cac916e7e7ae8e214d47d29531a98b80a3fa06c56a38d7471"
+      ],
+      "source_published_kst": "2026-10-29T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가",
+      "telegram_core_fact": "스포츠용품 제조·유통업체 에스칼레이드(ESCA)는 3분기(7~9월) 매출액이 전년비 3.2% 감소한 6560만 달러에 그쳤지만, GAAP 기준 희석 주당순이익은 0.48달러로 전년 동기(0.40달러)보다 20% 늘었다고 10월 29일 발표했다.",
+      "title": "에스칼레이드, 3분기 희석 EPS 0.48달러..전년비 20% 증가"
+    },
     "title:26339b904f3ce2deb25d0260": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -1390562,6 +1391967,28 @@
       "source_title": "셀트리온, 유럽서 사업 다변화 속도⋯4분기 성장세 잇는다",
       "telegram_core_fact": "셀트리온은 프랑스 헬스케어 기업 지프레와 스위스 유통 제약사 아이콘을 인수한 이후 유럽 내 유통 네트워크와 제품 포트폴리오를 확장하는 등 사업 다변화를 추진해 왔다.",
       "title": "셀트리온, 유럽서 사업 다변화 속도⋯4분기 성장세 잇는다"
+    },
+    "title:27d9c57201c07d5a11e24d16": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.fnnews.com/news/202610291014001421",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae1a0bc60ea3acb799efbe8dda136f4a7cacf8262860bb5a015437d1a131c4a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ef4578faa82c467851c121594493b1f3b31c451c957d933255bf537a960733b",
+      "source_fact_keys": [
+        "source_fact:v1:93a27ffc48be4b94998048c55caf2045189ca2811208bd8836a206578bd44ed2",
+        "source_fact:v1:d58886f20e5903f9dbf0c282dda7aa7f8b6af0b43d1281748b03495d7ff7d7d7",
+        "source_fact:v1:ed85461f69634bc7e66d2a91fb1ffc0ec4fbb3b4e3ccfd61b2754576445804b3"
+      ],
+      "source_published_kst": "2026-10-29T10:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위",
+      "telegram_core_fact": "김정현 신한자산운용 ETF사업그룹장은 \"반도체·AI 관련주의 변동성이 확대되는 국면에서는 필수소비재·헬스케어 등 안정적인 수요와 배당 기반을 갖춘 업종의 분산투자 역할이 부각될 수 있다\"고 말했다.",
+      "title": "신한운용 'SOL 미국배당다우존스(H)', 동종 ETF 수익률 1위"
     },
     "title:27dbcb816e5405c3306ffa5e": {
       "first_seen_kst": "2026-10-16T15:46:25+09:00",
@@ -1421481,6 +1422908,24 @@
       "source_published_kst": "2026-10-07T10:56+09:00",
       "title": "8월 대구 제조업 생산 4.8%↑·경북 3.2%↓…수출은 동반 증가 | 연합뉴스"
     },
+    "title:54e66c0ee30244fb45c21df3": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029096500064",
+      "source": "연합뉴스",
+      "source_body_digest": "c483a5142fda4449373353bdc519b3b5c4264db4a7b314deb4ffe12e4105984f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-29T11:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "제천시, 화장품 생산공장 투자협약…AI데이터센터도 유치 추진 | 연합뉴스",
+      "telegram_core_fact": "충북 제천시는 바이오, 인공지능(AI) 분야를 중심으로 투자 유치를 본격화한다고 29일 밝혔다. 시는 이날 화장품 생산 기업인 바이오파마코리아와 220억원 투자협약을 했다.",
+      "title": "제천시, 화장품 생산공장 투자협약…AI데이터센터도 유치 추진 | 연합뉴스"
+    },
     "title:54e7e5c070269c41231c7c2c": {
       "first_seen_kst": "2026-10-29T13:04:16+09:00",
       "lanes": {
@@ -1432788,6 +1434233,27 @@
       "telegram_core_fact": "블룸버그 통신은 소식통을 인용해 엔스케일이 약 300억달러(약 40조3천억원)의 IPO 기업가치를 추진해 왔으나 일부 투자자가 160억∼190억달러(약 21조5천억∼25조5천억원)의 기업가치를 제시하며 반대하고 있다고 보도했다.",
       "title": "\"엔스케일, IPO 기업가치 낮추라 압박 직면\" | 연합뉴스"
     },
+    "title:6530db2a4b7978272f18bea2": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029098400527",
+      "source": "연합뉴스",
+      "source_body_digest": "793b014d01e41ee8000c7afb6058a08a7ce84680c1172ec9da8f08fad741de14",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:072fd2c8d6ed8ec566fa04c6c838e3c966a470e72d8a747430be4520488476d9",
+      "source_fact_identity": "source_facts:v1:151c5e35bb538924733313a8b581a8e7ed4d06ad4502d2b6825739c4368cec82",
+      "source_fact_keys": [
+        "source_fact:v1:dce0f50fad1302cdd5b941124572f90a0b49e0655a38e6b9476f94c965c76f4e",
+        "source_fact:v1:eb2ea0a80bbfb88c546ad6666b1be610393808894287930cb3beb4163ee5bbbd"
+      ],
+      "source_published_kst": "2026-10-29T11:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 세아베스틸지주[001430]는 연결 기준 올해 3분기 영업이익이 144억원으로 지난해 동기보다 46.4% 감소한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "세아베스틸지주 3분기 영업이익 144억원…작년 대비 46%↓ | 연합뉴스"
+    },
     "title:65402e6f008e9b6ddd0470fa": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -1435725,6 +1437191,30 @@
       "source_title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은",
       "telegram_core_fact": "한국의 10년물 국고채 금리는 1년 새 1.6%포인트 상승했고, 같은 기간 미국의 10년물 국채 금리는 1.01%포인트 올랐다며 한국 경제가 받은 충격이 더 크다고 진단했다.",
       "title": "\"금리·주가, 함께 떨어지면 최악 신호\"…국내 증시 반등 5가지 조건은"
+    },
+    "title:69903254c9574d8f055fba76": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003846347",
+      "source": "뉴시스",
+      "source_body_digest": "71467646726a3bfc7381d74e87e046a9cb98282a1895ff7759703a9357da3542",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7da2e1d15c1a03f2f473c649403782c06a54a803f6aaf19a62032c33c7d9881f",
+      "source_fact_keys": [
+        "source_fact:v1:1b2f89553768ba61798f85da2f804e44e793f7216610c3ca284742d61bae40a3",
+        "source_fact:v1:229dc192438fc7346ea39e6ae04ce5fa2a52bce472a15d5d731d674ddf6b59f6",
+        "source_fact:v1:74e9910a3866c016de9df40a9c3ed628831abab1657fa499d48e3eb4383b9f3c",
+        "source_fact:v1:9200dc76ffcd256d5e05365adc1f01773c32fc1159076a5a523d61b7bc8a5aea",
+        "source_fact:v1:e950f5d99890ae854126b0baeb3fc3bdc2c50ca01c5ffae9f85d8d779ac78372"
+      ],
+      "source_published_kst": "2026-10-29T11:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑",
+      "telegram_core_fact": "미국 공급망과 경제활동 흐름을 가늠할 수 있는 2026년 9월 도매재고가 전월보다 0.6% 증가했다. 9월 소매재고액 8853억 달러로 8월에 비해 0.3% 많았다.",
+      "title": "9월 美 도매재고 0.6% 증가…소매재고도 0.3%↑"
     },
     "title:699b1656924a3b670360a809": {
       "first_seen_kst": "2026-10-21T18:34:10+09:00",
@@ -1452495,6 +1453985,29 @@
       "source_title": "사업 접은 뒤에도 세금 다시 본다…폐업 사업자 환급 조회 70%↑",
       "telegram_core_fact": "사업을 정리한 뒤 과거 납부한 세금을 다시 확인하는 사업자가 늘고 있다.",
       "title": "사업 접은 뒤에도 세금 다시 본다…폐업 사업자 환급 조회 70%↑"
+    },
+    "title:82f6b7947674f23cb17057bd": {
+      "first_seen_kst": "2026-10-30T01:23:08+09:00",
+      "lanes": {
+        "live": "2026-10-30T01:23:08+09:00"
+      },
+      "last_seen_kst": "2026-10-30T01:23:08+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1184106",
+      "source": "매일경제",
+      "source_body_digest": "89269392b57e63efa19864e03bb709478171bb31f37a6e6a7d7bcabe5488646d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87030433f17ca6a4473a15c6a86a0eb75f8622d65d5dc4761a03358078aa2d22",
+      "source_fact_keys": [
+        "source_fact:v1:086ad694ce6aafc15de3d024b46c10ca9ada3e14e893c6138cbc6ef514b95687",
+        "source_fact:v1:1f68180ee1b28d0f54091bdb4fab4cb047cd661cbdb7a71df2f3dbbb1a936ca6",
+        "source_fact:v1:6098ec0de92b4b18677e00c0c4a13c1e7fec9790e09a21f03068b7bf7f53c73c",
+        "source_fact:v1:9d2a3aef872634330e9650985efe2f81ba16992c72827d5e9d231fe1821c3302"
+      ],
+      "source_published_kst": "2026-10-29T10:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "미래에셋, 日 산코증권 품는다…",
+      "telegram_core_fact": "미래에셋증권[006800]이 일본 산코증권 인수를 공식 발표했다.",
+      "title": "미래에셋, 日 산코증권 품는다…"
     },
     "title:82f9b667d8152e2f38c78fa1": {
       "first_seen_kst": "2026-10-27T06:29:31+09:00",
@@ -1536646,5 +1538159,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-30T00:45:29+09:00"
+  "updated_at_kst": "2026-10-30T01:23:08+09:00"
 }
