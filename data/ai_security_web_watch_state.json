@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 26,
+    "material_items": 28,
     "new_material_items": 0,
-    "raw_items": 342,
+    "raw_items": 327,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1041,6 +1041,16 @@
       "url": "https://www.anthropic.com/news/anthropic-cyber-mission",
       "vendor": "Anthropic"
     },
+    "a555e9c19cbc88406b1a25c6": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-29T18:26:55.005991+00:00",
+      "published_at": "2026-10-29T18:25:26+00:00",
+      "severity": 2,
+      "source": "Unit 42",
+      "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 29) - Unit 42",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBaSXRUMkVsWkF3TjhoV29oTXdyZHhrMGZINFBHNVVrNmZubTA4SkFzMzlWMlNMLW15ZWdISDJYeURJbVdpTFB5ZzNTU21aazFfTmc4R0VkLWVyMVY4S1JRYTZ5UjJqWk82SlR5Q0ZMOTJrNEJVeXNV?oc=5",
+      "vendor": "PHP 재단"
+    },
     "a5c500ddb741c8a67f724fb6": {
       "category": "인증·자격증명",
       "first_seen_at": "2026-10-26T06:41:08.797191+00:00",
@@ -1634,5 +1644,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-30T03:00:03+09:00"
+  "updated_at_kst": "2026-10-30T03:26:55+09:00"
 }
