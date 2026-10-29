@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-30T05:42:26+09:00",
+  "last_checked_kst": "2026-10-30T07:17:34+09:00",
   "media_id": null,
   "cftc_date": "October 20, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-30T05:42:26+09:00",
+    "checked_kst": "2026-10-30T07:17:34+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "October 20, 2026",
@@ -85,10 +85,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 106.53125,
-        "settlement": 106.53125,
-        "change": 0.734375,
-        "pct_change": 0.6941367597105286,
+        "last": 106.5625,
+        "settlement": 106.5625,
+        "change": 0.765625,
+        "pct_change": 0.7236744941663042,
         "open_interest": 5868295,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (October 20, 2026)",
         "oi_comparable": true,
@@ -121,10 +121,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 109.375,
-        "settlement": 109.375,
-        "change": 1.125,
-        "pct_change": 1.0392609699769073,
+        "last": 109.34375,
+        "settlement": 109.34375,
+        "change": 1.09375,
+        "pct_change": 1.0103926096997728,
         "open_interest": 2364949,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (October 20, 2026)",
         "oi_comparable": true,
@@ -202,7 +202,7 @@
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-10-28",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026102916"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026102918"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
