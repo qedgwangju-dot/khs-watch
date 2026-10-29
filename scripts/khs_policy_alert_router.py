@@ -674,6 +674,8 @@ def compact_explanation_lines(alert: dict) -> list[str]:
 
 
 def apply_router_overrides(alert: dict) -> None:
+    if alert.get("policy_event_key") == "us-section232-robotics-machinery-proclamation-2026-10-28":
+        return  # Preserve source-verified robotics trade policy, not FCC/SMR.
     text = alert_text(alert)
     if "알뜰폰" in text and "데이터 안심옵션" in text:
         alert["importance"] = "상"
@@ -871,6 +873,8 @@ def alert_source_family(alert: dict) -> str:
 
 
 def semantic_alert_key(alert: dict) -> str:
+    if alert.get("policy_event_key") == "us-section232-robotics-machinery-proclamation-2026-10-28":
+        return "policy-event|us-section232-robotics-machinery-proclamation-2026-10-28"
     probe = enrich_missing_context(dict(alert))
     apply_router_overrides(probe)
     document_type = normalize_semantic_text(
@@ -946,6 +950,11 @@ def merge_duplicate_alert(current: dict, incoming: dict) -> dict:
 
 
 def dedupe_alerts(alerts: list[dict]) -> list[dict]:
+    # Signed official proclamation takes precedence over its explanatory factsheet.
+    alerts = sorted(alerts, key=lambda x: 0 if (
+        x.get("policy_event_key") == "us-section232-robotics-machinery-proclamation-2026-10-28"
+        and str(x.get("source") or "").lower() == "white house proclamations"
+    ) else 1)
     merged: dict[str, dict] = {}
     order: list[str] = []
     for alert in alerts:
