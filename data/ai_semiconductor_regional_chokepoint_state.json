@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-30T00:34:18+09:00",
-  "last_scan_count": 7,
+  "updated_at_kst": "2026-10-30T05:35:18+09:00",
+  "last_scan_count": 10,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
     "vintage": "3Q26",
@@ -114,7 +114,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -142,6 +142,7 @@
     "987df34c57b8538f8a0b23e4",
     "9d615c5dd067e826d3a2f841",
     "a5c6512b8705aa4e7464c59a",
+    "a927f029dff3f48035b9afd5",
     "ab4bbf5bf49f2f1ddd6aba5b",
     "b143449cefc5c9d01e8e5870",
     "b348ad50bec5d2084e520a59",
@@ -159,7 +160,14 @@
     "fbb3374837c522b4bf3b2884"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "korea|capacity|SK hynix|hbm4",
+      "source": "Moomoo",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-10-28T16:16:27+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
   "telegram_message_ids": [
     292
