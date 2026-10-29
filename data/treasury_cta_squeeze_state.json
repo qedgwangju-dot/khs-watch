@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-29T17:33:26+09:00",
+  "last_checked_kst": "2026-10-29T21:54:39+09:00",
   "media_id": null,
   "cftc_date": "October 20, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-29T17:33:26+09:00",
+    "checked_kst": "2026-10-29T21:54:39+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "October 20, 2026",
@@ -85,10 +85,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 106.15625,
-        "settlement": 106.15625,
-        "change": 0.359375,
-        "pct_change": 0.33968394624133147,
+        "last": 106.015625,
+        "settlement": 106.015625,
+        "change": 0.21875,
+        "pct_change": 0.20676414119036313,
         "open_interest": 5868295,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (October 20, 2026)",
         "oi_comparable": true,
@@ -103,10 +103,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 107.3125,
-        "settlement": 107.3125,
-        "change": 0.5625,
-        "pct_change": 0.5269320843091396,
+        "last": 107.1875,
+        "settlement": 107.1875,
+        "change": 0.4375,
+        "pct_change": 0.4098360655737654,
         "open_interest": 1785457,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (October 20, 2026)",
         "oi_comparable": true,
@@ -121,10 +121,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 108.84375,
-        "settlement": 108.84375,
-        "change": 0.59375,
-        "pct_change": 0.5484988452655992,
+        "last": 108.71875,
+        "settlement": 108.71875,
+        "change": 0.46875,
+        "pct_change": 0.43302540415703916,
         "open_interest": 2364949,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (October 20, 2026)",
         "oi_comparable": true,
@@ -150,28 +150,28 @@
     },
     "repo": {
       "SOFR": {
-        "date": "2026-10-27",
-        "rate": 3.95,
-        "volume_bn": 3147,
-        "previous_date": "2026-10-26",
-        "previous_rate": 3.93,
-        "change_bp": 2.0
+        "date": "2026-10-28",
+        "rate": 3.94,
+        "volume_bn": 3074,
+        "previous_date": "2026-10-27",
+        "previous_rate": 3.95,
+        "change_bp": -1.0
       },
       "BGCR": {
-        "date": "2026-10-27",
-        "rate": 3.94,
-        "volume_bn": 1221,
-        "previous_date": "2026-10-26",
-        "previous_rate": 3.91,
-        "change_bp": 3.0
+        "date": "2026-10-28",
+        "rate": 3.92,
+        "volume_bn": 1210,
+        "previous_date": "2026-10-27",
+        "previous_rate": 3.94,
+        "change_bp": -2.0
       },
       "TGCR": {
-        "date": "2026-10-27",
-        "rate": 3.94,
-        "volume_bn": 1191,
-        "previous_date": "2026-10-26",
-        "previous_rate": 3.91,
-        "change_bp": 3.0
+        "date": "2026-10-28",
+        "rate": 3.92,
+        "volume_bn": 1180,
+        "previous_date": "2026-10-27",
+        "previous_rate": 3.94,
+        "change_bp": -2.0
       }
     },
     "format_revision": 14,
@@ -202,7 +202,7 @@
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-10-28",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026102904"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026102908"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
