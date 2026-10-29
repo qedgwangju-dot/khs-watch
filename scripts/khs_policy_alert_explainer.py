@@ -865,6 +865,16 @@ def is_eu_sanctions_export_policy(text: str, item: dict) -> bool:
 def ensure_explained(item: dict) -> dict:
     default_context(item)
     text = text_for(item)
+    if (
+        item.get("policy_event_key") == "us-section232-robotics-machinery-proclamation-2026-10-28"
+        and item.get("body_verified")
+        and str(item.get("source") or "").lower().startswith("white house")
+        and item.get("title_ko")
+        and item.get("policy_timeline")
+    ):
+        # A verified source-specific presidential profile cannot be overwritten
+        # by broad full-body topic matches (e.g., unrelated FCC or SMR links).
+        return item
 
     # Preserve an explicitly source-verified, event-specific presidential
     # profile; never downgrade a signed proclamation to generic Trump remarks.
