@@ -5,6 +5,7 @@ on:
     paths:
       - "scripts/kosdaq_surge_industries.py"
       - "scripts/test_kosdaq_surge_industries.py"
+      - "scripts/test_kospi_shock_backfill.py"
       - "scripts/probe_kosdaq_surge_industries.py"
       - "scripts/probe_market_surge_industries.py"
       - "scripts/kospi_shock_episode_watch.py"
@@ -29,6 +30,7 @@ on:
     paths:
       - "scripts/kosdaq_surge_industries.py"
       - "scripts/test_kosdaq_surge_industries.py"
+      - "scripts/test_kospi_shock_backfill.py"
       - "scripts/probe_kosdaq_surge_industries.py"
       - "scripts/probe_market_surge_industries.py"
       - "scripts/kospi_shock_episode_watch.py"
@@ -79,6 +81,7 @@ jobs:
           python -m py_compile scripts/ls_live_source_gate.py scripts/test_ls_live_source_gate.py
           python scripts/test_ls_live_source_gate.py
           python scripts/test_kosdaq_surge_industries.py
+          python scripts/test_kospi_shock_backfill.py
           python scripts/test_market_flow_channels.py
           python scripts/test_market_investment_trust.py
           python scripts/test_market_financial_investment.py
