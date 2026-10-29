@@ -73,6 +73,18 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Verify official Section 232 robotics chronology and Telegram integrity
+        run: |
+          PYTHONPATH=scripts:. python - <<'PY'
+          import khs_policy_watch as policy
+          from verify_khs_policy_delivery_contract import (
+              assert_robotics_232_presidential_alert_reaches_delivery_guard,
+          )
+          policy._self_test_robotics_232_proclamation()
+          assert_robotics_232_presidential_alert_reaches_delivery_guard()
+          print("robotics_232_source_to_telegram_guard_regression=passed")
+          PY
+
       - name: Validate policy regression tests
         run: |
           python -m py_compile scripts/khs_policy_watch.py
