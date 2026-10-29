@@ -677,6 +677,21 @@ def compact_explanation_lines(alert: dict) -> list[str]:
     ]
 
 
+def robotics_232_detail_lines(alert: dict) -> list[str]:
+    """Preserve primary-source facts after generic 50-char policy field trimming."""
+    if alert.get("policy_event_key") != "us-section232-robotics-machinery-proclamation-2026-10-28":
+        return []
+    return [
+        "- 현재 단계: 2026년 10월 28일 대통령 포고문 서명 및 교역국별 협상 지시; 신규 관세 즉시 부과 없음",
+        "- 실제 내용: 미 상무부는 로봇·산업기계·관련 부품의 수입 의존과 국가안보 위험을 판단했습니다.",
+        "- 실제 내용: 상무장관과 미국 무역대표부가 국가별 협상을 진행하고 180일 이내 협상 상황을 대통령에게 보고합니다.",
+        "- 실제 내용: 신규 관세·수입할당량·수수료 및 미국 내 생산 투자 인센티브는 향후 검토할 수 있는 조치입니다.",
+        "- 실제 내용: 휴머노이드·4족보행 로봇과 자율주행 지상차량의 정찰·부상자 후송·지뢰 탐지 등 국방 지원 용도를 명시했습니다.",
+        "- 범위 주의: 특정 국가 즉시 수입금지·확정 신규 관세율·한국 기업 보조금이나 수주는 이번 포고문에 없습니다.",
+        "- 다음 확인: 2027년 4월 26일까지 협상 진행 상황 보고; 국가별 합의·추가 관세·품목 범위·시행일은 별도 공식 발표를 확인합니다.",
+    ]
+
+
 def apply_router_overrides(alert: dict) -> None:
     if alert.get("policy_event_key") == "us-section232-robotics-machinery-proclamation-2026-10-28":
         return  # Preserve source-verified robotics trade policy, not FCC/SMR.
@@ -1001,6 +1016,7 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
         lines.extend([
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
             *compact_explanation_lines(alert),
+            *robotics_232_detail_lines(alert),
             *presidential_action_timeline_lines(alert),
             f"- 출처: [원문 보기]({alert.get('link', '')}) · {display_source(alert.get('source'))} · 조회 {now:%H:%M KST}",
             "",
