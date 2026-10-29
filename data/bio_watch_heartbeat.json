@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at_kst": "2026-10-29T08:49:08+09:00",
+  "checked_at_kst": "2026-10-29T09:21:09+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -30,7 +30,7 @@
   "halozyme_search_failed_tasks": 0,
   "halozyme_search_task_count": 78,
   "intismeran_retry_pending": false,
-  "last_health_notice_date": "2026-10-28",
+  "last_health_notice_date": "2026-10-29",
   "failure_notice_message_id": 243,
   "last_qlex_telegram_message_ids": [
     221
@@ -42,5 +42,6 @@
   "last_qlex_telegram_sent_at_kst": "2026-10-21T22:32:27+09:00",
   "errors": [],
   "failed_component": "",
-  "error_signature": ""
+  "error_signature": "",
+  "health_notice_message_id": 267
 }
