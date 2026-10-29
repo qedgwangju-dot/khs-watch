@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-28T23:28:02+09:00",
+  "updated_at_kst": "2026-10-29T11:57:44+09:00",
   "initial_alert_sent": true,
   "preorder_at_kst": "2026-10-16T21:00:00+09:00",
   "launch_date": "2026-10-23",
@@ -22,12 +22,14 @@
     "1e10ead14a55a92e30904579",
     "1f48ae8cc053e5677ddc19e3",
     "201c35749bb7f4d55564688c",
+    "209f80118fb30d962c0a454f",
     "20c65b2b70635146cc77587a",
     "22043fa11193c363fc7e6aea",
     "2322206cdfd34129569f190c",
     "241453792c2974131ca52277",
     "24f2354d55ea8111e21d7daa",
     "291d0b0e31bd24cd8d01a44f",
+    "29872292305600858bb225ff",
     "2c963da200a9807bc7b5d194",
     "2d41a83800980bf567f509f7",
     "2e4ed5186b35b93da988e259",
@@ -70,6 +72,7 @@
     "6124a0e24a045d2e1dbe319d",
     "653cd0f8534b16c8fb7bace0",
     "65d8d8e21280e1f13495e215",
+    "6655ddc248c188906c6d1c64",
     "6892a1e5c0e51d8fb2d9da86",
     "689cc6e817541b57d952f365",
     "68d6a986f2ccc9865bdfd6e9",
@@ -135,6 +138,7 @@
     "b5c0388f2a2d5035e1a35e21",
     "b613cb972529056f41c69934",
     "b68f28133b4b5f1a382cf5ee",
+    "b80c2b6c7370eb9fc7db5288",
     "b921f3558df882113d105f27",
     "bc0b7f108b145fd3f106bac2",
     "bc4541ff7f707674a303f2a4",
@@ -180,17 +184,19 @@
     "e8f17d7685f9e5c6d59a73e7",
     "eada356ce051143f7b7f5223",
     "f01c95f620c5ee5faba1d80f",
+    "f0a5e8d4e32e3dea4ee2b880",
     "f2deef37e8a2dbb98cda2986",
     "f7c97083f05ae7b065eafae5",
     "fa0af90127e54bd2e2180d80",
     "faf214aa8475b6c2fd8d78d8",
     "fc92095a43ea106cb0856254",
+    "fd922361082f997c65d93ae7",
     "fdfc39f54ba21516d484595f",
     "fe822c8a5ef048c27250f447",
     "fede0acc4416cc1373a28752"
   ],
   "metrics": {
-    "iphone18pro_china_yoy_pct": 12,
+    "iphone18pro_china_yoy_pct": 3.1,
     "apple_china_week38_share_pct": 33,
     "counterpoint_duo_forecast_m": 6,
     "trendforce_duo_forecast_m": 5,
@@ -206,11 +212,11 @@
     "counterpoint_duo": "Reuters가 Counterpoint 전망 약 600만대 인용",
     "trendforce_duo": "TrendForce 공식 2026 출하 약 500만대"
   },
-  "last_scan_items": 16,
-  "last_signal_count": 0,
+  "last_scan_items": 15,
+  "last_signal_count": 1,
   "last_alert": {
-    "at_kst": "2026-09-30T13:10:14+09:00",
-    "kind": "baseline"
+    "at_kst": "2026-10-29T11:57:44+09:00",
+    "kind": "change"
   },
   "metadata_review": "2026-10-11 Counterpoint public official reports verified; no new sell-through event generated"
 }
