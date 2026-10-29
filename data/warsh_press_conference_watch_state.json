@@ -11,7 +11,7 @@
   "transcript": null,
   "sent": false,
   "reuters_count": 8,
-  "updated_at_utc": "2026-10-29T00:03:23.514924+00:00",
+  "updated_at_utc": "2026-10-29T13:24:13.776106+00:00",
   "structural_source_status": "already_sent",
   "structural_pending_key": null,
   "structural_delivery_status": "confirmed",
@@ -37,5 +37,17 @@
     "https://kfgo.com/2026/10/28/feds-policy-committee-to-weigh-balance-sheet-issues-early-next-year-warsh-says/"
   ],
   "balance_addendum_sent_at_utc": "2026-10-28T23:23:35.969507+00:00",
-  "balance_addendum_status": "already_sent"
+  "balance_addendum_status": "already_sent",
+  "korea_addendum_pending_key": null,
+  "korea_addendum_delivery_status": "confirmed",
+  "korea_addendum_sent_key": "2026-10-28|Warsh|Korea-AI-SupplyChain-QA-Verified-v1",
+  "korea_addendum_message_id": 121,
+  "korea_addendum_sources": [
+    "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+    "https://stock.mk.co.kr/news/view/1183879",
+    "https://www.koreaherald.com/article/10919364",
+    "https://m.ajupress.com/amp/20261029104304880"
+  ],
+  "korea_addendum_sent_at_utc": "2026-10-29T13:24:13.776022+00:00",
+  "korea_addendum_status": "confirmed"
 }
