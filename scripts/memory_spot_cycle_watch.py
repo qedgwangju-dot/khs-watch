@@ -2591,6 +2591,17 @@ def _trend_3q4q_pace_summary(state: dict) -> list[str]:
     return out
 
 
+
+def _asp_stock_rerating_context() -> list[str]:
+    """Attach analysis to verified price/earnings changes, never trigger on commentary alone."""
+    return [
+        "가격과 속도: 가격 수준, 같은 제품·기간·가격종류의 ASP 전분기 대비 상승률, 상승률의 전분기 대비 변화(%p), 기존 전망 대비 수정폭을 구별",
+        "주가 해석: 가격이 계속 올라도 상승률이 둔화할 수 있고, 주가는 이미 반영한 실적 기대와 새 전망의 차이에 반응하므로 둔화만으로 매도 신호 확정 금지",
+        "미래 재평가: HBM4·서버 DRAM·기업용 SSD 제품 구성, 계약 물량·장기계약, 가동률·수율·영업현금흐름·설비투자 후 잉여현금흐름을 확인",
+        "가치평가 3축: 할인율·반복 가능한 성장률·주주환원(현금배당 실제 지급, 자사주 실제 매입·소각, 일회성 특별배당 분리); 주주환원만이 유일한 재평가 조건은 아님",
+        "통계 주의: 사용자 제공 그래프는 주가 t와 ASP 상승률 t-1의 사후 상관(0.89~0.96, 6~10개 분기, 독립 재현 전)이며 인과·향후 주가 예측이 아님",
+    ]
+
 def _trend_relative_spread_summary(state: dict) -> list[str]:
     out: list[str] = []
     keys = (
@@ -3962,6 +3973,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         secondary = market_state.get("secondary_source_url")
         if secondary:
             lines.append('  <a href="' + html.escape(secondary, quote=True) + '">국내 보도</a>')
+    if trend_4q26_changes or trend_3q4q_changes or market_changes or korea_earnings_changes:
+        lines.append("• <b>ASP 상승률·주가·재평가 점검</b>")
+        for note in _asp_stock_rerating_context():
+            lines.append("  " + html.escape(note))
+
     if korea_earnings_changes:
         lines.append("• <b>삼성전자·SK하이닉스 영업이익 시장 컨센서스 변화</b>")
         for change in list(dict.fromkeys(korea_earnings_changes)):

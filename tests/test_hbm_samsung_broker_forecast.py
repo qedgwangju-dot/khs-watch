@@ -122,6 +122,8 @@ class SamsungHBMBrokerForecastTests(unittest.TestCase):
         self.assertIn("환율 분리", out)
         self.assertIn("2027E -4.6%", out)
         self.assertIn("기존 가격 레벨 대비", out)
+        self.assertIn("가격 상승률·주가", out)
+        self.assertIn("가치 재평가 조건", out)
 
 
 if __name__ == "__main__":

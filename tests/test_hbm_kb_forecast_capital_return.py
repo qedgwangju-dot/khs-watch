@@ -54,6 +54,8 @@ class KBHBMAndCapitalReturnTests(unittest.TestCase):
         self.assertIn("HBM 상태 변화",parts[0])
         self.assertIn("주주환원·FCF 변화",parts[1])
         self.assertIn("1,200조원",parts[1])
+        self.assertIn("가치 재평가의 3축", parts[1])
+        self.assertIn("소각 완료", parts[1])
 
 if __name__=="__main__":
     unittest.main()

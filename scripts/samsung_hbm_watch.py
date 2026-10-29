@@ -2422,6 +2422,17 @@ def broker_forecast_event_summary(e: dict) -> list[str]:
         delta = float(current) - previous_report
         level = ((1.0 + float(current)/100.0) / (1.0 + previous_report/100.0) - 1.0) * 100.0
         lines.append(f"• 리포트 내부 직전치: {previous_report:+.1f}% YoY → <b>{delta:+.1f}%p</b> · 기존 가격 레벨 대비 <b>{level:+.1f}%</b>")
+    if current is not None:
+        comparison = previous if previous is not None else ch.get("report_previous_asp_yoy_pct")
+        if comparison is not None:
+            direction = "상향" if float(current) > float(comparison) else "하향" if float(current) < float(comparison) else "유지"
+            lines.append(
+                f"• 가격 상승률·주가: 동일 기준 HBM ASP 증가율 전망 {direction} "
+                f"({float(current)-float(comparison):+.1f}%p); 가격 수준과 상승 속도, 시장의 기존 기대를 구분"
+            )
+        else:
+            lines.append("• 가격 상승률·주가: 비교 가능한 직전 전망이 없어 속도 변화 판정 유보; 가격 수준과 기대 대비 수정치를 구분")
+        lines.append("• 가치 재평가 조건: HBM4 물량·제품혼합·장기계약→이익·잉여현금흐름 지속성, 할인율, 현금배당·자사주 실제 소각을 함께 확인")
     if ch.get("hbm4_revenue_mix_current_pct") is not None or ch.get("hbm4_revenue_mix_next_pct") is not None:
         cur = ch.get("hbm4_revenue_mix_current_pct")
         nxt = ch.get("hbm4_revenue_mix_next_pct")
@@ -2591,6 +2602,9 @@ def capital_return_event_summary(e: dict) -> list[str]:
         lines.append("• KB 영업이익 가정: " + " / ".join(parts))
     lines.append(f"• 회사 공식 현재 정책: {html.escape(str(st.get('official_policy_period') or '미확인'))} · FCF <b>{float(st.get('official_fcf_return_pct') or 0):.0f}%</b> 환원 · 연간 정규배당 <b>{float(st.get('official_annual_dividend_krw_trn') or 0):.1f}조원</b>")
     lines.append("• 구분: <b>600조원은 KB증권 가정</b>이며 회사의 차기 3개년 확정 정책이 아닙니다.")
+    lines.append("• 가치 재평가의 3축: 할인율(금리·위험), 성장률(HBM4 출하·ASP·장기계약), 주주환원(현금배당과 실제 자사주 소각·지속성)")
+    lines.append("• 반복성 점검: 특별배당·투자이익과 본업 잉여현금흐름을 분리하고, 매입 결정→실제 취득→소각 완료·직원보상용을 각각 구분")
+    lines.append("• 해석: ASP 상승률이 둔화돼도 현금창출력이 유지되면 재평가 가능; 주주환원 없이 이익이 무의미하거나 가격 상승률 둔화가 반드시 주가 하락이라는 단정은 금지")
     if ch.get("reasons"):
         lines.append("• 이번 변화: " + html.escape(" · ".join(ch["reasons"])))
     lines += [f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}", f"• {href(e.get('direct_link') or '', '근거 원문')}"]

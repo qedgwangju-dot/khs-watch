@@ -1170,5 +1170,15 @@ class AppleCXMTPriceIntegrityTests(unittest.TestCase):
         }
         self.assertIsNone(w._extract_russia_memory_import_update(report))
 
+    def test_asp_rerating_context_is_not_standalone_price_alert(self):
+        notes = "\n".join(w._asp_stock_rerating_context())
+        self.assertIn("상승률의 전분기 대비 변화(%p)", notes)
+        self.assertIn("실제 매입·소각", notes)
+        self.assertIn("주가 t와 ASP 상승률 t-1", notes)
+        self.assertIn("6~10개 분기", notes)
+        self.assertIn("독립 재현 전", notes)
+        self.assertIn("예측이 아님", notes)
+
+
 if __name__ == "__main__":
     unittest.main()
