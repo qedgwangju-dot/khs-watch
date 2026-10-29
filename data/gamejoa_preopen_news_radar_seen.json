@@ -38717,6 +38717,31 @@
       "source_published_kst": "2026-10-07T07:20+09:00",
       "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
     },
+    "core:4a6bcf4bc469b6584c1db2a9": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
+    },
     "core:4a853432ffa473d22cc80db3": {
       "first_seen_kst": "2026-10-26T15:29:43+09:00",
       "lanes": {
@@ -42355,6 +42380,31 @@
       "source_title": "중동 플랜트 수주액 40%↓…수주 확대 위해 민관 협력키로 | 연합뉴스",
       "telegram_core_fact": "산업부에 따르면 올해 1∼3분기 우리 기업의 해외플랜트 수주 금액은 약 250억달러(약 33조원)으로 전년 동기(384억달러) 대비 34.8% 감소했다.",
       "title": "중동 플랜트 수주액 40%↓…수주 확대 위해 민관 협력키로 | 연합뉴스"
+    },
+    "core:5232bfb62584d0739358c896": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641876",
+      "source": "이투데이",
+      "source_body_digest": "0596948f341b7f40533f88781f15bfce82ad98fe2fc8a2648dfd206b5c7fe45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e2924505b0c8c14771c7d1b3eef5eec37b702432dc922a7ebe84973ca4605",
+      "source_fact_keys": [
+        "source_fact:v1:4038e7b78da775ad8a7b8249887fdd8d7171325394bfed854d4a227293f32225",
+        "source_fact:v1:453597e956ff705c143eab520264964c1040da58d9e7bb19d9ad1aee4589a982",
+        "source_fact:v1:57a57cfccc50cf505164fd0ba2ac8144a9ca78dced14640e7879895daaa52f32",
+        "source_fact:v1:5afe78a5369c96b3eff17b9611bc058a6bc2a8c2140251bf88832b49aee0a344",
+        "source_fact:v1:8ed16fe77333d4590251d3c4aa7e57ca3588d480989308895684506ad6237616",
+        "source_fact:v1:d2a3edceda7d8c6f9ad8d9317d043846f6cd66c24a5f7dad6b052754db65e348"
+      ],
+      "source_published_kst": "2026-10-29T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’",
+      "telegram_core_fact": "국내 5대 금융지주가 올해 3분기까지 19조6000억원이 넘는 순이익을 거두며 역대 최대 실적을 기록했다.",
+      "title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’"
     },
     "core:523a1ed832e322d12fd34d7b": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -53234,6 +53284,27 @@
       "source_title": "[속보]국세청장 “가상자산 과세, 11월 고시 발표 준비”",
       "telegram_core_fact": "임광현 국세청장은 13일 오후 세종시 국세청 본청에서 열린 국회 재정경제기획위원회(재경위) 국정감사에서 임이자 국민의힘 의원(정책위의장)이 가상자산 과세 고시 발표 등 준비 상황에 대해 질의하자, “올 11월 그때 쯤에 할 수 있도록 준비는 해놓고 있다”고 답했다.",
       "title": "[속보]국세청장 “가상자산 과세, 11월 고시 발표 준비”"
+    },
+    "core:68a583fcc0c732516739aa70": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261030019600009",
+      "source": "연합뉴스",
+      "source_body_digest": "82115ea9dc4459a5c4abead707a78b920852bf41d6062d9957a3e6090dbd74bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36d0847fef936e02f2d03f6f5b67b0f163b9a50a7eae88b64d418f302ec84f72",
+      "source_fact_keys": [
+        "source_fact:v1:bcd83fe2b2bf3e90c814f0774a5fc27c8f463c91cc6dbefb5570753c20ea85fd",
+        "source_fact:v1:e87d612298e07522e5a8889f2fc3ea008bd8a0df2195fda60b03c3f6a2ed87ea"
+      ],
+      "source_published_kst": "2026-10-30T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스",
+      "telegram_core_fact": "스페이스X는 20일 3분기 실적 공시에서 분기 매출의 34.5%가 컴퓨팅 파워를 공급하는 AI 부문에 대금을 낸 단일 고객에게서 나왔다고 밝혔으나 고객 이름은 '커스토머 B'로만 적었다.",
+      "title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스"
     },
     "core:68a7afb21db24472ecec6190": {
       "first_seen_kst": "2026-10-23T00:02:37+09:00",
@@ -102500,6 +102571,31 @@
       "telegram_core_fact": "엠피닥터에 따르면 이날 오후 1시38분 현재 코스피는 전거래일 대비 41.87포인트(0.76%) 내린 5491.90에 거래 중이다. 코스피가 23일 오후 들어 낙폭을 크게 줄이며 5490선에서 움직이고 있다.",
       "title": "코스피, 낙폭 줄여 5490선…SK하이닉스 2%대 반등"
     },
+    "core:c9012e517ab2937ef92cdb7c": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
+      "source_fact_keys": [
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
+      ],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
+    },
     "core:c9096bf84368b04b1fb5cb84": {
       "first_seen_kst": "2026-10-19T10:23:26+09:00",
       "lanes": {
@@ -110467,6 +110563,27 @@
       "telegram_core_fact": "코스피 상장사 HD현대마린엔진[071970]은 연결 기준 올해 3분기 영업이익이 603억원으로 지난해 동기보다 197.2% 증가한 것으로 잠정 집계됐다고 28일 공시했다.",
       "title": "HD현대마린엔진 3분기 영업익 603억원…작년 대비 197%↑ | 연합뉴스"
     },
+    "core:d8a65bb068ac698a0ef0fb0e": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029149851527",
+      "source": "연합뉴스",
+      "source_body_digest": "71a241d5bba2a8040b956043dedc28a76d6ab97dff43d972c7a901c60af6da8b",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3b3f7706f88e7acbd19d825dc17187e714014d22f792b38fcde5501a4f8beeba",
+      "source_fact_identity": "source_facts:v1:a8c40802655f14f8d55d0e648619ee1bb57122ec933fa2a7457925f61b964256",
+      "source_fact_keys": [
+        "source_fact:v1:0f4cf8b6b15ee24677e243a0a767fe824fb8622fd935f73d787ade6de1790172",
+        "source_fact:v1:8d21d635ba4a288f5d7253056d97d58dbe6c90dcf1b1d8b875a729727b7928ce"
+      ],
+      "source_published_kst": "2026-10-29T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "KB증권이 연결 기준 올해 3분기 영업이익 3천810억원으로 전년비 69.1% 증가한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스"
+    },
     "core:d8a92b4a0c566ecfd45b99ae": {
       "first_seen_kst": "2026-10-27T00:32:16+09:00",
       "lanes": {
@@ -118025,6 +118142,32 @@
       "source_title": "[IPO챗] 인텔리빅스",
       "telegram_core_fact": "회사에 따르면 인텔리빅스 매출액은 2023년 183억원에서 지난해 466억원으로 증가했다.",
       "title": "[IPO챗] 인텔리빅스"
+    },
+    "core:e6e3a8dad72b1047b7c71304": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
     },
     "core:e7252b3c4fbb688b3276f558": {
       "first_seen_kst": "2026-10-22T13:31:10+09:00",
@@ -137089,6 +137232,32 @@
       "source_published_kst": "2026-10-06T06:30+09:00",
       "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
     },
+    "event:35a466b662ae7df122239572": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
+    },
     "event:35c2b8918508cfcbedbcda09": {
       "first_seen_kst": "2026-10-08T12:46:54+09:00",
       "lanes": {
@@ -138192,22 +138361,23 @@
     "event:40d4e215dd34413abbe87366": {
       "first_seen_kst": "2026-10-30T00:45:29+09:00",
       "lanes": {
-        "live": "2026-10-30T00:45:29+09:00"
+        "live": "2026-10-30T08:14:02+09:00"
       },
-      "last_seen_kst": "2026-10-30T00:45:29+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1184973",
-      "source": "매일경제",
-      "source_body_digest": "322b5c1b9b68df5a9ffaff9c29ade0ad778424e4b8ba67aa5b5a47c4e4a6f34e",
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261030019600009",
+      "source": "연합뉴스",
+      "source_body_digest": "82115ea9dc4459a5c4abead707a78b920852bf41d6062d9957a3e6090dbd74bf",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:1cf64d975b4e5fac7a5312f65b95dc244f441fa5669203678b599061a84108f0",
+      "source_fact_identity": "source_facts:v1:36d0847fef936e02f2d03f6f5b67b0f163b9a50a7eae88b64d418f302ec84f72",
       "source_fact_keys": [
-        "source_fact:v1:6cdef0124990cdbaa1a4f47e75d3d9b7a75b2d08dfa6dcb68eb8f32576bc3b34"
+        "source_fact:v1:bcd83fe2b2bf3e90c814f0774a5fc27c8f463c91cc6dbefb5570753c20ea85fd",
+        "source_fact:v1:e87d612298e07522e5a8889f2fc3ea008bd8a0df2195fda60b03c3f6a2ed87ea"
       ],
-      "source_published_kst": "2026-10-30T00:10+09:00",
+      "source_published_kst": "2026-10-30T07:55+09:00",
       "source_supply_terms": {},
-      "source_title": "제네락홀딩스, 사상 최대 분기 매출에 아마존發 데이터센터 수주잔고 급증",
-      "telegram_core_fact": "아마존과의 7년 80억 달러 계약 영향으로 데이터센터 수주잔고가 45억 달러로 3배 확대됐습니다. 3분기 매출이 13억 달러로 16% 늘어 역대 최대를 기록했고, 조정 EPS도 2.54달러로 39% 급증했습니다.",
-      "title": "제네락홀딩스, 사상 최대 분기 매출에 아마존發 데이터센터 수주잔고 급증"
+      "source_title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스",
+      "telegram_core_fact": "스페이스X는 20일 3분기 실적 공시에서 분기 매출의 34.5%가 컴퓨팅 파워를 공급하는 AI 부문에 대금을 낸 단일 고객에게서 나왔다고 밝혔으나 고객 이름은 '커스토머 B'로만 적었다.",
+      "title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스"
     },
     "event:410390e4808b485e06ed859e": {
       "first_seen_kst": "2026-10-27T19:09:26+09:00",
@@ -146163,27 +146333,27 @@
     "event:8a58d96ae4902613d6efc8c0": {
       "first_seen_kst": "2026-10-30T00:09:19+09:00",
       "lanes": {
-        "live": "2026-10-30T05:43:19+09:00"
+        "live": "2026-10-30T08:14:02+09:00"
       },
-      "last_seen_kst": "2026-10-30T05:43:19+09:00",
-      "link": "https://www.newsis.com/view/NISX20261029_0003846747",
-      "source": "뉴시스",
-      "source_body_digest": "33757d82363e390a56978cec53d121967e1fa5ea8909346aa06baab0207377ef",
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ea3b39e83c1245fae8e797ca6006378234ae227f4d1915f7979f527561212f94",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
       "source_fact_keys": [
-        "source_fact:v1:4051261100a2bb4521044e8f2c5308ded1c08281f62b7e2158680017d05cf787",
-        "source_fact:v1:4cf02179b59ccf54cc67aee74cb49fd6e39b7628f8a88a9209e1749f98674817",
-        "source_fact:v1:5337aff6763f1c181c1a73e109911b87f26ecaece9fad4150dca50ee3e396176",
-        "source_fact:v1:91e9d069109cb8dc9acb4499e21c8d643ae9214b3514e5d15eb17e27e8c0557e",
-        "source_fact:v1:d5e15cc2d52f07c2af5cb26f791b0b9ae777e41a60f435bab8036409f885310f",
-        "source_fact:v1:fe60c2ae8f5c7f557c89d3c7985550acfa7aba4bb6d9f44b70a760fc3cf4a8de"
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
       ],
-      "source_published_kst": "2026-10-29T20:28+09:00",
+      "source_published_kst": "2026-10-29T16:14+09:00",
       "source_supply_terms": {},
-      "source_title": "美 가스발전부터 SMR까지…DL그룹, 에너지 밸류체인 승부수",
-      "telegram_core_fact": "인공지능(AI) 데이터센터 확산 등으로 전력 수요가 늘면서 에너지 인프라 투자가 확대되는 가운데, DL그룹이 사업 개발부터 금융 조달, 시공, 운영까지 아우르는 밸류체인을 앞세워 글로벌 에너지 시장 공략에 나선다.",
-      "title": "美 가스발전부터 SMR까지…DL그룹, 에너지 밸류체인 승부수"
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
     },
     "event:8a5bf4873b01aec65236c4d4": {
       "first_seen_kst": "2026-10-30T06:57:19+09:00",
@@ -148722,6 +148892,27 @@
       "source_title": "美경제전문가들 \"국채금리 5%대 고착\"⋯고금리 지속 관측",
       "telegram_core_fact": "WSJ 설문⋯올해 말 10년물 5.1% 전망 물가 둔화에도 재정적자ㆍAI 투자 부담 2028년까지 5%대 유지 가능성 제기 ▲그래픽=AI 기반 편집 이미지 (Chat GPT) 미국의 장기 국채금리가 5%대에 고착될 수 있다는 설문 결과가 나왔다.",
       "title": "美경제전문가들 \"국채금리 5%대 고착\"⋯고금리 지속 관측"
+    },
+    "event:a1f8f60de53982d34e0966a3": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029149851527",
+      "source": "연합뉴스",
+      "source_body_digest": "71a241d5bba2a8040b956043dedc28a76d6ab97dff43d972c7a901c60af6da8b",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3b3f7706f88e7acbd19d825dc17187e714014d22f792b38fcde5501a4f8beeba",
+      "source_fact_identity": "source_facts:v1:a8c40802655f14f8d55d0e648619ee1bb57122ec933fa2a7457925f61b964256",
+      "source_fact_keys": [
+        "source_fact:v1:0f4cf8b6b15ee24677e243a0a767fe824fb8622fd935f73d787ade6de1790172",
+        "source_fact:v1:8d21d635ba4a288f5d7253056d97d58dbe6c90dcf1b1d8b875a729727b7928ce"
+      ],
+      "source_published_kst": "2026-10-29T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "KB증권이 연결 기준 올해 3분기 영업이익 3천810억원으로 전년비 69.1% 증가한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스"
     },
     "event:a224bb7605b3da289a7b8a67": {
       "first_seen_kst": "2026-10-19T05:12:02+09:00",
@@ -156853,6 +157044,31 @@
       "source_title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)",
       "telegram_core_fact": "레이저쎌(412350)은 반도체 본딩 장비 공급에 관한 단일판매ㆍ공급계약체결(자율공시) 을 21일에 공시했다.",
       "title": "레이저쎌 수주공시 - 반도체 본딩 장비 공급 4.6억원 (매출액대비 9.87 %)"
+    },
+    "event:ed05a9e436d3fa8584b251d3": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
     },
     "event:ed07ec20a704c33f92cbd539": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
@@ -188037,6 +188253,27 @@
       "telegram_core_fact": "정부가 규제특례와 재정·세제 지원을 묶어 지방 투자의 문턱을 낮추기로 했지만, 실제 공장 착공과 가동을 앞당기려면 전력·용수와 인력 확보가 뒷받침돼야 한다.",
       "title": "고삐 풀린 규제에 ‘지방 투자’ 물꼬…인재·인프라 확보가 관건[320개 규제특례의 명암]"
     },
+    "fact:36254d74980112cb78347386": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261030019600009",
+      "source": "연합뉴스",
+      "source_body_digest": "82115ea9dc4459a5c4abead707a78b920852bf41d6062d9957a3e6090dbd74bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36d0847fef936e02f2d03f6f5b67b0f163b9a50a7eae88b64d418f302ec84f72",
+      "source_fact_keys": [
+        "source_fact:v1:bcd83fe2b2bf3e90c814f0774a5fc27c8f463c91cc6dbefb5570753c20ea85fd",
+        "source_fact:v1:e87d612298e07522e5a8889f2fc3ea008bd8a0df2195fda60b03c3f6a2ed87ea"
+      ],
+      "source_published_kst": "2026-10-30T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스",
+      "telegram_core_fact": "스페이스X는 20일 3분기 실적 공시에서 분기 매출의 34.5%가 컴퓨팅 파워를 공급하는 AI 부문에 대금을 낸 단일 고객에게서 나왔다고 밝혔으나 고객 이름은 '커스토머 B'로만 적었다.",
+      "title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스"
+    },
     "fact:36288519205729bce9592e67": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
       "lanes": {
@@ -204057,6 +204294,31 @@
       "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
       "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
       "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
+    },
+    "fact:55abee9f5492acc72d949ab0": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
+      "source_fact_keys": [
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
+      ],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
     },
     "fact:55ade6153dafc807444b062e": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -221282,6 +221544,27 @@
       "telegram_core_fact": "특히 고객 방문 증가와 수익성 개선을 통해 확보한 자금을 재투자하면서 지속적인 매출 성장과 시장점유율 확대를 이끄는 선순환 구조가 형성되고 있다고 설명했다.",
       "title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스"
     },
+    "fact:76218d750cb2df3f51acc02e": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029149851527",
+      "source": "연합뉴스",
+      "source_body_digest": "71a241d5bba2a8040b956043dedc28a76d6ab97dff43d972c7a901c60af6da8b",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3b3f7706f88e7acbd19d825dc17187e714014d22f792b38fcde5501a4f8beeba",
+      "source_fact_identity": "source_facts:v1:a8c40802655f14f8d55d0e648619ee1bb57122ec933fa2a7457925f61b964256",
+      "source_fact_keys": [
+        "source_fact:v1:0f4cf8b6b15ee24677e243a0a767fe824fb8622fd935f73d787ade6de1790172",
+        "source_fact:v1:8d21d635ba4a288f5d7253056d97d58dbe6c90dcf1b1d8b875a729727b7928ce"
+      ],
+      "source_published_kst": "2026-10-29T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "KB증권이 연결 기준 올해 3분기 영업이익 3천810억원으로 전년비 69.1% 증가한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스"
+    },
     "fact:7627f1a4c85c68ab119159f0": {
       "first_seen_kst": "2026-10-26T17:12:13+09:00",
       "lanes": {
@@ -234058,6 +234341,31 @@
       "source_title": "러시아 디지털 루블 계좌 22만 개∙∙∙첫 달 예상치 3배↑",
       "telegram_core_fact": "우크라이나 전쟁을 계기로 미국과 유럽 등 주요국이 잇따라 경제 제재에 나서면서 금융망 일부에 대한 접근이 제한되고 브릭스(BRICS) 회원국인 중국∙인도 등과의 자금 거래가 복잡해지자 디지털 루블을 새로운 지급 수단으로 육성해 왔다.",
       "title": "러시아 디지털 루블 계좌 22만 개∙∙∙첫 달 예상치 3배↑"
+    },
+    "fact:8cba9faf0a7160b3e8ce0d54": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641876",
+      "source": "이투데이",
+      "source_body_digest": "0596948f341b7f40533f88781f15bfce82ad98fe2fc8a2648dfd206b5c7fe45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e2924505b0c8c14771c7d1b3eef5eec37b702432dc922a7ebe84973ca4605",
+      "source_fact_keys": [
+        "source_fact:v1:4038e7b78da775ad8a7b8249887fdd8d7171325394bfed854d4a227293f32225",
+        "source_fact:v1:453597e956ff705c143eab520264964c1040da58d9e7bb19d9ad1aee4589a982",
+        "source_fact:v1:57a57cfccc50cf505164fd0ba2ac8144a9ca78dced14640e7879895daaa52f32",
+        "source_fact:v1:5afe78a5369c96b3eff17b9611bc058a6bc2a8c2140251bf88832b49aee0a344",
+        "source_fact:v1:8ed16fe77333d4590251d3c4aa7e57ca3588d480989308895684506ad6237616",
+        "source_fact:v1:d2a3edceda7d8c6f9ad8d9317d043846f6cd66c24a5f7dad6b052754db65e348"
+      ],
+      "source_published_kst": "2026-10-29T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’",
+      "telegram_core_fact": "국내 5대 금융지주가 올해 3분기까지 19조6000억원이 넘는 순이익을 거두며 역대 최대 실적을 기록했다.",
+      "title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’"
     },
     "fact:8cbc737a3ad94698657c5d8d": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -283560,6 +283868,31 @@
       "telegram_core_fact": "태양광 발전소를 짓고 관리하는 데서 나아가 생산된 전기를 기업에 판매하는 에너지 IT 플랫폼 기업 엔라이튼의 이야기다.",
       "title": "이영호 엔라이튼 대표 “태양광 8GW 연결… 전력 유통 시장 승부”"
     },
+    "fact:e5442ee882fdd121c49eb476": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
+    },
     "fact:e548ee4750f1b09c0da3137a": {
       "first_seen_kst": "2026-10-23T14:47:30+09:00",
       "lanes": {
@@ -285553,6 +285886,32 @@
       "source_title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\"",
       "telegram_core_fact": "한화에어로스페이스 관계자는 \"XM1776 시제품의 적기 납품과 미국 앨라배마·아칸소 현지 생산 기반 구축으로 미국 육군이 신뢰할 수 있는 파트너로 도약할 것\"이라고 말했다.",
       "title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\""
+    },
+    "fact:e95062a81ad0f0ba80432ac8": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
     },
     "fact:e953d00fb6f65d095081dce9": {
       "first_seen_kst": "2026-10-24T03:01:20+09:00",
@@ -319503,6 +319862,32 @@
       "telegram_core_fact": "아이콘 PLC(ICLR)는 3분기 매출액이 20억2480만 달러로 전년비 2.9% 감소했으며, 비일반회계기준(Non-GAAP) 조정 희석 주당순이익은 2.66달러로 전년 동기 3.20달러보다 줄었다고 10월 27일 발표했다.",
       "title": "아이콘 PLC, 3분기 매출 20억2480만 달러..전년비 2.9% 감소"
     },
+    "link:1f19f64846339328825c1e67": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
+    },
     "link:1f1e5d967d99aa0b2b1bb506": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
       "lanes": {
@@ -336579,6 +336964,24 @@
       "source_title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]",
       "telegram_core_fact": "iM금융은 27일 올해 1~3분기 누적 지배주주지분 당기순이익이 4163억원으로 전년 동기보다 3.6% 감소했다고 밝혔다.",
       "title": "iM금융, 순익 3.6% 감소에도 건전성 개선⋯“RWA 성장 관리” [종합]"
+    },
+    "link:37215af04c9e698d03b0f58e": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029110153527",
+      "source": "연합뉴스",
+      "source_body_digest": "e4d184948a5ea0ace8d0d6fc9b396a6e8d30a41c1542aa11e4e262fdb05c16aa",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 6년만에 매출 '후진'…연 판매목표 400만대로 낮춰(종합2보) | 연합뉴스",
+      "telegram_core_fact": "현대차가 3분기 파업에 따른 생산 차질과 글로벌 수요 감소 등 여파로 매출이 감소했다.",
+      "title": "현대차, 6년만에 매출 '후진'…연 판매목표 400만대로 낮춰(종합2보) | 연합뉴스"
     },
     "link:3754a6f5b2c661122d2c38d7": {
       "first_seen_kst": "2026-10-25T16:42:43+09:00",
@@ -378682,6 +379085,31 @@
       "telegram_core_fact": "안 연구원은 \"밸류에이션(실적대비 주가 수준), 주주환원수익률, 증시 거래대금 회전율 등을 통해 펀더멘털(기초체력)에 기반한 주가가 바닥권에 충분히 가까워졌음을 추론해볼 수 있다\"며 \"향후 증시와 거래대금 회전율이 재상승하는 모습을 보인다면 반등을 기대해볼 수 있다\"고 말했다.",
       "title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\""
     },
+    "link:74bab95c7ec3715113e4b015": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641876",
+      "source": "이투데이",
+      "source_body_digest": "0596948f341b7f40533f88781f15bfce82ad98fe2fc8a2648dfd206b5c7fe45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e2924505b0c8c14771c7d1b3eef5eec37b702432dc922a7ebe84973ca4605",
+      "source_fact_keys": [
+        "source_fact:v1:4038e7b78da775ad8a7b8249887fdd8d7171325394bfed854d4a227293f32225",
+        "source_fact:v1:453597e956ff705c143eab520264964c1040da58d9e7bb19d9ad1aee4589a982",
+        "source_fact:v1:57a57cfccc50cf505164fd0ba2ac8144a9ca78dced14640e7879895daaa52f32",
+        "source_fact:v1:5afe78a5369c96b3eff17b9611bc058a6bc2a8c2140251bf88832b49aee0a344",
+        "source_fact:v1:8ed16fe77333d4590251d3c4aa7e57ca3588d480989308895684506ad6237616",
+        "source_fact:v1:d2a3edceda7d8c6f9ad8d9317d043846f6cd66c24a5f7dad6b052754db65e348"
+      ],
+      "source_published_kst": "2026-10-29T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’",
+      "telegram_core_fact": "국내 5대 금융지주가 올해 3분기까지 19조6000억원이 넘는 순이익을 거두며 역대 최대 실적을 기록했다.",
+      "title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’"
+    },
     "link:74c3719766d1eaf6b7e57d9a": {
       "first_seen_kst": "2026-10-29T17:41:36+09:00",
       "lanes": {
@@ -408848,6 +409276,31 @@
       "source_published_kst": "2026-10-04T06:00+09:00",
       "title": "반도체 130% 질주…자동차·철강은 제자리 [2026 증시 지형도]"
     },
+    "link:a07417ebca38f09a69783d95": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
+      "source_fact_keys": [
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
+      ],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
+    },
     "link:a07a086a2969b89931e62e58": {
       "first_seen_kst": "2026-10-21T12:08:47+09:00",
       "lanes": {
@@ -416814,6 +417267,27 @@
       "source_published_kst": "2026-10-06T12:16+09:00",
       "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
     },
+    "link:ab83c2cd959e44bad5dc3b62": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261030019600009",
+      "source": "연합뉴스",
+      "source_body_digest": "82115ea9dc4459a5c4abead707a78b920852bf41d6062d9957a3e6090dbd74bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36d0847fef936e02f2d03f6f5b67b0f163b9a50a7eae88b64d418f302ec84f72",
+      "source_fact_keys": [
+        "source_fact:v1:bcd83fe2b2bf3e90c814f0774a5fc27c8f463c91cc6dbefb5570753c20ea85fd",
+        "source_fact:v1:e87d612298e07522e5a8889f2fc3ea008bd8a0df2195fda60b03c3f6a2ed87ea"
+      ],
+      "source_published_kst": "2026-10-30T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스",
+      "telegram_core_fact": "스페이스X는 20일 3분기 실적 공시에서 분기 매출의 34.5%가 컴퓨팅 파워를 공급하는 AI 부문에 대금을 낸 단일 고객에게서 나왔다고 밝혔으나 고객 이름은 '커스토머 B'로만 적었다.",
+      "title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스"
+    },
     "link:ab86f7c4906387d2d8cf7476": {
       "first_seen_kst": "2026-10-27T08:27:48+09:00",
       "lanes": {
@@ -424341,6 +424815,31 @@
       "source_title": "TSMC, AI 훈풍에 3분기 순익 68.7% 급증…역대 최대",
       "telegram_core_fact": "일본 니혼게이자이신문(닛케이)에 따르면 TSMC는 올해 3분기 순이익이 전년비 68.7% 증가한 7630억대만달러로 집계됐다고 발표했다.",
       "title": "TSMC, AI 훈풍에 3분기 순익 68.7% 급증…역대 최대"
+    },
+    "link:b68e2c308bc34c1a9f70f9a4": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
     },
     "link:b6930decf353e2d8b3ed0924": {
       "first_seen_kst": "2026-10-08T05:17:22+09:00",
@@ -434054,6 +434553,27 @@
       "source_title": "말하는 AI가 돈 된다…일레븐랩스 기업가치 30조원 육박",
       "telegram_core_fact": "인공지능(AI) 음성 기술 기업 일레븐랩스의 기업가치가 220억 달러(약 29조7000억원)로 평가됐다. 일레븐랩스는 기업가치를 220억 달러로 평가한 3억 달러(약 4050억원) 임직원 지분 공개매수를 최근 마무리했다고 12일 밝혔다.",
       "title": "말하는 AI가 돈 된다…일레븐랩스 기업가치 30조원 육박"
+    },
+    "link:c49778fcfe06b6f6598c64cb": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029149851527",
+      "source": "연합뉴스",
+      "source_body_digest": "71a241d5bba2a8040b956043dedc28a76d6ab97dff43d972c7a901c60af6da8b",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3b3f7706f88e7acbd19d825dc17187e714014d22f792b38fcde5501a4f8beeba",
+      "source_fact_identity": "source_facts:v1:a8c40802655f14f8d55d0e648619ee1bb57122ec933fa2a7457925f61b964256",
+      "source_fact_keys": [
+        "source_fact:v1:0f4cf8b6b15ee24677e243a0a767fe824fb8622fd935f73d787ade6de1790172",
+        "source_fact:v1:8d21d635ba4a288f5d7253056d97d58dbe6c90dcf1b1d8b875a729727b7928ce"
+      ],
+      "source_published_kst": "2026-10-29T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "KB증권이 연결 기준 올해 3분기 영업이익 3천810억원으로 전년비 69.1% 증가한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스"
     },
     "link:c49843d24be5d2026b340a7e": {
       "first_seen_kst": "2026-09-17T19:09:57+09:00",
@@ -511838,6 +512358,27 @@
       "telegram_core_fact": "정부는 인허가·착공·분양·입주 등 주택공급 단계별 정보와 공급계획·실적, 정책 소식, 분양·임대 정보를 제공하는 디지털 상황판도 구축할 계획이다.",
       "title": "정부, 월 2회 주택공급 상황 공개…수도권 착공 물량 목표의 37% 그쳐"
     },
+    "original:397d9585e578b5da0debe644": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261030019600009",
+      "source": "연합뉴스",
+      "source_body_digest": "82115ea9dc4459a5c4abead707a78b920852bf41d6062d9957a3e6090dbd74bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36d0847fef936e02f2d03f6f5b67b0f163b9a50a7eae88b64d418f302ec84f72",
+      "source_fact_keys": [
+        "source_fact:v1:bcd83fe2b2bf3e90c814f0774a5fc27c8f463c91cc6dbefb5570753c20ea85fd",
+        "source_fact:v1:e87d612298e07522e5a8889f2fc3ea008bd8a0df2195fda60b03c3f6a2ed87ea"
+      ],
+      "source_published_kst": "2026-10-30T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스",
+      "telegram_core_fact": "스페이스X는 20일 3분기 실적 공시에서 분기 매출의 34.5%가 컴퓨팅 파워를 공급하는 AI 부문에 대금을 낸 단일 고객에게서 나왔다고 밝혔으나 고객 이름은 '커스토머 B'로만 적었다.",
+      "title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스"
+    },
     "original:39828ea9846634db9fb4c1ca": {
       "first_seen_kst": "2026-10-14T00:59:56+09:00",
       "lanes": {
@@ -560308,6 +560849,32 @@
       "telegram_core_fact": "인수 목표는 JYP 발행주식의 25~50%로, 이는 15%대인 박진영 창의성총괄책임자와 특수관계인 지분을 합한 비율을 뛰어넘는 수량이다. JYP엔터테인먼트는 26일 밤 입장문을 통해 \"금일 보도된 건에 대하여 '당사 지분 인수 관련 제안받은 바 없다'로 말씀드린다\"고 밝혔다.",
       "title": "JYP 주가 14% 폭등시킨 '日투자사 지분 인수설'... JYP \"제안 받은 바 없다\""
     },
+    "original:8111e0ba4b52be49c09f3cc5": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
+    },
     "original:811bfe859b5aec8fe4c836d2": {
       "first_seen_kst": "2026-10-20T04:27:47+09:00",
       "lanes": {
@@ -571087,6 +571654,24 @@
       "source_title": "디티에스 \"코스닥 상장으로 글로벌 열 관리 솔루션 리더 도약\"",
       "telegram_core_fact": "회사는 상장 이후 LNG 설비 증설과 발전 인프라 투자 확대에 맞춰 주력사업 수주를 늘린다는 목표다.",
       "title": "디티에스 \"코스닥 상장으로 글로벌 열 관리 솔루션 리더 도약\""
+    },
+    "original:90e85ac2a5d95f660383ef36": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029110153527",
+      "source": "연합뉴스",
+      "source_body_digest": "e4d184948a5ea0ace8d0d6fc9b396a6e8d30a41c1542aa11e4e262fdb05c16aa",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 6년만에 매출 '후진'…연 판매목표 400만대로 낮춰(종합2보) | 연합뉴스",
+      "telegram_core_fact": "현대차가 3분기 파업에 따른 생산 차질과 글로벌 수요 감소 등 여파로 매출이 감소했다.",
+      "title": "현대차, 6년만에 매출 '후진'…연 판매목표 400만대로 낮춰(종합2보) | 연합뉴스"
     },
     "original:90f1c1a59cbc038aa3e18772": {
       "first_seen_kst": "2026-10-03T19:42:44+09:00",
@@ -586653,6 +587238,31 @@
       "source_title": "한화시스템, 3.4조 투자 여력 확보…\"초고해상도 위성·국방AI 정조준\"",
       "telegram_core_fact": "한화시스템이 한화오션 지분 전량 유동화를 통해 초고해상도 위성과 국방 인공지능(AI) 등 미래 성장 사업 확대에 나선다.",
       "title": "한화시스템, 3.4조 투자 여력 확보…\"초고해상도 위성·국방AI 정조준\""
+    },
+    "original:a7cba06ffad28dc5168b5db9": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641876",
+      "source": "이투데이",
+      "source_body_digest": "0596948f341b7f40533f88781f15bfce82ad98fe2fc8a2648dfd206b5c7fe45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e2924505b0c8c14771c7d1b3eef5eec37b702432dc922a7ebe84973ca4605",
+      "source_fact_keys": [
+        "source_fact:v1:4038e7b78da775ad8a7b8249887fdd8d7171325394bfed854d4a227293f32225",
+        "source_fact:v1:453597e956ff705c143eab520264964c1040da58d9e7bb19d9ad1aee4589a982",
+        "source_fact:v1:57a57cfccc50cf505164fd0ba2ac8144a9ca78dced14640e7879895daaa52f32",
+        "source_fact:v1:5afe78a5369c96b3eff17b9611bc058a6bc2a8c2140251bf88832b49aee0a344",
+        "source_fact:v1:8ed16fe77333d4590251d3c4aa7e57ca3588d480989308895684506ad6237616",
+        "source_fact:v1:d2a3edceda7d8c6f9ad8d9317d043846f6cd66c24a5f7dad6b052754db65e348"
+      ],
+      "source_published_kst": "2026-10-29T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’",
+      "telegram_core_fact": "국내 5대 금융지주가 올해 3분기까지 19조6000억원이 넘는 순이익을 거두며 역대 최대 실적을 기록했다.",
+      "title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’"
     },
     "original:a7d85eed83ebc6b6e77bcab9": {
       "first_seen_kst": "2026-10-13T12:38:24+09:00",
@@ -608895,6 +609505,27 @@
       "telegram_core_fact": "한국이 무기 완제품의 가격·납기 경쟁력을 바탕으로 수출 시장을 확대하는 사이 일본은 정밀화학과 반도체, 항공엔진 등 핵심 기술을 무기로 글로벌 공급망 내 입지를 넓히고 있다. 한일 방산 경쟁이 완제품을 넘어 핵심 기술과 공급망 확보 경쟁으로 확대될 것이란 전망이 나온다.",
       "title": "日 방산 소부장 공략 가속⋯K방산 공급망 경쟁력 시험대"
     },
+    "original:ca85d200ed6553d1f397ad92": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029149851527",
+      "source": "연합뉴스",
+      "source_body_digest": "71a241d5bba2a8040b956043dedc28a76d6ab97dff43d972c7a901c60af6da8b",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3b3f7706f88e7acbd19d825dc17187e714014d22f792b38fcde5501a4f8beeba",
+      "source_fact_identity": "source_facts:v1:a8c40802655f14f8d55d0e648619ee1bb57122ec933fa2a7457925f61b964256",
+      "source_fact_keys": [
+        "source_fact:v1:0f4cf8b6b15ee24677e243a0a767fe824fb8622fd935f73d787ade6de1790172",
+        "source_fact:v1:8d21d635ba4a288f5d7253056d97d58dbe6c90dcf1b1d8b875a729727b7928ce"
+      ],
+      "source_published_kst": "2026-10-29T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "KB증권이 연결 기준 올해 3분기 영업이익 3천810억원으로 전년비 69.1% 증가한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스"
+    },
     "original:ca87b2c94c95cb2ae5e4fe5d": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -625944,6 +626575,31 @@
       "source_published_kst": "2026-10-06T17:10+09:00",
       "title": "반도체 기판 전쟁 다음은 유리…삼성전기, 내년말 생산라인 가동 목표"
     },
+    "original:e3723abae63b52497548e147": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
+      "source_fact_keys": [
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
+      ],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
+    },
     "original:e372baeeac1c0174a309961a": {
       "first_seen_kst": "2026-10-21T07:24:03+09:00",
       "lanes": {
@@ -632002,6 +632658,31 @@
       "source_title": "LS일렉트릭, 3분기 영업익 전년비 131.7%↑ '사상 최대'…100분기 연속 흑자",
       "telegram_core_fact": "LS일렉트릭은 올해 3분기 매출 1조8778억원, 영업이익 2335억원을 기록했다고 21일 공시했다.",
       "title": "LS일렉트릭, 3분기 영업익 전년비 131.7%↑ '사상 최대'…100분기 연속 흑자"
+    },
+    "original:ec8d5a8a302ad24f66d76e33": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
     },
     "original:ec9129c6d6c214cff69da0ab": {
       "first_seen_kst": "2026-10-17T16:01:49+09:00",
@@ -646119,6 +646800,32 @@
       "source_title": "삼성전기, 엔비디아 손잡고 세종·부산에 전용라인 구축",
       "telegram_core_fact": "엔비디아는 AI 반도체 양산에 필수적인 최첨단 기판 공급망을 선제적으로 확보해 글로벌 AI 인프라 병목을 해소하고, 삼성전기는 기술 진입장벽이 가장 높은 고부가가치 AI 반도체 패키지 기판 사업을 본격 확대해 글로벌 시장 지배력을 공고히 한다는 구상이다.",
       "title": "삼성전기, 엔비디아 손잡고 세종·부산에 전용라인 구축"
+    },
+    "source_fact:00a30754429dc0d05f1d66ae": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
     },
     "source_fact:00a38795a99bba74a6e4c7ba": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -669554,6 +670261,32 @@
       "source_title": "덱스컴, 3분기 매출 13억 달러 11%↑·자사주 10억 매입",
       "telegram_core_fact": "덱스컴(DXCM)이 3분기(9월 30일 종료) 매출액이 13억4450만 달러로 전년비 11% 증가했고, 일반회계기준(GAAP) 영업이익은 3억2720만 달러로 34.9% 늘었다고 10월 29일 발표했다.",
       "title": "덱스컴, 3분기 매출 13억 달러 11%↑·자사주 10억 매입"
+    },
+    "source_fact:08fcf694554ef914cd0cfc54": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
     },
     "source_fact:08fd27fa7fb3f2962d3d129b": {
       "first_seen_kst": "2026-10-23T03:32:06+09:00",
@@ -708410,6 +709143,31 @@
       "source_title": "삼성바이오로직스 노조, 26일 총파업 연기…법원 결정에 전략 수정",
       "telegram_core_fact": "업계에 따르면 삼성바이오로직스 상생노동조합은 이달 26일부터 3주간 진행하기로 했던 2차 총파업을 보류하고 일정을 재조정하기로 했다. 법원의 결정으로 핵심 생산공정의 가동을 중단하는 방식의 파업이 제한되면서 노조의 협상 전략에도 변화가 불가피해졌다.",
       "title": "삼성바이오로직스 노조, 26일 총파업 연기…법원 결정에 전략 수정"
+    },
+    "source_fact:16e602912c6454e0638e7a14": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
     },
     "source_fact:16ea4ff14a14782fe31a512b": {
       "first_seen_kst": "2026-10-22T21:42:35+09:00",
@@ -758341,6 +759099,31 @@
       "source_title": "“한화시스템, 본업 성장 지속…UAE 사업 리레이팅 기대”",
       "telegram_core_fact": "백종민 유안타증권 연구원은 “한화시스템의 3분기 연결 매출액은 전년비 30.1% 증가한 8316억원, 영업이익은 60% 늘어난 991억원을 기록했다”며 “본업의 견조한 성장세가 확인됐다”고 밝혔다.",
       "title": "“한화시스템, 본업 성장 지속…UAE 사업 리레이팅 기대”"
+    },
+    "source_fact:279e4a4d490646229669a812": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
+      "source_fact_keys": [
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
+      ],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
     },
     "source_fact:27a14596dad9e8f59a088779": {
       "first_seen_kst": "2026-10-19T09:33:44+09:00",
@@ -812401,6 +813184,31 @@
       "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
       "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
     },
+    "source_fact:3ae75b96b9095c5e8bb04190": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
+      "source_fact_keys": [
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
+      ],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
+    },
     "source_fact:3aea33b847ee4a62056bb05b": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -853929,6 +854737,31 @@
       "telegram_core_fact": "주요 PC 기업은 메모리 제조사와 장기공급계약(LTA)을 체결, 기업소비자간거래(B2C)용 PC 판매 위축에도 상대적으로 수요가 견고한 기업간거래(B2B)용 PC 공급을 확대해 수익성을 확보한다는 전략이다.",
       "title": "PC, 메모리 대란 한숨 돌렸다…내년 'AI B2B' 승부수"
     },
+    "source_fact:491491fc5b4f5c7521d6d9bc": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641876",
+      "source": "이투데이",
+      "source_body_digest": "0596948f341b7f40533f88781f15bfce82ad98fe2fc8a2648dfd206b5c7fe45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e2924505b0c8c14771c7d1b3eef5eec37b702432dc922a7ebe84973ca4605",
+      "source_fact_keys": [
+        "source_fact:v1:4038e7b78da775ad8a7b8249887fdd8d7171325394bfed854d4a227293f32225",
+        "source_fact:v1:453597e956ff705c143eab520264964c1040da58d9e7bb19d9ad1aee4589a982",
+        "source_fact:v1:57a57cfccc50cf505164fd0ba2ac8144a9ca78dced14640e7879895daaa52f32",
+        "source_fact:v1:5afe78a5369c96b3eff17b9611bc058a6bc2a8c2140251bf88832b49aee0a344",
+        "source_fact:v1:8ed16fe77333d4590251d3c4aa7e57ca3588d480989308895684506ad6237616",
+        "source_fact:v1:d2a3edceda7d8c6f9ad8d9317d043846f6cd66c24a5f7dad6b052754db65e348"
+      ],
+      "source_published_kst": "2026-10-29T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’",
+      "telegram_core_fact": "국내 5대 금융지주가 올해 3분기까지 19조6000억원이 넘는 순이익을 거두며 역대 최대 실적을 기록했다.",
+      "title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’"
+    },
     "source_fact:491633255689032bf513536f": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
       "lanes": {
@@ -884085,6 +884918,32 @@
       "source_title": "메모리 대호황 올라탄 삼성…엔비디아 넘어 영업익 세계1위 눈앞 | 연합뉴스",
       "telegram_core_fact": "이는 전 세계적인 인공지능(AI) 인프라 투자 확대로 D램과 낸드 등 메모리 전반의 공급이 부족해지며 가격 오름세를 이어간 영향으로 해석된다.",
       "title": "메모리 대호황 올라탄 삼성…엔비디아 넘어 영업익 세계1위 눈앞 | 연합뉴스"
+    },
+    "source_fact:53722a272226c39a76d28cc2": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
     },
     "source_fact:5377eeaad2e04c937a3cdf89": {
       "first_seen_kst": "2026-10-21T03:15:13+09:00",
@@ -917667,6 +918526,31 @@
       ],
       "source_published_kst": "2026-10-06T06:40+09:00",
       "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
+    },
+    "source_fact:5e7be732d49b56dd8ebaf6fe": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
     },
     "source_fact:5e7da7186a27411671e8f152": {
       "first_seen_kst": "2026-10-22T12:56:15+09:00",
@@ -952660,6 +953544,32 @@
       "telegram_core_fact": "함펠 총괄은 “한국 고객들이 최신 도미노 기술을 기반으로 성공적인 디지털 전환과 AI 도입을 추진할 수 있도록 본사 차원의 관심과 지원을 지속적으로 확대할 계획”이라며 “KDUG 커뮤니티 활성화와 함께 국내 파트너들과의 기술 협력을 강화해 한국 고객들의 요구에 보다 긴밀하게 대응하겠다”고 말했다.",
       "title": "HCL소프트웨어, 소버린 AI로 한국 공략…“도미노 고객·파트너 지원 확대”"
     },
+    "source_fact:6ac842e84a52ccbc98e569f7": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
+    },
     "source_fact:6acc0eab25036df000d03756": {
       "first_seen_kst": "2026-10-29T14:00:13+09:00",
       "lanes": {
@@ -966145,6 +967055,27 @@
       "source_published_kst": "2026-10-06T06:31+09:00",
       "title": "GKL, 해외서 고객 접촉 논란…\"현지법·중국 형법 저촉 소지\" | 연합뉴스"
     },
+    "source_fact:6f7cc58d58fc388e534c14d8": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029149851527",
+      "source": "연합뉴스",
+      "source_body_digest": "71a241d5bba2a8040b956043dedc28a76d6ab97dff43d972c7a901c60af6da8b",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3b3f7706f88e7acbd19d825dc17187e714014d22f792b38fcde5501a4f8beeba",
+      "source_fact_identity": "source_facts:v1:a8c40802655f14f8d55d0e648619ee1bb57122ec933fa2a7457925f61b964256",
+      "source_fact_keys": [
+        "source_fact:v1:0f4cf8b6b15ee24677e243a0a767fe824fb8622fd935f73d787ade6de1790172",
+        "source_fact:v1:8d21d635ba4a288f5d7253056d97d58dbe6c90dcf1b1d8b875a729727b7928ce"
+      ],
+      "source_published_kst": "2026-10-29T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "KB증권이 연결 기준 올해 3분기 영업이익 3천810억원으로 전년비 69.1% 증가한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스"
+    },
     "source_fact:6f7d09af9f3c52ef9e6c8754": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -976115,6 +977046,31 @@
       "telegram_core_fact": "8월 핵심 계열사 레이어가 모회사인 어센틱브랜즈코리아를 흡수합병한 데 이어, 이번에는 간판 브랜드 마뗑킴이 모회사인 하고하우스를 역합병하기로 결정했다.",
       "title": "대명화학의 기묘한 패션 재편…레이어 이어 마뗑킴도 ‘모회사 역합병’"
     },
+    "source_fact:731339939c941570ebee1ae8": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641876",
+      "source": "이투데이",
+      "source_body_digest": "0596948f341b7f40533f88781f15bfce82ad98fe2fc8a2648dfd206b5c7fe45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e2924505b0c8c14771c7d1b3eef5eec37b702432dc922a7ebe84973ca4605",
+      "source_fact_keys": [
+        "source_fact:v1:4038e7b78da775ad8a7b8249887fdd8d7171325394bfed854d4a227293f32225",
+        "source_fact:v1:453597e956ff705c143eab520264964c1040da58d9e7bb19d9ad1aee4589a982",
+        "source_fact:v1:57a57cfccc50cf505164fd0ba2ac8144a9ca78dced14640e7879895daaa52f32",
+        "source_fact:v1:5afe78a5369c96b3eff17b9611bc058a6bc2a8c2140251bf88832b49aee0a344",
+        "source_fact:v1:8ed16fe77333d4590251d3c4aa7e57ca3588d480989308895684506ad6237616",
+        "source_fact:v1:d2a3edceda7d8c6f9ad8d9317d043846f6cd66c24a5f7dad6b052754db65e348"
+      ],
+      "source_published_kst": "2026-10-29T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’",
+      "telegram_core_fact": "국내 5대 금융지주가 올해 3분기까지 19조6000억원이 넘는 순이익을 거두며 역대 최대 실적을 기록했다.",
+      "title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’"
+    },
     "source_fact:7313ee8f843fe17abed1ee73": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
       "lanes": {
@@ -979917,6 +980873,31 @@
       ],
       "source_published_kst": "2026-10-06T10:23+09:00",
       "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
+    },
+    "source_fact:74619424e21007d896fe9f3a": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641876",
+      "source": "이투데이",
+      "source_body_digest": "0596948f341b7f40533f88781f15bfce82ad98fe2fc8a2648dfd206b5c7fe45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e2924505b0c8c14771c7d1b3eef5eec37b702432dc922a7ebe84973ca4605",
+      "source_fact_keys": [
+        "source_fact:v1:4038e7b78da775ad8a7b8249887fdd8d7171325394bfed854d4a227293f32225",
+        "source_fact:v1:453597e956ff705c143eab520264964c1040da58d9e7bb19d9ad1aee4589a982",
+        "source_fact:v1:57a57cfccc50cf505164fd0ba2ac8144a9ca78dced14640e7879895daaa52f32",
+        "source_fact:v1:5afe78a5369c96b3eff17b9611bc058a6bc2a8c2140251bf88832b49aee0a344",
+        "source_fact:v1:8ed16fe77333d4590251d3c4aa7e57ca3588d480989308895684506ad6237616",
+        "source_fact:v1:d2a3edceda7d8c6f9ad8d9317d043846f6cd66c24a5f7dad6b052754db65e348"
+      ],
+      "source_published_kst": "2026-10-29T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’",
+      "telegram_core_fact": "국내 5대 금융지주가 올해 3분기까지 19조6000억원이 넘는 순이익을 거두며 역대 최대 실적을 기록했다.",
+      "title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’"
     },
     "source_fact:7461d8faddc44edd96c1a44f": {
       "first_seen_kst": "2026-10-17T05:25:35+09:00",
@@ -989209,6 +990190,27 @@
       "source_title": "[TODAY애플]3Q 스마트폰 점유율 22%로 확대…주가 상승",
       "telegram_core_fact": "벤징가에 따르면 시장조사업체 카운터포인트리서치는 애플의 3분기 글로벌 스마트폰 시장점유율이 22%로 확대됐다고 밝혔다.",
       "title": "[TODAY애플]3Q 스마트폰 점유율 22%로 확대…주가 상승"
+    },
+    "source_fact:77ac2449004230d2b00f0552": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261030019600009",
+      "source": "연합뉴스",
+      "source_body_digest": "82115ea9dc4459a5c4abead707a78b920852bf41d6062d9957a3e6090dbd74bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36d0847fef936e02f2d03f6f5b67b0f163b9a50a7eae88b64d418f302ec84f72",
+      "source_fact_keys": [
+        "source_fact:v1:bcd83fe2b2bf3e90c814f0774a5fc27c8f463c91cc6dbefb5570753c20ea85fd",
+        "source_fact:v1:e87d612298e07522e5a8889f2fc3ea008bd8a0df2195fda60b03c3f6a2ed87ea"
+      ],
+      "source_published_kst": "2026-10-30T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스",
+      "telegram_core_fact": "스페이스X는 20일 3분기 실적 공시에서 분기 매출의 34.5%가 컴퓨팅 파워를 공급하는 AI 부문에 대금을 낸 단일 고객에게서 나왔다고 밝혔으나 고객 이름은 '커스토머 B'로만 적었다.",
+      "title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스"
     },
     "source_fact:77ac8cfedd91c1d9fe434a53": {
       "first_seen_kst": "2026-10-20T09:12:50+09:00",
@@ -1000014,6 +1001016,31 @@
       "telegram_core_fact": "중국 외골격 로봇 기업 지케 테크놀로지(极?科技)는 70여개 국가에 제품을 공급하고 있으며, B라운드 투자에서 앤트그룹과 메이퇀룽주, 세쿼이아차이나 등의 투자를 유치했다. 시장조사업체 IDC에 따르면 2025년 중국 외골격 로봇 출하량은 약 2만6000대로 집계됐다.",
       "title": "[테크 차이나] 일상 속으로 파고드는 외골격 로봇…소비자용 제품 중심으로 시장 확대"
     },
+    "source_fact:7b2c4f0cac333da2f5658037": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641876",
+      "source": "이투데이",
+      "source_body_digest": "0596948f341b7f40533f88781f15bfce82ad98fe2fc8a2648dfd206b5c7fe45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e2924505b0c8c14771c7d1b3eef5eec37b702432dc922a7ebe84973ca4605",
+      "source_fact_keys": [
+        "source_fact:v1:4038e7b78da775ad8a7b8249887fdd8d7171325394bfed854d4a227293f32225",
+        "source_fact:v1:453597e956ff705c143eab520264964c1040da58d9e7bb19d9ad1aee4589a982",
+        "source_fact:v1:57a57cfccc50cf505164fd0ba2ac8144a9ca78dced14640e7879895daaa52f32",
+        "source_fact:v1:5afe78a5369c96b3eff17b9611bc058a6bc2a8c2140251bf88832b49aee0a344",
+        "source_fact:v1:8ed16fe77333d4590251d3c4aa7e57ca3588d480989308895684506ad6237616",
+        "source_fact:v1:d2a3edceda7d8c6f9ad8d9317d043846f6cd66c24a5f7dad6b052754db65e348"
+      ],
+      "source_published_kst": "2026-10-29T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’",
+      "telegram_core_fact": "국내 5대 금융지주가 올해 3분기까지 19조6000억원이 넘는 순이익을 거두며 역대 최대 실적을 기록했다.",
+      "title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’"
+    },
     "source_fact:7b2cec4dccc8ac81cc3c3510": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -1002025,6 +1003052,31 @@
       "source_title": "박수영 “한전에 2036년까지 46조 혈세 지원…연도별 계획 없이 예산 편성”",
       "telegram_core_fact": "사업별로는 △한국전력공사 출자 5000억원 △전기요금 복지·특례 지원 3500억원 △수요유치형 변전소 구축 658억원 △해상풍력 공동접속설비 196억원 △지중화 지원 27억원 △ESS 설치·보급 24억원이다.",
       "title": "박수영 “한전에 2036년까지 46조 혈세 지원…연도별 계획 없이 예산 편성”"
+    },
+    "source_fact:7be392dad1addbd08f7f8d28": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
     },
     "source_fact:7be4262144d47c75cf15808b": {
       "first_seen_kst": "2026-10-14T02:21:39+09:00",
@@ -1047326,6 +1048378,31 @@
       "telegram_core_fact": "피팩-글래드스톤 파이낸셜(PGC)이 3분기 보통주 귀속 순이익 1850만 달러, 희석 주당순이익(EPS) 0.99달러를 기록해 전년 동기(0.54달러) 대비 83% 증가했다고 10월 27일 발표했다.",
       "title": "피팩-글래드스톤 파이낸셜, 3분기 희석 EPS 0.99달러..전년비 83% 증가"
     },
+    "source_fact:8c688a4f8915d6a8473af316": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641876",
+      "source": "이투데이",
+      "source_body_digest": "0596948f341b7f40533f88781f15bfce82ad98fe2fc8a2648dfd206b5c7fe45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e2924505b0c8c14771c7d1b3eef5eec37b702432dc922a7ebe84973ca4605",
+      "source_fact_keys": [
+        "source_fact:v1:4038e7b78da775ad8a7b8249887fdd8d7171325394bfed854d4a227293f32225",
+        "source_fact:v1:453597e956ff705c143eab520264964c1040da58d9e7bb19d9ad1aee4589a982",
+        "source_fact:v1:57a57cfccc50cf505164fd0ba2ac8144a9ca78dced14640e7879895daaa52f32",
+        "source_fact:v1:5afe78a5369c96b3eff17b9611bc058a6bc2a8c2140251bf88832b49aee0a344",
+        "source_fact:v1:8ed16fe77333d4590251d3c4aa7e57ca3588d480989308895684506ad6237616",
+        "source_fact:v1:d2a3edceda7d8c6f9ad8d9317d043846f6cd66c24a5f7dad6b052754db65e348"
+      ],
+      "source_published_kst": "2026-10-29T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’",
+      "telegram_core_fact": "국내 5대 금융지주가 올해 3분기까지 19조6000억원이 넘는 순이익을 거두며 역대 최대 실적을 기록했다.",
+      "title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’"
+    },
     "source_fact:8c6a42bcf571316b61949a24": {
       "first_seen_kst": "2026-10-17T04:08:20+09:00",
       "lanes": {
@@ -1064277,6 +1065354,31 @@
       "telegram_core_fact": "프런티어 인공지능(AI) 개발사 앤트로픽이 올해 상반기 807억달러(약 107조원)의 순손실을 기록했다.",
       "title": "앤트로픽, 상반기 807억달러 순손실…AI인프라 청구서 압박"
     },
+    "source_fact:9240bf6451336cd2b55c4e7c": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641876",
+      "source": "이투데이",
+      "source_body_digest": "0596948f341b7f40533f88781f15bfce82ad98fe2fc8a2648dfd206b5c7fe45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e2924505b0c8c14771c7d1b3eef5eec37b702432dc922a7ebe84973ca4605",
+      "source_fact_keys": [
+        "source_fact:v1:4038e7b78da775ad8a7b8249887fdd8d7171325394bfed854d4a227293f32225",
+        "source_fact:v1:453597e956ff705c143eab520264964c1040da58d9e7bb19d9ad1aee4589a982",
+        "source_fact:v1:57a57cfccc50cf505164fd0ba2ac8144a9ca78dced14640e7879895daaa52f32",
+        "source_fact:v1:5afe78a5369c96b3eff17b9611bc058a6bc2a8c2140251bf88832b49aee0a344",
+        "source_fact:v1:8ed16fe77333d4590251d3c4aa7e57ca3588d480989308895684506ad6237616",
+        "source_fact:v1:d2a3edceda7d8c6f9ad8d9317d043846f6cd66c24a5f7dad6b052754db65e348"
+      ],
+      "source_published_kst": "2026-10-29T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’",
+      "telegram_core_fact": "국내 5대 금융지주가 올해 3분기까지 19조6000억원이 넘는 순이익을 거두며 역대 최대 실적을 기록했다.",
+      "title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’"
+    },
     "source_fact:9241af16abb2adc6829ee315": {
       "first_seen_kst": "2026-10-30T05:43:19+09:00",
       "lanes": {
@@ -1071351,6 +1072453,31 @@
       ],
       "source_published_kst": "2026-10-06T09:07+09:00",
       "title": "사우디 연합군, 주요 지역 탈환…후티는 사우디 공항 공습 반격 | 연합뉴스"
+    },
+    "source_fact:94fef11db8c38f5a9ceabeaf": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
+      "source_fact_keys": [
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
+      ],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
     },
     "source_fact:94ff2702e8d4fbb1bd4a2282": {
       "first_seen_kst": "2026-10-20T20:22:43+09:00",
@@ -1096466,6 +1097593,27 @@
       "source_title": "고려아연, 영풍·MBK 상대 1조원대 손배소 잇단 승소…영풍·MBK “항소”",
       "telegram_core_fact": "자사주 공개매수와 ㈜한화 지분 매각을 둘러싸고 영풍과 MBK가 최윤범 회장 등 고려아연 경영진에게 제기한 총 1조원대 배상 청구가 모두 1심서 받아들여지지 않았다. 고려아연 이사회는 같은 해 10월 이에 맞서는 자사주 공개매수를 결의했고, 이후 주당 89만원에 자사주를 취득했다.",
       "title": "고려아연, 영풍·MBK 상대 1조원대 손배소 잇단 승소…영풍·MBK “항소”"
+    },
+    "source_fact:9dab349fc56477146b084ed3": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261030019600009",
+      "source": "연합뉴스",
+      "source_body_digest": "82115ea9dc4459a5c4abead707a78b920852bf41d6062d9957a3e6090dbd74bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36d0847fef936e02f2d03f6f5b67b0f163b9a50a7eae88b64d418f302ec84f72",
+      "source_fact_keys": [
+        "source_fact:v1:bcd83fe2b2bf3e90c814f0774a5fc27c8f463c91cc6dbefb5570753c20ea85fd",
+        "source_fact:v1:e87d612298e07522e5a8889f2fc3ea008bd8a0df2195fda60b03c3f6a2ed87ea"
+      ],
+      "source_published_kst": "2026-10-30T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스",
+      "telegram_core_fact": "스페이스X는 20일 3분기 실적 공시에서 분기 매출의 34.5%가 컴퓨팅 파워를 공급하는 AI 부문에 대금을 낸 단일 고객에게서 나왔다고 밝혔으나 고객 이름은 '커스토머 B'로만 적었다.",
+      "title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스"
     },
     "source_fact:9db004f65b234a26a3157194": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -1163145,6 +1164293,32 @@
       "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 문금주 더불어민주당 의원은 12일 해수부 국정감사에서 자급률 목표 하향 조정을 비판하며 국내 수산물 생산 확대를 위한 정책 전환을 촉구했다.",
       "title": "해수부 수산물 자급률 목표 하향…\"수입 의존 심화 우려\""
     },
+    "source_fact:b475b26bfd0b64d6a5d61221": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
+    },
     "source_fact:b4797f2a9245723fd6319632": {
       "first_seen_kst": "2026-10-25T09:29:31+09:00",
       "lanes": {
@@ -1173596,6 +1174770,31 @@
       "telegram_core_fact": "너나위는 미국 10년물 국채금리가 장중 5.36%, 30년물은 5.73%까지 올랐다며 \"둘 다 2002년 이후 24년 만에 최고 수준이다\"라고 말했다.",
       "title": "\"미국 국채금리 사상 최고치\"…미국 국채금리 급등이 바꿀 경제 흐름"
     },
+    "source_fact:b8434214ba5a1b3e9a5b93cf": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
+      "source_fact_keys": [
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
+      ],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
+    },
     "source_fact:b84373600bc5ba9525413ef7": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -1182415,6 +1183614,27 @@
       "source_title": "한미반도체, 美 실리콘밸리에 법인 설립… 곽동신 회장 “ 고객 밀착 기술 지원”",
       "telegram_core_fact": "곽동신 한미반도체 회장은 \"미국은 세계 AI 산업과 첨단 반도체 기술을 이끄는 중요한 시장\"이라며 \"한미USA는 미국 현지 고객에게 밀착 기술 지원을 제공하고, 글로벌 반도체 기업들과 협력을 확대해 세계 시장에서 경쟁력을 더욱 강화해 나가겠다\"고 말했다.",
       "title": "한미반도체, 美 실리콘밸리에 법인 설립… 곽동신 회장 “ 고객 밀착 기술 지원”"
+    },
+    "source_fact:bb4e5c4f2e74247f7c6c2894": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029149851527",
+      "source": "연합뉴스",
+      "source_body_digest": "71a241d5bba2a8040b956043dedc28a76d6ab97dff43d972c7a901c60af6da8b",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3b3f7706f88e7acbd19d825dc17187e714014d22f792b38fcde5501a4f8beeba",
+      "source_fact_identity": "source_facts:v1:a8c40802655f14f8d55d0e648619ee1bb57122ec933fa2a7457925f61b964256",
+      "source_fact_keys": [
+        "source_fact:v1:0f4cf8b6b15ee24677e243a0a767fe824fb8622fd935f73d787ade6de1790172",
+        "source_fact:v1:8d21d635ba4a288f5d7253056d97d58dbe6c90dcf1b1d8b875a729727b7928ce"
+      ],
+      "source_published_kst": "2026-10-29T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "KB증권이 연결 기준 올해 3분기 영업이익 3천810억원으로 전년비 69.1% 증가한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스"
     },
     "source_fact:bb52881018cc7766b577443e": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -1193976,6 +1195196,31 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
+    },
+    "source_fact:bf8690fb69e3c1e5a4eec92c": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
     },
     "source_fact:bf8837dcfe760b1333f636be": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -1210744,6 +1211989,32 @@
       "source_title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\"",
       "telegram_core_fact": "포럼 사무국인 한국정보통신진흥협회(KAIT)는 앞으로도 '디지털 인사이트 포럼'을 통해 AI·디지털 산업의 주요 기술·정책 이슈를 선제적으로 발굴하고, AI 인프라 경쟁력 강화를 위한 민관 협력을 지속적으로 확대해 나갈 계획이다.",
       "title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\""
+    },
+    "source_fact:c5114f2a94669d2db4893645": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
     },
     "source_fact:c512f57d0d20dc7e65a255c5": {
       "first_seen_kst": "2026-10-17T13:39:20+09:00",
@@ -1229894,6 +1231165,31 @@
       "telegram_core_fact": "21일(현지시간) 램리서치가 발표한 실적에 따르면 2027회계연도 1분기(2026년 6월 29일~9월 27일) 매출은 82억1942만달러로 집계됐다.",
       "title": "램리서치, 분기 매출 82억달러 '사상 최대'…AI 반도체 투자에 성장"
     },
+    "source_fact:cbcf7416fc050cdecb522b26": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
+    },
     "source_fact:cbcf852edd5e44de5538fa12": {
       "first_seen_kst": "2026-10-29T15:19:06+09:00",
       "lanes": {
@@ -1237559,6 +1238855,32 @@
       "source_title": "“코스피 9000 찍자 예금 깨고 ‘반도체 ETF’에 다 걸었는데” 김 차장, 폭락 장서 생존했을까 [이연부]",
       "telegram_core_fact": "투자 상품으로는 주변의 추천을 받아 국내 반도체 관련 상장지수펀드(ETF)를 집중적으로 매수했다. 코스피 지수가 9000을 넘어 1만을 넘어선다는 국내외 경제 전문가의 전망과 달리 한때 6000초반까지 떨어졌다.",
       "title": "“코스피 9000 찍자 예금 깨고 ‘반도체 ETF’에 다 걸었는데” 김 차장, 폭락 장서 생존했을까 [이연부]"
+    },
+    "source_fact:ce88d622e3cb2d6d51559700": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
     },
     "source_fact:ce8ff7855c1936e1aaffae2b": {
       "first_seen_kst": "2026-10-21T13:57:06+09:00",
@@ -1325690,6 +1327012,31 @@
       "source_published_kst": "2026-10-06T17:33+09:00",
       "title": "위성 15기 품고 우주로 … 촘촘히 촬영해 재난막고 안보에 활용"
     },
+    "source_fact:ed38cf53a07ca814b9f11961": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
+      "source_fact_keys": [
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
+      ],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
+    },
     "source_fact:ed3b6c24e5a227d62efa07ba": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
       "lanes": {
@@ -1340928,6 +1342275,31 @@
       "source_title": "“241층 구조대 오나요?”…고점서 36% 빠진 삼성전기, 증권가 전망은",
       "telegram_core_fact": "삼성전기가 최근 글로벌 대형 기업과 인공지능(AI) 서버용 적층세라믹캐패시터(MLCC) 공급 계약을 체결하며 올해 누적 수주액이 약 3조 9000억원으로 급증했다.",
       "title": "“241층 구조대 오나요?”…고점서 36% 빠진 삼성전기, 증권가 전망은"
+    },
+    "source_fact:f29688e00d4d1110bdb978ee": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
+      "source_fact_keys": [
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
+      ],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
     },
     "source_fact:f296cfe5cc4deddaf2186979": {
       "first_seen_kst": "2026-10-16T15:46:25+09:00",
@@ -1367431,6 +1368803,31 @@
       "source_title": "오디오아이, 1500만 달러 자사주 매입 승인..내년 10월까지",
       "telegram_core_fact": "디지털 접근성 솔루션 기업 오디오아이(AEYE)가 이사회 승인에 따라 최대 1500만 달러 자사주 매입 프로그램을 도입하고, 매입 기한을 2027년 10월 18일까지로 정했다고 10월 20일 발표했다.",
       "title": "오디오아이, 1500만 달러 자사주 매입 승인..내년 10월까지"
+    },
+    "source_fact:fc5a3acfd2a96595bd503c1b": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
     },
     "source_fact:fc5f3b5856f08548b16bb912": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
@@ -1417373,6 +1418770,27 @@
       "telegram_core_fact": "정부는 인허가·착공·분양·입주 등 주택공급 단계별 정보와 공급계획·실적, 정책 소식, 분양·임대 정보를 제공하는 디지털 상황판도 구축할 계획이다.",
       "title": "정부, 월 2회 주택공급 상황 공개…수도권 착공 물량 목표의 37% 그쳐"
     },
+    "title:397d9585e578b5da0debe644": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261030019600009",
+      "source": "연합뉴스",
+      "source_body_digest": "82115ea9dc4459a5c4abead707a78b920852bf41d6062d9957a3e6090dbd74bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36d0847fef936e02f2d03f6f5b67b0f163b9a50a7eae88b64d418f302ec84f72",
+      "source_fact_keys": [
+        "source_fact:v1:bcd83fe2b2bf3e90c814f0774a5fc27c8f463c91cc6dbefb5570753c20ea85fd",
+        "source_fact:v1:e87d612298e07522e5a8889f2fc3ea008bd8a0df2195fda60b03c3f6a2ed87ea"
+      ],
+      "source_published_kst": "2026-10-30T07:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스",
+      "telegram_core_fact": "스페이스X는 20일 3분기 실적 공시에서 분기 매출의 34.5%가 컴퓨팅 파워를 공급하는 AI 부문에 대금을 낸 단일 고객에게서 나왔다고 밝혔으나 고객 이름은 '커스토머 B'로만 적었다.",
+      "title": "\"스페이스X 최대 고객은 앤트로픽\"…매출 3분의 1 차지 | 연합뉴스"
+    },
     "title:39828ea9846634db9fb4c1ca": {
       "first_seen_kst": "2026-10-14T00:59:56+09:00",
       "lanes": {
@@ -1466767,6 +1468185,32 @@
       "telegram_core_fact": "인수 목표는 JYP 발행주식의 25~50%로, 이는 15%대인 박진영 창의성총괄책임자와 특수관계인 지분을 합한 비율을 뛰어넘는 수량이다. JYP엔터테인먼트는 26일 밤 입장문을 통해 \"금일 보도된 건에 대하여 '당사 지분 인수 관련 제안받은 바 없다'로 말씀드린다\"고 밝혔다.",
       "title": "JYP 주가 14% 폭등시킨 '日투자사 지분 인수설'... JYP \"제안 받은 바 없다\""
     },
+    "title:8111e0ba4b52be49c09f3cc5": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029148951527",
+      "source": "연합뉴스",
+      "source_body_digest": "ae164118f5e274b9ffa440ee4612c549c5c0418732e14edf7123173367dffc84",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:a8f4af919418f9e663f01d2e8d431b8d04ed69362b9badb3c36dd7d7fd9abfb4",
+      "source_fact_identity": "source_facts:v1:ce8b9fad2b42f7a0997fd5f2d5161a79014f0a9c29c9fedfe01d2d382cae3282",
+      "source_fact_keys": [
+        "source_fact:v1:044dea0e7413f94d0597d173db03d49dbecd41f653ce7e52d04eff499ef6a701",
+        "source_fact:v1:5a86d8f2235e7aa4d9db839a7f14ff15ede617312fd254ef8b83a39fb52ad360",
+        "source_fact:v1:60d9500fcfadd96ce0488dd413a86614ebb46cb93fffedcde0b57e3e0c39a612",
+        "source_fact:v1:9e83d3ae361f9c34ef7b2f8dd91431d033a049f971bed52dd3e10aaede55f061",
+        "source_fact:v1:c1a23e65898607eaf6e0fd9c7847f290f31d74f4d714a8874bd8cca0978bb83d",
+        "source_fact:v1:c37c6aa67eeeb2a741b08b2aec10bbea2c890c0914c1413556b1b6f41283e76e",
+        "source_fact:v1:c7b14296a29fd1023667b79c7e7d22bb168898ea41025919c4cc80d693b611d8"
+      ],
+      "source_published_kst": "2026-10-29T15:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "한화에어로스페이스가 폴란드 K9 수출 물량의 인도 지연 등으로 3분기 매출과 영업이익이 모두 감소했다.",
+      "title": "한화에어로 3분기 영업익 4천520억원…물량인도 지연에 46%↓(종합) | 연합뉴스"
+    },
     "title:811bfe859b5aec8fe4c836d2": {
       "first_seen_kst": "2026-10-20T04:27:47+09:00",
       "lanes": {
@@ -1477771,6 +1479215,24 @@
       "source_title": "디티에스 \"코스닥 상장으로 글로벌 열 관리 솔루션 리더 도약\"",
       "telegram_core_fact": "회사는 상장 이후 LNG 설비 증설과 발전 인프라 투자 확대에 맞춰 주력사업 수주를 늘린다는 목표다.",
       "title": "디티에스 \"코스닥 상장으로 글로벌 열 관리 솔루션 리더 도약\""
+    },
+    "title:90e85ac2a5d95f660383ef36": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029110153527",
+      "source": "연합뉴스",
+      "source_body_digest": "e4d184948a5ea0ace8d0d6fc9b396a6e8d30a41c1542aa11e4e262fdb05c16aa",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차, 6년만에 매출 '후진'…연 판매목표 400만대로 낮춰(종합2보) | 연합뉴스",
+      "telegram_core_fact": "현대차가 3분기 파업에 따른 생산 차질과 글로벌 수요 감소 등 여파로 매출이 감소했다.",
+      "title": "현대차, 6년만에 매출 '후진'…연 판매목표 400만대로 낮춰(종합2보) | 연합뉴스"
     },
     "title:90f1c1a59cbc038aa3e18772": {
       "first_seen_kst": "2026-10-03T19:42:44+09:00",
@@ -1493835,6 +1495297,31 @@
       "source_title": "한화시스템, 3.4조 투자 여력 확보…\"초고해상도 위성·국방AI 정조준\"",
       "telegram_core_fact": "한화시스템이 한화오션 지분 전량 유동화를 통해 초고해상도 위성과 국방 인공지능(AI) 등 미래 성장 사업 확대에 나선다.",
       "title": "한화시스템, 3.4조 투자 여력 확보…\"초고해상도 위성·국방AI 정조준\""
+    },
+    "title:a7cba06ffad28dc5168b5db9": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641876",
+      "source": "이투데이",
+      "source_body_digest": "0596948f341b7f40533f88781f15bfce82ad98fe2fc8a2648dfd206b5c7fe45a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a6e2924505b0c8c14771c7d1b3eef5eec37b702432dc922a7ebe84973ca4605",
+      "source_fact_keys": [
+        "source_fact:v1:4038e7b78da775ad8a7b8249887fdd8d7171325394bfed854d4a227293f32225",
+        "source_fact:v1:453597e956ff705c143eab520264964c1040da58d9e7bb19d9ad1aee4589a982",
+        "source_fact:v1:57a57cfccc50cf505164fd0ba2ac8144a9ca78dced14640e7879895daaa52f32",
+        "source_fact:v1:5afe78a5369c96b3eff17b9611bc058a6bc2a8c2140251bf88832b49aee0a344",
+        "source_fact:v1:8ed16fe77333d4590251d3c4aa7e57ca3588d480989308895684506ad6237616",
+        "source_fact:v1:d2a3edceda7d8c6f9ad8d9317d043846f6cd66c24a5f7dad6b052754db65e348"
+      ],
+      "source_published_kst": "2026-10-29T16:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’",
+      "telegram_core_fact": "국내 5대 금융지주가 올해 3분기까지 19조6000억원이 넘는 순이익을 거두며 역대 최대 실적을 기록했다.",
+      "title": "5대 금융지주, 3분기 누적 순익 20조원 육박 ‘역대 최대’"
     },
     "title:a7d85eed83ebc6b6e77bcab9": {
       "first_seen_kst": "2026-10-13T12:38:24+09:00",
@@ -1516597,6 +1518084,27 @@
       "telegram_core_fact": "한국이 무기 완제품의 가격·납기 경쟁력을 바탕으로 수출 시장을 확대하는 사이 일본은 정밀화학과 반도체, 항공엔진 등 핵심 기술을 무기로 글로벌 공급망 내 입지를 넓히고 있다. 한일 방산 경쟁이 완제품을 넘어 핵심 기술과 공급망 확보 경쟁으로 확대될 것이란 전망이 나온다.",
       "title": "日 방산 소부장 공략 가속⋯K방산 공급망 경쟁력 시험대"
     },
+    "title:ca85d200ed6553d1f397ad92": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029149851527",
+      "source": "연합뉴스",
+      "source_body_digest": "71a241d5bba2a8040b956043dedc28a76d6ab97dff43d972c7a901c60af6da8b",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:3b3f7706f88e7acbd19d825dc17187e714014d22f792b38fcde5501a4f8beeba",
+      "source_fact_identity": "source_facts:v1:a8c40802655f14f8d55d0e648619ee1bb57122ec933fa2a7457925f61b964256",
+      "source_fact_keys": [
+        "source_fact:v1:0f4cf8b6b15ee24677e243a0a767fe824fb8622fd935f73d787ade6de1790172",
+        "source_fact:v1:8d21d635ba4a288f5d7253056d97d58dbe6c90dcf1b1d8b875a729727b7928ce"
+      ],
+      "source_published_kst": "2026-10-29T16:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "KB증권이 연결 기준 올해 3분기 영업이익 3천810억원으로 전년비 69.1% 증가한 것으로 잠정 집계됐다고 29일 공시했다.",
+      "title": "KB증권 3분기 영업익 3천810억원…약세장에 전분기보다 37%↓(종합) | 연합뉴스"
+    },
     "title:ca87b2c94c95cb2ae5e4fe5d": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -1533775,6 +1535283,31 @@
       "source_published_kst": "2026-10-06T17:10+09:00",
       "title": "반도체 기판 전쟁 다음은 유리…삼성전기, 내년말 생산라인 가동 목표"
     },
+    "title:e3723abae63b52497548e147": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261029144700009",
+      "source": "연합뉴스",
+      "source_body_digest": "6988ac9ec707fa89414da190a54395cc4122acd7ae2169630d79c9e8f03be7b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d55acdf2cf761dbffc679fb4c24996c6308fdb7a06158e19535608085a0302c2",
+      "source_fact_keys": [
+        "source_fact:v1:14d8336df11324529797d7f28a875b1760fbcc695602fa39fbd7637ef565f8e2",
+        "source_fact:v1:1fdf530a0da1fcadfb1e8e3b9b671f883e98f71ba792951472fd7aabb06663b3",
+        "source_fact:v1:8c8a156c8d01cfe7caf380084ef2c6096a90112dabf1e092d5e6cd1d064d3626",
+        "source_fact:v1:a3ab03a5fe50b00419a0f2bbb2cf30f5fd118b080f70fffeca2ced34b042b308",
+        "source_fact:v1:b8f5eda71f440a37728fe30a8f7587b49ca08f1303e0decdbd899ed2bca9f9f6",
+        "source_fact:v1:b92cad5e3ff895be3a92022ee38a02e94616914e3bc64cfb3c8dea8edb90f357"
+      ],
+      "source_published_kst": "2026-10-29T16:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스",
+      "telegram_core_fact": "WSJ는 시장조사업체 테크인사이츠를 인용해 하이퍼스케일러(초대형 데이터센터 운영사)의 수요 증가로 플래시 메모리 가격이 지난 1년 동안 5배로 뛰면서 키옥시아를 비롯한 플래시 메모리 업체들에 새로운 시대를 열어주고 있다고 전했다.",
+      "title": "WSJ \"1센트까지 쥐어짠 애플에 '복수'하는 메모리 공급사들\" | 연합뉴스"
+    },
     "title:e372baeeac1c0174a309961a": {
       "first_seen_kst": "2026-10-21T07:24:03+09:00",
       "lanes": {
@@ -1539939,6 +1541472,31 @@
       "source_title": "LS일렉트릭, 3분기 영업익 전년비 131.7%↑ '사상 최대'…100분기 연속 흑자",
       "telegram_core_fact": "LS일렉트릭은 올해 3분기 매출 1조8778억원, 영업이익 2335억원을 기록했다고 21일 공시했다.",
       "title": "LS일렉트릭, 3분기 영업익 전년비 131.7%↑ '사상 최대'…100분기 연속 흑자"
+    },
+    "title:ec8d5a8a302ad24f66d76e33": {
+      "first_seen_kst": "2026-10-30T08:14:02+09:00",
+      "lanes": {
+        "live": "2026-10-30T08:14:02+09:00"
+      },
+      "last_seen_kst": "2026-10-30T08:14:02+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/30/2026102917293319037",
+      "source": "머니투데이",
+      "source_body_digest": "84797476bab6628858a05dd149ea91fe06e355e78a67ea5cc9f3be23d53da477",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a712070c8d36f59f14f0797e653d84f5ad1921fc1de20041adbb1e16a74c23fd",
+      "source_fact_keys": [
+        "source_fact:v1:0e1d7beb1c5abbe61beee958fe6235be85e1f92296c212eb7c8c7132a3a2404a",
+        "source_fact:v1:0ec20ddf056c545a4b727351922f2ffab36096953d494a98e54e880372e0c084",
+        "source_fact:v1:723a72e0921c7810178bd01989aecde4794403af1c44cdaba5fd95366b97cba6",
+        "source_fact:v1:b25c8bf308b27ee3488ee1d37f16dd6292b452abaec51e6fa72f1a25601c612d",
+        "source_fact:v1:b304c381fd1500f285d1197f8fd8cd27b287733b8f4f04f223e72b7f880b933b",
+        "source_fact:v1:f902ad9924fbfb02b15c732215033fc3c63bdc8a7792d5373238e8e4da784987"
+      ],
+      "source_published_kst": "2026-10-30T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]",
+      "telegram_core_fact": "엔비디아가 삼성전자와 SK하이닉스의 HBM4(6세대 고대역폭메모리)가 들어가는 차세대 AI(인공지능) 가속기 '베라 루빈'의 메모리 대역폭을 당초 발표보다 약 13% 낮춘 사실을 공식 확인했다.",
+      "title": "삼전닉스 HBM4 품은 '베라 루빈'…\"대역폭 낮춰도 이상無\" [IT썰]"
     },
     "title:ec9129c6d6c214cff69da0ab": {
       "first_seen_kst": "2026-10-17T16:01:49+09:00",
@@ -1552774,5 +1554332,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-30T07:35:16+09:00"
+  "updated_at_kst": "2026-10-30T08:14:02+09:00"
 }
