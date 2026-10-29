@@ -1,9 +1,9 @@
 {
   "initialized": true,
   "version": 5,
-  "dataset_updated": "Oct 28, 2026",
-  "source_hash": "766cf797d8c15b4c19e35942f3e28f3ffa29a9bd4ea8483415e9a051e75ff456",
-  "snapshot_hash": "49626c6d452d994d7b5ae347eb8387c37d0abe48bcadfe7468ec61c28c6071eb",
+  "dataset_updated": "Oct 29, 2026",
+  "source_hash": "278f3c3ddb500543d496d4af673f70dfad9fb6568406cc99e78e09a42e76cf3b",
+  "snapshot_hash": "7c2e02e90805913ec156650ee1612d1991c4eea0004fa863b7b812bc3b7faa57",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -276,9 +276,9 @@
       "progress": 75.0,
       "completion_date": "2026-11-01",
       "completion": "2026.4Q",
-      "stage": "부분 가동·확장 공사",
+      "stage": "부분 가동·가동 확대",
       "risk": false,
-      "source_status": "Buildings 5-6 delivered to the customer. On Oracle's Q1 FY27 earnings call (September 10, 2026), Clay Magouyrk said \"6 of the 8 campus buildings, representing 618 megawatts and 75% of total capacity have now been delivered to the customer\" ([transcript](https://www.fool.com/earnings/call-transcripts/2026/09/11/oracle-orcl-q1-2027-earnings-call-transcript/)). 618 MW = 6 x 103 MW, matching the per-building IT power figure Crusoe reported earlier. Since Oracle is the chip owner rather than the facility operator, we assume \"delivered\" means the chips are installed and ready to use.",
+      "source_status": "Buildings 5-6 are operational. On Oracle's Q1 FY27 earnings call (September 10, 2026), Clay Magouyrk said \"6 of the 8 campus buildings, representing 618 megawatts and 75% of total capacity have now been delivered to the customer\" ([transcript](https://www.fool.com/earnings/call-transcripts/2026/09/11/oracle-orcl-q1-2027-earnings-call-transcript/)). 618 MW = 6 x 103 MW, matching the per-building IT power figure Crusoe reported earlier. Since Oracle is the chip owner rather than the facility operator, we assume \"delivered\" means the chips are installed and ready to use.",
       "mw_quality": "현재 추정 IT전력·부분 가동/건설 병행",
       "energy_site": "1.2GW 계통연계 + 뒤계량기 배터리·태양광 + 풍력자원 활용 · 천연가스 터빈은 백업전원",
       "energy_future": "추가 재생에너지 개발과 배터리 확대로 계통 안정성 보강",
@@ -306,7 +306,9 @@
       "company_issues": []
     }
   ],
-  "last_changes": [],
+  "last_changes": [
+    "Stargate Abilene (TX) 공정 진전 부분 가동·확장 공사→부분 가동·가동 확대"
+  ],
   "source_errors": [],
-  "updated_at_utc": "2026-10-29T14:19:47+00:00"
+  "updated_at_utc": "2026-10-29T17:01:03+00:00"
 }
