@@ -264,6 +264,9 @@ class OperatingIntegrationTests(unittest.TestCase):
                 "render_alert": presentation.render_alert,
                 "render_detail_document": presentation.render_detail_document,
                 "PRESENTATION_VERSION": presentation.PRESENTATION_VERSION,
+                # The extracted tail normally runs after this module-level flag
+                # has been set; these cases exercise the non-digest route.
+                "DAILY_DIGEST": False,
                 "STATUS": root / "status.md", "ALERT": root / "alert.html", "DETAIL": root / "detail.html", "PENDING": root / "pending.json",
                 "os": os, "json": json, "datetime": FrozenDatetime, "OUT": root,
                 "fp": lambda v: hashlib.sha256(json.dumps(v, sort_keys=True, ensure_ascii=False).encode()).hexdigest(),

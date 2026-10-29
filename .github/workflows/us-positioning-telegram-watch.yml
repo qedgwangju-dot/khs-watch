@@ -56,6 +56,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # Scheduled events can queue behind another run. Read the state that
+          # was confirmed by that run, not the SHA captured when this was queued.
+          ref: main
           fetch-depth: 0
 
       - name: Set up Python
