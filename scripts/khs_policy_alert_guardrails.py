@@ -265,6 +265,8 @@ def is_fcc_resilient_networks_policy(item: dict) -> bool:
 
 
 def direct_sectors(item: dict) -> list[str]:
+    if item.get("policy_event_key") == "us-section232-robotics-machinery-proclamation-2026-10-28":
+        return ["로봇/산업기계", "산업자동화/공작기계", "감속기/액추에이터"]
     if is_personnel(item):
         return item.get("sectors") or ["한국 대통령실/고위급 인사"]
     if is_domestic_telecom_policy(item):
@@ -501,6 +503,8 @@ def normalize_title(item: dict) -> None:
 
 
 def dedup_key(item: dict) -> str:
+    if item.get("policy_event_key") == "us-section232-robotics-machinery-proclamation-2026-10-28":
+        return "policy-event|us-section232-robotics-machinery-proclamation-2026-10-28"
     title = str(item.get("title") or "").lower()
     link = str(item.get("link") or "").lower()
     source = str(item.get("source") or "").lower()
