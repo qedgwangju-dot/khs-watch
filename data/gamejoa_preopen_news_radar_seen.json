@@ -6056,6 +6056,27 @@
       "telegram_core_fact": "인공지능(AI) 기업 앤트로픽이 기업공개(IPO)를 추진하는 가운데 대규모 반도체 구매 자금 조달 소식까지 전해지며 기술주 중심 나스닥 종합지수가 상승을 주도했다.",
       "title": "반도체 훈풍·앤트로픽 IPO…나스닥 1.18%↑ [뉴욕증시]- 매경ECONOMY"
     },
+    "core:0d2152a3af90f7711f90d4c3": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183868",
+      "source": "매일경제",
+      "source_body_digest": "faae7c01d2c92a26aaff4c4e5af3df3a36ddfd485f4223be035a7b839f60feeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0856966a4eb3643a78b40c9357991771dc1c99812a99b994ea554cff1dbd655",
+      "source_fact_keys": [
+        "source_fact:v1:083213b57cdd1621cc172c6bcfab805c4a30380313cc15b07a0c67961783adfe",
+        "source_fact:v1:66214bf75b228dbc25cbe33a9dc55a923221248dc5cd1b35460878c782cc37a0"
+      ],
+      "source_published_kst": "2026-10-29T06:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시",
+      "telegram_core_fact": "트럼프 행정부는 국가안보를 이유로 수입을 제한할 수 있는 무역확장법 232조를 활용해 철강·알루미늄과 자동차 및 자동차 부품 등에 고율 관세를 부과하는 등 품목별 관세 조치를 확대해왔다.",
+      "title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시"
+    },
     "core:0d2b399df1f9ffa57f548148": {
       "first_seen_kst": "2026-10-12T20:59:01+09:00",
       "lanes": {
@@ -14214,6 +14235,29 @@
       "telegram_core_fact": "한지영 키움증권 연구원은 23일 \"국내 증시는 메타의 신용불안 우려에 따른 미국 인공지능(AI)주 조정, 유가 부담 등으로 하락 출발할 전망\"이라면서도 \"SK하이닉스의 솔리다임 기업공개(IPO) 검토 중단 공시는 반도체에 대한 투자심리 호전에 기여할 듯하다\"고 말했다.",
       "title": "\"솔리다임 상장검토 중단, 반도체 투심 회복 기여할 듯\" | 연합뉴스"
     },
+    "core:1d2f43d7a265fd33d44633ac": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://plus.hankyung.com/apps/newsinside.view?aid=2026102813691&category=home&sns=y",
+      "source": "한국경제",
+      "source_body_digest": "b7e2fb959de9758ff6a6b5d384f4863c73b10f92db6ed7da006ad61f599307c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14f9239a7eefc94e113670dfd398b4e97d6752b564e637821b6f0ce7906a8cf0",
+      "source_fact_keys": [
+        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34",
+        "source_fact:v1:6da255a8f65736b892df793f920b37c748760171ef4061f80cb680c98ee12782",
+        "source_fact:v1:ab8a55f5a872fd946110145bb199d6cbe84399cc18baeef080618c9049203cca",
+        "source_fact:v1:df6526955f2d787802fea5f565f9965aad155df28bc137acc61e979ca491f74a"
+      ],
+      "source_published_kst": "2026-10-28T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "더시에나그룹, '1.8조원' 골프존카운티 인수",
+      "telegram_core_fact": "리조트·골프장 기업인 더시에나그룹이 전국에 20여 개 골프장을 둔 국내 최대 골프장 운영사 골프존카운티를 인수한다.",
+      "title": "더시에나그룹, '1.8조원' 골프존카운티 인수"
+    },
     "core:1d315e3ec09c799d4aaf07c8": {
       "first_seen_kst": "2026-10-19T06:02:38+09:00",
       "lanes": {
@@ -15703,6 +15747,24 @@
       "source_title": "오리엔트정공, EV·하이브리드 부품 수주 확대…수년 내 전동화 매출 50% 목표",
       "telegram_core_fact": "오리엔트정공은 국내 완성차 업체의 차세대 EV 전용 플랫폼 기반 신규 모델 1종에 대한 핵심 구동 부품 수주를 확정 짓고 연내 본격적인 양산에 돌입한다고 21일 밝혔다.",
       "title": "오리엔트정공, EV·하이브리드 부품 수주 확대…수년 내 전동화 매출 50% 목표"
+    },
+    "core:1f53d9dde202e79dfcc84431": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://biz.heraldcorp.com/article/10918320",
+      "source": "헤럴드경제",
+      "source_body_digest": "0649b40cb93e4daed6993333205c000e68a441c5279dad169159b03c838e7aaa",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-29T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "수출 역대 최대에도 제조업은 뒷걸음질…中企 ‘온도 차’",
+      "telegram_core_fact": "중소벤처기업연구원은 “중소기업 수출이 역대 3분기 최대 실적을 기록하고 서비스업 생산과 소매판매도 증가세를 유지했으나, 제조업 생산이 감소 전환하고 고용 증가 폭이 축소되는 등 업종 간 회복 격차가 나타나고 있다”며 “비용·금리 상승에 따른 중소기업의 자금 여건 부담이 지속되고 있어 면밀한 점검이 필요하다”고 밝혔다.",
+      "title": "수출 역대 최대에도 제조업은 뒷걸음질…中企 ‘온도 차’"
     },
     "core:1f56a49fb583907285f2dca1": {
       "first_seen_kst": "2026-10-21T03:15:13+09:00",
@@ -24387,6 +24449,26 @@
       "source_title": "인텔, 양자컴 소프트웨어 클래식 2조원대 베팅…구조조정 속 '승부수'",
       "telegram_core_fact": "미국 반도체 기업 인텔이 이스라엘 양자컴퓨팅 소프트웨어 스타트업 클래식(Classiq Technologies)을 인수하기로 했다.",
       "title": "인텔, 양자컴 소프트웨어 클래식 2조원대 베팅…구조조정 속 '승부수'"
+    },
+    "core:2edb2500a3dce4a5e93af513": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845656",
+      "source": "뉴시스",
+      "source_body_digest": "e7c9bbd84637046da1beaea235c590c024705466923e612d24b0029384ac9be9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a39223eb92431ff4d3a2e5d577ac36acb281f8f30789f94ef807dbd3fe9219e",
+      "source_fact_keys": [
+        "source_fact:v1:6d0cb9ce8d87e4bd3297c078c0753d43975c131012b43776fc950517374420e8"
+      ],
+      "source_published_kst": "2026-10-29T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재",
+      "telegram_core_fact": "공경철 엔젤로보틱스 대표는 \"이번 태국 의료기기 등재는 엔젤슈트 H10이 동남아 주요 시장에서 제품 라인업을 넓혀가는 기반을 마련했다는 데 의미가 있다\"며 \"앞으로도 각국 의료기기 규제와 현지 시장 환경에 맞춰 제품 경쟁력을 강화해나가겠다\"고 말했다.",
+      "title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재"
     },
     "core:2ef6e8009e7e641fdf97b12b": {
       "first_seen_kst": "2026-10-15T01:29:03+09:00",
@@ -72140,6 +72222,27 @@
       "source_title": "\"석유공사, 7.7조원 투입 캐나다 하베스트사 9천억원에 판다\" | 연합뉴스",
       "telegram_core_fact": "김 의원은 \"석유공사가 2009년 하베스트사를 4조1천67억원에 인수한 후 올해 6월까지 모두 7조6천964억원을 투입했는데, 9천649억원을 회수하면 투입 금액의 8분의 1만 회수하는 셈\"이라고 지적했다.",
       "title": "\"석유공사, 7.7조원 투입 캐나다 하베스트사 9천억원에 판다\" | 연합뉴스"
+    },
+    "core:904bb059b2fe659f72809d00": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845635",
+      "source": "뉴시스",
+      "source_body_digest": "2187cd10909c96898f260e05c056c75609998d069ac164a3ddd658efc7fb4b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f448eccb3670fbd2ceb77dcb5df60027f1b042ca968687d5c642a06f4d61034c",
+      "source_fact_keys": [
+        "source_fact:v1:2c7c4b800f8f854f3ac3af63ef1fe476e2425015f0c6ad1e85a09357b3707e2f",
+        "source_fact:v1:624650e4bd28061d156c783e1305be2e8cc52a340027c2dc0d803843a52049f4"
+      ],
+      "source_published_kst": "2026-10-29T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\"",
+      "telegram_core_fact": "미국 측이 합의된 조치를 이행하면 이란은 6일째 호르무즈 해협을 재개방하고 7일째 최종 합의를 위한 협상을 재개한다는 구상이다.",
+      "title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\""
     },
     "core:904c95bc7742027e9cece4c6": {
       "first_seen_kst": "2026-10-15T07:35:02+09:00",
@@ -123726,6 +123829,30 @@
       "telegram_core_fact": "BOEM은 \"이사야스 때문에 멕시코만의 유인 석유 생산 플랫폼 371곳의 32.61%에 해당하는 121곳에서 인력들이 대피해 시설 가동이 중단됐다\"고 설명했다.",
       "title": "중동발 공급 불안에 美 생산 중단까지…국제유가 또 급등"
     },
+    "core:f92a3f6215326ca9bf92d891": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02965126645617840",
+      "source": "이데일리",
+      "source_body_digest": "12e08e9233d340225e1935190fa35705306b59500e2c744bd4b4896b354a9f3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd8ed6fdea47f0c7b72f046f4bd1dd3913050a39e9d2128f84032172d828d5e4",
+      "source_fact_keys": [
+        "source_fact:v1:353408694908fa8419ccd8743363b768bdba2efe5679d689d53efff86a1dbdd8",
+        "source_fact:v1:591bd9bb788f52dba078e4462310f1f63b5d70c11d24b8d3c5aba8ad1157be58",
+        "source_fact:v1:acc7c1cb5406e8e360ba87cc68ca1c93865b0b495596cb684bfdf4392e5a189e",
+        "source_fact:v1:b85f13c25c79129a4f9c52169edf697b9c6255a2d1598b116dd94f9a8ac0a826",
+        "source_fact:v1:da8f9995f3b9fbfbec89fe21946af70707c609e6a215c62fb58b906b685f9ca4"
+      ],
+      "source_published_kst": "2026-10-29T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산",
+      "telegram_core_fact": "나델라 CEO는 28일(현지시간) MS의 2027회계연도 1분기(2026년 7~9월) 실적 발표 어닝 콜에서 “눈길을 끄는 신기술 자체에 집중하는 흐름은 약해지고 있다”며 기업들이 AI 시스템의 비용과 신뢰성, 보안, 자체 통제 가능성을 더욱 중시하고 있다고 밝혔다.",
+      "title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산"
+    },
     "core:f93a997f28cec184ba0231d6": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
       "lanes": {
@@ -125856,6 +125983,34 @@
       "source_title": "4대 은행, SK하이닉스와 반도체 협력기업에 2조 금융지원",
       "telegram_core_fact": "4대 은행과 SK하이닉스는 공동으로 재원을 출연하고, 무보는 이를 바탕으로 총 2조원 수출신용보증을 공급한다.",
       "title": "4대 은행, SK하이닉스와 반도체 협력기업에 2조 금융지원"
+    },
+    "core:fda1bb7542fe20390d137599": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
     },
     "core:fdaa847739496a81a87d0149": {
       "first_seen_kst": "2026-10-23T22:50:49+09:00",
@@ -132176,23 +132331,25 @@
     "event:2b9c97a2ad9e4e71b10063a3": {
       "first_seen_kst": "2026-10-28T15:06:31+09:00",
       "lanes": {
-        "live": "2026-10-28T22:37:35+09:00"
+        "live": "2026-10-29T17:41:36+09:00"
       },
-      "last_seen_kst": "2026-10-28T22:37:35+09:00",
-      "link": "https://www.hankyung.com/article/202610279066i",
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://plus.hankyung.com/apps/newsinside.view?aid=2026102813691&category=home&sns=y",
       "source": "한국경제",
-      "source_body_digest": "f831792aad7c7ffcf5e19ee946908dbdff30aa423582991ec488756acdeddcd8",
+      "source_body_digest": "b7e2fb959de9758ff6a6b5d384f4863c73b10f92db6ed7da006ad61f599307c9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:440375ffbdd5e597dc8b130f60a2e4b551e8d2409435fdac2f448f7eb7008acb",
+      "source_fact_identity": "source_facts:v1:14f9239a7eefc94e113670dfd398b4e97d6752b564e637821b6f0ce7906a8cf0",
       "source_fact_keys": [
-        "source_fact:v1:023fbde554f8f44f52ac6a637a54cd0bb7f6871cccfdef6f99af42f563c905ea",
-        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34"
+        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34",
+        "source_fact:v1:6da255a8f65736b892df793f920b37c748760171ef4061f80cb680c98ee12782",
+        "source_fact:v1:ab8a55f5a872fd946110145bb199d6cbe84399cc18baeef080618c9049203cca",
+        "source_fact:v1:df6526955f2d787802fea5f565f9965aad155df28bc137acc61e979ca491f74a"
       ],
-      "source_published_kst": "2026-10-28T08:10+09:00",
+      "source_published_kst": "2026-10-28T19:29+09:00",
       "source_supply_terms": {},
-      "source_title": "더시에나그룹, '1.8兆' 골프존카운티 품는다…SPA 체결",
-      "telegram_core_fact": "투자은행(IB) 업계에 따르면 더시에나·씨엘자산운용 컨소시엄은 전날 MBK파트너스와 골프존카운티 경영권을 인수하는 주식매매계약(SPA)을 체결했다. 이번 거래에서 차입금을 포함한 골프존카운티 기업가치(EV)는 1조8000억원가량으로 평가됐다.",
-      "title": "더시에나그룹, '1.8兆' 골프존카운티 품는다…SPA 체결"
+      "source_title": "더시에나그룹, '1.8조원' 골프존카운티 인수",
+      "telegram_core_fact": "리조트·골프장 기업인 더시에나그룹이 전국에 20여 개 골프장을 둔 국내 최대 골프장 운영사 골프존카운티를 인수한다.",
+      "title": "더시에나그룹, '1.8조원' 골프존카운티 인수"
     },
     "event:2bdadf347ecba6545f0672f5": {
       "first_seen_kst": "2026-10-20T11:16:24+09:00",
@@ -160695,6 +160852,27 @@
       "source_title": "라온로보틱스, 용인 신공장 착공…내년 말 준공 목표",
       "telegram_core_fact": "반도체 웨이퍼 이송로봇 전문기업 라온로보틱스는 제2용인테크노밸리에서 '용인공장 신축공사 착공식'을 열었다고 23일 밝혔다.",
       "title": "라온로보틱스, 용인 신공장 착공…내년 말 준공 목표"
+    },
+    "fact:0abe729ff0e2a3101aadfc1a": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183868",
+      "source": "매일경제",
+      "source_body_digest": "faae7c01d2c92a26aaff4c4e5af3df3a36ddfd485f4223be035a7b839f60feeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0856966a4eb3643a78b40c9357991771dc1c99812a99b994ea554cff1dbd655",
+      "source_fact_keys": [
+        "source_fact:v1:083213b57cdd1621cc172c6bcfab805c4a30380313cc15b07a0c67961783adfe",
+        "source_fact:v1:66214bf75b228dbc25cbe33a9dc55a923221248dc5cd1b35460878c782cc37a0"
+      ],
+      "source_published_kst": "2026-10-29T06:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시",
+      "telegram_core_fact": "트럼프 행정부는 국가안보를 이유로 수입을 제한할 수 있는 무역확장법 232조를 활용해 철강·알루미늄과 자동차 및 자동차 부품 등에 고율 관세를 부과하는 등 품목별 관세 조치를 확대해왔다.",
+      "title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시"
     },
     "fact:0ac6d2163e293c82e4b014db": {
       "first_seen_kst": "2026-10-22T03:23:27+09:00",
@@ -193339,6 +193517,30 @@
       "telegram_core_fact": "니혼게이자이(닛케이)신문은 \"간밤 발표된 미국의 9월 CPI가 시장 예상치를 웃돌며 미국의 금리 인상 전망이 다시 강해진 데다, 코어위브의 회사채 가격 급락으로 AI 거품론 우려가 한층 커지면서 투자심리가 위축됐다\"고 분석했다.",
       "title": "'美 CPI·AI 거품론' 겹악재…日 닛케이 6거래일 연속 하락 [Asia마감]"
     },
+    "fact:4a594e70cd0bea62288d76fe": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02965126645617840",
+      "source": "이데일리",
+      "source_body_digest": "12e08e9233d340225e1935190fa35705306b59500e2c744bd4b4896b354a9f3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd8ed6fdea47f0c7b72f046f4bd1dd3913050a39e9d2128f84032172d828d5e4",
+      "source_fact_keys": [
+        "source_fact:v1:353408694908fa8419ccd8743363b768bdba2efe5679d689d53efff86a1dbdd8",
+        "source_fact:v1:591bd9bb788f52dba078e4462310f1f63b5d70c11d24b8d3c5aba8ad1157be58",
+        "source_fact:v1:acc7c1cb5406e8e360ba87cc68ca1c93865b0b495596cb684bfdf4392e5a189e",
+        "source_fact:v1:b85f13c25c79129a4f9c52169edf697b9c6255a2d1598b116dd94f9a8ac0a826",
+        "source_fact:v1:da8f9995f3b9fbfbec89fe21946af70707c609e6a215c62fb58b906b685f9ca4"
+      ],
+      "source_published_kst": "2026-10-29T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산",
+      "telegram_core_fact": "나델라 CEO는 28일(현지시간) MS의 2027회계연도 1분기(2026년 7~9월) 실적 발표 어닝 콜에서 “눈길을 끄는 신기술 자체에 집중하는 흐름은 약해지고 있다”며 기업들이 AI 시스템의 비용과 신뢰성, 보안, 자체 통제 가능성을 더욱 중시하고 있다고 밝혔다.",
+      "title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산"
+    },
     "fact:4a67a7c06c66287bdc899635": {
       "first_seen_kst": "2026-10-23T17:26:50+09:00",
       "lanes": {
@@ -201138,6 +201340,26 @@
       "source_title": "2차전지株 동반상승…LG엔솔, 분기 최대 매출에 6%↑",
       "telegram_core_fact": "LG에너지솔루션은 3분기 매출이 전년비 59.0% 증가한 9조6434억원, 영업이익이 25.7% 늘어난 7560억원으로 잠정 집계됐다고 이날 공시했다.",
       "title": "2차전지株 동반상승…LG엔솔, 분기 최대 매출에 6%↑"
+    },
+    "fact:59ec70be98569bc74c6fffeb": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845656",
+      "source": "뉴시스",
+      "source_body_digest": "e7c9bbd84637046da1beaea235c590c024705466923e612d24b0029384ac9be9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a39223eb92431ff4d3a2e5d577ac36acb281f8f30789f94ef807dbd3fe9219e",
+      "source_fact_keys": [
+        "source_fact:v1:6d0cb9ce8d87e4bd3297c078c0753d43975c131012b43776fc950517374420e8"
+      ],
+      "source_published_kst": "2026-10-29T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재",
+      "telegram_core_fact": "공경철 엔젤로보틱스 대표는 \"이번 태국 의료기기 등재는 엔젤슈트 H10이 동남아 주요 시장에서 제품 라인업을 넓혀가는 기반을 마련했다는 데 의미가 있다\"며 \"앞으로도 각국 의료기기 규제와 현지 시장 환경에 맞춰 제품 경쟁력을 강화해나가겠다\"고 말했다.",
+      "title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재"
     },
     "fact:59fdd71837bcc8f59e279be5": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
@@ -209589,6 +209811,34 @@
       "source_title": "이 대통령, 이집트 대통령과 정상회담…공급망 협력 등 논의",
       "telegram_core_fact": "이재명 대통령은 8일 국빈 방한한 압델 파타 알시시 이집트 대통령과 정상회담을 하고 공급망 등 양국 협력 방안을 논의한다. 회담에서는 교역·투자, 인프라, 공급망 등 경제협력과 인적 교류 확대, 지역 정세 및 국제 현안 등에 대한 논의가 이뤄질 예정이다.",
       "title": "이 대통령, 이집트 대통령과 정상회담…공급망 협력 등 논의"
+    },
+    "fact:6b1059d728344c82d6271035": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
     },
     "fact:6b1c4e42c745bf0440d50916": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -224923,6 +225173,27 @@
       "source_title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!",
       "telegram_core_fact": "SK하이닉스의 용인 1기 팹 가동이 임박함에 따라 케이씨텍과 지앤비에스 에코 등 관련 반도체 설비 기업들이 주목받았다. 한미반도체는 TC본더 장비 공급과 8공장 증설을 추진 중이며 곽동신 회장의 장내매수 소식이 전해졌다.",
       "title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!"
+    },
+    "fact:86fdb22516d02853bfb636e6": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845635",
+      "source": "뉴시스",
+      "source_body_digest": "2187cd10909c96898f260e05c056c75609998d069ac164a3ddd658efc7fb4b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f448eccb3670fbd2ceb77dcb5df60027f1b042ca968687d5c642a06f4d61034c",
+      "source_fact_keys": [
+        "source_fact:v1:2c7c4b800f8f854f3ac3af63ef1fe476e2425015f0c6ad1e85a09357b3707e2f",
+        "source_fact:v1:624650e4bd28061d156c783e1305be2e8cc52a340027c2dc0d803843a52049f4"
+      ],
+      "source_published_kst": "2026-10-29T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\"",
+      "telegram_core_fact": "미국 측이 합의된 조치를 이행하면 이란은 6일째 호르무즈 해협을 재개방하고 7일째 최종 합의를 위한 협상을 재개한다는 구상이다.",
+      "title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\""
     },
     "fact:8707c074a756896a862c5422": {
       "first_seen_kst": "2026-10-22T07:32:49+09:00",
@@ -240734,6 +241005,29 @@
       "source_title": "인천 남항 시멘트부두 사일로 증설 추진…인천해수청, 사업 허가",
       "telegram_core_fact": "인천지방해양수산청에 따르면 인천해수청은 최근 인천 남항 삼표시멘트 부두 시설을 증설하기 위해 삼표시멘트 측이 낸 비관리청 항만개발사업 시행을 허가했다.",
       "title": "인천 남항 시멘트부두 사일로 증설 추진…인천해수청, 사업 허가"
+    },
+    "fact:a4b3be0bf71783b2e4c61c3b": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://plus.hankyung.com/apps/newsinside.view?aid=2026102813691&category=home&sns=y",
+      "source": "한국경제",
+      "source_body_digest": "b7e2fb959de9758ff6a6b5d384f4863c73b10f92db6ed7da006ad61f599307c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14f9239a7eefc94e113670dfd398b4e97d6752b564e637821b6f0ce7906a8cf0",
+      "source_fact_keys": [
+        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34",
+        "source_fact:v1:6da255a8f65736b892df793f920b37c748760171ef4061f80cb680c98ee12782",
+        "source_fact:v1:ab8a55f5a872fd946110145bb199d6cbe84399cc18baeef080618c9049203cca",
+        "source_fact:v1:df6526955f2d787802fea5f565f9965aad155df28bc137acc61e979ca491f74a"
+      ],
+      "source_published_kst": "2026-10-28T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "더시에나그룹, '1.8조원' 골프존카운티 인수",
+      "telegram_core_fact": "리조트·골프장 기업인 더시에나그룹이 전국에 20여 개 골프장을 둔 국내 최대 골프장 운영사 골프존카운티를 인수한다.",
+      "title": "더시에나그룹, '1.8조원' 골프존카운티 인수"
     },
     "fact:a4c670fe7a68a136a39db700": {
       "first_seen_kst": "2026-10-24T03:01:20+09:00",
@@ -307178,6 +307472,24 @@
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
     },
+    "link:18a238071ce6884275b7555f": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://biz.heraldcorp.com/article/10918320",
+      "source": "헤럴드경제",
+      "source_body_digest": "0649b40cb93e4daed6993333205c000e68a441c5279dad169159b03c838e7aaa",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-29T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "수출 역대 최대에도 제조업은 뒷걸음질…中企 ‘온도 차’",
+      "telegram_core_fact": "중소벤처기업연구원은 “중소기업 수출이 역대 3분기 최대 실적을 기록하고 서비스업 생산과 소매판매도 증가세를 유지했으나, 제조업 생산이 감소 전환하고 고용 증가 폭이 축소되는 등 업종 간 회복 격차가 나타나고 있다”며 “비용·금리 상승에 따른 중소기업의 자금 여건 부담이 지속되고 있어 면밀한 점검이 필요하다”고 밝혔다.",
+      "title": "수출 역대 최대에도 제조업은 뒷걸음질…中企 ‘온도 차’"
+    },
     "link:18a62e2b170951e513443d04": {
       "first_seen_kst": "2026-10-13T04:02:08+09:00",
       "lanes": {
@@ -355206,6 +355518,30 @@
       "source_published_kst": "2026-10-06T14:53+09:00",
       "title": "동아제약 다시 품은 동아쏘시오…'박카스 현금' 신약·M&A 실탄으로"
     },
+    "link:5ef7f32c73aab6883c86e956": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02965126645617840",
+      "source": "이데일리",
+      "source_body_digest": "12e08e9233d340225e1935190fa35705306b59500e2c744bd4b4896b354a9f3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd8ed6fdea47f0c7b72f046f4bd1dd3913050a39e9d2128f84032172d828d5e4",
+      "source_fact_keys": [
+        "source_fact:v1:353408694908fa8419ccd8743363b768bdba2efe5679d689d53efff86a1dbdd8",
+        "source_fact:v1:591bd9bb788f52dba078e4462310f1f63b5d70c11d24b8d3c5aba8ad1157be58",
+        "source_fact:v1:acc7c1cb5406e8e360ba87cc68ca1c93865b0b495596cb684bfdf4392e5a189e",
+        "source_fact:v1:b85f13c25c79129a4f9c52169edf697b9c6255a2d1598b116dd94f9a8ac0a826",
+        "source_fact:v1:da8f9995f3b9fbfbec89fe21946af70707c609e6a215c62fb58b906b685f9ca4"
+      ],
+      "source_published_kst": "2026-10-29T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산",
+      "telegram_core_fact": "나델라 CEO는 28일(현지시간) MS의 2027회계연도 1분기(2026년 7~9월) 실적 발표 어닝 콜에서 “눈길을 끄는 신기술 자체에 집중하는 흐름은 약해지고 있다”며 기업들이 AI 시스템의 비용과 신뢰성, 보안, 자체 통제 가능성을 더욱 중시하고 있다고 밝혔다.",
+      "title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산"
+    },
     "link:5ef90f7058214efd86055f24": {
       "first_seen_kst": "2026-09-28T18:02:59+09:00",
       "lanes": {
@@ -369302,6 +369638,34 @@
       "source_title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\"",
       "telegram_core_fact": "안 연구원은 \"밸류에이션(실적대비 주가 수준), 주주환원수익률, 증시 거래대금 회전율 등을 통해 펀더멘털(기초체력)에 기반한 주가가 바닥권에 충분히 가까워졌음을 추론해볼 수 있다\"며 \"향후 증시와 거래대금 회전율이 재상승하는 모습을 보인다면 반등을 기대해볼 수 있다\"고 말했다.",
       "title": "\"거래대금 106조→39조 급감…'증권주 바닥권 근접'\""
+    },
+    "link:74c3719766d1eaf6b7e57d9a": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
     },
     "link:74c596d61af8a9c7e4746d15": {
       "first_seen_kst": "2026-10-13T06:17:31+09:00",
@@ -386721,6 +387085,27 @@
       "source_title": "AI에 돈 쏟아붓는 메타, 현금흐름 적자…의결권 없는 주식으로 ‘실탄’ 통로 연다",
       "telegram_core_fact": "메타 3분기 매출은 85조7000억원으로 전년비 26% 증가했습니다.",
       "title": "AI에 돈 쏟아붓는 메타, 현금흐름 적자…의결권 없는 주식으로 ‘실탄’ 통로 연다"
+    },
+    "link:8f8362107de4649e8f9969db": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845635",
+      "source": "뉴시스",
+      "source_body_digest": "2187cd10909c96898f260e05c056c75609998d069ac164a3ddd658efc7fb4b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f448eccb3670fbd2ceb77dcb5df60027f1b042ca968687d5c642a06f4d61034c",
+      "source_fact_keys": [
+        "source_fact:v1:2c7c4b800f8f854f3ac3af63ef1fe476e2425015f0c6ad1e85a09357b3707e2f",
+        "source_fact:v1:624650e4bd28061d156c783e1305be2e8cc52a340027c2dc0d803843a52049f4"
+      ],
+      "source_published_kst": "2026-10-29T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\"",
+      "telegram_core_fact": "미국 측이 합의된 조치를 이행하면 이란은 6일째 호르무즈 해협을 재개방하고 7일째 최종 합의를 위한 협상을 재개한다는 구상이다.",
+      "title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\""
     },
     "link:8f84b0418bde4839f4567775": {
       "first_seen_kst": "2026-10-21T17:41:44+09:00",
@@ -407387,6 +407772,29 @@
       "telegram_core_fact": "넷플릭스 4분기 매출은 134억달러 전망입니다.",
       "title": "[오늘장특징주]스페이스X, 넷플릭스, 코어위브"
     },
+    "link:ac9aa8fb5108778fc7476bc0": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://plus.hankyung.com/apps/newsinside.view?aid=2026102813691&category=home&sns=y",
+      "source": "한국경제",
+      "source_body_digest": "b7e2fb959de9758ff6a6b5d384f4863c73b10f92db6ed7da006ad61f599307c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14f9239a7eefc94e113670dfd398b4e97d6752b564e637821b6f0ce7906a8cf0",
+      "source_fact_keys": [
+        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34",
+        "source_fact:v1:6da255a8f65736b892df793f920b37c748760171ef4061f80cb680c98ee12782",
+        "source_fact:v1:ab8a55f5a872fd946110145bb199d6cbe84399cc18baeef080618c9049203cca",
+        "source_fact:v1:df6526955f2d787802fea5f565f9965aad155df28bc137acc61e979ca491f74a"
+      ],
+      "source_published_kst": "2026-10-28T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "더시에나그룹, '1.8조원' 골프존카운티 인수",
+      "telegram_core_fact": "리조트·골프장 기업인 더시에나그룹이 전국에 20여 개 골프장을 둔 국내 최대 골프장 운영사 골프존카운티를 인수한다.",
+      "title": "더시에나그룹, '1.8조원' 골프존카운티 인수"
+    },
     "link:aca12a9950cdc5648395f82b": {
       "first_seen_kst": "2026-10-21T18:34:10+09:00",
       "lanes": {
@@ -413530,6 +413938,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T08:58+09:00",
       "title": "액셀러레이터 투자 양극화…상위 13%가 76% 차지, 19%는 투자 '0'"
+    },
+    "link:b5d823dce966428fff4b75a3": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845656",
+      "source": "뉴시스",
+      "source_body_digest": "e7c9bbd84637046da1beaea235c590c024705466923e612d24b0029384ac9be9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a39223eb92431ff4d3a2e5d577ac36acb281f8f30789f94ef807dbd3fe9219e",
+      "source_fact_keys": [
+        "source_fact:v1:6d0cb9ce8d87e4bd3297c078c0753d43975c131012b43776fc950517374420e8"
+      ],
+      "source_published_kst": "2026-10-29T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재",
+      "telegram_core_fact": "공경철 엔젤로보틱스 대표는 \"이번 태국 의료기기 등재는 엔젤슈트 H10이 동남아 주요 시장에서 제품 라인업을 넓혀가는 기반을 마련했다는 데 의미가 있다\"며 \"앞으로도 각국 의료기기 규제와 현지 시장 환경에 맞춰 제품 경쟁력을 강화해나가겠다\"고 말했다.",
+      "title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재"
     },
     "link:b5d94d5292fa939cb70f25a5": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
@@ -435790,6 +436218,27 @@
       "source_title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스",
       "telegram_core_fact": "전세 거래가 급감한 배경에는 전세자금 대출 규제 강화와 전세 매물 부족, 기존 세입자의 계약 갱신 확대 등이 복합적으로 작용한 것으로 분석된다.",
       "title": "1∼9월 서울 아파트 전세 거래 28% 급감…월세 비중 첫 50% 돌파(종합) | 연합뉴스"
+    },
+    "link:d68c32f16953507296111cbc": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183868",
+      "source": "매일경제",
+      "source_body_digest": "faae7c01d2c92a26aaff4c4e5af3df3a36ddfd485f4223be035a7b839f60feeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0856966a4eb3643a78b40c9357991771dc1c99812a99b994ea554cff1dbd655",
+      "source_fact_keys": [
+        "source_fact:v1:083213b57cdd1621cc172c6bcfab805c4a30380313cc15b07a0c67961783adfe",
+        "source_fact:v1:66214bf75b228dbc25cbe33a9dc55a923221248dc5cd1b35460878c782cc37a0"
+      ],
+      "source_published_kst": "2026-10-29T06:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시",
+      "telegram_core_fact": "트럼프 행정부는 국가안보를 이유로 수입을 제한할 수 있는 무역확장법 232조를 활용해 철강·알루미늄과 자동차 및 자동차 부품 등에 고율 관세를 부과하는 등 품목별 관세 조치를 확대해왔다.",
+      "title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시"
     },
     "link:d69028e26eb0c692bec586ae": {
       "first_seen_kst": "2026-10-10T00:12:46+09:00",
@@ -482557,6 +483006,34 @@
       "source": "전자신문",
       "title": "모태펀드 '글로벌 VC' 출자 1위는 佛 '졸트캐피탈'…유럽계 두각"
     },
+    "original:1fe0ead5542afe015ba89a30": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
+    },
     "original:1fe24f48902a33191eee70fd": {
       "first_seen_kst": "2026-10-29T07:03:26+09:00",
       "lanes": {
@@ -485305,6 +485782,29 @@
       "source_title": "BW LPG, 3분기 트레이딩 총이익 1억6400만 달러 달성",
       "telegram_core_fact": "BW LPG(BWLP)가 제품서비스(BW Product Services) 부문의 2026년 3분기(9월 30일 종료) 총 트레이딩 이익이 약 1억6400만 달러, 일반관리비와 법인세 차감 후 추정 순이익이 약 1억1800만 달러를 기록했다고 10월 19일 발표했다.",
       "title": "BW LPG, 3분기 트레이딩 총이익 1억6400만 달러 달성"
+    },
+    "original:24220fb69f1fdc884fb2ffba": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://plus.hankyung.com/apps/newsinside.view?aid=2026102813691&category=home&sns=y",
+      "source": "한국경제",
+      "source_body_digest": "b7e2fb959de9758ff6a6b5d384f4863c73b10f92db6ed7da006ad61f599307c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14f9239a7eefc94e113670dfd398b4e97d6752b564e637821b6f0ce7906a8cf0",
+      "source_fact_keys": [
+        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34",
+        "source_fact:v1:6da255a8f65736b892df793f920b37c748760171ef4061f80cb680c98ee12782",
+        "source_fact:v1:ab8a55f5a872fd946110145bb199d6cbe84399cc18baeef080618c9049203cca",
+        "source_fact:v1:df6526955f2d787802fea5f565f9965aad155df28bc137acc61e979ca491f74a"
+      ],
+      "source_published_kst": "2026-10-28T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "더시에나그룹, '1.8조원' 골프존카운티 인수",
+      "telegram_core_fact": "리조트·골프장 기업인 더시에나그룹이 전국에 20여 개 골프장을 둔 국내 최대 골프장 운영사 골프존카운티를 인수한다.",
+      "title": "더시에나그룹, '1.8조원' 골프존카운티 인수"
     },
     "original:24375c26de3a415997ffbf1f": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -496788,6 +497288,24 @@
       "source_title": "횡성한우축제 40만명 찾았다…매출 44억원 역대 최고",
       "telegram_core_fact": "강원 횡성군의 제22회 횡성한우축제가 방문객 40만명과 매출 44억원을 기록하며 역대 최고 흥행 성적을 거뒀다.",
       "title": "횡성한우축제 40만명 찾았다…매출 44억원 역대 최고"
+    },
+    "original:351ebc7500c1267eb4046c69": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://biz.heraldcorp.com/article/10918320",
+      "source": "헤럴드경제",
+      "source_body_digest": "0649b40cb93e4daed6993333205c000e68a441c5279dad169159b03c838e7aaa",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-29T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "수출 역대 최대에도 제조업은 뒷걸음질…中企 ‘온도 차’",
+      "telegram_core_fact": "중소벤처기업연구원은 “중소기업 수출이 역대 3분기 최대 실적을 기록하고 서비스업 생산과 소매판매도 증가세를 유지했으나, 제조업 생산이 감소 전환하고 고용 증가 폭이 축소되는 등 업종 간 회복 격차가 나타나고 있다”며 “비용·금리 상승에 따른 중소기업의 자금 여건 부담이 지속되고 있어 면밀한 점검이 필요하다”고 밝혔다.",
+      "title": "수출 역대 최대에도 제조업은 뒷걸음질…中企 ‘온도 차’"
     },
     "original:3520663f11f63dbaa5138efb": {
       "first_seen_kst": "2026-10-10T00:12:46+09:00",
@@ -514553,6 +515071,26 @@
       "link": "https://www.newsis.com/view/NISX20260927_0003804400",
       "source": "뉴시스",
       "title": "국힘, 장외투쟁 신중론…\"국감 등 원내에서 현안 대응 우선\""
+    },
+    "original:4fbc93410dacd9193e492d07": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845656",
+      "source": "뉴시스",
+      "source_body_digest": "e7c9bbd84637046da1beaea235c590c024705466923e612d24b0029384ac9be9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a39223eb92431ff4d3a2e5d577ac36acb281f8f30789f94ef807dbd3fe9219e",
+      "source_fact_keys": [
+        "source_fact:v1:6d0cb9ce8d87e4bd3297c078c0753d43975c131012b43776fc950517374420e8"
+      ],
+      "source_published_kst": "2026-10-29T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재",
+      "telegram_core_fact": "공경철 엔젤로보틱스 대표는 \"이번 태국 의료기기 등재는 엔젤슈트 H10이 동남아 주요 시장에서 제품 라인업을 넓혀가는 기반을 마련했다는 데 의미가 있다\"며 \"앞으로도 각국 의료기기 규제와 현지 시장 환경에 맞춰 제품 경쟁력을 강화해나가겠다\"고 말했다.",
+      "title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재"
     },
     "original:4fbe054e8a79c252269657a9": {
       "first_seen_kst": "2026-10-21T16:09:03+09:00",
@@ -581610,6 +582148,27 @@
       "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
       "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
     },
+    "original:b55e019bc6436884d62b640a": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845635",
+      "source": "뉴시스",
+      "source_body_digest": "2187cd10909c96898f260e05c056c75609998d069ac164a3ddd658efc7fb4b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f448eccb3670fbd2ceb77dcb5df60027f1b042ca968687d5c642a06f4d61034c",
+      "source_fact_keys": [
+        "source_fact:v1:2c7c4b800f8f854f3ac3af63ef1fe476e2425015f0c6ad1e85a09357b3707e2f",
+        "source_fact:v1:624650e4bd28061d156c783e1305be2e8cc52a340027c2dc0d803843a52049f4"
+      ],
+      "source_published_kst": "2026-10-29T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\"",
+      "telegram_core_fact": "미국 측이 합의된 조치를 이행하면 이란은 6일째 호르무즈 해협을 재개방하고 7일째 최종 합의를 위한 협상을 재개한다는 구상이다.",
+      "title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\""
+    },
     "original:b5741091ce5981bbfd93d17d": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -581710,6 +582269,30 @@
       "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
       "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
+    },
+    "original:b5a1e624ee6370a2547723a9": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02965126645617840",
+      "source": "이데일리",
+      "source_body_digest": "12e08e9233d340225e1935190fa35705306b59500e2c744bd4b4896b354a9f3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd8ed6fdea47f0c7b72f046f4bd1dd3913050a39e9d2128f84032172d828d5e4",
+      "source_fact_keys": [
+        "source_fact:v1:353408694908fa8419ccd8743363b768bdba2efe5679d689d53efff86a1dbdd8",
+        "source_fact:v1:591bd9bb788f52dba078e4462310f1f63b5d70c11d24b8d3c5aba8ad1157be58",
+        "source_fact:v1:acc7c1cb5406e8e360ba87cc68ca1c93865b0b495596cb684bfdf4392e5a189e",
+        "source_fact:v1:b85f13c25c79129a4f9c52169edf697b9c6255a2d1598b116dd94f9a8ac0a826",
+        "source_fact:v1:da8f9995f3b9fbfbec89fe21946af70707c609e6a215c62fb58b906b685f9ca4"
+      ],
+      "source_published_kst": "2026-10-29T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산",
+      "telegram_core_fact": "나델라 CEO는 28일(현지시간) MS의 2027회계연도 1분기(2026년 7~9월) 실적 발표 어닝 콜에서 “눈길을 끄는 신기술 자체에 집중하는 흐름은 약해지고 있다”며 기업들이 AI 시스템의 비용과 신뢰성, 보안, 자체 통제 가능성을 더욱 중시하고 있다고 밝혔다.",
+      "title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산"
     },
     "original:b5a8d7cfc86ced59d679e372": {
       "first_seen_kst": "2026-10-19T19:03:47+09:00",
@@ -620427,6 +621010,27 @@
       "source_title": "에프엔비, 3분기 희석 EPS 0.43달러..순이자수익 역대 최대",
       "telegram_core_fact": "에프엔비(FNB)는 3분기 순이익이 1억5290만 달러, 희석 주당순이익이 0.43달러로 전년 동기 0.41달러 대비 4.9% 증가했다고 19일(현지시간) 발표했다.",
       "title": "에프엔비, 3분기 희석 EPS 0.43달러..순이자수익 역대 최대"
+    },
+    "original:f1d6cc86380ef407cf543dd0": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183868",
+      "source": "매일경제",
+      "source_body_digest": "faae7c01d2c92a26aaff4c4e5af3df3a36ddfd485f4223be035a7b839f60feeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0856966a4eb3643a78b40c9357991771dc1c99812a99b994ea554cff1dbd655",
+      "source_fact_keys": [
+        "source_fact:v1:083213b57cdd1621cc172c6bcfab805c4a30380313cc15b07a0c67961783adfe",
+        "source_fact:v1:66214bf75b228dbc25cbe33a9dc55a923221248dc5cd1b35460878c782cc37a0"
+      ],
+      "source_published_kst": "2026-10-29T06:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시",
+      "telegram_core_fact": "트럼프 행정부는 국가안보를 이유로 수입을 제한할 수 있는 무역확장법 232조를 활용해 철강·알루미늄과 자동차 및 자동차 부품 등에 고율 관세를 부과하는 등 품목별 관세 조치를 확대해왔다.",
+      "title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시"
     },
     "original:f1d9c788fbf99265f9689c1f": {
       "first_seen_kst": "2026-10-11T07:07:11+09:00",
@@ -704961,6 +705565,34 @@
       "telegram_core_fact": "예멘의 친이란 후티 반군이 사우디아라비아의 국제공항과 국영 석유회사 아람코 시설을 공격했다고 주장하면서 국제유가가 장중 상승했다.",
       "title": "후티, 사우디 공항·아람코 시설 공격 주장…美 유가 2.2% 상승"
     },
+    "source_fact:1b9273cc6e02ca6efac50c5b": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
+    },
     "source_fact:1b92d15eaa6e0c64392d3db9": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -717432,6 +718064,27 @@
       "source_title": "AI칩 '각자도생' 끝났다…개발·생산·패키징 전방위 협력 확대",
       "telegram_core_fact": "삼성전기와 엔비디아는 지난 21일 AI 반도체 패키지기판 생산을 위한 세종·부산 전용 생산시설 공동투자와 다년간 공급계약을 발표했다. 메모리 제조사와 고객사의 공동개발을 넘어 반도체 장비 업체 간 지분투자, 패키지기판 생산시설 공동투자 등으로 협력 방식도 다양해지는 모습이다.",
       "title": "AI칩 '각자도생' 끝났다…개발·생산·패키징 전방위 협력 확대"
+    },
+    "source_fact:200561fbdd8b81508a095729": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845635",
+      "source": "뉴시스",
+      "source_body_digest": "2187cd10909c96898f260e05c056c75609998d069ac164a3ddd658efc7fb4b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f448eccb3670fbd2ceb77dcb5df60027f1b042ca968687d5c642a06f4d61034c",
+      "source_fact_keys": [
+        "source_fact:v1:2c7c4b800f8f854f3ac3af63ef1fe476e2425015f0c6ad1e85a09357b3707e2f",
+        "source_fact:v1:624650e4bd28061d156c783e1305be2e8cc52a340027c2dc0d803843a52049f4"
+      ],
+      "source_published_kst": "2026-10-29T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\"",
+      "telegram_core_fact": "미국 측이 합의된 조치를 이행하면 이란은 6일째 호르무즈 해협을 재개방하고 7일째 최종 합의를 위한 협상을 재개한다는 구상이다.",
+      "title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\""
     },
     "source_fact:2005ac9ef4688fb40a307f15": {
       "first_seen_kst": "2026-10-11T10:26:26+09:00",
@@ -791033,6 +791686,30 @@
       "telegram_core_fact": "월풀(WHR)이 3분기(7~9월) 매출액이 36억7700만 달러로 전년비 8.8% 감소했고, 일반회계기준(GAAP) 희석 주당순손실은 3.80달러로 적자전환했다고 26일(현지시간) 발표했다.",
       "title": "월풀, 3분기 매출 37억 달러 9% 감소..적자전환"
     },
+    "source_fact:3a1e6244ee73625fab882ada": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02965126645617840",
+      "source": "이데일리",
+      "source_body_digest": "12e08e9233d340225e1935190fa35705306b59500e2c744bd4b4896b354a9f3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd8ed6fdea47f0c7b72f046f4bd1dd3913050a39e9d2128f84032172d828d5e4",
+      "source_fact_keys": [
+        "source_fact:v1:353408694908fa8419ccd8743363b768bdba2efe5679d689d53efff86a1dbdd8",
+        "source_fact:v1:591bd9bb788f52dba078e4462310f1f63b5d70c11d24b8d3c5aba8ad1157be58",
+        "source_fact:v1:acc7c1cb5406e8e360ba87cc68ca1c93865b0b495596cb684bfdf4392e5a189e",
+        "source_fact:v1:b85f13c25c79129a4f9c52169edf697b9c6255a2d1598b116dd94f9a8ac0a826",
+        "source_fact:v1:da8f9995f3b9fbfbec89fe21946af70707c609e6a215c62fb58b906b685f9ca4"
+      ],
+      "source_published_kst": "2026-10-29T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산",
+      "telegram_core_fact": "나델라 CEO는 28일(현지시간) MS의 2027회계연도 1분기(2026년 7~9월) 실적 발표 어닝 콜에서 “눈길을 끄는 신기술 자체에 집중하는 흐름은 약해지고 있다”며 기업들이 AI 시스템의 비용과 신뢰성, 보안, 자체 통제 가능성을 더욱 중시하고 있다고 밝혔다.",
+      "title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산"
+    },
     "source_fact:3a1e73bce020bea588369a78": {
       "first_seen_kst": "2026-10-18T09:49:30+09:00",
       "lanes": {
@@ -842726,23 +843403,25 @@
     "source_fact:4c89730f56a82eb93776af77": {
       "first_seen_kst": "2026-10-28T22:37:35+09:00",
       "lanes": {
-        "live": "2026-10-28T22:37:35+09:00"
+        "live": "2026-10-29T17:41:36+09:00"
       },
-      "last_seen_kst": "2026-10-28T22:37:35+09:00",
-      "link": "https://www.hankyung.com/article/202610279066i",
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://plus.hankyung.com/apps/newsinside.view?aid=2026102813691&category=home&sns=y",
       "source": "한국경제",
-      "source_body_digest": "f831792aad7c7ffcf5e19ee946908dbdff30aa423582991ec488756acdeddcd8",
+      "source_body_digest": "b7e2fb959de9758ff6a6b5d384f4863c73b10f92db6ed7da006ad61f599307c9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:440375ffbdd5e597dc8b130f60a2e4b551e8d2409435fdac2f448f7eb7008acb",
+      "source_fact_identity": "source_facts:v1:14f9239a7eefc94e113670dfd398b4e97d6752b564e637821b6f0ce7906a8cf0",
       "source_fact_keys": [
-        "source_fact:v1:023fbde554f8f44f52ac6a637a54cd0bb7f6871cccfdef6f99af42f563c905ea",
-        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34"
+        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34",
+        "source_fact:v1:6da255a8f65736b892df793f920b37c748760171ef4061f80cb680c98ee12782",
+        "source_fact:v1:ab8a55f5a872fd946110145bb199d6cbe84399cc18baeef080618c9049203cca",
+        "source_fact:v1:df6526955f2d787802fea5f565f9965aad155df28bc137acc61e979ca491f74a"
       ],
-      "source_published_kst": "2026-10-28T08:10+09:00",
+      "source_published_kst": "2026-10-28T19:29+09:00",
       "source_supply_terms": {},
-      "source_title": "더시에나그룹, '1.8兆' 골프존카운티 품는다…SPA 체결",
-      "telegram_core_fact": "투자은행(IB) 업계에 따르면 더시에나·씨엘자산운용 컨소시엄은 전날 MBK파트너스와 골프존카운티 경영권을 인수하는 주식매매계약(SPA)을 체결했다. 이번 거래에서 차입금을 포함한 골프존카운티 기업가치(EV)는 1조8000억원가량으로 평가됐다.",
-      "title": "더시에나그룹, '1.8兆' 골프존카운티 품는다…SPA 체결"
+      "source_title": "더시에나그룹, '1.8조원' 골프존카운티 인수",
+      "telegram_core_fact": "리조트·골프장 기업인 더시에나그룹이 전국에 20여 개 골프장을 둔 국내 최대 골프장 운영사 골프존카운티를 인수한다.",
+      "title": "더시에나그룹, '1.8조원' 골프존카운티 인수"
     },
     "source_fact:4c8ab19ac95e59a3cae1e679": {
       "first_seen_kst": "2026-10-23T17:26:50+09:00",
@@ -861944,6 +862623,34 @@
       "source_published_kst": "2026-10-06T08:37+09:00",
       "title": "한미반도체, 삼성전기서 245억 규모 장비 수주…\"삼성그룹 환영\" | 연합뉴스"
     },
+    "source_fact:53125f7970cdd665fb128787": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
+    },
     "source_fact:53145685c543af855f23ac5b": {
       "first_seen_kst": "2026-10-14T18:12:32+09:00",
       "lanes": {
@@ -866347,6 +867054,34 @@
       "source_title": "[AI 고속도로] 엔비디아가 투자했는데…英 엔스케일, MS 계약 철회에 몸값도 '흔들'",
       "telegram_core_fact": "엔비디아가 투자한 영국 인공지능(AI) 인프라 기업 엔스케일이 기업공개(IPO)를 앞두고 주요 고객 계약 철회와 기업가치 인하 압박에 직면했다. 로이터통신에 따르면 MS는 지난 18일 엔스케일과 추진하던 영국 에식스주 로턴 부지의 데이터센터 계약에서 철수했다고 밝혔다.",
       "title": "[AI 고속도로] 엔비디아가 투자했는데…英 엔스케일, MS 계약 철회에 몸값도 '흔들'"
+    },
+    "source_fact:54a1a698da53b70be70c21a6": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
     },
     "source_fact:54a5325828b6ad3e942d97a6": {
       "first_seen_kst": "2026-10-24T11:50:33+09:00",
@@ -886376,6 +887111,27 @@
       "telegram_core_fact": "전날 JP모간은 3분기 주당순이익(EPS)이 5.57달러로 시장 전망치였던 5.90~5.94달러를 밑돌았다고 밝혔다.",
       "title": "JP모간, 실적 부진에도 '매수'…내년 전망 긍정적-웰스파고"
     },
+    "source_fact:5b57951a005707b8f9c9c6b2": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845635",
+      "source": "뉴시스",
+      "source_body_digest": "2187cd10909c96898f260e05c056c75609998d069ac164a3ddd658efc7fb4b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f448eccb3670fbd2ceb77dcb5df60027f1b042ca968687d5c642a06f4d61034c",
+      "source_fact_keys": [
+        "source_fact:v1:2c7c4b800f8f854f3ac3af63ef1fe476e2425015f0c6ad1e85a09357b3707e2f",
+        "source_fact:v1:624650e4bd28061d156c783e1305be2e8cc52a340027c2dc0d803843a52049f4"
+      ],
+      "source_published_kst": "2026-10-29T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\"",
+      "telegram_core_fact": "미국 측이 합의된 조치를 이행하면 이란은 6일째 호르무즈 해협을 재개방하고 7일째 최종 합의를 위한 협상을 재개한다는 구상이다.",
+      "title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\""
+    },
     "source_fact:5b5f86bd357da247c95eed08": {
       "first_seen_kst": "2026-10-22T02:53:34+09:00",
       "lanes": {
@@ -901995,6 +902751,34 @@
       "telegram_core_fact": "스마트파이낸셜(SMBK)은 3분기 일반회계기준(GAAP) 순이익이 1860만 달러(희석 주당순이익 1.10달러)로 전년 동기 1370만 달러(희석 주당순이익 0.81달러) 대비 36% 증가했다고 10월 19일 발표했다.",
       "title": "스마트파이낸셜, 3분기 순이익 1860만달러..전년비 36% 증가"
     },
+    "source_fact:60f2d1428133435a0033107c": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
+    },
     "source_fact:60f3566be43c058f9b25732c": {
       "first_seen_kst": "2026-10-15T01:00:58+09:00",
       "lanes": {
@@ -914611,6 +915395,26 @@
       "telegram_core_fact": "현재 수은은 KAI 지분 26.41%를 보유한 최대주주이며, 한화그룹은 지분 15.89%를 확보한 2대 주주다.",
       "title": "수은 행장 \"현재 KAI 지분 매각 계획 없어\"…민영화설 선 그어"
     },
+    "source_fact:65a4ab7591345c86e6b995ee": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845656",
+      "source": "뉴시스",
+      "source_body_digest": "e7c9bbd84637046da1beaea235c590c024705466923e612d24b0029384ac9be9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a39223eb92431ff4d3a2e5d577ac36acb281f8f30789f94ef807dbd3fe9219e",
+      "source_fact_keys": [
+        "source_fact:v1:6d0cb9ce8d87e4bd3297c078c0753d43975c131012b43776fc950517374420e8"
+      ],
+      "source_published_kst": "2026-10-29T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재",
+      "telegram_core_fact": "공경철 엔젤로보틱스 대표는 \"이번 태국 의료기기 등재는 엔젤슈트 H10이 동남아 주요 시장에서 제품 라인업을 넓혀가는 기반을 마련했다는 데 의미가 있다\"며 \"앞으로도 각국 의료기기 규제와 현지 시장 환경에 맞춰 제품 경쟁력을 강화해나가겠다\"고 말했다.",
+      "title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재"
+    },
     "source_fact:65a655fd7364a3affe1fe95f": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
       "lanes": {
@@ -918018,6 +918822,34 @@
       "source_title": "\"주식 모르면 이거 사라며?\"…개인 ETF 80조 담았다",
       "telegram_core_fact": "[파이낸셜뉴스] 국내 증시가 약세를 이어가는 가운데 올해 개인투자자의 상장지수펀드(ETF) 순매수액이 처음으로 80조원을 넘어섰다. 한국거래소 등에 따르면 올해 들어 지난 23일까지 개인의 ETF 순매수액은 80조191억원으로 집계됐다.",
       "title": "\"주식 모르면 이거 사라며?\"…개인 ETF 80조 담았다"
+    },
+    "source_fact:66db4ab0f4726beaee5b0935": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
     },
     "source_fact:66dc9d71cd6601cb57b71e06": {
       "first_seen_kst": "2026-10-11T06:52:52+09:00",
@@ -992673,6 +993505,34 @@
       "source_title": "경영협력계약서 제출 앞두고 콜옵션 공방…영풍·MBK “손실 단정 부당”",
       "telegram_core_fact": "영풍·MBK 측은 “두 권리 모두 기준가격 70만원에 매년 5%를 가산하는 동일한 가격 산식”이라며 “고려아연 주가가 하락하더라도 영풍이 계약상 요건에 따라 약정가격으로 매각을 청구할 수 있도록 하방 보호 장치가 마련돼 있다”고 설명했다.",
       "title": "경영협력계약서 제출 앞두고 콜옵션 공방…영풍·MBK “손실 단정 부당”"
+    },
+    "source_fact:818bf9dd0a83ff838ab62aa6": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
     },
     "source_fact:818d4556d78fd9649d72a1fb": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
@@ -1116626,6 +1117486,27 @@
       "telegram_core_fact": "성수기 효과로 대형 및 모바일 유기발광다이오드(OLED) 패널 출하량은 견조했지만, 환율 하락과 반도체·메모리 가격 상승에 따른 수익성 압박으로 이익률이 감소했다.",
       "title": "LG디스플레이, 환율·칩플레이션에 실적 부진…4분기도 수익성 압박-키움"
     },
+    "source_fact:ae4929b7f5f80901ba7b5824": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183868",
+      "source": "매일경제",
+      "source_body_digest": "faae7c01d2c92a26aaff4c4e5af3df3a36ddfd485f4223be035a7b839f60feeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0856966a4eb3643a78b40c9357991771dc1c99812a99b994ea554cff1dbd655",
+      "source_fact_keys": [
+        "source_fact:v1:083213b57cdd1621cc172c6bcfab805c4a30380313cc15b07a0c67961783adfe",
+        "source_fact:v1:66214bf75b228dbc25cbe33a9dc55a923221248dc5cd1b35460878c782cc37a0"
+      ],
+      "source_published_kst": "2026-10-29T06:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시",
+      "telegram_core_fact": "트럼프 행정부는 국가안보를 이유로 수입을 제한할 수 있는 무역확장법 232조를 활용해 철강·알루미늄과 자동차 및 자동차 부품 등에 고율 관세를 부과하는 등 품목별 관세 조치를 확대해왔다.",
+      "title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시"
+    },
     "source_fact:ae4a92bf825611eafa15cf17": {
       "first_seen_kst": "2026-10-29T04:44:12+09:00",
       "lanes": {
@@ -1152792,6 +1153673,29 @@
       "source_title": "美 9월 CPI 전년비 3.7% 상승…에너지 가격 급등이 물가 끌어올려(종합)",
       "telegram_core_fact": "미국 노동부 노동통계국(BLS)은 14일(현지시간) 9월 소비자물가지수(CPI)가 전년 동월 대비 3.7% 상승했다고 밝혔다.",
       "title": "美 9월 CPI 전년비 3.7% 상승…에너지 가격 급등이 물가 끌어올려(종합)"
+    },
+    "source_fact:bb062943f71fa8e3826d997d": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://plus.hankyung.com/apps/newsinside.view?aid=2026102813691&category=home&sns=y",
+      "source": "한국경제",
+      "source_body_digest": "b7e2fb959de9758ff6a6b5d384f4863c73b10f92db6ed7da006ad61f599307c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14f9239a7eefc94e113670dfd398b4e97d6752b564e637821b6f0ce7906a8cf0",
+      "source_fact_keys": [
+        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34",
+        "source_fact:v1:6da255a8f65736b892df793f920b37c748760171ef4061f80cb680c98ee12782",
+        "source_fact:v1:ab8a55f5a872fd946110145bb199d6cbe84399cc18baeef080618c9049203cca",
+        "source_fact:v1:df6526955f2d787802fea5f565f9965aad155df28bc137acc61e979ca491f74a"
+      ],
+      "source_published_kst": "2026-10-28T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "더시에나그룹, '1.8조원' 골프존카운티 인수",
+      "telegram_core_fact": "리조트·골프장 기업인 더시에나그룹이 전국에 20여 개 골프장을 둔 국내 최대 골프장 운영사 골프존카운티를 인수한다.",
+      "title": "더시에나그룹, '1.8조원' 골프존카운티 인수"
     },
     "source_fact:bb07fff8376e750e2e80d761": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
@@ -1212163,6 +1213067,27 @@
       "telegram_core_fact": "김대현 국립원예특작과학원장은 \"준고랭지 여름철 배추 재배 적지를 확대하고 신품종·신기술을 확산해 여름철 배추의 안정적인 생산·공급 기반을 더 강화해 나가겠다\"고 말했다. 농촌진흥청은 여름철 배추 수급 불안에 대응하기 위해 '준고랭지 여름철 배추 안정 생산 체계 구축 사업'을 한다고 8일 밝혔다.",
       "title": "'이상기후 대응' 농진청, 여름철 배추 재배 적지 확대 등 지원 | 연합뉴스"
     },
+    "source_fact:d0002221776b131c1a5be914": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183868",
+      "source": "매일경제",
+      "source_body_digest": "faae7c01d2c92a26aaff4c4e5af3df3a36ddfd485f4223be035a7b839f60feeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0856966a4eb3643a78b40c9357991771dc1c99812a99b994ea554cff1dbd655",
+      "source_fact_keys": [
+        "source_fact:v1:083213b57cdd1621cc172c6bcfab805c4a30380313cc15b07a0c67961783adfe",
+        "source_fact:v1:66214bf75b228dbc25cbe33a9dc55a923221248dc5cd1b35460878c782cc37a0"
+      ],
+      "source_published_kst": "2026-10-29T06:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시",
+      "telegram_core_fact": "트럼프 행정부는 국가안보를 이유로 수입을 제한할 수 있는 무역확장법 232조를 활용해 철강·알루미늄과 자동차 및 자동차 부품 등에 고율 관세를 부과하는 등 품목별 관세 조치를 확대해왔다.",
+      "title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시"
+    },
     "source_fact:d00181b2f907d8efa47e48cd": {
       "first_seen_kst": "2026-10-20T13:59:52+09:00",
       "lanes": {
@@ -1224935,6 +1225860,29 @@
       "source_title": "메모리 호황인데 '삼전닉스' 왜 떨어지나…\"공급 과잉 우려·환율이 발목\"",
       "telegram_core_fact": "한상희 한화투자증권 수석연구위원은 13일 유튜브 채널 삼프로TV에서 \"메모리 가격이 지금도 분기마다 30%씩 오르고 있지만 업체들은 수요에 여전히 문제가 없다는 입장\"이라며 \"하지만 시장은 높은 가격이 계속 유지될 수 있을지를 의심하고 있다\"고 설명했다.",
       "title": "메모리 호황인데 '삼전닉스' 왜 떨어지나…\"공급 과잉 우려·환율이 발목\""
+    },
+    "source_fact:d49c64ff7a5a8f5d0325a48a": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://plus.hankyung.com/apps/newsinside.view?aid=2026102813691&category=home&sns=y",
+      "source": "한국경제",
+      "source_body_digest": "b7e2fb959de9758ff6a6b5d384f4863c73b10f92db6ed7da006ad61f599307c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14f9239a7eefc94e113670dfd398b4e97d6752b564e637821b6f0ce7906a8cf0",
+      "source_fact_keys": [
+        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34",
+        "source_fact:v1:6da255a8f65736b892df793f920b37c748760171ef4061f80cb680c98ee12782",
+        "source_fact:v1:ab8a55f5a872fd946110145bb199d6cbe84399cc18baeef080618c9049203cca",
+        "source_fact:v1:df6526955f2d787802fea5f565f9965aad155df28bc137acc61e979ca491f74a"
+      ],
+      "source_published_kst": "2026-10-28T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "더시에나그룹, '1.8조원' 골프존카운티 인수",
+      "telegram_core_fact": "리조트·골프장 기업인 더시에나그룹이 전국에 20여 개 골프장을 둔 국내 최대 골프장 운영사 골프존카운티를 인수한다.",
+      "title": "더시에나그룹, '1.8조원' 골프존카운티 인수"
     },
     "source_fact:d4a0d1f4f3fd03568109deb6": {
       "first_seen_kst": "2026-10-29T08:11:59+09:00",
@@ -1239452,6 +1240400,30 @@
       "telegram_core_fact": "신성통상의 SPA 브랜드 ‘탑텐(TOPTEN10)’과 아동복 브랜드 ‘탑텐키즈(TOPTEN KIDS)’가 전개하는 하반기 ‘텐텐데이(TENTEN DAY)’가 개막 사흘 만에 매출 309억원을 기록했다고 27일 밝혔다.",
       "title": "겨울옷 수요 몰렸다…신성통상 ‘텐텐데이’, 사흘만에 매출 300억원"
     },
+    "source_fact:d9cdbfcda2b7f52c87c97536": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02965126645617840",
+      "source": "이데일리",
+      "source_body_digest": "12e08e9233d340225e1935190fa35705306b59500e2c744bd4b4896b354a9f3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd8ed6fdea47f0c7b72f046f4bd1dd3913050a39e9d2128f84032172d828d5e4",
+      "source_fact_keys": [
+        "source_fact:v1:353408694908fa8419ccd8743363b768bdba2efe5679d689d53efff86a1dbdd8",
+        "source_fact:v1:591bd9bb788f52dba078e4462310f1f63b5d70c11d24b8d3c5aba8ad1157be58",
+        "source_fact:v1:acc7c1cb5406e8e360ba87cc68ca1c93865b0b495596cb684bfdf4392e5a189e",
+        "source_fact:v1:b85f13c25c79129a4f9c52169edf697b9c6255a2d1598b116dd94f9a8ac0a826",
+        "source_fact:v1:da8f9995f3b9fbfbec89fe21946af70707c609e6a215c62fb58b906b685f9ca4"
+      ],
+      "source_published_kst": "2026-10-29T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산",
+      "telegram_core_fact": "나델라 CEO는 28일(현지시간) MS의 2027회계연도 1분기(2026년 7~9월) 실적 발표 어닝 콜에서 “눈길을 끄는 신기술 자체에 집중하는 흐름은 약해지고 있다”며 기업들이 AI 시스템의 비용과 신뢰성, 보안, 자체 통제 가능성을 더욱 중시하고 있다고 밝혔다.",
+      "title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산"
+    },
     "source_fact:d9d154d1cea6fed5a50b9be9": {
       "first_seen_kst": "2026-10-23T09:14:52+09:00",
       "lanes": {
@@ -1253768,6 +1254740,34 @@
       ],
       "source_published_kst": "2026-10-06T06:28+09:00",
       "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
+    "source_fact:df3588d16dd23ee95cbb0e15": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
     },
     "source_fact:df3607e2ed01de58af384639": {
       "first_seen_kst": "2026-10-19T11:13:29+09:00",
@@ -1291935,6 +1292935,34 @@
       "source_published_kst": "2026-10-06T03:32+09:00",
       "title": "[美특징주]마이크로소프트, 멜리우스 ‘매수’ 상향에 2%↑…AI 보안 경쟁력 주목"
     },
+    "source_fact:ec90dc3a8e374ff5900207c9": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
+    },
     "source_fact:ec94580626416de94ce22701": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
       "lanes": {
@@ -1302187,6 +1303215,30 @@
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "중국, ‘물류 데이터 일대일로’ 좌초⋯한중일 협력도 중단"
     },
+    "source_fact:f0471b4094ee7de71b105cd0": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02965126645617840",
+      "source": "이데일리",
+      "source_body_digest": "12e08e9233d340225e1935190fa35705306b59500e2c744bd4b4896b354a9f3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd8ed6fdea47f0c7b72f046f4bd1dd3913050a39e9d2128f84032172d828d5e4",
+      "source_fact_keys": [
+        "source_fact:v1:353408694908fa8419ccd8743363b768bdba2efe5679d689d53efff86a1dbdd8",
+        "source_fact:v1:591bd9bb788f52dba078e4462310f1f63b5d70c11d24b8d3c5aba8ad1157be58",
+        "source_fact:v1:acc7c1cb5406e8e360ba87cc68ca1c93865b0b495596cb684bfdf4392e5a189e",
+        "source_fact:v1:b85f13c25c79129a4f9c52169edf697b9c6255a2d1598b116dd94f9a8ac0a826",
+        "source_fact:v1:da8f9995f3b9fbfbec89fe21946af70707c609e6a215c62fb58b906b685f9ca4"
+      ],
+      "source_published_kst": "2026-10-29T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산",
+      "telegram_core_fact": "나델라 CEO는 28일(현지시간) MS의 2027회계연도 1분기(2026년 7~9월) 실적 발표 어닝 콜에서 “눈길을 끄는 신기술 자체에 집중하는 흐름은 약해지고 있다”며 기업들이 AI 시스템의 비용과 신뢰성, 보안, 자체 통제 가능성을 더욱 중시하고 있다고 밝혔다.",
+      "title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산"
+    },
     "source_fact:f049c086eec9cc1ce426eb62": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -1306589,6 +1307641,30 @@
       "source_title": "오리온 카스타드, 해외서 더 잘 팔린다…3개국 생산라인 증설",
       "telegram_core_fact": "전체 매출의 76%가 해외에서 발생하는 가운데 오리온은 한국과 베트남, 인도의 생산시설을 증설하며 공급 확대에 나섰다.",
       "title": "오리온 카스타드, 해외서 더 잘 팔린다…3개국 생산라인 증설"
+    },
+    "source_fact:f1f3cb717134b0599f6f44af": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02965126645617840",
+      "source": "이데일리",
+      "source_body_digest": "12e08e9233d340225e1935190fa35705306b59500e2c744bd4b4896b354a9f3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd8ed6fdea47f0c7b72f046f4bd1dd3913050a39e9d2128f84032172d828d5e4",
+      "source_fact_keys": [
+        "source_fact:v1:353408694908fa8419ccd8743363b768bdba2efe5679d689d53efff86a1dbdd8",
+        "source_fact:v1:591bd9bb788f52dba078e4462310f1f63b5d70c11d24b8d3c5aba8ad1157be58",
+        "source_fact:v1:acc7c1cb5406e8e360ba87cc68ca1c93865b0b495596cb684bfdf4392e5a189e",
+        "source_fact:v1:b85f13c25c79129a4f9c52169edf697b9c6255a2d1598b116dd94f9a8ac0a826",
+        "source_fact:v1:da8f9995f3b9fbfbec89fe21946af70707c609e6a215c62fb58b906b685f9ca4"
+      ],
+      "source_published_kst": "2026-10-29T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산",
+      "telegram_core_fact": "나델라 CEO는 28일(현지시간) MS의 2027회계연도 1분기(2026년 7~9월) 실적 발표 어닝 콜에서 “눈길을 끄는 신기술 자체에 집중하는 흐름은 약해지고 있다”며 기업들이 AI 시스템의 비용과 신뢰성, 보안, 자체 통제 가능성을 더욱 중시하고 있다고 밝혔다.",
+      "title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산"
     },
     "source_fact:f1fa80d04499e4451a63ff42": {
       "first_seen_kst": "2026-10-13T00:43:08+09:00",
@@ -1338490,6 +1339566,34 @@
       "telegram_core_fact": "디지털 접근성 솔루션 기업 오디오아이(AEYE)는 3분기(7~9월) 일반회계기준(GAAP) 매출액이 1096만3000달러로 전년비 7% 증가했고, 순이익은 99만 달러로 전년 동기 순손실 55만4000달러에서 흑자전환했다고 10월 26일 발표했다.",
       "title": "오디오아이, 3분기 매출 1100만달러..흑자전환·가이던스 상향"
     },
+    "source_fact:fdb6da4f6b31c6ff82375dca": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
+    },
     "source_fact:fdb72961c04422a99c624f8e": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
       "lanes": {
@@ -1343387,6 +1344491,29 @@
       "telegram_core_fact": "kt 클라우드는 버티브와 '차세대 AI 데이터센터 전략기술 파트너십'을 체결하고, 전력·냉각 및 모듈형 설루션을 중심으로 AI 데이터센터 핵심 인프라 분야 기술 협력을 확대한다고 28일 밝혔다. kt 클라우드가 글로벌 데이터센터 인프라 기업 버티브와 손잡고 인공지능(AI) 데이터센터의 전력·냉각 기술 고도화에 나선다.",
       "title": "KT클라우드, 버티브와 AI DC 기술협력…전력·냉각 인프라 강화"
     },
+    "source_fact:ff9f5c19395b38701e2fa118": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://plus.hankyung.com/apps/newsinside.view?aid=2026102813691&category=home&sns=y",
+      "source": "한국경제",
+      "source_body_digest": "b7e2fb959de9758ff6a6b5d384f4863c73b10f92db6ed7da006ad61f599307c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14f9239a7eefc94e113670dfd398b4e97d6752b564e637821b6f0ce7906a8cf0",
+      "source_fact_keys": [
+        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34",
+        "source_fact:v1:6da255a8f65736b892df793f920b37c748760171ef4061f80cb680c98ee12782",
+        "source_fact:v1:ab8a55f5a872fd946110145bb199d6cbe84399cc18baeef080618c9049203cca",
+        "source_fact:v1:df6526955f2d787802fea5f565f9965aad155df28bc137acc61e979ca491f74a"
+      ],
+      "source_published_kst": "2026-10-28T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "더시에나그룹, '1.8조원' 골프존카운티 인수",
+      "telegram_core_fact": "리조트·골프장 기업인 더시에나그룹이 전국에 20여 개 골프장을 둔 국내 최대 골프장 운영사 골프존카운티를 인수한다.",
+      "title": "더시에나그룹, '1.8조원' 골프존카운티 인수"
+    },
     "source_fact:ffa25f1cec6a87697efcd01e": {
       "first_seen_kst": "2026-10-23T04:40:39+09:00",
       "lanes": {
@@ -1344127,6 +1345254,30 @@
       "source_title": "유니테스트 수주공시 - 반도체 검사장비 162.3억원 (매출액대비 14.72 %)",
       "telegram_core_fact": "유니테스트는 SK하이닉스과 162.3억원 규모 반도체 검사장비 계약을 공시했다. 기간은 2026년 10월 21일부터 2027년 02월 12일까지다.",
       "title": "유니테스트 수주공시 - 반도체 검사장비 162.3억원 (매출액대비 14.72 %)"
+    },
+    "source_fact:fffd9845efdf3e8c211068b3": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02965126645617840",
+      "source": "이데일리",
+      "source_body_digest": "12e08e9233d340225e1935190fa35705306b59500e2c744bd4b4896b354a9f3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd8ed6fdea47f0c7b72f046f4bd1dd3913050a39e9d2128f84032172d828d5e4",
+      "source_fact_keys": [
+        "source_fact:v1:353408694908fa8419ccd8743363b768bdba2efe5679d689d53efff86a1dbdd8",
+        "source_fact:v1:591bd9bb788f52dba078e4462310f1f63b5d70c11d24b8d3c5aba8ad1157be58",
+        "source_fact:v1:acc7c1cb5406e8e360ba87cc68ca1c93865b0b495596cb684bfdf4392e5a189e",
+        "source_fact:v1:b85f13c25c79129a4f9c52169edf697b9c6255a2d1598b116dd94f9a8ac0a826",
+        "source_fact:v1:da8f9995f3b9fbfbec89fe21946af70707c609e6a215c62fb58b906b685f9ca4"
+      ],
+      "source_published_kst": "2026-10-29T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산",
+      "telegram_core_fact": "나델라 CEO는 28일(현지시간) MS의 2027회계연도 1분기(2026년 7~9월) 실적 발표 어닝 콜에서 “눈길을 끄는 신기술 자체에 집중하는 흐름은 약해지고 있다”며 기업들이 AI 시스템의 비용과 신뢰성, 보안, 자체 통제 가능성을 더욱 중시하고 있다고 밝혔다.",
+      "title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산"
     },
     "source_fact:fffe1e08419be84f7cc69f55": {
       "first_seen_kst": "2026-10-19T20:38:33+09:00",
@@ -1365444,6 +1366595,34 @@
       "source": "전자신문",
       "title": "모태펀드 '글로벌 VC' 출자 1위는 佛 '졸트캐피탈'…유럽계 두각"
     },
+    "title:1fe0ead5542afe015ba89a30": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2641431",
+      "source": "이투데이",
+      "source_body_digest": "315bf8bec1ecb5e9826cddb28cf2dd5ab4c69ec35482073b3586ba1c4f4d912b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deac8b82387c73816bfc895004a226a1c347f34919c074d1728a96b4d30d6548",
+      "source_fact_keys": [
+        "source_fact:v1:2021284fd680b63461d35b11901207930bfcc315980c379889603adaf86dabad",
+        "source_fact:v1:4bb2c2ec4dcccf6cdba49f9613e22f22ff7558c47502ba62828c18d8f5fb80b9",
+        "source_fact:v1:69400c3cb0b0f7d90cd5197d4823e5043adae09183a9af76fa3701c57c283e1b",
+        "source_fact:v1:75592e13b01c4e759949b184674bcc054fede4829bbabf9b2b34c95bd129b58f",
+        "source_fact:v1:9fc34ebd9545f7dde76613e49cbb47576a598f0aaaa8f17008d4ef96ce3a15a6",
+        "source_fact:v1:bce2891ed56f39021beebc9446dd7e8a1d3b000a509e2d54cc840627b0a01c66",
+        "source_fact:v1:ca2ae516f3b29b961c636ef5dfcfcd8473bfec1d3384f596e78638d180655c5f",
+        "source_fact:v1:cde110a6d39ce8da07d35e701bdf19d2bf5d373edc7576ba844090ef0a5117f4",
+        "source_fact:v1:ffbf9258dff363bfd1ee76def42caa10c25e5885e5879b770fdffb65d7e993da"
+      ],
+      "source_published_kst": "2026-10-29T07:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "다시 밀린 국제 금값…국내 금시세는?",
+      "telegram_core_fact": "국내 금시세에는 국제 금값뿐 아니라 원·달러 환율과 국내 수급도 영향을 미친다. 연준은 인플레이션이 여전히 높다며 추가 정보를 바탕으로 물가를 목표치인 2%로 되돌리기 위한 정책 기조를 결정하겠다고 밝혔다.",
+      "title": "다시 밀린 국제 금값…국내 금시세는?"
+    },
     "title:1fe24f48902a33191eee70fd": {
       "first_seen_kst": "2026-10-29T07:03:26+09:00",
       "lanes": {
@@ -1368216,6 +1369395,29 @@
       "source_title": "BW LPG, 3분기 트레이딩 총이익 1억6400만 달러 달성",
       "telegram_core_fact": "BW LPG(BWLP)가 제품서비스(BW Product Services) 부문의 2026년 3분기(9월 30일 종료) 총 트레이딩 이익이 약 1억6400만 달러, 일반관리비와 법인세 차감 후 추정 순이익이 약 1억1800만 달러를 기록했다고 10월 19일 발표했다.",
       "title": "BW LPG, 3분기 트레이딩 총이익 1억6400만 달러 달성"
+    },
+    "title:24220fb69f1fdc884fb2ffba": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://plus.hankyung.com/apps/newsinside.view?aid=2026102813691&category=home&sns=y",
+      "source": "한국경제",
+      "source_body_digest": "b7e2fb959de9758ff6a6b5d384f4863c73b10f92db6ed7da006ad61f599307c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14f9239a7eefc94e113670dfd398b4e97d6752b564e637821b6f0ce7906a8cf0",
+      "source_fact_keys": [
+        "source_fact:v1:55aacd5932eb83fabaca095b01be24ace5cd9f600973ee081b4f0f3acfd8fa34",
+        "source_fact:v1:6da255a8f65736b892df793f920b37c748760171ef4061f80cb680c98ee12782",
+        "source_fact:v1:ab8a55f5a872fd946110145bb199d6cbe84399cc18baeef080618c9049203cca",
+        "source_fact:v1:df6526955f2d787802fea5f565f9965aad155df28bc137acc61e979ca491f74a"
+      ],
+      "source_published_kst": "2026-10-28T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "더시에나그룹, '1.8조원' 골프존카운티 인수",
+      "telegram_core_fact": "리조트·골프장 기업인 더시에나그룹이 전국에 20여 개 골프장을 둔 국내 최대 골프장 운영사 골프존카운티를 인수한다.",
+      "title": "더시에나그룹, '1.8조원' 골프존카운티 인수"
     },
     "title:24375c26de3a415997ffbf1f": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -1379912,6 +1381114,24 @@
       "source_title": "횡성한우축제 40만명 찾았다…매출 44억원 역대 최고",
       "telegram_core_fact": "강원 횡성군의 제22회 횡성한우축제가 방문객 40만명과 매출 44억원을 기록하며 역대 최고 흥행 성적을 거뒀다.",
       "title": "횡성한우축제 40만명 찾았다…매출 44억원 역대 최고"
+    },
+    "title:351ebc7500c1267eb4046c69": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://biz.heraldcorp.com/article/10918320",
+      "source": "헤럴드경제",
+      "source_body_digest": "0649b40cb93e4daed6993333205c000e68a441c5279dad169159b03c838e7aaa",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-29T08:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "수출 역대 최대에도 제조업은 뒷걸음질…中企 ‘온도 차’",
+      "telegram_core_fact": "중소벤처기업연구원은 “중소기업 수출이 역대 3분기 최대 실적을 기록하고 서비스업 생산과 소매판매도 증가세를 유지했으나, 제조업 생산이 감소 전환하고 고용 증가 폭이 축소되는 등 업종 간 회복 격차가 나타나고 있다”며 “비용·금리 상승에 따른 중소기업의 자금 여건 부담이 지속되고 있어 면밀한 점검이 필요하다”고 밝혔다.",
+      "title": "수출 역대 최대에도 제조업은 뒷걸음질…中企 ‘온도 차’"
     },
     "title:3520663f11f63dbaa5138efb": {
       "first_seen_kst": "2026-10-10T00:12:46+09:00",
@@ -1398074,6 +1399294,26 @@
       "link": "https://www.newsis.com/view/NISX20260927_0003804400",
       "source": "뉴시스",
       "title": "국힘, 장외투쟁 신중론…\"국감 등 원내에서 현안 대응 우선\""
+    },
+    "title:4fbc93410dacd9193e492d07": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845656",
+      "source": "뉴시스",
+      "source_body_digest": "e7c9bbd84637046da1beaea235c590c024705466923e612d24b0029384ac9be9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a39223eb92431ff4d3a2e5d577ac36acb281f8f30789f94ef807dbd3fe9219e",
+      "source_fact_keys": [
+        "source_fact:v1:6d0cb9ce8d87e4bd3297c078c0753d43975c131012b43776fc950517374420e8"
+      ],
+      "source_published_kst": "2026-10-29T08:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재",
+      "telegram_core_fact": "공경철 엔젤로보틱스 대표는 \"이번 태국 의료기기 등재는 엔젤슈트 H10이 동남아 주요 시장에서 제품 라인업을 넓혀가는 기반을 마련했다는 데 의미가 있다\"며 \"앞으로도 각국 의료기기 규제와 현지 시장 환경에 맞춰 제품 경쟁력을 강화해나가겠다\"고 말했다.",
+      "title": "엔젤로보틱스, '엔젤슈트 H10' 태국 식품의약품청 의료기기 등재"
     },
     "title:4fbe054e8a79c252269657a9": {
       "first_seen_kst": "2026-10-21T16:09:03+09:00",
@@ -1466675,6 +1467915,27 @@
       "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
       "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
     },
+    "title:b55e019bc6436884d62b640a": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.newsis.com/view/NISX20261029_0003845635",
+      "source": "뉴시스",
+      "source_body_digest": "2187cd10909c96898f260e05c056c75609998d069ac164a3ddd658efc7fb4b24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f448eccb3670fbd2ceb77dcb5df60027f1b042ca968687d5c642a06f4d61034c",
+      "source_fact_keys": [
+        "source_fact:v1:2c7c4b800f8f854f3ac3af63ef1fe476e2425015f0c6ad1e85a09357b3707e2f",
+        "source_fact:v1:624650e4bd28061d156c783e1305be2e8cc52a340027c2dc0d803843a52049f4"
+      ],
+      "source_published_kst": "2026-10-29T08:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\"",
+      "telegram_core_fact": "미국 측이 합의된 조치를 이행하면 이란은 6일째 호르무즈 해협을 재개방하고 7일째 최종 합의를 위한 협상을 재개한다는 구상이다.",
+      "title": "이란 외무 \"'7일 계획' 조기 이행 방안 검토…중재국과 긴밀 접촉\""
+    },
     "title:b5741091ce5981bbfd93d17d": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -1466775,6 +1468036,30 @@
       "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
       "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
+    },
+    "title:b5a1e624ee6370a2547723a9": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02965126645617840",
+      "source": "이데일리",
+      "source_body_digest": "12e08e9233d340225e1935190fa35705306b59500e2c744bd4b4896b354a9f3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd8ed6fdea47f0c7b72f046f4bd1dd3913050a39e9d2128f84032172d828d5e4",
+      "source_fact_keys": [
+        "source_fact:v1:353408694908fa8419ccd8743363b768bdba2efe5679d689d53efff86a1dbdd8",
+        "source_fact:v1:591bd9bb788f52dba078e4462310f1f63b5d70c11d24b8d3c5aba8ad1157be58",
+        "source_fact:v1:acc7c1cb5406e8e360ba87cc68ca1c93865b0b495596cb684bfdf4392e5a189e",
+        "source_fact:v1:b85f13c25c79129a4f9c52169edf697b9c6255a2d1598b116dd94f9a8ac0a826",
+        "source_fact:v1:da8f9995f3b9fbfbec89fe21946af70707c609e6a215c62fb58b906b685f9ca4"
+      ],
+      "source_published_kst": "2026-10-29T07:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산",
+      "telegram_core_fact": "나델라 CEO는 28일(현지시간) MS의 2027회계연도 1분기(2026년 7~9월) 실적 발표 어닝 콜에서 “눈길을 끄는 신기술 자체에 집중하는 흐름은 약해지고 있다”며 기업들이 AI 시스템의 비용과 신뢰성, 보안, 자체 통제 가능성을 더욱 중시하고 있다고 밝혔다.",
+      "title": "MS 나델라 \"AI 신기술 과시보다 실무 적용\"…기업용 AI 에이전트 확산"
     },
     "title:b5a8d7cfc86ced59d679e372": {
       "first_seen_kst": "2026-10-19T19:03:47+09:00",
@@ -1506055,6 +1507340,27 @@
       "telegram_core_fact": "에프엔비(FNB)는 3분기 순이익이 1억5290만 달러, 희석 주당순이익이 0.43달러로 전년 동기 0.41달러 대비 4.9% 증가했다고 19일(현지시간) 발표했다.",
       "title": "에프엔비, 3분기 희석 EPS 0.43달러..순이자수익 역대 최대"
     },
+    "title:f1d6cc86380ef407cf543dd0": {
+      "first_seen_kst": "2026-10-29T17:41:36+09:00",
+      "lanes": {
+        "live": "2026-10-29T17:41:36+09:00"
+      },
+      "last_seen_kst": "2026-10-29T17:41:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1183868",
+      "source": "매일경제",
+      "source_body_digest": "faae7c01d2c92a26aaff4c4e5af3df3a36ddfd485f4223be035a7b839f60feeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0856966a4eb3643a78b40c9357991771dc1c99812a99b994ea554cff1dbd655",
+      "source_fact_keys": [
+        "source_fact:v1:083213b57cdd1621cc172c6bcfab805c4a30380313cc15b07a0c67961783adfe",
+        "source_fact:v1:66214bf75b228dbc25cbe33a9dc55a923221248dc5cd1b35460878c782cc37a0"
+      ],
+      "source_published_kst": "2026-10-29T06:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시",
+      "telegram_core_fact": "트럼프 행정부는 국가안보를 이유로 수입을 제한할 수 있는 무역확장법 232조를 활용해 철강·알루미늄과 자동차 및 자동차 부품 등에 고율 관세를 부과하는 등 품목별 관세 조치를 확대해왔다.",
+      "title": "트럼프, 로봇·산업기계 수입 안보위협 판단…교역국과 협상지시"
+    },
     "title:f1d9c788fbf99265f9689c1f": {
       "first_seen_kst": "2026-10-11T07:07:11+09:00",
       "lanes": {
@@ -1515115,5 +1516421,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-29T16:31:44+09:00"
+  "updated_at_kst": "2026-10-29T17:41:36+09:00"
 }
