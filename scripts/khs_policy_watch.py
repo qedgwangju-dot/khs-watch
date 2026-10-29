@@ -914,6 +914,87 @@ def apply_doe_grid_dpa_profile(item: dict, haystack: str) -> None:
 
 
 
+
+ROBOTICS_232_EVENT_KEY = "us-section232-robotics-machinery-proclamation-2026-10-28"
+ROBOTICS_232_PROCLAMATION_URL = (
+    "https://www.whitehouse.gov/presidential-actions/2026/10/"
+    "adjusting-imports-of-robotics-industrial-machinery-and-their-parts-and-components-into-the-united-states/"
+)
+
+
+def is_robotics_section232_presidential_action(item: dict) -> bool:
+    """Verified Oct 28 Section 232 robotics action, not any robotics-related article."""
+    if not item.get("body_verified"):
+        return False
+    link = str(item.get("link") or "").lower()
+    source = str(item.get("source") or "").lower()
+    if not link.startswith("https://www.whitehouse.gov/") or not source.startswith("white house"):
+        return False
+    if (
+        "adjusting-imports-of-robotics-industrial-machinery-and-their-parts-and-components" not in link
+        and "fact-sheet-president-donald-j-trump-adjusts-imports-of-robotics-industrial-machinery" not in link
+    ):
+        return False
+    title = str(item.get("source_title") or item.get("title") or "").lower()
+    if "robotics" not in title or "industrial machinery" not in title:
+        return False
+    body = clean_text(str(item.get("source_body") or "")).lower()
+    return (
+        "section 232" in body
+        and "robotics" in body
+        and "industrial machinery" in body
+        and ("180 days" in body or "180-day" in body)
+    )
+
+
+def apply_robotics_section232_profile(item: dict) -> None:
+    """Facts and dates belong to this signed proclamation, not to a generic tariff template."""
+    item.update({
+        "policy_event_key": ROBOTICS_232_EVENT_KEY,
+        "importance": "상",
+        "status": "확정",
+        "title_ko": "트럼프, Section 232 로봇·산업기계 국가안보 조사 수용·180일 국가별 협상 지시",
+        "signing_date": "2026-10-28",
+        "matched": {
+            "presidential_action": ["proclamation"],
+            "sanctions_tariffs_export": ["section 232"],
+        },
+        "impacts": ["시간표", "매출·마진·현금흐름", "할인율"],
+        "paths": ["Section 232", "국가별 협상", "미국 현지화", "후속 관세·쿼터 검토"],
+        "sectors": ["로봇/산업기계", "산업자동화/공작기계", "감속기/액추에이터"],
+        "korea_value_chain": ["로봇 완제품", "감속기/모터", "액추에이터", "산업기계 수출"],
+        "policy_plain_summary": (
+            "2026년 10월 28일 트럼프 대통령은 Section 232 국가안보 조사 결과에 동의하고 "
+            "상무부·USTR에 로봇·산업기계·부품의 국가별 협상을 지시했습니다. "
+            "180일 이내 진행 상황 보고가 필요하지만 이번 포고문에 신규 관세율·쿼터·수수료를 즉시 확정하지는 않았습니다."
+        ),
+        "investment_view": (
+            "관세·쿼터·수수료 및 미국 내 로봇 제조투자 인센티브는 후속 선택지입니다. "
+            "현재 기업별 정부 보조금·수주·관세율이 확정된 것은 아닙니다."
+        ),
+        "korea_market_impact": (
+            "국내 로봇·감속기·모터·산업기계 업체는 미국향 매출, 원산지와 현지생산 능력에 따라 "
+            "차등 노출됩니다. 한국산의 관세 면제나 개별 기업 신규 수주는 아직 확정되지 않았습니다."
+        ),
+        "priced_in": "즉시 관세는 없지만 국가별 협상 결과에 따른 수입원가·현지 생산 유인 변화는 남아 있습니다.",
+        "counter": (
+            "중국산을 이번 포고문으로 즉시 금지한 것은 아닙니다. 협상 타결·국가별 면제·"
+            "추가 수입조치가 기업별 매출과 원가의 방향을 바꿀 수 있습니다."
+        ),
+        "failure_signal": (
+            "2027년 4월 26일 이내 협상 보고서·후속 대통령 조치에서 품목·원산지·"
+            "관세율·쿼터·시행일이 확정되지 않으면 직접 실적 영향은 미확정으로 유지합니다."
+        ),
+        "policy_timeline": [
+            {"date": "2025-09-02", "stage": "조사 착수", "detail": "미 상무부, Section 232 로봇·산업기계 수입 국가안보 조사 개시"},
+            {"date": "2025-09-26", "stage": "공식 공고", "detail": "미 연방관보 조사 및 의견제출 안내"},
+            {"date": "2025-10-17", "stage": "의견 기한", "detail": "상무부 국가안보 조사 의견제출 마감"},
+            {"date": "2026-10-28", "stage": "이번 신규 사건", "detail": "대통령 조사 결과 수용 및 국가별 협상 지시·신규 관세 즉시 부과 없음"},
+            {"date": "2027-04-26", "stage": "향후 기한", "detail": "180일 이내 협상 진행 상황 보고 예정·관세 자동 발효일 아님"},
+        ],
+    })
+
+
 def is_energy_dominance_month_proclamation(item: dict) -> bool:
     return (
         "national-energy-dominance-month-2026" in str(item.get("link") or "").lower()
@@ -1553,7 +1634,8 @@ def classify_item(item: dict) -> dict | None:
     if "company_filing" in matched:
         paths.append("계약 가시성")
     semantic_event_key = (
-        "us-energy-dominance-month-proclamation-2026-10-07"
+        ROBOTICS_232_EVENT_KEY if is_robotics_section232_presidential_action(item)
+        else "us-energy-dominance-month-proclamation-2026-10-07"
         if is_energy_dominance_month_proclamation(item)
         else doe_grid_dpa_event_key(item, haystack)
         or polysilicon_11052_event_key(item, haystack)
@@ -1567,6 +1649,8 @@ def classify_item(item: dict) -> dict | None:
         fingerprint_input = f"{item.get('source')}|{item.get('title')}|{item.get('link')}"
     fingerprint = hashlib.sha256(fingerprint_input.encode("utf-8")).hexdigest()[:16]
     result = {**item, "fingerprint": fingerprint, "matched": matched, "importance": importance, "status": "예비" if item["source"].startswith(("CourtListener", "KRX KIND")) else "확정", "impacts": list(dict.fromkeys(impacts)) or ["의사결정 영향 제한적"], "paths": list(dict.fromkeys(paths)) or ["정책 타임라인"], "sectors": sectors}
+    if semantic_event_key == ROBOTICS_232_EVENT_KEY:
+        apply_robotics_section232_profile(result)
     apply_korea_trade_remedy_profile(result, haystack)
     apply_doe_grid_dpa_profile(result, haystack)
     if is_energy_dominance_month_proclamation(result):
@@ -1742,6 +1826,8 @@ def write_pending_seen(alerts: list[dict], now: dt.datetime) -> None:
 
 def candidate_source_rank(item: dict) -> int:
     source = str(item.get("source") or "").lower()
+    if item.get("policy_event_key") == ROBOTICS_232_EVENT_KEY:
+        return 0 if source == "white house proclamations" else 1
     if item.get("whitehouse_story_key"):
         if source == "white house fact sheets":
             return 0
@@ -1821,6 +1907,7 @@ def main() -> int:
     new_alerts = []
     selected_fingerprints: set[str] = set()
     for item in sorted(candidates, key=lambda x: (
+        x.get("policy_event_key") != ROBOTICS_232_EVENT_KEY,
         x.get("fingerprint") != energy_key,
         x["importance"] != "상",
         x.get("age_hours") or 999,
@@ -1889,6 +1976,43 @@ def _self_test_doe_grid_dpa_event_model() -> None:
 
 
 
+def _self_test_robotics_232_proclamation() -> None:
+    assert ROBOTICS_232_EVENT_KEY == "us-section232-robotics-machinery-proclamation-2026-10-28"
+    sample = (
+        "The Department of Commerce Section 232 investigation finds imports of robotics and industrial machinery "
+        "threaten national security. The Secretary of Commerce and USTR shall conduct negotiations. "
+        "Within 180 days submit a report to the President. Future tariffs, quotas, and fees are options."
+    )
+    original = {
+        "source": "White House proclamations",
+        "title": "ADJUSTING IMPORTS OF ROBOTICS, INDUSTRIAL MACHINERY, AND THEIR PARTS AND COMPONENTS INTO THE UNITED STATES",
+        "link": ROBOTICS_232_PROCLAMATION_URL,
+        "source_body": sample,
+        "body_verified": True,
+        "document_type": "Proclamation",
+        "published_kst": "2026-10-29T00:00:00+09:00",
+    }
+    fact = dict(original)
+    fact.update({
+        "source": "White House fact sheets",
+        "title": "Fact Sheet: President Donald J. Trump Adjusts Imports of Robotics, Industrial Machinery, and their Parts and Components into the United States",
+        "link": "https://www.whitehouse.gov/fact-sheets/2026/10/fact-sheet-president-donald-j-trump-adjusts-imports-of-robotics-industrial-machinery-and-their-parts-and-components-into-the-united-states/",
+        "document_type": "Fact Sheet",
+    })
+    a, b = classify_item(original), classify_item(fact)
+    assert a and b and a["fingerprint"] == b["fingerprint"]
+    assert a["policy_event_key"] == ROBOTICS_232_EVENT_KEY
+    assert a["signing_date"] == "2026-10-28"
+    assert a["policy_timeline"][-1]["date"] == "2027-04-26"
+    assert "즉시 확정하지" in a["policy_plain_summary"]
+    assert len(dedupe_candidate_fingerprints([b, a])) == 1
+    assert dedupe_candidate_fingerprints([b, a])[0]["source"] == "White House proclamations"
+    assert classify_item(dict(original, body_verified=False)) is None
+    assert not is_robotics_section232_presidential_action(dict(original, source_body="Unrelated robotics article"))
+    assert not is_robotics_section232_presidential_action(dict(original, source="Federal Register FCC"))
+    print("us_robotics_232_policy_profile=passed")
+
+
 def _self_test_energy_month_proclamation() -> None:
     url = (
         "https://www.whitehouse.gov/presidential-actions/2026/10/"
@@ -1928,4 +2052,5 @@ def _self_test_energy_month_proclamation() -> None:
 if __name__ == "__main__":
     _self_test_doe_grid_dpa_event_model()
     _self_test_energy_month_proclamation()
+    _self_test_robotics_232_proclamation()
     raise SystemExit(main())
