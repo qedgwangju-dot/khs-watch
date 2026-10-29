@@ -697,6 +697,25 @@ def _compact_report(raw_text):
     return report
 
 
+def _format_real_yield_sources(line):
+    base = re.escape(real_yield.BASE)
+    match = re.fullmatch(
+        rf"공식 원천: (?P<nominal>{base}\?data=daily_treasury_yield_curve"
+        rf"&field_tdr_date_value=(?P<year>[0-9]{{4}})) \| "
+        rf"(?P<real>{base}\?data=daily_treasury_real_yield_curve"
+        rf"&field_tdr_date_value=(?P=year))",
+        line,
+    )
+    if not match:
+        return None
+    nominal_url = html.escape(match.group("nominal"), quote=True)
+    real_url = html.escape(match.group("real"), quote=True)
+    return (
+        f'공식 원천: <a href="{nominal_url}">미 재무부 명목금리</a>'
+        f' · <a href="{real_url}">미 재무부 실질금리</a>'
+    )
+
+
 def _format_html(chunk):
     out = []
     bold_prefixes = (
@@ -704,6 +723,10 @@ def _format_html(chunk):
         "국채 해석(ETF 추정):", "회사채 해석(ETF 추정):",
     )
     for line in chunk.splitlines():
+        source_links = _format_real_yield_sources(line)
+        if source_links is not None:
+            out.append(source_links)
+            continue
         escaped = html.escape(line, quote=False)
         bold = (line.startswith("[") and line.endswith("]")) or line.startswith(bold_prefixes)
         out.append(f"<b>{escaped}</b>" if bold else escaped)
