@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-29T10:48:30+09:00",
-  "last_scan_count": 7,
+  "updated_at_kst": "2026-10-29T17:26:35+09:00",
+  "last_scan_count": 8,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
     "vintage": "3Q26",
@@ -114,7 +114,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -135,6 +135,7 @@
     "55bbf1575d333d5e4db815d4",
     "591d05e5e3f4eaa51513ff0b",
     "6cb3f9fee458cbd5414c2744",
+    "6f7d4edee62f9cb2d4432ccf",
     "89e73411422b9d710eee6410",
     "8e83ced6f5ddad839f021a48",
     "928e5521196664bfaa5b475c",
@@ -158,7 +159,14 @@
     "fbb3374837c522b4bf3b2884"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "taiwan|capacity|TSMC|cowos",
+      "source": "www.tokenpost.com",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-10-29T14:42:47+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
   "telegram_message_ids": [
     292
