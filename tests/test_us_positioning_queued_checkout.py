@@ -1,16 +1,19 @@
 """A queued digest must see the previous run's confirmed delivery state."""
 
 import json
+import os
 import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from us_positioning_delivery import daily_digest_due
+from us_positioning_context import SourceReader
 
 
 @unittest.skipUnless(shutil.which("git"), "git is required for the checkout regression")
@@ -20,6 +23,7 @@ class QueuedCheckoutTests(unittest.TestCase):
         checkout = workflow.split("      - name: Checkout\n", 1)[1].split("\n      - name:", 1)[0]
         self.assertRegex(checkout, r"(?m)^\s+ref:\s*main\s*$")
         self.assertRegex(workflow, r"(?m)^\s+cancel-in-progress:\s*false\s*$")
+        self.assertIn("US_POSITIONING_CHECKOUT_SHA=$(git rev-parse HEAD)", workflow)
 
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -62,6 +66,21 @@ class QueuedCheckoutTests(unittest.TestCase):
             confirmed_state = json.loads((queued / "data/us_positioning_state.json").read_text(encoding="utf-8"))
             self.assertFalse(daily_digest_due(confirmed_state, "2026-10-29"))
             self.assertTrue(daily_digest_due(confirmed_state, "2026-10-30"))
+
+            with patch.dict(os.environ, {"US_POSITIONING_CHECKOUT_SHA": confirmed_sha, "GITHUB_SHA": event_sha}):
+                reader = SourceReader(queued / "out")
+                reader.save()
+            evidence = json.loads((queued / "out/us_positioning_source_evidence.json").read_text(encoding="utf-8"))
+            self.assertEqual(evidence["github_code_sha"], confirmed_sha)
+            self.assertEqual(evidence["github_event_sha"], event_sha)
+
+    def test_evidence_falls_back_to_event_revision_outside_the_workflow(self):
+        with tempfile.TemporaryDirectory() as temp, patch.dict(os.environ, {"GITHUB_SHA": "event-sha"}, clear=True):
+            reader = SourceReader(temp)
+            reader.save()
+            evidence = json.loads((Path(temp) / "us_positioning_source_evidence.json").read_text(encoding="utf-8"))
+            self.assertEqual(evidence["github_code_sha"], "event-sha")
+            self.assertEqual(evidence["github_event_sha"], "event-sha")
 
 
 if __name__ == "__main__":
