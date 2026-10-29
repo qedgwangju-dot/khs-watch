@@ -182,6 +182,67 @@ class ApplePremiumDemandForecastTests(unittest.TestCase):
         self.assertIsNone(m._premium_yoy(later))
 
 
+    def test_counterpoint_and_reuters_agreeing_on_same_region_can_verify_rss(self):
+        base = self.item(
+            "iPhone 18 Pro first three weeks sales results",
+            "First three weeks after launch: China sales grew 35% YoY, "
+            "global sales increased 3.1% YoY.",
+            "Counterpoint Research",
+        )
+        base["link"]="https://news.google.com/rss/articles/counterpoint"
+        secondary = dict(base,source="Reuters",
+                         link="https://news.google.com/rss/articles/reuters")
+        verified=m._corroborate_three_week_sales([base,secondary])
+        self.assertEqual(len(verified),2)
+        self.assertEqual(verified[0]["corroborated_three_week_scopes"].get("china"),35.0)
+        self.assertIsNotNone(m._signal(verified[0],self.state()))
+        self.assertEqual(
+            m._signal(verified[0],self.state())["changes"]["iphone18pro_china_first3weeks_yoy_pct"],
+            35.0,
+        )
+
+    def test_single_counterpoint_rss_and_magazine_rewrite_not_sufficient(self):
+        primary=self.item(
+            "iPhone 18 Pro first three weeks China sales",
+            "First three weeks after launch, iPhone 18 Pro China sales grew 35% YoY.",
+            "Counterpoint Research",
+        )
+        primary["link"]="https://news.google.com/rss/articles/primary"
+        rewrite=dict(primary,source="AppleMagazine",
+                     link="https://news.google.com/rss/articles/rewrite")
+        checked=m._corroborate_three_week_sales([primary,rewrite])
+        self.assertEqual(checked[0]["corroborated_three_week_scopes"],{})
+        self.assertIsNone(m._signal(checked[0],self.state()))
+        self.assertIsNone(m._signal(checked[1],self.state()))
+
+    def test_two_sources_with_different_percentages_never_corroborate(self):
+        first=self.item(
+            "iPhone 18 Pro first three weeks China growth",
+            "First three weeks after launch, China iPhone 18 Pro sales grew 35% YoY.",
+            "Counterpoint Research",
+        )
+        first["link"]="https://news.google.com/rss/articles/primary"
+        second=dict(first,source="Reuters",
+                    description="First three weeks after launch, "
+                                "China iPhone 18 Pro sales grew 33% YoY.",
+                    link="https://news.google.com/rss/articles/secondary")
+        checked=m._corroborate_three_week_sales([first,second])
+        self.assertFalse(any(item["corroborated_three_week_scopes"] for item in checked))
+        self.assertFalse(any(m._signal(item,self.state()) for item in checked))
+
+    def test_two_reuters_reprints_are_one_source(self):
+        a=self.item(
+            "iPhone 18 Pro first three weeks sales China +35%",
+            "First three weeks after launch, China iPhone 18 Pro sales grew 35% YoY.",
+            "Reuters",
+        )
+        a["link"]="https://news.google.com/rss/articles/r1"
+        b=dict(a,link="https://news.google.com/rss/articles/r2")
+        checked=m._corroborate_three_week_sales([a,b])
+        self.assertEqual(checked[0]["corroborated_three_week_scopes"],{})
+        self.assertIsNone(m._signal(checked[1],self.state()))
+
+
 if __name__ == "__main__":
     result = unittest.TextTestRunner(verbosity=2).run(
         unittest.defaultTestLoader.loadTestsFromTestCase(ApplePremiumDemandForecastTests)

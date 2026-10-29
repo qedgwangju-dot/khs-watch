@@ -415,6 +415,49 @@ def collect() -> tuple[list[dict], list[str]]:
     return sorted(rows.values(), key=lambda x: x["published_at_kst"]), errors
 
 
+def _corroborate_three_week_sales(items: list[dict]) -> list[dict]:
+    """Allow first-party Counterpoint + independent Reuters quotation corroboration.
+
+    Both must describe the same geography, first-three-week window and exact
+    sales percentage. Magazine rewrites and two articles from one publisher
+    do not count as an independent second publisher. An RSS redirect alone
+    never becomes first-party evidence.
+    """
+    evidence: dict[tuple[str, float], set[str]] = {}
+    def publisher(row: dict) -> str:
+        name=_clean(row.get("source") or "").lower()
+        if name in ("counterpoint", "counterpoint research"):
+            return "counterpoint"
+        if name in ("reuters", "reuters news", "reuters.com"):
+            return "reuters"
+        return ""
+    for item in items:
+        origin=publisher(item)
+        if not origin:
+            continue
+        blob=f"{item.get('title','')} {item.get('description','')}"
+        for region in ("china", "global"):
+            value=_premium_three_week_yoy(blob,region)
+            if value is not None:
+                evidence.setdefault((region,value),set()).add(origin)
+    qualified={key for key,sources in evidence.items()
+               if "counterpoint" in sources and "reuters" in sources}
+    output=[]
+    for item in items:
+        row=dict(item)
+        origin=publisher(row)
+        blob=f"{row.get('title','')} {row.get('description','')}"
+        matched={}
+        if origin:
+            for region in ("china", "global"):
+                value=_premium_three_week_yoy(blob,region)
+                if value is not None and (region,value) in qualified:
+                    matched[region]=value
+        row["corroborated_three_week_scopes"]=matched
+        output.append(row)
+    return output
+
+
 def _signal(item: dict, state: dict) -> dict | None:
     blob = f"{item['title']} {item.get('description','')} {item.get('source','')}"
     rank = _source_rank(item.get("source", ""))
@@ -436,13 +479,16 @@ def _signal(item: dict, state: dict) -> dict | None:
             stage = max(stage, 1)
             direction = 1 if yoy > previous else -1
 
-    if _verified_sales_publisher(item):
+    if (_verified_sales_publisher(item) or item.get("corroborated_three_week_scopes")):
         for region, key, name in (
             ("china", "iphone18pro_china_first3weeks_yoy_pct", "중국"),
             ("global", "iphone18pro_global_first3weeks_yoy_pct", "세계"),
         ):
             observed = _premium_three_week_yoy(blob, region)
             if observed is None:
+                continue
+            if (not _verified_sales_publisher(item)
+                    and (item.get("corroborated_three_week_scopes") or {}).get(region) != observed):
                 continue
             previous = float(metrics.get(key, BASELINE[key]))
             if abs(observed - previous) >= 5 or (observed > 0) != (previous > 0):
@@ -616,6 +662,7 @@ def main() -> None:
     ):
         metrics[key] = BASELINE[key]
     items, errors = collect()
+    items = _corroborate_three_week_sales(items)
     signals: list[dict] = []
 
     initial_pending = not bool(state.get("initial_alert_sent"))
