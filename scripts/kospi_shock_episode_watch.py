@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import base64
+import copy
 import datetime as dt
 import hashlib
 import html
@@ -379,7 +380,8 @@ def program_current(token: str, market: str = "KOSPI") -> dict[str, Any]:
     return market_program_current(token, market, ls_post)
 
 
-def fetch_flow_snapshot(token: str, market_name: str = "KOSPI", on_channel=None) -> dict[str, Any]:
+def fetch_flow_snapshot(token: str, market_name: str = "KOSPI", on_channel=None,
+                        include_supplement: bool = True) -> dict[str, Any]:
     started_ts = time.time()
     spec = MARKET_SPECS[market_name]
     snap: dict[str, Any] = {"ts": started_ts, "ts_start": started_ts, "errors": {},
@@ -405,9 +407,10 @@ def fetch_flow_snapshot(token: str, market_name: str = "KOSPI", on_channel=None)
                     snap.setdefault("rejected_source_evidence", {})[key] = exc.evidence
             if on_channel is not None:
                 on_channel({**snap, "ts": time.time(), "errors": dict(snap["errors"])})
-    snap = enrich_snapshot(snap, market_name)
-    if on_channel is not None and ("cash_supplement" in snap or "program_supplement" in snap):
-        on_channel({**snap, "ts": time.time(), "errors": dict(snap["errors"])})
+    if include_supplement:
+        snap = enrich_snapshot(snap, market_name)
+        if on_channel is not None and ("cash_supplement" in snap or "program_supplement" in snap):
+            on_channel({**snap, "ts": time.time(), "errors": dict(snap["errors"])})
     ended_ts = time.time()
     snap["ts_end"] = ended_ts
     snap["ts"] = (started_ts + ended_ts) / 2.0
@@ -955,6 +958,7 @@ class Watch:
         # 종료된 사건의 과거 고점으로 새로운 시작 경보를 재발송하지 않는다.
         self.last_episode_end_ts: float | None = None
         self.last_flow_poll = 0.0; self.flow_task: asyncio.Task | None = None
+        self._kospi_supplement_task: asyncio.Task | None = None
         self.msg_ids: list[int] = []; self.enrichment_msg_ids: list[int] = []; self.raw: dict[str, Any] = {}
         self.enrichment_tasks: set[asyncio.Task] = set()
         self.enrichment_sem = asyncio.Semaphore(1)
@@ -977,6 +981,7 @@ class Watch:
         # 같은 프로세스에서 별도로 조회하되 코스피 급락·수급 작업을 막지 않는다.
         self.kosdaq_flows: deque[dict[str, Any]] = deque(maxlen=10000)
         self.kosdaq_flow_task: asyncio.Task | None = None
+        self._kosdaq_supplement_task: asyncio.Task | None = None
         self.kosdaq_last_poll = 0.0
         self.kosdaq_last_success_ts: float | None = None
         self.kosdaq_surge_last_processed_ts = 0.0
@@ -1776,6 +1781,82 @@ class Watch:
         self.flows.append(snap)
         self._trace_market_flow_sample("KOSPI", snap)
 
+    def _schedule_flow_supplement(self, market: str, snap: dict[str, Any]) -> None:
+        """Optional broker detail must not block the next primary LS poll."""
+        task_name = "_kospi_supplement_task" if market == "KOSPI" else "_kosdaq_supplement_task"
+        error_name = "last_kospi_supplement_error" if market == "KOSPI" else "last_kosdaq_supplement_error"
+        prior = getattr(self, task_name, None)
+        if prior is not None and not prior.done():
+            return
+        try:
+            source_snapshot = copy.deepcopy(snap)
+        except Exception as exc:
+            self.raw[error_name] = type(exc).__name__
+            return
+
+        async def run_one():
+            try:
+                enriched = await asyncio.to_thread(enrich_snapshot, source_snapshot, market)
+                if not isinstance(enriched, dict) or not (
+                    "cash_supplement" in enriched or "program_supplement" in enriched
+                ):
+                    return
+                # A slow supplement may complete after newer LS cash data arrives.
+                # Preserve the newest real source row and its own timestamps; the
+                # independent supplementary receipt time remains unchanged.
+                rows = self.flows if market == "KOSPI" else self.kosdaq_flows
+                spots = [row.get("현물") for row in rows if isinstance(row.get("현물"), dict)
+                         and row["현물"].get("market") == market
+                         and row["현물"].get("source_tr") == "t1602"
+                         and fnum(row["현물"].get("sample_ts")) is not None]
+                if spots:
+                    latest_spot = max(spots, key=lambda item: fnum(item.get("sample_ts")))
+                    enriched["현물"] = copy.deepcopy(latest_spot)
+                    if "cash_supplement" in enriched:
+                        enriched["현물"]["cash_supplement"] = enriched["cash_supplement"]
+                enriched["ts"] = time.time()
+                if market == "KOSPI":
+                    self._record_kospi_flow_fragment(enriched)
+                else:
+                    self._record_kosdaq_flow_fragment(enriched)
+                latest_name = "last_flow_snapshot" if market == "KOSPI" else "last_kosdaq_flow_snapshot"
+                latest = self.raw.get(latest_name)
+                if isinstance(latest, dict):
+                    for key in ("cash_supplement", "program_supplement", "namuh_supplement_coverage", "source_coverage"):
+                        if key in enriched:
+                            latest[key] = enriched[key]
+                    if isinstance(latest.get("현물"), dict) and "cash_supplement" in enriched:
+                        # Do not mutate a primary row already published to other readers.
+                        latest["현물"] = {**latest["현물"], "cash_supplement": enriched["cash_supplement"]}
+                    alternate = enriched.get("program_supplement")
+                    stamp = fnum((alternate or {}).get("sample_ts")) if isinstance(alternate, dict) else None
+                    recovered_program = False
+                    if (isinstance(alternate, dict) and enriched.get("프로그램") == alternate
+                            and alternate.get("market") == market
+                            and alternate.get("source_scope_verified") is True
+                            and alternate.get("unit_verified") is True
+                            and alternate.get("independent_population_unit_and_clock_verified") is True
+                            and stamp is not None and -5 <= time.time() - stamp <= 90):
+                        latest.setdefault("alternate_sources", {})["프로그램_LS"] = latest.get("프로그램")
+                        latest["프로그램"] = alternate
+                        previous_error = latest.get("errors", {}).pop("프로그램", None)
+                        if previous_error:
+                            latest.setdefault("recovered_source_errors", {})["프로그램_LS"] = previous_error
+                        recovered_program = True
+                    if recovered_program:
+                        healthy, _ = flow_snapshot_health(latest)
+                        if market == "KOSPI" and healthy and not self.raw.get("last_flow_error"):
+                            self.last_flow_success_ts = time.time()
+                            self.raw.pop("last_flow_health_issue", None)
+                        elif market == "KOSDAQ" and healthy and not self.raw.get("last_kosdaq_flow_error"):
+                            self.raw.pop("last_kosdaq_flow_health_issue", None)
+                self.raw.pop(error_name, None)
+            except Exception as exc:
+                # A supplementary source or diagnostic failure is not an LS failure.
+                self.raw[error_name] = type(exc).__name__
+
+        setattr(self, task_name, asyncio.create_task(run_one()))
+
     async def maybe_flow(self) -> None:
         now = time.time()
         if self.flow_task and not self.flow_task.done():
@@ -1787,7 +1868,7 @@ class Watch:
             try:
                 loop = asyncio.get_running_loop()
                 publish = lambda point: loop.call_soon_threadsafe(self._record_kospi_flow_fragment, point)
-                snap = await asyncio.to_thread(fetch_flow_snapshot, self.token, "KOSPI", publish)
+                snap = await asyncio.to_thread(fetch_flow_snapshot, self.token, "KOSPI", publish, False)
                 self.raw["last_flow_snapshot"] = snap
                 snapshot_ok, issues = flow_snapshot_health(snap)
                 if snapshot_ok:
@@ -1801,6 +1882,7 @@ class Watch:
                 cutoff = time.time() - FLOW_LOOKBACK_SEC
                 while self.flows and float(self.flows[0].get("ts", 0)) < cutoff:
                     self.flows.popleft()
+                self._schedule_flow_supplement("KOSPI", snap)
             except Exception as exc:
                 self.raw["last_flow_error"] = f"{type(exc).__name__}: {exc}"
         self.flow_task = asyncio.create_task(run_one())
@@ -1834,7 +1916,7 @@ class Watch:
             try:
                 loop = asyncio.get_running_loop()
                 publish = lambda point: loop.call_soon_threadsafe(self._record_kosdaq_flow_fragment, point)
-                snap = await asyncio.to_thread(fetch_flow_snapshot, self.token, "KOSDAQ", publish)
+                snap = await asyncio.to_thread(fetch_flow_snapshot, self.token, "KOSDAQ", publish, False)
                 ok, issues = flow_snapshot_health(snap)
                 self.raw["last_kosdaq_flow_snapshot"] = snap
                 spot = snap.get("현물") or {}
@@ -1854,6 +1936,7 @@ class Watch:
                 cutoff = time.time() - FLOW_LOOKBACK_SEC
                 while self.kosdaq_flows and float(self.kosdaq_flows[0].get("ts", 0)) < cutoff:
                     self.kosdaq_flows.popleft()
+                self._schedule_flow_supplement("KOSDAQ", snap)
             except Exception as exc:
                 self.raw["last_kosdaq_flow_error"] = f"{type(exc).__name__}: {exc}"
 
@@ -3291,6 +3374,15 @@ class Watch:
                 )
             except Exception as exc:
                 self.raw["enrichment_shutdown_error"] = f"{type(exc).__name__}: {exc}"
+
+        supplement_tasks = [task for task in (self._kospi_supplement_task, self._kosdaq_supplement_task)
+                            if task is not None and not task.done()]
+        if supplement_tasks:
+            _, pending = await asyncio.wait(supplement_tasks, timeout=8)
+            if pending:
+                self.raw["supplement_pending_at_shutdown"] = len(pending)
+                for task in pending:
+                    task.cancel()
 
 
 def write_status(w: Watch, started: dt.datetime, status: str) -> None:
