@@ -143,5 +143,11 @@
   },
   "active_event_date": "2026-10-28",
   "last_pre_event_capture": false,
-  "followup_90분_news_class": "추가 긴축 시사"
+  "followup_90분_news_class": "추가 긴축 시사",
+  "audit_pending_key": null,
+  "audit_delivery_status": "confirmed",
+  "audit_sent_key": "2026-10-28|headline-and-sep-audit-v1",
+  "audit_message_id": 122,
+  "audit_sent_at_utc": "2026-10-29T16:36:05.401128+00:00",
+  "legacy_headline_classification_valid": false
 }
