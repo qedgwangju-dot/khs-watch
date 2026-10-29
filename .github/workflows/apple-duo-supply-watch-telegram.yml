@@ -406,7 +406,8 @@ jobs:
               older=remote if newer is draft else draft
               merged=dict(older)
               merged.update(newer)
-              for flag in ("initial_alert_sent","baseline_alert_sent","alert_sent"):
+              for flag in ("initial_alert_sent","baseline_alert_sent","alert_sent",
+                           "false_china_scope_correction_sent"):
                   if isinstance(remote.get(flag),bool) or isinstance(draft.get(flag),bool):
                       merged[flag]=bool(remote.get(flag) or draft.get(flag))
               for key in ("seen","seen_fact_keys","seen_ids"):
@@ -429,6 +430,9 @@ jobs:
               if name == "apple_duo_preorder_delivery_state.json":
                   from scripts.apple_duo_preorder_delivery_watch import _merge_delivery_state
                   merged = _merge_delivery_state(remote, draft)
+              # Never roll back the repaired China-launch scope after a confirmed correction.
+              if name == "apple_premium_demand_duo_forecast_state.json" and merged.get("false_china_scope_correction_sent"):
+                  merged.setdefault("metrics", {})["iphone18pro_china_yoy_pct"] = 12.0
               # Do not regress verified status to rumor.
               for field in ("s27_status",):
                   candidates=[(x.get("metrics") or {}) for x in (remote,draft)]

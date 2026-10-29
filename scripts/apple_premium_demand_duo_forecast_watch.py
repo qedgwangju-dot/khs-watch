@@ -49,13 +49,27 @@ TRENDFORCE_DUO = "https://www.trendforce.com/presscenter/news/20260910-13228.htm
 COUNTERPOINT_CHINA_CONTEXT = "https://counterpointresearch.com/en/insights/china-smartphone-market-saw-sharper-contraction-after-618"
 COUNTERPOINT_CHINA_PRO_OFFICIAL = "https://counterpointresearch.com/en/insights/iphone-18-pro-series-sales-up-12-percent-yoy-in-launch-week-in-china-as-apple-takes-hashtag-1-spot"
 COUNTERPOINT_PRO_PANEL_OFFICIAL = "https://counterpointresearch.com/ko/reports/apples-iphone-18-pro-and-duo-panel-procurement-tracks-ahead-of-the-prior-cycle"
+COUNTERPOINT_THREE_WEEK_OFFICIAL = "https://counterpointresearch.com/en/insights/apple-iphone-18-pro-series-off-to-a-mixed-start-recording-sales-growth-three-weeks-after-launched"
+COUNTERPOINT_THREE_WEEK_REUTERS = "https://www.reuters.com/business/retail-consumer/initial-global-sales-apple-iphone-18-pro-higher-than-17-series-counterpoint-2026-10-27/"
+SCOPE_ERROR_CORRECTION_KEY = "iphone18pro_scope_fix_message_352_20261029"
 
 BASELINE = {
     "iphone18pro_china_yoy_pct": 12.0,
+    "iphone18pro_china_first3weeks_yoy_pct": 29.0,
+    "iphone18pro_global_first3weeks_yoy_pct": 3.1,
+    "iphone18pro_us_first3weeks_yoy_pct": -4.0,
+    "iphone18pro_japan_first3weeks_yoy_pct": -27.0,
+    "iphone18pro_pro_max_first3weeks_share_pct": 56.0,
+    "iphone18pro_pro_max_prior_first3weeks_share_pct": 57.0,
+    "iphone18pro_three_weeks_confirmation": (
+        "Counterpoint Research 2026-10-27 공식: 출시 첫 3주 중국 +29%, "
+        "전 세계 +3.1%, 미국 -4%, 일본 -27%; Pro Max 비중 56%(전년 57%). "
+        "중국 첫 3일 +12%와 지역·통계기간을 구분해야 함"
+    ),
     "apple_china_week38_share_pct": 33.0,
     "counterpoint_duo_forecast_m": 6.0,
     "trendforce_duo_forecast_m": 5.0,
-    "iphone18pro_confirmation": "Counterpoint Research 2026-09-30 공식 공개 해설: 중국 첫 3일 판매 전년 대비 +12%, 38주차 Apple 점유율 33%; 원시 주간 거래표는 별도 자료",
+    "iphone18pro_confirmation": "Counterpoint 2026-09-30 공식: 중국 출시 초기 3일 판매 전년 대비 +12%, 38주차 Apple 점유율 33%; 10월 27일 세계 첫 3주 자료와 직접 비교 금지",
     "iphone18pro_panel_cumulative_through_oct_yoy_pct": 2.0,
     "iphone18pro_panel_confirmation": "Counterpoint 2026-09-30 공식: 2026년 10월까지의 Pro OLED 패널 누적 조달 추적 전년 대비 +2%; 10월 확정 실판매가 아닌 패널 추적치",
     "counterpoint_duo_confirmation": "Reuters가 Counterpoint 전망 약 600만대 인용",
@@ -69,12 +83,14 @@ QUERIES = [
     ("ko", '"아이폰 듀오" 500만대 TrendForce 출하 전망'),
     ("en", '"iPhone 18 Pro" China sales 12% 33% Counterpoint week 38'),
     ("en", '"iPhone 18 Pro" China weekly sales share Counterpoint'),
+    ("en", '"iPhone 18 Pro" China 29 global 3.1 first three weeks Counterpoint'),
+    ("ko", '"아이폰 18 프로" 세계 첫 3주 3.1 중국 29 Counterpoint'),
     ("en", '"iPhone Duo" 6 million Counterpoint forecast'),
     ("en", '"iPhone Duo" 5 million TrendForce shipments forecast'),
 ]
 
 HIGH_SOURCES = (
-    "counterpoint", "reuters", "trendforce", "apple", "bloomberg",
+    "counterpoint", "reuters", "trendforce", "bloomberg",
     "financial times", "wall street journal", "wsj", "nikkei",
 )
 MID_SOURCES = (
@@ -131,8 +147,13 @@ def _normalize(value: str) -> str:
 
 
 def _source_rank(source: str) -> int:
-    raw = _clean(source).lower()
+    raw = _clean(source).lower().strip()
     low = _normalize(source)
+    if raw in {"apple", "apple inc", "apple inc.", "apple newsroom", "apple.com"}:
+        return 3
+    # Publishers named after Apple must never receive Apple Inc. authority.
+    if "applemagazine" in raw or "apple magazine" in raw:
+        return 1
     if any(x.lower() in raw or x.lower() in low for x in HIGH_SOURCES):
         return 3
     if any(x.lower() in raw or x.lower() in low for x in MID_SOURCES):
@@ -140,6 +161,66 @@ def _source_rank(source: str) -> int:
     if any(x.lower() in raw or x.lower() in low for x in LOW_SOURCES):
         return 0
     return 1
+
+
+def _verified_sales_publisher(item: dict) -> bool:
+    """A search redirect is not the original statistical report."""
+    source = _clean(item.get("source") or "").lower()
+    host = (urllib.parse.urlparse(item.get("link") or "").hostname or "").lower().removeprefix("www.")
+    allowed = {"counterpointresearch.com", "reuters.com"}
+    return (("counterpoint" in source or "reuters" in source)
+            and any(host == d or host.endswith("." + d) for d in allowed))
+
+
+def _regional_sales_percent(blob: str, region: str) -> float | None:
+    """Choose the nearest geographic scope in the same sentence as sales growth."""
+    names = {
+        "china": r"\bchina\b|\bchinese\s+market\b|중국|中国",
+        "global": r"\bglobal(?:ly)?\b|\bworldwide\b|전\s*세계|全球",
+    }
+    scopes = re.compile("|".join(f"(?P<{name}>{pattern})" for name, pattern in names.items()), re.I)
+    for clause in re.split(r"(?<=[.!?。])\s+|[;；\n]+", blob):
+        for match in re.finditer(r"([+\-]?\d{1,3}(?:\.\d+)?)\s*%", clause):
+            base=max(0,match.start()-155)
+            before=clause[base:match.start()].lower()
+            after=clause[match.end():match.end()+35].lower()
+            near=before[-105:]+" "+after[:20]
+            if not any(k in near for k in (
+                "sales","sold","sell-through","growth","grew","rose","increas",
+                "up ","yoy","판매","销量","增长","上升",
+            )):
+                continue
+            if any(k in before[-45:] for k in ("share","점유율","份额","占比")):
+                continue
+            postfix=re.match(
+                r"\s*(?:globally|worldwide|in\s+china|in\s+the\s+chinese\s+market|"
+                r"全球|在中国|중국에서|전\s*세계)", after, re.I,
+            )
+            if postfix:
+                p=postfix.group(0)
+                observed_scope=("china" if any(k in p for k in ("china","chinese","中国","중국"))
+                                else "global")
+            else:
+                tags=list(scopes.finditer(before))
+                if not tags:
+                    continue
+                last=tags[-1]
+                observed_scope=last.lastgroup
+                if len(before)-last.end()>90:
+                    continue
+            if observed_scope!=region:
+                continue
+            value=float(match.group(1))
+            if not match.group(1).startswith(("+","-")):
+                recent=before[-75:]
+                if any(k in recent for k in (
+                    "declin","fell","down ","drop","decreas","하락","감소","下降",
+                )):
+                    value=-abs(value)
+                else:
+                    value=abs(value)
+            return round(value,2)
+    return None
 
 
 def _parse_date(value: str | None) -> dt.datetime | None:
@@ -186,28 +267,56 @@ def _near_percent(blob: str, markers: tuple[str, ...], context: tuple[str, ...])
 
 
 def _premium_yoy(blob: str) -> float | None:
-    low = blob.lower()
-    if not any(x in low for x in PREMIUM_MARKERS):
+    """China launch-3-day Week 38 only, not global or a later three-week total."""
+    low=blob.lower()
+    if not any(k in low for k in PREMIUM_MARKERS):
         return None
-    if not any(x in low for x in CHINA_MARKERS):
+    if not any(k in low for k in CHINA_MARKERS):
         return None
-    return _near_percent(blob, PREMIUM_MARKERS, SALES_MARKERS + ("yoy", "year over year", "전년", "同比"))
+    if any(k in low for k in (
+        "first three weeks","first 3 weeks","opening three weeks",
+        "three weeks after launch","첫 3주","출시 3주","前三周",
+    )):
+        return None
+    if not any(k in low for k in (
+        "week 38","week38","38주차","第38周","first three days",
+        "first 3 days","launch week",
+    )):
+        return None
+    return _regional_sales_percent(blob,"china")
+
+
+def _premium_three_week_yoy(blob: str, region: str) -> float | None:
+    low=blob.lower()
+    if not any(k in low for k in PREMIUM_MARKERS):
+        return None
+    if not any(k in low for k in (
+        "first three weeks","first 3 weeks","opening three weeks",
+        "three weeks after launch","first 3-week","첫 3주","출시 후 3주",
+        "上市三周","前三周",
+    )):
+        return None
+    return _regional_sales_percent(blob,region)
 
 
 def _premium_share(blob: str) -> float | None:
-    low = blob.lower()
-    if not any(x in low for x in PREMIUM_MARKERS + ("apple", "애플", "苹果")):
+    """Apple market share in China Week 38, not Pro Max model mix."""
+    low=blob.lower()
+    if not any(k in low for k in CHINA_MARKERS):
         return None
-    if not any(x in low for x in CHINA_MARKERS):
+    if not any(k in low for k in ("week 38","week38","38주차","第38周")):
         return None
-    vals: list[float] = []
-    for m in re.finditer(r"(\d{1,3}(?:\.\d+)?)\s*%", blob):
-        window = low[max(0, m.start() - 120): min(len(low), m.end() + 120)]
-        if any(x in window for x in SHARE_MARKERS):
-            value = float(m.group(1))
-            if 1 <= value <= 80:
-                vals.append(value)
-    return round(vals[-1], 2) if vals else None
+    for clause in re.split(r"(?<=[.!?。])\s+|[;\n]+",blob):
+        for match in re.finditer(r"(\d{1,3}(?:\.\d+)?)\s*%",clause):
+            before=clause[max(0,match.start()-110):match.start()].lower()
+            if any(k in before[-75:] for k in ("pro max","model mix")):
+                continue
+            if (any(k in before for k in ("share","market share","점유율","份额"))
+                    and any(k in before for k in ("apple","애플","苹果"))):
+                n=float(match.group(1))
+                if 1<=n<=80:
+                    return round(n,2)
+    return None
 
 
 def _million_forecast(blob: str) -> float | None:
@@ -251,15 +360,17 @@ def _forecast_source(source: str, blob: str) -> str:
 
 
 def _load_state() -> dict:
-    try:
-        data = json.loads(STATE_PATH.read_text(encoding="utf-8"))
-        if isinstance(data, dict):
-            data.setdefault("seen", [])
-            data.setdefault("metrics", {})
-            data.setdefault("seen_fact_keys", [])
-            return data
-    except Exception:
-        pass
+    if STATE_PATH.exists():
+        try:
+            data=json.loads(STATE_PATH.read_text(encoding="utf-8"))
+        except Exception as exc:
+            raise RuntimeError("Premium demand state corrupt: fail closed to prevent duplicate alert") from exc
+        if not isinstance(data,dict):
+            raise RuntimeError("Premium demand state is invalid: fail closed")
+        data.setdefault("seen", [])
+        data.setdefault("metrics", {})
+        data.setdefault("seen_fact_keys", [])
+        return data
     return {
         "schema_version": 1,
         "initial_alert_sent": False,
@@ -316,7 +427,7 @@ def _signal(item: dict, state: dict) -> dict | None:
     stage = 0
     direction = 0
 
-    yoy = _premium_yoy(blob)
+    yoy = _premium_yoy(blob) if _verified_sales_publisher(item) else None
     if yoy is not None:
         previous = float(metrics.get("iphone18pro_china_yoy_pct") or 0)
         if not previous or abs(yoy - previous) >= 5 or (yoy > 0) != (previous > 0):
@@ -325,7 +436,25 @@ def _signal(item: dict, state: dict) -> dict | None:
             stage = max(stage, 1)
             direction = 1 if yoy > previous else -1
 
-    share = _premium_share(blob)
+    if _verified_sales_publisher(item):
+        for region, key, name in (
+            ("china", "iphone18pro_china_first3weeks_yoy_pct", "중국"),
+            ("global", "iphone18pro_global_first3weeks_yoy_pct", "세계"),
+        ):
+            observed = _premium_three_week_yoy(blob, region)
+            if observed is None:
+                continue
+            previous = float(metrics.get(key, BASELINE[key]))
+            if abs(observed - previous) >= 5 or (observed > 0) != (previous > 0):
+                reasons.append(
+                    f"{name} iPhone 18 Pro 출시 첫 3주 판매 증가율 "
+                    f"{previous:+g}%→{observed:+g}% (동일 지역·기간)"
+                )
+                changes[key] = observed
+                stage = max(stage, 1)
+                direction = 1 if observed > previous else -1
+
+    share = _premium_share(blob) if _verified_sales_publisher(item) else None
     if share is not None:
         previous = float(metrics.get("apple_china_week38_share_pct") or 0)
         if not previous or abs(share - previous) >= 3:
@@ -358,6 +487,34 @@ def _signal(item: dict, state: dict) -> dict | None:
     }
 
 
+def _needs_scope_correction(state: dict) -> bool:
+    if state.get("false_china_scope_correction_sent"):
+        return False
+    try:
+        return abs(float((state.get("metrics") or {}).get("iphone18pro_china_yoy_pct",12)) - 3.1)<0.02
+    except (TypeError,ValueError):
+        return False
+
+
+def _scope_correction_alert() -> str:
+    return "\n".join([
+        "🍎 <b>[정정 | Apple iPhone 18 Pro 판매 증가율]</b>",
+        "━━━━━━━━━━━━━━━━",
+        "• 앞선 알림(메시지 ID 352)의 <b>'중국 +12% → +3.1%'</b> 비교는 오류이므로 철회합니다.",
+        "• <b>중국 +12%</b>: 9월 30일 공개된 출시 초기 <b>3일</b> 판매 증가율.",
+        "• <b>중국 +29%</b>: 10월 27일 공개된 출시 후 <b>첫 3주</b> 판매 증가율.",
+        "• <b>전 세계 +3.1%</b>: 같은 10월 27일 발표의 출시 후 <b>첫 3주</b> 판매 증가율.",
+        "• 같은 3주 기준 미국 -4%, 일본 -27%. Pro Max 비중 56%(전년 57%).",
+        "• <b>원인:</b> 세계 수치를 중국 수치로 오인했고, 서로 다른 지역·기간을 직접 비교했습니다.",
+        "• <b>판정:</b> 중국 수요 둔화의 증거가 아닙니다. 전 세계 성장은 중국의 높은 증가율에 의존했습니다.",
+        "• Counterpoint의 판매 추정 자료이며 Apple 공식 판매 대수·Duo 직접 판매량과 다릅니다.",
+        "",
+        f'<a href="{COUNTERPOINT_CHINA_PRO_OFFICIAL}">Counterpoint 중국 초기 3일 원문</a>',
+        f'<a href="{COUNTERPOINT_THREE_WEEK_OFFICIAL}">Counterpoint 국가별 첫 3주 원문</a>',
+        f'<a href="{COUNTERPOINT_THREE_WEEK_REUTERS}">Reuters 교차 확인</a>',
+    ])+"\n"
+
+
 def _baseline_alert(metrics: dict) -> str:
     return "\n".join([
         "🍎 <b>[Apple 프리미엄 수요·Duo 전망 | 기준선]</b>",
@@ -368,6 +525,8 @@ def _baseline_alert(metrics: dict) -> str:
         "• 위 두 수치는 <b>Counterpoint 2026-09-30 공식 공개 해설에서 검증</b>했습니다(원시 주간 거래표는 별도).",
         f"• Counterpoint Pro OLED 패널: <b>10월까지 누적 전년 대비 +{metrics['iphone18pro_panel_cumulative_through_oct_yoy_pct']:g}% 추적</b> — 패널 조달이며 Pro 소비자 실판매가 아닙니다.",
         "• 중국 판매 +12%·주간 점유율 33%·누적 패널 +2%는 서로 다른 지표이며, iPhone Duo 직접 수요로 승격하지 않습니다.",
+        f"• 중국 출시 후 첫 3주 +{metrics['iphone18pro_china_first3weeks_yoy_pct']:g}%, "
+        f"세계 첫 3주 +{metrics['iphone18pro_global_first3weeks_yoy_pct']:g}% — Counterpoint 10/27 별도 자료.",
         "",
         "<b>[Duo 기관 전망]</b>",
         f"• Counterpoint: <b>약 {metrics['counterpoint_duo_forecast_m']:g}백만대</b> — Reuters 인용 확인",
@@ -390,6 +549,7 @@ def _baseline_alert(metrics: dict) -> str:
         f'<a href="{COUNTERPOINT_CHINA_PRO_OFFICIAL}">Counterpoint 공식 · 중국 첫 3일 판매 +12%, 점유율 33%</a>',
         f'<a href="{COUNTERPOINT_PRO_PANEL_OFFICIAL}">Counterpoint 공식 · Pro 패널 조달 누적 +2% 추적</a>',
         f'<a href="{COUNTERPOINT_CHINA_CONTEXT}">Counterpoint · 중국 시장 수요 배경</a>',
+        f'<a href="{COUNTERPOINT_THREE_WEEK_OFFICIAL}">Counterpoint · 첫 3주 국가별 자료</a>',
         f'<a href="{APPLE_OFFICIAL}">Apple 공식 일정</a>',
     ]) + "\n"
 
@@ -442,11 +602,15 @@ def main() -> None:
     seen = set(state.get("seen") or [])
     metrics = dict(BASELINE)
     metrics.update(state.get("metrics") or {})
+    correction_due = _needs_scope_correction(state)
+    if correction_due or state.get("false_china_scope_correction_sent"):
+        metrics["iphone18pro_china_yoy_pct"] = BASELINE["iphone18pro_china_yoy_pct"]
     # Official source status supersedes the initial paid-tracker-only note, even
     # when an old state was saved by a previous release. This is metadata, not
     # a fresh sell-through/change signal.
     for key in (
         "iphone18pro_confirmation",
+        "iphone18pro_three_weeks_confirmation",
         "iphone18pro_panel_cumulative_through_oct_yoy_pct",
         "iphone18pro_panel_confirmation",
     ):
@@ -475,6 +639,21 @@ def main() -> None:
         "schema_version": 1,
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "initial_alert_sent": True,
+        "false_china_scope_correction_sent": bool(
+            state.get("false_china_scope_correction_sent") or correction_due
+        ),
+        "seen_fact_keys": sorted(set(state.get("seen_fact_keys") or []) |
+            ({SCOPE_ERROR_CORRECTION_KEY} if correction_due else set())),
+        "scope_correction_audit": (
+            {
+                "incorrect_message_id": 352,
+                "wrong_claim": "China first 3 days +12% to global first 3 weeks +3.1%",
+                "china_first3days_pct": 12.0,
+                "china_first3weeks_pct": 29.0,
+                "world_first3weeks_pct": 3.1,
+                "corrected_at_kst": now.isoformat(timespec="seconds")
+            } if correction_due else state.get("scope_correction_audit")
+        ),
         "preorder_at_kst": APPLE_PREORDER_KST.isoformat(timespec="seconds"),
         "launch_date": APPLE_LAUNCH_DATE.isoformat(),
         "seen": sorted(seen)[-600:],
@@ -487,12 +666,14 @@ def main() -> None:
         },
         "last_scan_items": len(items),
         "last_signal_count": len(signals),
+        "last_correction_count": int(correction_due),
         "last_alert": (
             {
                 "at_kst": now.isoformat(timespec="seconds"),
-                "kind": "baseline" if initial_pending else "change",
+                "kind": "scope_correction" if correction_due
+                        else "baseline" if initial_pending else "change",
             }
-            if initial_pending or signals
+            if initial_pending or signals or correction_due
             else state.get("last_alert")
         ),
     }
@@ -502,8 +683,13 @@ def main() -> None:
         alert = _baseline_alert(metrics)
         FRAGMENT_PATH.write_text(alert, encoding="utf-8")
         _append_alert(alert)
-    elif signals:
-        alert = _change_alert(signals)
+    elif correction_due or signals:
+        chunks=[]
+        if correction_due:
+            chunks.append(_scope_correction_alert())
+        if signals:
+            chunks.append(_change_alert(signals))
+        alert="\n\n━━━━━━━━━━━━━━━━\n\n".join(chunks)
         FRAGMENT_PATH.write_text(alert, encoding="utf-8")
         _append_alert(alert)
     elif FRAGMENT_PATH.exists():
