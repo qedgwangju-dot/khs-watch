@@ -843,6 +843,7 @@ def _flow_surge_program(
 def flow_surge_candidates(
     rows: list[dict[str, Any]], now_ts: float,
     session_open_ts: float | None = None,
+    diagnostics: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     """급락과 관계없이 최근 5분의 '순매수 누적 변화'를 판정한다.
 
@@ -853,6 +854,8 @@ def flow_surge_candidates(
         return []
     spot = _flow_surge_channel_pair(rows, "현물", now_ts, session_open_ts)
     fut = _flow_surge_channel_pair(rows, "선물", now_ts, session_open_ts)
+    if diagnostics is not None:
+        diagnostics.update({"spot_pair": spot, "futures_pair": fut})
     if not spot and not fut:
         return []
     program = _flow_surge_program(rows, now_ts, session_open_ts)
@@ -1736,6 +1739,43 @@ class Watch:
                 except Exception as notify_exc:
                     self.raw["last_kosdaq_enrichment_hold_notify_error"]=f"{type(notify_exc).__name__}: {notify_exc}"
 
+    def _trace_market_flow_sample(self, market: str, snap: dict[str, Any]) -> None:
+        """Log observed t1602 rows without including broker-account supplements."""
+        if getattr(self, "test", False):
+            return
+        try:
+            channels = ("현물", "선물") if market == "KOSPI" else ("현물",)
+            seen = self.__dict__.setdefault("_flow_trace_last_sample", {})
+            for channel in channels:
+                block = snap.get(channel)
+                if not isinstance(block, dict) or block.get("source_tr") != "t1602":
+                    continue
+                # Each incremental fragment can repeat a block from the same
+                # HTTP response. Keep each actual response once, even if the
+                # upstream source time itself is unchanged.
+                signature = (block.get("sample_ts"), block.get("received_ts"))
+                key = (market, channel)
+                if seen.get(key) == signature:
+                    continue
+                fields = ("time", "sample_ts", "received_ts", "market", "source_tr",
+                          "request_market", "upcode", "exchgubun", "returned_ex_upcode",
+                          "timestamp_basis", "source_row", "actor_quality")
+                event = {"market": market, "channel": channel,
+                         "observed_ts": time.time(),
+                         "source": {k: block.get(k) for k in fields},
+                         "actor_values": {actor: fnum(block.get(actor)) for actor in DISPLAY_ACTORS},
+                         "unit": "억원" if channel == "현물" else None,
+                         "unit_scope": "spot" if channel == "현물" else "futures_unverified"}
+                print("market_flow_sample=" + json.dumps(event, ensure_ascii=False), flush=True)
+                seen[key] = signature
+        except Exception as exc:
+            if isinstance(getattr(self, "raw", None), dict):
+                self.raw["last_flow_trace_error"] = type(exc).__name__
+
+    def _record_kospi_flow_fragment(self, snap: dict[str, Any]) -> None:
+        self.flows.append(snap)
+        self._trace_market_flow_sample("KOSPI", snap)
+
     async def maybe_flow(self) -> None:
         now = time.time()
         if self.flow_task and not self.flow_task.done():
@@ -1746,7 +1786,7 @@ class Watch:
         async def run_one():
             try:
                 loop = asyncio.get_running_loop()
-                publish = lambda point: loop.call_soon_threadsafe(self.flows.append, point)
+                publish = lambda point: loop.call_soon_threadsafe(self._record_kospi_flow_fragment, point)
                 snap = await asyncio.to_thread(fetch_flow_snapshot, self.token, "KOSPI", publish)
                 self.raw["last_flow_snapshot"] = snap
                 snapshot_ok, issues = flow_snapshot_health(snap)
@@ -1769,6 +1809,7 @@ class Watch:
     def _record_kosdaq_flow_fragment(self, snap: dict[str, Any]) -> None:
         """Keep usable cash data independently of slower futures/program calls."""
         self.kosdaq_flows.append(snap)
+        self._trace_market_flow_sample("KOSDAQ", snap)
         spot = snap.get("현물")
         if not isinstance(spot, dict) or spot.get("market") != "KOSDAQ" or spot.get("source_tr") != "t1602":
             return
@@ -2136,6 +2177,73 @@ class Watch:
         ]
         return "\n".join(lines)
 
+    def _trace_surge_check(self, market: str, stage: str, now_ts: float,
+                           spot_pair: dict[str, Any] | None, futures_pair: dict[str, Any] | None,
+                           candidates: list[dict[str, Any]] | dict[str, float],
+                           pending: dict[str, Any], sent_at: dict[str, float]) -> None:
+        """Retain the exact 5-minute check inputs in the existing job log."""
+        if getattr(self, "test", False):
+            return
+        try:
+            rows = getattr(self, "flows" if market == "KOSPI" else "kosdaq_flows", ())
+
+            def pair_view(pair):
+                if pair is None:
+                    return None
+                keys = ("start_ts", "end_ts", "start_skew_sec", "end_age_sec", "deltas")
+                return {key: pair.get(key) for key in keys}
+
+            def last_received(channel):
+                for row in reversed(rows):
+                    if isinstance(row, dict) and isinstance((block := row.get(channel)), dict):
+                        sample = fnum(block.get("sample_ts"))
+                        return {"sample_ts": sample,
+                                "received_ts": fnum(block.get("received_ts")),
+                                "age_sec": round(now_ts - sample, 1) if sample is not None else None}
+                return None
+
+            if isinstance(candidates, dict):
+                candidate_view = [{"actor": actor, "spot_delta_eok": delta}
+                                  for actor, delta in candidates.items()]
+            else:
+                keys = ("actor", "mode", "sample_ts", "spot", "futures",
+                        "spot_window", "futures_window",
+                        "spot_start_cumulative", "spot_end_cumulative",
+                        "futures_end_cumulative")
+                candidate_view = [{key: item.get(key) for key in keys} for item in candidates]
+            holds = [{"actor": (value.get("context") or {}).get("actor"),
+                      "stage": (value.get("context") or {}).get("stage"),
+                      "held_at_ts": value.get("held_at_ts")}
+                     for value in (getattr(self, "raw", {}) or {}).get("delivery_holds", {}).values()
+                     if isinstance(value, dict) and (value.get("context") or {}).get("market") == market]
+            event = {
+                "market": market, "stage": stage, "evaluated_ts": now_ts,
+                "spot_pair": pair_view(spot_pair), "futures_pair": pair_view(futures_pair),
+                "last_received_spot": last_received("현물"),
+                "last_received_futures": last_received("선물") if market == "KOSPI" else None,
+                "futures_unit": "unverified" if market == "KOSPI" else None,
+                "candidates": candidate_view, "pending_before": dict(pending),
+                "last_sent_at": dict(sent_at), "delivery_holds": holds,
+            }
+            print("market_flow_check=" + json.dumps(event, ensure_ascii=False), flush=True)
+        except Exception as exc:
+            if isinstance(getattr(self, "raw", None), dict):
+                self.raw["last_flow_trace_error"] = type(exc).__name__
+
+    def _trace_surge_result(self, market: str, stage: str, actor: str,
+                            sample_ts: float, now_ts: float, result: str,
+                            remaining_sec: float | None = None) -> None:
+        if getattr(self, "test", False):
+            return
+        try:
+            event = {"market": market, "stage": stage, "actor": actor,
+                     "sample_ts": sample_ts, "evaluated_ts": now_ts, "result": result,
+                     "cooldown_remaining_sec": remaining_sec}
+            print("market_flow_decision=" + json.dumps(event, ensure_ascii=False), flush=True)
+        except Exception as exc:
+            if isinstance(getattr(self, "raw", None), dict):
+                self.raw["last_flow_trace_error"] = type(exc).__name__
+
     async def _surge_industry_context(self, market: str, actor: str,
                                       spot: float | None, spot_window: tuple | list | None,
                                       session_open_ts: float) -> dict[str, Any] | None:
@@ -2199,6 +2307,9 @@ class Watch:
                 if (delta is not None
                         and KOSDAQ_SURGE_PREALERT_SPOT_EOK <= delta < KOSDAQ_SURGE_SINGLE_SPOT_EOK):
                     candidates[actor] = delta
+        self._trace_surge_check("KOSDAQ", "prealert", now_ts, pair, None,
+                                candidates, self.kosdaq_prealert_pending,
+                                getattr(self, "kosdaq_prealert_sent_at", {}))
         for actor in list(self.kosdaq_prealert_pending):
             if actor not in candidates:
                 self.kosdaq_prealert_pending.pop(actor, None)
@@ -2208,6 +2319,8 @@ class Watch:
                          else fnum(pair["end"].get(actor)))
             if not confirm_flow_surge(self.kosdaq_prealert_pending, actor, sample_ts, now_ts,
                                       {"spot": end_value}):
+                self._trace_surge_result("KOSDAQ", "prealert", actor, sample_ts, now_ts,
+                                         "awaiting_confirmation")
                 continue
             last_attempt = max(
                 self.kosdaq_prealert_sent_at.get(actor, 0.0),
@@ -2216,7 +2329,10 @@ class Watch:
                 self._surge_delivery_hold_at("KOSDAQ", actor),
             )
             if now_ts - last_attempt < SURGE_COOLDOWN_SEC:
+                self._trace_surge_result("KOSDAQ", "prealert", actor, sample_ts, now_ts,
+                                         "cooldown", SURGE_COOLDOWN_SEC - (now_ts - last_attempt))
                 continue
+            self._trace_surge_result("KOSDAQ", "prealert", actor, sample_ts, now_ts, "attempt_send")
             industries = await self._surge_industry_context(
                 "KOSDAQ", actor, delta, (pair["start_ts"], pair["end_ts"]), start)
             text = self.build_kosdaq_flow_surge_alert(
@@ -2290,6 +2406,8 @@ class Watch:
                 delta = fnum((pair.get("deltas") or {}).get(actor))
                 if delta is not None and delta >= KOSDAQ_SURGE_SINGLE_SPOT_EOK:
                     candidates[actor] = delta
+        self._trace_surge_check("KOSDAQ", "confirmed", now_ts, pair, None,
+                                candidates, self.kosdaq_surge_pending, getattr(self, "kosdaq_surge_sent_at", {}))
         for actor in list(self.kosdaq_surge_pending):
             if actor not in candidates:
                 self.kosdaq_surge_pending.pop(actor, None)
@@ -2299,11 +2417,16 @@ class Watch:
                          else fnum(pair["end"].get(actor)))
             if not confirm_flow_surge(self.kosdaq_surge_pending, actor, sample_ts, now_ts,
                                       {"spot": end_value}):
+                self._trace_surge_result("KOSDAQ", "confirmed", actor, sample_ts, now_ts,
+                                         "awaiting_confirmation")
                 continue
             last_attempt = max(self.kosdaq_surge_sent_at.get(actor, 0.0),
                                self._surge_delivery_hold_at("KOSDAQ", actor))
             if now_ts - last_attempt < SURGE_COOLDOWN_SEC:
+                self._trace_surge_result("KOSDAQ", "confirmed", actor, sample_ts, now_ts,
+                                         "cooldown", SURGE_COOLDOWN_SEC - (now_ts - last_attempt))
                 continue
+            self._trace_surge_result("KOSDAQ", "confirmed", actor, sample_ts, now_ts, "attempt_send")
             industries = await self._surge_industry_context(
                 "KOSDAQ", actor, delta, (pair["start_ts"], pair["end_ts"]), start)
             text = self.build_kosdaq_flow_surge_alert(actor, delta, pair, now_ts, industries)
@@ -2410,7 +2533,13 @@ class Watch:
             return
         # 같은 원자료로 초당 여러 번 '새 유입'을 판정하지 않는다.
         self.surge_last_processed_ts = latest_ts
-        candidates = flow_surge_candidates(list(self.flows), now_ts, start)
+        diagnostic_pairs: dict[str, Any] = {}
+        candidates = flow_surge_candidates(list(self.flows), now_ts, start, diagnostic_pairs)
+        self._trace_surge_check(
+            "KOSPI", "confirmed", now_ts,
+            diagnostic_pairs.get("spot_pair"), diagnostic_pairs.get("futures_pair"),
+            candidates, self.surge_pending, getattr(self, "surge_sent_at", {}),
+        )
         current = {str(x["actor"]): x for x in candidates}
         for actor in list(self.surge_pending):
             if actor not in current:
@@ -2421,11 +2550,16 @@ class Watch:
                         else {"futures"} if cand["mode"] == "선물 중심" else {"spot"})
             end_values = {key: fnum(cand.get(key + "_end_cumulative")) for key in channels}
             if not confirm_flow_surge(self.surge_pending, actor, sample_ts, now_ts, end_values):
+                self._trace_surge_result("KOSPI", "confirmed", actor, sample_ts, now_ts,
+                                         "awaiting_confirmation")
                 continue
             last_attempt = max(self.surge_sent_at.get(actor, 0.0),
                                self._surge_delivery_hold_at("KOSPI", actor))
             if now_ts - last_attempt < SURGE_COOLDOWN_SEC:
+                self._trace_surge_result("KOSPI", "confirmed", actor, sample_ts, now_ts,
+                                         "cooldown", SURGE_COOLDOWN_SEC - (now_ts - last_attempt))
                 continue
+            self._trace_surge_result("KOSPI", "confirmed", actor, sample_ts, now_ts, "attempt_send")
             spot_window = cand.get("spot_window")
             industries = await self._surge_industry_context("KOSPI", actor, cand.get("spot"), spot_window, start)
             text = self.build_flow_surge_alert(cand, now_ts, industries)
@@ -3242,3 +3376,4 @@ def main() -> int:
     )
 
 if __name__ == "__main__": raise SystemExit(main())
+
