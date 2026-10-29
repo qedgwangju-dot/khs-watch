@@ -15,7 +15,7 @@
     "maplight|nobel-optogenetics-bridge",
     "maplight|portfolio|discovery-paused"
   ],
-  "last_checked_kst": "2026-10-30T01:35:45+09:00",
+  "last_checked_kst": "2026-10-30T06:04:57+09:00",
   "nobel_2026_verified": true,
   "seen_event_keys": [
     "d3e43c74900cbe45ced82930",
@@ -23,17 +23,17 @@
     "04e42a53cc7c2d6238d6b466",
     "5cd11afbac5793bf83427fb4",
     "3de48d588d966736624346ad",
-    "8866680814947b6d915472c7",
-    "c86d41ca8fb34c35eec7ea49",
-    "518319b133f8374c9c1ae187",
-    "c5a24b19156b204bb494d543",
-    "00ed4a9deda349c6d10d12e3",
     "89edfd25162fb70a90bc15ef",
     "3b9006d3c6cdc45c8b4799ae",
     "a168e38fecc4618002c9078e",
+    "518319b133f8374c9c1ae187",
+    "00ed4a9deda349c6d10d12e3",
     "7068d58d13d508a32621ac78",
     "c5b07942c2f87f613c2d6534",
-    "f9150ec8a2689f8d887bf8b4"
+    "f9150ec8a2689f8d887bf8b4",
+    "c86d41ca8fb34c35eec7ea49",
+    "8866680814947b6d915472c7",
+    "c5a24b19156b204bb494d543"
   ],
   "trial_snapshots": {
     "NCT06460844": {
@@ -303,8 +303,10 @@
     }
   },
   "cns_trial_ids": [],
-  "relevant_press_events": 13,
-  "source_errors": [],
+  "relevant_press_events": 8,
+  "source_errors": [
+    "GenSight Biologics: HTTPError"
+  ],
   "maplight_source_errors": [
     "MapLight 공식 RSS: HTTPError status=403 retryable=false attempts=1; source=https://ir.maplightrx.com/rss/news-releases.xml"
   ],
