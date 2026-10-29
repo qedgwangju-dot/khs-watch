@@ -1904,6 +1904,14 @@ def main() -> int:
         else:
             print(f"energy_month_direct=official_fetch_unavailable error={original_error}")
     candidates = dedupe_candidate_fingerprints(candidates)
+    robotics_pending = any(
+        x.get("policy_event_key") == ROBOTICS_232_EVENT_KEY
+        and x.get("fingerprint") not in seen_map
+        for x in candidates
+    )
+    # One signed high-impact event, one delivery receipt. A broken unrelated
+    # document must not cause the entire mixed-policy bundle to disappear.
+    # Other unconfirmed events remain unseen and eligible next scheduled run.
     new_alerts = []
     selected_fingerprints: set[str] = set()
     for item in sorted(candidates, key=lambda x: (
@@ -1916,12 +1924,15 @@ def main() -> int:
             item["importance"] == "하"
             or item["fingerprint"] in seen_map
             or item["fingerprint"] in selected_fingerprints
+            or (robotics_pending and item.get("policy_event_key") != ROBOTICS_232_EVENT_KEY)
         ):
             continue
         new_alerts.append(item)
         selected_fingerprints.add(item["fingerprint"])
         if len(new_alerts) >= MAX_ALERTS:
             break
+    if robotics_pending:
+        print(f"policy_critical_isolated=robotics_section232 pending_other_events={len(candidates)-len(new_alerts)}")
     write_outputs(new_alerts, source_notes, now)
     write_pending_seen(new_alerts, now)
     for item in new_alerts:
