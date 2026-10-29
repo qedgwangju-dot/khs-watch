@@ -130,6 +130,29 @@ class PollIsolationTests(unittest.IsolatedAsyncioTestCase):
         self.assertIsNotNone(obj.last_flow_success_ts)
         self.assertNotIn("last_flow_health_issue", obj.raw)
 
+    async def test_slow_supplement_does_not_erase_newer_primary_error(self):
+        obj = watch.Watch("dummy", [], "", False)
+        now = time.time()
+        actors = {"sample_ts": now, "외국인": 1, "기관": 2, "개인": 3}
+        snap = {"ts": now, "market": "KOSPI", "errors": {"프로그램": "LS unavailable"},
+                "현물": dict(actors), "지수선물": dict(actors), "프로그램": None}
+        alternate = {"sample_ts": now, "전체": 4, "차익": 1, "비차익": 3,
+                     "market": "KOSPI", "source_tr": "ka90005", "unit_verified": True,
+                     "source_scope_verified": True, "independent_population_unit_and_clock_verified": True}
+        obj.raw["last_flow_snapshot"] = snap
+        obj.raw["last_flow_error"] = "newer primary failure"
+        obj.flows.append(snap)
+        def with_alternate(source, market):
+            source["program_supplement"] = alternate
+            source["프로그램"] = alternate
+            return source
+        with patch.object(watch, "enrich_snapshot", side_effect=with_alternate), \
+             contextlib.redirect_stdout(io.StringIO()):
+            obj._schedule_flow_supplement("KOSPI", snap)
+            await obj._kospi_supplement_task
+        self.assertEqual(obj.raw["last_flow_error"], "newer primary failure")
+        self.assertIsNone(obj.last_flow_success_ts)
+
     def test_primary_only_fetch_skips_supplement_and_default_is_compatible(self):
         cash = {"market": "KOSDAQ", "source_tr": "t1602"}
         supplemental = {"provider": "test"}
