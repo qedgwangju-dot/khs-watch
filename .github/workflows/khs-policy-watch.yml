@@ -92,8 +92,8 @@ jobs:
         run: |
           PYTHONPATH=scripts:. python - <<'PY'
           import khs_trusted_policy_news_watch as watcher
-          watcher._self_test_mofcom_tech_48()
-          print('mofcom_technology_48_stage_regression=passed')
+          watcher._self_test_mofcom_2026_notices()
+          print('mofcom_2026_policy_stage_regression=passed')
           PY
       - name: Validate policy regression tests
         run: |
