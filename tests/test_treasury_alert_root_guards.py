@@ -93,15 +93,21 @@ def test_yen_verbal_intervention_is_checked_for_persistence_not_hard_peg():
 
 def test_treasury_compact_alert_uses_data_dates_not_false_latest_causality():
     import sys
-    import json
     import importlib
     sys.path.insert(0, str(ROOT / "scripts"))
     guard = importlib.import_module("treasury_alert_korean_guard")
-    s = json.loads(read("data/treasury_buyback_policy_state.json"))
-    snapshot = dict(s["bessent_causal_snapshot"])
-    snapshot["is_lagged"] = True
-    snapshot["lag_market_sessions"] = 3
-    snapshot["latest_bond_common_date"] = "2026-10-09"
+    # A frozen synthetic example keeps this date-format check independent of
+    # the production state, which changes as new observations are recorded.
+    snapshot = {
+        "common_date": "2026-10-06",
+        "common_values": {"brent": 100.0, "bei10": 2.0, "real10": 2.0, "nom10": 4.0},
+        "changes_5d": {"start_date": "2026-09-29", "brent_pct": 1.0, "bei_bp": 1.0, "real_bp": -1.0, "nom_bp": 0.0},
+        "latest": {"brent": {"date": "2026-10-06", "value": 100.0}},
+        "is_lagged": True,
+        "lag_market_sessions": 3,
+        "latest_bond_common_date": "2026-10-09",
+        "verdict": "판정 보류",
+    }
     message = guard.one_time_alert(1341.49, "2026-10-09 ECB 기준", snapshot)
     assert "공통 2026-09-29→2026-10-06" in message
     assert "Brent(EIA) 2026-10-06 vs 국채 2026-10-09" in message
