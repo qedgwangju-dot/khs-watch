@@ -69,7 +69,7 @@ BASELINE = {
     "apple_china_week38_share_pct": 33.0,
     "counterpoint_duo_forecast_m": 6.0,
     "trendforce_duo_forecast_m": 5.0,
-    "iphone18pro_confirmation": "Counterpoint 2026-09-30 공식: 중국 출시 초기 3일 판매 전년 대비 +12%, 38주차 Apple 점유율 33%; 10월 27일 세계 첫 3주 자료와 직접 비교 금지",
+    "iphone18pro_confirmation": "Counterpoint 2026-09-30 공식 공개 해설: 중국 출시 초기 3일 판매 전년 대비 +12%, 38주차 Apple 점유율 33%; 10월 27일 세계 첫 3주 자료와 직접 비교 금지",
     "iphone18pro_panel_cumulative_through_oct_yoy_pct": 2.0,
     "iphone18pro_panel_confirmation": "Counterpoint 2026-09-30 공식: 2026년 10월까지의 Pro OLED 패널 누적 조달 추적 전년 대비 +2%; 10월 확정 실판매가 아닌 패널 추적치",
     "counterpoint_duo_confirmation": "Reuters가 Counterpoint 전망 약 600만대 인용",
