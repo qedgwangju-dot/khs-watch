@@ -387,6 +387,24 @@ def direction_summary(history,day,rate,money_fmt):
             ratio=f"{100*buys/(buys+sells):.1f}%" if buys+sells else "매매 없음"
         lines.append(f"  {status} · 매수 비중 {ratio} · {coverage}"
                      +(" · 확보일 기준 부분합" if partial else " · 거래일 전부 확보"))
+        sector_flows=defaultdict(float)
+        for record in selected:
+            for industry,amount in record.get("buy_usd",{}).items():
+                if industry!=SECTOR_UNKNOWN:
+                    sector_flows[industry]+=float(amount)
+            for industry,amount in record.get("sell_usd",{}).items():
+                if industry!=SECTOR_UNKNOWN:
+                    sector_flows[industry]-=float(amount)
+        leading_buys=sorted(((k,v) for k,v in sector_flows.items() if v>0),
+                            key=lambda kv:-kv[1])[:2]
+        leading_sells=sorted(((k,v) for k,v in sector_flows.items() if v<0),
+                             key=lambda kv:kv[1])[:2]
+        if leading_buys:
+            lines.append("  분류된 업종 순매수: "+", ".join(
+                f"{html.escape(k)} +{money_fmt(v,rate)}" for k,v in leading_buys))
+        if leading_sells:
+            lines.append("  분류된 업종 순매도: "+", ".join(
+                f"{html.escape(k)} -{money_fmt(abs(v),rate)}" for k,v in leading_sells))
         if unknown and name!="당일":
             lines.append(f"  과거 업종 미분류 금액 {money_fmt(unknown,rate)} 포함(업종별 추세는 일부 미확인)")
     lines += [
