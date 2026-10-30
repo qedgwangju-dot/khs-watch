@@ -1,6 +1,6 @@
 {
-  "status": "degraded",
-  "checked_at_kst": "2026-10-30T16:27:54+09:00",
+  "status": "ok",
+  "checked_at_kst": "2026-10-30T17:58:09+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -14,13 +14,13 @@
   "intismeran_alert_present": false,
   "jemperli_alert_present": false,
   "enhertu_alert_present": false,
-  "qlex_send_outcome": "failure",
+  "qlex_send_outcome": "success",
   "qlex_wac_send_outcome": "skipped",
   "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
   "halozyme_run_outcome": "success",
-  "qlex_state_persisted": false,
+  "qlex_state_persisted": true,
   "qlex_wac_state_persisted": true,
   "intismeran_state_persisted": true,
   "jemperli_state_persisted": true,
@@ -33,16 +33,15 @@
   "last_health_notice_date": "2026-10-30",
   "failure_notice_message_id": 276,
   "last_qlex_telegram_message_ids": [
-    275
+    277
   ],
   "last_jemperli_telegram_message_ids": [
     255
   ],
   "last_jemperli_telegram_sent_at_kst": "2026-10-27T06:44:50+09:00",
-  "last_qlex_telegram_sent_at_kst": "2026-10-30T15:36:21+09:00",
-  "errors": [
-    "QLEX sender rc=1: RuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있음:"
-  ],
-  "failed_component": "QLEX Telegram 전송",
-  "error_signature": "QLEX sender rc=1: RuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있음:"
+  "last_qlex_telegram_sent_at_kst": "2026-10-30T17:58:44+09:00",
+  "errors": [],
+  "failed_component": "",
+  "error_signature": "",
+  "recovery_notice_message_id": 278
 }
