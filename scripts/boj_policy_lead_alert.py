@@ -109,7 +109,7 @@ QUERIES = (
     '"Bank of Japan" neutral rate Ueda Reuters when:3d',
     '"Summary of Opinions" BOJ Reuters when:7d',
     'BOJ dissent vote Reuters when:2d',
-    'BOJ held interest rates steady 1.25 Reuters when:1d',
+    'BOJ held interest rates steady Reuters when:1d',
     'BOJ underlying inflation reached 2% target Reuters when:2d',
     'BOJ Takata dissented 8-1 hold Reuters when:2d',
     'BOJ inflation underlying 2% Reuters when:2d',
@@ -766,9 +766,9 @@ def extract_hike_dissent_on_hold(text: str) -> bool:
         if not re.search(r"\b(?:dissent(?:ed|ing)?|oppos(?:ed|ing)|minority)\b", sentence):
             continue
         if re.search(r"\b(?:called for|proposed|wanted|sought|urged|favou?red|argued for|arguing for)\b"
-                     r"[^.!?]{0,90}?\b(?:hike|raise|increase|higher)\b", sentence):
+                     r".{0,120}?\b(?:hike|raise|increase|higher)\b", sentence):
             return True
-        if re.search(r"\b(?:hike|raise|increase|higher)\b[^.!?]{0,90}?"
+        if re.search(r"\b(?:hike|raise|increase|higher)\b.{0,120}?"
                      r"\b(?:dissent(?:ed|ing)?|oppos(?:ed|ing))\b", sentence):
             return True
     return False
@@ -1487,15 +1487,6 @@ def trusted_media_event_has_policy_content(signal: Signal) -> bool:
 
 
 def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, str]:
-    # A BOJ RSS headline alone was incorrectly sent on 2026-10-30 without rate,
-    # vote or inflation data. Require an actual decision fact before notifying.
-    if signal.event_type == "decision" and not any((
-        signal.policy_rate is not None,
-        signal.hike_bp is not None and not signal.rate_unchanged,
-        signal.vote_for is not None,
-        signal.underlying_target_reached,
-    )):
-        return False, "정책결정 제목만 확인됨 — 공식 본문·핵심 수치 확보 전"
     if not press_conference_has_policy_content(signal):
         return False, "회견 본문 정책경로 확인 전"
     if signal.event_type == "market_path":
@@ -1514,6 +1505,18 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
             return False, "오래된 보도 — 고신뢰 정책 이벤트 신선도 초과"
         if not trusted_media_event_has_policy_content(signal):
             return False, "고신뢰 보도 핵심 정책변화 없음"
+
+    # Suppress unparsed BOJ RSS titles, but never discard a substantive, verified
+    # monetary-policy guidance change merely because a rate number is absent.
+    # Recency and media-source checks above retain their original priority.
+    if signal.event_type == "decision" and not any((
+        signal.policy_rate is not None,
+        signal.hike_bp is not None and not signal.rate_unchanged,
+        signal.vote_for is not None,
+        signal.underlying_target_reached,
+        signal.official_statement_detail_verified,
+    )):
+        return False, "정책결정 제목만 확인됨 — 공식 본문·핵심 수치 확보 전"
 
     previous = state.get("signature") or {}
     current_signature = signal_signature(signal)
