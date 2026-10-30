@@ -836,13 +836,26 @@ def extract_dissenters(text: str) -> tuple[str, ...]:
         ("Masu", "마스"),
         ("Uchida", "우치다"),
     )
-    lower = clean(text).lower()
     found = []
-    for english, korean in names:
-        if english.lower() in lower and korean not in found:
-            found.append(korean)
+    for sentence in re.split(r"(?<=[.!?])\s+", clean(text)):
+        lower = sentence.lower()
+        # Participant rosters and people disagreeing with the *Outlook wording*
+        # are not dissenters on the monetary-policy decision.
+        if "outlook" in lower and not re.search(
+            r"\b(?:policy decision|policy rate|rate decision|rate hike)\b", lower
+        ):
+            continue
+        if not re.search(
+            r"\b(?:dissent(?:ed|ing)?|voted against|opposed (?:the )?"
+            r"(?:rate hike|hike|increase|decision|hold)|preferred to (?:keep|hold)|"
+            r"(?:called for|proposed|argued for|arguing for|sought)\b.{0,140}?"
+            r"\b(?:hike|raise|increase|higher))", lower
+        ):
+            continue
+        for english, korean in names:
+            if re.search(r"\b" + re.escape(english.lower()) + r"\b", lower) and korean not in found:
+                found.append(korean)
     return tuple(found)
-
 
 def extract_assessment_vote(text: str) -> tuple[int | None, int | None, str | None]:
     # Require the vote count and the economic/inflation assessment to coexist in the
