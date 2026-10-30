@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at_kst": "2026-10-30T17:58:09+09:00",
+  "checked_at_kst": "2026-10-30T18:54:06+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -9,12 +9,12 @@
   "jemperli_collector_rc": 0,
   "enhertu_collector_rc": 0,
   "halozyme_collector_rc": 0,
-  "qlex_alert_present": true,
+  "qlex_alert_present": false,
   "qlex_wac_alert_present": false,
   "intismeran_alert_present": false,
   "jemperli_alert_present": false,
   "enhertu_alert_present": false,
-  "qlex_send_outcome": "success",
+  "qlex_send_outcome": "skipped",
   "qlex_wac_send_outcome": "skipped",
   "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
@@ -42,6 +42,5 @@
   "last_qlex_telegram_sent_at_kst": "2026-10-30T17:58:44+09:00",
   "errors": [],
   "failed_component": "",
-  "error_signature": "",
-  "recovery_notice_message_id": 278
+  "error_signature": ""
 }
