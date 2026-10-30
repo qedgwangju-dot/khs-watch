@@ -1031,5 +1031,91 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertEqual(signal.policy_rate, 1.25)
 
 
+    def test_boj_title_only_rss_cannot_send_empty_decision(self):
+        official = classify(Item(
+            title="Statement on Monetary Policy",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/mpmdeci/",
+            published=dt.datetime(2026, 10, 30, 12, 2, tzinfo=KST),
+            description="",
+        ))
+        now = dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST)
+        ok, reason = should_alert(official, {}, now)
+        self.assertFalse(ok)
+        self.assertIn("핵심 수치 확보 전", reason)
+
+    def test_same_day_title_only_alert_gets_labelled_as_fact_correction(self):
+        prior = classify(Item(
+            title="Statement on Monetary Policy",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/",
+            published=dt.datetime(2026, 10, 30, 12, 2, tzinfo=KST),
+            description="",
+        ))
+        complete = classify(Item(
+            title="BOJ keeps interest rates steady at 1.25% - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 30, 12, 8, tzinfo=KST),
+            description="The BOJ held the policy rate at 1.25% in an 8-1 vote.",
+        ))
+        state = {
+            "last_signal_key": prior.key,
+            "last_alert_at_kst": "2026-10-30T12:55:48+09:00",
+            "last_published_at_kst": prior.published.isoformat(),
+            "signature": signal_signature(prior),
+        }
+        ok, reason = should_alert(
+            complete, state, dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST)
+        )
+        self.assertTrue(ok)
+        self.assertIn("핵심 수치 보완", reason)
+        title, _body, _data = build(
+            complete, reason, dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST), {}
+        )
+        self.assertIn("핵심 수치 보완", title)
+
+    def test_boj_october_outlook_pdf_source_is_recent_and_classifiable(self):
+        from unittest.mock import patch
+        import boj_policy_lead_alert as mod
+        index = (
+            '<a href="/en/mopo/outlook/g261030a.pdf">'
+            "October 2026 (The Bank's View) [PDF]"
+            "</a>"
+        )
+        outlook = (
+            "The underlying inflation rate has reached a level broadly "
+            "consistent with the 2 percent price stability target."
+        )
+        now = dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST)
+        with patch.object(mod, "fetch_text", return_value=(index, None)):
+            with patch.object(mod, "_fetch_boj_document_text", return_value=(outlook, None)):
+                items = mod.fetch_official_outlook_items(now)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0].published.date(), dt.date(2026, 10, 30))
+        signal = classify(items[0])
+        self.assertEqual(signal.event_type, "decision")
+        self.assertTrue(signal.underlying_target_reached)
+
+    def test_2026_oct30_official_rss_pdf_uses_text_parser(self):
+        from unittest.mock import patch
+        import boj_policy_lead_alert as mod
+        source = Item(
+            title="Statement on Monetary Policy",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/mpmdeci/k261030a.pdf",
+            published=dt.datetime(2026, 10, 30, 12, 2, tzinfo=KST),
+            description="",
+        )
+        with patch.object(mod, "_fetch_boj_document_text", return_value=(
+            "The Bank kept the policy rate at 1.25 percent.", None
+        )) as pdf_fetch:
+            result = mod.enrich_official_items([source], dt.datetime(
+                2026, 10, 30, 13, 0, tzinfo=KST
+            ))
+        pdf_fetch.assert_called_once_with(source.link)
+        self.assertIn("1.25 percent", result[0].description)
+
+
 if __name__ == "__main__":
     unittest.main()
