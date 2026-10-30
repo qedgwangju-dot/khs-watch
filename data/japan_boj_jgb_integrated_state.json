@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-30T08:01:37+09:00",
+  "updated_at_kst": "2026-10-30T11:32:59+09:00",
   "policy_rate": 1.0,
   "statement_url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260731a.pdf",
   "opinion_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi260918.pdf",
@@ -8,26 +8,26 @@
   "hawkish_hits": [
     "nimble"
   ],
-  "jgb_source_date": "2026/10/28",
+  "jgb_source_date": "2026/10/29",
   "jgb10_above3_active": false,
   "jgb10_above3_streak": 0,
   "yen_carry_combo_active": false,
   "critical_abnormal_active": false,
   "jgb": {
-    "date": "2026/10/28",
-    "jgb2": 1.915,
-    "jgb10": 2.867,
-    "jgb20": 3.685,
-    "jgb30": 3.941,
-    "jgb40": 3.974
+    "date": "2026/10/29",
+    "jgb2": 1.901,
+    "jgb10": 2.876,
+    "jgb20": 3.701,
+    "jgb30": 3.956,
+    "jgb40": 3.984
   },
   "usdjpy": {
-    "date": "2026-10-29T23:00:39Z",
-    "value": 157.6490020751953,
-    "change_pct": -0.06908906889639715,
+    "date": "2026-10-30T02:32:59Z",
+    "value": 157.49099731445312,
+    "change_pct": -0.11479511848807222,
     "source": "Yahoo query1/query2 5분 데이터 교차확인",
     "signal_eligible": true,
-    "age_seconds": 59.939392
+    "age_seconds": 1.768043
   },
   "auctions": {
     "20": {
