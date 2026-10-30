@@ -31,6 +31,75 @@ VERIFIED_EVENT_ALIAS_PATH = base.ROOT / "data" / "gamejoa_verified_event_aliases
 VERIFIED_CORE_RECEIPTS_PATH = base.ROOT / "data" / "gamejoa_verified_core_receipts.json"
 DELIVERY_PATH = base.OUT / "gamejoa_preopen_news_radar_delivery.json"
 
+ISSUER_ALERT_WINDOW = dt.timedelta(hours=24)
+ISSUER_ALERT_CAP = 2
+VERIFIED_DISTINCT_ISSUER_EVENT_TYPES = frozenset({
+    "ai_chip_deployment", "capital_participation", "capacity_supply_contract",
+    "commercial_delivery", "commercial_order", "construction_order",
+    "dated_public_supply_package", "humanoid_product_launch",
+    "industrial_development_mou", "industrial_product_milestone",
+    "issuer_quarterly_earnings", "legislative_action", "license",
+    "listing_suspension_ruling", "merger_agreement", "named_supply_order",
+    "project_safety_assessment",
+    "public_energy_supply_assurance", "regulatory_package", "research_award",
+    "scoped_anonymous_order", "site_development_mou", "solidigm_ipo",
+})
+MARKET_ISSUER_ALIASES = {
+    "samsung_electronics": ("삼성전자", "Samsung Electronics", "005930"),
+    "sk_hynix": ("SK하이닉스", "하이닉스", "하닉", "SK hynix", "000660"),
+    "hanmi_semiconductor": ("한미반도체", "Hanmi Semiconductor", "042700"),
+    "samsung_electro_mechanics": ("삼성전기", "Samsung Electro-Mechanics", "009150"),
+    "samsung_sdi": ("삼성SDI", "Samsung SDI", "006400"),
+    "lg_electronics": ("LG전자", "LG Electronics", "066570"),
+    "lg_energy_solution": ("LG에너지솔루션", "LG엔솔", "373220"),
+    "lg_chemical": ("LG화학", "LG Chem", "051910"),
+    "hyundai_motor": ("현대차", "현대자동차", "Hyundai Motor", "005380"),
+    "kia": ("기아", "Kia", "000270"),
+    "hyundai_mobis": ("현대모비스", "Hyundai Mobis", "012330"),
+    "hd_hyundai_heavy": ("HD현대중공업", "현대중공업", "329180"),
+    "hd_korea_shipbuilding": ("HD한국조선해양", "한국조선해양", "009540"),
+    "hanwha_ocean": ("한화오션", "Hanwha Ocean", "042660"),
+    "hanwha_aerospace": ("한화에어로스페이스", "Hanwha Aerospace", "012450"),
+    "hanwha_systems": ("한화시스템", "Hanwha Systems", "272210"),
+    "doosan_enerbility": ("두산에너빌리티", "Doosan Enerbility", "034020"),
+    "doosan_robotics": ("두산로보틱스", "Doosan Robotics", "454910"),
+    "hyundai_rotem": ("현대로템", "Hyundai Rotem", "064350"),
+    "lig_nex1": ("LIG넥스원", "LIG Nex1", "079550"),
+    "korea_aerospace": ("한국항공우주", "Korea Aerospace", "047810"),
+    "posco_holdings": ("POSCO홀딩스", "포스코홀딩스", "POSCO Holdings", "005490"),
+    "eco_pro_bm": ("에코프로비엠", "EcoPro BM", "247540"),
+    "eco_pro": ("에코프로", "EcoPro", "086520"),
+    "celltrion": ("셀트리온", "Celltrion", "068270"),
+    "alteogen": ("알테오젠", "Alteogen", "196170"),
+    "naver": ("네이버", "NAVER", "035420"),
+    "kakao": ("카카오", "Kakao", "035720"),
+    "kb_financial": ("KB금융", "KB Financial", "105560"),
+    "shinhan_financial": ("신한지주", "신한금융", "055550"),
+    "hana_financial": ("하나금융지주", "하나금융", "086790"),
+    "woori_financial": ("우리금융지주", "우리금융", "316140"),
+    "jb_financial": ("JB금융지주", "JB금융", "175330"),
+    "korean_air": ("대한항공", "Korean Air", "003490"),
+    "sk_innovation": ("SK이노베이션", "SK Innovation", "096770"),
+    "s_oil": ("에쓰오일", "S-Oil", "010950"),
+    "korea_zinc": ("고려아연", "Korea Zinc", "010130"),
+    "nvidia": ("엔비디아", "NVIDIA", "NVDA"),
+    "amd": ("AMD", "Advanced Micro Devices"),
+    "micron": ("마이크론", "Micron", "MU"),
+    "broadcom": ("브로드컴", "Broadcom", "AVGO"),
+    "tsmc": ("TSMC", "Taiwan Semiconductor"),
+    "intel": ("인텔", "Intel", "INTC"),
+    "qualcomm": ("퀄컴", "Qualcomm", "QCOM"),
+    "microsoft": ("마이크로소프트", "Microsoft", "MSFT"),
+    "alphabet": ("알파벳", "구글", "Alphabet", "Google", "GOOGL", "GOOG"),
+    "meta": ("메타", "Meta Platforms", "META"),
+    "apple": ("애플", "Apple Inc", "AAPL"),
+    "amazon": ("아마존", "Amazon.com", "AMZN"),
+    "tesla": ("테슬라", "Tesla", "TSLA"),
+    "oracle": ("오라클", "Oracle", "ORCL"),
+    "cisco": ("시스코", "Cisco", "CSCO"),
+    "dell": ("Dell", "DELL"),
+}
+
 
 def load_seen_state() -> dict:
     if not SEEN_PATH.exists():
@@ -249,6 +318,124 @@ def alert_seen_keys(alert: dict) -> list[str]:
     for value in (canonical.get("news"), canonical.get("source_title"), canonical.get("original_news")):
         add("title", canonical_edition_title(str(value or "")))
     return list(dict.fromkeys(keys))
+
+
+def alert_issuer_keys(alert: dict) -> list[str]:
+    """Return recognized public issuers named in the headline, not background text."""
+    headline = base.norm(" ".join(
+        str(alert.get(field) or "")
+        for field in ("source_title", "original_news", "news", "title")
+    ))
+    if not headline:
+        return []
+    return [
+        issuer for issuer, aliases in MARKET_ISSUER_ALIASES.items()
+        if any(
+            re.search(
+                rf"(?<![a-z0-9]){re.escape(base.norm(alias))}(?![a-z0-9])",
+                headline,
+            )
+            if re.search(r"[a-z0-9]", base.norm(alias))
+            else base.norm(alias) in headline
+            for alias in aliases
+        )
+    ]
+
+
+def issuer_event_signature(alert: dict) -> str:
+    identity = market_materiality.source_event_identity(alert)
+    if identity:
+        return identity
+    fact_identity = market_materiality.verified_source_fact_identity(alert)
+    if fact_identity:
+        return fact_identity
+    link = canonical_article_url(str(alert.get("link") or ""))
+    return link or base.norm(str(alert.get("source_title") or alert.get("news") or ""))
+
+
+def verified_distinct_issuer_event(alert: dict) -> bool:
+    if not alert.get("body_verified"):
+        return False
+    identity = market_materiality.source_event_identity(alert)
+    parts = identity.split(":")
+    return (
+        len(parts) >= 4
+        and parts[:2] == ["source_event", "v2"]
+        and parts[2] in VERIFIED_DISTINCT_ISSUER_EVENT_TYPES
+    )
+
+
+def apply_issuer_frequency_cap(alerts: list[dict], now) -> tuple[list[dict], list[dict]]:
+    """Limit live volume per named issuer while permitting one new hard catalyst."""
+    state = load_seen_state()
+    seen = state.setdefault("seen", {})
+    cutoff = now - ISSUER_ALERT_WINDOW
+    events_by_issuer: dict[str, dict[str, dict]] = {}
+
+    for entry in seen.values():
+        if not isinstance(entry, dict):
+            continue
+        last_seen = parse_seen_time(entry.get("last_seen_kst"))
+        if not last_seen or last_seen < cutoff or last_seen > now + dt.timedelta(minutes=5):
+            continue
+        issuer_keys = entry.get("issuer_keys")
+        if not isinstance(issuer_keys, list) or not issuer_keys:
+            issuer_keys = alert_issuer_keys(entry)
+        if not issuer_keys:
+            continue
+        signature = str(entry.get("issuer_event_signature") or "")
+        if not signature:
+            signature = str(entry.get("source_event_identity") or entry.get("source_fact_identity") or "")
+        if not signature:
+            signature = canonical_article_url(str(entry.get("link") or ""))
+        if not signature:
+            signature = base.norm(str(entry.get("source_title") or entry.get("title") or ""))
+        if not signature:
+            continue
+        event = {
+            "signature": signature,
+            "event_type": str(entry.get("issuer_event_type") or ""),
+        }
+        for issuer in issuer_keys:
+            events_by_issuer.setdefault(str(issuer), {}).setdefault(signature, event)
+
+    kept: list[dict] = []
+    suppressed: list[dict] = []
+    for alert in alerts:
+        issuer_keys = alert_issuer_keys(alert)
+        if not issuer_keys:
+            kept.append(alert)
+            continue
+
+        signature = issuer_event_signature(alert)
+        event_type = market_materiality.source_event_identity(alert).split(":")[2:3]
+        event_type_value = event_type[0] if event_type else ""
+        blocking_issuers = []
+        for issuer in issuer_keys:
+            issuer_events = events_by_issuer.setdefault(issuer, {})
+            if signature in issuer_events:
+                blocking_issuers.append(issuer)
+                continue
+            if len(issuer_events) >= ISSUER_ALERT_CAP:
+                blocking_issuers.append(issuer)
+                continue
+            if issuer_events and not verified_distinct_issuer_event(alert):
+                blocking_issuers.append(issuer)
+
+        if blocking_issuers:
+            held = dict(alert)
+            held["_exclusion_reason"] = "issuer_frequency_cap_24h"
+            held["_issuer_frequency_keys"] = sorted(set(blocking_issuers))
+            held["_issuer_event_signature"] = signature
+            suppressed.append(held)
+            continue
+
+        kept.append(alert)
+        event = {"signature": signature, "event_type": event_type_value}
+        for issuer in issuer_keys:
+            events_by_issuer.setdefault(issuer, {})[signature] = event
+
+    return kept, suppressed
 
 
 def migrate_seen_title_aliases(state: dict) -> None:
@@ -585,6 +772,11 @@ def record_seen_alerts(alerts: list[dict], now) -> None:
     seen_at = now.isoformat(timespec="seconds")
     for alert in alerts:
         keys = list(dict.fromkeys([*(alert.get("_seen_keys") or []), *alert_seen_keys(alert)]))
+        issuer_keys = alert_issuer_keys(alert)
+        event_identity = market_materiality.source_event_identity(alert)
+        event_type_parts = event_identity.split(":")
+        event_type = event_type_parts[2] if len(event_type_parts) >= 4 and event_type_parts[:2] == ["source_event", "v2"] else ""
+        event_signature = issuer_event_signature(alert)
         for key in keys:
             existing = seen.get(key) if isinstance(seen.get(key), dict) else {}
             raw_lanes = existing.get("lanes")
@@ -619,6 +811,9 @@ def record_seen_alerts(alerts: list[dict], now) -> None:
                 "source_fact_keys": market_materiality.verified_source_fact_keys(canonical_alert_for_seen(alert)),
                 "source_body_digest": market_materiality.verified_source_body_digest(canonical_alert_for_seen(alert)),
                 "source_published_kst": str(alert.get("published") or ""),
+                "issuer_keys": issuer_keys,
+                "issuer_event_signature": event_signature,
+                "issuer_event_type": event_type,
             }
     save_seen_state(state, now)
 
@@ -828,6 +1023,7 @@ def selection_diagnostics(
     candidates: list[dict],
     selected: list[dict],
     live_mode: bool,
+    issuer_frequency_suppressed: list[dict] | None = None,
 ) -> dict:
     source_failures = [
         note for note in notes
@@ -872,6 +1068,15 @@ def selection_diagnostics(
             "decision_debug": alert.get("_decision_debug") or {},
             "market_materiality": alert.get("market_materiality") or {},
         })
+    for alert in issuer_frequency_suppressed or []:
+        excluded.append({
+            "title": alert.get("original_news") or alert.get("source_title") or alert.get("news") or "",
+            "source": alert.get("publisher") or alert.get("source") or "",
+            "reason": "issuer_frequency_cap_24h",
+            "guardrail_note": ", ".join(alert.get("_issuer_frequency_keys") or []),
+            "decision_debug": alert.get("_decision_debug") or {},
+            "market_materiality": alert.get("market_materiality") or {},
+        })
     return {
         "collected_rows": len(rows),
         "classified_alerts": len(classified),
@@ -881,6 +1086,7 @@ def selection_diagnostics(
         "seen_filtered_alerts": len(skipped_seen),
         "deduped_candidates": len(candidates),
         "selected_alerts": len(selected),
+        "issuer_frequency_suppressed_alerts": len(issuer_frequency_suppressed or []),
         "stock_market_channels": market_channels,
         "excluded_alerts": excluded,
         "source_failures": source_failures,
@@ -979,6 +1185,12 @@ def main() -> int:
         -a["score"],
         a["published"],
     ))
+    alerts, issuer_frequency_suppressed = apply_issuer_frequency_cap(alerts, now)
+    if issuer_frequency_suppressed:
+        print(
+            "GAMEJOA radar issuer frequency: "
+            f"suppressed={len(issuer_frequency_suppressed)} window_hours=24 cap={ISSUER_ALERT_CAP}"
+        )
 
     pinned_count = sum(bool(a.get("_pinned_direct_article")) for a in classified)
     pinned_fresh_count = sum(bool(a.get("_pinned_direct_article")) for a in alerts)
@@ -991,7 +1203,10 @@ def main() -> int:
     deduped = unique_alert_candidates(alerts)
     deduped.sort(key=lambda a: (-a["score"], a["published"]))
     final_alerts = final_alerts_for_output(deduped, output_limit)
-    diagnostics = selection_diagnostics(rows, notes, classified, skipped_seen, deduped, final_alerts, live_mode)
+    diagnostics = selection_diagnostics(
+        rows, notes, classified, skipped_seen, deduped, final_alerts, live_mode,
+        issuer_frequency_suppressed,
+    )
     print(
         "GAMEJOA radar selection: "
         f"rows={diagnostics['collected_rows']} "

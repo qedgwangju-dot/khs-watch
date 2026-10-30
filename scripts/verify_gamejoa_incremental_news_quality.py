@@ -5014,6 +5014,84 @@ class IncrementalNewsTests(unittest.TestCase):
             selected = radar.quality_display_alerts([first, second], 10)
         self.assertEqual(len(selected), 1)
 
+    def test_live_issuer_frequency_cap_blocks_hanmi_repeats_but_allows_one_verified_catalyst(self):
+        now = dt.datetime(2026, 10, 31, 12, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        state = {'seen': {}}
+        first = alert('한미반도체, HBM 장비 수요 기대',
+                      '한미반도체는 HBM 장비 수요가 늘어날 것으로 기대한다고 밝혔다.',
+                      'https://example.com/hanmi-first')
+        first['published'] = now.isoformat()
+        earnings = alert('한미반도체, 3분기 영업이익 908억원 기록',
+                         '한미반도체는 2026년 3분기 영업이익 908억원을 기록했다고 31일 공시했다.',
+                         'https://example.com/hanmi-earnings')
+        earnings['published'] = (now + dt.timedelta(minutes=40)).isoformat()
+        repeated = [
+            alert(f'한미반도체, HBM 장비 시장 확대 관련 보도 {index}',
+                  '한미반도체는 시장 상황을 고려해 생산 투자 계획을 검토하고 있다.',
+                  f'https://example.com/hanmi-repeat-{index}')
+            for index in range(1, 9)
+        ]
+        for index, item in enumerate(repeated, start=1):
+            item['published'] = (now + dt.timedelta(minutes=20 + index)).isoformat()
+
+        with (patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}),
+              patch.object(telegram, 'load_seen_state', return_value=state),
+              patch.object(telegram, 'save_seen_state', return_value=None)):
+            self.assertEqual(telegram.alert_issuer_keys(first), ['hanmi_semiconductor'])
+            identity = materiality.source_event_identity(earnings)
+            self.assertTrue(identity.startswith('source_event:v2:issuer_quarterly_earnings:'))
+            candidates = [first, earnings, *repeated]
+            accepted, suppressed = telegram.apply_issuer_frequency_cap(candidates, now)
+            self.assertEqual(accepted, [first, earnings])
+            self.assertEqual(len(suppressed), 8)
+            self.assertTrue(all(item['_exclusion_reason'] == 'issuer_frequency_cap_24h' for item in suppressed))
+            self.assertTrue(all(item['_issuer_frequency_keys'] == ['hanmi_semiconductor'] for item in suppressed))
+            telegram.record_seen_alerts(accepted, now)
+
+            third = alert('한미반도체, TC본더 신제품 공개',
+                          '한미반도체는 TC본더 신제품을 공개했다.',
+                          'https://example.com/hanmi-third')
+            accepted, suppressed = telegram.apply_issuer_frequency_cap([third], now + dt.timedelta(minutes=60))
+            self.assertFalse(accepted)
+            self.assertEqual(suppressed[0]['_issuer_frequency_keys'], ['hanmi_semiconductor'])
+
+    def test_issuer_alias_matching_uses_word_boundaries_for_latin_tickers(self):
+        false_positive = alert('뮤직 업계의 새 흐름', '관련 시장 소식입니다.', 'https://example.com/music')
+        ticker = alert('MU, 실적 전망 발표', '마이크론의 실적 전망입니다.', 'https://example.com/mu')
+        self.assertNotIn('micron', telegram.alert_issuer_keys(false_positive))
+        self.assertIn('micron', telegram.alert_issuer_keys(ticker))
+
+    def test_live_issuer_frequency_cap_expires_after_24_hours_and_ignores_other_issuers(self):
+        now = dt.datetime(2026, 10, 31, 12, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        state = {'seen': {}}
+        first = alert('한미반도체, HBM 장비 수요 전망',
+                      '한미반도체 관련 수요 전망이 나왔다.',
+                      'https://example.com/hanmi-day-one')
+        first['published'] = now.isoformat()
+        other_issuer = alert('SK하이닉스, 3분기 영업이익 증가',
+                             'SK하이닉스는 실적을 공시했다.',
+                             'https://example.com/hynix-day-one')
+        other_issuer['published'] = now.isoformat()
+        next_day = alert('한미반도체, 장비 수요 전망',
+                         '한미반도체 관련 수요 전망이 나왔다.',
+                         'https://example.com/hanmi-next-day')
+        next_day['published'] = (now + dt.timedelta(hours=25)).isoformat()
+
+        with (patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}),
+              patch.object(telegram, 'load_seen_state', return_value=state),
+              patch.object(telegram, 'save_seen_state', return_value=None)):
+            telegram.record_seen_alerts([first], now)
+            accepted, suppressed = telegram.apply_issuer_frequency_cap(
+                [other_issuer], now + dt.timedelta(hours=1)
+            )
+            self.assertEqual(accepted, [other_issuer])
+            self.assertFalse(suppressed)
+            accepted, suppressed = telegram.apply_issuer_frequency_cap(
+                [next_day], now + dt.timedelta(hours=25)
+            )
+            self.assertEqual(accepted, [next_day])
+            self.assertFalse(suppressed)
+
     def test_october_eighth_low_signal_and_unconfirmed_partnership_cases_are_withheld(self):
         lisa_title = 'AMD 리사 수, 삼성과 "더 폭넓은 파트너십…많은 파트너들 있어"'
         lisa_body = ('리사 수 CEO는 삼성전자와 SK하이닉스의 HBM4 공급과 관련해 더 폭넓은 파트너십을 언급했다. '
