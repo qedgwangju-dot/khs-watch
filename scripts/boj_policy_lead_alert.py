@@ -787,7 +787,17 @@ def has_confirmed_underlying_target(item: Item, kind: str | None) -> bool:
             continue
         if not re.search(r"\b2\s*(?:%|percent)\b|\b2%", sentence):
             continue
-        if re.search(r"\b(?:may|might|could|expected to|likely to|would|plans to|sources say)\b", sentence):
+        # A later clause about future hikes must not erase a completed 2% finding.
+        # Exclude only forward-looking language *before* the achievement statement.
+        achieved = re.search(
+            r"\b(?:has|had|have)?\s*(?:reached|hit|attained)|"
+            r"\b(?:is|was|now)\s+(?:at|broadly consistent with)", sentence
+        )
+        prefix = sentence[:achieved.start()] if achieved else sentence
+        if re.search(
+            r"\b(?:may|might|could|expected to|likely to|would|plans to|sources say)\b",
+            prefix,
+        ):
             continue
         if official:
             return True
@@ -2032,7 +2042,12 @@ def first_glance_policy(signal: Signal) -> dict[str, str]:
             today = "금융정책 결정 발표(핵심 수치 확인 전)"
             short_today = "금융정책 발표"
     else:
-        today = "새 정책금리 결정 없음 — 이번에는 발언·전망 등 정책경로 정보"
+        if signal.event_type == "parliament_testimony":
+            today = "우에다 총재 국회 출석·답변 — 새 정책금리 결정 없음"
+        elif signal.event_type == "press_conference":
+            today = "우에다 총재 기자회견 — 새 정책금리 결정 없음"
+        else:
+            today = "새 정책금리 결정 없음 — 이번에는 발언·전망 등 정책경로 정보"
         short_today = "정책경로 발언"
 
     if signal.level == 3:
