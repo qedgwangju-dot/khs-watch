@@ -1,6 +1,6 @@
 {
   "seen": {
-    "ICI|mmf": "c74fdbe2b237ba409f2d1626063ed0872de5268b138d59e41bf8a74b2cdd78cd",
+    "ICI|mmf": "fb38565bd9b826ad3f43aa81ed6bec2c7661d44f2a91d9941b543ea0de2bae40",
     "FINRA|margin": "b821af0c360e808de172b9db2034d0a5abdff56be88dcbb9b2694aeb20f952c4",
     "ICI|combined": "b099cf10637683d59bcc1b40cd8de395ce4daef0d1c29d1c2bb2f44dfafc2dad",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
@@ -12,12 +12,12 @@
     "ICI|mmf": {
       "source": "ICI",
       "kind": "mmf",
-      "period": "October 21, 2026",
-      "published": "October 22, 2026",
+      "period": "October 28, 2026",
+      "published": "October 29, 2026",
       "url": "https://www.ici.org/research/stats/mmf",
       "metrics": {
-        "assets_trillion": 7.94457,
-        "weekly_change_bn": 21.49
+        "assets_trillion": 7.90128,
+        "weekly_change_bn": -43.29
       },
       "quality_checks": [
         "same_week",
@@ -25,7 +25,7 @@
         "table_change",
         "prose_level"
       ],
-      "fingerprint": "c74fdbe2b237ba409f2d1626063ed0872de5268b138d59e41bf8a74b2cdd78cd"
+      "fingerprint": "fb38565bd9b826ad3f43aa81ed6bec2c7661d44f2a91d9941b543ea0de2bae40"
     },
     "FINRA|margin": {
       "source": "FINRA",
@@ -124,7 +124,7 @@
       "period": "October 15, 2026",
       "reference_week": "2026-10-15",
       "reference_week_verified": true,
-      "published": "2026-10-28",
+      "published": "2026-10-29",
       "url": "https://hedgeweek.com/news/hedge-funds-slash-tech-exposure-at-fastest-pace-in-a-decade",
       "comparison_note": "복수 공개 보도의 인용치. Goldman 고객 전용 원자료·업종별 표준편차 수치 미확보",
       "metrics": {
@@ -138,18 +138,18 @@
       "fingerprint": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
     }
   },
-  "updated_at_kst": "2026-10-29T03:23:58.417662+09:00",
+  "updated_at_kst": "2026-10-30T10:01:54.019333+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-10-28",
-    "sp500_last_value": 7727.1201171875,
+    "sp500_last_date": "2026-10-29",
+    "sp500_last_value": 7720.39013671875,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -1.17,
+    "sp500_drawdown_pct": -1.26,
     "hartnett_tracking_version": "2026-10-09-v1",
-    "hartnett_treasury_date": "2026-10-28",
-    "hartnett_10y_pct": 5.05,
-    "hartnett_10y_5d_bp": -8.0,
+    "hartnett_treasury_date": "2026-10-29",
+    "hartnett_10y_pct": 4.98,
+    "hartnett_10y_5d_bp": 2.0,
     "hartnett_bond_level": "below_5_30",
     "hartnett_bond_momentum": "neutral",
     "hartnett_fed_target_upper_pct": 4.0,
