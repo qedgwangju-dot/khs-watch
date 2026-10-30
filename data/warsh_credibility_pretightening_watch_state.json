@@ -1,14 +1,14 @@
 {
-  "treasury_date": "2026-10-29",
+  "treasury_date": "2026-10-30",
   "pretightening_active": false,
   "pretightening": {
-    "date": "2026-10-29",
-    "base_date": "2026-10-22",
+    "date": "2026-10-30",
+    "base_date": "2026-10-23",
     "active": false,
-    "d2_bp": -4.0000000000000036,
-    "d2s10s_bp": 6.000000000000053,
-    "d2s30s_bp": 7.000000000000028,
-    "avg_curve_bp": 6.500000000000041,
+    "d2_bp": -13.000000000000078,
+    "d2s10s_bp": 7.000000000000117,
+    "d2s30s_bp": 11.000000000000028,
+    "avg_curve_bp": 9.000000000000073,
     "verdict": "시장 선긴축 기준 미충족"
   },
   "macro": {
@@ -30,5 +30,5 @@
   "last_seen_fomc_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
   "pending_fomc": null,
   "last_credibility_completed": false,
-  "updated_at_utc": "2026-10-29T20:26:01.813141+00:00"
+  "updated_at_utc": "2026-10-30T20:19:44.044089+00:00"
 }
