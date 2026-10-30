@@ -538,6 +538,8 @@ jobs:
 
       - name: Upload watchdog verification artifacts
         if: always()
+        id: upload_primary
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: yen-carry-watchdog-${{ github.run_id }}
@@ -549,3 +551,25 @@ jobs:
             out/yen_carry_watchdog_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
+
+      - name: Retry watchdog artifact upload after transport failure
+        if: always() && steps.upload_primary.outcome == 'failure'
+        id: upload_retry
+        uses: actions/upload-artifact@v4
+        with:
+          name: yen-carry-watchdog-${{ github.run_id }}
+          overwrite: true
+          path: |
+            out/yen_carry_watchdog_initial.json
+            out/yen_carry_watchdog_repair_result.json
+            out/yen_carry_watchdog_status.md
+            out/yen_carry_watchdog_alert.txt
+            out/yen_carry_watchdog_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Fail if both watchdog artifact uploads failed
+        if: always() && steps.upload_primary.outcome == 'failure' && steps.upload_retry.outcome != 'success'
+        run: |
+          echo "경보·상태 처리와 별도로 검증 자료 업로드가 두 번 모두 실패했습니다." >> "$GITHUB_STEP_SUMMARY"
+          exit 1
