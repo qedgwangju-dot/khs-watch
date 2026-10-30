@@ -1,10 +1,12 @@
 import datetime as dt
 import unittest
+from unittest import mock
 from zoneinfo import ZoneInfo
 
 from yen_carry_recent_shock import (
     calculate,
     detect_history_event,
+    fetch_complete_snapshot,
     monitor_gap_minutes,
 )
 
@@ -15,6 +17,28 @@ class RecentShockTests(unittest.TestCase):
     def points(self, prices, step=300.0):
         start = 1_800_000_000.0 - (len(prices) - 1) * step
         return [(start + i * step, float(px)) for i, px in enumerate(prices)]
+
+    def test_partial_five_minute_reference_retries_using_real_points(self):
+        complete = self.points([100.0] * 30)
+        target = complete[-1][0] - 30 * 60
+        partial = [row for row in complete if abs(row[0] - target) > 600]
+        from yen_carry_recent_shock import calculate
+        with self.assertRaisesRegex(RuntimeError, "30-minute reference unavailable"):
+            calculate(partial)
+        with mock.patch("yen_carry_recent_shock.composite.fetch_fx_points", side_effect=[partial, complete]) as fetch:
+            points, result = fetch_complete_snapshot(attempts=2, retry_pause_seconds=0)
+        self.assertEqual(points, complete)
+        self.assertEqual(result.change_30m_pct, 0)
+        self.assertEqual(fetch.call_count, 2)
+
+    def test_persistently_missing_reference_must_fail_not_fabricate_price(self):
+        complete = self.points([100.0] * 30)
+        target = complete[-1][0] - 30 * 60
+        partial = [row for row in complete if abs(row[0] - target) > 600]
+        with mock.patch("yen_carry_recent_shock.composite.fetch_fx_points", return_value=partial) as fetch:
+            with self.assertRaisesRegex(RuntimeError, "30-minute reference unavailable"):
+                fetch_complete_snapshot(attempts=2, retry_pause_seconds=0)
+        self.assertEqual(fetch.call_count, 2)
 
     def test_current_shock_when_fast_drop_is_still_running(self):
         prices = [100.4] * 15 + [100.2, 100.0, 99.6, 99.2]
