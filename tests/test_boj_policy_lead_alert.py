@@ -1152,5 +1152,27 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertEqual(extract_vote("The policy decision passed by a 7-2 vote."), (7, 2))
 
 
+    def test_boj_statement_percent_word_rate_is_extracted_without_using_forecast(self):
+        from boj_policy_lead_alert import extract_boj_policy_rate
+        source = (
+            "The Bank will encourage the uncollateralized overnight call rate "
+            "to remain at around 1.25 percent. Inflation is projected at 2.6 percent. "
+            "The monetary policy decision was approved by an 8-1 vote."
+        )
+        self.assertEqual(extract_boj_policy_rate(source), 1.25)
+        self.assertIsNone(extract_boj_policy_rate(
+            "Underlying inflation is expected to rise to 2.6 percent."
+        ))
+        signal = classify(Item(
+            title="Statement on Monetary Policy",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/mpmdeci/k261030a.pdf",
+            published=dt.datetime(2026, 10, 30, 12, 2, tzinfo=KST),
+            description=source,
+        ))
+        self.assertEqual(signal.policy_rate, 1.25)
+        self.assertEqual((signal.vote_for, signal.vote_against), (8, 1))
+
+
 if __name__ == "__main__":
     unittest.main()
