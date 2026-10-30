@@ -799,10 +799,17 @@ def has_confirmed_underlying_target(item: Item, kind: str | None) -> bool:
 
 
 def extract_vote(text: str) -> tuple[int | None, int | None]:
-    match = re.search(r"\b([1-9])-([0-9])\b", text)
-    if not match:
-        return None, None
-    return int(match.group(1)), int(match.group(2))
+    # Chart numbers such as "Figure 5-1" are NOT voting tallies.
+    for sentence in re.split(r"(?<=[.!?])\s+", clean(text)):
+        if not re.search(
+            r"\b(?:vote|voted|voting|decision|passed|approved|approval|majority|in favor|in favour)\b",
+            sentence, flags=re.I,
+        ):
+            continue
+        match = re.search(r"\b([1-9])\s*[-–]\s*([0-9])\b", sentence)
+        if match:
+            return int(match.group(1)), int(match.group(2))
+    return None, None
 
 
 def extract_dissent_direction(text: str) -> str | None:
@@ -960,6 +967,10 @@ def classify(item: Item) -> Signal | None:
 
     text = item.text
     lower = text.lower()
+    is_outlook_report = (
+        source == "Bank of Japan"
+        and "outlook for economic activity and prices" in item.title.lower()
+    )
 
     rate_unchanged = is_policy_hold(item, kind)
     rate = extract_held_rate(text) if rate_unchanged else extract_rate(text)
@@ -979,6 +990,19 @@ def classify(item: Item) -> Signal | None:
     stabilize_underlying_around_2 = has_any(text, STABILIZE_UNDERLYING_2_MARKERS)
     underlying_target_reached = has_confirmed_underlying_target(item, kind)
     outlook_dissenters, outlook_dissent_view = extract_outlook_dissent(text)
+    if is_outlook_report:
+        # The quarterly Outlook has charts and a full committee roster.
+        # Neither is a record of the monetary-policy vote or its dissenters.
+        rate = None
+        bp = None
+        rate_unchanged = False
+        vote_for = vote_against = None
+        dissent_direction = None
+        dissenters = ()
+        assessment_vote_for = assessment_vote_against = None
+        assessment_view = None
+        outlook_dissenters = ()
+        outlook_dissent_view = None
     official_statement_detail_verified = (
         source == "Bank of Japan"
         and kind == "decision"
@@ -1028,6 +1052,13 @@ def classify(item: Item) -> Signal | None:
     if kind == "press_conference" and hawkish_tail_50bp and conditional:
         level = 1
         note = "50bp·연속 인상 가능성을 배제하지 않았지만 고정된 인상 간격은 없다고 명시 — 조건부 꼬리위험, 기본경로 가속 확정 아님"
+
+    if is_outlook_report:
+        # Generic forecast terminology cannot mean that the rate path accelerated.
+        level = 1
+        note = "BOJ 분기 전망 발표 — 차기 금리 인상 시점은 별도 확인 필요"
+        if underlying_target_reached:
+            note = "BOJ 분기 전망: 기조물가가 2% 목표에 대체로 도달했다는 판단 확인"
 
     if kind == "decision" and rate_unchanged:
         level = 1
