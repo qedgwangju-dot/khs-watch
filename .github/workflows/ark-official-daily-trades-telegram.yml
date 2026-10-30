@@ -19,7 +19,7 @@ permissions:
 
 concurrency:
   group: ark-official-daily-trades-telegram
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   watch:
@@ -29,7 +29,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.THIRTEENF_TELEGRAM_CHAT_ID }}
       EXPECTED_BOT: "khs887988798879_bot"
-      ARK_PROBE_ONLY: "false"
+      ARK_PROBE_ONLY: ${{ github.event_name == 'push' && 'true' || 'false' }}
 
     steps:
       - name: Checkout
