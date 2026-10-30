@@ -1237,7 +1237,8 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIn("시장 영향(가능성)", lines[5])
         self.assertIn("USD/JPY 하락", lines[5])
         self.assertIn("실제 관측 | 발표 전후 비교 가능한 최신 시세 부족", body)
-        self.assertNotIn("정책 7대2와 자동 동일시하지 않음", body)
+        self.assertNotIn("정책 7대2", body)
+        self.assertIn("정책금리 표결(8대1)", body)
         self.assertLess(len(title + "\n\n" + body), 3950)
 
     def test_hold_without_explicit_future_guidance_does_not_claim_more_hikes(self):
