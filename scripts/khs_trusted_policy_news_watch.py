@@ -3700,6 +3700,29 @@ def korean_trump_story_title(title: str) -> str:
 def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] | None:
     if not items:
         return None
+    if rule.key == "us_fcc_800mhz_uas_cellular_authorization":
+        adopted = semantic_policy_event_key(items[0]) == "us-fcc-800mhz-uas-cellular-order-adopted-2026-10-29"
+        direct = any(x.get("official_direct_verified") is True and
+                     x.get("link") == FCC_800_UAS_RELEASE_SOURCES[0][0] for x in items)
+        return {
+            "title": rule.title if adopted else rule.title + " · 후속 규제",
+            "core": rule.core if adopted else "FCC 26-72 게재·발효 관련 후속 보도이며 최종 원문 확인이 필요합니다.",
+            "stage": ("FCC 최종 채택 확인·연방관보 게재 및 발효 대기" if direct and adopted else
+                      "FCC 발표 재인용 확인·원문 직접 확인 전" if adopted else "후속 보도·효력 확정 전"),
+            "event_date": "2026년 10월 29일" if adopted else "후속 발표일 확인 필요",
+            "event_date_label": "FCC 의결일" if adopted else "후속 규제 단계",
+            "actual_bullets": [
+                "824~849MHz 25MHz + 869~894MHz 25MHz = 기존 통신사 면허 대역 총 50MHz.",
+                "드론 지휘·제어·탑재장비 데이터에 이용하도록 과거 항공 중 통신 제한을 해제.",
+                "새 독점 드론 면허가 아니며, FAA의 비가시권 운항 허가나 상용 비행 허가가 자동으로 부여되지 않습니다.",
+                "최종 채택일과 FCC 최종 문서·연방관보 게재·법적 발효일을 구분합니다.",
+            ] if adopted else ["새 공식 발표 단계·적용일 및 기술 조건은 FCC 원문을 확인합니다."],
+            "timeline": "2026년 10월 8일 초안 → 10월 29일 최종 채택 → 관보 게재·발효 → FAA 운항·통신사망 계약 확인",
+            "scope_note": rule.counter, "next": rule.follow_up,
+            "investment": rule.point, "priced_in": "50MHz를 신규 확정 매출로 환산하지 않습니다.",
+            "counter": rule.counter, "failure": "통신망 간섭·FAA 허가 지연·인증·서비스 계약 불확실성.",
+            "impacts": rule.impacts, "paths": rule.paths, "sectors": rule.sectors,
+        }
     if rule.key == "eu_china_hybrid_vehicle_safeguard":
         signature = semantic_policy_event_key(items[0])
         original = signature == "eu-china-hybrid-safeguard-understanding-2026-10-09"
