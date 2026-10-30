@@ -6,7 +6,7 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 26,
+    "material_items": 28,
     "new_material_items": 0,
     "raw_items": 312,
     "replication_reference_suppressed": 0,
@@ -1521,6 +1521,16 @@
       "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQT0xvcDZrOXl1MlFybDBjbGIwTW5pUFNwQ0pRMkpubUp2ak13cDR5V1dPR2FEMXcxRm1pUUE1NXNEVjBoMmxpX2pBV0V0UTJlTHdYYzE5SDZ4V001bTVhb203TUgwRV90a293Ql9ZNTVGRnlKeDlWMWJLTndfMGVLem1yY2pNc3ltbzR2QWswUUR5QdIBlwFBVV95cUxOWjBYX2hQRGVrOXlQNDhZNzRXZWkwdzV4UEV6RWtLRnhJbElBNmt3bGlKYndtOGg2Sm5tUTVuaUdsY21tRkNmeXhGMlAxQTVQLW4zcVQwaEl2cW1lUmFKUDVvWS1jMkwtM2VPQlVQVnBqWDY5YmtFbVBBOV9kU05xQjRibHVwY0RXMlc5bnEzWmEtRXA2TmhZ?oc=5",
       "vendor": "PHP 재단"
     },
+    "f11b3ade76aa4954c229bfca": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-30T05:26:55.861292+00:00",
+      "published_at": "2026-10-28T12:04:22+00:00",
+      "severity": 2,
+      "source": "SecurityWeek",
+      "title": "China-Linked Hackers Exploit PHP2Shell to Root Firewalls - SecurityWeek",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNTi1Ea2haTGZSaHlIaDBIRVBIdURnS2JELXdDU1dXM2p4X09mSENNODRlUzFFYUYzdHNrZlU3T3hWTzRRbmxmVC1nX2xuQnY4eF9iQ2lpS0pIcHFIWnZyOGwybVVqR0ZVMHVhUFZ5ZjQ5T2prdFEySVhIRnQxbjU2RkNDekJ3N3JCU20xMlU4M01lNHBC0gGUAUFVX3lxTE1OLURraFpMZlJoeUhoMEhFUEh1RGdLYkQtd0NTV1czanhfT2ZIQ004NGVTMUVhRjN0c2tmVTdPeFZPNFFubGZULWdfbG5Cdjh4X2JDaWlLSkhwcUhadnI4bDJtVWpHRlUwdWFQVnlmNDlPamt0UTJJWEhGdDFuNTZGQ0N6Qnc3ckJTbTEyVTgzTWU0cEI?oc=5",
+      "vendor": "PHP 재단"
+    },
     "f1693a69d948a827f36e55e1": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T12:57:27.575329+00:00",
@@ -1644,5 +1654,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-30T13:53:36+09:00"
+  "updated_at_kst": "2026-10-30T14:26:55+09:00"
 }
