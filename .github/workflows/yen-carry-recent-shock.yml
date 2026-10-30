@@ -40,7 +40,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          # Fetch only the active default branch to avoid the multi-minute all-branch clone.
+          fetch-depth: 2
 
       - name: Sync latest main before monitoring
         if: github.ref == 'refs/heads/main'
