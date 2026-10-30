@@ -1755,6 +1755,54 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     items: list[dict] = []
     seen_links: set[str] = set()
 
+    # The October 29 FCC decision must not depend on a news-feed index that
+    # can truncate one particular FCC release. Check the exact FCC source first,
+    # then a copy of its original release and an independent industry report.
+    # Never treat the October 8 vote preview as final adoption.
+    if rule.key == "us_fcc_800mhz_uas_cellular_authorization":
+        published = dt.datetime(2026, 10, 29, tzinfo=KST)
+        if (now - published).total_seconds() / 3600 <= max_age_hours_for_rule(rule):
+            for url, source_label, is_official in FCC_800_UAS_RELEASE_SOURCES:
+                try:
+                    raw = fetch_text(url, timeout=12)
+                except Exception as exc:
+                    print(
+                        f"trusted_policy_news=fcc_800_uas_source_failed "
+                        f"source={source_label!r} error={type(exc).__name__}: {exc}"
+                    )
+                    continue
+                text_body = clean_text(raw)
+                lower = text_body.lower()
+                passed = (
+                    ("800 mhz" in lower or "800mhz" in lower)
+                    and ("50 megahertz" in lower or "50 mhz" in lower or "50mhz" in lower)
+                    and any(word in lower for word in ("drone", "drones", "unmanned aircraft", "uncrewed aircraft", "uas"))
+                    and any(word in lower for word in ("voted", "adopted", "fcc 26-72", "order adopted", "the commission adopted"))
+                    and ("october 29, 2026" in lower or "oct 29, 2026" in lower or "29 october 2026" in lower)
+                )
+                if not passed:
+                    print(f"trusted_policy_news=fcc_800_uas_source_rejected source={source_label!r} reason=adoption_identity_mismatch")
+                    continue
+                items.append({
+                    "title": "FCC Opens More Cellular Spectrum for Drones",
+                    "description": text_body[:50000],
+                    "link": url,
+                    "source": source_label,
+                    "published_kst": published.isoformat(timespec="seconds"),
+                    "published_precision": "date",
+                    "priority": 0 if is_official else 1 if "Light Reading" in source_label else 2,
+                    "official_direct_verified": is_official,
+                    "fcc_800_uas_stage": "adopted",
+                })
+                seen_links.add(url)
+                print(
+                    f"trusted_policy_news=fcc_800_uas_adoption_verified "
+                    f"source={source_label!r} direct_official={str(is_official).lower()}"
+                )
+                # Only one independent fallback is needed when the FCC site is blocked.
+                if is_official or "Light Reading" in source_label:
+                    break
+
     # Agreement by governments (October 9) versus media-reported quota size
     # (October 12) and a legally effective EU import safeguard are distinct.
     if rule.key == "eu_china_hybrid_vehicle_safeguard":
