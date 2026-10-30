@@ -1401,7 +1401,7 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             further_hikes=False, conditional_pace=False, accommodative=False,
             cpi_h2_clearly_above_2=False, stabilize_underlying_around_2=False,
             inflation_upside=False, risk_channels=False,
-            neutral_rate=True,  # A secondary PDF mentions the term without changing policy.
+
         )
         allowed, reason = should_alert(
             partial, state, dt.datetime(2026, 10, 30, 14, 0, tzinfo=KST)
