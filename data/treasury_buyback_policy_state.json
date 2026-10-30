@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-31T02:40:59+09:00",
+  "last_checked_kst": "2026-10-31T06:43:53+09:00",
   "schedule_sha256": "3461c9a9822dec08b3059d2dd367baadd0d0967193913ce8fe95702f000366d7",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -9,7 +9,7 @@
   "upgrade_note": "one-time resend armed for upgraded Bessent policy-boundary interpretation",
   "bessent_policy_boundary_revision": 12,
   "bessent_causal_verdict_key": "mixed",
-  "bessent_causal_verdict": "⚪ 공통 원자료 2거래일 시차 — 최신 원인 판정 보류",
+  "bessent_causal_verdict": "⚪ 공통 원자료 3거래일 시차 — 최신 원인 판정 보류",
   "bessent_causal_snapshot": {
     "common_prev_date": "2026-10-26",
     "common_date": "2026-10-27",
@@ -50,8 +50,8 @@
       "start_date": "2026-10-20",
       "end_date": "2026-10-27"
     },
-    "latest_bond_common_date": "2026-10-29",
-    "lag_market_sessions": 2,
+    "latest_bond_common_date": "2026-10-30",
+    "lag_market_sessions": 3,
     "is_lagged": true,
     "latest": {
       "brent": {
@@ -63,16 +63,16 @@
         "value": 128.12
       },
       "nom10": {
-        "date": "2026-10-29",
-        "value": 4.98
+        "date": "2026-10-30",
+        "value": 4.94
       },
       "real10": {
-        "date": "2026-10-29",
-        "value": 2.63
+        "date": "2026-10-30",
+        "value": 2.6
       }
     },
     "verdict_key": "mixed",
-    "verdict": "⚪ 공통 원자료 2거래일 시차 — 최신 원인 판정 보류",
+    "verdict": "⚪ 공통 원자료 3거래일 시차 — 최신 원인 판정 보류",
     "oil_scenario_key": "100_plus",
     "oil_scenario_stable": true,
     "sources": {
