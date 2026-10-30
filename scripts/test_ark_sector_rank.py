@@ -172,7 +172,7 @@ def main():
     assert "최근 3개월 (2026-07-30~2026-10-29)" in period
     assert "순매수 +" in period and "순매도 -" in period
     assert "매수 비중" in period
-    assert "미확보 일자를 0원으로 채우지 않습니다" in period
+    assert "미확보 일자를 0원으로 채우지 않으며" in period
 
     # Missing market close forbids a fake "net buying" direction.
     broken=[dict(snapshots[0],complete=False)]
