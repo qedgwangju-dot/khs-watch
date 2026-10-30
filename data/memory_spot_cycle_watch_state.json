@@ -803,7 +803,7 @@
     "51a4975dff342baec742a83b": {
       "title": "Memory Chip Shortage Extends Into 2027 as SK Hynix Price Target Raised 40% - BigGo Finance",
       "source": "BigGo Finance",
-      "published_kst": "2026-10-27T18:40:03+09:00",
+      "published_kst": "2026-10-27T12:56:00+09:00",
       "first_seen_kst": "2026-10-27T23:57:33+09:00"
     },
     "54259ff9455fcef899090922": {
@@ -865,10 +865,28 @@
       "source": "TrendForce Research",
       "published_kst": "2026-10-30T09:00:00+09:00",
       "first_seen_kst": "2026-10-30T12:01:16+09:00"
+    },
+    "876ad302dff506d811c5f889": {
+      "title": "Specialty DRAM Price Oct. 2026",
+      "source": "TrendForce Research",
+      "published_kst": "2026-10-30T09:00:00+09:00",
+      "first_seen_kst": "2026-10-30T19:00:34+09:00"
+    },
+    "810a17b0a65c21c105d2d6a4": {
+      "title": "Mobile DRAM Contract Price 4Q26",
+      "source": "TrendForce Research",
+      "published_kst": "2026-10-30T09:00:00+09:00",
+      "first_seen_kst": "2026-10-30T19:00:34+09:00"
+    },
+    "b5c97a1f3cc7b57000ac0341": {
+      "title": "DRAM Contract Price Oct. 2026",
+      "source": "TrendForce Research",
+      "published_kst": "2026-10-30T09:00:00+09:00",
+      "first_seen_kst": "2026-10-30T19:00:34+09:00"
     }
   },
-  "updated_at_kst": "2026-10-30T12:01:16+09:00",
-  "last_scan_count": 15,
+  "updated_at_kst": "2026-10-30T19:00:34+09:00",
+  "last_scan_count": 18,
   "last_new_count": 2,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -929,20 +947,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-30T12:01:28+09:00",
+  "last_successful_delivery_kst": "2026-10-30T19:00:47+09:00",
   "telegram_message_ids": [
-    358
+    360
   ],
-  "telegram_message_id": 358,
+  "telegram_message_id": 360,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      358
+      360
     ],
-    "confirmed_at_kst": "2026-10-30T12:01:28+09:00",
-    "alert_signature": "f3d9e9d27a5d6a5eb33cb29a3626f00dd86e5eb4cefe0cfecbee16597571f9de"
+    "confirmed_at_kst": "2026-10-30T19:00:47+09:00",
+    "alert_signature": "fc667247e63c13361acdc03801135efb675c34bb2f506bfd76581dfee5fef2da"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
