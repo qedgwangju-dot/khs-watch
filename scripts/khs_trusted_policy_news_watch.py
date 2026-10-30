@@ -1751,6 +1751,18 @@ def load_seen() -> dict:
         return {"seen": {}, "updated_at_kst": ""}
 
 
+def fcc_800_uas_adoption_body_verified(raw: str) -> bool:
+    """Require the October 29 adoption, not the October 8 draft or vote agenda."""
+    low = clean_text(raw).lower()
+    return bool(
+        ("800 mhz" in low or "800mhz" in low)
+        and ("50 megahertz" in low or "50 mhz" in low or "50mhz" in low)
+        and any(x in low for x in ("drone", "drones", "unmanned aircraft", "uncrewed aircraft", "uas"))
+        and any(x in low for x in ("voted", "adopted", "fcc 26-72", "order adopted", "the commission adopted"))
+        and any(x in low for x in ("october 29, 2026", "oct 29, 2026", "29 october 2026"))
+    )
+
+
 def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     items: list[dict] = []
     seen_links: set[str] = set()
@@ -1772,15 +1784,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                     )
                     continue
                 text_body = clean_text(raw)
-                lower = text_body.lower()
-                passed = (
-                    ("800 mhz" in lower or "800mhz" in lower)
-                    and ("50 megahertz" in lower or "50 mhz" in lower or "50mhz" in lower)
-                    and any(word in lower for word in ("drone", "drones", "unmanned aircraft", "uncrewed aircraft", "uas"))
-                    and any(word in lower for word in ("voted", "adopted", "fcc 26-72", "order adopted", "the commission adopted"))
-                    and ("october 29, 2026" in lower or "oct 29, 2026" in lower or "29 october 2026" in lower)
-                )
-                if not passed:
+                if not fcc_800_uas_adoption_body_verified(raw):
                     print(f"trusted_policy_news=fcc_800_uas_source_rejected source={source_label!r} reason=adoption_identity_mismatch")
                     continue
                 items.append({
