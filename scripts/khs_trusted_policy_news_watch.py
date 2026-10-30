@@ -1651,7 +1651,7 @@ def fetch_text(url: str, timeout: int = 8) -> str:
         # already configured policy proxy/direct race only for these named
         # verified first-party/research sources, without changing RSS sourcing.
         host = (urllib.parse.urlparse(url).hostname or "").lower()
-        if host not in {"home.treasury.gov", "money.udn.com", "www.mofcom.gov.cn", "hzf.mofcom.gov.cn"}:
+        if host not in {"home.treasury.gov", "money.udn.com", "www.mofcom.gov.cn", "hzf.mofcom.gov.cn", "www.fcc.gov"}:
             raise
         body, error = fetch_policy_source_with_fallback(
             url, user_agent=user_agent, timeout=timeout, attempts=1, accept=accept
