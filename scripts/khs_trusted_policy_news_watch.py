@@ -1776,7 +1776,11 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     # Never treat the October 8 vote preview as final adoption.
     if rule.key == "us_fcc_800mhz_uas_cellular_authorization":
         published = dt.datetime(2026, 10, 29, tzinfo=KST)
-        if (now - published).total_seconds() / 3600 <= max_age_hours_for_rule(rule):
+        adopted_receipt = story_event_fingerprint(rule, [{"fcc_800_uas_stage": "adopted"}])
+        already_delivered = adopted_receipt in (load_seen().get("seen") or {})
+        # Do not re-fetch the historical baseline every 15 minutes after a
+        # successful receipt; RSS continues watching future legal stages.
+        if not already_delivered and (now - published).total_seconds() / 3600 <= max_age_hours_for_rule(rule):
             for url, source_label, is_official in FCC_800_UAS_RELEASE_SOURCES:
                 try:
                     raw = fetch_text(url, timeout=12)
