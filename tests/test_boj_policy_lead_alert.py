@@ -1371,5 +1371,68 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIn("원문:", body)
 
 
+    def test_same_meeting_sparse_source_cannot_reverse_already_reported_guidance(self):
+        from dataclasses import replace
+        base = classify(Item(
+            title="BOJ keeps interest rates steady at 1.25% - Reuters",
+            source="Reuters", link="https://www.reuters.com/",
+            published=dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST),
+            description="The Bank of Japan held the policy rate at 1.25% in an 8-1 vote.",
+        ))
+        verified = replace(
+            base, key="previous-full-policy-outlook",
+            official_statement_detail_verified=True,
+            underlying_target_reached=True,
+            further_hikes=True, conditional_pace=True, accommodative=True,
+            cpi_h2_clearly_above_2=True, stabilize_underlying_around_2=True,
+            inflation_upside=True, risk_channels=True,
+        )
+        state = {
+            "last_signal_key": verified.key,
+            "last_alert_at_kst": "2026-10-30T13:14:00+09:00",
+            "last_published_at_kst": verified.published.isoformat(),
+            "last_source": verified.source,
+            "signature": signal_signature(verified),
+        }
+        # A different BOJ document from the *same meeting* simply omits
+        # these statements. They have not been withdrawn.
+        partial = replace(
+            verified, key="other-document-with-fewer-fields",
+            further_hikes=False, conditional_pace=False, accommodative=False,
+            cpi_h2_clearly_above_2=False, stabilize_underlying_around_2=False,
+            inflation_upside=False, risk_channels=False,
+        )
+        allowed, reason = should_alert(
+            partial, state, dt.datetime(2026, 10, 30, 14, 0, tzinfo=KST)
+        )
+        self.assertFalse(allowed)
+        self.assertEqual(reason, "정책경로 실질 변화 없음")
+
+    def test_positive_new_official_guidance_can_still_alert(self):
+        from dataclasses import replace
+        prior = classify(Item(
+            title="BOJ keeps interest rates steady at 1.25% - Reuters",
+            source="Reuters", link="https://www.reuters.com/",
+            published=dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST),
+            description="The BOJ held interest rates at 1.25% in an 8-1 vote.",
+        ))
+        prior = replace(prior, official_statement_detail_verified=True)
+        later = replace(
+            prior, key="confirmed-additional-hikes",
+            further_hikes=True, conditional_pace=True,
+        )
+        state = {
+            "last_signal_key": prior.key,
+            "last_alert_at_kst": "2026-10-30T13:14:00+09:00",
+            "last_published_at_kst": prior.published.isoformat(),
+            "signature": signal_signature(prior),
+        }
+        allowed, reason = should_alert(
+            later, state, dt.datetime(2026, 10, 30, 14, 0, tzinfo=KST)
+        )
+        self.assertTrue(allowed)
+        self.assertIn("가이던스", reason)
+
+
 if __name__ == "__main__":
     unittest.main()
