@@ -798,6 +798,25 @@ def has_confirmed_underlying_target(item: Item, kind: str | None) -> bool:
     return False
 
 
+def extract_boj_policy_rate(text: str) -> float | None:
+    """Read an explicitly identified BOJ policy rate; never an inflation forecast."""
+    lower = clean(text).lower()
+    for pattern in (
+        r"\b(?:uncollateralized overnight call rate|short-term policy interest rate|"
+        r"short-term policy rate|short-term interest rate|policy interest rate|policy rate)\b"
+        r".{0,160}?\b(?:at\s+around|at|around|of)\s+"
+        r"(\d+(?:\.\d+)?)\s*(?:%|percent|per cent)\b",
+        r"\b(?:policy rate|overnight call rate)\b.{0,130}?"
+        r"(\d+(?:\.\d+)?)\s*(?:%|percent|per cent)\b",
+    ):
+        match = re.search(pattern, lower)
+        if match:
+            value = float(match.group(1))
+            if 0 <= value <= 10:
+                return value
+    return None
+
+
 def extract_vote(text: str) -> tuple[int | None, int | None]:
     # Chart numbers such as "Figure 5-1" are NOT voting tallies.
     for sentence in re.split(r"(?<=[.!?])\s+", clean(text)):
@@ -987,6 +1006,11 @@ def classify(item: Item) -> Signal | None:
 
     rate_unchanged = is_policy_hold(item, kind)
     rate = extract_held_rate(text) if rate_unchanged else extract_rate(text)
+    # BOJ documents often express 1.25 percent in words rather than the % sign.
+    if kind == "decision" and source == "Bank of Japan" and not is_outlook_report:
+        explicit_rate = extract_boj_policy_rate(text)
+        if explicit_rate is not None:
+            rate = explicit_rate
     bp = None if rate_unchanged else extract_bp(text)
     vote_for, vote_against = extract_vote(text)
     dissent_direction = extract_dissent_direction(text)
