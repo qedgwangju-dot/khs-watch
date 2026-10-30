@@ -1401,6 +1401,7 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             further_hikes=False, conditional_pace=False, accommodative=False,
             cpi_h2_clearly_above_2=False, stabilize_underlying_around_2=False,
             inflation_upside=False, risk_channels=False,
+            neutral_rate=True,  # A secondary PDF mentions the term without changing policy.
         )
         allowed, reason = should_alert(
             partial, state, dt.datetime(2026, 10, 30, 14, 0, tzinfo=KST)
@@ -1432,6 +1433,52 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         )
         self.assertTrue(allowed)
         self.assertIn("가이던스", reason)
+
+
+    def test_second_boj_pdf_neutral_rate_mention_is_not_new_meeting(self):
+        from dataclasses import replace
+        old = classify(Item(
+            title="Statement on Monetary Policy",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf",
+            published=dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST),
+            description=(
+                "The uncollateralized overnight call rate was held at 1.25 percent. "
+                "The underlying inflation rate has reached the 2 percent target. "
+                "The Bank will continue to raise interest rates while examining timing and pace."
+            ),
+        ))
+        verified = replace(
+            old, key="previously-delivered-both-facts",
+            official_statement_detail_verified=True, policy_rate=1.25,
+            rate_unchanged=True, vote_for=8, vote_against=1,
+            underlying_target_reached=True, further_hikes=True,
+            neutral_rate=False, inflation_spillover=False,
+            cpi_h2_clearly_above_2=True, stabilize_underlying_around_2=True,
+        )
+        partial = replace(
+            verified, key="same-meeting-different-pdf",
+            further_hikes=False, conditional_pace=False,
+            neutral_rate=True, inflation_upside=False,
+        )
+        state = {
+            "last_signal_key": verified.key,
+            "last_source": "Bank of Japan",
+            "last_alert_at_kst": "2026-10-30T13:13:29+09:00",
+            "last_published_at_kst": verified.published.isoformat(),
+            "signature": signal_signature(verified),
+        }
+        allowed, reason = should_alert(
+            partial, state, dt.datetime(2026, 10, 30, 14, tzinfo=KST)
+        )
+        self.assertFalse(allowed)
+        self.assertIn("실질 변화 없음", reason)
+        genuinely_new_vote = replace(partial, key="new-vote", vote_for=7, vote_against=2)
+        allowed, reason = should_alert(
+            genuinely_new_vote, state, dt.datetime(2026, 10, 30, 14, tzinfo=KST)
+        )
+        self.assertTrue(allowed)
+        self.assertIn("표결", reason)
 
 
 if __name__ == "__main__":
