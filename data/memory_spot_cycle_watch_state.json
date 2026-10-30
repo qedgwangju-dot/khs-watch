@@ -803,7 +803,7 @@
     "51a4975dff342baec742a83b": {
       "title": "Memory Chip Shortage Extends Into 2027 as SK Hynix Price Target Raised 40% - BigGo Finance",
       "source": "BigGo Finance",
-      "published_kst": "2026-10-27T13:00:09+09:00",
+      "published_kst": "2026-10-27T18:40:03+09:00",
       "first_seen_kst": "2026-10-27T23:57:33+09:00"
     },
     "54259ff9455fcef899090922": {
@@ -847,11 +847,29 @@
       "source": "TrendForce Research",
       "published_kst": "2026-10-29T09:00:00+09:00",
       "first_seen_kst": "2026-10-29T16:05:13+09:00"
+    },
+    "bc5f5e97f1e97e31688521b3": {
+      "title": "Enterprise SSD Contract Price 4Q26",
+      "source": "TrendForce Research",
+      "published_kst": "2026-10-30T09:00:00+09:00",
+      "first_seen_kst": "2026-10-30T12:01:16+09:00"
+    },
+    "b032661a5d48d1d36bab0f70": {
+      "title": "NAND Flash Contract Price Oct. 2026",
+      "source": "TrendForce Research",
+      "published_kst": "2026-10-30T09:00:00+09:00",
+      "first_seen_kst": "2026-10-30T12:01:16+09:00"
+    },
+    "5ec72a90509f847526b5f2d7": {
+      "title": "NAND Flash Wafer Contract Price Oct. 2026",
+      "source": "TrendForce Research",
+      "published_kst": "2026-10-30T09:00:00+09:00",
+      "first_seen_kst": "2026-10-30T12:01:16+09:00"
     }
   },
-  "updated_at_kst": "2026-10-30T08:39:02+09:00",
-  "last_scan_count": 12,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-30T12:01:16+09:00",
+  "last_scan_count": 15,
+  "last_new_count": 2,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -901,30 +919,30 @@
     "secondary_fab_timeline_source_kind": "뉴시스 업계 관계자 익명 발언 · TrendForce 공식 가이던스 아님",
     "secondary_fab_timeline_source_url": "https://www.newsis.com/view/NISX20261002_0003812363",
     "source": "TrendForce Research",
-    "source_url": "https://www.trendforce.com/research/download/RP261028TH",
+    "source_url": "https://www.trendforce.com/research/download/RP261030MH",
     "research_url": "https://www.trendforce.com/research/download/RP260924PL",
     "capacity_source_url": "https://www.trendforce.com/research/download/RP260819HW",
     "easing_source_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
     "secondary_source_url": "https://www.trendforce.com/presscenter/news/20260921-13246.html",
     "source_rank": 3,
-    "as_of": "2026-10-28"
+    "as_of": "2026-10-30"
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-29T06:07:07+09:00",
+  "last_successful_delivery_kst": "2026-10-30T12:01:28+09:00",
   "telegram_message_ids": [
-    350
+    358
   ],
-  "telegram_message_id": 350,
+  "telegram_message_id": 358,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      350
+      358
     ],
-    "confirmed_at_kst": "2026-10-29T06:07:07+09:00",
-    "alert_signature": "0217977f49e926a5bebf594cafc914c7611511237099e1f15c1758ebd9575626"
+    "confirmed_at_kst": "2026-10-30T12:01:28+09:00",
+    "alert_signature": "f3d9e9d27a5d6a5eb33cb29a3626f00dd86e5eb4cefe0cfecbee16597571f9de"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
