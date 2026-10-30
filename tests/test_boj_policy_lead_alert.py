@@ -575,7 +575,8 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             )
         )
         self.assertIsNone(signal.dissent_direction)
-        self.assertEqual(signal.dissenters, ("다카타", "다무라"))
+        # Outlook wording dissent is not a dissent on the policy-rate vote.
+        self.assertEqual(signal.dissenters, ())
         self.assertEqual(signal.outlook_dissenters, ("다카타", "다무라"))
 
     def test_verified_event_signal_has_complete_current_decision(self):
@@ -757,6 +758,14 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIn("--guard-state /tmp/boj_remote_state.json", workflow)
         self.assertIn("|| 'main' }}", workflow)
 
+    def test_only_main_push_can_trigger_live_boj_lane(self):
+        workflow = (
+            Path(__file__).resolve().parents[1]
+            / ".github" / "workflows" / "boj-policy-lead-alert.yml"
+        ).read_text(encoding="utf-8")
+        self.assertIn("  push:\\n    # Live Telegram runs", workflow.replace("\n", "\\n"))
+        self.assertIn("    branches:\n      - main\n    paths:", workflow)
+
     def test_workflow_renders_clean_clickable_links(self):
         workflow = (
             Path(__file__).resolve().parents[1]
@@ -902,6 +911,300 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIn("기조물가가 이미 2% 목표에 도달", body)
         self.assertIn("경제·물가 진단 별도 표결", body)
         self.assertIn("정책 7대2와 자동 동일시하지 않음", body)
+
+
+    def test_oct30_hold_8_to_1_hawkish_dissent_and_inflation_target(self):
+        item = Item(
+            title="BOJ keeps interest rates steady, signals further hikes - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com/world/asia-pacific/boj-keeps-interest-rates-steady-signals-further-rate-hikes-2026-10-30/",
+            published=dt.datetime(2026, 10, 30, 12, 8, tzinfo=KST),
+            description=(
+                "The Bank of Japan held its short-term policy rate at 1.25% in an 8-1 vote "
+                "to keep borrowing costs unchanged. Board member Hajime Takata dissented "
+                "and called for a 0.25-percentage-point hike to 1.5%. "
+                "The BOJ said underlying inflation had reached a level broadly consistent "
+                "with its 2% target."
+            ),
+        )
+        signal = classify(item)
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal.event_type, "decision")
+        self.assertTrue(signal.rate_unchanged)
+        self.assertEqual(signal.policy_rate, 1.25)
+        self.assertIsNone(signal.hike_bp)  # A dissenting proposal is not an executed hike.
+        self.assertEqual((signal.vote_for, signal.vote_against), (8, 1))
+        self.assertEqual(signal.dissent_direction, "hike")
+        self.assertEqual(signal.dissenters, ("다카타",))
+        self.assertTrue(signal.underlying_target_reached)
+        title, body, _payload = build(
+            signal, "새 정책금리 동결 결정", dt.datetime(2026, 10, 30, 12, 30, tzinfo=KST), {}
+        )
+        self.assertIn("0bp", body)
+        self.assertIn("동결", body)
+        self.assertIn("8대1", body)
+        self.assertIn("매파 반대", body)
+        self.assertIn("2% 목표", body)
+        self.assertNotIn("이번 조정폭: +25bp", body)
+        self.assertNotIn("1.25% → 1.50%", body)
+        self.assertLessEqual(len(title + "\n\n" + body), 4096)
+
+    def test_oct30_new_decision_is_alert_and_same_event_suppressed(self):
+        prior = classify(Item(
+            title="BOJ Governor Ueda says underlying inflation quite close to 2% target - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 19, 9, 17, tzinfo=KST),
+            description="Ueda told parliament that underlying inflation was quite close to 2% target.",
+        ))
+        current = classify(Item(
+            title="BOJ keeps interest rates steady at 1.25% - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 30, 12, 8, tzinfo=KST),
+            description="The BOJ held its policy rate at 1.25% in an 8-1 vote. Takata dissented and called for a hike.",
+        ))
+        state = {
+            "last_signal_key": prior.key,
+            "last_alert_at_kst": "2026-10-19T09:34:33+09:00",
+            "last_published_at_kst": "2026-10-19T09:17:00+09:00",
+            "signature": signal_signature(prior),
+        }
+        now = dt.datetime(2026, 10, 30, 12, 30, tzinfo=KST)
+        allowed, _reason = should_alert(current, state, now)
+        self.assertTrue(allowed)
+        state.update(
+            last_signal_key=current.key,
+            last_published_at_kst=current.published.isoformat(),
+            last_alert_at_kst=now.isoformat(),
+            signature=signal_signature(current),
+        )
+        allowed, reason = should_alert(current, state, now)
+        self.assertFalse(allowed)
+        self.assertIn("중복", reason)
+
+    def test_hawkish_target_claim_is_not_confused_with_member_outlook_dissent(self):
+        reported = classify(self.mk(
+            "BOJ raises interest rates to 1.25% in 25 basis-point move - Reuters",
+            "Takata and Tamura opposed the outlook wording, arguing underlying inflation "
+            "has already reached a level consistent with the 2 percent target.",
+        ))
+        self.assertFalse(reported.underlying_target_reached)
+
+    def test_unconfirmed_preview_is_not_official_target_achievement(self):
+        anticipated = classify(Item(
+            title="BOJ may signal underlying inflation reached 2% at policy meeting - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 29, 12, 0, tzinfo=KST),
+            description="Sources say the BOJ may signal underlying inflation has reached the 2% target.",
+        ))
+        self.assertIsNotNone(anticipated)
+        self.assertFalse(anticipated.underlying_target_reached)
+
+    def test_official_boj_target_finding_is_distinct_from_aiming_to_stabilize(self):
+        item = Item(
+            title="Statement on Monetary Policy — official full text",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/",
+            published=dt.datetime(2026, 10, 30, 12, 0, tzinfo=KST),
+            description=(
+                "The underlying inflation rate has reached a level broadly consistent with "
+                "the 2 percent price stability target. The Bank will continue to raise "
+                "the policy interest rate if the outlook is realized."
+            ),
+        )
+        signal = classify(item)
+        self.assertTrue(signal.underlying_target_reached)
+        self.assertTrue(signal.official_statement_detail_verified)
+
+    def test_hawkish_dissent_cannot_turn_hold_into_actual_25bp_increase(self):
+        item = Item(
+            title="BOJ holds rates steady at 1.25% after 8-1 vote - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 30, 12, 6, tzinfo=KST),
+            description="The BOJ kept rates at 1.25%, while Takata dissented and sought a 25 basis-point hike to 1.5%.",
+        )
+        signal = classify(item)
+        self.assertTrue(signal.rate_unchanged)
+        self.assertIsNone(signal.hike_bp)
+        self.assertEqual(signal.policy_rate, 1.25)
+
+
+    def test_boj_title_only_rss_cannot_send_empty_decision(self):
+        official = classify(Item(
+            title="Statement on Monetary Policy",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/mpmdeci/",
+            published=dt.datetime(2026, 10, 30, 12, 2, tzinfo=KST),
+            description="",
+        ))
+        now = dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST)
+        ok, reason = should_alert(official, {}, now)
+        self.assertFalse(ok)
+        self.assertIn("핵심 수치 확보 전", reason)
+
+    def test_same_day_title_only_alert_gets_labelled_as_fact_correction(self):
+        prior = classify(Item(
+            title="Statement on Monetary Policy",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/",
+            published=dt.datetime(2026, 10, 30, 12, 2, tzinfo=KST),
+            description="",
+        ))
+        complete = classify(Item(
+            title="BOJ keeps interest rates steady at 1.25% - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 30, 12, 8, tzinfo=KST),
+            description="The BOJ held the policy rate at 1.25% in an 8-1 vote.",
+        ))
+        state = {
+            "last_signal_key": prior.key,
+            "last_alert_at_kst": "2026-10-30T12:55:48+09:00",
+            "last_published_at_kst": prior.published.isoformat(),
+            "signature": signal_signature(prior),
+        }
+        ok, reason = should_alert(
+            complete, state, dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST)
+        )
+        self.assertTrue(ok)
+        self.assertIn("핵심 수치 보완", reason)
+        title, _body, _data = build(
+            complete, reason, dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST), {}
+        )
+        self.assertIn("핵심 수치 보완", title)
+
+    def test_boj_october_outlook_pdf_source_is_recent_and_classifiable(self):
+        from unittest.mock import patch
+        import boj_policy_lead_alert as mod
+        index = (
+            '<a href="/en/mopo/outlook/g261030a.pdf">'
+            "October 2026 (The Bank's View) [PDF]"
+            "</a>"
+        )
+        outlook = (
+            "The underlying inflation rate has reached a level broadly "
+            "consistent with the 2 percent price stability target."
+        )
+        now = dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST)
+        with patch.object(mod, "fetch_text", return_value=(index, None)):
+            with patch.object(mod, "_fetch_boj_document_text", return_value=(outlook, None)):
+                items = mod.fetch_official_outlook_items(now)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0].published.date(), dt.date(2026, 10, 30))
+        signal = classify(items[0])
+        self.assertEqual(signal.event_type, "decision")
+        self.assertTrue(signal.underlying_target_reached)
+
+    def test_2026_oct30_official_rss_pdf_uses_text_parser(self):
+        from unittest.mock import patch
+        import boj_policy_lead_alert as mod
+        source = Item(
+            title="Statement on Monetary Policy",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/mpmdeci/k261030a.pdf",
+            published=dt.datetime(2026, 10, 30, 12, 2, tzinfo=KST),
+            description="",
+        )
+        with patch.object(mod, "_fetch_boj_document_text", return_value=(
+            "The Bank kept the policy rate at 1.25 percent.", None
+        )) as pdf_fetch:
+            result = mod.enrich_official_items([source], dt.datetime(
+                2026, 10, 30, 13, 0, tzinfo=KST
+            ))
+        pdf_fetch.assert_called_once_with(source.link)
+        self.assertIn("1.25 percent", result[0].description)
+
+
+    def test_quarterly_outlook_charts_and_roster_do_not_create_fake_policy_votes(self):
+        from boj_policy_lead_alert import extract_vote, extract_dissenters
+        text = (
+            "The 2026 Outlook Report Figure 5-1 shows GDP contribution. "
+            "The policy board members include Asada, Sato, Takata, Tamura, "
+            "Himino, Koeda, Masu and Uchida. "
+            "The BOJ said underlying inflation had reached a level broadly "
+            "consistent with its 2% target."
+        )
+        self.assertEqual(extract_vote(text), (None, None))
+        self.assertEqual(extract_dissenters(text), ())
+        source = Item(
+            title="Outlook for Economic Activity and Prices — The Bank's View",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/outlook/g261030a.pdf",
+            published=dt.datetime(2026, 10, 30, 12, 0, tzinfo=KST),
+            description=text + " In the longer run, rapid economic growth could accelerate.",
+        )
+        signal = classify(source)
+        self.assertIsNone(signal.policy_rate)
+        self.assertIsNone(signal.hike_bp)
+        self.assertIsNone(signal.vote_for)
+        self.assertIsNone(signal.vote_against)
+        self.assertEqual(signal.dissenters, ())
+        self.assertEqual(signal.level, 1)
+        self.assertTrue(signal.underlying_target_reached)
+
+    def test_policy_vote_requires_voting_context_not_chart_reference(self):
+        from boj_policy_lead_alert import extract_vote
+        self.assertEqual(extract_vote("Figure 5-1 shows inflation. The vote was 8-1."), (8, 1))
+        self.assertEqual(extract_vote("Figure 5-1 shows inflation."), (None, None))
+        self.assertEqual(extract_vote("The policy decision passed by a 7-2 vote."), (7, 2))
+
+
+    def test_boj_statement_percent_word_rate_is_extracted_without_using_forecast(self):
+        from boj_policy_lead_alert import extract_boj_policy_rate
+        source = (
+            "The Bank will encourage the uncollateralized overnight call rate "
+            "to remain at around 1.25 percent. Inflation is projected at 2.6 percent. "
+            "The monetary policy decision was approved by an 8-1 vote."
+        )
+        self.assertEqual(extract_boj_policy_rate(source), 1.25)
+        self.assertIsNone(extract_boj_policy_rate(
+            "Underlying inflation is expected to rise to 2.6 percent."
+        ))
+        signal = classify(Item(
+            title="Statement on Monetary Policy",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/mpmdeci/k261030a.pdf",
+            published=dt.datetime(2026, 10, 30, 12, 2, tzinfo=KST),
+            description=source,
+        ))
+        self.assertEqual(signal.policy_rate, 1.25)
+        self.assertEqual((signal.vote_for, signal.vote_against), (8, 1))
+
+
+    def test_sparse_official_outlook_uses_confirmed_reuters_hold_but_not_proposal(self):
+        official = classify(Item(
+            title="Outlook for Economic Activity and Prices — The Bank's View",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/outlook/g261030a.pdf",
+            published=dt.datetime(2026, 10, 30, 12, 0, tzinfo=KST),
+            description=(
+                "The BOJ said underlying inflation had reached a level broadly "
+                "consistent with the 2% target."
+            ),
+        ))
+        reuters = classify(Item(
+            title="BOJ keeps interest rates steady, signals more hikes - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 30, 12, 10, tzinfo=KST),
+            description=(
+                "The BOJ held its policy rate at 1.25%. "
+                "Takata dissented and called for a 25 basis-point hike to 1.5%."
+            ),
+        ))
+        self.assertTrue(reuters.rate_unchanged)
+        self.assertIsNone(reuters.hike_bp)
+        self.assertEqual(reuters.policy_rate, 1.25)
+        merged = enrich_decision_context([official, reuters])[0]
+        self.assertTrue(merged.rate_unchanged)
+        self.assertEqual(merged.policy_rate, 1.25)
+        self.assertIsNone(merged.hike_bp)
+        self.assertEqual(merged.dissenters, ("다카타",))
+        self.assertEqual(merged.dissent_direction, "hike")
+        self.assertTrue(merged.underlying_target_reached)
 
 
 if __name__ == "__main__":

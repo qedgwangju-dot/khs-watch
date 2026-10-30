@@ -17,6 +17,9 @@ on:
     types:
       - completed
   push:
+    # Live Telegram runs must never be triggered by an unmerged patch branch.
+    branches:
+      - main
     paths:
       - ".github/workflows/boj-policy-lead-alert.yml"
       - "scripts/boj_policy_lead_alert.py"
@@ -35,7 +38,9 @@ permissions:
   contents: write
 
 concurrency:
-  group: boj-policy-lead-alert
+  # PR dry-runs must not queue behind live Telegram/source checks.
+  # Production keeps exactly the same serial group and no-cancel behavior.
+  group: ${{ github.event_name == 'pull_request' && format('boj-policy-lead-alert-pr-{0}', github.event.pull_request.number) || 'boj-policy-lead-alert' }}
   # Do not cancel a run after Telegram send but before state finalization.
   # Queued runs will read the finalized state and suppress duplicates.
   cancel-in-progress: false
@@ -60,7 +65,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          # Only the latest tree is needed; the remote-state guard fetches main again.
+          # Full history takes minutes in this large, frequently updated repository.
+          fetch-depth: 1
           # workflow_run can point at the triggering workflow's older SHA.
           # Always use latest main for live monitors so the newest alert state is read.
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}

@@ -54,6 +54,7 @@ UA = "Mozilla/5.0 khs-boj-policy-path/2.0"
 GOOGLE = "https://news.google.com/rss/search"
 BOJ_RSS = "https://www.boj.or.jp/en/rss/whatsnew.xml"
 BOJ_STATEMENTS_2026 = "https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm"
+BOJ_OUTLOOK_INDEX = "https://www.boj.or.jp/en/mopo/outlook/index.htm"
 REUTERS_BOJ_DECISION = "https://www.reuters.com/world/asia-pacific/boj-raises-interest-rates-31-year-high-widely-expected-move-2026-09-18/"
 REUTERS_BOJ_REACTION = "https://www.reuters.com/world/asia-pacific/view-investors-react-boj-raising-interest-rates-31-year-high-2026-09-18/"
 REUTERS_BOJ_PRESS_CONFERENCE = "https://www.reuters.com/business/finance/boj-governor-uedas-comments-news-conference-2026-09-18/"
@@ -108,6 +109,9 @@ QUERIES = (
     '"Bank of Japan" neutral rate Ueda Reuters when:3d',
     '"Summary of Opinions" BOJ Reuters when:7d',
     'BOJ dissent vote Reuters when:2d',
+    'BOJ held interest rates steady Reuters when:1d',
+    'BOJ underlying inflation reached 2% target Reuters when:2d',
+    'BOJ Takata dissented 8-1 hold Reuters when:2d',
     'BOJ inflation underlying 2% Reuters when:2d',
     'BOJ investors react yen Reuters when:1d',
     'BOJ 50 basis point half-point Reuters when:3d',
@@ -350,6 +354,9 @@ class Signal:
     inflation_upside: bool
     risk_channels: bool
     note: str
+    # Optional fields: keep previous payloads/state and September test fixtures compatible.
+    rate_unchanged: bool = False
+    underlying_target_reached: bool = False
 
 
 def clean(value: str) -> str:
@@ -426,13 +433,18 @@ def enrich_official_items(items: list[Item], now: dt.datetime) -> list[Item]:
         if source_name(item) != "Bank of Japan" or not item.link:
             enriched.append(item)
             continue
-        body, error = fetch_text(
-            item.link,
-            UA,
-            timeout=20,
-            attempts=2,
-            accept="text/html,application/xhtml+xml,*/*",
-        )
+        # BOJ RSS sometimes links directly to a policy PDF, not an HTML page.
+        # A 200 response to a PDF must not be treated as verified empty prose.
+        if item.link.lower().split("?", 1)[0].endswith(".pdf"):
+            body, error = _fetch_boj_document_text(item.link)
+        else:
+            body, error = fetch_text(
+                item.link,
+                UA,
+                timeout=20,
+                attempts=2,
+                accept="text/html,application/xhtml+xml,*/*",
+            )
         if error or not body:
             record_source_failure(
                 lane="boj_policy_path",
@@ -456,7 +468,7 @@ def enrich_official_items(items: list[Item], now: dt.datetime) -> list[Item]:
 
 
 def _boj_document_date(url: str) -> dt.datetime | None:
-    match = re.search(r"/k(\d{2})(\d{2})(\d{2})[a-z]?\.(?:pdf|htm|html)$", url, re.I)
+    match = re.search(r"/[kg](\d{2})(\d{2})(\d{2})[a-z]?\.(?:pdf|htm|html)$", url, re.I)
     if not match:
         return None
     year = 2000 + int(match.group(1))
@@ -555,6 +567,48 @@ def fetch_official_statement_items(now: dt.datetime) -> list[Item]:
             description=body,
         )
     ]
+
+
+def fetch_official_outlook_items(now: dt.datetime) -> list[Item]:
+    """Get the current quarterly BOJ view, not just the rate-decision headline."""
+    index, error = fetch_text(
+        BOJ_OUTLOOK_INDEX, UA, timeout=20, attempts=2,
+        accept="text/html,application/xhtml+xml,*/*",
+    )
+    if error or not index:
+        record_source_failure(
+            lane="boj_policy_path", source_name="Bank of Japan outlook index",
+            source_url=BOJ_OUTLOOK_INDEX, error=error or "empty response", checked_at=now,
+        )
+        return []
+    links = []
+    for href, label_html in re.findall(
+        r'<a[^>]+href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
+        index, flags=re.I | re.S,
+    ):
+        label = clean(label_html).lower()
+        if "the bank's view" not in label or "2026" not in label:
+            continue
+        url = urllib.parse.urljoin(BOJ_OUTLOOK_INDEX, href)
+        published = _boj_document_date(url)
+        if published is not None:
+            links.append((published, url))
+    if not links:
+        return []
+    published, url = max(links, key=lambda row: row[0])
+    if published < now - dt.timedelta(hours=MAX_AGE_HOURS):
+        return []
+    body, body_error = _fetch_boj_document_text(url)
+    if body_error or not body:
+        record_source_failure(
+            lane="boj_policy_path", source_name="Bank of Japan outlook full text",
+            source_url=url, error=body_error or "empty response", checked_at=now,
+        )
+        return []
+    return [Item(
+        title="Outlook for Economic Activity and Prices — The Bank's View",
+        source="Bank of Japan", link=url, published=published, description=body,
+    )]
 
 
 def fetch_direct_context(now: dt.datetime) -> list[Item]:
@@ -664,11 +718,117 @@ def extract_bp(text: str) -> int | None:
     return value if 1 <= value <= 200 else None
 
 
+def is_policy_hold(item: Item, kind: str | None) -> bool:
+    """Classify the majority decision, not a minority member's hold request."""
+    if kind != "decision":
+        return False
+    title = clean(item.title).lower()
+    title_hold = bool(re.search(
+        r"\b(?:keeps?|kept|holds?|held|leaves?|left|maintains?|maintained)\b.{0,65}?"
+        r"\b(?:rates?|interest rates?|policy rate)\b.{0,55}?"
+        r"\b(?:steady|unchanged|on hold|at \d)",
+        title,
+    )) or bool(re.search(
+        r"\b(?:rates?|policy rate)\b.{0,25}?"
+        r"\b(?:unchanged|steady|on hold)\b", title,
+    ))
+    if title_hold:
+        return True
+    # Only institution-level decisions qualify; dissents/previews do not.
+    for sentence in re.split(r"(?<=[.!?])\s+", clean(item.description).lower()):
+        if not re.search(r"\b(?:bank of japan|boj|central bank|policy board)\b", sentence):
+            continue
+        if re.search(r"\b(?:held|kept|left|maintained|voted to keep|decided to keep)\b.{0,100}?"
+                     r"\b(?:rate|rates|borrowing costs)\b.{0,80}?"
+                     r"\b(?:unchanged|steady|at \d)", sentence):
+            return True
+    return False
+
+
+def extract_held_rate(text: str) -> float | None:
+    """Prefer the rate that was actually maintained over a dissenter's proposal."""
+    lower = clean(text).lower()
+    for pattern in (
+        r"\b(?:policy rate|short-term (?:policy )?rate|overnight (?:policy )?rate|" 
+        r"interest rates?|borrowing costs)\b[^.;]{0,90}?\bat\s+(\d+(?:\.\d+)?)\s*%",
+        r"\b(?:kept|held|left|maintained)\b[^.;]{0,100}?\bat\s+(\d+(?:\.\d+)?)\s*%",
+    ):
+        match = re.search(pattern, lower)
+        if match:
+            value = float(match.group(1))
+            if 0 <= value <= 10:
+                return value
+    return None
+
+
+def extract_hike_dissent_on_hold(text: str) -> bool:
+    for sentence in re.split(r"(?<=[.!?])\s+", clean(text).lower()):
+        if not re.search(r"\b(?:dissent(?:ed|ing)?|oppos(?:ed|ing)|minority)\b", sentence):
+            continue
+        if re.search(r"\b(?:called for|proposed|wanted|sought|urged|favou?red|argued for|arguing for)\b"
+                     r".{0,120}?\b(?:hike|raise|increase|higher)\b", sentence):
+            return True
+        if re.search(r"\b(?:hike|raise|increase|higher)\b.{0,120}?"
+                     r"\b(?:dissent(?:ed|ing)?|oppos(?:ed|ing))\b", sentence):
+            return True
+    return False
+
+
+def has_confirmed_underlying_target(item: Item, kind: str | None) -> bool:
+    """An actual BOJ assessment is not a forecast, anonymous preview or member opinion."""
+    if kind != "decision":
+        return False
+    official = source_name(item) == "Bank of Japan"
+    for sentence in re.split(r"(?<=[.!?])\s+", clean(item.description).lower()):
+        if not re.search(r"\b(?:underlying (?:cpi )?inflation|underlying price(?:s)?)\b", sentence):
+            continue
+        if not re.search(r"\b(?:has|had|have)?\s*(?:reached|hit|attained)|"
+                         r"\b(?:is|was|now)\s+(?:at|broadly consistent with)", sentence):
+            continue
+        if not re.search(r"\b2\s*(?:%|percent)\b|\b2%", sentence):
+            continue
+        if re.search(r"\b(?:may|might|could|expected to|likely to|would|plans to|sources say)\b", sentence):
+            continue
+        if official:
+            return True
+        # Require an attributed institutional judgment, not an individual dissenter.
+        if re.search(r"\b(?:boj|bank of japan|central bank|the bank|the board)\b"
+                     r".{0,150}?\b(?:said|says|judged|assessed|declared|concluded|stated|found)\b", sentence):
+            return True
+    return False
+
+
+def extract_boj_policy_rate(text: str) -> float | None:
+    """Read an explicitly identified BOJ policy rate; never an inflation forecast."""
+    lower = clean(text).lower()
+    for pattern in (
+        r"\b(?:uncollateralized overnight call rate|short-term policy interest rate|"
+        r"short-term policy rate|short-term interest rate|policy interest rate|policy rate)\b"
+        r".{0,160}?\b(?:at\s+around|at|around|of)\s+"
+        r"(\d+(?:\.\d+)?)\s*(?:%|percent|per cent)\b",
+        r"\b(?:policy rate|overnight call rate)\b.{0,130}?"
+        r"(\d+(?:\.\d+)?)\s*(?:%|percent|per cent)\b",
+    ):
+        match = re.search(pattern, lower)
+        if match:
+            value = float(match.group(1))
+            if 0 <= value <= 10:
+                return value
+    return None
+
+
 def extract_vote(text: str) -> tuple[int | None, int | None]:
-    match = re.search(r"\b([1-9])-([0-9])\b", text)
-    if not match:
-        return None, None
-    return int(match.group(1)), int(match.group(2))
+    # Chart numbers such as "Figure 5-1" are NOT voting tallies.
+    for sentence in re.split(r"(?<=[.!?])\s+", clean(text)):
+        if not re.search(
+            r"\b(?:vote|voted|voting|decision|passed|approved|approval|majority|in favor|in favour)\b",
+            sentence, flags=re.I,
+        ):
+            continue
+        match = re.search(r"\b([1-9])\s*[-–]\s*([0-9])\b", sentence)
+        if match:
+            return int(match.group(1)), int(match.group(2))
+    return None, None
 
 
 def extract_dissent_direction(text: str) -> str | None:
@@ -695,13 +855,26 @@ def extract_dissenters(text: str) -> tuple[str, ...]:
         ("Masu", "마스"),
         ("Uchida", "우치다"),
     )
-    lower = clean(text).lower()
     found = []
-    for english, korean in names:
-        if english.lower() in lower and korean not in found:
-            found.append(korean)
+    for sentence in re.split(r"(?<=[.!?])\s+", clean(text)):
+        lower = sentence.lower()
+        # Participant rosters and people disagreeing with the *Outlook wording*
+        # are not dissenters on the monetary-policy decision.
+        if "outlook" in lower and not re.search(
+            r"\b(?:policy decision|policy rate|rate decision|rate hike)\b", lower
+        ):
+            continue
+        if not re.search(
+            r"\b(?:dissent(?:ed|ing)?|voted against|opposed (?:the )?"
+            r"(?:rate hike|hike|increase|decision|hold)|preferred to (?:keep|hold)|"
+            r"(?:called for|proposed|argued for|arguing for|sought)\b.{0,140}?"
+            r"\b(?:hike|raise|increase|higher))", lower
+        ):
+            continue
+        for english, korean in names:
+            if re.search(r"\b" + re.escape(english.lower()) + r"\b", lower) and korean not in found:
+                found.append(korean)
     return tuple(found)
-
 
 def extract_assessment_vote(text: str) -> tuple[int | None, int | None, str | None]:
     # Require the vote count and the economic/inflation assessment to coexist in the
@@ -753,6 +926,8 @@ def event_type(item: Item) -> str | None:
     source = source_name(item)
 
     if source == "Bank of Japan":
+        if "outlook for economic activity and prices" in title:
+            return "decision"  # Same meeting, separate 2%-assessment source.
         if "statement on monetary policy" in title:
             return "decision"
         if "summary of opinions" in title:
@@ -791,12 +966,21 @@ def event_type(item: Item) -> str | None:
     if any(x in title for x in (
         "raises interest rate", "raised interest rate", "raising interest rate",
         "raises rates", "raised rates", "rate decision",
+        "keeps interest rates", "kept interest rates", "holds interest rates",
+        "held interest rates", "keeps rates", "kept rates", "holds rates",
+        "held rates", "leaves rates", "left rates", "rates unchanged",
+        "holds fire",
     )):
         return "decision"
     # A quoted or photographed governor is not evidence of a new press conference.
     if "governor ueda" in title or "governor kazuo ueda" in title:
         return "official_speech"
-    if any(x in text for x in ("raises interest rate", "raised interest rate", "raises rates", "raised rates", "rate decision", "policy meeting")):
+    if any(x in text for x in (
+        "raises interest rate", "raised interest rate", "raises rates",
+        "raised rates", "rate decision", "policy meeting",
+        "held its short-term policy rate", "kept its policy rate unchanged",
+        "voted to keep borrowing costs unchanged",
+    )):
         return "decision"
     if "summary of opinions" in text:
         return "summary_of_opinions"
@@ -815,11 +999,23 @@ def classify(item: Item) -> Signal | None:
 
     text = item.text
     lower = text.lower()
+    is_outlook_report = (
+        source == "Bank of Japan"
+        and "outlook for economic activity and prices" in item.title.lower()
+    )
 
-    rate = extract_rate(text)
-    bp = extract_bp(text)
+    rate_unchanged = is_policy_hold(item, kind)
+    rate = extract_held_rate(text) if rate_unchanged else extract_rate(text)
+    # BOJ documents often express 1.25 percent in words rather than the % sign.
+    if kind == "decision" and source == "Bank of Japan" and not is_outlook_report:
+        explicit_rate = extract_boj_policy_rate(text)
+        if explicit_rate is not None:
+            rate = explicit_rate
+    bp = None if rate_unchanged else extract_bp(text)
     vote_for, vote_against = extract_vote(text)
     dissent_direction = extract_dissent_direction(text)
+    if rate_unchanged and extract_hike_dissent_on_hold(text):
+        dissent_direction = "hike"
     dissenters = extract_dissenters(text)
     assessment_vote_for, assessment_vote_against, assessment_view = extract_assessment_vote(text)
     expected_move = has_any(text, EXPECTED_MOVE_MARKERS)
@@ -829,7 +1025,21 @@ def classify(item: Item) -> Signal | None:
         "clearly above 2" in lower and "fiscal 2026" in lower
     ) or has_any(text, CPI_H2_ABOVE_2_MARKERS)
     stabilize_underlying_around_2 = has_any(text, STABILIZE_UNDERLYING_2_MARKERS)
+    underlying_target_reached = has_confirmed_underlying_target(item, kind)
     outlook_dissenters, outlook_dissent_view = extract_outlook_dissent(text)
+    if is_outlook_report:
+        # The quarterly Outlook has charts and a full committee roster.
+        # Neither is a record of the monetary-policy vote or its dissenters.
+        rate = None
+        bp = None
+        rate_unchanged = False
+        vote_for = vote_against = None
+        dissent_direction = None
+        dissenters = ()
+        assessment_vote_for = assessment_vote_against = None
+        assessment_view = None
+        outlook_dissenters = ()
+        outlook_dissent_view = None
     official_statement_detail_verified = (
         source == "Bank of Japan"
         and kind == "decision"
@@ -838,6 +1048,7 @@ def classify(item: Item) -> Signal | None:
             or inflation_spillover
             or cpi_h2_clearly_above_2
             or stabilize_underlying_around_2
+            or underlying_target_reached
         )
     )
     further = has_any(text, FURTHER_HIKES)
@@ -879,6 +1090,19 @@ def classify(item: Item) -> Signal | None:
         level = 1
         note = "50bp·연속 인상 가능성을 배제하지 않았지만 고정된 인상 간격은 없다고 명시 — 조건부 꼬리위험, 기본경로 가속 확정 아님"
 
+    if is_outlook_report:
+        # Generic forecast terminology cannot mean that the rate path accelerated.
+        level = 1
+        note = "BOJ 분기 전망 발표 — 차기 금리 인상 시점은 별도 확인 필요"
+        if underlying_target_reached:
+            note = "BOJ 분기 전망: 기조물가가 2% 목표에 대체로 도달했다는 판단 확인"
+
+    if kind == "decision" and rate_unchanged:
+        level = 1
+        note = "정책금리 동결: 추가 인상 시점은 미확정이며 위원회 인상 요구와 물가 판단은 별도로 확인"
+        if underlying_target_reached:
+            note = "1.25% 동결과 별개로 BOJ가 기조물가의 2% 목표 도달을 인정 — 추가 인상 시점은 미확정"
+
     if kind == "parliament_testimony" and "quite close" in lower and "underlying inflation" in lower:
         note = "국회 답변: 기조물가가 2% 목표에 상당히 근접 — 인상 시점·속도 가속 확정은 아님"
 
@@ -888,7 +1112,8 @@ def classify(item: Item) -> Signal | None:
         f"{rate}|{bp}|{vote_for}-{vote_against}|{dissent_direction}|"
         f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|{expected_move}|{hawkish_tail_50bp}|"
         f"{inflation_spillover}|{cpi_h2_clearly_above_2}|{stabilize_underlying_around_2}|"
-        f"{outlook_dissenters}|{outlook_dissent_view}|{official_statement_detail_verified}|{level}"
+        f"{outlook_dissenters}|{outlook_dissent_view}|{official_statement_detail_verified}|{level}|"
+        f"{rate_unchanged}|{underlying_target_reached}"
     )
     key = hashlib.sha256(key_material.encode()).hexdigest()[:24]
 
@@ -924,6 +1149,8 @@ def classify(item: Item) -> Signal | None:
         inflation_upside=inflation,
         risk_channels=risks,
         note=note,
+        rate_unchanged=rate_unchanged,
+        underlying_target_reached=underlying_target_reached,
     )
 
 
@@ -1028,6 +1255,7 @@ def collect(now: dt.datetime) -> list[Signal]:
     boj_items = fetch_rss(BOJ_RSS, "Bank of Japan", now)
     items.extend(enrich_official_items(boj_items, now))
     items.extend(fetch_official_statement_items(now))
+    items.extend(fetch_official_outlook_items(now))
     items.extend(fetch_direct_context(now))
 
     cutoff = now - dt.timedelta(hours=MAX_AGE_HOURS)
@@ -1098,6 +1326,7 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
             other
             for other in decision_related
             if other.vote_for is not None
+            or other.rate_unchanged  # A sourced hold is a decision fact, not a forecast.
             or re.search(r"\b(?:raises|raised)\b", other.title.lower())
             or other.source == "Bank of Japan"
         ]
@@ -1135,8 +1364,15 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
             x.hawkish_tail_50bp for x in related if x.event_type in {"market_path", "decision"}
         )
 
+        rate_unchanged = signal.rate_unchanged or any(x.rate_unchanged for x in decision_fact_related)
+        if rate_unchanged:
+            bp = None  # A minority's proposed 25bp is never the enacted change.
         merged = replace(
             signal,
+            rate_unchanged=rate_unchanged,
+            underlying_target_reached=signal.underlying_target_reached or any(
+                x.underlying_target_reached for x in decision_related
+            ),
             policy_rate=rate,
             hike_bp=bp,
             vote_for=vote_for,
@@ -1201,7 +1437,8 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
             f"{expected_move}|{hawkish_tail_50bp}|{merged.inflation_spillover}|"
             f"{merged.cpi_h2_clearly_above_2}|{merged.stabilize_underlying_around_2}|"
             f"{merged.outlook_dissenters}|{merged.outlook_dissent_view}|"
-            f"{merged.official_statement_detail_verified}|{merged.level}"
+            f"{merged.official_statement_detail_verified}|{merged.level}|"
+            f"{merged.rate_unchanged}|{merged.underlying_target_reached}"
         )
         merged = replace(
             merged,
@@ -1254,6 +1491,8 @@ def signal_signature(signal: Signal) -> dict:
         "neutral_rate": signal.neutral_rate,
         "inflation_upside": signal.inflation_upside,
         "risk_channels": signal.risk_channels,
+        "rate_unchanged": signal.rate_unchanged,
+        "underlying_target_reached": signal.underlying_target_reached,
     }
 
 
@@ -1311,6 +1550,8 @@ def trusted_media_event_has_policy_content(signal: Signal) -> bool:
         or signal.accommodative
         or signal.neutral_rate
         or signal.inflation_upside
+        or signal.rate_unchanged
+        or signal.underlying_target_reached
     )
 
 
@@ -1333,6 +1574,18 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
             return False, "오래된 보도 — 고신뢰 정책 이벤트 신선도 초과"
         if not trusted_media_event_has_policy_content(signal):
             return False, "고신뢰 보도 핵심 정책변화 없음"
+
+    # Suppress unparsed BOJ RSS titles, but never discard a substantive, verified
+    # monetary-policy guidance change merely because a rate number is absent.
+    # Recency and media-source checks above retain their original priority.
+    if signal.event_type == "decision" and not any((
+        signal.policy_rate is not None,
+        signal.hike_bp is not None and not signal.rate_unchanged,
+        signal.vote_for is not None,
+        signal.underlying_target_reached,
+        signal.official_statement_detail_verified,
+    )):
+        return False, "정책결정 제목만 확인됨 — 공식 본문·핵심 수치 확보 전"
 
     previous = state.get("signature") or {}
     current_signature = signal_signature(signal)
@@ -1379,8 +1632,21 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
             if signal.source == "Bank of Japan"
             else "새 고신뢰 정책 이벤트"
         )
+    if (
+        signal.event_type == "decision"
+        and last_published is not None
+        and signal.published.date() == last_published.date()
+        and previous.get("event_type") == "decision"
+        and previous.get("policy_rate") is None
+        and signal.policy_rate is not None
+    ):
+        return True, "동일 회의 기존 제목 알림의 누락된 핵심 수치 보완"
     if signal.level != int(previous.get("level", signal.level)):
         return True, "정책경로 단계 변화"
+    if signal.rate_unchanged and not previous.get("rate_unchanged"):
+        return True, "새 정책금리 동결 결정"
+    if signal.underlying_target_reached and not previous.get("underlying_target_reached"):
+        return True, "BOJ 기조물가 2% 목표 도달 판단"
     if signal.policy_rate is not None and signal.policy_rate != previous.get("policy_rate"):
         return True, "정책금리 변화"
     if signal.hike_bp is not None and signal.hike_bp != previous.get("hike_bp"):
@@ -1475,6 +1741,8 @@ def label_time(value: dt.datetime) -> str:
 
 def korean_event_title(signal: Signal) -> str:
     if signal.event_type == "decision":
+        if signal.rate_unchanged and signal.policy_rate is not None:
+            return f"일본은행, 정책금리 {signal.policy_rate:.2f}% 동결"
         if signal.policy_rate is not None:
             return f"일본은행, 정책금리를 {signal.policy_rate:.2f}%로 결정"
         return "일본은행 금융정책 결정"
@@ -1739,9 +2007,16 @@ def market_quote_age_label(quote: dict, now: dt.datetime) -> str:
 def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) -> tuple[str, str, dict]:
     emoji = LEVEL_EMOJI[signal.level]
     title = f"🏦 {emoji} BOJ 정책경로 변화"
+    if "기존 제목 알림" in reason:
+        title += " | 핵심 수치 보완"
 
     decision_lines = []
-    if signal.policy_rate is not None and signal.hike_bp is not None:
+    if signal.rate_unchanged:
+        decision_lines.append(
+            f"- 정책금리: {signal.policy_rate:.2f}% 동결 (0bp)"
+            if signal.policy_rate is not None else "- 정책금리: 동결 (0bp) · 수준 공식 확인 필요"
+        )
+    elif signal.policy_rate is not None and signal.hike_bp is not None:
         previous_rate = signal.policy_rate - signal.hike_bp / 100
         decision_lines.append(f"- 정책금리: {previous_rate:.2f}% → {signal.policy_rate:.2f}%")
         decision_lines.append(f"- 이번 조정폭: +{signal.hike_bp}bp")
@@ -1771,6 +2046,12 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
                 else "- BOJ 성명 상세: 공식 원문 확인 전 · 상세 성명 문구는 확정 트리거로 사용하지 않음"
             ),
         ]
+    elif signal.source == "Bank of Japan" and "outlook for economic activity and prices" in signal.title.lower():
+        source_validation = [
+            "- 물가 판단 출처: BOJ 공식 경제·물가전망(The Bank's View) 원문",
+            "- 정책금리·정책 표결: 결정문 또는 고신뢰 보도에서 명시적으로 파악한 숫자만 사용",
+            "- 전망보고서 차트 번호·위원 명단은 정책 표결로 해석하지 않음",
+        ]
     elif signal.official_statement_detail_verified:
         source_validation = [
             "- 결정값 검증: Reuters·BOJ 공식 원문",
@@ -1782,7 +2063,9 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
             "- 성명 상세 검증: BOJ 공식 원문 확인 전 · 상세 성명 문구는 확정 트리거로 사용하지 않음",
         ]
 
-    if signal.dissent_direction == "hold":
+    if signal.dissent_direction == "hike":
+        dissent_text = "동결에 반대해 인상 요구 — 매파 반대"
+    elif signal.dissent_direction == "hold":
         dissent_text = "동결 요구 — 완화파 반대"
     elif signal.dissent_direction == "larger_hike":
         dissent_text = "더 큰 폭 인상 요구 — 매파 반대"
@@ -1829,7 +2112,9 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     else:
         expectation_text = "시장 컨센서스와의 직접 비교는 고신뢰 원문에서 명시 확인 전"
 
-    if signal.expected_move and signal.hike_bp == 25:
+    if signal.rate_unchanged and signal.expected_move:
+        base_expectation = "금리 동결"
+    elif signal.expected_move and signal.hike_bp == 25:
         base_expectation = "+25bp 인상"
     elif signal.expected_move:
         base_expectation = "발표된 조정폭이 시장 기본 예상에 부합"
@@ -1847,7 +2132,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
 
     surprise_lines = [
         f"- 기본 기대: {base_expectation}",
-        f"- 실제: {'+' + str(signal.hike_bp) + 'bp' if signal.hike_bp is not None else '조정폭 추가 확인'}",
+        f"- 실제: {'0bp·동결' if signal.rate_unchanged else ('+' + str(signal.hike_bp) + 'bp' if signal.hike_bp is not None else '조정폭 추가 확인')}",
         f"- 매파 꼬리위험: {tail_result}",
         f"- 상대 판정: {expectation_text}",
     ]
@@ -1874,6 +2159,8 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         context_lines = surprise_lines
 
     inflation_regime = [
+        *(["- 기조물가: BOJ가 2% 목표에 대체로 부합하는 수준 도달로 판단 (지속적 안정·차기 인상은 별도 검증)"]
+          if signal.underlying_target_reached else []),
         f"- 기업 간 가격상승 → 소비자물가 전이: {'시작 확인' if signal.inflation_spillover else '새 명시적 변화 미확인'}",
         f"- 2026회계연도 하반기 CPI: {'2%를 뚜렷하게 웃돌 전망' if signal.cpi_h2_clearly_above_2 else '새 명시적 변화 미확인'}",
         f"- 기조물가 정책목표: {'2% 부근 안정 + 2% 상방이탈 억제 단계' if signal.stabilize_underlying_around_2 else '2% 접근 여부 중심'}",
@@ -2017,6 +2304,8 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         policy_detail.append("- 중립·종착금리: 정확한 수준 특정 어렵다고 언급")
     if signal.stabilize_underlying_around_2:
         policy_detail.append("- 기조물가: 2%에 올리는 단계 → 2% 부근에 안정시키는 단계로 초점 이동")
+    if signal.underlying_target_reached:
+        policy_detail.append("- 물가목표 판단: 기조물가가 2% 목표에 대체로 부합하는 수준에 도달했다고 평가")
     if signal.inflation_upside:
         policy_detail.append("- 물가 위험: 2% 상방이탈 위험을 경계")
     if signal.accommodative:
@@ -2258,6 +2547,8 @@ def main() -> int:
         "top_source": top.source,
         "policy_rate": top.policy_rate,
         "hike_bp": top.hike_bp,
+        "rate_unchanged": top.rate_unchanged,
+        "underlying_target_reached": top.underlying_target_reached,
         "vote": [top.vote_for, top.vote_against],
         "dissent_direction": top.dissent_direction,
         "dissenters": list(top.dissenters),
