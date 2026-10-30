@@ -1326,6 +1326,7 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
             other
             for other in decision_related
             if other.vote_for is not None
+            or other.rate_unchanged  # A sourced hold is a decision fact, not a forecast.
             or re.search(r"\b(?:raises|raised)\b", other.title.lower())
             or other.source == "Bank of Japan"
         ]
