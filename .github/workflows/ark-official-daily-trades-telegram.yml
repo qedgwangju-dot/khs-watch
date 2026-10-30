@@ -24,7 +24,7 @@ concurrency:
 jobs:
   watch:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.THIRTEENF_TELEGRAM_CHAT_ID }}
@@ -63,13 +63,59 @@ jobs:
             python scripts/ark_daily_trade_watch.py
           fi
 
+      - name: Reserve ARK delivery before Telegram send
+        if: env.ARK_PROBE_ONLY == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f out/ark_trade_pending.json ]; then
+            echo "No new ARK trade; delivery reservation skipped."
+            exit 0
+          fi
+          git config user.name "ark-daily-watch[bot]"
+          git config user.email "ark-daily-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python - <<'PY'
+          import datetime as dt
+          import json
+          import pathlib
+          path=pathlib.Path("data/ark_daily_trades_watch_state.json")
+          current=json.loads(path.read_text(encoding="utf-8"))
+          pending=json.loads(pathlib.Path("out/ark_trade_pending.json").read_text(encoding="utf-8"))
+          if current.get("pending_delivery"):
+              raise RuntimeError("An ARK Telegram delivery remains unresolved; do not resend")
+          if current.get("last_date", "") > pending["last_date"]:
+              raise RuntimeError("ARK state advanced beyond pending trade day")
+          if (current.get("last_date") == pending["last_date"]
+                  and current.get("digest") == pending["digest"]
+                  and current.get("format_version",0) >= pending.get("format_version",0)):
+              raise RuntimeError("ARK trade already delivered during reservation; skip duplicate")
+          current["pending_delivery"] = {
+              "last_date":pending["last_date"],"digest":pending["digest"],
+              "reserved_at":dt.datetime.now(dt.timezone.utc).isoformat(),
+          }
+          path.write_text(json.dumps(current,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+            git add data/ark_daily_trades_watch_state.json
+            git commit -m "Reserve ARK delivery before Telegram API"
+            if git push origin HEAD:main; then
+              echo "ARK_DELIVERY_RESERVED"
+              exit 0
+            fi
+            sleep $((attempt*3))
+          done
+          echo "Could not reserve ARK send; no Telegram delivery attempted" >&2
+          exit 1
+
       - name: Verify Telegram route and deliver new trade day
         if: env.ARK_PROBE_ONLY == 'false'
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
-          import json,os,pathlib,time,urllib.parse,urllib.request
+          import json,os,pathlib,urllib.parse,urllib.request
           alert=pathlib.Path("out/ark_trade_alert.html")
           if not alert.exists():
               print("No new ARK daily trades; no Telegram message.")
@@ -107,27 +153,28 @@ jobs:
           if body.strip():chunks.append(body.strip())
 
           ids=[]
+          confirmed_chat=None
           for chunk in chunks:
-              last_error=None
-              for attempt in range(3):
-                  try:
-                      receipt=api("sendMessage",{
-                          "chat_id":chat,"text":chunk,"parse_mode":"HTML",
-                          "disable_web_page_preview":"true",
-                      })
-                      mid=receipt.get("message_id")
-                      if mid is None: raise RuntimeError("No Telegram message_id")
-                      ids.append(mid)
-                      break
-                  except Exception as e:
-                      last_error=e
-                      if attempt<2:time.sleep(2+attempt*2)
-              else:
-                  raise RuntimeError(f"ARK Telegram sending failed: {last_error}")
+              # An ambiguous network timeout could occur AFTER Telegram accepted
+              # the message. No automatic retries; the pre-send reservation
+              # prevents replay while the status is being reconciled.
+              receipt=api("sendMessage",{
+                  "chat_id":chat,"text":chunk,"parse_mode":"HTML",
+                  "disable_web_page_preview":"true",
+              })
+              mid=receipt.get("message_id")
+              actual_chat=str((receipt.get("chat") or {}).get("id") or "")
+              if mid is None or not actual_chat:
+                  raise RuntimeError("ARK Telegram response missing chat.id or message_id")
+              if chat.lstrip("-").isdigit() and actual_chat!=chat:
+                  raise RuntimeError("ARK Telegram recipient mismatch; block re-send")
+              ids.append(mid)
+              confirmed_chat=actual_chat
 
           pathlib.Path("out/ark_trade_telegram_confirmed.json").write_text(
-              json.dumps({"message_ids":ids,"bot":actual},ensure_ascii=False)+"\n",encoding="utf-8")
-          print(f"ark_telegram_confirmed={ids}")
+              json.dumps({"message_ids":ids,"bot":actual,"chat_id":confirmed_chat},
+                         ensure_ascii=False)+"\n",encoding="utf-8")
+          print(f"ark_telegram_confirmed={ids} chat.id={confirmed_chat}")
           PY
 
       - name: Checkpoint only after confirmed delivery
@@ -140,6 +187,23 @@ jobs:
             exit 0
           fi
           test -f out/ark_trade_telegram_confirmed.json
+          python - <<'PY'
+          import datetime as dt
+          import json
+          from pathlib import Path
+          path=Path("out/ark_trade_pending.json")
+          state=json.loads(path.read_text(encoding="utf-8"))
+          receipt=json.loads(Path("out/ark_trade_telegram_confirmed.json").read_text(encoding="utf-8"))
+          if not receipt.get("message_ids") or not receipt.get("chat_id"):
+              raise RuntimeError("ARK Telegram receipt incomplete")
+          state["last_delivery"]={
+              "last_date":state["last_date"],"digest":state["digest"],
+              "message_ids":receipt["message_ids"],"chat_id":receipt["chat_id"],
+              "bot":receipt["bot"],"confirmed_at":dt.datetime.now(dt.timezone.utc).isoformat()
+          }
+          state.pop("pending_delivery",None)
+          path.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
           cp out/ark_trade_pending.json data/ark_daily_trades_watch_state.json
           git config user.name "ark-daily-watch[bot]"
           git config user.email "ark-daily-watch[bot]@users.noreply.github.com"
@@ -148,6 +212,14 @@ jobs:
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          reserved=json.loads(Path("data/ark_daily_trades_watch_state.json").read_text(encoding="utf-8")).get("pending_delivery") or {}
+          target=json.loads(Path("out/ark_trade_pending.json").read_text(encoding="utf-8"))
+          if reserved.get("last_date")!=target["last_date"] or reserved.get("digest")!=target["digest"]:
+              raise RuntimeError("ARK delivery reservation changed; refuse overwrite")
+          PY
             cp "$tmp/state.json" data/ark_daily_trades_watch_state.json
             git add data/ark_daily_trades_watch_state.json
             if git diff --cached --quiet; then
