@@ -1756,6 +1756,7 @@ def fcc_800_uas_adoption_body_verified(raw: str) -> bool:
     low = clean_text(raw).lower()
     return bool(
         ("800 mhz" in low or "800mhz" in low)
+        and ("cellular" in low)
         and ("50 megahertz" in low or "50 mhz" in low or "50mhz" in low)
         and any(x in low for x in ("drone", "drones", "unmanned aircraft", "uncrewed aircraft", "uas"))
         and any(x in low for x in ("voted", "adopted", "fcc 26-72", "order adopted", "the commission adopted"))
@@ -2535,6 +2536,7 @@ def semantic_policy_event_key(item: dict) -> str:
     # commercial air-ground service, 450 MHz UAS, or 24 GHz detection item.
     fcc_band = (
         ("fcc" in text or "federal communications commission" in text)
+        and ("cellular" in text or "셀룰러" in text)
         and any(x in text for x in ("800 mhz", "800mhz", "824-849", "869-894"))
         and any(x in text for x in ("drone", "unmanned aircraft", "uncrewed aircraft", "uas"))
     )
