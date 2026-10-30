@@ -7,12 +7,17 @@ import argparse
 import json
 from pathlib import Path
 
+from gamejoa_seen_state_codec import decode_seen_state, dumps_seen_state
+
 
 def load_state(path: Path) -> dict:
     if not path.exists():
         return {"seen": {}, "updated_at_kst": ""}
-    state = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(state, dict) or not isinstance(state.get("seen"), dict):
+    try:
+        state = decode_seen_state(json.loads(path.read_text(encoding="utf-8")))
+    except Exception as exc:
+        raise ValueError(f"Invalid radar seen state: {path}") from exc
+    if not isinstance(state.get("seen"), dict):
         raise ValueError(f"Invalid radar seen state: {path}")
     return state
 
@@ -77,7 +82,7 @@ def main() -> None:
         raise FileNotFoundError(args.pending)
     merged = merge_states(load_state(args.remote), load_state(args.pending))
     args.remote.parent.mkdir(parents=True, exist_ok=True)
-    args.remote.write_text(json.dumps(merged, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    args.remote.write_text(dumps_seen_state(merged), encoding="utf-8")
 
 
 if __name__ == "__main__":

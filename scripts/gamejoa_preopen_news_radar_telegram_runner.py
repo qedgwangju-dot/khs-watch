@@ -18,6 +18,7 @@ import urllib.request
 from pathlib import Path
 
 import gamejoa_market_materiality as market_materiality
+from gamejoa_seen_state_codec import decode_seen_state, dumps_seen_state
 
 
 STRICT_PATH = Path(__file__).with_name("gamejoa_preopen_news_radar_strict_runner.py")
@@ -105,12 +106,9 @@ def load_seen_state() -> dict:
     if not SEEN_PATH.exists():
         return {"seen": {}, "updated_at_kst": ""}
     try:
-        payload = json.loads(SEEN_PATH.read_text(encoding="utf-8"))
-    except Exception:
-        return {"seen": {}, "updated_at_kst": ""}
-    if not isinstance(payload, dict):
-        return {"seen": {}, "updated_at_kst": ""}
-    payload.setdefault("seen", {})
+        payload = decode_seen_state(json.loads(SEEN_PATH.read_text(encoding="utf-8")))
+    except Exception as exc:
+        raise RuntimeError(f"Cannot safely load GAMEJOA sent-history state: {SEEN_PATH}") from exc
     migrate_seen_title_aliases(payload)
     migrate_seen_verified_event_aliases(payload)
     migrate_seen_verified_core_receipts(payload)
@@ -120,7 +118,7 @@ def load_seen_state() -> dict:
 def save_seen_state(state: dict, now) -> None:
     SEEN_PATH.parent.mkdir(parents=True, exist_ok=True)
     state["updated_at_kst"] = now.isoformat(timespec="seconds")
-    SEEN_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    SEEN_PATH.write_text(dumps_seen_state(state), encoding="utf-8")
 
 
 def parse_seen_time(value: str | None):

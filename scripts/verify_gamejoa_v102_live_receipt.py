@@ -13,6 +13,7 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import gamejoa_preopen_news_radar_full_compact_runner as radar
 import verify_gamejoa_generated_report as generated_guard
+from gamejoa_seen_state_codec import decode_seen_state
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -64,7 +65,7 @@ def main() -> None:
     assert not any("보스턴다이나믹스" in title for title in selected_titles), selected_titles
     assert not generated_guard.duplicate_event_errors(selected, radar)
 
-    state = json.loads(seen_path.read_text(encoding="utf-8"))
+    state = decode_seen_state(json.loads(seen_path.read_text(encoding="utf-8")))
     radar.telegram.migrate_seen_verified_core_receipts(state)
     core = radar.telegram.base.norm(proofs[0]["telegram_core_fact"])
     core_key = "core:" + radar.telegram.digest_seen(core)
