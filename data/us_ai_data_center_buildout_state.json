@@ -2,8 +2,8 @@
   "initialized": true,
   "version": 5,
   "dataset_updated": "Oct 30, 2026",
-  "source_hash": "5ba2f1f4df42ba7b213955aa2326f70e5fe967adc5a0c17e4303e959b5006b7e",
-  "snapshot_hash": "7c2e02e90805913ec156650ee1612d1991c4eea0004fa863b7b812bc3b7faa57",
+  "source_hash": "e2b5ccb7cc667be94bf054615702cdfb1308c40b39268d98d62c2f1d10565093",
+  "snapshot_hash": "ac181ad58379cefd2dc4bfd9f68a76948f5fe61689997b73ac4fd6262a587e34",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -128,17 +128,17 @@
     {
       "name": "QTS Cedar Rapids",
       "display": "QTS Cedar Rapids (IA)",
-      "owner": "미기재",
-      "users": "미기재",
+      "owner": "Meta",
+      "users": "Meta",
       "investors": "미기재",
       "current_mw": 0.0,
       "planned_mw": 1133.0,
       "progress": 0.0,
       "completion_date": "2027-11-15",
       "completion": "2027.4Q",
-      "stage": "지붕·외피 공사",
+      "stage": "시운전·내부설비",
       "risk": false,
-      "source_status": "Similar to April, Buildings 1-3 shells look complete. Buildings 4-6 are still far along, and the eastern Building 7 foundation is still underway.",
+      "source_status": "Buildings 1â3 look externally complete, with the air-cooled chillers fully installed, and surrounding yard work cleared. The many cars and trucks parked beside the buildings suggest commissioning is still underway, so weâre not counting any buildings operational yet. Buildings 4-6 shells appear complete, and Building 7 is nearly 90% roofed. This is based on high-resolution satellite imagery from this date.",
       "mw_quality": "미래 계획 IT전력·현재 추정 0MW",
       "energy_site": "Alliant Energy 계통전력 · 전용 발전원·원별 구성은 공개 확인 불가",
       "energy_future": "QTS는 청정전력 확대를 목표로 하지만 Cedar Rapids 전용 원별 계약은 미확인",
@@ -306,7 +306,10 @@
       "company_issues": []
     }
   ],
-  "last_changes": [],
+  "last_changes": [
+    "QTS Cedar Rapids (IA) 공정 진전 지붕·외피 공사→시운전·내부설비",
+    "QTS Cedar Rapids (IA) 소유·사용·투자자 정보 변경"
+  ],
   "source_errors": [],
-  "updated_at_utc": "2026-10-30T21:13:03+00:00"
+  "updated_at_utc": "2026-10-30T23:47:31+00:00"
 }
