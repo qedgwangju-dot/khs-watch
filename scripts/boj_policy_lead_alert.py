@@ -2539,7 +2539,14 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     if signal.outlook_dissenters:
         lines.append(f"- 물가전망 문구 이견: {', '.join(signal.outlook_dissenters)} · {signal.outlook_dissent_view or '방향 확인'}")
     if signal.assessment_vote_for is None:
-        lines.append("- 경제·물가 진단 별도 표결: 정책 7대2와 혼합하지 않음 · 명시적 원문 있을 때만 표시")
+        policy_vote_label = (
+            f"정책 {signal.vote_for}대{signal.vote_against}"
+            if signal.vote_for is not None and signal.vote_against is not None
+            else "정책금리 표결"
+        )
+        lines.append(
+            f"- 경제·물가 진단 별도 표결: {policy_vote_label}와 혼합하지 않음 · 별도 원문 명시 때만 표시"
+        )
 
     source_link = decode_google_link(signal.link) if signal.link else ""
     if (
