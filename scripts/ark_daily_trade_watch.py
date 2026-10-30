@@ -32,6 +32,9 @@ NAMES={
     "HO":"탈레스","CRWV":"코어위브","BABA":"알리바바","DKNG":"드래프트킹스",
     "META":"메타 플랫폼스","ISRG":"인튜이티브 서지컬",
     "FRNM":"프리놈","XYZ":"블록","RBLX":"로블록스",
+    "CBRS":"세레브라스 시스템즈","JOBY":"조비 에비에이션","KDK":"코디악 AI",
+    "BEAM":"빔 테라퓨틱스","ARCT":"아크투루스 테라퓨틱스",
+    "TEM":"템퍼스 AI","TXG":"10x 지노믹스",
 }
 ET=zoneinfo.ZoneInfo("America/New_York")
 REPORT_FORMAT_VERSION=3
@@ -215,6 +218,14 @@ def build(rows, day, is_revision=False, rate=None, basis="", prices=None, enrich
         header.append("• 거래대금: 장마감 가격 미확인으로 총액 추정 불가")
 
     if rate:
+        # Snapshot for the new trade date replaces that date, not adds another
+        # sample. Keep previous confirmed snapshots unchanged, including legacy
+        # sector-unknown classification and missing historical dates.
+        totals_for_history, _ = sector_rank.aggregate(rows, prices or {})
+        current_for_history = sector_rank.snapshot(day,digest,totals_for_history)
+        merged_for_report = sector_rank.merged_history(history or [],current_for_history)
+        header.extend(sector_rank.direction_summary(
+            merged_for_report,day,rate,notional.usd_krw))
         ranked, _, _ = sector_rank.build_sector_digest(
             rows, prices or {}, rate, notional.usd_krw,
             history=history, day=day, digest=digest,
@@ -265,6 +276,10 @@ def main(probe=False):
     if probe:
         return
     state=_load()
+    # A Telegram send may have succeeded when confirmation/checkpoint failed.
+    # Block re-sends until the reserved attempt is reconciled.
+    if state.get("pending_delivery"):
+        raise RuntimeError("ARK_DELIVERY_UNCERTAIN: reserved send not finalized; automatic resend blocked")
     previous_date=state.get("last_date","")
     previous_digest=state.get("digest","")
     if (latest==previous_date and digest==previous_digest
