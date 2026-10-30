@@ -2476,6 +2476,8 @@ def semantic_policy_event_key(item: dict) -> str:
         stage = str(item.get("mofcom_stage") or "announced")
         if stage in {"announced", "effective-date-arrived"}:
             return f"china-mofcom-2026-notice-{number}-{stage}"
+    if item.get("fcc_800_uas_stage") == "adopted":
+        return "us-fcc-800mhz-uas-cellular-order-adopted-2026-10-29"
     if item.get("eu_hybrid_stage") == "government-understanding" and item.get("official_direct_verified") is True:
         return "eu-china-hybrid-safeguard-understanding-2026-10-09"
     if item.get("eu_sector_stage") == "furniture-reported":
@@ -2525,6 +2527,23 @@ def semantic_policy_event_key(item: dict) -> str:
             return "eu-china-sector-safeguards-furniture-2026-10-26"
         return "eu-china-sector-safeguards-chemicals-machinery-2026-10-23"
 
+    # FCC 26-72 is the 800 MHz Cellular UAS order, not the separate 800 MHz
+    # commercial air-ground service, 450 MHz UAS, or 24 GHz detection item.
+    fcc_band = (
+        ("fcc" in text or "federal communications commission" in text)
+        and any(x in text for x in ("800 mhz", "800mhz", "824-849", "869-894"))
+        and any(x in text for x in ("drone", "unmanned aircraft", "uncrewed aircraft", "uas"))
+    )
+    if fcc_band and any(x in text for x in ("50 mhz", "50 megahertz", "50mhz", "fcc 26-72")):
+        if any(x in title_text for x in ("effective", "takes effect", "enters into force", "효력 발생", "발효")):
+            return "us-fcc-800mhz-uas-cellular-rule-effective-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
+        if any(x in title_text for x in ("federal register publishes", "published in the federal register", "federal register notice", "연방관보 게재")):
+            return "us-fcc-800mhz-uas-cellular-federal-register-publication-" + hashlib.sha1(title_text.encode()).hexdigest()[:12]
+        if any(x in title_text for x in ("adopts", "adopted", "voted", "votes to", "approves", "approved", "passes", "passed", "clears", "opens", "allows", "permits", "unlocks", "최종 채택", "허용", "개방")):
+            return "us-fcc-800mhz-uas-cellular-order-adopted-2026-10-29"
+        # A vote scheduled for October 29 or an October 8 draft is not a
+        # new adopted rule and must not consume the adoption dedupe key.
+        return "us-fcc-800mhz-uas-cellular-preview"
     # Preserve distinct FCC enforcement and plant-waiver cases across reprints.
     if ("hisilicon" in text or "하이실리콘" in text) and "fcc" in text and (
         "dashboard camera" in text or "차량용 블랙박스" in text
