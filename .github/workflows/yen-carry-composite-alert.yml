@@ -91,7 +91,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          # Avoid all-branches/full-history fetch delaying the 15-minute market lane.
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v5
