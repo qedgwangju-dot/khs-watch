@@ -1731,7 +1731,20 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     guidance_verified = (
         signal.event_type != "decision" or signal.official_statement_detail_verified
     )
-    if official_like and guidance_verified and any(
+    # A second PDF from the same BOJ policy meeting can mention "neutral rate"
+    # or another generic term absent in the first PDF. That is not a newly
+    # decided policy path. Substantive changes in rates, votes, inflation regime,
+    # or event-level acceleration are checked above; later conferences are
+    # separate events and remain eligible.
+    same_official_decision = (
+        signal.event_type == "decision"
+        and previous.get("event_type") == "decision"
+        and signal.source == "Bank of Japan"
+        and state.get("last_source") == "Bank of Japan"
+        and last_published is not None
+        and signal.published.date() == last_published.date()
+    )
+    if official_like and guidance_verified and not same_official_decision and any(
         current_signature.get(key) is True and previous.get(key) is not True
         for key in material_flags
     ):
