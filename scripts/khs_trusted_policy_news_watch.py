@@ -33,9 +33,15 @@ try:
 except ImportError:  # pragma: no cover - supports module-style local tests.
     from scripts.khs_compact_text import concise_text
 try:
-    from khs_source_fetch import fetch_text as fetch_policy_source_with_fallback
+    from khs_source_fetch import (
+        fetch_text as fetch_policy_source_with_fallback,
+        record_source_failure as record_policy_source_failure,
+    )
 except ImportError:
-    from scripts.khs_source_fetch import fetch_text as fetch_policy_source_with_fallback
+    from scripts.khs_source_fetch import (
+        fetch_text as fetch_policy_source_with_fallback,
+        record_source_failure as record_policy_source_failure,
+    )
 
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
@@ -2411,6 +2417,27 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                     "priority": SOURCE_PRIORITY.get(priority_key, 99),
                 }
             )
+    # If every release and trusted copy is unavailable, do not silently
+    # treat the FCC adoption as 'no event'. Feed the existing source-failure
+    # streak monitor while leaving the Telegram seen state untouched.
+    if rule.key == "us_fcc_800mhz_uas_cellular_authorization":
+        published = dt.datetime(2026, 10, 29, tzinfo=KST)
+        expected = "us-fcc-800mhz-uas-cellular-order-adopted-2026-10-29"
+        delivered = story_event_fingerprint(rule, [{"fcc_800_uas_stage": "adopted"}]) in (load_seen().get("seen") or {})
+        verified = any(semantic_policy_event_key(item) == expected for item in items)
+        within_window = (now - published).total_seconds() / 3600 <= max_age_hours_for_rule(rule)
+        if not delivered and not verified and within_window:
+            try:
+                record_policy_source_failure(
+                    lane="trusted_policy",
+                    source_name="FCC 800MHz UAS adopted decision",
+                    source_url=FCC_800_UAS_RELEASE_SOURCES[0][0],
+                    error="The October 29 adopted FCC 800MHz 50MHz UAS release could not be verified from the official or trusted sources.",
+                    checked_at=now,
+                )
+                print("trusted_policy_news=fcc_800_uas_source_unverified failure_checkpoint=recorded")
+            except Exception as exc:
+                print(f"trusted_policy_news=fcc_800_uas_failure_checkpoint_error={type(exc).__name__}: {exc}")
     items.sort(key=lambda item: item["published_kst"], reverse=True)
     items.sort(key=lambda item: item["priority"])
     return items
