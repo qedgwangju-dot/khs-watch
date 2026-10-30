@@ -243,16 +243,12 @@ def is_fcc_800_uas_adopted_event(item: dict) -> bool:
 
 
 def trusted_lane_has_fcc_800_uas_event() -> bool:
-    # Do not hide a fallback generic alert if the dedicated trusted watcher
-    # failed and the event was neither selected nor previously delivered.
-    report = OUT_DIR / "khs_trusted_policy_news_alert.md"
-    if report.exists():
-        try:
-            body = report.read_text(encoding="utf-8").lower()
-            if "800mhz" in body and "50mhz" in body and "드론" in body:
-                return True
-        except OSError:
-            pass
+    """Suppress a generic FCC duplicate only after confirmed Telegram delivery.
+
+    An in-memory/markdown report is not evidence of a successful send.
+    Pending dedicated news may fail a format guard or the Telegram API, so
+    it must never consume the generic fallback.
+    """
     history = Path("data/khs_trusted_policy_news_seen.json")
     try:
         data = json.loads(history.read_text(encoding="utf-8"))
@@ -360,8 +356,8 @@ def is_low_impact_false_positive(item: dict) -> bool:
 
     if is_fcc_800_uas_adopted_event(item) and trusted_lane_has_fcc_800_uas_event():
         item["guardrail_note"] = (
-            "FCC 800MHz 드론 최종 채택은 기존 신뢰 정책 감시 경로에서 이미 송출되었거나"
-            " 이번 실행에서 전용 보고서에 포함돼 중복을 차단합니다."
+            "FCC 800MHz 드론 최종 채택은 Telegram 전송이 확인된 사건이므로"
+            " 기존 성공 기록을 기준으로 중복 송출을 차단합니다."
         )
         return True
 
