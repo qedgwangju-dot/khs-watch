@@ -29,6 +29,35 @@ class RecordedSourceError(OSError):
     pass
 
 
+# A successful search or alternate feed does not establish that a failed
+# explicitly configured source was covered over the same population/window.
+_DIRECT_SOURCE_HOSTS = {
+    'direct-kremlin-news': 'en.kremlin.ru',
+    'direct-kremlin-transcripts': 'en.kremlin.ru',
+    'direct-kremlin-telegram': 't.me',
+    'direct-interfax-top': 'interfax.com',
+    'direct-tass-home': 'tass.com',
+    'direct-gdelt-ukraine': 'api.gdeltproject.org',
+    'direct-gdelt-iran': 'api.gdeltproject.org',
+    'ap-direct-world-rss': 'apnews.com',
+    'ap-direct-top-rss': 'apnews.com',
+    '__TRUMP_TRUTH_SOCIAL_ENERGY_CEASEFIRE__': 'truthsocial.com',
+}
+
+
+def _unverified_direct_fallback(query, attempts):
+    """Return the failed direct host when only another host succeeded."""
+    direct = _DIRECT_SOURCE_HOSTS.get(query)
+    if not direct:
+        return None
+    direct_attempts = [a for a in attempts if a.get('host') == direct]
+    if not direct_attempts or any(a.get('status') == 'ok' for a in direct_attempts):
+        return None
+    if any(a.get('host') != direct and a.get('status') == 'ok' for a in attempts):
+        return direct
+    return None
+
+
 def _save(path, report):
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + '.tmp')
@@ -308,6 +337,19 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
                         else:
                             record.pop('error', None)
                             traces[index] = result['trace']
+                            attempts = [
+                                {'host': (urllib.parse.urlparse(item.get('url', '')).hostname or '').lower().removeprefix('www.'),
+                                 'status': item.get('status')}
+                                for item in record['http']
+                            ]
+                            direct = _unverified_direct_fallback(record['query'], attempts)
+                            if direct:
+                                record['status'] = 'partial'
+                                record['coverage_issue'] = {
+                                    'original_host': direct,
+                                    'reason': 'fallback_scope_not_verified',
+                                }
+                                record['error'] = 'original source unavailable; fallback scope unverified'
                         print(f"war_collection_done index={index} status={record['status']} elapsed={elapsed:.3f}s", flush=True)
                     except (EOFError, OSError) as exc:
                         record.update(status='worker_error', error=type(exc).__name__)
