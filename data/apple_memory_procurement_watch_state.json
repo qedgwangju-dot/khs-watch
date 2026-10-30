@@ -26,6 +26,7 @@
     "7fb0c236499f0cd032ae895d",
     "8241c859f77766a65f4cde7e",
     "8865e88df173e8f1766eecc2",
+    "8a2fd8a63af8f518fc50030f",
     "ac8571825e858261728623a9",
     "b3322e9f84ea024ed3fe0f32",
     "b41910ea1d7ab54905d6a596",
@@ -38,10 +39,11 @@
   ],
   "seen_fact_keys": [
     "apple_cxmt_discount_refusal_first_reported_2026_08_05",
-    "apple_samsung_1q27_dram2.0gb_nand0.33gb_up30_40"
+    "apple_samsung_1q27_dram2.0gb_nand0.33gb_up30_40",
+    "apple_unspecified_other_procurement_dx_nx_px_x"
   ],
-  "last_scan_count": 8,
-  "last_new_signal_count": 0,
-  "alert_generated": false,
-  "updated_at_kst": "2026-10-30T12:01:16+09:00"
+  "last_scan_count": 9,
+  "last_new_signal_count": 1,
+  "alert_generated": true,
+  "updated_at_kst": "2026-10-30T19:00:34+09:00"
 }
