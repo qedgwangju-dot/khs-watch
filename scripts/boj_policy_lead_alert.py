@@ -1701,10 +1701,13 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
         "stabilize_underlying_around_2",
     )
     current_signature = signal_signature(signal)
+    # Sparse documents omit many statements. Omission is not an explicit
+    # retraction of a verified BOJ view already sent for the same policy event.
     if signal.official_statement_detail_verified and any(
-        current_signature.get(key) != previous.get(key) for key in inflation_regime_flags
+        current_signature.get(key) is True and previous.get(key) is not True
+        for key in inflation_regime_flags
     ):
-        return True, "물가 체제·전이 판단 변화"
+        return True, "물가 체제·전이 판단 신규 확인"
 
     # Guidance wording changes matter for official decisions/conferences/opinion summaries,
     # but not for every market article paraphrasing the same meeting.
@@ -1729,9 +1732,10 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
         signal.event_type != "decision" or signal.official_statement_detail_verified
     )
     if official_like and guidance_verified and any(
-        current_signature.get(key) != previous.get(key) for key in material_flags
+        current_signature.get(key) is True and previous.get(key) is not True
+        for key in material_flags
     ):
-        return True, "정책 가이던스 핵심 문구 변화"
+        return True, "정책 가이던스 핵심 문구 신규 확인"
 
     # Same-path market commentary is a low-priority backup only. Do not repeat it
     # inside the cooldown window just because wording/context differs.
