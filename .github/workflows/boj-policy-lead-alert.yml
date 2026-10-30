@@ -17,6 +17,9 @@ on:
     types:
       - completed
   push:
+    # Live Telegram runs must never be triggered by an unmerged patch branch.
+    branches:
+      - main
     paths:
       - ".github/workflows/boj-policy-lead-alert.yml"
       - "scripts/boj_policy_lead_alert.py"
