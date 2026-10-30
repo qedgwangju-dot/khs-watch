@@ -676,23 +676,23 @@ def is_policy_hold(item: Item, kind: str | None) -> bool:
         return False
     title = clean(item.title).lower()
     title_hold = bool(re.search(
-        r"\\b(?:keeps?|kept|holds?|held|leaves?|left|maintains?|maintained)\\b.{0,65}?"
-        r"\\b(?:rates?|interest rates?|policy rate)\\b.{0,55}?"
-        r"\\b(?:steady|unchanged|on hold|at \\d)",
+        r"\b(?:keeps?|kept|holds?|held|leaves?|left|maintains?|maintained)\b.{0,65}?"
+        r"\b(?:rates?|interest rates?|policy rate)\b.{0,55}?"
+        r"\b(?:steady|unchanged|on hold|at \d)",
         title,
     )) or bool(re.search(
-        r"\\b(?:rates?|policy rate)\\b.{0,25}?"
-        r"\\b(?:unchanged|steady|on hold)\\b", title,
+        r"\b(?:rates?|policy rate)\b.{0,25}?"
+        r"\b(?:unchanged|steady|on hold)\b", title,
     ))
     if title_hold:
         return True
     # Only institution-level decisions qualify; dissents/previews do not.
-    for sentence in re.split(r"(?<=[.!?])\\s+", clean(item.description).lower()):
-        if not re.search(r"\\b(?:bank of japan|boj|central bank|policy board)\\b", sentence):
+    for sentence in re.split(r"(?<=[.!?])\s+", clean(item.description).lower()):
+        if not re.search(r"\b(?:bank of japan|boj|central bank|policy board)\b", sentence):
             continue
-        if re.search(r"\\b(?:held|kept|left|maintained|voted to keep|decided to keep)\\b.{0,100}?"
-                     r"\\b(?:rate|rates|borrowing costs)\\b.{0,80}?"
-                     r"\\b(?:unchanged|steady|at \\d)", sentence):
+        if re.search(r"\b(?:held|kept|left|maintained|voted to keep|decided to keep)\b.{0,100}?"
+                     r"\b(?:rate|rates|borrowing costs)\b.{0,80}?"
+                     r"\b(?:unchanged|steady|at \d)", sentence):
             return True
     return False
 
@@ -701,9 +701,9 @@ def extract_held_rate(text: str) -> float | None:
     """Prefer the rate that was actually maintained over a dissenter's proposal."""
     lower = clean(text).lower()
     for pattern in (
-        r"\\b(?:policy rate|short-term (?:policy )?rate|overnight (?:policy )?rate|" 
-        r"interest rates?|borrowing costs)\\b[^.;]{0,90}?\\bat\\s+(\\d+(?:\\.\\d+)?)\\s*%",
-        r"\\b(?:kept|held|left|maintained)\\b[^.;]{0,100}?\\bat\\s+(\\d+(?:\\.\\d+)?)\\s*%",
+        r"\b(?:policy rate|short-term (?:policy )?rate|overnight (?:policy )?rate|" 
+        r"interest rates?|borrowing costs)\b[^.;]{0,90}?\bat\s+(\d+(?:\.\d+)?)\s*%",
+        r"\b(?:kept|held|left|maintained)\b[^.;]{0,100}?\bat\s+(\d+(?:\.\d+)?)\s*%",
     ):
         match = re.search(pattern, lower)
         if match:
@@ -714,14 +714,14 @@ def extract_held_rate(text: str) -> float | None:
 
 
 def extract_hike_dissent_on_hold(text: str) -> bool:
-    for sentence in re.split(r"(?<=[.!?])\\s+", clean(text).lower()):
-        if not re.search(r"\\b(?:dissent(?:ed|ing)?|oppos(?:ed|ing)|minority)\\b", sentence):
+    for sentence in re.split(r"(?<=[.!?])\s+", clean(text).lower()):
+        if not re.search(r"\b(?:dissent(?:ed|ing)?|oppos(?:ed|ing)|minority)\b", sentence):
             continue
-        if re.search(r"\\b(?:called for|proposed|wanted|sought|urged|favou?red|argued for)\\b"
-                     r"[^.!?]{0,90}?\\b(?:hike|raise|increase|higher)\\b", sentence):
+        if re.search(r"\b(?:called for|proposed|wanted|sought|urged|favou?red|argued for|arguing for)\b"
+                     r"[^.!?]{0,90}?\b(?:hike|raise|increase|higher)\b", sentence):
             return True
-        if re.search(r"\\b(?:hike|raise|increase|higher)\\b[^.!?]{0,90}?"
-                     r"\\b(?:dissent(?:ed|ing)?|oppos(?:ed|ing))\\b", sentence):
+        if re.search(r"\b(?:hike|raise|increase|higher)\b[^.!?]{0,90}?"
+                     r"\b(?:dissent(?:ed|ing)?|oppos(?:ed|ing))\b", sentence):
             return True
     return False
 
@@ -731,21 +731,21 @@ def has_confirmed_underlying_target(item: Item, kind: str | None) -> bool:
     if kind != "decision":
         return False
     official = source_name(item) == "Bank of Japan"
-    for sentence in re.split(r"(?<=[.!?])\\s+", clean(item.description).lower()):
-        if not re.search(r"\\b(?:underlying (?:cpi )?inflation|underlying price(?:s)?)\\b", sentence):
+    for sentence in re.split(r"(?<=[.!?])\s+", clean(item.description).lower()):
+        if not re.search(r"\b(?:underlying (?:cpi )?inflation|underlying price(?:s)?)\b", sentence):
             continue
-        if not re.search(r"\\b(?:has|had|have)?\\s*(?:reached|hit|attained)|"
-                         r"\\b(?:is|was|now)\\s+(?:at|broadly consistent with)", sentence):
+        if not re.search(r"\b(?:has|had|have)?\s*(?:reached|hit|attained)|"
+                         r"\b(?:is|was|now)\s+(?:at|broadly consistent with)", sentence):
             continue
-        if not re.search(r"\\b2\\s*(?:%|percent)\\b|\\b2%", sentence):
+        if not re.search(r"\b2\s*(?:%|percent)\b|\b2%", sentence):
             continue
-        if re.search(r"\\b(?:may|might|could|expected to|likely to|would|plans to|sources say)\\b", sentence):
+        if re.search(r"\b(?:may|might|could|expected to|likely to|would|plans to|sources say)\b", sentence):
             continue
         if official:
             return True
         # Require an attributed institutional judgment, not an individual dissenter.
-        if re.search(r"\\b(?:boj|bank of japan|central bank|the bank|the board)\\b"
-                     r".{0,150}?\\b(?:said|says|judged|assessed|declared|concluded|stated|found)\\b", sentence):
+        if re.search(r"\b(?:boj|bank of japan|central bank|the bank|the board)\b"
+                     r".{0,150}?\b(?:said|says|judged|assessed|declared|concluded|stated|found)\b", sentence):
             return True
     return False
 
