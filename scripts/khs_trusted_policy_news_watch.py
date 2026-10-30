@@ -4751,6 +4751,13 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
+    if rule.key == "us_fcc_800mhz_uas_cellular_authorization" and any(
+        x.get("official_direct_verified") is True
+        and x.get("fcc_800_uas_stage") == "adopted"
+        and x.get("link") == FCC_800_UAS_RELEASE_SOURCES[0][0]
+        for x in items
+    ):
+        return "공식 확인", "FCC 2026년 10월 29일 최종 의결 보도자료 원문 검증"
     if rule.key == "eu_china_hybrid_vehicle_safeguard" and any(
         item.get("official_direct_verified") is True
         and item.get("eu_hybrid_stage") == "government-understanding"
