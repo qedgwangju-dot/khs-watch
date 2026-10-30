@@ -111,20 +111,37 @@ def evaluate(payloads: list[tuple[str, dict]], now: dt.datetime) -> dict:
     }
 
 
-def transition(previous: dict, status: dict, *, outage_threshold_minutes: float = 45.) -> dict:
+def transition(
+    previous: dict,
+    status: dict,
+    *,
+    outage_threshold_minutes: float = 45.,
+    now: dt.datetime | None = None,
+) -> dict:
+    now = (now or dt.datetime.now(KST)).astimezone(KST)
     age = status.get("stale_minutes")
-    # Invalid data-source updates are not proof of monitoring recovery, even when
-    # a new heartbeat file has been committed.
-    outage = age is None or age >= outage_threshold_minutes
-    if status.get("issue_kind") == "market_data_unavailable" and not status.get("healthy"):
-        # The monitor might have just started failing. Do not misdeclare recovery
-        # while a bad-price heartbeat is arriving.
-        outage = outage or bool(previous.get("alert_active"))
-    if not status.get("healthy") and bool(previous.get("alert_active")):
-        outage = True
     was_active = bool(previous.get("alert_active"))
+    healthy = status.get("healthy") is True
+    issue = status.get("issue_kind")
+    outage = age is None or age >= outage_threshold_minutes
+
+    # An actively polled but permanently broken quote feed may continually
+    # advance the execution heartbeat. Persist its first invalid observation
+    # so that this never masks a 45-minute data-source outage.
+    first_invalid = None
+    if issue == "market_data_unavailable" and not healthy:
+        first_invalid = parse_stamp(previous.get("first_invalid_at_kst")) or now
+        invalid_duration = (now - first_invalid).total_seconds() / 60.
+        outage = outage or invalid_duration >= outage_threshold_minutes
+
+    if was_active and not healthy:
+        outage = True
+    if healthy:
+        outage = False
+
     return {
         "outage": outage,
         "new_outage": outage and not was_active,
-        "recovered_incident": was_active and status.get("healthy") is True,
+        "recovered_incident": was_active and healthy,
+        "first_invalid_at_kst": None if first_invalid is None else first_invalid.isoformat(timespec="seconds"),
     }
