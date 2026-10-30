@@ -325,6 +325,7 @@ jobs:
               prior,
               {'stale_minutes': stale_minutes, 'healthy': healthy, 'issue_kind': issue_kind},
               outage_threshold_minutes=alert_after,
+              now=now,
           )
           outage = incident['outage']
           should_alert = incident['new_outage']
@@ -375,6 +376,7 @@ jobs:
 
           persistent = {
               'alert_active': outage,
+              'first_invalid_at_kst': incident.get('first_invalid_at_kst'),
               'last_alert_at_kst': last_alert,
               'last_repair_at_kst': last_repair,
               'last_recovered_at_kst': last_recovered,
