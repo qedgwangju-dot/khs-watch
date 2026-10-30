@@ -757,6 +757,14 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIn("--guard-state /tmp/boj_remote_state.json", workflow)
         self.assertIn("|| 'main' }}", workflow)
 
+    def test_only_main_push_can_trigger_live_boj_lane(self):
+        workflow = (
+            Path(__file__).resolve().parents[1]
+            / ".github" / "workflows" / "boj-policy-lead-alert.yml"
+        ).read_text(encoding="utf-8")
+        self.assertIn("  push:\\n    # Live Telegram runs", workflow.replace("\n", "\\n"))
+        self.assertIn("    branches:\n      - main\n    paths:", workflow)
+
     def test_workflow_renders_clean_clickable_links(self):
         workflow = (
             Path(__file__).resolve().parents[1]
