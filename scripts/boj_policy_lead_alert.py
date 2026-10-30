@@ -2021,6 +2021,12 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
                 else "- BOJ 성명 상세: 공식 원문 확인 전 · 상세 성명 문구는 확정 트리거로 사용하지 않음"
             ),
         ]
+    elif signal.source == "Bank of Japan" and "outlook for economic activity and prices" in signal.title.lower():
+        source_validation = [
+            "- 물가 판단 출처: BOJ 공식 경제·물가전망(The Bank's View) 원문",
+            "- 정책금리·정책 표결: 결정문 또는 고신뢰 보도에서 명시적으로 파악한 숫자만 사용",
+            "- 전망보고서 차트 번호·위원 명단은 정책 표결로 해석하지 않음",
+        ]
     elif signal.official_statement_detail_verified:
         source_validation = [
             "- 결정값 검증: Reuters·BOJ 공식 원문",
