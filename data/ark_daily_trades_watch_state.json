@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "last_date": "2026-10-28",
-  "digest": "8dec627149068947a1693f26",
+  "last_date": "2026-10-29",
+  "digest": "8aa4dde18cb0843eaf35b5a3",
   "format_version": 3,
   "sector_history": [
     {
@@ -90,7 +90,25 @@
         "금융기술·디지털자산": 3,
         "반도체·자동화 장비": 3
       }
+    },
+    {
+      "date": "2026-10-29",
+      "digest": "8aa4dde18cb0843eaf35b5a3",
+      "complete": true,
+      "buy_complete": true,
+      "sell_complete": true,
+      "buy_usd": {
+        "업종 미확인": 8063262.141505
+      },
+      "sell_usd": {
+        "업종 미확인": 1158182.193207,
+        "사이버보안": 250140.139862,
+        "AI·클라우드·기업용 소프트웨어": 52440.697937
+      },
+      "buy_rows": {
+        "업종 미확인": 7
+      }
     }
   ],
-  "updated_at": "2026-10-29T02:39:36.739305+00:00"
+  "updated_at": "2026-10-30T02:04:58.138463+00:00"
 }
