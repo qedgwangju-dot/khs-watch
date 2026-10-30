@@ -20,6 +20,7 @@ import datetime as dt
 import json
 import pathlib
 import re
+import time
 from dataclasses import asdict, dataclass
 from zoneinfo import ZoneInfo
 
@@ -568,6 +569,34 @@ def finalize() -> int:
     return 0
 
 
+def fetch_complete_snapshot(*, attempts: int = 2, retry_pause_seconds: float = 3.0):
+    """Retry actual source observations when a partial 5-minute bar window is returned.
+
+    Never interpolate/synthesize a missing reference price; preserve the original
+    failure after the bounded retry so monitoring health remains honest.
+    """
+    if attempts < 1:
+        raise ValueError("attempts must be positive")
+    for attempt in range(1, attempts + 1):
+        try:
+            points = composite.fetch_fx_points()
+            return points, calculate(points)
+        except RuntimeError as exc:
+            source_gap = any(
+                term in str(exc).lower()
+                for term in (
+                    "reference unavailable",
+                    "observations insufficient",
+                    "five-minute observations insufficient",
+                )
+            )
+            if attempt >= attempts or not source_gap:
+                raise
+            print(f"yen_carry_fx_partial_window_retry={attempt}/{attempts} reason={str(exc)}")
+            if retry_pause_seconds > 0:
+                time.sleep(retry_pause_seconds)
+    raise RuntimeError("FX source reference validation failed")
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--finalize", action="store_true")
@@ -576,8 +605,7 @@ def main() -> int:
         return finalize()
 
     now = dt.datetime.now(KST)
-    points = composite.fetch_fx_points()
-    snapshot = calculate(points)
+    points, snapshot = fetch_complete_snapshot()
     previous = load_json(STATE_PATH, {})
     signal_eligible, fx_age_seconds, fx_observed_at_kst = fx_freshness(snapshot, now)
     gap = monitor_gap_minutes(previous, now)
