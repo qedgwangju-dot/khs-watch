@@ -229,6 +229,21 @@ class ExportDeliveryEvidenceTests(unittest.TestCase):
         # This is the production final gate, not a mocked approval result.
         self.assertIsNone(watch.validate_monthly_payload(text, candidate, self.out))
 
+    def test_source_completion_after_midnight_preserves_decision_month_and_gate(self):
+        official, candidate, _ = self.prepared()
+        tz = ZoneInfo("Asia/Seoul")
+        decision = datetime(2026, 10, 31, 23, 59, 20, tzinfo=tz)
+        completed = datetime(2026, 11, 1, 0, 0, 31, tzinfo=tz)
+        candidate["official_export_evidence"] = watch._write_trade_validation(
+            decision, official, [], True, RATE, FX_BASIS, observed_at=completed
+        )
+        text = watch.build_monthly(decision, RATE, FX_BASIS, official, observed_at=completed)
+        proof = json.loads((self.out / "hbm_export_validation.json").read_bytes())
+        self.assertEqual(proof["decision_at_kst"], decision.isoformat(timespec="seconds"))
+        self.assertEqual(proof["checked_at_kst"], completed.isoformat(timespec="seconds"))
+        self.assertIn("<b>조회</b>: 2026-11-01 00:00 KST", text)
+        self.assertIsNone(watch.validate_monthly_payload(text, candidate, self.out))
+
     def test_exact_kstat_request_scope_supplies_same_month_regional_usd_values(self):
         official, candidate, text = self.prepared()
         proof, error = watch._resolve_sido_source()

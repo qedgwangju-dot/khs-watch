@@ -180,6 +180,74 @@ class ExportRuntimeIntegrityTests(unittest.TestCase):
         self.assertTrue(saved['malaysia_public_available'])
         self.assertFalse(saved['official_observed_this_run'])
 
+    def test_source_health_uses_actual_poll_times_from_run_966(self):
+        # Run 966 started at 11:09:20, while the preserved HTTP ledger ran from
+        # 11:10:13 to 11:10:31 KST. No network or Telegram call is made here.
+        tz = ZoneInfo('Asia/Seoul')
+        times = iter([
+            datetime(2026, 10, 30, 11, 9, 20, tzinfo=tz),
+            datetime(2026, 10, 30, 11, 10, 13, 231330, tzinfo=tz),
+            datetime(2026, 10, 30, 11, 10, 31, 428783, tzinfo=tz),
+        ])
+
+        class CapturedClock(datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return next(times)
+
+        baseline = self.notified_state(pack())
+        baseline['official_source_health'] = {'status': 'ok'}
+        with patch.object(w, 'datetime', CapturedClock):
+            saved, text = self.run_main(baseline, pack(), poll=True)
+        self.assertEqual(saved['last_official_poll_attempt_kst'], '2026-10-30T11:10:13+09:00')
+        self.assertEqual(saved['last_successful_official_at_kst'], '2026-10-30T11:10:31+09:00')
+        self.assertEqual(saved['official_source_health']['last_checked_at_kst'], '2026-10-30T11:10:31+09:00')
+        self.assertFalse(saved['monthly_due'])
+        self.assertEqual(saved['last_official_alert_snapshot'], baseline['last_official_alert_snapshot'])
+        self.assertEqual(text, '')
+
+    def test_monthly_message_and_proof_use_poll_completion(self):
+        tz = ZoneInfo('Asia/Seoul')
+        times = iter([
+            datetime(2026, 10, 30, 11, 9, 20, tzinfo=tz),
+            datetime(2026, 10, 30, 11, 10, 13, tzinfo=tz),
+            datetime(2026, 10, 30, 11, 10, 31, tzinfo=tz),
+        ])
+
+        class CapturedClock(datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return next(times)
+
+        baseline = self.notified_state(pack())
+        baseline['last_official_alert_month'] = '202608'
+        with patch.object(w, 'datetime', CapturedClock), \
+             patch.object(w, '_write_trade_validation', wraps=w._write_trade_validation) as write_proof:
+            saved, text = self.run_main(baseline, pack(), poll=True)
+        self.assertTrue(saved['monthly_due'])
+        self.assertIn('<b>조회</b>: 2026-10-30 11:10 KST', text)
+        self.assertEqual(write_proof.call_args.kwargs['observed_at'].isoformat(), '2026-10-30T11:10:31+09:00')
+
+    def test_failed_poll_does_not_advance_last_success_time(self):
+        tz = ZoneInfo('Asia/Seoul')
+        times = iter([
+            datetime(2026, 10, 30, 11, 9, 20, tzinfo=tz),
+            datetime(2026, 10, 30, 11, 10, 13, tzinfo=tz),
+            datetime(2026, 10, 30, 11, 10, 31, tzinfo=tz),
+        ])
+
+        class CapturedClock(datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return next(times)
+
+        previous = '2026-10-29T08:28:17+09:00'
+        with patch.object(w, 'datetime', CapturedClock):
+            saved, _ = self.run_main({'last_successful_official_at_kst': previous}, None, ['연결시간초과'], poll=True)
+        self.assertEqual(saved['last_successful_official_at_kst'], previous)
+        self.assertEqual(saved['last_official_poll_attempt_kst'], '2026-10-30T11:10:13+09:00')
+        self.assertEqual(saved['official_source_health']['last_checked_at_kst'], '2026-10-30T11:10:31+09:00')
+
     def test_all_unpublished_months_do_not_retain_old_ok_health(self):
         state=dict(official_source_health={'status':'ok'})
         saved,_=self.run_main(state,errors=['공표 대기: 필수 월 자료 없음'],poll=True)

@@ -1279,12 +1279,13 @@ def _merge_notified_values(previous, snapshot):
     return merged
 
 
-def _write_trade_validation(now, official, errors, monthly_due, rate, fx_basis):
+def _write_trade_validation(now, official, errors, monthly_due, rate, fx_basis, *, observed_at=None):
     ledger = _TRADE_EVIDENCE.as_dict() if _TRADE_EVIDENCE is not None else {}
     evidence_path = OUT / "hbm_export_source_evidence.json"
     proof = {
         "schema_version": 1, "code_sha": ledger.get("code_sha"), "run_id": ledger.get("run_id"),
-        "checked_at_kst": now.isoformat(timespec="seconds"), "monthly_due": bool(monthly_due),
+        "checked_at_kst": (observed_at or now).isoformat(timespec="seconds"),
+        "decision_at_kst": now.isoformat(timespec="seconds"), "monthly_due": bool(monthly_due),
         "phase": "held" if errors else "not_polled", "errors": errors,
         "snapshot": official_snapshot(official) if official else None,
         "source_evidence_sha256": hashlib.sha256(evidence_path.read_bytes()).hexdigest() if evidence_path.exists() else None,
@@ -1477,9 +1478,10 @@ def validate_monthly_payload(text, candidate, out_dir=None):
                         or params.get("hsSgn") != REGION_HS6
                         or params.get("priodFr") != month or params.get("priodTo") != month):
                     raise ValueError("HBM Icheon city identity unverified")
-    rendered = build_monthly(datetime.fromisoformat(proof["checked_at_kst"]), proof["fx"]["rate"], proof["fx"]["basis"],
+    rendered = build_monthly(datetime.fromisoformat(proof.get("decision_at_kst", proof["checked_at_kst"])), proof["fx"]["rate"], proof["fx"]["basis"],
         dict(snapshot, source_url=KCS_SOURCE_PAGE, malaysia_public_available=snapshot["series"][snapshot["month"]].get("malaysia_amount") is not None,
-             icheon_hs=REGION_HS6, icheon_public_available=snapshot["series"][snapshot["month"]].get("icheon_amount") is not None))
+             icheon_hs=REGION_HS6, icheon_public_available=snapshot["series"][snapshot["month"]].get("icheon_amount") is not None),
+        observed_at=datetime.fromisoformat(proof["checked_at_kst"]))
     # Currency enforcement can append conversions. Source percentage/date/direction
     # lines remain exact and are independently regenerated above.
     from collections import Counter
@@ -3248,7 +3250,7 @@ def build_official_source_health_alert(now: datetime, target_month: str, errors:
     return "\n".join(lines) + "\n"
 
 
-def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: dict) -> str:
+def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: dict, *, observed_at: datetime | None = None) -> str:
     """Render company-first HBM export direction, then the market/technical appendix.
 
     Chungnam/Chungbuk are exact official regional HSK10 proxy series, not company
@@ -3414,7 +3416,7 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         "• 삼성·SK하이닉스 HBM 실제 매출·점유율·NVIDIA 공급물량이 새로 확인될 때",
         "",
         f"<b>환율</b>: {html.escape(fx_basis)}",
-        f"<b>조회</b>: {now.strftime('%Y-%m-%d %H:%M KST')}",
+        f"<b>조회</b>: {(observed_at or now).strftime('%Y-%m-%d %H:%M KST')}",
         "<b>원문</b>: "
         + f"관세청 {href(official['source_url'])} · "
         + f"K-stat {href('https://stat.kita.net/')} · "
@@ -3880,8 +3882,11 @@ def _main() -> None:
     rate, fx_basis = fx_quote()
     official_poll_attempted, official_poll_interval_hours = _official_poll_due(state, now)
     official_target_month = _previous_month(now)
+    official_poll_started_at = official_poll_completed_at = now
     if now.day >= MONTHLY_DAY and official_poll_attempted:
+        official_poll_started_at = datetime.now(ZoneInfo("Asia/Seoul"))
         official, official_errors = fetch_official_hbm_pack(now)
+        official_poll_completed_at = datetime.now(ZoneInfo("Asia/Seoul"))
         official_errors = _dedupe_error_messages(official_errors)
         newest_confirmed = max(str(state.get(key) or "") for key in ("last_official_alert_month", "last_successful_official_month"))
         if official and official["month"] < newest_confirmed:
@@ -3914,7 +3919,7 @@ def _main() -> None:
         if publication_pending:
             source_health_state = {
                 "version": OFFICIAL_SOURCE_HEALTH_VERSION, "status": "waiting_publication",
-                "target_month": official_target_month, "last_checked_at_kst": now.isoformat(timespec="seconds"),
+                "target_month": official_target_month, "last_checked_at_kst": official_poll_completed_at.isoformat(timespec="seconds"),
                 "notes": official_errors,
             }
         elif official is None and official_errors:
@@ -3926,16 +3931,16 @@ def _main() -> None:
                 "target_month": official_target_month,
                 "signature": sig,
                 "classes": _official_error_classes(official_errors),
-                "last_checked_at_kst": now.isoformat(timespec="seconds"),
+                "last_checked_at_kst": official_poll_completed_at.isoformat(timespec="seconds"),
                 "first_seen_at_kst": (
                     previous_source_health.get("first_seen_at_kst")
                     if previous_source_health.get("signature") == sig
-                    else now.isoformat(timespec="seconds")
+                    else official_poll_completed_at.isoformat(timespec="seconds")
                 ),
             }
             if previous_source_health.get("signature") != sig or previous_source_health.get("status") not in ("error", "validation_hold"):
                 source_health_alert = build_official_source_health_alert(
-                    now, official_target_month, official_errors
+                    official_poll_completed_at, official_target_month, official_errors
                 )
         elif official is not None:
             previous_health_status = previous_source_health.get("status")
@@ -3946,17 +3951,17 @@ def _main() -> None:
                 "version": OFFICIAL_SOURCE_HEALTH_VERSION,
                 "status": "waiting_publication" if waiting_publication else "partial" if official_errors else "ok",
                 "target_month": official_target_month,
-                "last_checked_at_kst": now.isoformat(timespec="seconds"),
+                "last_checked_at_kst": official_poll_completed_at.isoformat(timespec="seconds"),
                 "selected_official_month": official_month,
             }
             if was_error and not official_errors:
                 source_health_alert = build_official_source_health_alert(
-                    now, official_target_month, [], recovered=True,
+                    official_poll_completed_at, official_target_month, [], recovered=True,
                     regional_source_mode=_official_regional_source_mode(official),
                 )
             elif was_validation_hold and not official_errors and not waiting_publication:
                 source_health_alert = build_official_source_health_alert(
-                    now, official_target_month, [], recovered=True, validation_recovered=True,
+                    official_poll_completed_at, official_target_month, [], recovered=True, validation_recovered=True,
                     regional_source_mode=_official_regional_source_mode(official),
                 )
             elif (
@@ -3974,7 +3979,7 @@ def _main() -> None:
                     f"• 현재 공식 API 최신월: <b>{official_month[:4]}년 {int(official_month[4:])}월</b>",
                     "• 관세청 시도별 품목 통계는 통상 매월 15일경 전월 자료를 현행화합니다.",
                     "• 새 확정월이 게시되기 전까지 이전 월 값을 최신값으로 재사용하지 않습니다.",
-                    f"• 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
+                    f"• 확인: {official_poll_completed_at.strftime('%Y-%m-%d %H:%M KST')}",
                 ]) + "\n"
 
     monthly_decision = official_monthly_decision(state, official)
@@ -3989,7 +3994,7 @@ def _main() -> None:
     )
 
     if monthly_due and official:
-        monthly_text = build_monthly(now, rate, fx_basis, official)
+        monthly_text = build_monthly(now, rate, fx_basis, official, observed_at=official_poll_completed_at)
         if format_upgrade_due:
             monthly_text = "\n".join([
                 "🛠 <b>수출 원자료 재검증·표시 기준 정정</b>",
@@ -4137,7 +4142,7 @@ def _main() -> None:
         "official_source_health_version": OFFICIAL_SOURCE_HEALTH_VERSION,
         "official_poll_interval_hours": official_poll_interval_hours,
         "last_official_poll_attempt_kst": (
-            now.isoformat(timespec="seconds")
+            official_poll_started_at.isoformat(timespec="seconds")
             if official_poll_attempted
             else state.get("last_official_poll_attempt_kst", "")
         ),
@@ -4166,8 +4171,8 @@ def _main() -> None:
     })
     if official:
         state["last_successful_official_month"] = official_month
-        state["last_successful_official_at_kst"] = now.isoformat(timespec="seconds")
-    evidence_ref = _write_trade_validation(now, official, official_errors, monthly_due, rate, fx_basis)
+        state["last_successful_official_at_kst"] = official_poll_completed_at.isoformat(timespec="seconds")
+    evidence_ref = _write_trade_validation(now, official, official_errors, monthly_due, rate, fx_basis, observed_at=official_poll_completed_at)
     if monthly_due:
         state["official_export_evidence"] = evidence_ref
     save_state(state)
