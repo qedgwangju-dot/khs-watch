@@ -38,7 +38,9 @@ permissions:
   contents: write
 
 concurrency:
-  group: boj-policy-lead-alert
+  # PR dry-runs must not queue behind live Telegram/source checks.
+  # Production keeps exactly the same serial group and no-cancel behavior.
+  group: ${{ github.event_name == 'pull_request' && format('boj-policy-lead-alert-pr-{0}', github.event.pull_request.number) || 'boj-policy-lead-alert' }}
   # Do not cancel a run after Telegram send but before state finalization.
   # Queued runs will read the finalized state and suppress duplicates.
   cancel-in-progress: false
