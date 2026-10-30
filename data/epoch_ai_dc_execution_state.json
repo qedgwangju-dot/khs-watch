@@ -4,12 +4,12 @@
   "source_url": "https://epoch.ai/data/ai-data-centers",
   "data_url": "https://epoch.ai/data/data_centers/data_centers.csv",
   "timeline_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
-  "as_of_kst": "2026-10-30T23:12:05+09:00",
+  "as_of_kst": "2026-10-31T00:58:06+09:00",
   "site_count": 77,
-  "current_it_mw": 12206.3,
+  "current_it_mw": 12374.3,
   "planned_it_mw_2030": 33128.3,
-  "remaining_it_mw": 20922.0,
-  "execution_ratio_pct": 36.85,
+  "remaining_it_mw": 20754.0,
+  "execution_ratio_pct": 37.35,
   "top_remaining_sites": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -131,7 +131,7 @@
     },
     "Anthropic Lake Mariner": {
       "planned": 378.0,
-      "current": 42.0
+      "current": 210.0
     },
     "Anthropic-Amazon New Carlisle": {
       "planned": 1925.0,
