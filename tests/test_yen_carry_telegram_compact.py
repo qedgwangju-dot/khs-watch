@@ -184,7 +184,7 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
             self.assertIn("▶ 결론 │ 지금은 청산보다 캐리 유지·재구축 방향이 우세", result)
             self.assertIn("▶ 방향 │ ↗ 캐리 유지·재구축 쪽으로 기울기", result)
             self.assertIn("▶ 청산 위험 │ 🟡 구조적 취약성·경계", result)
-            self.assertIn("▶ 시장 영향 │ 🟡 중립~소폭 우호 / 구조 변동성 주의", result)
+            self.assertIn("▶ 위험자산 │ 🟡 중립~소폭 우호 / 구조 변동성 주의", result)
             self.assertIn("USD/JPY 157.788 · 15분 +0.05% · 30분 +0.14% · 60분 +0.21% → 엔화 약세", result)
             self.assertIn("해외중장기채 2주 -2.59조엔", result)
             self.assertNotIn("↘ 청산", result)
@@ -245,7 +245,7 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
         self.assertNotIn("해외주식+중장기채 합계", message)
         self.assertIn("-2.59조엔", message)
 
-    def test_structural_floor_without_direction_is_neutral(self):
+    def test_structural_floor_without_fresh_fx_withholds_direction(self):
         payload = {
             "verdict": {"unwind_level": 0, "rebuild_level": 0, "evidence": {}},
             "refined_risk": {
@@ -255,9 +255,9 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
             },
         }
         title, direction, impact = compact.direction_call(payload)
-        self.assertIn("↔ 중립·구조 경계", title)
-        self.assertEqual(direction, "↔ 중립·방향 확인 대기")
-        self.assertEqual(impact, "🟡 중립 / 구조 변동성 주의")
+        self.assertIn("현재 방향 보류", title)
+        self.assertIn("실시간 방향 판정 보류", direction)
+        self.assertIn("실시간 영향 판정 보류", impact)
 
 
     def test_2026_october_8_direction_and_flow_are_not_overstated(self):
