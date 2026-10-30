@@ -575,7 +575,8 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             )
         )
         self.assertIsNone(signal.dissent_direction)
-        self.assertEqual(signal.dissenters, ("다카타", "다무라"))
+        # Outlook wording dissent is not a dissent on the policy-rate vote.
+        self.assertEqual(signal.dissenters, ())
         self.assertEqual(signal.outlook_dissenters, ("다카타", "다무라"))
 
     def test_verified_event_signal_has_complete_current_decision(self):
