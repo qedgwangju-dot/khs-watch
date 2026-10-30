@@ -787,7 +787,17 @@ def has_confirmed_underlying_target(item: Item, kind: str | None) -> bool:
             continue
         if not re.search(r"\b2\s*(?:%|percent)\b|\b2%", sentence):
             continue
-        if re.search(r"\b(?:may|might|could|expected to|likely to|would|plans to|sources say)\b", sentence):
+        # A later clause about future hikes must not erase a completed 2% finding.
+        # Exclude only forward-looking language *before* the achievement statement.
+        achieved = re.search(
+            r"\b(?:has|had|have)?\s*(?:reached|hit|attained)|"
+            r"\b(?:is|was|now)\s+(?:at|broadly consistent with)", sentence
+        )
+        prefix = sentence[:achieved.start()] if achieved else sentence
+        if re.search(
+            r"\b(?:may|might|could|expected to|likely to|would|plans to|sources say)\b",
+            prefix,
+        ):
             continue
         if official:
             return True
@@ -1691,10 +1701,13 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
         "stabilize_underlying_around_2",
     )
     current_signature = signal_signature(signal)
+    # Sparse documents omit many statements. Omission is not an explicit
+    # retraction of a verified BOJ view already sent for the same policy event.
     if signal.official_statement_detail_verified and any(
-        current_signature.get(key) != previous.get(key) for key in inflation_regime_flags
+        current_signature.get(key) is True and previous.get(key) is not True
+        for key in inflation_regime_flags
     ):
-        return True, "물가 체제·전이 판단 변화"
+        return True, "물가 체제·전이 판단 신규 확인"
 
     # Guidance wording changes matter for official decisions/conferences/opinion summaries,
     # but not for every market article paraphrasing the same meeting.
@@ -1718,10 +1731,24 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     guidance_verified = (
         signal.event_type != "decision" or signal.official_statement_detail_verified
     )
-    if official_like and guidance_verified and any(
-        current_signature.get(key) != previous.get(key) for key in material_flags
+    # A second PDF from the same BOJ policy meeting can mention "neutral rate"
+    # or another generic term absent in the first PDF. That is not a newly
+    # decided policy path. Substantive changes in rates, votes, inflation regime,
+    # or event-level acceleration are checked above; later conferences are
+    # separate events and remain eligible.
+    same_official_decision = (
+        signal.event_type == "decision"
+        and previous.get("event_type") == "decision"
+        and signal.source == "Bank of Japan"
+        and state.get("last_source") == "Bank of Japan"
+        and last_published is not None
+        and signal.published.date() == last_published.date()
+    )
+    if official_like and guidance_verified and not same_official_decision and any(
+        current_signature.get(key) is True and previous.get(key) is not True
+        for key in material_flags
     ):
-        return True, "정책 가이던스 핵심 문구 변화"
+        return True, "정책 가이던스 핵심 문구 신규 확인"
 
     # Same-path market commentary is a low-priority backup only. Do not repeat it
     # inside the cooldown window just because wording/context differs.
@@ -2004,9 +2031,131 @@ def market_quote_age_label(quote: dict, now: dt.datetime) -> str:
     return f"{minutes}분 지연 · 마지막 시세 {observed.strftime('%m-%d %H:%M')} KST"
 
 
+
+def first_glance_policy(signal: Signal) -> dict[str, str]:
+    """Make the actual decision and *conditional* next path readable separately."""
+    if signal.event_type == "decision":
+        if signal.rate_unchanged:
+            today = (
+                f"금리 {signal.policy_rate:.2f}% 동결(0bp)"
+                if signal.policy_rate is not None else "금리 동결(0bp, 수준 확인 전)"
+            )
+            short_today = (
+                f"{signal.policy_rate:.2f}% 동결"
+                if signal.policy_rate is not None else "금리 동결"
+            )
+        elif signal.hike_bp is not None:
+            if signal.policy_rate is not None:
+                previous_rate = signal.policy_rate - signal.hike_bp / 100
+                today = f"금리 {previous_rate:.2f}% → {signal.policy_rate:.2f}% (+{signal.hike_bp}bp 인상)"
+                short_today = f"+{signal.hike_bp}bp 인상"
+            else:
+                today = f"기준금리 +{signal.hike_bp}bp 인상"
+                short_today = f"+{signal.hike_bp}bp 인상"
+        elif signal.policy_rate is not None:
+            today = f"결정된 정책금리 {signal.policy_rate:.2f}% (변경 여부 미확인)"
+            short_today = f"금리 {signal.policy_rate:.2f}%"
+        else:
+            today = "금융정책 결정 발표(핵심 수치 확인 전)"
+            short_today = "금융정책 발표"
+    else:
+        if signal.event_type == "parliament_testimony":
+            today = "우에다 총재 국회 출석·답변 — 새 정책금리 결정 없음"
+        elif signal.event_type == "press_conference":
+            today = "우에다 총재 기자회견 — 새 정책금리 결정 없음"
+        else:
+            today = "새 정책금리 결정 없음 — 이번에는 발언·전망 등 정책경로 정보"
+        short_today = "정책경로 발언"
+
+    if signal.level == 3:
+        future = "급격한 긴축 신호 — 실제 인상폭과 향후 속도를 구분해 확인"
+        short_future = "긴축 강도 확대"
+    elif signal.level == 2:
+        future = "추가 인상 시점·속도가 빨라질 가능성 — 아직 확정 일정 아님"
+        short_future = "추가 긴축 가속 신호"
+    elif signal.level == 0:
+        future = "추가 긴축이 늦춰지거나 약해질 신호 — 금리 인하 확정은 아님"
+        short_future = "추가 긴축 후퇴 신호"
+    elif signal.further_hikes:
+        future = "추가 인상 가능성 유지 — 다음 인상 날짜·폭은 확정되지 않음"
+        short_future = "추가 인상 가능성 유지"
+    else:
+        future = "다음 금리 방향은 아직 명시적으로 확인되지 않음"
+        short_future = "다음 방향 확인 전"
+
+    if signal.underlying_target_reached:
+        why = "기조물가가 2% 목표에 대체로 도달했다는 BOJ 판단"
+    elif signal.stabilize_underlying_around_2:
+        why = "기조물가를 2% 부근에 안정시키려는 정책 목표(달성 판정과 별개)"
+    elif signal.cpi_h2_clearly_above_2:
+        why = "2026회계연도 하반기 소비자물가가 2%를 웃돌 수 있다는 전망"
+    elif signal.dissent_direction == "hold":
+        why = "현재 인상에 반대한 동결 요구 — 다수 의견과 구분"
+    elif signal.dissent_direction in {"hike", "larger_hike"}:
+        why = "일부 위원이 더 빠른 인상을 요구 — 실제 결정과 구분"
+    else:
+        why = signal.note
+
+    if signal.rate_unchanged and signal.further_hikes:
+        meaning = "오늘 동결은 인하 전환이 아님. 앞으로 인상할 여지는 있지만 시점은 미정"
+    elif signal.rate_unchanged:
+        meaning = "오늘은 금리를 올리지 않았음. 이 결정만으로 다음 인상·인하를 단정할 수 없음"
+    elif signal.hike_bp is not None:
+        meaning = "오늘은 실제 금리 인상. 이후 추가 조정은 새 물가·경기 자료에 달림"
+    else:
+        meaning = "발언·전망의 변화이며 이번 메시지가 새로운 금리 결정을 뜻하지는 않음"
+
+    if signal.level == 0:
+        market = "긴축 후퇴가 확인되면 엔화 약세(USD/JPY 상승)·단기금리 하락 압력 가능"
+    elif signal.level == 3 or signal.level == 2 or signal.further_hikes:
+        market = "인상 기대가 더 커질 때 엔화 강세(USD/JPY 하락)·일본 단기금리 상승·주식 부담 가능"
+    else:
+        market = "정책 기대가 바뀌는지 먼저 확인. 엔화·국채·주가 방향은 아직 단정 불가"
+
+    vote = ""
+    if signal.vote_for is not None and signal.vote_against is not None:
+        vote = f" · 정책 표결 {signal.vote_for}대{signal.vote_against}"
+        if signal.dissent_direction == "hike":
+            vote += " (반대 측은 인상 요구)"
+        elif signal.dissent_direction == "hold":
+            vote += " (반대 측은 동결 요구)"
+        elif signal.dissent_direction == "larger_hike":
+            vote += " (반대 측은 더 큰 인상 요구)"
+        elif signal.dissent_direction == "mixed":
+            vote += " (반대 방향이 서로 다름)"
+        elif signal.vote_against:
+            vote += " (반대 이유 확인 전)"
+    return {
+        "today": today, "short_today": short_today,
+        "future": future, "short_future": short_future,
+        "why": why, "meaning": meaning, "market": market, "vote": vote,
+    }
+
+
+def usable_event_market_move(item: dict | None, event_time: dt.datetime | None) -> bool:
+    """Do not show unchanged pre-event quotations as a 0% post-event reaction."""
+    if not item:
+        return False
+    latest = item.get("latest_time")
+    if (
+        isinstance(latest, dt.datetime)
+        and isinstance(event_time, dt.datetime)
+        and latest <= event_time
+    ):
+        return False
+    if (
+        item.get("reference_epoch") is not None
+        and item.get("latest_epoch") is not None
+        and item["latest_epoch"] <= item["reference_epoch"]
+    ):
+        return False
+    return True
+
+
 def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) -> tuple[str, str, dict]:
     emoji = LEVEL_EMOJI[signal.level]
-    title = f"🏦 {emoji} BOJ 정책경로 변화"
+    glance = first_glance_policy(signal)
+    title = f"🏦 BOJ | {glance['short_today']} · {glance['short_future']}"
     if "기존 제목 알림" in reason:
         title += " | 핵심 수치 보완"
 
@@ -2189,7 +2338,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
             ("nasdaq_future_event", "Nasdaq 100 선물"),
         ):
             item = market.get(key)
-            if item:
+            if usable_event_market_move(item, event_time):
                 suffix = ""
                 if key == "usd_jpy_event":
                     suffix = " · 엔화 약세" if item["change_pct"] > 0 else " · 엔화 강세"
@@ -2208,12 +2357,16 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
                 )
             else:
                 reaction_lines.append(
+                    f"- {label}: 발표 후 갱신된 유효 시세 확인 전 — 0.00%를 무변동으로 판정하지 않음"
+                    if item else
                     f"- {label}: 이벤트 시점 대비 확인 불가 — {friendly_market_error(market.get(key + '_error'))}"
                 )
 
     market_summary = " · ".join(reaction_parts) if reaction_parts else "교차반응 확인 중"
 
-    if signal.event_type == "decision" and signal.expected_move and signal.dissent_direction == "hold":
+    if signal.rate_unchanged and signal.further_hikes:
+        risk_asset_text = "단기 동결은 안도 요인 / 중기 추가 인상은 엔화·주식 변동성 부담 가능 — 실제 시세와 분리"
+    elif signal.event_type == "decision" and signal.expected_move and signal.dissent_direction == "hold":
         risk_asset_text = "부담 완화 가능 — 예상된 25bp + 동결 요구 반대표, 단 BOJ 효과로 단정 금지"
     elif signal.dissent_direction == "larger_hike" or signal.level >= 2:
         risk_asset_text = "부담 확대 가능 — 매파적 속도 가속 여부 확인"
@@ -2255,7 +2408,12 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         ]
     else:
         prior_decision = []
-        if signal.policy_rate is not None and signal.hike_bp is not None:
+        if signal.rate_unchanged:
+            prior_decision.append(
+                f"- 금리: {signal.policy_rate:.2f}% 동결 (0bp)"
+                if signal.policy_rate is not None else "- 금리: 동결 (0bp, 수준 미확인)"
+            )
+        elif signal.policy_rate is not None and signal.hike_bp is not None:
             previous_rate = signal.policy_rate - signal.hike_bp / 100
             prior_decision.append(
                 f"- 금리: {previous_rate:.2f}% → {signal.policy_rate:.2f}% (+{signal.hike_bp}bp)"
@@ -2277,7 +2435,9 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
                 prior_decision.append(f"- 경제·물가 진단 이견: {signal.assessment_view}")
         else:
             prior_decision.append(
-                "- 경제·물가 진단 별도 표결: 정책 7대2와 자동 동일시하지 않음 · 공식·고신뢰 원문 명시 시에만 확정"
+                f"- 경제·물가 진단 별도 표결: 정책 {signal.vote_for}대{signal.vote_against}와 자동 동일시하지 않음 · 별도 원문 명시 시에만 확정"
+                if signal.vote_for is not None and signal.vote_against is not None else
+                "- 경제·물가 진단 별도 표결: 정책 표결과 자동 동일시하지 않음 · 별도 원문 명시 시에만 확정"
             )
         if signal.outlook_dissenters:
             prior_decision.append(
@@ -2309,7 +2469,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     if signal.inflation_upside:
         policy_detail.append("- 물가 위험: 2% 상방이탈 위험을 경계")
     if signal.accommodative:
-        policy_detail.append("- 금융여건: 인상 후에도 완화적")
+        policy_detail.append("- 금융여건: BOJ는 여전히 완화적이라고 평가")
     if signal.risk_channels:
         policy_detail.append("- 위험채널: 환율·유가·AI 수요 등을 함께 점검")
     if signal.event_type == "parliament_testimony":
@@ -2321,14 +2481,18 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
 
     lines = [
         "【한눈에 보기】",
-        f"• 이벤트 | {EVENT_LABEL.get(signal.event_type, '정책 업데이트')}",
-        f"• 판정 | {emoji} {LEVEL_LABEL[signal.level]}",
-        f"• 핵심 변화 | {signal.note}",
-        f"• 시장 반응 | {market_summary}",
-        f"• 시장 의미 | {risk_asset_text}",
+        f"• 오늘(확정) | {glance['today']}{glance['vote']}",
+        f"• 앞으로(조건부) | {glance['future']}",
+        f"• 핵심 이유 | {glance['why']}",
+        f"• 쉽게 말해 | {glance['meaning']}",
+        f"• 시장 영향(가능성) | {glance['market']}",
+        f"• 실제 관측 | {market_summary} · BOJ 단독 영향 단정 불가"
+            if reaction_parts else "• 실제 관측 | 발표 전후 비교 가능한 최신 시세 부족 · 아래 시각 확인",
         f"• 다음 확인 | {next_official_check(now)}",
         "",
         "【정책경로】",
+        f"- 정책 판정: {emoji} {LEVEL_LABEL[signal.level]} · {signal.note}",
+        f"- 시장 의미 | {risk_asset_text}",
         *context_lines,
         "",
         "【직전 결정·위원회】",
@@ -2338,6 +2502,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         *policy_detail,
         "",
         "【시장 반응 | 보도 공개 시점 기준】" if signal.event_type == "parliament_testimony" else "【시장 반응 | 이벤트 이후】",
+        "- 실제 관측은 이론적 영향과 다르며, 다른 동시 뉴스·시세 시각의 영향을 포함할 수 있음",
         "- 확인 대상: USD/JPY · Nikkei 225 · Nasdaq 100 선물 · JGB 2년물 · FX 변동성",
         *reaction_lines,
     ]
@@ -2374,7 +2539,14 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     if signal.outlook_dissenters:
         lines.append(f"- 물가전망 문구 이견: {', '.join(signal.outlook_dissenters)} · {signal.outlook_dissent_view or '방향 확인'}")
     if signal.assessment_vote_for is None:
-        lines.append("- 경제·물가 진단 별도 표결: 정책 7대2와 혼합하지 않음 · 명시적 원문 있을 때만 표시")
+        policy_vote_label = (
+            f"정책금리 표결({signal.vote_for}대{signal.vote_against})"
+            if signal.vote_for is not None and signal.vote_against is not None
+            else "정책금리 표결"
+        )
+        lines.append(
+            f"- 경제·물가 진단 별도 표결: {policy_vote_label}과 혼합하지 않음 · 별도 원문 명시 때만 표시"
+        )
 
     source_link = decode_google_link(signal.link) if signal.link else ""
     if (
@@ -2388,13 +2560,8 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
 
     lines += [
         "",
-        "【판정 기준】",
-        "- 25bp·50bp 같은 숫자보다 시장 예상 대비 서프라이즈와 반대표 방향을 우선합니다.",
-        "- 정책금리 표결과 경제·물가 진단 표결은 별개입니다. 같은 7대2라고 추정하지 않고 원문에 각각 명시될 때만 표시합니다.",
-        "- 완화파의 동결 반대와 매파의 물가전망 이견이 동시에 있으면 '양방향 분열'로 표시합니다.",
-        "- 50bp·연속 인상 가능성만 열어둔 것은 🟠가 아니라 조건부 꼬리위험입니다.",
-        "- 다음 회의 인상·고정된 빠른 간격이 구체화되면 🟠, 중단·지연 신호면 🟢로 재판정합니다.",
-        "",
+        "※ 확정된 정책 결정, 조건부 전망, 실제 시장 시세는 구분해 표시합니다.",
+        "※ 정책금리 표결과 경제·물가 진단 표결은 별개이며 숫자를 복사하지 않습니다.",
         f"공개 {label_time(signal.published)} · 조회 {label_time(now)}",
     ]
     if source_link:

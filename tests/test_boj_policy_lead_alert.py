@@ -1207,5 +1207,280 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertTrue(merged.underlying_target_reached)
 
 
+    def test_first_screen_says_today_hold_but_later_hikes_conditional(self):
+        item = Item(
+            title="BOJ keeps interest rates steady, signals further hikes - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com/world/asia-pacific/boj-keeps-interest-rates-steady-signals-further-rate-hikes-2026-10-30/",
+            published=dt.datetime(2026, 10, 30, 12, 15, tzinfo=KST),
+            description=(
+                "The BOJ held its short-term policy rate at 1.25% in an 8-1 vote. "
+                "Takata dissented and called for a 25 basis-point hike. "
+                "The BOJ said underlying inflation had reached a level consistent with the 2% target "
+                "and would continue to raise interest rates if the outlook was realised."
+            ),
+        )
+        signal = classify(item)
+        title, body, _ = build(
+            signal, "새 정책 결정", dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST), {}
+        )
+        lines = body.splitlines()
+        self.assertIn("1.25% 동결", title)
+        self.assertIn("추가 인상 가능성 유지", title)
+        self.assertEqual(lines[0], "【한눈에 보기】")
+        self.assertIn("오늘(확정) | 금리 1.25% 동결(0bp)", lines[1])
+        self.assertIn("8대1", lines[1])
+        self.assertIn("앞으로(조건부) | 추가 인상 가능성 유지", lines[2])
+        self.assertIn("날짜·폭은 확정되지 않음", lines[2])
+        self.assertIn("2% 목표", lines[3])
+        self.assertIn("오늘 동결은 인하 전환이 아님", lines[4])
+        self.assertIn("시장 영향(가능성)", lines[5])
+        self.assertIn("USD/JPY 하락", lines[5])
+        self.assertIn("실제 관측 | 발표 전후 비교 가능한 최신 시세 부족", body)
+        self.assertNotIn("정책 7대2", body)
+        self.assertIn("정책금리 표결(8대1)", body)
+        self.assertLess(len(title + "\n\n" + body), 3950)
+
+    def test_hold_without_explicit_future_guidance_does_not_claim_more_hikes(self):
+        signal = classify(Item(
+            title="BOJ keeps interest rates steady at 1.25% - Reuters",
+            source="Reuters", link="https://www.reuters.com/",
+            published=dt.datetime(2026, 10, 30, 12, 15, tzinfo=KST),
+            description="The Bank of Japan held the policy rate at 1.25% in a vote.",
+        ))
+        title, body, _ = build(
+            signal, "새 정책 결정", dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST), {}
+        )
+        self.assertIn("다음 방향 확인 전", title)
+        self.assertIn("다음 금리 방향은 아직 명시적으로 확인되지 않음", body.splitlines()[2])
+        self.assertNotIn("오늘 동결은 인하 전환이 아님", body)
+        self.assertNotIn("앞으로(조건부) | 추가 인상 가능성 유지", body)
+
+    def test_parliament_speech_front_does_not_mislabel_as_new_rate_decision(self):
+        signal = classify(Item(
+            title="BOJ Governor Ueda says underlying inflation 'quite close' to 2% target - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com/world/asia-pacific/boj-governor-ueda-says-underlying-inflation-quite-close-2-target-2026-10-19/",
+            published=dt.datetime(2026, 10, 19, 9, 17, tzinfo=KST),
+            description="Ueda told parliament that underlying inflation was quite close to 2%.",
+        ))
+        title, body, _ = build(
+            signal, "새 정책경로 발언", dt.datetime(2026, 10, 19, 10, tzinfo=KST), {}
+        )
+        self.assertIn("정책경로 발언", title)
+        self.assertIn("새 정책금리 결정 없음", body.splitlines()[1])
+        self.assertNotIn("오늘(확정) | 금리 1.25% 동결", body)
+
+    def test_old_quotes_do_not_show_fake_zero_percent_market_reaction(self):
+        event_time = dt.datetime(2026, 10, 30, 13, tzinfo=KST)
+        signal = classify(Item(
+            title="BOJ keeps interest rates steady at 1.25% - Reuters",
+            source="Reuters", link="https://www.reuters.com/",
+            published=event_time,
+            description="The BOJ kept interest rates unchanged at 1.25%.",
+        ))
+        _, body, _ = build(signal, "새 결정", event_time + dt.timedelta(minutes=10), {
+            "event_time": event_time,
+            "nikkei_event": {
+                "change_pct": 0.0, "reference_price": 60000.0,
+                "latest_price": 60000.0,
+                "reference_epoch": 100, "latest_epoch": 100,
+                "latest_time": event_time - dt.timedelta(minutes=3),
+            },
+        })
+        self.assertIn("Nikkei 225: 발표 후 갱신된 유효 시세 확인 전", body)
+        self.assertNotIn("Nikkei 225 +0.00%", body)
+        self.assertIn("시세 부족", body)
+
+    def test_larger_hike_possibility_alone_is_not_presented_as_enacted(self):
+        signal = verified_press_conference_signals(
+            dt.datetime(2026, 9, 18, 17, 20, tzinfo=KST)
+        )[0]
+        title, body, _ = build(
+            signal, "기자회견", dt.datetime(2026, 9, 18, 17, 20, tzinfo=KST), {}
+        )
+        self.assertIn("새 정책금리 결정 없음", body.splitlines()[1])
+        self.assertNotIn("오늘(확정) | 금리 +50bp 인상", body)
+        self.assertIn("고정된 인상 간격", body)
+
+
+    def test_completed_two_percent_finding_survives_later_conditional_rate_clause(self):
+        from boj_policy_lead_alert import has_confirmed_underlying_target
+        confirmed = Item(
+            title="BOJ keeps interest rates steady - Reuters", source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 30, 12, 15, tzinfo=KST),
+            description=(
+                "The BOJ said underlying inflation had reached a level "
+                "consistent with the 2% target and would continue to raise rates if needed."
+            ),
+        )
+        forecast_only = Item(
+            title="BOJ may signal underlying inflation at 2% target - Reuters",
+            source="Reuters", link="https://www.reuters.com",
+            published=confirmed.published,
+            description=(
+                "Sources say the BOJ may signal underlying inflation has reached "
+                "the 2% target if more data supports it."
+            ),
+        )
+        self.assertTrue(has_confirmed_underlying_target(confirmed, "decision"))
+        self.assertFalse(has_confirmed_underlying_target(forecast_only, "decision"))
+
+
+    def test_realistic_market_payload_stays_below_telegram_message_limit(self):
+        signal = verified_event_signals(
+            dt.datetime(2026, 9, 18, 13, 0, tzinfo=KST)
+        )[0]
+        event_time = dt.datetime(2026, 9, 18, 12, 23, tzinfo=KST)
+        quote_time = event_time + dt.timedelta(minutes=15)
+        move = lambda change: {
+            "change_pct": change, "reference_price": 157.0,
+            "latest_price": 157.4, "reference_epoch": 10,
+            "latest_epoch": 15, "latest_time": quote_time,
+        }
+        market = {
+            "event_time": event_time,
+            "usd_jpy_event": move(0.3),
+            "nikkei_event": move(-1.2),
+            "nasdaq_future_event": move(-0.8),
+            "usd_jpy": {
+                "price": 157.45, "m15": 0.3, "m30": -0.2,
+                "time": quote_time,
+            },
+            "nikkei": {
+                "price": 61111.1, "change_pct": -1.2, "time": quote_time,
+            },
+            "nasdaq_future": {
+                "price": 28888.8, "change_pct": -0.8, "time": quote_time,
+            },
+            "jgb2": {
+                "value": 1.9, "date": "2026/09/17", "change_bp": 1.2,
+                "note": "BOJ 회의 당시 거래 종가가 아니므로 장중 반응 판정에 사용하지 않음",
+            },
+            "fx_volatility_proxy": {"m15_abs": 0.3, "m30_abs": 0.4, "m60_abs": 0.5},
+        }
+        title, body, _ = build(
+            signal, "의미 있는 정책 신호",
+            event_time + dt.timedelta(minutes=30), market,
+        )
+        self.assertLessEqual(
+            len(title + "\n\n" + body), 3880,
+            "Telegram HTML markup requires margin inside the 4096-character limit",
+        )
+        self.assertIn("【한눈에 보기】", body)
+        self.assertIn("원문:", body)
+
+
+    def test_same_meeting_sparse_source_cannot_reverse_already_reported_guidance(self):
+        from dataclasses import replace
+        base = classify(Item(
+            title="BOJ keeps interest rates steady at 1.25% - Reuters",
+            source="Reuters", link="https://www.reuters.com/",
+            published=dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST),
+            description="The Bank of Japan held the policy rate at 1.25% in an 8-1 vote.",
+        ))
+        verified = replace(
+            base, key="previous-full-policy-outlook",
+            official_statement_detail_verified=True,
+            underlying_target_reached=True,
+            further_hikes=True, conditional_pace=True, accommodative=True,
+            cpi_h2_clearly_above_2=True, stabilize_underlying_around_2=True,
+            inflation_upside=True, risk_channels=True,
+        )
+        state = {
+            "last_signal_key": verified.key,
+            "last_alert_at_kst": "2026-10-30T13:14:00+09:00",
+            "last_published_at_kst": verified.published.isoformat(),
+            "last_source": verified.source,
+            "signature": signal_signature(verified),
+        }
+        # A different BOJ document from the *same meeting* simply omits
+        # these statements. They have not been withdrawn.
+        partial = replace(
+            verified, key="other-document-with-fewer-fields",
+            further_hikes=False, conditional_pace=False, accommodative=False,
+            cpi_h2_clearly_above_2=False, stabilize_underlying_around_2=False,
+            inflation_upside=False, risk_channels=False,
+
+        )
+        allowed, reason = should_alert(
+            partial, state, dt.datetime(2026, 10, 30, 14, 0, tzinfo=KST)
+        )
+        self.assertFalse(allowed)
+        self.assertEqual(reason, "정책경로 실질 변화 없음")
+
+    def test_positive_new_official_guidance_can_still_alert(self):
+        from dataclasses import replace
+        prior = classify(Item(
+            title="BOJ keeps interest rates steady at 1.25% - Reuters",
+            source="Reuters", link="https://www.reuters.com/",
+            published=dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST),
+            description="The BOJ held interest rates at 1.25% in an 8-1 vote.",
+        ))
+        prior = replace(prior, official_statement_detail_verified=True)
+        later = replace(
+            prior, key="confirmed-additional-hikes",
+            further_hikes=True, conditional_pace=True,
+        )
+        state = {
+            "last_signal_key": prior.key,
+            "last_alert_at_kst": "2026-10-30T13:14:00+09:00",
+            "last_published_at_kst": prior.published.isoformat(),
+            "signature": signal_signature(prior),
+        }
+        allowed, reason = should_alert(
+            later, state, dt.datetime(2026, 10, 30, 14, 0, tzinfo=KST)
+        )
+        self.assertTrue(allowed)
+        self.assertIn("가이던스", reason)
+
+
+    def test_second_boj_pdf_neutral_rate_mention_is_not_new_meeting(self):
+        from dataclasses import replace
+        old = classify(Item(
+            title="Statement on Monetary Policy",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf",
+            published=dt.datetime(2026, 10, 30, 13, 0, tzinfo=KST),
+            description=(
+                "The uncollateralized overnight call rate was held at 1.25 percent. "
+                "The underlying inflation rate has reached the 2 percent target. "
+                "The Bank will continue to raise interest rates while examining timing and pace."
+            ),
+        ))
+        verified = replace(
+            old, key="previously-delivered-both-facts",
+            official_statement_detail_verified=True, policy_rate=1.25,
+            rate_unchanged=True, vote_for=8, vote_against=1,
+            underlying_target_reached=True, further_hikes=True,
+            neutral_rate=False, inflation_spillover=False,
+            cpi_h2_clearly_above_2=True, stabilize_underlying_around_2=True,
+        )
+        partial = replace(
+            verified, key="same-meeting-different-pdf",
+            further_hikes=False, conditional_pace=False,
+            neutral_rate=True, inflation_upside=False,
+        )
+        state = {
+            "last_signal_key": verified.key,
+            "last_source": "Bank of Japan",
+            "last_alert_at_kst": "2026-10-30T13:13:29+09:00",
+            "last_published_at_kst": verified.published.isoformat(),
+            "signature": signal_signature(verified),
+        }
+        allowed, reason = should_alert(
+            partial, state, dt.datetime(2026, 10, 30, 14, tzinfo=KST)
+        )
+        self.assertFalse(allowed)
+        self.assertIn("실질 변화 없음", reason)
+        genuinely_new_vote = replace(partial, key="new-vote", vote_for=7, vote_against=2)
+        allowed, reason = should_alert(
+            genuinely_new_vote, state, dt.datetime(2026, 10, 30, 14, tzinfo=KST)
+        )
+        self.assertTrue(allowed)
+        self.assertIn("표결", reason)
+
+
 if __name__ == "__main__":
     unittest.main()
