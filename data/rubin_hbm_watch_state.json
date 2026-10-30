@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-30T06:57:39+09:00",
+  "updated_at_kst": "2026-10-30T11:08:09+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -105,6 +105,7 @@
     "65c4b8e5a765026618fcf4c0",
     "65f05201a0c34568be8d9590",
     "65f1cfef6daf0acc077943e5",
+    "66aff9f8c9090f4c34cd1555",
     "67aa4e97037da528c54f4088",
     "683bf92b23e4d4953f109996",
     "6872c8f21e56f99c4ef8bbca",
@@ -295,19 +296,18 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 2,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1337.29,
-    "date": "2026-10-29 일일 기준 · ECB/Frankfurter · 조회 2026-10-30 06:57 KST · 보조 API 2026-10-29 · 차이 0.22% · 일중 기준시각 차이 가능",
+    "date": "2026-10-29 일일 기준 · ECB/Frankfurter · 조회 2026-10-30 11:08 KST · 보조 API 2026-10-30 · 차이 0.06% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
   "errors": [
-    "원문 URL 확인 실패: SammyGuru | Samsung’s 2027 HBM Supply Is Sold Out as Shortages Worsen - SammyGuru",
-    "원문 URL 확인 실패: Foro3D | NVIDIA evaluates 8-layer HBM4 for Rubin Ultra amid the limits of 12 layers - Foro3D"
+    "원문 URL 확인 실패: Seoul Economic Daily | Samsung Sells Out HBM4, Targets HBM4E Mass Production in First Half of 2027 - Seoul Economic Daily"
   ],
   "ai_component_leadtime": {
     "as_of": "2026-10-19",
@@ -434,7 +434,7 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-30T06:57:56+09:00",
+    "last_checked_at_kst": "2026-10-30T11:08:25+09:00",
     "candidate_count": 2,
     "mlcc_vendor_watch": {
       "version": 2,
@@ -500,7 +500,7 @@
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-30T06:58:14+09:00",
+    "checked_at_kst": "2026-10-30T11:09:01+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-29T12:59:05+09:00",
@@ -570,7 +570,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-30",
-    "last_checked_at_kst": "2026-10-30T06:58:00+09:00",
+    "last_checked_at_kst": "2026-10-30T11:08:29+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -629,7 +629,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-10-30T06:58:00+09:00",
+        "checked_at_kst": "2026-10-30T11:08:29+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -638,7 +638,7 @@
         "rss_coverage_unavailable": false
       },
       "primary_source_audit": {
-        "checked_at_kst": "2026-10-30T02:06:36+09:00",
+        "checked_at_kst": "2026-10-30T11:08:29+09:00",
         "sources": {
           "bnpp_public": {
             "status": "retrieval_unavailable",
@@ -707,7 +707,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-30",
-    "last_checked_at_kst": "2026-10-30T06:58:06+09:00",
+    "last_checked_at_kst": "2026-10-30T11:08:53+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -751,7 +751,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-30T06:58:08+09:00",
+    "last_checked_at_kst": "2026-10-30T11:08:55+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -875,7 +875,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-10-30T06:58:08+09:00",
+      "checked_at_kst": "2026-10-30T11:08:55+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
