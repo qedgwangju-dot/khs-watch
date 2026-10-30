@@ -6,6 +6,8 @@ close prices, not execution prices. Never mix share counts of different tickers.
 """
 
 from collections import defaultdict
+import calendar
+import datetime as dt
 import html
 import math
 
@@ -23,6 +25,10 @@ SECTOR_BY_TICKER = {
     "MASS": ("바이오·헬스케어", "바이오 분석 장비"),
     "GENB": ("바이오·헬스케어", "AI 단백질 설계"),
     "ISRG": ("바이오·헬스케어", "수술 로봇"),
+    "BEAM": ("바이오·헬스케어", "염기 교정 유전자치료"),
+    "ARCT": ("바이오·헬스케어", "메신저RNA 치료제"),
+    "TEM": ("바이오·헬스케어", "정밀의료·의료 AI"),
+    "TXG": ("바이오·헬스케어", "유전체 분석장비"),
     # Energy, space, defense
     "XE": ("원자력·에너지", "소형모듈원전"),
     "OKLO": ("원자력·에너지", "차세대 원자로"),
@@ -31,6 +37,7 @@ SECTOR_BY_TICKER = {
     "HO": ("우주·방산", "방산·항공우주"),
     "KTOS": ("우주·방산", "방산·무인기"),
     "RKLB": ("우주·방산", "로켓 발사"),
+    "JOBY": ("항공·도심항공교통", "전기 수직이착륙 항공기"),
     # AI / cloud / software
     "GOOG": ("AI·클라우드·기업용 소프트웨어", "클라우드·검색·광고"),
     "GOOGL": ("AI·클라우드·기업용 소프트웨어", "클라우드·검색·광고"),
@@ -49,6 +56,7 @@ SECTOR_BY_TICKER = {
     "ZS": ("사이버보안", "클라우드 보안"),
     "P": ("저장장치·데이터 인프라", "기업용 데이터 저장장치"),
     "NVDA": ("반도체·자동화 장비", "AI 가속기"),
+    "CBRS": ("반도체·자동화 장비", "웨이퍼 규모 AI 연산칩"),
     "AMD": ("반도체·자동화 장비", "컴퓨팅 반도체"),
     "TSM": ("반도체·자동화 장비", "파운드리"),
     "TER": ("반도체·자동화 장비", "반도체 검사·자동화"),
@@ -65,6 +73,7 @@ SECTOR_BY_TICKER = {
     "RBLX": ("게임·디지털콘텐츠", "게임·가상세계"),
     "DKNG": ("게임·디지털콘텐츠", "스포츠 관련 서비스"),
     "TSLA": ("자동차·자율주행", "전기차·자율주행"),
+    "KDK": ("자동차·자율주행", "자율주행 화물트럭"),
     "CAT": ("산업재·자동화", "건설·광산장비"),
     "6301": ("산업재·자동화", "건설·광산장비"),
 }
@@ -262,7 +271,7 @@ def snapshot(day, digest, totals):
     }
 
 
-def merged_history(state_history, current, max_days=20):
+def merged_history(state_history, current, max_days=140):
     # A revision replaces, not double counts, its earlier record for that trade date.
     days = {entry["date"]:entry for entry in (state_history or []) if isinstance(entry,dict) and entry.get("date")}
     days[current["date"]] = current
@@ -304,6 +313,89 @@ def recent_average_lines(history, rate, money_fmt):
         lines.append(f"• 20거래일 평균 아직 미산출: {count}/20일 확보")
     lines.append("• 같은 날짜 수정본은 1거래일로 대체하며, 미확보 과거 자료를 임의 보충하지 않습니다.")
     return lines
+
+
+
+# Official NYSE/Nasdaq U.S. cash-equity market closures; no completeness
+# claims when a requested period falls outside verified calendar years.
+US_MARKET_HOLIDAYS = {
+  2026: {"2026-01-01","2026-01-19","2026-02-16","2026-04-03","2026-05-25",
+         "2026-06-19","2026-07-03","2026-09-07","2026-11-26","2026-12-25"},
+  2027: {"2027-01-01","2027-01-18","2027-02-15","2027-03-26","2027-05-31",
+         "2027-06-18","2027-07-05","2027-09-06","2027-11-25","2027-12-24"},
+  2028: {"2028-01-17","2028-02-21","2028-04-14","2028-05-29",
+         "2028-06-19","2028-07-04","2028-09-04","2028-11-23","2028-12-25"},
+}
+
+
+def expected_sessions(start, end):
+    if any(y not in US_MARKET_HOLIDAYS for y in range(start.year,end.year+1)):
+        return None
+    n=0
+    while start<=end:
+        if start.weekday()<5 and start.isoformat() not in US_MARKET_HOLIDAYS[start.year]:
+            n+=1
+        start+=dt.timedelta(days=1)
+    return n
+
+
+def subtract_months(day,months=3):
+    index=day.year*12+day.month-1-months
+    year, m=divmod(index,12)
+    month=m+1
+    return dt.date(year,month,min(day.day,calendar.monthrange(year,month)[1]))
+
+
+def period_windows(day):
+    d=dt.date.fromisoformat(day)
+    return [
+        ("당일",d,d),
+        ("이번 주",d-dt.timedelta(days=d.weekday()),d),
+        ("당월 누적",d.replace(day=1),d),
+        ("최근 3개월",subtract_months(d,3)+dt.timedelta(days=1),d)
+    ]
+
+
+def direction_summary(history,day,rate,money_fmt):
+    """Never substitute zero for missing dates or missing close prices."""
+    dates={x["date"]:x for x in (history or [])
+           if isinstance(x,dict) and isinstance(x.get("date"),str)}
+    lines=["","<b>매매 방향 · 당일 / 이번 주 / 당월 / 최근 3개월</b>"]
+    for name,start,end in period_windows(day):
+        selected=[v for k,v in sorted(dates.items()) if start.isoformat()<=k<=end.isoformat()]
+        n=len(selected)
+        expected=expected_sessions(start,end)
+        coverage=f"{n}/{expected}거래일" if expected is not None else f"{n}거래일 확보·거래일 달력 미검증"
+        partial=expected is None or n!=expected
+        if not n:
+            lines.append(f"• {name} ({start}~{end}): 기록 없음 · {coverage}")
+            continue
+        buys=sum(float(v) for x in selected for v in x.get("buy_usd",{}).values())
+        sells=sum(float(v) for x in selected for v in x.get("sell_usd",{}).values())
+        complete=all(x.get("buy_complete",x.get("complete",False))
+                     and x.get("sell_complete",x.get("complete",False)) for x in selected)
+        unknown=sum(float(x.get("buy_usd",{}).get(SECTOR_UNKNOWN,0))+
+                    float(x.get("sell_usd",{}).get(SECTOR_UNKNOWN,0)) for x in selected)
+        lines.append(f"• <b>{name} ({start}~{end})</b>: 매수 {money_fmt(buys,rate)}"
+                     f" / 매도 {money_fmt(sells,rate)}")
+        if not complete:
+            status="순액 판정 보류(미확인 종가)"
+            ratio="미산정"
+        else:
+            net=buys-sells
+            status=("순매수 +" if net>0 else "순매도 -" if net<0 else "균형 ")+money_fmt(abs(net),rate)
+            ratio=f"{100*buys/(buys+sells):.1f}%" if buys+sells else "매매 없음"
+        lines.append(f"  {status} · 매수 비중 {ratio} · {coverage}"
+                     +(" · 확보일 기준 부분합" if partial else " · 거래일 전부 확보"))
+        if unknown and name!="당일":
+            lines.append(f"  과거 업종 미분류 금액 {money_fmt(unknown,rate)} 포함(업종별 추세는 일부 미확인)")
+    lines += [
+        "• 매수 비중 분모=매수+매도 종가 추정액. 달러 원금액을 기간별로 합산 후 동일 조회 환율로 원화 환산.",
+        "• 누적액은 공식 매매 신고수량×시장 종가 추정치이며, ETF 순자금 유입·유출이나 실제 체결대금이 아닙니다.",
+        "• ARK가 매매하지 않은 날과 과거 자료가 누락된 날은 구분 불가합니다. 미확보 일자를 0원으로 채우지 않으며 불완전 기간의 전체 방향은 확정하지 않습니다.",
+    ]
+    return lines
+
 
 
 def build_sector_digest(rows, prices, rate, money_fmt, history=None, day="", digest=""):
