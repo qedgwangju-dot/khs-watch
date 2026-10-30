@@ -904,5 +904,124 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIn("정책 7대2와 자동 동일시하지 않음", body)
 
 
+    def test_oct30_hold_8_to_1_hawkish_dissent_and_inflation_target(self):
+        item = Item(
+            title="BOJ keeps interest rates steady, signals further hikes - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com/world/asia-pacific/boj-keeps-interest-rates-steady-signals-further-rate-hikes-2026-10-30/",
+            published=dt.datetime(2026, 10, 30, 12, 8, tzinfo=KST),
+            description=(
+                "The Bank of Japan held its short-term policy rate at 1.25% in an 8-1 vote "
+                "to keep borrowing costs unchanged. Board member Hajime Takata dissented "
+                "and called for a 0.25-percentage-point hike to 1.5%. "
+                "The BOJ said underlying inflation had reached a level broadly consistent "
+                "with its 2% target."
+            ),
+        )
+        signal = classify(item)
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal.event_type, "decision")
+        self.assertTrue(signal.rate_unchanged)
+        self.assertEqual(signal.policy_rate, 1.25)
+        self.assertIsNone(signal.hike_bp)  # A dissenting proposal is not an executed hike.
+        self.assertEqual((signal.vote_for, signal.vote_against), (8, 1))
+        self.assertEqual(signal.dissent_direction, "hike")
+        self.assertEqual(signal.dissenters, ("다카타",))
+        self.assertTrue(signal.underlying_target_reached)
+        title, body, _payload = build(
+            signal, "새 정책금리 동결 결정", dt.datetime(2026, 10, 30, 12, 30, tzinfo=KST), {}
+        )
+        self.assertIn("0bp", body)
+        self.assertIn("동결", body)
+        self.assertIn("8대1", body)
+        self.assertIn("매파 반대", body)
+        self.assertIn("2% 목표", body)
+        self.assertNotIn("이번 조정폭: +25bp", body)
+        self.assertNotIn("1.25% → 1.50%", body)
+        self.assertLessEqual(len(title + "\n\n" + body), 4096)
+
+    def test_oct30_new_decision_is_alert_and_same_event_suppressed(self):
+        prior = classify(Item(
+            title="BOJ Governor Ueda says underlying inflation quite close to 2% target - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 19, 9, 17, tzinfo=KST),
+            description="Ueda told parliament that underlying inflation was quite close to 2% target.",
+        ))
+        current = classify(Item(
+            title="BOJ keeps interest rates steady at 1.25% - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 30, 12, 8, tzinfo=KST),
+            description="The BOJ held its policy rate at 1.25% in an 8-1 vote. Takata dissented and called for a hike.",
+        ))
+        state = {
+            "last_signal_key": prior.key,
+            "last_alert_at_kst": "2026-10-19T09:34:33+09:00",
+            "last_published_at_kst": "2026-10-19T09:17:00+09:00",
+            "signature": signal_signature(prior),
+        }
+        now = dt.datetime(2026, 10, 30, 12, 30, tzinfo=KST)
+        allowed, _reason = should_alert(current, state, now)
+        self.assertTrue(allowed)
+        state.update(
+            last_signal_key=current.key,
+            last_published_at_kst=current.published.isoformat(),
+            last_alert_at_kst=now.isoformat(),
+            signature=signal_signature(current),
+        )
+        allowed, reason = should_alert(current, state, now)
+        self.assertFalse(allowed)
+        self.assertIn("중복", reason)
+
+    def test_hawkish_target_claim_is_not_confused_with_member_outlook_dissent(self):
+        reported = classify(self.mk(
+            "BOJ raises interest rates to 1.25% in 25 basis-point move - Reuters",
+            "Takata and Tamura opposed the outlook wording, arguing underlying inflation "
+            "has already reached a level consistent with the 2 percent target.",
+        ))
+        self.assertFalse(reported.underlying_target_reached)
+
+    def test_unconfirmed_preview_is_not_official_target_achievement(self):
+        anticipated = classify(Item(
+            title="BOJ may signal underlying inflation reached 2% at policy meeting - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 29, 12, 0, tzinfo=KST),
+            description="Sources say the BOJ may signal underlying inflation has reached the 2% target.",
+        ))
+        self.assertIsNotNone(anticipated)
+        self.assertFalse(anticipated.underlying_target_reached)
+
+    def test_official_boj_target_finding_is_distinct_from_aiming_to_stabilize(self):
+        item = Item(
+            title="Statement on Monetary Policy — official full text",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/",
+            published=dt.datetime(2026, 10, 30, 12, 0, tzinfo=KST),
+            description=(
+                "The underlying inflation rate has reached a level broadly consistent with "
+                "the 2 percent price stability target. The Bank will continue to raise "
+                "the policy interest rate if the outlook is realized."
+            ),
+        )
+        signal = classify(item)
+        self.assertTrue(signal.underlying_target_reached)
+        self.assertTrue(signal.official_statement_detail_verified)
+
+    def test_hawkish_dissent_cannot_turn_hold_into_actual_25bp_increase(self):
+        item = Item(
+            title="BOJ holds rates steady at 1.25% after 8-1 vote - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 30, 12, 6, tzinfo=KST),
+            description="The BOJ kept rates at 1.25%, while Takata dissented and sought a 25 basis-point hike to 1.5%.",
+        )
+        signal = classify(item)
+        self.assertTrue(signal.rate_unchanged)
+        self.assertIsNone(signal.hike_bp)
+        self.assertEqual(signal.policy_rate, 1.25)
+
+
 if __name__ == "__main__":
     unittest.main()
