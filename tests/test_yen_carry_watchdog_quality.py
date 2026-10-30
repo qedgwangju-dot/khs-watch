@@ -73,6 +73,27 @@ class YenCarryWatchdogQualityTests(unittest.TestCase):
         self.assertEqual(row["issue_kind"], "execution_stale")
         self.assertTrue(quality.transition({"alert_active": False}, row)["new_outage"])
 
+    def test_permanently_invalid_quote_feed_raises_outage_after_45_minutes(self):
+        record = status(self.now, last_minutes=1, observed_minutes=1, eligible=False)
+        record[1].pop("fx_observed_at_kst")
+        snapshot = quality.evaluate([record], self.now)
+        self.assertEqual(snapshot["issue_kind"], "market_data_unavailable")
+        first_bad = (self.now - dt.timedelta(minutes=50)).isoformat(timespec="seconds")
+        incident = quality.transition(
+            {"alert_active": False, "first_invalid_at_kst": first_bad}, snapshot,
+            outage_threshold_minutes=45, now=self.now
+        )
+        self.assertTrue(incident["new_outage"])
+        self.assertEqual(incident["first_invalid_at_kst"], first_bad)
+
+    def test_early_invalid_quote_preserves_warning_window(self):
+        record = status(self.now, eligible=False)
+        record[1].pop("fx_observed_at_kst")
+        snapshot = quality.evaluate([record], self.now)
+        incident = quality.transition({"alert_active": False}, snapshot, now=self.now)
+        self.assertFalse(incident["new_outage"])
+        self.assertEqual(incident["first_invalid_at_kst"], self.now.isoformat(timespec="seconds"))
+
     def test_future_payload_is_not_a_valid_market_heartbeat(self):
         row = quality.evaluate([status(self.now, last_minutes=-10, observed_minutes=-10)], self.now)
         self.assertIsNone(row["stale_minutes"])
