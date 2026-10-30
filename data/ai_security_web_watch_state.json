@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 23,
+    "material_items": 24,
     "new_material_items": 0,
-    "raw_items": 268,
+    "raw_items": 280,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1371,6 +1371,16 @@
       "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNaF9oU3RYQTZYazB3MkJkWXczTXotc1BuNzF3QS02LXZ0TmtBdjB4WXhqMVZCUTdVbTlYZ2psbWZOWTV0VHZvclF6SWtWbk9uSFhQR21rZExSRlNkcW4wakZTbkxoRHFsaUtia3hjZXpaRUduckNnTUJLSXh4Wnp4NlB5cnYzUmh4Qm5uZXZMOTVPcmNmRVU4NXU5dUlpVm51YXZ3TDdoYnlGYkJ6cnBsaW9ad25zNE9xYmVJ?oc=5",
       "vendor": "OpenAI"
     },
+    "d5bd02247884ac2847fae820": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-10-30T15:40:39.568912+00:00",
+      "published_at": "2026-10-30T15:09:25+00:00",
+      "severity": 2,
+      "source": "SecurityWeek",
+      "title": "PHP2Shell Attacks Root Palo Alto Firewalls but Fail Against WordPress - SecurityWeek",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQNHplZ1hUdkl1Z3dGc1lvZWJRWmZGR2JVWUtncXhGdkVwMGtibzhGczVoblJTQUhyY25kXzZMVDdaeTZSWTBFVDVKZkE2YWh3dUtuRy01T0UyNlVtZWdYVDg5Y2k1cVdJZ2NDbUtlSTRQbGFBMGZDMG9wTkNkaHhJczFKX3dnc2wzUGxLbUZXNzBpLS05VUM1ZEZtQTFZUXpP0gGmAUFVX3lxTE1vTUV6US1MVUJ1U3FvcFFoMk51VWZBNm9VdTdqZlpGYldKRS1PdTdXN20wN3d3OGg0dkRYTDFscDZoM3dHbm8xbHlyUExUR2k5M1hJSXgtZUhGS01NaVFkYmpnbXJ4elUyZ2Y3YTU3WFBub29FRVV3VXNqNXRPVmI2Q182SnA5cGhTdzBtNld4a043TnUycERPcHZHbWlhZVFmcEJiWnc?oc=5",
+      "vendor": "PHP 재단"
+    },
     "d6e6ec1384df0c56c95696f1": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T04:12:20.317409+00:00",
@@ -1654,5 +1664,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-10-31T00:35:41+09:00"
+  "updated_at_kst": "2026-10-31T00:40:39+09:00"
 }
