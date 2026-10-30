@@ -143,6 +143,17 @@ jobs:
           m._self_test_defense_future_warfare_event_model()
           m._self_test_fcc_optical_transceiver_event_model()
           m._self_test_fcc_800_uas_event()
+          from scripts.khs_policy_alert_guardrails import is_fcc_800_uas_adopted_event
+          assert is_fcc_800_uas_adopted_event({
+              "source": "Federal Communications Commission",
+              "title": "FCC Opens More Cellular Spectrum for Drones",
+              "link": "https://www.fcc.gov/document/fcc-opens-more-cellular-spectrum-drones",
+          })
+          assert not is_fcc_800_uas_adopted_event({
+              "source": "Federal Communications Commission",
+              "title": "FCC proposes 450 MHz UAS links and 24 GHz drone detection",
+              "link": "https://www.fcc.gov/document/fcc-modernize-rules-american-drone-dominance",
+          })
           print("fcc_800_uas_cellular_regression=passed")
           m._self_test_mofcom_2026_notices()
           m._self_test_eu_china_trade_events()
