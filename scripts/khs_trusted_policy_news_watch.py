@@ -3132,6 +3132,7 @@ def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
         "us_treasury_coins_biotechnology_outbound_nprm",
         "us_fcc_hisilicon_first_component_enforcement",
         "us_fcc_intel_agv_one_year_waiver",
+        "us_fcc_800mhz_uas_cellular_authorization",
         "eu_china_hybrid_vehicle_safeguard",
         "eu_china_sector_import_safeguards",
         "china_mofcom_2026_technology_catalogue48",
@@ -5328,6 +5329,8 @@ def main() -> int:
         if rule.key.startswith("_disabled_"):
             continue
         items = collect_rule_items(rule, now)
+        if rule.key == "us_fcc_800mhz_uas_cellular_authorization":
+            items = [item for item in items if semantic_policy_event_key(item) != "us-fcc-800mhz-uas-cellular-preview"]
         if rule.key == "trump_direct_policy_remarks_watch":
             items = [
                 item for item in items
@@ -5370,6 +5373,7 @@ def main() -> int:
         "us_treasury_coins_biotechnology_outbound_nprm": 11,
         "china_mofcom_2026_technology_catalogue48": 10,
         "us_fcc_hisilicon_first_component_enforcement": 13,
+        "us_fcc_800mhz_uas_cellular_authorization": 16,
         "us_fcc_intel_agv_one_year_waiver": 12,
         "us_treasury_outbound_ai_robotics_enforcement": 3,
         "us_fcc_chinese_optical_transceiver_ban": 2,
