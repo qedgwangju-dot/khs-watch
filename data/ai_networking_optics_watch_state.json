@@ -18,19 +18,19 @@
   "nvidia_ooi_dwdm_watch_version": 1,
   "new_optical_infra_watch_version": 2,
   "new_optical_infra_source_ok": {
+    "3M Amazon Optical EBO": true,
     "Optical Fiber Spot & Preform": true,
-    "Taihan Fiberoptic America Deliveries": true,
-    "3M Amazon Optical EBO": true
+    "Taihan Fiberoptic America Deliveries": true
   },
   "new_optical_infra_source_errors": {
+    "3M Amazon Optical EBO": [],
     "Optical Fiber Spot & Preform": [],
-    "Taihan Fiberoptic America Deliveries": [],
-    "3M Amazon Optical EBO": []
+    "Taihan Fiberoptic America Deliveries": []
   },
   "new_optical_infra_event_candidates": {
+    "3M Amazon Optical EBO": 0,
     "Optical Fiber Spot & Preform": 0,
-    "Taihan Fiberoptic America Deliveries": 0,
-    "3M Amazon Optical EBO": 0
+    "Taihan Fiberoptic America Deliveries": 0
   },
   "taihan_second_shipment_original_verified": false,
   "taihan_second_shipment_original_status": "기존 기사 기준선",
@@ -72,9 +72,9 @@
     ]
   },
   "meta_optical_source_ok": true,
-  "meta_optical_last_healthy_kst": "2026-10-30T16:23:10+09:00",
+  "meta_optical_last_healthy_kst": "2026-10-30T19:31:44+09:00",
   "aaoi_taiwan_power_source_ok": true,
-  "aaoi_taiwan_power_last_healthy_kst": "2026-10-30T16:23:10+09:00",
+  "aaoi_taiwan_power_last_healthy_kst": "2026-10-30T19:31:44+09:00",
   "aaoi_taiwan_power_errors": [],
   "volantis_verified_baseline": {
     "as_of": "2026-10-04",
@@ -101,103 +101,112 @@
       "https://www.prnewswire.com/news-releases/volantis-raises-88m-series-a-to-demolish-the-ai-memory-wall-with-photonics-302895940.html"
     ]
   },
-  "last_checked_kst": "2026-10-30T16:23:10+09:00",
+  "last_checked_kst": "2026-10-30T19:31:44+09:00",
   "seen_keys": [
+    "a2a5c83af8ba576139739a23eb1acc1f45cd21e4c49268c22f316c60f60a4b1b",
     "5fb6c385a31b86d2314b45b65bd8f101b44115ac5ee925206ecc00fe4416c6d5",
-    "55939dc45bd89484de825207d198ea90768bacab193fb7bf2c9cffb9c161ba4a",
-    "e9857ec2dfe98196148d3e586d249e9bc8f2a45f9987248238110dfc5e073e82",
-    "3c3706157db77cf61223cfc81870e7e3e892915b8b2dacda097ddab75c52a9bb",
-    "e424f2dd0792ca50013f057787a8649de8ee19c0339e721892a7bf21e3dee31b",
-    "a5e52341317a30d324a9aa7e0dc3d0423159221228ee16614d0ac3fc0ab8271b",
-    "3f0b352755631e295a1c1b01299a67d3bf256c695e6c9fd67b989a2e348457de",
-    "0a3098b52e4596bfccca2fb611c0532e3581d34c305478f86e0cd84db6d698a3",
-    "c00684ac82f307170b91998bb1ca0930459f0c5a09792d8070cea0c8540fd42e",
-    "fe48f16a9ff9db9f075a2d29a4f18123de36a8b5b3cb7ab3fcc9afe17aec7659",
-    "a0f676376b32279c60d59a059fa139562cee62c364da4e28f944430244de0110",
-    "37e5577700a1163a69669f8b0ae7ab021b4a16db10052708aa02815d82331b26",
-    "b3d665d4a00f81dd9d88bf5a06e0cfa5dad3877579b9080c77cbb12b1bc12189",
-    "2382eba159371c6637c981d4a8a23a00725bbe51e9db29f499ffa1408c2d1379",
-    "0a707769c87b2d28a2c0dbd68984bc18c278d9864fa7423de2f77bfe5642763e",
-    "0a460a64864e11f78be85bb7824824bf903e2f0ae8abcf8673f8b1798da1ba97",
-    "08a6e1d6e429ecd22fa9171d7e278547914ba5b6cba9211753c3ec33103bb485",
-    "90a436e3e144dbcce38aa5dfe5466828caebd4344c438c69fa59827a9e942c3d",
-    "0ea26b0b76c2923c7f0dbb262f401d0368fd651302da1dd5b647693a3edbcdf2",
-    "f70aace22b1fd5b20e3750f68eac5956536c76ec439cc7a1dce21afb05b04855",
-    "2cbe2e7d8f376c70c6c4f96c989eeea5ca929e1c737f551d9a5b32e0953173f4",
-    "e096de3ce3edb77adcfb1f2ef03f3815a07d9c726bc11587325b3677c59dbce9",
-    "00b373a8d42d15a63e26e7e6bb7141d130d060064930b9f29170a4e7507ad587",
-    "182e427f2c0f9f689b16a3a601a944d873129b8b8ad741029109ad270854e2f7",
-    "23435a5e4a4d8a8b64fb59738f3a3edf84725c7bec32dd37e65ed129f217e0fb",
-    "d1fe94b16d4e4814fe71e0a17148cb050278820d5e562895dd45b98b59eaea3c",
-    "adfe11d48ac31db575faefc30c0adc872cd6f6ecfb96774fa9398ff08c538933",
-    "f57f4e11475fb47fa01544c8e5c5f8cf236e4d1c90abcc8a2872aaebf04693f0",
-    "e14d1b66d12ac82350e714bb062c04a00bd52ed43c1e0a4cb6c31b37f941f604",
-    "bb5ee714880a25f472864c219499756a4a0f8ec8ec7e5313fc2cca8aa1da8803",
-    "e9ec21d994d275030946868b541544ec468e25faa8652a5d392f3e581235e6f5",
-    "3d0595e8c0b85c51620990c54662e8f59524eead010e640c8fb9aaef0fa67eaa",
-    "c0df525e9c8d6f199bd0211fedd390948f1082aef587792a69bd7711c8e05935",
-    "71643976bbd3b8d8e88be36be6512ac42664c011134e07071432eb7858990b1b",
-    "bbcaeda29e831b3d46bac9f2a97ad130244c96355765af4ff20752a1768d14f4",
-    "13653f554d8dfee5cd1d8d118de41055195c3a7a85650e55fe0a441f6aa4f3aa",
-    "253fc0773e7bd40323a3e5e25abb6c40c8a5fac4f64a0b6ceb7fc10aea3f361d",
-    "627573b488bd1711d8276bca454c98b86ec536b10d7495f7a14131d3f7a63c88",
-    "678befc32e42621b6529a49ad220ead257d78880e3c6284d2fde3b6d53f36791",
-    "ec1e44f37ac0d5e1a07e18a5db1a1ad41d7dea78fb651987648cafbda29d7326",
-    "10ebd41cb8a29b799af6d5f16659bc1c9ed1949a46a203548fadcbe449a08b05",
-    "24b5b5e61ccdce7bdf6b0114ed3eeeae08fcc8b0cd87dd63a072bec24636540e",
-    "75190d1dab5bd05e4a9ffa6f8553e8084ab2902c8c85cb751911667264e78612",
-    "30356a1baa37e8d958ea8fe3d5f626dce638c11bad40a19828fda9fa8eccd9f1",
-    "2647f38b31835a8bcda7d50122bdd695b24d5cb1e9dad9452a49f1c9bea28e2f",
-    "0eebed789b31d6445de737a46b1a1532d0ce124dc06e13111d94962dbe6d31cc",
-    "f1c495518fcaa66be2f9f09edd2d102b538fdbd42544ee8a4b8955a6ac62b5d0",
-    "18c926820375ef9718f533a95dc6ed2630cd7f06f2788fd33dd70040f9e1eee8",
-    "4d8eca0e7fc7c594e0c797e4cd26807c2660c067af3fd456101ca0dc11a22636",
     "fc7e8f53e216ca1d9099ec465bb25d69cd77fec31eeaba648017509b05547495",
-    "c46dfc9cf2ff1d67af7833d1167c5402434643a3f61d8b6318b4acd72d493d32",
-    "db729ac47e07307a7b592e19be7d95eaf5b7d36b80e141aecfa2686e22149efc",
+    "3c3706157db77cf61223cfc81870e7e3e892915b8b2dacda097ddab75c52a9bb",
+    "0ea26b0b76c2923c7f0dbb262f401d0368fd651302da1dd5b647693a3edbcdf2",
+    "ec1e44f37ac0d5e1a07e18a5db1a1ad41d7dea78fb651987648cafbda29d7326",
+    "d1fe94b16d4e4814fe71e0a17148cb050278820d5e562895dd45b98b59eaea3c",
+    "10ebd41cb8a29b799af6d5f16659bc1c9ed1949a46a203548fadcbe449a08b05",
+    "c00684ac82f307170b91998bb1ca0930459f0c5a09792d8070cea0c8540fd42e",
+    "0a707769c87b2d28a2c0dbd68984bc18c278d9864fa7423de2f77bfe5642763e",
+    "f70aace22b1fd5b20e3750f68eac5956536c76ec439cc7a1dce21afb05b04855",
+    "55939dc45bd89484de825207d198ea90768bacab193fb7bf2c9cffb9c161ba4a",
+    "182e427f2c0f9f689b16a3a601a944d873129b8b8ad741029109ad270854e2f7",
+    "90a436e3e144dbcce38aa5dfe5466828caebd4344c438c69fa59827a9e942c3d",
+    "a0f676376b32279c60d59a059fa139562cee62c364da4e28f944430244de0110",
+    "e14d1b66d12ac82350e714bb062c04a00bd52ed43c1e0a4cb6c31b37f941f604",
+    "13653f554d8dfee5cd1d8d118de41055195c3a7a85650e55fe0a441f6aa4f3aa",
+    "24b5b5e61ccdce7bdf6b0114ed3eeeae08fcc8b0cd87dd63a072bec24636540e",
+    "f1c495518fcaa66be2f9f09edd2d102b538fdbd42544ee8a4b8955a6ac62b5d0",
+    "08a6e1d6e429ecd22fa9171d7e278547914ba5b6cba9211753c3ec33103bb485",
+    "0d29f9586699a00dcede1af2666245879c604cbfb2df655a11973520fcc1118a",
+    "4d8eca0e7fc7c594e0c797e4cd26807c2660c067af3fd456101ca0dc11a22636",
+    "2382eba159371c6637c981d4a8a23a00725bbe51e9db29f499ffa1408c2d1379",
+    "e424f2dd0792ca50013f057787a8649de8ee19c0339e721892a7bf21e3dee31b",
+    "75190d1dab5bd05e4a9ffa6f8553e8084ab2902c8c85cb751911667264e78612",
+    "3d0595e8c0b85c51620990c54662e8f59524eead010e640c8fb9aaef0fa67eaa",
+    "71643976bbd3b8d8e88be36be6512ac42664c011134e07071432eb7858990b1b",
+    "c0df525e9c8d6f199bd0211fedd390948f1082aef587792a69bd7711c8e05935",
+    "a5e52341317a30d324a9aa7e0dc3d0423159221228ee16614d0ac3fc0ab8271b",
+    "b3d665d4a00f81dd9d88bf5a06e0cfa5dad3877579b9080c77cbb12b1bc12189",
     "5edc0c8978bd603ac921ddfd96262ff36723b83851724067ce7aaf8bed29b9d3",
+    "2cbe2e7d8f376c70c6c4f96c989eeea5ca929e1c737f551d9a5b32e0953173f4",
+    "627573b488bd1711d8276bca454c98b86ec536b10d7495f7a14131d3f7a63c88",
+    "23435a5e4a4d8a8b64fb59738f3a3edf84725c7bec32dd37e65ed129f217e0fb",
+    "adfe11d48ac31db575faefc30c0adc872cd6f6ecfb96774fa9398ff08c538933",
+    "30356a1baa37e8d958ea8fe3d5f626dce638c11bad40a19828fda9fa8eccd9f1",
+    "0eebed789b31d6445de737a46b1a1532d0ce124dc06e13111d94962dbe6d31cc",
+    "18c926820375ef9718f533a95dc6ed2630cd7f06f2788fd33dd70040f9e1eee8",
+    "f57f4e11475fb47fa01544c8e5c5f8cf236e4d1c90abcc8a2872aaebf04693f0",
+    "00b373a8d42d15a63e26e7e6bb7141d130d060064930b9f29170a4e7507ad587",
     "67ec3ade9304364fd1759fea32adb4924f60d14ca3fc7d9ee05c382342cf1392",
     "35f86c82bb53c00f84258dd7a40808f2820cf96ea79f18bf8e6e513bd3ff9845",
+    "2647f38b31835a8bcda7d50122bdd695b24d5cb1e9dad9452a49f1c9bea28e2f",
+    "bb5ee714880a25f472864c219499756a4a0f8ec8ec7e5313fc2cca8aa1da8803",
+    "e9857ec2dfe98196148d3e586d249e9bc8f2a45f9987248238110dfc5e073e82",
+    "c46dfc9cf2ff1d67af7833d1167c5402434643a3f61d8b6318b4acd72d493d32",
+    "253fc0773e7bd40323a3e5e25abb6c40c8a5fac4f64a0b6ceb7fc10aea3f361d",
+    "678befc32e42621b6529a49ad220ead257d78880e3c6284d2fde3b6d53f36791",
+    "0a3098b52e4596bfccca2fb611c0532e3581d34c305478f86e0cd84db6d698a3",
+    "3f0b352755631e295a1c1b01299a67d3bf256c695e6c9fd67b989a2e348457de",
+    "0a460a64864e11f78be85bb7824824bf903e2f0ae8abcf8673f8b1798da1ba97",
+    "e096de3ce3edb77adcfb1f2ef03f3815a07d9c726bc11587325b3677c59dbce9",
+    "37e5577700a1163a69669f8b0ae7ab021b4a16db10052708aa02815d82331b26",
+    "bbcaeda29e831b3d46bac9f2a97ad130244c96355765af4ff20752a1768d14f4",
     "b86c51bbf68fa29ce792af5f84e2334ac54d730c0ff35ed27ac63a7c6b75ec10",
-    "0d29f9586699a00dcede1af2666245879c604cbfb2df655a11973520fcc1118a"
+    "db729ac47e07307a7b592e19be7d95eaf5b7d36b80e141aecfa2686e22149efc",
+    "fe48f16a9ff9db9f075a2d29a4f18123de36a8b5b3cb7ab3fcc9afe17aec7659",
+    "e9ec21d994d275030946868b541544ec468e25faa8652a5d392f3e581235e6f5"
   ],
   "seen_story_keys": [
-    "3m|amazon|2026-10-19-warrant-v1",
-    "ayar|nvlink-fusion|ecosystem",
-    "lightmatter|nvlink-fusion|ecosystem",
-    "meta|tahan|oct2026-shipping",
-    "fiber|trendforce|2026-10-19-spot-shortage",
-    "nvidia|dwdm|256gbps-8x32-2026-ofc",
-    "3m|microsoft|2026-07-15-ebo",
-    "ocs|ocp|founding-2025",
-    "credo|optics|fy27-600m-guidance",
-    "lumentum|nvidia|equity-2b-march-2026",
-    "taihan|2026-06-second-contract",
-    "coherent|photonlink|launch",
-    "credo|alc|2027-shipping-announcement",
-    "nvidia|ooi|jlt-concept-2023",
-    "taihan|2026-09-second-shipment",
-    "ayar|wiwynn|strategic-investment",
-    "meta|corning|jan2026-6b-fiber",
-    "volantis|funding|series-a",
-    "marvell|celestial|acquisition-complete",
-    "ayar|funding|2026-primary-650m",
-    "nvidia|ooi|semicon-west-prototype-2026-10-13",
+    "meta|icecube|oct2026-1024t",
     "credo|srmo|workstream-launch-2026-10",
+    "meta|tahan|oct2026-shipping",
+    "volantis|funding|series-a",
+    "ayar|funding|2026-primary-650m",
+    "coherent|photonlink|commercial-ramp",
+    "credo|alc|2027-shipping-announcement",
+    "meta|corning|jan2026-6b-fiber",
+    "lumentum|booking-horizon|2027",
+    "taihan|2026-09-second-shipment",
     "aaoi-taiwan|bloom-leadray|epc-announcement-2026-10-07",
+    "marvell|celestial|acquisition-complete",
+    "huawei|open-npo|msa-initial-2026-07",
+    "fiber|trendforce|2026-10-19-spot-shortage",
+    "credo|optics|fy27-600m-guidance",
+    "ayar|wiwynn|strategic-investment",
+    "ocs|ocp|founding-2025",
+    "3m|amazon|2026-10-19-warrant-v1",
+    "lumentum|nvidia|equity-2b-march-2026",
+    "nvidia|ooi|jlt-concept-2023",
+    "nvidia|dwdm|256gbps-8x32-2026-ofc",
+    "coherent|photonlink|launch",
     "lumentum|booking-horizon|2028",
+    "taihan|2026-02-first-order",
+    "credo|amd|weaver-demo-2026-10",
     "lightmatter|passage|sampling|1.6tbps-per-fiber",
     "lumentum|booking-horizon|2029",
-    "meta|icecube|oct2026-1024t",
-    "huawei|open-npo|msa-initial-2026-07",
-    "taihan|2026-02-first-order",
-    "coherent|photonlink|commercial-ramp",
-    "lumentum|booking-horizon|2027",
-    "credo|amd|weaver-demo-2026-10",
+    "lightmatter|nvlink-fusion|ecosystem",
+    "ayar|nvlink-fusion|ecosystem",
+    "3m|microsoft|2026-07-15-ebo",
+    "nvidia|ooi|semicon-west-prototype-2026-10-13",
     "credo|npo|fy28-plan",
-    "marvell|celestial|revenue-guidance|v1"
+    "marvell|celestial|revenue-guidance|v1",
+    "taihan|2026-06-second-contract"
   ],
   "seen_story_records": [
+    {
+      "company": "NVIDIA",
+      "category": "AI 네트워킹",
+      "title": "Foxconn, Nvidia target eight-week AI factory deployment as Vera Rubin pushes infrastructure complexity - digitimes",
+      "source": "digitimes",
+      "published": "2026-10-30T09:29:00+00:00",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNY3pURnFRRlNIQnh5T3U1Z3MxUVNLaDBPRDRkaVZEdTU1MWhOaXJvUnFSWXhGaE5LYVhxamh4NkJ6Wks5TWdNN0RMVk1YQkxaRjBsMmYzOW11R2ZRSzJBWHdTUzZpdDdBb0J3ZTQzUnI4RDM2b1JFZk84M3JPckkyT0U2T2JmRlF4djNtU1cxMzN0dw?oc=5"
+    },
     {
       "company": "GaAs Optical Supply Chain",
       "category": "GaAs 광통신 기판·파운드리",
@@ -324,7 +333,7 @@
       "published": "2026-09-27T09:00:00+00:00"
     }
   ],
-  "relevant_item_count": 1,
+  "relevant_item_count": 2,
   "source_errors": [],
   "query_health": {
     "NVIDIA": {
@@ -337,7 +346,7 @@
       "attempted": 2,
       "successful": 2,
       "failed": 0,
-      "raw_articles": 40
+      "raw_articles": 23
     },
     "Broadcom": {
       "attempted": 1,
@@ -355,13 +364,13 @@
       "attempted": 1,
       "successful": 1,
       "failed": 0,
-      "raw_articles": 20
+      "raw_articles": 12
     },
     "Ciena": {
       "attempted": 1,
       "successful": 1,
       "failed": 0,
-      "raw_articles": 17
+      "raw_articles": 20
     },
     "Celestica": {
       "attempted": 1,
@@ -379,13 +388,13 @@
       "attempted": 2,
       "successful": 2,
       "failed": 0,
-      "raw_articles": 27
+      "raw_articles": 35
     },
     "Optical Fiber Spot & Preform": {
       "attempted": 2,
       "successful": 2,
       "failed": 0,
-      "raw_articles": 24
+      "raw_articles": 27
     },
     "Taihan Fiberoptic America Deliveries": {
       "attempted": 4,
@@ -403,7 +412,7 @@
       "attempted": 6,
       "successful": 6,
       "failed": 0,
-      "raw_articles": 105
+      "raw_articles": 104
     },
     "Coherent": {
       "attempted": 1,
@@ -427,7 +436,7 @@
       "attempted": 3,
       "successful": 3,
       "failed": 0,
-      "raw_articles": 48
+      "raw_articles": 38
     },
     "InP Supply Chain": {
       "attempted": 3,
@@ -451,7 +460,7 @@
       "attempted": 6,
       "successful": 6,
       "failed": 0,
-      "raw_articles": 54
+      "raw_articles": 64
     },
     "Fabrinet": {
       "attempted": 1,
@@ -463,7 +472,7 @@
       "attempted": 5,
       "successful": 5,
       "failed": 0,
-      "raw_articles": 90
+      "raw_articles": 79
     },
     "Opticore": {
       "attempted": 4,
@@ -493,13 +502,13 @@
       "attempted": 2,
       "successful": 2,
       "failed": 0,
-      "raw_articles": 16
+      "raw_articles": 17
     },
     "ELS Connector Supply Chain": {
       "attempted": 2,
       "successful": 2,
       "failed": 0,
-      "raw_articles": 18
+      "raw_articles": 20
     },
     "Volantis": {
       "attempted": 4,
@@ -541,7 +550,7 @@
       "attempted": 1,
       "successful": 1,
       "failed": 0,
-      "raw_articles": 18
+      "raw_articles": 20
     },
     "Samsung Electronics": {
       "attempted": 1,
@@ -565,14 +574,14 @@
       "attempted": 28,
       "successful": 28,
       "failed": 0,
-      "raw_articles": 156
+      "raw_articles": 168
     }
   },
   "query_diagnostics_version": 1,
   "aaoi_power_prior_alert_correction_done": true,
-  "last_successful_delivery_kst": "2026-10-29T15:29:03+09:00",
+  "last_successful_delivery_kst": "2026-10-30T19:31:46+09:00",
   "telegram_message_ids": [
-    356
+    361
   ],
   "bot_username": "khs88798879887988798879_bot"
 }
