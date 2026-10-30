@@ -54,6 +54,7 @@ UA = "Mozilla/5.0 khs-boj-policy-path/2.0"
 GOOGLE = "https://news.google.com/rss/search"
 BOJ_RSS = "https://www.boj.or.jp/en/rss/whatsnew.xml"
 BOJ_STATEMENTS_2026 = "https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm"
+BOJ_OUTLOOK_INDEX = "https://www.boj.or.jp/en/mopo/outlook/index.htm"
 REUTERS_BOJ_DECISION = "https://www.reuters.com/world/asia-pacific/boj-raises-interest-rates-31-year-high-widely-expected-move-2026-09-18/"
 REUTERS_BOJ_REACTION = "https://www.reuters.com/world/asia-pacific/view-investors-react-boj-raising-interest-rates-31-year-high-2026-09-18/"
 REUTERS_BOJ_PRESS_CONFERENCE = "https://www.reuters.com/business/finance/boj-governor-uedas-comments-news-conference-2026-09-18/"
@@ -432,13 +433,18 @@ def enrich_official_items(items: list[Item], now: dt.datetime) -> list[Item]:
         if source_name(item) != "Bank of Japan" or not item.link:
             enriched.append(item)
             continue
-        body, error = fetch_text(
-            item.link,
-            UA,
-            timeout=20,
-            attempts=2,
-            accept="text/html,application/xhtml+xml,*/*",
-        )
+        # BOJ RSS sometimes links directly to a policy PDF, not an HTML page.
+        # A 200 response to a PDF must not be treated as verified empty prose.
+        if item.link.lower().split("?", 1)[0].endswith(".pdf"):
+            body, error = _fetch_boj_document_text(item.link)
+        else:
+            body, error = fetch_text(
+                item.link,
+                UA,
+                timeout=20,
+                attempts=2,
+                accept="text/html,application/xhtml+xml,*/*",
+            )
         if error or not body:
             record_source_failure(
                 lane="boj_policy_path",
@@ -462,7 +468,7 @@ def enrich_official_items(items: list[Item], now: dt.datetime) -> list[Item]:
 
 
 def _boj_document_date(url: str) -> dt.datetime | None:
-    match = re.search(r"/k(\d{2})(\d{2})(\d{2})[a-z]?\.(?:pdf|htm|html)$", url, re.I)
+    match = re.search(r"/[kg](\d{2})(\d{2})(\d{2})[a-z]?\.(?:pdf|htm|html)$", url, re.I)
     if not match:
         return None
     year = 2000 + int(match.group(1))
@@ -561,6 +567,48 @@ def fetch_official_statement_items(now: dt.datetime) -> list[Item]:
             description=body,
         )
     ]
+
+
+def fetch_official_outlook_items(now: dt.datetime) -> list[Item]:
+    """Get the current quarterly BOJ view, not just the rate-decision headline."""
+    index, error = fetch_text(
+        BOJ_OUTLOOK_INDEX, UA, timeout=20, attempts=2,
+        accept="text/html,application/xhtml+xml,*/*",
+    )
+    if error or not index:
+        record_source_failure(
+            lane="boj_policy_path", source_name="Bank of Japan outlook index",
+            source_url=BOJ_OUTLOOK_INDEX, error=error or "empty response", checked_at=now,
+        )
+        return []
+    links = []
+    for href, label_html in re.findall(
+        r'<a[^>]+href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
+        index, flags=re.I | re.S,
+    ):
+        label = clean(label_html).lower()
+        if "the bank's view" not in label or "2026" not in label:
+            continue
+        url = urllib.parse.urljoin(BOJ_OUTLOOK_INDEX, href)
+        published = _boj_document_date(url)
+        if published is not None:
+            links.append((published, url))
+    if not links:
+        return []
+    published, url = max(links, key=lambda row: row[0])
+    if published < now - dt.timedelta(hours=MAX_AGE_HOURS):
+        return []
+    body, body_error = _fetch_boj_document_text(url)
+    if body_error or not body:
+        record_source_failure(
+            lane="boj_policy_path", source_name="Bank of Japan outlook full text",
+            source_url=url, error=body_error or "empty response", checked_at=now,
+        )
+        return []
+    return [Item(
+        title="Outlook for Economic Activity and Prices — The Bank's View",
+        source="Bank of Japan", link=url, published=published, description=body,
+    )]
 
 
 def fetch_direct_context(now: dt.datetime) -> list[Item]:
@@ -839,6 +887,8 @@ def event_type(item: Item) -> str | None:
     source = source_name(item)
 
     if source == "Bank of Japan":
+        if "outlook for economic activity and prices" in title:
+            return "decision"  # Same meeting, separate 2%-assessment source.
         if "statement on monetary policy" in title:
             return "decision"
         if "summary of opinions" in title:
@@ -1137,6 +1187,7 @@ def collect(now: dt.datetime) -> list[Signal]:
     boj_items = fetch_rss(BOJ_RSS, "Bank of Japan", now)
     items.extend(enrich_official_items(boj_items, now))
     items.extend(fetch_official_statement_items(now))
+    items.extend(fetch_official_outlook_items(now))
     items.extend(fetch_direct_context(now))
 
     cutoff = now - dt.timedelta(hours=MAX_AGE_HOURS)
@@ -1244,9 +1295,12 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
             x.hawkish_tail_50bp for x in related if x.event_type in {"market_path", "decision"}
         )
 
+        rate_unchanged = signal.rate_unchanged or any(x.rate_unchanged for x in decision_fact_related)
+        if rate_unchanged:
+            bp = None  # A minority's proposed 25bp is never the enacted change.
         merged = replace(
             signal,
-            rate_unchanged=signal.rate_unchanged or any(x.rate_unchanged for x in decision_fact_related),
+            rate_unchanged=rate_unchanged,
             underlying_target_reached=signal.underlying_target_reached or any(
                 x.underlying_target_reached for x in decision_related
             ),
@@ -1433,6 +1487,15 @@ def trusted_media_event_has_policy_content(signal: Signal) -> bool:
 
 
 def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, str]:
+    # A BOJ RSS headline alone was incorrectly sent on 2026-10-30 without rate,
+    # vote or inflation data. Require an actual decision fact before notifying.
+    if signal.event_type == "decision" and not any((
+        signal.policy_rate is not None,
+        signal.hike_bp is not None and not signal.rate_unchanged,
+        signal.vote_for is not None,
+        signal.underlying_target_reached,
+    )):
+        return False, "정책결정 제목만 확인됨 — 공식 본문·핵심 수치 확보 전"
     if not press_conference_has_policy_content(signal):
         return False, "회견 본문 정책경로 확인 전"
     if signal.event_type == "market_path":
@@ -1497,6 +1560,15 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
             if signal.source == "Bank of Japan"
             else "새 고신뢰 정책 이벤트"
         )
+    if (
+        signal.event_type == "decision"
+        and last_published is not None
+        and signal.published.date() == last_published.date()
+        and previous.get("event_type") == "decision"
+        and previous.get("policy_rate") is None
+        and signal.policy_rate is not None
+    ):
+        return True, "동일 회의 기존 제목 알림의 누락된 핵심 수치 보완"
     if signal.level != int(previous.get("level", signal.level)):
         return True, "정책경로 단계 변화"
     if signal.rate_unchanged and not previous.get("rate_unchanged"):
@@ -1863,6 +1935,8 @@ def market_quote_age_label(quote: dict, now: dt.datetime) -> str:
 def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) -> tuple[str, str, dict]:
     emoji = LEVEL_EMOJI[signal.level]
     title = f"🏦 {emoji} BOJ 정책경로 변화"
+    if "기존 제목 알림" in reason:
+        title += " | 핵심 수치 보완"
 
     decision_lines = []
     if signal.rate_unchanged:
