@@ -114,6 +114,26 @@ def main():
     assert "가격 확인 2/3개 거래행" in report
     assert "거래대금: 체결단가 미공개·종가 추정 불가" in report
 
+
+    # A prepared but unconfirmed send must block the next scheduled replay.
+    # Mock the official source and state: never invoke real internet or Telegram.
+    old_fetch,old_parse,old_load=w._fetch,w.parse,w._load
+    try:
+        today=w.dt.datetime.now(w.ET).date().isoformat()
+        w._fetch=lambda: (b"mock ark trade table","text/plain")
+        w.parse=lambda _:[{"date":today,"fund":"ARKK","ticker":"CBRS",
+                            "action":"매수","shares":10,"pct":0.1}]
+        w._load=lambda: {"version":1,"last_date":"2026-10-29",
+                          "digest":"previous","format_version":3,
+                          "pending_delivery":{"last_date":today,"digest":"reserved"}}
+        try:
+            w.main()
+            raise AssertionError("An unconfirmed Telegram send must block auto replay")
+        except RuntimeError as e:
+            assert "ARK_DELIVERY_UNCERTAIN" in str(e)
+    finally:
+        w._fetch,w.parse,w._load=old_fetch,old_parse,old_load
+
     print("ARK daily trade parser regression tests passed.")
 
 if __name__=="__main__":
