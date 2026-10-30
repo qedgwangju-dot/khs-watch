@@ -1236,7 +1236,7 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIn("오늘 동결은 인하 전환이 아님", lines[4])
         self.assertIn("시장 영향(가능성)", lines[5])
         self.assertIn("USD/JPY 하락", lines[5])
-        self.assertIn("BOJ 단독", body) if "• 실제 관측 |" in body and "reaction_parts" in body else None
+        self.assertIn("실제 관측 | 발표 전후 비교 가능한 최신 시세 부족", body)
         self.assertNotIn("정책 7대2와 자동 동일시하지 않음", body)
         self.assertLess(len(title + "\n\n" + body), 3950)
 
@@ -1301,6 +1301,30 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIn("새 정책금리 결정 없음", body.splitlines()[1])
         self.assertNotIn("오늘(확정) | 금리 +50bp 인상", body)
         self.assertIn("고정된 인상 간격", body)
+
+
+    def test_completed_two_percent_finding_survives_later_conditional_rate_clause(self):
+        from boj_policy_lead_alert import has_confirmed_underlying_target
+        confirmed = Item(
+            title="BOJ keeps interest rates steady - Reuters", source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 30, 12, 15, tzinfo=KST),
+            description=(
+                "The BOJ said underlying inflation had reached a level "
+                "consistent with the 2% target and would continue to raise rates if needed."
+            ),
+        )
+        forecast_only = Item(
+            title="BOJ may signal underlying inflation at 2% target - Reuters",
+            source="Reuters", link="https://www.reuters.com",
+            published=confirmed.published,
+            description=(
+                "Sources say the BOJ may signal underlying inflation has reached "
+                "the 2% target if more data supports it."
+            ),
+        )
+        self.assertTrue(has_confirmed_underlying_target(confirmed, "decision"))
+        self.assertFalse(has_confirmed_underlying_target(forecast_only, "decision"))
 
 
 if __name__ == "__main__":
