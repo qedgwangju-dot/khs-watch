@@ -296,6 +296,7 @@
     "619d7d278d7c6a296207",
     "619e0f32d2de6c27f6b9be5f",
     "61b2c4b85d86e0dfe88a3053",
+    "61f20deea563b51f0135",
     "6223aa96c7711ded5a8fd75e",
     "625ceaf0bf077fbe34d9",
     "62685c8dd2e7998d2358",
@@ -367,6 +368,7 @@
     "75a48ec9cf1bb1039b26",
     "760d9c433353a4f0c90b",
     "763469527b82246e2f94",
+    "768c400ac8149b7066bc",
     "77bd32c864672325de68",
     "789b63e6296640c5eb8c",
     "79419a611af64142a66b",
@@ -402,6 +404,7 @@
     "8407fb9c7230fdc074db3a11",
     "840fe9f08a15e3da5bb0",
     "8462ecd734edbfbc0adc",
+    "847476456659d7fb269e",
     "849197a12e76c47538d9261a",
     "8527fea14ab939739ce3e58e",
     "854fa34494d84983acae",
@@ -462,6 +465,7 @@
     "98dc6bf9a0098c2a7d88",
     "98e3cf641fd96c36a6d0",
     "990902657c985f1b4e51",
+    "99164dc9dbaa2347c166",
     "9990190b57f6226b419b",
     "99bbadc50421c76635e9",
     "9a68449aea77ec75077a",
@@ -542,6 +546,7 @@
     "b57303b682e5f2760c3a",
     "b57b20a95bc4cfb1a838",
     "b5d3895654bf5319103d",
+    "b64f0bc618a9a8f862d5",
     "b691e9efff716f368092",
     "b69f9e66cb5af20cc56b",
     "b6b9548adfe78e811c0f",
@@ -784,7 +789,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-30T15:12:03+09:00",
+  "last_scan_kst": "2026-10-30T21:53:19+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -792,9 +797,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 10,
-  "fetch_errors": [
-    "bing_news \"Apple\" \"NVLink Fusion\": ParseError not well-formed (invalid token): line 1, column 41",
-    "bing_news \"Apple\" \"M8 Ultra\" server: ParseError not well-formed (invalid token): line 1, column 41"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
