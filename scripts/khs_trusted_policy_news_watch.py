@@ -5063,6 +5063,55 @@ def _self_test_mofcom_2026_notices() -> None:
         assert item_story_profile(rules[key], [official])["event_date"] == "2026년 10월 19일"
         assert item_story_profile(rules[key], [effective])["event_date"] == "2026년 11월 18일"
 
+def _self_test_fcc_800_uas_event() -> None:
+    rule = next(r for r in STORY_RULES if r.key == "us_fcc_800mhz_uas_cellular_authorization")
+    official_body = (
+        "October 29, 2026. Today, the Federal Communications Commission voted to "
+        "modernize the 800 MHz Cellular band to unlock 50 megahertz for drones "
+        "and unmanned aircraft systems in a final Report and Order FCC 26-72."
+    )
+    assert fcc_800_uas_adoption_body_verified(official_body)
+    assert not fcc_800_uas_adoption_body_verified(
+        official_body.replace("voted", "will vote").replace("final Report and Order FCC 26-72", "draft")
+    ), "voting agenda cannot be the final adoption"
+    assert not fcc_800_uas_adoption_body_verified(
+        official_body.replace("800 MHz", "450 MHz")
+    ), "different UAS spectrum must not match 800MHz"
+    assert not fcc_800_uas_adoption_body_verified(
+        official_body.replace("50 megahertz", "4 megahertz")
+    ), "different commercial aviation air-ground service is not 50MHz Cellular"
+    official = {
+        "title": "FCC Opens More Cellular Spectrum for Drones",
+        "description": official_body,
+        "link": FCC_800_UAS_RELEASE_SOURCES[0][0],
+        "source": "미 연방통신위원회(FCC) 공식 발표",
+        "published_kst": "2026-10-29T00:00:00+09:00",
+        "official_direct_verified": True,
+        "fcc_800_uas_stage": "adopted",
+    }
+    expected = "us-fcc-800mhz-uas-cellular-order-adopted-2026-10-29"
+    assert semantic_policy_event_key(official) == expected
+    assert alert_confirmation_status(rule, [official])[0] == "공식 확인"
+    mirror = {
+        **official, "link": FCC_800_UAS_RELEASE_SOURCES[1][0],
+        "source": "Light Reading", "official_direct_verified": False,
+    }
+    assert alert_confirmation_status(rule, [mirror])[0] == "공식 확인 전"
+    assert story_event_fingerprint(rule, [official]) == story_event_fingerprint(rule, [mirror])
+    preview = {
+        "title": "FCC will vote on 800 MHz Cellular 50 MHz drone rules",
+        "description": "The FCC schedules a future vote to let UAS drones use 800 MHz Cellular 50 MHz.",
+        "source": "Reuters", "link": "https://example.org/draft",
+    }
+    assert semantic_policy_event_key(preview) == "us-fcc-800mhz-uas-cellular-preview"
+    subsequent = {
+        **preview, "title": "FCC 800 MHz Cellular 50 MHz drone rule takes effect",
+    }
+    assert semantic_policy_event_key(subsequent).startswith("us-fcc-800mhz-uas-cellular-rule-effective-")
+    assert story_event_fingerprint(rule, [subsequent]) != story_event_fingerprint(rule, [official])
+    assert "FAA" in rule.counter and "관보" in rule.follow_up
+
+
 def _self_test_fcc_component_and_agv_cases() -> None:
     rules = {r.key: r for r in STORY_RULES}
     observed = []
