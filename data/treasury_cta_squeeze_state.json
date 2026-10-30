@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-30T22:41:40+09:00",
+  "last_checked_kst": "2026-10-31T00:37:12+09:00",
   "media_id": null,
   "cftc_date": "October 20, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-30T22:41:40+09:00",
+    "checked_kst": "2026-10-31T00:37:12+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "October 20, 2026",
@@ -85,10 +85,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 106.671875,
-        "settlement": 106.671875,
-        "change": 0.484375,
-        "pct_change": 0.45615067686874955,
+        "last": 106.46875,
+        "settlement": 106.46875,
+        "change": 0.28125,
+        "pct_change": 0.26486168334314275,
         "open_interest": 5868295,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (October 20, 2026)",
         "oi_comparable": true,
@@ -103,10 +103,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 107.96875,
-        "settlement": 107.96875,
-        "change": 0.6875,
-        "pct_change": 0.6408389163996553,
+        "last": 107.5625,
+        "settlement": 107.5625,
+        "change": 0.28125,
+        "pct_change": 0.2621613748907681,
         "open_interest": 1785457,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (October 20, 2026)",
         "oi_comparable": true,
@@ -121,10 +121,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 109.53125,
-        "settlement": 109.53125,
-        "change": 0.71875,
-        "pct_change": 0.6605399195864337,
+        "last": 109.0,
+        "settlement": 109.0,
+        "change": 0.1875,
+        "pct_change": 0.1723147616312426,
         "open_interest": 2364949,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (October 20, 2026)",
         "oi_comparable": true,
@@ -202,7 +202,7 @@
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-10-29",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026103009"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026103011"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -422,8 +422,10 @@
       "nq_confirmed": false,
       "repo_ok": true,
       "repo_worse": [],
-      "data_fresh": true,
-      "stale_reasons": []
+      "data_fresh": false,
+      "stale_reasons": [
+        "CFTC October 20, 2026 · 11일 경과"
+      ]
     }
   },
   "format_revision": 14,
@@ -440,8 +442,10 @@
     "matched_short_bias": false,
     "z_below_minus_1": true,
     "repo_not_worse": true,
-    "data_fresh": true,
-    "stale_reasons": [],
+    "data_fresh": false,
+    "stale_reasons": [
+      "CFTC October 20, 2026 · 11일 경과"
+    ],
     "composite_confirmed": false,
     "stage": 0,
     "oi_scope_fixes": []
