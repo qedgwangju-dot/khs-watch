@@ -1,12 +1,19 @@
 name: Yen carry monitor watchdog
 
 on:
+  workflow_run:
+    workflows:
+      - "Yen carry current vs recent FX shock"
+    types:
+      - completed
   push:
     branches:
       - main
     paths:
       - ".github/workflows/yen-carry-watchdog.yml"
       - ".github/workflows/yen-carry-recent-shock.yml"
+      - "scripts/yen_carry_watchdog_quality.py"
+      - "tests/test_yen_carry_watchdog_quality.py"
   schedule:
     # Independent five-minute heartbeat, offset from the primary yen FX lanes.
     - cron: "4-59/5 * * * *"
@@ -22,8 +29,9 @@ concurrency:
 
 jobs:
   watchdog:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    timeout-minutes: 7
+    timeout-minutes: 12
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
 
@@ -31,12 +39,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
+
+      - name: Sync latest main incident state
+        run: |
+          git fetch --quiet origin main
+          git checkout -B main origin/main
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Validate watchdog freshness and incident regression
+        run: |
+          python -m py_compile scripts/yen_carry_watchdog_quality.py
+          PYTHONPATH=scripts python -m unittest tests/test_yen_carry_watchdog_quality.py -v
 
       - name: Evaluate independent yen market heartbeat
         run: |
@@ -68,24 +86,25 @@ jobs:
               except Exception:
                   return None
 
-          source_name = '독립 시장확인 heartbeat'
-          source_path = pathlib.Path('data/yen_carry_monitor_heartbeat.json')
-          fallback = pathlib.Path('data/yen_carry_recent_shock_state.json')
-          state = None
-          if source_path.exists():
+          import sys
+          sys.path.insert(0, str(pathlib.Path('scripts').resolve()))
+          from yen_carry_watchdog_quality import evaluate
+
+          payloads = []
+          for label, path in (
+              ('독립 시장확인 heartbeat', 'data/yen_carry_monitor_heartbeat.json'),
+              ('최근 충격 상태(heartbeat 대체)', 'data/yen_carry_recent_shock_state.json'),
+          ):
               try:
-                  state = json.loads(source_path.read_text(encoding='utf-8'))
-              except Exception:
-                  state = None
-          if not state:
-              source_name = '최근 충격 상태(heartbeat 전환기 대체)'
-              try:
-                  state = json.loads(fallback.read_text(encoding='utf-8'))
+                  state = json.loads(pathlib.Path(path).read_text(encoding='utf-8'))
               except Exception:
                   state = {}
+              payloads.append((label, state))
+          quality = evaluate(payloads, now)
+          source_name = quality.get('source_path') or '상태 파일'
+          updated = parse_time(quality.get('effective_updated_at_kst'))
+          stale_minutes = quality.get('stale_minutes')
 
-          updated = parse_time((state or {}).get('updated_at_kst'))
-          stale_minutes = None if updated is None else max(0.0, (now - updated).total_seconds() / 60.0)
           detail = (
               '정상 갱신시각 확인 불가'
               if updated is None
@@ -94,7 +113,7 @@ jobs:
 
           last_repair = parse_time(prior.get('last_repair_at_kst'))
           repair_cooldown_minutes = 15.0
-          repair_needed = stale_minutes is None or stale_minutes >= 10.0
+          repair_needed = stale_minutes is None or stale_minutes >= 10.0 or not quality.get('healthy')
           repair_allowed = repair_needed and (
               last_repair is None or (now - last_repair).total_seconds() / 60.0 >= repair_cooldown_minutes
           )
@@ -110,6 +129,7 @@ jobs:
               'repair_cooldown_minutes': repair_cooldown_minutes,
               'alert_after_minutes': 45.0,
               'prior': prior,
+              'quality_status': quality,
           }
           (out / 'yen_carry_watchdog_initial.json').write_text(
               json.dumps(initial, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
@@ -162,30 +182,33 @@ jobs:
                   return None
 
           def remote_state():
-              subprocess.run(['git', 'fetch', '-q', 'origin', 'main'], check=False)
+              import sys
+              sys.path.insert(0, str(pathlib.Path('scripts').resolve()))
+              from yen_carry_watchdog_quality import evaluate
+              sync = subprocess.run(['git', 'fetch', '-q', 'origin', 'main'], text=True, capture_output=True, check=False)
+              if sync.returncode != 0:
+                  return None, None, None, False, 'git_fetch_failed'
+              payloads = []
               for path in (
                   'data/yen_carry_monitor_heartbeat.json',
                   'data/yen_carry_recent_shock_state.json',
               ):
-                  proc = subprocess.run(
-                      ['git', 'show', f'origin/main:{path}'],
-                      text=True,
-                      capture_output=True,
-                      check=False,
-                  )
+                  proc = subprocess.run(['git', 'show', f'origin/main:{path}'],
+                      text=True, capture_output=True, check=False)
                   if proc.returncode != 0 or not proc.stdout.strip():
                       continue
                   try:
-                      state = json.loads(proc.stdout)
+                      payloads.append((path, json.loads(proc.stdout)))
                   except Exception:
                       continue
-                  updated = parse_time(state.get('updated_at_kst'))
-                  if updated is None:
-                      continue
-                  now = dt.datetime.now(KST)
-                  age = max(0.0, (now - updated).total_seconds() / 60.0)
-                  return updated, age, path
-              return None, None, None
+              quality = evaluate(payloads, dt.datetime.now(KST))
+              return (
+                  parse_time(quality.get('effective_updated_at_kst')),
+                  quality.get('stale_minutes'),
+                  quality.get('source_path'),
+                  bool(quality.get('healthy')),
+                  quality.get('issue_kind'),
+              )
 
           if initial.get('repair_allowed'):
               result['attempted'] = True
@@ -204,24 +227,24 @@ jobs:
 
               # Do not declare an outage immediately after dispatching repair. The previous
               # implementation sent the alert first and the repaired state often landed seconds later.
-              for attempt in range(12):
+              for attempt in range(24):
                   time.sleep(10)
                   result['wait_seconds'] = (attempt + 1) * 10
-                  updated, age, path = remote_state()
+                  updated, age, path, market_healthy, issue_kind = remote_state()
                   if updated is not None:
                       result['final_source_updated_at_kst'] = updated.isoformat(timespec='seconds')
                       result['final_stale_minutes'] = age
-                  if age is not None and age < 10.0:
+                  if market_healthy:
                       result['recovered'] = True
                       result['recovered_at_kst'] = dt.datetime.now(KST).isoformat(timespec='seconds')
                       result['recovered_from'] = path
                       break
           else:
-              updated, age, path = remote_state()
+              updated, age, path, market_healthy, issue_kind = remote_state()
               if updated is not None:
                   result['final_source_updated_at_kst'] = updated.isoformat(timespec='seconds')
                   result['final_stale_minutes'] = age
-                  if age < 10.0 and initial.get('repair_needed'):
+                  if market_healthy and initial.get('repair_needed'):
                       result['recovered'] = True
                       result['recovered_at_kst'] = dt.datetime.now(KST).isoformat(timespec='seconds')
                       result['recovered_from'] = path
@@ -266,34 +289,51 @@ jobs:
                   return None
 
           def remote_state():
-              subprocess.run(['git', 'fetch', '-q', 'origin', 'main'], check=False)
+              import sys
+              sys.path.insert(0, str(pathlib.Path('scripts').resolve()))
+              from yen_carry_watchdog_quality import evaluate
+              sync = subprocess.run(['git', 'fetch', '-q', 'origin', 'main'], text=True, capture_output=True, check=False)
+              if sync.returncode != 0:
+                  return '원격 상태 조회 실패', None, None, False, 'git_fetch_failed', True
+              payloads = []
               for label, path in (
                   ('독립 시장확인 heartbeat', 'data/yen_carry_monitor_heartbeat.json'),
-                  ('최근 충격 상태(heartbeat 전환기 대체)', 'data/yen_carry_recent_shock_state.json'),
+                  ('최근 충격 상태(heartbeat 대체)', 'data/yen_carry_recent_shock_state.json'),
               ):
-                  proc = subprocess.run(
-                      ['git', 'show', f'origin/main:{path}'], text=True, capture_output=True, check=False
-                  )
+                  proc = subprocess.run(['git', 'show', f'origin/main:{path}'],
+                      text=True, capture_output=True, check=False)
                   if proc.returncode != 0 or not proc.stdout.strip():
                       continue
                   try:
-                      state = json.loads(proc.stdout)
+                      payloads.append((label, json.loads(proc.stdout)))
                   except Exception:
                       continue
-                  updated = parse_time(state.get('updated_at_kst'))
-                  if updated is not None:
-                      return label, updated
-              return initial.get('source_name') or '상태 파일', parse_time(initial.get('source_updated_at_kst'))
+              quality = evaluate(payloads, dt.datetime.now(KST))
+              return (
+                  quality.get('source_path') or '상태 파일',
+                  parse_time(quality.get('effective_updated_at_kst')),
+                  quality.get('stale_minutes'),
+                  bool(quality.get('healthy')),
+                  quality.get('issue_kind'),
+                  bool(quality.get('market_open')),
+              )
 
-          source_name, updated = remote_state()
-          stale_minutes = None if updated is None else max(0.0, (now - updated).total_seconds() / 60.0)
+          source_name, updated, stale_minutes, healthy, issue_kind, market_open = remote_state()
+          from yen_carry_watchdog_quality import transition
           alert_after = float(initial.get('alert_after_minutes') or 45.0)
-          outage = stale_minutes is None or stale_minutes >= alert_after
+          incident = transition(
+              prior,
+              {'stale_minutes': stale_minutes, 'healthy': healthy, 'issue_kind': issue_kind},
+              outage_threshold_minutes=alert_after,
+          )
+          outage = incident['outage']
+          should_alert = incident['new_outage']
+          recovered_incident = incident['recovered_incident']
           prior_active = bool(prior.get('alert_active'))
-          should_alert = outage and not prior_active
 
           last_alert = prior.get('last_alert_at_kst')
           if should_alert:
+              problem = '유효 환율 관측' if issue_kind == 'market_data_unavailable' else '예약 실행·상태 갱신'
               last_alert = now.isoformat(timespec='seconds')
               age = '확인 불가' if stale_minutes is None else f'{stale_minutes:.0f}분'
               updated_text = '확인 불가' if updated is None else updated.strftime('%Y-%m-%d %H:%M:%S KST')
@@ -307,15 +347,30 @@ jobs:
                   f'조회 시각: {now.strftime("%Y-%m-%d %H:%M:%S KST")}\n'
                   f'감시 상태: 최근 정상 시장확인 이후 {age} 경과\n'
                   f'마지막 정상 확인: {updated_text}\n\n'
-                  f'판정: 예약 실행·상태 갱신이 {int(alert_after)}분 이상 복구되지 않았습니다. '
+                  f'판정: {problem}이 {int(alert_after)}분 이상 복구되지 않았습니다. '
                   '시장 위험도가 올라갔다는 뜻이 아니라 감시 경로 자체의 운영 지연입니다.\n'
                   f'조치: {repair_text}. 최근 충격 감시는 복구 실행 때 최근 6시간 5분봉을 다시 검사합니다.\n',
                   encoding='utf-8',
               )
 
+          if recovered_incident:
+              updated_text = '확인 불가' if updated is None else updated.strftime('%Y-%m-%d %H:%M:%S KST')
+              market_text = (
+                  '외환시장 개장 중 유효한 최신 환율 관측 확인'
+                  if market_open else '시장 휴장 중 감시 실행 갱신 확인(환율 가격 유효성 별도)'
+              )
+              alert_path.write_text(
+                  '🟢 엔화 감시 실행 복구 확인\n\n'
+                  f'조회 시각: {now.strftime("%Y-%m-%d %H:%M:%S KST")}\n'
+                  f'최근 감시 갱신: {updated_text}\n'
+                  f'검증: {market_text}\n'
+                  '이전 실행 장애 알림을 해제합니다. 시장위험이 사라졌다는 뜻은 아닙니다.\n',
+                  encoding='utf-8',
+              )
+
           last_repair = repair.get('attempted_at_kst') or prior.get('last_repair_at_kst')
           last_recovered = prior.get('last_recovered_at_kst')
-          if repair.get('recovered'):
+          if repair.get('recovered') or recovered_incident:
               last_recovered = repair.get('recovered_at_kst') or now.isoformat(timespec='seconds')
 
           persistent = {
@@ -344,6 +399,9 @@ jobs:
               f'- 자가복구 성공: {"예" if repair.get("recovered") else "아니오"}',
               f'- 장애 상태: {"예" if outage else "아니오"}',
               f'- 신규 장애 경보: {"예" if should_alert else "아니오"}',
+              f'- 장애 복구 알림: {"예" if recovered_incident else "아니오"}',
+              f'- 최신 환율 유효 검증: {"예" if healthy and market_open else "휴장·확인 대기" if not market_open else "아니오"}',
+              f'- 문제 종류: {issue_kind or "없음"}',
           ]
           if repair.get('dispatch_errors'):
               status += ['', '## 자가복구 호출 오류'] + [f'- {x}' for x in repair['dispatch_errors']]
@@ -354,6 +412,8 @@ jobs:
               'should_alert': should_alert,
               'repair_attempted': repair.get('attempted'),
               'repair_recovered': repair.get('recovered'),
+              'recovered_incident': recovered_incident,
+              'issue_kind': issue_kind,
           }, ensure_ascii=False))
           PY
 
