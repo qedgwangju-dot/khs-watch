@@ -1280,6 +1280,73 @@ class IncrementalNewsTests(unittest.TestCase):
                        {'message_id': True}, {'sent_chars': 0}, {'attempts': 0}, {'error': 'unconfirmed'}):
             self.assertFalse(merge.delivery_receipt_allows_seen_persistence({**receipt, **change}))
 
+    def test_seen_state_compaction_roundtrip_and_merge_preserve_all_aliases(self):
+        from gamejoa_seen_state_codec import decode_seen_state, dumps_seen_state, encode_seen_state
+        import merge_gamejoa_preopen_news_radar_seen as merge
+        entry = {
+            'first_seen_kst': '2026-10-30T10:00:00+09:00',
+            'last_seen_kst': '2026-10-30T10:00:00+09:00',
+            'lanes': {'live': '2026-10-30T10:00:00+09:00'},
+            'title': '한미반도체, 분기 실적 발표',
+            'source_title': '한미반도체, 분기 실적 발표',
+            'telegram_core_fact': '한미반도체가 분기 실적을 발표했다.',
+            'source_body_digest': 'a' * 64,
+            'link': 'https://example.com/article',
+        }
+        legacy = {'updated_at_kst': '2026-10-30T10:00:00+09:00', 'seen': {
+            'link:article': copy.deepcopy(entry),
+            'title:article': copy.deepcopy(entry),
+            'core:article': copy.deepcopy(entry),
+        }}
+        compact = encode_seen_state(legacy)
+        self.assertEqual(compact['_storage_format'], 'gamejoa-seen-index-v2')
+        self.assertEqual(len(compact['entries']), 1)
+        self.assertEqual(len(compact['seen']), 3)
+        restored = decode_seen_state(compact)
+        self.assertEqual(restored, legacy)
+        self.assertIsNot(restored['seen']['link:article'], restored['seen']['title:article'])
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state_path = Path(tmp) / 'seen.json'
+            state_path.write_text(json.dumps(legacy), encoding='utf-8')
+            with patch.object(telegram, 'SEEN_PATH', state_path):
+                loaded = telegram.load_seen_state()
+                self.assertEqual(loaded['seen']['link:article']['source_body_digest'], 'a' * 64)
+                telegram.save_seen_state(loaded, NOW)
+            saved = json.loads(state_path.read_text(encoding='utf-8'))
+            self.assertEqual(saved['_storage_format'], 'gamejoa-seen-index-v2')
+            self.assertEqual(decode_seen_state(saved)['seen']['link:article']['title'], entry['title'])
+
+        with tempfile.TemporaryDirectory() as tmp:
+            remote_path = Path(tmp) / 'remote.json'
+            pending_path = Path(tmp) / 'pending.json'
+            remote_path.write_text(dumps_seen_state(legacy), encoding='utf-8')
+            pending = {'updated_at_kst': '2026-10-30T10:05:00+09:00', 'seen': {
+                'core:article': {**entry, 'last_seen_kst': '2026-10-30T10:05:00+09:00',
+                                 'lanes': {'preopen': '2026-10-30T10:05:00+09:00'}},
+                'event:article': {**entry, 'last_seen_kst': '2026-10-30T10:05:00+09:00',
+                                  'lanes': {'preopen': '2026-10-30T10:05:00+09:00'}}
+            }}
+            pending_path.write_text(dumps_seen_state(pending), encoding='utf-8')
+            combined = merge.merge_states(merge.load_state(remote_path), merge.load_state(pending_path))
+            persisted = json.loads(dumps_seen_state(combined))
+            reloaded = decode_seen_state(persisted)
+            self.assertEqual(set(reloaded['seen']), {'link:article', 'title:article', 'core:article', 'event:article'})
+            self.assertEqual(reloaded['seen']['core:article']['lanes'], {
+                'live': '2026-10-30T10:00:00+09:00', 'preopen': '2026-10-30T10:05:00+09:00'
+            })
+
+    def test_corrupt_seen_state_fails_closed_instead_of_resending(self):
+        from gamejoa_seen_state_codec import decode_seen_state
+        with self.assertRaises(ValueError):
+            decode_seen_state({'_storage_format': 'gamejoa-seen-index-v2', 'entries': {}, 'seen': {'article': 'missing'}})
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'seen.json'
+            path.write_text('{not-json', encoding='utf-8')
+            with patch.object(telegram, 'SEEN_PATH', path):
+                with self.assertRaises(RuntimeError):
+                    telegram.load_seen_state()
+
     def test_received_message_recovers_missing_seen_keys_without_resending(self):
         import gamejoa_recover_delivered_seen as recovery
         folder = ROOT / 'data/gamejoa_receipt_recovery_fixture_20261006'
