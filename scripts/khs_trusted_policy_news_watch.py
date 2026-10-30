@@ -75,6 +75,8 @@ FCC_800_UAS_RELEASE_SOURCES = (
      "미 연방통신위원회(FCC) 공식 발표", True),
     ("https://www.lightreading.com/regulatory-politics/fcc-clears-drone-operations-in-800mhz-band",
      "Light Reading (FCC 보도자료 재인용)", False),
+    ("https://www.benton.org/headlines/fcc-opens-more-cellular-spectrum-drones",
+     "Benton Institute (FCC 보도자료 재인용)", False),
     ("https://dronelife.com/2026/10/29/fcc-opens-cellular-spectrum-drones-800-mhz/",
      "DRONELIFE (독립 보도)", False),
 )
@@ -1805,8 +1807,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                     f"source={source_label!r} direct_official={str(is_official).lower()}"
                 )
                 # Only one independent fallback is needed when the FCC site is blocked.
-                if is_official or "Light Reading" in source_label:
-                    break
+                break
 
     # Agreement by governments (October 9) versus media-reported quota size
     # (October 12) and a legally effective EU import safeguard are distinct.
