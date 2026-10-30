@@ -1,12 +1,12 @@
 {
-  "last_signal_key": "147632be7af886786cae31cc",
-  "last_alert_at_kst": "2026-10-19T09:34:33+09:00",
-  "last_published_at_kst": "2026-10-19T09:17:00+09:00",
-  "last_source": "Reuters",
-  "last_title": "BOJ Governor Ueda says underlying inflation 'quite close' to 2% target - Reuters",
+  "last_signal_key": "f7481f16bfd299ced819a285",
+  "last_alert_at_kst": "2026-10-30T12:55:48+09:00",
+  "last_published_at_kst": "2026-10-30T12:02:00+09:00",
+  "last_source": "Bank of Japan",
+  "last_title": "Statement on Monetary Policy",
   "signature": {
     "level": 1,
-    "event_type": "parliament_testimony",
+    "event_type": "decision",
     "policy_rate": null,
     "hike_bp": null,
     "vote_for": null,
@@ -28,8 +28,7 @@
     "conditional_pace": false,
     "accommodative": false,
     "neutral_rate": false,
-    "inflation_upside": true,
+    "inflation_upside": false,
     "risk_channels": false
-  },
-  "event_type_correction": "2026-10-19 기사: 일본 국회 발언(기자회견 아님); 기존 Telegram 전송기록 및 시각 보존"
+  }
 }
