@@ -68,6 +68,17 @@ EU_SECTOR_PRESS_CASES = (
      "chemicals-discussed"),
 )
 
+# 2026-10-29 FCC drone cellular band decision is one policy event, distinct
+# from the 2026-10-08 draft and later Federal Register effectiveness.
+FCC_800_UAS_RELEASE_SOURCES = (
+    ("https://www.fcc.gov/document/fcc-opens-more-cellular-spectrum-drones",
+     "미 연방통신위원회(FCC) 공식 발표", True),
+    ("https://www.lightreading.com/regulatory-politics/fcc-clears-drone-operations-in-800mhz-band",
+     "Light Reading (FCC 보도자료 재인용)", False),
+    ("https://dronelife.com/2026/10/29/fcc-opens-cellular-spectrum-drones-800-mhz/",
+     "DRONELIFE (독립 보도)", False),
+)
+
 OFFICIAL_DIRECT_STORIES = {
     "us_dhs_deepseek_federal_civilian_exclusion": (
         ("https://www.govinfo.gov/content/pkg/FR-2026-10-20/html/2026-21447.htm",
@@ -341,6 +352,7 @@ ALERTS_JSON_PATH = OUT_DIR / "khs_trusted_policy_news_alerts.json"
 
 MAX_AGE_HOURS = int(os.getenv("KHS_TRUSTED_NEWS_MAX_AGE_HOURS", "72"))
 RULE_MAX_AGE_HOURS = {
+    "us_fcc_800mhz_uas_cellular_authorization": 24 * 21,
     "eu_china_hybrid_vehicle_safeguard": 24 * 45,
     "eu_china_sector_import_safeguards": 24 * 30,
     # One-time recovery lane for the already-official Auction 115 schedule plus
@@ -1068,6 +1080,31 @@ STORY_RULES = (
         paths=("공식 명령", "연방정부 조달", "기존 제품 제거", "예외"),
         follow_up="DHS-2026-0628 예외·정정, CISA 집행지침, 기관별 제거·대체 조달 계약을 확인합니다.",
         trusted_sources=("Reuters", "AP News", "Federal Register", "U.S. Department of Homeland Security"),
+    ),
+    StoryRule(
+        key="us_fcc_800mhz_uas_cellular_authorization",
+        title="미 FCC, 800MHz 셀룰러 대역 50MHz 드론 통신 사용 허용 최종 채택",
+        google_queries=(
+            '"FCC Opens More Cellular Spectrum for Drones" October 29 2026',
+            '"FCC 26-72" 800 MHz cellular drone report and order',
+            'site:fcc.gov/document/ FCC drones 800 MHz cellular 50 MHz adopted October 29 2026',
+            '"Unleashing American Drone Dominance" drone 800 MHz federal register effective 2026',
+        ),
+        required_groups=(
+            ("fcc", "federal communications commission", "연방통신위원회"),
+            ("800 mhz", "800mhz", "800-megahertz", "800 메가헤르츠"),
+            ("50 mhz", "50mhz", "50 megahertz", "50메가헤르츠"),
+            ("drone", "drones", "uas", "unmanned aircraft", "uncrewed aircraft", "드론", "무인항공기"),
+        ),
+        core="FCC는 2026년 10월 29일 800MHz 셀룰러 대역에서 드론의 항공 중 통신을 금지하던 1991년 규제를 해제하기로 최종 의결했습니다. 기존 통신사 면허 대역 중 50MHz를 드론 제어·통신·탑재장비 자료 전송에 사용할 수 있도록 규칙을 바꿨습니다.",
+        impact="통신사업자 저대역 무선망·드론 모뎀, 무인기 연결서비스·원격점검·배송 | 서비스 매출·설비투자·운용 일정",
+        point="824~849MHz(25MHz), 869~894MHz(25MHz)를 기존 셀룰러 면허 체계 안에서 활용하므로 신규 독점 드론 주파수 경매가 아닙니다. 통신사업자 계약과 모뎀·안테나·간섭 관리가 필요합니다.",
+        counter="FCC의 주파수 규칙 채택은 FAA가 조종사 시야 밖 장거리 비행을 일괄 허가했다는 뜻이 아닙니다. FAA Part 108 및 현행 비행 승인, FCC 최종 규칙의 연방관보 게재·효력발생일은 별도로 확인해야 합니다.",
+        sectors="미국 드론 상용 운용, 800MHz 셀룰러 모뎀·무선통신, 통신망·기지국, 물류·송전선·가스관 점검",
+        impacts=("돈 버는 능력", "시간표", "수급"),
+        paths=("FCC 최종 채택", "연방관보 게재", "발효", "통신사 망 계약·인증", "FAA 비가시권 운항 승인", "실제 유료 운영"),
+        follow_up="FCC 26-72 최종 결정문과 47 CFR 22.925 정정·효력발생일, AT&T·Verizon의 드론 데이터 요금제·계약, FAA Part 108 확정·예외, 2026년 11월 19일 별도 450MHz·24GHz 규칙 제안·의결을 구분해 확인합니다.",
+        trusted_sources=("Federal Communications Commission", "Reuters", "Light Reading", "DRONELIFE", "Associated Press", "Federal Register"),
     ),
     StoryRule(
         key="us_fcc_hisilicon_first_component_enforcement",
