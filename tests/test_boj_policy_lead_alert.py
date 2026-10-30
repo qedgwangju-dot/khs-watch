@@ -1117,5 +1117,39 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIn("1.25 percent", result[0].description)
 
 
+    def test_quarterly_outlook_charts_and_roster_do_not_create_fake_policy_votes(self):
+        from boj_policy_lead_alert import extract_vote, extract_dissenters
+        text = (
+            "The 2026 Outlook Report Figure 5-1 shows GDP contribution. "
+            "The policy board members include Asada, Sato, Takata, Tamura, "
+            "Himino, Koeda, Masu and Uchida. "
+            "The BOJ said underlying inflation had reached a level broadly "
+            "consistent with its 2% target."
+        )
+        self.assertEqual(extract_vote(text), (None, None))
+        self.assertEqual(extract_dissenters(text), ())
+        source = Item(
+            title="Outlook for Economic Activity and Prices — The Bank's View",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/outlook/g261030a.pdf",
+            published=dt.datetime(2026, 10, 30, 12, 0, tzinfo=KST),
+            description=text + " In the longer run, rapid economic growth could accelerate.",
+        )
+        signal = classify(source)
+        self.assertIsNone(signal.policy_rate)
+        self.assertIsNone(signal.hike_bp)
+        self.assertIsNone(signal.vote_for)
+        self.assertIsNone(signal.vote_against)
+        self.assertEqual(signal.dissenters, ())
+        self.assertEqual(signal.level, 1)
+        self.assertTrue(signal.underlying_target_reached)
+
+    def test_policy_vote_requires_voting_context_not_chart_reference(self):
+        from boj_policy_lead_alert import extract_vote
+        self.assertEqual(extract_vote("Figure 5-1 shows inflation. The vote was 8-1."), (8, 1))
+        self.assertEqual(extract_vote("Figure 5-1 shows inflation."), (None, None))
+        self.assertEqual(extract_vote("The policy decision passed by a 7-2 vote."), (7, 2))
+
+
 if __name__ == "__main__":
     unittest.main()
