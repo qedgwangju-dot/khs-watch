@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-30T05:19:04+09:00",
+  "updated_at_kst": "2026-10-30T10:00:46+09:00",
   "circle": {
     "date": "2026-10-26",
     "circulation_usd_b": 71.0,
@@ -10,12 +10,12 @@
     }
   },
   "usdxx": {
-    "date": "2026-10-28",
+    "date": "2026-10-29",
     "sec_yield_7d": 3.89,
     "yield_7d": 3.89,
-    "yield_1d": 3.9,
+    "yield_1d": null,
     "yield_crosscheck_gap_bp": 0.0,
-    "visible_nav_date": "2026-10-28",
+    "visible_nav_date": "2026-10-29",
     "fund_size_usd_m": 59867.6,
     "fund_size_date": "2026-10-28",
     "source_url": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund",
@@ -23,10 +23,10 @@
     "ticker": "USDXX",
     "cusip": "09261A870",
     "_previous_distinct": {
-      "date": "2026-10-27",
-      "sec_yield_7d": 3.88,
-      "fund_size_usd_m": 59867.5,
-      "fund_size_date": "2026-10-27"
+      "date": "2026-10-28",
+      "sec_yield_7d": 3.89,
+      "fund_size_usd_m": 59867.6,
+      "fund_size_date": "2026-10-28"
     }
   },
   "sofr": {
@@ -58,11 +58,11 @@
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
-    "crosscheck_date": "2026-10-29",
-    "crosscheck_close": 79.98999786376953,
-    "crosscheck_daily_pct": -2.11,
-    "crosscheck_gap_pct": 0.038,
-    "crosscheck_status": "confirmed"
+    "crosscheck_date": "2026-10-28",
+    "crosscheck_close": 81.70999908447266,
+    "crosscheck_daily_pct": 0.16,
+    "crosscheck_gap_pct": 2.189,
+    "crosscheck_status": "yahoo_lagging"
   },
   "tbx": {
     "date": "2026-10-29",
@@ -78,9 +78,11 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,339.41원, 차이 0.23%"
+    "crosscheck": "Yahoo Finance 1,340.34원, 차이 0.30%"
   },
   "crcl_last_alerted_close_date": "2026-10-29",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "tbx: source date regressed 2026-10-28 < 2026-10-29; previous snapshot kept"
+  ]
 }
