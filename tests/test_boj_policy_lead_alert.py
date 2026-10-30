@@ -1174,5 +1174,38 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertEqual((signal.vote_for, signal.vote_against), (8, 1))
 
 
+    def test_sparse_official_outlook_uses_confirmed_reuters_hold_but_not_proposal(self):
+        official = classify(Item(
+            title="Outlook for Economic Activity and Prices — The Bank's View",
+            source="Bank of Japan",
+            link="https://www.boj.or.jp/en/mopo/outlook/g261030a.pdf",
+            published=dt.datetime(2026, 10, 30, 12, 0, tzinfo=KST),
+            description=(
+                "The BOJ said underlying inflation had reached a level broadly "
+                "consistent with the 2% target."
+            ),
+        ))
+        reuters = classify(Item(
+            title="BOJ keeps interest rates steady, signals more hikes - Reuters",
+            source="Reuters",
+            link="https://www.reuters.com",
+            published=dt.datetime(2026, 10, 30, 12, 10, tzinfo=KST),
+            description=(
+                "The BOJ held its policy rate at 1.25%. "
+                "Takata dissented and called for a 25 basis-point hike to 1.5%."
+            ),
+        ))
+        self.assertTrue(reuters.rate_unchanged)
+        self.assertIsNone(reuters.hike_bp)
+        self.assertEqual(reuters.policy_rate, 1.25)
+        merged = enrich_decision_context([official, reuters])[0]
+        self.assertTrue(merged.rate_unchanged)
+        self.assertEqual(merged.policy_rate, 1.25)
+        self.assertIsNone(merged.hike_bp)
+        self.assertEqual(merged.dissenters, ("다카타",))
+        self.assertEqual(merged.dissent_direction, "hike")
+        self.assertTrue(merged.underlying_target_reached)
+
+
 if __name__ == "__main__":
     unittest.main()
