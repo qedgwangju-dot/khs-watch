@@ -1327,5 +1327,49 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertFalse(has_confirmed_underlying_target(forecast_only, "decision"))
 
 
+    def test_realistic_market_payload_stays_below_telegram_message_limit(self):
+        signal = verified_event_signals(
+            dt.datetime(2026, 9, 18, 13, 0, tzinfo=KST)
+        )[0]
+        event_time = dt.datetime(2026, 9, 18, 12, 23, tzinfo=KST)
+        quote_time = event_time + dt.timedelta(minutes=15)
+        move = lambda change: {
+            "change_pct": change, "reference_price": 157.0,
+            "latest_price": 157.4, "reference_epoch": 10,
+            "latest_epoch": 15, "latest_time": quote_time,
+        }
+        market = {
+            "event_time": event_time,
+            "usd_jpy_event": move(0.3),
+            "nikkei_event": move(-1.2),
+            "nasdaq_future_event": move(-0.8),
+            "usd_jpy": {
+                "price": 157.45, "m15": 0.3, "m30": -0.2,
+                "time": quote_time,
+            },
+            "nikkei": {
+                "price": 61111.1, "change_pct": -1.2, "time": quote_time,
+            },
+            "nasdaq_future": {
+                "price": 28888.8, "change_pct": -0.8, "time": quote_time,
+            },
+            "jgb2": {
+                "value": 1.9, "date": "2026/09/17", "change_bp": 1.2,
+                "note": "BOJ 회의 당시 거래 종가가 아니므로 장중 반응 판정에 사용하지 않음",
+            },
+            "fx_volatility_proxy": {"m15_abs": 0.3, "m30_abs": 0.4, "m60_abs": 0.5},
+        }
+        title, body, _ = build(
+            signal, "의미 있는 정책 신호",
+            event_time + dt.timedelta(minutes=30), market,
+        )
+        self.assertLessEqual(
+            len(title + "\n\n" + body), 3880,
+            "Telegram HTML markup requires margin inside the 4096-character limit",
+        )
+        self.assertIn("【한눈에 보기】", body)
+        self.assertIn("원문:", body)
+
+
 if __name__ == "__main__":
     unittest.main()
