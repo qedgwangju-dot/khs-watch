@@ -227,6 +227,44 @@ def is_china_mofcom_trade_control(item: dict) -> bool:
     return has_authority and has_action
 
 
+def is_fcc_800_uas_adopted_event(item: dict) -> bool:
+    """Identify only the FCC 800MHz Cellular 50MHz drone decision."""
+    text = haystack_for(item)
+    link = str(item.get("link") or "").lower()
+    if "fcc-opens-more-cellular-spectrum-drones" in link:
+        return True
+    return (
+        ("fcc" in text or "federal communications commission" in text)
+        and ("800 mhz" in text or "800mhz" in text)
+        and ("cellular" in text or "셀룰러" in text)
+        and ("50 mhz" in text or "50mhz" in text or "50 megahertz" in text)
+        and ("drone" in text or "uas" in text or "무인항공" in text)
+    )
+
+
+def trusted_lane_has_fcc_800_uas_event() -> bool:
+    # Do not hide a fallback generic alert if the dedicated trusted watcher
+    # failed and the event was neither selected nor previously delivered.
+    report = OUT_DIR / "khs_trusted_policy_news_alert.md"
+    if report.exists():
+        try:
+            body = report.read_text(encoding="utf-8").lower()
+            if "800mhz" in body and "50mhz" in body and "드론" in body:
+                return True
+        except OSError:
+            pass
+    history = Path("data/khs_trusted_policy_news_seen.json")
+    try:
+        data = json.loads(history.read_text(encoding="utf-8"))
+        return any(
+            isinstance(value, dict)
+            and value.get("key") == "us_fcc_800mhz_uas_cellular_authorization"
+            for value in (data.get("seen") or {}).values()
+        )
+    except (OSError, ValueError, AttributeError):
+        return False
+
+
 def is_fcc_robot_inverter_covered_policy(item: dict) -> bool:
     """This FCC chronology has one delivery owner: trusted policy news watch."""
     text = haystack_for(item)
@@ -319,6 +357,13 @@ def is_low_impact_false_positive(item: dict) -> bool:
     source = str(item.get("source") or "").lower()
     title = str(item.get("title") or "").lower()
     link = str(item.get("link") or "").lower()
+
+    if is_fcc_800_uas_adopted_event(item) and trusted_lane_has_fcc_800_uas_event():
+        item["guardrail_note"] = (
+            "FCC 800MHz 드론 최종 채택은 기존 신뢰 정책 감시 경로에서 이미 송출되었거나"
+            " 이번 실행에서 전용 보고서에 포함돼 중복을 차단합니다."
+        )
+        return True
 
     if is_fcc_robot_inverter_covered_policy(item):
         item["guardrail_note"] = (
