@@ -123,6 +123,69 @@ def main():
     assert full.index("업종별 매수 순위") < full.index("매수 · 펀드별 거래")
     assert full.index("업종별 매수 순위") < full.index("매도 · 펀드별 거래")
     assert "실제 체결대금 아님" in full
+
+    # Current official Oct 29 names must no longer fall into the unknown sector.
+    for ticker,expected in {
+        "CBRS":"반도체·자동화 장비",
+        "JOBY":"항공·도심항공교통",
+        "KDK":"자동차·자율주행",
+        "BEAM":"바이오·헬스케어",
+        "ARCT":"바이오·헬스케어",
+        "TEM":"바이오·헬스케어",
+        "TXG":"바이오·헬스케어",
+    }.items():
+        assert sector.classify(ticker)[0]==expected
+
+    # History length now keeps enough samples to build a real three-month view.
+    samples=[{"date":f"2026-01-{i:02d}","digest":str(i)}
+             for i in range(1,22)]
+    assert len(sector.merged_history(samples,{"date":"2026-02-01","digest":"latest"}))==22
+
+    # 2026 NYSE holidays are removed from the coverage denominator.
+    import datetime as dt
+    assert sector.expected_sessions(dt.date(2026,9,7),dt.date(2026,9,8))==1
+    assert sector.expected_sessions(dt.date(2026,10,1),dt.date(2026,10,29))==21
+    assert sector.period_windows("2026-10-29")[-1][1].isoformat()=="2026-07-30"
+    assert sector.subtract_months(dt.date(2027,5,31),3)==dt.date(2027,2,28)
+
+    # The five captured trading days must never masquerade as the full month.
+    # Dollars are persisted estimated USD, NOT actual execution or ETF flow.
+    history_cases=[
+        ("2026-10-23", 3082053.125763, 47104513.502213),
+        ("2026-10-26", 27017481.455112, 39141733.579038),
+        ("2026-10-27", 28801316.718201, 26788076.094849),
+        ("2026-10-28", 47097112.558195, 26520632.776778),
+        ("2026-10-29", 8063262.141505, 1460763.031006),
+    ]
+    snapshots=[
+        {"date":d,"digest":d,"complete":True,"buy_usd":{"바이오·헬스케어":b},
+         "sell_usd":{"바이오·헬스케어":v}}
+        for d,b,v in history_cases
+    ]
+    period="\n".join(sector.direction_summary(snapshots,"2026-10-29",
+                                              rate,notional.usd_krw))
+    assert "당일 (2026-10-29~2026-10-29)" in period
+    assert "이번 주 (2026-10-26~2026-10-29)" in period
+    assert "4/4거래일" in period and "거래일 전부 확보" in period
+    assert "당월 누적 (2026-10-01~2026-10-29)" in period
+    assert "5/21거래일" in period and "확보일 기준 부분합" in period
+    assert "최근 3개월 (2026-07-30~2026-10-29)" in period
+    assert "순매수 +" in period and "순매도 -" in period
+    assert "매수 비중" in period
+    assert "미확보 일자를 0원으로 채우지 않습니다" in period
+
+    # Missing market close forbids a fake "net buying" direction.
+    broken=[dict(snapshots[0],complete=False)]
+    blocked="\n".join(sector.direction_summary(broken,"2026-10-23",
+                                               rate,notional.usd_krw))
+    assert "순액 판정 보류(미확인 종가)" in blocked
+
+    # Upgrades to the alert should not silently alter pre-existing dedup keys.
+    full_with_history=watch.build(rows,"2026-10-23",rate=rate,basis="검산",
+        prices=prices,history=[],digest="test")
+    assert "당일·주간·당월·최근 3개월 매매 방향" not in full_with_history or "매매 방향 · 당일" in full_with_history
+    assert full_with_history.index("매매 방향") < full_with_history.index("업종별 매수 순위")
+
     print("ARK sector ranking and rolling-mean regression checks passed.")
 
 
