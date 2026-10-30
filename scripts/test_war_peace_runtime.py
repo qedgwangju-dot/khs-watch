@@ -42,6 +42,31 @@ def fake_watch(root, queries, *, req=None, news=None):
     return watch
 
 
+class DirectCoverageTests(unittest.TestCase):
+    def test_actual_timeout_patterns_do_not_count_cross_source_fallback_as_full(self):
+        for query, direct, alternate in (
+            ('direct-kremlin-news', 'en.kremlin.ru', 't.me'),
+            ('direct-kremlin-transcripts', 'en.kremlin.ru', 't.me'),
+            ('direct-gdelt-ukraine', 'api.gdeltproject.org', 'bing.com'),
+            ('direct-gdelt-iran', 'api.gdeltproject.org', 'bing.com'),
+            ('ap-direct-world-rss', 'apnews.com', 'news.google.com'),
+            ('__TRUMP_TRUTH_SOCIAL_ENERGY_CEASEFIRE__', 'truthsocial.com', 'news.google.com'),
+        ):
+            with self.subTest(query=query):
+                attempts = [{'host': direct, 'status': 'error'},
+                            {'host': alternate, 'status': 'ok'}]
+                self.assertEqual(runtime._unverified_direct_fallback(query, attempts), direct)
+
+    def test_original_host_recovery_and_unrelated_fallback_keep_existing_behavior(self):
+        attempts = [{'host': 'en.kremlin.ru', 'status': 'error'},
+                    {'host': 'en.kremlin.ru', 'status': 'ok'}]
+        self.assertIsNone(runtime._unverified_direct_fallback('direct-kremlin-news', attempts))
+        attempts = [{'host': 'primary.example', 'status': 'error'},
+                    {'host': 'fallback.example', 'status': 'ok'}]
+        self.assertIsNone(runtime._unverified_direct_fallback('ordinary-query', attempts))
+        self.assertIsNone(runtime._unverified_direct_fallback('direct-kremlin-news', []))
+
+
 class RuntimeTests(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
@@ -110,6 +135,26 @@ class RuntimeTests(unittest.TestCase):
             verify()
         finally:
             restore()
+
+    def test_direct_origin_timeout_with_different_fallback_holds_collection(self):
+        watch = fake_watch(self.root, ['direct-kremlin-news'])
+        def req(url, timeout=20):
+            if 'en.kremlin.ru' in url:
+                raise TimeoutError('actual direct-source timeout pattern')
+            return b'fallback material'
+        def news(query):
+            try:
+                result = watch.req('https://en.kremlin.ru/events/president/news/page/1')
+            except Exception:
+                result = watch.req('https://t.me/s/news_kremlin')
+            return [{'raw': result}], None
+        watch.req, watch.google_news = req, news
+        with self.assertRaises(runtime.IncompleteCoverage):
+            self.collect(watch, workers=1)
+        record = json.loads((watch.OUT/'coverage.json').read_text())['news'][0]
+        self.assertEqual(record['status'], 'partial')
+        self.assertEqual(record['coverage_issue']['original_host'], 'en.kremlin.ru')
+        self.assertTrue(record['fallback_recovered'])
 
     def test_denied_primary_malformed_fallback_recovers_without_retrying_denial(self):
         from urllib.error import HTTPError
