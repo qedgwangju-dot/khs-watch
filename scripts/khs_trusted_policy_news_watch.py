@@ -1768,7 +1768,7 @@ def fcc_800_uas_adoption_body_verified(raw: str) -> bool:
         and ("50 megahertz" in low or "50 mhz" in low or "50mhz" in low)
         and any(x in low for x in ("drone", "drones", "unmanned aircraft", "uncrewed aircraft", "uas"))
         and any(x in low for x in ("commission voted", "fcc voted", "fcc) voted", "voted on october 29", "order adopted today", "adopted the new rules", "the commission adopted"))
-        and any(x in low for x in ("october 29, 2026", "oct 29, 2026", "29 october 2026"))
+        and any(x in low for x in ("october 29, 2026", "oct 29, 2026", "29 october 2026", "10/29/2026", "2026-10-29"))
     )
 
 
