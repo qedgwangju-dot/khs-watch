@@ -177,8 +177,12 @@ def yahoo_snapshot() -> dict:
 def resilient_snapshot() -> dict:
     try:
         official_data = official.official_cme_snapshot()
-        if any(official_data.values()):
+        # CME PDFs may be cached from an older trade date; reject stale
+        # official quotes rather than showing them as current data.
+        if any(row and row.get("fresh_for_confirmation") for row in official_data.values()):
             return official_data
+        dates = sorted({str(row.get("trade_date_iso") or "unknown") for row in official_data.values() if row})
+        raise RuntimeError("CME PG09 stale/unverified trade date: " + ",".join(dates or ["unknown"]))
     except Exception as exc:
         print(f"cme_treasury_official_parse_failed={type(exc).__name__}: {exc}")
     return yahoo_snapshot()

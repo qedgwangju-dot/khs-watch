@@ -1116,3 +1116,49 @@ def test_cta_global_rates_heartbeat_is_restricted_to_same_repo_scheduled_main():
     assert "github.event.workflow_run.head_branch == 'main'" in text
     assert "CTA_TRUSTED_HEARTBEAT" in text
     assert "github.event_name != 'push' && hashFiles('out/treasury_cta_squeeze_alert.html')" in text
+
+
+def test_cme_pg09_header_date_is_not_hidden_by_product_heading(monkeypatch):
+    import treasury_cta_squeeze_execution_watch as official
+
+    text = (
+        "PG09 BULLETIN # 210@ INTEREST RATE FUTURES Fri, Oct 30, 2026 PG09\n"
+        "10-YR NOTE FUTURES\n"
+        "DEC26 106'150 106'160 106'140 106'155 + 0'030 ---- 10000 5395905 - 1000 114'120 110'140\n"
+        "TOTAL 10-YR NOTE FUTURES 10000 5395905 - 1000\n"
+        "30Y BOND FUT\n"
+        "DEC26 109'10 109'20 109'00 109'15 + 0'05 ---- 1000 1800000 - 500 119'19 110'16\n"
+        "TOTAL 30Y BOND FUT 1000 1800000 - 500\n"
+        "ULTRA T-BND FUT\n"
+        "DEC26 118'10 118'20 118'00 118'15 + 0'05 ---- 1000 2200000 - 500 123'28 115'16\n"
+        "TOTAL ULTRA T-BND FUT 1000 2200000 - 500\n"
+    )
+    monkeypatch.setattr(official, "_download_pdf_text", lambda: text)
+    monkeypatch.setattr(official, "_expected_completed_us_session", lambda: date(2026, 10, 30))
+    output = official.official_cme_snapshot()
+    assert set(output) == {"ZN", "ZB", "UB"}
+    for row in output.values():
+        assert row is not None
+        assert row["trade_date_iso"] == "2026-10-30"
+        assert row["fresh_for_confirmation"] is True
+        assert row["trade_date"] == "Fri, Oct 30, 2026"
+        assert row["oi_scope"] == "CME_DAILY_CONTRACT_OI"
+
+
+def test_cme_pg09_stale_file_never_replaces_current_display(monkeypatch):
+    import treasury_cta_squeeze_market_watch as market
+
+    official_stale = {"ZN": {"trade_date_iso": "2026-07-10", "fresh_for_confirmation": False}}
+    delayed = {"ZN": {"source_type": "Yahoo Finance delayed", "pct_change": 0.5}}
+    monkeypatch.setattr(market.official, "official_cme_snapshot", lambda: official_stale)
+    monkeypatch.setattr(market, "yahoo_snapshot", lambda: delayed)
+    assert market.resilient_snapshot() is delayed
+
+
+def test_cme_pg09_fresh_file_keeps_official_confirmation_source(monkeypatch):
+    import treasury_cta_squeeze_market_watch as market
+
+    official_fresh = {"ZN": {"trade_date_iso": "2026-10-30", "fresh_for_confirmation": True}}
+    monkeypatch.setattr(market.official, "official_cme_snapshot", lambda: official_fresh)
+    monkeypatch.setattr(market, "yahoo_snapshot", lambda: pytest.fail("unnecessary secondary fallback"))
+    assert market.resilient_snapshot() is official_fresh

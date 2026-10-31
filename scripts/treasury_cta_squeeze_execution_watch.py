@@ -40,17 +40,22 @@ MONTH_RE = re.compile(r"^(JAN|FEB|MAR|APR|MAY|JUN|JLY|AUG|SEP|OCT|NOV|DEC)\d{2}$
 
 
 def _download_pdf_text() -> str:
+    stamp = datetime.now(NY).strftime("%Y%m%d%H")
+    # Match the dated URL pattern already used by the CME equity PG11 monitor.
+    # The report trade date is verified before any confirmation signal.
     urls = [
-        CME_BULLETIN,
+        CME_BULLETIN + "?download=1&_=" + stamp,
+        CME_BULLETIN + "?_=" + stamp,
         CME_BULLETIN + "?download=1",
-        CME_BULLETIN + "?_=" + datetime.now().strftime("%Y%m%d%H"),
+        CME_BULLETIN,
     ]
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/154 Safari/537.36",
-        "Accept": "application/pdf,application/octet-stream;q=0.9,*/*;q=0.8",
+        "User-Agent": "Mozilla/5.0 khs-watch/cta-squeeze",
+        "Accept": "application/pdf,*/*",
         "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://www.cmegroup.com/daily-bulletin.html",
+        "Referer": "https://www.cmegroup.com/market-data/daily-bulletin.html",
         "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
     }
     errors = []
     data = None
@@ -61,6 +66,7 @@ def _download_pdf_text() -> str:
                 candidate = r.read()
             if candidate.startswith(b"%PDF"):
                 data = candidate
+                print("cme_section09_transport=urllib_official")
                 break
             errors.append(f"{url}: non-PDF")
         except Exception as exc:
@@ -76,8 +82,8 @@ def _download_pdf_text() -> str:
                         "curl", "--fail", "--location", "--compressed",
                         "--retry", "2", "--connect-timeout", "15", "--max-time", "45",
                         "-A", headers["User-Agent"],
-                        "-e", "https://www.cmegroup.com/market-data/daily-bulletin.html",
-                        "-H", "Accept: application/pdf,application/octet-stream;q=0.9,*/*;q=0.8",
+                        "-e", headers["Referer"],
+                        "-H", "Accept: application/pdf,*/*",
                         "-H", "Cache-Control: no-cache",
                         url,
                     ],
@@ -242,6 +248,10 @@ def _expected_completed_us_session() -> date:
 
 def _trade_date_iso(raw: str) -> str | None:
     text = str(raw or "").strip()
+    # Real PG09 heading includes product title before the report date.
+    embedded = re.search(r"\b(?:Mon|Tue|Wed|Thu|Fri),\s+[A-Za-z]{3}\s+\d{1,2},\s+20\d{2}\b", text)
+    if embedded:
+        return datetime.strptime(embedded.group(0), "%a, %b %d, %Y").date().isoformat()
     for fmt in ("%a, %b %d, %Y", "%b %d, %Y", "%Y-%m-%d"):
         try:
             return datetime.strptime(text, fmt).date().isoformat()
@@ -253,8 +263,9 @@ def _trade_date_iso(raw: str) -> str | None:
 def official_cme_snapshot() -> dict:
     text = _download_pdf_text()
     date_match = re.search(r"BULLETIN\s+#\s*\d+@\s*([^\n]+?)\s+PG09", text, re.I)
-    trade_date = date_match.group(1).strip() if date_match else "확인 불가"
-    trade_iso = _trade_date_iso(trade_date)
+    header = date_match.group(1).strip() if date_match else ""
+    trade_iso = _trade_date_iso(header)
+    trade_date = datetime.strptime(trade_iso, "%Y-%m-%d").strftime("%a, %b %d, %Y") if trade_iso else "확인 불가"
     expected_iso = _expected_completed_us_session().isoformat()
     out = {}
     for symbol, (label, heading) in HEADINGS.items():
