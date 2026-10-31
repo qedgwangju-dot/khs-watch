@@ -1251,6 +1251,31 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
+def deduplicate_etf_events(signals: list[tuple], crypto: dict, previous_keys: list[str]) -> tuple[list[tuple], list[str]]:
+    """Persist one market alert per trading date / event kind / direction."""
+    seen = set(previous_keys or [])
+    selected = []
+    for signal in signals:
+        axis, headline = signal[0], signal[1]
+        match = re.match(r"^(BTC|ETH) ETF ", headline) if axis == "암호화폐" else None
+        if not match:
+            selected.append(signal)
+            continue
+        coin = match.group(1)
+        flow = crypto.get("btc_etf" if coin == "BTC" else "eth_etf") or {}
+        event_type = "flow5_flip" if "전환" in headline else "large_daily"
+        source_value = flow.get("five_day_usd_m" if event_type == "flow5_flip" else "daily_usd_m")
+        if source_value is None or not flow.get("date"):
+            continue
+        side = "out" if float(source_value) < 0 else "in"
+        key = f"{coin}|{flow['date']}|{event_type}|{side}"
+        if key in seen:
+            continue
+        seen.add(key)
+        selected.append(signal)
+    return selected, sorted(seen)[-1000:]
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     ALERT.unlink(missing_ok=True)
@@ -1340,11 +1365,13 @@ def main() -> None:
         "health": health,
         "health_error_streaks": health_streaks,
     }
-    write_json(PENDING, new_state)
-
     signals = []
     if old.get("initialized"):
         signals = build_signals(old, new_state, news_items, btc_threshold_event)
+        signals, new_keys = deduplicate_etf_events(
+            signals, crypto, list(old.get("etf_notified_event_keys") or [])
+        )
+        new_state["etf_notified_event_keys"] = new_keys
 
         old_health_streaks = old.get("health_error_streaks") or {}
         labels = {
@@ -1380,6 +1407,9 @@ def main() -> None:
 
         if signals:
             ALERT.write_text(build_alert(signals, now, new_state), encoding="utf-8")
+
+    # Only the workflow's post-send success step commits this pending state.
+    write_json(PENDING, new_state)
 
     status = [
         "# 워뇨띠 90일 서한 변곡 웹감시",
