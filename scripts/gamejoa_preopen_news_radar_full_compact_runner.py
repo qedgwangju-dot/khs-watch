@@ -12151,6 +12151,29 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
         r'(?:허가|승인|인허가)[^.!?\n]{0,70}(?:획득|취득|확정|승인|허가)',
         r'(?:자사주|배당|지분\s*취득|인수|합병)[^.!?\n]{0,70}(?:공시|결정|취득|체결|확정|완료|억원|조원)',
     ))
+    if (re.search(r'주\s*52\s*시간(?:제)?', title)
+            and re.search(r'예외|특례|면제|적용', title + ' ' + body)):
+        formal_labor_action_pattern = re.compile(
+            r'(?:법안|개정안|법률안|시행령|고시|규정|입법예고|정부안).{0,35}'
+            r'(?:발의|제출|공고|예고|의결|통과|공포|시행|발효|확정)|'
+            r'(?:국회\s*(?:의결|통과)|입법예고|공포|시행|발효)',
+        )
+        formal_labor_action = any(
+            formal_labor_action_pattern.search(sentence)
+            and not re.search(r'않|없|미정|검토|가능성|제시되지|불발|철회', sentence)
+            for sentence in market_materiality.source_sentences(title + ' ' + body)
+        )
+        if not formal_labor_action:
+            return 'labor_hours_exception_comment_without_formal_instrument'
+    feature_story = re.search(r'M\s*[-‐–]?\s*커버스토리|커버스토리|기획기사|심층분석|특집', title, re.I)
+    recycled_executive_quote = re.search(
+        r'(?:지난\s*\d{1,2}\s*월|지난달|지난해|앞서).{0,45}'
+        r'(?:최고경영자|\bCEO\b|회장|대표|밝혔|말했|전망|예상|said|expects?)',
+        body,
+        re.I,
+    )
+    if feature_story and recycled_executive_quote and not company_execution:
+        return 'feature_recycles_prior_executive_comment_without_current_market_catalyst'
     if ytd_market_cap_recap and not company_execution:
         return 'year_to_date_rally_and_market_cap_recap_without_company_execution'
     historical_cumulative_energy = bool(
@@ -12259,6 +12282,20 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
         combined,
         re.I,
     ))
+    retail_sentiment_only = bool(
+        re.search(r'개미|개인\s*투자자|개인\s*주주', title)
+        and re.search(r'간절|불안|바란다|바랐다|울상|기대감|희망', title)
+        and not re.search(
+            r'(?:순매수|순매도|거래대금|자금\s*(?:유입|유출))[^.!?\n]{0,24}'
+            r'\d[\d,.]*\s*(?:조|억|만)?\s*원?|'
+            r'\d[\d,.]*\s*(?:조|억|만)?\s*원?[^.!?\n]{0,24}'
+            r'(?:순매수|순매도|거래대금|자금\s*(?:유입|유출))',
+            title + ' ' + body,
+        )
+        and not company_execution
+    )
+    if retail_sentiment_only and not observed_market_change:
+        return 'retail_sentiment_without_observed_market_flow_or_price_change'
     flow_sentences = [title, *re.split(r'(?<=[.!?])\s+|[\r\n]+', body)]
     conditional_flow = any(
         re.search(r'(?:경우|라면|않으면|.{0,12}않았다면|if\s+)', sentence, re.I)

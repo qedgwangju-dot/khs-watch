@@ -3639,6 +3639,24 @@ def residential_contractor_preference_survey_reason(title: str, body: str) -> st
     return "resident_contractor_preference_survey_without_award_or_contract" if survey_rank and not actual_award else ""
 
 
+def kiet_industry_outlook_identity(title: str, body: str, published: str) -> str:
+    """Group headlines that repackage one KIET monthly outlook release."""
+    if not re.match(r"20\d{2}-\d{2}-\d{2}", published) or not body:
+        return ""
+    source = source_reported_body(body)
+    if not re.search(r"산업연구원|\bKIET\b", source, re.I):
+        return ""
+    if not re.search(r"PSI|업황\s*전망|제조업.{0,20}(?:회복|전망)|산업.{0,20}전망", title + " " + source):
+        return ""
+    month = re.search(r"(?<!\d)(1[0-2]|0?[1-9])\s*월", title)
+    if not month:
+        month = re.search(r"(?<!\d)(1[0-2]|0?[1-9])\s*월", source)
+    if not month:
+        return ""
+    stage = "revision" if re.search(r"정정|수정|재발표|revised|correction", title + " " + source, re.I) else "initial"
+    return f"source_event:v2:kiet_industry_outlook:{published[:4]}-{int(month.group(1)):02d}:{stage}"
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -3672,6 +3690,9 @@ def source_event_identity(alert: dict) -> str:
     title = str(alert.get('source_title') or alert.get('original_news') or alert.get('news') or '')
     body = str(alert.get('source_body') or '') if alert.get('body_verified') else ''
     published = str(alert.get('published') or '')
+    industry_outlook = kiet_industry_outlook_identity(title, body, published)
+    if industry_outlook:
+        return industry_outlook
     humanoid_launch = lg_cloid_humanoid_launch_observation(title, body, published)
     if humanoid_launch:
         return (
