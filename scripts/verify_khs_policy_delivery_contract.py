@@ -667,6 +667,7 @@ def assert_grid_scaled_fx_provenance_contract() -> None:
 
 
 def main() -> int:
+    khs_policy_watch._self_test_grid_scaled_official_candidate()
     assert_grid_scaled_fx_provenance_contract()
     OUT_DIR.mkdir(exist_ok=True)
     assert_robotics_232_presidential_alert_reaches_delivery_guard()

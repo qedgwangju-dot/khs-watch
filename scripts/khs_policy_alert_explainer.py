@@ -866,6 +866,12 @@ def ensure_explained(item: dict) -> dict:
     default_context(item)
     text = text_for(item)
     if (
+        item.get("policy_event_key") == "us-doe-grid-scaled-funding-opportunity-2026-10-30"
+        and item.get("body_verified") and item.get("title_ko")
+        and item.get("policy_plain_summary")
+    ):
+        return item
+    if (
         item.get("policy_event_key") == "us-section232-robotics-machinery-proclamation-2026-10-28"
         and item.get("body_verified")
         and str(item.get("source") or "").lower().startswith("white house")

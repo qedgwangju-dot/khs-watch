@@ -35,6 +35,17 @@ OUT_DIR = ROOT / "out"
 DATA_DIR = ROOT / "data"
 SEEN_PATH = DATA_DIR / "khs_policy_watch_seen.json"
 PENDING_SEEN_PATH = OUT_DIR / "khs_policy_watch_pending_seen.json"
+GRID_SCALED_EVENT_KEY = "us-doe-grid-scaled-funding-opportunity-2026-10-30"
+GRID_SCALED_NEWS_URL = (
+    "https://www.energy.gov/articles/"
+    "energy-department-announces-over-230-million-funding-opportunity-strengthen-americas-grid"
+)
+GRID_SCALED_OFFICIAL_SOURCES = (
+    ("DOE news", GRID_SCALED_NEWS_URL),
+    ("Grants.gov", "https://www.grants.gov/search-results-detail/364174"),
+    ("Grants.gov simpler", "https://simpler.grants.gov/opportunity/f5ae758f-11a7-4897-81c2-553821ff2270"),
+)
+
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
 
@@ -1556,6 +1567,9 @@ def classify_item(item: dict) -> dict | None:
     is_whitehouse_source = source_lower.startswith("white house") or "whitehouse.gov/" in link_lower
     if is_whitehouse_source and not item.get("body_verified"):
         return None
+    # The dedicated official-source lane owns Grid SCALED; never alert on an unverified RSS teaser.
+    if "energy-department-announces-over-230-million-funding-opportunity" in link_lower:
+        return None
     if "national-energy-dominance-month-2026" in link_lower:
         if not is_energy_dominance_month_proclamation(item):
             return None
@@ -1679,6 +1693,123 @@ def save_seen(seen: dict) -> None:
     SEEN_PATH.write_text(json.dumps(seen, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
+def grid_scaled_document_verified(raw: str, url: str) -> bool:
+    """Fail closed: require exact program identity and verified official dollar amount."""
+    address = str(url).lower()
+    if not any(host in address for host in ("energy.gov/", "grants.gov/")):
+        return False
+    body = clean_text(raw).lower()
+    title_match = (
+        "grid supply chain alternatives to lead energy dominance" in body
+        or "grid scaled" in body
+        or "grid s.c.a.l.e.d." in body
+    )
+    amount_match = bool(re.search(
+        r"(?:\\$\\s*237\\s*million|\\$\\s*237\\s*,\\s*000\\s*,\\s*000|\\b237\\s*million\\b)",
+        body,
+    ))
+    award_identity = "de-foa-0003641" in body
+    deadline_identity = (
+        "november 20, 2026" in body
+        and "february 8, 2027" in body
+    )
+    return title_match and amount_match and (award_identity or deadline_identity)
+
+
+def collect_grid_scaled_official(now: dt.datetime) -> tuple[dict | None, str]:
+    """Bounded catch-up for an official missed DOE funding notice, never a grant award."""
+    if not (dt.date(2026, 10, 30) <= now.date() <= dt.date(2026, 11, 20)):
+        return None, "Grid SCALED: 공고 재확인 기간 외"
+    errors = []
+    for name, url in GRID_SCALED_OFFICIAL_SOURCES:
+        body, error = fetch_text(url, timeout=8)
+        if error or not body:
+            errors.append(f"{name}: {type(error).__name__ if error else 'empty'}")
+            continue
+        if not grid_scaled_document_verified(body, url):
+            errors.append(f"{name}: 원문 명칭·금액·공고번호 또는 기한 불일치")
+            continue
+        event = {
+            "source": name,
+            "title": "Grid Supply Chain Alternatives to Lead Energy Dominance (Grid SCALED) Funding Opportunity",
+            "title_ko": "미 에너지부, Grid SCALED 전력망 공급망 지원금 2억3,700만달러 신청 공고",
+            "link": url,
+            "published_kst": "2026-10-30T00:00:00+09:00",
+            "policy_event_key": GRID_SCALED_EVENT_KEY,
+            "fingerprint": hashlib.sha256(
+                f"policy-event-v1|{GRID_SCALED_EVENT_KEY}".encode("utf-8")
+            ).hexdigest()[:16],
+            "matched": {"energy_security_policy": ["Grid SCALED 공고", "전력망 제조 지원"]},
+            "importance": "상",
+            "status": "확정",
+            "body_verified": True,
+            "summary": "미국 에너지부 Grid SCALED 전력망 부품 공급망 지원사업 공고",
+            "policy_plain_summary": (
+                "2026년 10월 30일 DOE가 Grid SCALED 자금지원 신청을 공고했습니다. "
+                "총 2억3,700만달러는 지원 공고액으로 실제 지급·개별 업체 수주액이 아닙니다. "
+                "기존 전력망 장비 재생·재사용 최대 5,000만달러, 미국산 대체 소재·부품 최대 1억8,700만달러입니다."
+            ),
+            "investment_view": (
+                "변압기·전력망 부품의 미국 내 제조·재생 능력 확대 유도 정책이며 "
+                "실제 매출은 지원대상 선정, 공급계약, 제조·납품, 검수 후 확인됩니다."
+            ),
+            "korea_market_impact": (
+                "한국 전력기기 업체의 직접 수주·지원금 수령은 이번 DOE 공고로 확인되지 않았습니다. "
+                "미국 내 제조·조달 조건과 선정기업의 최종 발주를 별도로 검증해야 합니다."
+            ),
+            "priced_in": "공고 자체가 장비 주문이나 기업별 확정 매출을 뜻하지 않습니다.",
+            "counter": "미국산 조달 요건, 신청 심사·선정, 자부담 조건이 실적 연결을 제한할 수 있습니다.",
+            "failure_signal": "선정기업, 자금협약, 실제 장비 주문·납품이 확인되지 않으면 정책 기대가 매출로 전환되지 않습니다.",
+            "impacts": ["돈 버는 능력", "시간표", "수급"],
+            "paths": ["정부 자금지원", "미국 내 제조", "조달", "정책 타임라인"],
+            "sectors": ["미국 전력망/변압기", "전력기기 소재·부품", "미국 현지 제조"],
+            "korea_value_chain": ["변압기", "배전기기", "전기강판·부품"],
+        }
+        print(f"grid_scaled_official_verified=true source={name!r} event={GRID_SCALED_EVENT_KEY}")
+        return event, f"Grid SCALED: 공식 공고·금액 확인 ({name})"
+    print("grid_scaled_official_verified=false source_or_amount_unavailable")
+    return None, "Grid SCALED: 공식 원문 미확인 (" + "; ".join(errors[:3]) + ")"
+
+
+def _self_test_grid_scaled_official_candidate() -> None:
+    from unittest.mock import patch
+
+    now = dt.datetime(2026, 11, 1, 12, tzinfo=KST)
+    official = (
+        "Grid Supply Chain Alternatives to Lead Energy Dominance (Grid SCALED). "
+        "The Department of Energy announced a $237 million funding opportunity "
+        "on October 30, 2026. Up to $50 million for refurbishment and reuse, "
+        "up to $187 million for alternative components. "
+        "Concept papers by November 20, 2026. Full applications by February 8, 2027."
+    )
+    with patch(f"{__name__}.fetch_text", return_value=(official, None)):
+        item, note = collect_grid_scaled_official(now)
+    assert item and item["policy_event_key"] == GRID_SCALED_EVENT_KEY, note
+    assert item["body_verified"] and item["importance"] == "상"
+    assert "2억3,700만달러" in item["policy_plain_summary"]
+    assert "1억8,700만달러" in item["policy_plain_summary"]
+    assert "신청 공고" in item["title_ko"]
+    assert grid_scaled_document_verified(official, GRID_SCALED_NEWS_URL)
+    assert not grid_scaled_document_verified(
+        official.replace("$237 million", "$23 million"), GRID_SCALED_NEWS_URL
+    )
+    assert not grid_scaled_document_verified(official, "https://example.com/news")
+    with patch(f"{__name__}.fetch_text", return_value=("No matching funding notice", None)):
+        missing, _ = collect_grid_scaled_official(now)
+    assert missing is None, "Unverified grant notice became an alert"
+    assert collect_grid_scaled_official(
+        dt.datetime(2026, 12, 1, tzinfo=KST)
+    )[0] is None, "Stale DOE announcement became a new current event"
+    report = render_report([item], [], now)
+    for term in (
+        "2억3,700만달러", "5,000만달러", "1억8,700만달러",
+        "1억2,500만달러", "3억7,500만달러",
+        "2026년 11월 20일", "2027년 2월 8일",
+    ):
+        assert term in report, f"Grid SCALED core fact missing from alert: {term}"
+    print("grid_scaled_official_candidate_regression=passed")
+
+
 def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
     candidates: list[dict] = []
     source_notes: list[str] = []
@@ -1769,6 +1900,14 @@ def render_report(alerts: list[dict], source_notes: list[str], now: dt.datetime)
         ensure_explained(alert)
         matched_terms = sorted({term for terms in alert["matched"].values() for term in terms})
         display_title = alert.get("title_ko") or alert["title"]
+        if alert.get("policy_event_key") == GRID_SCALED_EVENT_KEY:
+            lines.extend([
+                "- 세부 지원: 기존 전력망 장비 재생·재사용 최대 5,000만달러, 미국산 대체 소재·부품 최대 1억8,700만달러.",
+                "- 예상 효과: 연간 전력회사 비용 절감 추정 1억2,500만달러, 해외 공급업체 대신 미국 내 잔류 기대 금액 연간 5,000만달러.",
+                "- 상위 프로그램: Grid Supply Chain Program 지원 한도 최대 3억7,500만달러이며 이번 공고액과 합산하지 않습니다.",
+                "- 신청 기한: 2026년 11월 20일 사업개념서, 2027년 2월 8일 최종 신청서 제출.",
+                "- 후속: 2027년 차세대 변압기·표준화 관련 추가 공고 예상. 현재 기업별 확정 지원·수주 아님.",
+            ])
         lines.extend(
             [
                 f"## {idx}. [{alert['importance']}·{alert['status']}] {display_title}",
@@ -1869,6 +2008,12 @@ def main() -> int:
     seen = load_seen()
     seen_map = seen.setdefault("seen", {})
     candidates, source_notes = collect_candidates(now)
+    grid_key = hashlib.sha256(f"policy-event-v1|{GRID_SCALED_EVENT_KEY}".encode("utf-8")).hexdigest()[:16]
+    if grid_key not in seen_map and not any(x.get("fingerprint") == grid_key for x in candidates):
+        grid_event, grid_note = collect_grid_scaled_official(now)
+        source_notes.append("- " + grid_note)
+        if grid_event is not None:
+            candidates.append(grid_event)
     energy_key = hashlib.sha256(
         b"policy-event-v1|us-energy-dominance-month-proclamation-2026-10-07"
     ).hexdigest()[:16]
@@ -1909,6 +2054,11 @@ def main() -> int:
         else:
             print(f"energy_month_direct=official_fetch_unavailable error={original_error}")
     candidates = dedupe_candidate_fingerprints(candidates)
+    grid_pending = any(
+        x.get("policy_event_key") == GRID_SCALED_EVENT_KEY
+        and x.get("fingerprint") not in seen_map
+        for x in candidates
+    )
     robotics_pending = any(
         x.get("policy_event_key") == ROBOTICS_232_EVENT_KEY
         and x.get("fingerprint") not in seen_map
@@ -1930,6 +2080,7 @@ def main() -> int:
             or item["fingerprint"] in seen_map
             or item["fingerprint"] in selected_fingerprints
             or (robotics_pending and item.get("policy_event_key") != ROBOTICS_232_EVENT_KEY)
+            or (grid_pending and not robotics_pending and item.get("policy_event_key") != GRID_SCALED_EVENT_KEY)
         ):
             continue
         new_alerts.append(item)
