@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "last_date": "2026-10-29",
-  "digest": "8aa4dde18cb0843eaf35b5a3",
+  "last_date": "2026-10-30",
+  "digest": "515c8a92e1b43d4771ecba56",
   "format_version": 3,
   "sector_history": [
     {
@@ -108,12 +108,38 @@
       "buy_rows": {
         "업종 미확인": 7
       }
+    },
+    {
+      "date": "2026-10-30",
+      "digest": "515c8a92e1b43d4771ecba56",
+      "complete": false,
+      "buy_complete": false,
+      "sell_complete": false,
+      "buy_usd": {
+        "업종 미확인": 0.0,
+        "금융기술·디지털자산": 0.0,
+        "바이오·헬스케어": 0.0
+      },
+      "sell_usd": {
+        "업종 미확인": 0.0
+      },
+      "buy_rows": {
+        "업종 미확인": 1,
+        "금융기술·디지털자산": 7,
+        "바이오·헬스케어": 6
+      }
     }
   ],
-  "updated_at": "2026-10-30T02:04:58.138463+00:00",
-  "pending_delivery": {
+  "updated_at": "2026-10-31T00:56:52.542131+00:00",
+  "last_delivery": {
     "last_date": "2026-10-30",
     "digest": "515c8a92e1b43d4771ecba56",
-    "reserved_at": "2026-10-31T00:56:53.215425+00:00"
+    "message_ids": [
+      118,
+      119
+    ],
+    "chat_id": "1551003698",
+    "bot": "khs887988798879_bot",
+    "confirmed_at": "2026-10-31T00:56:55.720011+00:00"
   }
 }
