@@ -335,12 +335,32 @@ def _format_fx_provenance(codes: set[str], rates: dict[str, dict]) -> str:
         value = item.get("value")
         source = str(item.get("source") or "확인 불가")
         reference = str(item.get("reference_time_kst") or "")
-        reference_label = reference[5:16].replace("T", " ") if len(reference) >= 16 else "기준일 확인 불가"
+        queried = str(item.get("query_time_kst") or "")
+        date = reference[:10] if len(reference) >= 10 else "기준일 확인 불가"
+        checked = queried[:16].replace("T", " ") if len(queried) >= 16 else "조회시각 확인 불가"
         if value is None:
-            parts.append(f"{code}/KRW 확인 불가 · {source}")
-        else:
-            parts.append(f"{code}/KRW {float(value):,.2f}원 · {source} · {reference_label} KST")
-    return "- 원화 환산 기준: " + " / ".join(parts)
+            raise ValueError(f"{code}/KRW 환율 미확인: 추정 환산액 송출 금지")
+        parts.append(
+            f"{code}/KRW {float(value):,.2f}원 · {source} · 기준 {date} · 조회 {checked} KST"
+        )
+    return "- 환율 기준: " + " / ".join(parts)
+
+
+def _all_currency_codes(text: str) -> set[str]:
+    """Find currency codes in both raw and already-converted money expressions."""
+    found: set[str] = set()
+    occupied: list[tuple[int, int]] = []
+    masked = re.sub(r"https?://[^\s<>)]+", "", str(text or ""))
+    for pattern in AMOUNT_PATTERNS:
+        for match in pattern.finditer(masked):
+            if any(match.start() < end and match.end() > start for start, end in occupied):
+                continue
+            amount = _parse_foreign_number(match.group("number"), match.group("scale") or "")
+            code = _label_to_code(match.group("label"))
+            if code and amount is not None:
+                found.add(code)
+                occupied.append(match.span())
+    return found
 
 
 def _compact_converted_core(core: str, limit: int = 50) -> str:
@@ -608,16 +628,38 @@ def format_policy_message(
         now = now.astimezone(KST)
 
     title, body = normalize_policy_structure(title, body)
+    # Keep an already-rendered FX basis on an idempotent second pass.
+    # When raw amounts require conversion, discard any stale preexisting basis.
+    previous_basis = next(
+        (line.strip() for line in body.splitlines() if line.strip().startswith("- 환율 기준:")),
+        "",
+    )
+    body = "\n".join(
+        line for line in body.splitlines()
+        if not line.strip().startswith("- 환율 기준:")
+    )
     try:
         from khs_policy_readability_patch import improve_policy_readability
     except ImportError:
         from scripts.khs_policy_readability_patch import improve_policy_readability
     body = improve_policy_readability(body)
-    amounts = extract_foreign_amounts(f"{title}\n{body}")
-    codes = sorted({str(item["code"]) for item in amounts})
-    rate_snapshot = _normalized_rates(rates, codes, now)
-    title, _title_codes = _convert_text(title, rate_snapshot)
-    body, _body_codes = _convert_text(body, rate_snapshot)
+    raw = f"{title}\n{body}"
+    codes_present = _all_currency_codes(raw)
+    amounts = extract_foreign_amounts(raw)
+    unconverted_codes = sorted({str(item["code"]) for item in amounts})
+    if unconverted_codes:
+        rate_snapshot = _normalized_rates(rates, sorted(codes_present), now)
+        for code in unconverted_codes:
+            value = (rate_snapshot.get(code) or {}).get("value")
+            if not isinstance(value, (int, float)) or not (0 < value < 1_000_000):
+                raise ValueError(f"{code}/KRW 검증된 환율 부재: 외화 알림 송출 보류")
+        title, _title_codes = _convert_text(title, rate_snapshot)
+        body, _body_codes = _convert_text(body, rate_snapshot)
+        body = body.rstrip() + "\n" + _format_fx_provenance(set(unconverted_codes), rate_snapshot)
+    elif codes_present:
+        if not previous_basis:
+            raise ValueError("원화 괄호는 존재하지만 원화 환산 기준이 없는 알림 송출 보류")
+        body = body.rstrip() + "\n" + previous_basis
     return title.strip(), body.strip() + "\n"
 
 
@@ -946,4 +988,8 @@ def validate_final_policy_message(title: str, body: str) -> list[str]:
             errors.append("presidential_action_timeline_has_no_dated_event")
     if extract_foreign_amounts(combined):
         errors.append("foreign_currency_not_converted")
+    if _all_currency_codes(combined) and "- 환율 기준:" not in body:
+        errors.append("foreign_currency_provenance_missing")
+    if re.search(r"\(\s*원화\s*약\s*[\d,.]+\s*(?:조|억|만)?원\s*\)", body):
+        errors.append("orphaned_krw_annotation")
     return errors
