@@ -347,7 +347,8 @@
     "stateevt_6c723d274b826022f8f1": "2026-10-17T04:40:10.903987+00:00",
     "stateevt_60599bf5e149b80833fe": "2026-10-17T12:18:05.211565+00:00",
     "stateevt_e46d791c218bfa5ffad7": "2026-10-21T00:09:16.454329+00:00",
-    "stateevt_bf2ae1b505008051da7f": "2026-10-21T00:09:16.454329+00:00"
+    "stateevt_bf2ae1b505008051da7f": "2026-10-21T00:09:16.454329+00:00",
+    "stateevt_645a045a987f420d5621": "2026-10-31T21:59:25.771008+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -386,7 +387,8 @@
     "eventstate_alaska_lng_6c723d274b826022f8f1": "2026-10-17T04:40:10.903987+00:00",
     "eventstate_alaska_lng_60599bf5e149b80833fe": "2026-10-17T12:18:05.211565+00:00",
     "eventstate_alaska_lng_e46d791c218bfa5ffad7": "2026-10-21T00:09:16.454329+00:00",
-    "eventstate_us_trade_surplus_bf2ae1b505008051da7f": "2026-10-21T00:09:16.454329+00:00"
+    "eventstate_us_trade_surplus_bf2ae1b505008051da7f": "2026-10-21T00:09:16.454329+00:00",
+    "eventstate_power_equipment_supply_645a045a987f420d5621": "2026-10-31T21:59:25.771008+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -524,46 +526,30 @@
     "power_equipment_supply": {
       "facts": [
         "party:doosan",
-        "stage:수주발주"
+        "stage:수주발주",
+        "stage:체결"
       ],
       "slots": {
         "power_equipment_supply|party:doosan": "party:doosan",
-        "power_equipment_supply|stage:수주발주": "stage:수주발주"
+        "power_equipment_supply|stage:수주발주": "stage:수주발주",
+        "power_equipment_supply|stage:체결": "stage:체결"
       },
       "initialized_at": "2026-09-21T13:18:34.539905+00:00",
-      "updated_at": "2026-09-21T13:18:34.539905+00:00",
-      "last_title": "[오늘 이 종목] AI 서버 수주부터 가스터빈까지…공급 부족 수혜주는? - 머니투데이 - 머니투데이",
-      "last_source": "머니투데이",
+      "updated_at": "2026-10-31T21:59:29.049632+00:00",
+      "last_title": "두산에너빌리티, 美서 SMR 첫 원자로 제작 계약 체결 - 매일일보",
+      "last_source": "매일일보",
       "evidence": [
         {
-          "source": "뉴시스",
-          "title": "韓美, 대미 투자 막판 조율…두산에너빌리티, 핵심 소재 공급 역량 '관심' - 뉴시스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA4RmR3QkVoMHBiRnBYNHA2Rl94TzA3OTh5TmVVNjYyb0VzRkdrNGk4OVhMMVNvRnE4MWNiOG5kajBUdTdUWjRWbXdzTU9rV2hpamVVY3JGeHRoanhTR1FMddIBeEFVX3lxTFAzdGdoZEJwTWk3MnYzUVFUUEJtZXFScjVwXzZlLU84TmhLbk1TSXJyeGltdXc2R3ZJbnI3eEV6VDdkdXBuY19QR0tNVDZsdUZfU3Y0VFNlZWdoblZsS3RDalR2LWNfeWpwRlpMSVBVdVlpTUlHOFBIMg?oc=5",
-          "published": "2026-09-16T05:13:44+00:00"
+          "source": "매일일보",
+          "title": "두산에너빌리티, 美서 SMR 첫 원자로 제작 계약 체결 - 매일일보",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9ha281RkJiWXRsUXY1dUNUbVlYTHE0Wm1WWk5udC1wa3ZrZjVET2t0NjZqYVBzWlFDQmtPUURoSWtpd1pxY0xKU19QWWJiNkVVUkxJMUZaQWhKZW1UTWlpWGlFSzQ?oc=5",
+          "published": "2026-10-29T08:04:52+00:00"
         },
         {
-          "source": "와이드경제",
-          "title": "480조 대미 투자 눈앞…두산에너빌리티, 'LNG·원전·SMR' 수주 잭팟 정조준 - 와이드경제",
-          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE94aFAyWHZrbEYyMXpTLWhlcFlBNWZiS0pCX1dQX0d1UjdZSHpfbXRzOEVQODE4WHZEU1QycGsydWdscDh1Vk1kWjNidC1FYzBPTkVnRlV0cHNjelU4SjloakE0Mm1QSEJXTS1Odw?oc=5",
-          "published": "2026-09-16T07:21:42+00:00"
-        },
-        {
-          "source": "파이낸셜뉴스",
-          "title": "韓美, 대미 투자 막판 조율…두산에너빌리티, 핵심 소재 공급 역량 '관심' - 파이낸셜뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1kWVhUemxiUnZfU2t6VXpPNGpVd2lMZHBnbFJRZmRVN2w0Y29XVWxPQU1GYU1pdmhZQVZob0l2SmVHNzBDU1pZa2FoVng4RTF2T2RHRkc2SjI2UQ?oc=5",
-          "published": "2026-09-16T05:14:37+00:00"
-        },
-        {
-          "source": "v.daum.net",
-          "title": "반토막 난 '텐배거' 두산에너빌리티⋯대미투자에 다시 쏠린 눈 - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5raHZ3cl8yNTFqYUVUa2VVLUM3M1lSSlR3S0xORmtBUWNOUWxKWjFYMnpqZ0pDQ1NleXNaVE41Y1NNN2NIOWc?oc=5",
-          "published": "2026-09-18T06:18:07+00:00"
-        },
-        {
-          "source": "ainews1.co.kr",
-          "title": "3500억달러 대미 에너지 투자…두산에너빌리티·한전기술 수혜 기대 - ainews1.co.kr",
-          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9WcDA2OGF4WmxUdzJmTFRtTWtDRFBwV0JjelF0YTN5eXJ1ZkQtRVZUaUZFVVRmd3NscHNfX3U0cGJWbk91d25QQkZvbDlOWk82YnI2OUFITzRJWVQ2N1RNalFtVXcxbUlDU0V3?oc=5",
-          "published": "2026-09-15T14:44:23+00:00"
+          "source": "뉴스스페이스",
+          "title": "두산에너빌리티, 美 뉴스케일파워 SMR 첫 원자로 제작 계약 체결 - 뉴스스페이스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBvajB0VUdQZUx0am9XcWJfeUU2Z3FrSmFkTkhyNmhSWV9nT0pVdzc2MXVZaC01dDZrcU9QSU45LVJPbHp6eVF5QVdxeXNvYXF5RFd0cGxWcmhEMUE?oc=5",
+          "published": "2026-10-29T05:50:55+00:00"
         }
       ]
     },
