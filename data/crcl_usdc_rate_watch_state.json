@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-31T08:47:53+09:00",
+  "updated_at_kst": "2026-10-31T14:41:47+09:00",
   "circle": {
     "date": "2026-10-29",
     "circulation_usd_b": 70.0,
@@ -10,23 +10,23 @@
     }
   },
   "usdxx": {
-    "date": "2026-10-29",
-    "sec_yield_7d": 3.89,
-    "yield_7d": 3.89,
-    "yield_1d": 3.9,
+    "date": "2026-10-30",
+    "sec_yield_7d": 3.91,
+    "yield_7d": 3.91,
+    "yield_1d": 3.94,
     "yield_crosscheck_gap_bp": 0.0,
-    "visible_nav_date": "2026-10-29",
-    "fund_size_usd_m": 59467.6,
-    "fund_size_date": "2026-10-29",
+    "visible_nav_date": "2026-10-30",
+    "fund_size_usd_m": 58967.7,
+    "fund_size_date": "2026-10-30",
     "source_url": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund",
     "product": "Circle Reserve Fund",
     "ticker": "USDXX",
     "cusip": "09261A870",
     "_previous_distinct": {
-      "date": "2026-10-28",
+      "date": "2026-10-29",
       "sec_yield_7d": 3.89,
-      "fund_size_usd_m": 59867.6,
-      "fund_size_date": "2026-10-28"
+      "fund_size_usd_m": 59467.6,
+      "fund_size_date": "2026-10-29"
     }
   },
   "sofr": {
@@ -66,10 +66,10 @@
   },
   "tbx": {
     "date": "2026-10-30",
-    "close": 29.176700592041016,
+    "close": 29.18000030517578,
     "prev_date": "2026-10-29",
     "prev_close": 29.290000915527344,
-    "daily_pct": -0.39
+    "daily_pct": -0.38
   },
   "fx": {
     "rate": 1335.3,
@@ -78,11 +78,9 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,333.44원, 차이 0.14%"
+    "crosscheck": "Yahoo Finance 1,337.98원, 차이 0.20%"
   },
   "crcl_last_alerted_close_date": "2026-10-30",
   "correction_pending": false,
-  "errors": [
-    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-10-30 sec=[(datetime.date(2026, 10, 29), 3.89), (datetime.date(2026, 10, 29), 3.89)] seven=[(datetime.date(2026, 10, 29), 3.89)] | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-10-30 sec=[(datetime.date(2026, 10, 29), 3.89), (datetime.date(2026, 10, 29), 3.89)] seven=[(datetime.date(2026, 10, 29), 3.89)]"
-  ]
+  "errors": []
 }
