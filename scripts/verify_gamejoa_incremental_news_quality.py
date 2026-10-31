@@ -6822,6 +6822,82 @@ class IncrementalNewsTests(unittest.TestCase):
 
 
 class ConcreteLiveSelectionRegressions(unittest.TestCase):
+    def test_oct23_attachment_withholds_commentary_and_groups_one_kiet_report(self):
+        now = dt.datetime(2026, 10, 25, 18, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        political_spend = alert(
+            '일론 머스크가 공화당 지원을 위해 7,600만 달러를 추가로 투입했다',
+            '일론 머스크가 공화당 지원을 위해 7,600만 달러를 추가로 투입했다.',
+            'https://example.com/musk-campaign-spend',
+        )
+        labor_comment = alert(
+            '이소영 “주52시간 예외, 협상력 있는 근로자에 도입 가능”',
+            '이소영 중소벤처기업부 장관이 반도체 산업에 주 52시간제 예외 적용에 찬성했다. '
+            '협상력을 갖춘 일부 근로자에 한해 도입할 수 있다는 의견이며, 법안 발의나 시행 일정은 제시되지 않았다.',
+            'https://example.com/labor-hours-comment',
+        )
+        cover_story = alert(
+            "M-커버스토리 적자 공포에 '기술 자립' 사활 건 빅테크",
+            '빅테크 기업들이 부품 단가 상승에 따른 적자 우려 속에서 기술 자립에 나섰다. '
+            '젠슨 황 엔비디아 CEO는 지난 9월 내년에는 올해보다 두 배 많은 칩을 판매할 것으로 예상한다고 밝혔다.',
+            'https://example.com/ai-cover-story',
+        )
+        kiet_total = alert(
+            '11월 업황 전망 PSI 102 기록…전월비 11포인트 하락',
+            '산업연구원이 발표한 11월 업황 전망 PSI는 102로 전월보다 11포인트 하락했다. '
+            '반도체 수요는 개선 요인으로, 휴대폰 업황은 부진 요인으로 평가됐다.',
+            'https://example.com/kiet-psi-total',
+        )
+        kiet_sector = alert(
+            '11월 제조업 회복 기대 꺾였다…반도체 웃고 휴대폰 울고',
+            '산업연구원의 11월 업황 전망에 따르면 휴대폰 PSI는 53으로 47포인트 하락했다. '
+            '반도체는 AI 인프라 투자와 HBM 수요가 개선 요인으로 꼽혔다.',
+            'https://example.com/kiet-psi-sector',
+        )
+        for item in (political_spend, labor_comment, cover_story, kiet_total, kiet_sector):
+            item['published'] = now.isoformat()
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=now):
+            self.assertEqual(
+                radar.low_impact_live_publication_reason(labor_comment, now),
+                'labor_hours_exception_comment_without_formal_instrument',
+            )
+            self.assertEqual(
+                radar.low_impact_live_publication_reason(cover_story, now),
+                'feature_recycles_prior_executive_comment_without_current_market_catalyst',
+            )
+            self.assertEqual(
+                materiality.assess(political_spend['source_title'], political_spend['source_body'])['disposition'],
+                'review',
+            )
+            total_identity = materiality.source_event_identity(kiet_total)
+            sector_identity = materiality.source_event_identity(kiet_sector)
+            self.assertTrue(total_identity.startswith('source_event:v2:kiet_industry_outlook:2026-11:'))
+            self.assertEqual(total_identity, sector_identity)
+            self.assertEqual(radar.alert_dedup_key(kiet_total), radar.alert_dedup_key(kiet_sector))
+
+            formal_labor_action = alert(
+                '정부, 반도체 특구 주52시간 예외 법안 발의',
+                '정부가 반도체 특구 근로시간 예외를 담은 법안을 국회에 발의했다.',
+                'https://example.com/labor-hours-bill',
+            )
+            self.assertEqual(radar.low_impact_live_publication_reason(formal_labor_action, now), '')
+
+        next_month = {**kiet_sector, 'source_title': '12월 제조업 업황 전망 PSI',
+                      'news': '12월 제조업 업황 전망 PSI', 'original_news': '12월 제조업 업황 전망 PSI',
+                      'source_body': '산업연구원의 12월 업황 전망 PSI가 발표됐다.'}
+        self.assertNotEqual(total_identity, materiality.source_event_identity(next_month))
+
+    def test_oct23_market_sentiment_quotes_do_not_count_as_observed_market_news(self):
+        candidate = alert(
+            '“내일 삼전이 하닉만큼 감동 주길”…주가 폭등에 개미들 간절',
+            '개인 투자자들이 삼성전자 주가 상승을 바란다고 말했다. 새로운 실적, 공시, 거래대금 또는 순매수 수치는 기사에 없다.',
+            'https://example.com/retail-sentiment-only',
+        )
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            self.assertEqual(
+                radar.low_impact_live_publication_reason(candidate, NOW),
+                'retail_sentiment_without_observed_market_flow_or_price_change',
+            )
+
     def test_oct15_attachment_has_per_link_audit_and_explicit_source_limits(self):
         fixture = ATTACHMENT_QUALITY_20261015
         rows = fixture["items"]
