@@ -11,6 +11,7 @@
     "036e5a8e56b8dadb2242",
     "03821957e650440141d8",
     "03e6a0b769aa0fd88521",
+    "0424f0d8a8e455b76e0f",
     "0447943f95ce3d5a3bd7",
     "0466308d6da56a74102f8090",
     "0505e47b4b18bc7c34ad",
@@ -405,6 +406,7 @@
     "810a2a7f0394673d13b0",
     "812a1a4d9015ccef6436b19c",
     "81abe9b4ab9bf72bc9f9",
+    "8282ba40ef38e7e27970",
     "82fddd6889afd1e714ddecf3",
     "83e234c076d1e742fca3",
     "8407fb9c7230fdc074db3a11",
@@ -680,6 +682,7 @@
     "dae6d09fa4eb70403b35",
     "dc0783d4fd40e0c760e0",
     "dc20ae238a94198b6ba76cc3",
+    "dc394127eeb234dbfed4",
     "dc740bd4eb64a8f00db4",
     "dd0f6f79e4c04101ef95",
     "dd2d6abeca1a25c87d64",
@@ -804,7 +807,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-31T07:34:40+09:00",
+  "last_scan_kst": "2026-10-31T10:50:16+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -812,10 +815,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 9,
-  "fetch_errors": [
-    "bing_news \"Apple\" \"M8 Ultra\" server: ParseError not well-formed (invalid token): line 1, column 41",
-    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41",
-    "bing_news \"Apple\" \"NVLink Fusion\": ParseError not well-formed (invalid token): line 1, column 41"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
