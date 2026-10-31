@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-30T23:51:38.288677+00:00",
+    "updated_at": "2026-10-31T00:12:51.830102+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -400,6 +400,15 @@
       "title": "파이오링크, EDR과 MDR 결합한 보안관제 제공 - 보안뉴스",
       "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9ZaWdJU1ZYRFFNXzFXTkE4ZmxtbGU3c2stNi1iRjMwOFlFaUtEYjc1YnE2ejI5Mko2T2U4ek9QclJmeEVXTF9ERUdOMG5MOUhVTm01UGo1RFZBMGE0Tk53YzZiVEhaaVBSRGhZ?oc=5"
     },
+    "e71261312acf996251d755a6": {
+      "category": "파이오링크 관리형 탐지·대응 상용화 단계",
+      "entity": "파이오링크",
+      "first_seen_at": "2026-10-31T00:12:51.830102+00:00",
+      "published_at": "2026-10-28T02:01:34+00:00",
+      "source": "뉴시스",
+      "title": "\"위협 경보 받아도 대응 막막\"…파이오링크, 관리형 탐지·대응 사업 확대 - 뉴시스",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9zdGxGRnRaVnExb3U1V2xrMFQ0czBXSlZHdFdEdEJzZEVuMVAxcklGOGRJdExZYWw4UFFGa0tWdlVOdXY0djhCVk9leGFPaVNQNjJJWHl4N3llejA0YzVCRNIBeEFVX3lxTFB3c3ZXVGVrUGRXVXp0aHZvVExjZWtOYWRUbTZOMEVZcXQ3NjRtSEJfVzJPbG5CMUVzdTZQbktJQlNhWHIwUml3eTgzOGhIN0htZUJhNlVncFFqdnJ6akY0X2tTVWhoU1JvMWFFQWZ2ZDB5SWc3SGV3dg?oc=5"
+    },
     "e8fd84957f3bd0c1872f97e0": {
       "category": "Anthropic 프런티어 AI 안전법안 입법 단계",
       "entity": "Anthropic AI 안전법안",
@@ -550,11 +559,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-10-31T08:51:38+09:00",
+  "updated_at_kst": "2026-10-31T09:12:51+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-10-30T23:52:28.264656+00:00",
+    "last_success_at": "2026-10-31T00:13:40.093893+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
