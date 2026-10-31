@@ -1705,7 +1705,7 @@ def grid_scaled_document_verified(raw: str, url: str) -> bool:
         or "grid s.c.a.l.e.d." in body
     )
     amount_match = bool(re.search(
-        r"(?:\\$\\s*237\\s*million|\\$\\s*237\\s*,\\s*000\\s*,\\s*000|\\b237\\s*million\\b)",
+        r"(?:\$\s*237\s*million|\$\s*237\s*,\s*000\s*,\s*000|\b237\s*million\b)",
         body,
     ))
     award_identity = "de-foa-0003641" in body
@@ -1900,20 +1900,23 @@ def render_report(alerts: list[dict], source_notes: list[str], now: dt.datetime)
         ensure_explained(alert)
         matched_terms = sorted({term for terms in alert["matched"].values() for term in terms})
         display_title = alert.get("title_ko") or alert["title"]
-        if alert.get("policy_event_key") == GRID_SCALED_EVENT_KEY:
-            lines.extend([
+        extra_lines = (
+            [
                 "- 세부 지원: 기존 전력망 장비 재생·재사용 최대 5,000만달러, 미국산 대체 소재·부품 최대 1억8,700만달러.",
                 "- 예상 효과: 연간 전력회사 비용 절감 추정 1억2,500만달러, 해외 공급업체 대신 미국 내 잔류 기대 금액 연간 5,000만달러.",
                 "- 상위 프로그램: Grid Supply Chain Program 지원 한도 최대 3억7,500만달러이며 이번 공고액과 합산하지 않습니다.",
                 "- 신청 기한: 2026년 11월 20일 사업개념서, 2027년 2월 8일 최종 신청서 제출.",
                 "- 후속: 2027년 차세대 변압기·표준화 관련 추가 공고 예상. 현재 기업별 확정 지원·수주 아님.",
-            ])
+            ]
+            if alert.get("policy_event_key") == GRID_SCALED_EVENT_KEY else []
+        )
         lines.extend(
             [
                 f"## {idx}. [{alert['importance']}·{alert['status']}] {display_title}",
                 f"- 원제: {alert['title']}",
                 f"- 상태 변화: {', '.join(alert['matched'].keys())} 신호 확인 ({', '.join(matched_terms[:8])})",
                 f"- 원문/출처: [{alert['source']}]({alert['link']}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
+                *extra_lines,
                 *explanation_lines(alert),
                 "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
                 "",
