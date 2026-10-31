@@ -363,6 +363,33 @@ def _all_currency_codes(text: str) -> set[str]:
     return found
 
 
+def _strip_existing_krw_pairs(text: str) -> str:
+    """Recompute an upstream KRW pair from its original currency amount.
+
+    Existing parentheticals are not trusted as the new quote: they may have
+    been calculated with a stale or rounded rate. Do not alter other brackets.
+    """
+    original = str(text or "")
+    spans: list[tuple[int, int]] = []
+    matched: list[tuple[int, int]] = []
+    for pattern in AMOUNT_PATTERNS:
+        for m in pattern.finditer(original):
+            if any(m.start() < end and m.end() > start for start, end in matched):
+                continue
+            matched.append(m.span())
+            tail = original[m.end():]
+            annotation = re.match(
+                r"\s*\((?:약\s*)?[\d,.조억만원]+원\s*\)",
+                tail,
+            )
+            if annotation:
+                spans.append((m.end(), m.end() + annotation.end()))
+    output = original
+    for start, end in sorted(set(spans), reverse=True):
+        output = output[:start] + output[end:]
+    return output
+
+
 def _compact_converted_core(core: str, limit: int = 50) -> str:
     text = re.sub(r"\s+", " ", str(core or "")).strip()
     if len(text) <= limit:
@@ -630,10 +657,6 @@ def format_policy_message(
     title, body = normalize_policy_structure(title, body)
     # Keep an already-rendered FX basis on an idempotent second pass.
     # When raw amounts require conversion, discard any stale preexisting basis.
-    previous_basis = next(
-        (line.strip() for line in body.splitlines() if line.strip().startswith("- 환율 기준:")),
-        "",
-    )
     body = "\n".join(
         line for line in body.splitlines()
         if not line.strip().startswith("- 환율 기준:")
@@ -643,23 +666,20 @@ def format_policy_message(
     except ImportError:
         from scripts.khs_policy_readability_patch import improve_policy_readability
     body = improve_policy_readability(body)
-    raw = f"{title}\n{body}"
-    codes_present = _all_currency_codes(raw)
-    amounts = extract_foreign_amounts(raw)
-    unconverted_codes = sorted({str(item["code"]) for item in amounts})
-    if unconverted_codes:
-        rate_snapshot = _normalized_rates(rates, sorted(codes_present), now)
-        for code in unconverted_codes:
+    # Recalculate even already-parenthesized amounts from a single verified
+    # exchange-rate snapshot. Old, potentially rounded KRW values are replaced.
+    all_codes = _all_currency_codes(f"{title}\n{body}")
+    if all_codes:
+        title = _strip_existing_krw_pairs(title)
+        body = _strip_existing_krw_pairs(body)
+        rate_snapshot = _normalized_rates(rates, sorted(all_codes), now)
+        for code in sorted(all_codes):
             value = (rate_snapshot.get(code) or {}).get("value")
             if not isinstance(value, (int, float)) or not (0 < value < 1_000_000):
                 raise ValueError(f"{code}/KRW 검증된 환율 부재: 외화 알림 송출 보류")
-        title, _title_codes = _convert_text(title, rate_snapshot)
-        body, _body_codes = _convert_text(body, rate_snapshot)
-        body = body.rstrip() + "\n" + _format_fx_provenance(set(unconverted_codes), rate_snapshot)
-    elif codes_present:
-        if not previous_basis:
-            raise ValueError("원화 괄호는 존재하지만 원화 환산 기준이 없는 알림 송출 보류")
-        body = body.rstrip() + "\n" + previous_basis
+        title, _ = _convert_text(title, rate_snapshot)
+        body, _ = _convert_text(body, rate_snapshot)
+        body = body.rstrip() + "\n" + _format_fx_provenance(all_codes, rate_snapshot)
     return title.strip(), body.strip() + "\n"
 
 
