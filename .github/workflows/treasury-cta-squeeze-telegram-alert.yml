@@ -172,9 +172,24 @@ jobs:
           with urllib.request.urlopen(req,timeout=25) as r:
               result=json.loads(r.read().decode())
           if not result.get("ok"):
-              raise RuntimeError(result)
+              raise RuntimeError("Telegram sendMessage returned ok=false")
+          delivered=result.get("result") or {}
+          receipt_chat=delivered.get("chat") or {}
+          returned_chat_id=receipt_chat.get("id")
+          message_id=delivered.get("message_id")
+          if returned_chat_id is None or not isinstance(message_id,int) or message_id <= 0:
+              raise RuntimeError("Telegram response missing chat.id or valid message_id")
+          if chat.lstrip("-").isdigit():
+              chat_match=(str(returned_chat_id)==chat)
+          elif chat.startswith("@"):
+              chat_match=(str(receipt_chat.get("username") or "").lower()==chat[1:].lower())
+          else:
+              chat_match=False
+          if not chat_match:
+              raise RuntimeError("Telegram response chat.id does not match configured recipient")
+          print(f"telegram_send_verified=true chat_id_returned=true chat_id_match=true message_id={message_id}")
           pathlib.Path("out/treasury_cta_squeeze_telegram_confirmed.json").write_text(
-              json.dumps({"bot_username":actual,"message_id":(result.get("result") or {}).get("message_id")},ensure_ascii=False,indent=2)+"\n",
+              json.dumps({"bot_username":actual,"chat_id_returned":True,"chat_id_match":True,"message_id":message_id},ensure_ascii=False,indent=2)+"\n",
               encoding="utf-8"
           )
           PY
@@ -191,7 +206,7 @@ jobs:
           j=json.loads(p.read_text(encoding="utf-8"))
           status=pathlib.Path("out/treasury_cta_squeeze_status.md")
           with status.open("a", encoding="utf-8") as f:
-              f.write(f"- 텔레그램 최종 전달: 확인 · bot=@{j.get('bot_username','unknown')} · message_id={j.get('message_id')}\n")
+              f.write(f"- 텔레그램 최종 전달: 확인 · bot=@{j.get('bot_username','unknown')} · chat.id 반환={'예' if j.get('chat_id_returned') else '미확인'} · 수신처 일치={'예' if j.get('chat_id_match') else '미확인'} · message_id={j.get('message_id')}\n")
           PY
           elif [ -f out/treasury_cta_squeeze_alert.html ]; then
             echo "- 텔레그램 최종 전달: 미확인 — 알림 파일은 있으나 Telegram 확인 파일 없음" >> out/treasury_cta_squeeze_status.md
