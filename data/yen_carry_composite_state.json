@@ -17,16 +17,16 @@
     "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
-  "fx_age_seconds": 8273.857305049896,
+  "fx_age_seconds": 19913.811805963516,
   "fx_signal_eligible": false,
   "initialized": true,
   "policy_path": {
     "cftc_net_short": 14630.0,
     "cftc_net_short_change": 0.0,
     "cftc_net_short_pct_oi": 3.9114927839241123,
-    "checked_at_kst": "2026-10-31T08:17:37+09:00",
+    "checked_at_kst": "2026-10-31T11:27:04+09:00",
     "elevated_vol": false,
-    "fx_vol_ratio": 1.1672102193350757,
+    "fx_vol_ratio": 1.1794160635623496,
     "gradual_absorption": true,
     "hawkish_repricing_proxy": false,
     "initialized": true,
@@ -58,7 +58,7 @@
   },
   "real_rate_overlay": {
     "available": true,
-    "checked_at_kst": "2026-10-31T08:17:38+09:00",
+    "checked_at_kst": "2026-10-31T11:27:06+09:00",
     "initialized": true,
     "inputs": {
       "boj_effective_date": null,
@@ -118,25 +118,25 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-10-31T08:17:31+09:00"
+    "updated_at_kst": "2026-10-31T11:26:58+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-10-31T08:16:51+09:00",
+  "updated_at_kst": "2026-10-31T11:26:15+09:00",
   "values": {
     "cftc_net_short": 14630,
     "cftc_net_short_pct_oi": 3.9114927839241123,
-    "fx_12h_5m_sigma_bps": 3.0317843231163217,
-    "fx_vol_ratio": 1.1672102193350757,
+    "fx_12h_5m_sigma_bps": 3.0679034196317083,
+    "fx_vol_ratio": 1.1794160635623496,
     "jgb2": 1.901,
     "mof_latest_2w_outward_trillion_yen": 0.1631,
     "mof_prior_2w_outward_trillion_yen": -0.1161,
     "us_jp_2y_spread": 2.7090000000000005,
     "usdjpy": 157.5189971923828,
     "usdjpy_12h_drawdown_pct": -0.06280946707503146,
-    "usdjpy_15m_pct": -0.04632091037630027,
-    "usdjpy_30m_pct": -0.024124375245504984,
-    "usdjpy_60m_pct": -0.0025379169146059733,
+    "usdjpy_15m_pct": -0.06280946707503146,
+    "usdjpy_30m_pct": -0.02157787117642883,
+    "usdjpy_60m_pct": 0.0012690067668090603,
     "ust2": 4.61
   }
 }
