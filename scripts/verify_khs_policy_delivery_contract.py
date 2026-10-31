@@ -594,7 +594,77 @@ def assert_energy_month_document_keeps_identity() -> None:
         raise AssertionError("Presidential timeline was lost")
 
 
+def assert_grid_scaled_fx_provenance_contract() -> None:
+    """DOE Grid SCALED: keep all USD/KRW pairs, source date, and distinct amounts."""
+    from scripts.khs_policy_telegram_formatter import (
+        format_policy_message, validate_final_policy_message,
+    )
+    now = dt.datetime(2026, 10, 31, 16, 30, tzinfo=ZoneInfo("Asia/Seoul"))
+    rates = {"USD": {
+        "value": 1335.2667,
+        "source": "ECB/Frankfurter",
+        "reference_time_kst": "2026-10-30T00:00+09:00",
+        "query_time_kst": now.isoformat(timespec="minutes"),
+    }}
+    source = "https://www.energy.gov/articles/energy-department-announces-over-230-million-funding-opportunity-strengthen-americas-grid"
+    title = "미국 전력망·전력기기 정책 중요 변화"
+    body = "\n".join((
+        "미국 에너지부 Grid SCALED 신규 공고",
+        "- 핵심: DOE는 총 2억3,700만달러를 신청 공고했으며 확정 지급액은 아닙니다.",
+        "- 기존 장비 재생·재사용: 최대 5,000만달러.",
+        "- 미국산 대체 부품: 최대 1억8,700만달러.",
+        "- 연간 절감 추정: 1억2,500만달러.",
+        "- 상위 프로그램 한도: 최대 3억7,500만달러(약 3,000억원); 이번 공고와 합산 금지.",
+        "- 일정: 2026년 11월 20일 예비서류, 2027년 2월 8일 정식 신청.",
+        f"- 출처: [원문]({source})",
+    ))
+    got_title, got_body = format_policy_message(
+        title, body, rates=rates, now=now,
+    )
+    expected = (
+        "2억3,700만달러(약 3,164.6억원)",
+        "5,000만달러(약 667.6억원)",
+        "1억8,700만달러(약 2,496.9억원)",
+        "1억2,500만달러(약 1,669.1억원)",
+        "3억7,500만달러(약 5,007.3억원)",
+    )
+    for part in expected:
+        if part not in got_body:
+            raise AssertionError(f"DOE monetary amount or immediate KRW pair lost: {part} {got_body}")
+    if "- 환율 기준: USD/KRW 1,335.27원 · ECB/Frankfurter · 기준 2026-10-30" not in got_body:
+        raise AssertionError(f"DOE ECB exchange rate/date provenance missing: {got_body}")
+    if got_body.count("- 환율 기준:") != 1:
+        raise AssertionError("DOE FX provenance not exactly once")
+    if "(약 3,000억원)" in got_body or "(원화 약 " in got_body:
+        raise AssertionError("Wrong or detached legacy KRW parentheses survived")
+    errors = validate_final_policy_message(got_title, got_body)
+    if errors:
+        raise AssertionError(f"DOE policy message rejected after FX validation: {errors}")
+    second_title, second_body = format_policy_message(
+        got_title, got_body, rates=rates, now=now,
+    )
+    if (second_title, second_body) != (got_title, got_body):
+        raise AssertionError("DOE FX formatter changed already converted message on second pass")
+    invalid = {"USD": {"value": None, "source": "unavailable"}}
+    try:
+        format_policy_message(title, body, rates=invalid, now=now)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("DOE message sent with no verified USD/KRW rate")
+    detached = (
+        "DOE 공고는 2억3,700만달러(약 3,164.6억원)입니다. "
+        "절감효과는 별도입니다. (원화 약 3,165억원)"
+    )
+    if "orphaned_krw_annotation" not in validate_final_policy_message(
+        "DOE 정책 변화", "- 환율 기준: USD/KRW 1,335.27원\n" + detached
+    ):
+        raise AssertionError("Stray detached KRW annotation was not rejected")
+    print("grid_scaled_fx_provenance_contract=passed")
+
+
 def main() -> int:
+    assert_grid_scaled_fx_provenance_contract()
     OUT_DIR.mkdir(exist_ok=True)
     assert_robotics_232_presidential_alert_reaches_delivery_guard()
     assert_robotics_232_isolated_from_unrelated_policy_bundle()
