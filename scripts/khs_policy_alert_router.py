@@ -692,9 +692,26 @@ def robotics_232_detail_lines(alert: dict) -> list[str]:
     ]
 
 
+def doe_grid_scaled_detail_lines(alert: dict) -> list[str]:
+    """Retain every distinct official amount and application deadline in Telegram."""
+    if alert.get("policy_event_key") != "us-doe-grid-scaled-funding-opportunity-2026-10-30":
+        return []
+    return [
+        "- 지원금 공고: 총 2억3,700만달러. 선정·지급 완료나 업체별 수주가 아닙니다.",
+        "- 세부 지원: 기존 전력망 장비 재생·재사용 최대 5,000만달러; 미국산 대체 소재·부품 최대 1억8,700만달러.",
+        "- DOE 예상 효과: 전력회사 비용 연간 1억2,500만달러 절감, 미국 내 잔류 금액 연간 5,000만달러(예상값).",
+        "- 프로그램 한도: 상위 Grid Supply Chain Program 최대 3억7,500만달러. 이번 공고액과 별도 합산 금지.",
+        "- 신청 기한: 2026년 11월 20일 사업개념서 제출, 2027년 2월 8일 정식 신청 마감.",
+        "- 후속: 2027년 차세대 변압기·표준화 지원 공고 예정; 직접 공급사·확정 수주처는 아직 미공개.",
+    ]
+
+
 def apply_router_overrides(alert: dict) -> None:
-    if alert.get("policy_event_key") == "us-section232-robotics-machinery-proclamation-2026-10-28":
-        return  # Preserve source-verified robotics trade policy, not FCC/SMR.
+    if alert.get("policy_event_key") in {
+        "us-section232-robotics-machinery-proclamation-2026-10-28",
+        "us-doe-grid-scaled-funding-opportunity-2026-10-30",
+    }:
+        return  # Preserve source-verified event-specific policy facts.
     text = alert_text(alert)
     if "알뜰폰" in text and "데이터 안심옵션" in text:
         alert["importance"] = "상"
@@ -1017,6 +1034,7 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
             *compact_explanation_lines(alert),
             *robotics_232_detail_lines(alert),
+            *doe_grid_scaled_detail_lines(alert),
             *presidential_action_timeline_lines(alert),
             f"- 출처: [원문 보기]({alert.get('link', '')}) · {display_source(alert.get('source'))} · 조회 {now:%H:%M KST}",
             "",
