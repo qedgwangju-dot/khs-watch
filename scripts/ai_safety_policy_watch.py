@@ -89,6 +89,11 @@ NEWS_QUERIES = [
     # English company / paid-contract paths.
     '(NAVER Cloud OR S2W OR SandLab OR "LG CNS") cybersecurity AI contract pilot procurement',
     'AI cybersecurity foundation model government procurement pilot contract Korea',
+    '"AWS Continuum" (new paid customer OR revenue OR production deployment OR usage growth OR contract)',
+    '"AWS Continuum" ("Claude Code" OR Codex OR Kiro) (available OR launch OR integration live)',
+    '"AWS Continuum" (autonomous remediation OR enforce mode OR patch rollback OR incident)',
+    '"Andy Jassy" ("security tokens" OR "cybersecurity token") (20% OR measured OR forecast)',
+
     '(Palo Alto Networks OR CrowdStrike OR IBM OR Microsoft OR NVIDIA) AI cybersecurity product launch ARR contract customer',
     '("Unit 42" OR "Frontier AI Defense" OR SafeMind OR "AI Runtime Firewall") cybersecurity customer contract subscription',
     '(Palo Alto Networks OR CrowdStrike) AI security ARR annual recurring revenue bookings guidance',
@@ -154,6 +159,23 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "aws_continuum:developer_integrations_announced_20260805": {
+        "source_url": "https://aws.amazon.com/blogs/security/aws-partners-with-anthropic-and-openai-to-bring-aws-continuum-into-developer-workflows/",
+        "status": "2026-08-05 issuer announced planned Claude Code/Codex/Kiro integrations, not all live",
+    },
+    "aws_continuum:ga_20261022": {
+        "source_url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-continuum-for-code-vulnerabilities-is-now-generally-available/",
+        "status": "2026-10-22 AWS Continuum code vulnerability service generally available; human-approved changes are initial default",
+    },
+    "aws_continuum:five_users_disclosed_20261029": {
+        "source_url": "https://www.aboutamazon.com/news/company-news/aws-growth-ai-demand-q3-2026-earnings",
+        "status": "2026-10-29 Capital One, IBM, Infor, Luminate, Robinhood already use AWS Continuum; paid amount undisclosed",
+    },
+    "amazon_security_tokens:outside_estimate_20pct_20261029": {
+        "source_url": "https://www.fool.com/earnings/call-transcripts/2026/10/30/amazon-amzn-q3-2026-earnings-call-transcript/",
+        "status": "2026-10-29 Andy Jassy cited unnamed observers' possible 20pct share of all future AI tokens in 1-2 years, not an AWS measured result or guidance",
+    },
+
     "infra172:inspection_started_20261028": {"source_url":"https://www.yna.co.kr/view/AKR20261028025200017","status":"111 institutions, 172 facilities, existing government inspection; incremental procurement unconfirmed"},
     "piolink_mdr:expansion_announced_20261028": {"source_url":"https://www.newsis.com/view/NISX20261028_0003844426","status":"Multivendor EDR + MDR expansion; no standalone paid contract amount verified"},
     "piolink_php:free_check_page_20261023": {"source_url":"https://www.piolink.com/kr/company/News.php?bbsCode=media_press&idx=925&vType=view","status":"Free PHP2Shell public check page, not paid contract"},
@@ -225,6 +247,8 @@ TRUSTED_SOURCE_HINTS = (
     "associated press", "ap news", "guardian", "cbs news", "wall street journal", "wsj",
     "crowdstrike", "ibm", "nvidia", "microsoft", "mbc", "ytn",
     "trail of bits", "trailofbits.com", "cnbc",
+    "amazon web services", "aws news", "about amazon", "amazon ir", "the motley fool", "crn",
+
     "piolink", "파이오링크", "estsecurity", "이스트시큐리티",
     "axgate", "엑스게이트", "sga솔루션즈", "SGA솔루션즈",
     "뉴시스", "newsis", "보안뉴스", "파이낸셜포스트",
@@ -1015,6 +1039,105 @@ def php_business_publisher_verified(item: dict) -> bool:
     return source_trusted(source)
 
 
+def aws_security_stage(item: dict) -> tuple[str, str] | None:
+    """Separate an unnamed token-use estimate from a launched paid-use service."""
+    title = str(item.get("title") or "").lower()
+    body = f"{title} {item.get('description','')}".lower()
+    amazon_context = any(x in body for x in ("amazon", "aws", "andy jassy", "앤디 재시", "아마존"))
+    continuum = "aws continuum" in title or (
+        "continuum" in title and amazon_context and any(
+            x in body for x in ("security", "vulnerab", "code", "취약점", "보안")
+        )
+    )
+    if continuum:
+        conditional = any(x in title for x in (
+            "plans to", "will ", "may ", "could ", "expected", "planned",
+            "계획", "예정", "추진", "검토", "전망", "목표",
+        ))
+        if not conditional and any(x in title for x in (
+            "autonomous enforce mode now available", "autonomous patching live",
+            "fully autonomous remediation launched", "자율 패치 모드 정식 출시",
+        )):
+            return "aws_continuum", "autonomous_mode_live_reported"
+        if not conditional and any(x in title for x in (
+            "claude code codex kiro integrations live", "integrations now available",
+            "codex integration launched", "claude code integration launched",
+            "개발 도구 연동 출시 완료",
+        )):
+            return "aws_continuum", "developer_integrations_live_reported"
+        if not conditional and any(x in title for x in (
+            "signed paid contract", "paid customer contract signed",
+            "new paid enterprise contract", "유료 공급계약 체결", "유료 고객 계약 체결",
+        )):
+            return "aws_continuum", "paid_contract_reported"
+        if not conditional and any(x in title for x in (
+            "continuum-specific revenue disclosed", "continuum recurring revenue reported",
+            "continuum 매출액 공개", "continuum 매출 확정",
+        )):
+            return "aws_continuum", "product_revenue_disclosed_reported"
+        if not conditional and any(x in title for x in (
+            "new paying customers disclosed", "additional enterprise customers named",
+            "추가 유료 고객 공개", "신규 도입 고객 공개",
+        )):
+            return "aws_continuum", "new_customers_disclosed_reported"
+        if any(x in title for x in (
+            "capital one ibm infor luminate robinhood", "five users disclosed",
+            "five customers named", "5곳 이용 기업 공개",
+        )):
+            return "aws_continuum", "five_users_disclosed_20261029"
+        if any(x in title for x in (
+            "generally available", "general availability",
+            "code vulnerabilities now available", "정식 출시", "정식 제공",
+        )) and not conditional:
+            return "aws_continuum", "ga_20261022"
+        return "aws_continuum", "developer_integrations_announced_20260805"
+
+    estimate = ("jassy" in title or "재시" in title or "제시" in title) and amazon_context
+    estimate = estimate and ("20%" in body or "20 percent" in body) and any(
+        x in body for x in ("token", "토큰")
+    ) and any(x in body for x in ("security", "cyber", "보안")
+    )
+    if estimate:
+        if any(x in title for x in (
+            "actual security token share measured", "security token usage reaches 20%",
+            "보안 토큰 실제 사용 비중 확정",
+        )) and not any(x in title for x in ("estimate", "예상", "추정", "전망", "could", "may")):
+            return "amazon_security_tokens", "measured_share_disclosed_reported"
+        return "amazon_security_tokens", "outside_estimate_20pct_20261029"
+    return None
+
+
+def aws_security_publisher_verified(item: dict) -> bool:
+    if not aws_security_stage(item):
+        return True
+    name = str(item.get("source") or "").lower()
+    url = str(item.get("publisher_url") or item.get("url") or "")
+    try:
+        host = (urllib.parse.urlsplit(url).hostname or "").lower()
+    except ValueError:
+        return False
+    if not host:
+        return False
+    if any(x in name for x in ("amazon web services", "aws news", "about amazon", "amazon ir")):
+        return any(host == domain or host.endswith("." + domain) for domain in (
+            "amazon.com", "aws.amazon.com", "aboutamazon.com",
+        ))
+    if "motley fool" in name:
+        return host == "fool.com" or host.endswith(".fool.com")
+    if name == "crn":
+        return host == "crn.com" or host.endswith(".crn.com")
+    return source_trusted(name)
+
+
+def aws_security_issuer_verified(item: dict) -> bool:
+    if not aws_security_stage(item):
+        return False
+    source = str(item.get("source") or "").lower()
+    if not any(x in source for x in ("amazon web services", "aws news", "about amazon", "amazon ir")):
+        return False
+    return aws_security_publisher_verified(item)
+
+
 def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """Classify a new *reported* milestone from the headline, never from a
     speculative paragraph about what could happen. No issuer/legislative
@@ -1023,6 +1146,9 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
 
+    aws_stage = aws_security_stage(item)
+    if aws_stage:
+        return aws_stage
     business = php_business_event_stage(item)
     if business:
         return business
@@ -1284,6 +1410,12 @@ def detect_category(text: str) -> str:
         t in low for t in ("subpoena", "complaint", "investigation", "sues", "settlement", "consent order")
     ):
         return "FTC 프런티어 AI 소비자보호 조사·집행 단계"
+    aws_stage = aws_security_stage({"title": text})
+    if aws_stage:
+        return {
+            "aws_continuum": "AWS Continuum AI 보안 취약점 수정 서비스 상용화",
+            "amazon_security_tokens": "아마존 AI 보안 토큰 수요 전망·실측 구분",
+        }[aws_stage[0]]
     business = php_business_event_stage({"title": text})
     if business:
         return {
@@ -1337,6 +1469,12 @@ def detect_entity(text: str) -> str:
         if "openai" in low and "anthropic" in low:
             return "FTC–OpenAI·Anthropic"
         return "FTC–OpenAI" if "openai" in low else "FTC–Anthropic"
+    aws_stage = aws_security_stage({"title": text})
+    if aws_stage:
+        return {
+            "aws_continuum": "아마존웹서비스",
+            "amazon_security_tokens": "아마존·앤디 재시",
+        }[aws_stage[0]]
     business = php_business_event_stage({"title": text})
     if business:
         return {
@@ -1453,6 +1591,8 @@ def material(item: dict) -> bool:
         return False
     milestone = tracked_policy_event_stage(item)
     if milestone:
+        if milestone[0] in ("aws_continuum", "amazon_security_tokens") and not aws_security_publisher_verified(item):
+            return False
         if milestone[0] in ("infra172", "piolink_mdr", "piolink_php", "estsecurity_php", "sga_php", "axgate_php") and not php_business_publisher_verified(item):
             return False
         if milestone[0] in ("genians_nexus", "ksign_evsec", "ksign_sandslab") and not k_security_business_publisher_verified(item):
@@ -1524,12 +1664,13 @@ def normalize(item: dict) -> dict:
     out["fingerprint"] = fingerprint(item)
     out["category"] = detect_category(combined)
     out["entity"] = detect_entity(combined)
-    out["official"] = (source_official(item.get("source","")) and
+    out["official"] = ((source_official(item.get("source","")) or aws_security_issuer_verified(item)) and
         cohere_aisle_publisher_verified(item) and crowdstrike_nvidia_publisher_verified(item)
         and php_korea_publisher_verified(item)
         and k_security_business_publisher_verified(item)
         and k_security_business_official(item)
-        and php_business_publisher_verified(item))
+        and php_business_publisher_verified(item)
+        and aws_security_publisher_verified(item))
     return out
 
 
@@ -1899,6 +2040,32 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"• {html.escape(concise_fact(rep))}",
         ]
         if rep["category"] in (
+            "AWS Continuum AI 보안 취약점 수정 서비스 상용화",
+            "아마존 AI 보안 토큰 수요 전망·실측 구분",
+        ):
+            stage = aws_security_stage(rep)
+            stage_labels = {
+                "developer_integrations_announced_20260805": "기존 개발도구 연동 계획(2026년 8월)",
+                "ga_20261022": "코드 보안 서비스 정식 출시(2026년 10월)",
+                "five_users_disclosed_20261029": "실제 이용 기업 5곳 공개(2026년 10월)",
+                "outside_estimate_20pct_20261029": "향후 1~2년 보안 토큰 비중 20% 가능성에 대한 외부 추정 인용",
+                "paid_contract_reported": "신규 유료 고객 계약 보도",
+                "new_customers_disclosed_reported": "추가 이용 기업 공개 보도",
+                "product_revenue_disclosed_reported": "개별 서비스 매출 공개 보도",
+                "developer_integrations_live_reported": "개발도구 연동 정식 제공 보도",
+                "autonomous_mode_live_reported": "자율 보안패치 적용 기능 정식 제공 보도",
+                "measured_share_disclosed_reported": "보안 토큰 실제 사용 비중 측정치 공개 보도",
+            }
+            detail = stage_labels.get(stage[1], "추가 확인") if stage else "추가 확인"
+            lines.append(f"• <b>새 확인 단계</b>: {html.escape(detail)} · 전망·출시·고객 사용·유료 매출을 구분")
+            if stage and stage[0] == "amazon_security_tokens":
+                lines.append("• <b>발언 기준</b>: 10월 29일 재시는 향후 1~2년 전체 AI 토큰 사용량 약 20%가 보안에 쓰일 수 있다는 제3자 추정을 인용. 아마존 확정 지침·현재 실측·매출 전망이 아님")
+            else:
+                lines.append("• <b>현재 상용화</b>: 10월 22일 코드 취약점 탐지·수정 서비스 정식 출시. 캐피털원·IBM·Infor·Luminate·Robinhood 이용 사례는 공개됐으나 개별 계약금액 미확인")
+                lines.append("• <b>실행 통제</b>: 초기 수정안에는 사람 승인 필요. Claude Code·Codex·Kiro 연동 계획과 완전 자율 패치 운영은 별도 출시 확인 필요")
+                lines.append("• <b>수익 구조</b>: 보호 코드 줄 수 기반 월간 기본료와 인공지능 보안 작업량 기반 사용료. 유료 계약·고객별 사용량·반복매출 확인 필요")
+            lines.append("• <b>후속 확인</b>: 실제 보안 토큰 비율·유료 신규 고객·독립 매출·개발 도구 통합 정식 개시·자동수정 승인·오탐·되돌리기·패치 장애")
+        elif rep["category"] in (
             "민간 기반시설 172개 보안 점검·조달 단계",
             "파이오링크 관리형 탐지·대응 상용화 단계",
             "파이오링크 PHP 보안 점검 사업화 단계",
@@ -2090,6 +2257,35 @@ def main() -> int:
                 print(f"ai_policy_new_topic_feed total={len(fetched)} relevant={relevant}")
         except Exception as exc:
             errors.append(f"Google News 실패: {query[:55]} / {type(exc).__name__}: {exc}")
+
+    # Dated, separately verified reference milestones: never re-send old news.
+    # These are baseline facts, not proof of contract value or actual token share.
+    raw.extend([
+        {
+            "kind": "official", "query": "AWS Continuum October GA official",
+            "title": "AWS Continuum code vulnerabilities now generally available October 22 2026",
+            "description": "Issuer AWS: generally available security service discovers validates and remediates code vulnerabilities with human-approved fixes initially; no automatic unrestricted patch deployment.",
+            "source": "Amazon Web Services", "publisher_url": "https://aws.amazon.com/",
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-continuum-for-code-vulnerabilities-is-now-generally-available/",
+            "published_at": "2026-10-22T12:00:00+00:00",
+        },
+        {
+            "kind": "official", "query": "AWS Continuum real user references",
+            "title": "AWS Continuum Capital One IBM Infor Luminate Robinhood five users disclosed",
+            "description": "Amazon 2026 Q3 earnings: five named organizations already use AWS Continuum; product-specific paid contracts and revenue undisclosed.",
+            "source": "About Amazon", "publisher_url": "https://www.aboutamazon.com/",
+            "url": "https://www.aboutamazon.com/news/company-news/aws-growth-ai-demand-q3-2026-earnings",
+            "published_at": "2026-10-29T21:00:00+00:00",
+        },
+        {
+            "kind": "news", "query": "Andy Jassy 20 percent cybersecurity token estimate",
+            "title": "Andy Jassy cites some estimates 20% AI tokens for cybersecurity next 1-2 years",
+            "description": "Amazon Q3 2026 call transcript: Jassy attributes 20 percent possible future total AI token use to unnamed observers; this is not measured current security traffic or Amazon financial guidance.",
+            "source": "The Motley Fool", "publisher_url": "https://www.fool.com/",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/10/30/amazon-amzn-q3-2026-earnings-call-transcript/",
+            "published_at": "2026-10-29T21:00:00+00:00",
+        },
+    ])
 
     # Official CrowdStrike Oct-21 announcement, with stable stage dedup.
     raw.append({

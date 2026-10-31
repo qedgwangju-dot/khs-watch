@@ -637,6 +637,64 @@ jobs:
           print("ai_policy_php_government_stage_and_source_regression=PASS")
           PY
 
+      - name: Verify AWS Continuum launched service, client references, and 20pct estimate
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_safety_policy_watch import (
+              POLICY_EVENT_BASELINES, aws_security_stage,
+              aws_security_publisher_verified, build_alert,
+              cluster_events, material, normalize, tracked_policy_event_key,
+          )
+          import datetime as dt
+          def row(title, source, publisher):
+              return normalize({
+                  "kind": "news", "title": title,
+                  "description": title,
+                  "source": source,
+                  "url": publisher + "article",
+                  "publisher_url": publisher,
+              })
+          ga = row("AWS Continuum code vulnerabilities now generally available October 22 2026",
+                   "Amazon Web Services", "https://aws.amazon.com/")
+          clients = row("AWS Continuum Capital One IBM Infor Luminate Robinhood five users disclosed",
+                        "About Amazon", "https://www.aboutamazon.com/")
+          estimate = row("Andy Jassy cites some estimates 20% AI tokens for cybersecurity next 1-2 years",
+                         "The Motley Fool", "https://www.fool.com/")
+          oldkeys = [
+              "aws_continuum:ga_20261022",
+              "aws_continuum:five_users_disclosed_20261029",
+              "amazon_security_tokens:outside_estimate_20pct_20261029",
+          ]
+          assert [tracked_policy_event_key(x) for x in (ga,clients,estimate)] == oldkeys
+          assert all(x in POLICY_EVENT_BASELINES for x in oldkeys)
+          assert all(material(x) for x in (ga,clients,estimate))
+          assert ga["official"] and clients["official"] and not estimate["official"]
+          assert "아마존" in ga["entity"]
+          assert "상용화" in clients["category"]
+          paid = row("AWS Continuum signed paid contract with new customer",
+                     "Reuters", "https://www.reuters.com/")
+          planned = row("AWS Continuum plans to sign paid contract",
+                        "Reuters", "https://www.reuters.com/")
+          live = row("AWS Continuum Claude Code Codex Kiro integrations live",
+                     "Reuters", "https://www.reuters.com/")
+          measured = row("Andy Jassy actual security token share measured 20%",
+                         "The Motley Fool", "https://www.fool.com/")
+          assert tracked_policy_event_key(paid) == "aws_continuum:paid_contract_reported"
+          assert tracked_policy_event_key(planned) == "aws_continuum:developer_integrations_announced_20260805"
+          assert tracked_policy_event_key(live) == "aws_continuum:developer_integrations_live_reported"
+          assert tracked_policy_event_key(measured) == "amazon_security_tokens:measured_share_disclosed_reported"
+          assert len(cluster_events([ga,clients,estimate,paid,live])) == 5
+          spoof = row("AWS Continuum signed paid contract with new customer",
+                      "Amazon Web Services", "https://fake.example.invalid/")
+          assert not aws_security_publisher_verified(spoof)
+          assert not spoof["official"] and not material(spoof)
+          report = build_alert([[estimate]], dt.datetime(2026,11,1,tzinfo=dt.timezone.utc))[1]
+          assert "외부 추정" in report and "확정" in report
+          assert "outside_estimate" not in report
+          print("ai_policy_aws_continuum_ga_named_customers_forecast_regression=PASS")
+          PY
+
       - name: Verify PHP security vendor commercialization and infrastructure stage
         shell: bash
         run: |
