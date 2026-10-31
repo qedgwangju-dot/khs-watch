@@ -95,6 +95,13 @@ jobs:
           watcher._self_test_mofcom_2026_notices()
           print('mofcom_2026_policy_stage_regression=passed')
           PY
+      - name: Verify DOE Grid SCALED USD/KRW parentheses and rate provenance
+        run: |
+          PYTHONPATH=scripts:. python - <<'PY'
+          from scripts.verify_khs_policy_delivery_contract import assert_grid_scaled_fx_provenance_contract
+          assert_grid_scaled_fx_provenance_contract()
+          PY
+
       - name: Validate policy regression tests
         run: |
           python -m py_compile scripts/khs_policy_watch.py
