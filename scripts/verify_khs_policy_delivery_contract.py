@@ -2468,8 +2468,12 @@ def assert_fcc_upper_c_band_auction115_is_monitored() -> None:
         now=dt.datetime(2026, 10, 1, 12, 0, tzinfo=ZoneInfo("Asia/Seoul")),
     )
     nonempty = [line for line in formatted.splitlines() if line.strip()]
-    if len(nonempty) > 7:
-        raise AssertionError(f"Auction 115 compact body is too long: {len(nonempty)} lines")
+    fx_basis = [line for line in nonempty if line.lstrip().startswith("- 환율 기준:")]
+    content_lines = [line for line in nonempty if not line.lstrip().startswith("- 환율 기준:")]
+    if len(content_lines) > 7:
+        raise AssertionError(f"Auction 115 compact body is too long: {len(content_lines)} content lines")
+    if len(fx_basis) != 1:
+        raise AssertionError(f"Auction 115 exchange-rate source must appear once, got {len(fx_basis)}")
     telegram_html = khs_policy_telegram_formatter.prepare_telegram_html(title, formatted)
     expected_fcc = (
         '<a href="https://www.federalregister.gov/documents/2026/08/03/2026-15725/'
