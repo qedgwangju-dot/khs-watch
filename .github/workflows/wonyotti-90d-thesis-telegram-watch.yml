@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/wonyotti-90d-thesis-telegram-watch.yml"
       - "scripts/wonyotti_90d_thesis_watch.py"
+      - "tests/test_wonyotti_direction.py"
       - "data/wonyotti_90d_thesis_watch_state.json"
   schedule:
     - cron: "2,17,32,47 * * * *"
@@ -81,6 +82,7 @@ jobs:
         run: |
           rm -f out/wonyotti_90d_thesis_alert.html out/wonyotti_90d_thesis_status.md out/wonyotti_90d_thesis_pending_state.json
           python -m py_compile scripts/wonyotti_90d_thesis_watch.py
+          python -m unittest discover -s tests -p 'test_wonyotti_direction.py' -v
           python - <<'PY'
           import datetime as dt
           from scripts.wonyotti_90d_thesis_watch import (
