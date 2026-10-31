@@ -596,7 +596,7 @@ def assert_energy_month_document_keeps_identity() -> None:
 
 def assert_grid_scaled_fx_provenance_contract() -> None:
     """DOE Grid SCALED: keep all USD/KRW pairs, source date, and distinct amounts."""
-    from scripts.khs_policy_telegram_formatter import (
+    from khs_policy_telegram_formatter import (
         format_policy_message, validate_final_policy_message,
     )
     now = dt.datetime(2026, 10, 31, 16, 30, tzinfo=ZoneInfo("Asia/Seoul"))

@@ -1111,7 +1111,7 @@ STORY_RULES = (
         sectors="미국 드론 상용 운용, 800MHz 셀룰러 모뎀·무선통신, 통신망·기지국, 물류·송전선·가스관 점검",
         impacts=("돈 버는 능력", "시간표", "수급"),
         paths=("FCC 최종 채택", "연방관보 게재", "발효", "통신사 망 계약·인증", "FAA 비가시권 운항 승인", "실제 유료 운영"),
-        follow_up="FCC 26-72 최종 결정문과 47 CFR 22.925 정정·효력발생일, AT&T·Verizon의 드론 데이터 요금제·계약, FAA Part 108 확정·예외, 2026년 11월 19일 별도 450MHz·24GHz 규칙 제안·의결을 구분해 확인합니다.",
+        follow_up="FCC 26-72 최종 결정문과 47 CFR 22.925 정정·연방관보 게재·효력발생일, AT&T·Verizon의 드론 데이터 요금제·계약, FAA Part 108 확정·예외, 2026년 11월 19일 별도 450MHz·24GHz 규칙 제안·의결을 구분해 확인합니다.",
         trusted_sources=("Federal Communications Commission", "Reuters", "Light Reading", "DRONELIFE", "Associated Press", "Federal Register"),
     ),
     StoryRule(
