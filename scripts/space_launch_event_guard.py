@@ -77,8 +77,13 @@ def topic_key(category,title):
 
 def semantic_id(category,item):
     pub=dt.datetime.fromisoformat(item["published"])
-    monday=pub.date()-dt.timedelta(days=pub.weekday())
     event=kind(category,item["title"])
+    # A single first-launch delay must retain its semantic identity when
+    # follow-up coverage crosses a week boundary; different headlines are not
+    # new development milestones. Date-scoped IDs are kept for other stories.
+    if category=="rocketlab" and event=="development_delay" and "neutron" in item["title"].lower():
+        return "semantic:rocketlab:neutron:first_flight_shift_2027"
+    monday=pub.date()-dt.timedelta(days=pub.weekday())
     return "semantic:"+category+":"+topic_key(category,item["title"])+":"+event+":"+monday.isoformat()
 
 def self_test():
@@ -99,6 +104,10 @@ def self_test():
     c=dict(article("Citizens cuts Rocket Lab target after Neutron launch delay"),source="Bloomberg")
     assert semantic_pair("rocketlab",a,b) and not semantic_pair("rocketlab",a,c)
     assert semantic_id("rocketlab",a)==semantic_id("rocketlab",b)
+    delayed1=article("Rocket Lab Neutron first flight delayed to 2027","2026-10-14T20:00:00+00:00")
+    delayed2=article("Citizens lowers Rocket Lab target on Neutron 2027 delay","2026-10-22T20:00:00+00:00")
+    assert semantic_id("rocketlab",delayed1)==semantic_id("rocketlab",delayed2)
+    assert kind("rocketlab",delayed2)=="development_delay"
     print("space_launch_event_guard_self_test=ok stale=1 categories=1 semantic_dedup=1")
 # Historical mislabelled notifications; unique IDs ensure each correction once.
 FACT_CASES = (
