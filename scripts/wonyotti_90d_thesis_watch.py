@@ -209,16 +209,17 @@ def decode_google_news(url: str) -> str:
 
 
 def farside_flow(url: str) -> dict:
+    """Read Farside daily rows without comparing provisional prints to completed periods."""
     soup = BeautifulSoup(fetch(url).decode("utf-8", errors="replace"), "html.parser")
     rows = []
+    today = dt.datetime.now(KST).date()
     for tr in soup.find_all("tr"):
         cells = [clean(x.get_text(" ", strip=True)) for x in tr.find_all(["td", "th"])]
         if len(cells) < 3:
             continue
         day = parse_date(cells[0])
-        if not day:
+        if not day or day > today:
             continue
-
         raw_funds = cells[1:-1]
         numeric = [parse_number(x) for x in raw_funds if x not in {"", "-", "—"}]
         reported = sum(v is not None for v in numeric)
@@ -229,20 +230,24 @@ def farside_flow(url: str) -> dict:
         recomputed = round(sum(x for x in numeric if x is not None), 1)
         if abs(recomputed - total) > 1.0:
             continue
-        status = "complete" if missing == 0 else "partial"
         rows.append({
             "date": day,
             "total": total,
-            "status": status,
+            "status": "complete" if missing == 0 else "partial",
             "reported": reported,
             "missing": missing,
         })
 
-    if len(rows) < 5:
-        raise RuntimeError("검증 가능한 ETF 행이 5개 미만")
+    if len(rows) < 6:
+        raise RuntimeError("현재·직전 5영업일 ETF 집계행이 6개 미만")
     rows.sort(key=lambda x: x["date"])
+    # The source sometimes publishes a partial current row. Its rolling five-day
+    # sum must never be labeled as the previous FULL five-day period.
     latest = rows[-1]
     last5 = rows[-5:]
+    prev5 = rows[-6:-1]
+    last5_complete = len(last5) == 5 and all(x["status"] == "complete" for x in last5)
+    prev5_complete = len(prev5) == 5 and all(x["status"] == "complete" for x in prev5)
     return {
         "date": latest["date"].isoformat(),
         "daily_usd_m": latest["total"],
@@ -251,6 +256,11 @@ def farside_flow(url: str) -> dict:
         "missing_funds": latest["missing"],
         "five_day_usd_m": round(sum(x["total"] for x in last5), 1),
         "five_day_dates": [x["date"].isoformat() for x in last5],
+        "five_day_complete": last5_complete,
+        "previous_five_day_usd_m": round(sum(x["total"] for x in prev5), 1) if prev5_complete else None,
+        "previous_five_day_dates": [x["date"].isoformat() for x in prev5],
+        "previous_five_day_complete": prev5_complete,
+        "source_url": url,
     }
 
 
@@ -862,36 +872,54 @@ def build_signals(old: dict, new: dict, news_items: list[dict], btc_threshold_ev
 
     for key, label in (("btc_etf", "BTC"), ("eth_etf", "ETH")):
         before, after = old_crypto.get(key) or {}, new_crypto.get(key) or {}
-        a, b = before.get("five_day_usd_m"), after.get("five_day_usd_m")
-        before_daily, daily = before.get("daily_usd_m"), after.get("daily_usd_m")
-        if a is not None and b is not None:
-            trigger_ready = bool(after.get("trigger_ready"))
-            changed = (
-                after.get("date") != before.get("date")
-                or after.get("status") != before.get("status")
-                or before_daily is None
-                or daily is None
-                or abs(float(daily) - float(before_daily)) > 0.6
-                or abs(float(b) - float(a)) > 0.6
-            )
-            sign_flip = a * b < 0 and abs(b) >= 250
-            large_day = daily is not None and abs(float(daily)) >= 500
-            if trigger_ready and changed and (sign_flip or large_day):
-                if sign_flip:
-                    direction = "순유출→순유입" if b > 0 else "순유입→순유출"
-                    headline = f"{label} 현물 ETF 5영업일 자금흐름이 {direction} 전환"
-                else:
-                    direction = "순유입" if float(daily) > 0 else "순유출"
-                    headline = f"{label} 현물 ETF 당일 대규모 {direction} 확인"
-                status_label = "확정" if after.get("status") == "complete" else "부분집계·2회 안정확인"
-                signals.append((
-                    "암호화폐",
-                    headline,
-                    f"5영업일 {a:+,.1f} → {b:+,.1f}백만달러, 최신 일간 {float(daily):+,.1f}백만달러 ({status_label})",
-                    "가격 변화가 실제 현물 자금과 동행하는지 보는 핵심 확인 지표",
-                    f"{label} 가격·거래대금·파생 미결제약정 동행 여부",
-                    None,
-                ))
+        new5 = after.get("five_day_usd_m")
+        previous_full5 = after.get("previous_five_day_usd_m")
+        daily = after.get("daily_usd_m")
+        if new5 is None or daily is None or previous_full5 is None:
+            continue
+        if not bool(after.get("trigger_ready")):
+            continue
+        before_daily = before.get("daily_usd_m")
+        changed = (
+            after.get("date") != before.get("date")
+            or after.get("status") != before.get("status")
+            or before_daily is None
+            or abs(float(daily) - float(before_daily)) >= 10
+        )
+        flip = float(previous_full5) * float(new5) < 0 and (
+            abs(float(new5)) >= 100 or abs(float(daily)) >= 300
+        )
+        big_day = abs(float(daily)) >= 500
+        if not changed or not (flip or big_day):
+            continue
+
+        complete5 = bool(after.get("five_day_complete"))
+        stage = "확정" if complete5 else "잠정·추가 집계 중"
+        signal_direction = "순유출" if float(new5) < 0 else "순유입"
+        if flip:
+            prior_direction = "순유입" if float(previous_full5) > 0 else "순유출"
+            headline = f"{label} ETF 최근 5거래일 {prior_direction}에서 {signal_direction}로 전환"
+        else:
+            direction_day = "순유출" if float(daily) < 0 else "순유입"
+            headline = f"{label} ETF 당일 큰 규모의 {direction_day}"
+
+        prev_dates = after.get("previous_five_day_dates") or []
+        curr_dates = after.get("five_day_dates") or []
+        prev_period = f"{prev_dates[0]}~{prev_dates[-1]}" if len(prev_dates) == 5 else "직전 완료 기간"
+        curr_period = f"{curr_dates[0]}~{curr_dates[-1]}" if len(curr_dates) == 5 else "최근 기간"
+        details = (
+            f"이전 5거래일({prev_period}) {float(previous_full5):+,.1f}백만달러 "
+            f"→ 최근 5거래일({curr_period}) {float(new5):+,.1f}백만달러; "
+            f"최신 거래일 {float(daily):+,.1f}백만달러 ({stage})"
+        )
+        signals.append((
+            "암호화폐",
+            headline,
+            details,
+            "ETF 자금흐름 변화로 단기 매수·매도 압력의 방향을 재평가",
+            "가격·ETF 5거래일 방향이 함께 유지되는지, 반대 흐름으로 돌아서는지",
+            after.get("source_url"),
+        ))
 
     old_deriv, new_deriv = old_crypto.get("derivatives") or {}, new_crypto.get("derivatives") or {}
     for symbol in ("BTCUSDT", "ETHUSDT", "SOLUSDT"):
