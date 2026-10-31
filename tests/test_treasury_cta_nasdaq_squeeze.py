@@ -1162,3 +1162,47 @@ def test_cme_pg09_fresh_file_keeps_official_confirmation_source(monkeypatch):
     monkeypatch.setattr(market.official, "official_cme_snapshot", lambda: official_fresh)
     monkeypatch.setattr(market, "yahoo_snapshot", lambda: pytest.fail("unnecessary secondary fallback"))
     assert market.resilient_snapshot() is official_fresh
+
+
+def test_pg09_zb_does_not_absorb_ub_oi_even_without_total_line(monkeypatch):
+    import treasury_cta_squeeze_execution_watch as official
+
+    text = (
+        "PG09 BULLETIN # 210@ INTEREST RATE FUTURES Fri, Oct 30, 2026 PG09\n"
+        "10-YR NOTE FUTURES\n"
+        "DEC26 106'150 106'160 106'140 106'155 + 0'030 ---- 10000 5395905 + 1000\n"
+        "TOTAL 10-YR NOTE FUTURES 10000 5395905 + 1000\n"
+        "30Y BOND FUT\n"
+        "DEC26 108'10 108'20 108'00 108'15 + 0'05 ---- 1000 1800000 - 500\n"
+        "ULTRA T-BND FUT\n"
+        "DEC26 109'10 109'20 109'00 109'15 + 0'05 ---- 1000 2200000 - 700\n"
+        "TOTAL ULTRA T-BND FUT 1000 2200000 - 700\n"
+    )
+    monkeypatch.setattr(official, "_download_pdf_text", lambda: text)
+    monkeypatch.setattr(official, "_expected_completed_us_session", lambda: date(2026, 10, 30))
+    observed = official.official_cme_snapshot()
+    assert observed["ZB"]["open_interest"] == 1_800_000
+    assert observed["ZB"]["oi_change"] == -500
+    assert observed["UB"]["open_interest"] == 2_200_000
+    assert observed["UB"]["oi_change"] == -700
+    assert observed["ZB"]["settlement"] != observed["UB"]["settlement"]
+
+
+def test_pg09_four_digit_bond_price_is_invalid_and_not_a_squeeze(monkeypatch):
+    import treasury_cta_squeeze_execution_watch as official
+
+    text = (
+        "PG09 BULLETIN # 210@ INTEREST RATE FUTURES Fri, Oct 30, 2026 PG09\n"
+        "10-YR NOTE FUTURES\n"
+        "DEC26 106'150 106'160 106'140 106'155 + 0'030 ---- 10000 5395905 + 1000\n"
+        "TOTAL 10-YR NOTE FUTURES 10000 5395905 + 1000\n"
+        "30Y BOND FUT\n"
+        "DEC26 1081'10 1081'20 1081'00 1081'15 + 3'01 ---- 1000 2583873 - 30792\n"
+        "TOTAL 30Y BOND FUT 1000 2583873 - 30792\n"
+    )
+    monkeypatch.setattr(official, "_download_pdf_text", lambda: text)
+    monkeypatch.setattr(official, "_expected_completed_us_session", lambda: date(2026, 10, 30))
+    result = official.official_cme_snapshot()
+    assert result["ZN"]["fresh_for_confirmation"]
+    assert result["ZB"] is None
+    assert not any("US/ZB" in s for s in official.official_squeeze_evidence({"cme": result}, {}))

@@ -152,14 +152,26 @@ def _as_int(token: str) -> int | None:
 
 
 def _section(text: str, heading: str) -> str:
-    pos = text.find(heading)
-    if pos < 0:
+    # "TOTAL" spacing varies in CME's PDF. Never carry the following
+    # product's contracts into the preceding product section.
+    start = re.search(r"(?m)^\s*" + re.escape(heading) + r"\s*$", text)
+    if start is None:
         return ""
-    tail = text[pos + len(heading):]
-    total_pos = tail.find("TOTAL " + heading)
-    if total_pos >= 0:
-        tail = tail[:total_pos]
-    return tail
+    tail = text[start.end():]
+    product_headings = {
+        "5-YR NOTE FUTURES", "10-YR NOTE FUTURES", "2-YR NOTE FUTURES",
+        "3-YR NOTE FUTURES", "30Y BOND FUT", "ULTRA T-BND FUT", "TN FUT",
+        "TBF3 FUT",
+    }
+    lines = []
+    for line in tail.splitlines():
+        normalized = re.sub(r"\s+", " ", line).strip().upper()
+        if normalized.startswith("TOTAL ") or any(
+            normalized.startswith(name) for name in product_headings
+        ):
+            break
+        lines.append(line)
+    return "\n".join(lines)
 
 
 def _parse_row(line: str, symbol: str, label: str, trade_date: str) -> dict | None:
@@ -171,7 +183,8 @@ def _parse_row(line: str, symbol: str, label: str, trade_date: str) -> dict | No
         return None
     month = tokens[0]
     settle = _parse_price(tokens[4])
-    if settle is None:
+    # Reject PDF column-merging artifacts such as 1081'25 on bond futures.
+    if settle is None or not (50.0 <= settle <= 200.0):
         return None
     idx = 5
     change_sign = 1
@@ -284,6 +297,17 @@ def official_cme_snapshot() -> dict:
                 rows.append(row)
         # Use the most liquid/open-interest contract as active contract.
         out[symbol] = max(rows, key=lambda r: (r.get("open_interest") or 0, r.get("volume") or 0)) if rows else None
+    # Identical settlement, OI and daily OI change for different contracts
+    # indicates the PDF parser copied one product row into another market.
+    keys = ("ZN", "ZB", "UB")
+    for i in range(len(keys)):
+        for j in range(i + 1, len(keys)):
+            a, b = keys[i], keys[j]
+            x, y = out.get(a), out.get(b)
+            if x and y and all(x.get(k) == y.get(k) for k in
+                               ("month", "settlement", "open_interest", "oi_change")):
+                print(f"cme_pg09_cross_market_duplicate_rejected={a},{b}")
+                out[a], out[b] = None, None
     if not any(out.values()):
         raise RuntimeError("CME Section09 parsed no ZN/ZB/UB rows")
     return out
