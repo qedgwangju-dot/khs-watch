@@ -12413,6 +12413,28 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
     ))
     if stock_rally_commentary and not source_has_quantified_operations:
         return 'stock_rally_commentary_without_quantified_operating_change'
+    weekly_fuel_move = re.search(
+        r'(?:전주보다|전주\s*대비)[^.!?\n]{0,24}?(\d+(?:\.\d+)?)\s*원', body,
+    )
+    if (
+        re.search(r'주유소|휘발유|경유', title)
+        and re.search(r'주간|이번\s*주|전국\s*(?:주유소|평균)', title + ' ' + body)
+        and weekly_fuel_move
+        and float(weekly_fuel_move.group(1)) < 1.0
+        and not re.search(r'(?:브렌트|WTI|국제유가)[^.!?\n]{0,35}\d+(?:\.\d+)?\s*%', body, re.I)
+        and not re.search(r'유류세|공급\s*(?:중단|차질)|수입\s*(?:금지|중단)|호르무즈|봉쇄', title + ' ' + body)
+    ):
+        return 'routine_weekly_retail_fuel_price_move_below_market_threshold'
+    brand_experience_launch = bool(
+        re.search(r'몰입형|플래그십|매장\s*(?:디자인|콘셉트|컨셉)|브랜드\s*(?:경험|정체성)', title)
+        and re.search(r'출시|공개|선보|개점|문을\s*연|오픈', title + ' ' + body)
+    )
+    quantified_retail_execution = bool(re.search(
+        r'(?:투자|공급계약|매출|매장\s*\d+곳|점포\s*\d+곳|판매량|가이던스)[^.!?\n]{0,40}'
+        r'\d[\d,.]*\s*(?:조|억|백만|만)?\s*(?:원|달러|곳|개)', body,
+    ))
+    if brand_experience_launch and not company_execution and not quantified_retail_execution:
+        return 'brand_experience_store_launch_without_material_rollout_or_financial_scale'
     opinion_only = bool(re.search(
         r'비판|비난|논평|기고|칼럼|사설|주장|질타|평가|criticiz|op-ed|editorial|commentary',
         title,
@@ -12884,6 +12906,39 @@ def is_dedicated_fcc_robot_inverter_policy(alert: dict) -> bool:
     return bool(has_fcc and has_covered_action and has_robot_or_inverter)
 
 
+def low_scope_live_market_relevance_reason(alert: dict) -> str:
+    if os.getenv("RADAR_RUN_MODE", "").strip().lower() != "live":
+        return ""
+    materiality = alert.get("market_materiality") or {}
+    scope = int(materiality.get("transmission_scope_rank", 0) or 0)
+    rank = int(materiality.get("news_value_rank", 0) or 0)
+    if scope >= 3:
+        return ""
+    if rank < 3:
+        return "issuer_only_story_below_live_quality_floor"
+    if rank == 3:
+        return ""
+    if telegram.alert_issuer_keys(alert):
+        return ""
+    identity = market_materiality.source_event_identity(alert)
+    parts = identity.split(":")
+    event_type = parts[2] if len(parts) >= 4 and parts[:2] == ["source_event", "v2"] else ""
+    material_execution_types = {
+        "commercial_delivery", "commercial_order", "construction_order",
+        "dated_public_supply_package", "industrial_product_milestone",
+        "license", "merger_agreement", "named_supply_order",
+        "regulatory_package", "scoped_anonymous_order", "solidigm_ipo",
+    }
+    if event_type in material_execution_types:
+        return ""
+    if int(materiality.get("priority", 0) or 0) >= 3:
+        return ""
+    equity_publication = materiality.get("equity_publication") or {}
+    if equity_publication.get("eligible"):
+        return ""
+    return "issuer_only_story_without_major_issuer_or_verified_execution"
+
+
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
     candidates = list({id(alert): alert for alert in initial + alerts}.values())
@@ -12928,6 +12983,10 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
                 and alert["market_materiality"].get("news_value_rank", 0) < 3
                 and alert["market_materiality"].get("transmission_scope_rank", 0) < 3):
             alert["_exclusion_reason"] = "live_quality_floor_below_rank_3_without_market_wide_scope"
+            continue
+        narrow_scope_reason = low_scope_live_market_relevance_reason(alert)
+        if narrow_scope_reason:
+            alert["_exclusion_reason"] = "live_market_relevance:" + narrow_scope_reason
             continue
         if is_dedicated_fcc_optical_transceiver_policy(alert):
             alert["_exclusion_reason"] = "dedicated_khs_policy_owner:fcc_optical_transceiver"

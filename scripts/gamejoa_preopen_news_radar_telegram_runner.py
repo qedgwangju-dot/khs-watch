@@ -127,6 +127,26 @@ def parse_seen_time(value: str | None):
     try:
         return dt.datetime.fromisoformat(value)
     except Exception:
+        pass
+    match = re.fullmatch(
+        r"\s*(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일"
+        r"(?:\s*[월화수목금토일]요일)?\s*(오전|오후)\s*"
+        r"(\d{1,2}):(\d{2})(?::(\d{2}))?\s*",
+        str(value),
+    )
+    if not match:
+        return None
+    year, month, day = (int(match.group(index)) for index in (1, 2, 3))
+    hour, minute = int(match.group(5)), int(match.group(6))
+    second = int(match.group(7) or 0)
+    if hour < 1 or hour > 12:
+        return None
+    hour %= 12
+    if match.group(4) == "오후":
+        hour += 12
+    try:
+        return dt.datetime(year, month, day, hour, minute, second, tzinfo=base.KST)
+    except ValueError:
         return None
 
 
@@ -655,6 +675,23 @@ def filter_previously_seen_alerts(
         coarse_entries = [seen[key] for key in keys if key in seen
                           and key.startswith(("link:", "title:", "original:"))
                           and isinstance(seen[key], dict)]
+        if not matching_entries and body_digest and alert.get("body_verified"):
+            candidate_link = canonical_article_url(str(canonical.get("link") or ""))
+            candidate_core = normalized_telegram_core(canonical)
+            for entry in recent_seen_event_entries(seen, now, "all"):
+                prior_digest = str(entry.get("source_body_digest") or "")
+                prior_fact = str(entry.get("source_fact_identity") or "")
+                prior_link = canonical_article_url(str(entry.get("link") or ""))
+                prior_core = base.norm(str(entry.get("telegram_core_fact") or ""))
+                same_verified_fact = bool(fact_identity and prior_fact == fact_identity)
+                same_verified_body = prior_digest == body_digest
+                same_link_and_core = bool(
+                    candidate_link and candidate_link == prior_link
+                    and candidate_core and candidate_core == prior_core
+                )
+                if same_verified_fact or same_verified_body or same_link_and_core:
+                    matching_entries = [entry]
+                    break
         if not matching_entries and body_digest:
             # A rule upgrade is not a new event, even when fact kinds change.
             matching_entries = [entry for entry in coarse_entries
@@ -700,6 +737,17 @@ def filter_previously_seen_alerts(
                     break
                 if (candidate_fact_keys and entry_fact_keys and candidate_fact_keys > entry_fact_keys
                         and core_reflects_revision):
+                    structured_revision = True
+                    break
+        if not matching_entries and not structured_revision and body_digest and candidate_core:
+            candidate_link = canonical_article_url(str(canonical.get("link") or ""))
+            for entry in recent_seen_event_entries(seen, now, "all"):
+                prior_link = canonical_article_url(str(entry.get("link") or ""))
+                prior_digest = str(entry.get("source_body_digest") or "")
+                prior_core = base.norm(str(entry.get("telegram_core_fact") or ""))
+                if (candidate_link and candidate_link == prior_link and prior_digest
+                        and prior_digest != body_digest and prior_core
+                        and prior_core != base.norm(candidate_core)):
                     structured_revision = True
                     break
         if not matching_entries and not structured_revision:
