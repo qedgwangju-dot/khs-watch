@@ -929,7 +929,9 @@ def _equity_impact(snapshot: dict, previous: dict, reasons: list[str]) -> tuple[
         any("CFTC 동일만기 숏 축소" in r or "최근 CFTC 동일만기 숏 축소" in r for r in reasons)
     )
     if evidence and same_tenor_short_reduced and z <= -1.0 and repo_ok and data_fresh:
-        return "🟢 성장주 할인율 우호 강화", "10년물 하락 추세와 같은 만기 숏 축소·공식 CME 청산 신호가 동반 확인"
+        if any("TY/ZN" in line or line.startswith("ZN ") for line in evidence):
+            return "🟢 10년물 중심 할인율 우호 가능성", "10년물 ZN의 공식 가격 상승·일일 미결제약정 감소와 CFTC 숏 축소 신호 확인"
+        return "🟡 일부 장기물 청산·제한적 우호", "30년물 등 일부 만기 가격 상승·일일 미결제약정 감소; 10년물 ZN 자체 청산과 나스닥 전이는 미확인"
     if z < 0 and (same_tenor_short_reduced or evidence) and repo_ok and data_fresh:
         return "🟡 제한적 우호 가능성", f"10Y {yld:.3f}%·z={z:+.2f}σ지만 이익으로 이어질 스퀴즈 복합 확인 전"
     return "⚪ 중립·금리 위험 점검", f"10Y {yld:.3f}%·z={z:+.2f}σ · 숏 스퀴즈와 지속적인 할인율 완화 모두 미확인"
@@ -1033,13 +1035,19 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
     def fut_line(symbol: str) -> str:
         row = cme.get(symbol) or {}
         label = row.get("display_symbol") or symbol
+        if not row:
+            return f"• {label}: CME 공식 가격·일일 미결제약정 확인 불가"
         pct = row.get("pct_change")
         pct_txt = f"{float(pct):+.2f}%" if pct is not None else "변화율 확인 불가"
         oi = row.get("open_interest")
+        # OI is a stock (balance), never a positive daily change. Print
+        # its absolute level separately from the signed daily delta.
         oi_txt = _fmt_contracts_with_krw(
             oi, fx, tenor={"ZN": "10Y", "ZB": "BOND", "UB": "ULTRABOND"}.get(symbol),
-            context="전체시장 OI 액면",
-        )
+            context="미결제약정 잔고 액면",
+        ).lstrip("+")
+        oi_delta = row.get("oi_change")
+        oi_delta_txt = f"{int(oi_delta):+,}계약" if oi_delta is not None else "증감 확인 불가"
         src = row.get("oi_source") or row.get("source_type") or "출처 확인 불가"
         price_date = row.get("trade_date_iso") or row.get("trade_date")
         if not price_date and row.get("market_time"):
@@ -1053,7 +1061,10 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
                 f"별도 CFTC 주간 전체시장 OI {oi_txt} [{(snapshot.get('cftc') or {}).get('report_date', '날짜 미확인')}] "
                 "— 일일 OI 동시 신호 아님"
             )
-        return f"• {label}: 공식 CME {pct_txt} ({price_date or '거래일 미확인'}) · 일일 OI {oi_txt} [{src}]"
+        return (
+            f"• {label}: 공식 CME {pct_txt} ({price_date or '거래일 미확인'})"
+            f" · 미결제약정 잔고 {oi_txt} · 당일 증감 {oi_delta_txt} [{src}]"
+        )
 
     t10 = cftc.get("10Y") or {}
     delta10 = t10.get("leveraged_net_wow")

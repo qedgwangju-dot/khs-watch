@@ -179,7 +179,9 @@ def _direction_label(snapshot: dict, previous: dict, reasons: list[str]) -> tupl
     # Do not turn delayed Yahoo prices or unrelated tenor changes into a
     # bullish bond/CTA claim when the current 10Y yield is above its 20D mean.
     if evidence and same_tenor_short_reduced and z <= -1.0 and repo_ok and data_fresh:
-        return "🟢 실제 숏 스퀴즈 강화", "공식 CME 같은 거래일 가격↑·OI↓와 동일만기 CFTC 숏 축소·금리 하락 추세 동시 확인"
+        if any("TY/ZN" in line or line.startswith("ZN ") for line in evidence):
+            return "🟢 10년물 숏 축소·가격/OI 동반 신호", "ZN의 공식 CME 가격 상승·일일 미결제약정 감소 및 10년물 금리 하락 추세 확인"
+        return "🟡 장기국채 일부 만기 숏 축소 정황", "30년물 등 일부 만기의 공식 CME 가격 상승·일일 미결제약정 감소 확인; 10년물 자체의 숏 청산·이중 스퀴즈 미확인"
     if z < 0 and same_tenor_short_reduced and repo_ok and data_fresh:
         return "🟡 일부 숏 압력 완화 후보", "CFTC 일부 만기의 포지션 감소는 있지만 공식 CME 청산과 -1σ 추세 전환은 아직 미확인"
     return "⚪ 숏 스퀴즈 미확인", "현재는 지연 선물 반등·일부 만기 포지션 조정만으로 금리 하락 전환을 인정하지 않음"

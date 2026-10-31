@@ -1206,3 +1206,35 @@ def test_pg09_four_digit_bond_price_is_invalid_and_not_a_squeeze(monkeypatch):
     assert result["ZN"]["fresh_for_confirmation"]
     assert result["ZB"] is None
     assert not any("US/ZB" in s for s in official.official_squeeze_evidence({"cme": result}, {}))
+
+
+def test_bond_only_oi_decline_does_not_claim_10y_squeeze_or_equity_rally(monkeypatch):
+    raw = _snapshot(z20=-1.58, zn_pct=0.43)
+    raw["yield10"]["yield"] = 4.94
+    prev = {}
+    reasons = ["최근 CFTC 동일만기 숏 축소 상태 유지: BOND"]
+    monkeypatch.setattr(equity.watcher, "squeeze_evidence", lambda s, p: ["US/ZB official daily OI down"])
+    monkeypatch.setattr(equity.audited, "_repo_not_worse", lambda *args: (True, []))
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda *args: (True, []))
+
+    market_label, market_reason = equity.audited._direction_label(raw, prev, reasons)
+    impact, explanation = equity._equity_impact(raw, prev, reasons)
+
+    assert "일부 만기" in market_label
+    assert "10년물 자체" in market_reason
+    assert "제한적 우호" in impact
+    assert "10년물 ZN 자체 청산" in explanation
+
+
+def test_zn_daily_oi_evidence_has_different_tenor_label(monkeypatch):
+    raw = _snapshot(z20=-1.58, zn_pct=0.43)
+    raw["yield10"]["yield"] = 4.94
+    reasons = ["최근 CFTC 동일만기 숏 축소 상태 유지: 10Y"]
+    monkeypatch.setattr(equity.watcher, "squeeze_evidence", lambda s, p: ["TY/ZN official daily OI down"])
+    monkeypatch.setattr(equity.audited, "_repo_not_worse", lambda *args: (True, []))
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda *args: (True, []))
+
+    label, _ = equity.audited._direction_label(raw, {}, reasons)
+    impact, _ = equity._equity_impact(raw, {}, reasons)
+    assert "10년물" in label
+    assert "10년물 중심" in impact
