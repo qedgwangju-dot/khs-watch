@@ -166,6 +166,9 @@ def extract_foreign_amounts(text: str) -> list[dict]:
             if any(match.start() < end and match.end() > start for start, end in occupied):
                 continue
             tail = str(text or "")[match.end(): match.end() + 28]
+            # One dollar equals N won is exchange-rate metadata, not a spend.
+            if re.match(r"\s*=\s*[\d,.]+\s*원", tail):
+                continue
             if re.match(r"\s*\((?:약\s*)?[\d,.조억만원]+\)", tail):
                 continue
             code = _label_to_code(match.group("label"))
@@ -354,6 +357,8 @@ def _all_currency_codes(text: str) -> set[str]:
     for pattern in AMOUNT_PATTERNS:
         for match in pattern.finditer(masked):
             if any(match.start() < end and match.end() > start for start, end in occupied):
+                continue
+            if re.match(r"\s*=\s*[\d,.]+\s*원", masked[match.end():]):
                 continue
             amount = _parse_foreign_number(match.group("number"), match.group("scale") or "")
             code = _label_to_code(match.group("label"))
@@ -659,7 +664,10 @@ def format_policy_message(
     # When raw amounts require conversion, discard any stale preexisting basis.
     body = "\n".join(
         line for line in body.splitlines()
-        if not line.strip().startswith("- 환율 기준:")
+        if not re.match(
+            r"^\s*(?:[-•]\s*)?(?:(?:원화\s*)?환산|환율)\s*기준\s*:",
+            line,
+        )
     )
     try:
         from khs_policy_readability_patch import improve_policy_readability
