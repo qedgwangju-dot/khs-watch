@@ -8403,10 +8403,96 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
                 self.assertNotIn('headline_primary_amount_period_or_population_mismatch', radar.source_core_fact_errors({**item, 'telegram_core_fact': regenerated}))
 
 
+class LiveQualityRegressionTests(unittest.TestCase):
+    def test_legacy_korean_delivery_timestamp_parses_in_kst(self):
+        parsed = telegram.parse_seen_time("2026년 10월 31일 토요일 오후 7:08:56")
+        self.assertEqual(parsed, dt.datetime(2026, 10, 31, 19, 8, 56, tzinfo=dt.timezone(dt.timedelta(hours=9))))
+
+    def test_same_verified_article_is_blocked_even_when_its_alias_key_is_missing(self):
+        now = dt.datetime(2026, 10, 31, 19, 9, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        title = "테슬라·스페이스X 합병 추진…머스크의 진짜 노림수와 최대 걸림돌"
+        body = (
+            "머스크는 합병 가능성을 검토하기 위해 두 회사가 각각 특별위원회를 구성했다고 밝혔다. "
+            "합병 조건과 성사 여부는 확정되지 않았다."
+        )
+        item = alert(title, body, "https://www.newsis.com/view/NISX20261027_0003842966")
+        item["published"] = now.isoformat()
+        prior = {
+            "source_title": "머스크, 테슬라·스페이스X 합병 논의…주주·규제 변수",
+            "title": "머스크, 테슬라·스페이스X 합병 논의…주주·규제 변수",
+            "link": item["link"],
+            "source_fact_identity": materiality.verified_source_fact_identity(item),
+            "source_fact_keys": materiality.verified_source_fact_keys(item),
+            "source_body_digest": materiality.verified_source_body_digest(item),
+            "telegram_core_fact": item["telegram_core_fact"],
+            "source_published_kst": item["published"],
+            "first_seen_kst": (now - dt.timedelta(hours=12)).isoformat(),
+            "last_seen_kst": (now - dt.timedelta(hours=12)).isoformat(),
+            "lanes": {"live": (now - dt.timedelta(hours=12)).isoformat()},
+        }
+        with patch.object(telegram, "load_seen_state", return_value={"seen": {"legacy-event-alias": prior}}):
+            fresh, duplicates = telegram.filter_previously_seen_alerts([item], now, "live")
+        self.assertFalse(fresh)
+        self.assertEqual(len(duplicates), 1)
+
+    def test_same_url_with_a_verified_material_revision_is_not_suppressed(self):
+        now = dt.datetime(2026, 10, 31, 19, 9, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        title = "삼성전자, 3분기 영업이익 사상 최대 기록"
+        old_body = "삼성전자는 2026년 3분기 연결 기준 영업이익 100조원을 기록했다고 잠정 실적 발표를 통해 밝혔다."
+        new_body = "삼성전자는 2026년 3분기 연결 기준 영업이익 106조원을 기록했다고 잠정 실적 발표를 통해 밝혔다."
+        item = alert(title, new_body, "https://example.com/samsung-q3")
+        item["published"] = now.isoformat()
+        prior = {
+            "source_title": title,
+            "title": title,
+            "link": item["link"],
+            "source_fact_identity": materiality.verified_source_fact_identity(alert(title, old_body, item["link"])),
+            "source_body_digest": materiality.verified_source_body_digest(alert(title, old_body, item["link"])),
+            "telegram_core_fact": old_body,
+            "source_published_kst": item["published"],
+            "first_seen_kst": (now - dt.timedelta(hours=4)).isoformat(),
+            "last_seen_kst": (now - dt.timedelta(hours=4)).isoformat(),
+            "lanes": {"live": (now - dt.timedelta(hours=4)).isoformat()},
+        }
+        with patch.object(telegram, "load_seen_state", return_value={"seen": {"legacy-event-alias": prior}}):
+            fresh, duplicates = telegram.filter_previously_seen_alerts([item], now, "live")
+        self.assertEqual(len(fresh), 1)
+        self.assertFalse(duplicates)
+
+    def test_narrow_issuer_stories_need_major_issuer_or_verified_execution(self):
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}, clear=False):
+            weak = {"source_title": "지역은행 3분기 소액 순손실", "market_materiality": {
+                "news_value_rank": 4, "transmission_scope_rank": 1}}
+            samsung = {"source_title": "삼성전자, 3분기 영업이익 106조원", "market_materiality": {
+                "news_value_rank": 4, "transmission_scope_rank": 1}}
+            global_market = {"source_title": "미국 CPI 발표", "market_materiality": {
+                "news_value_rank": 3, "transmission_scope_rank": 3}}
+            self.assertIn("issuer_only_story", production.runner.low_scope_live_market_relevance_reason(weak))
+            self.assertEqual(production.runner.low_scope_live_market_relevance_reason(samsung), "")
+            self.assertEqual(production.runner.low_scope_live_market_relevance_reason(global_market), "")
+
+    def test_routine_fuel_and_brand_concept_launch_are_low_impact(self):
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}, clear=False):
+            fuel = alert(
+                '"기름값 더 오르기 전에 넣어야 하나"…휘발유 다시 뛸 조짐',
+                "10월 넷째 주 전국 주유소 휘발유 평균 판매가격은 전주보다 L당 0.4원 내린 1855.7원이다. 국제유가가 다시 오르면서 하락세가 멈출 가능성이 있다.",
+                "https://example.com/fuel-weekly",
+            )
+            restaurant = alert(
+                "KFC, 두바이서 세계 최초 몰입형 레스토랑 콘셉트 공개",
+                "KFC는 두바이에 브랜드 콘셉트를 적용한 플래그십 매장을 공개한다. 서울 매장은 연말 개점 예정이다.",
+                "https://example.com/kfc-concept",
+            )
+            self.assertEqual(production.runner.low_impact_live_publication_reason(fuel, LIVE_NOW),
+                             "routine_weekly_retail_fuel_price_move_below_market_threshold")
+            self.assertEqual(production.runner.low_impact_live_publication_reason(restaurant, LIVE_NOW),
+                             "brand_experience_store_launch_without_material_rollout_or_financial_scale")
+
+
 if __name__ == "__main__":
     test_cases = [
         test
-        for test_case in (IncrementalNewsTests, ConcreteLiveSelectionRegressions)
+        for test_case in (IncrementalNewsTests, ConcreteLiveSelectionRegressions, LiveQualityRegressionTests)
         for test in unittest.defaultTestLoader.loadTestsFromTestCase(test_case)
     ]
     suite = unittest.TestSuite(test_cases)
