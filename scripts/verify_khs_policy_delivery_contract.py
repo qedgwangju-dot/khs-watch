@@ -666,9 +666,64 @@ def assert_grid_scaled_fx_provenance_contract() -> None:
     print("grid_scaled_fx_provenance_contract=passed")
 
 
+def assert_grid_scaled_reaches_final_telegram_guard() -> None:
+    """Full existing policy router -> quality guard, without API calls or state writes."""
+    from unittest import mock
+    now = dt.datetime(2026, 11, 1, 12, tzinfo=ZoneInfo("Asia/Seoul"))
+    official = (
+        "Grid Supply Chain Alternatives to Lead Energy Dominance (Grid SCALED). "
+        "DOE announces a $237 million funding opportunity for electric grid components. "
+        "Up to $50 million refurbishment, up to $187 million domestic alternatives. "
+        "Concept paper due November 20, 2026; full application February 8, 2027."
+    )
+    with mock.patch.object(khs_policy_watch, "fetch_text", return_value=(official, None)):
+        event, note = khs_policy_watch.collect_grid_scaled_official(now)
+    assert event is not None, note
+    report = khs_policy_alert_router.render_policy_report([event], now)
+    checks = (
+        "2억3,700만달러", "5,000만달러", "1억8,700만달러",
+        "1억2,500만달러", "3억7,500만달러",
+        "2026년 11월 20일", "2027년 2월 8일",
+    )
+    for fact in checks:
+        assert fact in report, f"DOE original fact lost in policy router: {fact}"
+    assert "확정 수주" in report and "신청" in report
+    cleanup()
+    title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+    body_path = OUT_DIR / "khs_policy_watch_alert.md"
+    def deterministic_fx(title: str, body: str) -> tuple[str, str]:
+        return khs_policy_telegram_formatter.format_policy_message(
+            title, body,
+            rates={"USD": {
+                "value": 1335.2667,
+                "source": "ECB/Frankfurter",
+                "reference_time_kst": "2026-10-30T00:00+09:00",
+                "query_time_kst": now.isoformat(timespec="minutes"),
+            }},
+            now=now,
+        )
+    try:
+        title_path.write_text("미국 전력망·전력기기 정책 중요 변화\n", encoding="utf-8")
+        body_path.write_text(report, encoding="utf-8")
+        lane = next(lane for lane in khs_telegram_delivery_guard.LANES if lane.name == "policy")
+        with mock.patch.object(khs_telegram_delivery_guard, "format_policy_message", side_effect=deterministic_fx):
+            khs_telegram_delivery_guard.guard_lane(lane)
+        assert title_path.exists() and body_path.exists(), "DOE official alert was blocked before Telegram"
+        final_body = body_path.read_text(encoding="utf-8")
+        assert all(fact in final_body for fact in checks), "DOE amounts or dates lost before Telegram"
+        assert len(final_body) <= 4096, f"DOE final policy text too long: {len(final_body)}"
+        assert not khs_policy_telegram_formatter.validate_final_policy_message(
+            title_path.read_text(encoding="utf-8"), final_body
+        ), "DOE final policy message failed validator"
+    finally:
+        cleanup()
+    print("grid_scaled_final_telegram_guard_regression=passed")
+
+
 def main() -> int:
     khs_policy_watch._self_test_grid_scaled_official_candidate()
     assert_grid_scaled_fx_provenance_contract()
+    assert_grid_scaled_reaches_final_telegram_guard()
     OUT_DIR.mkdir(exist_ok=True)
     assert_robotics_232_presidential_alert_reaches_delivery_guard()
     assert_robotics_232_isolated_from_unrelated_policy_bundle()
