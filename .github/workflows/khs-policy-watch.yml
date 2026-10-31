@@ -618,9 +618,9 @@ jobs:
 
           route_config = {
               "policy": {
-                  "token": (os.environ.get("KHS_POLICY_TELEGRAM_BOT_TOKEN") or "").strip(),
+                  "token": (os.environ.get("KHS_AI_POLICY_TELEGRAM_BOT_TOKEN") or "").strip(),
                   "chat_id": (os.environ.get("KHS_POLICY_TELEGRAM_CHAT_ID") or "").strip(),
-                  "expected_username": "hs8879_bot",
+                  "expected_username": "khs88798879_bot",
               },
               "ai_force": {
                   "token": (os.environ.get("KHS_AI_POLICY_TELEGRAM_BOT_TOKEN") or "").strip(),
