@@ -74,7 +74,7 @@
     "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-10-31T22:02:08+09:00",
+  "last_checked_at_kst": "2026-11-01T03:46:08+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
   "latest_evidence_urls": [],
@@ -676,12 +676,12 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-10-31T22:02:08+09:00",
+    "last_checked_at_kst": "2026-11-01T03:46:08+09:00",
     "last_error": "",
     "pending_month": "2026-09"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-31T22:08:28+09:00",
+    "checked_at_kst": "2026-11-01T03:51:38+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-11T09:26:33+09:00",
@@ -749,6 +749,34 @@
           }
         }
       },
+      "2025-10": {
+        "month": "2025-10",
+        "destination": "US",
+        "source_kind": "관세청 국가·품목별 수출통계, 미국향 FOB 신고금액 및 순중량",
+        "source_url": "https://www.data.go.kr/data/15100475/openapi.do",
+        "hs_codes": [
+          "850422",
+          "850423",
+          "850434"
+        ],
+        "export_usd": 96055342,
+        "net_weight_kg": 5990023,
+        "average_usd_per_kg": 16.03588867688822,
+        "by_hs": {
+          "850422": {
+            "usd": 24945370,
+            "kg": 2687055
+          },
+          "850423": {
+            "usd": 68858733,
+            "kg": 3101036
+          },
+          "850434": {
+            "usd": 2251239,
+            "kg": 201932
+          }
+        }
+      },
       "2026-08": {
         "month": "2026-08",
         "destination": "US",
@@ -807,11 +835,11 @@
       }
     },
     "latest_official_us_month": "2026-09",
-    "last_attempt_day": "2026-10-31",
-    "last_checked_at_kst": "2026-10-31T04:41:14+09:00",
-    "last_status": "verified",
-    "last_error_kind": "",
-    "last_attempt_at_kst": "2026-10-31T04:41:14+09:00",
+    "last_attempt_day": "2026-11-01",
+    "last_checked_at_kst": "2026-11-01T03:46:08+09:00",
+    "last_status": "month_unpublished",
+    "last_error_kind": "kcs_no_official_rows",
+    "last_attempt_at_kst": "2026-11-01T03:46:08+09:00",
     "fetch_revision": 3,
     "source_blocker_notified": false,
     "connection_restored_notified": true,
