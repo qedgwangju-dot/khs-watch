@@ -616,6 +616,7 @@ def assert_grid_scaled_fx_provenance_contract() -> None:
         "- 연간 절감 추정: 1억2,500만달러.",
         "- 상위 프로그램 한도: 최대 3억7,500만달러(약 3,000억원); 이번 공고와 합산 금지.",
         "- 일정: 2026년 11월 20일 예비서류, 2027년 2월 8일 정식 신청.",
+        "환산 기준: 1달러=1,335원 · ECB 2026-10-30",
         f"- 출처: [원문]({source})",
     ))
     got_title, got_body = format_policy_message(
@@ -635,6 +636,8 @@ def assert_grid_scaled_fx_provenance_contract() -> None:
         raise AssertionError(f"DOE ECB exchange rate/date provenance missing: {got_body}")
     if got_body.count("- 환율 기준:") != 1:
         raise AssertionError("DOE FX provenance not exactly once")
+    if "1달러=" in got_body or "환산 기준:" in got_body:
+        raise AssertionError("Stale equation basis was re-converted or duplicated")
     if "(약 3,000억원)" in got_body or "(원화 약 " in got_body:
         raise AssertionError("Wrong or detached legacy KRW parentheses survived")
     errors = validate_final_policy_message(got_title, got_body)
