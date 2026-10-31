@@ -30,7 +30,9 @@ permissions:
 
 concurrency:
   group: wonyotti-90d-thesis-telegram-watch
-  cancel-in-progress: true
+  # An in-flight watcher may be about to send an alert; never cancel delivery
+  # merely because another scheduled or upstream workflow event was queued.
+  cancel-in-progress: false
 
 jobs:
   watch:
