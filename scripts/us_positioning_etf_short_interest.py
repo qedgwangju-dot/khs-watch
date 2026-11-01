@@ -363,5 +363,9 @@ if __name__ == "__main__":
     args = cli.parse_args()
     result = run(validate_only=args.validate_only)
     print("us_etf_short_interest_status=" + json.dumps(result, ensure_ascii=False))
-    if args.validate_only and result["status"] == "source_withheld":
-        raise SystemExit(1)
+    if result["status"] == "source_withheld":
+        # A blocked or conflicting source is an operational failure, not a clean no-alert run.
+        # An out-of-date publication window remains a normal scheduled no-alert state.
+        reason = result.get("reason", "")
+        if args.validate_only or "ETF short interest publication not current:" not in reason:
+            raise SystemExit(1)
