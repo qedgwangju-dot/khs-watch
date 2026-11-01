@@ -479,12 +479,14 @@ def _child_run(watch, run_and_verify, report_path, seconds, workers):
         report.update(complete=True, phase='verified')
         _save(report_path, report)
     except BaseException as exc:
+        failure_phase = report.get('phase')
         try:
             _preserve_rejected(watch, report)
         except (OSError, ValueError) as capture_error:
             report['rejected_capture_error'] = type(capture_error).__name__ + ': ' + str(capture_error)
         _clean(watch)
-        report.update(complete=False, phase='failed', error=type(exc).__name__ + ': ' + str(exc))
+        report.update(complete=False, failure_phase=failure_phase, phase='failed',
+                      error=type(exc).__name__ + ': ' + str(exc))
         _save(report_path, report)
         raise
 
@@ -516,6 +518,7 @@ def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=
         report = {}
     report['total_budget_seconds'] = total_seconds
     if timed_out or process.exitcode != 0 or report.get('complete') is not True:
+        report.setdefault('failure_phase', report.get('phase'))
         if not report.get('rejected_artifacts'):
             try:
                 _preserve_rejected(watch, report)
