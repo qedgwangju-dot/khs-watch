@@ -1346,6 +1346,108 @@ def _next_confirmation_thresholds(yld: float, z20: float) -> str:
 
 
 
+def _official_monthly_cftc_trends(snapshot: dict) -> dict:
+    """Monthly changes to same-scope official CFTC futures-only Treasury positions."""
+    cftc = snapshot.get("cftc") or {}
+    try:
+        latest = datetime.strptime(cftc["report_date"], "%B %d, %Y").date()
+    except (ValueError, TypeError, KeyError):
+        return {}
+    codes = watcher.CFTC_TREASURY_CODES
+    start = watcher._calendar_month_before(latest, 3) - timedelta(days=12)
+    where = (
+        "cftc_contract_market_code in (" +
+        ",".join("'" + x + "'" for x in codes.values()) + ")"
+        + " AND report_date_as_yyyy_mm_dd >= '" + start.isoformat() + "T00:00:00'"
+        + " AND report_date_as_yyyy_mm_dd <= '" + latest.isoformat() + "T23:59:59'"
+    )
+    query = urllib.parse.urlencode({
+        "$where": where,
+        "$select": "cftc_contract_market_code,report_date_as_yyyy_mm_dd,lev_money_positions_long,lev_money_positions_short",
+        "$order": "report_date_as_yyyy_mm_dd DESC",
+        "$limit": "500",
+    })
+    result = watcher.fetch_json(watcher.CFTC_TFF_SOCRATA + "?" + query)
+    if not isinstance(result, list):
+        raise RuntimeError("official CFTC history is not a list")
+    reverse = {v: k for k, v in codes.items()}
+    values = {k: {} for k in codes}
+    contradictory = set()
+    for row in result:
+        try:
+            tenor = reverse.get(str(row["cftc_contract_market_code"]).strip())
+            if tenor is None:
+                continue
+            d = date.fromisoformat(str(row["report_date_as_yyyy_mm_dd"])[:10])
+            net = int(float(row["lev_money_positions_long"])) - int(float(row["lev_money_positions_short"]))
+            if d in values[tenor] and values[tenor][d] != net:
+                contradictory.add(tenor)
+            values[tenor][d] = net
+        except (KeyError, ValueError, TypeError, OverflowError):
+            continue
+    trends = {}
+    for tenor, current in (cftc.get("markets") or {}).items():
+        if tenor not in values or tenor in contradictory:
+            continue
+        observed = values[tenor]
+        # The historical observation must exactly match the current official week.
+        if latest not in observed or current.get("leveraged_net") != observed[latest]:
+            continue
+        compared = watcher.monthly_comparisons(latest, observed[latest], observed)
+        if compared:
+            trends[tenor] = compared
+    return trends
+
+
+def _official_monthly_repo_trends(snapshot: dict) -> dict:
+    """NY Fed secured rates on their distinct effective dates."""
+    current = snapshot.get("repo") or {}
+    urls = {
+        "SOFR": watcher.NYFED_SOFR_API,
+        "BGCR": watcher.NYFED_BGCR_API,
+        "TGCR": watcher.NYFED_TGCR_API,
+    }
+    trends = {}
+    for name, url in urls.items():
+        observation = current.get(name) or {}
+        if observation.get("date") is None or observation.get("rate") is None:
+            continue
+        try:
+            latest = date.fromisoformat(str(observation["date"])[:10])
+            rate = float(observation["rate"])
+            history = watcher.fetch_json(url.replace("/last/1.json", "/last/105.json"))
+            records = history.get("refRates") if isinstance(history, dict) else history
+            if not isinstance(records, list):
+                continue
+            values = {}
+            for row in records:
+                try:
+                    d = date.fromisoformat(str(row["effectiveDate"])[:10])
+                    values[d] = float(row["percentRate"])
+                except (ValueError, TypeError, KeyError, OverflowError):
+                    continue
+            compared = watcher.monthly_comparisons(latest, rate, values)
+            if compared:
+                trends[name] = compared
+        except (ValueError, TypeError, KeyError, OverflowError, OSError, RuntimeError):
+            continue
+    return trends
+
+
+def _enrich_monthly_trends_for_due_alert(snapshot: dict) -> None:
+    """Presentation only; source failures cannot lower existing squeeze gates."""
+    result = {"cftc": {}, "repo": {}}
+    try:
+        result["cftc"] = _official_monthly_cftc_trends(snapshot)
+    except Exception as exc:
+        result["cftc_error"] = type(exc).__name__
+    try:
+        result["repo"] = _official_monthly_repo_trends(snapshot)
+    except Exception as exc:
+        result["repo_error"] = type(exc).__name__
+    snapshot["monthly_trends"] = result
+
+
 def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=None, fx_date=None) -> tuple[str, str]:
     y = snapshot.get("yield10") or {}
     yld = float(y.get("yield") or 0.0)
