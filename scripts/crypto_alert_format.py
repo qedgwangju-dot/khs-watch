@@ -113,10 +113,20 @@ def format_trigger(line: str, is_partial: bool = False) -> list[str]:
         body = re.sub(r"(?<!\S)최종 (?=[+-]?\d)", "보고 합계 ", body)
         return ["• <b>일간 보고 완료</b> · 값 동일 · 이후 수정 가능", f"  {body}"]
 
+    if text.startswith("BTC 현물 ETF 1·2·3개월 누적 지표 검증 완료"):
+        return ["• <b>1·2·3개월 지표 첫 검증</b> · 달력기간별 누적을 신규 제공"]
+
+    if text.startswith("BTC 현물 ETF 2개월 누적 지표 검증 완료"):
+        return ["• <b>2개월 지표 추가</b> · 달력기간별 누적을 신규 제공"]
+
     if text.startswith("BTC 현물 ETF 1개월·3개월 누적 지표 검증 완료"):
         return ["• <b>1·3개월 지표 첫 검증</b> · 달력기간별 누적을 신규 제공"]
 
-    if text.startswith("BTC 현물 ETF 1M 과거 누적 재계산:") or text.startswith("BTC 현물 ETF 3M 과거 누적 재계산:"):
+    if text.startswith((
+        "BTC 현물 ETF 1M 과거 누적 재계산:",
+        "BTC 현물 ETF 2M 과거 누적 재계산:",
+        "BTC 현물 ETF 3M 과거 누적 재계산:",
+    )):
         return ["• <b>월간 원자료 수정</b> · " + text.split(":", 1)[1].strip()]
 
     if text.startswith("BTC 현물 ETF 종합해석 정정:"):
@@ -181,7 +191,7 @@ def five_day_reading(etf: dict, rate: float | None, is_partial: bool) -> list[st
 
 def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[str]:
     item = ((etf.get("windows") or {}).get(label) or {})
-    readable = {"1m": "1개월", "3m": "3개월"}[label]
+    readable = {"1m": "1개월", "2m": "2개월", "3m": "3개월"}[label]
     if not item.get("valid"):
         issue = item.get("validation_issue") or item.get("error") or "원자료 또는 거래일 불완전"
         return [f"• <b>최근 {readable}</b> · 산출 보류({issue})"]
@@ -213,6 +223,14 @@ def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[s
         caveat += " (" + " / ".join(date_details) + ")"
     current_avg = item.get("avg_usd_m_per_session")
     previous_avg = item.get("prev_avg_usd_m_per_session")
+    previous_start = item.get("prev_start")
+    previous_end = item.get("prev_end")
+    previous_days = item.get("prev_trading_days")
+    previous_period = (
+        f"{readable} {previous_start}~{previous_end} ({int(previous_days)}거래일)"
+        if previous_start and previous_end and previous_days is not None
+        else f"{readable} (기간 확인 불가)"
+    )
     if label == "3m" and current_avg is not None and previous_avg is not None:
         caveat += (
             f" · 거래일평균 최근 {fmt_usd_m(float(current_avg), rate)}"
@@ -225,7 +243,7 @@ def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[s
             f" · <b>{fmt_usd_m(current, rate)}</b>"
         ),
         (
-            f"  직전 {readable} {fmt_usd_m(previous, rate)}"
+            f"  직전 {previous_period} · {fmt_usd_m(previous, rate)}"
             f" → 차이 {fmt_usd_m(change, rate)} · {item['direction']}{caveat}"
         ),
     ]
@@ -234,20 +252,26 @@ def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[s
 def horizon_reading(etf: dict) -> str:
     """Interpret short and medium horizon directions without double-counting them."""
     five = etf.get("last5_usd_m")
-    one = ((etf.get("windows") or {}).get("1m") or {})
-    three = ((etf.get("windows") or {}).get("3m") or {})
+    windows = etf.get("windows") or {}
     def sign(value):
         if value is None:
             return "확인 불가"
         value = float(value)
         return "순유입" if value > 0 else "순유출" if value < 0 else "보합"
     short = ("잠정 " if etf.get("status") != "complete" else "") + sign(five)
-    one_word = sign(one.get("value_usd_m")) if one.get("valid") else "확인 불가"
-    three_word = sign(three.get("value_usd_m")) if three.get("valid") else "확인 불가"
-    suffix = " · 3개월 일부 종목 미보고" if three.get("status") == "잠정" else ""
+    monthly = []
+    partial_periods = []
+    for label, readable in (("1m", "1개월"), ("2m", "2개월"), ("3m", "3개월")):
+        item = windows.get(label) or {}
+        word = sign(item.get("value_usd_m")) if item.get("valid") else "확인 불가"
+        monthly.append(f"{readable} {word}")
+        if item.get("status") == "잠정":
+            partial_periods.append(readable)
+    suffix = " · " + "/".join(partial_periods) + " 일부 종목 미보고" if partial_periods else ""
     return (
-        f"• <b>수급 방향</b> · 최근5 {short} / 1개월 {one_word} / "
-        f"3개월 {three_word}{suffix} · 기간별 흐름은 상이할 수 있음"
+        f"• <b>수급 방향</b> · 최근5 {short} / "
+        + " / ".join(monthly)
+        + f"{suffix} · 기간별 흐름은 상이할 수 있음"
     )
 
 
@@ -552,17 +576,20 @@ def compact_judgement(state: dict) -> tuple[str, str]:
     else:
         reason = f"{day_text} · {rate_text}. {five_text}."
 
-    one = ((etf.get("windows") or {}).get("1m") or {})
-    three = ((etf.get("windows") or {}).get("3m") or {})
-    if one.get("valid") and three.get("valid"):
-        m = float(one["value_usd_m"])
-        q = float(three["value_usd_m"])
-        if m * q < 0:
-            reason += " 1개월과 3개월의 누적 방향은 엇갈림."
-        elif m < 0 and q < 0:
-            reason += " 1개월·3개월 누적 모두 순유출."
-        elif m > 0 and q > 0:
-            reason += " 1개월·3개월 누적은 순유입."
+    monthly_labels = (("1m", "1개월"), ("2m", "2개월"), ("3m", "3개월"))
+    monthly = [
+        (label, name, float((etf.get("windows") or {})[label]["value_usd_m"]))
+        for label, name in monthly_labels
+        if ((etf.get("windows") or {}).get(label) or {}).get("valid")
+    ]
+    signs = {1 if value > 0 else -1 if value < 0 else 0 for _, _, value in monthly}
+    names = "·".join(name for _, name, _ in monthly)
+    if len(monthly) >= 2 and -1 in signs and 1 in signs:
+        reason += f" {names} 누적 방향은 기간별로 엇갈림."
+    elif monthly and signs == {-1}:
+        reason += f" {names} 누적 모두 순유출."
+    elif monthly and signs == {1}:
+        reason += f" {names} 누적은 순유입."
     if str(etf.get("status") or "") != "complete":
         overall += " · 잠정"
     return overall, reason
@@ -666,7 +693,7 @@ def format_alert(text: str) -> str:
                 out.append(f"• {clean}")
 
     if etf:
-        for window in ("1m", "3m"):
+        for window in ("1m", "2m", "3m"):
             out.extend(calendar_window_reading(etf, window, fx_rate))
         out.append(horizon_reading(etf))
 
@@ -712,7 +739,7 @@ def format_alert(text: str) -> str:
         if buyback:
             links.insert(1, buyback)
 
-    if any(((etf.get("windows") or {}).get(key) or {}).get("valid") for key in ("1m", "3m")):
+    if any(((etf.get("windows") or {}).get(key) or {}).get("valid") for key in ("1m", "2m", "3m")):
         history_link = etf.get("history_source") or "https://farside.co.uk/bitcoin-etf-flow-all-data/"
         if history_link == "https://farside.co.uk/bitcoin-etf-flow-all-data/":
             links.append(f'<a href="{history_link}">전체 과거자료</a>')

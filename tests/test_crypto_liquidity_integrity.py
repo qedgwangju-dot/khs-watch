@@ -201,7 +201,7 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         self.assertEqual(watch.flow_direction(241.1,-701.3),"순유입→순유출 전환")
         self.assertEqual(watch.flow_direction(-30.0,20.0),"순유출→순유입 전환")
 
-    def test_true_one_and_three_calendar_month_windows(self):
+    def test_true_one_two_and_three_calendar_month_windows(self):
         import datetime as dt
         start, end = dt.date(2026,4,6), dt.date(2026,10,9)
         rows, day = [], start
@@ -211,27 +211,53 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
                              "total_validated":True})
             day += dt.timedelta(days=1)
         windows = watch.calendar_windows(rows,end)
-        one,three=windows["1m"],windows["3m"]
+        one,two,three=windows["1m"],windows["2m"],windows["3m"]
         self.assertEqual((one["start"],one["end"]),("2026-09-10","2026-10-09"))
         self.assertEqual((one["prev_start"],one["prev_end"]),("2026-08-10","2026-09-09"))
+        self.assertEqual((two["start"],two["end"]),("2026-08-10","2026-10-09"))
+        self.assertEqual((two["prev_start"],two["prev_end"]),("2026-06-10","2026-08-09"))
         self.assertEqual((three["start"],three["end"]),("2026-07-10","2026-10-09"))
         self.assertEqual((three["prev_start"],three["prev_end"]),("2026-04-10","2026-07-09"))
-        self.assertTrue(one["valid"] and three["valid"])
+        self.assertTrue(one["valid"] and two["valid"] and three["valid"])
         self.assertEqual(one["value_usd_m"],one["trading_days"] * 10)
+        self.assertEqual(two["value_usd_m"],two["trading_days"] * 10)
         self.assertEqual(three["value_usd_m"],three["trading_days"] * 10)
         rows[-1]["status"]="partial"
         revised=watch.calendar_windows(rows,end)
         self.assertEqual(revised["1m"]["status"],"잠정")
+        self.assertEqual(revised["2m"]["status"],"잠정")
         self.assertEqual(revised["3m"]["status"],"잠정")
         self.assertEqual(revised["1m"]["partial_days"],1)
+        self.assertEqual(revised["2m"]["partial_days"],1)
         self.assertEqual(revised["3m"]["partial_days"],1)
 
-    def test_truncated_history_cannot_invent_one_three_month_totals(self):
+    def test_current_natural_run_date_has_exact_1m_2m_3m_bounds(self):
+        import datetime as dt
+        end = dt.date(2026, 10, 30)
+        day = dt.date(2026, 5, 1)
+        rows = []
+        while day <= end:
+            if day in (watch.expected_nyse_dates(day, day) or []):
+                rows.append({"date": day, "total": 1.0, "status": "complete",
+                             "total_validated": True})
+            day += dt.timedelta(days=1)
+        windows = watch.calendar_windows(rows, end)
+        self.assertEqual((windows["1m"]["start"], windows["1m"]["end"]),
+                         ("2026-10-01", "2026-10-30"))
+        self.assertEqual((windows["2m"]["start"], windows["2m"]["end"]),
+                         ("2026-08-31", "2026-10-30"))
+        self.assertEqual((windows["2m"]["prev_start"], windows["2m"]["prev_end"]),
+                         ("2026-07-01", "2026-08-30"))
+        self.assertEqual((windows["3m"]["start"], windows["3m"]["end"]),
+                         ("2026-07-31", "2026-10-30"))
+        self.assertTrue(all(windows[key]["valid"] for key in ("1m", "2m", "3m")))
+
+    def test_truncated_history_cannot_invent_one_two_three_month_totals(self):
         import datetime as dt
         rows=[{"date":dt.date.fromisoformat(d),"total":v,"total_validated":True,
                "status":"complete"} for d,v in DAYS]
         periods=watch.calendar_windows(rows,dt.date(2026,10,7))
-        for horizon in ("1m","3m"):
+        for horizon in ("1m","2m","3m"):
             self.assertFalse(periods[horizon]["valid"])
             self.assertIsNone(periods[horizon]["value_usd_m"])
 
@@ -249,13 +275,15 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
             for d in dates
         ]
         clean = watch.calendar_windows(rows, end)
-        self.assertTrue(clean["1m"]["valid"] and clean["3m"]["valid"])
+        self.assertTrue(clean["1m"]["valid"] and clean["2m"]["valid"] and clean["3m"]["valid"])
         rows = [r for r in rows if r["date"] != dt.date(2026, 9, 21)]
         missing = watch.calendar_windows(rows, end)
         self.assertFalse(missing["1m"]["valid"])
+        self.assertFalse(missing["2m"]["valid"])
         self.assertFalse(missing["3m"]["valid"])
         self.assertIn("2026-09-21", missing["1m"]["missing_trading_dates"])
         self.assertIsNone(missing["1m"]["value_usd_m"])
+        self.assertIsNone(missing["2m"]["value_usd_m"])
         self.assertIsNone(missing["3m"]["value_usd_m"])
 
     def test_missing_market_holiday_calendar_fails_closed(self):
@@ -278,6 +306,14 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
                     "prev_value_usd_m": 3277.0, "change_usd_m": -1618.8,
                     "direction": "순유입 둔화", "status": "집계완료(수정가능)",
                 },
+                "2m": {
+                    "valid": True, "start": "2026-08-10", "end": "2026-10-09",
+                    "trading_days": 43, "value_usd_m": -410.0,
+                    "prev_start": "2026-06-10", "prev_end": "2026-08-09",
+                    "prev_trading_days": 43,
+                    "prev_value_usd_m": 1720.0, "change_usd_m": -2130.0,
+                    "direction": "순유입→순유출 전환", "status": "집계완료(수정가능)",
+                },
                 "3m": {
                     "valid": True, "start": "2026-07-10", "end": "2026-10-09",
                     "trading_days": 65, "value_usd_m": 5938.8,
@@ -292,10 +328,19 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         rows = fmt.calendar_window_reading(state, "3m", 1339.2)
         self.assertTrue(any("거래일평균" in row for row in rows))
         self.assertTrue(any("일부 종목 미보고 거래일 최근 2/직전 0" in row for row in rows))
+        two_rows = fmt.calendar_window_reading(state, "2m", 1339.2)
+        self.assertIn("최근 2개월", two_rows[0])
+        self.assertIn("2026-08-10~2026-10-09", two_rows[0])
+        self.assertIn("직전 2개월 2026-06-10~2026-08-09", two_rows[1])
         note = fmt.horizon_reading(state)
         self.assertIn("최근5 순유출", note)
         self.assertIn("1개월 순유입", note)
+        self.assertIn("2개월 순유출", note)
         self.assertIn("3개월 순유입", note)
+        trigger = fmt.format_trigger("BTC 현물 ETF 2개월 누적 지표 검증 완료(신규 표시)")
+        self.assertEqual(trigger, ["• <b>2개월 지표 추가</b> · 달력기간별 누적을 신규 제공"])
+        first_monthly = fmt.format_trigger("BTC 현물 ETF 1·2·3개월 누적 지표 검증 완료(신규 표시)")
+        self.assertEqual(first_monthly, ["• <b>1·2·3개월 지표 첫 검증</b> · 달력기간별 누적을 신규 제공"])
 
     def test_three_month_averages_convert_both_periods(self):
         state = {"windows": {"3m": {
@@ -334,7 +379,7 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         output = "\n".join(fmt.calendar_window_reading({"windows": {"3m": window}}, "3m", None))
         self.assertIn("최근 0/직전 1 (직전 2026-07-27)", output)
 
-    def test_middle_gap_blocks_three_month_only(self):
+    def test_middle_gap_blocks_overlapping_month_windows(self):
         import datetime as dt
         day,end=dt.date(2026,4,10),dt.date(2026,10,9)
         rows=[]
@@ -345,6 +390,7 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
             day+=dt.timedelta(days=1)
         periods=watch.calendar_windows(rows,end)
         self.assertFalse(periods["1m"]["valid"])  # previous 1M also includes the source gap
+        self.assertFalse(periods["2m"]["valid"])
         self.assertTrue(watch.calendar_period(
             rows, dt.date(2026, 9, 10), end, 12
         )["valid"])  # current 1M alone has real observations
@@ -383,8 +429,10 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         self.assertEqual(outcome["reported_funds"],12)
         self.assertEqual(outcome["status"],"complete")
         self.assertTrue(outcome["windows"]["1m"]["valid"])
+        self.assertTrue(outcome["windows"]["2m"]["valid"])
         self.assertTrue(outcome["windows"]["3m"]["valid"])
         self.assertEqual(outcome["windows"]["1m"]["start"],"2026-09-10")
+        self.assertEqual(outcome["windows"]["2m"]["start"],"2026-08-10")
         self.assertEqual(outcome["windows"]["3m"]["start"],"2026-07-10")
         self.assertEqual(outcome["history_row_count"],len(values))
 
