@@ -310,6 +310,61 @@ def snapshot(dc_text,tl_text):
     digest=hashlib.sha256(json.dumps(top,ensure_ascii=False,sort_keys=True,separators=(",",":")).encode()).hexdigest()
     return top,digest
 
+def _mw_label(v):
+    val=float(v)
+    return f"{val:,.0f}" if val.is_integer() else f"{val:,.1f}"
+
+def _mw_direction(previous,current,unit="MW"):
+    """Changes use the SAME metric, SAME project and previous saved snapshot."""
+    if previous is None or current is None:return "이전 비교값 없음"
+    old_val=float(previous); new_val=float(current)
+    delta=round(new_val-old_val,1)
+    if abs(delta)<0.05:return "→ 변화 없음 (0"+unit+")"
+    sign="+" if delta>0 else "-"
+    label="↑ 증가" if delta>0 else "↓ 감소"
+    pct=f" ({delta/old_val*100:+.1f}%)" if old_val>0 else " (기존 0MW·증감률 미산출)"
+    return f"{label} {sign}{_mw_label(abs(delta))}{unit}{pct} · {_mw_label(old_val)}→{_mw_label(new_val)}{unit}"
+
+def _pp_direction(previous,current):
+    if previous is None or current is None:return "이전 비교값 없음"
+    delta=round(float(current)-float(previous),1)
+    if abs(delta)<0.05:return "→ 변화 없음 (0%p)"
+    word="↑ 증가" if delta>0 else "↓ 감소"
+    return f"{word} {delta:+.1f}%p · {float(previous):.1f}%→{float(current):.1f}%"
+
+def _aggregate_directions(previous, projects):
+    """Do not call sample additions/deletions an increase or decrease in power."""
+    past={x.get("name"):x for x in (previous or {}).get("projects",[]) if x.get("name")}
+    current={x.get("name"):x for x in projects if x.get("name")}
+    if not past:return ["• 최초 기준선: 이전 동일 프로젝트 수치 없음 · 증감 판단 불가"]
+    if len(past)!=len(current) or set(past)!=set(current):
+        return [
+            "• 비교 불가: 추적 프로젝트 구성 변경 · 새 부지 편입·제외와 실제 전력 증감을 구분",
+            f"• 공통 추적 부지: {len(set(past)&set(current))}개 / 현재 {len(current)}개"
+        ]
+    prev_live=sum(float(x.get("current_mw",0)) for x in past.values())
+    next_live=sum(float(x.get("current_mw",0)) for x in current.values())
+    prev_plan=sum(float(x.get("planned_mw",0)) for x in past.values())
+    next_plan=sum(float(x.get("planned_mw",0)) for x in current.values())
+    return [
+        f"• 현재 <b>추정 IT전력</b> │ {_mw_direction(prev_live,next_live)}",
+        f"• <b>최종 계획 IT전력</b> │ {_mw_direction(prev_plan,next_plan)}"
+    ]
+
+def _self_test_power_direction():
+    assert _mw_direction(618,824).startswith("↑ 증가 +206MW (+33.3%) · 618→824MW")
+    assert _mw_direction(824,618).startswith("↓ 감소 -206MW (-25.0%)")
+    assert _mw_direction(824,824)=="→ 변화 없음 (0MW)"
+    assert _mw_direction(None,824)=="이전 비교값 없음"
+    assert _mw_direction(0,206).startswith("↑ 증가 +206MW") and "증감률 미산출" in _mw_direction(0,206)
+    assert _pp_direction(75,100).startswith("↑ 증가 +25.0%p")
+    old={"projects":[{"name":"Abilene","current_mw":618,"planned_mw":824}]}
+    now=[{"name":"Abilene","current_mw":824,"planned_mw":824}]
+    assert "↑ 증가 +206MW" in " ".join(_aggregate_directions(old,now))
+    assert "→ 변화 없음" in " ".join(_aggregate_directions(old,now))
+    assert "비교 불가" in " ".join(_aggregate_directions(old,now+[{"name":"Other","current_mw":0,"planned_mw":100}]))
+    assert "최초 기준선" in " ".join(_aggregate_directions({},now))
+
 def changes(old,new):
     prev={x.get("name"):x for x in old.get("projects",[])}
     if not prev:return ["Epoch AI 미국 핵심 15개 프로젝트 기준선 신규 연결"]
@@ -322,10 +377,9 @@ def changes(old,new):
         old_mw=float(o.get("current_mw",0))
         mw_delta=p["current_mw"]-old_mw
         if abs(mw_delta)>=POWER_DELTA:
-            direction="상향" if mw_delta>0 else "하향"
-            out.append(f"{p['display']} Epoch 현재 IT전력 추정치 {direction} {old_mw:,.0f}→{p['current_mw']:,.0f}MW")
-        if abs(p["planned_mw"]-float(o.get("planned_mw",0)))>=POWER_DELTA:out.append(f"{p['display']} 계획 IT전력 {float(o.get('planned_mw',0)):,.0f}→{p['planned_mw']:,.0f}MW")
-        if abs(p["progress"]-float(o.get("progress",0)))>=PROGRESS_DELTA:out.append(f"{p['display']} Epoch IT전력 비율 {float(o.get('progress',0)):.0f}%→{p['progress']:.0f}%")
+            out.append(f"{p['display']} 현재 추정 IT전력 {_mw_direction(old_mw,p['current_mw'])} (Epoch 추정·실제 공급 증가 아님)")
+        if abs(p["planned_mw"]-float(o.get("planned_mw",0)))>=POWER_DELTA:out.append(f"{p['display']} 최종 계획 IT전력 {_mw_direction(float(o.get('planned_mw',0)),p['planned_mw'])} (실제 증설 완료 아님)")
+        if abs(p["progress"]-float(o.get("progress",0)))>=PROGRESS_DELTA:out.append(f"{p['display']} Epoch 추정 IT전력 비율 {_pp_direction(float(o.get('progress',0)),p['progress'])}")
         od=pdate(o.get("completion_date","")); nd=pdate(p["completion_date"])
         if od and nd and abs((nd-od).days)>=DATE_DELTA:out.append(f"{p['display']} 완료시점 {o.get('completion','')}→{p['completion']} ({'지연' if nd>od else '앞당김'})")
         if p["stage"]!=o.get("stage") and p["progress"]<99.5:
@@ -339,7 +393,7 @@ def changes(old,new):
                 out.append(f"{p['display']} 공정 위험 신호 {o.get('stage','')}→{p['stage']}")
         if p.get("mw_quality")!=o.get("mw_quality"):out.append(f"{p['display']} MW 품질 {o.get('mw_quality','기존 미분류')}→{p.get('mw_quality')}")
         if (p["owner"],p["users"],p["investors"])!=(o.get("owner"),o.get("users"),o.get("investors")):out.append(f"{p['display']} 소유·사용·투자자 정보 변경")
-        if (p.get("energy_site"),p.get("energy_future"),p.get("energy_quality"))!=(o.get("energy_site"),o.get("energy_future"),o.get("energy_quality")):out.append(f"{p['display']} 전력원 정보 변경")
+        if (p.get("energy_site"),p.get("energy_future"),p.get("energy_quality"))!=(o.get("energy_site"),o.get("energy_future"),o.get("energy_quality")):out.append(f"{p['display']} 전력원 정보 변경 (실제 공급 MW 증가·감소는 별도 미확인)")
         old_issue_fps={x.get("fingerprint") for x in o.get("company_issues",[]) if x.get("fingerprint")}
         new_issue_fps={x.get("fingerprint") for x in p.get("company_issues",[]) if x.get("fingerprint")}
         if new_issue_fps-old_issue_fps:
@@ -350,18 +404,29 @@ def badge(n):
     return "🔟" if n==10 else "".join(m[c] for c in str(n))
 def h(v):return html.escape(str(v),quote=True)
 
-def render(ps,chg,upd):
+def render(ps,chg,upd,old=None):
     planned=sum(x["planned_mw"] for x in ps); current=sum(x["current_mw"] for x in ps); pct=current/planned*100 if planned else 0
-    lines=["<b>📊 미국 주요 AI 데이터센터 건설 현황</b>",f"출처: Epoch AI · {h(upd)}","용량 = 계획 최종 IT전력 / IT전력 비율 = Epoch 현재 추정 IT전력 ÷ 계획 최종 IT전력","","<b>🔄 이번 핵심 변화</b>"]
+    previous={x.get("name"):x for x in (old or {}).get("projects",[]) if x.get("name")}
+    lines=["<b>📊 미국 주요 AI 데이터센터 건설 현황</b>",f"출처: Epoch AI · {h(upd)}",
+           "<b>⚡ 전력 증가·감소 방향 (이전 저장값과 동일 지표 비교)</b>",
+           *_aggregate_directions(old or {},ps),
+           "• 실제 발전·계통 공급·공식 전원 인가 MW 증감: <b>이번 Epoch 자료만으로는 확인 불가</b>",
+           "• 추정 IT전력 증가는 전력을 더 쓸 수 있는 추정 용량 증가이며, 실제 전기사용량 또는 발전량 증가 확정이 아님",
+           "","용량 = 계획 최종 IT전력 / 비율 = Epoch 현재 추정 IT전력 ÷ 계획 최종 IT전력",
+           "","<b>🔄 이번 핵심 변화</b>"]
     lines += [f"• {h(x)}" for x in chg[:6]]
     if len(chg)>6:lines.append(f"• 그 외 {len(chg)-6}건은 상태에 반영")
     lines += ["",f"• 핵심 {len(ps)}개 계획 최종 IT전력 합계 <b>{planned/1000:.1f}GW</b>",f"• Epoch 현재 추정 IT전력 합계 <b>{current/1000:.1f}GW</b> · 계획 IT전력 대비 비율 <b>{pct:.1f}%</b>",f"• GW 품질 │ 계획 {planned/1000:.1f}GW를 실제 전원 인가·상업가동으로 간주하지 않고 Epoch 현재 추정치 {current/1000:.1f}GW와 분리",""]
     for i,p in enumerate(ps,1):
         inv=p["investors"] if p["investors"]!="미기재" else "Epoch 투자자 미기재"
+        before=previous.get(p["name"])
+        direction_now=_mw_direction(before.get("current_mw") if before else None,p["current_mw"])
+        direction_plan=_mw_direction(before.get("planned_mw") if before else None,p["planned_mw"])
         lines += [f"<b>{badge(i)} {h(p['display'])}{' ⚠️' if p['risk'] else ''}</b>",
                   f"{h(p['owner'])} → {h(p['users'])} | {h(inv)}",
-                  f"<b>{p['planned_mw']:,.0f}MW</b> | {h(p['completion'])} | IT전력 비율 <b>{p['progress']:.0f}%</b> ({p['current_mw']:,.0f}/{p['planned_mw']:,.0f}MW) | {h(p['stage'])}",
-                  f"🧭 MW 품질 │ <b>{h(p.get('mw_quality','미분류'))}</b> · 계획 {p['planned_mw']:,.0f}MW → Epoch 현재 추정 {p['current_mw']:,.0f}MW · 접속계약·공식 전원 인가·상업가동 문서는 별도 검증",
+                  f"<b>최종 계획 {p['planned_mw']:,.0f}MW</b> | {h(p['completion'])} | 현재 추정 비율 <b>{p['progress']:.0f}%</b> (추정 {p['current_mw']:,.0f}MW/계획 {p['planned_mw']:,.0f}MW) | {h(p['stage'])}",
+                  f"↕ 전력 방향 │ <b>현재 추정</b> {h(direction_now)} | <b>최종 계획</b> {h(direction_plan)}",
+                  f"🧭 MW 품질 │ <b>{h(p.get('mw_quality','미분류'))}</b> · 현재 추정 {p['current_mw']:,.0f}MW / 최종 계획 {p['planned_mw']:,.0f}MW (서로 다른 지표·증감 비교 아님) · 공식 전원 인가 별도 검증",
                   f"⚡ 전력원 │ [{h(p['energy_quality'])}] {h(p['energy_site'])} | 장기전원: {h(p['energy_future'])}"]
         for issue in p.get("company_issues",[])[:2]:
             lines.append(
@@ -372,6 +437,7 @@ def render(ps,chg,upd):
     return "\n".join(lines)+"\n"
 
 def main():
+    _self_test_power_direction()
     OUT.mkdir(exist_ok=True)
     for p in (PENDING,ALERT,STATUS):
         if p.exists():p.unlink()
@@ -386,8 +452,8 @@ def main():
     upd=updated_label(); chg=changes(old,ps); baseline=not old.get("initialized"); format_upgrade=int(old.get("version",0) or 0)<FORMAT_VERSION; alert=baseline or format_upgrade or bool(chg)
     pending={"initialized":True,"version":FORMAT_VERSION,"dataset_updated":upd,"source_hash":src_hash,"snapshot_hash":digest,"projects":ps,"last_changes":chg[:20],"source_errors":errs,"updated_at_utc":dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")}
     PENDING.write_text(json.dumps(pending,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    if alert:ALERT.write_text(render(ps,chg,upd),encoding="utf-8")
-    STATUS.write_text("# 미국 주요 AI 데이터센터 건설 현황 감시\n\n"+f"- Epoch 업데이트: **{upd}**\n- 상위 프로젝트: **{len(ps)}개**\n- 의미 변화: **{len(chg)}건**\n- 알림: **{'예' if alert else '아니오'}**\n- MW 품질 분리 형식: **v{FORMAT_VERSION}**\n- 원천 오류: **{', '.join(errs) if errs else '없음'}**\n",encoding="utf-8")
+    if alert:ALERT.write_text(render(ps,chg,upd,old),encoding="utf-8")
+    STATUS.write_text("# 미국 주요 AI 데이터센터 건설 현황 감시\n\n"+f"- Epoch 업데이트: **{upd}**\n- 상위 프로젝트: **{len(ps)}개**\n- 의미 변화: **{len(chg)}건**\n- 알림: **{'예' if alert else '아니오'}**\n- MW 품질 분리 형식: **v{FORMAT_VERSION}**\n- 전력방향 표시: **같은 지표의 전회 대비 증가/감소/불변, 원천 추정과 전원 인가 분리**\n- 원천 오류: **{', '.join(errs) if errs else '없음'}**\n",encoding="utf-8")
     print(f"epoch_ai_buildout top={len(ps)} changes={len(chg)} baseline={baseline} alert={alert} errors={len(errs)}")
     return 0
 if __name__=="__main__":raise SystemExit(main())
