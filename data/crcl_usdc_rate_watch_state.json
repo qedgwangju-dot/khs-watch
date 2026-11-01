@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-01T10:11:13+09:00",
+  "updated_at_kst": "2026-11-01T16:34:11+09:00",
   "circle": {
     "date": "2026-10-29",
     "circulation_usd_b": 70.0,
@@ -82,5 +82,7 @@
   },
   "crcl_last_alerted_close_date": "2026-10-30",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "sofr: HTTP Error 404: Not Found"
+  ]
 }
