@@ -5,6 +5,7 @@ import datetime as dt
 import xml.etree.ElementTree as ET
 
 import requests
+from market_time_windows import select_monthly_anchors, subtract_calendar_months
 
 BASE = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml"
 ATOM = "http://www.w3.org/2005/Atom"
@@ -95,17 +96,58 @@ def bp(v):
 
 
 def build_block(target_date: str, reported_nominal: float, requester=requests) -> str:
-    year = target_date[:4]
-    urls = [
-        f"{BASE}?data=daily_treasury_yield_curve&field_tdr_date_value={year}",
-        f"{BASE}?data=daily_treasury_real_yield_curve&field_tdr_date_value={year}",
+    current_year = int(target_date[:4])
+    target_day = dt.date.fromisoformat(target_date)
+    years = {current_year, *(subtract_calendar_months(target_day, n).year for n in (1, 2, 3))}
+    values = {"BC_10YEAR": {}, "TC_10YEAR": {}}
+    urls = []
+    history_errors = []
+    for year in sorted(years):
+        year_urls = [
+            f"{BASE}?data=daily_treasury_yield_curve&field_tdr_date_value={year}",
+            f"{BASE}?data=daily_treasury_real_yield_curve&field_tdr_date_value={year}",
+        ]
+        for url, field in zip(year_urls, ("BC_10YEAR", "TC_10YEAR")):
+            urls.append(url)
+            try:
+                response = requester.get(url, timeout=(7, 18), headers={"User-Agent": "Mozilla/5.0"})
+                response.raise_for_status()
+                parsed = parse_feed(response.content, field)
+                for date_text, value in parsed.items():
+                    previous = values[field].get(date_text)
+                    if previous is not None and previous != value:
+                        raise CurveMismatch(f"Conflicting official observation {field} {date_text}")
+                    values[field][date_text] = value
+            except Exception as exc:
+                if year == current_year:
+                    raise
+                history_errors.append(f"{year} {field} {type(exc).__name__}")
+    d = decompose(values["BC_10YEAR"], values["TC_10YEAR"], target_date, reported_nominal)
+    common = sorted(set(values["BC_10YEAR"]) & set(values["TC_10YEAR"]))
+    real_rows = [{"date": day, "value": values["TC_10YEAR"][day]} for day in common]
+    bei_rows = [
+        {"date": day, "value": values["BC_10YEAR"][day] - values["TC_10YEAR"][day]}
+        for day in common
     ]
-    values = []
-    for url, field in zip(urls, ("BC_10YEAR", "TC_10YEAR")):
-        response = requester.get(url, timeout=(7, 18), headers={"User-Agent": "Mozilla/5.0"})
-        response.raise_for_status()
-        values.append(parse_feed(response.content, field))
-    d = decompose(values[0], values[1], target_date, reported_nominal)
+    real_monthly = select_monthly_anchors(real_rows, target_date)
+    bei_monthly = select_monthly_anchors(bei_rows, target_date)
+    monthly_lines = []
+    for months_back in (1, 2, 3):
+        real_anchor = real_monthly[months_back]
+        bei_anchor = bei_monthly[months_back]
+        if real_anchor["row"] is None or bei_anchor["row"] is None:
+            monthly_lines.append(
+                f"{months_back}개월 기준 목표 {real_anchor['target_date']}: 실질·BEI 비교불가(같은 날 공식 이력 부족)"
+            )
+            continue
+        old_real = float(real_anchor["row"]["value"])
+        old_bei = float(bei_anchor["row"]["value"])
+        current_bei = d["bei"]
+        monthly_lines.append(
+            f"{months_back}개월 기준 목표 {real_anchor['target_date']} / 공표 {real_anchor['observation_date']}: "
+            f"실질 {old_real:.2f}% (현재 대비 {(d['real'] - old_real) * 100:+.0f}bp) · "
+            f"BEI {old_bei:.2f}% (현재 대비 {(current_bei - old_bei) * 100:+.0f}bp)"
+        )
     signal, level = classify(d)
     return "\n".join([
         "[실질금리·시장 내재 물가상승률]",
@@ -113,7 +155,10 @@ def build_block(target_date: str, reported_nominal: float, requester=requests) -
         f"10년 손익분기 물가상승률(BEI=명목−실질) {d['bei']:.2f}%",
         f"직전 거래일({d['prev'] or '자료 부족'}): 명목 {bp(d['nominal1'])} · 실질 {bp(d['real1'])} · BEI {bp(d['bei1'])}",
         f"5거래일({d['five'] or '자료 부족'}~{d['date']}): 실질 {bp(d['real5'])} · BEI {bp(d['bei5'])}",
+        "달력월 비교(변화는 현재−과거):",
+        *monthly_lines,
+        *(["과거 금리 원자료 조회 실패: " + ", ".join(history_errors)] if history_errors else []),
         f"판정: {signal} / {level}",
         "주의: BEI는 순수 물가 전망이 아니라 물가 위험 프리미엄·TIPS 유동성 영향이 포함된 시장 내재 지표.",
-        f"공식 원천: {urls[0]} | {urls[1]}",
+        f"공식 원천: {' | '.join(urls)}",
     ])

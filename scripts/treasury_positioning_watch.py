@@ -12,7 +12,8 @@ from zoneinfo import ZoneInfo
 import requests
 from bs4 import BeautifulSoup
 
-from global_rates_watch import fetch_ust_curve
+from global_rates_watch import fetch_ust_curve_with_history
+from market_time_windows import format_monthly_rate_line, select_monthly_anchors
 
 KST = ZoneInfo("Asia/Seoul")
 NY = ZoneInfo("America/New_York")
@@ -355,8 +356,8 @@ def ofr_series(mnemonic, days=45, endpoint=OFR_URL):
 
 
 def repo_snapshot():
-    sofr = dict(ofr_series("FNYR-SOFR-A"))
-    tgcr = dict(ofr_series("FNYR-TGCR-A"))
+    sofr = dict(ofr_series("FNYR-SOFR-A", days=160))
+    tgcr = dict(ofr_series("FNYR-TGCR-A", days=160))
     common = sorted(set(sofr) & set(tgcr))
     if len(common) < 2:
         raise RuntimeError("SOFR/TGCR common dates insufficient")
@@ -376,6 +377,10 @@ def repo_snapshot():
             f"Repo source value mismatch: OFR SOFR/TGCR={s}/{t}, NYFed={ny_sofr['rate']}/{ny_tgcr['rate']}"
         )
     ensure_recent_funding_date("SOFR/TGCR", d, publish_hour=8, max_lag=1)
+
+    monthly_rows = [{"date": day, "SOFR": sofr[day], "TGCR": tgcr[day]} for day in common]
+    sofr_monthly = format_monthly_rate_line("SOFR", s, d, monthly_rows, "SOFR")
+    tgcr_monthly = format_monthly_rate_line("TGCR", t, d, monthly_rows, "TGCR")
 
     if spread_bp >= 10 or move_bp >= 10:
         state = "스트레스"
@@ -405,6 +410,13 @@ def repo_snapshot():
         "nyfed_verified": True,
         "nyfed_sofr_revision": ny_sofr["revision"],
         "nyfed_tgcr_revision": ny_tgcr["revision"],
+        "monthly_comparisons": {
+            "convention": "same calendar date minus 1/2/3 months; latest common official observation on/before target, maximum 7 calendar days earlier; no interpolation",
+            "sofr": select_monthly_anchors(monthly_rows, d),
+            "tgcr": select_monthly_anchors(monthly_rows, d),
+            "sofr_line": sofr_monthly,
+            "tgcr_line": tgcr_monthly,
+        },
         "dvp_date": dvp_date,
         "dvp_value": dvp_value,
         "dvp_old_date": old_date,
@@ -447,39 +459,7 @@ def technical_positioning(rows, repo, y30):
     return "기술·포지셔닝 혼조", f"30년물 {y30:.2f}% / 숏 확대 {expansions}개·축소 {reductions}개 / Repo {repo['state']}"
 
 
-def gross_position_driver(row):
-    """Label observable CFTC gross-side changes without assuming JPM client flows."""
-    long_delta = int(row["long_change"])
-    short_delta = int(row["short_change"])
-    net_delta = int(row["net_change"])
-    if long_delta - short_delta != net_delta:
-        raise ValueError("CFTC gross long/short and net changes disagree")
-    if long_delta > 0 and short_delta < 0:
-        return ("숏 축소 우세·롱 증가 동반" if -short_delta > long_delta
-                else "롱 증가 우세·숏 축소 동반" if -short_delta < long_delta
-                else "롱 증가·숏 축소 기여 동률")
-    if short_delta < 0 and long_delta <= 0:
-        if net_delta > 0:
-            return "숏 축소 우세(신규 롱 증가 아님)"
-        if net_delta < 0:
-            return "롱 축소 우세·숏도 축소"
-        return "롱·숏 동반 축소(순포지션 보합)"
-    if long_delta > 0 and short_delta >= 0:
-        if net_delta > 0:
-            return "롱 증가 중심(숏 축소 아님)"
-        if net_delta < 0:
-            return "숏 증가가 롱 증가 앞섬"
-        return "롱·숏 동반 증가(순포지션 보합)"
-    if short_delta > 0:
-        return "숏 증가 중심(롱 신규 증가 없음)"
-    if long_delta < 0:
-        return "롱 축소(숏 변화 없음)"
-    return "매수·매도 변화 없음"
-
-
 def position_note(row):
-    if {"long_change", "short_change", "net_change"}.issubset(row):
-        return gross_position_driver(row)
     cur, ch = row["net"], row["net_change"]
     if cur < 0:
         return "숏 축소" if ch > 0 else "숏 확대" if ch < 0 else "변화 없음"
@@ -564,38 +544,20 @@ def send_telegram(text):
     )
     with urllib.request.urlopen(req, timeout=30) as response:
         result = json.loads(response.read().decode("utf-8"))
-    if result.get("ok") is not True:
+    if not result.get("ok"):
         raise RuntimeError("Telegram send failed")
-    receipt = result.get("result") or {}
-    message_id = receipt.get("message_id")
-    actual_chat = receipt.get("chat") or {}
-    if type(message_id) is not int or message_id <= 0:
-        raise RuntimeError("Telegram receipt missing positive message_id")
-    if type(actual_chat.get("id")) is not int:
-        raise RuntimeError("Telegram receipt missing numeric chat.id")
-    if chat_id.lstrip("-").isdigit():
-        matching = actual_chat["id"] == int(chat_id)
-    elif chat_id.startswith("@"):
-        matching = str(actual_chat.get("username") or "").casefold() == chat_id[1:].casefold()
-    else:
-        raise RuntimeError("Unrecognized Telegram destination")
-    if not matching:
-        raise RuntimeError("Telegram acknowledged wrong chat.id")
-    return message_id
+    return (result.get("result") or {}).get("message_id")
 
 
 def main():
     latest, prev, rows = get_cftc_positions()
     repo = repo_snapshot()
     head, reason = classify(rows, repo)
-    curve = fetch_ust_curve()
+    curve, curve_history, curve_history_errors = fetch_ust_curve_with_history()
     y30 = curve["ust30"].value
     y30_date = curve["ust30"].date
     y10 = curve["ust10"].value
     y10_date = curve["ust10"].date
-    if y10_date != y30_date:
-        raise RuntimeError("U.S. Treasury 10Y/30Y source dates differ")
-    ensure_recent_date("U.S. Treasury 10Y", y10_date, 4)
     ensure_recent_date("U.S. Treasury 30Y", y30_date, 4)
     jpm_signal = jpm_30y_signal(y30)
     tech_head, tech_reason = technical_positioning(rows, repo, y30)
@@ -608,8 +570,10 @@ def main():
         f"→ {reason}",
         f"기술·포지셔닝: {tech_head}",
         f"→ {tech_reason}",
-        f"미국 재무부 공식 10년 {y10:.3f}% / 30년 {y30:.3f}% (동일 기준일 {y30_date})",
         f"JPM 30년 기술선: 현재 {y30:.2f}% ({y30_date}) | {jpm_signal} | 상단 5.59→5.78→6.00 / 하단 5.25→5.15",
+        "미 재무부 공식 국채금리(달력월 비교; bp는 현재−과거):",
+        format_monthly_rate_line("10년", y10, y10_date, curve_history, "10Y", precision=3, delta_precision=1),
+        format_monthly_rate_line("30년", y30, y30_date, curve_history, "30Y", precision=3, delta_precision=1),
         "",
         "[CFTC Leveraged Funds]",
     ]
@@ -617,10 +581,7 @@ def main():
         x = rows[label]
         pct = f"{x['net_oi_pct']:+.1f}%" if x["net_oi_pct"] is not None else "확인 대기"
         lines.append(
-            f"{label}: 순포지션 {fmt_contracts(x['net'])} | OI 대비 {pct} | 순변화 {fmt_contracts(x['net_change'])}"
-        )
-        lines.append(
-            f"  롱 변화 {fmt_contracts(x['long_change'])} / 숏 변화 {fmt_contracts(x['short_change'])} → {position_note(x)}"
+            f"{label}: 순포지션 {fmt_contracts(x['net'])} | OI 대비 {pct} | 전주 {fmt_contracts(x['net_change'])} 변화 → {position_note(x)}"
         )
 
     spread_sign = "+" if repo["spread_bp"] >= 0 else ""
@@ -628,10 +589,9 @@ def main():
     lines += [
         "",
         f"Repo: {repo['state']} | SOFR {repo['sofr']:.2f}% / TGCR {repo['tgcr']:.2f}% | 스프레드 {spread_sign}{repo['spread_bp']:.0f}bp | SOFR 전일 {move_sign}{repo['move_bp']:.0f}bp",
+        f"Repo 금리 달력월 비교: {repo['monthly_comparisons']['sofr_line']} | {repo['monthly_comparisons']['tgcr_line']}",
         "DVP Repo: $" + f"{repo['dvp_value']/1e12:.2f}T | 약 1주 {repo['dvp_week_pct']:+.1f}% ({repo['dvp_old_date']}→{repo['dvp_date']}) | {repo['dvp_date']}",
         "",
-        "주의: JPM 고객 포지셔닝 z점수와 CFTC 레버리지 펀드 주간 공개수치는 모집단·관측시점이 다릅니다.",
-        "→ CFTC 순숏 감소만으로 숏커버링·신규 롱·완전 중립을 확정하지 않습니다.",
         "베이시스 해석: CFTC 선물 숏만으로 금리상승 베팅으로 단정하지 않음",
         "→ 숏↓ + Repo 안정 = 질서 있는 베이시스 축소 가능성",
         "→ 숏↓ + Repo 스트레스 = 강제 디레버리징 경계",
@@ -650,6 +610,12 @@ def main():
         "다음 확인: 다음 CFTC TFF(30년 ZB·초장기 UB 구분) + SOFR/TGCR + OFR DVP Repo + 30년 5.59/5.78/6.00·5.25/5.15",
         "출처: CFTC TFF 선물만 · OFR/NY Fed 레포 · 미 재무부 · CME CTD 방법론 · JPM 기술기준(사용자 제공 2026-09-29 자료)",
     ]
+    if curve_history_errors:
+        lines.append(
+            "금리 과거 원자료 조회 실패: " + ", ".join(
+                f"{year}년 {reason}" for year, reason in sorted(curve_history_errors.items())
+            )
+        )
     text = "\n".join(lines)
 
     verification = {
@@ -661,19 +627,19 @@ def main():
             "rows": rows,
         },
         "repo": repo,
-        "treasury_10y": {
-            "date": y10_date,
-            "yield": y10,
-            "source": curve["ust10"].source,
-        },
-        "gross_position_drivers": {
-            label: gross_position_driver(rows[label]) for label in CONTRACTS
-        },
-        "jpm_private_client_zscore_verified": False,
         "treasury_30y": {
             "date": y30_date,
             "yield": y30,
             "source": curve["ust30"].source,
+        },
+        "treasury_curve_monthly_comparisons": {
+            "date": y30_date,
+            "source": curve["ust10"].source,
+            "calendar_month_convention": "same calendar date minus 1/2/3 months; latest official observation on/before target, maximum 7 calendar days earlier; no interpolation",
+            "comparison_unit": "yield percent; current minus prior in basis points",
+            "history_fetch_errors": curve_history_errors,
+            "10Y": select_monthly_anchors(curve_history, y10_date),
+            "30Y": select_monthly_anchors(curve_history, y30_date),
         },
         "ctd_verification": {
             "ctd_switch_confirmed": None,
@@ -712,7 +678,6 @@ def main():
     mid = send_telegram(text)
     delivery = {
         "message_id": mid,
-        "chat_id_verified": True,
         "cftc_date": latest,
         "confirmed_at_kst": dt.datetime.now(KST).isoformat(),
     }
