@@ -35,7 +35,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          # Current state is reloaded from origin/main before committing.
+          # Full history makes this large repository's scheduled jobs stall.
+          fetch-depth: 1
 
       - name: Apply push-trigger options
         if: github.event_name == 'push'
