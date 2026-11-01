@@ -1739,7 +1739,7 @@ def _cta_breadth_block(signal: dict, *, compact=False) -> str:
     ]
     if not compact:
         lines.append(
-            "• 다음 확인: 기관 CTA 모델 원문, 동일거래일 공식 ZN 가격↑·OI↓,"
+            "• 다음 확인: 기관 모델의 차기 발표, 동일거래일 공식 ZN 가격↑·OI↓,"
             " CFTC 다음 주 10년물 순매도 축소, NQ 별도 조건"
         )
     if signal.get("model_url"):
@@ -1904,7 +1904,7 @@ def scheduled_main() -> int:
         title = "미 국채 선물 매도 쏠림 — CTA 위험 선행경보"
         body = "\n".join([
             "<b>👀 지금 쉽게 보면</b>",
-            "• 국채 선물의 광범위한 순매도와 신규 숏 확대가 확인됐지만, 실제 CTA 모델·숏 스퀴즈는 별도 검증 대상입니다.",
+            "• 최근 기관 추세추종 모델의 광범위한 국채 매도 신호와 CFTC 레버리지펀드 순매도가 각각 확인됐습니다. 실제 CTA 거래·숏 스퀴즈는 별도 검증 대상입니다.",
             "",
             _cta_breadth_block(breadth),
             "",
