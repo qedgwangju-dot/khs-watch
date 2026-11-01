@@ -17,9 +17,11 @@ on:
     # Completed-session checks only. KST 08:12 / 10:12 are after the U.S. close;
     # the former 22:12 KST pre-open slot was removed because it could mix live
     # SOX/Cboe values with completed-session CFTC data.
-    - cron: "12 23,1 * * 1-5"
+    - cron: "12 23 * * 0-4"  # KST Mon-Fri 08:12 (UTC Sun-Thu)
+    - cron: "12 1 * * 1-5"   # KST Mon-Fri 10:12 (UTC Mon-Fri)
     # Backups for GitHub scheduled-event delay/drop. State fingerprints dedupe sends.
-    - cron: "27 23,1 * * 1-5"
+    - cron: "27 23 * * 0-4"  # KST Mon-Fri 08:27 (UTC Sun-Thu)
+    - cron: "27 1 * * 1-5"   # KST Mon-Fri 10:27 (UTC Mon-Fri)
     # Daily KST morning snapshot, including unchanged days, with a 15-minute retry.
     - cron: "30 7 * * *"
       timezone: "Asia/Seoul"
