@@ -86,6 +86,55 @@ jobs:
           print("bofa_global_once_only_and_tam_scope_report_regression=passed")
           PY
 
+      - name: Regression-test data-center electricity direction without sending Telegram
+        run: |
+          python -m compileall -q scripts/us_ai_data_center_buildout_watch.py scripts/epoch_ai_dc_execution_watch.py scripts/clean_pjm_alert_html.py
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          def load(path):
+              spec = importlib.util.spec_from_file_location(Path(path).stem, path)
+              module = importlib.util.module_from_spec(spec)
+              spec.loader.exec_module(module)
+              return module
+
+          top = load("scripts/us_ai_data_center_buildout_watch.py")
+          top._self_test_power_direction()
+          current = {
+              "name": "OpenAI Stargate Abilene",
+              "display": "Stargate Abilene (TX)",
+              "owner": "Oracle", "users": "OpenAI",
+              "investors": "미기재", "current_mw": 824,
+              "planned_mw": 824, "progress": 100,
+              "completion_date": "2026-12-01", "completion": "2026.4Q",
+              "stage": "Epoch 추정 IT전력 계획치 도달",
+              "mw_quality": "현재 추정 IT전력=계획치",
+              "risk": False, "energy_quality": "공식 별도 검증",
+              "energy_site": "계통 전력", "energy_future": "미확인",
+              "company_issues": [],
+          }
+          previous = dict(current, current_mw=618, progress=75)
+          history = {"projects": [previous]}
+          new_rows = [current]
+          changes = top.changes(history, new_rows)
+          alert = top.render(new_rows, changes, "Oct 31, 2026", history)
+          assert any("↑ 증가 +206MW" in x for x in changes), changes
+          assert "↑ 증가 +206MW" in alert, alert
+          assert "현재 추정 824MW / 최종 계획 824MW" in alert, alert
+          assert "실제 발전·계통 공급·공식 전원 인가 MW 증감:" in alert
+          assert "계획 824MW → Epoch 현재" not in alert
+
+          pjm = load("scripts/clean_pjm_alert_html.py")
+          pjm._direction_regression()
+
+          aggregate = load("scripts/epoch_ai_dc_execution_watch.py")
+          aggregate.regression_checks()
+          assert aggregate.power_delta_label(824,618).startswith("↓ 감소 -206MW")
+          assert aggregate.power_delta_label(618,824).startswith("↑ 증가 +206MW")
+          print("data_center_direction_power_plan_grid_supply_regression=passed")
+          PY
+
   monitor:
     # Code-push validation must never trigger live alert sends.
     # Never process workflow_run events from failed or non-main upstream runs.
