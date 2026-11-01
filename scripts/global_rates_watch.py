@@ -34,6 +34,8 @@ from dataclasses import dataclass
 from typing import Any, Iterable
 from zoneinfo import ZoneInfo
 
+from market_time_windows import format_monthly_rate_line, select_monthly_anchors, subtract_calendar_months
+
 KST = ZoneInfo("Asia/Seoul")
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "global_rates_watch_state.json"
@@ -293,8 +295,7 @@ def fetch_jgb() -> tuple[Point, Point]:
     )
 
 
-def fetch_ust_curve(data_key: str = "daily_treasury_yield_curve") -> dict[str, Point]:
-    year = dt.datetime.now(KST).year
+def _fetch_ust_curve_records(year: int, data_key: str) -> list[dict[str, Any]]:
     params = urllib.parse.urlencode({"data": data_key, "field_tdr_date_value": str(year)})
     url = f"{UST_XML_BASE}?{params}"
     root = ET.fromstring(http_get(url))
@@ -326,18 +327,56 @@ def fetch_ust_curve(data_key: str = "daily_treasury_yield_curve") -> dict[str, P
             return dt.datetime.min
 
     records.sort(key=parse_date)
-    rec = records[-1]
-    raw_date = rec.get("NEW_DATE") or rec.get("QUOTE_DATE") or ""
-    date_text = raw_date[:10] if len(raw_date) >= 10 else raw_date
+    parsed = []
+    for rec in records:
+        raw_date = rec.get("NEW_DATE") or rec.get("QUOTE_DATE") or ""
+        date_text = raw_date[:10] if len(raw_date) >= 10 else raw_date
+        if not date_text:
+            continue
+        row = {"date": date_text, "source": url}
+        for key, name in [("BC_2YEAR", "2Y"), ("BC_10YEAR", "10Y"), ("BC_30YEAR", "30Y")]:
+            row[name] = to_float(rec.get(key))
+        parsed.append(row)
+    return parsed
 
+
+def _curve_points(row: dict[str, Any]) -> dict[str, Point]:
     out: dict[str, Point] = {}
-    for key, name in [("BC_2YEAR", "ust2"), ("BC_10YEAR", "ust10"), ("BC_30YEAR", "ust30")]:
-        val = to_float(rec.get(key))
+    for key, name in [("2Y", "ust2"), ("10Y", "ust10"), ("30Y", "ust30")]:
+        val = row.get(key)
         if val is not None:
-            out[name] = Point(name, date_text, val, url)
+            out[name] = Point(name, row["date"], float(val), row["source"])
     if not {"ust2", "ust10", "ust30"}.issubset(out):
-        raise RuntimeError(f"U.S. Treasury XML missing required tenors: keys={sorted(rec)}")
+        raise RuntimeError(f"U.S. Treasury XML missing required tenors: row={row}")
     return out
+
+
+def fetch_ust_curve(data_key: str = "daily_treasury_yield_curve") -> dict[str, Point]:
+    year = dt.datetime.now(KST).year
+    records = _fetch_ust_curve_records(year, data_key)
+    return _curve_points(records[-1])
+
+
+def fetch_ust_curve_with_history(
+    data_key: str = "daily_treasury_yield_curve",
+    months: tuple[int, ...] = (1, 2, 3),
+) -> tuple[dict[str, Point], list[dict[str, Any]], dict[str, str]]:
+    """Fetch current Treasury yields and source-dated calendar-month history."""
+    year = dt.datetime.now(KST).year
+    records = _fetch_ust_curve_records(year, data_key)
+    latest = records[-1]
+    latest_date = dt.date.fromisoformat(latest["date"])
+    needed_years = sorted({subtract_calendar_months(latest_date, n).year for n in months})
+    errors: dict[str, str] = {}
+    for old_year in needed_years:
+        if old_year >= year:
+            continue
+        try:
+            records.extend(_fetch_ust_curve_records(old_year, data_key))
+        except Exception as exc:
+            errors[str(old_year)] = type(exc).__name__
+    records.sort(key=lambda row: row["date"])
+    return _curve_points(latest), records, errors
 
 
 def fetch_fred_series(series_id: str, max_rows: int = 10) -> list[tuple[str, float]]:

@@ -15,6 +15,7 @@ from bs4 import BeautifulSoup
 
 import treasury_etf_flow_watch as base
 from treasury_credit_flow_delivery import should_run_delivery, source_delivery_complete
+from market_time_windows import format_monthly_fx_line, format_monthly_rate_line, subtract_calendar_months
 
 KST = ZoneInfo("Asia/Seoul")
 
@@ -64,32 +65,49 @@ def parse_oas_bps(meta):
 
 def get_curve_pair():
     year = dt.datetime.now(KST).year
-    url = (
-        "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml"
-        f"?data=daily_treasury_yield_curve&field_tdr_date_value={year}"
-    )
-    r = requests.get(url, headers=base.HEADERS, timeout=35)
-    r.raise_for_status()
-    root = ET.fromstring(r.content)
-    ns_d = "http://schemas.microsoft.com/ado/2007/08/dataservices"
-    rows = []
-    for entry in root.findall("{http://www.w3.org/2005/Atom}entry"):
-        def val(name):
-            node = entry.find(f".//{{{ns_d}}}{name}")
-            return None if node is None or node.text in (None, "") else node.text
-        d = val("NEW_DATE")
-        if not d:
-            continue
-        rows.append({
-            "date": d[:10],
-            "2Y": float(val("BC_2YEAR")) if val("BC_2YEAR") else None,
-            "10Y": float(val("BC_10YEAR")) if val("BC_10YEAR") else None,
-            "30Y": float(val("BC_30YEAR")) if val("BC_30YEAR") else None,
-        })
+    base_url = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml"
+
+    def fetch_year(source_year):
+        url = f"{base_url}?data=daily_treasury_yield_curve&field_tdr_date_value={source_year}"
+        r = requests.get(url, headers=base.HEADERS, timeout=35)
+        r.raise_for_status()
+        root = ET.fromstring(r.content)
+        ns_d = "http://schemas.microsoft.com/ado/2007/08/dataservices"
+        year_rows = []
+        for entry in root.findall("{http://www.w3.org/2005/Atom}entry"):
+            def val(name):
+                node = entry.find(f".//{{{ns_d}}}{name}")
+                return None if node is None or node.text in (None, "") else node.text
+            d = val("NEW_DATE")
+            if not d:
+                continue
+            year_rows.append({
+                "date": d[:10],
+                "2Y": float(val("BC_2YEAR")) if val("BC_2YEAR") else None,
+                "10Y": float(val("BC_10YEAR")) if val("BC_10YEAR") else None,
+                "30Y": float(val("BC_30YEAR")) if val("BC_30YEAR") else None,
+            })
+        return year_rows
+
+    rows = fetch_year(year)
     rows.sort(key=lambda x: x["date"])
     if not rows:
         raise RuntimeError("Treasury yield curve returned no rows")
-    return rows[-1], rows[-2] if len(rows) >= 2 else None
+    as_of = rows[-1]["date"]
+    target_years = {subtract_calendar_months(as_of, months).year for months in (1, 2, 3)}
+    history_errors = {}
+    for old_year in sorted(y for y in target_years if y < year):
+        try:
+            rows.extend(fetch_year(old_year))
+        except Exception as exc:
+            history_errors[str(old_year)] = type(exc).__name__
+    rows.sort(key=lambda x: x["date"])
+    current_year_rows = [row for row in rows if row["date"].startswith(str(year))]
+    if not current_year_rows:
+        raise RuntimeError("Treasury current-year curve missing after history collection")
+    current = current_year_rows[-1]
+    previous = next((row for row in reversed(rows) if row["date"] < current["date"]), None)
+    return current, previous, rows, history_errors
 
 
 def bp(cur, prev, key):
@@ -102,6 +120,21 @@ def fmt_bp(v):
     if v is None:
         return "비교불가"
     return f"{arrow(v)} {v:+.0f}bp"
+
+
+def _format_monthly_oas(value, as_of_date, history):
+    if value is None or not as_of_date:
+        return "비교불가(현재 OAS 기준일 또는 값 없음)"
+    rows = [
+        {"date": row.get("oas_date"), "value": row.get("oas_bps")}
+        for row in history
+        if row.get("oas_date") and row.get("oas_bps") is not None
+    ]
+    rows.append({"date": as_of_date, "value": value})
+    return format_monthly_rate_line(
+        "OAS", value, as_of_date, rows, "value",
+        precision=1, delta_scale=1.0, unit="bp", delta_precision=1,
+    )
 
 
 def _segment_curve_regime(short_change, long_change, spread_change):
@@ -450,7 +483,25 @@ def main():
             )
         return
     fx = base.get_usdkrw()
-    curve, prev_curve = get_curve_pair()
+    if fx.get("source") == "ECB/Frankfurter":
+        try:
+            import fx_api
+            fx_monthly = fx_api.historical_krw_monthly("USD", fx["date"])
+            fx_monthly_line = format_monthly_fx_line(fx["rate"], fx["date"], fx_monthly)
+        except Exception as exc:
+            fx_monthly_line = f"USD/KRW 달력월 비교: 확인불가({type(exc).__name__})"
+    else:
+        fx_monthly_line = "USD/KRW 달력월 비교: 비교불가(현재 환율 원천과 ECB 과거 원천 불일치)"
+    curve_data = get_curve_pair()
+    if len(curve_data) == 2:
+        # Keep callers that override the legacy two-value helper compatible.
+        # Such callers supply no monthly source history, so monthly anchors
+        # naturally remain non-comparable rather than being inferred.
+        curve, prev_curve = curve_data
+        curve_history = [row for row in (prev_curve, curve) if row]
+        curve_history_errors = {}
+    else:
+        curve, prev_curve, curve_history, curve_history_errors = curve_data
     results, prev_rows = {}, {}
     ishares_retry_budget = base.IsharesRetryBudget()
 
@@ -478,6 +529,10 @@ def main():
         hist = base.upsert_history(hist, cur, flow)
         state["history"][ticker] = hist
         cur["flow_5d_usd"] = base.last_n_flows(hist, 5)
+        if ticker in ("LQD", "HYG"):
+            cur["oas_monthly_line"] = _format_monthly_oas(
+                cur.get("oas_bps"), cur.get("oas_date"), hist
+            )
         results[ticker] = cur
 
     fund_dates = {ticker: results[ticker].get("date") for ticker in FUNDS}
@@ -590,6 +645,7 @@ def main():
         "[미 국채·회사채 ETF Fund Flow — 방향성·신용·수익률곡선 일일 보고]",
         f"조회시각(KST): {now:%Y-%m-%d %H:%M:%S}",
         f"환율: 1달러={fx['rate']:,.2f}원 | 기준 {fx.get('date') or '최신'}",
+        fx_monthly_line,
         "",
         "[한눈에 보기]",
         f"전체 자금 방향: {o_head}",
@@ -639,6 +695,7 @@ def main():
             f"• 일간 자금: {arrow(flow)} {flow_word(flow)} {base.fmt_usd_flow(flow)} ({base.fmt_krw(flow, fx['rate'])})",
             f"• 최근 5회: {arrow(flow5)} {base.fmt_usd_flow(flow5)} ({base.fmt_krw(flow5, fx['rate'])})",
             f"• 포트폴리오 OAS: {oas} | 기준 {oas_date} | 직전 저장값 대비 {doas_text}",
+            f"• OAS 달력월 비교: {r.get('oas_monthly_line') or '비교불가(현재 기준 확인 대기)'}",
             f"• 해석: {etf_interpretation(ticker, p, flow)}",
             "",
         ]
@@ -653,8 +710,12 @@ def main():
         "[미 국채 금리 방향]",
         f"기준: {curve['date']} | 직전: {prev_curve['date'] if prev_curve else '없음'}",
         f"• 2년: {curve['2Y']:.2f}% | {fmt_bp(d2)}",
+        "• " + format_monthly_rate_line("2년", curve["2Y"], curve["date"], curve_history, "2Y"),
         f"• 10년: {curve['10Y']:.2f}% | {fmt_bp(d10)}",
+        "• " + format_monthly_rate_line("10년", curve["10Y"], curve["date"], curve_history, "10Y"),
         f"• 30년: {curve['30Y']:.2f}% | {fmt_bp(d30)}",
+        "• " + format_monthly_rate_line("30년", curve["30Y"], curve["date"], curve_history, "30Y"),
+        "• 월 기준: 관측일 기준 1/2/3달력월 전 목표일의 직전 미 재무부 공표 거래일(목표일로부터 최대 7일; 보간 없음).",
     ]
     if s210:
         lines.append(f"• 2년-10년 금리차: {s210[1]:.0f}bp → {s210[0]:.0f}bp ({s210[2]:+.0f}bp)")
@@ -690,6 +751,14 @@ def main():
         "신용스프레드: iShares 공식 LQD·HYG 포트폴리오 Option Adjusted Spread를 일별 저장해 직전 대비 계산.",
         "출처: iShares 공식 SHY·IEF·TLT·LQD·HYG, U.S. Treasury, 환율 교차자료",
     ]
+    if curve_history_errors:
+        marker = "[수익률곡선 고정 해석]"
+        lines.insert(
+            lines.index(marker),
+            "미 재무부 과거 금리 원자료 조회 실패: " + ", ".join(
+                f"{year}년 {reason}" for year, reason in sorted(curve_history_errors.items())
+            ),
+        )
 
     text = "\n".join(lines)
     (base.OUT / "treasury_etf_flow_telegram.txt").write_text(text + "\n", encoding="utf-8")
@@ -706,6 +775,10 @@ def main():
     fingerprint_payload = {
         "curve_date": curve["date"],
         "curve": {k: curve.get(k) for k in ("2Y", "10Y", "30Y")},
+        "curve_monthly_history": [
+            {"date": row.get("date"), "2Y": row.get("2Y"), "10Y": row.get("10Y"), "30Y": row.get("30Y")}
+            for row in curve_history
+        ],
         "funds": {
             ticker: {
                 "date": results[ticker].get("date"),

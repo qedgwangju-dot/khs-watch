@@ -5,6 +5,7 @@ import json
 import math
 import urllib.request
 from dataclasses import dataclass
+from market_time_windows import select_monthly_anchors, subtract_calendar_months
 
 UTC = dt.timezone.utc
 KST = dt.timezone(dt.timedelta(hours=9))
@@ -66,6 +67,36 @@ def historical_krw(currency, target, *, now=None):
         raise RuntimeError("해당 기준일 이전 환율 API 관측값 없음—환산 보류")
     day, rate = max(valid)
     return Quote(rate, day, "ECB/Frankfurter", now.astimezone(KST).strftime("%Y-%m-%d %H:%M KST"), "단일 공식 API · 독립 교차검증 미완료")
+
+
+def historical_krw_monthly(currency, as_of_date, *, months=(1, 2, 3)):
+    """Fetch ECB daily history once and select exact calendar-month anchors."""
+    as_of = dt.date.fromisoformat(as_of_date[:10])
+    targets = [subtract_calendar_months(as_of, n) for n in months]
+    start = min(targets) - dt.timedelta(days=7)
+    end = max(targets)
+    url = (
+        f"https://api.frankfurter.dev/v2/rates?base={currency}&quotes=KRW&providers=ECB"
+        f"&from={start.isoformat()}&to={end.isoformat()}"
+    )
+    data = _json(url)
+    rows = []
+    by_date = {}
+    for row in data:
+        if row.get("base") != currency or row.get("quote") != "KRW":
+            continue
+        try:
+            day = dt.date.fromisoformat(str(row["date"])[:10])
+            rate = float(row["rate"])
+        except (ValueError, TypeError, KeyError):
+            continue
+        if day > end or day < start or not math.isfinite(rate) or rate <= 0:
+            continue
+        if day.isoformat() in by_date and by_date[day.isoformat()] != rate:
+            raise RuntimeError(f"Conflicting ECB {currency}/KRW observation {day}")
+        by_date[day.isoformat()] = rate
+    rows = [{"date": day, "value": value} for day, value in sorted(by_date.items())]
+    return select_monthly_anchors(rows, as_of.isoformat(), months=tuple(months), max_gap_days=7)
 
 
 def daily_krw(currency="USD", *, now=None):

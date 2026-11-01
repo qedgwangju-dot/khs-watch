@@ -8,6 +8,7 @@ import requests
 
 import treasury_credit_flow_watch_marketstress as stress
 import treasury_real_yield_signal as real_yield
+from market_time_windows import format_monthly_rate_line
 
 app = stress.app
 readable = stress.readable
@@ -150,8 +151,34 @@ def _oas(ticker, text):
     )
 
 
+def _oas_monthly_line(ticker, text):
+    lines = text.splitlines()
+    start = next((i for i, line in enumerate(lines) if line.startswith(f"{ticker} (")), None)
+    if start is None:
+        return "비교불가(월별 원자료 이력 부족)"
+    for line in lines[start + 1:]:
+        if re.match(r"^[A-Z]{3} \(", line):
+            break
+        if line.startswith("• OAS 달력월 비교:"):
+            return line.split(":", 1)[1].strip()
+    return "비교불가(월별 원자료 이력 부족)"
+
+
 def _rate(tenor, text):
     return _m(rf"^• {re.escape(tenor)}: ([^\n]+)", text)
+
+
+def _rate_monthly(tenor, text):
+    prefix = f"• {tenor}:"
+    matches = []
+    for line in text.splitlines():
+        if line.startswith(prefix):
+            value = line[len(prefix):].strip()
+            if "개월" in value:
+                matches.append(value)
+    if matches:
+        return matches[-1]
+    return "비교불가(월별 비교 원문 없음)"
 
 
 def _yield_value(text, tenor):
@@ -200,8 +227,8 @@ def _ofr_points(mnemonic, days=45):
 
 
 def get_repo_stress():
-    sofr = dict(_ofr_points("FNYR-SOFR-A"))
-    tgcr = dict(_ofr_points("FNYR-TGCR-A"))
+    sofr = dict(_ofr_points("FNYR-SOFR-A", days=160))
+    tgcr = dict(_ofr_points("FNYR-TGCR-A", days=160))
     common = sorted(set(sofr) & set(tgcr))
     if not common:
         raise RuntimeError("SOFR/TGCR common date missing")
@@ -224,9 +251,13 @@ def get_repo_stress():
 
     sign1 = "+" if spread_bp >= 0 else ""
     sign2 = "+" if move_bp >= 0 else ""
+    monthly_rows = [{"date": day, "SOFR": sofr[day], "TGCR": tgcr[day]} for day in common]
+    sofr_monthly = format_monthly_rate_line("SOFR", s, d, monthly_rows, "SOFR")
+    tgcr_monthly = format_monthly_rate_line("TGCR", t, d, monthly_rows, "TGCR")
     return (
         f"Repo: {state} | SOFR {s:.2f}% / TGCR {t:.2f}% | "
-        f"스프레드 {sign1}{spread_bp:.0f}bp | SOFR 전일 {sign2}{move_bp:.0f}bp | 기준 {d} (최신 공식 공표값)"
+        f"스프레드 {sign1}{spread_bp:.0f}bp | SOFR 전일 {sign2}{move_bp:.0f}bp | 기준 {d} (최신 공식 공표값)\n"
+        f"Repo 금리 달력월 비교: {sofr_monthly} | {tgcr_monthly}"
     )
 
 
@@ -390,6 +421,43 @@ def _flow_interpretation_panel(flows, fund_dates):
     if contrasts:
         lines.append("기간 차이: " + " | ".join(contrasts))
     return lines
+
+
+def _clear_overall_direction(overall_head, overall_reason, credit_head, flows, fund_dates):
+    """Keep confirmed credit appetite separate from Treasury duration flows."""
+    if "신용 위험선호 회복 확인" not in credit_head:
+        return overall_head, overall_reason
+
+    tickers = ("SHY", "IEF", "TLT")
+    dates = [fund_dates.get(ticker) for ticker in tickers]
+    if not all(dates) or len(set(dates)) != 1:
+        treasury_view = "국채 만기 판단 보류"
+        treasury_reason = "SHY·IEF·TLT 기준일 불일치 또는 미확인"
+    else:
+        day = tuple(_period_flow_direction(flows[ticker][0]) for ticker in tickers)
+        recent = tuple(_period_flow_direction(flows[ticker][1]) for ticker in tickers)
+        short_intermediate = ("유입", "유입", "유출")
+        if "확인 대기" in day or "확인 대기" in recent:
+            treasury_view = "국채 만기 확인 대기"
+            treasury_reason = "일간 또는 최근 5회 자금 자료 미확인"
+        elif day == short_intermediate and recent == short_intermediate:
+            treasury_view = "국채 단·중기 유입 · 장기 유출 지속"
+            treasury_reason = "당일과 최근 5회 모두 SHY·IEF 유입 / TLT 유출"
+        elif day == short_intermediate:
+            treasury_view = "당일 국채 단·중기 유입 · 장기 유출"
+            treasury_reason = f"당일 SHY·IEF 유입 / TLT 유출; 최근 5회 {', '.join(recent)}"
+        elif recent == short_intermediate:
+            treasury_view = "최근 5회 국채 단·중기 유입 · 장기 유출"
+            treasury_reason = f"당일 만기 흐름 {', '.join(day)}; 최근 5회 SHY·IEF 유입 / TLT 유출"
+        else:
+            treasury_view = "국채 만기별 수급 혼조"
+            treasury_reason = f"당일 만기 흐름 {', '.join(day)} / 최근 5회 {', '.join(recent)}"
+
+    return (
+        f"회사채 위험선호 회복 · {treasury_view}",
+        f"LQD·HYG 동반 유입과 신용가격 개선은 위험선호 회복 신호. "
+        f"국채 ETF는 {treasury_reason}; 따라서 위험선호와 듀레이션 수요를 같은 방향으로 합산하지 않음",
+    )
 
 
 def _rate_direction(move):
@@ -564,13 +632,21 @@ def _compact_report(raw_text):
     flows = {t: _flow(t, raw_text) for t in ("SHY", "IEF", "TLT", "LQD", "HYG")}
     fund_dates = {t: _fund_date(t, raw_text) for t in flows}
     lqd_oas, hyg_oas = _oas("LQD", raw_text), _oas("HYG", raw_text)
+    lqd_oas_monthly = _oas_monthly_line("LQD", raw_text)
+    hyg_oas_monthly = _oas_monthly_line("HYG", raw_text)
     overall_head, overall_reason = readable._direction_pair("전체 자금 방향", raw_text)
     overall_head = _display_overall_head(overall_head)
     credit_head, _ = readable._direction_pair("신용자금 방향", raw_text)
+    overall_head, overall_reason = _clear_overall_direction(
+        overall_head, overall_reason, credit_head, flows, fund_dates
+    )
     hyg_fund_date = _fund_date("HYG", raw_text)
     credit_alert_line = _credit_alert_line(flows["HYG"][0], hyg_oas, hyg_fund_date)
 
     r2, r10, r30 = _rate("2년", raw_text), _rate("10년", raw_text), _rate("30년", raw_text)
+    r2_monthly = _rate_monthly("2년", raw_text)
+    r10_monthly = _rate_monthly("10년", raw_text)
+    r30_monthly = _rate_monthly("30년", raw_text)
     s210 = _rate("2년-10년 금리차", raw_text)
     s1030 = _rate("10년-30년 금리차", raw_text)
     regime = _m(r"^• 현재 형태: ([^\n]+)", raw_text)
@@ -617,6 +693,7 @@ def _compact_report(raw_text):
 
     date_line = _m(r"^조회시각\(KST\): ([^\n]+)", raw_text)
     fx_line = _m(r"^환율: ([^\n]+)", raw_text)
+    fx_monthly_line = _m(r"^USD/KRW 달력월 비교: ([^\n]+)", raw_text, "비교불가(월별 원자료 확인 대기)")
     fx_rate = _fx_rate_from_line(fx_line)
 
     try:
@@ -652,8 +729,12 @@ def _compact_report(raw_text):
         "",
         "[금리 상세]",
         f"2년: {r2}",
+        f"• 2년 달력월 비교: {r2_monthly}",
         f"10년: {r10}",
+        f"• 10년 달력월 비교: {r10_monthly}",
         f"30년: {r30}",
+        f"• 30년 달력월 비교: {r30_monthly}",
+        "비교 기준: 관측일 기준 1/2/3달력월 전 목표일의 직전 미 재무부 공표 거래일(최대 7일; 보간 없음).",
         f"커브: {regime} = {easy}",
         f"금리차: 2-10년 {s210} | 10-30년 {s1030}",
         f"오늘의 주도축: {driver}",
@@ -667,7 +748,9 @@ def _compact_report(raw_text):
         "",
         "[신용 상세]",
         f"LQD OAS: {lqd_oas}",
+        f"LQD OAS 달력월 비교: {lqd_oas_monthly}",
         f"HYG OAS: {hyg_oas}",
+        f"HYG OAS 달력월 비교: {hyg_oas_monthly}",
         *([credit_alert_line] if credit_alert_line else []),
         "",
         "[추가 경계 요인]",
@@ -687,6 +770,7 @@ def _compact_report(raw_text):
         "",
         "[자료 기준]",
         f"환율: {fx_line}",
+        f"환율 달력월 비교: {fx_monthly_line}",
         f"기준: ETF·미 재무부 {treasury_date} | MSPD {refi_date}",
         "자금흐름: iShares 공식 발행좌수 변화 × 해당일 NAV로 계산한 추정치이며 iShares가 공표한 공식 일간 순유입액은 아님.",
         "OAS: iShares LQD·HYG ETF 보유채권 포트폴리오 특성치이며 회사채 시장 전체 스프레드는 아님.",
@@ -711,7 +795,7 @@ def _format_real_yield_sources(line):
     nominal_url = html.escape(match.group("nominal"), quote=True)
     real_url = html.escape(match.group("real"), quote=True)
     return (
-        f'공식 원천: <a href="{nominal_url}">미 재무부 명목금리</a>'
+        f'<b>공식 원천:</b> <a href="{nominal_url}">미 재무부 명목금리</a>'
         f' · <a href="{real_url}">미 재무부 실질금리</a>'
     )
 

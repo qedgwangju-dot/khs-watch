@@ -5,6 +5,7 @@ on:
     paths:
       - "scripts/treasury_positioning_watch.py"
       - "scripts/global_rates_watch.py"
+      - "scripts/market_time_windows.py"
       - "tests/test_treasury_positioning_watch.py"
       - ".github/workflows/treasury-positioning-watch.yml"
   schedule:
@@ -62,6 +63,7 @@ jobs:
         run: |
           python -m py_compile scripts/global_rates_watch.py
           python -m py_compile scripts/treasury_positioning_watch.py
+          python -m py_compile scripts/market_time_windows.py
           pytest -q tests/test_treasury_positioning_watch.py
 
       - name: Validate exact Telegram bot route

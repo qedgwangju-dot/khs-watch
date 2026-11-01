@@ -184,7 +184,9 @@ def upsert_history(history, current, flow_usd):
     history = [x for x in history if x.get("date") != current["date"]]
     history.append(row)
     history = sorted(history, key=lambda x: x["date"])
-    return history[-45:]
+    # Keep enough daily observations to anchor three calendar months without
+    # interpolation; the monthly selector still fails closed when a date is absent.
+    return history[-120:]
 
 
 def last_n_flows(history, n=5):
