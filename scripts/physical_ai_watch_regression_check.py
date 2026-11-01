@@ -6065,4 +6065,22 @@ _rog,_ros,_roc,_rok=classify(_rx_official)
 assert _rog==_ryg and _ros>=11 and _rok!=_ryk,(_rog,_ros)
 # No broadcaster, receiver, cron, force flag or prior-state writes in this check.
 
+# Dated Samsung RX actual-visit catch-up: one genuine press event, not a
+# re-alert of 10/21 plans, nor a perpetual historical query or forced resend.
+_sro_rx_saved_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,11,2,0,0,tzinfo=dt.timezone.utc)
+    _rx_catch=base.query_news(watcher._SRO_RX27_RECOVERY_ID)
+    assert len(_rx_catch)==1,_rx_catch
+    _cg,_cs,_cc,_ck=classify(_rx_catch[0])
+    assert _cg=="samsung_rx_leadership_visit" and _cs>=11,(_cg,_cs,_cc)
+    assert _cc=="삼성전자 · RX사업추진실 실제 방문 완료 보도",_cc
+    assert _ck==_ryk and _rx_catch[0].get("direct_recovery"),(_ck,_ryk)
+    assert watcher._sro_stage(_rx_catch[0],_cg)=="reported_visit_done"
+    assert _ck!=_rpk and _ck!=_rok, "Scheduled and official stages remain distinct"
+    base.NOW=dt.datetime(2026,11,6,0,0,tzinfo=dt.timezone.utc)
+    assert base.query_news(watcher._SRO_RX27_RECOVERY_ID)==[], "Expired catch-up must be silent"
+finally:
+    base.NOW=_sro_rx_saved_now
+
 print("Physical-AI watcher regression guards: PASS")
