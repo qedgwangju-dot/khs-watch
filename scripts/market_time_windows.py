@@ -133,5 +133,3 @@ def format_monthly_fx_line(
             f"현재 대비 {change_pct:+.2f}%/{change_krw:+,.2f}원)"
         )
     return "USD/KRW 달력월 비교: " + " | ".join(parts)
-
-\n
