@@ -8824,6 +8824,12 @@ for _q in (
     if _q not in base.QUERIES:base.QUERIES.append(_q)
 
 
+# Add only high-confidence dexterous-hand milestones to the existing robot route.
+# No new workflow, Telegram destination, or state/seen-key migration.
+import robot_hand_tactile_watch_extension as _dexterous_hand_watch
+_dexterous_hand_watch.install(base)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
