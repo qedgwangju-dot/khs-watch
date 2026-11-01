@@ -3,7 +3,7 @@
   "version": 5,
   "dataset_updated": "Oct 31, 2026",
   "source_hash": "6e6e44c41b5ac76032bf2e331a69972e44c5ecdd7f19c1e7c76ac541c266be06",
-  "snapshot_hash": "ac181ad58379cefd2dc4bfd9f68a76948f5fe61689997b73ac4fd6262a587e34",
+  "snapshot_hash": "4ba8ab8e58b520745ae00bf26d4e6cf4c2efb3da0db3d384ffc0c43bd64de124",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -271,15 +271,15 @@
       "owner": "Oracle",
       "users": "OpenAI",
       "investors": "SoftBank·OpenAI·Oracle",
-      "current_mw": 618.0,
+      "current_mw": 824.0,
       "planned_mw": 824.0,
-      "progress": 75.0,
+      "progress": 100.0,
       "completion_date": "2026-11-01",
-      "completion": "2026.4Q",
-      "stage": "부분 가동·가동 확대",
+      "completion": "Epoch 추정 IT전력 계획치 도달",
+      "stage": "Epoch 상태상 가동·IT전력 계획치 도달",
       "risk": false,
-      "source_status": "Buildings 5-6 are operational. On Oracle's Q1 FY27 earnings call (September 10, 2026), Clay Magouyrk said \"6 of the 8 campus buildings, representing 618 megawatts and 75% of total capacity have now been delivered to the customer\" ([transcript](https://www.fool.com/earnings/call-transcripts/2026/09/11/oracle-orcl-q1-2027-earnings-call-transcript/)). 618 MW = 6 x 103 MW, matching the per-building IT power figure Crusoe reported earlier. Since Oracle is the chip owner rather than the facility operator, we assume \"delivered\" means the chips are installed and ready to use.",
-      "mw_quality": "현재 추정 IT전력·부분 가동/건설 병행",
+      "source_status": "Buildings 7-8 are estimated to be operational. On March 24, Building 8 roughly looked like where Building 3 was in September. Building 3 is estimated to be operational in April, 7 months later. This naively suggests Building 8 will be operational by early November, 7 months after March 24. Oracle gave no date for the last two buildings on its September 10 call.",
+      "mw_quality": "현재 추정 IT전력=계획치",
       "energy_site": "1.2GW 계통연계 + 뒤계량기 배터리·태양광 + 풍력자원 활용 · 천연가스 터빈은 백업전원",
       "energy_future": "추가 재생에너지 개발과 배터리 확대로 계통 안정성 보강",
       "energy_quality": "Crusoe 공식 부지확정",
@@ -306,7 +306,11 @@
       "company_issues": []
     }
   ],
-  "last_changes": [],
+  "last_changes": [
+    "Stargate Abilene (TX) Epoch 현재 IT전력 추정치 상향 618→824MW",
+    "Stargate Abilene (TX) Epoch IT전력 비율 75%→100%",
+    "Stargate Abilene (TX) MW 품질 현재 추정 IT전력·부분 가동/건설 병행→현재 추정 IT전력=계획치"
+  ],
   "source_errors": [],
-  "updated_at_utc": "2026-10-31T22:35:13+00:00"
+  "updated_at_utc": "2026-11-01T00:31:44+00:00"
 }
