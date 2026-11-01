@@ -224,7 +224,7 @@ def calendar_period(rows: list[dict], start: dt.date, end: dt.date, minimum: int
 
 def calendar_windows(rows: list[dict], latest: dt.date) -> dict:
     result = {}
-    for months, label, minimum in ((1, "1m", 12), (3, "3m", 40)):
+    for months, label, minimum in ((1, "1m", 12), (2, "2m", 25), (3, "3m", 40)):
         start = months_before(latest, months) + dt.timedelta(days=1)
         prev_end = start - dt.timedelta(days=1)
         prev_start = months_before(prev_end, months) + dt.timedelta(days=1)
@@ -445,7 +445,7 @@ def btc_etf_flow() -> dict:
                 "change_usd_m": None, "direction": "확인 불가",
                 "status": "확인 불가",
                 "avg_usd_m_per_session": None, "prev_avg_usd_m_per_session": None,
-                "error": history_error or "1·3개월 계산에 필요한 과거 원자료 미확보",
+                "error": history_error or "1·2·3개월 계산에 필요한 과거 원자료 미확보",
             })
 
     return {
@@ -817,9 +817,14 @@ def main() -> None:
         old_windows = old_etf.get("windows") or {}
         new_windows = etf.get("windows") or {}
         if not old_windows and all((new_windows.get(key) or {}).get("valid") for key in ("1m", "3m")):
-            triggers.append("BTC 현물 ETF 1개월·3개월 누적 지표 검증 완료(신규 표시)")
+            if (new_windows.get("2m") or {}).get("valid"):
+                triggers.append("BTC 현물 ETF 1·2·3개월 누적 지표 검증 완료(신규 표시)")
+            else:
+                triggers.append("BTC 현물 ETF 1개월·3개월 누적 지표 검증 완료(신규 표시)")
+        elif "2m" not in old_windows and (new_windows.get("2m") or {}).get("valid"):
+            triggers.append("BTC 현물 ETF 2개월 누적 지표 검증 완료(신규 표시)")
         elif new_date == old_date and not same_day_value_changed and not partial_to_complete:
-            for key, amount in (("1m", 20.0), ("3m", 50.0)):
+            for key, amount in (("1m", 20.0), ("2m", 35.0), ("3m", 50.0)):
                 old_window = old_windows.get(key) or {}
                 new_window = new_windows.get(key) or {}
                 if (old_window.get("valid") and new_window.get("valid")
@@ -904,8 +909,8 @@ def main() -> None:
                     lines += ["• 5거래일 변화율: 부호 전환 구간이라 % 비교하지 않음"]
             else:
                 lines += ["• 5거래일 구간 대비: 검증된 10개 거래일이 확보될 때까지 계산 보류"]
-            # Rolling 1M/3M = literal calendar-month windows, not 21/63 assumed sessions.
-            for label in ("1m", "3m"):
+            # Rolling 1M/2M/3M are literal calendar-month windows, not assumed session counts.
+            for label in ("1m", "2m", "3m"):
                 item = ((etf.get("windows") or {}).get(label) or {})
                 if item.get("valid"):
                     lines.append(
@@ -945,6 +950,7 @@ def main() -> None:
         f"- 미 국채 10Y/30Y: {rates.get('10y', 'N/A')}% / {rates.get('30y', 'N/A')}% ({rates.get('date', 'N/A')})",
         f"- BTC 현물 ETF: {signed_millions(etf.get('total_usd_m', 0.0)) if etf else 'N/A'} ({etf.get('date', 'N/A') if etf else 'N/A'})",
         f"- ETF 1M: {((etf.get('windows') or {}).get('1m') or {}).get('value_usd_m', 'unavailable')} (status: {((etf.get('windows') or {}).get('1m') or {}).get('status', 'unknown')})",
+        f"- ETF 2M: {((etf.get('windows') or {}).get('2m') or {}).get('value_usd_m', 'unavailable')} (status: {((etf.get('windows') or {}).get('2m') or {}).get('status', 'unknown')})",
         f"- ETF 3M: {((etf.get('windows') or {}).get('3m') or {}).get('value_usd_m', 'unavailable')} (status: {((etf.get('windows') or {}).get('3m') or {}).get('status', 'unknown')})",
         f"- ETF history: {etf.get('history_row_count', 0)} rows; {etf.get('history_error') or 'OK'}",
         f"- 오류: {'; '.join(errors) if errors else '없음'}",
