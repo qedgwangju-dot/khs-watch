@@ -2051,6 +2051,254 @@ core.signal_label=_signal_label_with_storage_v34
 core.format_quote=_format_quote_with_storage_v34
 core.build_regular_alert=_build_with_gie_storage_v34
 
+
+# CFTC 주간 미국 천연가스 포지션: 기존 LNG 텔레그램 경로 재사용.
+# 기존 기사(2026-10-27, 7개 계약 합산 625150)를 단일 NYMEX 자료와 혼동 금지.
+import csv as _cot_csv
+import io as _cot_io
+import urllib.request as _cot_url
+
+CFTC_NG_CSV = "https://www.cftc.gov/dea/newcot/f_disagg.txt"
+CFTC_NG_API = "https://publicreporting.cftc.gov/resource/72hh-3qpy.json"
+CFTC_NG_CODE = "023651"
+CFTC_NG_FIRST_FUTURE_DATE = dt.date(2026, 11, 3)
+_BASE_LNG_RUN = core.run
+
+
+def _cot_read(url):
+    req = _cot_url.Request(url, headers={"User-Agent": "Mozilla/5.0", "Cache-Control": "no-cache"})
+    with _cot_url.urlopen(req, timeout=15) as response:
+        raw = response.read(3_000_001)
+    if not raw or len(raw) > 3_000_000:
+        raise RuntimeError("CFTC 원문 길이 오류")
+    return raw.decode("utf-8-sig", errors="strict")
+
+
+def _cot_validate(item):
+    date = dt.date.fromisoformat(item["date"])
+    nums = [item[k] for k in ("long", "short", "open_interest", "prior_long", "prior_short")]
+    if date.weekday() != 1 or date.year < 2026 or date.year > 2040:
+        raise RuntimeError("CFTC 화요일 관측일 오류")
+    if min(nums) < 0 or nums[2] > 4_000_000 or max(nums[0], nums[1]) > nums[2]:
+        raise RuntimeError("CFTC 포지션·미결제약정 범위 오류")
+    return item
+
+
+def parse_cftc_ng_csv(raw):
+    rows = [row for row in _cot_csv.reader(_cot_io.StringIO(raw))
+            if len(row) >= 64 and row[3].strip() == CFTC_NG_CODE]
+    if len(rows) != 1 or "NAT GAS NYME" not in rows[0][0].upper():
+        raise RuntimeError("CFTC NYMEX 천연가스 단일 계약 식별 실패")
+    row = rows[0]
+    day = dt.date.fromisoformat(row[2].strip())
+    if row[1].strip() != day.strftime("%y%m%d"):
+        raise RuntimeError("CFTC 날짜 중복필드 불일치")
+    long, short = int(row[13]), int(row[14])
+    # Official disaggregated futures-only CSV: weekly change block 55~,
+    # managed-money long index 61, short index 62.
+    long_chg, short_chg = int(row[61]), int(row[62])
+    return _cot_validate(dict(
+        date=day.isoformat(), long=long, short=short, open_interest=int(row[7]),
+        prior_long=long-long_chg, prior_short=short-short_chg,
+        long_change=long_chg, short_change=short_chg,
+    ))
+
+
+def parse_cftc_ng_api(raw):
+    rows = json.loads(raw)
+    if not isinstance(rows,list) or len(rows) < 2:
+        raise RuntimeError("CFTC 공식 API 연속 두 관측치 부족")
+    out=[]
+    for row in rows:
+        if str(row.get("cftc_contract_market_code")) != CFTC_NG_CODE:
+            raise RuntimeError("CFTC 계약 코드 불일치")
+        name = str(row.get("market_and_exchange_names") or row.get("contract_market_name") or "")
+        if "NAT GAS" not in name.upper():
+            raise RuntimeError("CFTC 상품명 불일치")
+        out.append((
+            dt.date.fromisoformat(str(row["report_date_as_yyyy_mm_dd"])[:10]),
+            int(row["m_money_positions_long_all"]),
+            int(row["m_money_positions_short_all"]),
+            int(row["open_interest_all"]),
+        ))
+    out.sort(reverse=True)
+    latest, prev = out[:2]
+    if latest[0] <= prev[0]:
+        raise RuntimeError("CFTC 공식 API 날짜 중복")
+    return _cot_validate(dict(
+        date=latest[0].isoformat(), prior_date=prev[0].isoformat(),
+        long=latest[1], short=latest[2], open_interest=latest[3],
+        prior_long=prev[1], prior_short=prev[2],
+        long_change=latest[1]-prev[1], short_change=latest[2]-prev[2],
+    ))
+
+
+def verify_cftc_ng(csv_row, api_row):
+    if csv_row is None and api_row is None:
+        raise RuntimeError("CFTC 두 원천 모두 조회 실패")
+    if csv_row is not None and api_row is not None:
+        for col in ("date","long","short","open_interest","prior_long","prior_short"):
+            if csv_row[col] != api_row[col]:
+                raise RuntimeError(f"CFTC 공식 CSV/API 모순: {col}")
+    result = dict(api_row or csv_row)
+    result["source_status"] = ("CSV+API" if csv_row is not None and api_row is not None
+                               else "API만" if api_row is not None else "CSV만")
+    result["net"] = result["long"]-result["short"]
+    result["prior_net"] = result["prior_long"]-result["prior_short"]
+    result["net_change"] = result["net"]-result["prior_net"]
+    return result
+
+
+def fetch_cftc_ng():
+    outputs, failures={},[]
+    for key,url,parser in (
+        ("csv",CFTC_NG_CSV,parse_cftc_ng_csv),
+        ("api",CFTC_NG_API+"?"+urllib.parse.urlencode({
+            "$where":"cftc_contract_market_code='023651'",
+            "$order":"report_date_as_yyyy_mm_dd DESC", "$limit":"3",
+        }),parse_cftc_ng_api),
+    ):
+        try:
+            outputs[key]=parser(_cot_read(url))
+        except Exception as exc:
+            failures.append(f"{key}={type(exc).__name__}:{str(exc)[:105]}")
+    if not outputs:
+        raise RuntimeError(" | ".join(failures))
+    result=verify_cftc_ng(outputs.get("csv"),outputs.get("api"))
+    result["source_failures"]=failures
+    return result
+
+
+def detect_cftc_ng_event(data,state,now):
+    day=dt.date.fromisoformat(data["date"])
+    ny=now.astimezone(ZoneInfo("America/New_York")).date()
+    if day<CFTC_NG_FIRST_FUTURE_DATE or (ny-day).days not in range(0,13):
+        return None
+    delta_short, delta_net = data["short_change"],data["net_change"]
+    stage=None
+    if data["short"]>405217 and delta_short>=20000 and delta_net<=-15000:
+        stage="매도확대"
+    elif data["net"]<=-206317 and delta_net<=-20000 and delta_short>=15000:
+        stage="순매도심화"
+    elif data["prior_short"]>=380000 and delta_short<=-35000 and delta_net>=20000:
+        stage="매도축소"
+    if stage is None:
+        return None
+    event_id=f"cftc_ng_nymex:{day.isoformat()}:{stage}"
+    if event_id in set(map(str,state.get("alerted_event_ids",[]))):
+        return None
+    return dict(data,stage=stage,event_id=event_id)
+
+
+def _cftc_eia_storage_optional(now):
+    try:
+        raw=_cot_read("https://www.eia.gov/naturalgas/storage/")
+        visible=_visible_text_v34(raw)
+        m=re.search(r"Working gas in storage was ([\d,]+) Bcf as of Friday, "
+                    r"([A-Za-z]+ \d{1,2}, 20\d{2})",visible,re.I)
+        if not m:
+            return None
+        date=dt.datetime.strptime(m.group(2),"%B %d, %Y").date()
+        age=(now.astimezone(ZoneInfo("America/New_York")).date()-date).days
+        stock=int(m.group(1).replace(",",""))
+        if age<0 or age>12 or not 1000<=stock<=5000:
+            return None
+        return dict(date=date.isoformat(),stock_bcf=stock)
+    except Exception:
+        return None
+
+
+def make_cftc_ng_alert(event,storage,now):
+    stage=event["stage"]
+    title=("미국 천연가스 CFTC 매도 확대" if stage!="매도축소"
+           else "미국 천연가스 CFTC 매도 축소·급반등 위험")
+    lines=[
+        f"{now.astimezone(core.KST):%Y-%m-%d %H:%M} KST","",
+        "<b>[CFTC 미국 천연가스 선물 포지션]</b>",
+        "• 대상: NYMEX NAT GAS · CFTC 023651 · 옵션 제외",
+        f"• 관측 기준일: {event['date']} (화요일) · 조회시각과 구분",
+        f"• 매도: {event['prior_short']:,} → {event['short']:,}계약 ({event['short_change']:+,}계약)",
+        f"• 매수: {event['prior_long']:,} → {event['long']:,}계약 ({event['long_change']:+,}계약)",
+        f"• 순포지션: {event['prior_net']:+,} → {event['net']:+,}계약 ({event['net_change']:+,}계약)",
+        f"• 미결제약정: {event['open_interest']:,}계약",
+        "", "<b>[의미]</b>",
+        ("• 매도 포지션이 빠르게 줄었으나 실제 숏커버 거래와 가격 급등은 별도 검증 필요"
+         if stage=="매도축소" else
+         "• 하락 방향 포지션 확대: 추세 지속 가능성과 한파 시 숏스퀴즈 위험이 공존"),
+        "• 비교: 2026-10-27 단일 NYMEX 매도 405,217계약·순매도 206,317계약",
+        "• 블룸버그 7개 헨리허브 계약 합산 625,150계약은 집계 범위가 달라 합산·혼용 금지",
+        "", "<b>[실물·날씨]</b>",
+    ]
+    if storage:
+        lines.append(f"• EIA 저장량 {storage['date']}: {storage['stock_bcf']:,}Bcf (별도 기준일)")
+    else:
+        lines.append("• EIA 저장량 공식 최신 수치 수집 불가 · 이전 값 재사용 안 함")
+    lines.extend([
+        "• NOAA 2026-10-15 겨울 전망은 미국 북부 온화한 날씨 가능성을 제시한 확률 전망",
+        "", "<b>[다음 확인]</b>",
+        "• 최신 NOAA 6~10일/8~14일 기온전망, EIA 재고 주간 증감과 가스 생산",
+        "• NYMEX 선물 종가·만기 교체, 미국 LNG 수출설비 투입량과 급격한 추위",
+        "", "<b>[근거]</b>",
+        f'• <a href="{CFTC_NG_CSV}">CFTC 공식 선물 주간자료</a> '
+        f'· <a href="{CFTC_NG_API}">CFTC 공개 API</a>',
+        '• <a href="https://www.eia.gov/naturalgas/storage/">EIA 주간 재고</a>'
+        ' · <a href="https://www.noaa.gov/news-release/el-nino-looms-large-over-us-winter-outlook">NOAA 겨울 전망</a>',
+    ])
+    body="\n".join(lines)
+    if len(body)>3400:
+        raise RuntimeError("CFTC Telegram 본문 3400자 초과")
+    meta={"kind":"cftc_ng_nymex","event_id":event["event_id"],
+          "observation_date":event["date"],"source_status":event["source_status"],
+          "source_failures":event["source_failures"],
+          "report_family":"futures_only_disaggregated",
+          "separate_from_seven_contract_aggregate":True,
+          "storage_observation":storage}
+    return title,body,meta
+
+
+def run_with_cftc_ng(setup_test):
+    if setup_test:
+        return _BASE_LNG_RUN(setup_test)
+    now=core.now_utc()
+    state=core.load_state()
+    try:
+        data=fetch_cftc_ng()
+        event=detect_cftc_ng_event(data,state,now)
+        print(f"cftc_ng_source=ok date={data['date']} short={data['short']} "
+              f"net={data['net']} paths={data['source_status']} event={bool(event)}",flush=True)
+    except Exception as exc:
+        error=f"CFTC 원천자료 검증 실패 {type(exc).__name__}: {str(exc)[:210]}"
+        print("cftc_ng_source=failed "+error,flush=True)
+        result=_BASE_LNG_RUN(setup_test)
+        if core.SUMMARY_PATH.exists():
+            with core.SUMMARY_PATH.open("a",encoding="utf-8") as f:
+                f.write("\n- CFTC 별도 조회: "+error+"\n")
+        return result
+    if event is None:
+        return _BASE_LNG_RUN(setup_test)
+    storage=_cftc_eia_storage_optional(now)
+    title,body,meta=make_cftc_ng_alert(event,storage,now)
+    core.clean_outputs()
+    core.write_alert(title,body,meta)
+    pending=dict(state)
+    pending["alerted_event_ids"]=(list(map(str,state.get("alerted_event_ids",[])))+
+                                  [event["event_id"]])[-400:]
+    pending["last_alert_at_kst"]=now.astimezone(core.KST).isoformat(timespec="seconds")
+    core.PENDING_STATE_PATH.write_text(
+        json.dumps(pending,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    core.SUMMARY_PATH.write_text(
+        f"# LNG 기존 경로 · CFTC 별도 사건\n\n- 관측일: {event['date']}\n"
+        f"- 단계: {event['stage']}\n"
+        "- 전송: 확인 전(성공 시 기존 finalizer가 상태 갱신)\n"
+        "- 기존 LNG 일반 뉴스·시장 감시는 다음 정기 실행에서 계속\n",
+        encoding="utf-8")
+    print(f"cftc_ng_alert_created=true event_id={event['event_id']} "
+          "telegram_sent=false state_saved=false",flush=True)
+    return 0
+
+
+core.run=run_with_cftc_ng
+
 if __name__ == "__main__":
     raise SystemExit(core.main())
 

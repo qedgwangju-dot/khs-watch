@@ -62,6 +62,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -207,6 +210,7 @@ jobs:
               text = text[cut:].strip()
 
           message_ids = []
+          verified_chat_id = None
           for i, chunk in enumerate(chunks, 1):
               send_text = chunk if len(chunks) == 1 else f"[{i}/{len(chunks)}]\n{chunk}"
               payload = urllib.parse.urlencode({
@@ -220,16 +224,31 @@ jobs:
                   result = json.loads(response.read().decode("utf-8"))
               if not result.get("ok"):
                   raise RuntimeError(f"Telegram rejected message: {result}")
-              message_ids.append(int(result["result"]["message_id"]))
+              delivery = result.get("result") or {}
+              dchat = delivery.get("chat") or {}
+              cid = dchat.get("id")
+              mid = delivery.get("message_id")
+              if cid is None or mid is None:
+                  raise RuntimeError("Telegram response missing chat.id or message_id")
+              if chat_id.lstrip("-").isdigit() and str(cid) != chat_id:
+                  raise RuntimeError("Telegram chat.id mismatch")
+              if chat_id.startswith("@") and str(dchat.get("username") or "").lower() != chat_id[1:].lower():
+                  raise RuntimeError("Telegram destination username mismatch")
+              if verified_chat_id is not None and verified_chat_id != cid:
+                  raise RuntimeError("Telegram multipart destination mismatch")
+              verified_chat_id = cid
+              message_ids.append(int(mid))
 
           confirmed = {
               "status": "confirmed",
               "bot": f"@{actual}",
               "message_ids": message_ids,
+              "chat_id": verified_chat_id,
+              "chat_id_verified": verified_chat_id is not None,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
           pathlib.Path("out/lng_supply_crisis_telegram_confirmed.json").write_text(json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-          print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={message_ids}")
+          print(f"telegram_delivery_confirmed=true bot=@{actual} chat_id_verified={verified_chat_id is not None} message_ids={message_ids}")
           PY
 
       - name: Finalize alert state

@@ -202,3 +202,84 @@ class LNGMaritimeEvidenceRegressionTest(unittest.TestCase):
     def test_official_one_source_requires_real_LNG_event(self):
         unrelated = self.item("Oil tankers attacked near Hormuz, gas shipping remains uncertain", "UKMTO", official=True)
         self.assertFalse(any(g.get("category") == "hormuz_shipping" for g in monitor.confirmed_news_groups_v34([unrelated])))
+
+
+class CFTCNymexNGTest(unittest.TestCase):
+    @staticmethod
+    def csvrow(date="2026-10-27",lng=198900,sh=405217,dlong=-3670,dshort=45238):
+        import csv,io
+        cols=["0"]*191
+        cols[0]="NAT GAS NYME - NEW YORK MERCANTILE EXCHANGE"
+        cols[1]=dt.date.fromisoformat(date).strftime("%y%m%d")
+        cols[2]=date
+        cols[3]="023651"
+        cols[7]="1681043"
+        cols[13],cols[14]=str(lng),str(sh)
+        cols[61],cols[62]=str(dlong),str(dshort)
+        f=io.StringIO()
+        csv.writer(f).writerow(cols)
+        return f.getvalue()
+
+    @staticmethod
+    def apirow():
+        import json
+        def item(day,long,short):
+            return {"cftc_contract_market_code":"023651",
+                    "market_and_exchange_names":"NAT GAS NYME - NEW YORK MERCANTILE EXCHANGE",
+                    "report_date_as_yyyy_mm_dd":day+"T00:00:00.000",
+                    "m_money_positions_long_all":str(long),
+                    "m_money_positions_short_all":str(short),
+                    "open_interest_all":"1681043"}
+        return json.dumps([item("2026-10-27",198900,405217),
+                           item("2026-10-20",202570,359979)])
+
+    def test_cftc_official_two_paths_and_baseline_values(self):
+        flat=monitor.parse_cftc_ng_csv(self.csvrow())
+        api=monitor.parse_cftc_ng_api(self.apirow())
+        combined=monitor.verify_cftc_ng(flat,api)
+        self.assertEqual(combined["short"],405217)
+        self.assertEqual(combined["net"],-206317)
+        self.assertEqual(combined["short_change"],45238)
+        self.assertEqual(combined["prior_net"],-157409)
+        self.assertEqual(combined["source_status"],"CSV+API")
+
+    def test_cftc_contract_and_cross_source_mismatch_fail_closed(self):
+        with self.assertRaises(RuntimeError):
+            monitor.parse_cftc_ng_csv(self.csvrow().replace("023651","023A55"))
+        flat=monitor.parse_cftc_ng_csv(self.csvrow())
+        api=monitor.parse_cftc_ng_api(self.apirow())
+        api["short"]+=1
+        with self.assertRaisesRegex(RuntimeError,"모순"):
+            monitor.verify_cftc_ng(flat,api)
+
+    def test_cftc_old_article_ignored_future_change_dedup(self):
+        at=dt.datetime(2026,11,7,2,tzinfo=dt.timezone.utc)
+        original=monitor.verify_cftc_ng(monitor.parse_cftc_ng_csv(self.csvrow()),None)
+        self.assertIsNone(monitor.detect_cftc_ng_event(original,{},at))
+        updated=monitor.verify_cftc_ng(monitor.parse_cftc_ng_csv(
+            self.csvrow("2026-11-03",185000,435217,-13900,30000)),None)
+        signal=monitor.detect_cftc_ng_event(updated,{},at)
+        self.assertEqual(signal["stage"],"매도확대")
+        self.assertIsNone(monitor.detect_cftc_ng_event(updated,
+            {"alerted_event_ids":[signal["event_id"]]},at))
+        title,body,meta=monitor.make_cftc_ng_alert(signal,None,at)
+        self.assertIn("매도 확대",title)
+        self.assertIn("625,150",body)
+        self.assertEqual(meta["observation_date"],"2026-11-03")
+
+    def test_cftc_short_shrink_not_assumed_confirmed_squeeze(self):
+        at=dt.datetime(2026,11,7,2,tzinfo=dt.timezone.utc)
+        updated=monitor.verify_cftc_ng(monitor.parse_cftc_ng_csv(
+            self.csvrow("2026-11-03",213900,355217,15000,-50000)),None)
+        signal=monitor.detect_cftc_ng_event(updated,{},at)
+        self.assertEqual(signal["stage"],"매도축소")
+        _,body,_=monitor.make_cftc_ng_alert(signal,None,at)
+        self.assertIn("별도 검증 필요",body)
+        self.assertNotIn("숏스퀴즈 발생 확인",body)
+
+    def test_cftc_fetch_failure_does_not_block_existing_monitor(self):
+        with patch.object(monitor,"fetch_cftc_ng",side_effect=RuntimeError("feed offline")), \
+             patch.object(monitor,"_BASE_LNG_RUN",return_value=0) as old, \
+             patch.object(monitor.core,"now_utc",return_value=dt.datetime(2026,11,1,0,tzinfo=dt.timezone.utc)):
+            self.assertEqual(monitor.run_with_cftc_ng(False),0)
+            old.assert_called_once_with(False)
