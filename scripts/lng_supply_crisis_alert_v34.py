@@ -2249,7 +2249,7 @@ def make_cftc_ng_alert(event,storage,now):
         raise RuntimeError("CFTC Telegram 본문 3400자 초과")
     meta={"kind":"cftc_ng_nymex","event_id":event["event_id"],
           "observation_date":event["date"],"source_status":event["source_status"],
-          "source_failures":event["source_failures"],
+          "source_failures":event.get("source_failures", []),
           "report_family":"futures_only_disaggregated",
           "separate_from_seven_contract_aggregate":True,
           "storage_observation":storage}
