@@ -62,6 +62,7 @@
     "3cd6e1d70b33549fbbbc551e",
     "3e434773cc4b5d3d7fc4ca94",
     "3eef3913538dabc2435c33f5",
+    "3f265fef80f5b706b008679f",
     "4086179a995d2fab05819d7f",
     "40e64d6e153bc236cca33ce6",
     "4217e4d6976fcdbb05e4a0d8",
@@ -82,6 +83,7 @@
     "4df64567a9b3cacf169bd38f",
     "4f4639bb6afb2e064fdad43f",
     "4f5bc09acd7af657e9a0862b",
+    "50344b3c31bb2c708d19edb9",
     "517a083af5cc5018d1230ebf",
     "51ad0086d3dbb534401fac28",
     "521095e4ddbc13e45056b344",
@@ -272,6 +274,7 @@
     "f120124ae5a70883b7baefeb",
     "f18ed367318c3423f3bfcf0f",
     "f252f8c166d354eec16839cd",
+    "f3045b4e7b6e02fd3575e9a8",
     "f50060712bd7ec7243142ad9",
     "f524cbfe74a1e15bb27dc9d0",
     "f724bd43b590468588fded91",
@@ -293,7 +296,7 @@
     "h2_vs_h1_growth_pct": 53.0,
     "h2_yoy_growth_pct": 71.0,
     "annual_panel_growth_pct": 23.0,
-    "apple_panel_units_m": 8.0
+    "apple_panel_units_m": 1.5
   },
   "baseline_notes": [
     "Counterpoint 2026-09: Apple 27% of full-year foldable panel shipments, all in H2",
@@ -302,7 +305,19 @@
     "Full-year foldable panel shipments +23% YoY",
     "Panel-only changes are leading indicators, not finished-device confirmation"
   ],
-  "last_alert": null,
-  "last_scan_kst": "2026-11-01T07:00:16+09:00",
+  "last_alert": {
+    "at_kst": "2026-11-01T10:01:50+09:00",
+    "events": [
+      {
+        "metric": "apple_panel_units_m",
+        "old": 8.0,
+        "new": 1.5,
+        "sources": [
+          "The Mac Observer"
+        ]
+      }
+    ]
+  },
+  "last_scan_kst": "2026-11-01T10:01:50+09:00",
   "errors": []
 }
