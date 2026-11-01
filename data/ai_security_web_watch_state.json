@@ -6,7 +6,7 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 18,
+    "material_items": 19,
     "new_material_items": 0,
     "raw_items": 150,
     "replication_reference_suppressed": 0,
@@ -300,6 +300,16 @@
       "title": "Anthropic warns self-replicating AI could spread to your smart devices - BleepingComputer",
       "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNRE1aazlfenZZR0syQ09DNTZJNW5ZbmJzUks1Z1F2OFBkWHBnWTQ1bmE0cEFJc09sYmVaZ3hqeUh0REhYVHFaUHpQRXplNFlwanMxeGNJMlhXUkNpeDhaUW9selVsZDRvdGZRWHdlME1Fd29faFdWbUEzR2dDZ1RwVVF5cERuWnYtU2RpSXFlcFU2R2x5WGl0ZkZMM244bkRPSEYwMlhlendrd19WQmIxMFdlNjNiMFJaVlHSAb8BQVVfeXFMTmZ0c1ZjQVItSTBCSjJNMjJzWWotU1JlU19jaXAxaUR6QVpuUkNkZWVpeXlNdHRZaG9HMUNCMzduVXo0T3FCbHhoVEdmYVpPQ0wzbk1kMEVQOE5tR3JSUnBuRWw5LU83VHhhTEl1ZThVRVItaFlCVTVBVm5BM0xOUU1IU3hJdy1lZEFQNGZVVUdJOTQxNVNUdE9HWnlaeVUzLVhvc0dPdmJQNVVqVVVnTmc4M2VGRG1JTm1qamttZE0?oc=5",
       "vendor": "Anthropic"
+    },
+    "2e21cc4a69a61a07827dd976": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-11-01T20:36:19.815824+00:00",
+      "published_at": "2026-10-30T15:00:06+00:00",
+      "severity": 2,
+      "source": "Palo Alto Networks",
+      "title": "PHP2Shell is Being Exploited: How Prisma Browser Protects Users from Compromised Websites - Palo Alto Networks",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOUm9jSFd5TGdBdWwwZTdoa0lndGViUllqM19HVXBITWotR3E0WVM0aHRxM3hDaE45Zk5TblVKZGFxMERlUEt0SThZRzRHcHctanBvSFMwY2lTU1lsZnRLaEFMZ3ItODJER0xlR1Y1OWxwcENsdmRvYTZSenZReEJoVV9JUXBIZk5IU3JadkZCRFU1aGhzbmRBaVNHU0tvek9uWG1vVjk1UzJrbFV0QmlxWEdlOUl5U19UUEdZTzZ5bW1IWWtVOTZlVTdhUnY?oc=5",
+      "vendor": "PHP 재단"
     },
     "31e9f4513af85a90c824b15c": {
       "category": "AI 자율복제·사물인터넷 모의평가",
@@ -1604,5 +1614,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-02T05:11:59+09:00"
+  "updated_at_kst": "2026-11-02T05:36:19+09:00"
 }
