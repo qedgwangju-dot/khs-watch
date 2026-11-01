@@ -8291,23 +8291,23 @@ for _q in [*(R27_ROBOT_COMMERCE_PREFIX+x for x in R27_ROBOT_COMMERCE),*R27_LIVE_
 
 
 
-# 2026-10-26 MicroDuck procurement agreement: a distinct commercial stage.
+# 2026-10-28 corporate disclosure supersedes reported Oct-26 signed procurement story.
 # 50k robots x 15 XL330 = 750k indicated actuators, NOT proven
 # delivered volume or an irrevocable purchase order. Monitor those later.
 MICRODUCK_OCT26_ID="DIRECT_MICRODUCK_POLLEN_ROBOTIS_PROCUREMENT_20261026"
 MICRODUCK_OCT26_EVENT={
-    "title":"로보티즈–Pollen Robotics MicroDuck XL330 공급계약 체결·초기 요청 75만개",
-    "link":"https://search.newspim.com/news/view/20261026000539",
-    "source":"뉴스핌·조선비즈",
+    "title":"로보티즈–Pollen MicroDuck 10월 26일 기념 서명식…공급계약·주문 없음(10월 28일 해명)",
+    "link":"https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028900684",
+    "source":"로보티즈 DART 해명공시",
     "description":(
-        "2026-10-26 로보티즈 서울 본사에서 Pollen Robotics와 MicroDuck "
-        "액추에이터 XL330 공급·조달 계약 체결식을 진행. "
-        "초기 고객 요청 로봇 50000대×관절 구동기 15개=750000개 소요. "
-        "2026-10-27 한화투자증권은 액추에이터 개당 26400원 가정으로 750000개×26400원=198억원(약 200억원) 잠재 공급액을 추정했다. 이는 회사 확정 계약금액이 아니고 실제 납품단가·발주서 확인 전이다. 계약·조달 협력 발표로서 "
-        "750000개 전량의 구속력 있는 취소불가 발주, 기출하·기인식 매출이 아님. "
-        "실제 확정 발주서 물량·평균판매단가·선수금·납품 시점은 별도 확인. "
-        "로보티즈 측은 공급능력 증강을 추진하며 2027년 2~3분기 "
-        "대응 가능성을 언급. 수요 전망은 확정 주문으로 합산 금지."
+        "2026-10-28 로보티즈 공시 접수번호 20261028900684에 따르면 Pollen Robotics SAS는 "
+        "2026-10-26 방문 중 MicroDuck용 액추에이터 사양·기술 협의를 진행하고 "
+        "향후 공급관계 구축을 위한 기념 서명식을 했다. "
+        "공시 시점에는 정식 공급계약도 구매주문서도 없었다. "
+        "10월 26일 일부 언론의 '공급계약 체결' 표현과 "
+        "50,000대×15개=750,000개 이론상 소요, 증권사 26,400원×750,000개=198억원 "
+        "추정 매출은 확정 공급계약·실제 발주·출하·매출과 다르다. "
+        "재공시 예정일은 2026-11-27이다."
     ),
 }
 _md_prev_query=base.query_news
@@ -8320,8 +8320,8 @@ _md_prev_risk=base.risk
 _md_prev_verify=base.verification
 _md_prev_select=base.select_diverse
 _MD_GROUP=R27_GROUP["micro"]
-_MD_STAGE="signed_procurement_framework_750k_requested"
-_MD_CAT="로보티즈–Pollen · XL330 공급계약·초기 75만개 조달 수요"
+_MD_STAGE="oct26_ceremonial_signature_no_contract"
+_MD_CAT="로보티즈–Pollen · 기념 서명식·계약/주문 없음(10월 28일 해명)"
 
 def _md_query(q:str)->list[dict]:
     if q == MICRODUCK_OCT26_ID:
@@ -8342,7 +8342,9 @@ def _md_group(text:str)->str|None:
 
 def _md_score(item:dict)->int:
     if item.get("microduck_oct26_verified"):
-        return 26
+        # Historical press-based signed-contract event was disproved by DART.
+        # The correction is emitted via its own separate, dated semantic key.
+        return 0
     return _md_prev_score(item)
 
 def _md_key(item:dict)->str:
@@ -8353,28 +8355,27 @@ def _md_key(item:dict)->str:
     return _md_prev_key(item)
 
 def _md_category(text:str,group:str)->str:
-    if group==_MD_GROUP and "750000개" in text and "198억원" in text and "공급계약 체결" in text:
+    if group==_MD_GROUP and "20261028900684" in text and "공급계약도 구매주문서도 없었다" in text:
         return _MD_CAT
     return _md_prev_category(text,group)
 
 def _md_meaning(cat:str)->str:
     if cat==_MD_CAT:
-        return ("MicroDuck 로봇 5만대에 XL330 15개씩 초기 75만개 조달 수요가 "
-                "실제 양사 공급계약 체결로 진전했습니다. 증권사 가정에 따른 약 198억원은 "
-                "납품 완료 매출이 아니며 발주서·인도·검수·매출인식을 구분합니다.")
+        return ("10월 26일은 향후 협력 기념 서명식이었으며, 10월 28일 회사 공시상 공급계약과 주문은 없었습니다. "
+                "75만개 이론 소요·198억원 증권사 추정은 확정 계약·납품·매출이 아닙니다. "
+                "11월 27일 재공시와 실제 구매주문서·고객 출하를 구분합니다.")
     return _md_prev_meaning(cat)
 
 def _md_risk(cat:str)->str:
     if cat==_MD_CAT:
-        return ("실제 확정 발주서·선수금 확인, 2027년 2~3분기 양산 처리량, "
-                "액추에이터 수율·발열·신뢰성·반품·교환 접수 및 "
-                "고객 취소 가능성이 병목. 조기 지표는 납품·검수와 회사 매출공시.")
+        return ("기술협의가 실제 발주로 이어지는지, 계약 단가·물량·납기를 확인합니다. "
+                "향후 양산 전 수율·발열·신뢰성·반품·교환 접수와 고객 취소 가능성을 구분합니다.")
     return _md_prev_risk(cat)
 
 def _md_verification(item:dict,group:str,text:str)->str:
     if item.get("microduck_oct26_verified"):
-        return ("2026-10-26 현장 계약식·당사자 발언, 뉴스핌·조선비즈와 2026-10-27 한화투자증권 추정치 "
-                "교차확인; 구속력 발주서·기출하·매출인식은 아직 별도 검증")
+        return ("2026-10-28 로보티즈 DART 해명공시 접수번호 20261028900684: "
+                "10월 26일 기념 서명식만 개최, 정식 계약·주문 없음. 11월 27일 재공시 예정")
     return _md_prev_verify(item,group,text)
 
 def _md_select(items:list[dict],seen:set[str],force:bool,limit:int)->list[dict]:
