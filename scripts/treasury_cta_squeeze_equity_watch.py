@@ -1541,6 +1541,8 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
         "• 선물 가격·OI 근거: 공식 CME 일일 OI가 없으면 Yahoo 지연가격과 CFTC 주간 OI를 별개로 보며 확정판정에 사용하지 않음",
         f"• 가격↑+동일범위 OI↓: {'확인' if evidence else '미확인'} · repo: {'안정' if repo_ok else '주의 ' + ', '.join(repo_worse)}",
         "",
+        _monthly_trend_block(snapshot, compact=False).rstrip(),
+        "",
         "<b>📍 포지션은 얼마나 쌓였나</b>",
         f"• CFTC {cftc_date}: 2Y {_fmt_net_with_krw((cftc.get('2Y') or {}).get('leveraged_net'), '2Y', fx)} · 5Y {_fmt_net_with_krw((cftc.get('5Y') or {}).get('leveraged_net'), '5Y', fx)}",
         f"• 10Y {_fmt_net_with_krw((cftc.get('10Y') or {}).get('leveraged_net'), '10Y', fx)} · Ultra10Y {_fmt_net_with_krw((cftc.get('ULTRA10Y') or {}).get('leveraged_net'), 'ULTRA10Y', fx)}",
