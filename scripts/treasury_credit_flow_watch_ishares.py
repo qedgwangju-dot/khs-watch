@@ -492,7 +492,16 @@ def main():
             fx_monthly_line = f"USD/KRW 달력월 비교: 확인불가({type(exc).__name__})"
     else:
         fx_monthly_line = "USD/KRW 달력월 비교: 비교불가(현재 환율 원천과 ECB 과거 원천 불일치)"
-    curve, prev_curve, curve_history, curve_history_errors = get_curve_pair()
+    curve_data = get_curve_pair()
+    if len(curve_data) == 2:
+        # Keep callers that override the legacy two-value helper compatible.
+        # Such callers supply no monthly source history, so monthly anchors
+        # naturally remain non-comparable rather than being inferred.
+        curve, prev_curve = curve_data
+        curve_history = [row for row in (prev_curve, curve) if row]
+        curve_history_errors = {}
+    else:
+        curve, prev_curve, curve_history, curve_history_errors = curve_data
     results, prev_rows = {}, {}
     ishares_retry_budget = base.IsharesRetryBudget()
 

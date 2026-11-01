@@ -101,12 +101,18 @@ def build_block(target_date: str, reported_nominal: float, requester=requests) -
     years = {current_year, *(subtract_calendar_months(target_day, n).year for n in (1, 2, 3))}
     values = {"BC_10YEAR": {}, "TC_10YEAR": {}}
     urls = []
+    current_year_urls = []
+    history_source_urls = {}
     history_errors = []
     for year in sorted(years):
         year_urls = [
             f"{BASE}?data=daily_treasury_yield_curve&field_tdr_date_value={year}",
             f"{BASE}?data=daily_treasury_real_yield_curve&field_tdr_date_value={year}",
         ]
+        if year == current_year:
+            current_year_urls = year_urls
+        else:
+            history_source_urls[year] = year_urls
         for url, field in zip(year_urls, ("BC_10YEAR", "TC_10YEAR")):
             urls.append(url)
             try:
@@ -160,5 +166,15 @@ def build_block(target_date: str, reported_nominal: float, requester=requests) -
         *(["과거 금리 원자료 조회 실패: " + ", ".join(history_errors)] if history_errors else []),
         f"판정: {signal} / {level}",
         "주의: BEI는 순수 물가 전망이 아니라 물가 위험 프리미엄·TIPS 유동성 영향이 포함된 시장 내재 지표.",
-        f"공식 원천: {' | '.join(urls)}",
+        f"공식 원천: {' | '.join(current_year_urls)}",
+        *(
+            [
+                "과거 비교 원천: " + "; ".join(
+                    f"{year}: {' | '.join(source_pair)}"
+                    for year, source_pair in sorted(history_source_urls.items())
+                )
+            ]
+            if history_source_urls
+            else []
+        ),
     ])
