@@ -171,6 +171,15 @@ class ExportRuntimeIntegrityTests(unittest.TestCase):
                 if not poll:collect.assert_not_called()
                 return save.call_args.args[0], alert.read_text(encoding='utf-8') if alert.exists() else ''
 
+    def run_main_at_fixture_time(self,state,official=None,errors=None,poll=False):
+        fixture_time=self.now
+        class FixtureDateTime(datetime):
+            @classmethod
+            def now(cls,tz=None):
+                return fixture_time
+        with patch.object(w,'datetime',FixtureDateTime):
+            return self.run_main(state,official,errors,poll)
+
     def test_no_poll_preserves_last_valid_malaysia_values_without_new_observation(self):
         state=dict(malaysia_hsk10_amount_usd=1610000000.,malaysia_hsk10_weight_kg=4756.,
                    malaysia_public_available=True,official_month='202609',official_data_ok=True)
@@ -284,7 +293,7 @@ class ExportRuntimeIntegrityTests(unittest.TestCase):
         p = pack()
         state = self.notified_state(p)
         state["official_source_health"] = {"status": "validation_hold", "target_month": "202609"}
-        saved, text = self.run_main(state, p, [], poll=True)
+        saved, text = self.run_main_at_fixture_time(state, p, [], poll=True)
         self.assertEqual(saved["official_source_health"]["status"], "ok")
         self.assertIn("원자료 월별 검증 보류 해소", text)
         self.assertNotIn("원자료 조회 복구", text)
@@ -293,7 +302,7 @@ class ExportRuntimeIntegrityTests(unittest.TestCase):
     def test_missing_annual_comparison_is_partial_not_full_recovery(self):
         p=pack();p['series'].pop('202509')
         state=dict(official_source_health={'status':'error'})
-        saved,text=self.run_main(state,p,['전년 전국 API 실패: ReadTimeout'],poll=True)
+        saved,text=self.run_main_at_fixture_time(state,p,['전년 전국 API 실패: ReadTimeout'],poll=True)
         self.assertEqual(saved['official_source_health']['status'],'partial')
         self.assertNotIn('원자료 조회 복구',text)
         self.assertIn('전년동월 <b>확인 불가</b>',text)
