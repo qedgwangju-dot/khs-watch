@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import html
+import json
 import re
 import urllib.parse
 from pathlib import Path
@@ -9,6 +10,12 @@ from pathlib import Path
 import requests
 
 ALERT = Path("out/pjm_data_center_policy_alert.txt")
+PENDING = Path("out/pjm_data_center_policy_pending_state.json")
+LAST_STATE = Path("data/pjm_data_center_policy_state.json")
+PJM_AUCTION_OFFICIAL = "https://insidelines.pjm.com/pjm-capacity-auction-procures-138318-mw-of-generation-resources-as-work-continues-to-address-growing-electricity-demand/"
+# Same auction metric: 2027/28 BRA cleared UCAP (not FRR-inclusive total).
+PJM_PREVIOUS_BRA_CLEARED_MW = 134585.0
+PJM_KNOWN_BRA_2829_CLEARED_MW = 138318.0
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
 # Frequently recurring PJM headlines are translated deterministically first.
@@ -210,7 +217,91 @@ def row_quality(item: dict[str, str]) -> tuple[int, int, int]:
     return (generic_penalty, -action, -len(title))
 
 
+def _load_pjm_baseline(path: Path) -> dict:
+    try:
+        data=json.loads(path.read_text(encoding="utf-8"))
+        return data.get("baseline") or {}
+    except (OSError, ValueError, TypeError):
+        return {}
+
+
+def _trend(previous, current, unit="MW"):
+    if previous is None or current is None:
+        return "비교 가능한 이전값 없음"
+    prev=float(previous); now=float(current); difference=now-prev
+    if abs(difference)<0.05:
+        return f"→ 변화 없음 (이전 {prev:,.0f}{unit} = 현재 {now:,.0f}{unit})"
+    word="↑ 증가" if difference>0 else "↓ 감소"
+    rate=f" ({difference/prev*100:+.1f}%)" if prev>0 else " (기존 0·증감률 미산출)"
+    return f"{word} {difference:+,.0f}{unit}{rate} · {prev:,.0f}→{now:,.0f}{unit}"
+
+
+def pjm_power_direction_lines(latest: dict | None = None, prior: dict | None = None) -> list[str]:
+    """Never classify a policy/news headline as new generated power capacity."""
+    latest = latest if latest is not None else _load_pjm_baseline(PENDING)
+    prior = prior if prior is not None else _load_pjm_baseline(LAST_STATE)
+    current_bra = latest.get("capacity_cleared_mw")
+    last_bra = prior.get("capacity_cleared_mw")
+    result=[
+        "• <b>이번 뉴스로 실제 발전·전원 인가 증감</b> │ <b>확인 불가</b> (정책·조달 절차 발표는 전력 증설 아님)",
+    ]
+    if current_bra is not None:
+        if last_bra is not None:
+            result.append(f"• <b>이번 저장기준 경매 확보용량</b> │ {_trend(last_bra,current_bra)} · 실제 상업운전 MW 아님")
+        if (
+            float(current_bra)==PJM_KNOWN_BRA_2829_CLEARED_MW
+            and str(latest.get("capacity_delivery_year",""))=="2028/2029"
+        ):
+            result.append(
+                f"• <b>과거 공식 경매간 비교</b> │ {_trend(PJM_PREVIOUS_BRA_CLEARED_MW,current_bra)}"
+                " (2027/28→2028/29 낙찰, 오늘 증가 아님)"
+            )
+    added=latest.get("capacity_new_generation_uprates_mw")
+    peak=latest.get("capacity_peak_load_increase_mw")
+    shortage=latest.get("capacity_shortfall_mw")
+    parts=[]
+    if added is not None:
+        parts.append(f"신규발전·증출력 {float(added):,.0f}MW 경매 확보(가동 아님)")
+    if peak is not None:
+        parts.append(f"피크수요 전망 ↑+{float(peak):,.0f}MW(전년 경매 대비)")
+    if parts:
+        result.append("• <b>공급·수요 차이</b> │ "+" / ".join(parts))
+    if shortage is not None:
+        diff = (
+            _trend(prior.get("capacity_shortfall_mw"), shortage)
+            if prior.get("capacity_shortfall_mw") is not None
+            and float(prior.get("capacity_shortfall_mw")) != float(shortage)
+            else "증가·감소 비교 불가(동일 저장값 또는 이전 같은 기준 미확인)"
+        )
+        result.append(f"• <b>신뢰도 부족</b> │ {float(shortage):,.0f}MW · 부족량 추세: {diff}")
+    return result
+
+
+def _direction_regression():
+    assert _trend(618,824).startswith("↑ 증가 +206MW (+33.3%)")
+    assert _trend(824,618).startswith("↓ 감소 -206MW (-25.0%)")
+    assert _trend(824,824).startswith("→ 변화 없음")
+    assert "비교 가능한 이전값 없음" in _trend(None,824)
+    benchmark={
+        "capacity_cleared_mw":138318,
+        "capacity_delivery_year":"2028/2029",
+        "capacity_new_generation_uprates_mw":525,
+        "capacity_peak_load_increase_mw":2000,
+        "capacity_shortfall_mw":6831,
+    }
+    rows=pjm_power_direction_lines(benchmark,benchmark)
+    content=" ".join(rows)
+    assert "↑ 증가 +3,733MW" in content
+    assert "이번 뉴스로 실제 발전·전원 인가 증감" in content
+    assert "오늘 증가 아님" in content and "가동 아님" in content
+    assert "피크수요 전망 ↑+2,000MW" in content
+    new=dict(benchmark,capacity_cleared_mw=139318,capacity_delivery_year="2029/2030")
+    assert "↑ 증가 +1,000MW" in " ".join(pjm_power_direction_lines(new,benchmark))
+    assert "과거 공식 경매간 비교" not in " ".join(pjm_power_direction_lines(new,benchmark))
+
+
 def main() -> None:
+    _direction_regression()
     if not ALERT.exists():
         return
     text = ALERT.read_text(encoding="utf-8").strip()
@@ -324,6 +415,7 @@ def main() -> None:
     else:
         compact.append("• <b>변화</b> │ 공식 정책·용량시장 실행 단계 변화")
     compact.append("• <b>판정</b> │ 부족 MW → 실제 조달 MW → 상업운전 MW 순서로 확인")
+    compact += ["", "<b>⚡ 전력 증가·감소 방향</b>"] + pjm_power_direction_lines()
 
     if current:
         compact += ["", "<b>📌 현재 기준</b>"] + current[:4]
