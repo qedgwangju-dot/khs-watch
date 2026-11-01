@@ -1151,5 +1151,28 @@ class WarshPressConferenceTranscriptLinkTests(unittest.TestCase):
         self.assertLess(len(message),3900)
 
 
+class WarshFOMCOfficialClockRegressionTests(unittest.TestCase):
+    def test_october_release_uses_daylight_saving_time(self):
+        self.assertEqual(fomc_v4.official_fomc_release_utc('2026-10-28'),
+                         datetime(2026,10,28,18,0,tzinfo=timezone.utc))
+
+    def test_december_release_uses_standard_time(self):
+        self.assertEqual(fomc_v4.official_fomc_release_utc('2026-12-09'),
+                         datetime(2026,12,9,19,0,tzinfo=timezone.utc))
+
+    def test_existing_early_baseline_can_refresh_near_release(self):
+        state={'pre_event_market_event_date':'2026-12-09',
+               'pre_event_market':{'S&P 500':{'value':7400}},
+               'pre_event_market_captured_at_utc':'2026-12-09T18:05:00+00:00'}
+        now=datetime(2026,12,9,18,40,tzinfo=timezone.utc)
+        quotes={'S&P 500':{'value':7450,'timestamp':'2026-12-09T18:39:00+00:00'}}
+        with patch.object(fomc_v4.base,'market_snapshot',return_value=quotes):
+            self.assertTrue(fomc_v4.capture_pre_event_if_due(state,'2026-12-09',now))
+        self.assertEqual(state['pre_event_market']['S&P 500']['value'],7450)
+
+    def test_release_time_invalid_date_fails_closed(self):
+        self.assertIsNone(fomc_v4.official_fomc_release_utc('not-a-date'))
+
+
 if __name__ == "__main__":
     unittest.main()

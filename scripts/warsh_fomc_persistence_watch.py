@@ -3,6 +3,7 @@ import html
 import json
 import urllib.parse
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 import warsh_fomc_event_watch as base
 
@@ -137,7 +138,13 @@ def main():
         print(json.dumps({'active': False, 'reason': 'bad event timestamp'}, ensure_ascii=False))
         return
 
-    elapsed = (now - detected).total_seconds() / 60.0
+    try:
+        actual_release=datetime.fromisoformat(
+            base.EVENT_DATE+'T14:00:00').replace(
+                tzinfo=ZoneInfo('America/New_York')).astimezone(timezone.utc)
+    except (ValueError,TypeError):
+        actual_release=detected
+    elapsed = (now - actual_release).total_seconds() / 60.0
     # The September event's market snapshots must not be reused for October.
     if (not state.get('pre_event_market')
             or state.get('pre_event_market_event_date') != base.EVENT_DATE):
@@ -151,9 +158,13 @@ def main():
     for label, threshold in [('6시간', 360), ('24시간', 1440)]:
         if elapsed < threshold or label in followups:
             continue
+        if label=='6시간' and elapsed>=1440:
+            continue
         cur = base.market_snapshot()
         brent = brent_snapshot()
         msg, verdict, changes = message(state, label, cur, brent)
+        msg += (f'\n• 실제 시간: 공식 FOMC 발표(미국 동부 오후 2시) 후 '
+                f'{elapsed:.0f}분 경과 · {label}는 목표 관측 구간')
         key = f'{base.EVENT_DATE}|{label}'
         if state.get('delivery_pending_key') == key:
             raise RuntimeError('FOMC 장기 후속 알림 전송 결과 불명확 — 재전송 보류')

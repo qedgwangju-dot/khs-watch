@@ -84,7 +84,15 @@ def capture_pre_event_if_due(state, event_date, now):
     if not (13 * 60 <= mins < 14 * 60):
         return False
     if state.get('pre_event_market_event_date') == event_date and state.get('pre_event_market'):
-        return False
+        # Keep early 13:05 fallback, but refresh it once closer to 14:00 ET.
+        if now_et.minute < 35:
+            return False
+        try:
+            previous=datetime.fromisoformat(state['pre_event_market_captured_at_utc'])
+            if (now-previous).total_seconds()<20*60:
+                return False
+        except (KeyError,ValueError,TypeError):
+            return False
     try:
         snap = base.market_snapshot()
         # Do not label an empty or stale snapshot as the pre-decision market.
@@ -143,6 +151,15 @@ def prune_stale_snapshots(state, upcoming_date=None):
     if state.get('pre_event_market_event_date') not in (state.get('event_statement_date'), upcoming_date):
         for field in ('pre_event_market', 'pre_event_market_captured_at_utc', 'pre_event_market_event_date'):
             state.pop(field, None)
+
+
+def official_fomc_release_utc(event_date):
+    """The official 2:00 p.m. Eastern FOMC decision time, DST aware."""
+    try:
+        return datetime.fromisoformat(str(event_date)+'T14:00:00').replace(
+            tzinfo=ET).astimezone(timezone.utc)
+    except (ValueError, TypeError):
+        return None
 
 
 def pre_event_capture_only(now=None):
@@ -286,15 +303,21 @@ def main():
             detected_dt = datetime.fromisoformat(detected)
         except Exception:
             detected_dt = now
-        elapsed = (now - detected_dt).total_seconds() / 60.0
+        announcement=official_fomc_release_utc(detected_date) or detected_dt
+        elapsed = (now - announcement).total_seconds() / 60.0
         fset = set(state.get('followups_sent') or [])
-        for label, threshold in [('30분', 25), ('90분', 75)]:
+        for label, threshold in [('30분', 30), ('90분', 90)]:
+            # Do not call a two-hour-late reading the 30-minute observation.
+            if (label=='30분' and elapsed>=90) or (label=='90분' and elapsed>=180):
+                continue
             if elapsed >= threshold and label not in fset:
                 # Without a same-meeting pre-event quote, no valid market delta exists.
                 if (not state.get('pre_event_market')
                         or state.get('pre_event_market_event_date') != detected_date):
                     continue
                 msg, cur_market, cls = base.followup_message(state, label)
+                msg += (f'\n• 실제 시간: 공식 FOMC 발표(미국 동부 오후 2시) 후 '
+                        f'{elapsed:.0f}분 경과 · {label}는 목표 관측 구간')
                 followup_key = f'{detected_date}|{label}'
                 if state.get('delivery_pending_key') == followup_key:
                     raise RuntimeError('FOMC 후속 알림 전송 불명확 — 재전송 보류')
