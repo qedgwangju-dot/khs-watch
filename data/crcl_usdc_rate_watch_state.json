@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-01T16:34:11+09:00",
+  "updated_at_kst": "2026-11-02T00:09:48+09:00",
   "circle": {
     "date": "2026-10-29",
     "circulation_usd_b": 70.0,
@@ -83,6 +83,6 @@
   "crcl_last_alerted_close_date": "2026-10-30",
   "correction_pending": false,
   "errors": [
-    "sofr: HTTP Error 404: Not Found"
+    "fx: 2026-10-30 한국은행 ECOS 원/미국달러 매매기준율 조회 실패"
   ]
 }
