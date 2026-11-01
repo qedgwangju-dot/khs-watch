@@ -1117,5 +1117,39 @@ class WarshFOMCHeadlineAndProjectionSafetyTests(unittest.TestCase):
         self.assertEqual(followup.call_args.args[0]['current_sep']['date'],'2026-12-09')
 
 
+class WarshPressConferenceTranscriptLinkTests(unittest.TestCase):
+    PAGE='https://www.federalreserve.gov/monetarypolicy/fomcpresconf20261028.htm'
+    PDF='https://www.federalreserve.gov/mediacenter/files/FOMCpresconf20261028.pdf'
+
+    def test_pdf_label_with_parenthetical_is_matched(self):
+        html_page='<a href="/mediacenter/files/FOMCpresconf20261028.pdf">Press Conference Transcript (PDF)</a>'
+        with patch.object(press_v3.base,'fetch',return_value=(html_page,self.PAGE)), \
+             patch.object(press_v3.urllib.request,'urlopen') as network:
+            self.assertEqual(press_v3.transcript_link(self.PAGE),self.PDF)
+        network.assert_not_called()
+
+    def test_wrong_meeting_pdf_not_accepted(self):
+        html_page='<a href="/mediacenter/files/FOMCpresconf20260916.pdf">Press Conference Transcript (PDF)</a>'
+        with patch.object(press_v3.base,'fetch',return_value=(html_page,self.PAGE)), \
+             patch.object(press_v3.urllib.request,'urlopen',side_effect=OSError('not published')):
+            self.assertIsNone(press_v3.transcript_link(self.PAGE))
+
+    def test_official_pdf_magic_fallback(self):
+        fake=MagicMock()
+        fake.__enter__.return_value=fake
+        fake.geturl.return_value=self.PDF
+        fake.read.return_value=b'%PDF-'
+        with patch.object(press_v3.base,'fetch',return_value=('<p>No PDF link</p>',self.PAGE)), \
+             patch.object(press_v3.urllib.request,'urlopen',return_value=fake):
+            self.assertEqual(press_v3.transcript_link(self.PAGE),self.PDF)
+
+    def test_source_update_does_not_repeat_old_market_policy_claims(self):
+        message=press_v3.transcript_source_message('2026-10-28',self.PAGE,self.PDF)
+        self.assertIn('기자회견 공식 전문',message)
+        self.assertNotIn('다음 회의',message)
+        self.assertNotIn('추가 긴축 시사',message)
+        self.assertLess(len(message),3900)
+
+
 if __name__ == "__main__":
     unittest.main()

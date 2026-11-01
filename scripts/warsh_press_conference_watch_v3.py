@@ -4,6 +4,7 @@ import html
 import json
 import re
 import urllib.parse
+import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from datetime import datetime, timezone, date as date_type
@@ -237,16 +238,64 @@ def current_meeting():
 
 
 def transcript_link(page):
+    """Find only the same-meeting official Fed press-conference PDF.
+
+    The Fed's link label may say 'Press Conference Transcript (PDF)' rather
+    than exactly 'Transcript'. A matching PDF on another date is never valid.
+    """
+    parsed=urllib.parse.urlsplit(page)
+    m=re.search(r'/fomcpresconf(\d{8})\.htm$',parsed.path,re.I)
+    if parsed.hostname!='www.federalreserve.gov' or not m:
+        return None
+    meeting_code=m.group(1)
+    pdf=('https://www.federalreserve.gov/mediacenter/files/'
+         f'FOMCpresconf{meeting_code}.pdf')
     try:
-        raw,_=base.fetch(page)
+        raw,final_page=base.fetch(page)
+        same_page=(urllib.parse.urlsplit(final_page).hostname=='www.federalreserve.gov'
+                   and urllib.parse.urlsplit(final_page).path==parsed.path)
+        if same_page:
+            for item in re.finditer(
+                r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
+                raw,re.I|re.S
+            ):
+                label=' '.join(html.unescape(re.sub(r'<[^>]+>',' ',item.group(2))).split()).lower()
+                href=urllib.parse.urljoin(page,item.group(1))
+                parts=urllib.parse.urlsplit(href)
+                if ('transcript' in label
+                        and parts.scheme=='https'
+                        and parts.hostname=='www.federalreserve.gov'
+                        and parts.path.lower()==urllib.parse.urlsplit(pdf).path.lower()):
+                    return pdf
+    except Exception:
+        pass
+    # The Fed can post the official PDF before its press-page link is updated.
+    # Verify a real PDF signature from the exact meeting-dated official URL.
+    try:
+        req=urllib.request.Request(pdf,headers={'User-Agent':'Mozilla/5.0'})
+        with urllib.request.urlopen(req,timeout=10) as response:
+            final=urllib.parse.urlsplit(response.geturl())
+            valid=(final.scheme=='https'
+                   and final.hostname=='www.federalreserve.gov'
+                   and final.path.lower()==urllib.parse.urlsplit(pdf).path.lower())
+            return pdf if valid and response.read(5)==b'%PDF-' else None
     except Exception:
         return None
-    for m in re.finditer(r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',raw,re.I|re.S):
-        label=' '.join(html.unescape(re.sub(r'<[^>]+>',' ',m.group(2))).split()).strip().lower()
-        href=urllib.parse.urljoin(page,m.group(1))
-        if label in ('press conference transcript','transcript') and ('transcript' in href.lower() or href.lower().endswith('.pdf')):
-            return href
-    return None
+
+
+def transcript_source_message(date,page,transcript):
+    """A source-only supplement, not a repeated old press-conference verdict."""
+    return '\n'.join([
+        '<b>[Warsh | FOMC 기자회견 공식 전문 확인]</b>',
+        f'기준: {date} FOMC',
+        '• 연준이 해당 회의의 기자회견 전문 PDF를 공개했습니다.',
+        '• 기존 금리 결정·정책 해석을 다시 발송하지 않습니다.',
+        '• 기자회견 발언의 해석은 전문 확인 후에만 업데이트합니다.',
+        '',
+        '<b>원천</b>',
+        base.link('연준 기자회견 공식 전문',transcript),
+        base.link('연준 해당 회의 자료',page),
+    ])
 
 
 def reuters_rows(date):
@@ -344,7 +393,10 @@ def main():
             raise RuntimeError('기자회견 알림 전송 결과 불명확 — 재전송 보류')
         new.update({'generic_pending_key':generic_key,'generic_delivery_status':'sending'})
         base.save(new)
-        mid=base.send(message(date,page,stmt,rows,cls,tr))
+        alert=(transcript_source_message(date,page,tr)
+               if transcript_new and not meeting_changed and not base.FORCE
+               else message(date,page,stmt,rows,cls,tr))
+        mid=base.send(alert)
         if not isinstance(mid,int):
             raise RuntimeError('기자회견 Telegram message_id 미확인')
         new.update({
