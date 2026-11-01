@@ -309,16 +309,43 @@ def install(base) -> None:
             return hashlib.sha256(f"robot-watch-nov02-live|{g}|{stage}".encode()).hexdigest()
         return prev["key"](item)
 
+    upgrade_names = {
+        "company_confirmed_cloid_mass_production":
+            "LG전자 · CLOiD 양산라인 가동 회사 공식 확인",
+        "actual_500k_hours_achieved":
+            "LG전자 · 로봇 데이터 50만시간 실제 확보 공식 확인",
+        "prototype_or_sop_official":
+            "원익로보틱스 · 로봇 손 부품 시제품/상용화 다음 단계 공식 확인",
+        "jv_legal_established":
+            "대동기어–EYOU · 합작법인 실제 설립·등기 완료",
+        "product_launched_or_production":
+            "대동기어–EYOU · 로봇 액추에이터 제품 출시/양산 공식 확인",
+        "2026q4_reported_robot_revenue":
+            "아이엘 · 2026년 4분기 로봇 부문 신규 실적 공시",
+    }
     def category(text,g):
-        if g in lookup:return lookup[g]["category"]
+        if g in lookup:
+            stage = _live_milestone(
+                {"title":text,"description":"","source":
+                 sorted(OFFICIAL[g])[0] if g in OFFICIAL else ""},g
+            )
+            if stage in upgrade_names:return upgrade_names[stage]
+            return lookup[g]["category"]
         return prev["category"](text,g)
 
     def meaning(cat):
+        if cat in upgrade_names.values():
+            return ("회사 명의로 새로운 달성 이정표가 발표된 단계입니다. "
+                    "검증·시제품·설립·양산·실제 고객 출하·매출 중 어느 단계인지는 "
+                    "원문에서 각각 분리하며 직전 목표를 소급 달성으로 취급하지 않습니다.")
         for v in EVENTS.values():
             if cat==v["category"]:return v["meaning"]
         return prev["meaning"](cat)
 
     def risk(cat):
+        if cat in upgrade_names.values():
+            return ("실제 고객 구매주문·인도·수율·검수·대금 회수 확인 전에는 "
+                    "새 완료 이정표를 곧바로 확정 매출로 간주하지 않습니다.")
         for v in EVENTS.values():
             if cat==v["category"]:return v["risk"]
         return prev["risk"](cat)
