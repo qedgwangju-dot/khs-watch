@@ -336,3 +336,49 @@ class CFTCNymexNGTest(unittest.TestCase):
             finally:
                 for key,value in saved.items():
                     setattr(monitor.core,key,value)
+
+    def test_cftc_confirmed_signal_survives_unrelated_lng_source_outage(self):
+        import pathlib
+        import tempfile
+        from unittest.mock import patch
+        at=dt.datetime(2026,11,7,2,tzinfo=dt.timezone.utc)
+        data=monitor.verify_cftc_ng(
+            monitor.parse_cftc_ng_csv(self.csvrow("2026-11-03",185000,435217,-13900,30000)),
+            None,
+        )
+        state={"alerted_event_ids":["old-id"],"active_market_signals":["ttf_above_90"]}
+        with tempfile.TemporaryDirectory() as name:
+            parent=pathlib.Path(name)
+            names=("OUT_DIR","TITLE_PATH","BODY_PATH","ALERT_JSON_PATH","PENDING_STATE_PATH","SUMMARY_PATH","TELEGRAM_CONFIRMED_PATH")
+            originals={key:getattr(monitor.core,key) for key in names}
+            try:
+                monitor.core.OUT_DIR=parent
+                for key in names[1:]:
+                    setattr(monitor.core,key,parent/getattr(monitor.core,key).name)
+                def failing_lng(_test):
+                    monitor.core.clean_outputs()
+                    monitor.core.SUMMARY_PATH.write_text("LNG news: 125/125 sources incomplete\n")
+                    return 1
+                with patch.object(monitor,"fetch_cftc_ng",return_value=data), \
+                     patch.object(monitor,"_cftc_eia_storage_optional",return_value=None), \
+                     patch.object(monitor,"_BASE_LNG_RUN",side_effect=failing_lng) as prev, \
+                     patch.object(monitor.core,"now_utc",return_value=at), \
+                     patch.object(monitor.core,"load_state",return_value=state):
+                    self.assertEqual(monitor.run_with_cftc_ng(False),0)
+                prev.assert_called_once_with(False)
+                body=monitor.core.BODY_PATH.read_text()
+                self.assertIn("CFTC 미국 천연가스 선물 포지션",body)
+                self.assertIn("LNG news: 125/125 sources incomplete",
+                              monitor.core.SUMMARY_PATH.read_text())
+                self.assertIn("LNG_SOURCE_INCOMPLETE=true",monitor.core.SUMMARY_PATH.read_text())
+                pending=json.loads(monitor.core.PENDING_STATE_PATH.read_text())
+                self.assertEqual(pending["active_market_signals"],["ttf_above_90"])
+                self.assertEqual(pending["alerted_event_ids"],
+                                 ["old-id","cftc_ng_nymex:2026-11-03:매도확대"])
+                self.assertFalse(monitor.core.TELEGRAM_CONFIRMED_PATH.exists())
+                self.assertEqual(json.loads(monitor.core.ALERT_JSON_PATH.read_text())["lng_collection_complete"],False)
+                self.assertEqual(state,{"alerted_event_ids":["old-id"],
+                                        "active_market_signals":["ttf_above_90"]})
+            finally:
+                for key,value in originals.items():
+                    setattr(monitor.core,key,value)

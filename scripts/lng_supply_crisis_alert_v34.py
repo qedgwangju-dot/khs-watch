@@ -2277,8 +2277,38 @@ def run_with_cftc_ng(setup_test):
     # Always run the existing LNG monitoring cycle: CFTC must not preempt
     # newly detected LNG supply/price alerts on the same scheduled run.
     normal_result=_BASE_LNG_RUN(setup_test)
-    if normal_result != 0 or event is None:
+    if event is None:
         return normal_result
+    if normal_result != 0:
+        # Two independent official CFTC representations can still confirm a
+        # genuine new weekly positioning signal when the unrelated Google
+        # News LNG collection is unavailable. Preserve the failure diagnosis,
+        # do not mutate any LNG-market signals or mark LNG news as received.
+        original_failure=(
+            core.SUMMARY_PATH.read_text(encoding="utf-8")
+            if core.SUMMARY_PATH.exists() else "LNG source failure (details unavailable)\n"
+        )
+        storage=_cftc_eia_storage_optional(now)
+        title,body,meta=make_cftc_ng_alert(event,storage,now)
+        meta["lng_collection_complete"]=False
+        meta["cftc_independent_delivery"]=True
+        core.clean_outputs()
+        core.write_alert(title,body,meta)
+        pending=dict(state)
+        seen=list(map(str,pending.get("alerted_event_ids",[])))
+        pending["alerted_event_ids"]=(seen+[event["event_id"]])[-400:]
+        pending["last_alert_at_kst"]=now.astimezone(core.KST).isoformat(timespec="seconds")
+        core.PENDING_STATE_PATH.write_text(
+            json.dumps(pending,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+        core.SUMMARY_PATH.write_text(
+            original_failure.rstrip()+
+            "\n\nLNG_SOURCE_INCOMPLETE=true\n"
+            "CFTC_INDEPENDENT_EVENT="+event["event_id"]+
+            "\nCFTC 실제 Telegram 응답 후에만 중복키 저장. "
+            "기존 LNG 뉴스·가격 수집 성공으로 간주하지 않음.\n",
+            encoding="utf-8")
+        print("::warning::LNG source collection incomplete; verified CFTC event independently prepared",flush=True)
+        return 0
     if not core.PENDING_STATE_PATH.exists():
         raise RuntimeError("기존 LNG 정상 실행 뒤 pending 상태가 없어 CFTC 병합 차단")
     pending=json.loads(core.PENDING_STATE_PATH.read_text(encoding="utf-8"))

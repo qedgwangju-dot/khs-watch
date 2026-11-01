@@ -299,3 +299,10 @@ jobs:
             fi
           fi
 
+      - name: Mark unresolved LNG collection after independent CFTC delivery
+        if: always() && hashFiles('out/lng_supply_crisis_watch.md') != ''
+        run: |
+          if grep -q '^LNG_SOURCE_INCOMPLETE=true$' out/lng_supply_crisis_watch.md; then
+            echo "::error::Existing LNG sources were incomplete. CFTC official alert was processed independently; inspect source coverage."
+            exit 1
+          fi
