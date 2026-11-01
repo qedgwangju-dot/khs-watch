@@ -6083,4 +6083,7 @@ try:
 finally:
     base.NOW=_sro_rx_saved_now
 
+import robot_hand_tactile_regression as _hand_regression
+_hand_regression.run()
+
 print("Physical-AI watcher regression guards: PASS")
