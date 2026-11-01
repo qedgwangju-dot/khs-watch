@@ -8830,6 +8830,10 @@ for _q in (
 import robot_hand_tactile_watch_extension as _dexterous_hand_watch
 _dexterous_hand_watch.install(base)
 
+# Preserve all historical lanes; append source-graded Nov-02 corrections and next-stage guards.
+import robot_watch_nov02_stage_lanes as _robot_nov02
+_robot_nov02.install(base)
+
 
 if __name__ == '__main__':
     pre_state = base.load_state()
