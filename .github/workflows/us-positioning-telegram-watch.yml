@@ -11,6 +11,8 @@ on:
       - "scripts/us_positioning_context.py"
       - "scripts/us_positioning_amounts.py"
       - "scripts/us_positioning_fx.py"
+      - "scripts/us_positioning_etf_short_interest.py"
+      - "tests/test_us_positioning_etf_short_interest.py"
   schedule:
     # Completed-session checks only. KST 08:12 / 10:12 are after the U.S. close;
     # the former 22:12 KST pre-open slot was removed because it could mix live
@@ -173,7 +175,7 @@ jobs:
           PY
 
       - name: Send Telegram update
-        if: hashFiles('out/us_positioning_alert.html') != ''
+        if: github.event_name != 'push' && hashFiles('out/us_positioning_alert.html') != ''
         run: |
           python - <<'PY'
           import json, os, pathlib, time, urllib.parse, urllib.request
@@ -250,7 +252,7 @@ jobs:
           PY
 
       - name: Persist state after successful delivery
-        if: success() && hashFiles('out/us_positioning_pending_state.json') != ''
+        if: github.event_name != 'push' && success() && hashFiles('out/us_positioning_pending_state.json') != ''
         run: |
           python - <<'PY'
           import pathlib
@@ -265,7 +267,7 @@ jobs:
           PY
 
       - name: Commit watcher state
-        if: success() && hashFiles('out/us_positioning_pending_state.json') != ''
+        if: github.event_name != 'push' && success() && hashFiles('out/us_positioning_pending_state.json') != ''
         run: |
           git config user.name "us-positioning-watch[bot]"
           git config user.email "us-positioning-watch[bot]@users.noreply.github.com"
@@ -296,5 +298,77 @@ jobs:
             out/us_positioning_telegram_confirmed.json
             out/us_positioning_source_evidence.json
             out/us_positioning_sources/
+          if-no-files-found: ignore
+          retention-days: 14
+
+
+  etf_short_interest:
+    # Reuse this existing US positioning workflow, secrets, bot and schedules.
+    # Push always validates without Telegram send or delivery-state changes.
+    if: ${{ github.event_name == 'schedule' || github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+
+    steps:
+      - name: Checkout latest US positioning delivery state
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ETF short-interest validation dependencies
+        run: python -m pip install --disable-pip-version-check -q beautifulsoup4 pytest
+
+      - name: Test publication-date, source-consensus and dedupe guards
+        run: |
+          python -m py_compile scripts/us_positioning_etf_short_interest.py
+          python -m pytest -q tests/test_us_positioning_etf_short_interest.py
+
+      - name: Check QQQ-SPY published short interest, send only if confirmed
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            python scripts/us_positioning_etf_short_interest.py --validate-only
+          else
+            python scripts/us_positioning_etf_short_interest.py
+          fi
+
+      - name: Commit ETF SI state only after Telegram receipt
+        if: github.event_name == 'schedule' && hashFiles('out/us_positioning_etf_short_interest_confirmed.json') != ''
+        run: |
+          test -s out/us_positioning_etf_short_interest_confirmed.json
+          test -s data/us_positioning_etf_short_interest_state.json
+          git config user.name "us-positioning-short-interest[bot]"
+          git config user.email "us-positioning-short-interest[bot]@users.noreply.github.com"
+          cp data/us_positioning_etf_short_interest_state.json /tmp/etf_si_state.json
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/etf_si_state.json data/us_positioning_etf_short_interest_state.json
+            git add data/us_positioning_etf_short_interest_state.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Record confirmed QQQ SPY short-interest Telegram delivery"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 3))
+          done
+          exit 1
+
+      - name: Upload ETF SI source and delivery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: us-etf-short-interest-${{ github.run_id }}
+          path: |
+            out/us_positioning_etf_short_interest_status.json
+            out/us_positioning_etf_short_interest_confirmed.json
+            data/us_positioning_etf_short_interest_state.json
           if-no-files-found: ignore
           retention-days: 14
