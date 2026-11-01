@@ -8,10 +8,10 @@
     "no_precommit": false,
     "balance_sheet": true
   },
-  "transcript": null,
-  "sent": false,
+  "transcript": "https://www.federalreserve.gov/mediacenter/files/FOMCpresconf20261028.pdf",
+  "sent": true,
   "reuters_count": 8,
-  "updated_at_utc": "2026-11-01T08:51:20.971333+00:00",
+  "updated_at_utc": "2026-11-01T08:55:58.125208+00:00",
   "structural_source_status": "already_sent",
   "structural_pending_key": null,
   "structural_delivery_status": "confirmed",
@@ -49,5 +49,10 @@
     "https://m.ajupress.com/amp/20261029104304880"
   ],
   "korea_addendum_sent_at_utc": "2026-10-29T13:24:13.776022+00:00",
-  "korea_addendum_status": "already_sent"
+  "korea_addendum_status": "already_sent",
+  "generic_pending_key": null,
+  "generic_delivery_status": "confirmed",
+  "generic_sent_key": "2026-10-28|press-conference",
+  "generic_message_id": 125,
+  "generic_sent_at_utc": "2026-11-01T08:55:58.125059+00:00"
 }
