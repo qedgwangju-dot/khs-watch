@@ -283,3 +283,55 @@ class CFTCNymexNGTest(unittest.TestCase):
              patch.object(monitor.core,"now_utc",return_value=dt.datetime(2026,11,1,0,tzinfo=dt.timezone.utc)):
             self.assertEqual(monitor.run_with_cftc_ng(False),0)
             old.assert_called_once_with(False)
+
+
+    def test_cftc_simultaneous_lng_event_preserves_both_alerts_and_pending(self):
+        import pathlib
+        import tempfile
+        from unittest.mock import patch
+        at=dt.datetime(2026,11,7,2,tzinfo=dt.timezone.utc)
+        data=monitor.verify_cftc_ng(
+            monitor.parse_cftc_ng_csv(self.csvrow("2026-11-03",185000,435217,-13900,30000)),
+            None,
+        )
+        state={"alerted_event_ids":["old-record"],"active_market_signals":["ttf_above_90"]}
+        with tempfile.TemporaryDirectory() as name:
+            base=pathlib.Path(name)
+            tracked=("OUT_DIR","TITLE_PATH","BODY_PATH","ALERT_JSON_PATH","PENDING_STATE_PATH","TELEGRAM_CONFIRMED_PATH","SUMMARY_PATH")
+            saved={key:getattr(monitor.core,key) for key in tracked}
+            try:
+                monitor.core.OUT_DIR=base
+                for key in tracked[1:]:
+                    setattr(monitor.core,key,base/getattr(monitor.core,key).name)
+                def existing_lng(_setup):
+                    monitor.core.clean_outputs()
+                    monitor.core.write_alert("기존 LNG 경보","<b>기존 LNG 공급 사건</b>",{"version":34,"source":"existing"})
+                    monitor.core.PENDING_STATE_PATH.write_text(
+                        json.dumps({"alerted_event_ids":["old-record","lng-new"],
+                                    "active_market_signals":["ttf_above_90","jkm_above_30"]}))
+                    monitor.core.SUMMARY_PATH.write_text("기존 LNG 판정 결과\n")
+                    return 0
+                with patch.object(monitor,"fetch_cftc_ng",return_value=data), \
+                     patch.object(monitor,"_cftc_eia_storage_optional",return_value=None), \
+                     patch.object(monitor,"_BASE_LNG_RUN",side_effect=existing_lng) as original, \
+                     patch.object(monitor.core,"now_utc",return_value=at), \
+                     patch.object(monitor.core,"load_state",return_value=state):
+                    self.assertEqual(monitor.run_with_cftc_ng(False),0)
+                original.assert_called_once_with(False)
+                body=monitor.core.BODY_PATH.read_text()
+                self.assertIn("기존 LNG 공급 사건",body)
+                self.assertIn("CFTC 미국 천연가스 선물 포지션",body)
+                self.assertEqual(monitor.core.TITLE_PATH.read_text().strip(),"기존 LNG 경보")
+                meta=json.loads(monitor.core.ALERT_JSON_PATH.read_text())
+                self.assertEqual(meta["version"],34)
+                self.assertEqual(meta["cftc_nymex_ng"]["observation_date"],"2026-11-03")
+                pending=json.loads(monitor.core.PENDING_STATE_PATH.read_text())
+                self.assertIn("lng-new",pending["alerted_event_ids"])
+                self.assertIn("cftc_ng_nymex:2026-11-03:매도확대",pending["alerted_event_ids"])
+                self.assertIn("jkm_above_30",pending["active_market_signals"])
+                self.assertFalse(monitor.core.TELEGRAM_CONFIRMED_PATH.exists())
+                self.assertEqual(state,{"alerted_event_ids":["old-record"],
+                                        "active_market_signals":["ttf_above_90"]})
+            finally:
+                for key,value in saved.items():
+                    setattr(monitor.core,key,value)

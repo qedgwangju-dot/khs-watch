@@ -2274,26 +2274,58 @@ def run_with_cftc_ng(setup_test):
             with core.SUMMARY_PATH.open("a",encoding="utf-8") as f:
                 f.write("\n- CFTC 별도 조회: "+error+"\n")
         return result
-    if event is None:
-        return _BASE_LNG_RUN(setup_test)
+    # Always run the existing LNG monitoring cycle: CFTC must not preempt
+    # newly detected LNG supply/price alerts on the same scheduled run.
+    normal_result=_BASE_LNG_RUN(setup_test)
+    if normal_result != 0 or event is None:
+        return normal_result
+    if not core.PENDING_STATE_PATH.exists():
+        raise RuntimeError("기존 LNG 정상 실행 뒤 pending 상태가 없어 CFTC 병합 차단")
+    pending=json.loads(core.PENDING_STATE_PATH.read_text(encoding="utf-8"))
+    if not isinstance(pending,dict):
+        raise RuntimeError("기존 LNG pending 상태 형식 오류")
+    stored_ids=list(map(str,pending.get("alerted_event_ids",[])))
+    if event["event_id"] in stored_ids:
+        return normal_result
+
+    original_alert=core.BODY_PATH.exists()
+    original_title=core.TITLE_PATH.read_text(encoding="utf-8").strip() if original_alert else ""
+    original_body=core.BODY_PATH.read_text(encoding="utf-8").strip() if original_alert else ""
+    original_metadata=(
+        json.loads(core.ALERT_JSON_PATH.read_text(encoding="utf-8"))
+        if original_alert and core.ALERT_JSON_PATH.exists() else {}
+    )
+    if not isinstance(original_metadata,dict):
+        raise RuntimeError("기존 LNG 알림 metadata 형식 오류")
+
     storage=_cftc_eia_storage_optional(now)
-    title,body,meta=make_cftc_ng_alert(event,storage,now)
-    core.clean_outputs()
+    cot_title,cot_body,cot_meta=make_cftc_ng_alert(event,storage,now)
+    if original_alert:
+        # Preserve all original LNG evidence, market signals, and source dates.
+        title=original_title
+        body=original_body+"\n\n"+cot_body
+        meta={**original_metadata,"cftc_nymex_ng":cot_meta}
+        branch_mode="merged_with_lng"
+    else:
+        title,body,meta=cot_title,cot_body,cot_meta
+        branch_mode="cftc_only"
+    if len(body)>16000:
+        # Never silently truncate an existing LNG alert to make room.
+        raise RuntimeError("LNG+CFTC 병합 본문 과다 · 중복 없는 재조회 필요")
     core.write_alert(title,body,meta)
-    pending=dict(state)
-    pending["alerted_event_ids"]=(list(map(str,state.get("alerted_event_ids",[])))+
-                                  [event["event_id"]])[-400:]
+
+    pending["alerted_event_ids"]=(stored_ids+[event["event_id"]])[-400:]
     pending["last_alert_at_kst"]=now.astimezone(core.KST).isoformat(timespec="seconds")
     core.PENDING_STATE_PATH.write_text(
         json.dumps(pending,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    core.SUMMARY_PATH.write_text(
-        f"# LNG 기존 경로 · CFTC 별도 사건\n\n- 관측일: {event['date']}\n"
-        f"- 단계: {event['stage']}\n"
-        "- 전송: 확인 전(성공 시 기존 finalizer가 상태 갱신)\n"
-        "- 기존 LNG 일반 뉴스·시장 감시는 다음 정기 실행에서 계속\n",
-        encoding="utf-8")
+    with core.SUMMARY_PATH.open("a",encoding="utf-8") as summary:
+        summary.write(
+            "\n- CFTC 새 사건: "+event["event_id"]+
+            "\n- 기존 LNG 알림 동시처리: "+branch_mode+
+            "\n- 전송: 아직 확인 전(기존 Telegram 응답 후에만 상태 갱신)\n"
+        )
     print(f"cftc_ng_alert_created=true event_id={event['event_id']} "
-          "telegram_sent=false state_saved=false",flush=True)
+          f"mode={branch_mode} telegram_sent=false state_saved=false",flush=True)
     return 0
 
 
