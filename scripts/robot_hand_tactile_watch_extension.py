@@ -133,7 +133,7 @@ def _verified_phrase(text: str, pattern: re.Pattern) -> bool:
         after = text[match.end():match.end() + 18]
         if NEGATION.search(before[-36:] + match.group(0) + after):
             continue
-        if FUTURE.search(before[-24:] + after[:12]):
+        if FUTURE.search(before[-24:] + match.group(0) + after[:12]):
             continue
         return True
     return False
