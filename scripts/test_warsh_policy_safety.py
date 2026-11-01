@@ -1092,5 +1092,30 @@ class WarshFOMCPreDecisionCaptureTests(unittest.TestCase):
         sent.assert_not_called()
 
 
+class WarshFOMCHeadlineAndProjectionSafetyTests(unittest.TestCase):
+    def test_september_rss_query_is_disabled_for_future_meetings(self):
+        with patch.object(fomc_v4.base,'fetch') as fetch:
+            self.assertEqual(fomc_v4.meeting_scoped_verified_headlines(),([],None))
+        fetch.assert_not_called()
+
+    def test_old_projection_not_presented_as_same_meeting_forecast(self):
+        state={'current_statement':{'date':'2026-12-09'},
+               'current_sep':{'date':'2026-09-16','funds_2026':4.1}}
+        with patch.object(fomc_v4,'_original_followup_message',
+                          return_value=('검증된 발표 후 시장 변화',{},None)) as followup:
+            msg, quotes, policy=fomc_v4.verified_followup_message(state,'30분')
+        self.assertIsNone(followup.call_args.args[0]['current_sep'])
+        self.assertEqual(state['current_sep']['date'],'2026-09-16')
+        self.assertIsNone(policy)
+
+    def test_current_projection_is_preserved_when_dates_match(self):
+        state={'current_statement':{'date':'2026-12-09'},
+               'current_sep':{'date':'2026-12-09','funds_2026':4.1}}
+        with patch.object(fomc_v4,'_original_followup_message',
+                          return_value=('검증된 발표 후 시장 변화',{},None)) as followup:
+            fomc_v4.verified_followup_message(state,'90분')
+        self.assertEqual(followup.call_args.args[0]['current_sep']['date'],'2026-12-09')
+
+
 if __name__ == "__main__":
     unittest.main()

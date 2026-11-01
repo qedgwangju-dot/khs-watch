@@ -28,6 +28,32 @@ def decision_message_v4(old_stmt, new_stmt, sep_old, sep_new, pre, cur, news_cls
 
 base.decision_message = decision_message_v4
 
+# Legacy trusted_headlines() searched September 16, 2026 on EVERY later FOMC.
+# Headlines alone cannot establish Warsh's policy reaction function. Until a
+# meeting-dated primary text/verified article-body parser exists, fail closed.
+def meeting_scoped_verified_headlines():
+    return [], None
+
+
+base.trusted_headlines = meeting_scoped_verified_headlines
+
+_original_followup_message = base.followup_message
+
+
+def verified_followup_message(state, label):
+    safe_state = dict(state)
+    statement = safe_state.get('current_statement') or {}
+    projection = safe_state.get('current_sep') or {}
+    # September projections are context, never the December meeting's new SEP.
+    if projection.get('date') != statement.get('date'):
+        safe_state['current_sep'] = None
+    message, market, _ = _original_followup_message(safe_state, label)
+    return message, market, None
+
+
+base.followup_message = verified_followup_message
+
+
 
 def next_event_date():
     d = schedule._next_fomc_meeting()
