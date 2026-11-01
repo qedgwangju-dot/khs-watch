@@ -16,6 +16,7 @@ Important:
 """
 from __future__ import annotations
 
+import calendar
 import csv
 import email.utils
 import html
@@ -29,7 +30,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 import zipfile
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -508,6 +509,46 @@ def cftc_snapshot() -> dict:
         return result
 
 
+def _calendar_month_before(observed: date, months: int) -> date:
+    """Calendar month comparison, not 30/60/90 arbitrary days."""
+    year, zero_based_month = divmod(observed.year * 12 + observed.month - 1 - months, 12)
+    month = zero_based_month + 1
+    return date(year, month, min(observed.day, calendar.monthrange(year, month)[1]))
+
+
+def monthly_comparisons(latest_date: date, latest_value: float, observations: dict, *,
+                        max_gap_days: int = 7) -> dict:
+    """1/2/3 calendar months, using ONLY observations on/before each target.
+
+    Missing/outdated observations are withheld; never interpolate or reuse an
+    unrelated snapshot. The current observation must match the provided value.
+    """
+    parsed = {}
+    try:
+        for raw_date, value in observations.items():
+            d = raw_date if isinstance(raw_date, date) else date.fromisoformat(str(raw_date)[:10])
+            v = float(value)
+            if math.isfinite(v):
+                parsed[d] = v
+        current = float(latest_value)
+    except (TypeError, ValueError, OverflowError):
+        return {}
+    if latest_date not in parsed or not math.isclose(parsed[latest_date], current, rel_tol=0, abs_tol=1e-6):
+        return {}
+    result = {}
+    for months in (1, 2, 3):
+        target = _calendar_month_before(latest_date, months)
+        prior = max((d for d in parsed if d <= target), default=None)
+        if prior is None or (target - prior).days > max_gap_days:
+            continue
+        result[str(months)] = {
+            "date": prior.isoformat(),
+            "value": parsed[prior],
+            "change": current - parsed[prior],
+        }
+    return result
+
+
 def treasury_10y_snapshot() -> dict:
     """Fetch current + prior calendar year so the 20-day window survives New Year."""
     now = datetime.now(KST)
@@ -547,6 +588,10 @@ def treasury_10y_snapshot() -> dict:
         "z20": z20,
         "distance_to_4_3_bp": (latest - 4.30) * 100,
         "window_n": len(window),
+        "monthly_comparisons": monthly_comparisons(
+            date.fromisoformat(latest_date), latest,
+            {date.fromisoformat(d): v for d, v in values}, max_gap_days=7,
+        ),
         "source_years": [now.year - 1, now.year],
     }
 
