@@ -1319,3 +1319,48 @@ def test_cta_short_breadth_model_is_never_promoted_to_verified_CTA_position():
     assert "독립 확인 전" in signal["model_confirmation"]
     assert "CFTC" in equity._cta_breadth_block(signal)
     assert "기관 CTA 모델 원문" not in signal["trigger"]
+
+
+
+def test_institution_model_latest_is_required_not_an_old_archive():
+    d = date(2026, 11, 1)
+    current = (
+        "<h2>27 October 2026</h2>"
+        "<p>We flagged last week: trend followers were as long oil and "
+        "as short government bonds as they have been only twice in 20 years.</p>"
+        "<h2>13 October 2026</h2><p>Every government bond market screened short.</p>"
+    )
+    verified = equity._cta_institutional_model_latest(current, d)
+    assert verified and verified["published"] == "2026-10-27"
+    assert "Sophos Alpha" in verified["source"]
+    old_only = (
+        "<h2>27 October 2026</h2><p>Oil was volatile.</p>"
+        "<h2>13 October 2026</h2><p>Every government bond market screened short.</p>"
+    )
+    assert equity._cta_institutional_model_latest(old_only, d) is None
+    assert equity._cta_institutional_model_latest(current, date(2026, 11, 19)) is None
+
+
+def test_institution_model_and_verified_cftc_both_required(monkeypatch):
+    current = _official_us_treasury_short_breadth_fixture()
+    signal = equity._cta_breadth_signal(current, {}, {}, asof=date(2026, 11, 1))
+    assert signal["due"] is True
+    monkeypatch.setattr(
+        equity.watcher, "fetch",
+        lambda url: (
+            "<h2>27 October 2026</h2>"
+            "<p>Trend followers were as short government bonds as only twice in 20 years.</p>"
+        )
+    )
+    assert equity._cta_model_crosscheck(signal, date(2026, 11, 1)) is True
+    assert signal["model_report_date"] == "2026-10-27"
+    message = equity._cta_breadth_block(signal)
+    assert "기관 추세모델 원문" in message and "CFTC" in message
+    assert "실제 숏 스퀴즈" in message
+    assert len(message) < 4096
+    no_model = equity._cta_breadth_signal(current, {}, {}, asof=date(2026, 11, 1))
+    monkeypatch.setattr(equity.watcher, "fetch", lambda url: "<h2>27 October 2026</h2><p>Equities de-risked.</p>")
+    assert equity._cta_model_crosscheck(no_model, date(2026, 11, 1)) is False
+    monkeypatch.setattr(equity.watcher, "fetch", lambda url: (_ for _ in ()).throw(OSError("unavailable")))
+    assert equity._cta_model_crosscheck(no_model, date(2026, 11, 1)) is False
+    assert not equity._cta_model_crosscheck({"due": False}, date(2026, 11, 1))

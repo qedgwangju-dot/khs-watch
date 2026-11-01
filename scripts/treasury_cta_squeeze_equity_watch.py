@@ -1643,6 +1643,81 @@ def _cta_breadth_signal(snapshot: dict, previous: dict, state: dict, *, asof=Non
     return result
 
 
+
+
+# Public institutional model evidence is a separate, necessary input for the
+# approved CTA-crowding prealert. CFTC leveraged funds are not a CTA census.
+CTA_BREADTH_MODEL_SOURCE = "https://sophosalpha.com/research/institutional-monitor/{year}/"
+
+
+def _cta_institutional_model_latest(html_text: str, today: date) -> dict | None:
+    """Only the newest dated publication, never a historical archived paragraph."""
+    clean = re.sub(
+        r"<(?:script|style)\b[^>]*>.*?</(?:script|style)\s*>",
+        " ", html_text, flags=re.I | re.S
+    )
+    plain = watcher.strip_tags(clean).replace("\xa0", " ")
+    months = ("January|February|March|April|May|June|July|August|"
+              "September|October|November|December")
+    items = list(re.finditer(
+        r"\b(\d{1,2})\s+(" + months + r")\s+(20\d{2})\b", plain, re.I
+    ))
+    if not items:
+        return None
+    first = items[0]
+    try:
+        published = datetime.strptime(first.group(0), "%d %B %Y").date()
+    except ValueError:
+        return None
+    if not (0 <= (today - published).days <= 10):
+        return None
+    end = items[1].start() if len(items) > 1 else len(plain)
+    excerpt = plain[first.end():end][:16000]
+    # Strong broad-bond statements are required, not generic mention of CTA,
+    # equity shorts, gold, or an obsolete institutional report.
+    qualifies = any(re.search(pattern, excerpt, re.I | re.S) for pattern in (
+        r"\bas\s+short\s+(?:in\s+)?government\s+bonds\b",
+        r"\bevery\s+government\s+bond\s+market\s+(?:now\s+)?screens?\s+short\b",
+        r"\bCTA\s+bond\s+shorts?\s+(?:have\s+)?reached\s+an?\s+extreme\b",
+        r"\btrend(?:-| )follow\w*.{0,120}\bshort\s+(?:duration|government\s+bonds)\b",
+    ))
+    if not qualifies:
+        return None
+    return {
+        "source": "Sophos Alpha 자체 추세추종 모델",
+        "published": published.isoformat(),
+        "url": CTA_BREADTH_MODEL_SOURCE.format(year=published.year),
+        "scope": "글로벌 국채 매도 쏠림",
+    }
+
+
+def _cta_model_crosscheck(breadth: dict, today: date | None = None) -> bool:
+    """Fail closed: a validated CFTC signal alone cannot trigger a CTA-model alert."""
+    if not breadth.get("due"):
+        return False
+    today = today or datetime.now(KST).date()
+    try:
+        raw = watcher.fetch(CTA_BREADTH_MODEL_SOURCE.format(year=today.year))
+        model = _cta_institutional_model_latest(raw, today)
+    except Exception as exc:
+        breadth["model_confirmation"] = f"기관 모델 원문 접근 실패: {type(exc).__name__}"
+        print(f"cta_breadth_model_source_failed={type(exc).__name__}")
+        return False
+    if not model:
+        breadth["model_confirmation"] = "최근 기관 CTA 모델에서 광범위 국채 매도 신호 독립 확인 전"
+        print("cta_breadth_model_recent_broad_short_missing")
+        return False
+    breadth["model_confirmation"] = (
+        model["source"] + " · " + model["published"] + " 직접 확인"
+    )
+    breadth["model_report_date"] = model["published"]
+    breadth["model_source"] = model["source"]
+    breadth["model_url"] = model["url"]
+    breadth["model_scope"] = model["scope"]
+    print(f"cta_breadth_model_verified=true published={model['published']}")
+    return True
+
+
 def _cta_breadth_block(signal: dict, *, compact=False) -> str:
     if signal.get("status") != "확인":
         return ""
@@ -1654,6 +1729,8 @@ def _cta_breadth_block(signal: dict, *, compact=False) -> str:
     pct_text = f"{pct:.1f}%" if pct is not None else "확인 불가"
     lines = [
         "<b>📌 국채 선물 매도 쏠림 — 선행경보</b>",
+        f"• 기관 자체 모델: {signal.get('model_confirmation') or '원문 독립 확인 전'}"
+        " (미국 개별 만기별 기관 모델 값은 비공개·미확인)",
         f"• CFTC {signal.get('report_date')} 기준: 미국 국채 선물 "
         f"{signal.get('short_count')}/{signal.get('total_tenors')}개 만기 레버리지펀드 순매도",
         f"• 10년물 순 {net:+,}계약 · {delta_text} · 총 매도/OI {pct_text}",
@@ -1665,6 +1742,8 @@ def _cta_breadth_block(signal: dict, *, compact=False) -> str:
             "• 다음 확인: 기관 CTA 모델 원문, 동일거래일 공식 ZN 가격↑·OI↓,"
             " CFTC 다음 주 10년물 순매도 축소, NQ 별도 조건"
         )
+    if signal.get("model_url"):
+        lines.append(f'<a href="{signal["model_url"]}">기관 추세모델 원문</a>')
     lines.append(f'<a href="{CFTC_URL}">CFTC TFF 공식 원천</a>')
     return "\n".join(lines)
 
@@ -1725,7 +1804,9 @@ def scheduled_main() -> int:
         CROSS_FORMAT_REVISION if cross_due else int(current_state.get("nasdaq_cross_asset_format_revision", 0) or 0)
     )
     breadth = _cta_breadth_signal(snapshot, previous, current_state)
-    breadth_due = bool(breadth.get("due"))
+    # CFTC-only breadth remains a diagnostic; actual CTA-model prealerts
+    # require a recent independently verified institutional model statement.
+    breadth_due = _cta_model_crosscheck(breadth, _checked_date(snapshot))
     snapshot["cta_short_breadth"] = breadth
 
     # Always expose the cross-asset gate in the verification status, even when no
@@ -1749,7 +1830,8 @@ def scheduled_main() -> int:
         )
         f.write(
             f"- CFTC 국채 광범위 순매도: {breadth.get('short_count',0)}/6"
-            f" · 선행경보={'대상' if breadth_due else '중복·조건 미충족'}"
+            f" · 선행경보={'기관 모델+CFTC 교차 확인' if breadth_due else '기관 모델·포지션 중복 또는 미확인'}"
+            f" · 기관={breadth.get('model_confirmation')}"
             f" · 근거={breadth.get('trigger') or breadth.get('reason') or '신규 변화 없음'}\n"
         )
 
