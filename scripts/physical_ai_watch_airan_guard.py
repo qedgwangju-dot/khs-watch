@@ -7174,6 +7174,15 @@ _SRO_VISIT_DONE=re.compile(
  r"(?:실제|공식|현장)\s*(?:방문|점검)\s*(?:완료|실시|마쳤)|"
  r"방문해.{0,50}(?:시연|점검)\s*(?:확인|마쳤|실시)|"
  r"(?:visited|completed)\s+(?:the\s+)?RX\s+(?:robotics|lab)",re.I)
+# Press-confirmed visit is a separate stage from a company-issued official confirmation.
+# Do not elevate scheduled visits, CES plans or any production/contract claims.
+_SRO_VISIT_MEDIA_SOURCES={"연합뉴스","전자신문","ETNews","뉴스핌","뉴시스","이데일리","뉴스1","매일경제"}
+_SRO_VISIT_MEDIA_DONE=re.compile(
+ r"(?:RX사업추진실|로보틱스경험\s*\(RX\)|우면동).{0,100}"
+ r"(?:방문(?:했다|해|했으며|했음을|한\s*사실)|찾았다|찾아|직접\s*찾았다|점검(?:했다|한\s*것으로\s*확인)|방문\s*완료)|"
+ r"(?:방문(?:했다|해|했으며)|찾았다|찾아).{0,100}"
+ r"(?:RX사업추진실|우면동)",
+ re.I)
 _SRO_SEM_ACTUAL=re.compile(
  r"(?:실제|첫|초도)\s*(?:양산|생산|출하)\s*(?:개시|시작|완료)|"
  r"(?:양산|생산)\s*(?:시작|개시|가동)\s*(?:공식\s*)?(?:확인|발표)|"
@@ -7203,6 +7212,8 @@ def _sro_stage(item,group):
     if group=="samsung_rx_leadership_visit":
         if source in _SRO_PRIMARY_SAMSUNG and _SRO_VISIT_DONE.search(text) and not re.search(r"예정|전망|계획|이르면",text,re.I):
             return "official_visit_done"
+        if source in _SRO_VISIT_MEDIA_SOURCES and _SRO_VISIT_MEDIA_DONE.search(text):
+            return "reported_visit_done"
         return "visit_planned_media"
     return "background"
 
@@ -7250,11 +7261,16 @@ def _sro_score(item):
        "official_production":78,
        "official_robot_contract":86,
        "official_visit_done":66,
+       "reported_visit_done":48,
        "visit_planned_media":0,
        "background":0
     }.get(stage,0)
 
 def _sro_category(text,group):
+    if group=="samsung_rx_leadership_visit" and (
+        _SRO_VISIT_MEDIA_DONE.search(text) or _SRO_VISIT_DONE.search(text)
+    ):
+        return "삼성전자 · RX사업추진실 실제 방문 완료 보도"
     labels={
       "sem_mexico_camera_robot":"삼성전기 · 멕시코 카메라 생산설비·로봇 공급 준비 보도",
       "samsung_rx_leadership_visit":"삼성전자 · RX사업추진실 방문 예정 보도",
@@ -7272,6 +7288,13 @@ def _sro_meaning(cat):
           "분리합니다. 반기보고서상 4,000만달러 법인 대여 한도와 "
           "상반기 누적 800만달러 실행은 공장 전체 설비투자 확정액과 "
           "다릅니다. 휴머노이드 고객 주문·초도 출하·인식 매출은 미확인입니다."
+        )
+    if cat=="삼성전자 · RX사업추진실 실제 방문 완료 보도":
+        return (
+          "2026년 10월 27일 이재용 회장이 우면동 RX사업추진실을 방문해 "
+          "휴머노이드 팔·손 정밀 조작 등 로봇 개발 현황을 점검했다는 언론 확인 단계입니다. "
+          "10월 21일 방문 예정 보도와 구분하며, 방문 자체가 양산·수주·매출을 뜻하지 않습니다. "
+          "CES 2027 출품·상용화와 고객 공급계약은 별도로 확인해야 합니다."
         )
     if cat.startswith("삼성전자 · RX사업추진실"):
         return (
@@ -7308,6 +7331,14 @@ def _sro_verify(item,group,text):
           "공장 총투자·Optimus 직접 공급·현지 양산 완료는 미확인."
         )
     if group=="samsung_rx_leadership_visit":
+        stage=_sro_stage(item,group)
+        if stage=="reported_visit_done":
+            return (
+              "2026-10-27 연합뉴스 종합·전자신문 실제 방문 보도 교차확인. "
+              "삼성전자 직접 공식 보도자료와 로봇 제품 양산·계약·매출은 별도 미확인."
+            )
+        if stage=="official_visit_done":
+            return "삼성전자 직접 공식 방문 완료 발표 단계 / 양산·수주·매출 별도 검증"
         return (
           "머니투데이 10/21 방문 예정 취재 · 삼성전자 7월 RX 조직과 "
           "10/19 개발현황 보도 교차확인 · 방문 완료 공식자료 미확인."
@@ -7327,6 +7358,8 @@ def _sro_key(item):
     g=_sro_group(text)
     if not g:return _sro_prev_key(item)
     stage=_sro_stage(item,g)
+    if g=="samsung_rx_leadership_visit" and stage=="reported_visit_done":
+        return hashlib.sha256(b"samsung-rx|20261027|reported-visit-completed").hexdigest()
     return hashlib.sha256(
        f"samsung-robot|20261021|{g}|{stage}".encode()
     ).hexdigest()
@@ -7338,6 +7371,13 @@ def _sro_select(items,seen,force,limit):
               and x.get("score",0)>=11),None)
     if hit and not any(x.get("key")==hit.get("key") for x in chosen):
         chosen=([hit,*chosen] if len(chosen)<limit else [hit,*chosen[:-1]])
+    # An independently confirmed reported visit should not disappear behind older news.
+    completed=next((x for x in candidates
+        if x.get("group")=="samsung_rx_leadership_visit"
+        and _sro_stage(x,"samsung_rx_leadership_visit")=="reported_visit_done"
+        and x.get("score",0)>=11),None)
+    if completed and not any(x.get("key")==completed.get("key") for x in chosen):
+        chosen=[completed,*chosen][:limit]
     # Two Google News URLs may describe the same outlet story and stage.
     # Suppress only identical rendered titles, outlets, event groups and minutes.
     def _delivery_signature(item):
@@ -7392,6 +7432,8 @@ for _q in (
  '(카메라모듈 OR camera module) (공장 양산 OR 설비 재개 OR 공식 출하 OR 생산 개시)',
  '(이재용 OR Lee Jae-yong) (RX사업추진실 OR 서울R&D캠퍼스) '
  '(현장 방문 완료 OR 정밀 작업 시연 OR 공식 일정)',
+ '(이재용 OR Lee Jae-yong) (RX사업추진실 OR 우면동 OR 로봇사업) '
+ '(방문했다 OR 찾았다 OR 현장점검 OR 현장 점검 OR 정밀 조작)',
 ):
     if _q not in base.QUERIES:base.QUERIES.append(_q)
 
