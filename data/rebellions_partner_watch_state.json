@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-01T22:54:52+09:00",
+  "last_checked_kst": "2026-11-02T00:10:32+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3534,6 +3534,15 @@
       "event_signature": "kb|general|finance",
       "material_stage": 1,
       "first_seen_kst": "2026-10-28T22:31:22+09:00",
+      "suppressed_duplicate": "same_url"
+    },
+    "a8b90975b317220d48021c94": {
+      "title": "리벨리온, Arm-삼성전자-에이디테크놀로지와 AI 컴퓨팅 칩렛 기술 협력 - AI타임스",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5vbDZtY3FORDBldHRmMFZXT2xVWnVrR2dPZG4xaWd3OWFKWUdCd0JGSFEwVDlMU0RUVlBlNDdNZ0VXRUFfZHNZRkU4ZWR3MUNnSTVNS1ZIemltMVFrSGZ5TFV5SGkyZEhYUUE?oc=5",
+      "summary": "리벨리온, Arm-삼성전자-에이디테크놀로지와 AI 컴퓨팅 칩렛 기술 협력 AI타임스",
+      "event_signature": "samsung|chiplet|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-02T00:10:32+09:00",
       "suppressed_duplicate": "same_url"
     }
   }
