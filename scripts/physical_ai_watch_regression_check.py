@@ -6020,4 +6020,49 @@ try:
 finally:
     base.NOW=_oct27_now
 
+# Samsung RX 2026-10-27 actual field visit: press-confirmed vs merely planned.
+# This is a pure classifier/dedup test; it never sends a Telegram message.
+_rx_actual_yna=make(
+    "이재용, 취임 4주년 로봇사업 현장 점검",
+    "이재용 삼성전자 회장은 10월 27일 서울 우면동 RX사업추진실을 찾았다. "
+    "CES 2027 공개와 로봇 양산은 별도 검토 중이다.",
+    "연합뉴스",
+)
+_rx_actual_et=make(
+    "이재용, 삼성 로봇사업 챙긴다",
+    "이재용 삼성전자 회장은 2026년 10월 27일 RX사업추진실을 방문했다. "
+    "로봇 팔과 손의 정밀 조작 개발 현황을 점검한 것으로 알려졌다.",
+    "전자신문",
+)
+_rx_plan=make(
+    "이재용 RX사업추진실 방문 예정",
+    "이재용 삼성전자 회장은 서울 우면동 RX사업추진실을 방문해 "
+    "휴머노이드 기술을 점검할 계획이다.",
+    "연합뉴스",
+)
+_rx_bg=make(
+    "이재용 삼성전자 RX사업추진실 방문했다는 미확인 글",
+    "이재용 삼성전자 회장은 10월 27일 우면동 RX사업추진실을 방문했다.",
+    "개인블로그",
+)
+_ryg,_rys,_ryc,_ryk=classify(_rx_actual_yna)
+_reg,_res,_rec,_rek=classify(_rx_actual_et)
+_rpg,_rps,_rpc,_rpk=classify(_rx_plan)
+_rbg,_rbs,_rbc,_rbk=classify(_rx_bg)
+assert _ryg==_reg=="samsung_rx_leadership_visit",(_ryg,_reg)
+assert _rys>=11 and _res>=11 and "실제 방문 완료" in _ryc,(_rys,_res,_ryc)
+assert _ryk==_rek, "Same Oct-27 visit must retain one cross-outlet dedup identity"
+assert _rpg=="samsung_rx_leadership_visit" and _rps==0 and _rpk!=_ryk,(_rpg,_rps)
+assert "방문 예정" in _rpc, _rpc
+assert _rbs==0, "Unverified blog cannot confirm a Samsung RX actual visit"
+assert "양산·수주·매출" in base.meaning(_ryc)
+_rx_official=make(
+    "삼성전자 RX사업추진실 이재용 현장 점검 완료",
+    "이재용 삼성전자 회장 10월 27일 우면동 RX사업추진실 현장 점검 완료",
+    "삼성전자",
+)
+_rog,_ros,_roc,_rok=classify(_rx_official)
+assert _rog==_ryg and _ros>=11 and _rok!=_ryk,(_rog,_ros)
+# No broadcaster, receiver, cron, force flag or prior-state writes in this check.
+
 print("Physical-AI watcher regression guards: PASS")
