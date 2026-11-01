@@ -280,11 +280,25 @@ class ExportRuntimeIntegrityTests(unittest.TestCase):
         self.assertEqual(repeated["official_source_health"]["status"], "validation_hold")
         self.assertEqual(repeated_text, "")
 
+    def _fixed_monthly_fixture_clock(self):
+        # The fixture contains September 2026 official data. Keep both
+        # detection and publication gates at the recorded Oct 16 fixture date;
+        # wall-clock time must never change the expected source-health class.
+        instant = self.now
+
+        class FixtureDatetime(datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return instant.astimezone(tz) if tz else instant.replace(tzinfo=None)
+
+        return patch.object(w, 'datetime', FixtureDatetime)
+
     def test_monthly_period_validation_recovery_uses_specific_alert(self):
         p = pack()
         state = self.notified_state(p)
         state["official_source_health"] = {"status": "validation_hold", "target_month": "202609"}
-        saved, text = self.run_main(state, p, [], poll=True)
+        with self._fixed_monthly_fixture_clock():
+            saved, text = self.run_main(state, p, [], poll=True)
         self.assertEqual(saved["official_source_health"]["status"], "ok")
         self.assertIn("원자료 월별 검증 보류 해소", text)
         self.assertNotIn("원자료 조회 복구", text)
@@ -293,7 +307,8 @@ class ExportRuntimeIntegrityTests(unittest.TestCase):
     def test_missing_annual_comparison_is_partial_not_full_recovery(self):
         p=pack();p['series'].pop('202509')
         state=dict(official_source_health={'status':'error'})
-        saved,text=self.run_main(state,p,['전년 전국 API 실패: ReadTimeout'],poll=True)
+        with self._fixed_monthly_fixture_clock():
+            saved,text=self.run_main(state,p,['전년 전국 API 실패: ReadTimeout'],poll=True)
         self.assertEqual(saved['official_source_health']['status'],'partial')
         self.assertNotIn('원자료 조회 복구',text)
         self.assertIn('전년동월 <b>확인 불가</b>',text)
