@@ -5844,13 +5844,23 @@ _r27_expected=(
      "Tesla 베를린 · 회사 발표 주간 7000대 실제 생산"),
 )
 _r27_baseline=[]
-for eid,group,category in _r27_expected:
-    row=base.query_news(watcher.R27_ROBOT_COMMERCE_PREFIX+eid)
-    assert len(row)==1,(eid,row)
-    g,s,c,k=classify(row[0])
-    assert g==group and s>=11 and c==category,(eid,g,s,c)
-    assert k not in {i[3] for i in _r27_baseline}
-    _r27_baseline.append((g,s,c,k,dict(row[0],group=g,score=s,key=k)))
+# This is a historical Oct-27 one-shot recovery fixture. Production correctly
+# expires it after Oct 29; a regression test must not use wall-clock November.
+_r27_saved_now = base.NOW
+try:
+    base.NOW = dt.datetime(2026, 10, 27, 12, 0, tzinfo=dt.timezone.utc)
+    for eid,group,category in _r27_expected:
+        row=base.query_news(watcher.R27_ROBOT_COMMERCE_PREFIX+eid)
+        assert len(row)==1,(eid,row)
+        g,s,c,k=classify(row[0])
+        assert g==group and s>=11 and c==category,(eid,g,s,c)
+        assert k not in {i[3] for i in _r27_baseline}
+        _r27_baseline.append((g,s,c,k,dict(row[0],group=g,score=s,key=k)))
+finally:
+    base.NOW = _r27_saved_now
+# Verify that expired one-shot recovery is *still* blocked in current time.
+if _r27_saved_now.astimezone(base.KST).date() > dt.date(2026,10,29):
+    assert base.query_news(watcher.R27_ROBOT_COMMERCE_PREFIX+'microduck_20k') == []
 assert len(watcher.R27_LIVE_QUERIES)==5
 _m_reprint=make("Microduck 4000 sales after NVIDIA keynote",
                 "Microduck 10000 earlier preorders, 15 motors",
