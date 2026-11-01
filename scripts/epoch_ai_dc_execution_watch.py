@@ -127,8 +127,24 @@ def pipeline_flow(old: dict, new: dict) -> dict:
             "gap": round(gap, 1), "added": added, "removed": removed, "matched": matched}
 
 
+def power_delta_label(before, after, unit="MW"):
+    """Same-metric prior-period comparison; never actual grid supply by inference."""
+    if before is None or after is None:
+        return "이전 비교 기준 없음"
+    before=float(before); after=float(after); delta=round(after-before,1)
+    if abs(delta)<0.05:
+        return f"→ 변화 없음 · {after:,.0f}{unit}"
+    sign="↑ 증가" if delta>0 else "↓ 감소"
+    pct=f" ({delta/before*100:+.1f}%)" if before>0 else " (기존 0·비율 계산 불가)"
+    return f"{sign} {delta:+,.0f}{unit}{pct} · {before:,.0f}→{after:,.0f}{unit}"
+
+
 def regression_checks() -> None:
     """Test unit- and cohort-safe pipeline classification on each run."""
+    assert power_delta_label(618,824).startswith("↑ 증가 +206MW (+33.3%)")
+    assert power_delta_label(824,618).startswith("↓ 감소 -206MW (-25.0%)")
+    assert power_delta_label(824,824).startswith("→ 변화 없음")
+    assert power_delta_label(None,824)=="이전 비교 기준 없음"
     old = {"planned_it_mw_2030": 10000, "current_it_mw": 2000, "remaining_it_mw": 8000}
     online = {"planned_it_mw_2030": 10000, "current_it_mw": 3000, "remaining_it_mw": 7000}
     cut = {"planned_it_mw_2030": 8500, "current_it_mw": 2000, "remaining_it_mw": 6500}
@@ -282,28 +298,35 @@ def material_changes(old: dict, new: dict) -> list[str]:
     new_sites = int(new.get("site_count") or 0)
 
     if abs(new_current - old_current) >= 500 or (old_current and abs(pct_change(new_current, old_current)) >= 5):
-        changes.append(f"현재 가동 IT 전력 {old_current:,.0f}MW → {new_current:,.0f}MW")
+        changes.append(f"Epoch 현재 추정 IT전력 {power_delta_label(old_current,new_current)} · 실제 전원 인가와 구분")
     if abs(new_plan - old_plan) >= 1000 or (old_plan and abs(pct_change(new_plan, old_plan)) >= 5):
-        changes.append(f"2030 계획 IT전력 추정치 {old_plan:,.0f}→{new_plan:,.0f}MW (착공 전 물량과 구분)")
+        changes.append(f"2030 최종 계획 IT전력 {power_delta_label(old_plan,new_plan)} · 실제 발전/전원 인가 아님")
     if abs(new_ratio - old_ratio) >= 2.0:
-        changes.append(f"계획 대비 가동률 {old_ratio:.1f}% → {new_ratio:.1f}%")
+        changes.append(f"추정 IT전력 비율 {old_ratio:.1f}%→{new_ratio:.1f}% ({new_ratio-old_ratio:+.1f}%p) · 건설 공정률 아님")
     if abs(new_sites - old_sites) >= 2:
         changes.append(f"미국 추적 사이트 {old_sites}곳 → {new_sites}곳")
     return changes
 
 
-def build_alert(new: dict, changes: list[str], first: bool, flow: dict, census: dict | None) -> str:
+def build_alert(new: dict, changes: list[str], first: bool, flow: dict, census: dict | None, old: dict | None = None) -> str:
     title = "미국 AI 데이터센터 추정 IT전력 기준선" if first else "미국 AI 데이터센터 계획·가동 추정치 변화"
     current = float(new["current_it_mw"])
     planned = float(new["planned_it_mw_2030"])
     remaining = float(new["remaining_it_mw"])
     ratio = float(new["execution_ratio_pct"])
 
+    prior = old or {}
     lines = [
         title,
         "",
+        "▶ 전력 증가·감소 방향 (이전 저장값과 같은 지표 비교)",
+        f"• Epoch 현재 추정 IT전력: {power_delta_label(prior.get('current_it_mw'),current)}",
+        f"• 2030 최종 계획 IT전력: {power_delta_label(prior.get('planned_it_mw_2030'),planned)}",
+        "• 실제 전력회사 공급·공식 전원 인가 MW 증가/감소: 이 자료만으로는 확인 불가",
+        "• 추적대상 부지 추가·제외가 있는 경우 합계 증감에 포함될 수 있음",
+        "",
         "▶ 한눈에 보기",
-        f"• 현재 가동 IT 전력: {current:,.0f}MW",
+        f"• 현재 추정 IT전력: {current:,.0f}MW",
         f"• 2030년까지 계획 IT 전력: {planned:,.0f}MW",
         f"• 추정 가동/2030 계획 IT전력 비율: {ratio:.1f}% (건설 공정률 아님)",
         f"• 미가동 계획량: {remaining:,.0f}MW ({100-ratio:.1f}%) · 착공 전/건설 중 미분리",
@@ -317,9 +340,9 @@ def build_alert(new: dict, changes: list[str], first: bool, flow: dict, census: 
     lines += [
         "",
         "■ 신규 투자와 기존 사업 가동 전환 구분",
-        f"• Epoch 가동 IT전력 변화: {flow['live']:+,.0f}MW",
-        f"• Epoch 2030 계획 IT전력 변화: {flow['plan']:+,.0f}MW",
-        f"• 아직 미가동인 계획량 변화: {flow['gap']:+,.0f}MW",
+        f"• Epoch 현재 추정 IT전력: {power_delta_label(prior.get('current_it_mw'),current)}",
+        f"• Epoch 2030 계획 IT전력: {power_delta_label(prior.get('planned_it_mw_2030'),planned)}",
+        f"• 아직 미가동 계획량 증감: {flow['gap']:+,.0f}MW · 이 값 감소는 취소 확정이 아님",
         f"• 단계 판정: {flow['kind']}",
     ]
     if flow["matched"] is not None:
@@ -396,7 +419,7 @@ def main() -> int:
 
     PENDING.write_text(json.dumps(new, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if should_alert:
-        ALERT.write_text(build_alert(new, changes, first, flow, census), encoding="utf-8")
+        ALERT.write_text(build_alert(new, changes, first, flow, census, old), encoding="utf-8")
 
     STATUS.write_text(
         "# 미국 AI 데이터센터 실제 가동률 감시\n\n"
@@ -405,7 +428,7 @@ def main() -> int:
         f"- 2030 계획 IT 전력: **{new['planned_it_mw_2030']:,.1f}MW**\n"
         f"- 실행률: **{new['execution_ratio_pct']:.2f}%**\n"
         f"- 미가동 계획량(착공 전/건설 중 구분 불가): **{new['remaining_it_mw']:,.1f}MW**\n"
-        f"- 계획 증감: **{flow['plan']:+,.1f}MW**, 가동 증감: **{flow['live']:+,.1f}MW**\n"
+        f"- 계획 증감: **{flow['plan']:+,.1f}MW**, 추정 IT전력 증감: **{flow['live']:+,.1f}MW** (실제 공급 증감 아님)\n"
         f"- 투자 사이클 판정: **{flow['kind']}**\n"
         f"- 중요 변화: **{len(changes)}건**\n"
         f"- 알림: **{'예' if should_alert else '아니오'}**\n",
