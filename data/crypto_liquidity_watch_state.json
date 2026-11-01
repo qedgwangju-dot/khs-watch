@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-02T01:19:16+09:00",
+  "updated_at_kst": "2026-11-02T04:57:11+09:00",
   "correction_pending": false,
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
@@ -98,6 +98,35 @@
         "status": "집계완료(수정가능)",
         "avg_usd_m_per_session": -23.4,
         "prev_avg_usd_m_per_session": 130.2
+      },
+      "2m": {
+        "valid": true,
+        "start": "2026-08-31",
+        "end": "2026-10-30",
+        "trading_days": 44,
+        "expected_trading_days": 44,
+        "missing_trading_dates": [],
+        "unexpected_trading_dates": [],
+        "validation_issue": "",
+        "partial_days": 0,
+        "partial_dates": [],
+        "value_usd_m": 2348.5,
+        "prev_start": "2026-07-01",
+        "prev_end": "2026-08-30",
+        "prev_trading_days": 42,
+        "prev_partial_days": 2,
+        "prev_partial_dates": [
+          "2026-07-27",
+          "2026-08-07"
+        ],
+        "prev_expected_trading_days": 42,
+        "prev_missing_trading_dates": [],
+        "prev_value_usd_m": 3495.2,
+        "change_usd_m": -1146.7,
+        "direction": "순유입 둔화",
+        "status": "잠정",
+        "avg_usd_m_per_session": 53.4,
+        "prev_avg_usd_m_per_session": 83.2
       },
       "3m": {
         "valid": true,
