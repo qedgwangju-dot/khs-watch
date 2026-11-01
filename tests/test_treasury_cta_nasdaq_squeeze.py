@@ -1238,3 +1238,88 @@ def test_zn_daily_oi_evidence_has_different_tenor_label(monkeypatch):
     impact, _ = equity._equity_impact(raw, {}, reasons)
     assert "10년물" in label
     assert "10년물 중심" in impact
+
+
+def test_cta_crowding_uses_only_latest_dated_institution_issue():
+    fresh = (
+        "<h2>27 October 2026</h2><p>We flagged last week: "
+        "trend followers were as long oil and as short government bonds "
+        "as they have been only twice in 20 years, in 2022 and now.</p>"
+        "<h2>13 October 2026</h2><p>Every government bond market screened short.</p>"
+    )
+    d = date(2026, 11, 1)
+    model = equity._cta_crowding_model_issue(fresh, d)
+    assert model and model["published"] == "2026-10-27"
+    assert "Sophos Alpha" in model["source"]
+    stale_or_ambiguous = (
+        "<h2>27 October 2026</h2><p>Oil and inflation watch.</p>"
+        "<h2>13 October 2026</h2><p>Every government bond market screened short.</p>"
+    )
+    assert equity._cta_crowding_model_issue(stale_or_ambiguous, d) is None
+    assert equity._cta_crowding_model_issue(fresh, date(2026, 11, 18)) is None
+
+
+def _crowding_test_snapshot(*, shorts=6, report="October 27, 2026"):
+    markets = {}
+    for idx, tenor in enumerate(equity.CTA_CROWDING_TENORS):
+        lev_long = 100_000
+        lev_short = 150_000 if idx < shorts else 80_000
+        markets[tenor] = {
+            "leveraged_long": lev_long, "leveraged_short": lev_short,
+            "leveraged_net": lev_long - lev_short, "open_interest": 900_000,
+        }
+    return {
+        "cftc": {"report_date": report, "markets": markets},
+        "yield10": {"yield": 4.94, "date": "2026-10-30"},
+    }
+
+
+def test_cta_crowding_requires_complete_official_cftc_and_institution_model(monkeypatch):
+    d = date(2026, 11, 1)
+    page = (
+        "<h2>27 October 2026</h2>"
+        "<p>Trend followers are as short government bonds as they have been in decades.</p>"
+    )
+    monkeypatch.setattr(equity.watcher, "fetch", lambda url: page)
+    snap = _crowding_test_snapshot(shorts=6)
+    event = equity._cta_crowding_latest(snap, d)
+    assert event and event["short_count"] == 6 and event["level"] == 2
+    assert equity._cta_crowding_due({}, event)
+    title, body = equity._cta_crowding_message(event, snap)
+    assert "기관 모델" in body and "CFTC" in body and "6/6" in body
+    assert "실제 CTA 계좌별" in body and "실제 숏 스퀴즈 확정" in body
+    assert len(title) + 2 + len(body) <= 4096
+    missing = _crowding_test_snapshot()
+    del missing["cftc"]["markets"]["BOND"]
+    assert equity._cta_crowding_latest(missing, d) is None
+    bad_positions = _crowding_test_snapshot(shorts=4)
+    assert equity._cta_crowding_latest(bad_positions, d) is None
+    monkeypatch.setattr(equity.watcher, "fetch", lambda url: "<h2>27 October 2026</h2><p>Oil rallied.</p>")
+    assert equity._cta_crowding_latest(snap, d) is None
+    assert equity._cta_crowding_latest(_crowding_test_snapshot(report="October 1, 2026"), d) is None
+
+
+def test_cta_crowding_dedupes_independently_from_squeeze_weekly_fomc():
+    event = {
+        "key": "model:2026-10-27:2of2", "verified": True, "level": 2,
+    }
+    assert equity._cta_crowding_due({"last_weekly_report_key": "2026-W44"}, event)
+    active = {
+        "cta_crowding_alert_active": True,
+        "cta_crowding_alert_level": 2,
+        "cta_crowding_last_sent_key": event["key"],
+    }
+    assert not equity._cta_crowding_due(active, event)
+    assert not equity._cta_crowding_due({**active, "cta_crowding_last_sent_key": "old"}, event)
+    upgrade = {**event, "level": 2, "key": "model:2026-11-02:2of2"}
+    assert not equity._cta_crowding_due(active, upgrade)
+    assert equity._cta_crowding_due({"cta_crowding_alert_active": True, "cta_crowding_alert_level": 1}, event)
+
+
+def test_cta_crowding_weekend_cron_does_not_change_normal_report_crons(monkeypatch):
+    text = (ROOT / ".github/workflows/treasury-cta-squeeze-telegram-alert.yml").read_text(
+        encoding="utf-8"
+    )
+    assert 'cron: "17 0,6,12,18 * * 6,0"' in text
+    assert 'cron: "0 22 * * 0"' in text
+    assert 'cron: "*/15 12-23 * * 1-5"' in text

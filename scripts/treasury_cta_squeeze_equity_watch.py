@@ -13,6 +13,7 @@ from __future__ import annotations
 import io
 import json
 import math
+import html
 import os
 import re
 import urllib.request
@@ -60,6 +61,14 @@ YAHOO_NQ_URL = "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=5
 US_POSITIONING_STATE = watcher.DATA / "us_positioning_state.json"
 CROSS_FORMAT_REVISION = 3
 _CROSS_CACHE = None
+
+# Independent early-warning lane: an institution's published CTA trend model
+# and CFTC TFF leveraged-fund positions must both support broad bond shorts.
+# CFTC leveraged funds include basis traders and are NOT synonymous with CTA.
+CTA_CROWDING_SOURCE_URL = "https://sophosalpha.com/research/institutional-monitor/{year}/"
+CTA_CROWDING_TENORS = ("2Y", "5Y", "10Y", "ULTRA10Y", "BOND", "ULTRABOND")
+CTA_CROWDING_MAX_SOURCE_AGE_DAYS = 10
+CTA_CROWDING_MAX_CFTC_AGE_DAYS = 10
 
 # CME contract face amounts. These convert CFTC contract counts into an intuitive
 # face-value notional only; they are not margin, P/L, market value or DV01.
@@ -1569,6 +1578,160 @@ def _cross_alert_gate(current_state: dict, cross: dict) -> tuple[bool, int, int,
     return due, gate_base, next_alerted, episode_reset
 
 
+
+def _cta_crowding_model_issue(page: str, today: date) -> dict | None:
+    """Extract ONLY the latest dated issue, never an old quote from its archive.
+
+    This independent publisher describes its own trend-following model. Its
+    signal must not be mislabeled as J.P. Morgan's model or as actual CTA trades.
+    """
+    clean = re.sub(r"<(?:script|style)\b[^>]*>.*?</(?:script|style)\s*>", " ", page, flags=re.I | re.S)
+    plain = watcher.strip_tags(clean).replace("\xa0", " ")
+    month_expr = (
+        "January|February|March|April|May|June|July|August|"
+        "September|October|November|December"
+    )
+    dates = list(re.finditer(
+        r"\b(\d{1,2})\s+(" + month_expr + r")\s+(20\d{2})\b", plain, re.I
+    ))
+    if not dates:
+        return None
+    # The site is newest-first. Search among the first few dates, but do not
+    # promote text from a previous dated issue to the latest issue.
+    first = dates[0]
+    try:
+        published = datetime.strptime(first.group(0), "%d %B %Y").date()
+    except ValueError:
+        return None
+    age = (today - published).days
+    if age < 0 or age > CTA_CROWDING_MAX_SOURCE_AGE_DAYS:
+        return None
+    end = dates[1].start() if len(dates) > 1 else len(plain)
+    excerpt = plain[first.end():end][:16000]
+    patterns = (
+        r"\bas\s+short\s+(?:in\s+)?government\s+bonds\b",
+        r"\bevery\s+government\s+bond\s+market\s+(?:now\s+)?screens?\s+short\b",
+        r"\b(?:all|every)\s+(?:major\s+)?government\s+bond\s+market\w*.{0,80}\bshort\b",
+        r"\btrend(?:-| )follow\w*.{0,130}\bshort\s+(?:duration|government\s+bonds)\b",
+        r"\bCTA\s+bond\s+shorts?\s+(?:have\s+)?reached\s+an?\s+extreme\b",
+    )
+    if not any(re.search(pattern, excerpt, re.I | re.S) for pattern in patterns):
+        return None
+    return {
+        "published": published.isoformat(),
+        "source": "Sophos Alpha 자체 추세추종 모델",
+        "url": CTA_CROWDING_SOURCE_URL.format(year=published.year),
+        "scope": "글로벌 국채 매도 쏠림",
+    }
+
+
+def _cta_crowding_cftc(snapshot: dict, today: date) -> dict | None:
+    """Require complete fresh official six-tenor futures-only TFF fields."""
+    cftc = snapshot.get("cftc") or {}
+    raw = str(cftc.get("report_date") or "")
+    day = None
+    for fmt in ("%B %d, %Y", "%Y-%m-%d"):
+        try:
+            day = datetime.strptime(raw, fmt).date()
+            break
+        except ValueError:
+            pass
+    if day is None or not (0 <= (today - day).days <= CTA_CROWDING_MAX_CFTC_AGE_DAYS):
+        return None
+    markets = cftc.get("markets") or {}
+    tenors = {}
+    for tenor in CTA_CROWDING_TENORS:
+        row = markets.get(tenor) or {}
+        try:
+            long_n = int(row["leveraged_long"])
+            short_n = int(row["leveraged_short"])
+            net = int(row["leveraged_net"])
+            oi = int(row["open_interest"])
+        except (ValueError, TypeError, KeyError):
+            return None
+        if min(long_n, short_n, oi) < 0 or oi == 0 or net != long_n - short_n:
+            return None
+        tenors[tenor] = net
+    return {
+        "report_date": day.isoformat(),
+        "short_count": sum(net < 0 for net in tenors.values()),
+        "tenors": tenors,
+    }
+
+
+def _cta_crowding_latest(snapshot: dict, today: date | None = None) -> dict | None:
+    """Institution model + official CFTC cross-check, never CFTC alone."""
+    today = today or datetime.now(KST).date()
+    cftc = _cta_crowding_cftc(snapshot, today)
+    if not cftc or cftc["short_count"] < 5:
+        return None
+    try:
+        page = watcher.fetch(CTA_CROWDING_SOURCE_URL.format(year=today.year))
+        model = _cta_crowding_model_issue(page, today)
+    except Exception as exc:
+        print(f"cta_crowding_source_access_unverified={type(exc).__name__}")
+        return None
+    if not model:
+        print("cta_crowding_latest_model_broad_short_not_verified")
+        return None
+    level = 2 if cftc["short_count"] == 6 else 1
+    return {
+        **cftc, **model, "level": level,
+        "key": f"model:{model['published']}:{level}of2",
+        "verified": True,
+    }
+
+
+def _cta_crowding_due(state: dict, event: dict | None) -> bool:
+    if not event or not event.get("verified"):
+        return False
+    previous_level = int(state.get("cta_crowding_alert_level", 0) or 0)
+    # Same short-crowding episode never generates duplicate alerts merely
+    # because CFTC published another week of positions or an article was reposted.
+    return (
+        not bool(state.get("cta_crowding_alert_active"))
+        or int(event.get("level") or 0) > previous_level
+    ) and str(event.get("key") or "") != str(state.get("cta_crowding_last_sent_key") or "")
+
+
+def _cta_crowding_message(event: dict, snapshot: dict) -> tuple[str, str]:
+    tenors = event["tenors"]
+    labels = {
+        "2Y": "미국 2년", "5Y": "미국 5년", "10Y": "미국 10년",
+        "ULTRA10Y": "미국 초장기 10년", "BOND": "미국 30년",
+        "ULTRABOND": "미국 초장기 30년",
+    }
+    entries = [
+        f"• {labels[t]}: {tenors[t]:+,}계약"
+        for t in CTA_CROWDING_TENORS
+    ]
+    yield10 = snapshot.get("yield10") or {}
+    yield_line = (
+        f"• 미국 10년물 금리 {float(yield10['yield']):.3f}% "
+        f"(기준 {yield10.get('date', '확인 불가')})"
+    ) if yield10.get("yield") is not None else "• 미국 10년물 금리: 별도 확인 필요"
+    title = "미 국채 CTA 광범위 매도 쏠림 선행경보"
+    body = "\n".join([
+        "<b>선행경보: 기관 모델 + CFTC 교차 확인</b>",
+        f"• 기관 모델: {event['source']} · {event['published']} 발표",
+        f"• 기관 모델 판단: {event['scope']} (미국 만기별 신호 원본은 별도 확인 필요)",
+        f"• CFTC 레버리지펀드: {event['report_date']} 포지션 · 미국 국채 {event['short_count']}/6 만기 순매도",
+        *entries,
+        yield_line,
+        "",
+        "<b>정확한 의미</b>",
+        "• 기관의 CTA 추세모델은 매도 쏠림을 가리키지만 실제 CTA 계좌별 매매 실적은 아닙니다.",
+        "• CFTC 레버리지펀드에는 베이시스·헤지 거래가 포함되므로 CTA 실제 매도량으로 등치하지 않습니다.",
+        "• 채권 가격이 계속 하락하면 매도 추세가 이어질 수 있고, 반등하면 숏 청산 압력이 커질 수 있습니다.",
+        "• 이 경보는 선행 포지션 집중 상태이며 실제 숏 스퀴즈 확정이나 나스닥 상승 확정이 아닙니다.",
+        "",
+        "<b>다음 확인</b>",
+        "• ZN·ZB·UB의 공식 같은 거래일 가격 상승·미결제약정 감소, CFTC 만기별 순숏 축소, 10년물 금리·자금조달 스트레스를 확인합니다.",
+        f'<a href="{event["url"]}">기관 추세모델 원문</a> · <a href="{CFTC_URL}">CFTC 공식 포지션</a>',
+    ])
+    return title, body
+
+
 def scheduled_main() -> int:
     current_state = watcher.load_state()
     rc = _base_main()
@@ -1618,8 +1781,24 @@ def scheduled_main() -> int:
         )
 
     monday_due, fomc_due, week_key, date_key = _scheduled_due(current_state, next_state)
+    # The independent institution-model + CFTC pre-alert does not weaken the
+    # existing composite squeeze, NQ, weekly or FOMC confirmation gates.
+    today = _checked_date(snapshot)
+    cftc_breadth = _cta_crowding_cftc(snapshot, today)
+    if cftc_breadth and cftc_breadth["short_count"] < 5:
+        # Re-arm only on verifiable, genuinely narrower official positioning.
+        next_state["cta_crowding_alert_active"] = False
+        next_state["cta_crowding_alert_level"] = 0
+    early = _cta_crowding_latest(snapshot, today)
+    early_due = _cta_crowding_due(current_state, early)
+    with watcher.STATUS.open("a", encoding="utf-8") as f:
+        f.write(
+            "- CTA 광범위 매도 선행경보: "
+            + ("기관 모델+CFTC 교차 확인 · " + str(early["published"]) if early else "기관 모델 최신 교차 확인 전")
+            + (" · 신규 발송 대상\\n" if early_due else " · 신규 발송 없음\\n")
+        )
     base_alert_exists = watcher.ALERT.exists()
-    if not (monday_due or fomc_due or cross_due):
+    if not (monday_due or fomc_due or cross_due or early_due):
         watcher.NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         return rc
 
@@ -1655,7 +1834,10 @@ def scheduled_main() -> int:
         fx, fx_date = watcher.latest_fx()
     except Exception:
         fx, fx_date = None, None
-    if cross_due and not (monday_due or fomc_due):
+    crowding_only = bool(early_due and not (monday_due or fomc_due or cross_due or base_alert_exists))
+    if crowding_only:
+        title, body = _cta_crowding_message(early, snapshot)
+    elif cross_due and not (monday_due or fomc_due):
         title = "🔥 채권→Nasdaq 이중 숏 스퀴즈 감시" if stage >= 2 else "🟡 채권→Nasdaq 이중 숏 스퀴즈 연료 축적"
         body = "\n".join([
             "<b>👀 지금 쉽게 보면</b>",
@@ -1701,6 +1883,13 @@ def scheduled_main() -> int:
         next_state["last_weekly_report_key"] = week_key
     if fomc_due:
         next_state["last_fomc_eve_report"] = date_key
+    if crowding_only:
+        # Persisted by the workflow only AFTER Telegram's response is verified.
+        next_state["cta_crowding_alert_active"] = True
+        next_state["cta_crowding_alert_level"] = early["level"]
+        next_state["cta_crowding_last_sent_key"] = early["key"]
+        next_state["cta_crowding_last_source_date"] = early["published"]
+        next_state["cta_crowding_last_cftc_date"] = early["report_date"]
     watcher.NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     with watcher.STATUS.open("a", encoding="utf-8") as f:

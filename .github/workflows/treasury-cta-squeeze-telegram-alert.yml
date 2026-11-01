@@ -18,6 +18,9 @@ on:
     # Last fallback stays within the original 08:45 KST monitoring window.
     - cron: "7,22,37,52 12-22 * * 1-5"
     - cron: "7,22,37 23 * * 1-5"
+    # Approved CTA bond-short-crowding pre-alert: additional weekend source scans.
+    # 09:17/15:17/21:17/03:17 KST; no change to regular market or weekly gates.
+    - cron: "17 0,6,12,18 * * 6,0"
     # Important-event precheck: 20:40 KST, with a 20:47 backup. State dedupe allows one send.
     - cron: "40 11 * * 1-5"
     - cron: "47 11 * * 1-5"
