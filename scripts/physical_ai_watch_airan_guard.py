@@ -7230,6 +7230,30 @@ def _sro_recovery(which):
       "sro_event":which,"sro_expected":x["stage"],
     }]
 
+_SRO_RX27_RECOVERY_ID="DIRECT_SAMSUNG_RX_ACTUAL_VISIT_PRESS_20261027"
+
+def _sro_rx27_recovery():
+    # Verified 10/27 visit was absent from the saved 10/27 Telegram delivery
+    # and Nov-02 dedup state. One dated press-stage catch-up; never force-send.
+    if base.NOW.astimezone(base.KST).date()>dt.date(2026,11,5):
+        return []
+    return [{
+        "title":"[누락 보완·10월 27일] 이재용 삼성전자 회장 RX사업추진실 실제 방문",
+        "description":(
+          "2026년 10월 27일 이재용 삼성전자 회장은 서울 우면동 "
+          "RX사업추진실을 찾았다. 연합뉴스 17:11 종합기사와 전자신문 "
+          "15:02 원문이 현장 방문 완료 및 휴머노이드 팔·손 정밀 조작 "
+          "개발 현황 점검을 전했다. 10월 21일 방문 예정 보도와 구분하며, "
+          "삼성전자 명의 별도 공식 방문 발표 및 로봇 고객 계약·양산·매출은 "
+          "확정하지 않는다. CES 2027 공개도 업계 전망과 구별한다."
+        ),
+        "link":"https://www.yna.co.kr/view/AKR20261027124351003",
+        "source":"연합뉴스",
+        "published":None,
+        "direct_recovery":True,
+        "sro_expected":"reported_visit_done",
+    }]
+
 _sro_prev_query=base.query_news
 _sro_prev_group=base.topic_group
 _sro_prev_score=base.score
@@ -7243,6 +7267,8 @@ _sro_prev_key=base.key
 _sro_prev_select=base.select_diverse
 
 def _sro_query(q):
+    if q==_SRO_RX27_RECOVERY_ID:
+        return _sro_rx27_recovery()
     for n in SAMSUNG_ROBOT_OCT21_EVENTS:
         if q==SAMSUNG_ROBOT_OCT21_RECOVERY+n:
             return _sro_recovery(n)
@@ -7430,6 +7456,7 @@ base.select_diverse=_sro_select
 for _q in (
  SAMSUNG_ROBOT_OCT21_RECOVERY+"sem_mexico",
  SAMSUNG_ROBOT_OCT21_RECOVERY+"samsung_rx_visit",
+ _SRO_RX27_RECOVERY_ID,
  '(삼성전기 OR Samsung Electro-Mechanics) (멕시코 OR Queretaro) '
  '(카메라모듈 OR camera module) (공장 양산 OR 설비 재개 OR 공식 출하 OR 생산 개시)',
  '(이재용 OR Lee Jae-yong) (RX사업추진실 OR 서울R&D캠퍼스) '
