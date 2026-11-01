@@ -1448,6 +1448,65 @@ def _enrich_monthly_trends_for_due_alert(snapshot: dict) -> None:
     snapshot["monthly_trends"] = result
 
 
+def _monthly_trend_block(snapshot: dict, *, compact: bool = False) -> str:
+    """Explicit comparison dates and signed changes; never fill missing history."""
+    y = snapshot.get("yield10") or {}
+    monthly = snapshot.get("monthly_trends") or {}
+    cftc = monthly.get("cftc") or {}
+    repo = monthly.get("repo") or {}
+    cross = snapshot.get("nasdaq_cross_asset") or {}
+    hist = cross.get("history_3y") or {}
+    nq_verified = bool(hist.get("verified_current") and
+                       cross.get("nq_history_fresh") and cross.get("nq_crosscheck_match"))
+
+    def legs(values: dict, unit: str) -> str:
+        results = []
+        for m in (1, 2, 3):
+            item = (values or {}).get(str(m))
+            if not isinstance(item, dict):
+                results.append(f"{m}개월 확인 불가")
+                continue
+            d = str(item["date"])[5:]
+            if unit == "yield":
+                results.append(f"{m}개월({d}) {float(item['value']):.3f}% · {float(item['change'])*100:+.1f}bp")
+            elif unit == "repo":
+                results.append(f"{m}개월({d}) {float(item['value']):.2f}% · {float(item['change'])*100:+.1f}bp")
+            else:
+                results.append(f"{m}개월({d}) {int(item['change']):+,}계약")
+        return " / ".join(results)
+
+    lines = ["<b>📉 1·2·3개월 추세 (해당 지표 기준일)</b>"]
+    ycomp = y.get("monthly_comparisons") or {}
+    lines.append(
+        "• 미 국채 10Y 금리(" + str(y.get("date") or "기준일 불명") + "): "
+        + legs(ycomp, "yield")
+    )
+    if compact:
+        tenors = ("10Y",)
+    else:
+        tenors = ("2Y", "5Y", "10Y", "ULTRA10Y", "BOND", "ULTRABOND")
+    c_date = (snapshot.get("cftc") or {}).get("report_date") or "기준일 불명"
+    for tenor in tenors:
+        series = cftc.get(tenor) or {}
+        if series or tenor == "10Y":
+            lines.append("• CFTC " + tenor + " 순포지션(" + str(c_date) +
+                         "): " + legs(series, "contracts"))
+    if nq_verified:
+        lines.append("• NQ 순포지션(" + str(hist.get("end_date") or "기준일 불명") +
+                     "): " + legs(hist.get("monthly_net") or {}, "contracts"))
+    else:
+        lines.append("• NQ 순포지션: 1·2·3개월 공식 이력 교차검증 전")
+    names = ("SOFR",) if compact else ("SOFR", "BGCR", "TGCR")
+    for name in names:
+        series = repo.get(name) or {}
+        if series or name == "SOFR":
+            d = ((snapshot.get("repo") or {}).get(name) or {}).get("date") or "기준일 불명"
+            lines.append("• " + name + "(" + str(d) + "): " + legs(series, "repo"))
+    lines.append("• ZN·ZB·UB 선물 1·2·3개월: 동일 월물·연속물 과거 가격 검증 전 (일일 등락률 대체 금지)")
+    lines.append("※ 달력 기준 1·2·3개월 전, 휴장·주간자료는 해당일 이전 최근 발표 관측값. +계약은 순롱 방향, -계약은 순숏 방향이며 CTA 거래 자체는 아님.")
+    return "\n".join(lines) + "\n"
+
+
 def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=None, fx_date=None) -> tuple[str, str]:
     y = snapshot.get("yield10") or {}
     yld = float(y.get("yield") or 0.0)
