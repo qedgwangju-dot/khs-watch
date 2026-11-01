@@ -13,7 +13,6 @@ from __future__ import annotations
 import io
 import json
 import math
-import html
 import os
 import re
 import urllib.request
@@ -61,14 +60,6 @@ YAHOO_NQ_URL = "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=5
 US_POSITIONING_STATE = watcher.DATA / "us_positioning_state.json"
 CROSS_FORMAT_REVISION = 3
 _CROSS_CACHE = None
-
-# Independent early-warning lane: an institution's published CTA trend model
-# and CFTC TFF leveraged-fund positions must both support broad bond shorts.
-# CFTC leveraged funds include basis traders and are NOT synonymous with CTA.
-CTA_CROWDING_SOURCE_URL = "https://sophosalpha.com/research/institutional-monitor/{year}/"
-CTA_CROWDING_TENORS = ("2Y", "5Y", "10Y", "ULTRA10Y", "BOND", "ULTRABOND")
-CTA_CROWDING_MAX_SOURCE_AGE_DAYS = 10
-CTA_CROWDING_MAX_CFTC_AGE_DAYS = 10
 
 # CME contract face amounts. These convert CFTC contract counts into an intuitive
 # face-value notional only; they are not margin, P/L, market value or DV01.
@@ -1550,6 +1541,134 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
     return monday_due, fomc_due, week_key, fomc_key
 
 
+
+# Independent *positioning* pre-alert. CFTC TFF leveraged money includes
+# cash-futures basis hedges and is NOT a direct CTA strategy census.
+CTA_BREADTH_TENORS = ("2Y", "5Y", "10Y", "ULTRA10Y", "BOND", "ULTRABOND")
+
+
+def _cta_breadth_signal(snapshot: dict, previous: dict, state: dict, *, asof=None) -> dict:
+    """Signal broad verified CFTC Treasury short exposure before any squeeze.
+
+    A model-provider CTA signal cannot be inferred from CFTC leveraged-fund
+    positions alone; that distinction is deliberately in the output label.
+    """
+    cftc = snapshot.get("cftc") or {}
+    result = {
+        "status": "확인되지 않음", "due": False, "trigger": None,
+        "report_date": cftc.get("report_date"), "short_count": 0,
+        "total_tenors": len(CTA_BREADTH_TENORS),
+        "model_confirmation": "기관 CTA 모델 원문 독립 확인 전",
+        "source": cftc.get("source_url"),
+    }
+    url = str(cftc.get("source_url") or "")
+    if not (url.startswith("https://www.cftc.gov/") or
+            url.startswith("https://publicreporting.cftc.gov/")):
+        result["reason"] = "CFTC 공식자료 출처 확인 불가"
+        return result
+    try:
+        raw = str(cftc.get("report_date") or "")
+        try:
+            report_day = datetime.strptime(raw, "%B %d, %Y").date()
+        except ValueError:
+            report_day = date.fromisoformat(raw)
+        today = asof or datetime.now(KST).date()
+        age = (today - report_day).days
+    except (TypeError, ValueError):
+        result["reason"] = "CFTC 보고 기준일 파싱 불가"
+        return result
+    if not 0 <= age <= 10:
+        result["reason"] = f"CFTC 자료 유효기간 경과 또는 미래 날짜 ({age}일)"
+        return result
+
+    markets = cftc.get("markets") or {}
+    if not all(
+        isinstance(markets.get(tenor), dict)
+        and markets[tenor].get("leveraged_net") is not None
+        and int(markets[tenor].get("open_interest") or 0) > 0
+        for tenor in CTA_BREADTH_TENORS
+    ):
+        result["reason"] = "CFTC 6개 만기 전체 확인 전"
+        return result
+
+    short_count = sum(int(markets[k]["leveraged_net"]) < 0 for k in CTA_BREADTH_TENORS)
+    ten = markets["10Y"]
+    weekly_change = ten.get("leveraged_net_wow")
+    gross_weekly = ten.get("leveraged_short_wow")
+    short_oi_share = ten.get("short_share_oi_pct")
+    try:
+        weekly_change = int(weekly_change) if weekly_change is not None else None
+        gross_weekly = int(gross_weekly) if gross_weekly is not None else None
+        short_oi_share = float(short_oi_share) if short_oi_share is not None else None
+    except (ValueError, TypeError):
+        weekly_change = gross_weekly = short_oi_share = None
+
+    previous_cftc = previous.get("cftc") or {}
+    old_markets = previous_cftc.get("markets") or {}
+    old_complete = all(
+        isinstance(old_markets.get(k), dict) and
+        old_markets[k].get("leveraged_net") is not None
+        for k in CTA_BREADTH_TENORS
+    )
+    old_count = (sum(int(old_markets[k]["leveraged_net"]) < 0 for k in CTA_BREADTH_TENORS)
+                 if old_complete else None)
+    new_report = previous_cftc.get("report_date") != cftc.get("report_date")
+    # New broadening 4/6 -> >=5/6, or exceptional all-six
+    # with a material new 10Y net-short build. These are risk PRE-alerts,
+    # not claims of actual CTA short-covering or forced buy-ins.
+    widened = bool(
+        new_report and old_count is not None and old_count <= 4
+        and short_count >= 5 and short_oi_share is not None and short_oi_share >= 40
+    )
+    material_build = bool(
+        short_count == 6 and short_oi_share is not None and short_oi_share >= 40
+        and weekly_change is not None and weekly_change <= -100_000
+    )
+    trigger = "신규 5개 이상 만기 매도 확대" if widened else (
+        "6개 전 만기 순매도·10년물 순매도 10만계약 이상 확대" if material_build else None
+    )
+    key = f"CFTC-TFF-{report_day.isoformat()}:{'widened' if widened else 'six-tenor-build'}" if trigger else None
+    result.update({
+        "status": "확인" if trigger else "조건 미충족",
+        "short_count": short_count, "previous_short_count": old_count,
+        "ten_year_net": int(ten["leveraged_net"]),
+        "ten_year_net_wow": weekly_change,
+        "ten_year_gross_short_wow": gross_weekly,
+        "ten_year_short_oi_share": short_oi_share,
+        "trigger": trigger, "event_key": key,
+        "due": bool(key and key != state.get("last_cta_breadth_alert_key")),
+        "source_mode": cftc.get("source_mode", "CFTC 공식 TFF"),
+        "report_age_days": age,
+    })
+    return result
+
+
+def _cta_breadth_block(signal: dict, *, compact=False) -> str:
+    if signal.get("status") != "확인":
+        return ""
+    net = int(signal.get("ten_year_net") or 0)
+    delta = signal.get("ten_year_net_wow")
+    delta_text = (f"순포지션 전주 {int(delta):+,}계약" if delta is not None
+                  else "주간 변동 확인 불가")
+    pct = signal.get("ten_year_short_oi_share")
+    pct_text = f"{pct:.1f}%" if pct is not None else "확인 불가"
+    lines = [
+        "<b>📌 국채 선물 매도 쏠림 — 선행경보</b>",
+        f"• CFTC {signal.get('report_date')} 기준: 미국 국채 선물 "
+        f"{signal.get('short_count')}/{signal.get('total_tenors')}개 만기 레버리지펀드 순매도",
+        f"• 10년물 순 {net:+,}계약 · {delta_text} · 총 매도/OI {pct_text}",
+        "• CFTC 레버리지펀드는 CTA만 뜻하지 않습니다. 채권 현물-선물 베이시스 거래도 포함합니다.",
+        "• 이는 포지션 집중 선행 신호이며 실제 숏 스퀴즈·나스닥 상승 확정이 아닙니다.",
+    ]
+    if not compact:
+        lines.append(
+            "• 다음 확인: 기관 CTA 모델 원문, 동일거래일 공식 ZN 가격↑·OI↓,"
+            " CFTC 다음 주 10년물 순매도 축소, NQ 별도 조건"
+        )
+    lines.append(f'<a href="{CFTC_URL}">CFTC TFF 공식 원천</a>')
+    return "\n".join(lines)
+
+
 def _cross_alert_gate(current_state: dict, cross: dict) -> tuple[bool, int, int, bool]:
     """Deduplicate a squeeze episode without letting stale data reset the alert latch."""
     stage = int(cross.get("stage", 0) or 0)
@@ -1576,160 +1695,6 @@ def _cross_alert_gate(current_state: dict, cross: dict) -> tuple[bool, int, int,
     due = bool(stage >= 1 and (stage > gate_base or format_due))
     next_alerted = stage if due else gate_base
     return due, gate_base, next_alerted, episode_reset
-
-
-
-def _cta_crowding_model_issue(page: str, today: date) -> dict | None:
-    """Extract ONLY the latest dated issue, never an old quote from its archive.
-
-    This independent publisher describes its own trend-following model. Its
-    signal must not be mislabeled as J.P. Morgan's model or as actual CTA trades.
-    """
-    clean = re.sub(r"<(?:script|style)\b[^>]*>.*?</(?:script|style)\s*>", " ", page, flags=re.I | re.S)
-    plain = watcher.strip_tags(clean).replace("\xa0", " ")
-    month_expr = (
-        "January|February|March|April|May|June|July|August|"
-        "September|October|November|December"
-    )
-    dates = list(re.finditer(
-        r"\b(\d{1,2})\s+(" + month_expr + r")\s+(20\d{2})\b", plain, re.I
-    ))
-    if not dates:
-        return None
-    # The site is newest-first. Search among the first few dates, but do not
-    # promote text from a previous dated issue to the latest issue.
-    first = dates[0]
-    try:
-        published = datetime.strptime(first.group(0), "%d %B %Y").date()
-    except ValueError:
-        return None
-    age = (today - published).days
-    if age < 0 or age > CTA_CROWDING_MAX_SOURCE_AGE_DAYS:
-        return None
-    end = dates[1].start() if len(dates) > 1 else len(plain)
-    excerpt = plain[first.end():end][:16000]
-    patterns = (
-        r"\bas\s+short\s+(?:in\s+)?government\s+bonds\b",
-        r"\bevery\s+government\s+bond\s+market\s+(?:now\s+)?screens?\s+short\b",
-        r"\b(?:all|every)\s+(?:major\s+)?government\s+bond\s+market\w*.{0,80}\bshort\b",
-        r"\btrend(?:-| )follow\w*.{0,130}\bshort\s+(?:duration|government\s+bonds)\b",
-        r"\bCTA\s+bond\s+shorts?\s+(?:have\s+)?reached\s+an?\s+extreme\b",
-    )
-    if not any(re.search(pattern, excerpt, re.I | re.S) for pattern in patterns):
-        return None
-    return {
-        "published": published.isoformat(),
-        "source": "Sophos Alpha 자체 추세추종 모델",
-        "url": CTA_CROWDING_SOURCE_URL.format(year=published.year),
-        "scope": "글로벌 국채 매도 쏠림",
-    }
-
-
-def _cta_crowding_cftc(snapshot: dict, today: date) -> dict | None:
-    """Require complete fresh official six-tenor futures-only TFF fields."""
-    cftc = snapshot.get("cftc") or {}
-    raw = str(cftc.get("report_date") or "")
-    day = None
-    for fmt in ("%B %d, %Y", "%Y-%m-%d"):
-        try:
-            day = datetime.strptime(raw, fmt).date()
-            break
-        except ValueError:
-            pass
-    if day is None or not (0 <= (today - day).days <= CTA_CROWDING_MAX_CFTC_AGE_DAYS):
-        return None
-    markets = cftc.get("markets") or {}
-    tenors = {}
-    for tenor in CTA_CROWDING_TENORS:
-        row = markets.get(tenor) or {}
-        try:
-            long_n = int(row["leveraged_long"])
-            short_n = int(row["leveraged_short"])
-            net = int(row["leveraged_net"])
-            oi = int(row["open_interest"])
-        except (ValueError, TypeError, KeyError):
-            return None
-        if min(long_n, short_n, oi) < 0 or oi == 0 or net != long_n - short_n:
-            return None
-        tenors[tenor] = net
-    return {
-        "report_date": day.isoformat(),
-        "short_count": sum(net < 0 for net in tenors.values()),
-        "tenors": tenors,
-    }
-
-
-def _cta_crowding_latest(snapshot: dict, today: date | None = None) -> dict | None:
-    """Institution model + official CFTC cross-check, never CFTC alone."""
-    today = today or datetime.now(KST).date()
-    cftc = _cta_crowding_cftc(snapshot, today)
-    if not cftc or cftc["short_count"] < 5:
-        return None
-    try:
-        page = watcher.fetch(CTA_CROWDING_SOURCE_URL.format(year=today.year))
-        model = _cta_crowding_model_issue(page, today)
-    except Exception as exc:
-        print(f"cta_crowding_source_access_unverified={type(exc).__name__}")
-        return None
-    if not model:
-        print("cta_crowding_latest_model_broad_short_not_verified")
-        return None
-    level = 2 if cftc["short_count"] == 6 else 1
-    return {
-        **cftc, **model, "level": level,
-        "key": f"model:{model['published']}:{level}of2",
-        "verified": True,
-    }
-
-
-def _cta_crowding_due(state: dict, event: dict | None) -> bool:
-    if not event or not event.get("verified"):
-        return False
-    previous_level = int(state.get("cta_crowding_alert_level", 0) or 0)
-    # Same short-crowding episode never generates duplicate alerts merely
-    # because CFTC published another week of positions or an article was reposted.
-    return (
-        not bool(state.get("cta_crowding_alert_active"))
-        or int(event.get("level") or 0) > previous_level
-    ) and str(event.get("key") or "") != str(state.get("cta_crowding_last_sent_key") or "")
-
-
-def _cta_crowding_message(event: dict, snapshot: dict) -> tuple[str, str]:
-    tenors = event["tenors"]
-    labels = {
-        "2Y": "미국 2년", "5Y": "미국 5년", "10Y": "미국 10년",
-        "ULTRA10Y": "미국 초장기 10년", "BOND": "미국 30년",
-        "ULTRABOND": "미국 초장기 30년",
-    }
-    entries = [
-        f"• {labels[t]}: {tenors[t]:+,}계약"
-        for t in CTA_CROWDING_TENORS
-    ]
-    yield10 = snapshot.get("yield10") or {}
-    yield_line = (
-        f"• 미국 10년물 금리 {float(yield10['yield']):.3f}% "
-        f"(기준 {yield10.get('date', '확인 불가')})"
-    ) if yield10.get("yield") is not None else "• 미국 10년물 금리: 별도 확인 필요"
-    title = "미 국채 CTA 광범위 매도 쏠림 선행경보"
-    body = "\n".join([
-        "<b>선행경보: 기관 모델 + CFTC 교차 확인</b>",
-        f"• 기관 모델: {event['source']} · {event['published']} 발표",
-        f"• 기관 모델 판단: {event['scope']} (미국 만기별 신호 원본은 별도 확인 필요)",
-        f"• CFTC 레버리지펀드: {event['report_date']} 포지션 · 미국 국채 {event['short_count']}/6 만기 순매도",
-        *entries,
-        yield_line,
-        "",
-        "<b>정확한 의미</b>",
-        "• 기관의 CTA 추세모델은 매도 쏠림을 가리키지만 실제 CTA 계좌별 매매 실적은 아닙니다.",
-        "• CFTC 레버리지펀드에는 베이시스·헤지 거래가 포함되므로 CTA 실제 매도량으로 등치하지 않습니다.",
-        "• 채권 가격이 계속 하락하면 매도 추세가 이어질 수 있고, 반등하면 숏 청산 압력이 커질 수 있습니다.",
-        "• 이 경보는 선행 포지션 집중 상태이며 실제 숏 스퀴즈 확정이나 나스닥 상승 확정이 아닙니다.",
-        "",
-        "<b>다음 확인</b>",
-        "• ZN·ZB·UB의 공식 같은 거래일 가격 상승·미결제약정 감소, CFTC 만기별 순숏 축소, 10년물 금리·자금조달 스트레스를 확인합니다.",
-        f'<a href="{event["url"]}">기관 추세모델 원문</a> · <a href="{CFTC_URL}">CFTC 공식 포지션</a>',
-    ])
-    return title, body
 
 
 def scheduled_main() -> int:
@@ -1759,6 +1724,9 @@ def scheduled_main() -> int:
     next_state["nasdaq_cross_asset_format_revision"] = (
         CROSS_FORMAT_REVISION if cross_due else int(current_state.get("nasdaq_cross_asset_format_revision", 0) or 0)
     )
+    breadth = _cta_breadth_signal(snapshot, previous, current_state)
+    breadth_due = bool(breadth.get("due"))
+    snapshot["cta_short_breadth"] = breadth
 
     # Always expose the cross-asset gate in the verification status, even when no
     # Telegram is due. This makes a skipped send auditable rather than silent.
@@ -1779,26 +1747,15 @@ def scheduled_main() -> int:
             f"- NQ 자료 신선도: CME={'확인' if cross.get('nq_price_fresh') else '미확인'}"
             f" · CFTC history={'확인' if cross.get('nq_history_fresh') else '미확인'}\n"
         )
+        f.write(
+            f"- CFTC 국채 광범위 순매도: {breadth.get('short_count',0)}/6"
+            f" · 선행경보={'대상' if breadth_due else '중복·조건 미충족'}"
+            f" · 근거={breadth.get('trigger') or breadth.get('reason') or '신규 변화 없음'}\n"
+        )
 
     monday_due, fomc_due, week_key, date_key = _scheduled_due(current_state, next_state)
-    # The independent institution-model + CFTC pre-alert does not weaken the
-    # existing composite squeeze, NQ, weekly or FOMC confirmation gates.
-    today = _checked_date(snapshot)
-    cftc_breadth = _cta_crowding_cftc(snapshot, today)
-    if cftc_breadth and cftc_breadth["short_count"] < 5:
-        # Re-arm only on verifiable, genuinely narrower official positioning.
-        next_state["cta_crowding_alert_active"] = False
-        next_state["cta_crowding_alert_level"] = 0
-    early = _cta_crowding_latest(snapshot, today)
-    early_due = _cta_crowding_due(current_state, early)
-    with watcher.STATUS.open("a", encoding="utf-8") as f:
-        f.write(
-            "- CTA 광범위 매도 선행경보: "
-            + ("기관 모델+CFTC 교차 확인 · " + str(early["published"]) if early else "기관 모델 최신 교차 확인 전")
-            + (" · 신규 발송 대상\\n" if early_due else " · 신규 발송 없음\\n")
-        )
     base_alert_exists = watcher.ALERT.exists()
-    if not (monday_due or fomc_due or cross_due or early_due):
+    if not (monday_due or fomc_due or cross_due or breadth_due):
         watcher.NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         return rc
 
@@ -1818,12 +1775,24 @@ def scheduled_main() -> int:
         reasons.append("채권→Nasdaq 이중 숏 스퀴즈 " + ("확인" if stage >= 2 else "연료 축적"))
         if cross_format_due:
             reasons.append("정정: 10년 기록=주간 총숏 증가 속도 · NQ 확정 OI=CME 같은 거래일 일일 OI")
+    if breadth_due:
+        reasons.append("CFTC 국채 선물 광범위 순매도 선행경보: " + str(breadth["trigger"]))
     reasons = list(dict.fromkeys(reasons))
 
     # If the audited Treasury gate already produced an event alert, format_alert()
     # has already embedded the cross-asset block. Do not overwrite it unless this is
     # a mandatory scheduled report.
     if base_alert_exists and not (monday_due or fomc_due):
+        if breadth_due:
+            original = watcher.ALERT.read_text(encoding="utf-8")
+            extra = "\n\n" + _cta_breadth_block(breadth, compact=True)
+            title = watcher.TITLE.read_text(encoding="utf-8").strip() if watcher.TITLE.exists() else "미 국채 CTA"
+            if len(title) + 2 + len(original) + len(extra) <= 4096:
+                watcher.ALERT.write_text(original.rstrip() + extra + "\n", encoding="utf-8")
+                next_state["last_cta_breadth_alert_key"] = breadth["event_key"]
+            else:
+                with watcher.STATUS.open("a", encoding="utf-8") as f:
+                    f.write("- CTA 선행경보: 기존 이벤트가 4096자를 초과하여 이번 래치 유지·다음 실행 재평가\n")
         watcher.NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         with watcher.STATUS.open("a", encoding="utf-8") as f:
             f.write(f"- 채권→Nasdaq 전이 단계: {stage} ({cross.get('label')})\n")
@@ -1834,10 +1803,7 @@ def scheduled_main() -> int:
         fx, fx_date = watcher.latest_fx()
     except Exception:
         fx, fx_date = None, None
-    crowding_only = bool(early_due and not (monday_due or fomc_due or cross_due or base_alert_exists))
-    if crowding_only:
-        title, body = _cta_crowding_message(early, snapshot)
-    elif cross_due and not (monday_due or fomc_due):
+    if cross_due and not (monday_due or fomc_due):
         title = "🔥 채권→Nasdaq 이중 숏 스퀴즈 감시" if stage >= 2 else "🟡 채권→Nasdaq 이중 숏 스퀴즈 연료 축적"
         body = "\n".join([
             "<b>👀 지금 쉽게 보면</b>",
@@ -1852,10 +1818,30 @@ def scheduled_main() -> int:
             "",
             f'<a href="{CFTC_URL}">CFTC 포지션</a> · <a href="{CME_NQ_URL}">CME NQ</a> · <a href="{CME_NQ_BULLETIN}">CME 공식 일일결제</a> · <a href="{TREASURY_URL}">미 재무부 금리</a>',
         ])
+    elif breadth_due and not (monday_due or fomc_due):
+        title = "미 국채 선물 매도 쏠림 — CTA 위험 선행경보"
+        body = "\n".join([
+            "<b>👀 지금 쉽게 보면</b>",
+            "• 국채 선물의 광범위한 순매도와 신규 숏 확대가 확인됐지만, 실제 CTA 모델·숏 스퀴즈는 별도 검증 대상입니다.",
+            "",
+            _cta_breadth_block(breadth),
+            "",
+            f"• 채권→Nasdaq 이중 숏 스퀴즈: {cross.get('label')}",
+        ])
     else:
         title, body = _scheduled_report(snapshot, previous, reasons, fx=fx, fx_date=fx_date)
-    if len(title) + 2 + len(body) > 4050:
+    if len(title) + 2 + len(body) > 4050 and (monday_due or fomc_due):
         title, body = _compact_scheduled_report(snapshot, previous, reasons, fx=fx, fx_date=fx_date)
+    if breadth_due and (monday_due or fomc_due or cross_due):
+        block = "\n\n" + _cta_breadth_block(breadth, compact=True)
+        if len(title) + 2 + len(body) + len(block) > 4096 and (monday_due or fomc_due):
+            title, body = _compact_scheduled_report(snapshot, previous, reasons, fx=fx, fx_date=fx_date)
+        if len(title) + 2 + len(body) + len(block) <= 4096:
+            body += block
+        else:
+            # Do not consume the separate breadth key if an existing urgent
+            # message cannot carry its context; retry at the next real poll.
+            breadth_due = False
     if len(title) + 2 + len(body) > 4096:
         raise RuntimeError(f"Telegram scheduled report too long after compact fallback: {len(title)+2+len(body)}")
 
@@ -1883,13 +1869,8 @@ def scheduled_main() -> int:
         next_state["last_weekly_report_key"] = week_key
     if fomc_due:
         next_state["last_fomc_eve_report"] = date_key
-    if crowding_only:
-        # Persisted by the workflow only AFTER Telegram's response is verified.
-        next_state["cta_crowding_alert_active"] = True
-        next_state["cta_crowding_alert_level"] = early["level"]
-        next_state["cta_crowding_last_sent_key"] = early["key"]
-        next_state["cta_crowding_last_source_date"] = early["published"]
-        next_state["cta_crowding_last_cftc_date"] = early["report_date"]
+    if breadth_due:
+        next_state["last_cta_breadth_alert_key"] = breadth["event_key"]
     watcher.NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     with watcher.STATUS.open("a", encoding="utf-8") as f:
@@ -1897,6 +1878,8 @@ def scheduled_main() -> int:
             f.write("- 예약 발송: 주간 점검 지연 복구\n" if weekly_catchup else "- 예약 발송: 월요일 주간 점검\n")
         if fomc_due:
             f.write("- 예약 발송: FOMC 전날 점검\n")
+        if breadth_due:
+            f.write(f"- CTA 선행경보: 발송 대상 · 중복키={breadth['event_key']}\n")
         if cross_due:
             f.write(f"- 채권→Nasdaq 전이 단계 상승: {cross_gate_base}→{stage} ({cross.get('label')})\n")
         elif cross_episode_reset:

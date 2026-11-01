@@ -1240,86 +1240,82 @@ def test_zn_daily_oi_evidence_has_different_tenor_label(monkeypatch):
     assert "10년물 중심" in impact
 
 
-def test_cta_crowding_uses_only_latest_dated_institution_issue():
-    fresh = (
-        "<h2>27 October 2026</h2><p>We flagged last week: "
-        "trend followers were as long oil and as short government bonds "
-        "as they have been only twice in 20 years, in 2022 and now.</p>"
-        "<h2>13 October 2026</h2><p>Every government bond market screened short.</p>"
-    )
-    d = date(2026, 11, 1)
-    model = equity._cta_crowding_model_issue(fresh, d)
-    assert model and model["published"] == "2026-10-27"
-    assert "Sophos Alpha" in model["source"]
-    stale_or_ambiguous = (
-        "<h2>27 October 2026</h2><p>Oil and inflation watch.</p>"
-        "<h2>13 October 2026</h2><p>Every government bond market screened short.</p>"
-    )
-    assert equity._cta_crowding_model_issue(stale_or_ambiguous, d) is None
-    assert equity._cta_crowding_model_issue(fresh, date(2026, 11, 18)) is None
-
-
-def _crowding_test_snapshot(*, shorts=6, report="October 27, 2026"):
+def _official_us_treasury_short_breadth_fixture(
+    *, observation="October 27, 2026", net_change=-120_051, count=6
+):
+    names = ("2Y", "5Y", "10Y", "ULTRA10Y", "BOND", "ULTRABOND")
     markets = {}
-    for idx, tenor in enumerate(equity.CTA_CROWDING_TENORS):
-        lev_long = 100_000
-        lev_short = 150_000 if idx < shorts else 80_000
-        markets[tenor] = {
-            "leveraged_long": lev_long, "leveraged_short": lev_short,
-            "leveraged_net": lev_long - lev_short, "open_interest": 900_000,
+    for index, key in enumerate(names):
+        net = -1_000_000 if index < count else 20_000
+        markets[key] = {
+            "open_interest": 3_000_000,
+            "leveraged_net": net,
+            "short_share_oi_pct": 46.5 if key == "10Y" else 35.0,
         }
+    markets["10Y"]["leveraged_net"] = -2_227_275 if count >= 3 else 25_000
+    markets["10Y"]["leveraged_net_wow"] = net_change
+    markets["10Y"]["leveraged_short_wow"] = 58_808
     return {
-        "cftc": {"report_date": report, "markets": markets},
-        "yield10": {"yield": 4.94, "date": "2026-10-30"},
+        "cftc": {
+            "report_date": observation,
+            "source_mode": "CFTC TFF live HTML",
+            "source_url": "https://www.cftc.gov/dea/futures/financial_lf.htm",
+            "markets": markets,
+        }
     }
 
 
-def test_cta_crowding_requires_complete_official_cftc_and_institution_model(monkeypatch):
-    d = date(2026, 11, 1)
-    page = (
-        "<h2>27 October 2026</h2>"
-        "<p>Trend followers are as short government bonds as they have been in decades.</p>"
+def test_cta_short_breadth_2026_oct27_triggers_distinct_early_alert():
+    current = _official_us_treasury_short_breadth_fixture()
+    signal = equity._cta_breadth_signal(current, {}, {}, asof=date(2026, 11, 1))
+    assert signal["status"] == "확인"
+    assert signal["due"] is True
+    assert signal["short_count"] == 6
+    assert signal["ten_year_net_wow"] == -120_051
+    assert "six-tenor-build" in signal["event_key"]
+    text = equity._cta_breadth_block(signal)
+    assert "6/6" in text
+    assert "CTA만 뜻하지 않습니다" in text
+    assert "실제 숏 스퀴즈" in text
+
+
+def test_cta_short_breadth_only_sends_once_for_a_report_date():
+    current = _official_us_treasury_short_breadth_fixture()
+    initial = equity._cta_breadth_signal(current, {}, {}, asof=date(2026, 11, 1))
+    repeated = equity._cta_breadth_signal(
+        current, {}, {"last_cta_breadth_alert_key": initial["event_key"]},
+        asof=date(2026, 11, 1),
     )
-    monkeypatch.setattr(equity.watcher, "fetch", lambda url: page)
-    snap = _crowding_test_snapshot(shorts=6)
-    event = equity._cta_crowding_latest(snap, d)
-    assert event and event["short_count"] == 6 and event["level"] == 2
-    assert equity._cta_crowding_due({}, event)
-    title, body = equity._cta_crowding_message(event, snap)
-    assert "기관 모델" in body and "CFTC" in body and "6/6" in body
-    assert "실제 CTA 계좌별" in body and "실제 숏 스퀴즈 확정" in body
-    assert len(title) + 2 + len(body) <= 4096
-    missing = _crowding_test_snapshot()
-    del missing["cftc"]["markets"]["BOND"]
-    assert equity._cta_crowding_latest(missing, d) is None
-    bad_positions = _crowding_test_snapshot(shorts=4)
-    assert equity._cta_crowding_latest(bad_positions, d) is None
-    monkeypatch.setattr(equity.watcher, "fetch", lambda url: "<h2>27 October 2026</h2><p>Oil rallied.</p>")
-    assert equity._cta_crowding_latest(snap, d) is None
-    assert equity._cta_crowding_latest(_crowding_test_snapshot(report="October 1, 2026"), d) is None
+    assert repeated["due"] is False
+    assert repeated["event_key"] == initial["event_key"]
 
 
-def test_cta_crowding_dedupes_independently_from_squeeze_weekly_fomc():
-    event = {
-        "key": "model:2026-10-27:2of2", "verified": True, "level": 2,
-    }
-    assert equity._cta_crowding_due({"last_weekly_report_key": "2026-W44"}, event)
-    active = {
-        "cta_crowding_alert_active": True,
-        "cta_crowding_alert_level": 2,
-        "cta_crowding_last_sent_key": event["key"],
-    }
-    assert not equity._cta_crowding_due(active, event)
-    assert not equity._cta_crowding_due({**active, "cta_crowding_last_sent_key": "old"}, event)
-    upgrade = {**event, "level": 2, "key": "model:2026-11-02:2of2"}
-    assert not equity._cta_crowding_due(active, upgrade)
-    assert equity._cta_crowding_due({"cta_crowding_alert_active": True, "cta_crowding_alert_level": 1}, event)
+def test_cta_short_breadth_refuses_stale_unverified_and_incomplete_sources():
+    valid = _official_us_treasury_short_breadth_fixture()
+    old = equity._cta_breadth_signal(valid, {}, {}, asof=date(2026, 11, 16))
+    assert old["due"] is False
+    no_source = {"cftc": {**valid["cftc"], "source_url": "https://invalid.example/cta"}}
+    assert not equity._cta_breadth_signal(no_source, {}, {}, asof=date(2026, 11, 1))["due"]
+    partial = {"cftc": {**valid["cftc"], "markets": {"10Y": valid["cftc"]["markets"]["10Y"]}}}
+    assert not equity._cta_breadth_signal(partial, {}, {}, asof=date(2026, 11, 1))["due"]
 
 
-def test_cta_crowding_weekend_cron_does_not_change_normal_report_crons(monkeypatch):
-    text = (ROOT / ".github/workflows/treasury-cta-squeeze-telegram-alert.yml").read_text(
-        encoding="utf-8"
+def test_cta_short_breadth_needs_material_short_build_or_new_breadth():
+    current = _official_us_treasury_short_breadth_fixture(net_change=-99_999)
+    signal = equity._cta_breadth_signal(current, {}, {}, asof=date(2026, 11, 1))
+    assert signal["due"] is False
+    widened = _official_us_treasury_short_breadth_fixture(count=5, net_change=0)
+    previous = _official_us_treasury_short_breadth_fixture(
+        observation="October 20, 2026", count=4, net_change=0
     )
-    assert 'cron: "17 0,6,12,18 * * 6,0"' in text
-    assert 'cron: "0 22 * * 0"' in text
-    assert 'cron: "*/15 12-23 * * 1-5"' in text
+    positive = equity._cta_breadth_signal(widened, previous, {}, asof=date(2026, 11, 1))
+    assert positive["due"] is True
+    assert "widened" in positive["event_key"]
+
+
+def test_cta_short_breadth_model_is_never_promoted_to_verified_CTA_position():
+    current = _official_us_treasury_short_breadth_fixture()
+    signal = equity._cta_breadth_signal(current, {}, {}, asof=date(2026, 11, 1))
+    assert "독립 확인 전" in signal["model_confirmation"]
+    assert "CFTC" in equity._cta_breadth_block(signal)
+    assert "기관 CTA 모델 원문" not in signal["trigger"]
