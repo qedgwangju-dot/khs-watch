@@ -3372,13 +3372,15 @@
   },
   "_delivery": {
     "id": "e4b6f9c4b5e436c713edcf16bba7cbe19f4f48ef6c3165aa72ca8ffa444a7552",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-11-02T03:45:27+09:00",
     "chunks": [
       "⚠️ <b>삼성·SK하이닉스 HBM 수출 원자료 월별 검증 보류</b>\n━━━━━━━━━━━━━━━━\n• 대상월: <b>2026년 10월</b>\n• 상태: <b>월별 기간 검증 보류</b>\n• K-stat 공개 조회기간 선택 항목에 대상월이 없어 지역 HSK10 월별 원자료 검증을 보류했습니다.\n• 전국 HSK10·충남 HSK10·충북 HSK10을 모두 공식 원자료로 잠그기 전에는 새 수치를 만들지 않습니다.\n• 이전 월 수치·지역 HS6·기사 숫자를 최신 확정치로 대체 사용하지 않습니다.\n• 기존 HBM 워크플로가 자동 재조회하며, 원자료 복구 또는 새 확정월 확인 시 다시 알립니다.\n• 확인: 2026-11-02 03:45 KST"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      367
+    ],
     "candidate": {
       "seen_ids": [
         "017d7560e3afc81111bbcb5c",
