@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-01T11:19:08+09:00",
+  "last_checked_kst": "2026-11-01T16:59:52+09:00",
   "media_id": null,
   "cftc_date": "October 27, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-01T11:19:08+09:00",
+    "checked_kst": "2026-11-01T16:59:52+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "October 27, 2026",
@@ -211,7 +211,7 @@
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-10-30",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026103122"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026110102"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -433,6 +433,28 @@
       "repo_worse": [],
       "data_fresh": true,
       "stale_reasons": []
+    },
+    "cta_short_breadth": {
+      "status": "확인",
+      "due": true,
+      "trigger": "6개 전 만기 순매도·10년물 순매도 10만계약 이상 확대",
+      "report_date": "October 27, 2026",
+      "short_count": 6,
+      "total_tenors": 6,
+      "model_confirmation": "Sophos Alpha 자체 추세추종 모델 · 2026-10-27 직접 확인",
+      "source": "https://www.cftc.gov/dea/futures/financial_lf.htm",
+      "previous_short_count": 6,
+      "ten_year_net": -2227275,
+      "ten_year_net_wow": -120051,
+      "ten_year_gross_short_wow": 58808,
+      "ten_year_short_oi_share": 46.47698886763234,
+      "event_key": "CFTC-TFF-2026-10-27:six-tenor-build",
+      "source_mode": "CFTC TFF live HTML",
+      "report_age_days": 5,
+      "model_report_date": "2026-10-27",
+      "model_source": "Sophos Alpha 자체 추세추종 모델",
+      "model_url": "https://sophosalpha.com/research/institutional-monitor/2026/",
+      "model_scope": "글로벌 국채 매도 쏠림"
     }
   },
   "format_revision": 14,
@@ -462,5 +484,6 @@
     "BOND"
   ],
   "nasdaq_cross_asset_alerted_stage": 0,
-  "nasdaq_cross_asset_format_revision": 3
+  "nasdaq_cross_asset_format_revision": 3,
+  "last_cta_breadth_alert_key": "CFTC-TFF-2026-10-27:six-tenor-build"
 }
