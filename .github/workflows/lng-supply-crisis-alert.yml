@@ -107,6 +107,42 @@ jobs:
           print("v34_validation=true")
           PY
 
+      - name: Read-only CFTC natural gas official source probe
+        if: github.event_name == 'push'
+        run: |
+          python - <<'PY'
+          import csv, io, json, urllib.request, urllib.parse
+          sources = {
+              "cftc_weekly_csv": "https://www.cftc.gov/dea/newcot/f_disagg.txt",
+              "cftc_socrata": "https://publicreporting.cftc.gov/resource/72hh-3qpy.json?" + urllib.parse.urlencode({
+                  "$where": "cftc_contract_market_code='023651'",
+                  "$order": "report_date_as_yyyy_mm_dd DESC",
+                  "$limit": "3",
+              }),
+          }
+          for name, url in sources.items():
+              try:
+                  req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0","Cache-Control":"no-cache"})
+                  with urllib.request.urlopen(req,timeout=16) as response:
+                      content=response.read(3_000_000).decode("utf-8",errors="replace")
+                  if name=="cftc_weekly_csv":
+                      matches=[r for r in csv.reader(io.StringIO(content)) if len(r)>15 and r[3].strip()=="023651"]
+                      if len(matches)!=1:raise RuntimeError("expected exactly one NYMEX gas row")
+                      row=matches[0]
+                      print(f"cftc_probe csv=ok date={row[2]} long={row[13].strip()} short={row[14].strip()} columns={len(row)}")
+                  else:
+                      values=json.loads(content)
+                      if not isinstance(values,list) or not values:raise RuntimeError("empty official API list")
+                      print("cftc_probe api=ok "
+                            f"date={values[0].get('report_date_as_yyyy_mm_dd')} "
+                            f"long={values[0].get('m_money_positions_long_all')} "
+                            f"short={values[0].get('m_money_positions_short_all')} "
+                            f"rows={len(values)}")
+              except Exception as exc:
+                  print(f"cftc_probe {name}=unavailable {type(exc).__name__}:{str(exc)[:170]}")
+          print("cftc_probe send=false state_write=false")
+          PY
+
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
