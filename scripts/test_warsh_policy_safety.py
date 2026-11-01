@@ -1048,5 +1048,49 @@ class WarshFOMCCalendarSectionRegressionTests(unittest.TestCase):
                 datetime(2026,11,1,8,0,tzinfo=timezone.utc)), '2026-12-09')
 
 
+class WarshFOMCPreDecisionCaptureTests(unittest.TestCase):
+    def test_stale_quotes_not_saved_as_current_pre_decision(self):
+        now=datetime(2026,12,9,18,15,tzinfo=timezone.utc)  # 13:15 ET
+        state={}
+        quotes={
+            'S&P 500':{'value':7500,'timestamp':'2026-12-09T18:14:00+00:00'},
+            '10년물':{'value':5.2,'timestamp':'2026-12-09T16:00:00+00:00'}
+        }
+        with patch.object(fomc_v4.base,'market_snapshot',return_value=quotes):
+            self.assertTrue(fomc_v4.capture_pre_event_if_due(state,'2026-12-09',now))
+        self.assertEqual(list(state['pre_event_market']),['S&P 500'])
+        self.assertEqual(state['pre_event_market_event_date'],'2026-12-09')
+
+    def test_pre_capture_writes_state_without_any_telegram_send(self):
+        import io
+        from contextlib import redirect_stdout
+        now=datetime(2026,12,9,18,15,tzinfo=timezone.utc)
+        state={}
+        quotes={'S&P 500':{'value':7500,'timestamp':'2026-12-09T18:14:00+00:00'}}
+        with patch.object(fomc_v4.base,'load_state',return_value=state), \
+             patch.object(fomc_v4,'active_event_date',return_value='2026-12-09'), \
+             patch.object(fomc_v4.base,'market_snapshot',return_value=quotes), \
+             patch.object(fomc_v4.base,'save_state') as saved, \
+             patch.object(fomc_v4.base,'send') as sent, \
+             redirect_stdout(io.StringIO()):
+            self.assertTrue(fomc_v4.pre_event_capture_only(now))
+            self.assertFalse(fomc_v4.pre_event_capture_only(now))
+        self.assertEqual(saved.call_count,1)
+        sent.assert_not_called()
+
+    def test_outside_pre_event_window_never_accesses_sources(self):
+        import io
+        from contextlib import redirect_stdout
+        now=datetime(2026,12,9,19,1,tzinfo=timezone.utc)
+        with patch.object(fomc_v4.base,'load_state') as load, \
+             patch.object(fomc_v4,'active_event_date') as event, \
+             patch.object(fomc_v4.base,'send') as sent, \
+             redirect_stdout(io.StringIO()):
+            self.assertFalse(fomc_v4.pre_event_capture_only(now))
+        load.assert_not_called()
+        event.assert_not_called()
+        sent.assert_not_called()
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -55,7 +55,7 @@ def capture_pre_event_if_due(state, event_date, now):
         return False
     # Capture once during the 25 minutes before the scheduled 2:00 p.m. ET decision.
     mins = now_et.hour * 60 + now_et.minute
-    if not (13 * 60 + 35 <= mins < 14 * 60):
+    if not (13 * 60 <= mins < 14 * 60):
         return False
     if state.get('pre_event_market_event_date') == event_date and state.get('pre_event_market'):
         return False
@@ -64,17 +64,19 @@ def capture_pre_event_if_due(state, event_date, now):
         # Do not label an empty or stale snapshot as the pre-decision market.
         if not snap:
             return False
-        fresh = False
-        for row in snap.values():
+        fresh_rows = {}
+        for name, row in snap.items():
             try:
                 stamp = datetime.fromisoformat(row['timestamp'])
                 age = (now - stamp).total_seconds()
-                fresh = fresh or (0 <= age <= 20 * 60)
+                if 0 <= age <= 20 * 60:
+                    fresh_rows[name] = row
             except (KeyError, TypeError, ValueError):
                 continue
-        if not fresh:
+        if not fresh_rows:
             return False
-        state['pre_event_market'] = snap
+        # Do not use stale bond/stock quotes as a valid pre-decision baseline.
+        state['pre_event_market'] = fresh_rows
         state['pre_event_market_captured_at_utc'] = now.isoformat()
         state['pre_event_market_event_date'] = event_date
         return True
@@ -115,6 +117,30 @@ def prune_stale_snapshots(state, upcoming_date=None):
     if state.get('pre_event_market_event_date') not in (state.get('event_statement_date'), upcoming_date):
         for field in ('pre_event_market', 'pre_event_market_captured_at_utc', 'pre_event_market_event_date'):
             state.pop(field, None)
+
+
+def pre_event_capture_only(now=None):
+    """Early, send-free, once-per-meeting capture before slow macro monitors."""
+    now = now or datetime.now(timezone.utc)
+    local = now.astimezone(ET)
+    if local.weekday() != 2 or local.hour != 13:
+        print(json.dumps({'pre_event_capture':'not_in_pre_decision_window'},ensure_ascii=False))
+        return False
+    state = base.load_state()
+    event_date = active_event_date(state, now)
+    if not event_date or event_date != local.date().isoformat():
+        print(json.dumps({'pre_event_capture':'not_an_official_fomc_date',
+                          'calendar_event_date':event_date},ensure_ascii=False))
+        return False
+    captured = capture_pre_event_if_due(state, event_date, now)
+    if captured:
+        base.save_state(state)
+    print(json.dumps({
+        'pre_event_capture':'saved' if captured else 'not_captured_or_already_saved',
+        'event_date':event_date,'captured':captured,
+        'fresh_assets':list((state.get('pre_event_market') or {}).keys()) if captured else []
+    },ensure_ascii=False))
+    return captured
 
 
 def main():
@@ -285,4 +311,10 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    import sys
+    if sys.argv[1:] == ['--capture-pre-event']:
+        pre_event_capture_only()
+    elif len(sys.argv) > 1:
+        raise SystemExit('Unknown Warsh FOMC watcher argument')
+    else:
+        main()

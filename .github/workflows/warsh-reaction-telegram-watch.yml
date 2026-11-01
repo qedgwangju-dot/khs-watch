@@ -9,7 +9,7 @@ on:
     # FOMC calendar before capturing/sending, so non-meeting Wednesdays stay silent.
     # Covers both U.S. daylight-saving and standard-time 2:00 p.m. ET decisions.
     # 13:35 ET early capture mitigates cron delay at the former 13:50 slot.
-    - cron: '35 17,18 * * 3'
+    - cron: '5,35 17,18 * * 3'
     - cron: '50 17 * * 3'
     - cron: '5,20,35,50 18 * * 3'
     - cron: '5,20,35,50 19 * * 3'
@@ -141,6 +141,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Capture FOMC pre-decision market baseline before slower monitors
+        env:
+          PYTHONPATH: scripts
+        run: python scripts/warsh_fomc_event_watch_v4.py --capture-pre-event
 
       - name: Check official sources and notify macro Telegram
         env:
