@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 18,
+    "material_items": 17,
     "new_material_items": 0,
-    "raw_items": 148,
+    "raw_items": 149,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -441,16 +441,6 @@
       "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBvVU9JMWR2dkI2SHhsZlJJeHpvU1hiZGFMaURENHV0NDVPdDJVN3lZMFBxb0JTV2pUOElXY1R5N3RIMUhxSk5NQkRtZDl3OGcwb3k4cG9vY2hvVzY1cUdqX001SW1yOGs2SEQ1R0VwOUJqZnVEcVB4WWJn0gGOAUFVX3lxTE1NYTBJZUdwMi1wX2NsLXBZQ1c0bGZkWVRQSHdGY1hPVGx2TTVKUjR3bVFvWjlYMmhybldiZl9pb3NvTGVHWmltSFJfV3g3YTdmMGhsLW9lOTA2NGl0TGhETkNsMjVodHFwODh1TXBjQlBramZ6QWxSYml4cU9ZQ2lwcXQ1bUxTSVNVazFNX0E?oc=5",
       "vendor": "OpenAI"
     },
-    "42f613e54feefb387ce2db8f": {
-      "category": "취약점·패치",
-      "first_seen_at": "2026-09-27T23:04:57.452653+00:00",
-      "published_at": null,
-      "severity": 1,
-      "source": "Anthropic Threat Intelligence",
-      "title": "threat intelligence",
-      "url": "https://www.anthropic.com/threat-intelligence",
-      "vendor": "AI 생태계"
-    },
     "43e402f47997e6778a7eca14": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-29T16:05:17.390947+00:00",
@@ -460,16 +450,6 @@
       "title": "CISA warns of Fragnesia Linux flaw chained in PHP2Shell attacks - BleepingComputer",
       "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOWTBMOUN2emhCRUtzMFBjaUlsVDVhN3lTc2l1NTBDa1NUZGg1SlpiVUtEc01odWFfZFdMUGU0N0VuYkd2cEo5SDBjVlNHN3Z5aEdJTTU0U1FtV0FQcDhaajZNMDZtRENSMHVsRGxnU2ItZ1RJUktYMEUyWVNMOXFxcHBubTVDVG02QlVRVDZ6WlYtXzZzcTNrRDlLdnJWekJYUzZNY2RvdmNFdml2ekl4Sw?oc=5",
       "vendor": "PHP 재단"
-    },
-    "4566c131d5721e736206d081": {
-      "category": "취약점·패치",
-      "first_seen_at": "2026-09-27T23:04:57.452653+00:00",
-      "published_at": null,
-      "severity": 1,
-      "source": "Anthropic Threat Intelligence",
-      "title": "threat intelligence report september 2026",
-      "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
-      "vendor": "AI 생태계"
     },
     "46aeaa48467ef88fad7dba62": {
       "category": "PHP 취약점 최초 공개·패치 대기",
@@ -1000,16 +980,6 @@
       "title": "Who is Abdulrahman Alfozan? The OpenAI employee the FBI arrested is also a Saudi investor - Fortune",
       "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPZkxQdERhZng3ek9qVVNULTV3MUZJYkhmLXZobHJSenhORkhvVjZJVlpiZC1vNVBRSFlLeEx2SDI1OFNxNmp5TDZ5MmxtWmtQTUZ4MEp1QkRXZ1dnWTZseUJRUVluMV9yb0MyVnZBbkRKLUxWZEh2Nm9vUThXYmlYdmJJQkRzdDJ4MU5SV1JfUFpEV2xzNHFVSURPVkM3UnJvZVh0cTNaTkRDcklPT1k2ZjVQcnFqUWNOd3MyWG05dGw0MXVYSWVwVzVn?oc=5",
       "vendor": "OpenAI"
-    },
-    "a509ec27f21d00376a1a48d6": {
-      "category": "취약점·패치",
-      "first_seen_at": "2026-09-27T23:04:57.452653+00:00",
-      "published_at": null,
-      "severity": 1,
-      "source": "Anthropic Research",
-      "title": "alignment assessment cybersecurity incidents",
-      "url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
-      "vendor": "AI 생태계"
     },
     "a538ddde5185d669872ff295": {
       "category": "취약점·패치",
@@ -1614,5 +1584,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-02T07:58:06+09:00"
+  "updated_at_kst": "2026-11-02T08:19:44+09:00"
 }
