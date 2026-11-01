@@ -994,5 +994,59 @@ class MarketInternalFinalCloseStaggerTests(unittest.TestCase):
             sender.assert_not_called()
 
 
+class WarshFOMCCalendarSectionRegressionTests(unittest.TestCase):
+    CALENDAR = """2026 FOMC Meetings
+    September 15-16*
+    October 27-28
+    December 8-9*
+    2025 FOMC Meetings
+    October 28-29
+    2024 FOMC Meetings
+    November 6-7
+    2023 FOMC Meetings
+    May 2-3
+    2022 FOMC Meetings
+    November 1-2
+    2021 FOMC Meetings
+    January 26-27
+    2027 FOMC Meetings
+    January 26-27
+    March 16-17*
+    December 7-8*
+    Note: A two-day meeting is scheduled for January 25-26, 2028.
+    """
+
+    def test_historical_2022_meeting_is_not_2026(self):
+        import warsh_reaction_watch_v3 as cal
+        self.assertEqual(
+            cal._next_fomc_meeting_from_text(self.CALENDAR,date(2026,11,1)),
+            date(2026,12,9))
+
+    def test_rollover_uses_future_2027_calendar(self):
+        import warsh_reaction_watch_v3 as cal
+        self.assertEqual(
+            cal._next_fomc_meeting_from_text(self.CALENDAR,date(2026,12,10)),
+            date(2027,1,27))
+
+    def test_2028_note_does_not_replace_2027_meeting(self):
+        import warsh_reaction_watch_v3 as cal
+        self.assertEqual(
+            cal._next_fomc_meeting_from_text(self.CALENDAR,date(2027,1,1)),
+            date(2027,1,27))
+
+    def test_missing_current_calendar_fails_closed(self):
+        import warsh_reaction_watch_v3 as cal
+        self.assertIsNone(cal._next_fomc_meeting_from_text(
+            '2022 FOMC Meetings\nNovember 1-2',date(2026,11,1)))
+
+    def test_event_watcher_returns_correct_next_date(self):
+        import warsh_reaction_watch_v3 as cal
+        with patch.object(cal,'_next_fomc_meeting',return_value=date(2026,12,9)):
+            self.assertEqual(fomc_v4.active_event_date(
+                {'event_statement_date':'2026-10-28',
+                 'event_detected_at_utc':'2026-10-28T19:14:00+00:00'},
+                datetime(2026,11,1,8,0,tzinfo=timezone.utc)), '2026-12-09')
+
+
 if __name__ == "__main__":
     unittest.main()

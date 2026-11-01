@@ -7,6 +7,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import warsh_reaction_watch_v2 as prev
 
@@ -84,37 +85,43 @@ def _next_bls_release(kind):
     return None
 
 
+def _next_fomc_meeting_from_text(text, today):
+    """Only parse each year's own Fed calendar section.
+
+    The page shows 2026, then 2025 through 2021, then 2027.
+    Scanning from 2026 to 2027 misreads 2022 Nov 1-2 as 2026 Nov 2.
+    """
+    headings=list(re.finditer(r'\b(20\d{2})\s+FOMC Meetings\b',text,re.I))
+    month_re='|'.join(calendar.month_name[1:])
+    candidates=[]
+    for i,heading in enumerate(headings):
+        year=int(heading.group(1))
+        if year not in (today.year,today.year+1):
+            continue
+        section=text[heading.end():headings[i+1].start() if i+1<len(headings) else len(text)]
+        section=re.split(r'\bNote:\s',section,maxsplit=1,flags=re.I)[0]
+        for m in re.finditer(
+            rf'\b({month_re})\s+(\d{{1,2}})\s*-\s*(\d{{1,2}})\*?',section,re.I
+        ):
+            month=list(calendar.month_name).index(m.group(1).capitalize())
+            first,last=int(m.group(2)),int(m.group(3))
+            if last<first:
+                continue
+            try:
+                d=datetime(year,month,last).date()
+            except ValueError:
+                continue
+            if d>=today:
+                candidates.append(d)
+    return min(candidates) if candidates else None
+
+
 def _next_fomc_meeting():
     try:
-        raw, _ = base.fetch(base.URLS["fomc_calendar"])
-        text = base.clean_text(raw)
-        today = datetime.now(timezone.utc).date()
-        month_re = "|".join(calendar.month_name[1:])
-        candidates = []
-        for year in (today.year, today.year + 1):
-            start = text.find(f"{year} FOMC Meetings")
-            if start < 0:
-                continue
-            end = text.find(f"{year + 1} FOMC Meetings", start + 1)
-            section = text[start:end if end >= 0 else None]
-            # Regular FOMC meetings in the official calendar are shown as
-            # two-day ranges (for example, October 27-28). Requiring the range
-            # prevents minutes-release dates such as October 7 from being
-            # misidentified as the next policy meeting.
-            for m in re.finditer(
-                rf"\b({month_re})\s+(\d{{1,2}})-(\d{{1,2}})\*?",
-                section,
-                re.I,
-            ):
-                month = list(calendar.month_name).index(m.group(1).capitalize())
-                day = int(m.group(3))
-                try:
-                    d = datetime(year, month, day).date()
-                except ValueError:
-                    continue
-                if d >= today:
-                    candidates.append(d)
-        return min(candidates) if candidates else None
+        raw,_=base.fetch(base.URLS['fomc_calendar'])
+        text=base.clean_text(raw)
+        today=datetime.now(ZoneInfo('America/New_York')).date()
+        return _next_fomc_meeting_from_text(text,today)
     except Exception:
         return None
 
