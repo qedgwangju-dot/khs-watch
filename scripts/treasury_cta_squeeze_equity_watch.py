@@ -485,6 +485,10 @@ def _nq_history_statistics(rows: list[dict], current: dict) -> dict:
         "unwind_from_peak_pct": s3["net_short_unwind_from_peak_pct"],
         "leveraged_short_1w_change": last["short"] - prior["short"],
         "leveraged_net_1w_change": last["net"] - prior["net"],
+        "monthly_net": watcher.monthly_comparisons(
+            latest, last["net"], {d: r["net"] for d, r in parsed.items()}),
+        "monthly_gross_short": watcher.monthly_comparisons(
+            latest, last["short"], {d: r["short"] for d, r in parsed.items()}),
     }
     s10 = window_stats(10)
     # A full ten-year comparison needs at least 500 weekly points and data
