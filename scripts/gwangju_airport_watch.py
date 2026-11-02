@@ -390,33 +390,79 @@ def us_milestone(item):
 
 
 def verified_briefing_item(state):
-    # The 2026-11-02 primary government transcript was independently checked
-    # at intake. We do NOT claim to have fetched that web page in this run.
+    """One-time, source-labeled briefing event; never replay after confirmed send."""
     if COB_BRIEFING_EVENT_KEY in (state.get("sent_event_keys") or []):
         return None
     return {
         "id": COB_BRIEFING_EVENT_KEY,
         "event_key": COB_BRIEFING_EVENT_KEY,
-        "title": "광주 미군시설 이전: 한미 포괄협정 협의·2027년 정부안 예산 미반영",
+        "title": "광주 미군시설 이전: 포괄협정 협의·2027년 정부안 예산 미반영",
         "link": COB_OFFICIAL_BRIEFING_URL,
-        "description": "국방부 2026년 11월 2일 공식 정례브리핑 신규 확인 사건",
+        "description": "2026-11-02 국방부 정례브리핑의 미군시설 이전 진행 단계",
         "source": "대한민국 정책브리핑·국방부",
-        "source_url": "https://www.korea.kr",
+        "source_url": COB_OFFICIAL_BRIEFING_URL,
         "publisher": "국방부",
         "rank": "공식",
         "published": COB_SOURCE_DATE,
-        "source_date_display": "2026-11-02 (공식 발표일·시각 미공개)",
+        "source_date_display": "2026-11-02 (발표일 확인·시각 미공개)",
         "categories": ["미군시설·한미 포괄협정", "미군시설 이전예산", "미군시설 보강공사"],
-        "verification": "국방부 2026-11-02 공식 정례브리핑 원문 근거",
-        "detail_lines": [
-            "2027년 미군시설 임시배치 예산: 정부안 미반영; 국회 심의 중 협의 필요(확정 예산 0원이라는 뜻 아님)",
-            "한미 COB 포괄협정: 광주 포함 협의 중, 연내 문안 협의 완료 목표; 미체결·국회 비준 전",
-            "기존 미군시설 보강공사: 586억+36억+13억원(세부사업 합계 635억원), 공정률 0.2%; 중단도 협의 중",
-            "후속 관문: 대체시설·비용분담→협정 문안 완료·서명·국회 비준→예산 확보→미군시설 이전·공여구역 반환",
-            "호남 반도체: 군공항 기능의 2028년 중순 임시배치는 목표이며 부지 확보·팹 착공 확정 아님",
+        "verification": "국방부 2026-11-02 정례브리핑 + 구체적인 사업비·목표는 출처별 별도 표시",
+        "summary_lines": [
+            "[협의 중] 광주 미군시설 이전은 한미 포괄협정에 포함하는 방안을 협의 중. 협정 체결·국회 비준 전.",
+            "[정부안 미반영] 2027년 미군시설 임시배치 예산은 정부안에 없음. 최종 예산 확정 0원이란 뜻은 아님.",
+            "[중단 미확정] 기존 보강공사 공정률은 0.2%. 중단 여부도 한미 협의 중.",
+        ],
+        "detail_sections": [
+            {
+                "title": "한미 포괄협정 (협의 단계)",
+                "bullets": [
+                    "국방부 공식: 광주 미군시설 임시배치를 기존 공동운영기지(COB) 이전 포괄협정에 포함하는 방안을 미측과 협의 중.",
+                    "연합뉴스 보도: 연내 협정 문안 협의 완료가 정부 목표. 문안 완료·서명·국회 비준은 아직 확정되지 않음.",
+                ],
+            },
+            {
+                "title": "2027년 미군시설 이전예산 (정부안 단계)",
+                "bullets": [
+                    "국방부 공식: 미군시설 임시배치 예산은 현재 2027년 정부안 미반영.",
+                    "국회 심의 과정에서 협의 필요. 정부안 미반영과 국회 최종 예산 0원 확정은 다름.",
+                ],
+            },
+            {
+                "title": "기존 미군시설 보강공사 (중단 협의 단계)",
+                "bullets": [
+                    "연합뉴스 보도 기준 세부사업비: 항공유 급유시설 586억원 + 엔지니어저장시설 36억원 + 철제물탱크 13억원 = 635억원.",
+                    "국방부 공식: 공정률 0.2%. 공사 중단 등을 미측과 협의 중이며 중단 완료가 아님.",
+                    "635억원은 기존 세부사업비 합계이며, 실제 집행액이나 신규 이전예산으로 볼 수 없음.",
+                ],
+            },
+            {
+                "title": "반도체 국가산단에 미치는 영향 (목표 단계)",
+                "bullets": [
+                    "정부의 광주 군공항 기능 임시배치 목표는 2028년 중순이며, 시점 단축도 검토 대상.",
+                    "미군시설 이전·공여구역 반환·부지 인도·반도체 팹 착공은 아직 각각 별도 확인이 필요함.",
+                ],
+            },
+            {
+                "title": "다음 확인 관문 (확정 전)",
+                "bullets": [
+                    "미군시설: 대체시설·비용분담 협의 → 협정 문안 완료·서명 → 국회 비준 동의 → 예산 확보 → 시설 이전·공여구역 반환.",
+                    "군공항 최종 이전부지: 이전주변지역 지원계획 → 주민투표 → 무안군 유치신청 → 최종 이전부지 선정.",
+                ],
+            },
+        ],
+        "additional_sources": [
+            {
+                "publisher": "연합뉴스",
+                "date": "2026-11-02 13:35 KST",
+                "link": "https://www.yna.co.kr/view/AKR20261102090100504",
+            },
+            {
+                "publisher": "청와대 브리핑",
+                "date": "2026-09-29 (2028년 중순 목표)",
+                "link": "https://www.korea.kr/briefing/presidentView.do?newsId=148972779",
+            },
         ],
     }
-
 
 def select_us_milestone_alerts(items, state):
     """Build verified change alerts while retaining cross-run evidence.
@@ -611,32 +657,97 @@ def format_time(value):
 
 
 def build_alert(selected):
+    """Readable, lossless alert text; every selected event appears."""
     ts = now_kst().strftime("%Y-%m-%d %H:%M KST")
     lines = [
-        "[광주 군공항 이전 감시] 신규 변화",
+        f"[광주 군공항 이전 감시] 신규 변화 {len(selected)}건",
         f"조회: {ts}",
-        f"기준선: {BASELINE}",
         "",
     ]
-    for idx, item in enumerate(selected[:8], 1):
-        verification = item.get("verification") or ("공식자료" if item["rank"] == "공식" else "교차검증")
+    for idx, item in enumerate(selected, 1):
+        verification = item.get("verification") or ("공식자료" if item.get("rank") == "공식" else "교차검증")
         lines.extend([
-            f"{idx}. {'·'.join(item['categories'])}",
-            f"- {item['title']}",
-            f"- 확정도: {verification}",
+            f"■ {idx}. {item.get('title') or '제목 미확인'}",
+            f"확인 단계: {verification}",
         ])
+        for summary in item.get("summary_lines") or []:
+            lines.append(f"• {summary}")
+        for section in item.get("detail_sections") or []:
+            lines.extend(["", f"【{section.get('title') or '세부 내용'}】"])
+            for detail in section.get("bullets") or []:
+                lines.append(f"• {detail}")
         for detail in item.get("detail_lines") or []:
-            lines.append(f"- {detail}")
-        lines.extend([
-            f"- 출처원문: {item['publisher']} | {item.get('source_date_display') or format_time(item.get('published'))} | {item['link']}",
-            "",
-        ])
+            lines.append(f"• {detail}")
+        if item.get("categories") and not item.get("detail_sections"):
+            lines.append("분야: " + " · ".join(item["categories"]))
+        link = item.get("link") or ""
+        if link:
+            lines.extend(["", f"- 출처원문: {item.get('publisher') or '발행기관 미확인'} | {item.get('source_date_display') or format_time(item.get('published'))} | {link}"])
+        for extra in item.get("additional_sources") or []:
+            if extra.get("link"):
+                lines.append(f"- 출처원문: {extra.get('publisher') or '추가 근거'} | {extra.get('date') or '발표일 미확인'} | {extra['link']}")
+        lines.append("")
+
     lines.extend([
-        "다음 핵심 절차: 이전주변지역 지원계획 구체화 → 주민투표 → 무안군 유치신청 → 최종 이전부지 선정.",
-        "중복 방지: 동일 제목·동일 사건·동일 발행사 별칭은 1건으로 통합하고, 비공식 보도는 독립 발행사 2곳 이상에서 같은 변화가 확인될 때만 알림.",
+        "【기존 기준선 · 신규 사실과 구분】",
+        BASELINE,
+        "다음 핵심 절차: 지원계획 구체화 → 주민투표 → 무안군 유치신청 → 최종 이전부지 선정.",
     ])
     return "\n".join(lines).strip() + "\n"
 
+
+def render_telegram_html(text):
+    """HTML-escape untrusted text and turn verified source URLs into links."""
+    rendered = []
+    for line in text.splitlines():
+        match = re.fullmatch(
+            r"\s*-\s*출처원문:\s*(.*?)\s*\|\s*(.*?)\s*\|\s*(https?://\S+)\s*",
+            line,
+        )
+        if match:
+            source, when, url = match.groups()
+            rendered.append(
+                f"출처: {html.escape(source.strip())} · "
+                f"{html.escape(when.strip())} · "
+                f'<a href="{html.escape(url.strip(), quote=True)}">원문 보기</a>'
+            )
+            continue
+        if line.startswith("■ ") or (line.startswith("【") and line.endswith("】")) or line.startswith("[광주 군공항 이전 감시]"):
+            rendered.append(f"<b>{html.escape(line)}</b>")
+        else:
+            rendered.append(html.escape(line))
+    return "\n".join(rendered)
+
+
+def telegram_html_chunks(text, limit=3700):
+    """Split at original lines only, never drop an event or cut a source URL."""
+    if not text.strip():
+        return []
+    if limit < 400:
+        raise ValueError("Telegram chunk limit too small")
+    budget = limit - 90  # reserve room for 1/N headings
+    groups, group = [], []
+    for line in text.rstrip("\n").split("\n"):
+        candidate = group + [line]
+        if len(render_telegram_html("\n".join(candidate))) <= budget:
+            group = candidate
+            continue
+        if not group:
+            raise ValueError("Single alert line exceeds Telegram safe length; never truncate")
+        groups.append(group)
+        group = [line]
+        if len(render_telegram_html(line)) > budget:
+            raise ValueError("Single alert line exceeds Telegram safe length; never truncate")
+    if group:
+        groups.append(group)
+    chunks = []
+    for index, lines in enumerate(groups, 1):
+        prefix = f"【광주 군공항 이전 알림 {index}/{len(groups)}】\n" if len(groups) > 1 else ""
+        part = prefix + render_telegram_html("\n".join(lines))
+        if len(part) > limit:
+            raise ValueError("Telegram chunk unexpectedly exceeds safe length")
+        chunks.append(part)
+    return chunks
 
 def write_status(total, candidates, selected, errors):
     ts = now_kst().strftime("%Y-%m-%d %H:%M:%S KST")
@@ -730,9 +841,36 @@ def self_test():
     assert us_milestone(allocated) == "2027_budget_revised"
     work = dict(baseline_news, title="광주 군공항 미군시설 보강공사 중단 합의")
     assert us_milestone(work) == "existing_works_halted"
-    assert verified_briefing_item({"sent_event_keys": []}) is not None
-    assert "시각 미공개" in build_alert([verified_briefing_item({"sent_event_keys": []})])
+    item = verified_briefing_item({"sent_event_keys": []})
+    assert item is not None
+    notice = build_alert([item])
+    for required in ("586억원", "36억원", "13억원", "635억원", "0.2%",
+                     "2027년", "2028년 중순", "정부안 미반영", "협의 중",
+                     "공여구역 반환", "국회 비준", "원문 보기"):
+        if required == "원문 보기":
+            assert required in render_telegram_html(notice)
+        else:
+            assert required in notice, required
+    assert item["link"] == COB_OFFICIAL_BRIEFING_URL
     assert verified_briefing_item({"sent_event_keys": [COB_BRIEFING_EVENT_KEY]}) is None
+    assert '&lt;script&gt;' in render_telegram_html('<script>')
+    assert '<a href="' in render_telegram_html(notice)
+    synthetic = [
+        {"title": f"서로 다른 사건 고유번호 {i}", "categories": ["지원계획·예산"],
+         "publisher": "국방부", "rank": "공식",
+         "link": f"https://example.com/source/{i}"} for i in range(11)
+    ]
+    full = build_alert(synthetic)
+    assert "■ 11. 서로 다른 사건 고유번호 10" in full
+    chunks = telegram_html_chunks(full, limit=600)
+    assert len(chunks) > 1 and all(len(part) <= 600 for part in chunks)
+    assert all(f"고유번호 {i}" in "\n".join(chunks) for i in range(11))
+    assert all(f"source/{i}" in "\n".join(chunks) for i in range(11))
+    try:
+        telegram_html_chunks("x" * 700, limit=600)
+        raise AssertionError("Oversized single line was silently accepted")
+    except ValueError:
+        pass
     no_repeat = {"sent_event_keys": [COB_BRIEFING_EVENT_KEY], "us_pending_evidence": {}}
     assert not select_us_milestone_alerts([baseline_news], no_repeat)[0]
     event1, cache = select_us_milestone_alerts([signed], no_repeat)

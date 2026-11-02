@@ -141,14 +141,13 @@ jobs:
         run: |
           python - <<'PY'
           import datetime as dt
-          import html as html_lib
           import json
           import os
           import pathlib
-          import re
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
+          from scripts.gwangju_airport_watch import telegram_html_chunks
 
           token = os.environ['TELEGRAM_BOT_TOKEN'].strip()
           chat_id = os.environ['TELEGRAM_CHAT_ID'].strip()
@@ -165,31 +164,9 @@ jobs:
               pathlib.Path('out/gwangju_airport_alert.md'),
           ]
 
-          def render_html(text):
-              rendered = []
-              for line in text.splitlines():
-                  combined = re.fullmatch(
-                      r'\s*-\s*출처원문:\s*(.*?)\s*\|\s*(.*?)\s*\|\s*(https?://\S+)\s*',
-                      line,
-                  )
-                  if combined:
-                      source = html_lib.escape(combined.group(1).strip())
-                      when = html_lib.escape(combined.group(2).strip())
-                      url = html_lib.escape(combined.group(3).strip(), quote=True)
-                      rendered.append(f'- 출처·원문: {source} · {when} · <a href="{url}">원문 보기</a>')
-                      continue
-
-                  legacy = re.fullmatch(r'\s*-\s*링크:\s*(https?://\S+)\s*', line)
-                  if legacy:
-                      url = html_lib.escape(legacy.group(1), quote=True)
-                      rendered.append(f'- 원문: <a href="{url}">원문 보기</a>')
-                      continue
-
-                  rendered.append(html_lib.escape(line))
-              return '\n'.join(rendered)
-
           sent = 0
           message_ids = []
+          confirmed_chats = set()
           for path in files:
               if not path.exists():
                   continue
@@ -197,20 +174,12 @@ jobs:
               if not text:
                   continue
 
-              chunks = []
-              while len(text) > 3600:
-                  cut = text.rfind('\n\n', 0, 3600)
-                  if cut < 1000:
-                      cut = 3600
-                  chunks.append(text[:cut].strip())
-                  text = text[cut:].strip()
-              if text:
-                  chunks.append(text)
+              chunks = telegram_html_chunks(text)
 
               for chunk in chunks:
                   payload = urllib.parse.urlencode({
                       'chat_id': chat_id,
-                      'text': render_html(chunk),
+                      'text': chunk,
                       'parse_mode': 'HTML',
                       'disable_web_page_preview': 'true',
                   }).encode('utf-8')
@@ -222,15 +191,31 @@ jobs:
                   with urllib.request.urlopen(req, timeout=30) as r:
                       result = json.loads(r.read().decode('utf-8'))
                   if not result.get('ok'):
-                      raise RuntimeError(result)
+                      raise RuntimeError("Telegram sendMessage rejected")
+                  delivered = result.get('result') or {}
+                  actual_chat = delivered.get('chat') or {}
+                  actual_chat_id = actual_chat.get('id')
+                  message_id = delivered.get('message_id')
+                  if not isinstance(message_id, int) or actual_chat_id is None:
+                      raise RuntimeError("Telegram receipt missing chat.id or message_id")
+                  if chat_id.lstrip('-').isdigit():
+                      if str(actual_chat_id) != chat_id:
+                          raise RuntimeError("Telegram receipt chat.id mismatch")
+                  elif chat_id.startswith('@'):
+                      if str(actual_chat.get('username') or '').casefold() != chat_id[1:].casefold():
+                          raise RuntimeError("Telegram receipt username mismatch")
+                  else:
+                      raise RuntimeError("Telegram chat destination is neither numeric ID nor @username")
                   sent += 1
-                  message_ids.append((result.get('result') or {}).get('message_id'))
+                  message_ids.append(message_id)
+                  confirmed_chats.add(str(actual_chat_id))
 
           if sent:
               pathlib.Path('out/gwangju_airport_telegram_confirmed.json').write_text(
                   json.dumps({
                       'status': 'confirmed',
                       'bot_username': actual,
+                      'chat_ids': sorted(confirmed_chats),
                       'message_ids': message_ids,
                       'confirmed_at_kst': dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
                   }, ensure_ascii=False, indent=2) + '\n',
