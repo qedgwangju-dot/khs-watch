@@ -51,7 +51,7 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-11-03T00:41:50+09:00",
+    "updated_at_kst": "2026-11-03T08:29:05+09:00",
     "risk_score": 2,
     "grade_emoji": "🟡",
     "grade_label": "추가인상 가능성 유지",
@@ -59,13 +59,13 @@
     "next_mpc_source": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?menuNo=200755&mtgSe=A",
     "components": {
       "inflation": {
-        "period": "2026-09",
-        "headline_yoy": 2.9,
+        "period": "2026-10",
+        "headline_yoy": 2.8,
         "core_yoy": 2.8,
-        "source": "https://mods.go.kr/board.es?mid=b70203010000&bid=213&list_no=447322&act=view&mainXml=Y",
+        "source": "https://mods.go.kr/board.es?mid=b70203010000&bid=213&list_no=447801&act=view&mainXml=Y",
         "source_tier": "공식",
-        "prev_headline_yoy": 3.1,
-        "prev_core_yoy": 3.4,
+        "prev_headline_yoy": 2.9,
+        "prev_core_yoy": 2.8,
         "headline_reaccelerating": false,
         "core_reaccelerating": false,
         "stale": false
