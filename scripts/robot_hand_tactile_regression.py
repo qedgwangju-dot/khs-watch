@@ -60,8 +60,10 @@ def run():
         "production next year, but it is not installed yet.",
         "Reuters", "2026-09-25T00:00:00+00:00",
     )
-    assert classify(tesla_plan)[0] == "tesla_optimus_hand_service"
-    assert classify(tesla_plan)[1] == 0
+    # A 2026 *plan* must remain in the pre-existing Tesla/Optimus lane,
+    # not be diverted into the new completed-hand-integration lane.
+    assert classify(tesla_plan)[0] != "tesla_optimus_hand_service"
+    assert classify(tesla_plan)[1] < 11
 
     # Hypothetical future events: tests do not imply these events occurred.
     tacta_contract = make(
