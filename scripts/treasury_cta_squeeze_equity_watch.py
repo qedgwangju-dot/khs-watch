@@ -1443,6 +1443,55 @@ def _official_monthly_repo_trends(snapshot: dict) -> dict:
     return trends
 
 
+def _reference_futures_monthly_trends() -> dict:
+    """Yahoo continuous-series reference only; NEVER CME/CTA confirmation."""
+    symbols = {"ZN": "ZN=F", "ZB": "ZB=F", "UB": "UB=F", "NQ": "NQ=F"}
+    try:
+        expected = _latest_completed_us_session_date()
+    except Exception:
+        return {}
+
+    def get_one(item):
+        symbol, ticker = item
+        try:
+            url = ("https://query1.finance.yahoo.com/v8/finance/chart/"
+                   + urllib.parse.quote(ticker, safe="")
+                   + "?range=6mo&interval=1d&includePrePost=false")
+            request = urllib.request.Request(url, headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131 Safari/537.36",
+                "Accept": "application/json",
+            })
+            with urllib.request.urlopen(request, timeout=12) as response:
+                raw = json.loads(response.read().decode("utf-8"))
+            chart = (((raw.get("chart") or {}).get("result") or [None])[0]) or {}
+            times = chart.get("timestamp") or []
+            quotes = ((chart.get("indicators") or {}).get("quote") or [{}])[0]
+            closes = quotes.get("close") or []
+            series = {}
+            for stamp, closing in zip(times, closes):
+                if closing is None:
+                    continue
+                value = float(closing)
+                when = datetime.fromtimestamp(int(stamp), NY).date()
+                if math.isfinite(value) and value > 0 and when <= expected:
+                    series[when] = value
+            if not series:
+                return symbol, {}
+            latest = max(series)
+            if (expected - latest).days > 4:
+                return symbol, {}
+            legs = watcher.monthly_comparisons(latest, series[latest], series)
+            return symbol, {"date": latest.isoformat(), "current": series[latest],
+                            "comparisons": legs, "source": url} if legs else {}
+        except Exception:
+            return symbol, {}
+
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        output = dict(pool.map(get_one, symbols.items()))
+    return {k: v for k, v in output.items() if v}
+
+
 def _enrich_monthly_trends_for_due_alert(snapshot: dict) -> None:
     """Presentation only; source failures cannot lower existing squeeze gates."""
     result = {"cftc": {}, "repo": {}}
