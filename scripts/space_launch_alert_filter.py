@@ -34,7 +34,8 @@ def clean_blocks(text,now):
             if m:
                 published=datetime.strptime(m[1]+" "+m[2],"%Y-%m-%d %H:%M")
                 published=published.replace(tzinfo=timezone(timedelta(hours=9)))
-                if now-published.astimezone(timezone.utc)>timedelta(hours=48):
+                limit=timedelta(days=7) if first.startswith("[선행경보·협의]") and "golden dome" in lowered else timedelta(hours=48)
+                if now-published.astimezone(timezone.utc)>limit:
                     continue
         kept=[x for x in block.splitlines()
               if "제목·공개요약에서 핵심 수치 미추출" not in x]
@@ -58,6 +59,11 @@ def self_test():
     assert "Morgan Stanley raises" not in out
     assert "signs Electron" in out
     assert "🚀 우주 발사 병목 웹감시" in out
+    young="우주 발사 감시\n기준: 2026-10-17 19:00 KST\n\n[선행경보·협의] 미국 Golden Dome 구글 데이터 보안\n• Alphabet Google in talks to join Golden Dome\n• 검증: Bloomberg 보도 재인용 | 2026-10-14 06:10 KST\n"
+    aged=young.replace("2026-10-14 06:10 KST","2026-10-08 06:10 KST")
+    assert "Google in talks" in clean_blocks(young,now)
+    assert "Google in talks" not in clean_blocks(aged,now)
+
     print("space_launch_filter_self_test=ok misclassified=blocked valid_contract=retained")
 
 def main():
