@@ -7,8 +7,8 @@
     "direct_official_items": 54,
     "errors": [],
     "material_items": 19,
-    "new_material_items": 0,
-    "raw_items": 144,
+    "new_material_items": 1,
+    "raw_items": 136,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -572,8 +572,8 @@
       "vendor": "AI 생태계"
     },
     "592133392c0a5eb7c8faacd8": {
-      "category": "취약점·패치",
-      "first_seen_at": "2026-09-28T03:16:05.893924+00:00",
+      "category": "미분류 AI 보안 변화",
+      "first_seen_at": "2026-11-02T03:57:35.023747+00:00",
       "published_at": null,
       "severity": 1,
       "source": "Anthropic Research",
@@ -590,16 +590,6 @@
       "title": "Saudi employee charged with planting recording device at OpenAI office - BBC",
       "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAzR2tkbXBlSC15bmdLOC15RXdoYWN4RmExYXo2VklpTGlBLTdWV0plN2ZYZ1JpZV9CMG9RLU01T19WWTQwQ051ZDBCTGlFWC0yVkNzMDR2SlNRSmZiY1E?oc=5",
       "vendor": "OpenAI"
-    },
-    "5cc65ef398cb9c997c404989": {
-      "category": "취약점·패치",
-      "first_seen_at": "2026-09-28T03:16:05.893924+00:00",
-      "published_at": null,
-      "severity": 1,
-      "source": "Anthropic Threat Intelligence",
-      "title": "Anthropic Threat Intelligence: threat intelligence report september 2026",
-      "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
-      "vendor": "Anthropic"
     },
     "5e2d0361473b181f4ff30100": {
       "category": "PHP 취약점 최초 공개·패치 대기",
@@ -1201,16 +1191,6 @@
       "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNNlEzbWo0NE1pc3VuQnRxbDZtNHZGVXd6STNFejRBYTE0T191XzF3dTNWcmc4UmwyUG5Rd0dwNWh5T3Zvb2FTd0IyNm1KTXVhMnpKUlJlUXZRY3B3S0IwRExRV3l6UXVPMlctUGRoV1FPS2dOR096d3M5U3huQVRyZ2sySE1PRGtfU0xmei1ZNA?oc=5",
       "vendor": "OpenAI"
     },
-    "cb5c35cc9ab3813a4c9cd7c4": {
-      "category": "취약점·패치",
-      "first_seen_at": "2026-09-28T03:16:05.893924+00:00",
-      "published_at": null,
-      "severity": 1,
-      "source": "Anthropic Threat Intelligence",
-      "title": "Anthropic Threat Intelligence: threat intelligence",
-      "url": "https://www.anthropic.com/threat-intelligence",
-      "vendor": "Anthropic"
-    },
     "cc187387cb8a9991f59d2d25": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-28T12:14:08.462570+00:00",
@@ -1584,5 +1564,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-02T12:14:59+09:00"
+  "updated_at_kst": "2026-11-02T12:57:35+09:00"
 }
