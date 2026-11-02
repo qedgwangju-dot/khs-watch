@@ -459,12 +459,52 @@ def technical_positioning(rows, repo, y30):
     return "기술·포지셔닝 혼조", f"30년물 {y30:.2f}% / 숏 확대 {expansions}개·축소 {reductions}개 / Repo {repo['state']}"
 
 
+def gross_position_driver(row):
+    """Distinguish actual gross short reductions from net improvement by new longs.
+
+    CFTC TFF Leveraged Funds include basis trades, so gross movements are
+    descriptive observations rather than proof of CTA trading.
+    """
+    required = ("long_change", "short_change", "net_change")
+    if any(k not in row for k in required):
+        raise ValueError("gross long/short changes unavailable")
+    try:
+        long_delta = int(row["long_change"])
+        short_delta = int(row["short_change"])
+        net_delta = int(row["net_change"])
+    except (ValueError, TypeError, OverflowError) as exc:
+        raise ValueError("gross long/short changes invalid") from exc
+    if long_delta - short_delta != net_delta:
+        raise ValueError("gross long/short and net changes inconsistent")
+    if short_delta < 0:
+        if long_delta > 0:
+            if abs(short_delta) >= long_delta:
+                return "숏 축소 우세·롱 증가 동반"
+            return "롱 증가 우세·숏 축소 동반"
+        if abs(short_delta) > max(-long_delta, 0):
+            return "숏 축소 우세(신규 롱 증가 아님)"
+        return "롱 축소 우세·숏 축소 동반"
+    if short_delta > 0:
+        if long_delta > short_delta:
+            return "롱 증가 중심(숏 축소 아님)"
+        return "숏 증가가 롱 증가 앞섬"
+    if long_delta > 0:
+        return "롱 증가 중심(숏 축소 아님)"
+    if long_delta < 0:
+        return "롱 축소(숏 변화 없음)"
+    return "총롱·총숏 변화 없음"
+
+
 def position_note(row):
+    if all(k in row for k in ("long_change", "short_change", "net_change")):
+        return gross_position_driver(row)
+    # Older diagnostic fixtures and non-gross snapshots keep their
+    # conservative net-position wording; do not call this evidence of cover.
     cur, ch = row["net"], row["net_change"]
     if cur < 0:
-        return "숏 축소" if ch > 0 else "숏 확대" if ch < 0 else "변화 없음"
+        return "순숏 축소(원인 미확인)" if ch > 0 else "순숏 확대" if ch < 0 else "변화 없음"
     if cur > 0:
-        return "롱 확대" if ch > 0 else "롱 축소" if ch < 0 else "변화 없음"
+        return "순롱 확대" if ch > 0 else "순롱 축소" if ch < 0 else "변화 없음"
     return "중립"
 
 
@@ -546,7 +586,23 @@ def send_telegram(text):
         result = json.loads(response.read().decode("utf-8"))
     if not result.get("ok"):
         raise RuntimeError("Telegram send failed")
-    return (result.get("result") or {}).get("message_id")
+    delivered = result.get("result") or {}
+    message_id = delivered.get("message_id")
+    receipt_chat = delivered.get("chat") or {}
+    returned_chat_id = receipt_chat.get("id")
+    if type(message_id) is not int or message_id <= 0:
+        raise RuntimeError("Telegram send result missing valid message_id")
+    if type(returned_chat_id) is not int:
+        raise RuntimeError("Telegram send result missing valid chat.id")
+    if chat_id.lstrip("-").isdigit():
+        matched = str(returned_chat_id) == chat_id
+    elif chat_id.startswith("@"):
+        matched = str(receipt_chat.get("username") or "").lower() == chat_id[1:].lower()
+    else:
+        matched = False
+    if not matched:
+        raise RuntimeError("Telegram send result chat does not match configured recipient")
+    return message_id
 
 
 def main():
