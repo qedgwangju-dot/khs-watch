@@ -70,7 +70,7 @@ KNOWN_BASELINE_KEYS=(
 )
 NOISE=re.compile(r"lawsuit|class action|option volume|price target|buy rating|stock split|earnings preview|crypto|celebrity|trump coin|meme stock",re.I)
 TRUSTED=(
- "Reuters","Financial Times","The Wall Street Journal","Bloomberg",
+ "Reuters","Financial Times","The Wall Street Journal","Bloomberg","The Washington Post",
  "The Verge","SpaceNews","Via Satellite","AP News","Associated Press",
  "CNBC","Barron's","MarketWatch","Fierce Network","Fierce Wireless",
  "IEEE","TechCrunch","Reuters","연합뉴스","전자신문","한국경제","서울경제",
@@ -159,6 +159,7 @@ TOPICS={
   "queries":(
     '"Amazon Leo" "Globalstar" (FCC OR acquisition OR spectrum OR closes) when:14d',
     '"Amazon" "Globalstar" ("25 MHz" OR "transfer approval" OR "closing") when:14d',
+    '아마존 글로벌스타 FCC (승인 OR 인수 OR 주파수) when:14d',
   ),
   "meaning":"글로벌스타 인수 관련 FCC 면허이전 승인과 거래 종결·위성직접통신 상용화를 분리합니다.",
   "risk":"다른 국가 승인·거래 종결 조건·시스템 허가·위성 발사 미완료",
@@ -249,7 +250,8 @@ def distinct_primary_organizations(names:list[str])->set[str]:
  return groups
 
 def rss(query:str)->list[dict]:
- params=urlencode({"q":query,"hl":"en","gl":"US","ceid":"US:en"})
+ locale={"hl":"ko","gl":"KR","ceid":"KR:ko"} if re.search(r"[가-힣]",query) else {"hl":"en","gl":"US","ceid":"US:en"}
+ params=urlencode({"q":query,**locale})
  root=ET.fromstring(http_read("https://news.google.com/rss/search?"+params))
  rows=[]
  for e in root.findall(".//item"):
@@ -342,11 +344,11 @@ def stage(topic:str,title:str)->str|None:
   if re.search(r"talks?|discuss|negotia|consider|weigh|seek|could buy|access|purchase|acquisition",t):return "boost_talks"
   return None
  if topic=="amazon_leo":
-  if "amazon" not in t or "globalstar" not in t:return None
-  if re.search(r"acquisition complete|acquisition closes|deal closes|closed transaction|merger complete",t):return "acquisition_close"
-  if re.search(r"fcc|federal communications commission|regulator",t) and re.search(r"approv|clears?|clearance|authoriz|consent|grants?",t):
+  if not re.search(r"amazon|아마존",t) or not re.search(r"globalstar|글로벌스타",t):return None
+  if re.search(r"acquisition complete|acquisition closes|deal closes|closed transaction|merger complete|인수 완료|인수 종결",t):return "acquisition_close"
+  if re.search(r"fcc|federal communications commission|regulator|연방통신위원회",t) and re.search(r"approv|clears?|clearance|authoriz|consent|grants?|승인",t):
    return "transfer_approved"
-  if re.search(r"agrees to acquire|acquisition agreement|purchase agreement",t):return "acquisition_agreement"
+  if re.search(r"agrees to acquire|acquisition agreement|purchase agreement|인수 계약 체결",t):return "acquisition_agreement"
   return None
 
 def keywords(title:str)->set[str]:
@@ -677,6 +679,8 @@ def test()->int:
  assert stage("mobile_entry","SpaceX in talks to buy Boost Mobile or access its network")=="boost_talks"
  assert stage("mobile_entry","SpaceX signs a definitive agreement to acquire Boost Mobile")=="boost_agreement"
  assert stage("amazon_leo","FCC approves Amazon Leo acquisition of Globalstar")=="transfer_approved"
+ assert stage("amazon_leo","美FCC 아마존 글로벌스타 인수 관련 면허 이전 승인")=="transfer_approved"
+ assert independent_publisher({"publisher":"The Washington Post"})
  assert event_id("ground","site_talks","SpaceX access 80,000 cell sites")=="ground:spacex_80000_sites:site_talks"
  assert event_id("mobile_entry","boost_talks","SpaceX in talks to buy Boost Mobile")=="mobile:starlink_boost:boost_talks"
  assert event_id("mobile_entry","boost_agreement","SpaceX signs Boost Mobile acquisition agreement")!=event_id("mobile_entry","boost_talks","SpaceX in talks to buy Boost Mobile")
