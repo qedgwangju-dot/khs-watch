@@ -1364,3 +1364,114 @@ def test_institution_model_and_verified_cftc_both_required(monkeypatch):
     monkeypatch.setattr(equity.watcher, "fetch", lambda url: (_ for _ in ()).throw(OSError("unavailable")))
     assert equity._cta_model_crosscheck(no_model, date(2026, 11, 1)) is False
     assert not equity._cta_model_crosscheck({"due": False}, date(2026, 11, 1))
+
+
+def test_monthly_treasury_calendar_alignment_and_no_forward_filling():
+    from datetime import date
+    latest = date(2026, 10, 30)
+    values = {
+        date(2026, 10, 30): 4.94,
+        date(2026, 9, 30): 5.12,
+        date(2026, 8, 31): 4.70,  # after Aug 30 target: must be ignored
+        date(2026, 8, 28): 4.85,
+        date(2026, 7, 30): 4.65,
+    }
+    observed = base_watch.monthly_comparisons(latest, 4.94, values)
+    assert [observed[x]["date"] for x in ("1", "2", "3")] == [
+        "2026-09-30", "2026-08-28", "2026-07-30"
+    ]
+    assert round(observed["1"]["change"] * 100) == -18
+    assert round(observed["2"]["change"] * 100) == 9
+    assert base_watch.monthly_comparisons(latest, 4.99, values) == {}
+    assert "1" not in base_watch.monthly_comparisons(latest, 4.94, {
+        date(2026, 10, 30): 4.94, date(2026, 9, 10): 5.15
+    })
+
+
+def test_verified_cftc_monthly_trend_dates_and_consistency(monkeypatch):
+    source_rows = []
+    for period, value in (
+        ("2026-10-27", -2_227_275),
+        ("2026-09-22", -2_050_000),
+        ("2026-08-25", -1_960_000),
+        ("2026-07-21", -1_850_000),
+    ):
+        source_rows.append({
+            "cftc_contract_market_code": "043602",
+            "report_date_as_yyyy_mm_dd": period + "T00:00:00.000",
+            "lev_money_positions_long": "500000",
+            "lev_money_positions_short": str(500000 - value),
+        })
+    monkeypatch.setattr(equity.watcher, "fetch_json", lambda url: source_rows)
+    snapshot = {"cftc": {
+        "report_date": "October 27, 2026",
+        "markets": {"10Y": {"leveraged_net": -2_227_275}},
+    }}
+    values = equity._official_monthly_cftc_trends(snapshot)["10Y"]
+    assert values["1"]["date"] == "2026-09-22"
+    assert values["2"]["date"] == "2026-08-25"
+    assert values["3"]["date"] == "2026-07-21"
+    assert values["1"]["change"] == -177_275
+    snapshot["cftc"]["markets"]["10Y"]["leveraged_net"] = -1_000_000
+    assert "10Y" not in equity._official_monthly_cftc_trends(snapshot)
+
+
+def test_historical_comparison_renderer_preserves_source_and_direction():
+    snap = _snapshot(z20=-1.6)
+    snap["yield10"].update({
+        "yield": 4.94, "date": "2026-10-30",
+        "monthly_comparisons": {
+            "1": {"date": "2026-09-30", "value": 5.12, "change": -0.18},
+            "2": {"date": "2026-08-28", "value": 4.85, "change": 0.09},
+            "3": {"date": "2026-07-30", "value": 4.65, "change": 0.29},
+        },
+    })
+    snap["cftc"]["report_date"] = "October 27, 2026"
+    snap["monthly_trends"] = {
+        "cftc": {"10Y": {
+            "1": {"date": "2026-09-22", "value": -2_050_000, "change": -177_275},
+            "2": {"date": "2026-08-25", "value": -1_960_000, "change": -267_275},
+            "3": {"date": "2026-07-21", "value": -1_850_000, "change": -377_275},
+        }},
+        "repo": {"SOFR": {
+            "1": {"date": "2026-09-30", "value": 3.75, "change": 0.19},
+            "2": {"date": "2026-08-28", "value": 3.70, "change": 0.24},
+            "3": {"date": "2026-07-30", "value": 3.60, "change": 0.34},
+        }},
+        "futures": {"ZN": {
+            "date": "2026-10-30", "current": 112.0,
+            "comparisons": {"1": {"date": "2026-09-30", "value": 110.0, "change": 2.0}},
+        }},
+    }
+    snap["repo"] = {"SOFR": {"date": "2026-10-29", "rate": 3.94}}
+    text = equity._monthly_trend_block(snap, compact=True)
+    assert "1개월(09-30) 5.120% / -18.0bp↓" in text
+    assert "2개월(08-28) 4.850% / +9.0bp↑" in text
+    assert "1개월(09-22) -2,050,000계약 / Δ-177,275↓" in text
+    assert "SOFR(2026-10-29)" in text
+    assert "ZN 연속선물(2026-10-30" in text
+    assert "만기교체 영향 가능" in text
+    assert "3개월 확인 불가" in text
+
+
+def test_monthly_trend_compact_report_is_sendable_without_fake_history(monkeypatch):
+    raw = _raw(
+        report_date="October 20, 2026", history_end="2026-10-20",
+        trade_date="2026-10-27"
+    )
+    _patch_common(monkeypatch, raw)
+    monkeypatch.setattr(equity, "_latest_completed_us_session_date",
+                        lambda: date(2026, 10, 27))
+    snap = _snapshot(z20=-1.61)
+    snap["yield10"].update({
+        "yield": 4.99, "date": "2026-10-27", "monthly_comparisons": {},
+    })
+    snap["repo"] = {"SOFR": {"date": "2026-10-26", "rate": 3.93}}
+    title, body = equity._compact_scheduled_report(
+        snap, {}, ["월요일 정기점검"], 1327.75, "2026-10-27 ECB 기준"
+    )
+    assert "1·2·3개월 추세" in body
+    assert "과거" not in body or "확인 불가" in body
+    assert "CFTC 10Y" in body
+    assert "확인 불가" in body
+    assert len(title) + 2 + len(body) <= 4096
