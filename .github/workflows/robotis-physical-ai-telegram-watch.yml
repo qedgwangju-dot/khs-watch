@@ -21,7 +21,8 @@ permissions:
 
 concurrency:
   group: robotis-physical-ai-telegram-watch
-  cancel-in-progress: true
+  # Do not interrupt a Telegram send before its seen state is committed.
+  cancel-in-progress: false
 
 jobs:
   monitor:
