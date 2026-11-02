@@ -181,8 +181,40 @@ class ETFShortInterestTests(unittest.TestCase):
     def test_publication_date_and_stale_gate(self):
         with self.assertRaisesRegex(RuntimeError, "not current"):
             etf.collect(now=dt.date(2026, 10, 25), getter=getter())
-        with self.assertRaisesRegex(RuntimeError, "not current"):
+        with self.assertRaisesRegex(RuntimeError, "publication lag"):
             etf.collect(now=dt.date(2026, 11, 12), getter=getter())
+
+    def test_valid_latest_publication_remains_current_after_twelve_days(self):
+        # 2026-10-15 settles / 10-26 release; next release is 11-10.
+        data = etf.collect(now=dt.date(2026, 11, 9), getter=getter())
+        self.assertEqual(data["settlement"], "2026-10-15")
+        self.assertEqual(data["publication_age_days"], 14)
+        self.assertTrue(data["signal"])
+
+    def test_finra_calendar_year_tables_are_not_relabeled(self):
+        html = """<h2>2025 Short Interest Reporting Dates</h2>
+        <table><tr><th>Settlement Date</th><th>Due Date</th><th>Publication Date</th></tr>
+        <tr><td>October 15 (Wednesday)</td><td>October 17</td><td>October 24</td></tr></table>
+        <h2>2026 Short Interest Reporting Dates</h2>
+        <table><tr><th>Settlement Date</th><th>Due Date</th><th>Publication Date</th></tr>
+        <tr><td>October 15 (Thursday)</td><td>October 19</td><td>October 26</td></tr></table>"""
+        self.assertEqual(etf.read_calendar(html, 2025), {
+            "2025-10-15": "2025-10-24"
+        })
+        self.assertEqual(etf.read_calendar(html, 2026), {
+            "2026-10-15": "2026-10-26"
+        })
+
+    def test_verified_prior_december_release_survives_new_year(self):
+        dates = etf.verified_calendar(dt.date(2027, 1, 12), getter=lambda _url: "")
+        self.assertEqual(dates.get("2026-12-31"), "2027-01-12")
+
+    def test_us_positioning_code_audits_do_not_block_production(self):
+        workflow = (ROOT / ".github/workflows/us-positioning-telegram-watch.yml").read_text()
+        self.assertIn("github.event_name == 'push' && 'code-audit' || 'production'", workflow)
+        self.assertIn("cancel-in-progress: false", workflow)
+        self.assertIn("github.event_name != 'push'", workflow)
+        self.assertIn("--validate-only", workflow)
 
     def test_no_alert_from_ordinary_same_direction_etf_shift(self):
         data = etf.collect(
