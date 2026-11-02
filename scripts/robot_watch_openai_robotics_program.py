@@ -16,10 +16,19 @@ Does not alter Telegram, Actions, recipients, cron or historical seen states.
 from __future__ import annotations
 
 import datetime as dt
+import email.utils
 import hashlib
+import html
 import re
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
 
 RECOVERY_QUERY = "DIRECT_OPENAI_CHEEKY_PINT_ROBOTICS_DATACENTER_OCT29_2026"
+OPENAI_NEWS_FEED_QUERY = "DIRECT_OPENAI_NEWS_ROBOTICS_OFFICIAL_RSS"
+CHEEKY_PINT_FEED_QUERY = "DIRECT_CHEEKY_PINT_OPENAI_ROBOTICS_ORIGINAL_RSS"
+OPENAI_NEWS_FEED = "https://openai.com/news/rss.xml"
+CHEEKY_PINT_FEED = "https://feeds.transistor.fm/cheeky-pint-with-john-collison"
 RECOVERY_END_KST = dt.date(2026, 11, 6)
 RECOVERY_KEY = hashlib.sha256(
     b"openai|robotics-infrastructure|cheeky-pint-2026-10-29|ceo-program-direction"
@@ -37,6 +46,7 @@ CATEGORY_STAGES = {
 COMPANY = {"OpenAI","OpenAI Newsroom","OpenAI 공식","Sam Altman"}
 TRUSTED = {
     "Reuters","Bloomberg","Financial Times","The Next Web","CNBC",
+    "Cheeky Pint",
     "TechCrunch","연합뉴스","전자신문","머니투데이","ZDNet Korea",
 }
 ORIGINAL_INTERVIEW = {
@@ -158,6 +168,43 @@ def achieved(item: dict) -> str:
             return stage
     return ""
 
+def _read_publisher_rss(url: str, source: str) -> list[dict]:
+    """Fetch primary RSS; error is surfaced to base watcher status, not a silent no-op."""
+    request = urllib.request.Request(
+        url, headers={"User-Agent":"Mozilla/5.0 (compatible; PhysicalAIRobotWatch/1.0)"}
+    )
+    with urllib.request.urlopen(request, timeout=18) as response:
+        data = response.read(3_000_000)
+    root = ET.fromstring(data)
+    result=[]
+    for item in root.findall("./channel/item")[:70]:
+        title=html.unescape(item.findtext("title") or "").strip()
+        description=html.unescape(re.sub(
+            r"<[^>]*>"," ",item.findtext("description") or ""
+        )).strip()
+        # RSS descriptions frequently carry information missing from headlines.
+        text=" ".join((title,description,source))
+        if not match(text):
+            continue
+        link=(item.findtext("link") or "").strip()
+        domain=(urllib.parse.urlparse(link).hostname or "").lower()
+        allowed=(domain=="openai.com" or domain.endswith(".openai.com")) if source=="OpenAI" else (
+            domain in {"cheekypint.transistor.fm","share.transistor.fm"}
+        )
+        if not link.startswith("https://") or not allowed:
+            continue
+        when=item.findtext("pubDate") or ""
+        published=None
+        if when:
+            try:
+                published=email.utils.parsedate_to_datetime(when).astimezone(dt.timezone.utc).isoformat()
+            except (TypeError, ValueError, OverflowError):
+                pass
+        result.append({"title":title,"description":description[:2400],
+                       "link":link,"published":published,"source":source,
+                       "primary_feed":"OpenAI News" if source=="OpenAI" else "Cheeky Pint"})
+    return result
+
 def install(base) -> None:
     previous={name:getattr(base,name) for name in (
         "query_news","topic_group","score","key","category","meaning",
@@ -165,6 +212,10 @@ def install(base) -> None:
     )}
 
     def query_news(q):
+        if q == OPENAI_NEWS_FEED_QUERY:
+            return _read_publisher_rss(OPENAI_NEWS_FEED,"OpenAI")
+        if q == CHEEKY_PINT_FEED_QUERY:
+            return _read_publisher_rss(CHEEKY_PINT_FEED,"Cheeky Pint")
         if q == RECOVERY_QUERY:
             if base.NOW.astimezone(base.KST).date() > RECOVERY_END_KST:
                 return []
@@ -284,6 +335,6 @@ def install(base) -> None:
     base.verification=verification
     base.tag_for=tag
     base.select_diverse=select
-    for query in (RECOVERY_QUERY,*QUERIES):
+    for query in (RECOVERY_QUERY,OPENAI_NEWS_FEED_QUERY,CHEEKY_PINT_FEED_QUERY,*QUERIES):
         if query not in base.QUERIES:
             base.QUERIES.append(query)
