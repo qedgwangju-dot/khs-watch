@@ -99,6 +99,8 @@ jobs:
 
       - name: Run alert-quality regression guards
         run: |
+          python -m py_compile scripts/robot_watch_openai_robotics_program.py scripts/test_robot_watch_openai_program.py
+          python scripts/test_robot_watch_openai_program.py
           python scripts/physical_ai_watch_regression_check.py
           python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py'
 
