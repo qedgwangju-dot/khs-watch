@@ -3,6 +3,8 @@ name: LNG supply crisis Telegram alert
 on:
   schedule:
     - cron: "47 * * * *"
+    # Backup for delayed or dropped GitHub scheduled runs; original hourly time is unchanged.
+    - cron: "17 */3 * * *"
   workflow_dispatch:
     inputs:
       telegram_test:
