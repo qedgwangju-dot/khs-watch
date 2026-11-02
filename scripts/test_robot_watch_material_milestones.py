@@ -95,6 +95,23 @@ def run():
  assert classify(b,unrelated)[0]=="old-category"
  assert classify(b,unrelated)[1]==0
 
+ # Actual delivered message 320 contained this previously announced Q3
+ # earning result. Syndicated rewrites must retain its existing seen key,
+ # without suppressing official company corrections/new contracts.
+ sdi_repeat=item(
+  '"ESS 수요 개선" 삼성SDI, 3분기 영업익 4078억… 전년比 20.9%↑',
+  "Samsung SDI prior 2026 Q3 earnings report reprinted.",
+  "더퍼블릭","2026-10-29T07:02:00+00:00",
+ )
+ assert classify(b,sdi_repeat)[1]==0
+ assert classify(b,sdi_repeat)[2]==mod.SDI_Q3_EARNINGS_DELIVERED_KEY
+ sdi_contract=item(
+  '삼성SDI, 3분기 영업익 4078억 외 신규 공급계약 체결',
+  "New binding ESS customer order announced separately.",
+  "연합뉴스",
+ )
+ assert classify(b,sdi_contract)[2]!=mod.SDI_Q3_EARNINGS_DELIVERED_KEY
+
  b.NOW=dt.datetime(2026,11,7,0,0,tzinfo=dt.timezone.utc)
  assert b.query_news(mod.AGIBOT_ONESHOT)==[]
  assert classify(b,agi_real)[1]>=11
