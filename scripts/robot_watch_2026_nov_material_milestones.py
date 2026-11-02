@@ -66,6 +66,29 @@ OFFICIAL = {
  QUALCOMM_GROUP:{"Qualcomm","Qualcomm Newsroom","Qualcomm Technologies","Figure","NEURA Robotics"},
  HYUNDAI_GROUP:{"현대자동차","Hyundai Motor Group","Hyundai Robotics Lab","현대차그룹","현대자동차그룹"},
 }
+SDI_Q3_EARNINGS_DELIVERED_KEY = "bb59081c6a94edeb29aa9ee272915790bfc00b0a819d0f4d4e441c61b58f2968"
+# Logged in successfully delivered Telegram message_id=320 / run=41376035560.
+# Do not present the identical 2026-Q3 operating-profit article as new news.
+SDI_Q3_TITLE = re.compile(
+ r"(?:삼성SDI|Samsung\s*SDI).{0,70}"
+ r"(?:3\s*분기|3Q\s*26|3Q2026|third\s*quarter).{0,60}"
+ r"(?:영업익|영업이익|operating\s*profit).{0,45}"
+ r"4[,]?078\s*(?:억|억원|백만\s*원)?", re.I
+)
+SDI_NEW_STAGE = re.compile(
+ r"정정\s*공시|실적\s*정정|신규\s*수주|공급계약\s*체결|"
+ r"구매\s*발주서\s*확정|실제\s*초도\s*출하|신규\s*공장\s*가동", re.I
+)
+
+def _sdi_q3_repeat(item):
+ title=str(item.get("title") or "")
+ source=str(item.get("source") or "").strip()
+ return bool(
+     source not in {"삼성SDI","Samsung SDI","DART","KIND"}
+     and SDI_Q3_TITLE.search(title)
+     and not SDI_NEW_STAGE.search(title)
+ )
+
 REJECT = re.compile(
  r"\b(?:not|no|denied|unverified|unconfirmed|would|could|may|will|plans?|"
  r"planning|expected|aims?|targets?|scheduled)\b|"
@@ -118,11 +141,13 @@ def install(base) -> None:
  def group(text):
   return identity(text) or prev["topic_group"](text)
  def score(row):
+  if _sdi_q3_repeat(row):return 0
   if row.get("official_release_oct29"):return 47
   g=identity(" ".join(str(row.get(k) or "") for k in ("title","description","source")))
   if not g:return prev["score"](row)
   return 38 if achieved(row,g) else 0
  def key(row):
+  if _sdi_q3_repeat(row):return SDI_Q3_EARNINGS_DELIVERED_KEY
   if row.get("official_release_oct29"):
    return hashlib.sha256(b"agibot|2026-10-29|Worken-AHA3-GO3-G2Max-LinkU|official-announcement").hexdigest()
   g=identity(" ".join(str(row.get(k) or "") for k in ("title","description","source")))
