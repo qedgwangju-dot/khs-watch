@@ -1569,7 +1569,15 @@ def _monthly_trend_block(snapshot: dict, *, compact: bool = False) -> str:
         if series or name == "SOFR":
             d = ((snapshot.get("repo") or {}).get(name) or {}).get("date") or "기준일 불명"
             lines.append("• " + name + "(" + str(d) + "): " + legs(series, "repo"))
-    lines.append("• ZN·ZB·UB 선물 1·2·3개월: 동일 월물·연속물 과거 가격 검증 전 (일일 등락률 대체 금지)")
+    futures = monthly.get("futures") or {}
+    for symbol in ("ZN", "ZB", "UB", "NQ"):
+        item = futures.get(symbol) or {}
+        if item:
+            lines.append("• " + symbol + " 연속선물(" + item["date"] +
+                         ", 참고값 " + f"{float(item['current']):.2f}" +
+                         "): " + legs(item.get("comparisons") or {}, "futures"))
+        elif symbol in ("ZN", "NQ") or not compact:
+            lines.append("• " + symbol + " 연속선물: 1·2·3개월 비교자료 확인 불가")
     lines.append("※ 달력 기준 1·2·3개월 전, 휴장·주간자료는 해당일 이전 최근 발표 관측값. +계약은 순롱 방향, -계약은 순숏 방향이며 CTA 거래 자체는 아님.")
     return "\n".join(lines) + "\n"
 
