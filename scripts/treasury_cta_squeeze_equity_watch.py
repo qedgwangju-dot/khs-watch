@@ -2083,6 +2083,7 @@ def scheduled_main() -> int:
             "• 최근 기관 추세추종 모델의 광범위한 국채 매도 신호와 CFTC 레버리지펀드 순매도가 각각 확인됐습니다. 실제 CTA 거래·숏 스퀴즈는 별도 검증 대상입니다.",
             "",
             _cta_breadth_block(breadth),
+            _monthly_trend_block(snapshot, compact=True).rstrip(),
             "",
             f"• 채권→Nasdaq 이중 숏 스퀴즈: {cross.get('label')}",
         ])
