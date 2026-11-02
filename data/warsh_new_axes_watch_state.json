@@ -17,10 +17,10 @@
     "url": "https://www.federalreserve.gov/releases/h8/current/"
   },
   "sloos": {
-    "key": "202607",
-    "regime": "신용 완화",
-    "url": "https://www.federalreserve.gov/data/sloos/sloos-202607.htm",
-    "fingerprint": "04196b8982422ab8960cb71e8b90e5e119218c10edf984641759768f22f0afde"
+    "key": "202610",
+    "regime": "혼합/중립",
+    "url": "https://www.federalreserve.gov/data/sloos/sloos-202610.htm",
+    "fingerprint": "aa44e5936a049d5de7baae0c27dc158a97595d0bd6f04b291789bc8a8c7c95bb"
   },
   "productivity": {
     "source_kind": "BLS",
@@ -52,5 +52,5 @@
     "regime": "생산성 개선·단위노동비용 안정",
     "url": "https://www.bls.gov/news.release/prod2.htm"
   },
-  "updated_at_utc": "2026-10-30T20:19:13.637081+00:00"
+  "updated_at_utc": "2026-11-02T19:51:47.840151+00:00"
 }
