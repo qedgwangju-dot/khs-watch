@@ -32,6 +32,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Refresh main and delivered-state before event detection
+        # Queued push runs may reference a snapshot older than the previous send.
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+          git rev-parse --short HEAD
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
