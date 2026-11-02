@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - "scripts/treasury_30y_jpm_threshold_watch.py"
+      # The scheduled job imports/tests Treasury positioning as a dependency.
+      # Validate changes to that shared module before the next scheduled run.
+      - "scripts/treasury_positioning_watch.py"
+      - "tests/test_treasury_positioning_watch.py"
       - "tests/test_treasury_30y_jpm_levels.py"
       - "tests/test_treasury_daily_report_integrity.py"
       - ".github/workflows/treasury-30y-jpm-crossing.yml"
