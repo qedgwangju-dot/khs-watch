@@ -43,6 +43,8 @@ OFFICIAL_DOMAINS = (
     "hyundai-rotem.co.kr",
     "nasa.gov",
     "sec.gov",
+    "defense.gov",
+    "war.gov",
 )
 
 TRUSTED_SOURCES = {
@@ -151,6 +153,21 @@ CATEGORIES = (
         meaning="목표주가보다 Flight 15와 재사용·궤도 컴퓨팅 진전이 실제 이익성장률과 멀티플 확대 가정을 검증하는지 봅니다.",
         failure="재사용 회전시간 또는 AI·전력 인프라 수익화가 늦으면 높은 성장 가정이 먼저 훼손됩니다.",
         indicator="Flight 15 시험목표 달성, Starship 재비행 간격, 궤도 컴퓨팅 시제품 일정, 증권사 이익 추정치 변경",
+    ),
+    Category(
+        key="golden_dome",
+        tag="[선행경보·협의]",
+        name="미국 Golden Dome 구글 데이터·통신 보안",
+        queries=(
+            '"Golden Dome" (Google OR Alphabet OR Aalyria) (talks OR contract OR data security OR cybersecurity) when:7d',
+            '"Google" "Golden Dome" (consortium OR Pentagon OR contract OR cybersecurity) when:7d',
+            'site:war.gov "Golden Dome" (Google OR Aalyria OR cybersecurity) when:14d',
+        ),
+        relevance=re.compile(r"(Golden\s*Dome|골든돔).*(Google|Alphabet|Aalyria|구글|알파벳|알리리아)|"
+                             r"(Google|Alphabet|Aalyria|구글|알파벳|알리리아).*(Golden\s*Dome|골든돔)", re.I),
+        meaning="데이터·통신 보안 협의와 공식 지휘통제 계약을 분리합니다. 미 국방 예산 전체가 구글 확정 매출은 아닙니다.",
+        failure="협력체 최종 구성·조달 승인·보안 인증·통신 두절 대비 성능 검증이 지연되면 계약과 매출 시점도 밀립니다.",
+        indicator="미국 국방부 조달 공고·공식 수주기업·구글/알리리아 계약발표·사업별 계약금액·검수",
     ),
     Category(
         key="launch_slots",
@@ -346,6 +363,8 @@ def signal_score(category: Category, item: dict) -> int:
         score += 3
     if any(p.search(text) for p in NUMBER_PATTERNS):
         score += 1
+    if category.key == "golden_dome" and re.search(r"talks|weighs|discuss|negotia|contract|Google|Alphabet|Aalyria", text, re.I):
+        score += 2
     return score
 
 
@@ -542,6 +561,8 @@ def render_item(category: Category, item: dict, rate: float | None) -> str:
     when = pub.astimezone(KST).strftime("%Y-%m-%d %H:%M KST") if pub else "게시시각 확인 불가"
     official = source_is_official(item)
     verification = "공식자료" if official else "복수 신뢰보도 교차확인"
+    if category.key == "golden_dome" and not official:
+        verification = "블룸버그 최초 보도 재인용 가능·국방부/구글 확정계약 미확인"
     numbers = extract_numbers(item_text(item))
     krw = usd_to_krw_note(item_text(item), rate)
     lines = [
@@ -727,7 +748,8 @@ def main() -> int:
             pub = dt.datetime.fromisoformat(item["published"]) if item.get("published") else None
             # RSS articles older than 48h are not newly confirmed events.
             # Official backfill is handled by separately verified notice IDs.
-            if not pub or not -dt.timedelta(minutes=20) <= NOW - pub <= dt.timedelta(hours=48):
+            lookback=dt.timedelta(days=7) if category.key=="golden_dome" else dt.timedelta(hours=48)
+            if not pub or not -dt.timedelta(minutes=20) <= NOW - pub <= lookback:
                 continue
             item["_score"] = score
             item["_id"] = item_id(category.key, item)
@@ -829,6 +851,13 @@ def self_test() -> int:
     assert "falcon_transition" in [x.key for x in CATEGORIES]
     assert "korea_orbital_ai" in [x.key for x in CATEGORIES]
     assert "space_investment" in [x.key for x in CATEGORIES]
+    assert "golden_dome" in [x.key for x in CATEGORIES]
+    golden=next(x for x in CATEGORIES if x.key=="golden_dome")
+    sample={"title":"Alphabet Google in talks to join Golden Dome cybersecurity",
+            "description":"","source":"Bloomberg","source_url":"https://www.bloomberg.com",
+            "published":NOW.isoformat(),"link":"https://www.bloomberg.com/example"}
+    assert signal_score(golden,sample)>=8
+    assert "확정계약 미확인" in render_item(golden,sample,None)
     assert "2028년" in next(x for x in CATEGORIES if x.key == "korea_orbital_ai").meaning
     rumor = {"title": "SpaceX will retire Dragon and Falcon 9 immediately",
              "description": "", "source": "Reuters", "source_url": "https://reuters.com"}
