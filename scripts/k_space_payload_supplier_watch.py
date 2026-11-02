@@ -256,7 +256,7 @@ def classify(group:str,title:str)->str|None:
   if re.search(r"서비스\s*개시|상용화\s*시작|commercial\s*operation",s,re.I):
    return "contec_ground:optical_ground:commercial"
   if re.search(r"성공|실증|수신|검증|test|demonstrat|downlink",s,re.I):
-   return "contec_ground:optical_ground:demo:2026-10" if re.search(r"2026|10월|2\.5\s*gbps|33\s*gb|33기가",s,re.I) else "contec_ground:optical_ground:demo:unspecified"
+   return "contec_ground:optical_ground:demo"
  return None
 
 def signature(group:str,event:str,item:dict)->str:
@@ -269,6 +269,11 @@ def independent_pair(group:str,event:str,a:dict,b:dict)->bool:
  if a["source"].casefold()==b["source"].casefold():return False
  if abs((a["published"]-b["published"]).total_seconds())>4*86400:return False
  # Both report the same named buyer, stage, and mission; not a generic "space AI"
+ if group=="contec_ground" and event.startswith("contec_ground:optical_ground:demo:"):
+  month=event.rsplit(":",1)[-1]
+  return (a["published"].strftime("%Y-%m")==month and b["published"].strftime("%Y-%m")==month
+          and classify(group,a["title"])=="contec_ground:optical_ground:demo"
+          and classify(group,b["title"])=="contec_ground:optical_ground:demo")
  return classify(group,a["title"])==event and classify(group,b["title"])==event
 
 def korean_summary(group:str,event:str)->tuple[str,str,str]:
@@ -343,6 +348,8 @@ def collect(rss_fetch=rss):
      if elapsed>lookback or elapsed < -dt.timedelta(minutes=20):continue
      event=classify(group,row["title"])
      if not event:continue
+     if group=="contec_ground" and event=="contec_ground:optical_ground:demo":
+      event+=":"+row["published"].strftime("%Y-%m")
      fp=row["source"].casefold()+"|"+row["title"].casefold()
      candidates[group][fp]=(event,row)
    except Exception as e:
@@ -410,10 +417,14 @@ def self_test()->int:
  assert classify("kencoa_supplier","켄코아 SpaceX 신규 부품 공급 계약 체결")=="kencoa_supplier:spacex:new_contract"
  assert classify("kencoa_supplier","Kencoa signs new SpaceX rocket parts contract")=="kencoa_supplier:spacex:new_contract"
  assert "kencoa_supplier:spacex:new_contract" not in KEY_BASELINE
- assert classify("contec_ground","컨텍 2026년 10월 우주 광통신 데이터 33GB 수신 실증 성공")=="contec_ground:optical_ground:demo:2026-10"
+ assert classify("contec_ground","컨텍 2026년 10월 우주 광통신 데이터 33GB 수신 실증 성공")=="contec_ground:optical_ground:demo"
+ assert classify("contec_ground","컨텍 우주 광통신 초고속 데이터 수신 실증 성공")=="contec_ground:optical_ground:demo"
  assert classify("contec_ground","컨텍 optical ground station 신규 공급 계약 체결")=="contec_ground:optical_ground:new_contract"
  assert classify("contec_ground","컨텍 optical ground station 상용화 시작")=="contec_ground:optical_ground:commercial"
  assert "contec_ground:optical_ground:demo:2026-10" not in KEY_BASELINE
+ assert independent_pair("contec_ground","contec_ground:optical_ground:demo:"+NOW.strftime("%Y-%m"),
+  {"source":"연합뉴스","published":NOW,"title":"컨텍 광통신 실증 성공","url":"https://example.com/a"},
+  {"source":"한국경제TV","published":NOW,"title":"컨텍 우주 광통신 데이터 수신 성공","url":"https://example.com/b"})
  assert set(KEY_BASELINE).isdisjoint({"kencoa_roadster:potential_supply"})
  assert len(BASELINE_LINKS)<=10 and len(baseline())<3400
  a={"source":"연합뉴스","published":NOW,"title":"텔레픽스 인도 스카이서브 서비스 공급 계약 체결","url":"https://a.example"}
