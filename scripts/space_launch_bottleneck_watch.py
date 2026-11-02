@@ -397,8 +397,12 @@ def event_signature(category: Category, item: dict) -> str:
 
 
 def corroborated(category: Category, item: dict, peers: Iterable[dict]) -> bool:
-    from space_launch_event_guard import eligible, semantic_pair
+    from space_launch_event_guard import eligible, semantic_pair, kind
 
+    # An issuer-sourced article is not proof of an external broker's
+    # recommendation or of the before/after target value.
+    if category.key in {"rocketlab", "spacex_valuation"} and kind(category.key, str(item.get("title") or "")) == "analyst":
+        return False
     if source_is_official(item):
         # Primary evidence for the named organization, never proof of unrelated
         # analysts' assertions or outside-party contracts.
@@ -515,6 +519,25 @@ def save_pending_state(state: dict) -> None:
 
 
 def render_item(category: Category, item: dict, rate: float | None) -> str:
+    from space_launch_event_guard import kind
+
+    tag, meaning, failure, indicator = category.tag, category.meaning, category.failure, category.indicator
+    event = kind(category.key, str(item.get("title") or ""))
+    if category.key == "rocketlab":
+        if event == "development_delay":
+            tag = "[개발·일정 지연]"
+            meaning = "Neutron 개발 일정 변경으로 첫 고객 발사·매출 시점이 늦어질 수 있으나 Electron 신규 공급계약과는 별개입니다."
+            failure = "제조·품질검증 재작업이나 추가 시험 실패 시 새로운 비행 목표일도 연기될 수 있습니다."
+            indicator = "Neutron 구조물 품질검증·재시험, 회사가 공표한 첫 비행 목표와 실제 발사"
+        elif event == "development":
+            tag = "[개발·시험]"
+            meaning = "발사체 개발·시험 진전은 실제 발사계약 체결이나 매출 인식과 구분합니다."
+            failure = "시험 성공 뒤에도 비행 인증·양산·발사장 가동이 지연될 수 있습니다."
+            indicator = "시험 결과·고객 임무 확정·첫 비행과 후속 반복 발사"
+        elif event == "analyst":
+            tag = "[증권사·독립 검증 전]"
+    elif category.key == "spacex_valuation" and event == "space_technology":
+        tag = "[시험·궤도 컴퓨팅]"
     pub = dt.datetime.fromisoformat(item["published"]) if item.get("published") else None
     when = pub.astimezone(KST).strftime("%Y-%m-%d %H:%M KST") if pub else "게시시각 확인 불가"
     official = source_is_official(item)
@@ -522,7 +545,7 @@ def render_item(category: Category, item: dict, rate: float | None) -> str:
     numbers = extract_numbers(item_text(item))
     krw = usd_to_krw_note(item_text(item), rate)
     lines = [
-        f"{category.tag} {category.name}",
+        f"{tag} {category.name}",
         f"• {item['title']}",
         f"• 검증: {verification} | 출처: {item.get('source') or '출처 미표기'} | {when}",
         f"• 핵심 숫자: {numbers}",
@@ -531,9 +554,9 @@ def render_item(category: Category, item: dict, rate: float | None) -> str:
         lines.append(f"• 원화 환산(USD/KRW {rate:,.2f}): {krw}")
     lines.extend(
         [
-            f"• 투자 의미: {category.meaning}",
-            f"• 실패 경로: {category.failure}",
-            f"• 먼저 볼 지표: {category.indicator}",
+            f"• 투자 의미: {meaning}",
+            f"• 실패 경로: {failure}",
+            f"• 먼저 볼 지표: {indicator}",
             f"• 원문: {item['link']}",
         ]
     )
@@ -607,6 +630,15 @@ def space_funding_notice() -> str:
         "• 원문: "+SPACE_CAPITAL_REPORT,
         "• 원문: "+SERAPHIM_TRACKER,
     ))
+
+def previously_corrected_neutron_delay(category_key: str, item: dict, seen: dict) -> bool:
+    """Do not re-announce the verified 2027 correction as a new RSS headline."""
+    return (
+        category_key == "rocketlab"
+        and item.get("_semantic_id") == "semantic:rocketlab:neutron:first_flight_shift_2027"
+        and "audit:20261017:neutron_2027" in seen
+    )
+
 
 def main() -> int:
     force_notify = str(os.getenv("FORCE_NOTIFY", "")).lower() in {"1", "true", "yes", "on"}
@@ -692,6 +724,8 @@ def main() -> int:
                 selected.append((category, candidates[0]))
         else:
             for item in candidates:
+                if previously_corrected_neutron_delay(category.key, item, seen):
+                    continue
                 if item["_id"] not in seen and item["_semantic_id"] not in seen:
                     selected.append((category, item))
                     break
@@ -782,7 +816,21 @@ def self_test() -> int:
     assert KASA_AI_EVENT.startswith("kasa:space_ai")
     assert SPACE_FUND_EVENT.startswith("private_space:")
     assert "연간 최대 456회" in starbase_faa_notice.__doc__ if False else True
-    print("space_launch_transition_self_test=ok official_nasa_contract_2030=1 no_early_retirement=1 initial_news_suppressed=1")
+    rocketlab = next(x for x in CATEGORIES if x.key == "rocketlab")
+    sample = dict(
+        title="Rocket Lab Neutron first flight delayed until 2027",
+        published="2026-11-02T00:00:00+00:00", source="Rocket Lab",
+        source_url="https://rocketlabcorp.com", description="",
+        link="https://rocketlabcorp.com/example",
+        _semantic_id="semantic:rocketlab:neutron:first_flight_shift_2027",
+    )
+    assert render_item(rocketlab, sample, None).startswith("[개발·일정 지연]")
+    assert previously_corrected_neutron_delay("rocketlab", sample, {"audit:20261017:neutron_2027": "sent"})
+    assert not previously_corrected_neutron_delay("rocketlab", dict(sample, _semantic_id="semantic:rocketlab:neutron:first_flight_shift_2028"), {"audit:20261017:neutron_2027": "sent"})
+    assert not corroborated(rocketlab, dict(sample, title="Citizens cuts Rocket Lab price target after Neutron delay"), [])
+    contract = dict(sample, title="Rocket Lab signs Neutron launch contract for 2027")
+    assert render_item(rocketlab, contract, None).startswith("[계약]")
+    print("space_launch_transition_self_test=ok official_nasa_contract_2030=1 no_early_retirement=1 initial_news_suppressed=1 categories=1 legacy_dedupe=1")
     return 0
 
 
