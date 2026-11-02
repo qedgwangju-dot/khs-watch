@@ -626,7 +626,7 @@ def test()->int:
  second,_=choose_events(records,updated,False)
  assert not second
  other,post=choose_events(records,{},False)
- assert len(other)==1 and "정부 승인·계약 체결은 당사자 원문" in other[0]
+ assert len(other)==1 and "협상·승인·계약·종결은 당사자 원문" in other[0]
  assert "매출 | " in other[0] and "역풍 | " in other[0] and "지표 | " in other[0]
  assert other[0].count("• 원문: ")==2
  assert "거래금액: 당사자 공식 발표에서 미공개" in bootstrap()
