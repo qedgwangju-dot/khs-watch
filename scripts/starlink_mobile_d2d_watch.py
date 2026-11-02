@@ -329,7 +329,7 @@ def stage(topic:str,title:str)->str|None:
   return "supply"
  if topic=="ground":
   if not re.search(r"spacex|starlink",t) or re.search(r"boost mobile|echostar|globalstar",t):return None
-  if re.search(r"80,?000|80\\s*thousand",t) and re.search(r"cell sites?|tower sites?|sites? for wireless",t):
+  if re.search(r"80,?000|80\s*thousand",t) and re.search(r"cell sites?|tower sites?|sites? for wireless",t):
    if re.search(r"signs?|signed|secured|executed|agreement concluded",t):return "site_agreement"
    if re.search(r"talks?|negotiat|seek|pursu|access|aim|plan",t):return "site_talks"
   if not re.search(r"tower|terrestrial|fiber|base station|ground",t):return None
@@ -379,7 +379,7 @@ def event_id(category:str,status:str,title:str)->str:
  if category=="asts" and re.search(r"verizon|at&t",t):
   return f"asts:att_verizon_contract:{status}"
  if category=="ground":
-  if re.search(r"80,?000|80\\s*thousand",t) and re.search(r"cell site|tower site|wireless",t):
+  if re.search(r"80,?000|80\s*thousand",t) and re.search(r"cell site|tower site|wireless",t):
    return f"ground:spacex_80000_sites:{status}"
   if re.search(r"tower|terrestrial",t):
    return f"ground:starlink_terrestrial:{status}"
@@ -522,7 +522,7 @@ def render(topic:str,status:str,item:dict,pair:dict)->str:
  ]
  if topic=="license":lines.append("금액 | "+TRADE_PRICE_NOTE)
  lines.extend(("• 원문: "+item["url"],"• 원문: "+pair["url"]))
- return "\\n".join(lines)
+ return "\n".join(lines)
 
 def load_state()->tuple[dict,bool]:
  if not STATE.exists():return {"version":1,"created_at":NOW.isoformat(),"seen":{}},True
@@ -580,7 +580,7 @@ def choose_events(group:dict,seen:dict,bootstrap_run:bool,force:bool=False)->tup
    } and NOW-item["pub"]<=dt.timedelta(days=15))
    if NOW-item["pub"]>RECENT and not backfill:continue
    report=render(topic,status,item,peers[0])
-   if backfill and NOW-item["pub"]>RECENT:report="[지난 보도 누락 보완 · 신규 계약 확정 아님]\\n"+report
+   if backfill and NOW-item["pub"]>RECENT:report="[지난 보도 누락 보완 · 신규 계약 확정 아님]\n"+report
    alerts.append((item["pub"],eid,report))
    updated[eid]=NOW.isoformat()
  alerts.sort(key=lambda z:z[0],reverse=True)
