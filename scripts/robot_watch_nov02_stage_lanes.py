@@ -221,7 +221,14 @@ def _group_from_text(text: str) -> str:
         if re.search(r"50만\s*시간|500[\s,]?000\s*hours|500000\s*시간",text,re.I):
             return "lg_robot_learning_hours_target"
     if re.search(r"LG전자|LG\s*Electronics",text,re.I) and re.search(r"클로이드|CLOiD",text,re.I):
-        if re.search(r"양재|데이터팩토리|데이터\s*팩토리",text,re.I):
+        # Separate an actually reported in-house assembly change from older
+        # LG software organization/data-factory reports mentioning CLOiD.
+        if (re.search(r"양재|데이터팩토리|데이터\s*팩토리",text,re.I)
+            and re.search(
+                r"(?:직접|자체|수작업)\s*(?:조립|제작|생산)|"
+                r"(?:조립|제작|생산).{0,18}(?:직접|자체)|"
+                r"in[-\s]*house\s*(?:assembling|assembly|production|building)",text,re.I
+            )):
             return "lg_cloid_inhouse_assembly"
     if re.search(r"원익로보틱스|Wonik\s*Robotics",text,re.I):
         if re.search(r"로봇\s*손|로봇손|robot(?:ic)?\s*hand",text,re.I) and re.search(r"액추에이터|actuator|촉각|tactile",text,re.I):
