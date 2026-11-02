@@ -523,8 +523,22 @@ def inline_self_test() -> int:
     assert len(parts) > 1
     assert sum(len(es) for _, es in parts) == 1
     assert all(utf16_units(t) <= INLINE_MAX_UNITS for t, _ in parts)
+    assert receipt_matches_destination({"chat":{"id":-10001234,"username":"example"}},"-10001234")
+    assert receipt_matches_destination({"chat":{"id":-10001234,"username":"example"}},"@Example")
+    assert not receipt_matches_destination({"chat":{"id":-10009999,"username":"wrong"}},"-10001234")
+    assert not receipt_matches_destination({"chat":{"id":-10001234}},"@Example")
     print("starlink_d2d_inline_self_test=ok one_message_8_sources=1 natural_wrap=1 utf16=ok long_split=ok")
     return 0
+
+
+def receipt_matches_destination(delivered: dict, expected: str) -> bool:
+    """Validate Telegram's returned chat without exposing private identifiers."""
+    chat=delivered.get("chat") or {}
+    if expected.lstrip("-").isdigit():
+        return str(chat.get("id") or "") == expected
+    if expected.startswith("@"):
+        return str(chat.get("username") or "").casefold() == expected[1:].casefold()
+    return False
 
 
 def send_inline_alert(token: str, chat_id: str, message: str):
@@ -552,6 +566,9 @@ def send_inline_alert(token: str, chat_id: str, message: str):
             raise RuntimeError("Telegram did not confirm clickable text links")
         if delivered.get("text") != plain_text:
             raise RuntimeError("Telegram returned modified alert text")
+        if os.getenv("SPACE_LAUNCH_VERIFY_RECEIPT") == "1":
+            if not receipt_matches_destination(delivered, chat_id):
+                raise RuntimeError("Telegram response did not confirm the configured recipient")
         ids.append(int(delivered["message_id"]))
     return ids
 
@@ -599,6 +616,8 @@ def main() -> int:
 
     if inline_mode or inline_live:
         ids = send_inline_alert(token, chat_id, text)
+        if os.getenv("SPACE_LAUNCH_VERIFY_RECEIPT") == "1":
+            print("telegram_recipient_receipt_verified=true")
         print(f"telegram_inline_links_delivered=true bot=@{actual} message_ids={ids} inline=true")
         return 0
 
