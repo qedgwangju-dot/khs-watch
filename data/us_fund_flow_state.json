@@ -147,9 +147,9 @@
     "sp500_peak_value": 7818.93017578125,
     "sp500_drawdown_pct": -1.26,
     "hartnett_tracking_version": "2026-10-09-v1",
-    "hartnett_treasury_date": "2026-10-30",
-    "hartnett_10y_pct": 4.94,
-    "hartnett_10y_5d_bp": -6.0,
+    "hartnett_treasury_date": "2026-11-02",
+    "hartnett_10y_pct": 4.91,
+    "hartnett_10y_5d_bp": -9.0,
     "hartnett_bond_level": "below_5_30",
     "hartnett_bond_momentum": "neutral",
     "hartnett_fed_target_upper_pct": 4.0,
@@ -157,14 +157,14 @@
     "hartnett_election_stage": "within_7_days",
     "retail_survey": {
       "aaii": {
-        "period": "2026-09",
-        "stocks_pct": 71.8,
-        "stock_funds_pct": 38.3,
-        "direct_stock_pct": 33.4,
-        "bonds_pct": 14.9,
+        "period": "2026-10",
+        "stocks_pct": 70.1,
+        "stock_funds_pct": 38.2,
+        "direct_stock_pct": 31.9,
+        "bonds_pct": 16.6,
         "cash_pct": 13.3,
         "source_precision": "AAII 공식 해설 기사 소수 첫째 자리",
-        "source_url": "https://www.aaii.com/latest/article/548658-september-aaii-asset-allocation-survey-cash-allocations-fall"
+        "source_url": "https://www.aaii.com/latest/article/561341-october-aaii-asset-allocation-survey-bond-allocations-rise"
       },
       "conference": {
         "period": "2026-10",
@@ -174,7 +174,7 @@
         "expectations_index": 72.6,
         "stock_up_vs_down_majority": true
       },
-      "pair": "2026-09|2026-10",
+      "pair": "2026-10|2026-10",
       "regime": "동반 높은 주식노출·상승기대"
     }
   }
