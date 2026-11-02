@@ -1154,6 +1154,8 @@ def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str]
         f"• 채권→Nasdaq: <b>{cross.get('label')}</b>",
         f"• 자료 신선도: {'통과' if data_fresh else '차단'}" + (f" ({', '.join(stale)})" if stale else ""),
         "",
+        _monthly_trend_block(snapshot, compact=True).rstrip(),
+        "",
         "<b>📍 포지션은 얼마나 쌓였나</b>",
         f"• CFTC {(snapshot.get('cftc') or {}).get('report_date','확인 불가')}: "
         f"2Y {_fmt_net_with_krw((cftc.get('2Y') or {}).get('leveraged_net'),'2Y',fx)} · "
