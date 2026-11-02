@@ -8843,6 +8843,10 @@ _robot_missing.install(base)
 import robot_watch_openai_robotics_program as _openai_infra_robots
 _openai_infra_robots.install(base)
 
+# AGIBOT/Qualcomm/Hyundai industrial robot milestones; preserve baseline ownership.
+import robot_watch_2026_nov_material_milestones as _industrial_robot_kpis
+_industrial_robot_kpis.install(base)
+
 
 if __name__ == '__main__':
     pre_state = base.load_state()
