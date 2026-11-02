@@ -1,16 +1,16 @@
 {
-  "last_signal_key": "a63579b5935ec4899316af25",
-  "last_alert_at_kst": "2026-10-30T13:13:29+09:00",
-  "last_published_at_kst": "2026-10-30T13:00:00+09:00",
+  "last_signal_key": "b4c875c3c4cee1d33821f02f",
+  "last_alert_at_kst": "2026-11-02T14:30:40+09:00",
+  "last_published_at_kst": "2026-11-02T14:00:00+09:00",
   "last_source": "Bank of Japan",
-  "last_title": "Outlook for Economic Activity and Prices (October 2026, The Bank's View)",
+  "last_title": "Outlook for Economic Activity and Prices (October 2026, full text)",
   "signature": {
     "level": 1,
     "event_type": "decision",
-    "policy_rate": 1.25,
+    "policy_rate": null,
     "hike_bp": null,
-    "vote_for": 8,
-    "vote_against": 1,
+    "vote_for": null,
+    "vote_against": null,
     "dissent_direction": null,
     "dissenters": [],
     "assessment_vote_for": null,
@@ -18,7 +18,7 @@
     "assessment_view": null,
     "expected_move": false,
     "hawkish_tail_50bp": false,
-    "inflation_spillover": false,
+    "inflation_spillover": true,
     "cpi_h2_clearly_above_2": true,
     "stabilize_underlying_around_2": true,
     "outlook_dissenters": [],
@@ -30,7 +30,7 @@
     "neutral_rate": false,
     "inflation_upside": true,
     "risk_channels": true,
-    "rate_unchanged": true,
+    "rate_unchanged": false,
     "underlying_target_reached": true
   }
 }
