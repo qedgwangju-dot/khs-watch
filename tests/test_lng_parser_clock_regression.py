@@ -382,3 +382,118 @@ class CFTCNymexNGTest(unittest.TestCase):
             finally:
                 for key,value in originals.items():
                     setattr(monitor.core,key,value)
+
+
+
+class RussiaUkraineGasWatchTest(unittest.TestCase):
+    @staticmethod
+    def rss(title, source, date="Tue, 03 Nov 2026 12:00:00 GMT"):
+        import html
+        return ('<rss><channel><item><title>' + html.escape(title) +
+                '</title><link>https://news.google.com/rss/articles/test</link>' +
+                '<pubDate>' + date + '</pubDate><source>' + source +
+                '</source></item></channel></rss>').encode()
+
+    def test_initial_november2_plan_and_modal_proposal_do_not_alert(self):
+        now=dt.datetime(2026,11,3,13,tzinfo=dt.timezone.utc)
+        original=self.rss("US pushes Russia gas sales via Ukraine to Europe, WSJ reports",
+                          "Reuters","Mon, 02 Nov 2026 04:00:00 GMT")
+        later=self.rss("EU could allow Russian gas supplies to Europe via Ukraine",
+                       "Bloomberg")
+        self.assertEqual(monitor._russia_gas_parse_feed_v34(original,now),[])
+        self.assertEqual(monitor._russia_gas_parse_feed_v34(later,now),[])
+
+    def test_independent_media_confirm_only_reported_stage(self):
+        now=dt.datetime(2026,11,3,13,tzinfo=dt.timezone.utc)
+        a=monitor._russia_gas_parse_feed_v34(
+            self.rss("EU approves Russian gas imports to Europe via Ukraine","Reuters"),now)
+        b=monitor._russia_gas_parse_feed_v34(
+            self.rss("European Commission approves Russian gas deliveries via Ukraine to Europe",
+                     "Bloomberg","Tue, 03 Nov 2026 12:15:00 GMT"),now)
+        self.assertEqual(len(a),1)
+        self.assertEqual(len(b),1)
+        event=monitor._russia_gas_select_v34(a+b,{},now)
+        self.assertIsNotNone(event)
+        self.assertEqual(event["stage"],"eu_permission_report")
+        title,body,metadata=monitor._russia_gas_alert_v34(event,now)
+        self.assertIn("공식 결정 별도 확인 전",body)
+        self.assertIn("중개업체 변경만으로 법적 승인이 되지 않음",body)
+        self.assertTrue(metadata["not_verified_flow"])
+        self.assertTrue(metadata["not_eu_authorization"])
+        self.assertIn("보도 링크(뉴스 경유)",body)
+        self.assertEqual(event["event_id"],"ru_ua_eu_gas:eu_permission_report:2026-11")
+
+    def test_two_google_queries_or_same_publisher_are_not_independent(self):
+        now=dt.datetime(2026,11,3,13,tzinfo=dt.timezone.utc)
+        one=monitor._russia_gas_parse_feed_v34(
+            self.rss("EU approves Russian gas imports to Europe via Ukraine","Reuters"),now)
+        self.assertIsNone(monitor._russia_gas_select_v34(one+one,{},now))
+        cites_wsj=monitor._russia_gas_parse_feed_v34(
+            self.rss("EU approves Russian gas via Ukraine to Europe, WSJ reports",
+                     "Bloomberg"),now)
+        self.assertEqual(cites_wsj,[])
+
+    def test_dedupe_one_stage_month_and_source_fail_does_not_invent(self):
+        now=dt.datetime(2026,11,3,13,tzinfo=dt.timezone.utc)
+        a=monitor._russia_gas_parse_feed_v34(
+            self.rss("EU approves Russian gas imports to Europe via Ukraine","Reuters"),now)
+        b=monitor._russia_gas_parse_feed_v34(
+            self.rss("European Commission approves Russian gas via Ukraine to Europe",
+                     "Bloomberg"),now)
+        event=monitor._russia_gas_select_v34(a+b,{},now)
+        self.assertIsNone(monitor._russia_gas_select_v34(
+            a+b,{"alerted_event_ids":[event["event_id"]]},now))
+        from unittest.mock import patch
+        with patch.object(monitor.core,"fetch_bytes",side_effect=RuntimeError("offline")):
+            res,errors=monitor._russia_gas_fetch_v34(now,{})
+        self.assertIsNone(res)
+        self.assertEqual(len(errors),len(monitor.RU_GAS_QUERIES_V34))
+
+    def test_russia_gas_media_stage_preserves_existing_lng_and_cftc_output(self):
+        import tempfile, pathlib, json
+        from unittest.mock import patch
+        now=dt.datetime(2026,11,3,13,tzinfo=dt.timezone.utc)
+        a=monitor._russia_gas_parse_feed_v34(
+            self.rss("EU approves Russian gas imports to Europe via Ukraine","Reuters"),now)
+        b=monitor._russia_gas_parse_feed_v34(
+            self.rss("European Commission approves Russian gas via Ukraine to Europe",
+                     "Bloomberg"),now)
+        event=monitor._russia_gas_select_v34(a+b,{},now)
+        with tempfile.TemporaryDirectory() as name:
+            directory=pathlib.Path(name)
+            names=("OUT_DIR","TITLE_PATH","BODY_PATH","ALERT_JSON_PATH",
+                   "PENDING_STATE_PATH","SUMMARY_PATH","TELEGRAM_CONFIRMED_PATH")
+            saved={key:getattr(monitor.core,key) for key in names}
+            try:
+                monitor.core.OUT_DIR=directory
+                for key in names[1:]:
+                    setattr(monitor.core,key,directory/getattr(monitor.core,key).name)
+                def old_lng(_test):
+                    monitor.core.clean_outputs()
+                    monitor.core.write_alert("기존 LNG 알림","<b>원래 LNG·CFTC 사건</b>",
+                                             {"version":34,"existing":True})
+                    monitor.core.PENDING_STATE_PATH.write_text(json.dumps({
+                        "alerted_event_ids":["existing-lng-event","existing-cftc-event"],
+                        "active_market_signals":["ttf_above_90"]}))
+                    monitor.core.SUMMARY_PATH.write_text("기존 LNG 상태\n")
+                    return 0
+                with patch.object(monitor,"_russia_gas_fetch_v34",return_value=(event,[])), \
+                     patch.object(monitor,"_RU_GAS_PREVIOUS_RUN_V34",side_effect=old_lng), \
+                     patch.object(monitor.core,"load_state",return_value={
+                         "alerted_event_ids":["existing-lng-event"],
+                         "active_market_signals":["ttf_above_90"]}), \
+                     patch.object(monitor.core,"now_utc",return_value=now):
+                    self.assertEqual(monitor._russia_gas_run_v34(False),0)
+                body=monitor.core.BODY_PATH.read_text()
+                self.assertIn("원래 LNG·CFTC 사건",body)
+                self.assertIn("러시아·우크라이나·EU 가스 협상",body)
+                meta=json.loads(monitor.core.ALERT_JSON_PATH.read_text())
+                self.assertTrue(meta["existing"])
+                self.assertEqual(meta["ru_ua_eu_gas"]["event_id"],event["event_id"])
+                pending=json.loads(monitor.core.PENDING_STATE_PATH.read_text())
+                self.assertEqual(len(pending["alerted_event_ids"]),3)
+                self.assertEqual(pending["active_market_signals"],["ttf_above_90"])
+                self.assertFalse(monitor.core.TELEGRAM_CONFIRMED_PATH.exists())
+            finally:
+                for key,value in saved.items():
+                    setattr(monitor.core,key,value)

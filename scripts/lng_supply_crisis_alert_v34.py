@@ -2361,6 +2361,279 @@ def run_with_cftc_ng(setup_test):
 
 core.run=run_with_cftc_ng
 
+
+# Russia / Ukraine / EU pipeline-gas proposal: secondary reporting only.
+# The initial 2026-11-02 WSJ story is a historical baseline, not a new delivery.
+import xml.etree.ElementTree as _ru_gas_xml_v34
+import email.utils as _ru_gas_dates_v34
+
+RU_GAS_BASELINE_V34 = dt.datetime(2026, 11, 2, 5, 30, tzinfo=dt.timezone.utc)
+RU_GAS_BASELINE_EU_LAW_V34 = "https://eur-lex.europa.eu/eli/reg/2026/261/oj"
+RU_GAS_GTSOU_V34 = "https://tsoua.com/en/news/"
+RU_GAS_ENTSOG_V34 = "https://transparency.entsog.eu/"
+_RU_GAS_PREVIOUS_RUN_V34 = core.run
+RU_GAS_QUERIES_V34 = (
+    '"Russian gas" "Ukraine" Europe transit agreement approved signed when:3d',
+    '"Russian gas" "Ukraine" "European Commission" imports decision when:3d',
+    '"Gazprom" "Ukraine" "Europe" gas flows resume when:3d',
+)
+RU_GAS_OUTLETS_V34 = {
+    "reuters": "로이터",
+    "bloomberg": "블룸버그",
+    "financial times": "파이낸셜타임스",
+    "the wall street journal": "월스트리트저널",
+    "associated press": "AP통신",
+    "ap news": "AP통신",
+    "bbc": "BBC",
+}
+RU_GAS_STAGES_V34 = {
+    "eu_permission_report": "EU 러시아산 가스 수입 허용·규정 변경 보도",
+    "ukraine_permission_report": "우크라이나의 러시아산 가스 통과 승인 보도",
+    "commercial_agreement_report": "러시아·우크라이나 경유 가스 계약 체결 보도",
+    "physical_flow_report": "우크라이나 경유 러시아산 가스의 실제 유입 재개 보도",
+}
+RU_GAS_STAGE_PATTERNS_V34 = {
+    "eu_permission_report": (
+        r"\beu (?:approves|authorizes|allows|lifts|suspends)\b",
+        r"\beuropean (?:commission|union) (?:approves|authorizes|allows|suspends)\b",
+        r"\bbrussels (?:approves|authorizes|clears)\b",
+    ),
+    "ukraine_permission_report": (
+        r"\bukraine (?:agrees|approves|authorizes|allows)\b",
+        r"\bkyiv (?:agrees|approves|authorizes|allows)\b",
+    ),
+    "commercial_agreement_report": (
+        r"\b(?:signs|signed|concludes|concluded) (?:a |the )?(?:new )?(?:gas |transit |supply )?(?:deal|agreement|contract)\b",
+        r"\b(?:gas |transit )?(?:deal|agreement|contract) (?:signed|concluded)\b",
+    ),
+    "physical_flow_report": (
+        r"\brussian gas (?:flows|deliveries|shipments) (?:resume|resumed|restart|restarted|begin|began)\b",
+        r"\b(?:flows|shipments|deliveries) of russian gas (?:resume|resumed|restart|restarted|begin|began)\b",
+        r"\b(?:gas|pipeline) (?:supply|transit|flows) (?:resume|resumed|restart|restarted|begin|began)\b",
+    ),
+}
+RU_GAS_MODAL_REJECT_V34 = (
+    r"\b(?:may|might|could|would|consider|considering|proposal|proposes|plans|planned|"
+    r"possible|possibility|pushes|seeks|seeking|wants|aims|expects|reportedly)\b"
+)
+
+
+def _russia_gas_news_url_v34(query: str) -> str:
+    return "https://news.google.com/rss/search?" + urllib.parse.urlencode(
+        {"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"}
+    )
+
+
+def _russia_gas_stage_v34(title: str) -> str | None:
+    raw = core.normalize_text(title)
+    if not (
+        ("russia" in raw or "russian" in raw or "gazprom" in raw)
+        and ("gas" in raw or "pipeline" in raw)
+        and ("ukraine" in raw or "ukrainian" in raw or "kyiv" in raw)
+        and ("europe" in raw or "eu" in raw or "brussels" in raw)
+    ):
+        return None
+    # A proposal is not an EU waiver, a signed sale or measured physical flow.
+    if re.search(RU_GAS_MODAL_REJECT_V34, raw):
+        return None
+    # Second-hand reports citing WSJ are not independent corroboration.
+    if re.search(r"\b(?:wsj reports|according to wsj|wall street journal reports|citing wsj)\b", raw):
+        return None
+    for stage in (
+        "physical_flow_report",
+        "commercial_agreement_report",
+        "eu_permission_report",
+        "ukraine_permission_report",
+    ):
+        if any(re.search(pat, raw) for pat in RU_GAS_STAGE_PATTERNS_V34[stage]):
+            return stage
+    return None
+
+
+def _russia_gas_parse_feed_v34(raw: bytes, now: dt.datetime) -> list[dict]:
+    root = _ru_gas_xml_v34.fromstring(raw)
+    if root.tag != "rss" or root.find("channel") is None:
+        raise RuntimeError("Google 뉴스 RSS가 아닌 응답 · 검증 차단")
+    out = []
+    for item in root.findall("./channel/item"):
+        title = (item.findtext("title") or "").strip()
+        source = (item.findtext("source") or "").strip()
+        published_raw = (item.findtext("pubDate") or "").strip()
+        link = (item.findtext("link") or "").strip()
+        outlet = RU_GAS_OUTLETS_V34.get(core.normalize_text(source))
+        stage = _russia_gas_stage_v34(title)
+        if outlet is None or stage is None or not link.startswith("https://news.google.com/"):
+            continue
+        try:
+            published = _ru_gas_dates_v34.parsedate_to_datetime(published_raw)
+        except (TypeError, ValueError):
+            continue
+        if published.tzinfo is None:
+            continue
+        published = published.astimezone(dt.timezone.utc)
+        if not (RU_GAS_BASELINE_V34 < published <= now + dt.timedelta(minutes=10)):
+            continue
+        if now - published > dt.timedelta(hours=72):
+            continue
+        out.append({
+            "stage": stage, "publisher": outlet,
+            "publisher_key": core.normalize_text(source),
+            "title": title, "url": link,
+            "published": published.isoformat(timespec="seconds"),
+            "published_epoch": published.timestamp(),
+        })
+    return out
+
+
+def _russia_gas_select_v34(items: list[dict], state: dict, now: dt.datetime) -> dict | None:
+    by_stage: dict[str, list[dict]] = {}
+    seen = set()
+    for row in items:
+        key = (row["stage"], row["publisher_key"], core.normalize_text(row["title"]))
+        if key in seen:
+            continue
+        seen.add(key)
+        by_stage.setdefault(row["stage"], []).append(row)
+    candidates = []
+    existing = set(map(str, state.get("alerted_event_ids", [])))
+    for stage, rows in by_stage.items():
+        unique_publishers = {x["publisher_key"] for x in rows}
+        if len(unique_publishers) < 2:
+            continue
+        latest = max(row["published_epoch"] for row in rows)
+        aligned = [row for row in rows if latest - row["published_epoch"] <= 48 * 3600]
+        if len({row["publisher_key"] for row in aligned}) < 2:
+            continue
+        # Same reported milestone in one calendar month cannot be resent
+        # merely because RSS republishes yesterday's headline today.
+        event_month = dt.datetime.fromtimestamp(latest, dt.timezone.utc).strftime("%Y-%m")
+        event_id = f"ru_ua_eu_gas:{stage}:{event_month}"
+        if event_id in existing:
+            continue
+        candidates.append((latest, stage, event_id, aligned))
+    if not candidates:
+        return None
+    _, stage, event_id, rows = sorted(candidates, reverse=True)[0]
+    return {"event_id": event_id, "stage": stage,
+            "evidence": sorted(rows, key=lambda x: x["published_epoch"], reverse=True)[:3]}
+
+
+def _russia_gas_fetch_v34(now: dt.datetime, state: dict) -> tuple[dict | None, list[str]]:
+    # Bounded independent requests. RSS publishers corroborate a *reported*
+    # development; they never establish legal authority or actual pipeline data.
+    news, errors = [], []
+    for query in RU_GAS_QUERIES_V34:
+        try:
+            payload = core.fetch_bytes(_russia_gas_news_url_v34(query), timeout=5, attempts=1)
+            news.extend(_russia_gas_parse_feed_v34(payload, now))
+        except Exception as exc:
+            errors.append(f"{type(exc).__name__}:{str(exc)[:105]}")
+    return _russia_gas_select_v34(news, state, now), errors
+
+
+def _russia_gas_alert_v34(event: dict, now: dt.datetime) -> tuple[str, str, dict]:
+    label = RU_GAS_STAGES_V34[event["stage"]]
+    title = "러시아산 가스 우크라이나 경유·유럽 공급 후속 변화"
+    lines = [
+        f"{now.astimezone(core.KST):%Y-%m-%d %H:%M} KST", "",
+        "<b>[러시아·우크라이나·EU 가스 협상]</b>",
+        f"• 새 보도 단계: {label}",
+        "• 확인 수준: 서로 다른 신뢰 매체의 뉴스 제목 교차 확인 · 원문 본문 및 공식 결정 별도 확인 전",
+        "• 기존 11월 2일 미국 중개업체 구상과 새로운 승인·계약·실물 공급을 구분",
+        "", "<b>[출처]</b>",
+    ]
+    for row in event["evidence"]:
+        url = html.escape(row["url"], quote=True)
+        lines.append(
+            f'• {html.escape(row["publisher"], quote=True)} · '
+            f'{row["published"][:10]} 게시 · <a href="{url}">보도 링크(뉴스 경유)</a>'
+        )
+    lines.extend([
+        "", "<b>[법적·실물 검증]</b>",
+        "• EU 규정 2026/261은 러시아에서 직접·간접 수입되는 가스를 제한하며 중개업체 변경만으로 법적 승인이 되지 않음",
+        "• EU 법 개정·허가, 우크라이나의 통과 계약·운영상 승인, 실제 가스 유량은 각각 별도 확인",
+        "• 현재 가스관 공급이 재개됐거나 수입대금이 지급됐다는 확정 판정이 아님",
+        "", "<b>[다음 확인]</b>",
+        "• EU 법령·집행위원회 결정 → 우크라이나 수송운영사 발표 → ENTSOG 국경 수송량 → TTF 및 유럽 저장률",
+        "", "<b>[공식 확인처]</b>",
+        f'• <a href="{RU_GAS_BASELINE_EU_LAW_V34}">EU 규정 2026/261</a>'
+        f' · <a href="{RU_GAS_GTSOU_V34}">우크라이나 가스 수송운영사</a>'
+        f' · <a href="{RU_GAS_ENTSOG_V34}">유럽 가스망 운송자료</a>',
+    ])
+    body = "\n".join(lines)
+    if len(body) > 3100:
+        raise RuntimeError("러시아 가스 보도 단계 메시지가 너무 길어 송출 보류")
+    return title, body, {
+        "kind": "ru_ua_eu_gas", "event_id": event["event_id"],
+        "stage": event["stage"], "status": "media_headline_corroborated_only",
+        "not_eu_authorization": True, "not_verified_flow": True,
+        "links": [x["url"] for x in event["evidence"]],
+    }
+
+
+def _russia_gas_append_status_v34(message: str) -> None:
+    if core.SUMMARY_PATH.exists():
+        with core.SUMMARY_PATH.open("a", encoding="utf-8") as f:
+            f.write("\n- 러시아 가스 후속 감시: " + message + "\n")
+
+
+def _russia_gas_run_v34(setup_test: bool) -> int:
+    if setup_test:
+        return _RU_GAS_PREVIOUS_RUN_V34(setup_test)
+    now = core.now_utc()
+    baseline_state = core.load_state()
+    event, errors = _russia_gas_fetch_v34(now, baseline_state)
+    # Always run pre-existing CFTC and LNG paths before merging new evidence.
+    original_result = _RU_GAS_PREVIOUS_RUN_V34(False)
+    if event is None:
+        _russia_gas_append_status_v34(
+            "원천 조회 " + ("일부 오류(" + str(len(errors)) + ")" if errors else "완료")
+            + " · 독립 매체 2곳이 확인한 신규 단계 없음"
+        )
+        return original_result
+    if original_result != 0:
+        # Keep source failure visible in Actions even if an independent,
+        # strongly corroborated Russia-gas news update can be delivered.
+        old_summary = core.SUMMARY_PATH.read_text(encoding="utf-8") if core.SUMMARY_PATH.exists() else ""
+        old_summary += "\nLNG_SOURCE_INCOMPLETE=true\n"
+        core.clean_outputs()
+        pending = dict(baseline_state)
+    else:
+        if not core.PENDING_STATE_PATH.exists():
+            raise RuntimeError("기존 LNG·CFTC 상태 검증 실패 · 후속 보도 병합 차단")
+        old_summary = core.SUMMARY_PATH.read_text(encoding="utf-8") if core.SUMMARY_PATH.exists() else ""
+        pending = json.loads(core.PENDING_STATE_PATH.read_text(encoding="utf-8"))
+    seen = list(map(str, pending.get("alerted_event_ids", [])))
+    if event["event_id"] in seen:
+        return original_result
+    old_title = core.TITLE_PATH.read_text(encoding="utf-8").strip() if core.BODY_PATH.exists() else ""
+    old_body = core.BODY_PATH.read_text(encoding="utf-8").strip() if core.BODY_PATH.exists() else ""
+    old_meta = (json.loads(core.ALERT_JSON_PATH.read_text(encoding="utf-8"))
+                if old_body and core.ALERT_JSON_PATH.exists() else {})
+    title, body, meta = _russia_gas_alert_v34(event, now)
+    if old_body:
+        title = old_title
+        body = old_body + "\n\n" + body
+        meta = {**old_meta, "ru_ua_eu_gas": meta}
+    if len(body) > 16000:
+        raise RuntimeError("LNG·CFTC·러시아 가스 동시 알림 본문이 길어 송출 보류")
+    core.write_alert(title, body, meta)
+    pending["alerted_event_ids"] = (seen + [event["event_id"]])[-400:]
+    pending["last_alert_at_kst"] = now.astimezone(core.KST).isoformat(timespec="seconds")
+    core.PENDING_STATE_PATH.write_text(
+        json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    core.SUMMARY_PATH.write_text(
+        old_summary.rstrip() + "\n- 러시아 가스 신규 단계: " + event["event_id"] +
+        "\n- Telegram 미전송 · 전송 확인 후 기존 finalizer가 상태 갱신\n", encoding="utf-8"
+    )
+    print(f"russia_gas_new_stage=true event_id={event['event_id']} "
+          "telegram_sent=false state_saved=false", flush=True)
+    return 0
+
+
+core.run = _russia_gas_run_v34
+
 if __name__ == "__main__":
     raise SystemExit(core.main())
 
