@@ -1215,7 +1215,8 @@ def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str]
 
 def format_alert(snapshot, previous, fx, fx_date, reasons):
     # Existing CTA event path formats before scheduled_main; enrich it only once.
-    if "monthly_trends" not in snapshot:
+    if ("monthly_trends" not in snapshot
+            and "monthly_comparisons" in (snapshot.get("yield10") or {})):
         _enrich_monthly_trends_for_due_alert(snapshot)
     title, body = _base_format(snapshot, previous, fx, fx_date, reasons)
     body = _compact_duplicates(body)
