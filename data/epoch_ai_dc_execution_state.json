@@ -4,12 +4,12 @@
   "source_url": "https://epoch.ai/data/ai-data-centers",
   "data_url": "https://epoch.ai/data/data_centers/data_centers.csv",
   "timeline_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
-  "as_of_kst": "2026-11-03T05:26:24+09:00",
+  "as_of_kst": "2026-11-03T08:35:51+09:00",
   "site_count": 77,
   "current_it_mw": 12580.3,
-  "planned_it_mw_2030": 33109.3,
-  "remaining_it_mw": 20529.0,
-  "execution_ratio_pct": 38.0,
+  "planned_it_mw_2030": 33128.3,
+  "remaining_it_mw": 20548.0,
+  "execution_ratio_pct": 37.97,
   "top_remaining_sites": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -198,7 +198,7 @@
       "current": 238.0
     },
     "Google Cedar Rapids": {
-      "planned": 242.0,
+      "planned": 261.0,
       "current": 0.0
     },
     "Google Columbus": {
