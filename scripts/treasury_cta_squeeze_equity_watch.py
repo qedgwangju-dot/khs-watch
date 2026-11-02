@@ -1503,6 +1503,10 @@ def _enrich_monthly_trends_for_due_alert(snapshot: dict) -> None:
         result["repo"] = _official_monthly_repo_trends(snapshot)
     except Exception as exc:
         result["repo_error"] = type(exc).__name__
+    try:
+        result["futures"] = _reference_futures_monthly_trends()
+    except Exception as exc:
+        result["futures_error"] = type(exc).__name__
     snapshot["monthly_trends"] = result
 
 
