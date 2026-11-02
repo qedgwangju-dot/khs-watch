@@ -95,6 +95,7 @@ jobs:
         env:
           SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
           SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
+          SPACE_LAUNCH_VERIFY_RECEIPT: "1"
         run: |
           python scripts/space_launch_telegram_send.py --inline out/k_space_payload_supplier_telegram.txt
 
