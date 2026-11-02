@@ -1325,13 +1325,15 @@
   },
   "_delivery": {
     "id": "874edec215c64fa61fabcb901587e327ee4a85fe2d91ab51d6b350ffe483cea8",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-11-03T03:43:03+09:00",
     "chunks": [
       "<b>🚨 AI 부품 리드타임 변화</b>\n\n<b>핵심 변화</b>\n• <b>전주 대비:</b> 납기·공급 상태 변화 없음 (악화 0개 / 완화 0개, 해당 없음)\n• <b>최대 병목:</b> ABF 48~56주 / 균형 12주 (4.3배)\n• 이전 확정값 유지: CPU, GPU, DRAM, NAND(eSSD), HDD, ABF, MLCC\n\n<b>현재 숫자</b>\n• <b>심각:</b> DRAM 20주/38주 (0.5배) · HDD 50주/16주 (3.1배) · ABF 48~56주/12주 (4.3배)\n• <b>제약:</b> CPU 25~30주/16~20주 (1.5배) · NAND(eSSD) 16주/8주 (2.0배) · MLCC 35주/38주 (0.9배)\n• <b>균형:</b> GPU 30~40주/38주 (0.9배)\n\n<b>구조 시간축</b>\n• UBS 프로젝트 기준: GPU 6~12개월 · DRAM 6~12개월 <i>(부품 주문→납기와 직접 비교 금지)</i>\n\n<b>미래 재평가</b>\n• <b>ABF:</b> 수급 격차가 단기간 닫히기 어렵고 3Q26~4Q27 장기계약 가격은 분기당 10~15% 인상 전망\n\n<b>관련 기업</b>\n• <b>GPU:</b> NVIDIA·AMD — AI 가속기 수요축\n• <b>DRAM:</b> 삼성전자·SK하이닉스·Micron — 서버 DRAM/RDIMM\n• <b>MLCC:</b> 삼성전기·Murata·Taiyo Yuden — 고용량·고신뢰성 MLCC\n\n<b>역풍·다음 확인</b>\n• GPU: 샘플→양산 일정·랙 출하 (6~12개월) / DRAM: RDIMM 가격·재고·출하 (6~12개월)\n\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-008\">TrendForce 원문</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      368
+    ],
     "candidate": {
       "updated_at_kst": "2026-11-03T03:41:45+09:00",
       "seen_ids": [
