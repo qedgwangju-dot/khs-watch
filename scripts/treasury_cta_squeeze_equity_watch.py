@@ -2069,6 +2069,7 @@ def scheduled_main() -> int:
             "• 정책 구분: <b>CTA 스퀴즈는 공식 금리목표가 아니라 시장 결과</b>이며, Bessent의 공식선은 시장 과열·무질서한 속도 완화입니다.",
             "",
             _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=False),
+            _monthly_trend_block(snapshot, compact=True).rstrip(),
             "<b>🚦 다음 확인</b>",
             "• ZN 공식 같은 거래일 가격↑·OI↓ + NQ 공식 같은 거래일 가격↑·CME 일일 OI↓ + CFTC NQ 순숏 축소가 겹치면 이중 스퀴즈 확인으로 격상합니다.",
             "• CFTC는 주간 후행 자료이므로 장중 가격이나 CFTC 주간 OI 감소 하나만으로 확정하지 않습니다.",
