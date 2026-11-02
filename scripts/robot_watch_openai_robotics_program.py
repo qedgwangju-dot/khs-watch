@@ -52,6 +52,9 @@ TRUSTED = {
 ORIGINAL_INTERVIEW = {
     "title": "샘 올트먼, OpenAI 로봇 프로그램을 데이터센터·부품 제조에 활용할 계획 언급",
     "description": (
+        "2026년 10월 21일 스탠퍼드 경영대학원 영상에서 샘 올트먼은 "
+        "로봇이 다른 로봇·데이터센터·부품공장·발전시설을 건설하는 "
+        "순환 확장 구상을 먼저 설명했다. "
         "2026년 10월 29일 Cheeky Pint에서 OpenAI CEO 샘 올트먼은 "
         "이미 로봇 프로그램(robotics program)을 갖고 있으며 "
         "로봇을 이용해 더 많은 데이터센터를 만들겠다는 방향을 밝혔다. "
@@ -82,6 +85,8 @@ QUERIES = (
     '(OpenAI OR 오픈AI) (robotics OR 로봇) '
     '(factory automation OR robotic construction OR first deployment '
     'OR construction site OR data center OR 고객 계약 OR 현장 투입)',
+    '("Sam Altman" OR 샘올트먼) (Stanford OR 스탠퍼드 OR "View From The Top") '
+    '(robots OR robotics OR 로봇 OR "self-replicating data centers" OR fab)',
 )
 
 IDENTITY = re.compile(r"\bOpenAI\b|오픈\s*AI|샘\s*올트먼|Sam\s*Altman",re.I)
@@ -271,8 +276,9 @@ def install(base) -> None:
     def meaning(cat):
         if cat==CATEGORY_BASE:
             return (
-                "2026년 10월 29일 Cheeky Pint에서 CEO 샘 올트먼은 "
-                "기존 로봇 프로그램을 데이터센터·부품 제조 확충에 활용하겠다는 "
+                '2026년 10월 21일 스탠퍼드 인터뷰에서 로봇의 자기확장 구상을 설명했고, '
+                '10월 29일 Cheeky Pint에서는 CEO 샘 올트먼이 '
+                '기존 로봇 프로그램을 데이터센터·부품 제조 확충에 활용하겠다는 '
                 "방향을 직접 설명했습니다. 실물 로봇이 실제 건설현장에 "
                 "투입되었다는 발표가 아닙니다. 9월 OpenAI 자체 휴머노이드 "
                 "개발·2027년 시연 목표와도 독립 사건으로 관리합니다."
@@ -299,7 +305,8 @@ def install(base) -> None:
         if g == TOPIC:
             if item.get("openai_direct_program_recovery"):
                 return (
-                    "10/29 Cheeky Pint 제작사 전사 검색 색인·The Next Web 별도 보도 대조, "
+                    '10/21 스탠퍼드 GSB 영상 관련 제3자 전사·10/29 Cheeky Pint '
+                    '제작사 전사 검색 색인·The Next Web 별도 보도 대조, '
                     "OpenAI 공식 로봇 엔지니어·액추에이터 제조 채용자료 확인; "
                     "제작사 전사 URL 직접 재열람 실패. CEO의 계획 발언만 확인, "
                     "현장 투입·실제 수주·매출은 확인되지 않음"
