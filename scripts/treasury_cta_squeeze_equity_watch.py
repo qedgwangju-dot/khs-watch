@@ -1578,7 +1578,8 @@ def _monthly_trend_block(snapshot: dict, *, compact: bool = False) -> str:
                          "): " + legs(item.get("comparisons") or {}, "futures"))
         elif symbol in ("ZN", "NQ") or not compact:
             lines.append("• " + symbol + " 연속선물: 1·2·3개월 비교자료 확인 불가")
-    lines.append("※ 달력 기준 1·2·3개월 전, 휴장·주간자료는 해당일 이전 최근 발표 관측값. +계약은 순롱 방향, -계약은 순숏 방향이며 CTA 거래 자체는 아님.")
+    lines.append("※ 달력 기준 1·2·3개월 전의 직전 관측값과 최신값 차이. CFTC 순포지션 증감 +는 롱 방향, -는 숏 방향 이동이며 CTA 실제 매매 확정은 아님.")
+    lines.append("※ 선물 가격은 Yahoo 연속선물 참고치(만기교체 영향 가능)이며, CME 공식 가격·동일 거래일 미결제약정에 의한 숏 스퀴즈 확정과 별개.")
     return "\n".join(lines) + "\n"
 
 
