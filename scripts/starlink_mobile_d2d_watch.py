@@ -137,10 +137,32 @@ TOPICS={
   "queries":(
     '"SpaceX" ("cell towers" OR "base stations" OR terrestrial OR fiber) when:4d',
     '"Starlink Mobile" (tower lease OR ground infrastructure OR cellular infrastructure) when:4d',
+    '"SpaceX" ("80,000" OR "80000") ("cell sites" OR towers OR wireless) when:20d',
+    '"SpaceX" ("Crown Castle" OR "American Tower") (leases OR sites OR negotiations) when:14d',
   ),
   "meaning":"실제 기지국 임차·안테나·광섬유 전송망·관제 계약이 나와야 철탑 및 장비 업체 매출로 연결됩니다.",
   "risk":"장소·송전·임차 비용, 통신 음영지역과 건물 실내 품질 개선 속도",
   "indicator":"계약 철탑 수·기지국 개통 수·가구당 평균판매단가·설비투자액",
+ },
+ "mobile_entry": {
+  "title":"[Starlink Mobile·시장 진입] 부스트모바일·지상망 이용",
+  "queries":(
+    '"SpaceX" "Boost Mobile" (talks OR buy OR acquisition OR network) when:6d',
+    '"SpaceX" "EchoStar" ("Boost Mobile" OR "MVNO" OR "network access") when:6d',
+  ),
+  "meaning":"부스트모바일 인수 협상과 AT&T·T-Mobile 지상망 이용권을 구분합니다. 인수만으로 기존 망 이용계약이 자동 승계되지는 않습니다.",
+  "risk":"기존 망 제공 사업자의 사전 동의·인수 조건·고객 이탈·통합 비용",
+  "indicator":"인수계약 서명·AT&T/T-Mobile 동의·망 이용계약·인수 종결·가입자 전환",
+ },
+ "amazon_leo": {
+  "title":"[경쟁사·FCC] 아마존 레오·글로벌스타 위성직접통신",
+  "queries":(
+    '"Amazon Leo" "Globalstar" (FCC OR acquisition OR spectrum OR closes) when:14d',
+    '"Amazon" "Globalstar" ("25 MHz" OR "transfer approval" OR "closing") when:14d',
+  ),
+  "meaning":"글로벌스타 인수 관련 FCC 면허이전 승인과 거래 종결·위성직접통신 상용화를 분리합니다.",
+  "risk":"다른 국가 승인·거래 종결 조건·시스템 허가·위성 발사 미완료",
+  "indicator":"FCC 인수 관련 원문·아마존/글로벌스타 종결 발표·별도 D2D 승인·실제 서비스",
  },
 }
 LABELS={
@@ -155,6 +177,14 @@ LABELS={
  "venture":"합작법인 확대·협력 발표(신규 매출과 다름)",
  "supply":"위성 공급·계약·발사 보도(검수 매출과 다름)",
  "tower":"지상망·철탑 계약/투자 보도(규모 확인 필요)",
+ "site_talks":"기지국 부지 이용권 협상 보도(8만 곳 목표·미계약)",
+ "site_agreement":"기지국 부지 이용계약 체결 보도(계약 원문 확인 전)",
+ "boost_talks":"부스트모바일 인수 또는 망 이용 협상 보도(미체결)",
+ "boost_agreement":"부스트모바일 인수·망 이용 계약 보도(계약 원문 확인 전)",
+ "boost_close":"부스트모바일 인수 종결 보도(공식 종결 확인 전)",
+ "transfer_approved":"아마존의 글로벌스타 인수 관련 FCC 이전 승인 보도(거래 종결 아님)",
+ "acquisition_agreement":"아마존·글로벌스타 인수 계약 보도(종결과 다름)",
+ "acquisition_close":"아마존·글로벌스타 인수 종결 보도(당사자 확인 전)",
 }
 MONTHS={"Jan":"01","Feb":"02","Mar":"03","Apr":"04","May":"05","Jun":"06",
         "Jul":"07","Aug":"08","Sep":"09","Oct":"10","Nov":"11","Dec":"12"}
@@ -298,10 +328,26 @@ def stage(topic:str,title:str)->str|None:
   if not re.search(r"contract|deal|satellite|commercial|service|verizon|at&t|launch",t):return None
   return "supply"
  if topic=="ground":
-  if not re.search(r"spacex|starlink",t) or not re.search(r"tower|terrestrial|fiber|base station|ground",t):return None
+  if not re.search(r"spacex|starlink",t) or re.search(r"boost mobile|echostar|globalstar",t):return None
+  if re.search(r"80,?000|80\\s*thousand",t) and re.search(r"cell sites?|tower sites?|sites? for wireless",t):
+   if re.search(r"signs?|signed|secured|executed|agreement concluded",t):return "site_agreement"
+   if re.search(r"talks?|negotiat|seek|pursu|access|aim|plan",t):return "site_talks"
+  if not re.search(r"tower|terrestrial|fiber|base station|ground",t):return None
   if not re.search(r"deal|lease|contract|invest|capex|construction|build|deploy|plan",t):return None
   return "tower"
- return None
+ if topic=="mobile_entry":
+  if not re.search(r"spacex|starlink",t) or "boost mobile" not in t:return None
+  if re.search(r"acquisition complete|acquisition closes|completed purchase|deal closes|transaction closed",t):return "boost_close"
+  if re.search(r"signs? (?:a )?definitive|signed agreement|agrees to acquire|acquisition agreement",t):return "boost_agreement"
+  if re.search(r"talks?|discuss|negotia|consider|weigh|seek|could buy|access|purchase|acquisition",t):return "boost_talks"
+  return None
+ if topic=="amazon_leo":
+  if "amazon" not in t or "globalstar" not in t:return None
+  if re.search(r"acquisition complete|acquisition closes|deal closes|closed transaction|merger complete",t):return "acquisition_close"
+  if re.search(r"fcc|federal communications commission|regulator",t) and re.search(r"approv|clears?|clearance|authoriz|consent|grants?",t):
+   return "transfer_approved"
+  if re.search(r"agrees to acquire|acquisition agreement|purchase agreement",t):return "acquisition_agreement"
+  return None
 
 def keywords(title:str)->set[str]:
  s=re.sub(r"(\d+)\s*(mhz|ghz)",r"\1\2",stem_title(title))
@@ -332,8 +378,13 @@ def event_id(category:str,status:str,title:str)->str:
   return f"carriers:att_tmus_vz_joint_venture:{status}"
  if category=="asts" and re.search(r"verizon|at&t",t):
   return f"asts:att_verizon_contract:{status}"
- if category=="ground" and re.search(r"tower|terrestrial",t):
-  return f"ground:starlink_terrestrial:{status}"
+ if category=="ground":
+  if re.search(r"80,?000|80\\s*thousand",t) and re.search(r"cell site|tower site|wireless",t):
+   return f"ground:spacex_80000_sites:{status}"
+  if re.search(r"tower|terrestrial",t):
+   return f"ground:starlink_terrestrial:{status}"
+ if category=="mobile_entry":return f"mobile:starlink_boost:{status}"
+ if category=="amazon_leo":return f"competitor:amazon_globalstar:{status}"
  # To allow different deployments/contracts, use stable material headwords,
  # without date or publisher-specific wording.
  terms=sorted(keywords(title))
@@ -458,20 +509,20 @@ def user_claims_factcheck()->str:
 def render(topic:str,status:str,item:dict,pair:dict)->str:
  meta=TOPICS[topic]
  timestamp=item["pub"].astimezone(KST).strftime("%Y-%m-%d %H:%M KST")
- return "\n".join([
+ lines=[
   meta["title"],
   "상태 | "+LABELS[status],
   "• 제목: "+item["title"],
   "근거 | "+item["publisher"]+"·"+pair["publisher"]+" | "+timestamp,
-  "  서로 다른 2개 매체의 같은 사건 보도. 정부 승인·계약 체결은 당사자 원문 확인 전까지 미확정.",
+  "  여러 매체가 동일 최초 보도를 재인용했을 수 있습니다. 협상·승인·계약·종결은 당사자 원문 확인 전까지 확정하지 않습니다.",
   "",
   "매출 | "+meta["meaning"],
   "역풍 | "+meta["risk"],
   "지표 | "+meta["indicator"],
-  "금액 | "+TRADE_PRICE_NOTE,
-  "• 원문: "+item["url"],
-  "• 원문: "+pair["url"],
- ])
+ ]
+ if topic=="license":lines.append("금액 | "+TRADE_PRICE_NOTE)
+ lines.extend(("• 원문: "+item["url"],"• 원문: "+pair["url"]))
+ return "\\n".join(lines)
 
 def load_state()->tuple[dict,bool]:
  if not STATE.exists():return {"version":1,"created_at":NOW.isoformat(),"seen":{}},True
@@ -494,7 +545,8 @@ def collect(rss_fn=rss)->tuple[dict,list[str],int]:
     good+=1
     for item in items:
      age=NOW-item["pub"]
-     if age>dt.timedelta(days=7) or age<dt.timedelta(minutes=-15):continue
+     lookback=dt.timedelta(days=15) if name in {"ground","amazon_leo"} else dt.timedelta(days=7)
+     if age>lookback or age<dt.timedelta(minutes=-15):continue
      sta=stage(name,item["title"])
      if not sta:continue
      k=f'{item["publisher"].lower()}|{stem_title(item["title"])}'
@@ -522,8 +574,14 @@ def choose_events(group:dict,seen:dict,bootstrap_run:bool,force:bool=False)->tup
    if bootstrap_run:
     updated[eid]=NOW.isoformat()
     continue
-   if NOW-item["pub"]>RECENT:continue
-   alerts.append((item["pub"],eid,render(topic,status,item,peers[0])))
+   backfill=(eid in {
+      "ground:spacex_80000_sites:site_talks",
+      "competitor:amazon_globalstar:transfer_approved",
+   } and NOW-item["pub"]<=dt.timedelta(days=15))
+   if NOW-item["pub"]>RECENT and not backfill:continue
+   report=render(topic,status,item,peers[0])
+   if backfill and NOW-item["pub"]>RECENT:report="[지난 보도 누락 보완 · 신규 계약 확정 아님]\\n"+report
+   alerts.append((item["pub"],eid,report))
    updated[eid]=NOW.isoformat()
  alerts.sort(key=lambda z:z[0],reverse=True)
  # Do not lose validated unreported events; keep them unread for next cycle.
@@ -614,6 +672,15 @@ def test()->int:
       "Verizon 2026년 10월 9일 배당락 공식 내역",
       "NASA Falcon 9·Dragon Crew-15~17 확정 계약"])
  assert "license:grain_spacex_800:agreement" in KNOWN_BASELINE_KEYS
+ assert stage("ground","SpaceX in talks to access 80,000 cell sites for wireless network")=="site_talks"
+ assert stage("ground","SpaceX signs definitive 80,000 cell sites agreement")=="site_agreement"
+ assert stage("mobile_entry","SpaceX in talks to buy Boost Mobile or access its network")=="boost_talks"
+ assert stage("mobile_entry","SpaceX signs a definitive agreement to acquire Boost Mobile")=="boost_agreement"
+ assert stage("amazon_leo","FCC approves Amazon Leo acquisition of Globalstar")=="transfer_approved"
+ assert event_id("ground","site_talks","SpaceX access 80,000 cell sites")=="ground:spacex_80000_sites:site_talks"
+ assert event_id("mobile_entry","boost_talks","SpaceX in talks to buy Boost Mobile")=="mobile:starlink_boost:boost_talks"
+ assert event_id("mobile_entry","boost_agreement","SpaceX signs Boost Mobile acquisition agreement")!=event_id("mobile_entry","boost_talks","SpaceX in talks to buy Boost Mobile")
+ assert event_id("amazon_leo","transfer_approved","FCC approves Amazon Leo acquisition Globalstar")=="competitor:amazon_globalstar:transfer_approved"
  assert "license:grain_spacex_800:fcc_approval" not in KNOWN_BASELINE_KEYS
  assert "license:grain_spacex_800:close" not in KNOWN_BASELINE_KEYS
  print("starlink_mobile_d2d_self_test=ok approvals_separated=1 government_rss_excluded=1 media_duo=1 no_duplicates=1 known_baseline=1")
