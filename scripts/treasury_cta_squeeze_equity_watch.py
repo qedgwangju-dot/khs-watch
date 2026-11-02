@@ -1535,6 +1535,9 @@ def _monthly_trend_block(snapshot: dict, *, compact: bool = False) -> str:
                 results.append(f"{m}개월({d}) {float(item['value']):.3f}% / {delta*100:+.1f}bp{arrow}")
             elif unit == "repo":
                 results.append(f"{m}개월({d}) {float(item['value']):.2f}% / {delta*100:+.1f}bp{arrow}")
+            elif unit == "futures":
+                prior = float(item["value"])
+                results.append(f"{m}개월({d}) {prior:.2f} / {delta/prior*100:+.1f}%{arrow}")
             else:
                 results.append(f"{m}개월({d}) {int(item['value']):+,}계약 / Δ{int(delta):+,}{arrow}")
         return " / ".join(results)
