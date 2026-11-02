@@ -34,6 +34,14 @@ def kind(category,title):
     if category=="spacex_valuation":
         if TARGET.search(t) or BROKER.search(t):return "analyst"
         return "space_technology"
+    if category=="golden_dome":
+        if not re.search(r"golden dome|골든돔",t) or not re.search(r"google|alphabet|구글|알파벳|aalyria|알리리아",t):
+            return "unrelated"
+        if re.search(r"award(?:ed)? contract|signed contract|contract awarded|수주 확정|계약 체결",t):
+            return "contract_reported"
+        if re.search(r"in talks|discuss|negotia|consider|weighs|to join|협의|논의|검토|추진",t):
+            return "pre_contract"
+        return "project_update"
     return "sector"
 
 def eligible(category,item,now):
@@ -45,8 +53,10 @@ def eligible(category,item,now):
     except (TypeError,ValueError):return False
     if pub.tzinfo is None:return False
     age=now-pub.astimezone(dt.timezone.utc)
-    if not -dt.timedelta(minutes=20)<=age<=dt.timedelta(hours=RECENT_HOURS):
+    window=dt.timedelta(days=7) if category=="golden_dome" else dt.timedelta(hours=RECENT_HOURS)
+    if not -dt.timedelta(minutes=20)<=age<=window:
         return False
+    if category=="golden_dome" and kind(category,title)=="unrelated":return False
     if category=="rocketlab":
         if kind(category,title) in ("development_delay","analyst"):return False
         if not re.search(r"rocket lab|electron|neutron|synspective",title,re.I):return False
@@ -61,6 +71,10 @@ def semantic_pair(category,a,b):
     ta,tb=str(a.get("title") or ""),str(b.get("title") or "")
     if NOISE.search(ta) or NOISE.search(tb):return False
     if kind(category,ta)!=kind(category,tb):return False
+    if category=="golden_dome":
+        # Different publishers may relay the same Bloomberg scoop; evidence
+        # remains one initial source until a company/DoD notice independently confirms it.
+        return kind(category,ta)!="unrelated"
     x,y=material_words(ta),material_words(tb)
     common=x&y
     return len(common)>=2 and len(common)/max(1,len(x|y))>=0.4
@@ -86,6 +100,9 @@ def semantic_id(category,item):
         # Preserve 2027 dedup identity, but do not suppress a future 2028 slip.
         years=re.findall(r"\b20\d{2}\b",item["title"])
         return "semantic:rocketlab:neutron:first_flight_shift_"+(years[-1] if years else "undated")
+    if category=="golden_dome":
+        # New signed award is a new event, not a duplicate of earlier talks.
+        return "semantic:golden_dome:google_data_security:"+event+":"+pub.strftime("%Y-%m")
     monday=pub.date()-dt.timedelta(days=pub.weekday())
     return "semantic:"+category+":"+topic_key(category,item["title"])+":"+event+":"+monday.isoformat()
 
@@ -98,6 +115,15 @@ def self_test():
     assert kind("rocketlab","Rocket Lab Neutron maiden flight delayed")=="development_delay"
     assert kind("rocketlab","Rocket Lab Electron secures 20 mission contract")=="contract"
     assert kind("spacex_valuation","Morgan Stanley raises SpaceX price target")=="analyst"
+    assert kind("golden_dome","Alphabet Google in talks to join Golden Dome")=="pre_contract"
+    assert kind("golden_dome","Google signs contract for Golden Dome data security")=="contract_reported"
+    assert kind("golden_dome","Golden Dome rocket launch tests")=="unrelated"
+    g1=article("Alphabet Google in talks to join Golden Dome","2026-10-30T20:00:00+00:00")
+    g2=dict(article("Google weighs Golden Dome participation","2026-11-02T20:00:00+00:00"),source="Bloomberg")
+    assert eligible("golden_dome",g1,dt.datetime(2026,11,3,tzinfo=dt.timezone.utc))
+    assert semantic_pair("golden_dome",g1,g2)
+    assert semantic_id("golden_dome",g1)==semantic_id("golden_dome",g2)
+    assert semantic_id("golden_dome",g1)!=semantic_id("golden_dome",article("Google signs contract for Golden Dome data security","2026-10-30T20:00:00+00:00"))
     assert not eligible("rocketlab",article("Rocket Lab Neutron debut delayed to 2027"),now)
     assert not eligible("rocketlab",article("Citizens lowers Rocket Lab price target on Neutron delay"),now)
     assert not eligible("spacex_valuation",article("Morgan Stanley raises SpaceX target price"),now)
