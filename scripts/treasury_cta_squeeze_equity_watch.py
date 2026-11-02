@@ -1216,7 +1216,8 @@ def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str]
 def format_alert(snapshot, previous, fx, fx_date, reasons):
     title, body = _base_format(snapshot, previous, fx, fx_date, reasons)
     body = _compact_duplicates(body)
-    body = _easy_read_block(snapshot, previous, reasons) + _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=True) + "\n" + body
+    body = (_easy_read_block(snapshot, previous, reasons) + _monthly_trend_block(snapshot, compact=True)
+            + _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=True) + "\n" + body)
 
     impact, path = _equity_impact(snapshot, previous, reasons)
     block = (
