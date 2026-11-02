@@ -394,3 +394,33 @@ def install(base) -> None:
     base.select_diverse=select
     for q in (*[prefix+n for n in EVENTS],*EXTRA_QUERIES):
         if q not in base.QUERIES:base.QUERIES.append(q)
+
+    # Run offline invariants on every import, including the existing
+    # alert-quality regression step. No network, Telegram or disk writes.
+    original_now, original_loader = base.NOW, base.load_state
+    try:
+        base.NOW = dt.datetime(2026, 11, 2, 0, 0, tzinfo=dt.timezone.utc)
+        base.load_state = lambda: {"seeded":True,"seen":[OLD_WRONG_MICRODUCK_KEY]}
+        asserted_keys = set()
+        for name, definition in EVENTS.items():
+            rows = query_news(prefix + name)
+            assert len(rows) == 1, ("robot-nov02 missing recovery",name)
+            row = rows[0]
+            content = " ".join(str(row.get(k) or "") for k in ("title","description","source"))
+            detected = group(content)
+            assert detected == definition["group"], ("robot-nov02 group",name,detected)
+            assert score(row) >= 11, ("robot-nov02 score",name)
+            keyval = key(row)
+            assert keyval not in asserted_keys, ("robot-nov02 duplicate key",name)
+            asserted_keys.add(keyval)
+        assert len(asserted_keys) == len(EVENTS)
+        base.load_state = lambda: {"seeded":True,"seen":[]}
+        assert not query_news(prefix + "microduck_official_correction"), "Do not send correction without wrong historical state"
+        base.NOW = dt.datetime(2026, 11, 7, 0, 0,tzinfo=dt.timezone.utc)
+        assert all(not query_news(prefix + name) for name in EVENTS), "Historical catchup cannot be perpetual"
+        plan = {"title":"대동기어 EYOU 합작법인 설립 추진",
+                "description":"2027년 합작법인 설립 목표 계획",
+                "source":"대동기어"}
+        assert not _live_milestone(plan,"daedong_eyou_robot_actuator")
+    finally:
+        base.NOW, base.load_state = original_now, original_loader
