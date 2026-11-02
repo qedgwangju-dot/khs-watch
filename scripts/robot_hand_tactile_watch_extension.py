@@ -124,7 +124,17 @@ def identity(text: str) -> str:
         if re.search(r"sensing\s*glove|tactile\s*glove|replaceable\s*(?:touch|tactile)"
                      r"|hand\s*assembly|robot\s*hand\s*(?:sensors?|reliability)"
                      r"|교체형\s*(?:촉각|센서)|손\s*조립\s*자동화", text, re.I):
-            return "tesla_optimus_hand_service"
+            # Old Optimus production-ramp reports discuss *planned* sensing
+            # gloves, fixture/rework problems and hands. The previously
+            # established Tesla production-ramp lane owns those reports.
+            # This extension only owns verified completed hand-specific
+            # integration or real hand-assembly automation milestones.
+            hand_stage = milestone({"title":text}, "tesla_optimus_hand_service")
+            if hand_stage in {
+                "replaceable_glove_in_production",
+                "hand_assembly_automation_started",
+            }:
+                return "tesla_optimus_hand_service"
     return ""
 
 def _verified_phrase(text: str, pattern: re.Pattern) -> bool:
