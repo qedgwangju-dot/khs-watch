@@ -209,6 +209,19 @@ class ETFShortInterestTests(unittest.TestCase):
         dates = etf.verified_calendar(dt.date(2027, 1, 12), getter=lambda _url: "")
         self.assertEqual(dates.get("2026-12-31"), "2027-01-12")
 
+    def test_us_positioning_sender_rejects_invalid_receipts_and_ambiguous_retries(self):
+        workflow = (ROOT / ".github/workflows/us-positioning-telegram-watch.yml").read_text()
+        send = workflow.split("      - name: Send Telegram update", 1)[1].split(
+            "      - name: Persist state after successful delivery", 1
+        )[0]
+        self.assertNotIn("for attempt in range(3)", send)
+        self.assertIn("type(message_id) is not int", send)
+        self.assertIn("message_id <= 0", send)
+        self.assertIn("type(returned_id) is not int", send)
+        self.assertIn("recipient_matches", send)
+        self.assertIn('"chat_id_match":True', send)
+        self.assertIn("ids.append(message_id)", send)
+
     def test_us_positioning_code_audits_do_not_block_production(self):
         workflow = (ROOT / ".github/workflows/us-positioning-telegram-watch.yml").read_text()
         self.assertIn("github.event_name == 'push' && 'code-audit' || 'production'", workflow)
