@@ -65,6 +65,7 @@ TRUSTED=(
  "ZDNet","한국경제","매일경제","전자신문","동아사이언스",
  "DIGITIMES","Reuters","Bloomberg","SpaceNews","Payload",
  "Financial Times","Aviation Week","The Korea Economic Daily",
+ "한국경제TV","뉴시스",
 )
 STOP=set((
  "telepix kencoa aerospace space spacex satellite satellites "
@@ -97,12 +98,17 @@ QUERIES={
   'LK삼양 텔레픽스 (별추적기 OR 양산 OR 공급 OR 수주) when:14d',
   '"LK Samyang" "TelePIX" (production OR star tracker OR contract) when:14d',
  ),
+ "contec_ground":(
+  '컨텍 (광통신 OR 광지상국 OR 레이저통신 OR 위성데이터) (실증 OR 수신 OR 계약 OR 개통 OR 상용화) when:18d',
+  '"CONTEC" ("optical ground station" OR "optical downlink" OR "laser communication") (demonstration OR contract OR service) when:18d',
+ ),
 }
 TERM={
  "telepix_contract":re.compile(r"telepix|텔레픽스",re.I),
  "telepix_flight":re.compile(r"telepix|텔레픽스",re.I),
  "kencoa_supplier":re.compile(r"kencoa|켄코아",re.I),
  "kencoa_roadster":re.compile(r"kencoa|켄코아",re.I),
+ "contec_ground":re.compile(r"컨텍|\bcontec\b",re.I),
  "lk_samyang":re.compile(r"(lk\s*삼양|lk[\s-]*samyang|엘케이삼양).*(telepix|텔레픽스)|(telepix|텔레픽스).*(lk\s*삼양|lk[\s-]*samyang|엘케이삼양)",re.I),
 }
 PARTNERS={
@@ -243,6 +249,14 @@ def classify(group:str,title:str)->str|None:
   if re.search(r"양산\s*계약|양산\s*수주|mass.production|production contract",s,re.I):
    return "lk_samyang:startracker:production_contract"
   if TEST.search(s):return "lk_samyang:startracker:orbital_verified"
+ if group=="contec_ground":
+  if not re.search(r"광통신|광지상국|광학\s*지상국|optical\s*(?:ground|downlink)|laser\s*communication",s,re.I):return None
+  if re.search(r"정식\s*계약|계약\s*체결|수주\s*확정|signs? .{0,35}contract",s,re.I):
+   return "contec_ground:optical_ground:new_contract"
+  if re.search(r"서비스\s*개시|상용화\s*시작|commercial\s*operation",s,re.I):
+   return "contec_ground:optical_ground:commercial"
+  if re.search(r"성공|실증|수신|검증|test|demonstrat|downlink",s,re.I):
+   return "contec_ground:optical_ground:demo:2026-10" if re.search(r"2026|10월|2\.5\s*gbps|33\s*gb|33기가",s,re.I) else "contec_ground:optical_ground:demo:unspecified"
  return None
 
 def signature(group:str,event:str,item:dict)->str:
@@ -279,6 +293,10 @@ def korean_summary(group:str,event:str)->tuple[str,str,str]:
   return ("[상장 공급망·광학] LK삼양·텔레픽스",
           "AI 별추적기 우주 실증과 신규 양산계약은 별개입니다. 새 계약을 확인한 후에만 확정 매출로 분류합니다.",
           "방사선 검증·광학 정렬·별 인식 정밀도·인수시험 지연")
+ if group=="contec_ground":
+  return ("[위성 광통신·국내 지상국] 컨텍",
+          "제주 위성 광통신 데이터 수신 실증 보도는 광지상국의 시험성과입니다. 고객 실명·계약액·실제 반복 매출은 별도 검증하며 2.5Gbps 실증 속도를 전체 상용 설비의 보장 속도로 쓰지 않습니다.",
+          "기상·광학 정렬·위성 가시시간·고객 검증·운영비와 상용계약 지연")
  raise ValueError("Unapproved event for message")
 
 def baseline()->str:
@@ -321,7 +339,8 @@ def collect(rss_fetch=rss):
     success+=1
     for row in rows:
      elapsed=NOW-row["published"]
-     if elapsed>MAX_NEWS_AGE or elapsed < -dt.timedelta(minutes=20):continue
+     lookback=dt.timedelta(days=15) if group=="contec_ground" else MAX_NEWS_AGE
+     if elapsed>lookback or elapsed < -dt.timedelta(minutes=20):continue
      event=classify(group,row["title"])
      if not event:continue
      fp=row["source"].casefold()+"|"+row["title"].casefold()
@@ -343,12 +362,15 @@ def decide(candidates:dict,seen:dict,first:bool):
    if first:
     next_seen[event]=NOW.isoformat()
     continue
-   if NOW-row["published"]>LIVE_WINDOW:continue
+   historic_demo=(group=="contec_ground" and event=="contec_ground:optical_ground:demo:2026-10"
+                and NOW-row["published"]<=dt.timedelta(days=15))
+   if NOW-row["published"]>LIVE_WINDOW and not historic_demo:continue
    if any(event==e for _,e,_ in selected):continue
    title,statement,risk=korean_summary(group,event)
    stamp=row["published"].astimezone(KST).strftime("%Y-%m-%d %H:%M")
    message="\n".join([
-    title,"• 시각: "+stamp+" KST",
+    ("[지난 실증 보도 누락 보완·신규 수주 아님] "+title) if historic_demo and NOW-row["published"]>LIVE_WINDOW else title,
+    "• 시각: "+stamp+" KST",
     "• 확인: 서로 다른 두 취재 매체가 같은 고객·사건을 보도. 공식 신규 계약금액 확인 전 확정 수주액으로 계산하지 않습니다.",
     "• 핵심: "+statement,
     "• 매출 연결: 납품·검수 또는 서비스 사용량 확인 후 실제 매출 발생 여부를 구분합니다.",
@@ -388,6 +410,10 @@ def self_test()->int:
  assert classify("kencoa_supplier","켄코아 SpaceX 신규 부품 공급 계약 체결")=="kencoa_supplier:spacex:new_contract"
  assert classify("kencoa_supplier","Kencoa signs new SpaceX rocket parts contract")=="kencoa_supplier:spacex:new_contract"
  assert "kencoa_supplier:spacex:new_contract" not in KEY_BASELINE
+ assert classify("contec_ground","컨텍 2026년 10월 우주 광통신 데이터 33GB 수신 실증 성공")=="contec_ground:optical_ground:demo:2026-10"
+ assert classify("contec_ground","컨텍 optical ground station 신규 공급 계약 체결")=="contec_ground:optical_ground:new_contract"
+ assert classify("contec_ground","컨텍 optical ground station 상용화 시작")=="contec_ground:optical_ground:commercial"
+ assert "contec_ground:optical_ground:demo:2026-10" not in KEY_BASELINE
  assert set(KEY_BASELINE).isdisjoint({"kencoa_roadster:potential_supply"})
  assert len(BASELINE_LINKS)<=10 and len(baseline())<3400
  a={"source":"연합뉴스","published":NOW,"title":"텔레픽스 인도 스카이서브 서비스 공급 계약 체결","url":"https://a.example"}
@@ -428,7 +454,7 @@ def main()->int:
   "# 국내 위성 AI·SpaceX 공급망 감시 상태",
   "- 확인 시각: "+NOW.astimezone(KST).isoformat(),
   f"- 직접 열람한 기업 원문: {len(verified)}/2 ({', '.join(verified)})",
-  f"- 뉴스 검색 성공: {rss_ok}/10 (실패: {len(errors)})",
+  f"- 뉴스 검색 성공: {rss_ok}/{sum(len(x) for x in QUERIES.values())} (실패: {len(errors)})",
   f"- 처음 등록: {first}; 신규 사건: {len(events)}; 알림 생성: {bool(report)}",
   "- Roadster SpaceX 기술 협력과 켄코아의 직접 추력기 납품은 분리 판정",
   "- Antaris 2027 계획과 Bellatrix 2028 MOU는 별개",
