@@ -311,21 +311,44 @@ def load_state(path: pathlib.Path = STATE) -> dict:
 def render(d: dict) -> tuple[str, str]:
     q, s = d["QQQ"], d["SPY"]
     title = "미국 QQQ·SPY 공매도 잔량 괴리 확대"
+    periods = d.get("period_comparisons") or {}
+    historical = ["<b>동일 기준일 1·2·3·6개월 및 연초 비교</b>"]
+    for label in ("1개월", "2개월", "3개월", "6개월", "연초"):
+        period = periods.get(label)
+        if not period:
+            historical.append(f"• {label}: 과거 잔량 교차검증 미완료")
+            continue
+        previous = period["previous_settlement"]
+        old_q, old_s = period["QQQ"], period["SPY"]
+        historical.append(
+            f"• {label}({previous}): "
+            f"QQQ {old_q['previous_shares']:,}→{old_q['shares']:,}주 "
+            f"({old_q['change_shares']:+,}주, {old_q['change_pct']:+.2f}%) · "
+            f"SPY {old_s['previous_shares']:,}→{old_s['shares']:,}주 "
+            f"({old_s['change_shares']:+,}주, {old_s['change_pct']:+.2f}%)"
+        )
     body = "\n".join([
-        "<b>QQQ·SPY 공매도 잔량 — 신규 확인</b>",
-        f"• 결제 기준일: {d['settlement']} · 공식 공표일: {d['published']}",
+        "<b>QQQ·SPY 공매도 미청산 잔량 — 공식 공표 자료</b>",
+        f"• 결제 기준일: {d['settlement']} · 공표일: {d['published']}",
+        f"• 비교기간: 직전 결제일 {d['previous_settlement']} → {d['settlement']} (약 2주)",
         f"• QQQ: {q['previous_shares']:,}→{q['shares']:,}주"
         f" ({q['change_shares']:+,}주, {q['change_pct']:+.2f}%)",
         f"• SPY: {s['previous_shares']:,}→{s['shares']:,}주"
         f" ({s['change_shares']:+,}주, {s['change_pct']:+.2f}%)",
-        f"• QQQ-SPY 증감률 격차: {d['divergence_pp']:+.2f}%p"
-        " (직전 공표의 동일 기간 대비)",
-        "• 이 값은 해당 결제일 공매도 <b>미청산 잔량</b>이며 일별 공매도 거래량이 아닙니다.",
+        f"• 직전 발표 대비 증감률 격차: {d['divergence_pp']:+.2f}%p"
+        " (같은 기간 비교, 선행경보 기준 15%p)",
+        "",
+        *historical,
+        "• 과거 비교는 두 종목의 결제 기준일을 일치시켰으며, "
+        "기간별 잔량을 두 자료 제공처 이상에서 대조했습니다.",
+        "• 서로 다른 비교기간의 변화율·주식수 감소를 하나의 괴리율로 합치지 않습니다.",
+        "",
+        "• 공매도 미청산 잔량은 일별 공매도 거래량이 아닙니다.",
         "• 기술주 위험 회피·ETF 헤지·상대가치 거래 등 원인을 구분해야 합니다.",
-        "• SPY 감소가 미국 전체 시장의 순매수 확정이라는 뜻은 아닙니다.",
-        "• ETF 잔량 증가만으로 나스닥 추가 폭락·숏 스퀴즈를 확정할 수 없습니다.",
-        "• 다음 확인: 다음 FINRA 발표, QQQ·SPY 공매도 잔량·유통주식 대비 비중,"
-        " NQ 선물 포지션·옵션·시장 확산 지표.",
+        "• SPY 잔량 감소가 미국 주식시장 전체의 순매수 확정은 아닙니다.",
+        "• 잔량 변화만으로 나스닥 폭락·숏 스퀴즈를 확정할 수 없습니다.",
+        "• 다음 확인: 다음 FINRA 공표, 두 ETF 잔량·유통주식 대비 비중, "
+        "NQ 선물 포지션·옵션·시장 확산 지표.",
         f'<a href="{d["sources"]["QQQ"][0]}">QQQ 데이터</a>'
         f' · <a href="{d["sources"]["SPY"][0]}">SPY 데이터</a>'
         f' · <a href="{FINRA_CALENDAR}">FINRA 공식 발표 일정</a>',
