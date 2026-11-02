@@ -15,6 +15,15 @@ on:
     - cron: "17 * * * *"
     - cron: "41 * * * *"
   workflow_dispatch:
+    inputs:
+      send_test:
+        description: "Send a Telegram connection test"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
 
 permissions:
   contents: write
@@ -72,7 +81,7 @@ jobs:
           fi
 
       - name: Validate Telegram route when needed
-        if: hashFiles('out/honam_semiconductor_alert.json') != '' || github.event_name == 'workflow_dispatch'
+        if: hashFiles('out/honam_semiconductor_alert.json') != '' || (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true')
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HONAM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
@@ -95,7 +104,7 @@ jobs:
           PY
 
       - name: Send manual setup test to Telegram
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HONAM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
@@ -142,6 +151,7 @@ jobs:
           if not chunks:
               raise RuntimeError("Telegram chunks are empty")
           ids = []
+          confirmed_chats = set()
           for chunk in chunks:
               payload = urllib.parse.urlencode({"chat_id": chat_id, "text": chunk, "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode("utf-8")
               req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
@@ -149,8 +159,23 @@ jobs:
                   result = json.loads(response.read().decode("utf-8"))
               if not result.get("ok"):
                   raise RuntimeError(f"Telegram rejected message: {result}")
-              ids.append(result.get("result", {}).get("message_id"))
-          confirmed = {"status": "confirmed", "message_ids": ids, "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")}
+              delivered = result.get("result") or {}
+              message_id = delivered.get("message_id")
+              delivered_chat = delivered.get("chat") or {}
+              actual_chat_id = delivered_chat.get("id")
+              if not isinstance(message_id, int) or actual_chat_id is None:
+                  raise RuntimeError("Telegram sendMessage response is missing chat.id or message_id")
+              if chat_id.lstrip("-").isdigit():
+                  if str(actual_chat_id) != chat_id:
+                      raise RuntimeError("Telegram delivered to an unexpected chat.id")
+              elif chat_id.startswith("@"):
+                  if str(delivered_chat.get("username") or "").casefold() != chat_id[1:].casefold():
+                      raise RuntimeError("Telegram delivered to an unexpected chat username")
+              else:
+                  raise RuntimeError("Telegram destination must be a numeric chat ID or @username")
+              ids.append(message_id)
+              confirmed_chats.add(str(actual_chat_id))
+          confirmed = {"status": "confirmed", "chat_ids": sorted(confirmed_chats), "message_ids": ids, "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")}
           pathlib.Path("out/honam_semiconductor_telegram_confirmed.json").write_text(json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           print(f"telegram_delivery_confirmed=true message_ids={ids}")
           PY
