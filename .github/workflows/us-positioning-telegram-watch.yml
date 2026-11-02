@@ -218,37 +218,45 @@ jobs:
 
           ids=[]
           for idx,chunk in enumerate(chunks, start=1):
-              last=None
-              for attempt in range(3):
-                  try:
-                      data=urllib.parse.urlencode({
-                          "chat_id":chat_id,
-                          "text":chunk,
-                          "parse_mode":"HTML",
-                          "disable_web_page_preview":"true",
-                      }).encode()
-                      req=urllib.request.Request(
-                          f"https://api.telegram.org/bot{token}/sendMessage",
-                          data=data,
-                          method="POST",
-                      )
-                      with urllib.request.urlopen(req,timeout=30) as r:
-                          j=json.loads(r.read().decode())
-                      if not j.get("ok"):
-                          raise RuntimeError(f"Telegram rejected: {j}")
-                      ids.append((j.get("result") or {}).get("message_id"))
-                      break
-                  except Exception as exc:
-                      last=exc
-                      if attempt==2:
-                          raise
-                      time.sleep(2*(attempt+1))
+              # Telegram sendMessage has no delivery idempotency key: a timeout
+              # after acceptance must NOT automatically resend the same chunk.
+              data=urllib.parse.urlencode({
+                  "chat_id":chat_id,
+                  "text":chunk,
+                  "parse_mode":"HTML",
+                  "disable_web_page_preview":"true",
+              }).encode()
+              req=urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=data,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req,timeout=30) as r:
+                  j=json.loads(r.read().decode())
+              msg=j.get("result") or {}
+              message_id=msg.get("message_id")
+              target=msg.get("chat") or {}
+              returned_id=target.get("id")
+              if not j.get("ok") or type(message_id) is not int or message_id <= 0:
+                  raise RuntimeError("Telegram response missing valid delivery message_id")
+              if type(returned_id) is not int:
+                  raise RuntimeError("Telegram response missing valid chat.id")
+              if chat_id.lstrip("-").isdigit():
+                  recipient_matches=(str(returned_id)==chat_id)
+              elif chat_id.startswith("@"):
+                  recipient_matches=(str(target.get("username") or "").lower()==chat_id[1:].lower())
+              else:
+                  recipient_matches=False
+              if not recipient_matches:
+                  raise RuntimeError("Telegram response recipient does not match configured chat")
+              ids.append(message_id)
 
           confirm.write_text(
               json.dumps({
                   "bot_username":actual,
                   "message_ids":ids,
                   "message_count":len(ids),
+                  "chat_id_match":True,
               },ensure_ascii=False,indent=2)+"\n",
               encoding="utf-8",
           )
