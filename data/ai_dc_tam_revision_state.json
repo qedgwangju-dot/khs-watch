@@ -29,7 +29,7 @@
     "agentic_cpu_per_gpu": 1.0
   },
   "baseline_source": "BofA Global Research 2차 공개보도 기준",
-  "updated_at_kst": "2026-11-02T11:31:09+09:00",
+  "updated_at_kst": "2026-11-02T15:02:57+09:00",
   "seen_ids": [
     "66d627057937a9e600c63eac",
     "08d5cbf40c85943b346ecc01",
@@ -115,13 +115,9 @@
       "power_basis": "총전력/IT전력/전원인가 여부 원문 확인 전 미확정",
       "provenance": "사용자 제공 기사 발췌; 원문 수치 독립 검증 전"
     },
-    "primary_status": "발행처 RSS·핵심 숫자 2개 이상 직접 확인",
-    "primary_numeric_anchors": [
-      "50gw",
-      "60gw",
-      "24gw"
-    ],
-    "last_primary_checked_kst": "2026-11-02T11:31:09+09:00",
+    "primary_status": "과거 기사 재발견·신규 알림 금지",
+    "primary_numeric_anchors": [],
+    "last_primary_checked_kst": "2026-11-02T15:02:57+09:00",
     "primary_errors": [],
     "publisher_release": "2026-10-19T05:39:38+00:00",
     "publisher_article_url": "https://newsletter.semianalysis.com/p/datacenters-2027-the-year-of-acceleration",
@@ -147,30 +143,20 @@
       "contract_tcv_not_annual_capex": true,
       "source_grade": "SemiAnalysis 발행처 + DayOne 회사 발표; 금융 현금집행 별도 검증"
     },
-    "lease_evidence": {
-      "headline_1_3_t": true,
-      "body_under_1_t": true,
-      "body_over_1_t": true,
-      "term_15_20_years": true,
-      "tcv_30_50_b_per_gw": true,
-      "developer_prefund_5_10_pct": true,
-      "dayone_9_months": true,
-      "body_conflict": true,
-      "exact_lease_ytd_usable": false
-    },
+    "lease_evidence": {},
     "lease_clarification_id": "semianalysis-2027-lease-conflict-clarification-20261019",
     "lease_clarification_at_kst": "2026-10-19T21:47:12+09:00"
   },
   "fx": {
     "usdkrw": 1335.27,
-    "basis": "2026-10-30 일일 기준 · ECB/Frankfurter · 조회 2026-11-02 11:31 KST · 보조 API 2026-11-02 · 차이 0.19% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-30 일일 기준 · ECB/Frankfurter · 조회 2026-11-02 15:02 KST · 보조 API 2026-11-02 · 차이 0.19% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "quality": "교차검증 일일 기준환율"
   },
   "last_collection": {
-    "trusted_rows": 5,
+    "trusted_rows": 4,
     "new_rows": 0,
-    "candidate_metric_rows": 4,
+    "candidate_metric_rows": 3,
     "material_changes": 0
   }
 }
