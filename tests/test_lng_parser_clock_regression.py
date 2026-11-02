@@ -497,3 +497,50 @@ class RussiaUkraineGasWatchTest(unittest.TestCase):
             finally:
                 for key,value in saved.items():
                     setattr(monitor.core,key,value)
+
+
+
+class TTFValidatedFallbackTest(unittest.TestCase):
+    def test_ttf_original_verified_quote_is_preferred(self):
+        from unittest.mock import patch
+        q=monitor.core.Quote(
+            "ttf","TE-KO:EU-GAS","EU Gas","유로/MWh",
+            101.0,102.0,-0.9804,1.0,"2026-11-02T00:00:00Z",0,
+            "기준일=2026-11-02"
+        )
+        with patch.object(monitor,"_fetch_te_korean_detail_quote_v34",return_value=q) as main, \
+             patch.object(monitor,"_fetch_te_commodity_quote_v34") as backup:
+            got=monitor._fetch_verified_ttf_quote_v34()
+        self.assertEqual(got,q)
+        main.assert_called_once_with("ttf")
+        backup.assert_not_called()
+
+    def test_ttf_backup_requires_two_matching_locales_and_explicit_date(self):
+        from unittest.mock import patch
+        quote=monitor.core.Quote(
+            "ttf","TE:EU-GAS","TE EU gas","유로/MWh",
+            101.50,103.50,-1.932,1.0,"2026-11-02T00:00:00Z",0,
+            "기준일=2026-11-02; locale_checks=2"
+        )
+        with patch.object(monitor,"_fetch_te_korean_detail_quote_v34",
+                          side_effect=RuntimeError("page internal values disagree")), \
+             patch.object(monitor,"_fetch_te_commodity_quote_v34",return_value=quote):
+            got=monitor._fetch_verified_ttf_quote_v34()
+        self.assertAlmostEqual(got.price,101.50)
+        self.assertIn("다국어",got.label)
+        self.assertIn("same provider",got.source_note)
+        invalid=monitor._replace_quote_v34(quote,source_note="기준일=2026-11-02; locale_checks=1")
+        with patch.object(monitor,"_fetch_te_korean_detail_quote_v34",
+                          side_effect=RuntimeError("inconsistent")), \
+             patch.object(monitor,"_fetch_te_commodity_quote_v34",return_value=invalid):
+            with self.assertRaisesRegex(RuntimeError,"2개 미만"):
+                monitor._fetch_verified_ttf_quote_v34()
+
+    def test_ttf_both_sources_invalid_remains_blocked(self):
+        from unittest.mock import patch
+        with patch.object(monitor,"_fetch_te_korean_detail_quote_v34",
+                          side_effect=RuntimeError("internal mismatch")), \
+             patch.object(monitor,"_fetch_te_commodity_quote_v34",
+                          side_effect=RuntimeError("stale locale rows")):
+            with self.assertRaisesRegex(RuntimeError,"교차검증 모두 실패"):
+                monitor._fetch_verified_ttf_quote_v34()

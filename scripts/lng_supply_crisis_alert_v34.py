@@ -12,6 +12,7 @@ v33의 정제제품 사건축을 유지하면서 다음만 수정한다.
 from __future__ import annotations
 
 import datetime as dt
+from dataclasses import replace as _replace_quote_v34
 import hashlib
 import html
 import json
@@ -454,6 +455,36 @@ def _fetch_te_korean_detail_quote_v34(key: str) -> core.Quote:
     )
 
 
+
+def _fetch_verified_ttf_quote_v34() -> core.Quote:
+    """Fail closed on conflicting quotes; allow a fresh two-locale consensus."""
+    try:
+        return _fetch_te_korean_detail_quote_v34("ttf")
+    except RuntimeError as primary_error:
+        try:
+            alternative = _fetch_te_commodity_quote_v34("ttf")
+        except Exception as backup_error:
+            raise RuntimeError(
+                "TTF 한국 상세페이지 내부 불일치와 다국어 상품표 교차검증 모두 실패: "
+                f"primary={type(primary_error).__name__}:{str(primary_error)[:140]}; "
+                f"backup={type(backup_error).__name__}:{str(backup_error)[:150]}"
+            ) from backup_error
+        note = str(alternative.source_note)
+        checked = re.search(r"(?:^|;) locale_checks=(\d+)", note)
+        if not checked or int(checked.group(1)) < 2:
+            raise RuntimeError("TTF 대체 경로 유효한 다국어 교차확인 2개 미만")
+        if "기준일=" not in note:
+            raise RuntimeError("TTF 대체 경로 원천자료 관측일 누락")
+        return _replace_quote_v34(
+            alternative,
+            label="Trading Economics 다국어 EU Gas(TTF 추종 공개값)",
+            source_note=(
+                note + "; Korean detail inconsistent; consensus same provider, "
+                "not independent ICE settlement"
+            ),
+        )
+
+
 def _fetch_yahoo_brent_daily_close_v34() -> core.Quote:
     symbol = str(core.PRICE_SPECS["brent"]["symbol"])
     encoded = urllib.parse.quote(symbol, safe="")
@@ -510,7 +541,7 @@ def _fetch_te_commodity_quote_v34(key: str) -> core.Quote:
     for url in TE_COMMODITY_URLS_V34:
         cache_bust = int(core.now_utc().timestamp())
         try:
-            raw = core.fetch_bytes(f"{url}?v={cache_bust}").decode("utf-8", errors="replace")
+            raw = core.fetch_bytes(f"{url}?v={cache_bust}", timeout=6, attempts=1).decode("utf-8", errors="replace")
             parsed_rows.append(_parse_te_commodity_row_v34(_visible_text_v34(raw), key))
         except Exception as exc:
             errors.append(f"{url}:{type(exc).__name__}:{str(exc)[:700]}")
@@ -536,7 +567,7 @@ def _fetch_te_commodity_quote_v34(key: str) -> core.Quote:
             clusters.append([row])
     clusters.sort(key=lambda c: (len(c), -max(float(x["actual"]) for x in c)), reverse=True)
     current_rows = clusters[0] if clusters else []
-    if len(parsed_rows) >= 2 and len(current_rows) < 2:
+    if len(current_rows) < 2:
         raise RuntimeError(
             f"Trading Economics locale consensus missing for {key}: "
             + ",".join(f"{row['actual']}@{row['source_date']}" for row in dated_rows)
@@ -1738,7 +1769,7 @@ lng_collection_budget.install(
     core,
     early_queries=_news_v10.EARLY_ALASKA_QUERIES,
     market_sources={
-        "ttf": lambda: {"ttf": _fetch_te_korean_detail_quote_v34("ttf")},
+        "ttf": lambda: {"ttf": _fetch_verified_ttf_quote_v34()},
         "jkm": lambda: {"jkm": _fetch_te_korean_detail_quote_v34("jkm")},
         "brent": lambda: {"brent": _fetch_yahoo_brent_daily_close_v34()},
         "official_bonds": _official_bond_quotes_v34,
