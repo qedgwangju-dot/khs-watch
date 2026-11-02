@@ -36,7 +36,7 @@ PROVIDERS = {
     "finshort": "https://finshort.com/{ticker}/short-interest",
 }
 VENUES = {"QQQ": "nasdaq", "SPY": "nyse"}
-MAX_PUBLICATION_AGE_DAYS = 12
+MAX_PUBLICATION_AGE_DAYS = 21
 
 # Exact dates verified against FINRA's 2026 publication schedule.
 # If the official calendar page cannot be reached, no unknown 2027 date is guessed.
@@ -131,6 +131,14 @@ def read_calendar(html: str, reporting_year: int) -> dict[str, str]:
     soup = BeautifulSoup(html, "html.parser")
     out = {}
     for table in soup.select("table"):
+        # FINRA presents several calendar years on the same page. Never
+        # reinterpret a prior-year table as belonging to the current year.
+        year_heading = table.find_previous(["h2", "h3"])
+        if year_heading is not None:
+            marker = re.search(r"(20\d{2})\s+Short Interest Reporting Dates",
+                               year_heading.get_text(" ", strip=True), re.I)
+            if marker and int(marker.group(1)) != reporting_year:
+                continue
         rows = table.select("tr")
         if not rows:
             continue
@@ -156,16 +164,23 @@ def verified_calendar(today: dt.date, getter=get) -> dict[str, str]:
     official = {}
     try:
         raw = getter(FINRA_CALENDAR)
-        official = read_calendar(raw, today.year)
+        for year in (today.year - 1, today.year):
+            official.update(read_calendar(raw, year))
     except Exception as exc:
         print(f"etf_si_finra_calendar_access={type(exc).__name__}")
-    # Known exact official dates may be used if the current calendar is blocked.
-    fallback = {k: v for k, v in FINRA_VERIFIED_FALLBACK.items() if k[:4] == str(today.year)}
+    # Previous-year December settlements can publish in the new year.
+    # Keep only previously verified literal dates; never guess a future year.
+    fallback = {
+        settlement: published
+        for settlement, published in FINRA_VERIFIED_FALLBACK.items()
+        if int(settlement[:4]) in (today.year - 1, today.year)
+    }
     return {**fallback, **official}
 
 
 def collect(*, now: dt.date | None = None, getter=get) -> dict:
-    today = now or dt.datetime.now(KST).date()
+    # FINRA publication dates are New York local, not Korea calendar dates.
+    today = now or dt.datetime.now(ZoneInfo("America/New_York")).date()
     official_schedule = verified_calendar(today, getter=getter)
     sources = {}
     by_ticker = {}
@@ -209,8 +224,22 @@ def collect(*, now: dt.date | None = None, getter=get) -> dict:
         raise RuntimeError("Official FINRA publication date not verified for this settlement")
     pub_date = day(published)
     age = (today - pub_date).days
-    if not (0 <= age <= MAX_PUBLICATION_AGE_DAYS):
+    if age < 0:
         raise RuntimeError(f"ETF short interest publication not current: age={age} calendar days")
+    # The most recently *officially published* settlement remains valid
+    # until the next FINRA publication; a fixed 12-day age silently misses
+    # valid twice-monthly data near longer reporting gaps.
+    released = [
+        dt.date.fromisoformat(key)
+        for key, value in official_schedule.items()
+        if dt.date.fromisoformat(value) <= today
+    ]
+    if not released or dt.date.fromisoformat(settlement) != max(released):
+        raise RuntimeError("ETF short interest publication lag: newer FINRA settlement available")
+    # If the official calendar ends/temporarily disappears, never carry a
+    # published value forward indefinitely.
+    if age > MAX_PUBLICATION_AGE_DAYS:
+        raise RuntimeError(f"ETF short interest publication expired: age={age} calendar days")
     # Only compare percent changes on identical settlement intervals.
     divergence = q["change_pct"] - s["change_pct"]
     opp = (q["change_pct"] > 0 and s["change_pct"] < 0) or (q["change_pct"] < 0 and s["change_pct"] > 0)
