@@ -355,9 +355,14 @@ def keywords(title:str)->set[str]:
  s=re.sub(r"(\d+)\s*(mhz|ghz)",r"\1\2",stem_title(title))
  return {w for w in TOKEN.findall(s) if len(w)>=3 and w not in STOP}
 
-def match_articles(a:dict,b:dict)->bool:
+def match_articles(a:dict,b:dict,topic:str|None=None,status:str|None=None)->bool:
  if a["publisher"].strip().lower()==b["publisher"].strip().lower():return False
  if abs((a["pub"]-b["pub"]).total_seconds())>72*3600:return False
+ if topic in {"mobile_entry","amazon_leo"} and status:
+  # One press source may generate differently worded English/Korean titles.
+  # Compare the same parties and the same transaction stage, never topic alone.
+  if stage(topic,a["title"])!=status or stage(topic,b["title"])!=status:return False
+  return True
  x,y=keywords(a["title"]),keywords(b["title"])
  common=x&y
  # Shared issuer names and the same event-specific objects, not generic SpaceX.
@@ -571,7 +576,7 @@ def choose_events(group:dict,seen:dict,bootstrap_run:bool,force:bool=False)->tup
    if eid.startswith("fcc:ambiguous_15000:"):continue
    if eid in updated and not force:continue
    peers=[p for s,p in ordered if s==status and
-          independent_publisher(p) and match_articles(item,p)]
+          independent_publisher(p) and match_articles(item,p,topic,status)]
    if not peers:continue
    if bootstrap_run:
     updated[eid]=NOW.isoformat()
@@ -681,6 +686,14 @@ def test()->int:
  assert stage("amazon_leo","FCC approves Amazon Leo acquisition of Globalstar")=="transfer_approved"
  assert stage("amazon_leo","美FCC 아마존 글로벌스타 인수 관련 면허 이전 승인")=="transfer_approved"
  assert independent_publisher({"publisher":"The Washington Post"})
+ boost1={"title":"SpaceX in talks to buy Boost Mobile or use its network, Washington Post reports","publisher":"Reuters","pub":NOW,"url":"https://reuters.example"}
+ boost2={"title":"SpaceX could buy Boost Mobile as part of its big mobile carrier plans","publisher":"The Verge","pub":NOW,"url":"https://verge.example"}
+ assert match_articles(boost1,boost2,"mobile_entry","boost_talks")
+ assert not match_articles(boost1,boost2,"mobile_entry","boost_agreement")
+ amazon1={"title":"美FCC 아마존 글로벌스타 인수 승인","publisher":"연합뉴스","pub":NOW,"url":"https://yna.example"}
+ amazon2={"title":"FCC approves Amazon Globalstar acquisition","publisher":"Reuters","pub":NOW,"url":"https://reuters.example"}
+ assert match_articles(amazon1,amazon2,"amazon_leo","transfer_approved")
+ assert not match_articles(amazon1,amazon2,"amazon_leo","acquisition_close")
  assert event_id("ground","site_talks","SpaceX access 80,000 cell sites")=="ground:spacex_80000_sites:site_talks"
  assert event_id("mobile_entry","boost_talks","SpaceX in talks to buy Boost Mobile")=="mobile:starlink_boost:boost_talks"
  assert event_id("mobile_entry","boost_agreement","SpaceX signs Boost Mobile acquisition agreement")!=event_id("mobile_entry","boost_talks","SpaceX in talks to buy Boost Mobile")
