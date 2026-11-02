@@ -836,6 +836,7 @@ def main() -> int:
     if fetch_errors:
         status_lines.extend(["", "## 조회 오류"])
         status_lines.extend(f"- {x}" for x in fetch_errors[:20])
+        print("space_launch_source_issues="+" | ".join(fetch_errors[:8]))
     STATUS_PATH.write_text("\n".join(status_lines) + "\n", encoding="utf-8")
     return 0
 
