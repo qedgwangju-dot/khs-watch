@@ -1092,6 +1092,8 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
         f"• NQ 별도 신선도: CFTC 3·10년 이력 {'일치' if cross.get('nq_crosscheck_match') else '검증 대기'}"
         f" · CME 최신완료일 {'일치' if cross.get('nq_price_fresh') else '미확보'}",
         "",
+        _monthly_trend_block(snapshot, compact=True).rstrip(),
+        "",
         "<b>📍 핵심 포지션</b>",
         f"• CFTC {(snapshot.get('cftc') or {}).get('report_date','기준일 미확인')} · 10Y Leveraged Funds 순 "
         f"{_fmt_net_with_krw(t10.get('leveraged_net'), '10Y', fx)}"
