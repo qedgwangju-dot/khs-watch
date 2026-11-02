@@ -106,6 +106,11 @@ jobs:
           python scripts/physical_ai_watch_regression_check.py
           python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py'
 
+      - name: Refresh latest ROBOTIS dedup state without changing checked-out code
+        run: |
+          git fetch origin main --depth=1
+          git show origin/main:data/robotis_physical_ai_watch_state.json > data/robotis_physical_ai_watch_state.json
+
       - name: Scan physical AI / battery / grid / ROBOTIS-NVIDIA / Figure AI / Tesla Optimus China / AI-RAN sources
         run: python scripts/physical_ai_watch_airan_guard.py
 
@@ -202,7 +207,75 @@ jobs:
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/robotis_watch_final_state.json data/robotis_physical_ai_watch_state.json
+            # Union the up-to-date main state with this successful run's state.
+            # A queued GitHub job can be based on an older checkout: never drop
+            # confirmed delivery keys just because an older run finishes later.
+            python - <<'PY'
+          import json, os, pathlib
+          latest_path = pathlib.Path("data/robotis_physical_ai_watch_state.json")
+          proposed_path = pathlib.Path("/tmp/robotis_watch_final_state.json")
+          existing = json.loads(latest_path.read_text(encoding="utf-8")) if latest_path.exists() else {}
+          proposed = json.loads(proposed_path.read_text(encoding="utf-8"))
+          old_seen = list(existing.get("seen") or [])
+          proposed_seen = list(proposed.get("seen") or [])
+          new_state = dict(existing)
+          newer = str(proposed.get("updated_at") or "") >= str(existing.get("updated_at") or "")
+          if newer:
+              new_state.update({k: v for k, v in proposed.items() if k != "seen"})
+
+          alert = pathlib.Path("out/robotis_physical_ai_watch_telegram.txt")
+          receipt_file = pathlib.Path("out/robotis_physical_ai_watch_delivery_receipts.json")
+          sent_text = alert.exists() and bool(alert.read_text(encoding="utf-8").strip())
+          receipts = []
+          if sent_text:
+              if not receipt_file.exists():
+                  raise SystemExit("ROBOTIS nonempty alert has no Telegram send receipt; state not committed")
+              receipts = json.loads(receipt_file.read_text(encoding="utf-8"))
+              if not isinstance(receipts, list) or not receipts:
+                  raise SystemExit("ROBOTIS nonempty alert has empty delivery receipts")
+              if any(not isinstance(x.get("message_id"), int) or x["message_id"] <= 0 for x in receipts):
+                  raise SystemExit("ROBOTIS delivery receipt contains invalid message_id")
+              if any(x.get("chat_verification") not in {
+                  "numeric_id_equal", "username_equal", "present_but_alias_unverified"
+              } for x in receipts):
+                  raise SystemExit("ROBOTIS delivery receipt missing recipient check")
+          else:
+              # Selected before final rendering but filtered as marketing/noise
+              # must remain eligible later; no receipt means no successful send.
+              selected = set(proposed.get("last_selected") or [])
+              proposed_seen = [key for key in proposed_seen if key not in selected or key in old_seen]
+              if newer:
+                  new_state["last_selected"] = []
+
+          new_state["seen"] = list(dict.fromkeys(old_seen + proposed_seen))
+          run_id = os.environ.get("GITHUB_RUN_ID", "")
+          run_record = {
+              "run_id": int(run_id) if run_id.isdigit() else None,
+              "outcome": "sent" if sent_text else "normal_silence",
+              "message_ids": [x["message_id"] for x in receipts],
+              "recipient_verified": all(x.get("chat_verification") in {
+                  "numeric_id_equal", "username_equal"
+              } for x in receipts) if receipts else None,
+              "recipient_checks": [x.get("chat_verification") for x in receipts],
+              "message_topic_present": [x.get("message_thread_id") is not None for x in receipts],
+              "state_timestamp_utc": proposed.get("updated_at"),
+          }
+          history = existing.get("delivery_history") or []
+          if not isinstance(history, list):
+              history = []
+          history = [x for x in history if isinstance(x, dict) and x.get("run_id") != run_record["run_id"]]
+          history.append(run_record)
+          new_state["delivery_history"] = history[-20:]
+          if newer:
+              new_state["last_delivery"] = run_record
+          latest_path.write_text(json.dumps(new_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(
+              "ROBOTIS dedup merge:",
+              len(old_seen), "previous +", len(proposed_seen), "proposed ->",
+              len(new_state["seen"]), "kept; result", run_record["outcome"],
+              "run", run_record["run_id"],
+          )
+          PY
             git add data/robotis_physical_ai_watch_state.json
             if git diff --cached --quiet; then
               echo "ROBOTIS state already current."
