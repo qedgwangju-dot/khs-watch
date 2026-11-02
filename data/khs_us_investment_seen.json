@@ -348,7 +348,8 @@
     "stateevt_60599bf5e149b80833fe": "2026-10-17T12:18:05.211565+00:00",
     "stateevt_e46d791c218bfa5ffad7": "2026-10-21T00:09:16.454329+00:00",
     "stateevt_bf2ae1b505008051da7f": "2026-10-21T00:09:16.454329+00:00",
-    "stateevt_645a045a987f420d5621": "2026-10-31T21:59:25.771008+00:00"
+    "stateevt_645a045a987f420d5621": "2026-10-31T21:59:25.771008+00:00",
+    "stateevt_dc2afa8f41f02a61be5c": "2026-11-02T09:42:47.232236+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -388,7 +389,8 @@
     "eventstate_alaska_lng_60599bf5e149b80833fe": "2026-10-17T12:18:05.211565+00:00",
     "eventstate_alaska_lng_e46d791c218bfa5ffad7": "2026-10-21T00:09:16.454329+00:00",
     "eventstate_us_trade_surplus_bf2ae1b505008051da7f": "2026-10-21T00:09:16.454329+00:00",
-    "eventstate_power_equipment_supply_645a045a987f420d5621": "2026-10-31T21:59:25.771008+00:00"
+    "eventstate_power_equipment_supply_645a045a987f420d5621": "2026-10-31T21:59:25.771008+00:00",
+    "eventstate_nuclear_build_dc2afa8f41f02a61be5c": "2026-11-02T09:42:47.232236+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -417,6 +419,7 @@
         "nuclear_total_units:8",
         "nuclear_upfront_payment_status:conditional",
         "nuclear_upfront_payment_usd_b:10",
+        "party:hyundaiec",
         "party:kepco",
         "party:westinghouse"
       ],
@@ -424,6 +427,8 @@
         "nuclear_build|ap1000_units": "ap1000_units:6",
         "nuclear_build|apr1400_units": "apr1400_units:2",
         "nuclear_build|nuclear_apr1400_wh_value_per_unit_usd_b": "nuclear_apr1400_wh_value_per_unit_usd_b:2",
+        "nuclear_build|nuclear_construction_cost_usd_b": "nuclear_construction_cost_usd_b:100",
+        "nuclear_build|nuclear_contingency_usd_b": "nuclear_contingency_usd_b:20",
         "nuclear_build|nuclear_counterparty_confirmation": "nuclear_counterparty_confirmation:official",
         "nuclear_build|nuclear_definitive_agreement_status": "nuclear_definitive_agreement_status:pending",
         "nuclear_build|nuclear_federal_site_status": "nuclear_federal_site_status:planned",
@@ -435,29 +440,28 @@
         "nuclear_build|nuclear_project_status": "nuclear_project_status:individual_projects_pending",
         "nuclear_build|nuclear_settlement_waiver_status": "nuclear_settlement_waiver_status:contemplated",
         "nuclear_build|nuclear_total_units": "nuclear_total_units:8",
-        "nuclear_build|party:kepco": "party:kepco",
-        "nuclear_build|party:westinghouse": "party:westinghouse",
-        "nuclear_build|nuclear_construction_cost_usd_b": "nuclear_construction_cost_usd_b:100",
-        "nuclear_build|nuclear_contingency_usd_b": "nuclear_contingency_usd_b:20",
+        "nuclear_build|nuclear_upfront_payment_status": "nuclear_upfront_payment_status:conditional",
         "nuclear_build|nuclear_upfront_payment_usd_b": "nuclear_upfront_payment_usd_b:10",
-        "nuclear_build|nuclear_upfront_payment_status": "nuclear_upfront_payment_status:conditional"
+        "nuclear_build|party:hyundaiec": "party:hyundaiec",
+        "nuclear_build|party:kepco": "party:kepco",
+        "nuclear_build|party:westinghouse": "party:westinghouse"
       },
       "initialized_at": "2026-09-21T13:18:18.976289+00:00",
-      "updated_at": "2026-10-02T06:16:22.293455+00:00",
-      "last_title": "산업통상부 공식 Project Power 한미 원전 프레임워크 합의 원전 8기 AP1000 6기 APR1400 2기 최대 1200억달러",
-      "last_source": "대한민국 정책브리핑 · project-power-funding-roles",
+      "updated_at": "2026-11-02T09:42:51.663060+00:00",
+      "last_title": "신한증권, 현대건설 목표가↓…\"대미투자 원전 수익화 불확실성\" - 연합뉴스",
+      "last_source": "연합뉴스",
       "evidence": [
         {
-          "source": "Cameco",
-          "title": "Cameco 공식 Project Power 원전 프레임워크 원전 8기 AP1000 6기 APR1400 2기 최대 1200억달러 terms non-binding definitive agreements pending federal sites planned beginning with AP1000 2기 2025 settlement agreement one-time waiver contemplated APR1400 reactor당 20억달러 Westinghouse value",
-          "link": "https://www.cameco.com/media/news/cameco-acknowledges-united-states-and-republic-of-korea-announcement-of-framework-for",
-          "published": "2026-09-30T12:00:00+00:00"
+          "source": "연합뉴스",
+          "title": "신한증권, 현대건설 목표가↓…\"대미투자 원전 수익화 불확실성\" - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5IMFd2QVJYclRJLTRkSUxYLXVWOUNkajF2Ym1qdHI2djkwRWdRQy1uNEhlNV80aFdqTUEwaEgxTEdDX0dORlpicWtBQVpMU1l4TkNQeEZfdTVFWUlWV2FPZdIBYEFVX3lxTE5IMFd2QVJYclRJLTRkSUxYLXVWOUNkajF2Ym1qdHI2djkwRWdRQy1uNEhlNV80aFdqTUEwaEgxTEdDX0dORlpicWtBQVpMU1l4TkNQeEZfdTVFWUlWV2FPZQ?oc=5",
+          "published": "2026-11-01T23:41:13+00:00"
         },
         {
-          "source": "산업통상부",
-          "title": "산업통상부 공식 Project Power AP1000 6기 한국 시공사 기자재기업 참여 확대 한미 원전 프레임워크 합의",
-          "link": "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172253/view",
-          "published": "2026-10-01T00:00:00+00:00"
+          "source": "뉴스핌",
+          "title": "[리포트 브리핑]현대건설, '3분기 실적 예상치 부합, 원전 성과를 기다리며' 목표가 133,000원 - 미래에셋증권 - 뉴스핌",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5NRnlKdE0xQ1dyZzNzZEs4b2c4UlhoU2hEWEJJT3lfMGdJcXZLQ01XUjZ2d05Fc0lobzNGSmtrTVF1SWR4T0hTdGZ1ZGdzRDFSWDdBZ2J0UkkwTHd2?oc=5",
+          "published": "2026-11-02T06:06:00+00:00"
         }
       ]
     },
