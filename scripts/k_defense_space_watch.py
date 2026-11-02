@@ -168,18 +168,34 @@ def request_bytes(url:str, attempts:int=3)->bytes:
     time.sleep(min(2**i,5))
   raise RuntimeError(str(last))
 
-def google_rss(query:str)->list[dict]:
-  params=urllib.parse.urlencode({"q":query,"hl":"ko","gl":"KR","ceid":"KR:ko"})
-  raw=request_bytes("https://news.google.com/rss/search?"+params)
-  root=ET.fromstring(raw)
+def google_rss(query:str, request_fn=request_bytes)->list[dict]:
+  """Google News first, Bing RSS second; neither feed itself proves government action."""
+  google_url="https://news.google.com/rss/search?"+urllib.parse.urlencode(
+    {"q":query,"hl":"ko","gl":"KR","ceid":"KR:ko"})
+  bing_url="https://www.bing.com/news/search?"+urllib.parse.urlencode(
+    {"q":query,"format":"RSS","setlang":"ko-KR"})
+  try:
+    root=ET.fromstring(request_fn(google_url,attempts=1))
+  except (Exception) as first:
+    try:
+      root=ET.fromstring(request_fn(bing_url,attempts=1))
+      print("k_defense_source_fallback=bing_rss")
+    except Exception as second:
+      raise RuntimeError("뉴스 원천 두 곳 모두 실패: "+type(first).__name__+"; "+type(second).__name__) from second
   items=[]
   for e in root.findall(".//item"):
     name=html.unescape(re.sub(r"<[^>]*>"," ",e.findtext("title") or "")).strip()
     url=html.unescape(e.findtext("link") or "").strip()
-    if not name or not url.startswith("https://"): continue
+    if not name or not url.startswith("https://"):continue
     src=e.find("source")
     publisher=(src.text or "").strip() if src is not None else ""
     pub_link=(src.get("url") or "") if src is not None else ""
+    if not publisher:
+      trailing=re.search(r"\s+[-|]\s+([^|-]{2,55})$",name)
+      if trailing:
+        candidate=trailing.group(1).strip()
+        if any(candidate.casefold()==x.casefold() for x in TRUSTED_PUBLISHERS):
+          publisher=candidate
     try:
       pub_time=email.utils.parsedate_to_datetime(e.findtext("pubDate") or "")
       if pub_time.tzinfo is None:pub_time=pub_time.replace(tzinfo=dt.timezone.utc)
@@ -312,7 +328,21 @@ def self_test()->None:
   assert "2026년 국방예산 65조8,642억원" in bootstrap_report()
   assert "우주전략사령부" in bootstrap_report()
   assert STATE!=PENDING
-  print("k_defense_space_watch_self_test=ok")
+  xml='''<rss><channel><item><title>우주전략사령부 창설 단계적 추진 - 연합뉴스</title><link>https://www.yna.co.kr/example</link><pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate></item></channel></rss>'''
+  def fallback_test(url,attempts=1):
+    if "google" in url:raise TimeoutError("temporary source outage")
+    assert "bing.com" in url and attempts==1
+    return xml.encode("utf-8")
+  alternate=google_rss("우주전략사령부",request_fn=fallback_test)
+  assert len(alternate)==1 and alternate[0]["publisher"]=="연합뉴스"
+  assert not official_class(alternate[0]), "News RSS cannot certify government publication"
+  def both_fail(url,attempts=1):raise TimeoutError("both sources unavailable")
+  try:
+    google_rss("우주전략사령부",request_fn=both_fail)
+    raise AssertionError("both sources failed but scanner pretended success")
+  except RuntimeError as exc:
+    assert "두 곳 모두 실패" in str(exc)
+  print("k_defense_space_watch_self_test=ok fallback=1 fail_closed=1")
 
 def main()->int:
   if os.environ.get("K_DEFENSE_WATCH_SELF_TEST")=="1":
