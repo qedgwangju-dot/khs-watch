@@ -8834,6 +8834,10 @@ _dexterous_hand_watch.install(base)
 import robot_watch_nov02_stage_lanes as _robot_nov02
 _robot_nov02.install(base)
 
+# Cover previously missing official robotics milestones; existing route only.
+import robot_watch_missing_milestones as _robot_missing
+_robot_missing.install(base)
+
 
 if __name__ == '__main__':
     pre_state = base.load_state()
