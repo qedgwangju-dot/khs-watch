@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-03T04:41:25+09:00",
+  "last_checked_kst": "2026-11-03T05:52:32+09:00",
   "media_id": null,
   "cftc_date": "October 27, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-03T04:41:25+09:00",
+    "checked_kst": "2026-11-03T05:52:32+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "October 27, 2026",
@@ -145,28 +145,28 @@
       }
     },
     "yield10": {
-      "date": "2026-10-30",
-      "yield": 4.94,
-      "mean20": 5.1255,
-      "sd20": 0.11770620204560159,
-      "z20": -1.5759577386426347,
-      "distance_to_4_3_bp": 64.00000000000006,
+      "date": "2026-11-02",
+      "yield": 4.91,
+      "mean20": 5.107,
+      "sd20": 0.12099999999999991,
+      "z20": -1.6280991735537207,
+      "distance_to_4_3_bp": 61.00000000000003,
       "window_n": 20,
       "monthly_comparisons": {
         "1": {
-          "date": "2026-09-30",
-          "value": 5.29,
-          "change": -0.34999999999999964
+          "date": "2026-10-02",
+          "value": 5.28,
+          "change": -0.3700000000000001
         },
         "2": {
-          "date": "2026-08-28",
-          "value": 4.73,
-          "change": 0.20999999999999996
+          "date": "2026-09-02",
+          "value": 4.79,
+          "change": 0.1200000000000001
         },
         "3": {
-          "date": "2026-07-30",
-          "value": 4.68,
-          "change": 0.2600000000000007
+          "date": "2026-07-31",
+          "value": 4.75,
+          "change": 0.16000000000000014
         }
       },
       "source_years": [
@@ -228,7 +228,7 @@
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-10-30",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026110214"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026110215"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
