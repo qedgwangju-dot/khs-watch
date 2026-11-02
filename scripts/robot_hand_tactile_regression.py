@@ -98,14 +98,14 @@ def run():
     noncredible = dict(tacta_contract, source="anonymous blog")
     assert classify(noncredible)[1] == 0
 
-    1x_endurance = make(
+    one_x_endurance = make(
         "1X Technologies NEO robotic hands new independent endurance result",
         "Independent third-party test certified 2 million cycles for the "
         "1X NEO tendon-driven robotic hand.",
         "1X Technologies",
     )
-    assert classify(1x_endurance)[0] == "one_x_neo_dexterous_hand"
-    assert classify(1x_endurance)[1] >= 11
+    assert classify(one_x_endurance)[0] == "one_x_neo_dexterous_hand"
+    assert classify(one_x_endurance)[1] >= 11
 
     tesla_actual = make(
         "Tesla Optimus replaceable sensing glove integrated into production",
