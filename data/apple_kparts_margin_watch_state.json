@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-11-02T11:24:34+09:00",
+  "updated_at_kst": "2026-11-02T18:56:37+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -235,7 +235,7 @@
     "bucket": "orange",
     "average_source": "Fed H.10/FRED"
   },
-  "last_scan_items": 10,
+  "last_scan_items": 12,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-11-01T23:30:58+09:00",
