@@ -41,7 +41,9 @@ permissions:
   actions: write
 
 concurrency:
-  group: us-positioning-telegram-watch
+  # Code-only pushes must never queue ahead of production schedule alerts.
+  # Both lanes retain non-cancelling run policy; push never sends or writes state.
+  group: us-positioning-telegram-watch-${{ github.event_name == 'push' && 'code-audit' || 'production' }}
   cancel-in-progress: false
 
 jobs:
