@@ -9,8 +9,8 @@ TARGET=re.compile(r"price target|target price|목표주가|애널리스트 목�
 BROKER=re.compile(r"morgan stanley|pivotal research|citizens|citigroup|citi|"
                   r"keybanc|cantor fitzgerald|barclays|stifel|needham|"
                   r"analyst|애널리스트|증권사|목표주가",re.I)
-DELAY=re.compile(r"delay|postpon|2027|pushed back|slips?|shift.*next year|"
-                 r"연기|지연",re.I)
+DELAY=re.compile(r"delay|postpon|pushed back|slips?|shift.*next year|"
+                 r"reschedul|defer|연기|지연",re.I)
 NOISE=re.compile(r"lawsuit|class action|options activity|why stock|insider sale|"
                  r"price prediction|주가 급등만|주가 전망만",re.I)
 STOP=set(("rocket lab rocketlab spacex starship neutron electron flight first launch"
@@ -26,8 +26,9 @@ def material_words(title):
 def kind(category,title):
     t=title.lower()
     if category=="rocketlab":
-        if "neutron" in t and DELAY.search(t):return "development_delay"
+        # Broker actions are independent from the underlying Neutron delay.
         if TARGET.search(t) or BROKER.search(t):return "analyst"
+        if "neutron" in t and DELAY.search(t):return "development_delay"
         if re.search(r"contract|award|signed|secures|수주|계약",t):return "contract"
         return "development"
     if category=="spacex_valuation":
@@ -82,7 +83,9 @@ def semantic_id(category,item):
     # follow-up coverage crosses a week boundary; different headlines are not
     # new development milestones. Date-scoped IDs are kept for other stories.
     if category=="rocketlab" and event=="development_delay" and "neutron" in item["title"].lower():
-        return "semantic:rocketlab:neutron:first_flight_shift_2027"
+        # Preserve 2027 dedup identity, but do not suppress a future 2028 slip.
+        years=re.findall(r"\b20\d{2}\b",item["title"])
+        return "semantic:rocketlab:neutron:first_flight_shift_"+(years[-1] if years else "undated")
     monday=pub.date()-dt.timedelta(days=pub.weekday())
     return "semantic:"+category+":"+topic_key(category,item["title"])+":"+event+":"+monday.isoformat()
 
@@ -90,7 +93,8 @@ def self_test():
     now=dt.datetime(2026,10,17,10,tzinfo=dt.timezone.utc)
     article=lambda title,date="2026-10-16T10:00:00+00:00":dict(title=title,published=date,source="Reuters")
     assert kind("rocketlab","Rocket Lab Neutron first launch delayed to 2027")=="development_delay"
-    assert kind("rocketlab","Citizens cuts Rocket Lab target after Neutron delay")=="development_delay"
+    assert kind("rocketlab","Citizens cuts Rocket Lab target after Neutron delay")=="analyst"
+    assert kind("rocketlab","Rocket Lab signs Neutron launch contract for 2027")=="contract"
     assert kind("rocketlab","Rocket Lab Neutron maiden flight delayed")=="development_delay"
     assert kind("rocketlab","Rocket Lab Electron secures 20 mission contract")=="contract"
     assert kind("spacex_valuation","Morgan Stanley raises SpaceX price target")=="analyst"
@@ -105,9 +109,14 @@ def self_test():
     assert semantic_pair("rocketlab",a,b) and not semantic_pair("rocketlab",a,c)
     assert semantic_id("rocketlab",a)==semantic_id("rocketlab",b)
     delayed1=article("Rocket Lab Neutron first flight delayed to 2027","2026-10-14T20:00:00+00:00")
-    delayed2=article("Citizens lowers Rocket Lab target on Neutron 2027 delay","2026-10-22T20:00:00+00:00")
+    delayed2=article("Rocket Lab Neutron maiden flight delayed until 2027","2026-10-22T20:00:00+00:00")
+    broker=article("Citizens lowers Rocket Lab target on Neutron 2027 delay","2026-10-22T20:00:00+00:00")
+    delayed_2028=article("Rocket Lab Neutron maiden flight delayed until 2028","2026-10-22T20:00:00+00:00")
     assert semantic_id("rocketlab",delayed1)==semantic_id("rocketlab",delayed2)
-    assert kind("rocketlab",delayed2)=="development_delay"
+    assert semantic_id("rocketlab",delayed1)!=semantic_id("rocketlab",delayed_2028)
+    assert semantic_id("rocketlab",delayed1)!=semantic_id("rocketlab",broker)
+    assert kind("rocketlab",delayed2["title"])=="development_delay"
+    assert kind("rocketlab",broker["title"])=="analyst"
     print("space_launch_event_guard_self_test=ok stale=1 categories=1 semantic_dedup=1")
 # Historical mislabelled notifications; unique IDs ensure each correction once.
 FACT_CASES = (
