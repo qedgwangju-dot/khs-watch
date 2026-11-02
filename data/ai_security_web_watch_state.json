@@ -5,10 +5,12 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 54,
-    "errors": [],
+    "errors": [
+      "IonQ 개별 공식 원문 확인 불가: URLError: <urlopen error [Errno 101] Network is unreachable>"
+    ],
     "material_items": 14,
     "new_material_items": 0,
-    "raw_items": 107,
+    "raw_items": 106,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1554,5 +1556,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-03T04:49:21+09:00"
+  "updated_at_kst": "2026-11-03T04:53:46+09:00"
 }
