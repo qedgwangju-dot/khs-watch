@@ -262,6 +262,57 @@ jobs:
             exit 1
           fi
 
+
+      - name: Correct source-date label on previously sent Telegram message
+        if: github.event_name == 'push' && contains(github.event.head_commit.message, '[gwangju-msg-correction]')
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GWANGJU_AIRPORT_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GWANGJU_AIRPORT_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import html, json, os, re, urllib.error, urllib.parse, urllib.request
+          from scripts.gwangju_airport_watch import verified_briefing_item, build_alert
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError("Telegram bot mismatch on correction")
+          item = verified_briefing_item({"sent_event_keys": []})
+          content = build_alert([item])
+          content = re.sub(r"^조회: .*?$", "조회: 2026-11-02 18:42 KST", content, count=1, flags=re.M)
+          rendered = []
+          for line in content.splitlines():
+              match = re.fullmatch(r"\s*-\s*출처원문:\s*(.*?)\s*\|\s*(.*?)\s*\|\s*(https?://\S+)\s*", line)
+              if match:
+                  source, date, url = (html.escape(v.strip(), quote=True) for v in match.groups())
+                  rendered.append(f'- 출처·원문: {source} · {date} · <a href="{url}">원문 보기</a>')
+              else:
+                  rendered.append(html.escape(line))
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id, "message_id": 180, "text": "\n".join(rendered),
+              "parse_mode": "HTML", "disable_web_page_preview": "true"
+          }).encode("utf-8")
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/editMessageText", data=payload, method="POST")
+          try:
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  response = json.loads(r.read().decode("utf-8"))
+          except urllib.error.HTTPError as exc:
+              error = exc.read().decode("utf-8", errors="replace")
+              if "message is not modified" in error:
+                  response = {"ok": True, "already_corrected": True}
+              else:
+                  raise
+          if not response.get("ok"):
+              raise RuntimeError("Telegram correction rejected")
+          mid = (response.get("result") or {}).get("message_id")
+          if mid is not None and int(mid) != 180:
+              raise RuntimeError("Unexpected corrected message ID")
+          print("gwangju_alert_message_corrected=true message_ids=[180] source_time=unpublished")
+          PY
+
       - name: Upload verification artifacts
         if: always()
         uses: actions/upload-artifact@v4

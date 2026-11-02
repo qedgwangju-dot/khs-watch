@@ -310,7 +310,7 @@ def fetch_rss(url, provider, query):
 # not claim a signed COB agreement, secured budget or halted construction.
 COB_OFFICIAL_BRIEFING_URL = "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156787549"
 COB_BRIEFING_EVENT_KEY = "gwangju_us_facilities_briefing_20261102"
-COB_SOURCE_DATE = "2026-11-02T11:00:00+09:00"
+COB_SOURCE_DATE = None  # Only official briefing date, not clock time, is confirmed.
 US_FACILITY_WORDS = ("미군", "주한미군", "미군시설", "미군 시설", "공여구역", "COB", "포괄협정", "포괄 협정")
 US_BASELINE_WORDS = ("포괄협정", "포괄 협정", "COB", "2027년", "미군시설", "미군 시설", "공여구역", "보강공사")
 
@@ -405,6 +405,7 @@ def verified_briefing_item(state):
         "publisher": "국방부",
         "rank": "공식",
         "published": COB_SOURCE_DATE,
+        "source_date_display": "2026-11-02 (공식 발표일·시각 미공개)",
         "categories": ["미군시설·한미 포괄협정", "미군시설 이전예산", "미군시설 보강공사"],
         "verification": "국방부 2026-11-02 공식 정례브리핑 원문 근거",
         "detail_lines": [
@@ -627,7 +628,7 @@ def build_alert(selected):
         for detail in item.get("detail_lines") or []:
             lines.append(f"- {detail}")
         lines.extend([
-            f"- 출처원문: {item['publisher']} | {format_time(item.get('published'))} | {item['link']}",
+            f"- 출처원문: {item['publisher']} | {item.get('source_date_display') or format_time(item.get('published'))} | {item['link']}",
             "",
         ])
     lines.extend([
@@ -730,6 +731,7 @@ def self_test():
     work = dict(baseline_news, title="광주 군공항 미군시설 보강공사 중단 합의")
     assert us_milestone(work) == "existing_works_halted"
     assert verified_briefing_item({"sent_event_keys": []}) is not None
+    assert "시각 미공개" in build_alert([verified_briefing_item({"sent_event_keys": []})])
     assert verified_briefing_item({"sent_event_keys": [COB_BRIEFING_EVENT_KEY]}) is None
     no_repeat = {"sent_event_keys": [COB_BRIEFING_EVENT_KEY], "us_pending_evidence": {}}
     assert not select_us_milestone_alerts([baseline_news], no_repeat)[0]
