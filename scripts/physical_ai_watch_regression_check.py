@@ -5850,7 +5850,10 @@ _r27_saved_now = base.NOW
 try:
     base.NOW = dt.datetime(2026, 10, 27, 12, 0, tzinfo=dt.timezone.utc)
     for eid,group,category in _r27_expected:
-        row=base.query_news(watcher.R27_ROBOT_COMMERCE_PREFIX+eid)
+        # Unit-test the October-only original classifier directly. Later
+        # wrappers intentionally expire historic recovery stories; they must
+        # not make an offline, frozen-date regression fail every November.
+        row=watcher._r27_query(watcher.R27_ROBOT_COMMERCE_PREFIX+eid)
         assert len(row)==1,(eid,row)
         g,s,c,k=classify(row[0])
         assert g==group and s>=11 and c==category,(eid,g,s,c)
