@@ -1472,12 +1472,14 @@ def _monthly_trend_block(snapshot: dict, *, compact: bool = False) -> str:
                 results.append(f"{m}개월 확인 불가")
                 continue
             d = str(item["date"])[5:]
+            delta = float(item["change"])
+            arrow = "↑" if delta > 0 else "↓" if delta < 0 else "→"
             if unit == "yield":
-                results.append(f"{m}개월({d}) {float(item['value']):.3f}% · {float(item['change'])*100:+.1f}bp")
+                results.append(f"{m}개월({d}) {float(item['value']):.3f}% / {delta*100:+.1f}bp{arrow}")
             elif unit == "repo":
-                results.append(f"{m}개월({d}) {float(item['value']):.2f}% · {float(item['change'])*100:+.1f}bp")
+                results.append(f"{m}개월({d}) {float(item['value']):.2f}% / {delta*100:+.1f}bp{arrow}")
             else:
-                results.append(f"{m}개월({d}) {int(item['change']):+,}계약")
+                results.append(f"{m}개월({d}) {int(item['value']):+,}계약 / Δ{int(delta):+,}{arrow}")
         return " / ".join(results)
 
     lines = ["<b>📉 1·2·3개월 추세 (해당 지표 기준일)</b>"]
