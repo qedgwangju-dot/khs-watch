@@ -2008,6 +2008,9 @@ def scheduled_main() -> int:
         watcher.NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         return rc
 
+    _enrich_monthly_trends_for_due_alert(snapshot)
+    next_state['snapshot'] = snapshot
+
     reasons: list[str] = []
     if watcher.DETAIL.exists():
         try:
