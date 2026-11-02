@@ -115,7 +115,7 @@ jobs:
         run: |
           if [ -s out/robotis_physical_ai_watch_telegram.txt ]; then
             python - <<'PY'
-          import json, os, pathlib, urllib.parse, urllib.request
+          import datetime, hashlib, json, os, pathlib, urllib.parse, urllib.request
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat = os.environ["TELEGRAM_CHAT_ID"].strip()
           text = pathlib.Path("out/robotis_physical_ai_watch_telegram.txt").read_text(encoding="utf-8").strip()
@@ -129,6 +129,9 @@ jobs:
           if cur.strip():
               chunks.append(cur.rstrip())
 
+          # Append-only per-attempt receipts. Never store bot token or chat ID.
+          receipts = []
+          receipt_file = pathlib.Path("out/robotis_physical_ai_watch_delivery_receipts.json")
           for chunk in chunks:
               payload = urllib.parse.urlencode({
                   "chat_id": chat,
@@ -155,16 +158,27 @@ jobs:
                   if str(reply_id) != chat:
                       raise SystemExit("Telegram recipient mismatch (IDs redacted)")
                   print("Telegram recipient: configured numeric chat matches API reply")
+                  chat_verification = "numeric_id_equal"
               elif chat.startswith("@") and reply_chat.get("username"):
                   if reply_chat["username"].casefold() != chat[1:].casefold():
                       raise SystemExit("Telegram recipient username mismatch")
                   print("Telegram recipient: configured alias matches API reply")
+                  chat_verification = "username_equal"
               else:
                   print("Telegram recipient: reply chat.id present; alias comparison unverified")
+                  chat_verification = "present_but_alias_unverified"
               message_id = reply.get("message_id")
               if not isinstance(message_id, int) or message_id <= 0:
                   raise SystemExit("Telegram success reply missing valid message_id")
               print(f"Telegram sent: message_id={message_id}")
+              receipts.append({
+                  "delivered_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                  "chat_verification": chat_verification,
+                  "message_id": message_id,
+                  "message_thread_id": reply.get("message_thread_id"),
+                  "sha256": hashlib.sha256(chunk.encode("utf-8")).hexdigest(),
+              })
+              receipt_file.write_text(json.dumps(receipts, ensure_ascii=False, indent=2), encoding="utf-8")
           PY
           else
             echo "No meaningful new physical-AI/battery/grid/ROBOTIS-NVIDIA/Figure-AI/Tesla-Optimus-China change; Telegram silent."
@@ -214,5 +228,6 @@ jobs:
             out/robotis_physical_ai_watch_status.md
             out/robotis_physical_ai_watch_telegram.txt
             out/robotis_physical_ai_watch_pending_state.json
+            out/robotis_physical_ai_watch_delivery_receipts.json
           if-no-files-found: ignore
           retention-days: 7
