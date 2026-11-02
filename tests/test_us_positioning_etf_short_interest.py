@@ -59,7 +59,87 @@ def getter(*, spy=None, qqq=None, corrupt=False):
     return get
 
 
+HISTORY = {
+    "2026-09-15": (65_733_364, 99_297_854),
+    "2026-08-14": (64_250_491, 92_190_734),
+    "2026-07-15": (67_036_554, 96_827_747),
+    "2026-04-15": (66_298_978, 125_003_596),
+    "2025-12-31": (43_042_346, 100_831_310),
+}
+
+
+def history_getter(*, conflict_spy_six_month=False):
+    base = getter()
+
+    def fetch(url):
+        raw = base(url)
+        if "finra.org" in url or "finshort" in url:
+            return raw
+        ticker = "QQQ" if "QQQ" in url or "qqq/" in url else "SPY"
+        column = 0 if ticker == "QQQ" else 1
+        rows = []
+        for day_iso, amounts in HISTORY.items():
+            amount = amounts[column]
+            if conflict_spy_six_month and ticker == "SPY" and day_iso == "2026-04-15" and "benzinga" in url:
+                amount += 1
+            if "chartexchange" in url:
+                rows.append(f"<tr><td>{day_iso}</td><td>10.00</td><td>{amount:,}</td>"
+                            "<td>2.00</td><td>0</td><td>0.00</td></tr>")
+            elif "benzinga" in url:
+                when = dt.date.fromisoformat(day_iso)
+                label = f"{when:%b} {when.day}, {when.year}"
+                rows.append(f"<tr><td>{label}</td><td>History</td><td>—</td>"
+                            f"<td>—</td><td>{amount:,}</td><td>30000000</td><td>2.0</td></tr>")
+        return raw.replace("</table>", "\n".join(rows) + "</table>", 1)
+
+    return fetch
+
+
 class ETFShortInterestTests(unittest.TestCase):
+    def test_horizon_comparisons_share_same_settlement_and_source_consensus(self):
+        data = etf.collect(now=dt.date(2026, 11, 2), getter=history_getter())
+        periods = data["period_comparisons"]
+        self.assertEqual(set(periods), {"1개월", "2개월", "3개월", "6개월", "연초"})
+        self.assertEqual(periods["1개월"]["previous_settlement"], "2026-09-15")
+        self.assertEqual(periods["2개월"]["previous_settlement"], "2026-08-14")
+        self.assertEqual(periods["3개월"]["previous_settlement"], "2026-07-15")
+        self.assertEqual(periods["6개월"]["previous_settlement"], "2026-04-15")
+        self.assertEqual(periods["연초"]["previous_settlement"], "2025-12-31")
+        self.assertEqual(periods["2개월"]["QQQ"]["change_shares"], 17_751_127)
+        self.assertAlmostEqual(periods["2개월"]["QQQ"]["change_pct"], 27.63, places=2)
+        self.assertEqual(periods["2개월"]["SPY"]["change_shares"], 804_592)
+        self.assertEqual(periods["6개월"]["SPY"]["change_shares"], -32_008_270)
+        self.assertAlmostEqual(periods["연초"]["QQQ"]["change_pct"], 90.51, places=2)
+        self.assertEqual(data["signal_key"], "2026-10-15:82001618:92995326")
+        title, message = etf.render(data)
+        self.assertIn("2개월(2026-08-14)", message)
+        self.assertIn("+27.63%", message)
+        self.assertIn("6개월(2026-04-15)", message)
+        self.assertIn("-32,008,270주", message)
+        self.assertIn("서로 다른 비교기간", message)
+        self.assertLess(len(title) + 2 + len(message), 3900)
+
+    def test_conflicting_historical_publisher_withholds_only_disputed_horizon(self):
+        data = etf.collect(now=dt.date(2026, 11, 2),
+                           getter=history_getter(conflict_spy_six_month=True))
+        self.assertNotIn("6개월", data["period_comparisons"])
+        self.assertIn("2개월", data["period_comparisons"])
+        title, message = etf.render(data)
+        self.assertIn("6개월: 과거 잔량 교차검증 미완료", message)
+        self.assertNotIn("-32,008,270주", message)
+        self.assertTrue(data["signal"])
+
+    def test_historical_comparison_validation_never_sends_or_writes_state(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "historical_state.json"
+            with patch.object(etf, "send_message", side_effect=AssertionError("unexpected send")):
+                result = etf.run(validate_only=True, now=dt.date(2026, 11, 2),
+                                 getter=history_getter(), state_path=path)
+            self.assertEqual(result["status"], "alert_due")
+            self.assertTrue(result["period_comparisons"]["연초"])
+            self.assertFalse(result["telegram_sent"])
+            self.assertFalse(path.exists())
+
     def test_finra_calendar_exact_dates(self):
         actual = etf.read_calendar(CALENDAR, 2026)
         self.assertEqual(actual["2026-10-15"], "2026-10-26")
