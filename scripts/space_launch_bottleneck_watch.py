@@ -658,9 +658,27 @@ JPM_NEWS_1="https://www.tipranks.com/news/the-fly/spacex-price-target-raised-to-
 JPM_NEWS_2="https://www.investing.com/news/analyst-ratings/jpmorgan-raises-spacex-stock-price-target-to-500-on-growth-outlook-93CH-4962780"
 
 def spacex_jpm_verified_target_notice(check=check_primary, rate_getter=fetch_usdkrw) -> str:
-    """One-time missed, clearly dated analyst report; not a company forecast."""
-    check(JPM_NEWS_1,"JPMorgan","$500","$240","Overweight")
-    check(JPM_NEWS_2,"JPMorgan","$500","$240","Overweight")
+    """Fail closed unless two distinct readable reporting sources confirm old and new target."""
+    sources_a=(
+        (JPM_NEWS_1,("JPMorgan","$500","$240","Overweight")),
+        ("https://price-target.com/2026/10/21/175526/",("JPMorgan","500","240")),
+    )
+    sources_b=(
+        (JPM_NEWS_2,("JPMorgan","$500","$240","Overweight")),
+        ("https://blockspace.media/insight/jpmorgan-raises-spacex-price-target/",("JPMorgan","500","240")),
+        ("https://www.marketscreener.com/news/spacex-space-exploration-technologies-jp-morgan-reiterates-its-buy-rating-ce785cd9da8bf524",("SpaceX","500","240")),
+    )
+    def first_readable(group):
+        failures=[]
+        for url,markers in group:
+            try:
+                check(url,*markers)
+                return url
+            except Exception as exc:
+                failures.append(type(exc).__name__)
+        raise RuntimeError("증권사 목표주가 독립 보도 원문 조회 실패: "+",".join(failures))
+    source_a=first_readable(sources_a)
+    source_b=first_readable(sources_b)
     rate=rate_getter()
     def won(amount):
         return f"(약 {round(amount*rate):,}원/주)" if rate else "(원화 환산 미확인)"
@@ -671,8 +689,8 @@ def spacex_jpm_verified_target_notice(check=check_primary, rate_getter=fetch_usd
         "• 출처 구분: JPMorgan 애널리스트 더그 앤머스의 추정 및 보도이며, 회사 확정 실적·계약금액이 아닙니다.",
         "• 2027년 말 AI 컴퓨팅 10GW 및 2027년 매출 2,540억 달러("+forecast+")는 증권사 예측으로 실제 설비·전력·고객 계약 검증이 필요합니다.",
         "• 먼저 볼 지표: 신규 컴퓨팅 계약·실제 가동 GW·설비투자·현금흐름·후속 목표주가 최초치와 변경치.",
-        "• 원문: "+JPM_NEWS_1,
-        "• 원문: "+JPM_NEWS_2,
+        "• 원문: "+source_a,
+        "• 원문: "+source_b,
     ))
 
 
@@ -876,6 +894,13 @@ def self_test() -> int:
     assert "240달러(약 312,000원/주)" in sample and "500달러(약 650,000원/주)" in sample
     assert "2,540억 달러(약 330.2조원)" in sample
     assert "투자의견 비중확대 유지" in sample and "증권사 예측" in sample
+    def fallback_source(url,*markers):
+        if url in ("https://price-target.com/2026/10/21/175526/",
+                   "https://blockspace.media/insight/jpmorgan-raises-spacex-price-target/"):
+            return "verified"
+        raise ValueError("blocked original host")
+    backup=spacex_jpm_verified_target_notice(check=fallback_source,rate_getter=lambda:1300)
+    assert "price-target.com" in backup and "blockspace.media" in backup
 
     rocketlab = next(x for x in CATEGORIES if x.key == "rocketlab")
     sample = dict(
