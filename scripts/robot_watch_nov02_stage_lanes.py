@@ -214,12 +214,15 @@ def _group_from_text(text: str) -> str:
     if re.search(r"로보티즈|ROBOTIS",text,re.I) and re.search(r"Pollen|폴렌|MicroDuck",text,re.I) and re.search(r"10월\s*28일|20261028900684|기념\s*서명식",text,re.I):
         if re.search(r"계약.*없|미체결|계약/주문\s*없",text,re.I):
             return "robotis_microduck_dart_no_order"
-    if re.search(r"LG전자|LG\s*Electronics",text,re.I) and re.search(r"클로이드|CLOiD",text,re.I):
-        if re.search(r"양재|데이터팩토리|데이터\s*팩토리",text,re.I):
-            return "lg_cloid_inhouse_assembly"
+    # A company report can mention CLOiD, Yangjae and learning hours together.
+    # The dated 500,000-hour KPI has priority so its distinct stage is not
+    # swallowed by the broader prototype-assembly lane at import time.
     if re.search(r"LG전자|LG\s*Electronics",text,re.I) and re.search(r"로봇.*(?:학습\s*)?데이터|robot.{0,20}data",text,re.I):
         if re.search(r"50만\s*시간|500[\s,]?000\s*hours|500000\s*시간",text,re.I):
             return "lg_robot_learning_hours_target"
+    if re.search(r"LG전자|LG\s*Electronics",text,re.I) and re.search(r"클로이드|CLOiD",text,re.I):
+        if re.search(r"양재|데이터팩토리|데이터\s*팩토리",text,re.I):
+            return "lg_cloid_inhouse_assembly"
     if re.search(r"원익로보틱스|Wonik\s*Robotics",text,re.I):
         if re.search(r"로봇\s*손|로봇손|robot(?:ic)?\s*hand",text,re.I) and re.search(r"액추에이터|actuator|촉각|tactile",text,re.I):
             return "wonik_robot_hand_components"
