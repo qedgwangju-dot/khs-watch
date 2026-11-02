@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-02T14:56:52+09:00",
-  "last_scan_count": 4,
+  "updated_at_kst": "2026-11-03T00:42:33+09:00",
+  "last_scan_count": 5,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
     "vintage": "3Q26",
@@ -127,6 +127,7 @@
     "2ff967f0a83d4f9d09737f69",
     "3547810262aea5ccef036765",
     "3721dcaa772b61f44f972d28",
+    "3898ddc3349f7aa8502740b4",
     "3c256fe8dff8e167b043d264",
     "47dbd1ba8dd5c3df6d41d0b9",
     "4e45cbd21e7fd6755e4b41a7",
@@ -165,10 +166,10 @@
   "delivered_event_keys": [],
   "last_held": [
     {
-      "event_key": "taiwan|diversification|TSMC|arizona",
-      "source": "GuruFocus",
+      "event_key": "taiwan|capacity|TSMC|cowos",
+      "source": "tokenpost.com",
       "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-02T11:01:29+09:00"
+      "published_kst": "2026-10-29T14:42:47+09:00"
     }
   ],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
