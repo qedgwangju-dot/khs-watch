@@ -95,11 +95,11 @@ OFFICIAL_NAME_TOKENS = ["국방부", "정책브리핑", "국토교통부", "국�
 TRUSTED_DOMAIN_SUFFIXES = (
     "yna.co.kr", "newsis.com", "news1.kr", "kbs.co.kr", "imbc.com", "sbs.co.kr", "hankyung.com",
     "mk.co.kr", "sedaily.com", "mt.co.kr", "etnews.com", "chosun.com", "joongang.co.kr", "donga.com",
-    "asiae.co.kr", "fnnews.com", "newspim.com",
+    "asiae.co.kr", "fnnews.com", "newspim.com", "ohmynews.com", "ikbc.co.kr",
 )
 TRUSTED_NAME_TOKENS = [
     "연합뉴스", "뉴시스", "뉴스1", "KBS", "MBC", "SBS", "한국경제", "매일경제", "서울경제",
-    "머니투데이", "전자신문", "아시아경제", "파이낸셜뉴스", "뉴스핌",
+    "머니투데이", "전자신문", "아시아경제", "파이낸셜뉴스", "뉴스핌", "오마이뉴스", "KBC광주방송",
 ]
 
 PUBLISHER_ALIASES = {
@@ -323,6 +323,31 @@ def is_us_facility_story(item):
             any(word.replace(" ", "").lower() in compact for word in US_FACILITY_WORDS))
 
 
+def is_us_baseline_reprint(item):
+    """Block known 2026-11-02 follow-up coverage, not fresh delays."""
+    if not is_us_facility_story(item):
+        return False
+    title = normalize_text(item.get("title", "")).replace(" ", "")
+    if any(t in title for t in (
+        "협상결렬", "협정파기", "비준부결", "시설이전지연",
+        "대체시설미확보", "대체부지변경", "일정연기확정",
+    )):
+        return False
+    if ("포괄협정" in title or "COB" in title) and any(
+        t in title for t in ("추진", "협의중", "연내", "협의완료목표",
+                          "문안협의", "큰틀합의", "거의다돼")
+    ):
+        return True
+    if ("미군" in title or "임시배치" in title) and ("예산" in title or "이전비" in title):
+        if any(t in title for t in ("정부안에빠져", "정부안미반영", "예산미반영",
+                                   "예산누락", "국회협의", "예산협의중")):
+            return True
+    if ("미군" in title or "공여구역" in title) and ("보강공사" in title or "시설공사" in title):
+        if any(t in title for t in ("중단협의", "중단도논의", "공정률0.2", "중단논의")):
+            return True
+    return False
+
+
 def us_milestone(item):
     """Classify only a *new completed action* stated in the headline.
 
@@ -432,7 +457,7 @@ def select_us_milestone_alerts(items, state):
     selected = []
     for family, record in list(cache.items()):
         arr = [x for x in record.get("items", []) if us_milestone(x) == family]
-        publishers = {x.get("publisher") for x in arr if x.get("publisher")}
+        publishers = {x.get("publisher") for x in arr if x.get("publisher") and x.get("rank") in ("공식", "신뢰언론")}
         official = [x for x in arr if (
             domain_from_url(x.get("source_url", "")) in OFFICIAL_DOMAIN_SUFFIXES
             or domain_from_url(x.get("link", "")) in OFFICIAL_DOMAIN_SUFFIXES
@@ -529,7 +554,7 @@ def select_alerts(items, state):
             continue
         # US-facility milestones have their own status/dedupe/verification
         # pipeline so newspaper reprints cannot duplicate the original.
-        if is_us_facility_story(item):
+        if us_milestone(item) or is_us_baseline_reprint(item):
             continue
         categories = classify(text)
         if not categories or not decisive(text):
@@ -630,7 +655,7 @@ def write_status(total, candidates, selected, errors):
 
 
 def build_pending_state(items, state, selected=None, us_cache=None):
-    seen = list(dict.fromkeys((state.get("seen_ids") or []) + [i["id"] for i in items]))[-2500:]
+    seen = list(dict.fromkeys((state.get("seen_ids") or []) + [(i.get("id") or item_id(i)) for i in items]))[-2500:]
     updated = dict(state)  # preserve existing settings and historic event state
     updated.update({
         "version": 3,
@@ -691,6 +716,11 @@ def self_test():
     assert not us_milestone(baseline_news)
     budget = dict(baseline_news, title="광주 군공항 미군시설 이전 예산 2027년 정부안 미반영")
     assert not us_milestone(budget)
+    assert is_us_baseline_reprint(baseline_news)
+    assert is_us_baseline_reprint(budget)
+    bad_news = dict(baseline_news, title="광주 군공항 미군시설 이전 포괄협정 협상 결렬")
+    assert not is_us_baseline_reprint(bad_news)
+    assert not us_milestone(bad_news)
     signed = dict(baseline_news, title="광주 군공항 미군시설 포괄협정 체결 완료")
     assert us_milestone(signed) == "cob_signed"
     signed_target = dict(signed, title=signed["title"] + " 목표")
