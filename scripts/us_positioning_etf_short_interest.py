@@ -9,6 +9,7 @@ with twice-monthly ETF short interest.
 from __future__ import annotations
 
 import argparse
+import calendar
 import datetime as dt
 import json
 import os
@@ -168,6 +169,7 @@ def collect(*, now: dt.date | None = None, getter=get) -> dict:
     official_schedule = verified_calendar(today, getter=getter)
     sources = {}
     by_ticker = {}
+    validated_histories = {}
     for ticker in ("QQQ", "SPY"):
         reports = []
         for provider, template in PROVIDERS.items():
@@ -188,6 +190,7 @@ def collect(*, now: dt.date | None = None, getter=get) -> dict:
         if len(matched_sources) < 2:
             raise RuntimeError(f"{ticker}: providers disagree on settlement dates or share counts")
         latest, prior = winner
+        validated_histories[ticker] = _validated_history(reports, matched_sources)
         by_ticker[ticker] = {
             "settlement": latest[0], "shares": latest[1],
             "previous_settlement": prior[0], "previous_shares": prior[1],
@@ -220,9 +223,77 @@ def collect(*, now: dt.date | None = None, getter=get) -> dict:
         "published": published, "publication_age_days": age,
         "QQQ": q, "SPY": s, "divergence_pp": divergence,
         "signal": signal, "signal_key": key,
+        "period_comparisons": _aligned_period_comparisons(settlement, validated_histories),
         "sources": sources, "official_schedule": FINRA_CALENDAR,
         "source_type": "FINRA calendar + two independent secondary per-ticker republishes",
     }
+
+
+def _calendar_months_before(d: dt.date, months: int) -> dt.date:
+    """Use calendar months rather than fixed 30-day approximations."""
+    year, zero_month = divmod(d.year * 12 + d.month - 1 - months, 12)
+    month = zero_month + 1
+    return dt.date(year, month, min(d.day, calendar.monthrange(year, month)[1]))
+
+
+def _validated_history(reports: list, matched_sources: list) -> dict[str, int]:
+    """Require two agreeing source publishers for EACH historical share count."""
+    accepted = {provider for provider, _url in matched_sources}
+    votes: dict[tuple[str, int], set[str]] = {}
+    for provider, rows, _url in reports:
+        if provider not in accepted:
+            continue
+        for row in rows:
+            key = (row["settlement"], row["shares"])
+            votes.setdefault(key, set()).add(provider)
+    counts = {}
+    for (settlement, shares), sources in votes.items():
+        if len(sources) >= 2:
+            if settlement in counts and counts[settlement] != shares:
+                # Two contradictory majorities: suppress the ambiguous date.
+                counts[settlement] = None
+            elif settlement not in counts:
+                counts[settlement] = shares
+    return {date_str: amount for date_str, amount in counts.items()
+            if isinstance(amount, int)}
+
+
+def _aligned_period_comparisons(latest: str, histories: dict) -> dict:
+    """Compare QQQ and SPY on the exact same past settlement for each horizon."""
+    current_date = dt.date.fromisoformat(latest)
+    qqq, spy = histories["QQQ"], histories["SPY"]
+    if latest not in qqq or latest not in spy:
+        return {}
+    joint_dates = sorted(
+        dt.date.fromisoformat(d) for d in (set(qqq) & set(spy))
+        if d != latest
+    )
+    targets = [("1개월", _calendar_months_before(current_date, 1)),
+               ("2개월", _calendar_months_before(current_date, 2)),
+               ("3개월", _calendar_months_before(current_date, 3)),
+               ("6개월", _calendar_months_before(current_date, 6)),
+               ("연초", dt.date(current_date.year - 1, 12, 31))]
+    result = {}
+    for label, target in targets:
+        eligible = [d for d in joint_dates if d <= target and (target - d).days <= 20]
+        if not eligible:
+            continue
+        prior_date = max(eligible).isoformat()
+        row = {"previous_settlement": prior_date}
+        for ticker, history in (("QQQ", qqq), ("SPY", spy)):
+            old, new = history[prior_date], history[latest]
+            if old <= 0:
+                break
+            row[ticker] = {
+                "previous_shares": old,
+                "shares": new,
+                "change_shares": new - old,
+                "change_pct": (new / old - 1.0) * 100.0,
+            }
+        if "QQQ" in row and "SPY" in row:
+            row["divergence_pp"] = row["QQQ"]["change_pct"] - row["SPY"]["change_pct"]
+            result[label] = row
+    return result
 
 
 def load_state(path: pathlib.Path = STATE) -> dict:
