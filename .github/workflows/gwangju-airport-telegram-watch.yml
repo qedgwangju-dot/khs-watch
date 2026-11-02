@@ -7,7 +7,6 @@ on:
     paths:
       - ".github/workflows/gwangju-airport-telegram-watch.yml"
       - "scripts/gwangju_airport_watch.py"
-      - "data/gwangju_airport_watch_state.json"
   schedule:
     - cron: "37 * * * *"
       timezone: "Asia/Seoul"
@@ -27,7 +26,7 @@ permissions:
 
 concurrency:
   group: gwangju-airport-telegram-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   watch:
@@ -240,12 +239,13 @@ jobs:
           print(f'gwangju_airport_telegram_messages_sent={sent} bot=@{actual}')
           PY
 
-      - name: Persist state only after confirmed Telegram delivery
-        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/gwangju_airport_watch_state_pending.json') != '' && hashFiles('out/gwangju_airport_telegram_confirmed.json') != ''
+      - name: Persist state after a no-alert check or confirmed Telegram delivery
+        id: persist_gwangju
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/gwangju_airport_watch_state_pending.json') != '' && ((hashFiles('out/gwangju_airport_alert.md') == '' && hashFiles('out/gwangju_airport_connection_test.md') == '') || hashFiles('out/gwangju_airport_telegram_confirmed.json') != '')
         run: cp out/gwangju_airport_watch_state_pending.json data/gwangju_airport_watch_state.json
 
-      - name: Commit confirmed watch state
-        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/gwangju_airport_telegram_confirmed.json') != '' && hashFiles('data/gwangju_airport_watch_state.json') != ''
+      - name: Commit check state only when persistence was permitted
+        if: steps.telegram.outputs.configured == 'true' && success() && steps.persist_gwangju.conclusion == 'success' && hashFiles('data/gwangju_airport_watch_state.json') != ''
         run: |
           git config user.name "gwangju-airport-watch[bot]"
           git config user.email "gwangju-airport-watch[bot]@users.noreply.github.com"

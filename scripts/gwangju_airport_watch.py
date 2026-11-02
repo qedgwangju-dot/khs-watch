@@ -43,6 +43,13 @@ QUERIES = [
     '"광주 군공항" 지연 철회 소송',
     'site:korea.kr "광주 군 공항"',
     'site:mnd.go.kr "광주 군 공항"',
+    '"광주 군공항" "미군시설" "포괄협정"',
+    '"광주 군공항" "2027년" "임시배치" "예산"',
+    '"광주 군공항" "주한미군" "대체시설" "비용분담"',
+    '"광주 군공항" "공여구역" "반환" "국회 비준"',
+    '"광주 군공항" "미군시설" "보강공사" "중단"',
+    'site:korea.kr/briefing "광주 군공항" "포괄 협정"',
+    'site:mnd.go.kr "COB" "광주" "미군"',
     'site:jeonnam.go.kr "광주 군 공항"',
     'site:muan.go.kr "광주 군공항"',
 ]
@@ -54,6 +61,9 @@ CATEGORY_RULES = {
     "최종 이전부지": ["최종 이전부지", "이전부지 선정", "최종 선정", "이전부지로 선정"],
     "지연·철회·법적절차": ["지연", "연기", "철회", "취소", "가처분", "소송", "행정심판", "재검토", "무산"],
     "제1전투비행단 임시배치": ["제1전투비행단", "임시 배치", "임시배치", "예천", "서산", "중원기지", "기능 이전"],
+    "미군시설·한미 포괄협정": ["미군시설", "미군 시설", "주한미군", "포괄협정", "포괄 협정", "COB", "공동운영기지", "공여구역"],
+    "미군시설 이전예산": ["미군 시설 임시배치 예산", "미군시설 이전 예산", "미군시설 임시배치 예산", "정부안 미반영", "미군 시설 이전비"],
+    "미군시설 보강공사": ["미군시설 공사", "미군 시설 보강공사", "급유시설", "엔지니어저장시설", "보강공사"],
     "반도체 클러스터·기존부지": ["반도체 클러스터", "반도체 산단", "국가산단", "산업단지", "착공", "부지 인도", "전력", "용수"],
 }
 
@@ -61,7 +71,7 @@ ACTION_TERMS = [
     "확정", "선정", "의결", "발표", "공고", "구성", "출범", "개최", "실시", "결과",
     "찬성", "반대", "신청", "제출", "착공", "준공", "계약", "반영", "증액", "감액",
     "지연", "연기", "철회", "취소", "소송", "가처분", "재검토", "배치", "이전", "승인",
-    "협의", "논의", "수립", "마련",
+    "협의", "논의", "수립", "마련", "비준", "미반영", "포괄협정", "보강공사", "공여구역",
 ]
 
 EVENT_ACTION_GROUPS = {
@@ -96,6 +106,8 @@ PUBLISHER_ALIASES = {
     "yna.co.kr": "연합뉴스", "연합뉴스": "연합뉴스",
     "newsis.com": "뉴시스", "뉴시스": "뉴시스",
     "news1.kr": "뉴스1", "뉴스1": "뉴스1",
+    "ohmynews.com": "오마이뉴스", "오마이뉴스": "오마이뉴스",
+    "ikbc.co.kr": "KBC광주방송", "KBC광주방송": "KBC광주방송",
     "kbs.co.kr": "KBS", "kbs": "KBS",
     "imbc.com": "MBC", "mbc": "MBC",
     "sbs.co.kr": "SBS", "sbs": "SBS",
@@ -292,6 +304,155 @@ def fetch_rss(url, provider, query):
     return items
 
 
+
+# Verified from the 2026-11-02 Ministry of National Defense spokesperson briefing.
+# This first intake is ONE incident with three separate factual axes; it does
+# not claim a signed COB agreement, secured budget or halted construction.
+COB_OFFICIAL_BRIEFING_URL = "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156787549"
+COB_BRIEFING_EVENT_KEY = "gwangju_us_facilities_briefing_20261102"
+COB_SOURCE_DATE = "2026-11-02T11:00:00+09:00"
+US_FACILITY_WORDS = ("미군", "주한미군", "미군시설", "미군 시설", "공여구역", "COB", "포괄협정", "포괄 협정")
+US_BASELINE_WORDS = ("포괄협정", "포괄 협정", "COB", "2027년", "미군시설", "미군 시설", "공여구역", "보강공사")
+
+
+def is_us_facility_story(item):
+    title = normalize_text(item.get("title", ""))
+    description = normalize_text(item.get("description", ""))
+    compact = (title + " " + description).replace(" ", "").lower()
+    return ("광주" in compact and "군공항" in compact and
+            any(word.replace(" ", "").lower() in compact for word in US_FACILITY_WORDS))
+
+
+def us_milestone(item):
+    """Classify only a *new completed action* stated in the headline.
+
+    Background mentions of other years, negotiation goals or mere requests
+    must never promote a historic development into a fresh alert.
+    """
+    if not is_us_facility_story(item):
+        return ""
+    title = normalize_text(item.get("title", "")).replace(" ", "")
+    if not title:
+        return ""
+    if any(t in title for t in ("목표", "예정", "전망", "추진", "협의중", "검토중", "요청", "계획", "논의중", "합의임박")):
+        return ""
+    if "포괄협정" in title or "COB" in title:
+        if any(t in title for t in ("국회비준동의안가결", "국회비준완료", "비준동의안통과")):
+            return "cob_ratified"
+        if any(t in title for t in ("포괄협정서명", "포괄협정체결", "협정서명완료", "협정체결완료")):
+            return "cob_signed"
+        if any(t in title for t in ("문안협의완료", "협정문안최종합의", "문안최종합의")):
+            return "cob_text_agreed"
+    if ("미군" in title or "임시배치" in title) and ("예산" in title or "이전비" in title):
+        if any(t in title for t in ("미반영", "빠져", "미확보", "불발")):
+            return ""  # 2027 government draft omission already verified 2026-11-02
+        if any(t in title for t in ("예산안최종확정", "예산최종확정", "예산확보완료", "예산안가결")):
+            return "2027_budget_enacted"
+        if any(t in title for t in ("추경반영확정", "국회증액확정", "예산반영확정", "예산편성확정")):
+            return "2027_budget_revised"
+    if ("미군" in title or "공여" in title or "광주군공항" in title):
+        if any(t in title for t in ("공여구역반환완료", "미군공여지반환완료")):
+            return "returned_land"
+        if any(t in title for t in ("미군시설이전완료", "미군시설임시배치완료")):
+            return "relocation_completed"
+        if any(t in title for t in ("대체시설부지확정", "미군대체시설계약체결", "대체시설착공")):
+            return "replacement_facility"
+        if any(t in title for t in ("보강공사중단확정", "보강공사중단합의", "보강공사중단결정")):
+            return "existing_works_halted"
+        if any(t in title for t in ("보강공사재개확정", "보강공사재개")):
+            return "existing_works_resumed"
+    return ""
+
+
+def verified_briefing_item(state):
+    # The 2026-11-02 primary government transcript was independently checked
+    # at intake. We do NOT claim to have fetched that web page in this run.
+    if COB_BRIEFING_EVENT_KEY in (state.get("sent_event_keys") or []):
+        return None
+    return {
+        "id": COB_BRIEFING_EVENT_KEY,
+        "event_key": COB_BRIEFING_EVENT_KEY,
+        "title": "광주 미군시설 이전: 한미 포괄협정 협의·2027년 정부안 예산 미반영",
+        "link": COB_OFFICIAL_BRIEFING_URL,
+        "description": "국방부 2026년 11월 2일 공식 정례브리핑 신규 확인 사건",
+        "source": "대한민국 정책브리핑·국방부",
+        "source_url": "https://www.korea.kr",
+        "publisher": "국방부",
+        "rank": "공식",
+        "published": COB_SOURCE_DATE,
+        "categories": ["미군시설·한미 포괄협정", "미군시설 이전예산", "미군시설 보강공사"],
+        "verification": "국방부 2026-11-02 공식 정례브리핑 원문 근거",
+        "detail_lines": [
+            "2027년 미군시설 임시배치 예산: 정부안 미반영; 국회 심의 중 협의 필요(확정 예산 0원이라는 뜻 아님)",
+            "한미 COB 포괄협정: 광주 포함 협의 중, 연내 문안 협의 완료 목표; 미체결·국회 비준 전",
+            "기존 미군시설 보강공사: 586억+36억+13억원(세부사업 합계 635억원), 공정률 0.2%; 중단도 협의 중",
+            "후속 관문: 대체시설·비용분담→협정 문안 완료·서명·국회 비준→예산 확보→미군시설 이전·공여구역 반환",
+            "호남 반도체: 군공항 기능의 2028년 중순 임시배치는 목표이며 부지 확보·팹 착공 확정 아님",
+        ],
+    }
+
+
+def select_us_milestone_alerts(items, state):
+    """Build verified change alerts while retaining cross-run evidence.
+
+    One newspaper's article is pending, not silently marked delivered. A
+    later distinct publisher can corroborate it even after source dedup.
+    """
+    cache = dict(state.get("us_pending_evidence") or {})
+    sent_keys = set(state.get("sent_event_keys") or [])
+    now = now_kst()
+    fresh = {}
+    for family, record in cache.items():
+        try:
+            first = parse_iso(record.get("first_seen") or "")
+            if not first or now - first.astimezone(KST) > dt.timedelta(days=10):
+                continue
+        except (ValueError, TypeError):
+            continue
+        if family in sent_keys:
+            continue
+        fresh[family] = record
+    cache = fresh
+    for item in items:
+        family = us_milestone(item)
+        if not family or family in sent_keys:
+            continue
+        # User has requested event-stage monitoring, not old article replay.
+        published = parse_iso(item.get("published"))
+        if published and (now - published.astimezone(KST)).total_seconds() > 7 * 86400:
+            continue
+        record = cache.setdefault(family, {"first_seen": now.isoformat(), "items": []})
+        arr = record["items"]
+        publisher = item.get("publisher") or publisher_key(item.get("source", ""), item.get("source_url", ""), item.get("link", ""))
+        if not any((x.get("publisher"), x.get("link")) == (publisher, item.get("link")) for x in arr):
+            arr.append(dict(item))
+            if len(arr) > 14:
+                del arr[:-14]
+
+    selected = []
+    for family, record in list(cache.items()):
+        arr = [x for x in record.get("items", []) if us_milestone(x) == family]
+        publishers = {x.get("publisher") for x in arr if x.get("publisher")}
+        official = [x for x in arr if (
+            domain_from_url(x.get("source_url", "")) in OFFICIAL_DOMAIN_SUFFIXES
+            or domain_from_url(x.get("link", "")) in OFFICIAL_DOMAIN_SUFFIXES
+        )]
+        if len(publishers) < 2 and not official:
+            continue
+        preferred = sorted(arr, key=lambda x: (x.get("rank") == "공식", x.get("published") or ""), reverse=True)[0]
+        event = dict(preferred)
+        event["event_key"] = "gwangju_us_" + family
+        event["verification"] = "공식자료" if official else f"독립 언론 {len(publishers)}곳 교차확인"
+        event["categories"] = ["미군시설·한미 포괄협정", "미군시설 이전예산", "미군시설 보강공사"] if family == "cob_ratified" else event.get("categories", [])
+        event["detail_lines"] = [
+            f"실제 변경 단계: {family} (계획·발언이 아니라 실행 완료 문구와 출처 대조)",
+            "이전 정부안의 예산 미반영 및 협정 협의 중 상태와 구분",
+        ]
+        selected.append(event)
+        cache.pop(family, None)
+    return selected, cache
+
+
 def collect_items():
     all_items, errors = [], []
     for query in QUERIES:
@@ -366,6 +527,10 @@ def select_alerts(items, state):
         text = " ".join([item.get("title", ""), item.get("description", "")])
         if not relevant(text):
             continue
+        # US-facility milestones have their own status/dedupe/verification
+        # pipeline so newspaper reprints cannot duplicate the original.
+        if is_us_facility_story(item):
+            continue
         categories = classify(text)
         if not categories or not decisive(text):
             continue
@@ -433,6 +598,10 @@ def build_alert(selected):
             f"{idx}. {'·'.join(item['categories'])}",
             f"- {item['title']}",
             f"- 확정도: {verification}",
+        ])
+        for detail in item.get("detail_lines") or []:
+            lines.append(f"- {detail}")
+        lines.extend([
             f"- 출처원문: {item['publisher']} | {format_time(item.get('published'))} | {item['link']}",
             "",
         ])
@@ -460,15 +629,23 @@ def write_status(total, candidates, selected, errors):
     ERROR_PATH.write_text("\n".join(errors) + ("\n" if errors else ""), encoding="utf-8")
 
 
-def build_pending_state(items, state):
+def build_pending_state(items, state, selected=None, us_cache=None):
     seen = list(dict.fromkeys((state.get("seen_ids") or []) + [i["id"] for i in items]))[-2500:]
-    return {
-        "version": 2,
+    updated = dict(state)  # preserve existing settings and historic event state
+    updated.update({
+        "version": 3,
         "baseline": BASELINE,
         "cutoff_kst": state.get("cutoff_kst") or DEFAULT_CUTOFF,
         "seen_ids": seen,
         "last_scan_kst": now_kst().isoformat(),
-    }
+    })
+    sent = list(dict.fromkeys(state.get("sent_event_keys") or []))
+    for event in selected or []:
+        if event.get("event_key") and event["event_key"] not in sent:
+            sent.append(event["event_key"])
+    updated["sent_event_keys"] = sent[-1000:]
+    updated["us_pending_evidence"] = us_cache if us_cache is not None else dict(state.get("us_pending_evidence") or {})
+    return updated
 
 
 def self_test():
@@ -503,7 +680,39 @@ def self_test():
         "categories": ["지원계획·예산"],
     }
     assert not same_event(a, c)
-    print("self_test=ok")
+    baseline_news = {
+        "title": "광주 군공항 미군시설 이전 포괄협정 추진…연내 문안 협의 완료 목표",
+        "description": "광주 군공항 미군시설 대체시설과 예산 논의",
+        "source": "KBC광주방송", "publisher": "KBC광주방송",
+        "link": "https://example.com/current", "categories": ["미군시설·한미 포괄협정"],
+        "published": now_kst().isoformat(), "rank": "신뢰언론",
+    }
+    assert is_us_facility_story(baseline_news)
+    assert not us_milestone(baseline_news)
+    budget = dict(baseline_news, title="광주 군공항 미군시설 이전 예산 2027년 정부안 미반영")
+    assert not us_milestone(budget)
+    signed = dict(baseline_news, title="광주 군공항 미군시설 포괄협정 체결 완료")
+    assert us_milestone(signed) == "cob_signed"
+    signed_target = dict(signed, title=signed["title"] + " 목표")
+    assert not us_milestone(signed_target)
+    allocated = dict(baseline_news, title="광주 군공항 미군시설 이전 예산 국회 증액 확정")
+    assert us_milestone(allocated) == "2027_budget_revised"
+    work = dict(baseline_news, title="광주 군공항 미군시설 보강공사 중단 합의")
+    assert us_milestone(work) == "existing_works_halted"
+    assert verified_briefing_item({"sent_event_keys": []}) is not None
+    assert verified_briefing_item({"sent_event_keys": [COB_BRIEFING_EVENT_KEY]}) is None
+    no_repeat = {"sent_event_keys": [COB_BRIEFING_EVENT_KEY], "us_pending_evidence": {}}
+    assert not select_us_milestone_alerts([baseline_news], no_repeat)[0]
+    event1, cache = select_us_milestone_alerts([signed], no_repeat)
+    assert not event1 and "cob_signed" in cache
+    signed_2 = dict(signed, publisher="연합뉴스", source="연합뉴스", link="https://example.com/yna")
+    event2, cache2 = select_us_milestone_alerts([signed_2], dict(no_repeat, us_pending_evidence=cache))
+    assert len(event2) == 1 and event2[0]["event_key"] == "gwangju_us_cob_signed"
+    assert "cob_signed" not in cache2
+    state_after = build_pending_state([signed], no_repeat, event2, cache2)
+    assert "gwangju_us_cob_signed" in state_after["sent_event_keys"]
+    assert verified_briefing_item(state_after) is None
+    print("self_test=ok checks=baseline+distinct_milestones+cross_run_corroboration+delivery_gate")
 
 
 def run_check():
@@ -515,14 +724,22 @@ def run_check():
     state = load_state()
     items, errors = collect_items()
     selected, candidates = select_alerts(items, state)
+    us_selected, us_cache = select_us_milestone_alerts(items, state)
+    intake = verified_briefing_item(state)
+    if intake is not None:
+        us_selected.insert(0, intake)
+    # Structured military milestones are separate from generic newspaper
+    # headlines.  Event keys persist only after Telegram confirms delivery.
+    selected = us_selected + selected
 
     if selected:
         ALERT_PATH.write_text(build_alert(selected), encoding="utf-8")
 
-    pending = build_pending_state(items, state)
+    pending = build_pending_state(items, state, selected, us_cache)
     PENDING_STATE_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     write_status(len(items), candidates, selected, errors)
     print(f"collected={len(items)} candidates={len(candidates)} alerts={len(selected)} errors={len(errors)}")
+    print(f"gwangju_us_milestones={len(us_selected)} pending_evidence={len(us_cache)} last_scan={pending['last_scan_kst']}")
 
 
 def main():
