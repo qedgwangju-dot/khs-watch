@@ -2,7 +2,9 @@
 """Offline no-send checks for existing-route OpenAI robotics monitoring."""
 from __future__ import annotations
 import datetime as dt
+import io
 from types import SimpleNamespace
+from unittest.mock import patch
 from zoneinfo import ZoneInfo
 
 import robot_watch_openai_robotics_program as m
@@ -40,6 +42,10 @@ def run():
     base=make_base()
     m.install(base)
     assert m.RECOVERY_QUERY in base.QUERIES
+    assert m.OPENAI_NEWS_FEED_QUERY in base.QUERIES
+    assert m.CHEEKY_PINT_FEED_QUERY in base.QUERIES
+    assert m.OPENAI_NEWS_FEED.startswith("https://openai.com/")
+    assert m.CHEEKY_PINT_FEED.startswith("https://feeds.transistor.fm/")
     assert len(base.QUERIES)==len(set(base.QUERIES))
 
     recovered=base.query_news(m.RECOVERY_QUERY)
@@ -98,6 +104,39 @@ def run():
     syndicated=dict(later_real,source="The Next Web")
     assert 11<=classify(base,syndicated)[1]<s,"reported vs issuer confirmed"
     assert classify(base,syndicated)[2]!=k,"reported vs official evidence keys separate"
+
+    # Primary-source RSS parsing is checked with fake bytes and no HTTP.
+    podcast_rss = b"""<?xml version="1.0" encoding="utf-8"?>
+    <rss version="2.0"><channel><title>Cheeky Pint</title>
+      <item><title>Sam Altman on superintelligence</title>
+        <description>OpenAI CEO Sam Altman discusses robotics program to build data centers.</description>
+        <link>https://cheekypint.transistor.fm/39/transcript</link>
+        <pubDate>Thu, 29 Oct 2026 11:45:00 +0000</pubDate>
+      </item>
+      <item><title>Unrelated business interview</title>
+        <description>No robotics content.</description>
+        <link>https://cheekypint.transistor.fm/38/transcript</link>
+      </item>
+    </channel></rss>"""
+    with patch.object(m.urllib.request,"urlopen",return_value=io.BytesIO(podcast_rss)):
+        p_rows=base.query_news(m.CHEEKY_PINT_FEED_QUERY)
+    assert len(p_rows)==1,(p_rows,)
+    assert p_rows[0]["primary_feed"]=="Cheeky Pint"
+    assert classify(base,p_rows[0])[0]==m.TOPIC
+    assert classify(base,p_rows[0])[1]==0, "Past interview repeat is not fresh achievement"
+
+    official_rss = b"""<?xml version="1.0" encoding="utf-8"?>
+    <rss version="2.0"><channel><title>OpenAI News</title>
+      <item><title>OpenAI robotics actual field deployment</title>
+        <description>OpenAI robots deployed at a data center construction site.</description>
+        <link>https://openai.com/news/robotics-construction</link>
+        <pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
+      </item>
+    </channel></rss>"""
+    with patch.object(m.urllib.request,"urlopen",return_value=io.BytesIO(official_rss)):
+        n_rows=base.query_news(m.OPENAI_NEWS_FEED_QUERY)
+    assert len(n_rows)==1 and n_rows[0]["source"]=="OpenAI"
+    assert classify(base,n_rows[0])[1]>=11, "Official RSS achieved-stage evidence should surface"
 
     # Date-scoped, single historical catch-up; new stages are still tracked.
     base.NOW=dt.datetime(2026,11,7,0,0,tzinfo=dt.timezone.utc)
