@@ -8838,6 +8838,11 @@ _robot_nov02.install(base)
 import robot_watch_missing_milestones as _robot_missing
 _robot_missing.install(base)
 
+# Independent OpenAI/Altman data-center robotics program and achieved-stage checks.
+# Own-humanoid/2027-demonstration history remains owned by the earlier lane.
+import robot_watch_openai_robotics_program as _openai_infra_robots
+_openai_infra_robots.install(base)
+
 
 if __name__ == '__main__':
     pre_state = base.load_state()
