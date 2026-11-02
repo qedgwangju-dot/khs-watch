@@ -37,7 +37,7 @@ def kind(category,title):
     if category=="golden_dome":
         if not re.search(r"golden dome|골든돔",t) or not re.search(r"google|alphabet|구글|알파벳|aalyria|알리리아",t):
             return "unrelated"
-        if re.search(r"award(?:ed)? contract|signed contract|contract awarded|수주 확정|계약 체결",t):
+        if re.search(r"award(?:ed)? contract|signs?(?:\s+a)?\s+contract|signed contract|contract awarded|수주 확정|계약 체결",t):
             return "contract_reported"
         if re.search(r"in talks|discuss|negotia|consider|weighs|to join|협의|논의|검토|추진",t):
             return "pre_contract"
@@ -101,8 +101,10 @@ def semantic_id(category,item):
         years=re.findall(r"\b20\d{2}\b",item["title"])
         return "semantic:rocketlab:neutron:first_flight_shift_"+(years[-1] if years else "undated")
     if category=="golden_dome":
-        # New signed award is a new event, not a duplicate of earlier talks.
-        return "semantic:golden_dome:google_data_security:"+event+":"+pub.strftime("%Y-%m")
+        # Cross-month repeats of the same preliminary negotiation are not a new contract.
+        period=(f"{pub.year}Q{(pub.month-1)//3+1}" if event=="pre_contract"
+                else pub.strftime("%Y-%m"))
+        return "semantic:golden_dome:google_data_security:"+event+":"+period
     monday=pub.date()-dt.timedelta(days=pub.weekday())
     return "semantic:"+category+":"+topic_key(category,item["title"])+":"+event+":"+monday.isoformat()
 
