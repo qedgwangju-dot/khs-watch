@@ -184,6 +184,8 @@ EVENTS = {
 # Strict, source-specific advancement checks. Press headlines / plans and
 # interviews are NOT transformed into a binding contract or completed SOP.
 EXTRA_QUERIES = (
+    '(로보티즈 OR ROBOTIS) (Pollen Robotics OR 폴렌 로보틱스 OR MicroDuck) '
+    '(해명공시 OR 재공시 OR 구매주문서 OR 계약 체결 OR 계약 미체결 OR 2026년 11월 27일)',
     '(LG전자 OR "LG Electronics") (CLOiD OR 클로이드) '
     '(양재 데이터팩토리 OR 자체 조립 OR 직접 생산 OR 양산 개시 OR 가동률 OR 수주)',
     '(LG전자 OR "LG Electronics") (로봇 데이터팩토리 OR robot data factory) '
