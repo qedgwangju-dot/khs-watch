@@ -16,6 +16,8 @@ import pathlib
 import tempfile
 import urllib.parse
 import urllib.request
+
+import requests
 from zoneinfo import ZoneInfo
 
 import treasury_etf_flow_watch as ishares
@@ -43,6 +45,11 @@ OPTIONAL_KOREA_FUND = {
         "url": "https://www.ishares.com/us/products/239681/ishares-msci-south-korea-etf",
     }
 }
+PORTFOLIO_IDS = {"IYW":239522, "SOXX":239705, "EWY":239681}
+HIST_URL = ("https://www.ishares.com/varnish-api/blk-one01-product-data/"
+            "product-data/api/v2/get-product-data")
+WINDOWS = ((21, "1개월"), (63, "3개월"))
+HISTORY_LIMIT = 110
 EXPECTED_BOT = "khs887900887900008879_bot"
 class OfficialPublicationPending(RuntimeError):
     """A newly closed U.S. market session has not yet appeared in iShares data."""
@@ -157,6 +164,117 @@ def _consecutive_weekday_dates(rows):
     return dates == [x["date"] for x in rows]
 
 
+
+def issuer_nav_history(ticker, current):
+    """Read the issuer's daily NAV/shares history, not ETF trading volume."""
+    params = {"appSubType":"ISHARES", "appType":"PRODUCT_PAGE",
+              "component":"fundDownload", "locale":"en_US",
+              "portfolioId":str(PORTFOLIO_IDS[ticker]),
+              "targetSite":"us-ishares", "userType":"individual",
+              "excludeContent":"true"}
+    resp = requests.get(HIST_URL, params=params,
+                        headers=ishares.HEADERS, timeout=(7, 24))
+    resp.raise_for_status()
+    data = resp.json()
+    cols = (data.get("componentsByNameMap", {}).get("fundDownload", {})
+            .get("containersByNameMap", {}).get("historical", {})
+            .get("dataPointsByNameMap", {}))
+    try:
+        days = cols["asof"]["value"]
+        navs = cols["nav"]["value"]
+        shares = cols["sharesOutstanding"]["value"]
+    except (KeyError, TypeError) as exc:
+        raise ValueError("iShares historical NAV and shares fields missing") from exc
+    if not (isinstance(days,list) and len(days)==len(navs)==len(shares) and len(days)>63):
+        raise ValueError("iShares historical observations missing or misaligned")
+    def raw(x):
+        return x.get("r") if isinstance(x,dict) else x
+    out = {}
+    for date,nav,share in zip(days,navs,shares):
+        try:
+            key = str(int(float(raw(date))))
+            day = dt.datetime.strptime(key,"%Y%m%d").date().isoformat()
+            if day > current["date"]:
+                continue
+            price = float(str(raw(nav)).replace(",",""))
+            count = float(str(raw(share)).replace(",",""))
+            if not all(map(math.isfinite,(price,count))) or price<=0 or count<=0:
+                continue
+        except (ValueError,TypeError,OverflowError):
+            continue
+        if day in out and (out[day]["shares"]!=count or out[day]["nav"]!=price):
+            raise ValueError("Conflicting issuer historical share observations")
+        out[day]={"date":day,"nav":price,"shares":count}
+    if not out:
+        raise ValueError("No valid historical records in issuer NAV feed")
+    # Prevent stale/revised/split-adjusted history from silently replacing the
+    # exact current issuer page or any already verified observation.
+    today=out.get(current["date"])
+    if today and (abs(today["shares"]-current["shares"])>1 or
+                  abs(today["nav"]-current["nav"])>0.025):
+        raise ValueError("Issuer historical and current fund page mismatch")
+    return sorted(out.values(),key=lambda x:x["date"])[-HISTORY_LIMIT:]
+
+
+def verified_backfill(state, current, *, fetcher=issuer_nav_history):
+    """Optional, read-only issuer backfill. Never replace validated existing rows."""
+    copied={**state,"history":{k:list(v) for k,v in state.get("history",{}).items()}}
+    count=0
+    for ticker,row in current.items():
+        existing=copied["history"].get(ticker,[])
+        if len(existing)>=70:
+            continue
+        try:
+            fetched=fetcher(ticker,row)
+            hist={z["date"]:z for z in fetched}
+            if not any(z["date"] in hist for z in existing) and row["date"] not in hist:
+                raise ValueError("Issuer history has no verifiable overlap")
+            for saved in existing:
+                candidate=hist.get(saved["date"])
+                if candidate and (abs(candidate["shares"]-saved["shares"])>1 or
+                                  abs(candidate["nav"]-saved["nav"])>0.025):
+                    raise ValueError("Issuer historical revision conflicts with saved state")
+                hist[saved["date"]]=saved
+            hist[row["date"]]={"date":row["date"],"nav":row["nav"],"shares":row["shares"]}
+            combined=sorted(hist.values(),key=lambda z:z["date"])[-HISTORY_LIMIT:]
+            copied["history"][ticker]=combined
+            count+=max(0,len(combined)-len(existing))
+            print(f"tech_etf_issuer_backfill={ticker} verified_rows={len(combined)}")
+        except Exception as exc:
+            print(f"tech_etf_issuer_backfill_withheld={ticker} reason={type(exc).__name__} "
+                  f"detail={str(exc)[:90]}")
+    return copied,count
+
+
+def rolling_estimated_flows(rows, count, ticker):
+    """Sum each daily share change times that day's NAV over exact US sessions."""
+    if len(rows)<count+1:
+        return None
+    window=rows[-(count+1):]
+    if ticker=="SOXX" and window[0]["date"]<"2026-11-05"<=window[-1]["date"]:
+        return None
+    try:
+        import exchange_calendars
+        calendar=exchange_calendars.get_calendar("XNYS")
+        valid=[x.date().isoformat() for x in calendar.sessions_in_range(
+            window[0]["date"],window[-1]["date"])]
+    except Exception:
+        return None
+    if valid != [z["date"] for z in window]:
+        return None
+    total=0.0
+    for previous,today in zip(window,window[1:]):
+        a,b=float(previous["shares"]),float(today["shares"])
+        nav=float(today["nav"])
+        if not all(math.isfinite(x) and x>0 for x in (a,b,nav)):
+            return None
+        if not 0.60<=b/a<=1.65:
+            return None
+        total+=(b-a)*nav
+    change=(float(window[-1]["shares"])/float(window[0]["shares"])-1)*100
+    return {"start":window[0]["date"],"end":window[-1]["date"],
+            "sessions":count,"net_usd":total,"share_pct":change}
+
 def calculate(observations, state):
     if not set(FUNDS).issubset(set(observations)):
         raise ValueError("both official technology sector funds required")
@@ -211,7 +329,7 @@ def calculate(observations, state):
         rows = [x for x in history if x.get("date") != today] + [
             {"date": today, "nav": row["nav"], "shares": row["shares"]}
         ]
-        rows = sorted(rows, key=lambda x: x["date"])[-20:]
+        rows = sorted(rows, key=lambda x: x["date"])[-HISTORY_LIMIT:]
         obs.update({
             "five_observations_from": None,
             "five_observations_share_change_pct": None,
@@ -233,6 +351,8 @@ def calculate(observations, state):
                             "five_observations_share_change_pct": pct5,
                             "five_observations_creation_usd": share_delta_5 * row["nav"],
                         })
+        obs["rolling"]={n:rolling_estimated_flows(rows,n,ticker) for n,_ in WINDOWS}
+        obs["history_points"]=len(rows)
         new_history[ticker] = rows
         movements[ticker] = obs
 
@@ -333,6 +453,37 @@ def render(result, fx, fx_date):
                 f"{x['five_observations_share_change_pct']:+.2f}% "
                 f"· {html.escape(money_usd(v5))} ({html.escape(money_krw(v5, fx))})"
             )
+    for ticker in ("IYW","SOXX","EWY"):
+        if ticker not in result["movements"]:
+            continue
+        x=result["movements"][ticker]
+        for sessions,period in WINDOWS:
+            stat=x["rolling"].get(sessions)
+            if stat is None:
+                why=("분할 전후 비교 보류" if ticker=="SOXX"
+                     and "2026-11-05"<=result["date"] and
+                     x["history_points"]>=sessions+1
+                     else "발행사 연속 거래일 자료 부족·누락")
+                lines.append(f"  {ticker} {period}({sessions}거래일) 누적: 확인 대기({why})")
+                continue
+            label=("설정 우위" if stat["net_usd"]>0 else
+                   "환매 우위" if stat["net_usd"]<0 else "중립")
+            lines.append(
+                f"  {ticker} {period}({sessions}거래일): {label} "
+                f"{html.escape(money_usd(stat['net_usd']))} "
+                f"({html.escape(money_krw(stat['net_usd'],fx))}) / "
+                f"발행좌수 {stat['share_pct']:+.2f}% / "
+                f"{stat['start']}→{stat['end']}")
+        short,long=(x["rolling"].get(21),x["rolling"].get(63))
+        if short and long:
+            s1=0 if abs(short["net_usd"])<1 else (1 if short["net_usd"]>0 else -1)
+            s3=0 if abs(long["net_usd"])<1 else (1 if long["net_usd"]>0 else -1)
+            trend=("장·단기 설정 우위 지속" if s1==s3==1 else
+                   "장·단기 환매 우위 지속" if s1==s3==-1 else
+                   "단기 설정 전환" if s1==1 and s3==-1 else
+                   "단기 환매 전환" if s1==-1 and s3==1 else
+                   "혼조·방향 추가 확인")
+            lines.append(f"  {ticker} 중기 방향: {trend}")
     if "EWY" not in result["movements"]:
         lines.append("• <b>EWY</b>: 공식값·기준일 동기화 확인 불가 → 한국 ETF 설정·환매 판정 보류")
     lines += [
@@ -340,6 +491,7 @@ def render(result, fx, fx_date):
         "주의: JP모건 개인 순매수 불균형과 이 ETF 발행좌수 추정치는 다릅니다. 개인·기관별 순매수나 전체 기술주 펀드 순유입액이 아닙니다.",
         "EWY는 미국 상장 한국 주식 ETF이며, EWY 설정·환매를 한국거래소 외국인 현물 매수·매도로 치환하지 않습니다.",
         "최근 5회 누적은 해당 ETF 공식 발행좌수 6개 연속 평일 관측점만 사용합니다. 휴장·결측이 포함되면 누적 경보를 보류합니다.",
+        "1개월·3개월은 각각 21·63개 연속 미국 증시 거래 간격의 일별 발행좌수 증감×각일 기준가격 합계(추정)입니다. 과거치·휴장·결측은 검증 없이 채우지 않습니다.",
         "해당 ETF의 2차시장 거래량과 실제 발행·환매는 다르며, 설정·환매 주체를 개인·기관으로 식별할 수 없습니다.",
         "SOXX는 2026-11-05 예정 주식분할 전후 발행좌수 비교 경보를 보류합니다.",
         f"환율: {fx:,.2f}원/달러 (공식 기준 {html.escape(fx_date)})" if fx else "환율: 확인 불가",
@@ -348,7 +500,7 @@ def render(result, fx, fx_date):
         f'<a href="{OPTIONAL_KOREA_FUND["EWY"]["url"]}">EWY 공식</a>',
     ]
     out = "\n".join(lines)
-    if len(out) >= 3500:
+    if len(out) >= 3900:
         raise ValueError("Telegram summary length exceeded safe limit")
     return out
 
@@ -410,6 +562,10 @@ def run(validate_only=False, now=None, state_path=STATE, getter=collect):
     state=load_state(state_path)
     try:
         current=getter(now)
+        added=0
+        if getter is collect and any(len(state.get("history",{}).get(t,[]))<70
+                                     for t in current):
+            state,added=verified_backfill(state,current)
         outcome=calculate(current,state)
     except OfficialPublicationPending as e:
         return {"status":"publication_pending","reason":str(e)[:220],"telegram_sent":False}
@@ -421,7 +577,12 @@ def run(validate_only=False, now=None, state_path=STATE, getter=collect):
     fresh_signals = [name for name in outcome["signals"]
                      if outcome["date"] + "|" + name not in sent_keys]
     if outcome["signals"] and not fresh_signals and not validate_only:
-        return {"status":"duplicate_suppressed","date":outcome["date"],"telegram_sent":False}
+        if added:
+            state["history"]=outcome["new_history"]
+            state["last_update_date"]=outcome["date"]
+            save_state(state,state_path)
+        return {"status":"duplicate_suppressed","date":outcome["date"],
+                "history_backfilled":added,"telegram_sent":False}
     fx,fx_date=None,None
     if fresh_signals:
         try:
@@ -440,6 +601,7 @@ def run(validate_only=False, now=None, state_path=STATE, getter=collect):
         CANDIDATE.write_text(body+"\n",encoding="utf-8")
     if validate_only:
         return {"status":"validated","date":outcome["date"],"signals":outcome["signals"],
+                "historical_rows_added":added,
                 "movements":outcome["movements"],"telegram_sent":False}
     if fresh_signals:
         message_id=send_exact(body)
@@ -457,6 +619,7 @@ def run(validate_only=False, now=None, state_path=STATE, getter=collect):
     state["last_update_date"]=outcome["date"]
     save_state(state,state_path)
     return {"status":"sent" if fresh_signals else "baseline_or_no_signal",
+            "historical_rows_added":added,
             "date":outcome["date"],"signals":fresh_signals,
             "telegram_sent":bool(fresh_signals),
             "message_id":(state.get("last_alert") or {}).get("message_id") if fresh_signals else None}
