@@ -88,7 +88,7 @@ EXTRA_RSS_SOURCES = (
 # 검증 성공·신규 상태 상승이 없으면 알림으로 만들지 않는다.
 AIDC_ECOSYSTEM_MEDIA_BASELINE = {
     "id": "aidc-20261023-media-news1",
-    "title": "AIDC 인허가 절차 줄인다…내년 국산화에 2000억 원 투입 - 뉴스1",
+    "title": "정부, AIDC 건립 문턱 낮춘다…소부장·솔루션에 2000억 지원 - 전자신문",
     "publisher": "전자신문",
     "source": "국내 주요 언론",
     "official": False,
@@ -100,7 +100,7 @@ AIDC_ECOSYSTEM_MEDIA_BASELINE = {
 AIDC_ECOSYSTEM_OFFICIAL_BASELINE = {
     "id": "aidc-20261023-official",
     "title": "인공지능 데이터센터(AIDC) 생태계 지원 방안 발표",
-    "publisher": "국무조정실",
+    "publisher": "과학기술정보통신부",
     "source": "대한민국 정책브리핑",
     "official": True,
     "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156786535",
