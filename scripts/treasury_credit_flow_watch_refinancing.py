@@ -140,6 +140,32 @@ def _flow(ticker, text):
     return m.group(1).strip(), m.group(2).strip()
 
 
+def _flow_monthly_lines(ticker, text):
+    """Keep the feeder's 1M/3M ETF estimates in the compact delivered report."""
+    lines = text.splitlines()
+    start = next((i for i, line in enumerate(lines) if line.startswith(f"{ticker} (")), None)
+    if start is None:
+        return [
+            f"• {months}개월 누적 자금흐름: 비교불가(원자료 블록 없음)"
+            for months in (1, 3)
+        ]
+    block = []
+    for line in lines[start + 1:]:
+        if re.match(r"^[A-Z]{3} \(", line) or line.startswith("["):
+            break
+        if re.match(r"^• [13]개월 누적 자금흐름", line):
+            block.append(line.strip())
+    by_month = {}
+    for line in block:
+        match = re.match(r"^• ([13])개월 누적 자금흐름", line)
+        if match:
+            by_month[int(match.group(1))] = line
+    return [
+        by_month.get(months, f"• {months}개월 누적 자금흐름: 비교불가(월별 원자료 이력 없음)")
+        for months in (1, 3)
+    ]
+
+
 def _oas(ticker, text):
     return _m(
         rf"^{ticker} \([^\n]+\) — [^\n]+\n"
@@ -599,6 +625,12 @@ def _next_alert(y10, y30, hyg_flow, hyg_oas):
 
 
 def _validate_compact_report(text, overall_head, y10, hyg_oas):
+    if "[ETF 누적 자금흐름 — 1개월 / 3개월 추정]" not in text:
+        raise RuntimeError("1M/3M ETF flow section missing from final report")
+    for ticker in ("SHY", "IEF", "TLT", "LQD", "HYG"):
+        for months in (1, 3):
+            if not re.search(rf"^{ticker}: • {months}개월 누적 자금흐름", text, re.M):
+                raise RuntimeError(f"{ticker} {months}M flow missing from final report")
     expected = f"전체 방향: {overall_head}"
     if expected not in text:
         raise RuntimeError(f"final report overall mismatch: expected {expected}")
@@ -630,6 +662,7 @@ def _validate_compact_report(text, overall_head, y10, hyg_oas):
 
 def _compact_report(raw_text):
     flows = {t: _flow(t, raw_text) for t in ("SHY", "IEF", "TLT", "LQD", "HYG")}
+    monthly_flows = {t: _flow_monthly_lines(t, raw_text) for t in flows}
     fund_dates = {t: _fund_date(t, raw_text) for t in flows}
     lqd_oas, hyg_oas = _oas("LQD", raw_text), _oas("HYG", raw_text)
     lqd_oas_monthly = _oas_monthly_line("LQD", raw_text)
@@ -745,6 +778,10 @@ def _compact_report(raw_text):
         f"TLT (장기 국채): {flows['TLT'][0]} / {flows['TLT'][1]}",
         f"LQD (투자등급 회사채): {flows['LQD'][0]} / {flows['LQD'][1]}",
         f"HYG (고수익 회사채): {flows['HYG'][0]} / {flows['HYG'][1]}",
+        "",
+        "[ETF 누적 자금흐름 — 1개월 / 3개월 추정]",
+        "공식 발행좌수 변화×해당일 NAV 추정 합계이며, 현금 순유입 공식치가 아님. 기간 기준점 또는 일별 이력이 부족하면 비교불가.",
+        *[f"{ticker}: {monthly_flows[ticker][0]} | {monthly_flows[ticker][1]}" for ticker in flows],
         "",
         "[신용 상세]",
         f"LQD OAS: {lqd_oas}",

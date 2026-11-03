@@ -212,6 +212,23 @@ if not period_notes:
 period_context = ' '.join(period_notes)
 summary_line = summary_line.replace('• <b>종합</b>: ', f'• <b>종합</b>: {period_context} ', 1)
 
+def horizon_text(months):
+    window = v.get('balance_horizons', {}).get(f'm{months}', {})
+    parts = []
+    for key, name in period_names.items():
+        item = (window.get('changes') or {}).get(key) or {}
+        delta = item.get('delta')
+        if not isinstance(delta, (int, float)):
+            parts.append(f"{name} 확인불가")
+        else:
+            parts.append(f"{name} {fmt(delta)}{arrow(delta,key)}")
+    return f"{months}M " + ' · '.join(parts)
+
+month_line = (
+    f"• <b>1M/3M 잔액 방향</b>: {horizon_text(1)} / {horizon_text(3)} → "
+    "잔액의 시점 간 차이이며 누적 순유입이나 상품 간 이동을 뜻하지 않습니다."
+)
+
 new_section = '\n'.join([
     '<b>현재 판정</b>',
     trigger_line,
@@ -219,6 +236,7 @@ new_section = '\n'.join([
     persistence_line,
     cma_line,
     leverage_line,
+    month_line,
     summary_line,
 ])
 

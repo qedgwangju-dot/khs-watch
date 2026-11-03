@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import datetime as dt
 import json
+import math
 import os
 import pathlib
 import re
@@ -12,6 +13,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
+from market_time_windows import select_monthly_anchors
 
 KST = ZoneInfo("Asia/Seoul")
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -192,6 +194,123 @@ def upsert_history(history, current, flow_usd):
 def last_n_flows(history, n=5):
     vals = [x.get("flow_usd") for x in sorted(history, key=lambda x: x.get("date", "")) if x.get("flow_usd") is not None]
     return sum(vals[-n:]) if vals else None
+
+
+def cumulative_monthly_flows(history, as_of_date, months=(1, 3), max_gap_days=7):
+    """Sum source-derived daily share/NAV flow estimates from calendar anchors.
+
+    The flow is an estimate (daily change in official shares outstanding times
+    that observation's NAV). It is unavailable when an anchor is missing,
+    observations conflict, source/date identity changes, any daily estimate is
+    missing, or the saved observations leave a gap larger than the allowed
+    window. This is not reported cash turnover or an iShares cash-flow series.
+    """
+    anchors = select_monthly_anchors(
+        history, as_of_date, months=months, max_gap_days=max_gap_days
+    )
+    by_date = {}
+    conflicts = set()
+    for row in history:
+        raw_date = row.get("date")
+        if not raw_date:
+            continue
+        date = str(raw_date)[:10]
+        if date > as_of_date:
+            continue
+        if date in by_date and by_date[date] != row:
+            conflicts.add(date)
+        else:
+            by_date[date] = row
+
+    dates = sorted(by_date)
+    results = {}
+    for months_back in months:
+        anchor = anchors[months_back]
+        target_date = anchor["target_date"]
+        anchor_date = anchor["observation_date"]
+        result = {
+            "months_back": months_back,
+            "target_date": target_date,
+            "anchor_date": anchor_date,
+            "start_date": None,
+            "end_date": as_of_date,
+            "observations": 0,
+            "value_usd": None,
+            "reason": anchor.get("reason"),
+        }
+        if anchor.get("row") is None:
+            results[months_back] = result
+            continue
+        if anchor_date in conflicts:
+            result["reason"] = "conflicting_duplicate_anchor"
+            results[months_back] = result
+            continue
+        window_conflicts = [d for d in conflicts if anchor_date < d <= as_of_date]
+        if window_conflicts:
+            result["reason"] = "conflicting_duplicate_observation"
+            results[months_back] = result
+            continue
+
+        anchor_row = by_date.get(anchor_date)
+        window_rows = [by_date[d] for d in dates if anchor_date < d <= as_of_date]
+        if not window_rows or window_rows[-1].get("date") != as_of_date:
+            result["reason"] = "current_observation_missing"
+            results[months_back] = result
+            continue
+        checked_rows = [anchor_row] + window_rows
+        expected_source = anchor_row.get("source") if anchor_row else None
+        expected_ticker = anchor_row.get("ticker") if anchor_row else None
+        invalid = not expected_source or not expected_ticker
+        for row in checked_rows:
+            if (not row or row.get("date") != row.get("nav_date")
+                    or row.get("date") != row.get("shares_date")
+                    or row.get("source") != expected_source
+                    or row.get("ticker") != expected_ticker):
+                invalid = True
+                break
+            try:
+                nav, shares = float(row.get("nav")), float(row.get("shares"))
+            except (TypeError, ValueError):
+                invalid = True
+                break
+            if not math.isfinite(nav) or nav <= 0 or not math.isfinite(shares) or shares < 0:
+                invalid = True
+                break
+        if invalid:
+            result["reason"] = "source_or_component_date_mismatch"
+            results[months_back] = result
+            continue
+
+        previous_date = anchor_date
+        flow_values = []
+        for row in window_rows:
+            row_date = row["date"]
+            gap = (dt.date.fromisoformat(row_date) - dt.date.fromisoformat(previous_date)).days
+            if gap > max_gap_days:
+                result["reason"] = "observation_gap_exceeds_allowed_days"
+                break
+            try:
+                flow = float(row.get("flow_usd"))
+            except (TypeError, ValueError):
+                result["reason"] = "daily_flow_estimate_missing"
+                break
+            if not math.isfinite(flow):
+                result["reason"] = "daily_flow_estimate_invalid"
+                break
+            flow_values.append(flow)
+            previous_date = row_date
+        else:
+            if (dt.date.fromisoformat(as_of_date) - dt.date.fromisoformat(previous_date)).days > max_gap_days:
+                result["reason"] = "current_observation_gap_exceeds_allowed_days"
+            else:
+                result.update({
+                    "start_date": window_rows[0]["date"],
+                    "observations": len(window_rows),
+                    "value_usd": round(sum(flow_values), 2),
+                    "reason": None,
+                })
+        results[months_back] = result
+    return results
 
 
 def fmt_usd_flow(value):

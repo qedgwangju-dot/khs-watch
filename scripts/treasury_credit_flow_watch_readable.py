@@ -42,16 +42,12 @@ def _etf_date(ticker, text):
 
 
 def _etf_oas(ticker, text):
-    m = re.search(
-        rf"^{ticker} \([^\n]+\) — [^\n]+\n"
-        rf"• 가격: [^\n]+\n"
-        rf"• 일간 자금: [^\n]+\n"
-        rf"• 최근 5회: [^\n]+\n"
-        rf"• 포트폴리오 OAS: ([^\n]+)",
-        text,
-        re.M,
-    )
-    return m.group(1).strip() if m else "확인 대기"
+    heading = re.search(rf"^{ticker} \([^\n]+\) — [^\n]+$", text, re.M)
+    if not heading:
+        return "확인 대기"
+    section = text[heading.end():]
+    match = re.search(r"^• 포트폴리오 OAS: ([^\n]+)", section, re.M)
+    return match.group(1).strip() if match else "확인 대기"
 
 
 def _rate_line(label, text):
