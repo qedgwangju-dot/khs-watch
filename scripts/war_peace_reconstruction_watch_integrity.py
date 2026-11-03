@@ -52,6 +52,11 @@ def _headline(row):
     return html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
 
 
+def _reported_conflict_escalation(title):
+    """An escalation report stays military even when talks are background context."""
+    return bool(re.search(r'(?:충돌|교전|전투)\s*격화(?!\s*(?:우려|가능성|전망))', title))
+
+
 def parse_pub(value):
     """Retain RSS dates and accept fully dated ISO timestamps with an explicit zone."""
     parsed = _parse_pub(value)
@@ -1223,6 +1228,8 @@ def non_military_kind(row):
         return None
     if _report_with_completed_action(title) or _statement_with_actual_action(title):
         return None
+    if _reported_conflict_escalation(title):
+        return 'military_report'
     if not new_peace and _gold_price_headline(title):
         return 'commodity_market'
     if not new_peace and _security_activity_headline(title):
@@ -1307,6 +1314,8 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if kind == 'military_report' and _reported_conflict_escalation(title):
+        return '충돌·교전 격화 보도'
     if kind in ('diplomatic_statement', 'diplomatic_plan') and _detainee_release_stage(title):
         return '억류자 석방 계획·논의' if _detainee_release_stage(title) == 'planned' else '억류자 석방·완화 보도'
     if kind is None and _saudi_airport_casualty_report(title):
@@ -1436,6 +1445,10 @@ def score_item(row, now):
         return score, list(row['tags'])
     if kind == 'market_effect':
         _clear_market_event_cache(row)
+        score, _ = source_score._original_score(row, now)
+        return score, list(row['tags'])
+    if kind == 'military_report' and _reported_conflict_escalation(_headline(row)):
+        _clear_headline_event_cache(row, kind)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
     if kind in ('support_statement', 'military_position', 'corporate_spending', 'market_reaction', 'commodity_market', 'security_activity', 'maritime_routing', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure'):
