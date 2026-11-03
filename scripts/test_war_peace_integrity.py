@@ -37,6 +37,7 @@ class UnconfirmedExplosionRegression(unittest.TestCase):
         self.assertEqual(integrity.non_military_kind(row),'unconfirmed_explosion')
         self.assertEqual(integrity.final_color(row),'yellow')
         self.assertIn('폭발음 원인 미확인',integrity.topic_label(row))
+        self.assertIn('폭발음 원인 미확인',integrity._primary_topic(row))
         score,tags=integrity.score_item(row,NOW)
         self.assertGreater(score,0)
         self.assertNotIn('확전',tags)
