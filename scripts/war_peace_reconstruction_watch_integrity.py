@@ -1181,7 +1181,9 @@ def _iran_attack_restraint_statement(row):
 
 def non_military_kind(row):
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
-    if _iran_attack_restraint_statement(row):
+    # The Oct 8 election pledge has a dedicated source-attributed event path.
+    # Do not override its canonical ID, title, or existing render regression.
+    if _iran_attack_restraint_statement(row) and not previous._trump_iran_midterm_no_strike(row):
         return 'military_position'
     new_peace = re.search(r'(?:휴전|종전|평화협정).{0,12}(?:합의|체결|이행|발효)|'
                           r'\b(?:ceasefire|peace deal).{0,20}(?:agreed|signed|implemented)', title)
