@@ -1691,11 +1691,12 @@ def _distinct_publisher_headlines(items):
 
 
 def _distinct_rendered_event_summaries(items):
-    """Show a near-identical report once, preferring a verified original.
+    """Show one corroborated event summary, preferring a verified original.
 
     A shared generated summary alone is insufficient: unrelated reports can
-    hit the same template. Require similar source headlines as well. This is
-    display suppression, not a cross-publisher source identity assertion.
+    hit the same template. Require source headlines to be similar or to share
+    a concrete event phrase. This is display suppression, not a cross-publisher
+    source identity assertion.
     """
     def source_headline(row):
         title = _headline(row)
@@ -1708,10 +1709,21 @@ def _distinct_rendered_event_summaries(items):
     for row in items:
         summary = (row.get('signals_ko') or [''])[0].strip().casefold()
         title = source_headline(row)
-        match_index = next((i for i, other in enumerate(selected)
-                            if summary and summary == (other.get('signals_ko') or [''])[0].strip().casefold()
-                            and title and source_headline(other)
-                            and SequenceMatcher(None, title, source_headline(other)).ratio() >= 0.8), None)
+        match_index = None
+        for i, other in enumerate(selected):
+            if not summary or summary != (other.get('signals_ko') or [''])[0].strip().casefold():
+                continue
+            other_title = source_headline(other)
+            if not title or not other_title:
+                continue
+            matcher = SequenceMatcher(None, title, other_title)
+            common = matcher.find_longest_match()
+            shared = title[common.a:common.a + common.size]
+            if (matcher.ratio() >= 0.8 or
+                    common.size >= 7 and any(term in shared for term in
+                                             ('공격', '타격', '피격', '공습', '폭발', '요격', '휴전', '종전', '봉쇄'))):
+                match_index = i
+                break
         if match_index is None:
             selected.append(row)
             continue

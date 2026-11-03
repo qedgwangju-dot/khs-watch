@@ -3165,6 +3165,23 @@ class IntegrityTests(unittest.TestCase):
         first['signals_ko'] = other['signals_ko'] = ['공격 보도 단계 상승']
         self.assertEqual(len(integrity._distinct_rendered_event_summaries([first, other])), 2)
 
+    def test_run744_reposts_share_event_phrase_despite_political_prefaces(self):
+        summary = '이란 남부 시리크·게슘 일대: 단순 폭발음에서 발사체 피격 보도로 단계 상승'
+        original = article('美, 선거전날 이란 게슘섬 타격…"선박 공격에 방어적 조치"',
+                           link='https://www.fnnews.com/news/202611031033239690')
+        original['body_verified'] = True
+        original['source_metadata'] = {'title': original['title_original'], 'publication_status': 'verified'}
+        animal = article('"중간선거 전 공격 없다! 또 뒤통수 친 트럼프"...WSJ “美, 이란 게슘섬 타격” - 애니멀플래닛',
+                         source='애니멀플래닛', link='https://news.google.com/rss/articles/animal')
+        seoul = article('중간선거 전 공격 없다더니…WSJ “美, 이란 게슘섬 타격” [핫이슈] - 서울신문',
+                        source='서울신문', link='https://news.google.com/rss/articles/seoul')
+        for row in (original, animal, seoul):
+            row['signals_ko'] = [summary]
+        selected = integrity._distinct_rendered_event_summaries([original, animal, seoul])
+        self.assertEqual(selected, [original])
+        self.assertEqual(animal['render_withheld'], 'same_rendered_event_summary')
+        self.assertEqual(seoul['render_withheld'], 'same_rendered_event_summary')
+
     def test_alias_pipeline_saves_only_rendered_seen_and_then_suppresses_feed(self):
         fixture, _ = self.alias_fixture()
         pair = fixture['articles'][:2]
