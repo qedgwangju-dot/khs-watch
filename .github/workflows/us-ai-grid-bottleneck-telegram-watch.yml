@@ -12,6 +12,7 @@ on:
         type: choice
         options: ["false", "true"]
   push:
+    branches: [main]
     paths:
       - ".github/workflows/us-ai-grid-bottleneck-telegram-watch.yml"
       - "scripts/us_ai_grid_bottleneck_watch.py"
