@@ -84,15 +84,18 @@ jobs:
                       raise
                   process = subprocess.run(
                       ["curl", "--config", "-", "--fail", "--silent", "--show-error",
-                       "--retry", "2", "--retry-delay", "2", "--max-time", "20"],
+                       "--retry", "2", "--retry-delay", "2", "--max-time", "20",
+                       "--write-out", "\\n%{http_code}"],
                       input='url = "' + url + '"\n',
                       text=True, capture_output=True, timeout=75,
                   )
+                  payload, _, status = process.stdout.rpartition("\\n")
                   if process.returncode != 0:
                       raise RuntimeError(
-                          f"Telegram read failed on both HTTP clients; primary={exc.code}, curl={process.returncode}"
+                          f"Telegram read failed on both HTTP clients; primary={exc.code}, "
+                          f"curl_http={status or 'unknown'}, curl_exit={process.returncode}"
                       ) from None
-                  return json.loads(process.stdout)
+                  return json.loads(payload)
 
           if os.getenv("GITHUB_EVENT_NAME") == "push":
               class _FakeResponse:
