@@ -1,6 +1,6 @@
 {
   "seen": {
-    "ICI|mmf": "8e81b1718d939b76260ed7f63fca5e019c47001c0afca9232844cedc04e92d1c",
+    "ICI|mmf": "1841d92f2edc1fe190b07f7c76c0915d38db7aa7480a95c0db558a5a9f9c3baa",
     "FINRA|margin": "fb28725208f78a0b756a275d77ae7324df141c651ec725ecad69589b69fe1e20",
     "ICI|combined": "6fda39bb40517c48973bda722e56b2fd6e8ccac016bf64ac51fac9527aef29e1",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
@@ -15,6 +15,8 @@
       "period": "October 28, 2026",
       "published": "October 29, 2026",
       "url": "https://www.ici.org/research/stats/mmf",
+      "horizon_source_url": "https://www.ici.org/mm_summary_data_2026.xls",
+      "horizon_error": null,
       "metrics": {
         "assets_trillion": 7.90128,
         "weekly_change_bn": -43.29,
@@ -23,18 +25,18 @@
           "m1": {
             "months_back": 1,
             "target_date": "2026-09-28",
-            "anchor_date": null,
+            "anchor_date": "2026-09-23",
             "end_date": "2026-10-28",
-            "change_bn": null,
-            "reason": "official_observation_before_target_missing"
+            "change_bn": -35.437,
+            "reason": null
           },
           "m3": {
             "months_back": 3,
             "target_date": "2026-07-28",
-            "anchor_date": null,
+            "anchor_date": "2026-07-22",
             "end_date": "2026-10-28",
-            "change_bn": null,
-            "reason": "official_observation_before_target_missing"
+            "change_bn": 40.535,
+            "reason": null
           }
         }
       },
@@ -42,9 +44,10 @@
         "same_week",
         "weekly_arithmetic",
         "table_change",
-        "prose_level"
+        "prose_level",
+        "history_xls_crosschecked"
       ],
-      "fingerprint": "8e81b1718d939b76260ed7f63fca5e019c47001c0afca9232844cedc04e92d1c"
+      "fingerprint": "1841d92f2edc1fe190b07f7c76c0915d38db7aa7480a95c0db558a5a9f9c3baa"
     },
     "FINRA|margin": {
       "source": "FINRA",
@@ -196,7 +199,7 @@
       "fingerprint": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
     }
   },
-  "updated_at_kst": "2026-11-03T17:24:25.268072+09:00",
+  "updated_at_kst": "2026-11-03T18:03:32.017715+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
     "sp500_last_date": "2026-11-02",
@@ -234,15 +237,16 @@
       },
       "pair": "2026-10|2026-10",
       "regime": "동반 높은 주식노출·상승기대"
-    }
+    },
+    "fund_horizon_summary_version": "2026-11-03-front-v1"
   },
   "factual_delivery_receipt": {
-    "timestamp_utc": "2026-11-03T08:25:41.206470+00:00",
+    "timestamp_utc": "2026-11-03T09:04:53.305541+00:00",
     "date_kst": "2026-11-03",
     "bot_username": "khs887900887900008879_bot",
     "message_ids": [
-      1782,
-      1783
+      1784,
+      1785
     ]
   }
 }
