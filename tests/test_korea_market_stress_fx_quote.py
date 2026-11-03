@@ -3,6 +3,7 @@ import pathlib
 import unittest
 from unittest.mock import patch
 import datetime as dt
+import requests
 
 import korea_market_stress_watch_v14 as fx
 import korea_market_stress_watch_v11 as ecos
@@ -45,6 +46,43 @@ class SeoulFXQuoteTests(unittest.TestCase):
         self.assertEqual(result["date"], "2026-10-15")
         self.assertEqual(result["value"], 1344.6)
         self.assertTrue(result["source"].endswith("20261015153115942"))
+
+    def test_ksure_continues_after_unreadable_first_page(self):
+        # Regression: page 1 includes a qualifying 15:30 table but its detail
+        # times out. A valid explicit USD/KRW 15:30 headline on page 2
+        # must still be considered before failing closed.
+        article_lists = {
+            "fxlist?page=1": (
+                '<a href="fxview?id=20261102153900001">'
+                '외국환시세(11월2일·15:30 기준가)</a>'
+            ),
+            "fxlist?page=2": (
+                '<a href="fxview?id=20261102153400002">'
+                '[외환] 원/달러 환율 2.4원 오른 1,344.6원(15:30 기준가)</a>'
+            ),
+        }
+
+        class Response:
+            def __init__(self, text):
+                self.text = text
+            def raise_for_status(self):
+                return None
+
+        def mock_get(url, **kwargs):
+            for path, content in article_lists.items():
+                if path in url:
+                    return Response(content)
+            if "fxview?id=20261102153900001" in url:
+                raise requests.Timeout("unavailable FX table")
+            raise AssertionError("Unexpected KSURE request: " + url)
+
+        with patch.object(fx.requests, "get", side_effect=mock_get):
+            result = fx.fetch_seoul_prev_close(
+                dt.datetime(2026, 11, 3, 20, 0, tzinfo=fx.watch.KST)
+            )
+        self.assertEqual(result["date"], "2026-11-02")
+        self.assertEqual(result["value"], 1344.6)
+        self.assertTrue(result["source"].endswith("20261102153400002"))
 
     def test_ambiguous_intraday_quotation_is_not_a_close(self):
         self.assertIsNone(fx._extract_krw_rate("환율 장중 1,350원대에서 1,344원대로 하락"))
