@@ -29,6 +29,23 @@ def article(title, *, source='파이낸셜뉴스', link='https://www.fnnews.com/
             'published': format_datetime(NOW - dt.timedelta(minutes=20)), 'body_checked': True}
 
 
+class UnconfirmedExplosionRegression(unittest.TestCase):
+    def test_hormuz_explosion_sounds_unverified_not_attack(self):
+        row=article('美·이란 협상 진전에도 호르무즈선 폭발음…중간선거 앞두고 중동 긴장 고조 - 헤럴드경제')
+        row['body_verified']=False
+        self.assertTrue(integrity._title_only_unconfirmed_explosion(row))
+        self.assertEqual(integrity.non_military_kind(row),'unconfirmed_explosion')
+        self.assertEqual(integrity.final_color(row),'yellow')
+        self.assertIn('폭발음 원인 미확인',integrity.topic_label(row))
+        score,tags=integrity.score_item(row,NOW)
+        self.assertGreater(score,0)
+        self.assertNotIn('확전',tags)
+
+    def test_confirmed_strike_is_not_relabelled(self):
+        row=article('호르무즈 해협서 상선, 미사일 공격으로 피격…폭발음')
+        self.assertFalse(integrity._title_only_unconfirmed_explosion(row))
+
+
 class IntegrityTests(unittest.TestCase):
     def setUp(self):
         self.network = patch('urllib.request.urlopen', side_effect=AssertionError('network/send forbidden'))

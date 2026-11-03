@@ -32,6 +32,7 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
                'security_activity': '파괴공작 관련 보도',
                'maritime_routing': '선박 항로·운송 보도',
                'military_discussion': '공습 재개 논의·이견', 'military_analysis': '군사·안보 해설',
+               'unconfirmed_explosion': '폭발음 보도·공격 원인 미확인',
                'market_effect': '전쟁의 물가 파급 보도', 'ceasefire_position': '휴전·공격 중단 입장',
                'military_report': '공격 조사·보고서 공표', 'fuel_shipping': '봉쇄·연료 선적 보도',
                'trade_proposal': '에너지 거래 재개 제안',
@@ -450,6 +451,10 @@ def _primary_topic(row):
     if kind == 'market_reaction':
         area = '걸프 증시' if re.search(r'걸프|\bgulf\b', title) else '증시'
         return area + ' · ' + KIND_LABELS[kind]
+    if kind == 'unconfirmed_explosion':
+        _clear_headline_event_cache(row, kind)
+        score, _ = source_score._original_score(row, now)
+        return max(score, 75), list(row['tags'])
     if kind == 'market_effect':
         us_prices = re.search(r'(?:미국|美|united states|u\.s\.).{0,12}(?:물가|cpi|inflation)', title)
         return ('미국·물가' if us_prices else '물가·경제지표') + ' · 전쟁 파급 보도'
@@ -1179,7 +1184,21 @@ def _iran_attack_restraint_statement(row):
     return iran and us and attack and restraint and not completed
 
 
+def _title_only_unconfirmed_explosion(row):
+    """Explosion sounds without verified cause do not establish a strike."""
+    if row.get('body_verified'):
+        return False
+    title = _headline(row)
+    sound = bool(re.search(r'폭발음|폭발\s*소리|소리.{0,8}폭발|explosions?\s+(?:heard|reported)|sounds?\s+of\s+explosions?', title))
+    action = bool(re.search(
+        r'피격|공습|미사일\s*공격|드론\s*공격|폭격|타격\s*(?:당|받|했|가했)|'
+        r'\b(?:struck|hit by|airstrikes?|missile strikes?|drone strikes?|bombed)\b', title))
+    return sound and not action
+
+
 def non_military_kind(row):
+    if _title_only_unconfirmed_explosion(row):
+        return 'unconfirmed_explosion'
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
     # The Oct 8 election pledge has a dedicated source-attributed event path.
     # Do not override its canonical ID, title, or existing render regression.
@@ -1437,6 +1456,8 @@ def score_item(row, now):
 
 def final_color(row):
     title = _headline(row)
+    if _title_only_unconfirmed_explosion(row):
+        return 'yellow'
     # A title-only report of explosion sounds does not establish an attack.
     # Background attack words in an unverified feed body must not recolor it.
     if (not row.get('body_verified')
@@ -1486,6 +1507,8 @@ def final_color(row):
 
 
 def topic_label(row):
+    if _title_only_unconfirmed_explosion(row):
+        return '이란·호르무즈 · 폭발음 원인 미확인' if re.search(r'호르무즈|hormuz', _headline(row)) else '폭발음 원인 미확인'
     primary = _primary_topic(row)
     if primary:
         return primary
