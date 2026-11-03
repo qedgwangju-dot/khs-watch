@@ -127,7 +127,7 @@ def parse_document(raw, url, now=None):
     pattern = r"\bKorea(?:'s)?\s+(?:allocations?|net allocation|gross allocation|net exposure|gross exposure)\b"
     for hit in re.finditer(pattern, text, re.I):
         section = text[hit.start():hit.start()+420]
-        section = re.split(r"\bExhibit\s+\d+\s*[:.]|\bTaiwan\s+allocations?\b|\bTaiwan's\s+net\b",
+        section = re.split(r"\bExhibit\s+\d+\s*[:.]|\b(?:Taiwan|China|India|Japan|Hong Kong)\b",
                            section, 1, re.I)[0]
         gross, net = numeric(section, "gross"), numeric(section, "net")
         if gross is None or net is None:
