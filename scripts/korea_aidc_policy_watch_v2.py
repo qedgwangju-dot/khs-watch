@@ -202,6 +202,16 @@ def event_level(row: dict[str, Any]) -> int:
         )
     return base.event_level(row)
 
+def candidate_priority(row: dict[str, Any], key: str) -> tuple[int, int, int]:
+    """Prefer directly verifiable original articles for the AIDC power-demand review."""
+    level = event_level(row)
+    score = base.source_score(row)
+    if key == "aidc|power-demand|revision-review":
+        direct_original = int("news.google.com" not in str(row.get("url", "")))
+        return direct_original, level, score
+    return level, score, 0
+
+
 def collapse(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     grouped: dict[str, list[dict[str, Any]]] = {}
     for row in rows:
@@ -805,18 +815,9 @@ def main() -> int:
                 continue
 
         members = list(event.get("members") or [event])
-        # 원문을 직접 볼 수 있는 발행사 URL이 Google News 재색인 링크보다 앞서야 한다.
-        # 특히 AIDC 전력수요 검토는 언론 공식 발언 재인용만으로 최종 확정 취급하지 않는다.
+        # 원문 직접 검증 가능한 기사부터 확인해 Google News 디코딩 실패를 회피한다.
         candidates = sorted(
-            members,
-            key=lambda r: (
-                int("news.google.com" not in str(r.get("url", "")))
-                if key == "aidc|power-demand|revision-review" else event_level(r),
-                event_level(r) if key == "aidc|power-demand|revision-review"
-                else base.source_score(r),
-                base.source_score(r),
-            ),
-            reverse=True,
+            members, key=lambda r: candidate_priority(r, key), reverse=True
         )
         verified = None
         reject_reasons: list[str] = []
