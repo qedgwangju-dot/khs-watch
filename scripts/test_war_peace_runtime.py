@@ -286,6 +286,75 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual([x['status'] for x in report['news']], ['ok', 'error'])
         self.assertFalse(report['complete'])
 
+    def test_partial_opt_in_excludes_denied_and_scope_unverified_queries(self):
+        from urllib.error import HTTPError
+        queries = ['good', 'reuters-sitemap:0', 'ap-direct-world-rss', 'direct-kremlin-news']
+        watch = fake_watch(self.root, queries)
+
+        def req(url, timeout=20):
+            if 'reuters.com' in url:
+                raise HTTPError(url, 401, 'unauthorized', {}, None)
+            if 'apnews.com' in url:
+                raise HTTPError(url, 403, 'forbidden', {}, None)
+            if 'en.kremlin.ru' in url:
+                raise TimeoutError('direct source timed out')
+            return b'valid source bytes'
+
+        def news(query):
+            url = {'good': 'https://news.google.com/rss/search?q=good',
+                   'reuters-sitemap:0': 'https://www.reuters.com/arc/outboundfeeds/news-sitemap/',
+                   'ap-direct-world-rss': 'https://apnews.com/hub/world-news?format=rss',
+                   'direct-kremlin-news': 'https://en.kremlin.ru/events/president/news/page/1'}[query]
+            try:
+                value = watch.req(url)
+            except Exception as exc:
+                if query == 'direct-kremlin-news':
+                    return [{'raw': watch.req('https://t.me/s/news_kremlin')}], None
+                return [], type(exc).__name__
+            return [{'raw': value}], None
+
+        watch.req, watch.google_news = req, news
+        report = {'complete': False}
+        q, traces = runtime.prefetch(watch, report, watch.OUT/'coverage.json',
+                                     seconds=3, workers=2, payload_retry_delay=0,
+                                     allow_partial=True)
+        self.assertEqual(q, queries)
+        self.assertEqual([x['status'] for x in report['news']],
+                         ['ok', 'error', 'error', 'partial'])
+        self.assertEqual(report['incomplete_query_indices'], [1, 2, 3])
+        self.assertFalse(report['source_coverage_complete'])
+        self.assertEqual(set(traces), {0})
+        self.assertIn('원천 1/4', runtime._partial_notice(report))
+        watch.req = forbidden
+        restore, verify = runtime.install_replay(watch, q, traces, missing_indices=[1, 2, 3])
+        try:
+            rows = [watch.google_news(query)[0] for query in q]
+            verify()
+        finally:
+            restore()
+        self.assertEqual(len(rows[0]), 1)
+        self.assertEqual(rows[1:], [[], [], []])
+
+    def test_run_739_failure_map_keeps_all_14_queries_out_of_partial_replay(self):
+        fixture = Path(__file__).resolve().parents[1]/'tests/fixtures/war_run_739_incomplete.json'
+        incident = json.loads(fixture.read_text(encoding='utf-8'))
+        self.assertEqual(incident['query_total'], 227)
+        missing = {item['index'] for item in incident['incomplete']}
+        self.assertEqual(len(missing), 14)
+        queries = [f'run-739-query-{index}' for index in range(227)]
+        watch = fake_watch(self.root, queries)
+        watch.google_news = lambda query: ([{'query': query}], None)
+        watch.req = forbidden
+        traces = {index: [] for index in range(227) if index not in missing}
+        restore, verify = runtime.install_replay(watch, queries, traces, missing_indices=missing)
+        try:
+            returned = [watch.google_news(query)[0] for query in queries]
+            verify()
+        finally:
+            restore()
+        self.assertEqual(sum(bool(rows) for rows in returned), 213)
+        self.assertTrue(all(not returned[index] for index in missing))
+
     def test_malformed_rss_recovers_once_after_initial_batch_and_replays_only_verified_bytes(self):
         watch = fake_watch(self.root, ['https://source.example/?format=rss', 'https://healthy.example/'])
         calls = mp.get_context('fork').Value('i', 0)
@@ -460,6 +529,30 @@ class RuntimeTests(unittest.TestCase):
         report = json.loads((watch.OUT/'war_peace_reconstruction_coverage.json').read_text())
         self.assertTrue(report['complete'])
         self.assertTrue(watch.ALERT.exists())
+        self.assertEqual(json.loads(watch.STATE.read_text())['seen'], ['confirmed-old'])
+
+    def test_partial_supervisor_labels_verified_rows_and_retains_missing_coverage(self):
+        watch = fake_watch(self.root, ['good', 'bad'])
+        watch.google_news = lambda query: ([{'query': query}], None) if query == 'good' else ([], 'source denied')
+        watch.build_alert = lambda: '🚨 <b>전쟁 상황</b>\n검증된 새 기사\n'
+
+        def run():
+            rows = [watch.google_news(query)[0] for query in watch.QUERIES]
+            self.assertEqual([len(group) for group in rows], [1, 0])
+            watch.ALERT.write_text(watch.build_alert(), encoding='utf-8')
+            watch.PENDING.write_text('{"ids":["verified-new"]}', encoding='utf-8')
+
+        self.assertEqual(runtime.run_bounded(watch, run, total_seconds=3,
+                                             collection_seconds=1, allow_partial=True), 0)
+        report = json.loads((watch.OUT/'war_peace_reconstruction_coverage.json').read_text())
+        self.assertTrue(report['complete'])
+        self.assertFalse(report['source_coverage_complete'])
+        self.assertEqual(report['coverage_level'], 'partial')
+        self.assertEqual(report['incomplete_query_indices'], [1])
+        text = watch.ALERT.read_text(encoding='utf-8')
+        self.assertIn('부분 확인 전쟁 상황 알림 · 원천 1/2', text)
+        self.assertIn('검증된 새 기사', text)
+        self.assertNotIn('source denied', text)
         self.assertEqual(json.loads(watch.STATE.read_text())['seen'], ['confirmed-old'])
 
     def test_quality_failure_removes_partial_output_preserves_state(self):

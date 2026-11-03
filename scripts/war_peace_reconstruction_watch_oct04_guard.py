@@ -10,6 +10,7 @@ import datetime as dt
 import hashlib
 import html
 import json
+import os
 import re
 import urllib.parse
 
@@ -1967,7 +1968,8 @@ def main():
         base._write_inline_test()
     else:
         from war_peace_reconstruction_watch_runtime import run_bounded
-        return run_bounded(watch, _run_and_verify)
+        return run_bounded(watch, _run_and_verify,
+                           allow_partial=os.environ.get('WAR_ALLOW_PARTIAL') == 'true')
     _sync_pending_to_rendered_alert()
     runner.verify_alert(test_mode=False)
     return 0

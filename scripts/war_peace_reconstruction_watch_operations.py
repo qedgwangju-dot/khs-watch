@@ -17,6 +17,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 COVERAGE = ROOT / 'out' / 'war_peace_reconstruction_coverage.json'
+ALERT = ROOT / 'out' / 'war_peace_reconstruction_alert.txt'
 STATE = ROOT / 'data' / 'war_peace_reconstruction_watch_ops_state.json'
 WARNING = ROOT / 'out' / 'war_peace_reconstruction_ops_warning.txt'
 PENDING = ROOT / 'out' / 'war_peace_reconstruction_ops_state_pending.json'
@@ -150,7 +151,7 @@ def _render_warning(details, first_seen_at, now):
 
 
 def prepare(*, now=None, coverage_path=COVERAGE, state_path=STATE,
-            warning_path=WARNING, pending_path=PENDING):
+            warning_path=WARNING, pending_path=PENDING, alert_path=ALERT):
     now = (now or dt.datetime.now(dt.timezone.utc)).astimezone(dt.timezone.utc)
     warning_path.unlink(missing_ok=True)
     pending_path.unlink(missing_ok=True)
@@ -166,7 +167,10 @@ def prepare(*, now=None, coverage_path=COVERAGE, state_path=STATE,
         'last_failure': None,
     })
 
-    if report.get('complete') is True and report.get('phase') == 'verified':
+    partial_verified = (report.get('complete') is True and report.get('phase') == 'verified'
+                        and report.get('source_coverage_complete') is False)
+    if (report.get('complete') is True and report.get('phase') == 'verified'
+            and not partial_verified):
         if state.get('active') is True:
             state.update(active=False, recovered_at=now.isoformat(timespec='seconds'))
             _write_json(pending_path, state)
@@ -175,7 +179,8 @@ def prepare(*, now=None, coverage_path=COVERAGE, state_path=STATE,
         print('operational_warning=none; source coverage complete')
         return 'healthy'
 
-    if report.get('complete') is not False or report.get('failure_phase') != 'collection':
+    if not partial_verified and (report.get('complete') is not False
+                                 or report.get('failure_phase') != 'collection'):
         print('operational_warning=none; failure is outside source collection')
         return 'not_source_failure'
 
@@ -189,7 +194,9 @@ def prepare(*, now=None, coverage_path=COVERAGE, state_path=STATE,
     due = last_warning is None or now - last_warning >= WARNING_INTERVAL
     state.update(active=True, first_seen_at=first_seen, last_seen_at=now.isoformat(timespec='seconds'),
                  last_failure=details)
-    if due:
+    # The partial situation alert already tells the recipient that collection
+    # is incomplete. Do not prepare two Telegram payloads in the same run.
+    if due and not (partial_verified and alert_path.is_file()):
         state['last_warning_sent_at'] = now.isoformat(timespec='seconds')
         message = _render_warning(details, first_seen, now)
         warning_path.parent.mkdir(parents=True, exist_ok=True)
@@ -197,7 +204,8 @@ def prepare(*, now=None, coverage_path=COVERAGE, state_path=STATE,
         temporary.write_text(message, encoding='utf-8')
         temporary.replace(warning_path)
     _write_json(pending_path, state)
-    outcome = 'send' if due else 'throttled'
+    outcome = ('partial_alert' if partial_verified and alert_path.is_file()
+               else 'send' if due else 'throttled')
     incomplete = details['query_incomplete']
     total = details['query_total']
     print(f'operational_warning={outcome} incomplete_queries={incomplete}/{total}' if total is not None
