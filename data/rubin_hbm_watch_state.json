@@ -1324,13 +1324,15 @@
   },
   "_delivery": {
     "id": "57790dbe2d607a57eb1b6cb51c391e1f4ad646fc8058e5d3c6d31b5d666c4277",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-11-03T16:01:33+09:00",
     "chunks": [
       "<b>TrendForce 11/2 리드타임 정정·비교 기준 복구</b>\n• <b>악화 2개 (GPU: 30~40주→30~45주 (상한 5주 연장), 상태 균형→공급 악화 중; MLCC: 35주→38주 (3주 연장))</b>\n• <b>완화 1개 (DRAM: 20주→19주 (1주 단축))</b>\n• GPU: 30~40주→30~45주(상한 +5주), Balanced→Tightening(공급 악화 중).\n• DRAM: 20주→19주(-1주), Very Tight 유지; 균형 납기 8주.\n• MLCC: 35주→38주(+3주), Tight 유지; 균형 납기 12주.\n• 기존 DRAM·MLCC 균형 38주는 MLCC 현재 납기 38주를 잘못 채택한 오류로 정정.\n• 나머지 네 품목의 기존 납기는 유지; 해당 주차 신규 수치로 주장하지 않음.\n• 확인값·직전 유지값을 분리하고 기준월이 다른 납기를 합산하지 않음.\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-008\">TrendForce 11/2 원문</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      371
+    ],
     "candidate": {
       "updated_at_kst": "2026-11-03T16:01:05+09:00",
       "seen_ids": [
