@@ -20,16 +20,16 @@
     "aidc|fact|3322b04740aa93bd": 20,
     "aidc|fact|bada18d119d6b4e3": 20,
     "aidc|fact|05238e6b0fd5e5c6": 20,
-    "aidc|ecosystem-support|government-proposal": 30
+    "aidc|ecosystem-support|government-proposal": 30,
+    "aidc|power-demand|revision-review": 30
   },
   "material_signatures": {},
-  "updated_at": "2026-11-03T10:07:53.001132+00:00",
+  "updated_at": "2026-11-03T15:08:47.040599+00:00",
   "source_errors": [],
   "dedupe_version": 4,
-  "held_for_verification_count": 4,
+  "held_for_verification_count": 3,
   "held_examples": [
     "aidc|decree-preannouncement: Google News 원문 링크 복원 실패",
-    "aidc|power-demand|revision-review: Google News 원문 링크 복원 실패; Google News 원문 링크 복원 실패",
     "aidc|tax-credit|eligibility: Google News 원문 링크 복원 실패",
     "미분류: 구체적인 사업·정책 상태 추출 필요"
   ],
