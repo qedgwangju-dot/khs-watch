@@ -45,6 +45,7 @@ OFFICIAL_HOSTS = ("info.korail.com", "korail.com", "khnp.co.kr", "kind.krx.co.kr
 LABELS = {
     "proposal_submitted": "한수원 컨소시엄 사업제안서 실제 제출",
     "preferred_selected": "한수원 컨소시엄 우선협상대상자 선정",
+    "preferred_result_published": "우선협상자 선정 결과 공고(낙찰자 식별 필요)",
     "agreement_signed": "한국철도공사 사업협약·계약 체결",
     "spc_established": "특수목적법인 실제 설립",
     "equity_approved": "참여사 출자·이사회 승인 확정",
@@ -110,9 +111,13 @@ def detect_events(title: str, summary: str, official: bool = False) -> set[str]:
             found.add("size_changed")
         if is_final_statement(t, ("한수원 컨소시엄 제안서 제출", "그린레일에너지 제안서 제출", "사업제안서를 제출했다", "사업제안서 제출 완료", "공모 신청 완료", "신청서를 제출했다")):
             found.add("proposal_submitted")
-        if is_final_statement(t, ("우선협상대상자로 선정됐다", "우선협상대상자로 선정되었다", "우선협상대상자로 확정", "우선협상자에 선정", "우선협상대상자 선정 완료", "우선협상대상자로 선정돼")):
-            if any(x in combined for x in ("한수원", "지투파워", "그린레일에너지", "한국수력원자력")):
+        if is_final_statement(t, ("우선협상대상자로 선정됐다", "우선협상대상자로 선정되었다", "우선협상대상자로 확정", "우선협상자에 선정", "우선협상대상자 선정 완료", "우선협상대상자로 선정돼", "우선협상대상자 선정")):
+            failed = any(x in combined for x in ("한수원 탈락", "한수원 미선정", "다른 사업자", "경쟁 컨소시엄 선정"))
+            named = any(x in combined for x in ("한수원", "지투파워", "그린레일에너지", "한국수력원자력"))
+            if named and not failed:
                 found.add("preferred_selected")
+            elif official and not failed:
+                found.add("preferred_result_published")
         if is_final_statement(t, ("사업협약 체결 완료", "사업협약을 체결했다", "사업협약 체결", "부지사용계약 체결", "전력구매계약 체결")):
             found.add("agreement_signed")
         if is_final_statement(t, ("그린레일에너지 설립 완료", "그린레일에너지 설립됐다", "특수목적법인 설립 완료", "spc 설립 완료", "spc를 설립했다")):
