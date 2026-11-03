@@ -410,6 +410,30 @@ def kosdaq_hit_keys_strict(flow: dict[str, Any] | None) -> list[str]:
     return _ORIGINAL_KOSDAQ_HIT_KEYS(fixed)
 
 
+def _confirmed_foreign_trading_detail(market: str, flow: dict[str, Any] | None, cand: dict[str, Any]) -> str:
+    """Append actual market buy/sell only after all confirmations and rounding check."""
+    if not flow or cand.get("stable") is not True or flow.get("finality") == "잠정":
+        return "• 외국인 매수·매도 실제 금액: 검증 대기"
+    validation = flow.get("ls_validation") or {}
+    try:
+        buy = float(validation["foreign_buy_eok"])
+        sell = float(validation["foreign_sell_eok"])
+        net = float(validation["ls_daily_eok"])
+        daily = float(flow["daily_eok"])
+    except (KeyError, ValueError, TypeError):
+        return "• 외국인 매수·매도 실제 금액: 확인 불가(매수·매도 원자료 누락)"
+    if not 0 <= buy <= 300_000 or not 0 <= sell <= 300_000:
+        return "• 외국인 매수·매도 실제 금액: 비정상 범위 · 판정 보류"
+    if abs(buy - sell - net) > 2.0 or abs(daily - net) > 2.0:
+        return "• 외국인 매수·매도 실제 금액: 매수·매도·순매수 검산 불일치"
+    direction = "순매수" if net > 0 else ("순매도" if net < 0 else "순매수")
+    return (
+        f"• {market} 외국인 매수 <b>{buy:,.0f}억원</b> / 매도 <b>{sell:,.0f}억원</b> / "
+        f"{direction} <b>{abs(net):,.0f}억원</b> "
+        "— KRX시장 전체 외국인 거래대금(헤지펀드 전용 자금 흐름 아님)"
+    )
+
+
 def market_flow_lines_strict(
     market: str,
     idx: dict[str, Any] | None,
@@ -422,6 +446,13 @@ def market_flow_lines_strict(
         return lines
     cand = _candidate_for(market)
     status = str((flow.get("ls_validation") or {}).get("status") or "")
+    if flow.get("three_day_available") is False:
+        for i, line in enumerate(lines):
+            if line.startswith("• 외국인 3거래일 누적"):
+                lines[i] = "• 외국인 3거래일 누적  <b>확정 일별 수급 부족 · 확인 불가</b>"
+                if i + 1 < len(lines) and lines[i+1].startswith("  ↳"):
+                    lines[i+1] = "  ↳ 누적 경보 판정 보류"
+                break
     if not cand.get("stable"):
         out: list[str] = []
         replace_next = False
@@ -441,14 +472,15 @@ def market_flow_lines_strict(
                 )
                 continue
             out.append(line)
+        out.append(_confirmed_foreign_trading_detail(market, flow, cand))
         out.append("• 확정 규칙: 20:10 이후에만 최종 수급 판정 · 네이버 실패 시 LS 단독값은 20:10 이후 최소 10분 간격 2회 연속 동일 확인 필요")
         return out
     if status == "ls_fallback" and cand.get("stable"):
-        return [
+        lines = [
             line.replace("• LS t1601 대체값 사용", "• LS t1601 대체값 2회 안정성 확인 완료")
             for line in lines
         ]
-    return lines
+    return [*lines, _confirmed_foreign_trading_detail(market, flow, cand)]
 
 
 def _persist_candidates_and_final_history() -> None:

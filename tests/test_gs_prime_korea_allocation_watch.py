@@ -127,6 +127,42 @@ class GoldmanKoreaAllocationTests(unittest.TestCase):
             urls, _ = w.discover()
         self.assertIn("https://finvaulta.com/research/goldman-sachs/asia-pacific-weekly-kickstart-2026-11-07", urls)
 
+    def test_money_flow_exact_buys_sells_and_real_margin_with_distinct_populations(self):
+        market = {
+            "snapshot": {
+                "foreign_flow": {"date": "2026-11-03", "finality": "확정", "daily_eok": -15100,
+                                 "ls_validation": {"status": "ls_fallback", "foreign_buy_eok": 54362,
+                                                   "foreign_sell_eok": 69463, "ls_daily_eok": -15100}},
+            },
+            "flow_fallback_candidate": {"KOSPI": {"date": "2026-11-03", "stable": True}},
+        }
+        kofia = {"source": "KOFIA FreeSIS", "alignment_ready": True, "snapshot_date": "20261102",
+                 "values": {"forced": {"date": "20261102", "value": 11183, "ratio": 1.3},
+                            "receivable": {"date": "20261102", "value": 897244},
+                            "deposit": {"date": "20261102", "d1": 227772},
+                            "credit": {"date": "20261102", "d1": 149552}}}
+        lines = "\n".join(w.verified_korea_cashflow_lines(market, kofia, NOW))
+        self.assertIn("54,362억원", lines)
+        self.assertIn("69,463억원", lines)
+        self.assertIn("15,100억원", lines)
+        self.assertIn("111.83억원", lines)
+        self.assertIn("헤지펀드 자체", lines)
+        self.assertIn("미공개/확인 불가", lines)
+        self.assertIn("골드만삭스 헤지펀드 청산과 별개", lines)
+
+    def test_bad_market_net_and_stale_liquidation_are_not_reported(self):
+        bad = {"snapshot": {"foreign_flow": {"date": "2026-11-03", "finality": "확정", "daily_eok": -15100,
+                         "ls_validation": {"status": "ls_fallback", "foreign_buy_eok": 54362,
+                                           "foreign_sell_eok": 1000, "ls_daily_eok": -15100}}},
+               "flow_fallback_candidate": {"KOSPI": {"date": "2026-11-03", "stable": True}}}
+        old = {"source": "KOFIA FreeSIS", "alignment_ready": True, "snapshot_date": "20261010",
+               "values": {"forced": {"date": "20261010", "value": 90000, "ratio": 5.0},
+                          "receivable": {"date": "20261010", "value": 99999}}}
+        lines = "\n".join(w.verified_korea_cashflow_lines(bad, old, NOW))
+        self.assertNotIn("69,463억원", lines)
+        self.assertNotIn("900.00억원", lines)
+        self.assertIn("확인 불가", lines)
+
     def test_no_new_source_does_not_send_and_state_waits_for_delivery(self):
         with tempfile.TemporaryDirectory() as d:
             status = pathlib.Path(d) / "status.md"

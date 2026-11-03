@@ -292,6 +292,110 @@ def select(readings, now, previous, seen):
     return chosen, chosen, "새 공개 수치 감지"
 
 
+
+def _read_context_json(path):
+    try:
+        row = json.loads(path.read_text(encoding="utf-8"))
+        return row if isinstance(row, dict) else {}
+    except (OSError, ValueError, TypeError):
+        return {}
+
+
+def _parse_market_day(raw):
+    try:
+        s = str(raw or "")
+        if re.fullmatch(r"\d{8}", s):
+            return dt.datetime.strptime(s, "%Y%m%d").date()
+        return dt.date.fromisoformat(s)
+    except (ValueError, TypeError):
+        return None
+
+
+def verified_korea_cashflow_lines(market_state, kofia_state, now):
+    """Context only: never call aggregate KRX or KOFIA data GS client cashflows."""
+    out = [
+        "<b>골드만삭스 프라임 고객 헤지펀드 자체</b>",
+        "• 실제 자금 유입액·유출액·순거래액: <b>미공개/확인 불가</b> — 노출 비중만으로 계산하지 않음",
+        "• 강제청산 금액·청산된 펀드 수: <b>미공개/확인 불가</b> — 포지션 축소는 강제청산 증거가 아님",
+        "<b>한국 주식시장 외국인 전체 매매(골드만삭스 고객 전용 수치 아님)</b>",
+    ]
+    market_day = None
+    snap = market_state.get("snapshot") if isinstance(market_state.get("snapshot"), dict) else market_state
+    candidates = market_state.get("flow_fallback_candidate") or {}
+    for market, key in (("KOSPI", "foreign_flow"), ("KOSDAQ", "kosdaq_foreign_flow")):
+        flow = snap.get(key) or {}
+        val = flow.get("ls_validation") or {}
+        candidate = candidates.get(market) or {}
+        date = _parse_market_day(flow.get("date"))
+        try:
+            buy, sell, net = (float(val[field]) for field in ("foreign_buy_eok", "foreign_sell_eok", "ls_daily_eok"))
+            daily = float(flow["daily_eok"])
+        except (ValueError, TypeError, KeyError):
+            buy = sell = net = daily = None
+        is_confirmed = (
+            date is not None and 0 <= (now.date() - date).days <= 5
+            and flow.get("finality") == "확정" and candidate.get("stable") is True
+            and candidate.get("date") == date.isoformat()
+            and str(val.get("status")) in ("matched", "ls_fallback")
+            and buy is not None and 0 <= buy <= 300_000 and 0 <= sell <= 300_000
+            and abs((buy - sell) - net) <= 2.0
+            and abs(daily - net) <= 2.0
+        )
+        if is_confirmed:
+            market_day = date.isoformat()
+            direction = "순매수" if net > 0 else ("순매도" if net < 0 else "순매수 0")
+            out.append(
+                f"• {market} 외국인 ({market_day}, LS증권 t1601 KRX시장 기준): "
+                f"<b>매수 {buy:,.0f}억원 / 매도 {sell:,.0f}억원 / "
+                f"{direction} {abs(net):,.0f}억원</b> (최대 2억원 반올림 오차 검산)"
+            )
+        else:
+            out.append(f"• {market} 외국인 매수·매도액: 확인 불가(당일 확정값 또는 매수·매도 검산 부족)")
+    out.append("• 위 매수·매도는 주식 거래대금이며 펀드 신규 유입·인출액이 아님")
+    out.append("<b>국내 신용거래 강제처분(골드만삭스 헤지펀드 청산과 별개)</b>")
+    values = kofia_state.get("values") or {}
+    forced = values.get("forced") or {}
+    receivable = values.get("receivable") or {}
+    f_date = _parse_market_day(forced.get("date"))
+    r_date = _parse_market_day(receivable.get("date"))
+    snapshot_date = _parse_market_day(kofia_state.get("snapshot_date"))
+    try:
+        million_krw = float(forced["value"])
+        ratio = float(forced["ratio"])
+    except (ValueError, TypeError, KeyError):
+        million_krw = ratio = None
+    valid_margin = (
+        kofia_state.get("source") == "KOFIA FreeSIS"
+        and kofia_state.get("alignment_ready") is True
+        and f_date is not None and f_date == r_date == snapshot_date
+        and 0 <= (now.date() - f_date).days <= 7
+        and million_krw is not None and 0 <= million_krw <= 500_000
+        and ratio is not None and 0 <= ratio <= 100
+    )
+    if valid_margin:
+        out.append(
+            f"• 금융투자협회 미수거래 실제 반대매매 "
+            f"({f_date.isoformat()}): <b>{million_krw / 100:,.2f}억원</b> "
+            f"(미수금 대비 {ratio:.1f}%)"
+        )
+        dep = values.get("deposit") or {}
+        credit = values.get("credit") or {}
+        if _parse_market_day(dep.get("date")) == f_date and _parse_market_day(credit.get("date")) == f_date:
+            try:
+                deposit_delta = float(dep["d1"]) / 100
+                credit_delta = float(credit["d1"]) / 100
+                out.append(
+                    f"• 투자자예탁금 전일 잔액 차이 {deposit_delta:+,.2f}억원 / "
+                    f"신용융자 전일 잔액 차이 {credit_delta:+,.2f}억원 "
+                    "(신규 입금·출금액이나 강제청산액과 동일하지 않음)"
+                )
+            except (ValueError, TypeError, KeyError):
+                pass
+    else:
+        out.append("• 금융투자협회 실제 반대매매: 확인 불가(동일 기준일·공식 원자료 검증 부족)")
+    out.append("• 출처: KRX 투자자별 거래실적·LS증권 t1601 / 금융투자협회 FreeSIS; 서로 다른 투자자군의 금액은 합산하지 않음")
+    return out
+
 def format_alert(item, previous):
     proof = "서로 다른 공개 경로 2곳 이상" if len(item["source_domains"]) >= 2 else "단일 공개본·독립 확인 전"
     lines = [
@@ -315,6 +419,11 @@ def format_alert(item, previous):
                 lines.append("• 선행 변화: 한국 노출 동반 확대 — 실제 매수 확정 신호 아님")
         except (KeyError, TypeError, ValueError):
             pass
+    lines.extend(verified_korea_cashflow_lines(
+        _read_context_json(ROOT / "data/korea_market_stress_watch_state.json"),
+        _read_context_json(ROOT / "data/kofia_liquidity_state.json"),
+        dt.datetime.now(KST),
+    ))
     lines += ["• 총노출과 순노출은 서로 분모가 다르며 KRX 실제 외국인 매매와 별개",
               "• 공개 인용 자료이므로 골드만삭스 원본 확인 전에는 참고 지표로만 사용"]
     for idx, url in enumerate(item["sources"][:2], 1):

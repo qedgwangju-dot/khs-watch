@@ -95,6 +95,30 @@ class SeoulFXQuoteTests(unittest.TestCase):
         self.assertIsNone(fx._extract_krw_rate("외국환시세(10월15일·15:30 기준가) 달러 1,350원"))
         self.assertEqual(fx._extract_krw_rate("외국환시세(15:30 기준가) 미국 달러* | 1,344.60"), 1344.6)
 
+    def test_market_flow_shows_buy_sell_and_missing_3day_is_unavailable(self):
+        flow = {"daily_krw": -1510000000000, "three_day_krw": 0,
+                "daily_eok": -15100, "three_day_available": False, "finality": "확정",
+                "ls_validation": {"status": "ls_fallback", "foreign_buy_eok": 54362,
+                                  "foreign_sell_eok": 69463, "ls_daily_eok": -15100}}
+        with patch.object(market16, "_candidate_for", return_value={"stable": True, "date": "2026-11-03"}), \
+             patch.object(market16, "_ORIGINAL_MARKET_FLOW_LINES", return_value=[
+                 "• 외국인 1일 -1조5,100억원", "  ↳ 판정",
+                 "• 외국인 3거래일 누적 0억원", "  ↳ 누적 판정",
+             ]):
+            message = "\n".join(market16.market_flow_lines_strict("KOSPI", None, flow, 10000, 30000))
+        self.assertIn("매수 <b>54,362억원</b>", message)
+        self.assertIn("매도 <b>69,463억원</b>", message)
+        self.assertIn("확정 일별 수급 부족 · 확인 불가", message)
+        self.assertNotIn("3거래일 누적 0억원", message)
+
+    def test_market_flow_rejects_inconsistent_buy_sell(self):
+        flow = {"finality": "확정", "daily_eok": 1000,
+                "ls_validation": {"foreign_buy_eok": 4000, "foreign_sell_eok": 300,
+                                  "ls_daily_eok": 1000}}
+        txt = market16._confirmed_foreign_trading_detail("KOSDAQ", flow, {"stable": True})
+        self.assertIn("검산 불일치", txt)
+        self.assertNotIn("매수 <b>", txt)
+
     def test_ecos_exception_logging_cannot_embed_request_url(self):
         source = pathlib.Path(ecos.__file__).read_text(encoding="utf-8")
         self.assertIn("인증정보 비노출", source)
