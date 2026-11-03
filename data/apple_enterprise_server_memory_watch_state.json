@@ -320,6 +320,7 @@
     "635f1a64f5a8fe85f171f016",
     "6382bc7e267471efc7741a08",
     "63bad288bae065b3dc9d3e9f",
+    "63e3233bfa8b21b74acb",
     "64241e448d0e9809853a",
     "6516d59eaf255f849bca164b",
     "6547ca0d2dba4e5718cf",
@@ -435,6 +436,7 @@
     "85f457a8cc0c485a6802",
     "860b7125b1a0d831eab8",
     "8671c72b10625af82c4e",
+    "881c9c0c9853d16e3e80",
     "88413c97d75aa1653b46",
     "8852a5305fefdbe9630d",
     "8873809db547ce71daa9",
@@ -544,6 +546,7 @@
     "ac205503412bdc7276d8",
     "ad17c3a9f255df39ca3d",
     "ad1ce2ee8f0a81e04b4c",
+    "ad5c1b7e868434b4f29e",
     "ae3d5d77fd5e8219f5cdc69f",
     "ae46ffa3af62719b9d88ff77",
     "ae89b271b852f516e982",
@@ -570,6 +573,7 @@
     "b345e3b3ed13b1dd026c",
     "b3505ee5ffde46301cfb",
     "b3613bd823bac5127fb2",
+    "b38444c6aac82c1840e6",
     "b38e795a4e3a05aace28",
     "b3bb24e1377327efac8ef67c",
     "b52067277c3eb0fe6f80",
@@ -730,6 +734,7 @@
     "e1e8a834a1aed28d103c38fd",
     "e1f3ee5e55fd4e3ea6a3823a",
     "e2e6d03bb929752b2acf",
+    "e39157d3e70f4804c828",
     "e47f3e4756c76b87c7c0f135",
     "e49fe357603f1e2d2659056e",
     "e504244761a863f95959",
@@ -837,7 +842,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-11-03T04:05:57+09:00",
+  "last_scan_kst": "2026-11-03T10:36:50+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -845,9 +850,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 10,
-  "fetch_errors": [
-    "bing_news \"Apple\" \"NVLink Fusion\": ParseError not well-formed (invalid token): line 1, column 41",
-    "bing_news \"Apple\" \"M8 Ultra\" server: ParseError not well-formed (invalid token): line 1, column 41"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
