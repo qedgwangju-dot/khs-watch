@@ -1,8 +1,8 @@
 {
   "seen": {
-    "ICI|mmf": "fb38565bd9b826ad3f43aa81ed6bec2c7661d44f2a91d9941b543ea0de2bae40",
-    "FINRA|margin": "b821af0c360e808de172b9db2034d0a5abdff56be88dcbb9b2694aeb20f952c4",
-    "ICI|combined": "b099cf10637683d59bcc1b40cd8de395ce4daef0d1c29d1c2bb2f44dfafc2dad",
+    "ICI|mmf": "8e81b1718d939b76260ed7f63fca5e019c47001c0afca9232844cedc04e92d1c",
+    "FINRA|margin": "fb28725208f78a0b756a275d77ae7324df141c651ec725ecad69589b69fe1e20",
+    "ICI|combined": "b03b49ce93386a1c8c663253c28edb0e9801cbb6bbf12897ab2066cc27649d13",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
     "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64",
     "LSEG Lipper via Reuters|lipper": "322bb6e2516a3f327007042522d224c50a05c059d5697b540dd5b8be9b515502",
@@ -17,7 +17,26 @@
       "url": "https://www.ici.org/research/stats/mmf",
       "metrics": {
         "assets_trillion": 7.90128,
-        "weekly_change_bn": -43.29
+        "weekly_change_bn": -43.29,
+        "assets_bn": 7901.28,
+        "asset_balance_horizons": {
+          "m1": {
+            "months_back": 1,
+            "target_date": "2026-09-28",
+            "anchor_date": null,
+            "end_date": "2026-10-28",
+            "change_bn": null,
+            "reason": "official_observation_before_target_missing"
+          },
+          "m3": {
+            "months_back": 3,
+            "target_date": "2026-07-28",
+            "anchor_date": null,
+            "end_date": "2026-10-28",
+            "change_bn": null,
+            "reason": "official_observation_before_target_missing"
+          }
+        }
       },
       "quality_checks": [
         "same_week",
@@ -25,7 +44,7 @@
         "table_change",
         "prose_level"
       ],
-      "fingerprint": "fb38565bd9b826ad3f43aa81ed6bec2c7661d44f2a91d9941b543ea0de2bae40"
+      "fingerprint": "8e81b1718d939b76260ed7f63fca5e019c47001c0afca9232844cedc04e92d1c"
     },
     "FINRA|margin": {
       "source": "FINRA",
@@ -37,9 +56,27 @@
         "margin_debt_bn": 1480.054,
         "cash_free_bn": 215.328,
         "margin_free_bn": 218.581,
-        "margin_debt_mom_bn": 26.222
+        "margin_debt_mom_bn": 26.222,
+        "margin_debt_horizons": {
+          "m1": {
+            "months_back": 1,
+            "target_month": "2026-08",
+            "anchor_period": "Aug-26",
+            "end_period": "Sep-26",
+            "change_bn": 26.222,
+            "reason": null
+          },
+          "m3": {
+            "months_back": 3,
+            "target_month": "2026-06",
+            "anchor_period": "Jun-26",
+            "end_period": "Sep-26",
+            "change_bn": -22.018,
+            "reason": null
+          }
+        }
       },
-      "fingerprint": "b821af0c360e808de172b9db2034d0a5abdff56be88dcbb9b2694aeb20f952c4"
+      "fingerprint": "fb28725208f78a0b756a275d77ae7324df141c651ec725ecad69589b69fe1e20"
     },
     "ICI|combined": {
       "source": "ICI",
@@ -54,7 +91,27 @@
         "hybrid": -2.088,
         "bond": -0.166,
         "commodity": 0.686,
-        "total": 12.324
+        "total": 12.324,
+        "domestic_flow_horizons": {
+          "m1": {
+            "months_back": 1,
+            "target_date": "2026-09-21",
+            "start_week_ended": "2026-09-23",
+            "end_week_ended": "2026-10-21",
+            "observation_count": 5,
+            "value_bn": -491.959,
+            "reason": null
+          },
+          "m3": {
+            "months_back": 3,
+            "target_date": "2026-07-21",
+            "start_week_ended": "2026-09-23",
+            "end_week_ended": "2026-10-21",
+            "observation_count": 5,
+            "value_bn": null,
+            "reason": "weekly_history_does_not_cover_target_window"
+          }
+        }
       },
       "domestic_4w": null,
       "quality_checks": [
@@ -63,7 +120,7 @@
         "categories_total",
         "prose_total"
       ],
-      "fingerprint": "b099cf10637683d59bcc1b40cd8de395ce4daef0d1c29d1c2bb2f44dfafc2dad"
+      "fingerprint": "b03b49ce93386a1c8c663253c28edb0e9801cbb6bbf12897ab2066cc27649d13"
     },
     "JPMorganChase Institute|household_withdrawals": {
       "source": "JPMorganChase Institute",
@@ -138,7 +195,7 @@
       "fingerprint": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
     }
   },
-  "updated_at_kst": "2026-11-03T16:43:42.563051+09:00",
+  "updated_at_kst": "2026-11-03T17:10:06.638373+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
     "sp500_last_date": "2026-11-02",
@@ -179,11 +236,12 @@
     }
   },
   "factual_delivery_receipt": {
-    "timestamp_utc": "2026-11-03T07:44:52.294314+00:00",
+    "timestamp_utc": "2026-11-03T08:11:45.755524+00:00",
     "date_kst": "2026-11-03",
     "bot_username": "khs887900887900008879_bot",
     "message_ids": [
-      1777
+      1779,
+      1780
     ]
   }
 }
