@@ -3885,5 +3885,16 @@ class IranCampaignCommentRegressions(unittest.TestCase):
         row = article(title)
         self.assertFalse(integrity._iran_war_justification_campaign_comment(row))
 
+class ElectionSpeculativeWarOpinionRegressions(unittest.TestCase):
+    def test_third_party_nuclear_fear_not_new_military_event(self):
+        row = article('김태형 “트럼프, 중간선거 패배하면 이란 핵공격까지 우려”')
+        self.assertTrue(integrity._speculative_election_nuclear_opinion(row))
+        self.assertEqual(integrity.score_item(row, NOW), (0, []))
+
+    def test_report_of_actual_action_not_suppressed(self):
+        row = article('미군, 이란 시설 실제 공격을 감행')
+        self.assertFalse(integrity._speculative_election_nuclear_opinion(row))
+
+
 if __name__ == '__main__':
     unittest.main()
