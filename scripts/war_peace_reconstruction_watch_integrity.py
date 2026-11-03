@@ -1389,7 +1389,19 @@ def _separate_current_iran_attack(row):
         r'|\b(?:meanwhile|separately)\b.{0,70}\b(?:struck|attacked|bombed)\b', title))
 
 
+def _speculative_election_nuclear_opinion(row):
+    """A commentator's conditional nuclear-strike fear is not a new act."""
+    title = _headline(row)
+    election = bool(re.search(r'중간선거|\bmidterm\b', title))
+    conditional = bool(re.search(r'패배하면|진다면|질 경우|\bif.{0,40}loses?\b', title))
+    fear = bool(re.search(r'핵공격|핵\s*공격|nuclear\s+(?:strike|attack)', title))
+    speculative = bool(re.search(r'우려|가능성|전망|\b(?:fears?|could|might)\b', title))
+    return election and conditional and fear and speculative and not _separate_current_iran_attack(row)
+
+
 def score_item(row, now):
+    if _speculative_election_nuclear_opinion(row):
+        return 0, []
     if _iran_war_justification_campaign_comment(row):
         return 0, []
     stamp = watch.parse_pub(row.get('published'))
