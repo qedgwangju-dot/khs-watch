@@ -3873,5 +3873,17 @@ class IranRestraintHeadlineTests(unittest.TestCase):
         self.assertFalse(integrity._iran_attack_restraint_statement(row))
 
 
+class IranCampaignCommentRegressions(unittest.TestCase):
+    def test_campaign_justification_is_not_new_attack(self):
+        title = "트럼프, 중간선거 전날 밤까지 이란 전쟁 정당성 강조"
+        row = article(title)
+        self.assertTrue(integrity._iran_war_justification_campaign_comment(row))
+        self.assertEqual(integrity.score_item(row, NOW), (0, []))
+
+    def test_separate_completed_attack_is_not_suppressed(self):
+        title = "트럼프 중간선거 전야 이란 전쟁 정당성 강조, 한편 미군이 이란 시설 공습을 감행"
+        row = article(title)
+        self.assertFalse(integrity._iran_war_justification_campaign_comment(row))
+
 if __name__ == '__main__':
     unittest.main()
