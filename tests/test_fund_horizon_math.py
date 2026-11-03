@@ -3,6 +3,7 @@
 import ast
 import datetime as dt
 from datetime import date, datetime
+import html
 import json
 import math
 from pathlib import Path
@@ -136,6 +137,9 @@ class FundHorizonMath(unittest.TestCase):
           <td>7,825.00</td><td>7,800.00</td></tr></table>"""
         scope.update({
             "browser_html": lambda url: page,
+            "browser_ici_mmf_workbook": lambda year: (_ for _ in ()).throw(
+                RuntimeError("official XLS temporarily unavailable")
+            ),
             "ICI_MMF": "https://www.ici.org/research/stats/mmf",
             "_ici_table_rows": lambda html, labels: (
                 date(2026, 10, 28),
@@ -151,6 +155,46 @@ class FundHorizonMath(unittest.TestCase):
         self.assertEqual(one["anchor_date"], "2026-09-23")
         self.assertAlmostEqual(one["change_bn"], 101.28)
         self.assertIsNone(parsed["metrics"]["asset_balance_horizons"]["m3"]["change_bn"])
+        self.assertIn("official XLS temporarily unavailable", parsed["horizon_error"])
+
+    def test_horizon_directions_are_visible_before_weekly_context(self):
+        scope = us_functions("_horizon_change", "_brief_horizon", "_horizon_headlines")
+        scope.update({"html": html, "fmt_usd_bn_kr": lambda value, fx: f"{value:+.3f}bn"})
+        ici = {"period": "October 21, 2026", "metrics": {
+            "domestic_collective_trust_note_week": "2026-10-14",
+            "domestic_flow_horizons": {
+                "m1": {"value_bn": -491.959, "start_week_ended": "2026-09-23",
+                       "end_week_ended": "2026-10-21"},
+                "m3": {"value_bn": None, "reason": "weekly_history_does_not_cover_target_window"},
+            },
+        }}
+        mmf = {"period": "October 28, 2026", "metrics": {"asset_balance_horizons": {
+            "m1": {"change_bn": -35.437}, "m3": {"change_bn": 40.535},
+        }}}
+        finra = {"period": "September 2026", "metrics": {"margin_debt_horizons": {
+            "m1": {"change_bn": 26.222}, "m3": {"change_bn": -22.018},
+        }}}
+        lines = scope["_horizon_headlines"](ici, mmf, finra, 1341.0)
+        self.assertIn("1M 순유출 -491.959bn", lines[1])
+        self.assertIn("3M 확인불가", lines[1])
+        self.assertIn("1M 감소 -35.437bn", lines[2])
+        self.assertIn("3M 증가 +40.535bn", lines[2])
+        self.assertIn("3M 감소 -22.018bn", lines[3])
+        self.assertTrue(any("집합투자신탁 활동" in line for line in lines[:5]))
+
+    def test_derived_horizon_addition_is_not_an_ici_source_correction(self):
+        scope = us_functions("period_date", "_same_period_core_change", "_horizon_only_update")
+        old = {"kind": "mmf", "period": "October 28, 2026", "metrics": {
+            "assets_trillion": 7.90128, "weekly_change_bn": -43.29, "assets_bn": 7901.28,
+            "asset_balance_horizons": {"m1": {"change_bn": None}},
+        }}
+        new = json.loads(json.dumps(old))
+        new["metrics"]["asset_balance_horizons"]["m1"]["change_bn"] = -35.437
+        self.assertFalse(scope["_same_period_core_change"](old, new))
+        self.assertTrue(scope["_horizon_only_update"](old, new))
+        new["metrics"]["assets_bn"] = 7901.30
+        self.assertTrue(scope["_same_period_core_change"](old, new))
+        self.assertFalse(scope["_horizon_only_update"](old, new))
 
     def test_etf_one_month_estimate_requires_daily_history(self):
         cumulative_monthly_flows = etf_monthly_function()
