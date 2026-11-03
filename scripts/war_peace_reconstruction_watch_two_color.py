@@ -35,6 +35,7 @@ DIPLOMATIC_TAGS = frozenset(('종전·협상', '휴전·평화'))
 ITEM_START = re.compile(r'^[🔴🟢🟡]?\s*\[(?:신규|속보|후속)\]\s*<b>\d+\.')
 ADVERSE = re.compile(
     r'압박|제재|결렬|교착|지연|미루|붕괴|무너|걷어찼|거부|배제|봉쇄|보복|'
+    r'설득력\s*없|'
     r'(?:협상|대화|회담|휴전|정전).{0,10}(?:파기|중단|종료|무산|불발|깨졌|거절)|'
     r'공격\s*(?:예고|경고|위협|계획)|공습\s*(?:예고|검토)|파괴공작|'
     r'\b(?:pressure|sanctions?|stalemate|deadlock|delay\w*|reject\w*|refus\w*|'
@@ -135,7 +136,7 @@ def direction(stage, row):
     # context, not an independent attack or a signed peace agreement.
     if (re.search(r'유가|\b(?:oil|crude)\s+prices?\b', title)
             and re.search(r'하락|급락|폭락|약세|내림|떨어|\b(?:fell|falls|drop|decline|slump)\w*\b', title)
-            and re.search(r'기대감|전망|가능성|협상\s*재개|\b(?:hopes?|expectations?|possible\s+talks)\b', title)
+            and re.search(r'기대(?:감)?|전망|가능성|협상\s*재개|\b(?:hopes?|expectations?|possible\s+talks)\b', title)
             and not _separate_attack_headline(title)):
         return None
     # A separate actual action wins over a diplomatic or financial background.
@@ -232,8 +233,12 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             first = re.sub(r'(<b>)\d+\.', lambda m: m[1] + str(len(core) + 1) + '.', first, count=1)
             core.append([first] + block[1:])
         else:
-            first = re.sub(r'^[🔴🟢🟡]?\s*\[(?:신규|속보|후속)\]\s*<b>\d+\.',
-                           f'<b>참고 {len(references) + 1}.', block[0], count=1)
+            # The semantic block heading can carry an unrelated event label
+            # even when the uniquely matched source is only market context.
+            # Rebuild the reference heading from that matched article.
+            label = html.escape(stage.topic_label(row) or '시장 참고', quote=False)
+            suffix = block[0].split('</b>', 1)[1]
+            first = f'<b>참고 {len(references) + 1}. {label}</b>' + suffix
             references.append([first] + block[1:])
     if set(matched) != {row['id'] for row in rows}:
         _fail('omitted selected source')
