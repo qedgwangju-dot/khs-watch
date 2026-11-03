@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-03T20:45:47+09:00",
+  "last_checked_kst": "2026-11-04T00:13:51+09:00",
   "media_id": null,
   "cftc_date": "October 27, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-03T20:45:47+09:00",
+    "checked_kst": "2026-11-04T00:13:51+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "October 27, 2026",
@@ -176,28 +176,28 @@
     },
     "repo": {
       "SOFR": {
-        "date": "2026-10-30",
+        "date": "2026-11-02",
         "rate": 3.95,
-        "volume_bn": 3175,
-        "previous_date": "2026-10-29",
-        "previous_rate": 3.94,
-        "change_bp": 1.0
+        "volume_bn": 3268,
+        "previous_date": "2026-10-30",
+        "previous_rate": 3.95,
+        "change_bp": 0.0
       },
       "BGCR": {
-        "date": "2026-10-30",
-        "rate": 3.93,
-        "volume_bn": 1235,
-        "previous_date": "2026-10-29",
-        "previous_rate": 3.92,
-        "change_bp": 1.0
+        "date": "2026-11-02",
+        "rate": 3.92,
+        "volume_bn": 1250,
+        "previous_date": "2026-10-30",
+        "previous_rate": 3.93,
+        "change_bp": -1.0
       },
       "TGCR": {
-        "date": "2026-10-30",
-        "rate": 3.93,
-        "volume_bn": 1203,
-        "previous_date": "2026-10-29",
-        "previous_rate": 3.92,
-        "change_bp": 1.0
+        "date": "2026-11-02",
+        "rate": 3.92,
+        "volume_bn": 1218,
+        "previous_date": "2026-10-30",
+        "previous_rate": 3.93,
+        "change_bp": -1.0
       }
     },
     "format_revision": 14,
@@ -228,7 +228,7 @@
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-11-02",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026110306"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026110310"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -467,7 +467,7 @@
       "ten_year_short_oi_share": 46.47698886763234,
       "event_key": "CFTC-TFF-2026-10-27:six-tenor-build",
       "source_mode": "CFTC TFF live HTML",
-      "report_age_days": 7
+      "report_age_days": 8
     }
   },
   "format_revision": 14,
