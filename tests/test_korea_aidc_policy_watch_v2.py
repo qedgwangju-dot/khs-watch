@@ -188,6 +188,52 @@ class AIDCSemanticRegression(unittest.TestCase):
         a["article_body"] = BODY + " 정부는 전남 지역을 AIDC 특구로 지정했다. 지정 고시를 공표했다."
         self.assertTrue(v2.verify_change(a)[0])
 
+    def test_two_policy_tracks_never_share_one_event_key(self):
+        support = row("정부 AIDC 생태계 지원 방안 발표…인허가 간소화·2000억원")
+        demand = row("정부 AIDC 전력수요 3~4GW 축소 검토…12차 전기본")
+        self.assertEqual(v2.semantic_key(support), "aidc|ecosystem-support|government-proposal")
+        self.assertEqual(v2.semantic_key(demand), "aidc|power-demand|revision-review")
+        self.assertNotEqual(v2.semantic_key(support), v2.semantic_key(demand))
+
+    def test_power_demand_reporting_is_review_not_final(self):
+        case = row("정부 AIDC 전력수요 3~4GW 축소 검토…12차 전기본")
+        case["event_key"] = v2.semantic_key(case)
+        case["article_body"] = (
+            "12차 전력수급기본계획에서 AI 데이터센터 AIDC 전력수요를 재검토하고 있다. "
+            "2040년 AIDC 추가 전력수요 전망치 7.9GW에서 3~4GW가량 축소하는 안을 논의 중이다. "
+            "정부는 3대 메가프로젝트 1단계 8.4GW 중 7.9GW를 잠정 반영했고 "
+            "2단계 10GW는 아직 반영하지 않았다. 최종안은 확정되지 않았다. "
+            "사업 실현 가능성과 전력사용계약 등 근거를 다시 확인하고 있으며 "
+            "기업의 확정 수요와 기대 수요를 분리해 조정할 방침이다."
+        )
+        self.assertTrue(v2.verify_change(case)[0])
+        self.assertEqual(v2.event_level(case), 30)
+        body = v2.render(case)
+        self.assertIn("3.9~4.9GW", body)
+        self.assertIn("최종 확정 전", body)
+        self.assertIn("2,000억원 정부안", body)
+
+    def test_unverified_headline_or_wrong_number_does_not_notify(self):
+        case = row("정부 AIDC 전력수요 3~4GW 축소 검토…12차 전기본")
+        case["event_key"] = v2.semantic_key(case)
+        case["article_body"] = "AIDC 전력수요가 축소될 수 있다는 기사다." * 25
+        self.assertFalse(v2.verify_change(case)[0])
+        case["article_body"] = (
+            "제12차 전력수급기본계획에서 AI 데이터센터 AIDC 전력수요 7.9GW "
+            "반영이 논의됐다. 그러나 이번 발표는 인허가 절차만 개선하며 "
+            "발전 전력 공급용량이 줄어들 것이라는 확정 결정은 없다. " * 5
+        )
+        self.assertFalse(v2.verify_change(case)[0])
+
+    def test_review_level_does_not_increase_with_newspaper_reprints(self):
+        a = row("AIDC 전기본 전력수요 7.9GW에서 3~4GW 축소 검토")
+        b = row("AIDC 전력수요 3∼4GW 하향 검토", day="Sun, 01 Nov 2026 03:00:00 GMT")
+        self.assertEqual(v2.semantic_key(a), v2.semantic_key(b))
+        self.assertEqual(v2.event_level(a), v2.event_level(b))
+
+    def test_ecosystem_original_official_reference_is_corrected(self):
+        self.assertIn("156786535", v2.AIDC_ECOSYSTEM_OFFICIAL_BASELINE["url"])
+
     def test_budget_draft_not_misclassified_as_enacted(self):
         draft = row("AIDC 국산화 2000억 예산안 추진")
         self.assertNotEqual(v2.semantic_key(draft), "aidc|ecosystem-support|budget-enacted")
