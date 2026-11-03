@@ -132,6 +132,7 @@ class AIDCSemanticRegression(unittest.TestCase):
              patch.object(v2, "EXTRA_RSS_SOURCES", ()), \
              patch.object(v2, "AIDC_ECOSYSTEM_OFFICIAL_BASELINE", {"published": "Fri, 23 Oct 2020 05:00:00 GMT"}), \
              patch.object(v2, "AIDC_POWER_DEMAND_MEDIA_BASELINE", {"published": "Fri, 23 Oct 2020 05:00:00 GMT"}), \
+             patch.object(v2, "AIDC_POWER_DEMAND_MEDIA_BASELINE_ALT", {"published": "Fri, 23 Oct 2020 05:00:00 GMT"}), \
              patch.object(v2.base, "load_state", return_value={
                  "initialized": True, "dedupe_version": 4,
                  "updated_at": "2026-10-20T09:00:00+00:00", "seen_events": {},
@@ -188,6 +189,21 @@ class AIDCSemanticRegression(unittest.TestCase):
         self.assertFalse(v2.verify_change(a)[0])
         a["article_body"] = BODY + " 정부는 전남 지역을 AIDC 특구로 지정했다. 지정 고시를 공표했다."
         self.assertTrue(v2.verify_change(a)[0])
+
+    def test_original_source_precedes_google_news_reindex_for_power_demand(self):
+        original = row(
+            "AIDC 전력수요 3~4GW 축소 검토",
+            url="https://www.mk.co.kr/news/business/12184442",
+        )
+        rss = row(
+            "AIDC 전력수요 3~4GW 축소 검토",
+            url="https://news.google.com/rss/articles/opaque",
+        )
+        key = "aidc|power-demand|revision-review"
+        self.assertGreater(v2.candidate_priority(original, key),
+                           v2.candidate_priority(rss, key))
+        self.assertEqual(v2.AIDC_POWER_DEMAND_MEDIA_BASELINE["url"],
+                         "https://www.mk.co.kr/news/business/12184442")
 
     def test_two_policy_tracks_never_share_one_event_key(self):
         support = row("정부 AIDC 생태계 지원 방안 발표…인허가 간소화·2000억원")
