@@ -1369,7 +1369,29 @@ def _clear_headline_event_cache(row, kind):
     row.pop('deep_signal', None)
 
 
+def _iran_war_justification_campaign_comment(row):
+    """Past-war campaign justification is not an independent new strike."""
+    title = _headline(row)
+    actor = bool(re.search(r'트럼프|\btrump\b', title))
+    iran = bool(re.search(r'이란|\biran\b', title))
+    retrospective = bool(re.search(r'정당성\s*강조|전쟁\s*비용.{0,8}푼돈|war\s+justif|defends?\s+(?:iran\s+)?war', title))
+    election = bool(re.search(r'중간선거|선거\s*전야|선거\s*전날|\bmidterms?\b|election\s+eve', title))
+    separate_action = bool(_separate_current_iran_attack(row))
+    return actor and iran and retrospective and election and not separate_action
+
+
+def _separate_current_iran_attack(row):
+    """Require a separate completed-action clause, not merely the word war."""
+    title = _headline(row)
+    return bool(re.search(
+        r'(?:별도로|한편|그러나|동시에).{0,50}(?:미군|미국).{0,35}'
+        r'(?:이란.{0,30})?(?:공습|공격|타격)(?:을|를)?\s*(?:감행|실시|개시|했다)'
+        r'|\b(?:meanwhile|separately)\b.{0,70}\b(?:struck|attacked|bombed)\b', title))
+
+
 def score_item(row, now):
+    if _iran_war_justification_campaign_comment(row):
+        return 0, []
     stamp = watch.parse_pub(row.get('published'))
     age = watch.age_minutes(row, now)
     if stamp is None or stamp > now + dt.timedelta(minutes=5) or age > 3 * 60:
