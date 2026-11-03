@@ -32,6 +32,7 @@ CONSTRUCTIVE_KINDS = frozenset(('diplomatic_contact', 'diplomatic_plan',
                                 'support_statement', 'attack_pause',
                                 'ceasefire_position', 'diplomatic_position'))
 DIPLOMATIC_TAGS = frozenset(('종전·협상', '휴전·평화'))
+BACKGROUND_ESCALATION_TAGS = frozenset(('확전', '확전위험', '재확전위험'))
 ITEM_START = re.compile(r'^[🔴🟢🟡]?\s*\[(?:신규|속보|후속)\]\s*<b>\d+\.')
 ADVERSE = re.compile(
     r'압박|제재|결렬|교착|지연|미루|붕괴|무너|걷어찼|거부|배제|봉쇄|보복|'
@@ -120,11 +121,34 @@ def _explicit_ceasefire_progress(title):
         r'(?:휴전|정전).{0,40}(?:확인|조율|협의|협력|합의|발효|연장|재개)', title))
 
 
+def _unresolved_mixed_background(stage, row):
+    """Hold an unverified discovery item whose inherited tags conflict without a directional headline."""
+    if (row.get('publication_basis') != 'discovery_feed'
+            or row.get('body_verified')
+            or stage.non_military_kind(row) is not None):
+        return False
+    tags = {str(tag).strip() for tag in row.get('tags', [])}
+    if not (tags & DIPLOMATIC_TAGS and tags & BACKGROUND_ESCALATION_TAGS):
+        return False
+    title = stage._headline(row)
+    if (_active_adverse(title) or stage._military_actions(title)
+            or _explicit_ceasefire_progress(title)
+            or _explicit_easing_restoration(title)):
+        return False
+    return True
+
+
 def direction(stage, row):
-    """Return a display color, or None for a neutral market reference."""
+    """Return a direction color, or None for market and unresolved references."""
     kind = stage.non_military_kind(row)
     color = stage.final_color(row)
     title = stage._headline(row)
+    # Discovery tags can describe background context rather than the event in
+    # the headline. If an unverified row inherits both diplomacy and escalation
+    # tags but its headline establishes neither an action nor dialogue, do not
+    # turn the unresolved conflict into a red default.
+    if _unresolved_mixed_background(stage, row):
+        return None
     # A separate actual action wins over a diplomatic or financial background.
     if color == 'red':
         return 'red'
@@ -174,14 +198,16 @@ def direction(stage, row):
     return 'red'
 
 
-def _summary(colors):
+def _summary(colors, unresolved_count=0):
     red, green = colors.count('red'), colors.count('green')
     lines = ['<b>투자 판정</b>']
     if red:
         lines.append(f'🔴 <b>공격·타격·확전·압박 관련:</b> {red}건')
     if green:
         lines.append(f'🟢 <b>대화·협상·완화 관련:</b> {green}건')
-    if not colors:
+    if unresolved_count:
+        lines.append(f'<b>방향 판정 보류:</b> {unresolved_count}건 · 본문 미확인 또는 제목 근거 부족')
+    if not colors and not unresolved_count:
         lines.append('방향성 기사 없음 · 시장 참고 기사만 확인')
     lines.extend(('- <b>표시 기준:</b> 초록은 대화·협상·완화, 빨강은 공격·타격·공격 예고·결렬·압박',
                   '- <b>현재 단계:</b> 제안·발언·예고와 실제 합의·이행·공격 발생은 기사 문구로 구분',
@@ -200,7 +226,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
     tail_at = next((i for i in range(starts[-1] + 1, len(lines))
                     if lines[i].startswith(('<b>시장 반응</b>', '<b>투자 판정</b>',
                                             '시장자료 확인 보류'))), len(lines))
-    core, references, matched = [], [], []
+    core, references, unresolved, matched = [], [], [], []
     for n, start in enumerate(starts):
         end = starts[n + 1] if n + 1 < len(starts) else tail_at
         block = lines[start:end]
@@ -211,13 +237,21 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         row = candidates[0]
         matched.append(row['id'])
         color = direction(stage, row)
+        unresolved_direction = _unresolved_mixed_background(stage, row)
         row['semantic_classification_color'] = row.get('classification_color')
         row['classification_color'] = color
-        row['display_section'] = 'core' if color else 'market_reference'
+        row['display_section'] = ('core' if color else
+                                  'unresolved_direction' if unresolved_direction else
+                                  'market_reference')
         if color:
             first = re.sub(r'^[🔴🟢🟡]?\s*', MARKERS[color] + ' ', block[0])
             first = re.sub(r'(<b>)\d+\.', lambda m: m[1] + str(len(core) + 1) + '.', first, count=1)
             core.append([first] + block[1:])
+        elif unresolved_direction:
+            first = re.sub(r'^[🔴🟢🟡]?\s*', '', block[0])
+            first = re.sub(r'\[(?:신규|속보|후속)\]', '[방향 미확정]', first, count=1)
+            first = re.sub(r'(<b>)\d+\.', lambda m: m[1] + str(len(unresolved) + 1) + '.', first, count=1)
+            unresolved.append([first] + block[1:])
         else:
             first = re.sub(r'^[🔴🟢🟡]?\s*\[(?:신규|속보|후속)\]\s*<b>\d+\.',
                            f'<b>참고 {len(references) + 1}.', block[0], count=1)
@@ -239,6 +273,11 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         output += ['<b>핵심 변화</b>']
         for block in core:
             output += block
+    if unresolved:
+        output += ['<b>방향 판정 보류</b>',
+                   '확전·협상 태그만으로 방향을 정하지 않음 · 제목에서 현재 공격·압박 또는 구체 대화·협상 진행이 확인되지 않음', '']
+        for block in unresolved:
+            output += block
     if references:
         output += ['<b>시장 참고</b>', '시장 기사는 전쟁·완화 방향 표시에서 제외', '']
         for block in references:
@@ -246,7 +285,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
     tail = '\n'.join(lines[tail_at:]).split('<b>투자 판정</b>', 1)[0].rstrip()
     if tail:
         output += [tail, '']
-    output += [_summary(colors)]
+    output += [_summary(colors, len(unresolved))]
     text = '\n'.join(output).strip() + '\n'
     visible = html.unescape(re.sub(r'<[^>]+>', '', text))
     if len(visible.encode('utf-16-le')) // 2 > 4000:
@@ -315,3 +354,4 @@ def install(stage):
         presenter = stage._two_color_presenter = Presenter(stage)
     stage.runner.verify_alert = presenter.verify_alert
     return presenter
+

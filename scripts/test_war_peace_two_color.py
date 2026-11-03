@@ -218,6 +218,61 @@ class TwoColorTests(unittest.TestCase):
                 row = {'title_original': title, 'tags': ['종전·협상'], 'body_verified': False}
                 self.assertEqual(presentation.direction(stage, row), 'red')
 
+    def test_unverified_conflicting_background_tags_are_held_without_a_red_badge(self):
+        row = {
+            'id': '8a173ef4e1e97850e4ac',
+            'title_original': 'As Israeli election looms, Trump advisers see opportunity beyond Netanyahu',
+            'title_ko': '이스라엘 선거가 다가옴에 따라 트럼프 고문들은 네타냐후 너머의 기회를 본다',
+            'source': 'Axios',
+            'link': 'https://www.axios.com/2026/10/24/israel-election-trump-netanyahu-advisers',
+            'tags': ['정치일정', '종전·협상', '확전'],
+            'body_verified': False,
+            'publication_basis': 'discovery_feed',
+            'article_text_sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+            'rendered': True,
+            'classification_color': '',
+        }
+        self.assertIsNone(stage.non_military_kind(row))
+        self.assertEqual(stage.final_color(row), '')
+        self.assertTrue(presentation._unresolved_mixed_background(stage, row))
+        self.assertIsNone(presentation.direction(stage, row))
+
+        semantic_text = '\n'.join([
+            '<b>전쟁·종전·재건 웹감시</b>',
+            '🔴 <b>공격·타격·확전·압박</b>',
+            '조회 2026-10-24 23:12 KST',
+            '<b>핵심 변화</b>',
+            '🔴 [신규] <b>1. 이란·호르무즈</b>',
+            row['title_ko'],
+            'RSS 보도 10-24 21:56 KST · 종전·협상 · 확전 · <a href="' + row['link'] + '">Axios 원문</a> · RSS 입력 기준·본문 미확인',
+            '<b>시장 반응</b>',
+            '시장자료 확인 보류',
+            '<b>투자 판정</b>',
+            '이전 분류 요약',
+        ])
+        receipt = {'articles': [copy.deepcopy(row)], 'markets': {}, 'market_source_status': {}}
+        text, projected = presentation.project(stage, semantic_text, receipt, {}, {})
+        output_row = projected['articles'][0]
+        self.assertIsNone(output_row['classification_color'])
+        self.assertEqual(output_row['display_section'], 'unresolved_direction')
+        self.assertIn('<b>방향 판정 보류</b>', text)
+        self.assertIn('[방향 미확정]', text)
+        self.assertNotIn('🔴 [방향 미확정]', text)
+        self.assertNotIn('🔴 <b>공격·타격·확전·압박</b>', text)
+        self.assertIn('<b>방향 판정 보류:</b> 1건', text)
+        self.assertIn('RSS 입력 기준·본문 미확인', text)
+
+        attack = copy.deepcopy(row)
+        attack['title_original'] = 'Israel launches strikes on Iran as election looms'
+        self.assertFalse(presentation._unresolved_mixed_background(stage, attack))
+        self.assertEqual(presentation.direction(stage, attack), 'red')
+
+        dialogue = copy.deepcopy(row)
+        dialogue['title_original'] = (
+            'Kremlin confirms Oleshky ceasefire, says working with Ukraine on evacuation timing')
+        self.assertFalse(presentation._unresolved_mixed_background(stage, dialogue))
+        self.assertEqual(presentation.direction(stage, dialogue), 'green')
+
     def test_saved_unverified_ceasefire_rows_render_green_without_claiming_body_verification(self):
         rows = [
             {
@@ -983,3 +1038,4 @@ class TwoColorTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
+
