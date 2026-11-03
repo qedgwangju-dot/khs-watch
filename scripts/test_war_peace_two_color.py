@@ -177,6 +177,34 @@ class TwoColorTests(unittest.TestCase):
                 row = {'title_original': title, 'title_ko': title}
                 self.assertEqual(presentation.direction(stage, row), expected)
 
+    def test_saved_nov03_escalation_ahead_of_talks_is_red(self):
+        # Natural schedule run 41611279264 sent these two exact headline-only
+        # rows as green "외교 접촉 보도" although each reports escalating clashes.
+        cases = (
+            ('러시아·우크라 충돌 격화…"종전 협상 앞두고 주도권 싸움" - news.sbs.co.kr',
+             'Tue, 03 Nov 2026 09:15:24 GMT'),
+            ('러·우크라 충돌 격화…"종전협상 앞두고 주도권 싸움" - 연합뉴스',
+             'Tue, 03 Nov 2026 08:58:19 GMT'),
+        )
+        now = dt.datetime.fromisoformat('2026-11-03T18:30:13+09:00')
+        for title, published in cases:
+            with self.subTest(title=title):
+                row = {'title_original': title, 'title_ko': title,
+                       'description': title, 'source': title.rsplit(' - ', 1)[-1],
+                       'published': published, 'body_verified': False,
+                       'tags': ['외교 접촉 보도']}
+                kind = stage.non_military_kind(row)
+                score, tags = stage.score_item(row, now)
+                self.assertGreater(score, 0)
+                self.assertEqual(tags, ['충돌·교전 격화 보도'])
+                self.assertEqual(kind, 'military_report')
+                self.assertEqual(stage._headline_event_label(row, kind), '충돌·교전 격화 보도')
+                self.assertEqual(presentation.direction(stage, row), 'red')
+        self.assertEqual(presentation.direction(stage, {
+            'title_original': '미국·러시아, 종전 협상 재개 논의',
+            'title_ko': '미국·러시아, 종전 협상 재개 논의',
+        }), 'green')
+
     def test_saved_unverified_ceasefire_headlines_are_green_not_default_red(self):
         # These two exact rows were sent by natural run 39982159473. Both had
         # an explicit diplomacy tag, no verified article body, no recognized
