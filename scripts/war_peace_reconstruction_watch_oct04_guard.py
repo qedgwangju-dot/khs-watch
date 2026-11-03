@@ -1422,7 +1422,26 @@ def _stable_source_url(row):
     return None
 
 
+def _us_qeshm_strike_event(row):
+    """같은 날 미군의 이란 케슘섬 타격 재보도를 동일 사건으로 식별한다.
+
+    단순 폭발음, 장래 공격 계획, 이후 명시된 별도 공격은 섞지 않는다.
+    """
+    title = " ".join(str(row.get(k, "")) for k in ("title_original", "title", "title_ko")).lower()
+    qeshm = any(x in title for x in ("qeshm", "gheshm", "keshm", "케슘", "게슘"))
+    us = any(x in title for x in ("u.s.", "us ", "america", "american", "미국", "美,", "미군", "美 "))
+    iran = any(x in title for x in ("iran", "이란"))
+    strike = any(x in title for x in ("strike", "struck", "airstrike", "attacked", "attack on", "공습", "타격", "공격"))
+    non_event = any(x in title for x in ("plans to", "may strike", "could strike", "proposal", "strike threat",
+                                         "계획", "검토", "예고", "우려", "가능성", "공격 경고"))
+    separate_wave = any(x in title for x in ("second wave", "another strike", "additional strike",
+                                             "2차 공습", "추가 공습", "재공습", "다시 공습"))
+    return qeshm and us and iran and strike and not (non_event or separate_wave)
+
+
 def item_id(row):
+    if _us_qeshm_strike_event(row):
+        return hashlib.sha256(("event|us-iran|qeshm-strike|" + _published_day(row)).encode()).hexdigest()[:20]
     china_stage = _china_fuel_stage(row)
     if china_stage:
         return _china_fuel_event_id(row, china_stage)
