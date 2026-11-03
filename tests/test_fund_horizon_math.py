@@ -94,6 +94,36 @@ class FundHorizonMath(unittest.TestCase):
         self.assertIsNone(three["value_bn"])
         self.assertEqual(three["reason"], "weekly_history_does_not_cover_target_window")
 
+    def test_ici_collective_trust_caveat_stays_with_affected_month(self):
+        scope = us_functions("_ici_collective_trust_note", "_monthly_horizon_snapshot")
+        weekly = [{"date": date(2026, 10, 14), "value": -479.390}]
+        official_text = (
+            "The outflows from domestic equity mutual funds for the week ending "
+            "October 14 were primarily driven by activity in collective investment trusts, "
+            "rather than by redemptions from individual investors."
+        )
+        note_week = scope["_ici_collective_trust_note"](official_text, weekly)
+        self.assertEqual(note_week, "2026-10-14")
+        self.assertIsNone(scope["_ici_collective_trust_note"]("", weekly))
+        scope["_horizon_window_text"] = lambda *args, **kwargs: "comparison"
+        ici = {"metrics": {
+            "domestic_collective_trust_note_week": note_week,
+            "domestic_flow_horizons": {
+                "m1": {"value_bn": -491.959, "start_week_ended": "2026-09-23",
+                       "end_week_ended": "2026-10-21"},
+                "m3": {"value_bn": None},
+            },
+        }}
+        lines = scope["_monthly_horizon_snapshot"](
+            ici, None, None, None, None, None, None, None, 1341.0
+        )
+        self.assertTrue(any("집합투자신탁 활동" in line for line in lines))
+        ici["metrics"]["domestic_flow_horizons"]["m1"]["start_week_ended"] = "2026-10-21"
+        lines = scope["_monthly_horizon_snapshot"](
+            ici, None, None, None, None, None, None, None, 1341.0
+        )
+        self.assertFalse(any("집합투자신탁 활동" in line for line in lines))
+
     def test_ici_mmf_balance_keeps_billion_dollar_units(self):
         scope = us_functions("_ici_weekly_history", "_ici_balance_change_horizon",
                              "parse_ici_mmf")
