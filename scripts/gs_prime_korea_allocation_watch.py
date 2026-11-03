@@ -37,6 +37,7 @@ QUERIES = (
 )
 MAX_DOCS = 12
 CHECK_HOURS = 3
+DISCOVERY_REV = 2  # A source-discovery upgrade must be checked once despite the normal 3-hour gate.
 FRESH_DAYS = 10
 MONTHS = {s.lower(): i for i, s in enumerate(
     "January February March April May June July August September October November December".split(), 1)}
@@ -324,7 +325,7 @@ def main():
         elapsed = (now - since).total_seconds()
     except (KeyError, ValueError, TypeError):
         elapsed = 999999
-    if 0 <= elapsed < CHECK_HOURS * 3600 and os.getenv("GS_PRIME_FORCE_REFRESH") != "1":
+    if 0 <= elapsed < CHECK_HOURS * 3600 and old.get("discovery_revision") == DISCOVERY_REV and os.getenv("GS_PRIME_FORCE_REFRESH") != "1":
         STATUS.write_text("- GS 한국 헤지펀드 비중: 3시간 미경과 · 재조회 생략\n", encoding="utf-8")
         print("gs_prime_korea=not_due")
         return 0
@@ -340,9 +341,10 @@ def main():
         except (requests.RequestException, ValueError):
             continue
     state = dict(old)
-    state.update({"last_checked_at": now.isoformat(timespec="seconds"),
+    state.update({"discovery_revision": DISCOVERY_REV, "last_checked_at": now.isoformat(timespec="seconds"),
                   "last_candidates": len(urls), "last_fetched": fetched,
                   "last_parsed": len(rows), "last_discovery_ok": discovery_ok})
+    state["consecutive_source_failures"] = 0 if fetched else int(old.get("consecutive_source_failures") or 0) + 1
     seen = set(state.get("seen_keys") or [])
     previous = state.get("last_known") if isinstance(state.get("last_known"), dict) else None
     candidate, known, decision = select(rows, now, previous, seen)
@@ -351,6 +353,16 @@ def main():
     if candidate:
         ALERT.write_text(format_alert(candidate, previous), encoding="utf-8")
         seen.add(event_key(candidate))
+    elif not fetched and state["consecutive_source_failures"] >= 3:
+        fault_key = "gsprime-source-error:" + now.date().isoformat()
+        if fault_key not in seen:
+            ALERT.write_text(
+                "<b>골드만삭스 한국 헤지펀드 노출 · 공개 원천 수집 장애</b>\n"
+                "• 서로 다른 예약 실행에서 공개문서 조회가 3회 연속 실패했습니다.\n"
+                "• 현재 총노출·순노출 최신값은 확인할 수 없어 숫자 경보를 보류합니다.\n"
+                "• 기존 한국 시장 스트레스·환율 감시는 별도 작동하며, 이 메시지는 시장 위험 확정 신호가 아닙니다.\n",
+                encoding="utf-8")
+            seen.add(fault_key)
     state["seen_keys"] = sorted(seen)[-150:]
     state["last_decision"] = decision
     PENDING.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

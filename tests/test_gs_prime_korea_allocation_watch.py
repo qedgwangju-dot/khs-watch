@@ -85,6 +85,39 @@ class GoldmanKoreaAllocationTests(unittest.TestCase):
         self.assertTrue(urls[0].endswith("2026-11-04"))
         self.assertIn("https://alpharis.cn/events/2386", urls)
 
+    def test_upgrade_forces_one_real_discovery_even_after_recent_check(self):
+        with tempfile.TemporaryDirectory() as folder:
+            files = {x: pathlib.Path(folder) / x for x in ("state.json", "pending.json", "alert.html", "status.md")}
+            existing = {"last_checked_at": dt.datetime.now(w.KST).isoformat(timespec="seconds"),
+                        "discovery_revision": 1, "seen_keys": []}
+            files["state.json"].write_text(json.dumps(existing), encoding="utf-8")
+            with patch.object(w, "STATE", files["state.json"]), patch.object(w, "PENDING", files["pending.json"]), \
+                 patch.object(w, "ALERT", files["alert.html"]), patch.object(w, "STATUS", files["status.md"]), \
+                 patch.object(w, "discover", return_value=([], False)) as discovery:
+                self.assertEqual(w.main(), 0)
+            discovery.assert_called_once()
+            self.assertEqual(json.loads(files["pending.json"].read_text())["discovery_revision"], w.DISCOVERY_REV)
+
+    def test_three_consecutive_source_failures_warn_once_without_fake_numbers(self):
+        with tempfile.TemporaryDirectory() as folder:
+            paths = {x: pathlib.Path(folder) / x for x in ("state.json", "pending.json", "alert.html", "status.md")}
+            paths["state.json"].write_text(json.dumps({"consecutive_source_failures": 2, "seen_keys": []}), encoding="utf-8")
+            with patch.object(w, "STATE", paths["state.json"]), patch.object(w, "PENDING", paths["pending.json"]), \
+                 patch.object(w, "ALERT", paths["alert.html"]), patch.object(w, "STATUS", paths["status.md"]), \
+                 patch.object(w, "discover", return_value=([], False)):
+                self.assertEqual(w.main(), 0)
+                self.assertIn("원천 수집 장애", paths["alert.html"].read_text())
+                pending = json.loads(paths["pending.json"].read_text())
+                self.assertEqual(pending["consecutive_source_failures"], 3)
+                self.assertEqual(len(pending["seen_keys"]), 1)
+            paths["state.json"].write_text(json.dumps(pending), encoding="utf-8")
+            with patch.object(w, "STATE", paths["state.json"]), patch.object(w, "PENDING", paths["pending.json"]), \
+                 patch.object(w, "ALERT", paths["alert.html"]), patch.object(w, "STATUS", paths["status.md"]), \
+                 patch.object(w, "discover", return_value=([], False)), \
+                 patch.dict("os.environ", {"GS_PRIME_FORCE_REFRESH": "1"}):
+                self.assertEqual(w.main(), 0)
+                self.assertFalse(paths["alert.html"].exists())
+
     def test_no_new_source_does_not_send_and_state_waits_for_delivery(self):
         with tempfile.TemporaryDirectory() as d:
             status = pathlib.Path(d) / "status.md"
