@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-11-03T16:02:37+09:00",
+  "last_checked_kst": "2026-11-04T00:23:38+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -554,6 +554,15 @@
       "stage": 4,
       "category": "조달·선정·협약",
       "first_seen_kst": "2026-11-02T00:20:43+09:00",
+      "suppressed_duplicate": "same_title"
+    },
+    "abe4e07071a5b9fa6edfa253": {
+      "title": "포커스에이아이, 딥엑스와 국산 NPU 기반 AI 서버 양산 협약 체결 - 머니투데이 - 머니투데이",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE14T2Q2RG5VRW80a0tGc0RadFpjSU8yaDNLYmgwdHZobUhScVAzdW50eUdQTURwME5qR1M5cnVGSHZVcEUtcm1HQWZrbFB1bkNYZ2hfOUhxVlpGWkRwdDhndVJUTmVVUUF6dlV5ZDhwdW1jRXVYcGfSAXtBVV95cUxPMzFHSzI3NlhrTXVWR1d1bS1Gdk5mVmRFVXk4cDk0RE1hS2FvaEMtVC1sMkNIU1pxc3BGc2xEc19xY2daVGI5XzZyYTVkTjdUeTVlekc3Y3F3QzFuSnZtbWtGOE43Qk1qcWdRTWo4V0kzT19aZF95UEwxSDg?oc=5",
+      "event_signature": "딥엑스|조달·선정·협약|일반",
+      "stage": 4,
+      "category": "조달·선정·협약",
+      "first_seen_kst": "2026-11-04T00:23:38+09:00",
       "suppressed_duplicate": "same_title"
     }
   }
