@@ -7,6 +7,7 @@ on:
       - ".github/workflows/kofia-liquidity-telegram-watch.yml"
       - "scripts/kofia_liquidity_watch.js"
       - "scripts/preopen_daily_status.py"
+      - "tests/test_preopen_daily_status.py"
       - "scripts/test_kofia_liquidity_interpretation.py"
       - "scripts/kofia_liquidity_semantic_guard.py"
       - "scripts/kofia_liquidity_state_integrity.js"
@@ -24,6 +25,7 @@ on:
       - ".github/workflows/kofia-liquidity-telegram-watch.yml"
       - "scripts/*kofia_liquidity*"
       - "scripts/preopen_daily_status.py"
+      - "tests/test_preopen_daily_status.py"
       - "tests/fixtures/kofia_source_20261012.json"
   schedule:
     # KST 직접 지정. 신규 공식값은 수치 보고, 최종 오전 슬롯은 상태 보고도 보낸다.
@@ -74,6 +76,7 @@ jobs:
           python scripts/test_kofia_liquidity_commit_state.py
           python scripts/test_kofia_liquidity_delivery.py
           python scripts/test_kofia_liquidity_interpretation.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_preopen_daily_status.py' -v
   watch:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest

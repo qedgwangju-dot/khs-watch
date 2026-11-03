@@ -367,12 +367,19 @@ class TreasuryReportIntegrity(unittest.TestCase):
 
     def test_daily_status_sender_distinguishes_execution_failure_from_source_hold(self):
         when = dt.datetime(2026, 10, 23, 7, 30, tzinfo=ZoneInfo("Asia/Seoul"))
-        failure = daily_status.build_status_message(when, "workflow_step_failed")
-        source_hold = daily_status.build_status_message(when, "official_source_date_or_field_validation_withheld")
+        state = {"last_delivery": {"treasury_date": "2026-10-22", "credit_oas_date": "2026-10-21"}}
+        failure = daily_status.build_status_message(when, "workflow_step_failed", state)
+        source_hold = daily_status.build_status_message(when, "official_source_date_or_field_validation_withheld", state)
+        unchanged = daily_status.build_status_message(when, "unchanged", state)
+        skipped = daily_status.build_status_message(when, "recheck_skipped", state)
         self.assertIn("실행이 정상 완료되지 않아", failure)
         self.assertIn("이전 날짜의 수치로 대체하지 않습니다", failure)
         self.assertIn("공식 자료의 기준일 또는 필드 검증", source_hold)
-        self.assertIn("07:45 KST에 재시도", failure)
+        self.assertIn("마지막 확인된 수치 보고의 기준일(오늘 조회값 아님)", failure)
+        self.assertIn("2026-10-22", failure)
+        self.assertIn("새 수치·판정 변화가 없어", unchanged)
+        self.assertIn("자료 재조회를 생략", skipped)
+        self.assertIn("08:00 전 도착을 보장하지 않습니다", failure)
 
 
 if __name__ == "__main__":

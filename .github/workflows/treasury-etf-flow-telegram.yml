@@ -44,6 +44,7 @@ jobs:
     if: >-
       ${{
         github.event_name != 'workflow_run' ||
+        contains(github.event.workflow_run.created_at, 'T22:') ||
         contains(github.event.workflow_run.created_at, 'T23:') ||
         contains(github.event.workflow_run.created_at, 'T00:') ||
         contains(github.event.workflow_run.created_at, 'T01:') ||
@@ -60,7 +61,7 @@ jobs:
       TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
       TREASURY_REPORT_VALIDATE_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.validate_only && '1' || '0' }}
-      TREASURY_DAILY_DIGEST: ${{ github.event_name == 'schedule' && (github.event.schedule == '30 7 * * *' || github.event.schedule == '45 7 * * *') && '1' || '0' }}
+      TREASURY_DAILY_DIGEST: ${{ ((github.event_name == 'schedule' && (github.event.schedule == '30 7 * * *' || github.event.schedule == '45 7 * * *')) || (github.event_name == 'workflow_run' && contains(github.event.workflow_run.created_at, 'T22:'))) && '1' || '0' }}
 
     steps:
       - name: Checkout latest delivery state

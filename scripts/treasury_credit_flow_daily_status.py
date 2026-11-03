@@ -14,7 +14,7 @@ from treasury_credit_flow_delivery import (
 KST = ZoneInfo("Asia/Seoul")
 
 
-def build_status_message(now, reason, state):
+def build_status_message(now, reason, state=None):
     if reason == "workflow_step_failed":
         details = (
             "• 정기 보고의 조회·검증 실행이 정상 완료되지 않아 전체 수치 보고를 보류했습니다.\n"
