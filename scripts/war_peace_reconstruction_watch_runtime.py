@@ -265,8 +265,9 @@ def _payload_retry_eligible(record, blocked):
     return True
 
 
-def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retry_delay=0.5):
-    """Every configured query must complete, including its existing fallbacks."""
+def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retry_delay=0.5,
+             allow_partial=False):
+    """Collect each query; retain failed queries as explicit gaps in partial mode."""
     if seconds <= 0 or workers < 1 or payload_retry_delay < 0:
         raise ValueError('collection budget and workers must be positive')
     queries = list(watch.QUERIES)
@@ -336,7 +337,6 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
                                 failed_transcripts[index] = result['trace']
                         else:
                             record.pop('error', None)
-                            traces[index] = result['trace']
                             attempts = [
                                 {'host': (urllib.parse.urlparse(item.get('url', '')).hostname or '').lower().removeprefix('www.'),
                                  'status': item.get('status')}
@@ -350,6 +350,8 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
                                     'reason': 'fallback_scope_not_verified',
                                 }
                                 record['error'] = 'original source unavailable; fallback scope unverified'
+                            else:
+                                traces[index] = result['trace']
                         print(f"war_collection_done index={index} status={record['status']} elapsed={elapsed:.3f}s", flush=True)
                     except (EOFError, OSError) as exc:
                         record.update(status='worker_error', error=type(exc).__name__)
@@ -406,15 +408,22 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
             elif record['status'] == 'retry_waiting':
                 record['status'] = 'retry_not_started_deadline'
         _save(report_path, report)
-    if any(record['status'] != 'ok' for record in report['news']):
+    missing = [record['index'] for record in report['news'] if record['status'] != 'ok']
+    report['source_coverage_complete'] = not missing
+    report['incomplete_query_indices'] = missing
+    _save(report_path, report)
+    if missing and (not allow_partial or not traces):
         raise IncompleteCoverage('one or more configured queries did not complete')
     return queries, traces
 
 
-def install_replay(watch, queries, traces):
+def install_replay(watch, queries, traces, *, missing_indices=()):
     """Replay in base run's original order; never fetch silently on a cache miss."""
     original_news, original_req = watch.google_news, watch.req
     next_index = 0
+    missing_indices = set(missing_indices)
+    if missing_indices & set(traces) or missing_indices | set(traces) != set(range(len(queries))):
+        raise IncompleteCoverage('collection replay coverage map is inconsistent')
 
     def news(query):
         nonlocal next_index
@@ -422,6 +431,10 @@ def install_replay(watch, queries, traces):
         next_index += 1
         if index >= len(queries) or queries[index] != query:
             raise IncompleteCoverage('query order changed after collection')
+        if index in missing_indices:
+            # A failed source contributes no rows. The alert is labelled partial;
+            # alternate-host rows cannot silently replace this missing scope.
+            return [], None
         trace = iter(traces[index])
         violations = []
 
@@ -463,20 +476,38 @@ def install_replay(watch, queries, traces):
     return restore, verify
 
 
-def _child_run(watch, run_and_verify, report_path, seconds, workers):
+def _partial_notice(report):
+    total = len(report['news'])
+    missing = len(report['incomplete_query_indices'])
+    return (f'⚠️ <b>부분 확인 전쟁 상황 알림 · 원천 {total - missing}/{total}</b>\n'
+            f'미확인 원천 {missing}개 질의의 새 상황은 확인할 수 없습니다. '
+            '아래 내용은 수집·검증된 기사에 한합니다.\n')
+
+
+def _child_run(watch, run_and_verify, report_path, seconds, workers, allow_partial):
     os.setsid()
     report = {'complete': False, 'phase': 'collection', 'collection_budget_seconds': seconds}
     try:
-        queries, traces = prefetch(watch, report, report_path, seconds=seconds, workers=workers)
+        queries, traces = prefetch(watch, report, report_path, seconds=seconds, workers=workers,
+                                   allow_partial=allow_partial)
         report['phase'] = 'parse_render_verify'
         _save(report_path, report)
-        restore, verify_replayed = install_replay(watch, queries, traces)
+        missing = report.get('incomplete_query_indices', [])
+        restore, verify_replayed = install_replay(watch, queries, traces, missing_indices=missing)
+        original_builder = getattr(watch, 'build_alert', None)
+        if missing and original_builder is not None:
+            def build_partial_alert(*args, **kwargs):
+                return _partial_notice(report) + original_builder(*args, **kwargs)
+            watch.build_alert = build_partial_alert
         try:
             run_and_verify()
             verify_replayed()
         finally:
             restore()
-        report.update(complete=True, phase='verified')
+            if missing and original_builder is not None:
+                watch.build_alert = original_builder
+        report.update(complete=True, phase='verified',
+                      coverage_level='partial' if missing else 'full')
         _save(report_path, report)
     except BaseException as exc:
         failure_phase = report.get('phase')
@@ -491,8 +522,9 @@ def _child_run(watch, run_and_verify, report_path, seconds, workers):
         raise
 
 
-def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=360, workers=8):
-    """No Telegram calls here; only verified complete runs leave send artifacts."""
+def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=360,
+                workers=8, allow_partial=False):
+    """No Telegram calls here; only verified, explicitly labelled runs leave artifacts."""
     if total_seconds <= collection_seconds or collection_seconds <= 0:
         raise ValueError('total budget must exceed positive collection budget')
     watch.OUT.mkdir(parents=True, exist_ok=True)
@@ -501,7 +533,8 @@ def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=
     report_path = watch.OUT / 'war_peace_reconstruction_coverage.json'
     _save(report_path, {'complete': False, 'phase': 'starting', 'total_budget_seconds': total_seconds})
     process = mp.get_context('fork').Process(
-        target=_child_run, args=(watch, run_and_verify, report_path, collection_seconds, workers))
+        target=_child_run, args=(watch, run_and_verify, report_path, collection_seconds,
+                                 workers, allow_partial))
     process.start()
     process.join(timeout=total_seconds)
     timed_out = process.is_alive()

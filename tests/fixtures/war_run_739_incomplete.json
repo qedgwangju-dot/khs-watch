@@ -1,0 +1,23 @@
+{
+  "source_run_id": 41568561928,
+  "source_artifact_id": 13200830227,
+  "source_zip_sha256": "957aa218261c79a1877b4ce7a770209ac0896ba3d19359831b9d38c4e1610022",
+  "coverage_json_sha256": "571fc0470bbba85efcdda95e5aa91380c48ddf2450a4a822667bd366c578cd44",
+  "query_total": 227,
+  "incomplete": [
+    {"index": 6, "status": "error"},
+    {"index": 53, "status": "partial", "original_host": "truthsocial.com"},
+    {"index": 106, "status": "error"},
+    {"index": 125, "status": "error"},
+    {"index": 162, "status": "partial", "original_host": "en.kremlin.ru"},
+    {"index": 163, "status": "partial", "original_host": "en.kremlin.ru"},
+    {"index": 171, "status": "partial", "original_host": "api.gdeltproject.org"},
+    {"index": 172, "status": "partial", "original_host": "api.gdeltproject.org"},
+    {"index": 173, "status": "partial", "original_host": "apnews.com"},
+    {"index": 174, "status": "partial", "original_host": "apnews.com"},
+    {"index": 194, "status": "error"},
+    {"index": 195, "status": "error"},
+    {"index": 196, "status": "error"},
+    {"index": 197, "status": "error"}
+  ]
+}

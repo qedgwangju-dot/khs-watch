@@ -49,6 +49,7 @@ class OperationsWarningTests(unittest.TestCase):
         self.coverage = self.root / 'coverage.json'
         self.state = self.root / 'ops_state.json'
         self.warning = self.root / 'ops_warning.txt'
+        self.alert = self.root / 'alert.txt'
         self.pending = self.root / 'ops_state_pending.json'
         self.delivery = self.root / 'delivery.json'
         self.now = dt.datetime(2026, 11, 1, 8, 0, tzinfo=UTC)
@@ -62,7 +63,7 @@ class OperationsWarningTests(unittest.TestCase):
     def prepare(self, when=None):
         return operations.prepare(now=when or self.now, coverage_path=self.coverage,
                                   state_path=self.state, warning_path=self.warning,
-                                  pending_path=self.pending)
+                                  pending_path=self.pending, alert_path=self.alert)
 
     def finalize(self):
         return operations.finalize(state_path=self.state, warning_path=self.warning,
@@ -128,6 +129,25 @@ class OperationsWarningTests(unittest.TestCase):
         self.assertEqual(self.prepare(), 'not_source_failure')
         self.assertFalse(self.warning.exists())
         self.assertFalse(self.pending.exists())
+
+    def test_verified_partial_alert_retains_incident_without_duplicate_warning(self):
+        report = actual_run_727_coverage()
+        report.update(complete=True, phase='verified', source_coverage_complete=False,
+                      coverage_level='partial')
+        self.write_coverage(report)
+        self.alert.write_text('verified partial situation alert', encoding='utf-8')
+        self.assertEqual(self.prepare(), 'partial_alert')
+        self.assertFalse(self.warning.exists())
+        self.assertTrue(self.finalize())
+        state = json.loads(self.state.read_text(encoding='utf-8'))
+        self.assertTrue(state['active'])
+        self.assertEqual(state['last_failure']['query_incomplete'], 11)
+        self.assertIsNone(state['last_warning_sent_at'])
+        self.alert.unlink()
+        self.assertEqual(self.prepare(self.now + dt.timedelta(minutes=5)), 'send')
+        self.assertTrue(self.warning.exists())
+        self.assertIn('이번 실행에서는 새로 발송할 검증된 상황이 없으며',
+                      self.warning.read_text(encoding='utf-8'))
 
     def test_collection_failure_without_query_statuses_is_labeled_unverified(self):
         self.write_coverage({
