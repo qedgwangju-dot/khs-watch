@@ -60,6 +60,17 @@ AIDC_POWER_DEMAND_OFFICIAL_RSS = (
     + quote_plus('site:mcee.go.kr ("AIDC" OR "인공지능 데이터센터") ("전력수요" OR "12차 전기본")')
     + "&hl=ko&gl=KR&ceid=KR:ko"
 )
+AIDC_POWER_DEMAND_MEDIA_BASELINE_ALT = {
+    "id": "aidc-power-20261026-dailian",
+    "title": "AIDC 수요 예상보다 적어…전기본 전력수요 3~4GW 축소 검토 - 데일리안",
+    "publisher": "데일리안",
+    "source": "국내 주요 언론",
+    "official": False,
+    "url": "https://www.dailian.co.kr/news/view/1706392",
+    "published": "Mon, 26 Oct 2026 09:49:00 GMT",
+    "category": "AIDC 전력수요 전망 재검토",
+    "stage": 2,
+}
 AIDC_POWER_DEMAND_MEDIA_BASELINE = {
     "id": "aidc-power-20261023-mk",
     "title": "AI 데이터센터 전력 수요 3~4GW 축소 검토 - 매일경제",
@@ -762,6 +773,7 @@ def main() -> int:
     power_date = base.parse_date(AIDC_POWER_DEMAND_MEDIA_BASELINE["published"])
     if power_date and timedelta(0) <= now - power_date.astimezone(timezone.utc) <= timedelta(days=MAX_AGE_DAYS):
         recent.append(dict(AIDC_POWER_DEMAND_MEDIA_BASELINE))
+        recent.append(dict(AIDC_POWER_DEMAND_MEDIA_BASELINE_ALT))
 
     events = collapse(recent)
     seen = {str(k): int(v) for k, v in dict(state.get("seen_events", {})).items()}
@@ -793,13 +805,26 @@ def main() -> int:
                 continue
 
         members = list(event.get("members") or [event])
+        # 원문을 직접 볼 수 있는 발행사 URL이 Google News 재색인 링크보다 앞서야 한다.
+        # 특히 AIDC 전력수요 검토는 언론 공식 발언 재인용만으로 최종 확정 취급하지 않는다.
         candidates = sorted(
-            members, key=lambda r: (event_level(r), base.source_score(r)), reverse=True
+            members,
+            key=lambda r: (
+                int("news.google.com" not in str(r.get("url", "")))
+                if key == "aidc|power-demand|revision-review" else event_level(r),
+                event_level(r) if key == "aidc|power-demand|revision-review"
+                else base.source_score(r),
+                base.source_score(r),
+            ),
+            reverse=True,
         )
         verified = None
         reject_reasons: list[str] = []
         # 정부 종합자료·언론 원문 양쪽을 확인할 수 있도록 이 사건만 최대 5개 출처 확인.
-        max_candidates = 5 if key == "aidc|ecosystem-support|government-proposal" else 3
+        max_candidates = 5 if key in (
+            "aidc|ecosystem-support|government-proposal",
+            "aidc|power-demand|revision-review",
+        ) else 3
         for candidate in candidates[:max_candidates]:
             enriched = enrich(candidate, session)
             enriched["event_key"] = key
