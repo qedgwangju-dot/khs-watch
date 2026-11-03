@@ -57,6 +57,23 @@ def _reported_conflict_escalation(title):
     return bool(re.search(r'(?:충돌|교전|전투)\s*격화(?!\s*(?:우려|가능성|전망))', title))
 
 
+def _reported_major_airstrike(title):
+    """Keep an explicit airstrike report ahead of talks in the military lane."""
+    strike = re.search(r'대공습|대규모\s*공습', title)
+    if not strike:
+        return False
+    qualifier = title[strike.end():strike.end() + 18]
+    return not re.search(r'보류|중단|부인|불발|가능성|계획|예고|우려|검토|전망|추진|준비|시도|없|않|\?', qualifier)
+
+
+def _oil_price_outlook_headline(title):
+    """A conditional oil-price outlook is market context, not a war event."""
+    return bool(re.search(r'유가|\b(?:oil|crude)\s+prices?\b', title)
+                and re.search(r'종전|평화|해법|협상|휴전|\b(?:peace|ceasefire|talks?)\b', title)
+                and re.search(r'\d+\s*달러|전망|예상|\b(?:outlook|forecast|could|may)\b', title)
+                and not re.search(r'공습|공격|폭격|포격|미사일|\b(?:attack|strike|bombard)\w*\b', title))
+
+
 def parse_pub(value):
     """Retain RSS dates and accept fully dated ISO timestamps with an explicit zone."""
     parsed = _parse_pub(value)
@@ -351,6 +368,8 @@ def _statement_with_actual_action(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if _reported_major_airstrike(title) and not _headline_attack_casualties(row):
+        return _headline_group(title) + ' · 대공습 보도'
     if kind in ('diplomatic_statement', 'diplomatic_plan') and _detainee_release_stage(title):
         label = '억류자 석방 계획·논의' if _detainee_release_stage(title) == 'planned' else '억류자 석방·완화 보도'
         return _diplomatic_group(title) + ' · ' + label
@@ -1211,6 +1230,10 @@ def non_military_kind(row):
                           r'\b(?:ceasefire|peace deal).{0,20}(?:agreed|signed|implemented)', title)
     if mixed_restraint_attack(row):
         return 'mixed_restraint'
+    if _reported_major_airstrike(title):
+        return None
+    if not new_peace and _oil_price_outlook_headline(title):
+        return 'oil_market'
     if (_headline_drone_action(row) or _headline_attack_casualties(row)
             or _maritime_attack_expansion(row) or _headline_energy_operation(row)
             or _saudi_airport_casualty_report(title)):
@@ -1314,6 +1337,8 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if _reported_major_airstrike(title) and not _headline_attack_casualties(row):
+        return '대공습 보도'
     if kind == 'military_report' and _reported_conflict_escalation(title):
         return '충돌·교전 격화 보도'
     if kind in ('diplomatic_statement', 'diplomatic_plan') and _detainee_release_stage(title):
@@ -1369,6 +1394,7 @@ def _headline_event_cache_required(row, kind):
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))
                 or _near_military_authorization(_headline(row)) or _conditional_diplomacy_stage(_headline(row))))
             or (kind == 'military_discussion' and _attack_plan_spans(_headline(row)))
+            or _reported_major_airstrike(_headline(row))
             or _energy_facility_headline(row)
             or (kind is None and _headline_refinery_action(row))
             or (kind is None and _headline_drone_action(row))
@@ -1434,6 +1460,10 @@ def score_item(row, now):
     age = watch.age_minutes(row, now)
     if stamp is None or stamp > now + dt.timedelta(minutes=5) or age > 3 * 60:
         return 0, []
+    if _reported_major_airstrike(_headline(row)) and not _headline_attack_casualties(row):
+        _clear_headline_event_cache(row, None)
+        score, _ = source_score._original_score(row, now)
+        return score, list(row['tags'])
     kind = non_military_kind(row)
     if kind == 'unconfirmed_explosion':
         _clear_headline_event_cache(row, kind)
@@ -1471,6 +1501,8 @@ def score_item(row, now):
 
 def final_color(row):
     title = _headline(row)
+    if _reported_major_airstrike(title):
+        return 'red'
     if _title_only_unconfirmed_explosion(row):
         return 'yellow'
     # A title-only report of explosion sounds does not establish an attack.
