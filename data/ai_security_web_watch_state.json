@@ -8,7 +8,7 @@
     "errors": [],
     "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 79,
+    "raw_items": 77,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -229,16 +229,6 @@
       "source": "The Guardian",
       "title": "AI in your oven? Anthropic warns models ‘months away’ from self-replication on smart devices - The Guardian",
       "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPRUxXc0hJVk5xRzdVTE5hQ2h2LWdnS21nUEZRVVFwX0dVZHJ5QUU1NUxmZUgydXVrRS1jSVNDRmtSVU1YYTh2RURQT0NQcEozdXdIb0FFM1RLakVTRXJFYTl4RU9kQXRPTUM5Vm1uVktaQ1NXaXp2Z3UySW5ZVktRTU5ZNGVocUszOTZV?oc=5",
-      "vendor": "Anthropic"
-    },
-    "1bcdcfdffba70ad28384d9ca": {
-      "category": "취약점·패치",
-      "first_seen_at": "2026-09-29T16:47:57.351958+00:00",
-      "published_at": null,
-      "severity": 1,
-      "source": "Anthropic Research",
-      "title": "Anthropic Research: glm 5 3 and the spread of advanced cyber capabilities",
-      "url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
       "vendor": "Anthropic"
     },
     "21c87e6390cd54a3c0159cb9": {
@@ -1534,5 +1524,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-04T01:45:19+09:00"
+  "updated_at_kst": "2026-11-04T02:22:03+09:00"
 }
