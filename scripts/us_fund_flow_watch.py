@@ -861,6 +861,18 @@ def _ici_weekly_flow_horizon(observations, end_date, months_back, *, max_gap_day
     return result
 
 
+def _ici_collective_trust_note(text, weekly):
+    """Retain ICI's caveat only when its dated outlier is in the source table."""
+    outlier_date = date(2026, 10, 14)
+    has_outlier = any(row["date"] == outlier_date and row["value"] < 0 for row in weekly)
+    official_note = re.search(
+        r"outflows from domestic equity mutual funds for the week ending October 14 "
+        r"were primarily driven by activity in collective investment trusts",
+        text, re.I,
+    )
+    return outlier_date.isoformat() if has_outlier and official_note else None
+
+
 def _ici_balance_change_horizon(observations, end_date, current_bn, months_back, *, max_gap_days=7):
     target = subtract_calendar_months(end_date, months_back)
     by_date = {}
@@ -958,6 +970,7 @@ def parse_ici_combined():
         f"m{months}": _ici_weekly_flow_horizon(weekly, ref_date, months)
         for months in (1, 3)
     }
+    values["domestic_collective_trust_note_week"] = _ici_collective_trust_note(text, weekly)
     payload = {
         "source": "ICI", "kind": "combined",
         "period": ref_date.strftime("%B %d, %Y"),
@@ -1806,6 +1819,16 @@ def _monthly_horizon_snapshot(ici, ici_mmf, finra, bofa, lipper, goldman, jpm, f
             for months, key in ((1, "m1"), (3, "m3"))
         )
     )
+    note_week = (ici or {}).get("metrics", {}).get("domestic_collective_trust_note_week")
+    if note_week and any(
+        window and window.get("value_bn") is not None
+        and window.get("start_week_ended") <= note_week <= window.get("end_week_ended")
+        for window in equity.values()
+    ):
+        lines.append(
+            "• ICI 주의: 2026-10-14 주간 국내주식형 대규모 유출은 ICI 설명상 주로 "
+            "집합투자신탁 활동에 따른 것으로, 개인투자자 환매로 해석하지 않음"
+        )
 
     mmf_horizons = (ici_mmf or {}).get("metrics", {}).get("asset_balance_horizons", {})
     current_mmf = (ici_mmf or {}).get("metrics", {}).get("assets_trillion")
