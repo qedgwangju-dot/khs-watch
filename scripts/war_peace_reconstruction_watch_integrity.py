@@ -9,6 +9,7 @@ import re
 import urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 import datetime as dt
+from difflib import SequenceMatcher
 
 import war_peace_reconstruction_watch_oct04_guard as previous
 import war_peace_reconstruction_watch_bodycolor_parallel as body_parallel
@@ -1689,6 +1690,40 @@ def _distinct_publisher_headlines(items):
     return [row for row, _ in selected]
 
 
+def _distinct_rendered_event_summaries(items):
+    """Show a near-identical report once, preferring a verified original.
+
+    A shared generated summary alone is insufficient: unrelated reports can
+    hit the same template. Require similar source headlines as well. This is
+    display suppression, not a cross-publisher source identity assertion.
+    """
+    def source_headline(row):
+        title = _headline(row)
+        source = str(row.get('source') or '').strip().casefold()
+        if source:
+            title = re.sub(r'\s+[-|]\s+' + re.escape(source) + r'\s*$', '', title)
+        return re.sub(r'\W+', '', title.replace('美', '미국'))
+
+    selected = []
+    for row in items:
+        summary = (row.get('signals_ko') or [''])[0].strip().casefold()
+        title = source_headline(row)
+        match_index = next((i for i, other in enumerate(selected)
+                            if summary and summary == (other.get('signals_ko') or [''])[0].strip().casefold()
+                            and title and source_headline(other)
+                            and SequenceMatcher(None, title, source_headline(other)).ratio() >= 0.8), None)
+        if match_index is None:
+            selected.append(row)
+            continue
+        other = selected[match_index]
+        if _origin_rank(row) > _origin_rank(other):
+            other['render_withheld'] = 'same_rendered_event_summary'
+            selected[match_index] = row
+        else:
+            row['render_withheld'] = 'same_rendered_event_summary'
+    return selected
+
+
 def build_alert(items, markets, now):
     state = watch.load_state()
     aliases, seen = _source_aliases(state), set(state.get('seen', []))
@@ -1696,7 +1731,7 @@ def build_alert(items, markets, now):
         # These annotations belong to this render, not an earlier replay.
         if row.get('render_withheld') in ('duplicate_source_article', 'source_alias_already_seen', 'discovery_publication_stale',
                                         'discovery_publication_unverified', 'discovery_publication_future',
-                                        'same_headline_distinct_publisher'):
+                                        'same_headline_distinct_publisher', 'same_rendered_event_summary'):
             row.pop('render_withheld')
             row.pop('duplicate_of', None)
             row.pop('duplicate_basis', None)
@@ -1727,6 +1762,7 @@ def build_alert(items, markets, now):
         visible.append(row)
     visible = _dedupe_source_articles(visible)
     visible = _distinct_publisher_headlines(visible)
+    visible = _distinct_rendered_event_summaries(visible)
     if not visible:
         return ''
     for row in items:

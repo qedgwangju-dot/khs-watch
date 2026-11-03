@@ -3138,6 +3138,33 @@ class IntegrityTests(unittest.TestCase):
             text = integrity.build_alert([feed, origin], [], now)
         self.assertIn('동일 제목 중복', quality._alert_quality_issues(text))
 
+    def test_run742_matching_event_summary_uses_verified_original_once(self):
+        """The real run #742 had a verified original and a matching RSS relay."""
+        now = dt.datetime(2026, 11, 3, 12, 43, tzinfo=watch.KST)
+        summary = '이란 남부 시리크·게슘 일대: 단순 폭발음에서 발사체 피격 보도로 단계 상승'
+        feed = article('미국, 선거 전날 이란 게슘 섬 타격…"선박 공격에 방어적 조치" - SBS 뉴스',
+                       source='SBS 뉴스', link='https://news.google.com/rss/articles/run742')
+        original = article('美, 선거전날 이란 게슘섬 타격…"선박 공격에 방어적 조치"',
+                           link='https://www.fnnews.com/news/202611031033239690')
+        for row, item_id in ((feed, 'run742-feed'), (original, 'run742-original')):
+            row['id'] = item_id
+            row['signals_ko'] = [summary, '공격 주체·정확한 표적·사상자는 확인 대기']
+            row['published'] = format_datetime(now - dt.timedelta(minutes=60))
+        original['body_verified'] = True
+        original['source_metadata'] = {'title': original['title_original'], 'publication_status': 'verified'}
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([feed, original], [], now)
+        receipt = evidence.alert_receipt([feed, original], [], now, text)
+        self.assertEqual([x['id'] for x in receipt['articles'] if x['rendered']], ['run742-original'])
+        self.assertEqual(feed['render_withheld'], 'same_rendered_event_summary')
+        self.assertNotIn('동일 제목 중복', quality._alert_quality_issues(text))
+
+    def test_same_summary_with_different_source_headlines_is_not_collapsed(self):
+        first = article('이란 게슘 섬 타격 보도', link='https://www.fnnews.com/news/one')
+        other = article('러시아 우크라이나 항구 공습 보도', source='다른 매체', link='https://other.example/two')
+        first['signals_ko'] = other['signals_ko'] = ['공격 보도 단계 상승']
+        self.assertEqual(len(integrity._distinct_rendered_event_summaries([first, other])), 2)
+
     def test_alias_pipeline_saves_only_rendered_seen_and_then_suppresses_feed(self):
         fixture, _ = self.alias_fixture()
         pair = fixture['articles'][:2]
