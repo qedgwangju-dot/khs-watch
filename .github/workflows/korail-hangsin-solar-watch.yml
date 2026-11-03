@@ -25,7 +25,7 @@ jobs:
       - name: 저장소 확인
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Python 설정
         uses: actions/setup-python@v5
