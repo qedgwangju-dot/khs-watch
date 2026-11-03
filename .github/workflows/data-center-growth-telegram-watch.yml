@@ -47,7 +47,9 @@ permissions:
   contents: write
 
 concurrency:
-  group: data-center-growth-telegram-watch
+  # Code-push regression must not queue behind a long-running live monitor.
+  # All production triggers still share one group to prevent concurrent sends.
+  group: data-center-growth-telegram-watch-${{ github.event_name == 'push' && 'validation' || 'monitor' }}
   cancel-in-progress: false
 
 jobs:
