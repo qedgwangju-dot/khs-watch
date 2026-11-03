@@ -1499,6 +1499,13 @@ def _alert_quality_issues(text):
         cleaned = head
         for stop in ('공격 중단', '공습 중단', '공격을 중단', '휴전', '정전'):
             cleaned = cleaned.replace(stop, '')
+        # Do not mistake a negated strike, denial or delayed strike for an
+        # actual attack simply because the noun '공습/공격' appears.
+        # A separate completed attack clause stays visible and still fails.
+        cleaned = re.sub(
+            r'(?:공습|공격|타격)(?:을|를)?\\s*'
+            r'(?:서두르지\\s*않|하지\\s*않|안\\s*하|부인|유보|보류|연기)',
+            '', cleaned)
         hard = (
             '미사일 공격', '드론 공격', '공습', '피격', '공격 이어', '공격했습니다',
             '공격으로', '공격받', '폭격', '포격',
