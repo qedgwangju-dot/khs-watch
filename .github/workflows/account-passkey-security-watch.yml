@@ -89,7 +89,7 @@ jobs:
                       input='url = "' + url + '"\n',
                       text=True, capture_output=True, timeout=75,
                   )
-                  payload, _, status = process.stdout.rpartition("\\n")
+                  payload, _, status = process.stdout.rpartition("\n")
                   if process.returncode != 0:
                       raise RuntimeError(
                           f"Telegram read failed on both HTTP clients; primary={exc.code}, "
