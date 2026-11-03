@@ -1166,7 +1166,7 @@ def _iran_attack_restraint_statement(row):
     us = bool(re.search(r'트럼프|미국|\b(?:trump|u\.s\.|united states)\b', title))
     attack = bool(re.search(r'공습|공격|타격|\b(?:attack|strike|bomb)\w*\b', title))
     restraint = bool(re.search(
-        r'(?:공습|공격|타격)(?:을|를)?\s*(?:서두르지\s*않|하지\s*않|안\s*하|유보|보류|연기|중단|부인)'
+        r'(?:공습|공격|타격)(?:을|를)?\s*(?:서두르지\s*않|유보|보류|연기|부인)'
         r'|(?:공습|공격|타격).{0,12}(?:계획|방침).{0,8}없'
         r'|\b(?:will\s+not|won.t|not\s+planning\s+to|no\s+plans\s+to|not\s+rushing\s+to)\s+'
         r'(?:launch\s+)?(?:attack|strike|bomb)'
