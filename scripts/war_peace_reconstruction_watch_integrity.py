@@ -1155,8 +1155,34 @@ def _diplomatic_headline_kind(title):
     return None
 
 
+def _iran_attack_restraint_statement(row):
+    """A restraint/denial headline is not evidence of a new strike.
+
+    Only classify the headline's stated action; ignore old attacks mentioned in
+    the article body. A distinct, completed new attack in the title wins.
+    """
+    title = _headline(row)
+    iran = bool(re.search(r'이란|\\biran\\b', title))
+    us = bool(re.search(r'트럼프|미국|\\b(?:trump|u\\.s\\.|united states)\\b', title))
+    attack = bool(re.search(r'공습|공격|타격|\\b(?:attack|strike|bomb)\\w*\\b', title))
+    restraint = bool(re.search(
+        r'(?:공습|공격|타격)(?:을|를)?\\s*(?:서두르지\\s*않|하지\\s*않|안\\s*하|유보|보류|연기|중단|부인)'
+        r'|(?:공습|공격|타격).{0,12}(?:계획|방침).{0,8}없'
+        r'|\\b(?:will\\s+not|won.t|not\\s+planning\\s+to|no\\s+plans\\s+to|not\\s+rushing\\s+to)\\s+'
+        r'(?:launch\\s+)?(?:attack|strike|bomb)'
+        r'|\\bno\\s+(?:immediate\\s+)?(?:attack|strike)\\s+on\\s+iran\\b', title))
+    completed = bool(re.search(
+        r'(?:별도|그러나|반면|하지만|동시에).{0,55}'
+        r'(?:공습|공격|타격)(?:을|를)?\\s*(?:감행|실시|개시|했다|진행)'
+        r'|(?:별도|그러나|반면|하지만|동시에).{0,55}(?:피격|폭격|공습\\s*발생)'
+        r'|\\b(?:but|meanwhile|separately)\\b.{0,60}\\b(?:struck|attacked|bombed|launched strikes)\\b', title))
+    return iran and us and attack and restraint and not completed
+
+
 def non_military_kind(row):
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
+    if _iran_attack_restraint_statement(row):
+        return 'military_position'
     new_peace = re.search(r'(?:휴전|종전|평화협정).{0,12}(?:합의|체결|이행|발효)|'
                           r'\b(?:ceasefire|peace deal).{0,20}(?:agreed|signed|implemented)', title)
     if mixed_restraint_attack(row):
