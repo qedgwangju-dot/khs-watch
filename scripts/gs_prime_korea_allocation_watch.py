@@ -56,6 +56,8 @@ def fetch(url, timeout=9):
         raise ValueError("https only")
     r = requests.get(url, headers=HEADERS, timeout=timeout, allow_redirects=True)
     r.raise_for_status()
+    if domain(url) and not domain(r.url):
+        raise ValueError("source redirected outside trusted domain list")
     if len(r.content) > 1_300_000:
         raise ValueError("response too large")
     return r.text
@@ -173,11 +175,52 @@ def rss_links(query):
 
 
 def discover():
-    urls, online = list(STATIC), False
+    # Discover current public reports before checking dated backstop URLs.
+    urls, online = [], False
     for q in QUERIES:
         links, ready = rss_links(q)
         urls.extend(links)
         online |= ready
+    for query in (
+        'site:alpharis.cn/events "Korea allocations" "Goldman"',
+        'site:finvaulta.com/research/goldman-sachs "Korea" "hedge fund" allocation',
+        'site:xxquant.com "Korea" "gross allocation" "Goldman"',
+    ):
+        try:
+            page = fetch("https://www.bing.com/search?q=" + urllib.parse.quote(query), 7)
+            links = [urllib.parse.urljoin("https://www.bing.com", a.get("href", ""))
+                     for a in BeautifulSoup(page, "html.parser").select("a[href]")]
+            urls.extend(u for u in links if domain(u))
+            online = True
+        except (requests.RequestException, ValueError):
+            pass
+    for home in ("https://finvaulta.com", "https://alpharis.cn"):
+        try:
+            sitemap = ET.fromstring(fetch(home + "/sitemap.xml", 8))
+            locations = [(el.text or "").strip() for el in sitemap.iter() if el.tag.rsplit("}", 1)[-1] == "loc"]
+            indices = [u for u in locations if domain(u) and u.endswith(".xml")]
+            for child in indices[:2]:
+                try:
+                    inner = ET.fromstring(fetch(child, 8))
+                    locations.extend((el.text or "").strip() for el in inner.iter() if el.tag.rsplit("}", 1)[-1] == "loc")
+                except (requests.RequestException, ValueError, ET.ParseError):
+                    pass
+            candidates = [
+                u for u in locations
+                if domain(u) and (
+                    ("finvaulta.com/research/goldman-sachs/" in u and any(s in u for s in ("em-weekly", "korea-weekly", "hedge", "positioning")))
+                    or ("alpharis.cn/events/" in u and re.search(r"/events/\d{3,}", u))
+                )
+            ]
+            # Dated report URLs newest first; non-dated event IDs highest first.
+            candidates.sort(key=lambda u: (
+                date_in(u) or "",
+                int((re.search(r"/events/(\d+)", u) or [None, 0])[1] or 0),
+            ), reverse=True)
+            urls.extend(candidates[:12])
+            online = True
+        except (requests.RequestException, ValueError, ET.ParseError):
+            pass
     try:
         page = fetch("https://finvaulta.com/research/goldman-sachs", 7)
         for a in BeautifulSoup(page, "html.parser").select("a[href]"):
@@ -187,12 +230,17 @@ def discover():
         online = True
     except (requests.RequestException, ValueError):
         pass
-    seen, unique = set(), []
+    # Historical reports only serve as dated reference points, never live readings.
+    urls.extend(STATIC)
+    seen, unique, counts = set(), [], {}
     for url in urls:
-        url = url.split("#")[0]
-        if domain(url) and url not in seen:
-            seen.add(url)
-            unique.append(url)
+        url = url.split("#", 1)[0]
+        d = domain(url)
+        if not d or url in seen or counts.get(d, 0) >= 6:
+            continue
+        seen.add(url)
+        counts[d] = counts.get(d, 0) + 1
+        unique.append(url)
     return unique[:MAX_DOCS], online
 
 

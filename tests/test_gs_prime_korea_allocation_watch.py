@@ -76,6 +76,15 @@ class GoldmanKoreaAllocationTests(unittest.TestCase):
         self.assertIsNone(cand)
         self.assertIn("관측일", reason)
 
+    def test_dynamic_discovery_prioritizes_new_reports_and_preserves_fallback(self):
+        index = '<html><a href="https://finvaulta.com/research/goldman-sachs/em-weekly-2026-11-04">new</a></html>'
+        with patch.object(w, "rss_links", return_value=([], False)), \
+             patch.object(w, "fetch", side_effect=lambda u, timeout=7: index if u.endswith("/research/goldman-sachs") else "<html></html>"):
+            urls, ok = w.discover()
+        self.assertTrue(ok)
+        self.assertTrue(urls[0].endswith("2026-11-04"))
+        self.assertIn("https://alpharis.cn/events/2386", urls)
+
     def test_no_new_source_does_not_send_and_state_waits_for_delivery(self):
         with tempfile.TemporaryDirectory() as d:
             status = pathlib.Path(d) / "status.md"

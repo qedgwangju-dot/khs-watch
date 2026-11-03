@@ -399,8 +399,11 @@ jobs:
           fi
 
       - name: Check Goldman Korea hedge-fund allocation (public evidence)
+        # An optional new source must never interrupt the established market-stress alert route.
+        continue-on-error: true
         run: |
           rm -f out/gs_prime_korea_allocation_alert.html out/gs_prime_korea_allocation_pending_state.json out/gs_prime_korea_allocation_status.md
+          trap 'rc=$?; if [ "$rc" -ne 0 ]; then rm -f out/gs_prime_korea_allocation_alert.html out/gs_prime_korea_allocation_pending_state.json; echo "- GS 공개자료 감시 단계 실패: 신규 숫자 경보만 중단, 기존 감시는 유지" >> "$GITHUB_STEP_SUMMARY"; fi' EXIT
           python -m py_compile scripts/gs_prime_korea_allocation_watch.py
           PYTHONPATH=scripts python -m unittest discover -s tests -p "test_gs_prime_korea_allocation_watch.py" -v
           python scripts/gs_prime_korea_allocation_watch.py
