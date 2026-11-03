@@ -131,6 +131,7 @@ class AIDCSemanticRegression(unittest.TestCase):
              patch.object(v2.base, "RSS_SOURCES", (("언론", False, "https://example.com/rss"),)), \
              patch.object(v2, "EXTRA_RSS_SOURCES", ()), \
              patch.object(v2, "AIDC_ECOSYSTEM_OFFICIAL_BASELINE", {"published": "Fri, 23 Oct 2020 05:00:00 GMT"}), \
+             patch.object(v2, "AIDC_POWER_DEMAND_MEDIA_BASELINE", {"published": "Fri, 23 Oct 2020 05:00:00 GMT"}), \
              patch.object(v2.base, "load_state", return_value={
                  "initialized": True, "dedupe_version": 4,
                  "updated_at": "2026-10-20T09:00:00+00:00", "seen_events": {},
