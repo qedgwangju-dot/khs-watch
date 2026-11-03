@@ -69,7 +69,7 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-03T20:54:29+09:00",
+  "updated_at_kst": "2026-11-04T04:33:38+09:00",
   "last_scan_count": 4,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
@@ -114,7 +114,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -155,6 +155,7 @@
     "c579cb29ce77119cfbcdf008",
     "d48264b617e856e8ce2d499e",
     "d598b87380cce293712421fa",
+    "d60dfe850a361eaa2e1fd5cf",
     "e3172365bd8c10ce9681459f",
     "e4009352aa0ce40c6ab54a73",
     "ede3b0fedd83163d4bff4e78",
@@ -164,7 +165,14 @@
     "fbb3374837c522b4bf3b2884"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "taiwan|capacity|TSMC|2nm",
+      "source": "Seeking Alpha",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-11-03T22:16:25+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
   "telegram_message_ids": [
     292
