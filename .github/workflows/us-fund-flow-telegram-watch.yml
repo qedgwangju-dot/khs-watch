@@ -542,7 +542,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install official ETF reader dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 exchange_calendars==4.13.1
 
       - name: Verify correct existing U.S. fund-flow bot (read-only)
         run: |
