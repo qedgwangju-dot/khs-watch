@@ -170,6 +170,8 @@ class TreasuryReportIntegrity(unittest.TestCase):
                 "• 가격: NAV $77.00 | 1일 +0.0% | 30일 SEC 7.18%",
                 f"• 일간 자금: {dayflow}",
                 f"• 최근 5회: {last5}",
+                "• 1개월 누적 자금흐름: 비교불가 (목표 2026-09-08; 공식 이력 부족)",
+                "• 3개월 누적 자금흐름: 비교불가 (목표 2026-07-08; 공식 이력 부족)",
             ]
             if oas:
                 lines.append(f"• 포트폴리오 OAS: {oas}")

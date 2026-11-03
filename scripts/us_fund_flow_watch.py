@@ -1002,7 +1002,7 @@ def parse_ici_mmf():
 
     history = _ici_weekly_history(page_html, ("total",))
     asset_observations = [
-        {"date": item["date"], "value": item["value"] / 1000.0}
+        {"date": item["date"], "value": item["value"]}
         for item in history.get("total", [])
     ]
     payload = {
@@ -1781,7 +1781,7 @@ def _horizon_window_text(window, fx, value_key, *, flow=False, date_keys=()):
             "exact_calendar_month_observation_unavailable": "해당 달력월 원값 없음",
         }
         reason = reason_labels.get(str(window.get("reason")), "공식 이력 부족")
-        return f"비교불가(목표 {window.get('target_date') or '미확인'}; {reason})"
+        return f"비교불가(목표 {window.get('target_date') or window.get('target_month') or '미확인'}; {reason})"
     parts = [_horizon_change(value, fx, flow=flow)]
     for key, label in date_keys:
         if window.get(key):

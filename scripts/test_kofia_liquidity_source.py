@@ -77,7 +77,7 @@ const {main} = require(process.argv[1]);
   await main();
   let next = JSON.parse(fs.readFileSync('out/kofia_liquidity_pending_state.json'));
   assert.strictEqual(next.message_version, 'kofia-balances-v5-calendar-month-balances');
-  assert.strictEqual(next.last_event, '해석 정정');
+  assert.strictEqual(next.last_event, '기간 비교 추가');
   assert.notStrictEqual(next.fingerprint, fixture.pending.fingerprint);
   assert(next.values.balance_horizons.m1 && next.values.balance_horizons.m3);
   assert.strictEqual(next.period_basis, 'daily_five_intervals_plus_calendar_month_balance_deltas');

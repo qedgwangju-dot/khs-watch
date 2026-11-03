@@ -9,6 +9,7 @@ on:
       - scripts/treasury_credit_flow_daily_status.py
       - scripts/treasury_credit_flow_watch_refinancing.py
       - tests/test_treasury_daily_report_integrity.py
+      - tests/test_fund_horizon_math.py
       - tests/test_treasury_real_yield_signal.py
       - scripts/treasury_real_yield_signal.py
       - scripts/treasury_weekly_stock_bond_signal.py

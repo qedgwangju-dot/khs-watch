@@ -145,10 +145,7 @@ def _flow_monthly_lines(ticker, text):
     lines = text.splitlines()
     start = next((i for i, line in enumerate(lines) if line.startswith(f"{ticker} (")), None)
     if start is None:
-        return [
-            f"• {months}개월 누적 자금흐름: 비교불가(원자료 블록 없음)"
-            for months in (1, 3)
-        ]
+        raise RuntimeError(f"{ticker} ETF source block missing")
     block = []
     for line in lines[start + 1:]:
         if re.match(r"^[A-Z]{3} \(", line) or line.startswith("["):
@@ -160,21 +157,22 @@ def _flow_monthly_lines(ticker, text):
         match = re.match(r"^• ([13])개월 누적 자금흐름", line)
         if match:
             by_month[int(match.group(1))] = line
-    return [
-        by_month.get(months, f"• {months}개월 누적 자금흐름: 비교불가(월별 원자료 이력 없음)")
-        for months in (1, 3)
-    ]
+    if len(block) != 2 or set(by_month) != {1, 3}:
+        raise RuntimeError(f"{ticker} 1M/3M ETF source lines missing or duplicated")
+    return [by_month[months] for months in (1, 3)]
 
 
 def _oas(ticker, text):
-    return _m(
-        rf"^{ticker} \([^\n]+\) — [^\n]+\n"
-        rf"• 가격: [^\n]+\n"
-        rf"• 일간 자금: [^\n]+\n"
-        rf"• 최근 5회: [^\n]+\n"
-        rf"• 포트폴리오 OAS: ([^\n]+)",
-        text,
-    )
+    lines = text.splitlines()
+    start = next((i for i, line in enumerate(lines) if line.startswith(f"{ticker} (")), None)
+    if start is None:
+        return "확인 대기"
+    for line in lines[start + 1:]:
+        if re.match(r"^[A-Z]{3} \(", line) or line.startswith("["):
+            break
+        if line.startswith("• 포트폴리오 OAS:"):
+            return line.split(":", 1)[1].strip()
+    return "확인 대기"
 
 
 def _oas_monthly_line(ticker, text):
@@ -628,8 +626,11 @@ def _validate_compact_report(text, overall_head, y10, hyg_oas):
     if "[ETF 누적 자금흐름 — 1개월 / 3개월 추정]" not in text:
         raise RuntimeError("1M/3M ETF flow section missing from final report")
     for ticker in ("SHY", "IEF", "TLT", "LQD", "HYG"):
+        rows = re.findall(rf"^{ticker}: ([^\n]+)$", text, re.M)
+        if len(rows) != 1:
+            raise RuntimeError(f"{ticker} flow row missing or duplicated in final report")
         for months in (1, 3):
-            if not re.search(rf"^{ticker}: • {months}개월 누적 자금흐름", text, re.M):
+            if rows[0].count(f"• {months}개월 누적 자금흐름") != 1:
                 raise RuntimeError(f"{ticker} {months}M flow missing from final report")
     expected = f"전체 방향: {overall_head}"
     if expected not in text:

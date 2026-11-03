@@ -418,7 +418,7 @@ async function main() {
     priorState.snapshot_date === snapshotDate &&
     priorState.message_version !== MESSAGE_VERSION);
   const eventLabel = narrativeCorrection
-    ? '해석 정정'
+    ? '기간 비교 추가'
     : (!priorState ? '초기 기준 확정' : sameDatesAsState ? '동일 기준일 수정치' : '신규 공식값');
   const signal = strongMove ? '예탁금↑ + MMF↓ 동시 신호 강함' : big1d ? '당일 큰 변동 감지' : '공식값 갱신';
 
@@ -454,7 +454,7 @@ async function main() {
     `• MMF 1D는 공식 전일대비증감과 재계산값 일치 확인${mmfNow.daily !== metrics.mmf.d1 ? ' (백만원 표시 반올림 차이 1 이내)' : ''}`,
     `• 잔액 변화로 실제 주식 순매수·신규 자금·상품 간 이동 경로를 확인할 수 없음`,
     `• MMF형 CMA 등 상품 간 포함 관계가 있어 네 잔액을 합산하지 않음`,
-    `• 신규 동기화 기준일·원값 수정 또는 확인된 해석 정정에만 재알림`,
+    `• 신규 동기화 기준일·원값 수정 또는 확인된 표시·해석 변경에만 재알림`,
   ].join('\n');
 
   const status = [

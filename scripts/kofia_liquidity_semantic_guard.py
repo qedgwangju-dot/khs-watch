@@ -85,7 +85,7 @@ def validate(text, state):
     horizons = values.get("balance_horizons")
     monthly_version = state.get("message_version") == "kofia-balances-v5-calendar-month-balances"
     legacy_version = state.get("message_version") in (
-        "kofia-balances-v4", "kofia-balances-20261013-v2"
+        None, "kofia-balances-v4", "kofia-balances-20261013-v2"
     )
     expect(monthly_version or legacy_version, "unknown KOFIA message version")
     if monthly_version:
@@ -165,7 +165,7 @@ def validate(text, state):
            "invalid KOFIA forced-sale amount")
     # New alerts identify the forced-sale scope: unpaid-settlement trades, not
     # every credit-margin liquidation. Historical fixture messages remain testable.
-    modern_scope = state.get("message_version") == "kofia-balances-v5-calendar-month-balances"
+    modern_scope = state.get("message_version") is not None
     if modern_scope:
         expect("실제 반대매매" not in text, "ambiguous all-market forced-sale label")
     scope_pattern = (
@@ -191,7 +191,7 @@ def validate(text, state):
     persistence = find("• <b>지속성</b>:")
     cma = find("• <b>CMA</b>:")
     leverage = find("• <b>레버리지</b>:")
-    monthly = find("• <b>1M/3M 잔액 방향</b>:")
+    monthly = find("• <b>1M/3M 잔액 방향</b>:") if monthly_version else None
     summary = find("• <b>종합</b>:")
 
     for key, (_, short_name) in LABELS.items():
@@ -227,7 +227,8 @@ def validate(text, state):
         f"• <b>1M/3M 잔액 방향</b>: {horizon_direction_text(1)} / "
         f"{horizon_direction_text(3)} → 잔액의 시점 간 차이이며 누적 순유입이나 상품 간 이동을 뜻하지 않습니다."
     )
-    expect(monthly == expected_monthly, "1M/3M directional interpretation differs from source values")
+    if monthly_version:
+        expect(monthly == expected_monthly, "1M/3M directional interpretation differs from source values")
 
     mmf = values["mmf"]
     d1 = direction(mmf["d1"], mmf["value"])
@@ -280,17 +281,22 @@ def validate(text, state):
 
     comparison = (
         f"• 비교 기준: 1D {date_label(ref_dates[1])} → {date_label(ref_dates[0])} / "
-        f"5D {date_label(ref_dates[5])} → {date_label(ref_dates[0])} / "
-        f"1M 목표 {full_date_label(horizons['m1']['target_date'])}·기준 "
-        f"{full_date_label(horizons['m1']['anchor_date']) if horizons['m1'].get('anchor_date') else '확인불가'} / "
-        f"3M 목표 {full_date_label(horizons['m3']['target_date'])}·기준 "
-        f"{full_date_label(horizons['m3']['anchor_date']) if horizons['m3'].get('anchor_date') else '확인불가'}"
+        f"5D {date_label(ref_dates[5])} → {date_label(ref_dates[0])}"
     )
+    if monthly_version:
+        comparison += (
+            f" / 1M 목표 {full_date_label(horizons['m1']['target_date'])}·기준 "
+            f"{full_date_label(horizons['m1']['anchor_date']) if horizons['m1'].get('anchor_date') else '확인불가'} / "
+            f"3M 목표 {full_date_label(horizons['m3']['target_date'])}·기준 "
+            f"{full_date_label(horizons['m3']['anchor_date']) if horizons['m3'].get('anchor_date') else '확인불가'}"
+        )
     expect(text.splitlines().count(comparison) == 1, "comparison dates absent or inconsistent")
-    expect("5D는 최근 5개 공표구간의 잔액 차이" in text
-           and "1M/3M은 달력월 목표일 직전 공표 잔액과의 차이" in text
-           and "1M/3M은 잔액 수준의 시점 간 변화이며 누적 순유입·실제 자금 이동이 아님" in text,
-           "balance-change period basis missing")
+    expect("5D는 최근 5개 공표구간의 잔액 차이" in text,
+           "five-period balance basis missing")
+    if monthly_version:
+        expect("1M/3M은 달력월 목표일 직전 공표 잔액과의 차이" in text
+               and "1M/3M은 잔액 수준의 시점 간 변화이며 누적 순유입·실제 자금 이동이 아님" in text,
+               "balance-change period basis missing")
     if state.get('queried_at_kst'):
         expected_query = '• 원자료 조회: ' + state['queried_at_kst'].replace('T', ' ').replace('+09:00', ' KST')
         expect(text.splitlines().count(expected_query) == 1, 'query time differs from pending')
