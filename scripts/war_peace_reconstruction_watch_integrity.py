@@ -1374,6 +1374,15 @@ def score_item(row, now):
 
 
 def final_color(row):
+    title = _headline(row)
+    # A title-only report of explosion sounds does not establish an attack.
+    # Background attack words in an unverified feed body must not recolor it.
+    if (not row.get('body_verified')
+            and any(place in title for place in ('시리크', '게슘', '케슘', '미나브', 'sirik', 'qeshm', 'keshm', 'minab'))
+            and any(sound in title for sound in ('폭발', 'explosion', 'blast'))
+            and not any(action in title for action in ('공습', '피격', '타격', '미사일 공격', '드론 공격',
+                                                       'airstrike', 'air strike', 'projectile hit', 'missile strike'))):
+        return 'yellow'
     if non_military_kind(row):
         return 'yellow'
     if _saudi_airport_casualty_report(_headline(row)):
@@ -1400,7 +1409,6 @@ def final_color(row):
         return 'red'
     if _ceasefire_rejection_headline(_headline(row)) and _military_actions(_headline(row)):
         return 'red'
-    title = _headline(row)
     if (_military_actions(title) and (_operational_disruption_headline(title)
             or re.search(r'유가|원유|연료|\b(?:oil|crude|fuel)\b', title)
             or _conditional_pause_exchange(title) or _negotiation_intent_stage(title)
