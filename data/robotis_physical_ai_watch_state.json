@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-03T15:03:35.477244+00:00",
+  "updated_at": "2026-11-03T18:00:50.021157+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -838,9 +838,7 @@
     "eeaafbc844d00f5ed7e29d4ebd57551439d6d39bda7c9866a3710c6e8628b431",
     "125d8d7589593a410a3f0b616e00bf143347b08ed5c446e1fdfb4ee95e6d71b2"
   ],
-  "last_selected": [
-    "125d8d7589593a410a3f0b616e00bf143347b08ed5c446e1fdfb4ee95e6d71b2"
-  ],
+  "last_selected": [],
   "groups": [
     "agibot_worken_hardware_model",
     "daedong_eyou_robot_actuator",
@@ -989,21 +987,24 @@
         false
       ],
       "state_timestamp_utc": "2026-11-03T15:03:35.477244+00:00"
+    },
+    {
+      "run_id": 41689602085,
+      "outcome": "normal_silence",
+      "message_ids": [],
+      "recipient_verified": null,
+      "recipient_checks": [],
+      "message_topic_present": [],
+      "state_timestamp_utc": "2026-11-03T18:00:50.021157+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 41659839116,
-    "outcome": "sent",
-    "message_ids": [
-      325
-    ],
-    "recipient_verified": true,
-    "recipient_checks": [
-      "numeric_id_equal"
-    ],
-    "message_topic_present": [
-      false
-    ],
-    "state_timestamp_utc": "2026-11-03T15:03:35.477244+00:00"
+    "run_id": 41689602085,
+    "outcome": "normal_silence",
+    "message_ids": [],
+    "recipient_verified": null,
+    "recipient_checks": [],
+    "message_topic_present": [],
+    "state_timestamp_utc": "2026-11-03T18:00:50.021157+00:00"
   }
 }
