@@ -6,6 +6,8 @@ on:
     paths:
       - ".github/workflows/kofia-liquidity-telegram-watch.yml"
       - "scripts/kofia_liquidity_watch.js"
+      - "scripts/preopen_daily_status.py"
+      - "tests/test_preopen_daily_status.py"
       - "scripts/test_kofia_liquidity_interpretation.py"
       - "scripts/kofia_liquidity_semantic_guard.py"
       - "scripts/kofia_liquidity_state_integrity.js"
@@ -22,10 +24,14 @@ on:
     paths:
       - ".github/workflows/kofia-liquidity-telegram-watch.yml"
       - "scripts/*kofia_liquidity*"
+      - "scripts/preopen_daily_status.py"
+      - "tests/test_preopen_daily_status.py"
       - "tests/fixtures/kofia_source_20261012.json"
   schedule:
-    # KST 직접 지정. 새 공식값/수정치가 없으면 Telegram은 보내지 않는다.
+    # KST 직접 지정. 신규 공식값은 수치 보고, 최종 오전 슬롯은 상태 보고도 보낸다.
     - cron: "5,20,40 7 * * 1-5"
+      timezone: "Asia/Seoul"
+    - cron: "45 7 * * 1-5"
       timezone: "Asia/Seoul"
     # Direct afternoon polling; independent of Warsh workflow_run fallback.
     - cron: "5 8-19 * * 1-5"
@@ -70,6 +76,7 @@ jobs:
           python scripts/test_kofia_liquidity_commit_state.py
           python scripts/test_kofia_liquidity_delivery.py
           python scripts/test_kofia_liquidity_interpretation.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_preopen_daily_status.py' -v
   watch:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -116,6 +123,7 @@ jobs:
           PY
 
       - name: Test KOFIA directional interpretation
+        id: test_interpretation
         run: |
           node --check scripts/kofia_liquidity_state_integrity.js
           node scripts/test_kofia_liquidity_state_integrity.js
@@ -125,6 +133,7 @@ jobs:
           python scripts/test_kofia_liquidity_interpretation.py
 
       - name: Query KOFIA official liquidity data
+        id: query_kofia
         run: |
           rm -f out/kofia_liquidity_alert.html out/kofia_liquidity_status.md out/kofia_liquidity_pending_state.json
           node --check scripts/kofia_liquidity_watch.js
@@ -132,17 +141,21 @@ jobs:
           cat out/kofia_liquidity_status.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Independently recalculate preserved official source responses
+        id: source_guard
         run: python scripts/kofia_liquidity_source_guard.py
 
       - name: Build detailed current interpretation
+        id: build_interpretation
         if: hashFiles('out/kofia_liquidity_alert.html') != ''
         run: python scripts/kofia_liquidity_interpretation.py
 
       - name: Validate signed final KOFIA Telegram message
+        id: semantic_guard
         if: hashFiles('out/kofia_liquidity_alert.html') != ''
         run: python scripts/kofia_liquidity_semantic_guard.py
 
       - name: Send Telegram update
+        id: send_kofia_update
         if: env.DRY_RUN != 'true' && hashFiles('out/kofia_liquidity_alert.html') != ''
         run: |
           python scripts/kofia_liquidity_source_guard.py
@@ -198,6 +211,37 @@ jobs:
           print(f"telegram_delivery_confirmed=true bot=@{actual} messages=1 id={mid} receipt_persist_ready=true")
           PY
 
+      - name: Send pre-open status when no factual report was delivered
+        if: always() && env.DRY_RUN != 'true' && ((github.event_name == 'schedule' && (github.event.schedule == '40 7 * * 1-5' || github.event.schedule == '45 7 * * 1-5')) || (github.event_name == 'workflow_run' && contains(github.event.workflow_run.created_at, 'T22:')))
+        env:
+          PREOPEN_STATUS_REASON: ${{ steps.test_interpretation.outcome == 'failure' && 'report_validation_failed' || steps.query_kofia.outcome != 'success' && 'source_collection_failed' || steps.source_guard.outcome == 'failure' && 'source_validation_failed' || (steps.build_interpretation.outcome == 'failure' || steps.semantic_guard.outcome == 'failure') && 'report_validation_failed' || steps.send_kofia_update.outcome == 'failure' && 'telegram_delivery_unconfirmed' || 'scheduled_check' }}
+        run: python scripts/preopen_daily_status.py --family kofia
+
+      - name: Commit pre-open daily status receipt
+        if: always() && env.DRY_RUN != 'true' && hashFiles('out/kofia_liquidity_daily_status_pending.json') != ''
+        run: |
+          mkdir -p /tmp/kofia-preopen-status
+          cp out/kofia_liquidity_daily_status_pending.json /tmp/kofia-preopen-status/state.json
+          git config user.name "kofia-liquidity-watch[bot]"
+          git config user.email "kofia-liquidity-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p data
+            cp /tmp/kofia-preopen-status/state.json data/kofia_liquidity_daily_status_state.json
+            git add data/kofia_liquidity_daily_status_state.json
+            if git diff --cached --quiet; then
+              echo "KOFIA pre-open status receipt unchanged"
+              exit 0
+            fi
+            git commit -m "Record KOFIA pre-open daily status delivery"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
+
       - name: Persist state only after successful delivery
         if: success() && env.DRY_RUN != 'true' && hashFiles('out/kofia_liquidity_delivery.json') != ''
         run: |
@@ -238,6 +282,9 @@ jobs:
             out/kofia_liquidity_pending_state.json
             out/kofia_liquidity_source_evidence.json
             out/kofia_liquidity_delivery.json
+            out/kofia_liquidity_daily_status_pending.json
+            out/kofia_liquidity_daily_status_receipt.json
             data/kofia_liquidity_state.json
+            data/kofia_liquidity_daily_status_state.json
           if-no-files-found: ignore
           retention-days: 14
