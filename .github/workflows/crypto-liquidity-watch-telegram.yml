@@ -93,7 +93,9 @@ jobs:
           assert "River" not in rendered
           assert "BlackRock" not in rendered
           assert "구조적 수요 맥락" not in rendered
-          assert len(rendered) < 1800, len(rendered)
+          # The 1/2/3-month ETF comparisons add verified context to this compact layout.
+          # Keep a tighter ceiling than Telegram's message limit without rejecting it.
+          assert len(rendered) < 2200, len(rendered)
           print("compact_crypto_alert_layout_valid=true")
           print(rendered)
 
