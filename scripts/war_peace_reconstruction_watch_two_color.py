@@ -125,6 +125,18 @@ def direction(stage, row):
     kind = stage.non_military_kind(row)
     color = stage.final_color(row)
     title = stage._headline(row)
+    # Action restraint is a cooling signal, not a confirmed attack. The
+    # semantic stage may be yellow, but the two-color projection must never
+    # silently turn a no-rush/no-strike headline into red escalation.
+    if stage._iran_attack_restraint_statement(row) and not _separate_attack_headline(title):
+        return 'green'
+    # A headline about oil prices responding to peace expectations is market
+    # context, not an independent attack or a signed peace agreement.
+    if (re.search(r'유가|\\b(?:oil|crude)\\s+prices?\\b', title)
+            and re.search(r'하락|내림|떨어|\\b(?:fell|falls|drop|decline|slump)\\w*\\b', title)
+            and re.search(r'기대감|전망|\\b(?:hopes?|expectations?)\\b', title)
+            and not _separate_attack_headline(title)):
+        return None
     # A separate actual action wins over a diplomatic or financial background.
     if color == 'red':
         return 'red'
