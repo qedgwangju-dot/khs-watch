@@ -2,7 +2,7 @@
   "seen": {
     "ICI|mmf": "8e81b1718d939b76260ed7f63fca5e019c47001c0afca9232844cedc04e92d1c",
     "FINRA|margin": "fb28725208f78a0b756a275d77ae7324df141c651ec725ecad69589b69fe1e20",
-    "ICI|combined": "b03b49ce93386a1c8c663253c28edb0e9801cbb6bbf12897ab2066cc27649d13",
+    "ICI|combined": "6fda39bb40517c48973bda722e56b2fd6e8ccac016bf64ac51fac9527aef29e1",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
     "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64",
     "LSEG Lipper via Reuters|lipper": "322bb6e2516a3f327007042522d224c50a05c059d5697b540dd5b8be9b515502",
@@ -111,7 +111,8 @@
             "value_bn": null,
             "reason": "weekly_history_does_not_cover_target_window"
           }
-        }
+        },
+        "domestic_collective_trust_note_week": "2026-10-14"
       },
       "domestic_4w": null,
       "quality_checks": [
@@ -120,7 +121,7 @@
         "categories_total",
         "prose_total"
       ],
-      "fingerprint": "b03b49ce93386a1c8c663253c28edb0e9801cbb6bbf12897ab2066cc27649d13"
+      "fingerprint": "6fda39bb40517c48973bda722e56b2fd6e8ccac016bf64ac51fac9527aef29e1"
     },
     "JPMorganChase Institute|household_withdrawals": {
       "source": "JPMorganChase Institute",
@@ -195,7 +196,7 @@
       "fingerprint": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
     }
   },
-  "updated_at_kst": "2026-11-03T17:10:06.638373+09:00",
+  "updated_at_kst": "2026-11-03T17:24:25.268072+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
     "sp500_last_date": "2026-11-02",
@@ -236,12 +237,12 @@
     }
   },
   "factual_delivery_receipt": {
-    "timestamp_utc": "2026-11-03T08:11:45.755524+00:00",
+    "timestamp_utc": "2026-11-03T08:25:41.206470+00:00",
     "date_kst": "2026-11-03",
     "bot_username": "khs887900887900008879_bot",
     "message_ids": [
-      1779,
-      1780
+      1782,
+      1783
     ]
   }
 }
