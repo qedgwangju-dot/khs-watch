@@ -177,6 +177,26 @@ class TwoColorTests(unittest.TestCase):
                 row = {'title_original': title, 'title_ko': title}
                 self.assertEqual(presentation.direction(stage, row), expected)
 
+    def test_natural_778_pressure_and_oil_price_are_not_reversed(self):
+        # Exact selected article rows and semantic alert from natural run
+        # 41730348909. The sent message painted pressure green and turned a
+        # US-Iran oil-price story into a red Ukraine energy-ceasefire item.
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures' /
+                              'war_live_label_41730348909.json').read_text(encoding='utf-8'))
+        text, receipt = presentation.project(
+            stage, fixture['semantic_text'], {'articles': fixture['articles']}, {}, {})
+        rows = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['classification_color'] for row in rows],
+                         ['red', 'green', None, None])
+        self.assertIn('🔴 [속보] <b>1. 이란·호르무즈</b>', text)
+        self.assertIn('설득력 없어', text)
+        self.assertIn('[금/유가] 美-이란 종전 기대 속 브렌트유', text)
+        self.assertNotIn('우크라이나·러시아 · 에너지 휴전 발표', text)
+        self.assertNotIn('🔴 [신규] <b>3.', text)
+        self.assertEqual(text.count('<b>참고 '), 2)
+        self.assertEqual(text.count('공격·타격·확전·압박 관련:</b> 1건'), 1)
+        self.assertEqual(text.count('대화·협상·완화 관련:</b> 1건'), 1)
+
     def test_saved_nov03_escalation_ahead_of_talks_is_red(self):
         # Natural schedule run 41611279264 sent these two exact headline-only
         # rows as green "외교 접촉 보도" although each reports escalating clashes.
