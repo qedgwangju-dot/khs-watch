@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os, re, json, hashlib, html, math
-from io import StringIO
+from io import BytesIO, StringIO
 from pathlib import Path
 from datetime import datetime, timedelta, timezone, date
 from zoneinfo import ZoneInfo
@@ -40,6 +40,7 @@ S.headers.update({
 
 ICI_COMBINED = "https://www.ici.org/research/stats/combined_flows"
 ICI_MMF = "https://www.ici.org/research/stats/mmf"
+ICI_MMF_HISTORY = "https://www.ici.org/weekly-money-market-mutual-fund-assets"
 FINRA_MARGIN = "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics"
 BING_Bofa = 'BofA EPFR US stocks money market Reuters'
 BING_LIPPER = 'LSEG Lipper U.S. equity funds money market Reuters'
@@ -62,6 +63,7 @@ HARTNETT_REPORT_WEEK = "October 7, 2026"
 HARTNETT_REPORT_URL = "https://ca.finance.yahoo.com/news/investors-pour-cash-set-stay-084543679.html"
 HARTNETT_MMF_REPORTED_BN = 166.4  # Bloomberg citing Hartnett/BofA; not an ICI observation.
 HARTNETT_TRACK_VERSION = "2026-10-09-v1"
+HORIZON_SUMMARY_VERSION = "2026-11-03-front-v1"
 US_MIDTERM_DATE = datetime(2026, 11, 3).date()
 YAHOO_SP500_API = "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5y&interval=1d&includePrePost=false&events=div%2Csplits"
 YAHOO_SP500 = "https://finance.yahoo.com/quote/%5EGSPC/"
@@ -107,6 +109,73 @@ def browser_html(url):
         out = page.content()
         browser.close()
         return out
+
+
+def browser_ici_mmf_workbook(year):
+    """Download the XLS linked by ICI's public weekly-assets listing."""
+    exe = next((p for p in (
+        "/usr/bin/google-chrome", "/usr/bin/google-chrome-stable",
+        "/usr/bin/chromium", "/usr/bin/chromium-browser",
+    ) if os.path.exists(p)), None)
+    if not exe:
+        raise RuntimeError("system Chrome/Chromium not found")
+    with sync_playwright() as pw:
+        browser = pw.chromium.launch(
+            executable_path=exe, headless=True,
+            args=["--no-sandbox", "--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"],
+        )
+        try:
+            page = browser.new_page(user_agent=UA, locale="en-US", accept_downloads=True)
+            page.goto(ICI_MMF_HISTORY, wait_until="domcontentloaded", timeout=60000)
+            link = page.get_by_role("link", name="Summary: Money Market Fund Assets Data (xls)")
+            href = urljoin(ICI_MMF_HISTORY, link.get_attribute("href"))
+            if href != f"https://www.ici.org/mm_summary_data_{year}.xls":
+                raise RuntimeError(f"ICI MMF workbook year or host mismatch: {href}")
+            with page.expect_download(timeout=30000) as item:
+                link.click()
+            download = item.value
+            if download.failure():
+                raise RuntimeError(f"ICI MMF workbook download failed: {download.failure()}")
+            raw = Path(download.path()).read_bytes()
+            if not raw.startswith(bytes.fromhex("D0CF11E0A1B11AE1")) or len(raw) > 2_000_000:
+                raise RuntimeError("ICI MMF workbook is not a bounded OLE XLS")
+            return raw, href
+        finally:
+            browser.close()
+
+
+def _ici_mmf_workbook_history(raw, ref_date, current_bn, page_observations):
+    """Read official TNA in USD millions and verify it against the current release."""
+    table = pd.read_excel(BytesIO(raw), sheet_name="Public Report", header=None, engine="xlrd")
+    if table.shape[1] < 3 or "Investment Company Institute" not in str(table.iat[0, 0]):
+        raise RuntimeError("ICI MMF workbook identity missing")
+    if "millions of dollars" not in str(table.iat[2, 0]).lower():
+        raise RuntimeError("ICI MMF workbook unit is not USD millions")
+    if "TOTAL - ALL MONEY MARKET FUNDS" not in str(table.iat[4, 1]).upper():
+        raise RuntimeError("ICI MMF workbook total population mismatch")
+    if str(table.iat[8, 2]).strip().upper() != "TNA":
+        raise RuntimeError("ICI MMF workbook TNA column changed")
+    observations = []
+    for _, row in table.iloc[9:].iterrows():
+        try:
+            observed = datetime.strptime(str(row.iloc[0]).strip(), "%m/%d/%Y").date()
+        except (TypeError, ValueError):
+            continue
+        value_million = parse_num(row.iloc[2])
+        if value_million is None or not math.isfinite(value_million):
+            raise RuntimeError("ICI MMF workbook TNA value missing")
+        observations.append({"date": observed, "value": value_million / 1000.0})
+    if not observations or observations[-1]["date"] != ref_date:
+        raise RuntimeError("ICI MMF workbook latest date disagrees with release")
+    by_date = {item["date"]: item["value"] for item in observations}
+    if len(by_date) != len(observations):
+        raise RuntimeError("ICI MMF workbook duplicate dates")
+    if abs(by_date[ref_date] - current_bn) > 0.01:
+        raise RuntimeError("ICI MMF workbook latest TNA disagrees with release")
+    for item in page_observations:
+        if item["date"] not in by_date or abs(by_date[item["date"]] - item["value"]) > 0.01:
+            raise RuntimeError("ICI MMF workbook weekly TNA disagrees with release")
+    return observations
 
 
 def load_state():
@@ -888,7 +957,8 @@ def _ici_balance_change_horizon(observations, end_date, current_bn, months_back,
             }
         by_date[observed] = value
     latest = by_date.get(end_date)
-    if latest is None or current_bn is None or abs(float(latest) - float(current_bn)) > 0.001:
+    # The XLS is in USD millions while the release table rounds to USD 0.01 billion.
+    if latest is None or current_bn is None or abs(float(latest) - float(current_bn)) > 0.01:
         return {
             "months_back": months_back, "target_date": target.isoformat(),
             "anchor_date": None, "end_date": end_date.isoformat(),
@@ -1018,22 +1088,39 @@ def parse_ici_mmf():
         {"date": item["date"], "value": item["value"]}
         for item in history.get("total", [])
     ]
+    horizon_url = None
+    horizon_error = None
+    try:
+        workbook, horizon_url = browser_ici_mmf_workbook(ref_date.year)
+        asset_observations = _ici_mmf_workbook_history(
+            workbook, ref_date, total_bn, asset_observations
+        )
+    except Exception as exc:
+        # Keep the short release history if the independent XLS cannot be checked.
+        # Missing history must remain unavailable rather than become an estimate.
+        horizon_error = f"{type(exc).__name__}: {exc}"
+    horizon_current_bn = (
+        asset_observations[-1]["value"] if horizon_url and not horizon_error else total_bn
+    )
     payload = {
         "source": "ICI", "kind": "mmf",
         "period": ref_date.strftime("%B %d, %Y"),
         "published": _ici_published_date(text),
         "url": ICI_MMF,
+        "horizon_source_url": horizon_url,
+        "horizon_error": horizon_error,
         "metrics": {
             "assets_trillion": round(total_bn / 1000.0, 5),
             "weekly_change_bn": round(reported_delta, 2),
             "assets_bn": round(total_bn, 3),
             "asset_balance_horizons": {
                 f"m{months}": _ici_balance_change_horizon(
-                    asset_observations, ref_date, total_bn, months
+                    asset_observations, ref_date, horizon_current_bn, months
                 ) for months in (1, 3)
             },
         },
-        "quality_checks": ["same_week", "weekly_arithmetic", "table_change", "prose_level"],
+        "quality_checks": ["same_week", "weekly_arithmetic", "table_change", "prose_level"]
+        + (["history_xls_crosschecked"] if horizon_url and not horizon_error else []),
     }
     payload["fingerprint"] = semantic_fingerprint(payload)
     return payload
@@ -1677,6 +1764,45 @@ def period_date(x):
     return None
 
 
+def _same_period_core_change(old, new):
+    """Separate source-number revisions from newly calculated horizon fields."""
+    if not isinstance(old, dict) or not isinstance(new, dict):
+        return False
+    old_date, new_date = period_date(old), period_date(new)
+    if old_date is None or old_date != new_date or old.get("kind") != new.get("kind"):
+        return False
+    core_keys = {
+        "combined": ("equity", "domestic", "world", "hybrid", "bond", "commodity", "total"),
+        "mmf": ("assets_trillion", "weekly_change_bn", "assets_bn"),
+        "margin": ("margin_debt_bn", "margin_debt_mom_bn"),
+    }.get(new.get("kind"), ())
+    old_metrics, new_metrics = old.get("metrics") or {}, new.get("metrics") or {}
+    return any(
+        key in old_metrics and key in new_metrics
+        and old_metrics[key] != new_metrics[key]
+        for key in core_keys
+    )
+
+
+def _horizon_only_update(old, new):
+    """A changed calculation is not a newly published source observation."""
+    if not isinstance(old, dict) or not isinstance(new, dict):
+        return False
+    old_date, new_date = period_date(old), period_date(new)
+    if old_date is None or old_date != new_date or old.get("kind") != new.get("kind"):
+        return False
+    horizon_key = {
+        "combined": "domestic_flow_horizons",
+        "mmf": "asset_balance_horizons",
+        "margin": "margin_debt_horizons",
+    }.get(new.get("kind"))
+    if not horizon_key:
+        return False
+    old_metrics, new_metrics = dict(old.get("metrics") or {}), dict(new.get("metrics") or {})
+    old_horizon, new_horizon = old_metrics.pop(horizon_key, None), new_metrics.pop(horizon_key, None)
+    return old_metrics == new_metrics and old_horizon != new_horizon
+
+
 def same_reference_week(a, b):
     da, db = period_date(a), period_date(b)
     return bool(da and db and da == db)
@@ -1803,6 +1929,40 @@ def _horizon_window_text(window, fx, value_key, *, flow=False, date_keys=()):
     if count is not None:
         parts.append(f"주간 {count}건")
     return "; ".join(parts)
+
+
+def _brief_horizon(window, value_key, fx, *, flow=False):
+    value = window.get(value_key) if isinstance(window, dict) else None
+    if value is None:
+        return "확인불가(공식 기간 이력 부족)"
+    return _horizon_change(value, fx, flow=flow)
+
+
+def _horizon_headlines(ici, ici_mmf, finra, fx):
+    """Put comparable 1M/3M signals before the long source and risk context."""
+    equity = (ici or {}).get("metrics", {}).get("domestic_flow_horizons", {})
+    mmf = (ici_mmf or {}).get("metrics", {}).get("asset_balance_horizons", {})
+    debt = (finra or {}).get("metrics", {}).get("margin_debt_horizons", {})
+    lines = [
+        "<b>1개월·3개월 방향 (각 원천 기준일 별도)</b>",
+        f"• ICI 미국 국내주식형 주간 순유입 합계 ({html.escape(str((ici or {}).get('period') or '기준일 미확인'))}): "
+        f"1M {_brief_horizon(equity.get('m1'), 'value_bn', fx, flow=True)} / "
+        f"3M {_brief_horizon(equity.get('m3'), 'value_bn', fx, flow=True)}",
+        f"• ICI MMF 총자산 잔액 차이 ({html.escape(str((ici_mmf or {}).get('period') or '기준일 미확인'))}): "
+        f"1M {_brief_horizon(mmf.get('m1'), 'change_bn', fx)} / "
+        f"3M {_brief_horizon(mmf.get('m3'), 'change_bn', fx)}",
+        f"• FINRA 마진부채 잔액 차이 ({html.escape(str((finra or {}).get('period') or '기준월 미확인'))}): "
+        f"1M {_brief_horizon(debt.get('m1'), 'change_bn', fx)} / "
+        f"3M {_brief_horizon(debt.get('m3'), 'change_bn', fx)}",
+    ]
+    note_week = (ici or {}).get("metrics", {}).get("domestic_collective_trust_note_week")
+    one = equity.get("m1") or {}
+    if note_week and one.get("value_bn") is not None and (
+        (one.get("start_week_ended") or "") <= note_week <= (one.get("end_week_ended") or "")
+    ):
+        lines.append("• ICI 1M 주의: 10/14 주간 대규모 유출은 주로 집합투자신탁 활동; 개인 환매로 단정 불가")
+    lines.append("• MMF·마진부채는 잔액 변화이며 주식형 순유입액과 합산하거나 이동 경로로 해석하지 않음")
+    return lines
 
 
 def _monthly_horizon_snapshot(ici, ici_mmf, finra, bofa, lipper, goldman, jpm, fed, fx):
@@ -2023,6 +2183,7 @@ for x in results:
 results = fresh_results
 
 updates = []
+unverified_history_keys = set()
 for x in results:
     key = f"{x['source']}|{x['kind']}"
     current_fp = semantic_fingerprint(x)
@@ -2032,6 +2193,17 @@ for x in results:
     old_value = state.get("values", {}).get(key)
     old_semantic = semantic_fingerprint(old_value) if isinstance(old_value, dict) else None
     old_seen = state.get("seen", {}).get(key)
+    if (
+        x.get("kind") == "mmf" and x.get("horizon_error")
+        and isinstance(old_value, dict)
+        and period_date(old_value) == period_date(x)
+        and not _same_period_core_change(old_value, x)
+    ):
+        # A temporary XLS failure cannot erase earlier verified horizons or
+        # create a spurious report about a change in historical values.
+        unverified_history_keys.add(key)
+        errors.append(f"ICI MMF 기간 이력: {x['horizon_error']}")
+        continue
 
     # A source URL/domain change, article title edit, published timestamp change, or parser metadata
     # must NOT create a Telegram alert when period + metrics are identical.
@@ -2302,9 +2474,21 @@ media_correction = bool(
 )
 for x in updates:
     old = (state.get("values") or {}).get(f"{x['source']}|{x['kind']}")
-    if isinstance(old, dict) and x["kind"] in ("combined", "mmf"):
-        if period_date(old) == period_date(x):
-            source_corrections.append(x["kind"])
+    if x["kind"] in ("combined", "mmf") and _same_period_core_change(old, x):
+        source_corrections.append(x["kind"])
+presentation_only_updates = bool(updates) and all(
+    _horizon_only_update((state.get("values") or {}).get(f"{x['source']}|{x['kind']}"), x)
+    for x in updates
+)
+presentation_upgrade = bool(
+    ici and ici_mmf and finra
+    and (state.get("derived") or {}).get("fund_horizon_summary_version") != HORIZON_SUMMARY_VERSION
+    and (ici.get("metrics") or {}).get("domestic_flow_horizons", {}).get("m1", {}).get("value_bn") is not None
+    and all(
+        (ici_mmf.get("metrics") or {}).get("asset_balance_horizons", {}).get(key, {}).get("change_bn") is not None
+        for key in ("m1", "m3")
+    )
+)
 
 status_lines = [
     "# US Fund Flow Watch",
@@ -2312,6 +2496,7 @@ status_lines = [
     f"- parsed sources: {len(results)}",
     f"- updates: {len(updates)}",
     f"- corrected ICI categories: {','.join(source_corrections) or 'none'}",
+    f"- front horizon presentation upgrade: {str(presentation_upgrade).lower()}",
 ]
 for x in results:
     status_lines.append(f"- {x['source']} {x['kind']} | {x['period']} | {x['fingerprint'][:12]}")
@@ -2353,17 +2538,26 @@ STATUS.write_text("\n".join(status_lines) + "\n", encoding="utf-8")
 force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
 should_alert = bool(updates or force or drawdown_transition or hartnett_init
                     or bond_level_transition or bond_momentum_transition
-                    or target_rate_change or election_transition)
+                    or target_rate_change or election_transition or presentation_upgrade)
 # Never send a dollar-denominated report lacking a fresh, verified KRW conversion.
 # Do not advance fingerprints on this failure; a later healthy run may deliver it.
 if should_alert and fx is None:
     raise RuntimeError("ECOS USD/KRW unavailable or stale; alert withheld and fingerprints preserved")
 if should_alert:
+    title = (
+        "수치 정정" if source_corrections or media_correction else
+        "기간 비교 표시 보완" if presentation_upgrade and (not updates or presentation_only_updates) else
+        "기간 비교 갱신" if presentation_only_updates else
+        "Hartnett 감시 추가" if hartnett_init and not updates else
+        "신규 변화"
+    )
     body = [
-        f"🇺🇸 <b>[미국 증시 자금흐름 추적 | {'수치 정정' if (source_corrections or media_correction) else 'Hartnett 감시 추가' if hartnett_init and not updates else '신규 변화'}]</b>",
+        f"🇺🇸 <b>[미국 증시 자금흐름 추적 | {title}]</b>",
         "",
         "<b>한눈에 보기</b>",
     ]
+    body += _horizon_headlines(ici, ici_mmf, finra, fx)
+    body.append("")
 
     if ici_mmf:
         ch = ici_mmf["metrics"].get("weekly_change_bn")
@@ -2497,7 +2691,15 @@ if should_alert:
     )
     body += ["", "<b>이번에 실제로 바뀐 값</b>"]
 
-    selected = results if force else updates
+    selected = results if force else [
+        x for x in updates if not _horizon_only_update(
+            (state.get("values") or {}).get(f"{x['source']}|{x['kind']}"), x
+        )
+    ]
+    if presentation_upgrade and not selected:
+        body.append("• 1M·3M 비교를 알림 첫머리에 표시했습니다. 원천 수치의 신규 공표나 정정으로 취급하지 않습니다.")
+    elif presentation_only_updates and not selected:
+        body.append("• 공식 이력을 다시 검산한 기간 비교값만 달라졌습니다. 이번 기간의 원천 발표값 수정으로 취급하지 않습니다.")
     if drawdown_transition:
         body += [
             f"<b>S&P 500 15% 낙폭 체계 변화</b>",
@@ -2560,8 +2762,12 @@ if should_alert:
     newstate = state
     newstate.setdefault("seen", {})
     newstate.setdefault("values", {})
+    if presentation_upgrade:
+        newstate.setdefault("derived", {})["fund_horizon_summary_version"] = HORIZON_SUMMARY_VERSION
     for x in results:
         key = f"{x['source']}|{x['kind']}"
+        if key in unverified_history_keys:
+            continue
         newstate["seen"][key] = x["fingerprint"]
         newstate["values"][key] = x
     if hartnett_macro:
