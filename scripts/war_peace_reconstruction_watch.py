@@ -132,12 +132,19 @@ def req(url, timeout=20):
         "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.7",
     }
     opener = urllib.request.build_opener(_SourceRedirects())
-    for attempt in range(2):
+    source_host = urllib.parse.urlparse(url).hostname or ''
+    if source_host in {'api.gdeltproject.org', 'en.kremlin.ru'}:
+        # These configured direct sources have recorded TLS/response timeouts.
+        # Respect their existing 20s call budget, with one same-source 10s retry.
+        attempt_timeouts = (20, 10)
+    else:
+        attempt_timeouts = (10, 5)
+    for attempt, attempt_timeout in enumerate(attempt_timeouts):
         if _before_source_request is not None:
             _before_source_request(url)
         try:
             request = urllib.request.Request(url, headers=headers)
-            with opener.open(request, timeout=min(timeout, 10 if attempt == 0 else 5)) as response:
+            with opener.open(request, timeout=min(timeout, attempt_timeout)) as response:
                 data = response.read()
             sample = data[:16000].lower()
             if urllib.parse.urlparse(url).hostname == 'api.gdeltproject.org' and any(
@@ -502,4 +509,3 @@ if __name__ == "__main__":
         finalize()
     else:
         run(test=a.telegram_test)
-
