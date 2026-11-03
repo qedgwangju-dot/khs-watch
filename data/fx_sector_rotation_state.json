@@ -28,16 +28,20 @@
     {
       "ts": "2026-11-03T23:25:23+09:00",
       "value": 1343.8
+    },
+    {
+      "ts": "2026-11-03T23:30:52+09:00",
+      "value": 1343.3
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-11-03T23:25:23+09:00",
+    "checked_at": "2026-11-03T23:30:52+09:00",
     "market_phase": "장마감 후",
     "fx": {
-      "value": 1343.8,
+      "value": 1343.3,
       "prev_close": 1343.8,
       "naver_prev_close": 1346.0,
       "date": "2026-11-03",
@@ -48,10 +52,10 @@
       "basis_reused": false
     },
     "session_low": 1340.8,
-    "rebound_krw": 3.0,
-    "rebound_pct": 0.2237470167064437,
-    "daily_krw": 0.0,
-    "daily_pct": 0.0,
+    "rebound_krw": 2.5,
+    "rebound_pct": 0.18645584725536235,
+    "daily_krw": -0.5,
+    "daily_pct": -0.03720791784491695,
     "kospi_pct": -3.59,
     "ship": {
       "avg": 1.005,
