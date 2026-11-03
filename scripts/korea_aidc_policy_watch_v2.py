@@ -385,7 +385,7 @@ def verify_change(row: dict[str, Any]) -> tuple[bool, str]:
             return False, "제12차 전력수급기본계획 연결 근거 없음"
         if not any(x in body for x in ("7.9gw", "7.9기가와트", "11.9gw", "11.9기가와트")):
             return False, "기존 전력수요 전망 기준 숫자 미확인"
-        if not re.search(r"3\\s*[~∼〜-]\\s*4\\s*(?:gw|기가와트)", body) and not (
+        if not re.search(r"3\s*[~∼〜-]\s*4\s*(?:gw|기가와트)", body) and not (
             ("3gw" in body or "3기가와트" in body) and ("4gw" in body or "4기가와트" in body)
         ):
             return False, "3~4GW 재검토 규모 확인 실패"
