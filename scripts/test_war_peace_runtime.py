@@ -16,6 +16,7 @@ import urllib.request
 from unittest.mock import patch
 from email.utils import format_datetime
 
+import war_peace_reconstruction_watch as source_watch
 import war_peace_reconstruction_watch_runtime as runtime
 
 
@@ -40,6 +41,76 @@ def fake_watch(root, queries, *, req=None, news=None):
     watch.req = req or (lambda url, timeout=20: url.encode())
     watch.google_news = news or (lambda query: ([{'raw': watch.req(query)}], None))
     return watch
+
+
+class _Response:
+    def __init__(self, body):
+        self.body = body
+    def __enter__(self):
+        return self
+    def __exit__(self, *exc):
+        return False
+    def read(self):
+        return self.body
+
+
+class _SlowHostOpener:
+    def __init__(self, body):
+        self.body = body
+        self.calls = []
+    def open(self, request, timeout):
+        self.calls.append((request.full_url, timeout))
+        if timeout < 20:
+            raise TimeoutError('TLS handshake timed out at configured source timeout')
+        return _Response(self.body)
+
+
+class _OneTimeoutOpener:
+    def __init__(self, body):
+        self.body = body
+        self.calls = []
+    def open(self, request, timeout):
+        self.calls.append((request.full_url, timeout))
+        if len(self.calls) == 1:
+            raise TimeoutError('TLS handshake timed out on first attempt')
+        return _Response(self.body)
+
+
+class RequestTimeoutBudgetTests(unittest.TestCase):
+    def test_recorded_slow_direct_hosts_get_20_second_budget_without_changing_source(self):
+        cases = (
+            ('https://api.gdeltproject.org/api/v2/doc/doc?query=Ukraine&format=json',
+             b'{"articles":[]}'),
+            ('https://en.kremlin.ru/events/president/news',
+             b'<html><body>fixture</body></html>'),
+        )
+        for url, body in cases:
+            with self.subTest(host=urllib.request.urlparse(url).hostname if hasattr(urllib.request, 'urlparse') else url):
+                opener = _SlowHostOpener(body)
+                with patch.object(source_watch.urllib.request, 'build_opener', return_value=opener):
+                    self.assertEqual(source_watch.req(url, timeout=20), body)
+                self.assertEqual(opener.calls, [(url, 20)])
+
+    def test_retry_stays_on_same_url_and_uses_ten_seconds_for_recorded_slow_hosts(self):
+        for url, body in (
+            ('https://api.gdeltproject.org/api/v2/doc/doc?query=Ukraine&format=json',
+             b'{"articles":[]}'),
+            ('https://en.kremlin.ru/events/president/news',
+             b'<html><body>fixture</body></html>'),
+        ):
+            with self.subTest(url=url):
+                opener = _OneTimeoutOpener(body)
+                with patch.object(source_watch.urllib.request, 'build_opener', return_value=opener):
+                    self.assertEqual(source_watch.req(url, timeout=20), body)
+                self.assertEqual(opener.calls, [(url, 20), (url, 10)])
+
+    def test_unaffected_hosts_keep_the_existing_ten_second_first_attempt(self):
+        url = 'https://apnews.com/hub/world-news'
+        body = b'<html><body>fixture</body></html>'
+        opener = _OneTimeoutOpener(body)
+        with patch.object(source_watch.urllib.request, 'build_opener', return_value=opener):
+            self.assertEqual(source_watch.req(url, timeout=20), body)
+        self.assertEqual(opener.calls, [(url, 10), (url, 5)])
 
 
 class DirectCoverageTests(unittest.TestCase):
