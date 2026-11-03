@@ -10,6 +10,10 @@ KEYS = ('deposit', 'mmf', 'cma', 'credit', 'receivable', 'forced')
 
 def verified(data):
     payload = {key: data['values'][key] for key in KEYS}
+    if 'balance_horizons' in data['values']:
+        payload['balance_horizons'] = data['values']['balance_horizons']
+    if set(payload) != set(data['values']):
+        raise RuntimeError('KOFIA state has unrecognized fingerprint fields; refusing overwrite')
     actual = hashlib.sha256(json.dumps(payload, separators=(',', ':'), ensure_ascii=False).encode()).hexdigest()
     if actual != data['fingerprint']:
         raise RuntimeError('KOFIA state fingerprint inconsistent; refusing overwrite')
