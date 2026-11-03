@@ -452,9 +452,7 @@ def _primary_topic(row):
         area = '걸프 증시' if re.search(r'걸프|\bgulf\b', title) else '증시'
         return area + ' · ' + KIND_LABELS[kind]
     if kind == 'unconfirmed_explosion':
-        _clear_headline_event_cache(row, kind)
-        score, _ = source_score._original_score(row, now)
-        return max(score, 75), list(row['tags'])
+        return '이란·호르무즈 · 폭발음 원인 미확인' if re.search(r'호르무즈|hormuz', title) else '폭발음 원인 미확인'
     if kind == 'market_effect':
         us_prices = re.search(r'(?:미국|美|united states|u\.s\.).{0,12}(?:물가|cpi|inflation)', title)
         return ('미국·물가' if us_prices else '물가·경제지표') + ' · 전쟁 파급 보도'
@@ -1428,6 +1426,10 @@ def score_item(row, now):
     if stamp is None or stamp > now + dt.timedelta(minutes=5) or age > 3 * 60:
         return 0, []
     kind = non_military_kind(row)
+    if kind == 'unconfirmed_explosion':
+        _clear_headline_event_cache(row, kind)
+        score, _ = source_score._original_score(row, now)
+        return max(score, 75), list(row['tags'])
     if kind is None and _headline_energy_operation(row):
         _clear_headline_event_cache(row, kind)
         score, _ = source_score._original_score(row, now)
