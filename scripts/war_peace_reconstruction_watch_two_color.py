@@ -128,7 +128,8 @@ def direction(stage, row):
     # Action restraint is a cooling signal, not a confirmed attack. The
     # semantic stage may be yellow, but the two-color projection must never
     # silently turn a no-rush/no-strike headline into red escalation.
-    if stage._iran_attack_restraint_statement(row) and not _separate_attack_headline(title):
+    if (stage._iran_attack_restraint_statement(row) and not _separate_attack_headline(title)
+            and not _active_adverse(title)):
         return 'green'
     # A headline about oil prices responding to peace expectations is market
     # context, not an independent attack or a signed peace agreement.
