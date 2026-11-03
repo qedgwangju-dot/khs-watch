@@ -1,0 +1,179 @@
+name: Korail Hangsin Solar Bid Stage Watch
+
+on:
+  schedule:
+    - cron: "13 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/korail-hangsin-solar-watch.yml"
+      - "scripts/korail_hangsin_solar_watch.py"
+      - "tests/test_korail_hangsin_solar_watch.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: korail-hangsin-solar-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: 저장소 확인
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 의존성 설치
+        run: python -m pip install requests beautifulsoup4 pytest
+
+      - name: 문법 및 상태 회귀검사
+        run: |
+          python -m py_compile scripts/korail_hangsin_solar_watch.py
+          python -m pytest -q tests/test_korail_hangsin_solar_watch.py
+
+      - name: 코드 변경 시 실제 수집만 검사 (Telegram 미전송)
+        if: github.event_name == 'push'
+        run: python scripts/korail_hangsin_solar_watch.py
+
+      - name: 행신역 태양광 입찰·출자·착공 단계 확인
+        id: check
+        if: github.event_name != 'push'
+        run: python scripts/korail_hangsin_solar_watch.py
+
+      - name: 기존 지정 에너지 알림 봇으로 Telegram 전송
+        id: telegram
+        if: steps.check.outputs.changed == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.ENERGY_MIX_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.ENERGY_MIX_TELEGRAM_CHAT_ID }}
+          FALLBACK_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          EXPECTED_TELEGRAM_BOT_USERNAME: khs887988798879887988798879_bot
+          REPORT_PATH: ${{ steps.check.outputs.report_path }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import requests
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip() or (os.getenv("FALLBACK_TELEGRAM_CHAT_ID") or "").strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("지정한 텔레그램 봇 또는 수신자 설정이 없어 전송 중단")
+          me = requests.get("https://api.telegram.org/bot" + token + "/getMe", timeout=25)
+          me.raise_for_status()
+          me_body = me.json()
+          actual = str((me_body.get("result") or {}).get("username") or "")
+          if not me_body.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError("허용된 기존 Telegram 봇이 아니라 전송 차단")
+          report = Path(os.environ["REPORT_PATH"]).read_text(encoding="utf-8").strip()
+          if not report:
+              raise RuntimeError("빈 알림은 전송하지 않음")
+          chunks = []
+          remaining = report
+          while remaining:
+              if len(remaining) <= 3400:
+                  chunks.append(remaining)
+                  break
+              cut = remaining.rfind("\n", 0, 3400)
+              if cut < 1500:
+                  cut = 3400
+              chunks.append(remaining[:cut].rstrip())
+              remaining = remaining[cut:].lstrip()
+          ids = []
+          for i, chunk in enumerate(chunks, 1):
+              body = (f"<i>[{i}/{len(chunks)}]</i>\n" if len(chunks) > 1 else "") + chunk
+              r = requests.post(
+                  "https://api.telegram.org/bot" + token + "/sendMessage",
+                  json={"chat_id": chat_id, "text": body, "parse_mode": "HTML",
+                        "disable_web_page_preview": True},
+                  timeout=30,
+              )
+              r.raise_for_status()
+              payload = r.json()
+              mid = (payload.get("result") or {}).get("message_id")
+              if not payload.get("ok") or not isinstance(mid, int) or mid < 1:
+                  raise RuntimeError("Telegram API message_id 확인 실패")
+              ids.append(mid)
+          Path("out").mkdir(exist_ok=True)
+          Path("out/korail_hangsin_solar_telegram_confirmed.json").write_text(
+              json.dumps({"status":"confirmed","bot_username":actual,"message_ids":ids},
+                         ensure_ascii=False, indent=2)+"\n", encoding="utf-8"
+          )
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
+              handle.write("delivered=true\n")
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={ids}")
+          PY
+
+      - name: 검사와 전송 성공 후에만 상태 저장
+        if: success() && github.event_name != 'push' && (steps.check.outputs.changed == 'false' || (steps.check.outputs.changed == 'true' && steps.telegram.outputs.delivered == 'true'))
+        run: |
+          cp out/korail_hangsin_solar_pending.json /tmp/korail_hangsin_solar_pending.json
+          if [ -f out/korail_hangsin_solar_telegram_confirmed.json ]; then
+            cp out/korail_hangsin_solar_telegram_confirmed.json /tmp/korail_hangsin_solar_confirmed.json
+          fi
+          git config user.name "korail-hangsin-solar-watch[bot]"
+          git config user.email "korail-hangsin-solar-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("data/korail_hangsin_solar_state.json")
+          old = json.loads(path.read_text(encoding="utf-8"))
+          new = json.loads(Path("/tmp/korail_hangsin_solar_pending.json").read_text(encoding="utf-8"))
+          if old.get("project") != new.get("project"):
+              raise RuntimeError("프로젝트 상태 파일 식별 불일치")
+          seen = list(dict.fromkeys(old.get("seen_event_types", []) + new.get("seen_event_types", [])))
+          new["seen_event_types"] = seen
+          receipt = Path("/tmp/korail_hangsin_solar_confirmed.json")
+          if receipt.exists():
+              confirmed = json.loads(receipt.read_text(encoding="utf-8"))
+              if confirmed.get("status") != "confirmed" or not confirmed.get("message_ids"):
+                  raise RuntimeError("Telegram 검증 기록이 없으므로 신규 상태 저장 중단")
+              new["last_message_ids"] = confirmed["message_ids"]
+              new["last_delivered_event_types"] = new.get("last_event_types", [])
+          else:
+              new["last_message_ids"] = old.get("last_message_ids", [])
+              new["last_delivered_event_types"] = old.get("last_delivered_event_types", [])
+          path.write_text(json.dumps(new, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+          print("state_event_types=", new["seen_event_types"])
+          print("state_message_ids=", new["last_message_ids"])
+          PY
+            git add data/korail_hangsin_solar_state.json
+            if git diff --cached --quiet; then
+              echo "state_unchanged=true"
+              exit 0
+            fi
+            git commit -m "Record Korail Hangsin solar watch state [skip ci]"
+            if git push origin HEAD:main; then
+              echo "state_persisted=true"
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "state_persist_failed=true" >&2
+          exit 1
+
+      - name: 검증 진단 기록 보관
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korail-hangsin-solar-${{ github.run_id }}
+          path: |
+            out/korail_hangsin_solar_pending.json
+            out/korail_hangsin_solar_alert.html
+            out/korail_hangsin_solar_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
