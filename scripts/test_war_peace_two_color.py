@@ -981,5 +981,29 @@ class TwoColorTests(unittest.TestCase):
         self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
 
 
+class IranNoStrikeProjectionTests(unittest.TestCase):
+    def test_no_rush_titles_are_not_red_in_final_two_color(self):
+        for title in (
+            "트럼프 대통령, 이란 공습 서두르지 않겠다고 단언",
+            "중간선거 후 공습 부인한 트럼프…호르무즈 재개방 조건 내건 이란(종합)",
+        ):
+            with self.subTest(title=title):
+                row = {'title': title, 'title_original': title, 'title_ko': title,
+                       'source': '신아일보', 'tags': ['확전'], 'score': 98}
+                self.assertEqual(presentation.direction(stage, row), 'green')
+
+    def test_oil_price_fall_on_peace_hopes_is_reference_not_attack(self):
+        title = "미국-이란 종전 외교적 해결 기대감에 유가 큰 폭 하락"
+        row = {'title': title, 'title_original': title, 'title_ko': title,
+               'source': '에너지플랫폼뉴스', 'tags': ['확전'], 'score': 95}
+        self.assertIsNone(presentation.direction(stage, row))
+
+    def test_actual_separate_attack_remains_red(self):
+        title = "트럼프, 이란 공습 서두르지 않겠다 밝혔지만 동시에 미군이 이란 시설 공격을 감행"
+        row = {'title': title, 'title_original': title, 'title_ko': title,
+               'source': '통신사', 'tags': ['확전'], 'score': 100}
+        self.assertEqual(presentation.direction(stage, row), 'red')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
