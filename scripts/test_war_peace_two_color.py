@@ -197,6 +197,34 @@ class TwoColorTests(unittest.TestCase):
         self.assertEqual(text.count('공격·타격·확전·압박 관련:</b> 1건'), 1)
         self.assertEqual(text.count('대화·협상·완화 관련:</b> 1건'), 1)
 
+    def test_natural_780_airstrike_and_conditional_oil_outlook(self):
+        # Saved public article rows from the first post-merge production push.
+        # It sent an airstrike as green diplomacy and an oil outlook as red.
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures' /
+                              'war_live_label_41736796260.json').read_text(encoding='utf-8'))
+        now = dt.datetime.fromisoformat('2026-11-04T08:11:00+09:00')
+        rows = [copy.deepcopy(fixture['articles'][i]) for i in (0, 3)]
+        for row in rows:
+            score, tags = stage.score_item(row, now)
+            row['score'], row['tags'] = score, tags
+        self.assertEqual([row['tags'] for row in rows],
+                         [['대공습 보도'], ['원유 공급·가격 보도']])
+        with patch.object(self.watch, 'market_source_status', {}, create=True):
+            semantic = stage.build_alert(rows, [], now)
+        receipt = evidence.alert_receipt(rows, [], now, semantic, {})
+        text, projected = presentation.project(stage, semantic, receipt, {}, {})
+        self.assertIn('🔴 [신규] <b>1. 우크라이나·러시아 · 대공습 보도</b>', text)
+        self.assertIn('<b>참고 1. 원유시장 · 원유 공급·가격 보도</b>', text)
+        self.assertNotIn('🟢 [신규] <b>1.', text)
+        self.assertNotIn('🔴 [속보] <b>2.', text)
+        self.assertEqual([row['classification_color'] for row in projected['articles']],
+                         ['red', None])
+        self.assertFalse(rows[0]['body_verified'])
+        self.assertFalse(stage._reported_major_airstrike(
+            '러시아 대공습 보류…우크라와 협상 재개'))
+        self.assertNotEqual(stage.non_military_kind({
+            'title_original': '이란 해법 땐 유가 80달러대로…러시아 대공습'}), 'oil_market')
+
     def test_saved_nov03_escalation_ahead_of_talks_is_red(self):
         # Natural schedule run 41611279264 sent these two exact headline-only
         # rows as green "외교 접촉 보도" although each reports escalating clashes.
