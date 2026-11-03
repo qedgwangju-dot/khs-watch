@@ -1,6 +1,7 @@
 """Offline checks for official-period arithmetic and unavailable-history gates."""
 
 import ast
+import datetime as dt
 from datetime import date, datetime
 import json
 import math
@@ -9,9 +10,8 @@ import re
 import unittest
 
 from bs4 import BeautifulSoup
-from market_time_windows import subtract_calendar_months
+from market_time_windows import select_monthly_anchors, subtract_calendar_months
 from kofia_liquidity_source_guard import month_horizons, SIDS
-from treasury_etf_flow_watch import cumulative_monthly_flows
 
 
 def us_functions(*names):
@@ -31,6 +31,18 @@ def us_functions(*names):
     }
     exec(compile(module, "scripts/us_fund_flow_watch.py", "exec"), scope)
     return scope
+
+
+def etf_monthly_function():
+    tree = ast.parse(Path("scripts/treasury_etf_flow_watch.py").read_text(encoding="utf-8"))
+    selected = [node for node in tree.body
+                if isinstance(node, ast.FunctionDef)
+                and node.name == "cumulative_monthly_flows"]
+    assert len(selected) == 1
+    module = ast.fix_missing_locations(ast.Module(body=selected, type_ignores=[]))
+    scope = {"dt": dt, "math": math, "select_monthly_anchors": select_monthly_anchors}
+    exec(compile(module, "scripts/treasury_etf_flow_watch.py", "exec"), scope)
+    return scope["cumulative_monthly_flows"]
 
 
 class FundHorizonMath(unittest.TestCase):
@@ -111,6 +123,7 @@ class FundHorizonMath(unittest.TestCase):
         self.assertIsNone(parsed["metrics"]["asset_balance_horizons"]["m3"]["change_bn"])
 
     def test_etf_one_month_estimate_requires_daily_history(self):
+        cumulative_monthly_flows = etf_monthly_function()
         source = "https://www.ishares.com/us/products/example"
         history = []
         for observed, flow in (
