@@ -69,6 +69,7 @@
     "15b05d03c344143720a7",
     "15f7f5cec986268904c47c17",
     "16bfcacd5356981eb45c",
+    "16e9f2bf466f6aaa881c",
     "172e342e3fb1fffa5e5c",
     "1783e528f1dfdb1b36f16172",
     "1934c021c7e57d154ad56e98",
@@ -101,6 +102,7 @@
     "22bf456562868e50dc36",
     "22eb49c6230d679eecd3",
     "2321935ef5e4ff3765fb",
+    "233612993c2c7ee8f712",
     "233a8fc482d1459aca6cb981",
     "235a0c08c21bbebc5a7722b4",
     "23918cb912cf5fefd990",
@@ -842,7 +844,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-11-03T10:36:50+09:00",
+  "last_scan_kst": "2026-11-03T17:36:05+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -850,6 +852,8 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 12,
-  "fetch_errors": []
+  "fetch_ok": 11,
+  "fetch_errors": [
+    "bing_news \"Apple\" \"M8 Ultra\" server: ParseError not well-formed (invalid token): line 1, column 41"
+  ]
 }
