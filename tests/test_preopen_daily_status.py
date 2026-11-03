@@ -36,6 +36,27 @@ class PreopenDailyStatusTests(unittest.TestCase):
         self.assertIn("변경 없음", message)
         self.assertIn("ICI: October 28, 2026", message)
 
+    def test_us_rechecked_periods_show_horizons_but_mismatched_source_does_not(self):
+        values = {
+            "ICI|combined": {"period": "October 21, 2026", "fingerprint": "a" * 64, "metrics": {"domestic_flow_horizons": {"m1": {"value_bn": -491.959}, "m3": {"value_bn": None, "reason": "weekly_history_does_not_cover_target_window"}}}},
+            "ICI|mmf": {"period": "October 28, 2026", "fingerprint": "b" * 64, "metrics": {"asset_balance_horizons": {"m1": {"change_bn": -35.437}, "m3": {"change_bn": 40.535}}}},
+            "FINRA|margin": {"period": "Sep-26", "fingerprint": "c" * 64, "metrics": {"margin_debt_horizons": {"m1": {"change_bn": 26.222}, "m3": {"change_bn": -22.018}}}},
+        }
+        self.cfg["saved"].write_text(json.dumps({"values": values}), encoding="utf-8")
+        self.cfg["status"].write_text(
+            "- parsed sources: 3\n- updates: 0\n"
+            "- ICI combined | October 21, 2026 | aaaaaaaaaaaa\n"
+            "- ICI mmf | October 28, 2026 | bbbbbbbbbbbb\n"
+            "- FINRA margin | Sep-26 | dddddddddddd\n"
+            "- USD/KRW: 1341.0 (20261103)\n", encoding="utf-8"
+        )
+        with patch.dict(status.CONFIG, {"us": {"title": "미국 증시 자금흐름", **self.cfg}}):
+            message = status.build_us_message(self.now, "scheduled_check")
+        self.assertIn("1M -4,919.6억달러 (약 -659.7조원)", message)
+        self.assertIn("3M 확인 불가 (동일 정의 주간 이력이 목표일까지 이어지지 않음)", message)
+        self.assertIn("FINRA 마진부채 잔액 차이: 1M/3M 확인 불가", message)
+        self.assertNotIn("+262.2억달러", message)
+
     def test_kofia_misaligned_dates_are_explicit(self):
         self.cfg["evidence"].write_text(json.dumps({"phase": "alignment_pending", "latest_dates": {"deposit": "2026-11-02", "mmf": "2026-10-30"}}), encoding="utf-8")
         with patch.dict(status.CONFIG, {"kofia": {"title": "국내 증시 대기자금", **self.cfg}}):
@@ -43,6 +64,21 @@ class PreopenDailyStatusTests(unittest.TestCase):
         self.assertIn("기준일 불일치", message)
         self.assertIn("2026-11-02", message)
         self.assertIn("2026-10-30", message)
+
+    def test_kofia_unchanged_official_rows_show_balance_horizons_only_after_fingerprint_check(self):
+        fp = "a" * 64
+        rows = "".join(f"- {key} 20261102: 100 / 1M -1.2조↓ / 3M +0.3조↑\n" for key in ("deposit", "mmf", "cma", "credit"))
+        self.cfg["status"].write_text(rows + f"- fingerprint {fp}\n", encoding="utf-8")
+        evidence = {"phase": "validated", "changed": False, "fingerprint": fp, "latest_dates": {key: "20261102" for key in ("deposit", "mmf", "cma", "credit")}}
+        self.cfg["evidence"].write_text(json.dumps(evidence), encoding="utf-8")
+        self.cfg["saved"].write_text(json.dumps({"fingerprint": fp, "snapshot_date": "20261102"}), encoding="utf-8")
+        with patch.dict(status.CONFIG, {"kofia": {"title": "국내 증시 대기자금", **self.cfg}}):
+            message = status.build_kofia_message(self.now, "scheduled_check")
+            self.assertIn("투자자예탁금 (20261102): 1M -1.2조↓ / 3M +0.3조↑", message)
+            self.cfg["saved"].write_text(json.dumps({"fingerprint": "b" * 64, "snapshot_date": "20261102"}), encoding="utf-8")
+            mismatched = status.build_kofia_message(self.now, "scheduled_check")
+        self.assertIn("지문 대조 실패", mismatched)
+        self.assertNotIn("-1.2조↓", mismatched)
 
     def test_receipt_dedup_and_chat_check_without_network(self):
         expected = "Morning status"
