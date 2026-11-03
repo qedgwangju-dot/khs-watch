@@ -214,6 +214,12 @@ def _telegram_json(url, data=None, timeout=30):
     return result
 
 
+def in_workflow_run_window(now, family):
+    minute_of_day = now.hour * 60 + now.minute
+    start = 7 * 60 + (35 if family == "kofia" else 0)
+    return start <= minute_of_day < 8 * 60
+
+
 def send_message(topic, cfg, message, now):
     day = now.date().isoformat()
     prior = read_json(cfg["state"])
@@ -275,10 +281,9 @@ def main():
     now = dt.datetime.now(KST).replace(microsecond=0)
     cfg = CONFIG[args.family]
     reason = os.getenv("PREOPEN_STATUS_REASON", "scheduled_check")
-    if args.family == "kofia" and os.getenv("GITHUB_EVENT_NAME") == "workflow_run":
-        minute_of_day = now.hour * 60 + now.minute
-        if not 7 * 60 + 35 <= minute_of_day < 8 * 60:
-            print(f"preopen_daily_status_suppressed=true topic=kofia at_kst={now:%H:%M} reason=outside_final_morning_window")
+    if os.getenv("GITHUB_EVENT_NAME") == "workflow_run":
+        if not in_workflow_run_window(now, args.family):
+            print(f"preopen_daily_status_suppressed=true topic={args.family} at_kst={now:%H:%M} reason=outside_final_morning_window")
             return
     cfg["pending"].parent.mkdir(parents=True, exist_ok=True)
     cfg["receipt"].parent.mkdir(parents=True, exist_ok=True)

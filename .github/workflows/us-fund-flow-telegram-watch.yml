@@ -29,6 +29,11 @@ on:
     - cron: "37 0 * * 2-6"
     # Extra official publication checks after U.S. close; tech ETF only.
     - cron: "37 2,4 * * 2-6"
+  # Existing Warsh completion provides a second morning trigger when schedule is missed.
+  workflow_run:
+    workflows: ["Warsh Reaction Function Telegram Watch"]
+    types: [completed]
+    branches: [main]
   pull_request:
     paths:
       - "scripts/us_fund_flow_watch.py"
@@ -266,6 +271,8 @@ jobs:
       github.event_name != 'pull_request' &&
       !contains(github.event.head_commit.message, '[tech-etf-proxy-validate]') &&
       !contains(github.event.head_commit.message, '[retail-survey-validate]') &&
+      !(github.event_name == 'workflow_run' &&
+        !contains(github.event.workflow_run.created_at, 'T22:')) &&
       !(github.event_name == 'schedule' &&
         (github.event.schedule == '37 23 * * 1-5' ||
          github.event.schedule == '37 0 * * 2-6' ||
@@ -477,7 +484,7 @@ jobs:
           PY
 
       - name: Send pre-open status when no factual flow report was delivered
-        if: always() && github.event_name == 'schedule' && (github.event.schedule == '35 7 * * 1-5' || github.event.schedule == '45 7 * * 1-5')
+        if: always() && ((github.event_name == 'schedule' && (github.event.schedule == '35 7 * * 1-5' || github.event.schedule == '45 7 * * 1-5')) || (github.event_name == 'workflow_run' && contains(github.event.workflow_run.created_at, 'T22:')))
         env:
           PREOPEN_STATUS_REASON: ${{ steps.query_fund_flow.outcome != 'success' && 'source_collection_failed' || steps.pre_send_dedup.outcome == 'failure' && 'source_validation_failed' || steps.send_updates.outcome == 'failure' && 'telegram_delivery_unconfirmed' || 'scheduled_check' }}
         run: python scripts/preopen_daily_status.py --family us

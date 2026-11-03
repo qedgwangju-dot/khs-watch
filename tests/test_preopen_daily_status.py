@@ -66,6 +66,16 @@ class PreopenDailyStatusTests(unittest.TestCase):
                     status.send_message("us", self.cfg, "Morning status", self.now)
         self.assertFalse(self.cfg["receipt"].exists())
 
+    def test_existing_workflow_fallback_has_family_specific_morning_window(self):
+        at_early = self.now.replace(hour=7, minute=20)
+        at_final = self.now.replace(hour=7, minute=45)
+        after_open = self.now.replace(hour=8, minute=0)
+        self.assertTrue(status.in_workflow_run_window(at_early, "us"))
+        self.assertFalse(status.in_workflow_run_window(at_early, "kofia"))
+        self.assertTrue(status.in_workflow_run_window(at_final, "us"))
+        self.assertTrue(status.in_workflow_run_window(at_final, "kofia"))
+        self.assertFalse(status.in_workflow_run_window(after_open, "us"))
+
 
 if __name__ == "__main__":
     unittest.main()
