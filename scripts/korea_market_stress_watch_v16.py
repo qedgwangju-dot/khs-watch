@@ -549,6 +549,37 @@ def _postprocess_source_note() -> None:
     watch.ALERT_PATH.write_text(text, encoding="utf-8")
 
 
+def _postprocess_missing_three_day_status() -> None:
+    """Never report a missing three-session sum as a real zero in the run summary."""
+    if not watch.STATUS_PATH.exists() or not watch.PENDING_PATH.exists():
+        return
+    try:
+        pending = json.loads(watch.PENDING_PATH.read_text(encoding="utf-8"))
+        snap = pending.get("snapshot") or {}
+        lines = watch.STATUS_PATH.read_text(encoding="utf-8").splitlines()
+    except (OSError, ValueError, TypeError):
+        return
+
+    changed = False
+    for market, key in (("KOSPI", "foreign_flow"), ("KOSDAQ", "kosdaq_foreign_flow")):
+        flow = snap.get(key) or {}
+        if flow.get("three_day_available") is not False:
+            continue
+        for i, line in enumerate(lines):
+            if not line.startswith(f"- {market} 외국인:"):
+                continue
+            if ", 3거래일 " not in line or ", 기준일 " not in line:
+                continue
+            before, remainder = line.split(", 3거래일 ", 1)
+            _, date_text = remainder.split(", 기준일 ", 1)
+            lines[i] = (
+                f"{before}, 3거래일 확인 불가(확정 일별 수급 공백), 기준일 {date_text}"
+            )
+            changed = True
+    if changed:
+        watch.STATUS_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
 def _reset_today_bad_flow_events_once() -> None:
     state = _state()
     today = dt.datetime.now(watch.KST).date().isoformat()
@@ -590,6 +621,7 @@ def main() -> int:
         v15._persist_final_history = _ORIGINAL_FINAL_PERSIST
         v15._safe_persist_ls_history = _ORIGINAL_SAFE_LS_PERSIST
     _postprocess_source_note()
+    _postprocess_missing_three_day_status()
     return rc
 
 

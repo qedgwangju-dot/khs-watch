@@ -463,8 +463,18 @@ jobs:
                       result = json.loads(response.read().decode("utf-8"))
                   if not result.get("ok"):
                       raise RuntimeError(f"Telegram rejected message: {result}")
-                  sent_ids.append(result["result"].get("message_id"))
-          print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(sent_ids)} ids={sent_ids}")
+                  message = result.get("result") or {}
+                  response_chat = message.get("chat") or {}
+                  returned_id = str(response_chat.get("id") or "")
+                  if chat_id.lstrip("-").isdigit():
+                      chat_match = returned_id == str(int(chat_id))
+                  else:
+                      chat_match = chat_id.startswith("@") and str(response_chat.get("username") or "").casefold() == chat_id[1:].casefold()
+                  message_id = message.get("message_id")
+                  if not chat_match or not isinstance(message_id, int) or message_id <= 0:
+                      raise RuntimeError("Telegram response chat or message_id does not match approved route")
+                  sent_ids.append(message_id)
+          print(f"telegram_delivery_confirmed=true bot=@{actual} chat_match=true messages={len(sent_ids)} ids={sent_ids}")
           PY
 
       - name: Persist watcher states after successful check and delivery
