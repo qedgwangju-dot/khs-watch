@@ -50,6 +50,27 @@ AIDC_ECOSYSTEM_RSS = (
     + quote_plus('("AIDC 생태계" OR "인공지능 데이터센터 생태계" OR "AI 데이터센터 규제") ("규제합리화" OR "인허가" OR "소부장" OR "2000억원" OR "2천억원" OR "특구")')
     + "&hl=ko&gl=KR&ceid=KR:ko"
 )
+AIDC_POWER_DEMAND_RSS = (
+    "https://news.google.com/rss/search?q="
+    + quote_plus('("AIDC" OR "AI 데이터센터" OR "인공지능 데이터센터") ("전력수요" OR "전기본") ("3~4GW" OR "3∼4GW" OR "축소" OR "7.9GW" OR "11.9GW")')
+    + "&hl=ko&gl=KR&ceid=KR:ko"
+)
+AIDC_POWER_DEMAND_OFFICIAL_RSS = (
+    "https://news.google.com/rss/search?q="
+    + quote_plus('site:mcee.go.kr ("AIDC" OR "인공지능 데이터센터") ("전력수요" OR "12차 전기본")')
+    + "&hl=ko&gl=KR&ceid=KR:ko"
+)
+AIDC_POWER_DEMAND_MEDIA_BASELINE = {
+    "id": "aidc-power-20261023-mk",
+    "title": "AI 데이터센터 전력 수요 3~4GW 축소 검토 - 매일경제",
+    "publisher": "매일경제",
+    "source": "국내 주요 언론",
+    "official": False,
+    "url": "https://www.mk.co.kr/news/business/12184442",
+    "published": "Fri, 23 Oct 2026 08:47:00 GMT",
+    "category": "AIDC 전력수요 전망 재검토",
+    "stage": 2,
+}
 AIDC_ECOSYSTEM_OFFICIAL_RSS = (
     "https://news.google.com/rss/search?q="
     + quote_plus('site:korea.kr ("AIDC" OR "인공지능 데이터센터") ("규제합리화" OR "생태계 지원" OR "2000억원")')
@@ -59,6 +80,8 @@ EXTRA_RSS_SOURCES = (
     ("국내 AIDC 사업 실행", False, SGC_GUNSAN_RSS),
     ("AIDC 생태계 지원 언론", False, AIDC_ECOSYSTEM_RSS),
     ("AIDC 생태계 공식자료", True, AIDC_ECOSYSTEM_OFFICIAL_RSS),
+    ("AIDC 전력수요 전망 언론", False, AIDC_POWER_DEMAND_RSS),
+    ("AIDC 전력수요 전망 공식", True, AIDC_POWER_DEMAND_OFFICIAL_RSS),
 )
 
 # 검색엔진이 누락해도 원문을 직접 다시 확인한다. 이 URL은 정책 기준선일 뿐
@@ -80,7 +103,7 @@ AIDC_ECOSYSTEM_OFFICIAL_BASELINE = {
     "publisher": "국무조정실",
     "source": "대한민국 정책브리핑",
     "official": True,
-    "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156786291",
+    "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156786535",
     "published": "Fri, 23 Oct 2026 05:00:00 GMT",
     "category": "AIDC 생태계 지원 방안",
     "stage": 3,
@@ -96,6 +119,12 @@ def semantic_key(row: dict[str, Any]) -> str:
     """URL·언론사·기사 제목 해시가 아니라 사업·법령의 의미 있는 상태로 분류."""
     title = base.norm(str(row.get("title", ""))).lower()
     aidc_topic = any(x in title for x in ("aidc", "인공지능 데이터센터", "ai 데이터센터"))
+    # 12차 전기본 AIDC '추가 전력수요' 감축 검토는 규제완화 예산안과 별도 사건이다.
+    # 최종 확정은 반드시 정부 공식문서로 검증한다.
+    if aidc_topic and any(x in title for x in ("전력수요", "전력 수요", "전기본", "전력계획", "최대전력")) and any(
+        x in title for x in ("하향", "축소", "감축", "재검토", "줄이", "7.9gw", "11.9gw", "3~4gw", "3∼4gw", "3-4gw")
+    ):
+        return "aidc|power-demand|revision-review"
     if aidc_topic and any(x in title for x in ("예산 최종 확정", "예산 국회 확정")) and any(
         x in title for x in ("국산화", "소부장", "2천억", "2000억")
     ):
@@ -141,6 +170,9 @@ def semantic_key(row: dict[str, Any]) -> str:
 
 def event_level(row: dict[str, Any]) -> int:
     key = semantic_key(row)
+    if key == "aidc|power-demand|revision-review":
+        # 한 번 검증된 '검토'는 기사 수·재인용·신문사 변경으로 승격되지 않는다.
+        return 30
     if key == "aidc|ecosystem-support|government-proposal":
         # 정부 발표를 다른 매체가 재인용해도 같은 사건 단계다.
         return 30
@@ -348,6 +380,20 @@ def verify_change(row: dict[str, Any]) -> tuple[bool, str]:
     if not ("aidc" in body or "인공지능 데이터센터" in body or "ai 데이터센터" in body):
         return False, "본문의 AIDC 관련성을 검증하지 못함"
 
+    if key == "aidc|power-demand|revision-review":
+        if not any(x in body for x in ("12차 전력수급기본계획", "12차 전기본", "제12차 전력수급기본계획")):
+            return False, "제12차 전력수급기본계획 연결 근거 없음"
+        if not any(x in body for x in ("7.9gw", "7.9기가와트", "11.9gw", "11.9기가와트")):
+            return False, "기존 전력수요 전망 기준 숫자 미확인"
+        if not re.search(r"3\\s*[~∼〜-]\\s*4\\s*(?:gw|기가와트)", body) and not (
+            ("3gw" in body or "3기가와트" in body) and ("4gw" in body or "4기가와트" in body)
+        ):
+            return False, "3~4GW 재검토 규모 확인 실패"
+        if not any(x in body for x in ("축소", "하향", "줄이", "줄이는", "덜어", "반영하지")):
+            return False, "축소 검토 방향 확인 실패"
+        if not any(x in body for x in ("검토", "확정되지", "최종 확정 전", "논의", "아직 확정")):
+            return False, "결정 완료와 검토 단계 구분 불가"
+        return True, "AIDC 전력수요 3~4GW 하향 검토: 정부 최종 확정 전"
     if key == "aidc|ecosystem-support|government-proposal":
         if not (all(x in body for x in ("인허가", "특구")) and any(x in body for x in ("2000억", "2,000억", "2천억", "2천억원", "2,000억원"))
                 and any(x in body for x in ("국산화", "소부장", "소재·부품·장비"))):
@@ -437,6 +483,22 @@ def fact_lines(row: dict[str, Any]) -> tuple[list[str], list[str], list[str]]:
     body = str(row.get("article_body", ""))
     lower = body.lower()
 
+    if key == "aidc|power-demand|revision-review":
+        return (
+            [
+                "• <b>12차 전기본 AIDC 추가 전력수요 7.9GW 중 3~4GW 감축 검토</b>; 반영 증가분은 단순 계산 시 3.9~4.9GW가 되지만 <b>최종 확정 전</b>",
+                "• 3대 메가프로젝트 <b>1단계 8.4GW·2단계 10GW</b>는 프로젝트 구상 용량이며 전기본 반영 수치·전원 인가·실제 가동 용량과 별개",
+                "• 2026년 10월 26일 국정감사에서 장관은 <b>수요 검증 진행 중이며 감축 규모는 확정되지 않았다</b>고 설명",
+            ],
+            [
+                "• 과기정통부의 <b>인허가 간소화·국산화 2,000억원 정부안</b>과 기후부의 <b>전력수요 하향 검토</b>는 동시 발생했지만 정책 효과가 상충할 수 있음",
+                "• 전망치 하향은 데이터센터 사업 취소 확정이나 이미 계약된 전력용량 회수와 동의어가 아님",
+            ],
+            [
+                "• 프로젝트별 <b>전력사용계약·계통 접속 승인·전원 인가·GPU 설치·실가동 MW</b>를 각각 추적",
+                "• 다음 확인: 12차 전기본 공식 정부안의 수요 증가분·지역별 송변전 계획·확정 사업자와 2027년 AIDC 국산화 사업의 실제 공모",
+            ],
+        )
     if key == "aidc|ecosystem-support|government-proposal":
         return (
             [
@@ -601,6 +663,8 @@ def source_link(row: dict[str, Any]) -> str:
 def render(row: dict[str, Any]) -> str:
     title = html.escape(base.norm(str(row.get("title", ""))))
     category = html.escape(str(row.get("category", "AIDC 특별법")))
+    if str(row.get("event_key", "")) == "aidc|power-demand|revision-review":
+        category = "AIDC 전력수요 3~4GW 하향 검토 (미확정)"
     if str(row.get("event_key", "")).startswith("aidc|ecosystem-support|"):
         category = "AIDC 생태계 지원·정부안" if row["event_key"].endswith("government-proposal") else "AIDC 지원 예산 확정"
     if str(row.get("event_key")) == "aidc|tax-credit|eligibility":
@@ -694,6 +758,10 @@ def main() -> int:
     if baseline_date and timedelta(0) <= now - baseline_date.astimezone(timezone.utc) <= timedelta(days=MAX_AGE_DAYS):
         recent.append(dict(AIDC_ECOSYSTEM_OFFICIAL_BASELINE))
         recent.append(dict(AIDC_ECOSYSTEM_MEDIA_BASELINE))
+
+    power_date = base.parse_date(AIDC_POWER_DEMAND_MEDIA_BASELINE["published"])
+    if power_date and timedelta(0) <= now - power_date.astimezone(timezone.utc) <= timedelta(days=MAX_AGE_DAYS):
+        recent.append(dict(AIDC_POWER_DEMAND_MEDIA_BASELINE))
 
     events = collapse(recent)
     seen = {str(k): int(v) for k, v in dict(state.get("seen_events", {})).items()}
