@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-03T11:29:20+09:00",
+  "updated_at_kst": "2026-11-03T19:27:34+09:00",
   "correction_pending": false,
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
@@ -23,25 +23,22 @@
   },
   "btc_etf": {
     "date": "2026-11-02",
-    "total_usd_m": 6.7,
-    "status": "partial",
-    "reported_funds": 10,
-    "missing_funds": 2,
-    "missing_tickers": [
-      "IBIT",
-      "HODL"
-    ],
+    "total_usd_m": -398.6,
+    "status": "complete",
+    "reported_funds": 12,
+    "missing_funds": 0,
+    "missing_tickers": [],
     "prev_date": "2026-10-30",
     "prev_total_usd_m": -643.2,
-    "day_change_usd_m": 649.9,
-    "day_change_pct": 101.0,
+    "day_change_usd_m": 244.6,
+    "day_change_pct": 38.0,
     "source_latest_date": "2026-11-02",
-    "source_latest_status": "partial",
+    "source_latest_status": "complete",
     "pending_date": null,
-    "latest_recomputed_total_usd_m": 6.7,
+    "latest_recomputed_total_usd_m": -398.6,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
-    "last5_usd_m": -306.0,
+    "last5_usd_m": -711.3,
     "last5_dates": [
       "2026-10-27",
       "2026-10-28",
@@ -54,7 +51,7 @@
       137.3,
       17.2,
       -643.2,
-      6.7
+      -398.6
     ],
     "prev5_usd_m": -115.2,
     "prev5_dates": [
@@ -72,8 +69,8 @@
       110.3
     ],
     "five_day_compare_valid": true,
-    "five_day_change_usd_m": -190.8,
-    "five_day_change_pct": -165.6,
+    "five_day_change_usd_m": -596.1,
+    "five_day_change_pct": -517.4,
     "five_day_direction": "순자금흐름 악화",
     "windows": {
       "1m": {
@@ -85,11 +82,9 @@
         "missing_trading_dates": [],
         "unexpected_trading_dates": [],
         "validation_issue": "",
-        "partial_days": 1,
-        "partial_dates": [
-          "2026-11-02"
-        ],
-        "value_usd_m": -801.8,
+        "partial_days": 0,
+        "partial_dates": [],
+        "value_usd_m": -1207.1,
         "prev_start": "2026-09-03",
         "prev_end": "2026-10-02",
         "prev_trading_days": 21,
@@ -98,10 +93,10 @@
         "prev_expected_trading_days": 21,
         "prev_missing_trading_dates": [],
         "prev_value_usd_m": 3075.7,
-        "change_usd_m": -3877.5,
+        "change_usd_m": -4282.8,
         "direction": "순유입→순유출 전환",
-        "status": "잠정",
-        "avg_usd_m_per_session": -38.2,
+        "status": "집계완료(수정가능)",
+        "avg_usd_m_per_session": -57.5,
         "prev_avg_usd_m_per_session": 146.5
       },
       "2m": {
@@ -113,11 +108,9 @@
         "missing_trading_dates": [],
         "unexpected_trading_dates": [],
         "validation_issue": "",
-        "partial_days": 1,
-        "partial_dates": [
-          "2026-11-02"
-        ],
-        "value_usd_m": 2273.9,
+        "partial_days": 0,
+        "partial_dates": [],
+        "value_usd_m": 1868.6,
         "prev_start": "2026-07-03",
         "prev_end": "2026-09-02",
         "prev_trading_days": 43,
@@ -129,10 +122,10 @@
         "prev_expected_trading_days": 43,
         "prev_missing_trading_dates": [],
         "prev_value_usd_m": 3649.0,
-        "change_usd_m": -1375.1,
+        "change_usd_m": -1780.4,
         "direction": "순유입 둔화",
         "status": "잠정",
-        "avg_usd_m_per_session": 54.1,
+        "avg_usd_m_per_session": 44.5,
         "prev_avg_usd_m_per_session": 84.9
       },
       "3m": {
@@ -144,12 +137,11 @@
         "missing_trading_dates": [],
         "unexpected_trading_dates": [],
         "validation_issue": "",
-        "partial_days": 2,
+        "partial_days": 1,
         "partial_dates": [
-          "2026-08-07",
-          "2026-11-02"
+          "2026-08-07"
         ],
-        "value_usd_m": 5677.6,
+        "value_usd_m": 5272.3,
         "prev_start": "2026-05-03",
         "prev_end": "2026-08-02",
         "prev_trading_days": 62,
@@ -160,10 +152,10 @@
         "prev_expected_trading_days": 62,
         "prev_missing_trading_dates": [],
         "prev_value_usd_m": -7372.7,
-        "change_usd_m": 13050.3,
+        "change_usd_m": 12645.0,
         "direction": "순유출→순유입 전환",
         "status": "잠정",
-        "avg_usd_m_per_session": 87.3,
+        "avg_usd_m_per_session": 81.1,
         "prev_avg_usd_m_per_session": -118.9
       }
     },

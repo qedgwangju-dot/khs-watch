@@ -6,7 +6,6 @@
     "bastion_partner_primary": false,
     "errors": [
       "wallet_patent_us: HTTP Error 403: Forbidden",
-      "wallet_patent_us_crosscheck: HTTP Error 503: Service Unavailable",
       "bastion_partner_primary: HTTP Error 403: Forbidden"
     ],
     "explicit_reversal_confirmed": false,
@@ -50,5 +49,5 @@
     "wallet_patent_publication": "US20260212355A1",
     "wallet_patent_publication_date": "2026-07-23"
   },
-  "updated_at_kst": "2026-11-03T19:00:37+09:00"
+  "updated_at_kst": "2026-11-03T19:28:07+09:00"
 }
