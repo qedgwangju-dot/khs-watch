@@ -20,6 +20,22 @@ class CommitTests(unittest.TestCase):
     def test_confirmed_same_value_correction_can_advance_version(self):
         self.assertTrue(keep_incoming(self.current, self.incoming))
 
+    def test_confirmed_calendar_month_payload_can_advance_after_delivery(self):
+        # The collector appends this field to its fingerprint payload in v5.
+        # A valid Telegram receipt must not be lost at the state-commit step.
+        self.incoming['values']['balance_horizons'] = {
+            'm1': {'changes': {'mmf': {'delta': 100}}},
+            'm3': {'changes': {'mmf': {'delta': 200}}},
+        }
+        self.incoming['fingerprint'] = hashlib.sha256(
+            json.dumps(self.incoming['values'], separators=(',', ':'),
+                       ensure_ascii=False).encode()
+        ).hexdigest()
+        self.assertTrue(keep_incoming(self.current, self.incoming))
+        self.incoming['values']['balance_horizons']['m1']['changes']['mmf']['delta'] += 1
+        with self.assertRaisesRegex(RuntimeError, 'fingerprint inconsistent'):
+            keep_incoming(self.current, self.incoming)
+
     def test_unconfirmed_candidate_cannot_advance(self):
         self.incoming['delivery_receipt'] = {}
         with self.assertRaises(RuntimeError): keep_incoming(self.current, self.incoming)
