@@ -40,6 +40,27 @@ function loadStateStrict(filePath) {
       }
     }
   }
+  const horizons = state.values.balance_horizons;
+  if (horizons !== undefined) {
+    if (!horizons || typeof horizons !== 'object' || !horizons.m1 || !horizons.m3) {
+      throw new Error('KOFIA persisted calendar-month balance horizons malformed');
+    }
+    for (const horizonKey of ['m1', 'm3']) {
+      const window = horizons[horizonKey];
+      if (!/^\d{8}$/.test(String(window.target_date || '')) ||
+          String(window.end_date) !== date || !window.changes || typeof window.changes !== 'object') {
+        throw new Error('KOFIA persisted horizon date/changes malformed: ' + horizonKey);
+      }
+      for (const key of CORE) {
+        const change = window.changes[key];
+        if (!change || (change.delta !== null &&
+            (typeof change.delta !== 'number' || !Number.isFinite(change.delta) ||
+             change.start_date !== window.anchor_date || change.end_date !== date))) {
+          throw new Error('KOFIA persisted horizon metric malformed: ' + horizonKey + '.' + key);
+        }
+      }
+    }
+  }
   for (const key of ['receivable', 'forced']) {
     const extra = state.values[key];
     if (!extra || extra.date !== date || typeof extra.value !== 'number' ||
@@ -50,6 +71,7 @@ function loadStateStrict(filePath) {
   const payload = Object.fromEntries(
     ['deposit','mmf','cma','credit','receivable','forced'].map(k=>[k,state.values[k]])
   );
+  if (horizons !== undefined) payload.balance_horizons = horizons;
   const computedFingerprint = crypto.createHash('sha256')
     .update(JSON.stringify(payload)).digest('hex');
   if (computedFingerprint !== state.fingerprint) {

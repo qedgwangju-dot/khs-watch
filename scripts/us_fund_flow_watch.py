@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-import os, re, json, hashlib, html
+import os, re, json, hashlib, html, math
 from io import StringIO
 from pathlib import Path
 from datetime import datetime, timedelta, timezone, date
 from zoneinfo import ZoneInfo
 from urllib.parse import quote, urljoin
 from email.utils import parsedate_to_datetime
+from market_time_windows import subtract_calendar_months
 
 import requests
 import pandas as pd
@@ -756,6 +757,153 @@ def _ici_table_rows(page_html, required_labels):
     raise RuntimeError("ICI latest-week official numeric table incomplete; alert withheld")
 
 
+def _ici_weekly_history(page_html, required_labels):
+    """Extract dated weekly columns from an official ICI HTML table, if present.
+
+    The downloadable historical workbook is not assumed. Short HTML history is
+    retained as short history; callers label longer horizons unavailable.
+    """
+    soup = BeautifulSoup(page_html, "html.parser")
+    date_re = re.compile(r"(\d{1,2}/\d{1,2}/20\d{2})")
+    for table in soup.find_all("table"):
+        rows = []
+        columns = {}
+        for tr in table.find_all("tr"):
+            cells = [clean_text(cell.get_text(" ", strip=True))
+                     for cell in tr.find_all(["th", "td"], recursive=False)]
+            if not cells:
+                continue
+            rows.append(cells)
+            for index, cell in enumerate(cells):
+                match = date_re.fullmatch(cell.strip())
+                if match:
+                    columns[index] = datetime.strptime(match.group(1), "%m/%d/%Y").date()
+        if not columns:
+            continue
+        latest = max(columns.values())
+        mapped = {}
+        for cells in rows:
+            if len(cells) <= 1:
+                continue
+            label = cells[0].strip().lower().replace("*", "")
+            if label not in required_labels:
+                continue
+            observations = []
+            for index, observed in columns.items():
+                if index >= len(cells):
+                    continue
+                value = parse_num(cells[index])
+                if value is not None:
+                    observations.append({"date": observed, "value": value})
+            if observations:
+                by_date = {}
+                for item in observations:
+                    if item["date"] in by_date and by_date[item["date"]] != item["value"]:
+                        return {}
+                    by_date[item["date"]] = item["value"]
+                if label in mapped and {
+                    item["date"]: item["value"] for item in mapped[label]
+                } != by_date:
+                    return {}
+                mapped[label] = sorted(
+                    ({"date": observed, "value": value} for observed, value in by_date.items()),
+                    key=lambda item: item["date"], reverse=True,
+                )
+        if set(required_labels).issubset(mapped) and all(
+            any(item["date"] == latest for item in mapped[label]) for label in required_labels
+        ):
+            return mapped
+    return {}
+
+
+def _ici_weekly_flow_horizon(observations, end_date, months_back, *, max_gap_days=8):
+    target = subtract_calendar_months(end_date, months_back)
+    by_date = {}
+    for row in observations:
+        observed, value = row.get("date"), row.get("value")
+        if observed is None or observed > end_date:
+            continue
+        if observed in by_date and by_date[observed] != value:
+            return {
+                "months_back": months_back, "target_date": target.isoformat(),
+                "start_week_ended": None, "end_week_ended": end_date.isoformat(),
+                "observation_count": 0, "value_bn": None,
+                "reason": "conflicting_duplicate_week",
+            }
+        by_date[observed] = value
+    rows = [{"date": observed, "value": value} for observed, value in sorted(by_date.items())]
+    included = [row for row in rows if target < row["date"] <= end_date]
+    result = {
+        "months_back": months_back,
+        "target_date": target.isoformat(),
+        "start_week_ended": included[0]["date"].isoformat() if included else None,
+        "end_week_ended": end_date.isoformat(),
+        "observation_count": len(included),
+        "value_bn": None,
+        "reason": None,
+    }
+    if not included or included[-1]["date"] != end_date:
+        result["reason"] = "current_week_missing"
+        return result
+    if (included[0]["date"] - target).days > max_gap_days:
+        result["reason"] = "weekly_history_does_not_cover_target_window"
+        return result
+    previous = target
+    for row in included:
+        if not isinstance(row["value"], (int, float)) or not math.isfinite(row["value"]):
+            result["reason"] = "invalid_weekly_observation"
+            return result
+        if (row["date"] - previous).days > max_gap_days:
+            result["reason"] = "weekly_observation_gap_exceeds_8_days"
+            return result
+        previous = row["date"]
+    result["value_bn"] = round(sum(row["value"] for row in included), 3)
+    return result
+
+
+def _ici_balance_change_horizon(observations, end_date, current_bn, months_back, *, max_gap_days=7):
+    target = subtract_calendar_months(end_date, months_back)
+    by_date = {}
+    for row in observations:
+        observed, value = row.get("date"), row.get("value")
+        if observed is None:
+            continue
+        if observed in by_date and by_date[observed] != value:
+            return {
+                "months_back": months_back, "target_date": target.isoformat(),
+                "anchor_date": None, "end_date": end_date.isoformat(),
+                "change_bn": None, "reason": "conflicting_duplicate_balance_observation",
+            }
+        by_date[observed] = value
+    latest = by_date.get(end_date)
+    if latest is None or current_bn is None or abs(float(latest) - float(current_bn)) > 0.001:
+        return {
+            "months_back": months_back, "target_date": target.isoformat(),
+            "anchor_date": None, "end_date": end_date.isoformat(),
+            "change_bn": None, "reason": "current_balance_history_mismatch",
+        }
+    earlier = [{"date": observed, "value": value} for observed, value in by_date.items()
+               if observed <= target]
+    anchor = max(earlier, key=lambda row: row["date"]) if earlier else None
+    result = {
+        "months_back": months_back,
+        "target_date": target.isoformat(),
+        "anchor_date": anchor["date"].isoformat() if anchor else None,
+        "end_date": end_date.isoformat(),
+        "change_bn": None,
+        "reason": None,
+    }
+    if not anchor:
+        result["reason"] = "official_observation_before_target_missing"
+    elif (target - anchor["date"]).days > max_gap_days:
+        result["reason"] = "official_anchor_more_than_7_days_before_target"
+    elif current_bn is None or anchor.get("value") is None:
+        result["reason"] = "balance_observation_missing"
+    else:
+        result["change_bn"] = round(current_bn - anchor["value"], 3)
+    return result
+
+
 def _ici_period_from_prose(text):
     m = re.search(
         r"week ended(?: Wednesday,?)?\s+([A-Za-z]+\s+\d{1,2})(?:,\s+(20\d{2}))?",
@@ -801,6 +949,15 @@ def parse_ici_combined():
     if abs(values["total"] - prose_total) > 0.025:
         raise RuntimeError(f"ICI combined table/prose amount mismatch {values['total']} vs {prose_total}")
 
+    history = _ici_weekly_history(page_html, ("domestic",))
+    weekly = [
+        {"date": item["date"], "value": item["value"] / 1000.0}
+        for item in history.get("domestic", [])
+    ]
+    values["domestic_flow_horizons"] = {
+        f"m{months}": _ici_weekly_flow_horizon(weekly, ref_date, months)
+        for months in (1, 3)
+    }
     payload = {
         "source": "ICI", "kind": "combined",
         "period": ref_date.strftime("%B %d, %Y"),
@@ -843,6 +1000,11 @@ def parse_ici_mmf():
     if abs(total_bn / 1000.0 - reported_assets_tr) > 0.006:
         raise RuntimeError("ICI MMF headline/trillion level mismatch")
 
+    history = _ici_weekly_history(page_html, ("total",))
+    asset_observations = [
+        {"date": item["date"], "value": item["value"]}
+        for item in history.get("total", [])
+    ]
     payload = {
         "source": "ICI", "kind": "mmf",
         "period": ref_date.strftime("%B %d, %Y"),
@@ -851,6 +1013,12 @@ def parse_ici_mmf():
         "metrics": {
             "assets_trillion": round(total_bn / 1000.0, 5),
             "weekly_change_bn": round(reported_delta, 2),
+            "assets_bn": round(total_bn, 3),
+            "asset_balance_horizons": {
+                f"m{months}": _ici_balance_change_horizon(
+                    asset_observations, ref_date, total_bn, months
+                ) for months in (1, 3)
+            },
         },
         "quality_checks": ["same_week", "weekly_arithmetic", "table_change", "prose_level"],
     }
@@ -907,12 +1075,29 @@ def parse_finra():
         rows.sort(key=lambda r: month_key(r[0]), reverse=True)
     latest, prev = rows[0], rows[1]
 
+    parsed_months = {month_key(row[0]).strftime("%Y-%m"): row for row in rows
+                     if month_key(row[0]) != datetime.min}
+    latest_month = month_key(latest[0]).date() if month_key(latest[0]) != datetime.min else None
+    debt_windows = {}
+    for months_back in (1, 3):
+        target = subtract_calendar_months(latest_month, months_back) if latest_month else None
+        anchor = parsed_months.get(target.strftime("%Y-%m")) if target else None
+        debt_windows[f"m{months_back}"] = {
+            "months_back": months_back,
+            "target_month": target.strftime("%Y-%m") if target else None,
+            "anchor_period": anchor[0] if anchor else None,
+            "end_period": latest[0],
+            "change_bn": round((latest[1] - anchor[1]) / 1000.0, 3) if anchor else None,
+            "reason": None if anchor else "exact_calendar_month_observation_unavailable",
+        }
+
     # FINRA values are $ millions.
     metrics = {
         "margin_debt_bn": latest[1] / 1000.0,
         "cash_free_bn": latest[2] / 1000.0 if latest[2] is not None else None,
         "margin_free_bn": latest[3] / 1000.0 if latest[3] is not None else None,
-        "margin_debt_mom_bn": (latest[1] - prev[1]) / 1000.0,
+        "margin_debt_mom_bn": debt_windows["m1"]["change_bn"],
+        "margin_debt_horizons": debt_windows,
     }
     payload = {
         "source": "FINRA",
@@ -1566,27 +1751,170 @@ assert "직접 이동 확인 불가" in flow_direction(10.0, -5.0)
 assert "직접 이동 확인 불가" in flow_direction(-10.0, 5.0)
 
 
+def _horizon_change(value_bn, fx, *, flow=False):
+    if not isinstance(value_bn, (int, float)) or not math.isfinite(value_bn):
+        return "비교불가"
+    if flow:
+        direction = "순유입" if value_bn > 0 else "순유출" if value_bn < 0 else "보합"
+    else:
+        direction = "증가" if value_bn > 0 else "감소" if value_bn < 0 else "보합"
+    arrow = "↑" if value_bn > 0 else "↓" if value_bn < 0 else "≈"
+    return f"{direction} {fmt_usd_bn_kr(value_bn, fx)}{arrow}"
+
+
+def _horizon_window_text(window, fx, value_key, *, flow=False, date_keys=()):
+    if not isinstance(window, dict):
+        return "비교불가(원자료 이력 없음)"
+    value = window.get(value_key)
+    if value is None:
+        reason_labels = {
+            "current_week_missing": "현재 주간값 미확인",
+            "weekly_history_does_not_cover_target_window": "목표일 구간을 덮는 주간 이력 부족",
+            "weekly_observation_gap_exceeds_8_days": "주간 관측 공백 8일 초과",
+            "conflicting_duplicate_week": "중복 주간 관측 불일치",
+            "invalid_weekly_observation": "주간 원값 오류",
+            "official_observation_before_target_missing": "목표일 이전 공식 기준값 없음",
+            "official_anchor_more_than_7_days_before_target": "기준값이 목표일보다 7일 넘게 오래됨",
+            "balance_observation_missing": "잔액 원값 누락",
+            "current_balance_history_mismatch": "현재 잔액 이력 불일치",
+            "conflicting_duplicate_balance_observation": "중복 잔액 관측 불일치",
+            "exact_calendar_month_observation_unavailable": "해당 달력월 원값 없음",
+        }
+        reason = reason_labels.get(str(window.get("reason")), "공식 이력 부족")
+        return f"비교불가(목표 {window.get('target_date') or window.get('target_month') or '미확인'}; {reason})"
+    parts = [_horizon_change(value, fx, flow=flow)]
+    for key, label in date_keys:
+        if window.get(key):
+            parts.append(f"{label} {window[key]}")
+    count = window.get("observation_count")
+    if count is not None:
+        parts.append(f"주간 {count}건")
+    return "; ".join(parts)
+
+
+def _monthly_horizon_snapshot(ici, ici_mmf, finra, bofa, lipper, goldman, jpm, fed, fx):
+    lines = ["", "<b>1개월·3개월 누적흐름 / 잔액 비교</b>"]
+    equity = (ici or {}).get("metrics", {}).get("domestic_flow_horizons", {})
+    lines.append(
+        "• ICI 미국 국내주식형 주간 순유입 합계 — "
+        + " / ".join(
+            f"{months}M " + _horizon_window_text(
+                equity.get(key), fx, "value_bn", flow=True,
+                date_keys=(("target_date", "목표"), ("start_week_ended", "첫주"),
+                           ("end_week_ended", "마지막주")),
+            )
+            for months, key in ((1, "m1"), (3, "m3"))
+        )
+    )
+
+    mmf_horizons = (ici_mmf or {}).get("metrics", {}).get("asset_balance_horizons", {})
+    current_mmf = (ici_mmf or {}).get("metrics", {}).get("assets_trillion")
+    current_mmf_text = (
+        fmt_usd_trillion_kr(current_mmf, fx) if current_mmf is not None else "현재 잔액 확인불가"
+    )
+    lines.append(
+        f"• ICI MMF 총자산 잔액 {current_mmf_text}의 시점 간 증감 — "
+        + " / ".join(
+            f"{months}M " + _horizon_window_text(
+                mmf_horizons.get(key), fx, "change_bn",
+                date_keys=(("target_date", "목표"), ("anchor_date", "기준"),
+                           ("end_date", "종료")),
+            )
+            for months, key in ((1, "m1"), (3, "m3"))
+        )
+        + " (순유입액이 아님)"
+    )
+
+    debt_horizons = (finra or {}).get("metrics", {}).get("margin_debt_horizons", {})
+    current_debt = (finra or {}).get("metrics", {}).get("margin_debt_bn")
+    current_debt_text = (
+        fmt_usd_bn_kr(current_debt, fx) if current_debt is not None else "현재 잔액 확인불가"
+    )
+    lines.append(
+        f"• FINRA 마진부채 잔액 {current_debt_text}의 시점 간 증감 — "
+        + " / ".join(
+            f"{months}M " + _horizon_window_text(
+                debt_horizons.get(key), fx, "change_bn",
+                date_keys=(("target_month", "목표월"), ("anchor_period", "기준월"),
+                           ("end_period", "종료월")),
+            )
+            for months, key in ((1, "m1"), (3, "m3"))
+        )
+        + " (월간 잔액 차이; 주간 펀드흐름이 아님)"
+    )
+
+    def report_series_status(record):
+        if not record:
+            return "최신 보고 수집 대기; 1M/3M 확인불가"
+        return "단일 주간 보고만 확인; 기간 전체 시계열 없어 1M/3M 확인불가"
+
+    lines.append(
+        "• BofA/EPFR " + report_series_status(bofa)
+        + " / LSEG Lipper " + report_series_status(lipper)
+    )
+    lines.append(
+        "• Goldman Prime "
+        + ("최신 포지션 비율만 확인; 순유입 시계열 아님" if goldman else "최신 포지션 원자료 확인 대기")
+        + " / JPMorgan 가계·연준 Z.1 "
+        + ("저빈도 구조지표로 월간 자금흐름 비교 비대상" if jpm and fed else "최신 구조지표 확인 대기")
+    )
+    lines.append("• Hartnett/BofA 10/7 인용치는 단일 과거 주간 기준값이며 이후 1M/3M 누적치로 재사용하지 않음")
+    lines.append("• 출처별 모집단과 잔액/순유입 산식이 달라 합산하거나 동일 자금의 직접 이동으로 해석하지 않음")
+    return lines
+
+
 def source_block(x, fx):
     m = x["metrics"]
     lines = []
     if x["kind"] == "goldman_prime":
         lines.append(f"• 기술주 프라임 장부 순편입 비중 {m['tech_net_allocation_pct']:.2f}% / 헤지펀드 순레버리지 {m['net_leverage_pct']:.2f}%")
         lines.append("• 주간 기준일을 확인한 복수 언론 인용치. 고객 전용 업종별 정규화 매도·공매도 강도는 자동 수집·검증되지 않음")
+        lines.append("• 펀드 순유입 지표가 아니므로 1M/3M 유입액 비교 대상 아님")
     elif x["kind"] == "combined":
         lines.append(f"• 미국 국내주식형(뮤추얼펀드+ETF) {fmt_usd_bn_kr(m.get('domestic'), fx)}")
         lines.append(f"• 세계주식형 {fmt_usd_bn_kr(m.get('world'), fx)} / 채권형 {fmt_usd_bn_kr(m.get('bond'), fx)}")
         if x.get("domestic_4w") is not None:
             lines.append(f"• 미국 국내주식형 최근 4주 합계 {fmt_usd_bn_kr(x['domestic_4w'], fx)}")
+        horizons = m.get("domestic_flow_horizons", {})
+        lines.extend(
+            f"• {months}M 미국 국내주식형 주간 순유입 합계: "
+            + _horizon_window_text(
+                horizons.get(key), fx, "value_bn", flow=True,
+                date_keys=(("target_date", "목표"), ("start_week_ended", "첫주"),
+                           ("end_week_ended", "마지막주")),
+            )
+            for months, key in ((1, "m1"), (3, "m3"))
+        )
     elif x["kind"] == "mmf":
         ch = m["weekly_change_bn"]
         lines.append(
             f"• MMF(단기 현금 주차성 펀드) 총자산 {fmt_usd_trillion_kr(m['assets_trillion'], fx)} "
             f"/ 주간 {fmt_usd_bn_kr(ch, fx)}"
         )
+        horizons = m.get("asset_balance_horizons", {})
+        lines.extend(
+            f"• {months}M MMF 총자산 잔액 증감(순유입액 아님): "
+            + _horizon_window_text(
+                horizons.get(key), fx, "change_bn",
+                date_keys=(("target_date", "목표"), ("anchor_date", "기준"),
+                           ("end_date", "종료")),
+            )
+            for months, key in ((1, "m1"), (3, "m3"))
+        )
     elif x["kind"] == "margin":
         lines.append(
             f"• 마진부채(주식담보 신용거래 차입) {fmt_usd_bn_kr(m['margin_debt_bn'], fx)} "
             f"/ 전월 {fmt_usd_bn_kr(m['margin_debt_mom_bn'], fx)}"
+        )
+        horizons = m.get("margin_debt_horizons", {})
+        lines.extend(
+            f"• {months}M 마진부채 잔액 증감: "
+            + _horizon_window_text(
+                horizons.get(key), fx, "change_bn",
+                date_keys=(("target_month", "목표월"), ("anchor_period", "기준월"),
+                           ("end_period", "종료월")),
+            )
+            for months, key in ((1, "m1"), (3, "m3"))
         )
         if m.get("cash_free_bn") is not None and m.get("margin_free_bn") is not None:
             lines.append(
@@ -1602,6 +1930,7 @@ def source_block(x, fx):
         lines.append(
             f"• 투자자산 인출로 충당되는 소비 비중 {m['spending_funded_pct']:.1f}%"
         )
+        lines.append("• 저빈도 구조 통계이며 월간 순유입·순유출 비교 시계열은 제공되지 않음")
     elif x["kind"] == "household_balance_sheet":
         lines.append(
             f"• 가계·비영리 직접+간접 기업주식 {fmt_usd_trillion_kr(m['equities_trillion'], fx)} "
@@ -1611,6 +1940,7 @@ def source_block(x, fx):
             f"• 총 금융자산 {fmt_usd_trillion_kr(m['financial_assets_trillion'], fx)} "
             f"/ 순자산 {fmt_usd_trillion_kr(m['net_worth_trillion'], fx)}"
         )
+        lines.append("• 분기 구조 잔액 지표이며 월간 펀드 자금흐름과 직접 비교하지 않음")
     else:
         lines.append(f"• 미국 주식형 {fmt_usd_bn_kr(m.get('us_equity_bn'), fx)}")
         if m.get("us_equity_bn") is not None and x.get("us_equity_url"):
@@ -1628,6 +1958,7 @@ def source_block(x, fx):
             )
         else:
             lines.append("• 기사 게시일만으로 집계주간을 추정하지 않음 — 방향 판정 보류")
+        lines.append("• 단일 주간 보도값이며 1M/3M 누적 시계열은 확인불가")
     return "\n".join(lines)
 
 
@@ -2136,9 +2467,12 @@ if should_alert:
 
     body += [
         f"→ <b>종합</b>: {html.escape(overall_easy)}",
-        "",
-        "<b>이번에 실제로 바뀐 값</b>",
     ]
+    body += _monthly_horizon_snapshot(
+        ici, ici_mmf, finra, bofa, lipper, goldman_prime,
+        jpm_household, fed_household, fx,
+    )
+    body += ["", "<b>이번에 실제로 바뀐 값</b>"]
 
     selected = results if force else updates
     if drawdown_transition:

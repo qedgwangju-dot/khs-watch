@@ -12,7 +12,7 @@ const STATUS_FILE = path.join(OUT_DIR, 'kofia_liquidity_status.md');
 const PENDING_FILE = path.join(OUT_DIR, 'kofia_liquidity_pending_state.json');
 const EVIDENCE_FILE = path.join(OUT_DIR, 'kofia_liquidity_source_evidence.json');
 const DELIVERY_FILE = path.join(OUT_DIR, 'kofia_liquidity_delivery.json');
-const MESSAGE_VERSION = 'kofia-balances-v4';
+const MESSAGE_VERSION = 'kofia-balances-v5-calendar-month-balances';
 const ORIGIN = 'https://freesis.kofia.or.kr';
 let sourceEvidence;
 
@@ -69,8 +69,23 @@ function dateMinusDays(yyyymmdd, days) {
   return `${dt.getUTCFullYear()}${String(dt.getUTCMonth()+1).padStart(2,'0')}${String(dt.getUTCDate()).padStart(2,'0')}`;
 }
 
+function dateMinusCalendarMonths(yyyymmdd, months) {
+  const year = Number(yyyymmdd.slice(0,4));
+  const month = Number(yyyymmdd.slice(4,6));
+  const day = Number(yyyymmdd.slice(6,8));
+  const monthIndex = year * 12 + month - 1 - months;
+  const targetYear = Math.floor(monthIndex / 12);
+  const targetMonth = monthIndex - targetYear * 12 + 1;
+  const lastDay = new Date(Date.UTC(targetYear, targetMonth, 0)).getUTCDate();
+  return `${targetYear}${String(targetMonth).padStart(2,'0')}${String(Math.min(day,lastDay)).padStart(2,'0')}`;
+}
+
 function fmtDate(d) {
   return `${Number(d.slice(4,6))}/${Number(d.slice(6,8))}`;
+}
+
+function fmtFullDate(d) {
+  return `${d.slice(0,4)}-${d.slice(4,6)}-${d.slice(6,8)}`;
 }
 
 function fmtTrillion(rawMillionWon) {
@@ -81,6 +96,12 @@ function fmtDelta(rawMillionWon) {
   const v = rawMillionWon / 1_000_000;
   const sign = v > 0 ? '+' : '';
   return `${sign}${v.toFixed(2)}조`;
+}
+
+function fmtHorizonDelta(window, key, balance) {
+  const item = window?.changes?.[key];
+  if (!item || item.delta === null || item.delta === undefined) return '비교불가';
+  return `${fmtDelta(item.delta)}${item.delta > 0 ? '↑' : item.delta < 0 ? '↓' : '≈'}`;
 }
 
 function fmtEokFromMillion(rawMillionWon) {
@@ -133,7 +154,7 @@ async function main() {
     schema_version: 1, source: 'KOFIA FreeSIS', source_origin: ORIGIN,
     unit: '백만원', unit_won: 1000000, started_at_kst: kstNow(), phase: 'collecting',
     run_id: process.env.GITHUB_RUN_ID || null,
-    code_sha: process.env.KOFIA_CODE_SHA || process.env.GITHUB_SHA || null, requests: [],
+    code_sha: process.env.KOFIA_CODE_SHA || process.env.GITHUB_SHA || null, requests: [], comparison_errors: [],
   };
   saveEvidence();
   const deadline = Date.now() + 240000;
@@ -226,8 +247,8 @@ async function main() {
     return;
   }
 
-  const depRows = await timeSeries(SID.deposit, dateMinusDays(depMeta.latest, 35), depMeta.latest);
-  const crRows = await timeSeries(SID.credit, dateMinusDays(crMeta.latest, 35), crMeta.latest);
+  const depRows = await timeSeries(SID.deposit, dateMinusDays(depMeta.latest, 120), depMeta.latest);
+  const crRows = await timeSeries(SID.credit, dateMinusDays(crMeta.latest, 120), crMeta.latest);
   if (depRows.length < 6) throw new Error(`Deposit series too short: ${depRows.length}`);
   if (crRows.length < 6) throw new Error(`Credit series too short: ${crRows.length}`);
   if (String(depRows[0].TMPV1) !== depMeta.latest) throw new Error(`Deposit latest mismatch: meta=${depMeta.latest} data=${depRows[0].TMPV1}`);
@@ -295,6 +316,71 @@ async function main() {
     forced: { date: depNow.date, value: depNow.forced, ratio: depNow.forcedRatio },
   };
 
+  // 1M/3M are balance differences, not cumulative cash flows. Anchor each
+  // horizon to the latest official deposit observation on/before the clipped
+  // calendar-month target, and require that exact publication date in all four
+  // series. Missing history stays unavailable without blocking today's data.
+  const depositByDate = new Map(depRows.map(row => [String(row.TMPV1), row]));
+  const creditByDate = new Map(crRows.map(row => [String(row.TMPV1), row]));
+  const mmfByDate = new Map(mmf.map(row => [row.date, row]));
+  const cmaByDate = new Map(cma.map(row => [row.date, row]));
+  metrics.balance_horizons = {};
+  for (const months of [1, 3]) {
+    const targetDate = dateMinusCalendarMonths(depMeta.latest, months);
+    const candidates = [...depositByDate.keys()]
+      .filter(date => date <= targetDate && creditByDate.has(date)).sort().reverse();
+    const anchorDate = candidates[0] || null;
+    const window = {
+      months_back: months, target_date: targetDate, anchor_date: anchorDate,
+      end_date: depMeta.latest, max_anchor_gap_days: 7, changes: {},
+    };
+    const reason = !anchorDate ? 'no_prior_official_deposit_date'
+      : Math.round((Date.parse(`${targetDate.slice(0,4)}-${targetDate.slice(4,6)}-${targetDate.slice(6,8)}T00:00:00Z`)
+          - Date.parse(`${anchorDate.slice(0,4)}-${anchorDate.slice(4,6)}-${anchorDate.slice(6,8)}T00:00:00Z`)) / 86400000) > 7
+        ? 'prior_official_date_more_than_7_days_before_target'
+        : null;
+    if (!reason && !creditByDate.has(anchorDate)) {
+      window.changes.credit = { delta: null, reason: 'credit_date_not_published_on_common_anchor' };
+    }
+    if (!reason && !mmfByDate.has(anchorDate)) {
+      try { mmfByDate.set(anchorDate, await mmfAt(anchorDate)); }
+      catch (error) {
+        window.changes.mmf = { delta: null, reason: 'historical_source_unavailable' };
+        sourceEvidence.comparison_errors.push({ period: `m${months}`, metric: 'mmf', date: anchorDate, error: String(error.message || error) });
+        saveEvidence();
+      }
+    }
+    if (!reason && !cmaByDate.has(anchorDate)) {
+      try { cmaByDate.set(anchorDate, await cmaAt(anchorDate)); }
+      catch (error) {
+        window.changes.cma = { delta: null, reason: 'historical_source_unavailable' };
+        sourceEvidence.comparison_errors.push({ period: `m${months}`, metric: 'cma', date: anchorDate, error: String(error.message || error) });
+        saveEvidence();
+      }
+    }
+    for (const key of ['deposit', 'mmf', 'cma', 'credit']) {
+      if (reason) {
+        window.changes[key] = { delta: null, reason };
+        continue;
+      }
+      if (window.changes[key]?.delta === null) continue;
+      let priorValue = null;
+      if (key === 'deposit') priorValue = toNum(depositByDate.get(anchorDate)?.TMPV2, `deposit ${anchorDate}`);
+      if (key === 'credit') priorValue = toNum(creditByDate.get(anchorDate)?.TMPV2, `credit ${anchorDate}`);
+      if (key === 'mmf') priorValue = mmfByDate.get(anchorDate)?.value ?? null;
+      if (key === 'cma') priorValue = cmaByDate.get(anchorDate)?.value ?? null;
+      if (priorValue === null || priorValue === undefined) {
+        window.changes[key] = { delta: null, reason: 'historical_total_missing' };
+        continue;
+      }
+      window.changes[key] = {
+        delta: metrics[key].value - priorValue,
+        start_date: anchorDate, end_date: depMeta.latest, reason: null,
+      };
+    }
+    metrics.balance_horizons[`m${months}`] = window;
+  }
+
   const fpPayload = {
     deposit: metrics.deposit,
     mmf: metrics.mmf,
@@ -302,6 +388,7 @@ async function main() {
     credit: metrics.credit,
     receivable: metrics.receivable,
     forced: metrics.forced,
+    balance_horizons: metrics.balance_horizons,
   };
   const fp = fingerprint(fpPayload);
   // A delayed API cache cannot roll back a previously delivered date.
@@ -322,14 +409,16 @@ async function main() {
   const dates = Object.fromEntries(Object.entries(metrics).slice(0,4).map(([k,v]) => [k, v.date]));
   const alignmentReady = criticalDatesAligned(dates);
   const snapshotDate = alignmentReady ? dates.deposit : null;
+  const h1 = metrics.balance_horizons.m1;
+  const h3 = metrics.balance_horizons.m3;
   const sameDatesAsState = priorState && JSON.stringify(priorState.dates || {}) === JSON.stringify(dates);
   // A real interpretation correction keeps the unchanged official values and
   // is sent once per message version, after confirmed delivery only.
-  const narrativeCorrection = Boolean(priorState && !changed &&
+  const narrativeCorrection = Boolean(priorState &&
     priorState.snapshot_date === snapshotDate &&
     priorState.message_version !== MESSAGE_VERSION);
   const eventLabel = narrativeCorrection
-    ? '해석 정정'
+    ? '기간 비교 추가'
     : (!priorState ? '초기 기준 확정' : sameDatesAsState ? '동일 기준일 수정치' : '신규 공식값');
   const signal = strongMove ? '예탁금↑ + MMF↓ 동시 신호 강함' : big1d ? '당일 큰 변동 감지' : '공식값 갱신';
 
@@ -340,17 +429,17 @@ async function main() {
     `KOFIA FreeSIS 공식 원자료 직접 조회`,
     `• 핵심 4개 지표 기준일 동기화: <b>${snapshotDate ? fmtDate(snapshotDate) : '미완료'}</b>`,
     `• 원자료 조회: ${queriedAt.replace('T',' ').replace('+09:00',' KST')}`,
-    `• 비교 기준: 1D ${fmtDate(referenceDates[1])} → ${fmtDate(referenceDates[0])} / 5D ${fmtDate(referenceDates[5])} → ${fmtDate(referenceDates[0])}`,
-    `• 1D는 직전 공표일, 5D는 최근 5개 공표구간의 잔액 차이`,
+    `• 비교 기준: 1D ${fmtDate(referenceDates[1])} → ${fmtDate(referenceDates[0])} / 5D ${fmtDate(referenceDates[5])} → ${fmtDate(referenceDates[0])} / 1M 목표 ${fmtFullDate(h1.target_date)}·기준 ${h1.anchor_date ? fmtFullDate(h1.anchor_date) : '확인불가'} / 3M 목표 ${fmtFullDate(h3.target_date)}·기준 ${h3.anchor_date ? fmtFullDate(h3.anchor_date) : '확인불가'}`,
+    `• 1D는 직전 공표일, 5D는 최근 5개 공표구간의 잔액 차이; 1M/3M은 달력월 목표일 직전 공표 잔액과의 차이(목표일로부터 최대 7일, 보간 없음)`,
     ...(narrativeCorrection ? [
-      `• <b>정정 사유</b>: 반대매매 금액은 위탁매매 미수거래에 대한 통계입니다. 신용융자 반대매매 전체를 포함한 수치가 아닙니다. 잔액·증감액은 바뀌지 않았습니다.`
+      `• <b>추가 표시</b>: 기존 1D·5D에 달력월 기준 1M·3M 잔액 차이를 더했습니다. 잔액 차이는 누적 순유입이나 직접 자금 이동을 뜻하지 않습니다.`
     ] : []),
     ``,
     `<b>무엇이 달라졌나</b>`,
-    `• 투자자예탁금 <b>${fmtTrillion(metrics.deposit.value)}</b> (${fmtDate(metrics.deposit.date)}) | 1D ${fmtDelta(metrics.deposit.d1)} | 5D ${fmtDelta(metrics.deposit.d5)}`,
-    `• MMF 설정원본 <b>${fmtTrillion(metrics.mmf.value)}</b> (${fmtDate(metrics.mmf.date)}) | 1D ${fmtDelta(metrics.mmf.d1)} | 5D ${fmtDelta(metrics.mmf.d5)}`,
-    `• CMA 잔고 <b>${fmtTrillion(metrics.cma.value)}</b> (${fmtDate(metrics.cma.date)}) | 1D ${fmtDelta(metrics.cma.d1)} | 5D ${fmtDelta(metrics.cma.d5)}`,
-    `• 신용융자 <b>${fmtTrillion(metrics.credit.value)}</b> (${fmtDate(metrics.credit.date)}) | 1D ${fmtDelta(metrics.credit.d1)} | 5D ${fmtDelta(metrics.credit.d5)}`,
+    `• 투자자예탁금 <b>${fmtTrillion(metrics.deposit.value)}</b> (${fmtDate(metrics.deposit.date)}) | 1D ${fmtDelta(metrics.deposit.d1)} | 5D ${fmtDelta(metrics.deposit.d5)} | 1M ${fmtHorizonDelta(h1, 'deposit', metrics.deposit.value)} | 3M ${fmtHorizonDelta(h3, 'deposit', metrics.deposit.value)}`,
+    `• MMF 설정원본 <b>${fmtTrillion(metrics.mmf.value)}</b> (${fmtDate(metrics.mmf.date)}) | 1D ${fmtDelta(metrics.mmf.d1)} | 5D ${fmtDelta(metrics.mmf.d5)} | 1M ${fmtHorizonDelta(h1, 'mmf', metrics.mmf.value)} | 3M ${fmtHorizonDelta(h3, 'mmf', metrics.mmf.value)}`,
+    `• CMA 잔고 <b>${fmtTrillion(metrics.cma.value)}</b> (${fmtDate(metrics.cma.date)}) | 1D ${fmtDelta(metrics.cma.d1)} | 5D ${fmtDelta(metrics.cma.d5)} | 1M ${fmtHorizonDelta(h1, 'cma', metrics.cma.value)} | 3M ${fmtHorizonDelta(h3, 'cma', metrics.cma.value)}`,
+    `• 신용융자 <b>${fmtTrillion(metrics.credit.value)}</b> (${fmtDate(metrics.credit.date)}) | 1D ${fmtDelta(metrics.credit.d1)} | 5D ${fmtDelta(metrics.credit.d5)} | 1M ${fmtHorizonDelta(h1, 'credit', metrics.credit.value)} | 3M ${fmtHorizonDelta(h3, 'credit', metrics.credit.value)}`,
     `• 위탁매매 미수금 ${fmtTrillion(metrics.receivable.value)} | 미수거래 반대매매 ${fmtEokFromMillion(metrics.forced.value)}${baselineLine}`,
     ``,
     `<b>현재 판정</b>`,
@@ -361,19 +450,20 @@ async function main() {
     `<b>검증</b>`,
     `• 동일 KOFIA 공식 원천·백만원 단위 원값으로 계산`,
     `• 투자자예탁금·MMF·CMA·신용융자 기준일이 모두 같은 날일 때만 종합 알림 전송`,
+    `• 1M/3M은 잔액 수준의 시점 간 변화이며 누적 순유입·실제 자금 이동이 아님`,
     `• MMF 1D는 공식 전일대비증감과 재계산값 일치 확인${mmfNow.daily !== metrics.mmf.d1 ? ' (백만원 표시 반올림 차이 1 이내)' : ''}`,
     `• 잔액 변화로 실제 주식 순매수·신규 자금·상품 간 이동 경로를 확인할 수 없음`,
     `• MMF형 CMA 등 상품 간 포함 관계가 있어 네 잔액을 합산하지 않음`,
-    `• 신규 동기화 기준일·원값 수정 또는 확인된 해석 정정에만 재알림`,
+    `• 신규 동기화 기준일·원값 수정 또는 확인된 표시·해석 변경에만 재알림`,
   ].join('\n');
 
   const status = [
     `# KOFIA Liquidity Watch`,
     ``,
-    `- deposit ${metrics.deposit.date}: ${metrics.deposit.value} / 1D ${metrics.deposit.d1} / 5D ${metrics.deposit.d5}`,
-    `- mmf ${metrics.mmf.date}: ${metrics.mmf.value} / 1D ${metrics.mmf.d1} / 5D ${metrics.mmf.d5}`,
-    `- cma ${metrics.cma.date}: ${metrics.cma.value} / 1D ${metrics.cma.d1} / 5D ${metrics.cma.d5}`,
-    `- credit ${metrics.credit.date}: ${metrics.credit.value} / 1D ${metrics.credit.d1} / 5D ${metrics.credit.d5}`,
+    `- deposit ${metrics.deposit.date}: ${metrics.deposit.value} / 1D ${metrics.deposit.d1} / 5D ${metrics.deposit.d5} / 1M ${fmtHorizonDelta(h1, 'deposit', metrics.deposit.value)} / 3M ${fmtHorizonDelta(h3, 'deposit', metrics.deposit.value)}`,
+    `- mmf ${metrics.mmf.date}: ${metrics.mmf.value} / 1D ${metrics.mmf.d1} / 5D ${metrics.mmf.d5} / 1M ${fmtHorizonDelta(h1, 'mmf', metrics.mmf.value)} / 3M ${fmtHorizonDelta(h3, 'mmf', metrics.mmf.value)}`,
+    `- cma ${metrics.cma.date}: ${metrics.cma.value} / 1D ${metrics.cma.d1} / 5D ${metrics.cma.d5} / 1M ${fmtHorizonDelta(h1, 'cma', metrics.cma.value)} / 3M ${fmtHorizonDelta(h3, 'cma', metrics.cma.value)}`,
+    `- credit ${metrics.credit.date}: ${metrics.credit.value} / 1D ${metrics.credit.d1} / 5D ${metrics.credit.d5} / 1M ${fmtHorizonDelta(h1, 'credit', metrics.credit.value)} / 3M ${fmtHorizonDelta(h3, 'credit', metrics.credit.value)}`,
     `- receivable ${metrics.receivable.value}; forced ${metrics.forced.value}; forcedRatio ${metrics.forced.ratio}`,
     `- fingerprint ${fp}`,
     `- prior fingerprint ${priorState ? priorState.fingerprint : 'none'}`,
@@ -424,7 +514,7 @@ async function main() {
       source_url: 'https://freesis.kofia.or.kr/stat/main.do',
       queried_at_kst: sourceEvidence.finished_at_kst,
       code_sha: sourceEvidence.code_sha,
-      period_basis: 'five_published_intervals',
+      period_basis: 'daily_five_intervals_plus_calendar_month_balance_deltas',
       mmf_reported_daily_delta: mmfNow.daily,
       mmf_daily_rounding_difference: metrics.mmf.d1 - mmfNow.daily,
       prior_fingerprint: priorState.fingerprint,

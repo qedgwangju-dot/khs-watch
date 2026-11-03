@@ -8,6 +8,8 @@ on:
       - "scripts/us_fund_flow_watch.py"
       - "scripts/preopen_daily_status.py"
       - "tests/test_preopen_daily_status.py"
+      - "scripts/market_time_windows.py"
+      - "tests/test_fund_horizon_math.py"
       - "scripts/us_positioning_delivery.py"
       - "tests/test_us_positioning_delivery.py"
       - "scripts/us_positioning_options_sox_watch.py"
@@ -39,6 +41,8 @@ on:
       - "scripts/us_fund_flow_watch.py"
       - "scripts/preopen_daily_status.py"
       - "tests/test_preopen_daily_status.py"
+      - "scripts/market_time_windows.py"
+      - "tests/test_fund_horizon_math.py"
       - "scripts/us_positioning_delivery.py"
       - "tests/test_us_positioning_delivery.py"
       - "scripts/us_tech_etf_proxy_watch.py"
@@ -92,6 +96,7 @@ jobs:
           python -m py_compile scripts/us_positioning_delivery.py
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_us_positioning_delivery.py' -v
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_preopen_daily_status.py' -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_fund_horizon_math.py' -v
       - name: Compile and test proprietary-report gate offline without secrets or Telegram
         run: |
           python -m py_compile scripts/us_fund_flow_watch.py

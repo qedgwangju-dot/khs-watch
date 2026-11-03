@@ -58,6 +58,13 @@ global.fetch = async (url, options) => {
     if (query.OBJ_NM === 'STATSCU0100000090BO') return stored.tmpV45 === query.tmpV45;
     return true;
   });
+  if (matches.length === 0 && payload.dmSearch &&
+      (payload.dmSearch.tmpV34 || payload.dmSearch.OBJ_NM === 'STATSCU0100000090BO')) {
+    // The preserved fixture has no exact MMF/CMA point response for the 1M
+    // anchor. Model that source-history gap as an unavailable comparison.
+    return {status:503, url:String(url), headers:{get:()=>'application/json'},
+            arrayBuffer:async()=>Buffer.from('{}')};
+  }
   assert.strictEqual(matches.length, 1, JSON.stringify(payload));
   const raw = Buffer.from(matches[0].response_body_base64, 'base64');
   return {status:200, url:String(url), headers:{get:()=>'application/json'},
@@ -69,10 +76,12 @@ const {main} = require(process.argv[1]);
   const before = fs.readFileSync(stateFile);
   await main();
   let next = JSON.parse(fs.readFileSync('out/kofia_liquidity_pending_state.json'));
-  assert.strictEqual(next.message_version, 'kofia-balances-v4');
-  assert.strictEqual(next.last_event, '해석 정정');
-  assert.strictEqual(next.fingerprint, fixture.pending.fingerprint);
-  assert(fs.readFileSync('out/kofia_liquidity_alert.html','utf8').includes('반대매매 금액은 위탁매매 미수거래'));
+  assert.strictEqual(next.message_version, 'kofia-balances-v5-calendar-month-balances');
+  assert.strictEqual(next.last_event, '기간 비교 추가');
+  assert.notStrictEqual(next.fingerprint, fixture.pending.fingerprint);
+  assert(next.values.balance_horizons.m1 && next.values.balance_horizons.m3);
+  assert.strictEqual(next.period_basis, 'daily_five_intervals_plus_calendar_month_balance_deltas');
+  assert(fs.readFileSync('out/kofia_liquidity_alert.html','utf8').includes('기존 1D·5D에 달력월 기준 1M·3M 잔액 차이를 더했습니다'));
   assert.deepStrictEqual(fs.readFileSync(stateFile), before);
   await main();
   assert(fs.existsSync('out/kofia_liquidity_pending_state.json'));

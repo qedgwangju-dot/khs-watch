@@ -122,6 +122,35 @@ def fmt_bp(v):
     return f"{arrow(v)} {v:+.0f}bp"
 
 
+def _format_monthly_flow_line(window, fx_rate):
+    months_back = window["months_back"]
+    target = window.get("target_date") or "확인불가"
+    value = window.get("value_usd")
+    if value is None:
+        reasons = {
+            "official_observation_unavailable_within_7_days": "목표일 이전 공식 기준점이 7일 이내에 없음",
+            "conflicting_duplicate_anchor": "기준일 중복 관측 불일치",
+            "conflicting_duplicate_observation": "기간 내 중복 관측 불일치",
+            "current_observation_missing": "현재 기준일 관측 없음",
+            "source_or_component_date_mismatch": "원천·NAV·발행좌수 날짜 불일치",
+            "observation_gap_exceeds_allowed_days": "기간 내 관측 공백 7일 초과",
+            "daily_flow_estimate_missing": "일별 추정값 누락",
+            "daily_flow_estimate_invalid": "일별 추정값 오류",
+            "current_observation_gap_exceeds_allowed_days": "현재 기준일까지 관측 공백 7일 초과",
+        }
+        reason = reasons.get(window.get("reason"), "공식 이력 부족")
+        return (
+            f"• {months_back}개월 누적 자금흐름: 비교불가 "
+            f"(목표 {target}; 기준점 {window.get('anchor_date') or '없음'}; {reason})"
+        )
+    return (
+        f"• {months_back}개월 누적 자금흐름(발행좌수×NAV 추정): "
+        f"{arrow(value)} {flow_word(value)} {base.fmt_usd_flow(value)} ({base.fmt_krw(value, fx_rate)}) | "
+        f"목표 {target}, 기준점 {window['anchor_date']} → {window['end_date']}, "
+        f"일별 관측 {window['observations']}개"
+    )
+
+
 def _format_monthly_oas(value, as_of_date, history):
     if value is None or not as_of_date:
         return "비교불가(현재 OAS 기준일 또는 값 없음)"
@@ -529,6 +558,9 @@ def main():
         hist = base.upsert_history(hist, cur, flow)
         state["history"][ticker] = hist
         cur["flow_5d_usd"] = base.last_n_flows(hist, 5)
+        cur["flow_monthly_windows"] = base.cumulative_monthly_flows(
+            hist, cur["date"], months=(1, 3), max_gap_days=7
+        )
         if ticker in ("LQD", "HYG"):
             cur["oas_monthly_line"] = _format_monthly_oas(
                 cur.get("oas_bps"), cur.get("oas_date"), hist
@@ -670,6 +702,10 @@ def main():
             f"• 가격: NAV ${r['nav']:.2f} | 1일 {price} | 30일 SEC {sec}",
             f"• 일간 자금: {arrow(flow)} {flow_word(flow)} {base.fmt_usd_flow(flow)} ({base.fmt_krw(flow, fx['rate'])})",
             f"• 최근 5회: {arrow(flow5)} {base.fmt_usd_flow(flow5)} ({base.fmt_krw(flow5, fx['rate'])})",
+            *[
+                _format_monthly_flow_line(r["flow_monthly_windows"][m], fx["rate"])
+                for m in (1, 3)
+            ],
             f"• 해석: {etf_interpretation(ticker, p, flow)}",
             "",
         ]
@@ -694,6 +730,10 @@ def main():
             f"• 가격: NAV ${r['nav']:.2f} | 1일 {price} | 30일 SEC {sec}",
             f"• 일간 자금: {arrow(flow)} {flow_word(flow)} {base.fmt_usd_flow(flow)} ({base.fmt_krw(flow, fx['rate'])})",
             f"• 최근 5회: {arrow(flow5)} {base.fmt_usd_flow(flow5)} ({base.fmt_krw(flow5, fx['rate'])})",
+            *[
+                _format_monthly_flow_line(r["flow_monthly_windows"][m], fx["rate"])
+                for m in (1, 3)
+            ],
             f"• 포트폴리오 OAS: {oas} | 기준 {oas_date} | 직전 저장값 대비 {doas_text}",
             f"• OAS 달력월 비교: {r.get('oas_monthly_line') or '비교불가(현재 기준 확인 대기)'}",
             f"• 해석: {etf_interpretation(ticker, p, flow)}",
@@ -747,7 +787,7 @@ def main():
         f"금리 구조: {regime}",
         f"→ {o_reason}",
         "",
-        "자금흐름 산식: iShares 공식 발행좌수 변화 × 해당일 NAV. LQD·HYG 첫 기준점만 있을 때는 방향을 억지 판정하지 않음.",
+        "자금흐름 산식: iShares 공식 발행좌수 변화 × 해당일 NAV로 계산한 추정치. 1/3개월은 달력월 목표일 직전 관측점부터 합산하며, 기준점·관측 공백이 있으면 비교불가로 둠. 실제 현금흐름과 동일하지 않음.",
         "신용스프레드: iShares 공식 LQD·HYG 포트폴리오 Option Adjusted Spread를 일별 저장해 직전 대비 계산.",
         "출처: iShares 공식 SHY·IEF·TLT·LQD·HYG, U.S. Treasury, 환율 교차자료",
     ]
@@ -785,6 +825,7 @@ def main():
                 "nav": results[ticker].get("nav"),
                 "shares": results[ticker].get("shares"),
                 "flow_usd": results[ticker].get("flow_usd"),
+                "flow_monthly_windows": results[ticker].get("flow_monthly_windows"),
                 "oas_bps": results[ticker].get("oas_bps"),
                 "oas_date": results[ticker].get("oas_date"),
             }
