@@ -998,6 +998,12 @@ class IranNoStrikeProjectionTests(unittest.TestCase):
                'source': '에너지플랫폼뉴스', 'tags': ['확전'], 'score': 95}
         self.assertIsNone(presentation.direction(stage, row))
 
+    def test_oil_price_plunge_on_possible_talks_is_reference(self):
+        title = "고개 든 미ㆍ이란 협상 재개 가능성⋯국제유가, 7%대 급락 [종합]"
+        row = {'title': title, 'title_original': title, 'title_ko': title,
+               'source': '이투데이', 'tags': ['종전·협상'], 'score': 90}
+        self.assertIsNone(presentation.direction(stage, row))
+
     def test_actual_separate_attack_remains_red(self):
         title = "트럼프, 이란 공습 서두르지 않겠다 밝혔지만 동시에 미군이 이란 시설 공격을 감행"
         row = {'title': title, 'title_original': title, 'title_ko': title,
