@@ -3,10 +3,12 @@ import pathlib
 import unittest
 from unittest.mock import patch
 import datetime as dt
+import json
 import requests
 
 import korea_market_stress_watch_v14 as fx
 import korea_market_stress_watch_v11 as ecos
+import korea_market_stress_watch_v16 as market16
 
 
 class SeoulFXQuoteTests(unittest.TestCase):
@@ -97,6 +99,46 @@ class SeoulFXQuoteTests(unittest.TestCase):
         source = pathlib.Path(ecos.__file__).read_text(encoding="utf-8")
         self.assertIn("인증정보 비노출", source)
         self.assertNotIn('fx["ecos_error"] = f"{type(exc).__name__}: {exc}"', source)
+
+
+class LSForeignHistoryRegressionTests(unittest.TestCase):
+    def test_confirmed_quote_does_not_revert_on_quick_restart(self):
+        old = {
+            "date": "2026-11-03",
+            "checked_at": "2026-11-03T23:25:20+09:00",
+            "value_eok": -15100.0,
+            "observations": 2,
+            "stable": True,
+        }
+        now = dt.datetime.fromisoformat("2026-11-03T23:30:49+09:00")
+        self.assertEqual(market16._ls_fallback_confirmation_count(old, -15100.0, "2026-11-03", now), 2)
+        self.assertEqual(market16._ls_fallback_confirmation_count(old, -15095.0, "2026-11-03", now), 1)
+        self.assertEqual(market16._ls_fallback_confirmation_count(old, -15100.0, "2026-11-04", now), 1)
+
+    def test_second_sample_requires_ten_minutes_unless_already_confirmed(self):
+        old = {
+            "date": "2026-11-03",
+            "checked_at": "2026-11-03T22:01:27+09:00",
+            "value_eok": -15100.0,
+            "observations": 1,
+            "stable": False,
+        }
+        early = dt.datetime.fromisoformat("2026-11-03T22:06:27+09:00")
+        later = dt.datetime.fromisoformat("2026-11-03T22:12:27+09:00")
+        self.assertEqual(market16._ls_fallback_confirmation_count(old, -15100.0, "2026-11-03", early), 1)
+        self.assertEqual(market16._ls_fallback_confirmation_count(old, -15100.0, "2026-11-03", later), 2)
+
+    def test_missing_three_day_status_is_not_reported_as_zero(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as folder:
+            status = pathlib.Path(folder) / "status.md"
+            pending = pathlib.Path(folder) / "pending.json"
+            status.write_text("- KOSPI 외국인: 1일 -1조5,100억원, 3거래일 0억원, 기준일 2026-11-03\n", encoding="utf-8")
+            pending.write_text(json.dumps({"snapshot": {"foreign_flow": {"three_day_available": False}}}), encoding="utf-8")
+            with patch.object(market16.watch, "STATUS_PATH", status), patch.object(market16.watch, "PENDING_PATH", pending):
+                market16._postprocess_missing_three_day_status()
+            self.assertIn("3거래일 확인 불가", status.read_text(encoding="utf-8"))
+            self.assertNotIn("3거래일 0억원", status.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

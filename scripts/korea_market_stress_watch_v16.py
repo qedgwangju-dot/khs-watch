@@ -221,6 +221,29 @@ def _history_value(state: dict[str, Any], market: str, trade_date: str) -> float
     return None
 
 
+def _ls_fallback_confirmation_count(old: dict[str, Any], current_eok: float, trade_date: str, now: dt.datetime) -> int:
+    """Keep an already confirmed same-day LS quote confirmed across restarts."""
+    if now.time() < FINAL_START:
+        return 0
+    prev_ts = _parse_ts(old.get("checked_at"))
+    if not prev_ts or prev_ts.time() < FINAL_START or str(old.get("date") or "") != trade_date:
+        return 1
+    try:
+        previous = float(old["value_eok"])
+    except (KeyError, TypeError, ValueError):
+        return 1
+    if abs(float(current_eok) - previous) > FALLBACK_STABILITY_TOLERANCE_EOK:
+        return 1
+    elapsed = (now - prev_ts).total_seconds() / 60.0
+    if elapsed < 0:
+        return 1
+    if old.get("stable") is True and int(old.get("observations") or 0) >= FALLBACK_MIN_OBSERVATIONS:
+        return max(FALLBACK_MIN_OBSERVATIONS, int(old["observations"]))
+    if elapsed >= FALLBACK_MIN_MINUTES:
+        return max(1, int(old.get("observations") or 1)) + 1
+    return 1
+
+
 def _candidate_for(market: str) -> dict[str, Any]:
     if market in _candidate_cache:
         return _candidate_cache[market]
@@ -297,24 +320,7 @@ def _candidate_for(market: str) -> dict[str, Any]:
         })
     elif status == "ls_fallback":
         value = float(row.get("ls_daily_eok") or 0.0)
-        observations = 0 if now.time() < FINAL_START else 1
-        prev_ts = _parse_ts(old.get("checked_at"))
-        same_date = str(old.get("date") or "") == trade_date
-        prev_is_post_final = bool(prev_ts and prev_ts.time() >= FINAL_START)
-        try:
-            prev_value = float(old.get("value_eok"))
-        except Exception:
-            prev_value = None
-        elapsed_min = (now - prev_ts).total_seconds() / 60.0 if prev_ts else -1.0
-        same_value = prev_value is not None and abs(value - prev_value) <= FALLBACK_STABILITY_TOLERANCE_EOK
-        if (
-            now.time() >= FINAL_START
-            and same_date
-            and prev_is_post_final
-            and same_value
-            and elapsed_min >= FALLBACK_MIN_MINUTES
-        ):
-            observations = max(1, int(old.get("observations") or 1)) + 1
+        observations = _ls_fallback_confirmation_count(old, value, trade_date, now)
         stable = now.time() >= FINAL_START and observations >= FALLBACK_MIN_OBSERVATIONS
         result.update({
             "value_eok": value,
@@ -580,23 +586,8 @@ def _postprocess_missing_three_day_status() -> None:
         watch.STATUS_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def _reset_today_bad_flow_events_once() -> None:
-    state = _state()
-    today = dt.datetime.now(watch.KST).date().isoformat()
-    if state.get("v16_flow_reset_date") == today:
-        return
-    prefixes = ("foreign1d_", "foreign3d_", "kosdaq_foreign1d_", "kosdaq_foreign3d_")
-    def keep(key: Any) -> bool:
-        s = str(key)
-        return not (s.startswith(prefixes) and today in s)
-    state["seen_event_keys"] = [x for x in state.get("seen_event_keys") or [] if keep(x)]
-    state["active_keys"] = [x for x in state.get("active_keys") or [] if keep(x)]
-    state["v16_flow_reset_date"] = today
-    watch.STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-
 def main() -> int:
-    _reset_today_bad_flow_events_once()
+    # Preserve real delivery dedupe keys across every scheduled restart.
     core.LS_DAILY_TOLERANCE_EOK = DUAL_SOURCE_TOLERANCE_EOK
     core.LS_DAILY_TOLERANCE_PCT = 0.0
     watch.fetch_kospi_foreign_flow = _fetch_kospi_canonical
