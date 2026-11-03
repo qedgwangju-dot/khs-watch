@@ -62,7 +62,7 @@ BASE_SEEN = ["site_announced", "consortium_discussion", "tender_open"]
 DEFERRED = (
     "예정", "계획", "추진", "검토", "협의", "방안", "가능", "가정",
     "경우", "하면", "할 경우", "한다면", "방침", "목표", "구상", "향후",
-    "앞두고", "될 경우", "선정되면", "수 있다", "준비",
+    "앞두고", "될 경우", "선정되면", "마치면", "돌입하면", "수 있다", "준비",
 )
 
 
@@ -111,7 +111,7 @@ def detect_events(title: str, summary: str, official: bool = False) -> set[str]:
             found.add("size_changed")
         if is_final_statement(t, ("한수원 컨소시엄 제안서 제출", "그린레일에너지 제안서 제출", "사업제안서를 제출했다", "사업제안서 제출 완료", "공모 신청 완료", "신청서를 제출했다")):
             found.add("proposal_submitted")
-        if is_final_statement(t, ("우선협상대상자로 선정됐다", "우선협상대상자로 선정되었다", "우선협상대상자로 확정", "우선협상자에 선정", "우선협상대상자 선정 완료", "우선협상대상자로 선정돼", "우선협상대상자 선정")):
+        if is_final_statement(t, ("우선협상대상자로 선정됐다", "우선협상대상자로 선정되었다", "우선협상대상자로 확정", "우선협상자에 선정", "우선협상대상자 선정 완료", "우선협상대상자 선정")):
             failed = any(x in combined for x in ("한수원 탈락", "한수원 미선정", "다른 사업자", "경쟁 컨소시엄 선정"))
             named = any(x in combined for x in ("한수원", "지투파워", "그린레일에너지", "한국수력원자력"))
             if named and not failed:
