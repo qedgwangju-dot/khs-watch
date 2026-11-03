@@ -82,6 +82,8 @@ const {main} = require(process.argv[1]);
   assert(next.values.balance_horizons.m1 && next.values.balance_horizons.m3);
   assert.strictEqual(next.period_basis, 'daily_five_intervals_plus_calendar_month_balance_deltas');
   assert(fs.readFileSync('out/kofia_liquidity_alert.html','utf8').includes('기존 1D·5D에 달력월 기준 1M·3M 잔액 차이를 더했습니다'));
+  fs.copyFileSync('out/kofia_liquidity_source_evidence.json', 'out/first_source_evidence.json');
+  fs.writeFileSync('out/first_pending_state.json', JSON.stringify(next));
   assert.deepStrictEqual(fs.readFileSync(stateFile), before);
   await main();
   assert(fs.existsSync('out/kofia_liquidity_pending_state.json'));
@@ -106,6 +108,12 @@ const {main} = require(process.argv[1]);
                                    str(Path('tests/fixtures/kofia_source_20261012.json').resolve())],
                                   cwd=base, text=True, encoding='utf-8', capture_output=True)
             self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+            # Independent source verification must reproduce the collector's
+            # JSON fingerprint when monthly balances extend the v5 payload.
+            generated_evidence = json.loads((base / 'out/first_source_evidence.json').read_text(encoding='utf-8'))
+            generated_pending = json.loads((base / 'out/first_pending_state.json').read_text(encoding='utf-8'))
+            self.assertEqual(validate(generated_evidence, generated_pending)['fingerprint'],
+                             generated_evidence['fingerprint'])
 
     def test_source_hash_change_is_rejected(self):
         self.evidence['requests'][0]['response_text'] += ' '

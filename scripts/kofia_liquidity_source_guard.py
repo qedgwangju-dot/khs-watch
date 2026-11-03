@@ -59,8 +59,8 @@ def month_horizons(end, series, point, current_values, request_failures, compari
         anchor = eligible[0] if eligible else None
         gap_days = ((dt.datetime.strptime(target, '%Y%m%d').date()
                      - dt.datetime.strptime(anchor, '%Y%m%d').date()).days if anchor else None)
-        common_reason = ('no_common_official_observation_before_target' if anchor is None else
-                         'common_official_observation_more_than_7_days_before_target' if gap_days > 7 else None)
+        common_reason = ('no_prior_official_deposit_date' if anchor is None else
+                         'prior_official_date_more_than_7_days_before_target' if gap_days > 7 else None)
         window = {'months_back': months, 'target_date': target, 'anchor_date': anchor,
                   'end_date': end, 'max_anchor_gap_days': 7, 'changes': {}}
         for key in ('deposit', 'mmf', 'cma', 'credit'):
@@ -258,8 +258,11 @@ def validate(evidence, pending=None):
         if snapshot is not None:
             check(numeric_tree_is_finite(snapshot['values']), 'invalid calculated numeric type')
     check(evidence['values'] == values, 'snapshot values differ from independent source recalculation')
-    computed = hashlib.sha256(json.dumps(values, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
-    check(evidence['fingerprint'] == computed, 'source fingerprint differs from independent values')
+    # JSON object insertion order affects the collector's byte hash, including
+    # the order of missing historical metrics. Equality above already proves
+    # source arithmetic; hash the source payload's original order for integrity.
+    computed = hashlib.sha256(json.dumps(evidence['values'], ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
+    check(evidence['fingerprint'] == computed, 'source fingerprint differs from validated values')
     if pending is not None:
         check(pending['values'] == values and pending['fingerprint'] == computed, 'pending differs from source')
         check(pending['snapshot_date'] == end and pending['alignment_ready'] is True, 'pending dates not aligned')
