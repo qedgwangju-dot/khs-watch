@@ -359,5 +359,102 @@ class TechEtfProxyTests(unittest.TestCase):
             w.collect(now=now,fetcher=fetch)
 
 
+
+    def _fixture_market_history(self, to_date="2026-11-02", n=75):
+        import exchange_calendars
+        cal=exchange_calendars.get_calendar("XNYS")
+        days=[t.date().isoformat() for t in
+              cal.sessions_in_range("2026-06-15",to_date)][-n:]
+        def records(nav,initial,step):
+            return [{"date":day,"nav":nav,"shares":initial+i*step}
+                    for i,day in enumerate(days)]
+        return {"IYW":records(100.0,100_000_000,10_000),
+                "SOXX":records(400.0,80_000_000,5_000),
+                "EWY":records(150.0,140_000_000,0)}
+
+    def test_21_and_63_session_sums_use_each_days_nav(self):
+        records=self._fixture_market_history()
+        date=records["IYW"][-1]["date"]
+        state={"history":{key:rows[:-1] for key,rows in records.items()}}
+        current={key:{"date":date,"nav":rows[-1]["nav"],"shares":rows[-1]["shares"]}
+                 for key,rows in records.items()}
+        result=w.calculate(current,state)
+        iyw=result["movements"]["IYW"]["rolling"]
+        self.assertEqual(iyw[21]["sessions"],21)
+        self.assertAlmostEqual(iyw[21]["net_usd"],21*10_000*100.0)
+        self.assertAlmostEqual(iyw[63]["net_usd"],63*10_000*100.0)
+        self.assertAlmostEqual(result["movements"]["EWY"]["rolling"][21]["net_usd"],0)
+        self.assertEqual(result["movements"]["IYW"]["history_points"],75)
+        formatted=w.render(result,1342.9,"2026-11-02 ECB")
+        self.assertIn("IYW 1개월(21거래일)",formatted)
+        self.assertIn("IYW 3개월(63거래일)",formatted)
+        self.assertIn("중기 방향: 장·단기 설정 우위 지속",formatted)
+        self.assertIn("SOXX 3개월(63거래일)",formatted)
+        self.assertIn("EWY 3개월(63거래일)",formatted)
+
+    def test_missing_exchange_session_withholds_both_rolling_windows(self):
+        records=self._fixture_market_history()
+        records["IYW"].pop(-10)
+        self.assertIsNone(w.rolling_estimated_flows(records["IYW"],21,"IYW"))
+        self.assertIsNone(w.rolling_estimated_flows(records["IYW"],63,"IYW"))
+
+    def test_official_exchange_holidays_do_not_cause_false_missing_session(self):
+        rows=self._fixture_market_history()["IYW"]
+        self.assertFalse(any(x["date"]=="2026-09-07" for x in rows))
+        self.assertIsNotNone(w.rolling_estimated_flows(rows,63,"IYW"))
+
+    def test_soxx_split_crossing_blocks_long_period_but_not_unrelated_fund(self):
+        rows=self._fixture_market_history(to_date="2026-11-06")
+        self.assertIsNone(w.rolling_estimated_flows(rows["SOXX"],21,"SOXX"))
+        self.assertIsNone(w.rolling_estimated_flows(rows["SOXX"],63,"SOXX"))
+        self.assertIsNotNone(w.rolling_estimated_flows(rows["IYW"],63,"IYW"))
+
+    def test_issuer_funddownload_parses_historical_shares_and_nav(self):
+        rows=self._fixture_market_history()["IYW"]
+        payload={"componentsByNameMap":{"fundDownload":{"containersByNameMap":{
+            "historical":{"dataPointsByNameMap":{
+                "asof":{"value":[int(x["date"].replace("-","")) for x in rows]},
+                "nav":{"value":[x["nav"] for x in rows]},
+                "sharesOutstanding":{"value":[x["shares"] for x in rows]},
+            }}
+        }}}}
+        class Response:
+            def raise_for_status(self): return None
+            def json(self): return payload
+        with patch.object(w.requests,"get",return_value=Response()) as api:
+            result=w.issuer_nav_history("IYW",rows[-1])
+        self.assertEqual(result[-1]["date"],"2026-11-02")
+        self.assertEqual(len(result),len(rows))
+        self.assertEqual(result[0]["shares"],rows[0]["shares"])
+        self.assertEqual(api.call_args.kwargs["params"]["portfolioId"],"239522")
+        with patch.object(w.requests,"get",return_value=Response()):
+            with self.assertRaisesRegex(ValueError,"current fund page mismatch"):
+                w.issuer_nav_history("IYW",{**rows[-1],"shares":1_000_000})
+
+    def test_backfill_mismatch_does_not_replace_verified_history(self):
+        old=w.prior_state() if hasattr(w,"prior_state") else prior_state()
+        current=snap("2026-10-21")
+        def disagree(ticker,row):
+            return [{"date":"2026-10-20","nav":1.0,"shares":5.0},
+                    {"date":row["date"],"nav":row["nav"],"shares":row["shares"]}]
+        copied,added=w.verified_backfill(old,current,fetcher=disagree)
+        self.assertEqual(added,0)
+        self.assertEqual(copied["history"],old["history"])
+        x=w.calculate(current,copied)
+        self.assertIsNone(x["movements"]["IYW"]["rolling"][21])
+        self.assertIn("1개월(21거래일) 누적: 확인 대기",w.render(x,1342.9,"date"))
+
+    def test_monthly_sum_is_not_end_nav_times_net_shares(self):
+        rows=self._fixture_market_history()["IYW"]
+        last=rows[-22:]
+        for i,row in enumerate(last):
+            row["nav"]=120+i
+        stat=w.rolling_estimated_flows(rows,21,"IYW")
+        reference=sum((last[i]["shares"]-last[i-1]["shares"])*last[i]["nav"]
+                      for i in range(1,len(last)))
+        self.assertAlmostEqual(stat["net_usd"],reference)
+        self.assertNotAlmostEqual(stat["net_usd"],
+                                  (last[-1]["shares"]-last[0]["shares"])*last[-1]["nav"])
+
 if __name__=="__main__":
     unittest.main()
