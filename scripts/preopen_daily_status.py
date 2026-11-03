@@ -10,6 +10,8 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
+from decimal import Decimal
 import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
@@ -69,6 +71,71 @@ def _source_periods_from_saved(state):
     return periods[:6]
 
 
+def _usd_billion_with_krw(value, fx):
+    amount = Decimal(str(value))
+    return f"{amount * 10:+,.1f}억달러 (약 {amount * fx / 1000:+,.1f}조원)"
+
+
+def _us_horizon_details(status_text, saved):
+    """Repeat only period values whose source period and fingerprint were rechecked."""
+    fx_match = re.search(r"^- USD/KRW:\s*([\d.]+)\s*\((\d{8})\)\s*$", status_text, re.M)
+    if not fx_match:
+        return ["• 1M/3M 비교: 이번 조회의 원화 환산 기준을 확인하지 못해 수치 표시 보류"]
+    fx = Decimal(fx_match.group(1))
+    observed = {}
+    for line in status_text.splitlines():
+        match = re.fullmatch(r"- (ICI combined|ICI mmf|FINRA margin) \| (.+?) \| ([0-9a-f]{12})", line)
+        if match:
+            observed[match.group(1)] = (match.group(2), match.group(3))
+    specs = (
+        ("ICI|combined", "ICI combined", "ICI 국내주식형 주간 순유입 합계", "domestic_flow_horizons", "value_bn"),
+        ("ICI|mmf", "ICI mmf", "ICI MMF 잔액 차이", "asset_balance_horizons", "change_bn"),
+        ("FINRA|margin", "FINRA margin", "FINRA 마진부채 잔액 차이", "margin_debt_horizons", "change_bn"),
+    )
+    lines = [f"• 1M/3M 마지막 검증값(이번 조회에서 원천 기간·지문 재확인, 새 수치 아님; USD/KRW {fx:,.2f}, {fx_match.group(2)}):"]
+    values = (saved or {}).get("values") or {}
+    for key, label, title, field, amount_field in specs:
+        entry = values.get(key) or {}
+        current = observed.get(label)
+        if not current or current != (entry.get("period"), str(entry.get("fingerprint") or "")[:12]):
+            lines.append(f"• {title}: 1M/3M 확인 불가 (이번 조회와 저장 원천의 기간·지문 불일치)")
+            continue
+        periods = (entry.get("metrics") or {}).get(field) or {}
+        rendered = []
+        for horizon in ("m1", "m3"):
+            item = periods.get(horizon) or {}
+            value = item.get(amount_field)
+            horizon_label = "1M" if horizon == "m1" else "3M"
+            if value is None:
+                reason = item.get("reason")
+                detail = "동일 정의 주간 이력이 목표일까지 이어지지 않음" if reason == "weekly_history_does_not_cover_target_window" else "원자료 비교구간 확인 불가"
+                rendered.append(f"{horizon_label} 확인 불가 ({detail})")
+            else:
+                rendered.append(f"{horizon_label} {_usd_billion_with_krw(value, fx)}")
+        lines.append(f"• {title} ({entry['period']}): " + " / ".join(rendered))
+    lines.append("• 주식형은 주간 순유입 합계, MMF·마진부채는 시점 간 잔액 차이입니다. 10/14 ICI 집합투자신탁 활동 주석을 포함하며, MMF 감소가 주식 순유입을 뜻하지 않습니다.")
+    return lines
+
+
+def _kofia_horizon_details(status_text, evidence, saved):
+    if evidence.get("phase") != "validated" or evidence.get("changed") is not False:
+        return []
+    fingerprint = str(evidence.get("fingerprint") or "")
+    status_fingerprint = re.search(r"^- fingerprint ([0-9a-f]{64})\s*$", status_text, re.M)
+    if not status_fingerprint or fingerprint != status_fingerprint.group(1) or fingerprint != saved.get("fingerprint"):
+        return ["• 1M/3M 잔액 차이: 이번 조회와 저장 원천의 지문 대조 실패로 표시 보류"]
+    dates = evidence.get("latest_dates") or {}
+    snapshot = saved.get("snapshot_date")
+    labels = {"deposit": "투자자예탁금", "mmf": "MMF", "cma": "CMA", "credit": "신용융자"}
+    result = []
+    for key, label in labels.items():
+        match = re.search(rf"^- {key} (\d{{8}}):.*?/ 1M ([^/\n]+) / 3M ([^/\n]+)\s*$", status_text, re.M)
+        if not match or match.group(1) != snapshot or dates.get(key) != snapshot:
+            return ["• 1M/3M 잔액 차이: 네 지표의 이번 조회 기준일·기간값 대조 실패로 표시 보류"]
+        result.append(f"• {label} ({snapshot}): 1M {match.group(2).strip()} / 3M {match.group(3).strip()}")
+    return ["• 1M/3M 마지막 공식값 재확인(새 기준일 아님, 달력월 목표일 직전 공표 잔액 대비):", *result]
+
+
 def build_us_message(now, reason):
     cfg = CONFIG["us"]
     status_text = cfg["status"].read_text(encoding="utf-8") if cfg["status"].exists() else ""
@@ -99,7 +166,7 @@ def build_us_message(now, reason):
         errors = [line[2:].strip() for line in status_text.splitlines() if line.startswith("- error:")]
         periods = _source_periods_from_us_status(status_text)
         if errors:
-            state = "일부 원천 미확인 · 숫자 보고 보류"
+            state = "일부 원천 미확인 · 신규 통합 수치 보고 보류"
             details = [f"• 조회 오류/미확인: {item[:240]}" for item in errors[:3]]
         elif parsed_match and int(parsed_match.group(1)) == 0:
             state = "자료 확인 대기 · 유효 원천값 없음"
@@ -118,6 +185,7 @@ def build_us_message(now, reason):
         f"• 확인 시각: {now:%Y-%m-%d %H:%M KST}",
         f"• 판정: {state}",
         *details,
+        *(_us_horizon_details(status_text, saved) if status_text and saved else []),
         "• 이 메시지는 상태 안내입니다. 실제 현금 유입·유출을 새로 입증하는 수치 보고가 아닙니다.",
     ])
 
@@ -139,6 +207,7 @@ def _kst_date_from_receipt(receipt):
 
 def build_kofia_message(now, reason):
     cfg = CONFIG["kofia"]
+    status_text = cfg["status"].read_text(encoding="utf-8") if cfg["status"].exists() else ""
     evidence = read_json(cfg["evidence"]) or {}
     saved = read_json(cfg["saved"]) or {}
     phase = evidence.get("phase", "missing")
@@ -189,6 +258,7 @@ def build_kofia_message(now, reason):
         f"• 판정: {state}",
         *( [f"• 원자료 조회 완료: {checked}"] if checked else [] ),
         *details,
+        *_kofia_horizon_details(status_text, evidence, saved),
         "• 잔액 변화는 실제 순매수·신규 자금 유입 또는 상품 간 직접 이동을 뜻하지 않습니다.",
     ])
 
