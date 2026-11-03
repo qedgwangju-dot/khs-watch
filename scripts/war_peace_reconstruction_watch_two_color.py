@@ -134,8 +134,8 @@ def direction(stage, row):
     # A headline about oil prices responding to peace expectations is market
     # context, not an independent attack or a signed peace agreement.
     if (re.search(r'유가|\b(?:oil|crude)\s+prices?\b', title)
-            and re.search(r'하락|내림|떨어|\b(?:fell|falls|drop|decline|slump)\w*\b', title)
-            and re.search(r'기대감|전망|\b(?:hopes?|expectations?)\b', title)
+            and re.search(r'하락|급락|폭락|약세|내림|떨어|\b(?:fell|falls|drop|decline|slump)\w*\b', title)
+            and re.search(r'기대감|전망|가능성|협상\s*재개|\b(?:hopes?|expectations?|possible\s+talks)\b', title)
             and not _separate_attack_headline(title)):
         return None
     # A separate actual action wins over a diplomatic or financial background.
