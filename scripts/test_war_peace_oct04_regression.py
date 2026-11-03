@@ -1247,4 +1247,22 @@ check("oct12-energy-announcement-yellow-render", "🟡 [" in energy_rendered and
 mixed_energy = mod.watch.build_alert([bridge_attack, energy_announcement], [], dt.datetime.now(mod.watch.KST))
 check("oct12-energy-mixed-red-preserved", "🔴 <b>공격·확전</b>" in mixed_energy and "🟢 <b>재건·휴전</b>" not in mixed_energy)
 
+# 11/3: 동일 미군 케슘섬 공격이 매체마다 별도 URL이어도 하나의 사건.
+qeshm_1 = row("美, 선거전날 이란 게슘섬 타격…방어적 조치", source="연합뉴스",
+              link="https://example.com/qeshm-yonhap")
+qeshm_2 = row("美, 이란 케슘섬 공습…혁명수비대 美 드론 격추 주장", source="뉴시스",
+              link="https://example.com/qeshm-newsis")
+qeshm_3 = row("미국, 이란 케슘 섬 비밀 공습…이란 미 드론 격추", source="서울신문",
+              link="https://example.com/qeshm-seoul")
+check("nov03-qeshm-multiple-sources-detected",
+      all(mod._us_qeshm_strike_event(r) for r in (qeshm_1, qeshm_2, qeshm_3)))
+check("nov03-qeshm-multiple-sources-same-event-id",
+      len({mod.item_id(r) for r in (qeshm_1, qeshm_2, qeshm_3)}) == 1)
+qeshm_explosion = row("이란 케슘섬 원인 미확정 폭발음", link="https://example.com/qeshm-explosion")
+qeshm_plan = row("미국, 이란 케슘섬 공격 계획 검토", link="https://example.com/qeshm-plan")
+qeshm_new_wave = row("미국, 이란 케슘섬 추가 공습", link="https://example.com/qeshm-second-wave")
+check("nov03-qeshm-unconfirmed-explosion-separate", not mod._us_qeshm_strike_event(qeshm_explosion))
+check("nov03-qeshm-attack-plan-separate", not mod._us_qeshm_strike_event(qeshm_plan))
+check("nov03-qeshm-additional-wave-separate", not mod._us_qeshm_strike_event(qeshm_new_wave))
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
