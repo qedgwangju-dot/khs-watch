@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/us-fund-flow-telegram-watch.yml"
       - "scripts/us_fund_flow_watch.py"
+      - "scripts/preopen_daily_status.py"
       - "scripts/us_positioning_delivery.py"
       - "tests/test_us_positioning_delivery.py"
       - "scripts/us_positioning_options_sox_watch.py"
@@ -14,7 +15,14 @@ on:
       - "scripts/us_vip_relative_watch.py"
       - "tests/test_us_vip_relative_watch.py"
   schedule:
-    - cron: "17 12,15,18,21 * * 1-5"
+    - cron: "17 12,15,18 * * 1-5"
+    # 06:17 KST weekday run, expressed in UTC without losing Monday KST.
+    - cron: "17 21 * * 0-4"
+    # Pre-open status is once-per-KST-day, with an earlier attempt and a final check.
+    - cron: "35 7 * * 1-5"
+      timezone: "Asia/Seoul"
+    - cron: "45 7 * * 1-5"
+      timezone: "Asia/Seoul"
     # Additional official ETF publication catch-up checks only; no other delivery lanes.
     - cron: "37 23 * * 1-5"
     - cron: "37 0 * * 2-6"
@@ -23,6 +31,7 @@ on:
   pull_request:
     paths:
       - "scripts/us_fund_flow_watch.py"
+      - "scripts/preopen_daily_status.py"
       - "scripts/us_positioning_delivery.py"
       - "tests/test_us_positioning_delivery.py"
       - "scripts/us_tech_etf_proxy_watch.py"
@@ -301,6 +310,7 @@ jobs:
           PY
 
       - name: Query US fund flow sources
+        id: query_fund_flow
         run: |
           rm -f out/us_fund_flow_alert.html out/us_fund_flow_status.md out/us_fund_flow_pending_state.json
           python -m py_compile scripts/us_fund_flow_watch.py
@@ -338,6 +348,7 @@ jobs:
           PY
 
       - name: Recheck committed state before sending
+        id: pre_send_dedup
         run: |
           # A source check may have started before another run committed delivery.
           # Compare pending semantic fingerprints against the freshest remote state.
@@ -382,6 +393,7 @@ jobs:
           PY
 
       - name: Send Telegram updates
+        id: send_updates
         if: hashFiles('out/us_fund_flow_alert.html') != '' || hashFiles('out/us_positioning_options_sox_alert.html') != ''
         run: |
           python - <<'PY'
@@ -401,6 +413,7 @@ jobs:
               pathlib.Path("out/us_positioning_options_sox_alert.html"),
           ]
           ids=[]
+          core_ids=[]
           for path in files:
               if not path.exists():
                   continue
@@ -414,6 +427,7 @@ jobs:
                   text=text[cut:].strip()
               if text:
                   chunks.append(text)
+              file_ids=[]
               for chunk in chunks:
                   data=urllib.parse.urlencode({
                       "chat_id":chat_id,
@@ -437,10 +451,58 @@ jobs:
                   if chat_id.lstrip("-").isdigit() and int(chat_id) != (result.get("chat") or {}).get("id"):
                       raise RuntimeError("Telegram acknowledged the wrong destination chat; state must not advance")
                   ids.append(message_id)
+                  file_ids.append(message_id)
+              if path.name == "us_fund_flow_alert.html":
+                  core_ids = file_ids
           if any(path.exists() for path in files) and not ids:
               raise RuntimeError("Alert file exists, but no Telegram message was acknowledged")
+          if core_ids:
+              pending = pathlib.Path("out/us_fund_flow_pending_state.json")
+              if not pending.exists():
+                  raise RuntimeError("Core fund-flow alert was acknowledged but its pending state is missing")
+              state = json.loads(pending.read_text(encoding="utf-8"))
+              from datetime import datetime, timezone
+              from zoneinfo import ZoneInfo
+              state["factual_delivery_receipt"] = {
+                  "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+                  "date_kst": datetime.now(ZoneInfo("Asia/Seoul")).date().isoformat(),
+                  "bot_username": actual,
+                  "message_ids": core_ids,
+              }
+              pending.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(ids)} ids={ids}")
           PY
+
+      - name: Send pre-open status when no factual flow report was delivered
+        if: always() && github.event_name == 'schedule' && (github.event.schedule == '35 7 * * 1-5' || github.event.schedule == '45 7 * * 1-5')
+        env:
+          PREOPEN_STATUS_REASON: ${{ steps.query_fund_flow.outcome != 'success' && 'source_collection_failed' || steps.pre_send_dedup.outcome == 'failure' && 'source_validation_failed' || steps.send_updates.outcome == 'failure' && 'telegram_delivery_unconfirmed' || 'scheduled_check' }}
+        run: python scripts/preopen_daily_status.py --family us
+
+      - name: Commit pre-open daily status receipt
+        if: always() && hashFiles('out/us_fund_flow_daily_status_pending.json') != ''
+        run: |
+          mkdir -p /tmp/us-preopen-status
+          cp out/us_fund_flow_daily_status_pending.json /tmp/us-preopen-status/state.json
+          git config user.name "us-market-watch[bot]"
+          git config user.email "us-market-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p data
+            cp /tmp/us-preopen-status/state.json data/us_fund_flow_daily_status_state.json
+            git add data/us_fund_flow_daily_status_state.json
+            if git diff --cached --quiet; then
+              echo "US pre-open status receipt unchanged"
+              exit 0
+            fi
+            git commit -m "Record US pre-open daily status delivery"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
 
       - name: Persist states after successful delivery
         if: success()
@@ -507,9 +569,12 @@ jobs:
             out/us_fund_flow_status.md
             out/us_fund_flow_alert.html
             out/us_fund_flow_pending_state.json
+            out/us_fund_flow_daily_status_pending.json
+            out/us_fund_flow_daily_status_receipt.json
             out/us_positioning_options_sox_status.md
             out/us_positioning_options_sox_alert.html
             out/us_positioning_options_sox_pending_state.json
+            data/us_fund_flow_daily_status_state.json
           if-no-files-found: ignore
           retention-days: 14
 
