@@ -7,9 +7,9 @@
     "consortium_discussion",
     "tender_open"
   ],
-  "last_checked_at_kst": null,
+  "last_checked_at_kst": "2026-11-04T03:28:07+09:00",
   "last_message_ids": [],
-  "source_health": "baseline",
+  "source_health": "complete",
   "baseline_evidence": [
     {
       "published": "2026-08-20",
@@ -24,5 +24,8 @@
       "fact": "한수원·지투파워·신한자산운용 컨소시엄 협의, 49:41:10 출자 구상·11월24일 마감 보도; 낙찰·출자 확정 아님"
     }
   ],
-  "alert_basis": "project_id_plus_confirmed_stage_transition_not_article"
+  "alert_basis": "project_id_plus_confirmed_stage_transition_not_article",
+  "source_success_count": 6,
+  "errors": [],
+  "last_delivered_event_types": []
 }
