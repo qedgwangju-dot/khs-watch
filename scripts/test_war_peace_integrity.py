@@ -3856,5 +3856,22 @@ class IntegrityTests(unittest.TestCase):
                 watch._validate_source_payload(url, body)
 
 
+
+class IranRestraintHeadlineTests(unittest.TestCase):
+    def test_korean_trump_no_rush_is_not_an_attack(self):
+        row = article("트럼프 대통령, 이란 공습 서두르지 않겠다고 단언")
+        self.assertEqual(integrity.non_military_kind(row), 'military_position')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+
+    def test_korean_midterm_restraint_with_hormuz_condition(self):
+        row = article("중간선거 후 공습 부인한 트럼프…호르무즈 재개방 조건 내건 이란")
+        self.assertEqual(integrity.non_military_kind(row), 'military_position')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+
+    def test_actual_separate_attack_is_not_suppressed(self):
+        row = article("트럼프, 이란 공습 서두르지 않겠다 밝혔지만 동시에 미군이 이란 시설 공격을 감행")
+        self.assertFalse(integrity._iran_attack_restraint_statement(row))
+
+
 if __name__ == '__main__':
     unittest.main()
