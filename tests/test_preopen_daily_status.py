@@ -71,7 +71,7 @@ class PreopenDailyStatusTests(unittest.TestCase):
         at_final = self.now.replace(hour=7, minute=45)
         after_open = self.now.replace(hour=8, minute=0)
         self.assertTrue(status.in_workflow_run_window(at_early, "us"))
-        self.assertFalse(status.in_workflow_run_window(at_early, "kofia"))
+        self.assertTrue(status.in_workflow_run_window(at_early, "kofia"))
         self.assertTrue(status.in_workflow_run_window(at_final, "us"))
         self.assertTrue(status.in_workflow_run_window(at_final, "kofia"))
         self.assertFalse(status.in_workflow_run_window(after_open, "us"))

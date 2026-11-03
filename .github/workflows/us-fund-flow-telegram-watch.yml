@@ -192,7 +192,7 @@ jobs:
 
       - name: Regress public IYW SOXX proxy without bot secrets or sending
         run: |
-          python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4
+          python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 exchange_calendars==4.13.1
           python -m py_compile scripts/us_tech_etf_proxy_watch.py
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_us_tech_etf_proxy_watch.py' -v
 
@@ -484,7 +484,9 @@ jobs:
           PY
 
       - name: Send pre-open status when no factual flow report was delivered
-        if: always() && ((github.event_name == 'schedule' && (github.event.schedule == '35 7 * * 1-5' || github.event.schedule == '45 7 * * 1-5')) || (github.event_name == 'workflow_run' && contains(github.event.workflow_run.created_at, 'T22:')))
+        # The existing 06:17 KST run can report unchanged or delayed data before
+        # the two 07:xx checks, which are often delayed or omitted by Actions.
+        if: always() && ((github.event_name == 'schedule' && (github.event.schedule == '17 21 * * 0-4' || github.event.schedule == '35 7 * * 1-5' || github.event.schedule == '45 7 * * 1-5')) || (github.event_name == 'workflow_run' && contains(github.event.workflow_run.created_at, 'T22:')))
         env:
           PREOPEN_STATUS_REASON: ${{ steps.query_fund_flow.outcome != 'success' && 'source_collection_failed' || steps.pre_send_dedup.outcome == 'failure' && 'source_validation_failed' || steps.send_updates.outcome == 'failure' && 'telegram_delivery_unconfirmed' || 'scheduled_check' }}
         run: python scripts/preopen_daily_status.py --family us

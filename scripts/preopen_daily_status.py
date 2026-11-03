@@ -216,7 +216,7 @@ def _telegram_json(url, data=None, timeout=30):
 
 def in_workflow_run_window(now, family):
     minute_of_day = now.hour * 60 + now.minute
-    start = 7 * 60 + (35 if family == "kofia" else 0)
+    start = 7 * 60
     return start <= minute_of_day < 8 * 60
 
 
