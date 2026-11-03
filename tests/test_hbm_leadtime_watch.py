@@ -605,6 +605,67 @@ class VendorMLCCAndCASPAGuards(unittest.TestCase):
         self.assertNotIn("400억달러", text)
         self.assertIn("환율 검증 실패", text)
 
+
+class Weekly008CorrectionRegression(unittest.TestCase):
+    def test_008_three_changes_and_balanced_are_not_corrupt(self):
+        data=w.WEEKLY_008_LOCK["components"]
+        self.assertEqual(data["GPU"],{"status":"Tightening","current":"30-45","balanced":"30-40"})
+        self.assertEqual(data["DRAM"]["balanced"],"8")
+        self.assertEqual(data["DRAM"]["current"],"19")
+        self.assertEqual(data["MLCC"]["balanced"],"12")
+        self.assertEqual(data["MLCC"]["current"],"38")
+        self.assertEqual(w.status_from_exact("Tightening"),"Tightening")
+
+    def test_008_broken_save_repaired_only_one_time(self):
+        import copy
+        d={"source":w.WEEKLY_008_LOCK["source"],"as_of":"2026-11-02",
+           "components":copy.deepcopy(w.WEEKLY_008_LOCK["components"])}
+        d["components"]["GPU"].update(status="Balanced",current="30-40",balanced="38")
+        d["components"]["DRAM"].update(current="20",balanced="38")
+        d["components"]["MLCC"].update(current="35",balanced="38")
+        repaired,changes=w.repair_weekly_008_state(d)
+        self.assertEqual(set(changes),{"GPU","DRAM","MLCC"})
+        self.assertEqual(w.repair_weekly_008_state(repaired)[1],[])
+        d["source"]="https://insights.trendforce.com/p/weekly-radar-009"
+        unchanged,changes=w.repair_weekly_008_state(d)
+        self.assertEqual(changes,[])
+        self.assertEqual(unchanged["components"]["DRAM"]["balanced"],"38")
+
+    def test_008_worsening_and_relief_named_with_range_bound(self):
+        details=w.supply_direction_details(w.WEEKLY_006_LOCK["components"],w.WEEKLY_008_LOCK["components"])
+        self.assertEqual((len(details["worse"]),len(details["better"])),(2,1))
+        self.assertTrue(any("GPU: 30~40주→30~45주 (상한 5주 연장)" in x for x in details["worse"]))
+        self.assertTrue(any("MLCC: 35주→38주 (3주 연장)" in x for x in details["worse"]))
+        self.assertTrue(any("DRAM: 20주→19주 (1주 단축)" in x for x in details["better"]))
+        note=w.build_weekly_008_correction_alert(["GPU","DRAM","MLCC"])
+        for x in ("악화 2개","완화 1개","균형 38주는","Tightening"):
+            self.assertIn(x,note)
+
+    def test_008_standalone_preserves_other_routes_and_no_repeat(self):
+        import tempfile,json,copy
+        from unittest import mock
+        with tempfile.TemporaryDirectory() as root:
+            folder=pathlib.Path(root)
+            state,pending,alert=folder/"state.json",folder/"pending.json",folder/"alert.md"
+            bad={"source":w.WEEKLY_008_LOCK["source"],"as_of":"2026-11-02",
+                 "components":copy.deepcopy(w.WEEKLY_008_LOCK["components"])}
+            bad["components"]["GPU"].update(status="Balanced",current="30-40",balanced="38")
+            bad["components"]["DRAM"].update(current="20",balanced="38")
+            bad["components"]["MLCC"].update(current="35",balanced="38")
+            state.write_text(json.dumps({"ai_component_leadtime":bad,"telegram_message_id":368,"unrelated":{"retain":True}}),encoding="utf-8")
+            with mock.patch.object(w,"STATE_PATH",state),mock.patch.object(w,"PENDING_PATH",pending),mock.patch.object(w,"ALERT_PATH",alert),mock.patch.object(w,"read_rss",return_value=[]):
+                w.main()
+                saved=json.loads(pending.read_text(encoding="utf-8"))
+                self.assertEqual(saved["ai_component_leadtime"]["components"]["DRAM"]["balanced"],"8")
+                self.assertEqual(saved["ai_component_leadtime"]["components"]["MLCC"]["current"],"38")
+                self.assertEqual(saved["telegram_message_id"],368)
+                self.assertTrue(saved["unrelated"]["retain"])
+                self.assertIn("완화 1개",alert.read_text(encoding="utf-8"))
+                state.write_text(json.dumps(saved),encoding="utf-8")
+                alert.unlink()
+                w.main()
+                self.assertFalse(alert.exists())
+
 class LeadTimeAlertTests(unittest.TestCase):
     def setUp(self):
         self.old = {

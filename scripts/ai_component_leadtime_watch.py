@@ -184,6 +184,25 @@ WEEKLY_005_ARCHIVED_COMPONENTS = {
     "MLCC": {"status": "Tight", "current": "35", "balanced": "12"},
 }
 
+
+# 2026-11-02 Weekly Radar 008. Three current-lead changes are verified in
+# the publisher's summary; balances for those rows remain from prior table.
+# Other four rows are prior verified values carried forward, not new reads.
+WEEKLY_008_LOCK = {
+    "as_of":"2026-11-02",
+    "source":"https://insights.trendforce.com/p/weekly-radar-008",
+    "components":{
+        "CPU":{"status":"Tight","current":"25-30","balanced":"16-20"},
+        "GPU":{"status":"Tightening","current":"30-45","balanced":"30-40"},
+        "DRAM":{"status":"Very Tight","current":"19","balanced":"8"},
+        "NAND(eSSD)":{"status":"Tight","current":"16","balanced":"8"},
+        "HDD":{"status":"Very Tight","current":"50","balanced":"16"},
+        "ABF":{"status":"Very Tight","current":"48-56","balanced":"12"},
+        "MLCC":{"status":"Tight","current":"38","balanced":"12"},
+    },
+    "directly_confirmed_current":["GPU","DRAM","MLCC"],
+    "balanced_levels_carried":["GPU","DRAM","MLCC"],
+}
 TOSHIBA_HDD_OFFICIAL = {
     "as_of": "2026-10-02",
     "source": "https://toshiba.semicon-storage.com/ap-en/company/news/news-topics/2026/10/storage-20261002-1.html",
@@ -267,9 +286,10 @@ STATUS_KO = {
     "Very Tight": "심각한 공급 부족",
     "Tight": "공급 제약",
     "Balanced": "균형",
+    "Tightening": "공급 악화 중",
 }
 
-STATUS_SEVERITY = {"Balanced": 0, "Tight": 1, "Very Tight": 2}
+STATUS_SEVERITY = {"Balanced": 0, "Tightening": 0.5, "Tight": 1, "Very Tight": 2}
 
 REVENUE_PATHS = {
     "CPU": "에이전틱 AI·가상머신·도구 호출 증가 → 서버 CPU 주문·출하 → FC-BGA·RDIMM·스토리지 동반 수요 → 서버 매출",
@@ -431,6 +451,8 @@ def status_from_exact(value: str) -> str:
     low = (value or "").lower()
     if "very tight" in low or "severe shortage" in low or "심각한 공급 부족" in value or "심각한 부족" in value:
         return "Very Tight"
+    if "tightening" in low or "공급 악화 중" in value:
+        return "Tightening"
     if re.search(r"\btight\b", low) or "constrained supply" in low or "공급 제약" in value:
         return "Tight"
     if "balanced" in low or "균형" in value:
@@ -444,7 +466,7 @@ def extract_structured_row(text: str, alias: str) -> dict:
     pattern = (
         rf"\b{re.escape(alias)}\b"
         rf"(?:\s+substrates?)?\s*[:|\-]?\s*"
-        rf"(Very\s+Tight|Tight|Balanced)\s*"
+        rf"(Very\s+Tight|Tightening|Tight|Balanced)\s*"
         rf"{WEEK}\s*{WEEK}"
     )
     m = re.search(pattern, text, re.I)
@@ -839,7 +861,12 @@ def supply_direction_details(old: dict, new: dict) -> dict[str, list[str]]:
         before_mid, after_mid = midpoint_week(a), midpoint_week(b)
         if a != b and before_mid is not None and after_mid is not None:
             move = after_mid - before_mid
-            movement = f"{fmt_week(a)}→{fmt_week(b)} ({abs(move):g}주 {'연장' if move > 0 else '단축'})"
+            a_parts, b_parts = a.split("-"), b.split("-")
+            if len(a_parts)==len(b_parts)==2 and a_parts[0]==b_parts[0]:
+                high_delta = float(b_parts[1])-float(a_parts[1])
+                movement = f"{fmt_week(a)}→{fmt_week(b)} (상한 {abs(high_delta):g}주 {'연장' if high_delta>0 else '단축'})"
+            else:
+                movement = f"{fmt_week(a)}→{fmt_week(b)} ({abs(move):g}주 {'연장' if move > 0 else '단축'})"
         else:
             movement = f"납기 {fmt_week(b)} 유지" if a and a == b else "납기 비교 불충분"
         before_status = fmt_status(before)
@@ -1167,6 +1194,41 @@ def caspa_panel_update(previous: dict, fx: dict) -> tuple[dict, str]:
     return record, "\n".join(lines)
 
 
+
+def repair_weekly_008_state(previous: dict) -> tuple[dict,list[str]]:
+    if str(previous.get("source") or "").rstrip("/") != WEEKLY_008_LOCK["source"]:
+        return previous, []
+    fixed=copy.deepcopy(previous)
+    fixed.setdefault("components",{})
+    changed=[]
+    for name,value in WEEKLY_008_LOCK["components"].items():
+        if canonical_component(fixed["components"].get(name) or {}) != canonical_component(value):
+            fixed["components"][name]=copy.deepcopy(value)
+            changed.append(name)
+    fixed["as_of"]=WEEKLY_008_LOCK["as_of"]
+    fixed["verified_weekly_issue"]="weekly-radar-008-text"
+    return fixed,changed
+
+
+def build_weekly_008_correction_alert(names: list[str]) -> str:
+    previous=WEEKLY_006_LOCK["components"]
+    corrected=WEEKLY_008_LOCK["components"]
+    details=supply_direction_details(previous,corrected)
+    worse,better=details["worse"],details["better"]
+    lines=[
+        "<b>TrendForce 11/2 리드타임 정정·비교 기준 복구</b>",
+        "• <b>악화 "+str(len(worse))+"개 ("+"; ".join(html.escape(x) for x in worse)+")</b>",
+        "• <b>완화 "+str(len(better))+"개 ("+"; ".join(html.escape(x) for x in better)+")</b>",
+        "• GPU: 30~40주→30~45주(상한 +5주), Balanced→Tightening(공급 악화 중).",
+        "• DRAM: 20주→19주(-1주), Very Tight 유지; 균형 납기 8주.",
+        "• MLCC: 35주→38주(+3주), Tight 유지; 균형 납기 12주.",
+        "• 기존 DRAM·MLCC 균형 38주는 MLCC 현재 납기 38주를 잘못 채택한 오류로 정정.",
+        "• 나머지 네 품목의 기존 납기는 유지; 해당 주차 신규 수치로 주장하지 않음.",
+        "• 확인값·직전 유지값을 분리하고 기준월이 다른 납기를 합산하지 않음.",
+        f'• <a href="{WEEKLY_008_LOCK["source"]}">TrendForce 11/2 원문</a>',
+    ]
+    return "\n".join(lines)+"\n"
+
 def repair_weekly_006_state(previous: dict) -> tuple[dict, list[str]]:
     """Repair the one mislabeled 10/19 issue without changing any other vintage."""
     if str(previous.get("source") or "").rstrip("/") != WEEKLY_006_LOCK["source"]:
@@ -1376,6 +1438,7 @@ def _compact_status_groups(components: dict) -> list[str]:
     groups = [
         ("심각", "Very Tight"),
         ("제약", "Tight"),
+        ("악화 중", "Tightening"),
         ("균형", "Balanced"),
     ]
     rows = []
@@ -1551,7 +1614,8 @@ def main() -> None:
     weekly_002_components = copy.deepcopy(weekly_002_previous.get("components") or BASELINE["components"])
     weekly_004_previous, repaired_004_components, repaired_004_signals = repair_weekly_004_state(weekly_002_previous)
     before_006 = copy.deepcopy(weekly_004_previous.get("components") or BASELINE["components"])
-    previous, repaired_006_components = repair_weekly_006_state(weekly_004_previous)
+    after_006, repaired_006_components = repair_weekly_006_state(weekly_004_previous)
+    previous, repaired_008_components = repair_weekly_008_state(after_006)
     previous_components = previous.get("components") or BASELINE["components"]
     seen_urls = set(previous.get("seen_urls") or [])
 
@@ -1598,6 +1662,8 @@ def main() -> None:
                 # The 10/19 screenshot shows all seven complete rows. Narrative snippets
                 # must NOT downgrade HDD from Very Tight to Tight while 50 weeks holds.
                 components = copy.deepcopy(WEEKLY_006_LOCK["components"])
+            if direct.rstrip("/") == WEEKLY_008_LOCK["source"]:
+                components = copy.deepcopy(WEEKLY_008_LOCK["components"])
             signals = extract_signals(full_text, direct)
             candidates.append(
                 {
@@ -1638,8 +1704,11 @@ def main() -> None:
         )
         notify_text = (notify_text.rstrip() + "\n\n" + correction.strip()).strip() + "\n" if notify_text else correction
     if repaired_006_components:
-        correction = build_weekly_006_correction_alert(before_006, previous_components, repaired_006_components)
+        correction = build_weekly_006_correction_alert(before_006, after_006.get("components") or BASELINE["components"], repaired_006_components)
         notify_text = (notify_text.rstrip() + "\n\n" + correction.strip()).strip() + "\n" if notify_text else correction
+    if repaired_008_components:
+        fix = build_weekly_008_correction_alert(repaired_008_components)
+        notify_text = (notify_text.rstrip()+"\n\n"+fix.strip()).strip()+"\n" if notify_text else fix
     new_seen = set(seen_urls)
 
     if best:
@@ -1762,7 +1831,8 @@ def main() -> None:
         "candidate_count": len(candidates),
         "mlcc_vendor_watch": vendor_state,
         "caspa_panel_watch": caspa_state,
-        "image_verified_issue": "weekly-radar-006" if latest_source.rstrip("/") == WEEKLY_006_LOCK["source"] else "",
+        "image_verified_issue": ("weekly-radar-008-text" if latest_source.rstrip("/") == WEEKLY_008_LOCK["source"]
+                                 else "weekly-radar-006" if latest_source.rstrip("/") == WEEKLY_006_LOCK["source"] else ""),
         "errors": errors[-10:],
     }
     write_json(PENDING_PATH, pending)
