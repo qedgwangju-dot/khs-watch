@@ -118,6 +118,15 @@ class GoldmanKoreaAllocationTests(unittest.TestCase):
                 self.assertEqual(w.main(), 0)
                 self.assertFalse(paths["alert.html"].exists())
 
+    def test_series_archive_discovers_newly_published_report(self):
+        series = "https://finvaulta.com/research/goldman-sachs/series/asia-pacific-weekly-kickstart"
+        page = '<html><a href="/research/goldman-sachs/asia-pacific-weekly-kickstart-2026-11-07">new edition</a></html>'
+        def mock_fetch(url, timeout=7):
+            return page if url == series else "<html></html>"
+        with patch.object(w, "rss_links", return_value=([], False)), patch.object(w, "fetch", side_effect=mock_fetch):
+            urls, _ = w.discover()
+        self.assertIn("https://finvaulta.com/research/goldman-sachs/asia-pacific-weekly-kickstart-2026-11-07", urls)
+
     def test_no_new_source_does_not_send_and_state_waits_for_delivery(self):
         with tempfile.TemporaryDirectory() as d:
             status = pathlib.Path(d) / "status.md"

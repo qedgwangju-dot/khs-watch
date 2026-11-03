@@ -29,6 +29,8 @@ STATIC = (
     "https://alpharis.cn/events/2386",
     "https://finvaulta.com/research/goldman-sachs/em-weekly-fund-flows-monitor-october-selling-2026-10-30",
     "https://finvaulta.com/research/goldman-sachs/korea-weekly-kickstart-kospi-declined-further-by-2-percent-2026-10-25",
+    "https://finvaulta.com/research/goldman-sachs/asia-pacific-weekly-kickstart-2026-10-31",
+    "https://finvaulta.com/research/goldman-sachs/korea-weekly-kickstart-kospi-rebounded-by-3-percent-2026-10-30",
 )
 QUERIES = (
     '"Goldman Sachs" "Korea" "gross allocation" "net allocation"',
@@ -37,7 +39,7 @@ QUERIES = (
 )
 MAX_DOCS = 12
 CHECK_HOURS = 3
-DISCOVERY_REV = 2  # A source-discovery upgrade must be checked once despite the normal 3-hour gate.
+DISCOVERY_REV = 3  # A source-discovery upgrade must be checked once despite the normal 3-hour gate.
 FRESH_DAYS = 10
 MONTHS = {s.lower(): i for i, s in enumerate(
     "January February March April May June July August September October November December".split(), 1)}
@@ -135,7 +137,7 @@ def parse_document(raw, url, now=None):
         gross, net = numeric(section, "gross"), numeric(section, "net")
         if gross is None or net is None:
             continue
-        prefix = text[max(0, hit.start()-2400):hit.start()]
+        prefix = text[max(0, hit.start()-1000):hit.start()]
         marks = list(re.finditer(r"\bAs of\s+(?:" + "|".join(MONTHS) + r")\s+\d{1,2},?\s+20\d{2}", prefix, re.I))
         asof = date_in(marks[-1][0]) if marks else published
         if not asof or dt.date.fromisoformat(asof) > now.date():
@@ -222,15 +224,20 @@ def discover():
             online = True
         except (requests.RequestException, ValueError, ET.ParseError):
             pass
-    try:
-        page = fetch("https://finvaulta.com/research/goldman-sachs", 7)
-        for a in BeautifulSoup(page, "html.parser").select("a[href]"):
-            url = urllib.parse.urljoin("https://finvaulta.com", a["href"])
-            if domain(url) and any(x in url.lower() for x in ("em-weekly", "korea-weekly", "hedge", "positioning")):
-                urls.append(url)
-        online = True
-    except (requests.RequestException, ValueError):
-        pass
+    for archive_url in (
+        "https://finvaulta.com/research/goldman-sachs",
+        "https://finvaulta.com/research/goldman-sachs/series/asia-pacific-weekly-kickstart",
+        "https://finvaulta.com/research/goldman-sachs/series/weekly-fund-flows",
+    ):
+        try:
+            page = fetch(archive_url, 7)
+            for a in BeautifulSoup(page, "html.parser").select("a[href]"):
+                url = urllib.parse.urljoin("https://finvaulta.com", a["href"])
+                if domain(url) and any(x in url.lower() for x in ("em-weekly", "korea-weekly", "asia-pacific-weekly", "hedge", "positioning")) and "/series/" not in url:
+                    urls.append(url)
+            online = True
+        except (requests.RequestException, ValueError):
+            pass
     # Historical reports only serve as dated reference points, never live readings.
     urls.extend(STATIC)
     seen, unique, counts = set(), [], {}
