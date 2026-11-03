@@ -138,14 +138,14 @@
       "fingerprint": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
     }
   },
-  "updated_at_kst": "2026-10-30T10:01:54.019333+09:00",
+  "updated_at_kst": "2026-11-03T16:43:42.563051+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-10-29",
-    "sp500_last_value": 7720.39013671875,
+    "sp500_last_date": "2026-11-02",
+    "sp500_last_value": 7541.39990234375,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -1.26,
+    "sp500_drawdown_pct": -3.55,
     "hartnett_tracking_version": "2026-10-09-v1",
     "hartnett_treasury_date": "2026-11-02",
     "hartnett_10y_pct": 4.91,
@@ -154,7 +154,7 @@
     "hartnett_bond_momentum": "neutral",
     "hartnett_fed_target_upper_pct": 4.0,
     "hartnett_fed_effective_date": "2026-10-28",
-    "hartnett_election_stage": "within_7_days",
+    "hartnett_election_stage": "election_day",
     "retail_survey": {
       "aaii": {
         "period": "2026-10",
@@ -177,5 +177,13 @@
       "pair": "2026-10|2026-10",
       "regime": "동반 높은 주식노출·상승기대"
     }
+  },
+  "factual_delivery_receipt": {
+    "timestamp_utc": "2026-11-03T07:44:52.294314+00:00",
+    "date_kst": "2026-11-03",
+    "bot_username": "khs887900887900008879_bot",
+    "message_ids": [
+      1777
+    ]
   }
 }
