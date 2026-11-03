@@ -85,7 +85,7 @@ class RequestTimeoutBudgetTests(unittest.TestCase):
              b'<html><body>fixture</body></html>'),
         )
         for url, body in cases:
-            with self.subTest(host=urllib.request.urlparse(url).hostname if hasattr(urllib.request, 'urlparse') else url):
+            with self.subTest(url=url):
                 opener = _SlowHostOpener(body)
                 with patch.object(source_watch.urllib.request, 'build_opener', return_value=opener):
                     self.assertEqual(source_watch.req(url, timeout=20), body)
