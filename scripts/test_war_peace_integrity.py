@@ -3182,6 +3182,18 @@ class IntegrityTests(unittest.TestCase):
         self.assertEqual(animal['render_withheld'], 'same_rendered_event_summary')
         self.assertEqual(seoul['render_withheld'], 'same_rendered_event_summary')
 
+    def test_run746_unverified_explosion_sound_stays_yellow(self):
+        row = article('"이란 게슘섬서 5차례 폭발음"…호르무즈해협 다시 긴장 - 데일리안',
+                      source='데일리안', link='https://news.google.com/rss/articles/run746')
+        row['body_verified'] = False
+        row['article_text'] = '과거 다른 지역의 미사일 공격을 언급한 배경 문장'
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        bad = ('🔴 [신규] <b>1. 이란 남부 · 폭발 원인 미확정</b>\n'
+               '이란 게슘섬서 5차례 폭발음\n'
+               'RSS 보도 · 원인미확정 · 제목 기준·본문 미확인\n'
+               '<b>투자 판정</b>')
+        self.assertIn('원인 미확정 폭발음을 공격·확전으로 표시', quality._alert_quality_issues(bad))
+
     def test_alias_pipeline_saves_only_rendered_seen_and_then_suppresses_feed(self):
         fixture, _ = self.alias_fixture()
         pair = fixture['articles'][:2]

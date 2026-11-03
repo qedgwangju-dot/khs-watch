@@ -1522,6 +1522,9 @@ def _alert_quality_issues(text):
             issues.append('초록 항목과 확전 의미 충돌')
         if icon == '🔴' and any(x in block for x in ('실물물동량', '원유공급회복', '물동량 회복', '역대 가장 많', '기록·급증·회복')):
             issues.append('빨강 항목과 공급회복 의미 충돌')
+        if icon == '🔴' and '폭발' in block and any(x in block for x in
+                                                   ('폭발 원인 미확정', '원인·공격 주체 미확정')):
+            issues.append('원인 미확정 폭발음을 공격·확전으로 표시')
         if '이스라엘·레바논' in block and any(x in block for x in ('gaza', '가자지구', '가자')):
             issues.append('가자 사건을 이스라엘·레바논으로 오분류')
         if any(x in block for x in ('bear population', '곰 개체수', '야생동물')) and any(x in block for x in ('attack', '공격')):
