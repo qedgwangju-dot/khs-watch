@@ -122,7 +122,7 @@ def _failure_details(report):
     return stable_summary
 
 
-def _render_warning(details, first_seen_at, now):
+def _render_warning(details, first_seen_at, now, *, partial_mode=False):
     displayed = []
     for label, count in details['causes'].items():
         displayed.append(f'• {label}: {count}건')
@@ -144,7 +144,8 @@ def _render_warning(details, first_seen_at, now):
         incomplete_line,
         *displayed[:6],
         f'장애 최초 확인: {first_seen_kst}',
-        '전쟁 상황 알림은 원천 범위가 완전히 확인될 때까지 보류 중입니다.',
+        ('이번 실행에서는 새로 발송할 검증된 상황이 없으며 원천 범위도 미완료입니다.'
+         if partial_mode else '전쟁 상황 알림은 원천 범위가 완전히 확인될 때까지 보류 중입니다.'),
         '이 운영 경고는 상황 알림이 아니며, 계속될 경우 최소 6시간 간격으로 알립니다.',
     ]
     return '\n'.join(lines) + '\n'
@@ -198,7 +199,7 @@ def prepare(*, now=None, coverage_path=COVERAGE, state_path=STATE,
     # is incomplete. Do not prepare two Telegram payloads in the same run.
     if due and not (partial_verified and alert_path.is_file()):
         state['last_warning_sent_at'] = now.isoformat(timespec='seconds')
-        message = _render_warning(details, first_seen, now)
+        message = _render_warning(details, first_seen, now, partial_mode=partial_verified)
         warning_path.parent.mkdir(parents=True, exist_ok=True)
         temporary = warning_path.with_suffix(warning_path.suffix + '.tmp')
         temporary.write_text(message, encoding='utf-8')

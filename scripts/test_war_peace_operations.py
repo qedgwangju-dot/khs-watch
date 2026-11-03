@@ -146,6 +146,8 @@ class OperationsWarningTests(unittest.TestCase):
         self.alert.unlink()
         self.assertEqual(self.prepare(self.now + dt.timedelta(minutes=5)), 'send')
         self.assertTrue(self.warning.exists())
+        self.assertIn('이번 실행에서는 새로 발송할 검증된 상황이 없으며',
+                      self.warning.read_text(encoding='utf-8'))
 
     def test_collection_failure_without_query_statuses_is_labeled_unverified(self):
         self.write_coverage({
