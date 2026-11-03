@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-03T01:46:15.650421+00:00",
+  "updated_at": "2026-11-03T06:41:04.104624+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -825,10 +825,19 @@
     "bb59081c6a94edeb29aa9ee272915790bfc00b0a819d0f4d4e441c61b58f2968",
     "87f445d514b02a83567aa23aadcd3ef34dcd0994dd2f126be81b7914fabdbf10",
     "2c7a799c36e213edfcd4436d9b0b85799f852311cfa1ead38549946325581ff2",
-    "bf7af76a740fd475558e6c6075a01391a517102e9ccc691da41c26737e1068ce"
+    "bf7af76a740fd475558e6c6075a01391a517102e9ccc691da41c26737e1068ce",
+    "ac0c04a43be0e21e7791c408a2e970cfc55a8095216b37a5fe9ede44c933701b",
+    "f848ee456703cc5d9b830a76c3aa33d916e3397d1ac006f7a701e6f499324455",
+    "4214ddd3b54b48febf67b82a90ce81584528cb18a772158b5f237ceb169a4b94",
+    "a9578ba91d599a8db53af02a92e4618d6727cbac0e2e76049d8abb2e70b9589b",
+    "08b85e8855f984637d946b4024c89621e2ddd6ac087ce22afdfb978432b365d6"
   ],
   "last_selected": [
-    "bf7af76a740fd475558e6c6075a01391a517102e9ccc691da41c26737e1068ce"
+    "ac0c04a43be0e21e7791c408a2e970cfc55a8095216b37a5fe9ede44c933701b",
+    "f848ee456703cc5d9b830a76c3aa33d916e3397d1ac006f7a701e6f499324455",
+    "4214ddd3b54b48febf67b82a90ce81584528cb18a772158b5f237ceb169a4b94",
+    "a9578ba91d599a8db53af02a92e4618d6727cbac0e2e76049d8abb2e70b9589b",
+    "08b85e8855f984637d946b4024c89621e2ddd6ac087ce22afdfb978432b365d6"
   ],
   "groups": [
     "agibot_worken_hardware_model",
@@ -836,7 +845,6 @@
     "ess_battery",
     "il_robot_revenue_2026q3",
     "lg_cloid_inhouse_assembly",
-    "lg_factory_loop",
     "lg_robot_learning_hours_target",
     "openai_robotics_infrastructure_program",
     "robotis",
@@ -934,13 +942,28 @@
         false
       ],
       "state_timestamp_utc": "2026-11-03T01:46:15.650421+00:00"
+    },
+    {
+      "run_id": 41591404168,
+      "outcome": "sent",
+      "message_ids": [
+        323
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-03T06:41:04.104624+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 41561831992,
+    "run_id": 41591404168,
     "outcome": "sent",
     "message_ids": [
-      322
+      323
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -949,6 +972,6 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-03T01:46:15.650421+00:00"
+    "state_timestamp_utc": "2026-11-03T06:41:04.104624+00:00"
   }
 }
