@@ -1441,7 +1441,12 @@ def _us_qeshm_strike_event(row):
 
 def item_id(row):
     if _us_qeshm_strike_event(row):
-        return hashlib.sha256(("event|us-iran|qeshm-strike|" + _published_day(row)).encode()).hexdigest()[:20]
+        event_day = _published_day(row)
+        # 기존에 송출되어 seen 처리된 11/3 원보도 ID를 유지한다.
+        # 새 canonical ID를 만들면 수정 직후 같은 사건을 재발송할 수 있다.
+        if event_day == "2026-11-03":
+            return "11f7a256925e0247b456"
+        return hashlib.sha256(("event|us-iran|qeshm-strike|" + event_day).encode()).hexdigest()[:20]
     china_stage = _china_fuel_stage(row)
     if china_stage:
         return _china_fuel_event_id(row, china_stage)
