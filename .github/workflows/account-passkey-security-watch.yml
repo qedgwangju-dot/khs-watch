@@ -85,7 +85,7 @@ jobs:
                   process = subprocess.run(
                       ["curl", "--config", "-", "--fail", "--silent", "--show-error",
                        "--retry", "2", "--retry-delay", "2", "--max-time", "20"],
-                      input='url = "' + url + '"\\n',
+                      input='url = "' + url + '"\n',
                       text=True, capture_output=True, timeout=75,
                   )
                   if process.returncode != 0:
