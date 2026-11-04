@@ -74,7 +74,7 @@
     "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-11-04T18:50:36+09:00",
+  "last_checked_at_kst": "2026-11-05T03:16:40+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
   "latest_evidence_urls": [],
@@ -113,7 +113,7 @@
         }
       }
     },
-    "latest_month": "2026-08",
+    "latest_month": "2026-09",
     "history": {
       "2025-08": {
         "month": "2025-08",
@@ -674,27 +674,167 @@
             }
           ]
         }
+      },
+      "2026-09": {
+        "month": "2026-09",
+        "source_url": "https://www.census.gov/trade/downloads/2026/Port/im_hs6_m/PORTHS6MM2609.ZIP",
+        "source_kind": "U.S. Census Bureau Port HS6 monthly general imports",
+        "primary_850423": {
+          "world_usd": 399794237,
+          "china_usd": 34179095,
+          "korea_usd": 87514362,
+          "china_share_pct": 8.549171507942471,
+          "korea_share_pct": 21.889850803427162,
+          "top_origins": [
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 87514362,
+              "share_pct": 21.889850803427162
+            },
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 83594443,
+              "share_pct": 20.909366685043036
+            },
+            {
+              "cty_code": "3510",
+              "name": "브라질",
+              "usd": 56954356,
+              "share_pct": 14.245917206655484
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 34179095,
+              "share_pct": 8.549171507942471
+            },
+            {
+              "cty_code": "4550",
+              "name": "국가코드 4550",
+              "usd": 24319610,
+              "share_pct": 6.083031657107154
+            },
+            {
+              "cty_code": "4791",
+              "name": "크로아티아",
+              "usd": 19652916,
+              "share_pct": 4.915757702630416
+            }
+          ]
+        },
+        "liquid_850421_23": {
+          "world_usd": 697181926,
+          "china_usd": 45915544,
+          "korea_usd": 154015087,
+          "china_share_pct": 6.585876983850554,
+          "korea_share_pct": 22.091090037810304,
+          "top_origins": [
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 201413939,
+              "share_pct": 28.889724688588668
+            },
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 154015087,
+              "share_pct": 22.091090037810304
+            },
+            {
+              "cty_code": "3510",
+              "name": "브라질",
+              "usd": 69005930,
+              "share_pct": 9.897836909788163
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 45915544,
+              "share_pct": 6.585876983850554
+            },
+            {
+              "cty_code": "1220",
+              "name": "캐나다",
+              "usd": 41138406,
+              "share_pct": 5.900670178876668
+            },
+            {
+              "cty_code": "4890",
+              "name": "튀르키예",
+              "usd": 24791670,
+              "share_pct": 3.5559828898949397
+            }
+          ]
+        },
+        "other_large_850434": {
+          "world_usd": 145944958,
+          "china_usd": 41310876,
+          "korea_usd": 8216745,
+          "china_share_pct": 28.305791831465665,
+          "korea_share_pct": 5.630030055577528,
+          "top_origins": [
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 51934722,
+              "share_pct": 35.58514299616983
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 41310876,
+              "share_pct": 28.305791831465665
+            },
+            {
+              "cty_code": "4280",
+              "name": "독일",
+              "usd": 14621094,
+              "share_pct": 10.018224815961096
+            },
+            {
+              "cty_code": "1220",
+              "name": "캐나다",
+              "usd": 11641155,
+              "share_pct": 7.976400938770355
+            },
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 8216745,
+              "share_pct": 5.630030055577528
+            },
+            {
+              "cty_code": "4370",
+              "name": "헝가리",
+              "usd": 5090017,
+              "share_pct": 3.4876278493978528
+            }
+          ]
+        }
       }
     },
-    "last_checked_at_kst": "2026-11-04T18:50:36+09:00",
+    "last_checked_at_kst": "2026-11-05T03:16:40+09:00",
     "last_error": "",
-    "pending_month": "2026-09"
+    "pending_month": ""
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-04T18:57:34+09:00",
-    "status": "no_message_due"
+    "checked_at_kst": "2026-11-05T03:22:01+09:00",
+    "status": "confirmed"
   },
-  "last_successful_delivery_kst": "2026-10-11T09:26:33+09:00",
+  "last_successful_delivery_kst": "2026-11-05T03:22:01+09:00",
   "telegram_message_ids": [
-    165
+    253
   ],
-  "telegram_message_id": 165,
+  "telegram_message_id": 253,
   "delivery_receipt": {
     "status": "confirmed",
     "message_ids": [
-      165
+      253
     ],
-    "confirmed_at_kst": "2026-10-11T09:26:33+09:00"
+    "confirmed_at_kst": "2026-11-05T03:22:01+09:00"
   },
   "korea_transformer_exports": {
     "version": 1,
@@ -835,11 +975,11 @@
       }
     },
     "latest_official_us_month": "2026-09",
-    "last_attempt_day": "2026-11-04",
-    "last_checked_at_kst": "2026-11-04T18:50:36+09:00",
+    "last_attempt_day": "2026-11-05",
+    "last_checked_at_kst": "2026-11-05T03:16:40+09:00",
     "last_status": "month_unpublished",
     "last_error_kind": "kcs_no_official_rows",
-    "last_attempt_at_kst": "2026-11-04T18:50:36+09:00",
+    "last_attempt_at_kst": "2026-11-05T03:16:40+09:00",
     "fetch_revision": 3,
     "source_blocker_notified": false,
     "connection_restored_notified": true,
