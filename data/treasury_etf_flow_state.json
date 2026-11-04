@@ -3187,12 +3187,12 @@
     "daily_delivery_date_kst": "2026-11-04"
   },
   "daily_status_notification": {
-    "date_kst": "2026-10-26",
-    "at_kst": "2026-10-26T09:36:49+09:00",
+    "date_kst": "2026-11-05",
+    "at_kst": "2026-11-05T07:19:18+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      499
+      547
     ],
-    "reason": "workflow_step_failed"
+    "reason": "recheck_skipped"
   }
 }
