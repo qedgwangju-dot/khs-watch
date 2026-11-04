@@ -29,7 +29,7 @@
     "agentic_cpu_per_gpu": 1.0
   },
   "baseline_source": "BofA Global Research 2차 공개보도 기준",
-  "updated_at_kst": "2026-11-04T10:25:24+09:00",
+  "updated_at_kst": "2026-11-04T10:46:39+09:00",
   "seen_ids": [
     "66d627057937a9e600c63eac",
     "08d5cbf40c85943b346ecc01",
@@ -43,7 +43,8 @@
     "7b7c26db8b084e36d80d2b0d",
     "ae1d36c1ca4b5d40f1d9a7d8",
     "f788aa36b2ffc981ca224042",
-    "fe59b99fcf84d81809c420b5"
+    "fe59b99fcf84d81809c420b5",
+    "4ee98b97106dbcd586ef75e9"
   ],
   "jpm_capex": {
     "metrics": {
@@ -117,7 +118,7 @@
     },
     "primary_status": "과거 기사 재발견·신규 알림 금지",
     "primary_numeric_anchors": [],
-    "last_primary_checked_kst": "2026-11-04T10:25:24+09:00",
+    "last_primary_checked_kst": "2026-11-04T10:46:39+09:00",
     "primary_errors": [],
     "publisher_release": "2026-10-19T05:39:38+00:00",
     "publisher_article_url": "https://newsletter.semianalysis.com/p/datacenters-2027-the-year-of-acceleration",
@@ -149,14 +150,14 @@
   },
   "fx": {
     "usdkrw": 1344.59,
-    "basis": "2026-11-03 일일 기준 · ECB/Frankfurter · 조회 2026-11-04 10:25 KST · 보조 API 2026-11-04 · 차이 0.05% · 일중 기준시각 차이 가능",
+    "basis": "2026-11-03 일일 기준 · ECB/Frankfurter · 조회 2026-11-04 10:46 KST · 보조 API 2026-11-04 · 차이 0.05% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "quality": "교차검증 일일 기준환율"
   },
   "last_collection": {
-    "trusted_rows": 4,
-    "new_rows": 0,
-    "candidate_metric_rows": 3,
+    "trusted_rows": 5,
+    "new_rows": 1,
+    "candidate_metric_rows": 4,
     "material_changes": 0
   }
 }
