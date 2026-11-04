@@ -153,6 +153,7 @@
     "2e42cb0dc6022ea38071",
     "2e86edb5c16fb3f28825",
     "2f243341b2e14b8edfde",
+    "2f4578936442a81d80bb",
     "2f9580b17b6e48f97495",
     "30b0632f5ebd497c1dabf92e",
     "30ca650faf076c693833",
@@ -386,6 +387,7 @@
     "705b2af401c3632686d354be",
     "709bc08e5354236882d7",
     "70aafe2d9c830478d4dbe5d4",
+    "714a52ad6bf73283f46d",
     "715f68510a2aa2ae3293",
     "718f55bb2f040359207e",
     "71b20dd6d627c8b353cd",
@@ -431,6 +433,7 @@
     "7d632d0e018db955c39df5ce",
     "7dc24271cb174eb56588e47f",
     "7e1c741cd99f51325e6a",
+    "7e2baf7e6d422040d079",
     "7e4f24837dbb69116801",
     "7e89da2df7edceb72f55",
     "7ec6d1814fc771317535",
@@ -456,6 +459,7 @@
     "854fa34494d84983acae",
     "858de44ab188cc55a4ef",
     "85a54459493089d2e2f7",
+    "85e65c96f7bed7aa6ede",
     "85e8fc6c6ea93b7db315",
     "85efe90edfc0083b93bf",
     "85f457a8cc0c485a6802",
@@ -612,6 +616,7 @@
     "b38444c6aac82c1840e6",
     "b38e795a4e3a05aace28",
     "b3bb24e1377327efac8ef67c",
+    "b4f0fff986fb35857b29",
     "b52067277c3eb0fe6f80",
     "b53f29138dae32b627ef",
     "b57303b682e5f2760c3a",
@@ -843,6 +848,8 @@
     "f927019eab761079a46ff8a9",
     "f9429f720fa600a27ea8",
     "f963efc3b59306faf2cce6ef",
+    "f9c2353683f5ea12c600",
+    "f9d67a046acaa9a6b354",
     "fa30f82c657896bac90b",
     "fa77ea459ddf87d05a82",
     "fa8d1a9e4e401d87fc73",
@@ -890,7 +897,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-11-05T02:16:51+09:00",
+  "last_scan_kst": "2026-11-05T07:40:08+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -898,6 +905,8 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 12,
-  "fetch_errors": []
+  "fetch_ok": 11,
+  "fetch_errors": [
+    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41"
+  ]
 }
