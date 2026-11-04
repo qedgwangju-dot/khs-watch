@@ -23,7 +23,7 @@
     "s5028_stage": "상원 에너지·천연자원위원회 회부",
     "s5028_threshold_mw": 100.0,
     "s5028_force": "주 규제기관의 비용회수 기준 검토 구조",
-    "s5199_stage": "상원 에너지·천연자원위원회 회부·9월17일 만장일치 동의 통과 시도 이의로 불발",
+    "s5199_stage": "상원 에너지·천연자원위원회 회부",
     "s5199_threshold_mw": 150.0,
     "s5199_force": "FERC 대형부하 접속규칙·직접 비용부담을 법률로 요구",
     "rm26_4_stage": "ANOPR·대형부하 우선 규칙제정 절차",
@@ -934,11 +934,13 @@
     "5d8a75789fbeed7b25f6",
     "48b4eb3af4c24c9994ec"
   ],
-  "last_fx_krw_per_usd": 1344.12576,
+  "last_fx_krw_per_usd": 1343.930997,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-11-03T23:19:53+00:00",
-  "updated_at_utc": "2026-11-03T23:20:14+00:00",
-  "source_errors": [],
+  "fx_checked_utc": "2026-11-04T17:17:26+00:00",
+  "updated_at_utc": "2026-11-04T17:18:31+00:00",
+  "source_errors": [
+    "FERC 결정·명령: HTTPError"
+  ],
   "grid_emergency_initialized": true,
   "grid_emergency_seen_ids": [
     "doe:202-26-49",
@@ -986,5 +988,7 @@
     "pjm:105592",
     "pjm:105594"
   ],
-  "grid_emergency_source_errors": []
+  "grid_emergency_source_errors": [
+    "PJM dashboard: ConnectTimeout"
+  ]
 }
