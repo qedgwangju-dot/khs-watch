@@ -79,7 +79,7 @@ KOSDAQ_NEWS_URL = "https://search.naver.com/search.naver?where=news&query=" + ur
 # 코스닥 가격/수급은 같은 기존 프로세스의 독립 상태로 관리하며 코스피 수급·파생과 합산하지 않는다.
 KOSDAQ_PRICE_POLL_INTERVAL_SEC = 5.0
 KOSDAQ_PRICE_MAX_AGE_SEC = 30.0
-FLOW_SURGE_ALERT_CONTRACT = "market-flow-surge-v1"
+FLOW_SURGE_ALERT_CONTRACT = "market-flow-surge-v2"
 
 
 
@@ -637,6 +637,25 @@ def fmt_raw(v: float | None) -> str:
     return f"{v:+,.0f}"
 
 
+def flow_surge_investor_lines(spot_deltas: dict[str, float | None] | None,
+                             spot_window: tuple | list | None) -> list[str]:
+    """Show the five cash-market investors from one aligned five-minute pair."""
+    lines = ["<b>같은 5분 구간 현물 수급 · 주체별 순매수</b>"]
+    for actor, label in (("개인", "개인"), ("외국인", "외국인"),
+                         ("기관", "기관계"), ("금융투자", "금융투자(기관계 내)"),
+                         ("투신", "투신(기관계 내)")):
+        value = fnum((spot_deltas or {}).get(actor)) if spot_window else None
+        shown = fmt_eok(value) if value is not None else "확인 불가"
+        lines.append(f"• {label}: <b>{shown}</b>")
+    if not spot_window:
+        lines.append("• 현물 5분 기준점이 없어 주체별 수급을 확인할 수 없습니다.")
+    elif any(fnum((spot_deltas or {}).get(actor)) is None
+             for actor in ("개인", "외국인", "기관", "금융투자", "투신")):
+        lines.append("• 확인 불가 항목은 원값 또는 같은 구간 기준점이 부족합니다. 0으로 간주하지 않습니다.")
+    lines.append("• 금융투자·투신은 기관계 안의 하위 항목이며 기관계와 합산하지 않습니다.")
+    return lines
+
+
 def program_quality_label(att: dict[str, Any]) -> str:
     numeric = _program_numeric_quality_label(att)
     if att.get("program_source_time_verified") is False:
@@ -900,6 +919,7 @@ def flow_surge_candidates(
         result.append({
             "actor": actor, "mode": mode,
             "spot": ds, "futures": df, "sample_ts": key_ts,
+            "spot_deltas": (spot or {}).get("deltas"),
             "spot_window": (float(spot["start_ts"]), float(spot["end_ts"])) if spot else None,
             "futures_window": (float(actor_fut["start_ts"]), float(actor_fut["end_ts"])) if actor_fut else None,
             "spot_start_skew_sec": (spot or {}).get("start_skew_sec"),
@@ -2227,7 +2247,8 @@ class Watch:
                                        mode: str, confidence: str, threshold: str,
                                        extra_windows: list[str] | None = None,
                                        extra_lines: list[str] | None = None,
-                                       alert_title: str | None = None) -> str:
+                                       alert_title: str | None = None,
+                                       spot_deltas: dict[str, float | None] | None = None) -> str:
         """One reader contract for every actor in either market's buy alerts."""
         name = {"KOSPI": "코스피", "KOSDAQ": "코스닥"}[market]
         windows = ([f"현물 {fmt_clock(spot_window[0])}~{fmt_clock(spot_window[1])}"]
@@ -2239,6 +2260,7 @@ class Watch:
             f"• 실제 수급 표본: {' / '.join(windows) if windows else '확인 불가'}",
             f"• {name} 현물(통합) <b>{fmt_eok(spot)}</b>",
         ]
+        lines.extend(flow_surge_investor_lines(spot_deltas, spot_window))
         if fnum(spot) is not None and spot > 0 and spot_window:
             lines.extend(industry_context_lines(industries, actor, *spot_window, market=market))
         else:
@@ -2365,6 +2387,7 @@ class Watch:
             extra_lines=["• 지수선물·프로그램: 이 알림의 감지 기준에 사용하지 않음 (KOSPI200 선물·프로그램 수급과 합산하지 않음)"]
                         + cash_lines(pair.get("end", {}).get("cash_supplement"), "KOSDAQ", now_ts),
             alert_title=("🔎 <b>코스닥 단기 순매수 예비 경보</b>" if preliminary else None),
+            spot_deltas=pair.get("deltas"),
         )
 
     async def maybe_alert_kosdaq_prealert(self, now_ts: float | None = None) -> None:
@@ -2458,6 +2481,7 @@ class Watch:
                     "spot_end_cumulative": end_value,
                     "spot_delta": delta,
                     "spot_delta_eok": delta,
+                    "spot_5m_by_investor_eok": pair.get("deltas"),
                     "threshold_eok": KOSDAQ_SURGE_PREALERT_SPOT_EOK,
                     "display_unit": "억원",
                     "confirmation_first": confirmation_first,
@@ -2549,6 +2573,7 @@ class Watch:
                     "spot_end_cumulative": end_value,
                     "spot_delta": delta,
                     "spot_delta_eok": delta,
+                    "spot_5m_by_investor_eok": pair.get("deltas"),
                     "display_unit": "억원",
                     "confirmation_first": confirmation_first,
                     "confirmation_second": {"sample_ts": sample_ts, "end_values": {"spot": end_value}},
@@ -2596,6 +2621,7 @@ class Watch:
                         "잠정 · 선물 상품 범위·단위 미확인"),
             threshold=threshold,
             extra_windows=windows, extra_lines=lines + cash_lines(cand.get("cash_supplement"), "KOSPI", now_ts),
+            spot_deltas=cand.get("spot_deltas"),
         )
 
     async def maybe_alert_flow_surge(self, now_ts: float | None = None) -> None:
@@ -2682,6 +2708,7 @@ class Watch:
                     "market": "KOSPI", "actor": actor,
                     "spot_window": spot_window, "futures_window": cand.get("futures_window"),
                     "spot_delta_eok": cand.get("spot"), "futures_delta_raw": cand.get("futures"),
+                    "spot_5m_by_investor_eok": cand.get("spot_deltas"),
                     "futures_unit_verified": False, "futures_scope_verified": False,
                     "display_unit": "억원",
                     "display_unit_scope": "spot_only",
