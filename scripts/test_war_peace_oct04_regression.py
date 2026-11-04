@@ -760,25 +760,38 @@ except RuntimeError as e:
 
 
 # 25) 트럼프 10/8 이란 공격 유예 발언: 매체별 문구 차이에도 단일 사건.
-trump_cnbc = row(
+# Historical policy fixtures must stay before the election cutoff, regardless of
+# when CI runs. The separate post_election_reprint case checks the expiry gate.
+policy_now = dt.datetime(2026, 10, 9, 12, 0, tzinfo=mod.watch.KST)
+
+
+def policy_row(*args, **kwargs):
+    case = row(*args, **kwargs)
+    case["published"] = format_datetime(
+        policy_now - dt.timedelta(minutes=kwargs.get("minutes_ago", 10))
+    )
+    return case
+
+
+trump_cnbc = policy_row(
     "Trump says U.S. will not attack Iran before midterm election",
     source="CNBC",
     description="The president ruled out an Iran strike before Nov. 3 midterms, while talks continue.",
     link="https://www.cnbc.com/2026/10/08/iran-war-trump-midterm-election.html",
 )
-trump_reuters = row(
+trump_reuters = policy_row(
     "Trump says US will not attack Iran before midterm elections in November",
     source="Reuters",
     description="The blockade of Iran remains in full effect and talks are ongoing.",
     link="https://www.reuters.com/world/trump-us-having-productive-talks-with-iran-will-not-attack-before-us-elections-2026-10-08/",
 )
-trump_ap = row(
+trump_ap = policy_row(
     "Trump says US will not resume military strikes on Iran before the Nov. 3 midterm elections",
     source="Associated Press",
     description="The president's no-strike pledge is not a ceasefire agreement.",
     link="https://apnews.com/article/trump-iran-midterm",
 )
-trump_official = row(
+trump_official = policy_row(
     "Donald J. Trump statement on Iran",
     source="Truth Social",
     description="We will not be attacking Iran at any time prior to the Midterm Elections to be held in the United States on November 3rd.",
@@ -788,50 +801,50 @@ for name, case in (("cnbc",trump_cnbc),("reuters",trump_reuters),("ap",trump_ap)
     check("oct08-iran-midterm-pledge-detected-"+name, mod._trump_iran_midterm_no_strike(case))
 check("oct08-iran-midterm-pledge-single-id", len({mod.item_id(x) for x in (trump_cnbc,trump_reuters,trump_ap,trump_official)}) == 1)
 check("oct08-iran-midterm-pledge-topic", mod.topic_label(trump_cnbc) == "미국·이란 · 11월 3일 전 추가공격 유예 발언")
-score, tags = mod.score_item(trump_cnbc, dt.datetime.now(mod.watch.KST))
+score, tags = mod.score_item(trump_cnbc, policy_now)
 check("oct08-iran-midterm-pledge-yellow", score == 100 and mod.final_color(trump_cnbc) == "yellow")
 check("oct08-iran-midterm-pledge-not-ceasefire", "휴전·평화" not in tags and "확전" not in tags and "봉쇄유지" in tags and "휴전미확정" in tags)
 check("oct08-iran-midterm-pledge-has-constraints", "봉쇄 유지" in trump_cnbc["title_ko"] and "휴전 합의 미확정" in trump_cnbc["title_ko"])
-trump_cnbc["score"],trump_cnbc["tags"],trump_cnbc["age"] = score,tags,mod.watch.age_minutes(trump_cnbc,dt.datetime.now(mod.watch.KST))
-rendered_pledge = mod.watch.build_alert([trump_cnbc], [], dt.datetime.now(mod.watch.KST))
+trump_cnbc["score"],trump_cnbc["tags"],trump_cnbc["age"] = score,tags,mod.watch.age_minutes(trump_cnbc,policy_now)
+rendered_pledge = mod.watch.build_alert([trump_cnbc], [], policy_now)
 check("oct08-iran-midterm-pledge-rendered-yellow", "🟡 [" in rendered_pledge and "미국·이란 · 11월 3일 전 추가공격 유예 발언" in rendered_pledge)
 check("oct08-iran-midterm-pledge-not-green-header", "🟢 <b>재건·휴전</b>" not in rendered_pledge)
 check("oct08-iran-midterm-pledge-not-nov4-attack", "11월 4일 공격 결정" not in rendered_pledge)
 
 # 26) 기존 유예 발언을 배경으로 인용한 새 공격기사는 유예 신규발언으로 오탐하면 안 된다.
-iran_actual_strike = row(
+iran_actual_strike = policy_row(
     "US launches strikes on Iran despite Trump pledge",
     source="Reuters",
     description="Trump said he would not attack Iran before the midterm elections on Nov. 3, but US forces attacked today.",
 )
 check("oct08-historical-pledge-not-current", not mod._trump_iran_midterm_no_strike(iran_actual_strike))
-iran_gossip = row(
+iran_gossip = policy_row(
     "Trump may not attack Iran before elections",
     source="Random blog",
     description="Anonymous analysts guess there may be no action until Nov. 3.",
 )
 check("oct08-unsupported-rumor-not-pledge", not mod._trump_iran_midterm_no_strike(iran_gossip))
-iran_talks_only = row(
+iran_talks_only = policy_row(
     "Trump says US and Iran holding productive talks ahead of elections",
     source="Axios",
     description="No confirmed ceasefire or policy on attacks before Nov 3.",
 )
 check("oct08-talks-not-no-strike-pledge", not mod._trump_iran_midterm_no_strike(iran_talks_only))
 
-after_election_pledge = row(
+after_election_pledge = policy_row(
     "Trump says US will not attack Iran after midterm elections",
     source="Reuters",
     description="Analysts contrasted after-election language with the October 8 pledge.",
 )
 check("oct08-after-is-not-before", not mod._trump_iran_midterm_no_strike(after_election_pledge))
-confusing_after = row(
+confusing_after = policy_row(
     "Trump says US will not attack Iran after the midterm elections",
     source="Reuters",
     description="Background mentions the earlier pledge before Nov. 3.",
 )
 check("oct08-background-does-not-reverse-scope", not mod._trump_iran_midterm_no_strike(confusing_after))
 future_now = dt.datetime(2026, 11, 5, 12, 0, tzinfo=mod.watch.KST)
-post_election_reprint = row(
+post_election_reprint = policy_row(
     "Trump says US will not attack Iran before midterm elections",
     source="Reuters",
     description="Historical review of the October 8 statement.",
@@ -840,7 +853,7 @@ post_election_reprint["published"] = format_datetime(future_now - dt.timedelta(m
 post_score, post_tags = mod.score_item(post_election_reprint, future_now)
 check("oct08-pre-midterm-pledge-expires-after-election", post_score == 0 and post_tags == [])
 
-reversal = row(
+reversal = policy_row(
     "Trump reverses no-attack pledge on Iran ahead of midterms",
     source="Reuters",
     description="No actual military strike has occurred.",
@@ -849,17 +862,17 @@ reversal = row(
 reversal["title_original"] = "Trump reverses no-attack pledge on Iran before midterm elections"
 check("oct08-reversal-detected", mod._trump_iran_midterm_pledge_reversal(reversal))
 check("oct08-reversal-not-pledge", not mod._trump_iran_midterm_no_strike(reversal))
-score,tags = mod.score_item(reversal,dt.datetime.now(mod.watch.KST))
+score,tags = mod.score_item(reversal,policy_now)
 check("oct08-reversal-yellow-not-red", mod.final_color(reversal)=="yellow" and "실제공격미확인" in tags and "확전" not in tags)
 check("oct08-reversal-separate-id", mod.item_id(reversal)!=mod.item_id(trump_cnbc))
 
-old_pledge = row(
+old_pledge = policy_row(
     "Trump says US will not attack Iran before midterm elections",
     source="Reuters",
     description="Before November 3rd",
     minutes_ago=190,
 )
-old_score,old_tags = mod.score_item(old_pledge, dt.datetime.now(mod.watch.KST))
+old_score,old_tags = mod.score_item(old_pledge, policy_now)
 check("oct08-pledge-stale-not-reborn", old_score == 0 and old_tags == [])
 
 bad_pledge = """<b>전쟁·종전·재건 웹감시</b>
@@ -883,12 +896,12 @@ observed_reprint_titles = [
     ("OBS경인TV", '트럼프 "중간선거 전까지 이란 공격 안 할 것" - OBS경인TV'),
 ]
 observed_reprints = [
-    row(t, source=src, description="트럼프가 선거 전에 이란을 공격하지 않겠다고 밝혔다.")
+    policy_row(t, source=src, description="트럼프가 선거 전에 이란을 공격하지 않겠다고 밝혔다.")
     for src, t in observed_reprint_titles
 ]
 for i, x in enumerate(observed_reprints,1):
     check(f"oct09-korean-reprint-pledge-classified-{i}", mod._trump_iran_midterm_no_strike(x))
-    score, tags = mod.score_item(x, dt.datetime.now(mod.watch.KST))
+    score, tags = mod.score_item(x, policy_now)
     check(f"oct09-korean-reprint-yellow-{i}", score == 100 and mod.final_color(x) == "yellow")
     check(f"oct09-korean-reprint-no-red-{i}", "확전" not in tags and "휴전·평화" not in tags)
 check("oct09-observed-four-one-canonical-id", len({mod.item_id(x) for x in observed_reprints+[trump_cnbc,trump_reuters]}) == 1)
@@ -913,16 +926,16 @@ except RuntimeError as err:
 
 # 28) CBS 10/7 새로운 영상은 전쟁 개전 초기(7개월 전) 쿠웨이트 기지 공습.
 # 10/9 Vietnam.vn 재인용을 '방금 새로운 군사공격'으로 오인하면 안 된다.
-kuwait_recapture = row(
+kuwait_recapture = policy_row(
     "Iranian attacks forced US troops to abandon major base in Kuwait",
     source="Vietnam.vn",
     description="Newly obtained footage by CBS News shows attacks on Camp Buehring during the opening days of the Iran war seven months ago.",
     minutes_ago=10,
 )
 check("oct09-kuwait-historical-cbs-detected", mod._historical_kuwait_base_footage(kuwait_recapture))
-score,tags = mod.score_item(kuwait_recapture,dt.datetime.now(mod.watch.KST))
+score,tags = mod.score_item(kuwait_recapture,policy_now)
 check("oct09-kuwait-historical-not-new-red", score == 0 and tags == [])
-kuwait_short_reprint = row(
+kuwait_short_reprint = policy_row(
     "Iranian attacks forced US troops to abandon major base in Kuwait",
     source="Vietnam.vn",
     description="American soldiers said Iranian attacks forced evacuation.",
@@ -933,7 +946,7 @@ kuwait_short_reprint["published"] = format_datetime(
     dt.datetime(2026, 10, 9, 12, 0, tzinfo=mod.watch.KST)
 )
 check("oct09-kuwait-20261009-short-reprint-detected", mod._historical_kuwait_base_footage(kuwait_short_reprint))
-kuwait_new_attack = row(
+kuwait_new_attack = policy_row(
     "New Iranian missile attack on Kuwait military base today",
     source="Reuters",
     description="Fresh new attack on a military base in Kuwait on October 9.",
@@ -942,14 +955,14 @@ check("oct09-kuwait-fresh-attack-not-suppressed", not mod._historical_kuwait_bas
 
 
 # 29) Reuters 표준 제목은 제목에 'Iran'을 쓰지 않아도 본문이 이란을 명시한다.
-reuters_short_headline = row(
+reuters_short_headline = policy_row(
     "Trump says he will not attack before US elections in November",
     source="Reuters",
     description="The United States is holding productive discussions with Iran while maintaining a blockade of Iranian ports.",
 )
 check("oct08-reuters-implicit-iran-detected",mod._trump_iran_midterm_no_strike(reuters_short_headline))
 check("oct08-reuters-implicit-iran-same-id",mod.item_id(reuters_short_headline)==mod.item_id(trump_cnbc))
-unrelated_reuters_short = row(
+unrelated_reuters_short = policy_row(
     "Trump says he will not attack before US elections in November",
     source="Reuters",
     description="General political remarks without a named country.",
@@ -958,7 +971,7 @@ check("oct08-no-iran-subject-no-trigger",not mod._trump_iran_midterm_no_strike(u
 
 
 # 30) Run #424 실전 출력: OBS경인TV가 같은 발언을 신규 별도 기사로 송출했음.
-obs_oct09_reprint = row(
+obs_oct09_reprint = policy_row(
     '트럼프 "중간선거 전까지 이란 공격 안 할 것" - OBS경인TV',
     source="OBS경인TV",
     description="트럼프 대통령이 11월 3일 전까지 이란을 공격하지 않겠다고 밝혔다.",
@@ -966,10 +979,10 @@ obs_oct09_reprint = row(
 )
 check("oct09-obs-pledge-classified", mod._trump_iran_midterm_no_strike(obs_oct09_reprint))
 check("oct09-obs-single-policy-id",mod.item_id(obs_oct09_reprint)==mod.item_id(trump_cnbc))
-score,tags=mod.score_item(obs_oct09_reprint,dt.datetime.now(mod.watch.KST))
+score,tags=mod.score_item(obs_oct09_reprint,policy_now)
 check("oct09-obs-yellow-no-military-escalation",score==100 and mod.final_color(obs_oct09_reprint)=="yellow" and "확전" not in tags)
 
-anonymous_pledge_reprint = row(
+anonymous_pledge_reprint = policy_row(
     '트럼프 "중간선거 전까지 이란 공격 안 할 것"',
     source="불명확한 개인 블로그",
     description="트럼프의 10월 8일 이란 관련 발언을 재인용",
@@ -977,49 +990,49 @@ anonymous_pledge_reprint = row(
 )
 check("oct09-untrusted-lexical-reprint-recognized",mod._trump_iran_midterm_no_strike(anonymous_pledge_reprint,trust_required=False))
 check("oct09-untrusted-not-confirmed-policy",not mod._trump_iran_midterm_no_strike(anonymous_pledge_reprint))
-score,tags=mod.score_item(anonymous_pledge_reprint,dt.datetime.now(mod.watch.KST))
+score,tags=mod.score_item(anonymous_pledge_reprint,policy_now)
 check("oct09-untrusted-not-reemitted-as-war",score==0 and tags==[])
 
 
 # 30) 실제 10/9 실패: 대통령 유예발언과 국방부 '3일 집중공격 계획'은 별개.
 # 같은 정책 재보도(OBS·아주경제 등)는 출처·제목이 달라도 하나의 식별자.
-oct09_aju = row(
+oct09_aju = policy_row(
     "트럼프 중간선거 전 이란 공격 안 해…해상 봉쇄는 유지 - 아주경제",
     source="아주경제",
     description="트럼프가 11월 3일 중간선거 전에는 공격을 하지 않겠다고 말했다.",
     link="https://example.com/fixtures/aju-policy",
 )
-oct09_obs = row(
+oct09_obs = policy_row(
     '트럼프 "중간선거 전까지 이란 공격 안 할 것" - OBS경인TV',
     source="OBS경인TV",
     description="Trump says no Iran strike before the midterm vote",
     link="https://example.com/fixtures/obs-policy",
 )
-oct09_kyunghyang_plan = row(
+oct09_kyunghyang_plan = policy_row(
     "트럼프 “중간선거 전 이란 공격 없다”했지만···뒤에선 ‘3일 집중 공격’ 계획 준비 - 경향신문",
     source="경향신문",
     description="미 국방부가 검토한 3일 집중공격 계획과 트럼프의 선거 전 공격 보류 발언은 서로 다른 단계.",
     link="https://example.com/fixtures/kyunghyang-plan",
 )
-oct09_yonhap_plan = row(
+oct09_yonhap_plan = policy_row(
     '"美국방부, 이란 \'3일 집중공격\' 계획 수립…트럼프 일단 제동" - 연합뉴스',
     source="연합뉴스",
     description="작전 방안을 마련했으나 대통령의 최종 승인과 실제 공격 명령은 확인되지 않았다.",
     link="https://example.com/fixtures/yonhap-plan",
 )
-oct09_sbs_plan = row(
+oct09_sbs_plan = policy_row(
     '"미 국방부, 이란 \'3일 집중 공격\' 계획 수립…트럼프 일단 제동" - SBS 뉴스',
     source="SBS 뉴스",
     description="미 국방부의 3일 집중 공격 방안 보도. 대통령 승인이나 실행은 확인되지 않았다.",
     link="https://example.com/fixtures/sbs-plan",
 )
-oct09_unknown_plan = row(
+oct09_unknown_plan = policy_row(
     "Pentagon prepares three-day Iran strike option",
     source="Unknown news aggregator",
     description="Alleged planning, no verified official statement",
     link="https://example.com/fixtures/unknown-plan",
 )
-oct09_nyt_plan = row(
+oct09_nyt_plan = policy_row(
     "Pentagon prepares three-day intensive Iran strike option as Trump says no attack before midterms",
     source="New York Times",
     description="The Pentagon examined strike options but the president has not approved an attack.",
@@ -1032,18 +1045,18 @@ for label, x in (("kyunghyang",oct09_kyunghyang_plan),("yonhap",oct09_yonhap_pla
     check("oct09-three-day-plan-"+label, mod._iran_three_day_strike_plan(x))
     check("oct09-three-day-not-pledge-"+label, not mod._trump_iran_midterm_no_strike(x))
     check("oct09-three-day-unique-canonical-"+label, mod.item_id(x)==mod.item_id(oct09_kyunghyang_plan))
-    score,tags = mod.score_item(x, dt.datetime.now(mod.watch.KST))
+    score,tags = mod.score_item(x, policy_now)
     check("oct09-three-day-yellow-"+label, mod.final_color(x)=="yellow" and "승인미확정" in tags and "확전" not in tags)
 check("oct09-plan-distinct-from-pledge",mod.item_id(oct09_kyunghyang_plan)!=mod.item_id(oct09_aju))
 check("oct09-unknown-plan-lexical-detection",mod._iran_three_day_strike_plan(oct09_unknown_plan,trust_required=False))
 check("oct09-unknown-plan-not-trusted",not mod._iran_three_day_strike_plan(oct09_unknown_plan))
-unknown_score,unknown_tags = mod.score_item(oct09_unknown_plan,dt.datetime.now(mod.watch.KST))
+unknown_score,unknown_tags = mod.score_item(oct09_unknown_plan,policy_now)
 check("oct09-unknown-plan-not-alerted",unknown_score==0 and unknown_tags==[])
 check("oct09-unknown-plan-same-id",mod.item_id(oct09_unknown_plan)==mod.item_id(oct09_sbs_plan))
 
 # 실제 수집 경로처럼 점수 계산 전에 ID를 만들고, 중복 항목을 묶은 후 번역한다.
 items_by_id = {}
-now_replay = dt.datetime.now(mod.watch.KST)
+now_replay = policy_now
 for case in (oct09_kyunghyang_plan, oct09_aju, oct09_obs, oct09_yonhap_plan, oct09_nyt_plan, oct09_sbs_plan, oct09_unknown_plan):
     iid = mod.item_id(case)
     score,tags = mod.score_item(case,now_replay)

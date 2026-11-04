@@ -120,6 +120,7 @@ jobs:
           python -m py_compile scripts/war_peace_reconstruction_watch_integrity.py
           python scripts/test_war_peace_offline.py
       - name: Check war peace reconstruction conditions
+        id: check_conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
             python scripts/war_peace_reconstruction_watch_integrity.py --telegram-test
@@ -138,7 +139,7 @@ jobs:
           if [ -f out/war_peace_reconstruction_ops_warning.txt ]; then printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/war_peace_reconstruction_ops_warning.txt >> "$GITHUB_STEP_SUMMARY"; fi
       - name: Send Telegram alert
         id: send_telegram
-        if: always() && env.DRY_RUN != 'true' && (hashFiles('out/war_peace_reconstruction_alert.txt') != '' || (steps.prepare_ops.outcome == 'success' && hashFiles('out/war_peace_reconstruction_ops_warning.txt') != ''))
+        if: always() && env.DRY_RUN != 'true' && ((steps.check_conditions.outcome == 'success' && hashFiles('out/war_peace_reconstruction_alert.txt') != '' && (env.TELEGRAM_TEST == 'true' || hashFiles('out/war_peace_reconstruction_coverage.json') != '')) || (steps.prepare_ops.outcome == 'success' && hashFiles('out/war_peace_reconstruction_ops_warning.txt') != ''))
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.WAR_PEACE_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.WAR_PEACE_TELEGRAM_CHAT_ID }}
