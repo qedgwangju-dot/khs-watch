@@ -49,17 +49,24 @@
       "dc_800v_noncompute_capex_saving_pct": 27.0,
       "dc_800v_tco5_saving_usd_b": 5.5,
       "dc_800v_tco5_saving_pct": 9.0,
-      "source_errors": [],
+      "source_errors": [
+        "Bloom Oracle: HTTPError",
+        "Bloom MiTAC: HTTPError",
+        "Bloom Brookfield: HTTPError",
+        "Bloom mid-year report: HTTPError",
+        "Bloom Power Connect: HTTPError",
+        "Bloom Energy Server: HTTPError"
+      ],
       "vendor_model_note": "800V 비용절감·61% BYOP 수치는 Bloom Energy 자체 모델·설문이며 고객 실현값·시장 전체 확정 비중이 아님",
       "emissions_note": "천연가스 SOFC는 비연소라 NOx·SOx·입자상물질이 매우 낮지만 CO2 배출은 0이 아님"
     },
-    "digest": "2869c18329795a4acbd5d2a26e1c529cf9d07438f422bd17331038310e8cbab1"
+    "digest": "c7143e466b42179db0ea9ebf887fb19c623e19e9909fa0ef9dab156a8cae5dc7"
   },
   "fx": {
     "usdkrw": 1344.59,
-    "basis": "2026-11-03 일일 기준 · ECB/Frankfurter · 조회 2026-11-04 17:11 KST · 보조 API 2026-11-04 · 차이 0.05% · 일중 기준시각 차이 가능",
+    "basis": "2026-11-03 일일 기준 · ECB/Frankfurter · 조회 2026-11-04 18:10 KST · 보조 API 2026-11-04 · 차이 0.05% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter"
   },
   "last_changes": [],
-  "updated_at_utc": "2026-11-04T08:11:59+00:00"
+  "updated_at_utc": "2026-11-04T09:10:51+00:00"
 }
