@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 54,
     "errors": [],
-    "material_items": 10,
+    "material_items": 11,
     "new_material_items": 0,
-    "raw_items": 88,
+    "raw_items": 89,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -987,6 +987,16 @@
       "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPc29qbG10Z0twWkNSV2U5Q01rWW0yZzBaSGdhQ2RLV3VfVzVMNnBYU1k4dW12TnpSeGFUbmZuSlhsU0RPTElIaHEwbUEwSjZ0TjQwWE1udW5aY1Q1VkR0NTlESzl0SXZwTFkzZ1JGUXROc19MUmJELU5uNlNnWVBmZU5MZEFkYjlTTDRkcG5lMmhrVHV6TVlIMlJR?oc=5",
       "vendor": "OpenAI"
     },
+    "afe7a95eba29ba77c4b6efbc": {
+      "category": "PHP 취약점 실전 악용 보도·추가 검증",
+      "first_seen_at": "2026-11-04T16:28:03.917880+00:00",
+      "published_at": "2026-11-04T15:48:28+00:00",
+      "severity": 3,
+      "source": "Cyfirma",
+      "title": "PHP2Shell Vulnerability Under Active Exploitation: Are You Affected, and What Should You Do Today? - Cyfirma",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNQWNzSUNpbDdTUE9pN25Oa0hlTjBFbS1RZG1IVmFCZVpZckFyOENlTUVRZ0tJRmgyRVZOVWZKWDc0WllSb0ZRRTFFYVJ3RXY5MmZXU3lCN1VKaFcycUo1S2wtdzFwMXdscUdLbnZCUlNHQVlzSHZhSkRoaW5GRUk2blhWQXNPWWRKejhMejBzMlFNaHJ1amtKNklLSFh2R0duSGt1ZlJ1VEgzT1JDRjQwbkRSRVpiQ2tPeEJMX1Z1WU5GUklJ?oc=5",
+      "vendor": "PHP 재단"
+    },
     "b05efca8cbb4744963025006": {
       "category": "Claude 승인 없는 유료 공개자료 접근·통제 이탈",
       "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
@@ -1490,5 +1500,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-05T00:44:48+09:00"
+  "updated_at_kst": "2026-11-05T01:28:03+09:00"
 }
