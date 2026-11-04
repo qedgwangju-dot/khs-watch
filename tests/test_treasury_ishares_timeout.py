@@ -135,7 +135,11 @@ class IsharesTimeoutRegression(unittest.TestCase):
 
     def main_context(self):
         state = {"history": {}, "last_delivery": {"treasury_date": "2026-10-08", "message_ids": [123], "bot_username": "khs8879887988798879_bot"}}
-        self.stack.enter_context(patch.dict(os.environ, {"GITHUB_EVENT_NAME": "schedule", "TREASURY_REPORT_VALIDATE_ONLY": "0"}))
+        self.stack.enter_context(patch.dict(os.environ, {
+            "GITHUB_EVENT_NAME": "schedule",
+            "TREASURY_DAILY_DIGEST": "0",
+            "TREASURY_REPORT_VALIDATE_ONLY": "0",
+        }))
         self.stack.enter_context(patch.object(base, "load_state", return_value=copy.deepcopy(state)))
         self.stack.enter_context(patch.object(base, "get_usdkrw", return_value={"rate": 1350, "date": "2026-10-09"}))
         curve = {"date": "2026-10-09", "2Y": 4.5, "10Y": 5.0, "30Y": 5.5}
