@@ -144,25 +144,37 @@ jobs:
           print("five_day_reading_order_valid=true")
           print(rendered5)
 
-          live_state = json.loads(pathlib.Path("data/crypto_liquidity_watch_state.json").read_text(encoding="utf-8"))
-          if (
-              float((live_state.get("btc_etf") or {}).get("total_usd_m", 0.0) or 0.0) < 0
-              and float((live_state.get("btc_etf") or {}).get("last5_usd_m", 0.0) or 0.0)
-                  < float((live_state.get("btc_etf") or {}).get("prev5_usd_m", 0.0) or 0.0)
-              and float((live_state.get("rates") or {}).get("daily_10y_bp", 0.0) or 0.0) > 0
-              and float((live_state.get("rates") or {}).get("daily_30y_bp", 0.0) or 0.0) > 0
-          ):
-              verdict, reason = fmt.compact_judgement(live_state)
-              assert "다만" not in reason, reason
-              if (
-                  (live_state.get("btc_etf") or {}).get("status") != "complete"
-                  and "IBIT" in ((live_state.get("btc_etf") or {}).get("missing_tickers") or [])
-              ):
-                  assert "판정 보류" in verdict and "IBIT 미보고" in reason, (verdict, reason)
-              else:
-                  assert "순유입 강도도 둔화" in reason, reason
-              print("adverse_crypto_wording_valid=true")
+          # Use fixed operands: the saved live state can have Treasury and ETF
+          # observations from different dates, which must remain a hold.
+          adverse = {
+              "rates": {"date": "2026-11-02", "daily_10y_bp": 4.0, "daily_30y_bp": 4.0},
+              "btc_etf": {
+                  "date": "2026-11-02", "total_usd_m": -398.6,
+                  "last5_usd_m": -711.3, "prev5_usd_m": -115.2,
+                  "status": "complete", "missing_tickers": [],
+              },
+          }
+          verdict, reason = fmt.compact_judgement(adverse)
+          assert verdict == "불리", (verdict, reason)
+          assert "당일 ETF 순유출" in reason and "10Y·30Y 동반 상승" in reason, reason
+          assert "5거래일 순유입 둔화 또는 순유출 확대" in reason, reason
+          assert "다만" not in reason, reason
 
+          partial_ibit = json.loads(json.dumps(adverse))
+          partial_ibit["btc_etf"].update({
+              "status": "partial", "missing_tickers": ["IBIT"],
+              "reported_funds": 11, "missing_funds": 1,
+          })
+          verdict, reason = fmt.compact_judgement(partial_ibit)
+          assert "판정 보류" in verdict and "IBIT 미보고" in reason, (verdict, reason)
+
+          mismatched = json.loads(json.dumps(adverse))
+          mismatched["rates"]["date"] = "2026-11-03"
+          verdict, reason = fmt.compact_judgement(mismatched)
+          assert verdict == "판정 보류" and "기준일이 달라" in reason, (verdict, reason)
+          print("adverse_crypto_wording_valid=true")
+
+          live_state = json.loads(pathlib.Path("data/crypto_liquidity_watch_state.json").read_text(encoding="utf-8"))
           revised = json.loads(json.dumps(live_state))
           revised["btc_etf"].update({
               "date": "2026-10-05",
