@@ -132,9 +132,15 @@ def parse_pjm_posting_html(raw: str, url: str) -> dict | None:
     if not (id_match and type_match and start_match):
         return None
     message_type = norm(type_match.group(1))
+    # PJM publishes exercise postings alongside live operating messages.
+    # A drill must never become an actual power-emergency Telegram alert.
+    if re.search(r"\b(?:drill|exercise|training)\b", message_type, re.I):
+        return None
     body_start = type_match.end()
     body = text[body_start:]
     if not posting_relevant(message_type, body):
+        return None
+    if re.search(r"\bthis is (?:the |a )?(?:\w+\s+){0,5}(?:drill|exercise)\b", body, re.I):
         return None
     effective_start = parse_ept(start_match.group(1))
     effective_end = parse_ept(end_match.group(1)) if end_match else None
@@ -418,7 +424,8 @@ def pjm_stage_explanation(event: dict) -> str:
         if "early return time" in body_low and "planned outage" in body_low:
             explanation += (
                 " 계획정비 중인 발전기에 대해 운전자는 조기 복귀 예상시간을 PJM에 제공하고 "
-                "eDART에 갱신해야 합니다. 이는 기존 정비 종료 예정일을 바꾸는 지시는 아닙니다."
+                "eDART(발전·송전설비 정지 일정 관리시스템)에 갱신해야 합니다. "
+                "이는 기존 정비 종료 예정일을 바꾸는 지시는 아닙니다."
             )
         return explanation
     if "emergency use of back-up generator action" in low:
@@ -431,12 +438,12 @@ def pjm_stage_explanation(event: dict) -> str:
         stage = pjm_notice_stage(event)
         if stage == "resources_not_needed":
             return (
-                "DOE 202(c) 명령은 존재하지만 PJM은 해당 운영일에 Exhibit A 지정자원을 "
+                "미 에너지부(DOE) 202(c) 명령은 존재하지만 PJM은 해당 운영일에 명령서 별첨 A 지정자원을 "
                 "사용할 필요가 없다고 판정했습니다. 실제 급전·백업발전 동원이 아닙니다."
             )
         if stage == "resources_needed":
             return (
-                "PJM은 해당 운영일에 DOE 202(c) 명령의 Exhibit A 지정자원이 "
+                "PJM은 해당 운영일에 미 에너지부(DOE) 202(c) 명령서 별첨 A의 지정자원이 "
                 "필요하다고 판정했습니다. 실제 급전은 별도 운전지시에 따르며 "
                 "최대출력 상시운전 지시나 대형부하 백업발전 실제 가동을 뜻하지 않습니다."
             )
@@ -464,7 +471,7 @@ def pjm_message_stage_label(event: dict) -> str:
     message_type = str(event.get("message_type") or "")
     low = message_type.lower()
     if "eea 1" in low or "eea1" in low:
-        return "최대발전·부하관리 비상경보 / NERC EEA1"
+        return "최대발전·부하관리 비상경보 / 전력비상경보 1단계(NERC EEA1)"
     if "pre-emergency load mgmt reduction action" in low:
         return "비상 전 수요감축 실행 지시(이행 의무)"
     if "emergency load mgmt reduction action" in low:
@@ -480,7 +487,7 @@ def pjm_message_stage_label(event: dict) -> str:
     if "emergency use of back-up generator warning" in low:
         return "대형부하 비상 백업발전 동원 경고"
     if "manual load dump" in low:
-        return "강제 부하차단 / NERC EEA3"
+        return "강제 부하차단 / 전력비상경보 3단계(NERC EEA3)"
     return "비상운영 단계(세부 유형 확인 필요)"
 
 
@@ -505,6 +512,14 @@ def doe_content(event: dict) -> tuple[str, str]:
         "DOE가 연방전력법 202(c)에 따라 전력계통 신뢰도 유지를 위한 긴급 운용을 지시한 명령입니다.",
         "세부 대상 자원과 운전조건은 해당 명령 원문을 기준으로 확인해야 합니다.",
     )
+
+
+def pjm_region_label(regions: object) -> str:
+    """Explain the type of region; retain PJM's exact operational zone codes."""
+    value = norm(str(regions or "")) or "PJM-RTO"
+    if value.upper() == "PJM-RTO":
+        return "PJM 관할 전력계통 전체(PJM-RTO)"
+    return f"PJM 전력 운영구역: {value} (공식 운영구역 식별코드)"
 
 
 def render_event(event: dict, now: dt.datetime) -> str:
@@ -546,7 +561,7 @@ def render_event(event: dict, now: dt.datetime) -> str:
                 "",
                 *timeline,
                 f"• 단계: {pjm_message_stage_label(event)}",
-                f"• 적용 지역: {event.get('regions') or 'PJM-RTO'}",
+                f"• 적용 지역: {pjm_region_label(event.get('regions'))}",
                 f"• 실제 내용: {pjm_stage_explanation(event)}",
                 "• 다음 확인: EEA 단계 상·하향, 수요반응·백업발전 실제 동원 MW·MWh, 지정자원 운전지시, 비상조치 해제시각",
                 "",
@@ -750,8 +765,8 @@ def self_test() -> None:
     assert "2026년 10월 13일 13:00 KST" in t557
     assert "2026년 10월 14일 12:59 KST" in t557
     assert "경보 대상 운영시간" in t557 and "게시·발효" not in t557
-    assert "최대발전·부하관리 비상경보 / NERC EEA1" in t557
-    assert "eDART" in t557 and "<a href=" in t557
+    assert "최대발전·부하관리 비상경보 / 전력비상경보 1단계(NERC EEA1)" in t557
+    assert "eDART(발전·송전설비 정지 일정 관리시스템)" in t557 and "<a href=" in t557
 
     # October PJM demand-response notice: verify Korean stage and real obligations.
     example = parse_pjm_posting_html(
@@ -772,6 +787,24 @@ def self_test() -> None:
     assert "2026년 10월 14일 10:00 KST" in sample
     assert "일반 고객 순환정전" in sample
     assert "Pre-Emergency Load Mgmt Reduction Action" not in sample
+    assert "PJM 전력 운영구역:" in sample
+    assert "공식 운영구역 식별코드" in sample
+
+    drill = parse_pjm_posting_html(
+        "<html><body>Msg ID: 105591 Message Type: DRILL - Pre-Emergency Load Mgmt Reduction Action "
+        "Priority: Action Effective Start Time: 11.03.2026 09:15 "
+        "Effective End Time: 11.03.2026 14:30 Regions AECO, AEP "
+        "A Pre-Emergency Load Mgmt Reduction Action has been issued. "
+        "This is the 2026 Winter Emergency Procedures Drill.</body></html>",
+        PJM_POSTING.format(msg_id="105591"),
+    )
+    assert drill is None, "PJM practice drill must not trigger a live emergency alert"
+    assert "명령서 별첨 A" in pjm_stage_explanation({
+        "message_type": "Special Notice",
+        "body": "DOE 202(c) Order No. 202-26-50 Applicability. "
+                "PJM has identified a reliability need to utilize the Specified Resources "
+                "identified in Exhibit A for the operating day.",
+    })
 
     # Regression gate: source anchors must reach Telegram with HTML parsing.
     wf_path = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "data-center-growth-telegram-watch.yml"
