@@ -90,7 +90,8 @@ jobs:
 
       - name: Regression-test data-center electricity direction without sending Telegram
         run: |
-          python -m compileall -q scripts/us_ai_data_center_buildout_watch.py scripts/epoch_ai_dc_execution_watch.py scripts/clean_pjm_alert_html.py
+          python -m compileall -q scripts/us_ai_data_center_buildout_watch.py scripts/epoch_ai_dc_execution_watch.py scripts/clean_pjm_alert_html.py scripts/us_grid_emergency_official.py
+          python scripts/us_grid_emergency_official.py
           python - <<'PY'
           import importlib.util
           from pathlib import Path
