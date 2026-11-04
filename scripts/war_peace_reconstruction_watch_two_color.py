@@ -78,6 +78,22 @@ def _separate_attack_headline(title):
         r'(?:재개|감행|실시|시작).{0,12}(?:공습|공격|폭격|포격)', title))
 
 
+def _election_war_commentary(row, title, kind, color):
+    """Keep retrospective election remarks out of attack/easing directions."""
+    tags = {str(tag).strip() for tag in row.get('tags', [])}
+    return bool(
+        '정치일정' in tags and kind is None and not color
+        and re.search(r'중간선거|\bmidterms?\b', title, re.IGNORECASE)
+        and re.search(r'이란\s*전쟁|\bIran\s+war\b', title, re.IGNORECASE)
+        and re.search(r'원인|입장차|악영향|예상|불가피|후회|\b(?:blame|regret|expected)\b',
+                      title, re.IGNORECASE)
+        and not _active_adverse(title)
+        and not _separate_attack_headline(title)
+        and not re.search(r'재공습|공격\s*(?:예고|검토|계획)|\b(?:new|renewed)\s+attack\b',
+                          title, re.IGNORECASE)
+    )
+
+
 def _explicit_easing_restoration(title):
     """Recognize a headline reporting that a restriction or service was restored."""
     if _active_adverse(title) or _separate_attack_headline(title):
@@ -126,6 +142,8 @@ def direction(stage, row):
     kind = stage.non_military_kind(row)
     color = stage.final_color(row)
     title = stage._headline(row)
+    if _election_war_commentary(row, title, kind, color):
+        return None
     # Action restraint is a cooling signal, not a confirmed attack. The
     # semantic stage may be yellow, but the two-color projection must never
     # silently turn a no-rush/no-strike headline into red escalation.
@@ -188,7 +206,7 @@ def direction(stage, row):
     return 'red'
 
 
-def _summary(colors):
+def _summary(colors, election_commentary_reference=False):
     red, green = colors.count('red'), colors.count('green')
     lines = ['<b>투자 판정</b>']
     if red:
@@ -196,7 +214,8 @@ def _summary(colors):
     if green:
         lines.append(f'🟢 <b>대화·협상·완화 관련:</b> {green}건')
     if not colors:
-        lines.append('방향성 기사 없음 · 시장 참고 기사만 확인')
+        lines.append('방향성 기사 없음 · 배경·시장 참고만 확인' if election_commentary_reference
+                     else '방향성 기사 없음 · 시장 참고 기사만 확인')
     lines.extend(('- <b>표시 기준:</b> 초록은 대화·협상·완화, 빨강은 공격·타격·공격 예고·결렬·압박',
                   '- <b>현재 단계:</b> 제안·발언·예고와 실제 합의·이행·공격 발생은 기사 문구로 구분',
                   '- <b>다음:</b> 공식 행동·합의 이행·공격 발생 여부 재확인'))
@@ -215,6 +234,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                     if lines[i].startswith(('<b>시장 반응</b>', '<b>투자 판정</b>',
                                             '시장자료 확인 보류'))), len(lines))
     core, references, matched = [], [], []
+    election_commentary_reference = False
     for n, start in enumerate(starts):
         end = starts[n + 1] if n + 1 < len(starts) else tail_at
         block = lines[start:end]
@@ -225,9 +245,12 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         row = candidates[0]
         matched.append(row['id'])
         color = direction(stage, row)
+        commentary = _election_war_commentary(
+            row, stage._headline(row), stage.non_military_kind(row), stage.final_color(row))
         row['semantic_classification_color'] = row.get('classification_color')
         row['classification_color'] = color
-        row['display_section'] = 'core' if color else 'market_reference'
+        row['display_section'] = 'core' if color else ('context_reference' if commentary
+                                                      else 'market_reference')
         if color:
             first = re.sub(r'^[🔴🟢🟡]?\s*', MARKERS[color] + ' ', block[0])
             first = re.sub(r'(<b>)\d+\.', lambda m: m[1] + str(len(core) + 1) + '.', first, count=1)
@@ -236,7 +259,9 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             # The semantic block heading can carry an unrelated event label
             # even when the uniquely matched source is only market context.
             # Rebuild the reference heading from that matched article.
-            label = html.escape(stage.topic_label(row) or '시장 참고', quote=False)
+            election_commentary_reference |= commentary
+            label = html.escape('이란 전쟁 · 중간선거 관련 발언' if commentary
+                                else stage.topic_label(row) or '시장 참고', quote=False)
             suffix = block[0].split('</b>', 1)[1]
             first = f'<b>참고 {len(references) + 1}. {label}</b>' + suffix
             references.append([first] + block[1:])
@@ -258,13 +283,17 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         for block in core:
             output += block
     if references:
-        output += ['<b>시장 참고</b>', '시장 기사는 전쟁·완화 방향 표시에서 제외', '']
+        if election_commentary_reference:
+            output += ['<b>배경·시장 참고</b>',
+                       '중간선거 관련 발언은 새 공격·완화 행동을 입증하지 않음', '']
+        else:
+            output += ['<b>시장 참고</b>', '시장 기사는 전쟁·완화 방향 표시에서 제외', '']
         for block in references:
             output += block
     tail = '\n'.join(lines[tail_at:]).split('<b>투자 판정</b>', 1)[0].rstrip()
     if tail:
         output += [tail, '']
-    output += [_summary(colors)]
+    output += [_summary(colors, election_commentary_reference)]
     text = '\n'.join(output).strip() + '\n'
     visible = html.unescape(re.sub(r'<[^>]+>', '', text))
     if len(visible.encode('utf-16-le')) // 2 > 4000:

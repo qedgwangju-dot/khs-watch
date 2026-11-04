@@ -143,6 +143,43 @@ class TwoColorTests(unittest.TestCase):
         self.assertIsNone(receipt['articles'][0]['classification_color'])
         self.presenter.verify_alert()
 
+    def test_saved_natural_election_commentary_is_not_an_attack_alert(self):
+        fixture = json.loads((Path(__file__).parent/'test_fixtures/war_election_commentary_41929297790.json').read_text(encoding='utf-8'))
+        semantic_alert = base64.b64decode(fixture['semantic_alert_utf8_base64']).decode('utf-8')
+        semantic_evidence = json.loads(base64.b64decode(fixture['semantic_evidence_utf8_base64']))
+        self.assertEqual(fixture['production_run_id'], '41929297790')
+        self.assertEqual(hashlib.sha256(semantic_alert.encode()).hexdigest(),
+                         fixture['semantic_proof']['alert_sha256'])
+        text, receipt = presentation.project(
+            stage, semantic_alert, semantic_evidence, fixture['semantic_proof'],
+            {'alert_utf8_base64': fixture['semantic_alert_utf8_base64'],
+             'evidence_utf8_base64': fixture['semantic_evidence_utf8_base64']})
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        political = [row for row in shown if '중간선거' in row['title_original']
+                     and row['source'] == '파이낸스투데이']
+        self.assertEqual(len(political), 3)
+        self.assertTrue(all(row['classification_color'] is None for row in political))
+        self.assertTrue(all(row['display_section'] == 'context_reference' for row in political))
+        self.assertIn('<b>배경·시장 참고</b>', text)
+        self.assertIn('이란 전쟁 · 중간선거 관련 발언', text)
+        self.assertIn('방향성 기사 없음 · 배경·시장 참고만 확인', text)
+        self.assertNotIn('🔴 <b>공격·타격·확전·압박</b>', text)
+        self.assertNotIn('이란·호르무즈', text)
+        self.assertEqual(receipt['alert_sha256'], hashlib.sha256(text.strip().encode()).hexdigest())
+        self.assertNotEqual(receipt['alert_sha256'], fixture['original_delivery_alert_sha256'])
+        self.watch.ALERT.write_text(semantic_alert, encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(semantic_evidence, ensure_ascii=False), encoding='utf-8')
+        self.watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in shown]}), encoding='utf-8')
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.ALERT.read_text(encoding='utf-8'), text)
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
+
+    def test_election_commentary_does_not_hide_a_separate_attack(self):
+        title = '중간선거 발언 뒤 이란 전쟁 후회 없다…이란이 호르무즈 유조선 공격 재개'
+        row = {'title_original': title, 'tags': ['정치일정']}
+        self.assertEqual(presentation.direction(stage, row), 'red')
+
     def test_market_numbers_and_freshness_labels_preserved(self):
         (old, old_evidence, _), text, receipt = self.present()
         old_market = old.split('<b>시장 반응</b>', 1)[1].split('<b>투자 판정</b>', 1)[0].strip()
