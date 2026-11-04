@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-04T06:02:03+09:00",
+  "updated_at_kst": "2026-11-04T10:22:41+09:00",
   "circle": {
     "date": "2026-11-02",
     "circulation_usd_b": 69.8,
@@ -58,11 +58,11 @@
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
-    "crosscheck_date": "2026-11-03",
-    "crosscheck_close": 75.22000122070312,
-    "crosscheck_daily_pct": 4.36,
-    "crosscheck_gap_pct": 0.013,
-    "crosscheck_status": "confirmed"
+    "crosscheck_date": "2026-11-02",
+    "crosscheck_close": 72.08000183105469,
+    "crosscheck_daily_pct": -0.63,
+    "crosscheck_gap_pct": 4.187,
+    "crosscheck_status": "yahoo_lagging"
   },
   "tbx": {
     "date": "2026-11-03",
@@ -78,9 +78,11 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,344.54원, 차이 0.26%"
+    "crosscheck": "Yahoo Finance 1,344.81원, 차이 0.28%"
   },
-  "crcl_last_alerted_close_date": "2026-11-02",
+  "crcl_last_alerted_close_date": "2026-11-03",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "tbx: source date regressed 2026-11-02 < 2026-11-03; previous snapshot kept"
+  ]
 }
