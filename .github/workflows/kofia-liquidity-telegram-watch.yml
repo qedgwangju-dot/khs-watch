@@ -214,7 +214,7 @@ jobs:
       - name: Send pre-open status when no factual report was delivered
         # The existing 07:05/07:20 KST runs and earlier Warsh backup can confirm
         # unchanged data while there is still time for a later factual update.
-        if: always() && env.DRY_RUN != 'true' && ((github.event_name == 'schedule' && (github.event.schedule == '5,20,40 7 * * 1-5' || github.event.schedule == '45 7 * * 1-5')) || (github.event_name == 'workflow_run' && contains(github.event.workflow_run.created_at, 'T22:')))
+        if: always() && env.DRY_RUN != 'true' && ((github.event_name == 'schedule' && (github.event.schedule == '5,20,40 7 * * 1-5' || github.event.schedule == '45 7 * * 1-5')) || (github.event_name == 'workflow_run' && (contains(github.event.workflow_run.created_at, 'T22:') || contains(github.event.workflow_run.updated_at, 'T22:'))))
         env:
           PREOPEN_STATUS_REASON: ${{ steps.test_interpretation.outcome == 'failure' && 'report_validation_failed' || steps.query_kofia.outcome != 'success' && 'source_collection_failed' || steps.source_guard.outcome == 'failure' && 'source_validation_failed' || (steps.build_interpretation.outcome == 'failure' || steps.semantic_guard.outcome == 'failure') && 'report_validation_failed' || steps.send_kofia_update.outcome == 'failure' && 'telegram_delivery_unconfirmed' || 'scheduled_check' }}
         run: python scripts/preopen_daily_status.py --family kofia
