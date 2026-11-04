@@ -119,6 +119,54 @@ class FinancialInvestment(unittest.TestCase):
         self.assertIn("금융투자", DISPLAY_ACTORS)
         self.assertNotIn("금융투자", ALERT_ACTORS)
 
+    def test_both_market_surge_bodies_show_five_aligned_cash_investors(self):
+        def cash_row(ts, market, personal, foreign, institution, financial, trust):
+            fields = {"sv_08": personal, "sv_17": foreign, "sv_18": institution,
+                      "sv_01": financial, "sv_03": trust}
+            return {"현물": {"sample_ts": ts, "market": market,
+                            "source_tr": "t1602", "unit": "억원", "source_row": fields,
+                            "개인": personal, "외국인": foreign, "기관": institution,
+                            "금융투자": financial, "투신": trust}}
+
+        expected = ["• 개인: <b>-600억원</b>", "• 외국인: <b>+1,000억원</b>",
+                    "• 기관계: <b>-400억원</b>",
+                    "• 금융투자(기관계 내): <b>-250억원</b>",
+                    "• 투신(기관계 내): <b>+20억원</b>"]
+        w = watch.Watch("unused", [], "", False)
+        for market in ("KOSPI", "KOSDAQ"):
+            rows = [cash_row(START, market, 0, 0, 0, 0, 0),
+                    cash_row(NOW, market, -600, 1000, -400, -250, 20)]
+            if market == "KOSPI":
+                candidate = next(c for c in watch.flow_surge_candidates(rows, NOW+1, START-60)
+                                 if c["actor"] == "외국인")
+                text = w.build_flow_surge_alert(candidate, NOW+1)
+            else:
+                pair = watch._flow_surge_channel_pair(rows, "현물", NOW+1, START-60)
+                text = w.build_kosdaq_flow_surge_alert("외국인", 1000, pair, NOW+1)
+            positions = [text.index(item) for item in expected]
+            self.assertEqual(positions, sorted(positions), market)
+            self.assertIn("금융투자·투신은 기관계 안의 하위 항목", text)
+            self.assertLessEqual(len(html.unescape(re.sub("<[^>]+>", "", text))), 4096)
+
+            rows[-1]["현물"]["source_row"]["sv_01"] = None
+            rows[-1]["현물"]["금융투자"] = None
+            pair = watch._flow_surge_channel_pair(rows, "현물", NOW+1, START-60)
+            partial = (w.build_kosdaq_flow_surge_alert("외국인", 1000, pair, NOW+1)
+                       if market == "KOSDAQ" else
+                       w.build_flow_surge_alert(
+                           next(c for c in watch.flow_surge_candidates(rows, NOW+1, START-60)
+                                if c["actor"] == "외국인"), NOW+1))
+            self.assertIn("• 금융투자(기관계 내): <b>확인 불가</b>", partial)
+            self.assertIn("0으로 간주하지 않습니다", partial)
+
+    def test_futures_only_surge_shows_cash_investors_as_unavailable(self):
+        text = watch.Watch("unused", [], "", False).build_flow_surge_alert(
+            {"actor": "외국인", "mode": "선물 중심", "futures": 1400,
+             "futures_window": (START, NOW), "spot": None, "spot_window": None}, NOW+1)
+        for label in ("개인", "외국인", "기관계", "금융투자(기관계 내)", "투신(기관계 내)"):
+            self.assertIn(f"• {label}: <b>확인 불가</b>", text)
+        self.assertIn("현물 5분 기준점이 없어", text)
+
     def test_preserved_namuh_values_render_financial_without_changing_units(self):
         captures = json.loads((Path(__file__).parent / "test_fixtures/namuh_market_readback_20261020.json").read_text(encoding="utf-8"))["captures"]
         for market, capture in captures.items():
