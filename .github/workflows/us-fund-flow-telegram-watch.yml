@@ -277,7 +277,8 @@ jobs:
       !contains(github.event.head_commit.message, '[tech-etf-proxy-validate]') &&
       !contains(github.event.head_commit.message, '[retail-survey-validate]') &&
       !(github.event_name == 'workflow_run' &&
-        !contains(github.event.workflow_run.created_at, 'T22:')) &&
+        !contains(github.event.workflow_run.created_at, 'T22:') &&
+        !contains(github.event.workflow_run.updated_at, 'T22:')) &&
       !(github.event_name == 'schedule' &&
         (github.event.schedule == '37 23 * * 1-5' ||
          github.event.schedule == '37 0 * * 2-6' ||
@@ -491,7 +492,7 @@ jobs:
       - name: Send pre-open status when no factual flow report was delivered
         # The existing 06:17 KST run can report unchanged or delayed data before
         # the two 07:xx checks, which are often delayed or omitted by Actions.
-        if: always() && ((github.event_name == 'schedule' && (github.event.schedule == '17 21 * * 0-4' || github.event.schedule == '35 7 * * 1-5' || github.event.schedule == '45 7 * * 1-5')) || (github.event_name == 'workflow_run' && contains(github.event.workflow_run.created_at, 'T22:')))
+        if: always() && ((github.event_name == 'schedule' && (github.event.schedule == '17 21 * * 0-4' || github.event.schedule == '35 7 * * 1-5' || github.event.schedule == '45 7 * * 1-5')) || (github.event_name == 'workflow_run' && (contains(github.event.workflow_run.created_at, 'T22:') || contains(github.event.workflow_run.updated_at, 'T22:'))))
         env:
           PREOPEN_STATUS_REASON: ${{ steps.query_fund_flow.outcome != 'success' && 'source_collection_failed' || steps.pre_send_dedup.outcome == 'failure' && 'source_validation_failed' || steps.send_updates.outcome == 'failure' && 'telegram_delivery_unconfirmed' || 'scheduled_check' }}
         run: python scripts/preopen_daily_status.py --family us
