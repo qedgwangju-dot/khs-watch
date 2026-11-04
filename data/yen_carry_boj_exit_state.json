@@ -1,24 +1,24 @@
 {
   "account": {
-    "change_1m_trillion_yen": -16.298831535999966,
-    "change_3m_trillion_yen": -14.22111147299995,
+    "change_1m_trillion_yen": 1.269364787000029,
+    "change_3m_trillion_yen": -14.104521640999963,
     "latest": {
-      "date": "2026-10-20",
-      "jgs_trillion_yen": 504.003730754,
-      "total_assets_trillion_yen": 624.977993815,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261020.htm"
+      "date": "2026-10-31",
+      "jgs_trillion_yen": 505.277353999,
+      "total_assets_trillion_yen": 626.188218448,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261031.htm"
     },
     "one_month": {
-      "date": "2026-09-20",
-      "jgs_trillion_yen": 520.30256229,
-      "total_assets_trillion_yen": 641.281336654,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260920.htm"
+      "date": "2026-09-30",
+      "jgs_trillion_yen": 504.007989212,
+      "total_assets_trillion_yen": 625.02533175,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260930.htm"
     },
     "three_month": {
-      "date": "2026-07-20",
-      "jgs_trillion_yen": 518.224842227,
-      "total_assets_trillion_yen": 639.369552506,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260720.htm"
+      "date": "2026-07-31",
+      "jgs_trillion_yen": 519.38187564,
+      "total_assets_trillion_yen": 644.295765484,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260731.htm"
     }
   },
   "classification": {
@@ -177,5 +177,5 @@
     "plan_revision": false,
     "weak_private_absorption": false
   },
-  "updated_at_kst": "2026-11-04T06:38:41+09:00"
+  "updated_at_kst": "2026-11-04T10:42:12+09:00"
 }
