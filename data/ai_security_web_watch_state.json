@@ -8,7 +8,7 @@
     "errors": [],
     "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 90,
+    "raw_items": 89,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -43,6 +43,12 @@
     }
   },
   "quantum_mna_seen": {
+    "ionq-elisity-2026-10-12-closed": {
+      "published_at": "2026-11-03T15:00:00+00:00",
+      "source_url": "https://www.ionq.com/news/ionq-completes-acquisition-of-elisity-extending-quantum-security-for-enterprises-and-government",
+      "stage": "closed",
+      "status": "공식 발행사 확인"
+    },
     "ionq-elisity-2026-10-12-signed": {
       "published_at": "2026-10-12T00:00:00+00:00",
       "source_url": "https://www.ionq.com/news/ionq-to-acquire-elisity-to-accelerate-zero-trust-for-the-quantum-era",
@@ -1484,5 +1490,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-04T22:27:43+09:00"
+  "updated_at_kst": "2026-11-04T23:00:25+09:00"
 }
