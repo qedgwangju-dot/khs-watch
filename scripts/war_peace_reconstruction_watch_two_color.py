@@ -85,9 +85,16 @@ def _election_war_commentary(title):
         title, re.IGNORECASE)
     outlook = re.search(
         r'원인|때문|입장차|악영향|영향은?|향방은?|예상|전망|가능성|불가피|후회|'
-        r'출구전략|\b(?:blame|regret|expected|outlook|possibility|impact)\b',
+        r'출구전략|기대(?:감)?|청신호|갈림길|'
+        r'\b(?:blame|regret|expected|outlook|possibility|impact)\b',
         title, re.IGNORECASE)
-    if not (election and outlook) or _active_adverse(title) or _separate_attack_headline(title):
+    # A list of future options may mention a blockade without reporting a new
+    # blockade action. Keep this narrow so a current adverse event stays red.
+    hypothetical_options = bool(re.search(
+        r'갈림길.{0,35}공격[·/\s]+협상[·/\s]+봉쇄\s*유지\s*모두\s*난관', title))
+    if not (election and outlook) or _separate_attack_headline(title):
+        return False
+    if _active_adverse(title) and not hypothetical_options:
         return False
     # An election headline may also report a separate present action. Keep its
     # direction; a forecast of an attack or a question about future talks is not
