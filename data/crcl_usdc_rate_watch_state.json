@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-05T21:22:24+09:00",
+  "updated_at_kst": "2026-11-06T05:42:28+09:00",
   "circle": {
     "date": "2026-11-02",
     "circulation_usd_b": 69.8,
@@ -30,11 +30,11 @@
     }
   },
   "sofr": {
-    "date": "2026-11-03",
-    "rate": 3.97,
-    "prev_date": "2026-11-02",
-    "prev_rate": 3.95,
-    "daily_bp": 2.0,
+    "date": "2026-11-04",
+    "rate": 3.94,
+    "prev_date": "2026-11-03",
+    "prev_rate": 3.97,
+    "daily_bp": -3.0,
     "source": "FRED 재게시·원출처 Federal Reserve Bank of New York",
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
@@ -50,26 +50,26 @@
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-11-04",
-    "close": 76.12,
-    "prev_date": "2026-11-03",
-    "prev_close": 75.22,
-    "daily_pct": 1.2,
+    "date": "2026-11-05",
+    "close": 69.16,
+    "prev_date": "2026-11-04",
+    "prev_close": 76.12,
+    "daily_pct": -9.14,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
-    "crosscheck_date": "2026-11-04",
-    "crosscheck_close": 76.12000274658203,
-    "crosscheck_daily_pct": 1.2,
-    "crosscheck_gap_pct": 0.0,
+    "crosscheck_date": "2026-11-05",
+    "crosscheck_close": 69.19000244140625,
+    "crosscheck_daily_pct": -9.1,
+    "crosscheck_gap_pct": 0.043,
     "crosscheck_status": "confirmed"
   },
   "tbx": {
-    "date": "2026-11-04",
-    "close": 29.110000610351562,
-    "prev_date": "2026-11-03",
-    "prev_close": 29.229999542236328,
-    "daily_pct": -0.41
+    "date": "2026-11-05",
+    "close": 28.945999145507812,
+    "prev_date": "2026-11-04",
+    "prev_close": 29.110000610351562,
+    "daily_pct": -0.56
   },
   "fx": {
     "rate": 1341.2,
