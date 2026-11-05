@@ -22,7 +22,7 @@ FORCE_NOTIFY = os.getenv('FORCE_NOTIFY', '0') == '1'
 THRESH_5D = float(os.getenv('WARSH_ROTATION_5D_PP') or '5')
 THRESH_3D = float(os.getenv('WARSH_ROTATION_3D_PP') or '3')
 MAX_SOURCE_GAP_BP = float(os.getenv('WARSH_AI_ROTATION_MAX_SOURCE_GAP_BP') or '12')
-METHODOLOGY_VERSION = '2026-10-10-v5'
+METHODOLOGY_VERSION = '2026-11-05-v6-soxx-split-basis'
 UA = 'Mozilla/5.0 (compatible; khs-watch/3.2; +https://github.com/qedgwangju-dot/khs-watch)'
 YAHOO = 'https://query1.finance.yahoo.com/v8/finance/chart/{}?range=1mo&interval=1d&includePrePost=false'
 SYMBOLS = {
@@ -139,11 +139,72 @@ def compare_two_sources(name, symbol, official, yahoo, sample_dates):
         'checked_close_prices': {d: round(float(official[d]), 4) for d in sample_dates},
     }
 
+# Official issuer/SEC prospectus supplement: 3-for-1 SOXX forward split,
+# distributed after 2026-11-04 close; ex-date 2026-11-05.
+# https://www.sec.gov/Archives/edgar/data/1100663/000119312526430480/d156277d497.htm
+SOXX_SPLIT_EX_DATE = '2026-11-05'
+SOXX_SPLIT_RATIO = 3.0
+
+
+def align_official_soxx_split_basis(independent, yahoo):
+    """Compare SOXX closes on the same share basis, never infer a market crash.
+
+    StockAnalysis may back-adjust history to post-split units before Yahoo does.
+    Only the disclosed SOXX split, dates before its ex-date and an exact 3:1
+    scale agreement qualify. Other vendors, symbols and wrong prices fail closed.
+    """
+    primary = {name: dict(series) for name, series in independent.items()}
+    secondary = {name: dict(series) for name, series in yahoo.items()}
+    a = primary.get('SOXX') or {}
+    b = secondary.get('SOXX') or {}
+    adjusted = []
+    for d in sorted(set(a) & set(b)):
+        if d >= SOXX_SPLIT_EX_DATE:
+            continue
+        x, y = float(a[d]), float(b[d])
+        if x <= 0 or y <= 0:
+            raise RuntimeError('SOXX 액면분할 가격이 유효하지 않음')
+        if abs((y / x) / SOXX_SPLIT_RATIO - 1) * 10000 <= MAX_SOURCE_GAP_BP:
+            b[d] = y / SOXX_SPLIT_RATIO
+            adjusted.append('Yahoo ' + d)
+        elif abs((x / y) / SOXX_SPLIT_RATIO - 1) * 10000 <= MAX_SOURCE_GAP_BP:
+            a[d] = x / SOXX_SPLIT_RATIO
+            adjusted.append('independent ' + d)
+
+    # A vendor might not back-adjust either pre-split price even after the
+    # first split-adjusted post-ex-date bar. Detect this discontinuity on the
+    # first post-split session and scale that vendor's old bars only.
+    for vendor, series in (('independent', a), ('Yahoo', b)):
+        pre = [d for d in series if d < SOXX_SPLIT_EX_DATE]
+        post = [d for d in series if d >= SOXX_SPLIT_EX_DATE]
+        if not pre or not post:
+            continue
+        last_pre, first_post = max(pre), min(post)
+        prior, current = float(series[last_pre]), float(series[first_post])
+        if prior <= 0 or current <= 0:
+            raise RuntimeError('SOXX 분할 전후 가격이 유효하지 않음')
+        # A legitimate next-day move should not be confused with a 3:1 share
+        # split; only an unmistakable ratio near the official split is fixed.
+        ratio = prior / current
+        if 2.3 <= ratio <= 3.7:
+            for d in pre:
+                series[d] = float(series[d]) / SOXX_SPLIT_RATIO
+            adjusted.append(vendor + ' pre-ex historical bars')
+    return primary, secondary, {
+        'ticker': 'SOXX', 'event': 'official 3:1 split',
+        'ex_date': SOXX_SPLIT_EX_DATE,
+        'factor': SOXX_SPLIT_RATIO,
+        'adjusted_bars': len(adjusted),
+        'note': 'price-basis adjustment only; no trading return or confirmed signal inferred',
+    }
+
+
 def build_snapshot(independent, yahoo, now=None):
     ny_now = now or datetime.now(NY)
     syms = set(SYMBOLS.values())
     if set(independent) != syms or set(yahoo) != syms:
         raise RuntimeError('9개 검증 종목 목록 불일치')
+    independent, yahoo, split_audit = align_official_soxx_split_basis(independent, yahoo)
     latest_independent = {max(independent[t]) for t in syms}
     latest_yahoo = {max(yahoo[t]) for t in syms}
     if len(latest_independent) != 1 or len(latest_yahoo) != 1:
@@ -245,9 +306,10 @@ def build_snapshot(independent, yahoo, now=None):
     return {
         'date': latest, 'window': {'1d': d1, '3d': d3, '5d': d5},
         'methodology_version': METHODOLOGY_VERSION,
-        'price_basis': 'StockAnalysis / S&P Global Market Intelligence 마감 종가·Yahoo 완료 일봉 교차확인',
+        'price_basis': 'StockAnalysis / S&P Global Market Intelligence·Yahoo 완료 일봉 교차검증; SOXX 2026-11-05 3:1 분할조정 기준',
         'source_gap_limit_bp': MAX_SOURCE_GAP_BP,
         'source_checks': source_checks,
+        'corporate_action_basis': split_audit,
         'returns': returns, 'relative_3d': rel3, 'relative_5d': rel5,
         'baskets': baskets, 'confirm_count': count, 'active': active,
         'verdict': verdict, 'updated_at_utc': datetime.now(timezone.utc).isoformat(),
@@ -520,6 +582,42 @@ def self_test():
     assert displayed_signature(updated) != original, 'visible price revision must change signature'
     updated['relative_5d'] = out['relative_5d'] + 0.000001
     assert displayed_signature(updated) == original, 'sub-decimal price noise must not trigger correction'
+    # Official SOXX 3:1 split effective 2026-11-05: two vendors can differ
+    # 3x on pre-split history. Normalize price basis, NOT the alert threshold.
+    split_dates = ['2026-10-28','2026-10-29','2026-10-30',
+                   '2026-11-02','2026-11-03','2026-11-04','2026-11-05']
+    adjusted_pre = [170.0,171.0,157.0,151.0,155.0,150.0]
+    split_adjusted = {d: adjusted_pre[i] for i,d in enumerate(split_dates[:-1])}
+    split_adjusted[split_dates[-1]] = 145.0
+    split_a = {symbol: {d: 100.0 for d in split_dates} for symbol in SYMBOLS.values()}
+    split_b = {symbol: dict(leg) for symbol,leg in split_a.items()}
+    split_a['SOXX'] = dict(split_adjusted)
+    split_b['SOXX'] = {d: (v*3 if d < SOXX_SPLIT_EX_DATE else v)
+                       for d,v in split_adjusted.items()}
+    split_now = datetime(2026,11,5,18,30,tzinfo=NY)
+    valid_split = build_snapshot(split_a,split_b,split_now)
+    assert valid_split['corporate_action_basis']['adjusted_bars'] >= 6
+    assert abs(valid_split['returns']['반도체']['1d'] - (145/150-1)*100) < 1e-8
+    assert valid_split['source_checks']['반도체']['max_gap_bp'] < MAX_SOURCE_GAP_BP
+    raw_a = {name: dict(leg) for name,leg in split_a.items()}
+    raw_a['SOXX'] = dict(split_b['SOXX'])
+    valid_both_raw = build_snapshot(raw_a,split_b,split_now)
+    assert abs(valid_both_raw['returns']['반도체']['1d'] - (145/150-1)*100) < 1e-8
+    wrong_b = {name: dict(leg) for name,leg in split_b.items()}
+    wrong_b['SOXX'] = {d: (v*2 if d < SOXX_SPLIT_EX_DATE else v)
+                       for d,v in split_adjusted.items()}
+    try:
+        build_snapshot(split_a,wrong_b,split_now)
+        raise AssertionError('SOXX wrong 2x vendor prices must fail closed')
+    except RuntimeError as e:
+        assert '불일치' in str(e)
+    wrong_igv = {name: dict(leg) for name,leg in split_b.items()}
+    wrong_igv['IGV'][split_dates[-1]] = 300.0
+    try:
+        build_snapshot(split_a,wrong_igv,split_now)
+        raise AssertionError('unrelated ETF 3x discrepancy must still fail closed')
+    except RuntimeError as e:
+        assert '불일치' in str(e)
     print('ai_rotation_regression_tests=true checks=price_gap,display_rounding,spread,baskets,close_alignment,intraday_guard,revision_signature')
 
 if __name__ == '__main__':
