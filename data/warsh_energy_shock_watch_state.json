@@ -33,16 +33,16 @@
   },
   "verdict": "에너지 충격 경보 기준 미충족",
   "oil_rates": {
-    "date": "2026-11-03",
+    "date": "2026-11-04",
     "observations": 63,
-    "corr_3m": 0.5416293093644501,
+    "corr_3m": 0.5194867385109035,
     "corr_band": "경계",
-    "beta_bp_per_1pct": 0.33877473503807193,
+    "beta_bp_per_1pct": 0.358986727151665,
     "beta_hot": false,
-    "wti": 96.08999633789062,
-    "wti_move_pct": -3.8138189487427643,
-    "dgs10": 4.95,
-    "dgs10_move_bp": -4.0000000000000036,
+    "wti": 88.12000274658203,
+    "wti_move_pct": -14.263471693743423,
+    "dgs10": 4.9,
+    "dgs10_move_bp": -14.999999999999947,
     "move_days": 5,
     "measurement_basis": "WTI 선물 완료 일봉·FRED DGS10 공통 거래일 자체 계산",
     "wti_url": "https://finance.yahoo.com/quote/CL=F/",
@@ -50,7 +50,7 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-11-05T20:32:28.696275+00:00",
+    "date": "2026-11-05T21:38:32.078500+00:00",
     "meeting_date": null,
     "hike25_prob": null,
     "extra_bp": null,
@@ -60,5 +60,5 @@
     "fresh": false
   },
   "oil_rates_verdict": "유가·장기금리 연결 경계 — 단순 동행인지 정책 전이인지 확인",
-  "updated_at_utc": "2026-11-05T20:32:29.190520+00:00"
+  "updated_at_utc": "2026-11-05T21:38:32.755485+00:00"
 }
