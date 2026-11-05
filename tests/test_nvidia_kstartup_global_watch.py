@@ -46,10 +46,8 @@ class NvidiaKoreaStartupTests(unittest.TestCase):
 
     def test_official_meeting_confirmed_is_distinct_upgrade(self):
         title = "NVIDIA, 한국 리벨리온 간담회 참석 공식 발표"
-        report = self.item(title)
-        report["tier"] = "공식"
-        report["event_id"], report["stage"], report["label"] = (*m.classify(title, "공식"),)
-        self.assertEqual((report["kind"] if "kind" in report else "unused"), "meeting_reported")
+        report = self.item(title, tier="공식")
+        self.assertEqual(report["kind"], "meeting_confirmed")
         self.assertEqual((report["event_id"], report["stage"]),
                          ("nvidia_korea|meeting_confirmed|2026-11", 2))
 
