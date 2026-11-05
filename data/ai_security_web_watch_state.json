@@ -97,6 +97,16 @@
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
       "vendor": "PHP 재단"
     },
+    "06b6601811533788edcc64c9": {
+      "category": "PHP 취약점 실전 악용 보도·추가 검증",
+      "first_seen_at": "2026-11-05T01:59:36.271436+00:00",
+      "published_at": "2026-11-04T15:48:28+00:00",
+      "severity": 3,
+      "source": "cyfirma",
+      "title": "PHP2Shell Vulnerability Under Active Exploitation: Are You Affected, and What Should You Do Today? - cyfirma",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNQWNzSUNpbDdTUE9pN25Oa0hlTjBFbS1RZG1IVmFCZVpZckFyOENlTUVRZ0tJRmgyRVZOVWZKWDc0WllSb0ZRRTFFYVJ3RXY5MmZXU3lCN1VKaFcycUo1S2wtdzFwMXdscUdLbnZCUlNHQVlzSHZhSkRoaW5GRUk2blhWQXNPWWRKejhMejBzMlFNaHJ1amtKNklLSFh2R0duSGt1ZlJ1VEgzT1JDRjQwbkRSRVpiQ2tPeEJMX1Z1WU5GUklJ?oc=5",
+      "vendor": "PHP 재단"
+    },
     "0780878b05fa415e43ff112d": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
@@ -1500,5 +1510,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-05T10:23:44+09:00"
+  "updated_at_kst": "2026-11-05T10:59:36+09:00"
 }
