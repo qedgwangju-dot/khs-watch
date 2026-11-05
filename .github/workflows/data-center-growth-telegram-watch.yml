@@ -138,6 +138,49 @@ jobs:
           print("data_center_direction_power_plan_grid_supply_regression=passed")
           PY
 
+      - name: Validate Jefferies / SOFC / SMR / BESS source gate (no Telegram)
+        run: |
+          python -m py_compile scripts/us_data_center_generation_buildout_watch.py
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+
+          source = Path("scripts/us_data_center_generation_buildout_watch.py").read_text(encoding="utf-8")
+          parsed = ast.parse(source)
+          names = {n.name for n in parsed.body if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))}
+          expected = {
+              "onsite_bridge_regression_checks",
+              "onsite_official_source_status",
+              "run_onsite_jefferies_source_graded_extension",
+              "vg_run_existing_generation_watch",
+          }
+          assert expected <= names, expected - names
+          assignments = [
+              n for n in parsed.body if isinstance(n, ast.Assign)
+              and any(isinstance(t, ast.Name) and t.id == "ONSITE_TECH_REFERENCE" for t in n.targets)
+          ]
+          assert len(assignments) == 1
+          dictionary = assignments[0].value
+          reference = {}
+          for key, value in zip(dictionary.keys, dictionary.values):
+              if isinstance(key, ast.Constant) and key.value != "sources":
+                  reference[key.value] = ast.literal_eval(value)
+          test_fn = next(n for n in parsed.body if isinstance(n, ast.FunctionDef)
+                         and n.name == "onsite_bridge_regression_checks")
+          namespaced = {"ONSITE_TECH_REFERENCE": reference}
+          exec(compile(ast.Module(body=[test_fn], type_ignores=[]),
+                       "<jefferies_readonly_regression>", "exec"), namespaced)
+          namespaced["onsite_bridge_regression_checks"]()
+          assert source.index("vg_run_existing_generation_watch()") < source.index(
+              "run_onsite_jefferies_source_graded_extension()")
+          assert "old.get(\"initialized\") or not verified or not fresh_fx" in source
+          assert "previous.get(\"delivered_id\") == JEFFERIES_ONSITE_EVENT" in source
+          assert all(name in source for name in ("JEFFERIES_MAY_OFFICIAL",
+                     "BLOOM_ORACLE_OFFICIAL", "AEP_GOOGLE_OFFICIAL", "XENERGY_SMRS_SEC"))
+          assert "JEFFERIES_ONSITE_EVENT" not in source.split("vg_run_existing_generation_watch()", 1)[0]
+          print("onsite_jefferies_source_and_dedupe_regression=passed")
+          PY
+
   monitor:
     # Code-push validation must never trigger live alert sends.
     # Never process workflow_run events from failed or non-main upstream runs.
@@ -715,7 +758,7 @@ jobs:
                   if len(joined) <= chunk_limit:
                       chunks[-2:] = [joined]
 
-              if is_dc_risk or p.name == "ai_dc_tam_revision_alert.txt":
+              if is_dc_risk or p.name in ("ai_dc_tam_revision_alert.txt", "us_data_center_generation_buildout_alert.txt"):
                   expected_lines = [line.strip() for line in text.splitlines() if line.strip()]
                   actual_lines = [
                       line.strip()
