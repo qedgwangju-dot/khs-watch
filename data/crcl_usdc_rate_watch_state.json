@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-05T12:31:39+09:00",
+  "updated_at_kst": "2026-11-05T21:22:24+09:00",
   "circle": {
     "date": "2026-11-02",
     "circulation_usd_b": 69.8,
@@ -13,7 +13,7 @@
     "date": "2026-11-04",
     "sec_yield_7d": 3.92,
     "yield_7d": 3.92,
-    "yield_1d": null,
+    "yield_1d": 3.9,
     "yield_crosscheck_gap_bp": 0.0,
     "visible_nav_date": "2026-11-04",
     "fund_size_usd_m": 58967.8,
@@ -51,17 +51,17 @@
   },
   "crcl": {
     "date": "2026-11-04",
-    "close": 76.15,
+    "close": 76.12,
     "prev_date": "2026-11-03",
     "prev_close": 75.22,
-    "daily_pct": 1.24,
+    "daily_pct": 1.2,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
     "crosscheck_date": "2026-11-04",
     "crosscheck_close": 76.12000274658203,
     "crosscheck_daily_pct": 1.2,
-    "crosscheck_gap_pct": 0.039,
+    "crosscheck_gap_pct": 0.0,
     "crosscheck_status": "confirmed"
   },
   "tbx": {
