@@ -914,3 +914,168 @@ def vg_run_existing_generation_watch():
 
 
 vg_run_existing_generation_watch()
+
+# JEFFERIES_ONSITE_SOURCE_GRADED_V1
+# Append only to the EXISTING generation-watch alert, pending state and Telegram path.
+# A forwarded quotation is not a confirmed Jefferies analyst report.
+JEFFERIES_ONSITE_EVENT = "jefferies-onsite-grid-delay-tech-differences-source-graded-20261105"
+JEFFERIES_MAY_OFFICIAL = "https://www.jefferies.com/insights/markets/five-trends-shaping-the-future-of-power-and-utilities/"
+RABO_ONSITE_RESEARCH = "https://www.rabobank.com/knowledge/d011524694-the-sprint-data-centers-are-building-a-parallel-energy-system-in-the-us"
+BLOOM_ORACLE_OFFICIAL = "https://www.bloomenergy.com/news/bloom-energy-and-oracle-expand-strategic-partnership-to-deploy-up-to-2-8-gw-to-accelerate-ai-infrastructure-build-out/"
+AEP_GOOGLE_OFFICIAL = "https://www.aep.com/news/stories/view/12314/"
+XENERGY_SMRS_SEC = "https://www.sec.gov/Archives/edgar/data/2088896/000119312526347752/xe-20260630.htm"
+
+ONSITE_TECH_REFERENCE = {
+    "as_of": "2026-11-05",
+    "jefferies_verbatim_2_3_to_4_5_years_confirmed": False,
+    "jefferies_verbatim_immediate_sofc_smr_bess_orders_confirmed": False,
+    "jefferies_may_2026_published_view": "단기 가스발전·전력망 접속 병목, 원전은 장기",
+    "rabobank_grid_36_to_84_months_estimate": [36, 84],
+    "rabobank_build_12_to_24_months_estimate": [12, 24],
+    "oracle_bloom_firm_contracted_gw": 1.2,
+    "oracle_bloom_master_ceiling_gw": 2.8,
+    "aep_google_sofc_project_mw": 702,
+    "aep_google_ppa_years": 20,
+    "aep_google_total_project_capex_usd_b_approx": 4.0,
+    "aep_google_target_full_operation": "2028년 말 목표",
+    "xenergy_energy_northwest_first_project_mwe": 320,
+    "xenergy_energy_northwest_potential_mwe": 960,
+    "xenergy_first_operations": "2030년대 초반 전망",
+    "bess_1gw_4hr_energy_gwh": 4,
+    "bess_1gw_24hr_energy_gwh": 24,
+    "scope": "SOFC=연료 투입 발전; BESS=충전된 에너지의 저장·출력; SMR=건설·허가·핵연료 조건을 갖춘 장기 전원",
+    "sources": [
+        JEFFERIES_MAY_OFFICIAL, RABO_ONSITE_RESEARCH,
+        BLOOM_ORACLE_OFFICIAL, AEP_GOOGLE_OFFICIAL, XENERGY_SMRS_SEC
+    ],
+}
+
+
+def onsite_bridge_regression_checks() -> None:
+    b = ONSITE_TECH_REFERENCE
+    assert b["bess_1gw_4hr_energy_gwh"] == 1 * 4
+    assert b["bess_1gw_24hr_energy_gwh"] == 1 * 24
+    assert b["oracle_bloom_firm_contracted_gw"] < b["oracle_bloom_master_ceiling_gw"]
+    assert b["xenergy_first_operations"] != b["aep_google_target_full_operation"]
+    assert b["jefferies_verbatim_2_3_to_4_5_years_confirmed"] is False
+    assert b["jefferies_verbatim_immediate_sofc_smr_bess_orders_confirmed"] is False
+
+
+def onsite_official_source_status() -> dict:
+    """First-party corroboration only; no news summary can upgrade the quote."""
+    checks = {
+        "jefferies": (JEFFERIES_MAY_OFFICIAL,
+                     ("gas generation is the bridge", "nuclear", "data center")),
+        "bloom": (BLOOM_ORACLE_OFFICIAL, ("oracle", "2.8", "1.2", "contracted")),
+        "aep": (AEP_GOOGLE_OFFICIAL, ("google", "702", "20-year", "bloom")),
+    }
+    found = {}
+    for key, (url, tokens) in checks.items():
+        try:
+            page = normalize(BeautifulSoup(fetch(url, 15).text, "html.parser").get_text(" ")).lower()
+            found[key] = all(token in page for token in tokens)
+        except Exception:
+            found[key] = False
+    return found
+
+
+def run_onsite_jefferies_source_graded_extension() -> None:
+    onsite_bridge_regression_checks()
+    previous = dict(old.get("jefferies_onsite_bridge") or {})
+    if previous.get("delivered_id") == JEFFERIES_ONSITE_EVENT:
+        print("onsite_jefferies_addendum=duplicate-suppressed")
+        return
+
+    # Preserve the normal monitor's event gating and never use an old FX quote
+    # or fabricate Jefferies wording when a primary publisher is inaccessible.
+    source_check = onsite_official_source_status()
+    verified = all(source_check.values())
+    fresh_fx = fx is not None and fx_source != "직전 저장값"
+    checked = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    if not old.get("initialized") or not verified or not fresh_fx:
+        print(f"onsite_jefferies_addendum=hold source_check={source_check} fresh_fx={fresh_fx}")
+        if STATUS.exists():
+            with STATUS.open("a", encoding="utf-8") as fp:
+                fp.write(
+                    f"- Jefferies·현장전력 관점: **미발송/원천 확인 보류**"
+                    f" · Jefferies={source_check['jefferies']}"
+                    f" · Bloom={source_check['bloom']} · AEP={source_check['aep']}"
+                    f" · 현재 환율={fresh_fx}\n"
+                )
+        return
+
+    money_krw = krw_from_usd_b(4.0, fx)
+    rows = [
+        "<b>전력망 병목·현장발전 3기술 검증 보강 │ 2026-11-05</b>",
+        "",
+        "<b>■ 핵심 구분</b>",
+        "• <b>제프리스 원문 확인 범위</b> │ 2026-05-04 공식 발표는 단기 가스발전 확대·계통접속 병목을 강조.",
+        "  전달된 'GW급 센터 전체 공사기간 2~3년→4~5년'과 'SOFC·SMR·BESS 즉시 선주문 폭증'이라는 정확한 인용은 원문 확인 전.",
+        "• <b>건설과 전력 접속은 별도 시계</b> │ 라보뱅크 2026-05-06 분석: 건물 12~24개월 / 계통접속 36~84개월.",
+        "  모두 같은 프로젝트의 평균 공사기간은 아니며, 전원 인가 전에는 실제 가동·임대매출을 확정할 수 없음.",
+        "",
+        "<b>■ SOFC: 실제 고객 계약과 상업화</b>",
+        "• <b>Bloom–Oracle</b> │ 고체산화물 연료전지 최대 2.8GW 공급 기본계약 상한."
+        " 이 가운데 초기 1.2GW 계약·배치 진행, 나머지 최대 1.6GW는 확정 납품 아님.",
+        f"• <b>AEP–Google</b> │ 와이오밍 702MW SOFC 발전사업, 총사업비 약 40억달러({money_krw}).",
+        "  Google 20년 전력구매계약, 2026년 착공 계획·2028년 말 전체 상업운전 목표.",
+        "• <b>전제</b> │ 천연가스 공급·연료개질·현장전력 배전·배출인허가·냉각·장기정비·보증 조건 필요.",
+        "",
+        "<b>■ SMR과 BESS는 같은 속도의 대체 발전원이 아님</b>",
+        "• <b>SMR</b> │ X-energy SEC 공시상 Amazon·Energy Northwest 초기 320MWe 개발,"
+        " 확대 가능성 960MWe, 첫 가동은 2030년대 초반 전망. 현재 즉시 공급/가동 아님.",
+        "• <b>BESS</b> │ 전기를 생산하지 않고 저장·방전. 1GW를 4시간 공급하려면 4GWh,"
+        " 24시간이면 손실 고려 전 최소 24GWh와 재충전 발전원이 필요.",
+        "  전력품질·피크·비상 대응과 24시간 주전원 공급을 동일시하지 않음.",
+        "",
+        "<b>■ 다음 실적 촉발·위험</b>",
+        "• 발표 GW → 실제 확정 발주·선수금 → 금융종결·연료계약 → 인허가 → 설비 설치·검수"
+        " → 발전 시작 → 데이터센터 전원 인가 순서로 추적.",
+        "• 기계 납기·가스관 공급·변압기·보험·방재·배터리 열폭주·SMR 허가가 주요 실패 경로.",
+        "  신규 수주량·실제 설치 MW·첫 전원 인가일·유지보수 계약과 현금회수를 확인.",
+        "• 기존 발전설비 감시를 보강한 1회 검증 관점이며, Jefferies 미확인 문구를 확정 통계로 저장하지 않음.",
+        "",
+        "<b>■ 공식 원문 및 대조 자료</b>",
+        f"• {a('Jefferies 2026-05-04 공식 발표', JEFFERIES_MAY_OFFICIAL)}",
+        f"• {a('Rabobank 건설·접속 대기기간', RABO_ONSITE_RESEARCH)}",
+        f"• {a('Bloom–Oracle 공식 계약 단계', BLOOM_ORACLE_OFFICIAL)}",
+        f"• {a('AEP–Google 702MW 공식 발표', AEP_GOOGLE_OFFICIAL)}",
+        f"• {a('X-energy SEC 2026년 공시', XENERGY_SMRS_SEC)}",
+        f"• 환율: 1달러={fx:,.2f}원 · {h(fx_source)} · {checked} UTC",
+    ]
+    required = (
+        "2~3년→4~5년", "12~24개월", "36~84개월", "2.8GW", "1.2GW",
+        "702MW", "40억달러", "20년", "2028년 말", "320MWe", "960MWe",
+        "2030년대 초반", "4GWh", "24GWh",
+        JEFFERIES_MAY_OFFICIAL, BLOOM_ORACLE_OFFICIAL, AEP_GOOGLE_OFFICIAL,
+        XENERGY_SMRS_SEC,
+    )
+    rendered = "\n".join(rows).strip()
+    missing = [item for item in required if item not in rendered]
+    if missing or any(len(row) > 2800 for row in rows):
+        raise RuntimeError(f"현장발전 검증 알림 누락·과긴 문장: {missing}")
+    if rendered.count("<b>") != rendered.count("</b>"):
+        raise RuntimeError("현장발전 검증 알림 Telegram HTML 굵기 태그 불일치")
+    if rendered.count("<a href=") != rendered.count("</a>"):
+        raise RuntimeError("현장발전 검증 알림 Telegram 링크 태그 불일치")
+
+    old_text = ALERT.read_text(encoding="utf-8").strip() if ALERT.exists() else ""
+    ALERT.write_text((old_text + "\n\n" if old_text else "") + rendered + "\n", encoding="utf-8")
+    pending = load_json(PENDING)
+    next_state = dict(previous)
+    next_state["source_snapshot"] = ONSITE_TECH_REFERENCE
+    next_state["official_verified_live"] = source_check
+    next_state["delivered_id"] = JEFFERIES_ONSITE_EVENT
+    next_state["delivered_at_utc"] = checked
+    pending["jefferies_onsite_bridge"] = next_state
+    PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if STATUS.exists():
+        with STATUS.open("a", encoding="utf-8") as fp:
+            fp.write(
+                "- Jefferies·현장전력 관점: **원문 대조 1회 보강 알림**"
+                f" · source={source_check} · 실제 Telegram 수신은 전송단계 확인 필요\n"
+            )
+    print(f"onsite_jefferies_addendum=source_checked_and_prepared source={source_check}")
+
+
+run_onsite_jefferies_source_graded_extension()
