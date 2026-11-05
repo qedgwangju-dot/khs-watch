@@ -889,11 +889,23 @@
       "source": "shattered.io",
       "published_kst": "2026-10-27T12:00:32+09:00",
       "first_seen_kst": "2026-11-04T05:44:50+09:00"
+    },
+    "d5a7d9103edcf3c69b979227": {
+      "title": "Module Dumping Drags NAND Spot Prices Lower",
+      "source": "TrendForce Research",
+      "published_kst": "2026-11-05T09:00:00+09:00",
+      "first_seen_kst": "2026-11-05T18:31:21+09:00"
+    },
+    "524d938cf92fce7ba22cc8f3": {
+      "title": "HBM Industry Analysis - 4Q26 Nov 05, 2026 | PDF Rising CSP capex, AI inference, agentic AI and custom ASICs lift AI server shipments, tighten CPU supply and speed liquid cooling.",
+      "source": "TrendForce Research",
+      "published_kst": "2026-11-05T09:00:00+09:00",
+      "first_seen_kst": "2026-11-05T18:31:21+09:00"
     }
   },
-  "updated_at_kst": "2026-11-05T10:51:46+09:00",
-  "last_scan_count": 12,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-11-05T18:31:21+09:00",
+  "last_scan_count": 14,
+  "last_new_count": 2,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -953,20 +965,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-04T05:45:03+09:00",
+  "last_successful_delivery_kst": "2026-11-05T18:31:35+09:00",
   "telegram_message_ids": [
-    372
+    373
   ],
-  "telegram_message_id": 372,
+  "telegram_message_id": 373,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      372
+      373
     ],
-    "confirmed_at_kst": "2026-11-04T05:45:03+09:00",
-    "alert_signature": "e6b5b4de0144642a7b117b3983d075e5bdeaf4c23d4c82f7a88e45630e3a9a9c"
+    "confirmed_at_kst": "2026-11-05T18:31:35+09:00",
+    "alert_signature": "8dd5ecdde10054ee7e94f94965651f1473b5bd3c551dbb3eb862b8050e468f97"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
