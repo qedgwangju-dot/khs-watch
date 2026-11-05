@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-11-05T16:04:30+09:00",
+  "last_checked_kst": "2026-11-06T00:40:57+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -564,6 +564,16 @@
       "category": "조달·선정·협약",
       "first_seen_kst": "2026-11-04T00:23:38+09:00",
       "suppressed_duplicate": "same_title"
+    },
+    "88c1864a9da6346d66518c3a": {
+      "title": "[단독] 리벨리온 등 엔비디아와 간담회…AI 스타트업 해외진출 길 열리나 - 한국경제",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBuNkVRT2o0ajVaU2xmR3N3OHRiU0VqejczLUUxZVl2a204MHE3MVVHc2N2X1d6V19EaXc3OUd2TC1xNUtpZEJPOHNNZ3RVQXZlYmZlaEhoemxMZw?oc=5",
+      "direct_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBuNkVRT2o0ajVaU2xmR3N3OHRiU0VqejczLUUxZVl2a204MHE3MVVHc2N2X1d6V19EaXc3OUd2TC1xNUtpZEJPOHNNZ3RVQXZlYmZlaEhoemxMZw?oc=5",
+      "event_signature": "리벨리온|해외진출 지원|일반",
+      "stage": 3,
+      "category": "해외진출 지원",
+      "first_seen_kst": "2026-11-06T00:40:57+09:00",
+      "alerted": true
     }
   }
 }
