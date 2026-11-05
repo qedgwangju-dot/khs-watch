@@ -166,10 +166,10 @@
     "394b88027aa4cb3c5917",
     "644835b9ff0f6ea97163"
   ],
-  "last_fx_krw_per_usd": 1334.772994,
+  "last_fx_krw_per_usd": 1340.311295,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-10-18T09:07:50+00:00",
-  "updated_at_utc": "2026-10-18T09:08:19+00:00",
+  "fx_checked_utc": "2026-11-05T11:06:36+00:00",
+  "updated_at_utc": "2026-11-05T11:06:48+00:00",
   "venture_global_power_island": {
     "framework_signed": "2026-10-09",
     "announcement_date": "2026-10-15",
@@ -196,7 +196,7 @@
     "official_release_verified_live": true,
     "baker_official_verified_live": true,
     "sec_verified_live": false,
-    "last_checked_utc": "2026-10-18T09:08:19+00:00",
+    "last_checked_utc": "2026-11-05T11:06:48+00:00",
     "source_errors": [
       "SEC 2026-10-15 8-K 실시간 확인 불가: HTTPError: 403 Client Error: Forbidden for url: https://www.sec.gov/Archives/edgar/data/2007855/00020"
     ],
@@ -204,6 +204,48 @@
       "vg-power|framework-reservations|2026-10-09"
     ],
     "framework_alert_delivered": true
+  },
+  "jefferies_onsite_bridge": {
+    "source_snapshot": {
+      "as_of": "2026-11-05",
+      "jefferies_verbatim_2_3_to_4_5_years_confirmed": false,
+      "jefferies_verbatim_immediate_sofc_smr_bess_orders_confirmed": false,
+      "jefferies_may_2026_published_view": "단기 가스발전·전력망 접속 병목, 원전은 장기",
+      "rabobank_grid_36_to_84_months_estimate": [
+        36,
+        84
+      ],
+      "rabobank_build_12_to_24_months_estimate": [
+        12,
+        24
+      ],
+      "oracle_bloom_firm_contracted_gw": 1.2,
+      "oracle_bloom_master_ceiling_gw": 2.8,
+      "aep_google_sofc_project_mw": 702,
+      "aep_google_ppa_years": 20,
+      "aep_google_total_project_capex_usd_b_approx": 4.0,
+      "aep_google_target_full_operation": "2028년 말 목표",
+      "xenergy_energy_northwest_first_project_mwe": 320,
+      "xenergy_energy_northwest_potential_mwe": 960,
+      "xenergy_first_operations": "2030년대 초반 전망",
+      "bess_1gw_4hr_energy_gwh": 4,
+      "bess_1gw_24hr_energy_gwh": 24,
+      "scope": "SOFC=연료 투입 발전; BESS=충전된 에너지의 저장·출력; SMR=건설·허가·핵연료 조건을 갖춘 장기 전원",
+      "sources": [
+        "https://www.jefferies.com/insights/markets/five-trends-shaping-the-future-of-power-and-utilities/",
+        "https://www.rabobank.com/knowledge/d011524694-the-sprint-data-centers-are-building-a-parallel-energy-system-in-the-us",
+        "https://www.bloomenergy.com/news/bloom-energy-and-oracle-expand-strategic-partnership-to-deploy-up-to-2-8-gw-to-accelerate-ai-infrastructure-build-out/",
+        "https://www.aep.com/news/stories/view/12314/",
+        "https://www.sec.gov/Archives/edgar/data/2088896/000119312526347752/xe-20260630.htm"
+      ]
+    },
+    "official_verified_live": {
+      "jefferies": true,
+      "bloom": true,
+      "aep": true
+    },
+    "delivered_id": "jefferies-onsite-grid-delay-tech-differences-source-graded-20261105",
+    "delivered_at_utc": "2026-11-05T11:06:50+00:00"
   },
   "hyperscaler_nuclear_ppa": {
     "version": 7,
@@ -279,7 +321,7 @@
     "source_errors": [
       "Constellation IR newsroom: HTTPError"
     ],
-    "last_checked_utc": "2026-10-18T09:08:23+00:00",
+    "last_checked_utc": "2026-11-05T11:06:52+00:00",
     "alert_change_count": 0,
     "google_constellation_official_ack": true
   }
