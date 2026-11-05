@@ -13,16 +13,16 @@
       "ticker": "SOXX",
       "date": "2026-11-04",
       "primary_close": 150.14,
-      "yahoo_close": 150.1366729736328,
-      "max_gap_bp": 0.2216,
+      "yahoo_close": 150.13666788736978,
+      "max_gap_bp": 0.2219,
       "gap_by_date_bp": {
         "2026-10-27": 0.1956,
         "2026-10-28": 0.0002,
         "2026-10-29": 0.1946,
         "2026-10-30": 0.0001,
-        "2026-11-02": 0.2209,
+        "2026-11-02": 0.2206,
         "2026-11-03": 0.0,
-        "2026-11-04": 0.2216
+        "2026-11-04": 0.2219
       },
       "checked_close_prices": {
         "2026-10-27": 170.35,
@@ -240,7 +240,7 @@
     "event": "official 3:1 split",
     "ex_date": "2026-11-05",
     "factor": 3.0,
-    "adjusted_bars": 0,
+    "adjusted_bars": 3,
     "note": "price-basis adjustment only; no trading return or confirmed signal inferred"
   },
   "returns": {
@@ -312,7 +312,7 @@
   "confirm_count": 0,
   "active": false,
   "verdict": "소프트웨어 상대우위 — 하드웨어 로테이션 약화",
-  "updated_at_utc": "2026-11-05T16:10:03.604702+00:00",
+  "updated_at_utc": "2026-11-05T20:32:34.632777+00:00",
   "last_sent_message_id": 2061,
   "last_sent_date": "2026-11-04",
   "last_sent_verdict": "소프트웨어 상대우위 — 하드웨어 로테이션 약화",
