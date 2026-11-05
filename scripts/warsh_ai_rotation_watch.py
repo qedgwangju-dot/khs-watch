@@ -71,23 +71,24 @@ def parse_independent_history(raw):
         raise RuntimeError(f'외부 마감가격 제공처: 유효 일봉 {len(out)}개로 부족')
     return out
 
-def independent_series(symbol):
+def independent_series(symbol, now=None):
     group = 'etf' if symbol in {'SOXX', 'IGV'} else 'stocks'
     url = f'https://stockanalysis.com/{group}/{symbol.lower()}/history/'
     raw = fetch(url)
-    # A vendor may expose today's intraday bar in its "history" table.
-    # Do not call it an independently confirmed settlement when its own header
-    # says the market is still open.
     headline = html.unescape(re.sub(r'<[^>]+>', ' ', raw))
     headline = re.sub(r'\s+', ' ', headline)
     before_table = headline.split('Historical Data', 1)[0]
     series = parse_independent_history(raw)
-    latest_date = max(series)
-    ny_now = datetime.now(NY)
-    # A cached page may still say "Market open" even when fetched the next day.
-    # Its intraday bar must never be accepted as a finalized close.
-    if 'market open' in before_table.lower():
-        raise DataNotReady(f'{symbol} 외부 제공처의 마지막 행이 장중 값(Market open) — 확정종가 게시 대기')
+    ny_now = now or datetime.now(NY)
+    today = ny_now.date().isoformat()
+    unfinished_session = (ny_now.hour < 16 or (ny_now.hour == 16 and ny_now.minute < 45))
+    # A live quote may appear as the newest history-table row during market
+    # hours. Exclude only that SAME-DAY row; preserve the previous completed
+    # session, so every intraday poll is not needlessly suppressed.
+    if today in series and ('market open' in before_table.lower() or unfinished_session):
+        del series[today]
+    if len(series) < 7:
+        raise DataNotReady(f'{symbol} 외부 제공처 장중값 제외 후 확정 일봉 부족')
     return series, url
 
 def yahoo_series(symbol, now=None):
@@ -582,6 +583,25 @@ def self_test():
     assert displayed_signature(updated) != original, 'visible price revision must change signature'
     updated['relative_5d'] = out['relative_5d'] + 0.000001
     assert displayed_signature(updated) == original, 'sub-decimal price noise must not trigger correction'
+    # Preserve the previous completed close during an open U.S. trading day.
+    live_history = ('SOXX · Nov 5, 2026, 10:15 AM EST - Market open '
+                    'Historical Data ' + ' '.join(
+                        f"{label} 1.00 1.10 0.95 1.02 1.02 +2.0% 123,456"
+                        for label in ('Nov 5, 2026','Nov 4, 2026','Nov 3, 2026',
+                                      'Nov 2, 2026','Oct 30, 2026',
+                                      'Oct 29, 2026','Oct 28, 2026',
+                                      'Oct 27, 2026')
+                    ) + ' Data Source: S&P')
+    saved_fetch = globals()['fetch']
+    try:
+        globals()['fetch'] = lambda url,timeout=25: live_history
+        closed_bars, _ = independent_series(
+            'SOXX', now=datetime(2026,11,5,10,20,tzinfo=NY))
+        assert '2026-11-05' not in closed_bars
+        assert max(closed_bars) == '2026-11-04'
+        assert len(closed_bars) == 7
+    finally:
+        globals()['fetch'] = saved_fetch
     # Official SOXX 3:1 split effective 2026-11-05: two vendors can differ
     # 3x on pre-split history. Normalize price basis, NOT the alert threshold.
     split_dates = ['2026-10-28','2026-10-29','2026-10-30',
