@@ -1,18 +1,18 @@
 {
-  "official_date": "20261104",
+  "official_date": "20261105",
   "rate_values": {
-    "date": "20261104",
+    "date": "20261105",
     "cp": 3.87,
     "cd": 3.34,
-    "corp": 4.4,
-    "gov": 3.714,
+    "corp": 4.358,
+    "gov": 3.669,
     "cp_cd_bp": 53.0,
-    "aa_spread_bp": 68.6,
+    "aa_spread_bp": 68.9,
     "observed_rank": 2
   },
-  "fingerprint": "df2d98adbf102e3c678b6c2e22539d019ce503904439b0f8cbc44286d40d6e5d",
+  "fingerprint": "6a36b5811a431e731c13c84f7fa5ef464d34795ccaea291cb482dacb42f06427",
   "alert_rank": 2,
-  "verified_at_kst": "2026-11-05T02:12:08+09:00",
+  "verified_at_kst": "2026-11-06T02:22:44+09:00",
   "source": "https://ecos.bok.or.kr/#/SearchStat",
   "stat_code": "817Y002",
   "codes": {
