@@ -202,6 +202,37 @@ class TwoColorTests(unittest.TestCase):
         self.assertIn('공습', html.unescape(text))
         self.assertEqual(receipt['alert_sha256'], hashlib.sha256(text.strip().encode()).hexdigest())
 
+    def test_saved_run_794_mixed_headlines_keep_market_and_outlook_as_context(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures' /
+                              'war_mixed_headlines_42017880202.json').read_text(encoding='utf-8'))
+        semantic_alert = base64.b64decode(fixture['semantic_alert_utf8_base64']).decode('utf-8')
+        semantic_evidence = json.loads(base64.b64decode(fixture['semantic_evidence_utf8_base64']))
+        self.assertEqual(fixture['production_run_id'], '42017880202')
+        self.assertEqual(hashlib.sha256(semantic_alert.encode()).hexdigest(),
+                         fixture['semantic_proof']['alert_sha256'])
+        text, receipt = presentation.project(
+            stage, semantic_alert, semantic_evidence, fixture['semantic_proof'],
+            {'alert_utf8_base64': fixture['semantic_alert_utf8_base64'],
+             'evidence_utf8_base64': fixture['semantic_evidence_utf8_base64']})
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['classification_color'] for row in shown],
+                         ['red', None, 'red', None])
+        self.assertEqual([row['display_section'] for row in shown],
+                         ['core', 'context_reference', 'core', 'context_reference'])
+        self.assertTrue(all(not row['body_verified'] for row in shown))
+        self.assertIn('종전 기대감', html.unescape(text))
+        self.assertIn('공격·협상·봉쇄 유지 모두 난관', html.unescape(text))
+        self.assertIn('🔴 <b>공격·타격·확전·압박 관련:</b> 2건', text)
+        self.assertIn('<b>배경·시장 참고</b>', text)
+        self.assertNotEqual(receipt['alert_sha256'], fixture['original_delivery_alert_sha256'])
+        self.watch.ALERT.write_text(semantic_alert, encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(semantic_evidence, ensure_ascii=False), encoding='utf-8')
+        self.watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in shown]}), encoding='utf-8')
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.ALERT.read_text(encoding='utf-8'), text)
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
+
     def test_election_headline_with_separate_present_action_keeps_direction(self):
         cases = (
             ('중간선거 영향 속 이란 공습 재개', 'red'),
