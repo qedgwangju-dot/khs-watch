@@ -180,6 +180,39 @@ class TwoColorTests(unittest.TestCase):
         row = {'title_original': title, 'tags': ['정치일정']}
         self.assertEqual(presentation.direction(stage, row), 'red')
 
+    def test_saved_run_791_election_outlook_does_not_become_war_direction(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures' /
+                              'war_election_commentary_41960942520.json').read_text(encoding='utf-8'))
+        semantic_alert = base64.b64decode(fixture['semantic_alert_utf8_base64']).decode('utf-8')
+        semantic_evidence = json.loads(base64.b64decode(fixture['semantic_evidence_utf8_base64']))
+        self.assertEqual(hashlib.sha256(semantic_alert.encode()).hexdigest(),
+                         fixture['semantic_proof']['alert_sha256'])
+        text, receipt = presentation.project(
+            stage, semantic_alert, semantic_evidence, fixture['semantic_proof'],
+            {'alert_utf8_base64': fixture['semantic_alert_utf8_base64'],
+             'evidence_utf8_base64': fixture['semantic_evidence_utf8_base64']})
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual(len(shown), 4)
+        self.assertEqual([row['classification_color'] for row in shown], [None] * 4)
+        self.assertTrue(all(row['display_section'] == 'context_reference' for row in shown))
+        self.assertNotIn('이란·호르무즈', text)
+        self.assertNotIn('🔴', text)
+        self.assertNotIn('🟢', text)
+        self.assertIn('북미회담 영향은?', html.unescape(text))
+        self.assertIn('공습', html.unescape(text))
+        self.assertEqual(receipt['alert_sha256'], hashlib.sha256(text.strip().encode()).hexdigest())
+
+    def test_election_headline_with_separate_present_action_keeps_direction(self):
+        cases = (
+            ('중간선거 영향 속 이란 공습 재개', 'red'),
+            ('중간선거 전망 속 이란 공습 지시', 'red'),
+            ('중간선거 영향 속 미국·이란 회담 재개', 'green'),
+        )
+        for title, expected in cases:
+            with self.subTest(title=title):
+                row = {'title_original': title, 'title_ko': title, 'tags': ['정치일정']}
+                self.assertEqual(presentation.direction(stage, row), expected)
+
     def test_market_numbers_and_freshness_labels_preserved(self):
         (old, old_evidence, _), text, receipt = self.present()
         old_market = old.split('<b>시장 반응</b>', 1)[1].split('<b>투자 판정</b>', 1)[0].strip()

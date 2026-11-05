@@ -78,20 +78,25 @@ def _separate_attack_headline(title):
         r'(?:재개|감행|실시|시작).{0,12}(?:공습|공격|폭격|포격)', title))
 
 
-def _election_war_commentary(row, title, kind, color):
-    """Keep retrospective election remarks out of attack/easing directions."""
-    tags = {str(tag).strip() for tag in row.get('tags', [])}
-    return bool(
-        '정치일정' in tags and kind is None and not color
-        and re.search(r'중간선거|\bmidterms?\b', title, re.IGNORECASE)
-        and re.search(r'이란\s*전쟁|\bIran\s+war\b', title, re.IGNORECASE)
-        and re.search(r'원인|입장차|악영향|예상|불가피|후회|\b(?:blame|regret|expected)\b',
-                      title, re.IGNORECASE)
-        and not _active_adverse(title)
-        and not _separate_attack_headline(title)
-        and not re.search(r'재공습|공격\s*(?:예고|검토|계획)|\b(?:new|renewed)\s+attack\b',
-                          title, re.IGNORECASE)
-    )
+def _election_war_commentary(title):
+    """Keep election outlook and hypothetical war remarks out of directions."""
+    election = re.search(
+        r'중간선거|선거\s*참패|블루쓰나미|트럼프\s*레임덕|\bmidterms?\b',
+        title, re.IGNORECASE)
+    outlook = re.search(
+        r'원인|때문|입장차|악영향|영향은?|향방은?|예상|전망|가능성|불가피|후회|'
+        r'출구전략|\b(?:blame|regret|expected|outlook|possibility|impact)\b',
+        title, re.IGNORECASE)
+    if not (election and outlook) or _active_adverse(title) or _separate_attack_headline(title):
+        return False
+    # An election headline may also report a separate present action. Keep its
+    # direction; a forecast of an attack or a question about future talks is not
+    # such an action, regardless of broad tags inferred from a feed or body.
+    return not bool(re.search(
+        r'(?:공격|공습|폭격|포격|타격).{0,10}(?:예고|검토|계획|지시|명령|재개|감행|실시|발생|시작|했다)|'
+        r'(?:회담|협상|대화|휴전|정전).{0,10}(?:재개|개최|시작|합의|서명|추진|제안|확정)|'
+        r'\b(?:launched|ordered|resumed|struck|attacked|signed|agreed|met)\b',
+        title, re.IGNORECASE))
 
 
 def _explicit_easing_restoration(title):
@@ -142,7 +147,7 @@ def direction(stage, row):
     kind = stage.non_military_kind(row)
     color = stage.final_color(row)
     title = stage._headline(row)
-    if _election_war_commentary(row, title, kind, color):
+    if _election_war_commentary(title):
         return None
     # Action restraint is a cooling signal, not a confirmed attack. The
     # semantic stage may be yellow, but the two-color projection must never
@@ -245,8 +250,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         row = candidates[0]
         matched.append(row['id'])
         color = direction(stage, row)
-        commentary = _election_war_commentary(
-            row, stage._headline(row), stage.non_military_kind(row), stage.final_color(row))
+        commentary = _election_war_commentary(stage._headline(row))
         row['semantic_classification_color'] = row.get('classification_color')
         row['classification_color'] = color
         row['display_section'] = 'core' if color else ('context_reference' if commentary
@@ -260,8 +264,13 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             # even when the uniquely matched source is only market context.
             # Rebuild the reference heading from that matched article.
             election_commentary_reference |= commentary
-            label = html.escape('이란 전쟁 · 중간선거 관련 발언' if commentary
-                                else stage.topic_label(row) or '시장 참고', quote=False)
+            if commentary:
+                label = ('이란 전쟁 · 중간선거 관련 발언' if re.search(r'이란\s*전쟁|이란전쟁|\bIran\s+war\b',
+                                                            stage._headline(row), re.IGNORECASE)
+                         else '중간선거 · 전쟁·외교 전망')
+            else:
+                label = stage.topic_label(row) or '시장 참고'
+            label = html.escape(label, quote=False)
             suffix = block[0].split('</b>', 1)[1]
             first = f'<b>참고 {len(references) + 1}. {label}</b>' + suffix
             references.append([first] + block[1:])
