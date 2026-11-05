@@ -51,7 +51,7 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-11-05T15:38:20+09:00",
+    "updated_at_kst": "2026-11-06T00:27:33+09:00",
     "risk_score": 1,
     "grade_emoji": "🟡",
     "grade_label": "추가인상 가능성 유지",
@@ -107,14 +107,6 @@
       "e3dd585745902f51670b10c1ea04774cbec2d93af65070b72d2de41b530e2d70"
     ],
     "seen_policy_flags_by_day": {
-      "신현송|2026-10-22": [
-        "ai_long_rate_financing",
-        "fiscal_reversibility",
-        "fx_low_income_purchasing_power",
-        "inflation_upside",
-        "terminal_rate_openness",
-        "wealth_effect_reassessment"
-      ],
       "신현송|2026-10-23": [
         "fiscal_reversibility",
         "potential_growth_reassessment",
