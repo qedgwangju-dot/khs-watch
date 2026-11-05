@@ -901,11 +901,17 @@
       "source": "TrendForce Research",
       "published_kst": "2026-11-05T09:00:00+09:00",
       "first_seen_kst": "2026-11-05T18:31:21+09:00"
+    },
+    "6cb7e7aad97b5c678ed244f8": {
+      "title": "HBM Prices Seen Up 121% as SK Hynix Buyers Shift to 8-Hi - FourWeekMBA",
+      "source": "FourWeekMBA",
+      "published_kst": "2026-11-05T21:34:49+09:00",
+      "first_seen_kst": "2026-11-06T02:42:48+09:00"
     }
   },
-  "updated_at_kst": "2026-11-05T18:31:21+09:00",
-  "last_scan_count": 14,
-  "last_new_count": 2,
+  "updated_at_kst": "2026-11-06T02:42:48+09:00",
+  "last_scan_count": 15,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -965,20 +971,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-05T18:31:35+09:00",
+  "last_successful_delivery_kst": "2026-11-06T02:42:59+09:00",
   "telegram_message_ids": [
-    373
+    375
   ],
-  "telegram_message_id": 373,
+  "telegram_message_id": 375,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      373
+      375
     ],
-    "confirmed_at_kst": "2026-11-05T18:31:35+09:00",
-    "alert_signature": "8dd5ecdde10054ee7e94f94965651f1473b5bd3c551dbb3eb862b8050e468f97"
+    "confirmed_at_kst": "2026-11-06T02:42:59+09:00",
+    "alert_signature": "3e2590d435632512261530d8acb0c4cb348f0dc9e549c752fa04304f8ed29e15"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
