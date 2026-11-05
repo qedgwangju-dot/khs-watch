@@ -164,12 +164,27 @@ def _postwar_compromise_context(title):
     return bool(re.search(r'종전\s*후.{0,35}타협', title))
 
 
+def _hypothetical_war_options(title):
+    """A choice between future war paths is analysis until an action is reported."""
+    paired_options = re.search(
+        r'(?:종전|휴전|협상)(?:이냐|인가|일까).{0,16}'
+        r'(?:확전|공격|봉쇄)(?:이냐|인가|일까)?', title)
+    outlook = re.search(r'기로|갈림길|전망|가능성|선택', title)
+    present_action = re.search(
+        r'(?:확전|봉쇄).{0,10}(?:결정|선언|개시|실행|착수)|'
+        r'(?:공격|공습|폭격|포격).{0,10}(?:재개|감행|실시|시작)', title)
+    return bool(paired_options and outlook and not present_action
+                and not _separate_attack_headline(title) and not _active_adverse(title))
+
+
 def direction(stage, row):
     """Return a display color, or None for a neutral market reference."""
     kind = stage.non_military_kind(row)
     color = stage.final_color(row)
     title = stage._headline(row)
     if _election_war_commentary(title):
+        return None
+    if _hypothetical_war_options(title):
         return None
     # Action restraint is a cooling signal, not a confirmed attack. The
     # semantic stage may be yellow, but the two-color projection must never
@@ -280,9 +295,10 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         color = direction(stage, row)
         title = stage._headline(row)
         commentary = _election_war_commentary(title)
+        hypothetical = _hypothetical_war_options(title)
         postwar = (bool({str(tag).strip() for tag in row.get('tags', [])} & DIPLOMATIC_TAGS)
                    and _postwar_compromise_context(title))
-        context = commentary or postwar
+        context = commentary or hypothetical or postwar
         row['semantic_classification_color'] = row.get('classification_color')
         row['classification_color'] = color
         row['display_section'] = 'core' if color else ('context_reference' if context
@@ -306,6 +322,8 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                     label = '이란 전쟁 · 정치 발언'
             elif postwar:
                 label = '종전 후 타협 구상'
+            elif hypothetical:
+                label = '종전·확전 전망'
             else:
                 label = stage.topic_label(row) or '시장 참고'
             label = html.escape(label, quote=False)

@@ -265,6 +265,47 @@ class TwoColorTests(unittest.TestCase):
         self.assertEqual(self.watch.ALERT.read_text(encoding='utf-8'), text)
         self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
 
+    def test_saved_run_798_hypothetical_peace_or_escalation_is_context(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures' /
+                              'war_outlook_42023094034.json').read_text(encoding='utf-8'))
+        semantic_alert = base64.b64decode(fixture['semantic_alert_utf8_base64']).decode('utf-8')
+        semantic_evidence = json.loads(base64.b64decode(fixture['semantic_evidence_utf8_base64']))
+        self.assertEqual(fixture['production_run_id'], '42023094034')
+        self.assertEqual(hashlib.sha256(semantic_alert.encode()).hexdigest(),
+                         fixture['semantic_proof']['alert_sha256'])
+        text, receipt = presentation.project(
+            stage, semantic_alert, semantic_evidence, fixture['semantic_proof'],
+            {'alert_utf8_base64': fixture['semantic_alert_utf8_base64'],
+             'evidence_utf8_base64': fixture['semantic_evidence_utf8_base64']})
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual(len(shown), 2)
+        self.assertEqual([row['classification_color'] for row in shown], [None, 'red'])
+        self.assertEqual([row['display_section'] for row in shown],
+                         ['context_reference', 'core'])
+        self.assertEqual([row['body_verified'] for row in shown], [False, True])
+        self.assertIn('종전이냐 확전이냐', html.unescape(text))
+        self.assertIn('튀르키예', html.unescape(text))
+        self.assertIn('🔴 <b>공격·타격·확전·압박 관련:</b> 1건', text)
+        self.assertIn('<b>배경·시장 참고</b>', text)
+        self.assertIn('제목 기준·본문 미확인', text)
+        self.assertNotEqual(receipt['alert_sha256'], fixture['original_delivery_alert_sha256'])
+        self.watch.ALERT.write_text(semantic_alert, encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(semantic_evidence, ensure_ascii=False), encoding='utf-8')
+        self.watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in shown]}), encoding='utf-8')
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.ALERT.read_text(encoding='utf-8'), text)
+        self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
+
+    def test_peace_or_escalation_question_does_not_hide_a_separate_action(self):
+        cases = (
+            '종전이냐 확전이냐 기로…이란이 공격 재개',
+            '종전이냐 확전이냐 기로…이란이 확전 결정',
+        )
+        for title in cases:
+            with self.subTest(title=title):
+                self.assertEqual(presentation.direction(
+                    stage, {'title_original': title, 'tags': ['종전·협상', '확전']}), 'red')
+
     def test_election_headline_with_separate_present_action_keeps_direction(self):
         cases = (
             ('중간선거 영향 속 이란 공습 재개', 'red'),
