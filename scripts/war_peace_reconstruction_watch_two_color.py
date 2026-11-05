@@ -79,13 +79,14 @@ def _separate_attack_headline(title):
 
 
 def _election_war_commentary(title):
-    """Keep election outlook and hypothetical war remarks out of directions."""
+    """Keep electoral commentary and hypothetical war remarks out of directions."""
     election = re.search(
-        r'중간선거|선거\s*참패|블루쓰나미|트럼프\s*레임덕|\bmidterms?\b',
+        r'중간선거|선거\s*참패|블루쓰나미|트럼프\s*레임덕|'
+        r'차기\s*대선주자|대선주자|\bmidterms?\b',
         title, re.IGNORECASE)
     outlook = re.search(
         r'원인|때문|입장차|악영향|영향은?|향방은?|예상|전망|가능성|불가피|후회|'
-        r'출구전략|기대(?:감)?|청신호|갈림길|'
+        r'출구전략|기대(?:감)?|청신호|갈림길|비판|거리두기|'
         r'\b(?:blame|regret|expected|outlook|possibility|impact)\b',
         title, re.IGNORECASE)
     # A list of future options may mention a blockade without reporting a new
@@ -149,6 +150,20 @@ def _explicit_ceasefire_progress(title):
         r'(?:휴전|정전).{0,40}(?:확인|조율|협의|협력|합의|발효|연장|재개)', title))
 
 
+def _explicit_peace_negotiation(title):
+    """Recognize an active negotiation or proposal without implying a signed deal."""
+    if (_active_adverse(title) or _separate_attack_headline(title)
+            or re.search(r'종전\s*후', title)):
+        return False
+    return bool(re.search(
+        r'(?:종전|휴전|정전).{0,45}(?:초안.{0,12}협상|협상|제의|제안)|'
+        r'(?:협상|제의|제안).{0,45}(?:종전|휴전|정전)', title))
+
+
+def _postwar_compromise_context(title):
+    return bool(re.search(r'종전\s*후.{0,35}타협', title))
+
+
 def direction(stage, row):
     """Return a display color, or None for a neutral market reference."""
     kind = stage.non_military_kind(row)
@@ -175,6 +190,12 @@ def direction(stage, row):
     if kind in REFERENCE_KINDS:
         return None
     adverse = _active_adverse(title)
+    tags = {str(tag).strip() for tag in row.get('tags', [])}
+    # A hypothetical postwar compromise is context, not a current attack or a
+    # confirmed peace action. Preserve the exact headline and title-only label.
+    if (tags & DIPLOMATIC_TAGS and _postwar_compromise_context(title)
+            and not adverse and not _separate_attack_headline(title)):
+        return None
     # A headline-confirmed easing/restoration is green even if inherited
     # background tags would otherwise fall through to the red default. A
     # separate current attack or adverse clause still keeps the item red.
@@ -206,9 +227,9 @@ def direction(stage, row):
     # the source carries the explicit diplomacy tag and the headline reports
     # confirmation/coordination, use the approved green direction. Keep the
     # body-verification status visible; this is a headline-stage classification.
-    tags = {str(tag).strip() for tag in row.get('tags', [])}
     if (tags & DIPLOMATIC_TAGS and not adverse
-            and _explicit_ceasefire_progress(title)):
+            and (_explicit_ceasefire_progress(title)
+                 or _explicit_peace_negotiation(title))):
         return 'green'
     if re.search(r'공격.{0,12}(?:않겠|안\s*할|중단)|긴장\s*완화|'
                  r'\b(?:will not attack|de.escalat\w*)\b', title):
@@ -218,7 +239,7 @@ def direction(stage, row):
     return 'red'
 
 
-def _summary(colors, election_commentary_reference=False):
+def _summary(colors, background_reference=False):
     red, green = colors.count('red'), colors.count('green')
     lines = ['<b>투자 판정</b>']
     if red:
@@ -226,7 +247,7 @@ def _summary(colors, election_commentary_reference=False):
     if green:
         lines.append(f'🟢 <b>대화·협상·완화 관련:</b> {green}건')
     if not colors:
-        lines.append('방향성 기사 없음 · 배경·시장 참고만 확인' if election_commentary_reference
+        lines.append('방향성 기사 없음 · 배경·시장 참고만 확인' if background_reference
                      else '방향성 기사 없음 · 시장 참고 기사만 확인')
     lines.extend(('- <b>표시 기준:</b> 초록은 대화·협상·완화, 빨강은 공격·타격·공격 예고·결렬·압박',
                   '- <b>현재 단계:</b> 제안·발언·예고와 실제 합의·이행·공격 발생은 기사 문구로 구분',
@@ -246,7 +267,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                     if lines[i].startswith(('<b>시장 반응</b>', '<b>투자 판정</b>',
                                             '시장자료 확인 보류'))), len(lines))
     core, references, matched = [], [], []
-    election_commentary_reference = False
+    background_reference = False
     for n, start in enumerate(starts):
         end = starts[n + 1] if n + 1 < len(starts) else tail_at
         block = lines[start:end]
@@ -257,10 +278,14 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         row = candidates[0]
         matched.append(row['id'])
         color = direction(stage, row)
-        commentary = _election_war_commentary(stage._headline(row))
+        title = stage._headline(row)
+        commentary = _election_war_commentary(title)
+        postwar = (bool({str(tag).strip() for tag in row.get('tags', [])} & DIPLOMATIC_TAGS)
+                   and _postwar_compromise_context(title))
+        context = commentary or postwar
         row['semantic_classification_color'] = row.get('classification_color')
         row['classification_color'] = color
-        row['display_section'] = 'core' if color else ('context_reference' if commentary
+        row['display_section'] = 'core' if color else ('context_reference' if context
                                                       else 'market_reference')
         if color:
             first = re.sub(r'^[🔴🟢🟡]?\s*', MARKERS[color] + ' ', block[0])
@@ -270,11 +295,17 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             # The semantic block heading can carry an unrelated event label
             # even when the uniquely matched source is only market context.
             # Rebuild the reference heading from that matched article.
-            election_commentary_reference |= commentary
+            background_reference |= context
             if commentary:
-                label = ('이란 전쟁 · 중간선거 관련 발언' if re.search(r'이란\s*전쟁|이란전쟁|\bIran\s+war\b',
-                                                            stage._headline(row), re.IGNORECASE)
-                         else '중간선거 · 전쟁·외교 전망')
+                midterm = re.search(r'중간선거|\bmidterms?\b', title, re.IGNORECASE)
+                if midterm:
+                    label = ('이란 전쟁 · 중간선거 관련 발언' if re.search(
+                        r'이란\s*전쟁|이란전쟁|\bIran\s+war\b', title, re.IGNORECASE)
+                        else '중간선거 · 전쟁·외교 전망')
+                else:
+                    label = '이란 전쟁 · 정치 발언'
+            elif postwar:
+                label = '종전 후 타협 구상'
             else:
                 label = stage.topic_label(row) or '시장 참고'
             label = html.escape(label, quote=False)
@@ -299,9 +330,9 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         for block in core:
             output += block
     if references:
-        if election_commentary_reference:
+        if background_reference:
             output += ['<b>배경·시장 참고</b>',
-                       '중간선거 관련 발언은 새 공격·완화 행동을 입증하지 않음', '']
+                       '정치 발언·전망·구상은 현재 공격·완화 행동을 입증하지 않음', '']
         else:
             output += ['<b>시장 참고</b>', '시장 기사는 전쟁·완화 방향 표시에서 제외', '']
         for block in references:
@@ -309,7 +340,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
     tail = '\n'.join(lines[tail_at:]).split('<b>투자 판정</b>', 1)[0].rstrip()
     if tail:
         output += [tail, '']
-    output += [_summary(colors, election_commentary_reference)]
+    output += [_summary(colors, background_reference)]
     text = '\n'.join(output).strip() + '\n'
     visible = html.unescape(re.sub(r'<[^>]+>', '', text))
     if len(visible.encode('utf-16-le')) // 2 > 4000:
