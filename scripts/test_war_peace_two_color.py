@@ -1261,5 +1261,32 @@ class IranNoStrikeProjectionTests(unittest.TestCase):
         self.assertEqual(presentation.direction(stage, row), 'red')
 
 
+class Run801SavedInputTests(unittest.TestCase):
+    def test_reported_deal_review_and_election_commentary_keep_their_stages(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run801_saved_semantic_snapshot_42088307800.json')
+                             .read_text(encoding='utf-8'))
+        snapshot = fixture['semantic_snapshot']
+        proof = fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+        self.assertEqual(fixture['observed_delivered_colors'], ['red'] * 4)
+
+        text, receipt = presentation.project(
+            stage, alert_bytes.decode('utf-8'), json.loads(evidence_bytes),
+            proof, snapshot)
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['id'] for row in shown], fixture['selected_ids'])
+        self.assertEqual([row['classification_color'] for row in shown],
+                         ['red', 'green', None, 'red'])
+        self.assertEqual(shown[2]['display_section'], 'context_reference')
+        self.assertIn('🟢 <b>대화·협상·완화</b>', text)
+        self.assertIn('<b>배경·시장 참고</b>', text)
+        self.assertNotEqual(receipt['alert_sha256'],
+                            fixture['observed_delivered_alert_sha256'])
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

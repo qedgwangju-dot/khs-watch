@@ -86,7 +86,7 @@ def _election_war_commentary(title):
         title, re.IGNORECASE)
     outlook = re.search(
         r'원인|때문|입장차|악영향|영향은?|향방은?|예상|전망|가능성|불가피|후회|'
-        r'출구전략|기대(?:감)?|청신호|갈림길|비판|거리두기|'
+        r'출구전략|기대(?:감)?|청신호|갈림길|비판|거리\s*두(?:기|나|는|고)?|'
         r'\b(?:blame|regret|expected|outlook|possibility|impact)\b',
         title, re.IGNORECASE)
     # A list of future options may mention a blockade without reporting a new
@@ -157,7 +157,10 @@ def _explicit_peace_negotiation(title):
         return False
     return bool(re.search(
         r'(?:종전|휴전|정전).{0,45}(?:초안.{0,12}협상|협상|제의|제안)|'
-        r'(?:협상|제의|제안).{0,45}(?:종전|휴전|정전)', title))
+        r'(?:협상|제의|제안).{0,45}(?:종전|휴전|정전)|'
+        r'\b(?:review\w*|consider\w*|discuss\w*|draft\w*)\b.{0,80}'
+        r'\b(?:nuclear|peace|cease[- ]?fire)\s+(?:deal|proposal)s?\b',
+        title, re.IGNORECASE))
 
 
 def _postwar_compromise_context(title):
