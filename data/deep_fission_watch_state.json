@@ -231,6 +231,12 @@
       "form": "8-K",
       "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926117389/tm2627978d1_8k.htm"
     },
+    "0001104659-26-122741": {
+      "date": "2026-11-04",
+      "description": "10-Q",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926122741/tmb-20260930x10q.htm"
+    },
     "0001213900-22-027248": {
       "date": "2022-05-16",
       "description": "QUARTERLY REPORT",
@@ -344,8 +350,9 @@
     "nsda-approved:https://www.deepfission.com/newsroom/press-releases/detail/116/department-of-energy-approves-nuclear-safety-design-agreement-for-deep-fissions-gravity-reactor-designed-to-convert-to-commercial-operation",
     "prototype-canister-on-site:https://www.deepfission.com/newsroom/press-releases/detail/114/deep-fission-prototype-reactor-canister-arrives-at-kansas-site-advancing-reactor-proof-of-concept-program",
     "sec:0001104659-26-109201",
-    "sec:0001104659-26-117389"
+    "sec:0001104659-26-117389",
+    "sec:0001104659-26-122741"
   ],
-  "updated_at": "2026-10-20T19:59:04+00:00",
+  "updated_at": "2026-11-05T01:27:38+00:00",
   "version": 3
 }
