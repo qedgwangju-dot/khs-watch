@@ -1,6 +1,6 @@
 {
   "seen": {
-    "ICI|mmf": "1841d92f2edc1fe190b07f7c76c0915d38db7aa7480a95c0db558a5a9f9c3baa",
+    "ICI|mmf": "876122986710a6ba77188bd99df201ca95b2dd52365241173370cca9d1ae71e2",
     "FINRA|margin": "fb28725208f78a0b756a275d77ae7324df141c651ec725ecad69589b69fe1e20",
     "ICI|combined": "e4ad8f0997af70b4f96a31e7455dcb0b5d1c98da0510167a4e71388b415a8d8c",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
@@ -12,30 +12,30 @@
     "ICI|mmf": {
       "source": "ICI",
       "kind": "mmf",
-      "period": "October 28, 2026",
-      "published": "October 29, 2026",
+      "period": "November 04, 2026",
+      "published": "November 5, 2026",
       "url": "https://www.ici.org/research/stats/mmf",
       "horizon_source_url": "https://www.ici.org/mm_summary_data_2026.xls",
       "horizon_error": null,
       "metrics": {
-        "assets_trillion": 7.90128,
-        "weekly_change_bn": -43.29,
-        "assets_bn": 7901.28,
+        "assets_trillion": 8.01574,
+        "weekly_change_bn": 114.46,
+        "assets_bn": 8015.74,
         "asset_balance_horizons": {
           "m1": {
             "months_back": 1,
-            "target_date": "2026-09-28",
-            "anchor_date": "2026-09-23",
-            "end_date": "2026-10-28",
-            "change_bn": -35.437,
+            "target_date": "2026-10-04",
+            "anchor_date": "2026-09-30",
+            "end_date": "2026-11-04",
+            "change_bn": 124.471,
             "reason": null
           },
           "m3": {
             "months_back": 3,
-            "target_date": "2026-07-28",
-            "anchor_date": "2026-07-22",
-            "end_date": "2026-10-28",
-            "change_bn": 40.535,
+            "target_date": "2026-08-04",
+            "anchor_date": "2026-07-29",
+            "end_date": "2026-11-04",
+            "change_bn": 161.818,
             "reason": null
           }
         }
@@ -47,7 +47,7 @@
         "prose_level",
         "history_xls_crosschecked"
       ],
-      "fingerprint": "1841d92f2edc1fe190b07f7c76c0915d38db7aa7480a95c0db558a5a9f9c3baa"
+      "fingerprint": "876122986710a6ba77188bd99df201ca95b2dd52365241173370cca9d1ae71e2"
     },
     "FINRA|margin": {
       "source": "FINRA",
@@ -199,18 +199,18 @@
       "fingerprint": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
     }
   },
-  "updated_at_kst": "2026-11-05T04:52:04.604129+09:00",
+  "updated_at_kst": "2026-11-06T07:26:39.404626+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-11-04",
-    "sp500_last_value": 7699.1298828125,
+    "sp500_last_date": "2026-11-05",
+    "sp500_last_value": 7353.72998046875,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -1.53,
+    "sp500_drawdown_pct": -5.95,
     "hartnett_tracking_version": "2026-10-09-v1",
-    "hartnett_treasury_date": "2026-11-04",
-    "hartnett_10y_pct": 4.9,
-    "hartnett_10y_5d_bp": -15.0,
+    "hartnett_treasury_date": "2026-11-05",
+    "hartnett_10y_pct": 4.84,
+    "hartnett_10y_5d_bp": -14.0,
     "hartnett_bond_level": "below_5_30",
     "hartnett_bond_momentum": "neutral",
     "hartnett_fed_target_upper_pct": 4.0,
@@ -241,12 +241,12 @@
     "fund_horizon_summary_version": "2026-11-03-front-v1"
   },
   "factual_delivery_receipt": {
-    "timestamp_utc": "2026-11-04T19:53:22.216969+00:00",
-    "date_kst": "2026-11-05",
+    "timestamp_utc": "2026-11-05T22:28:05.789097+00:00",
+    "date_kst": "2026-11-06",
     "bot_username": "khs887900887900008879_bot",
     "message_ids": [
-      1940,
-      1941
+      2064,
+      2065
     ]
   }
 }
