@@ -5,10 +5,10 @@
     "ust2": 4.58,
     "ust10": 4.9,
     "ust30": 5.28,
-    "usdjpy": 158.34100341796875,
+    "usdjpy": 157.75900268554688,
     "us_jp_2y_spread": 2.689,
-    "usdjpy_daily_change_pct": -0.04418384293091745,
-    "boe_bank_rate": 3.75
+    "usdjpy_daily_change_pct": -0.27497727974665204,
+    "boe_bank_rate": 4.0
   },
   "active": {
     "jgb10:above:3.0": false,
@@ -34,32 +34,32 @@
     "ust10": "2026-11-04",
     "ust30": "2026-11-04",
     "usdjpy": "2026-11-05",
-    "boe_bank_rate": "2026-09-17"
+    "boe_bank_rate": "2026-11-05"
   },
   "central_bank_decisions": {
     "boe": {
-      "decision_date": "2026-09-17",
-      "rate": 3.75,
-      "action": "동결",
+      "decision_date": "2026-11-05",
+      "rate": 4.0,
+      "action": "인상",
       "vote": "7-2",
       "minority_count": null,
       "minority_action": null,
       "minority_rate": null,
       "cpi_rate": null,
       "cpi_period": null,
-      "next_due": "2026-11-05",
+      "next_due": "2026-12-17",
       "source": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/june-2026",
       "rate_page": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate"
     }
   },
   "classification": "미국 장기채 스트레스",
-  "updated_at_kst": "2026-11-05T18:55:02+09:00",
+  "updated_at_kst": "2026-11-06T02:36:20+09:00",
   "date_alignment": {
     "jgb2_date": "2026/11/4",
     "ust2_date": "2026-11-04",
     "same_2y_date": true,
     "latest_rate_date": "2026-11-04",
     "live_fx_signal_eligible": true,
-    "live_fx_timestamp_utc": "2026-11-05T09:55:20Z"
+    "live_fx_timestamp_utc": "2026-11-05T17:35:21Z"
   }
 }
