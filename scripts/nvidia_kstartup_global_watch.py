@@ -417,7 +417,7 @@ def main():
             ])
             if item["stage"] <= 2:
                 lines.append("• 주의: 간담회·초청·논의는 투자·수주·해외 고객 계약이 아닙니다.")
-            if date and item.get("published_kst"):
+            if item.get("published_kst"):
                 lag = int((now - dt.datetime.fromisoformat(item["published_kst"])).total_seconds() // 60)
                 if lag > 90:
                     lines.append(f"• 검색·감지 시차: 약 {lag // 60}시간 {lag % 60}분")
