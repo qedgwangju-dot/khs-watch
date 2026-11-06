@@ -1,7 +1,7 @@
 {
   "events": {},
-  "last_checked_utc": "2026-11-06T05:15:44.266500+00:00",
-  "last_complete_news_scan_utc": "2026-11-06T05:15:44.266500+00:00",
+  "last_checked_utc": "2026-11-06T05:22:35.986934+00:00",
+  "last_complete_news_scan_utc": "2026-11-06T05:22:35.986934+00:00",
   "last_scan_errors": [],
   "manual_claim": {
     "situational:user-submitted-x:2118364772370427985:2026-11-06": {
@@ -10,7 +10,33 @@
       "sent_at_utc": "2026-11-06T05:06:27.163489+00:00"
     }
   },
-  "ownership_last_checked_utc": "2026-11-06T05:15:44.266500+00:00",
-  "ownership_seen": {},
+  "ownership_delivery_initialized": true,
+  "ownership_last_checked_utc": "2026-11-06T05:22:35.986934+00:00",
+  "ownership_seen": {
+    "0000919574-26-004796": {
+      "baseline": true
+    },
+    "0000935836-25-000543": {
+      "baseline": true
+    },
+    "0000935836-25-000638": {
+      "baseline": true
+    },
+    "0000935836-26-000303": {
+      "baseline": true
+    },
+    "0000935836-26-000334": {
+      "baseline": true
+    },
+    "0000935836-26-000416": {
+      "baseline": true
+    },
+    "0000935836-26-000468": {
+      "baseline": true
+    },
+    "0000935836-26-000500": {
+      "baseline": true
+    }
+  },
   "schema": 1
 }
