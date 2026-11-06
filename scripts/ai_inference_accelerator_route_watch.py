@@ -488,10 +488,19 @@ def semantic_official_snapshot(name: str, text: str) -> dict:
 
         return {
             "kind": "openai_gpt_6_1_sol",
-            "ultrafast_supported": bool(re.search(
-                r"for\s+the\s+fastest\s+response\s+speeds.{0,120}"
-                r"use\s+ultrafast\s+mode\s+with\s+model.{0,35}gpt-6\.1-sol", normalized, re.I,
-            )),
+            # Model-specific Ultrafast pricing is explicit support evidence.
+            # Older model pages described "fastest response speeds" instead.
+            "ultrafast_supported": bool(
+                re.search(
+                    r"for\s+the\s+fastest\s+response\s+speeds.{0,120}"
+                    r"use\s+ultrafast\s+mode\s+with\s+model.{0,35}gpt-6\.1-sol",
+                    normalized, re.I,
+                )
+                or re.search(
+                    r"Ultrafast\s+mode\s+prices?\s+are\s+[0-9.]+x\s+Standard",
+                    normalized, re.I,
+                )
+            ),
             "fast_mode_mentioned": "fast mode" in low,
             "input_usd_per_mtok": float(price_match.group(1)),
             "cached_input_usd_per_mtok": float(price_match.group(2)),
@@ -527,6 +536,7 @@ def _semantic_digest(semantic: dict) -> str:
 
 def official_page_snapshots() -> dict[str, dict]:
     out: dict[str, dict] = {}
+    page_texts: dict[str, str] = {}
     for name, url in OFFICIAL_PAGES.items():
         if name in IMMUTABLE_OFFICIAL_REFERENCE_PAGES:
             semantic = {"kind": "immutable_reference", "name": name, "url": url}
@@ -546,6 +556,7 @@ def official_page_snapshots() -> dict[str, dict]:
             raw = fetch_bytes(url).decode("utf-8", "ignore")
             primary_text = extract_primary_text(raw)
             semantic = semantic_official_snapshot(name, primary_text)
+            page_texts[name] = primary_text
         except Exception as exc:
             print(f"ai_inference_route_official_page_skip={name}: {type(exc).__name__}: {exc}")
             continue
@@ -564,6 +575,37 @@ def official_page_snapshots() -> dict[str, dict]:
     model = out["OpenAI GPT-6.1 Sol 모델"]["semantic"]
     if guide.get("gpt_6_1_sol_ultrafast_supported") != model.get("ultrafast_supported"):
         raise RuntimeError("OpenAI 공식 문서 간 Sol Ultrafast 지원 상태 불일치")
+
+    # The model page may list model-specific Ultrafast pricing without
+    # repeating the residency sentence. Do not mistake omitted wording for
+    # removed support, and never waive the second official-source check.
+    if guide.get("gpt_6_1_sol_ultrafast_supported") and not model.get("sol_ultrafast_eu_residency"):
+        model_text = page_texts.get("OpenAI GPT-6.1 Sol 모델", "")
+        if re.search(
+            r"(?:gpt-6\.1\s+sol.{0,90}ultrafast|ultrafast.{0,90}gpt-6\.1\s+sol)"
+            r".{0,120}\b(?:not\s+supported|unavailable|not\s+available)\b",
+            model_text, re.I,
+        ):
+            raise RuntimeError("GPT-6.1 Sol 모델 공식 문서의 Ultrafast 미지원 문구 — 송출 차단")
+        policy_url = "https://developers.openai.com/api/docs/guides/your-data"
+        try:
+            policy_text = extract_primary_text(fetch_bytes(policy_url).decode("utf-8", "ignore"))
+        except Exception as exc:
+            raise RuntimeError("OpenAI 데이터 상주 공식자료 접근 실패 — 송출 차단") from exc
+        if not re.search(
+            r"Ultrafast\s+mode\s+for\s+GPT-6\.1\s+Sol\s+supports\s+US\s+and\s+EU"
+            r"\s+data\s+residency\s+and\s+global\s+processing",
+            policy_text, re.I,
+        ):
+            raise RuntimeError("OpenAI 데이터 상주 정책의 Sol Ultrafast EU 지원 교차확인 실패")
+        # Keep the existing semantic keys and successful baseline intact:
+        # corroboration changes the evidence, not the actual feature status.
+        model["sol_ultrafast_eu_residency"] = True
+        model_page = out["OpenAI GPT-6.1 Sol 모델"]
+        model_page["digest"] = _semantic_digest(model)
+        model_page["material"] = json.dumps(model, ensure_ascii=False, sort_keys=True)
+        print("ai_inference_sol_residency_verified=OpenAI Ultrafast guide + official data policy")
+
     if guide.get("gpt_6_1_sol_ultrafast_supported") and (
         not guide.get("sol_ultrafast_eu_residency")
         or not model.get("sol_ultrafast_eu_residency")
