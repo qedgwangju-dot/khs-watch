@@ -8,7 +8,7 @@
     "raw_items": 0,
     "stale_backfill_suppressed": 0
   },
-  "news_watermark_utc": "2026-11-06T04:38:24.042398+00:00",
+  "news_watermark_utc": "2026-11-06T04:41:20.385283+00:00",
   "official_pages": {
     "OpenAI GPT-5.6 Sol Ultrafast 미리보기": {
       "candidate_count": 0,
@@ -25,25 +25,10 @@
       "url": "https://openai.com/index/previewing-ultrafast/"
     },
     "OpenAI GPT-6.1 Sol 모델": {
-      "candidate_count": 1,
-      "candidate_digest": "d2c543227e4a480a66b335445d9908833f0c86b97b45ae23cdcef41d3d47dd63",
-      "candidate_first_seen_at": "2026-11-06T04:38:24.042398+00:00",
-      "candidate_semantic": {
-        "batch_flex_discount_pct": 50.0,
-        "cache_write_usd_per_mtok": 2.5,
-        "cached_input_usd_per_mtok": 0.1,
-        "context_window": 1050000,
-        "fast_mode_mentioned": true,
-        "fast_multiplier_x": 2.0,
-        "input_usd_per_mtok": 2.0,
-        "kind": "openai_gpt_6_1_sol",
-        "max_output_tokens": 128000,
-        "output_usd_per_mtok": 10.0,
-        "sol_ultrafast_eu_residency": true,
-        "ultrafast_multiplier_x": 6.0,
-        "ultrafast_supported": true,
-        "us_data_residency": false
-      },
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "candidate_semantic": null,
       "digest": "42a8024c578fcf82a77815564efa1630cf736ebfcde5bbe0b0195dd0747e0167",
       "semantic": {
         "batch_flex_discount_pct": 50.0,
@@ -160,5 +145,5 @@
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9KcU1JWEFGdV96M2o5aF9HdU14SzRNTU5PVWh3RnRQUUJTa3RZT05YZkJNTHZ0RnpveXBhODdoSnNxcU1DSmg2dUFpWGV6c2FPR1FoV3B4QnB2MWJkXzhNbWdTdjVZaW5adDV2SlFYWXAwQQ?oc=5"
     }
   },
-  "updated_at_kst": "2026-11-06T13:38:24+09:00"
+  "updated_at_kst": "2026-11-06T13:41:20+09:00"
 }
