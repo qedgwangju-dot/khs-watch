@@ -186,6 +186,53 @@ def main():
     assert "당일·주간·당월·최근 3개월 매매 방향" not in full_with_history or "매매 방향 · 당일" in full_with_history
     assert full_with_history.index("매매 방향") < full_with_history.index("업종별 매수 순위")
 
+
+    # 2026-11-05 observed traded names: no material sector left unnamed.
+    november_tickers = ("AMD CBRS COIN GOOG NVDA RKLB SPCX TWST TXG VCYT "
+                       "AVAV JOBY KTOS LUNR IAM SCTX TEM WGS MELI "
+                       "AVGO BLSH CRWV LLY TER BYDDY GRMN HEI HONA CDNA "
+                       "PSNL BMNR SPOT TSM").split()
+    missing=[ticker for ticker in november_tickers
+             if sector.classify(ticker)[0] == sector.SECTOR_UNKNOWN]
+    assert not missing, f"Sector classification missing: {missing}"
+    assert sector.classify("SPCX")[0]=="우주·방산"
+    assert sector.classify("AVGO")[0]=="반도체·자동화 장비"
+
+    # Broadcom disposal can outweigh Nvidia buying within the *same* sector.
+    compact_rows=[
+        row("ARKK","NVDA","매수",100,"2026-11-05"),
+        row("ARKK","SPCX","매수",250,"2026-11-05"),
+        row("ARKK","AVGO","매도",300,"2026-11-05"),
+        row("ARKW","CRWV","매도",100,"2026-11-05"),
+    ]
+    compact_prices={
+        "NVDA":{"close":200,"source":"test"},
+        "SPCX":{"close":100,"source":"test"},
+        "AVGO":{"close":200,"source":"test"},
+        "CRWV":{"close":90,"source":"test"},
+    }
+    compact=watch.build_brief(compact_rows,"2026-11-05",rate=1300,
+                               basis="테스트 기준",prices=compact_prices,
+                               history=[],digest="test-brief")
+    assert compact.startswith("<b>[ARK 업종 매매 방향 | 2026-11-05]</b>")
+    assert "집중 매수 업종" in compact and "집중 매도 업종" in compact
+    assert "순매도: 반도체·자동화 장비" in compact
+    assert "순매수: 우주·방산" in compact
+    assert "주간: 판정 보류(1/4일)" in compact
+    assert "당월: 판정 보류(1/4일)" in compact
+    assert "3개월: 판정 보류" in compact
+    assert "매수 · 펀드별 거래" not in compact
+    assert "합산 매수 종목 순위" not in compact
+    assert "보강본" not in compact
+    assert len(compact)<2200, len(compact)
+
+    partial_brief=watch.build_brief(compact_rows,"2026-11-05",
+                            rate=1300,prices={"SPCX":compact_prices["SPCX"]},
+                            history=[],digest="test-brief-incomplete")
+    assert "전체 방향 보류" in partial_brief
+    assert "업종 판정" not in partial_brief or "업종 미분류" in partial_brief
+    assert "종가 확인 1/4행" in partial_brief
+
     print("ARK sector ranking and rolling-mean regression checks passed.")
 
 
