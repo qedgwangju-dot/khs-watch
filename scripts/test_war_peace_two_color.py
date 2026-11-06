@@ -203,6 +203,44 @@ class TwoColorTests(unittest.TestCase):
         self.assertIn('공습', html.unescape(text))
         self.assertEqual(receipt['alert_sha256'], hashlib.sha256(text.strip().encode()).hexdigest())
 
+    def test_natural_807_commentary_and_pending_decision_are_context(self):
+        # Exact pre-presentation inputs from naturally scheduled run 42173758170.
+        # All three articles were title-only; the first two were sent as red.
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures' /
+                              'war_live_headlines_42173758170.json').read_text(encoding='utf-8'))
+        snapshot = fixture['semantic_snapshot']
+        semantic_alert = base64.b64decode(snapshot['alert_utf8_base64']).decode('utf-8')
+        semantic_evidence = json.loads(base64.b64decode(snapshot['evidence_utf8_base64']))
+        self.assertEqual(hashlib.sha256(semantic_alert.encode()).hexdigest(),
+                         fixture['semantic_proof']['alert_sha256'])
+        self.assertEqual(hashlib.sha256(base64.b64decode(snapshot['evidence_utf8_base64'])).hexdigest(),
+                         fixture['semantic_proof']['evidence_sha256'])
+        text, receipt = presentation.project(
+            stage, semantic_alert, semantic_evidence, fixture['semantic_proof'], snapshot)
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['id'] for row in shown], fixture['article_ids'])
+        self.assertEqual([row['classification_color'] for row in shown], [None, None, 'red'])
+        self.assertEqual([row['display_section'] for row in shown],
+                         ['context_reference', 'context_reference', 'core'])
+        self.assertTrue(all(not row['body_verified'] for row in shown))
+        self.assertIn('중간선거 참패가 이란전쟁을 바꿀까', html.unescape(text))
+        self.assertIn('이란 전쟁 논의', html.unescape(text))
+        self.assertIn('7개 조건 수용 전엔 호르무즈 봉쇄 못 풀어', html.unescape(text))
+        self.assertIn('🔴 <b>공격·타격·확전·압박 관련:</b> 1건', text)
+        self.assertIn('<b>배경·시장 참고</b>', text)
+        self.assertEqual(text.count('제목 기준·본문 미확인'), 3)
+        self.assertNotEqual(receipt['alert_sha256'], fixture['original_delivery_alert_sha256'])
+        self.watch.ALERT.write_text(semantic_alert, encoding='utf-8')
+        self.watch.AUDIT.write_text(json.dumps(semantic_evidence, ensure_ascii=False), encoding='utf-8')
+        self.watch.PENDING.write_text(json.dumps({'ids': fixture['article_ids']}), encoding='utf-8')
+        self.presenter.verify_alert()
+        self.assertEqual(self.watch.ALERT.read_text(encoding='utf-8'), text)
+        self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
+
+    def test_pending_decision_does_not_hide_separate_attack(self):
+        title = '트럼프, 안보회의서 이란 전쟁 논의…"곧 결정"·이란 공습 지시'
+        self.assertEqual(presentation.direction(stage, {'title_original': title}), 'red')
+
     def test_saved_run_794_mixed_headlines_keep_market_and_outlook_as_context(self):
         fixture = json.loads((Path(__file__).parent / 'test_fixtures' /
                               'war_mixed_headlines_42017880202.json').read_text(encoding='utf-8'))

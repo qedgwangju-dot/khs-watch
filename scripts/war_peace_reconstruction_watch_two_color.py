@@ -85,7 +85,7 @@ def _election_war_commentary(title):
         r'차기\s*대선주자|대선주자|\bmidterms?\b',
         title, re.IGNORECASE)
     outlook = re.search(
-        r'원인|때문|입장차|악영향|영향은?|향방은?|예상|전망|가능성|불가피|후회|'
+        r'원인|때문|입장차|악영향|영향은?|향방은?|바꿀까|달라질까|예상|전망|가능성|불가피|후회|'
         r'출구전략|기대(?:감)?|청신호|갈림길|비판|거리\s*두(?:기|나|는|고)?|'
         r'\b(?:blame|regret|expected|outlook|possibility|impact)\b',
         title, re.IGNORECASE)
@@ -181,8 +181,12 @@ def _hypothetical_war_options(title):
 
 
 def _pending_iran_war_decision(title):
-    return bool(re.search(r'\biran war decision coming\s+["“]?soon\b', title)
+    return bool(re.search(r'\biran war decision coming\s+["“]?soon\b|'
+                          r'이란\s*전쟁.{0,20}논의.{0,20}곧\s*결정', title)
                 and not _separate_attack_headline(title)
+                and not re.search(
+                    r'(?:공격|공습|폭격|포격|타격).{0,10}'
+                    r'(?:지시|명령|예고|계획|재개|감행|실시|발생|시작|했다)', title)
                 and not _active_adverse(title))
 
 
