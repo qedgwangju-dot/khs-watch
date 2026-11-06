@@ -84,6 +84,38 @@ class WarshWorkflowCadenceTests(unittest.TestCase):
         self.assertTrue(should)
         self.assertIn('보조 실행',reason)
 
+    def test_failed_monitor_retries_after_cooldown_even_if_old_success_is_fresh(self):
+        old_success = self.now - dt.timedelta(minutes=45)
+        failed_at = self.now - dt.timedelta(minutes=24)
+        should, lag, reason = cadence.due_decision(
+            'workflow_run', old_success, self.now, 55,
+            last_monitor_attempt_at=failed_at,
+            last_monitor_attempt_conclusion='failure',
+            attempt_cooldown_minutes=20,
+        )
+        self.assertTrue(should)
+        self.assertAlmostEqual(lag, 24.0)
+        self.assertIn('복구', reason)
+
+    def test_failed_monitor_recent_attempt_still_throttled(self):
+        should, lag, reason = cadence.due_decision(
+            'workflow_run', self.now - dt.timedelta(minutes=80), self.now, 55,
+            last_monitor_attempt_at=self.now - dt.timedelta(minutes=10),
+            last_monitor_attempt_conclusion='failure',
+        )
+        self.assertFalse(should)
+        self.assertAlmostEqual(lag, 10.0)
+
+    def test_active_monitor_never_races_backup_after_long_runtime(self):
+        should, lag, reason = cadence.due_decision(
+            'workflow_run', self.now - dt.timedelta(minutes=95), self.now, 55,
+            last_monitor_attempt_at=self.now - dt.timedelta(minutes=22),
+            last_monitor_attempt_conclusion=None,
+        )
+        self.assertFalse(should)
+        self.assertIsNone(lag)
+        self.assertIn('완료 확인 전', reason)
+
     def test_primary_schedule_runs_even_after_failed_attempt(self):
         should, lag, reason = cadence.due_decision(
             'schedule', None, self.now, schedule_expr='26 * * * *',
