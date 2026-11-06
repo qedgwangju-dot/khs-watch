@@ -23,26 +23,26 @@
     "employment_soft": false,
     "payroll_change_k": 165.0,
     "unemployment_rate": 4.1,
-    "h8": "신용 확장",
+    "h8": "중립",
     "sloos": "혼합/중립",
     "real_pce_3m_ann": 2.9658550742191814,
     "real_pce_date": "2026-09-01",
-    "bei5y": 2.26,
-    "bei5y_10d_bp": -19.00000000000004,
-    "bei_date": "2026-11-05"
+    "bei5y": 2.29,
+    "bei5y_10d_bp": -18.999999999999993,
+    "bei_date": "2026-11-06"
   },
   "verdict": "에너지 충격 경보 기준 미충족",
   "oil_rates": {
-    "date": "2026-11-04",
+    "date": "2026-11-05",
     "observations": 63,
-    "corr_3m": 0.5194867385109035,
+    "corr_3m": 0.5034155219794204,
     "corr_band": "경계",
-    "beta_bp_per_1pct": 0.358986727151665,
+    "beta_bp_per_1pct": 0.33216446013798023,
     "beta_hot": false,
-    "wti": 88.12000274658203,
-    "wti_move_pct": -14.263471693743423,
-    "dgs10": 4.9,
-    "dgs10_move_bp": -14.999999999999947,
+    "wti": 90.5199966430664,
+    "wti_move_pct": -11.254905251895675,
+    "dgs10": 4.84,
+    "dgs10_move_bp": -14.000000000000057,
     "move_days": 5,
     "measurement_basis": "WTI 선물 완료 일봉·FRED DGS10 공통 거래일 자체 계산",
     "wti_url": "https://finance.yahoo.com/quote/CL=F/",
@@ -50,7 +50,7 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-11-06T21:01:57.892931+00:00",
+    "date": "2026-11-06T22:19:42.195264+00:00",
     "meeting_date": null,
     "hike25_prob": null,
     "extra_bp": null,
@@ -60,5 +60,5 @@
     "fresh": false
   },
   "oil_rates_verdict": "유가·장기금리 연결 경계 — 단순 동행인지 정책 전이인지 확인",
-  "updated_at_utc": "2026-11-06T21:01:59.068142+00:00"
+  "updated_at_utc": "2026-11-06T22:19:42.994067+00:00"
 }
