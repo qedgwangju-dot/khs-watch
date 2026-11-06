@@ -48,7 +48,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          # Full repository history caused multi-minute checkout delays.
+          # The 13F state comparer only needs HEAD; the commit step fetches
+          # origin/main explicitly before rebasing.
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v5
