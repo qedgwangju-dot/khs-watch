@@ -200,6 +200,68 @@ def align_official_soxx_split_basis(independent, yahoo):
     }
 
 
+def _soxx_split_day_close_references():
+    """Get 2026-11-05 SOXX close only from dated public sources."""
+    proven={}
+    url=('https://api.nasdaq.com/api/quote/SOXX/historical'
+         '?assetclass=etf&fromdate=2026-11-05&todate=2026-11-05&limit=5')
+    try:
+        payload=json.loads(fetch(url,timeout=12))
+        rows=(((payload.get('data') or {}).get('tradesTable') or {}).get('rows') or [])
+        for row in rows:
+            if str(row.get('date') or '').strip() in ('11/05/2026','Nov 5, 2026','Nov 05, 2026'):
+                value=float(str(row.get('close') or '').replace('$','').replace(',',''))
+                if 0<value<2000:
+                    proven['Nasdaq historical']=value
+                    break
+    except (ValueError,TypeError,KeyError,OSError,RuntimeError):
+        pass
+    url='https://www.schwab.wallst.com/Prospect/Research/etfs/performance.asp?symbol=soxx'
+    try:
+        raw=fetch(url,timeout=12)
+        plain=html.unescape(re.sub(r'<[^>]+>',' ',raw))
+        plain=re.sub(r'\s+',' ',plain)
+        match=re.search(r'Last Price.{0,350}?(\$\s*[\d,]+\.\d{2})'
+                        r'.{0,700}?As of close\s+11/05/2026\b',plain,re.I)
+        if match:
+            value=float(match.group(1).replace('$','').replace(',','').strip())
+            if 0<value<2000:
+                proven['Schwab dated close']=value
+    except (ValueError,TypeError,OSError,RuntimeError):
+        pass
+    return proven
+
+
+def _soxx_split_exdate_consensus(primary,secondary,reference):
+    """Resolve a split-day outlier only with date-specific third-source proof."""
+    key=SOXX_SPLIT_EX_DATE
+    a=(primary.get('SOXX') or {}).get(key)
+    b=(secondary.get('SOXX') or {}).get(key)
+    if a is None or b is None:
+        return primary,secondary,None
+    a,b=float(a),float(b)
+    if a<=0 or b<=0:
+        raise RuntimeError('SOXX split-day invalid close')
+    if abs(a-b)/a*10000<=MAX_SOURCE_GAP_BP:
+        return primary,secondary,None
+    match_a=[name for name,v in (reference or {}).items()
+             if float(v)>0 and abs(float(v)-a)/float(v)*10000<=MAX_SOURCE_GAP_BP]
+    match_b=[name for name,v in (reference or {}).items()
+             if float(v)>0 and abs(float(v)-b)/float(v)*10000<=MAX_SOURCE_GAP_BP]
+    if bool(match_a)==bool(match_b):
+        raise RuntimeError('SOXX ex-date close unverified; original alert remains blocked')
+    left={k:dict(v) for k,v in primary.items()}
+    right={k:dict(v) for k,v in secondary.items()}
+    if match_b:
+        left['SOXX'][key]=b
+        accepted,outlier,proof=b,a,match_b
+    else:
+        right['SOXX'][key]=a
+        accepted,outlier,proof=a,b,match_a
+    return left,right,{'date':key,'accepted':accepted,'outlier':outlier,
+                       'independent_source':proof,'max_gap_bp':MAX_SOURCE_GAP_BP}
+
+
 def build_snapshot(independent, yahoo, now=None):
     ny_now = now or datetime.now(NY)
     syms = set(SYMBOLS.values())
@@ -317,11 +379,24 @@ def build_snapshot(independent, yahoo, now=None):
     }
 
 def snapshot():
-    independent, yahoo = {}, {}
-    for symbol in SYMBOLS.values():
-        independent[symbol], _ = independent_series(symbol)
-        yahoo[symbol] = yahoo_series(symbol)
-    return build_snapshot(independent, yahoo)
+    independent,yahoo={},{}
+    for ticker in SYMBOLS.values():
+        independent[ticker],_=independent_series(ticker)
+        yahoo[ticker]=yahoo_series(ticker)
+    audit=None
+    key=SOXX_SPLIT_EX_DATE
+    a=(independent.get('SOXX') or {}).get(key)
+    b=(yahoo.get('SOXX') or {}).get(key)
+    if a is not None and b is not None and a>0 and b>0:
+        if abs(a-b)/a*10000>MAX_SOURCE_GAP_BP:
+            independent,yahoo,audit=_soxx_split_exdate_consensus(
+                independent,yahoo,_soxx_split_day_close_references())
+    result=build_snapshot(independent,yahoo)
+    if audit:
+        result['corporate_action_basis']['exdate_external_reference']=audit
+        result['price_basis']+=' · SOXX 분할일 외부 종가 추가 검증'
+    return result
+
 
 def load_state():
     try:
@@ -638,6 +713,32 @@ def self_test():
         raise AssertionError('unrelated ETF 3x discrepancy must still fail closed')
     except RuntimeError as e:
         assert '불일치' in str(e)
+    split_audit_left={name:dict(x) for name,x in split_a.items()}
+    split_audit_right={name:dict(x) for name,x in split_a.items()}
+    split_audit_left['SOXX'][SOXX_SPLIT_EX_DATE]=130.94
+    split_audit_right['SOXX'][SOXX_SPLIT_EX_DATE]=131.90
+    aa,bb,proof=_soxx_split_exdate_consensus(
+        split_audit_left,split_audit_right,{'Schwab dated close':131.90})
+    assert aa['SOXX'][SOXX_SPLIT_EX_DATE]==bb['SOXX'][SOXX_SPLIT_EX_DATE]
+    assert proof['accepted']==131.90 and proof['outlier']==130.94
+    for bad in ({},{'Schwab dated close':130.94,'Nasdaq':131.90}):
+        try:
+            _soxx_split_exdate_consensus(split_audit_left,split_audit_right,bad)
+            raise AssertionError('unconfirmed SOXX close must remain blocked')
+        except RuntimeError as exc:
+            assert 'SOXX' in str(exc)
+    original_fetch=globals()['fetch']
+    try:
+        def test_fetch(url,timeout=25):
+            if 'nasdaq.com' in url:
+                return json.dumps({'data':{'tradesTable':{'rows':[
+                    {'date':'11/05/2026','close':'$131.90'}]}}})
+            return '<div>Last Price $131.90 As of close 11/05/2026</div>'
+        globals()['fetch']=test_fetch
+        checks=_soxx_split_day_close_references()
+        assert len(checks)==2 and all(v==131.90 for v in checks.values())
+    finally:
+        globals()['fetch']=original_fetch
     print('ai_rotation_regression_tests=true checks=price_gap,display_rounding,spread,baskets,close_alignment,intraday_guard,revision_signature')
 
 if __name__ == '__main__':
