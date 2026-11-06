@@ -6199,7 +6199,7 @@ def _oil_surplus_extract_pair(text: str) -> tuple[str, float] | None:
     if not any(x in low for x in ("october", "november", "december", "september")):
         return None
     # Numeric value must occur next to a balance claim and a target month.
-    monthnames = {"september": "09", "october": "10", "november": "11", "december": "12"}
+    monthnames = {"december": "12", "november": "11", "october": "10", "september": "09"}
     numeric = r"([0-9]+(?:\.[0-9]+)?)\\s*(?:million\\s*(?:barrels\\s*(?:per|a)\\s*day|bpd|b/d)|mb/d|mbd|million\\s*bpd)"
     # String.raw in authoring is converted below to single backslash regex tokens.
     numeric = numeric.replace("\\\\", "\\")
