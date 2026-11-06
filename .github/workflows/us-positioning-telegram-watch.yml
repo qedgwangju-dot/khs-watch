@@ -27,6 +27,11 @@ on:
       timezone: "Asia/Seoul"
     - cron: "45 7 * * *"
       timezone: "Asia/Seoul"
+  # Recover a dropped US positioning morning cron from the existing CTA schedule.
+  workflow_run:
+    workflows: ["Treasury CTA squeeze Telegram alert"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
     inputs:
       force_send:
@@ -47,7 +52,48 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  missed_digest_gate:
+    if: \${{ github.event_name == 'workflow_run' && github.event.workflow_run.event == 'schedule' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.head_branch == 'main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      due: \${{ steps.check.outputs.due }}
+      digest: \${{ steps.check.outputs.digest }}
+    steps:
+      - name: Check current US positioning daily digest on main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Recover only genuinely missing KST morning digests
+        id: check
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json, os, pathlib
+          from zoneinfo import ZoneInfo
+          now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          file=pathlib.Path("data/us_positioning_state.json")
+          if not file.is_file():
+              raise RuntimeError("US positioning state missing, refusing a forced baseline")
+          try:
+              state=json.loads(file.read_text(encoding="utf-8"))
+          except Exception as exc:
+              raise RuntimeError("US positioning state unreadable, preserve prior sends") from exc
+          last=str(state.get("daily_digest_sent_date_kst") or "")
+          due=(dt.time(7,45)<=now.time()<=dt.time(11,45)
+               and last!=now.date().isoformat())
+          with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as handle:
+              handle.write("due="+str(due).lower()+"\n")
+              handle.write("digest="+str(due).lower()+"\n")
+          print("us_positioning_missed_daily_digest="+str(due).lower()
+                +" last="+(last or "unknown")
+                +" checked="+now.isoformat())
+          PY
+
   watch:
+    needs: missed_digest_gate
+    if: ${{ always() && (github.event_name != 'workflow_run' || needs.missed_digest_gate.outputs.due == 'true') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -55,8 +101,8 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
       ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
-      DAILY_DIGEST: ${{ github.event_name == 'schedule' && (github.event.schedule == '30 7 * * *' || github.event.schedule == '45 7 * * *') && 'true' || 'false' }}
-      FORCE_SEND: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_send == 'true' && 'true' || github.event_name == 'schedule' && (github.event.schedule == '30 7 * * *' || github.event.schedule == '45 7 * * *') && 'true' || 'false' }}
+      DAILY_DIGEST: ${{ ((github.event_name == 'schedule' && (github.event.schedule == '30 7 * * *' || github.event.schedule == '45 7 * * *')) || (github.event_name == 'workflow_run' && needs.missed_digest_gate.outputs.digest == 'true')) && 'true' || 'false' }}
+      FORCE_SEND: ${{ ((github.event_name == 'workflow_dispatch' && github.event.inputs.force_send == 'true') || (github.event_name == 'schedule' && (github.event.schedule == '30 7 * * *' || github.event.schedule == '45 7 * * *')) || (github.event_name == 'workflow_run' && needs.missed_digest_gate.outputs.digest == 'true')) && 'true' || 'false' }}
 
     steps:
       - name: Checkout
@@ -315,9 +361,9 @@ jobs:
 
 
   etf_short_interest:
-    # Reuse this existing US positioning workflow, secrets, bot and schedules.
-    # Push always validates without Telegram send or delivery-state changes.
-    if: ${{ github.event_name == 'schedule' || github.event_name == 'push' }}
+    needs: missed_digest_gate
+    # The trusted missing-digest recovery also checks the existing ETF SI lane.
+    if: ${{ always() && (github.event_name == 'schedule' || github.event_name == 'push' || (github.event_name == 'workflow_run' && needs.missed_digest_gate.outputs.due == 'true')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 7
     env:
@@ -354,7 +400,7 @@ jobs:
           fi
 
       - name: Commit ETF SI state only after Telegram receipt
-        if: github.event_name == 'schedule' && hashFiles('out/us_positioning_etf_short_interest_confirmed.json') != ''
+        if: (github.event_name == 'schedule' || (github.event_name == 'workflow_run' && needs.missed_digest_gate.outputs.due == 'true')) && hashFiles('out/us_positioning_etf_short_interest_confirmed.json') != ''
         run: |
           test -s out/us_positioning_etf_short_interest_confirmed.json
           test -s data/us_positioning_etf_short_interest_state.json
