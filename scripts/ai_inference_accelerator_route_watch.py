@@ -601,6 +601,9 @@ def official_page_snapshots() -> dict[str, dict]:
         # Keep the existing semantic keys and successful baseline intact:
         # corroboration changes the evidence, not the actual feature status.
         model["sol_ultrafast_eu_residency"] = True
+        # The same explicit policy confirms US residency as well; absence
+        # of the wording on the model pricing page is not a withdrawal.
+        model["us_data_residency"] = True
         model_page = out["OpenAI GPT-6.1 Sol 모델"]
         model_page["digest"] = _semantic_digest(model)
         model_page["material"] = json.dumps(model, ensure_ascii=False, sort_keys=True)
