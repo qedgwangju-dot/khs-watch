@@ -112,6 +112,34 @@ def yahoo_series(symbol, now=None):
         if value <= 0:
             raise RuntimeError(f'{symbol} Yahoo 비정상 종가: {d}={value}')
         out[d] = value
+    # A 1-month Yahoo chart can lag even when the same provider's short
+    # rolling chart already has the completed U.S. close. The secondary API
+    # is only a fresher retrieval path; StockAnalysis still independently
+    # verifies all closes and alert thresholds remain unchanged.
+    current_day=ny_now.date().isoformat()
+    after_close=(ny_now.weekday()<5 and
+                 (ny_now.hour>16 or (ny_now.hour==16 and ny_now.minute>=45)))
+    if after_close and (not out or max(out)<current_day):
+        try:
+            alt=YAHOO.replace('query1.finance.yahoo.com','query2.finance.yahoo.com')
+            alt=alt.replace('range=1mo','range=5d')
+            url=alt.format(urllib.parse.quote(symbol,safe=''))+f'&cb={int(time.time())}'
+            payload=json.loads(fetch(url,timeout=10))
+            record=((payload.get('chart') or {}).get('result') or [None])[0]
+            if isinstance(record,dict):
+                dates=record.get('timestamp') or []
+                closes=(((record.get('indicators') or {}).get('quote') or [{}])[0]
+                        .get('close') or [])
+                if len(dates)==len(closes):
+                    for stamp,value in zip(dates,closes):
+                        if value is None:
+                            continue
+                        when=datetime.fromtimestamp(stamp,NY).date().isoformat()
+                        if when==current_day and float(value)>0:
+                            out[current_day]=float(value)
+                            break
+        except (ValueError,TypeError,KeyError,RuntimeError,OSError):
+            pass
     if len(out) < 7:
         raise RuntimeError(f'{symbol} Yahoo 완료 일봉 부족')
     return out
@@ -739,6 +767,28 @@ def self_test():
         assert len(checks)==2 and all(v==131.90 for v in checks.values())
     finally:
         globals()['fetch']=original_fetch
+    # Yahoo query2 may publish the completed close before query1 1mo does.
+    last_dates = ['2026-10-27','2026-10-28','2026-10-29','2026-10-30',
+                  '2026-11-02','2026-11-03','2026-11-04','2026-11-05']
+    def chart_payload(end):
+        times=[int(datetime.strptime(d,'%Y-%m-%d')
+                   .replace(tzinfo=NY).timestamp()) for d in last_dates[:end]]
+        values=[100.0+i for i in range(end)]
+        return json.dumps({'chart':{'result':[{
+            'timestamp':times,
+            'indicators':{'quote':[{'close':values}]},
+        }]}})
+    original=globals()['fetch']
+    try:
+        globals()['fetch']=lambda url,timeout=25: (
+            chart_payload(8) if 'query2.finance.yahoo.com' in url
+            else chart_payload(7))
+        fresh=yahoo_series('SOXX',now=datetime(2026,11,5,18,30,tzinfo=NY))
+        assert max(fresh)=='2026-11-05' and fresh['2026-11-05']==107.0
+        early=yahoo_series('SOXX',now=datetime(2026,11,5,13,30,tzinfo=NY))
+        assert max(early)=='2026-11-04'
+    finally:
+        globals()['fetch']=original
     print('ai_rotation_regression_tests=true checks=price_gap,display_rounding,spread,baskets,close_alignment,intraday_guard,revision_signature')
 
 if __name__ == '__main__':
