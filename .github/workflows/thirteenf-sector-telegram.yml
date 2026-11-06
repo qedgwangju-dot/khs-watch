@@ -31,7 +31,7 @@ concurrency:
   group: thirteenf-sector-telegram-watch
   # Prevent cancellation after Telegram accepted a message but before its
   # delivery receipt and deduplication state have been committed.
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   watch:
