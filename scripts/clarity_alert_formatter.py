@@ -187,6 +187,13 @@ def is_political_risk(event):
     return "정치·윤리" in et or "이해충돌" in et
 
 
+def is_senate_banking_leadership(event):
+    return clean(event.get("event_type", "")) in {
+        "상원 은행위원회 차기 위원장 전망",
+        "상원 은행위원회 위원장 선임 보도",
+    }
+
+
 def is_industry_pressure(event):
     et = clean(event.get("event_type", ""))
     return "핵심 사업자" in et or "업계 표결 촉구" in et or bool(clean(event.get("industry_actor", "")))
@@ -559,6 +566,13 @@ def localize_event(event):
 def easy_meaning(event, body_ko):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_senate_banking_leadership(event):
+        return (
+            "쉽게 말하면, 민주당이 상원 다수당을 확보하면서 암호자산 규칙과 금융당국을 감독하는 "
+            "은행위원회의 지도부가 바뀔 수 있다는 소식입니다. "
+            "워런의 실제 선임·취임이 확정된 것은 아니며, 기존 CLARITY 법안의 조항·표결 결과가 "
+            "이번 보도만으로 바뀐 것도 아닙니다."
+        )
     if is_vs_trust_3x_registration_effect(event):
         return (
             "쉽게 말하면, SEC가 ‘상장할 수 있다’고 승인한 데 이어 BITH·ETHK의 증권 등록 자체도 효력이 생긴 것입니다. "
@@ -610,6 +624,13 @@ def easy_meaning(event, body_ko):
 def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_senate_banking_leadership(event):
+        return [
+            "돈 버는 능력: 이번 인선 전망만으로 COIN·CRCL·BTC 관련 실제 매출·수수료가 변경되지는 않습니다.",
+            "할인율: 워런의 기존 투자자 보호·윤리·불법금융·은행 위험관리 입장 때문에 향후 규제비용과 정책 불확실성의 재평가 요인이 생겼습니다. 방향과 강도는 실제 법안 문구·감독 조치에 달렸습니다.",
+            "수급: 암호자산 가격이나 COIN·CRCL 주가 반응은 금리·달러·시장 전체 위험선호와 나누어 확인해야 합니다. 인선 전망을 가격 하락의 확정 원인으로 쓰지 않습니다.",
+            "시간표: 공식 민주당 위원장 배정·상원 은행위원회 구성→2027년 1월 제120대 의회→CLARITY 재상정·수정·심의 여부를 단계별로 확인합니다.",
+        ]
     if is_vs_trust_3x_registration_effect(event):
         return [
             "시간표: SEC 상장규칙 승인 → 등록서류 효력 발생까지 왔습니다. 다음 관문은 Volatility Shares 공식 출시·Cboe 첫 거래입니다.",
@@ -741,6 +762,12 @@ def investment_lines(event):
 def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_senate_banking_leadership(event):
+        return (
+            "민주당의 상원 다수당 확보 후 워런의 상원 은행위원장 인선 가능성이 신뢰매체에서 보도됐지만 "
+            "공식 선임·취임은 미확정입니다. 암호자산 기업의 현재 매출이 아니라 규제 할인율과 "
+            "2027년 CLARITY 법안 처리 경로가 달라질 수 있으므로 공식 인선·위원회 의제·법안 문구를 확인해야 합니다."
+        )
     if is_vs_trust_3x_registration_effect(event):
         return (
             "BITH·ETHK는 SEC 상장규칙 승인에 이어 등록서류 효력까지 발생한 출시 직전 단계로 진전했으며, "

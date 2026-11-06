@@ -17,6 +17,8 @@ PENDING_STATE_PATH = ROOT / "out" / "clarity_policy_pressure_pending_state.json"
 ALERT_JSON = ROOT / "out" / "clarity_watch_alert.json"
 STATUS_PATH = ROOT / "out" / "clarity_policy_pressure_status.json"
 SIGNATURE_VERSION = 2
+CHAIR_EXPECTED_TYPE = "상원 은행위원회 차기 위원장 전망"
+CHAIR_REPORTED_TYPE = "상원 은행위원회 위원장 선임 보도"
 
 NEWS_RSS = "https://news.google.com/rss/search"
 QUERIES = [
@@ -30,12 +32,18 @@ QUERIES = [
     '"CLARITY Act" BitGo',
     '"CLARITY Act" draft Senate Republicans',
     '"CLARITY Act" revised text Senate',
+    '"Elizabeth Warren" "Senate Banking" chair',
+    '"Warren" "Banking Committee" chair Democrats',
+    '"Senate Banking" "Warren" leadership crypto',
 ]
 
 TIER1_LABELS = {
     "bloomberg law": "Bloomberg Law",
     "bloomberg tax": "Bloomberg Tax",
     "reuters": "Reuters",
+    "american banker": "American Banker",
+    "cbs news": "CBS News",
+    "axios": "Axios",
     "bloomberg": "Bloomberg",
     "coindesk": "CoinDesk",
     "the block": "The Block",
@@ -44,6 +52,8 @@ TIER1_LABELS = {
 }
 TIER2_LABELS = {
     "cointelegraph": "Cointelegraph",
+    "banking dive": "Banking Dive",
+    "crypto.news": "Crypto.news",
     "crypto briefing": "Crypto Briefing",
     "bitcoin magazine": "Bitcoin Magazine",
     "benzinga": "Benzinga",
@@ -183,8 +193,38 @@ def is_text_release_state(text):
     return bool(TEXT_RELEASE_RE.search(clean(text)) and STRICT_TOPIC_RE.search(clean(text)))
 
 
+
+def senate_banking_chair_stage(signal, published):
+    """Detect a post-election committee-leadership change, not generic Warren remarks."""
+    if published is None or published < dt.datetime(2026, 11, 4, tzinfo=ZoneInfo("UTC")):
+        return ""
+    low = clean(signal).lower()
+    if not re.search(r"\b(?:elizabeth\s+warren|senator\s+warren|warren)\b", low):
+        return ""
+    if not re.search(r"\b(?:senate\s+banking(?:\s+committee)?|senate\s+committee\s+on\s+banking|banking\s+committee)\b", low):
+        return ""
+    if not re.search(r"\b(?:chair(?:woman|man|person)?|chairmanship|gavel)\b", low):
+        return ""
+    # A press report of an appointment is not treated as an official committee roster.
+    if re.search(
+        r"\bwarren\b.{0,110}\b(?:officially\s+)?(?:named|elected|selected|appointed)\s+(?:as\s+)?(?:the\s+)?(?:chair|chairwoman|chairman)\b",
+        low,
+    ) or re.search(
+        r"\b(?:committee|senate\s+banking)\b.{0,110}\b(?:elected|selected|appointed|named)\s+warren\s+(?:as\s+)?(?:its\s+)?chair\b",
+        low,
+    ):
+        return "reported_selected"
+    if re.search(r"\b(?:expected|likely|presumptive|poised|in\s+line|on\s+track|set\s+to|contender|would|could|may|incoming)\b", low):
+        return "expected"
+    return ""
+
+
 def event_subtype(signal, event_type):
     low = clean(signal).lower()
+    if event_type == CHAIR_EXPECTED_TYPE:
+        return "senate_banking_chair_expected"
+    if event_type == CHAIR_REPORTED_TYPE:
+        return "senate_banking_chair_reported_selected"
     if "문안 공개" in event_type or "핵심 수정" in event_type:
         return "senate_revised_draft_release"
     if event_type == "정치·윤리 표결 변수":
@@ -212,7 +252,26 @@ def semantic_signature(actor, event_type, signal):
 
 def korean_event(item, actor, event_type, source_label, signal, evidence_sources=None):
     evidence_sources = list(dict.fromkeys(evidence_sources or [source_label]))
-    if "문안 공개" in event_type or "핵심 수정" in event_type:
+    if event_type in {CHAIR_EXPECTED_TYPE, CHAIR_REPORTED_TYPE}:
+        company, mobility = "", False
+        if event_type == CHAIR_EXPECTED_TYPE:
+            ko_title = "워런, 차기 미국 상원 은행위원장 취임 전망 — 공식 선임 전"
+            detail = (
+                "2026년 11월 3일 중간선거에서 민주당이 상원 다수당을 확보한 뒤 "
+                "Elizabeth Warren 상원의원이 차기 상원 은행위원장 후보로 거론된다는 신뢰매체 보도입니다. "
+                "현 119대 의회의 위원장은 Tim Scott이고 Warren은 민주당 간사입니다. "
+                "위원장 공식 선임이나 취임 완료가 아니며, 2027년 1월 3일 시작하는 제120대 의회의 "
+                "위원회 인선·공식 명단을 다시 확인해야 합니다. "
+                "Warren은 CLARITY 법안의 투자자 보호, 이해충돌, 불법금융 및 은행 암호자산 위험을 문제 삼아 왔습니다."
+            )
+        else:
+            ko_title = "워런, 상원 은행위원장 선임 보도 — 공식 명단 대조 전"
+            detail = (
+                "신뢰매체가 Elizabeth Warren 상원의원의 차기 은행위원장 선임을 보도했습니다. "
+                "이는 기존 취임 전망에서 진전됐다는 언론 보도이며, 상원 은행위원회 공식 위원장 명단과 "
+                "임기 시작 시점을 별도로 대조해야 합니다. 인선 보도를 공식 취임 완료로 표시하지 않습니다."
+            )
+    elif "문안 공개" in event_type or "핵심 수정" in event_type:
         company, mobility = "", False
         ko_title = "상원 공화당, CLARITY 최신 초안 공개 — 공식 원문 재확인 중"
         reported_title = clean(item.get("title", ""))
@@ -254,7 +313,8 @@ def korean_event(item, actor, event_type, source_label, signal, evidence_sources
     published = parse_date(item["pubDate"])
     date = published.astimezone(ZoneInfo("America/New_York")).strftime("%a, %d %b %Y %H:%M:%S %z") if published else ""
     event = {
-        "source": f"{source_label} 발언 검증" if "문안 공개" not in event_type else f"{source_label} 문안 공개 검증",
+        "source": (f"{source_label} 위원장 인선 보도" if event_type in {CHAIR_EXPECTED_TYPE, CHAIR_REPORTED_TYPE}
+                   else (f"{source_label} 발언 검증" if "문안 공개" not in event_type else f"{source_label} 문안 공개 검증")),
         "event_type": event_type,
         "event_subtype": event_subtype(signal, event_type),
         "title": ko_title,
@@ -266,7 +326,15 @@ def korean_event(item, actor, event_type, source_label, signal, evidence_sources
         "evidence_count": len(evidence_sources),
         "monitoring_unit": "event_state_change",
     }
-    if "문안 공개" in event_type or "핵심 수정" in event_type:
+    if event_type in {CHAIR_EXPECTED_TYPE, CHAIR_REPORTED_TYPE}:
+        event["policy_actor"] = "Elizabeth Warren 상원의원"
+        event["leadership_stage"] = ("expected" if event_type == CHAIR_EXPECTED_TYPE else "reported_selected")
+        event["verification_status"] = (
+            "신뢰매체의 차기 위원장 전망 확인 / 공식 상원 은행위원회 인선 미확정"
+            if event_type == CHAIR_EXPECTED_TYPE
+            else "선임 관련 신뢰매체 보도 / 공식 상원 은행위원회 명단 대조 전"
+        )
+    elif "문안 공개" in event_type or "핵심 수정" in event_type:
         event["policy_actor"] = "상원 공화당 협상팀"
         event["verification_status"] = "신뢰매체 문안 공개 확인 / Senate Banking·GovInfo·Congress.gov 공식 원문 재확인 대기"
         event["text_release"] = True
@@ -312,9 +380,13 @@ def main():
         if tier == 0:
             continue
         signal = clean(f"{item['title']} {item['description']}")
-        if not STRICT_TOPIC_RE.search(signal):
+        chair_stage = senate_banking_chair_stage(signal, published)
+        if chair_stage:
+            actor = "Elizabeth Warren 상원의원"
+            event_type = CHAIR_EXPECTED_TYPE if chair_stage == "expected" else CHAIR_REPORTED_TYPE
+        elif not STRICT_TOPIC_RE.search(signal):
             continue
-        if is_text_release_state(signal):
+        elif is_text_release_state(signal):
             actor = "상원 공화당 협상팀"
             event_type = "법안 문안 공개·핵심 수정 — 신뢰매체 확인"
         else:

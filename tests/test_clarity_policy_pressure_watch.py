@@ -99,5 +99,61 @@ class ClarityPolicyPressureWatchTest(unittest.TestCase):
         )
 
 
+    def test_warren_chair_coverage_is_a_post_election_leadership_state(self):
+        import datetime as dt
+        published = dt.datetime(2026, 11, 5, tzinfo=dt.timezone.utc)
+        sample = (
+            "Democrats win the Senate; Elizabeth Warren is likely to chair "
+            "the Senate Banking Committee in the next Congress."
+        )
+        self.assertEqual(MOD.senate_banking_chair_stage(sample, published), "expected")
+        self.assertEqual(
+            MOD.senate_banking_chair_stage(
+                "Warren, the Senate Banking Committee ranking member, "
+                "criticized crypto while Chairman Tim Scott spoke.",
+                published,
+            ),
+            "",
+        )
+        self.assertEqual(
+            MOD.senate_banking_chair_stage(sample, dt.datetime(2026, 10, 28, tzinfo=dt.timezone.utc)),
+            "",
+        )
+
+    def test_warren_chair_dedupes_reworded_news_and_does_not_claim_appointment(self):
+        import datetime as dt
+        actor = "Elizabeth Warren 상원의원"
+        event_type = MOD.CHAIR_EXPECTED_TYPE
+        a = "Elizabeth Warren is likely to chair the Senate Banking Committee."
+        b = "Democratic Senate Majority: Warren expected to chair the Senate Banking Committee."
+        self.assertEqual(MOD.semantic_signature(actor, event_type, a), MOD.semantic_signature(actor, event_type, b))
+        item = {
+            "title": a,
+            "description": b,
+            "url": "https://news.google.com/example",
+            "pubDate": "Thu, 05 Nov 2026 15:00:00 GMT",
+            "source": "Reuters",
+        }
+        with mock.patch.object(MOD, "resolve_original_url", return_value="https://www.reuters.com/example"):
+            ev = MOD.korean_event(item, actor, event_type, "Reuters", a, ["Reuters", "Banking Dive"])
+        self.assertEqual(ev["leadership_stage"], "expected")
+        self.assertIn("미확정", ev["verification_status"])
+        self.assertNotIn("취임 완료", ev["title"])
+
+        spec = importlib.util.spec_from_file_location(
+            "clarity_alert_readability", ROOT / "scripts" / "clarity_alert_readability.py"
+        )
+        reader = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(reader)
+        rendered = "\n".join(reader.build_readable([ev]))
+        self.assertIn("차기 위원장 전망", rendered)
+        self.assertIn("현재 위원장은 Tim Scott", rendered)
+        self.assertIn("공식 인선 미확정", rendered)
+        self.assertIn("2027년 1월 3일", rendered)
+        self.assertIn("Reuters · Banking Dive", rendered)
+        self.assertIn("규제", rendered)
+        self.assertNotIn("이미 공식 취임", rendered)
+
+
 if __name__ == "__main__":
     unittest.main()

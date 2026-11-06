@@ -33,6 +33,8 @@ def is_media_text_release(event):
 
 def event_rank(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_senate_banking_leadership(event):
+        return 177
     title = clean(event.get("title", "")).lower()
     if "표결 결과" in et or "통과·부결" in et:
         return 200
@@ -170,6 +172,8 @@ def investment_lines(event):
 
 def impact_snapshot(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_senate_banking_leadership(event):
+        return "규제 할인율 △ · 2027년 심의 시간표 변동 가능 · 현재 매출 →"
     if FMT.is_vs_trust_3x_registration_effect(event):
         return "시간표 ↑↑ · 실제거래 직전 단계 · BTC/ETH 선물수급은 아직 미발생"
     if FMT.is_vs_trust_3x_final_prospectus(event):
@@ -210,6 +214,12 @@ def sentence_bullets(text):
 
 
 def confirmed_fact_lines(event, body_ko):
+    if FMT.is_senate_banking_leadership(event):
+        return [
+            "2026년 11월 3일 중간선거 이후 민주당의 차기 상원 다수당 확보 보도.",
+            "현 상원 은행위원회 공식 명단: 위원장 Tim Scott, 민주당 간사 Elizabeth Warren.",
+            "워런 차기 위원장 전망은 언론 보도 단계이며 공식 선임·취임과 구분.",
+        ]
     if FMT.is_vs_trust_3x_registration_effect(event):
         detail = clean(event.get("detail", ""))
         form = "Form EFFECT(효력발생 통지)"
@@ -265,6 +275,10 @@ def confirmed_fact_lines(event, body_ko):
 
 
 def compact_status(event):
+    if FMT.is_senate_banking_leadership(event):
+        if "선임 보도" in clean(event.get("event_type", "")):
+            return "🟡 선임 보도 — 공식 상원 은행위원회 명단 대조 전; 취임 완료 아님."
+        return "🟡 차기 위원장 전망 — 공식 인선 미확정; 현재 위원장은 Tim Scott."
     if FMT.is_vs_trust_3x_registration_effect(event):
         return "🟢 등록 효력 발생 — 증권 등록 단계 통과. 실제 첫 거래일은 별도 확인."
     if FMT.is_vs_trust_3x_final_prospectus(event):
@@ -327,6 +341,12 @@ def pending_lines(event):
 
 def next_check_lines(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_senate_banking_leadership(event):
+        return [
+            "상원 민주당 지도부의 위원장 배정 및 상원 은행위원회 공식 명단",
+            "2027년 1월 3일 제120대 의회 개원 이후 실제 위원회 구성",
+            "CLARITY 법안의 재상정·수정문안·위원회 심의 일정",
+        ]
     if FMT.is_vs_trust_3x_registration_effect(event):
         return [
             "Volatility Shares 공식 출시 공지",
