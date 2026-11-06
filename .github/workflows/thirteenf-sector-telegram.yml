@@ -11,6 +11,7 @@ on:
       - "scripts/thirteenf_sector_rank.py"
       - "scripts/test_thirteenf_sector_rank.py"
       - "scripts/thirteenf_context_watch.py"
+      - "scripts/thirteenf_fund_distress_watch.py"
       - "scripts/test_thirteenf_context_watch.py"
   workflow_dispatch:
     inputs:
@@ -28,7 +29,9 @@ permissions:
 
 concurrency:
   group: thirteenf-sector-telegram-watch
-  cancel-in-progress: true
+  # Prevent cancellation after Telegram accepted a message but before its
+  # delivery receipt and deduplication state have been committed.
+  cancel-in-progress: false
 
 jobs:
   watch:
@@ -62,6 +65,8 @@ jobs:
           python -m py_compile scripts/thirteenf_context_watch.py
           python -m py_compile scripts/test_thirteenf_context_watch.py
           PYTHONPATH=scripts python scripts/test_thirteenf_context_watch.py
+          python -m py_compile scripts/thirteenf_fund_distress_watch.py
+          PYTHONPATH=scripts python scripts/thirteenf_fund_distress_watch.py --self-test
 
       - name: Validate exact Telegram bot route without sending
         env:
@@ -140,3 +145,48 @@ jobs:
             sleep $((attempt * 3))
           done
           exit 1
+
+# Separate time-sensitive risk events from delayed 13F quarter-end holdings.
+      # Its source/Telegram validation runs even if the 13F-only lane fails.
+      - name: Check Situational Awareness distress and verify Telegram response
+        if: ${{ always() && !cancelled() }}
+        run: python scripts/thirteenf_fund_distress_watch.py
+
+      - name: Persist independent distress delivery keys
+        if: ${{ always() && !cancelled() }}
+        run: |
+          FILE=data/thirteenf_fund_distress_watch_state.json
+          if [ ! -f "$FILE" ]; then
+            echo "No new distress state to commit."
+            exit 0
+          fi
+          if [ -z "$(git status --porcelain -- "$FILE")" ]; then
+            echo "Distress state unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$FILE"
+          git commit -m "Persist confirmed 13F manager distress delivery state"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            if git pull --rebase origin main && git push origin main; then
+              echo "distress_state_push_confirmed=true"
+              exit 0
+            fi
+            git rebase --abort >/dev/null 2>&1 || true
+            echo "Distress state push retry $attempt/4"
+            sleep $((attempt * 3))
+          done
+          echo "::error::Distress delivery receipt state could not be persisted; review artifact before resending"
+          exit 1
+
+      - name: Upload distress delivery audit
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: thirteenf-distress-audit-${{ github.run_id }}
+          if-no-files-found: ignore
+          path: |
+            out/thirteenf_fund_distress_delivery.json
+            data/thirteenf_fund_distress_watch_state.json
