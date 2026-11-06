@@ -12,13 +12,13 @@
     "verdict": "시장 선긴축 기준 미충족"
   },
   "macro": {
-    "employment_period": "2026-09",
-    "payroll_change_k": 29.0,
-    "unemployment_rate": 4.2,
-    "unemployment_change_pp": 0.10000000000000053,
+    "employment_period": "2026-10",
+    "payroll_change_k": 165.0,
+    "unemployment_rate": 4.1,
+    "unemployment_change_pp": -0.10000000000000053,
     "cpi_period": "2026-09",
     "core_cpi_mom": 0.3348481932704761,
-    "employment_soft": true,
+    "employment_soft": false,
     "inflation_cooling": false
   },
   "pce": {
@@ -30,5 +30,5 @@
   "last_seen_fomc_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
   "pending_fomc": null,
   "last_credibility_completed": false,
-  "updated_at_utc": "2026-11-05T21:38:30.396394+00:00"
+  "updated_at_utc": "2026-11-06T14:05:36.184356+00:00"
 }
