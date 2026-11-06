@@ -28,7 +28,7 @@ def parse_utc(value):
     return dt.datetime.fromisoformat(str(value).replace("Z", "+00:00")).astimezone(dt.timezone.utc)
 
 
-def due_decision(event_name, last_monitor_success_at, now=None, threshold_minutes=DEFAULT_FALLBACK_GAP_MINUTES, schedule_expr=None, last_monitor_attempt_at=None, attempt_cooldown_minutes=20):
+def due_decision(event_name, last_monitor_success_at, now=None, threshold_minutes=DEFAULT_FALLBACK_GAP_MINUTES, schedule_expr=None, last_monitor_attempt_at=None, last_monitor_attempt_conclusion=None, attempt_cooldown_minutes=20):
     now = now or dt.datetime.now(dt.timezone.utc)
     if now.tzinfo is None:
         raise ValueError("now must be timezone-aware")
@@ -39,6 +39,19 @@ def due_decision(event_name, last_monitor_success_at, now=None, threshold_minute
         age = (now.astimezone(dt.timezone.utc) - last_monitor_attempt_at.astimezone(dt.timezone.utc)).total_seconds() / 60
         if 0 <= age < attempt_cooldown_minutes:
             return False, age, "최근 monitor 시도 존재 — 실패 여부와 무관하게 보조 반복 실행 억제"
+    if (last_monitor_attempt_at is not None
+            and last_monitor_attempt_conclusion == "failure"):
+        elapsed = (now.astimezone(dt.timezone.utc)
+                   - last_monitor_attempt_at.astimezone(dt.timezone.utc)).total_seconds() / 60
+        if elapsed >= attempt_cooldown_minutes:
+            # A failed monitor must not be masked by a prior green run.
+            # Keep the same bounded failure cooldown; no immediate storm.
+            return True, elapsed, "실제 monitor 실패 후 냉각시간 경과 — 보조 복구 재실행"
+    if (last_monitor_attempt_at is not None
+            and last_monitor_attempt_conclusion is None):
+        # The previous monitor may still be actively sending/state-saving.
+        # Never race a concurrent job merely because its age exceeds 20 min.
+        return False, None, "기존 monitor 완료 확인 전 — 보조 동시 실행 보류"
     if last_monitor_success_at is None:
         return True, None, "직전 monitor 성공 실행을 찾지 못해 보조 실행"
     last = last_monitor_success_at.astimezone(dt.timezone.utc)
@@ -173,6 +186,7 @@ def main():
             threshold_minutes=threshold,
             schedule_expr=schedule_expr,
             last_monitor_attempt_at=attempt.get("started_at") if attempt else None,
+            last_monitor_attempt_conclusion=attempt.get("conclusion") if attempt else None,
         )
 
     write_output("run", "true" if should_run else "false")
@@ -187,6 +201,7 @@ def main():
         "threshold_minutes": threshold,
         "last_monitor_success_run_id": previous.get("run_id") if previous else None,
         "last_monitor_attempt_run_id": attempt.get("run_id") if attempt else None,
+        "last_monitor_attempt_conclusion": attempt.get("conclusion") if attempt else None,
         "last_monitor_success_at_utc": (
             previous["completed_at"].isoformat() if previous else None
         ),
