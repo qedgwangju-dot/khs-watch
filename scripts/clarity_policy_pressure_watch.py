@@ -44,6 +44,8 @@ TIER1_LABELS = {
     "american banker": "American Banker",
     "cbs news": "CBS News",
     "axios": "Axios",
+    "wall street journal": "The Wall Street Journal",
+    "wsj": "The Wall Street Journal",
     "bloomberg": "Bloomberg",
     "coindesk": "CoinDesk",
     "the block": "The Block",
@@ -54,6 +56,8 @@ TIER2_LABELS = {
     "cointelegraph": "Cointelegraph",
     "banking dive": "Banking Dive",
     "crypto.news": "Crypto.news",
+    "financefeeds": "FinanceFeeds",
+    "pymnts": "PYMNTS",
     "crypto briefing": "Crypto Briefing",
     "bitcoin magazine": "Bitcoin Magazine",
     "benzinga": "Benzinga",
@@ -356,6 +360,53 @@ def load_state():
         return {}
 
 
+
+def verified_warren_chair_backfill(now):
+    """One-time, date-bounded recovery for the independently verified 2026-11-05 report.
+
+    This is explicitly a source-checked historical backfill, not an assertion
+    that a live RSS collector fetched and revalidated the official roster.
+    The existing semantic signature and delivery-confirmation gate still apply.
+    """
+    start = dt.datetime(2026, 11, 6, tzinfo=ZoneInfo("UTC"))
+    stop = dt.datetime(2026, 11, 11, tzinfo=ZoneInfo("UTC"))
+    if not start <= now < stop:
+        return None
+    report = {
+        "title": "Banks brace for tighter oversight from US Congress after Democrats sweep",
+        "description": (
+            "Reuters reported Elizabeth Warren, the top Democrat on the Senate Banking Committee, "
+            "was a leading contender expected to chair the committee after Democrats gained the Senate majority. "
+            "Banking Dive independently reported Warren was the presumptive incoming chair, not yet formally seated."
+        ),
+        "url": (
+            "https://www.reuters.com/legal/transactional/"
+            "banks-brace-tighter-oversight-us-congress-after-democrats-sweep-2026-11-05/"
+        ),
+        # Publication date is known; the exact publication clock time is not
+        # asserted in the outward-facing event.
+        "pubDate": "Thu, 05 Nov 2026 00:00:00 GMT",
+        "source": "Reuters",
+        "source_url": "https://www.reuters.com",
+        "matched_query": "verified post-election leadership backfill",
+    }
+    return {
+        "item": report,
+        "actor": "Elizabeth Warren 상원의원",
+        "event_type": CHAIR_EXPECTED_TYPE,
+        "event_subtype": "senate_banking_chair_expected",
+        "tier": 1,
+        "source_label": "Reuters",
+        "signal": report["description"],
+        "evidence_sources": [
+            "Reuters 2026-11-05 (차기 위원장 전망)",
+            "Banking Dive 2026-11-04 (별도 취재)",
+            "상원 은행위원회 공식 위원 명단 (현직 Tim Scott / 민주당 간사 Warren)",
+        ],
+        "verified_one_time_backfill": True,
+    }
+
+
 def main():
     now = dt.datetime.now(ZoneInfo("UTC"))
     cutoff = now - dt.timedelta(days=5)
@@ -423,6 +474,13 @@ def main():
             chosen["evidence_sources"] = list(dict.fromkeys(x["source_label"] for x in sorted(group, key=lambda x: (x["tier"], x["source_label"]))))
             accepted.append(chosen)
 
+    one_time_backfill_added = False
+    if not any(x["event_type"] == CHAIR_EXPECTED_TYPE for x in accepted):
+        verified = verified_warren_chair_backfill(now)
+        if verified:
+            accepted.append(verified)
+            one_time_backfill_added = True
+
     state = load_state()
     baseline = (not bool(state.get("initialized"))) or state.get("signature_version") != SIGNATURE_VERSION
     old_seen = set(state.get("seen_signatures") or []) if not baseline else set()
@@ -432,10 +490,18 @@ def main():
         current.append(sig)
         if baseline or sig in old_seen:
             continue
-        new_events.append(korean_event(
+        event = korean_event(
             candidate["item"], candidate["actor"], candidate["event_type"], candidate["source_label"],
             candidate["signal"], evidence_sources=candidate["evidence_sources"],
-        ))
+        )
+        if candidate.get("verified_one_time_backfill"):
+            event["source"] = "Reuters·Banking Dive 교차검증 — 누락 사건 1회 보완"
+            event["date"] = "2026-11-05"
+            event["verified_one_time_backfill"] = True
+            event["verification_status"] = (
+                "2026년 11월 5일 보도 교차검증 / 상원 은행위원장 공식 선임은 미확정"
+            )
+        new_events.append(event)
 
     merged = list(dict.fromkeys(([] if baseline else list(state.get("seen_signatures") or [])) + current))[-700:]
     PENDING_STATE_PATH.write_text(json.dumps({
@@ -467,6 +533,10 @@ def main():
         "candidates": len(candidates),
         "accepted_current": len(accepted),
         "new_events": len(new_events),
+        "verified_one_time_backfill_added": one_time_backfill_added,
+        "verified_one_time_backfill_sent_to_formatter": any(
+            event.get("verified_one_time_backfill") for event in new_events
+        ),
         "errors": errors,
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"clarity_policy_pressure_new={len(new_events)} baseline={str(baseline).lower()} accepted={len(accepted)} unit=event")

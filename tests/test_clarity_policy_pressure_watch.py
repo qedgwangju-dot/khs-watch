@@ -155,5 +155,35 @@ class ClarityPolicyPressureWatchTest(unittest.TestCase):
         self.assertNotIn("이미 공식 취임", rendered)
 
 
+    def test_verified_warren_backfill_is_bounded_and_cannot_forge_appointment(self):
+        import datetime as dt
+        inside = dt.datetime(2026, 11, 6, 8, tzinfo=dt.timezone.utc)
+        candidate = MOD.verified_warren_chair_backfill(inside)
+        self.assertIsNotNone(candidate)
+        self.assertEqual(candidate["event_type"], MOD.CHAIR_EXPECTED_TYPE)
+        self.assertTrue(candidate["verified_one_time_backfill"])
+        self.assertIn("reuters.com", candidate["item"]["url"])
+        self.assertIn("Banking Dive", " ".join(candidate["evidence_sources"]))
+        self.assertIsNone(MOD.verified_warren_chair_backfill(
+            dt.datetime(2026, 11, 5, 23, 59, tzinfo=dt.timezone.utc)
+        ))
+        self.assertIsNone(MOD.verified_warren_chair_backfill(
+            dt.datetime(2026, 11, 11, tzinfo=dt.timezone.utc)
+        ))
+
+    def test_verified_backfill_shares_signature_with_live_expected_reports(self):
+        item = MOD.verified_warren_chair_backfill(
+            __import__("datetime").datetime(2026, 11, 6, tzinfo=__import__("datetime").timezone.utc)
+        )
+        actor = item["actor"]
+        typ = item["event_type"]
+        backfilled_sig = MOD.semantic_signature(actor, typ, item["signal"])
+        live_sig = MOD.semantic_signature(
+            actor, typ,
+            "Elizabeth Warren is likely to chair the Senate Banking Committee in 2027.",
+        )
+        self.assertEqual(backfilled_sig, live_sig)
+
+
 if __name__ == "__main__":
     unittest.main()
