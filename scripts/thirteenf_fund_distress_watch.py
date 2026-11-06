@@ -182,6 +182,42 @@ def sec_source_status() -> str:
         return f"SEC 직접 조회 실패({type(exc).__name__}); 이전 공시를 최신 확인으로 대체하지 않음"
 
 
+def ownership_records(payload: dict) -> list[dict]:
+    """SEC's own submission chronology, not inferred portfolio transactions."""
+    recent = (payload.get("filings") or {}).get("recent") or {}
+    forms = recent.get("form") or []
+    accs = recent.get("accessionNumber") or []
+    dates = recent.get("filingDate") or []
+    names = recent.get("primaryDocument") or []
+    rows = []
+    for form, accession, filed, document in zip(forms, accs, dates, names):
+        if not re.search(r"13[DG]", str(form), re.I):
+            continue
+        if not re.fullmatch(r"\d{10}-\d{2}-\d{6}", str(accession)):
+            continue
+        if not re.fullmatch(r"[\w.\-]+", str(document), flags=re.ASCII):
+            continue
+        url = (
+            f"https://www.sec.gov/Archives/edgar/data/2045724/"
+            f"{str(accession).replace('-', '')}/{document}"
+        )
+        rows.append({"form": str(form), "accession": str(accession),
+                     "filed": str(filed), "url": url})
+    return sorted(rows, key=lambda row: (row["filed"], row["accession"]), reverse=True)
+
+
+def build_ownership_alert(row: dict, sec_status: str) -> str:
+    return "\n".join([
+        "[Situational Awareness · 신규 SEC 지분신고]",
+        "판정: SEC 공식 신규 제출 확인 · 매매·파산 확정과 별개",
+        f"■ 신고 종류: {row['form']} / 제출일: {row['filed']} / 접수번호: {row['accession']}",
+        "■ 13D·13G는 특정 발행사 지분 보유·변경에 관한 신고이며, 펀드 전체 포트폴리오와 실제 거래 대금이 아닙니다.",
+        "■ 지분 축소·처분 여부는 원문 보고기준일·수량·비율과 직전 신고를 대조해야 확정할 수 있습니다.",
+        f"■ 13F 별도 확인: {sec_status}",
+        "SEC 신규 공시 원문: " + row["url"],
+    ])
+
+
 def build_manual_alert(sec_status: str) -> str:
     # User-provided source text, not independent access to the X post.
     return "\n".join([
@@ -272,6 +308,15 @@ def main() -> int:
     state = load_state()
     news, errors = collect_news(now)
     status = sec_source_status()
+    ownership = None
+    ownership_error = None
+    try:
+        ownership = ownership_records(sec_watch.http_json(
+            "https://data.sec.gov/submissions/CIK0002045724.json"
+        ))
+    except Exception as exc:
+        ownership_error = f"{type(exc).__name__}: {exc}"
+        print("::warning::Situational Awareness SEC 13D·13G 신규 지분신고 조회 실패; 기존 기준선 보존")
     print(f"fund_distress_source_health={len(QUERIES)-len(errors)}/{len(QUERIES)} sec_status={status}")
     if errors:
         print("::warning::Situational Awareness 일부 뉴스원천 수집 불완전; 부분 수집을 전체 무변화로 간주하지 않음")
@@ -292,6 +337,26 @@ def main() -> int:
         }
         save_state(state)
         notified += 1
+
+    if ownership is not None:
+        # Existing 2026 filings are historical baseline, not newly traded assets.
+        # Only filings appearing after the first verified snapshot are alertable.
+        if "ownership_seen" not in state:
+            state["ownership_seen"] = {x["accession"]: {"baseline": True} for x in ownership}
+            print(f"fund_distress_ownership_baseline={len(ownership)} (historical filings not re-alerted)")
+        else:
+            for row in reversed(ownership):
+                accession = row["accession"]
+                if accession in state["ownership_seen"]:
+                    continue
+                receipt = send_verified(build_ownership_alert(row, status))
+                state["ownership_seen"][accession] = {
+                    "form": row["form"], "filed": row["filed"], **receipt
+                }
+                save_state(state)
+                notified += 1
+        state["ownership_last_checked_utc"] = now.isoformat()
+        save_state(state)
     if len(errors) != len(QUERIES):
         state["last_complete_news_scan_utc"] = now.isoformat() if not errors else state.get("last_complete_news_scan_utc")
     state["last_scan_errors"] = errors
@@ -303,6 +368,8 @@ def main() -> int:
         "sent_count": notified,
         "event_count": len(news),
         "news_source_errors": errors,
+        "ownership_source_error": ownership_error,
+        "ownership_filing_count": len(ownership) if ownership is not None else None,
         "last_delivery": state.get("manual_claim", {}).get(SUBMITTED_CLAIM_KEY),
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"fund_distress_checked=true notified={notified} candidates={len(news)} news_sources_ok={len(QUERIES)-len(errors)}")
@@ -322,6 +389,16 @@ def self_test() -> None:
     assert type_of_event("Situational Awareness forced sale to Citadel") == "마진콜·대규모 매각"
     assert not type_of_event("Situational Awareness new 13F filing")
     assert trusted("Reuters") and not trusted("Telegram channel")
+    sec_fixture = {"filings": {"recent": {
+        "form": ["13F-HR", "SCHEDULE 13D/A", "10-K"],
+        "accessionNumber": ["0000935836-26-000418", "0000935836-26-000500", "0000935836-26-000501"],
+        "filingDate": ["2026-08-14", "2026-09-17", "2026-09-19"],
+        "primaryDocument": ["primary_doc.xml", "primary_doc.xml", "report.htm"],
+    }}}
+    ownership_test = ownership_records(sec_fixture)
+    assert len(ownership_test) == 1 and ownership_test[0]["accession"] == "0000935836-26-000500"
+    assert "SEC 신규 공시 원문" in build_ownership_alert(ownership_test[0], "13F baseline")
+    assert "파산 확정과 별개" in build_ownership_alert(ownership_test[0], "13F baseline")
     assert old_event_recap(
         "Situational Awareness: lessons from July 2026 Citadel forced sale",
         "마진콜·대규모 매각"
@@ -350,7 +427,7 @@ def self_test() -> None:
     manual = build_manual_alert("SEC 미확인")
     assert "공식 파산 미확인" in manual and "시타델" in manual
     assert "실현손실이 아닙니다" in manual
-    print("fund_distress_regression=PASS checks=rumor_gate,aged_news,old_recap_filter,source_quality,dedup,upgrade,manual_caveat,source_outage_fail_visible")
+    print("fund_distress_regression=PASS checks=rumor_gate,aged_news,old_recap_filter,source_quality,dedup,upgrade,manual_caveat,ownership_baseline,source_outage_fail_visible")
 
 
 if __name__ == "__main__":
