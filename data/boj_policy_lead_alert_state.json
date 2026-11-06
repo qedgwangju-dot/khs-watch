@@ -1,12 +1,12 @@
 {
-  "last_signal_key": "637f43d17c88b069d0df2890",
-  "last_alert_at_kst": "2026-11-05T10:46:25+09:00",
-  "last_published_at_kst": "2026-11-05T09:05:00+09:00",
-  "last_source": "Reuters",
-  "last_title": "BOJ debated need for more rate hikes, scope for faster move, September minutes show - Reuters",
+  "last_signal_key": "bb05ac7ff22ce68ffc70b6c1",
+  "last_alert_at_kst": "2026-11-07T01:11:51+09:00",
+  "last_published_at_kst": "2026-11-07T01:00:00+09:00",
+  "last_source": "Bank of Japan",
+  "last_title": "Speech by Governor UEDA at the 2026 Michel Camdessus Central Banking Lecture, International Monetary Fund",
   "signature": {
-    "level": 2,
-    "event_type": "market_path",
+    "level": 1,
+    "event_type": "official_speech",
     "policy_rate": null,
     "hike_bp": null,
     "vote_for": null,
@@ -29,7 +29,7 @@
     "accommodative": false,
     "neutral_rate": false,
     "inflation_upside": false,
-    "risk_channels": false,
+    "risk_channels": true,
     "rate_unchanged": false,
     "underlying_target_reached": false
   }
