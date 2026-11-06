@@ -143,11 +143,7 @@ def make_events(items: list[dict], old: dict) -> list[tuple[str, str, list[dict]
         ready.append((key, level, sources[:3]))
     priority = {"파산 보도·주장": 0, "펀드 청산·운용 종료": 1,
                 "마진콜·대규모 매각": 2, "차입·주거래은행 변화": 3, "거래 재개·운용 재편": 4}
-    ready.sort(key=lambda x: (
-        priority.get(x[2][0]["kind"], 10),
-        -max(z["published"] for z in x[2]).__len__() if False else 0,
-        x[0]
-    ))
+    ready.sort(key=lambda x: (priority.get(x[2][0]["kind"], 10), x[0]))
     return ready[:MAX_LIVE_ALERTS]
 
 
