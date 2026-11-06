@@ -195,7 +195,15 @@ def ownership_records(payload: dict) -> list[dict]:
             continue
         if not re.fullmatch(r"\d{10}-\d{2}-\d{6}", str(accession)):
             continue
-        if not re.fullmatch(r"[\w.\-]+", str(document), flags=re.ASCII):
+        # SEC submissions primaryDocument may contain an XSL subdirectory,
+        # e.g. xslSCHEDULE_13D_X02/primary_doc.xml. Validate each component;
+        # reject traversal, absolute paths, empty components and bad characters.
+        segments = str(document).split("/")
+        if any(
+            not segment or segment in {".", ".."}
+            or not re.fullmatch(r"[A-Za-z0-9_.-]+", segment)
+            for segment in segments
+        ):
             continue
         url = (
             f"https://www.sec.gov/Archives/edgar/data/2045724/"
@@ -393,12 +401,17 @@ def self_test() -> None:
         "form": ["13F-HR", "SCHEDULE 13D/A", "10-K"],
         "accessionNumber": ["0000935836-26-000418", "0000935836-26-000500", "0000935836-26-000501"],
         "filingDate": ["2026-08-14", "2026-09-17", "2026-09-19"],
-        "primaryDocument": ["primary_doc.xml", "primary_doc.xml", "report.htm"],
+        "primaryDocument": ["xslForm13F_X02/primary_doc.xml", "xslSCHEDULE_13D_X02/primary_doc.xml", "report.htm"],
     }}}
     ownership_test = ownership_records(sec_fixture)
     assert len(ownership_test) == 1 and ownership_test[0]["accession"] == "0000935836-26-000500"
     assert "SEC 신규 공시 원문" in build_ownership_alert(ownership_test[0], "13F baseline")
     assert "파산 확정과 별개" in build_ownership_alert(ownership_test[0], "13F baseline")
+    hostile = {"filings": {"recent": {
+        "form": ["SCHEDULE 13D/A"], "accessionNumber": ["0000935836-26-000502"],
+        "filingDate": ["2026-09-18"], "primaryDocument": ["../private.txt"],
+    }}}
+    assert not ownership_records(hostile), "SEC document traversal must not be accepted"
     assert old_event_recap(
         "Situational Awareness: lessons from July 2026 Citadel forced sale",
         "마진콜·대규모 매각"
