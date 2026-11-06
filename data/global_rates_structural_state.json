@@ -102,7 +102,7 @@
       "foreign_bonds": 769007.0,
       "foreign_equities": 788761.0
     },
-    "domestic_bonds_delta_pp": 0.8999999999999986,
+    "domestic_bonds_delta_pp": 0.0,
     "one_pct_point_krw": 27089832285387.695,
     "one_pct_point_trillion_yen": 3.197802,
     "target_pct": {
@@ -120,7 +120,7 @@
     "total_krw": 2708983228538769.5,
     "total_oku_yen": 3197802.0,
     "url": "https://www.gpif.go.jp/gpif/portfolio.html",
-    "zero_sum_summary": "증가: 국내채권 +0.90%p, 국내주식 +0.32%p / 감소: 외국주식 -0.66%p, 외국채권 -0.55%p"
+    "zero_sum_summary": "비중 변화 없음"
   },
   "intervention": {
     "amount_krw": 0.0,
@@ -131,5 +131,5 @@
     "period": "令和8年9月29日～令和8年10月28日",
     "url": "https://www.mof.go.jp/policy/international_policy/reference/feio/data/monthly/20261030.html"
   },
-  "updated_at_kst": "2026-11-06T20:35:56+09:00"
+  "updated_at_kst": "2026-11-06T20:57:27+09:00"
 }
