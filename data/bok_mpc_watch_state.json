@@ -51,7 +51,7 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-11-06T11:24:18+09:00",
+    "updated_at_kst": "2026-11-07T00:23:39+09:00",
     "risk_score": 1,
     "grade_emoji": "🟡",
     "grade_label": "추가인상 가능성 유지",
@@ -106,14 +106,7 @@
       "690eed0efa40d2e3a613fded8a1aa96803188c48af40f7670d8f9e89af340915",
       "e3dd585745902f51670b10c1ea04774cbec2d93af65070b72d2de41b530e2d70"
     ],
-    "seen_policy_flags_by_day": {
-      "신현송|2026-10-23": [
-        "fiscal_reversibility",
-        "potential_growth_reassessment",
-        "potential_working_paper_expected",
-        "secular_stagnation_reassessment"
-      ]
-    },
+    "seen_policy_flags_by_day": {},
     "topic_policy_version": 1,
     "official_potential_research": {
       "initialized": true,
