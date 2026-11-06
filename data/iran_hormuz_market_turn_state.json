@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-11-05T07:13:02+09:00",
-  "last_event_kind": "eia_weekly_stock_balance",
-  "last_event_id": "eia_weekly_stock_balance:2026-10-30",
+  "last_alert_at_kst": "2026-11-06T10:25:00+09:00",
+  "last_event_kind": "jpm_global_oil_balance",
+  "last_event_id": "jpm_global_oil_balance:2026-10:surplus_1400kbpd",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-10-13T21:23:53+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-10-13T21:11:24+09:00",
@@ -41,30 +41,39 @@
     "venezuela_nabep_equipment:2026-10-13-two-arrived-eleven-deploying-sixty-purchased": "2026-10-18T19:06:09+09:00",
     "eia_refining_crack_watch:f98097630624922d": "2026-10-22T04:38:57+09:00",
     "us_dpa_refinery_funding_oct22:2026-10-22-program": "2026-10-25T01:21:02+09:00",
-    "eia_weekly_stock_balance:2026-10-30": "2026-11-05T07:13:02+09:00"
+    "eia_weekly_stock_balance:2026-10-30": "2026-11-05T07:13:02+09:00",
+    "jpm_global_oil_balance:2026-10:surplus_1400kbpd": "2026-11-06T10:25:00+09:00"
   },
   "last_market": {
-    "oil": {
-      "symbol": "BZ=F",
-      "label": "Brent",
-      "unit": "달러/배럴",
-      "price": 94.63,
-      "previous_close": 103.6,
-      "change": -8.969999999999999,
-      "change_pct": -8.658301158301157,
-      "timestamp_utc": "2026-11-04T21:59:17Z",
-      "timestamp_epoch": 1793829557.0
-    },
-    "usdkrw": {
-      "symbol": "KRW=X",
-      "label": "원·달러",
-      "unit": "원/달러",
-      "price": 1340.26,
-      "previous_close": 1342.82,
-      "change": -2.5599999999999454,
-      "change_pct": -0.1906435709923851,
-      "timestamp_utc": "2026-11-04T22:13:18Z",
-      "timestamp_epoch": 1793830398.0
+    "global_oil_balance": {
+      "event_kind": "jpm_global_oil_balance",
+      "event_id": "jpm_global_oil_balance:2026-10:surplus_1400kbpd",
+      "report_period": "2026-10",
+      "surplus_mbd": 1.4,
+      "provenance": "JPMorgan estimate in multiple authored media reports",
+      "reported_not_official_balance": true,
+      "iea_october_deficit_contrast": true,
+      "fair_value_date": "2026-10-27",
+      "sources": [
+        {
+          "period": "2026-10",
+          "surplus_mbd": 1.4,
+          "publication_day": "2026-11-04",
+          "publisher": "reuters",
+          "url": "https://finance.yahoo.com/energy/articles/jpmorgan-says-rising-exports-weak-132755488.html",
+          "source_type": "broker_estimate_quoted_in_media",
+          "independent_of_iea": true
+        },
+        {
+          "period": "2026-10",
+          "surplus_mbd": 1.4,
+          "publication_day": "2026-11-04",
+          "publisher": "oilgasjournal",
+          "url": "https://www.ogj.com/general-interest/economics-markets/news/55416618/jpmorgan-sees-global-oil-market-return-to-surplus",
+          "source_type": "broker_estimate_quoted_in_media",
+          "independent_of_iea": true
+        }
+      ]
     }
   }
 }
