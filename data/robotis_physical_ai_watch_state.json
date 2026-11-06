@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-06T02:48:33.182528+00:00",
+  "updated_at": "2026-11-06T09:19:03.376872+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -853,15 +853,25 @@
     "4ad9baafdfe2f99a1e021e1a8830466bb6c41f39c1deded321162735de0d8c1e",
     "dd75bb6b11ef420ba68eca671f8dbfb409bcdfff7787c61a94f194bf820a1f72",
     "b2ccf34262659e1b189e71ca7fc9c3c000cedcf405616aaedffd6947365065ed",
-    "f66318e07608f6385303f12344b89533f334be9aedadff2dd46f2a6cc131972d"
+    "f66318e07608f6385303f12344b89533f334be9aedadff2dd46f2a6cc131972d",
+    "8026b852af1f3f7cbd9b7417c28eed5b3c072c4fbc3f38c2713221a043d9235b",
+    "4731dcfe2701246dafb0a02322e7e5ebb70d542362244f2b8720cd8386498891",
+    "dcc6ff6a6439963e664edce7177035b8f4df3408452506ab5d2661cad520c629",
+    "79b48ed86732967a2e9d8a822fdbf9bf76a6bd02145f2c090945a9c0357bb506",
+    "46a149afe68e3215a2f290572b73784319023208d18027df7fcfa58dc44fa97a"
   ],
   "last_selected": [
-    "f66318e07608f6385303f12344b89533f334be9aedadff2dd46f2a6cc131972d"
+    "8026b852af1f3f7cbd9b7417c28eed5b3c072c4fbc3f38c2713221a043d9235b",
+    "4731dcfe2701246dafb0a02322e7e5ebb70d542362244f2b8720cd8386498891",
+    "dcc6ff6a6439963e664edce7177035b8f4df3408452506ab5d2661cad520c629",
+    "79b48ed86732967a2e9d8a822fdbf9bf76a6bd02145f2c090945a9c0357bb506",
+    "46a149afe68e3215a2f290572b73784319023208d18027df7fcfa58dc44fa97a"
   ],
   "groups": [
     "agibot_worken_hardware_model",
     "daedong_eyou_robot_actuator",
     "ess_battery",
+    "humanoid_component_policy",
     "il_robot_revenue_2026q3",
     "lg_cloid_inhouse_assembly",
     "lg_robot_learning_hours_target",
@@ -873,21 +883,6 @@
     "wonik_robot_hand_components"
   ],
   "delivery_history": [
-    {
-      "run_id": 41659839116,
-      "outcome": "sent",
-      "message_ids": [
-        325
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-03T15:03:35.477244+00:00"
-    },
     {
       "run_id": 41689602085,
       "outcome": "normal_silence",
@@ -1124,13 +1119,28 @@
         false
       ],
       "state_timestamp_utc": "2026-11-06T02:48:33.182528+00:00"
+    },
+    {
+      "run_id": 42194084973,
+      "outcome": "sent",
+      "message_ids": [
+        337
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-06T09:19:03.376872+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 42152625284,
+    "run_id": 42194084973,
     "outcome": "sent",
     "message_ids": [
-      336
+      337
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1139,6 +1149,6 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-06T02:48:33.182528+00:00"
+    "state_timestamp_utc": "2026-11-06T09:19:03.376872+00:00"
   }
 }
