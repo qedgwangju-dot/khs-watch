@@ -6188,36 +6188,32 @@ _ORIGINAL_IRAN_HORMUZ_RUN_MONITOR = run_monitor
 
 
 def _oil_surplus_extract_pair(text: str) -> tuple[str, float] | None:
-    """Only explicit global crude-balance estimates, never stock/export volumes."""
+    """Use a value explicitly paired with its month, never a different month's value."""
     low = normalize_text(text)
-    if "jpmorgan" not in low and "j.p. morgan" not in low and "jp morgan" not in low:
+    if not any(x in low for x in ("jpmorgan", "j.p. morgan", "jp morgan")):
         return None
-    if not any(x in low for x in ("global oil", "world oil", "oil market")):
+    if not any(x in low for x in ("global oil", "world oil", "oil market", "oil surplus")):
         return None
     if not any(x in low for x in ("surplus", "excess supply", "oversupply")):
         return None
-    if not any(x in low for x in ("october", "november", "december", "september")):
-        return None
-    # Numeric value must occur next to a balance claim and a target month.
-    monthnames = {"december": "12", "november": "11", "october": "10", "september": "09"}
-    numeric = r"([0-9]+(?:\.[0-9]+)?)\\s*(?:million\\s*(?:barrels\\s*(?:per|a)\\s*day|bpd|b/d)|mb/d|mbd|million\\s*bpd)"
-    # String.raw in authoring is converted below to single backslash regex tokens.
-    numeric = numeric.replace("\\\\", "\\")
-    for month, mon in monthnames.items():
+    numeric = r"([0-9]+(?:\.[0-9]+)?)\s*(?:million\s*(?:barrels\s*(?:per|a)\s*day|bpd|b/d)|mb/d|mbd|million\s*bpd)"
+    # Newest observation first. Never permit a September figure to slide into
+    # the October match across the intervening September month label.
+    months = (("december","12"),("november","11"),("october","10"),("september","09"))
+    for month, mon in months:
         patterns = (
-            rf"(?:surplus|excess\\s+supply|oversupply)\\s+(?:of\\s+|at\\s+|to\\s+|by\\s+)?{numeric}.{{0,100}}?\\b(?:in\\s+)?{month}\\b",
-            rf"{numeric}.{{0,95}}?\\b(?:in\\s+)?{month}\\b",
-            rf"\\b{month}\\b.{{0,100}}?(?:surplus|oversupply).{{0,65}}?{numeric}",
+            rf"{numeric}\s+(?:in|for|during)\s+{month}\b",
+            rf"\b{month}\b.{{0,60}}?(?:surplus|oversupply).{{0,60}}?{numeric}",
+            rf"\b{month}\b.{{0,60}}?{numeric}.{{0,35}}?(?:surplus|oversupply)",
+            rf"(?:surplus|oversupply).{{0,75}}?{numeric}.{{0,22}}?\b{month}\b",
         )
-        for pattern in patterns:
-            m = re.search(pattern.replace("\\\\", "\\"), low, flags=re.I)
-            if not m:
-                continue
-            value = float(m.group(1))
-            if 0.2 <= value <= 10.0:
-                return f"2026-{mon}", value
+        for expression in patterns:
+            match = re.search(expression,low,flags=re.I)
+            if match is not None:
+                value = float(match.group(1))
+                if 0.2 <= value <= 10.0:
+                    return f"2026-{mon}",value
     return None
-
 
 def _oil_surplus_direct_report(raw_html: str, publisher: str, url: str,
                                current: dt.datetime) -> dict:
