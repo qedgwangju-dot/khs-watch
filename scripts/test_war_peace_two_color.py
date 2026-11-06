@@ -15,6 +15,7 @@ import war_peace_reconstruction_watch_integrity as stage
 import war_peace_reconstruction_watch_evidence as evidence
 import war_peace_reconstruction_watch_runtime as runtime
 import war_peace_reconstruction_watch_two_color as presentation
+import war_peace_reconstruction_watch_oct04_guard as quality_guard
 
 
 class TwoColorTests(unittest.TestCase):
@@ -1286,6 +1287,37 @@ class Run801SavedInputTests(unittest.TestCase):
         self.assertIn('<b>배경·시장 참고</b>', text)
         self.assertNotEqual(receipt['alert_sha256'],
                             fixture['observed_delivered_alert_sha256'])
+
+
+class Run803RejectedInputTests(unittest.TestCase):
+    def test_pending_decision_and_mediator_review_do_not_bypass_quality_gate(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run803_rejected_alert_42131474397.json')
+                             .read_text(encoding='utf-8'))
+        original = fixture['rejected_alert']
+        self.assertEqual(hashlib.sha256(original.encode('utf-8')).hexdigest(),
+                         fixture['rejected_alert_sha256'])
+        rows = fixture['selected_rows']
+        self.assertEqual([row['id'] for row in rows],
+                         ['ffb70a81e815e9affa6f', '9e15753f20f3aea7d279',
+                          'ff7d919eafae79fdcc0b', 'cc50dc1373fb830ae9d8'])
+        self.assertEqual([stage.final_color(row) for row in rows],
+                         fixture['expected_stage_colors'])
+        self.assertEqual([presentation.direction(stage, row) for row in rows],
+                         fixture['expected_two_color'])
+
+        with tempfile.TemporaryDirectory() as folder:
+            alert = Path(folder) / 'alert.txt'
+            with patch.object(quality_guard.watch, 'ALERT', alert), \
+                    patch.object(quality_guard, '_orig_verify_alert', return_value=None):
+                alert.write_text(original, encoding='utf-8')
+                with self.assertRaisesRegex(RuntimeError, 'WAR_OCT04_QUALITY_GATE'):
+                    quality_guard.verify_alert(test_mode=False)
+                corrected = original.replace(
+                    '🔴 [속보] <b>1.', '🟡 [속보] <b>1.', 1).replace(
+                    '🔴 [신규] <b>3.', '🟢 [신규] <b>3.', 1)
+                alert.write_text(corrected, encoding='utf-8')
+                quality_guard.verify_alert(test_mode=False)
 
 
 if __name__ == '__main__':
