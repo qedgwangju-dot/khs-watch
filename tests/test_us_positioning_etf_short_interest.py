@@ -140,6 +140,43 @@ class ETFShortInterestTests(unittest.TestCase):
             self.assertFalse(result["telegram_sent"])
             self.assertFalse(path.exists())
 
+    def test_missed_digest_heartbeat_gate_does_not_send_or_repeat(self):
+        import os
+        import textwrap
+        workflow=(ROOT / ".github/workflows/us-positioning-telegram-watch.yml").read_text()
+        self.assertIn('Warsh Reaction Function Telegram Watch', workflow)
+        self.assertIn("github.event.workflow_run.event == 'schedule'", workflow)
+        marker=("      - name: Recover only genuinely missing KST morning digests\n"
+                "        id: check\n"
+                "        run: |\n"
+                "          python - <<'PY'\n")
+        self.assertEqual(workflow.count(marker), 1)
+        snippet=workflow.split(marker, 1)[1].split("\n          PY", 1)[0]
+        script=textwrap.dedent(snippet)
+        expected='now=dt.datetime.now(ZoneInfo("Asia/Seoul"))'
+        self.assertIn(expected,script)
+        previous=os.getcwd()
+        with tempfile.TemporaryDirectory() as tmp:
+            base=Path(tmp)
+            (base / "data").mkdir()
+            output=base / "github_output.txt"
+            try:
+                os.chdir(base)
+                with patch.dict(os.environ, {"GITHUB_OUTPUT":str(output)}):
+                    def run_gate(saved,hour):
+                        (base/"data/us_positioning_state.json").write_text(
+                            json.dumps({"daily_digest_sent_date_kst":saved}))
+                        code=script.replace(
+                            expected,'now=dt.datetime(2026,11,6,'+str(hour)
+                            +',30,tzinfo=ZoneInfo("Asia/Seoul"))')
+                        exec(compile(code,"recovery_gate","exec"),{})
+                        return output.read_text().splitlines()[-2:]
+                    self.assertEqual(run_gate("2026-11-05",10),["due=true","digest=true"])
+                    self.assertEqual(run_gate("2026-11-06",10),["due=false","digest=false"])
+                    self.assertEqual(run_gate("2026-11-05",12),["due=false","digest=false"])
+            finally:
+                os.chdir(previous)
+
     def test_finra_calendar_exact_dates(self):
         actual = etf.read_calendar(CALENDAR, 2026)
         self.assertEqual(actual["2026-10-15"], "2026-10-26")
