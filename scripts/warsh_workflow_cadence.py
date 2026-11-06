@@ -28,7 +28,7 @@ def parse_utc(value):
     return dt.datetime.fromisoformat(str(value).replace("Z", "+00:00")).astimezone(dt.timezone.utc)
 
 
-def due_decision(event_name, last_monitor_success_at, now=None, threshold_minutes=DEFAULT_FALLBACK_GAP_MINUTES, schedule_expr=None, last_monitor_attempt_at=None, last_monitor_attempt_conclusion=None, attempt_cooldown_minutes=20):
+def due_decision(event_name, last_monitor_success_at, now=None, threshold_minutes=DEFAULT_FALLBACK_GAP_MINUTES, schedule_expr=None, last_monitor_attempt_at=None, last_monitor_attempt_conclusion='unknown', attempt_cooldown_minutes=20):
     now = now or dt.datetime.now(dt.timezone.utc)
     if now.tzinfo is None:
         raise ValueError("now must be timezone-aware")
