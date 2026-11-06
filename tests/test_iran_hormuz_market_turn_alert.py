@@ -2021,5 +2021,109 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("fetch_bytes(google_news_url(query), timeout=4, attempts=1)",body)
 
 
+
+class GlobalOilSurplusWatchTests(unittest.TestCase):
+    def test_typed_report_and_false_claims(self):
+        text=("JPMorgan says the global oil market returned to a surplus of "
+              "1.1 million barrels per day in September, widening to a "
+              "surplus of 1.4 million bpd in October.")
+        self.assertEqual(MODULE._oil_surplus_extract_pair(text),("2026-10",1.4))
+        self.assertIsNone(MODULE._oil_surplus_extract_pair(
+            "IEA oil market remains in deficit in October even as imports rise 1.4 million bpd"))
+        self.assertIsNone(MODULE._oil_surplus_extract_pair(
+            "JPMorgan Middle East exports rebound by 1.4 million bpd in October"))
+        self.assertIsNone(MODULE._oil_surplus_extract_pair(
+            "JPMorgan expects higher oil market prices but supplies remain tight"))
+
+    def test_direct_report_fixed_date_and_source_scope(self):
+        now=dt.datetime(2026,11,6,1,tzinfo=dt.timezone.utc)
+        body=("Reuters Nov 4, 2026 - JPMorgan says global oil market is back in surplus. "
+              "JPMorgan estimates that surplus widened to 1.4 million bpd in October.")
+        row=MODULE._oil_surplus_direct_report(body,"reuters","https://example.com",now)
+        self.assertEqual(row["period"],"2026-10")
+        self.assertEqual(row["publication_day"],"2026-11-04")
+        self.assertEqual(row["surplus_mbd"],1.4)
+        with self.assertRaises(RuntimeError):
+            MODULE._oil_surplus_direct_report(
+                body.replace("1.4","1.8"),"reuters","https://example.com",now)
+
+    def test_independent_publishers_and_immutable_dedupe(self):
+        now=dt.datetime(2026,11,6,1,tzinfo=dt.timezone.utc)
+        rows=[
+            dict(period="2026-10",surplus_mbd=1.4,publication_day="2026-11-04",
+                 publisher="reuters",url="https://example.com/reuters"),
+            dict(period="2026-10",surplus_mbd=1.4,publication_day="2026-11-04",
+                 publisher="oilgasjournal",url="https://example.com/ogj"),
+        ]
+        self.assertIsNone(MODULE.choose_global_oil_surplus_update(rows[:1],{},now))
+        self.assertIsNone(MODULE.choose_global_oil_surplus_update(rows[:1]*2,{},now))
+        item=MODULE.choose_global_oil_surplus_update(rows,{},now)
+        self.assertIsNotNone(item)
+        self.assertEqual(item["event_id"],"jpm_global_oil_balance:2026-10:surplus_1400kbpd")
+        state={"alerted_events":{item["event_id"]:now.astimezone(MODULE.KST).isoformat()}}
+        self.assertIsNone(MODULE.choose_global_oil_surplus_update(rows,state,now))
+        self.assertIn("jpm_global_oil_balance:",MODULE.IMMUTABLE_EVENT_PREFIXES)
+
+    def test_analyst_not_iea_and_not_current_94(self):
+        now=dt.datetime(2026,11,6,1,tzinfo=dt.timezone.utc)
+        sources=[dict(period="2026-10",surplus_mbd=1.4,publication_day="2026-11-04",
+                      publisher="reuters",url="https://example.com/reuters"),
+                 dict(period="2026-10",surplus_mbd=1.4,publication_day="2026-11-04",
+                      publisher="oilgasjournal",url="https://example.com/ogj")]
+        item=MODULE.choose_global_oil_surplus_update(sources,{},now)
+        title,body,metadata=MODULE.build_global_oil_surplus_alert(item,now)
+        self.assertIn("9월 과잉 110만",body)
+        self.assertIn("10월 과잉 140만",body)
+        self.assertIn("2026년 말까지 공급 부족",body)
+        self.assertIn("10월 27일 기준",body)
+        self.assertIn("과거 참고 추정치",body)
+        self.assertEqual(metadata["surplus_mbd"],1.4)
+        self.assertTrue(metadata["reported_not_official_balance"])
+        self.assertEqual(len(metadata["sources"]),2)
+
+    def test_oil_surplus_alert_merges_existing_and_preserves_pending_state(self):
+        import tempfile
+        from unittest import mock
+        now=dt.datetime(2026,11,6,1,tzinfo=dt.timezone.utc)
+        incoming=[dict(period="2026-10",surplus_mbd=1.4,publication_day="2026-11-04",
+                       publisher=p,url=f"https://example.com/{p}") for p in ("reuters","oilgasjournal")]
+        with tempfile.TemporaryDirectory() as tmp:
+            base=pathlib.Path(tmp)
+            paths=("OUT_DIR","TITLE_PATH","BODY_PATH","ALERT_JSON_PATH",
+                   "PENDING_STATE_PATH","SUMMARY_PATH","TELEGRAM_CONFIRMED_PATH")
+            prior={key:getattr(MODULE,key) for key in paths}
+            try:
+                MODULE.OUT_DIR=base
+                for key in paths[1:]:
+                    setattr(MODULE,key,base/prior[key].name)
+                existing_state={"alerted_events":{"earlier_event":"2026-10-12T12:00:00+09:00"}}
+                def _original(_now):
+                    MODULE.clean_outputs()
+                    MODULE.TITLE_PATH.write_text("기존 EIA 경보\n")
+                    MODULE.BODY_PATH.write_text("기존 주간재고 사건\n")
+                    MODULE.ALERT_JSON_PATH.write_text('{"existing":"true"}\n')
+                    MODULE.PENDING_STATE_PATH.write_text(json.dumps({
+                        "alerted_events":{"earlier_event":"2026-10-12T12:00:00+09:00",
+                                         "this_eia":"2026-11-06T01:00:00+09:00"},
+                        "last_event_id":"this_eia","last_event_kind":"eia_weekly_stock_balance",
+                    }))
+                    return 0
+                with mock.patch.object(MODULE,"load_state",return_value=existing_state), \
+                     mock.patch.object(MODULE,"fetch_global_oil_surplus_reports",return_value=(incoming,[])), \
+                     mock.patch.object(MODULE,"_ORIGINAL_IRAN_HORMUZ_RUN_MONITOR",side_effect=_original), \
+                     mock.patch.object(MODULE,"fetch_quote",side_effect=RuntimeError("no FX")):
+                    self.assertEqual(MODULE._global_oil_surplus_run_monitor(now),0)
+                self.assertIn("기존 주간재고 사건",MODULE.BODY_PATH.read_text())
+                self.assertIn("글로벌 원유 공급",MODULE.BODY_PATH.read_text())
+                pending=json.loads(MODULE.PENDING_STATE_PATH.read_text())
+                self.assertIn("this_eia",pending["alerted_events"])
+                self.assertIn("jpm_global_oil_balance:2026-10:surplus_1400kbpd",pending["alerted_events"])
+                self.assertEqual(pending["last_event_id"],"this_eia")
+                self.assertFalse(MODULE.TELEGRAM_CONFIRMED_PATH.exists())
+            finally:
+                for key,value in prior.items():
+                    setattr(MODULE,key,value)
+
+
 if __name__ == "__main__":
     unittest.main()

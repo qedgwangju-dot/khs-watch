@@ -3827,6 +3827,7 @@ IMMUTABLE_EVENT_PREFIXES = (
     "g7_reserve_release_agreement:",
     "eu_diesel_reserve_policy:",
     "crude_product_divergence:",
+    "jpm_global_oil_balance:",
     "regional_export_recovery:",
     "sts_reroute_expansion:",
     "saudi_bypass_investment:",
@@ -6156,6 +6157,313 @@ def finalize_state() -> int:
     print(f"state_finalized=true message_id={confirmed.get('message_id')}")
     return 0
 
+
+
+# JPMorgan global crude oil balance: dated broker estimates are not IEA facts.
+# This feature adds no state file, workflow, Telegram route or schedule.
+GLOBAL_OIL_SURPLUS_SOURCE_DATE = dt.date(2026, 11, 4)
+GLOBAL_OIL_SURPLUS_MAX_REPORT_AGE_DAYS = 4
+GLOBAL_OIL_SURPLUS_KIND = "jpm_global_oil_balance"
+GLOBAL_OIL_SURPLUS_SOURCES = (
+    ("Reuters", "reuters", "https://finance.yahoo.com/energy/articles/jpmorgan-says-rising-exports-weak-132755488.html"),
+    ("Oil & Gas Journal", "oilgasjournal", "https://www.ogj.com/general-interest/economics-markets/news/55416618/jpmorgan-sees-global-oil-market-return-to-surplus"),
+    ("MarketWatch", "marketwatch", "https://www.marketwatch.com/livecoverage/stock-market-today-dow-sp500-nasdaq-to-fall-blue-wave-midterm-ai-fall-treasury-yield-drops/card/oil-prices-tumble-yes-we-are-back-to-a-surplus-says-jpmorgan--Hr9SRSduz8l5sdzeehJN"),
+)
+GLOBAL_OIL_SURPLUS_QUERIES = (
+    '"JPMorgan" "oil" "surplus" "million barrels" when:3d',
+    '"JPMorgan" "global oil" "surplus" "bpd" when:3d',
+    '"JPMorgan" "oil" "deficit" "million barrels" when:3d',
+)
+GLOBAL_OIL_SURPLUS_RSS_SOURCES = {
+    "reuters": "reuters",
+    "the wall street journal": "wsj",
+    "wall street journal": "wsj",
+    "bloomberg": "bloomberg",
+    "oil & gas journal": "oilgasjournal",
+    "s&p global commodity insights": "spglobal",
+    "financial times": "ft",
+}
+GLOBAL_OIL_SURPLUS_IEA_OCT_URL = "https://www.iea.org/reports/oil-market-report-october-2026"
+_ORIGINAL_IRAN_HORMUZ_RUN_MONITOR = run_monitor
+
+
+def _oil_surplus_extract_pair(text: str) -> tuple[str, float] | None:
+    """Only explicit global crude-balance estimates, never stock/export volumes."""
+    low = normalize_text(text)
+    if "jpmorgan" not in low and "j.p. morgan" not in low and "jp morgan" not in low:
+        return None
+    if not any(x in low for x in ("global oil", "world oil", "oil market")):
+        return None
+    if not any(x in low for x in ("surplus", "excess supply", "oversupply")):
+        return None
+    if not any(x in low for x in ("october", "november", "december", "september")):
+        return None
+    # Numeric value must occur next to a balance claim and a target month.
+    monthnames = {"september": "09", "october": "10", "november": "11", "december": "12"}
+    numeric = r"([0-9]+(?:\.[0-9]+)?)\\s*(?:million\\s*(?:barrels\\s*(?:per|a)\\s*day|bpd|b/d)|mb/d|mbd|million\\s*bpd)"
+    # String.raw in authoring is converted below to single backslash regex tokens.
+    numeric = numeric.replace("\\\\", "\\")
+    for month, mon in monthnames.items():
+        patterns = (
+            rf"(?:surplus|excess\\s+supply|oversupply)\\s+(?:of\\s+|at\\s+|to\\s+|by\\s+)?{numeric}.{{0,100}}?\\b(?:in\\s+)?{month}\\b",
+            rf"{numeric}.{{0,95}}?\\b(?:in\\s+)?{month}\\b",
+            rf"\\b{month}\\b.{{0,100}}?(?:surplus|oversupply).{{0,65}}?{numeric}",
+        )
+        for pattern in patterns:
+            m = re.search(pattern.replace("\\\\", "\\"), low, flags=re.I)
+            if not m:
+                continue
+            value = float(m.group(1))
+            if 0.2 <= value <= 10.0:
+                return f"2026-{mon}", value
+    return None
+
+
+def _oil_surplus_direct_report(raw_html: str, publisher: str, url: str,
+                               current: dt.datetime) -> dict:
+    text = _visible_text(raw_html)
+    if "jpmorgan" not in normalize_text(text) or "oil" not in normalize_text(text):
+        raise RuntimeError("JPMorgan oil-balance report not identifiable")
+    result = _oil_surplus_extract_pair(text)
+    if result != ("2026-10", 1.4):
+        raise RuntimeError("Nov 4 article does not explicitly support 2026-10 1.4 Mbd surplus")
+    if not any(x in normalize_text(text) for x in ("nov. 4", "nov 4", "november 4", "november 04", "nov 04")):
+        # OGJ independent source has date in web metadata but might omit text header.
+        if publisher != "oilgasjournal":
+            raise RuntimeError("JPMorgan report publication date not verified")
+    return {
+        "period": "2026-10",
+        "surplus_mbd": 1.4,
+        "publication_day": GLOBAL_OIL_SURPLUS_SOURCE_DATE.isoformat(),
+        "publisher": publisher,
+        "url": url,
+        "source_type": "broker_estimate_quoted_in_media",
+        "independent_of_iea": True,
+    }
+
+
+def _oil_surplus_rss_item(title: str, publisher: str,
+                          published: dt.datetime, url: str) -> dict | None:
+    key = GLOBAL_OIL_SURPLUS_RSS_SOURCES.get(normalize_text(publisher))
+    if not key or not url.startswith("https://news.google.com/"):
+        return None
+    parsed = _oil_surplus_extract_pair(title)
+    if parsed is None:
+        return None
+    period, value = parsed
+    if published.date() <= GLOBAL_OIL_SURPLUS_SOURCE_DATE:
+        return None
+    return {
+        "period": period, "surplus_mbd": value,
+        "publication_day": published.date().isoformat(),
+        "publisher": key, "url": url,
+        "source_type": "RSS_headline_only",
+        "independent_of_iea": True,
+    }
+
+
+def fetch_global_oil_surplus_reports(current: dt.datetime) -> tuple[list[dict], list[str]]:
+    """Never construct a balance reading from a price change or a headline without quantities."""
+    rows, failures = [], []
+    age = (current.astimezone(UTC).date() - GLOBAL_OIL_SURPLUS_SOURCE_DATE).days
+    if 0 <= age <= GLOBAL_OIL_SURPLUS_MAX_REPORT_AGE_DAYS:
+        def _one_original(spec):
+            label, publisher, url = spec
+            try:
+                raw = fetch_bytes(url, timeout=6, attempts=1).decode("utf-8", "replace")
+                return _oil_surplus_direct_report(raw, publisher, url, current), None
+            except Exception as exc:
+                return None, f"{label}: {type(exc).__name__}: {str(exc)[:120]}"
+        with ThreadPoolExecutor(max_workers=3) as pool:
+            for row, error in pool.map(_one_original, GLOBAL_OIL_SURPLUS_SOURCES):
+                if row is not None:
+                    rows.append(row)
+                elif error:
+                    failures.append(error)
+    def _one_feed(query):
+        try:
+            raw = fetch_bytes(google_news_url(query), timeout=4, attempts=1)
+            root = ET.fromstring(raw)
+            if root.tag != "rss" or root.find("channel") is None:
+                raise RuntimeError("not a valid RSS channel")
+            fresh = []
+            for item in root.findall("./channel/item"):
+                stamp = email.utils.parsedate_to_datetime(item.findtext("pubDate") or "")
+                if stamp.tzinfo is None:
+                    continue
+                stamp = stamp.astimezone(UTC)
+                if not dt.timedelta() <= current - stamp <= dt.timedelta(hours=72):
+                    continue
+                row = _oil_surplus_rss_item(
+                    item.findtext("title") or "",
+                    item.findtext("source") or "",
+                    stamp, item.findtext("link") or "",
+                )
+                if row is not None:
+                    fresh.append(row)
+            return fresh, None
+        except Exception as exc:
+            return [], f"RSS {type(exc).__name__}: {str(exc)[:100]}"
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        for collected, error in pool.map(_one_feed, GLOBAL_OIL_SURPLUS_QUERIES):
+            rows.extend(collected)
+            if error:
+                failures.append(error)
+    return rows, failures
+
+
+def choose_global_oil_surplus_update(rows: list[dict], state: dict,
+                                     current: dt.datetime) -> dict | None:
+    by_claim = {}
+    for r in rows:
+        period = r.get("period", "")
+        mbd = finite_number(r.get("surplus_mbd"))
+        if not re.fullmatch(r"2026-(?:09|10|11|12)", str(period)) or mbd is None:
+            continue
+        if not 0.2 <= mbd <= 10:
+            continue
+        publication = dt.date.fromisoformat(r["publication_day"])
+        if not 0 <= (current.astimezone(UTC).date()-publication).days <= 4:
+            continue
+        band = int(round(mbd*10))
+        by_claim.setdefault((period,band),{}).setdefault(r["publisher"], r)
+    candidates = []
+    for (period,band), sources in by_claim.items():
+        if len(sources) < 2:
+            continue
+        event_id=f"{GLOBAL_OIL_SURPLUS_KIND}:{period}:surplus_{band}00kbpd"
+        if event_recently_alerted(state,event_id,current):
+            continue
+        latest=max(r["publication_day"] for r in sources.values())
+        candidates.append((latest,period,band,event_id,list(sources.values())))
+    if not candidates:
+        return None
+    _, period, band, event_id, evidence=sorted(candidates,key=lambda x:(x[0],x[2]),reverse=True)[0]
+    return {"kind":GLOBAL_OIL_SURPLUS_KIND,"event_id":event_id,
+            "period":period,"surplus_mbd":band/10,
+            "sources":evidence[:3], "claim_source":"JPMorgan estimate via independent reporting"}
+
+
+def build_global_oil_surplus_alert(item: dict, current: dt.datetime,
+                                   fx: Quote | None = None) -> tuple[str,str,dict]:
+    period, level = item["period"],item["surplus_mbd"]
+    krw_suffix = (
+        f" · 약 {round(94*fx.price):,}원/배럴(환율 {fx.price:,.2f}원/달러)"
+        if fx is not None else " · 원화 환산: 검증된 최신 달러 환율 없음"
+    )
+    body = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"), "",
+        "[글로벌 원유 공급·수요 변화]",
+        f"JP모건 추정      {period} 하루 {level:.1f}백만 배럴 공급 과잉",
+        "확인 단계         독립 보도 최소 2곳의 JP모건 보고서 인용 · 실제 결산 아님",
+    ]
+    if period=="2026-10" and level==1.4:
+        body.extend([
+            "직전 비교         9월 과잉 110만 → 10월 과잉 140만 배럴/일(+30만)",
+            "전년 비교         2025년 연평균 과잉 130만 배럴/일",
+            "중동 수출         3월 980만 → 10월 2,070만 배럴/일",
+            "중남미 원유         전년 동기 대비 공급 +150만 배럴/일",
+            "글로벌 수요       전쟁 시작 이후 -330만 배럴/일(JP모건 추정)",
+            "10월 원유 수입     4,490만 배럴/일 · 전년 동월 대비 +130만",
+        ])
+    body.extend([
+        "", "[해석]",
+        "실물 원유 수출 회복과 소비 감소가 동시에 공급 과잉 가능성을 높였습니다.",
+        "JP모건의 원유 수급 추정과 경유·항공유 등 정제품 재고·공급 부족은 서로 별개입니다.",
+        "국제에너지기구(IEA) 10월 14일 보고서는 2026년 말까지 공급 부족을 전망했습니다.",
+        "→ 추정기관·기준기간의 차이가 커 글로벌 과잉을 확정 사실로 표현하지 않습니다.",
+        "", "[가격·지정학적 프리미엄]",
+        f"과거 JP모건 모형 추정  10월 27일 기준 Brent 적정가치 94달러/배럴{krw_suffix}",
+        "이는 과거 참고 추정치이며 현재 적정가격 또는 확정 목표주가에 해당하지 않습니다.",
+        "미·이란 휴전 기대와 원유 공급 과잉은 별개 요인으로 확인해야 합니다.",
+        "", "[다음 확인]",
+        "IEA 다음 월간 보고서와 JP모건 추정 변화·세계 육상재고·해상재고",
+        "중동 실제 생산·수출, 중남미 생산, 글로벌 소비, 경유 재고·정제마진",
+        "호르무즈 안전·유조선 운임·전쟁 위험보험·실제 휴전 합의 단계",
+        "", "[근거 · 보도일]",
+    ])
+    for r in item["sources"]:
+        body.append(f"{r['publisher']} · {r['publication_day']} · 원문: {r['url']}")
+    body.append(f"IEA 공식 이견 · 2026-10-14 · 원문: {GLOBAL_OIL_SURPLUS_IEA_OCT_URL}")
+    text="\n".join(body).strip()+"\n"
+    return "JP모건 글로벌 원유 공급 과잉 추정 확대",text,{
+        "event_kind":GLOBAL_OIL_SURPLUS_KIND,
+        "event_id":item["event_id"],
+        "report_period":period,
+        "surplus_mbd":level,
+        "provenance":"JPMorgan estimate in multiple authored media reports",
+        "reported_not_official_balance":True,
+        "iea_october_deficit_contrast":True,
+        "fair_value_date":"2026-10-27",
+        "sources":item["sources"],
+    }
+
+
+def _global_oil_surplus_run_monitor(current: dt.datetime) -> int:
+    if os.getenv("TELEGRAM_TEST","false").lower()=="true":
+        return _ORIGINAL_IRAN_HORMUZ_RUN_MONITOR(current)
+    state = load_state()
+    incoming, errors = fetch_global_oil_surplus_reports(current)
+    selected = choose_global_oil_surplus_update(incoming,state,current)
+    result = _ORIGINAL_IRAN_HORMUZ_RUN_MONITOR(current)
+    if result != 0:
+        return result
+    if selected is None:
+        print(f"oil_surplus_watch reports={len(incoming)} source_errors={len(errors)} new_signal=false")
+        return result
+    fx = None
+    try:
+        candidate = fetch_quote(SYMBOLS["usdkrw"])
+        if quote_is_fresh(candidate,current,240):
+            fx = candidate
+    except Exception as exc:
+        print(f"oil_surplus_fx_unavailable={type(exc).__name__}")
+    title, body, metadata = build_global_oil_surplus_alert(selected,current,fx)
+    existing_body = BODY_PATH.read_text(encoding="utf-8") if BODY_PATH.exists() else ""
+    existing_title = TITLE_PATH.read_text(encoding="utf-8") if TITLE_PATH.exists() else ""
+    if existing_body:
+        merged_body = existing_body.rstrip()+"\n\n"+body
+        # Existing Telegram send step has an absolute 4096-character HTML cap.
+        if len(merged_body)>3200:
+            print("oil_surplus_watch existing alert too long; preserve existing alert and defer new balance item")
+            return result
+        body=merged_body
+        title=existing_title.strip()
+        old_meta = json.loads(ALERT_JSON_PATH.read_text(encoding="utf-8"))
+        metadata={**old_meta,"additional_global_oil_balance":metadata}
+        pending=json.loads(PENDING_STATE_PATH.read_text(encoding="utf-8"))
+        if not isinstance(pending,dict) or not isinstance(pending.get("alerted_events"),dict):
+            raise RuntimeError("previous oil event pending state unavailable")
+    else:
+        pending=build_pending_state(
+            state,selected["event_id"],GLOBAL_OIL_SURPLUS_KIND,current,
+            {"global_oil_balance":metadata},
+        )
+    alerted=dict(pending.get("alerted_events") or {})
+    alerted[selected["event_id"]]=current.astimezone(KST).isoformat(timespec="seconds")
+    pending["alerted_events"]=alerted
+    if not existing_body:
+        pending["last_event_id"]=selected["event_id"]
+        pending["last_event_kind"]=GLOBAL_OIL_SURPLUS_KIND
+    pending["last_alert_at_kst"]=current.astimezone(KST).isoformat(timespec="seconds")
+    TITLE_PATH.write_text(title.strip()+"\n",encoding="utf-8")
+    BODY_PATH.write_text(body,encoding="utf-8")
+    ALERT_JSON_PATH.write_text(json.dumps(metadata,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    PENDING_STATE_PATH.write_text(json.dumps(pending,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    write_summary([
+        "# 이란·호르무즈 기존 경로 · 글로벌 원유 수급",
+        current.astimezone(KST).strftime("확인 시각: %Y-%m-%d %H:%M KST"),
+        f"JP모건 수급 보고서 관측월: {selected['period']}",
+        f"수급 추정: 하루 +{selected['surplus_mbd']:.1f}백만 배럴",
+        f"독립 보도원 수: {len(selected['sources'])}",
+        "결과: 신규 원유 수급 추정 단계 · Telegram 실제 전송 확인 전",
+    ])
+    print(f"oil_surplus_alert_created=true event_id={selected['event_id']} "
+          f"merged_with_existing={bool(existing_body)} telegram_sent=false",flush=True)
+    return result
+
+
+run_monitor = _global_oil_surplus_run_monitor
 
 def main() -> int:
     parser = argparse.ArgumentParser()
