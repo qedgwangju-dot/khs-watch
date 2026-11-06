@@ -1,17 +1,26 @@
 {
   "version": 1,
-  "last_processed_date": "2026-11-04",
-  "last_processed_bp": 528,
+  "last_processed_date": "2026-11-05",
+  "last_processed_bp": 525,
   "armed_up": {
     "559": true,
     "578": true,
     "600": true
   },
   "armed_down": {
-    "525": true,
+    "525": false,
     "515": true
   },
-  "last_sent_event": null,
-  "last_message_id": null,
-  "last_send_confirmed_at_kst": null
+  "last_sent_event": {
+    "date": "2026-11-05",
+    "direction_and_levels": [
+      [
+        "하향",
+        525
+      ]
+    ],
+    "fingerprint": "91636efe93191f28583adc109ded4e3c77c2b0e0f6c1b18819b3d251c6cdba93"
+  },
+  "last_message_id": 558,
+  "last_send_confirmed_at_kst": "2026-11-06T11:38:27.678761+09:00"
 }
