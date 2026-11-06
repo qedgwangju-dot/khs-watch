@@ -73,6 +73,21 @@ def trusted(publisher: str) -> bool:
     return any(x == low or x in low for x in TRUSTED)
 
 
+def old_event_recap(title: str, kind: str) -> bool:
+    """A new article repeating the known July forced unwind is not a new trade."""
+    if kind not in {"마진콜·대규모 매각", "펀드 청산·운용 종료"}:
+        return False
+    is_old = bool(re.search(
+        r"\b(?:July 2026|Jul(?:y)?\.? 30|in July|July unwind|last summer|summer 2026)\b",
+        title, re.I,
+    ))
+    fresh = bool(re.search(
+        r"\b(?:new|fresh|another|additional|again|second|second round|November)\b",
+        title, re.I,
+    ))
+    return is_old and not fresh
+
+
 def parse_feed(xml_data: bytes, now: dt.datetime) -> list[dict]:
     root = ET.fromstring(xml_data)
     found = []
@@ -83,7 +98,7 @@ def parse_feed(xml_data: bytes, now: dt.datetime) -> list[dict]:
         if not trusted(source) or not manager_related(title):
             continue
         kind = type_of_event(title)
-        if not kind:
+        if not kind or old_event_recap(title, kind):
             continue
         try:
             published = email.utils.parsedate_to_datetime(item.findtext("pubDate") or "")
@@ -291,6 +306,11 @@ def main() -> int:
         "last_delivery": state.get("manual_claim", {}).get(SUBMITTED_CLAIM_KEY),
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"fund_distress_checked=true notified={notified} candidates={len(news)} news_sources_ok={len(QUERIES)-len(errors)}")
+    if len(errors) == len(QUERIES):
+        # A completely dark feed cannot be reported as a successful scan.
+        # The separate state persistence step still saves any confirmed
+        # Telegram delivery receipt because it runs under always().
+        raise RuntimeError("3개 뉴스 수집 경로 전부 실패 — 감시 실패로 표시하고 무변화로 판정하지 않음")
     return 0
 
 
@@ -302,6 +322,14 @@ def self_test() -> None:
     assert type_of_event("Situational Awareness forced sale to Citadel") == "마진콜·대규모 매각"
     assert not type_of_event("Situational Awareness new 13F filing")
     assert trusted("Reuters") and not trusted("Telegram channel")
+    assert old_event_recap(
+        "Situational Awareness: lessons from July 2026 Citadel forced sale",
+        "마진콜·대규모 매각"
+    )
+    assert not old_event_recap(
+        "Situational Awareness fresh new margin call after July 2026",
+        "마진콜·대규모 매각"
+    )
     now = dt.datetime(2026, 11, 6, 4, 0, tzinfo=UTC)
     sample = b"""<rss><channel><item><title>Situational Awareness hedge fund bankruptcy claims</title>
     <source>Reuters</source><link>https://example.com/one</link><pubDate>Fri, 06 Nov 2026 02:00:00 GMT</pubDate>
@@ -322,7 +350,7 @@ def self_test() -> None:
     manual = build_manual_alert("SEC 미확인")
     assert "공식 파산 미확인" in manual and "시타델" in manual
     assert "실현손실이 아닙니다" in manual
-    print("fund_distress_regression=PASS checks=rumor_gate,aged_news,source_quality,dedup,upgrade,manual_caveat")
+    print("fund_distress_regression=PASS checks=rumor_gate,aged_news,old_recap_filter,source_quality,dedup,upgrade,manual_caveat,source_outage_fail_visible")
 
 
 if __name__ == "__main__":
