@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 10,
+    "material_items": 11,
     "new_material_items": 0,
-    "raw_items": 109,
+    "raw_items": 113,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -246,6 +246,16 @@
       "title": "AI in your oven? Anthropic warns models ‘months away’ from self-replication on smart devices - The Guardian",
       "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPRUxXc0hJVk5xRzdVTE5hQ2h2LWdnS21nUEZRVVFwX0dVZHJ5QUU1NUxmZUgydXVrRS1jSVNDRmtSVU1YYTh2RURQT0NQcEozdXdIb0FFM1RLakVTRXJFYTl4RU9kQXRPTUM5Vm1uVktaQ1NXaXp2Z3UySW5ZVktRTU5ZNGVocUszOTZV?oc=5",
       "vendor": "Anthropic"
+    },
+    "1bfb5ed865c366b309e1afbf": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-11-06T19:49:53.207939+00:00",
+      "published_at": "2026-11-06T19:29:54+00:00",
+      "severity": 2,
+      "source": "CNBC",
+      "title": "OpenAI bugging suspect Alfozan pleads not guilty - CNBC",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBSbk12NjFsRElYclVkVDFyemhuS2hBRW1qeFJ4a3gzR3RQZzhMWnN1aDZhUnYya1p1UmZRRzMyeUJMN01hd0MxZlpySzc2VnZfNm5MY0l4VmlBTVI1VkRncHVtTFB0dDJlSHEwWUwyQ3dBMGfSAXhBVV95cUxNSGdEMk9fS1UtbXhfakhBWnFVMHh4R1BVNFVFOXdPRDlFakFGMGxFZWJ1eE1RcklKWmVjWUZRc3NZUjRvczI2dnR5QkFsS0xiMUFaNkdZZ1NxWENFRHFLRi1ScDhDNndOSV9JaDdNbEoxWXctX3FOWWE?oc=5",
+      "vendor": "OpenAI"
     },
     "21c87e6390cd54a3c0159cb9": {
       "category": "PHP 취약점 최초 공개·패치 대기",
@@ -1490,5 +1500,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-07T04:08:58+09:00"
+  "updated_at_kst": "2026-11-07T04:49:53+09:00"
 }
