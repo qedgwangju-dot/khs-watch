@@ -155,33 +155,113 @@ jobs:
         if: ${{ always() && !cancelled() }}
         run: python scripts/thirteenf_fund_distress_watch.py
 
+
       - name: Persist independent distress delivery keys
         if: ${{ always() && !cancelled() }}
         run: |
           FILE=data/thirteenf_fund_distress_watch_state.json
           if [ ! -f "$FILE" ]; then
-            echo "No new distress state to commit."
-            exit 0
-          fi
-          if [ -z "$(git status --porcelain -- "$FILE")" ]; then
-            echo "Distress state unchanged."
+            echo "No distress state to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- "$FILE"
-          git commit -m "Persist confirmed 13F manager distress delivery state"
           for attempt in 1 2 3 4; do
+            # Start each attempt at the newest remote commit; local worktree
+            # retains the confirmed delivery receipts written by Python.
             git fetch origin main
-            if git pull --rebase origin main && git push origin main; then
+            git reset --mixed origin/main
+            python - <<'PY'
+          import json
+          import pathlib
+          import subprocess
+
+          path=pathlib.Path("data/thirteenf_fund_distress_watch_state.json")
+          local=json.loads(path.read_text(encoding="utf-8"))
+          raw=subprocess.run(
+              ["git","show","HEAD:"+path.as_posix()],
+              capture_output=True,text=True
+          )
+          if raw.returncode:
+              result=dict(local)
+              changed=True
+          else:
+              try:
+                  remote=json.loads(raw.stdout)
+                  if not isinstance(remote,dict):
+                      raise ValueError("remote state is not an object")
+              except (ValueError,TypeError) as e:
+                  raise RuntimeError("Remote 13F distress state corrupt; refuse overwrite") from e
+              result=dict(remote)
+              for group in ("manual_claim","events","ownership_seen"):
+                  merged=dict(remote.get(group) or {})
+                  for key,val in dict(local.get(group) or {}).items():
+                      prior=merged.get(key)
+                      if prior is None:
+                          merged[key]=val
+                      elif prior==val:
+                          continue
+                      else:
+                          old_id=(prior or {}).get("message_id")
+                          new_id=(val or {}).get("message_id")
+                          old_level=(prior or {}).get("level")
+                          new_level=(val or {}).get("level")
+                          if old_id and new_id and old_id!=new_id:
+                              if old_level=="single" and new_level=="corroborated":
+                                  merged[key]=val
+                              elif old_level=="corroborated" and new_level=="single":
+                                  continue
+                              else:
+                                  raise RuntimeError(
+                                      f"Conflicting confirmed Telegram receipts: {group}/{key}"
+                                  )
+                          elif new_id and not old_id:
+                              merged[key]=val
+                          # Keep older confirmed receipt over stale baseline.
+                  result[group]=merged
+              result["schema"]=max(int(remote.get("schema") or 1),
+                                   int(local.get("schema") or 1))
+              result["ownership_delivery_initialized"]=bool(
+                  remote.get("ownership_delivery_initialized")
+                  or local.get("ownership_delivery_initialized")
+              )
+              if result["ownership_delivery_initialized"] and not result["ownership_seen"]:
+                  raise RuntimeError("Verified SEC ownership baseline unexpectedly empty")
+              for field in ("last_checked_utc","last_complete_news_scan_utc",
+                            "ownership_last_checked_utc"):
+                  result[field]=max(str(remote.get(field) or ""),
+                                    str(local.get(field) or "")) or None
+              if str(local.get("last_checked_utc") or "") >= str(remote.get("last_checked_utc") or ""):
+                  result["last_scan_errors"]=list(local.get("last_scan_errors") or [])
+              transient={"last_checked_utc","last_complete_news_scan_utc",
+                         "ownership_last_checked_utc"}
+              def substantial(value):
+                  return {k:v for k,v in value.items() if k not in transient}
+              changed=substantial(result)!=substantial(remote)
+
+          if not changed and raw.returncode==0:
+              # Drop timestamp-only updates rather than generating another
+              # scheduled commit and racing a legitimate delivery.
+              path.write_text(json.dumps(remote,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+              print("fund_distress_state_merge=unchanged (no extra commit)")
+          else:
+              path.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+              print("fund_distress_state_merge=monotonic new evidence")
+          PY
+            git add -- "$FILE"
+            if git diff --cached --quiet; then
+              echo "fund_distress_state_no_new_evidence=true"
+              exit 0
+            fi
+            git commit -m "Persist confirmed 13F manager distress delivery state"
+            if git push origin HEAD:main; then
               echo "distress_state_push_confirmed=true"
               exit 0
             fi
-            git rebase --abort >/dev/null 2>&1 || true
-            echo "Distress state push retry $attempt/4"
+            echo "Distress state changed concurrently, recomputing against remote: $attempt/4"
             sleep $((attempt * 3))
           done
-          echo "::error::Distress delivery receipt state could not be persisted; review artifact before resending"
+          echo "::error::Could not persist merged distress receipt after 4 non-force attempts"
           exit 1
 
       - name: Upload distress delivery audit
