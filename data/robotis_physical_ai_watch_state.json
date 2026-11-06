@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-05T22:15:22.015075+00:00",
+  "updated_at": "2026-11-06T01:30:19.009868+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -851,9 +851,12 @@
     "65f90ede8763563ed83e41122d363bd02f989c4f0c15069e468c208b6680e0a2",
     "ee9a3e46819ea776d19fdeae0c77c405d0b6882834ab692f92b8425c51505222",
     "4ad9baafdfe2f99a1e021e1a8830466bb6c41f39c1deded321162735de0d8c1e",
-    "dd75bb6b11ef420ba68eca671f8dbfb409bcdfff7787c61a94f194bf820a1f72"
+    "dd75bb6b11ef420ba68eca671f8dbfb409bcdfff7787c61a94f194bf820a1f72",
+    "b2ccf34262659e1b189e71ca7fc9c3c000cedcf405616aaedffd6947365065ed"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "b2ccf34262659e1b189e71ca7fc9c3c000cedcf405616aaedffd6947365065ed"
+  ],
   "groups": [
     "agibot_worken_hardware_model",
     "daedong_eyou_robot_actuator",
@@ -869,21 +872,6 @@
     "wonik_robot_hand_components"
   ],
   "delivery_history": [
-    {
-      "run_id": 41591404168,
-      "outcome": "sent",
-      "message_ids": [
-        323
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-03T06:41:04.104624+00:00"
-    },
     {
       "run_id": 41615671500,
       "outcome": "sent",
@@ -1120,15 +1108,36 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-05T22:15:22.015075+00:00"
+    },
+    {
+      "run_id": 42144229646,
+      "outcome": "sent",
+      "message_ids": [
+        335
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-06T01:30:19.009868+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 42119878811,
-    "outcome": "normal_silence",
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-05T22:15:22.015075+00:00"
+    "run_id": 42144229646,
+    "outcome": "sent",
+    "message_ids": [
+      335
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-06T01:30:19.009868+00:00"
   }
 }
