@@ -686,8 +686,9 @@ def self_test():
                      '2026-11-03','2026-11-04','2026-11-05','2026-11-06']
     primary={sym:{d:100.0 for d in precision_dates} for sym in SYMBOLS.values()}
     alternate={sym:dict(values) for sym,values in primary.items()}
-    primary['SNDK'][precision_dates[0]]=1330.05
-    alternate['SNDK'][precision_dates[0]]=1330.05
+    for anchor in (precision_dates[-6], precision_dates[-4]):
+        primary['SNDK'][anchor]=1330.05
+        alternate['SNDK'][anchor]=1330.05
     primary['SNDK'][precision_dates[-1]]=806.80
     alternate['SNDK'][precision_dates[-1]]=806.43
     compare=build_snapshot(primary,alternate,datetime(2026,11,6,18,30,tzinfo=NY))
