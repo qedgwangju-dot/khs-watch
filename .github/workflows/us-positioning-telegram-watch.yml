@@ -29,7 +29,8 @@ on:
       timezone: "Asia/Seoul"
   # Recover a dropped US positioning morning cron from the existing CTA schedule.
   workflow_run:
-    workflows: ["Treasury CTA squeeze Telegram alert"]
+    # Two existing independent schedules; only the missing-digest gate may run.
+    workflows: ["Treasury CTA squeeze Telegram alert", "Warsh Reaction Function Telegram Watch"]
     types: [completed]
     branches: [main]
   workflow_dispatch:
