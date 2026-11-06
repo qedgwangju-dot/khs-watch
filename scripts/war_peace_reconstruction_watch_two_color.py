@@ -180,14 +180,29 @@ def _hypothetical_war_options(title):
                 and not _separate_attack_headline(title) and not _active_adverse(title))
 
 
+def _pending_iran_war_decision(title):
+    return bool(re.search(r'\biran war decision coming\s+["“]?soon\b', title)
+                and not _separate_attack_headline(title)
+                and not _active_adverse(title))
+
+
+def _political_war_pressure_commentary(title):
+    return bool(re.search(r'민주', title) and re.search(r'트럼프', title)
+                and re.search(r'이란전|종전', title)
+                and re.search(r'압박', title)
+                and re.search(r'의혹|향방|진퇴양난', title)
+                and not re.search(r'공격|공습|폭격|포격|피격|미사일|드론|제재|봉쇄', title)
+                and not _separate_attack_headline(title))
+
+
 def direction(stage, row):
     """Return a display color, or None for a neutral market reference."""
     kind = stage.non_military_kind(row)
     color = stage.final_color(row)
     title = stage._headline(row)
-    if _election_war_commentary(title):
+    if _election_war_commentary(title) or _political_war_pressure_commentary(title):
         return None
-    if _hypothetical_war_options(title):
+    if _hypothetical_war_options(title) or _pending_iran_war_decision(title):
         return None
     # Action restraint is a cooling signal, not a confirmed attack. The
     # semantic stage may be yellow, but the two-color projection must never
@@ -297,8 +312,10 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         matched.append(row['id'])
         color = direction(stage, row)
         title = stage._headline(row)
-        commentary = _election_war_commentary(title)
-        hypothetical = _hypothetical_war_options(title)
+        commentary = (_election_war_commentary(title)
+                      or _political_war_pressure_commentary(title))
+        hypothetical = (_hypothetical_war_options(title)
+                        or _pending_iran_war_decision(title))
         postwar = (bool({str(tag).strip() for tag in row.get('tags', [])} & DIPLOMATIC_TAGS)
                    and _postwar_compromise_context(title))
         context = commentary or hypothetical or postwar

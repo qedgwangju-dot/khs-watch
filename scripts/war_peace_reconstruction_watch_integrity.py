@@ -1503,6 +1503,18 @@ def final_color(row):
     title = _headline(row)
     if _reported_major_airstrike(title):
         return 'red'
+    # A decision promised for later is not an attack that has occurred.  The
+    # source may discuss strike options in its summary, but the reported event
+    # in this headline is a pending presidential decision.
+    if (re.search(r'\biran war decision coming\s+["“]?soon\b', title)
+            and not _statement_with_actual_action(title)):
+        return 'yellow'
+    # Reviewing a mediator's nuclear proposal is a reported diplomatic step,
+    # not a signed agreement or a military escalation.
+    if (re.search(r'이란.{0,30}핵개발', title)
+            and re.search(r'중재국\s*제안\s*검토', title)
+            and not _military_actions(title)):
+        return 'green'
     if _title_only_unconfirmed_explosion(row):
         return 'yellow'
     # A title-only report of explosion sounds does not establish an attack.
