@@ -6382,7 +6382,12 @@ def build_global_oil_surplus_alert(item: dict, current: dt.datetime,
         body.append(f"{r['publisher']} · {r['publication_day']} · 원문: {r['url']}")
     body.append(f"IEA 공식 이견 · 2026-10-14 · 원문: {GLOBAL_OIL_SURPLUS_IEA_OCT_URL}")
     text="\n".join(body).strip()+"\n"
-    return "JP모건 글로벌 원유 공급 과잉 추정 확대",text,{
+    headline = (
+        "JP모건 글로벌 원유 공급 과잉 확대"
+        if period=="2026-10" and level==1.4
+        else "JP모건 글로벌 원유 수급 추정 변화"
+    )
+    return headline,text,{
         "event_kind":GLOBAL_OIL_SURPLUS_KIND,
         "event_id":item["event_id"],
         "report_period":period,
