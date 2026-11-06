@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-06T11:27:44.729327+00:00",
+  "updated_at": "2026-11-06T17:27:27.759753+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -858,40 +858,20 @@
     "4731dcfe2701246dafb0a02322e7e5ebb70d542362244f2b8720cd8386498891",
     "dcc6ff6a6439963e664edce7177035b8f4df3408452506ab5d2661cad520c629",
     "79b48ed86732967a2e9d8a822fdbf9bf76a6bd02145f2c090945a9c0357bb506",
-    "46a149afe68e3215a2f290572b73784319023208d18027df7fcfa58dc44fa97a"
+    "46a149afe68e3215a2f290572b73784319023208d18027df7fcfa58dc44fa97a",
+    "91ef46c43a4c7aec0a713854694d55956015336e5eb14e30c8abfee92fbef6fb"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "91ef46c43a4c7aec0a713854694d55956015336e5eb14e30c8abfee92fbef6fb"
+  ],
   "groups": [
-    "agibot_worken_hardware_model",
-    "daedong_eyou_robot_actuator",
     "ess_battery",
     "humanoid_component_policy",
-    "il_robot_revenue_2026q3",
-    "lg_cloid_inhouse_assembly",
-    "lg_robot_learning_hours_target",
-    "openai_robotics_infrastructure_program",
     "robotis",
     "robotis_excess_demand",
-    "robotis_microduck_dart_no_order",
-    "wonik",
-    "wonik_robot_hand_components"
+    "wonik"
   ],
   "delivery_history": [
-    {
-      "run_id": 41717355146,
-      "outcome": "sent",
-      "message_ids": [
-        326
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-03T20:58:04.205196+00:00"
-    },
     {
       "run_id": 41740799883,
       "outcome": "sent",
@@ -1128,15 +1108,36 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-06T11:27:44.729327+00:00"
+    },
+    {
+      "run_id": 42261744677,
+      "outcome": "sent",
+      "message_ids": [
+        338
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-06T17:27:27.759753+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 42210384284,
-    "outcome": "normal_silence",
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-06T11:27:44.729327+00:00"
+    "run_id": 42261744677,
+    "outcome": "sent",
+    "message_ids": [
+      338
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-06T17:27:27.759753+00:00"
   }
 }
