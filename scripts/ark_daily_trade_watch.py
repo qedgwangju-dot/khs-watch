@@ -260,6 +260,99 @@ def build(rows, day, is_revision=False, rate=None, basis="", prices=None, enrich
     ])
     return "\n".join(header)
 
+
+def _compact_krw(usd,rate):
+    v=float(usd)*float(rate)
+    return f"{v/100_000_000:,.1f}억원" if abs(v)>=100_000_000 else f"{v/10_000:,.0f}만원"
+
+
+def _period_compact(history,day,rate):
+    """Use only complete, date-matched price-confirmed days; never fill gaps with zero."""
+    days={x["date"]:x for x in history if isinstance(x,dict) and x.get("date")}
+    parts=[]
+    for label,start,end in sector_rank.period_windows(day):
+        selected=[x for k,x in sorted(days.items()) if start.isoformat()<=k<=end.isoformat()]
+        expected=sector_rank.expected_sessions(start,end)
+        cover=(f"{len(selected)}/{expected}" if expected is not None else f"{len(selected)}/?")
+        name={"당일":"당일","이번 주":"주간","당월 누적":"당월","최근 3개월":"3개월"}[label]
+        valid=(expected is not None and len(selected)==expected and all(
+            x.get("buy_complete",x.get("complete",False)) and
+            x.get("sell_complete",x.get("complete",False)) for x in selected))
+        if not valid:
+            parts.append(f"{name}: 판정 보류({cover}일)")
+            continue
+        buy=sum(float(v) for x in selected for v in x.get("buy_usd",{}).values())
+        sell=sum(float(v) for x in selected for v in x.get("sell_usd",{}).values())
+        net=buy-sell
+        direction="순매수" if net>0 else "순매도" if net<0 else "균형"
+        sign="+" if net>0 else "-" if net<0 else ""
+        parts.append(f"{name}: {direction}{sign}{_compact_krw(abs(net),rate)}({cover}일)")
+    return " / ".join(parts)
+
+
+def build_brief(rows,day,*,rate,basis="",prices=None,history=None,digest=""):
+    """Sector-only Telegram alert; old full report remains for diagnostics."""
+    if not rate or not math.isfinite(float(rate)) or float(rate)<=0:
+        raise ValueError("Verified USD/KRW required")
+    totals,stocks=sector_rank.aggregate(rows,prices or {})
+    required=sum(x["buy_rows"]+x["sell_rows"] for x in totals.values())
+    covered=sum(x["buy_priced"]+x["sell_priced"] for x in totals.values())
+    complete=required>0 and required==covered
+    buying=sum(x["매수"] for x in totals.values())
+    selling=sum(x["매도"] for x in totals.values())
+    unknown=totals.get(sector_rank.SECTOR_UNKNOWN,{})
+    unknown_count=unknown.get("buy_rows",0)+unknown.get("sell_rows",0)
+    unknown_amount=unknown.get("매수",0)+unknown.get("매도",0)
+    def top(direction):
+        vals=sorted((x for x in totals.values()
+                     if x["sector"]!=sector_rank.SECTOR_UNKNOWN
+                     and x["buy_rows" if direction=="매수" else "sell_rows"]>0),
+                    key=lambda x:-x[direction])
+        output=[]
+        for record in vals[:3]:
+            names=sorted((x for x in stocks.values()
+                          if x["sector"]==record["sector"] and x["action"]==direction),
+                         key=lambda x:-x["value"])
+            tickers="·".join(x["ticker"] for x in names[:2])
+            output.append(f"• {html.escape(record['sector'])} {_compact_krw(record[direction],rate)}"
+                          + (f" ({html.escape(tickers)})" if tickers else ""))
+        return output or ["• 해당 업종 없음"]
+    lines=[f"<b>[ARK 업종 매매 방향 | {day}]</b>"]
+    if complete:
+        net=buying-selling
+        label="순매수" if net>0 else "순매도" if net<0 else "균형"
+        sign="+" if net>0 else "-" if net<0 else ""
+        lines.append(f"<b>전체</b> 매수 {_compact_krw(buying,rate)} / 매도 {_compact_krw(selling,rate)}"
+                     f" → <b>{label} {sign}{_compact_krw(abs(net),rate)}</b>")
+    else:
+        lines.append(f"<b>전체 방향 보류</b> · 종가 확인 {covered}/{required}행"
+                     f" (가격 확인분 매수 {_compact_krw(buying,rate)} / 매도 {_compact_krw(selling,rate)})")
+    lines.extend(["","<b>집중 매수 업종</b>",*top("매수"),"",
+                  "<b>집중 매도 업종</b>",*top("매도")])
+    if complete and not unknown_count:
+        pairs=[(x["sector"],x["매수"]-x["매도"]) for x in totals.values()]
+        positives=sorted((x for x in pairs if x[1]>0),key=lambda x:-x[1])[:2]
+        negatives=sorted((x for x in pairs if x[1]<0),key=lambda x:x[1])[:2]
+        fmt=lambda seq,sign:" · ".join(f"{html.escape(k)} {sign}{_compact_krw(abs(v),rate)}"
+                                      for k,v in seq) or "없음"
+        lines.extend(["","<b>업종별 순방향</b>",
+                      "• 순매수: "+fmt(positives,"+"),"• 순매도: "+fmt(negatives,"-")])
+    else:
+        lines.append(f"• 업종 미분류 {unknown_count}행·{_compact_krw(unknown_amount,rate)}"
+                     f" (전체 종가 {covered}/{required}행 확인, 업종 순위는 확인분)")
+    current=sector_rank.snapshot(day,digest,totals)
+    merged=sector_rank.merged_history(history or [],current)
+    lines.extend(["","<b>기간별 전체 방향</b>","• "+_period_compact(merged,day,rate),"",
+                  "※ 공식 매매 수량×당일 시장 종가의 추정치. 실제 체결대금·ETF 순유출입과 다릅니다.",
+                  "※ 누락된 날짜는 0원으로 간주하지 않습니다. 업종은 종목 사업을 기준으로 자체 분류.",
+                  f"※ 환율 1달러={rate:,.2f}원 · {html.escape(str(basis))}",
+                  _link("ARK 공식 매매 파일",SOURCE)])
+    result="\n".join(lines)
+    if len(result)>3700:
+        raise ValueError("ARK compact Telegram report unexpectedly long")
+    return result
+
+
 def main(probe=False):
     data,kind=_fetch()
     rows=parse(data)
@@ -299,9 +392,8 @@ def main(probe=False):
     distinct_tickers=len({row["ticker"] for row in latest_rows})
     print(f"ARK_NOTIONAL_PRICE_COVERAGE={len(prices)}/{distinct_tickers}")
     rank_upgrade=bool(latest==previous_date and state.get("format_version",0)<REPORT_FORMAT_VERSION)
-    msg=build(latest_rows,latest,is_revision=changed,rate=rate,basis=fx.basis,
-              prices=prices,enrichment=False,
-              history=state.get("sector_history",[]),digest=digest,sector_upgrade=rank_upgrade)
+    msg=build_brief(latest_rows,latest,rate=rate,basis=fx.basis,
+                    prices=prices,history=state.get("sector_history",[]),digest=digest)
     pathlib.Path("out").mkdir(exist_ok=True)
     pathlib.Path("out/ark_trade_alert.html").write_text(msg+"\n",encoding="utf-8")
     aggregated_sectors, _ = sector_rank.aggregate(latest_rows,prices)
