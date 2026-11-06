@@ -349,9 +349,16 @@ def main() -> int:
     if ownership is not None:
         # Existing 2026 filings are historical baseline, not newly traded assets.
         # Only filings appearing after the first verified snapshot are alertable.
-        if "ownership_seen" not in state:
-            state["ownership_seen"] = {x["accession"]: {"baseline": True} for x in ownership}
-            print(f"fund_distress_ownership_baseline={len(ownership)} (historical filings not re-alerted)")
+        # An earlier parser could wrongly save an empty ownership baseline
+        # when SEC's primaryDocument included an XSL subfolder. Treat that
+        # empty unverified record as uninitialized, never as "new filings".
+        if not state.get("ownership_seen") and not state.get("ownership_delivery_initialized"):
+            if ownership:
+                state["ownership_seen"] = {x["accession"]: {"baseline": True} for x in ownership}
+                state["ownership_delivery_initialized"] = True
+                print(f"fund_distress_ownership_baseline={len(ownership)} (historical filings not re-alerted)")
+            else:
+                print("::warning::SEC ownership filings returned no parsable rows — baseline remains incomplete")
         else:
             for row in reversed(ownership):
                 accession = row["accession"]
