@@ -2,8 +2,8 @@
   "initialized": true,
   "source_version": 2,
   "bill": "H.R. 3633 — Digital Asset Market Clarity Act",
-  "last_checked_kst": "2026-11-06T17:25:36+09:00",
-  "last_checked_et": "2026-11-06T03:25:36-05:00",
+  "last_checked_kst": "2026-11-06T20:00:54+09:00",
+  "last_checked_et": "2026-11-06T06:00:54-05:00",
   "seen_event_keys": [
     "014ece5622c668588a744a4fffa905e803f51a087ad35edaafd5a1ef049e8081",
     "06ee00dbb8854130493bb2e968b1cacab9ca367fe3cc63799c3a34b54881ae9c",
@@ -108,12 +108,5 @@
     "SEC EDGAR EFFECT/prospectus discovery unavailable: existing polling is disabled; issuer product list does not establish registration effectiveness"
   ],
   "collection_complete": false,
-  "last_complete_check_kst": null,
-  "last_successful_delivery_kst": "2026-11-06T17:25:47+09:00",
-  "telegram_message_ids": [
-    311,
-    312
-  ],
-  "bot_username": "khs88790088790000_bot",
-  "telegram_format": "korean_html_v7_negotiation_gate"
+  "last_complete_check_kst": null
 }
