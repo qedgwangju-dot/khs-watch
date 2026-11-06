@@ -4,6 +4,7 @@ on:
   workflow_run:
     workflows:
       - "Yen carry current vs recent FX shock"
+      - "Global Rates & Yen Carry Telegram Watch"
     types:
       - completed
   push:
