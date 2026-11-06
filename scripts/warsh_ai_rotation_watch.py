@@ -353,29 +353,43 @@ def build_snapshot(independent, yahoo, now=None):
             count += 1
     active = rel5 >= THRESH_5D and rel3 >= THRESH_3D and count >= 2
 
-    # A <12bp discrepancy in close prices can still change a displayed
-    # one-decimal return or even cross a regime boundary. Validate final
-    # user-visible numbers, not just the individual closing prices.
+    # Keep exact-price validation and the final threshold gate strict.
+    # A few basis points in otherwise verified closes may round to adjacent
+    # tenths (e.g. SNDK -39.34% vs -39.37% => -39.3% vs -39.4%).
+    # Treat ONLY a <=0.05 percentage-point difference across a one-decimal
+    # boundary as presentation uncertainty, with an explicit message note.
+    # Larger discrepancies or any threshold disagreement still fail closed.
     def shown(value):
         return f'{float(value):+.1f}'
+    rounding_disagreements = []
+    def verify_display(label, first, second, unit='%'):
+        if shown(first) == shown(second):
+            return
+        if abs(float(first) - float(second)) < 0.05:
+            rounding_disagreements.append(
+                f'{label}: {shown(first)}{unit} / {shown(second)}{unit} (반올림 경계)'
+            )
+            return
+        raise RuntimeError(
+            f'{label} 표시 수익률 제공처 불일치: '
+            f'{shown(first)}{unit} vs {shown(second)}{unit}'
+        )
     for name in SYMBOLS:
         for window in ('3d', '5d'):
-            if shown(returns[name][window]) != shown(secondary_returns[name][window]):
-                raise RuntimeError(
-                    f'{name} {window} 표시 수익률 제공처 불일치: '
-                    f"{shown(returns[name][window])}% vs {shown(secondary_returns[name][window])}%"
-                )
+            verify_display(f'{name} {window}', returns[name][window],
+                           secondary_returns[name][window])
     alt_rel3 = secondary_returns['반도체']['3d'] - secondary_returns['소프트웨어']['3d']
     alt_rel5 = secondary_returns['반도체']['5d'] - secondary_returns['소프트웨어']['5d']
     for label, x, y in [('3거래일 초과수익', rel3, alt_rel3), ('5거래일 초과수익', rel5, alt_rel5)]:
-        if shown(x) != shown(y):
-            raise RuntimeError(f'{label} 제공처 불일치: {shown(x)}%p vs {shown(y)}%p')
+        verify_display(label, x, y, unit='%p')
     alt_count = 0
     for group, names in BASKETS.items():
         alt_avg = sum(secondary_returns[name]['5d'] for name in names) / len(names)
         alt_diff = alt_avg - secondary_returns['소프트웨어']['5d']
-        if shown(baskets[group]['5d']) != shown(alt_avg) or shown(baskets[group]['vs_software_5d']) != shown(alt_diff):
-            raise RuntimeError(f'{group} 묶음의 표시 수익률 제공처 불일치')
+        verify_display(f'{group} 묶음 5d', baskets[group]['5d'], alt_avg)
+        verify_display(f'{group} 대 소프트웨어 5d', baskets[group]['vs_software_5d'], alt_diff, unit='%p')
+        if (alt_diff >= THRESH_5D) != (diff5_by_group := (baskets[group]['vs_software_5d'] >= THRESH_5D)):
+            raise RuntimeError(f'{group} 묶음 확정 임계값 제공처 불일치 — 송출 차단')
         if alt_diff >= THRESH_5D:
             alt_count += 1
     alt_active = alt_rel5 >= THRESH_5D and alt_rel3 >= THRESH_3D and alt_count >= 2
@@ -400,6 +414,7 @@ def build_snapshot(independent, yahoo, now=None):
         'price_basis': 'StockAnalysis / S&P Global Market Intelligence·Yahoo 완료 일봉 교차검증; SOXX 2026-11-05 3:1 분할조정 기준',
         'source_gap_limit_bp': MAX_SOURCE_GAP_BP,
         'source_checks': source_checks,
+        'rounding_uncertainty': rounding_disagreements,
         'corporate_action_basis': split_audit,
         'returns': returns, 'relative_3d': rel3, 'relative_5d': rel5,
         'baskets': baskets, 'confirm_count': count, 'active': active,
@@ -552,8 +567,10 @@ def message(s, correction=False, old=None):
         '• 첫째, 3거래일·5거래일 신호가 이어지는지 보고, 둘째, 실제 실적·주문·ETF 자금흐름을 별도로 확인합니다.',
         '', '<b>가격 검증</b>',
         f"• 기준: 9개 종목 공통 마감일·시작일 일치 · 두 제공처 최대 차이 {maxgap:.2f}bp (허용 {MAX_SOURCE_GAP_BP:.0f}bp)",
-        '• 가격뿐 아니라 표시되는 3·5거래일 수익률·초과수익·업종 묶음·임계값 판정까지 두 제공처가 일치해야 보냅니다.',
-        '• 어떤 값이라도 기준을 통과하지 못하면 신규 알림과 상태 갱신을 차단합니다.',
+        '• 3·5거래일 수익률·초과수익·업종 묶음·임계값 판정을 대조하며 반올림 경계 차이는 최대 0.05%p만 별도 표시합니다.',
+        '• 종가 허용 범위 초과·반올림 경계 이외 수익률 불일치·임계값 판정 차이는 전송과 상태 갱신을 차단합니다.',
+        *(('• 반올림 경계: ' + '; '.join(s['rounding_uncertainty']),)
+          if s.get('rounding_uncertainty') else ()),
         '', '<b>원천</b>',
         f"{source_link('SOXX 마감가격', 'https://stockanalysis.com/etf/soxx/history/')} · "
         f"{source_link('IGV 마감가격', 'https://stockanalysis.com/etf/igv/history/')} · "
@@ -662,6 +679,27 @@ def self_test():
         raise AssertionError('source disagreement must block')
     except RuntimeError as e:
         assert '불일치' in str(e)
+    # Close prices 806.80 and 806.43 both pass <12bp on SNDK;
+    # their five-session returns round to adjacent tenths without crossing
+    # any existing AI-rotation regime threshold. Flag, do not misclassify.
+    precision_dates=['2026-10-29','2026-10-30','2026-11-02',
+                     '2026-11-03','2026-11-04','2026-11-05','2026-11-06']
+    primary={sym:{d:100.0 for d in precision_dates} for sym in SYMBOLS.values()}
+    alternate={sym:dict(values) for sym,values in primary.items()}
+    primary['SNDK'][precision_dates[0]]=1330.05
+    alternate['SNDK'][precision_dates[0]]=1330.05
+    primary['SNDK'][precision_dates[-1]]=806.80
+    alternate['SNDK'][precision_dates[-1]]=806.43
+    compare=build_snapshot(primary,alternate,datetime(2026,11,6,18,30,tzinfo=NY))
+    assert compare['rounding_uncertainty']
+    assert '-39.3% / -39.4%' in ';'.join(compare['rounding_uncertainty'])
+    assert '반올림 경계' in message(compare)
+    alternate['SNDK'][precision_dates[-1]]=805.5
+    try:
+        build_snapshot(primary,alternate,datetime(2026,11,6,18,30,tzinfo=NY))
+        raise AssertionError('material SNDK price mismatch must still fail')
+    except RuntimeError as exc:
+        assert '불일치' in str(exc)
     yahoo['SOXX']['2026-10-09'] = 106
     try:
         build_snapshot(independent,yahoo,datetime(2026,10,9,11,30,tzinfo=NY))
