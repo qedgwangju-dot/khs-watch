@@ -214,53 +214,95 @@ def ownership_records(payload: dict) -> list[dict]:
     return sorted(rows, key=lambda row: (row["filed"], row["accession"]), reverse=True)
 
 
+def source_link(label: str, url: str) -> str:
+    """Telegram HTML link: human-readable label, safe HTTPS destination."""
+    target = str(url).strip()
+    parsed = urllib.parse.urlsplit(target)
+    if parsed.scheme != "https" or not parsed.netloc or parsed.username or parsed.password:
+        raise RuntimeError("Invalid source URL; refusing a misleading Telegram link")
+    return f'<a href="{html.escape(target, quote=True)}">{html.escape(label)}</a>'
+
+
 def build_ownership_alert(row: dict, sec_status: str) -> str:
     return "\n".join([
-        "[Situational Awareness · 신규 SEC 지분신고]",
-        "판정: SEC 공식 신규 제출 확인 · 매매·파산 확정과 별개",
-        f"■ 신고 종류: {row['form']} / 제출일: {row['filed']} / 접수번호: {row['accession']}",
-        "■ 13D·13G는 특정 발행사 지분 보유·변경에 관한 신고이며, 펀드 전체 포트폴리오와 실제 거래 대금이 아닙니다.",
-        "■ 지분 축소·처분 여부는 원문 보고기준일·수량·비율과 직전 신고를 대조해야 확정할 수 있습니다.",
-        f"■ 13F 별도 확인: {sec_status}",
-        "SEC 신규 공시 원문: " + row["url"],
+        "<b>[Situational Awareness · 신규 SEC 지분신고]</b>",
+        "<b>방향: 지분 공시 변화 확인 · 실제 매도·파산 여부는 원문 검증 전</b>",
+        "판정: SEC 공식 제출 확인 · 파산 확정과 별개",
+        f"■ 신고 종류: {html.escape(row['form'])} / 제출일: {html.escape(row['filed'])} / 접수번호: {html.escape(row['accession'])}",
+        "■ 13D·13G는 특정 발행사 지분 보유·변경에 관한 신고로, 펀드 전체 포트폴리오와 실제 거래 대금이 아닙니다.",
+        "■ 실제 지분 축소·처분 여부는 이번·직전 원문의 기준일·수량·비율 대조가 필요합니다.",
+        f"■ 13F 확인 범위: {html.escape(sec_status)}",
+        "출처: " + source_link("SEC 신규 공시 원문", row["url"]),
     ])
 
 
 def build_manual_alert(sec_status: str) -> str:
-    # User-provided source text, not independent access to the X post.
+    # User-provided X post: original social claim, not independent legal evidence.
+    # The 7–9월 actions are historical; do not imply new forced sales in November.
     return "\n".join([
-        "[Situational Awareness 펀드 긴급 사실확인]",
-        "판정: 공식 파산 미확인 · SNS 주장(독립 확인 전)",
-        "■ 2026-11-06 제공된 X 게시물은 '공식 파산·전량 청산'을 주장하지만 법원 접수번호·펀드 공식 발표는 제시되지 않았습니다.",
-        "■ 검증된 7월 사건: 로이터는 포트폴리오 가치 67% 하락 및 상장주식 대부분의 시타델 매각을 보도했습니다.",
-        "■ 검증된 8월 사건: 시타델이 인수한 포트폴리오의 80% 이상을 다시 매각했습니다. 시타델의 매각을 펀드의 11월 신규 청산으로 계산하면 안 됩니다.",
-        "■ 9월 로이터는 JP모건 대출 중단과 다른 중개은행의 거래 관계 유지를 보도했습니다. 7월 청산 이후 운용 종료가 확정된 상태는 아니었습니다.",
-        "■ SNS의 6개 종목 '매입가→현재가'는 출처·거래명세 검증 전이며, 펀드 실제 매수가·확정 실현손실이 아닙니다.",
-        f"■ SEC 확인 범위: {sec_status}",
-        "■ 다음 확정 관문: 법원 파산 접수·운용사 발표·독립 언론 보도·9월 말 13F 신규 제출. SEC 공식 안내상 3분기 13F 제출기한은 2026-11-16입니다.",
-        "원문(SNS·미확인): " + CLAIM_LINK,
-        "기존 확인(로이터 7월): " + REUTERS_JULY,
-        "기존 확인(로이터 8월): " + REUTERS_AUGUST,
-        "기존 확인(로이터 9월): " + REUTERS_SEPT,
-        "SEC 공시: " + SEC_FILING,
-        "SEC 13F 기한 안내: " + SEC_13F_GUIDE,
+        "<b>[Situational Awareness 펀드 긴급 사실확인]</b>",
+        "<b>방향: 과거 AI 집중 포지션 강제매도 확인 → 수급 위험 / 11월 신규 청산 미확인</b>",
+        "판정: <b>공식 파산 미확인</b> · X 단독 주장(독립 확인 전)",
+        "",
+        "<b>① 이번 신규 주장 — 아직 미확인</b>",
+        "■ 11월 6일 X 게시물은 '공식 파산·전량 청산'을 주장했지만 법원 접수번호·운용사 공식 발표는 확인되지 않았습니다.",
+        "■ SNS의 6개 종목 가격 비교는 실제 펀드 매입단가·실현손실·11월 보유현황의 증거가 아닙니다.",
+        "",
+        "<b>② 확인된 사건 — 과거 자료</b>",
+        "■ 7월: 로이터가 포트폴리오 가치 67% 급락과 상장주식 대부분의 시타델 매각을 보도했습니다.",
+        "■ 8월: 시타델은 7월에 인수한 포지션의 80% 이상을 다시 매각했습니다. 펀드의 11월 신규 청산과는 별개입니다.",
+        "■ 9월: JP모건이 대출 관계를 종료했으나 다른 중개은행의 거래는 유지됐다고 보도됐습니다.",
+        f"■ SEC 13F: {html.escape(sec_status)}",
+        "",
+        "<b>③ 시장 영향과 판단</b>",
+        "■ 확인된 방향: 7~8월 AI 인프라 집중 포지션의 강제매각은 당시 수급에 하방 압력으로 작용할 수 있는 사건입니다.",
+        "■ 미확인 방향: 11월 추가 강제매도·법적 파산·전량 청산과 현재 종목별 추가 매도 물량은 확인 전입니다.",
+        "■ 주가 하락을 전부 이 펀드의 매도로 설명하거나 과거 매도를 신규 악재로 중복 계산하지 않습니다.",
+        "",
+        "<b>④ 판정이 바뀌는 조건</b>",
+        "■ 법원 파산 신청·운용사 발표·독립 취재의 신규 청산 증거가 확인되면 별도 확정 단계로 격상합니다.",
+        "■ 다음 공시 관문: 2026년 11월 16일 3분기 13F 제출기한. 13F만으로 파산·당일 매도 여부는 확정할 수 없습니다.",
+        "",
+        "<b>출처</b>: "
+        + " · ".join([
+            source_link("X 게시물·미확인", CLAIM_LINK),
+            source_link("로이터 7월", REUTERS_JULY),
+            source_link("로이터 8월", REUTERS_AUGUST),
+            source_link("로이터 9월", REUTERS_SEPT),
+            source_link("SEC 13F", SEC_FILING),
+            source_link("SEC 제출 안내", SEC_13F_GUIDE),
+        ]),
     ])
 
 
 def build_news_alert(level: str, rows: list[dict], sec_status: str) -> str:
     kind = rows[0]["kind"]
-    label = "복수 원출처 보도" if level == "corroborated" else "신뢰매체 1곳 보도·독립 확인 전"
+    # Distinct publications may reproduce the same wire report; never claim
+    # independent confirmation solely because two publishers appeared.
+    label = "복수 매체 보도(원출처 독립성 별도 확인)" if level == "corroborated" else "신뢰매체 1곳 보도·추가 확인 전"
+    direction = {
+        "파산 보도·주장": "파산 위험 경계 강화 · 법적 확정 전",
+        "펀드 청산·운용 종료": "매도 압력·운용 종료 여부 확인 필요 · 신규 매도 물량 미확정",
+        "마진콜·대규모 매각": "집중 보유 종목의 매도 압력 경계 · 매각 기준일·물량 확인 필요",
+        "차입·주거래은행 변화": "레버리지 유지 여력 악화 가능성 · 실제 신규 강제매도와 별개",
+        "거래 재개·운용 재편": "기존 청산 이후 운용 변화 가능성 · 실거래·신규 보유 확인 필요",
+    }.get(kind, "투자자 수급 영향 확인 필요")
     lines = [
-        "[Situational Awareness 펀드 위기 사건 감지]",
-        f"판정: {kind} · {label}",
-        "■ 언론 보도를 확인했으나 법원 파산·펀드 청산의 공식 법적 확정과 구분합니다.",
-        f"■ SEC 확인 범위: {sec_status}",
-        "■ 분기말 13F 평가액과 당일 보유·체결가격·실제 실현손익은 다릅니다.",
-        "확인한 원출처:",
+        "<b>[Situational Awareness 펀드 위기 사건 감지]</b>",
+        f"<b>방향: {html.escape(direction)}</b>",
+        f"판정: {html.escape(kind)} · {html.escape(label)}",
+        "■ 보도된 사건의 발생일과 실제 신규 거래를 구분합니다. 법적 파산 확정은 별도 확인이 필요합니다.",
+        f"■ SEC 공시 확인 범위: {html.escape(sec_status)}",
+        "■ 13F 분기말 평가액·당일 보유수량·체결가격·실현손실은 서로 다른 정보입니다.",
+        "",
+        "<b>확인한 기사</b>",
     ]
     for row in rows:
-        lines.append(f"- {row['source']} · {row['published'][:10]} · {row['title']}")
-        lines.append(row["url"])
+        publisher = html.escape(str(row["source"]))
+        published = html.escape(str(row["published"])[:10])
+        headline = html.escape(str(row["title"]))
+        lines.append(f"■ {publisher} · {published} · {headline}")
+        lines.append("출처: " + source_link("기사 원문 보기", row["url"]))
     return "\n".join(lines)
 
 
@@ -300,7 +342,8 @@ def send_verified(message: str) -> dict:
     if len(message) > 3750:
         raise RuntimeError("Telegram 알림 길이 초과 — 임의 절단 금지")
     result = sec_watch.telegram_api(token, "sendMessage", {
-        "chat_id": configured, "text": message, "disable_web_page_preview": "true"
+        "chat_id": configured, "text": message,
+        "parse_mode": "HTML", "disable_web_page_preview": "true"
     })
     mid = result.get("message_id")
     actual = (result.get("chat") or {}).get("id")
@@ -446,7 +489,20 @@ def self_test() -> None:
     assert not make_events([parsed[0], confirm], {key: {"level": "corroborated"}})
     manual = build_manual_alert("SEC 미확인")
     assert "공식 파산 미확인" in manual and "시타델" in manual
-    assert "실현손실이 아닙니다" in manual
+    assert "실현손실·11월 보유현황의 증거가 아닙니다" in manual
+    assert "<b>방향:" in manual and "11월 신규 청산 미확인" in manual
+    assert manual.index("이번 신규 주장") < manual.index("확인된 사건") < manual.index("시장 영향")
+    assert '<a href="https://x.com/MrMikeInvesting/' in manual
+    assert "<a href=" in manual and ">로이터 7월</a>" in manual
+    assert not re.search(r'(?<!href=")https?://', manual), "Raw URLs must be clickable labels only"
+    assert len(manual) < 3750, "Telegram length guard must not reject the official fact-check"
+    ownership_html = build_ownership_alert(ownership_test[0], "13F baseline")
+    assert '<a href="https://www.sec.gov/' in ownership_html
+    sample_news = build_news_alert("single", parsed, "13F baseline")
+    assert '<a href="https://example.com/one">' in sample_news
+    assert "파산 위험 경계 강화" in sample_news
+    assert "원출처 독립성 별도 확인" in build_news_alert("corroborated", [parsed[0], confirm], "13F")
+    assert "&lt;" in source_link("<검증>", "https://example.com/?a=1&b=2")
     print("fund_distress_regression=PASS checks=rumor_gate,aged_news,old_recap_filter,source_quality,dedup,upgrade,manual_caveat,ownership_baseline,source_outage_fail_visible")
 
 
