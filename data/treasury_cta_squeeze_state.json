@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-07T08:35:28+09:00",
+  "last_checked_kst": "2026-11-07T08:46:44+09:00",
   "media_id": null,
   "cftc_date": "November 3, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-07T08:35:28+09:00",
+    "checked_kst": "2026-11-07T08:46:44+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "November 3, 2026",
@@ -202,16 +202,13 @@
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
-        "history_source": "CFTC Public Reporting gpe5-46if verified against live report",
-        "history_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
-        "verified_current": true,
         "sample_n": 157,
         "start_date": "2023-11-07",
         "end_date": "2026-11-03",
-        "net_short_percentile_3y": 8.280254777070065,
+        "net_short_percentile_3y": 8.280254777070063,
         "gross_short_percentile_3y": 3.821656050955414,
-        "short_extreme_percentile_3y": 8.280254777070065,
-        "short_share_oi_percentile_3y": 1.2738853503184713,
+        "short_extreme_percentile_3y": 8.280254777070063,
+        "short_share_oi_percentile_3y": 1.2738853503184715,
         "peak_net_short_contracts_3y": 89125,
         "peak_net_short_date_3y": "2026-08-11",
         "peak_gross_short_contracts_3y": 135430,
@@ -220,73 +217,176 @@
         "gross_short_unwind_from_peak_pct": 61.14228752861257,
         "unwind_from_peak_pct": 100.0,
         "leveraged_short_1w_change": 3755,
+        "leveraged_short_4w_change": -17936,
         "leveraged_net_1w_change": 7772,
-        "monthly_net": {
-          "1": {
-            "date": "2026-09-29",
-            "value": -24723.0,
-            "change": 34796.0
-          },
-          "2": {
-            "date": "2026-09-01",
-            "value": -14092.0,
-            "change": 24165.0
-          },
-          "3": {
-            "date": "2026-07-28",
-            "value": -58298.0,
-            "change": 68371.0
-          }
-        },
-        "monthly_gross_short": {
-          "1": {
-            "date": "2026-09-29",
-            "value": 72873.0,
-            "change": -20248.0
-          },
-          "2": {
-            "date": "2026-09-01",
-            "value": 69453.0,
-            "change": -16828.0
-          },
-          "3": {
-            "date": "2026-07-28",
-            "value": 119531.0,
-            "change": -66906.0
-          }
-        },
+        "leveraged_net_4w_change": 29285,
+        "history_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
+        "history_source": "CFTC annual compressed TFF",
+        "download_errors": [],
+        "loaded_years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025,
+          2026
+        ],
         "ten_year_complete": true,
+        "month_windows": {
+          "1m": {
+            "calendar_months": 1,
+            "cutoff_date": "2026-10-03",
+            "end_date": "2026-11-03",
+            "market": "NASDAQ MINI",
+            "cftc_code": "209742",
+            "basis": "CFTC TFF futures-only; latest weekly observation on or before calendar cutoff",
+            "status": "verified",
+            "actors": {
+              "asset_manager": {
+                "status": "verified",
+                "base_long": 108558.0,
+                "base_short": 38814.0,
+                "end_long": 109642.0,
+                "end_short": 36505.0,
+                "base_net": 69744.0,
+                "end_net": 73137.0,
+                "net_change": 3393.0,
+                "long_change": 1084.0,
+                "short_change": -2309.0
+              },
+              "leveraged_funds": {
+                "status": "verified",
+                "base_long": 48150.0,
+                "base_short": 72873.0,
+                "end_long": 62698.0,
+                "end_short": 52625.0,
+                "base_net": -24723.0,
+                "end_net": 10073.0,
+                "net_change": 34796.0,
+                "long_change": 14548.0,
+                "short_change": -20248.0
+              }
+            },
+            "base_date": "2026-09-29",
+            "cutoff_gap_days": 4
+          },
+          "3m": {
+            "calendar_months": 3,
+            "cutoff_date": "2026-08-03",
+            "end_date": "2026-11-03",
+            "market": "NASDAQ MINI",
+            "cftc_code": "209742",
+            "basis": "CFTC TFF futures-only; latest weekly observation on or before calendar cutoff",
+            "status": "verified",
+            "actors": {
+              "asset_manager": {
+                "status": "verified",
+                "base_long": 106927.0,
+                "base_short": 30168.0,
+                "end_long": 109642.0,
+                "end_short": 36505.0,
+                "base_net": 76759.0,
+                "end_net": 73137.0,
+                "net_change": -3622.0,
+                "long_change": 2715.0,
+                "short_change": 6337.0
+              },
+              "leveraged_funds": {
+                "status": "verified",
+                "base_long": 61233.0,
+                "base_short": 119531.0,
+                "end_long": 62698.0,
+                "end_short": 52625.0,
+                "base_net": -58298.0,
+                "end_net": 10073.0,
+                "net_change": 68371.0,
+                "long_change": 1465.0,
+                "short_change": -66906.0
+              }
+            },
+            "base_date": "2026-07-28",
+            "cutoff_gap_days": 6
+          }
+        },
+        "week_window": {
+          "status": "verified",
+          "end_date": "2026-11-03",
+          "cftc_code": "209742",
+          "market": "NASDAQ MINI",
+          "actors": {
+            "leveraged_funds": {
+              "status": "verified",
+              "base_long": 51171.0,
+              "base_short": 48870.0,
+              "end_long": 62698.0,
+              "end_short": 52625.0,
+              "base_net": 2301.0,
+              "end_net": 10073.0,
+              "long_change": 11527.0,
+              "short_change": 3755.0,
+              "net_change": 7772.0
+            },
+            "asset_manager": {
+              "status": "verified",
+              "base_long": 106192.0,
+              "base_short": 40811.0,
+              "end_long": 109642.0,
+              "end_short": 36505.0,
+              "base_net": 65381.0,
+              "end_net": 73137.0,
+              "long_change": 3450.0,
+              "short_change": -4306.0,
+              "net_change": 7756.0
+            }
+          },
+          "base_date": "2026-10-27"
+        },
         "sample_n_10y": 522,
         "start_date_10y": "2016-11-08",
         "end_date_10y": "2026-11-03",
         "net_short_percentile_10y": 17.43295019157088,
         "gross_short_percentile_10y": 10.153256704980842,
+        "short_share_oi_percentile_10y": 1.1494252873563218,
+        "peak_net_short_contracts_10y": 89125,
+        "peak_net_short_date_10y": "2026-08-11",
+        "peak_gross_short_contracts_10y": 135430,
+        "peak_gross_short_date_10y": "2026-08-04",
+        "net_short_unwind_from_peak_pct_10y": 100.0,
+        "gross_short_unwind_from_peak_pct_10y": 61.14228752861257,
         "gross_short_weekly_change_10y": 3755,
         "net_short_weekly_build_10y": -7772,
         "gross_short_weekly_build_percentile_10y": 68.52207293666027,
         "net_short_weekly_build_percentile_10y": 22.264875239923224,
         "max_gross_short_weekly_build_10y": 25649,
+        "max_gross_short_weekly_build_date_10y": "2026-09-22",
         "max_net_short_weekly_build_10y": 80408,
+        "max_net_short_weekly_build_date_10y": "2016-11-15",
         "gross_short_weekly_record_10y": false,
-        "net_short_weekly_record_10y": false
+        "net_short_weekly_record_10y": false,
+        "verified_current": true
       },
       "stored_nq_cftc": {
         "contract": "NASDAQ MINI",
         "cftc_code": "209742",
-        "open_interest": 268508,
-        "open_interest_wow": -3954,
-        "leveraged_long": 51171,
-        "leveraged_short": 48870,
-        "leveraged_net": 2301,
-        "leveraged_long_wow": -578,
-        "leveraged_short_wow": -1929,
-        "leveraged_net_wow": 1351,
-        "short_share_oi_pct": 18.20057502942184,
-        "previous_period": "October 20, 2026",
+        "open_interest": 292587,
+        "open_interest_wow": 24079,
+        "leveraged_long": 62698,
+        "leveraged_short": 52625,
+        "leveraged_net": 10073,
+        "leveraged_long_wow": 11527,
+        "leveraged_short_wow": 3755,
+        "leveraged_net_wow": 7772,
+        "short_share_oi_pct": 17.986103278682922,
+        "previous_period": "October 27, 2026",
         "scope": "CFTC TFF NASDAQ MINI 전체시장 주간"
       },
-      "stored_cftc_period": "October 27, 2026",
-      "history_status": "이전 운영 실행의 공식 CFTC 현재주 검증 재사용",
+      "stored_cftc_period": "November 3, 2026",
+      "history_status": "최신 저장 공식 원천 비교 일치",
       "errors": [],
       "stage": 0,
       "label": "⚪ 채권→Nasdaq 이중 숏 스퀴즈 미확인",
