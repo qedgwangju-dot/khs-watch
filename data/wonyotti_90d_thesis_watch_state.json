@@ -1,78 +1,78 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-11-08T08:03:42+09:00",
+  "updated_at_kst": "2026-11-08T08:25:23+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
         "funding": 0.0001,
-        "index_price": 75770.69,
-        "mark_price": 75759.0,
-        "last_price": 75759.0,
-        "open_interest": 609044968.0,
-        "open_interest_value": 4614203853.41384,
-        "turnover24h": 691177266765.0,
+        "index_price": 75788.8,
+        "mark_price": 75763.68,
+        "last_price": 75761.9,
+        "open_interest": 609807336.0,
+        "open_interest_value": 4617942895.98744,
+        "turnover24h": 691179278449.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": 8.5e-05,
-        "index_price": 2234.64,
-        "mark_price": 2234.12,
-        "last_price": 2234.13,
-        "open_interest": 77292942.0,
-        "open_interest_value": 1726739782.8684,
-        "turnover24h": 189411624970.0,
+        "funding": 8.2e-05,
+        "index_price": 2234.55,
+        "mark_price": 2233.53,
+        "last_price": 2233.46,
+        "open_interest": 77201754.0,
+        "open_interest_value": 1724069570.328,
+        "turnover24h": 189412003972.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
-        "funding": 9.2e-05,
-        "index_price": 89.398,
-        "mark_price": 89.38,
-        "last_price": 89.37,
-        "open_interest": 7732500.0,
-        "open_interest_value": 690125625.0,
-        "turnover24h": 4588742706.0,
+        "funding": 9.1e-05,
+        "index_price": 89.438,
+        "mark_price": 89.4,
+        "last_price": 89.38,
+        "open_interest": 7743420.0,
+        "open_interest_value": 691797142.8,
+        "turnover24h": 4588773322.0,
         "source": "Gate.io Futures API"
       }
     },
     "prices": {
       "BTC": {
-        "usd": 75669.0,
-        "change24": -0.22727455996496645,
-        "volume24": 11089257136.494015,
+        "usd": 75698.0,
+        "change24": -0.2242025223704821,
+        "volume24": 11010760140.263943,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 75669.0,
-          "Coinbase": 75658.52,
-          "Gate.io Spot": 75774.4
+          "CoinGecko": 75681.0,
+          "Coinbase": 75698.0,
+          "Gate.io Spot": 75794.6
         },
-        "dispersion_pct": 0.15314065205036423
+        "dispersion_pct": 0.15007001505985074
       },
       "ETH": {
-        "usd": 2231.42,
-        "change24": -0.16339487805086855,
-        "volume24": 4210466162.88299,
+        "usd": 2231.6,
+        "change24": -0.1463096062920887,
+        "volume24": 4222564368.512298,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 2231.34,
-          "Coinbase": 2231.42,
-          "Gate.io Spot": 2234.64
+          "CoinGecko": 2231.17,
+          "Coinbase": 2231.6,
+          "Gate.io Spot": 2234.55
         },
-        "dispersion_pct": 0.14788789201493788
+        "dispersion_pct": 0.1514608352751438
       },
       "SOL": {
-        "usd": 89.17,
-        "change24": -0.8900067605994407,
-        "volume24": 846350522.2088001,
+        "usd": 89.34,
+        "change24": -0.8135695340042157,
+        "volume24": 841446329.3490134,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 89.17,
-          "Coinbase": 89.11,
-          "Gate.io Spot": 89.39
+          "CoinGecko": 89.27,
+          "Coinbase": 89.34,
+          "Gate.io Spot": 89.44
         },
-        "dispersion_pct": 0.31400695301110365
+        "dispersion_pct": 0.19028430714126002
       }
     },
     "price_verified": true,
@@ -107,7 +107,7 @@
       ],
       "previous_five_day_complete": true,
       "source_url": "https://farside.co.uk/bitcoin-etf-flow-all-data/",
-      "stable_obs": 37,
+      "stable_obs": 38,
       "trigger_ready": true
     },
     "eth_etf": {
@@ -135,7 +135,7 @@
       ],
       "previous_five_day_complete": true,
       "source_url": "https://farside.co.uk/ethereum-etf-flow-all-data/",
-      "stable_obs": 37,
+      "stable_obs": 38,
       "trigger_ready": true
     }
   },
@@ -167,7 +167,7 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-11-08T08:04:30+09:00"
+    "checked_at_kst": "2026-11-08T08:26:12+09:00"
   },
   "news_seen": [
     "053a207e27d94b402fcfa606",
