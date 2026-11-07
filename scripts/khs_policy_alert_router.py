@@ -1081,7 +1081,11 @@ def select_sendable_policy_alerts(alerts: list[dict], now: dt.datetime) -> list[
         title = safe_title(alert)
         block = render_policy_report([alert], now)
         reason = ""
-        if title in POLICY_UNVERIFIED_GENERIC_TITLES:
+        original_title = str(alert.get("title") or "").lower()
+        source = str(alert.get("source") or "").lower()
+        if source.startswith("white house") and "first lady" in original_title:
+            reason = "whitehouse_nonpolicy_event"
+        elif title in POLICY_UNVERIFIED_GENERIC_TITLES:
             reason = "unverified_generic_title"
         elif has_raw_ascii_heading(block):
             reason = "raw_ascii_heading"
