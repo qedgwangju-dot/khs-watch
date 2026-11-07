@@ -158,7 +158,6 @@ def main() -> None:
     from types import SimpleNamespace
     from unittest.mock import patch
     from scripts import khs_policy_telegram_formatter as policy_formatter
-    import khs_policy_telegram_formatter as script_policy_formatter
 
     news_items = [
         {"rule": SimpleNamespace(key="currency-unsafe"), "items": [], "fingerprint": "fx1"},
@@ -174,7 +173,6 @@ def main() -> None:
     with (
         patch.object(trusted, "render_alert_bundle", side_effect=mock_news_report),
         patch.object(policy_formatter, "format_policy_message", side_effect=ValueError("No verified FX quote")),
-        patch.object(script_policy_formatter, "format_policy_message", side_effect=ValueError("No verified FX quote")),
     ):
         selected = trusted.select_currency_safe_general_alerts(
             news_items, datetime(2026, 11, 7, 20, tzinfo=ZoneInfo("Asia/Seoul"))
