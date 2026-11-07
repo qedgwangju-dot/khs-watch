@@ -1048,6 +1048,63 @@ def remove_outputs(paths: list[Path]) -> None:
             path.unlink()
 
 
+POLICY_UNVERIFIED_GENERIC_TITLES = {
+    "미국, 정책·규제 문서 공표",
+    "미국 정책·규제 문서 공표",
+    "미국, 관세·통관 정책 변화 공표",
+    "미 상무부, 한국산 제품 반덤핑·상계관세 최종결정 공표",
+    "미국, 대통령 정책 문서 공표",
+    "FCC, 통신 규제 문서 공표",
+}
+
+
+def select_sendable_policy_alerts(alerts: list[dict], now: dt.datetime) -> list[dict]:
+    """Keep independently valid policy items when a separate source is malformed.
+
+    Quarantined fingerprints are omitted from the delivered JSON and therefore
+    remain unacknowledged by the delivery-gated seen-state finalizer.
+    """
+    try:
+        from khs_telegram_delivery_guard import (
+            has_raw_ascii_heading, has_long_english_run,
+            has_source_body_mismatch, has_blocker, VISIBLE_ENGLISH_BLOCKERS,
+        )
+    except ImportError:
+        from scripts.khs_telegram_delivery_guard import (
+            has_raw_ascii_heading, has_long_english_run,
+            has_source_body_mismatch, has_blocker, VISIBLE_ENGLISH_BLOCKERS,
+        )
+
+    sendable: list[dict] = []
+    headings: set[str] = set()
+    for alert in alerts:
+        title = safe_title(alert)
+        block = render_policy_report([alert], now)
+        reason = ""
+        if title in POLICY_UNVERIFIED_GENERIC_TITLES:
+            reason = "unverified_generic_title"
+        elif has_raw_ascii_heading(block):
+            reason = "raw_ascii_heading"
+        elif has_source_body_mismatch(title, block):
+            reason = "source_body_mismatch"
+        elif has_blocker(block, VISIBLE_ENGLISH_BLOCKERS, include_urls=False):
+            reason = "raw_english_source_text"
+        elif has_long_english_run(block):
+            reason = "long_english_content"
+        elif title in headings:
+            reason = "unresolved_duplicate_heading"
+        if reason:
+            print(
+                f"policy_router_quarantined reason={reason} "
+                f"source={str(alert.get('source') or '')!r} "
+                f"fingerprint={str(alert.get('fingerprint') or '')!r}"
+            )
+            continue
+        sendable.append(alert)
+        headings.add(title)
+    return sendable
+
+
 def write_policy_outputs(alerts: list[dict], now: dt.datetime) -> None:
     POLICY_REPORT_PATH.write_text(render_policy_report(alerts, now), encoding="utf-8")
     if not alerts:
@@ -1089,6 +1146,7 @@ def main() -> int:
 
     raw_policy_count = len(policy_alerts)
     policy_alerts = dedupe_alerts(policy_alerts)
+    policy_alerts = select_sendable_policy_alerts(policy_alerts, now)
     write_policy_outputs(policy_alerts, now)
     if personnel_alerts:
         KOREA_PERSONNEL_ALERTS_JSON_PATH.write_text(
