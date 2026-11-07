@@ -154,6 +154,33 @@ def main() -> None:
     )
     assert len(chosen) == 1 and chosen[0]["fingerprint"] == good_alert["fingerprint"], chosen
 
+    # One currency-unsafe article must not cancel an unrelated valid report.
+    from types import SimpleNamespace
+    from unittest.mock import patch
+    from scripts import khs_policy_telegram_formatter as policy_formatter
+    import khs_policy_telegram_formatter as script_policy_formatter
+
+    news_items = [
+        {"rule": SimpleNamespace(key="currency-unsafe"), "items": [], "fingerprint": "fx1"},
+        {"rule": SimpleNamespace(key="currency-safe"), "items": [], "fingerprint": "safe2"},
+    ]
+    def mock_news_report(items, _now, limit=1):
+        return (
+            "DOE offers $100 million in grants."
+            if items[0]["fingerprint"] == "fx1"
+            else "미국 정부의 한국 관련 통상정책 확정 내용입니다."
+        )
+    assert policy_formatter.extract_foreign_amounts("DOE offers $100 million in grants.")
+    with (
+        patch.object(trusted, "render_alert_bundle", side_effect=mock_news_report),
+        patch.object(policy_formatter, "format_policy_message", side_effect=ValueError("No verified FX quote")),
+        patch.object(script_policy_formatter, "format_policy_message", side_effect=ValueError("No verified FX quote")),
+    ):
+        selected = trusted.select_currency_safe_general_alerts(
+            news_items, datetime(2026, 11, 7, 20, tzinfo=ZoneInfo("Asia/Seoul"))
+        )
+    assert len(selected) == 1 and selected[0]["fingerprint"] == "safe2", selected
+
     space_pv = (
         "DOE Space Photovoltaics Research and Development Partnership Intermediary Agreement "
         "announced a funding opportunity for solar panels in space applications. "
