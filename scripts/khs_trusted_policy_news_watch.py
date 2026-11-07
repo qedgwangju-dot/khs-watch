@@ -5462,6 +5462,58 @@ def render_alert_bundle(alerts: list[dict], now: dt.datetime, limit: int = 3) ->
     return "\n".join(lines) + "\n"
 
 
+def select_currency_safe_general_alerts(
+    alerts: list[dict], now: dt.datetime, *, limit: int = 3, scan_limit: int = 12,
+) -> list[dict]:
+    """Exclude only currency-unsafe story, not the entire trusted-policy bundle.
+
+    This is a preflight check. It never sends a message or updates a seen key.
+    The final Telegram guard continues to recompute the actual FX snapshot.
+    """
+    try:
+        from khs_policy_telegram_formatter import (
+            extract_foreign_amounts, format_policy_message,
+            validate_final_policy_message,
+        )
+    except ImportError:
+        from scripts.khs_policy_telegram_formatter import (
+            extract_foreign_amounts, format_policy_message,
+            validate_final_policy_message,
+        )
+
+    chosen: list[dict] = []
+    for alert in alerts[:scan_limit]:
+        if len(chosen) >= limit:
+            break
+        body = render_alert_bundle([alert], now, limit=1)
+        if extract_foreign_amounts(body):
+            try:
+                title, converted = format_policy_message(
+                    "신뢰외신 정책 워치", body, now=now,
+                )
+                errors = validate_final_policy_message(title, converted)
+            except (ValueError, RuntimeError, OSError, TimeoutError) as exc:
+                print(
+                    "trusted_policy_news_currency_quarantined "
+                    f"key={alert['rule'].key} reason={type(exc).__name__}"
+                )
+                continue
+            currency_errors = [
+                code for code in errors if code in {
+                    "foreign_currency_not_converted",
+                    "foreign_currency_provenance_missing",
+                }
+            ]
+            if currency_errors:
+                print(
+                    "trusted_policy_news_currency_quarantined "
+                    f"key={alert['rule'].key} reason={','.join(currency_errors)}"
+                )
+                continue
+        chosen.append(alert)
+    return chosen
+
+
 def main() -> int:
     now = now_kst()
     OUT_DIR.mkdir(exist_ok=True)
@@ -5543,8 +5595,8 @@ def main() -> int:
         [alert for alert in alerts if not is_ai_force_alert(alert)]
     )
 
-    if general_alerts:
-        selected_alerts = general_alerts[:3]
+    selected_alerts = select_currency_safe_general_alerts(general_alerts, now)
+    if selected_alerts:
         top = selected_alerts[0]
         extra_count = max(0, len(selected_alerts) - 1)
         title_suffix = f" 외 {extra_count}건" if extra_count else ""
@@ -5566,7 +5618,7 @@ def main() -> int:
                         "items": alert["items"],
                         "fingerprint": alert["fingerprint"],
                     }
-                    for alert in general_alerts
+                    for alert in selected_alerts
                 ],
                 ensure_ascii=False,
                 indent=2,
