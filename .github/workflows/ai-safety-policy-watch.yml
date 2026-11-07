@@ -743,6 +743,43 @@ jobs:
           assert "10월 1일" in group_report and "2차 회의" in group_report
           assert "FOMC가 새로 조직한" not in group_report
           print("ai_policy_fed_presidents_working_group_existing_meetings_regression=PASS")
+          occ = event(
+              "OCC GENIUS Act final rule issued for payment stablecoin issuers",
+              "Office of the Comptroller of the Currency", "https://www.occ.treas.gov/",
+          )
+          occ_work = event(
+              "OCC Cybersecurity Supervision Work Program updated without new examination procedures",
+              "Office of the Comptroller of the Currency", "https://www.occ.treas.gov/",
+          )
+          assert tracked_policy_event_key(occ) == "occ_genius:final_rule_20261021"
+          assert tracked_policy_event_key(occ_work) == "occ_cyber_work_program:reference_update_20260921"
+          assert all(x in POLICY_EVENT_BASELINES for x in (
+              "occ_genius:final_rule_20261021", "occ_cyber_work_program:reference_update_20260921"
+          ))
+          assert material(occ) and material(occ_work) and occ["official"] and occ_work["official"]
+          assert occ["entity"] != genius["entity"]
+          assert len(cluster_events([occ, genius, occ_work])) == 3
+          occ_effective = event(
+              "OCC GENIUS Act rule now in force for payment stablecoin issuers",
+              "Office of the Comptroller of the Currency", "https://www.occ.treas.gov/",
+          )
+          occ_planned = event(
+              "OCC GENIUS Act final rule will be effective January 18 2027 for payment stablecoin issuers",
+              "Office of the Comptroller of the Currency", "https://www.occ.treas.gov/",
+          )
+          assert tracked_policy_event_key(occ_effective) == "occ_genius:rule_in_effect_reported"
+          assert tracked_policy_event_key(occ_planned) == "occ_genius:final_rule_20261021"
+          occ_new_exam = event(
+              "OCC Cybersecurity Supervision Work Program new examination procedures added",
+              "Office of the Comptroller of the Currency", "https://www.occ.treas.gov/",
+          )
+          assert tracked_policy_event_key(occ_new_exam) == "occ_cyber_work_program:new_examination_rules_reported"
+          occ_spoof = event(
+              "OCC GENIUS Act final rule issued for payment stablecoin issuers",
+              "Office of the Comptroller of the Currency", "https://not-occ.example.invalid/",
+          )
+          assert not material(occ_spoof) and not occ_spoof["official"]
+          print("ai_policy_occ_vs_fed_genius_and_cyber_framework_regression=PASS")
           print("ai_policy_fed_bank_cyber_genius_thirdparty_regression=PASS")
           PY
 

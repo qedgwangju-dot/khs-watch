@@ -70,6 +70,9 @@ NEWS_QUERIES = [
 
     '"Bowman" ("third-party risk" OR "cyber exam" OR "fraud roundtable")',
     '"Federal Reserve" "GENIUS Act" (final rule OR proposed rule OR comment deadline OR stablecoin)',
+    '"OCC" "GENIUS Act" (final rule OR effective OR amendment OR approval OR stablecoin)',
+    '"OCC" "Cybersecurity Supervision Work Program" (updated OR new procedures OR risk-based examination)',
+
     '"community banks" "third-party risk management" ("Federal Reserve" OR FDIC) (finalized OR proposed)',
 
     'EU AI frontier model safety standard incident reporting',
@@ -166,6 +169,15 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "occ_genius:final_rule_20261021": {
+        "source_url": "https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-50.html",
+        "status": "2026-10-21 OCC final payment stablecoin rule; effective 2027-01-18; applies only to OCC jurisdiction, separate from pending Fed proposals",
+    },
+    "occ_cyber_work_program:reference_update_20260921": {
+        "source_url": "https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-48.html",
+        "status": "2026-09-21 OCC revised cybersecurity supervision work program structure with NO added examination procedures or new requirements",
+    },
+
     "fed_fraud_group:two_meetings_reported_20261001": {
         "source_url": "https://www.atlanticcouncil.org/event/federal-reserve-vice-chair-michelle-bowman-on-modernizing-financial-regulation/",
         "status": "2026-10-01 Bowman first-person remarks: President's Working Group on Scams and Fraud already met twice; Secretary Bessent, Attorney General, Warsh joined second; not a new FOMC-run group",
@@ -259,6 +271,7 @@ OFFICIAL_SOURCE_HINTS = (
     "crowdstrike", "ibm", "nvidia", "microsoft", "openshell",
     "nemoclaw", "sentry", "sap", "canonical", "red hat",
     "trail of bits", "trailofbits.com", "cohere", "aisle",
+    "office of the comptroller of the currency",
     "piolink", "파이오링크", "estsecurity", "이스트시큐리티", "axgate", "엑스게이트",
     "genians", "지니언스", "ksign", "케이사인", "sandslab",
 )
@@ -273,6 +286,7 @@ TRUSTED_SOURCE_HINTS = (
     "crowdstrike", "ibm", "nvidia", "microsoft", "mbc", "ytn",
     "trail of bits", "trailofbits.com", "cnbc",
     "aba banking journal", "american bankers association", "atlantic council",
+    "office of the comptroller of the currency",
     "federal reserve board", "federal reserve", "seeking alpha",
 
     "amazon web services", "aws news", "about amazon", "amazon ir", "the motley fool", "crn",
@@ -1186,6 +1200,28 @@ def fed_bank_security_stage(item: dict) -> tuple[str, str] | None:
         )):
             return "fed_fraud_group", "joint_recommendations_issued_reported"
         return "fed_fraud_group", "two_meetings_reported_20261001"
+    occ = bool(re.search(r"\bocc\b", context)) or "office of the comptroller of the currency" in context
+    if occ and any(t in context for t in ("genius act", "지니어스법", "지니어스 법")) and any(
+        t in context for t in ("stablecoin", "스테이블코인")
+    ):
+        if any(t in title for t in (
+            "rule now in force", "final rule now effective", "rule takes effect today",
+            "규정 오늘부터 시행", "규정 정식 발효",
+        )) and not any(t in title for t in ("will ", "scheduled", "예정", "계획", "앞두고")):
+            return "occ_genius", "rule_in_effect_reported"
+        if any(t in title for t in (
+            "final rule amended", "final rule revised", "최종 규정 수정", "시행규정 개정 확정",
+        )):
+            return "occ_genius", "final_rule_amended_reported"
+        return "occ_genius", "final_rule_20261021"
+    if occ and ("cybersecurity supervision work program" in context or "사이버보안 감독 점검 체계" in context):
+        if any(t in title for t in (
+            "new mandatory cybersecurity examinations announced",
+            "new examination procedures added",
+            "신규 사이버보안 의무 검사 시행",
+        )) and not any(t in title for t in ("no new", "without new", "unchanged", "절차 추가 없음")):
+            return "occ_cyber_work_program", "new_examination_rules_reported"
+        return "occ_cyber_work_program", "reference_update_20260921"
     fed = any(t in context for t in (
         "federal reserve", "fed's bowman", "fed bowman", "fed michelle bowman",
         "연준", "미 연방준비제도",
@@ -1255,6 +1291,7 @@ def fed_bank_security_publisher_verified(item: dict) -> bool:
         (("seeking alpha",), "seekingalpha.com"),
         (("reuters",), "reuters.com"),
         (("fdic",), "fdic.gov"),
+        (("office of the comptroller of the currency", "occ bank"), "occ.treas.gov"),
     )
     for names, domain in domains:
         if any(n in source for n in names):
@@ -1551,6 +1588,8 @@ def detect_category(text: str) -> str:
     fed_stage = fed_bank_security_stage({"title": text})
     if fed_stage:
         return {
+            "occ_genius": "미국 OCC 지니어스법 최종 규정·시행 단계",
+            "occ_cyber_work_program": "미국 OCC 은행 사이버보안 감독 점검 체계",
             "fed_fraud_group": "미국 대통령 사기·금융사기 대응 실무그룹 후속조치",
             "fed_bowman_cyber": "연준 은행 사이버보안 감독·금융사기 대응 단계",
             "fed_genius": "연준 지니어스법 스테이블코인 시행규정 단계",
@@ -1618,6 +1657,8 @@ def detect_entity(text: str) -> str:
     fed_stage = fed_bank_security_stage({"title": text})
     if fed_stage:
         return {
+            "occ_genius": "미국 통화감독청(OCC)",
+            "occ_cyber_work_program": "미국 통화감독청(OCC)",
             "fed_fraud_group": "미국 범정부 사기대응 실무그룹",
             "fed_bowman_cyber": "미국 연준·보우먼 금융감독 부의장",
             "fed_genius": "미국 연방준비제도",
@@ -1745,7 +1786,7 @@ def material(item: dict) -> bool:
         return False
     milestone = tracked_policy_event_stage(item)
     if milestone:
-        if milestone[0] in ("fed_bowman_cyber", "fed_genius", "fed_third_party", "fed_fraud_group") and not fed_bank_security_publisher_verified(item):
+        if milestone[0] in ("fed_bowman_cyber", "fed_genius", "fed_third_party", "fed_fraud_group", "occ_genius", "occ_cyber_work_program") and not fed_bank_security_publisher_verified(item):
             return False
         if milestone[0] in ("aws_continuum", "amazon_security_tokens") and not aws_security_publisher_verified(item):
             return False
@@ -2198,6 +2239,8 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
         ]
         if rep["category"] in (
             "연준 은행 사이버보안 감독·금융사기 대응 단계",
+            "미국 OCC 지니어스법 최종 규정·시행 단계",
+            "미국 OCC 은행 사이버보안 감독 점검 체계",
             "미국 대통령 사기·금융사기 대응 실무그룹 후속조치",
             "연준 지니어스법 스테이블코인 시행규정 단계",
             "연준 지역은행 외부업체 위험관리 지침 단계",
@@ -2205,6 +2248,11 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             stage = fed_bank_security_stage(rep)
             labels = {
                 "remarks_20261106": "11월 6일 보우먼 은행 사이버보안·사기 대응 발언",
+                "final_rule_20261021": "10월 21일 OCC 지니어스법 최종 규정 확정",
+                "rule_in_effect_reported": "OCC 최종 규정 실제 시행 확인 보도",
+                "final_rule_amended_reported": "OCC 지니어스법 최종 규정 변경 보도",
+                "reference_update_20260921": "9월 21일 OCC 은행 보안 검사 참고체계 정비",
+                "new_examination_rules_reported": "OCC 신규 사이버보안 의무 점검 규정 발표 보도",
                 "two_meetings_reported_20261001": "10월 1일 기준 대통령 사기·금융사기 대응 실무그룹 2회 회의 개최 확인",
                 "third_meeting_reported": "대통령 사기 대응 실무그룹 3차 회의 개최 보도",
                 "joint_recommendations_issued_reported": "범정부 사기대응 공동 권고안 발표 보도",
@@ -2222,6 +2270,12 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             if stage and stage[0] == "fed_bowman_cyber":
                 lines.append("• <b>발언 기준</b>: 은행권 사이버보안·AI 악용·송금사기 대응과 감독상시검사 강조. FTC·FCC·사법기관과 협의하되 독립된 새로운 의무 규정·정부 발주가 확정된 것은 아님")
                 lines.append("• <b>기존 협력</b>: 대통령 사기·금융사기 대응 실무그룹은 10월 1일 보우먼 공개 대담에서 이미 두 차례 회의 개최가 확인됨. FOMC가 새로 조직한 기구가 아님")
+            elif stage and stage[0] == "occ_genius":
+                lines.append("• <b>관할·시점</b>: OCC 관할 지급형 스테이블코인 발행사 대상 최종 시행규정은 2026년 10월 21일 확정, 2027년 1월 18일 시행. 연준 별도 제안과 구분")
+                lines.append("• <b>후속 확인</b>: OCC 관할 법인 승인·발행·준비자산·보고·검사 의무, 추후 최종 규정 변경·실제 시행")
+            elif stage and stage[0] == "occ_cyber_work_program":
+                lines.append("• <b>확정 상태</b>: OCC의 9월 21일 은행 보안 검사 참고체계 개정은 검사 절차 추가·새 규제 의무 부과가 아니라고 명시")
+                lines.append("• <b>후속 확인</b>: 실제 새로운 의무 검사규정·감독 조치·은행의 신규 보안 예산·유료 계약")
             elif stage and stage[0] == "fed_fraud_group":
                 lines.append("• <b>기존 확인</b>: 보우먼은 10월 1일 공개 대담에서 베선트 재무장관·법무장관·워시 연준 의장 등이 참여한 2차 회의를 설명. 그 자체는 새로운 11월 6일 출범이 아님")
                 lines.append("• <b>다음 확인</b>: 추가 회의 개최·공식 권고안·은행 보안 지침·실제 제재·정부 및 금융기관의 유료 보안사업 발주")
@@ -2457,6 +2511,24 @@ def main() -> int:
         "url":"https://www.atlanticcouncil.org/event/federal-reserve-vice-chair-michelle-bowman-on-modernizing-financial-regulation/",
         "published_at":"2026-10-01T19:00:00+00:00",
     })
+    raw.extend([
+        {
+            "kind":"official", "query":"OCC stablecoin final rule official baseline",
+            "title":"OCC GENIUS Act final rule issued for payment stablecoin issuers",
+            "description":"OCC October 21 2026 final rule covering reserves, custody, capital and risk management. Effective January 18 2027, not an already-live Fed rule.",
+            "source":"Office of the Comptroller of the Currency", "publisher_url":"https://www.occ.treas.gov/",
+            "url":"https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-50.html",
+            "published_at":"2026-10-21T12:00:00+00:00",
+        },
+        {
+            "kind":"official", "query":"OCC bank cyber framework official baseline",
+            "title":"OCC Cybersecurity Supervision Work Program updated without new examination procedures",
+            "description":"OCC September 21 2026: structural reference mapping to NIST CSF updated but no new examination procedures and no new bank regulatory expectations.",
+            "source":"Office of the Comptroller of the Currency", "publisher_url":"https://www.occ.treas.gov/",
+            "url":"https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-48.html",
+            "published_at":"2026-09-21T12:00:00+00:00",
+        },
+    ])
     # Previously verified reference events: stage baselines prevent repeat alerts.
     raw.extend([
         {
