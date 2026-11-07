@@ -66,6 +66,8 @@ NEWS_QUERIES = [
     'NAAIMES AI measurement evaluation standard safety institute',
     'NIST frontier AI safety standard evaluation cybersecurity model',
     '"Michelle Bowman" (cybersecurity OR fraud OR scams) (banking OR Federal Reserve)',
+    '"President\'s Working Group on Scams and Fraud" (third meeting OR recommendations OR anti-fraud action)',
+
     '"Bowman" ("third-party risk" OR "cyber exam" OR "fraud roundtable")',
     '"Federal Reserve" "GENIUS Act" (final rule OR proposed rule OR comment deadline OR stablecoin)',
     '"community banks" "third-party risk management" ("Federal Reserve" OR FDIC) (finalized OR proposed)',
@@ -164,6 +166,11 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "fed_fraud_group:two_meetings_reported_20261001": {
+        "source_url": "https://www.atlanticcouncil.org/event/federal-reserve-vice-chair-michelle-bowman-on-modernizing-financial-regulation/",
+        "status": "2026-10-01 Bowman first-person remarks: President's Working Group on Scams and Fraud already met twice; Secretary Bessent, Attorney General, Warsh joined second; not a new FOMC-run group",
+    },
+
     "fed_bowman_cyber:remarks_20261106": {
         "source_url": "https://bankingjournal.aba.com/2026/11/owen-bowman-discuss-bank-technology-adoption-fighting-fraud/",
         "status": "2026-11-06 Bowman at Mississippi symposium: cybersecurity top priority and around-the-clock examination; cross-agency fraud conversations, not new mandatory rule",
@@ -265,7 +272,7 @@ TRUSTED_SOURCE_HINTS = (
     "associated press", "ap news", "guardian", "cbs news", "wall street journal", "wsj",
     "crowdstrike", "ibm", "nvidia", "microsoft", "mbc", "ytn",
     "trail of bits", "trailofbits.com", "cnbc",
-    "aba banking journal", "american bankers association",
+    "aba banking journal", "american bankers association", "atlantic council",
     "federal reserve board", "federal reserve", "seeking alpha",
 
     "amazon web services", "aws news", "about amazon", "amazon ir", "the motley fool", "crn",
@@ -1163,6 +1170,22 @@ def fed_bank_security_stage(item: dict) -> tuple[str, str] | None:
     """Dated remarks vs formal proposals vs final rules. Headlines set new stages."""
     title = str(item.get("title") or "").lower()
     context = f" {title} {item.get('description','')} ".lower()
+    group = any(t in context for t in (
+        "president's working group on scams and fraud",
+        "president’s working group on scams and fraud",
+        "대통령 사기·금융사기 대응 실무그룹",
+    ))
+    if group:
+        if any(t in title for t in (
+            "third meeting held", "third roundtable convened", "3차 회의 개최",
+        )):
+            return "fed_fraud_group", "third_meeting_reported"
+        if any(t in title for t in (
+            "issued joint recommendations", "released coordinated recommendations",
+            "공동 권고안 발표", "공동 대응방안 확정",
+        )):
+            return "fed_fraud_group", "joint_recommendations_issued_reported"
+        return "fed_fraud_group", "two_meetings_reported_20261001"
     fed = any(t in context for t in (
         "federal reserve", "fed's bowman", "fed bowman", "fed michelle bowman",
         "연준", "미 연방준비제도",
@@ -1228,6 +1251,7 @@ def fed_bank_security_publisher_verified(item: dict) -> bool:
     domains = (
         (("federal reserve", "연방준비제도", "연준 공식"), "federalreserve.gov"),
         (("aba banking journal", "american bankers association"), "aba.com"),
+        (("atlantic council",), "atlanticcouncil.org"),
         (("seeking alpha",), "seekingalpha.com"),
         (("reuters",), "reuters.com"),
         (("fdic",), "fdic.gov"),
@@ -1527,6 +1551,7 @@ def detect_category(text: str) -> str:
     fed_stage = fed_bank_security_stage({"title": text})
     if fed_stage:
         return {
+            "fed_fraud_group": "미국 대통령 사기·금융사기 대응 실무그룹 후속조치",
             "fed_bowman_cyber": "연준 은행 사이버보안 감독·금융사기 대응 단계",
             "fed_genius": "연준 지니어스법 스테이블코인 시행규정 단계",
             "fed_third_party": "연준 지역은행 외부업체 위험관리 지침 단계",
@@ -1593,6 +1618,7 @@ def detect_entity(text: str) -> str:
     fed_stage = fed_bank_security_stage({"title": text})
     if fed_stage:
         return {
+            "fed_fraud_group": "미국 범정부 사기대응 실무그룹",
             "fed_bowman_cyber": "미국 연준·보우먼 금융감독 부의장",
             "fed_genius": "미국 연방준비제도",
             "fed_third_party": "미국 연방준비제도·금융감독기관",
@@ -1719,7 +1745,7 @@ def material(item: dict) -> bool:
         return False
     milestone = tracked_policy_event_stage(item)
     if milestone:
-        if milestone[0] in ("fed_bowman_cyber", "fed_genius", "fed_third_party") and not fed_bank_security_publisher_verified(item):
+        if milestone[0] in ("fed_bowman_cyber", "fed_genius", "fed_third_party", "fed_fraud_group") and not fed_bank_security_publisher_verified(item):
             return False
         if milestone[0] in ("aws_continuum", "amazon_security_tokens") and not aws_security_publisher_verified(item):
             return False
@@ -2172,12 +2198,16 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
         ]
         if rep["category"] in (
             "연준 은행 사이버보안 감독·금융사기 대응 단계",
+            "미국 대통령 사기·금융사기 대응 실무그룹 후속조치",
             "연준 지니어스법 스테이블코인 시행규정 단계",
             "연준 지역은행 외부업체 위험관리 지침 단계",
         ):
             stage = fed_bank_security_stage(rep)
             labels = {
                 "remarks_20261106": "11월 6일 보우먼 은행 사이버보안·사기 대응 발언",
+                "two_meetings_reported_20261001": "10월 1일 기준 대통령 사기·금융사기 대응 실무그룹 2회 회의 개최 확인",
+                "third_meeting_reported": "대통령 사기 대응 실무그룹 3차 회의 개최 보도",
+                "joint_recommendations_issued_reported": "범정부 사기대응 공동 권고안 발표 보도",
                 "fraud_taskforce_formally_launched_reported": "범정부 사기 대응 전담조직 공식 출범 보도",
                 "new_mandatory_cyber_rule_reported": "은행 사이버보안 의무 규정의 신규 확정 보도",
                 "proposal_20260924": "9월 24일 지니어스법 세부 규정안 공개·의견수렴",
@@ -2191,7 +2221,10 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             lines.append(f"• <b>확인 단계</b>: {html.escape(detail)} · 감독 우선순위와 의무 규정 시행은 구분")
             if stage and stage[0] == "fed_bowman_cyber":
                 lines.append("• <b>발언 기준</b>: 은행권 사이버보안·AI 악용·송금사기 대응과 감독상시검사 강조. FTC·FCC·사법기관과 협의하되 독립된 새로운 의무 규정·정부 발주가 확정된 것은 아님")
-                lines.append("• <b>검증 주의</b>: 보도상 원탁회의 명칭 및 조직 구성은 공식자료에서 독립 확인 전")
+                lines.append("• <b>기존 협력</b>: 대통령 사기·금융사기 대응 실무그룹은 10월 1일 보우먼 공개 대담에서 이미 두 차례 회의 개최가 확인됨. FOMC가 새로 조직한 기구가 아님")
+            elif stage and stage[0] == "fed_fraud_group":
+                lines.append("• <b>기존 확인</b>: 보우먼은 10월 1일 공개 대담에서 베선트 재무장관·법무장관·워시 연준 의장 등이 참여한 2차 회의를 설명. 그 자체는 새로운 11월 6일 출범이 아님")
+                lines.append("• <b>다음 확인</b>: 추가 회의 개최·공식 권고안·은행 보안 지침·실제 제재·정부 및 금융기관의 유료 보안사업 발주")
             elif stage and stage[0] == "fed_genius":
                 lines.append("• <b>규정 상태</b>: 지급형 스테이블코인 준비자산·자본·위험관리·발행 승인 절차 제안. 2026년 11월 30일까지 의견수렴, 최종 확정·시행과 구분")
             else:
@@ -2416,6 +2449,14 @@ def main() -> int:
         except Exception as exc:
             errors.append(f"Google News 실패: {query[:55]} / {type(exc).__name__}: {exc}")
 
+    raw.append({
+        "kind":"news", "query":"Bowman Oct 1 direct talk transcript",
+        "title":"Michelle Bowman confirms President's Working Group on Scams and Fraud held two meetings",
+        "description":"Atlantic Council October 1 public first-person transcript: the President's working group on scams and fraud held two roundtables, including Secretary Bessent, Attorney General and Fed Chairman Warsh. No newly created FOMC committee.",
+        "source":"Atlantic Council", "publisher_url":"https://www.atlanticcouncil.org/",
+        "url":"https://www.atlanticcouncil.org/event/federal-reserve-vice-chair-michelle-bowman-on-modernizing-financial-regulation/",
+        "published_at":"2026-10-01T19:00:00+00:00",
+    })
     # Previously verified reference events: stage baselines prevent repeat alerts.
     raw.extend([
         {

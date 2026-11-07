@@ -714,6 +714,35 @@ jobs:
           report = build_alert([[bowman]], dt.datetime(2026,11,8,tzinfo=dt.timezone.utc))[1]
           assert "사이버보안" in report and "의무 규정" in report
           assert "The President" not in report
+          # The President's Working Group was already meeting by October 1;
+          # do not invent an FOMC-led launch or merge it into the Nov 6 speech.
+          working = event(
+              "Michelle Bowman confirms President's Working Group on Scams and Fraud held two meetings",
+              "Atlantic Council", "https://www.atlanticcouncil.org/",
+          )
+          assert tracked_policy_event_key(working) == "fed_fraud_group:two_meetings_reported_20261001"
+          assert "fed_fraud_group:two_meetings_reported_20261001" in POLICY_EVENT_BASELINES
+          assert material(working) and not working["official"]
+          thirdmeeting = event(
+              "President's Working Group on Scams and Fraud third meeting held",
+              "Reuters", "https://www.reuters.com/",
+          )
+          recommendations = event(
+              "President's Working Group on Scams and Fraud issued joint recommendations",
+              "Reuters", "https://www.reuters.com/",
+          )
+          assert tracked_policy_event_key(thirdmeeting) == "fed_fraud_group:third_meeting_reported"
+          assert tracked_policy_event_key(recommendations) == "fed_fraud_group:joint_recommendations_issued_reported"
+          assert len(cluster_events([working, thirdmeeting, recommendations])) == 3
+          group_fake = event(
+              "Michelle Bowman confirms President's Working Group on Scams and Fraud held two meetings",
+              "Atlantic Council", "https://fake-atlantic.example.invalid/",
+          )
+          assert not material(group_fake) and not group_fake["official"]
+          group_report = build_alert([[working]], dt.datetime(2026,11,8,tzinfo=dt.timezone.utc))[1]
+          assert "10월 1일" in group_report and "2차 회의" in group_report
+          assert "FOMC가 새로 조직한" not in group_report
+          print("ai_policy_fed_presidents_working_group_existing_meetings_regression=PASS")
           print("ai_policy_fed_bank_cyber_genius_thirdparty_regression=PASS")
           PY
 
