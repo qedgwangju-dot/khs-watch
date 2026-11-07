@@ -2987,11 +2987,11 @@ def semantic_policy_event_key(item: dict) -> str:
         elif any(term in title_low for term in ("minimum opening bid", "upfront payment", "최저 입찰가", "선납금")):
             stage = "pricing-terms"
         return f"us-fcc-upper-c-band-auction115-{stage}"
+    if is_polysilicon_11052_pra_notice_text(
+        str(item.get("title") or ""), str(item.get("link") or "")
+    ):
+        return "polysilicon-11052-omb-comment-2026-11-06"
     if "polysilicon" in text and "11052" in text:
-        if is_polysilicon_11052_pra_notice_text(
-            str(item.get("title") or ""), str(item.get("link") or "")
-        ):
-            return "polysilicon-11052-omb-comment-2026-11-06"
         if (
             "measures to restrict stockpiling" in text
             or (
