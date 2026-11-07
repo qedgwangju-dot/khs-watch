@@ -1300,6 +1300,43 @@ class IranNoStrikeProjectionTests(unittest.TestCase):
         self.assertEqual(presentation.direction(stage, row), 'red')
 
 
+class Run813AttackDuringTalksTests(unittest.TestCase):
+    def test_saved_publisher_headline_is_attack_not_diplomatic_contact(self):
+        # Run 42346222868 sent this body-verified publisher headline in green.
+        title = '美, 종전 협상 중 또 이란 공습 …"게슘섬 방공시설 무력화" - 경북도민일보'
+        row = {'title_original': title, 'title_ko': title, 'description': title,
+               'source': '경북도민일보', 'tags': ['외교 접촉 보도'],
+               'body_verified': True, 'classification_color': 'green',
+               'non_military_kind': 'diplomatic_contact'}
+        self.assertEqual([m.group() for m in stage._military_actions(title.lower())],
+                         ['또 이란 공습'])
+        self.assertIsNone(stage.non_military_kind(row))
+        self.assertEqual(stage.final_color(row), 'red')
+        self.assertEqual(presentation.direction(stage, row), 'red')
+
+        # Replay the saved discovery fields as a newly scored item.  The ZIP
+        # keeps a body hash, so this validates classification without
+        # claiming to have re-fetched the publisher body.
+        fresh = {key: value for key, value in row.items()
+                 if key not in ('tags', 'classification_color', 'non_military_kind')}
+        fresh['published'] = 'Sat, 07 Nov 2026 13:28:15 +0900'
+        at = dt.datetime.fromisoformat('2026-11-07T15:17:54+09:00')
+        score, tags = stage.score_item(fresh, at)
+        self.assertEqual(score, 12)
+        self.assertIn('확전', tags)
+        self.assertNotIn('외교 접촉 보도', tags)
+        fresh['tags'] = tags
+        self.assertNotIn('외교 접촉 보도', stage.topic_label(fresh))
+        self.assertEqual(presentation.direction(stage, fresh), 'red')
+
+    def test_speculative_or_stopped_strike_is_not_a_completed_action(self):
+        for title in ('美, 종전 협상 중 또 이란 공습할까?',
+                      '美, 종전 협상 중 또 이란 공습 가능성',
+                      '美, 종전 협상 중 또 이란 공습을 중단'):
+            with self.subTest(title=title):
+                self.assertEqual(stage._military_actions(title.lower()), [])
+
+
 class Run801SavedInputTests(unittest.TestCase):
     def test_reported_deal_review_and_election_commentary_keep_their_stages(self):
         fixture = json.loads((Path(__file__).parent / 'test_fixtures'
