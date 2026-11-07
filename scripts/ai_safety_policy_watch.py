@@ -1239,11 +1239,12 @@ def fed_bank_security_publisher_verified(item: dict) -> bool:
 
 
 def fed_bank_security_official(item: dict) -> bool:
+    """Only a verified Fed-owned source is an official Fed release."""
     if not fed_bank_security_stage(item):
-        return True
+        return False
     source = str(item.get("source") or "").lower()
     if not ("federal reserve" in source or "연준 공식" in source):
-        return True
+        return False
     host = (urllib.parse.urlsplit(str(item.get("publisher_url") or item.get("url") or "")).hostname or "").lower()
     return host == "federalreserve.gov" or host.endswith(".federalreserve.gov")
 
@@ -1793,15 +1794,14 @@ def normalize(item: dict) -> dict:
     out["fingerprint"] = fingerprint(item)
     out["category"] = detect_category(combined)
     out["entity"] = detect_entity(combined)
-    out["official"] = ((source_official(item.get("source","")) or aws_security_issuer_verified(item)) and
+    out["official"] = ((source_official(item.get("source","")) or aws_security_issuer_verified(item) or fed_bank_security_official(item)) and
         cohere_aisle_publisher_verified(item) and crowdstrike_nvidia_publisher_verified(item)
         and php_korea_publisher_verified(item)
         and k_security_business_publisher_verified(item)
         and k_security_business_official(item)
         and php_business_publisher_verified(item)
         and aws_security_publisher_verified(item)
-        and fed_bank_security_publisher_verified(item)
-        and fed_bank_security_official(item))
+        and fed_bank_security_publisher_verified(item))
     return out
 
 
@@ -2191,7 +2191,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             lines.append(f"• <b>확인 단계</b>: {html.escape(detail)} · 감독 우선순위와 의무 규정 시행은 구분")
             if stage and stage[0] == "fed_bowman_cyber":
                 lines.append("• <b>발언 기준</b>: 은행권 사이버보안·AI 악용·송금사기 대응과 감독상시검사 강조. FTC·FCC·사법기관과 협의하되 독립된 새로운 의무 규정·정부 발주가 확정된 것은 아님")
-                lines.append("• <b>검증 주의</b>: 보도상 'The President' 원탁회의 명칭 및 조직 구성은 공식 원문에서 독립 확인 전")
+                lines.append("• <b>검증 주의</b>: 보도상 원탁회의 명칭 및 조직 구성은 공식자료에서 독립 확인 전")
             elif stage and stage[0] == "fed_genius":
                 lines.append("• <b>규정 상태</b>: 지급형 스테이블코인 준비자산·자본·위험관리·발행 승인 절차 제안. 2026년 11월 30일까지 의견수렴, 최종 확정·시행과 구분")
             else:
