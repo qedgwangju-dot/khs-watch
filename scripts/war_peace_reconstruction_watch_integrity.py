@@ -559,6 +559,8 @@ def _ceasefire_rejection_headline(title):
 def _military_actions(title):
     return list(re.finditer(
         r'(?:공습|공격|폭격)\s*(?:개시|재개|감행)|(?:공습|공격|폭격)에\s*(?:나섰|돌입)|미사일\s*발사|'
+        r'(?:또|재차|다시)\s*(?:[가-힣·-]+\s*){0,2}(?:공습|공격|폭격|포격|타격)'
+        r'(?!\s*(?:을|를|은|는)?\s*(?:가능성|우려|전망|검토|계획|예고|할까|하나|중단|자제|부인|없|않|하지|[?？]))|'
         r'보복\s*(?:공습|공격)\s*(?:개시|실시)|'
         r'\band\s+(?:attacks?|strikes?|bombs?)\b|'
         r'\b(?:launches?|launched|conducts?|conducted|resumes?|resumed)\s+(?:new\s+)?(?:attacks?|strikes?|airstrikes?)', title))
