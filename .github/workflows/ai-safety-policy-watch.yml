@@ -645,6 +645,78 @@ jobs:
           print("ai_policy_php_government_stage_and_source_regression=PASS")
           PY
 
+      - name: Verify bank cyber supervision, GENIUS proposal, and third-party guidance stages
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          from scripts.ai_safety_policy_watch import (
+              POLICY_EVENT_BASELINES, fed_bank_security_stage,
+              fed_bank_security_publisher_verified, build_alert,
+              cluster_events, material, normalize, tracked_policy_event_key,
+          )
+          def event(title, source, publisher, description=""):
+              return normalize({
+                  "kind":"news", "title":title, "description":description,
+                  "source":source, "publisher_url":publisher,
+                  "url":publisher+"reference",
+              })
+          bowman = event(
+              "Fed Michelle Bowman says cybersecurity is top concern for bankers and fraud roundtables",
+              "ABA Banking Journal", "https://bankingjournal.aba.com/",
+              "At the Mississippi banking symposium the Fed will continue bank cyber exams",
+          )
+          genius = event(
+              "Federal Reserve GENIUS Act proposed stablecoin reserve and capital regulations",
+              "Federal Reserve Board", "https://www.federalreserve.gov/",
+          )
+          third = event(
+              "Federal Reserve proposed third-party risk management guidance for community banks",
+              "Federal Reserve Board", "https://www.federalreserve.gov/",
+          )
+          keys = [
+              "fed_bowman_cyber:remarks_20261106",
+              "fed_genius:proposal_20260924",
+              "fed_third_party:proposal_20260911",
+          ]
+          assert [tracked_policy_event_key(x) for x in (bowman, genius, third)] == keys
+          assert all(key in POLICY_EVENT_BASELINES for key in keys)
+          assert all(material(x) for x in (bowman, genius, third))
+          assert not bowman["official"] and genius["official"] and third["official"]
+          assert len(cluster_events([bowman, genius, third])) == 3
+          enforced = event(
+              "Fed Michelle Bowman new bank cybersecurity rule issued",
+              "Reuters", "https://www.reuters.com/",
+          )
+          assert tracked_policy_event_key(enforced) == "fed_bowman_cyber:new_mandatory_cyber_rule_reported"
+          final = event(
+              "Federal Reserve GENIUS Act final rule adopted for stablecoin issuers",
+              "Federal Reserve Board", "https://www.federalreserve.gov/",
+          )
+          assert tracked_policy_event_key(final) == "fed_genius:final_rule_adopted_reported"
+          planned = event(
+              "Federal Reserve GENIUS Act proposed final rule for stablecoin issuers",
+              "Federal Reserve Board", "https://www.federalreserve.gov/",
+          )
+          assert tracked_policy_event_key(planned) == keys[1]
+          guide = event(
+              "Federal Reserve final guidance issued on third-party risk management for community banks",
+              "Federal Reserve Board", "https://www.federalreserve.gov/",
+          )
+          assert tracked_policy_event_key(guide) == "fed_third_party:final_guidance_issued_reported"
+          assert len(cluster_events([genius, final])) == 2
+          spoof = event(
+              "Federal Reserve GENIUS Act final rule adopted for stablecoin issuers",
+              "Federal Reserve Board", "https://notfed.example.invalid/",
+          )
+          assert not fed_bank_security_publisher_verified(spoof)
+          assert not material(spoof) and not spoof["official"]
+          report = build_alert([[bowman]], dt.datetime(2026,11,8,tzinfo=dt.timezone.utc))[1]
+          assert "사이버보안" in report and "의무 규정" in report
+          assert "The President" not in report
+          print("ai_policy_fed_bank_cyber_genius_thirdparty_regression=PASS")
+          PY
+
       - name: Verify AWS Continuum launched service, client references, and 20pct estimate
         shell: bash
         run: |

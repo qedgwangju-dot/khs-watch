@@ -65,6 +65,11 @@ NEWS_QUERIES = [
     '"AI Safety Institute" standard evaluation incident reporting frontier model',
     'NAAIMES AI measurement evaluation standard safety institute',
     'NIST frontier AI safety standard evaluation cybersecurity model',
+    '"Michelle Bowman" (cybersecurity OR fraud OR scams) (banking OR Federal Reserve)',
+    '"Bowman" ("third-party risk" OR "cyber exam" OR "fraud roundtable")',
+    '"Federal Reserve" "GENIUS Act" (final rule OR proposed rule OR comment deadline OR stablecoin)',
+    '"community banks" "third-party risk management" ("Federal Reserve" OR FDIC) (finalized OR proposed)',
+
     'EU AI frontier model safety standard incident reporting',
     # Korea: official project / procurement / commercialization.
     '"사이버보안 특화 AI" 네이버클라우드 과기정통부 NIPA',
@@ -159,6 +164,19 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "fed_bowman_cyber:remarks_20261106": {
+        "source_url": "https://bankingjournal.aba.com/2026/11/owen-bowman-discuss-bank-technology-adoption-fighting-fraud/",
+        "status": "2026-11-06 Bowman at Mississippi symposium: cybersecurity top priority and around-the-clock examination; cross-agency fraud conversations, not new mandatory rule",
+    },
+    "fed_genius:proposal_20260924": {
+        "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm",
+        "status": "2026-09-24 proposed US stablecoin reserve, capital, risk and application rules; comment deadline Nov 30, 2026; not final regulations",
+    },
+    "fed_third_party:proposal_20260911": {
+        "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260911a.htm",
+        "status": "2026-09-11 interagency proposed nonbinding third-party risk guidance and tailored community bank guide; final guidance not yet issued",
+    },
+
     "aws_continuum:developer_integrations_announced_20260805": {
         "source_url": "https://aws.amazon.com/blogs/security/aws-partners-with-anthropic-and-openai-to-bring-aws-continuum-into-developer-workflows/",
         "status": "2026-08-05 issuer announced planned Claude Code/Codex/Kiro integrations, not all live",
@@ -247,6 +265,9 @@ TRUSTED_SOURCE_HINTS = (
     "associated press", "ap news", "guardian", "cbs news", "wall street journal", "wsj",
     "crowdstrike", "ibm", "nvidia", "microsoft", "mbc", "ytn",
     "trail of bits", "trailofbits.com", "cnbc",
+    "aba banking journal", "american bankers association",
+    "federal reserve board", "federal reserve", "seeking alpha",
+
     "amazon web services", "aws news", "about amazon", "amazon ir", "the motley fool", "crn",
 
     "piolink", "파이오링크", "estsecurity", "이스트시큐리티",
@@ -1138,6 +1159,95 @@ def aws_security_issuer_verified(item: dict) -> bool:
     return aws_security_publisher_verified(item)
 
 
+def fed_bank_security_stage(item: dict) -> tuple[str, str] | None:
+    """Dated remarks vs formal proposals vs final rules. Headlines set new stages."""
+    title = str(item.get("title") or "").lower()
+    context = f" {title} {item.get('description','')} ".lower()
+    fed = any(t in context for t in (
+        "federal reserve", "fed's bowman", "fed bowman", "fed michelle bowman",
+        "연준", "미 연방준비제도",
+    ))
+    genius = any(t in context for t in ("genius act", "지니어스법", "지니어스 법"))
+    if fed and genius and any(t in context for t in ("stablecoin", "스테이블코인")):
+        if any(t in title for t in (
+            "final rule adopted", "final rule issued", "final rule approved",
+            "최종 시행규칙 확정", "최종 규정 확정", "최종규정 공포",
+        )) and not any(t in title for t in ("proposal", "proposed", "expected", "예정", "초안")):
+            return "fed_genius", "final_rule_adopted_reported"
+        if any(t in title for t in (
+            "comment deadline extended", "reopens public comment", "의견수렴 기한 연장",
+        )):
+            return "fed_genius", "consultation_extended_reported"
+        return "fed_genius", "proposal_20260924"
+    third_party = any(t in context for t in (
+        "third-party risk management", "third party risk management",
+        "제3자 위험관리", "외부업체 위험관리", "외부 서비스업체 위험관리",
+    ))
+    community = any(t in context for t in ("community bank", "지역은행", "커뮤니티 뱅크"))
+    if fed and third_party and community:
+        if any(t in title for t in (
+            "final guidance issued", "final guidance published",
+            "finalized third-party risk guidance", "최종 지침 확정", "최종 지침 발표",
+        )) and not any(t in title for t in ("proposed", "proposal", "예정", "계획")):
+            return "fed_third_party", "final_guidance_issued_reported"
+        if any(t in title for t in (
+            "third-party enforcement action", "penalty imposed for vendor risk",
+            "외부업체 위험관리 제재 확정",
+        )):
+            return "fed_third_party", "specific_enforcement_reported"
+        return "fed_third_party", "proposal_20260911"
+    bowman = any(t in context for t in ("michelle bowman", "bowman", "보우먼"))
+    bank = any(t in context for t in ("bank", "은행", "금융권", "금융감독"))
+    security = any(t in context for t in ("cybersecurity", "cyber security", "cyber attack", "fraud", "scam", "사이버", "사기"))
+    if bowman and bank and security:
+        if any(t in title for t in (
+            "fraud task force formally launched", "interagency anti-fraud task force formed",
+            "사기 대응 전담조직 공식 출범", "정부 사기대응 전담조직 출범",
+        )):
+            return "fed_bowman_cyber", "fraud_taskforce_formally_launched_reported"
+        if any(t in title for t in (
+            "new bank cybersecurity rule issued", "mandatory cybersecurity rule enacted",
+            "은행 사이버보안 규정 최종 확정", "신규 보안 의무 규정 시행",
+        )):
+            return "fed_bowman_cyber", "new_mandatory_cyber_rule_reported"
+        return "fed_bowman_cyber", "remarks_20261106"
+    return None
+
+
+def fed_bank_security_publisher_verified(item: dict) -> bool:
+    """A publisher label is not itself a Federal Reserve release."""
+    if not fed_bank_security_stage(item):
+        return True
+    source = str(item.get("source") or "").strip().lower()
+    try:
+        host = (urllib.parse.urlsplit(str(item.get("publisher_url") or item.get("url") or "")).hostname or "").lower()
+    except ValueError:
+        return False
+    if not host:
+        return False
+    domains = (
+        (("federal reserve", "연방준비제도", "연준 공식"), "federalreserve.gov"),
+        (("aba banking journal", "american bankers association"), "aba.com"),
+        (("seeking alpha",), "seekingalpha.com"),
+        (("reuters",), "reuters.com"),
+        (("fdic",), "fdic.gov"),
+    )
+    for names, domain in domains:
+        if any(n in source for n in names):
+            return host == domain or host.endswith("." + domain)
+    return source_trusted(source)
+
+
+def fed_bank_security_official(item: dict) -> bool:
+    if not fed_bank_security_stage(item):
+        return True
+    source = str(item.get("source") or "").lower()
+    if not ("federal reserve" in source or "연준 공식" in source):
+        return True
+    host = (urllib.parse.urlsplit(str(item.get("publisher_url") or item.get("url") or "")).hostname or "").lower()
+    return host == "federalreserve.gov" or host.endswith(".federalreserve.gov")
+
+
 def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """Classify a new *reported* milestone from the headline, never from a
     speculative paragraph about what could happen. No issuer/legislative
@@ -1146,6 +1256,9 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
 
+    fed_stage = fed_bank_security_stage(item)
+    if fed_stage:
+        return fed_stage
     aws_stage = aws_security_stage(item)
     if aws_stage:
         return aws_stage
@@ -1410,6 +1523,13 @@ def detect_category(text: str) -> str:
         t in low for t in ("subpoena", "complaint", "investigation", "sues", "settlement", "consent order")
     ):
         return "FTC 프런티어 AI 소비자보호 조사·집행 단계"
+    fed_stage = fed_bank_security_stage({"title": text})
+    if fed_stage:
+        return {
+            "fed_bowman_cyber": "연준 은행 사이버보안 감독·금융사기 대응 단계",
+            "fed_genius": "연준 지니어스법 스테이블코인 시행규정 단계",
+            "fed_third_party": "연준 지역은행 외부업체 위험관리 지침 단계",
+        }[fed_stage[0]]
     aws_stage = aws_security_stage({"title": text})
     if aws_stage:
         return {
@@ -1469,6 +1589,13 @@ def detect_entity(text: str) -> str:
         if "openai" in low and "anthropic" in low:
             return "FTC–OpenAI·Anthropic"
         return "FTC–OpenAI" if "openai" in low else "FTC–Anthropic"
+    fed_stage = fed_bank_security_stage({"title": text})
+    if fed_stage:
+        return {
+            "fed_bowman_cyber": "미국 연준·보우먼 금융감독 부의장",
+            "fed_genius": "미국 연방준비제도",
+            "fed_third_party": "미국 연방준비제도·금융감독기관",
+        }[fed_stage[0]]
     aws_stage = aws_security_stage({"title": text})
     if aws_stage:
         return {
@@ -1591,6 +1718,8 @@ def material(item: dict) -> bool:
         return False
     milestone = tracked_policy_event_stage(item)
     if milestone:
+        if milestone[0] in ("fed_bowman_cyber", "fed_genius", "fed_third_party") and not fed_bank_security_publisher_verified(item):
+            return False
         if milestone[0] in ("aws_continuum", "amazon_security_tokens") and not aws_security_publisher_verified(item):
             return False
         if milestone[0] in ("infra172", "piolink_mdr", "piolink_php", "estsecurity_php", "sga_php", "axgate_php") and not php_business_publisher_verified(item):
@@ -1670,7 +1799,9 @@ def normalize(item: dict) -> dict:
         and k_security_business_publisher_verified(item)
         and k_security_business_official(item)
         and php_business_publisher_verified(item)
-        and aws_security_publisher_verified(item))
+        and aws_security_publisher_verified(item)
+        and fed_bank_security_publisher_verified(item)
+        and fed_bank_security_official(item))
     return out
 
 
@@ -2040,6 +2171,33 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"• {html.escape(concise_fact(rep))}",
         ]
         if rep["category"] in (
+            "연준 은행 사이버보안 감독·금융사기 대응 단계",
+            "연준 지니어스법 스테이블코인 시행규정 단계",
+            "연준 지역은행 외부업체 위험관리 지침 단계",
+        ):
+            stage = fed_bank_security_stage(rep)
+            labels = {
+                "remarks_20261106": "11월 6일 보우먼 은행 사이버보안·사기 대응 발언",
+                "fraud_taskforce_formally_launched_reported": "범정부 사기 대응 전담조직 공식 출범 보도",
+                "new_mandatory_cyber_rule_reported": "은행 사이버보안 의무 규정의 신규 확정 보도",
+                "proposal_20260924": "9월 24일 지니어스법 세부 규정안 공개·의견수렴",
+                "final_rule_adopted_reported": "지니어스법 세부 시행규정 최종 확정 보도",
+                "consultation_extended_reported": "지니어스법 공개 의견수렴 기한 변경 보도",
+                "proposal_20260911": "9월 11일 제3자 위험관리 지침 개정 제안",
+                "final_guidance_issued_reported": "제3자 위험관리 최종 감독지침 공개 보도",
+                "specific_enforcement_reported": "특정 외부업체 위험관리 제재 발표 보도",
+            }
+            detail = labels.get(stage[1], "후속 사실 확인 필요") if stage else "추가 확인"
+            lines.append(f"• <b>확인 단계</b>: {html.escape(detail)} · 감독 우선순위와 의무 규정 시행은 구분")
+            if stage and stage[0] == "fed_bowman_cyber":
+                lines.append("• <b>발언 기준</b>: 은행권 사이버보안·AI 악용·송금사기 대응과 감독상시검사 강조. FTC·FCC·사법기관과 협의하되 독립된 새로운 의무 규정·정부 발주가 확정된 것은 아님")
+                lines.append("• <b>검증 주의</b>: 보도상 'The President' 원탁회의 명칭 및 조직 구성은 공식 원문에서 독립 확인 전")
+            elif stage and stage[0] == "fed_genius":
+                lines.append("• <b>규정 상태</b>: 지급형 스테이블코인 준비자산·자본·위험관리·발행 승인 절차 제안. 2026년 11월 30일까지 의견수렴, 최종 확정·시행과 구분")
+            else:
+                lines.append("• <b>규정 상태</b>: 9월 11일 제3자 위험관리 개정안과 지역은행용 가이드 제안. 비구속 감독지침 제안으로 모든 외부업체의 신규 법적 의무를 확정하지 않음")
+            lines.append("• <b>후속 확인</b>: 실제 최종 규정·의견수렴 결과·감독검사 기준·은행 보안 투자·외부업체 계약·사기 손실 감소 및 유료 고객")
+        elif rep["category"] in (
             "AWS Continuum AI 보안 취약점 수정 서비스 상용화",
             "아마존 AI 보안 토큰 수요 전망·실측 구분",
         ):
@@ -2258,6 +2416,34 @@ def main() -> int:
         except Exception as exc:
             errors.append(f"Google News 실패: {query[:55]} / {type(exc).__name__}: {exc}")
 
+    # Previously verified reference events: stage baselines prevent repeat alerts.
+    raw.extend([
+        {
+            "kind":"news", "query":"ABA bank cyber supervision remarks reference",
+            "title":"Fed Michelle Bowman says cybersecurity is top concern for bankers and fraud roundtables",
+            "description":"2026-11-06 Mississippi Banking and Finance Symposium ABA report: Fed around-the-clock bank cyber and IT examinations, AI-enabled fraud, interagency cooperation; not a newly enacted cyber rule.",
+            "source":"ABA Banking Journal",
+            "publisher_url":"https://bankingjournal.aba.com/",
+            "url":"https://bankingjournal.aba.com/2026/11/owen-bowman-discuss-bank-technology-adoption-fighting-fraud/",
+            "published_at":"2026-11-06T17:15:00+00:00",
+        },
+        {
+            "kind":"official", "query":"Fed GENIUS stablecoin proposed regulations",
+            "title":"Federal Reserve GENIUS Act proposed stablecoin reserve and capital regulations",
+            "description":"Federal Reserve September 24 2026 public comment proposal for Board-supervised payment stablecoin issuers, 2026-11-30 comment deadline; proposal not final regulation.",
+            "source":"Federal Reserve Board", "publisher_url":"https://www.federalreserve.gov/",
+            "url":"https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm",
+            "published_at":"2026-09-24T18:30:00+00:00",
+        },
+        {
+            "kind":"official", "query":"Fed third-party risk guidance proposal",
+            "title":"Federal Reserve proposed third-party risk management guidance for community banks",
+            "description":"Federal Reserve September 11 2026 interagency consultation and tailored community-bank proposed guide; nonbinding, not a final new obligation.",
+            "source":"Federal Reserve Board", "publisher_url":"https://www.federalreserve.gov/",
+            "url":"https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260911a.htm",
+            "published_at":"2026-09-11T14:00:00+00:00",
+        },
+    ])
     # Dated, separately verified reference milestones: never re-send old news.
     # These are baseline facts, not proof of contract value or actual token share.
     raw.extend([
