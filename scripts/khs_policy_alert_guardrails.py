@@ -485,6 +485,30 @@ def korean_title_for(item: dict) -> str:
     source = str(item.get("source") or "").lower()
     text = haystack_for(item)
 
+    if (
+        "certain carbon and alloy steel cut-to-length plate" in original.lower()
+        and "notice of court decision not in harmony" in original.lower()
+        and "amended final results" in original.lower()
+    ):
+        item["title_ko"] = "미 상무부, 한국산 탄소·합금강 후판 상계관세 재심 판결·최종결과 정정"
+        item["policy_plain_summary"] = (
+            "미 연방관보는 한국산 탄소·합금강 후판의 상계관세 행정재심 결과와 "
+            "불일치하는 법원 결정 및 정정된 최종결과를 공지했습니다. "
+            "구체 세율은 해당 공고의 결정표를 확인해야 합니다."
+        )
+        return item["title_ko"]
+    if (
+        "circular welded non-alloy steel pipe" in original.lower()
+        and "final results" in original.lower()
+        and "2023-2024" in original.lower()
+    ):
+        item["title_ko"] = "미 상무부, 한국산 원형용접 비합금강관 2023~2024년 반덤핑 재심 최종결과"
+        item["policy_plain_summary"] = (
+            "미 연방관보가 한국산 원형용접 비합금강관의 2023~2024년 "
+            "반덤핑 관세 행정재심 최종결과를 공지했습니다. "
+            "기업별 실제 적용 세율은 원문 결과표와 대조해야 합니다."
+        )
+        return item["title_ko"]
     if is_domestic_telecom_policy(item):
         return "정부, 통신비 인하·요금제 개편 정책 압박 확인"
     if is_domestic_stablecoin_policy(item):
