@@ -1337,6 +1337,49 @@ class Run813AttackDuringTalksTests(unittest.TestCase):
                 self.assertEqual(stage._military_actions(title.lower()), [])
 
 
+class Run817EnergyMissileUseTests(unittest.TestCase):
+    def test_saved_publisher_attack_claim_is_red_at_both_stages(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run817_saved_energy_missile_use_42399686297.json')
+                             .read_text(encoding='utf-8'))
+        row = fixture['article']
+        self.assertEqual(
+            fixture['provenance']['zip_sha256'],
+            'f901f6917dbaeb8611c6dea57b72159d2c8a4ce3e20727602b72d324335df450')
+        self.assertEqual(row['id'], 'b29c5de3f75215ee4a00')
+        self.assertEqual(
+            row['title_original'],
+            '젤렌스키 "러, 우크라 에너지 시설 타격에 북한제 KN-23 미사일 사용"')
+        self.assertIn('러시아가 자국 에너지 시설을 공격하는 데 북한제 탄도미사일을 사용했다고 주장했다',
+                      row['description'])
+        self.assertEqual(row['classification_color'], 'green')  # Actual run #817 send.
+        self.assertEqual(row['semantic_classification_color'], 'yellow')
+        self.assertTrue(row['body_verified'])
+        self.assertEqual(stage.final_color(row), 'red')
+        self.assertEqual(presentation.direction(stage, row), 'red')
+
+        # Rescore the saved publisher input without carrying forward its old
+        # presentation decision. The original article body is not in the ZIP.
+        fresh = {key: copy.deepcopy(value) for key, value in row.items()
+                 if key not in ('tags', 'score', 'classification_color',
+                                'semantic_classification_color', 'rendered')}
+        at = dt.datetime.fromisoformat('2026-11-08T03:08:35+09:00')
+        score, tags = stage.score_item(fresh, at)
+        self.assertGreater(score, 0)
+        self.assertIn('에너지 시설 공격 보도', tags)
+        fresh['tags'] = tags
+        self.assertEqual(stage.final_color(fresh), 'red')
+        self.assertEqual(presentation.direction(stage, fresh), 'red')
+
+    def test_plan_question_and_denial_do_not_become_completed_strikes(self):
+        prefix = '젤렌스키 "러, 우크라 에너지 시설 타격에 북한제 KN-23 미사일 사용'
+        for title in (prefix + ' 검토"', prefix + ' 가능성"',
+                      prefix + '할 계획"', prefix + '하지 않았다고 부인"',
+                      prefix + '했다는 주장 부인"', prefix + '?"'):
+            with self.subTest(title=title):
+                self.assertFalse(stage._reported_energy_facility_missile_use(title.lower()))
+
+
 class Run801SavedInputTests(unittest.TestCase):
     def test_reported_deal_review_and_election_commentary_keep_their_stages(self):
         fixture = json.loads((Path(__file__).parent / 'test_fixtures'
