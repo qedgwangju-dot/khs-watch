@@ -116,6 +116,44 @@ def main() -> None:
     }
     assert not watch.is_polysilicon_11052_pra_notice(meaningful_rule_update, meaningful_rule_update["summary"])
 
+    # Policy messages are independent: an invalid English heading and an
+    # ungrounded generic title must not consume another verified document.
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    from scripts import khs_policy_alert_router as router
+
+    good_alert = {
+        **stock_result,
+        "source": "Federal Register Commerce national security",
+        "title_ko": "미 상무부, 폴리실리콘 사재기 차단 규칙 시행",
+        "policy_event_key": "polysilicon-11052-stockpiling-tfr",
+        "policy_plain_summary": "BIS의 2026년 9월 24일 임시 최종규칙 공표입니다.",
+        "investment_view": "미국 수입자별 통관 가능 물량에 영향을 줄 수 있습니다.",
+        "korea_market_impact": "한국 공급기업의 실제 미국향 수입·매출 관계를 확인해야 합니다.",
+        "failure_signal": "실제 통관 집행과 수입량 변화가 없으면 영향은 제한적입니다.",
+    }
+    bad_english = {
+        **good_alert,
+        "source": "White House briefings statements",
+        "title": "First Lady Melania Trump Unites Russia and Ukraine at The White House",
+        "title_ko": "",
+        "policy_event_key": "",
+        "fingerprint": "english-unverified",
+        "link": "https://www.whitehouse.gov/briefings-statements/2026/11/test/",
+    }
+    bad_generic = {
+        **good_alert,
+        "title": "미국, 관세·통관 정책 변화 공표",
+        "title_ko": "미국, 관세·통관 정책 변화 공표",
+        "policy_event_key": "",
+        "fingerprint": "generic-unverified",
+    }
+    chosen = router.select_sendable_policy_alerts(
+        [bad_english, bad_generic, good_alert],
+        datetime(2026, 11, 7, 20, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    assert len(chosen) == 1 and chosen[0]["fingerprint"] == good_alert["fingerprint"], chosen
+
     space_pv = (
         "DOE Space Photovoltaics Research and Development Partnership Intermediary Agreement "
         "announced a funding opportunity for solar panels in space applications. "
