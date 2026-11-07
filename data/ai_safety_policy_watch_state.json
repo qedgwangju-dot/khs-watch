@@ -3,13 +3,13 @@
   "last_collection": {
     "deferred_events": 0,
     "errors": [],
-    "material_items": 4,
+    "material_items": 7,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 25,
+    "raw_items": 28,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-07T16:37:42.734093+00:00",
+    "updated_at": "2026-11-07T16:46:20.315577+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -290,6 +290,15 @@
       "title": "과기정통부, PHP 보안 우려에 민간 분야 사이버위기 경보 '주의'로 상향 - MTN 머니투데이방송",
       "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE04MldTXzI5bkRWNUhCc1V4QUdBRUxSd0Z3U0lubGRRbG5GRlJwX3FBU1BSdXBnWGZhejIzNVN5YXlLRkJ0MkVSTy01aWkxTmJXTW5ZQ09hWm9jVVNpMXJB?oc=5"
     },
+    "98b418ba4c6ce8f7ffab4e0f": {
+      "category": "연준 은행 사이버보안 감독·금융사기 대응 단계",
+      "entity": "미국 연준·보우먼 금융감독 부의장",
+      "first_seen_at": "2026-11-07T16:46:20.315577+00:00",
+      "published_at": "2026-11-06T17:15:00+00:00",
+      "source": "ABA Banking Journal",
+      "title": "Fed Michelle Bowman says cybersecurity is top concern for bankers and fraud roundtables",
+      "url": "https://bankingjournal.aba.com/2026/11/owen-bowman-discuss-bank-technology-adoption-fighting-fraud/"
+    },
     "9e752b8da35a573229ddf0d4": {
       "category": "아마존 AI 보안 토큰 수요 전망·실측 구분",
       "entity": "아마존·앤디 재시",
@@ -316,6 +325,15 @@
       "source": "Bloomberg",
       "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcENENWdpRlloLVpNclIyQWpIM3JSV3VHZklqOWZlQ0NJYnB2TWg2ZlhPMndNbS1qM2pWM0dTTVFZQ2l1SmxTT1h3VjZJNVpXTWhZTHRnLThqYm9UeFJ4ZEp0U3JROG1sUFJrN3Z6SEFKN2tPcU5teHZ6cU9JUDh4X1laZVZJMkZNNXNSZnJlZDdOX0dFMlM5REZCSGRHR3AydkdCbUY3RU9zYTRoNzdz?oc=5"
+    },
+    "b3a5c7cd1c0df7168e2b2573": {
+      "category": "연준 지역은행 외부업체 위험관리 지침 단계",
+      "entity": "미국 연방준비제도·금융감독기관",
+      "first_seen_at": "2026-11-07T16:46:20.315577+00:00",
+      "published_at": "2026-09-11T14:00:00+00:00",
+      "source": "Federal Reserve Board",
+      "title": "Federal Reserve proposed third-party risk management guidance for community banks",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260911a.htm"
     },
     "b7301c7daa9682a1ad91eb9d": {
       "category": "이스트시큐리티 PHP 점검 도구·유료 전환 단계",
@@ -344,6 +362,15 @@
       "source": "Axios",
       "title": "백악관 SI Force, AI 모델 사고 즉시 신고·시정 요구",
       "url": "https://www.axios.com/2026/10/09/anthropic-ai-security-white-house"
+    },
+    "c1f7b3436ecc5be60eb1746c": {
+      "category": "연준 지니어스법 스테이블코인 시행규정 단계",
+      "entity": "미국 연방준비제도",
+      "first_seen_at": "2026-11-07T16:46:20.315577+00:00",
+      "published_at": "2026-09-24T18:30:00+00:00",
+      "source": "Federal Reserve Board",
+      "title": "Federal Reserve GENIUS Act proposed stablecoin reserve and capital regulations",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm"
     },
     "c2ccb46a0c6cd3dd090accd1": {
       "category": "미국 Super Intelligence Force 정책지휘체계",
@@ -548,6 +575,18 @@
       "source_url": "https://www.estsecurity.com/public/security-center/download",
       "status": "Free four-mode scanner supports three CVEs, no direct revenue confirmed"
     },
+    "fed_bowman_cyber:remarks_20261106": {
+      "source_url": "https://bankingjournal.aba.com/2026/11/owen-bowman-discuss-bank-technology-adoption-fighting-fraud/",
+      "status": "2026-11-06 Bowman at Mississippi symposium: cybersecurity top priority and around-the-clock examination; cross-agency fraud conversations, not new mandatory rule"
+    },
+    "fed_genius:proposal_20260924": {
+      "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm",
+      "status": "2026-09-24 proposed US stablecoin reserve, capital, risk and application rules; comment deadline Nov 30, 2026; not final regulations"
+    },
+    "fed_third_party:proposal_20260911": {
+      "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260911a.htm",
+      "status": "2026-09-11 interagency proposed nonbinding third-party risk guidance and tailored community bank guide; final guidance not yet issued"
+    },
     "ftc_ai_safety_anthropic:subpoenas_reported": {
       "source_url": "https://www.reuters.com/business/us-ftc-subpoenas-openai-anthropic-over-consumer-harms-axios-reports-2026-10-15/",
       "status": "2026-10-15 Axios/Reuters civil subpoena reporting only; investigation is not a liability finding"
@@ -611,11 +650,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-08T01:37:42+09:00",
+  "updated_at_kst": "2026-11-08T01:46:20+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-07T16:38:28.366802+00:00",
+    "last_success_at": "2026-11-07T16:46:58.420318+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
