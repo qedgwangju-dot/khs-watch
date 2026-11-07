@@ -1,114 +1,109 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "600e76742b3fdfab7f62818cee87f446f067b95d6e78597af0f96943068438ce",
-    "Cboe|options": "b341a819e3262a615f4df032f70619d679aafeed48126a26a08d5b21f1c13cca",
-    "CFTC|cot": "826ff8a6669e4cf81062a43948fa084afb29cdc5096b66a944e5beca2a25d533",
-    "미국 주요지수·시장 확산·옵션 과거 비교|context": "67d5c06c1b91cf8d5250d9762a17aacc97c3a9754cd90a3af49d0950dca6b2e7"
+    "Nasdaq SOX|sox": "34c9ccd4156006dd61ddbe5ee9d5fb54c3753a8caa539731df606e0105d716f5",
+    "Cboe|options": "bec153406f7a837577b4de2bd70728abbe29c1514f9c7491aeb1f6b473e72e0b",
+    "CFTC|cot": "921655e5b69d12c467f11b66f324a556c3e1f2567240560fc8935cd7760318de",
+    "미국 주요지수·시장 확산·옵션 과거 비교|context": "858f012465bc7caf792ada14b195a787a39fcee8fae534ed4a7e1bc35b6b95e3"
   },
   "values": {
     "Nasdaq SOX|sox": {
       "source": "Nasdaq SOX",
       "kind": "sox",
-      "period": "11/05/2026",
+      "period": "11/06/2026",
       "metrics": {
-        "value": 9011.14,
-        "previous_close": 10268.650390625,
+        "value": 9390.25,
+        "previous_close": 9011.1396484375,
         "previous_close_source": "Yahoo daily close cross-check",
-        "net_change": -1257.5103906250006,
+        "net_change": 379.1103515625,
         "net_change_source": "Nasdaq official completed close minus Yahoo prior daily close",
-        "pct": -12.246111638712264,
-        "d1_pct": -12.246111638712264,
-        "official_overview_url": "https://indexes.nasdaq.com/Index/History/SOX",
+        "pct": 4.207129912011043,
+        "d1_pct": 4.207129912011043,
+        "official_overview_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-07-27&todate=2026-11-06&limit=200",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=6mo&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": 0.0003515624994179234,
+        "crosscheck_close_diff": 0.0,
         "final_close_confirmed": true,
-        "expected_completed_session": "2026-11-05",
-        "d3_pct": -12.7531790688725,
-        "d5_pct": -21.76607893909749,
+        "expected_completed_session": "2026-11-06",
+        "d3_pct": -11.416081902861496,
+        "d5_pct": -12.148696096993316,
         "month_windows": {
           "1m": {
             "calendar_months": 1,
-            "cutoff_date": "2026-10-05",
-            "end_date": "2026-11-05",
-            "end_close": 9011.14,
+            "cutoff_date": "2026-10-06",
+            "end_date": "2026-11-06",
+            "end_close": 9390.25,
             "basis": "calendar months; latest observed close on or before cutoff",
             "status": "verified",
-            "base_date": "2026-10-05",
-            "yahoo_base_close": 13172.740234375,
-            "nasdaq_base_close": 13172.74,
+            "base_date": "2026-10-06",
+            "yahoo_base_close": 13217.8203125,
+            "nasdaq_base_close": 13217.82,
             "cutoff_gap_days": 0,
-            "base_close": 13172.74,
-            "base_crosscheck_diff": -0.00023437500021827873,
-            "return_pct": -31.592516059680833
+            "base_close": 13217.82,
+            "base_crosscheck_diff": -0.0003125000002910383,
+            "return_pct": -28.957649597286085
           },
           "3m": {
             "calendar_months": 3,
-            "cutoff_date": "2026-08-05",
-            "end_date": "2026-11-05",
-            "end_close": 9011.14,
+            "cutoff_date": "2026-08-06",
+            "end_date": "2026-11-06",
+            "end_close": 9390.25,
             "basis": "calendar months; latest observed close on or before cutoff",
             "status": "verified",
-            "base_date": "2026-08-05",
-            "yahoo_base_close": 12008.8798828125,
-            "nasdaq_base_close": 12008.88,
+            "base_date": "2026-08-06",
+            "yahoo_base_close": 12048.6904296875,
+            "nasdaq_base_close": 12048.69,
             "cutoff_gap_days": 0,
-            "base_close": 12008.88,
-            "base_crosscheck_diff": 0.00011718749919964466,
-            "return_pct": -24.962694272904717
+            "base_close": 12048.69,
+            "base_crosscheck_diff": -0.00042968749949068297,
+            "return_pct": -22.0641414128839
           }
         },
-        "month_window_history_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-07-26&todate=2026-11-05&limit=200",
+        "month_window_history_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-07-27&todate=2026-11-06&limit=200",
         "price_path": {
           "status": "verified",
-          "end_date": "2026-11-05",
+          "end_date": "2026-11-06",
           "symbol": "SOX",
           "tolerance_points": 0.1,
           "price_basis": "unadjusted completed-session close",
           "values": {
-            "d1_pct": -12.246108300506886,
-            "d3_pct": -12.753175005058903,
-            "d5_pct": -21.76607456026116,
-            "ma20": 11185.1765,
-            "ma20_prior5": 11901.164999999999,
-            "ma20_change5_pct": -6.016121110832417,
-            "price_vs_ma20_pct": -19.436765258018063,
-            "ma60": 11776.876,
-            "ma60_prior5": 11943.540500000001,
-            "ma60_change5_pct": -1.3954363029957562,
-            "price_vs_ma60_pct": -23.48446226316725,
-            "close": 9011.14,
+            "d1_pct": 4.2071258464522865,
+            "d3_pct": -11.416078638541938,
+            "d5_pct": -12.148697702267786,
+            "ma20": 11026.068,
+            "ma20_prior5": 11778.771499999999,
+            "ma20_change5_pct": -6.390339603752393,
+            "price_vs_ma20_pct": -14.8359143078022,
+            "ma60": 11725.780166666667,
+            "ma60_prior5": 11920.875666666667,
+            "ma60_change5_pct": -1.6365869878630535,
+            "price_vs_ma60_pct": -19.917908518411163,
+            "close": 9390.25,
             "peak63_close": 13217.82,
             "peak63_date": "2026-10-06",
-            "drawdown63_pct": -31.825823017713972,
+            "drawdown63_pct": -28.957649597286085,
             "trend": "하락"
           },
           "month_windows": {
             "1m": {
               "status": "verified",
-              "base_date": "2026-10-05",
-              "end_date": "2026-11-05",
-              "base_primary_close": 13172.74,
-              "base_secondary_close": 13172.740234375,
-              "end_close": 9011.14,
-              "return_pct": -31.592516059680833
+              "base_date": "2026-10-06",
+              "end_date": "2026-11-06",
+              "base_primary_close": 13217.82,
+              "base_secondary_close": 13217.8203125,
+              "end_close": 9390.25,
+              "return_pct": -28.957649597286085
             },
             "3m": {
               "status": "verified",
-              "base_date": "2026-08-05",
-              "end_date": "2026-11-05",
-              "base_primary_close": 12008.88,
-              "base_secondary_close": 12008.8798828125,
-              "end_close": 9011.14,
-              "return_pct": -24.962694272904717
+              "base_date": "2026-08-06",
+              "end_date": "2026-11-06",
+              "base_primary_close": 12048.69,
+              "base_secondary_close": 12048.6904296875,
+              "end_close": 9390.25,
+              "return_pct": -22.0641414128839
             }
           },
           "operands": [
-            [
-              "2026-08-05",
-              12008.88,
-              12008.8798828125
-            ],
             [
               "2026-08-06",
               12048.69,
@@ -433,10 +428,14 @@
               "2026-11-05",
               9011.14,
               9011.1396484375
+            ],
+            [
+              "2026-11-06",
+              9390.25,
+              9390.25
             ]
           ],
           "session_dates": [
-            "2026-08-06",
             "2026-08-07",
             "2026-08-10",
             "2026-08-11",
@@ -500,42 +499,43 @@
             "2026-11-02",
             "2026-11-03",
             "2026-11-04",
-            "2026-11-05"
+            "2026-11-05",
+            "2026-11-06"
           ]
         }
       },
-      "url": "https://indexes.nasdaq.com/Index/History/SOX",
-      "fingerprint": "600e76742b3fdfab7f62818cee87f446f067b95d6e78597af0f96943068438ce"
+      "url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-07-27&todate=2026-11-06&limit=200",
+      "fingerprint": "34c9ccd4156006dd61ddbe5ee9d5fb54c3753a8caa539731df606e0105d716f5"
     },
     "Cboe|options": {
       "source": "Cboe",
       "kind": "options",
-      "period": "Thursday, November 5, 2026",
+      "period": "Friday, November 6, 2026",
       "metrics": {
-        "total_pc_ratio": 1.06,
-        "total_calls": 10589764,
-        "total_puts": 11225416,
+        "total_pc_ratio": 0.95,
+        "total_calls": 7752661,
+        "total_puts": 7339138,
         "total_time_ct": "일별 마감",
-        "equity_pc_ratio": 0.89,
-        "equity_calls": 2719490,
-        "equity_puts": 2430016,
+        "equity_pc_ratio": 0.59,
+        "equity_calls": 2749110,
+        "equity_puts": 1609514,
         "equity_time_ct": "일별 마감",
-        "index_pc_ratio": 1.07,
-        "index_calls": 5855427,
-        "index_puts": 6267449,
+        "index_pc_ratio": 1.26,
+        "index_calls": 3404221,
+        "index_puts": 4276138,
         "index_time_ct": "일별 마감",
         "snapshot_type": "cboe_daily_eod",
         "final_snapshot": true,
         "daily_ratio_crosscheck": {
-          "date": "2026-11-05",
-          "total": 1.06,
-          "index": 1.07,
-          "equity": 0.89,
-          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-05"
+          "date": "2026-11-06",
+          "total": 0.95,
+          "index": 1.26,
+          "equity": 0.59,
+          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-06"
         }
       },
-      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-05",
-      "fingerprint": "b341a819e3262a615f4df032f70619d679aafeed48126a26a08d5b21f1c13cca"
+      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-06",
+      "fingerprint": "bec153406f7a837577b4de2bd70728abbe29c1514f9c7491aeb1f6b473e72e0b"
     },
     "CFTC|cot": {
       "source": "CFTC",
@@ -748,160 +748,150 @@
     "미국 주요지수·시장 확산·옵션 과거 비교|context": {
       "source": "미국 주요지수·시장 확산·옵션 과거 비교",
       "kind": "context",
-      "period": "2026-11-05",
+      "period": "2026-11-06",
       "metrics": {
         "indices": {
           "NDX": {
             "status": "unavailable",
-            "end_date": "2026-11-05",
+            "end_date": "2026-11-06",
             "symbol": "NDX",
             "tolerance_points": 0.1,
             "price_basis": "unadjusted completed-session close",
             "reason": "제공처 종가 불일치: 2026-10-06",
-            "primary_url": "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&fromdate=2026-04-29&todate=2026-11-05&limit=200",
+            "primary_url": "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&fromdate=2026-04-30&todate=2026-11-06&limit=200",
             "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ENDX?range=6mo&interval=1d",
             "returns": {
               "status": "verified",
               "symbol": "NDX",
-              "end_date": "2026-11-05",
+              "end_date": "2026-11-06",
               "windows": {
                 "1d": {
                   "status": "verified",
-                  "base_date": "2026-11-04",
-                  "end_date": "2026-11-05",
-                  "base_primary": 28437.17,
-                  "base_secondary": 28437.169921875,
-                  "end_primary": 26629.81,
-                  "end_secondary": 26629.810546875,
-                  "return_pct": -6.355625401543108
+                  "base_date": "2026-11-05",
+                  "end_date": "2026-11-06",
+                  "base_primary": 26629.81,
+                  "base_secondary": 26629.810546875,
+                  "end_primary": 26989.99,
+                  "end_secondary": 26989.990234375,
+                  "return_pct": 1.3525443854086827
                 },
                 "3d": {
                   "status": "verified",
-                  "base_date": "2026-11-02",
-                  "end_date": "2026-11-05",
-                  "base_primary": 27989.82,
-                  "base_secondary": 27989.8203125,
-                  "end_primary": 26629.81,
-                  "end_secondary": 26629.810546875,
-                  "return_pct": -4.858945145056303
+                  "base_date": "2026-11-03",
+                  "end_date": "2026-11-06",
+                  "base_primary": 28180.26,
+                  "base_secondary": 28180.259765625,
+                  "end_primary": 26989.99,
+                  "end_secondary": 26989.990234375,
+                  "return_pct": -4.223772243407254
                 },
                 "5d": {
                   "status": "verified",
-                  "base_date": "2026-10-29",
-                  "end_date": "2026-11-05",
-                  "base_primary": 29402.51,
-                  "base_secondary": 29402.509765625,
-                  "end_primary": 26629.81,
-                  "end_secondary": 26629.810546875,
-                  "return_pct": -9.430147290146307
+                  "base_date": "2026-10-30",
+                  "end_date": "2026-11-06",
+                  "base_primary": 28384.85,
+                  "base_secondary": 28384.849609375,
+                  "end_primary": 26989.99,
+                  "end_secondary": 26989.990234375,
+                  "return_pct": -4.914100303506963
                 },
                 "1m": {
-                  "status": "verified",
-                  "base_date": "2026-10-05",
-                  "end_date": "2026-11-05",
-                  "base_primary": 31076.44,
-                  "base_secondary": 31076.439453125,
-                  "end_primary": 26629.81,
-                  "end_secondary": 26629.810546875,
-                  "return_pct": -14.30868529342485
+                  "status": "unavailable",
+                  "base_date": "2026-10-06",
+                  "reason": "기준 종가 누락·제공처 불일치"
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-08-05",
-                  "end_date": "2026-11-05",
-                  "base_primary": 29487.79,
-                  "base_secondary": 29487.7890625,
-                  "end_primary": 26629.81,
-                  "end_secondary": 26629.810546875,
-                  "return_pct": -9.69207933181836
+                  "base_date": "2026-08-06",
+                  "end_date": "2026-11-06",
+                  "base_primary": 29373.33,
+                  "base_secondary": 29373.330078125,
+                  "end_primary": 26989.99,
+                  "end_secondary": 26989.990234375,
+                  "return_pct": -8.113959159550522
                 }
               },
-              "close": 26629.81,
-              "peer_close": 26629.810546875,
+              "close": 26989.99,
+              "peer_close": 26989.990234375,
               "operands": [
                 [
-                  "2026-08-05",
-                  29487.79,
-                  29487.7890625
+                  "2026-08-06",
+                  29373.33,
+                  29373.330078125
                 ],
                 [
-                  "2026-10-05",
-                  31076.44,
-                  31076.439453125
+                  "2026-10-06",
+                  31224.69,
+                  31224.470703125
                 ],
                 [
-                  "2026-10-29",
-                  29402.51,
-                  29402.509765625
+                  "2026-10-30",
+                  28384.85,
+                  28384.849609375
                 ],
                 [
-                  "2026-11-02",
-                  27989.82,
-                  27989.8203125
-                ],
-                [
-                  "2026-11-04",
-                  28437.17,
-                  28437.169921875
+                  "2026-11-03",
+                  28180.26,
+                  28180.259765625
                 ],
                 [
                   "2026-11-05",
                   26629.81,
                   26629.810546875
+                ],
+                [
+                  "2026-11-06",
+                  26989.99,
+                  26989.990234375
                 ]
               ]
             }
           },
           "SPX": {
             "status": "verified",
-            "end_date": "2026-11-05",
+            "end_date": "2026-11-06",
             "symbol": "SPX",
             "tolerance_points": 0.1,
             "price_basis": "unadjusted completed-session close",
             "values": {
-              "d1_pct": -4.355658102494342,
-              "d3_pct": -2.4885299811706063,
-              "d5_pct": -4.74924194244074,
-              "ma20": 7679.5365,
-              "ma20_prior5": 7737.036,
-              "ma20_change5_pct": -0.7431721915214018,
-              "price_vs_ma20_pct": -4.242528178621208,
-              "ma60": 7689.623666666666,
-              "ma60_prior5": 7705.7015,
-              "ma60_change5_pct": -0.2086485355464851,
-              "price_vs_ma60_pct": -4.368141813268622,
-              "close": 7353.73,
+              "d1_pct": 0.3145342567649312,
+              "d3_pct": -2.537482229961474,
+              "d5_pct": -2.6808459552484343,
+              "ma20": 7657.8025,
+              "ma20_prior5": 7729.9035,
+              "ma20_change5_pct": -0.9327542057931293,
+              "price_vs_ma20_pct": -3.668709136857473,
+              "ma60": 7682.588166666666,
+              "ma60_prior5": 7703.536666666667,
+              "ma60_change5_pct": -0.2719335404820611,
+              "price_vs_ma60_pct": -3.979494410401496,
+              "close": 7376.86,
               "peak63_close": 7818.93,
               "peak63_date": "2026-10-06",
-              "drawdown63_pct": -5.949663189208765,
+              "drawdown63_pct": -5.653842661336017,
               "trend": "하락"
             },
             "month_windows": {
               "1m": {
                 "status": "verified",
-                "base_date": "2026-10-05",
-                "end_date": "2026-11-05",
-                "base_primary_close": 7773.95,
-                "base_secondary_close": 7773.9501953125,
-                "end_close": 7353.73,
-                "return_pct": -5.405488844152595
+                "base_date": "2026-10-06",
+                "end_date": "2026-11-06",
+                "base_primary_close": 7818.93,
+                "base_secondary_close": 7818.93017578125,
+                "end_close": 7376.86,
+                "return_pct": -5.653842661336017
               },
               "3m": {
                 "status": "verified",
-                "base_date": "2026-08-05",
-                "end_date": "2026-11-05",
-                "base_primary_close": 7723.55,
-                "base_secondary_close": 7723.5498046875,
-                "end_close": 7353.73,
-                "return_pct": -4.788212674223646
+                "base_date": "2026-08-06",
+                "end_date": "2026-11-06",
+                "base_primary_close": 7709.96,
+                "base_secondary_close": 7709.9599609375,
+                "end_close": 7376.86,
+                "return_pct": -4.320385579172914
               }
             },
             "operands": [
-              [
-                "2026-08-05",
-                7723.55,
-                7723.5498046875
-              ],
               [
                 "2026-08-06",
                 7709.96,
@@ -1226,10 +1216,14 @@
                 "2026-11-05",
                 7353.73,
                 7353.72998046875
+              ],
+              [
+                "2026-11-06",
+                7376.86,
+                7376.85986328125
               ]
             ],
             "session_dates": [
-              "2026-08-06",
               "2026-08-07",
               "2026-08-10",
               "2026-08-11",
@@ -1293,98 +1287,99 @@
               "2026-11-02",
               "2026-11-03",
               "2026-11-04",
-              "2026-11-05"
+              "2026-11-05",
+              "2026-11-06"
             ],
             "primary_url": "https://cdn.cboe.com/api/global/delayed_quotes/charts/historical/_SPX.json",
             "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=6mo&interval=1d",
             "returns": {
               "status": "verified",
               "symbol": "SPX",
-              "end_date": "2026-11-05",
+              "end_date": "2026-11-06",
               "windows": {
                 "1d": {
                   "status": "verified",
-                  "base_date": "2026-11-04",
-                  "end_date": "2026-11-05",
-                  "base_primary": 7688.62,
-                  "base_secondary": 7688.6201171875,
-                  "end_primary": 7353.73,
-                  "end_secondary": 7353.72998046875,
-                  "return_pct": -4.355658102494342
+                  "base_date": "2026-11-05",
+                  "end_date": "2026-11-06",
+                  "base_primary": 7353.73,
+                  "base_secondary": 7353.72998046875,
+                  "end_primary": 7376.86,
+                  "end_secondary": 7376.85986328125,
+                  "return_pct": 0.3145342567649312
                 },
                 "3d": {
                   "status": "verified",
-                  "base_date": "2026-11-02",
-                  "end_date": "2026-11-05",
-                  "base_primary": 7541.4,
-                  "base_secondary": 7541.39990234375,
-                  "end_primary": 7353.73,
-                  "end_secondary": 7353.72998046875,
-                  "return_pct": -2.4885299811706063
+                  "base_date": "2026-11-03",
+                  "end_date": "2026-11-06",
+                  "base_primary": 7568.92,
+                  "base_secondary": 7568.919921875,
+                  "end_primary": 7376.86,
+                  "end_secondary": 7376.85986328125,
+                  "return_pct": -2.537482229961474
                 },
                 "5d": {
                   "status": "verified",
-                  "base_date": "2026-10-29",
-                  "end_date": "2026-11-05",
-                  "base_primary": 7720.39,
-                  "base_secondary": 7720.39013671875,
-                  "end_primary": 7353.73,
-                  "end_secondary": 7353.72998046875,
-                  "return_pct": -4.74924194244074
+                  "base_date": "2026-10-30",
+                  "end_date": "2026-11-06",
+                  "base_primary": 7580.07,
+                  "base_secondary": 7580.06982421875,
+                  "end_primary": 7376.86,
+                  "end_secondary": 7376.85986328125,
+                  "return_pct": -2.6808459552484343
                 },
                 "1m": {
                   "status": "verified",
-                  "base_date": "2026-10-05",
-                  "end_date": "2026-11-05",
-                  "base_primary": 7773.95,
-                  "base_secondary": 7773.9501953125,
-                  "end_primary": 7353.73,
-                  "end_secondary": 7353.72998046875,
-                  "return_pct": -5.405488844152595
+                  "base_date": "2026-10-06",
+                  "end_date": "2026-11-06",
+                  "base_primary": 7818.93,
+                  "base_secondary": 7818.93017578125,
+                  "end_primary": 7376.86,
+                  "end_secondary": 7376.85986328125,
+                  "return_pct": -5.653842661336017
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-08-05",
-                  "end_date": "2026-11-05",
-                  "base_primary": 7723.55,
-                  "base_secondary": 7723.5498046875,
-                  "end_primary": 7353.73,
-                  "end_secondary": 7353.72998046875,
-                  "return_pct": -4.788212674223646
+                  "base_date": "2026-08-06",
+                  "end_date": "2026-11-06",
+                  "base_primary": 7709.96,
+                  "base_secondary": 7709.9599609375,
+                  "end_primary": 7376.86,
+                  "end_secondary": 7376.85986328125,
+                  "return_pct": -4.320385579172914
                 }
               },
-              "close": 7353.73,
-              "peer_close": 7353.72998046875,
+              "close": 7376.86,
+              "peer_close": 7376.85986328125,
               "operands": [
                 [
-                  "2026-08-05",
-                  7723.55,
-                  7723.5498046875
+                  "2026-08-06",
+                  7709.96,
+                  7709.9599609375
                 ],
                 [
-                  "2026-10-05",
-                  7773.95,
-                  7773.9501953125
+                  "2026-10-06",
+                  7818.93,
+                  7818.93017578125
                 ],
                 [
-                  "2026-10-29",
-                  7720.39,
-                  7720.39013671875
+                  "2026-10-30",
+                  7580.07,
+                  7580.06982421875
                 ],
                 [
-                  "2026-11-02",
-                  7541.4,
-                  7541.39990234375
-                ],
-                [
-                  "2026-11-04",
-                  7688.62,
-                  7688.6201171875
+                  "2026-11-03",
+                  7568.92,
+                  7568.919921875
                 ],
                 [
                   "2026-11-05",
                   7353.73,
                   7353.72998046875
+                ],
+                [
+                  "2026-11-06",
+                  7376.86,
+                  7376.85986328125
                 ]
               ]
             }
@@ -1394,54 +1389,49 @@
           "series": {
             "RSP": {
               "status": "verified",
-              "end_date": "2026-11-05",
+              "end_date": "2026-11-06",
               "symbol": "RSP",
               "tolerance_points": 0.1,
               "price_basis": "unadjusted completed-session close",
               "values": {
-                "d1_pct": -2.8925804862759197,
-                "d3_pct": -1.4137648877170617,
-                "d5_pct": -1.4406471550627131,
-                "ma20": 216.57,
-                "ma20_prior5": 214.465,
-                "ma20_change5_pct": 0.9815121348471623,
-                "price_vs_ma20_pct": 0.13852334118300558,
-                "ma60": 216.00683333333333,
-                "ma60_prior5": 216.05533333333332,
-                "ma60_change5_pct": -0.02244795314779724,
-                "price_vs_ma60_pct": 0.3996015558149768,
-                "close": 216.87,
+                "d1_pct": -0.3781066998662763,
+                "d3_pct": -1.4640153242725384,
+                "d5_pct": -1.0352251385644218,
+                "ma20": 216.7205,
+                "ma20_prior5": 214.894,
+                "ma20_change5_pct": 0.8499539307751602,
+                "price_vs_ma20_pct": -0.3093846682708734,
+                "ma60": 215.8955,
+                "ma60_prior5": 216.05083333333332,
+                "ma60_change5_pct": -0.07189666012241691,
+                "price_vs_ma60_pct": 0.07156239940155906,
+                "close": 216.05,
                 "peak63_close": 223.33,
                 "peak63_date": "2026-11-04",
-                "drawdown63_pct": -2.8925804862759197,
+                "drawdown63_pct": -3.2597501455245648,
                 "trend": "혼재"
               },
               "month_windows": {
                 "1m": {
                   "status": "verified",
-                  "base_date": "2026-10-05",
-                  "end_date": "2026-11-05",
-                  "base_primary_close": 211.12,
-                  "base_secondary_close": 211.1199951171875,
-                  "end_close": 216.87,
-                  "return_pct": 2.7235695339143717
+                  "base_date": "2026-10-06",
+                  "end_date": "2026-11-06",
+                  "base_primary_close": 212.33,
+                  "base_secondary_close": 212.3300018310547,
+                  "end_close": 216.05,
+                  "return_pct": 1.751989827155831
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-08-05",
-                  "end_date": "2026-11-05",
-                  "base_primary_close": 219.73,
-                  "base_secondary_close": 219.72999572753906,
-                  "end_close": 216.87,
-                  "return_pct": -1.3015974150093257
+                  "base_date": "2026-08-06",
+                  "end_date": "2026-11-06",
+                  "base_primary_close": 218.58,
+                  "base_secondary_close": 218.5800018310547,
+                  "end_close": 216.05,
+                  "return_pct": -1.15747094885168
                 }
               },
               "operands": [
-                [
-                  "2026-08-05",
-                  219.73,
-                  219.72999572753906
-                ],
                 [
                   "2026-08-06",
                   218.58,
@@ -1766,10 +1756,14 @@
                   "2026-11-05",
                   216.87,
                   216.8699951171875
+                ],
+                [
+                  "2026-11-06",
+                  216.05,
+                  216.0500030517578
                 ]
               ],
               "session_dates": [
-                "2026-08-06",
                 "2026-08-07",
                 "2026-08-10",
                 "2026-08-11",
@@ -1833,106 +1827,103 @@
                 "2026-11-02",
                 "2026-11-03",
                 "2026-11-04",
-                "2026-11-05"
+                "2026-11-05",
+                "2026-11-06"
               ],
-              "primary_url": "https://api.nasdaq.com/api/quote/RSP/historical?assetclass=etf&fromdate=2026-04-29&todate=2026-11-05&limit=200",
+              "primary_url": "https://api.nasdaq.com/api/quote/RSP/historical?assetclass=etf&fromdate=2026-04-30&todate=2026-11-06&limit=200",
               "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/RSP?range=6mo&interval=1d",
               "returns": {
                 "status": "verified",
                 "symbol": "RSP",
-                "end_date": "2026-11-05",
+                "end_date": "2026-11-06",
                 "windows": {
                   "1d": {
                     "status": "verified",
-                    "base_date": "2026-11-04",
-                    "end_date": "2026-11-05",
-                    "base_primary": 223.33,
-                    "base_secondary": 223.3300018310547,
-                    "end_primary": 216.87,
-                    "end_secondary": 216.8699951171875,
-                    "return_pct": -2.8925804862759197
+                    "base_date": "2026-11-05",
+                    "end_date": "2026-11-06",
+                    "base_primary": 216.87,
+                    "base_secondary": 216.8699951171875,
+                    "end_primary": 216.05,
+                    "end_secondary": 216.0500030517578,
+                    "return_pct": -0.3781066998662763
                   },
                   "3d": {
                     "status": "verified",
-                    "base_date": "2026-11-02",
-                    "end_date": "2026-11-05",
-                    "base_primary": 219.98,
-                    "base_secondary": 219.97999572753906,
-                    "end_primary": 216.87,
-                    "end_secondary": 216.8699951171875,
-                    "return_pct": -1.4137648877170617
+                    "base_date": "2026-11-03",
+                    "end_date": "2026-11-06",
+                    "base_primary": 219.26,
+                    "base_secondary": 219.25999450683594,
+                    "end_primary": 216.05,
+                    "end_secondary": 216.0500030517578,
+                    "return_pct": -1.4640153242725384
                   },
                   "5d": {
                     "status": "verified",
-                    "base_date": "2026-10-29",
-                    "end_date": "2026-11-05",
-                    "base_primary": 220.04,
-                    "base_secondary": 220.0399932861328,
-                    "end_primary": 216.87,
-                    "end_secondary": 216.8699951171875,
-                    "return_pct": -1.4406471550627131
+                    "base_date": "2026-10-30",
+                    "end_date": "2026-11-06",
+                    "base_primary": 218.31,
+                    "base_secondary": 218.30999755859375,
+                    "end_primary": 216.05,
+                    "end_secondary": 216.0500030517578,
+                    "return_pct": -1.0352251385644218
                   },
                   "1m": {
                     "status": "verified",
-                    "base_date": "2026-10-05",
-                    "end_date": "2026-11-05",
-                    "base_primary": 211.12,
-                    "base_secondary": 211.1199951171875,
-                    "end_primary": 216.87,
-                    "end_secondary": 216.8699951171875,
-                    "return_pct": 2.7235695339143717
+                    "base_date": "2026-10-06",
+                    "end_date": "2026-11-06",
+                    "base_primary": 212.33,
+                    "base_secondary": 212.3300018310547,
+                    "end_primary": 216.05,
+                    "end_secondary": 216.0500030517578,
+                    "return_pct": 1.751989827155831
                   },
                   "3m": {
                     "status": "verified",
-                    "base_date": "2026-08-05",
-                    "end_date": "2026-11-05",
-                    "base_primary": 219.73,
-                    "base_secondary": 219.72999572753906,
-                    "end_primary": 216.87,
-                    "end_secondary": 216.8699951171875,
-                    "return_pct": -1.3015974150093257
+                    "base_date": "2026-08-06",
+                    "end_date": "2026-11-06",
+                    "base_primary": 218.58,
+                    "base_secondary": 218.5800018310547,
+                    "end_primary": 216.05,
+                    "end_secondary": 216.0500030517578,
+                    "return_pct": -1.15747094885168
                   }
                 },
-                "close": 216.87,
-                "peer_close": 216.8699951171875,
+                "close": 216.05,
+                "peer_close": 216.0500030517578,
                 "operands": [
                   [
-                    "2026-08-05",
-                    219.73,
-                    219.72999572753906
+                    "2026-08-06",
+                    218.58,
+                    218.5800018310547
                   ],
                   [
-                    "2026-10-05",
-                    211.12,
-                    211.1199951171875
+                    "2026-10-06",
+                    212.33,
+                    212.3300018310547
                   ],
                   [
-                    "2026-10-29",
-                    220.04,
-                    220.0399932861328
+                    "2026-10-30",
+                    218.31,
+                    218.30999755859375
                   ],
                   [
-                    "2026-11-02",
-                    219.98,
-                    219.97999572753906
-                  ],
-                  [
-                    "2026-11-04",
-                    223.33,
-                    223.3300018310547
+                    "2026-11-03",
+                    219.26,
+                    219.25999450683594
                   ],
                   [
                     "2026-11-05",
                     216.87,
                     216.8699951171875
+                  ],
+                  [
+                    "2026-11-06",
+                    216.05,
+                    216.0500030517578
                   ]
                 ]
               },
               "adjusted_operands": [
-                [
-                  "2026-05-06",
-                  203.29554748535156
-                ],
                 [
                   "2026-05-07",
                   201.99546813964844
@@ -1955,7 +1946,7 @@
                 ],
                 [
                   "2026-05-14",
-                  202.1145782470703
+                  202.11456298828125
                 ],
                 [
                   "2026-05-15",
@@ -1975,11 +1966,11 @@
                 ],
                 [
                   "2026-05-21",
-                  203.15660095214844
+                  203.1566162109375
                 ],
                 [
                   "2026-05-22",
-                  205.0124053955078
+                  205.01242065429688
                 ],
                 [
                   "2026-05-26",
@@ -1995,11 +1986,11 @@
                 ],
                 [
                   "2026-05-29",
-                  207.24534606933594
+                  207.24533081054688
                 ],
                 [
                   "2026-06-01",
-                  207.62245178222656
+                  207.62246704101562
                 ],
                 [
                   "2026-06-02",
@@ -2039,7 +2030,7 @@
                 ],
                 [
                   "2026-06-15",
-                  211.26461791992188
+                  211.2646026611328
                 ],
                 [
                   "2026-06-16",
@@ -2440,59 +2431,58 @@
                 [
                   "2026-11-05",
                   216.8699951171875
+                ],
+                [
+                  "2026-11-06",
+                  216.0500030517578
                 ]
               ]
             },
             "SPY": {
               "status": "verified",
-              "end_date": "2026-11-05",
+              "end_date": "2026-11-06",
               "symbol": "SPY",
               "tolerance_points": 0.1,
               "price_basis": "unadjusted completed-session close",
               "values": {
-                "d1_pct": -4.409175675851895,
-                "d3_pct": -2.5395559101183407,
-                "d5_pct": -4.726006030986795,
-                "ma20": 765.5274999999999,
-                "ma20_prior5": 771.164,
-                "ma20_change5_pct": -0.7309080818088121,
-                "price_vs_ma20_pct": -4.249030896995853,
-                "ma60": 766.783,
-                "ma60_prior5": 768.3816666666667,
-                "ma60_change5_pct": -0.20805632617471037,
-                "price_vs_ma60_pct": -4.405809727132715,
-                "close": 733.0,
+                "d1_pct": 0.3124147339699901,
+                "d3_pct": -2.526678597468024,
+                "d5_pct": -2.703382205049498,
+                "ma20": 763.3635,
+                "ma20_prior5": 770.4680000000001,
+                "ma20_change5_pct": -0.9221018913180057,
+                "price_vs_ma20_pct": -3.6776057540084173,
+                "ma60": 766.0731666666667,
+                "ma60_prior5": 768.1676666666666,
+                "ma60_change5_pct": -0.27266182773464376,
+                "price_vs_ma60_pct": -4.0183063454121815,
+                "close": 735.29,
                 "peak63_close": 779.09,
                 "peak63_date": "2026-10-06",
-                "drawdown63_pct": -5.915876214558013,
+                "drawdown63_pct": -5.6219435495257315,
                 "trend": "하락"
               },
               "month_windows": {
                 "1m": {
                   "status": "verified",
-                  "base_date": "2026-10-05",
-                  "end_date": "2026-11-05",
-                  "base_primary_close": 774.83,
-                  "base_secondary_close": 774.8300170898438,
-                  "end_close": 733.0,
-                  "return_pct": -5.398603564652893
+                  "base_date": "2026-10-06",
+                  "end_date": "2026-11-06",
+                  "base_primary_close": 779.09,
+                  "base_secondary_close": 779.0900268554688,
+                  "end_close": 735.29,
+                  "return_pct": -5.6219435495257315
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-08-05",
-                  "end_date": "2026-11-05",
-                  "base_primary_close": 769.79,
-                  "base_secondary_close": 769.7899780273438,
-                  "end_close": 733.0,
-                  "return_pct": -4.77922550305927
+                  "base_date": "2026-08-06",
+                  "end_date": "2026-11-06",
+                  "base_primary_close": 768.56,
+                  "base_secondary_close": 768.5599975585938,
+                  "end_close": 735.29,
+                  "return_pct": -4.328874778807112
                 }
               },
               "operands": [
-                [
-                  "2026-08-05",
-                  769.79,
-                  769.7899780273438
-                ],
                 [
                   "2026-08-06",
                   768.56,
@@ -2817,10 +2807,14 @@
                   "2026-11-05",
                   733.0,
                   733.0
+                ],
+                [
+                  "2026-11-06",
+                  735.29,
+                  735.2899780273438
                 ]
               ],
               "session_dates": [
-                "2026-08-06",
                 "2026-08-07",
                 "2026-08-10",
                 "2026-08-11",
@@ -2884,106 +2878,103 @@
                 "2026-11-02",
                 "2026-11-03",
                 "2026-11-04",
-                "2026-11-05"
+                "2026-11-05",
+                "2026-11-06"
               ],
-              "primary_url": "https://api.nasdaq.com/api/quote/SPY/historical?assetclass=etf&fromdate=2026-04-29&todate=2026-11-05&limit=200",
+              "primary_url": "https://api.nasdaq.com/api/quote/SPY/historical?assetclass=etf&fromdate=2026-04-30&todate=2026-11-06&limit=200",
               "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?range=6mo&interval=1d",
               "returns": {
                 "status": "verified",
                 "symbol": "SPY",
-                "end_date": "2026-11-05",
+                "end_date": "2026-11-06",
                 "windows": {
                   "1d": {
                     "status": "verified",
-                    "base_date": "2026-11-04",
-                    "end_date": "2026-11-05",
-                    "base_primary": 766.81,
-                    "base_secondary": 766.8099975585938,
-                    "end_primary": 733.0,
-                    "end_secondary": 733.0,
-                    "return_pct": -4.409175675851895
+                    "base_date": "2026-11-05",
+                    "end_date": "2026-11-06",
+                    "base_primary": 733.0,
+                    "base_secondary": 733.0,
+                    "end_primary": 735.29,
+                    "end_secondary": 735.2899780273438,
+                    "return_pct": 0.3124147339699901
                   },
                   "3d": {
                     "status": "verified",
-                    "base_date": "2026-11-02",
-                    "end_date": "2026-11-05",
-                    "base_primary": 752.1,
-                    "base_secondary": 752.0999755859375,
-                    "end_primary": 733.0,
-                    "end_secondary": 733.0,
-                    "return_pct": -2.5395559101183407
+                    "base_date": "2026-11-03",
+                    "end_date": "2026-11-06",
+                    "base_primary": 754.35,
+                    "base_secondary": 754.3499755859375,
+                    "end_primary": 735.29,
+                    "end_secondary": 735.2899780273438,
+                    "return_pct": -2.526678597468024
                   },
                   "5d": {
                     "status": "verified",
-                    "base_date": "2026-10-29",
-                    "end_date": "2026-11-05",
-                    "base_primary": 769.36,
-                    "base_secondary": 769.3599853515625,
-                    "end_primary": 733.0,
-                    "end_secondary": 733.0,
-                    "return_pct": -4.726006030986795
+                    "base_date": "2026-10-30",
+                    "end_date": "2026-11-06",
+                    "base_primary": 755.72,
+                    "base_secondary": 755.719970703125,
+                    "end_primary": 735.29,
+                    "end_secondary": 735.2899780273438,
+                    "return_pct": -2.703382205049498
                   },
                   "1m": {
                     "status": "verified",
-                    "base_date": "2026-10-05",
-                    "end_date": "2026-11-05",
-                    "base_primary": 774.83,
-                    "base_secondary": 774.8300170898438,
-                    "end_primary": 733.0,
-                    "end_secondary": 733.0,
-                    "return_pct": -5.398603564652893
+                    "base_date": "2026-10-06",
+                    "end_date": "2026-11-06",
+                    "base_primary": 779.09,
+                    "base_secondary": 779.0900268554688,
+                    "end_primary": 735.29,
+                    "end_secondary": 735.2899780273438,
+                    "return_pct": -5.6219435495257315
                   },
                   "3m": {
                     "status": "verified",
-                    "base_date": "2026-08-05",
-                    "end_date": "2026-11-05",
-                    "base_primary": 769.79,
-                    "base_secondary": 769.7899780273438,
-                    "end_primary": 733.0,
-                    "end_secondary": 733.0,
-                    "return_pct": -4.77922550305927
+                    "base_date": "2026-08-06",
+                    "end_date": "2026-11-06",
+                    "base_primary": 768.56,
+                    "base_secondary": 768.5599975585938,
+                    "end_primary": 735.29,
+                    "end_secondary": 735.2899780273438,
+                    "return_pct": -4.328874778807112
                   }
                 },
-                "close": 733.0,
-                "peer_close": 733.0,
+                "close": 735.29,
+                "peer_close": 735.2899780273438,
                 "operands": [
                   [
-                    "2026-08-05",
-                    769.79,
-                    769.7899780273438
+                    "2026-08-06",
+                    768.56,
+                    768.5599975585938
                   ],
                   [
-                    "2026-10-05",
-                    774.83,
-                    774.8300170898438
+                    "2026-10-06",
+                    779.09,
+                    779.0900268554688
                   ],
                   [
-                    "2026-10-29",
-                    769.36,
-                    769.3599853515625
+                    "2026-10-30",
+                    755.72,
+                    755.719970703125
                   ],
                   [
-                    "2026-11-02",
-                    752.1,
-                    752.0999755859375
-                  ],
-                  [
-                    "2026-11-04",
-                    766.81,
-                    766.8099975585938
+                    "2026-11-03",
+                    754.35,
+                    754.3499755859375
                   ],
                   [
                     "2026-11-05",
                     733.0,
                     733.0
+                  ],
+                  [
+                    "2026-11-06",
+                    735.29,
+                    735.2899780273438
                   ]
                 ]
               },
               "adjusted_operands": [
-                [
-                  "2026-05-06",
-                  730.1312866210938
-                ],
                 [
                   "2026-05-07",
                   727.8926391601562
@@ -3018,7 +3009,7 @@
                 ],
                 [
                   "2026-05-19",
-                  730.0317993164062
+                  730.03173828125
                 ],
                 [
                   "2026-05-20",
@@ -3038,7 +3029,7 @@
                 ],
                 [
                   "2026-05-27",
-                  746.677490234375
+                  746.6774291992188
                 ],
                 [
                   "2026-05-28",
@@ -3050,7 +3041,7 @@
                 ],
                 [
                   "2026-06-01",
-                  754.7167358398438
+                  754.7166748046875
                 ],
                 [
                   "2026-06-02",
@@ -3074,7 +3065,7 @@
                 ],
                 [
                   "2026-06-09",
-                  733.3350219726562
+                  733.3350830078125
                 ],
                 [
                   "2026-06-10",
@@ -3491,48 +3482,52 @@
                 [
                   "2026-11-05",
                   733.0
+                ],
+                [
+                  "2026-11-06",
+                  735.2899780273438
                 ]
               ]
             }
           },
           "comparison": {
             "status": "verified",
-            "end_date": "2026-11-05",
+            "end_date": "2026-11-06",
             "basis": "RSP vs SPY; Yahoo dividend/split-adjusted closes; Nasdaq raw-close cross-check",
             "population": "ETF relative performance; not advancing-stock percentage",
             "windows": {
               "5d": {
-                "base_date": "2026-10-29",
-                "end_date": "2026-11-05",
-                "rsp_base": 220.0399932861328,
-                "rsp_end": 216.8699951171875,
-                "spy_base": 769.3599853515625,
-                "spy_end": 733.0,
-                "rsp_return_pct": -1.440646366873477,
-                "spy_return_pct": -4.72600421699182,
-                "difference_pp": 3.2853578501183427
+                "base_date": "2026-10-30",
+                "end_date": "2026-11-06",
+                "rsp_base": 218.30999755859375,
+                "rsp_end": 216.0500030517578,
+                "spy_base": 755.719970703125,
+                "spy_end": 735.2899780273438,
+                "rsp_return_pct": -1.035222633919619,
+                "spy_return_pct": -2.7033813406800777,
+                "difference_pp": 1.6681587067604586
               },
               "1m": {
-                "base_date": "2026-10-05",
-                "end_date": "2026-11-05",
-                "rsp_base": 211.1199951171875,
-                "rsp_end": 216.8699951171875,
-                "spy_base": 774.8300170898438,
-                "spy_end": 733.0,
-                "rsp_return_pct": 2.7235695969054508,
-                "spy_return_pct": -5.398605651204846,
-                "difference_pp": 8.122175248110297
+                "base_date": "2026-10-06",
+                "end_date": "2026-11-06",
+                "rsp_base": 212.3300018310547,
+                "rsp_end": 216.0500030517578,
+                "spy_base": 779.0900268554688,
+                "spy_end": 735.2899780273438,
+                "rsp_return_pct": 1.751990386955793,
+                "spy_return_pct": -5.621949623063327,
+                "difference_pp": 7.37394001001912
               },
               "3m": {
-                "base_date": "2026-08-05",
-                "end_date": "2026-11-05",
-                "rsp_base": 218.90713500976562,
-                "rsp_end": 216.8699951171875,
-                "spy_base": 767.8831787109375,
-                "spy_end": 733.0,
-                "rsp_return_pct": -0.9305954748744294,
-                "spy_return_pct": -4.54277156708871,
-                "difference_pp": 3.612176092214281
+                "base_date": "2026-08-06",
+                "end_date": "2026-11-06",
+                "rsp_base": 217.76144409179688,
+                "rsp_end": 216.0500030517578,
+                "spy_base": 766.65625,
+                "spy_end": 735.2899780273438,
+                "rsp_return_pct": -0.7859247293187543,
+                "spy_return_pct": -4.091308454428733,
+                "difference_pp": 3.3053837251099782
               }
             }
           }
@@ -3540,25 +3535,19 @@
         "options": {
           "1m": {
             "status": "verified",
-            "start_date": "2026-10-05",
-            "end_exclusive": "2026-11-05",
+            "start_date": "2026-10-06",
+            "end_exclusive": "2026-11-06",
             "expected_sessions": 23,
             "basis": "published daily P/C; current day excluded; <= tie convention",
             "values": {
               "equity": {
-                "current_pc": 0.89,
+                "current_pc": 0.59,
                 "sample_n": 23,
                 "median_pc": 0.6,
-                "current_le_percent": 100.0,
+                "current_le_percent": 43.47826086956522,
                 "min_pc": 0.44,
-                "max_pc": 0.69,
+                "max_pc": 0.89,
                 "operands": [
-                  {
-                    "date": "2026-10-05",
-                    "calls": 2584689,
-                    "puts": 1520104,
-                    "pc_ratio": 0.59
-                  },
                   {
                     "date": "2026-10-06",
                     "calls": 2235079,
@@ -3690,23 +3679,23 @@
                     "calls": 3803410,
                     "puts": 1677994,
                     "pc_ratio": 0.44
+                  },
+                  {
+                    "date": "2026-11-05",
+                    "calls": 2719490,
+                    "puts": 2430016,
+                    "pc_ratio": 0.89
                   }
                 ]
               },
               "index": {
-                "current_pc": 1.07,
+                "current_pc": 1.26,
                 "sample_n": 23,
-                "median_pc": 1.01,
-                "current_le_percent": 91.30434782608695,
+                "median_pc": 1.02,
+                "current_le_percent": 100.0,
                 "min_pc": 0.88,
                 "max_pc": 1.13,
                 "operands": [
-                  {
-                    "date": "2026-10-05",
-                    "calls": 3440625,
-                    "puts": 3136869,
-                    "pc_ratio": 0.91
-                  },
                   {
                     "date": "2026-10-06",
                     "calls": 3735252,
@@ -3838,23 +3827,23 @@
                     "calls": 4278253,
                     "puts": 4158224,
                     "pc_ratio": 0.97
+                  },
+                  {
+                    "date": "2026-11-05",
+                    "calls": 5855427,
+                    "puts": 6267449,
+                    "pc_ratio": 1.07
                   }
                 ]
               },
               "total": {
-                "current_pc": 1.06,
+                "current_pc": 0.95,
                 "sample_n": 23,
                 "median_pc": 0.87,
-                "current_le_percent": 100.0,
+                "current_le_percent": 95.65217391304348,
                 "min_pc": 0.8,
-                "max_pc": 0.94,
+                "max_pc": 1.06,
                 "operands": [
-                  {
-                    "date": "2026-10-05",
-                    "calls": 7720926,
-                    "puts": 6429431,
-                    "pc_ratio": 0.83
-                  },
                   {
                     "date": "2026-10-06",
                     "calls": 7555563,
@@ -3986,6 +3975,12 @@
                     "calls": 9638101,
                     "puts": 7703135,
                     "pc_ratio": 0.8
+                  },
+                  {
+                    "date": "2026-11-05",
+                    "calls": 10589764,
+                    "puts": 11225416,
+                    "pc_ratio": 1.06
                   }
                 ]
               }
@@ -3994,25 +3989,19 @@
           },
           "3m": {
             "status": "verified",
-            "start_date": "2026-08-05",
-            "end_exclusive": "2026-11-05",
+            "start_date": "2026-08-06",
+            "end_exclusive": "2026-11-06",
             "expected_sessions": 65,
             "basis": "published daily P/C; current day excluded; <= tie convention",
             "values": {
               "equity": {
-                "current_pc": 0.89,
+                "current_pc": 0.59,
                 "sample_n": 65,
                 "median_pc": 0.58,
-                "current_le_percent": 100.0,
+                "current_le_percent": 58.46153846153847,
                 "min_pc": 0.38,
-                "max_pc": 0.7,
+                "max_pc": 0.89,
                 "operands": [
-                  {
-                    "date": "2026-08-05",
-                    "calls": 2459217,
-                    "puts": 1475844,
-                    "pc_ratio": 0.6
-                  },
                   {
                     "date": "2026-08-06",
                     "calls": 2088601,
@@ -4396,23 +4385,23 @@
                     "calls": 3803410,
                     "puts": 1677994,
                     "pc_ratio": 0.44
+                  },
+                  {
+                    "date": "2026-11-05",
+                    "calls": 2719490,
+                    "puts": 2430016,
+                    "pc_ratio": 0.89
                   }
                 ]
               },
               "index": {
-                "current_pc": 1.07,
+                "current_pc": 1.26,
                 "sample_n": 65,
                 "median_pc": 0.99,
-                "current_le_percent": 95.38461538461539,
+                "current_le_percent": 100.0,
                 "min_pc": 0.8,
                 "max_pc": 1.13,
                 "operands": [
-                  {
-                    "date": "2026-08-05",
-                    "calls": 3472885,
-                    "puts": 3268875,
-                    "pc_ratio": 0.94
-                  },
                   {
                     "date": "2026-08-06",
                     "calls": 2782816,
@@ -4796,23 +4785,23 @@
                     "calls": 4278253,
                     "puts": 4158224,
                     "pc_ratio": 0.97
+                  },
+                  {
+                    "date": "2026-11-05",
+                    "calls": 5855427,
+                    "puts": 6267449,
+                    "pc_ratio": 1.07
                   }
                 ]
               },
               "total": {
-                "current_pc": 1.06,
+                "current_pc": 0.95,
                 "sample_n": 65,
                 "median_pc": 0.86,
-                "current_le_percent": 100.0,
+                "current_le_percent": 96.92307692307692,
                 "min_pc": 0.72,
-                "max_pc": 0.98,
+                "max_pc": 1.06,
                 "operands": [
-                  {
-                    "date": "2026-08-05",
-                    "calls": 7531539,
-                    "puts": 6625417,
-                    "pc_ratio": 0.88
-                  },
                   {
                     "date": "2026-08-06",
                     "calls": 6530564,
@@ -5196,6 +5185,12 @@
                     "calls": 9638101,
                     "puts": 7703135,
                     "pc_ratio": 0.8
+                  },
+                  {
+                    "date": "2026-11-05",
+                    "calls": 10589764,
+                    "puts": 11225416,
+                    "pc_ratio": 1.06
                   }
                 ]
               }
@@ -5206,37 +5201,36 @@
         "amounts": {
           "turnover": {
             "status": "verified",
-            "end_date": "2026-11-05",
+            "end_date": "2026-11-06",
             "currency": "USD",
             "scope": "US consolidated equities; all exchanges and TRFs; Tapes A/B/C",
             "basis": "sum of each execution price times shares; Cboe published notional",
             "source_url": "https://www.cboe.com/markets/us/equities/market-statistics/historical-market-volume/",
-            "daily_usd": "1792255901743.837812",
-            "previous_date": "2026-11-04",
-            "previous_daily_usd": "1409201441959.985834",
-            "change_usd": "383054459783.851978",
-            "change_pct": "27.18237779057912571820015660",
+            "daily_usd": "1145396055778.080032",
+            "previous_date": "2026-11-05",
+            "previous_daily_usd": "1792255901743.837812",
+            "change_usd": "-646859845965.757780",
+            "change_pct": "-36.09193560676089613132878317",
             "windows": {
               "5d": {
-                "start_date": "2026-10-30",
-                "end_date": "2026-11-05",
+                "start_date": "2026-11-02",
+                "end_date": "2026-11-06",
                 "sessions": 5,
                 "session_dates": [
-                  "2026-10-30",
                   "2026-11-02",
                   "2026-11-03",
                   "2026-11-04",
-                  "2026-11-05"
+                  "2026-11-05",
+                  "2026-11-06"
                 ],
-                "total_usd": "6638067830915.827028",
-                "average_daily_usd": "1327613566183.1654056"
+                "total_usd": "6447066012100.822201",
+                "average_daily_usd": "1289413202420.1644402"
               },
               "1m": {
-                "start_date": "2026-10-06",
-                "end_date": "2026-11-05",
+                "start_date": "2026-10-07",
+                "end_date": "2026-11-06",
                 "sessions": 23,
                 "session_dates": [
-                  "2026-10-06",
                   "2026-10-07",
                   "2026-10-08",
                   "2026-10-09",
@@ -5258,17 +5252,17 @@
                   "2026-11-02",
                   "2026-11-03",
                   "2026-11-04",
-                  "2026-11-05"
+                  "2026-11-05",
+                  "2026-11-06"
                 ],
-                "total_usd": "23799774514844.436541",
-                "average_daily_usd": "1034772804993.236371347826087"
+                "total_usd": "24025899912361.044327",
+                "average_daily_usd": "1044604344015.697579434782609"
               },
               "3m": {
-                "start_date": "2026-08-06",
-                "end_date": "2026-11-05",
+                "start_date": "2026-08-07",
+                "end_date": "2026-11-06",
                 "sessions": 65,
                 "session_dates": [
-                  "2026-08-06",
                   "2026-08-07",
                   "2026-08-10",
                   "2026-08-11",
@@ -5332,165 +5326,14 @@
                   "2026-11-02",
                   "2026-11-03",
                   "2026-11-04",
-                  "2026-11-05"
+                  "2026-11-05",
+                  "2026-11-06"
                 ],
-                "total_usd": "63457871769954.869308",
-                "average_daily_usd": "976274950306.9979893538461538"
+                "total_usd": "63623070878755.967327",
+                "average_daily_usd": "978816475057.7841127230769231"
               }
             },
             "daily_operands": [
-              [
-                "2026-08-06",
-                [
-                  [
-                    "A",
-                    "485866823.983700",
-                    "372187834.990100",
-                    "602733924.291500",
-                    "1460788583.265300"
-                  ],
-                  [
-                    "B",
-                    "1025798140.224000",
-                    "641385908.484800",
-                    "1562750194.500000",
-                    "3229934243.208800"
-                  ],
-                  [
-                    "C",
-                    "983813727.853300",
-                    "440715096.207700",
-                    "1052417889.769500",
-                    "2476946713.830500"
-                  ],
-                  [
-                    "DB",
-                    "847551415.340106",
-                    "516761832.596901",
-                    "3282037983.304242",
-                    "4646351231.241249"
-                  ],
-                  [
-                    "DN",
-                    "6223589594.273519",
-                    "3387818559.864729",
-                    "11740780541.316931",
-                    "21352188695.455179"
-                  ],
-                  [
-                    "DQ",
-                    "132739960546.884125",
-                    "74610351846.034825",
-                    "222861199190.914719",
-                    "430211511583.833669"
-                  ],
-                  [
-                    "F",
-                    "56956176.505000",
-                    "232950969.495000",
-                    "135779737.535700",
-                    "425686883.535700"
-                  ],
-                  [
-                    "G",
-                    "38059030.202700",
-                    "78295463.359600",
-                    "162825381.126300",
-                    "279179874.688600"
-                  ],
-                  [
-                    "H",
-                    "794941595.871700",
-                    "1317781864.248200",
-                    "1927866285.565800",
-                    "4040589745.685700"
-                  ],
-                  [
-                    "J",
-                    "1356217703.086300",
-                    "1065296350.092901",
-                    "2154052146.630999",
-                    "4575566199.810200"
-                  ],
-                  [
-                    "K",
-                    "7169221377.559696",
-                    "7201397208.561899",
-                    "19828514218.219204",
-                    "34199132804.340799"
-                  ],
-                  [
-                    "L",
-                    "40725207.311300",
-                    "11439746.105700",
-                    "40264425.544300",
-                    "92429378.961300"
-                  ],
-                  [
-                    "M",
-                    "1738181383.167400",
-                    "1836393175.038301",
-                    "5692374650.025898",
-                    "9266949208.231599"
-                  ],
-                  [
-                    "N",
-                    "78658908278.564617",
-                    "3222539016.977799",
-                    "6856538130.403199",
-                    "88737985425.945615"
-                  ],
-                  [
-                    "P",
-                    "14061824216.157093",
-                    "28806668681.562888",
-                    "42077146237.570793",
-                    "84945639135.290774"
-                  ],
-                  [
-                    "Q",
-                    "29013547153.597398",
-                    "18414437338.105701",
-                    "138962990158.701727",
-                    "186390974650.404826"
-                  ],
-                  [
-                    "U",
-                    "3094318392.842901",
-                    "3240057551.513000",
-                    "7736685650.120599",
-                    "14071061594.476500"
-                  ],
-                  [
-                    "V",
-                    "16225765229.232801",
-                    "6124221514.785000",
-                    "19496865722.639400",
-                    "41846852466.657201"
-                  ],
-                  [
-                    "X",
-                    "411457664.978600",
-                    "420992294.314700",
-                    "741294704.584000",
-                    "1573744663.877300"
-                  ],
-                  [
-                    "Y",
-                    "1922575740.564700",
-                    "1231016703.175900",
-                    "2947201589.573998",
-                    "6100794033.314598"
-                  ],
-                  [
-                    "Z",
-                    "12598971035.488595",
-                    "8596108933.020400",
-                    "19077559892.417609",
-                    "40272639860.926604"
-                  ]
-                ]
-              ],
               [
                 "2026-08-07",
                 [
@@ -15218,6 +15061,158 @@
                     "86353446413.473951"
                   ]
                 ]
+              ],
+              [
+                "2026-11-06",
+                [
+                  [
+                    "A",
+                    "533258972.008700",
+                    "456160210.025000",
+                    "660922627.510200",
+                    "1650341809.543900"
+                  ],
+                  [
+                    "B",
+                    "1169149866.744300",
+                    "841832520.300700",
+                    "1792538965.004000",
+                    "3803521352.049000"
+                  ],
+                  [
+                    "C",
+                    "1131749127.633700",
+                    "742386917.015400",
+                    "1215646497.142000",
+                    "3089782541.791100"
+                  ],
+                  [
+                    "DB",
+                    "831358396.154722",
+                    "636685351.026632",
+                    "3122477784.364774",
+                    "4590521531.546128"
+                  ],
+                  [
+                    "DN",
+                    "7496804473.434609",
+                    "5573810580.249643",
+                    "16845826574.492491",
+                    "29916441628.176743"
+                  ],
+                  [
+                    "DQ",
+                    "143506332017.672841",
+                    "100813222445.813495",
+                    "238309527672.972904",
+                    "482629082136.459240"
+                  ],
+                  [
+                    "F",
+                    "286554298.480600",
+                    "498056014.687500",
+                    "501272229.420100",
+                    "1285882542.588200"
+                  ],
+                  [
+                    "G",
+                    "48184352.234200",
+                    "134372998.841000",
+                    "196599692.371400",
+                    "379157043.446600"
+                  ],
+                  [
+                    "H",
+                    "864496634.832600",
+                    "1908493898.146400",
+                    "1962055061.900800",
+                    "4735045594.879800"
+                  ],
+                  [
+                    "J",
+                    "1710196004.841900",
+                    "1855977144.638201",
+                    "2828896377.124299",
+                    "6395069526.604400"
+                  ],
+                  [
+                    "K",
+                    "7595882560.927602",
+                    "9976132653.278606",
+                    "21193752325.565187",
+                    "38765767539.771395"
+                  ],
+                  [
+                    "L",
+                    "50890905.270000",
+                    "64535112.615000",
+                    "11200892.451600",
+                    "126626910.336600"
+                  ],
+                  [
+                    "M",
+                    "2295968721.641200",
+                    "4626053670.186800",
+                    "11786113110.837097",
+                    "18708135502.665097"
+                  ],
+                  [
+                    "N",
+                    "88367214353.539296",
+                    "4868358985.590398",
+                    "8019691271.312901",
+                    "101255264610.442595"
+                  ],
+                  [
+                    "P",
+                    "16281645261.976707",
+                    "44006594576.330204",
+                    "49869241142.484288",
+                    "110157480980.791199"
+                  ],
+                  [
+                    "Q",
+                    "31914735398.662591",
+                    "27995562649.417783",
+                    "155010412088.906444",
+                    "214920710136.986818"
+                  ],
+                  [
+                    "U",
+                    "3263841973.179400",
+                    "4044421848.064901",
+                    "6702696961.173601",
+                    "14010960782.417902"
+                  ],
+                  [
+                    "V",
+                    "18694460582.556998",
+                    "9927948229.977902",
+                    "21549729473.927106",
+                    "50172138286.462006"
+                  ],
+                  [
+                    "X",
+                    "480202707.778400",
+                    "649045036.776700",
+                    "794159776.071000",
+                    "1923407520.626100"
+                  ],
+                  [
+                    "Y",
+                    "2065341715.512200",
+                    "2155612597.146099",
+                    "3303235151.422301",
+                    "7524189464.080600"
+                  ],
+                  [
+                    "Z",
+                    "13707290985.051703",
+                    "12678784497.624704",
+                    "22970452853.738202",
+                    "49356528336.414609"
+                  ]
+                ]
               ]
             ],
             "required_venue_codes": [
@@ -15246,7 +15241,7 @@
           },
           "turnover_comparisons": {
             "status": "verified",
-            "end_date": "2026-11-05",
+            "end_date": "2026-11-06",
             "currency": "USD",
             "scope": "US consolidated equities; all exchanges and TRFs; Tapes A/B/C",
             "basis": "adjacent nonoverlapping periods; comparison of average daily actual turnover",
@@ -15255,44 +15250,43 @@
               "5d": {
                 "status": "verified",
                 "current": {
-                  "start_date": "2026-10-30",
-                  "end_date": "2026-11-05",
+                  "start_date": "2026-11-02",
+                  "end_date": "2026-11-06",
                   "sessions": 5,
                   "session_dates": [
-                    "2026-10-30",
                     "2026-11-02",
                     "2026-11-03",
                     "2026-11-04",
-                    "2026-11-05"
+                    "2026-11-05",
+                    "2026-11-06"
                   ],
-                  "total_usd": "6638067830915.827028",
-                  "average_daily_usd": "1327613566183.1654056"
+                  "total_usd": "6447066012100.822201",
+                  "average_daily_usd": "1289413202420.1644402"
                 },
                 "previous": {
-                  "start_date": "2026-10-23",
-                  "end_date": "2026-10-29",
+                  "start_date": "2026-10-26",
+                  "end_date": "2026-10-30",
                   "sessions": 5,
                   "session_dates": [
-                    "2026-10-23",
                     "2026-10-26",
                     "2026-10-27",
                     "2026-10-28",
-                    "2026-10-29"
+                    "2026-10-29",
+                    "2026-10-30"
                   ],
-                  "total_usd": "4698280181862.467316",
-                  "average_daily_usd": "939656036372.4934632"
+                  "total_usd": "5179330439680.910452",
+                  "average_daily_usd": "1035866087936.1820904"
                 },
-                "average_change_usd": "387957529810.6719424",
-                "average_change_pct": "41.28718539481396740211573120"
+                "average_change_usd": "253547114483.9823498",
+                "average_change_pct": "24.47682354281328176094361120"
               },
               "1m": {
                 "status": "verified",
                 "current": {
-                  "start_date": "2026-10-06",
-                  "end_date": "2026-11-05",
+                  "start_date": "2026-10-07",
+                  "end_date": "2026-11-06",
                   "sessions": 23,
                   "session_dates": [
-                    "2026-10-06",
                     "2026-10-07",
                     "2026-10-08",
                     "2026-10-09",
@@ -15314,15 +15308,16 @@
                     "2026-11-02",
                     "2026-11-03",
                     "2026-11-04",
-                    "2026-11-05"
+                    "2026-11-05",
+                    "2026-11-06"
                   ],
-                  "total_usd": "23799774514844.436541",
-                  "average_daily_usd": "1034772804993.236371347826087"
+                  "total_usd": "24025899912361.044327",
+                  "average_daily_usd": "1044604344015.697579434782609"
                 },
                 "previous": {
                   "start_date": "2026-09-08",
-                  "end_date": "2026-10-05",
-                  "sessions": 20,
+                  "end_date": "2026-10-06",
+                  "sessions": 21,
                   "session_dates": [
                     "2026-09-08",
                     "2026-09-09",
@@ -15343,22 +15338,22 @@
                     "2026-09-30",
                     "2026-10-01",
                     "2026-10-02",
-                    "2026-10-05"
+                    "2026-10-05",
+                    "2026-10-06"
                   ],
-                  "total_usd": "19927572544300.737435",
-                  "average_daily_usd": "996378627215.03687175"
+                  "total_usd": "20846843202562.209681",
+                  "average_daily_usd": "992706819169.6290324285714286"
                 },
-                "average_change_usd": "38394177778.199499597826087",
-                "average_change_pct": "3.853372275308082095193496100"
+                "average_change_usd": "51897524846.0685470062111804",
+                "average_change_pct": "5.227880361442399252076975600"
               },
               "3m": {
                 "status": "verified",
                 "current": {
-                  "start_date": "2026-08-06",
-                  "end_date": "2026-11-05",
+                  "start_date": "2026-08-07",
+                  "end_date": "2026-11-06",
                   "sessions": 65,
                   "session_dates": [
-                    "2026-08-06",
                     "2026-08-07",
                     "2026-08-10",
                     "2026-08-11",
@@ -15422,17 +15417,17 @@
                     "2026-11-02",
                     "2026-11-03",
                     "2026-11-04",
-                    "2026-11-05"
+                    "2026-11-05",
+                    "2026-11-06"
                   ],
-                  "total_usd": "63457871769954.869308",
-                  "average_daily_usd": "976274950306.9979893538461538"
+                  "total_usd": "63623070878755.967327",
+                  "average_daily_usd": "978816475057.7841127230769231"
                 },
                 "previous": {
-                  "start_date": "2026-05-06",
-                  "end_date": "2026-08-05",
+                  "start_date": "2026-05-07",
+                  "end_date": "2026-08-06",
                   "sessions": 63,
                   "session_dates": [
-                    "2026-05-06",
                     "2026-05-07",
                     "2026-05-08",
                     "2026-05-11",
@@ -15494,161 +15489,17 @@
                     "2026-07-31",
                     "2026-08-03",
                     "2026-08-04",
-                    "2026-08-05"
+                    "2026-08-05",
+                    "2026-08-06"
                   ],
-                  "total_usd": "71906142114300.291736",
-                  "average_daily_usd": "1141367335147.623678349206349"
+                  "total_usd": "71667429703312.147252",
+                  "average_daily_usd": "1137578249258.922972253968254"
                 },
-                "average_change_usd": "-165092384840.6256889953601952",
-                "average_change_pct": "-14.46443925252799982384215627"
+                "average_change_usd": "-158761774201.1388595308913309",
+                "average_change_pct": "-13.95611900144578638133288237"
               }
             },
             "daily_operands": [
-              [
-                "2026-05-06",
-                [
-                  [
-                    "A",
-                    "417070399.407800",
-                    "454312903.240600",
-                    "643839745.494300",
-                    "1515223048.142700"
-                  ],
-                  [
-                    "B",
-                    "1264028154.665800",
-                    "735068776.782500",
-                    "1891369642.810400",
-                    "3890466574.258700"
-                  ],
-                  [
-                    "C",
-                    "1030802741.244700",
-                    "679578237.789600",
-                    "1101648783.426800",
-                    "2812029762.461100"
-                  ],
-                  [
-                    "DB",
-                    "1076347135.102828",
-                    "649889112.024156",
-                    "3972846406.802645",
-                    "5699082653.929629"
-                  ],
-                  [
-                    "DN",
-                    "7269598310.123062",
-                    "3768242045.291293",
-                    "13022764898.996301",
-                    "24060605254.410656"
-                  ],
-                  [
-                    "DQ",
-                    "162513029057.253336",
-                    "89972635519.228047",
-                    "265890274563.512192",
-                    "518375939139.993575"
-                  ],
-                  [
-                    "G",
-                    "78479362.489100",
-                    "101345503.941000",
-                    "197230475.810600",
-                    "377055342.240700"
-                  ],
-                  [
-                    "H",
-                    "1153267800.892500",
-                    "1921812106.078900",
-                    "2945206157.087003",
-                    "6020286064.058403"
-                  ],
-                  [
-                    "J",
-                    "1917879674.052600",
-                    "1556116955.656100",
-                    "2595155434.945099",
-                    "6069152064.653799"
-                  ],
-                  [
-                    "K",
-                    "11192601475.695502",
-                    "11107861099.097099",
-                    "28406970769.263586",
-                    "50707433344.056187"
-                  ],
-                  [
-                    "L",
-                    "56592674.935000",
-                    "21551767.664900",
-                    "65778272.084500",
-                    "143922714.684400"
-                  ],
-                  [
-                    "M",
-                    "2446672931.915200",
-                    "3028267520.879800",
-                    "5572569003.978201",
-                    "11047509456.773201"
-                  ],
-                  [
-                    "N",
-                    "95223353471.114190",
-                    "4456958766.446301",
-                    "7740462045.049597",
-                    "107420774282.610088"
-                  ],
-                  [
-                    "P",
-                    "19244938880.239594",
-                    "42503745086.232299",
-                    "48215893696.287513",
-                    "109964577662.759406"
-                  ],
-                  [
-                    "Q",
-                    "39967144890.482293",
-                    "22508948430.594311",
-                    "179495811684.558833",
-                    "241971905005.635437"
-                  ],
-                  [
-                    "U",
-                    "4663712477.868901",
-                    "4173478755.951898",
-                    "10644108222.475197",
-                    "19481299456.295996"
-                  ],
-                  [
-                    "V",
-                    "19714220441.840599",
-                    "7761493003.450098",
-                    "21055374850.722111",
-                    "48531088296.012808"
-                  ],
-                  [
-                    "X",
-                    "578374185.780200",
-                    "570765096.354100",
-                    "1010765317.240000",
-                    "2159904599.374300"
-                  ],
-                  [
-                    "Y",
-                    "2174972248.128800",
-                    "1543763502.725401",
-                    "3028547552.262600",
-                    "6747283303.116801"
-                  ],
-                  [
-                    "Z",
-                    "15432410126.488303",
-                    "11329455087.794313",
-                    "25151954725.375995",
-                    "51913819939.658611"
-                  ]
-                ]
-              ],
               [
                 "2026-05-07",
                 [
@@ -34651,6 +34502,158 @@
                     "86353446413.473951"
                   ]
                 ]
+              ],
+              [
+                "2026-11-06",
+                [
+                  [
+                    "A",
+                    "533258972.008700",
+                    "456160210.025000",
+                    "660922627.510200",
+                    "1650341809.543900"
+                  ],
+                  [
+                    "B",
+                    "1169149866.744300",
+                    "841832520.300700",
+                    "1792538965.004000",
+                    "3803521352.049000"
+                  ],
+                  [
+                    "C",
+                    "1131749127.633700",
+                    "742386917.015400",
+                    "1215646497.142000",
+                    "3089782541.791100"
+                  ],
+                  [
+                    "DB",
+                    "831358396.154722",
+                    "636685351.026632",
+                    "3122477784.364774",
+                    "4590521531.546128"
+                  ],
+                  [
+                    "DN",
+                    "7496804473.434609",
+                    "5573810580.249643",
+                    "16845826574.492491",
+                    "29916441628.176743"
+                  ],
+                  [
+                    "DQ",
+                    "143506332017.672841",
+                    "100813222445.813495",
+                    "238309527672.972904",
+                    "482629082136.459240"
+                  ],
+                  [
+                    "F",
+                    "286554298.480600",
+                    "498056014.687500",
+                    "501272229.420100",
+                    "1285882542.588200"
+                  ],
+                  [
+                    "G",
+                    "48184352.234200",
+                    "134372998.841000",
+                    "196599692.371400",
+                    "379157043.446600"
+                  ],
+                  [
+                    "H",
+                    "864496634.832600",
+                    "1908493898.146400",
+                    "1962055061.900800",
+                    "4735045594.879800"
+                  ],
+                  [
+                    "J",
+                    "1710196004.841900",
+                    "1855977144.638201",
+                    "2828896377.124299",
+                    "6395069526.604400"
+                  ],
+                  [
+                    "K",
+                    "7595882560.927602",
+                    "9976132653.278606",
+                    "21193752325.565187",
+                    "38765767539.771395"
+                  ],
+                  [
+                    "L",
+                    "50890905.270000",
+                    "64535112.615000",
+                    "11200892.451600",
+                    "126626910.336600"
+                  ],
+                  [
+                    "M",
+                    "2295968721.641200",
+                    "4626053670.186800",
+                    "11786113110.837097",
+                    "18708135502.665097"
+                  ],
+                  [
+                    "N",
+                    "88367214353.539296",
+                    "4868358985.590398",
+                    "8019691271.312901",
+                    "101255264610.442595"
+                  ],
+                  [
+                    "P",
+                    "16281645261.976707",
+                    "44006594576.330204",
+                    "49869241142.484288",
+                    "110157480980.791199"
+                  ],
+                  [
+                    "Q",
+                    "31914735398.662591",
+                    "27995562649.417783",
+                    "155010412088.906444",
+                    "214920710136.986818"
+                  ],
+                  [
+                    "U",
+                    "3263841973.179400",
+                    "4044421848.064901",
+                    "6702696961.173601",
+                    "14010960782.417902"
+                  ],
+                  [
+                    "V",
+                    "18694460582.556998",
+                    "9927948229.977902",
+                    "21549729473.927106",
+                    "50172138286.462006"
+                  ],
+                  [
+                    "X",
+                    "480202707.778400",
+                    "649045036.776700",
+                    "794159776.071000",
+                    "1923407520.626100"
+                  ],
+                  [
+                    "Y",
+                    "2065341715.512200",
+                    "2155612597.146099",
+                    "3303235151.422301",
+                    "7524189464.080600"
+                  ],
+                  [
+                    "Z",
+                    "13707290985.051703",
+                    "12678784497.624704",
+                    "22970452853.738202",
+                    "49356528336.414609"
+                  ]
+                ]
               ]
             ],
             "venue_roster": {
@@ -34705,9 +34708,9 @@
           },
           "fx": {
             "status": "verified",
-            "requested_date": "2026-11-05",
-            "date": "2026-11-05",
-            "krw_per_usd": "1340.7",
+            "requested_date": "2026-11-06",
+            "date": "2026-11-06",
+            "krw_per_usd": "1342",
             "base_currency": "USD",
             "quote_currency": "KRW",
             "unit": "원/미국달러",
@@ -34723,8 +34726,8 @@
                     "ITEM_CODE1": "0000001",
                     "ITEM_NAME1": "원/미국달러(매매기준율)",
                     "UNIT_NAME": "원",
-                    "TIME": "20261105",
-                    "DATA_VALUE": "1340.7"
+                    "TIME": "20261106",
+                    "DATA_VALUE": "1342"
                   }
                 ]
               }
@@ -34732,19 +34735,19 @@
           },
           "nq_reference": {
             "status": "verified",
-            "date": "2026-10-27",
+            "date": "2026-11-03",
             "symbol": "NDX",
             "basis": "same-date cash NDX close reference; not expiry-specific futures settlement",
             "multiplier_usd_per_point": "20",
             "contract_source": "https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html",
-            "primary_close": 29651.44,
-            "secondary_close": 29651.439453125
+            "primary_close": 28180.26,
+            "secondary_close": 28180.259765625
           },
           "nq_fx": {
             "status": "verified",
-            "requested_date": "2026-10-27",
-            "date": "2026-10-27",
-            "krw_per_usd": "1322.6",
+            "requested_date": "2026-11-03",
+            "date": "2026-11-03",
+            "krw_per_usd": "1341",
             "base_currency": "USD",
             "quote_currency": "KRW",
             "unit": "원/미국달러",
@@ -34760,8 +34763,8 @@
                     "ITEM_CODE1": "0000001",
                     "ITEM_NAME1": "원/미국달러(매매기준율)",
                     "UNIT_NAME": "원",
-                    "TIME": "20261027",
-                    "DATA_VALUE": "1322.6"
+                    "TIME": "20261103",
+                    "DATA_VALUE": "1341"
                   }
                 ]
               }
@@ -34770,18 +34773,18 @@
         }
       },
       "url": "https://www.cboe.com/markets/us/options/market-statistics/daily",
-      "fingerprint": "67d5c06c1b91cf8d5250d9762a17aacc97c3a9754cd90a3af49d0950dca6b2e7"
+      "fingerprint": "858f012465bc7caf792ada14b195a787a39fcee8fae534ed4a7e1bc35b6b95e3"
     }
   },
-  "updated_at_kst": "2026-11-07T08:36:38.463025+09:00",
+  "updated_at_kst": "2026-11-08T07:58:31.399671+09:00",
   "presentation_version": "us-positioning-auto-direction-20261016-v1",
-  "daily_digest_sent_date_kst": "2026-11-05",
+  "daily_digest_sent_date_kst": "2026-11-08",
   "last_verified_context_fx": {
     "fx": {
       "status": "verified",
-      "requested_date": "2026-11-05",
-      "date": "2026-11-05",
-      "krw_per_usd": "1340.7",
+      "requested_date": "2026-11-06",
+      "date": "2026-11-06",
+      "krw_per_usd": "1342",
       "base_currency": "USD",
       "quote_currency": "KRW",
       "unit": "원/미국달러",
@@ -34797,8 +34800,8 @@
               "ITEM_CODE1": "0000001",
               "ITEM_NAME1": "원/미국달러(매매기준율)",
               "UNIT_NAME": "원",
-              "TIME": "20261105",
-              "DATA_VALUE": "1340.7"
+              "TIME": "20261106",
+              "DATA_VALUE": "1342"
             }
           ]
         }
@@ -34806,9 +34809,9 @@
     },
     "nq_fx": {
       "status": "verified",
-      "requested_date": "2026-10-27",
-      "date": "2026-10-27",
-      "krw_per_usd": "1322.6",
+      "requested_date": "2026-11-03",
+      "date": "2026-11-03",
+      "krw_per_usd": "1341",
       "base_currency": "USD",
       "quote_currency": "KRW",
       "unit": "원/미국달러",
@@ -34824,8 +34827,8 @@
               "ITEM_CODE1": "0000001",
               "ITEM_NAME1": "원/미국달러(매매기준율)",
               "UNIT_NAME": "원",
-              "TIME": "20261027",
-              "DATA_VALUE": "1322.6"
+              "TIME": "20261103",
+              "DATA_VALUE": "1341"
             }
           ]
         }
