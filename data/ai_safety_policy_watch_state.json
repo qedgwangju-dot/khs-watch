@@ -3,13 +3,13 @@
   "last_collection": {
     "deferred_events": 0,
     "errors": [],
-    "material_items": 7,
+    "material_items": 8,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 28,
+    "raw_items": 29,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-07T16:46:20.315577+00:00",
+    "updated_at": "2026-11-07T16:50:17.007963+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -427,6 +427,15 @@
       "title": "이스트시큐리티, ‘PHP2Shell’ 대응 강화…전용 스캐너 배포 - 서울경제",
       "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1KM1VBUlBuRjl5Z3pqNzZDN0otZ1huUWxNS2N6YkNUOVBBSXVsbU5Ia0VpcjVTUnB5TGctX0p3SFA1WVRnbGhuajVCTFVWb2pVQ0pJ0gFTQVVfeXFMTUozVUFSUG5GOXlnemo3NkM3Si1nWG5RbE1LY3piQ1Q5UEFJdWxtTkhrRWlyNVNScHlMZy1fSndIUDVZVGdsaG5qNUJMVVZvalVDSkk?oc=5"
     },
+    "cef601f9c8e25e629a77bb18": {
+      "category": "미국 대통령 사기·금융사기 대응 실무그룹 후속조치",
+      "entity": "미국 범정부 사기대응 실무그룹",
+      "first_seen_at": "2026-11-07T16:50:17.007963+00:00",
+      "published_at": "2026-10-01T19:00:00+00:00",
+      "source": "Atlantic Council",
+      "title": "Michelle Bowman confirms President's Working Group on Scams and Fraud held two meetings",
+      "url": "https://www.atlanticcouncil.org/event/federal-reserve-vice-chair-michelle-bowman-on-modernizing-financial-regulation/"
+    },
     "d1eab42cef5a64ecbc0f9861": {
       "category": "국내 PHP 보안위기 대응·정책 단계",
       "entity": "과학기술정보통신부·한국인터넷진흥원",
@@ -579,6 +588,10 @@
       "source_url": "https://bankingjournal.aba.com/2026/11/owen-bowman-discuss-bank-technology-adoption-fighting-fraud/",
       "status": "2026-11-06 Bowman at Mississippi symposium: cybersecurity top priority and around-the-clock examination; cross-agency fraud conversations, not new mandatory rule"
     },
+    "fed_fraud_group:two_meetings_reported_20261001": {
+      "source_url": "https://www.atlanticcouncil.org/event/federal-reserve-vice-chair-michelle-bowman-on-modernizing-financial-regulation/",
+      "status": "2026-10-01 Bowman first-person remarks: President's Working Group on Scams and Fraud already met twice; Secretary Bessent, Attorney General, Warsh joined second; not a new FOMC-run group"
+    },
     "fed_genius:proposal_20260924": {
       "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm",
       "status": "2026-09-24 proposed US stablecoin reserve, capital, risk and application rules; comment deadline Nov 30, 2026; not final regulations"
@@ -650,11 +663,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-08T01:46:20+09:00",
+  "updated_at_kst": "2026-11-08T01:50:17+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-07T16:46:58.420318+00:00",
+    "last_success_at": "2026-11-07T16:50:50.965208+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
