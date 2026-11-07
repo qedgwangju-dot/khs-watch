@@ -592,6 +592,23 @@ def _headline_energy_operation(row):
         r'(?:[a-z-]+\s+){0,2}(?:energy|nuclear)\s+(?:facilities|infrastructure|sites)\b', _headline(row)))
 
 
+def _reported_energy_facility_missile_use(title):
+    """A named actor's missile use in a facility strike is a reported attack."""
+    action = re.search(
+        r'(?<![가-힣])(?:러시아|러|우크라(?:이나)?|이란|이스라엘|후티)[,·\s]+'
+        r'.{0,45}?(?:에너지|전력)\s*시설\s*(?:공격|공습|폭격|타격)에\s*'
+        r'.{0,45}?미사일\s*사용', title)
+    if not action:
+        return False
+    tail = title[action.end():action.end() + 25]
+    if re.match(r'\s*했다(?:는|고)\s*(?:주장|보도)?\s*(?:을|를)?\s*'
+                r'(?:부인|사실무근|허위)', tail):
+        return False
+    return not re.match(
+        r'\s*(?:을|은|는)?\s*(?:계획|검토|가능성|우려|전망|예고|시사|'
+        r'부인|여부|하지\s*않|안\s*했|않|못|할\s*(?:것|예정|계획)|하겠|[?？])', tail)
+
+
 def _headline_attack_casualties(row):
     """A current attack/casualty clause cannot inherit an old negotiation topic."""
     title = _headline(row)
@@ -1224,6 +1241,8 @@ def non_military_kind(row):
     if _title_only_unconfirmed_explosion(row):
         return 'unconfirmed_explosion'
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
+    if _reported_energy_facility_missile_use(title):
+        return None
     # The Oct 8 election pledge has a dedicated source-attributed event path.
     # Do not override its canonical ID, title, or existing render regression.
     if _iran_attack_restraint_statement(row) and not previous._trump_iran_midterm_no_strike(row):
@@ -1503,6 +1522,8 @@ def score_item(row, now):
 
 def final_color(row):
     title = _headline(row)
+    if _reported_energy_facility_missile_use(title):
+        return 'red'
     if _reported_major_airstrike(title):
         return 'red'
     # A decision promised for later is not an attack that has occurred.  The
