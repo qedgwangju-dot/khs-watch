@@ -54,13 +54,14 @@
     "article_confirmed": true,
     "bastion_partner_primary": false,
     "errors": [
+      "kbw_newswho: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1011)>",
       "wallet_patent_us: HTTP Error 403: Forbidden",
       "bastion_partner_primary: HTTP Error 403: Forbidden"
     ],
     "explicit_reversal_confirmed": false,
     "job_fetch_ok": true,
     "job_stablecoin_confirmed": false,
-    "kbw_executive_crosscheck_confirmed": true,
+    "kbw_executive_crosscheck_confirmed": false,
     "kbw_executive_primary_confirmed": true,
     "pilot_live_confirmed": false,
     "samsung_support_confirmed": true,
@@ -98,5 +99,5 @@
     "wallet_patent_publication": "US20260212355A1",
     "wallet_patent_publication_date": "2026-07-23"
   },
-  "updated_at_kst": "2026-11-08T03:17:45+09:00"
+  "updated_at_kst": "2026-11-08T07:01:58+09:00"
 }
