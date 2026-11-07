@@ -74,6 +74,48 @@ def main() -> None:
         for source in watch.SOURCES
     )
 
+    pra_notice = {
+        "source": "Federal Register Commerce national security",
+        "title": (
+            "Agency Information Collection Activities; Submission to the Office of Management "
+            "and Budget (OMB) for Review and Approval; Comment Request; Application Process "
+            "To Waive the Import Qualification Criteria Measures To Restrict Stockpiling of "
+            "Polysilicon and Polysilicon Derivatives"
+        ),
+        "link": (
+            "https://www.federalregister.gov/documents/2026/11/06/2026-22726/"
+            "agency-information-collection-activities-submission-to-the-office-of-management-and-budget-omb-for"
+        ),
+        "summary": (
+            "November 6, 2026 notice requests 60 days of public comment on an OMB-approved "
+            "information collection for the existing September 24, 2026 temporary final rule "
+            "under Proclamation 11052; comment deadline January 5, 2027; "
+            "estimated 165 respondents and 330 annual burden hours."
+        ),
+        "published_kst": "2026-11-06T00:00:00+09:00",
+    }
+    pra_text = (pra_notice["title"] + " " + pra_notice["summary"]).lower()
+    pra_stage = "polysilicon-11052-omb-comment-2026-11-06"
+    assert watch.is_polysilicon_11052_pra_notice(pra_notice, pra_text)
+    assert watch.polysilicon_11052_event_key(pra_notice, pra_text) == pra_stage
+    assert watch.classify_item(pra_notice) is None, "OMB paperwork rebranded as a new tariff rule"
+    assert trusted.is_polysilicon_11052_pra_notice_text(pra_notice["title"], pra_notice["link"])
+    assert trusted.semantic_policy_event_key(pra_notice) == pra_stage
+    assert "의견수렴" in trusted.semantic_policy_title(pra_notice)
+    assert guard.korean_title_for(pra_notice) == "미 상무부, 폴리실리콘 면제 신청 정보수집 의견수렴 공고"
+    assert pra_stage != "polysilicon-11052-stockpiling-tfr"
+    assert not watch.is_polysilicon_11052_pra_notice(stockpiling, stockpiling["summary"])
+    assert not trusted.is_polysilicon_11052_pra_notice_text(
+        stockpiling["title"], stockpiling["link"]
+    )
+    meaningful_rule_update = {
+        **pra_notice,
+        "title": "BIS amends the polysilicon stockpiling temporary final rule under Proclamation 11052",
+        "link": "https://www.federalregister.gov/documents/2026/11/10/2026-NEW/rule-amendment",
+        "summary": "New amendments to the restriction, not OMB information collection.",
+    }
+    assert not watch.is_polysilicon_11052_pra_notice(meaningful_rule_update, meaningful_rule_update["summary"])
+
     space_pv = (
         "DOE Space Photovoltaics Research and Development Partnership Intermediary Agreement "
         "announced a funding opportunity for solar panels in space applications. "

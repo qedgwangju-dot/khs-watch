@@ -490,6 +490,11 @@ def korean_title_for(item: dict) -> str:
     if is_domestic_stablecoin_policy(item):
         return "국내 디지털자산 정책: 원화 스테이블코인 법안·결제 표준 체크"
     if (
+        "2026-22726" in link
+        or ("polysilicon" in text and "agency information collection activities" in original.lower())
+    ):
+        return "미 상무부, 폴리실리콘 면제 신청 정보수집 의견수렴 공고"
+    if (
         "polysilicon" in text
         and "11052" in text
         and (

@@ -1362,8 +1362,29 @@ def is_space_pv_pia_base_rehash_item(item: dict, haystack: str) -> bool:
     return not any(term in text for term in SPACE_PV_STAGE_CHANGE_TERMS)
 
 
+def is_polysilicon_11052_pra_notice(item: dict, haystack: str) -> bool:
+    """The Nov. 6 OMB paperwork comment notice is NOT the Sept. 24 stockpiling rule."""
+    source = str(item.get("source") or "").lower()
+    link = str(item.get("link") or "").lower()
+    title = clean_text(" ".join(
+        str(item.get(k) or "") for k in ("title", "source_title")
+    )).lower()
+    if "2026-22726" in link and ("federalregister.gov" in link or "govinfo.gov" in link):
+        return True
+    official = ("federal register" in source or "federalregister.gov" in link or "govinfo.gov" in link)
+    return bool(
+        official
+        and "polysilicon" in title
+        and ("agency information collection activities" in title
+             or "application process to waive the import qualification criteria" in title)
+        and ("11052" in haystack or "stockpil" in haystack)
+    )
+
+
 def polysilicon_11052_event_key(item: dict, haystack: str) -> str:
-    """Stable semantic key for Proclamation 11052 base and stockpiling stages."""
+    """Stable semantic key for Proclamation 11052 and its distinct procedural stages."""
+    if is_polysilicon_11052_pra_notice(item, haystack):
+        return "polysilicon-11052-omb-comment-2026-11-06"
     text = " ".join(
         [
             haystack,
@@ -1566,6 +1587,10 @@ def classify_item(item: dict) -> dict | None:
     link_lower = str(item.get("link") or "").lower()
     is_whitehouse_source = source_lower.startswith("white house") or "whitehouse.gov/" in link_lower
     if is_whitehouse_source and not item.get("body_verified"):
+        return None
+    if is_polysilicon_11052_pra_notice(item, haystack):
+        # Information collection is not a new TFR or tariff adoption.
+        print("policy_admin_notice_suppressed=polysilicon_11052_2026_22726 reason=paperwork_comment_not_tfr")
         return None
     # The dedicated official-source lane owns Grid SCALED; never alert on an unverified RSS teaser.
     if "energy-department-announces-over-230-million-funding-opportunity" in link_lower:

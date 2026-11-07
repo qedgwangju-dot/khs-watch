@@ -2327,6 +2327,9 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         if is_space_pv_pia_base_rehash_text(haystack):
             print(f"trusted_policy_news=historical_space_pv_rehash key={rule.key} title={title!r}")
             continue
+        if is_polysilicon_11052_pra_notice_text(title, canonical_url):
+            print(f"trusted_policy_news=administrative_omb_polysilicon_notice_suppressed key={rule.key}")
+            continue
         if is_polysilicon_11052_base_rehash_text(haystack):
             print(f"trusted_policy_news=historical_polysilicon_rehash key={rule.key} title={title!r}")
             continue
@@ -2371,6 +2374,8 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 haystack_parts.append(query)
             haystack = " ".join(haystack_parts)
             if is_space_pv_pia_base_rehash_text(haystack):
+                continue
+            if is_polysilicon_11052_pra_notice_text(title, link):
                 continue
             if is_polysilicon_11052_base_rehash_text(haystack):
                 continue
@@ -2482,6 +2487,23 @@ def is_space_pv_pia_base_rehash_text(value: str) -> bool:
     if not any(term in text for term in SPACE_PV_PIA_BASE_TERMS):
         return False
     return not any(term in text for term in SPACE_PV_STAGE_CHANGE_TERMS)
+
+
+def is_polysilicon_11052_pra_notice_text(value: str, link: str = "") -> bool:
+    """Separate an OMB paperwork-comment notice from the older Section 232 final rule."""
+    title_text = clean_text(value).lower()
+    target_link = str(link or "").lower()
+    return bool(
+        "2026-22726" in target_link
+        or (
+            "polysilicon" in title_text
+            and (
+                "agency information collection activities" in title_text
+                or "application process to waive the import qualification criteria" in title_text
+            )
+            and ("stockpil" in title_text or "11052" in title_text)
+        )
+    )
 
 
 def is_polysilicon_11052_base_rehash_text(value: str) -> bool:
@@ -2966,6 +2988,10 @@ def semantic_policy_event_key(item: dict) -> str:
             stage = "pricing-terms"
         return f"us-fcc-upper-c-band-auction115-{stage}"
     if "polysilicon" in text and "11052" in text:
+        if is_polysilicon_11052_pra_notice_text(
+            str(item.get("title") or ""), str(item.get("link") or "")
+        ):
+            return "polysilicon-11052-omb-comment-2026-11-06"
         if (
             "measures to restrict stockpiling" in text
             or (
@@ -3045,6 +3071,8 @@ def semantic_policy_title(item: dict) -> str:
         return "미 FCC, 일부 첨단 로봇 조건부 승인·Covered List 예외"
     if key == "us-fcc-robot-conditional-approval-2026-09-18":
         return "미 FCC, 추가 첨단 로봇 조건부 승인·Covered List 예외"
+    if key == "polysilicon-11052-omb-comment-2026-11-06":
+        return "미 상무부, 폴리실리콘 면제 신청 정보수집 의견수렴 공고"
     if key == "polysilicon-11052-stockpiling-tfr":
         return "미 상무부, 폴리실리콘 사재기 차단 규칙 시행"
     if key == "polysilicon-11052-base":
