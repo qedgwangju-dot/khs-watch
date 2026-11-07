@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-07T08:10:29+09:00",
+  "updated_at_kst": "2026-11-07T11:49:22+09:00",
   "circle": {
     "date": "2026-11-05",
     "circulation_usd_b": 69.2,
@@ -10,12 +10,12 @@
     }
   },
   "usdxx": {
-    "date": "2026-11-05",
-    "sec_yield_7d": 3.92,
-    "yield_7d": 3.92,
-    "yield_1d": 3.89,
+    "date": "2026-11-06",
+    "sec_yield_7d": 3.89,
+    "yield_7d": 3.89,
+    "yield_1d": null,
     "yield_crosscheck_gap_bp": 0.0,
-    "visible_nav_date": "2026-11-05",
+    "visible_nav_date": "2026-11-06",
     "fund_size_usd_m": 58967.8,
     "fund_size_date": "2026-11-05",
     "source_url": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund",
@@ -23,10 +23,10 @@
     "ticker": "USDXX",
     "cusip": "09261A870",
     "_previous_distinct": {
-      "date": "2026-11-04",
+      "date": "2026-11-05",
       "sec_yield_7d": 3.92,
       "fund_size_usd_m": 58967.8,
-      "fund_size_date": "2026-11-04"
+      "fund_size_date": "2026-11-05"
     }
   },
   "sofr": {
@@ -78,7 +78,7 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,363.65원, 차이 1.61% · 기준 차이 주의"
+    "crosscheck": "Yahoo Finance 1,356.34원, 차이 1.07% · 기준 차이 주의"
   },
   "crcl_last_alerted_close_date": "2026-11-06",
   "correction_pending": false,
