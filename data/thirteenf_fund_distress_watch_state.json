@@ -1,12 +1,8 @@
 {
   "events": {},
-  "last_checked_utc": "2026-11-08T10:34:01.761821+00:00",
-  "last_complete_news_scan_utc": "2026-11-08T02:23:28.076818+00:00",
-  "last_scan_errors": [
-    "HTTPError (1/3 원천)",
-    "HTTPError (2/3 원천)",
-    "HTTPError (3/3 원천)"
-  ],
+  "last_checked_utc": "2026-11-08T10:40:37.410782+00:00",
+  "last_complete_news_scan_utc": "2026-11-08T10:40:37.410782+00:00",
+  "last_scan_errors": [],
   "manual_claim": {
     "situational:user-submitted-x:2118364772370427985:2026-11-06": {
       "chat_fingerprint": "46ff1e104ec2",
@@ -15,7 +11,7 @@
     }
   },
   "ownership_delivery_initialized": true,
-  "ownership_last_checked_utc": "2026-11-08T10:34:01.761821+00:00",
+  "ownership_last_checked_utc": "2026-11-08T10:40:37.410782+00:00",
   "ownership_seen": {
     "0000919574-26-004796": {
       "baseline": true
