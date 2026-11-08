@@ -63,7 +63,7 @@ def _reported_attack_escalation(title):
             r'(?:공격|공습|폭격|포격)(?:을|를|이|가)?\s*(?:강화|확대|격화)', title):
         following = title[match.end():match.end() + 24]
         if not re.match(
-                r'\s*(?:(?:를|에|의)\s*)?(?:할|하려|하겠|하지|않|못|계획|예고|가능성|우려|전망|검토|시사|요구|경고|부인|설|\?)',
+                r'\s*(?:(?:를|에|의)\s*)?(?:할|하려|하겠|하지|안\s|않|못|중단|취소|보류|철회|계획|예고|가능성|우려|전망|검토|시사|요구|경고|부인|설|\?)',
                 following):
             return True
     return False

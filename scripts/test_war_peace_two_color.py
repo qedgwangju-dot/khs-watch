@@ -1376,6 +1376,8 @@ class Run820AttackAheadOfTalksTests(unittest.TestCase):
             '러시아, 종전 협상 앞두고 우크라이나 공격 강화를 검토',
             '러시아, 종전 협상 앞두고 우크라이나 공격 강화 가능성',
             '러시아, 종전 협상 앞두고 우크라이나 공격 강화 우려',
+            '러시아, 종전 협상 앞두고 우크라이나 공격 강화 안 한다',
+            '러시아, 종전 협상 앞두고 우크라이나 공격 강화 중단',
         )
         for title in titles:
             with self.subTest(title=title):
