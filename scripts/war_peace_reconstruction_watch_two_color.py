@@ -211,9 +211,9 @@ def direction(stage, row):
             or (not row.get('body_verified')
                 and stage._pending_iran_war_decision_outlook(title))):
         return None
-    # A title-only explosion report that explicitly denies a missile-strike
-    # link remains an unconfirmed-cause reference, not an escalation signal.
-    if kind == 'unconfirmed_explosion' and stage._explosion_strike_link_denial(title):
+    # The event-stage classifier has already excluded titles reporting an
+    # actual strike. An unexplained title-only sound is a neutral reference.
+    if kind == 'unconfirmed_explosion':
         return None
     # Action restraint is a cooling signal, not a confirmed attack. The
     # semantic stage may be yellow, but the two-color projection must never
@@ -250,7 +250,9 @@ def direction(stage, row):
     if kind == 'sanctions' and not adverse and re.search(
             r'제재.{0,8}(?:해제|완화|철회)|\b(?:lift\w*|ease\w*|remove\w*)\b.{0,20}\bsanctions?\b', title):
         return 'green'
-    if kind in RISK_KINDS or adverse or stage._settlement_pressure_headline(title):
+    if (kind in RISK_KINDS or adverse or stage._settlement_pressure_headline(title)
+            or stage._negotiation_obstruction_headline(title)
+            or stage._negotiation_concession_pressure_headline(title)):
         return 'red'
     if color == 'green':
         return 'green'

@@ -1616,5 +1616,60 @@ class Run803RejectedInputTests(unittest.TestCase):
                 quality_guard.verify_alert(test_mode=False)
 
 
+class Run829SavedSemanticTests(unittest.TestCase):
+    def test_actual_sent_mislabels_replay_and_fresh_title_scoring(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run829_saved_semantic_snapshot_42457812096.json')
+                             .read_text(encoding='utf-8'))
+        self.assertEqual(fixture['provenance']['zip_sha256'],
+                         '6ef4753ed9fe8785693a5ede108982df8e91b650be3cb5db351be44bef5ab361')
+        self.assertEqual(fixture['provenance']['telegram_message_id'], 423)
+        self.assertEqual(fixture['observed_delivered_colors'],
+                         ['red', 'green', 'green', 'green'])
+        snapshot, proof = fixture['semantic_snapshot'], fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+
+        text, receipt = presentation.project(stage, alert_bytes.decode('utf-8'),
+                                             json.loads(evidence_bytes), proof, snapshot)
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['id'] for row in shown], fixture['selected_ids'])
+        self.assertEqual([row['classification_color'] for row in shown],
+                         [None, 'green', 'red', 'red'])
+        self.assertEqual(shown[0]['display_section'], 'market_reference')
+        self.assertIn('<b>참고 1. 폭발음 원인 미확인</b>', text)
+        self.assertNotEqual(receipt['alert_sha256'],
+                            fixture['provenance']['observed_delivered_alert_sha256'])
+
+        queried = dt.datetime.fromisoformat('2026-11-08T16:14:00+09:00')
+        expected = [('unconfirmed_explosion', '폭발음 보도·공격 원인 미확인', None),
+                    ('diplomatic_appeal', '종전협상 요구', 'green'),
+                    ('diplomatic_position', '협상 제동 보도', 'red'),
+                    ('diplomatic_position', '협상 양보 요구·압박', 'red')]
+        for prior, (kind, tag, color) in zip(fixture['selected_rows'], expected):
+            with self.subTest(id=prior['id']):
+                fresh = {key: copy.deepcopy(value) for key, value in prior.items()
+                         if key not in ('tags', 'score', 'classification_color',
+                                        'semantic_classification_color', 'rendered', 'signals_ko')}
+                self.assertFalse(fresh['body_verified'])
+                score, tags = stage.score_item(fresh, queried)
+                self.assertGreater(score, 0)
+                self.assertEqual(stage.non_military_kind(fresh), kind)
+                self.assertEqual(tags, [tag])
+                fresh['tags'] = tags
+                self.assertEqual(presentation.direction(stage, fresh), color)
+
+    def test_negations_and_separate_strike_keep_their_meaning(self):
+        self.assertFalse(stage._negotiation_obstruction_headline('종전 협상에 제동을 걸지 않겠다'))
+        self.assertFalse(stage._negotiation_concession_pressure_headline('종전협상서 양보 요구 철회'))
+        self.assertFalse(stage._negotiation_obstruction_headline('이란 공습 계획에 제동'))
+        strike = {'title_original': '이란 남부에서 폭발음…미사일 공격으로 시설 피격',
+                  'body_verified': False}
+        self.assertFalse(stage._title_only_unconfirmed_explosion(strike))
+        self.assertEqual(presentation.direction(stage, strike), 'red')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

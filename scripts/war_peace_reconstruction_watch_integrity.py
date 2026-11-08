@@ -465,7 +465,12 @@ def _primary_topic(row):
         if kind == 'diplomatic_position' and _harm_intent_denial_headline(title):
             return _diplomatic_group(title) + ' · 위해 의도 부인·설명'
         if kind == 'diplomatic_position' and _negotiation_stalemate_headline(title):
-            return _diplomatic_group(title) + ' · 협상 교착·지연 보도'
+            label = '협상 제동 보도' if _negotiation_obstruction_headline(title) else '협상 교착·지연 보도'
+            return _diplomatic_group(title) + ' · ' + label
+        if kind == 'diplomatic_position' and _negotiation_concession_pressure_headline(title):
+            return _diplomatic_group(title) + ' · 협상 양보 요구·압박'
+        if kind == 'diplomatic_appeal':
+            return _diplomatic_group(title) + ' · ' + _diplomatic_appeal_label(title)
         if kind == 'diplomatic_position' and _settlement_pressure_headline(title):
             return _diplomatic_group(title) + ' · 종전 합의 촉구·압박'
         if kind == 'diplomatic_position' and _meeting_participation_request(title):
@@ -974,7 +979,26 @@ def _harm_intent_denial_headline(title):
 def _negotiation_stalemate_headline(title):
     return bool(re.search(r'\b(?:talks|negotiations)\b.{0,40}\b(?:stalemate|deadlock)\b|'
                           r'\b(?:stalemated|deadlocked)\b.{0,20}\b(?:talks|negotiations)\b|'
-                          r'협상.{0,20}(?:교착|장기화|지연|미루)', title))
+                          r'협상.{0,20}(?:교착|장기화|지연|미루)', title)
+                or _negotiation_obstruction_headline(title))
+
+
+def _negotiation_obstruction_headline(title):
+    """A reported brake on peace talks is not a diplomatic contact."""
+    obstruction = re.search(r'(?:종전|평화|휴전)?\s*협상(?:에|의|을|를)?\s*제동', title)
+    return bool(obstruction and not re.search(
+        r'제동.{0,12}(?:걸지\s*않|안\s*걸|없|해제|철회|풀)', title))
+
+
+def _negotiation_concession_pressure_headline(title):
+    demand = re.search(r'(?:종전|평화|휴전)?\s*협상.{0,25}양보(?:를|을)?\s*요구', title)
+    return bool(demand and not re.search(r'요구.{0,12}(?:하지\s*않|안\s*하|철회|취소)', title))
+
+
+def _diplomatic_appeal_label(title):
+    if re.search(r'(?:종전|평화|휴전)?\s*협상.{0,35}(?:요구|촉구)', title) and not re.search(r'재개', title):
+        return '종전협상 요구' if '종전' in title else '협상 요구'
+    return KIND_LABELS['diplomatic_appeal']
 
 
 def _ceasefire_proposal_stage(title):
@@ -1340,6 +1364,8 @@ def non_military_kind(row):
         return 'security_activity'
     if _settlement_pressure_headline(title) or _meeting_participation_request(title):
         return 'diplomatic_position'
+    if _negotiation_concession_pressure_headline(title):
+        return 'diplomatic_position'
     if _near_military_authorization(title):
         return 'military_statement'
     if _attack_denial_with_blockade(title):
@@ -1462,7 +1488,11 @@ def _headline_event_label(row, kind):
     if kind == 'diplomatic_position' and _harm_intent_denial_headline(title):
         return '위해 의도 부인·설명'
     if kind == 'diplomatic_position' and _negotiation_stalemate_headline(title):
-        return '협상 교착·지연 보도'
+        return '협상 제동 보도' if _negotiation_obstruction_headline(title) else '협상 교착·지연 보도'
+    if kind == 'diplomatic_position' and _negotiation_concession_pressure_headline(title):
+        return '협상 양보 요구·압박'
+    if kind == 'diplomatic_appeal':
+        return _diplomatic_appeal_label(title)
     if kind == 'diplomatic_position' and _settlement_pressure_headline(title):
         return '종전 합의 촉구·압박'
     if kind == 'diplomatic_position' and _meeting_participation_request(title):
@@ -1666,7 +1696,9 @@ def topic_label(row):
     kind = non_military_kind(row)
     if kind:
         topic = topic.split(' · ')[0]
-        topic += ' · ' + KIND_LABELS[kind]
+        topic += ' · ' + (_headline_event_label(row, kind) if kind == 'diplomatic_appeal'
+                           or _negotiation_concession_pressure_headline(_headline(row))
+                           or _negotiation_obstruction_headline(_headline(row)) else KIND_LABELS[kind])
     return topic
 
 
