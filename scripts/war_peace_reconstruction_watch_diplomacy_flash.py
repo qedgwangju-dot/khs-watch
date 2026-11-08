@@ -822,6 +822,19 @@ FRESH_NEWS_MAX_MINUTES = 3 * 60
 
 def _sanitize_inherited_tags(row, tags):
     tags = list(tags or [])
+    # The legacy keyword scorer sees "attack" in a dated account of Oct. 7
+    # inside a Gaza peace-plan article. Keep that history in the source text,
+    # but do not label a new plan request as current escalation. A separate
+    # attack term in the headline or remaining description still keeps the tag.
+    title = _title_text(row)
+    if ('gaza' in title and 'netanyahu' in title and 'peace plan' in title
+            and '확전' in tags):
+        description = str(row.get('description') or '').lower()
+        current_text, historical_count = re.subn(
+            r'\boct\.?\s*7,\s*2023\s+attacks?\b', '', description)
+        if historical_count and not any(
+                term.lower() in title + ' ' + current_text for term in watch.ESCALATION):
+            tags = [tag for tag in tags if tag != '확전']
     if '재건' not in tags:
         return tags
     raw = _text(row)
@@ -1243,7 +1256,7 @@ def topic_label(row):
     if emarks:
         return '중동 비상 · 복합확전 경보'
     title = _display_title_text(row)
-    if any(x in title for x in ('gaza', '가자')) and any(x in title for x in ('israel', 'israeli', '이스라엘')):
+    if any(x in title for x in ('gaza', '가자')) and any(x in title for x in ('israel', 'israeli', '이스라엘', 'netanyahu', '네타냐후')):
         return '이스라엘·가자'
     if any(x in title for x in ('lebanon', 'hezbollah', '레바논', '헤즈볼라')) and any(x in title for x in ('israel', 'israeli', '이스라엘')):
         return '이스라엘·레바논'

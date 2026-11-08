@@ -1773,5 +1773,41 @@ class Run834SavedSemanticTests(unittest.TestCase):
         self.assertEqual(presentation.direction(stage, {'title_original': blockade}), 'red')
 
 
+class Run837SavedHeadlineTests(unittest.TestCase):
+    def test_historical_attack_in_gaza_plan_is_not_new_escalation(self):
+        # Run 42512428632 carried an Oct. 7 history sentence in its RSS
+        # description. The dated sentence must not override the new headline.
+        row = {
+            'title_original': 'Scoop: Trump asked Netanyahu to move on Gaza peace plan in post-election call',
+            'title_ko': '트럼프가 네타냐후에게 가자 평화 계획 추진을 요청',
+            'description': ('The ceasefire released hostages taken during the Oct. 7, 2023 attacks. '
+                            'Reconstruction would only begin after verified disarmament.'),
+            'source': 'Axios',
+            'published': 'Sun, 08 Nov 2026 17:59:28 +0000',
+            'body_verified': False,
+        }
+        observed = dt.datetime.fromisoformat('2026-11-09T03:57:50+09:00')
+        score, tags = stage.score_item(copy.deepcopy(row), observed)
+        self.assertGreater(score, 0)
+        self.assertIn('종전·협상', tags)
+        self.assertNotIn('확전', tags)
+        self.assertEqual(stage.topic_label(dict(row, tags=tags)), '이스라엘·가자')
+
+        separate_attack = copy.deepcopy(row)
+        separate_attack['description'] += ' Israeli forces attacked Gaza overnight.'
+        self.assertIn('확전', stage.score_item(separate_attack, observed)[1])
+
+    def test_conditional_no_renewed_war_is_green_unless_attack_is_separate(self):
+        title = ("TRUMP ON IRAN: 'HIGHLY UNLIKELY' WILL ORDER US BACK TO WAR "
+                 'WITH IRAN IF TALKS CONTINUE TO PROGRESS')
+        self.assertEqual(presentation.direction(stage, {
+            'title_original': title, 'body_verified': False}), 'green')
+        for attack in ('; separately US forces struck Iran',
+                       '; 한편 미군이 이란을 공습했다'):
+            with self.subTest(attack=attack):
+                self.assertEqual(presentation.direction(stage, {
+                    'title_original': title + attack, 'body_verified': False}), 'red')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -221,6 +221,16 @@ def direction(stage, row):
     if (stage._iran_attack_restraint_statement(row) and not _separate_attack_headline(title)
             and not _active_adverse(title)):
         return 'green'
+    # A conditional statement that renewed war is highly unlikely while talks
+    # progress is an easing signal. The headline reports neither a new attack
+    # nor an order to resume one; preserve its condition in the rendered title.
+    if (re.search(r'\bhighly unlikely\b.{0,60}\border\b.{0,30}\bback to war\b', title)
+            and re.search(r'\bif talks continue to progress\b', title)
+            and not _separate_attack_headline(title)
+            and not re.search(r'\b(?:struck|attacked|bombed)\b|'
+                              r'(?:공습|공격|폭격|포격)(?:을|를)?\s*(?:했다|감행했다|실시했다)', title)
+            and not _active_adverse(title)):
+        return 'green'
     # A headline about oil prices responding to peace expectations is market
     # context, not an independent attack or a signed peace agreement.
     if (re.search(r'유가|\b(?:oil|crude)\s+prices?\b', title)
