@@ -1616,6 +1616,60 @@ class Run803RejectedInputTests(unittest.TestCase):
                 quality_guard.verify_alert(test_mode=False)
 
 
+class Run831SavedSemanticTests(unittest.TestCase):
+    def test_actual_sent_policy_options_replay_and_fresh_title_scoring(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run831_saved_semantic_snapshot_42459155624.json')
+                             .read_text(encoding='utf-8'))
+        self.assertEqual(fixture['provenance']['zip_sha256'],
+                         'fa122ccb858e71c34050e3bc2a33184a37f24427add3a90c5f2f4ac87dc7d3fc')
+        self.assertEqual(fixture['provenance']['telegram_message_id'], 424)
+        self.assertEqual(fixture['observed_delivered_colors'], ['red', 'green', 'red', 'red'])
+        snapshot, proof = fixture['semantic_snapshot'], fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+
+        text, receipt = presentation.project(stage, alert_bytes.decode('utf-8'),
+                                             json.loads(evidence_bytes), proof, snapshot)
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['id'] for row in shown], fixture['selected_ids'])
+        self.assertEqual([row['classification_color'] for row in shown],
+                         [None, 'green', None, 'red'])
+        self.assertEqual([shown[i]['display_section'] for i in (0, 2)],
+                         ['context_reference', 'context_reference'])
+        self.assertIn('이란전 대응 방안·정책 이견', text)
+        self.assertNotEqual(receipt['alert_sha256'],
+                            fixture['provenance']['observed_delivered_alert_sha256'])
+
+        queried = dt.datetime.fromisoformat('2026-11-08T16:33:00+09:00')
+        for index in (0, 2):
+            prior = fixture['selected_rows'][index]
+            with self.subTest(id=prior['id']):
+                fresh = {key: copy.deepcopy(value) for key, value in prior.items()
+                         if key not in ('tags', 'score', 'classification_color',
+                                        'semantic_classification_color', 'rendered', 'signals_ko')}
+                self.assertFalse(fresh['body_verified'])
+                score, tags = stage.score_item(fresh, queried)
+                self.assertGreater(score, 0)
+                self.assertEqual(stage.non_military_kind(fresh), 'military_analysis')
+                self.assertEqual(tags, ['이란전 대응 방안·정책 이견'])
+                fresh['tags'] = tags
+                self.assertEqual(stage.final_color(fresh), 'yellow')
+                self.assertIsNone(presentation.direction(stage, fresh))
+
+        strike = fixture['selected_rows'][3]
+        self.assertFalse(stage._iran_war_policy_options_headline(stage._headline(strike)))
+        self.assertEqual(presentation.direction(stage, strike), 'red')
+
+    def test_separate_executed_strike_is_not_policy_context(self):
+        title = ('이란전 놓고 세 갈래 대립…종전협상, 군사작전 재개, 경제압박 강화; '
+                 '한편 미군이 이란 공습을 실시했다')
+        self.assertFalse(stage._iran_war_policy_options_headline(title))
+        self.assertEqual(presentation.direction(stage, {'title_original': title}), 'red')
+
+
 class Run829SavedSemanticTests(unittest.TestCase):
     def test_actual_sent_mislabels_replay_and_fresh_title_scoring(self):
         fixture = json.loads((Path(__file__).parent / 'test_fixtures'
