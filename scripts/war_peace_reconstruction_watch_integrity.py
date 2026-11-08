@@ -79,6 +79,24 @@ def _pending_iran_war_decision_outlook(title):
                     r'(?:했다|했으며|하고\s*있|감행|실시|개시|재개)', title))
 
 
+def _election_iran_war_staff_options(title):
+    """Staff disagreement after an election is a policy outlook, not a strike."""
+    if not (re.search(r'중간선거|선거\s*참패', title)
+            and re.search(r'이란|iran', title)
+            and re.search(r'참모|백악관', title)
+            and re.search(r'대립|분열|충돌|고심|기로', title)):
+        return False
+    return not (_military_actions(title)
+                or _reported_attack_escalation(title)
+                or _reported_conflict_escalation(title)
+                or re.search(
+                    r'(?:공습|공격|폭격|포격|타격)(?:을|를)?\s*'
+                    r'(?:했다|했으며|하고\s*있|감행|실시|개시|재개)|'
+                    r'(?:협상|회담|대화).{0,8}(?:재개|시작|합의|서명|체결)|'
+                    r'제재(?:를|을)?\s*(?:부과|발표|강화|확대)|'
+                    r'봉쇄(?:를|을)?\s*(?:개시|실시|강화|확대)', title))
+
+
 def _reported_major_airstrike(title):
     """Keep an explicit airstrike report ahead of talks in the military lane."""
     strike = re.search(r'대공습|대규모\s*공습', title)
@@ -396,6 +414,8 @@ def _primary_topic(row):
         return _headline_group(title) + ' · 공격 강화 보도'
     if kind == 'military_analysis' and _pending_iran_war_decision_outlook(title):
         return _headline_group(title) + ' · 이란전 결단 전망'
+    if kind == 'military_analysis' and _election_iran_war_staff_options(title):
+        return _headline_group(title) + ' · 이란전 선택·참모진 이견'
     if kind in ('diplomatic_statement', 'diplomatic_plan') and _detainee_release_stage(title):
         label = '억류자 석방 계획·논의' if _detainee_release_stage(title) == 'planned' else '억류자 석방·완화 보도'
         return _diplomatic_group(title) + ' · ' + label
@@ -1279,6 +1299,8 @@ def non_military_kind(row):
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
     if not row.get('body_verified') and _pending_iran_war_decision_outlook(title):
         return 'military_analysis'
+    if _election_iran_war_staff_options(title):
+        return 'military_analysis'
     if _reported_energy_facility_missile_use(title):
         return None
     # The Oct 8 election pledge has a dedicated source-attributed event path.
@@ -1402,6 +1424,8 @@ def _headline_event_label(row, kind):
         return '공격 강화 보도'
     if kind == 'military_analysis' and _pending_iran_war_decision_outlook(title):
         return '이란전 결단 전망'
+    if kind == 'military_analysis' and _election_iran_war_staff_options(title):
+        return '이란전 선택·참모진 이견'
     if kind == 'military_report' and _reported_conflict_escalation(title):
         return '충돌·교전 격화 보도'
     if kind in ('diplomatic_statement', 'diplomatic_plan') and _detainee_release_stage(title):

@@ -1,0 +1,128 @@
+{
+  "provenance": {
+    "run_id": 42451661639,
+    "run_number": 826,
+    "zip_sha256": "7811ed6d0953cc7d7a53f10d7ad52572a3f02d3b968895933193ac83f0306124",
+    "alert_sha256": "cc3310bde41f4c757829d05c1546db31027a1284e598f7739732ab03aea756ff",
+    "note": "Saved production metadata; publisher body bytes are not embedded."
+  },
+  "articles": [
+    {
+      "id": "4c833e3baaae23e1bbc6",
+      "title_original": "중간선거 후 이란전 고심…트럼프 참모들 ‘협상 vs 공습’ 대립 - KBS 뉴스",
+      "title_ko": "중간선거 후 이란전 고심…트럼프 참모들 ‘협상 vs 공습’ 대립 - KBS 뉴스",
+      "description": "중간선거 후 이란전 고심…트럼프 참모들 ‘협상 vs 공습’ 대립 KBS 뉴스",
+      "source": "KBS 뉴스",
+      "source_url": "https://news.kbs.co.kr",
+      "link": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8706883",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA5YWRIby13bVJPTXppWnVrbGY4aGFFdF9Ea3BUR3c5bFNnREhPVm5tdGFyZGlCREVmNGJ2RHExeWFDdVBtMTA2OUphZWlUbWItcTFkamtZVEl5ZXM?oc=5",
+      "resolved_url": "https://news.kbs.co.kr/news/pc/view/view.do?ncd=8706883",
+      "published": "Sun, 08 Nov 2026 11:45:00 +0900",
+      "rss_published": "Sun, 08 Nov 2026 02:45:00 GMT",
+      "source_metadata": {
+        "title": "중간선거 후 이란전 고심…트럼프 참모들 ‘협상 vs 공습’ 대립",
+        "publication_status": "verified",
+        "published_at_kst": "2026-11-08T11:45:00+09:00",
+        "publication_candidates": [
+          {
+            "field": "visible:입력",
+            "at_kst": "2026-11-08T11:45:00+09:00"
+          }
+        ]
+      },
+      "score": 10,
+      "tags": [
+        "정치일정",
+        "확전"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "classification_color": "red",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "1bce06befeaaec1a1020dbc551fb433747dc39d7a186dd68636ab2667074d1e9",
+      "semantic_classification_color": "yellow",
+      "display_section": "core"
+    },
+    {
+      "id": "359d281131a5a8ab044c",
+      "title_original": "중간선거 참패에 이란전 기로 선 트럼프…백악관 참모진 `협상` VS `전쟁` 대립 - 매일신문",
+      "title_ko": "중간선거 참패에 이란전 기로 선 트럼프…백악관 참모진 `협상` VS `전쟁` 대립 - 매일신문",
+      "description": "중간선거 참패에 이란전 기로 선 트럼프…백악관 참모진 `협상` VS `전쟁` 대립 매일신문",
+      "source": "매일신문",
+      "source_url": "https://www.imaeil.com",
+      "link": "https://www.imaeil.com/page/view/2026110812205337706",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1yUkRhYVdYWHFZdk5CWk1KSXd3WHlENUZOQVowLTl6b2ZQcjhBRGFCNFZDLUtxU3FKUC0tUlBzcVgwTFktU2dmR2Y1aFVJR3FnZUZiNUhfZG9GaDhVWjRnVDdR?oc=5",
+      "resolved_url": "https://www.imaeil.com/page/view/2026110812205337706",
+      "published": "Sun, 08 Nov 2026 14:15:11 +0900",
+      "rss_published": "Sun, 08 Nov 2026 05:15:11 GMT",
+      "source_metadata": {
+        "title": "중간선거 참패에 이란전 기로 선 트럼프…백악관 참모진 '협상' VS '전쟁' 대립",
+        "publication_status": "verified",
+        "published_at_kst": "2026-11-08T14:15:11+09:00",
+        "publication_candidates": [
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-11-08T14:15:11+09:00"
+          }
+        ]
+      },
+      "score": 9,
+      "tags": [
+        "정치일정"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "classification_color": "red",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "da1886ae62819aedb1c309134223f216a4a0a2c0d732d7e915b520bf61aee2b3",
+      "semantic_classification_color": "red",
+      "display_section": "core"
+    },
+    {
+      "id": "7bad357dd115bcf6f151",
+      "title_original": "이란 다시 때릴까, 협상할까…중간선거 참패 뒤 트럼프 참모진 3갈래 충돌 - 중앙일보",
+      "title_ko": "이란 다시 때릴까, 협상할까…중간선거 참패 뒤 트럼프 참모진 3갈래 충돌 - 중앙일보",
+      "description": "이란 다시 때릴까, 협상할까…중간선거 참패 뒤 트럼프 참모진 3갈래 충돌 중앙일보",
+      "source": "중앙일보",
+      "source_url": "https://www.joongang.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE02NG50LU1mSFdzUGpxZlVpcU5EcEZ2WjJhN3Z4MzVKdzEyblVYRmd4cGpYMkZrWk9oNTQzLTBwVVE5dFZCRUF0dUVGc1V4UmNoNW1YR3BR?oc=5",
+      "published": "Sun, 08 Nov 2026 05:09:36 GMT",
+      "score": 7,
+      "tags": [
+        "정치일정"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "semantic_classification_color": "",
+      "display_section": "core"
+    },
+    {
+      "id": "23fb4a277429aa16200f",
+      "title_original": "중간선거 참패에도 '마이웨이' 트럼프…이란전쟁 놓고 참모진 분열 - 매일일보",
+      "title_ko": "중간선거 참패에도 '마이웨이' 트럼프…이란전쟁 놓고 참모진 분열 - 매일일보",
+      "description": "중간선거 참패에도 '마이웨이' 트럼프…이란전쟁 놓고 참모진 분열 매일일보",
+      "source": "매일일보",
+      "source_url": "https://www.m-i.kr",
+      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5rUkxFX3MySnR5aGJXdDFDMXFYajRPYm5pSGtRNGdUNXZlSEhnMTZiTFBWQkJVc1hrdHlqamlVRHBmUFRCaUc2UzlqSldQem5TclJQX0tXSHBQRTJDa2ptVFVxUnY?oc=5",
+      "published": "Sun, 08 Nov 2026 03:54:35 GMT",
+      "score": 7,
+      "tags": [
+        "정치일정"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "semantic_classification_color": "",
+      "display_section": "core"
+    }
+  ]
+}

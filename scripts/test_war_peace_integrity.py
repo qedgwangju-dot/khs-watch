@@ -2847,6 +2847,22 @@ class IntegrityTests(unittest.TestCase):
         page += '<div class="article_body">별도 짧은 소개</div>'
         self.assertEqual(source_body._extract_body(page), body.strip())
 
+    def test_kbs_speech_article_precedes_recommendation_boilerplate(self):
+        # Run #826's KBS page stored the article in messageText while the
+        # generic declared body captured recommendations and copyright text.
+        first = '참모진은 외교와 군사 선택지를 놓고 이견을 보였으며 결정은 아직 발표되지 않았다. ' * 6
+        second = '이 문장은 새 공습이 일어났다는 뜻이 아니라 정책 논의 단계를 설명한다. ' * 6
+        speech = first + '<br />' + second
+        footer = '각 플랫폼에서 최근 1시간 동안 많이 본 KBS 기사를 제공합니다. ' * 8
+        page = ('<link rel="canonical" href="https://news.kbs.co.kr/news/view.do?ncd=8706883">'
+                '<script>var messageText = ' + json.dumps(speech, ensure_ascii=False) + ';</script>'
+                '<div class="article_body">' + footer + '</div>')
+        actual = source_body._extract_body(page)
+        self.assertEqual(actual, ' '.join((first + ' ' + second).split()))
+        self.assertNotIn('최근 1시간 동안 많이 본', actual)
+        short = page.replace(json.dumps(speech, ensure_ascii=False), json.dumps('짧은 안내문', ensure_ascii=False))
+        self.assertEqual(source_body._extract_body(short), '')
+
     def test_actual_quoted_refinery_resumption_is_a_statement(self):
         fixture, _ = self.refinery_statement_fixture()
         row = fixture['articles'][1]

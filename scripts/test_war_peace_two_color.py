@@ -1471,6 +1471,50 @@ class Run824PendingIranDecisionTests(unittest.TestCase):
         self.assertNotEqual(stage.non_military_kind(verified), 'military_analysis')
 
 
+class Run826ElectionIranOptionsTests(unittest.TestCase):
+    def test_four_saved_staff_debate_headlines_are_neutral_outlook(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run826_saved_iran_options_42451661639.json')
+                             .read_text(encoding='utf-8'))
+        self.assertEqual(fixture['provenance']['zip_sha256'],
+                         '7811ed6d0953cc7d7a53f10d7ad52572a3f02d3b968895933193ac83f0306124')
+        rows = fixture['articles']
+        self.assertEqual(len(rows), 4)
+        self.assertEqual([row['classification_color'] for row in rows], ['red'] * 4)
+        at = dt.datetime.fromisoformat('2026-11-08T14:42:08+09:00')
+        fresh_rows = []
+        for row in rows:
+            with self.subTest(article_id=row['id']):
+                fresh = {key: copy.deepcopy(value) for key, value in row.items()
+                         if key not in ('tags', 'score', 'classification_color',
+                                        'semantic_classification_color', 'rendered', 'signals_ko')}
+                self.assertTrue(stage._election_iran_war_staff_options(
+                    stage._headline(fresh)))
+                self.assertEqual(stage.non_military_kind(fresh), 'military_analysis')
+                score, tags = stage.score_item(fresh, at)
+                self.assertGreater(score, 0)
+                self.assertEqual(tags, ['이란전 선택·참모진 이견'])
+                fresh['tags'] = tags
+                self.assertEqual(stage.final_color(fresh), 'yellow')
+                self.assertIsNone(presentation.direction(stage, fresh))
+                fresh_rows.append(fresh)
+        semantic = stage.build_alert(fresh_rows, [], at)
+        receipt = evidence.alert_receipt(fresh_rows, [], at, semantic, {})
+        text, projected = presentation.project(stage, semantic, receipt, {}, {})
+        self.assertEqual(text.count('이란전 선택·참모진 이견</b>'), 4)
+        self.assertNotIn('🔴 [신규] <b>', text)
+        self.assertEqual([row['classification_color'] for row in projected['articles']],
+                         [None] * 4)
+
+    def test_separate_reported_action_is_not_staff_options(self):
+        base = '중간선거 후 이란전 고심…트럼프 참모들 협상 vs 공습 대립'
+        for title in (base + '; 미군이 이란을 공습했다',
+                      base + '; 미군이 이란 공습을 재개',
+                      base + '; 미국이 새 제재를 부과'):
+            with self.subTest(title=title):
+                self.assertFalse(stage._election_iran_war_staff_options(title.lower()))
+
+
 class Run817EnergyMissileUseTests(unittest.TestCase):
     def test_saved_publisher_attack_claim_is_red_at_both_stages(self):
         fixture = json.loads((Path(__file__).parent / 'test_fixtures'

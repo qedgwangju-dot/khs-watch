@@ -219,6 +219,22 @@ def _jsonld_article_body(page):
     return ""
 
 
+def _kbs_speech_article_body(page):
+    """KBS keeps article text in its speech script on some view pages."""
+    if 'news.kbs.co.kr' not in page[:10000]:
+        return ""
+    match = re.search(r'\bvar\s+messageText\s*=\s*("(?:\\.|[^"\\])*")\s*;', page, re.S)
+    if not match:
+        return ""
+    try:
+        speech = json.loads(match.group(1))
+    except (TypeError, ValueError):
+        return ""
+    speech = html.unescape(re.sub(r'<[^>]+>', ' ', speech))
+    speech = re.sub(r'\s+', ' ', speech).strip()
+    return speech[:12000] if len(speech) >= 250 else ""
+
+
 def _paragraph_text(page):
     try:
         parser = _ParagraphParser()
@@ -236,10 +252,15 @@ def _extract_body(page):
     body = _jsonld_article_body(page)
     if body:
         return body[:12000]
+    body = _kbs_speech_article_body(page)
+    if body:
+        return body
     parser = _ArticleBodyParser()
     parser.feed(page)
     if parser.bodies:
         body = re.sub(r'\s+', ' ', ' '.join(parser.bodies[0])).strip()
+        if 'news.kbs.co.kr' in page[:10000] and '각 플랫폼에서 최근 1시간 동안 많이 본 KBS 기사' in body:
+            return ''
         # An empty/short declared body is not evidence that the footer is news.
         return body[:12000] if len(body) >= 250 else ''
     body = _paragraph_text(page)

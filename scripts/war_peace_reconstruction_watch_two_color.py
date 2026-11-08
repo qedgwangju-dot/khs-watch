@@ -204,7 +204,8 @@ def direction(stage, row):
     kind = stage.non_military_kind(row)
     color = stage.final_color(row)
     title = stage._headline(row)
-    if _election_war_commentary(title) or _political_war_pressure_commentary(title):
+    if (_election_war_commentary(title) or _political_war_pressure_commentary(title)
+            or stage._election_iran_war_staff_options(title)):
         return None
     if (_hypothetical_war_options(title) or _pending_iran_war_decision(title)
             or (not row.get('body_verified')
