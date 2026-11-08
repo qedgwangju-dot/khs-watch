@@ -1384,6 +1384,93 @@ class Run820AttackAheadOfTalksTests(unittest.TestCase):
                 self.assertFalse(stage._reported_attack_escalation(title.lower()))
 
 
+class Run820StrikeLinkDenialTests(unittest.TestCase):
+    def test_saved_title_only_denial_is_unconfirmed_reference(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run820_saved_strike_denial_42417723619.json')
+                             .read_text(encoding='utf-8'))
+        row = fixture['article']
+        self.assertEqual(fixture['provenance']['zip_sha256'],
+                         '03d69f975137e14783eba96f4950c15288198930ae449445d81b6a95037d8638')
+        self.assertEqual(row['id'], 'd35454940e8c149aa92b')
+        self.assertIn('EXPLOSIONS HEARD ON QESHM ISLAND NOT RELATED TO MISSILE STRIKES',
+                      row['title_original'])
+        self.assertFalse(row['body_verified'])
+        self.assertEqual(row['tags'], ['확전'])  # Actual run #820 classification.
+        self.assertEqual(row['classification_color'], 'red')
+
+        fresh = {key: copy.deepcopy(value) for key, value in row.items()
+                 if key not in ('tags', 'score', 'classification_color',
+                                'semantic_classification_color', 'rendered', 'signals_ko')}
+        at = dt.datetime.fromisoformat('2026-11-08T06:52:17+09:00')
+        self.assertEqual(stage.non_military_kind(fresh), 'unconfirmed_explosion')
+        score, tags = stage.score_item(fresh, at)
+        self.assertGreater(score, 0)
+        self.assertEqual(tags, ['폭발음 보도·공격 원인 미확인'])
+        fresh['tags'] = tags
+        self.assertEqual(stage.final_color(fresh), 'yellow')
+        self.assertIsNone(presentation.direction(stage, fresh))
+        semantic = stage.build_alert([fresh], [], at)
+        receipt = evidence.alert_receipt([fresh], [], at, semantic, {})
+        text, projected = presentation.project(stage, semantic, receipt, {}, {})
+        self.assertIn('<b>참고 1. 폭발음 원인 미확인</b>', text)
+        self.assertIn('RSS 입력 기준·본문 미확인', text)
+        self.assertNotIn('🔴 [신규] <b>1.', text)
+        self.assertIsNone(projected['articles'][0]['classification_color'])
+
+    def test_separate_actual_strike_does_not_inherit_denial(self):
+        title = ('EXPLOSIONS HEARD ON QESHM ISLAND NOT RELATED TO MISSILE STRIKES; '
+                 'AIRSTRIKE HITS NEARBY PORT')
+        row = {'title_original': title, 'body_verified': False}
+        self.assertFalse(stage._title_only_unconfirmed_explosion(row))
+        self.assertEqual(presentation.direction(stage, row), 'red')
+
+
+class Run824PendingIranDecisionTests(unittest.TestCase):
+    def test_saved_undecided_war_option_is_reference(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run824_saved_pending_iran_decision_42451024874.json')
+                             .read_text(encoding='utf-8'))
+        row = fixture['article']
+        self.assertEqual(fixture['provenance']['zip_sha256'],
+                         'd3505d792646ea6f3f8c8050c0ad6bed69669185bd7f80b09a2bf4cc0c64d742')
+        self.assertEqual(row['id'], '2b922e16bf78d4337329')
+        self.assertIn('밴스는 협상, 헤그세스는 공습…트럼프 이란전 결단 임박',
+                      row['title_original'])
+        self.assertFalse(row['body_verified'])
+        self.assertEqual(row['tags'], ['확전'])  # Actual run #824 classification.
+        self.assertEqual(row['classification_color'], 'red')
+
+        fresh = {key: copy.deepcopy(value) for key, value in row.items()
+                 if key not in ('tags', 'score', 'classification_color',
+                                'semantic_classification_color', 'rendered', 'signals_ko')}
+        at = dt.datetime.fromisoformat('2026-11-08T14:32:25+09:00')
+        self.assertEqual(stage.non_military_kind(fresh), 'military_analysis')
+        score, tags = stage.score_item(fresh, at)
+        self.assertGreater(score, 0)
+        self.assertEqual(tags, ['이란전 결단 전망'])
+        fresh['tags'] = tags
+        self.assertEqual(stage.final_color(fresh), 'yellow')
+        self.assertIsNone(presentation.direction(stage, fresh))
+        semantic = stage.build_alert([fresh], [], at)
+        receipt = evidence.alert_receipt([fresh], [], at, semantic, {})
+        text, projected = presentation.project(stage, semantic, receipt, {}, {})
+        self.assertIn('이란전 결단 전망', text)
+        self.assertIn('본문 미확인', text)
+        self.assertNotIn('🔴 [신규] <b>1.', text)
+        self.assertIsNone(projected['articles'][0]['classification_color'])
+
+    def test_separate_current_strike_keeps_risk(self):
+        title = ('밴스는 협상, 헤그세스는 공습…트럼프 이란전 결단 임박; '
+                 '미군이 이란을 공습했다')
+        row = {'title_original': title, 'body_verified': False}
+        self.assertFalse(stage._pending_iran_war_decision_outlook(title.lower()))
+        self.assertEqual(presentation.direction(stage, row), 'red')
+        verified = {'title_original': '밴스는 협상, 헤그세스는 공습…트럼프 이란전 결단 임박',
+                    'body_verified': True}
+        self.assertNotEqual(stage.non_military_kind(verified), 'military_analysis')
+
+
 class Run817EnergyMissileUseTests(unittest.TestCase):
     def test_saved_publisher_attack_claim_is_red_at_both_stages(self):
         fixture = json.loads((Path(__file__).parent / 'test_fixtures'

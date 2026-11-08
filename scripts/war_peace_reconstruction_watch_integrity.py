@@ -69,6 +69,16 @@ def _reported_attack_escalation(title):
     return False
 
 
+def _pending_iran_war_decision_outlook(title):
+    """An imminent decision headline does not report an airstrike decision."""
+    return bool(re.search(r'이란전\s*결단\s*임박', title)
+                and re.search(r'트럼프|미국|\b(?:trump|u\.s\.)\b', title)
+                and not _military_actions(title)
+                and not re.search(
+                    r'(?:공습|공격|폭격|포격|타격)(?:을|를)?\s*'
+                    r'(?:했다|했으며|하고\s*있|감행|실시|개시|재개)', title))
+
+
 def _reported_major_airstrike(title):
     """Keep an explicit airstrike report ahead of talks in the military lane."""
     strike = re.search(r'대공습|대규모\s*공습', title)
@@ -384,6 +394,8 @@ def _primary_topic(row):
         return _headline_group(title) + ' · 대공습 보도'
     if kind == 'military_report' and _reported_attack_escalation(title):
         return _headline_group(title) + ' · 공격 강화 보도'
+    if kind == 'military_analysis' and _pending_iran_war_decision_outlook(title):
+        return _headline_group(title) + ' · 이란전 결단 전망'
     if kind in ('diplomatic_statement', 'diplomatic_plan') and _detainee_release_stage(title):
         label = '억류자 석방 계획·논의' if _detainee_release_stage(title) == 'planned' else '억류자 석방·완화 보도'
         return _diplomatic_group(title) + ' · ' + label
@@ -1239,15 +1251,25 @@ def _iran_attack_restraint_statement(row):
     return iran and us and attack and restraint and not completed
 
 
+def _explosion_strike_link_denial(title):
+    """Match an explicit denial of a strike cause, not a separate strike."""
+    return re.search(
+        r'\b(?:not\s+(?:related|linked)\s+to|unrelated\s+to)\s+'
+        r'(?:missile|drone|air)\s+strikes?\b', title)
+
+
 def _title_only_unconfirmed_explosion(row):
     """Explosion sounds without verified cause do not establish a strike."""
     if row.get('body_verified'):
         return False
     title = _headline(row)
     sound = bool(re.search(r'폭발음|폭발\s*소리|소리.{0,8}폭발|explosions?\s+(?:heard|reported)|sounds?\s+of\s+explosions?', title))
+    denied_link = _explosion_strike_link_denial(title)
+    action_title = (title[:denied_link.start()] + title[denied_link.end():]
+                    if denied_link else title)
     action = bool(re.search(
         r'피격|공습|미사일\s*공격|드론\s*공격|폭격|타격\s*(?:당|받|했|가했)|'
-        r'\b(?:struck|hit by|airstrikes?|missile strikes?|drone strikes?|bombed)\b', title))
+        r'\b(?:struck|hit by|airstrikes?|missile strikes?|drone strikes?|bombed)\b', action_title))
     return sound and not action
 
 
@@ -1255,6 +1277,8 @@ def non_military_kind(row):
     if _title_only_unconfirmed_explosion(row):
         return 'unconfirmed_explosion'
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
+    if not row.get('body_verified') and _pending_iran_war_decision_outlook(title):
+        return 'military_analysis'
     if _reported_energy_facility_missile_use(title):
         return None
     # The Oct 8 election pledge has a dedicated source-attributed event path.
@@ -1376,6 +1400,8 @@ def _headline_event_label(row, kind):
         return '대공습 보도'
     if kind == 'military_report' and _reported_attack_escalation(title):
         return '공격 강화 보도'
+    if kind == 'military_analysis' and _pending_iran_war_decision_outlook(title):
+        return '이란전 결단 전망'
     if kind == 'military_report' and _reported_conflict_escalation(title):
         return '충돌·교전 격화 보도'
     if kind in ('diplomatic_statement', 'diplomatic_plan') and _detainee_release_stage(title):

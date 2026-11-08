@@ -1,0 +1,33 @@
+{
+  "provenance": {
+    "run_id": 42417723619,
+    "run_number": 820,
+    "zip_sha256": "03d69f975137e14783eba96f4950c15288198930ae449445d81b6a95037d8638",
+    "alert_sha256": "43a712fee11ca117c30a288effbd6a6222573e7df7a698725881c603633bce4d",
+    "note": "Saved production evidence; title-only syndication claim, no verified publisher body."
+  },
+  "article": {
+    "id": "d35454940e8c149aa92b",
+    "title_original": "IRAN'S TASNIM NEWS AGENCY CITES SOURCE AS SAYING THAT EXPLOSIONS HEARD ON QESHM ISLAND NOT RELATED TO MISSILE STRIKES\n( @WalterBloomberg )",
+    "title_ko": "이란의 타스님 뉴스 대행사는 미사일 공격과 관련이 없는 QESHM 섬에서 폭발음이 들렸다는 소식통을 인용했습니다(@WalterBloomberg).",
+    "description": "IRAN'S TASNIM NEWS AGENCY CITES SOURCE AS SAYING THAT EXPLOSIONS HEARD ON QESHM ISLAND NOT RELATED TO MISSILE STRIKES\n( @WalterBloomberg )",
+    "source": "Walter Bloomberg",
+    "link": "https://t.me/WalterBloomberg/38051",
+    "published": "Sat, 07 Nov 2026 20:33:32 +0000",
+    "score": 39,
+    "tags": [
+      "확전"
+    ],
+    "body_checked": true,
+    "signals_ko": [
+      "이란 남부 시리크·게슘·미나브 일대 복수 폭발음 — 원인 미확인 단계, 발사체·공습 확인 여부 추적"
+    ],
+    "classification_color": "red",
+    "body_verified": false,
+    "publication_basis": "discovery_feed",
+    "rendered": true,
+    "article_text_sha256": "10240ca4bf6258d40eea4db47373cd60cde5d7b3d8c926a0e7deff7c44decc21",
+    "semantic_classification_color": "red",
+    "display_section": "core"
+  }
+}
