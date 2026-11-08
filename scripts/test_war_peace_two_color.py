@@ -1809,5 +1809,40 @@ class Run837SavedHeadlineTests(unittest.TestCase):
                     'title_original': title + attack, 'body_verified': False}), 'red')
 
 
+class Run839SavedSemanticTests(unittest.TestCase):
+    def test_sent_unknown_blast_and_low_reattack_titles_replay_without_false_red(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run839_saved_semantic_snapshot_42528186503.json')
+                             .read_text(encoding='utf-8'))
+        self.assertEqual(fixture['provenance']['telegram_message_id'], 427)
+        self.assertEqual(fixture['observed_delivered_colors'], ['red'] * 4)
+        snapshot, proof = fixture['semantic_snapshot'], fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+
+        text, receipt = presentation.project(stage, alert_bytes.decode('utf-8'),
+                                             json.loads(evidence_bytes), proof, snapshot)
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['id'] for row in shown], fixture['selected_ids'])
+        self.assertEqual([row['classification_color'] for row in shown],
+                         [None, None, 'red', 'green'])
+        self.assertEqual([row['display_section'] for row in shown[:2]],
+                         ['context_reference', 'context_reference'])
+        self.assertIn('폭발 원인 미확정', text)
+        self.assertIn('낮은 재공격 가능성 발언·폭발음 원인 미확인', text)
+        self.assertIn('원인 미확정 폭발음·조건부 발언은 실제 공격·완화 행동을 입증하지 않음', text)
+        self.assertIn('부분 확인 전쟁 상황 알림 · 원천 216/227', text)
+        self.assertNotIn('🟡', text)
+        self.assertNotEqual(receipt['alert_sha256'],
+                            fixture['provenance']['observed_delivered_alert_sha256'])
+
+        for idx in (0, 1, 3):
+            separate = copy.deepcopy(shown[idx])
+            separate['title_original'] += '; 한편 미군이 이란을 공습했다'
+            self.assertEqual(presentation.direction(stage, separate), 'red')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
