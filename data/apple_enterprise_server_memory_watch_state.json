@@ -37,6 +37,7 @@
     "0c3be72a3d2f1a6278f4",
     "0c41cee8d35cd34119e0",
     "0c5067e9917be35a3d14",
+    "0cd6db651824fdd664fb",
     "0d0d965740c88e301606",
     "0d0e4da959ec413c3cd0",
     "0d1ec2a6ac72658b4c45",
@@ -49,6 +50,7 @@
     "0e78e82d16515ac6cec1",
     "0e87e8b25a5c5e9951fe",
     "0e90342b767fdffec842",
+    "0ea2d39c0a43e4135d32",
     "0eba046a8c3610511891",
     "0ec6360b5f3f46dc5d3b",
     "0eea8494c782667ab900",
@@ -166,7 +168,9 @@
     "2f9580b17b6e48f97495",
     "2fc8b79991ba49ffad4c",
     "30b0632f5ebd497c1dabf92e",
+    "30c292451f90c0b70202",
     "30ca650faf076c693833",
+    "31af6c52382cbc588af8",
     "31c0d87b50b9144f55a4",
     "31cacf1eed9ade1c41e9",
     "324660e8e43192326715",
@@ -255,6 +259,7 @@
     "4ae613377b83c919e086",
     "4aef2ecfbb056ca1b7c8",
     "4af5a5a4349fd14b11a9",
+    "4b1afc8b0dc392e3e858",
     "4b2cb0ff5183107236b9",
     "4b46161d49e1f7f26f45",
     "4b554c0d3eff82008ea0",
@@ -262,6 +267,7 @@
     "4b8b0c3b21aa80a786ae8b16",
     "4c306ac525b99cf2b8e7b946",
     "4cc103beec3d5278e586",
+    "4d662f4541cddfab38db",
     "4d6cb1391cdc6b8a0bad4270",
     "4db023bd6bcca2e1500a",
     "4dd09eb20440c4a9f4c8",
@@ -367,6 +373,7 @@
     "66eed9c931a1cd64904e",
     "6707c561a5c2a77491d1",
     "677a95d982c021afcef3",
+    "678aac4faca6fb7194c5",
     "67a865b1a41a1e732fd2",
     "68022d4d9582fd65cf4509cc",
     "6810d215e4c97b9c8847",
@@ -447,6 +454,7 @@
     "7a4ae0b97060ac6708d9",
     "7a89be260ef6cf3fb175af7e",
     "7aecc69a638b7fa01dc6",
+    "7b38f842a9881c326791",
     "7b4b18609836c37e68a8",
     "7bb23a8bf7b04f89f5aa",
     "7bb6745a96111bb37ca5",
@@ -461,6 +469,7 @@
     "7d13a6fd510c3cdf1f7f",
     "7d632d0e018db955c39df5ce",
     "7dc24271cb174eb56588e47f",
+    "7de6e36cc85f79e5e17e",
     "7e1c741cd99f51325e6a",
     "7e2baf7e6d422040d079",
     "7e4f24837dbb69116801",
@@ -577,6 +586,7 @@
     "9eadfbf1552635b264d5",
     "9ed39e542ccf62706247",
     "9efdff9103a77ce1fed4",
+    "9f0fc14b7fedcc8e7f1c",
     "9f641aa574b3940d9862",
     "9f92fb140a082bc6d252",
     "9fba08101f1095d9d99b",
@@ -830,6 +840,7 @@
     "e2e6d03bb929752b2acf",
     "e2fccc0a965b6d172ce9",
     "e39157d3e70f4804c828",
+    "e3d01993be360f5e26d2",
     "e47f3e4756c76b87c7c0f135",
     "e49fe357603f1e2d2659056e",
     "e504244761a863f95959",
@@ -853,6 +864,7 @@
     "eb9fa8d8b1a77f176140",
     "ebb545297e9c8d85402b499e",
     "ebe70e86d39dbc21e136f4cc",
+    "ec214d30c5e796db143b",
     "ec8fddcacdda83e55bcb",
     "eca6d9fcf6a54b28f1d6105c",
     "ecf75752600f5ef4eb9d",
@@ -952,7 +964,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-11-09T01:16:54+09:00",
+  "last_scan_kst": "2026-11-09T05:32:45+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -960,9 +972,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 10,
-  "fetch_errors": [
-    "bing_news \"Apple\" \"NVLink Fusion\": ParseError not well-formed (invalid token): line 1, column 41",
-    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
