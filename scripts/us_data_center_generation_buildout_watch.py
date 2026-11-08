@@ -1239,7 +1239,7 @@ def run_anthro_onepwr_existing_generation_watch() -> None:
     report_status = (
         "FT 원문 직접 확인(기업 공식 계약자료는 미확인)"
         if original_checked else
-        "FT 원보도를 로이터에서 재인용(기업 공식 계약자료·원보도 전문 독립 확인 전)"
+        f"FT 원보도를 {verified[0]['label']} 경로에서 확인(기업 공식 계약자료·원보도 전문 독립 확인 전)"
     )
     scope = [
         "<b>🔥 [AI 데이터센터 현장발전·발전기 발주권] 앤트로픽–OnePWR</b>",
@@ -1247,8 +1247,10 @@ def run_anthro_onepwr_existing_generation_watch() -> None:
         f"• <b>확인 단계</b> │ 2026-11-08 {h(report_status)}. 보도 이후 공식 계약 공시·당사자 확인은 별개.",
         "• <b>거래</b> │ 2026년 9월 말 앤트로픽이 OnePWR의 캐터필러 가스발전기 구매약정 1.7GW(1,700MW)를 양수했다는 FT 보도.",
         "• <b>범위</b> │ OnePWR 법인·직원 인수 아님. 장비 발주권과 설치를 위한 설계·건설 역량을 포함한다는 보도.",
+        "• <b>거래 변경 배경</b> │ OnePWR의 약 2년 전 캐터필러 기발주 물량을 원래 전력 고객이 될 예정인 앤트로픽이 직접 승계. OnePWR의 자금조달 제약은 FT 취재 보도.",
         f"• <b>금액</b> │ 34억달러({krw_from_usd_b(3.4, fx)}) · {h(fx_source)} 조회 1달러={fx:,.2f}원 / {h(fx_checked)} UTC.",
         "• <b>단위 비용</b> │ 총액÷1,700MW = MW당 200만달러. 설치·건설 역량 포함 거래여서 발전기 공장출하 평균판매단가로 사용할 수 없음.",
+        "• <b>규모 비교</b> │ FT 보도 기준 AI 연구소 단일 발전 장비 확보로 알려진 최대. xAI의 약 20억달러(" + krw_from_usd_b(2.0, fx) + ") 매입 보도보다 70% 크지만 계약 범위·장비 구성이 달라 직접 단가 비교 불가.",
         "• <b>납기·상태</b> │ 단기 및 향후 2년 내 장비 확보 전망은 보도 단계. 납품·시공·가스연료·배출허가·전원 인가·상업운전은 별도 미확인.",
         "• <b>공급망</b> │ OnePWR의 캐터필러 기발주분 승계 보도. 캐터필러 신규 제조 발주나 GE Vernova 신규 수주로 중복 집계 금지.",
     ]
@@ -1256,6 +1258,7 @@ def run_anthro_onepwr_existing_generation_watch() -> None:
         scope += [
             "• <b>공식 자금약정</b> │ 앤트로픽 2026-11-02 SEC 수정 증권신고서: 컴퓨팅·인프라 구매/리스 약정 총 8,954억달러, 2030년 말까지 4,475억달러 지출 예정, 12개월 내 698억달러.",
             "• <b>금융 구분</b> │ 위 SEC 총 약정은 이번 발전기 보도 계약액이나 이미 집행된 설비투자와 동일하지 않음.",
+            "• <b>상장 단계</b> │ 11월 2일 SEC 수정 증권신고서 제출은 확인. 공모가격·상장 완료·최종 신용등급은 아직 별도 확인 대상.",
         ]
     else:
         scope.append("• <b>자금조달</b> │ 앤트로픽 SEC 총 약정 수치는 공식 원문 재조회 불가로 이번 알림의 확인된 거래규모에 합산하지 않음.")
@@ -1299,7 +1302,7 @@ def run_anthro_onepwr_existing_generation_watch() -> None:
         "equipment_delivered": False,
         "power_energized": False,
         "source_grade": ("ft_original_article_fetched" if original_checked
-                         else "reuters_reprint_of_ft_not_independently_verified"),
+                         else "secondary_reprint_of_ft_not_independently_verified"),
         "source_urls": [item["url"] for item in verified],
         "sec_compute_commitments_checked": sec_verified,
         "source_failures": failures[:4],
@@ -1311,7 +1314,7 @@ def run_anthro_onepwr_existing_generation_watch() -> None:
     if STATUS.exists():
         with STATUS.open("a", encoding="utf-8") as handle:
             handle.write(
-                "- 앤트로픽–OnePWR: FT 원보도/로이터 재인용 단계"
+                "- 앤트로픽–OnePWR: FT 원보도·FT 재인용 자료 단계"
                 f" · 1700MW · 34억달러 · SEC 공식 재조회={sec_verified}"
                 " · 단일 사건키 · 실제 Telegram 발송 후 상태 저장\n"
             )
