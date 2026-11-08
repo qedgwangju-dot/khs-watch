@@ -663,12 +663,16 @@ def spacex_jpm_verified_target_notice(check=check_primary, rate_getter=fetch_usd
         (JPM_NEWS_1,("JPMorgan","$500","$240","Overweight")),
         ("https://price-target.com/2026/10/21/175526/",("JPMorgan","500","240")),
         ("https://www.thefly.com/spcx/forecasts",("J.P. Morgan","240","500")),
+        ("https://finance.yahoo.com/markets/stocks/articles/jpmorgan-lifts-spacex-target-500-220927159.html",("JPMorgan","500","240","Overweight")),
     )
     sources_b=(
         (JPM_NEWS_2,("JPMorgan","$500","$240","Overweight")),
         ("https://blockspace.media/insight/jpmorgan-raises-spacex-price-target/",("JPMorgan","500","240")),
         ("https://www.marketscreener.com/news/spacex-space-exploration-technologies-jp-morgan-reiterates-its-buy-rating-ce785cd9da8bf524",("SpaceX","500","240")),
         ("https://www.benzinga.com/quote/SPCX/price-targets",("JP Morgan","240","500")),
+        ("https://www.marketbeat.com/stocks/NASDAQ/SPCX/forecast/",("JPMorgan","240","500","Overweight")),
+        ("https://www.pricetargets.com/NASDAQ/SPCX/",("JPMorgan","240","500","Overweight")),
+        ("https://es.benzinga.com/quote/SPCX/price-targets",("JP Morgan","240","500","Overweight")),
     )
     def first_readable(group):
         failures=[]
@@ -911,6 +915,13 @@ def self_test() -> int:
     alternate=spacex_jpm_verified_target_notice(check=second_fallback,rate_getter=lambda:1300)
     assert "thefly.com/spcx/forecasts" in alternate
     assert "benzinga.com/quote/SPCX/price-targets" in alternate
+    def final_sources(url,*markers):
+        if url in ("https://finance.yahoo.com/markets/stocks/articles/jpmorgan-lifts-spacex-target-500-220927159.html",
+                   "https://www.marketbeat.com/stocks/NASDAQ/SPCX/forecast/"):
+            return "verified"
+        raise ValueError("other news publishers blocked")
+    final=spacex_jpm_verified_target_notice(check=final_sources,rate_getter=lambda:1300)
+    assert "finance.yahoo.com" in final and "marketbeat.com" in final
 
     rocketlab = next(x for x in CATEGORIES if x.key == "rocketlab")
     sample = dict(
