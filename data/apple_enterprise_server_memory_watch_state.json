@@ -9,6 +9,7 @@
     "018cf6772f011926596c",
     "02322d305a9f08602337",
     "02aa83851830f8a61ce0c9a2",
+    "0309d43bf6b9f0b3e969",
     "036e5a8e56b8dadb2242",
     "03821957e650440141d8",
     "03e6a0b769aa0fd88521",
@@ -951,7 +952,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-11-08T18:32:37+09:00",
+  "last_scan_kst": "2026-11-09T01:16:54+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -959,6 +960,9 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 12,
-  "fetch_errors": []
+  "fetch_ok": 10,
+  "fetch_errors": [
+    "bing_news \"Apple\" \"NVLink Fusion\": ParseError not well-formed (invalid token): line 1, column 41",
+    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41"
+  ]
 }
