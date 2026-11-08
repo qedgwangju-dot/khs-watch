@@ -1197,6 +1197,7 @@ def inbound_report(probe: dict, official_events: list[dict]) -> str:
         f"• {a('텍사스 차기 주지사 공약 보도', INBOUND_TEXAS_TRIBUNE)}",
         f"• {a('산업통상부 11월 외국인투자 행사 발표', INBOUND_MOTIR)}",
         f"• {a('KOTRA·KDCC 업무협약 체결 보도', INBOUND_KOTRA_SIGNED_REPORT)}",
+        f"• {a('경향신문 11월 8일 원기사', INBOUND_KHAN)}",
         f"• {a('하나증권 공개 보고서 목록', INBOUND_HANA)} · {a('NH 메모 재게시', INBOUND_NH_REPOST)}",
         f"• {a('SK·AWS 공식 계약 발표', INBOUND_SKT_AWS)} · {a('과기정통부 울산 일정', INBOUND_MSIT_ULSAN)}",
         f"• {a('CBRE 한국 전력·부지 보고서', INBOUND_CBRE_KOREA)}",
