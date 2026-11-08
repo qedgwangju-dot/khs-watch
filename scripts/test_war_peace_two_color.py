@@ -1844,5 +1844,44 @@ class Run839SavedSemanticTests(unittest.TestCase):
             self.assertEqual(presentation.direction(stage, separate), 'red')
 
 
+class Run842SavedSemanticTests(unittest.TestCase):
+    def test_conditional_no_further_strikes_and_impeachment_replay(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run842_saved_semantic_snapshot_42531763532.json')
+                             .read_text(encoding='utf-8'))
+        self.assertEqual(fixture['provenance']['telegram_message_id'], 429)
+        self.assertEqual(fixture['observed_delivered_colors'], ['red'] * 3)
+        snapshot, proof = fixture['semantic_snapshot'], fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+
+        semantic_rows = json.loads(evidence_bytes)['articles']
+        no_strike = next(row for row in semantic_rows
+                         if '추가 공습 없을 것' in row['title_original'])
+        self.assertTrue(stage._iran_attack_restraint_statement(no_strike))
+        self.assertEqual(stage.non_military_kind(no_strike), 'military_position')
+        self.assertEqual(stage.final_color(no_strike), 'yellow')
+        text, receipt = presentation.project(stage, alert_bytes.decode('utf-8'),
+                                             json.loads(evidence_bytes), proof, snapshot)
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['id'] for row in shown], fixture['selected_ids'])
+        self.assertEqual([row['classification_color'] for row in shown],
+                         ['red', 'green', None])
+        self.assertEqual(shown[2]['display_section'], 'context_reference')
+        self.assertIn('이란과 강력한 합의 이뤄지면 추가 공습 없을 것',
+                      html.unescape(text))
+        self.assertIn('미국 전쟁장관 탄핵 논의', text)
+        self.assertIn('부분 확인 전쟁 상황 알림 · 원천 216/227', text)
+        self.assertNotEqual(receipt['alert_sha256'],
+                            fixture['provenance']['observed_delivered_alert_sha256'])
+
+        for row in (shown[1], shown[2]):
+            separate = copy.deepcopy(row)
+            separate['title_original'] += '; 한편 미군이 이란을 공습했다'
+            self.assertEqual(presentation.direction(stage, separate), 'red')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

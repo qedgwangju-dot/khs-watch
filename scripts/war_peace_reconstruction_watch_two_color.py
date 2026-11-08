@@ -204,6 +204,14 @@ def _political_war_pressure_commentary(title):
                 and not _separate_attack_headline(title))
 
 
+def _war_secretary_impeachment_commentary(title):
+    """An impeachment dispute is political context, not a new war threat."""
+    return bool(re.search(r'전쟁\s*장관|전쟁장관|국방\s*장관|국방장관', title)
+                and re.search(r'탄핵', title)
+                and not _separate_attack_headline(title)
+                and not _completed_attack_headline(title))
+
+
 def direction(stage, row):
     """Return a display color, or None for a neutral market reference."""
     kind = stage.non_military_kind(row)
@@ -211,6 +219,7 @@ def direction(stage, row):
     title = stage._headline(row)
     tags = {str(tag).strip() for tag in row.get('tags', [])}
     if (_election_war_commentary(title) or _political_war_pressure_commentary(title)
+            or _war_secretary_impeachment_commentary(title)
             or stage._election_iran_war_staff_options(title)
             or stage._iran_war_policy_options_headline(title)):
         return None
@@ -363,7 +372,8 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         color = direction(stage, row)
         title = stage._headline(row)
         commentary = (_election_war_commentary(title)
-                      or _political_war_pressure_commentary(title))
+                      or _political_war_pressure_commentary(title)
+                      or _war_secretary_impeachment_commentary(title))
         policy_options = stage._iran_war_policy_options_headline(title)
         hypothetical = (_hypothetical_war_options(title)
                         or _pending_iran_war_decision(title))
@@ -391,7 +401,9 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             uncertain_reference |= uncertain
             if commentary:
                 midterm = re.search(r'중간선거|\bmidterms?\b', title, re.IGNORECASE)
-                if midterm:
+                if _war_secretary_impeachment_commentary(title):
+                    label = '미국 전쟁장관 탄핵 논의'
+                elif midterm:
                     label = ('이란 전쟁 · 중간선거 관련 발언' if re.search(
                         r'이란\s*전쟁|이란전쟁|\bIran\s+war\b', title, re.IGNORECASE)
                         else '중간선거 · 전쟁·외교 전망')

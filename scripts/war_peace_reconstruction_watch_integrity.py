@@ -1312,13 +1312,15 @@ def _iran_attack_restraint_statement(row):
     restraint = bool(re.search(
         r'(?:공습|공격|타격)(?:을|를)?\s*(?:서두르지\s*않|유보|보류|연기|부인)'
         r'|(?:공습|공격|타격).{0,12}(?:계획|방침).{0,8}없'
+        r'|(?:추가|재차)\s*(?:공습|공격|타격)(?:은|는|이|가)?\s*(?:없|하지\s*않|않겠)'
         r'|\b(?:will\s+not|won.t|not\s+planning\s+to|no\s+plans\s+to|not\s+rushing\s+to)\s+'
         r'(?:launch\s+)?(?:attack|strike|bomb)'
-        r'|\bno\s+(?:immediate\s+)?(?:attack|strike)\s+on\s+iran\b', title))
+        r'|\bno\s+(?:immediate\s+)?(?:attack|strike)\s+on\s+iran\b'
+        r'|\bno\s+further\s+(?:airstrikes?|attacks?|strikes?)\b', title))
     completed = bool(re.search(
-        r'(?:별도|그러나|반면|하지만|동시에).{0,55}'
+        r'(?:별도|한편|그러나|반면|하지만|동시에).{0,55}'
         r'(?:공습|공격|타격)(?:을|를)?\s*(?:감행|실시|개시|했다|진행)'
-        r'|(?:별도|그러나|반면|하지만|동시에).{0,55}(?:피격|폭격|공습\s*발생)'
+        r'|(?:별도|한편|그러나|반면|하지만|동시에).{0,55}(?:피격|폭격|공습\s*발생)'
         r'|\b(?:but|meanwhile|separately)\b.{0,60}\b(?:struck|attacked|bombed|launched strikes)\b', title))
     return iran and us and attack and restraint and not completed
 
