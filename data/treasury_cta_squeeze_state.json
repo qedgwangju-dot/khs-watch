@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-09T07:08:03+09:00",
+  "last_checked_kst": "2026-11-09T07:34:10+09:00",
   "media_id": null,
   "cftc_date": "November 3, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-09T07:08:03+09:00",
+    "checked_kst": "2026-11-09T07:34:10+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "November 3, 2026",
@@ -468,6 +468,255 @@
       "event_key": null,
       "source_mode": "CFTC TFF live HTML",
       "report_age_days": 6
+    },
+    "monthly_trends": {
+      "cftc": {
+        "2Y": {
+          "1": {
+            "date": "2026-09-29",
+            "value": -1165980.0,
+            "change": -284912.0
+          },
+          "2": {
+            "date": "2026-09-01",
+            "value": -1268034.0,
+            "change": -182858.0
+          },
+          "3": {
+            "date": "2026-07-28",
+            "value": -1564294.0,
+            "change": 113402.0
+          }
+        },
+        "5Y": {
+          "1": {
+            "date": "2026-09-29",
+            "value": -1985787.0,
+            "change": -329729.0
+          },
+          "2": {
+            "date": "2026-09-01",
+            "value": -2202688.0,
+            "change": -112828.0
+          },
+          "3": {
+            "date": "2026-07-28",
+            "value": -2108638.0,
+            "change": -206878.0
+          }
+        },
+        "10Y": {
+          "1": {
+            "date": "2026-09-29",
+            "value": -2036432.0,
+            "change": -225878.0
+          },
+          "2": {
+            "date": "2026-09-01",
+            "value": -2062502.0,
+            "change": -199808.0
+          },
+          "3": {
+            "date": "2026-07-28",
+            "value": -2155739.0,
+            "change": -106571.0
+          }
+        },
+        "ULTRA10Y": {
+          "1": {
+            "date": "2026-09-29",
+            "value": -328471.0,
+            "change": 70370.0
+          },
+          "2": {
+            "date": "2026-09-01",
+            "value": -423357.0,
+            "change": 165256.0
+          },
+          "3": {
+            "date": "2026-07-28",
+            "value": -400210.0,
+            "change": 142109.0
+          }
+        },
+        "BOND": {
+          "1": {
+            "date": "2026-09-29",
+            "value": -251395.0,
+            "change": 85138.0
+          },
+          "2": {
+            "date": "2026-09-01",
+            "value": -303045.0,
+            "change": 136788.0
+          },
+          "3": {
+            "date": "2026-07-28",
+            "value": -389522.0,
+            "change": 223265.0
+          }
+        },
+        "ULTRABOND": {
+          "1": {
+            "date": "2026-09-29",
+            "value": -808870.0,
+            "change": 12641.0
+          },
+          "2": {
+            "date": "2026-09-01",
+            "value": -878489.0,
+            "change": 82260.0
+          },
+          "3": {
+            "date": "2026-07-28",
+            "value": -862638.0,
+            "change": 66409.0
+          }
+        }
+      },
+      "repo": {
+        "SOFR": {
+          "1": {
+            "date": "2026-10-05",
+            "value": 3.89,
+            "change": 0.029999999999999805
+          },
+          "2": {
+            "date": "2026-09-04",
+            "value": 3.65,
+            "change": 0.27
+          },
+          "3": {
+            "date": "2026-08-05",
+            "value": 3.64,
+            "change": 0.2799999999999998
+          }
+        },
+        "BGCR": {
+          "1": {
+            "date": "2026-10-05",
+            "value": 3.87,
+            "change": 0.029999999999999805
+          },
+          "2": {
+            "date": "2026-09-04",
+            "value": 3.64,
+            "change": 0.2599999999999998
+          },
+          "3": {
+            "date": "2026-08-05",
+            "value": 3.63,
+            "change": 0.27
+          }
+        },
+        "TGCR": {
+          "1": {
+            "date": "2026-10-05",
+            "value": 3.87,
+            "change": 0.029999999999999805
+          },
+          "2": {
+            "date": "2026-09-04",
+            "value": 3.64,
+            "change": 0.2599999999999998
+          },
+          "3": {
+            "date": "2026-08-05",
+            "value": 3.63,
+            "change": 0.27
+          }
+        }
+      },
+      "futures": {
+        "ZN": {
+          "date": "2026-11-06",
+          "current": 107.109375,
+          "comparisons": {
+            "1": {
+              "date": "2026-10-06",
+              "value": 104.5,
+              "change": 2.609375
+            },
+            "2": {
+              "date": "2026-09-04",
+              "value": 107.734375,
+              "change": -0.625
+            },
+            "3": {
+              "date": "2026-08-06",
+              "value": 108.5,
+              "change": -1.390625
+            }
+          },
+          "source": "https://query1.finance.yahoo.com/v8/finance/chart/ZN%3DF?range=6mo&interval=1d&includePrePost=false"
+        },
+        "ZB": {
+          "date": "2026-11-06",
+          "current": 108.46875,
+          "comparisons": {
+            "1": {
+              "date": "2026-10-06",
+              "value": 102.53125,
+              "change": 5.9375
+            },
+            "2": {
+              "date": "2026-09-04",
+              "value": 109.21875,
+              "change": -0.75
+            },
+            "3": {
+              "date": "2026-08-06",
+              "value": 109.34375,
+              "change": -0.875
+            }
+          },
+          "source": "https://query1.finance.yahoo.com/v8/finance/chart/ZB%3DF?range=6mo&interval=1d&includePrePost=false"
+        },
+        "UB": {
+          "date": "2026-11-06",
+          "current": 110.03125,
+          "comparisons": {
+            "1": {
+              "date": "2026-10-06",
+              "value": 103.46875,
+              "change": 6.5625
+            },
+            "2": {
+              "date": "2026-09-04",
+              "value": 110.59375,
+              "change": -0.5625
+            },
+            "3": {
+              "date": "2026-08-06",
+              "value": 110.8125,
+              "change": -0.78125
+            }
+          },
+          "source": "https://query1.finance.yahoo.com/v8/finance/chart/UB%3DF?range=6mo&interval=1d&includePrePost=false"
+        },
+        "NQ": {
+          "date": "2026-11-06",
+          "current": 27085.25,
+          "comparisons": {
+            "1": {
+              "date": "2026-10-06",
+              "value": 31483.25,
+              "change": -4398.0
+            },
+            "2": {
+              "date": "2026-09-04",
+              "value": 29565.25,
+              "change": -2480.0
+            },
+            "3": {
+              "date": "2026-08-06",
+              "value": 29488.25,
+              "change": -2403.0
+            }
+          },
+          "source": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=6mo&interval=1d&includePrePost=false"
+        }
+      }
     }
   },
   "format_revision": 14,
@@ -491,7 +740,7 @@
     "oi_scope_fixes": []
   },
   "last_fomc_eve_report": "2026-10-28",
-  "last_weekly_report_key": "2026-W45",
+  "last_weekly_report_key": "2026-W46",
   "nasdaq_cross_asset_stage": 0,
   "short_bias_markets": [
     "ULTRABOND"
