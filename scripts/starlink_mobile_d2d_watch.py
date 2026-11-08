@@ -48,6 +48,9 @@ SOURCES=(
  ("Starlink 휴대전화 직접통신 공식 발사체 경로","https://www.starlink.com/bs/business/direct-to-cell",("Falcon 9","Starship")),
  ("AT&T 배당락·주당 배당금 공식 발표","https://about.att.com/story/2026/november-stock-dividend.html",("0.2775","Oct. 12, 2026")),
  ("Verizon 2026년 10월 9일 배당락 공식 내역","https://www.verizon.com/about/investors/dividend-history",("10/09/2026","0.7075")),
+ ("퀄컴 Starlink Mobile 5G 계약 공식 발표","https://www.qualcomm.com/news/releases/2026/11/spacex-selects-qualcomm-to-accelerate-starlink-mobile-s-nationwi",("SpaceX","QRU100","QDU100","2027")),
+ ("AT&T·AST 지상망-위성망 전환 시험 공식 발표","https://about.att.com/story/2026/att-ast-spacemobile-engineering-connected-world.html",("AST SpaceMobile","Ericsson","Nokia","October 21, 2026")),
+ ("글로벌스타 아마존 인수 종결 대기 공식 발표","https://investors.globalstar.com/news-releases/news-release-details/globalstar-announces-third-quarter-2026-financial-results",("Amazon","2027","pending transaction")),
 )
 FCC_JULY="https://docs.fcc.gov/public/attachments/DA-26-653A1.pdf"
 FCC_JAN="https://docs.fcc.gov/public/attachments/DOC-417881A1.pdf"
@@ -60,6 +63,44 @@ OFFICIAL_BASE=(
  ("[AST SpaceMobile 연결]","AST SpaceMobile(ASTS)은 AT&T와 2030년까지 이어지는 상업계약이 있고 Verizon과도 상업계약을 발표했습니다. 경쟁사 신사업 진입이 이 기존 계약의 즉시 해지를 의미하지 않습니다.","https://about.att.com/story/2024/ast-spacemobile-commercial-agreement.html"),
 )
 TRADE_PRICE_NOTE="SpaceX-Grain 거래금액: 당사자 공식 발표에서 미공개. 외신 추정액을 확정 계약금으로 사용하지 않습니다."
+QUALCOMM_AGREEMENT_KEY="ground:starlink_qualcomm_dragonwing:agreement:20261104"
+AST_HANDOFF_KEY="interoperability:att_ast:handoff_test:20261021"
+QUALCOMM_PRIMARY="퀄컴 Starlink Mobile 5G 계약 공식 발표"
+AST_HANDOFF_PRIMARY="AT&T·AST 지상망-위성망 전환 시험 공식 발표"
+QUALCOMM_RELEASE_URL="https://www.qualcomm.com/news/releases/2026/11/spacex-selects-qualcomm-to-accelerate-starlink-mobile-s-nationwi"
+AST_HANDOFF_RELEASE_URL="https://about.att.com/story/2026/att-ast-spacemobile-engineering-connected-world.html"
+
+def official_qualcomm_agreement_notice()->str:
+ return "\n".join((
+  "[지상망·설비투자] 지난 공식 계약 누락 보완: SpaceX·퀄컴",
+  "• 발표: 2026년 11월 4일. Starlink Mobile 미국 지상 5G 기지국에 Qualcomm Dragonwing QRU100 무선장치 처리 플랫폼·QDU100 분산장치 플랫폼 및 1계층 소프트웨어를 공급하는 다년 계약 발표.",
+  "• 규격·일정: 64T64R 다중안테나 체계. 2027년부터 미국 전국망 구축을 시작할 계획이며 수년에 걸친 수만 개 기지국은 목표 규모이지 설치 완료 물량이 아닙니다.",
+  "• 계약금액·단가·확정 설치 대수: 미공개. 기지국 부지 8만 곳 이용권 확보 협상은 별개이며 확정 부지 매입·장비 발주와 혼동하지 않습니다.",
+  "• 국내 공급망: 케이엠더블유·에치에프알·쏠리드·오이솔루션·RFHIC는 유진투자증권이 거론한 후보로, 이번 계약의 확정 공급사가 아닙니다.",
+  "• 먼저 볼 지표: SpaceX·퀄컴의 실제 장비 발주·기지국 설치·가동 수, 국내 업체 고객 승인·계약 공시, 2027년 구축 개시.",
+  "• 원문: "+QUALCOMM_RELEASE_URL,
+  "• 원문: https://www.reuters.com/business/media-telecom/qualcomm-signs-major-5g-infrastructure-deal-with-spacex-starlink-mobile-network-2026-11-04/",
+ ))
+
+def official_ast_handoff_notice()->str:
+ return "\n".join((
+  "[경쟁 위성기업] 지난 고객 검증 누락 보완: AT&T·AST SpaceMobile",
+  "• 시험: 2026년 10월 21일 미국 워싱턴주에서 일반 스마트폰의 지상 이동통신망→AST BlueBird 위성망 연결 전환에 성공했다고 11월 2일 공식 발표했습니다.",
+  "• 에릭슨은 지상 무선·중심망 및 전환 자동화를, 노키아는 AST 위성 접속·이동성 소프트웨어를 지원했습니다. 전환 시간은 초 단위에서 밀리초 단위로 개선됐다고 발표했습니다.",
+  "• 현재 단계: 기술 검증 성공 → 실제 이용자 베타 서비스 준비 → 상용 서비스 목표. 상용 고객·매출·전국 구축 완료를 뜻하지 않습니다.",
+  "• 먼저 볼 지표: 베타 서비스 개시·상용 접속 품질·BlueBird 가동 위성·통신사 매출 배분.",
+  "• 원문: "+AST_HANDOFF_RELEASE_URL,
+  "• 원문: https://www.satellitetoday.com/connectivity/2026/11/03/att-and-ast-spacemobile-demonstrate-handoff-between-cellular-d2d-networks/",
+ ))
+
+def newly_verified_official_notices(seen:dict,verified:list[str],initial:bool)->list[tuple[str,str]]:
+ if initial:return []
+ new=[]
+ if QUALCOMM_AGREEMENT_KEY not in seen and QUALCOMM_PRIMARY in verified:
+  new.append((QUALCOMM_AGREEMENT_KEY,official_qualcomm_agreement_notice()))
+ if AST_HANDOFF_KEY not in seen and AST_HANDOFF_PRIMARY in verified:
+  new.append((AST_HANDOFF_KEY,official_ast_handoff_notice()))
+ return new
 # Existing October 2026 facts are a baseline, not novel future FCC approvals.
 # In particular, do NOT seed license:grain_spacex_800:fcc_approval or :close.
 KNOWN_BASELINE_KEYS=(
@@ -154,6 +195,38 @@ TOPICS={
   "risk":"기존 망 제공 사업자의 사전 동의·인수 조건·고객 이탈·통합 비용",
   "indicator":"인수계약 서명·AT&T/T-Mobile 동의·망 이용계약·인수 종결·가입자 전환",
  },
+ "qualcomm_5g": {
+  "title":"[지상망·설비투자] Starlink Mobile·퀄컴 지상 5G",
+  "queries":(
+    '"SpaceX" "Qualcomm" ("Dragonwing" OR "QRU100" OR "QDU100") when:14d',
+    '"Starlink Mobile" ("Qualcomm" OR "Dragonwing") ("5G" OR "base station") when:14d',
+    '"SpaceX" "Qualcomm" (site deployments OR activated OR operational) when:7d',
+  ),
+  "meaning":"확정 칩·기초 소프트웨어 공급과 실제 기지국 설치·가동을 분리합니다. 국내 장비사는 고객 검증·계약 전까지 후보입니다.",
+  "risk":"철탑 이용권·전력·전송망·장비 통합 지연과 비중국 공급망 경쟁, 2027년 계획의 이행 불확실성",
+  "indicator":"2027년 설치·개통된 실제 기지국 수, 장비 납품·고객 승인·국내 공급사 수주",
+ },
+ "asts_handoff": {
+  "title":"[경쟁 위성기업] AT&T·AST 지상망/위성망 연결 전환",
+  "queries":(
+    '"AST SpaceMobile" "AT&T" ("handoff" OR "handover" OR "beta") when:14d',
+    '"AST SpaceMobile" "Ericsson" "Nokia" (handoff OR satellite) when:14d',
+    '"AT&T" "AST SpaceMobile" (commercial launch OR beta service) when:7d',
+  ),
+  "meaning":"연결 전환 시험 성공과 실제 이용자 베타·상용 서비스를 분리해 상용 매출 전환을 감시합니다.",
+  "risk":"위성 운용·전파 간섭·연결 전환 실패와 전국 상용화 지연",
+  "indicator":"베타 서비스 개시·실사용자 연결 유지·상용 접속·계약 매출",
+ },
+ "korean_vendor": {
+  "title":"[지상망·설비투자] 국내 통신장비의 Starlink 고객 공급",
+  "queries":(
+    '스페이스X 스타링크 (케이엠더블유 OR 에치에프알 OR 쏠리드 OR 오이솔루션 OR RFHIC) (납품 OR 수주 OR 고객 검증) when:7d',
+    '"Starlink Mobile" ("KMW" OR "RFHIC" OR "HFR" OR "OE Solutions") (contract OR supplier OR qualification) when:7d',
+  ),
+  "meaning":"증권사 공급망 후보와 실제 SpaceX·퀄컴 고객 승인·수주·납품을 구분합니다.",
+  "risk":"실제 고객명 비공개, 대형 무선장비 경쟁사·규제, 수주 없이 주가만 먼저 반응할 위험",
+  "indicator":"공급사 공시·고객사 납품 확인·제품 모델·계약금액·실제 출하",
+ },
  "amazon_leo": {
   "title":"[경쟁사·FCC] 아마존 레오·글로벌스타 위성직접통신",
   "queries":(
@@ -177,6 +250,11 @@ LABELS={
  "new_service":"상용서비스·위성망 추가 구축 보도(실제 개통·고객 수 별도 확인)",
  "venture":"합작법인 확대·협력 발표(신규 매출과 다름)",
  "supply":"위성 공급·계약·발사 보도(검수 매출과 다름)",
+ "rollout_report":"Starlink 지상 기지국 실제 개통 보도(공식 설치·가동 수 별도 확인)",
+ "handoff_test":"지상망·위성망 전환 시험 보도(상용 서비스 아님)",
+ "beta_report":"실사용자 베타 서비스 개시 보도(공식 개시·규모 확인 전)",
+ "commercial_report":"상용 서비스 개시 보도(공식 계약·매출 확인 전)",
+ "supplier_report":"국내 통신장비 납품·고객 검증 보도(양사 공식 확인 전)",
  "tower":"지상망·철탑 계약/투자 보도(규모 확인 필요)",
  "site_talks":"기지국 부지 이용권 협상 보도(8만 곳 목표·미계약)",
  "site_agreement":"기지국 부지 이용계약 체결 보도(계약 원문 확인 전)",
@@ -243,6 +321,8 @@ def distinct_primary_organizations(names:list[str])->set[str]:
   elif name.startswith("SpaceX"):groups.add("spacex")
   elif name.startswith("AT&T"):groups.add("att")
   elif name.startswith("T-Mobile"):groups.add("tmobile")
+  elif name.startswith("퀄컴"):groups.add("qualcomm")
+  elif name.startswith("글로벌스타"):groups.add("globalstar")
   elif name.startswith("FCC "):groups.add("fcc")
   elif name.startswith("NASA "):groups.add("nasa")
   elif name.startswith("Starlink "):groups.add("starlink")
@@ -326,6 +406,8 @@ def stage(topic:str,title:str)->str|None:
   if not re.search(r"joint venture|venture|satellite|d2d|direct.to.device",t):return None
   return "venture"
  if topic=="asts":
+  # A connectivity handoff is not a new satellite supply agreement.
+  if re.search(r"handoff|hand.?over|망 전환|연결 전환",t):return None
   if not re.search(r"ast spacemobile|bluebird|asts",t):return None
   if not re.search(r"contract|deal|satellite|commercial|service|verizon|at&t|launch",t):return None
   return "supply"
@@ -342,6 +424,26 @@ def stage(topic:str,title:str)->str|None:
   if re.search(r"acquisition complete|acquisition closes|completed purchase|deal closes|transaction closed",t):return "boost_close"
   if re.search(r"signs? (?:a )?definitive|signed agreement|agrees to acquire|acquisition agreement",t):return "boost_agreement"
   if re.search(r"talks?|discuss|negotia|consider|weigh|seek|could buy|access|purchase|acquisition",t):return "boost_talks"
+  return None
+ if topic=="qualcomm_5g":
+  if not re.search(r"spacex|starlink|스페이스x|스타링크",t) or not re.search(r"qualcomm|dragonwing|퀄컴",t):return None
+  if not re.search(r"5g|dragonwing|qru100|qdu100|base station|기지국|terrestrial",t):return None
+  # Announced build-out is not a live cell-site deployment.
+  if re.search(r"sites? (?:went |goes? )?live|activated|now operational|deployed [0-9,]+ sites|기지국.*개통|기지국.*가동",t) and not re.search(r"plans?|aims?|expected|to deploy|will deploy|예정|목표",t):
+   return "rollout_report"
+  if re.search(r"selects?|selected|signed|agrees?|deal|contract|supply|supplies|공급계약|체결|선정",t):return "agreement"
+  return None
+ if topic=="asts_handoff":
+  if not re.search(r"ast spacemobile|asts|bluebird|스페이스모바일",t) or not re.search(r"at&t|에이티앤티",t):return None
+  if re.search(r"beta service|beta launch|베타.*(개시|출시)",t) and not re.search(r"prepar|plan|target|ahead|예정|목표",t):return "beta_report"
+  if re.search(r"commercial service (?:begins|starts|launches)|commercial launch confirmed|상용 서비스.*(개시|출시)",t) and not re.search(r"prepar|plan|target|ahead|예정|목표",t):return "commercial_report"
+  if re.search(r"handoff|handover|hand-over|연결 전환|망 전환",t):return "handoff_test"
+  return None
+ if topic=="korean_vendor":
+  if not re.search(r"spacex|starlink|스페이스x|스페이스X|스타링크",t):return None
+  if not re.search(r"케이엠더블유|에치에프알|쏠리드|오이솔루션|rfhic|\bkmw\b|\bhfr\b|oe solutions",t):return None
+  if re.search(r"could|may|potential|opportunit|candidate|benefit|possible|기대|가능성|후보|전망|관심|수혜주",t):return None
+  if re.search(r"sign(?:ed|s)?|contract|selected|awarded|supplier|qualified|납품|수주|선정|체결|고객 검증|고객승인",t):return "supplier_report"
   return None
  if topic=="amazon_leo":
   if not re.search(r"amazon|아마존",t) or not re.search(r"globalstar|글로벌스타",t):return None
@@ -390,6 +492,21 @@ def event_id(category:str,status:str,title:str)->str:
    return f"ground:spacex_80000_sites:{status}"
   if re.search(r"tower|terrestrial",t):
    return f"ground:starlink_terrestrial:{status}"
+ if category=="qualcomm_5g":
+  if status=="agreement":return QUALCOMM_AGREEMENT_KEY
+  return "ground:starlink_qualcomm_dragonwing:"+status+":"+hashlib.sha256(t.encode()).hexdigest()[:14]
+ if category=="asts_handoff":
+  if status=="handoff_test":return AST_HANDOFF_KEY
+  return f"interoperability:att_ast:{status}"
+ if category=="korean_vendor":
+  vendor=next((ident for ident,pattern in (
+   ("kmw",r"케이엠더블유|\\bkmw\\b"),
+   ("hfr",r"에치에프알|\\bhfr\\b"),
+   ("solid",r"쏠리드"),
+   ("oe_solutions",r"오이솔루션|oe solutions"),
+   ("rfhic",r"rfhic"),
+  ) if re.search(pattern,t)), "unknown")
+  return f"vendor:starlink:{vendor}:{status}"
  if category=="mobile_entry":return f"mobile:starlink_boost:{status}"
  if category=="amazon_leo":return f"competitor:amazon_globalstar:{status}"
  # To allow different deployments/contracts, use stable material headwords,
@@ -571,6 +688,10 @@ def choose_events(group:dict,seen:dict,bootstrap_run:bool,force:bool=False)->tup
    # A single RSS headline is not a license, signed contract, or FCC approval.
    if not independent_publisher(item):continue
    eid=event_id(topic,status,item["title"])
+   # Original commercial-release and handoff-test notices are emitted only
+   # after checking their issuer originals; recycled RSS cannot premark them.
+   if (topic=="qualcomm_5g" and status=="agreement") or (topic=="asts_handoff" and status=="handoff_test"):
+    continue
    # A headline saying merely "15,000 SpaceX satellites" without specifying
    # DA-26-36 Gen2 broadband vs DA-26-1078 mobile D2D is unsafe.
    if eid.startswith("fcc:ambiguous_15000:"):continue
@@ -698,6 +819,32 @@ def test()->int:
  assert event_id("mobile_entry","boost_talks","SpaceX in talks to buy Boost Mobile")=="mobile:starlink_boost:boost_talks"
  assert event_id("mobile_entry","boost_agreement","SpaceX signs Boost Mobile acquisition agreement")!=event_id("mobile_entry","boost_talks","SpaceX in talks to buy Boost Mobile")
  assert event_id("amazon_leo","transfer_approved","FCC approves Amazon Leo acquisition Globalstar")=="competitor:amazon_globalstar:transfer_approved"
+ assert stage("qualcomm_5g","SpaceX selects Qualcomm Dragonwing 5G for nationwide base stations")=="agreement"
+ assert stage("qualcomm_5g","SpaceX Qualcomm to deploy Dragonwing 5G base stations in 2027") is None
+ assert stage("qualcomm_5g","SpaceX Qualcomm Dragonwing 5G sites now operational")=="rollout_report"
+ assert stage("asts_handoff","AT&T AST SpaceMobile complete handoff of satellite and terrestrial networks")=="handoff_test"
+ assert stage("asts","AT&T AST SpaceMobile complete handoff of satellite and terrestrial networks") is None
+ assert stage("asts_handoff","AT&T AST SpaceMobile plan beta service next year") is None
+ assert stage("asts_handoff","AT&T AST SpaceMobile beta service begins")=="beta_report"
+ assert stage("korean_vendor","SpaceX Starlink KMW named potential supplier winner") is None
+ assert stage("korean_vendor","SpaceX Starlink RFHIC signs supply contract")=="supplier_report"
+ assert stage("korean_vendor","SpaceX Qualcomm supplier candidates KMW RFHIC") is None
+ assert event_id("qualcomm_5g","agreement","SpaceX selects Qualcomm Dragonwing 5G")==QUALCOMM_AGREEMENT_KEY
+ assert event_id("asts_handoff","handoff_test","AT&T AST SpaceMobile satellite handoff")==AST_HANDOFF_KEY
+ assert "2027년부터" in official_qualcomm_agreement_notice()
+ assert "기지국 부지 8만 곳" in official_qualcomm_agreement_notice()
+ assert "시험" in official_ast_handoff_notice() and "상용" in official_ast_handoff_notice()
+ primary=[QUALCOMM_PRIMARY,AST_HANDOFF_PRIMARY]
+ notices=newly_verified_official_notices({},primary,False)
+ assert [k for k,_ in notices]==[QUALCOMM_AGREEMENT_KEY,AST_HANDOFF_KEY]
+ assert not newly_verified_official_notices({},primary,True)
+ assert not newly_verified_official_notices({QUALCOMM_AGREEMENT_KEY:"sent",AST_HANDOFF_KEY:"sent"},primary,False)
+ assert not newly_verified_official_notices({},[],False)
+ assert all(block.count("• 원문: ")==2 for _,block in notices)
+ initial_pairs={"qualcomm_5g":{"x":("agreement",{"title":"SpaceX selects Qualcomm Dragonwing 5G","publisher":"Reuters","pub":NOW,"url":"https://a.example"}),
+                                "y":("agreement",{"title":"Qualcomm chosen by SpaceX for Dragonwing 5G","publisher":"The Verge","pub":NOW,"url":"https://b.example"})}}
+ initial_rss,initial_seen=choose_events(initial_pairs,{},False)
+ assert not initial_rss and not initial_seen
  assert "license:grain_spacex_800:fcc_approval" not in KNOWN_BASELINE_KEYS
  assert "license:grain_spacex_800:close" not in KNOWN_BASELINE_KEYS
  print("starlink_mobile_d2d_self_test=ok approvals_separated=1 government_rss_excluded=1 media_duo=1 no_duplicates=1 known_baseline=1")
@@ -717,6 +864,12 @@ def main()->int:
   raise RuntimeError(f"독립된 공식 발행기관 {len(organizations)}곳: 알림 차단. {failed}")
  force=os.getenv("FORCE_NOTIFY","").strip().lower() in ("true","1","yes")
  events,next_seen=choose_events(groups,state["seen"],initial,force)
+ # One-time missed official milestones; do not infer customer awards from RSS.
+ # Pending keys are persisted only after Telegram confirms delivery.
+ official_new=newly_verified_official_notices(state["seen"],official,initial)
+ for key,notice in reversed(official_new):
+  events.insert(0,notice)
+  next_seen[key]=NOW.isoformat()
  # One-time correction of the old report's close/adjusted-close basis.
  # Strictly require issuer dividend originals and NASA's crew agreement.
  if should_send_price_correction(initial,state,official):
@@ -782,6 +935,7 @@ def main()->int:
   f"- 뉴스 피드 정상: {good}/{sum(len(x['queries']) for x in TOPICS.values())}",
   f"- 뉴스 피드 장애: {len(errors)}",
   f"- 최초 기준선: {initial}, 이번 알림 사건: {len(events)}",
+  f"- 퀄컴 계약·AST 전환시험 신규 공식 근거: {[key for key,_ in official_new]}",
   f"- 10월 6일 별도 FCC 직접통신 허가 정정 알림: {correction}",
   f"- 10월 11일 주가·Falcon/Dragon 팩트체크: {factcheck_20261011} | NASA+Grain 공식 원문: {claim_verified}",
   f"- FCC DA-26-1078 공식 원문 검증: {oct_fcc_primary}",
