@@ -1126,6 +1126,8 @@ ANTHRO_ONEPWR_EVENT = "anthropic-onepwr-reported-generator-order-assignment-2026
 ANTHRO_ONEPWR_FT = "https://www.ft.com/content/41bf5c6a-9735-4f1a-a8e3-2bcccad58ba0"
 ANTHRO_ONEPWR_REUTERS = "https://www.reuters.com/business/energy/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-2026-11-08/"
 ANTHRO_ONEPWR_REUTERS_REPRINT = "https://www.channelnewsasia.com/business/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-6534256"
+ANTHRO_ONEPWR_ET_REPRINT = "https://economictimes.indiatimes.com/tech/artificial-intelligence/anthropic-strikes-3-4bn-deal-to-generate-gas-fired-power-for-data-centres-report/articleshow/135657486.cms"
+ANTHRO_ONEPWR_BLOOMBERG_REPRINT = "https://theedgemalaysia.com/node/825001"
 ANTHRO_ONEPWR_SEC = "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm"
 ANTHRO_ONEPWR_EO = "https://www.energy.gov/ceser/declaring-national-emergency-secure-united-states-bulk-power-system-executive-order"
 ANTHRO_ONEPWR_REPORTED_DATE = dt.date(2026, 11, 8)
@@ -1140,6 +1142,13 @@ def anthro_onepwr_report_valid(text: str) -> bool:
     if not re.search(r"\b3[.,]4\s*(?:billion|bn)\b", body):
         return False
     if "generators" not in body and "gas-fired" not in body:
+        return False
+    # A negated deal or a prospective discussion must never be announced as a purchase.
+    if any(term in body for term in (
+        "have not struck a deal", "has not struck a deal", "never struck a deal",
+        "no agreement has been reached", "may discuss", "still negotiating",
+        "only considering the purchase", "deal was denied",
+    )):
         return False
     return any(phrase in body for phrase in (
         "has struck a deal", "struck a deal", "bought commitments",
@@ -1175,11 +1184,16 @@ def anthro_onepwr_source_check() -> tuple[list[dict], list[str]]:
         ("FT 최초 취재", ANTHRO_ONEPWR_FT),
         ("로이터 FT 재인용", ANTHRO_ONEPWR_REUTERS),
         ("로이터 제휴 재게시", ANTHRO_ONEPWR_REUTERS_REPRINT),
+        ("로이터 재게시(Economic Times)", ANTHRO_ONEPWR_ET_REPRINT),
+        ("블룸버그 FT 재인용", ANTHRO_ONEPWR_BLOOMBERG_REPRINT),
     ):
         try:
-            response = fetch(url, timeout=12)
+            response = fetch(url, timeout=9)
             if anthro_onepwr_report_valid(response.text):
                 verified.append({"label": label, "url": url})
+                # Reprints of the same FT report are not independent confirmations.
+                # One fully verified publisher body is sufficient for 'reported'.
+                break
             else:
                 failures.append(label + ": 필수 당사자·용량·금액·거래동사 불일치")
         except Exception as exc:
