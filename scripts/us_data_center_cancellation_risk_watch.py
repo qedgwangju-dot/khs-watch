@@ -953,3 +953,300 @@ print(
     f"cancellation_risk baseline={BASELINE['phantom_load_pct']}% "
     f"new={len(new_items)} credit_new={len(credit_new)} credit_feeds_ok={NEWS_SCAN_HEALTH['ai_credit_rss_ok']} credit_baselined={not credit_initialized} ms_finance_addendum={ms_finance_due} alert={should_alert}"
 )
+
+
+# US_KOREA_INBOUND_DIVERSION_V1
+# Existing US data-center cancellation/finance watcher, Telegram destination,
+# pending-state file and schedule only. No second workflow or bot.
+INBOUND_DIVERSION_ID = "us-tx-approval-delay-korea-investment-diversion-source-graded-20261108"
+INBOUND_TEXAS_GOV = "https://gov.texas.gov/news/post/governor-abbott-directs-tceq-to-halt-data-center-permits"
+INBOUND_TEXAS_TRIBUNE = "https://www.texastribune.org/2026/11/04/data-center-texas-pause-gina-hinojosa-governor-policies/"
+INBOUND_TEXAS_ERCOT = "https://www.ercot.com/about/legal/data-center-impact-rfi"
+INBOUND_MOTIR = "https://english.motir.go.kr/eng/article/EATCLdfa319ada/2779/view?bbsCdN=2&pageIndex=1"
+INBOUND_KOTRA_SIGNED_REPORT = "https://biz.heraldcorp.com/article/10926277"
+INBOUND_HANA = "https://www.hanaw.com/main/research/research/list.cmd?cid=1&pid=3"
+INBOUND_KHAN = "https://www.khan.co.kr/article/202611081638001"
+INBOUND_NH_REPOST = "https://tele.wiki/t/post/455884571"
+INBOUND_SKT_AWS = "https://news.sktelecom.com/en/1948"
+INBOUND_SKT_ROADMAP = "https://news.sktelecom.com/en/3155"
+INBOUND_MSIT_ULSAN = "https://msit.go.kr/eng/bbs/view.do?bbsSeqNo=42&mId=4&nttSeqNo=1130&sCode=eng"
+INBOUND_CBRE_KOREA = "https://www.cbre.com/insights/reports/korea-data-center-investment"
+INBOUND_US_KOREA_SNAPSHOT = {
+    "as_of": "2026-11-08",
+    "texas_permit_pause_since": "2026-09-21, 기존 주지사 행정조치·감사 기한부",
+    "texas_governor_elect": "2026-11-03 당선, 2027-01 취임 후 추가 승인 중단 공약·아직 시행 전",
+    "hana_research_date": "2026-11-06 발행처 목록 검색 색인",
+    "hana_2030_incremental_base_gw": [3.0, 4.2],
+    "hana_2030_incremental_bull_gw": [5.1, 7.0],
+    "hana_4_to_5gw_epc_krw_trillion": [30, 40],
+    "hana_report_pdf_confirmed": False,
+    "nh_analyst_original_report_confirmed": False,
+    "kotra_kdcc_mou_date": "2026-11-04",
+    "kotra_kdcc_mou_stage": "투자유치 협력 양해각서·실제 외국인 투자계약 아님",
+    "sk_aws_ulsan_existing_contract_year": 2025,
+    "sk_aws_ulsan_target_mw_2027_11": 41,
+    "sk_aws_ulsan_target_mw_2029_02": 103,
+    "post_us_election_relocation_to_korea_confirmed": False,
+    "korea_power_and_land_constraints": "CBRE 2026-07 수도권 전력·부지 부족, 비수도권도 실제 접속확약 별도 확인",
+    "primary_sources": [INBOUND_TEXAS_GOV, INBOUND_TEXAS_ERCOT,
+                        INBOUND_MOTIR, INBOUND_SKT_AWS, INBOUND_MSIT_ULSAN],
+    "reported_sources": [INBOUND_TEXAS_TRIBUNE, INBOUND_KHAN,
+                         INBOUND_HANA, INBOUND_NH_REPOST,
+                         INBOUND_KOTRA_SIGNED_REPORT, INBOUND_CBRE_KOREA],
+}
+INBOUND_OFFICIAL_NEWS_QUERIES = (
+    '"South Korea" "AI data center" "signed" "AWS" 2026',
+    '"Korea" "hyperscale data center" "investment agreement" 2026',
+)
+INBOUND_OFFICIAL_DOMAINS = (
+    "sktelecom.com", "sk.com", "aws.amazon.com", "amazon.com",
+    "microsoft.com", "google.com", "motir.go.kr", "msit.go.kr",
+    "kotra.or.kr", "navercloudcorp.com", "lgcns.com",
+)
+
+
+def inbound_official_stage(title: str) -> str | None:
+    """Only first-party, Korean-site project milestones; not relocation opinions."""
+    t = normalize(html.unescape(title)).lower().replace("data-center", "data center")
+    is_dc = any(x in t for x in ("data center", "data centre", "datacenter", "데이터센터", "aidc"))
+    is_korea = any(x in t for x in ("korea", "ulsan", "seoul", "gwangju",
+                                  "한국", "울산", "광주", "전남", "부산"))
+    if not (is_dc and is_korea):
+        return None
+    if any(x in t for x in ("mou", "memorandum of understanding", "양해각서")):
+        return "투자유치 양해각서(구속력·실제 집행 미확인)"
+    if any(x in t for x in ("energized", "commenced operations", "commercial operations",
+                            "operational", "상업운전", "가동 개시")):
+        return "가동·전원 인가 공식 발표"
+    if any(x in t for x in ("financial close", "financing closed", "금융종결")):
+        return "프로젝트 금융종결 공식 발표"
+    if any(x in t for x in ("broke ground", "groundbreaking", "construction begins",
+                            "construction started", "착공")):
+        return "착공 공식 발표"
+    if any(x in t for x in ("signed contract", "signed agreement", "long-term lease signed",
+                            "binding agreement", "공급계약 체결", "임대계약 체결")):
+        return "계약 체결 공식 발표(구체적 구속력 별도 확인)"
+    return None
+
+
+def inbound_primary_check() -> dict:
+    """Current first-party access; news headlines may not substitute for documents."""
+    def check(url: str, alternatives: tuple[tuple[str, ...], ...]) -> bool:
+        try:
+            raw = html.unescape(re.sub(r"<[^>]+>", " ", fetch(url, 12).text)).lower()
+            normalized = normalize(raw)
+            return all(any(token in normalized for token in group) for group in alternatives)
+        except Exception:
+            return False
+    return {
+        "texas_governor": check(INBOUND_TEXAS_GOV,
+                                (("data center", "data centers"), ("tceq",), ("ercot",))),
+        "texas_independent": check(INBOUND_TEXAS_TRIBUNE,
+                                   (("data center",), ("hinojosa",), ("moratorium",))),
+        "korea_government": check(INBOUND_MOTIR,
+                                  (("data center", "data centers", "데이터센터"),
+                                   ("invest korea", "kotra", "코트라"))),
+        "korea_signed_earlier": check(INBOUND_SKT_AWS,
+                                      (("aws",), ("ulsan",), ("2027",))),
+    }
+
+
+def inbound_is_due(prior: dict, first: bool, source: dict) -> bool:
+    return bool(
+        not first and prior.get("last_context_id") != INBOUND_DIVERSION_ID
+        and (source.get("texas_governor") or source.get("texas_independent"))
+        and (source.get("korea_government") or source.get("korea_signed_earlier"))
+    )
+
+
+def inbound_collect_official_announcements() -> tuple[list[dict], int]:
+    """Publisher-domain gated Korean investment milestones, only after this watch began."""
+    found: dict[str, dict] = {}
+    successes = 0
+    threshold = dt.datetime(2026, 11, 8, tzinfo=dt.timezone.utc)
+    for query in INBOUND_OFFICIAL_NEWS_QUERIES:
+        url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({
+            "q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"
+        })
+        try:
+            root = ET.fromstring(fetch(url, 12).content)
+            successes += 1
+        except Exception:
+            continue
+        for item in root.findall("./channel/item")[:25]:
+            title = normalize(item.findtext("title") or "")
+            link = normalize(item.findtext("link") or "")
+            published_raw = item.findtext("pubDate") or ""
+            origin = item.find("source")
+            origin_domain = domain_of(origin.attrib.get("url", "") if origin is not None else "")
+            if not any(origin_domain == d or origin_domain.endswith("." + d)
+                       for d in INBOUND_OFFICIAL_DOMAINS):
+                continue
+            try:
+                when = parsedate_to_datetime(published_raw)
+                if when.tzinfo is None:
+                    when = when.replace(tzinfo=dt.timezone.utc)
+                when = when.astimezone(dt.timezone.utc)
+                if when < threshold or when > dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=2):
+                    continue
+            except Exception:
+                continue
+            stage = inbound_official_stage(title)
+            if not stage:
+                continue
+            # Same publisher+headline = one milestone even across syndication URLs.
+            key = sig("korean-inbound-official", origin_domain, normalize(title).lower())
+            found[key] = {
+                "key": key, "title": title, "url": link,
+                "publisher": origin_domain, "stage": stage,
+                "published": when.isoformat()
+            }
+    return list(found.values()), successes
+
+
+def inbound_regression_checks() -> None:
+    assert inbound_official_stage("Korea data center investment may rise") is None
+    assert inbound_official_stage("Korea data center investor signs MOU") == "투자유치 양해각서(구속력·실제 집행 미확인)"
+    assert inbound_official_stage("AWS South Korea AI data center signed contract") == "계약 체결 공식 발표(구체적 구속력 별도 확인)"
+    assert inbound_official_stage("Texas data center moratorium extended") is None
+    assert inbound_official_stage("Japan data center agreed investments") is None
+    assert not inbound_is_due({"last_context_id": INBOUND_DIVERSION_ID}, False,
+                              {"texas_governor": True, "korea_government": True})
+    assert not inbound_is_due({}, True, {"texas_governor": True, "korea_government": True})
+    assert not inbound_is_due({}, False, {"texas_governor": True, "korea_government": False})
+    assert inbound_is_due({}, False, {"texas_governor": True, "korea_signed_earlier": True})
+    assert INBOUND_US_KOREA_SNAPSHOT["hana_2030_incremental_base_gw"][1] < INBOUND_US_KOREA_SNAPSHOT["hana_2030_incremental_bull_gw"][0]
+    assert not INBOUND_US_KOREA_SNAPSHOT["post_us_election_relocation_to_korea_confirmed"]
+
+
+def inbound_report(probe: dict, official_events: list[dict]) -> str:
+    lines = [
+        "<b>미국 데이터센터 규제 → 한국·일본 투자유치 가능성 | 11월 8일 보강</b>",
+        "",
+        "<b>■ 핵심: 정책 변화와 실제 계약을 분리</b>",
+        "• <b>텍사스 기존 규제</b> │ 2026-09-21 애벗 주지사가 감사 완료 전 신규 데이터센터 환경 인허가 중단을 지시.",
+        "• <b>선거 후 변화</b> │ 11월 3일 주지사 당선인은 2027년 1월 취임 후 신규 승인 중단 확대를 공약."
+        " 주 전체 영구 건설중단·연방 전국 규제로 확정된 것은 아님.",
+        "• <b>해외 이전</b> │ 하나·NH투자증권은 한국·일본의 해외투자 유치 기회를 전망."
+        " 미국의 투자취소가 한국의 실계약·외국인투자로 자동 전환된 것은 아님.",
+        "",
+        "<b>■ 국내 투자 전망: 회사 실적·확정 수주 아님</b>",
+        "• <b>하나증권 11월 6일 발행처 검색 색인</b> │ 2030 국내 AI 데이터센터 추가 유효수요"
+        " 기본 3.0~4.2GW, 해외 공급 지연 수혜를 반영한 낙관 5.1~7.0GW.",
+        "• <b>공사비 수주 시장 추정</b> │ 공급 4~5GW일 경우 약 30조~40조원."
+        " 총사업비·개별 건설사 확정 계약액과 구분.",
+        "• <b>NH투자증권</b> │ 일본·한국 수혜, 해저광케이블·전력·인허가 경쟁력 전망."
+        " 원 연구보고서 본문 직접 확인 전(신문 인용·중개 게시글).",
+        "",
+        "<b>■ 실제 국내 투자·유치 실행 단계</b>",
+        "• <b>KOTRA·한국데이터센터연합회</b> │ 11월 4일 외국인투자 유치 업무협약 체결 보도."
+        " 산업통상부는 행사에서 체결 계획을 발표. 양해각서는 개별 빅테크 투자계약 아님.",
+        "• <b>SK그룹·AWS 울산</b> │ 2025년 체결한 15년 협력사업."
+        " 과기정통부 기존 일정은 2027년 11월 41MW 부분 가동→2029년 2월 103MW 전체 가동.",
+        " 2026년 미국 선거로 새로 한국에 옮긴 계약이라고 볼 근거 없음.",
+        "• <b>SK텔레콤 장기 확장 목표</b> │ 국내 5GW를 2029년부터 단계적으로 추진,"
+        " 장기 목표 15GW. 전체 확정 수주·전원 인가 용량이 아님.",
+        "",
+        "<b>■ 가장 중요한 실패경로·다음 알림 조건</b>",
+        "• <b>실행 선행지표</b> │ 신규 미국 빅테크 실명 계약→확정 MW·투자액→부지·전력접속 확약"
+        "→금융종결→착공→전원 인가→고객 가동.",
+        "• <b>한국 측 역풍</b> │ CBRE 2026년 7월 수도권 전력·부지 부족."
+        " 비수도권도 송변전·용수·냉각·지역 전기요금·허가·민원 비용을 확인해야 함.",
+        "• <b>미국 측 조기경보</b> │ 텍사스 ERCOT 감사 결과 공개·차기 주정부의 실제 명령·"
+        "지역 인허가 재개 또는 중단. 공약과 효력 발생을 구분.",
+        "• <b>후속 신규 알림</b> │ 한국의 해외 빅테크 실제 계약·금융종결·착공·전원 인가"
+        " 및 미국 규제의 신규 공식 결정만 별도 사건으로 판정.",
+    ]
+    if official_events:
+        lines += ["", "<b>■ 신규 공식 발표 (원문 제목·단계)</b>"]
+        for row in official_events:
+            lines.append(f"• {h(row['stage'])} │ {a(row['title'], row['url'])}"
+                         f" · {h(row['publisher'])} · {h(row['published'][:10])}")
+    lines += [
+        "", "<b>■ 확인한 근거·출처 단계</b>",
+        f"• {a('텍사스 주정부 인허가 지시', INBOUND_TEXAS_GOV)} · {a('ERCOT 감사 일정', INBOUND_TEXAS_ERCOT)}",
+        f"• {a('텍사스 차기 주지사 공약 보도', INBOUND_TEXAS_TRIBUNE)}",
+        f"• {a('산업통상부 11월 외국인투자 행사 발표', INBOUND_MOTIR)}",
+        f"• {a('KOTRA·KDCC 업무협약 체결 보도', INBOUND_KOTRA_SIGNED_REPORT)}",
+        f"• {a('하나증권 공개 보고서 목록', INBOUND_HANA)} · {a('NH 메모 재게시', INBOUND_NH_REPOST)}",
+        f"• {a('SK·AWS 공식 계약 발표', INBOUND_SKT_AWS)} · {a('과기정통부 울산 일정', INBOUND_MSIT_ULSAN)}",
+        f"• {a('CBRE 한국 전력·부지 보고서', INBOUND_CBRE_KOREA)}",
+        f"• 실시간 확인: 텍사스 공식={probe['texas_governor']} / 독립 보도={probe['texas_independent']}"
+        f" / 한국 정부={probe['korea_government']} / SK·AWS 공식={probe['korea_signed_earlier']}",
+    ]
+    result = "\n".join(lines).strip()
+    must = ("3.0~4.2GW", "5.1~7.0GW", "30조~40조원", "41MW", "103MW",
+            "2027년", "2029년", "양해각서", "확정", "전원 인가",
+            INBOUND_TEXAS_GOV, INBOUND_MOTIR, INBOUND_HANA, INBOUND_SKT_AWS)
+    missing = [token for token in must if token not in result]
+    if missing or result.count("<b>") != result.count("</b>") or result.count("<a href=") != result.count("</a>"):
+        raise RuntimeError(f"해외 데이터센터 국내 유치 알림 누락·HTML 오류: {missing}")
+    if any(len(line) > 2300 for line in result.splitlines()):
+        raise RuntimeError("해외 유치 알림 긴 행 검증 실패")
+    return result + "\n"
+
+
+def run_inbound_diversion_extension() -> None:
+    inbound_regression_checks()
+    previous = dict(old.get("us_korea_investment_watch") or {})
+    context_needed = previous.get("last_context_id") != INBOUND_DIVERSION_ID
+    probe = inbound_primary_check() if context_needed else {}
+    first = not old.get("initialized")
+    perspective_due = inbound_is_due(previous, first, probe)
+    official_rows, scan_ok = inbound_collect_official_announcements()
+    previous_seen = list(previous.get("seen_official_event_ids") or [])
+    new_events = [row for row in official_rows if row["key"] not in set(previous_seen)]
+    if not perspective_due and not new_events:
+        if STATUS.exists():
+            with STATUS.open("a", encoding="utf-8") as fd:
+                fd.write(
+                    "- 미국→한국 투자유치 감시: 새 실계약 0건 · "
+                    f"기준 보강={'공식 확인 대기' if context_needed else '기존 반영'}"
+                    f" · 검색원천={scan_ok}/{len(INBOUND_OFFICIAL_NEWS_QUERIES)}\n"
+                )
+        print(f"korea_inbound_alert=false context_due={perspective_due} official_news_new=0")
+        return
+    if fx_source == "직전 저장값":
+        # Keep dedupe state unchanged; do not mask live API failures with old FX.
+        print("korea_inbound_alert=hold_fx_stale")
+        return
+    if not perspective_due and context_needed and not new_events:
+        return
+
+    # If an official new milestone exists but the introductory context lacks live
+    # evidence, deliver ONLY the sourced milestone, not a reconstructed policy claim.
+    if perspective_due:
+        report = inbound_report(probe, new_events)
+    else:
+        lines = [
+            "<b>한국 해외 빅테크 AI 데이터센터 실제 단계 변화</b>",
+            "• 전망·관심 표명과 계약·실제 전원 인가를 구분한 신규 공식 발표",
+        ]
+        for row in new_events:
+            lines.append(f"• {h(row['stage'])} │ {a(row['title'], row['url'])}"
+                         f" · {h(row['publisher'])} · {h(row['published'][:10])}")
+        report = "\n".join(lines).strip() + "\n"
+    pending = load_json(PENDING)
+    next_stage = dict(previous)
+    if perspective_due:
+        next_stage["last_context_id"] = INBOUND_DIVERSION_ID
+        next_stage["context_sent_at_utc"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+        next_stage["source_snapshot"] = INBOUND_US_KOREA_SNAPSHOT
+        next_stage["live_primary_checks"] = probe
+    next_stage["seen_official_event_ids"] = list(dict.fromkeys(
+        previous_seen + [row["key"] for row in new_events]
+    ))[-500:]
+    next_stage["last_event_count"] = len(new_events)
+    pending["us_korea_investment_watch"] = next_stage
+    old_alert = ALERT.read_text(encoding="utf-8").strip() if ALERT.exists() else ""
+    ALERT.write_text((old_alert + "\n\n" if old_alert else "") + report, encoding="utf-8")
+    PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if STATUS.exists():
+        with STATUS.open("a", encoding="utf-8") as fd:
+            fd.write(f"- 미국→한국 투자유치 신규 공식자료: {len(new_events)}건"
+                     f" · 신규 관점 보강={perspective_due}"
+                     f" · 검색원천={scan_ok}/{len(INBOUND_OFFICIAL_NEWS_QUERIES)}\n")
+    print(f"korea_inbound_alert=prepared context_due={perspective_due} new_deal_events={len(new_events)}")
+
+
+run_inbound_diversion_extension()
