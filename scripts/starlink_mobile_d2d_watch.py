@@ -53,6 +53,9 @@ SOURCES=(
  ("글로벌스타 아마존 인수 종결 대기 공식 발표","https://investors.globalstar.com/news-releases/news-release-details/globalstar-announces-third-quarter-2026-financial-results",("Amazon","2027","pending transaction")),
  ("퀄컴 공식 뉴스룸 계약 공지","https://www.qualcomm.com/news/releases",("SpaceX Selects Qualcomm","Nov 4, 2026")),
  ("퀄컴 공식 기술 홈페이지 계약 공지","https://docs.qualcomm.com/nav",("SpaceX selects Qualcomm","Starlink Mobile")),
+ ("퀄컴 직접 발행 BusinessWire 보도자료","https://www.businesswire.com/news/home/20261104680757/en/",("Qualcomm Technologies","SpaceX","QRU100","QDU100","2027")),
+ ("퀄컴 보도자료 Nasdaq 합법 재게시","https://www.nasdaq.com/press-release/spacex-selects-qualcomm-accelerate-starlink-mobiles-nationwide-5g-network-2026-11-04",("Source: Qualcomm","SpaceX","QRU100","QDU100","2027")),
+ ("퀄컴 보도자료 Yahoo BusinessWire 재게시","https://ca.finance.yahoo.com/news/spacex-selects-qualcomm-accelerate-starlink-133500564.html",("Business Wire","SpaceX","QRU100","QDU100","2027")),
  ("아마존 레오 5105기 D2D 신청 공식 안내","https://www.aboutamazon.com/news/amazon-leo/amazon-leo-direct-to-device-satellite-service-explained",("5,105","FCC","2028")),
 )
 FCC_JULY="https://docs.fcc.gov/public/attachments/DA-26-653A1.pdf"
@@ -73,9 +76,10 @@ AST_HANDOFF_PRIMARY="AT&T·AST 지상망-위성망 전환 시험 공식 발표"
 QUALCOMM_RELEASE_URL="https://www.qualcomm.com/news/releases/2026/11/spacex-selects-qualcomm-to-accelerate-starlink-mobile-s-nationwi"
 AST_HANDOFF_RELEASE_URL="https://about.att.com/story/2026/att-ast-spacemobile-engineering-connected-world.html"
 
-def official_qualcomm_agreement_notice()->str:
+def official_qualcomm_agreement_notice(source_note:str="회사 직접 발표 확인")->str:
  return "\n".join((
   "[지상망·설비투자] 지난 공식 계약 누락 보완: SpaceX·퀄컴",
+  "• 자료 확인 경로: "+source_note+". 다른 언론이 같은 퀄컴 보도자료를 재전송한 것은 독립된 계약 두 건이 아닙니다.",
   "• 발표: 2026년 11월 4일. Starlink Mobile 미국 지상 5G 기지국에 Qualcomm Dragonwing QRU100 무선장치 처리 플랫폼·QDU100 분산장치 플랫폼 및 1계층 소프트웨어를 공급하는 다년 계약 발표.",
   "• 규격·일정: 64T64R 다중안테나 체계. 2027년부터 미국 전국망 구축을 시작할 계획이며 수년에 걸친 수만 개 기지국은 목표 규모이지 설치 완료 물량이 아닙니다.",
   "• 계약금액·단가·확정 설치 대수: 미공개. 기지국 부지 8만 곳 이용권 확보 협상은 별개이며 확정 부지 매입·장비 발주와 혼동하지 않습니다.",
@@ -99,10 +103,18 @@ def official_ast_handoff_notice()->str:
 def newly_verified_official_notices(seen:dict,verified:list[str],initial:bool)->list[tuple[str,str]]:
  if initial:return []
  new=[]
- if QUALCOMM_AGREEMENT_KEY not in seen and any(s in verified for s in (
-  QUALCOMM_PRIMARY,"퀄컴 공식 뉴스룸 계약 공지","퀄컴 공식 기술 홈페이지 계약 공지"
- )):
-  new.append((QUALCOMM_AGREEMENT_KEY,official_qualcomm_agreement_notice()))
+ if QUALCOMM_AGREEMENT_KEY not in seen:
+  issuer_sources=(
+   QUALCOMM_PRIMARY,"퀄컴 공식 뉴스룸 계약 공지","퀄컴 공식 기술 홈페이지 계약 공지",
+   "퀄컴 직접 발행 BusinessWire 보도자료","퀄컴 보도자료 Nasdaq 합법 재게시",
+   "퀄컴 보도자료 Yahoo BusinessWire 재게시",
+  )
+  found=next((name for name in issuer_sources if name in verified),None)
+  if found:
+   how=("퀄컴 회사 홈페이지 원문" if found==QUALCOMM_PRIMARY else
+        "발행사 확인 BusinessWire 배포 원문" if "BusinessWire 보도자료" in found else
+        "퀄컴 명의 공식 게시목록·발행 보도자료 합법 재게시(회사 상세 페이지 직접 접근 불가)")
+   new.append((QUALCOMM_AGREEMENT_KEY,official_qualcomm_agreement_notice(how)))
  if AST_HANDOFF_KEY not in seen and AST_HANDOFF_PRIMARY in verified:
   new.append((AST_HANDOFF_KEY,official_ast_handoff_notice()))
  return new
@@ -875,6 +887,12 @@ def test()->int:
  assert event_id("amazon_leo","d2d_permission_report","FCC approves Amazon Leo 5,105 D2D") not in KNOWN_BASELINE_KEYS
  assert newly_verified_official_notices({},["퀄컴 공식 뉴스룸 계약 공지"],False)[0][0]==QUALCOMM_AGREEMENT_KEY
  assert newly_verified_official_notices({},["퀄컴 공식 기술 홈페이지 계약 공지"],False)[0][0]==QUALCOMM_AGREEMENT_KEY
+ issuer_notice=newly_verified_official_notices({},["퀄컴 직접 발행 BusinessWire 보도자료"],False)
+ assert issuer_notice[0][0]==QUALCOMM_AGREEMENT_KEY
+ assert "BusinessWire 배포 원문" in issuer_notice[0][1]
+ republication=newly_verified_official_notices({},["퀄컴 보도자료 Nasdaq 합법 재게시"],False)
+ assert "합법 재게시" in republication[0][1]
+ assert not newly_verified_official_notices({QUALCOMM_AGREEMENT_KEY:"sent"},["퀄컴 보도자료 Yahoo BusinessWire 재게시"],False)
  assert "license:grain_spacex_800:fcc_approval" not in KNOWN_BASELINE_KEYS
  assert "license:grain_spacex_800:close" not in KNOWN_BASELINE_KEYS
  print("starlink_mobile_d2d_self_test=ok approvals_separated=1 government_rss_excluded=1 media_duo=1 no_duplicates=1 known_baseline=1")
