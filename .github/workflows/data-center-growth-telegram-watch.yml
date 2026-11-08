@@ -181,6 +181,60 @@ jobs:
           print("onsite_jefferies_source_and_dedupe_regression=passed")
           PY
 
+
+      - name: Test US-to-Korea data center investment diversion source gates (no Telegram)
+        run: |
+          python -m py_compile scripts/us_data_center_cancellation_risk_watch.py
+          python - <<'PY'
+          import ast
+          import html
+          import re
+          from pathlib import Path
+
+          path = Path("scripts/us_data_center_cancellation_risk_watch.py")
+          tree = ast.parse(path.read_text(encoding="utf-8"))
+          constants = [
+              node for node in tree.body
+              if isinstance(node, ast.Assign)
+              and len(node.targets) == 1
+              and isinstance(node.targets[0], ast.Name)
+              and (node.targets[0].id.startswith("INBOUND_"))
+          ]
+          function_names = {
+              "normalize", "h", "a",
+              "inbound_official_stage", "inbound_is_due",
+              "inbound_regression_checks", "inbound_report",
+          }
+          methods = [
+              node for node in tree.body if isinstance(node, ast.FunctionDef)
+              and node.name in function_names
+          ]
+          assert {n.name for n in methods} == function_names
+          namespace = {"html": html, "re": re}
+          exec(compile(ast.Module(body=constants+methods, type_ignores=[]),
+                       "<us-korea-offline-test>", "exec"), namespace)
+          namespace["inbound_regression_checks"]()
+          proof = {
+              "texas_governor": True,
+              "texas_independent": False,
+              "korea_government": True,
+              "korea_signed_earlier": True,
+          }
+          rendered = namespace["inbound_report"](proof, [])
+          assert all(x in rendered for x in (
+              "3.0~4.2GW", "5.1~7.0GW", "30조~40조원",
+              "41MW", "103MW", "미국", "한국", "확정", "2029년",
+          ))
+          assert rendered.count("<b>") == rendered.count("</b>")
+          assert rendered.count("<a href=") == rendered.count("</a>")
+          assert rendered.count("https://") >= 6
+          assert namespace["inbound_is_due"]({}, False, proof)
+          assert not namespace["inbound_is_due"](
+              {"last_context_id": namespace["INBOUND_DIVERSION_ID"]}, False, proof
+          )
+          print("us_korea_investment_offline_regression=passed no_telegram=true")
+          PY
+
   monitor:
     # Code-push validation must never trigger live alert sends.
     # Never process workflow_run events from failed or non-main upstream runs.
