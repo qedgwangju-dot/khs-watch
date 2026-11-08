@@ -78,6 +78,12 @@ def _separate_attack_headline(title):
         r'(?:재개|감행|실시|시작).{0,12}(?:공습|공격|폭격|포격)', title))
 
 
+def _completed_attack_headline(title):
+    return bool(re.search(
+        r'\b(?:struck|attacked|bombed)\b|'
+        r'(?:공습|공격|폭격|포격)(?:을|를)?\s*(?:했다|감행했다|실시했다)', title))
+
+
 def _election_war_commentary(title):
     """Keep electoral commentary and hypothetical war remarks out of directions."""
     election = re.search(
@@ -203,6 +209,7 @@ def direction(stage, row):
     kind = stage.non_military_kind(row)
     color = stage.final_color(row)
     title = stage._headline(row)
+    tags = {str(tag).strip() for tag in row.get('tags', [])}
     if (_election_war_commentary(title) or _political_war_pressure_commentary(title)
             or stage._election_iran_war_staff_options(title)
             or stage._iran_war_policy_options_headline(title)):
@@ -214,6 +221,22 @@ def direction(stage, row):
     # The event-stage classifier has already excluded titles reporting an
     # actual strike. An unexplained title-only sound is a neutral reference.
     if kind == 'unconfirmed_explosion':
+        return None
+    # The saved run 839 title-only Qeshm explosion explicitly remained
+    # unconfirmed at the semantic stage. Its quoted "hits" do not establish
+    # a new attack when the publisher body is unavailable.
+    if (row.get('classification_color') == 'yellow' and not row.get('body_verified')
+            and {'원인미확정', '공식확인대기'} <= tags
+            and not _separate_attack_headline(title)
+            and not _completed_attack_headline(title)):
+        return None
+    # A headline combining a low reattack probability statement with an
+    # unexplained blast gives no single verified direction.
+    if (re.search(r'재공격\s*가능성.{0,12}매우\s*작', title)
+            and re.search(r'폭발음|폭음', title)
+            and '폭발음 보도·공격 원인 미확인' in tags
+            and not _separate_attack_headline(title)
+            and not _completed_attack_headline(title)):
         return None
     # Action restraint is a cooling signal, not a confirmed attack. The
     # semantic stage may be yellow, but the two-color projection must never
@@ -227,8 +250,12 @@ def direction(stage, row):
     if (re.search(r'\bhighly unlikely\b.{0,60}\border\b.{0,30}\bback to war\b', title)
             and re.search(r'\bif talks continue to progress\b', title)
             and not _separate_attack_headline(title)
-            and not re.search(r'\b(?:struck|attacked|bombed)\b|'
-                              r'(?:공습|공격|폭격|포격)(?:을|를)?\s*(?:했다|감행했다|실시했다)', title)
+            and not _completed_attack_headline(title)
+            and not _active_adverse(title)):
+        return 'green'
+    if (re.search(r'협상\s*진전.{0,12}(?:재공격|공격)\s*가능성\s*낮', title)
+            and not _separate_attack_headline(title)
+            and not _completed_attack_headline(title)
             and not _active_adverse(title)):
         return 'green'
     # A headline about oil prices responding to peace expectations is market
@@ -244,7 +271,6 @@ def direction(stage, row):
     if kind in REFERENCE_KINDS:
         return None
     adverse = _active_adverse(title)
-    tags = {str(tag).strip() for tag in row.get('tags', [])}
     # A hypothetical postwar compromise is context, not a current attack or a
     # confirmed peace action. Preserve the exact headline and title-only label.
     if (tags & DIPLOMATIC_TAGS and _postwar_compromise_context(title)
@@ -324,6 +350,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                                             '시장자료 확인 보류'))), len(lines))
     core, references, matched = [], [], []
     background_reference = False
+    uncertain_reference = False
     for n, start in enumerate(starts):
         end = starts[n + 1] if n + 1 < len(starts) else tail_at
         block = lines[start:end]
@@ -342,7 +369,12 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                         or _pending_iran_war_decision(title))
         postwar = (bool({str(tag).strip() for tag in row.get('tags', [])} & DIPLOMATIC_TAGS)
                    and _postwar_compromise_context(title))
-        context = commentary or policy_options or hypothetical or postwar
+        source_tags = {str(tag).strip() for tag in row.get('tags', [])}
+        uncertain = bool(color is None and (
+            {'원인미확정', '공식확인대기'} <= source_tags
+            or (re.search(r'재공격\s*가능성.{0,12}매우\s*작', title)
+                and '폭발음 보도·공격 원인 미확인' in source_tags)))
+        context = commentary or policy_options or hypothetical or postwar or uncertain
         row['semantic_classification_color'] = row.get('classification_color')
         row['classification_color'] = color
         row['display_section'] = 'core' if color else ('context_reference' if context
@@ -356,6 +388,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             # even when the uniquely matched source is only market context.
             # Rebuild the reference heading from that matched article.
             background_reference |= context
+            uncertain_reference |= uncertain
             if commentary:
                 midterm = re.search(r'중간선거|\bmidterms?\b', title, re.IGNORECASE)
                 if midterm:
@@ -370,6 +403,8 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                 label = '이란전 대응 방안·정책 이견'
             elif hypothetical:
                 label = '종전·확전 전망'
+            elif uncertain and re.search(r'재공격\s*가능성.{0,12}매우\s*작', title):
+                label = '낮은 재공격 가능성 발언·폭발음 원인 미확인'
             else:
                 label = stage.topic_label(row) or '시장 참고'
             label = html.escape(label, quote=False)
@@ -396,7 +431,9 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
     if references:
         if background_reference:
             output += ['<b>배경·시장 참고</b>',
-                       '정치 발언·전망·구상은 현재 공격·완화 행동을 입증하지 않음', '']
+                       ('원인 미확정 폭발음·조건부 발언은 실제 공격·완화 행동을 입증하지 않음'
+                        if uncertain_reference else
+                        '정치 발언·전망·구상은 현재 공격·완화 행동을 입증하지 않음'), '']
         else:
             output += ['<b>시장 참고</b>', '시장 기사는 전쟁·완화 방향 표시에서 제외', '']
         for block in references:
