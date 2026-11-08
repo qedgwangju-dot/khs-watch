@@ -1725,5 +1725,53 @@ class Run829SavedSemanticTests(unittest.TestCase):
         self.assertEqual(presentation.direction(stage, strike), 'red')
 
 
+class Run834SavedSemanticTests(unittest.TestCase):
+    def test_sent_policy_cards_replay_as_context_without_changing_attack_reports(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run834_saved_semantic_snapshot_42489418887.json')
+                             .read_text(encoding='utf-8'))
+        self.assertEqual(fixture['provenance']['telegram_message_id'], 426)
+        self.assertEqual(fixture['observed_delivered_colors'], ['red'] * 4)
+        snapshot, proof = fixture['semantic_snapshot'], fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+
+        text, receipt = presentation.project(stage, alert_bytes.decode('utf-8'),
+                                             json.loads(evidence_bytes), proof, snapshot)
+        shown = [row for row in receipt['articles'] if row.get('rendered')]
+        self.assertEqual([row['id'] for row in shown], fixture['selected_ids'])
+        self.assertEqual([row['classification_color'] for row in shown],
+                         ['red', None, 'red', 'red'])
+        self.assertEqual(shown[1]['display_section'], 'context_reference')
+        self.assertFalse(shown[1]['body_verified'])
+        self.assertIn('이란전 대응 방안·정책 이견', text)
+        self.assertIn('부분 확인 전쟁 상황 알림 · 원천 216/227', text)
+        self.assertNotEqual(receipt['alert_sha256'],
+                            fixture['provenance']['observed_delivered_alert_sha256'])
+
+        card = shown[1]
+        self.assertEqual(stage.non_military_kind(card), 'military_analysis')
+        self.assertIsNone(presentation.direction(stage, card))
+        fresh = {key: copy.deepcopy(value) for key, value in card.items()
+                 if key not in ('tags', 'score', 'classification_color',
+                                'semantic_classification_color', 'rendered',
+                                'signals_ko', 'display_section')}
+        score, tags = stage.score_item(
+            fresh, dt.datetime.fromisoformat('2026-11-08T23:23:36+09:00'))
+        self.assertGreater(score, 0)
+        self.assertEqual(tags, ['이란전 대응 방안·정책 이견'])
+        self.assertEqual(stage.topic_label(fresh),
+                         '전쟁·외교 · 이란전 대응 방안·정책 이견')
+        self.assertEqual(stage.final_color(fresh), 'yellow')
+        separate = card['title_original'] + '; 한편 미군이 이란을 공습했다'
+        self.assertFalse(stage._iran_war_policy_options_headline(separate.lower()))
+        self.assertEqual(presentation.direction(stage, {'title_original': separate}), 'red')
+        blockade = card['title_original'] + '; 한편 미군이 이란 해상 봉쇄를 개시했다'
+        self.assertFalse(stage._iran_war_policy_options_headline(blockade.lower()))
+        self.assertEqual(presentation.direction(stage, {'title_original': blockade}), 'red')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
