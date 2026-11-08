@@ -1,78 +1,78 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-11-08T17:06:46+09:00",
+  "updated_at_kst": "2026-11-08T17:10:24+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
-        "funding": 1.2e-05,
-        "index_price": 75944.4,
-        "mark_price": 75907.98,
-        "last_price": 75904.3,
-        "open_interest": 611853184.0,
-        "open_interest_value": 4646139580.922752,
-        "turnover24h": 691211394781.0,
+        "funding": -1e-06,
+        "index_price": 75925.24,
+        "mark_price": 75886.28,
+        "last_price": 75883.5,
+        "open_interest": 611800344.0,
+        "open_interest_value": 4644353833.40376,
+        "turnover24h": 691211610782.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": -8.9e-05,
-        "index_price": 2239.62,
-        "mark_price": 2238.39,
-        "last_price": 2238.39,
-        "open_interest": 78876046.0,
-        "open_interest_value": 1766902306.446,
-        "turnover24h": 189426485192.0,
+        "funding": -6.8e-05,
+        "index_price": 2239.13,
+        "mark_price": 2237.99,
+        "last_price": 2237.99,
+        "open_interest": 78883750.0,
+        "open_interest_value": 1766033618.25,
+        "turnover24h": 189426579906.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
-        "funding": 5e-05,
-        "index_price": 89.214,
-        "mark_price": 89.17,
-        "last_price": 89.17,
-        "open_interest": 7815612.0,
-        "open_interest_value": 698090463.84,
-        "turnover24h": 4589423726.0,
+        "funding": 8.2e-05,
+        "index_price": 89.204,
+        "mark_price": 89.16,
+        "last_price": 89.16,
+        "open_interest": 7821480.0,
+        "open_interest_value": 697676016.0,
+        "turnover24h": 4589426649.0,
         "source": "Gate.io Futures API"
       }
     },
     "prices": {
       "BTC": {
-        "usd": 75864.0,
-        "change24": -0.23275761110520726,
-        "volume24": 10429369951.190897,
+        "usd": 75850.0,
+        "change24": -0.2541287565339994,
+        "volume24": 10419335235.154491,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 75864.0,
-          "Coinbase": 75829.89,
-          "Gate.io Spot": 75945.4
+          "CoinGecko": 75850.0,
+          "Coinbase": 75807.39,
+          "Gate.io Spot": 75927.1
         },
-        "dispersion_pct": 0.15225930612674624
+        "dispersion_pct": 0.15782465392222333
       },
       "ETH": {
-        "usd": 2237.54,
-        "change24": -0.32631988202185913,
-        "volume24": 4045003791.4362273,
+        "usd": 2236.7,
+        "change24": -0.37197296114416206,
+        "volume24": 4043073811.101017,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 2237.54,
-          "Coinbase": 2236.65,
-          "Gate.io Spot": 2239.88
+          "CoinGecko": 2236.7,
+          "Coinbase": 2235.55,
+          "Gate.io Spot": 2239.14
         },
-        "dispersion_pct": 0.14435496125209016
+        "dispersion_pct": 0.16050431439172402
       },
       "SOL": {
-        "usd": 89.16,
-        "change24": -1.0818677335642444,
-        "volume24": 850645485.2013088,
+        "usd": 89.11,
+        "change24": -1.1321345568049639,
+        "volume24": 853762742.4263813,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 89.16,
-          "Coinbase": 89.1,
-          "Gate.io Spot": 89.22
+          "CoinGecko": 89.11,
+          "Coinbase": 89.06,
+          "Gate.io Spot": 89.2
         },
-        "dispersion_pct": 0.13458950201884762
+        "dispersion_pct": 0.15710919088766756
       }
     },
     "price_verified": true,
@@ -167,7 +167,7 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-11-08T17:07:33+09:00"
+    "checked_at_kst": "2026-11-08T17:11:11+09:00"
   },
   "news_seen": [
     "053a207e27d94b402fcfa606",
