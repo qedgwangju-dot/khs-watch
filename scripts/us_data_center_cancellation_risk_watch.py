@@ -997,11 +997,14 @@ INBOUND_US_KOREA_SNAPSHOT = {
 INBOUND_OFFICIAL_NEWS_QUERIES = (
     '"South Korea" "AI data center" "signed" "AWS" 2026',
     '"Korea" "hyperscale data center" "investment agreement" 2026',
+    'Texas data center permits moratorium governor official decision',
+    'ERCOT data center audit report grid approval final ruling',
 )
 INBOUND_OFFICIAL_DOMAINS = (
     "sktelecom.com", "sk.com", "aws.amazon.com", "amazon.com",
     "microsoft.com", "google.com", "motir.go.kr", "msit.go.kr",
     "kotra.or.kr", "navercloudcorp.com", "lgcns.com",
+    "gov.texas.gov", "ercot.com", "governor.ohio.gov", "georgia.gov",
 )
 
 
@@ -1027,6 +1030,28 @@ def inbound_official_stage(title: str) -> str | None:
                             "binding agreement", "공급계약 체결", "임대계약 체결")):
         return "계약 체결 공식 발표(구체적 구속력 별도 확인)"
     return None
+
+
+def inbound_us_policy_stage(title: str) -> str | None:
+    """A formal US state or grid regulator action, not election promises."""
+    t = normalize(html.unescape(title)).lower().replace("data-center", "data center")
+    if not any(word in t for word in ("data center", "data centre", "datacenter")):
+        return None
+    if not any(word in t for word in ("texas", "ercot", "ohio", "georgia")):
+        return None
+    # Opinion-only and political campaign coverage are not enacted rules.
+    if any(word in t for word in (
+        "candidate", "governor-elect", "pledges", "promises", "could", "may",
+        "proposes", "proposal", "planned", "plan to", "would",
+    )):
+        return None
+    enforceable = any(word in t for word in (
+        "signed into law", "issues executive order", "orders permit freeze",
+        "halts data center permits", "suspends approvals",
+        "approves new rule", "adopts final rules", "audit results released",
+        "final audit report", "reopens approvals", "lifts moratorium",
+    ))
+    return "미국 주정부·전력당국 공식 인허가·감사 결정" if enforceable else None
 
 
 def inbound_primary_check() -> dict:
@@ -1091,7 +1116,7 @@ def inbound_collect_official_announcements() -> tuple[list[dict], int]:
                     continue
             except Exception:
                 continue
-            stage = inbound_official_stage(title)
+            stage = inbound_official_stage(title) or inbound_us_policy_stage(title)
             if not stage:
                 continue
             # Same publisher+headline = one milestone even across syndication URLs.
@@ -1110,6 +1135,10 @@ def inbound_regression_checks() -> None:
     assert inbound_official_stage("AWS South Korea AI data center signed contract") == "계약 체결 공식 발표(구체적 구속력 별도 확인)"
     assert inbound_official_stage("Texas data center moratorium extended") is None
     assert inbound_official_stage("Japan data center agreed investments") is None
+    assert inbound_us_policy_stage("Texas governor-elect pledges data center moratorium") is None
+    assert inbound_us_policy_stage("Texas data center construction could be delayed") is None
+    assert inbound_us_policy_stage("Texas governor orders permit freeze on data center approvals") == "미국 주정부·전력당국 공식 인허가·감사 결정"
+    assert inbound_us_policy_stage("ERCOT data center final audit report released in Texas") == "미국 주정부·전력당국 공식 인허가·감사 결정"
     assert not inbound_is_due({"last_context_id": INBOUND_DIVERSION_ID}, False,
                               {"texas_governor": True, "korea_government": True})
     assert not inbound_is_due({}, True, {"texas_governor": True, "korea_government": True})
@@ -1219,7 +1248,7 @@ def run_inbound_diversion_extension() -> None:
         report = inbound_report(probe, new_events)
     else:
         lines = [
-            "<b>한국 해외 빅테크 AI 데이터센터 실제 단계 변화</b>",
+            "<b>미국 주정부 규제·한국 해외 빅테크 데이터센터 실제 단계 변화</b>",
             "• 전망·관심 표명과 계약·실제 전원 인가를 구분한 신규 공식 발표",
         ]
         for row in new_events:
@@ -1246,7 +1275,7 @@ def run_inbound_diversion_extension() -> None:
             fd.write(f"- 미국→한국 투자유치 신규 공식자료: {len(new_events)}건"
                      f" · 신규 관점 보강={perspective_due}"
                      f" · 검색원천={scan_ok}/{len(INBOUND_OFFICIAL_NEWS_QUERIES)}\n")
-    print(f"korea_inbound_alert=prepared context_due={perspective_due} new_deal_events={len(new_events)}")
+    print(f"korea_inbound_alert=prepared context_due={perspective_due} new_official_milestones={len(new_events)}")
 
 
 run_inbound_diversion_extension()
