@@ -172,11 +172,10 @@ def _hypothetical_war_options(title):
     paired_options = re.search(
         r'(?:종전|휴전|협상)(?:이냐|인가|일까).{0,16}'
         r'(?:확전|공격|봉쇄)(?:이냐|인가|일까)?', title)
-    outlook = re.search(r'기로|갈림길|전망|가능성|선택', title)
     present_action = re.search(
         r'(?:확전|봉쇄).{0,10}(?:결정|선언|개시|실행|착수)|'
         r'(?:공격|공습|폭격|포격).{0,10}(?:재개|감행|실시|시작)', title)
-    return bool(paired_options and outlook and not present_action
+    return bool(paired_options and not present_action
                 and not _separate_attack_headline(title) and not _active_adverse(title))
 
 
@@ -205,7 +204,8 @@ def direction(stage, row):
     color = stage.final_color(row)
     title = stage._headline(row)
     if (_election_war_commentary(title) or _political_war_pressure_commentary(title)
-            or stage._election_iran_war_staff_options(title)):
+            or stage._election_iran_war_staff_options(title)
+            or stage._iran_war_policy_options_headline(title)):
         return None
     if (_hypothetical_war_options(title) or _pending_iran_war_decision(title)
             or (not row.get('body_verified')
@@ -327,11 +327,12 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         title = stage._headline(row)
         commentary = (_election_war_commentary(title)
                       or _political_war_pressure_commentary(title))
+        policy_options = stage._iran_war_policy_options_headline(title)
         hypothetical = (_hypothetical_war_options(title)
                         or _pending_iran_war_decision(title))
         postwar = (bool({str(tag).strip() for tag in row.get('tags', [])} & DIPLOMATIC_TAGS)
                    and _postwar_compromise_context(title))
-        context = commentary or hypothetical or postwar
+        context = commentary or policy_options or hypothetical or postwar
         row['semantic_classification_color'] = row.get('classification_color')
         row['classification_color'] = color
         row['display_section'] = 'core' if color else ('context_reference' if context
@@ -355,6 +356,8 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                     label = '이란 전쟁 · 정치 발언'
             elif postwar:
                 label = '종전 후 타협 구상'
+            elif policy_options:
+                label = '이란전 대응 방안·정책 이견'
             elif hypothetical:
                 label = '종전·확전 전망'
             else:
