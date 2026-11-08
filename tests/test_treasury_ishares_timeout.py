@@ -1,6 +1,7 @@
 """Offline timeout regressions. Synthetic data only; all sends forbidden."""
 import contextlib
 import copy
+import datetime as dt
 import io
 import os
 import tempfile
@@ -234,6 +235,49 @@ class IsharesTimeoutRegression(unittest.TestCase):
         self.sender.assert_not_called()
         self.saver.assert_not_called()
         self.assertIn("same_market_day_delivery_suppressed=true", self.output.getvalue())
+
+    def test_nov09_preopen_workflow_run_reaches_official_source_gate(self):
+        """The observed 07:37 fallback must not stop at the older 08:20 guard."""
+        class Nov09Preopen(dt.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return cls(2026, 11, 9, 7, 37, tzinfo=tz)
+
+        class ReachedSourceGate(Exception):
+            pass
+
+        with patch.dict(os.environ, {
+            "GITHUB_EVENT_NAME": "workflow_run",
+            "TREASURY_DAILY_DIGEST": "1",
+            "TREASURY_REPORT_VALIDATE_ONLY": "0",
+        }), patch.object(base, "load_state", return_value={"history": {}}), \
+             patch.object(watch.dt, "datetime", Nov09Preopen), \
+             patch.object(watch, "_us_latest_weekday", return_value="2026-11-06"), \
+             patch.object(watch, "should_run_delivery", return_value=True) as delivery, \
+             patch.object(base, "get_usdkrw", side_effect=ReachedSourceGate) as source:
+            with self.assertRaises(ReachedSourceGate):
+                watch.main()
+        delivery.assert_called_once_with(
+            {"history": {}}, "2026-11-06", "2026-11-09", True, validate_only=False
+        )
+        source.assert_called_once_with()
+        self.assertNotIn("treasury_fallback_noop=true", self.output.getvalue())
+
+    def test_nov09_preopen_non_digest_workflow_run_stays_outside_window(self):
+        class Nov09Preopen(dt.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return cls(2026, 11, 9, 7, 37, tzinfo=tz)
+
+        with patch.dict(os.environ, {
+            "GITHUB_EVENT_NAME": "workflow_run",
+            "TREASURY_DAILY_DIGEST": "0",
+        }), patch.object(base, "load_state", return_value={"history": {}}), \
+             patch.object(watch.dt, "datetime", Nov09Preopen), \
+             patch.object(base, "get_usdkrw", side_effect=AssertionError("source query forbidden")) as source:
+            watch.main()
+        source.assert_not_called()
+        self.assertIn("treasury_fallback_noop=true", self.output.getvalue())
 
 
 if __name__ == "__main__":

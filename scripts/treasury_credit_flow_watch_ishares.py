@@ -487,13 +487,15 @@ def main():
     now = dt.datetime.now(KST)
     event_name = os.getenv("GITHUB_EVENT_NAME", "").strip()
     validate_only = os.getenv("TREASURY_REPORT_VALIDATE_ONLY", "").strip().lower() in ("1", "true", "yes")
+    daily_digest = os.getenv("TREASURY_DAILY_DIGEST", "").strip().lower() in ("1", "true", "yes")
     if event_name == "workflow_run":
         minute_of_day = now.hour * 60 + now.minute
-        if not (8 * 60 + 20 <= minute_of_day <= 16 * 60):
-            print(f"treasury_fallback_noop=true kst={now:%H:%M} reason=outside_0820_1600")
+        preopen_digest = daily_digest and 7 * 60 <= minute_of_day < 8 * 60
+        daytime_recheck = 8 * 60 + 20 <= minute_of_day <= 16 * 60
+        if not (preopen_digest or daytime_recheck):
+            print(f"treasury_fallback_noop=true kst={now:%H:%M} reason=outside_preopen_and_0820_1600")
             return
     expected_market_date = _us_latest_weekday(now)
-    daily_digest = os.getenv("TREASURY_DAILY_DIGEST", "").strip().lower() in ("1", "true", "yes")
     delivery_date_kst = now.date().isoformat()
     if not should_run_delivery(
         state, expected_market_date, delivery_date_kst, daily_digest, validate_only=validate_only
