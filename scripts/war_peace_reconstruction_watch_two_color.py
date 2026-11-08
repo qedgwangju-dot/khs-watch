@@ -206,7 +206,13 @@ def direction(stage, row):
     title = stage._headline(row)
     if _election_war_commentary(title) or _political_war_pressure_commentary(title):
         return None
-    if _hypothetical_war_options(title) or _pending_iran_war_decision(title):
+    if (_hypothetical_war_options(title) or _pending_iran_war_decision(title)
+            or (not row.get('body_verified')
+                and stage._pending_iran_war_decision_outlook(title))):
+        return None
+    # A title-only explosion report that explicitly denies a missile-strike
+    # link remains an unconfirmed-cause reference, not an escalation signal.
+    if kind == 'unconfirmed_explosion' and stage._explosion_strike_link_denial(title):
         return None
     # Action restraint is a cooling signal, not a confirmed attack. The
     # semantic stage may be yellow, but the two-color projection must never
