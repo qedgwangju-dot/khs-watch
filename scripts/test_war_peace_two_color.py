@@ -1337,6 +1337,51 @@ class Run813AttackDuringTalksTests(unittest.TestCase):
                 self.assertEqual(stage._military_actions(title.lower()), [])
 
 
+class Run820AttackAheadOfTalksTests(unittest.TestCase):
+    def test_saved_title_only_attack_intensification_is_red(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run820_saved_attack_ahead_talks_42417723619.json')
+                             .read_text(encoding='utf-8'))
+        row = fixture['article']
+        self.assertEqual(fixture['provenance']['zip_sha256'],
+                         '03d69f975137e14783eba96f4950c15288198930ae449445d81b6a95037d8638')
+        self.assertEqual(row['id'], 'e5856589c729cd7a2a56')
+        self.assertEqual(row['title_original'],
+                         '러시아, 종전 협상 앞두고 우크라이나 공격 강화 - VOA 한국어 홈페이지')
+        self.assertFalse(row['body_verified'])
+        self.assertEqual(row['publication_basis'], 'discovery_feed')
+        self.assertEqual(row['classification_color'], 'green')  # Actual run #820 send.
+
+        fresh = {key: copy.deepcopy(value) for key, value in row.items()
+                 if key not in ('tags', 'score', 'classification_color',
+                                'semantic_classification_color', 'rendered')}
+        at = dt.datetime.fromisoformat('2026-11-08T06:52:17+09:00')
+        self.assertEqual(stage.non_military_kind(fresh), 'military_report')
+        score, tags = stage.score_item(fresh, at)
+        self.assertGreater(score, 0)
+        self.assertEqual(tags, ['공격 강화 보도'])
+        fresh['tags'] = tags
+        self.assertEqual(stage._primary_topic(fresh), '우크라이나·러시아 · 공격 강화 보도')
+        self.assertEqual(presentation.direction(stage, fresh), 'red')
+        semantic = stage.build_alert([fresh], [], at)
+        receipt = evidence.alert_receipt([fresh], [], at, semantic, {})
+        text, projected = presentation.project(stage, semantic, receipt, {}, {})
+        self.assertIn('🔴 [신규] <b>1. 우크라이나·러시아 · 공격 강화 보도</b>', text)
+        self.assertIn('제목 기준·본문 미확인', text)
+        self.assertEqual(projected['articles'][0]['classification_color'], 'red')
+
+    def test_planned_or_speculative_attack_intensification_is_not_reported_action(self):
+        titles = (
+            '러시아, 종전 협상 앞두고 우크라이나 공격 강화 계획',
+            '러시아, 종전 협상 앞두고 우크라이나 공격 강화를 검토',
+            '러시아, 종전 협상 앞두고 우크라이나 공격 강화 가능성',
+            '러시아, 종전 협상 앞두고 우크라이나 공격 강화 우려',
+        )
+        for title in titles:
+            with self.subTest(title=title):
+                self.assertFalse(stage._reported_attack_escalation(title.lower()))
+
+
 class Run817EnergyMissileUseTests(unittest.TestCase):
     def test_saved_publisher_attack_claim_is_red_at_both_stages(self):
         fixture = json.loads((Path(__file__).parent / 'test_fixtures'
