@@ -57,6 +57,18 @@ def _reported_conflict_escalation(title):
     return bool(re.search(r'(?:충돌|교전|전투)\s*격화(?!\s*(?:우려|가능성|전망))', title))
 
 
+def _reported_attack_escalation(title):
+    """A reported attack intensification is not diplomatic contact."""
+    for match in re.finditer(
+            r'(?:공격|공습|폭격|포격)(?:을|를|이|가)?\s*(?:강화|확대|격화)', title):
+        following = title[match.end():match.end() + 24]
+        if not re.match(
+                r'\s*(?:(?:를|에|의)\s*)?(?:할|하려|하겠|하지|안\s|않|못|중단|취소|보류|철회|계획|예고|가능성|우려|전망|검토|시사|요구|경고|부인|설|\?)',
+                following):
+            return True
+    return False
+
+
 def _reported_major_airstrike(title):
     """Keep an explicit airstrike report ahead of talks in the military lane."""
     strike = re.search(r'대공습|대규모\s*공습', title)
@@ -370,6 +382,8 @@ def _primary_topic(row):
     kind = non_military_kind(row)
     if _reported_major_airstrike(title) and not _headline_attack_casualties(row):
         return _headline_group(title) + ' · 대공습 보도'
+    if kind == 'military_report' and _reported_attack_escalation(title):
+        return _headline_group(title) + ' · 공격 강화 보도'
     if kind in ('diplomatic_statement', 'diplomatic_plan') and _detainee_release_stage(title):
         label = '억류자 석방 계획·논의' if _detainee_release_stage(title) == 'planned' else '억류자 석방·완화 보도'
         return _diplomatic_group(title) + ' · ' + label
@@ -1272,7 +1286,7 @@ def non_military_kind(row):
         return None
     if _report_with_completed_action(title) or _statement_with_actual_action(title):
         return None
-    if _reported_conflict_escalation(title):
+    if _reported_conflict_escalation(title) or _reported_attack_escalation(title):
         return 'military_report'
     if not new_peace and _gold_price_headline(title):
         return 'commodity_market'
@@ -1360,6 +1374,8 @@ def _headline_event_label(row, kind):
     title = _headline(row)
     if _reported_major_airstrike(title) and not _headline_attack_casualties(row):
         return '대공습 보도'
+    if kind == 'military_report' and _reported_attack_escalation(title):
+        return '공격 강화 보도'
     if kind == 'military_report' and _reported_conflict_escalation(title):
         return '충돌·교전 격화 보도'
     if kind in ('diplomatic_statement', 'diplomatic_plan') and _detainee_release_stage(title):
@@ -1498,7 +1514,9 @@ def score_item(row, now):
         _clear_market_event_cache(row)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
-    if kind == 'military_report' and _reported_conflict_escalation(_headline(row)):
+    if kind == 'military_report' and (
+            _reported_conflict_escalation(_headline(row))
+            or _reported_attack_escalation(_headline(row))):
         _clear_headline_event_cache(row, kind)
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
