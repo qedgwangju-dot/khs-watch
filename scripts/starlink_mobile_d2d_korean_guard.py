@@ -31,13 +31,42 @@ def title_lines(text:str)->list[str]:
 def tags(text:str)->list[str]:
  return [s for s in text.splitlines() if MARKER.match(s)]
 
+def translate_title_preserving_numbers(body:str,translate)->str:
+ # Translate one full headline while masking every original numeric token.
+ # If a provider drops a mask, never send an altered figure or block the
+ # entire operational alert solely because the optional title translation failed.
+ tokens={}
+ def mask(m):
+  if len(tokens)>=26:raise ValueError("Too many numeric tokens in headline")
+  token="ZXQNUM"+chr(65+len(tokens))+"QXZ"
+  tokens[token]=m.group()
+  return token
+ try:
+  masked=NUM.sub(mask,body)
+  result=translate(masked).strip()
+  for token,value in tokens.items():
+   if len(re.findall(re.escape(token),result,flags=re.I))!=1:
+    raise RuntimeError("Number protection token changed by translation")
+   result=re.sub(re.escape(token),lambda _m,v=value:v,result,flags=re.I)
+  if Counter(NUM.findall(body))!=Counter(NUM.findall(result)):
+   raise RuntimeError("Headline numbers changed by translation")
+  if not KR.search(result):
+   raise RuntimeError("Translated headline contains no Korean")
+  return result
+ except Exception:
+  # The full source title, with its exact figures, is safer than a mistranslated
+  # numerical claim. The substantive event description remains in Korean.
+  print("starlink_title_translation=original_preserved_on_number_guard",file=sys.stderr)
+  return "영문 원문(번역 숫자 오류 방지): "+body
+
+
 def koreanize(text:str,translate=translate_english_text)->str:
  lines=[]
  for line in text.splitlines():
   if line.startswith(TITLE):
    body=line[len(TITLE):]
    if len(ENG.findall(body))>=4 and not KR.search(body):
-    body=translate(body).strip()
+    body=translate_title_preserving_numbers(body,translate)
    line=TITLE+body
   lines.append(line)
  return "\n".join(lines).rstrip()+"\n"
@@ -75,6 +104,20 @@ def self_test()->int:
    "• 제목: SpaceX, Grain의 800 MHz 주파수 면허 인수에 합의\n"
    "• 원문: https://news.google.com/rss/articles/abc123?a=1&b=2\n")
  validate(orig,trans)
+ numeric=(HEAD+"\n[지상망·설비투자]\n"
+   "• 제목: SpaceX seeks access to 80,000 cell sites by 2027\n"
+   "• 원문: https://example.com/site\n")
+ def safe_translate(masked):
+  assert "80,000" not in masked and "2027" not in masked
+  return ("SpaceX는 "+masked.replace("SpaceX seeks access to","접근을 협상 중인")
+          .replace("cell sites by","기지국 부지, 기준연도"))
+ good=koreanize(numeric,safe_translate)
+ validate(numeric,good)
+ assert "80,000" in good and "2027" in good and "접근을 협상" in good
+ degraded=koreanize(numeric,lambda _masked:"숫자 누락된 제목")
+ validate(numeric,degraded)
+ assert "영문 원문(번역 숫자 오류 방지)" in degraded
+ assert "80,000 cell sites by 2027" in degraded
  for reason,bad in (("english",orig),("number",trans.replace("800 MHz","900 MHz")),
              ("url",trans.replace("abc123","other")),
              ("tag",trans.replace("[주파수·인허가]","[다른주제]"))):
