@@ -202,7 +202,7 @@ jobs:
           ]
           function_names = {
               "normalize", "h", "a",
-              "inbound_official_stage", "inbound_is_due",
+              "inbound_official_stage", "inbound_us_policy_stage", "inbound_is_due",
               "inbound_regression_checks", "inbound_report",
           }
           methods = [
