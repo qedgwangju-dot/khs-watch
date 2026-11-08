@@ -99,7 +99,13 @@ def _election_iran_war_staff_options(title):
 
 def _iran_war_policy_options_headline(title):
     """An unresolved choice or staff split does not report an executed option."""
-    if not re.search(r'이란\s*전쟁|이란전', title):
+    # This saved title names Tehran and frames negotiation, strike, and
+    # blockade as cards before Trump. It does not say which card was played.
+    card_choice = (re.search(r'테헤란|이란', title)
+                   and re.search(r'트럼프.{0,25}앞에\s*놓인', title)
+                   and re.search(r'협상[·/\s]+공습[·/\s]+봉쇄', title)
+                   and re.search(r'세\s*장의?\s*카드', title))
+    if not re.search(r'이란\s*전쟁|이란전', title) and not card_choice:
         return False
     three_tracks = (re.search(r'세\s*갈래\s*대립', title)
                     and re.search(r'종전\s*협상', title)
@@ -107,12 +113,13 @@ def _iran_war_policy_options_headline(title):
                     and re.search(r'경제\s*압박\s*강화', title))
     binary_choice = (re.search(r'협상이냐\s*확전이냐', title)
                      and re.search(r'갈등|고심|기로|선택|[?？]', title))
-    return bool((three_tracks or binary_choice)
+    return bool((three_tracks or binary_choice or card_choice)
                 and not _military_actions(title)
                 and not _reported_attack_escalation(title)
                 and not _reported_conflict_escalation(title)
                 and not re.search(r'(?:별도로|한편|그러나|동시에).{0,50}'
-                                  r'(?:공습|공격|타격)(?:을|를)?\s*(?:감행|실시|개시|했다)', title))
+                                  r'(?:(?:공습|공격|타격)(?:을|를)?\s*(?:감행|실시|개시|했다)|'
+                                  r'봉쇄(?:를|을)?\s*(?:개시|실시|강화|확대|했다))', title))
 
 
 def _reported_major_airstrike(title):
