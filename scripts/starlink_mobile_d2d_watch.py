@@ -500,8 +500,8 @@ def event_id(category:str,status:str,title:str)->str:
   return f"interoperability:att_ast:{status}"
  if category=="korean_vendor":
   vendor=next((ident for ident,pattern in (
-   ("kmw",r"케이엠더블유|\\bkmw\\b"),
-   ("hfr",r"에치에프알|\\bhfr\\b"),
+   ("kmw",r"케이엠더블유|\bkmw\b"),
+   ("hfr",r"에치에프알|\bhfr\b"),
    ("solid",r"쏠리드"),
    ("oe_solutions",r"오이솔루션|oe solutions"),
    ("rfhic",r"rfhic"),
@@ -829,6 +829,9 @@ def test()->int:
  assert stage("korean_vendor","SpaceX Starlink KMW named potential supplier winner") is None
  assert stage("korean_vendor","SpaceX Starlink RFHIC signs supply contract")=="supplier_report"
  assert stage("korean_vendor","SpaceX Qualcomm supplier candidates KMW RFHIC") is None
+ assert event_id("korean_vendor","supplier_report","SpaceX Starlink KMW signs supply contract")=="vendor:starlink:kmw:supplier_report"
+ assert event_id("korean_vendor","supplier_report","SpaceX Starlink HFR signs supply contract")=="vendor:starlink:hfr:supplier_report"
+ assert event_id("korean_vendor","supplier_report","SpaceX Starlink RFHIC signs supply contract")=="vendor:starlink:rfhic:supplier_report"
  assert event_id("qualcomm_5g","agreement","SpaceX selects Qualcomm Dragonwing 5G")==QUALCOMM_AGREEMENT_KEY
  assert event_id("asts_handoff","handoff_test","AT&T AST SpaceMobile satellite handoff")==AST_HANDOFF_KEY
  assert "2027년부터" in official_qualcomm_agreement_notice()
