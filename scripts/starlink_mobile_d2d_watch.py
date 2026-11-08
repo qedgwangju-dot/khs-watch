@@ -51,6 +51,9 @@ SOURCES=(
  ("퀄컴 Starlink Mobile 5G 계약 공식 발표","https://www.qualcomm.com/news/releases/2026/11/spacex-selects-qualcomm-to-accelerate-starlink-mobile-s-nationwi",("SpaceX","QRU100","QDU100","2027")),
  ("AT&T·AST 지상망-위성망 전환 시험 공식 발표","https://about.att.com/story/2026/att-ast-spacemobile-engineering-connected-world.html",("AST SpaceMobile","Ericsson","Nokia","October 21, 2026")),
  ("글로벌스타 아마존 인수 종결 대기 공식 발표","https://investors.globalstar.com/news-releases/news-release-details/globalstar-announces-third-quarter-2026-financial-results",("Amazon","2027","pending transaction")),
+ ("퀄컴 공식 뉴스룸 계약 공지","https://www.qualcomm.com/news/releases",("SpaceX Selects Qualcomm","Nov 4, 2026")),
+ ("퀄컴 공식 기술 홈페이지 계약 공지","https://docs.qualcomm.com/nav",("SpaceX selects Qualcomm","Starlink Mobile")),
+ ("아마존 레오 5105기 D2D 신청 공식 안내","https://www.aboutamazon.com/news/amazon-leo/amazon-leo-direct-to-device-satellite-service-explained",("5,105","FCC","2028")),
 )
 FCC_JULY="https://docs.fcc.gov/public/attachments/DA-26-653A1.pdf"
 FCC_JAN="https://docs.fcc.gov/public/attachments/DOC-417881A1.pdf"
@@ -96,7 +99,9 @@ def official_ast_handoff_notice()->str:
 def newly_verified_official_notices(seen:dict,verified:list[str],initial:bool)->list[tuple[str,str]]:
  if initial:return []
  new=[]
- if QUALCOMM_AGREEMENT_KEY not in seen and QUALCOMM_PRIMARY in verified:
+ if QUALCOMM_AGREEMENT_KEY not in seen and any(s in verified for s in (
+  QUALCOMM_PRIMARY,"퀄컴 공식 뉴스룸 계약 공지","퀄컴 공식 기술 홈페이지 계약 공지"
+ )):
   new.append((QUALCOMM_AGREEMENT_KEY,official_qualcomm_agreement_notice()))
  if AST_HANDOFF_KEY not in seen and AST_HANDOFF_PRIMARY in verified:
   new.append((AST_HANDOFF_KEY,official_ast_handoff_notice()))
@@ -108,6 +113,8 @@ KNOWN_BASELINE_KEYS=(
  "fcc:DA-26-36:gen2:permission",
  "carriers:att_tmus_vz_joint_venture:venture",
  "asts:att_verizon_contract:supply",
+ # 5,105 Amazon Leo D2D satellites were proposed, not approved or launched.
+ "competitor:amazon_leo_d2d5105:application",
 )
 NOISE=re.compile(r"lawsuit|class action|option volume|price target|buy rating|stock split|earnings preview|crypto|celebrity|trump coin|meme stock",re.I)
 TRUSTED=(
@@ -233,6 +240,7 @@ TOPICS={
     '"Amazon Leo" "Globalstar" (FCC OR acquisition OR spectrum OR closes) when:14d',
     '"Amazon" "Globalstar" ("25 MHz" OR "transfer approval" OR "closing") when:14d',
     '아마존 글로벌스타 FCC (승인 OR 인수 OR 주파수) when:14d',
+    '"Amazon Leo" ("5,105" OR "5105") ("D2D" OR "direct-to-device") FCC when:14d',
   ),
   "meaning":"글로벌스타 인수 관련 FCC 면허이전 승인과 거래 종결·위성직접통신 상용화를 분리합니다.",
   "risk":"다른 국가 승인·거래 종결 조건·시스템 허가·위성 발사 미완료",
@@ -264,6 +272,9 @@ LABELS={
  "transfer_approved":"아마존의 글로벌스타 인수 관련 FCC 이전 승인 보도(거래 종결 아님)",
  "acquisition_agreement":"아마존·글로벌스타 인수 계약 보도(종결과 다름)",
  "acquisition_close":"아마존·글로벌스타 인수 종결 보도(당사자 확인 전)",
+ "d2d_application":"아마존 5,105기 위성직접통신 인허가 신청(위성 발사·허가 아님)",
+ "d2d_permission_report":"아마존 5,105기 위성직접통신 승인 보도(FCC 결정문 직접 확인 전)",
+ "d2d_deployment_report":"아마존 위성직접통신 실제 배치 보도(운용 위성·사업자 원문 확인 전)",
 }
 MONTHS={"Jan":"01","Feb":"02","Mar":"03","Apr":"04","May":"05","Jun":"06",
         "Jul":"07","Aug":"08","Sep":"09","Oct":"10","Nov":"11","Dec":"12"}
@@ -446,7 +457,13 @@ def stage(topic:str,title:str)->str|None:
   if re.search(r"sign(?:ed|s)?|contract|selected|awarded|supplier|qualified|납품|수주|선정|체결|고객 검증|고객승인",t):return "supplier_report"
   return None
  if topic=="amazon_leo":
-  if not re.search(r"amazon|아마존",t) or not re.search(r"globalstar|글로벌스타",t):return None
+  if not re.search(r"amazon|아마존",t):return None
+  if re.search(r"5,?105",t) and re.search(r"leo|d2d|direct.to.device|레오",t):
+   if re.search(r"deployed|operational|가동|배치 완료",t) and not re.search(r"plan|expected|will deploy|예정|목표",t):return "d2d_deployment_report"
+   if re.search(r"fcc.*(approv|authoriz|grant)|(?:approv|authoriz|grant).*fcc|fcc.*승인|승인.*fcc",t) and not re.search(r"requested|application|filed|seeks|신청|요청",t):return "d2d_permission_report"
+   if re.search(r"application|filed|filing|request|seek|proposed|신청|제안",t):return "d2d_application"
+   return None
+  if not re.search(r"globalstar|글로벌스타",t):return None
   if re.search(r"acquisition complete|acquisition closes|deal closes|closed transaction|merger complete|인수 완료|인수 종결",t):return "acquisition_close"
   if re.search(r"fcc|federal communications commission|regulator|연방통신위원회",t) and re.search(r"approv|clears?|clearance|authoriz|consent|grants?|승인",t):
    return "transfer_approved"
@@ -508,7 +525,9 @@ def event_id(category:str,status:str,title:str)->str:
   ) if re.search(pattern,t)), "unknown")
   return f"vendor:starlink:{vendor}:{status}"
  if category=="mobile_entry":return f"mobile:starlink_boost:{status}"
- if category=="amazon_leo":return f"competitor:amazon_globalstar:{status}"
+ if category=="amazon_leo":
+  if status.startswith("d2d_"):return f"competitor:amazon_leo_d2d5105:{'application' if status=='d2d_application' else status}"
+  return f"competitor:amazon_globalstar:{status}"
  # To allow different deployments/contracts, use stable material headwords,
  # without date or publisher-specific wording.
  terms=sorted(keywords(title))
@@ -848,6 +867,14 @@ def test()->int:
                                 "y":("agreement",{"title":"Qualcomm chosen by SpaceX for Dragonwing 5G","publisher":"The Verge","pub":NOW,"url":"https://b.example"})}}
  initial_rss,initial_seen=choose_events(initial_pairs,{},False)
  assert not initial_rss and not initial_seen
+ assert stage("amazon_leo","Amazon Leo files FCC application for 5,105 D2D satellites")=="d2d_application"
+ assert stage("amazon_leo","FCC approves Amazon Leo 5,105 D2D satellites")=="d2d_permission_report"
+ assert stage("amazon_leo","Amazon Leo plans to deploy 5,105 D2D satellites") is None
+ assert stage("amazon_leo","FCC approves Amazon acquisition of Globalstar")=="transfer_approved"
+ assert event_id("amazon_leo","d2d_application","Amazon Leo files 5,105 satellites") in KNOWN_BASELINE_KEYS
+ assert event_id("amazon_leo","d2d_permission_report","FCC approves Amazon Leo 5,105 D2D") not in KNOWN_BASELINE_KEYS
+ assert newly_verified_official_notices({},["퀄컴 공식 뉴스룸 계약 공지"],False)[0][0]==QUALCOMM_AGREEMENT_KEY
+ assert newly_verified_official_notices({},["퀄컴 공식 기술 홈페이지 계약 공지"],False)[0][0]==QUALCOMM_AGREEMENT_KEY
  assert "license:grain_spacex_800:fcc_approval" not in KNOWN_BASELINE_KEYS
  assert "license:grain_spacex_800:close" not in KNOWN_BASELINE_KEYS
  print("starlink_mobile_d2d_self_test=ok approvals_separated=1 government_rss_excluded=1 media_duo=1 no_duplicates=1 known_baseline=1")
@@ -935,6 +962,7 @@ def main()->int:
   "# Starlink Mobile·미국 이동통신 경쟁 감시",
   f"- 점검 시각: {NOW.astimezone(KST).isoformat()}",
   f"- 공식 발표 원문 검증: {len(official)}/{len(SOURCES)} (독립 발행기관 {len(organizations)}곳: {', '.join(official)})",
+  f"- 원천 접근 실패: {len(failed)}건 (발행기관·오류 종류만 기록): {'; '.join(failed)}",
   f"- 뉴스 피드 정상: {good}/{sum(len(x['queries']) for x in TOPICS.values())}",
   f"- 뉴스 피드 장애: {len(errors)}",
   f"- 최초 기준선: {initial}, 이번 알림 사건: {len(events)}",
