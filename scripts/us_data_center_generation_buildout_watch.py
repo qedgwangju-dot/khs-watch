@@ -9,6 +9,7 @@ import re
 import urllib.parse
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from email.utils import parsedate_to_datetime
 
 import requests
 from bs4 import BeautifulSoup
@@ -64,6 +65,7 @@ NEWS_QUERIES = (
     'Morgan Stanley data center onsite power distributed generation fuel cell BESS forecast United States',
     'Morgan Stanley data center ESS 279 GWh 169 GWh forecast',
     'Goldman Sachs US data center capacity 2027 GW forecast community opposition',
+    '"Anthropic" "OnePWR" Caterpillar generators delivered installation permit',
 )
 
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
@@ -340,8 +342,14 @@ def stage_of(text: str) -> str:
         return "취소·지연"
     if any(k in low for k in ("commercial operation", "commissioned", "online", "operational", "cod")):
         return "상업운전"
-    if any(k in low for k in ("construction", "groundbreak", "build begins", "under construction")):
-        return "착공"
+    # Merely mentioning construction/engineering capabilities is not a groundbreaking.
+    # Require a completed/started action, not a future plan or bundled service.
+    if re.search(r"\b(?:construction (?:has )?(?:started|begun|commenced)|"
+                 r"construction (?:starts|begins)|broke ground|breaks ground|"
+                 r"groundbreaking|under construction|build began)\b", low):
+        if not re.search(r"\b(?:plans? to|will|expects? to|aims? to|"
+                         r"may|could|scheduled to)\b.{0,50}\b(?:construction|ground)\b", low):
+            return "착공"
     if any(k in low for k in ("financial close", "financing", "project finance", "funding secured")):
         return "금융종결"
     if any(k in low for k in ("slot", "reservation", "turbine reservation")):
@@ -359,6 +367,8 @@ def extract_scale_mw(text: str) -> float:
     vals = []
     vals += [float(x) for x in re.findall(r"(?<![\w])([0-9]+(?:\.[0-9]+)?)\s*mw\b", low)]
     vals += [float(x) * 1000 for x in re.findall(r"(?<![\w])([0-9]+(?:\.[0-9]+)?)\s*gw\b", low)]
+    vals += [float(x) for x in re.findall(r"(?<![\w])([0-9]+(?:\.[0-9]+)?)\s*megawatts?\b", low)]
+    vals += [float(x) * 1000 for x in re.findall(r"(?<![\w])([0-9]+(?:\.[0-9]+)?)\s*gigawatts?\b", low)]
     return max(vals + [0.0])
 
 
@@ -371,6 +381,9 @@ def _test_capacity_unit_guard() -> None:
         ("500 MW natural-gas power project", 500.0),
         ("AI data center 2.5 GW capacity", 2500.0),
         ("1,200MW plant", 1200.0),
+        ("Anthropic bought commitments for 1.7 gigawatts of generators", 1700.0),
+        ("Anthropic agreed for 1.7 GW of gas-fired power", 1700.0),
+        ("2,500 megawatts of generating capacity", 2500.0),
     )
     for value, expected in cases:
         got = extract_scale_mw(value)
@@ -411,6 +424,16 @@ def collect_news() -> list[dict]:
         except Exception:
             continue
         for item in root.findall("./channel/item")[:25]:
+            # A resurfaced historical article is not a newly announced contract.
+            try:
+                timestamp = parsedate_to_datetime(item.findtext("pubDate") or "")
+                if timestamp.tzinfo is None:
+                    timestamp = timestamp.replace(tzinfo=dt.timezone.utc)
+                age_hours = (dt.datetime.now(dt.timezone.utc) - timestamp).total_seconds() / 3600
+                if not (-2 <= age_hours <= 14 * 24):
+                    continue
+            except (TypeError, ValueError, OverflowError):
+                continue
             title = normalize(item.findtext("title") or "")
             link = normalize(item.findtext("link") or "")
             source_el = item.find("source")
@@ -420,6 +443,11 @@ def collect_news() -> list[dict]:
             if not trusted(domain):
                 continue
             blob = f"{title} {source}"
+            # The Anthropic/OnePWR original report has its own source-grade and
+            # semantic fingerprint below; avoid a URL-specific duplicate.
+            if ("anthropic" in blob.lower() and "onepwr" in blob.lower()
+                    and re.search(r"\b(?:1[.,]7|3[.,]4)\b", blob)):
+                continue
             if not is_meaningful(blob, source):
                 continue
             stage = stage_of(blob)
@@ -467,9 +495,18 @@ new_items = [x for x in items if x["id"] not in old_ids]
 gev_changes = detect_gev_changes(old, gev)
 baseline_run = not old.get("initialized")
 format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
+# Never acknowledge candidates that were not included in the Telegram report.
+# Initial baseline is the one exception: historical articles are not replayed.
+chosen_news = sorted(
+    new_items,
+    key=lambda x: (0 if x['stage'] in ('상업운전', '착공', '계약·수주') else 1,
+                   -x.get('scale_mw', 0))
+)[:5]
 should_alert = baseline_run or format_upgrade or bool(new_items) or bool(gev_changes)
-
-seen = list(dict.fromkeys(list(old_ids) + [x["id"] for x in items]))[-1600:]
+acknowledged_news = items if baseline_run else chosen_news
+seen = list(dict.fromkeys(
+    list(old.get("seen_ids", [])) + [x["id"] for x in acknowledged_news]
+))[-1600:]
 pending = {
     "initialized": True,
     "format_version": FORMAT_VERSION,
@@ -509,7 +546,7 @@ if should_alert:
 
     if new_items and not baseline_run:
         msg += ["", "<b>🆕 핵심 실행 변화</b>"]
-        chosen = sorted(new_items, key=lambda x: (0 if x['stage'] in ('상업운전','착공','계약·수주') else 1, -x.get('scale_mw',0)))[:5]
+        chosen = chosen_news
         for idx, x in enumerate(chosen, 1):
             ko = translate_title(x['title'], x['stage'], x['source'])
             if len(ko) > 170:
@@ -518,7 +555,7 @@ if should_alert:
             msg.append(f"{idx}. 🔗 {a(ko, x['url'])}")
             msg.append(f"   {h(x['stage'])} · {h(x['source'])}{h(scale)}")
         if len(new_items) > len(chosen):
-            msg.append(f"• 나머지 {len(new_items)-len(chosen)}건은 중복방지 상태에 저장해 다음 변화 판정에 반영합니다.")
+            msg.append(f"• 나머지 {len(new_items)-len(chosen)}건은 미전송으로 유지하고 다음 조회에서 재검토합니다.")
     elif baseline_run:
         msg += ["", "<b>👀 별도 감시 범위</b>"]
         msg.append("• 500MW 이상 데이터센터 연계 가스발전·BESS의 계약 → 금융종결 → 착공 → 상업운전")
@@ -1079,3 +1116,197 @@ def run_onsite_jefferies_source_graded_extension() -> None:
 
 
 run_onsite_jefferies_source_graded_extension()
+
+
+# ANTHROPIC_ONEPWR_REPORTED_GENERATOR_ORDERS_V1
+# Only the existing generation watcher / Telegram output / JSON state are used.
+# Financial Times is the original source; Reuters and CNA reproduce that report,
+# not independent confirmation of the private generator purchase.
+ANTHRO_ONEPWR_EVENT = "anthropic-onepwr-reported-generator-order-assignment-202609-1p7gw-3p4b"
+ANTHRO_ONEPWR_FT = "https://www.ft.com/content/41bf5c6a-9735-4f1a-a8e3-2bcccad58ba0"
+ANTHRO_ONEPWR_REUTERS = "https://www.reuters.com/business/energy/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-2026-11-08/"
+ANTHRO_ONEPWR_REUTERS_REPRINT = "https://www.channelnewsasia.com/business/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-6534256"
+ANTHRO_ONEPWR_SEC = "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm"
+ANTHRO_ONEPWR_EO = "https://www.energy.gov/ceser/declaring-national-emergency-secure-united-states-bulk-power-system-executive-order"
+ANTHRO_ONEPWR_REPORTED_DATE = dt.date(2026, 11, 8)
+
+
+def anthro_onepwr_report_valid(text: str) -> bool:
+    body = normalize(BeautifulSoup(text or "", "html.parser").get_text(" ", strip=True)).lower()
+    if len(body) < 150 or "anthropic" not in body or "onepwr" not in body:
+        return False
+    if not re.search(r"\b1[.,]7\s*(?:gigawatts?|gw)\b", body):
+        return False
+    if not re.search(r"\b3[.,]4\s*(?:billion|bn)\b", body):
+        return False
+    if "generators" not in body and "gas-fired" not in body:
+        return False
+    return any(phrase in body for phrase in (
+        "has struck a deal", "struck a deal", "bought commitments",
+        "agreed to pay", "purchased commitments", "bought generator",
+        "acquired the generator", "took over the equipment orders",
+        "secured a deal", "secured a 3.4 billion",
+    ))
+
+
+def anthro_onepwr_regression_checks() -> None:
+    article = (
+        "Anthropic has struck a deal worth about $3.4 billion to secure gas-fired "
+        "power generators for data centers. It bought commitments for 1.7 "
+        "gigawatts of heavy-duty generators in late September from OnePWR Solutions."
+    )
+    assert anthro_onepwr_report_valid(article)
+    assert not anthro_onepwr_report_valid(
+        "Anthropic and OnePWR may discuss 1.7 gigawatts and 3.4 billion dollars "
+        "of generators but have not struck a deal."
+    )
+    assert not anthro_onepwr_report_valid(article.replace("OnePWR", "other supplier"))
+    assert not anthro_onepwr_report_valid(article.replace("1.7", "0.7"))
+    assert not anthro_onepwr_report_valid(article.replace("$3.4", "$2.4"))
+    assert extract_scale_mw("1.7 gigawatts of heavy-duty generators") == 1700.0
+    assert stage_of("Gas project includes construction capabilities in purchase deal") != "착공"
+    assert stage_of("Gas power plant construction started last week") == "착공"
+    assert (3.4 * 1e9 / 1700.0) == 2_000_000
+
+
+def anthro_onepwr_source_check() -> tuple[list[dict], list[str]]:
+    verified, failures = [], []
+    for label, url in (
+        ("FT 최초 취재", ANTHRO_ONEPWR_FT),
+        ("로이터 FT 재인용", ANTHRO_ONEPWR_REUTERS),
+        ("로이터 제휴 재게시", ANTHRO_ONEPWR_REUTERS_REPRINT),
+    ):
+        try:
+            response = fetch(url, timeout=12)
+            if anthro_onepwr_report_valid(response.text):
+                verified.append({"label": label, "url": url})
+            else:
+                failures.append(label + ": 필수 당사자·용량·금액·거래동사 불일치")
+        except Exception as exc:
+            failures.append(label + ": " + type(exc).__name__)
+    return verified, failures
+
+
+def anthro_onepwr_sec_commitments() -> bool:
+    try:
+        page = normalize(BeautifulSoup(fetch(ANTHRO_ONEPWR_SEC, timeout=12).text,
+                                       "html.parser").get_text(" ", strip=True)).lower()
+        return all(term in page for term in ("anthropic", "895.4 billion", "447.5 billion", "69.8 billion"))
+    except Exception:
+        return False
+
+
+def run_anthro_onepwr_existing_generation_watch() -> None:
+    anthro_onepwr_regression_checks()
+    previous = dict(old.get("anthropic_onepwr_generator_orders") or {})
+    if previous.get("delivered_event_id") == ANTHRO_ONEPWR_EVENT:
+        print("anthropic_onepwr_alert=duplicate_suppressed")
+        return
+
+    now = dt.datetime.now(dt.timezone.utc)
+    article_age_days = (now.date() - ANTHRO_ONEPWR_REPORTED_DATE).days
+    if article_age_days < 0 or article_age_days > 14:
+        print("anthropic_onepwr_alert=outside_news_window")
+        return
+
+    verified, failures = anthro_onepwr_source_check()
+    sec_verified = anthro_onepwr_sec_commitments() if verified else False
+    fresh_fx = fx is not None and fx_source != "직전 저장값"
+    if not verified or not fresh_fx:
+        # A failed source/FX lookup must not mark the event as delivered.
+        print(
+            "anthropic_onepwr_alert=not_ready "
+            f"report_verified={bool(verified)} fresh_fx={fresh_fx} "
+            f"source_errors={failures[:3]}"
+        )
+        return
+
+    original_checked = any(row["url"] == ANTHRO_ONEPWR_FT for row in verified)
+    report_status = (
+        "FT 원문 직접 확인(기업 공식 계약자료는 미확인)"
+        if original_checked else
+        "FT 원보도를 로이터에서 재인용(기업 공식 계약자료·원보도 전문 독립 확인 전)"
+    )
+    scope = [
+        "<b>🔥 [AI 데이터센터 현장발전·발전기 발주권] 앤트로픽–OnePWR</b>",
+        "",
+        f"• <b>확인 단계</b> │ 2026-11-08 {h(report_status)}. 보도 이후 공식 계약 공시·당사자 확인은 별개.",
+        "• <b>거래</b> │ 2026년 9월 말 앤트로픽이 OnePWR의 캐터필러 가스발전기 구매약정 1.7GW(1,700MW)를 양수했다는 FT 보도.",
+        "• <b>범위</b> │ OnePWR 법인·직원 인수 아님. 장비 발주권과 설치를 위한 설계·건설 역량을 포함한다는 보도.",
+        f"• <b>금액</b> │ 34억달러({krw_from_usd_b(3.4, fx)}) · {h(fx_source)} 조회 1달러={fx:,.2f}원 / {h(fx_checked)} UTC.",
+        "• <b>단위 비용</b> │ 총액÷1,700MW = MW당 200만달러. 설치·건설 역량 포함 거래여서 발전기 공장출하 평균판매단가로 사용할 수 없음.",
+        "• <b>납기·상태</b> │ 단기 및 향후 2년 내 장비 확보 전망은 보도 단계. 납품·시공·가스연료·배출허가·전원 인가·상업운전은 별도 미확인.",
+        "• <b>공급망</b> │ OnePWR의 캐터필러 기발주분 승계 보도. 캐터필러 신규 제조 발주나 GE Vernova 신규 수주로 중복 집계 금지.",
+    ]
+    if sec_verified:
+        scope += [
+            "• <b>공식 자금약정</b> │ 앤트로픽 2026-11-02 SEC 수정 증권신고서: 컴퓨팅·인프라 구매/리스 약정 총 8,954억달러, 2030년 말까지 4,475억달러 지출 예정, 12개월 내 698억달러.",
+            "• <b>금융 구분</b> │ 위 SEC 총 약정은 이번 발전기 보도 계약액이나 이미 집행된 설비투자와 동일하지 않음.",
+        ]
+    else:
+        scope.append("• <b>자금조달</b> │ 앤트로픽 SEC 총 약정 수치는 공식 원문 재조회 불가로 이번 알림의 확인된 거래규모에 합산하지 않음.")
+    scope.extend([
+        "• <b>신용위험</b> │ 블랙스톤의 신용등급 전망은 보도·의견 단계이며 신용평가사 최종 등급과 구분.",
+        "• <b>규제 구분</b> │ 미국 전력망 안보 명령은 EO 14421이며 모든 외국산 발전기를 일괄 금지하지 않음. 이번 계약 직접 적용 여부 미확인.",
+        "• <b>다음 확인</b> │ 앤트로픽·OnePWR·캐터필러 공식 확인 → 발주권 이전 범위 → 납품·부지·인허가 → 가스 공급·전력 접속 → 전원 인가 → 실제 운영·정비계약.",
+        "",
+        "• " + a("FT 최초 취재 원문", ANTHRO_ONEPWR_FT),
+        "• " + a(verified[0]["label"] + " 확인 경로", verified[0]["url"]),
+        "• " + a("미국 SEC 앤트로픽 수정 증권신고서", ANTHRO_ONEPWR_SEC),
+        "• " + a("미국 에너지부 EO 14421 설명", ANTHRO_ONEPWR_EO),
+    ])
+    rendered = "\n".join(scope).strip()
+    if rendered.count("<b>") != rendered.count("</b>") or rendered.count("<a href=") != rendered.count("</a>"):
+        raise RuntimeError("Anthropic OnePWR Telegram HTML imbalance")
+    if max(map(len, scope)) >= 3200:
+        raise RuntimeError("Anthropic OnePWR Telegram line too long")
+
+    preexisting = ALERT.read_text(encoding="utf-8").strip() if ALERT.exists() else ""
+    ALERT.write_text((preexisting + "\n\n" if preexisting else "") + rendered + "\n",
+                     encoding="utf-8")
+
+    # Only the existing pending JSON is extended. The workflow commits this
+    # state after successful Telegram delivery; if sending fails, it retries.
+    pending = load_json(PENDING)
+    state = dict(previous)
+    state.update({
+        "model_version": 1,
+        "delivered_event_id": ANTHRO_ONEPWR_EVENT,
+        "event_kind": "reported_generator_order_assignment",
+        "first_reported_on": "2026-11-08",
+        "original_contract_month": "2026-09",
+        "buyer": "Anthropic",
+        "order_rights_seller": "OnePWR Solutions",
+        "hardware": "Caterpillar gas-fired generators (FT reported)",
+        "generator_orders_mw": 1700,
+        "transaction_report_usd_b": 3.4,
+        "company_acquired": False,
+        "official_contract_confirmed": False,
+        "equipment_delivered": False,
+        "power_energized": False,
+        "source_grade": ("ft_original_article_fetched" if original_checked
+                         else "reuters_reprint_of_ft_not_independently_verified"),
+        "source_urls": [item["url"] for item in verified],
+        "sec_compute_commitments_checked": sec_verified,
+        "source_failures": failures[:4],
+        "first_alert_prepared_utc": now.isoformat(timespec="seconds"),
+    })
+    pending["anthropic_onepwr_generator_orders"] = state
+    PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n",
+                       encoding="utf-8")
+    if STATUS.exists():
+        with STATUS.open("a", encoding="utf-8") as handle:
+            handle.write(
+                "- 앤트로픽–OnePWR: FT 원보도/로이터 재인용 단계"
+                f" · 1700MW · 34억달러 · SEC 공식 재조회={sec_verified}"
+                " · 단일 사건키 · 실제 Telegram 발송 후 상태 저장\n"
+            )
+    print(
+        f"anthropic_onepwr_alert=prepared "
+        f"report_sources={len(verified)} ft_direct={original_checked} "
+        f"sec_checked={sec_verified} fresh_fx={fresh_fx} "
+        f"event_id={ANTHRO_ONEPWR_EVENT}"
+    )
+
+
+run_anthro_onepwr_existing_generation_watch()
