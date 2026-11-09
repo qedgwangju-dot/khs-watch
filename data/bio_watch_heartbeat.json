@@ -1,6 +1,6 @@
 {
-  "status": "ok",
-  "checked_at_kst": "2026-11-09T12:18:16+09:00",
+  "status": "degraded",
+  "checked_at_kst": "2026-11-09T12:27:43+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -9,29 +9,31 @@
   "jemperli_collector_rc": 0,
   "enhertu_collector_rc": 0,
   "halozyme_collector_rc": 0,
-  "qlex_alert_present": false,
+  "qlex_alert_present": true,
   "qlex_wac_alert_present": false,
   "intismeran_alert_present": false,
   "jemperli_alert_present": false,
   "enhertu_alert_present": false,
-  "qlex_send_outcome": "skipped",
+  "qlex_send_outcome": "failure",
   "qlex_wac_send_outcome": "skipped",
   "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
   "halozyme_run_outcome": "success",
-  "qlex_state_persisted": true,
+  "qlex_state_persisted": false,
   "qlex_wac_state_persisted": true,
   "intismeran_state_persisted": true,
   "jemperli_state_persisted": true,
   "enhertu_state_persisted": true,
   "halozyme_state_persisted": true,
   "halozyme_source_health": "ok",
+  "cms_policy_status": "official_final_verified",
+  "maplight_source_health": "last_incomplete",
   "halozyme_search_failed_tasks": 0,
   "halozyme_search_task_count": 78,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-11-09",
-  "failure_notice_message_id": 281,
+  "failure_notice_message_id": 320,
   "last_qlex_telegram_message_ids": [
     317
   ],
@@ -40,7 +42,9 @@
   ],
   "last_jemperli_telegram_sent_at_kst": "2026-11-02T07:26:14+09:00",
   "last_qlex_telegram_sent_at_kst": "2026-11-09T04:44:01+09:00",
-  "errors": [],
-  "failed_component": "",
-  "error_signature": ""
+  "errors": [
+    "QLEX sender rc=1: RuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있음: CMS, CMS"
+  ],
+  "failed_component": "QLEX Telegram 전송",
+  "error_signature": "QLEX sender rc=1: RuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있음: CMS, CMS"
 }
