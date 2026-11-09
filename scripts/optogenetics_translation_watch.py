@@ -709,7 +709,7 @@ def maplight_milestone_keys(title: str, body: str) -> list[str]:
             or re.search(r"zephyr-2.{0,100}(?:topline )?results (?:show|showed|demonstrate|demonstrated|were)", text, re.I)
         ):
             add("maplight|ml007|zephyr2-results")
-        if re.search(r"\bvista\b.{0,90}(?:enrollment (?:has been |is )?complete|completed enrollment|fully enrolled)|(?:completed enrollment|fully enrolled).{0,90}\bvista\b", text, re.I):
+        if re.search(r"\bvista\b[^.;\n]{0,100}(?:enrollment (?:has been |is )?completed?|completed enrollment|fully enrolled)|(?:completed enrollment|fully enrolled)\s+(?:in|for|of)\s+(?:the\s+)?\bvista\b", text, re.I):
             add("maplight|ml007|vista-enrollment-complete")
         if "vista" in text and (
             re.search(r"(?:announc(?:e|es|ed)|report(?:s|ed)?|releas(?:e|es|ed)).{0,30}(?:positive )?(?:topline )?results.{0,40}(?:from|for|of).{0,30}vista", text, re.I)
