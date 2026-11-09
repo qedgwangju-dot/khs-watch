@@ -399,10 +399,17 @@ def classify_won_stablecoin_policy_stage(
     clarification = body_clean.split("보도에 대한 설명")[-1]
     clarification = clarification.split("금융위 설명")[-1]
     clarification = clarification.split("금융위원회 설명")[-1]
-    if regulator and (negative or has_any(clarification, [
-        "확정된 바 없습니다", "정해진 바 없습니다", "아직 정해진 바 없",
-        "주요내용은 아직", "논의를 지속",
-    ])):
+    normalized_clarification = clarification.replace(" ", "")
+    denial = (
+        has_any(clarification, [
+            "확정된 바 없", "정해진 바 없", "아직 정해진", "논의를 지속",
+            "협의를 지속",
+        ])
+        or any(term in normalized_clarification for term in (
+            "확정된바없", "정해진바없", "주요내용은아직",
+        ))
+    )
+    if regulator and (negative or denial):
         return {
             "stage": "official_not_final",
             "status": "금융위 공식 설명 · 발행주체 미확정",
