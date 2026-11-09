@@ -434,6 +434,8 @@ def _statement_with_actual_action(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if re.search(r'협상\s*중단(?!\s*(?:가능성|우려|전망|검토|시사|[?？]))', title) and re.search(r'["“”]', title):
+        return _diplomatic_group(title) + ' · 협상 중단 발언'
     if _reported_major_airstrike(title) and not _headline_attack_casualties(row):
         return _headline_group(title) + ' · 대공습 보도'
     if kind == 'military_report' and _reported_attack_escalation(title):
@@ -1727,6 +1729,11 @@ def topic_label(row):
     if primary:
         return primary
     topic = _topic(row)
+    if topic == '이란·중국 · 중동 외교':
+        # A legacy mark can come from a verified body about Iran/US talks.
+        # Never infer China from the presence of an unrelated mark.
+        group = _diplomatic_group(_headline(row))
+        return group + ' · 외교 보도' if group != '전쟁·외교' else group
     kind = non_military_kind(row)
     if kind:
         topic = topic.split(' · ')[0]
