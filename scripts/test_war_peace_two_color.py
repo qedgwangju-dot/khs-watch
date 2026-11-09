@@ -2024,5 +2024,112 @@ class Run854NuclearTalksSignalTests(unittest.TestCase):
         self.assertEqual(presentation.direction(stage, attacked), 'red')
 
 
+class Run854AirstrikeRestraintPossibilityTests(unittest.TestCase):
+    def test_saved_sent_possibility_replays_as_conditional_easing(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run854_airstrike_restraint_possibility_42690647940.json')
+                             .read_text(encoding='utf-8'))
+        provenance, saved = fixture['provenance'], fixture['article']
+        self.assertEqual(provenance['telegram_message_id'], 436)
+        self.assertEqual(provenance['observed_delivered_color'], 'red')
+        self.assertFalse(saved['body_verified'])
+        self.assertEqual(saved['classification_color'], 'red')
+        self.assertEqual(saved['semantic_classification_color'], 'yellow')
+
+        snapshot, proof = fixture['semantic_snapshot'], fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+        original = json.loads(evidence_bytes)
+        original_row = next(row for row in original['articles'] if row['id'] == saved['id'])
+        self.assertEqual(original_row['classification_color'], 'yellow')
+        self.assertTrue(stage._iran_attack_restraint_statement(original_row))
+        self.assertEqual(stage.non_military_kind(original_row), 'military_position')
+        self.assertEqual(stage.topic_label(original_row), '미국·이란 · 공습 제한 가능성 시사')
+        self.assertEqual(presentation.direction(stage, original_row), 'green')
+
+        text, projected = presentation.project(stage, alert_bytes.decode('utf-8'),
+                                               original, proof, snapshot)
+        target = next(row for row in projected['articles'] if row['id'] == saved['id'])
+        self.assertEqual(target['classification_color'], 'green')
+        self.assertEqual(target['semantic_classification_color'], 'yellow')
+        self.assertIn('🟢 [신규] <b>3. 미국·이란 · 공습 제한 가능성 시사</b>', text)
+        self.assertIn('공습 제한 가능성 시사', text)
+        self.assertIn('제목 기준·본문 미확인', text)
+        self.assertNotEqual(projected['alert_sha256'],
+                            provenance['observed_delivered_alert_sha256'])
+
+    def test_denial_or_separate_current_strike_blocks_easing(self):
+        title = '미국, 이란에 대한 공습 제한 가능성 시사'
+        denied = {'title_original': title + '했다는 보도를 부인', 'body_verified': False}
+        attacked = {'title_original': title + '; 한편 미군이 이란을 공습했다',
+                    'body_verified': False}
+        self.assertFalse(stage._iran_attack_restraint_statement(denied))
+        self.assertNotEqual(presentation.direction(stage, denied), 'green')
+        self.assertFalse(stage._iran_attack_restraint_statement(attacked))
+        self.assertEqual(presentation.direction(stage, attacked), 'red')
+
+
+class Run856DiplomacyAndStalemateTests(unittest.TestCase):
+    def _replay(self, slug, article_id):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / f'war_run856_{slug}_42711323558.json')
+                             .read_text(encoding='utf-8'))
+        self.assertEqual(fixture['provenance']['telegram_message_id'], 437)
+        self.assertEqual(fixture['article']['classification_color'], 'red')
+        snapshot, proof = fixture['semantic_snapshot'], fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+        original = json.loads(evidence_bytes)
+        row = next(row for row in original['articles'] if row['id'] == article_id)
+        text, projected = presentation.project(stage, alert_bytes.decode('utf-8'),
+                                               original, proof, snapshot)
+        target = next(row for row in projected['articles'] if row['id'] == article_id)
+        self.assertNotEqual(projected['alert_sha256'],
+                            fixture['provenance']['observed_delivered_alert_sha256'])
+        return row, target, text
+
+    def test_saved_qatar_us_meeting_is_reported_diplomatic_contact(self):
+        row, target, text = self._replay('qatar_iran_talks', '27fb05307ed11cd04cf7')
+        self.assertFalse(row['body_verified'])
+        self.assertEqual(stage.non_military_kind(row), 'diplomatic_contact')
+        self.assertEqual(stage.topic_label(row), '카타르·미국 · 이란 협상 논의 보도')
+        self.assertEqual(presentation.direction(stage, row), 'green')
+        self.assertEqual(target['classification_color'], 'green')
+        self.assertIn('🟢 [신규] <b>1. 카타르·미국 · 이란 협상 논의 보도</b>', text)
+        self.assertNotIn('이란·호르무즈', text.split('🟢 [신규] <b>2.', 1)[0])
+        self.assertIn('RSS 입력 기준·본문 미확인', text)
+
+    def test_saved_ambiguous_order_is_context_without_direction(self):
+        row, target, text = self._replay('iran_no_war_no_peace', '78a832477ee92c567732')
+        self.assertTrue(row['body_verified'])
+        self.assertEqual(stage.non_military_kind(row), 'diplomatic_position')
+        self.assertEqual(stage.topic_label(row), '이란 · 전쟁·평화 교착 종식 지시')
+        scored = copy.deepcopy(row)
+        score, tags = stage.score_item(
+            scored, dt.datetime.fromisoformat('2026-11-10T07:24:00+09:00'))
+        self.assertGreater(score, 0)
+        self.assertEqual(tags, ['전쟁·평화 교착 종식 지시'])
+        self.assertIsNone(presentation.direction(stage, row))
+        self.assertIsNone(target['classification_color'])
+        self.assertEqual(target['display_section'], 'context_reference')
+        self.assertIn('<b>참고 1. 이란 · 전쟁·평화 교착 종식 지시</b>', text)
+        self.assertNotIn('이란·호르무즈', text)
+
+    def test_separate_current_attack_retains_red(self):
+        qatar = {'title_original': 'QATAR PRIME MINISTER: MET WITH TRUMP AND VANCE, '
+                 'DISCUSSED WAYS TO MAKE PROGRESS IN IRAN NEGOTIATIONS; '
+                 'MEANWHILE US ATTACKED IRAN', 'body_verified': False}
+        stalemate = {'title_original': '이란 대통령 "최고지도자, 전쟁도 평화도 아닌 상황 종식 지시"; '
+                     '한편 이란군이 공습했다', 'body_verified': True}
+        self.assertFalse(stage._qatar_us_iran_negotiations_contact(stage._headline(qatar)))
+        self.assertFalse(stage._no_war_no_peace_stalemate_statement(stage._headline(stalemate)))
+        self.assertEqual(presentation.direction(stage, qatar), 'red')
+        self.assertEqual(presentation.direction(stage, stalemate), 'red')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
