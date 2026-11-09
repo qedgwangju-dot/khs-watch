@@ -182,6 +182,33 @@ jobs:
           PY
 
 
+
+      - name: Validate MHI turbine investment scope and existing-state preservation (no Telegram)
+        run: |
+          python -m py_compile scripts/us_data_center_generation_buildout_watch.py
+          python - <<'PY'
+          import ast,re
+          from pathlib import Path
+          from bs4 import BeautifulSoup
+          p=Path("scripts/us_data_center_generation_buildout_watch.py")
+          source=p.read_text(encoding="utf-8")
+          tree=ast.parse(source)
+          functions=[node for node in tree.body if isinstance(node,ast.FunctionDef)
+                     and node.name in ("mhi_capex_text_verified","mhi_gtcc_signal_tests")]
+          assert len(functions)==2
+          scope={"re":re,"BeautifulSoup":BeautifulSoup,
+                 "normalize":lambda t:re.sub(r"\s+"," ",t or "").strip(),
+                 "MHI_GTCC_CAPEX_JPY_B":500.0,"MHI_ENGINE_CAPEX_JPY_B":100.0,
+                 "MHI_100JPY_KRW_NOV9":856.72}
+          exec(compile(ast.Module(body=functions,type_ignores=[]),
+                       "<mhi_offline_regression>","exec"),scope)
+          scope["mhi_gtcc_signal_tests"]()
+          assert '    **old,  # Preserve existing event keys' in source
+          assert '"format_version": max(FORMAT_VERSION, int(old.get("format_version") or 0))' in source
+          print("mhi_gtcc_500bn_100bn_scope_and_dedup_offline=passed no_telegram=true")
+          PY
+
+
       - name: Test US-to-Korea data center investment diversion source gates (no Telegram)
         run: |
           python -m py_compile scripts/us_data_center_cancellation_risk_watch.py
