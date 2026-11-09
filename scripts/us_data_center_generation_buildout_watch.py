@@ -508,8 +508,9 @@ seen = list(dict.fromkeys(
     list(old.get("seen_ids", [])) + [x["id"] for x in acknowledged_news]
 ))[-1600:]
 pending = {
+    **old,  # Preserve existing event keys, source checks, and historical baselines.
     "initialized": True,
-    "format_version": FORMAT_VERSION,
+    "format_version": max(FORMAT_VERSION, int(old.get("format_version") or 0)),
     "baseline": BASELINE,
     "gev_metrics": gev,
     "seen_ids": seen,
@@ -1327,3 +1328,166 @@ def run_anthro_onepwr_existing_generation_watch() -> None:
 
 
 run_anthro_onepwr_existing_generation_watch()
+
+
+# MHI_GTCC_AND_GENERATION_ENGINE_CAPACITY_WATCH_V1
+# Existing generation-buildout monitor, sender, and state; NO new bot/workflow.
+# 11/6 is the official FY2026 first-half earnings publication, NOT 11/9.
+# 11/9 is the date of a user-supplied recap, and of the yen/KRW rate lock.
+MHI_GTCC_EVENT = "mhi-7011-20261106-gtcc-500bn-engines-100bn-fy2030-double-v1"
+MHI_OFFICIAL_EARNINGS = "https://www.mhi.com/jp/news/26110601.html"
+MHI_OFFICIAL_RESULTS = "https://www.mhi.com/jp/finance/library/result"
+MHI_TECS_DETAIL = "https://www.tecshx.com/news/mhi-first-half-fy2026-gas-turbine-backlog-83-units-37-gw-forecast-raised"
+MHI_MONOSCOPE_DETAIL = "https://monoscope-media.com/mhi-earnings-2026-interim/"
+MHI_100JPY_KRW_NOV9 = 856.72  # KEXIM Nov 9 snapshot, NOT a live FX quotation.
+MHI_GTCC_CAPEX_JPY_B = 500.0
+MHI_ENGINE_CAPEX_JPY_B = 100.0
+
+
+def mhi_issuer_text_verified(body: str) -> bool:
+    text = normalize(BeautifulSoup(body or "", "html.parser").get_text(" ", strip=True)).lower()
+    return (
+        len(text) > 160
+        and ("2026" in text)
+        and (
+            ("三菱重工" in text and ("決算" in text or "業績" in text))
+            or ("mitsubishi heavy industries" in text and "financial" in text)
+        )
+    )
+
+
+def mhi_capex_text_verified(body: str) -> bool:
+    text = normalize(BeautifulSoup(body or "", "html.parser").get_text(" ", strip=True)).lower()
+    # Require BOTH investments and their independent product scopes. An
+    # unrelated 1,000-oku nuclear/shipbuilding line cannot become engine capex.
+    gtcc = ("gtcc" in text or "gas turbine" in text or "ガスタービン" in text)
+    engine = ("engine" in text or "エンジン" in text)
+    high_part = ("高温" in text or "hot part" in text or "blades" in text or "高温部品" in text)
+    amount_500 = bool(re.search(r"(?:5,?000\s*億|500\s*billion|500\s*bn|¥\s*500\s*billion)", text))
+    amount_100 = bool(re.search(r"(?:1,?000\s*億|100\s*billion|100\s*bn|¥\s*100\s*billion)", text))
+    return len(text) > 200 and gtcc and engine and high_part and amount_500 and amount_100
+
+
+def mhi_capex_official_and_independent_checks() -> tuple[str, str]:
+    """Return verified issuer URL and independent writeup URL; fail closed."""
+    issuer = ""
+    detail = ""
+    for url in (MHI_OFFICIAL_EARNINGS, MHI_OFFICIAL_RESULTS):
+        try:
+            if mhi_issuer_text_verified(fetch(url, 10).text):
+                issuer = url
+                break
+        except Exception:
+            continue
+    for url in (MHI_TECS_DETAIL, MHI_MONOSCOPE_DETAIL):
+        try:
+            if mhi_capex_text_verified(fetch(url, 10).text):
+                detail = url
+                break
+        except Exception:
+            continue
+    return issuer, detail
+
+
+def mhi_gtcc_signal_tests() -> None:
+    assert mhi_capex_text_verified(
+        "Mitsubishi 2026 GTCC gas turbine hot parts investment ¥500 billion; "
+        "data-center power generation engines expansion ¥100 billion. "
+        "Factory capacity enhancement and gas turbine blades manufacturing. " * 3
+    )
+    assert not mhi_capex_text_verified(
+        ("GTCC gas turbines hot parts ¥500 billion and nuclear ¥100 billion, "
+         "no engines capex data is shown. ") * 5
+    )
+    assert not mhi_capex_text_verified(
+        ("GTCC gas turbines hot parts ¥500 billion and gas generator engines capacity "
+         "discussed, but no amount for engine spending. ") * 5
+    )
+    assert int(round(MHI_GTCC_CAPEX_JPY_B * 1e9 * (MHI_100JPY_KRW_NOV9 / 100) / 1e8)) == 42836
+    assert int(round(MHI_ENGINE_CAPEX_JPY_B * 1e9 * (MHI_100JPY_KRW_NOV9 / 100) / 1e8)) == 8567
+    assert "gas turbine" not in "GTCC".lower()  # Don't confuse combined cycle with dual fuel.
+
+
+def run_mhi_gtcc_existing_generation_watch() -> None:
+    mhi_gtcc_signal_tests()
+    prev = dict(old.get("mhi_gtcc_supply_capacity") or {})
+    if prev.get("delivered_event_id") == MHI_GTCC_EVENT:
+        print("mhi_gtcc_alert=duplicate_suppressed")
+        return
+    today = dt.datetime.now(dt.timezone.utc).date()
+    if (today - dt.date(2026, 11, 6)).days not in range(0, 15):
+        print("mhi_gtcc_alert=outside_initial_news_window")
+        return
+    issuer, detail = mhi_capex_official_and_independent_checks()
+    if not issuer or not detail:
+        print("mhi_gtcc_alert=source_hold issuer_checked=" + str(bool(issuer))
+              + " capex_independent_checked=" + str(bool(detail)))
+        return
+    gtcc_won = int(round(MHI_GTCC_CAPEX_JPY_B * 1e9 * (MHI_100JPY_KRW_NOV9 / 100) / 1e8))
+    engine_won = int(round(MHI_ENGINE_CAPEX_JPY_B * 1e9 * (MHI_100JPY_KRW_NOV9 / 100) / 1e8))
+    source_link = a("미쓰비시중공업 11/6 공식 실적발표", issuer)
+    detail_link = a("생산능력·설비투자 보강 근거", detail)
+    rows = [
+        "<b>가스터빈 공급능력·데이터센터 발전 엔진 변화 — 미쓰비시중공업(7011)</b>",
+        "",
+        "• <b>기준일</b> │ 실적 공식 발표 2026-11-06; 11/09는 재전달일.",
+        "• <b>생산능력 목표</b> │ 대형 GTCC 가스터빈 FY2024 대비 FY2030까지 약 2배. "
+        "기존 2026년 중 언급된 목표의 재확인이며 새 수주·실제 출하 2배 아님.",
+        f"• <b>고온부품·블레이드</b> │ FY2027 이후 주요 투자 약 5,000억엔(약 {gtcc_won:,}억원). "
+        "완제품 공장 2배 증설비 전액과 동일시하지 않음.",
+        f"• <b>데이터센터 발전용 피스톤엔진</b> │ 별도 투자 약 1,000억엔(약 {engine_won:,}억원). "
+        "가스터빈과 다른 제품·생산능력이며 함께 6,000억엔 성장투자로 추적.",
+        "• <b>현재 수주</b> │ FY2026 상반기 대형 가스터빈 19대·약 8GW 신규 주문, "
+        "2026년 9월 말 계약 잔량 83대·약 37GW(설명자료 보도 기준).",
+        "• <b>실적 연결</b> │ 부품·조립 자동화→검사·가동률→터빈 납품·검수→발전소 "
+        "연료·환경허가·전원 인가→실제 발전; 발표된 생산 목표가 즉시 납기 단축은 아님.",
+        "• <b>리드타임 주의</b> │ 전달 메모의 36~48개월은 산업 일반 주장으로 회사별 최신 확정 납기 아님. "
+        "수주잔고·계약 납기·고객 취소·설비 가동을 분리해 재확인.",
+        "• <b>GTCC 뜻</b> │ 가스터빈의 폐열로 증기터빈을 추가 구동하는 복합화력. "
+        "경유+가스 동시 연소를 뜻하지 않음.",
+        "• <b>다음 경보</b> │ 새 블레이드 생산라인 양산·공장 가동률·대형터빈 발주/납기 "
+        "변화·발전 엔진 고객계약·대형 전원 인가/인허가 지연.",
+        "• <b>확인 수준</b> │ 공식 실적발표 날짜 확인 + 관련 세부 금액에 관한 독립 자료 대조. "
+        "공식 IR PDF의 모든 페이지를 직접 재추출한 것은 아님.",
+        "• <b>원화 환산</b> │ 2026-11-09 수출입은행 기준 100엔=856.72원; "
+        "과거 기준일 환율이며 향후 현재 환율로 재사용 금지.",
+        "",
+        "• " + source_link,
+        "• " + detail_link,
+    ]
+    payload = "\n".join(rows).strip()
+    if payload.count("<b>") != payload.count("</b>") or payload.count("<a href=") != payload.count("</a>"):
+        raise RuntimeError("MHI gas turbine Telegram HTML tags unbalanced")
+    if len(payload) > 3400:
+        raise RuntimeError("MHI gas turbine alert unexpectedly exceeds one-chunk budget")
+    previous_alert = ALERT.read_text(encoding="utf-8").strip() if ALERT.exists() else ""
+    ALERT.write_text((previous_alert + "\n\n" if previous_alert else "") + payload + "\n", encoding="utf-8")
+    state = load_json(PENDING)
+    state["mhi_gtcc_supply_capacity"] = {
+        **prev,
+        "version": 1,
+        "delivered_event_id": MHI_GTCC_EVENT,
+        "announcement_date": "2026-11-06",
+        "baseline_fy": "2024",
+        "target_fy": "2030",
+        "target_gtcc_capacity_multiple": 2.0,
+        "capex_hot_parts_jpy_b": 500,
+        "capex_engine_jpy_b": 100,
+        "investment_from_fy": 2027,
+        "first_half_large_turbine_orders_units": 19,
+        "first_half_large_turbine_orders_gw": 8,
+        "large_turbine_contract_backlog_units": 83,
+        "large_turbine_contract_backlog_gw": 37,
+        "source_urls": [issuer, detail],
+        "evidence": "issuer_release_and_independent_capex_coverage; slide_pages_not_directly_parsed",
+        "stage": "capacity_investment_plan_not_delivered_turbines",
+        "last_prepared_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+    }
+    PENDING.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if STATUS.exists():
+        with STATUS.open("a", encoding="utf-8") as fp:
+            fp.write("- MHI GTCC/engine capacity: **2026-11-06 verified official date + independent capex, alert pending delivery**\n")
+    print("mhi_gtcc_alert=prepared event=" + MHI_GTCC_EVENT)
+
+
+run_mhi_gtcc_existing_generation_watch()
