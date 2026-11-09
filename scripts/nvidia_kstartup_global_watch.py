@@ -32,6 +32,7 @@ USER_HEADLINE = "[단독] 리벨리온 등 엔비디아와 간담회…AI 스타
 USER_ARTICLE = "https://www.hankyung.com/article/2026110590351"
 OFFICIAL_AI_DAY = "https://www.nvidia.com/ko-kr/ai-days/"
 NVIDIA_BLOG = "https://blogs.nvidia.co.kr/blog/ai-day-seoul-2026-preview/"
+OFFICIAL_NVLINK = "https://nvidianews.nvidia.com/news/nvidia-rebellions-and-sk-telecom-announce-collaboration-to-advance-sovereign-ai-infrastructure-with-nvidia-nvlink-fusion"
 RELEVANT_FIRMS = (
     ("rebellions", ("리벨리온", "rebellions")),
     ("furiosa", ("퓨리오사", "furiosa")),
@@ -192,7 +193,10 @@ def classify(title, source_tier_value="신뢰보도"):
         return "visit_cancelled", 3, "방한·개별 면담 취소(포럼·협력 자체의 무산 아님)"
     if exact_terms(t, ("계약 해지", "투자 중단", "인수 중단", "협약 철회", "사업 철회")):
         return "deal_cancelled", 6, "계약 철회·중단"
-    if exact_terms(t, ("NVLink Fusion", "nvlink fusion", "엔브이링크 퓨전", "nvlink")) and exact_terms(t, (
+    if (exact_terms(t, ("nvlink fusion", "엔브이링크 퓨전", "nvlink")) or
+        (exact_terms(t, ("skt", "sk텔레콤", "sk telecom")) and
+         exact_terms(t, ("리벨리온", "rebellions")) and
+         exact_terms(t, ("3자 협력", "삼자 협력", "3사 협력", "3자 협약")))) and exact_terms(t, (
         "리벨리온", "rebellions")) and exact_terms(t, (
         "공식 발표", "발표", "협력", "collaboration", "announce", "협약", "체결", "연동")):
         return "nvlink_r200_collaboration", (5 if source_tier_value == "공식" else 4), "R200·NVLink Fusion 기술협력 발표(양산·납품 아님)"
@@ -240,7 +244,9 @@ def event_id(item):
         return f"nvidia_korea|{kind}|2026-11"
     if kind == "ai_day_schedule" and "2026-11" in year_month:
         return "nvidia_korea|ai_day_schedule|2026-11"
-    if kind in ("nvlink_r200_collaboration", "startup_forum_held", "visit_cancelled"):
+    if kind == "nvlink_r200_collaboration":
+        return "nvidia_korea|nvlink_r200_collaboration|2026-11"
+    if kind in ("startup_forum_held", "visit_cancelled"):
         return f"nvidia_korea|{kind}|{year_month}"
     firm = firm_id(title)
     if kind in ("meeting", "meeting_reported", "meeting_confirmed") and firm == "nvidia_korea":
@@ -303,6 +309,25 @@ def collect():
             errs.append(type(exc).__name__ + ":" + query[:60])
     if ok < max(5, len(QUERIES) // 2):
         raise RuntimeError(f"NVIDIA/Korea startup news search unhealthy ({ok}/{len(QUERIES)} feeds)")
+    # First-party NVIDIA newsroom evidence is an independent event source,
+    # not just a Google News headline. It is safe to alert once after bootstrap.
+    try:
+        official_html, _ = fetch(OFFICIAL_NVLINK, timeout=18)
+        if all(x in official_html.lower() for x in ("rebellions", "nvlink fusion", "sk telecom")):
+            title = "NVIDIA·리벨리온·SK텔레콤, R200 NPU·NVLink Fusion 기반 AI 인프라 기술협력 공식 발표"
+            official_item = {
+                "title": title, "summary": "NVIDIA 원문: R200 NPU 연동 계획, SK텔레콤 데이터센터 도입 계획(구매물량·금액·설치·매출 미확정)",
+                "url": OFFICIAL_NVLINK, "source": "NVIDIA 공식 뉴스룸",
+                "source_url": "https://nvidianews.nvidia.com", "tier": "공식",
+                "published_kst": "2026-11-09",
+            }
+            kind, stage, label = classify(title, "공식")
+            official_item.update(kind=kind, stage=stage, label=label,
+                                 event_id=event_id(official_item))
+            records.append(official_item)
+            print("nvidia_official_nvlink_release_verified=true")
+    except (OSError, ValueError, TimeoutError) as exc:
+        print("nvidia_official_nvlink_release_unreachable=" + type(exc).__name__)
     official_ok = 0
     for source in (OFFICIAL_AI_DAY, NVIDIA_BLOG):
         try:
