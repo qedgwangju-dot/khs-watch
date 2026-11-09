@@ -168,6 +168,14 @@ class MapLightSourceHealthTest(unittest.TestCase):
             with self.assertRaisesRegex(mod.MapLightFetchError, "pagination"):
                 mod.fetch_maplight_official_html_as_rss()
 
+    def test_maplight_official_html_failure_identifies_both_blocked_sources(self):
+        blocked = mod.MapLightFetchError("HTTPError status=403 retryable=false")
+        with patch.object(mod, "fetch_maplight_rss", side_effect=blocked), patch.object(
+            mod, "fetch_maplight_official_html_as_rss", side_effect=self.error(403)
+        ):
+            with self.assertRaisesRegex(mod.MapLightFetchError, "official newsroom fallback: HTTPError status=403"):
+                mod.validate_maplight_bridge_and_events()
+
     def test_maplight_future_plans_are_not_completed_clinical_or_signed_deals(self):
         planned = (
             "ML-007C-MA ZEPHYR completed enrollment. VISTA enrollment remains ongoing; "

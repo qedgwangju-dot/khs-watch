@@ -784,7 +784,13 @@ def validate_maplight_bridge_and_events() -> tuple[bool, list[dict]]:
     except MapLightFetchError as exc:
         if "status=403" not in str(exc):
             raise
-        xml = fetch_maplight_official_html_as_rss()
+        try:
+            xml = fetch_maplight_official_html_as_rss()
+        except Exception as fallback_error:
+            raise MapLightFetchError(
+                "MapLight RSS HTTP 403; official newsroom fallback: "
+                + source_error_detail(fallback_error)
+            ) from fallback_error
         source_label = "MapLight Therapeutics 공식 보도자료"
     low = clean(re.sub(r"<[^>]+>", " ", xml)).lower()
     bridge_required = ("maplight", "karl deisseroth", "optogenetics", "circuit")
