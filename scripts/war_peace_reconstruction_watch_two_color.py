@@ -87,11 +87,11 @@ def _completed_attack_headline(title):
 def _election_war_commentary(title):
     """Keep electoral commentary and hypothetical war remarks out of directions."""
     election = re.search(
-        r'중간선거|선거\s*참패|블루쓰나미|트럼프\s*레임덕|'
+        r'중간선거|선거\s*참패|블루쓰나미|트럼프\s*레임덕|미\s*민주당\s*의회|'
         r'차기\s*대선주자|대선주자|\bmidterms?\b',
         title, re.IGNORECASE)
     outlook = re.search(
-        r'원인|때문|입장차|악영향|영향은?|향방은?|바꿀까|달라질까|예상|전망|가능성|불가피|후회|'
+        r'원인|때문|입장차|악영향|영향은?|향방은?|바꿀까|달라질까|앞당길까|예상|전망|가능성|불가피|후회|'
         r'출구전략|기대(?:감)?|청신호|갈림길|비판|거리\s*두(?:기|나|는|고)?|'
         r'\b(?:blame|regret|expected|outlook|possibility|impact)\b',
         title, re.IGNORECASE)

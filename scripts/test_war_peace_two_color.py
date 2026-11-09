@@ -1883,5 +1883,47 @@ class Run842SavedSemanticTests(unittest.TestCase):
             self.assertEqual(presentation.direction(stage, separate), 'red')
 
 
+class Run848PoliticalCeasefireQuestionTests(unittest.TestCase):
+    def test_saved_question_is_context_without_erasing_current_actions(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run848_political_ceasefire_question_42595658342.json')
+                             .read_text(encoding='utf-8'))
+        provenance, saved = fixture['provenance'], fixture['article']
+        self.assertEqual(provenance['zip_sha256'],
+                         'e534ce7fbaa97a59371ba7c768106a386e7e95f30d06225a442b8b2a360c2ab4')
+        self.assertEqual(provenance['telegram_message_id'], 433)
+        self.assertEqual(provenance['observed_delivered_color'], 'red')
+        self.assertEqual(saved['semantic_classification_color'], 'green')
+        self.assertEqual(saved['article_text_sha256'],
+                         provenance['operating_article_text_sha256'])
+        self.assertTrue(provenance['later_refetch_body_hash_matched'])
+        self.assertFalse(provenance['operating_http_bytes_archived'])
+
+        snapshot, proof = fixture['semantic_snapshot'], fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+        text, projected = presentation.project(stage, alert_bytes.decode('utf-8'),
+                                               json.loads(evidence_bytes), proof, snapshot)
+        target = next(row for row in projected['articles']
+                      if row['id'] == saved['id'])
+        self.assertIsNone(target['classification_color'])
+        self.assertEqual(target['display_section'], 'context_reference')
+        self.assertIn('민주당 의회가 종전 앞당길까', text)
+        self.assertIn('<b>참고 1.', text)
+        self.assertNotIn('🔴 [신규]', text)
+        self.assertEqual([row['classification_color'] for row in projected['articles']
+                          if row.get('rendered')], [None, 'green', None, 'green'])
+
+        for title, expected in (
+            ('美 민주당 의회가 종전 앞당길까…미군이 이란을 공습했다', 'red'),
+            ('미 민주당 의회가 종전 앞당길까…미·이란 회담 재개 합의', 'green'),
+        ):
+            with self.subTest(title=title):
+                row = {'title_original': title, 'body_verified': False}
+                self.assertEqual(presentation.direction(stage, row), expected)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
