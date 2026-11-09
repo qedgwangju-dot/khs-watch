@@ -264,6 +264,8 @@ jobs:
 
 
   monitor:
+    outputs:
+      telegram_send_outcome: ${{ steps.data_center_telegram_delivery.outcome }}
     # Code-push validation must never trigger live alert sends.
     # Never process workflow_run events from failed or non-main upstream runs.
     if: >-
@@ -535,6 +537,7 @@ jobs:
         run: python scripts/remove_telegram_italics.py
 
       - name: Send Telegram only on meaningful changes
+        id: data_center_telegram_delivery
         run: |
           python - <<'PY'
           import html, os, pathlib, re, requests, time
@@ -1065,7 +1068,7 @@ jobs:
     # Existing generator collector, same token/chat/state; runs only when
     # the main monitor failed BEFORE handling this source.
     needs: [monitor]
-    if: ${{ always() && github.event_name != 'push' && needs.monitor.result == 'failure' }}
+    if: ${{ always() && github.event_name != 'push' && needs.monitor.result == 'failure' && needs.monitor.outputs.telegram_send_outcome == 'skipped' }}
     runs-on: ubuntu-latest
     timeout-minutes: 18
     env:
