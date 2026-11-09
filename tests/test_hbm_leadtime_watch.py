@@ -723,6 +723,69 @@ class Weekly009ScreenshotRegression(unittest.TestCase):
             w.WEEKLY_009_IMAGE_LOCK["components"], "2026-11-10"
         ))
 
+    def test_new_issue_title_alone_cannot_advance_numeric_baseline_or_repeat(self):
+        import copy
+        import tempfile
+        from unittest import mock
+        item = {
+            "kind": "trendforce_feed",
+            "title": "Weekly Radar 007: tracking CPU GPU DRAM NAND HDD ABF MLCC lead time",
+            "link": "https://insights.trendforce.com/p/weekly-radar-007",
+            "description": "We track CPU GPU DRAM NAND HDD ABF MLCC lead times.",
+            "published_at_kst": "2026-10-26T19:00:00+09:00",
+        }
+        base = {
+            "as_of": "2026-10-12",
+            "source": "https://insights.trendforce.com/p/weekly-radar-005",
+            "components": copy.deepcopy(w.WEEKLY_005_ARCHIVED_COMPONENTS),
+            "seen_urls": ["https://insights.trendforce.com/p/weekly-radar-005"],
+            "mlcc_vendor_watch": copy.deepcopy(w.MLCC_VENDOR_BASELINE),
+            "caspa_panel_watch": copy.deepcopy(w.CASPA_PANEL_BASELINE),
+        }
+        with tempfile.TemporaryDirectory() as root:
+            folder = pathlib.Path(root)
+            state, pending, alert = folder / "state.json", folder / "pending.json", folder / "alert.md"
+            state.write_text(json.dumps({
+                "ai_component_leadtime": base,
+                "telegram_message_id": 308,
+                "another_route": {"preserve": True},
+            }, ensure_ascii=False), encoding="utf-8")
+            feed = lambda kind, query: [item] if kind == "trendforce_feed" else []
+            with mock.patch.object(w, "STATE_PATH", state), \
+                 mock.patch.object(w, "PENDING_PATH", pending), \
+                 mock.patch.object(w, "ALERT_PATH", alert), \
+                 mock.patch.object(w, "read_rss", side_effect=feed), \
+                 mock.patch.object(w, "article_text", return_value=""):
+                w.main()
+                first = json.loads(pending.read_text(encoding="utf-8"))
+                self.assertEqual(first["ai_component_leadtime"]["as_of"], "2026-10-12")
+                self.assertEqual(first["ai_component_leadtime"]["source"], base["source"])
+                self.assertIn(item["link"], first["ai_component_leadtime"]["seen_urls"])
+                self.assertFalse(alert.exists())
+                state.write_text(json.dumps(first), encoding="utf-8")
+                with mock.patch.object(
+                    w, "article_text",
+                    return_value="Current lead time DRAM Very Tight 21W 8W.",
+                ):
+                    # Explicit complete row is the genuine material observation.
+                    # Simpler precise input: status + current + balanced adjacent.
+                    item["description"] = (
+                        "We track CPU GPU DRAM NAND HDD ABF MLCC lead times. "
+                        "DRAM Very Tight 21W 8W."
+                    )
+                    w.main()
+                second = json.loads(pending.read_text(encoding="utf-8"))
+                self.assertEqual(second["ai_component_leadtime"]["as_of"], "2026-10-26")
+                self.assertEqual(second["ai_component_leadtime"]["components"]["DRAM"]["current"], "21")
+                self.assertEqual(second["telegram_message_id"], 308)
+                self.assertEqual(second["another_route"], {"preserve": True})
+                self.assertTrue(alert.exists())
+                state.write_text(json.dumps(second), encoding="utf-8")
+                alert.unlink()
+                w.main()
+                self.assertFalse(alert.exists())
+
+
     def test_009_publisher_date_with_stale_embedded_table_does_not_hide_screenshot(self):
         import copy
         prev = copy.deepcopy(w.WEEKLY_008_LOCK)

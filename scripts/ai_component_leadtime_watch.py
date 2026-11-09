@@ -1834,9 +1834,10 @@ def main() -> None:
             or "weekly radar" in (best.get("title") or "").lower()
         )
 
-        # 이미 저장한 같은 주차/과거 주차 자료를 다시 파싱해 상태를 덮어쓰지 않는다.
-        # 새 주차(발행일이 직전 기준일보다 뒤)일 때만 숫자·상태·원인 신호를 승격한다.
-        if is_new_release and (changed or changed_signals):
+        # A new report title/date is not a newly parsed numeric table.
+        # Keep the last verified numeric as_of so a later recovered image
+        # from the SAME weekly issue can still promote real current leads.
+        if is_new_release and changed:
             fresh_alert = build_alert(
                 previous_components,
                 merged,
@@ -1845,8 +1846,10 @@ def main() -> None:
                 published,
                 signal_only=False,
                 signals=merged_signals,
-                # 새 Weekly Radar에서는 이번 주 확인된 원인·병목 신호를 모두 보여준다.
-                changed_signals=[name for name in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
+                changed_signals=[
+                    name for name in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
+                    if name in extracted_signals
+                ],
                 evidence=evidence,
             )
             notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
@@ -1854,7 +1857,9 @@ def main() -> None:
             latest_signals = merged_signals
             latest_source = url or latest_source
             latest_as_of = published_date
-        elif is_new_release and is_new_url and exact_weekly_signal:
+        elif is_new_release and is_new_url and exact_weekly_signal and changed_signals:
+            # Distinct material narrative, but not an independently checked
+            # current lead-time table. Notify once; keep the numeric baseline.
             fresh_alert = build_alert(
                 previous_components,
                 merged,
@@ -1863,13 +1868,17 @@ def main() -> None:
                 published,
                 signal_only=True,
                 signals=extracted_signals,
-                changed_signals=[name for name in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
+                changed_signals=[
+                    name for name in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
+                    if name in extracted_signals
+                ],
                 evidence=evidence,
             )
             notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
             latest_signals = merged_signals
-            latest_source = url or latest_source
-            latest_as_of = published_date
+            # Preserve latest_as_of and latest_source until metric evidence is found.
+        # A headline alone, with neither new numeric facts nor distinct
+        # material signals, does not generate a repetitive status-only alert.
 
     # This user-provided image is stronger evidence for its 7 visible rows
     # than an old 11/2 article, but never an excuse to fabricate a live URL.
