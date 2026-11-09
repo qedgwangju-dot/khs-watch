@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-09T15:09:56+09:00",
+  "last_checked_kst": "2026-11-09T15:54:13+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3715,6 +3715,105 @@
       "material_stage": 1,
       "first_seen_kst": "2026-11-09T15:09:56+09:00",
       "alerted": true
+    },
+    "2c8c98c961d198798bebba38": {
+      "title": "[포토] 엔비디아·SK텔레콤·리벨리온, NVLink 업무협약 체결 - 아시아경제",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE8xYVo0X2dlSXoxTjJVVURWcHg5bjlGVjFSOEtWQ0ttVndGRGxNNkpKNTZrdS1EZlQ4VUpCZUxKQ3J2SlBfdDJvYTJ3eU1EYmFvbGY0b19TemVjbDFXc3Y2Uw?oc=5",
+      "summary": "[포토] 엔비디아·SK텔레콤·리벨리온, NVLink 업무협약 체결 아시아경제",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T15:54:13+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "c2aba24b67de20368a742f3b": {
+      "title": "엔비디아-SKT-리벨리온 3자 MOU - 뉴시스",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBxMlE0QlUzWDhuT3hfaUxpbjlzcjhLeV9KVjkwVGg2YnFsRklpNUpsSG1zODZHYkJicXJfUjBiUWFvdXRXeHo4N3QyTlBjeWpqTEdRMzRWU3M3ejM5aHpMcg?oc=5",
+      "summary": "엔비디아-SKT-리벨리온 3자 MOU 뉴시스",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T15:54:13+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "083e2141f0b5717508108234": {
+      "title": "질문은 엔비디아 GPU, 답변은 리벨리온 NPU로…SKT 데이터센터서 실증까지 - 매일경제",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1yT0gtQ3pIcEZUQThuQk1QUVVZWlJrQWx1T0Q2eVRfNTlleXk5VFVNZDVSUG92SHR3VG9CRVJZcFVwMWFYc2gxSFg3a2xTQQ?oc=5",
+      "summary": "질문은 엔비디아 GPU, 답변은 리벨리온 NPU로…SKT 데이터센터서 실증까지 매일경제",
+      "event_signature": "skt|npu|datacenter",
+      "material_stage": 2,
+      "first_seen_kst": "2026-11-09T15:54:13+09:00",
+      "suppressed_duplicate": "same_event:skt|npu|datacenter"
+    },
+    "7ba228d684c71d7c4a5cb15b": {
+      "title": "[포토] 엔비디아·SK텔레콤·리벨리온 한국형 소버린 AI 인프라 구축 위한 MOU - 전자신문",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFB6NTJlTlIwQ2YyZ2RVaDBTWGtENFlKWm5OV2hxOVd0dS1Jb1AzZ0xMeXZSbno5N2xNNktNdDA1MFB0dGV6bGxxanZHbnBGUQ?oc=5",
+      "summary": "[포토] 엔비디아·SK텔레콤·리벨리온 한국형 소버린 AI 인프라 구축 위한 MOU 전자신문",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T15:54:13+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "02b95e82c0abf8351b98756d": {
+      "title": "엔비디아 GPU·리벨리온 NPU 묶어 SKT AI DC에...인프라 고도화 협력 - 뉴스핌",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9LcGhuZlZNR1BOSVFzTmh5MEFiQmk2WHU0SUpTQWNlTzloSVcwV0pEU1p6UV81emhyVEFHQWgzRHBKdENjeGkxaEZEVDVDbncwSHU0bkpjNlo5bmhM?oc=5",
+      "summary": "엔비디아 GPU·리벨리온 NPU 묶어 SKT AI DC에...인프라 고도화 협력 뉴스핌",
+      "event_signature": "skt|npu|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T15:54:13+09:00",
+      "suppressed_duplicate": "same_event:skt|npu|general"
+    },
+    "cbfec366327ec44c39250b16": {
+      "title": "엔비디아, 리벨리온·SK텔레콤과 NVLink Fusion 기반 소버린 AI 인프라 협력 - 헬로티",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9yOWR2WGJ3QmVyNnBkNy1RanBGQjhfdjAyVHgtZmVZbGZfMzhISS1JeHFOU0NvQUlXbG0tUGVyaUh4WVE3SzFXaEhjRWhzSEpSaTFGeHNkTldJM1ZPOUdr?oc=5",
+      "summary": "엔비디아, 리벨리온·SK텔레콤과 NVLink Fusion 기반 소버린 AI 인프라 협력 헬로티",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T15:54:13+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "170a7b2f5de2683c80d69efe": {
+      "title": "SKT·엔비디아·리벨리온, AI 반도체 통합 협력 - 스페셜경제",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1UYkNCVmprZlRWa2xHcUdEcW9ZLVVpQkVKWnpXMU0wMlF4RmhMMFVvZmhOTVA0MWh1RW1Fc2YwQlh3dEFGb1duODdWSjd6T1g2NEhzTFVoZ0FFdURuMXVnVDZmYXVCYy1pWGJVXw?oc=5",
+      "summary": "SKT·엔비디아·리벨리온, AI 반도체 통합 협력 스페셜경제",
+      "event_signature": "skt|npu|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T15:54:13+09:00",
+      "suppressed_duplicate": "same_event:skt|npu|general"
+    },
+    "99e8681fbeb2512b017f2e07": {
+      "title": "엔비디아 뇌에 리벨리온 탑재…SKT, 소버린 AI 동맹 '풀스택 강화' - 파이낸셜포스트",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBVaG9IVUQ2U0RUZDdvT0pkSTBSVzlqZ0hHaU5fNy1jdjNPSEZOb0xsSmNtVUZNNVY0X09ZRjc4RnJZLWxrYWpFaWNqTVY2U1J0U3NtTWVVaXo4TkZrMDhDVmlsdndIcktuaGNzalNHbUJSNVIz?oc=5",
+      "summary": "엔비디아 뇌에 리벨리온 탑재…SKT, 소버린 AI 동맹 '풀스택 강화' 파이낸셜포스트",
+      "event_signature": "skt|general|general",
+      "material_stage": 0,
+      "first_seen_kst": "2026-11-09T15:54:13+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "01975e986ae85cb6edba53a6": {
+      "title": "SKT·엔비디아·리벨리온, 한국형 소버린 AI 인프라 구축 협력 - 파이낸셜투데이",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE52dkE0a252eGJ1Ulk5Qnp0cTFsdGRIN2V6ME5Mdy1FbEdYUnFFM0R0LWhOM1czYU1JeXRCUzJ1ZzlVaGx3MC1Fb1JaNkdwOEJHUE1mNWx4LUs2c1FNTVVKOERzUElGWHllV2fSAW5BVV95cUxOTHItTVpER0VrY1RDOEFPbEFrNGowb2tKU0VIT0R6S1hUY21ES0w5Q1F2YXAzUEQ1dlRxUXNaSEVuanZCQlZNdURRZHBnaVlXU3ljeVoyY3RfUkJTVGdsNDh5N0JCX1l1Wl9BZE1HZw?oc=5",
+      "summary": "SKT·엔비디아·리벨리온, 한국형 소버린 AI 인프라 구축 협력 파이낸셜투데이",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T15:54:13+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "cbea6a17fb38fbc272cd41a5": {
+      "title": "엔비디아·리벨리온·SKT, 소버린 AI 인프라 고도화 협력 - 게임메카",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5obmF0dWdRZUZvX1hGdjZSYVlma1ZUeHVHUEhUTF94Rkctd2FOeDEwSEZBT1J5SGs0OVpOVjdzbjJ1MkpHRmVDdDctcnU5Mi1lWXRpUDZQMkTSAVtBVV95cUxNWFBzQnNUZmVrQVdzVDNOU19uQkd0aDVQb1FtWndlbUpmbnVLQXp0TTk3c1VZWkViUmhwN0kzbk1RdktoX2tUQ0tyeF9rNkI2MVhuMksyWU1hMWxN?oc=5",
+      "summary": "엔비디아·리벨리온·SKT, 소버린 AI 인프라 고도화 협력 게임메카",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T15:54:13+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "dc043b4c1cc3b0d41fd26a9e": {
+      "title": "SKT, 엔비디아·리벨리온과 풀스택 소버린 AI 강화…GPU·NPU 개발 MOU - 컨슈머타임스",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBENjBhV2FaMGZFWUgtUE5BVUJtNk5EZ3d6VHl1NndXZ3hmVndMLVFIdkQ5emQyb21seVd2d2EtZk43a1Z1WjlpbDh3LXJONDB1ZndPWWxNcy1qZXZ3VVVLdFJVSU5vdnM4Mmc?oc=5",
+      "summary": "SKT, 엔비디아·리벨리온과 풀스택 소버린 AI 강화…GPU·NPU 개발 MOU 컨슈머타임스",
+      "event_signature": "skt|npu|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T15:54:13+09:00",
+      "suppressed_duplicate": "same_event:skt|npu|general"
     }
   }
 }
