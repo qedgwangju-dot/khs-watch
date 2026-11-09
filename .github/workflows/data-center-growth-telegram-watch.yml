@@ -14,6 +14,7 @@ on:
       - "scripts/patch_google_constellation_official_ppa.py"
       - "scripts/clean_us_time_to_power_alert_html.py"
       - "scripts/us_data_center_generation_buildout_watch.py"
+      - "scripts/guard_us_time_to_power_metrics_source.py"
       - "scripts/us_data_center_cancellation_risk_watch.py"
       - "scripts/us_ai_data_center_buildout_watch.py"
       - "scripts/spacexai_neocloud_watch.py"
@@ -233,6 +234,20 @@ jobs:
               {"last_context_id": namespace["INBOUND_DIVERSION_ID"]}, False, proof
           )
           print("us_korea_investment_offline_regression=passed no_telegram=true")
+          PY
+
+      - name: Validate runtime source guard safely without sending Telegram
+        run: |
+          python scripts/guard_us_time_to_power_metrics_source.py
+          python -m py_compile scripts/us_data_center_time_to_power_watch.py scripts/us_data_center_generation_buildout_watch.py
+          python - <<'PY'
+          from pathlib import Path
+          code = Path("scripts/us_data_center_generation_buildout_watch.py").read_text(encoding="utf-8")
+          assert "Anthropic" in code and "OnePWR" in code, "Existing generator-order search disappeared"
+          assert "POWER_DEFAULTS" in code, "IEA/EIA demand extension absent"
+          assert "enrich_eia_steo_metrics" in code, "EIA metrics extension absent"
+          assert "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V1" in code, "Existing nuclear PPA extension missing"
+          print("generation_runtime_guard_offline_regression=passed no_telegram=true")
           PY
 
   monitor:

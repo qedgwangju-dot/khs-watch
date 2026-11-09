@@ -34,6 +34,14 @@ t = t.replace(
     1,
 )
 t = t.replace("FORMAT_VERSION = 1", "FORMAT_VERSION = 2", 1)
+# Preserve recently added event search terms while the legacy guard
+# rewrites the older search list. Never delete the live monitor's additions.
+_RECENT_GENERATION_QUERY = '    \\'"Anthropic" "OnePWR" Caterpillar generators delivered installation permit\\',\\n'
+if t.count(_RECENT_GENERATION_QUERY) > 1:
+    raise SystemExit("generation query restoration ambiguous")
+if _RECENT_GENERATION_QUERY in t:
+    t = t.replace(_RECENT_GENERATION_QUERY, "", 1)
+
 
 const_old = 'GEV_Q2_2026 = "https://www.gevernova.com/news/articles/ge-vernova-releases-second-quarter-2026-financial-results"\n'
 const_new = const_old + '''IEA_EXEC = "https://www.iea.org/reports/energy-and-ai/executive-summary"\nIEA_US_DC = "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai"\nIEA_US_DEMAND = "https://www.iea.org/reports/electricity-2026/demand"\nIEA_GRID_SUPPLY = "https://www.iea.org/reports/building-the-future-transmission-grid/executive-summary"\nIEA_AI_QUESTIONS = "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"\nEIA_STEO = "https://www.eia.gov/outlooks/steo/report/elec_coal_renew.php"\n'''
@@ -3362,6 +3370,13 @@ t = t.replace(ess_meaning_anchor, ess_meaning_updated, 1)
 
 # No version bump: this expands what can be discovered, not the historical
 # research baseline. It must not create a synthetic 'format upgrade' alert.
+# Recover retained existing news queries after all guarded additions.
+if _RECENT_GENERATION_QUERY not in t:
+    _list_start = t.find("NEWS_QUERIES = (\\n")
+    _list_end = t.find("\\n)\\n", _list_start)
+    if _list_start < 0 or _list_end < 0:
+        raise SystemExit("generation news query restoration point missing")
+    t = t[:_list_end] + "\\n" + _RECENT_GENERATION_QUERY.rstrip("\\n") + t[_list_end:]
 g.write_text(t, encoding="utf-8")
 print("Official LG Energy Solution/Samsung SDI ESS orders added to existing data-center watch")
 
