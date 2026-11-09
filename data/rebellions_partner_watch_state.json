@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-09T17:02:00+09:00",
+  "last_checked_kst": "2026-11-09T18:16:36+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3913,6 +3913,70 @@
       "material_stage": 1,
       "first_seen_kst": "2026-11-09T17:02:00+09:00",
       "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "1d49145d4bf750f81a99e1bf": {
+      "title": "[포토] SKT·엔비디아·리벨리온, 한국형 소버린 AI 인프라 협력 - 아시아경제",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA3RTR2cmxCR1FfU2RjRjZxcnZ4Q0x5aGF4bWRjTkNmYXNDTkdGQkJwQTQtcW5Zbld3TFQ5M0JQYlZtXzZPWXJCOFlKU254N0s2OTBUMGdUZ2hpQ0tRR2VJbA?oc=5",
+      "summary": "[포토] SKT·엔비디아·리벨리온, 한국형 소버린 AI 인프라 협력 아시아경제",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T18:16:36+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "9b673c9cb74281546551dbed": {
+      "title": "엔비디아, 리벨리온, SK텔레콤과 소버린 AI 인프라 협력 발표 - AI 매터스",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBtV2pyRTZUSHpuY3JzZm9NdG53YUh2QXdKV1NlQi1tal93bW5NZG1yWDZCU3BBN19rUFB1SGlXS1BTcnVGRGg5WmNIV1JVd1l4TnBxQg?oc=5",
+      "summary": "엔비디아, 리벨리온, SK텔레콤과 소버린 AI 인프라 협력 발표 AI 매터스",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T18:16:36+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "9f2170b8cb2deeac12f441d2": {
+      "title": "엔비디아 GPU에 국산 NPU 결합···SKT·리벨리온, AI 인프라 공동 개발 - 이뉴스투데이",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1uQmc0aERWakZsd1JyVV82SzhfTGZJV0daYUhsSmpZVGJ3YnJ4am80SmtMWDMxUlNWY2w3Yy1hek4zck83MzlfY180NDNZNmMyWDQtcVRvekd6Q0dGLVI0MGZ0enZkY21Cd2dlcGpPdErSAXRBVV95cUxPcnRXekVCZXpzck5NT29fWHZCdVhkMnFDV19zRHJVNTRENnFiODdfTEMxQ05xLU9DT2tRV2k3N3hZaUs1MUFFQTd3WDFJVHd3eEU5b05fSTBBUGNLd042NGtSZ2tCNG1ubWJySjZOTmIzMzFQVg?oc=5",
+      "summary": "엔비디아 GPU에 국산 NPU 결합···SKT·리벨리온, AI 인프라 공동 개발 이뉴스투데이",
+      "event_signature": "skt|npu|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T18:16:36+09:00",
+      "suppressed_duplicate": "same_event:skt|npu|general"
+    },
+    "940ccf0b656d54bc4fca93dd": {
+      "title": "SKT, 엔비디아·리벨리온과 GPU·NPU 통합 시스템 공동 개발 추진 - 뉴스포스트",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9YWFdXckRoVy15T1dQbFhyek4tZjFEeHc5UE53SmRoWjROc29NN3QtZjVSUlM5LUFFbmFjSlA3OFhsMXA3cF9TV1FidE1jOUEzdkVFMHlPUDBBX3RJUDIxOXBqaXltRlBM?oc=5",
+      "summary": "SKT, 엔비디아·리벨리온과 GPU·NPU 통합 시스템 공동 개발 추진 뉴스포스트",
+      "event_signature": "skt|npu|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T18:16:36+09:00",
+      "suppressed_duplicate": "same_event:skt|npu|general"
+    },
+    "389061cb9d57559abd05acdb": {
+      "title": "엔비디아·SK텔레콤·리벨리온, 한국형 AI 인프라 구축 협력 - 메디컬투데이",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1qZVYzZWd5ZGNvU1JlTEc2MnV3cENfYWFjb21aX1dCOTBoZjZzRzFfLUNsRU5GWWc1RzFsLTJzamRDdzM5RWk4a2ZUWlNrYlRvdERQcEtRRHUtZWt0MWlBdExEMktwLUtrV0hZdQ?oc=5",
+      "summary": "엔비디아·SK텔레콤·리벨리온, 한국형 AI 인프라 구축 협력 메디컬투데이",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T18:16:36+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "e9547f9cc909d0f4f28d85cd": {
+      "title": "엔비디아·SK텔레콤·리벨리온, 한국형 소버린 AI 인프라 구축 MOU 체결 [TF사진관] - 더팩트",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9hbnNpM1JsV05LYUtBUHdJMzV6R29fNUZvd1dPMUIwLTFKYklPbnhYRTFjSWM3UmdTLXlSbDY1QldiWFF1dWxvVVhvZXRKRmRsMWZkZkRlbFFNdVJzeGfSAVhBVV95cUxPNlVnNWcxQkRmV1N3OUxmVmR0bUJTSmlQNWtMMTRoS2VmalZwVGdYM25TYVRPN1Fna050c2lkdS15U2ZYRWtsSEp5NXZYM1luc2FiM2RpM3Jk?oc=5",
+      "summary": "엔비디아·SK텔레콤·리벨리온, 한국형 소버린 AI 인프라 구축 MOU 체결 [TF사진관] 더팩트",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T18:16:36+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "dd04a449210702f98bbf7bdc": {
+      "title": "SKT, 엔비디아·리벨리온과 AI 반도체 통합 개발…국산 NPU 상용화 추진 - 인더스트리뉴스",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1LMDM1cmhZUDg2R3hKY0lqYVl5U1M5eWlOSXlxNE9fUEpzNVg5a2NCQ1k3YVVadXJzclBGazY0RTE0d3FKanZfLWYxUWNDeUlBVEJuZUZncG0tOVQzUmFXcXdGWm0wUFB1TkladXpIal9mQQ?oc=5",
+      "direct_url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1LMDM1cmhZUDg2R3hKY0lqYVl5U1M5eWlOSXlxNE9fUEpzNVg5a2NCQ1k3YVVadXJzclBGazY0RTE0d3FKanZfLWYxUWNDeUlBVEJuZUZncG0tOVQzUmFXcXdGWm0wUFB1TkladXpIal9mQQ?oc=5",
+      "summary": "SKT, 엔비디아·리벨리온과 AI 반도체 통합 개발…국산 NPU 상용화 추진 인더스트리뉴스",
+      "event_signature": "skt|npu|general",
+      "material_stage": 4,
+      "first_seen_kst": "2026-11-09T18:16:36+09:00",
+      "alerted": true
     }
   }
 }
