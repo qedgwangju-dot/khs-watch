@@ -339,7 +339,8 @@ class BioAlertRegressionTests(unittest.TestCase):
                 patch.object(qlex_watch, "PENDING", root / "pending.json"), \
                 patch.object(qlex_watch, "ALERT", root / "alert.md"), \
                 patch.object(qlex_watch, "STATUS", root / "status.md"), \
-                patch.object(qlex_watch, "eu_mibc_approval_due", return_value=True):
+                patch.object(qlex_watch, "eu_mibc_approval_due", return_value=True), \
+                patch.object(qlex_watch, "cms_final_rule_signal", return_value=(False, "previously_delivered")):
                 state = {"dedupe_version": qlex_watch.DEDUPE_VERSION, "seen_fingerprints": [],
                          "seen_story_keys": [], "seen_semantic_keys": []}
                 qlex_watch.check([], state)
@@ -353,6 +354,77 @@ class BioAlertRegressionTests(unittest.TestCase):
                     qlex_watch.check([], pending)
                 self.assertFalse((root / "alert.md").exists())
 
+
+
+    def test_qlex_stock_drop_is_never_drug_conversion(self):
+        for title in (
+            "알테오젠, 키트루다SC 특허 분쟁 우려에 주가 14% 급락",
+            "알테오젠 주가 16% 폭락...美 약가 인하 우려",
+            "Alteogen stock plunges 23.94% on Keytruda SC policy change",
+        ):
+            with self.subTest(title=title):
+                item = qlex_watch.Item(
+                    "Bing News", title, "https://example.com/stock",
+                    text="알테오젠의 키트루다SC 제형 전환 기술과 로열티 전망이 시장에서 논의됐다.",
+                )
+                self.assertIsNone(qlex_watch.conversion_pct(item.full))
+                self.assertFalse(qlex_watch.relevant(item))
+
+    def test_qlex_true_conversion_and_revenue_still_detected(self):
+        samples = (
+            ("Keytruda Qlex gross-sales conversion rate rose to 10.5%", 10.5),
+            ("키트루다 큐렉스 채택률 23.5% 기록", 23.5),
+            ("KEYTRUDA QLEX achieved 32% adoption rate in the reported quarter", 32.0),
+        )
+        for title, expected in samples:
+            with self.subTest(title=title):
+                item = qlex_watch.Item("Google News", title, "https://example.com/usage")
+                self.assertEqual(qlex_watch.conversion_pct(item.full), expected)
+                self.assertTrue(qlex_watch.relevant(item))
+        self.assertTrue(qlex_watch.relevant(qlex_watch.Item(
+            "Merck 공식", "Keytruda Qlex sales reached $830 million", "https://example.com/merck"
+        )))
+
+    def test_qlex_news_batch_overflow_not_marked_sent_before_delivery(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            items = [
+                qlex_watch.Item("Bing News", f"KEYTRUDA QLEX adoption rate {10+i}%",
+                                f"https://example.com/adoption/{i}") for i in range(7)
+            ]
+            state = {"dedupe_version": qlex_watch.DEDUPE_VERSION,
+                     "seen_fingerprints": [], "seen_story_keys": [], "seen_semantic_keys": [],
+                     "seen_regulatory_events": [qlex_watch.EU_MIBC_REGULATORY_EVENT_ID,
+                       qlex_watch.CMS_2029_FINAL_RULE_ID]}
+            with patch.object(qlex_watch, "OUT", root), patch.object(qlex_watch, "PENDING", root / "pending.json"), \
+                 patch.object(qlex_watch, "ALERT", root / "alert.md"), patch.object(qlex_watch, "STATUS", root / "status.md"), \
+                 patch.object(qlex_watch, "cms_final_rule_signal", return_value=(False,"previously_delivered")):
+                qlex_watch.check(items, state)
+                pending = json.loads((root / "pending.json").read_text(encoding="utf-8"))
+                self.assertEqual(len(pending["seen_fingerprints"]), 6)
+                self.assertNotIn(items[6].fingerprint, pending["seen_fingerprints"])
+                self.assertNotIn(items[6].story_key, pending["seen_story_keys"])
+                self.assertNotIn(items[6].semantic_key, pending["seen_semantic_keys"])
+                self.assertNotIn(items[0].fingerprint, state["seen_fingerprints"])
+
+    def test_korean_guard_normalizes_known_hanja_and_preserves_real_japanese_check(self):
+        with patch.object(base_korean_guard, "translate_to_korean", side_effect=AssertionError("no translation for common shorthand")):
+            line = "알테오젠 주가 16% 폭락...美 약가 인하 우려"
+            self.assertEqual(guard.ensure_korean_text(line),
+                             "알테오젠 주가 16% 폭락...미국 약가 인하 우려")
+            self.assertFalse(base_korean_guard.has_japanese("美"))
+            self.assertTrue(base_korean_guard.has_japanese("日本語"))
+        self.assertIn("美", base_korean_guard.untranslated_hanja("美"))
+
+    def test_identifier_markers_survive_translation_spacing_or_block_delivery(self):
+        restored = base_korean_guard.restore_identifiers(
+            "알테오젠 【고유명 46】 공급", {"【고유명46】": "ALT-B4"}
+        )
+        self.assertEqual(restored, "알테오젠 ALT-B4 공급")
+        with self.assertRaisesRegex(RuntimeError, "보존 표식"):
+            base_korean_guard.restore_identifiers("알테오젠 【고유명 99】 공급", {})
+        with self.assertRaisesRegex(RuntimeError, "보존 표식"):
+            guard.ensure_korean_text("알테오젠 【고유명 99】 공급")
 
     def test_cms_final_rule_korean_sender_identifiers_remain_readable(self):
         lines = qlex_watch.cms_final_rule_lines()

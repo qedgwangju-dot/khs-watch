@@ -14,15 +14,23 @@ def strict_translate_line(line: str) -> str:
 
     converted = base.translate_line(line)
     leftover = base.general_english_words(converted)
-    if base.has_japanese(converted) or leftover:
+    if base.has_japanese(converted) or base.untranslated_hanja(converted) or leftover:
         converted = base.translate_to_korean(converted)
         converted = base.apply_common_replacements(converted)
         leftover = base.general_english_words(converted)
 
-    if base.has_japanese(converted) or leftover:
+    if base._MARKER_RE.search(converted):
+        raise RuntimeError('고유명 보존 표식 복원 실패 — Telegram 발송 차단')
+    kana = base.has_japanese(converted)
+    hanja = base.untranslated_hanja(converted)
+    if kana or hanja or leftover:
+        reasons = leftover[:8]
+        if kana:
+            reasons.append('일본어 가나')
+        if hanja:
+            reasons.append('번역되지 않은 한자: ' + ''.join(hanja[:8]))
         raise RuntimeError(
-            '한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있어 발송 차단: '
-            + ', '.join(leftover[:8])
+            '한국어 송출 검증 실패 — ' + ', '.join(reasons)
         )
     return converted
 

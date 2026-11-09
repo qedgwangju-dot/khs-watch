@@ -19,7 +19,7 @@ ALLOWED_IDENTIFIERS = (
     'AZUR-1', 'AZUR-2', 'AZUR-4', 'DOMENICA', 'JADE', 'SAPPHIRE', 'INTerpath-001', 'INTerpath-014',
     'KEYNOTE-942', 'HER2', 'dMMR', 'MSI-H', 'sBLA', 'RFS', 'DMFS', 'OS', 'HR', 'PFS',
     'ORR', 'cCR12', 'mRNA', 'SC', 'IV', 'THP', 'WAC', 'QoQ', 'YoY', 'USD', 'KRW',
-    'ESMO', 'Bing', 'Google', 'CMS-4215-F', 'CMS',
+    'ESMO', 'Bing', 'Google', 'CMS-4215-F', 'CMS', 'Alteogen',
     # Oncology clinical stage identifiers must not be mistaken for untranslated English.
     'IA', 'IB', 'IC', 'II', 'IIA', 'IIB', 'IIC', 'III', 'IIIA', 'IIIB',
     'IIIC', 'IIID', 'IVA', 'IVB', 'IVC',
@@ -36,6 +36,12 @@ ALLOWED_IDENTIFIERS = (
 )
 
 COMMON_REPLACEMENTS = (
+    # Single-character geographic shorthand in Korean financial headlines.
+    (r'(?<![一-龯])美(?![一-龯])', '미국'),
+    (r'(?<![一-龯])日(?![一-龯])', '일본'),
+    (r'(?<![一-龯])中(?![一-龯])', '중국'),
+    (r'(?<![一-龯])韓(?![一-龯])', '한국'),
+    (r'(?<![一-龯])英(?![一-龯])', '영국'),
     # 검색 플랫폼의 고유명만 보존하고, 설명어 News/Web/Congress는 한국어로 표시한다.
     (r'\bBing\s+News\b', 'Bing 뉴스'),
     (r'\bGoogle\s+News\b', 'Google 뉴스'),
@@ -116,10 +122,19 @@ def protect_identifiers(text: str) -> tuple[str, dict[str, str]]:
     return protected, mapping
 
 
+_MARKER_RE = re.compile(r'【\s*고유명\s*\d+\s*】')
+
+
 def restore_identifiers(text: str, mapping: dict[str, str]) -> str:
     out = text
     for marker, value in mapping.items():
-        out = out.replace(marker, value)
+        index = re.search(r'\d+', marker)
+        if not index:
+            raise RuntimeError('고유명 보존 표식 형식 오류')
+        pattern = r'【\s*고유명\s*' + index.group(0) + r'\s*】'
+        out = re.sub(pattern, lambda _: value, out)
+    if _MARKER_RE.search(out):
+        raise RuntimeError('고유명 보존 표식 복원 실패 — Telegram 발송 차단')
     return out
 
 
@@ -159,7 +174,12 @@ def general_english_words(text: str) -> list[str]:
 
 
 def has_japanese(text: str) -> bool:
-    return bool(re.search(r'[ぁ-んァ-ン一-龯]', text))
+    # Kanji/Hanja alone does not identify Japanese. Japanese kana does.
+    return bool(re.search(r'[ぁ-んァ-ン]', text))
+
+
+def untranslated_hanja(text: str) -> list[str]:
+    return sorted(set(re.findall(r'[一-龯]', text)))
 
 
 def translate_line(line: str) -> str:
@@ -171,15 +191,23 @@ def translate_line(line: str) -> str:
         return line
 
     converted = apply_common_replacements(line)
-    if has_japanese(converted) or len(general_english_words(converted)) >= 2:
+    if has_japanese(converted) or untranslated_hanja(converted) or len(general_english_words(converted)) >= 2:
         converted = translate_to_korean(converted)
         converted = apply_common_replacements(converted)
 
     leftover = general_english_words(converted)
-    if has_japanese(converted) or len(leftover) >= 2:
+    kana = has_japanese(converted)
+    hanja = untranslated_hanja(converted)
+    if _MARKER_RE.search(converted):
+        raise RuntimeError('고유명 보존 표식 복원 실패 — Telegram 발송 차단')
+    if kana or hanja or len(leftover) >= 2:
+        reasons = leftover[:8]
+        if kana:
+            reasons.append('일본어 가나')
+        if hanja:
+            reasons.append('번역되지 않은 한자: ' + ''.join(hanja[:8]))
         raise RuntimeError(
-            '한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있음: '
-            + ', '.join(leftover[:8])
+            '한국어 송출 검증 실패 — ' + ', '.join(reasons)
         )
     return converted
 

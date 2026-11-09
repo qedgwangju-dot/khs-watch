@@ -379,32 +379,57 @@ def qlex_sales_m(text: str) -> float | None:
     return None
 
 
+# An article's stock-price change must never become a drug conversion percentage.
+_PRICE_CONTEXT_RE = re.compile(
+    r"주가|주식|주당|시가총액|급락|폭락|하락|상승|코스닥|코스피|"
+    r"\bstock\b|\bshare price\b|\bshares\b|\bslump\b|\bplunge\b|\bdecline\b",
+    re.I,
+)
+_CONVERSION_LABEL = (
+    r"(?:conversion(?:\s+rate)?|adoption(?:\s+rate)?|uptake(?:\s+rate)?|"
+    r"penetration(?:\s+rate)?|전환율|채택률|처방\s*비중|"
+    r"매출\s*비중|판매\s*비중|시장\s*점유율)"
+)
+_PCT = r"(\d{1,3}(?:\.\d+)?)\s*%"
+
+
 def conversion_pct(text: str) -> float | None:
-    low = text.lower()
-    if not any(k in low for k in CONVERSION_TERMS):
+    if not any(k in text.lower() for k in QLEX_TERMS):
         return None
-    for match in re.finditer(r"(\d{1,3}(?:\.\d+)?)\s*%", text):
-        context = text[max(0, match.start()-250):min(len(text), match.end()+250)].lower()
-        if any(k in context for k in QLEX_TERMS):
-            return float(match.group(1))
+    patterns = (
+        rf"{_CONVERSION_LABEL}[^\n.!?]{{0,65}}?{_PCT}",
+        rf"{_PCT}[^\n.!?]{{0,65}}?{_CONVERSION_LABEL}",
+    )
+    for pattern in patterns:
+        for match in re.finditer(pattern, text, re.I):
+            if _PRICE_CONTEXT_RE.search(match.group(0)):
+                continue
+            value = float(match.group(1))
+            if 0 <= value <= 100:
+                return value
     return None
+
+
+def economic_metric(text: str) -> bool:
+    """Only monetary/royalty-rate figures close to QLEX economics qualify."""
+    labels = r"(?:royalt(?:y|ies)|milestones?|로열티|마일스톤)"
+    amount = (
+        r"(?:\$\s*\d+(?:\.\d+)?\s*(?:m|mn|million|bn|billion)\b|"
+        r"\d+(?:\.\d+)?\s*(?:억|조)\s*(?:원|달러)|"
+        r"\d+(?:\.\d+)?\s*%)"
+    )
+    for pattern in (rf"{labels}[^\n.!?]{{0,55}}?{amount}", rf"{amount}[^\n.!?]{{0,55}}?{labels}"):
+        for match in re.finditer(pattern, text, re.I):
+            if not _PRICE_CONTEXT_RE.search(match.group(0)):
+                return True
+    return False
 
 
 def relevant(item: Item) -> bool:
     text = item.full
-    low = text.lower()
-    if not any(k in low for k in QLEX_TERMS):
+    if not any(k in text.lower() for k in QLEX_TERMS):
         return False
-    if not metric_tokens(text):
-        return False
-    # Accept only numbers tied to QLEX usage/sales or Alteogen economics.
-    if any(k in low for k in CONVERSION_TERMS):
-        return True
-    if qlex_sales_m(text) is not None:
-        return True
-    if any(k in low for k in ECONOMIC_TERMS):
-        return True
-    return False
+    return conversion_pct(text) is not None or qlex_sales_m(text) is not None or economic_metric(text)
 
 
 def usdkrw() -> tuple[float | None, str]:
@@ -527,8 +552,22 @@ def check(items: list[Item], state: dict) -> None:
         else:
             silent.append(item)
 
+    # Limit delivery to six distinct stories, but never mark overflow as delivered.
+    # Unrelated articles can be suppressed; eligible overflow stays pending until
+    # a later real Telegram send confirms its state.
+    chosen: list[Item] = []
+    semantic_in_report: set[str] = set()
+    for item in fresh:
+        if item.semantic_key in semantic_in_report:
+            continue
+        semantic_in_report.add(item.semantic_key)
+        chosen.append(item)
+        if len(chosen) >= 6:
+            break
+
+    processed = silent + [item for item in fresh if item.semantic_key in semantic_in_report]
     pending = dict(state)
-    for item in fresh + silent:
+    for item in processed:
         seen_fp.add(item.fingerprint)
         seen_story.add(item.story_key)
         if metric_tokens(item.full):
@@ -547,17 +586,6 @@ def check(items: list[Item], state: dict) -> None:
             encoding="utf-8",
         )
         return
-
-    # One poll can still contain syndications of the same story. Semantic key prevents duplicate rows.
-    chosen: list[Item] = []
-    semantic_in_report: set[str] = set()
-    for item in fresh:
-        if item.semantic_key in semantic_in_report:
-            continue
-        semantic_in_report.add(item.semantic_key)
-        chosen.append(item)
-        if len(chosen) >= 6:
-            break
 
     lines = cms_final_rule_lines() if cms_rule_due else []
     if regulatory_due:
@@ -587,8 +615,8 @@ def check(items: list[Item], state: dict) -> None:
         lines.append(f"{number}) {item.title}")
         source_date = item.published_day or item.published
         lines.append(f"- 출처: {item.source}" + (f" / {source_date}" if source_date else ""))
-        if values:
-            lines.append("- 신규 숫자 후보: " + ", ".join(values))
+        if values and not _PRICE_CONTEXT_RE.search(item.title):
+            lines.append("- 신규 숫자 후보(원문 정의 확인 필요): " + ", ".join(values))
 
         if conv is not None:
             old = float(pending.get("last_conversion", BASE_CONVERSION))
