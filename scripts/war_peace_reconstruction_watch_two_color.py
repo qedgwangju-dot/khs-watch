@@ -254,6 +254,11 @@ def direction(stage, row):
     # Action restraint is a cooling signal, not a confirmed attack. The
     # semantic stage may be yellow, but the two-color projection must never
     # silently turn a no-rush/no-strike headline into red escalation.
+    if (stage._low_reattack_statement(title)
+            and stage._iran_attack_restraint_statement(row)
+            and not _completed_attack_headline(title)
+            and not _active_adverse(title)):
+        return 'green'
     if (stage._iran_attack_restraint_statement(row) and not _separate_attack_headline(title)
             and not _active_adverse(title)):
         return 'green'
@@ -402,7 +407,8 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                     and (stage._nuclear_talks_resumption_report(title)
                          or stage._qatar_us_iran_negotiations_contact(title)))
                     or (stage._iran_attack_restraint_statement(row)
-                        and re.search(r'공습\s*제한\s*가능성\s*시사', title))):
+                        and (re.search(r'공습\s*제한\s*가능성\s*시사', title)
+                             or stage._low_reattack_statement(title)))):
                 # The semantic card can retain a stale geography label from
                 # its pre-projection classifier. Rebind only proved headlines.
                 label = html.escape(stage.topic_label(row), quote=False)

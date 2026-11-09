@@ -2131,5 +2131,55 @@ class Run856DiplomacyAndStalemateTests(unittest.TestCase):
         self.assertEqual(presentation.direction(stage, stalemate), 'red')
 
 
+class Run858LowReattackStatementTests(unittest.TestCase):
+    def test_saved_sent_false_red_replays_as_qualified_easing(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run858_low_reattack_42713168248.json')
+                             .read_text(encoding='utf-8'))
+        provenance, saved = fixture['provenance'], fixture['article']
+        self.assertEqual(provenance['telegram_message_id'], 438)
+        self.assertEqual(saved['classification_color'], 'red')
+        self.assertEqual(saved['semantic_classification_color'], 'red')
+        self.assertFalse(saved['body_verified'])
+        snapshot, proof = fixture['semantic_snapshot'], fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+        original = json.loads(evidence_bytes)
+        row = next(row for row in original['articles'] if row['id'] == saved['id'])
+        self.assertTrue(stage._iran_attack_restraint_statement(row))
+        self.assertEqual(stage.non_military_kind(row), 'military_position')
+        self.assertEqual(stage.final_color(row), 'yellow')
+        self.assertEqual(stage.topic_label(row), '미국·이란 · 공격 재개 가능성 낮다는 발언')
+        self.assertEqual(presentation.direction(stage, row), 'green')
+        scored = copy.deepcopy(row)
+        score, tags = stage.score_item(
+            scored, dt.datetime.fromisoformat('2026-11-10T07:37:00+09:00'))
+        self.assertGreater(score, 0)
+        self.assertEqual(tags, ['공격 재개 가능성 낮다는 발언'])
+
+        text, projected = presentation.project(stage, alert_bytes.decode('utf-8'),
+                                               original, proof, snapshot)
+        target = next(row for row in projected['articles'] if row['id'] == saved['id'])
+        self.assertEqual(target['classification_color'], 'green')
+        self.assertEqual(target['semantic_classification_color'], 'red')
+        self.assertIn('🟢 [속보] <b>1. 미국·이란 · 공격 재개 가능성 낮다는 발언</b>', text)
+        self.assertIn('제목 기준·본문 미확인', text)
+        self.assertNotIn('이란·호르무즈', text.split('<b>2.', 1)[0])
+        self.assertNotEqual(projected['alert_sha256'],
+                            provenance['observed_delivered_alert_sha256'])
+
+    def test_denial_and_separate_attack_stay_out_of_easing(self):
+        base = '트럼프 "이란戰 종식 긍정적 모멘텀…공격 재개 가능성 작아"'
+        denied = {'title_original': base + '라는 발언을 부인', 'body_verified': False}
+        attacked = {'title_original': base + '; 한편 미군이 이란을 공습했다',
+                    'body_verified': False}
+        self.assertFalse(stage._iran_attack_restraint_statement(denied))
+        self.assertNotEqual(presentation.direction(stage, denied), 'green')
+        self.assertFalse(stage._iran_attack_restraint_statement(attacked))
+        self.assertEqual(presentation.direction(stage, attacked), 'red')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
