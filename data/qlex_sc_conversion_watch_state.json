@@ -279,7 +279,7 @@
   "last_conversion": 10.5,
   "last_qlex_sales_m": 830.0,
   "initialized_at_kst": "2026-08-09T13:58:10+09:00",
-  "last_check_kst": "2026-11-09T19:40:25+09:00",
+  "last_check_kst": "2026-11-09T19:43:30+09:00",
   "dedupe_version": 2,
   "seen_fingerprints": [
     "00235a78501b3743d91bb964",
@@ -732,6 +732,7 @@
     "a53dcb5e74ed1cfee12acc17",
     "a5d1c31c2b5ec499cdf1e9d6",
     "a5ffd193e2f1909708d1678e",
+    "a63e0cf9a607984bb0c61a77",
     "a666c8b5ffb6d20262ffac2e",
     "a67bb5a35f8b2dd0d4b34b58",
     "a6c015df1fe122f2a8f9dfda",
@@ -1417,6 +1418,7 @@
     "9b55898e55c3c7898052103f",
     "9bbe36778e26a07c28bba0a9",
     "9bdce4ea34b169d2a6f55992",
+    "9d0b8ddf7f2f16cf31482fce",
     "9d2706b41b6b63f3534d9b01",
     "9d967d0e50bf5f65edf3b7e5",
     "9da8f1e25cbe0585d718eb89",
@@ -1865,5 +1867,8 @@
   "last_regulatory_release_kst": "2026-10-21T19:45:00+09:00",
   "cms_policy_status": "previously_delivered",
   "last_cms_policy_source_url": "https://www.cms.gov/newsroom/fact-sheets/medicare-drug-price-negotiation-program-medicare-prescription-drug-benefit-program-final-rule-cms",
-  "last_cms_policy_event_date": "2026-11-05"
+  "last_cms_policy_event_date": "2026-11-05",
+  "seen_operational_corrections": [
+    "QLEX|CORRECTION|STOCK_DROP_NOT_CONVERSION|2026-11-09"
+  ]
 }
