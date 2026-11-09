@@ -434,6 +434,12 @@ def _statement_with_actual_action(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if kind == 'diplomatic_contact' and _qatar_us_iran_negotiations_contact(title):
+        # Iran is the subject of the talks; the named meeting participants are
+        # Qatar's prime minister and the U.S. officials.
+        return '카타르·미국 · 이란 협상 논의 보도'
+    if kind == 'diplomatic_position' and _no_war_no_peace_stalemate_statement(title):
+        return '이란 · 전쟁·평화 교착 종식 지시'
     if kind == 'diplomatic_contact' and _nuclear_talks_resumption_report(title):
         # The feed title names the negotiating parties; later lines may name
         # mediators.  Neither the mediator nor Hormuz is a meeting participant.
@@ -557,6 +563,8 @@ def _primary_topic(row):
     if kind == 'military_position':
         if _attack_denial_with_blockade(title):
             return _diplomatic_group(title) + ' · 공격 부인·봉쇄 유지 입장'
+        if _iran_attack_restraint_statement(row) and re.search(r'공습\s*제한\s*가능성\s*시사', title):
+            return _diplomatic_group(title) + ' · 공습 제한 가능성 시사'
         return _diplomatic_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'corporate_spending':
         return '석유기업 · ' + KIND_LABELS[kind]
@@ -1257,6 +1265,27 @@ def _nuclear_talks_resumption_report(title):
                 and not _statement_with_actual_action(title))
 
 
+def _qatar_us_iran_negotiations_contact(title):
+    headline = title.splitlines()[0]
+    return bool(re.search(
+        r'\bqatar\s+prime\s+minister\b.{0,55}\bmet\s+with\b.{0,55}'
+        r'\btrump\b.{0,40}\bdiscussed\b.{0,70}\biran\s+negotiations\b',
+        headline, re.IGNORECASE)
+        and not _military_actions(title)
+        and not _report_with_completed_action(title)
+        and not re.search(r'\b(?:attacked|struck|bombed)\b|'
+                          r'(?:공습|공격|폭격|타격)(?:을|를)?\s*(?:했다|했으며|감행|실시)', title))
+
+
+def _no_war_no_peace_stalemate_statement(title):
+    headline = title.splitlines()[0]
+    return bool(re.search(r'전쟁도\s*평화도\s*아닌.{0,16}상황\s*종식\s*지시', headline)
+                and not _military_actions(title)
+                and not _report_with_completed_action(title)
+                and not re.search(r'\b(?:attacked|struck|bombed)\b|'
+                                  r'(?:공습|공격|폭격|타격)(?:을|를)?\s*(?:했다|했으며|감행|실시)', title))
+
+
 def _diplomatic_headline_kind(title):
     if _peace_plan_discussion_headline(title):
         return 'diplomatic_plan'
@@ -1282,6 +1311,8 @@ def _diplomatic_headline_kind(title):
     if not actor:
         return None
     if _nuclear_talks_resumption_report(title):
+        return 'diplomatic_contact'
+    if _qatar_us_iran_negotiations_contact(title):
         return 'diplomatic_contact'
     release = _detainee_release_stage(title)
     if release:
@@ -1338,6 +1369,7 @@ def _iran_attack_restraint_statement(row):
     restraint = bool(re.search(
         r'(?:공습|공격|타격)(?:을|를)?\s*(?:서두르지\s*않|유보|보류|연기|부인)'
         r'|(?:공습|공격|타격)(?:을|를)?\s*제한할\s*것이라는\s*신호(?:를|을)?\s*보냈'
+        r'|(?:공습|공격|타격)(?:을|를)?\s*제한\s*가능성\s*시사'
         r'|(?:공습|공격|타격).{0,12}(?:계획|방침).{0,8}없'
         r'|(?:추가|재차)\s*(?:공습|공격|타격)(?:은|는|이|가)?\s*(?:없|하지\s*않|않겠)'
         r'|\b(?:will\s+not|won.t|not\s+planning\s+to|no\s+plans\s+to|not\s+rushing\s+to)\s+'
@@ -1350,7 +1382,8 @@ def _iran_attack_restraint_statement(row):
         r'|(?:별도|한편|그러나|반면|하지만|동시에).{0,55}(?:피격|폭격|공습\s*발생)'
         r'|\b(?:but|meanwhile|separately)\b.{0,60}\b(?:struck|attacked|bombed|launched strikes)\b', title))
     denied_signal = bool(re.search(
-        r'제한할\s*것이라는\s*신호.{0,30}(?:사실이?\s*아니|사실무근|허위|부인|가짜)',
+        r'(?:제한할\s*것이라는\s*신호|제한\s*가능성\s*시사).{0,30}'
+        r'(?:사실이?\s*아니|사실무근|허위|부인|가짜)',
         title))
     return iran and us and attack and restraint and not completed and not denied_signal
 
@@ -1393,6 +1426,8 @@ def non_military_kind(row):
     # Do not override its canonical ID, title, or existing render regression.
     if _iran_attack_restraint_statement(row) and not previous._trump_iran_midterm_no_strike(row):
         return 'military_position'
+    if _no_war_no_peace_stalemate_statement(title):
+        return 'diplomatic_position'
     new_peace = re.search(r'(?:휴전|종전|평화협정).{0,12}(?:합의|체결|이행|발효)|'
                           r'\b(?:ceasefire|peace deal).{0,20}(?:agreed|signed|implemented)', title)
     if mixed_restraint_attack(row):
@@ -1506,6 +1541,8 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if _no_war_no_peace_stalemate_statement(title):
+        return '전쟁·평화 교착 종식 지시'
     if _reported_major_airstrike(title) and not _headline_attack_casualties(row):
         return '대공습 보도'
     if kind == 'military_report' and _reported_attack_escalation(title):

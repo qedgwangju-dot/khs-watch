@@ -218,6 +218,10 @@ def direction(stage, row):
     color = stage.final_color(row)
     title = stage._headline(row)
     tags = {str(tag).strip() for tag in row.get('tags', [])}
+    # An order to end an indeterminate "neither war nor peace" state does not
+    # identify whether the next step is negotiation or renewed fighting.
+    if stage._no_war_no_peace_stalemate_statement(title):
+        return None
     if (_election_war_commentary(title) or _political_war_pressure_commentary(title)
             or _war_secretary_impeachment_commentary(title)
             or stage._election_iran_war_staff_options(title)
@@ -374,6 +378,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         commentary = (_election_war_commentary(title)
                       or _political_war_pressure_commentary(title)
                       or _war_secretary_impeachment_commentary(title))
+        stalemate_statement = stage._no_war_no_peace_stalemate_statement(title)
         policy_options = stage._iran_war_policy_options_headline(title)
         hypothetical = (_hypothetical_war_options(title)
                         or _pending_iran_war_decision(title))
@@ -384,7 +389,8 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             {'원인미확정', '공식확인대기'} <= source_tags
             or (re.search(r'재공격\s*가능성.{0,12}매우\s*작', title)
                 and '폭발음 보도·공격 원인 미확인' in source_tags)))
-        context = commentary or policy_options or hypothetical or postwar or uncertain
+        context = (commentary or policy_options or hypothetical or postwar
+                   or uncertain or stalemate_statement)
         row['semantic_classification_color'] = row.get('classification_color')
         row['classification_color'] = color
         row['display_section'] = 'core' if color else ('context_reference' if context
@@ -392,10 +398,13 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         if color:
             first = re.sub(r'^[🔴🟢🟡]?\s*', MARKERS[color] + ' ', block[0])
             first = re.sub(r'(<b>)\d+\.', lambda m: m[1] + str(len(core) + 1) + '.', first, count=1)
-            if (stage.non_military_kind(row) == 'diplomatic_contact'
-                    and stage._nuclear_talks_resumption_report(title)):
+            if ((stage.non_military_kind(row) == 'diplomatic_contact'
+                    and (stage._nuclear_talks_resumption_report(title)
+                         or stage._qatar_us_iran_negotiations_contact(title)))
+                    or (stage._iran_attack_restraint_statement(row)
+                        and re.search(r'공습\s*제한\s*가능성\s*시사', title))):
                 # The semantic card can retain a stale geography label from
-                # its pre-projection classifier. Rebind only this proved title.
+                # its pre-projection classifier. Rebind only proved headlines.
                 label = html.escape(stage.topic_label(row), quote=False)
                 first = re.sub(r'<b>\d+\.[^<]*</b>',
                                f'<b>{len(core) + 1}. {label}</b>', first, count=1)
@@ -416,6 +425,8 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                         else '중간선거 · 전쟁·외교 전망')
                 else:
                     label = '이란 전쟁 · 정치 발언'
+            elif stalemate_statement:
+                label = '이란 · 전쟁·평화 교착 종식 지시'
             elif postwar:
                 label = '종전 후 타협 구상'
             elif policy_options:
