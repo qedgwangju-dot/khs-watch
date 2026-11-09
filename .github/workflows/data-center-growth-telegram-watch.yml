@@ -237,6 +237,7 @@ jobs:
           PY
 
       - name: Validate runtime source guard safely without sending Telegram
+        if: always()
         run: |
           python scripts/guard_us_time_to_power_metrics_source.py
           python -m py_compile scripts/us_data_center_time_to_power_watch.py scripts/us_data_center_generation_buildout_watch.py
