@@ -61,7 +61,9 @@ EVENT_TERMS = (
     "공동 실증", "실증", "기술제휴", "기술 제휴", "파트너십", "파트너",
     "업무협약", "mou", "협약 체결", "공급계약", "공급 계약",
     "납품", "발주", "수주", "고객 확보", "고객 계약", "투자", "지분", "인수",
-    "협력", "partnership", "investment", "acquisition",
+    "협력", "partnership", "investment", "acquisition", "collaboration",
+    "포럼", "forum", "공식 발표", "nvlink", "엔브이링크", "r200", "기업 방문",
+    "방한 취소", "면담 취소", "회의 취소", "행사 무산",
 )
 NOISE = (
     "특징주", "관련주", "테마주", "상한가", "급등주", "주가 급등",
@@ -75,12 +77,17 @@ NEWS_SOURCES = (
     "딜사이트", "더벨", "아이뉴스24", "디지털데일리", "techcrunch",
 )
 OFFICIAL_DOMAINS = (
-    "nvidia.com", "blogs.nvidia.co.kr", "rebellions.ai", "kr.rebellions.ai",
+    "nvidia.com", "blogs.nvidia.co.kr", "nvidianews.nvidia.com", "rebellions.ai", "kr.rebellions.ai",
     "fsc.go.kr", "msit.go.kr", "korea.kr", "nipa.kr", "kotra.or.kr",
     "furiosa.ai", "nota.ai", "upstage.ai", "lunit.io",
 )
 QUERIES = [
     '"리벨리온" "엔비디아" "간담회" when:30d',
+    '"리벨리온" "엔비디아" "NVLink Fusion" when:30d',
+    '"NVIDIA" "Rebellions" "NVLink Fusion" when:30d',
+    'site:nvidianews.nvidia.com "Rebellions" "SK Telecom" when:45d',
+    'site:msit.go.kr "엔비디아" "스타트업" "포럼" when:45d',
+    '"리벨리온" "R200" (엔비디아 OR NVIDIA) when:45d',
     '"리벨리온" "엔비디아" (투자 OR 협력 OR 인수 OR 기술제휴) when:30d',
     '"엔비디아" "AI 스타트업" (해외진출 OR 간담회 OR 수출 OR 협력) when:30d',
     '"엔비디아" (리벨리온 OR 퓨리오사AI OR 업스테이지 OR 노타) (협력 OR 해외진출 OR 간담회) when:30d',
@@ -179,8 +186,19 @@ def classify(title, source_tier_value="신뢰보도"):
     t = clean(title).lower()
     uncertain = exact_terms(t, ("검토", "논의", "협의", "추진", "가능", "예정",
                                  "관측", "유력", "기대", "전망", "모색", "열리나", "설"))
-    if exact_terms(t, ("무산", "철회", "계약 해지", "인수 중단", "투자 중단")):
+    if exact_terms(t, ("매디슨 황 방한 취소", "매디슨 황 방한 불참", "매디슨 황 방한 무산",
+                       "기업 방문 무산", "본사 방문 취소", "본사 방문 무산", "면담 취소",
+                       "회의 무산", "방한 취소", "불참", "방문 무산")) and not exact_terms(t,("계약 해지",)):
+        return "visit_cancelled", 3, "방한·개별 면담 취소(포럼·협력 자체의 무산 아님)"
+    if exact_terms(t, ("계약 해지", "투자 중단", "인수 중단", "협약 철회", "사업 철회")):
         return "deal_cancelled", 6, "계약 철회·중단"
+    if exact_terms(t, ("NVLink Fusion", "nvlink fusion", "엔브이링크 퓨전", "nvlink")) and exact_terms(t, (
+        "리벨리온", "rebellions")) and exact_terms(t, (
+        "공식 발표", "발표", "협력", "collaboration", "announce", "협약", "체결", "연동")):
+        return "nvlink_r200_collaboration", (5 if source_tier_value == "공식" else 4), "R200·NVLink Fusion 기술협력 발표(양산·납품 아님)"
+    if exact_terms(t, ("스타트업 포럼 개최", "파트너십 포럼 개최", "스타트업 파트너십 포럼",
+                       "startup partnership forum", "스타트업 22개사", "22개사 참여")):
+        return "startup_forum_held", 2, "AI 스타트업 포럼 개최·교류(개별 계약 아님)"
     if not uncertain and exact_terms(t, ("투자 계약 체결", "지분 투자 확정", "인수 계약 체결",
                                         "투자 완료", "지분 취득 완료", "인수 완료")):
         return "capital_signed", 6, "투자·인수 확정"
@@ -222,6 +240,8 @@ def event_id(item):
         return f"nvidia_korea|{kind}|2026-11"
     if kind == "ai_day_schedule" and "2026-11" in year_month:
         return "nvidia_korea|ai_day_schedule|2026-11"
+    if kind in ("nvlink_r200_collaboration", "startup_forum_held", "visit_cancelled"):
+        return f"nvidia_korea|{kind}|{year_month}"
     firm = firm_id(title)
     if kind in ("meeting", "meeting_reported", "meeting_confirmed") and firm == "nvidia_korea":
         return f"nvidia_korea|{kind}|{year_month}"
