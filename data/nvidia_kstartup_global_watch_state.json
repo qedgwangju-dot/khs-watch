@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-11-09T14:45:03+09:00",
-  "last_checked_kst": "2026-11-09T20:27:24+09:00",
+  "last_checked_kst": "2026-11-09T21:27:15+09:00",
   "seen": {
     "126be798477cbd897413b8c2": {
       "title": "국산 AI 반도체, 엔비디아 GPU와 연결…SKT·리벨리온 3자 협력 - MTN 머니투데이방송",
@@ -193,6 +193,18 @@
       "stage": 1,
       "tier": "신뢰보도",
       "first_seen_kst": "2026-11-09T20:27:24+09:00",
+      "suppressed_duplicate": "same_event"
+    },
+    "a9c5ccd6d6a8014e4fdbe3f2": {
+      "title": "엔비디아, 업스테이지 등 국내 AI 스타트업 4사 투자한다 - 연합뉴스",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE53S056XzVjRnUydGhpQjZRVFpRd0JTS2M3dnFHVGYwWno4STRBbVJVZG9DdnZmT0tTZmJzR3R3SmhvdzNkTEx5MHBzOXlDSG1WLTFEZ2hldkRXdkHSAWBBVV95cUxQRmtvWEJDV1d3b3BNTndvZWgwNVBtVm9yZTdWZzhob0tEdXlSR3NJdGNTazA5bmI4Z1RNeUlZTWFfX2VJYmFTVEhWODBZbHZzYmdRWkZKekU2b3V4cUZwa1o?oc=5",
+      "source": "연합뉴스",
+      "published_kst": "2026-11-09T17:57+09:00",
+      "event_id": "upstage|ecosystem_news|2026-11",
+      "kind": "ecosystem_news",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-09T21:27:15+09:00",
       "suppressed_duplicate": "same_event"
     }
   },
