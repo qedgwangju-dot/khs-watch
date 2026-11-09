@@ -392,6 +392,13 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         if color:
             first = re.sub(r'^[🔴🟢🟡]?\s*', MARKERS[color] + ' ', block[0])
             first = re.sub(r'(<b>)\d+\.', lambda m: m[1] + str(len(core) + 1) + '.', first, count=1)
+            if (stage.non_military_kind(row) == 'diplomatic_contact'
+                    and stage._nuclear_talks_resumption_report(title)):
+                # The semantic card can retain a stale geography label from
+                # its pre-projection classifier. Rebind only this proved title.
+                label = html.escape(stage.topic_label(row), quote=False)
+                first = re.sub(r'<b>\d+\.[^<]*</b>',
+                               f'<b>{len(core) + 1}. {label}</b>', first, count=1)
             core.append([first] + block[1:])
         else:
             # The semantic block heading can carry an unrelated event label

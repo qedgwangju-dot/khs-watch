@@ -1976,5 +1976,53 @@ class Run850AirstrikeRestraintSignalTests(unittest.TestCase):
         self.assertFalse(stage._iran_attack_restraint_statement(denial))
 
 
+class Run854NuclearTalksSignalTests(unittest.TestCase):
+    def test_saved_sent_false_red_replays_as_reported_diplomacy(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run854_nuclear_talks_42690647940.json')
+                             .read_text(encoding='utf-8'))
+        provenance, saved = fixture['provenance'], fixture['article']
+        self.assertEqual(provenance['telegram_message_id'], 436)
+        self.assertEqual(provenance['observed_delivered_color'], 'red')
+        self.assertFalse(provenance['source_coverage_complete'])
+        self.assertFalse(saved['body_verified'])
+        self.assertEqual(saved['publication_basis'], 'discovery_feed')
+
+        snapshot, proof = fixture['semantic_snapshot'], fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+        original = json.loads(evidence_bytes)
+        original_row = next(row for row in original['articles'] if row['id'] == saved['id'])
+        self.assertEqual(original_row['classification_color'], '')
+        self.assertEqual(stage.non_military_kind(original_row), 'diplomatic_contact')
+        self.assertEqual(stage.final_color(original_row), 'yellow')
+        self.assertEqual(stage.topic_label(original_row), '미국·이란 · 핵 회담 재개 보도')
+        self.assertEqual(presentation.direction(stage, original_row), 'green')
+
+        text, projected = presentation.project(stage, alert_bytes.decode('utf-8'),
+                                               original, proof, snapshot)
+        target = next(row for row in projected['articles'] if row['id'] == saved['id'])
+        self.assertEqual(target['classification_color'], 'green')
+        self.assertEqual(target['semantic_classification_color'], '')
+        self.assertIn('🟢 [신규] <b>1. 미국·이란 · 핵 회담 재개 보도</b>', text)
+        self.assertNotIn('이란·호르무즈', text.split('🟢 [신규] <b>2.', 1)[0])
+        self.assertIn('RSS 입력 기준·본문 미확인', text)
+        self.assertNotEqual(projected['alert_sha256'],
+                            provenance['observed_delivered_alert_sha256'])
+
+    def test_denial_or_separate_strike_does_not_turn_green(self):
+        base = {'title_original': 'US-IRAN NUCLEAR TALKS REPORTEDLY REVIVED',
+                'body_verified': False}
+        denied = dict(base, title_original='US-IRAN NUCLEAR TALKS NOT REVIVED')
+        attacked = dict(base, title_original=base['title_original']
+                        + '; US attacked Iran today')
+        self.assertNotEqual(stage.non_military_kind(denied), 'diplomatic_contact')
+        self.assertNotEqual(presentation.direction(stage, denied), 'green')
+        self.assertNotEqual(stage.non_military_kind(attacked), 'diplomatic_contact')
+        self.assertEqual(presentation.direction(stage, attacked), 'red')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
