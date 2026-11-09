@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-11-09T14:45:03+09:00",
-  "last_checked_kst": "2026-11-09T14:48:40+09:00",
+  "last_checked_kst": "2026-11-09T15:50:50+09:00",
   "seen": {
     "126be798477cbd897413b8c2": {
       "title": "국산 AI 반도체, 엔비디아 GPU와 연결…SKT·리벨리온 3자 협력 - MTN 머니투데이방송",
@@ -62,6 +62,30 @@
       "tier": "공식",
       "first_seen_kst": "2026-11-09T14:48:10+09:00",
       "alerted": true
+    },
+    "0c7622c141f8c7384f1d1f9b": {
+      "title": "엔비디아 GPU·리벨리온 NPU 묶어 SKT AI DC에...인프라 고도화 협력 - 뉴스핌",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9LcGhuZlZNR1BOSVFzTmh5MEFiQmk2WHU0SUpTQWNlTzloSVcwV0pEU1p6UV81emhyVEFHQWgzRHBKdENjeGkxaEZEVDVDbncwSHU0bkpjNlo5bmhM?oc=5",
+      "source": "뉴스핌",
+      "published_kst": "2026-11-09T15:30+09:00",
+      "event_id": "rebellions|ecosystem_news|2026-11",
+      "kind": "ecosystem_news",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-09T15:50:50+09:00",
+      "suppressed_duplicate": "same_event"
+    },
+    "d243fea9e60729f60a2bb336": {
+      "title": "NVIDIA, 리벨리온·SK텔레콤과 NVLink Fusion 기반 소버린 AI 인프라 고도화 협력 발표 - NVIDIA",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPamdSNDJMR3BudjNwS1E2amttLU92aS1ScWxsTUJoQU44ZFI5bVBhc2NHRkhLajI4NW1iYjY0SUFiZ192cFRzalRFem1BWlBIckpoa3E5ZVROVi1tcGxla3BIZ01xS0VzbFo5NURqSnJCZHdVb1lBYkNpWFBzZU9PMnNJQ3hoOUtjZ1JqTFo3a1c2TTFoX2RuSFozVDF3LW95UjZpd2d1b1pGa0xpaXNvVjF5UXA0M19JbVpMYnV5T1ROR1JKVDhSSmJ2QWxJdkxKUnNES2xOaUhVVC1VQmgzSV9IaGJkdDU4?oc=5",
+      "source": "NVIDIA",
+      "published_kst": "2026-11-09T14:49+09:00",
+      "event_id": "nvidia_korea|nvlink_r200_collaboration|2026-11",
+      "kind": "nvlink_r200_collaboration",
+      "stage": 5,
+      "tier": "공식",
+      "first_seen_kst": "2026-11-09T15:50:50+09:00",
+      "suppressed_duplicate": "same_event"
     }
   },
   "events": {
