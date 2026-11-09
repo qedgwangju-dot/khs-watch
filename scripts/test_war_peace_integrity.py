@@ -3930,5 +3930,18 @@ class ElectionSpeculativeWarOpinionRegressions(unittest.TestCase):
         self.assertFalse(integrity._speculative_election_nuclear_opinion(row))
 
 
+class PublisherActorLabelRegressions(unittest.TestCase):
+    def test_iran_us_negotiation_halt_does_not_name_china_or_hormuz(self):
+        row = article('이란 "중간선거 후 협상 중단…美, 종전 아니면 지옥불 택해야" - 뉴시스', source='뉴시스')
+        row['body_verified'] = True
+        row['article_text'] = '이란과 미국의 종전 조건을 둘러싼 협상 중단 발언'
+        self.assertEqual(integrity.topic_label(row), '미국·이란 · 협상 중단 발언')
+
+    def test_legacy_generic_china_label_uses_named_headline_actors(self):
+        row = article('이란, 미국과 종전 조건 논의')
+        with patch.object(integrity, '_topic', return_value='이란·중국 · 중동 외교'):
+            self.assertEqual(integrity.topic_label(row), '미국·이란 · 외교 보도')
+
+
 if __name__ == '__main__':
     unittest.main()
