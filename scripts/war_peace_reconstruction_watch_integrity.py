@@ -563,6 +563,8 @@ def _primary_topic(row):
     if kind == 'military_position':
         if _attack_denial_with_blockade(title):
             return _diplomatic_group(title) + ' · 공격 부인·봉쇄 유지 입장'
+        if _iran_attack_restraint_statement(row) and _low_reattack_statement(title):
+            return _diplomatic_group(title) + ' · 공격 재개 가능성 낮다는 발언'
         if _iran_attack_restraint_statement(row) and re.search(r'공습\s*제한\s*가능성\s*시사', title):
             return _diplomatic_group(title) + ' · 공습 제한 가능성 시사'
         return _diplomatic_group(title) + ' · ' + KIND_LABELS[kind]
@@ -1356,6 +1358,11 @@ def _diplomatic_headline_kind(title):
     return None
 
 
+def _low_reattack_statement(title):
+    return bool(re.search(r'(?:재공격|공격\s*재개|공습\s*재개)\s*가능성\s*'
+                          r'(?:매우\s*)?(?:작|낮)', title))
+
+
 def _iran_attack_restraint_statement(row):
     """A restraint/denial headline is not evidence of a new strike.
 
@@ -1370,6 +1377,7 @@ def _iran_attack_restraint_statement(row):
         r'(?:공습|공격|타격)(?:을|를)?\s*(?:서두르지\s*않|유보|보류|연기|부인)'
         r'|(?:공습|공격|타격)(?:을|를)?\s*제한할\s*것이라는\s*신호(?:를|을)?\s*보냈'
         r'|(?:공습|공격|타격)(?:을|를)?\s*제한\s*가능성\s*시사'
+        r'|(?:재공격|공격\s*재개|공습\s*재개)\s*가능성\s*(?:매우\s*)?(?:작|낮)'
         r'|(?:공습|공격|타격).{0,12}(?:계획|방침).{0,8}없'
         r'|(?:추가|재차)\s*(?:공습|공격|타격)(?:은|는|이|가)?\s*(?:없|하지\s*않|않겠)'
         r'|\b(?:will\s+not|won.t|not\s+planning\s+to|no\s+plans\s+to|not\s+rushing\s+to)\s+'
@@ -1384,7 +1392,8 @@ def _iran_attack_restraint_statement(row):
     denied_signal = bool(re.search(
         r'(?:제한할\s*것이라는\s*신호|제한\s*가능성\s*시사).{0,30}'
         r'(?:사실이?\s*아니|사실무근|허위|부인|가짜)',
-        title))
+        title) or (_low_reattack_statement(title) and re.search(
+            r'가능성\s*(?:매우\s*)?(?:작|낮).{0,24}(?:사실무근|허위|부인)', title)))
     return iran and us and attack and restraint and not completed and not denied_signal
 
 
@@ -1541,6 +1550,8 @@ def _clear_market_event_cache(row):
 
 def _headline_event_label(row, kind):
     title = _headline(row)
+    if kind == 'military_position' and _low_reattack_statement(title):
+        return '공격 재개 가능성 낮다는 발언'
     if _no_war_no_peace_stalemate_statement(title):
         return '전쟁·평화 교착 종식 지시'
     if _reported_major_airstrike(title) and not _headline_attack_casualties(row):
