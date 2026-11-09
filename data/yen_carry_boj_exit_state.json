@@ -106,7 +106,7 @@
   "errors": [],
   "initialized": true,
   "market_stress": {
-    "jgb10": 2.806,
+    "jgb10": 2.696,
     "jgb10_days_ge_3": 0,
     "joint_market_stress": false,
     "weak_auction_10y": false,
@@ -161,11 +161,11 @@
     }
   },
   "purchase": {
-    "actual_plan_ratio": 0.92688,
-    "actual_trillion_yen": 2.3172,
-    "deviation_trillion_yen": -0.18279999999999985,
-    "period": "202609",
-    "planned_trillion_yen": 2.5,
+    "actual_plan_ratio": 0.9288260869565218,
+    "actual_trillion_yen": 2.1363,
+    "deviation_trillion_yen": -0.16369999999999996,
+    "period": "202610",
+    "planned_trillion_yen": 2.3,
     "series_code": "MA030210341F",
     "series_name": "Flow Table/Japanese Government Bonds (JGBs)/Outright Purchases(b)",
     "unit": "100 million yen"
@@ -177,5 +177,5 @@
     "plan_revision": false,
     "weak_private_absorption": false
   },
-  "updated_at_kst": "2026-11-09T08:47:30+09:00"
+  "updated_at_kst": "2026-11-09T12:00:19+09:00"
 }
