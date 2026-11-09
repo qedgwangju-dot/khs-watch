@@ -68,6 +68,30 @@ class NvidiaKoreaStartupTests(unittest.TestCase):
         self.assertNotEqual(m.classify("리벨리온 엔비디아 업무협약 추진")[0], "partnership_signed")
         self.assertEqual(m.classify("리벨리온 엔비디아 업무협약 체결")[0], "partnership_signed")
 
+    def test_official_r200_nvlink_is_confirmed_collaboration_not_purchase(self):
+        t = "NVIDIA·리벨리온·SK텔레콤, R200 NPU·NVLink Fusion 기반 AI 인프라 기술협력 공식 발표"
+        obj = self.item(t, tier="공식")
+        self.assertEqual(obj["kind"], "nvlink_r200_collaboration")
+        self.assertEqual(obj["stage"], 5)
+        self.assertEqual(obj["event_id"], "nvidia_korea|nvlink_r200_collaboration|2026-11")
+        self.assertNotEqual(obj["kind"], "global_customer")
+
+    def test_three_party_media_report_clustered_to_same_nvlink_event(self):
+        t = "국산 AI 반도체, 엔비디아 GPU와 연결…SKT·리벨리온 3자 협력"
+        obj = self.item(t, tier="신뢰보도")
+        self.assertEqual(obj["kind"], "nvlink_r200_collaboration")
+        self.assertEqual(obj["stage"], 4)
+        self.assertEqual(obj["event_id"], "nvidia_korea|nvlink_r200_collaboration|2026-11")
+
+    def test_cancelled_director_visit_not_cancellation_of_partnership(self):
+        kind, stage, _ = m.classify("매디슨 황 방한 취소…리벨리온 본사 방문 무산")
+        self.assertEqual(kind, "visit_cancelled")
+        self.assertEqual(stage, 3)
+
+    def test_22_company_forum_not_treated_as_22_deals(self):
+        kind, stage, _ = m.classify("엔비디아 국내 AI 스타트업 22개사 파트너십 포럼 개최")
+        self.assertEqual((kind, stage), ("startup_forum_held", 2))
+
     def test_other_nvidia_product_announcement_is_filtered(self):
         self.assertFalse(m.is_relevant("엔비디아 신형 GPU 출하량 2배 증가"))
 
