@@ -36,6 +36,7 @@ GENSIGHT_NEWS = "https://www.gensight-biologics.com/subject/gs030/"
 RESTORE_VISION_NEWS = "https://restore-vis.com/en/news/2026/"
 AUGELUX_NEWS = "https://www.augeluxtherapeutics.com/en/news/"
 MAPLIGHT_RSS = "https://ir.maplightrx.com/rss/news-releases.xml"
+MAPLIGHT_NEWS = "https://ir.maplightrx.com/news-events/news-releases"
 MAPLIGHT_TRACK_VERSION = 3
 MAPLIGHT_INVALID_PLANNED_KEYS = {
     "maplight|ml007|vista-results",
@@ -181,6 +182,82 @@ def fetch_maplight_rss() -> str:
                     f"{source_error_detail(exc)} attempts={attempt + 1}; source={MAPLIGHT_RSS}"
                 ) from exc
             time.sleep(delay)
+
+
+
+def fetch_maplight_official_html_as_rss() -> str:
+    """Restore official news coverage after a 403, without accepting partial archives.
+
+    The source remains MapLight's own investor-relations site. Fail closed on
+    missing pagination, missing releases, or unreadable release details.
+    """
+    found: dict[str, str] = {}
+    total: int | None = None
+    for page in range(5):
+        index_url = MAPLIGHT_NEWS if page == 0 else f"{MAPLIGHT_NEWS}?page={page}"
+        index_html = fetch_text(index_url, timeout=35)
+        index_plain = clean(re.sub(r"<[^>]*>", " ", index_html))
+        count = re.search(
+            r"(?:Displaying|Showing)\s+(\d+)\s*(?:-|–|to)\s*(\d+)\s+of\s+(\d+)",
+            index_plain, re.I,
+        )
+        if not count:
+            raise MapLightFetchError("MapLight official news index count unavailable; refusing partial coverage")
+        first, last, reported_total = map(int, count.groups())
+        if not 1 <= reported_total <= 40 or first != len(found) + 1 or not first <= last <= reported_total:
+            raise MapLightFetchError("MapLight official news pagination inconsistent; refusing partial coverage")
+        if total is None:
+            total = reported_total
+        elif reported_total != total:
+            raise MapLightFetchError("MapLight official news count changed mid-collection")
+
+        parser = LinkParser()
+        parser.feed(index_html)
+        page_entries: dict[str, str] = {}
+        for title, href in parser.links:
+            url = urljoin(index_url, html.unescape(href))
+            parsed = urllib.parse.urlparse(url)
+            if (
+                parsed.scheme != "https"
+                or parsed.netloc.lower() != "ir.maplightrx.com"
+                or "/news-releases/news-release-details/" not in parsed.path
+            ):
+                continue
+            title = clean(title)
+            if len(title) < 25 or title.lower() in {"read more", "pdf version"}:
+                continue
+            page_entries.setdefault(url, title)
+        if len(page_entries) != last - first + 1 or any(url in found for url in page_entries):
+            raise MapLightFetchError("MapLight official news index items incomplete or duplicated")
+        found.update(page_entries)
+        if len(found) == total:
+            break
+    if total is None or len(found) != total:
+        raise MapLightFetchError("MapLight official news pagination incomplete; refusing checkpoint")
+
+    rss = ET.Element("rss", {"version": "2.0"})
+    channel = ET.SubElement(rss, "channel")
+    ET.SubElement(channel, "title").text = "MapLight Therapeutics official news releases"
+    for url, title in found.items():
+        detail = fetch_text(url, timeout=35)
+        detail = re.sub(r"<(?:script|style)\b[^>]*>.*?</(?:script|style)>", " ", detail, flags=re.I | re.S)
+        text = clean(re.sub(r"<[^>]+>", " ", detail))
+        offset = text.casefold().find(title.casefold())
+        if offset < 0:
+            raise MapLightFetchError("MapLight official news detail title mismatch; refusing checkpoint")
+        body = text[offset:]
+        for stop in ("About MapLight Therapeutics", "Investor Contact", "Subscribe to our Email Alerts"):
+            position = body.casefold().find(stop.casefold(), len(title))
+            if position >= 150:
+                body = body[:position]
+                break
+        if len(body) < 140 or "maplight" not in body.lower():
+            raise MapLightFetchError("MapLight official news detail body incomplete; refusing checkpoint")
+        item = ET.SubElement(channel, "item")
+        ET.SubElement(item, "title").text = title
+        ET.SubElement(item, "link").text = url
+        ET.SubElement(item, "description").text = body[:60000]
+    return ET.tostring(rss, encoding="unicode")
 
 
 def fetch_json(url: str, timeout: int = 25) -> dict:
@@ -616,16 +693,14 @@ def maplight_milestone_keys(title: str, body: str) -> list[str]:
             add("maplight|ml007|zephyr-phase2-positive")
         if "vista" in text and "fast track" in text and re.search(r"received|granted|designation", text, re.I):
             add("maplight|ml007|adp-fast-track")
-        if re.search(r"end[- ]of[- ]phase\s*2|\beop2\b", text, re.I) and re.search(
-            r"completed|held|met with|meeting (?:was )?(?:completed|held)|agreement with (?:the )?fda|feedback from (?:the )?fda",
-            text,
-            re.I,
+        if re.search(
+            r"(?:completed|held|conducted|concluded)\s+(?:its\s+|the\s+|an\s+)?(?:fda\s+)?(?:end[- ]of[- ]phase\s*2|\beop2\b)(?:\s+meeting)?|(?:end[- ]of[- ]phase\s*2|\beop2\b)\s+meeting\s+(?:was\s+)?(?:completed|held|concluded)",
+            text, re.I,
         ):
             add("maplight|ml007|fda-eop2-completed")
-        if "zephyr-2" in text and re.search(
-            r"initiated|began|started|first patient|first participant|first subject|dosed|enrollment (?:has )?begun|recruiting",
-            text,
-            re.I,
+        if re.search(
+            r"zephyr[- ]2.{0,110}(?:initiated|began|started|first patient|first participant|first subject|dosed|enrollment (?:has )?begun|recruiting)|(?:initiated|began|started|first patient|first participant|first subject|dosed).{0,110}zephyr[- ]2",
+            text, re.I,
         ):
             add("maplight|ml007|zephyr2-started")
         if "zephyr-2" in text and (
@@ -634,7 +709,7 @@ def maplight_milestone_keys(title: str, body: str) -> list[str]:
             or re.search(r"zephyr-2.{0,100}(?:topline )?results (?:show|showed|demonstrate|demonstrated|were)", text, re.I)
         ):
             add("maplight|ml007|zephyr2-results")
-        if "vista" in text and re.search(r"enrollment (?:is )?complete|completed enrollment|fully enrolled", text, re.I):
+        if re.search(r"\bvista\b.{0,90}(?:enrollment (?:has been |is )?complete|completed enrollment|fully enrolled)|(?:completed enrollment|fully enrolled).{0,90}\bvista\b", text, re.I):
             add("maplight|ml007|vista-enrollment-complete")
         if "vista" in text and (
             re.search(r"(?:announc(?:e|es|ed)|report(?:s|ed)?|releas(?:e|es|ed)).{0,30}(?:positive )?(?:topline )?results.{0,40}(?:from|for|of).{0,30}vista", text, re.I)
@@ -648,10 +723,9 @@ def maplight_milestone_keys(title: str, body: str) -> list[str]:
     if "ml-004" in text or "iris" in text:
         if "iris" in text and re.search(r"did not meet.{0,80}primary endpoint|topline results", text, re.I):
             add("maplight|ml004|iris-phase2-results")
-        if re.search(r"end[- ]of[- ]phase\s*2|\beop2\b", text, re.I) and re.search(
-            r"completed|held|met with|meeting (?:was )?(?:completed|held)|agreement with (?:the )?fda|feedback from (?:the )?fda",
-            text,
-            re.I,
+        if re.search(
+            r"(?:completed|held|conducted|concluded)\s+(?:its\s+|the\s+|an\s+)?(?:fda\s+)?(?:end[- ]of[- ]phase\s*2|\beop2\b)(?:\s+meeting)?|(?:end[- ]of[- ]phase\s*2|\beop2\b)\s+meeting\s+(?:was\s+)?(?:completed|held|concluded)",
+            text, re.I,
         ):
             add("maplight|ml004|fda-eop2-completed")
         if re.search(r"phase\s*3|registrational", text, re.I) and re.search(
@@ -660,7 +734,7 @@ def maplight_milestone_keys(title: str, body: str) -> list[str]:
             re.I,
         ):
             add("maplight|ml004|phase3-started")
-        if re.search(r"partnership|collaboration|license|licensing|strategic (?:collaboration|partner)", text, re.I):
+        if re.search(r"(?:entered into|signed|executed|formed|announced)\s+(?:a |an |the |new )?(?:strategic )?(?:partnership|collaboration|licens(?:e|ing)(?: agreement)?)", text, re.I):
             add("maplight|ml004|partnering")
 
     if re.search(r"clinical hold|hold placed|suspend(?:ed)?|terminate(?:d)?|discontinue(?:d)?", text, re.I):
@@ -704,7 +778,14 @@ def maplight_stage_and_meaning(keys: list[str], title: str) -> tuple[str, str]:
 def validate_maplight_bridge_and_events() -> tuple[bool, list[dict]]:
     # MapLight's IR HTML pages can intermittently time out from GitHub-hosted runners.
     # Use the company's own Q4-hosted RSS feed as the primary machine-readable official source.
-    xml = fetch_maplight_rss()
+    source_label = "MapLight Therapeutics 공식 RSS"
+    try:
+        xml = fetch_maplight_rss()
+    except MapLightFetchError as exc:
+        if "status=403" not in str(exc):
+            raise
+        xml = fetch_maplight_official_html_as_rss()
+        source_label = "MapLight Therapeutics 공식 보도자료"
     low = clean(re.sub(r"<[^>]+>", " ", xml)).lower()
     bridge_required = ("maplight", "karl deisseroth", "optogenetics", "circuit")
     pipeline_ok = "ml-007c-ma" in low and any(x in low for x in ("zephyr", "vista", "schizophrenia"))
@@ -750,7 +831,7 @@ def validate_maplight_bridge_and_events() -> tuple[bool, list[dict]]:
             "meaning": meaning,
             "title": title,
             "url": link,
-            "source": "MapLight Therapeutics 공식 RSS",
+            "source": source_label,
         })
     return bridge_ok, out
 

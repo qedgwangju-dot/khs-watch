@@ -129,5 +129,65 @@ class MapLightSourceHealthTest(unittest.TestCase):
                 self.assertFalse(mod.ALERT.exists())
 
 
+    def test_maplight_official_html_fallback_after_403_is_complete_and_verifiable(self):
+        titles = [
+            "MapLight Therapeutics Celebrates Co-Founder Dr. Karl Deisseroth on Receipt of 2026 Nobel Prize",
+            "MapLight Therapeutics Announces Positive Topline Results from Phase 2 ZEPHYR Trial of ML-007C-MA",
+            "MapLight Announces Topline Results from Phase 2 IRIS Study for ML-004",
+        ]
+        urls = [mod.MAPLIGHT_NEWS.replace("/news-events/news-releases", "/news-releases/news-release-details/") + f"fixture-{i}" for i in range(3)]
+        def index(first, last, total):
+            entries = "".join(f'<a href="{urls[i]}">{titles[i]}</a>' for i in range(first - 1, last))
+            return f"<html><p>Displaying {first} - {last} of {total}</p>{entries}</html>"
+        bodies = [
+            "Karl Deisseroth co-founded MapLight; the Nobel Prize recognized optogenetics and circuit mapping, foundational to the company's circuit-based drug discovery research. The research helps discover therapies.",
+            "ML-007C-MA ZEPHYR trial reported positive topline results and met its primary endpoint in schizophrenia. The reported Phase 2 clinical efficacy and safety results will support the next registrational development step.",
+            "The ML-004 IRIS Phase 2 trial did not meet its primary endpoint in social communication. The company is considering further development options after the trial results and safety assessment.",
+        ]
+        pages = {
+            mod.MAPLIGHT_NEWS: index(1, 2, 3),
+            mod.MAPLIGHT_NEWS + "?page=1": index(3, 3, 3),
+            **{u: f"<main><h1>{t}</h1><p>{b}</p></main>" for u, t, b in zip(urls, titles, bodies)},
+        }
+        def fetch(url, timeout=25):
+            return pages[url]
+        with patch.object(mod, "fetch_maplight_rss", side_effect=mod.MapLightFetchError("HTTPError status=403 retryable=false")), patch.object(mod, "fetch_text", side_effect=fetch) as mocked:
+            bridge, events = mod.validate_maplight_bridge_and_events()
+        self.assertTrue(bridge)
+        self.assertEqual(len(events), 2)
+        self.assertTrue(all(e["source"] == "MapLight Therapeutics 공식 보도자료" for e in events))
+        self.assertEqual({e["url"] for e in events}, set(urls[1:]))
+        self.assertTrue(any("zephyr-phase2-positive" in e["milestone_keys"][0] for e in events))
+        self.assertGreaterEqual(mocked.call_count, 5)
+
+    def test_maplight_official_html_incomplete_pagination_never_passes(self):
+        title = "MapLight Therapeutics Reports Significant Clinical Results in its 2026 Trial"
+        url = "https://ir.maplightrx.com/news-releases/news-release-details/one"
+        index = f'<html><p>Displaying 1 - 1 of 2</p><a href="{url}">{title}</a></html>'
+        with patch.object(mod, "fetch_text", return_value=index):
+            with self.assertRaisesRegex(mod.MapLightFetchError, "pagination"):
+                mod.fetch_maplight_official_html_as_rss()
+
+    def test_maplight_future_plans_are_not_completed_clinical_or_signed_deals(self):
+        planned = (
+            "ML-007C-MA ZEPHYR completed enrollment. VISTA enrollment remains ongoing; "
+            "the company plans to meet FDA at an End-of-Phase 2 meeting. "
+            "ZEPHYR-2 is planned to begin in 2028. "
+            "ML-004 may seek potential strategic collaborations in the future."
+        )
+        keys = mod.maplight_milestone_keys("MapLight Therapeutics reports clinical plan", planned)
+        for forbidden in ("fda-eop2-completed", "zephyr2-started", "vista-enrollment-complete", "partnering"):
+            self.assertFalse(any(forbidden in key for key in keys), forbidden)
+        actual = (
+            "MapLight Therapeutics held its End-of-Phase 2 meeting. "
+            "VISTA completed enrollment after the final patient was enrolled. "
+            "ZEPHYR-2 initiated enrollment with its first patient dosed. "
+            "MapLight entered into a strategic collaboration for ML-004."
+        )
+        keys = mod.maplight_milestone_keys("MapLight Therapeutics reports ML-007C-MA and ML-004 update", actual)
+        for required in ("fda-eop2-completed", "zephyr2-started", "vista-enrollment-complete", "partnering"):
+            self.assertTrue(any(required in key for key in keys), required)
+
+
 if __name__ == "__main__":
     unittest.main()
