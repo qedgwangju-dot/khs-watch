@@ -349,7 +349,8 @@
     "stateevt_e46d791c218bfa5ffad7": "2026-10-21T00:09:16.454329+00:00",
     "stateevt_bf2ae1b505008051da7f": "2026-10-21T00:09:16.454329+00:00",
     "stateevt_645a045a987f420d5621": "2026-10-31T21:59:25.771008+00:00",
-    "stateevt_dc2afa8f41f02a61be5c": "2026-11-02T09:42:47.232236+00:00"
+    "stateevt_dc2afa8f41f02a61be5c": "2026-11-02T09:42:47.232236+00:00",
+    "stateevt_4ba3f19924b30a326bc8": "2026-11-09T08:45:19.892081+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -390,7 +391,8 @@
     "eventstate_alaska_lng_e46d791c218bfa5ffad7": "2026-10-21T00:09:16.454329+00:00",
     "eventstate_us_trade_surplus_bf2ae1b505008051da7f": "2026-10-21T00:09:16.454329+00:00",
     "eventstate_power_equipment_supply_645a045a987f420d5621": "2026-10-31T21:59:25.771008+00:00",
-    "eventstate_nuclear_build_dc2afa8f41f02a61be5c": "2026-11-02T09:42:47.232236+00:00"
+    "eventstate_nuclear_build_dc2afa8f41f02a61be5c": "2026-11-02T09:42:47.232236+00:00",
+    "eventstate_nuclear_build_4ba3f19924b30a326bc8": "2026-11-09T08:45:19.892081+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -421,7 +423,8 @@
         "nuclear_upfront_payment_usd_b:10",
         "party:hyundaiec",
         "party:kepco",
-        "party:westinghouse"
+        "party:westinghouse",
+        "stage:송금집행"
       ],
       "slots": {
         "nuclear_build|ap1000_units": "ap1000_units:6",
@@ -444,24 +447,25 @@
         "nuclear_build|nuclear_upfront_payment_usd_b": "nuclear_upfront_payment_usd_b:10",
         "nuclear_build|party:hyundaiec": "party:hyundaiec",
         "nuclear_build|party:kepco": "party:kepco",
-        "nuclear_build|party:westinghouse": "party:westinghouse"
+        "nuclear_build|party:westinghouse": "party:westinghouse",
+        "nuclear_build|stage:송금집행": "stage:송금집행"
       },
       "initialized_at": "2026-09-21T13:18:18.976289+00:00",
-      "updated_at": "2026-11-02T09:42:51.663060+00:00",
-      "last_title": "신한증권, 현대건설 목표가↓…\"대미투자 원전 수익화 불확실성\" - 연합뉴스",
-      "last_source": "연합뉴스",
+      "updated_at": "2026-11-09T08:45:24.368949+00:00",
+      "last_title": "이형일 \"원전 100억 달러 송금, 국내 절차 완료 후…리스크 관리 철저\" - 뉴스1",
+      "last_source": "뉴스1",
       "evidence": [
         {
-          "source": "연합뉴스",
-          "title": "신한증권, 현대건설 목표가↓…\"대미투자 원전 수익화 불확실성\" - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5IMFd2QVJYclRJLTRkSUxYLXVWOUNkajF2Ym1qdHI2djkwRWdRQy1uNEhlNV80aFdqTUEwaEgxTEdDX0dORlpicWtBQVpMU1l4TkNQeEZfdTVFWUlWV2FPZdIBYEFVX3lxTE5IMFd2QVJYclRJLTRkSUxYLXVWOUNkajF2Ym1qdHI2djkwRWdRQy1uNEhlNV80aFdqTUEwaEgxTEdDX0dORlpicWtBQVpMU1l4TkNQeEZfdTVFWUlWV2FPZQ?oc=5",
-          "published": "2026-11-01T23:41:13+00:00"
+          "source": "뉴스1",
+          "title": "이형일 \"원전 100억 달러 송금, 국내 절차 완료 후…리스크 관리 철저\" - 뉴스1",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBhTTJmZWl1QS1ZZEtHckpVV1Vqd1BXQVFmaTNyS3llRzZPaHRteFgtWmEtZnFRQVRkLV93NVVNTHYxNm9XNzZFTkNzcXdOQVBxOUVOXw?oc=5",
+          "published": "2026-11-09T03:18:03+00:00"
         },
         {
-          "source": "뉴스핌",
-          "title": "[리포트 브리핑]현대건설, '3분기 실적 예상치 부합, 원전 성과를 기다리며' 목표가 133,000원 - 미래에셋증권 - 뉴스핌",
-          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5NRnlKdE0xQ1dyZzNzZEs4b2c4UlhoU2hEWEJJT3lfMGdJcXZLQ01XUjZ2d05Fc0lobzNGSmtrTVF1SWR4T0hTdGZ1ZGdzRDFSWDdBZ2J0UkkwTHd2?oc=5",
-          "published": "2026-11-02T06:06:00+00:00"
+          "source": "헤럴드경제",
+          "title": "美 원전 차질우려에도 선급금 100억弗 송금 추진 - 헤럴드경제",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFA2TkpLRjA5WE5kbHloOXI3Z29FaVdVVGIya2xxQm5PWWc1M2xHZDhUT2YtQUVNb3ZYeWNCTG82LUNXNzdoeTAxbEc3OVloNktUZXFWVk13?oc=5",
+          "published": "2026-11-06T02:42:20+00:00"
         }
       ]
     },
