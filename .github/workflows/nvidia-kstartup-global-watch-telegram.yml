@@ -30,8 +30,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: nvidia-kstartup-global-watch-telegram
-  cancel-in-progress: false
+  group: nvidia-kstartup-global-watch-telegram-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 
 jobs:
   watch:
@@ -47,7 +47,7 @@ jobs:
       - name: Checkout latest main
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           ref: main
 
       - name: Check due interval
