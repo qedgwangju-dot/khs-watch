@@ -3,7 +3,7 @@
     "Nasdaq SOX|sox": "34c9ccd4156006dd61ddbe5ee9d5fb54c3753a8caa539731df606e0105d716f5",
     "Cboe|options": "bec153406f7a837577b4de2bd70728abbe29c1514f9c7491aeb1f6b473e72e0b",
     "CFTC|cot": "921655e5b69d12c467f11b66f324a556c3e1f2567240560fc8935cd7760318de",
-    "미국 주요지수·시장 확산·옵션 과거 비교|context": "858f012465bc7caf792ada14b195a787a39fcee8fae534ed4a7e1bc35b6b95e3"
+    "미국 주요지수·시장 확산·옵션 과거 비교|context": "d27f225471247b9b4e30365ad5bf6ac05b2bc931b081022eb19fc0521e061340"
   },
   "values": {
     "Nasdaq SOX|sox": {
@@ -3009,7 +3009,7 @@
                 ],
                 [
                   "2026-05-19",
-                  730.03173828125
+                  730.0317993164062
                 ],
                 [
                   "2026-05-20",
@@ -3029,7 +3029,7 @@
                 ],
                 [
                   "2026-05-27",
-                  746.6774291992188
+                  746.677490234375
                 ],
                 [
                   "2026-05-28",
@@ -3041,7 +3041,7 @@
                 ],
                 [
                   "2026-06-01",
-                  754.7166748046875
+                  754.7167358398438
                 ],
                 [
                   "2026-06-02",
@@ -3065,7 +3065,7 @@
                 ],
                 [
                   "2026-06-09",
-                  733.3350830078125
+                  733.3350219726562
                 ],
                 [
                   "2026-06-10",
@@ -34773,12 +34773,12 @@
         }
       },
       "url": "https://www.cboe.com/markets/us/options/market-statistics/daily",
-      "fingerprint": "858f012465bc7caf792ada14b195a787a39fcee8fae534ed4a7e1bc35b6b95e3"
+      "fingerprint": "d27f225471247b9b4e30365ad5bf6ac05b2bc931b081022eb19fc0521e061340"
     }
   },
-  "updated_at_kst": "2026-11-08T07:58:31.399671+09:00",
+  "updated_at_kst": "2026-11-09T10:09:46.252520+09:00",
   "presentation_version": "us-positioning-auto-direction-20261016-v1",
-  "daily_digest_sent_date_kst": "2026-11-08",
+  "daily_digest_sent_date_kst": "2026-11-09",
   "last_verified_context_fx": {
     "fx": {
       "status": "verified",
