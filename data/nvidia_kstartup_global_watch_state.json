@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-11-09T14:45:03+09:00",
-  "last_checked_kst": "2026-11-09T14:45:03+09:00",
+  "last_checked_kst": "2026-11-09T14:48:10+09:00",
   "seen": {
     "126be798477cbd897413b8c2": {
       "title": "국산 AI 반도체, 엔비디아 GPU와 연결…SKT·리벨리온 3자 협력 - MTN 머니투데이방송",
@@ -50,6 +50,18 @@
       "tier": "공식",
       "first_seen_kst": "2026-11-09T14:45:02+09:00",
       "baseline": true
+    },
+    "8f7dfee3212fe05876f47cd2": {
+      "title": "NVIDIA·리벨리온·SK텔레콤, R200 NPU·NVLink Fusion 기반 AI 인프라 기술협력 공식 발표",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-rebellions-and-sk-telecom-announce-collaboration-to-advance-sovereign-ai-infrastructure-with-nvidia-nvlink-fusion",
+      "source": "NVIDIA 공식 뉴스룸",
+      "published_kst": "2026-11-09",
+      "event_id": "nvidia_korea|nvlink_r200_collaboration|2026-11",
+      "kind": "nvlink_r200_collaboration",
+      "stage": 5,
+      "tier": "공식",
+      "first_seen_kst": "2026-11-09T14:48:10+09:00",
+      "alerted": true
     }
   },
   "events": {
@@ -105,6 +117,13 @@
       "source": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1DcXRsekFycU05dmVZMUcwSXl5QU9qbzN5UWxtNDY1eERiLTJlSGR0WXUzZ0RFTmpBOFNjZTd6SC1HVHpYVXZlejFTVHZvdWNuMEJ0UndiVloxVnhicUw1cTRpX2lkczRWbzdEenhBVG9ZeEJsanQ2WUkyRVJ5QQ?oc=5",
       "baseline": true,
       "registered_kst": "2026-11-09T14:45:02+09:00"
+    },
+    "nvidia_korea|nvlink_r200_collaboration|2026-11": {
+      "title": "NVIDIA·리벨리온·SK텔레콤, R200 NPU·NVLink Fusion 기반 AI 인프라 기술협력 공식 발표",
+      "source": "https://nvidianews.nvidia.com/news/nvidia-rebellions-and-sk-telecom-announce-collaboration-to-advance-sovereign-ai-infrastructure-with-nvidia-nvlink-fusion",
+      "stage": 5,
+      "registered_kst": "2026-11-09T14:48:10+09:00",
+      "alerted": true
     }
   }
 }
