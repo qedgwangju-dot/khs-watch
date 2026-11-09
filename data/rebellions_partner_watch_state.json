@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-09T21:30:15+09:00",
+  "last_checked_kst": "2026-11-09T22:30:01+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -4013,6 +4013,24 @@
       "material_stage": 1,
       "first_seen_kst": "2026-11-09T20:30:32+09:00",
       "suppressed_duplicate": "same_url"
+    },
+    "5bed7538f6094635a814d154": {
+      "title": "SKT \"한국서 가장 싼 AI 토큰 생산\"…리벨리온 \"토큰 수출국 목표\" [일문일답] - 아이뉴스24",
+      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9RTUlMTk0yMWdFUUl4VHF4TXRCdVBDYVllN05WVTdFNHBEenB0dTdMOExOdm9ZU3ZFc2lEd0tVaGFiWXg4NzM5cnVzRQ?oc=5",
+      "summary": "SKT \"한국서 가장 싼 AI 토큰 생산\"…리벨리온 \"토큰 수출국 목표\" [일문일답] 아이뉴스24",
+      "event_signature": "skt|general|general",
+      "material_stage": 0,
+      "first_seen_kst": "2026-11-09T22:30:01+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "2030e61d9d447c8cfa0266c8": {
+      "title": "엔비디아·SKT·리벨리온, AI 반도체 협력 MOU 체결..국산 NPU 데이터센터 도입 - 증권플러스",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE51cWFDMzNmV2NmQlhibXVwZnY2MXUwRFdvZjZYUUxvanJJT2NtazZOckltbjYyVnhKUFZIY196WnFIWXZXV2xya1JPNDRuUXN2a01PRHpKNDg2aTlJMGY4?oc=5",
+      "summary": "엔비디아·SKT·리벨리온, AI 반도체 협력 MOU 체결..국산 NPU 데이터센터 도입 증권플러스",
+      "event_signature": "skt|npu|datacenter",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T22:30:01+09:00",
+      "suppressed_duplicate": "same_event:skt|npu|datacenter"
     }
   }
 }
