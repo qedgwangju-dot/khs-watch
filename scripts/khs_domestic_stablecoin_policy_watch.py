@@ -362,6 +362,93 @@ def stablecoin_title(text: str) -> str:
     return "국내 디지털자산 정책: 원화 스테이블코인 법안·결제 표준 체크"
 
 
+def classify_won_stablecoin_policy_stage(
+    title: str,
+    body: str,
+    source_name: str,
+) -> dict:
+    """Classify the evidence, never convert a reported majority into enacted law.
+
+    A financial regulator's correction often quotes the media claim in section
+    1 and then denies it in section 2. Search the title and the actual
+    clarification first; keyword co-occurrence in the full page is unsafe.
+    """
+    title_clean = clean_text(title)
+    body_clean = clean_text(body)
+    subject = f"{title_clean} {body_clean}"
+    bank_majority_mentioned = bool(
+        re.search(r"(?:50\\s*%\\s*\\+\\s*1\\s*주|50\\s*%\\s*이상|51\\s*%|과반)", subject, re.I)
+        and has_any(subject, ["은행", "은행권", "컨소시엄"])
+    )
+    if not has_any(subject, ["스테이블코인", "원화코인", "디지털자산기본법", "디지털자산법"]):
+        return {
+            "stage": "not_applicable",
+            "status": "관련 없음",
+            "bank_majority_reported": False,
+            "bank_majority_legally_confirmed": False,
+            "law_enacted": False,
+        }
+    regulator = source_name.startswith("Financial Services Commission")
+    central_bank = source_name.startswith("Bank of Korea")
+    government_official = regulator or central_bank or source_name.startswith("Korea Policy Briefing")
+    negative = has_any(title_clean, [
+        "확정된 바 없", "정해진 바 없", "결정된 바 없", "미확정",
+    ])
+    # The regulator's formal correction takes precedence over the article
+    # claims quoted immediately above it.
+    clarification = body_clean.split("보도에 대한 설명")[-1]
+    clarification = clarification.split("금융위 설명")[-1]
+    clarification = clarification.split("금융위원회 설명")[-1]
+    if regulator and (negative or has_any(clarification, [
+        "확정된 바 없습니다", "정해진 바 없습니다", "아직 정해진 바 없",
+        "주요내용은 아직", "논의를 지속",
+    ])):
+        return {
+            "stage": "official_not_final",
+            "status": "금융위 공식 설명 · 발행주체 미확정",
+            "bank_majority_reported": bank_majority_mentioned,
+            "bank_majority_legally_confirmed": False,
+            "law_enacted": False,
+        }
+    if central_bank:
+        return {
+            "stage": "central_bank_policy_position",
+            "status": "한국은행 정책 의견 · 정부안 확정 아님",
+            "bank_majority_reported": bank_majority_mentioned,
+            "bank_majority_legally_confirmed": False,
+            "law_enacted": False,
+        }
+    draft_title = (
+        government_official
+        and has_any(title_clean, ["정부안", "제정안", "법률안"])
+        and has_any(title_clean, ["공개", "발표", "제시", "제출"])
+        and not negative
+    )
+    if draft_title:
+        return {
+            "stage": "government_draft_publicly_released",
+            "status": "정부안 공개 · 국회 통과·시행 전",
+            "bank_majority_reported": bank_majority_mentioned,
+            "bank_majority_legally_confirmed": False,
+            "law_enacted": False,
+        }
+    if government_official:
+        return {
+            "stage": "official_policy_discussion",
+            "status": "공식 정책자료 · 법률 확정 여부 별도 확인",
+            "bank_majority_reported": bank_majority_mentioned,
+            "bank_majority_legally_confirmed": False,
+            "law_enacted": False,
+        }
+    return {
+        "stage": "media_report_unconfirmed",
+        "status": "언론 보도 · 정부안·법률 확정 전",
+        "bank_majority_reported": bank_majority_mentioned,
+        "bank_majority_legally_confirmed": False,
+        "law_enacted": False,
+    }
+
+
 def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) -> list[dict]:
     link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
     deduped: dict[str, dict] = {}
@@ -399,6 +486,8 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
         if not is_policy_candidate(haystack, source_name):
             continue
         cbdc_scope = cbdc_claim_scope(title, detail_clean[:8500], source_name)
+        won_stage = (classify_won_stablecoin_policy_stage(title, detail_clean[:8500], source_name)
+                     if not cbdc_scope else None)
         if cbdc_scope and any(x in title for x in ("어떻게 다를까", "Q&A", "오해와 진실", "해명")):
             # A repeat explanation of existing policy is not a new stage-changing
             # decision. Continue watching for separately dated formal changes.
@@ -420,7 +509,11 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
                     policy_hits[:14] or (["기관용 CBDC·예금토큰"] if cbdc_scope else ["스테이블코인 정책"])
             },
             "importance": "상" if high else "중",
-            "status": "확정",
+            "status": won_stage["status"] if won_stage else "공식 디지털화폐 자료",
+            "won_stablecoin_issuance_stage": won_stage["stage"] if won_stage else "",
+            "bank_majority_reported": bool(won_stage and won_stage["bank_majority_reported"]),
+            "bank_majority_legally_confirmed": False,
+            "law_enacted": False,
             "impacts": ["시간표", "할인율", "수급"],
             "paths": ["정책 타임라인", "규제 강도", "금융 인프라 재편", "표준 선점", "테마 수급"],
             "sectors": SECTORS[:],
