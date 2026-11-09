@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-11-06T11:39:32+09:00",
+  "updated_at_kst": "2026-11-09T11:08:34+09:00",
   "levels": {
     "official_funding": 0,
     "structural_repatriation": 0,
@@ -12,8 +12,8 @@
   },
   "seen_policy_ids": [],
   "snapshot": {
-    "reserve_period": "September 2026",
-    "securities_drop_bn_usd": -17.867999999999938,
+    "reserve_period": "October 2026",
+    "securities_drop_bn_usd": 12.863999999999919,
     "intervention_trillion_yen": 0.0,
     "intervention_usd_bn": 0.0,
     "funding_ratio": null,
@@ -27,15 +27,15 @@
       "negative_streak": 0
     },
     "market": {
-      "observed_at_utc": "2026-11-06T02:39:39Z",
-      "usdjpy": 157.85499572753906,
-      "usdjpy_change_pct": -0.05255721272869996,
+      "observed_at_utc": "2026-11-09T02:08:39Z",
+      "usdjpy": 158.23800659179688,
+      "usdjpy_change_pct": -0.11803276515899408,
       "ust2": null,
       "ust2_change_bp": null,
-      "ust10": 4.837,
-      "ust10_change_bp": -5.700000000000038,
-      "ust30": 5.251,
-      "ust30_change_bp": -3.0999999999999694
+      "ust10": 4.859,
+      "ust10_change_bp": 2.200000000000024,
+      "ust30": 5.26,
+      "ust30_change_bp": 0.8999999999999453
     }
   }
 }
