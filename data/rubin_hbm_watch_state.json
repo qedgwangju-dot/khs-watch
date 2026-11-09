@@ -1334,7 +1334,7 @@
   },
   "_delivery": {
     "id": "136c16e4c8fd9ab9896d5d60742d0cf09e329866256c62d1c6b747d712d9a183",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-11-09T21:36:30+09:00",
     "chunks": [
       "<b>🚨 AI 부품 리드타임 변화</b>\n\n<b>핵심 변화</b>\n• <b>전주 대비:</b> 납기·공급 상태 변화 없음 (악화 0개 / 완화 0개, 해당 없음)\n• <b>최대 병목:</b> ABF 48~56주 / 균형 12주 (4.3배)\n• 이전 확정값 유지: CPU, GPU, DRAM, NAND(eSSD), HDD, ABF, MLCC\n\n<b>현재 숫자</b>\n• <b>심각:</b> DRAM 19주/8주 (2.4배) · HDD 50주/16주 (3.1배) · ABF 48~56주/12주 (4.3배)\n• <b>제약:</b> CPU 25~30주/16~20주 (1.5배) · NAND(eSSD) 16주/8주 (2.0배) · MLCC 38주/12주 (3.2배)\n• <b>악화 중:</b> GPU 30~45주/30~40주 (1.1배)\n\n<b>미래 재평가</b>\n• 새 원인·시간표 변화 없음\n\n<b>관련 기업</b>\n• <b>ABF:</b> 삼성전기·Ibiden·Unimicron·Nan Ya PCB — 고성능 FC-BGA/ABF 기판\n\n<b>역풍·다음 확인</b>\n• ABF: 리드타임·SAP 가동률·수율·고객 승인 (12~24개월)\n• 일부 값은 이번 주 직접 판독되지 않아 이전 확정값을 유지했습니다.\n\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-009\">TrendForce 원문</a>"
@@ -2679,6 +2679,7 @@
         "official_spec_url": "https://news.skhynix.co.kr/hbf-at-fms-2026/",
         "status": "reported_target_not_official_final_not_commercial"
       }
-    }
+    },
+    "attempt_at_kst": "2026-11-09T21:36:32+09:00"
   }
 }
