@@ -1346,14 +1346,16 @@ MHI_ENGINE_CAPEX_JPY_B = 100.0
 
 def mhi_issuer_text_verified(body: str) -> bool:
     text = normalize(BeautifulSoup(body or "", "html.parser").get_text(" ", strip=True)).lower()
-    return (
-        len(text) > 160
-        and ("2026" in text)
-        and (
-            ("三菱重工" in text and ("決算" in text or "業績" in text))
-            or ("mitsubishi heavy industries" in text and "financial" in text)
-        )
-    )
+    # A generic site footer containing "2026"/"決算" is NOT proof that the
+    # actual November 6 quarterly announcement was fetched.
+    has_issuer = "三菱重工" in text or "mitsubishi heavy industries" in text
+    dated = bool(re.search(r"(?:2026[年./\-]\s*11[月./\-]\s*0?6|nov(?:ember)?\s+6,?\s*2026)", text))
+    specific = bool(re.search(
+        r"(?:2026年度.{0,16}第2四半期.{0,16}決算|"
+        r"fy\s*2026.{0,25}(?:1h|first six months|second quarter|2q))",
+        text,
+    ))
+    return len(text) > 160 and has_issuer and dated and specific
 
 
 def mhi_capex_text_verified(body: str) -> bool:
