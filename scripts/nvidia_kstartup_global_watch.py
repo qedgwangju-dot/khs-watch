@@ -39,6 +39,7 @@ RELEVANT_FIRMS = (
     ("mobilint", ("모빌린트", "mobilint")),
     ("hyperaccel", ("하이퍼엑셀", "hyperaccel")),
     ("upstage", ("업스테이지", "upstage")),
+    ("elice", ("엘리스그룹", "엘리스", "elice group")),
     ("nota", ("노타", "nota ai", "nota inc", "nota.ai")),
     ("lunit", ("루닛", "lunit")),
     ("vesslai", ("베슬ai", "vessl ai", "vesslai")),
@@ -111,7 +112,7 @@ SEED_EVENTS = {
         "title": USER_HEADLINE,
         "stage": 1, "baseline": True,
         "source": USER_ARTICLE,
-        "evidence": "2026-11-05 사용자 제공 기사 제목 기준, 원문 본문 직접 확인 실패",
+        "evidence": "2026-11-05 한국경제 본문 확인: 과기정통부 주선 11월 9일 비공개 간담회 예정, 리벨리온·퓨리오사AI·딥엑스·업스테이지·엘리스그룹 등은 참석 예정 또는 검토 중(전원 확정 아님)",
     },
     "nvidia_korea|ai_day_schedule|2026-11": {
         "title": "2026-11-09~10 NVIDIA AI Day Seoul 2026 및 11-10 Startup Connect 공식 행사 예정",
