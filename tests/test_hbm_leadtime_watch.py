@@ -723,6 +723,73 @@ class Weekly009ScreenshotRegression(unittest.TestCase):
             w.WEEKLY_009_IMAGE_LOCK["components"], "2026-11-10"
         ))
 
+    def test_009_publisher_date_with_stale_embedded_table_does_not_hide_screenshot(self):
+        import copy
+        prev = copy.deepcopy(w.WEEKLY_008_LOCK)
+        stale = copy.deepcopy(prev["components"])
+        official_url = "https://insights.trendforce.com/p/weekly-radar-009"
+        upgraded = w.weekly_009_image_upgrade(
+            prev, "2026-11-09", official_url, stale, "2026-11-09"
+        )
+        self.assertIsNotNone(upgraded)
+        self.assertEqual(upgraded["components"]["DRAM"]["current"], "18")
+        # When yesterday's table is merely carried forward after the issue
+        # date advances, the *next* run must still repair it once.
+        partial = {"as_of": "2026-11-09", "source": official_url}
+        repaired = w.weekly_009_image_upgrade(
+            partial, "2026-11-09", official_url, stale, "2026-11-09"
+        )
+        self.assertEqual(repaired["components"]["DRAM"]["current"], "18")
+        new_table = copy.deepcopy(stale)
+        new_table["DRAM"]["current"] = "18"
+        self.assertIsNone(w.weekly_009_image_upgrade(
+            partial, "2026-11-09", official_url, new_table, "2026-11-09"
+        ))
+
+    def test_009_erroneous_same_day_state_is_corrected_once_without_receipt_loss(self):
+        import copy
+        import tempfile
+        from unittest import mock
+        official_url = "https://insights.trendforce.com/p/weekly-radar-009"
+        with tempfile.TemporaryDirectory() as root:
+            folder = pathlib.Path(root)
+            state = folder / "state.json"
+            pending = folder / "pending.json"
+            alert = folder / "alert.md"
+            previous = copy.deepcopy(w.WEEKLY_008_LOCK)
+            previous["as_of"] = "2026-11-09"
+            previous["source"] = official_url
+            previous["mlcc_vendor_watch"] = copy.deepcopy(w.MLCC_VENDOR_BASELINE)
+            previous["caspa_panel_watch"] = copy.deepcopy(w.CASPA_PANEL_BASELINE)
+            existing = {
+                "ai_component_leadtime": previous,
+                "last_successful_delivery_kst": "2026-11-09T21:36:35+09:00",
+                "telegram_message_id": 386,
+                "delivery_receipt": {"status": "confirmed", "message_ids": [386]},
+                "other_route": {"untouched": 1},
+            }
+            state.write_text(json.dumps(existing, ensure_ascii=False), encoding="utf-8")
+            with mock.patch.object(w, "STATE_PATH", state), \
+                 mock.patch.object(w, "PENDING_PATH", pending), \
+                 mock.patch.object(w, "ALERT_PATH", alert), \
+                 mock.patch.object(w, "read_rss", return_value=[]):
+                w.main()
+                actual = json.loads(pending.read_text(encoding="utf-8"))
+                lead = actual["ai_component_leadtime"]
+                self.assertEqual(lead["components"]["DRAM"]["current"], "18")
+                self.assertEqual(lead["components"]["DRAM"]["status"], "Very Tight")
+                self.assertEqual(lead["source"], w.WEEKLY_009_IMAGE_LOCK["source"])
+                self.assertIn("사용자 제공", lead["source_kind"])
+                self.assertEqual(actual["delivery_receipt"], existing["delivery_receipt"])
+                self.assertEqual(actual["telegram_message_id"], 386)
+                self.assertEqual(actual["other_route"], existing["other_route"])
+                self.assertIn("정정", alert.read_text(encoding="utf-8"))
+                state.write_text(json.dumps(actual, ensure_ascii=False), encoding="utf-8")
+                alert.unlink()
+                w.main()
+                self.assertFalse(alert.exists())
+
+
     def test_existing_delivery_state_and_other_modules_survive_once_only_update(self):
         import copy
         import tempfile

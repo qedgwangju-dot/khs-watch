@@ -1623,20 +1623,34 @@ def weekly_009_image_upgrade(
     latest_components: dict,
     today_kst: str,
 ) -> dict | None:
-    """Apply the 11/9 directly read screenshot once, only to the exact 11/2 baseline.
+    """One-shot 11/9 image intake, including recovery from partial publisher HTML.
 
-    Do not overwrite any independently newer official data, contradicting
-    readings, or an already acknowledged same-week delivery.
+    A new weekly issue's date/title does not prove its embedded image rows
+    were parsed. If the collector merely carried 11/2 rows into a 11/9
+    issue, repair only the exact unchanged 11/2 rows. Never overwrite a
+    differing verified row or a later issue.
     """
     lock = WEEKLY_009_IMAGE_LOCK
     if today_kst < lock["as_of"]:
         return None
-    if str(prior.get("as_of") or "") != WEEKLY_008_LOCK["as_of"]:
+    prior_date = str(prior.get("as_of") or "")
+    prior_source = str(prior.get("source") or "").rstrip("/")
+    current_source = str(latest_source or "").rstrip("/")
+    old_source = WEEKLY_008_LOCK["source"]
+    weekly_009_url = "https://insights.trendforce.com/p/weekly-radar-009"
+    if prior_date == WEEKLY_008_LOCK["as_of"] and prior_source == old_source:
+        if (str(latest_as_of), current_source) not in {
+            (WEEKLY_008_LOCK["as_of"], old_source),
+            (lock["as_of"], weekly_009_url),
+        }:
+            return None
+    elif prior_date == lock["as_of"] and prior_source == weekly_009_url:
+        if (str(latest_as_of), current_source) != (lock["as_of"], weekly_009_url):
+            return None
+    else:
         return None
-    if str(prior.get("source") or "") != WEEKLY_008_LOCK["source"]:
-        return None
-    if str(latest_as_of) != WEEKLY_008_LOCK["as_of"] or latest_source != WEEKLY_008_LOCK["source"]:
-        return None
+    # Strictly recognize a carry-forward of the whole 11/2 table.
+    # A single conflicting independently observed metric holds the promotion.
     if any(
         canonical_component(latest_components.get(name) or {})
         != canonical_component(expected)
@@ -1646,15 +1660,18 @@ def weekly_009_image_upgrade(
     return copy.deepcopy(lock)
 
 
-def build_weekly_009_image_alert(previous: dict, current: dict) -> str:
+def build_weekly_009_image_alert(previous: dict, current: dict, correction: bool = False) -> str:
     """One new factual DRAM change; shorter lead time is NOT supply normalization."""
     old = previous["DRAM"]
     new = current["DRAM"]
     assert (str(old["current"]), str(new["current"])) == ("19", "18")
     assert old["status"] == new["status"] == "Very Tight"
     lines = [
-        "<b>AI 부품 리드타임 갱신 — 2026년 11월 9일</b>",
+        ("<b>AI 부품 리드타임 정정 — 2026년 11월 9일</b>" if correction
+         else "<b>AI 부품 리드타임 갱신 — 2026년 11월 9일</b>"),
         "",
+        ("• 이전 11월 9일 알림·상태에서 기존 19주가 이월된 부분을 정정합니다."
+         if correction else "• 11월 9일 원본 표에서 확인한 신규 변화입니다."),
         "<b>확인된 신규 변화</b>",
         "• <b>DRAM:</b> 19주 → 18주(1주 단축), 균형 수준 8주 대비 2.25배.",
         "• <b>공급 상태:</b> DRAM은 Very Tight(극심한 공급 부족) 유지. "
@@ -1862,7 +1879,8 @@ def main() -> None:
     )
     if image_update is not None:
         image_alert = build_weekly_009_image_alert(
-            previous_components, image_update["components"]
+            previous_components, image_update["components"],
+            correction=(str(previous.get("as_of") or "") == WEEKLY_009_IMAGE_LOCK["as_of"]),
         )
         notify_text = (
             notify_text.rstrip() + "\n\n" + image_alert.strip()
@@ -1945,7 +1963,11 @@ def main() -> None:
         "candidate_count": len(candidates),
         "mlcc_vendor_watch": vendor_state,
         "caspa_panel_watch": caspa_state,
-        "image_verified_issue": ("weekly-radar-009-user-image" if latest_as_of == WEEKLY_009_IMAGE_LOCK["as_of"]
+        "image_verified_issue": ("weekly-radar-009-user-image" if (
+                                     latest_as_of == WEEKLY_009_IMAGE_LOCK["as_of"]
+                                     and (latest_source == WEEKLY_009_IMAGE_LOCK["source"]
+                                          or "사용자 제공 이미지 일치" in latest_source_kind)
+                                 )
                                  else "weekly-radar-008-text" if latest_source.rstrip("/") == WEEKLY_008_LOCK["source"]
                                  else "weekly-radar-006" if latest_source.rstrip("/") == WEEKLY_006_LOCK["source"] else ""),
         "errors": errors[-10:],
