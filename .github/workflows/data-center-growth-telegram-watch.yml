@@ -1155,10 +1155,17 @@ jobs:
               returned_chat=(result.get("chat") or {}).get("id")
               if returned_chat is None or type(mid)!=int or mid<=0:
                   raise RuntimeError("Telegram response missing chat.id/message_id")
-              if chat.lstrip("-").isdigit() and str(returned_chat)!=chat:
-                  raise RuntimeError("Unexpected chat.id on Telegram acknowledgement")
+              if chat.lstrip("-").isdigit():
+                  if str(returned_chat)!=chat:
+                      raise RuntimeError("Unexpected chat.id on Telegram acknowledgement")
+              elif chat.startswith("@"):
+                  if ((result.get("chat") or {}).get("username") or "").lower()!=chat[1:].lower():
+                      raise RuntimeError("Unexpected @username destination in Telegram acknowledgement")
+              else:
+                  raise RuntimeError("Existing generation chat target is not a verifiable ID or username")
               ids.append(mid)
-          receipt.write_text(json.dumps({"status":"confirmed","message_ids":ids}))
+          receipt.write_text(json.dumps({"status":"confirmed","message_ids":ids,
+                                         "destination_verified":True}))
           print(f"generation_recovery_telegram_confirmed=true message_ids={ids}")
           PY
       - name: Persist only after successful send or legitimate no-message
@@ -1168,11 +1175,24 @@ jobs:
           import json,pathlib
           old=json.loads(pathlib.Path("data/us_data_center_generation_buildout_state.json").read_text())
           new=json.loads(pathlib.Path("out/us_data_center_generation_buildout_pending_state.json").read_text())
-          has_receipt=pathlib.Path("out/generation_recovery_receipt.json").exists()
+          receipt_path=pathlib.Path("out/generation_recovery_receipt.json")
+          has_receipt=receipt_path.exists()
           prev=(old.get("mhi_gtcc_supply_capacity") or {}).get("delivered_event_id")
           nxt=(new.get("mhi_gtcc_supply_capacity") or {}).get("delivered_event_id")
           if nxt and nxt!=prev and not has_receipt:
               raise RuntimeError("Unacknowledged MHI report must not be marked as delivered")
+          if nxt and nxt!=prev and has_receipt:
+              receipt=json.loads(receipt_path.read_text(encoding="utf-8"))
+              if not receipt.get("destination_verified") or not receipt.get("message_ids"):
+                  raise RuntimeError("Invalid Telegram receipt; refusing event promotion")
+              new["mhi_gtcc_supply_capacity"]["delivery_receipt"]={
+                  "status":"confirmed",
+                  "telegram_message_ids":receipt["message_ids"],
+                  "destination_verified":True,
+              }
+              pathlib.Path("out/us_data_center_generation_buildout_pending_state.json").write_text(
+                  json.dumps(new,ensure_ascii=False,indent=2)+"\n", encoding="utf-8"
+              )
           PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
