@@ -1925,5 +1925,56 @@ class Run848PoliticalCeasefireQuestionTests(unittest.TestCase):
                 self.assertEqual(presentation.direction(stage, row), expected)
 
 
+class Run850AirstrikeRestraintSignalTests(unittest.TestCase):
+    def test_saved_title_only_restraint_signal_is_not_escalation(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run850_airstrike_restraint_signal_42603233123.json')
+                             .read_text(encoding='utf-8'))
+        provenance, saved = fixture['provenance'], fixture['article']
+        self.assertEqual(provenance['zip_sha256'],
+                         '57b1e01e1e481c35be280d8f0b51ed4e87bf5dd0e6aa879608cef4f541f3e205')
+        self.assertEqual(provenance['telegram_message_id'], 434)
+        self.assertEqual(provenance['observed_delivered_color'], 'red')
+        self.assertFalse(saved['body_verified'])
+        self.assertEqual(saved['publication_basis'], 'discovery_feed')
+        self.assertEqual(saved['article_text_sha256'], hashlib.sha256(b'').hexdigest())
+
+        snapshot, proof = fixture['semantic_snapshot'], fixture['semantic_proof']
+        alert_bytes = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert_bytes).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+        original = json.loads(evidence_bytes)
+        original_row = next(row for row in original['articles'] if row['id'] == saved['id'])
+        self.assertEqual(original_row['classification_color'], 'red')
+        self.assertTrue(stage._iran_attack_restraint_statement(original_row))
+        self.assertEqual(stage.non_military_kind(original_row), 'military_position')
+        self.assertEqual(stage.final_color(original_row), 'yellow')
+        now = dt.datetime.fromisoformat(original['queried_at_kst'])
+        score, tags = stage.score_item(original_row, now)
+        self.assertGreater(score, 0)
+        self.assertNotIn('확전', tags)
+        self.assertIn('군사 개입·철수 입장', tags)
+
+        text, projected = presentation.project(stage, alert_bytes.decode('utf-8'),
+                                               original, proof, snapshot)
+        target = next(row for row in projected['articles'] if row['id'] == saved['id'])
+        self.assertEqual(target['classification_color'], 'green')
+        self.assertEqual(target['semantic_classification_color'], 'red')
+        self.assertEqual(target['display_section'], 'core')
+        self.assertIn('공습을 제한할 것이라는 신호', text)
+        self.assertIn('제목 기준·본문 미확인', text)
+        self.assertNotEqual(projected['alert_sha256'],
+                            provenance['observed_delivered_alert_sha256'])
+
+        separate = copy.deepcopy(original_row)
+        separate['title_original'] += '; 한편 미군이 이란을 공습했다'
+        self.assertFalse(stage._iran_attack_restraint_statement(separate))
+        self.assertEqual(presentation.direction(stage, separate), 'red')
+        denial = copy.deepcopy(original_row)
+        denial['title_original'] += '는 보도는 허위라고 부인했다'
+        self.assertFalse(stage._iran_attack_restraint_statement(denial))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
