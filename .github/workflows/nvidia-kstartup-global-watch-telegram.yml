@@ -71,7 +71,7 @@ jobs:
                   lag = (dt.datetime.now(ZoneInfo("Asia/Seoul")) - checked).total_seconds() / 60
                   due = lag >= (22 if event == "schedule" else 39)
               except Exception as exc:
-                  print(f"chiplet_state_age_error={type(exc).__name__}")
+                  print(f"nvidia_kstartup_state_age_error={type(exc).__name__}")
                   due = True
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
               out.write("due=" + ("true" if due else "false") + "\n")
@@ -144,7 +144,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: lg-auto-chiplet-watch-${{ github.run_id }}
+          name: nvidia-kstartup-global-watch-${{ github.run_id }}
           path: |
             out/nvidia_kstartup_global_status.md
             out/nvidia_kstartup_global_alert.html
