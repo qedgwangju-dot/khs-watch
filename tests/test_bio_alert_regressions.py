@@ -356,6 +356,34 @@ class BioAlertRegressionTests(unittest.TestCase):
 
 
 
+
+    def test_qlex_prior_false_conversion_correction_delivered_once(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            old = {
+                "dedupe_version": qlex_watch.DEDUPE_VERSION,
+                "seen_fingerprints": [], "seen_story_keys": [], "seen_semantic_keys": [],
+                "seen_regulatory_events": [qlex_watch.CMS_2029_FINAL_RULE_ID, qlex_watch.EU_MIBC_REGULATORY_EVENT_ID],
+                "last_cms_policy_event_date": "2026-11-05",
+            }
+            with patch.object(qlex_watch, "OUT", root), patch.object(qlex_watch, "PENDING", root / "pending.json"), \
+                 patch.object(qlex_watch, "ALERT", root / "alert.md"), patch.object(qlex_watch, "STATUS", root / "status.md"), \
+                 patch.object(qlex_watch, "cms_final_rule_signal", return_value=(False, "previously_delivered")):
+                qlex_watch.check([], old)
+                rendered = (root / "alert.md").read_text(encoding="utf-8")
+                self.assertIn("주가 하락률", rendered)
+                self.assertIn("잘못된 해석", rendered)
+                self.assertIn("14.0%", rendered)
+                self.assertNotIn("QLEX 전환·채택 수치 16.0%", rendered)
+                pending = json.loads((root / "pending.json").read_text(encoding="utf-8"))
+                self.assertIn(qlex_watch.QLEX_FALSE_CONVERSION_CORRECTION, pending["seen_operational_corrections"])
+                self.assertNotIn("seen_operational_corrections", old)
+                (root / "alert.md").unlink()
+                qlex_watch.check([], pending)
+                self.assertFalse((root / "alert.md").exists())
+                with patch.object(base_korean_guard, "translate_to_korean", side_effect=AssertionError("no external translate")):
+                    self.assertEqual(guard.ensure_korean_text(rendered), rendered)
+
     def test_qlex_stock_drop_is_never_drug_conversion(self):
         for title in (
             "알테오젠, 키트루다SC 특허 분쟁 우려에 주가 14% 급락",

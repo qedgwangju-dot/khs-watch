@@ -56,6 +56,7 @@ ECONOMIC_TERMS = ("milestone", "royalty", "마일스톤", "로열티")
 CMS_2029_FINAL_RULE_ID = "CMS|4215-F|FINAL|HYALURONIDASE_FIXED_COMBINATION|2029|2026-11-05"
 CMS_2029_FINAL_RULE_URL = "https://www.cms.gov/newsroom/fact-sheets/medicare-drug-price-negotiation-program-medicare-prescription-drug-benefit-program-final-rule-cms"
 CMS_2029_RULE_DATE = dt.date(2026, 11, 5)
+QLEX_FALSE_CONVERSION_CORRECTION = "QLEX|CORRECTION|STOCK_DROP_NOT_CONVERSION|2026-11-09"
 
 # 유럽위원회 2026-10-21 최종 승인: 2026-06-24 시스플라틴 부적격자 승인의
 # 단순 재보도가 아닌, 적격 여부 제한을 제거한 새 적응증 확대 사건.
@@ -125,6 +126,33 @@ def cms_final_rule_lines() -> list[str]:
         "- 관련 시장 보도: https://www.mt.co.kr/stock/2026/11/09/2026110910384710612",
         "- 알테오젠 공식 투자정보: https://alteogen.com/kr/sub/ir/information.php",
     ]
+
+def qlex_false_conversion_correction_due(state: dict) -> bool:
+    """One-time correction of the previously delivered November 9 QLEX alert."""
+    return (
+        dt.datetime.now(KST).date() >= dt.date(2026, 11, 9)
+        and str(state.get("last_cms_policy_event_date") or "") == "2026-11-05"
+        and CMS_2029_FINAL_RULE_ID in set(state.get("seen_regulatory_events") or [])
+        and QLEX_FALSE_CONVERSION_CORRECTION not in set(state.get("seen_operational_corrections") or [])
+    )
+
+
+def qlex_false_conversion_correction_lines() -> list[str]:
+    return [
+        "[바이오 감시] 중요 정정 — QLEX 전환율과 알테오젠 주가 등락률 구분",
+        "",
+        "■ **2026년 11월 9일 12시 34분** 발송한 알테오젠 약가협상 알림의 기사 항목에서 "
+        "'QLEX 전환·채택 수치 14.0%'라고 표시한 문장은 잘못된 해석이었습니다.",
+        "■ 기사 제목의 14%는 당시 알테오젠 **주가 하락률**이며, "
+        "키트루다 QLEX의 처방·판매·환자 전환율이 아닙니다. 그 수치를 QLEX 전환율로 사용하지 마십시오.",
+        "■ CMS 최종 규정 확정 사실과 약가협상 대상 선정 기준 설명 자체는 이 정정과 별개입니다. "
+        "규정 확정이 즉시 실제 약가·로열티 인하를 뜻하지는 않습니다.",
+        "■ 앞으로 전환율은 분모(총판매액·처방·환자)와 발표기간이 명시된 수치를 확인한 경우에만 보고합니다.",
+        "■ 제품명 대신 노출된 '고유명' 치환 표식도 잘못된 문구였으며 송출 검증을 보강했습니다.",
+        "- 원문: https://www.newsway.co.kr/news/view?ud=2026110911102369367",
+        "- 원문: " + CMS_2029_FINAL_RULE_URL,
+    ]
+
 
 def eu_mibc_approval_due(state: dict, now_utc: dt.datetime | None = None) -> bool:
     now = now_utc if now_utc is not None else dt.datetime.now(UTC)
@@ -540,6 +568,7 @@ def check(items: list[Item], state: dict) -> None:
     seen_semantic = set(state.get("seen_semantic_keys", []))
     regulatory_due = eu_mibc_approval_due(state)
     cms_rule_due, cms_policy_status = cms_final_rule_signal(state)
+    correction_due = qlex_false_conversion_correction_due(state)
 
     fresh: list[Item] = []
     silent: list[Item] = []
@@ -581,7 +610,7 @@ def check(items: list[Item], state: dict) -> None:
     pending["last_check_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
     pending["cms_policy_status"] = cms_policy_status
 
-    if not fresh and not regulatory_due and not cms_rule_due:
+    if not fresh and not regulatory_due and not cms_rule_due and not correction_due:
         write_pending(pending)
         STATUS.write_text(
             f"changed=false fresh_alerts=0 cms_policy_status={cms_policy_status} "
@@ -591,6 +620,11 @@ def check(items: list[Item], state: dict) -> None:
         return
 
     lines = cms_final_rule_lines() if cms_rule_due else []
+    if correction_due:
+        lines += (["", ""] if lines else []) + qlex_false_conversion_correction_lines()
+        acknowledged = set(pending.get("seen_operational_corrections") or [])
+        acknowledged.add(QLEX_FALSE_CONVERSION_CORRECTION)
+        pending["seen_operational_corrections"] = sorted(acknowledged)[-100:]
     if regulatory_due:
         lines += (["", ""] if lines else []) + eu_mibc_regulatory_lines()
     if not lines:
@@ -666,7 +700,8 @@ def check(items: list[Item], state: dict) -> None:
     write_pending(pending)
     STATUS.write_text(
         f"changed=true alerts={len(chosen)} regulatory_approval={'true' if regulatory_due else 'false'} "
-        f"cms_final_rule={'true' if cms_rule_due else 'false'} cms_policy_status={cms_policy_status} "
+        f"cms_final_rule={'true' if cms_rule_due else 'false'} correction={'true' if correction_due else 'false'} "
+        f"cms_policy_status={cms_policy_status} "
         f"stale_or_irrelevant={len(silent)} at={pending['last_check_kst']}\n",
         encoding="utf-8",
     )
