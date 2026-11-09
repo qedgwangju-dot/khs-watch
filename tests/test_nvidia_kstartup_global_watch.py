@@ -165,6 +165,33 @@ class NvidiaKoreaStartupTests(unittest.TestCase):
         self.assertEqual(a["event_id"],"nvidia_korea|meeting_confirmed|2026-11")
         self.assertNotEqual(a["event_id"],"nvidia_korea|meeting|2026-11")
 
+    def test_date_only_official_nvlink_release_is_timezone_safe(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            now = dt.datetime(2026, 11, 9, 15, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+            official = self.item(
+                "NVIDIA·리벨리온·SK텔레콤, R200 NPU·NVLink Fusion 기반 AI 인프라 기술협력 공식 발표",
+                url=m.OFFICIAL_NVLINK, tier="공식", time="2026-11-09")
+            current = {
+                "initialized": True, "last_checked_kst": "2026-11-09T14:00:00+09:00",
+                "bootstrap_kst": "2026-11-09T13:00:00+09:00",
+                "events": dict(m.SEED_EVENTS), "seen": {},
+            }
+            (root / "state.json").write_text(json.dumps(current, ensure_ascii=False), encoding="utf-8")
+            health = {"rss_ok": 19, "rss_total": 19, "official_ok": 2, "errors": []}
+            with contextlib.ExitStack() as st:
+                for name, path in (("STATE", root / "state.json"), ("PENDING", root / "pending.json"),
+                                   ("ALERT", root / "alert.html"), ("STATUS", root / "status.md")):
+                    st.enter_context(mock.patch.object(m, name, path))
+                st.enter_context(mock.patch.object(m, "now_kst", return_value=now))
+                st.enter_context(mock.patch.object(m, "collect", return_value=([official], health)))
+                st.enter_context(mock.patch.object(m, "direct_url",
+                                                    return_value=(m.OFFICIAL_NVLINK, "원문")))
+                m.main()
+                text = m.ALERT.read_text(encoding="utf-8")
+                self.assertIn("NVLink Fusion", text)
+                self.assertIn("신규 사건 1건", text)
+
     def test_multiple_publisher_headlines_cluster_in_one_roundtable(self):
         a=self.item("[단독] 리벨리온 등 엔비디아와 간담회…AI 스타트업 해외진출 길 열리나",
                     time="2026-11-05T17:15+09:00")
