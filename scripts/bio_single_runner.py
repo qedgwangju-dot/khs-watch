@@ -163,6 +163,8 @@ def main() -> int:
         "enhertu_state_persisted": False,
         "halozyme_state_persisted": False,
         "halozyme_source_health": "not_checked",
+        "cms_policy_status": "not_checked",
+        "maplight_source_health": "not_checked",
         "halozyme_search_failed_tasks": None,
         "halozyme_search_task_count": None,
         "intismeran_retry_pending": False,
@@ -197,6 +199,17 @@ def main() -> int:
         hb["qlex_collector_rc"] = qlex_rc
         if qlex_rc != 0:
             hb["errors"].append(f"QLEX collector rc={qlex_rc}: {qlex_log}")
+        else:
+            try:
+                cms_pending = json.loads((OUT / "qlex_sc_conversion_watch_state_pending.json").read_text(encoding="utf-8"))
+                hb["cms_policy_status"] = str(cms_pending.get("cms_policy_status") or "unverified")
+            except Exception:
+                hb["cms_policy_status"] = "pending_unavailable"
+        try:
+            maplight_last = json.loads((DATA / "optogenetics_translation_watch_state.json").read_text(encoding="utf-8"))
+            hb["maplight_source_health"] = "last_verified" if maplight_last.get("maplight_health_ok") is True else "last_incomplete"
+        except Exception:
+            hb["maplight_source_health"] = "unavailable"
 
         wac_rc, wac_log = run([sys.executable, "scripts/qlex_wac_ir_watch.py"])
         hb["qlex_wac_collector_rc"] = wac_rc
@@ -400,18 +413,22 @@ def main() -> int:
                 "[바이오 감시] 오류 복구 확인\n\n"
                 f"- 복구 확인: {now_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
                 f"- 직전 원인: {detail[:500]}\n"
-                "- 현재: QLEX 전환율·월간 WAC·Intismeran·Jemperli·Enhertu·Halozyme 특허분쟁 감시 정상\n"
+                "- 현재: 기존 6개 바이오 실행·전송 경로 정상(별도 정책·MapLight 원천은 개별 확인)\n"
+                f"- CMS 정책 원천 확인: {hb['cms_policy_status']}\n"
+                f"- MapLight 이전 원천 상태: {hb['maplight_source_health']}\n"
                 f"- Telegram 경로: {route_source}",
             )
         elif hb.get("last_health_notice_date") != today and now_dt.hour >= 9:
             message_id = send_text(
                 token,
                 chat_id,
-                "[바이오 감시] 정상 작동 확인\n\n"
+                "[바이오 감시] 감시 범위별 작동 확인\n\n"
                 f"- 마지막 확인: {now_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
-                "- QLEX 전환율·월간 WAC·Intismeran·Jemperli·Enhertu·Halozyme 특허분쟁 감시: 정상\n"
+                "- 기존 QLEX 전환율·월간 WAC·Intismeran·Jemperli·Enhertu·Halozyme: 실행 정상\n"
+                f"- CMS 약가협상 정책 확인: {hb['cms_policy_status']}\n"
+                f"- MapLight 직전 확인 결과: {hb['maplight_source_health']}\n"
                 f"- Telegram 경로: {route_source}\n"
-                "- 새 데이터가 없으면 별도 본 알림은 보내지 않습니다.",
+                "- 실행 성공과 모든 공식 원천자료 정상 확인은 서로 다릅니다.",
             )
             hb["last_health_notice_date"] = today
             hb["health_notice_message_id"] = message_id

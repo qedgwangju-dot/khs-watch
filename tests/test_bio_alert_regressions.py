@@ -353,6 +353,64 @@ class BioAlertRegressionTests(unittest.TestCase):
                     qlex_watch.check([], pending)
                 self.assertFalse((root / "alert.md").exists())
 
+
+    def test_cms_final_rule_requires_exact_official_final_source(self):
+        old = {"seen_regulatory_events": []}
+        good = (
+            "Medicare Drug Price Negotiation Program and Medicare Prescription Drug Benefit Program "
+            "Final Rule (CMS-4215-F) Nov 05, 2026. Initial price applicability year 2029. "
+            "Hyaluronidase in a new formulation, active ingredient and same NDA/BLA holder."
+        )
+        with patch.object(qlex_watch, "fetch", return_value=good):
+            self.assertEqual(qlex_watch.cms_final_rule_signal(old), (True, "official_final_verified"))
+        with patch.object(qlex_watch, "fetch", return_value="2029 proposal hyaluronidase"):
+            self.assertEqual(qlex_watch.cms_final_rule_signal(old)[0], False)
+        with patch.object(qlex_watch, "fetch", side_effect=TimeoutError):
+            self.assertEqual(qlex_watch.cms_final_rule_signal(old)[1], "official_fetch_failed:TimeoutError")
+        with patch.object(qlex_watch, "fetch", side_effect=AssertionError("already sent")):
+            self.assertEqual(qlex_watch.cms_final_rule_signal({
+                "seen_regulatory_events": [qlex_watch.CMS_2029_FINAL_RULE_ID],
+            }), (False, "previously_delivered"))
+
+    def test_cms_alert_state_advances_only_in_pending_until_telegram_success(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            initial = {"dedupe_version": qlex_watch.DEDUPE_VERSION,
+                       "seen_fingerprints": [], "seen_story_keys": [], "seen_semantic_keys": [],
+                       "seen_regulatory_events": [qlex_watch.EU_MIBC_REGULATORY_EVENT_ID]}
+            with patch.object(qlex_watch, "OUT", root), patch.object(qlex_watch, "PENDING", root / "pending.json"), \
+                patch.object(qlex_watch, "ALERT", root / "alert.md"), patch.object(qlex_watch, "STATUS", root / "status.md"), \
+                patch.object(qlex_watch, "cms_final_rule_signal", return_value=(True, "official_final_verified")):
+                qlex_watch.check([], initial)
+                alert = (root / "alert.md").read_text(encoding="utf-8")
+                self.assertIn("CMS-4215-F", alert)
+                self.assertIn("2029년", alert)
+                self.assertIn("확정된 것은 대상 선정 기준", alert)
+                self.assertNotIn(qlex_watch.CMS_2029_FINAL_RULE_ID, initial["seen_regulatory_events"])
+                pending = json.loads((root / "pending.json").read_text(encoding="utf-8"))
+                self.assertIn(qlex_watch.CMS_2029_FINAL_RULE_ID, pending["seen_regulatory_events"])
+                self.assertIn(qlex_watch.EU_MIBC_REGULATORY_EVENT_ID, pending["seen_regulatory_events"])
+                (root / "alert.md").unlink()
+                with patch.object(qlex_watch, "cms_final_rule_signal", return_value=(False, "previously_delivered")):
+                    qlex_watch.check([], pending)
+                self.assertFalse((root / "alert.md").exists())
+
+    def test_cms_official_source_failure_does_not_mark_regulatory_event_sent(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            old = {"dedupe_version": qlex_watch.DEDUPE_VERSION,
+                   "seen_fingerprints": [], "seen_story_keys": [], "seen_semantic_keys": [],
+                   "seen_regulatory_events": [qlex_watch.EU_MIBC_REGULATORY_EVENT_ID]}
+            with patch.object(qlex_watch, "OUT", root), patch.object(qlex_watch, "PENDING", root / "pending.json"), \
+                patch.object(qlex_watch, "ALERT", root / "alert.md"), patch.object(qlex_watch, "STATUS", root / "status.md"), \
+                patch.object(qlex_watch, "cms_final_rule_signal", return_value=(False, "official_fetch_failed:HTTPError")):
+                qlex_watch.check([], old)
+                self.assertFalse((root / "alert.md").exists())
+                pending = json.loads((root / "pending.json").read_text(encoding="utf-8"))
+                self.assertNotIn(qlex_watch.CMS_2029_FINAL_RULE_ID, pending["seen_regulatory_events"])
+                self.assertIn("official_fetch_failed", pending["cms_policy_status"])
+                self.assertIn("official_fetch_failed", (root / "status.md").read_text(encoding="utf-8"))
+
     def test_qlex_wac_cumulative_has_krw_formatter(self):
         self.assertEqual(
             wac.format_krw_from_usd_m(1026.0, 1343.8),

@@ -40,6 +40,8 @@ QUERIES = [
     '"KEYTRUDA QLEX" milestone Alteogen',
     '"키트루다 큐렉스" 전환율',
     '"키트루다 큐렉스" 매출',
+    '"Keytruda Qlex" CMS drug price negotiation',
+    '알테오젠 키트루다 CMS 약가협상 규정',
 ]
 
 QLEX_TERMS = (
@@ -51,6 +53,9 @@ CONVERSION_TERMS = (
     "전환율", "전환", "채택률", "점유율", "처방",
 )
 ECONOMIC_TERMS = ("milestone", "royalty", "마일스톤", "로열티")
+CMS_2029_FINAL_RULE_ID = "CMS|4215-F|FINAL|HYALURONIDASE_FIXED_COMBINATION|2029|2026-11-05"
+CMS_2029_FINAL_RULE_URL = "https://www.cms.gov/newsroom/fact-sheets/medicare-drug-price-negotiation-program-medicare-prescription-drug-benefit-program-final-rule-cms"
+CMS_2029_RULE_DATE = dt.date(2026, 11, 5)
 
 # 유럽위원회 2026-10-21 최종 승인: 2026-06-24 시스플라틴 부적격자 승인의
 # 단순 재보도가 아닌, 적격 여부 제한을 제거한 새 적응증 확대 사건.
@@ -69,6 +74,57 @@ EU_MIBC_EUROPE_INJUNCTION_URL = (
     "Multiple-European-Markets/default.aspx"
 )
 
+
+
+def cms_final_rule_signal(state: dict) -> tuple[bool, str]:
+    """Verify the exact CMS policy event before the initial and only alert.
+
+    News headlines never certify a final regulation. A failed official fetch
+    leaves the event unacknowledged for the next scheduled check.
+    """
+    if CMS_2029_FINAL_RULE_ID in set(state.get("seen_regulatory_events") or []):
+        return False, "previously_delivered"
+    if dt.datetime.now(KST).date() < CMS_2029_RULE_DATE:
+        return False, "before_official_date"
+    try:
+        body = strip_html(fetch(CMS_2029_FINAL_RULE_URL, timeout=20)).lower()
+    except Exception as exc:
+        return False, "official_fetch_failed:" + type(exc).__name__
+    required = (
+        "cms-4215-f", "nov", "2026", "2029", "hyaluronidase",
+        "active ingredient", "same", "new formulation",
+    )
+    if not all(term in body for term in required):
+        return False, "official_content_unverified"
+    if not re.search(r"(?:nov|november)\s*0?5,\s*2026", body):
+        return False, "official_publication_date_unverified"
+    return True, "official_final_verified"
+
+
+def cms_final_rule_lines() -> list[str]:
+    return [
+        "[바이오 감시] 중요 규제 확정 — 알테오젠·키트루다SC 미국 약가협상",
+        "",
+        "**2026년 11월 5일** 미국 메디케어·메디케이드서비스센터(CMS)가 약가협상 최종 규정(CMS-4215-F)을 발표했습니다.",
+        "",
+        "■ **무엇이 달라졌나:** 동일한 의약품 허가권자가 기존 주성분에 히알루로니다제 등을 추가해 투여 경로를 바꾼 일부 복합제형은 원래 제형과 묶어 약가협상 대상 여부를 판단합니다.",
+        "■ **사업 영향:** 키트루다 정맥주사와 알테오젠 ALT-B4가 적용된 키트루다SC의 약가협상 대상 선정 시점을 별도로 늦출 수 있다는 기대가 약해졌습니다. 실제로 가격이 인하되면 MSD의 판매실적과 알테오젠의 판매 연동 마일스톤·로열티에도 영향을 줄 수 있습니다.",
+        "■ **확정 단계 구분:** 이번에 확정된 것은 대상 선정 기준입니다. 키트루다SC가 이미 협상 대상에 선정됐거나 판매가격·알테오젠 로열티가 특정 비율만큼 인하됐다는 뜻은 아닙니다.",
+        "■ **회사 입장:** 알테오젠은 환자 편의성과 별도 제품 특허에 따른 피하주사 전환 수요가 유지된다고 설명했습니다. 이는 회사 평가이며 약가협상 영향 확정치가 아닙니다.",
+        "■ **시장 반응:** **2026년 11월 9일** 오전 10시 25분 알테오젠은 전 거래일 대비 20.95% 하락했으며, 장중 최대 하락폭은 23.94%로 보도됐습니다. 장중 수치로 종가는 아닙니다.",
+        "",
+        "**핵심 일정**",
+        "• **2026년 6월 16일** 관련 규칙 제안",
+        "• **2026년 11월 5일** 최종 규정 공표",
+        "• **2026년 12월 5일** 규정 시행",
+        "• **2027년 2월 1일까지** 2029년 가격 적용 대상 선정 예정",
+        "• **2029년** 해당 주기에 선정된 의약품의 협상 가격 적용 시작",
+        "",
+        "■ **다음 확인:** CMS 실제 선정 목록, 키트루다 정맥·피하주사 묶음 판단, 최종 순판매가격, MSD 판매실적, 알테오젠 마일스톤·로열티, 유럽 특허분쟁 진행을 각각 구분해 추적합니다.",
+        "- 미국 CMS 공식 최종 규정: " + CMS_2029_FINAL_RULE_URL,
+        "- 관련 시장 보도: https://www.mt.co.kr/stock/2026/11/09/2026110910384710612",
+        "- 알테오젠 공식 투자정보: https://alteogen.com/kr/sub/ir/information.php",
+    ]
 
 def eu_mibc_approval_due(state: dict, now_utc: dt.datetime | None = None) -> bool:
     now = now_utc if now_utc is not None else dt.datetime.now(UTC)
@@ -455,6 +511,7 @@ def check(items: list[Item], state: dict) -> None:
     seen_story = set(state.get("seen_story_keys", []))
     seen_semantic = set(state.get("seen_semantic_keys", []))
     regulatory_due = eu_mibc_approval_due(state)
+    cms_rule_due, cms_policy_status = cms_final_rule_signal(state)
 
     fresh: list[Item] = []
     silent: list[Item] = []
@@ -480,11 +537,13 @@ def check(items: list[Item], state: dict) -> None:
     pending["seen_story_keys"] = cap(seen_story)
     pending["seen_semantic_keys"] = cap(seen_semantic)
     pending["last_check_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
+    pending["cms_policy_status"] = cms_policy_status
 
-    if not fresh and not regulatory_due:
+    if not fresh and not regulatory_due and not cms_rule_due:
         write_pending(pending)
         STATUS.write_text(
-            f"changed=false fresh_alerts=0 stale_or_irrelevant={len(silent)} at={pending['last_check_kst']}\n",
+            f"changed=false fresh_alerts=0 cms_policy_status={cms_policy_status} "
+            f"stale_or_irrelevant={len(silent)} at={pending['last_check_kst']}\n",
             encoding="utf-8",
         )
         return
@@ -500,7 +559,17 @@ def check(items: list[Item], state: dict) -> None:
         if len(chosen) >= 6:
             break
 
-    lines = eu_mibc_regulatory_lines() if regulatory_due else ["[바이오 감시] KEYTRUDA QLEX 새 데이터", ""]
+    lines = cms_final_rule_lines() if cms_rule_due else []
+    if regulatory_due:
+        lines += (["", ""] if lines else []) + eu_mibc_regulatory_lines()
+    if not lines:
+        lines = ["[바이오 감시] KEYTRUDA QLEX 새 데이터", ""]
+    if cms_rule_due:
+        seen = set(pending.get("seen_regulatory_events") or [])
+        seen.add(CMS_2029_FINAL_RULE_ID)
+        pending["seen_regulatory_events"] = sorted(seen)[-200:]
+        pending["last_cms_policy_source_url"] = CMS_2029_FINAL_RULE_URL
+        pending["last_cms_policy_event_date"] = CMS_2029_RULE_DATE.isoformat()
     if regulatory_due:
         existing = set(pending.get("seen_regulatory_events") or [])
         existing.add(EU_MIBC_REGULATORY_EVENT_ID)
@@ -565,7 +634,9 @@ def check(items: list[Item], state: dict) -> None:
     ALERT.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
     write_pending(pending)
     STATUS.write_text(
-        f"changed=true alerts={len(chosen)} regulatory_approval={'true' if regulatory_due else 'false'} stale_or_irrelevant={len(silent)} at={pending['last_check_kst']}\n",
+        f"changed=true alerts={len(chosen)} regulatory_approval={'true' if regulatory_due else 'false'} "
+        f"cms_final_rule={'true' if cms_rule_due else 'false'} cms_policy_status={cms_policy_status} "
+        f"stale_or_irrelevant={len(silent)} at={pending['last_check_kst']}\n",
         encoding="utf-8",
     )
 
