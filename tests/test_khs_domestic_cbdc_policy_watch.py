@@ -48,6 +48,19 @@ class CbdcOfficialPolicyWatch(unittest.TestCase):
         self.assertFalse(result["law_enacted"])
         self.assertIn("미확정", result["status"])
 
+    def test_fsc_denial_without_spaces_never_confirms_majority(self):
+        stage = watch.classify_won_stablecoin_policy_stage(
+            "원화 스테이블코인 정부안 관련 보도설명",
+            "1. 기사내용 은행 51%로 결정됐다는 보도 "
+            "2. 보도에 대한 설명 금융위는 관계기관 협의를 지속하고 있으며 "
+            "스테이블코인 발행주체 등 주요내용은 아직 정해진바 없으므로 "
+            "보도에 신중을 기해주시기 바랍니다.",
+            "Financial Services Commission stablecoin explanations",
+        )
+        self.assertEqual(stage["stage"], "official_not_final")
+        self.assertFalse(stage["bank_majority_legally_confirmed"])
+        self.assertFalse(stage["law_enacted"])
+
     def test_bank_of_korea_policy_preference_is_not_government_rule(self):
         stage = watch.classify_won_stablecoin_policy_stage(
             "한국은행 원화 스테이블코인 정책 제언",
