@@ -413,7 +413,8 @@ class BioAlertRegressionTests(unittest.TestCase):
             self.assertEqual(guard.ensure_korean_text(line),
                              "알테오젠 주가 16% 폭락...미국 약가 인하 우려")
             self.assertFalse(base_korean_guard.has_japanese("美"))
-            self.assertTrue(base_korean_guard.has_japanese("日本語"))
+            self.assertTrue(base_korean_guard.has_japanese("日本語の説明"))
+            self.assertFalse(base_korean_guard.has_japanese("日本語"))
         self.assertIn("美", base_korean_guard.untranslated_hanja("美"))
 
     def test_identifier_markers_survive_translation_spacing_or_block_delivery(self):

@@ -420,7 +420,10 @@ def economic_metric(text: str) -> bool:
     )
     for pattern in (rf"{labels}[^\n.!?]{{0,55}}?{amount}", rf"{amount}[^\n.!?]{{0,55}}?{labels}"):
         for match in re.finditer(pattern, text, re.I):
-            if not _PRICE_CONTEXT_RE.search(match.group(0)):
+            # The percentage may precede "royalty" but belong to a stock
+            # plunge in the headline; check the number's preceding context too.
+            nearby = text[max(0, match.start() - 100):match.end() + 30]
+            if not _PRICE_CONTEXT_RE.search(nearby):
                 return True
     return False
 
