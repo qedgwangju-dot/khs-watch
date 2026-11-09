@@ -666,6 +666,107 @@ class Weekly008CorrectionRegression(unittest.TestCase):
                 w.main()
                 self.assertFalse(alert.exists())
 
+class Weekly009ScreenshotRegression(unittest.TestCase):
+    """11/9 source provenance and once-only delivery across existing routes."""
+
+    def test_all_seven_screenshot_rows_match_exactly(self):
+        rows = w.WEEKLY_009_IMAGE_LOCK["components"]
+        expected = {
+            "CPU": ("Tight", "25-30", "16-20"),
+            "GPU": ("Tightening", "30-45", "30-40"),
+            "DRAM": ("Very Tight", "18", "8"),
+            "NAND(eSSD)": ("Tight", "16", "8"),
+            "HDD": ("Very Tight", "50", "16"),
+            "ABF": ("Very Tight", "48-56", "12"),
+            "MLCC": ("Tight", "38", "12"),
+        }
+        self.assertEqual(set(rows), set(expected))
+        for item, values in expected.items():
+            self.assertEqual(
+                (rows[item]["status"], rows[item]["current"], rows[item]["balanced"]),
+                values,
+            )
+        self.assertIn("독립 확인 전", w.WEEKLY_009_IMAGE_LOCK["source_kind"])
+        self.assertTrue(w.WEEKLY_009_IMAGE_LOCK["source"].startswith("user-provided:"))
+
+    def test_only_exact_previous_week_is_eligible(self):
+        import copy
+        before = copy.deepcopy(w.WEEKLY_008_LOCK)
+        components = copy.deepcopy(before["components"])
+        promote = w.weekly_009_image_upgrade(
+            before, before["as_of"], before["source"], components, "2026-11-09"
+        )
+        self.assertEqual(promote["components"]["DRAM"]["current"], "18")
+        self.assertEqual(
+            set(w.supply_direction_details(components, promote["components"])["better"]),
+            {"DRAM: 19주→18주 (1주 단축)"},
+        )
+        self.assertEqual(w.supply_direction(components, promote["components"])[1:], (0, 1))
+        self.assertIn("수급 정상화", w.build_weekly_009_image_alert(components, promote["components"]))
+        self.assertNotIn("href=", w.build_weekly_009_image_alert(components, promote["components"]))
+        self.assertIsNone(w.weekly_009_image_upgrade(
+            before, before["as_of"], before["source"], components, "2026-11-08"
+        ))
+        changed = copy.deepcopy(components)
+        changed["DRAM"]["balanced"] = "10"
+        self.assertIsNone(w.weekly_009_image_upgrade(
+            before, before["as_of"], before["source"], changed, "2026-11-09"
+        ))
+        self.assertIsNone(w.weekly_009_image_upgrade(
+            before, "2026-11-10", before["source"], components, "2026-11-10"
+        ))
+        already = copy.deepcopy(before)
+        already["as_of"] = "2026-11-09"
+        already["source"] = w.WEEKLY_009_IMAGE_LOCK["source"]
+        self.assertIsNone(w.weekly_009_image_upgrade(
+            already, already["as_of"], already["source"],
+            w.WEEKLY_009_IMAGE_LOCK["components"], "2026-11-10"
+        ))
+
+    def test_existing_delivery_state_and_other_modules_survive_once_only_update(self):
+        import copy
+        import tempfile
+        from unittest import mock
+        with tempfile.TemporaryDirectory() as root:
+            folder = pathlib.Path(root)
+            state = folder / "rubin_hbm_watch_state.json"
+            pending = folder / "rubin_hbm_pending_state.json"
+            alert = folder / "rubin_hbm_alert.md"
+            prior = copy.deepcopy(w.WEEKLY_008_LOCK)
+            prior["seen_urls"] = [w.WEEKLY_008_LOCK["source"]]
+            prior["mlcc_vendor_watch"] = copy.deepcopy(w.MLCC_VENDOR_BASELINE)
+            prior["caspa_panel_watch"] = copy.deepcopy(w.CASPA_PANEL_BASELINE)
+            existing = {
+                "ai_component_leadtime": prior,
+                "telegram_message_id": 371,
+                "last_successful_delivery_kst": "2026-11-03T16:01:38+09:00",
+                "delivery_receipt": {"message_ids": [371], "status": "confirmed"},
+                "upstream_other_route": {"preserve": True},
+            }
+            state.write_text(json.dumps(existing, ensure_ascii=False), encoding="utf-8")
+            with mock.patch.object(w, "STATE_PATH", state), \
+                 mock.patch.object(w, "PENDING_PATH", pending), \
+                 mock.patch.object(w, "ALERT_PATH", alert), \
+                 mock.patch.object(w, "read_rss", return_value=[]):
+                w.main()
+                saved = json.loads(pending.read_text(encoding="utf-8"))
+                current = saved["ai_component_leadtime"]
+                self.assertEqual(current["as_of"], "2026-11-09")
+                self.assertEqual(current["components"]["DRAM"]["current"], "18")
+                self.assertEqual(current["components"]["DRAM"]["status"], "Very Tight")
+                self.assertEqual(current["image_verified_issue"], "weekly-radar-009-user-image")
+                self.assertEqual(saved["telegram_message_id"], 371)
+                self.assertEqual(saved["delivery_receipt"], existing["delivery_receipt"])
+                self.assertEqual(saved["upstream_other_route"], {"preserve": True})
+                message = alert.read_text(encoding="utf-8")
+                self.assertIn("DRAM", message)
+                self.assertIn("19주 → 18주", message)
+                state.write_text(json.dumps(saved, ensure_ascii=False), encoding="utf-8")
+                alert.unlink()
+                w.main()
+                self.assertFalse(alert.exists())
+
+
 class LeadTimeAlertTests(unittest.TestCase):
     def setUp(self):
         self.old = {

@@ -203,6 +203,24 @@ WEEKLY_008_LOCK = {
     "directly_confirmed_current":["GPU","DRAM","MLCC"],
     "balanced_levels_carried":["GPU","DRAM","MLCC"],
 }
+# 2026-11-09: user-supplied TrendForce-branded table, read directly from the
+# image. The publisher's corresponding article was not independently retrieved.
+# Never claim this is an independently fetched official Weekly Radar 009 page.
+WEEKLY_009_IMAGE_LOCK = {
+    "as_of": "2026-11-09",
+    "source": "user-provided:trendforce:2026-11-09",
+    "source_kind": "사용자 제공 TrendForce 2026-11-09 캡처 직접 판독; 발행사 본문 독립 확인 전",
+    "components": {
+        "CPU": {"status": "Tight", "current": "25-30", "balanced": "16-20"},
+        "GPU": {"status": "Tightening", "current": "30-45", "balanced": "30-40"},
+        "DRAM": {"status": "Very Tight", "current": "18", "balanced": "8"},
+        "NAND(eSSD)": {"status": "Tight", "current": "16", "balanced": "8"},
+        "HDD": {"status": "Very Tight", "current": "50", "balanced": "16"},
+        "ABF": {"status": "Very Tight", "current": "48-56", "balanced": "12"},
+        "MLCC": {"status": "Tight", "current": "38", "balanced": "12"},
+    },
+}
+
 TOSHIBA_HDD_OFFICIAL = {
     "as_of": "2026-10-02",
     "source": "https://toshiba.semicon-storage.com/ap-en/company/news/news-topics/2026/10/storage-20261002-1.html",
@@ -1598,6 +1616,64 @@ def build_alert(
 
     return "\n".join(lines).strip() + "\n"
 
+def weekly_009_image_upgrade(
+    prior: dict,
+    latest_as_of: str,
+    latest_source: str,
+    latest_components: dict,
+    today_kst: str,
+) -> dict | None:
+    """Apply the 11/9 directly read screenshot once, only to the exact 11/2 baseline.
+
+    Do not overwrite any independently newer official data, contradicting
+    readings, or an already acknowledged same-week delivery.
+    """
+    lock = WEEKLY_009_IMAGE_LOCK
+    if today_kst < lock["as_of"]:
+        return None
+    if str(prior.get("as_of") or "") != WEEKLY_008_LOCK["as_of"]:
+        return None
+    if str(prior.get("source") or "") != WEEKLY_008_LOCK["source"]:
+        return None
+    if str(latest_as_of) != WEEKLY_008_LOCK["as_of"] or latest_source != WEEKLY_008_LOCK["source"]:
+        return None
+    if any(
+        canonical_component(latest_components.get(name) or {})
+        != canonical_component(expected)
+        for name, expected in WEEKLY_008_LOCK["components"].items()
+    ):
+        return None
+    return copy.deepcopy(lock)
+
+
+def build_weekly_009_image_alert(previous: dict, current: dict) -> str:
+    """One new factual DRAM change; shorter lead time is NOT supply normalization."""
+    old = previous["DRAM"]
+    new = current["DRAM"]
+    assert (str(old["current"]), str(new["current"])) == ("19", "18")
+    assert old["status"] == new["status"] == "Very Tight"
+    lines = [
+        "<b>AI 부품 리드타임 갱신 — 2026년 11월 9일</b>",
+        "",
+        "<b>확인된 신규 변화</b>",
+        "• <b>DRAM:</b> 19주 → 18주(1주 단축), 균형 수준 8주 대비 2.25배.",
+        "• <b>공급 상태:</b> DRAM은 Very Tight(극심한 공급 부족) 유지. "
+        "<b>납기 단축은 수급 정상화 또는 수요 둔화 확정이 아닙니다.</b>",
+        "• 다른 6개 품목의 납기와 7개 품목의 공급 상태는 직전 11월 2일 기준과 동일.",
+        "",
+        "<b>11월 9일 현재 7개 품목</b>",
+    ]
+    lines.extend(_compact_status_groups(current))
+    lines += [
+        "",
+        "• <b>근거:</b> 사용자 제공 TrendForce 11월 9일 표 직접 판독. "
+        "같은 날짜의 발행사 본문은 아직 독립 확인 전.",
+        "• <b>후속 확인:</b> 서버 DRAM(RDIMM) 실제 출하·계약가격·재고와 "
+        "향후 주간 납기 및 수급 등급을 함께 확인.",
+    ]
+    return "\n".join(lines).strip() + "\n"
+
+
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state = load_json(STATE_PATH)
@@ -1684,6 +1760,7 @@ def main() -> None:
     latest_components = copy.deepcopy(previous_components)
     latest_signals = copy.deepcopy(previous_signals)
     latest_source = previous.get("source") or BASELINE["source"]
+    latest_source_kind = str(previous.get("source_kind") or "")
     latest_as_of = previous.get("as_of") or BASELINE_DATE
     previous_chain = previous.get("memory_storage_chain") or {}
     controller_direct_confirmed = bool(previous_chain.get("nand_controller_direct_constraint_confirmed"))
@@ -1777,6 +1854,42 @@ def main() -> None:
             latest_source = url or latest_source
             latest_as_of = published_date
 
+    # This user-provided image is stronger evidence for its 7 visible rows
+    # than an old 11/2 article, but never an excuse to fabricate a live URL.
+    image_update = weekly_009_image_upgrade(
+        previous, latest_as_of, latest_source, latest_components,
+        now.date().isoformat(),
+    )
+    if image_update is not None:
+        image_alert = build_weekly_009_image_alert(
+            previous_components, image_update["components"]
+        )
+        notify_text = (
+            notify_text.rstrip() + "\n\n" + image_alert.strip()
+        ).strip() + "\n" if notify_text else image_alert
+        latest_components = image_update["components"]
+        latest_as_of = image_update["as_of"]
+        latest_source = image_update["source"]
+        latest_source_kind = image_update["source_kind"]
+
+    # If the same week's full publisher table becomes readable, reconcile all
+    # seven complete rows before promoting its URL, without a second alert.
+    if best and latest_source == WEEKLY_009_IMAGE_LOCK["source"]:
+        candidate_url_value = str(best.get("direct_url") or "")
+        publisher_rows = best.get("components") or {}
+        if (
+            source_tier(candidate_url_value) == 3
+            and "/weekly-radar-" in candidate_url_value
+            and str(best.get("published_at_kst") or "")[:10] == WEEKLY_009_IMAGE_LOCK["as_of"]
+            and all(
+                all((publisher_rows.get(name) or {}).get(field) for field in ("status", "current", "balanced"))
+                and canonical_component(publisher_rows[name]) == canonical_component(expected)
+                for name, expected in WEEKLY_009_IMAGE_LOCK["components"].items()
+            )
+        ):
+            latest_source = candidate_url_value
+            latest_source_kind = "발행사 해당 주차 원문 7개 행과 사용자 제공 이미지 일치"
+
     latest_chain = memory_storage_chain_state(
         latest_components,
         latest_signals,
@@ -1822,6 +1935,7 @@ def main() -> None:
     pending["ai_component_leadtime"] = {
         "as_of": latest_as_of,
         "source": latest_source,
+        "source_kind": latest_source_kind,
         "components": latest_components,
         "signals": latest_signals,
         "memory_storage_chain": latest_chain,
@@ -1831,7 +1945,8 @@ def main() -> None:
         "candidate_count": len(candidates),
         "mlcc_vendor_watch": vendor_state,
         "caspa_panel_watch": caspa_state,
-        "image_verified_issue": ("weekly-radar-008-text" if latest_source.rstrip("/") == WEEKLY_008_LOCK["source"]
+        "image_verified_issue": ("weekly-radar-009-user-image" if latest_as_of == WEEKLY_009_IMAGE_LOCK["as_of"]
+                                 else "weekly-radar-008-text" if latest_source.rstrip("/") == WEEKLY_008_LOCK["source"]
                                  else "weekly-radar-006" if latest_source.rstrip("/") == WEEKLY_006_LOCK["source"] else ""),
         "errors": errors[-10:],
     }
