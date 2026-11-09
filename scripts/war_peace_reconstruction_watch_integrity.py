@@ -434,6 +434,13 @@ def _statement_with_actual_action(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if kind == 'diplomatic_contact' and _nuclear_talks_resumption_report(title):
+        # The feed title names the negotiating parties; later lines may name
+        # mediators.  Neither the mediator nor Hormuz is a meeting participant.
+        headline = title.splitlines()[0]
+        headline = re.sub(r'\bUS\s*[-–—]\s*IRAN\b', 'united states iran',
+                          headline, flags=re.IGNORECASE)
+        return _diplomatic_group(headline) + ' · 핵 회담 재개 보도'
     if re.search(r'협상\s*중단(?!\s*(?:가능성|우려|전망|검토|시사|[?？]))', title) and re.search(r'["“”]', title):
         return _diplomatic_group(title) + ' · 협상 중단 발언'
     if _reported_major_airstrike(title) and not _headline_attack_casualties(row):
@@ -1235,6 +1242,21 @@ def _meeting_plan_stage(title):
     return 'denied' if re.match(r'(?:은|는|을|를)?\s*(?:하지\s*않|않겠|없|부인)', title[match.end():]) else 'planned'
 
 
+def _nuclear_talks_resumption_report(title):
+    """A reported nuclear-talks restart is a diplomatic contact, not a strike."""
+    headline = title.splitlines()[0]
+    resumed = re.search(
+        r'\bnuclear\s+talks?\s+(?:reportedly\s+)?(?:revived|resumed|restarted)\b|'
+        r'핵\s*회담(?:이|을|를|은|는)?\s*(?:재개|다시\s*시작)',
+        headline, re.IGNORECASE)
+    denied = re.search(
+        r'\b(?:not|never)\s+(?:been\s+)?(?:revived|resumed|restarted)\b|'
+        r'재개(?:를|을)?\s*(?:부인|거부)', title, re.IGNORECASE)
+    return bool(resumed and not denied and not _military_actions(title)
+                and not _report_with_completed_action(title)
+                and not _statement_with_actual_action(title))
+
+
 def _diplomatic_headline_kind(title):
     if _peace_plan_discussion_headline(title):
         return 'diplomatic_plan'
@@ -1259,6 +1281,8 @@ def _diplomatic_headline_kind(title):
                       r'\b(?:zelenskyy?|zelenskiy|ukrain\w*|trump|witkoff|kushner|iran(?:ian)?|russia\w*|putin|kremlin|lavrov)\b|\bu\.s\.', title)
     if not actor:
         return None
+    if _nuclear_talks_resumption_report(title):
+        return 'diplomatic_contact'
     release = _detainee_release_stage(title)
     if release:
         return 'diplomatic_plan' if release == 'planned' else 'diplomatic_statement'
