@@ -428,6 +428,9 @@ def main():
         if key in seen:
             continue
         date = dt.datetime.fromisoformat(item["published_kst"]) if item["published_kst"] else None
+        if date and date.tzinfo is None:
+            # Publisher may disclose calendar date but no clock time.
+            date = date.replace(tzinfo=KST)
         if date and date > now + dt.timedelta(hours=2):
             continue
         if date and date < checked - dt.timedelta(hours=36) and date < now - dt.timedelta(days=7):
@@ -464,7 +467,10 @@ def main():
             if item["stage"] <= 2:
                 lines.append("• 주의: 간담회·초청·논의는 투자·수주·해외 고객 계약이 아닙니다.")
             if item.get("published_kst"):
-                lag = int((now - dt.datetime.fromisoformat(item["published_kst"])).total_seconds() // 60)
+                published_at = dt.datetime.fromisoformat(item["published_kst"])
+                if published_at.tzinfo is None:
+                    published_at = published_at.replace(tzinfo=KST)
+                lag = int((now - published_at).total_seconds() // 60)
                 if lag > 90:
                     lines.append(f"• 검색·감지 시차: 약 {lag // 60}시간 {lag % 60}분")
             lines += [f'• <a href="{esc(link)}">{link_label}</a>', ""]
