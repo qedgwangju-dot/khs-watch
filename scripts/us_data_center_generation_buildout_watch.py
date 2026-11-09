@@ -1358,14 +1358,29 @@ def mhi_issuer_text_verified(body: str) -> bool:
 
 def mhi_capex_text_verified(body: str) -> bool:
     text = normalize(BeautifulSoup(body or "", "html.parser").get_text(" ", strip=True)).lower()
-    # Require BOTH investments and their independent product scopes. An
-    # unrelated 1,000-oku nuclear/shipbuilding line cannot become engine capex.
-    gtcc = ("gtcc" in text or "gas turbine" in text or "ガスタービン" in text)
-    engine = ("engine" in text or "エンジン" in text)
-    high_part = ("高温" in text or "hot part" in text or "blades" in text or "高温部品" in text)
-    amount_500 = bool(re.search(r"(?:5,?000\s*億|500\s*billion|500\s*bn|¥\s*500\s*billion)", text))
-    amount_100 = bool(re.search(r"(?:1,?000\s*億|100\s*billion|100\s*bn|¥\s*100\s*billion)", text))
-    return len(text) > 200 and gtcc and engine and high_part and amount_500 and amount_100
+    if len(text) <= 200:
+        return False
+    # Both amounts must independently attach to the corresponding product,
+    # not to nuclear/shipbuilding investment or an explicit denial.
+    money_500 = r"(?:5,?000\s*億|(?:¥|jpy)?\s*500\s*(?:billion|bn))"
+    money_100 = r"(?:1,?000\s*億|(?:¥|jpy)?\s*100\s*(?:billion|bn))"
+    turbine = r"(?:gtcc|gas[\s-]*turbine|ガスタービン|高温部品|hot parts?|blades?)"
+    engine = r"(?:engines?|エンジン|発電用エンジン)"
+    gtcc_scoped = bool(re.search(
+        rf"(?:{turbine}).{{0,140}}?(?:{money_500})|(?:{money_500}).{{0,140}}?(?:{turbine})",
+        text, re.I
+    ))
+    engine_scoped = False
+    for m in re.finditer(money_100, text, re.I):
+        # The 100-billion amount must be explicitly assigned to engines,
+        # and a denial of engine capex takes precedence.
+        context = text[max(0, m.start() - 100):min(len(text), m.end() + 110)]
+        if re.search(r"\b(?:no|not|without)\s+(?:\w+\s+){0,4}(?:engines?|engine\s+capex)\b", context):
+            continue
+        if re.search(rf"(?:{engine}).{{0,85}}?{money_100}|{money_100}.{{0,85}}?(?:{engine})", context, re.I):
+            engine_scoped = True
+            break
+    return gtcc_scoped and engine_scoped
 
 
 def mhi_capex_official_and_independent_checks() -> tuple[str, str]:
