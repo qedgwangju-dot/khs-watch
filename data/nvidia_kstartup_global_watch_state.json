@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-11-09T14:45:03+09:00",
-  "last_checked_kst": "2026-11-09T16:33:17+09:00",
+  "last_checked_kst": "2026-11-09T18:14:43+09:00",
   "seen": {
     "126be798477cbd897413b8c2": {
       "title": "국산 AI 반도체, 엔비디아 GPU와 연결…SKT·리벨리온 3자 협력 - MTN 머니투데이방송",
@@ -86,6 +86,42 @@
       "tier": "공식",
       "first_seen_kst": "2026-11-09T15:50:50+09:00",
       "suppressed_duplicate": "same_event"
+    },
+    "2f39ee35ba31596dcff45a5f": {
+      "title": "엔비디아, 업스테이지 등 국내 AI 스타트업 4사 투자한다 - 매일경제 마켓",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE83Zmd1N3ZxNXdfeHgtZjJqVkhYSzMweTBFN0tIOWtkd2Z2NkZUdUFrMnktZmt6RW1yeDB6NlMtNVFzRm1lMWpWV1VYa0FHUFZsZ1E?oc=5",
+      "source": "매일경제 마켓",
+      "published_kst": "2026-11-09T17:57+09:00",
+      "event_id": "upstage|ecosystem_news|2026-11",
+      "kind": "ecosystem_news",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-09T18:14:43+09:00",
+      "alerted": true
+    },
+    "4ea62ebf01848a8847108d2c": {
+      "title": "업스테이지, 아마존·AMD 이어 엔비디아 투자 받는다 - 지디넷코리아",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5aaEJZWVh2dEFSUWphU09PZTJmVVZrU3F0ck5XM2dMZ1NUYVlzTU93QklJT2RYdW9oMVVzVVoydnhabG0xWHY0d1VtelNtQ181cy1hMUxR?oc=5",
+      "source": "지디넷코리아",
+      "published_kst": "2026-11-09T17:36+09:00",
+      "event_id": "upstage|ecosystem_news|2026-11",
+      "kind": "ecosystem_news",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-09T18:14:43+09:00",
+      "suppressed_duplicate": "same_event"
+    },
+    "be0016d622069015c94b88c8": {
+      "title": "[포토] SKT·엔비디아·리벨리온, 한국형 소버린 AI 인프라 협력 - 아시아경제",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA3RTR2cmxCR1FfU2RjRjZxcnZ4Q0x5aGF4bWRjTkNmYXNDTkdGQkJwQTQtcW5Zbld3TFQ5M0JQYlZtXzZPWXJCOFlKU254N0s2OTBUMGdUZ2hpQ0tRR2VJbA?oc=5",
+      "source": "아시아경제",
+      "published_kst": "2026-11-09T15:50+09:00",
+      "event_id": "rebellions|ecosystem_news|2026-11",
+      "kind": "ecosystem_news",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-09T18:14:43+09:00",
+      "suppressed_duplicate": "same_event"
     }
   },
   "events": {
@@ -147,6 +183,13 @@
       "source": "https://nvidianews.nvidia.com/news/nvidia-rebellions-and-sk-telecom-announce-collaboration-to-advance-sovereign-ai-infrastructure-with-nvidia-nvlink-fusion",
       "stage": 5,
       "registered_kst": "2026-11-09T14:48:10+09:00",
+      "alerted": true
+    },
+    "upstage|ecosystem_news|2026-11": {
+      "title": "엔비디아, 업스테이지 등 국내 AI 스타트업 4사 투자한다 - 매일경제 마켓",
+      "source": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE83Zmd1N3ZxNXdfeHgtZjJqVkhYSzMweTBFN0tIOWtkd2Z2NkZUdUFrMnktZmt6RW1yeDB6NlMtNVFzRm1lMWpWV1VYa0FHUFZsZ1E?oc=5",
+      "stage": 1,
+      "registered_kst": "2026-11-09T18:14:43+09:00",
       "alerted": true
     }
   }
