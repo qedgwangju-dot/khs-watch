@@ -57,6 +57,8 @@ CMS_2029_FINAL_RULE_ID = "CMS|4215-F|FINAL|HYALURONIDASE_FIXED_COMBINATION|2029|
 CMS_2029_FINAL_RULE_URL = "https://www.cms.gov/newsroom/fact-sheets/medicare-drug-price-negotiation-program-medicare-prescription-drug-benefit-program-final-rule-cms"
 CMS_2029_RULE_DATE = dt.date(2026, 11, 5)
 QLEX_FALSE_CONVERSION_CORRECTION = "QLEX|CORRECTION|STOCK_DROP_NOT_CONVERSION|2026-11-09"
+# Stable story key from the actually transmitted 14% stock-drop article on 2026-11-09.
+QLEX_FALSE_CONVERSION_SOURCE_STORY_KEY = "03d434bd0579dc34a388ae8b"
 
 # 유럽위원회 2026-10-21 최종 승인: 2026-06-24 시스플라틴 부적격자 승인의
 # 단순 재보도가 아닌, 적격 여부 제한을 제거한 새 적응증 확대 사건.
@@ -132,6 +134,7 @@ def qlex_false_conversion_correction_due(state: dict) -> bool:
     return (
         dt.datetime.now(KST).date() >= dt.date(2026, 11, 9)
         and str(state.get("last_cms_policy_event_date") or "") == "2026-11-05"
+        and QLEX_FALSE_CONVERSION_SOURCE_STORY_KEY in set(state.get("seen_story_keys") or [])
         and CMS_2029_FINAL_RULE_ID in set(state.get("seen_regulatory_events") or [])
         and QLEX_FALSE_CONVERSION_CORRECTION not in set(state.get("seen_operational_corrections") or [])
     )

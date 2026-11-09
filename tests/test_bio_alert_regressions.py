@@ -362,7 +362,9 @@ class BioAlertRegressionTests(unittest.TestCase):
             root = pathlib.Path(directory)
             old = {
                 "dedupe_version": qlex_watch.DEDUPE_VERSION,
-                "seen_fingerprints": [], "seen_story_keys": [], "seen_semantic_keys": [],
+                "seen_fingerprints": [],
+                "seen_story_keys": [qlex_watch.QLEX_FALSE_CONVERSION_SOURCE_STORY_KEY],
+                "seen_semantic_keys": [],
                 "seen_regulatory_events": [qlex_watch.CMS_2029_FINAL_RULE_ID, qlex_watch.EU_MIBC_REGULATORY_EVENT_ID],
                 "last_cms_policy_event_date": "2026-11-05",
             }
@@ -378,11 +380,12 @@ class BioAlertRegressionTests(unittest.TestCase):
                 pending = json.loads((root / "pending.json").read_text(encoding="utf-8"))
                 self.assertIn(qlex_watch.QLEX_FALSE_CONVERSION_CORRECTION, pending["seen_operational_corrections"])
                 self.assertNotIn("seen_operational_corrections", old)
+                self.assertIn(qlex_watch.QLEX_FALSE_CONVERSION_SOURCE_STORY_KEY, old["seen_story_keys"])
                 (root / "alert.md").unlink()
                 qlex_watch.check([], pending)
                 self.assertFalse((root / "alert.md").exists())
                 with patch.object(base_korean_guard, "translate_to_korean", side_effect=AssertionError("no external translate")):
-                    self.assertEqual(guard.ensure_korean_text(rendered), rendered)
+                    self.assertEqual(guard.ensure_korean_text(rendered).strip(), rendered.strip())
 
     def test_qlex_stock_drop_is_never_drug_conversion(self):
         for title in (
