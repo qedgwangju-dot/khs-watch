@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-09T23:37:27+09:00",
+  "last_checked_kst": "2026-11-10T00:22:14+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -4040,6 +4040,15 @@
       "material_stage": 1,
       "first_seen_kst": "2026-11-09T23:37:27+09:00",
       "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "9ae6bbdc1434a5875ad6a06e": {
+      "title": "SKT·엔비디아·리벨리온 'GPU·NPU 통합 시스템 개발 MOU' - 뉴스웍스",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE4teEZpUUtIem1sbENrZlp1d2htOEtWU1R1ZjZDZmNsMVFUN215SFJTTmZhZ2d6RTdtS0UxQmhqYU9FR1ppMkJvZi1tR2FTeTBIa1BrRkNodkRqWUdGUGJ6YjljdF80eGludUhlenRZb9IBc0FVX3lxTE53VFZUTjRQaDBTaVlWLUtUYXoxVl9vSEpUQ3VsNDRFNUdOVHJxNEluN29nSmxpZG5Nd1ZMMzdxV3Z4ZHNOVGF2QVpDdEE1RF9BYm9RN3hNdmVXdzc1SVhkWThYQTR0Vl9pUkQyN1d2N1dUVFE?oc=5",
+      "summary": "SKT·엔비디아·리벨리온 'GPU·NPU 통합 시스템 개발 MOU' 뉴스웍스",
+      "event_signature": "skt|npu|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-10T00:22:14+09:00",
+      "suppressed_duplicate": "same_event:skt|npu|general"
     }
   }
 }
