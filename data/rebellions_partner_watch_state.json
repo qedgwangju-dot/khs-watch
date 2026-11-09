@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-09T18:16:36+09:00",
+  "last_checked_kst": "2026-11-09T18:48:16+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3977,6 +3977,24 @@
       "material_stage": 4,
       "first_seen_kst": "2026-11-09T18:16:36+09:00",
       "alerted": true
+    },
+    "b48e63e0aecf32e168822b39": {
+      "title": "SKT, 엔비디아·리벨리온과 소버린 AI 인프라 MOU - 코리아리포트",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBQOVIwQWlWV0NBTjFORGs5ck5xTUhHRzI0UXg1dTNVQlBYbWMtTzZ1R1plT0RoTGF0Zzdrei1QX0pBWmxtVjdpMW5SWnFiNk12c1dQcW5wNnA4VVBXV0RNcFUwN0dieVVfTU94TzhFcGc?oc=5",
+      "summary": "SKT, 엔비디아·리벨리온과 소버린 AI 인프라 MOU 코리아리포트",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T18:48:16+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "d6f7d23bd30c9cd5d168438c": {
+      "title": "SKT·엔비디아·리벨리온, GPU·NPU 결합 소버린 AI 인프라 협력 - 라이센스뉴스",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1HZkNZdTVmSlZMa3lyWmFiakZMT2k3SVhWb1hRZG5ReExmcEV3UHUydlpwYTRWT3ZPRUVnQ0JFRl9wWlpIYWhJNGU3bTFsdGZSODNrUktsWEdVMXJ0UnFXdFprR1hzWDZ5MV9B?oc=5",
+      "summary": "SKT·엔비디아·리벨리온, GPU·NPU 결합 소버린 AI 인프라 협력 라이센스뉴스",
+      "event_signature": "skt|npu|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-09T18:48:16+09:00",
+      "suppressed_duplicate": "same_event:skt|npu|general"
     }
   }
 }
