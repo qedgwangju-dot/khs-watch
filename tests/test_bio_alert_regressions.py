@@ -354,6 +354,12 @@ class BioAlertRegressionTests(unittest.TestCase):
                 self.assertFalse((root / "alert.md").exists())
 
 
+    def test_cms_final_rule_korean_sender_identifiers_remain_readable(self):
+        lines = qlex_watch.cms_final_rule_lines()
+        for line in lines:
+            self.assertEqual(guard.ensure_korean_text(line), line, line)
+        self.assertIn("2029년", "\n".join(lines))
+
     def test_cms_final_rule_requires_exact_official_final_source(self):
         old = {"seen_regulatory_events": []}
         good = (

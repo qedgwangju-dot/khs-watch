@@ -19,7 +19,7 @@ ALLOWED_IDENTIFIERS = (
     'AZUR-1', 'AZUR-2', 'AZUR-4', 'DOMENICA', 'JADE', 'SAPPHIRE', 'INTerpath-001', 'INTerpath-014',
     'KEYNOTE-942', 'HER2', 'dMMR', 'MSI-H', 'sBLA', 'RFS', 'DMFS', 'OS', 'HR', 'PFS',
     'ORR', 'cCR12', 'mRNA', 'SC', 'IV', 'THP', 'WAC', 'QoQ', 'YoY', 'USD', 'KRW',
-    'ESMO', 'Bing', 'Google',
+    'ESMO', 'Bing', 'Google', 'CMS-4215-F', 'CMS',
     # Oncology clinical stage identifiers must not be mistaken for untranslated English.
     'IA', 'IB', 'IC', 'II', 'IIA', 'IIB', 'IIC', 'III', 'IIIA', 'IIIB',
     'IIIC', 'IIID', 'IVA', 'IVB', 'IVC',
