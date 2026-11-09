@@ -19,6 +19,76 @@ def official_html(title, date, body):
 
 
 class CbdcOfficialPolicyWatch(unittest.TestCase):
+    def test_2026_11_09_bank_majority_news_is_not_law(self):
+        headline = "원화 스테이블코인 은행 중심 발행 가닥…은행권 사업화 탄력받나"
+        article = (
+            "2026년 11월 9일 보도. 은행 지분 50%+1주 방식이 유력하다고 알려졌다. "
+            "금융위 정부안은 이달 중 공개 목표로 협의 중이며 구체적 요건은 아직 미공개."
+        )
+        stage = watch.classify_won_stablecoin_policy_stage(headline, article, "News2Day")
+        self.assertEqual(stage["stage"], "media_report_unconfirmed")
+        self.assertTrue(stage["bank_majority_reported"])
+        self.assertFalse(stage["bank_majority_legally_confirmed"])
+        self.assertFalse(stage["law_enacted"])
+        self.assertIn("언론 보도", stage["status"])
+
+    def test_fsc_correction_overrides_quoted_majority_claim(self):
+        title = "스테이블코인 발행인의 주주구성 등 2단계법 주요내용은 확정된 바 없습니다"
+        details = (
+            "1. 기사내용 은행 중심 지분 50%+1주 컨소시엄 확정 보도. "
+            "2. 보도에 대한 설명 금융위원회는 관계기관과 협의를 지속하고 있으며 "
+            "스테이블코인 발행주체 등 주요내용은 아직 정해진 바 없으므로 보도에 신중을 기해주시기 바랍니다."
+        )
+        result = watch.classify_won_stablecoin_policy_stage(
+            title, details, "Financial Services Commission stablecoin explanations"
+        )
+        self.assertEqual(result["stage"], "official_not_final")
+        self.assertTrue(result["bank_majority_reported"])
+        self.assertFalse(result["bank_majority_legally_confirmed"])
+        self.assertFalse(result["law_enacted"])
+        self.assertIn("미확정", result["status"])
+
+    def test_bank_of_korea_policy_preference_is_not_government_rule(self):
+        stage = watch.classify_won_stablecoin_policy_stage(
+            "한국은행 원화 스테이블코인 정책 제언",
+            "은행 중심 컨소시엄부터 발행을 허용한 후 점진 확대하는 방향이 바람직하다.",
+            "Bank of Korea payment research",
+        )
+        self.assertEqual(stage["stage"], "central_bank_policy_position")
+        self.assertFalse(stage["bank_majority_legally_confirmed"])
+
+    def test_official_government_draft_distinct_from_assembly_enactment(self):
+        title = "디지털자산기본법 정부안 공개"
+        body = (
+            "금융위원회가 원화 스테이블코인 발행주체에 대해 "
+            "은행 지분 50%+1주 컨소시엄을 우선 허용하는 정부안을 발표했다."
+        )
+        stage = watch.classify_won_stablecoin_policy_stage(
+            title, body, "Financial Services Commission stablecoin releases"
+        )
+        self.assertEqual(stage["stage"], "government_draft_publicly_released")
+        self.assertFalse(stage["law_enacted"])
+        self.assertFalse(stage["bank_majority_legally_confirmed"])
+        self.assertIn("국회 통과·시행 전", stage["status"])
+
+    def test_official_denial_link_keeps_non_enacted_status(self):
+        title = "스테이블코인 발행주체 등 2단계법 주요내용은 확정된 바 없습니다"
+        listing = f'<a href="/no010102/85997">{title}</a>'
+        detail = official_html(
+            title, "2026.10.22",
+            "1. 기사내용 은행 중심 지분 50%+1주 추진 2. 보도에 대한 설명 "
+            "금융위는 은행 중심 51% 컨소시엄 발행인 요건이 아직 정해진 바 없다고 설명.",
+        )
+        source = "Financial Services Commission stablecoin explanations"
+        url = "https://www.fsc.go.kr/no010102?srchText=스테이블코인"
+        with patch.object(watch, "fetch_text", return_value=(detail, None)):
+            alerts = watch.parse_links(listing, source, url, NOW)
+        self.assertEqual(len(alerts), 1)
+        self.assertEqual(alerts[0]["won_stablecoin_issuance_stage"], "official_not_final")
+        self.assertFalse(alerts[0]["bank_majority_legally_confirmed"])
+        self.assertFalse(alerts[0]["law_enacted"])
+        self.assertNotEqual(alerts[0]["status"], "확정")
+
     def test_official_bok_real_wording_no_retail_cbdc(self):
         scope = watch.cbdc_claim_scope(
             "프로젝트 한강의 기관용 디지털화폐, 일반인용 CBDC와 어떻게 다를까",
