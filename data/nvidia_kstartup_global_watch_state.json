@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-11-09T14:45:03+09:00",
-  "last_checked_kst": "2026-11-09T19:27:46+09:00",
+  "last_checked_kst": "2026-11-09T20:27:24+09:00",
   "seen": {
     "126be798477cbd897413b8c2": {
       "title": "국산 AI 반도체, 엔비디아 GPU와 연결…SKT·리벨리온 3자 협력 - MTN 머니투데이방송",
@@ -158,6 +158,42 @@
       "tier": "신뢰보도",
       "first_seen_kst": "2026-11-09T19:27:46+09:00",
       "suppressed_duplicate": "same_event"
+    },
+    "e506cb2c9ee791136f4cd0d2": {
+      "title": "과기정통부와 함께 AI 스타트업 파트너십 포럼 개최한 NVIDIA, 국내 스타트업 투자 확대 - NVIDIA",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1GSXNJRUpZcklOdDRkUXRaTVNNWnFiTUFkZXc2S3VmRmg1Ull5NlFnUm5zcGlJT0lnYWV3cTg1ZVpfUzdjc2NhZl9GY1JzSXdZeXN0QlNOaEpCdzdmWk1mUE51MV9JSlFacEM3YzlZTmZQUQ?oc=5",
+      "source": "NVIDIA",
+      "published_kst": "2026-11-09T20:14+09:00",
+      "event_id": "nvidia_korea|startup_forum_held|2026-11",
+      "kind": "startup_forum_held",
+      "stage": 2,
+      "tier": "공식",
+      "first_seen_kst": "2026-11-09T20:27:24+09:00",
+      "alerted": true
+    },
+    "d0772afbd468f38c980626f4": {
+      "title": "엔비디아, 업스테이지 등 국내 AI 스타트업 4사 투자한다 - 연합뉴스",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE53S056XzVjRnUydGhpQjZRVFpRd0JTS2M3dnFHVGYwWno4STRBbVJVZG9DdnZmT0tTZmJzR3R3SmhvdzNkTEx5MHBzOXlDSG1WLTFEZ2hldkRXdkE?oc=5",
+      "source": "연합뉴스",
+      "published_kst": "2026-11-09T17:57+09:00",
+      "event_id": "upstage|ecosystem_news|2026-11",
+      "kind": "ecosystem_news",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-09T20:27:24+09:00",
+      "suppressed_duplicate": "same_event"
+    },
+    "b0f0c5cf6c8de04422e38ca0": {
+      "title": "엔비디아, 업스테이지 등 국내 AI 스타트업 4사 투자한다 - 연합뉴스",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBGa29YQkNXV3dvcE1Od29laDA1UG1Wb3JlN1ZnOGhvS0R1eVJHc0l0Y1NrMDluYjhnVE15SVlNYV9fZUliYVNUSFY4MFlsdnNiZ1FaRkp6RTZvdXhxRnBrWtIBYEFVX3lxTFBGa29YQkNXV3dvcE1Od29laDA1UG1Wb3JlN1ZnOGhvS0R1eVJHc0l0Y1NrMDluYjhnVE15SVlNYV9fZUliYVNUSFY4MFlsdnNiZ1FaRkp6RTZvdXhxRnBrWg?oc=5",
+      "source": "연합뉴스",
+      "published_kst": "2026-11-09T17:57+09:00",
+      "event_id": "upstage|ecosystem_news|2026-11",
+      "kind": "ecosystem_news",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-09T20:27:24+09:00",
+      "suppressed_duplicate": "same_event"
     }
   },
   "events": {
@@ -240,6 +276,13 @@
       "source": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBWWVdfbTU2VTZQdkJhVkxFU3ZEd2pLY2w1UkxkRlpud2I0V1FyRFdfa2Z0WkFqN0J3T1ItUEVkd3EtUGltUVBrelI4MTZ2MXV2YjNnSGdXdjIyRDVVczB4MQ?oc=5",
       "stage": 1,
       "registered_kst": "2026-11-09T19:27:46+09:00",
+      "alerted": true
+    },
+    "nvidia_korea|startup_forum_held|2026-11": {
+      "title": "과기정통부와 함께 AI 스타트업 파트너십 포럼 개최한 NVIDIA, 국내 스타트업 투자 확대 - NVIDIA",
+      "source": "https://news.google.com/rss/articles/CBMickFVX3lxTE1GSXNJRUpZcklOdDRkUXRaTVNNWnFiTUFkZXc2S3VmRmg1Ull5NlFnUm5zcGlJT0lnYWV3cTg1ZVpfUzdjc2NhZl9GY1JzSXdZeXN0QlNOaEpCdzdmWk1mUE51MV9JSlFacEM3YzlZTmZQUQ?oc=5",
+      "stage": 2,
+      "registered_kst": "2026-11-09T20:27:24+09:00",
       "alerted": true
     }
   }
