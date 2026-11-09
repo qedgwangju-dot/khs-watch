@@ -377,7 +377,7 @@ def classify_won_stablecoin_policy_stage(
     body_clean = clean_text(body)
     subject = f"{title_clean} {body_clean}"
     bank_majority_mentioned = bool(
-        re.search(r"(?:50\\s*%\\s*\\+\\s*1\\s*주|50\\s*%\\s*이상|51\\s*%|과반)", subject, re.I)
+        re.search(r"(?:50\s*%\s*\+\s*1\s*주|50\s*%\s*이상|51\s*%|과반)", subject, re.I)
         and has_any(subject, ["은행", "은행권", "컨소시엄"])
     )
     if not has_any(subject, ["스테이블코인", "원화코인", "디지털자산기본법", "디지털자산법"]):
