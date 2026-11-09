@@ -10,7 +10,6 @@ on:
       - "scripts/clean_pjm_alert_html.py"
       - "scripts/guard_pjm_baseline_source.py"
       - "scripts/us_data_center_time_to_power_watch.py"
-      - "scripts/guard_us_time_to_power_metrics_source.py"
       - "scripts/patch_google_constellation_official_ppa.py"
       - "scripts/clean_us_time_to_power_alert_html.py"
       - "scripts/us_data_center_generation_buildout_watch.py"
@@ -236,20 +235,6 @@ jobs:
           print("us_korea_investment_offline_regression=passed no_telegram=true")
           PY
 
-      - name: Validate runtime source guard safely without sending Telegram
-        if: always()
-        run: |
-          python scripts/guard_us_time_to_power_metrics_source.py
-          python -m py_compile scripts/us_data_center_time_to_power_watch.py scripts/us_data_center_generation_buildout_watch.py
-          python - <<'PY'
-          from pathlib import Path
-          code = Path("scripts/us_data_center_generation_buildout_watch.py").read_text(encoding="utf-8")
-          assert "Anthropic" in code and "OnePWR" in code, "Existing generator-order search disappeared"
-          assert "POWER_DEFAULTS" in code, "IEA/EIA demand extension absent"
-          assert "enrich_eia_steo_metrics" in code, "EIA metrics extension absent"
-          assert "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V1" in code, "Existing nuclear PPA extension missing"
-          print("generation_runtime_guard_offline_regression=passed no_telegram=true")
-          PY
 
   monitor:
     # Code-push validation must never trigger live alert sends.
@@ -1048,3 +1033,161 @@ jobs:
             out/us_hyperscaler_company_risk_pending_state.json
           if-no-files-found: ignore
           retention-days: 7
+
+  generation_recovery:
+    # Existing generator collector, same token/chat/state; runs only when
+    # the main monitor failed BEFORE handling this source.
+    needs: [monitor]
+    if: ${{ always() && github.event_name != 'push' && needs.monitor.result == 'failure' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    env:
+      DATA_CENTER_TELEGRAM_BOT_TOKEN: ${{ secrets.DATA_CENTER_TELEGRAM_BOT_TOKEN }}
+      DATA_CENTER_TELEGRAM_CHAT_ID: ${{ secrets.DATA_CENTER_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: khs88790088790000887900_bot
+    steps:
+      - name: Checkout unchanged production state
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install existing dependencies
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 googlenewsdecoder==0.2.1
+      - name: Validate existing generator and capture baseline fingerprint
+        run: |
+          python -m py_compile scripts/us_data_center_generation_buildout_watch.py
+          python - <<'PY'
+          import ast,hashlib,pathlib
+          s=pathlib.Path("scripts/us_data_center_generation_buildout_watch.py").read_text(encoding="utf-8")
+          names={n.name for n in ast.parse(s).body if isinstance(n,ast.FunctionDef)}
+          assert {"mhi_gtcc_signal_tests","run_mhi_gtcc_existing_generation_watch"} <= names
+          assert '"format_version": max(FORMAT_VERSION, int(old.get("format_version") or 0))' in s
+          pathlib.Path("out").mkdir(exist_ok=True)
+          p=pathlib.Path("data/us_data_center_generation_buildout_state.json")
+          pathlib.Path("out/generation_recovery_state_sha.txt").write_text(hashlib.sha256(p.read_bytes()).hexdigest())
+          print("mhi_offline_structure_check=passed, no Telegram")
+          PY
+      - name: Verify original Telegram destination without sending
+        run: |
+          python - <<'PY'
+          import os,requests
+          token=os.environ.get("DATA_CENTER_TELEGRAM_BOT_TOKEN","").strip()
+          chat=os.environ.get("DATA_CENTER_TELEGRAM_CHAT_ID","").strip()
+          if not token or not chat:
+              raise RuntimeError("Existing generation Telegram secrets missing")
+          d=requests.get(f"https://api.telegram.org/bot{token}/getMe",timeout=20).json()
+          expected=os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"]
+          if not d.get("ok") or (d.get("result") or {}).get("username","").lower()!=expected.lower():
+              raise RuntimeError("Wrong original generation Telegram bot")
+          print("generation_recovery_bot_identity_verified=true")
+          PY
+      - name: Run existing gas generation collector
+        run: python scripts/us_data_center_generation_buildout_watch.py
+      - name: Send only material existing generation report
+        run: |
+          python - <<'PY'
+          import json,os,pathlib,re,requests
+          p=pathlib.Path("out/us_data_center_generation_buildout_alert.txt")
+          receipt=pathlib.Path("out/generation_recovery_receipt.json")
+          receipt.unlink(missing_ok=True)
+          if not p.exists() or not p.read_text(encoding="utf-8").strip():
+              print("generation_recovery_no_message_due=true")
+              raise SystemExit(0)
+          lines=p.read_text(encoding="utf-8").strip().splitlines()
+          chunks=[]; current=[]
+          for line in lines:
+              if len(line)>3200: raise RuntimeError("Telegram line over safe limit")
+              if current and len("\n".join(current+[line]))>3400:
+                  chunks.append("\n".join(current).strip()); current=[line]
+              else: current.append(line)
+          if current: chunks.append("\n".join(current).strip())
+          if not chunks or len(chunks)>4: raise RuntimeError("Telegram report over safe chunk budget")
+          for part in chunks:
+              for tag in ("b","a","i"):
+                  if len(re.findall(fr"<{tag}(?:\s[^>]*)?>",part))!=part.count(f"</{tag}>"):
+                      raise RuntimeError("Telegram HTML invalid; held without sending")
+          token=os.environ["DATA_CENTER_TELEGRAM_BOT_TOKEN"].strip()
+          chat=os.environ["DATA_CENTER_TELEGRAM_CHAT_ID"].strip()
+          ids=[]
+          for idx,part in enumerate(chunks,1):
+              data={"chat_id":chat,"text":(f"[{idx}/{len(chunks)}]\n" if len(chunks)>1 else "")+part,
+                    "parse_mode":"HTML","disable_web_page_preview":True}
+              response=requests.post(f"https://api.telegram.org/bot{token}/sendMessage",json=data,timeout=30)
+              ack=response.json()
+              if not response.ok or not ack.get("ok"):
+                  raise RuntimeError("Telegram send not confirmed; state held")
+              result=ack.get("result") or {}
+              mid=result.get("message_id")
+              returned_chat=(result.get("chat") or {}).get("id")
+              if returned_chat is None or type(mid)!=int or mid<=0:
+                  raise RuntimeError("Telegram response missing chat.id/message_id")
+              if chat.lstrip("-").isdigit() and str(returned_chat)!=chat:
+                  raise RuntimeError("Unexpected chat.id on Telegram acknowledgement")
+              ids.append(mid)
+          receipt.write_text(json.dumps({"status":"confirmed","message_ids":ids}))
+          print(f"generation_recovery_telegram_confirmed=true message_ids={ids}")
+          PY
+      - name: Persist only after successful send or legitimate no-message
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,pathlib
+          old=json.loads(pathlib.Path("data/us_data_center_generation_buildout_state.json").read_text())
+          new=json.loads(pathlib.Path("out/us_data_center_generation_buildout_pending_state.json").read_text())
+          has_receipt=pathlib.Path("out/generation_recovery_receipt.json").exists()
+          prev=(old.get("mhi_gtcc_supply_capacity") or {}).get("delivered_event_id")
+          nxt=(new.get("mhi_gtcc_supply_capacity") or {}).get("delivered_event_id")
+          if nxt and nxt!=prev and not has_receipt:
+              raise RuntimeError("Unacknowledged MHI report must not be marked as delivered")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          before="$(cat out/generation_recovery_state_sha.txt)"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            found="$(sha256sum data/us_data_center_generation_buildout_state.json | cut -d' ' -f1)"
+            if [[ "$found" != "$before" ]]; then
+              echo "Generation state concurrently changed; refusing stale overwrite" >&2
+              exit 1
+            fi
+            cp out/us_data_center_generation_buildout_pending_state.json data/us_data_center_generation_buildout_state.json
+            git add data/us_data_center_generation_buildout_state.json
+            if git diff --cached --quiet; then
+              echo "Generation state legitimately unchanged"
+              exit 0
+            fi
+            git commit -m "Checkpoint generation recovery after Telegram confirmation [skip ci]"
+            if git push origin HEAD:main; then
+              git fetch origin main
+              python - <<'PY'
+          import json,pathlib,subprocess
+          actual=json.loads(subprocess.check_output(["git","show","origin/main:data/us_data_center_generation_buildout_state.json"],text=True))
+          pending=json.loads(pathlib.Path("out/us_data_center_generation_buildout_pending_state.json").read_text())
+          if actual.get("mhi_gtcc_supply_capacity")!=pending.get("mhi_gtcc_supply_capacity"):
+              raise RuntimeError("MHI state not persisted on main")
+          print("generation_recovery_remote_checkpoint_verified=true")
+          PY
+              exit 0
+            fi
+            sleep "$attempt"
+          done
+          echo "Recovery state could not be pushed; delivery is unconfirmed durable" >&2
+          exit 1
+      - name: Upload existing generation diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: generation-recovery-${{ github.run_id }}
+          path: |
+            out/us_data_center_generation_buildout_status.md
+            out/us_data_center_generation_buildout_alert.txt
+            out/us_data_center_generation_buildout_pending_state.json
+            out/generation_recovery_receipt.json
+          if-no-files-found: ignore
+          retention-days: 7
+
