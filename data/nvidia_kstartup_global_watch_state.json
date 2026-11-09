@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-11-09T14:45:03+09:00",
-  "last_checked_kst": "2026-11-09T18:14:43+09:00",
+  "last_checked_kst": "2026-11-09T19:27:46+09:00",
   "seen": {
     "126be798477cbd897413b8c2": {
       "title": "국산 AI 반도체, 엔비디아 GPU와 연결…SKT·리벨리온 3자 협력 - MTN 머니투데이방송",
@@ -122,6 +122,42 @@
       "tier": "신뢰보도",
       "first_seen_kst": "2026-11-09T18:14:43+09:00",
       "suppressed_duplicate": "same_event"
+    },
+    "baa39f0f5bfcfe511008460c": {
+      "title": "업스테이지, 엔비디아 투자 받는다…‘솔라’ 글로벌 공략 확대 - 이데일리",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPMFVXWS1wYnhSQUM0MnR0bVZtclhOdXhRQjVZaktyR3lObVBiMV9qcFJBa2tqbjIyOUsxbWtxNTYxSUtHT1NuZHlZUWptZDJ2WklNbENJNEFLQ01CNDZsNmNuTE9kOXY4NEpWNm02TGFmREJrejdYX0pYcHV5eWdPbA?oc=5",
+      "source": "이데일리",
+      "published_kst": "2026-11-09T18:43+09:00",
+      "event_id": "upstage|global_discussion|2026-11",
+      "kind": "global_discussion",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-09T19:27:46+09:00",
+      "alerted": true
+    },
+    "807d531ce4c62ac21b704576": {
+      "title": "한국 AI 스타트업과 접점 넓히는 엔비디아…스타트업 4곳에 투자 확대 - 아시아경제",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBWWVdfbTU2VTZQdkJhVkxFU3ZEd2pLY2w1UkxkRlpud2I0V1FyRFdfa2Z0WkFqN0J3T1ItUEVkd3EtUGltUVBrelI4MTZ2MXV2YjNnSGdXdjIyRDVVczB4MQ?oc=5",
+      "source": "아시아경제",
+      "published_kst": "2026-11-09T18:29+09:00",
+      "event_id": "nvidia_korea|ecosystem_news|2026-11",
+      "kind": "ecosystem_news",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-09T19:27:46+09:00",
+      "alerted": true
+    },
+    "0488433ee2cb437f855aced1": {
+      "title": "엔비디아, 국내 벤처·스타트업 4곳 투자 깜짝 발표 - 서울경제",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9BUVhEdk9Kbml2YklsZHYzSzJma1RlZkVEV1hiVHhIWEZ5MDhGWkUwN0hJTUc0T3J6ajdWYWU0OWM3bHAzbHA5czZpUnUzS2xLeExV0gFTQVVfeXFMT0FRWER2T0puaXZiSWxkdjNLMmZrVGVmRURXWGJUeEhYRnkwOEZaRTA3SElNRzRPcnpqN1ZhZTQ5YzdscDNscDlzNmlSdTNLbEt4TFU?oc=5",
+      "source": "서울경제",
+      "published_kst": "2026-11-09T17:51+09:00",
+      "event_id": "nvidia_korea|ecosystem_news|2026-11",
+      "kind": "ecosystem_news",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-09T19:27:46+09:00",
+      "suppressed_duplicate": "same_event"
     }
   },
   "events": {
@@ -190,6 +226,20 @@
       "source": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE83Zmd1N3ZxNXdfeHgtZjJqVkhYSzMweTBFN0tIOWtkd2Z2NkZUdUFrMnktZmt6RW1yeDB6NlMtNVFzRm1lMWpWV1VYa0FHUFZsZ1E?oc=5",
       "stage": 1,
       "registered_kst": "2026-11-09T18:14:43+09:00",
+      "alerted": true
+    },
+    "upstage|global_discussion|2026-11": {
+      "title": "업스테이지, 엔비디아 투자 받는다…‘솔라’ 글로벌 공략 확대 - 이데일리",
+      "source": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPMFVXWS1wYnhSQUM0MnR0bVZtclhOdXhRQjVZaktyR3lObVBiMV9qcFJBa2tqbjIyOUsxbWtxNTYxSUtHT1NuZHlZUWptZDJ2WklNbENJNEFLQ01CNDZsNmNuTE9kOXY4NEpWNm02TGFmREJrejdYX0pYcHV5eWdPbA?oc=5",
+      "stage": 1,
+      "registered_kst": "2026-11-09T19:27:46+09:00",
+      "alerted": true
+    },
+    "nvidia_korea|ecosystem_news|2026-11": {
+      "title": "한국 AI 스타트업과 접점 넓히는 엔비디아…스타트업 4곳에 투자 확대 - 아시아경제",
+      "source": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBWWVdfbTU2VTZQdkJhVkxFU3ZEd2pLY2w1UkxkRlpud2I0V1FyRFdfa2Z0WkFqN0J3T1ItUEVkd3EtUGltUVBrelI4MTZ2MXV2YjNnSGdXdjIyRDVVczB4MQ?oc=5",
+      "stage": 1,
+      "registered_kst": "2026-11-09T19:27:46+09:00",
       "alerted": true
     }
   }
