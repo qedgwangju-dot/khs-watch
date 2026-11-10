@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-10T18:21:55+09:00",
+  "last_checked_kst": "2026-11-10T19:05:38+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -4095,6 +4095,15 @@
       "material_stage": 1,
       "first_seen_kst": "2026-11-10T10:14:57+09:00",
       "suppressed_duplicate": "same_event:skt|npu|general"
+    },
+    "236b2374b662a9c07ac2e204": {
+      "title": "SKT·엔비디아·리벨리온, 한국형 소버린 AI 인프라 공동 개발 나선다 : 네이버 블로그 - Naver Blog",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPdkcxWl9jcU95MElHOFd6N1gzdDN2S2VPWlpka2NTZXpPdldMcGxHQWc4c2JzWlRUeXFnZW9KZG9rNWFaWmxSNEtWcVoyX3FCVUZtVFRRbkRGVGlVanotVXNHSDVGYjkwTE1FNURvYWRpT0VkVnE5Mk9QS1o1Uk5xb1JmbXBUY0xNR1ZNQ3lGTQ?oc=5",
+      "summary": "SKT·엔비디아·리벨리온, 한국형 소버린 AI 인프라 공동 개발 나선다 : 네이버 블로그 Naver Blog",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-10T19:05:38+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
     }
   }
 }
