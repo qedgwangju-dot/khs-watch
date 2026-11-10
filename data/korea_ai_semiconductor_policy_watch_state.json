@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-11-10T10:43:06+09:00",
+  "last_checked_kst": "2026-11-10T19:06:37+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -601,6 +601,15 @@
       "stage": 3,
       "category": "초기수요 정책",
       "first_seen_kst": "2026-11-10T02:43:26+09:00",
+      "suppressed_low_quality": true
+    },
+    "4ba44c13a4fcc9c3d05c0cac": {
+      "title": "국산 NPU, 엔비디아 GPU 연계 해외 진출 모색 - 정보통신신문",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1FTkhWeFU3elMtRFB0djVDMWxfZjhOdmRVNXkwX3dLaE9ud01GaDhNbl94V3FzYmlLT0F6TTZFR09tbTZ2NUs5WUx1a3hxRU5EbE91ZkJKaG1qVkwxUW1rMFBhbk5lOUxq0gFsQVVfeXFMTVU5Y2FjbmlnbHZ4V1B0YndmWUtWVVlERTJhZnJiWlFpZTZOMjNIRDdLakd1MHdCRnV6QXk4aWlCSDU3QXJ1OEdacFpjWnhaTEFtdjlYMzZmcUZwQnMyLXVFc2Vmd3QzXy00eFNU?oc=5",
+      "event_signature": "국산AI반도체산업|해외진출 지원|일반",
+      "stage": 3,
+      "category": "해외진출 지원",
+      "first_seen_kst": "2026-11-10T19:06:37+09:00",
       "suppressed_low_quality": true
     }
   }
