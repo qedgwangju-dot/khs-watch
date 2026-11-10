@@ -610,6 +610,32 @@ def readable_self_test() -> int:
     )
     assert len(short) == 1
     assert "8만 곳" in short[0][0]
+    # Simulate Telegram's actual response shape. Readability introduces
+    # bold entities without URLs; only text_link entities have URL fields.
+    real_call = telegram_call
+    received_payloads = []
+    def fake_telegram_call(token, method, payload, **kwargs):
+        assert token == "local-only" and method == "sendMessage"
+        received_payloads.append(payload)
+        return {"ok": True, "result": {
+            "message_id": 1000 + len(received_payloads),
+            "text": payload["text"],
+            "entities": payload["entities"],
+            "chat": {"id": -12345},
+        }}
+    try:
+        globals()["telegram_call"] = fake_telegram_call
+        ids = send_inline_alert("local-only", "-12345", sample, readable=True)
+        assert len(ids) == len(chunks)
+        assert len(received_payloads) == len(chunks)
+        for index, payload in enumerate(received_payloads, 1):
+            assert payload["text"].startswith(f"[{index}/{len(chunks)}] ")
+            assert payload["text"].count(f"[{index}/{len(chunks)}] ") == 1
+            assert any(ent["type"] == "bold" for ent in payload["entities"])
+            assert all(ent.get("type") != "text_link" or ent.get("url")
+                       for ent in payload["entities"])
+    finally:
+        globals()["telegram_call"] = real_call
     print("telegram_readable_self_test=ok phone_budget=1000 source_links=4 "
           "all_numbers=1 per_event=1 ordered_parts=1 bold_headings=1")
     return 0
@@ -687,7 +713,7 @@ def send_inline_alert(token: str, chat_id: str, message: str, *, readable: bool 
     ids = []
     portions = readable_messages(message) if readable else inline_messages(message)
     for index, (plain_text, entities) in enumerate(portions, start=1):
-        if len(portions) > 1:
+        if len(portions) > 1 and not readable:
             # This makes the complete series identifiable on a small screen.
             prefix = f"[{index}/{len(portions)}] "
             plain_text, entities = inline_combine(
@@ -700,11 +726,17 @@ def send_inline_alert(token: str, chat_id: str, message: str, *, readable: bool 
             "disable_web_page_preview": True,
         })
         delivered = response.get("result") or {}
+        # Record accepted Telegram message IDs *before* subsequent receipt
+        # checks, so partial deliveries can be reconstructed from job logs.
+        if readable and delivered.get("message_id") is not None:
+            print(f"telegram_api_accepted_part={index}/{len(portions)} "
+                  f"message_id={delivered['message_id']}", flush=True)
         returned_urls = [
             e.get("url") for e in delivered.get("entities", [])
             if e.get("type") == "text_link"
         ]
-        if returned_urls != [e["url"] for e in entities]:
+        expected_urls = [e["url"] for e in entities if e.get("type") == "text_link"]
+        if returned_urls != expected_urls:
             raise RuntimeError("Telegram did not confirm clickable text links")
         if delivered.get("text") != plain_text:
             raise RuntimeError("Telegram returned modified alert text")
