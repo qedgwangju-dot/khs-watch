@@ -1001,8 +1001,8 @@ def self_test() -> int:
     assert "moon_base_clps" in [x.key for x in CATEGORIES]
     assert "starlink_optical" in [x.key for x in CATEGORIES]
     assert NASA_CLPS2_EVENT != STARLINK_V4_VISION_EVENT
-    assert format_usd_billion(10,1357.9)=="100억달러(약 13조5790억원)"
-    assert format_usd_billion(4.2,1357.9)=="42억달러(약 5조7032억원)"
+    assert format_usd_billion(10,1357.9)=="100억달러(약 13조5,790억원)"
+    assert format_usd_billion(4.2,1357.9)=="42억달러(약 5조7,032억원)"
     assert format_usd_billion(.094,1357.9).startswith("9400만달러(")
     assert "원화 환산 미확인" in format_usd_billion(10,None)
     def mock_lunar_read(url,*markers):
