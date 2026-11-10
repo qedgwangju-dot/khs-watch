@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-10T17:45:06.205604+00:00",
+  "updated_at": "2026-11-10T20:35:53.077576+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -871,9 +871,12 @@
     "a6fb15e94a9766574e6aa996a06c01ffbad6931bc80673f87f0341e1b1a3340a",
     "b6760bf1e0b65f4142c616de4fda4738668dec1fcb949cc28b58b8fa30437212",
     "143da04ad3a0840f9c0a847d9cc3e66f82bfde8ee4602386f0b23c01e2071063",
-    "f4c0c9e758e27524728505e173e5784695d1a502d02afb889f6acbf21fc817c7"
+    "f4c0c9e758e27524728505e173e5784695d1a502d02afb889f6acbf21fc817c7",
+    "eb96a3de6ed44b14cd57e18dc659a3496a400f619bda4eb27de8cf8c237a4294"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "eb96a3de6ed44b14cd57e18dc659a3496a400f619bda4eb27de8cf8c237a4294"
+  ],
   "groups": [
     "ess_battery",
     "ev_46_series",
@@ -881,15 +884,6 @@
     "robotis_excess_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 42411235620,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-07T20:29:04.217887+00:00"
-    },
     {
       "run_id": 42413044618,
       "outcome": "normal_silence",
@@ -1108,15 +1102,36 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-10T17:45:06.205604+00:00"
+    },
+    {
+      "run_id": 42896817049,
+      "outcome": "sent",
+      "message_ids": [
+        347
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-10T20:35:53.077576+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 42868067820,
-    "outcome": "normal_silence",
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-10T17:45:06.205604+00:00"
+    "run_id": 42896817049,
+    "outcome": "sent",
+    "message_ids": [
+      347
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-10T20:35:53.077576+00:00"
   }
 }
