@@ -696,6 +696,10 @@ def space_funding_notice() -> str:
 # evidence classes. Never count program ceilings or laser terminal targets as sales.
 NASA_CLPS2_EVENT="nasa:moon_base:20261107:clps2_8_provider_framework"
 STARLINK_V4_VISION_EVENT="starlink:v4:20261106:10_vs_100_laser_projection"
+FIREFLY_CLPS2_FACTORY_EVENT="lunar_vendor:firefly:20261107:clps2_factory_12"
+VOYAGER_GRIFFIN1_TEST_EVENT="lunar_vendor:voyager:20261013:griffin1_acceptance"
+FIREFLY_CLPS2_RELEASE="https://investors.fireflyspace.com/news-releases/news-release-details/firefly-aerospace-selected-vendor-nasas-10-billion-clps-2"
+VOYAGER_GRIFFIN1_RELEASE="https://voyagertechnologies.com/press-releases/voyagers-griffin-1-on-track-for-the-moon/"
 NASA_CLPS2_ORIGINAL="https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects/"
 NASA_CLPS2_JPL="https://www.jpl.nasa.gov/news/nasa-awards-moon-base-transportation-technology-science-projects/"
 MUSK_POST_ORIGINAL="https://x.com/elonmusk/status/2118788513365954734"
@@ -745,6 +749,28 @@ def nasa_clps2_release_notice(check=check_primary,rate_getter=fetch_usdkrw)->str
         "• 먼저 볼 지표: 개별 과업 번호·체결 금액·NASA 예산 집행·달 착륙선 시험·실제 인도·검수·매출 인식. Falcon 9/Starship 발사·통신 계약을 섞지 않습니다.",
         "• 원문: "+url,
         "• 원문: https://www.nasa.gov/johnson/jsc-procurement/clps2/",
+    ))
+
+def firefly_lunar_capacity_notice(check=check_primary)->str:
+    check(FIREFLY_CLPS2_RELEASE,"CLPS 2","12 spacecraft","Blue Ghost","MoonFall")
+    return "\n".join((
+        "[CLPS 2·회사 공식] 파이어플라이의 기존 실적과 향후 생산능력",
+        "• 파이어플라이(Firefly Aerospace, FLY)는 CLPS 2 경쟁자격을 취득한 상태이며 해당 프로그램 100억달러 전체를 수주한 것은 아닙니다.",
+        "• 2025년 Blue Ghost 1호 달 착륙 성공 후 기존 CLPS 1 후속 임무 4건과 별도 MoonFall 임무를 확보했다고 회사가 발표했습니다.",
+        "• 증설된 청정실 2곳에서 Blue Ghost 착륙선·Elytra 궤도선 등 우주선 최대 12대를 동시에 조립·시험할 수 있다고 공개했습니다. 연간 실제 생산량 12대 확정이 아닙니다.",
+        "• 추가 확인: 제작·시험 완료 대수, NASA 개별 과업, 신규 대형 착륙선 실제 고객·양산과 매출 회수. 12대는 동시 수용능력입니다.",
+        "• 원문: "+FIREFLY_CLPS2_RELEASE,
+    ))
+
+def voyager_griffin1_notice(check=check_primary)->str:
+    check(VOYAGER_GRIFFIN1_RELEASE,"Griffin-1","acceptance testing","10 payloads","six countries")
+    return "\n".join((
+        "[CLPS 2·회사 공식] 보이저 Griffin-1 인수 시험 완료",
+        "• 보이저 테크놀로지스(VOYG)는 Griffin-1 달 착륙선의 인수 시험 통과를 2026년 10월 13일 발표했습니다.",
+        "• 2026년 말 발사 목표로 NASA·유럽우주국 등 6개국의 탑재체 10개를 싣고 달 남극으로 향할 계획입니다. 발사·달 착륙·검수 완료와 구분합니다.",
+        "• 이번 Griffin-1 시험·일정은 향후 CLPS 2 개별 과업 낙찰과 별개입니다. CLPS 2 참여자격을 신규 확정 매출로 계산하지 않습니다.",
+        "• 먼저 확인: 발사체 배정·발사일 확정·최종 환경시험·달 남극 착륙·탑재체 운용 결과·추가 과업 발주.",
+        "• 원문: "+VOYAGER_GRIFFIN1_RELEASE,
     ))
 
 def starlink_v4_projection_notice(check=check_primary)->str:
@@ -871,6 +897,8 @@ def main() -> int:
         (JPM_SPACEX_EVENT, spacex_jpm_verified_target_notice),
         (NASA_CLPS2_EVENT, nasa_clps2_release_notice),
         (STARLINK_V4_VISION_EVENT, starlink_v4_projection_notice),
+        (FIREFLY_CLPS2_FACTORY_EVENT, firefly_lunar_capacity_notice),
+        (VOYAGER_GRIFFIN1_TEST_EVENT, voyager_griffin1_notice),
     ):
         if key in seen:
             continue
@@ -1001,6 +1029,15 @@ def self_test() -> int:
     assert "moon_base_clps" in [x.key for x in CATEGORIES]
     assert "starlink_optical" in [x.key for x in CATEGORIES]
     assert NASA_CLPS2_EVENT != STARLINK_V4_VISION_EVENT
+    assert FIREFLY_CLPS2_FACTORY_EVENT != VOYAGER_GRIFFIN1_TEST_EVENT
+    assert FIREFLY_CLPS2_FACTORY_EVENT != NASA_CLPS2_EVENT
+    release_stub=lambda url,*markers:"verified" if (
+        (url==FIREFLY_CLPS2_RELEASE and "12 spacecraft" in markers) or
+        (url==VOYAGER_GRIFFIN1_RELEASE and "10 payloads" in markers)
+    ) else (_ for _ in ()).throw(ValueError("bad evidence"))
+    assert "동시에" in firefly_lunar_capacity_notice(check=release_stub)
+    assert "연간 실제 생산량" in firefly_lunar_capacity_notice(check=release_stub)
+    assert "발사·달 착륙" in voyager_griffin1_notice(check=release_stub)
     assert format_usd_billion(10,1357.9)=="100억달러(약 13조5,790억원)"
     assert format_usd_billion(4.2,1357.9)=="42억달러(약 5조7,032억원)"
     assert format_usd_billion(.094,1357.9).startswith("9400만달러(")
