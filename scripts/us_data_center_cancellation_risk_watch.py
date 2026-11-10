@@ -1395,6 +1395,7 @@ BAAJA_OFFICIAL_INDEXES = (
     ("https://www.energy.senate.gov/press/rep", "energy.senate.gov"),
     ("https://energycommerce.house.gov/posts", "energycommerce.house.gov"),
     ("https://www.whitehouse.gov/briefings-statements/", "whitehouse.gov"),
+    ("https://www.ferc.gov/news-events/news/decisions-notices", "ferc.gov"),
 )
 
 
