@@ -28,8 +28,8 @@
     "real_pce_3m_ann": 2.9658550742191814,
     "real_pce_date": "2026-09-01",
     "bei5y": 2.25,
-    "bei5y_10d_bp": -22.00000000000002,
-    "bei_date": "2026-11-09"
+    "bei5y_10d_bp": -20.000000000000018,
+    "bei_date": "2026-11-10"
   },
   "verdict": "에너지 충격 경보 기준 미충족",
   "oil_rates": {
@@ -50,7 +50,7 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-11-10T22:01:31.591721+00:00",
+    "date": "2026-11-10T22:37:27.746529+00:00",
     "meeting_date": null,
     "hike25_prob": null,
     "extra_bp": null,
@@ -60,5 +60,5 @@
     "fresh": false
   },
   "oil_rates_verdict": "유가·장기금리 상관 일반 범위",
-  "updated_at_utc": "2026-11-10T22:01:32.309176+00:00"
+  "updated_at_utc": "2026-11-10T22:37:28.265078+00:00"
 }
