@@ -1280,3 +1280,329 @@ def run_inbound_diversion_extension() -> None:
 
 
 run_inbound_diversion_extension()
+
+
+# BAAJA_POLICY_TRACKING_V1
+# Federal BAAJA S.5653 via H.R.2347 is distinct from H.R.9340 (100 MW).
+# Preserve ALL existing risk/financing/Korea alerts, state IDs, schedule and bot.
+BAAJA_PROCEDURAL_ID = "baaja-20261109-hr2347-motion-to-proceed-cloture-73-25"
+BAAJA_SENATE_WRAP = "https://www.democrats.senate.gov/2026/11/09/wrap-up-for-monday-november-9-2026"
+BAAJA_EPW_NOV9 = "https://www.epw.senate.gov/public/index.cfm/press-releases-republican?ID=CCD27C16-CBA8-4E56-BFAE-C30D16E0AE61"
+BAAJA_ENR_NOV7 = "https://www.energy.senate.gov/press/rep/lee-capito-heinrich-and-whitehouse-release-substitute-amendment-to-bipartisan-american-affordability-and-jobs-act-of-2026/"
+BAAJA_BPC_NOV8 = "https://bipartisanpolicy.org/explainer/explaining-the-affordability-in-the-bipartisan-american-affordability-and-jobs-act/"
+BAAJA_GPO_SEP30 = "https://www.govinfo.gov/content/pkg/BILLS-119s5653is/html/BILLS-119s5653is.htm"
+BAAJA_RHODIUM_NOV2 = "https://rhg.com/research/baaja-us-energy-system-impacts/"
+BAAJA_HOUSE_RPA_VOTE = "https://clerk.house.gov/evs/2026/roll312"
+BAAJA_MCKINSEY = "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-capex-crucible-what-finance-teams-can-learn-from-data-center-builds"
+BAAJA_SANDERS_POST = "https://x.com/SenSanders/status/2118131101562454038"
+BAAJA_PUBLIC_STATUS = "2026-11-09 Senate cloture on MOTION TO PROCEED 73-25; NOT final passage"
+BAAJA_POLICY_REFERENCE = {
+    "date": "2026-11-09",
+    "bill_original": "S.5653, introduced 2026-09-30",
+    "senate_vehicle": "H.R.2347 (motion to proceed), NOT H.R.9340",
+    "substitute_amendment_released": "2026-11-07",
+    "senate_motion_to_proceed_cloture_yes": 73,
+    "senate_motion_to_proceed_cloture_no": 25,
+    "stage": "심의 개시 관련 절차표결 통과, 상원 본안 최종 가결 전",
+    "BAAJA_new_computational_load_mw_threshold": 20,
+    "BAAJA_full_incremental_costs": "발전·저장·송전·배전 증분비용, 조기 사업철회 비용보호",
+    "RPA_HR9340_house_threshold_mw": 100,
+    "RPA_HR9340_house_vote": [417, 3],
+    "RPA_HR9340_senate_cloture_sept30": [57, 43],
+    "rhodium_model_initial_bill_nov2_power_price_increase_pct": [88, 102],
+    "rhodium_model_1gw_annualized_capex_plus_opex_increase_pct": [10, 11],
+    "rhodium_based_on_pre_nov7_substitute": True,
+    "mckinsey_global_dc_construction_through_2030_usd_t_range": [1.7, 1.9],
+    "mckinsey_1p8tn_as_enactment_unlocked_capex_verified": False,
+    "sanders_moratorium_post_date": "2026-11-04",
+    "nationwide_moratorium_implemented": False,
+    "ferc_final_implementation": False,
+    "scope": "절차 표결 != 최종 통과 != 시행; 주택 전기요금과 기업 부담의 실제 효과는 별도 규칙·시나리오",
+    "primary_sources": [BAAJA_SENATE_WRAP, BAAJA_EPW_NOV9, BAAJA_ENR_NOV7,
+                        BAAJA_GPO_SEP30, BAAJA_HOUSE_RPA_VOTE],
+    "research_sources": [BAAJA_BPC_NOV8, BAAJA_RHODIUM_NOV2, BAAJA_MCKINSEY],
+}
+
+# Read official pages rather than equating third-party headlines with enactment.
+def baaja_primary_source_checks() -> dict:
+    def page(url: str, required: tuple[tuple[str, ...], ...]) -> bool:
+        try:
+            from bs4 import BeautifulSoup
+            clean = normalize(BeautifulSoup(fetch(url, 14).text, "html.parser").get_text(" ")).lower()
+            return all(any(phrase in clean for phrase in group) for group in required)
+        except Exception:
+            return False
+    return {
+        "senate_vote": page(BAAJA_SENATE_WRAP,
+                            (("motion to invoke cloture",), ("h.r.2347", "h.r. 2347"),
+                             ("73-25", "73 - 25"))),
+        "senate_sponsor": page(BAAJA_EPW_NOV9,
+                               (("bipartisan american affordability",),
+                                ("73-25", "73 - 25"))),
+        "cost_threshold": page(BAAJA_BPC_NOV8,
+                               (("20 megawatts", "20 mw"),
+                                ("incremental",), ("data center", "data centers"))),
+        "rhodium_model": page(BAAJA_RHODIUM_NOV2,
+                              (("88-102%", "88–102%"), ("10-11%", "10–11%"),
+                               ("annualized capital and operating",))),
+    }
+
+
+def baaja_procedural_due(previous: dict, first: bool, checks: dict, fresh_fx: bool) -> bool:
+    """Require a Senate first-party procedural record plus independent text review."""
+    return bool(not first and fresh_fx
+                and previous.get("procedural_id") != BAAJA_PROCEDURAL_ID
+                and (checks.get("senate_vote") or checks.get("senate_sponsor"))
+                and checks.get("cost_threshold") and checks.get("rhodium_model"))
+
+
+def baaja_later_stage(title: str) -> str | None:
+    """False positive protection: words 'advance' and 'cloture' are not passage."""
+    t = normalize(html.unescape(title)).lower().replace("h.r. 2347", "h.r.2347")
+    if not any(x in t for x in (
+        "baaja", "bipartisan american affordability and jobs act", "h.r.2347",
+        "s.5653", "s. 5653",
+    )):
+        return None
+    if any(x in t for x in (
+        "cloture", "motion to proceed", "procedural", "advances", "advance",
+        "committee", "urges", "seeks to", "could", "might",
+        "calls for", "support for", "opposes", "amendment to",
+    )):
+        return None
+    if re.search(r"\b(?:president|white house)\b.{0,50}\b(?:signs|signed)\b", t) and "law" in t:
+        return "대통령 서명·법률 제정 공식 발표"
+    if re.search(r"\bsenate\b.{0,40}\b(?:passes|passed|approves|approved)\b", t) or re.search(
+        r"\b(?:passes|passed)\b.{0,40}\bsenate\b", t
+    ):
+        return "상원 본안 최종 의결 공식 발표"
+    if re.search(r"\bhouse\b.{0,40}\b(?:passes|passed|approves|approved)\b", t) or re.search(
+        r"\b(?:passes|passed)\b.{0,40}\bhouse\b", t
+    ):
+        return "하원 본안 최종 의결 공식 발표"
+    if "ferc" in t and any(w in t for w in (
+        "final rule", "final rules", "final regulation", "adopts implementing",
+    )):
+        return "FERC 시행 세부규칙 최종 발표"
+    return None
+
+
+BAAJA_OFFICIAL_INDEXES = (
+    ("https://www.epw.senate.gov/public/index.cfm/press-releases-republican", "epw.senate.gov"),
+    ("https://www.energy.senate.gov/press/rep", "energy.senate.gov"),
+    ("https://energycommerce.house.gov/posts", "energycommerce.house.gov"),
+    ("https://www.whitehouse.gov/briefings-statements/", "whitehouse.gov"),
+)
+
+
+def baaja_collect_future_official() -> tuple[list[dict], dict]:
+    """A same-publisher announcement; not the news feed's interpretation."""
+    from bs4 import BeautifulSoup
+    now = dt.datetime.now(dt.timezone.utc)
+    result = {}
+    health = {}
+    for index, domain in BAAJA_OFFICIAL_INDEXES:
+        health[domain] = False
+        try:
+            soup = BeautifulSoup(fetch(index, 10).text, "html.parser")
+            health[domain] = True
+            for tag in soup.find_all("a", href=True)[:300]:
+                title = normalize(tag.get_text(" "))
+                stage = baaja_later_stage(title)
+                if not stage:
+                    continue
+                url = urllib.parse.urljoin(index, tag.get("href") or "")
+                actual = domain_of(url)
+                if actual != domain and not actual.endswith("." + domain):
+                    continue
+                try:
+                    detail = normalize(BeautifulSoup(fetch(url, 10).text,
+                                                      "html.parser").get_text(" ")).lower()
+                    # Explicitly demand a recent publication date and BAAJA named bill.
+                    # Never classify a general Senate rollcall or H.R.9340 as this act.
+                    name_ok = any(t in detail for t in (
+                        "bipartisan american affordability and jobs act",
+                        "baaja", "s. 5653", "s.5653"
+                    ))
+                    date_ok = bool(re.search(
+                        r"november\s+(?:1[0-9]|2[0-9]|30),?\s+2026|2026[-/]11[-/](?:1[0-9]|2[0-9]|30)",
+                        detail
+                    ))
+                    if not (name_ok and date_ok):
+                        continue
+                except Exception:
+                    continue
+                fingerprint = sig("baaja-stage", stage, normalize(title).lower())
+                result[fingerprint] = {
+                    "id": fingerprint, "stage": stage, "title": title[:260],
+                    "source": domain, "url": url,
+                }
+        except Exception:
+            continue
+    return list(result.values()), health
+
+
+def baaja_policy_regression_checks() -> None:
+    assert baaja_later_stage("Senate advances BAAJA 73-25 procedural cloture") is None
+    assert baaja_later_stage("BAAJA passes key Senate procedural hurdle") is None
+    assert baaja_later_stage("Senate passes H.R.9340 Ratepayer Protection Act") is None
+    assert baaja_later_stage("Senate passes BAAJA final legislation") == "상원 본안 최종 의결 공식 발표"
+    assert baaja_later_stage("House passes Bipartisan American Affordability and Jobs Act") == "하원 본안 최종 의결 공식 발표"
+    assert baaja_later_stage("President signs BAAJA into law") == "대통령 서명·법률 제정 공식 발표"
+    assert baaja_later_stage("BAAJA Senate managers amendment released") is None
+    checks = {"senate_vote": True, "senate_sponsor": False,
+              "cost_threshold": True, "rhodium_model": True}
+    assert baaja_procedural_due({}, False, checks, True)
+    assert not baaja_procedural_due({"procedural_id": BAAJA_PROCEDURAL_ID},
+                                    False, checks, True)
+    assert not baaja_procedural_due({}, True, checks, True)
+    assert not baaja_procedural_due({}, False, {**checks, "cost_threshold": False}, True)
+    assert not baaja_procedural_due({}, False, checks, False)
+    b = BAAJA_POLICY_REFERENCE
+    assert b["BAAJA_new_computational_load_mw_threshold"] == 20
+    assert b["RPA_HR9340_house_threshold_mw"] == 100
+    assert b["rhodium_model_1gw_annualized_capex_plus_opex_increase_pct"] == [10, 11]
+    assert not b["mckinsey_1p8tn_as_enactment_unlocked_capex_verified"]
+
+
+def baaja_procedural_alert(fx: float, checks: dict) -> str:
+    lines = [
+        "<b>미국 BAAJA 데이터센터 인허가·비용부담 법안: 11월 9일 절차표결</b>",
+        "",
+        "<b>■ 핵심 변화 · 정확한 의회 단계</b>",
+        "• <b>11월 9일 상원 73대25</b> │ H.R.2347에 대한 심의 개시 동의안의 토론종결(cloture) 표결 통과.",
+        "  <b>BAAJA 본안 최종 가결 아님.</b> 상원 본안·하원·대통령 서명·FERC 시행 절차는 별도.",
+        "• <b>S.5653</b> │ 9월30일 발의, 11월7일 대체수정안 발표."
+        " 캐피토·화이트하우스·리·하인릭 4명 초당적 공동 발의.",
+        "• <b>20MW 이상</b> │ BAAJA 2107조 신규 데이터센터는 발전·저장·송전·배전 등"
+        " 수요 때문에 추가 발생한 증분비용 전액을 부담하도록 하는 제안.",
+        "  고객이 조기 철수해도 나머지 전력소비자에게 비용이 전가되지 않도록 하는 조건.",
+        "",
+        "<b>■ 별도 법안과 반드시 구분</b>",
+        "• <b>H.R.9340 전력 소비자 보호법</b> │ 신규 대형 부하 <b>100MW 이상</b>."
+        " 9월16일 하원 417대3 통과, 9월30일 상원 심의 개시 토론종결 57대43로 실패.",
+        "  주 전기요금 규제기관이 비용회수 기준을 검토하도록 하는 제도이며 BAAJA 20MW 의무와 별개.",
+        "• <b>정치적 발언</b> │ 샌더스 전국 데이터센터 일시중단 촉구 X 게시일 11월4일."
+        " 전국 중단 법령은 시행되지 않았고 이번 인허가 법안과 별도 입법 흐름.",
+        "• <b>화이트하우스</b> │ 공동 발의 민주당 상원의원 Sheldon Whitehouse,"
+        " 백악관(White House) 기관과 동명이지만 서로 다른 당사자."
+        " 하원 민주당 지도부는 환경·원주민 권리 보호에 대해 유보.",
+        "",
+        "<b>■ 실제 비용 영향: 연구 시나리오와 법 적용 분리</b>",
+        "• <b>로디움그룹 11월2일 모델</b> │ 완전 시행 시 데이터센터가 납부하는"
+        " 전력망 연결 소매 전력가격 <b>+88~102%</b> 추정.",
+        "• <b>1GW 데이터센터 전체 연간 환산 비용</b> │ 설비투자와 운영비 합산"
+        " <b>+10~11%</b> 추정. 운영비만 10% 증가 또는 이미 확정된 인상이 아님.",
+        "• <b>연구 가정</b> │ 9월30일 초기 BAAJA 문안을 바탕으로 한 모델;"
+        " 11월7일 대체 수정안·개별 요금제·전력믹스 반영 효과는 별도 검증.",
+        f"• <b>맥킨지 1조8,000억달러({krw_from_usd(1.8e12, fx)})</b>는"
+        " BAAJA 가결로 즉시 해제되는 사업비가 아님.",
+        " 2030년까지 전 세계 데이터센터 건설비 약 1조7,000억~1조9,000억달러라는"
+        " 별도 투자 수요 전망의 중간 규모와 혼동 금지.",
+        "",
+        "<b>■ 전력망·수익구조와 다음 조기경보</b>",
+        "• 인허가·송전망 증설이 빨라지더라도 FERC 규칙제정, 주 규제기관의"
+        " 비용배분 승인, 전력망 실제 착공·전원 인가가 남음.",
+        "• 설비·허가 시차의 수혜 가능 기업은 송변전, 시공, 발전, 냉각 업체."
+        " 확정 수주·금융종결·납품 매출과 산업 수요 전망 분리.",
+        "• 추적 단계: 상원 최종표결 → 하원 본안 처리 → 대통령 서명 →"
+        " FERC 시행규칙 → 전력요금·접속계약 변경 → 실제 전원 인가 MW.",
+        "• 최대 역풍: 전력망 조달비 100% 부담으로 미확정 프로젝트 금융성 악화,"
+        " 지역별 소송·원주민 보호 쟁점으로 하원 통과 지연.",
+        "",
+        "<b>■ 공식 원문 · 연구 근거</b>",
+        f"• {a('11월9일 미 상원 표결 공식 기록', BAAJA_SENATE_WRAP)}",
+        f"• {a('11월9일 상원 EPW 공식 발표', BAAJA_EPW_NOV9)}",
+        f"• {a('11월7일 상원 대체수정안 발표', BAAJA_ENR_NOV7)}",
+        f"• {a('S.5653 9월30일 발의 법안 원문', BAAJA_GPO_SEP30)}",
+        f"• {a('20MW 규정: Bipartisan Policy Center', BAAJA_BPC_NOV8)}",
+        f"• {a('로디움그룹 +88~102%·+10~11% 모델', BAAJA_RHODIUM_NOV2)}",
+        f"• {a('H.R.9340 하원 417대3 공식 기록', BAAJA_HOUSE_RPA_VOTE)}",
+        f"• {a('맥킨지 글로벌 건설비 추정', BAAJA_MCKINSEY)}",
+        f"• 환율: 1달러={fx:,.2f}원 · {h(fx_source)} · {h(fx_checked)} UTC",
+        f"• 실행 당시 근거 재조회: 상원기록={checks.get('senate_vote')},"
+        f" EPW={checks.get('senate_sponsor')}, 20MW={checks.get('cost_threshold')},"
+        f" 로디움={checks.get('rhodium_model')}",
+    ]
+    complete = "\n".join(lines).strip()
+    mandatory = ("73대25", "본안 최종 가결 아님", "20MW", "100MW", "417대3",
+                 "57대43", "+88~102%", "+10~11%", "1GW", "하원",
+                 BAAJA_SENATE_WRAP, BAAJA_EPW_NOV9, BAAJA_BPC_NOV8,
+                 BAAJA_RHODIUM_NOV2)
+    missing = [x for x in mandatory if x not in complete]
+    if missing:
+        raise RuntimeError(f"BAAJA 법안 단계·원문 수치 송출 전 누락: {missing}")
+    if complete.count("<b>") != complete.count("</b>") or complete.count("<a href=") != complete.count("</a>"):
+        raise RuntimeError("BAAJA Telegram HTML 태그 불일치")
+    if any(len(line) > 2300 for line in lines):
+        raise RuntimeError("BAAJA Telegram 한 줄 길이 제한 초과")
+    return complete + "\n"
+
+
+def baaja_run_existing_risk_watch() -> None:
+    baaja_policy_regression_checks()
+    previous = dict(old.get("baaja_permitting_policy") or {})
+    initial_needed = previous.get("procedural_id") != BAAJA_PROCEDURAL_ID
+    source_checks = baaja_primary_source_checks() if initial_needed else {}
+    due = baaja_procedural_due(previous, not old.get("initialized"), source_checks,
+                               fx is not None and fx_source != "직전 저장값")
+    later_events, feed_health = baaja_collect_future_official()
+    previous_seen = list(previous.get("official_later_event_ids") or [])
+    new_events = [x for x in later_events if x["id"] not in set(previous_seen)]
+    if not due and not new_events:
+        if STATUS.exists():
+            with STATUS.open("a", encoding="utf-8") as fd:
+                fd.write("- BAAJA 정책: 신규 실질 법안단계 없음"
+                         f" · 11월9일 공식 재조회={source_checks}"
+                         f" · 향후 의회 원천={feed_health}\n")
+        print(f"baaja_policy_no_new_stage=true sources={source_checks} later={feed_health}")
+        return
+    if fx is None or fx_source == "직전 저장값":
+        # Never invent a current KRW rate or consume an unsent stage.
+        print("baaja_policy_hold_stale_fx=true")
+        return
+    chunks = []
+    if due:
+        chunks.append(baaja_procedural_alert(fx, source_checks).strip())
+    if new_events:
+        msgs = [
+            "<b>미국 BAAJA 정식 입법·시행 단계 변화 (공식기관 자료)</b>",
+            "• <b>절차표결·최종 가결·법률 제정·실제 시행을 서로 구분</b>",
+        ]
+        for event in new_events:
+            msgs.append(f"• {h(event['stage'])} │ {a(event['title'], event['url'])}"
+                        f" · {h(event['source'])}")
+        msgs.append("• 실제 시행·기업 비용 전가·전원 인가 일자는 공식 시행규칙·"
+                    "관할 전력시장·주정부 자료 확인 전 확정하지 않음.")
+        chunks.append("\n".join(msgs))
+    report = "\n\n".join(chunks).strip()
+    if not report:
+        return
+    pending = load_json(PENDING)
+    state = dict(previous)
+    if due:
+        state["procedural_id"] = BAAJA_PROCEDURAL_ID
+        state["procedural_at_utc"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+        state["reference"] = BAAJA_POLICY_REFERENCE
+        state["source_checks"] = source_checks
+        state["latest_stage"] = "절차표결 통과, 상원 본안 가결 전"
+    if new_events:
+        state["latest_stage"] = new_events[-1]["stage"]
+    state["official_later_event_ids"] = list(dict.fromkeys(
+        previous_seen + [x["id"] for x in new_events]
+    ))[-200:]
+    state["last_new_event_count"] = len(new_events)
+    pending["baaja_permitting_policy"] = state
+    original_alert = ALERT.read_text(encoding="utf-8").strip() if ALERT.exists() else ""
+    ALERT.write_text((original_alert + "\n\n" if original_alert else "") + report + "\n",
+                     encoding="utf-8")
+    PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n",
+                       encoding="utf-8")
+    if STATUS.exists():
+        with STATUS.open("a", encoding="utf-8") as fd:
+            fd.write(f"- BAAJA 신규 보강={due} · 이후 공식 단계={len(new_events)}"
+                     f" · 공식 원천 확인={source_checks} · 색인={feed_health}\n")
+    print(f"baaja_policy_prepared_initial={due} new_official_stages={len(new_events)}")
+    
+
+baaja_run_existing_risk_watch()
