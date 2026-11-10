@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-09T22:41:11.693754+00:00",
+  "updated_at": "2026-11-10T01:28:58.468608+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -867,27 +867,18 @@
     "eefd3f2e8b64f43946292e00e664ae8fca83eba590a0a7b5faa93edd103bf818",
     "08202dc0243cdc0e0054cb67f590da9eb55b062f66c7e5d39fd46d091d4c3c22",
     "7804350dee701190ad091c35b6094785fe1b4e6e8ddd9a63389646773c85a28d",
-    "b26f57dcc97200fbc8158f176465d76cc2f73a3abd45876c07bd1926d9b23abb"
+    "b26f57dcc97200fbc8158f176465d76cc2f73a3abd45876c07bd1926d9b23abb",
+    "a6fb15e94a9766574e6aa996a06c01ffbad6931bc80673f87f0341e1b1a3340a"
   ],
   "last_selected": [
-    "b26f57dcc97200fbc8158f176465d76cc2f73a3abd45876c07bd1926d9b23abb"
+    "a6fb15e94a9766574e6aa996a06c01ffbad6931bc80673f87f0341e1b1a3340a"
   ],
   "groups": [
     "ess_battery",
     "humanoid_component_policy",
-    "lg_factory_loop",
-    "robotis"
+    "lg_factory_loop"
   ],
   "delivery_history": [
-    {
-      "run_id": 42332812825,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-07T03:11:29.369259+00:00"
-    },
     {
       "run_id": 42361940438,
       "outcome": "normal_silence",
@@ -1088,13 +1079,28 @@
         false
       ],
       "state_timestamp_utc": "2026-11-09T22:41:11.693754+00:00"
+    },
+    {
+      "run_id": 42736045656,
+      "outcome": "sent",
+      "message_ids": [
+        344
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-10T01:28:58.468608+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 42714022000,
+    "run_id": 42736045656,
     "outcome": "sent",
     "message_ids": [
-      343
+      344
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1103,6 +1109,6 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-09T22:41:11.693754+00:00"
+    "state_timestamp_utc": "2026-11-10T01:28:58.468608+00:00"
   }
 }
