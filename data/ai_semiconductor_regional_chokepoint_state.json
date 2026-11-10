@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-10T11:43:29+09:00",
-  "last_scan_count": 0,
+  "updated_at_kst": "2026-11-10T19:26:55+09:00",
+  "last_scan_count": 1,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
     "vintage": "3Q26",
@@ -114,7 +114,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -125,6 +125,7 @@
     "2cd2b0f9d66a3572fe285d81",
     "2e4ce20f85e2413b949cc500",
     "2ff967f0a83d4f9d09737f69",
+    "305d1d885ff5dbd87c0680db",
     "3547810262aea5ccef036765",
     "3721dcaa772b61f44f972d28",
     "3898ddc3349f7aa8502740b4",
@@ -165,7 +166,14 @@
     "fbb3374837c522b4bf3b2884"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "taiwan|diversification|TSMC|malaysia",
+      "source": "BusinessToday Malaysia",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-11-10T16:13:09+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
   "telegram_message_ids": [
     292
