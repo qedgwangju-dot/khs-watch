@@ -61,6 +61,7 @@ jobs:
           python scripts/starlink_mobile_d2d_korean_guard.py --self-test
           python scripts/space_launch_telegram_send.py --self-test
           python scripts/space_launch_telegram_send.py --inline-self-test
+          python scripts/space_launch_telegram_send.py --readable-self-test
           python scripts/starlink_mobile_d2d_readability.py --self-test
           python scripts/merge_space_launch_state.py --self-test
 
@@ -100,7 +101,7 @@ jobs:
           SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
           SPACE_LAUNCH_VERIFY_RECEIPT: "1"
         run: |
-          python scripts/space_launch_telegram_send.py --inline out/starlink_mobile_d2d_watch_telegram.txt
+          python scripts/space_launch_telegram_send.py --readable out/starlink_mobile_d2d_watch_telegram.txt
 
       - name: Persist dedup state only after successful delivery, merge on push conflicts
         if: success() && hashFiles('out/starlink_mobile_d2d_watch_pending.json') != ''
