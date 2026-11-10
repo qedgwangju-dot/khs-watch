@@ -1515,3 +1515,231 @@ def run_mhi_gtcc_existing_generation_watch() -> None:
 
 
 run_mhi_gtcc_existing_generation_watch()
+
+
+# JET_ENGINE_TURBINE_REUSE_WATCH_V1
+# Nov-09 Reuters/Decrypt industry story. Track the manufacturer's actual
+# orders, not the misleading implication that Crusoe bought used aircraft
+# engines. Stay inside this already-running generation/Telegram pipeline.
+JET_TURBINE_EVENT = "used-turbines-aircraft-derived-ai-power-20261109-reuters-firstparty-v1"
+JET_REUTERS_NOV9 = "https://www.reuters.com/business/aerospace-defense/ai-power-rush-sends-data-centres-hunting-used-turbines-jet-engines-2026-11-09/"
+JET_DECRYPT_NOV9 = "https://decrypt.co/382890/ai-data-centers-used-jet-engines-power-turbines"
+JET_PROENERGY_CRUSOE = "https://www.proenergyservices.com/2026/04/proenergy-to-deliver-major-generating-equipment-to-power-crusoe-ai-factories/"
+JET_FTAI_POWER_ORIGINAL = "https://ir.ftaiaviation.com/news-releases/news-release-details/ftai-aviation-announces-launch-ftai-power-ftai-adapts-worlds"
+JET_FTAI_FIRM_ORDER = "https://ir.ftaiaviation.com/news-releases/news-release-details/ftai-announces-1465-billion-gas-turbine-generator-set-order"
+JET_EPA_DATA_CENTERS = "https://www.epa.gov/stationary-sources-air-pollution/clean-air-act-resources-data-centers"
+JET_REFERENCE = {
+    "story_date": "2026-11-09",
+    "woodmac_us_new_turbine_average_delivery_years_reported": 6,
+    "global_orders_gw_over": 100,
+    "global_annual_production_capacity_gw_range": [60, 70],
+    "crusoe_proenergy_original_contract_date": "2026-04-16",
+    "crusoe_units_contracted": 13,
+    "crusoe_pe6000_mw_each": 50,
+    "crusoe_contract_total_mw": 650,
+    "crusoe_ordered_used_retired_aircraft_engines": False,
+    "ftai_original_conversion_platform": "CFM56",
+    "ftai_mod1_unit_mw": 25,
+    "ftai_jf_initial_purchase_order_usd_b": 1.465,
+    "ftai_jf_order_date": "2026-07-22",
+    "ftai_jf_delivery_target": "2027-11",
+    "ftai_cloud_customer_publicly_named": False,
+    "ftai_jf_master_contract_years": 5,
+    "ftai_performance_price_downward_adjustment_cap_pct": 10,
+    "used_turbine_price_usd_m_per_mw_reported": [1.5, 1.7],
+    "new_turbine_price_usd_m_per_mw_reported": [2.0, 2.5],
+    "broker_used_pair_mw_reported": 29,
+    "broker_used_pair_usd_m_reported": 12.5,
+    "broker_equivalent_new_pair_usd_m_reported": 35,
+    "cleanview_proposed_onsite_generation_gw_reported": 90,
+    "cleanview_operating_onsite_generation_gw_reported": 2,
+    "w506_gas_piston_engines_us_data_center_orders_gw_reported": 3,
+    "gev_q2_contract_and_reservation_gw": 116,
+    "gev_q3_contract_and_reservation_gw": 122,
+    "gev_q2_year_end_target_gw": 125,
+    "gev_q3_year_end_target_gw": 130,
+    "contract_scope_warning": "Crusoe PE6000 is aircraft-derived generator, not proof it bought retired aircraft engines; FTAI order different customer",
+    "source_level": "Reuters/Decrypt Nov09 interviews for lead time/price; manufacturer primary for Crusoe & FTAI orders; GE official Q3",
+    "official": [JET_PROENERGY_CRUSOE, JET_FTAI_POWER_ORIGINAL, JET_FTAI_FIRM_ORDER,
+                 GEV_Q3_2026, JET_EPA_DATA_CENTERS],
+    "reported": [JET_REUTERS_NOV9, JET_DECRYPT_NOV9],
+}
+
+
+def jet_turbine_regression_checks() -> None:
+    b = JET_REFERENCE
+    assert b["crusoe_units_contracted"] * b["crusoe_pe6000_mw_each"] == b["crusoe_contract_total_mw"]
+    assert b["crusoe_ordered_used_retired_aircraft_engines"] is False
+    assert b["ftai_cloud_customer_publicly_named"] is False
+    assert b["ftai_performance_price_downward_adjustment_cap_pct"] == 10
+    assert b["gev_q3_contract_and_reservation_gw"] - b["gev_q2_contract_and_reservation_gw"] == 6
+    assert b["gev_q3_year_end_target_gw"] - b["gev_q2_year_end_target_gw"] == 5
+    assert b["used_turbine_price_usd_m_per_mw_reported"][1] < b["new_turbine_price_usd_m_per_mw_reported"][0]
+    assert b["global_annual_production_capacity_gw_range"][1] < b["global_orders_gw_over"]
+    assert "FTAI" in "FTAI" and JET_PROENERGY_CRUSOE != JET_FTAI_FIRM_ORDER
+
+
+def jet_turbine_primary_probe() -> dict:
+    """Publisher evidence, with no fallback pretending Reuters was fetched."""
+    sites = (
+        ("proenergy_crusoe", JET_PROENERGY_CRUSOE, ("crusoe", "13", "pe6000", "50 mw")),
+        ("ftai_jf_order", JET_FTAI_FIRM_ORDER, ("1.465", "initial purchase order", "cfm56", "november 2027")),
+        ("ftai_engine_conversion", JET_FTAI_POWER_ORIGINAL, ("cfm56", "25-megawatt", "remanufacture")),
+        ("gev_q3", GEV_Q3_2026, ("third quarter 2026", "116 to 122 gw", "130 gw")),
+        ("epa_standards", JET_EPA_DATA_CENTERS, ("stationary", "emission", "data centers")),
+    )
+    out = {}
+    for label, url, required in sites:
+        try:
+            body = normalize(BeautifulSoup(fetch(url, 12).text, "html.parser").get_text(" ")).lower()
+            out[label] = all(term in body for term in required)
+        except Exception:
+            out[label] = False
+    return out
+
+
+def jet_turbine_event_due(prev: dict, proof: dict, first: bool, fresh_fx: bool) -> bool:
+    today = dt.datetime.now(dt.timezone.utc).date()
+    age = (today - dt.date(2026, 11, 9)).days
+    return bool(
+        not first and fresh_fx and 0 <= age <= 14
+        and prev.get("delivered_event_id") != JET_TURBINE_EVENT
+        and proof.get("proenergy_crusoe") and proof.get("ftai_jf_order")
+    )
+
+
+def jet_turbine_alert_text(proof: dict) -> str:
+    b = JET_REFERENCE
+    usd = fx
+    def mw_cost(usd_m: float) -> str:
+        return krw_from_usd_b(usd_m / 1000, usd)
+    content = [
+        "<b>데이터센터 중고 가스터빈·항공기 엔진 기반 발전기 | 11월 9일 뉴스</b>",
+        "",
+        "<b>■ 핵심 · 새 기사와 과거 확정 수주를 분리</b>",
+        "• <b>미국 신형 가스터빈 납기 평균 6년</b> │ Wood Mackenzie 분석을 Reuters가 11월9일 인용."
+        " 개발 기간 6년이라는 뜻 아님; 제조사·모델·납품 순서마다 달라질 수 있음.",
+        "• <b>글로벌 수급</b> │ 신규 주문 100GW 초과 대 추정 연간 생산능력 60~70GW."
+        " 전체 주문잔고와 연간 생산능력을 같은 분모의 당해연도 부족 물량으로 계산하지 않음.",
+        "• <b>사용 장비 2종 분리</b> │ ① 중고·재정비된 발전용 가스터빈,"
+        " ② 항공기 엔진 기술을 이용해 신규 조립한 항공기 유래형 발전기.",
+        "",
+        "<b>■ 1. ProEnergy–Crusoe 공식 계약 · 2026년 4월 16일</b>",
+        "• <b>PE6000 13기 × 50MW = 650MW</b> 실제 장비 공급계약."
+        " 13기 전부 폐항공기에서 떼어낸 중고 엔진을 구매했다는 뜻 아님.",
+        "• <b>납품 전 검증</b> │ 미국 Sedalia 공장에서 설치적합성·품질검사 후 인도 예정."
+        " 실제 발전소 설치·연료 연결·전원 인가·운영 매출 시점은 공식 확인 전.",
+        "• <b>매출·단가</b> │ 이 개별 계약의 대금·개당 평균판매단가 미공개."
+        " 중고 발전기 시장 평균가격을 650MW 계약의 확정 매출로 적용 금지.",
+        "",
+        "<b>■ 2. FTAI Aviation–J&F 발전기 사업 공식 주문</b>",
+        f"• <b>7월22일 초기 발주 14억6,500만달러({krw_from_usd_b(1.465, usd)})</b>."
+        " FTAI·Jereh 합작사 J&F가 해외 클라우드 사업자(실명 비공개)와 체결.",
+        "• <b>CFM56 항공기 엔진 재제조 기반 Mod-1</b>."
+        " 2027년 11월까지 분할 납품; 5년 기본공급계약 추가발주 여부는 별도.",
+        "• <b>현금회수·보증</b> │ 계약 시 선급금·제작·시험·현장검수 단계별 대금."
+        " 출력 미달에 따른 최종 대금 감액 상한은 해당 장비가치의 10%.",
+        "• <b>고객 관계</b> │ FTAI 고객을 Crusoe 또는 특정 빅테크로 추측해 확정하지 않음.",
+        "",
+        "<b>■ 3. 장비 가격·대체 시장 (11월9일 Reuters 취재)</b>",
+        f"• 중고 발전용 가스터빈 <b>1MW당 150만~170만달러({mw_cost(1.5)}~{mw_cost(1.7)})</b>.",
+        f"• 신규 발전용 가스터빈 <b>1MW당 200만~250만달러({mw_cost(2.0)}~{mw_cost(2.5)})</b>.",
+        f"• 중개사 사례 <b>29MW 중고 1,250만달러({mw_cost(12.5)})</b> 대"
+        f" 동급 신품 약 3,500만달러({mw_cost(35)}) 추정."
+        " 장비 사양·설치비·정비보증 차이를 보정한 공통가격이 아님.",
+        "• Cleanview 중간연도 추정: 미국 데이터센터 현장발전 제안 90GW 중"
+        " 실제 가동 약 2GW. 발표 용량을 기가와트급 준공과 혼동 금지.",
+        "• Wärtsilä의 미국 데이터센터 가스 피스톤엔진 주문 약 3GW도 Reuters 보도."
+        " 터빈 수주와 피스톤엔진 수주 중복 합산 금지.",
+        "",
+        "<b>■ 4. GE Vernova 3분기 공식 수치 · 2분기와 비교</b>",
+        "• 가스터빈 확정 잔고 + 슬롯 예약 합계 <b>116GW → 122GW(+6GW)</b>."
+        " 2026년 말 목표 <b>125GW → 130GW(+5GW)</b>.",
+        "• 122GW는 전량 확정발주·이미 출하한 장비나 미국 데이터센터 전용 수주가 아님.",
+        "",
+        "<b>■ 실패경로 및 다음 추적</b>",
+        "• 중고 장비 정비 이력·잔존 수명·연료효율·연속 가동 신뢰성과"
+        " 새 발전기와 다른 유지보수 비용·보험·보증충당금 확인.",
+        "• EPA 고정형 터빈 대기오염 규제와 지역 배출허가·가스관·송전·변압기 병목."
+        " 발표 전력→납품→환경허가→상업운전→데이터센터 전원 인가 구분.",
+        "• 다음 알림은 신규 실제 주문·납품·인수시험·가동·취소·지연과"
+        " 중고단가·신제품 납기의 동일 기준 변화가 공식 문서에 확인될 때만.",
+        "",
+        "<b>■ 근거 수준</b>",
+        "• 납기 6년·중고단가·90GW/2GW는 Reuters/Decrypt 11월9일 산업 보도 인용."
+        " Wood Mackenzie·Cleanview 원표와 개별 중고 매매서류는 별도 미확인.",
+        "• ProEnergy·FTAI 공식 보도에서 실제 계약 범위·납기·고객 익명 여부 확인."
+        " 원문 뉴스 기사를 이들 회사의 공식 발언으로 바꿔 쓰지 않음.",
+        "",
+        f"• {a('Reuters 11월9일 원보도', JET_REUTERS_NOV9)}",
+        f"• {a('Decrypt 11월9일 재보도', JET_DECRYPT_NOV9)}",
+        f"• {a('ProEnergy–Crusoe 13기 공식계약', JET_PROENERGY_CRUSOE)}",
+        f"• {a('FTAI–J&F 14억6,500만달러 공식계약', JET_FTAI_FIRM_ORDER)}",
+        f"• {a('FTAI CFM56 재제조 기술 공표', JET_FTAI_POWER_ORIGINAL)}",
+        f"• {a('GE Vernova 2026년 3분기 공식실적', GEV_Q3_2026)}",
+        f"• {a('미국 EPA 데이터센터 배출규정', JET_EPA_DATA_CENTERS)}",
+        f"• 환율 1달러={usd:,.2f}원 · {h(fx_source)} · 조회 {h(fx_checked)} UTC",
+        f"• 원천 확인: ProEnergy={proof.get('proenergy_crusoe')},"
+        f" FTAI={proof.get('ftai_jf_order')}, GE Q3={proof.get('gev_q3')}"
+    ]
+    report = "\n".join(content).strip()
+    required = ("6년", "650MW", "13기", "1.465", "14억6,500만달러",
+                "2027년 11월", "116GW", "122GW", "125GW", "130GW",
+                "1,250만달러", "3,500만달러", "EPA",
+                JET_PROENERGY_CRUSOE, JET_FTAI_FIRM_ORDER, JET_REUTERS_NOV9)
+    missing = [t for t in required if t not in report]
+    # The USD amount appears as Korean money without a literal 1.465.
+    missing = [t for t in missing if t != "1.465"]
+    if missing or report.count("<b>") != report.count("</b>") or report.count("<a href=") != report.count("</a>"):
+        raise RuntimeError(f"Jet turbine data-center alert lost critical fact or HTML tag: {missing}")
+    if any(len(line) >= 2800 for line in content):
+        raise RuntimeError("Jet turbine alert has a single line too large to split safely")
+    return report
+
+
+def run_jet_turbine_existing_generation_watch() -> None:
+    jet_turbine_regression_checks()
+    prev = dict(old.get("jet_turbine_reuse_data_center") or {})
+    if prev.get("delivered_event_id") == JET_TURBINE_EVENT:
+        print("jet_turbine_reuse_alert=duplicate_suppressed")
+        return
+    proof = jet_turbine_primary_probe()
+    fresh_fx = fx is not None and fx_source != "직전 저장값"
+    if not jet_turbine_event_due(prev, proof, not old.get("initialized"), fresh_fx):
+        print(f"jet_turbine_reuse_alert=source_or_date_hold official={proof} fresh_fx={fresh_fx}")
+        return
+    rendered = jet_turbine_alert_text(proof)
+    # Append after all older integrated alerts; never replace earlier content.
+    previous_text = ALERT.read_text(encoding="utf-8").strip() if ALERT.exists() else ""
+    ALERT.write_text((previous_text + "\n\n" if previous_text else "") + rendered + "\n",
+                     encoding="utf-8")
+    stage = dict(prev)
+    stage.update({
+        "version": 1,
+        "event_id": JET_TURBINE_EVENT,
+        "delivered_event_id": JET_TURBINE_EVENT,
+        "first_source_date": JET_REFERENCE["story_date"],
+        "source_snapshot": JET_REFERENCE,
+        "official_sources_verified_live": proof,
+        "press_report_status": "Reuters/Decrypt Nov09 attributed; direct Reuters text may be access-limited",
+        "crusoe_contract_stage": "signed_equipment_supply_not_energized",
+        "ftai_contract_stage": "signed_initial_order_not_delivered",
+        "gev_reference_period": "2026-Q3",
+        "prepared_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+    })
+    pending = load_json(PENDING)
+    pending["jet_turbine_reuse_data_center"] = stage
+    PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if STATUS.exists():
+        with STATUS.open("a", encoding="utf-8") as fd:
+            fd.write(
+                f"- 중고·항공유래 발전기 11월9일 보강: **보낼 자료 작성**"
+                f" · ProEnergy={proof.get('proenergy_crusoe')}"
+                f" · FTAI={proof.get('ftai_jf_order')}"
+                f" · GE={proof.get('gev_q3')}"
+                " · Telegram 발송 후에만 상태 확정\n"
+            )
+    print(f"jet_turbine_reuse_alert=prepared source={proof} old_state_preserved=true")
+
+
+run_jet_turbine_existing_generation_watch()
