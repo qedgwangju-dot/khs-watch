@@ -107,6 +107,18 @@
   },
   "smr_state_model_version": 3,
   "temelin_large_nuclear_events": {
+    "dukovany_construction_talks_ended_20261029": {
+      "date": "2026-10-29",
+      "link": "https://www.khnpcesko.cz/blog/khnp-ukoncila-jednani-o-smlouve-na-stavebni-prace-pro-projekt-dukovany-bez-dosaz",
+      "stage": "construction_talks_ended",
+      "status": "한수원-대우건설·두산에너빌리티 두코바니 시공계약 협상 종료(체코 EPC 전체 해지 아님)"
+    },
+    "dukovany_management_20261103": {
+      "date": "2026-11-03",
+      "link": "https://english.motir.go.kr/eng/article/EATCLdfa319ada/2774/view",
+      "stage": "emergency_management",
+      "status": "산업통상부 두코바니 시공계약 협상 결렬 대응 긴급관리체계 발표; 새 시공사 선정·2027년 허가 일정 점검"
+    },
     "ministerial_20261020": {
       "date": "2026-10-20",
       "link": "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172314/view",
@@ -124,22 +136,10 @@
       "status": "두코바니 5·6호기 EPC에 테믈린 추가 2기 5년 선택권 포함·아직 미행사"
     },
     "travel_correction_20261021": {
-      "stage": "ministerial_trip_denied",
       "date": "2026-10-21",
-      "status": "산업통상부 공식 정정: 김정관 장관의 다음 주 체코 방문 계획 없음; 언론 수정본은 서울 협의",
-      "link": "https://m.korea.kr/briefing/actuallyView.do?newsId=148974028"
-    },
-    "dukovany_construction_talks_ended_20261029": {
-      "stage": "construction_talks_ended",
-      "date": "2026-10-29",
-      "status": "한수원-대우건설·두산에너빌리티 두코바니 시공계약 협상 종료(체코 EPC 전체 해지 아님)",
-      "link": "https://www.khnpcesko.cz/blog/khnp-ukoncila-jednani-o-smlouve-na-stavebni-prace-pro-projekt-dukovany-bez-dosaz"
-    },
-    "dukovany_management_20261103": {
-      "stage": "emergency_management",
-      "date": "2026-11-03",
-      "status": "산업통상부 두코바니 시공계약 협상 결렬 대응 긴급관리체계 발표; 새 시공사 선정·2027년 허가 일정 점검",
-      "link": "https://english.motir.go.kr/eng/article/EATCLdfa319ada/2774/view"
+      "link": "https://m.korea.kr/briefing/actuallyView.do?newsId=148974028",
+      "stage": "ministerial_trip_denied",
+      "status": "산업통상부 공식 정정: 김정관 장관의 다음 주 체코 방문 계획 없음; 언론 수정본은 서울 협의"
     }
   },
   "temelin_large_nuclear_model_version": 2,
