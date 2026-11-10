@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-11T03:04:43+09:00",
+  "updated_at_kst": "2026-11-11T08:40:07+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "00c1b5afae079534fa6aa588",
@@ -196,6 +196,7 @@
     "a6929e533932abf2c07f5238",
     "a72352cea720750a97e651b2",
     "aa0285bd4d722170d864937a",
+    "abbb78fba9f03297b168dcac",
     "ad831c0a9b75057895ffb73a",
     "adca27d662f4cb51e531edfd",
     "ae07224e9eb377b6607ba3d5",
@@ -321,13 +322,13 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1339.0,
-    "date": "2026-11-10 일일 기준 · ECB/Frankfurter · 조회 2026-11-11 03:04 KST · 보조 API 2026-11-10 · 차이 0.43% · 일중 기준시각 차이 가능",
+    "date": "2026-11-10 일일 기준 · ECB/Frankfurter · 조회 2026-11-11 08:40 KST · 보조 API 2026-11-10 · 차이 0.43% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -460,8 +461,8 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-11-11T03:04:57+09:00",
-    "candidate_count": 2,
+    "last_checked_at_kst": "2026-11-11T08:40:23+09:00",
+    "candidate_count": 6,
     "mlcc_vendor_watch": {
       "version": 2,
       "as_of": "2026-10-23",
@@ -526,7 +527,7 @@
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-11-11T03:06:20+09:00",
+    "checked_at_kst": "2026-11-11T08:41:13+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-09T21:52:51+09:00",
@@ -594,7 +595,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-11-11",
-    "last_checked_at_kst": "2026-11-11T03:05:48+09:00",
+    "last_checked_at_kst": "2026-11-11T08:40:59+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -653,7 +654,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-11-11T03:05:48+09:00",
+        "checked_at_kst": "2026-11-11T08:40:59+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -731,7 +732,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-11-11",
-    "last_checked_at_kst": "2026-11-11T03:06:13+09:00",
+    "last_checked_at_kst": "2026-11-11T08:41:05+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -775,7 +776,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-11-11T03:06:15+09:00",
+    "last_checked_at_kst": "2026-11-11T08:41:07+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -899,7 +900,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-11-11T03:06:15+09:00",
+      "checked_at_kst": "2026-11-11T08:41:07+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
