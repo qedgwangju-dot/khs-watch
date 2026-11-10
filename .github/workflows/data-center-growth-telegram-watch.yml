@@ -263,6 +263,57 @@ jobs:
           PY
 
 
+      - name: Test BAAJA federal cost-allocation and legislative-stage rules (no Telegram)
+        run: |
+          python -m py_compile scripts/us_data_center_cancellation_risk_watch.py
+          python - <<'PY'
+          import ast
+          import html
+          import re
+          from pathlib import Path
+
+          text = Path("scripts/us_data_center_cancellation_risk_watch.py").read_text(encoding="utf-8")
+          parsed = ast.parse(text)
+          pure_names = {
+              "normalize", "h", "a", "krw_from_usd",
+              "baaja_procedural_due", "baaja_later_stage",
+              "baaja_policy_regression_checks", "baaja_procedural_alert",
+          }
+          nodes = []
+          for node in parsed.body:
+              if isinstance(node, ast.Assign) and any(
+                  isinstance(t, ast.Name) and t.id.startswith("BAAJA_") for t in node.targets
+              ):
+                  nodes.append(node)
+              elif isinstance(node, ast.FunctionDef) and node.name in pure_names:
+                  nodes.append(node)
+          assert pure_names <= {node.name for node in nodes if isinstance(node, ast.FunctionDef)}
+          scope = {
+              "re": re, "html": html, "fx_source": "dry-run FX",
+              "fx_checked": "2026-11-10T00:00:00+00:00",
+          }
+          exec(compile(ast.Module(body=nodes, type_ignores=[]),
+                       "<baaja-policy-pure-test>", "exec"), scope)
+          scope["baaja_policy_regression_checks"]()
+          checks = {"senate_vote": True, "senate_sponsor": False,
+                    "cost_threshold": True, "rhodium_model": True}
+          rendered = scope["baaja_procedural_alert"](1338.58, checks)
+          mandatory = (
+              "절차표결", "본안 최종 가결 아님", "20MW", "100MW",
+              "73대25", "417대3", "57대43", "+88~102%",
+              "+10~11%", "1GW", "맥킨지", "원문",
+          )
+          missing = [key for key in mandatory if key not in rendered]
+          assert not missing, missing
+          assert rendered.count("<a href=") == rendered.count("</a>")
+          assert rendered.count("<b>") == rendered.count("</b>")
+          assert scope["baaja_later_stage"]("Senate advances BAAJA procedural 73-25") is None
+          assert scope["baaja_later_stage"]("Senate passes BAAJA final legislation") == "상원 본안 최종 의결 공식 발표"
+          assert text.index("run_inbound_diversion_extension()") < text.index("baaja_run_existing_risk_watch()")
+          assert "pending[\"baaja_permitting_policy\"] = state" in text
+          print("baaja_legislation_stage_cost_test=passed telegram_send=false")
+          PY
+
   monitor:
     outputs:
       telegram_send_outcome: ${{ steps.data_center_telegram_delivery.outcome }}
