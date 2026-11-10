@@ -1429,7 +1429,9 @@ def baaja_collect_future_official() -> tuple[list[dict], dict]:
                         "baaja", "s. 5653", "s.5653"
                     ))
                     date_ok = bool(re.search(
-                        r"november\s+(?:1[0-9]|2[0-9]|30),?\s+2026|2026[-/]11[-/](?:1[0-9]|2[0-9]|30)",
+                        r"(?:november\s+(?:1[0-9]|2[0-9]|30)|december\s+(?:[1-9]|[12][0-9]|3[01])),?\s+2026"
+                        r"|2026[-/](?:11[-/](?:1[0-9]|2[0-9]|30)|12[-/](?:0?[1-9]|[12][0-9]|3[01]))"
+                        r"|january\s+(?:[1-9]|[12][0-9]|3[01]),?\s+2027",
                         detail
                     ))
                     if not (name_ok and date_ok):
