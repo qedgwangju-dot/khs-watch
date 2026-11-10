@@ -1598,8 +1598,9 @@ def jet_turbine_primary_probe() -> dict:
     return out
 
 
-def jet_turbine_event_due(prev: dict, proof: dict, first: bool, fresh_fx: bool) -> bool:
-    today = dt.datetime.now(dt.timezone.utc).date()
+def jet_turbine_event_due(prev: dict, proof: dict, first: bool, fresh_fx: bool,
+                          today: dt.date | None = None) -> bool:
+    today = today or dt.datetime.now(dt.timezone.utc).date()
     age = (today - dt.date(2026, 11, 9)).days
     return bool(
         not first and fresh_fx and 0 <= age <= 14
