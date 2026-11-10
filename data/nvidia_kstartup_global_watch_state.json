@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-11-09T14:45:03+09:00",
-  "last_checked_kst": "2026-11-10T23:16:50+09:00",
+  "last_checked_kst": "2026-11-11T00:20:01+09:00",
   "seen": {
     "126be798477cbd897413b8c2": {
       "title": "국산 AI 반도체, 엔비디아 GPU와 연결…SKT·리벨리온 3자 협력 - MTN 머니투데이방송",
@@ -229,6 +229,18 @@
       "stage": 1,
       "tier": "신뢰보도",
       "first_seen_kst": "2026-11-10T08:36:44+09:00",
+      "suppressed_duplicate": "same_event"
+    },
+    "64d7f6a4e1ebc4048a80f164": {
+      "title": "엔비디아, 국내 벤처·스타트업 4곳 투자 깜짝 발표 - 서울경제",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5mWWVKaHo5NHhSenBXZU9OcnF0Ym9VS2doaDhZNU16LW9GMDllQnBvYXFIaldQRl9JREhVN3ZmNWRSYjNnek80bVZGRmlVdXdxaEHSAVNBVV95cUxPQ1kyR3h0WEp0MDdDeEdObklCTjdXNzJQZWRMcFEyLTNCdFpEZXE3SWpSWmtIT0dBNW9INnhHeEVxbGIxbmEzOTNkYmZFbG9tNER2SQ?oc=5",
+      "source": "서울경제",
+      "published_kst": "2026-11-10T10:01+09:00",
+      "event_id": "nvidia_korea|ecosystem_news|2026-11",
+      "kind": "ecosystem_news",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-11T00:20:01+09:00",
       "suppressed_duplicate": "same_event"
     }
   },
