@@ -56,7 +56,7 @@ TRUSTED_DOMAINS = (
     "eia.gov", "iea.org", "moodys.com", "reuters.com", "utilitydive.com",
     "datacenterdynamics.com", "energy-storage.news", "publicpower.org",
     "bloombergtax.com", "advisorperspectives.com", "morganstanley.com", "goldmansachs.com",
-    "hamiltonlane.com",
+    "hamiltonlane.com", "proenergyservices.com", "ftaiaviation.com", "crusoe.ai",
 )
 
 NEWS_QUERIES = (
@@ -403,6 +403,24 @@ _test_capacity_unit_guard()
 def is_meaningful(text: str, source: str) -> bool:
     low = text.lower()
     scale = extract_scale_mw(text)
+    # Publisher's own new turbine orders/deliveries can be material even if
+    # their title does not include MW (FTAI's initial order is USD-denominated).
+    official_jet_supplier = any(name in source.lower() for name in (
+        "ftai aviation", "proenergy", "crusoe",
+    ))
+    jet_product = any(key in low for key in (
+        "turbine", "pe6000", "cfm56", "mod-1", "gas generator", "generator set",
+    ))
+    confirmed_step = any(key in low for key in (
+        "purchase order", "signed contract", "secures contract", "contract awarded",
+        "supply agreement signed", "delivered", "shipment", "commissioned",
+        "installation complete", "commercial operations", "order received",
+    ))
+    speculation = any(key in low for key in (
+        "could", "may", "plans to", "proposes", "potential", "rumored",
+    ))
+    if official_jet_supplier and jet_product and confirmed_step and not speculation:
+        return True
     if "mood" in low and any(k in low for k in ("45 gw", "110 billion", "$110")):
         return True
     if "ge vernova" in low and any(k in low for k in ("gas turbine", "slot", "data center", "data centre")):
