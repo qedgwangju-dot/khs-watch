@@ -16,6 +16,7 @@ import os
 import pathlib
 import re
 import subprocess
+from time import sleep
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -135,8 +136,47 @@ def api(method, payload=None):
     return result['result']
 
 
+def read_only_telegram(method, payload=None):
+    """Retry only idempotent Telegram lookups, never sendMessage."""
+    if method not in ('getMe', 'getChat'):
+        raise ValueError('only read-only Telegram methods may be retried')
+    for attempt in range(3):
+        try:
+            return api(method, payload)
+        except RuntimeError as exc:
+            reason = str(exc)
+            transient = (reason.startswith('Telegram response uncertain')
+                         or reason in ('Telegram HTTP 429', 'Telegram HTTP 500',
+                                       'Telegram HTTP 502', 'Telegram HTTP 503',
+                                       'Telegram HTTP 504'))
+            if not transient or attempt == 2:
+                raise
+            sleep(attempt + 1)
+
+
+def recipient_matches(configured, chat):
+    """Compare the returned Telegram chat without logging private identifiers."""
+    destination = str(configured or '').strip()
+    if not destination or not isinstance(chat, dict):
+        return False
+    if destination.startswith('@'):
+        return destination[1:].casefold() == str(chat.get('username') or '').casefold()
+    return bool(re.fullmatch(r'-?\d+', destination)) and str(chat.get('id', '')) == destination
+
+
+def verify_rubin_recipient():
+    """Read-only check scoped to Rubin/lead-time; no extra Telegram message."""
+    destination = os.environ.get('TELEGRAM_CHAT_ID', '').strip()
+    if not destination:
+        raise RuntimeError('Rubin Telegram destination missing')
+    chat = read_only_telegram('getChat', {'chat_id': destination})
+    if not recipient_matches(destination, chat):
+        raise RuntimeError('Rubin Telegram recipient mismatch; delivery blocked')
+    print('telegram_rubin_recipient_match=true')
+
+
 def route_check():
-    identity = api('getMe')
+    identity = read_only_telegram('getMe')
     if identity.get('username', '').lower() != EXPECTED.lower():
         raise RuntimeError('unexpected Telegram bot; delivery blocked')
     if not os.environ.get('TELEGRAM_CHAT_ID', '').strip():
@@ -357,6 +397,8 @@ def resume_one(repo, path, state, send=api):
             or any(type(mid) is not int or mid <= 0 for mid in ids)
             or not isinstance(journal.get('candidate'), dict)):
         raise RuntimeError('invalid delivery journal; manual review required: ' + path)
+    if path == ROUTES['rubin'][0]:
+        verify_rubin_recipient()
     current = copy.deepcopy(state)
     for index in range(index_start, len(parts)):
         moving = copy.deepcopy(current)
@@ -371,6 +413,10 @@ def resume_one(repo, path, state, send=api):
             mid = result.get('message_id') if isinstance(result, dict) else None
             if type(mid) is not int or mid <= 0:
                 raise RuntimeError('Telegram acknowledgement lacks a usable positive message_id')
+            if path == ROUTES['rubin'][0]:
+                if not recipient_matches(os.environ.get('TELEGRAM_CHAT_ID'), result.get('chat')):
+                    raise RuntimeError('Rubin Telegram send recipient mismatch; state not promoted')
+                print('telegram_rubin_send_recipient_match=true')
         except Exception as exc:
             held = copy.deepcopy(current)
             held['_delivery']['status'] = 'uncertain'
@@ -386,6 +432,8 @@ def resume_one(repo, path, state, send=api):
     receipt = {'status': 'confirmed', 'bot_username': EXPECTED,
                'message_ids': current['_delivery']['message_ids'], 'confirmed_at_kst': now(),
                'payload_hash': digest(journal['chunks'])}
+    if path == ROUTES['rubin'][0]:
+        receipt['all_message_chat_ids_verified'] = index_start == 0
     final = promote(journal['candidate'], current)
     final['last_successful_delivery_kst'] = receipt['confirmed_at_kst']
     final['telegram_message_ids'] = receipt['message_ids']
@@ -462,6 +510,7 @@ def finish(name):
     if name == 'rubin':
         validate_rubin_hybrid_notification(text)
         validate_rubin_nvhbm_foundry_notification(text)
+        verify_rubin_recipient()
     guard({'state': candidate, 'text': text})
     receipt = transact(Repository(), path, before, candidate, text)
     write(OUT / (name + '_hbm_delivery_receipt.json'), receipt)

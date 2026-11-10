@@ -155,5 +155,57 @@ class RecoveryIsolationTests(unittest.TestCase):
             self.assertEqual(self.repo.states[self.path], state)
 
 
+class RubinRecipientGuardTests(unittest.TestCase):
+    def test_numeric_and_username_chat_match(self):
+        self.assertTrue(d.recipient_matches('-100123456', {'id': -100123456}))
+        self.assertTrue(d.recipient_matches('@ApprovedChannel', {'id': -10022, 'username': 'approvedchannel'}))
+        self.assertFalse(d.recipient_matches('-100123456', {'id': -100987654}))
+        self.assertFalse(d.recipient_matches('@ApprovedChannel', {'username': 'anotherchannel'}))
+        self.assertFalse(d.recipient_matches('123', {}))
+
+    def test_readonly_lookup_retries_transient_once_without_send(self):
+        with patch.object(d, 'api', side_effect=[
+            RuntimeError('Telegram response uncertain; automatic retry blocked'),
+            {'username': d.EXPECTED}
+        ]) as request, patch.object(d, 'sleep') as sleeping:
+            self.assertEqual(d.read_only_telegram('getMe')['username'], d.EXPECTED)
+        self.assertEqual(request.call_count, 2)
+        sleeping.assert_called_once_with(1)
+        with self.assertRaises(ValueError):
+            d.read_only_telegram('sendMessage')
+
+    def test_destination_check_does_not_send(self):
+        with patch.dict(d.os.environ, {'TELEGRAM_CHAT_ID': '1234'}):
+            with patch.object(d, 'read_only_telegram', return_value={'id': 1234}) as request:
+                d.verify_rubin_recipient()
+                request.assert_called_once_with('getChat', {'chat_id': '1234'})
+            with patch.object(d, 'read_only_telegram', return_value={'id': 9999}):
+                with self.assertRaisesRegex(RuntimeError, 'recipient mismatch'):
+                    d.verify_rubin_recipient()
+
+    def test_rubin_ack_chat_mismatch_holds_delivery_and_keeps_previous_state(self):
+        repo = FakeRepository()
+        path = d.ROUTES['rubin'][0]
+        before = copy.deepcopy(repo.states[path])
+        with patch.dict(d.os.environ, {'TELEGRAM_CHAT_ID': '1234'}), patch.object(d, 'verify_rubin_recipient'):
+            with self.assertRaisesRegex(RuntimeError, 'delivery not acknowledged'):
+                d.transact(repo, path, before, {'value': 2}, 'notice',
+                           lambda *_: {'message_id': 388, 'chat': {'id': 9999}})
+        self.assertEqual(repo.states[path]['value'], 1)
+        self.assertEqual(repo.states[path]['_delivery']['status'], 'uncertain')
+
+    def test_rubin_ack_chat_match_promotes_once_without_exposing_id(self):
+        repo = FakeRepository()
+        path = d.ROUTES['rubin'][0]
+        before = copy.deepcopy(repo.states[path])
+        with patch.dict(d.os.environ, {'TELEGRAM_CHAT_ID': '1234'}), patch.object(d, 'verify_rubin_recipient'):
+            receipt = d.transact(repo, path, before, {'value': 2}, 'notice',
+                                 lambda *_: {'message_id': 388, 'chat': {'id': 1234}})
+        self.assertEqual(repo.states[path]['value'], 2)
+        self.assertEqual(repo.states[path]['telegram_message_id'], 388)
+        self.assertTrue(receipt['all_message_chat_ids_verified'])
+        self.assertNotIn('chat_id', receipt)
+
+
 if __name__ == '__main__':
     unittest.main()
