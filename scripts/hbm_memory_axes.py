@@ -25,6 +25,7 @@ FOPLP_TRACK_VERSION = 1
 HBF_TRACK_VERSION = 1
 NVIDIA_HBM4_8HI_TRACK_VERSION = 1
 HYNIX_FINANCE_VERSION = 1
+HBM_CYCLE_SIGNAL_VERSION = 1
 HYNIX_Q3_2026_URL = 'https://news.skhynix.com/en/q3-2026-business-results/'
 HYNIX_FAB_SHELL_PRESS_URLS = ('https://biz.sbs.co.kr/amp/article/20000342599', 'https://www.fnnews.com/news/202610281007175460', 'https://biz.chosun.com/en/en-it/2026/10/28/ST4EGUUSHBAMVPE26CMFOHP7HA/?outputType=amp', 'https://stockanalysis.com/quote/krx/000660/transcripts/717350-q3-2026/', 'https://www.news1.kr/industry/general-industry/6334489')
 HYNIX_Y2_M17_OFFICIAL_PLAN = 'https://news.skhynix.com/en/fab-facility-investment-2026/'
@@ -44,6 +45,11 @@ BERNSTEIN_PAIR_PAGES = (
 HBM_GENERATION_PRICE_TRACK_VERSION = 1
 MARKET_PRICING_TRACK_VERSION = 1
 EXTRA_QUERIES = [
+    'TrendForce server DRAM DDR5 contract price QoQ revision 2027 actual',
+    '서버 D램 DDR5 고정거래 계약가격 전분기 상승 하락 실제',
+    'HBM4 HBM4E long term supply agreement renewal repricing Samsung SK hynix Micron',
+    'HBM 장기공급계약 재협상 재계약 가격 조건 삼성전자 SK하이닉스 마이크론',
+    'DRAM HBM fab utilization M15X P4 P5 Micron equipment move-in ramp actual',
     '(HBM4 OR HBM4E) (24Gb OR 32Gb OR 36GB OR 48GB OR 적층 OR 용량)',
     'DDR5 RDIMM (premium OR spot OR contract OR 현물 OR 고정거래)',
     '(HBM OR DDR5) (wafer OR 웨이퍼 OR "glass carrier" OR 글라스 캐리어 OR P5) (allocation OR 비중 OR 세정 OR 가동)',
@@ -232,6 +238,16 @@ def local_period(text, published):
 
 
 def is_axis_text(text):
+    low = text.lower()
+    if (re.search(r'server\s*(?:ddr5|dram)|서버\s*(?:ddr5|dram|d램|디램)', low, re.I)
+            and re.search(r'contract\s*price|contract\s*asp|계약\s*가격|계약가|고정거래\s*가격|고정거래가격', low, re.I)):
+        return True
+    if (re.search(r'\bhbm(?:3e|4e?)?\b', low, re.I)
+            and re.search(r'재계약|재협상|계약\s*갱신|가격\s*재조정|renewal|renegotiat|repric', low, re.I)):
+        return True
+    if (re.search(r'dram|d램|디램|hbm', low, re.I)
+            and re.search(r'가동률|설비\s*반입|장비\s*반입|풀가동|utilization|tool\s*move.in|equipment\s*installation|production\s*ramp|ramp.up', low, re.I)):
+        return True
     if re.search(r'SK\s*hynix|SK\s*하이닉스|하이닉스',text,re.I) and re.search(
           r'\bLTA\b|장기\s*공급\s*계약|\bM15X\b|2029.{0,55}완판',text,re.I):
         return True
@@ -2024,6 +2040,101 @@ def parse_skhynix_fab_shell_2026(item, body):
     return [row]
 
 
+
+def parse_hbm_cycle_signals(item, body):
+    """Three strict, company/period-scoped signals for existing HBM Telegram delivery.
+
+    Do not promote forecasts, negotiations, wafer-shell construction or generic
+    market estimates into actual contract prices, signed terms or physical output.
+    A new article repeating the same value is not a new signal.
+    """
+    published = str(item.get('published_at_kst') or '')[:10]
+    if not re.fullmatch(r'20\d{2}-\d{2}-\d{2}', published):
+        return []
+    title = str(item.get('title') or '')
+    paragraphs = [re.sub(r'\s+', ' ', t).strip() for t in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body or '')]
+    records = {}
+    companies = {
+        'samsung': r'삼성전자|Samsung(?:\s+Electronics)?',
+        'skhynix': r'SK\s*하이닉스|SK\s*hynix',
+        'micron': r'마이크론|Micron',
+    }
+    title_owners = [k for k, pat in companies.items() if re.search(pat, title, re.I)]
+    future = r'전망|예상|계획|목표|추정|검토|향후|될\s*것|예정|forecast|expected|expects|projected|plans?\s+to|aims?\s+to|would|could|may\s+'
+    for p in paragraphs:
+        if len(p) > 1700 or len(p) < 28:
+            continue
+        low = p.lower()
+        owners = [k for k, pat in companies.items() if re.search(pat, p, re.I)]
+        owner = owners[0] if len(owners) == 1 else (title_owners[0] if len(title_owners) == 1 and not owners else '')
+        forecast = bool(re.search(future, p, re.I))
+        year_match = re.search(r'(?<!\d)(20\d{2})\s*(?:년)?\s*(?:[Qq]([1-4])|([1-4])분기)', p)
+        quarter_match = re.search(r'(?<!\d)([1-4])\s*[Qq]\s*(20\d{2})', p)
+        target_period = (f'{year_match[1]}Q{year_match[2] or year_match[3]}' if year_match else
+                         f'{quarter_match[2]}Q{quarter_match[1]}' if quarter_match else
+                         local_period(p, item.get('published_at_kst', '')) or published[:7])
+        if (re.search(r'server\s*(?:DDR5|DRAM)|서버\s*(?:DDR5|D램|DRAM|디램)', p, re.I)
+                and re.search(r'contract\s*prices?|contract\s*ASP|고정거래\s*가격|고정거래가격|계약\s*가격|계약가', p, re.I)
+                and re.search(r'QoQ|quarter.on.quarter|전분기|전\s*분기|분기\s*대비', p, re.I)):
+            # Only a single unambiguous percent in this sentence; 10-15% ranges
+            # or multiple figures require the original price table.
+            pct = re.findall(r'(?<!\w)([+-]?\d{1,3}(?:\.\d+)?)\s*%', p)
+            if len(pct) == 1 and re.search(r'상승|인상|증가|하락|인하|감소|rise|rose|increase|up|fall|fell|decline|down|drop', p, re.I):
+                delta = float(pct[0])
+                if re.search(r'하락|인하|감소|fall|fell|decline|down|drop', p, re.I):
+                    delta = -abs(delta)
+                elif re.search(r'상승|인상|증가|rise|rose|increase|up', p, re.I):
+                    delta = abs(delta)
+                if abs(delta) <= 100:
+                    stage = 'forecast' if forecast else 'reported_change'
+                    r = make_record(
+                        'cycle_server_dram_price', ['industry', 'server_DDR5' if 'ddr5' in low else 'server_DRAM', stage],
+                        {'qoq_change_pct': delta, 'target_period': target_period, 'stage': stage},
+                        'pct_QoQ', target_period, item, p, as_of=published,
+                        scope='server_contract_price_not_HBM_not_spot_or_single_vendor')
+                    records[r['key']] = r
+        if owner and re.search(r'\bHBM(?:3E|4E?)?\b', p, re.I) and re.search(
+                r'재계약|재협상|계약\s*갱신|가격\s*재조정|renewal|renegotiat|repric', p, re.I):
+            product = (re.search(r'\bHBM(?:4E|4|3E)\b', p, re.I) or [None])[0]
+            product = product.upper() if product else 'HBM'
+            confirmed = bool(re.search(r'체결|합의\s*완료|서명|확정|completed|finalized|signed|concluded', p, re.I))
+            terminated = bool(re.search(r'파기|해지|취소|cancelled|terminated', p, re.I))
+            stage = 'terminated' if terminated else ('signed' if confirmed and not forecast else 'negotiation')
+            v = {'stage': stage, 'target_period': target_period, 'price_change_pct': None,
+                 'buyer_named': None, 'signed_customer_count': None}
+            r = make_record('cycle_hbm_renewal', [owner, product], v, 'contract_stage',
+                            target_period, item, p, as_of=published,
+                            scope='signed_vs_negotiating_HBM_contract_no_inferred_volume_or_price')
+            previous = records.get(r['key'])
+            rank = {'negotiation': 0, 'signed': 1, 'terminated': 2}
+            if previous is None or rank[stage] > rank[previous['value']['stage']]:
+                records[r['key']] = r
+        if owner and re.search(r'\bDRAM\b|D램|디램|\bHBM(?:4E|4|3E)?\b', p, re.I) and re.search(
+                r'가동률|설비\s*반입|장비\s*반입|풀가동|utilization|'
+                r'equipment\s*move.in|equipment\s*installation|production\s*ramp|ramp.up|full\s*capacity',
+                p, re.I):
+            fab = re.search(r'\b(?:M15X|M17|P4|P5|Y1|Y2|Fab\s*\d+)\b', p, re.I)
+            util = re.search(r'(?:가동률|utilization(?:\s+rate)?)[^%.\n]{0,55}?(\d{1,3}(?:\.\d+)?)\s*%', p, re.I)
+            if not fab and not util:
+                continue
+            reached = bool(re.search(r'달성|도달|가동\s*시작|가동\s*개시|반입\s*완료|설치\s*완료|'
+                                     r'has\s+reached|reached|achieved|began\s+production|'
+                                     r'started\s+production|completed\s+installation|installed\s+equipment', p, re.I))
+            stage = 'in_operation' if (reached and not forecast) or (util and not forecast) else 'planned'
+            value = {'stage': stage, 'utilization_pct': float(util[1]) if util else None,
+                     'fab': fab[0].upper().replace(' ', '') if fab else 'company_total',
+                     'target_period': target_period}
+            if value['utilization_pct'] is not None and not 0 <= value['utilization_pct'] <= 100:
+                continue
+            r = make_record('cycle_memory_utilization', [owner, value['fab']], value,
+                            'pct_or_stage', target_period, item, p, as_of=published,
+                            scope='actual_utilization_separate_from_planned_shell_or_WSPM')
+            old = records.get(r['key'])
+            if old is None or (old['value']['stage'] == 'planned' and stage == 'in_operation'):
+                records[r['key']] = r
+    return list(records.values())
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -2047,6 +2158,7 @@ def parse_records(item, body):
     records.extend(parse_skhynix_q3_2026_official(item, body))
     records.extend(parse_skhynix_2029_earnings_call_news(item, body))
     records.extend(parse_skhynix_fab_shell_2026(item, body))
+    records.extend(parse_hbm_cycle_signals(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
         p = resolve_relative_years(original, published)
@@ -2179,6 +2291,25 @@ def public_spot_quotes(raw, checked):
 
 
 def comparison(old, new):
+    if new['axis'] in ('cycle_server_dram_price', 'cycle_hbm_renewal', 'cycle_memory_utilization'):
+        a, b = old['value'], new['value']
+        if new['axis'] == 'cycle_server_dram_price':
+            av, bv = a.get('qoq_change_pct'), b.get('qoq_change_pct')
+            if av is None or bv is None:
+                return []
+            changed = abs(float(bv) - float(av)) >= 3.0
+            shifted = a.get('target_period') != b.get('target_period')
+            return [f"서버 D램 계약가격 전분기 대비 전망·관측 {float(av):+.1f}%→{float(bv):+.1f}%"] if changed or shifted else []
+        if new['axis'] == 'cycle_hbm_renewal':
+            stages = {'negotiation': 0, 'signed': 2, 'terminated': 3}
+            before, after = a.get('stage', 'negotiation'), b.get('stage', 'negotiation')
+            return [f"HBM 재계약 단계 {before}→{after}"] if before != after else []
+        before, after = a.get('stage'), b.get('stage')
+        reasons = [f"가동 단계 {before}→{after}"] if before != after else []
+        av, bv = a.get('utilization_pct'), b.get('utilization_pct')
+        if bv is not None and (av is None or abs(float(bv) - float(av)) >= 5):
+            reasons.append(f"실제 가동률 {av if av is not None else '미공개'}→{float(bv):.1f}%")
+        return reasons
     a, b = old['value'], new['value']
     if new['axis'] == 'hbm_market_pricing':
         reasons = []
@@ -2838,6 +2969,17 @@ def update_state(state, records, now, seeds=None):
             state['pending'].pop(key, None)
             continue
         reasons = comparison(old, r) if old else ['새 비교 가능한 상태']
+        if not old and r['axis'] in ('cycle_server_dram_price', 'cycle_hbm_renewal', 'cycle_memory_utilization'):
+            v = r['value']
+            material_first = (
+                (r['axis'] == 'cycle_server_dram_price' and v.get('stage') == 'reported_change')
+                or (r['axis'] == 'cycle_hbm_renewal' and v.get('stage') in ('signed', 'terminated'))
+                or (r['axis'] == 'cycle_memory_utilization' and v.get('stage') == 'in_operation')
+            )
+            if not material_first:
+                state['last_notified'][key] = r
+                state['pending'].pop(key, None)
+                continue
         if old and r['value'] == old['value'] and RANK.get(r['evidence'], 0) > RANK.get(old['evidence'], 0):
             reasons.append('근거 등급 상향')
         fresh = r['as_of'] >= (now - timedelta(days=14)).date().isoformat()
@@ -2852,6 +2994,25 @@ def update_state(state, records, now, seeds=None):
 
 
 def render(change, rate=None):
+    r = change['record']
+    if r['axis'] in ('cycle_server_dram_price', 'cycle_hbm_renewal', 'cycle_memory_utilization'):
+        v = r['value']
+        if r['axis'] == 'cycle_server_dram_price':
+            title = '서버 D램 계약가격 변경'
+            summary = f"대상 {v.get('target_period')} / 전분기 대비 {v.get('qoq_change_pct'):+.1f}% / {'증권사·기관 전망' if v.get('stage') == 'forecast' else '보도된 가격 변동'}"
+        elif r['axis'] == 'cycle_hbm_renewal':
+            title = 'HBM 장기계약 재계약 단계 변경'
+            summary = f"대상 {r['key'].split('|')[-2:]} / {v.get('stage')} / 가격·물량·고객 실명은 별도 검증"
+        else:
+            title = 'DRAM·HBM 실제 생산시설 가동 변화'
+            level = f"{v['utilization_pct']:.1f}%" if v.get('utilization_pct') is not None else '수치 미공개'
+            summary = f"공장 {v.get('fab')} / 단계 {v.get('stage')} / 실제 가동률 {level}"
+        return (f"<b>{html.escape(title)}</b>\n"
+                f"• 현재: {html.escape(summary)}\n"
+                f"• 변화: {html.escape(' / '.join(change['reasons']))}\n"
+                f"• 주의: 신규 기사 제목만으로 계약 체결·양산·판매단가를 확정하지 않음; 분기·제품·확정/전망 구분\n"
+                f"• 기준일 {html.escape(r['as_of'])} · "
+                f"<a href=\"{html.escape(r['source_url'],quote=True)}\">근거 원문</a>")
     r, old = change['record'], change.get('old')
     if r['axis']=='skhynix_fab_shell_2026':
         v=r['value']
