@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-11-10T10:47:47+09:00",
+  "updated_at_kst": "2026-11-10T15:35:56+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -1897,7 +1897,7 @@
         "value": 60.167,
         "unit": "USD/chip",
         "period": "2026-11",
-        "as_of": "2026-11-09",
+        "as_of": "2026-11-10",
         "evidence": "research",
         "source_url": "https://www.dramexchange.com/",
         "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
@@ -2977,7 +2977,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-11-10T10:47:47+09:00",
+      "last_checked_at_kst": "2026-11-10T15:35:56+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -3053,7 +3053,7 @@
     "payload_hash": "e6e00868379df47dd52648e00b5e3d18940a93ab5b1fdce0223e0b7771753bd3"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-10T10:48:55+09:00",
+    "checked_at_kst": "2026-11-10T15:36:53+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
@@ -3148,12 +3148,12 @@
     "classes": [
       "월별 기간 검증 보류"
     ],
-    "last_checked_at_kst": "2026-11-10T10:48:52+09:00",
+    "last_checked_at_kst": "2026-11-10T15:36:50+09:00",
     "first_seen_at_kst": "2026-11-02T03:45:25+09:00"
   },
   "official_source_health_version": 4,
   "official_poll_interval_hours": 1,
-  "last_official_poll_attempt_kst": "2026-11-10T10:48:46+09:00",
+  "last_official_poll_attempt_kst": "2026-11-10T15:36:45+09:00",
   "official_availability_notes": [],
   "optional_source_errors": [
     "이천 202609 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
