@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-10T04:20:02.316986+00:00",
+  "updated_at": "2026-11-10T09:42:16.394404+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -870,28 +870,19 @@
     "b26f57dcc97200fbc8158f176465d76cc2f73a3abd45876c07bd1926d9b23abb",
     "a6fb15e94a9766574e6aa996a06c01ffbad6931bc80673f87f0341e1b1a3340a",
     "b6760bf1e0b65f4142c616de4fda4738668dec1fcb949cc28b58b8fa30437212",
-    "143da04ad3a0840f9c0a847d9cc3e66f82bfde8ee4602386f0b23c01e2071063"
+    "143da04ad3a0840f9c0a847d9cc3e66f82bfde8ee4602386f0b23c01e2071063",
+    "f4c0c9e758e27524728505e173e5784695d1a502d02afb889f6acbf21fc817c7"
   ],
   "last_selected": [
-    "b6760bf1e0b65f4142c616de4fda4738668dec1fcb949cc28b58b8fa30437212",
-    "143da04ad3a0840f9c0a847d9cc3e66f82bfde8ee4602386f0b23c01e2071063"
+    "f4c0c9e758e27524728505e173e5784695d1a502d02afb889f6acbf21fc817c7"
   ],
   "groups": [
     "ess_battery",
-    "humanoid_component_policy",
+    "ev_46_series",
     "lg_factory_loop",
     "robotis_excess_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 42364856591,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-07T10:39:27.246026+00:00"
-    },
     {
       "run_id": 42390998195,
       "outcome": "normal_silence",
@@ -1104,13 +1095,28 @@
         false
       ],
       "state_timestamp_utc": "2026-11-10T04:20:02.316986+00:00"
+    },
+    {
+      "run_id": 42792887675,
+      "outcome": "sent",
+      "message_ids": [
+        346
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-10T09:42:16.394404+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 42755147141,
+    "run_id": 42792887675,
     "outcome": "sent",
     "message_ids": [
-      345
+      346
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1119,6 +1125,6 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-10T04:20:02.316986+00:00"
+    "state_timestamp_utc": "2026-11-10T09:42:16.394404+00:00"
   }
 }
