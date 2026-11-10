@@ -2,28 +2,22 @@
   "correction_pending": false,
   "evidence": [
     {
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNbWowMXpkQk9hWTlNWmc2djFNZjBoM05oZVJ1QVdRRzZKY21qUlllbVRkekNncTk0eWlwSmpfYVZrTFJsZU4wUHdsSnFYUWVSX05xRHptX1BmYi1RR3lGcGZQdkh0YU5vUVVJZHhiUFJBeGdGcjVpQmN0Z3p4eDVQR3hhanFmcmFTQnJzTVU0SjM4VE1G?oc=5",
-      "published_utc": "2026-11-06T20:00:00+00:00",
-      "source": "Google News RSS",
-      "title": "Samsung Wallet launches new stablecoin accounts for Galaxy devices - Yahoo Finance"
-    },
-    {
       "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1rajduZWZabUtBRVJveVo3aWtZTWVCYXV2Y1dkbmk5Y1IyUi1zZjFnRjZ3NnhnWEQwMWdNUUphcC1VRC1SRTFEekhFaVRaSUlBVjJOaUtEdG9vYm9CaVpsSjlzOTZneW5SQmUzZk5wdGJLOHVkMFpteA?oc=5",
       "published_utc": "2026-11-05T13:01:02+00:00",
       "source": "Google News RSS",
       "title": "Stablecoins Go Mainstream as Samsung Wallet Adds USDC on Solana - Decrypt"
     },
     {
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNbWowMXpkQk9hWTlNWmc2djFNZjBoM05oZVJ1QVdRRzZKY21qUlllbVRkekNncTk0eWlwSmpfYVZrTFJsZU4wUHdsSnFYUWVSX05xRHptX1BmYi1RR3lGcGZQdkh0YU5vUVVJZHhiUFJBeGdGcjVpQmN0Z3p4eDVQR3hhanFmcmFTQnJzTVU0SjM4VE1G?oc=5",
+      "published_utc": "2026-11-06T20:00:00+00:00",
+      "source": "Google News RSS",
+      "title": "Samsung Wallet launches new stablecoin accounts for Galaxy devices - Yahoo Finance"
+    },
+    {
       "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOalpNRXFYTzNPbVhESWs5MTJRZjBsaEppeFRGcmtzQ19RRVk3MUw0ZlNYbXg1alhUWUdCZzIyZzRQWVZJVURkWFlQVG1wMWFFUXBWX3JqR0UxSmVHc3RZdUdIMWFzbGVmTnR6ekVSLVU5M1Y3bEFwenlKaEZ5cUl5MG9GdGU0MlBhVXdSYTdvYUZWN2pURUNxRXdiWWk?oc=5",
       "published_utc": "2026-11-06T10:05:00+00:00",
       "source": "Google News RSS",
       "title": "Stripe’s Crypto Onramp Enables Stablecoin Purchases in Samsung Wallet - Small Business Trends"
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQbGp2dVYxOVdIbHZZUzJNcEdPYzF1OXQzTGVYLTNLZkctSmdvZmFDRG45My14VDJndnNNMTU0RmZ1a092c1NkcFI2aklleG5CR0IyR2N1S19UMmRxSjVBUEVUc0kyQmN0XzVCbktoRk1kMDg3SUNTWk5rN0VSQUp0Qm1Mdm40VlhZVEhSb1NWQWk?oc=5",
-      "published_utc": "2026-11-05T07:09:00+00:00",
-      "source": "Google News RSS",
-      "title": "Samsung Wallet could support Korean won stablecoins, executive says - Crypto News"
     },
     {
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQVkhCaEpvT1VlU0VmbFllOTBzMFptVzl1V0V5MTBjempMNndreXVRdUJpNFFrYW9heW40ZUtLRTNjWDhvNmdXSjhvWGVNaXlJbDg4NF9nMlpzYjUtZVo5eEotQmxmbkVaR0JYM0JmYUg0TU9uSTgxQ0g0MmZHVXJLRVIxN21nS3JtM0tuUjEwNVp0RzY5dGZmSk1n?oc=5",
@@ -48,6 +42,12 @@
       "published_utc": "2026-11-06T14:27:00+00:00",
       "source": "Google News RSS",
       "title": "Stablecoin News: Samsung Wallet Officially Activates USDC Payments - The Coin Republic"
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBCVXZQY2Q3VF9YVmNmWVFRU01tR3dPWDFORkdUTTVTeVdhcHJkZThvU21ZQWZmZlpsRWFnaFFkSnZKOTBtaXhkTEtqaGVNWjg3ajZpdE9weGpmMmRfUTJmRmp1Y09PZ2xwdFgzT1hlZkhBWW1yQ3c?oc=5",
+      "published_utc": "2026-11-06T01:28:08+00:00",
+      "source": "Google News RSS",
+      "title": "Samsung Wallet Adds USDC: Stablecoin Payments Go Mainstream - OneSafe"
     }
   ],
   "official": {
@@ -55,7 +55,6 @@
     "bastion_partner_primary": false,
     "errors": [
       "wallet_patent_us: HTTP Error 403: Forbidden",
-      "wallet_patent_us_crosscheck: The read operation timed out",
       "bastion_partner_primary: HTTP Error 403: Forbidden"
     ],
     "explicit_reversal_confirmed": false,
@@ -99,5 +98,5 @@
     "wallet_patent_publication": "US20260212355A1",
     "wallet_patent_publication_date": "2026-07-23"
   },
-  "updated_at_kst": "2026-11-10T11:50:24+09:00"
+  "updated_at_kst": "2026-11-10T19:32:33+09:00"
 }
