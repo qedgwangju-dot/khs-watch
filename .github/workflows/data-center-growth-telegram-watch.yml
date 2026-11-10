@@ -364,11 +364,11 @@ jobs:
           scope["jet_turbine_regression_checks"]()
           proof = {"proenergy_crusoe": True, "ftai_jf_order": True,
                    "ftai_engine_conversion": True, "gev_q3": True, "epa_standards": True}
-          assert scope["jet_turbine_event_due"]({}, proof, False, True)
+          assert scope["jet_turbine_event_due"]({}, proof, False, True, dt.date(2026, 11, 10))
           assert not scope["jet_turbine_event_due"](
-              {"delivered_event_id": scope["JET_TURBINE_EVENT"]}, proof, False, True)
-          assert not scope["jet_turbine_event_due"]({}, {"proenergy_crusoe": True}, False, True)
-          assert not scope["jet_turbine_event_due"]({}, proof, False, False)
+              {"delivered_event_id": scope["JET_TURBINE_EVENT"]}, proof, False, True, dt.date(2026, 11, 10))
+          assert not scope["jet_turbine_event_due"]({}, {"proenergy_crusoe": True}, False, True, dt.date(2026, 11, 10))
+          assert not scope["jet_turbine_event_due"]({}, proof, False, False, dt.date(2026, 11, 10))
           report = scope["jet_turbine_alert_text"](proof)
           required = ("6년", "650MW", "PE6000", "14억6,500만달러",
                       "FTAI", "1,250만달러", "116GW", "122GW", "EPA",
