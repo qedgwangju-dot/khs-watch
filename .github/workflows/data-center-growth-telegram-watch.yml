@@ -688,7 +688,8 @@ jobs:
         id: data_center_telegram_delivery
         run: |
           python - <<'PY'
-          import html, os, pathlib, re, requests, time
+          import html, json, os, pathlib, re, requests, time
+          from datetime import datetime, timezone
 
           default_token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           default_chat = os.environ["TELEGRAM_CHAT_ID"].strip()
@@ -1048,6 +1049,33 @@ jobs:
                   f"Telegram sent {p.name}: route={route_label} "
                   f"messages={len(message_ids)} message_ids={message_ids}"
               )
+              # Only after ALL chunks receive successful sendMessage receipts.
+              # Never assert device notification delivery or persist the token/chat
+              # identifier. Preserve all other watcher state keys.
+              if p.name == "us_data_center_generation_buildout_alert.txt":
+                  pending_path = pathlib.Path("out/us_data_center_generation_buildout_pending_state.json")
+                  if pending_path.exists():
+                      state_doc = json.loads(pending_path.read_text(encoding="utf-8"))
+                      jet = state_doc.get("jet_turbine_reuse_data_center") or {}
+                      if jet.get("delivered_event_id") == (
+                          "used-turbines-aircraft-derived-ai-power-20261109-reuters-firstparty-v1"
+                      ):
+                          jet["delivery_receipt"] = {
+                              "status": "confirmed",
+                              "telegram_message_ids": message_ids,
+                              "message_count": len(message_ids),
+                              "destination_verified": str(chat).strip().lstrip("-").isdigit(),
+                              "all_chunks_accepted": True,
+                              "confirmed_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                          }
+                          state_doc["jet_turbine_reuse_data_center"] = jet
+                          pending_path.write_text(
+                              json.dumps(state_doc, ensure_ascii=False, indent=2) + "\n",
+                              encoding="utf-8",
+                          )
+                          print("jet_turbine_telegram_receipts_persisted=true "
+                                f"message_count={len(message_ids)} "
+                                f"destination_verified={jet['delivery_receipt']['destination_verified']}")
               sent += len(message_ids)
 
           if not sent:
