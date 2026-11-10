@@ -34,6 +34,39 @@ def kind(category,title):
     if category=="spacex_valuation":
         if TARGET.search(t) or BROKER.search(t):return "analyst"
         return "space_technology"
+    if category=="moon_base_clps":
+        if not re.search(r"nasa|clps|moon base|lunar|달 기지|달 수송|달 화물",t):return "unrelated"
+        # Baseline selections/contract ceilings create eligibility, not sales.
+        if re.search(r"clps.?2|commercial lunar payload services",t) and re.search(
+            r"eight|8 companies|8 firms|selected|10 billion|contract ceiling|8개사|8곳|계약 한도",t
+        ):return "framework_selection"
+        if re.search(r"26억|42억|2[.]6 billion|4[.]2 billion|clps.?1",t):return "framework_selection"
+        if re.search(r"cancel|terminate|rescind|해지|취소|철회",t):return "cancellation_report"
+        if re.search(r"task order|mission award|award.{0,45}(mission|contract)|contract.{0,45}award|"
+                     r"new clps|delivery mission|purchase order|lunar lander order|임무 수주|개별 발주|"
+                     r"계약 체결|신규 수주",t):return "task_order_report"
+        return "unrelated"
+    if category=="starlink_optical":
+        if not re.search(r"starlink|spacex|스타링크|스페이스x",t):return "unrelated"
+        if not re.search(r"v4|version.?4|laser|optical|subsea|undersea|해저케이블|레이저",t):return "unrelated"
+        if re.search(r"first.{0,25}(v4|version.?4).{0,30}(launch|deploy)|"
+                     r"(v4|version.?4).{0,45}(launched|deployed|in orbit)|"
+                     r"(v4|version.?4).{0,25}(발사 성공|궤도 배치)",t):return "deployment_report"
+        if re.search(r"fcc.{0,45}(grant|approv|authoriz)|(?:grant|approv|authoriz).{0,45}fcc|"
+                     r"fcc.{0,45}승인",t) and not re.search(r"to approve|may approve|seeks|filed|신청|요청",t):
+            return "fcc_approval_report"
+        if re.search(r"filed|application|seeks|requested|fcc filing|신청|심사 요청",t):return "fcc_application"
+        if re.search(r"(demonstrat|test).{0,55}(10\s*tb|laser|optical)|"
+                     r"(10\s*tb|laser|optical).{0,55}(demonstrat|achiev|tested)|"
+                     r"레이저.*(시험 성공|검증 완료)",t) and not re.search(r"plan|target|could|will|예정|목표",t):
+            return "verified_test_report"
+        if re.search(r"sign(?:s|ed)?.{0,45}(contract|agreement)|contract award|"
+                     r"commercial deal|공급계약 체결|수주 확정",t) and re.search(r"subsea|undersea|optical|laser|해저|광통신",t):
+            return "commercial_contract_report"
+        if re.search(r"publishes?.{0,50}(spec|design)|unveils?.{0,40}(spec|design)|"
+                     r"confirmed specifications|최종 사양 확정|설계 사양 발표",t):return "specification_report"
+        # The 2026-11-06 10-versus-100 laser remark is a design ambition.
+        return "projection_only"
     if category=="golden_dome":
         if not re.search(r"golden dome|골든돔",t) or not re.search(r"google|alphabet|구글|알파벳|aalyria|알리리아",t):
             return "unrelated"
@@ -57,6 +90,9 @@ def eligible(category,item,now):
     if not -dt.timedelta(minutes=20)<=age<=window:
         return False
     if category=="golden_dome" and kind(category,title)=="unrelated":return False
+    if category in {"moon_base_clps","starlink_optical"} and kind(category,title) in {
+        "unrelated","framework_selection","projection_only"
+    }:return False
     if category=="rocketlab":
         if kind(category,title) in ("development_delay","analyst"):return False
         if not re.search(r"rocket lab|electron|neutron|synspective",title,re.I):return False
@@ -71,6 +107,14 @@ def semantic_pair(category,a,b):
     ta,tb=str(a.get("title") or ""),str(b.get("title") or "")
     if NOISE.search(ta) or NOISE.search(tb):return False
     if kind(category,ta)!=kind(category,tb):return False
+    if category=="moon_base_clps":
+        # Two unrelated Moon Base missions must not corroborate one another.
+        tokens=("promise","minicast","cislunar communications","blue ghost",
+                "griffin","redwire","firefly","voyager","intuitive machines")
+        pa={s for s in tokens if s in ta.lower()}
+        pb={s for s in tokens if s in tb.lower()}
+        if pa or pb:
+            if not (pa&pb):return False
     if category=="golden_dome":
         # Different publishers may relay the same Bloomberg scoop; evidence
         # remains one initial source until a company/DoD notice independently confirms it.
@@ -100,6 +144,17 @@ def semantic_id(category,item):
         # Preserve 2027 dedup identity, but do not suppress a future 2028 slip.
         years=re.findall(r"\b20\d{2}\b",item["title"])
         return "semantic:rocketlab:neutron:first_flight_shift_"+(years[-1] if years else "undated")
+    if category in {"moon_base_clps","starlink_optical"}:
+        # Same stage and project must keep one key across republished articles.
+        label="moon" if category=="moon_base_clps" else "optical"
+        for term,key in (
+            ("promise","promise"),("minicast","minicast"),("cislunar","cislunar"),
+            ("redwire","redwire"),("firefly","firefly"),("voyager","voyager"),
+            ("v4","v4"),("version 4","v4"),("100,000","100k"),
+            ("subsea","subsea"),("undersea","subsea"),
+        ):
+            if term in item["title"].lower():
+                return "semantic:"+label+":"+key+":"+event+":"+pub.strftime("%Y-%m")
     if category=="golden_dome":
         # Cross-month repeats of the same preliminary negotiation are not a new contract.
         period=(f"{pub.year}Q{(pub.month-1)//3+1}" if event=="pre_contract"
@@ -120,6 +175,20 @@ def self_test():
     assert kind("golden_dome","Alphabet Google in talks to join Golden Dome")=="pre_contract"
     assert kind("golden_dome","Google signs contract for Golden Dome data security")=="contract_reported"
     assert kind("golden_dome","Golden Dome rocket launch tests")=="unrelated"
+    assert kind("moon_base_clps","NASA selects eight CLPS 2 companies for $10 billion")=="framework_selection"
+    assert kind("moon_base_clps","NASA awards a new CLPS lunar task order to Firefly")=="task_order_report"
+    assert kind("moon_base_clps","NASA raises CLPS 1 ceiling to $4.2 billion")=="framework_selection"
+    assert kind("starlink_optical","Musk projects 100k Starlink V4 satellites with 100 lasers")=="projection_only"
+    assert kind("starlink_optical","SpaceX successfully launches first Starlink V4 satellite")=="deployment_report"
+    assert kind("starlink_optical","SpaceX files FCC application for Starlink V4 optical satellites")=="fcc_application"
+    assert kind("starlink_optical","FCC approves SpaceX Starlink V4 optical satellite deployment")=="fcc_approval_report"
+    assert not eligible("starlink_optical",article("Musk predicts Starlink V4 100k 100 lasers"),now)
+    assert not eligible("moon_base_clps",article("NASA selects eight CLPS 2 companies for $10 billion"),now)
+    m1=article("NASA awards new CLPS task order to Firefly","2026-10-16T10:00:00+00:00")
+    m2=dict(article("Firefly receives NASA CLPS task order","2026-10-16T10:00:00+00:00"),source="Bloomberg")
+    m3=dict(article("NASA awards Voyager lunar Griffin task order","2026-10-16T10:00:00+00:00"),source="CNBC")
+    assert semantic_pair("moon_base_clps",m1,m2)
+    assert not semantic_pair("moon_base_clps",m1,m3)
     g1=article("Alphabet Google in talks to join Golden Dome","2026-10-30T20:00:00+00:00")
     g2=dict(article("Google weighs Golden Dome participation","2026-11-02T20:00:00+00:00"),source="Bloomberg")
     assert eligible("golden_dome",g1,dt.datetime(2026,11,3,tzinfo=dt.timezone.utc))
