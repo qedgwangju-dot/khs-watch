@@ -39,7 +39,7 @@ def kind(category,title):
         # A new contract/cap amendment is separate from the Nov-7 initial
         # framework selection. Do not replay the known CLPS1 2.6->4.2 change.
         if re.search(r"cancel|terminate|rescind|해지|취소|철회",t):return "cancellation_report"
-        modified=re.search(r"amendment|modification|revised schedule|schedule slips?|"
+        modified=re.search(r"amendment|amended|modification|revised schedule|schedule slips?|"
                            r"increases? (?:the )?(?:contract|ceiling|limit|award)|"
                            r"raises? (?:the )?(?:contract|ceiling|limit|award)|"
                            r"ceiling increased|contract extension|납기 변경|계약 증액|계약 감액|"
