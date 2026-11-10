@@ -36,6 +36,16 @@ def kind(category,title):
         return "space_technology"
     if category=="moon_base_clps":
         if not re.search(r"nasa|clps|moon base|lunar|달 기지|달 수송|달 화물",t):return "unrelated"
+        # A new contract/cap amendment is separate from the Nov-7 initial
+        # framework selection. Do not replay the known CLPS1 2.6->4.2 change.
+        if re.search(r"cancel|terminate|rescind|해지|취소|철회",t):return "cancellation_report"
+        modified=re.search(r"amendment|modification|revised schedule|schedule slips?|"
+                           r"increases? (?:the )?(?:contract|ceiling|limit|award)|"
+                           r"raises? (?:the )?(?:contract|ceiling|limit|award)|"
+                           r"ceiling increased|contract extension|납기 변경|계약 증액|계약 감액|"
+                           r"계약 정정|일정 연기|한도 상향|상한 증액",t)
+        historic=re.search(r"4[.]2 billion|42억|2[.]6 billion|26억",t) and re.search(r"clps.?1",t)
+        if modified and not historic:return "contract_change_report"
         # Baseline selections/contract ceilings create eligibility, not sales.
         if re.search(r"clps.?2|commercial lunar payload services",t) and re.search(
             r"eight|8 companies|8 firms|selected|10 billion|contract ceiling|8개사|8곳|계약 한도",t
@@ -179,6 +189,9 @@ def self_test():
     assert kind("moon_base_clps","NASA selects eight CLPS 2 companies for $10 billion")=="framework_selection"
     assert kind("moon_base_clps","NASA awards a new CLPS lunar task order to Firefly")=="task_order_report"
     assert kind("moon_base_clps","NASA raises CLPS 1 ceiling to $4.2 billion")=="framework_selection"
+    assert kind("moon_base_clps","NASA raises CLPS 2 ceiling to $15 billion after amendment")=="contract_change_report"
+    assert kind("moon_base_clps","NASA increases CLPS 2 contract value following amended order")=="contract_change_report"
+    assert kind("moon_base_clps","NASA CLPS 2 landing schedule slips into 2029")=="contract_change_report"
     assert kind("starlink_optical","Musk projects 100k Starlink V4 satellites with 100 lasers")=="projection_only"
     assert kind("starlink_optical","SpaceX successfully launches first Starlink V4 satellite")=="deployment_report"
     assert kind("starlink_optical","SpaceX files FCC application for Starlink V4 optical satellites")=="fcc_application"
