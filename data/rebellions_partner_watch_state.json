@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-10T08:20:57+09:00",
+  "last_checked_kst": "2026-11-10T09:17:06+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -4067,6 +4067,25 @@
       "material_stage": 1,
       "first_seen_kst": "2026-11-10T05:11:34+09:00",
       "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "22dc9ca67865827e2a31b081": {
+      "title": "[현장] 엔비디아·SKT·리벨리온, AI 인프라 삼각동맹…협력 방향은 By EBN - Investing.com 한국어",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5oOWhDdEkwdkJUYjk0SmlfZ3VuZURFc2pWZ0V6TXdabTJ4NkhzYjY1WGZRS0NfR1RocUxOUUtua1lzMFRmLXV1XzBRcXNzS2gtazJHRXoxMTQzYnI4TU9BdXZBWGxkaHNqLVhYMUo1NkM?oc=5",
+      "summary": "[현장] 엔비디아·SKT·리벨리온, AI 인프라 삼각동맹…협력 방향은 By EBN Investing.com 한국어",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-10T09:17:06+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "c4f7488789bbb0adf7b07b0d": {
+      "title": "리벨리온, 엔비디아 손잡고 'K-NPU' 탑재 소버린 AI 인프라 구축 - 서울경제TV",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE52Q2ZXMXFWOFNyalhtMFQ4T0xESEhLSGJORk5QUGJ1MmplVF9mRzRRNlFMUWo0RWIxckxscFcyTDczOXdxX1A2MzZDMkh3X3FhVlRMNGp5bUkwQmdaQ05kU0lhV2o?oc=5",
+      "direct_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE52Q2ZXMXFWOFNyalhtMFQ4T0xESEhLSGJORk5QUGJ1MmplVF9mRzRRNlFMUWo0RWIxckxscFcyTDczOXdxX1A2MzZDMkh3X3FhVlRMNGp5bUkwQmdaQ05kU0lhV2o?oc=5",
+      "summary": "리벨리온, 엔비디아 손잡고 'K-NPU' 탑재 소버린 AI 인프라 구축 서울경제TV",
+      "event_signature": null,
+      "material_stage": 0,
+      "first_seen_kst": "2026-11-10T09:17:06+09:00",
+      "alerted": true
     }
   }
 }
