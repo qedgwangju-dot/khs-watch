@@ -3,13 +3,13 @@
   "last_collection": {
     "deferred_events": 0,
     "errors": [],
-    "material_items": 10,
+    "material_items": 23,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 31,
+    "raw_items": 94,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-10T01:11:32.510251+00:00",
+    "updated_at": "2026-11-10T01:17:07.511609+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -108,6 +108,15 @@
       "source": "머니투데이",
       "title": "유엔 연설 앞둔 오픈AI \"美 주도 AI 표준 수립, 한국도 참여\" 제안 - 머니투데이 - 머니투데이",
       "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1ucThaWjVXT1Z3a0lHbEI3ZHl5SURjZTJKYU13ZWFJSE1keGJNQjBOS2FDNkxEZmlQWks1Y3ViNlVaQ3U0U0o3aU96RnB6Nms2LU1SdXdrQTkzN0V2bnZ6ZWFuXzFLWWhHenRMOEtPMmpRUmFTb1HSAXtBVV95cUxOdVFxeURxWUF1QUc4UTVxMlRyVWhIeVk1QjVGeHBxcF81YV9lWlBWUXpkTS1EV2hFdFFCV1FheHo2VmFuNG5maUtSd1ZBZUZvV3lkVGJjQUo0azhORlRZNG1RVHBzTFluTFJ6Z2x0ZW54SjJEX2hNazZ4eUU?oc=5"
+    },
+    "1e18622e42701c749b3e3c6c": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-11-05T00:30:00+00:00",
+      "source": "금융위원회",
+      "title": "금융위원회 금융권 약 580개사 외부접점 전수점검 추진 발표",
+      "url": "https://www.fsc.go.kr/no010101/88086"
     },
     "2044f258c7f3c714ab8fef9d": {
       "category": "AWS Continuum AI 보안 취약점 수정 서비스 상용화",
@@ -127,6 +136,15 @@
       "title": "OCC Cybersecurity Supervision Work Program updated without new examination procedures",
       "url": "https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-48.html"
     },
+    "2497fbf99044977cb5c9a15d": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-11-05T01:38:00+00:00",
+      "source": "YTN",
+      "title": "'해킹 공격' 금융권 대책회의...\"37개사·40건 신고\" - YTN",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE83b256OTBISEtfOWNFVjQ2QjlCb21IdVBzTlRmel9qZ2JEXzVWRl9rWFB5MFpIQktyODN0TFNrWkVDZTNxcDdiY3Jrc0tOX2IwTjU1RzNnUHlWYlQ4Z2c?oc=5"
+    },
     "29c89e9a14ade63669fcd2bb": {
       "category": "Anthropic 프런티어 AI 안전법안 입법 단계",
       "entity": "Anthropic AI 안전법안",
@@ -145,6 +163,15 @@
       "title": "SoftBank weighs $18 billion acquisition of Allied Universal, source says - Reuters",
       "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQWXdNdHpBa2pKc200dGJ6aDlPYUNpNTlla3ZxM2ZWQzdXNDBxclZxc3pSRlZNelgwSnIzSzdmRVFhdzRVNVhJckNMTjhFOTNsdWlkMWxJSkJRa3huaXd6d3R6cktEODVnUE5aMGMwWEw0ZzRwTTJnX1ZoQ2F5UVhpMUZNNzNLNGNDT2RhdGZnMHZtTHZjcm9PNFk4bldiTjZ4TnJ6SF9zV0owWERWXzgyYmpYLVpFOE9ITG1kanhfOWdfME40Tmh0eTF5cjNfa3AxdFJV?oc=5"
     },
+    "2c04da4fcd72ff6b807c3bda": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-10-14T06:00:00+00:00",
+      "source": "금융위원회",
+      "title": "금융위원회 금융권 555개사 체크리스트 점검 130개사 일부 미흡사항 확인",
+      "url": "https://www.fsc.go.kr/no010101/87927"
+    },
     "33ea9716948b3485a85a1d51": {
       "category": "파이오링크 관리형 탐지·대응 상용화 단계",
       "entity": "파이오링크",
@@ -162,6 +189,15 @@
       "source": "파이낸셜뉴스",
       "title": "이스트시큐리티, PHP2Shell 점검 도구 무료 배포 - 파이낸셜뉴스",
       "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKdWtWVXgxOWh5bVU4UWhMTHBDWERPbTJPRHl4SUJDTkdIUVIzcWk4Z0dMUjlZc3RXcFQyV0EwWmM3emdDcnNjT3o4ako1Uk1tNkdtOTVfNkpnQQ?oc=5"
+    },
+    "34e4ecee1b9908dba3ca8d24": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-11-05T00:30:00+00:00",
+      "source": "금융위원회",
+      "title": "금융위원회 금융권 보안 내부통제 가이드라인 2027년 1분기 마련 계획",
+      "url": "https://www.fsc.go.kr/no010101/88086"
     },
     "398e72dbd0ed264ad464f190": {
       "category": "이스트시큐리티 PHP 점검 도구·유료 전환 단계",
@@ -218,6 +254,15 @@
       "title": "정부, 민간기반시설 172곳 긴급 점검...이찬진 “IT 보안 강화를” - 매일경제",
       "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPa0JqNXJWOEw3eDBqd1d5OEZWVUhjWkdlMEZDaUJmRllFWm02RUZBd3F3ZzVrSjlLY2VUa0wxQTR5OG5vWTY1RDNPcnNlS00tcjlFOEItcFplTVRKU3E0TDhpUElfLUZhRGNjR29JMERwWWo4U2NCUFNSLWxpMWFVemxhcXZUNGJp?oc=5"
     },
+    "55d4697fe3fe3cd3400398c4": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-11-06T22:57:29+00:00",
+      "source": "대한민국 정책브리핑",
+      "title": "금융권 580여 개사 보안 전수점검…\"보안체계 전면 쇄신\" - 대한민국 정책브리핑",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE4tU2VVNUFMUTBQNUlMazY0ajBRLVgzeHU0TTF2UlY5MklIRGZDdnIzLVNwZmxlMEVLWjVvcEtqd3RYc3N6eGRfWG8xLTN3WlAySFNlMTUwQlpGcGF5My1zY1MycnRoV3VNYVAtWQ?oc=5"
+    },
     "5903f77702888d59a163baee": {
       "category": "민간 기반시설 172개 보안 점검·조달 단계",
       "entity": "과학기술정보통신부",
@@ -226,6 +271,15 @@
       "source": "매일경제",
       "title": "[속보] 과기정통부, 민간 주요정보통신기반시설 170여개 취약점 점검 착수 - 매일경제",
       "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE04a3VDRG5PdXZ0MWZrTkVYRC1XOGRCQU4tUzNDSVhLSExQZWdUZ2pSaGRXY0FOY1NFTmJwS1Y1clJwRkhyMUtkYU94STZCQQ?oc=5"
+    },
+    "5c69c69567921b0c7ea9f2f4": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-11-05T00:30:00+00:00",
+      "source": "금융위원회",
+      "title": "금융위원회 금융권 외부접점 11월 30일 미등재 시스템 12월 31일 점검 목표",
+      "url": "https://www.fsc.go.kr/no010101/88086"
     },
     "61c75ee6c94824aabdb5e8e7": {
       "category": "파이오링크 관리형 탐지·대응 상용화 단계",
@@ -236,6 +290,15 @@
       "title": "'멀티벤더 MDR' 파이오링크 \"EDR 골라 쓰고, 관제 맡기세요\" - 디일렉",
       "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5VMGpKU1hCYVhTeE0xX1Y1Q3F2SE9Yd1VxZ1EzaHRSTFNhRXJaUHA4R3kycmxPMk1zOUQ3SE9oWnlRcDVVWlNLTVE1cExxemtVT3U1VFRtQVJhcFZhdXdSYUV6N3dnQQ?oc=5"
     },
+    "6612907c19df8620b12d3bc6": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-11-05T00:30:00+00:00",
+      "source": "금융위원회",
+      "title": "금융위원회 금융권 취약점 평가 연 2회 이상 의무화 추진",
+      "url": "https://www.fsc.go.kr/no010101/88086"
+    },
     "67af2488bca49f90e4a88f86": {
       "category": "법규·의무 보고·감사",
       "entity": "AI 안전·보안 생태계",
@@ -244,6 +307,24 @@
       "source": "매일경제",
       "title": "단호한 트럼프 \"AI규제 안 만든다 … 기업 '셀프 제재'로 충분\" - 매일경제",
       "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBWUHZ6OHZtR2VXWmNoRnEzQ2ROV3dDRG9KWEM0a1cxVnJGNE5yaFVzMEtQeUFEYnk1cnlLNTBoZmF2NUdaTFE?oc=5"
+    },
+    "67e1d149b4d34b378f377838": {
+      "category": "과기정통부 금융권 해킹 24시간 비상대응·위협공유",
+      "entity": "과학기술정보통신부·한국인터넷진흥원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-10-04T10:00:00+00:00",
+      "source": "대한민국 정책브리핑",
+      "title": "과기정통부 금융권 해킹 CISO 신고기업 약 2만8000곳 보안점검 권고 메일 발송",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148973069"
+    },
+    "6c0bb9f30a599b228973dd91": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-11-05T00:30:00+00:00",
+      "source": "금융위원회",
+      "title": "금융위원회 금융권 망분리 규제 전면해제 TF 11월 구성 2027년 1분기 방안 마련 계획",
+      "url": "https://www.fsc.go.kr/no010101/88086"
     },
     "6f1d97c63173fdc087496f81": {
       "category": "이스트시큐리티 PHP 점검 도구·유료 전환 단계",
@@ -289,6 +370,15 @@
       "source": "매일경제 마켓",
       "title": "정부, 민간기반시설 172곳 긴급 점검...이찬진 “IT 보안 강화를” - 매일경제 마켓",
       "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9uV2pHOXA0OUk1bUwzZ25DZEZ4VFhwckRXRkxBMjAyaDkzeUNnVm1vNG9vdGQyUF94elZYLTFEZWhLWlFwUk1YZTdYYm9aTWVRU3c?oc=5"
+    },
+    "85267e4e8a5708e305f315f5": {
+      "category": "과기정통부 금융권 해킹 24시간 비상대응·위협공유",
+      "entity": "과학기술정보통신부·한국인터넷진흥원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-10-07T09:34:00+00:00",
+      "source": "아이뉴스24",
+      "title": "과기정통부 KISA 금융권 공격자 IP C-TAS 5900개 참여기업에 두 차례 전파",
+      "url": "https://m.inews24.com/view/mrld/2012873"
     },
     "8a0bdb307b0fc71d8f71a8e7": {
       "category": "국내 PHP 보안위기 대응·정책 단계",
@@ -391,6 +481,15 @@
       "title": "SIF 첫 회의·헌장 채택(보도 단계)",
       "url": "https://www.semafor.com/article/10/15/2026/white-houses-ai-task-force-gets-to-work"
     },
+    "c738942e850ddc928734cbbc": {
+      "category": "과기정통부 금융권 해킹 24시간 비상대응·위협공유",
+      "entity": "과학기술정보통신부·한국인터넷진흥원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-10-04T10:00:00+00:00",
+      "source": "대한민국 정책브리핑",
+      "title": "과학기술정보통신부 금융권 해킹 24시간 비상대응체계 가동",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148973069"
+    },
     "cba3d526d701b9af5caca15f": {
       "category": "SGA솔루션즈 PHP 가상패치 사업화 단계",
       "entity": "SGA솔루션즈",
@@ -463,6 +562,15 @@
       "title": "SGA솔루션즈, PHP2Shell 대응 가상패치 지원 - 전자신문",
       "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBnSGJIaDNFZGNlRjh6YkNCRmJUZnZGdUJVLTY4SWJPY2hiSTJPdWR2a1M3VEYyVmE1S0NCLWxrdjVmOXRiN0gwSDN5WEo0QQ?oc=5"
     },
+    "d8d6335e5d62c935f252b6ab": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-11-05T00:30:00+00:00",
+      "source": "금융위원회",
+      "title": "금융위원회 금융권 FIRST 공동 해킹 관제 12월 시범 2027년 1분기 확대 계획",
+      "url": "https://www.fsc.go.kr/no010101/88086"
+    },
     "e01fdbce5cef9d158f5b29f0": {
       "category": "CrowdStrike–NVIDIA AI 에이전트 보안 통합 단계",
       "entity": "CrowdStrike–NVIDIA",
@@ -507,6 +615,15 @@
       "source": "이데일리",
       "title": "정부, 민간 주요정보통신기반시설 170여곳 보안점검 - 이데일리",
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOd0czSy1FSmJHV0FhajRIWEV1N25YVWkzdjBDWjcwSk05Q25RbHhxYm9oQVdaeVVWaWMwR1dYeldyXzFEVDFyaUtoZXFXYnowMk5MZm4tVXFDYlFXSjJ3bS16bm1zRWpFc0NKVmZTdHVyZWdQNFRnSnlQMmZFMTVqVg?oc=5"
+    },
+    "ea5c35f4a69079819117c4dd": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-10T01:17:07.511609+00:00",
+      "published_at": "2026-11-05T00:30:00+00:00",
+      "source": "금융위원회",
+      "title": "금융위원회 금융권 37개사 침해사고 40건 정보유출 약 47만3000건 보고",
+      "url": "https://www.fsc.go.kr/no010101/88086"
     },
     "eab6e782795efe558b449d40": {
       "category": "Anthropic 프런티어 AI 안전법안 입법 단계",
@@ -618,6 +735,38 @@
       "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260911a.htm",
       "status": "2026-09-11 interagency proposed nonbinding third-party risk guidance and tailored community bank guide; final guidance not yet issued"
     },
+    "fsc_finance_2026:checklist_555_130_20261014": {
+      "source_url": "https://www.fsc.go.kr/no010101/87927",
+      "status": "10/14 earlier 555 checklist checks, 130 firms some gaps, not 580 later scope"
+    },
+    "fsc_finance_2026:deadlines_1130_1231_20261105": {
+      "source_url": "https://www.fsc.go.kr/no010101/88086",
+      "status": "11/30 registered systems and 12/31 unregistered systems/control audits are future completion targets"
+    },
+    "fsc_finance_2026:first_pilot_plan_20261105": {
+      "source_url": "https://www.fsc.go.kr/no010101/88086",
+      "status": "Shared FIRST intelligence December 2026 pilot, 2027Q1 full rollout plans, not operating milestones"
+    },
+    "fsc_finance_2026:guideline_q1_plan_20261105": {
+      "source_url": "https://www.fsc.go.kr/no010101/88086",
+      "status": "Internal control guideline planned for 2027Q1, not already issued"
+    },
+    "fsc_finance_2026:incidents_37_40_473k_20261105": {
+      "source_url": "https://www.fsc.go.kr/no010101/88086",
+      "status": "11/03 as-of 37 firms, 40 incidents, ~473,000 data records, ~KRW 1bn held funds; direct user money loss not established"
+    },
+    "fsc_finance_2026:inspection_580_20261105": {
+      "source_url": "https://www.fsc.go.kr/no010101/88086",
+      "status": "11/05 approximately 580 financial institutions to undergo external surface and controls checks, not 580 new contracts"
+    },
+    "fsc_finance_2026:network_tf_plan_20261105": {
+      "source_url": "https://www.fsc.go.kr/no010101/88086",
+      "status": "2026-11-05 network-separation repeal policy task force planned for Nov and new AI/zero-trust framework in 2027Q1; not yet a completed repeal"
+    },
+    "fsc_finance_2026:twice_yearly_plan_20261105": {
+      "source_url": "https://www.fsc.go.kr/no010101/88086",
+      "status": "Large firms vulnerability evaluation annual once to at least twice proposed; rule not yet adopted"
+    },
     "ftc_ai_safety_anthropic:subpoenas_reported": {
       "source_url": "https://www.reuters.com/business/us-ftc-subpoenas-openai-anthropic-over-consumer-harms-axios-reports-2026-10-15/",
       "status": "2026-10-15 Axios/Reuters civil subpoena reporting only; investigation is not a liability finding"
@@ -645,6 +794,18 @@
     "ksign_sandslab:naver_security_model_selected_20260903": {
       "source_url": "https://www.yna.co.kr/view/AKR20260903037252017",
       "status": "2026-09-03 NAVER Cloud consortium selected; SandLab participating and KSign owns 42.01% of SandLab (not separate KSign contract)"
+    },
+    "msit_finance_2026:ciso_28000_advice_20261004": {
+      "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148973069",
+      "status": "10/04 advice emailed to ~28,000 CISO registrants; recommendation not completed mandatory audits"
+    },
+    "msit_finance_2026:ctas_5900_two_shares_20261007": {
+      "source_url": "https://m.inews24.com/view/mrld/2012873",
+      "status": "10/07 two rounds IP intelligence sent to ~5,900 C-TAS member firms, blocking was requested"
+    },
+    "msit_finance_2026:emergency_24h_20261004": {
+      "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148973069",
+      "status": "10/04 KISC 24-hour emergency response and response staff, not 11/09 new activation"
     },
     "occ_cyber_work_program:reference_update_20260921": {
       "source_url": "https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-48.html",
@@ -689,11 +850,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-10T10:11:32+09:00",
+  "updated_at_kst": "2026-11-10T10:17:07+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-10T01:12:16.879520+00:00",
+    "last_success_at": "2026-11-10T01:18:00.428801+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
