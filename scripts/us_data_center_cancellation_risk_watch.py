@@ -1587,7 +1587,17 @@ def baaja_run_existing_risk_watch() -> None:
         state["source_checks"] = source_checks
         state["latest_stage"] = "절차표결 통과, 상원 본안 가결 전"
     if new_events:
-        state["latest_stage"] = new_events[-1]["stage"]
+        # Index order is not legislative order. Never downgrade "signed" to "passed"
+        # just because an older announcement appears later in the source list.
+        ranking = {
+            "절차표결 통과, 상원 본안 가결 전": 1,
+            "상원 본안 최종 의결 공식 발표": 2,
+            "하원 본안 최종 의결 공식 발표": 3,
+            "대통령 서명·법률 제정 공식 발표": 4,
+            "FERC 시행 세부규칙 최종 발표": 5,
+        }
+        stage_choices = [state.get("latest_stage") or ""] + [x["stage"] for x in new_events]
+        state["latest_stage"] = max(stage_choices, key=lambda x: ranking.get(x, 0))
     state["official_later_event_ids"] = list(dict.fromkeys(
         previous_seen + [x["id"] for x in new_events]
     ))[-200:]
