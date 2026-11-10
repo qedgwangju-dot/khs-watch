@@ -81,6 +81,15 @@ NEWS_QUERIES = [
     '"특화 인공지능 파운데이션 모델" 사이버 보안 B200',
     '"AI 보안모델" 조달 실증 수주 계약',
     '"PHP" "사이버위기 경보" (과학기술정보통신부 OR 과기정통부 OR KISA) (상향 OR 하향 OR 해제)',
+    '"과기정통부" "금융권" (24시간 비상대응 OR CISO 보안점검 OR C-TAS 차단)',
+    '"금융위원회" "580개사" (전수점검 OR 점검 완료 OR 결과 발표)',
+    '"금융권" "외부접점" ("11월 30일" OR "12월 31일")',
+    '"금융권" "FIRST" (시범운영 OR 정식운영 OR 고도화)',
+    '"금융권" "보안 내부통제 가이드라인" (확정 OR 발표 OR 시행)',
+    '"금융권" "망분리 규제" (전면해제 TF OR 개정안 확정 OR 시행 OR 제로트러스트)',
+
+    '"금융권" "연 2회" "취약점" (의무화 OR 규정 개정 OR 시행)',
+
     '"PHP" (범부처 종합대책 OR 의무 점검 OR 정부 지원 예산 OR 보안 의무화) (확정 OR 발표 OR 시행)',
     '네이버클라우드 S2W 샌즈랩 LG CNS 사이버보안 AI 계약 실증',
     '"파이오링크" (MDR OR "관리형 탐지" OR 보안관제) (고객 OR 계약 OR 유료 OR 확대)',
@@ -169,6 +178,19 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "msit_finance_2026:emergency_24h_20261004": {"source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148973069", "status": "10/04 KISC 24-hour emergency response and response staff, not 11/09 new activation"},
+    "msit_finance_2026:ciso_28000_advice_20261004": {"source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148973069", "status": "10/04 advice emailed to ~28,000 CISO registrants; recommendation not completed mandatory audits"},
+    "msit_finance_2026:ctas_5900_two_shares_20261007": {"source_url": "https://m.inews24.com/view/mrld/2012873", "status": "10/07 two rounds IP intelligence sent to ~5,900 C-TAS member firms, blocking was requested"},
+    "fsc_finance_2026:checklist_555_130_20261014": {"source_url": "https://www.fsc.go.kr/no010101/87927", "status": "10/14 earlier 555 checklist checks, 130 firms some gaps, not 580 later scope"},
+    "fsc_finance_2026:inspection_580_20261105": {"source_url": "https://www.fsc.go.kr/no010101/88086", "status": "11/05 approximately 580 financial institutions to undergo external surface and controls checks, not 580 new contracts"},
+    "fsc_finance_2026:incidents_37_40_473k_20261105": {"source_url": "https://www.fsc.go.kr/no010101/88086", "status": "11/03 as-of 37 firms, 40 incidents, ~473,000 data records, ~KRW 1bn held funds; direct user money loss not established"},
+    "fsc_finance_2026:deadlines_1130_1231_20261105": {"source_url": "https://www.fsc.go.kr/no010101/88086", "status": "11/30 registered systems and 12/31 unregistered systems/control audits are future completion targets"},
+    "fsc_finance_2026:first_pilot_plan_20261105": {"source_url": "https://www.fsc.go.kr/no010101/88086", "status": "Shared FIRST intelligence December 2026 pilot, 2027Q1 full rollout plans, not operating milestones"},
+    "fsc_finance_2026:twice_yearly_plan_20261105": {"source_url": "https://www.fsc.go.kr/no010101/88086", "status": "Large firms vulnerability evaluation annual once to at least twice proposed; rule not yet adopted"},
+    "fsc_finance_2026:guideline_q1_plan_20261105": {"source_url": "https://www.fsc.go.kr/no010101/88086", "status": "Internal control guideline planned for 2027Q1, not already issued"},
+    "fsc_finance_2026:network_tf_plan_20261105": {"source_url": "https://www.fsc.go.kr/no010101/88086", "status": "2026-11-05 network-separation repeal policy task force planned for Nov and new AI/zero-trust framework in 2027Q1; not yet a completed repeal"},
+
+
     "occ_genius:final_rule_20261021": {
         "source_url": "https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-50.html",
         "status": "2026-10-21 OCC final payment stablecoin rule; effective 2027-01-18; applies only to OCC jurisdiction, separate from pending Fed proposals",
@@ -263,6 +285,8 @@ POLICY_EVENT_BASELINES = {
 
 OFFICIAL_SOURCE_HINTS = (
     "openai", "anthropic", "nipa", "과학기술정보통신부", "msit", "kisa", "한국인터넷진흥원",
+    "과기정통부", "금융위원회", "대한민국 정책브리핑",
+
     "nists", "nist", "cisa", "gov.uk", "aisi", "european commission",
     "europa.eu", "oecd", "white house", "whitehouse.gov", "commerce department", "ntia",
     "house.gov", "u.s. house", "house of representatives",
@@ -279,6 +303,8 @@ OFFICIAL_SOURCE_HINTS = (
 TRUSTED_SOURCE_HINTS = (
     "reuters", "axios", "politico", "the information", "softbank group", "allied universal", "yonhap", "연합뉴스", "financial times", "bloomberg",
     "the information", "zdnet", "전자신문", "etnews", "파이낸셜뉴스",
+    "아이뉴스24", "inews24", "정책브리핑", "금융위원회", "금융보안원", "금융감독원",
+
     "매일경제", "한국경제", "머니투데이", "이데일리", "조선비즈",
     "서울경제", "디지털데일리", "디지털타임스", "the verge",
     "techcrunch", "wired", "securityweek", "palo alto", "unit 42",
@@ -1310,6 +1336,135 @@ def fed_bank_security_official(item: dict) -> bool:
     return host == "federalreserve.gov" or host.endswith(".federalreserve.gov")
 
 
+def korean_finance_cyber_stage(item: dict) -> tuple[str, str] | None:
+    """Keep KISC response, checklist, FSC sector audit and later completion distinct."""
+    title = str(item.get("title") or "").lower()
+    context = f"{title} {item.get('description','')}".lower()
+    msit = any(w in context for w in (
+        "과기정통부", "과학기술정보통신부", "kisc", "kisa",
+        "한국인터넷진흥원", "c-tas",
+    ))
+    finance = any(w in context for w in (
+        "금융권", "금융위", "금융위원회", "금감원", "금융회사", "금융보안원",
+    ))
+    fsc_topic = finance and any(w in context for w in (
+        "580", "555", "130개사", "37개사", "40건", "47만3", "473000",
+        "11월 30일", "12월 31일", "외부접점 전수점검", "등재 시스템", "미등재 시스템",
+        "보안 내부통제", "공동 해킹 관제", "first", "연 2회", "망분리", "제로트러스트",
+    ))
+    msit_topic = msit and finance and any(w in context for w in (
+        "24시간 비상", "비상대응", "ciso", "2만8", "28000", "c-tas", "공격자 ip", "악성 ip",
+    ))
+    if msit_topic and not ("580" in context and fsc_topic):
+        if any(w in title for w in ("비상대응 종료", "비상 대응 해제", "비상대응 해제")):
+            return "msit_finance_2026", "emergency_ended_reported"
+        if any(w in title for w in ("비상대응 격상", "비상 대응 격상")):
+            return "msit_finance_2026", "emergency_escalated_reported"
+        if "차단 완료" in title and "ip" in title:
+            return "msit_finance_2026", "ip_blocking_completed_reported"
+        if any(w in title for w in ("2만8000", "2만 8000", "2만8천", "28000", "28,000")):
+            return "msit_finance_2026", "ciso_28000_advice_20261004"
+        if ("c-tas" in context or "위협정보 공유" in context) and any(
+            w in title for w in ("5900", "5,900", "두 차례", "2차례")
+        ):
+            return "msit_finance_2026", "ctas_5900_two_shares_20261007"
+        if any(w in title for w in ("24시간", "24h", "24-hour")):
+            return "msit_finance_2026", "emergency_24h_20261004"
+        return None
+    if not fsc_topic:
+        return None
+    future = any(w in title for w in (
+        "예정", "계획", "추진", "목표", "검토", "방침", "앞두고",
+        "proposed", "plans ", "planned", "expected", "could ",
+    ))
+    if not future:
+        if "미등재" in title and "점검 완료" in title:
+            return "fsc_finance_2026", "unregistered_inspection_completed_reported"
+        if "등재" in title and "점검 완료" in title:
+            return "fsc_finance_2026", "registered_inspection_completed_reported"
+        if any(w in title for w in ("전수점검 완료", "580개사 점검 완료")):
+            return "fsc_finance_2026", "all_inspections_completed_reported"
+        if "보안 내부통제 가이드라인" in title and any(w in title for w in ("확정", "시행", "공표")):
+            return "fsc_finance_2026", "internal_guideline_issued_reported"
+        if "연 2회" in title and any(w in title for w in ("의무화 확정", "규정 시행", "개정안 확정")):
+            return "fsc_finance_2026", "twice_yearly_rule_adopted_reported"
+        if "first" in context and any(w in title for w in ("시범운영 개시", "시범운영 시작")):
+            return "fsc_finance_2026", "first_pilot_live_reported"
+        if "first" in context and any(w in title for w in ("전면 운영 개시", "정식 운영 시작")):
+            return "fsc_finance_2026", "first_full_rollout_reported"
+        if "망분리" in title and any(w in title for w in ("전면해제 규정 시행", "규제 해제 확정", "개정안 확정")):
+            return "fsc_finance_2026", "network_separation_reform_adopted_reported"
+        if "망분리" in title and ("tf" in title or "태스크포스" in title) and any(w in title for w in ("공식 출범", "발족 완료", "가동 개시")):
+            return "fsc_finance_2026", "network_reform_tf_launched_reported"
+        if any(w in title for w in ("보안 점검 용역 낙찰", "보안관제 계약 체결")):
+            return "fsc_finance_2026", "procurement_awarded_reported"
+    if "555" in title and any(w in context for w in ("130", "미흡")):
+        return "fsc_finance_2026", "checklist_555_130_20261014"
+    if ("37개사" in title or "37곳" in title) and any(w in context for w in ("40건", "47만3", "473000")):
+        return "fsc_finance_2026", "incidents_37_40_473k_20261105"
+    if "11월 30일" in title and "12월 31일" in context:
+        return "fsc_finance_2026", "deadlines_1130_1231_20261105"
+    if "first" in title and any(w in context for w in ("시범", "12월", "2027")):
+        return "fsc_finance_2026", "first_pilot_plan_20261105"
+    if "연 2회" in title and ("취약점" in context or "점검" in context):
+        return "fsc_finance_2026", "twice_yearly_plan_20261105"
+    if "보안 내부통제 가이드라인" in title:
+        return "fsc_finance_2026", "guideline_q1_plan_20261105"
+    if "망분리" in title and any(w in title for w in ("tf", "태스크포스", "전면해제", "제로트러스트")):
+        return "fsc_finance_2026", "network_tf_plan_20261105"
+    if "580" in title and any(w in title for w in ("전수점검", "보안점검", "전면 점검")):
+        return "fsc_finance_2026", "inspection_580_20261105"
+    return None
+
+
+def korean_finance_publisher_verified(item: dict) -> bool:
+    if not korean_finance_cyber_stage(item):
+        return True
+    source = str(item.get("source") or "").lower()
+    url = str(item.get("publisher_url") or item.get("url") or "")
+    try:
+        host = (urllib.parse.urlsplit(url).hostname or "").lower()
+    except ValueError:
+        return False
+    if not host:
+        return False
+    domains = (
+        (("금융위원회",), "fsc.go.kr"),
+        (("과기정통부", "과학기술정보통신부"), "msit.go.kr"),
+        (("정책브리핑",), "korea.kr"),
+        (("한국인터넷진흥원",), "kisa.or.kr"),
+        (("아이뉴스24", "inews24"), "inews24.com"),
+        (("연합뉴스", "yonhap"), "yna.co.kr"),
+        (("매일경제",), "mk.co.kr"),
+        (("뉴시스", "newsis"), "newsis.com"),
+        (("서울경제",), "sedaily.com"),
+        (("이데일리",), "edaily.co.kr"),
+        (("조선비즈",), "chosunbiz.com"),
+        (("전자신문",), "etnews.com"),
+        (("로이터", "reuters"), "reuters.com"),
+    )
+    for names, domain in domains:
+        if any(name in source for name in names):
+            return host == domain or host.endswith("." + domain)
+    return source_trusted(source)
+
+
+def korean_finance_issuer_verified(item: dict) -> bool:
+    if not korean_finance_cyber_stage(item):
+        return False
+    source = str(item.get("source") or "").lower()
+    try:
+        host = (urllib.parse.urlsplit(str(item.get("publisher_url") or item.get("url") or "")).hostname or "").lower()
+    except ValueError:
+        return False
+    issuers = (
+        (("금융위원회",), "fsc.go.kr"),
+        (("정책브리핑",), "korea.kr"),
+        (("과기정통부", "과학기술정보통신부"), "msit.go.kr"),
+    )
+    return any((host == domain or host.endswith("." + domain)) and any(n in source for n in names) for names,domain in issuers)
+
+
 def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """Classify a new *reported* milestone from the headline, never from a
     speculative paragraph about what could happen. No issuer/legislative
@@ -1318,6 +1473,9 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
 
+    finance_stage = korean_finance_cyber_stage(item)
+    if finance_stage:
+        return finance_stage
     fed_stage = fed_bank_security_stage(item)
     if fed_stage:
         return fed_stage
@@ -1585,6 +1743,12 @@ def detect_category(text: str) -> str:
         t in low for t in ("subpoena", "complaint", "investigation", "sues", "settlement", "consent order")
     ):
         return "FTC 프런티어 AI 소비자보호 조사·집행 단계"
+    finance_stage = korean_finance_cyber_stage({"title": text})
+    if finance_stage:
+        return {
+            "msit_finance_2026": "과기정통부 금융권 해킹 24시간 비상대응·위협공유",
+            "fsc_finance_2026": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+        }[finance_stage[0]]
     fed_stage = fed_bank_security_stage({"title": text})
     if fed_stage:
         return {
@@ -1654,6 +1818,12 @@ def detect_entity(text: str) -> str:
         if "openai" in low and "anthropic" in low:
             return "FTC–OpenAI·Anthropic"
         return "FTC–OpenAI" if "openai" in low else "FTC–Anthropic"
+    finance_stage = korean_finance_cyber_stage({"title": text})
+    if finance_stage:
+        return {
+            "msit_finance_2026": "과학기술정보통신부·한국인터넷진흥원",
+            "fsc_finance_2026": "금융위원회·금융감독원·금융보안원",
+        }[finance_stage[0]]
     fed_stage = fed_bank_security_stage({"title": text})
     if fed_stage:
         return {
@@ -1786,6 +1956,8 @@ def material(item: dict) -> bool:
         return False
     milestone = tracked_policy_event_stage(item)
     if milestone:
+        if milestone[0] in ("msit_finance_2026","fsc_finance_2026") and not korean_finance_publisher_verified(item):
+            return False
         if milestone[0] in ("fed_bowman_cyber", "fed_genius", "fed_third_party", "fed_fraud_group", "occ_genius", "occ_cyber_work_program") and not fed_bank_security_publisher_verified(item):
             return False
         if milestone[0] in ("aws_continuum", "amazon_security_tokens") and not aws_security_publisher_verified(item):
@@ -1861,14 +2033,15 @@ def normalize(item: dict) -> dict:
     out["fingerprint"] = fingerprint(item)
     out["category"] = detect_category(combined)
     out["entity"] = detect_entity(combined)
-    out["official"] = ((source_official(item.get("source","")) or aws_security_issuer_verified(item) or fed_bank_security_official(item)) and
+    out["official"] = ((source_official(item.get("source","")) or aws_security_issuer_verified(item) or fed_bank_security_official(item) or korean_finance_issuer_verified(item)) and
         cohere_aisle_publisher_verified(item) and crowdstrike_nvidia_publisher_verified(item)
         and php_korea_publisher_verified(item)
         and k_security_business_publisher_verified(item)
         and k_security_business_official(item)
         and php_business_publisher_verified(item)
         and aws_security_publisher_verified(item)
-        and fed_bank_security_publisher_verified(item))
+        and fed_bank_security_publisher_verified(item)
+        and korean_finance_publisher_verified(item))
     return out
 
 
@@ -2238,6 +2411,48 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"• {html.escape(concise_fact(rep))}",
         ]
         if rep["category"] in (
+            "과기정통부 금융권 해킹 24시간 비상대응·위협공유",
+            "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+        ):
+            stage = korean_finance_cyber_stage(rep)
+            labels = {
+                "emergency_24h_20261004": "10월 4일 KISC 24시간 비상대응 가동",
+                "ciso_28000_advice_20261004": "10월 4일 CISO 신고기업 약 2만8천곳에 보안점검 권고 발송",
+                "ctas_5900_two_shares_20261007": "10월 7일까지 약 5,900개 참여기업에 공격자 IP 두 차례 공유",
+                "checklist_555_130_20261014": "10월 14일 555개사 점검·130개사 일부 미흡 확인",
+                "inspection_580_20261105": "11월 5일 금융권 약 580개사 전수점검 발표",
+                "incidents_37_40_473k_20261105": "11월 3일 기준 37개사·40건 침해·정보유출 약 47만3천건",
+                "deadlines_1130_1231_20261105": "등재 시스템 11월 30일·미등재 시스템 12월 31일 점검 목표",
+                "first_pilot_plan_20261105": "12월 공동 해킹 관제 시범운영·2027년 1분기 확대 계획",
+                "twice_yearly_plan_20261105": "금융권 취약점 검사 연 1회에서 2회 이상 확대 추진",
+                "guideline_q1_plan_20261105": "2027년 1분기 보안 내부통제 지침 마련 계획",
+                "network_tf_plan_20261105": "11월 금융권 망분리 규제 개편 TF 구성·2027년 1분기 새 보안체계 계획",
+                "network_reform_tf_launched_reported": "금융권 망분리 규제 개편 TF 실제 출범 보도",
+                "network_separation_reform_adopted_reported": "망분리 규제 개정안 최종 확정·시행 보도",
+                "emergency_ended_reported": "24시간 비상대응 종료 보도",
+                "emergency_escalated_reported": "비상대응 단계 격상 보도",
+                "ip_blocking_completed_reported": "악성 IP 차단 완료 보도",
+                "registered_inspection_completed_reported": "등재 시스템 점검 완료 보도",
+                "unregistered_inspection_completed_reported": "미등재 시스템 점검 완료 보도",
+                "all_inspections_completed_reported": "금융권 전체 전수점검 완료 보도",
+                "internal_guideline_issued_reported": "보안 내부통제 최종 지침 발표 보도",
+                "twice_yearly_rule_adopted_reported": "연 2회 의무 점검 규정 확정 보도",
+                "first_pilot_live_reported": "금융권 공동 해킹 관제 시범운영 실제 개시 보도",
+                "first_full_rollout_reported": "금융권 공동 해킹 관제 전면 운영 보도",
+                "procurement_awarded_reported": "보안 점검·관제 신규 계약 체결 보도",
+            }
+            label = labels.get(stage[1],"추가 검증 필요") if stage else "추가 검증 필요"
+            lines.append(f"• <b>확인 단계</b>: {html.escape(label)} · 과거 발표·계획·계약·완료 구분")
+            if stage and stage[0]=="msit_finance_2026":
+                lines.append("• <b>기존 기준</b>: 10월 4일 KISC 24시간 대응과 주요 기업 홈페이지 감시·침해대응 인력 보강·비상출동조 상시 대기. CISO 신고기업 약 2만8천곳에는 권고 메일만 발송")
+                lines.append("• <b>위협정보</b>: C-TAS 약 5,900개 회원사에 공격자 IP 정보 공유. 클라우드 사업자에 차단 요청한 사실과 실제 전면 차단 완료를 구분")
+            else:
+                lines.append("• <b>현재 기준</b>: 11월 5일 금융위 약 580개사 전수점검 발표. 11월 3일 기준 37개사 40건 침해, 정보유출 약 47만3천건, 관리자금 탈취 약 10억원")
+                lines.append("• <b>일정</b>: 등재된 외부접점 11월 30일, 미등재 시스템·내부통제 12월 31일 점검 목표. FIRST 관제 12월 시범·2027년 1분기 확대는 계획")
+                lines.append("• <b>비교</b>: 10월 14일 555개 체크리스트 점검·130개사 미흡과 11월 5일 약 580개사 전수점검은 범위가 달라 25곳을 신규 피해로 해석 금지")
+                lines.append("• <b>제도 개선</b>: 망분리 규제 개편 TF와 제로트러스트·AI 보안 적용은 계획 단계. 최종 규정·실제 시행·특정 업체 수주와 별도")
+            lines.append("• <b>후속 확인</b>: 점검 완료·재점검·취약점 수정률·공식 규정 시행·실제 유료 보안계약·사업자·계약금액")
+        elif rep["category"] in (
             "연준 은행 사이버보안 감독·금융사기 대응 단계",
             "미국 OCC 지니어스법 최종 규정·시행 단계",
             "미국 OCC 은행 사이버보안 감독 점검 체계",
@@ -2503,6 +2718,28 @@ def main() -> int:
         except Exception as exc:
             errors.append(f"Google News 실패: {query[:55]} / {type(exc).__name__}: {exc}")
 
+    # Verified historical references: known stages are checkpoints, not fresh alerts.
+    raw.extend([
+        {"kind":"news", "query":"verified financial cyber policy reference", "title":"과학기술정보통신부 금융권 해킹 24시간 비상대응체계 가동", "description":"10월 4일 KISC 모니터링 강화·침해대응 인력 보강·출동조 상시 대기. 11월의 신규 가동이 아님", "source":"대한민국 정책브리핑", "publisher_url":"https://www.korea.kr/", "url":"https://www.korea.kr/news/policyNewsView.do?newsId=148973069", "published_at":"2026-10-04T10:00:00+00:00"},
+        {"kind":"news", "query":"verified financial cyber policy reference", "title":"과기정통부 금융권 해킹 CISO 신고기업 약 2만8000곳 보안점검 권고 메일 발송", "description":"10월 4일 28000 CISO 등록기업에 자율 보안점검 권고 발송. 의무 점검이나 전 기업 점검 완료가 아님", "source":"대한민국 정책브리핑", "publisher_url":"https://www.korea.kr/", "url":"https://www.korea.kr/news/policyNewsView.do?newsId=148973069", "published_at":"2026-10-04T10:00:00+00:00"},
+        {"kind":"news", "query":"verified financial cyber policy reference", "title":"과기정통부 KISA 금융권 공격자 IP C-TAS 5900개 참여기업에 두 차례 전파", "description":"10월 7일 확인된 10월 2일·5일 두차례 위협정보 공유. 클라우드 사업자에게 차단 요청. 모든 IP 차단 완료 확인 아님", "source":"아이뉴스24", "publisher_url":"https://www.inews24.com/", "url":"https://m.inews24.com/view/mrld/2012873", "published_at":"2026-10-07T09:34:00+00:00"},
+        {"kind":"news", "query":"verified financial cyber policy reference", "title":"금융위원회 금융권 555개사 체크리스트 점검 130개사 일부 미흡사항 확인", "description":"10월 14일 555개사 결과. 11월 5일의 580개사 확대 전수점검과 다른 범위", "source":"금융위원회", "publisher_url":"https://www.fsc.go.kr/", "url":"https://www.fsc.go.kr/no010101/87927", "published_at":"2026-10-14T06:00:00+00:00"},
+        {"kind":"news", "query":"verified financial cyber policy reference", "title":"금융위원회 금융권 약 580개사 외부접점 전수점검 추진 발표", "description":"11월 5일 약 580개사 외부접점·내부통제 점검 계획. 신규 외주계약 580건이나 이미 완료된 580건이 아님", "source":"금융위원회", "publisher_url":"https://www.fsc.go.kr/", "url":"https://www.fsc.go.kr/no010101/88086", "published_at":"2026-11-05T00:30:00+00:00"},
+        {"kind":"news", "query":"verified financial cyber policy reference", "title":"금융위원회 금융권 37개사 침해사고 40건 정보유출 약 47만3000건 보고", "description":"11월 3일 기준 37개 금융회사 40건 침해, 47만3천건 정보유출, 회사 관리 자금 약 10억원 탈취. 개인 직접 자금 손실 미확인", "source":"금융위원회", "publisher_url":"https://www.fsc.go.kr/", "url":"https://www.fsc.go.kr/no010101/88086", "published_at":"2026-11-05T00:30:00+00:00"},
+        {"kind":"news", "query":"verified financial cyber policy reference", "title":"금융위원회 금융권 외부접점 11월 30일 미등재 시스템 12월 31일 점검 목표", "description":"11월 5일 발표한 목표 기한. 11월 30일 등재 자산, 12월 31일 미등재 자산과 내부통제. 완료 확정 아님", "source":"금융위원회", "publisher_url":"https://www.fsc.go.kr/", "url":"https://www.fsc.go.kr/no010101/88086", "published_at":"2026-11-05T00:30:00+00:00"},
+        {"kind":"news", "query":"verified financial cyber policy reference", "title":"금융위원회 금융권 FIRST 공동 해킹 관제 12월 시범 2027년 1분기 확대 계획", "description":"11월 5일 금융권 위협정보 공유 고도화 계획. 12월 2026 시범운영, 2027년 1분기 확대 목표", "source":"금융위원회", "publisher_url":"https://www.fsc.go.kr/", "url":"https://www.fsc.go.kr/no010101/88086", "published_at":"2026-11-05T00:30:00+00:00"},
+        {"kind":"news", "query":"verified financial cyber policy reference", "title":"금융위원회 금융권 취약점 평가 연 2회 이상 의무화 추진", "description":"11월 5일 대형 금융회사부터 기존 연 1회에서 연 2회 이상으로 바꾸는 규정개정 추진. 시행 완료 아님", "source":"금융위원회", "publisher_url":"https://www.fsc.go.kr/", "url":"https://www.fsc.go.kr/no010101/88086", "published_at":"2026-11-05T00:30:00+00:00"},
+        {"kind":"news", "query":"verified financial cyber policy reference", "title":"금융위원회 금융권 보안 내부통제 가이드라인 2027년 1분기 마련 계획", "description":"11월 5일 발표한 후속 정책 목표. 최종 규정 발행 또는 시행 확인 전", "source":"금융위원회", "publisher_url":"https://www.fsc.go.kr/", "url":"https://www.fsc.go.kr/no010101/88086", "published_at":"2026-11-05T00:30:00+00:00"},
+    ])
+
+    raw.append({
+        "kind":"official", "query":"FSC historical network separation task force plan",
+        "title":"금융위원회 금융권 망분리 규제 전면해제 TF 11월 구성 2027년 1분기 방안 마련 계획",
+        "description":"2026-11-05 announced planned network segregation policy review, zero-trust and AI security framework. No confirmed repeal and no finalized vendor award.",
+        "source":"금융위원회", "publisher_url":"https://www.fsc.go.kr/",
+        "url":"https://www.fsc.go.kr/no010101/88086",
+        "published_at":"2026-11-05T00:30:00+00:00",
+    })
     raw.append({
         "kind":"news", "query":"Bowman Oct 1 direct talk transcript",
         "title":"Michelle Bowman confirms President's Working Group on Scams and Fraud held two meetings",

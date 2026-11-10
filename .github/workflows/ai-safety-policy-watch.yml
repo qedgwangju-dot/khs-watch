@@ -841,6 +841,98 @@ jobs:
           print("ai_policy_aws_continuum_ga_named_customers_forecast_regression=PASS")
           PY
 
+      - name: Verify finance cyber response scope, dates, sources and later milestones
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          from scripts.ai_safety_policy_watch import (
+              POLICY_EVENT_BASELINES, build_alert, cluster_events,
+              korean_finance_cyber_stage, korean_finance_publisher_verified,
+              material, normalize, tracked_policy_event_key,
+          )
+          def item(title, source, url, detail=""):
+              return normalize({
+                  "kind":"news", "title":title, "description":detail,
+                  "source":source, "publisher_url":url, "url":url+"example",
+              })
+          gov="https://www.korea.kr/"
+          fsc="https://www.fsc.go.kr/"
+          press="https://www.inews24.com/"
+          cases=[
+              item("과학기술정보통신부 금융권 24시간 비상대응체계 가동",
+                   "대한민국 정책브리핑",gov),
+              item("과기정통부 금융권 CISO 신고기업 약 2만8000곳 보안점검 권고",
+                   "대한민국 정책브리핑",gov),
+              item("과기정통부 KISA 금융권 공격자 IP C-TAS 5900개 참여기업 두 차례 공유",
+                   "아이뉴스24",press),
+              item("금융위원회 금융권 555개사 체크리스트 점검 130개사 미흡사항 확인",
+                   "금융위원회",fsc),
+              item("금융위원회 금융권 약 580개사 외부접점 전수점검 추진 발표",
+                   "금융위원회",fsc),
+              item("금융위원회 금융권 37개사 침해사고 40건 정보유출 47만3000건",
+                   "금융위원회",fsc),
+              item("금융위원회 금융권 외부접점 11월 30일 미등재 시스템 12월 31일 점검 목표",
+                   "금융위원회",fsc),
+              item("금융위원회 금융권 FIRST 공동 해킹 관제 12월 시범 2027년 1분기 확대 계획",
+                   "금융위원회",fsc),
+              item("금융위원회 금융권 취약점 평가 연 2회 이상 의무화 추진",
+                   "금융위원회",fsc),
+              item("금융위원회 금융권 보안 내부통제 가이드라인 2027년 1분기 마련 계획",
+                   "금융위원회",fsc),
+              item("금융위원회 금융권 망분리 규제 전면해제 TF 11월 구성 2027년 1분기 방안 마련 계획",
+                   "금융위원회",fsc),
+          ]
+          expected=[
+              "msit_finance_2026:emergency_24h_20261004",
+              "msit_finance_2026:ciso_28000_advice_20261004",
+              "msit_finance_2026:ctas_5900_two_shares_20261007",
+              "fsc_finance_2026:checklist_555_130_20261014",
+              "fsc_finance_2026:inspection_580_20261105",
+              "fsc_finance_2026:incidents_37_40_473k_20261105",
+              "fsc_finance_2026:deadlines_1130_1231_20261105",
+              "fsc_finance_2026:first_pilot_plan_20261105",
+              "fsc_finance_2026:twice_yearly_plan_20261105",
+              "fsc_finance_2026:guideline_q1_plan_20261105",
+              "fsc_finance_2026:network_tf_plan_20261105",
+          ]
+          assert [tracked_policy_event_key(x) for x in cases] == expected
+          assert all(k in POLICY_EVENT_BASELINES for k in expected)
+          assert all(material(x) and korean_finance_publisher_verified(x) for x in cases)
+          assert all(x["official"] for x in (cases[0],cases[1],cases[3],cases[4]))
+          assert not cases[2]["official"]
+          assert len(cluster_events(cases)) == 11
+          completed=item("금융위원회 금융권 580개사 전수점검 완료", "금융위원회",fsc)
+          only_plan=item("금융위원회 금융권 580개사 전수점검 완료 예정", "금융위원회",fsc)
+          assert tracked_policy_event_key(completed)=="fsc_finance_2026:all_inspections_completed_reported"
+          assert tracked_policy_event_key(only_plan)==expected[4]
+          pilot=item("금융위원회 금융권 FIRST 공동 해킹 관제 시범운영 개시", "금융위원회",fsc)
+          assert tracked_policy_event_key(pilot)=="fsc_finance_2026:first_pilot_live_reported"
+          guideline=item("금융위원회 금융권 보안 내부통제 가이드라인 확정", "금융위원회",fsc)
+          assert tracked_policy_event_key(guideline)=="fsc_finance_2026:internal_guideline_issued_reported"
+          assert len(cluster_events([cases[4],completed,only_plan]))==2
+          network_activated=item("금융위원회 금융권 망분리 규제 전면해제 TF 공식 출범",
+                                 "금융위원회",fsc)
+          network_planned=item("금융위원회 금융권 망분리 규제 전면해제 TF 출범 예정",
+                               "금융위원회",fsc)
+          assert tracked_policy_event_key(network_activated)=="fsc_finance_2026:network_reform_tf_launched_reported"
+          assert tracked_policy_event_key(network_planned)==expected[10]
+          assert not korean_finance_cyber_stage({
+              "title":"과기정통부 민간 주요정보통신기반시설 172개 점검 착수"
+          }), "172 facilities incorrectly merged into 580 finance firms"
+          fake=item("금융위원회 금융권 580개사 전수점검 완료",
+                    "금융위원회","https://www.not-fsc.example.invalid/")
+          assert not korean_finance_publisher_verified(fake)
+          assert not material(fake) and not fake["official"]
+          false_ministry=item("과기정통부 금융권 24시간 비상대응체계 가동",
+                             "대한민국 정책브리핑","https://www.fake-policy.invalid/")
+          assert not material(false_ministry)
+          report=build_alert([[cases[4]]],dt.datetime(2026,11,10,tzinfo=dt.timezone.utc))[1]
+          assert "580" in report and "11월 30일" in report and "12월 31일" in report
+          assert "점검 목표" in report and "범위가 달라" in report
+          print("ai_policy_korean_finance_cyber_msit_fsc_stage_and_source_regression=PASS")
+          PY
+
       - name: Verify PHP security vendor commercialization and infrastructure stage
         shell: bash
         run: |
