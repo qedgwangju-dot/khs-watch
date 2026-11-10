@@ -24,6 +24,7 @@ MOODYS_BLOOMBERG = "https://news.bloombergtax.com/financial-accounting/us-ai-boo
 IEA_AI = "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai"
 EIA_HIGH_DEMAND = "https://www.eia.gov/todayinenergy/detail.php?id=67344"
 GEV_Q2_2026 = "https://www.gevernova.com/news/articles/ge-vernova-releases-second-quarter-2026-financial-results"
+GEV_Q3_2026 = "https://www.gevernova.com/news/articles/ge-vernova-releases-third-quarter-2026-financial-results-announces-agreement-acquire"
 
 # Verified Sep. 14, 2026 Moody's/Bloomberg baseline. These are a planning
 # benchmark, not confirmed construction or awarded projects.
@@ -40,8 +41,10 @@ BASELINE = {
 }
 
 VERIFIED_GEV = {
-    "gas_contract_slot_gw": 116.0,
-    "year_end_target_gw": 125.0,
+    # 2026-10-28 Q3 issuer release (prior Q2: 116 and 125 GW).
+    # Do NOT count combined firm backlog and slot reservations as firm orders.
+    "gas_contract_slot_gw": 122.0,
+    "year_end_target_gw": 130.0,
     "output_2026_gw": 20.0,
     "output_2028_gw": 24.0,
     "output_2030_gw": 30.0,
@@ -314,25 +317,28 @@ def source_label(source: str, url: str) -> str:
 
 
 def parse_gev() -> dict:
-    try:
-        text = normalize(BeautifulSoup(fetch(GEV_Q2_2026).text, "html.parser").get_text(" "))
-    except Exception:
-        return dict(VERIFIED_GEV)
+    """Latest issuer Q3 gas-order/slot totals; never revert to Q2 on source outage."""
     metrics = dict(VERIFIED_GEV)
-    patterns = {
-        "gas_contract_slot_gw": r"(?:grew from 100 to|from 100 to)\s*([0-9.]+)\s*GW",
-        "year_end_target_gw": r"(?:at least|reaching at least)\s*([0-9.]+)\s*GW\s+by year-end 2026",
-        "output_2026_gw": r"deliver\s*([0-9.]+)\s*GW\s+of annual gas turbine output.*?third quarter of 2026",
-        "output_2028_gw": r"with\s*([0-9.]+)\s*GW\s+in 2028",
-        "output_2030_gw": r"produce\s*([0-9.]+)\s*GW\s+in 2030",
-        "dc_orders_ytd_usd_b": r"data center orders reaching over\s*\$?([0-9.]+)\s*billion",
-    }
-    for key, pat in patterns.items():
-        m = re.search(pat, text, re.I)
-        if m:
-            metrics[key] = float(m.group(1))
-    return metrics
-
+    metrics["source_release"] = "2026-10-28 Q3 official"
+    metrics["source_live_verified"] = False
+    try:
+        body = normalize(BeautifulSoup(fetch(GEV_Q3_2026, 22).text, "html.parser").get_text(" "))
+        # A generic page/redirect is not the earnings release. Require both
+        # Q3-specific gas-slot figures, not just '2026' in a footer.
+        if not (
+            re.search(r"third quarter 2026", body, re.I)
+            and re.search(r"(?:from\s+116\s+to|grew\s+from\s+116\s+to)\s*122\s*GW", body, re.I)
+            and re.search(r"at least\s+130\s*GW\s+by\s+year.end\s+2026", body, re.I)
+        ):
+            return metrics
+        metrics["source_live_verified"] = True
+        # The Q3 source explicitly documents these revised outlooks; 2028
+        # and 2030 production targets remain as already announced in Q2.
+        metrics["gas_contract_slot_gw"] = 122.0
+        metrics["year_end_target_gw"] = 130.0
+        return metrics
+    except Exception:
+        return metrics
 
 def stage_of(text: str) -> str:
     low = text.lower()
@@ -578,6 +584,7 @@ if should_alert:
     msg.append(f"• {a('IEA 미국 데이터센터 전력수요', IEA_AI)}")
     msg.append(f"• {a('EIA 고수요 가스발전 시나리오', EIA_HIGH_DEMAND)}")
     msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")
+    msg.append(f"• {a('GE Vernova 2026년 3분기 최신 계약·슬롯', GEV_Q3_2026)}")
     msg = compact_generation_message(msg)
     ALERT.write_text("\n".join(msg).strip() + "\n", encoding="utf-8")
 
