@@ -1217,7 +1217,7 @@ def self_test() -> int:
     assert not previously_corrected_neutron_delay("rocketlab", dict(sample, _semantic_id="semantic:rocketlab:neutron:first_flight_shift_2028"), {"audit:20261017:neutron_2027": "sent"})
     assert not corroborated(rocketlab, dict(sample, title="Citizens cuts Rocket Lab price target after Neutron delay"), [])
     contract = dict(sample, title="Rocket Lab signs Neutron launch contract for 2027")
-    assert render_item(rocketlab, contract, None).startswith("[계약]")
+    assert render_item(rocketlab, contract, None).startswith("[신규 발사계약·실제 매출 미발생]")
     print("space_launch_transition_self_test=ok official_nasa_contract_2030=1 no_early_retirement=1 initial_news_suppressed=1 categories=1 legacy_dedupe=1")
     return 0
 
