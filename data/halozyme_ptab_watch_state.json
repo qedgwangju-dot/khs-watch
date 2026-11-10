@@ -14,6 +14,7 @@
     "9d8f26ec4a37c98bb9d7275e",
     "bd25574d0cdfab6fecacba7c",
     "c2c4fb7ed2c04ac4f11c1e4f",
+    "e17cfc3e43849d135d2f19f5",
     "e31d5765026f8260f0f76578",
     "ec2b004cd91a18e18feeeb55",
     "ee71c800bbbfc903a324c27f",
@@ -28,11 +29,12 @@
     "https://ir.halozyme.com/news/news-details/2026/Halozyme-Wins-Injunction-Stopping-Manufacture-and-Sale-of-Mercks-Keytruda-SC-in-Multiple-European-Markets/default.aspx",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557268",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557365",
+    "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557626",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557766",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959",
     "https://www.pearceip.law/2026/09/09/update-on-msds-challenges-to-us-halozyme-patents-in-sc-keytruda-pembrolizumab-dispute/"
   ],
-  "last_check_kst": "2026-11-10T06:41:08+09:00",
+  "last_check_kst": "2026-11-10T10:40:52+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -85,7 +87,8 @@
     "IPR2026-00313": "11,041,149",
     "IPR2026-00316": "",
     "IPR2026-00312": "10,865,400",
-    "PGR2025-00050": "12,077,791"
+    "PGR2025-00050": "12,077,791",
+    "PGR2025-00042": "12,037,618"
   },
   "district_case": "2:25-cv-03179",
   "legal_v3_initialized": true,
@@ -95,10 +98,14 @@
     "Bing 웹"
   ],
   "legal_v4_initialized": true,
-  "search_mode": "개별 사건번호 + 미국/한국 뉴스 + Bing 웹",
-  "last_sent_message_ids": [],
+  "search_mode": "개별 사건번호 + 미국/한국 뉴스 + Bing 웹 (공식 PTAB 개별 문서 미연동)",
+  "last_sent_message_ids": [
+    330,
+    331
+  ],
   "final_decision_classification_version": 2,
   "seen_portfolio_updates": [
+    "0cd0016561efdc8d4474dfc1",
     "38543e8786807a5007ba4efd",
     "43ef08da585744f361858416",
     "59b126deb6f074e59bff83e7",
@@ -108,7 +115,7 @@
     "e62bb472a3a6994df7788d46"
   ],
   "last_portfolio_message_ids": [
-    186
+    331
   ],
   "case_event_timelines": {
     "PGR2025-00033": [
@@ -295,17 +302,49 @@
         "kind": "final_decision",
         "label": "최종서면결정"
       }
+    ],
+    "PGR2025-00042": [
+      {
+        "date": "2025-04-15",
+        "kind": "",
+        "label": "PGR 청구"
+      },
+      {
+        "date": "2025-11-13",
+        "kind": "",
+        "label": "심판 개시"
+      },
+      {
+        "date": "2026-11-09",
+        "kind": "",
+        "label": "Paper 95 최종서면결정 — 심판 대상 청구항 전부 특허성 부정"
+      },
+      {
+        "date": "2026-11-09",
+        "kind": "final_unpatentable",
+        "label": "최종서면결정"
+      }
     ]
   },
   "search_query_count": 39,
   "search_task_count": 78,
   "search_workers": 8,
-  "search_elapsed_seconds": 2.34,
+  "search_elapsed_seconds": 2.346,
   "search_completed_tasks": 78,
   "search_failed_tasks": 0,
   "search_completed_by_engine": {
     "Bing 웹": 39,
     "Google 뉴스": 39
   },
-  "source_health": "ok"
+  "source_health": "ok",
+  "ptab_direct_document_coverage": {
+    "status": "not_verified",
+    "reason": "USPTO ODP trial document API requires account/API key; no direct docket fetch in this workflow",
+    "backfilled_case": "PGR2025-00042",
+    "evidence": "user-supplied Paper 95 first page and independent USPTO case/patent identification",
+    "pending_fwd_cases": [
+      "PGR2025-00050",
+      "PGR2025-00053"
+    ]
+  }
 }
