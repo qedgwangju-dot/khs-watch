@@ -1,9 +1,9 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "4816c63a897c2c0423800dc3cdf11bf99f4a1e81b1c1d0c1117a57d7c2f2433c",
+    "Nasdaq SOX|sox": "51069670b53dbcba5e59b85d8893650c8254dfcc0534a8ae63d7bcea67952e8c",
     "Cboe|options": "2ad4f6a9d88cc78b718287fcabd76eda6c8254d1e01a80ad325edc36d27b66c2",
     "CFTC|cot": "921655e5b69d12c467f11b66f324a556c3e1f2567240560fc8935cd7760318de",
-    "미국 주요지수·시장 확산·옵션 과거 비교|context": "a6f0b10cb860e8f3f59317e84ddfdd19c0dfae07d5f71adc6b74f90380d2283f"
+    "미국 주요지수·시장 확산·옵션 과거 비교|context": "b0ce93cc4e19ac7b83452f8b7025df02f29d43262a64dee92b3c27d8196fbe07"
   },
   "values": {
     "Nasdaq SOX|sox": {
@@ -21,11 +21,11 @@
         "official_overview_url": "https://indexes.nasdaq.com/Index/History/SOX",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=6mo&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": -0.0026171874997089617,
+        "crosscheck_close_diff": 0.0003125000002910383,
         "final_close_confirmed": true,
         "expected_completed_session": "2026-11-09",
-        "d3_pct": -2.2857704226817432,
-        "d5_pct": -2.8503878043268815,
+        "d3_pct": -2.2857989530863154,
+        "d5_pct": -2.8504161698756025,
         "month_windows": {
           "1m": {
             "calendar_months": 1,
@@ -432,7 +432,7 @@
             [
               "2026-11-09",
               10033.93,
-              10033.9326171875
+              10033.9296875
             ]
           ],
           "session_dates": [
@@ -505,7 +505,7 @@
         }
       },
       "url": "https://indexes.nasdaq.com/Index/History/SOX",
-      "fingerprint": "4816c63a897c2c0423800dc3cdf11bf99f4a1e81b1c1d0c1117a57d7c2f2433c"
+      "fingerprint": "51069670b53dbcba5e59b85d8893650c8254dfcc0534a8ae63d7bcea67952e8c"
     },
     "Cboe|options": {
       "source": "Cboe",
@@ -1859,7 +1859,7 @@
                 ],
                 [
                   "2026-05-14",
-                  202.11456298828125
+                  202.1145782470703
                 ],
                 [
                   "2026-05-15",
@@ -1879,11 +1879,11 @@
                 ],
                 [
                   "2026-05-21",
-                  203.1566162109375
+                  203.15660095214844
                 ],
                 [
                   "2026-05-22",
-                  205.01242065429688
+                  205.0124053955078
                 ],
                 [
                   "2026-05-26",
@@ -1899,11 +1899,11 @@
                 ],
                 [
                   "2026-05-29",
-                  207.24533081054688
+                  207.24534606933594
                 ],
                 [
                   "2026-06-01",
-                  207.62246704101562
+                  207.62245178222656
                 ],
                 [
                   "2026-06-02",
@@ -1943,7 +1943,7 @@
                 ],
                 [
                   "2026-06-15",
-                  211.2646026611328
+                  211.26461791992188
                 ],
                 [
                   "2026-06-16",
@@ -2918,7 +2918,7 @@
                 ],
                 [
                   "2026-05-19",
-                  730.03173828125
+                  730.0317993164062
                 ],
                 [
                   "2026-05-20",
@@ -2938,7 +2938,7 @@
                 ],
                 [
                   "2026-05-27",
-                  746.6774291992188
+                  746.677490234375
                 ],
                 [
                   "2026-05-28",
@@ -2950,7 +2950,7 @@
                 ],
                 [
                   "2026-06-01",
-                  754.7166748046875
+                  754.7167358398438
                 ],
                 [
                   "2026-06-02",
@@ -2974,7 +2974,7 @@
                 ],
                 [
                   "2026-06-09",
-                  733.3350830078125
+                  733.3350219726562
                 ],
                 [
                   "2026-06-10",
@@ -34490,10 +34490,10 @@
         }
       },
       "url": "https://www.cboe.com/markets/us/options/market-statistics/daily",
-      "fingerprint": "a6f0b10cb860e8f3f59317e84ddfdd19c0dfae07d5f71adc6b74f90380d2283f"
+      "fingerprint": "b0ce93cc4e19ac7b83452f8b7025df02f29d43262a64dee92b3c27d8196fbe07"
     }
   },
-  "updated_at_kst": "2026-11-10T13:19:28.506620+09:00",
+  "updated_at_kst": "2026-11-10T17:29:28.892360+09:00",
   "presentation_version": "us-positioning-auto-direction-20261016-v1",
   "daily_digest_sent_date_kst": "2026-11-10",
   "last_verified_context_fx": {
