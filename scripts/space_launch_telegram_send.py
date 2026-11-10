@@ -247,7 +247,9 @@ def self_test() -> int:
 # Optional compact in-message source links. Default send path above is unchanged;
 # only the Starlink Mobile workflow explicitly invokes --inline.
 INLINE_SOURCE_RE = re.compile(r"^• 원문:\s*(https://\S+)\s*$")
-INLINE_MAX_UNITS = 3500  # Only split if Telegram's real 4096-character limit requires it
+INLINE_MAX_UNITS = 3500  # Existing inline sender remains unchanged.
+READABLE_MAX_UNITS = 1000  # Short phone-friendly complete messages.
+READABLE_BODY_UNITS = 740  # Leave room for report header, title, and [part/total].
 INLINE_LABELS = "①②③④⑤⑥⑦⑧⑨⑩"
 
 
@@ -289,8 +291,20 @@ def inline_source_name(url: str, number: int) -> str:
         return "AT&T 배당"
     if "verizon.com" in host and "dividend" in path:
         return "VZ 배당"
+    if "nasa.gov" in host and "jsc-procurement" in path:
+        return "NASA 조달"
+    if "nasa.gov" in host and "news-release" in path:
+        return "NASA 발표"
     if "nasa.gov" in host:
         return "NASA"
+    if "fireflyspace.com" in host:
+        return "파이어플라이"
+    if "voyagertechnologies.com" in host:
+        return "보이저"
+    if "elonmuskarchive.org" in host:
+        return "머스크 발언"
+    if host in {"x.com", "twitter.com"}:
+        return "X 원문"
     if "spacex.com" in host and "fairing" in path:
         return "Falcon 9"
     if "starlink.com" in host:
@@ -368,11 +382,11 @@ def inline_paragraph(paragraph: str) -> tuple[str, list[dict]]:
     return flush(current)
 
 
-def inline_cut_plain_line(value: str):
+def inline_cut_plain_line(value: str, limit: int = INLINE_MAX_UNITS):
     chunks = []
     chunk = ""
     for ch in value:
-        if utf16_units(chunk + ch) > INLINE_MAX_UNITS:
+        if utf16_units(chunk + ch) > limit:
             chunks.append((chunk, []))
             chunk = ""
         chunk += ch
@@ -381,8 +395,8 @@ def inline_cut_plain_line(value: str):
     return chunks
 
 
-def inline_split_big_block(block: tuple[str, list[dict]]):
-    if utf16_units(block[0]) <= INLINE_MAX_UNITS:
+def inline_split_big_block(block: tuple[str, list[dict]], limit: int = INLINE_MAX_UNITS):
+    if utf16_units(block[0]) <= limit:
         return [block]
     # Compute link offsets relative to each line before splitting. This preserves
     # all links and text in messages that exceed one Telegram message.
@@ -397,18 +411,18 @@ def inline_split_big_block(block: tuple[str, list[dict]]):
             if unit_offset <= ent["offset"] and
             ent["offset"] + ent["length"] <= unit_offset + line_len
         ]
-        if line_len > INLINE_MAX_UNITS:
+        if line_len > limit:
             if line_entities:
                 raise ValueError("Oversize source-link line cannot be split")
             if current[0]:
                 result.append(current)
                 current = ("", [])
-            result.extend(inline_cut_plain_line(line))
+            result.extend(inline_cut_plain_line(line, limit))
         else:
             seg = (line, line_entities)
             glue = "\n" if current[0] else ""
             candidate = inline_combine(current, seg, glue)
-            if current[0] and utf16_units(candidate[0]) > INLINE_MAX_UNITS:
+            if current[0] and utf16_units(candidate[0]) > limit:
                 result.append(current)
                 current = seg
             else:
