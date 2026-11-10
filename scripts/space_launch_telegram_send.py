@@ -487,6 +487,132 @@ def inline_messages(original: str):
     return result
 
 
+def readable_messages(original: str) -> list[tuple[str, list[dict]]]:
+    """One event at a time in short, numbered Telegram chat messages.
+
+    The raw report is never shortened. Source URLs become clickable labels,
+    original numbers are preserved, and legacy --inline is not modified.
+    """
+    if not original.strip():
+        raise ValueError("Empty readable Telegram report")
+    paragraphs = [p.strip() for p in original.strip().split("\n\n") if p.strip()]
+    header = paragraphs[0] if len(paragraphs) > 1 else ""
+    sections = paragraphs[1:] if header else paragraphs
+    all_parts: list[tuple[str, list[dict]]] = []
+    original_urls: list[str] = []
+
+    for section in sections:
+        title = section.splitlines()[0].strip()
+        # Both the alert header and section title are repeated on continuation
+        # parts; reserve their full width before deciding where to split.
+        reserved = utf16_units(header + "\n\n" + title + " (계속)\n") + 30
+        budget = min(READABLE_BODY_UNITS, READABLE_MAX_UNITS - reserved)
+        if budget < 160:
+            raise ValueError("Event heading too long for readable Telegram budget")
+        block = inline_paragraph(section)
+        pieces = inline_split_big_block(block, limit=budget)
+        if re.sub(r"\s+", "", "".join(part[0] for part in pieces)) != re.sub(
+            r"\s+", "", block[0]
+        ):
+            raise AssertionError("Readable layout changed substantive event text")
+        for part_index, part in enumerate(pieces):
+            preface = header + "\n\n" if header else ""
+            if part_index:
+                # A reader can identify the event even when part 2 arrives
+                # after messages from another, independent scheduled watcher.
+                preface += title + " (계속)\n"
+            all_parts.append(inline_combine((preface, []), part, ""))
+        original_urls.extend(
+            match.group(1) for line in section.splitlines()
+            if (match := INLINE_SOURCE_RE.fullmatch(line.strip()))
+        )
+
+    if not all_parts:
+        raise ValueError("Readable Telegram report generated no parts")
+    total = len(all_parts)
+    result: list[tuple[str, list[dict]]] = []
+    for index, part in enumerate(all_parts, start=1):
+        lead = f"[{index}/{total}] " if total > 1 else ""
+        text, entities = inline_combine((lead, []), part, "")
+        if utf16_units(text) > READABLE_MAX_UNITS:
+            raise AssertionError("Readable Telegram part exceeded 1000 UTF-16 units")
+        # Bold alert and event headings; source hyperlinks remain separate
+        # text_link entities with correct UTF-16 offsets.
+        offset_chars = 0
+        for line in text.splitlines(keepends=True):
+            label = line.rstrip("\r\n")
+            if label and (label.startswith(("📡", "🚀", "["))):
+                entities.append({
+                    "type": "bold",
+                    "offset": utf16_units(text[:offset_chars]),
+                    "length": utf16_units(label),
+                })
+            offset_chars += len(line)
+        result.append((text, sorted(entities, key=lambda ent: ent["offset"])))
+
+    linked = [entity["url"] for _, entities in result
+              for entity in entities if entity["type"] == "text_link"]
+    if linked != original_urls:
+        raise AssertionError("Source link lost, duplicated or reordered in readable layout")
+    for text, entities in result:
+        raw = text.encode("utf-16-le")
+        for entity in entities:
+            segment = raw[entity["offset"] * 2:
+                          (entity["offset"] + entity["length"]) * 2].decode("utf-16-le")
+            if not segment or entity["offset"] < 0:
+                raise AssertionError("Invalid Telegram entity offset or length")
+        if "아래 링크 버튼" in text:
+            raise AssertionError("Legacy source placeholder in readable message")
+    return result
+
+
+def readable_self_test() -> int:
+    sample = (
+        "🚀 우주 발사 병목 웹감시\n기준: 2026-11-10 10:16 KST\n\n"
+        "[NASA 공식] CLPS 2 신규 경쟁자격\n"
+        "• 총 계약 한도 100억달러, 8개 기업, 2036년까지. "
+        "확정 수주와 참여자격을 구분합니다.\n"
+        "• 원문: https://www.nasa.gov/news-release/example\n"
+        "• 원문: https://www.nasa.gov/johnson/jsc-procurement/clps2/\n\n"
+        "[설계 구상] Starlink V4 광통신\n"
+        "• 위성당 레이저 10개 또는 100개, 10Tbps, 위성 100,000기는 "
+        "계획이며 실제 운영 용량은 아닙니다. 📡\n"
+        "• 원문: https://elonmuskarchive.org/posts/example\n\n"
+        "[장문 시험] 전수 보존 확인\n"
+        + ("• 15,000기, 2028년 목표, 확정 매출 아님. 설명 계속.\n" * 60)
+        + "• 원문: https://example.com/final"
+    )
+    chunks = readable_messages(sample)
+    assert len(chunks) >= 5
+    assert all(utf16_units(text) <= READABLE_MAX_UNITS for text, _ in chunks)
+    assert all("🚀 우주 발사 병목 웹감시" in text for text, _ in chunks)
+    assert all(("[{}/{}] ".format(i, len(chunks)) in text) for i, (text, _) in enumerate(chunks, 1))
+    urls = [e["url"] for _, entities in chunks for e in entities if e["type"] == "text_link"]
+    assert urls == [
+        "https://www.nasa.gov/news-release/example",
+        "https://www.nasa.gov/johnson/jsc-procurement/clps2/",
+        "https://elonmuskarchive.org/posts/example",
+        "https://example.com/final",
+    ]
+    rendered = "\n".join(text for text, _ in chunks)
+    assert "100억달러" in rendered and "2036년" in rendered
+    assert "10Tbps" in rendered and "100,000기" in rendered
+    assert sum(text.count("15,000기") for text, _ in chunks) == 60
+    assert sum(ent["type"] == "bold" for _, entities in chunks for ent in entities) >= 4
+    assert sum(ent["type"] == "text_link" for _, entities in chunks for ent in entities) == 4
+    short = readable_messages(
+        "📡 Starlink Mobile 감시\n기준: 2026-11-10\n\n"
+        "[공급계약] 퀄컴 공급계약\n"
+        "• 실제 설치 수 미공개, 8만 곳 부지 협상과 구분.\n"
+        "• 원문: https://example.org/release"
+    )
+    assert len(short) == 1
+    assert "8만 곳" in short[0][0]
+    print("telegram_readable_self_test=ok phone_budget=1000 source_links=4 "
+          "all_numbers=1 per_event=1 ordered_parts=1 bold_headings=1")
+    return 0
+
+
 def inline_self_test() -> int:
     sample = (
         "📡 Starlink Mobile·미국 위성-휴대전화 직접통신 감시\n"
@@ -555,9 +681,9 @@ def receipt_matches_destination(delivered: dict, expected: str) -> bool:
     return False
 
 
-def send_inline_alert(token: str, chat_id: str, message: str):
+def send_inline_alert(token: str, chat_id: str, message: str, *, readable: bool = False):
     ids = []
-    portions = inline_messages(message)
+    portions = readable_messages(message) if readable else inline_messages(message)
     for index, (plain_text, entities) in enumerate(portions, start=1):
         if len(portions) > 1:
             # This makes the complete series identifiable on a small screen.
@@ -584,6 +710,8 @@ def send_inline_alert(token: str, chat_id: str, message: str):
             if not receipt_matches_destination(delivered, chat_id):
                 raise RuntimeError("Telegram response did not confirm the configured recipient")
         ids.append(int(delivered["message_id"]))
+        if readable:
+            print(f"telegram_readable_part_receipt={index}/{len(portions)} message_id={ids[-1]}")
     return ids
 
 def main() -> int:
@@ -591,11 +719,14 @@ def main() -> int:
         return self_test()
     if len(sys.argv) == 2 and sys.argv[1] == "--inline-self-test":
         return inline_self_test()
+    if len(sys.argv) == 2 and sys.argv[1] == "--readable-self-test":
+        return readable_self_test()
 
     inline_mode = len(sys.argv) == 3 and sys.argv[1] == "--inline"
+    readable_mode = len(sys.argv) == 3 and sys.argv[1] == "--readable"
     inline_live = len(sys.argv) == 2 and sys.argv[1] == "--inline-live-test"
-    if len(sys.argv) != 2 and not inline_mode:
-        print("usage: space_launch_telegram_send.py REPORT_PATH | --inline REPORT_PATH | --self-test | --inline-self-test | --inline-live-test", file=sys.stderr)
+    if len(sys.argv) != 2 and not (inline_mode or readable_mode):
+        print("usage: space_launch_telegram_send.py REPORT_PATH | --inline REPORT_PATH | --readable REPORT_PATH | --self-test | --inline-self-test | --readable-self-test | --inline-live-test", file=sys.stderr)
         return 2
 
     token = (os.getenv("SPACE_LAUNCH_TELEGRAM_BOT_TOKEN") or "").strip()
@@ -623,16 +754,17 @@ def main() -> int:
             "• 원문: https://graingp.com/grain-management-announces-definitive-agreement-to-sell-nationwide-800-mhz-spectrum-portfolio-to-spacex/",
         ))
     else:
-        path = pathlib.Path(sys.argv[2] if inline_mode else sys.argv[1])
+        path = pathlib.Path(sys.argv[2] if (inline_mode or readable_mode) else sys.argv[1])
         text = path.read_text(encoding="utf-8").strip()
     if not text:
         raise RuntimeError("Telegram report is empty")
 
-    if inline_mode or inline_live:
-        ids = send_inline_alert(token, chat_id, text)
+    if inline_mode or inline_live or readable_mode:
+        ids = send_inline_alert(token, chat_id, text, readable=readable_mode)
         if os.getenv("SPACE_LAUNCH_VERIFY_RECEIPT") == "1":
             print("telegram_recipient_receipt_verified=true")
-        print(f"telegram_inline_links_delivered=true bot=@{actual} message_ids={ids} inline=true")
+        print(f"telegram_inline_links_delivered=true bot=@{actual} message_ids={ids} "
+              f"inline=true readable={readable_mode} parts={len(ids)}")
         return 0
 
     messages = build_messages(text)
