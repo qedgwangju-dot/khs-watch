@@ -1342,6 +1342,9 @@ def baaja_primary_source_checks() -> dict:
         "cost_threshold": page(BAAJA_BPC_NOV8,
                                (("20 megawatts", "20 mw"),
                                 ("incremental",), ("data center", "data centers"))),
+        "govinfo_bill": page(BAAJA_GPO_SEP30,
+                             (("sec. 2107",), ("20 megawatts",),
+                              ("incremental cost",))),
         "rhodium_model": page(BAAJA_RHODIUM_NOV2,
                               (("88-102%", "88–102%"), ("10-11%", "10–11%"),
                                ("annualized capital and operating",))),
@@ -1353,7 +1356,7 @@ def baaja_procedural_due(previous: dict, first: bool, checks: dict, fresh_fx: bo
     return bool(not first and fresh_fx
                 and previous.get("procedural_id") != BAAJA_PROCEDURAL_ID
                 and (checks.get("senate_vote") or checks.get("senate_sponsor"))
-                and checks.get("cost_threshold") and checks.get("rhodium_model"))
+                and (checks.get("cost_threshold") or checks.get("govinfo_bill")))
 
 
 def baaja_later_stage(title: str) -> str | None:
@@ -1457,6 +1460,9 @@ def baaja_policy_regression_checks() -> None:
                                     False, checks, True)
     assert not baaja_procedural_due({}, True, checks, True)
     assert not baaja_procedural_due({}, False, {**checks, "cost_threshold": False}, True)
+    assert baaja_procedural_due({}, False, {**checks, "cost_threshold": False,
+                                           "govinfo_bill": True, "rhodium_model": False}, True)
+    assert baaja_procedural_due({}, False, {**checks, "rhodium_model": False}, True)
     assert not baaja_procedural_due({}, False, checks, False)
     b = BAAJA_POLICY_REFERENCE
     assert b["BAAJA_new_computational_load_mw_threshold"] == 20
@@ -1476,6 +1482,8 @@ def baaja_procedural_alert(fx: float, checks: dict) -> str:
         " 캐피토·화이트하우스·리·하인릭 4명 초당적 공동 발의.",
         "• <b>20MW 이상</b> │ BAAJA 2107조 신규 데이터센터는 발전·저장·송전·배전 등"
         " 수요 때문에 추가 발생한 증분비용 전액을 부담하도록 하는 제안.",
+        "  단일 부지뿐 아니라 동일 소유·통제 아래 여러 부지의 부하를 합산할 수 있으며,"
+        " 단계별 증설의 전체 준공 예상 부하도 20MW 판정에 포함.",
         "  고객이 조기 철수해도 나머지 전력소비자에게 비용이 전가되지 않도록 하는 조건.",
         "",
         "<b>■ 별도 법안과 반드시 구분</b>",
@@ -1491,6 +1499,7 @@ def baaja_procedural_alert(fx: float, checks: dict) -> str:
         "<b>■ 실제 비용 영향: 연구 시나리오와 법 적용 분리</b>",
         "• <b>로디움그룹 11월2일 모델</b> │ 완전 시행 시 데이터센터가 납부하는"
         " 전력망 연결 소매 전력가격 <b>+88~102%</b> 추정.",
+        f"  검증 단계: {'이번 실행 원문 직접 재확인' if checks.get('rhodium_model') else '이번 실행 원문 접근 미확인·11월2일 발표 기준선'}.",
         "• <b>1GW 데이터센터 전체 연간 환산 비용</b> │ 설비투자와 운영비 합산"
         " <b>+10~11%</b> 추정. 운영비만 10% 증가 또는 이미 확정된 인상이 아님.",
         "• <b>연구 가정</b> │ 9월30일 초기 BAAJA 문안을 바탕으로 한 모델;"
@@ -1521,8 +1530,8 @@ def baaja_procedural_alert(fx: float, checks: dict) -> str:
         f"• {a('맥킨지 글로벌 건설비 추정', BAAJA_MCKINSEY)}",
         f"• 환율: 1달러={fx:,.2f}원 · {h(fx_source)} · {h(fx_checked)} UTC",
         f"• 실행 당시 근거 재조회: 상원기록={checks.get('senate_vote')},"
-        f" EPW={checks.get('senate_sponsor')}, 20MW={checks.get('cost_threshold')},"
-        f" 로디움={checks.get('rhodium_model')}",
+        f" EPW={checks.get('senate_sponsor')}, BPC20MW={checks.get('cost_threshold')},"
+        f" GPO20MW={checks.get('govinfo_bill')}, 로디움={checks.get('rhodium_model')}",
     ]
     complete = "\n".join(lines).strip()
     mandatory = ("73대25", "본안 최종 가결 아님", "20MW", "100MW", "417대3",
