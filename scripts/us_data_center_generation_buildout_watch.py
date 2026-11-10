@@ -1551,6 +1551,11 @@ JET_REFERENCE = {
     "woodmac_us_new_turbine_average_delivery_years_reported": 6,
     "global_orders_gw_over": 100,
     "global_annual_production_capacity_gw_range": [60, 70],
+    "jefferies_us_dc_turbine_demand_2026_gw_approx": 17,
+    "jefferies_us_dc_turbine_demand_2028_growth_multiple_floor": 3.0,
+    "jefferies_global_2028_turbine_demand_gw_est": 129,
+    "jefferies_global_2028_manufacturing_capacity_gw_est": 87,
+    "jefferies_global_2028_supply_gap_gw_derived": 42,
     "crusoe_proenergy_original_contract_date": "2026-04-16",
     "crusoe_units_contracted": 13,
     "crusoe_pe6000_mw_each": 50,
@@ -1594,6 +1599,9 @@ def jet_turbine_regression_checks() -> None:
     assert b["gev_q3_year_end_target_gw"] - b["gev_q2_year_end_target_gw"] == 5
     assert b["used_turbine_price_usd_m_per_mw_reported"][1] < b["new_turbine_price_usd_m_per_mw_reported"][0]
     assert b["global_annual_production_capacity_gw_range"][1] < b["global_orders_gw_over"]
+    assert (b["jefferies_global_2028_turbine_demand_gw_est"] -
+            b["jefferies_global_2028_manufacturing_capacity_gw_est"]) == b["jefferies_global_2028_supply_gap_gw_derived"]
+    assert b["jefferies_us_dc_turbine_demand_2028_growth_multiple_floor"] == 3.0
     assert "FTAI" in "FTAI" and JET_PROENERGY_CRUSOE != JET_FTAI_FIRM_ORDER
 
 
@@ -1640,6 +1648,10 @@ def jet_turbine_alert_text(proof: dict) -> str:
         " 개발 기간 6년이라는 뜻 아님; 제조사·모델·납품 순서마다 달라질 수 있음.",
         "• <b>글로벌 수급</b> │ 신규 주문 100GW 초과 대 추정 연간 생산능력 60~70GW."
         " 전체 주문잔고와 연간 생산능력을 같은 분모의 당해연도 부족 물량으로 계산하지 않음.",
+        "• <b>Jefferies 수요 전망</b> │ Reuters 11월9일 인용: 미국 데이터센터 터빈 수요 2026년 약 17GW,"
+        " 2028년 3배 초과 가능성. 미국 데이터센터 전체 소비전력·확정 설치용량과 구분.",
+        "• <b>2028 글로벌 발전터빈 수급 전망</b> │ Jefferies 수요 129GW 대 제조능력 87GW,"
+        " 약 42GW 격차(자체 차감). 실제 공급 부족 확정치가 아닌 같은 연도 전망.",
         "• <b>사용 장비 2종 분리</b> │ ① 중고·재정비된 발전용 가스터빈,"
         " ② 항공기 엔진 기술을 이용해 신규 조립한 항공기 유래형 발전기.",
         "",
@@ -1704,6 +1716,7 @@ def jet_turbine_alert_text(proof: dict) -> str:
     report = "\n".join(content).strip()
     required = ("6년", "650MW", "13기", "1.465", "14억6,500만달러",
                 "2027년 11월", "116GW", "122GW", "125GW", "130GW",
+                "17GW", "129GW", "87GW", "42GW",
                 "1,250만달러", "3,500만달러", "EPA",
                 JET_PROENERGY_CRUSOE, JET_FTAI_FIRM_ORDER, JET_REUTERS_NOV9)
     missing = [t for t in required if t not in report]
