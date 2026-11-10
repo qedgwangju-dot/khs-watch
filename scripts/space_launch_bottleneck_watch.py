@@ -240,8 +240,8 @@ CATEGORIES = (
         tag="[NASA 달 운송·신규 과업]",
         name="NASA CLPS 2 참여자격·실제 달 화물 임무 발주",
         queries=(
-            '"NASA" "CLPS 2" ("task order" OR award OR cancellation) when:7d',
-            '"NASA" ("Moon Base" OR "cislunar communications") (SpaceX OR Firefly OR Voyager OR Intuitive Machines) contract when:7d',
+            '"NASA" "CLPS 2" ("task order" OR award OR cancellation OR amendment OR ceiling OR extension) when:7d',
+            '"NASA" ("Moon Base" OR "cislunar communications") (SpaceX OR Firefly OR Voyager OR Intuitive Machines) (contract OR delay OR schedule) when:7d',
             '"NASA" ("miniCAST" OR "Redwire" OR "PROMISE") (contract OR deployment OR delivery) when:7d',
             'site:nasa.gov "CLPS" "task order" "Moon Base" when:14d',
         ),
@@ -1034,6 +1034,7 @@ def self_test() -> int:
     assert "space_investment" in [x.key for x in CATEGORIES]
     assert "golden_dome" in [x.key for x in CATEGORIES]
     assert "moon_base_clps" in [x.key for x in CATEGORIES]
+    assert any("amendment OR ceiling" in query for query in next(x for x in CATEGORIES if x.key=="moon_base_clps").queries)
     assert "starlink_optical" in [x.key for x in CATEGORIES]
     assert NASA_CLPS2_EVENT != STARLINK_V4_VISION_EVENT
     assert FIREFLY_CLPS2_FACTORY_EVENT != VOYAGER_GRIFFIN1_TEST_EVENT
