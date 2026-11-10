@@ -65,6 +65,7 @@ jobs:
           python -m py_compile scripts/space_launch_translate_local.py
           python scripts/space_launch_telegram_send.py --self-test
           python scripts/space_launch_telegram_send.py --inline-self-test
+          python scripts/space_launch_telegram_send.py --readable-self-test
           python scripts/merge_space_launch_state.py --self-test
           python scripts/validate_space_launch_korean.py --self-test
           python scripts/space_launch_translate_local.py --self-test
@@ -109,7 +110,7 @@ jobs:
           SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
           SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
           SPACE_LAUNCH_VERIFY_RECEIPT: "1"
-        run: python scripts/space_launch_telegram_send.py --inline out/space_launch_bottleneck_watch_telegram.txt
+        run: python scripts/space_launch_telegram_send.py --readable out/space_launch_bottleneck_watch_telegram.txt
 
       - name: Persist deduplication state
         # No sent-state update when the final alert was filtered out or absent.
