@@ -721,9 +721,14 @@ class BioAlertRegressionTests(unittest.TestCase):
             )
 
     def test_halozyme_unknown_fwd_does_not_assume_invalidity(self):
+        for case in ("PGR2025-00050", "PGR2025-00053"):
+            self.assertEqual(
+                halo.classify("Status Final Written Decision", case),
+                "final_decision",
+            )
         self.assertEqual(
             halo.classify("Status Final Written Decision", "PGR2025-00042"),
-            "final_decision",
+            "final_unpatentable",
         )
 
     def test_halozyme_post_fwd_stage_beats_quoted_fwd_language(self):
