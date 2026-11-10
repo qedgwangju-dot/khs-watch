@@ -198,7 +198,7 @@ HANUL4_OFFICIAL_OUTLETS = (
 
 # 체코 테믈린 3·4호기는 2025년 두코바니 EPC의 추가 2기 선택권 단계.
 # 2026-10-20 장관 협의는 정치적 후속 협력 기대이며 옵션 행사/별도 본계약 아님.
-TEMELIN_MODEL_VERSION = 1
+TEMELIN_MODEL_VERSION = 2
 TEMELIN_CUTOFF_UTC = dt.datetime(2026, 10, 20, 5, 45, tzinfo=UTC)
 TEMELIN_OPTION_SOURCE = ("https://mpo.gov.cz/en/guidepost/for-the-media/press-releases/"
     "epc-contract-for-completion-of-dukovany-has-been-signed--minister-of-industry-and-trade--lukas-vlcek-will-visit-korea-again-in-july--287912/")
@@ -215,6 +215,12 @@ TEMELIN_OFFICIAL_QUERIES = (
     ('체코 정부', 'site:mpo.gov.cz Temelin nuclear new units KHNP when:30d'),
     ('체코 전력회사', 'site:cez.cz Temelin new nuclear units contract when:30d'),
     ('EU 법규', '"Industrial Accelerator Act" "nuclear" enters into force when:30d'),
+    # 두코바니 2026-10-29 기존 시공 협상결렬 이후의 실제 새 시공사 선정·계약만 추적한다.
+    # 과거 협상결렬 보도를 반복해서 신규 계약으로 발송하지 않는다.
+    ('한국 시공사', 'site:khnp.co.kr 두코바니 신규 시공사 선정 입찰 계약 when:30d'),
+    ('한국 산업부', 'site:motir.go.kr 두코바니 새 시공사 계약 선정 when:30d'),
+    ('체코 정부 시공', 'site:mpo.gov.cz Dukovany new construction contractor selected contract when:30d'),
+    ('체코 발주처', 'site:cez.cz Dukovany construction contractor tender signed when:30d'),
 )
 TEMELIN_STAGES = {
     "government_decision": "체코 정부의 테믈린 신규 대형원전 건설 결정",
@@ -226,6 +232,9 @@ TEMELIN_STAGES = {
     "construction_started": "테믈린 3·4호기 착공",
     "option_ended": "테믈린 선택권 만료·철회",
     "eu_iaa_enacted": "EU 산업가속화법 원전 조달요건 최종 발효",
+    "dukovany_new_tender": "두코바니 기존 시공협상 결렬 이후 신규 시공사 입찰 공식 개시",
+    "dukovany_contractor_selected": "두코바니 신규 시공사 공식 선정",
+    "dukovany_construction_contract_signed": "두코바니 신규 시공계약 공식 체결",
 }
 TEMELIN_HISTORICAL_BASELINE = {
     "option_2025": {
@@ -243,6 +252,24 @@ TEMELIN_HISTORICAL_BASELINE = {
         "date": "2026-10-20",
         "status": "제3차 두코바니 이행점검 협의체의 테믈린 후속 협력 희망",
         "link": TEMELIN_MEETING_SOURCE,
+    },
+    "travel_correction_20261021": {
+        "stage": "ministerial_trip_denied",
+        "date": "2026-10-21",
+        "status": "산업통상부 공식 정정: 김정관 장관의 다음 주 체코 방문 계획 없음; 언론 수정본은 서울 협의",
+        "link": "https://m.korea.kr/briefing/actuallyView.do?newsId=148974028",
+    },
+    "dukovany_construction_talks_ended_20261029": {
+        "stage": "construction_talks_ended",
+        "date": "2026-10-29",
+        "status": "한수원-대우건설·두산에너빌리티 두코바니 시공계약 협상 종료(체코 EPC 전체 해지 아님)",
+        "link": "https://www.khnpcesko.cz/blog/khnp-ukoncila-jednani-o-smlouve-na-stavebni-prace-pro-projekt-dukovany-bez-dosaz",
+    },
+    "dukovany_management_20261103": {
+        "stage": "emergency_management",
+        "date": "2026-11-03",
+        "status": "산업통상부 두코바니 시공계약 협상 결렬 대응 긴급관리체계 발표; 새 시공사 선정·2027년 허가 일정 점검",
+        "link": "https://english.motir.go.kr/eng/article/EATCLdfa319ada/2774/view",
     },
 }
 
@@ -2042,6 +2069,23 @@ def _temelin_official_publisher(url: str) -> bool:
 
 def _temelin_milestone(title: str) -> str | None:
     text = _temelin_fold(title)[:300]
+    # 두코바니 시공사 변경은 테믈린 3·4호기의 실제 수주와 별개의 사건이다.
+    # 단순 조달 계획, 결렬, 정부 독려, 시공 계약 협의가 확정으로 승격되지 않게 한다.
+    if ("두코바니" in text or "dukovany" in text) and not (
+        "테믈린" in text or "temelin" in text
+    ):
+        if any(x in text for x in ("검토", "계획", "예정", "전망", "추진", "고려",
+                                    "기대", "논의", "협상", "결렬", "종료", "우려",
+                                    "may ", "plan", "expect", "talks", "negotiat",
+                                    "could", "propos", "consider", "to select")):
+            return None
+        if re.search(r"(?:new|신규|새).{0,35}(?:construction contractor|시공사|construction consortium).{0,45}(?:selected|선정 확정|선정 완료)", text) or re.search(r"(?:두코바니|dukovany).{0,75}(?:신규 시공사 선정 완료|새 시공사 선정 완료)", text):
+            return "dukovany_contractor_selected"
+        if re.search(r"(?:두코바니|dukovany).{0,90}(?:new construction contract signed|신규 시공계약 체결|새 시공계약 체결)", text):
+            return "dukovany_construction_contract_signed"
+        if re.search(r"(?:두코바니|dukovany).{0,90}(?:신규 시공사 입찰 공고|새 시공사 입찰 개시|new construction contractor tender launched)", text):
+            return "dukovany_new_tender"
+        return None
     if ("industrial accelerator act" in text or "산업가속화법" in text) and (
         "nuclear" in text or "원전" in text or "jader" in text
     ):
@@ -2168,6 +2212,15 @@ def _self_test_temelin_milestones() -> None:
         ("Industrial Accelerator Act nuclear enters into force", "eu_iaa_enacted"),
         ("Commission proposed Industrial Accelerator Act for nuclear", None),
         ("두코바니 5·6호기 EPC 계약 체결", None),
+        ("김정관 장관 다음주 체코 방문 계획 없음(10.21 헤럴드경제 정부 정정)", None),
+        ("두코바니 기존 시공사 협상 결렬·대우 두산 협상 종료", None),
+        ("두코바니 원전 새로운 시공사 선정 예정", None),
+        ("두코바니 새 시공사 선정 완료", "dukovany_contractor_selected"),
+        ("두코바니 신규 시공계약 체결", "dukovany_construction_contract_signed"),
+        ("두코바니 신규 시공사 입찰 공고", "dukovany_new_tender"),
+        ("Dukovany new construction contractor selected", "dukovany_contractor_selected"),
+        ("Dukovany new construction contractor tender launched", "dukovany_new_tender"),
+        ("Dukovany negotiations with existing consortium ended", None),
     )
     if _temelin_fold("테믈린") != "테믈린":
         raise RuntimeError("Temelin Korean Hangul recomposition regression")
@@ -2190,6 +2243,18 @@ def _self_test_temelin_milestones() -> None:
 
 def _render_temelin_milestone(item: dict, idx: int) -> list[str]:
     stage = item["stage"]
+    if stage.startswith("dukovany_"):
+        return [
+            f"## {idx}. [공식기관 발행제목 확인] 체코 두코바니 시공계약 후속 변화",
+            f"- 핵심 변화: {TEMELIN_STAGES[stage]}. 2026년 10월 29일 종료된 한국 시공 컨소시엄 협상의 후속 단계이며, 기존 체코 발주처-KHNP EPC 전체 계약의 해지는 아닙니다.",
+            "- 숫자: 두코바니 5·6호기 총 2기. 신규 시공사 계약금액·공급범위·원가·마진은 개별 계약서 확인 전 미확정입니다.",
+            "- 한국 기업·매출 연결: 한국수력원자력·대우건설·두산에너빌리티의 시공사 역할과 실제 기자재 공급계약은 분리합니다. 새 계약 당사자 확인 전 특정 기업 수주로 계산하지 않습니다.",
+            "- 병목·실패모드: 시공사 재선정, 건설비 협상, 현지화 비중, 체코 허가·부지공사 일정이 지연될 수 있습니다. 테믈린 3·4호기 선택권 행사와 혼동하지 않습니다.",
+            f"- 출처: [{item['source']}]({item['link']}) · {item['published_kst']} · [발행기관]({item['publisher_url']})",
+            "- 과거 공식 기준선: [한수원 2026년 10월 29일 협상 종료](https://www.khnpcesko.cz/blog/khnp-ukoncila-jednani-o-smlouve-na-stavebni-prace-pro-projekt-dukovany-bez-dosaz) / [산업통상부 11월 3일 후속 관리](https://english.motir.go.kr/eng/article/EATCLdfa319ada/2774/view)",
+            "- 다음 확인: 신규 시공사 공식 선정 → 시공계약 금액·범위 → 체코 건설허가 → 부지 정지·착공 → 실제 기성·대금 회수",
+            "",
+        ]
     return [
         f"## {idx}. [공식기관 발행제목 확인] 체코 테믈린 3·4호기",
         f"- 핵심 변화: {TEMELIN_STAGES[stage]}. 공식기관이 새 단계에 해당하는 발표 제목을 공개했습니다. 실제 계약 조건은 원문·계약서로 별도 확인합니다.",
