@@ -122,9 +122,27 @@
       "option_tenor_years": 5,
       "stage": "option_in_dukovany_epc",
       "status": "두코바니 5·6호기 EPC에 테믈린 추가 2기 5년 선택권 포함·아직 미행사"
+    },
+    "travel_correction_20261021": {
+      "stage": "ministerial_trip_denied",
+      "date": "2026-10-21",
+      "status": "산업통상부 공식 정정: 김정관 장관의 다음 주 체코 방문 계획 없음; 언론 수정본은 서울 협의",
+      "link": "https://m.korea.kr/briefing/actuallyView.do?newsId=148974028"
+    },
+    "dukovany_construction_talks_ended_20261029": {
+      "stage": "construction_talks_ended",
+      "date": "2026-10-29",
+      "status": "한수원-대우건설·두산에너빌리티 두코바니 시공계약 협상 종료(체코 EPC 전체 해지 아님)",
+      "link": "https://www.khnpcesko.cz/blog/khnp-ukoncila-jednani-o-smlouve-na-stavebni-prace-pro-projekt-dukovany-bez-dosaz"
+    },
+    "dukovany_management_20261103": {
+      "stage": "emergency_management",
+      "date": "2026-11-03",
+      "status": "산업통상부 두코바니 시공계약 협상 결렬 대응 긴급관리체계 발표; 새 시공사 선정·2027년 허가 일정 점검",
+      "link": "https://english.motir.go.kr/eng/article/EATCLdfa319ada/2774/view"
     }
   },
-  "temelin_large_nuclear_model_version": 1,
+  "temelin_large_nuclear_model_version": 2,
   "updated_at_kst": "2026-10-08T09:15:53+09:00",
   "westinghouse_issue_state": {
     "correction_note": "2026-10-03 IT조선 이사회 진입 추진 보도는 신규 확정 상태가 아니므로 기준선에서 제외",
