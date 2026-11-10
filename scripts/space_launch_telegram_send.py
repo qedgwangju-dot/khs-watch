@@ -318,7 +318,9 @@ def inline_source_name(url: str, number: int) -> str:
     if "graingp.com" in host:
         return "Grain"
     if "rocketlabcorp.com" in host:
-        return "Rocket Lab"
+        return "Rocket Lab 공식"
+    if "news.google.com" in host:
+        return "Google 뉴스 색인"
     if "reuters.com" in host:
         return "Reuters"
     return f"원문{INLINE_LABELS[number]}"

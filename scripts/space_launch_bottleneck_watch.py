@@ -520,7 +520,8 @@ def usd_to_krw_note(text: str, rate: float | None) -> str | None:
         return None
     matches = re.findall(r"\$\s?(\d+(?:\.\d+)?)\s?(billion|million|B|M|bn|mn)?", text, flags=re.I)
     notes: list[str] = []
-    for number, unit in matches[:3]:
+    seen_amounts: set[int] = set()
+    for number, unit in matches[:12]:
         value = float(number)
         u = unit.lower()
         if u in {"b", "bn", "billion"}:
@@ -529,6 +530,10 @@ def usd_to_krw_note(text: str, rate: float | None) -> str | None:
             usd = value * 1_000_000
         else:
             usd = value
+        normalized = round(usd)
+        if normalized in seen_amounts:
+            continue
+        seen_amounts.add(normalized)
         krw = usd * rate
         if krw >= 1_000_000_000_000:
             rendered = f"약 {krw / 1_000_000_000_000:.2f}조원"
@@ -540,6 +545,8 @@ def usd_to_krw_note(text: str, rate: float | None) -> str | None:
             rendered = f"약 {krw:,.0f}원"
         label = "$" + number + (unit or "")
         notes.append(f"{label}≈{rendered}")
+        if len(notes) >= 3:
+            break
     return ", ".join(notes) if notes else None
 
 
@@ -582,7 +589,12 @@ def render_item(category: Category, item: dict, rate: float | None) -> str:
     tag, meaning, failure, indicator = category.tag, category.meaning, category.failure, category.indicator
     event = kind(category.key, str(item.get("title") or ""))
     if category.key == "rocketlab":
-        if event == "development_delay":
+        if event == "contract":
+            tag = "[신규 발사계약·실제 매출 미발생]"
+            meaning = "발사계약 체결 보도와 실제 발사·검수·매출 인식을 구분합니다. 금액·고객·횟수는 회사 원문으로 확인해야 합니다."
+            failure = "Neutron 첫 비행·인증·발사일 지연 시 계약 물량이 매출로 전환되는 시기도 늦어집니다."
+            indicator = "회사 직접 계약 발표·고객별 발사 일정·계약잔고·Neutron 첫 비행과 발사 실제 완료"
+        elif event == "development_delay":
             tag = "[개발·일정 지연]"
             meaning = "Neutron 개발 일정 변경으로 첫 고객 발사·매출 시점이 늦어질 수 있으나 Electron 신규 공급계약과는 별개입니다."
             failure = "제조·품질검증 재작업이나 추가 시험 실패 시 새로운 비행 목표일도 연기될 수 있습니다."
@@ -599,23 +611,26 @@ def render_item(category: Category, item: dict, rate: float | None) -> str:
     pub = dt.datetime.fromisoformat(item["published"]) if item.get("published") else None
     when = pub.astimezone(KST).strftime("%Y-%m-%d %H:%M KST") if pub else "게시시각 확인 불가"
     official = source_is_official(item)
-    verification = "공식자료" if official else "복수 신뢰보도 교차확인"
+    # RSS source_url identifies the reported publisher; an RSS card is not
+    # evidence that our runner opened the publisher's full original article.
+    verification = ("회사 명의 뉴스 색인(회사 발표 원문 직접 열람 전)"
+                    if official else "신뢰 매체 뉴스 색인(기사 원문 직접 열람 전)")
     if category.key == "golden_dome" and not official:
         verification = "블룸버그 최초 보도 재인용 가능·국방부/구글 확정계약 미확인"
     numbers = extract_numbers(item_text(item))
     krw = usd_to_krw_note(item_text(item), rate)
     lines = [
         f"{tag} {category.name}",
-        f"• {item['title']}",
-        f"• 검증: {verification} | 출처: {item.get('source') or '출처 미표기'} | {when}",
-        f"• 핵심 숫자: {numbers}",
+        "• 핵심: "+meaning,
+        f"• 사건 제목: {item['title']}",
+        f"• 확인 단계: {verification} | {item.get('source') or '출처 미표기'} | {when}",
+        f"• 원문에서 추출된 숫자: {numbers}",
     ]
     if krw:
         lines.append(f"• 원화 환산(USD/KRW {rate:,.2f}): {krw}")
     lines.extend(
         [
-            f"• 투자 의미: {meaning}",
-            f"• 실패 경로: {failure}",
+            f"• 주의: {failure}",
             f"• 먼저 볼 지표: {indicator}",
             f"• 원문: {item['link']}",
         ]
@@ -805,6 +820,51 @@ def starlink_v4_projection_notice(check=check_primary)->str:
         "• 원문: "+interview,
     ))
 
+
+# This is a one-time correction to a confirmed earlier Telegram false label.
+# Never classify a publisher RSS card as an opened primary source.
+ROCKETLAB_Q3_NEUTRON_CORRECTION_KEY="audit:20261110:rocketlab_neutron_q3_515m_contract_correction"
+ROCKETLAB_Q3_NEUTRON_OLD_KEY="semantic:rocketlab:neutron_development:development:2026-11-09"
+ROCKETLAB_Q3_PRIMARY="https://rocketlabcorp.com/updates/rocket-lab-lands-over-515m-in-neutron-launch-deals-from-constellation-operators-in-q3/"
+ROCKETLAB_Q3_IR="https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-lands-over-515m-neutron-launch-deals-constellation"
+
+
+def rocketlab_q3_neutron_mislabelled(title:str)->bool:
+    t=title.casefold()
+    return ("rocket lab" in t and "neutron" in t and
+            ("515" in t or "q3" in t and "constellation" in t) and
+            any(term in t for term in ("launch deal","launch contract","constellation operator")))
+
+
+def rocketlab_neutron_contract_correction(check=check_primary,rate_getter=fetch_usdkrw)->str:
+    primary=first_readable_source((
+        (ROCKETLAB_Q3_PRIMARY,("eight missions","five constellation","$515",
+                              "$70 million","$55 million","16 missions","2027")),
+        (ROCKETLAB_Q3_IR,("eight missions","five constellation","$515",
+                         "$70 million","$55 million","16 missions","2027")),
+    ),check)
+    rate=rate_getter()
+    def money(millions:float)->str:
+        if rate is None:return "(원화 환산 미확인)"
+        value=millions*1_000_000*rate/100_000_000
+        return f"(약 {value:,.0f}억원, 적용 환율 1달러={rate:,.2f}원)"
+    return "\n".join((
+        "[중요 정정·확정계약] Rocket Lab Neutron 2026년 3분기 발사계약",
+        "■ 핵심: 2026년 3분기 Neutron 발사계약 8회·계약 상대방 5곳·총 5억1,500만달러 초과"+money(515)+
+        "를 체결했다고 회사가 발표했습니다. 아직 실제 발사·매출 인식 완료가 아닙니다.",
+        "■ 고객별 발사 일정: ICEYE 3회(2028년 말부터), Muon Space 2회(2029년·2030년), "
+        "Starcloud 1회(2029년), Kepler Communications 1회, 미국 우주군 1회.",
+        "■ 평균판매단가 기준: Neutron 기본 발사가격 5,500만달러 → 7,000만달러(+27.3%). "
+        "높아진 가격은 일부 계약에 적용됐으며 8회 전체의 동일 단가가 아닙니다.",
+        "■ 계약잔고·시간표: Neutron 발사예약은 누적 16회, 다음 신규 계약 가능 발사시점은 2030년대로 제시. "
+        "Neutron 첫 비행 목표는 2027년이며 성공·상용발사를 확정한 상태가 아닙니다.",
+        "■ 이전 알림 정정: 11월 10일 10:16 KST 알림의 '[개발·시험]' 분류는 오류입니다. "
+        "2026년 3분기 신규 계약 체결이 확인된 사실입니다. 중복 표기된 5억1,500만달러도 같은 계약금액 1건입니다.",
+        "■ 추적: Neutron 첫 비행·고객별 발사·실제 인도와 매출 인식, 계약 취소·지연, 발사가격 유지 여부.",
+        "• 원문: "+primary,
+        "• 원문: https://www.sec.gov/Archives/edgar/data/1819994/000181999426000073/rklb-11092026ex991.htm",
+    ))
+
 JPM_SPACEX_EVENT="analyst:spcx:jpmorgan:20261021:240_to_500"
 JPM_NEWS_1="https://www.tipranks.com/news/the-fly/spacex-price-target-raised-to-500-from-240-at-jpmorgan-thefly-news"
 JPM_NEWS_2="https://www.investing.com/news/analyst-ratings/jpmorgan-raises-spacex-stock-price-target-to-500-on-growth-outlook-93CH-4962780"
@@ -902,12 +962,16 @@ def main() -> int:
         (KASA_AI_EVENT, korea_space_ai_notice),
         (SPACE_FUND_EVENT, space_funding_notice),
         (JPM_SPACEX_EVENT, spacex_jpm_verified_target_notice),
+        (ROCKETLAB_Q3_NEUTRON_CORRECTION_KEY, rocketlab_neutron_contract_correction),
         (NASA_CLPS2_EVENT, nasa_clps2_release_notice),
         (STARLINK_V4_VISION_EVENT, starlink_v4_projection_notice),
         (FIREFLY_CLPS2_FACTORY_EVENT, firefly_lunar_capacity_notice),
         (VOYAGER_GRIFFIN1_TEST_EVENT, voyager_griffin1_notice),
     ):
         if key in seen:
+            continue
+        if (key == ROCKETLAB_Q3_NEUTRON_CORRECTION_KEY and
+                ROCKETLAB_Q3_NEUTRON_OLD_KEY not in seen):
             continue
         try:
             report = builder()
@@ -951,6 +1015,10 @@ def main() -> int:
                 selected.append((category, candidates[0]))
         else:
             for item in candidates:
+                # Old Neutron $515M headline was already sent as development.
+                # The verified notice above is its one and only correction.
+                if category.key == "rocketlab" and rocketlab_q3_neutron_mislabelled(item["title"]):
+                    continue
                 if previously_corrected_neutron_delay(category.key, item, seen):
                     continue
                 if item["_id"] not in seen and item["_semantic_id"] not in seen:
@@ -1118,6 +1186,24 @@ def self_test() -> int:
     final=spacex_jpm_verified_target_notice(check=final_sources,rate_getter=lambda:1300)
     assert "finance.yahoo.com" in final and "marketbeat.com" in final
 
+    test_rate=1357.90
+    def mock_rocketlab_source(url,*markers):
+        if url==ROCKETLAB_Q3_PRIMARY and all(k in markers for k in
+            ("eight missions","five constellation","$515","$70 million","$55 million","16 missions","2027")
+        ):return "verified"
+        raise ValueError("not the original report")
+    corrected=rocketlab_neutron_contract_correction(
+        check=mock_rocketlab_source,rate_getter=lambda:test_rate
+    )
+    assert "8회·계약 상대방 5곳" in corrected and "5억1,500만달러 초과" in corrected
+    assert "계약 체결이 확인된 사실" in corrected and "2027년" in corrected
+    assert "ICEYE 3회" in corrected and "Muon Space 2회" in corrected
+    assert "5,500만달러 → 7,000만달러(+27.3%)" in corrected
+    assert "회사에서 확인" not in corrected
+    assert corrected.count("• 원문: ")==2
+    assert rocketlab_q3_neutron_mislabelled("Rocket Lab Lands Over $515M in Neutron Launch Deals from Constellation Operators in Q3")
+    assert not rocketlab_q3_neutron_mislabelled("Rocket Lab Neutron test fire successful")
+    assert usd_to_krw_note("$515M: $515M: Rocket Lab Neutron", 1344.79).count("$515M")==1
     rocketlab = next(x for x in CATEGORIES if x.key == "rocketlab")
     sample = dict(
         title="Rocket Lab Neutron first flight delayed until 2027",

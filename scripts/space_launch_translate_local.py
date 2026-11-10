@@ -185,6 +185,14 @@ def translate_report(text: str, translate_fn=translate_english_text) -> str:
         translated = translate_fn(body).strip()
         if not HANGUL_RE.search(translated):
             raise RuntimeError(f"translation did not produce Korean text: {body!r}")
+        original_numbers = re.findall(r"\d[\d,.]*", body)
+        translated_numbers = re.findall(r"\d[\d,.]*", translated)
+        if sorted(original_numbers) != sorted(translated_numbers):
+            # Machine translation sometimes changes $515M to two Korean
+            # numerals or drops a year. Preserve the EXACT original instead
+            # of emitting a confident but numerically different Korean title.
+            translated = "기사 제목 원문(숫자 불일치로 자동번역 보류): " + body
+            print("space_launch_title_number_guard=source_title_preserved", file=sys.stderr)
         lines.append(prefix + translated)
 
     return "\n".join(lines).rstrip() + "\n"
@@ -206,6 +214,9 @@ def self_test() -> int:
 
     output = translate_report(sample, fake_translate)
     assert "투자자들이 어떻게 반응할 수 있는가" in output
+    changed=translate_report(sample,lambda original:"Rocket Lab의 발사 계약이 30회")
+    assert "기사 제목 원문(숫자 불일치로 자동번역 보류)" in changed
+    assert "Record 20-Launch" in changed and "30회" not in changed
     assert "https://example.com/a?x=1&y=2" in output
     assert "출처: Yahoo Finance" in output
     print("space_launch_local_translation_self_test=ok")

@@ -29,7 +29,10 @@ def kind(category,title):
         # Broker actions are independent from the underlying Neutron delay.
         if TARGET.search(t) or BROKER.search(t):return "analyst"
         if "neutron" in t and DELAY.search(t):return "development_delay"
-        if re.search(r"contract|award|signed|secures|수주|계약",t):return "contract"
+        if re.search(r"contract|award|signed|signs|secures|secured|"
+                     r"lands? (?:over |more than |\$)|launch deals?|"
+                     r"booked .{0,35}launch|발사계약|발사 계약|수주|계약",t):
+            return "contract"
         return "development"
     if category=="spacex_valuation":
         if TARGET.search(t) or BROKER.search(t):return "analyst"
@@ -182,6 +185,9 @@ def self_test():
     assert kind("rocketlab","Rocket Lab signs Neutron launch contract for 2027")=="contract"
     assert kind("rocketlab","Rocket Lab Neutron maiden flight delayed")=="development_delay"
     assert kind("rocketlab","Rocket Lab Electron secures 20 mission contract")=="contract"
+    assert kind("rocketlab","Rocket Lab lands over $515M in Neutron launch deals from constellation operators in Q3")=="contract"
+    assert kind("rocketlab","Rocket Lab reports successful Neutron test firing")=="development"
+    assert kind("rocketlab","Rocket Lab Neutron first flight delayed to 2027")=="development_delay"
     assert kind("spacex_valuation","Morgan Stanley raises SpaceX price target")=="analyst"
     assert kind("golden_dome","Alphabet Google in talks to join Golden Dome")=="pre_contract"
     assert kind("golden_dome","Google signs contract for Golden Dome data security")=="contract_reported"
