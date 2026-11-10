@@ -235,6 +235,45 @@ CATEGORIES = (
         failure="Starship 회수·열차폐·재비행 정비가 늦어지면 대형 위성군 증설 일정과 비용이 악화하나 Falcon 9·Dragon 운항이 즉시 중단되는 것은 아닙니다.",
         indicator="NASA Crew-15~17 2030년 계약, Falcon 9 월별 발사 횟수, Starship 회수·재사용, 발사당 실제 위성 수",
     ),
+    Category(
+        key="moon_base_clps",
+        tag="[NASA 달 운송·신규 과업]",
+        name="NASA CLPS 2 참여자격·실제 달 화물 임무 발주",
+        queries=(
+            '"NASA" "CLPS 2" ("task order" OR award OR cancellation) when:7d',
+            '"NASA" ("Moon Base" OR "cislunar communications") (SpaceX OR Firefly OR Voyager OR Intuitive Machines) contract when:7d',
+            '"NASA" ("miniCAST" OR "Redwire" OR "PROMISE") (contract OR deployment OR delivery) when:7d',
+            'site:nasa.gov "CLPS" "task order" "Moon Base" when:14d',
+        ),
+        relevance=re.compile(
+            r"(NASA|CLPS|Moon Base|달 기지|달 수송).*(lunar|CLPS|Moon Base|task order|contract|award|"
+            r"SpaceX|Voyager|Firefly|Redwire|PROMISE|miniCAST|수주|발주)|"
+            r"(Redwire|SpaceX|Firefly|Voyager|Intuitive Machines).*(CLPS|Moon Base|lunar task order)",
+            re.I,
+        ),
+        meaning="8개 기업의 입찰자격과 100억 달러 총한도는 개별 확정 수주가 아닙니다. 이후 임무별 계약·인도·검수·매출을 따로 확인합니다.",
+        failure="Starship 착륙선·발사허가·우주선 신뢰성·달 남극 전력·착륙 정밀도·자금 집행 지연",
+        indicator="NASA 별도 과업 발주번호·수주기업·개별 금액·임무 일정·시험·달 표면 인도·매출 인식",
+    ),
+    Category(
+        key="starlink_optical",
+        tag="[선행경보·V4 광통신]",
+        name="Starlink V4 위성 간 레이저망·해저케이블 대체 구상",
+        queries=(
+            '"Starlink" ("V4" OR "version 4") ("laser" OR "optical" OR "10 Tbps") when:7d',
+            '"SpaceX" ("100,000 satellites" OR "100 lasers") ("FCC" OR "specification" OR "deployment") when:7d',
+            '"Starlink" ("subsea" OR "undersea" OR "optical backhaul") (contract OR test OR gateway) when:7d',
+            'site:spacex.com ("Starlink V4" OR "laser links") when:14d',
+        ),
+        relevance=re.compile(
+            r"(Starlink|SpaceX|스타링크|스페이스X).*(V4|version.?4|laser|optical|subsea|undersea|레이저|해저케이블)|"
+            r"(V4|laser|optical|subsea|undersea|레이저|해저케이블).*(Starlink|SpaceX|스타링크)",
+            re.I,
+        ),
+        meaning="머스크가 제시한 10개·약 100개 레이저 수와 10만 기 구상은 검증 전 설계목표입니다. 위성 간 회선과 지상 이용자 처리량을 구분합니다.",
+        failure="Starship 발사주기·레이저 크기와 조준·궤도 간 간섭·지상 관문국·전력·위성 교체비·규제 지연",
+        indicator="SpaceX 공식 V4 사양·FCC 신청/승인·실제 발사·10Tbps 측정시험·관문국 처리량·상용 백업 계약",
+    ),
 )
 
 
@@ -653,6 +692,86 @@ def space_funding_notice() -> str:
     ))
 
 
+# Already-announced NASA milestones and Musk's proposal are different
+# evidence classes. Never count program ceilings or laser terminal targets as sales.
+NASA_CLPS2_EVENT="nasa:moon_base:20261107:clps2_8_provider_framework"
+STARLINK_V4_VISION_EVENT="starlink:v4:20261106:10_vs_100_laser_projection"
+NASA_CLPS2_ORIGINAL="https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects/"
+NASA_CLPS2_JPL="https://www.jpl.nasa.gov/news/nasa-awards-moon-base-transportation-technology-science-projects/"
+MUSK_POST_ORIGINAL="https://x.com/elonmusk/status/2118788513365954734"
+MUSK_POST_ARCHIVE="https://elonmuskarchive.org/posts/2118788513365954734"
+MUSK_POST_MIRROR="https://xitter.gq/elonmusk/status/2118788513365954734"
+MUSK_VIDEO_ARCHIVE="https://www.elonmuskarchive.org/video/baron-investment-conference-2026-11-06"
+MUSK_VIDEO_TRANSCRIPT="https://teslanorth.com/2026/11/07/elon-musks-full-ron-baron-interview-2026-tesla-spacex-starship-ai-and-more/"
+
+def first_readable_source(candidates,check=check_primary):
+    errors=[]
+    for url,markers in candidates:
+        try:
+            check(url,*markers)
+            return url
+        except Exception as exc:
+            errors.append(type(exc).__name__)
+    raise RuntimeError("원문·동일 공개자료 모두 접근 실패: "+",".join(errors))
+
+def format_usd_billion(billion:float,rate:float|None)->str:
+    # The NASA program ceiling is not a company's revenue.
+    usd=(f"{billion*10:g}억달러" if billion>=0.1
+         else f"{billion*100000:g}만달러")
+    if not rate:return usd+"(원화 환산 미확인)"
+    eok=round(billion*1_000_000_000*rate/100_000_000)
+    if eok>=10000:
+        won=f"{eok//10000}조{eok%10000:04,d}억원"
+    else:
+        won=f"{eok:,}억원"
+    return usd+f"(약 {won})"
+
+def nasa_clps2_release_notice(check=check_primary,rate_getter=fetch_usdkrw)->str:
+    url=first_readable_source((
+        (NASA_CLPS2_ORIGINAL,("CLPS 2","$10 billion","Firefly Aerospace",
+                              "Voyager Technologies","Redwire","2028")),
+        (NASA_CLPS2_JPL,("CLPS 2","$10 billion","Firefly Aerospace",
+                         "Voyager Technologies","Redwire","2028")),
+    ),check)
+    rate=rate_getter()
+    return "\n".join((
+        "[NASA 공식·발주자격] 2026년 11월 7일 CLPS 2 신규 8개사 선정",
+        "• 총한도: "+format_usd_billion(10,rate)+"(10년 다수기업 경쟁형 계약). 여덟 기업의 확정 수주액이나 매출을 합산한 수치가 아닙니다.",
+        "• 선정: 파이어플라이 에어로스페이스·인튜이티브 머신스·록히드마틴·노스럽그러먼·스페이스X·보이저 테크놀로지스·블루오리진·아이스페이스 미국 법인. 후속 개별 발주 경쟁 자격입니다.",
+        "• 기존 CLPS 1 총한도: "+format_usd_billion(2.6,rate)+" → "+format_usd_billion(4.2,rate)+"로 상향. 신규 CLPS 2의 발주액과 중복 합산하지 않습니다.",
+        "• 별도 실제 임무: SpaceX는 2028년 Starship 달 통신위성 배치 과업에 선정됐으나 개별 금액 미공개. Redwire는 miniCAST 발전 부품 공급 기업으로 선정됐습니다.",
+        "• 별도 PROMISE 달 탐사차량 수송: Blue Origin "+format_usd_billion(.094,rate)+" 기본 계약·추가 옵션 "+format_usd_billion(.140,rate)+". 다른 NASA 수송 발주 6건 "+format_usd_billion(1.3,rate)+"과 CLPS 2 총한도는 별개의 수치입니다.",
+        "• 2036년·2041년 연장 및 총 "+format_usd_billion(15,rate)+" 옵션은 제공 메모 기준입니다. 11월 7일 NASA 보도자료에서 동일 조건을 확인하지 못했으므로 확정 계약 조건으로 승격하지 않습니다.",
+        "• 먼저 볼 지표: 개별 과업 번호·체결 금액·NASA 예산 집행·달 착륙선 시험·실제 인도·검수·매출 인식. Falcon 9/Starship 발사·통신 계약을 섞지 않습니다.",
+        "• 원문: "+url,
+        "• 원문: https://www.nasa.gov/johnson/jsc-procurement/clps2/",
+    ))
+
+def starlink_v4_projection_notice(check=check_primary)->str:
+    # The social-media text and the actual interview are distinct artifacts.
+    post=first_readable_source((
+        (MUSK_POST_ORIGINAL,("100 lasers","10 Tb/s","undersea cables")),
+        (MUSK_POST_ARCHIVE,("100 lasers","10 Tb/s","undersea cables")),
+        (MUSK_POST_MIRROR,("100 lasers","10 Tb/s","undersea cables")),
+    ),check)
+    interview=first_readable_source((
+        (MUSK_VIDEO_ARCHIVE,("Starlink version 4","10 terabits","10 of them")),
+        (MUSK_VIDEO_TRANSCRIPT,("Starlink version four","ten terabits","ten of them")),
+    ),check)
+    access=("X 원문 직접 검증" if post==MUSK_POST_ORIGINAL
+            else "X 게시글 공개 보존본으로 복원·원본 직접 확인과 구분")
+    return "\n".join((
+        "[선행경보·설계구상] Starlink V4 위성 간 레이저·해저케이블 대안",
+        "• 출처 단계: 2026년 11월 6일 머스크 발언. "+access+". 미래 사양·배치·허가·계약 확정이 아닙니다.",
+        "• 인터뷰: V4는 V3 대비 전체 성능 10배 목표. 위성 간 광링크는 현행 약 100Gbps → 차세대 10Tbps(레이저 링크당 100배), 위성당 10개를 언급.",
+        "• 같은 날 X 게시글: 위성당 약 100개 레이저·개당 10Tbps 이상·전체 위성 10만기 이상을 가정. 후속 설명에서 크기 축소·더 가까운 간격·작은 조준각을 100개 실현 조건으로 제시했습니다.",
+        "• 10개와 100개는 서로 다른 단계의 발언이며 둘 다 양산 사양으로 확정되지 않았습니다. 위성 간 링크의 숫자를 더해 지구 전체 실제 다운로드 속도·해저케이블 대체용량으로 환산하지 않습니다.",
+        "• 먼저 볼 지표: SpaceX 설계 발표·FCC 운용허가·스타십 V4 실제 발사 수·레이저 실측 처리량·지상 관문국 용량·기업/정부 유료 백업 계약.",
+        "• 역풍: 레이저 크기·정렬·전력·발열·지상망 병목과 위성 교체비·우주파편 위험, 해저케이블의 낮은 단가와 기존 규모.",
+        "• 원문: "+post,
+        "• 원문: "+interview,
+    ))
+
 JPM_SPACEX_EVENT="analyst:spcx:jpmorgan:20261021:240_to_500"
 JPM_NEWS_1="https://www.tipranks.com/news/the-fly/spacex-price-target-raised-to-500-from-240-at-jpmorgan-thefly-news"
 JPM_NEWS_2="https://www.investing.com/news/analyst-ratings/jpmorgan-raises-spacex-stock-price-target-to-500-on-growth-outlook-93CH-4962780"
@@ -750,6 +869,8 @@ def main() -> int:
         (KASA_AI_EVENT, korea_space_ai_notice),
         (SPACE_FUND_EVENT, space_funding_notice),
         (JPM_SPACEX_EVENT, spacex_jpm_verified_target_notice),
+        (NASA_CLPS2_EVENT, nasa_clps2_release_notice),
+        (STARLINK_V4_VISION_EVENT, starlink_v4_projection_notice),
     ):
         if key in seen:
             continue
@@ -877,6 +998,30 @@ def self_test() -> int:
     assert "korea_orbital_ai" in [x.key for x in CATEGORIES]
     assert "space_investment" in [x.key for x in CATEGORIES]
     assert "golden_dome" in [x.key for x in CATEGORIES]
+    assert "moon_base_clps" in [x.key for x in CATEGORIES]
+    assert "starlink_optical" in [x.key for x in CATEGORIES]
+    assert NASA_CLPS2_EVENT != STARLINK_V4_VISION_EVENT
+    assert format_usd_billion(10,1357.9)=="100억달러(약 13조5790억원)"
+    assert format_usd_billion(4.2,1357.9)=="42억달러(약 5조7032억원)"
+    assert format_usd_billion(.094,1357.9).startswith("9400만달러(")
+    assert "원화 환산 미확인" in format_usd_billion(10,None)
+    def mock_lunar_read(url,*markers):
+        if url==NASA_CLPS2_JPL and "Redwire" in markers:return "verified"
+        raise ValueError("NASA main unavailable")
+    lunar=nasa_clps2_release_notice(check=mock_lunar_read,rate_getter=lambda:1357.9)
+    assert "SpaceX는 2028년" in lunar and "Redwire" in lunar
+    assert "확정 수주액" in lunar and "제공 메모 기준" in lunar
+    assert "jpl.nasa.gov" in lunar and lunar.count("• 원문: ")==2
+    def mock_v4_read(url,*markers):
+        if url in (MUSK_POST_ARCHIVE,MUSK_VIDEO_ARCHIVE):return "verified"
+        raise ValueError("X or other source unavailable")
+    optical=starlink_v4_projection_notice(check=mock_v4_read)
+    assert "10개와 100개" in optical and "양산 사양" in optical
+    assert optical.count("• 원문: ")==2 and "공개 보존본" in optical
+    try:
+        starlink_v4_projection_notice(check=lambda url,*markers: (_ for _ in ()).throw(ValueError("all unavailable")))
+    except RuntimeError:pass
+    else:raise AssertionError("Must fail closed on unverified V4 claim")
     golden=next(x for x in CATEGORIES if x.key=="golden_dome")
     sample={"title":"Alphabet Google in talks to join Golden Dome cybersecurity",
             "description":"","source":"Bloomberg","source_url":"https://www.bloomberg.com",
