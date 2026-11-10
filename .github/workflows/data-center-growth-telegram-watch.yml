@@ -338,6 +338,7 @@ jobs:
           tree = ast.parse(source)
           functions = {
               "normalize", "h", "a", "krw_from_usd_b", "parse_gev",
+              "extract_scale_mw", "is_meaningful",
               "jet_turbine_regression_checks", "jet_turbine_event_due",
               "jet_turbine_alert_text",
           }
@@ -371,11 +372,28 @@ jobs:
           assert not scope["jet_turbine_event_due"]({}, proof, False, False, dt.date(2026, 11, 10))
           report = scope["jet_turbine_alert_text"](proof)
           required = ("6년", "650MW", "PE6000", "14억6,500만달러",
-                      "FTAI", "1,250만달러", "116GW", "122GW", "EPA",
+                      "FTAI", "1,250만달러", "116GW", "122GW",
+                      "17GW", "129GW", "87GW", "42GW", "EPA",
                       "전원 인가", "Crusoe", "ProEnergy")
           assert all(x in report for x in required), [x for x in required if x not in report]
           assert report.count("<a href=") == report.count("</a>")
           assert report.count("<b>") == report.count("</b>")
+          assert scope["is_meaningful"](
+              "FTAI Aviation signs initial purchase order for Mod-1 CFM56 turbine data center",
+              "FTAI Aviation"
+          )
+          assert scope["is_meaningful"](
+              "ProEnergy delivered PE6000 turbine generators for data center",
+              "ProEnergy"
+          )
+          assert not scope["is_meaningful"](
+              "FTAI Aviation could plan a Mod-1 CFM56 turbine data center purchase order",
+              "FTAI Aviation"
+          )
+          assert not scope["is_meaningful"](
+              "FTAI Aviation stock price rises without turbine contract",
+              "FTAI Aviation"
+          )
           # Simulate Q3 publisher wording, then failure to access publisher.
           q3 = ("Third Quarter 2026 Highlights: Gas Power equipment backlog and "
                 "slot reservation agreements grew from 116 to 122 GW; now anticipate "
