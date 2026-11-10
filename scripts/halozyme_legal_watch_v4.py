@@ -370,7 +370,7 @@ CASE_TIMELINES = {
     "PGR2025-00042": (
         ("2025-04-15", "PGR 청구"),
         ("2025-11-13", "심판 개시"),
-        ("2026-11-09", "Paper 95 최종서면결정 — 심판 대상 청구항 전부 특허성 부정"),
+        ("2026-11-09", "최종서면결정"),
     ),
     "PGR2025-00024": (
         ("2025-02-21", "PGR 청구"),
@@ -491,6 +491,8 @@ def _persisted_timeline_rows(case: str) -> list[dict]:
             copy["label"] = TIMELINE_EVENT_LABELS["nl_injunction"]
         if case in OCT15_PTACTS_CASES and str(copy.get("label") or "").startswith("Paper 100 최종서면결정"):
             copy["label"] = "최종서면결정"
+        if case == "PGR2025-00042" and str(copy.get("label") or "").startswith("Paper 95 최종서면결정"):
+            copy["label"] = "최종서면결정"
         out.append(copy)
     return out
 
@@ -512,6 +514,8 @@ def _merged_case_timelines(state: dict) -> dict:
             if case == DUTCH_VRO_CASE and label == old_nl_label:
                 label = canonical_nl_label
             if case in OCT15_PTACTS_CASES and label.startswith("Paper 100 최종서면결정"):
+                label = "최종서면결정"
+            if case == "PGR2025-00042" and label.startswith("Paper 95 최종서면결정"):
                 label = "최종서면결정"
             key = (date, label)
             if key in seen_rows:

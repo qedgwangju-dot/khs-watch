@@ -844,6 +844,23 @@ class BioAlertRegressionTests(unittest.TestCase):
                     self.assertEqual(len(final_rows), 1)
 
 
+
+    def test_halozyme_nov9_fwd_timeline_dedupes_legacy_paper95_row(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            state_path = pathlib.Path(tmpdir) / "state.json"
+            state_path.write_text(json.dumps({"case_event_timelines": {
+                "PGR2025-00042": [
+                    {"date":"2026-11-09","kind":"","label":"Paper 95 최종서면결정 — 심판 대상 청구항 전부 특허성 부정"},
+                    {"date":"2026-11-09","kind":"final_unpatentable","label":"최종서면결정"},
+                ],
+            }}), encoding="utf-8")
+            with patch.object(halo.base, "STATE", state_path):
+                item = halo.NOV9_USER_DOCUMENTED_FWD[0]
+                timeline = halo.timeline_html("PGR2025-00042", "final_unpatentable", item)
+                self.assertEqual(timeline.count("<b>2026년 11월 9일</b>"), 1)
+                normalized = halo._merged_case_timelines(json.loads(state_path.read_text(encoding="utf-8")))
+                self.assertEqual(len([r for r in normalized["PGR2025-00042"] if r["date"] == "2026-11-09"]), 1)
+
     def test_halozyme_nov9_pgr42_user_paper95_fwd_metadata_and_alert(self):
         item = halo.NOV9_USER_DOCUMENTED_FWD[0]
         txt = " ".join(str(item.get(key) or "") for key in ("title", "description", "url"))
