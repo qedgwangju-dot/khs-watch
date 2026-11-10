@@ -699,6 +699,7 @@ STARLINK_V4_VISION_EVENT="starlink:v4:20261106:10_vs_100_laser_projection"
 FIREFLY_CLPS2_FACTORY_EVENT="lunar_vendor:firefly:20261107:clps2_factory_12"
 VOYAGER_GRIFFIN1_TEST_EVENT="lunar_vendor:voyager:20261013:griffin1_acceptance"
 FIREFLY_CLPS2_RELEASE="https://investors.fireflyspace.com/news-releases/news-release-details/firefly-aerospace-selected-vendor-nasas-10-billion-clps-2"
+FIREFLY_CLEANROOM_ORIGINAL="https://fireflyspace.com/news/firefly-aerospace-completes-new-cleanroom-to-accelerate-spacecraft-production/"
 VOYAGER_GRIFFIN1_RELEASE="https://voyagertechnologies.com/press-releases/voyagers-griffin-1-on-track-for-the-moon/"
 NASA_CLPS2_ORIGINAL="https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects/"
 NASA_CLPS2_JPL="https://www.jpl.nasa.gov/news/nasa-awards-moon-base-transportation-technology-science-projects/"
@@ -752,14 +753,20 @@ def nasa_clps2_release_notice(check=check_primary,rate_getter=fetch_usdkrw)->str
     ))
 
 def firefly_lunar_capacity_notice(check=check_primary)->str:
-    check(FIREFLY_CLPS2_RELEASE,"CLPS 2","12 spacecraft","Blue Ghost","MoonFall")
+    verified=first_readable_source((
+        (FIREFLY_CLPS2_RELEASE,("CLPS 2","12 spacecraft","Blue Ghost","MoonFall")),
+        (FIREFLY_CLEANROOM_ORIGINAL,("two cleanrooms","12 lunar landers","spacecraft")),
+    ),check)
+    evidence=("CLPS 2 선정은 NASA 공식 발표·동시 수용능력은 Firefly 공식 청정실 발표"
+              if verified==FIREFLY_CLEANROOM_ORIGINAL else "Firefly 자체 CLPS 2 보도자료")
     return "\n".join((
         "[CLPS 2·회사 공식] 파이어플라이의 기존 실적과 향후 생산능력",
+        "• 확인 경로: "+evidence+". 두 발표를 하나의 신규 수주로 중복 계산하지 않습니다.",
         "• 파이어플라이(Firefly Aerospace, FLY)는 CLPS 2 경쟁자격을 취득한 상태이며 해당 프로그램 100억달러 전체를 수주한 것은 아닙니다.",
         "• 2025년 Blue Ghost 1호 달 착륙 성공 후 기존 CLPS 1 후속 임무 4건과 별도 MoonFall 임무를 확보했다고 회사가 발표했습니다.",
         "• 증설된 청정실 2곳에서 Blue Ghost 착륙선·Elytra 궤도선 등 우주선 최대 12대를 동시에 조립·시험할 수 있다고 공개했습니다. 연간 실제 생산량 12대 확정이 아닙니다.",
         "• 추가 확인: 제작·시험 완료 대수, NASA 개별 과업, 신규 대형 착륙선 실제 고객·양산과 매출 회수. 12대는 동시 수용능력입니다.",
-        "• 원문: "+FIREFLY_CLPS2_RELEASE,
+        "• 원문: "+verified,
     ))
 
 def voyager_griffin1_notice(check=check_primary)->str:
@@ -1037,6 +1044,11 @@ def self_test() -> int:
     ) else (_ for _ in ()).throw(ValueError("bad evidence"))
     assert "동시에" in firefly_lunar_capacity_notice(check=release_stub)
     assert "연간 실제 생산량" in firefly_lunar_capacity_notice(check=release_stub)
+    def firefly_alt(url,*markers):
+        if url==FIREFLY_CLEANROOM_ORIGINAL and "12 lunar landers" in markers:return "verified"
+        raise ValueError("Firefly IR host denied")
+    backup=firefly_lunar_capacity_notice(check=firefly_alt)
+    assert FIREFLY_CLEANROOM_ORIGINAL in backup and "NASA 공식 발표" in backup
     assert "발사·달 착륙" in voyager_griffin1_notice(check=release_stub)
     assert format_usd_billion(10,1357.9)=="100억달러(약 13조5,790억원)"
     assert format_usd_billion(4.2,1357.9)=="42억달러(약 5조7,032억원)"
