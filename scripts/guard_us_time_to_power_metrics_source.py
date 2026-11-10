@@ -304,10 +304,10 @@ if baseline_old not in t:
 t = t.replace(baseline_old, baseline_new, 1)
 
 trusted_old = '''    "bloombergtax.com", "advisorperspectives.com", "morganstanley.com", "goldmansachs.com",
-    "hamiltonlane.com",
+    "hamiltonlane.com", "proenergyservices.com", "ftaiaviation.com", "crusoe.ai",
 )'''
 trusted_new = '''    "bloombergtax.com", "advisorperspectives.com", "morganstanley.com", "goldmansachs.com",
-    "hamiltonlane.com", "pwc.com",
+    "hamiltonlane.com", "proenergyservices.com", "ftaiaviation.com", "crusoe.ai", "pwc.com",
     "hyosung.com", "hd-hyundaielectric.com", "hyundai-elec.co.kr", "ls-electric.com",
 )'''
 if trusted_old not in t:
