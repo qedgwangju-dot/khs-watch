@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-10T02:32:11+09:00",
+  "updated_at_kst": "2026-11-10T10:32:30+09:00",
   "circle": {
     "date": "2026-11-05",
     "circulation_usd_b": 69.2,
@@ -39,30 +39,30 @@
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-11-06",
-    "three_month": 4.19,
-    "ten_year": 4.86,
-    "prev_date": "2026-11-05",
-    "prev_three_month": 4.17,
-    "prev_ten_year": 4.84,
-    "daily_3m_bp": 2.0,
+    "date": "2026-11-09",
+    "three_month": 4.24,
+    "ten_year": 4.88,
+    "prev_date": "2026-11-06",
+    "prev_three_month": 4.19,
+    "prev_ten_year": 4.86,
+    "daily_3m_bp": 5.0,
     "daily_10y_bp": 2.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
     "date": "2026-11-09",
-    "close": 67.85,
+    "close": 67.49,
     "prev_date": "2026-11-06",
     "prev_close": 67.88,
-    "daily_pct": -0.04,
+    "daily_pct": -0.57,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
-    "crosscheck_date": "2026-11-09",
-    "crosscheck_close": 67.82499694824219,
-    "crosscheck_daily_pct": -0.08,
-    "crosscheck_gap_pct": 0.037,
-    "crosscheck_status": "confirmed"
+    "crosscheck_date": "2026-11-06",
+    "crosscheck_close": 67.87999725341797,
+    "crosscheck_daily_pct": -2.3,
+    "crosscheck_gap_pct": 0.578,
+    "crosscheck_status": "yahoo_lagging"
   },
   "tbx": {
     "date": "2026-11-09",
@@ -72,15 +72,18 @@
     "daily_pct": 0.0
   },
   "fx": {
-    "rate": 1342.0,
-    "date": "2026-11-06",
-    "requested_date": "2026-11-06",
+    "rate": 1357.9,
+    "date": "2026-11-09",
+    "requested_date": "2026-11-09",
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,356.34원, 차이 1.07% · 기준 차이 주의"
+    "crosscheck": "Yahoo Finance 1,362.70원, 차이 0.35%"
   },
-  "crcl_last_alerted_close_date": "2026-11-06",
+  "crcl_last_alerted_close_date": "2026-11-09",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-11-09 sec=[(datetime.date(2026, 11, 6), 3.89), (datetime.date(2026, 11, 6), 3.89)] seven=[(datetime.date(2026, 11, 6), 3.89)] | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-11-09 sec=[(datetime.date(2026, 11, 6), 3.89), (datetime.date(2026, 11, 6), 3.89)] seven=[(datetime.date(2026, 11, 6), 3.89)]",
+    "tbx: source date regressed 2026-11-06 < 2026-11-09; previous snapshot kept"
+  ]
 }
