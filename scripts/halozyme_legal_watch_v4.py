@@ -87,6 +87,7 @@ ALTEOGEN_IR_INDEX = "https://www.alteogen.com/kr/sub/ir/information.php?bid=2"
 # 사건 자체는 USPTO 공개 P-TACTS 사건 페이지로 연결하고, 검색색인 지연과 무관하게
 # 이번 두 최종결정은 한 번만 백필하여 즉시 알림·상태·타임라인에 반영한다.
 PTACTS_CASE_URLS = {
+    "PGR2025-00042": "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557626",
     "PGR2025-00046": "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557766",
     "PGR2025-00052": "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959",
 }
@@ -193,11 +194,42 @@ OCT15_VERIFIED_DECISIONS = [
         ("PGR2025-00030", "12,054,758"),
     )
 ]
+
+# 2026-11-09 Paper 95 first page supplied by the user (131-page document).
+# This is NOT a claim to have downloaded or read the complete USPTO decision.
+# Official USPTO records independently tie this case to patent 12,037,618.
+NOV9_USER_DOCUMENTED_FWD = [{
+    "engine": "사용자 제공 PTAB Paper 95 표지 + USPTO 사건번호·특허번호 교차확인",
+    "title": "PGR2025-00042 Halozyme Merck Final Written Decision Determining All Challenged Claims Unpatentable",
+    "url": PTACTS_CASE_URLS["PGR2025-00042"],
+    "description": (
+        "Halozyme Merck PGR2025-00042 Patent 12,037,618 B2 "
+        "Paper 95 dated November 9, 2026. "
+        "JUDGMENT Final Written Decision Determining All Challenged Claims Unpatentable "
+        "35 U.S.C. 328(a). User supplied page 1 of 131; full official PDF not independently retrieved."
+    ),
+    "published": "Mon, 09 Nov 2026 00:00:00 GMT",
+}]
+PTAB_NOV9_PORTFOLIO_SCORECARD = {
+    "url": PTACTS_CASE_URLS["PGR2025-00042"],
+    "source_urls": [PTACTS_CASE_URLS["PGR2025-00042"]],
+    "source_kind": "ptab_user_cover_rollup_20261109",
+    "title": "PTAB 11월 9일 Paper 95 반영 — 11/14 → 12/14",
+    "score": {
+        "total": 14,
+        "won": 12,
+        "pending": 2,
+        "oral_date": "2026-07-23",
+        "patents": ["12,037,618"],
+    },
+}
+
 # Dated, already-grounded case events survive transient Bing/Google failures.
 base.VERIFIED_BACKFILL_ITEMS = (
     list(VERIFIED_CURRENT_DECISIONS)
     + list(VERIFIED_EUROPE_DECISIONS)
     + list(OCT15_VERIFIED_DECISIONS)
+    + list(NOV9_USER_DOCUMENTED_FWD)
 )
 PTAB_OCT15_PORTFOLIO_SCORECARD = {
     "url": OCT15_PTACTS_CASES["PGR2025-00024"],
@@ -325,6 +357,7 @@ FINAL_UNPATENTABLE_TERMS = (
 )
 
 CURRENT_CONFIRMED_UNPATENTABLE = {
+    "PGR2025-00042",
     "PGR2025-00033",
     "PGR2025-00039",
     "PGR2025-00046",
@@ -334,6 +367,11 @@ CURRENT_CONFIRMED_UNPATENTABLE = {
 }
 
 CASE_TIMELINES = {
+    "PGR2025-00042": (
+        ("2025-04-15", "PGR 청구"),
+        ("2025-11-13", "심판 개시"),
+        ("2026-11-09", "Paper 95 최종서면결정 — 심판 대상 청구항 전부 특허성 부정"),
+    ),
     "PGR2025-00024": (
         ("2025-02-21", "PGR 청구"),
         ("2025-10-16", "심판 개시"),
@@ -513,6 +551,7 @@ FINAL_DECISION_TERMS = (
 
 
 CURRENT_POST_FWD_TIMELINE_CASES = {
+    "PGR2025-00042",
     "PGR2025-00033",
     "PGR2025-00039",
     "PGR2025-00046",
@@ -696,6 +735,30 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
 
     _pending_timeline_event = _timeline_event(case, kind, item)
 
+    if case == "PGR2025-00042" and kind == "final_unpatentable":
+        url = html.escape(item["url"], quote=True)
+        return (
+            "<b>[바이오 감시] MSD·Halozyme 미국 특허심판 신규 승소 — PGR2025-00042</b>\n\n"
+            "<b>2026년 11월 9일 · 미국 특허 12,037,618호 · Paper 95</b>\n"
+            "- <b>결정:</b> PTAB는 심판 대상 청구항 전부에 특허성이 없다는 최종서면결정을 내렸습니다.\n"
+            "- <b>누적 변화:</b> MSD가 제기해 심리가 개시된 PGR 14건 중 "
+            "11건 → <b>12건</b>에서 심판 대상 청구항의 특허성이 부정됐으며, "
+            "잔여 최종결정은 <b>2건(PGR2025-00050·00053)</b>입니다.\n"
+            "- <b>타임라인:</b>\n"
+            "• <b>2025년 4월 15일</b> MSD, PGR2025-00042 청구\n"
+            "• <b>2025년 11월 13일</b> PTAB 본안 심리 개시\n"
+            "• <b>2026년 11월 9일</b> Paper 95 최종서면결정\n"
+            "- <b>법적 구분:</b> 심판 대상 청구항에 대한 최종서면결정이지, "
+            "미국 특허의 법적 취소 확정이나 항소 종료를 뜻하지 않습니다.\n"
+            "- <b>알테오젠 의미:</b> Halozyme MDASE 특허분쟁의 미국 측 방어력은 추가 약화되는 방향입니다. "
+            "다만 알테오젠 ALT-B4 자체 특허 유효성 판단은 아니고, 유럽 EP622 금지명령도 그대로 별개입니다.\n"
+            "- <b>다음 확인:</b> PGR2025-00050·00053 최종결정, Halozyme 국장 재검토·재심, "
+            "미 연방순회항소법원 항소, 뉴저지·유럽 소송을 구분해 추적합니다.\n"
+            "- <b>원문 확인 수준:</b> 사용자 제공 PTAB Paper 95 표지(131쪽 중 첫 쪽)와 "
+            "USPTO 사건·특허번호를 대조했습니다. Paper 95 본문 전체의 공식 직접 열람은 미완료입니다.\n"
+            f'- <a href="{url}">USPTO P-TACTS 사건기록</a>'
+        )
+
     if case in OCT15_PTACTS_CASES and kind == "final_unpatentable":
         patent = base.KNOWN_CASES[case]
         count = 26 if case == "PGR2025-00024" else 27
@@ -830,6 +893,22 @@ base.classify = classify
 base.alert = alert
 base.get_case = get_case
 
+_original_event_already_sent = base.event_already_sent
+
+
+def stage_aware_event_already_sent(
+    key: str, url: str, kind: str, seen_events: set[str], seen_urls: set[str]
+) -> bool:
+    # An institution or older filing can share the case URL with a new FWD.
+    # Still suppress repeated FWD notices by the exact case+stage event key.
+    if kind == "final_unpatentable":
+        return key in seen_events
+    return _original_event_already_sent(key, url, kind, seen_events, seen_urls)
+
+
+base.event_already_sent = stage_aware_event_already_sent
+
+
 
 def _plain_text(page: str) -> str:
     value = re.sub(r"(?is)<script.*?</script>|<style.*?</style>|<noscript.*?</noscript>", " ", page)
@@ -921,6 +1000,7 @@ def portfolio_updates() -> list[dict]:
         CURRENT_PORTFOLIO_SCORECARD,
         PTAB_VERIFIED_PORTFOLIO_SCORECARD,
         PTAB_OCT15_PORTFOLIO_SCORECARD,
+        PTAB_NOV9_PORTFOLIO_SCORECARD,
     ]
     global _official_portfolio_cache
     if _official_portfolio_cache is None:
@@ -950,6 +1030,23 @@ def portfolio_alert(item: dict) -> str:
     patents = " · ".join(s.get("patents") or [])
     patent_line = f"\n- <b>이번 확인 특허:</b> {html.escape(patents)}" if patents else ""
     source_kind = str(item.get("source_kind") or "alteogen_ir")
+
+    if source_kind == "ptab_user_cover_rollup_20261109":
+        url = html.escape(item["url"], quote=True)
+        return (
+            "<b>[바이오 감시] Halozyme MDASE 미국 PGR 누적 판세 갱신</b>\n\n"
+            f"<b>최종서면결정에서 심판 대상 청구항 특허성 부정: 11/14 → {s['won']}/{s['total']}건</b>\n"
+            f"- <b>최종결정 대기:</b> {s['pending']}건(PGR2025-00050·00053)\n"
+            "- <b>신규 결정:</b> <b>2026년 11월 9일</b> PGR2025-00042, 미국 특허 "
+            "12,037,618호, Paper 95, 심판 대상 청구항 전부 특허성 부정.\n"
+            "- <b>구분:</b> 12건의 PGR 최종서면결정에서 특허성이 부정됐다는 뜻이며 "
+            "법적 취소·항소 종결이 완료된 특허가 12건이라는 뜻이 아닙니다.\n"
+            "- <b>미국·유럽 차이:</b> 미국 PTAB 판단은 별개 유럽 EP622 유효·침해 판결과 "
+            "판매금지명령을 자동으로 뒤집지 않습니다.\n"
+            "- <b>근거 수준:</b> 11/14는 이전 확인치, 이번 한 건은 사용자 제공 Paper 95 표지와 "
+            "USPTO 사건번호·특허번호 교차확인에 근거합니다. 공식 전체 결정문 직접 열람은 미완료입니다.\n"
+            f'- <a href="{url}">USPTO 사건기록 확인</a>'
+        )
 
     if source_kind == "ptab_verified_rollup_20261015":
         urls = list(item.get("source_urls") or [])
@@ -1085,7 +1182,14 @@ def main() -> int:
     except Exception:
         state = {}
     state["legal_v4_initialized"] = True
-    state["search_mode"] = "개별 사건번호 + 미국/한국 뉴스 + Bing 웹"
+    state["search_mode"] = "개별 사건번호 + 미국/한국 뉴스 + Bing 웹 (공식 PTAB 개별 문서 미연동)"
+    state["ptab_direct_document_coverage"] = {
+        "status": "not_verified",
+        "reason": "USPTO ODP trial document API requires account/API key; no direct docket fetch in this workflow",
+        "backfilled_case": "PGR2025-00042",
+        "evidence": "user-supplied Paper 95 first page and independent USPTO case/patent identification",
+        "pending_fwd_cases": ["PGR2025-00050", "PGR2025-00053"],
+    }
     state["last_sent_message_ids"] = _sent_ids
     state["final_decision_classification_version"] = 2
     state["case_event_timelines"] = _merged_case_timelines(state)

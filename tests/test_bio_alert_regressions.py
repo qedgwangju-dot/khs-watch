@@ -838,6 +838,67 @@ class BioAlertRegressionTests(unittest.TestCase):
                     final_rows = [row for row in normalized if row["date"] == "2026-10-15"]
                     self.assertEqual(len(final_rows), 1)
 
+
+    def test_halozyme_nov9_pgr42_user_paper95_fwd_metadata_and_alert(self):
+        item = halo.NOV9_USER_DOCUMENTED_FWD[0]
+        txt = " ".join(str(item.get(key) or "") for key in ("title", "description", "url"))
+        self.assertEqual(halo.get_case(txt), ("PGR2025-00042", "12,037,618"))
+        self.assertEqual(halo.classify(txt, "PGR2025-00042"), "final_unpatentable")
+        self.assertEqual(halo._event_date(item), "2026-11-09")
+        alert = halo.alert("PGR2025-00042", "12,037,618", "final_unpatentable", item)
+        for evidence in ("2026년 11월 9일", "Paper 95", "11건 → <b>12건</b>", "PGR2025-00050·00053",
+                         "전체의 공식 직접 열람은 미완료", "법적 취소"):
+            self.assertIn(evidence, alert)
+
+    def test_halozyme_nov9_rollup_twelve_of_fourteen_preserves_old_scores(self):
+        score = halo.PTAB_NOV9_PORTFOLIO_SCORECARD["score"]
+        self.assertEqual((score["won"], score["pending"], score["total"]), (12, 2, 14))
+        self.assertNotEqual(halo.portfolio_scorecard_key(score),
+                            halo.portfolio_scorecard_key(halo.PTAB_OCT15_PORTFOLIO_SCORECARD["score"]))
+        rendered = halo.portfolio_alert(halo.PTAB_NOV9_PORTFOLIO_SCORECARD)
+        self.assertIn("11/14 → 12/14건", rendered)
+        self.assertIn("Paper 95", rendered)
+        self.assertNotIn("특허가 12건 취소 확정", rendered)
+
+    def test_halozyme_nov9_fwd_same_docket_url_not_suppressed_by_old_institution(self):
+        item = halo.NOV9_USER_DOCUMENTED_FWD[0]
+        key = halo.base.digest("PGR2025-00042|final_unpatentable")
+        self.assertFalse(halo.base.event_already_sent(key, item["url"], "final_unpatentable",
+                                                         set(), {item["url"]}))
+        self.assertTrue(halo.base.event_already_sent(key, item["url"], "final_unpatentable",
+                                                        {key}, {item["url"]}))
+        old_key = halo.base.digest("PGR2025-00042|institution")
+        self.assertTrue(halo.base.event_already_sent(old_key, item["url"], "institution",
+                                                        {old_key}, {item["url"]}))
+
+    def test_halozyme_nov9_decision_not_lost_on_news_outage_or_resent(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            state_file = root / "state.json"
+            status_file = root / "status.md"
+            docket = halo.NOV9_USER_DOCUMENTED_FWD[0]["url"]
+            state_file.write_text(json.dumps({"initialized": True, "seen_events": [
+                halo.base.digest("PGR2025-00042|institution")
+            ], "seen_urls": [docket]}), encoding="utf-8")
+            sent = []
+            with (
+                patch.object(halo.base, "STATE", state_file),
+                patch.object(halo.base, "STATUS", status_file),
+                patch.object(halo.base, "SEARCHES", ['"PGR2025-00042" Halozyme Merck']),
+                patch.object(halo.base, "VERIFIED_BACKFILL_ITEMS", halo.NOV9_USER_DOCUMENTED_FWD),
+                patch.object(halo.base, "rss", side_effect=RuntimeError("news feed down")),
+                patch.object(halo.base, "resolve_chat_id", return_value="offline-test-chat"),
+                patch.object(halo.base, "send", side_effect=lambda token, chat, msg: sent.append(msg) or 42),
+                patch.dict(os.environ, {"BIO_TELEGRAM_BOT_TOKEN": "offline-test"}, clear=False),
+            ):
+                self.assertEqual(halo.base.main(), 2)
+                self.assertEqual(len(sent), 1)
+                self.assertIn("Paper 95", sent[0])
+                persisted = json.loads(state_file.read_text(encoding="utf-8"))
+                self.assertIn(halo.base.digest("PGR2025-00042|final_unpatentable"), persisted["seen_events"])
+                self.assertEqual(halo.base.main(), 2)
+                self.assertEqual(len(sent), 1)
+
     def test_halozyme_oct15_not_lost_if_news_rss_fails_and_never_double_sends(self):
         # Independent trusted decision items must still be sent, but RSS outage is marked degraded.
         with tempfile.TemporaryDirectory() as temp:
