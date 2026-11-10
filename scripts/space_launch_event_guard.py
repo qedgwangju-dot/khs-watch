@@ -49,7 +49,8 @@ def kind(category,title):
     if category=="starlink_optical":
         if not re.search(r"starlink|spacex|스타링크|스페이스x",t):return "unrelated"
         if not re.search(r"v4|version.?4|laser|optical|subsea|undersea|해저케이블|레이저",t):return "unrelated"
-        if re.search(r"first.{0,25}(v4|version.?4).{0,30}(launch|deploy)|"
+        if re.search(r"(?:launch(?:ed|es)?|deploy(?:ed|s)?).{0,35}first.{0,30}(?:v4|version.?4)|"
+                     r"first.{0,25}(v4|version.?4).{0,30}(launch|deploy)|"
                      r"(v4|version.?4).{0,45}(launched|deployed|in orbit)|"
                      r"(v4|version.?4).{0,25}(발사 성공|궤도 배치)",t):return "deployment_report"
         if re.search(r"fcc.{0,45}(grant|approv|authoriz)|(?:grant|approv|authoriz).{0,45}fcc|"
