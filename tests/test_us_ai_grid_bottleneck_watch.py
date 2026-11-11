@@ -856,7 +856,7 @@ class PowerSecondaryDealDetectionTests(unittest.TestCase):
     def test_secondary_body_quotation_does_not_become_confirmed_deal(self):
         now = datetime(2026, 11, 11, 11, 0, tzinfo=ZoneInfo("Asia/Seoul"))
         url = "https://www.reuters.com/business/used-gas-turbines-ai/"
-        item = {"title": "Data centre developers seek secondhand power plants",
+        item = {"title": "Data center developers seek secondhand power plants",
                 "description": "Potential supply bottlenecks",
                 "link": url, "published_at_kst": now.isoformat()}
         body = ("The market is seeking used turbines. An analyst says a possible "

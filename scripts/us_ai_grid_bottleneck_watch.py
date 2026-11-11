@@ -331,6 +331,7 @@ MATERIAL_TERMS = (
     "bulk-power system", "covered foreign entity", "executive order 14421",
     "변압기", "부싱", "송전", "계통", "변전소", "전원", "배전반", "발전기", "무정전전원",
     "gas turbine", "jet engine", "aeroderivative", "refurbished turbine",
+    "ai factory", "ai factories", "crusoe",
 )
 
 
