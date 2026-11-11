@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-11T06:04:18.823719+00:00",
+  "updated_at": "2026-11-11T06:23:47.031430+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -881,26 +881,32 @@
     "783a3f7ba55cd3ed528ca5e9c0c91c5b3bf9cdd879eb9abb676b5f5dbcdec258",
     "8e61346bb61f7269b5a60b0fb51358fa3960461b04e69234378bdcbd3829254d",
     "203975182a003e99f17131ea92215edec7eb5efd6dce95a03a616030e999fe77",
-    "89256d68fcb866ab2dc285ae04df21b79063f36f47f83573c56c5da5505a789c"
+    "89256d68fcb866ab2dc285ae04df21b79063f36f47f83573c56c5da5505a789c",
+    "64ee4a57ce358f22c0dfc8fc0021c995adc32a57eec046f5da288a5cd36a0805",
+    "040c481f0c3cb33ea67cbe13119b711b559079d08708019cb235826288122ca8",
+    "4679fa7bc094e86136e3d59dcb3b7a34dd20b1aa5d99da2cc10736678bfe6a9b",
+    "572b23b9bb0404383073adab0631a72186447792047212be0e1d4e596047ad68",
+    "cea8c8c98e06ff12ec24e390e326696a926f71ed31b3f3923e627df9388099e5"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "64ee4a57ce358f22c0dfc8fc0021c995adc32a57eec046f5da288a5cd36a0805",
+    "040c481f0c3cb33ea67cbe13119b711b559079d08708019cb235826288122ca8",
+    "4679fa7bc094e86136e3d59dcb3b7a34dd20b1aa5d99da2cc10736678bfe6a9b",
+    "572b23b9bb0404383073adab0631a72186447792047212be0e1d4e596047ad68",
+    "cea8c8c98e06ff12ec24e390e326696a926f71ed31b3f3923e627df9388099e5"
+  ],
   "groups": [
+    "battery",
     "ess_battery",
     "ev_46_series",
+    "google_gemini_robotics",
     "humanoid_component_policy",
+    "hyundai_atlas_rollout",
     "lg_factory_loop",
-    "robotis_excess_demand"
+    "robotis_excess_demand",
+    "wonik"
   ],
   "delivery_history": [
-    {
-      "run_id": 42493145972,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-08T15:07:19.057794+00:00"
-    },
     {
       "run_id": 42513226748,
       "outcome": "normal_silence",
@@ -1143,15 +1149,36 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-11T06:04:18.823719+00:00"
+    },
+    {
+      "run_id": 42972082222,
+      "outcome": "sent",
+      "message_ids": [
+        352
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-11T06:23:47.031430+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 42969822685,
-    "outcome": "normal_silence",
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-11T06:04:18.823719+00:00"
+    "run_id": 42972082222,
+    "outcome": "sent",
+    "message_ids": [
+      352
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-11T06:23:47.031430+00:00"
   }
 }
