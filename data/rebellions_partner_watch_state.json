@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-12T03:43:20+09:00",
+  "last_checked_kst": "2026-11-12T04:52:24+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -4112,6 +4112,15 @@
       "event_signature": "skt|general|general",
       "material_stage": 1,
       "first_seen_kst": "2026-11-11T01:29:00+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "0cfe4b1d96b7a677137a36d0": {
+      "title": "3자 MOU 체결한 엔비디아-SKT-리벨리온 - 뉴스핌",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1aVnFIX1RtLWpSbWRJTDhCb1lDV0NxVWdnck12S0FBMlhHaWZNOWhZazV4S2szbDZ0VDUxNmFIal9HTWQ5MFVVVHVGWGQwdVc0X2Z5WVU1X0RsbDhp?oc=5",
+      "summary": "3자 MOU 체결한 엔비디아-SKT-리벨리온 뉴스핌",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-12T04:52:24+09:00",
       "suppressed_duplicate": "same_event:skt|general|general"
     }
   }
