@@ -1,7 +1,7 @@
 {
   "version": 1,
   "created_at": "2026-10-09T08:29:53.980437+00:00",
-  "updated_at": "2026-11-08T22:47:25.669177+00:00",
+  "updated_at": "2026-11-11T18:46:13.514123+00:00",
   "official_sources_verified": [
     "Grain Management 매각 공식 발표",
     "Grain Management 배포 보도자료",
@@ -15,7 +15,6 @@
     "Verizon 2026년 10월 9일 배당락 공식 내역",
     "AT&T·AST 지상망-위성망 전환 시험 공식 발표",
     "글로벌스타 아마존 인수 종결 대기 공식 발표",
-    "퀄컴 보도자료 Nasdaq 합법 재게시",
     "퀄컴 보도자료 Yahoo BusinessWire 재게시",
     "아마존 레오 5105기 D2D 신청 공식 안내"
   ],
@@ -36,6 +35,8 @@
     "asts:supply:195d192e1ce152": "2026-11-08T21:51:12.068113+00:00",
     "interoperability:att_ast:handoff_test:20261021": "2026-11-08T22:35:19.665308+00:00",
     "competitor:amazon_leo_d2d5105:application": "2026-11-08T22:41:52.071008+00:00",
-    "ground:starlink_qualcomm_dragonwing:agreement:20261104": "2026-11-08T22:47:25.669177+00:00"
+    "ground:starlink_qualcomm_dragonwing:agreement:20261104": "2026-11-08T22:47:25.669177+00:00",
+    "asts:supply:705f6e169ba906": "2026-11-11T18:46:13.514123+00:00",
+    "asts:supply:1336bf5717e9a5": "2026-11-11T18:46:13.514123+00:00"
   }
 }
