@@ -158,6 +158,30 @@ for _plan in (_plan_a, _plan_b):
     assert _k == base.key(_plan_a), ("one detailed government plan",_k)
 assert base.key(_plan_a) != base.key(_nov11_policy_a), "Detailed plan must differ from old proposal"
 
+_target_only = make(
+    "정부, 로봇 구동기 2029년 양산 추진…휴머노이드 배터리도 개발",
+    "정부가 2029년 액추에이터 양산을 목표로 2027년부터 국책 연구개발을 추진한다.",
+    "아주경제",
+)
+_target_only["published"] = "2026-11-11T00:00:00+00:00"
+_tg,_ts,_tc,_tk = classify(_target_only)
+assert _tg == "humanoid_component_policy" and _tc.endswith("2026년 11월 핵심부품 세부 추진계획"), (_tg,_ts,_tc)
+assert _tk == base.key(_plan_a), "Future production goal is NOT actual orders or shipments"
+_delivered_now = make(
+    "정부 국책 개발 로봇 액추에이터, 2029년 양산 목표보다 빠른 공급계약 체결",
+    "휴머노이드 액추에이터 공급계약 체결 사실을 공식 공개",
+    "산업통상부",
+)
+_delivered_now["published"] = "2026-11-11T00:00:00+00:00"
+assert base.key(_delivered_now) != base.key(_target_only), "Actual binding contract must be distinct"
+_award_news = make(
+    "삼현, 휴머노이드 액추에이터 국책과제 주관기관 선정",
+    "정부 로봇 국책과제 선정 보도",
+    "뉴스핌",
+)
+_award_text = " ".join(str(_award_news.get(_k) or "") for _k in ("title","description","source"))
+assert "독립 확인 전" in base.verification(_award_news, "humanoid_component_policy", _award_text), "Media grant selection requires official cross-check"
+
 _old_policy = dict(_nov11_policy_a, published="2026-09-10T00:10:00+00:00")
 assert base.key(_old_policy) != base.key(_nov11_policy_a), "Earlier draft baseline must stay distinct"
 _final_policy = make(

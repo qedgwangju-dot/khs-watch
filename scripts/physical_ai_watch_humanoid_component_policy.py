@@ -551,6 +551,19 @@ def _stage(text: str) -> str:
         return '휴머노이드 핵심부품 예산 확정'
     if AWARD.search(text):
         return '핵심부품 수행기업·과제 선정'
+    # A future target is not evidence that mass production / shipments began.
+    future_target = re.search(
+        r'(?:2029년.{0,22}양산|양산.{0,22}(?:목표|추진|예정|계획)|2030년.{0,22}상용화)',
+        text, re.I,
+    )
+    confirmed_commercial = re.search(
+        r'양산\s*(?:개시|시작|착수|돌입|완료)|본계약\s*(?:체결|확정)|'
+        r'공급\s*계약\s*체결|수주\s*확정|첫\s*출하|실제\s*납품',
+        text, re.I,
+    )
+    if (future_target and not confirmed_commercial
+            and re.search(r'정부|국책|초혁신경제|선도\s*프로젝트', text, re.I)):
+        return '2026년 11월 핵심부품 세부 추진계획'
     # The Nov 11 published budget-line roadmap is not an actual RFP.
     if (NOV11_PLAN_AMOUNTS.search(text)
             and re.search(r'초혁신경제|선도\s*프로젝트|온[-\s]*센서|휴머노이드', text, re.I)
@@ -560,7 +573,9 @@ def _stage(text: str) -> str:
         return '핵심부품 세부과제·지원조건 공고'
     if VALIDATION.search(text):
         return '핵심부품 현장 실증·신뢰성 검증'
-    if MASS_PROD.search(text) and re.search(r'정부|국책|실증|과제', text, re.I):
+    if (MASS_PROD.search(text)
+            and re.search(r'정부|국책|실증|과제', text, re.I)
+            and confirmed_commercial):
         return '정책과제→양산·수주 연결'
     return '휴머노이드 핵심부품 620억원 정부안'
 
@@ -797,7 +812,7 @@ def verification(item: dict, group: str, text: str) -> str:
             return '주관부처·전담기관 공식자료 · 선정기업/지원금/실증조건 확인'
         return '정부 공식자료 · 정부안과 최종 예산 단계 분리'
     if AWARD.search(text):
-        return '신뢰 매체 보도 · 주관부처/한국로봇산업진흥원 선정 공고 교차확인'
+        return '언론 보도 단계 · 주관부처·전담기관의 실제 선정 공고 독립 확인 전'
     if BUDGET_620.search(text):
         return '신뢰 매체 보도 · 정부 예산안/정책 공식자료 교차확인'
     if ANALYST.search(text):
@@ -887,7 +902,8 @@ def key(item: dict) -> str:
     # Detailed plans, parliamentary votes, calls, awards are separate stages.
     if topic_group(text) == 'humanoid_component_policy':
         stage = _stage(text)
-        if stage == '2026년 11월 핵심부품 세부 추진계획':
+        if (stage == '2026년 11월 핵심부품 세부 추진계획'
+                and '2026-11-10' <= str(item.get('published') or '')[:10] <= '2026-12-31'):
             return hashlib.sha256(b'korea|2026-11-11|three-robot-component-detailed-implementation-plan').hexdigest()
         if (stage == '휴머노이드 핵심부품 620억원 정부안'
                 and '2026-11-10' <= str(item.get('published') or '')[:10] <= '2026-12-31'):
