@@ -543,20 +543,31 @@ jobs:
 
               translated = ""
               last_error = None
-              for attempt in range(4):
+              # A transient HTTP 429/5xx from the first Google Translate host
+              # blocked an alert on 2026-11-11. Rotate between both public
+              # frontends with bounded exponential retries, retaining the
+              # fail-closed title-fidelity and Korean-script guards below.
+              endpoints = (
+                  "https://translate.googleapis.com/translate_a/single?",
+                  "https://translate.google.com/translate_a/single?",
+              )
+              params = urllib.parse.urlencode({
+                  "client": "gtx",
+                  "sl": "auto",
+                  "tl": "ko",
+                  "dt": "t",
+                  "q": protected,
+              })
+              for attempt in range(6):
                   try:
-                      params = urllib.parse.urlencode({
-                          "client": "gtx",
-                          "sl": "auto",
-                          "tl": "ko",
-                          "dt": "t",
-                          "q": protected,
-                      })
                       req = urllib.request.Request(
-                          "https://translate.googleapis.com/translate_a/single?" + params,
-                          headers={"User-Agent": "Mozilla/5.0 khs-watch/1.0"},
+                          endpoints[attempt % len(endpoints)] + params,
+                          headers={
+                              "User-Agent": "Mozilla/5.0 khs-watch/1.0",
+                              "Accept": "application/json",
+                          },
                       )
-                      with urllib.request.urlopen(req, timeout=25) as response:
+                      with urllib.request.urlopen(req, timeout=20) as response:
                           payload = json.loads(response.read().decode("utf-8"))
                       translated = "".join(
                           str(segment[0]) for segment in (payload[0] or [])
@@ -564,10 +575,11 @@ jobs:
                       ).strip()
                       if translated:
                           break
+                      last_error = RuntimeError("empty translation response")
                   except Exception as exc:
                       last_error = exc
-                      if attempt < 3:
-                          time.sleep(2 ** attempt)
+                  if attempt < 5:
+                      time.sleep(min(2 ** attempt, 8))
 
               # No lossy summary fallback. If accurate Korean translation is unavailable,
               # hold the alert and retry on the next run instead of sending a distorted title.
