@@ -74,7 +74,7 @@
     "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-11-11T06:02:10+09:00",
+  "last_checked_at_kst": "2026-11-11T10:45:33+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
   "latest_evidence_urls": [],
@@ -816,25 +816,26 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-11-11T06:02:10+09:00",
+    "last_checked_at_kst": "2026-11-11T10:45:33+09:00",
     "last_error": "",
     "pending_month": "2026-10"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-11T06:06:15+09:00",
-    "status": "no_message_due"
+    "checked_at_kst": "2026-11-11T10:51:27+09:00",
+    "status": "confirmed"
   },
-  "last_successful_delivery_kst": "2026-11-05T03:22:01+09:00",
+  "last_successful_delivery_kst": "2026-11-11T10:51:27+09:00",
   "telegram_message_ids": [
-    253
+    260
   ],
-  "telegram_message_id": 253,
+  "telegram_message_id": 260,
   "delivery_receipt": {
     "status": "confirmed",
     "message_ids": [
-      253
+      260
     ],
-    "confirmed_at_kst": "2026-11-05T03:22:01+09:00"
+    "recipient_verified": true,
+    "confirmed_at_kst": "2026-11-11T10:51:27+09:00"
   },
   "korea_transformer_exports": {
     "version": 1,
@@ -955,9 +956,9 @@
           "850423",
           "850434"
         ],
-        "export_usd": 199856904,
-        "net_weight_kg": 14830403,
-        "average_usd_per_kg": 13.476161369316802,
+        "export_usd": 199856548,
+        "net_weight_kg": 14828243,
+        "average_usd_per_kg": 13.478100406096663,
         "by_hs": {
           "850422": {
             "usd": 74964144,
@@ -965,24 +966,79 @@
           },
           "850423": {
             "usd": 115443701,
-            "kg": 5115283
+            "kg": 5113123
           },
           "850434": {
-            "usd": 9449059,
+            "usd": 9448703,
             "kg": 782261
+          }
+        }
+      },
+      "2026-10": {
+        "month": "2026-10",
+        "destination": "US",
+        "source_kind": "관세청 국가·품목별 수출통계, 미국향 FOB 신고금액 및 순중량",
+        "source_url": "https://www.data.go.kr/data/15100475/openapi.do",
+        "hs_codes": [
+          "850422",
+          "850423",
+          "850434"
+        ],
+        "export_usd": 229332598,
+        "net_weight_kg": 14917777,
+        "average_usd_per_kg": 15.37310807099476,
+        "by_hs": {
+          "850422": {
+            "usd": 70924078,
+            "kg": 7597071
+          },
+          "850423": {
+            "usd": 147233652,
+            "kg": 6501480
+          },
+          "850434": {
+            "usd": 11174868,
+            "kg": 819226
           }
         }
       }
     },
-    "latest_official_us_month": "2026-09",
+    "latest_official_us_month": "2026-10",
     "last_attempt_day": "2026-11-11",
-    "last_checked_at_kst": "2026-11-11T06:02:10+09:00",
-    "last_status": "month_unpublished",
-    "last_error_kind": "kcs_no_official_rows",
-    "last_attempt_at_kst": "2026-11-11T06:02:10+09:00",
+    "last_checked_at_kst": "2026-11-11T10:45:33+09:00",
+    "last_status": "verified",
+    "last_error_kind": "",
+    "last_attempt_at_kst": "2026-11-11T10:45:33+09:00",
     "fetch_revision": 3,
     "source_blocker_notified": false,
     "connection_restored_notified": true,
     "alert_layout_version": 2
+  },
+  "discovery_health": {
+    "rss_ok": 38,
+    "rss_failed": 0,
+    "urls_resolved": 0,
+    "pages_opened": 0
+  },
+  "power_squeeze_alerts": {
+    "sent_fact_keys": [
+      "reuters-used-turbines-2026-11-09-v1"
+    ],
+    "latest_evidence": {
+      "event_key": "reuters-used-turbines-2026-11-09-v1",
+      "event_date": "2026-11-09",
+      "stage": "industry_leading_warning_not_new_operating_capacity",
+      "GE_2026Q3_firm_backlog_gw": 64,
+      "GE_2026Q3_slot_reservations_gw": 58,
+      "GE_2026Q3_combined_gw": 122,
+      "MS_2026_02_27_gap_2028_gw": 49,
+      "sources": {
+        "reuters": "https://live.euronext.com/en/financial-news/analysis-ai-power-rush-sends-data-centres-hunting-used-turbines-and-jet-engines",
+        "gev": "https://www.gevernova.com/news/ge-vernova-reports-strong-third-quarter-2026-financial-performance",
+        "morgan": "https://www.morganstanley.com/insights/articles/powering-ai-energy-market-outlook-2026",
+        "fortune": "https://fortune.com/2026/11/07/data-center-restrictions-power-grid-ai-race-serhiy-tokarev/",
+        "proenergy": "https://www.proenergyservices.com/2026/04/proenergy-to-deliver-major-generating-equipment-to-power-crusoe-ai-factories/"
+      }
+    }
   }
 }
