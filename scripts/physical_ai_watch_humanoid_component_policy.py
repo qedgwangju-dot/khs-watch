@@ -876,7 +876,7 @@ def key(item: dict) -> str:
     # parliamentary approval, grants and procurement as separate stages.
     if (topic_group(text) == 'humanoid_component_policy'
             and _stage(text) == '휴머노이드 핵심부품 620억원 정부안'
-            and re.search(r'620\\s*억', text)
+            and re.search(r'620\s*억', text)
             and re.search(r'2027|내년', text)
             and '2026-11-10' <= str(item.get('published') or '')[:10] <= '2026-12-31'):
         return '4de9ae4cdf9abefb86bbac2b181e6ea67e92c64b3e2f6a6489b3745948b180e3'
