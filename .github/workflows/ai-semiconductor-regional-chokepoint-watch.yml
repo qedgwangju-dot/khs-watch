@@ -47,7 +47,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
-          import json, os, urllib.request
+          import json, os, urllib.parse, urllib.request
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
@@ -58,7 +58,15 @@ jobs:
           username = str((identity.get("result") or {}).get("username") or "")
           if not identity.get("ok") or username.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
-          print(f"telegram_route_valid=true bot=@{username} chat_id_present=true")
+          query = urllib.parse.urlencode({"chat_id": chat_id})
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getChat?{query}", timeout=25) as r:
+              response = json.loads(r.read().decode("utf-8"))
+          destination = (response.get("result") or {}) if response.get("ok") else {}
+          match = (str(destination.get("username") or "").casefold() == chat_id[1:].casefold()
+                   if chat_id.startswith("@") else str(destination.get("id", "")) == chat_id)
+          if not match:
+              raise RuntimeError("regional Telegram destination mismatch; private chat identifier suppressed")
+          print(f"telegram_route_valid=true bot=@{username} recipient_match=true")
           PY
 
       - name: Validate watcher
@@ -190,9 +198,13 @@ jobs:
                   result = json.loads(r.read().decode("utf-8"))
               if not result.get("ok"):
                   raise RuntimeError(f"Telegram rejected regional chokepoint alert: {result}")
-              message_id = (result.get("result") or {}).get("message_id")
-              if type(message_id) is not int or message_id <= 0:
-                  raise RuntimeError("Telegram acknowledgement lacks a valid message_id")
+              sent = result.get("result") or {}
+              message_id = sent.get("message_id")
+              recipient = sent.get("chat") or {}
+              matching_chat = (str(recipient.get("username") or "").casefold() == chat_id[1:].casefold()
+                               if chat_id.startswith("@") else str(recipient.get("id", "")) == chat_id)
+              if not matching_chat or type(message_id) is not int or message_id <= 0:
+                  raise RuntimeError("Telegram recipient/message acknowledgement mismatch; state not promoted")
               ids.append(message_id)
 
           normalized = re.sub(
@@ -206,6 +218,7 @@ jobs:
               "status": "confirmed",
               "bot_username": username,
               "message_ids": ids,
+              "recipient_verified": True,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
               "alert_signature": hashlib.sha256(normalized.encode("utf-8")).hexdigest(),
           }

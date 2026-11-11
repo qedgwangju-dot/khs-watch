@@ -399,6 +399,75 @@ class RegionalChokepointWatchTests(unittest.TestCase):
         self.assertTrue(any("검증 실패" in e for e in errors))
 
 
+    def test_sumco_supply_risk_release_is_q4_forecast_not_q3_failure(self):
+        now = dt.datetime(2026, 11, 12, 8, 0, tzinfo=w.KST)
+        record = w._sumco_wafer_signal(now)
+        self.assertEqual(record["actual_quarter"], "2026Q3")
+        self.assertEqual(record["shortage_forecast_quarter"], "2026Q4")
+        self.assertFalse(record["q3_primary_directly_opened"])
+        changed, alert = w._sumco_wafer_notice({}, record)
+        self.assertIn("4분기 새 경고", alert)
+        self.assertIn("3분기 출하 증가는 실적", alert)
+        self.assertIn("현재 공급 체계", alert)
+        self.assertIn("신규 증설에 경제성이 부족", alert)
+        self.assertIn("원본 PDF 직접 열람 제한", alert)
+        self.assertEqual(changed["sent_fact_keys"], [w.SUMCO_Q3_WAFER_FACT_KEY])
+
+    def test_sumco_fact_key_isolated_from_existing_delivered_keys(self):
+        record = w._sumco_wafer_signal(dt.datetime(2026, 11, 12, tzinfo=w.KST))
+        prior = {"sent_fact_keys": ["other-event"], "last_evidence": {"old": True}}
+        new_state, first = w._sumco_wafer_notice(prior, record)
+        self.assertTrue(first)
+        self.assertEqual(new_state["sent_fact_keys"], ["other-event", w.SUMCO_Q3_WAFER_FACT_KEY])
+        self.assertEqual(prior["sent_fact_keys"], ["other-event"])
+        after, repeat = w._sumco_wafer_notice(new_state, record)
+        self.assertEqual(repeat, "")
+        self.assertEqual(after["sent_fact_keys"], new_state["sent_fact_keys"])
+        # A failed/unacknowledged delivery must use the prior persisted state.
+        _, retry = w._sumco_wafer_notice(prior, record)
+        self.assertEqual(first, retry)
+
+    def test_sumco_out_of_window_never_replays_old_earnings(self):
+        self.assertIsNone(w._sumco_wafer_signal(dt.datetime(2026, 11, 10, tzinfo=w.KST)))
+        self.assertIsNone(w._sumco_wafer_signal(dt.datetime(2026, 11, 21, tzinfo=w.KST)))
+        _, message = w._sumco_wafer_notice({}, None)
+        self.assertFalse(message)
+
+    def test_sumco_integration_preserves_existing_semi_and_delivery_on_ack(self):
+        import json
+        now = dt.datetime(2026, 11, 12, 8, tzinfo=w.KST)
+        record = w._sumco_wafer_signal(now)
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            out_dir = root / "out"
+            out_dir.mkdir()
+            state_path = root / "state.json"
+            state_path.write_text(json.dumps({
+                "initialized": True,
+                "baseline_cutoff_kst": "2026-10-05T19:05:00+09:00",
+                "seen_fingerprints": [],
+                "delivered_event_keys": ["japan|capacity|SUMCO|silicon-wafer"],
+                "semi_300mm": {"release_date": "2026-10-13", "equipment_2026_usd_b": 149},
+                "delivery_receipt": {"message_ids": [292], "status": "confirmed"},
+            }))
+            with patch.object(w, "STATE_PATH", state_path), \
+                 patch.object(w, "OUT_DIR", out_dir), \
+                 patch.object(w, "ALERT_PATH", out_dir / "alert.html"), \
+                 patch.object(w, "PENDING_PATH", out_dir / "pending.json"), \
+                 patch.object(w, "STATUS_PATH", out_dir / "status.md"):
+                w.write_outputs([], [], None, record)
+                text = (out_dir / "alert.html").read_text()
+                self.assertIn("SUMCO 선행경보", text)
+                pending = json.loads((out_dir / "pending.json").read_text())
+                self.assertEqual(pending["delivered_event_keys"], ["japan|capacity|SUMCO|silicon-wafer"])
+                self.assertEqual(pending["semi_300mm"]["equipment_2026_usd_b"], 149)
+                self.assertEqual(pending["delivery_receipt"]["message_ids"], [292])
+                # This is an ACKed-state simulation, never a real send.
+                state_path.write_text(json.dumps(pending))
+                w.write_outputs([], [], None, record)
+                self.assertFalse((out_dir / "alert.html").exists())
+
+
 
 if __name__ == "__main__":
     unittest.main()

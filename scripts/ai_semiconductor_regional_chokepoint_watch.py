@@ -45,6 +45,16 @@ KST = ZoneInfo("Asia/Seoul")
 BASELINE_VERSION = 1
 
 SEMI_300MM_VERSION = 2
+
+# One issue-locked SUMCO supply-risk upgrade within the existing Japan materials
+# watch, not a newly scheduled job. Q2 original PDF was directly inspected.
+# Q3 TDnet filing was indexed, but its PDF endpoint blocked direct retrieval;
+# the Q3 slide text is independently reproduced by 6ix. Distinguish the two.
+SUMCO_Q3_WAFER_FACT_KEY = "sumco-2026-11-11-q3-300mm-2026q4-demand-unmet-capex-v1"
+SUMCO_Q3_TDNET = "https://www.release.tdnet.info/inbs/140120261109570070.pdf"
+SUMCO_Q3_REPRODUCTION = "https://6ix.com/deck/3l9rhmj0/sumco-q3-2026-earnings-presentation"
+SUMCO_Q2_PRESENTATION = "https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260806/20260805509660.pdf"
+
 SEMI_300MM_PRESS = ("https://www.semi.org/en/semi-press-release/"
     "global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects")
 SEMI_300MM_OUTLOOK = "https://www.semi.org/en/products-services/market-data/300mm-fab-outlook"
@@ -151,6 +161,9 @@ QUERIES = [
     ("en", '("Zhongji Innolight" OR Innolight OR Eoptolink) ("optical transceiver" OR 800G OR 1.6T OR 3.2T) (capacity OR restriction OR ban OR FCC OR Congress OR export OR Thailand OR production)'),
     ("en", '("Tokyo Electron" OR Advantest OR DISCO OR Lasertec) semiconductor (capacity OR shortage OR export control OR restriction OR production OR market share OR disruption)'),
     ("en", '("Shin-Etsu" OR SUMCO OR JSR OR "Tokyo Ohka") semiconductor (wafer OR photoresist OR material) (capacity OR shortage OR export control OR production OR market share)'),
+    ("en", 'SUMCO 300mm silicon wafer supply cannot meet customer requirements 2026 capacity investment LTA'),
+    ("en", '("Shin-Etsu" OR SUMCO OR GlobalWafers) 300mm silicon wafer orders ASP capex shortage capacity expansion'),
+    ("ko", 'SUMCO 신에츠 300mm 실리콘 웨이퍼 공급 부족 장기계약 가격 증설 경제성'),
     ("en", '"AI semiconductor" supply chain (Taiwan OR Korea OR China OR Japan) (restriction OR outage OR capacity OR diversification OR reshoring OR shortage)'),
     ("ko", '대만 TSMC ASE 반도체 선단공정 첨단패키징 CoWoS 생산능력 증설 정전 지진'),
     ("ko", '한국 SK하이닉스 삼성전자 한미반도체 HBM HBM4 TC본더 생산능력 증설 공급부족'),
@@ -231,6 +244,52 @@ CRITICAL_FUNCTION_PATTERNS = (
     r"mask inspection", r"silicon wafer", r"photoresist",
     r"첨단.?패키징", r"선단", r"에이치비엠", r"광트랜시버", r"테스터", r"웨이퍼", r"포토레지스트",
 )
+
+
+def _sumco_wafer_signal(now: dt.datetime) -> dict | None:
+    """Dated company-slide finding. Never mislabel the Q4 forecast as Q3 output."""
+    if not dt.date(2026, 11, 11) <= now.date() <= dt.date(2026, 11, 20):
+        return None
+    return {
+        "key": SUMCO_Q3_WAFER_FACT_KEY,
+        "release_date": "2026-11-11",
+        "actual_quarter": "2026Q3",
+        "shortage_forecast_quarter": "2026Q4",
+        "product": "300mm silicon wafer / leading-edge logic and memory",
+        "stage": "issuer_2026q4_demand_warning_not_confirmed_shipment_failure",
+        "q2_source": SUMCO_Q2_PRESENTATION,
+        "q3_filing": SUMCO_Q3_TDNET,
+        "q3_transcribed_slides": SUMCO_Q3_REPRODUCTION,
+        "q3_primary_directly_opened": False,
+        "source_status": "2Q 원본 PDF 직접 확인, 3Q TDnet 공시 존재·슬라이드 전재 대조, 3Q 원본 PDF 직접 접근 제한",
+    }
+
+
+def _sumco_wafer_notice(previous: dict, record: dict | None) -> tuple[dict, str]:
+    """Advance the separate fact key only in the existing post-send pending state."""
+    updated = dict(previous or {})
+    keys = set(updated.get("sent_fact_keys") or [])
+    if not record or record.get("key") != SUMCO_Q3_WAFER_FACT_KEY or SUMCO_Q3_WAFER_FACT_KEY in keys:
+        return updated, ""
+    updated["sent_fact_keys"] = sorted(keys | {SUMCO_Q3_WAFER_FACT_KEY})
+    updated["last_evidence"] = dict(record)
+    lines = [
+        "<b>일본 300㎜ 실리콘 웨이퍼 공급 제약 — SUMCO 선행경보</b>",
+        "• 발표: 2026-11-11 3분기 실적발표(실적 7~9월, 공급 전망 10~12월).",
+        "• 기존 8/6 발표: 첨단 로직·메모리용 300㎜ 웨이퍼의 강한 AI 수요가 지속될 전망.",
+        "• 3분기 실적: 첨단 로직·메모리용 300㎜ 웨이퍼 출하가 크게 증가.",
+        "• <b>4분기 새 경고:</b> AI 수요 증가로 300㎜ 웨이퍼 고객 요구량을 모두 충족하기 어려워지는 상황을 예상.",
+        "• 200㎜ 제품도 현재 공급 체계를 넘어서는 수요를 전망하지만, 300㎜ 첨단 제품과 구분.",
+        "• 기존 장기공급계약(LTA) 가격은 유지. 현 판매가격·물가 상승을 고려하면 신규 증설에 경제성이 부족하다는 회사 판단.",
+        "• 설비 증설을 결정하더라도 실제 생산능력 확대까지 수년 필요. 생산능력 증설 '결정'이나 모든 고객의 실제 납품 실패가 확인된 것은 아님.",
+        "• <b>확인 단계:</b> 3분기 출하 증가는 실적, 4분기 공급 제약은 회사 전망. 고객별 확정 미공급 물량·가격 인상률·신규 설비투자 결정은 미확인.",
+        "• 다음 확인: 신에츠화학·SUMCO·GlobalWafers의 300㎜ 공급·단가, 장기계약 만기·재협상, 고객 재고, 신규 설비투자 및 가동률.",
+        "• 출처 구분: 2분기 SUMCO PDF 직접 확인 / 3분기 TDnet 공시 및 발표자료 전재본 대조(3분기 원본 PDF 직접 열람 제한).",
+        '• <a href="' + html.escape(SUMCO_Q3_TDNET, quote=True) + '">SUMCO 3Q TDnet 원본 PDF 주소</a>',
+        '• <a href="' + html.escape(SUMCO_Q3_REPRODUCTION, quote=True) + '">3Q 발표자료 슬라이드 전재</a>',
+        '• <a href="' + html.escape(SUMCO_Q2_PRESENTATION, quote=True) + '">기존 2Q 원본 발표자료</a>',
+    ]
+    return updated, "\n".join(lines) + "\n"
 
 
 def _clean(value: str | None) -> str:
@@ -763,7 +822,7 @@ def _load_state() -> dict:
     return json.loads(STATE_PATH.read_text(encoding="utf-8"))
 
 
-def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None = None) -> None:
+def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None = None, sumco_record: dict | None = None) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     state = _load_state()
     now = dt.datetime.now(KST)
@@ -816,6 +875,7 @@ def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None
     if semi_previous.get("release_date", "") > (semi_record or {}).get("release_date", ""):
         semi_record, semi_changes = None, []
     semi_due = bool(semi_record and semi_changes)
+    sumco_state, sumco_notice = _sumco_wafer_notice(state.get("sumco_wafer_squeeze") or {}, sumco_record)
 
     # Mark all currently observed stories as seen; do not mark an event delivered
     # unless Telegram actually has something to send.
@@ -834,6 +894,7 @@ def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "last_scan_count": len(items),
         "semi_300mm_track_version": SEMI_300MM_VERSION,
+        "sumco_wafer_squeeze": sumco_state,
         "semi_300mm": semi_record if semi_due else semi_previous,
         "semi_300mm_last_observed": semi_record or state.get("semi_300mm_last_observed") or {},
         "last_eligible_count": len(eligible),
@@ -864,6 +925,7 @@ def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None
         f"- 알림 대상 신규: {len(eligible)}건",
         f"- SEMI 300mm 공식자료 수치확인: {'확인' if semi_record else '미확인'}",
         f"- SEMI 신규 경보: {int(semi_due)}건",
+        f"- SUMCO 300㎜ 공급제약 선행경보: {'신규 1건' if sumco_notice else '중복 또는 기간 외'}",
         f"- 추가 검증 대기: {len(held)}건",
         f"- 원천 오류: {len(errors)}건",
         "- 75% 기준: 2021년 SIA·BCG 역사 기준으로만 보존, 2026 실시간 수치로 사용하지 않음",
@@ -878,7 +940,7 @@ def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None
     STATUS_PATH.write_text("\n".join(status) + "\n", encoding="utf-8")
 
     ALERT_PATH.unlink(missing_ok=True)
-    if not eligible and not semi_due:
+    if not eligible and not semi_due and not sumco_notice:
         return
 
     lines = [
@@ -887,6 +949,9 @@ def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None
         "",
         "한눈에: <b>지역별 독점·과점 구조가 실제 생산능력·규제·가동중단·대체공급에서 바뀔 때만 알림</b>",
     ]
+
+    if sumco_notice:
+        lines += ["", sumco_notice.strip()]
 
     if semi_due:
         s = semi_record
@@ -983,7 +1048,7 @@ def main() -> None:
     items, errors = collect(cutoff)
     semi_record, semi_errors = _semi_300mm_fetch()
     print(f"semi_300mm_primary_valid={bool(semi_record)} source_errors={semi_errors[:3]}")
-    write_outputs(items, errors + semi_errors, semi_record)
+    write_outputs(items, errors + semi_errors, semi_record, _sumco_wafer_signal(now))
     print(f"regional_chokepoint_candidates={len(items)} errors={len(errors)}")
     print(f"alert_exists={ALERT_PATH.exists()}")
 
