@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-11T09:07:05+09:00",
+  "last_checked_kst": "2026-11-11T09:15:46+09:00",
   "media_id": null,
   "cftc_date": "November 3, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-11T09:07:05+09:00",
+    "checked_kst": "2026-11-11T09:15:46+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "November 3, 2026",
@@ -85,16 +85,16 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 106.140625,
-        "settlement": 106.140625,
-        "change": -0.921875,
-        "pct_change": -0.861062463514306,
+        "last": 106.15625,
+        "settlement": 106.15625,
+        "change": -0.90625,
+        "pct_change": -0.8464681844716826,
         "open_interest": 5947433,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (November 3, 2026)",
         "oi_comparable": true,
         "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY",
         "volume": 0,
-        "market_time": 1794286800,
+        "market_time": 1794355508,
         "source": "https://finance.yahoo.com/quote/ZN%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
       },
@@ -112,7 +112,7 @@
         "oi_comparable": true,
         "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY",
         "volume": 0,
-        "market_time": 1794286800,
+        "market_time": 1794355539,
         "source": "https://finance.yahoo.com/quote/ZB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
       },
@@ -130,7 +130,7 @@
         "oi_comparable": true,
         "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY",
         "volume": 0,
-        "market_time": 1794286800,
+        "market_time": 1794355535,
         "source": "https://finance.yahoo.com/quote/UB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
       }
