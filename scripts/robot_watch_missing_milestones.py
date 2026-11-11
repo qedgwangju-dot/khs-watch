@@ -971,7 +971,7 @@ def install(base) -> None:
     # Existing narrower lanes own their exact milestone and historical keys.
     # A new coverage lane may take ownership only from the four generic
     # baseline categories, not a prior purpose-built policy/contract guard.
-    generic={None, "", "tesla", "battery", "robotis", "byd_paxini", "old-category"}
+    generic={None, "", "old-category"}
     def new_topic(text):
         candidate=topic(text)
         if candidate and prev["topic_group"](text) in generic:
