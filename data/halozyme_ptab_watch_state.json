@@ -2,6 +2,7 @@
   "initialized": true,
   "seen_events": [
     "0ee5b69fd526297010d7ee4d",
+    "109872ca6be87c62b6641709",
     "11f48eb8a2b96c1b3845fd02",
     "15250d27c48a2fcb77cd5866",
     "1f3df1ee0ac6a5946bcc3248",
@@ -26,6 +27,7 @@
     "http://the-biz.co.kr/news/articleView.html?idxno=728392",
     "http://the-biz.co.kr/news/articleView.html?idxno=728392#pgr2025-00039",
     "https://ai-lab.exparte.com/case/ptab/IPR2026-00312/doc/26",
+    "https://biz.chosun.com/science-chosun/bio/2026/11/10/EBGMPDET6ZD57JCLBVLAN7PTYI/",
     "https://ir.halozyme.com/news/news-details/2026/Halozyme-Wins-Injunction-Stopping-Manufacture-and-Sale-of-Mercks-Keytruda-SC-in-Multiple-European-Markets/default.aspx",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557268",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557365",
@@ -34,7 +36,7 @@
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959",
     "https://www.pearceip.law/2026/09/09/update-on-msds-challenges-to-us-halozyme-patents-in-sc-keytruda-pembrolizumab-dispute/"
   ],
-  "last_check_kst": "2026-11-11T19:49:14+09:00",
+  "last_check_kst": "2026-11-11T21:14:26+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -98,8 +100,10 @@
     "Bing 웹"
   ],
   "legal_v4_initialized": true,
-  "search_mode": "개별 사건번호 + 미국/한국 뉴스 + Bing 웹 (공식 PTAB 개별 문서 미연동)",
-  "last_sent_message_ids": [],
+  "search_mode": "개별 사건번호 + 미국/한국 뉴스 + Bing 웹 + 판결기술근거 (공식 PTAB 개별 문서 미연동)",
+  "last_sent_message_ids": [
+    335
+  ],
   "final_decision_classification_version": 2,
   "seen_portfolio_updates": [
     "0cd0016561efdc8d4474dfc1",
@@ -318,15 +322,15 @@
       }
     ]
   },
-  "search_query_count": 39,
-  "search_task_count": 78,
+  "search_query_count": 40,
+  "search_task_count": 80,
   "search_workers": 8,
-  "search_elapsed_seconds": 1.943,
-  "search_completed_tasks": 78,
+  "search_elapsed_seconds": 2.202,
+  "search_completed_tasks": 80,
   "search_failed_tasks": 0,
   "search_completed_by_engine": {
-    "Bing 웹": 39,
-    "Google 뉴스": 39
+    "Bing 웹": 40,
+    "Google 뉴스": 40
   },
   "source_health": "ok",
   "ptab_direct_document_coverage": {
