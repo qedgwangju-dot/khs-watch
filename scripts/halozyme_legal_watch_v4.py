@@ -71,6 +71,11 @@ for case in base.KNOWN_CASES:
     base.SEARCHES.append(f'"{case}" Halozyme Merck')
 for case in ("PGR2025-00042", "PGR2025-00050", "PGR2025-00053"):
     base.SEARCHES.append(f'"{case}" "Final Written Decision" Halozyme')
+base.SEARCHES.extend([
+    '"Halozyme" "Merck" "written description" "challenged claims" PTAB',
+    '"Halozyme" "Merck" "PH20" "obviousness" patent decision',
+    '할로자임 MSD 특허 청구항 실험 근거 명세서 PTAB',
+])
 
 base.SEARCHES.extend([
     '"C/09/695432" Halozyme Merck Keytruda SC',
@@ -224,12 +229,40 @@ PTAB_NOV9_PORTFOLIO_SCORECARD = {
     },
 }
 
+
+# 2026-11-10 16:27 KST ChosunBiz follow-up after the 2026-11-09
+# Paper 95 alert. The user supplied the article URL; its full text was
+# independently available through search indexing. This is an editorial
+# report, NOT a direct reading of all 131 pages of the official FWD.
+NOV10_PGR42_TECHNICAL_ANALYSIS = [{
+    "engine": "조선비즈 2026-11-10 기사 검색색인 + PTAB 사건·이전 심판 개시 결정 대조",
+    "title": (
+        "PGR2025-00042 Halozyme Merck Final Written Decision technical rationale: "
+        "30 challenged claims, PH20 residue 309, written description, obviousness"
+    ),
+    "url": "https://biz.chosun.com/science-chosun/bio/2026/11/10/EBGMPDET6ZD57JCLBVLAN7PTYI/",
+    "description": (
+        "PGR2025-00042 Patent 12,037,618, Paper 95 Final Written Decision. "
+        "Of 40 originally challenged claims, Halozyme disclaimed 10 claims "
+        "(3, 4, 6, 34-40); the remaining 30 claims (1, 2, 5, 7-33) were "
+        "all determined unpatentable. PH20 amino-acid position 309 variant "
+        "with at least 91% sequence identity and multiple additional substitutions. "
+        "Written description lacked sufficient support and experimental data "
+        "for the immense scope of multiply mutated enzymes. The obviousness "
+        "ground was not accepted; the outcome rests on written description "
+        "and sufficiency grounds. Related cases concerned positions 307 and 317. "
+        "This is new explanatory detail, NOT a second final decision."
+    ),
+    "published": "Tue, 10 Nov 2026 07:27:00 GMT",
+}]
+
 # Dated, already-grounded case events survive transient Bing/Google failures.
 base.VERIFIED_BACKFILL_ITEMS = (
     list(VERIFIED_CURRENT_DECISIONS)
     + list(VERIFIED_EUROPE_DECISIONS)
     + list(OCT15_VERIFIED_DECISIONS)
     + list(NOV9_USER_DOCUMENTED_FWD)
+    + list(NOV10_PGR42_TECHNICAL_ANALYSIS)
 )
 PTAB_OCT15_PORTFOLIO_SCORECARD = {
     "url": OCT15_PTACTS_CASES["PGR2025-00024"],
@@ -563,6 +596,43 @@ CURRENT_POST_FWD_TIMELINE_CASES = {
 }
 
 
+
+def decision_rationale_material(text: str, case: str) -> bool:
+    """Require multiple independent technical/legal facts, not a restated FWD headline."""
+    if not case.startswith(("PGR", "IPR")):
+        return False
+    low = text.lower()
+    if not any(term in low for term in ("final written decision", "최종서면결정", "특허성 부정")):
+        return False
+    evidence = (
+        bool(re.search(r"\b\d+\s+(?:challenged\s+)?claims?\b|청구항\s*\d+\s*개", low)),
+        bool(re.search(r"(?:amino[- ]acid|residue|position)\s*\d{2,4}|아미노산\s*\d{2,4}\s*번", low)),
+        any(term in low for term in ("written description", "명세서", "실험 근거", "enablement")),
+        any(term in low for term in ("obviousness", "자명성", "not accepted", "받아들이지 않았다")),
+        any(term in low for term in ("disclaimed", "claims withdrawn", "청구항 포기")),
+    )
+    return sum(evidence) >= 3
+
+
+def decision_rationale_preview(item: dict) -> list[str]:
+    """Only show facts present in the source item; never invent a claim count."""
+    body = " ".join(str(item.get(k) or "") for k in ("title", "description"))
+    low = body.lower()
+    facts: list[str] = []
+    numbers = re.search(r"(\d+)\s+(?:challenged\s+)?claims?\b", low)
+    if numbers:
+        facts.append(f"심판 대상 청구항 {int(numbers.group(1))}개 관련 상세 분석")
+    position = re.search(r"(?:amino[- ]acid\s+)?(?:residue|position)\s*(\d{2,4})", low)
+    if position:
+        facts.append(f"PH20 아미노산 {position.group(1)}번 변형")
+    if "written description" in low or "명세서" in low:
+        facts.append("명세서 뒷받침 범위에 대한 법적 쟁점")
+    if "obviousness" in low or "자명성" in low:
+        facts.append("기존 기술로부터의 자명성 판단과 다른 무효 사유를 구분")
+    if "disclaimed" in low or "청구항 포기" in low:
+        facts.append("심판 전 자발적 청구항 포기 여부")
+    return facts[:5]
+
 def classify(text: str, case: str) -> str:
     low = text.lower()
     if case.startswith("HALOZYME-PGR-PORTFOLIO-"):
@@ -635,6 +705,11 @@ def classify(text: str, case: str) -> str:
         ):
             if any(term in low for term in terms):
                 return key
+
+    # An explanatory follow-up can carry NEW claim counts and reasoning while
+    # the case's final-decision status stays unchanged. Use its own event key.
+    if decision_rationale_material(text, case):
+        return "decision_rationale"
 
     if any(term in low for term in FINAL_UNPATENTABLE_TERMS):
         return "final_unpatentable"
@@ -738,6 +813,51 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
         )
 
     _pending_timeline_event = _timeline_event(case, kind, item)
+
+    if kind == "decision_rationale":
+        _pending_timeline_event = None  # Not a second court decision/date.
+        url = html.escape(item["url"], quote=True)
+        if case == "PGR2025-00042":
+            return (
+                "<b>[바이오 감시] Halozyme PGR2025-00042 판결 근거 추가 확인</b>\n\n"
+                "<b>2026년 11월 10일 16:27 공개된 심층 보도</b>\n"
+                "- <b>새로 확인된 청구항 범위:</b> MSD는 처음 40개 청구항에 이의를 제기했고, "
+                "할로자임이 3·4·6·34~40번 10개를 포기했습니다. 남은 "
+                "<b>1·2·5·7~33번, 총 30개</b> 전부 특허성이 부정됐습니다.\n"
+                "- <b>기술 쟁점:</b> 인간 히알루로니다제 PH20의 <b>309번 아미노산</b>을 "
+                "변형하면서 원형과 <b>91% 이상 서열 유사성</b>을 지닌 변이체까지 "
+                "특허 범위를 넓게 주장했습니다.\n"
+                "- <b>부정 판단의 직접 원인:</b> 명세서에는 단일 변형 실험 결과가 있었지만 "
+                "여러 위치를 동시에 변형한 광범위한 효소 활성까지 뒷받침할 설명·실험이 "
+                "충분하지 않았다는 것이 기사에서 설명한 핵심입니다.\n"
+                "- <b>자명성과 구분:</b> 기존 기술로부터 쉽게 생각해 낼 수 있다는 "
+                "MSD의 자명성 주장은 받아들여지지 않았으며, 명세서의 뒷받침 부족과 "
+                "그 주장 범위가 서로 다른 문제입니다.\n"
+                "- <b>선행 결정과 비교:</b> PH20 307번·317번 관련 특허에 이어 "
+                "309번에서도 과도하게 넓은 변이체 청구 범위가 쟁점이 됐습니다.\n"
+                "- <b>누적 상태:</b> PGR <b>12/14건</b>에서 심판 대상 청구항 특허성 부정, "
+                "잔여 <b>PGR2025-00050·00053</b>은 결정 대기 중입니다. "
+                "11월 19일 전후는 예상 시점이지 확정 결과가 아닙니다.\n"
+                "- <b>법적·지역별 제한:</b> 11월 9일 최종서면결정을 다시 내린 사건이 아니며, "
+                "미국 특허의 취소 확정이나 유럽 EP622 금지명령 해제가 아닙니다.\n"
+                "- <b>근거·검증:</b> 이 기술적 설명은 조선비즈 11월 10일 기사 "
+                "(원문 검색색인 열람)와 기존 PTAB 사건 및 이전 심판 개시 기록을 대조한 "
+                "2차 자료입니다. Paper 95 최종결정 131쪽 전문을 직접 대조하지는 못했습니다.\n"
+                f'- <a href="{url}">조선비즈 상세 분석 원문</a>\n'
+                f'- <a href="{html.escape(PTACTS_CASE_URLS["PGR2025-00042"], quote=True)}">'
+                "USPTO P-TACTS 원사건 기록</a>"
+            )
+        preview = decision_rationale_preview(item)
+        details = "\n".join("- " + html.escape(fact) for fact in preview)
+        return (
+            "<b>[바이오 감시] Halozyme PTAB 결정의 기술적 근거 추가 확인</b>\n\n"
+            f"- <b>사건:</b> {html.escape(case)} · 미국 특허 {html.escape(patent or '확인 필요')}\n"
+            f"{details}\n"
+            "- <b>단계:</b> 기존 최종결정에 대한 후속 설명이지 새로운 최종결정·항소 판결은 아닙니다.\n"
+            "- <b>근거 수준:</b> 검색으로 확인된 보도 설명이며, 기술·법적 세부사항은 "
+            "원문 결정과 대조하기 전까지 확정 판정으로 확대하지 않습니다.\n"
+            f'- <a href="{url}">분석 자료 원문 보기</a>'
+        )
 
     if case == "PGR2025-00042" and kind == "final_unpatentable":
         url = html.escape(item["url"], quote=True)
@@ -905,7 +1025,7 @@ def stage_aware_event_already_sent(
 ) -> bool:
     # An institution or older filing can share the case URL with a new FWD.
     # Still suppress repeated FWD notices by the exact case+stage event key.
-    if kind == "final_unpatentable":
+    if kind in {"final_unpatentable", "decision_rationale"}:
         return key in seen_events
     return _original_event_already_sent(key, url, kind, seen_events, seen_urls)
 
@@ -1186,7 +1306,7 @@ def main() -> int:
     except Exception:
         state = {}
     state["legal_v4_initialized"] = True
-    state["search_mode"] = "개별 사건번호 + 미국/한국 뉴스 + Bing 웹 (공식 PTAB 개별 문서 미연동)"
+    state["search_mode"] = "개별 사건번호 + 미국/한국 뉴스 + Bing 웹 + 판결기술근거 (공식 PTAB 개별 문서 미연동)"
     state["ptab_direct_document_coverage"] = {
         "status": "not_verified",
         "reason": "USPTO ODP trial document API requires account/API key; no direct docket fetch in this workflow",

@@ -845,6 +845,68 @@ class BioAlertRegressionTests(unittest.TestCase):
 
 
 
+
+    def test_halozyme_article_technical_reason_followup_is_distinct_not_second_fwd(self):
+        item = halo.NOV10_PGR42_TECHNICAL_ANALYSIS[0]
+        blob = " ".join(str(item.get(k) or "") for k in ("title", "description", "url"))
+        self.assertEqual(halo.get_case(blob)[0], "PGR2025-00042")
+        self.assertEqual(halo.classify(blob, "PGR2025-00042"), "decision_rationale")
+        message = halo.alert("PGR2025-00042", "12,037,618", "decision_rationale", item)
+        for fact in ("40개", "10개", "총 30개", "309번", "91%", "명세서", "자명성",
+                     "307번·317번", "12/14건", "PGR2025-00050·00053", "2차 자료"):
+            self.assertIn(fact, message)
+        self.assertNotIn("최종결정 13건", message)
+        self.assertIsNone(halo._timeline_event("PGR2025-00042", "decision_rationale", item))
+        old = halo.base.digest("PGR2025-00042|final_unpatentable")
+        follow = halo.base.digest("PGR2025-00042|decision_rationale")
+        self.assertNotEqual(old, follow)
+        self.assertFalse(halo.base.event_already_sent(
+            follow, item["url"], "decision_rationale", {old}, {item["url"]}))
+        self.assertTrue(halo.base.event_already_sent(
+            follow, item["url"], "decision_rationale", {old, follow}, {item["url"]}))
+
+    def test_halozyme_rationale_material_ignores_headline_only_and_incomplete_claim(self):
+        self.assertFalse(halo.decision_rationale_material(
+            "PGR2025-00042 final written decision all challenged claims unpatentable",
+            "PGR2025-00042"))
+        self.assertFalse(halo.decision_rationale_material(
+            "PGR2025-00042: 30 claims and no further detail", "PGR2025-00042"))
+        self.assertFalse(halo.decision_rationale_material(
+            "Halozyme patent technical analysis on 309 amino acid and obviousness",
+            "PGR2025-00042"))
+        self.assertTrue(halo.decision_rationale_material(
+            halo.NOV10_PGR42_TECHNICAL_ANALYSIS[0]["description"], "PGR2025-00042"))
+
+    def test_halozyme_technical_followup_survives_rss_outage_and_dedupes(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = pathlib.Path(temp, "state.json")
+            status = pathlib.Path(temp, "status.md")
+            follow = halo.NOV10_PGR42_TECHNICAL_ANALYSIS[0]
+            old_key = halo.base.digest("PGR2025-00042|final_unpatentable")
+            path.write_text(json.dumps({"initialized": True, "seen_events":[old_key],
+                "seen_urls":[follow["url"]]}),encoding="utf-8")
+            delivered = []
+            with (
+                patch.object(halo.base, "STATE", path),
+                patch.object(halo.base, "STATUS", status),
+                patch.object(halo.base, "SEARCHES", ['"PGR2025-00042" Merck Halozyme']),
+                patch.object(halo.base, "VERIFIED_BACKFILL_ITEMS", [follow]),
+                patch.object(halo.base, "rss", side_effect=RuntimeError("news unavailable")),
+                patch.object(halo.base, "resolve_chat_id", return_value="existing-bio-chat"),
+                patch.object(halo.base, "send", side_effect=lambda tok, ch, msg: delivered.append(msg) or 734),
+                patch.dict(os.environ, {"BIO_TELEGRAM_BOT_TOKEN": "offline-token"}, clear=False),
+            ):
+                self.assertEqual(halo.base.main(), 2)
+                self.assertEqual(len(delivered), 1)
+                self.assertIn("309번", delivered[0])
+                self.assertIn("30개", delivered[0])
+                saved = json.loads(path.read_text(encoding="utf-8"))
+                self.assertIn(old_key, saved["seen_events"])
+                self.assertIn(halo.base.digest("PGR2025-00042|decision_rationale"),
+                              saved["seen_events"])
+                self.assertEqual(halo.base.main(), 2)
+                self.assertEqual(len(delivered), 1)
+
     def test_halozyme_nov9_fwd_timeline_dedupes_legacy_paper95_row(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             state_path = pathlib.Path(tmpdir) / "state.json"
