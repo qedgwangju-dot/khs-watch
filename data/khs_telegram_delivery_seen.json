@@ -400,6 +400,16 @@
       "sent_at_utc": "2026-10-29T18:01:38.729770Z",
       "title": "신뢰외신 정책 워치: [상·공식 확인] 중국, 바이오·AI·태양광 기술 40개 수출목록 개정안과 수출 전 등록 시행 외 1건"
     },
+    "c63495c48fde8f32e6cf": {
+      "message_id": 550,
+      "message_ids": [
+        550
+      ],
+      "preview": "🚨 정책·규제 고충격 워치 · 2026년 11월 11일 16:13 KST 1. [상·확정] FDA, 의약품 허가·임상 정책 이벤트 공표 - 핵심: FDA, 의약품 허가·임상 정책 이벤트 공표 - 출처: <a href=\"https://www.whitehouse.gov/briefings-statements/2026/11/presidential-message-on-national-diabetes-",
+      "route": "policy",
+      "sent_at_utc": "2026-11-11T07:13:06.670564Z",
+      "title": "정책 워치: [상] FDA, 의약품 허가·임상 정책 이벤트 공표"
+    },
     "c904d4be94c7e72b613f": {
       "message_id": 3019,
       "message_ids": [
@@ -602,6 +612,15 @@
       "route": "policy",
       "sent_at_utc": "2026-11-07T19:54:00.999881Z",
       "title": "신뢰외신 정책 워치: [상·공식 확인 전] 트럼프, 관세 관련 발언: 수출주·공급망 정책 리스크 외 1건"
+    },
+    "part-4261900f1908d11164fd556a": {
+      "message_id": 550,
+      "parent_digest": "c63495c48fde8f32e6cf",
+      "part_count": 1,
+      "part_index": 1,
+      "route": "policy",
+      "sent_at_utc": "2026-11-11T07:13:06.670564Z",
+      "title": "정책 워치: [상] FDA, 의약품 허가·임상 정책 이벤트 공표"
     },
     "part-492c4d7064b58c8a46a62f55": {
       "message_id": 506,
