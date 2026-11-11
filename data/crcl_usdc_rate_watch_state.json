@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-12T00:14:05+09:00",
+  "updated_at_kst": "2026-11-12T06:59:12+09:00",
   "circle": {
     "date": "2026-11-09",
     "circulation_usd_b": 68.9,
@@ -51,25 +51,25 @@
   },
   "crcl": {
     "date": "2026-11-11",
-    "close": 66.76,
+    "close": 67.12,
     "prev_date": "2026-11-10",
     "prev_close": 64.98,
-    "daily_pct": 2.74,
+    "daily_pct": 3.29,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
     "crosscheck_date": "2026-11-11",
-    "crosscheck_close": 66.79000091552734,
-    "crosscheck_daily_pct": 2.79,
-    "crosscheck_gap_pct": 0.045,
+    "crosscheck_close": 67.12000274658203,
+    "crosscheck_daily_pct": 3.29,
+    "crosscheck_gap_pct": 0.0,
     "crosscheck_status": "confirmed"
   },
   "tbx": {
     "date": "2026-11-11",
-    "close": 29.35610008239746,
+    "close": 29.3799991607666,
     "prev_date": "2026-11-10",
     "prev_close": 29.360000610351562,
-    "daily_pct": -0.01
+    "daily_pct": 0.07
   },
   "fx": {
     "rate": 1355.7,
@@ -80,7 +80,7 @@
     "official": true,
     "crosscheck": "Yahoo Finance 1,343.84원, 차이 0.87%"
   },
-  "crcl_last_alerted_close_date": "2026-11-10",
+  "crcl_last_alerted_close_date": "2026-11-11",
   "correction_pending": false,
   "errors": []
 }
