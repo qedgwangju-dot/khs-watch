@@ -232,9 +232,32 @@ def _from_figure_x_syndication() -> list[dict]:
     return out
 
 
+def _parse_nitter_rss(raw: str) -> ET.Element:
+    """Repair only invalid XML entities/controls in a genuine RSS document.
+
+    Never parse an HTML access-denied page as a verified single tweet.
+    If the RSS is structurally broken, keep the visible collection failure.
+    """
+    if not re.match(r"\\s*(?:<\\?xml[^>]*>\\s*)?<(?:rss|feed)\\b", raw, re.I):
+        raise ValueError("Nitter returned non-RSS content")
+    try:
+        return ET.fromstring(raw)
+    except ET.ParseError:
+        safe = re.sub(r"[\\x00-\\x08\\x0B\\x0C\\x0E-\\x1F]", "", raw)
+        safe = re.sub(
+            r"&(?!amp;|lt;|gt;|quot;|apos;|#(?:[0-9]+|[xX][0-9A-Fa-f]+);)",
+            "&amp;",
+            safe,
+            flags=re.I,
+        )
+        if safe == raw:
+            raise
+        return ET.fromstring(safe)
+
+
 def _from_figure_nitter(url: str) -> list[dict]:
     raw = legacy._request_text(url)
-    root = ET.fromstring(raw)
+    root = _parse_nitter_rss(raw)
     out: list[dict] = []
     for node in root.findall('.//item')[:40]:
         link = (node.findtext('link') or '').strip()
