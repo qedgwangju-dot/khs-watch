@@ -22,8 +22,10 @@
       "key": "October 28, 2026"
     }
   },
-  "last_errors": [],
-  "updated_at_utc": "2026-11-10T14:18:23.252712+00:00",
+  "last_errors": [
+    "BLS: The read operation timed out"
+  ],
+  "updated_at_utc": "2026-11-11T00:03:57.507527+00:00",
   "fomc_korean_translation_v1": {
     "sent": true,
     "key": "September 16, 2026",
