@@ -741,6 +741,76 @@ class PowerBottleneckUpgradeTests(unittest.TestCase):
         self.assertEqual(w.source_rank(w.POWER_UPGRADE_SOURCES["reuters"]), 2)
 
 
+class GridNewsSourceRecoveryTests(unittest.TestCase):
+    def test_bing_tracking_link_unwraps_official_publisher(self):
+        link = ("https://www.bing.com/news/apiclick.aspx?ref=FexRss"
+                "&url=https%3A%2F%2Fwww.gevernova.com%2Fnews%2F2026-report"
+                "&mkt=en-US")
+        self.assertEqual(
+            w.direct_url({"link": link}),
+            "https://www.gevernova.com/news/2026-report",
+        )
+        self.assertEqual(w.direct_url({"link": "https://www.bing.com/news/search?q=foo"}), "")
+        self.assertEqual(w.direct_url({"link": "javascript:alert(1)"}), "")
+
+    def test_bing_rss_parser_keeps_true_article_date(self):
+        payload = (b'<rss><channel><item><title>Data center transformer project</title>'
+                   b'<link>https://www.bing.com/news/apiclick.aspx?url=https%3A%2F%2Freuters.com%2Fstory</link>'
+                   b'<pubDate>Wed, 11 Nov 2026 01:00:00 GMT</pubDate>'
+                   b'</item></channel></rss>')
+        with mock.patch.object(w.urllib.request, "urlopen") as opener:
+            response = mock.MagicMock()
+            response.__enter__.return_value.read.return_value = payload
+            opener.return_value = response
+            entries = w.read_bing_rss("bing", "transformer")
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(w.direct_url(entries[0]), "https://reuters.com/story")
+        self.assertIn("2026-11-11", entries[0]["published_at_kst"])
+
+    def test_gdelt_first_seen_does_not_forge_publication(self):
+        fixture = {"articles": [{
+            "url": "https://www.gevernova.com/news/new-plant",
+            "title": "Data center factory opens",
+            "seendate": "20261111005300",
+        }]}
+        with mock.patch.object(w, "fetch", return_value=__import__("json").dumps(fixture).encode()):
+            entries = w.gdelt_recent_articles('"gas turbine" "data center"')
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]["published_at_kst"], "")
+        self.assertEqual(entries[0]["index_seen_utc"], "20261111005300")
+
+    def test_bing_recovery_survives_google_and_never_alerts_old_article(self):
+        now = datetime(2026, 11, 11, 10, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        old_story = {
+            "title": "Data center switchgear new factory production begins",
+            "description": "Data center transformer capacity expansion",
+            "link": "https://www.eaton.com/us/en-us/production2025",
+            "published_at_kst": "2026-09-01T12:00:00+09:00",
+        }
+        with mock.patch.object(w, "SEARCHES", [("google", "power factory")]), \
+             mock.patch.object(w, "read_bing_rss", return_value=[old_story]), \
+             mock.patch.object(w, "article_text", return_value="Production begins for data center switchgear."), \
+             mock.patch.object(w, "read_rss") as google, \
+             mock.patch.object(w, "gdelt_recent_articles") as gdelt:
+            changes, events = w.discover(now, set())
+        google.assert_not_called()
+        gdelt.assert_not_called()
+        self.assertEqual(events, [])
+        self.assertEqual(w.DISCOVERY_HEALTH["pages_opened"], 1)
+
+    def test_network_gap_is_recorded_separately_from_no_event(self):
+        now = datetime(2026, 11, 11, 10, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        with mock.patch.object(w, "SEARCHES", [("google", "electricity")]), \
+             mock.patch.object(w, "read_bing_rss", side_effect=TimeoutError), \
+             mock.patch.object(w, "read_rss", side_effect=TimeoutError), \
+             mock.patch.object(w, "gdelt_recent_articles", side_effect=TimeoutError):
+            rows, events = w.discover(now, set())
+        self.assertEqual((rows, events), ([], []))
+        self.assertEqual(w.DISCOVERY_HEALTH["pages_opened"], 0)
+        self.assertEqual(w.DISCOVERY_HEALTH["bing_failed"], 1)
+        self.assertEqual(w.DISCOVERY_HEALTH["rss_failed"], 1)
+        self.assertEqual(w.DISCOVERY_HEALTH["gdelt_failed"], 1)
+
 class GridAlertTests(unittest.TestCase):
     def test_alert_is_compact_and_keeps_equipment_bottlenecks(self):
         changes = [{

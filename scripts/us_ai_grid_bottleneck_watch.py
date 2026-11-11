@@ -360,8 +360,8 @@ def google_news_url(query: str) -> str:
     return f"https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en"
 
 
-def read_rss(kind: str, query: str) -> list[dict]:
-    root = ET.fromstring(fetch(google_news_url(query)))
+def _rss_entries(raw: bytes, kind: str) -> list[dict]:
+    root = ET.fromstring(raw)
     out = []
     for item in root.findall("./channel/item"):
         title = clean_text(item.findtext("title") or "")
@@ -370,13 +370,54 @@ def read_rss(kind: str, query: str) -> list[dict]:
         dt = parse_pubdate(clean_text(item.findtext("pubDate") or ""))
         if title and link:
             out.append({
-                "kind": kind,
-                "title": title,
-                "link": link,
+                "kind": kind, "title": title, "link": link,
                 "description": desc,
                 "published_at_kst": dt.isoformat(timespec="seconds") if dt else "",
             })
     return out
+
+
+def read_rss(kind: str, query: str) -> list[dict]:
+    """Retain the existing Google RSS route as a fallback."""
+    return _rss_entries(fetch(google_news_url(query), timeout=12), kind)
+
+
+def bing_news_url(query: str) -> str:
+    """Unversioned public Bing RSS; fail closed if its URL format changes."""
+    params = urllib.parse.urlencode({"q": query, "format": "rss", "setmkt": "en-US"})
+    return "https://www.bing.com/news/search?" + params
+
+
+def read_bing_rss(kind: str, query: str) -> list[dict]:
+    req = urllib.request.Request(
+        bing_news_url(query),
+        headers={"User-Agent": "Mozilla/5.0 (compatible; NewsMonitoring/1.0)"}
+    )
+    with urllib.request.urlopen(req, timeout=10) as response:
+        return _rss_entries(response.read(), kind)
+
+
+def gdelt_recent_articles(query: str) -> list[dict]:
+    """GDELT official DOC article index; 'seendate' is not publication date."""
+    params = urllib.parse.urlencode({
+        "query": query, "mode": "artlist", "format": "json",
+        "maxrecords": 12, "timespan": "2d", "sort": "datedesc",
+    })
+    raw = json.loads(fetch("https://api.gdeltproject.org/api/v2/doc/doc?" + params, timeout=15))
+    if not isinstance(raw, dict):
+        return []
+    result = []
+    for item in (raw.get("articles") or [])[:12]:
+        url = str(item.get("url") or "").strip()
+        title = clean_text(item.get("title") or "")
+        if not title or not url:
+            continue
+        result.append({
+            "kind": "gdelt", "title": title, "link": url, "description": "",
+            "published_at_kst": "",  # Indexing time is not a verified publish timestamp.
+            "index_seen_utc": str(item.get("seendate") or ""),
+        })
+    return result
 
 
 def decode_google_news(link: str) -> str:
@@ -396,7 +437,22 @@ def decode_google_news(link: str) -> str:
 
 
 def direct_url(item: dict) -> str:
-    return decode_google_news(item.get("link") or "")
+    link = str(item.get("link") or "").strip()
+    parsed = urllib.parse.urlparse(link)
+    host = (parsed.hostname or "").lower()
+    if host == "bing.com" or host.endswith(".bing.com"):
+        if parsed.path.lower() != "/news/apiclick.aspx":
+            return ""
+        target = (urllib.parse.parse_qs(parsed.query).get("url") or [""])[0]
+        parsed = urllib.parse.urlparse(target)
+        if parsed.scheme not in ("http", "https") or not parsed.hostname:
+            return ""
+        return target if "bing.com" not in (parsed.hostname or "").lower() else ""
+    if host == "news.google.com":
+        return decode_google_news(link)
+    if parsed.scheme in ("http", "https") and parsed.hostname:
+        return link
+    return ""
 
 
 def article_text(url: str) -> str:
@@ -531,7 +587,8 @@ def parse_metrics(text: str) -> dict:
             if v and 50 <= v <= 5000:
                 out["transmission_345kv_plus_miles_latest"] = v
 
-    if "morgan stanley" in low and ("data center" in low or "datacenter" in low):
+    if ("morgan stanley" in low and ("data center" in low or "datacenter" in low)
+            and not ("49 gw" in low and "2028" in low and "shortfall" in low)):
         year_patterns = {
             2025: "ms_it_power_2025_gw",
             2026: "ms_it_power_2026_gw",
@@ -746,29 +803,32 @@ def build_alert(changes: list[dict], events: list[dict], state: dict) -> str:
     return "\n".join(lines).strip() + "\n"
 
 def discover(now: datetime, seen_urls: set[str]) -> tuple[list[dict], list[dict]]:
+    """Combine publisher URLs from independent indexes without asserting source availability."""
     metric_obs: list[dict] = []
     events: list[dict] = []
     cutoff = now - timedelta(days=90)
+    event_cutoff = now - timedelta(days=3)
     local_seen = set()
     fetch_budget = 22
     fetched = 0
     DISCOVERY_HEALTH.clear()
-    DISCOVERY_HEALTH.update(rss_ok=0, rss_failed=0, urls_resolved=0, pages_opened=0)
+    DISCOVERY_HEALTH.update(
+        rss_ok=0, rss_failed=0, urls_resolved=0, pages_opened=0,
+        bing_ok=0, bing_failed=0, google_ok=0, gdelt_ok=0, gdelt_failed=0,
+        news_candidates=0,
+    )
     pivot = (now.toordinal() * 12 + now.hour // 2) % len(SEARCHES)
     ordered = SEARCHES[pivot:] + SEARCHES[:pivot]
-    for kind, query in ordered:
-        try:
-            items = read_rss(kind, query)
-        except Exception:
-            DISCOVERY_HEALTH["rss_failed"] += 1
-            continue
-        DISCOVERY_HEALTH["rss_ok"] += 1
-        query_fetched = 0
-        for item in items:
+
+    def examine(items: list[dict]) -> None:
+        nonlocal fetched
+        attempted_this_query = 0
+        for item in items[:12]:
             url = direct_url(item)
-            if url:
-                DISCOVERY_HEALTH["urls_resolved"] += 1
-            if not url or url in local_seen:
+            if not url:
+                continue
+            DISCOVERY_HEALTH["urls_resolved"] += 1
+            if url in local_seen:
                 continue
             local_seen.add(url)
             pub = item.get("published_at_kst") or ""
@@ -779,16 +839,18 @@ def discover(now: datetime, seen_urls: set[str]) -> tuple[list[dict], list[dict]
             if dt and dt < cutoff:
                 continue
             base = clean_text(f"{item.get('title','')} {item.get('description','')}")
-            low = base.lower()
-            if not any(term in low for term in MATERIAL_TERMS):
+            if not any(term in base.lower() for term in MATERIAL_TERMS):
                 continue
-            if fetched >= fetch_budget or query_fetched >= 1:
+            DISCOVERY_HEALTH["news_candidates"] += 1
+            if fetched >= fetch_budget or attempted_this_query >= 2:
                 continue
+            attempted_this_query += 1
             fetched += 1
-            query_fetched += 1
             body = article_text(url)
-            if body:
-                DISCOVERY_HEALTH["pages_opened"] += 1
+            if not body:
+                # A search snippet alone cannot confirm a sale, contract, or shipment.
+                continue
+            DISCOVERY_HEALTH["pages_opened"] += 1
             text = clean_text(f"{base} {body}")
             metrics = parse_metrics(text)
             if metrics:
@@ -796,13 +858,51 @@ def discover(now: datetime, seen_urls: set[str]) -> tuple[list[dict], list[dict]
                     "url": url, "published_at_kst": pub, "metrics": metrics,
                     "rank": source_rank(url), "title": item.get("title") or "",
                 })
-            if url not in seen_urls:
-                ev = structural_event(text, url)
+            # Limit newly reindexed older stories after a feed recovery.
+            # GDELT's first-seen time is not an actual publication timestamp.
+            if url not in seen_urls and dt and event_cutoff <= dt <= now + timedelta(hours=3):
+                ev = structural_event(base, url)
                 if ev:
                     events.append({
                         "event": ev, "url": url, "published_at_kst": pub,
                         "title": item.get("title") or "", "rank": source_rank(url),
                     })
+
+    bing_blocked = False
+    for kind, query in ordered:
+        items = []
+        if not bing_blocked:
+            try:
+                items = read_bing_rss(kind, query)
+                DISCOVERY_HEALTH["bing_ok"] += 1
+                DISCOVERY_HEALTH["rss_ok"] += 1
+            except Exception:
+                bing_blocked = True
+                DISCOVERY_HEALTH["bing_failed"] += 1
+        if not items:
+            try:
+                items = read_rss(kind, query)
+                DISCOVERY_HEALTH["google_ok"] += 1
+                DISCOVERY_HEALTH["rss_ok"] += 1
+            except Exception:
+                DISCOVERY_HEALTH["rss_failed"] += 1
+                continue
+        examine(items)
+
+    # Independent publisher URL index if search feeds did not yield readable bodies.
+    if not DISCOVERY_HEALTH["pages_opened"]:
+        subjects = (
+            '"gas turbine" "data center"',
+            '"power transformer" "data center"',
+            '"interconnection" "data center"',
+        )
+        query = subjects[(now.toordinal() + now.hour) % len(subjects)]
+        try:
+            indexed = gdelt_recent_articles(query)
+            DISCOVERY_HEALTH["gdelt_ok"] += 1
+            examine(indexed)
+        except Exception:
+            DISCOVERY_HEALTH["gdelt_failed"] += 1
 
     metric_obs.sort(key=lambda x: (x["rank"], x.get("published_at_kst") or ""), reverse=True)
     events.sort(key=lambda x: (x["rank"], x.get("published_at_kst") or ""), reverse=True)
@@ -1777,6 +1877,7 @@ def main() -> None:
         f"- 한국 변압기 수출 확인월: {korean_exports.get('latest_official_us_month') or '미확인'}\n"
         f"- 한국 변압기 수출 이벤트: {len(export_events)}개\n"
         f"- 웹 수집 건강도: RSS 성공 {DISCOVERY_HEALTH.get('rss_ok',0)} / 실패 {DISCOVERY_HEALTH.get('rss_failed',0)}, 링크 복원 {DISCOVERY_HEALTH.get('urls_resolved',0)}, 기사 본문 {DISCOVERY_HEALTH.get('pages_opened',0)}\n"
+        f"- 대체 수집: Bing 성공 {DISCOVERY_HEALTH.get('bing_ok',0)}·실패 {DISCOVERY_HEALTH.get('bing_failed',0)}, GDELT 성공 {DISCOVERY_HEALTH.get('gdelt_ok',0)}·실패 {DISCOVERY_HEALTH.get('gdelt_failed',0)}\n"
         f"- 자료 공백: {'있음(신규 사건 없음과 구별)' if DISCOVERY_HEALTH.get('pages_opened',0) == 0 else '없음'}\n"
         f"- 전력·터빈 선행경보: {'예' if power_notice else '아니오'}\n"
         f"- 알림: {'예' if notify else '아니오'}\n",
