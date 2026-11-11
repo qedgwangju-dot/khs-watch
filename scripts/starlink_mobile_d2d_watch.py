@@ -414,7 +414,7 @@ def rakuten_ast_story(title:str)->bool:
  t=stem_title(title)
  return bool(
   (re.search(r"rakuten|라쿠텐|楽天",t) and
-   re.search(r"ast[ -]?spacemobile|ast[ -]?space|ast스페이스|ast 스페이스|\\bast\\b",t))
+   re.search(r"ast[ -]?spacemobile|ast[ -]?space|ast스페이스|ast 스페이스|\bast\b",t))
   or re.search(r"rakuten[ -]?ast|라쿠텐[ -]?ast",t)
  )
 
@@ -496,7 +496,7 @@ def stage(topic:str,title:str)->str|None:
   if re.search(r"incorporat(?:ed|ion) completed|company registration completed|"
                r"법인 설립 완료|등기 완료|法人設立完了",t):
    return "jv_established"
-  if re.search(r"joint venture|joint-venture|\\bjv\\b|rakuten ast|"
+  if re.search(r"joint venture|joint-venture|\bjv\b|rakuten ast|"
                r"合弁|합작법인|합작 투자|設立",t):
    return "jv_agreement"
   return None
@@ -1019,6 +1019,13 @@ def test()->int:
  assert match_articles(rakuten1,rakuten2,"rakuten_ast","jv_agreement")
  alerts,added=choose_events(group,{},False)
  assert len(alerts)==1 and len(added)==1 and RAKUTEN_AST_JV_KEY in added
+ from space_launch_telegram_send import readable_messages
+ compact=readable_messages(HEADER+"\n기준: 회귀검사\n\n"+alerts[0]+"\n")
+ assert len(compact)==1, "One Rakuten–AST agreement must fit one readable Telegram message"
+ assert "51%" in compact[0][0] and "1,480억" in compact[0][0]
+ assert [x["url"] for x in compact[0][1] if x["type"]=="text_link"]==[
+    RAKUTEN_AST_ORIGINAL,RAKUTEN_AST_SEC
+ ]
  assert "51%" in alerts[0] and "1,480억" in alerts[0] and "2029년 3월" in alerts[0]
  prior_alerts,unchanged=choose_events(group,old_state["seen"],False)
  assert prior_alerts==[] and unchanged==old_state["seen"]
