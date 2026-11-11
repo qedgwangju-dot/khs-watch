@@ -716,7 +716,7 @@ def structural_event(text: str, url: str) -> str:
             and any(t in low for t in ("gas turbine", "aeroderivative", "jet engine"))
             and any(t in low for t in ("data center", "data centre", "ai factory", "ai factories", "crusoe"))
             and re.search(r"\b\d{1,4}(?:[.,]\d+)?\s*(?:mw|gw)\b", low)
-            and any(t in low for t in ("signed", "awarded", "contracted", "firm order", "purchased", "delivered"))
+            and any(t in low for t in ("signed", "awarded", "contracted", "firm order", "purchased", "delivered", "announced today a contract", "contract to deliver"))
             and not any(t in low for t in ("not signed", "unsigned", "no contract", "proposal only"))):
         return "미국 AI 데이터센터용 가스터빈·항공기 엔진 전환 설비 확정 공급·구매계약"
     if any(k in low for k in ("new factory", "new plant", "breaks ground", "expansion", "expand capacity", "capacity expansion")) and "transformer" in low:
