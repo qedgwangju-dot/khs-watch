@@ -69,9 +69,27 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-12T03:41:06+09:00",
-  "last_scan_count": 0,
+  "updated_at_kst": "2026-11-12T08:54:54+09:00",
+  "last_scan_count": 1,
   "semi_300mm_track_version": 2,
+  "sumco_wafer_squeeze": {
+    "sent_fact_keys": [
+      "sumco-2026-11-11-q3-300mm-2026q4-demand-unmet-capex-v1"
+    ],
+    "last_evidence": {
+      "key": "sumco-2026-11-11-q3-300mm-2026q4-demand-unmet-capex-v1",
+      "release_date": "2026-11-11",
+      "actual_quarter": "2026Q3",
+      "shortage_forecast_quarter": "2026Q4",
+      "product": "300mm silicon wafer / leading-edge logic and memory",
+      "stage": "issuer_2026q4_demand_warning_not_confirmed_shipment_failure",
+      "q2_source": "https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260806/20260805509660.pdf",
+      "q3_filing": "https://www.release.tdnet.info/inbs/140120261109570070.pdf",
+      "q3_transcribed_slides": "https://6ix.com/deck/3l9rhmj0/sumco-q3-2026-earnings-presentation",
+      "q3_primary_directly_opened": false,
+      "source_status": "2Q 원본 PDF 직접 확인, 3Q TDnet 공시 존재·슬라이드 전재 대조, 3Q 원본 PDF 직접 접근 제한"
+    }
+  },
   "semi_300mm": {
     "vintage": "3Q26",
     "release_date": "2026-10-13",
@@ -114,7 +132,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -140,6 +158,7 @@
     "6c59517c78954937ad7fb5b1",
     "6cb3f9fee458cbd5414c2744",
     "6f7d4edee62f9cb2d4432ccf",
+    "72e51f5d7b884367520ec10d",
     "89e73411422b9d710eee6410",
     "8e83ced6f5ddad839f021a48",
     "928e5521196664bfaa5b475c",
@@ -166,20 +185,28 @@
     "fbb3374837c522b4bf3b2884"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
-  "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
-  "telegram_message_ids": [
-    292
+  "last_held": [
+    {
+      "event_key": "korea|capacity|SK hynix|hbm4",
+      "source": "The Globe and Mail",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-11-12T03:30:32+09:00"
+    }
   ],
-  "telegram_message_id": 292,
+  "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
+  "telegram_message_ids": [
+    397
+  ],
+  "telegram_message_id": 397,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      292
+      397
     ],
-    "confirmed_at_kst": "2026-10-14T21:13:05+09:00",
-    "alert_signature": "94c584bc14528f7d013da82b70e1592b04056397490937f2692c5c9e1720c802"
+    "recipient_verified": true,
+    "confirmed_at_kst": "2026-11-12T08:54:55+09:00",
+    "alert_signature": "e9b7c8bf8a3bad8a47ff5b2ff85fe1c573d10ccc9a6cd6da838f81e796029bed"
   }
 }
