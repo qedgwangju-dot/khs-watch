@@ -137,6 +137,8 @@ _nov11_no_amount = make(
     "와이드경제",
 )
 _nov11_no_amount["published"] = "2026-11-11T01:23:00+00:00"
+_no_amount_text = " ".join(str(_nov11_no_amount.get(_k) or "") for _k in ("title","description","source"))
+assert base.topic_group(_no_amount_text) == "humanoid_component_policy", "Korean localisation must not be confused with US onshoring"
 assert base.key(_nov11_no_amount) == "4de9ae4cdf9abefb86bbac2b181e6ea67e92c64b3e2f6a6489b3745948b180e3", "No-amount policy retelling must not re-alert"
 _plan_a = make(
     "정부, 초혁신경제 휴머노이드 센서·액추에이터 세부 추진계획 발표",

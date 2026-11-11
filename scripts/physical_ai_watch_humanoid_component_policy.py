@@ -227,7 +227,10 @@ def _bottleneck_stage(text: str) -> str:
     if _is_fcc_robot_rule(text): return 'fcc_robot_rule'
     if _is_schaeffler_cost_breakthrough(text): return 'gear_cost_breakthrough'
     if _is_apptronik_hw_bottleneck(text): return 'us_hardware_bottleneck'
-    if DOMESTIC_LOCALIZATION.search(text) and US_HARDWARE_BOTTLENECK.search(text): return 'localization_capacity'
+    # Korean robot-part localisation is NOT an American onshoring milestone.
+    if (DOMESTIC_LOCALIZATION.search(text) and US_HARDWARE_BOTTLENECK.search(text)
+            and re.search(r'\b(?:US|USA|America|American|Texas)\b|U\.S\.|미국|텍사스', text, re.I)):
+        return 'localization_capacity'
     return ''
 
 
