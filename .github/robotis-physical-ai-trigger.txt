@@ -1,4 +1,4 @@
-triggered_at_kst=2026-10-25T17:35:43+09:00
+triggered_at_kst=2026-11-11T14:09:00+09:00
 force_summary=0
 reactivate_khs_policy=0
 format_test=microduck-berlin-final-query-v3
@@ -9,3 +9,4 @@ robot_nov02_verification=robot_nov02_delivery_receipt_and_correction_final_nofor
 additional_coverage_check=robot_nov02_missing_sources_dart_noforce_v2
 openai_infra_robotics_verification=openai_stanford_cheeky_original_feeds_noforce_20261102_v2
 regression_recovery=robot_no_force_monotonic_q3_earnings_filter_v7
+nov11_policy_dedup_noforce=1

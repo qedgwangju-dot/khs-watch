@@ -112,6 +112,42 @@ def classify(item: dict):
     return group, score, category, key
 
 
+# Nov 11 identical government-budget press coverage must be one alert.
+# Earlier proposal stories and future finalized budgets / procurement stay distinct.
+_nov11_policy_a = make(
+    "정부, 휴머노이드용 이차전지 등 초혁신경제 프로젝트별 패키지 지원 추진",
+    "2026년 116억원에서 2027년 정부안 620억원으로 확대. 센서·액추에이터·휴머노이드 배터리 지원.",
+    "머니투데이",
+)
+_nov11_policy_b = make(
+    "휴머노이드 86% 중국산인데 한국은 1%…정부, 구동기·센서·배터리 국산화 나선다",
+    "정부, 휴머노이드 핵심부품 2027년 예산안 620억원, 2026년 116억원 대비 증액.",
+    "마켓잉크",
+)
+for _policy in (_nov11_policy_a, _nov11_policy_b):
+    _policy["published"] = "2026-11-11T00:10:00+00:00"
+    _g, _s, _c, _k = classify(_policy)
+    assert _g == "humanoid_component_policy", (_g, _c)
+    assert _c.endswith("휴머노이드 핵심부품 620억원 정부안"), _c
+    assert _s >= 11, _s
+    assert _k == "4de9ae4cdf9abefb86bbac2b181e6ea67e92c64b3e2f6a6489b3745948b180e3", ("reprinted 620억원 policy alert", _k)
+_old_policy = dict(_nov11_policy_a, published="2026-09-10T00:10:00+00:00")
+assert base.key(_old_policy) != base.key(_nov11_policy_a), "Earlier draft baseline must stay distinct"
+_final_policy = make(
+    "국회 본회의 2027년 휴머노이드 핵심부품 620억원 예산안 통과",
+    "휴머노이드 센서 액추에이터 이차전지 국회 최종 확정 예산 620억원",
+    "국회",
+)
+_final_policy["published"] = "2026-12-02T00:10:00+00:00"
+assert base.key(_final_policy) != base.key(_nov11_policy_a), "Parliamentary approval is a new milestone"
+_procurement_policy = make(
+    "2027 휴머노이드 센서 액추에이터 핵심부품 620억원 사업 공고",
+    "정부 지원 대상 공모 및 세부과제 공고; 실증 신청 접수",
+    "산업통상부",
+)
+_procurement_policy["published"] = "2026-12-10T00:10:00+00:00"
+assert base.key(_procurement_policy) != base.key(_nov11_policy_a), "Procurement must be a new milestone"
+
 # 1) Stock-price/sector-reaction article that only recycles an older Tesla audit story.
 price_reaction = make(
     "A股异动丨特斯拉供应链审厂传闻发酵，人形机器人概念集体走强，均胜电子涨超4%",
