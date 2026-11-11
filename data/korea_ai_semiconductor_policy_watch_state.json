@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-11-11T08:35:29+09:00",
+  "last_checked_kst": "2026-11-11T15:50:00+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -611,6 +611,15 @@
       "category": "해외진출 지원",
       "first_seen_kst": "2026-11-10T19:06:37+09:00",
       "suppressed_low_quality": true
+    },
+    "65a38f4935b7af690cc1dd18": {
+      "title": "엔비디아·SKT·리벨리온 손잡았다…국산 AI 반도체 해외 진출 모색 - 동아비즈니스리뷰",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE4yby1pWjNxVWFCRU93cGpOUzJkOG02VldKZnN1TlMwQThRemFLNmtzVi1WT0tGSUI2cmdodGxtemJUM242eDV6eGtncFlOUXBnTmRUdmxNVUh4VEFUbGc?oc=5",
+      "event_signature": "리벨리온|해외진출 지원|일반",
+      "stage": 3,
+      "category": "해외진출 지원",
+      "first_seen_kst": "2026-11-11T15:50:00+09:00",
+      "suppressed_duplicate": "same_title"
     }
   }
 }
