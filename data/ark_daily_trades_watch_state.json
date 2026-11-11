@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "last_date": "2026-11-09",
-  "digest": "f74586f0899cf883ac5865ce",
+  "last_date": "2026-11-10",
+  "digest": "4a6e65dc6bbec94c43bd6196",
   "format_version": 3,
   "sector_history": [
     {
@@ -289,22 +289,40 @@
         "반도체·자동화 장비": 5,
         "바이오·헬스케어": 1
       }
+    },
+    {
+      "date": "2026-11-10",
+      "digest": "4a6e65dc6bbec94c43bd6196",
+      "complete": false,
+      "buy_complete": false,
+      "sell_complete": false,
+      "buy_usd": {
+        "업종 미확인": 0.0,
+        "우주·방산": 0.0
+      },
+      "sell_usd": {
+        "금융기술·디지털자산": 0.0,
+        "업종 미확인": 0.0,
+        "AI·클라우드·기업용 소프트웨어": 0.0,
+        "우주·방산": 0.0,
+        "반도체·자동화 장비": 0.0,
+        "자동차·자율주행": 1198116.394944
+      },
+      "buy_rows": {
+        "업종 미확인": 4,
+        "우주·방산": 3
+      }
     }
   ],
-  "updated_at": "2026-11-10T04:44:21.257083+00:00",
+  "updated_at": "2026-11-11T01:22:01.792663+00:00",
   "last_delivery": {
-    "last_date": "2026-11-09",
-    "digest": "f74586f0899cf883ac5865ce",
+    "last_date": "2026-11-10",
+    "digest": "4a6e65dc6bbec94c43bd6196",
     "message_ids": [
-      132
+      134
     ],
     "chat_id": "1551003698",
     "bot": "khs887988798879_bot",
-    "confirmed_at": "2026-11-10T04:44:24.775906+00:00"
-  },
-  "pending_delivery": {
-    "last_date": "2026-11-10",
-    "digest": "4a6e65dc6bbec94c43bd6196",
-    "reserved_at": "2026-11-11T01:22:02.442564+00:00"
+    "confirmed_at": "2026-11-11T01:22:05.070995+00:00"
   }
 }
