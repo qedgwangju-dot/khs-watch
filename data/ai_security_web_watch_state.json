@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 8,
+    "material_items": 9,
     "new_material_items": 0,
-    "raw_items": 80,
+    "raw_items": 84,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -685,16 +685,6 @@
       "source": "Anthropic Model Incident Reports",
       "title": "Anthropic Model Incident Reports: investigating unintended model actions",
       "url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
-      "vendor": "Anthropic"
-    },
-    "7a6370340c8995f59a18b5f9": {
-      "category": "프런티어 모델 사이버 역량·접근 확대",
-      "first_seen_at": "2026-10-07T00:02:25.544576+00:00",
-      "published_at": null,
-      "severity": 1,
-      "source": "Anthropic News",
-      "title": "Anthropic News: cyber verification program",
-      "url": "https://www.anthropic.com/news/cyber-verification-program",
       "vendor": "Anthropic"
     },
     "7a8bc957348170dfec17b11b": {
@@ -1407,16 +1397,6 @@
       "url": "https://news.google.com/rss/articles/CBMi5wJBVV95cUxNMHFpSTV2T253LUJ5cUR4U0Y5bGlWSkEtSTRsMDdRRHc5eGRxZzJyVlJvZm52dlZFYjF1WFh3anBLSUZ4aHR3VWUtTFFUWXVna1ZFeDhvanZ0X3NqTzZRMVVlakpCUnlGdnI4Tl9TMEdzRk0wc2ZjOXE4VGx6MFlLbzNYVWZNc21ENWpQeHRFdGI5RndRRTNvcHFvbEZaVXZ6aFhLanFxSlY3M0Nrb2JtY1MwVnVUaFB2TUh1elAtNXRleGdENW9oMmdDMGVITGlkQUVtMDdaYnYzb2E0VDdhYjQ0a2VpN2xXSnB5T256Tm1XUzZFN1BBTExFS1pSQXJaRGZiUlJReWZydFRlcWxUaXlOQ3N4eWc1QllpbDVGNnlhUXhPN1JjbFZoaXJmU1phYnRBXzBJMkxmYjhNbVZ1NmVtclJnV3RzX1lJT0E5VGtaQlpGQm9mLXVUaUl6c3cyWVVJOXM2TdIB5wJBVV95cUxNMHFpSTV2T253LUJ5cUR4U0Y5bGlWSkEtSTRsMDdRRHc5eGRxZzJyVlJvZm52dlZFYjF1WFh3anBLSUZ4aHR3VWUtTFFUWXVna1ZFeDhvanZ0X3NqTzZRMVVlakpCUnlGdnI4Tl9TMEdzRk0wc2ZjOXE4VGx6MFlLbzNYVWZNc21ENWpQeHRFdGI5RndRRTNvcHFvbEZaVXZ6aFhLanFxSlY3M0Nrb2JtY1MwVnVUaFB2TUh1elAtNXRleGdENW9oMmdDMGVITGlkQUVtMDdaYnYzb2E0VDdhYjQ0a2VpN2xXSnB5T256Tm1XUzZFN1BBTExFS1pSQXJaRGZiUlJReWZydFRlcWxUaXlOQ3N4eWc1QllpbDVGNnlhUXhPN1JjbFZoaXJmU1phYnRBXzBJMkxmYjhNbVZ1NmVtclJnV3RzX1lJT0E5VGtaQlpGQm9mLXVUaUl6c3cyWVVJOXM2TQ?oc=5",
       "vendor": "OpenAI"
     },
-    "f4bea67992f69289910c8f4c": {
-      "category": "취약점·패치",
-      "first_seen_at": "2026-10-07T00:02:25.544576+00:00",
-      "published_at": null,
-      "severity": 1,
-      "source": "Anthropic News",
-      "title": "Anthropic News: improving alignment security efforts",
-      "url": "https://www.anthropic.com/news/improving-alignment-security-efforts",
-      "vendor": "Anthropic"
-    },
     "f5a2db300fbf2ede746cc839": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
@@ -1520,5 +1500,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-11T08:59:40+09:00"
+  "updated_at_kst": "2026-11-11T09:04:11+09:00"
 }
