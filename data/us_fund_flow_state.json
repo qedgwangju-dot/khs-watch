@@ -2,7 +2,7 @@
   "seen": {
     "ICI|mmf": "876122986710a6ba77188bd99df201ca95b2dd52365241173370cca9d1ae71e2",
     "FINRA|margin": "fb28725208f78a0b756a275d77ae7324df141c651ec725ecad69589b69fe1e20",
-    "ICI|combined": "e4ad8f0997af70b4f96a31e7455dcb0b5d1c98da0510167a4e71388b415a8d8c",
+    "ICI|combined": "314e9d97b569e4ec1a4ed2ae1087cd446314727f3b422f288fa8421d9fb0442d",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
     "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64",
     "LSEG Lipper via Reuters|lipper": "322bb6e2516a3f327007042522d224c50a05c059d5697b540dd5b8be9b515502",
@@ -84,32 +84,32 @@
     "ICI|combined": {
       "source": "ICI",
       "kind": "combined",
-      "period": "October 28, 2026",
-      "published": "November 4, 2026",
+      "period": "November 04, 2026",
+      "published": "November 11, 2026",
       "url": "https://www.ici.org/research/stats/combined_flows",
       "metrics": {
-        "equity": 11.074,
-        "domestic": 7.1,
-        "world": 3.973,
-        "hybrid": -2.994,
-        "bond": 3.166,
-        "commodity": -1.889,
-        "total": 9.356,
+        "equity": 17.432,
+        "domestic": 11.911,
+        "world": 5.521,
+        "hybrid": -2.761,
+        "bond": 2.362,
+        "commodity": 0.129,
+        "total": 17.163,
         "domestic_flow_horizons": {
           "m1": {
             "months_back": 1,
-            "target_date": "2026-09-28",
-            "start_week_ended": "2026-09-30",
-            "end_week_ended": "2026-10-28",
+            "target_date": "2026-10-04",
+            "start_week_ended": "2026-10-07",
+            "end_week_ended": "2026-11-04",
             "observation_count": 5,
-            "value_bn": -490.554,
+            "value_bn": -464.617,
             "reason": null
           },
           "m3": {
             "months_back": 3,
-            "target_date": "2026-07-28",
-            "start_week_ended": "2026-09-30",
-            "end_week_ended": "2026-10-28",
+            "target_date": "2026-08-04",
+            "start_week_ended": "2026-10-07",
+            "end_week_ended": "2026-11-04",
             "observation_count": 5,
             "value_bn": null,
             "reason": "weekly_history_does_not_cover_target_window"
@@ -124,7 +124,7 @@
         "categories_total",
         "prose_total"
       ],
-      "fingerprint": "e4ad8f0997af70b4f96a31e7455dcb0b5d1c98da0510167a4e71388b415a8d8c"
+      "fingerprint": "314e9d97b569e4ec1a4ed2ae1087cd446314727f3b422f288fa8421d9fb0442d"
     },
     "JPMorganChase Institute|household_withdrawals": {
       "source": "JPMorganChase Institute",
@@ -199,14 +199,14 @@
       "fingerprint": "68150cc88049a070fc72f73d87ae8d9bf1bde0db4db25ba3088f92a6dfba5a61"
     }
   },
-  "updated_at_kst": "2026-11-06T07:26:39.404626+09:00",
+  "updated_at_kst": "2026-11-12T04:43:08.390372+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-11-05",
-    "sp500_last_value": 7353.72998046875,
+    "sp500_last_date": "2026-11-11",
+    "sp500_last_value": 7627.77978515625,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -5.95,
+    "sp500_drawdown_pct": -2.44,
     "hartnett_tracking_version": "2026-10-09-v1",
     "hartnett_treasury_date": "2026-11-10",
     "hartnett_10y_pct": 4.98,
@@ -241,12 +241,12 @@
     "fund_horizon_summary_version": "2026-11-03-front-v1"
   },
   "factual_delivery_receipt": {
-    "timestamp_utc": "2026-11-05T22:28:05.789097+00:00",
-    "date_kst": "2026-11-06",
+    "timestamp_utc": "2026-11-11T19:44:30.303092+00:00",
+    "date_kst": "2026-11-12",
     "bot_username": "khs887900887900008879_bot",
     "message_ids": [
-      2064,
-      2065
+      2600,
+      2601
     ]
   }
 }
