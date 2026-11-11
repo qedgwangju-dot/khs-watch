@@ -71,11 +71,9 @@ for case in base.KNOWN_CASES:
     base.SEARCHES.append(f'"{case}" Halozyme Merck')
 for case in ("PGR2025-00042", "PGR2025-00050", "PGR2025-00053"):
     base.SEARCHES.append(f'"{case}" "Final Written Decision" Halozyme')
-base.SEARCHES.extend([
-    '"Halozyme" "Merck" "written description" "challenged claims" PTAB',
-    '"Halozyme" "Merck" "PH20" "obviousness" patent decision',
-    '할로자임 MSD 특허 청구항 실험 근거 명세서 PTAB',
-])
+# Keep the established 40-query budget; the existing PH20 and Korean axes
+# already cover the other variants of this technical subject.
+base.SEARCHES.append('"Halozyme" "Merck" "written description" "challenged claims" PTAB')
 
 base.SEARCHES.extend([
     '"C/09/695432" Halozyme Merck Keytruda SC',
