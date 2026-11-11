@@ -811,6 +811,48 @@ class GridNewsSourceRecoveryTests(unittest.TestCase):
         self.assertEqual(w.DISCOVERY_HEALTH["rss_failed"], 1)
         self.assertEqual(w.DISCOVERY_HEALTH["gdelt_failed"], 1)
 
+class PowerSecondaryDealDetectionTests(unittest.TestCase):
+    def test_new_official_jet_engine_deal_with_capacity_is_structural(self):
+        body = ("ProEnergy signed a contract to supply 650 MW of "
+                "aeroderivative gas turbines to data center AI factories.")
+        event = w.structural_event(body, "https://www.proenergyservices.com/deals/new-2026")
+        self.assertIn("확정 공급", event)
+
+    def test_secondhand_sourcing_rumor_and_unsigned_plan_are_not_contract(self):
+        url = "https://www.proenergyservices.com/deals/idea"
+        self.assertFalse(w.structural_event(
+            "AI data centres seeking refurbished jet engines and used gas turbines, 650 MW potential.",
+            url,
+        ))
+        self.assertFalse(w.structural_event(
+            "Data center gas turbine purchase proposal only, 650 MW not signed.",
+            url,
+        ))
+
+    def test_only_verified_supplier_sources_can_signal_contract(self):
+        text = "Data center developer signed 500MW gas turbine equipment order."
+        self.assertFalse(w.structural_event(text, "https://example.com/claim"))
+
+
+class NewsSourceOutageDedupTests(unittest.TestCase):
+    def test_two_failures_once_recovery_rearms(self):
+        now = datetime(2026, 11, 11, 11, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        failed = {"rss_ok": 35, "urls_resolved": 0, "pages_opened": 0}
+        healthy = {"rss_ok": 35, "urls_resolved": 100, "pages_opened": 13}
+        state, first = w.news_collection_outage({}, failed, now)
+        self.assertEqual(first, "")
+        state, second = w.news_collection_outage(state, failed, now)
+        self.assertIn("원천 수집 장애", second)
+        state, third = w.news_collection_outage(state, failed, now)
+        self.assertEqual(third, "")
+        state, recovered = w.news_collection_outage(state, healthy, now)
+        self.assertEqual(recovered, "")
+        self.assertEqual(state["consecutive_failures"], 0)
+        state, again = w.news_collection_outage(state, failed, now)
+        self.assertEqual(again, "")
+        state, again = w.news_collection_outage(state, failed, now)
+        self.assertIn("원천 수집 장애", again)
+
 class GridAlertTests(unittest.TestCase):
     def test_alert_is_compact_and_keeps_equipment_bottlenecks(self):
         changes = [{

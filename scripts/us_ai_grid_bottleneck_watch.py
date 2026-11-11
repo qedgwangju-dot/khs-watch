@@ -268,6 +268,8 @@ SEARCHES = [
     ("google", '"data centres" "used gas turbines" Reuters 2026'),
     ("google", '"GE Vernova" "gas equipment" "slot reservations" 2026'),
     ("google", '"ProEnergy" Crusoe PE6000 gas turbine 2026'),
+    ("google", '"data center" "used gas turbine" signed contract MW'),
+    ("google", '"AI factory" "aeroderivative" purchase contract MW'),
     ("google", '"power transformer" "50 weeks" "two years" Fortune'),
     ("google", '"Morgan Stanley" "49 GW" "74 GW" 2028 data center'),
     ("google", 'site:lbl.gov OR site:escholarship.org "data center" 2030 649 TWh electricity'),
@@ -708,6 +710,15 @@ def structural_event(text: str, url: str) -> str:
     low = text.lower()
     if source_rank(url) < 2:
         return ""
+    # A dated, quantified, supplier-issued deal is different from secondary
+    # market price commentary or a non-binding expression of interest.
+    if (source_rank(url) >= 3
+            and any(t in low for t in ("gas turbine", "aeroderivative", "jet engine"))
+            and any(t in low for t in ("data center", "data centre", "ai factory", "ai factories", "crusoe"))
+            and re.search(r"\b\d{1,4}(?:[.,]\d+)?\s*(?:mw|gw)\b", low)
+            and any(t in low for t in ("signed", "awarded", "contracted", "firm order", "purchased", "delivered"))
+            and not any(t in low for t in ("not signed", "unsigned", "no contract", "proposal only"))):
+        return "미국 AI 데이터센터용 가스터빈·항공기 엔진 전환 설비 확정 공급·구매계약"
     if any(k in low for k in ("new factory", "new plant", "breaks ground", "expansion", "expand capacity", "capacity expansion")) and "transformer" in low:
         return "변압기 생산능력 증설·신공장 일정 변화"
     if any(k in low for k in ("production begins", "production starts", "opens new", "new factory", "new plant", "capacity expansion")) and any(k in low for k in ("switchgear", "ups", "generator")):
@@ -1808,6 +1819,36 @@ def build_korea_export_alert(event: dict, data: dict, us_imports: dict) -> str:
     return "\n".join(lines).strip() + "\n"
 
 
+def news_collection_outage(previous: dict, health: dict, now: datetime) -> tuple[dict, str]:
+    """Separate persistent source blackout from a legitimately quiet news day."""
+    previous = copy.deepcopy(previous or {})
+    unreadable = (int(health.get("pages_opened") or 0) == 0
+                  and int(health.get("news_candidates") or 0) == 0
+                  and int(health.get("urls_resolved") or 0) == 0)
+    # Some relevant article URLs can be decoded while publishers block bodies;
+    # this also constitutes lost live confirmation, not an absence of events.
+    if int(health.get("pages_opened") or 0) == 0 and int(health.get("rss_ok") or 0) >= 1:
+        unreadable = True
+    if not unreadable:
+        previous["consecutive_failures"] = 0
+        previous["alerted"] = False
+        previous["last_success_at_kst"] = now.isoformat(timespec="seconds")
+        return previous, ""
+    previous["consecutive_failures"] = int(previous.get("consecutive_failures") or 0) + 1
+    previous["last_failure_at_kst"] = now.isoformat(timespec="seconds")
+    if previous["consecutive_failures"] < 2 or previous.get("alerted"):
+        return previous, ""
+    previous["alerted"] = True
+    return previous, (
+        "<b>미국 AI 전력망 감시 — 원천 수집 장애(운영 경보)</b>\n"
+        "• 연속 2회 이상 기사 본문을 확보하지 못했습니다. "
+        "이는 '산업 변화 없음'이 아니라 원천자료 검증 공백입니다.\n"
+        "• Bing·Google 뉴스 원문 접근, GDELT 보조 색인, RSS 상태와 "
+        "기사 본문 접근 실패 원인을 점검해야 합니다.\n"
+        "• 정상 자료 수집이 복구되면 중복 경보를 해제하고 이후 신규 장애만 알립니다.\n"
+    )
+
+
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state = load_json(STATE_PATH) or copy.deepcopy(BASELINE)
@@ -1839,15 +1880,21 @@ def main() -> None:
     latest["discovery_health"] = dict(DISCOVERY_HEALTH)
     power_state, power_notice = power_upgrade(state.get("power_squeeze_alerts") or {}, now)
     latest["power_squeeze_alerts"] = power_state
+    collection_state, outage_notice = news_collection_outage(
+        state.get("news_collection_outage") or {}, DISCOVERY_HEALTH, now
+    )
+    latest["news_collection_outage"] = collection_state
 
     write_json(PENDING_PATH, latest)
 
-    notify = bool(changes or events or trade_events or export_events or power_notice)
+    notify = bool(changes or events or trade_events or export_events or power_notice or outage_notice)
     if notify:
         ALERT_PATH.parent.mkdir(parents=True, exist_ok=True)
         blocks = []
         if power_notice:
             blocks.append(power_notice.strip())
+        if outage_notice:
+            blocks.append(outage_notice.strip())
         if changes or events:
             blocks.append(build_alert(changes, events, latest).strip())
         for trade_event in trade_events:
@@ -1880,6 +1927,7 @@ def main() -> None:
         f"- 대체 수집: Bing 성공 {DISCOVERY_HEALTH.get('bing_ok',0)}·실패 {DISCOVERY_HEALTH.get('bing_failed',0)}, GDELT 성공 {DISCOVERY_HEALTH.get('gdelt_ok',0)}·실패 {DISCOVERY_HEALTH.get('gdelt_failed',0)}\n"
         f"- 자료 공백: {'있음(신규 사건 없음과 구별)' if DISCOVERY_HEALTH.get('pages_opened',0) == 0 else '없음'}\n"
         f"- 전력·터빈 선행경보: {'예' if power_notice else '아니오'}\n"
+        f"- 원천 수집 연속 장애: {collection_state.get('consecutive_failures',0)}회 / {'알림' if outage_notice else '신규 알림 없음'}\n"
         f"- 알림: {'예' if notify else '아니오'}\n",
         encoding="utf-8",
     )
