@@ -834,6 +834,41 @@ class PowerSecondaryDealDetectionTests(unittest.TestCase):
         self.assertFalse(w.structural_event(text, "https://example.com/claim"))
 
 
+    def test_supplier_body_mw_detected_when_rss_headline_omits_quantity(self):
+        now = datetime(2026, 11, 11, 11, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        url = "https://www.proenergyservices.com/news/deliver-ai-factory/"
+        item = {"title": "ProEnergy expands power supply for an AI factory",
+                "description": "New equipment announcement",
+                "link": url,
+                "published_at_kst": now.isoformat()}
+        body = ("PROENERGY announced today a contract to deliver a manufactured "
+                "equipment solution for Crusoe AI factories. The solution includes "
+                "13 aeroderivative gas turbine generator sets capable of 50 MW each.")
+        with mock.patch.object(w, "SEARCHES", [("google", "official gas deal")]), \
+             mock.patch.object(w, "read_bing_rss", return_value=[item]), \
+             mock.patch.object(w, "article_text", return_value=body):
+            _, events = w.discover(now, set())
+            self.assertEqual(len(events), 1)
+            self.assertIn("확정 공급", events[0]["event"])
+            _, repeat = w.discover(now, {url})
+            self.assertEqual(repeat, [])
+
+    def test_secondary_body_quotation_does_not_become_confirmed_deal(self):
+        now = datetime(2026, 11, 11, 11, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        url = "https://www.reuters.com/business/used-gas-turbines-ai/"
+        item = {"title": "Data centre developers seek secondhand power plants",
+                "description": "Potential supply bottlenecks",
+                "link": url, "published_at_kst": now.isoformat()}
+        body = ("The market is seeking used turbines. An analyst says a possible "
+                "future purchase would involve 500 MW of gas turbines for data centers. "
+                "No signed order has been announced.")
+        with mock.patch.object(w, "SEARCHES", [("google", "secondary market")]), \
+             mock.patch.object(w, "read_bing_rss", return_value=[item]), \
+             mock.patch.object(w, "article_text", return_value=body):
+            _, events = w.discover(now, set())
+        self.assertEqual(events, [])
+
+
 class NewsSourceOutageDedupTests(unittest.TestCase):
     def test_two_failures_once_recovery_rearms(self):
         now = datetime(2026, 11, 11, 11, 0, tzinfo=ZoneInfo("Asia/Seoul"))

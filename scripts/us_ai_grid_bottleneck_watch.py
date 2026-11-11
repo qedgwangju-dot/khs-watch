@@ -873,6 +873,13 @@ def discover(now: datetime, seen_urls: set[str]) -> tuple[list[dict], list[dict]
             # GDELT's first-seen time is not an actual publication timestamp.
             if url not in seen_urls and dt and event_cutoff <= dt <= now + timedelta(hours=3):
                 ev = structural_event(base, url)
+                # A verified supplier release may put the signed MW amount in
+                # its article body, not the indexed headline/summary. Never
+                # apply the body fallback to a secondary-market rumour.
+                if not ev and source_rank(url) >= 3:
+                    body_deal = structural_event(body[:12000], url)
+                    if body_deal == "미국 AI 데이터센터용 가스터빈·항공기 엔진 전환 설비 확정 공급·구매계약":
+                        ev = body_deal
                 if ev:
                     events.append({
                         "event": ev, "url": url, "published_at_kst": pub,
