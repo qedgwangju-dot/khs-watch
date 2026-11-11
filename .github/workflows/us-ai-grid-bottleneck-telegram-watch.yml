@@ -3,6 +3,9 @@ name: US AI Grid Bottleneck Telegram Watch
 on:
   schedule:
     - cron: "37 */2 * * *"
+    # Backup schedule if GitHub delays or misses the primary run.
+    # Both schedules share one lock, state, and duplicate gate.
+    - cron: "17 1-23/2 * * *"
   workflow_dispatch:
     inputs:
       send_test:
@@ -63,7 +66,7 @@ jobs:
       - name: Validate Telegram route
         run: |
           python - <<'PY'
-          import json, os, urllib.request
+          import json, os, urllib.parse, urllib.request
           token = os.environ["DATA_CENTER_TELEGRAM_BOT_TOKEN"].strip()
           chat = os.environ["DATA_CENTER_TELEGRAM_CHAT_ID"].strip()
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
@@ -74,7 +77,15 @@ jobs:
           actual = str((data.get("result") or {}).get("username") or "")
           if not data.get("ok") or actual.lower() != expected.lower():
               raise SystemExit(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
-          print(f"telegram_route_valid=true bot=@{actual}")
+          query = urllib.parse.urlencode({"chat_id": chat})
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getChat?{query}", timeout=20) as r:
+              response = json.loads(r.read().decode("utf-8"))
+          detail = (response.get("result") or {}) if response.get("ok") else {}
+          is_match = (str(detail.get("username") or "").casefold() == chat[1:].casefold()
+                      if chat.startswith("@") else str(detail.get("id", "")) == chat)
+          if not is_match:
+              raise SystemExit("Telegram destination mismatch (private id suppressed)")
+          print(f"telegram_route_valid=true bot=@{actual}; recipient_verified=true")
           PY
 
       - name: Run grid bottleneck watch
@@ -140,14 +151,22 @@ jobs:
                   result = json.loads(r.read().decode("utf-8"))
               if not result.get("ok"):
                   raise RuntimeError(str(result))
-              ids.append(result["result"]["message_id"])
+              sent = result.get("result") or {}
+              recipient = sent.get("chat") or {}
+              correct_recipient = (str(recipient.get("username") or "").casefold() == chat_id[1:].casefold()
+                                   if chat_id.startswith("@") else str(recipient.get("id", "")) == chat_id)
+              message_id = sent.get("message_id")
+              if not correct_recipient or type(message_id) is not int or message_id <= 0:
+                  raise RuntimeError("Telegram recipient/message acknowledgement mismatch; state not promoted")
+              ids.append(message_id)
 
           from datetime import datetime
           from zoneinfo import ZoneInfo
           confirmed_at = datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")
           pathlib.Path("out/us_ai_grid_bottleneck_telegram_confirmed.json").write_text(
               json.dumps(
-                  {"status": "confirmed", "message_ids": ids, "confirmed_at_kst": confirmed_at},
+                  {"status": "confirmed", "message_ids": ids, "recipient_verified": True,
+                   "confirmed_at_kst": confirmed_at},
                   ensure_ascii=False,
                   indent=2,
               ) + "\n",

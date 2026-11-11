@@ -32,6 +32,60 @@ STATUS_PATH = ROOT / "out" / "us_ai_grid_bottleneck_status.md"
 UA = "Mozilla/5.0 (compatible; khs-watch/1.1; +https://github.com/qedgwangju-dot/khs-watch)"
 
 
+# Source-backed one-time upgrade. Dates are part of the evidence, not alert dates.
+# The MS 49 GW projection and Nadella remark are historical context, not new events.
+POWER_UPGRADE_KEY = "reuters-used-turbines-2026-11-09-v1"
+POWER_UPGRADE_SOURCES = {
+    "reuters": "https://live.euronext.com/en/financial-news/analysis-ai-power-rush-sends-data-centres-hunting-used-turbines-and-jet-engines",
+    "gev": "https://www.gevernova.com/news/ge-vernova-reports-strong-third-quarter-2026-financial-performance",
+    "morgan": "https://www.morganstanley.com/insights/articles/powering-ai-energy-market-outlook-2026",
+    "fortune": "https://fortune.com/2026/11/07/data-center-restrictions-power-grid-ai-race-serhiy-tokarev/",
+    "proenergy": "https://www.proenergyservices.com/2026/04/proenergy-to-deliver-major-generating-equipment-to-power-crusoe-ai-factories/",
+}
+DISCOVERY_HEALTH: dict = {}
+
+
+def power_upgrade(previous: dict, now: datetime) -> tuple[dict, str]:
+    """Emit a separately identified leading-risk alert once, never a fictitious new deal."""
+    previous = copy.deepcopy(previous or {})
+    keys = set(previous.get("sent_fact_keys") or [])
+    if POWER_UPGRADE_KEY in keys or not (datetime(2026, 11, 9).date()
+                                         <= now.date() <= datetime(2026, 12, 9).date()):
+        return previous, ""
+    rate, rate_date = usdkrw_rate()
+    repaired = usd_text(1_300_000, rate)
+    details = [
+        "<b>⚡ 미국 AI 전력·가스터빈 공급 병목 — 선행경보 / 시점 정정</b>",
+        "",
+        "• <b>신규 보고(11/9 로이터):</b> 중고·재생 가스터빈과 퇴역 항공기 엔진의 발전용 개조 수요 확대. 미국 신규 가스터빈 납기 평균 약 6년은 업계 추정치.",
+        f"• <b>시장가격(계약가 아님):</b> 재생 정비 설비 MW당 {repaired}; 상태 양호한 중고품 150만~170만달러/MW, 신규품 200만~250만달러/MW. 설비 종류·상태별 가격 분리.",
+        "• <b>GE 버노바 공식(10/28):</b> 가스발전 장비 확정 수주잔고+제작 슬롯 예약 116→122GW(+6GW). 확정 수주 64GW/예약 58GW이며 전체가 확정 계약 아님. 2026년 말 목표 125→130GW 이상.",
+        "• <b>실제 계약(4/16 발표):</b> ProEnergy가 Crusoe 데이터센터용 PE6000 13대×50MW=650MW 공급계약을 발표. 11월에 신규 체결된 계약 아님.",
+        "• <b>과거 전망(2/27):</b> 모건스탠리 2028년 미국 데이터센터 수요 74GW·전력 접근 부족분 약 49GW. 기존 다른 기준의 부족분 33GW와 직접 비교 금지.",
+        "• <b>과거 배경:</b> 포춘(11/7) 대형변압기 납기 팬데믹 전 약 50주→2년 이상, 나델라의 GPU 미설치 발언은 2025년 발언 재인용.",
+        "• <b>실패 위험:</b> 중고 설비의 정비이력·잔여 수명·상시 운전 신뢰성, 대기배출·가스 인허가, 계통 접속, 발전·송변전 공정 지연.",
+        "• <b>확정경보 기준 유지:</b> 구매·복원·설치·성능검수·전원 인가·실제 가동을 구분하며, 사재기 기사만으로 새 가동용량을 확정하지 않음.",
+        "• <b>다음 확인:</b> 실제 계약·물량·납기·설비 등록과 허가, 신규 가스터빈 제작 슬롯 및 고객 전원 인가 일정.",
+    ]
+    if rate is not None:
+        details.append(f"• 환산: 1달러={rate:,.2f}원({html.escape(rate_date)} 자료일, 실제 계약환율 아님).")
+    else:
+        details.append("• 환율 조회 실패: 원화 환산값 미확인.")
+    for key, label in (("reuters", "로이터 11/9"), ("gev", "GE 10/28 공식"),
+                       ("morgan", "모건스탠리 2/27"), ("fortune", "포춘 11/7"),
+                       ("proenergy", "ProEnergy 4/16 공식")):
+        details.append(f'• <a href="{POWER_UPGRADE_SOURCES[key]}">{label}</a>')
+    previous["sent_fact_keys"] = sorted(keys | {POWER_UPGRADE_KEY})
+    previous["latest_evidence"] = {
+        "event_key": POWER_UPGRADE_KEY, "event_date": "2026-11-09",
+        "stage": "industry_leading_warning_not_new_operating_capacity",
+        "GE_2026Q3_firm_backlog_gw": 64, "GE_2026Q3_slot_reservations_gw": 58,
+        "GE_2026Q3_combined_gw": 122, "MS_2026_02_27_gap_2028_gw": 49,
+        "sources": POWER_UPGRADE_SOURCES,
+    }
+    return previous, "\n".join(details).strip() + "\n"
+
+
 # Separate Korean FOB exports from U.S. Census importer-country data.  Reported
 # article basket is not the same as the U.S. all-liquid 850421/22/23 basket.
 KOREA_EXPORT_VERSION = 1
@@ -210,6 +264,12 @@ BASELINE = {
 }
 
 SEARCHES = [
+    ("google", '"AI data center" "refurbished gas turbines" "jet engines"'),
+    ("google", '"data centres" "used gas turbines" Reuters 2026'),
+    ("google", '"GE Vernova" "gas equipment" "slot reservations" 2026'),
+    ("google", '"ProEnergy" Crusoe PE6000 gas turbine 2026'),
+    ("google", '"power transformer" "50 weeks" "two years" Fortune'),
+    ("google", '"Morgan Stanley" "49 GW" "74 GW" 2028 data center'),
     ("google", 'site:lbl.gov OR site:escholarship.org "data center" 2030 649 TWh electricity'),
     ("google", 'site:emp.lbl.gov queues 2025 interconnection 8200 2060 GW'),
     ("google", 'site:nerc.com transformer lead times 120 weeks 80 210'),
@@ -252,12 +312,14 @@ OFFICIAL_DOMAINS = (
     "cat.com", "cummins.com", "rolls-royce.com", "cushmanwakefield.com", "jll.com",
     "whitehouse.gov", "federalregister.gov", "commerce.gov",
     "hyosung.com", "hyundai-electric.com", "lsholdings.com",
+    "morganstanley.com", "proenergyservices.com",
 )
 
 TRUSTED_DOMAINS = (
     "reuters.com", "utilitydive.com", "datacenterdynamics.com", "cleanenergygrid.org",
     "woodmac.com", "spglobal.com", "bloomberg.com", "ft.com",
     "finance.yahoo.com", "investing.com", "credaily.com", "datacenterscouts.com",
+    "fortune.com", "live.euronext.com",
 )
 
 MATERIAL_TERMS = (
@@ -266,6 +328,7 @@ MATERIAL_TERMS = (
     "switchgear", "generator", "ups", "pdu", "power distribution", "electrical equipment",
     "bulk-power system", "covered foreign entity", "executive order 14421",
     "변압기", "부싱", "송전", "계통", "변전소", "전원", "배전반", "발전기", "무정전전원",
+    "gas turbine", "jet engine", "aeroderivative", "refurbished turbine",
 )
 
 
@@ -476,14 +539,17 @@ def parse_metrics(text: str) -> dict:
             2028: "ms_it_power_2028_gw",
             2029: "ms_it_power_2029_gw",
         }
-        for year, key_name in year_patterns.items():
-            m = re.search(rf"{year}[^.]{{0,120}}?([0-9]{{1,3}}(?:\.[0-9]+)?)\s*GW", text, re.I)
-            if not m:
-                m = re.search(rf"([0-9]{{1,3}}(?:\.[0-9]+)?)\s*GW[^.]{{0,120}}?{year}", text, re.I)
-            if m:
-                v = num(m.group(1))
-                if v and 0.1 <= v <= 200:
-                    out[key_name] = v
+        # Total data-center electrical demand is not the same denominator as IT load.
+        # Do not overwrite the older IT series with the 74 GW total-demand projection.
+        if re.search(r"\bIT[ -](?:power|load|demand|capacity)\b", text, re.I):
+            for year, key_name in year_patterns.items():
+                m = re.search(rf"{year}[^.]{{0,120}}?([0-9]{{1,3}}(?:\.[0-9]+)?)\s*GW", text, re.I)
+                if not m:
+                    m = re.search(rf"([0-9]{{1,3}}(?:\.[0-9]+)?)\s*GW[^.]{{0,120}}?{year}", text, re.I)
+                if m:
+                    v = num(m.group(1))
+                    if v and 0.1 <= v <= 200:
+                        out[key_name] = v
 
         semantic_patterns = [
             (
@@ -684,16 +750,24 @@ def discover(now: datetime, seen_urls: set[str]) -> tuple[list[dict], list[dict]
     events: list[dict] = []
     cutoff = now - timedelta(days=90)
     local_seen = set()
-    fetch_budget = 18
+    fetch_budget = 22
     fetched = 0
-
-    for kind, query in SEARCHES:
+    DISCOVERY_HEALTH.clear()
+    DISCOVERY_HEALTH.update(rss_ok=0, rss_failed=0, urls_resolved=0, pages_opened=0)
+    pivot = (now.toordinal() * 12 + now.hour // 2) % len(SEARCHES)
+    ordered = SEARCHES[pivot:] + SEARCHES[:pivot]
+    for kind, query in ordered:
         try:
             items = read_rss(kind, query)
         except Exception:
+            DISCOVERY_HEALTH["rss_failed"] += 1
             continue
+        DISCOVERY_HEALTH["rss_ok"] += 1
+        query_fetched = 0
         for item in items:
             url = direct_url(item)
+            if url:
+                DISCOVERY_HEALTH["urls_resolved"] += 1
             if not url or url in local_seen:
                 continue
             local_seen.add(url)
@@ -708,10 +782,13 @@ def discover(now: datetime, seen_urls: set[str]) -> tuple[list[dict], list[dict]
             low = base.lower()
             if not any(term in low for term in MATERIAL_TERMS):
                 continue
-            if fetched >= fetch_budget:
+            if fetched >= fetch_budget or query_fetched >= 1:
                 continue
             fetched += 1
+            query_fetched += 1
             body = article_text(url)
+            if body:
+                DISCOVERY_HEALTH["pages_opened"] += 1
             text = clean_text(f"{base} {body}")
             metrics = parse_metrics(text)
             if metrics:
@@ -1659,13 +1736,18 @@ def main() -> None:
     latest["metric_observation_count"] = len(observations)
     latest["event_count"] = len(events)
     latest["latest_evidence_urls"] = evidence_urls[-20:]
+    latest["discovery_health"] = dict(DISCOVERY_HEALTH)
+    power_state, power_notice = power_upgrade(state.get("power_squeeze_alerts") or {}, now)
+    latest["power_squeeze_alerts"] = power_state
 
     write_json(PENDING_PATH, latest)
 
-    notify = bool(changes or events or trade_events or export_events)
+    notify = bool(changes or events or trade_events or export_events or power_notice)
     if notify:
         ALERT_PATH.parent.mkdir(parents=True, exist_ok=True)
         blocks = []
+        if power_notice:
+            blocks.append(power_notice.strip())
         if changes or events:
             blocks.append(build_alert(changes, events, latest).strip())
         for trade_event in trade_events:
@@ -1694,6 +1776,9 @@ def main() -> None:
         f"- 한국 변압기 수출 확인상태: {korean_exports.get('last_status') or '미확인'}\n"
         f"- 한국 변압기 수출 확인월: {korean_exports.get('latest_official_us_month') or '미확인'}\n"
         f"- 한국 변압기 수출 이벤트: {len(export_events)}개\n"
+        f"- 웹 수집 건강도: RSS 성공 {DISCOVERY_HEALTH.get('rss_ok',0)} / 실패 {DISCOVERY_HEALTH.get('rss_failed',0)}, 링크 복원 {DISCOVERY_HEALTH.get('urls_resolved',0)}, 기사 본문 {DISCOVERY_HEALTH.get('pages_opened',0)}\n"
+        f"- 자료 공백: {'있음(신규 사건 없음과 구별)' if DISCOVERY_HEALTH.get('pages_opened',0) == 0 else '없음'}\n"
+        f"- 전력·터빈 선행경보: {'예' if power_notice else '아니오'}\n"
         f"- 알림: {'예' if notify else '아니오'}\n",
         encoding="utf-8",
     )
@@ -1703,7 +1788,8 @@ def main() -> None:
         f"observations={len(observations)} events={len(events)} changes={len(changes)} "
         f"transformer_trade_events={len(trade_events)} transformer_latest={transformer_imports.get('latest_month') or 'none'} "
         f"korea_export_events={len(export_events)} korea_export_status={korean_exports.get('last_status') or 'none'} "
-        f"notify={str(notify).lower()}"
+        f"rss_ok={DISCOVERY_HEALTH.get('rss_ok',0)} pages_opened={DISCOVERY_HEALTH.get('pages_opened',0)} "
+        f"power_notice={str(bool(power_notice)).lower()} notify={str(notify).lower()}"
     )
 
 

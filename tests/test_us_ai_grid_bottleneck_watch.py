@@ -704,6 +704,43 @@ class KoreanTransformerExportTests(unittest.TestCase):
             self.assertIn("관세청 통계 API 명세", text)
             self.assertNotIn("미국향 단독 실적이 아님", w.build_korea_export_alert(events[1], state, {}))
 
+class PowerBottleneckUpgradeTests(unittest.TestCase):
+    def test_risk_upgrade_once_with_vintages_and_firm_reservation_split(self):
+        now = datetime(2026, 11, 11, 10, 30, tzinfo=ZoneInfo("Asia/Seoul"))
+        with mock.patch.object(w, "usdkrw_rate", return_value=(1337.5, "2026-11-10")):
+            state, msg = w.power_upgrade({}, now)
+            self.assertIn("116→122GW(+6GW)", msg)
+            self.assertIn("확정 수주 64GW/예약 58GW", msg)
+            self.assertIn("MW당 1.3백만달러", msg)
+            self.assertIn("2025년 발언 재인용", msg)
+            self.assertIn("49GW", msg)
+            self.assertIn("650MW", msg)
+            again, duplicate = w.power_upgrade(state, now)
+        self.assertEqual(duplicate, "")
+        self.assertEqual(again, state)
+        self.assertIn(w.POWER_UPGRADE_KEY, state["sent_fact_keys"])
+
+    def test_unavailable_exchange_does_not_invent_latest_won(self):
+        with mock.patch.object(w, "usdkrw_rate", return_value=(None, "")):
+            _, alert = w.power_upgrade({}, datetime(2026, 11, 11))
+        self.assertIn("환율 조회 실패", alert)
+        self.assertNotIn("(약", alert)
+
+    def test_expired_old_news_cannot_trigger_late(self):
+        self.assertEqual(w.power_upgrade({}, datetime(2027, 2, 1))[1], "")
+
+    def test_74gw_total_demand_not_overwriting_ms_it_power(self):
+        source = ("Morgan Stanley: U.S. data center demand could reach 74 GW "
+                  "by 2028, with a power access shortfall of about 49 GW.")
+        self.assertNotIn("ms_it_power_2028_gw", w.parse_metrics(source))
+
+    def test_new_sources_are_separate_from_confirmation_and_faithful(self):
+        self.assertTrue(any("jet engines" in q for _, q in w.SEARCHES))
+        self.assertEqual(w.source_rank(w.POWER_UPGRADE_SOURCES["gev"]), 3)
+        self.assertEqual(w.source_rank(w.POWER_UPGRADE_SOURCES["proenergy"]), 3)
+        self.assertEqual(w.source_rank(w.POWER_UPGRADE_SOURCES["reuters"]), 2)
+
+
 class GridAlertTests(unittest.TestCase):
     def test_alert_is_compact_and_keeps_equipment_bottlenecks(self):
         changes = [{
