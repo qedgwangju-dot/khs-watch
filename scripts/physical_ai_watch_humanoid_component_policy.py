@@ -39,6 +39,7 @@ APPTRONIK_HW_SENTINEL = 'DIRECT_APPTRONIK_US_HARDWARE_BOTTLENECK_20260924'
 base.QUERIES.extend([
     '(휴머노이드 OR humanoid OR 피지컬AI OR "physical AI") (센서 OR sensor OR 액추에이터 OR actuator OR 이차전지 OR 배터리 OR battery) (620억 OR 62,000,000,000 OR 116억 OR 11,600,000,000 OR 예산 OR 정부안)',
     '(휴머노이드 OR humanoid) (핵심 부품 OR 핵심부품 OR core components) (국산화 OR localization) (예산 OR R&D OR 실증 OR 신뢰성 OR reliability OR 성능 OR performance)',
+    '(초혁신경제 OR 휴머노이드 OR 로봇) (온센서 OR 액추에이터 OR 로봇용 배터리) (90억원 OR 300억원 OR 133억원 OR 세부 추진계획 OR 11월 11일)',
     '(초혁신경제 OR 경제성장전략 OR 미래성장산업) (센서 OR 액추에이터 OR 휴머노이드용 이차전지 OR humanoid battery) (신규 프로젝트 OR 예산 OR 공고 OR 실증)',
     '(휴머노이드 OR humanoid) (부품 실증사업 OR 핵심 부품 실증 OR component demonstration OR 로봇산업핵심기술개발) (공고 OR 선정 OR 주관기관 OR 수행기관 OR 협약 OR 총 연구개발비)',
     '(로보티즈 OR ROBOTIS OR 삼현 OR 하이젠알앤엠 OR 에스비비테크 OR 에스피지 OR 원익로보틱스 OR 현대모비스 OR 삼성SDI OR LG에너지솔루션) (휴머노이드 OR humanoid) (국책과제 OR 정부지원 OR 실증사업 OR 과제 선정 OR 수행기관 OR 주관기관)',
@@ -96,6 +97,7 @@ HUMANOID = re.compile(r'휴머노이드|humanoid|人形机器人|具身智能|�
 COMPONENT = re.compile(r'센서|sensor|电子皮肤|触觉传感器|柔性传感器|액추에이터|actuator|이차전지|배터리|battery|감속기|reducer|로봇\\s*핸드|robot\\s*hand|그리퍼|gripper', re.I)
 POLICY = re.compile(r'정부|재정경제부|기획재정부|산업통상자원부|과학기술정보통신부|국회|예산|정부안|국비|국책|정책|초혁신경제|경제성장전략|지원사업|실증사업|공고|과제', re.I)
 BUDGET_620 = re.compile(r'620\s*억|62\s*0{8,}|62,?000,?000,?000|116\s*억|11,?600,?000,?000', re.I)
+NOV11_PLAN_AMOUNTS = re.compile(r'(?:90|300|133|2,?714|2714)\s*억', re.I)
 BUDGET_PROPOSAL = re.compile(r'정부\s*안|예산\s*안|내년\s*예산|2027년\s*예산|예산을?.*(?:확대|편성)|국회\s*제출', re.I)
 FINAL_BUDGET = re.compile(r'국회.{0,20}(?:통과|의결|확정)|본회의.{0,20}(?:통과|의결)|최종\s*확정|확정\s*예산|예산안\s*통과', re.I)
 PROGRAM_NOTICE = re.compile(r'사업\s*공고|과제\s*공고|신규\s*과제|공모|접수|지원\s*대상|지원\s*조건|민간\s*부담|정부\s*출연금|출연\s*금|RFP', re.I)
@@ -546,6 +548,11 @@ def _stage(text: str) -> str:
         return '휴머노이드 핵심부품 예산 확정'
     if AWARD.search(text):
         return '핵심부품 수행기업·과제 선정'
+    # The Nov 11 published budget-line roadmap is not an actual RFP.
+    if (NOV11_PLAN_AMOUNTS.search(text)
+            and re.search(r'초혁신경제|선도\s*프로젝트|온[-\s]*센서|휴머노이드', text, re.I)
+            and not re.search(r'사업\s*공고|과제\s*공고|공모|신청\s*접수|구매\s*계약\s*체결', text, re.I)):
+        return '2026년 11월 핵심부품 세부 추진계획'
     if PROGRAM_NOTICE.search(text):
         return '핵심부품 세부과제·지원조건 공고'
     if VALIDATION.search(text):
@@ -686,6 +693,7 @@ def meaning(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
     mapping = {
         '휴머노이드 핵심부품 620억원 정부안': '센서·액추에이터·휴머노이드용 이차전지의 성능·신뢰성과 현장 실증에 정부 자금을 집중하는 정책 신호입니다. 2026년 116억원에서 2027년 정부안 620억원으로 확대됐지만 아직 기업별 매출이나 최종 국회 확정액은 아닙니다.',
+        '2026년 11월 핵심부품 세부 추진계획': '11월 11일 정부 세부계획에는 2027년 정부안으로 온센서 AI 개발 90억원, 액추에이터 개발 300억원, 휴머노이드용 배터리 연구 133억원이 제시됐습니다. 액추에이터 현장 실증은 약 30억원입니다. 중장기 총사업비는 센서 2027~2030년 498억원, 액추에이터 2027~2029년 1,000억원, 배터리 2027~2031년 2,714억원으로 단년도 예산과 중복 합산하지 않습니다. 아직 국회 확정 예산이나 기업별 매출이 아닙니다.',
         '휴머노이드 핵심부품 예산 확정': '정부안이 국회 최종 예산으로 바뀌는 첫 번째 실집행 문턱입니다. 확정액이 620억원과 달라졌는지, 센서·액추에이터·이차전지별 세부 배분이 생겼는지 바로 비교합니다.',
         '핵심부품 세부과제·지원조건 공고': '예산 총액이 실제 과제·지원금으로 쪼개지는 단계입니다. 정부출연금, 민간매칭, 과제 기간, 목표 성능, 실증장소와 지원대상 품목을 확인해야 실제 수혜 범위를 좁힐 수 있습니다.',
         '핵심부품 수행기업·과제 선정': '정책 기대가 기업별 확정 지원금과 고객 검증 일정으로 바뀌는 단계입니다. 선정기업, 정부출연금, 민간부담금, 공동기관과 실증 수요처를 분리해 매출 연결 가능성을 봅니다.',
@@ -730,6 +738,7 @@ def risk(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
     mapping = {
         '휴머노이드 핵심부품 620억원 정부안': '620억원은 2027년 정부안이지 현재 전액 집행 확정금이 아닙니다. 차관의 로보티즈 방문도 로보티즈의 직접 수혜기업 선정을 뜻하지 않으며, 품목별 배분액도 아직 임의로 나누지 않습니다.',
+        '2026년 11월 핵심부품 세부 추진계획': '2027년 예산은 국회 확정 전 정부안입니다. 단년도 예산과 다년 사업비를 더하지 않으며, 실제 공고·기업 선정·검증·양산·매출은 아직 각각 별도 확인이 필요합니다.',
         '휴머노이드 핵심부품 예산 확정': '총액이 확정돼도 실제 과제 공고·협약·집행까지 시차가 있습니다. 국회 심의에서 증감된 금액과 집행 시기를 다시 확인합니다.',
         '핵심부품 세부과제·지원조건 공고': '정부출연금이 커도 민간매칭, 인증, 실증 수요처 조건이 무거우면 중소 부품사의 실질 수혜가 제한될 수 있습니다.',
         '핵심부품 수행기업·과제 선정': '과제 선정은 제품 양산 승인이나 매출 계약이 아닙니다. 연구개발비 인식과 고객 매출을 섞지 않고 과제 종료 후 본계약 여부를 추적합니다.',
@@ -870,16 +879,16 @@ def key(item: dict) -> str:
         return hashlib.sha256(f'humanoid-supply-bottleneck|{stage}'.encode()).hexdigest()
     if topic_group(text) == 'toyota_robot_demand':
         return hashlib.sha256(b'toyota|2028|factory-automation|1trn-jpy|400k-robots').hexdigest()
-    # Nov 11 government package reporting: publisher-specific headlines are
-    # the same event. Reuse a previously DELIVERED key, so a code deployment
-    # never re-sends this news. Keep September's budget proposal and future
-    # parliamentary approval, grants and procurement as separate stages.
-    if (topic_group(text) == 'humanoid_component_policy'
-            and _stage(text) == '휴머노이드 핵심부품 620억원 정부안'
-            and re.search(r'620\s*억', text)
-            and re.search(r'2027|내년', text)
-            and '2026-11-10' <= str(item.get('published') or '')[:10] <= '2026-12-31'):
-        return '4de9ae4cdf9abefb86bbac2b181e6ea67e92c64b3e2f6a6489b3745948b180e3'
+    # Reuse the prior successful send key for every Nov-11 budget reprint,
+    # even when the reprint omits the 620억원 figure from its headline/body.
+    # Detailed plans, parliamentary votes, calls, awards are separate stages.
+    if topic_group(text) == 'humanoid_component_policy':
+        stage = _stage(text)
+        if stage == '2026년 11월 핵심부품 세부 추진계획':
+            return hashlib.sha256(b'korea|2026-11-11|three-robot-component-detailed-implementation-plan').hexdigest()
+        if (stage == '휴머노이드 핵심부품 620억원 정부안'
+                and '2026-11-10' <= str(item.get('published') or '')[:10] <= '2026-12-31'):
+            return '4de9ae4cdf9abefb86bbac2b181e6ea67e92c64b3e2f6a6489b3745948b180e3'
     if topic_group(text) != 'humanoid_component_global':
         return _orig_key(item)
     family = _component_family(text)

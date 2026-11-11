@@ -131,6 +131,31 @@ for _policy in (_nov11_policy_a, _nov11_policy_b):
     assert _c.endswith("휴머노이드 핵심부품 620억원 정부안"), _c
     assert _s >= 11, _s
     assert _k == "4de9ae4cdf9abefb86bbac2b181e6ea67e92c64b3e2f6a6489b3745948b180e3", ("reprinted 620억원 policy alert", _k)
+_nov11_no_amount = make(
+    "휴머노이드 원가 60% 잡는다…정부, 센서·액추에이터 등 피지컬 AI 부품 정조준",
+    "2026년 11월 11일 정부가 휴머노이드 로봇 센서·액추에이터 국산화를 지원한다.",
+    "와이드경제",
+)
+_nov11_no_amount["published"] = "2026-11-11T01:23:00+00:00"
+assert base.key(_nov11_no_amount) == "4de9ae4cdf9abefb86bbac2b181e6ea67e92c64b3e2f6a6489b3745948b180e3", "No-amount policy retelling must not re-alert"
+_plan_a = make(
+    "정부, 초혁신경제 휴머노이드 센서·액추에이터 세부 추진계획 발표",
+    "2027년 센서 온센서 AI 기술개발 90억원, 액추에이터 개발 300억원 정부안 공개",
+    "연합뉴스",
+)
+_plan_b = make(
+    "정부, 휴머노이드용 이차전지·센서 세부 추진계획 공개",
+    "초혁신경제 로봇용 이차전지 개발 2027년 133억원, 센서 개발 90억원 계획",
+    "뉴스핌",
+)
+for _plan in (_plan_a, _plan_b):
+    _plan["published"] = "2026-11-11T00:00:00+00:00"
+    _g,_s,_c,_k = classify(_plan)
+    assert _g == "humanoid_component_policy" and _s >= 11, (_g,_s,_c)
+    assert _c.endswith("2026년 11월 핵심부품 세부 추진계획"), _c
+    assert _k == base.key(_plan_a), ("one detailed government plan",_k)
+assert base.key(_plan_a) != base.key(_nov11_policy_a), "Detailed plan must differ from old proposal"
+
 _old_policy = dict(_nov11_policy_a, published="2026-09-10T00:10:00+00:00")
 assert base.key(_old_policy) != base.key(_nov11_policy_a), "Earlier draft baseline must stay distinct"
 _final_policy = make(
