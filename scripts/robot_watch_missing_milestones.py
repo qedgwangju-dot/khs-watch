@@ -968,6 +968,15 @@ def install(base) -> None:
         "verification","tag_for","select_diverse"
     )}
     labels={g:f"{spec['tag']} · 공식 단계 진전" for g,spec in TOPICS.items()}
+    # Existing narrower lanes own their exact milestone and historical keys.
+    # A new coverage lane may take ownership only from the four generic
+    # baseline categories, not a prior purpose-built policy/contract guard.
+    generic={None, "", "tesla", "battery", "robotis", "byd_paxini", "old-category"}
+    def new_topic(text):
+        candidate=topic(text)
+        if candidate and prev["topic_group"](text) in generic:
+            return candidate
+        return ""
     def query(q):
         if q in NOV_2026_RELEASES:
             if base.NOW.astimezone(base.KST).date() > NOV_2026_REPLAY_END:
@@ -975,16 +984,16 @@ def install(base) -> None:
             return [dict(NOV_2026_RELEASES[q])]
         return prev["query_news"](q)
     def group(text):
-        return topic(text) or prev["topic_group"](text)
+        return new_topic(text) or prev["topic_group"](text)
     def score(item):
         body=" ".join(str(item.get(k) or "") for k in ("title","description","source"))
-        t=topic(body)
+        t=new_topic(body)
         if item.get("nov_recovery"):
             return 44 if item["nov_recovery"] == "google_poc_20261110" else 39
         return (38 if achieved(item,t) else 0) if t else prev["score"](item)
     def key(item):
         body=" ".join(str(item.get(k) or "") for k in ("title","description","source"))
-        t=topic(body)
+        t=new_topic(body)
         if not t:return prev["key"](item)
         if item.get("nov_recovery") == "google_poc_20261110":
             return hashlib.sha256(f"robot-coverage-v1|{t}|mercedes_factory_poc".encode()).hexdigest()
