@@ -57,6 +57,8 @@ SOURCES=(
  ("퀄컴 보도자료 Nasdaq 합법 재게시","https://www.nasdaq.com/press-release/spacex-selects-qualcomm-accelerate-starlink-mobiles-nationwide-5g-network-2026-11-04",("Source: Qualcomm","SpaceX","QRU100","QDU100","2027")),
  ("퀄컴 보도자료 Yahoo BusinessWire 재게시","https://ca.finance.yahoo.com/news/spacex-selects-qualcomm-accelerate-starlink-133500564.html",("Business Wire","SpaceX","QRU100","QDU100","2027")),
  ("아마존 레오 5105기 D2D 신청 공식 안내","https://www.aboutamazon.com/news/amazon-leo/amazon-leo-direct-to-device-satellite-service-explained",("5,105","FCC","2028")),
+ ("라쿠텐·AST 합작법인 공식 발표","https://global.rakuten.com/corp/news/press/2026/1109_01.html",("Rakuten AST","148 billion","2029","51%","49%")),
+ ("라쿠텐·AST 합작법인 미국 SEC 첨부 공시","https://www.sec.gov/Archives/edgar/data/1780312/000149315226050865/ex99-1.htm",("Rakuten AST","148","2029","51%","49%")),
 )
 FCC_JULY="https://docs.fcc.gov/public/attachments/DA-26-653A1.pdf"
 FCC_JAN="https://docs.fcc.gov/public/attachments/DOC-417881A1.pdf"
@@ -71,6 +73,13 @@ OFFICIAL_BASE=(
 TRADE_PRICE_NOTE="SpaceX-Grain 거래금액: 당사자 공식 발표에서 미공개. 외신 추정액을 확정 계약금으로 사용하지 않습니다."
 QUALCOMM_AGREEMENT_KEY="ground:starlink_qualcomm_dragonwing:agreement:20261104"
 AST_HANDOFF_KEY="interoperability:att_ast:handoff_test:20261021"
+RAKUTEN_AST_JV_KEY="venture:rakuten_ast:jv_agreement:20261106"
+# These two keys were recorded after a *single* four-part Telegram delivery
+# (2026-11-12 03:46 KST, messages 196-199). Keep them for audit/history.
+RAKUTEN_AST_OLD_KEYS=("asts:supply:705f6e169ba906",
+                      "asts:supply:1336bf5717e9a5")
+RAKUTEN_AST_ORIGINAL="https://global.rakuten.com/corp/news/press/2026/1109_01.html"
+RAKUTEN_AST_SEC="https://www.sec.gov/Archives/edgar/data/1780312/000149315226050865/ex99-1.htm"
 QUALCOMM_PRIMARY="퀄컴 Starlink Mobile 5G 계약 공식 발표"
 AST_HANDOFF_PRIMARY="AT&T·AST 지상망-위성망 전환 시험 공식 발표"
 QUALCOMM_RELEASE_URL="https://www.qualcomm.com/news/releases/2026/11/spacex-selects-qualcomm-to-accelerate-starlink-mobile-s-nationwi"
@@ -192,6 +201,17 @@ TOPICS={
   "risk":"위성 발사·안테나 전력·스펙트럼 상호운용성·서비스 품질 인증 지연",
   "indicator":"가동 BlueBird 기수·상용 가입자당 사용량·인식 매출·계약 연장",
  },
+ "rakuten_ast": {
+  "title":"[일본 위성직접통신] 라쿠텐·AST 합작법인",
+  "queries":(
+    '"Rakuten AST" ("joint venture" OR incorporated OR grant OR satellites OR service) when:7d',
+    '"Rakuten" "AST SpaceMobile" (J-LEO OR contract OR satellite OR funding) when:7d',
+    '라쿠텐 AST 스페이스모바일 (합작법인 OR 보조금 OR 위성 OR 상용화) when:7d',
+  ),
+  "meaning":"합작 합의와 법인 설립·정부지원금 수령·실제 위성 발주·2029년 국내망 운용 개시를 분리합니다.",
+  "risk":"자금 교부·위성 제조·일본 무선 허가·발사 일정과 서비스 인증 지연",
+  "indicator":"법인 등록·지원금 실제 수령·위성 공급계약 금액·발사/운용 위성 수·2029년 3월 서비스 개시",
+ },
  "ground": {
   "title":"[지상망·설비투자] 기지국·철탑·전송망",
   "queries":(
@@ -270,6 +290,11 @@ LABELS={
  "new_service":"상용서비스·위성망 추가 구축 보도(실제 개통·고객 수 별도 확인)",
  "venture":"합작법인 확대·협력 발표(신규 매출과 다름)",
  "supply":"위성 공급·계약·발사 보도(검수 매출과 다름)",
+ "jv_agreement":"합작법인 설립에 합의(법인 설립 완료·지원금 수령과 다름)",
+ "jv_established":"법인 설립 완료 보도(등기·발표 원문 별도 확인)",
+ "grant_disbursed":"정부지원금 실제 교부 보도(총 지원 한도와 다름)",
+ "satellites_delivered":"합작법인 대상 위성 납품 보도(계약/검수 원문 별도 확인)",
+ "service_launched":"일본 내 상용 위성통신 개시 보도(실제 가입자·매출 별도 확인)",
  "rollout_report":"Starlink 지상 기지국 실제 개통 보도(공식 설치·가동 수 별도 확인)",
  "handoff_test":"지상망·위성망 전환 시험 보도(상용 서비스 아님)",
  "beta_report":"실사용자 베타 서비스 개시 보도(공식 개시·규모 확인 전)",
@@ -344,6 +369,8 @@ def distinct_primary_organizations(names:list[str])->set[str]:
   elif name.startswith("SpaceX"):groups.add("spacex")
   elif name.startswith("AT&T"):groups.add("att")
   elif name.startswith("T-Mobile"):groups.add("tmobile")
+  elif name.startswith("라쿠텐"):groups.add("rakuten")
+  elif name.startswith("AST 합작법인"):groups.add("ast")
   elif name.startswith("퀄컴"):groups.add("qualcomm")
   elif name.startswith("글로벌스타"):groups.add("globalstar")
   elif name.startswith("FCC "):groups.add("fcc")
@@ -382,6 +409,24 @@ def independent_publisher(item:dict)->bool:
 
 def stem_title(title:str)->str:
  return re.sub(r"\s+[-|]\s+[^-|]{1,60}$","",title).lower().strip()
+
+def rakuten_ast_story(title:str)->bool:
+ t=stem_title(title)
+ return bool(
+  (re.search(r"rakuten|라쿠텐|楽天",t) and
+   re.search(r"ast[ -]?spacemobile|ast[ -]?space|ast스페이스|ast 스페이스|\\bast\\b",t))
+  or re.search(r"rakuten[ -]?ast|라쿠텐[ -]?ast",t)
+ )
+
+def migrate_rakuten_ast_state(state:dict)->bool:
+ seen=state["seen"]
+ previous=[seen[k] for k in RAKUTEN_AST_OLD_KEYS if k in seen]
+ if previous and RAKUTEN_AST_JV_KEY not in seen:
+  # Keep the actual original delivery timestamp; never stamp "now" or
+  # pretend a new message was sent during migration.
+  seen[RAKUTEN_AST_JV_KEY]=min(previous)
+  return True
+ return False
 
 def stage(topic:str,title:str)->str|None:
  t=stem_title(title)
@@ -429,11 +474,32 @@ def stage(topic:str,title:str)->str|None:
   if not re.search(r"joint venture|venture|satellite|d2d|direct.to.device",t):return None
   return "venture"
  if topic=="asts":
+  # Rakuten's November 6 agreement is a joint venture, not two new
+  # satellite-supply contracts. Route it to its own stable event ID.
+  if rakuten_ast_story(t):return None
   # A connectivity handoff is not a new satellite supply agreement.
   if re.search(r"handoff|hand.?over|망 전환|연결 전환",t):return None
   if not re.search(r"ast spacemobile|bluebird|asts",t):return None
   if not re.search(r"contract|deal|satellite|commercial|service|verizon|at&t|launch",t):return None
   return "supply"
+ if topic=="rakuten_ast":
+  if not rakuten_ast_story(t):return None
+  if re.search(r"actual commercial service (?:starts|launches)|service went live|"
+               r"begins commercial operation|国内運用開始|상용 서비스 개시",t) and not re.search(
+               r"target|plan|will|expected|to begin|予定|목표|예정",t):
+   return "service_launched"
+  if re.search(r"satellites (?:delivered|handed over)|위성 (?:인도|납품 완료)",t):
+   return "satellites_delivered"
+  if re.search(r"grant (?:received|disbursed|paid)|subsidy actually paid|"
+               r"지원금 (?:수령|지급 완료)|補助金.*交付",t):
+   return "grant_disbursed"
+  if re.search(r"incorporat(?:ed|ion) completed|company registration completed|"
+               r"법인 설립 완료|등기 완료|法人設立完了",t):
+   return "jv_established"
+  if re.search(r"joint venture|joint-venture|\\bjv\\b|rakuten ast|"
+               r"合弁|합작법인|합작 투자|設立",t):
+   return "jv_agreement"
+  return None
  if topic=="ground":
   if not re.search(r"spacex|starlink",t) or re.search(r"boost mobile|echostar|globalstar",t):return None
   if re.search(r"80,?000|80\s*thousand",t) and re.search(r"cell sites?|tower sites?|sites? for wireless",t):
@@ -489,7 +555,7 @@ def keywords(title:str)->set[str]:
 def match_articles(a:dict,b:dict,topic:str|None=None,status:str|None=None)->bool:
  if a["publisher"].strip().lower()==b["publisher"].strip().lower():return False
  if abs((a["pub"]-b["pub"]).total_seconds())>72*3600:return False
- if topic in {"mobile_entry","amazon_leo"} and status:
+ if topic in {"mobile_entry","amazon_leo","rakuten_ast"} and status:
   # One press source may generate differently worded English/Korean titles.
   # Compare the same parties and the same transaction stage, never topic alone.
   if stage(topic,a["title"])!=status or stage(topic,b["title"])!=status:return False
@@ -514,6 +580,12 @@ def event_id(category:str,status:str,title:str)->str:
   if re.search(r"15,?000|15k",t):return f"fcc:ambiguous_15000:{status}"
  if category=="carriers" and re.search(r"joint venture|venture",t):
   return f"carriers:att_tmus_vz_joint_venture:{status}"
+ if category=="rakuten_ast":
+  if status=="jv_agreement":return RAKUTEN_AST_JV_KEY
+  # Later milestones are separate from the 2026-11-06 agreement.
+  # A new actual payment or delivery may have its own dated release.
+  return "venture:rakuten_ast:"+status+":"+hashlib.sha256("|".join(
+    sorted(keywords(title))).encode()).hexdigest()[:12]
  if category=="asts" and re.search(r"verizon|at&t",t):
   return f"asts:att_verizon_contract:{status}"
  if category=="ground":
@@ -662,6 +734,30 @@ def user_claims_factcheck()->str:
  return price_dividend_display_correction()
 
 def render(topic:str,status:str,item:dict,pair:dict)->str:
+ if topic=="rakuten_ast":
+  if status=="jv_agreement":
+   return "\n".join((
+    "[합작 합의·설립 예정] 일본 Rakuten AST",
+    "■ 2026년 11월 6일 라쿠텐과 AST SpaceMobile이 합작법인 설립에 합의했고, 11월 9일 공동 발표했습니다. 법인 설립은 11월 예정입니다.",
+    "■ 지분율은 라쿠텐 51%·AST 49%, 법인 자본금 1억 엔입니다.",
+    "■ 일본 J-LEO 사업에서 약 3년에 걸쳐 최대 1,480억 엔 지원 예정입니다. 전액 수령·AST 확정 매출은 아닙니다.",
+    "■ AST가 일본 위성직접통신용 위성을 공급하며, 국내 위성망 구축과 운용 개시 목표는 2029년 3월 말입니다.",
+    "■ 확인 지표: 실제 법인 등기·정부지원금 교부·위성 발주/납품 금액·실제 발사·운용과 서비스 개시.",
+    "• 원문: "+RAKUTEN_AST_ORIGINAL,
+    "• 원문: "+RAKUTEN_AST_SEC,
+   ))
+  meta=TOPICS[topic]
+  return "\n".join((
+   meta["title"]+" — 후속 단계 보도",
+   "■ 현재 상태: "+LABELS[status],
+   "■ 제목: "+item["title"],
+   "■ 언론 출처: "+item["publisher"]+"·"+pair["publisher"]+
+   " / 당사자 공식 원문 추가 확인 전.",
+   "■ 기존 11월 6일 합작 합의와 새로운 지원금 수령·위성 인도·서비스 개시는 다른 사건입니다.",
+   "■ 확인할 지표: "+meta["indicator"],
+   "• 원문: "+item["url"],
+   "• 원문: "+RAKUTEN_AST_ORIGINAL,
+  ))
  meta=TOPICS[topic]
  timestamp=item["pub"].astimezone(KST).strftime("%Y-%m-%d %H:%M KST")
  lines=[
@@ -713,6 +809,7 @@ def collect(rss_fn=rss)->tuple[dict,list[str],int]:
 def choose_events(group:dict,seen:dict,bootstrap_run:bool,force:bool=False)->tuple[list[str],dict]:
  alerts=[]
  updated=dict(seen)
+ emitted_this_scan=set()
  for topic,candidates in group.items():
   ordered=sorted(candidates.values(),key=lambda z:z[1]["pub"],reverse=True)
   for status,item in ordered:
@@ -726,6 +823,7 @@ def choose_events(group:dict,seen:dict,bootstrap_run:bool,force:bool=False)->tup
    # A headline saying merely "15,000 SpaceX satellites" without specifying
    # DA-26-36 Gen2 broadband vs DA-26-1078 mobile D2D is unsafe.
    if eid.startswith("fcc:ambiguous_15000:"):continue
+   if eid in emitted_this_scan:continue
    if eid in updated and not force:continue
    peers=[p for s,p in ordered if s==status and
           independent_publisher(p) and match_articles(item,p,topic,status)]
@@ -741,6 +839,7 @@ def choose_events(group:dict,seen:dict,bootstrap_run:bool,force:bool=False)->tup
    report=render(topic,status,item,peers[0])
    if backfill and NOW-item["pub"]>RECENT:report="[지난 보도 누락 보완 · 신규 계약 확정 아님]\n"+report
    alerts.append((item["pub"],eid,report))
+   emitted_this_scan.add(eid)
    updated[eid]=NOW.isoformat()
  alerts.sort(key=lambda z:z[0],reverse=True)
  # Do not lose validated unreported events; keep them unread for next cycle.
@@ -893,6 +992,38 @@ def test()->int:
  republication=newly_verified_official_notices({},["퀄컴 보도자료 Nasdaq 합법 재게시"],False)
  assert "합법 재게시" in republication[0][1]
  assert not newly_verified_official_notices({QUALCOMM_AGREEMENT_KEY:"sent"},["퀄컴 보도자료 Yahoo BusinessWire 재게시"],False)
+ assert rakuten_ast_story("Yomiuri: Rakuten, AST SpaceMobile to launch joint venture for satellite-smartphone services")
+ assert rakuten_ast_story('Rakuten and AST SpaceMobile Establish "Rakuten AST" Joint Venture in Japan')
+ assert stage("asts","Yomiuri: Rakuten, AST SpaceMobile to launch joint venture") is None
+ assert stage("asts",'Rakuten and AST SpaceMobile Establish "Rakuten AST" Joint Venture') is None
+ assert stage("rakuten_ast","Yomiuri: Rakuten, AST SpaceMobile to launch joint venture for satellite-smartphone services")=="jv_agreement"
+ assert stage("rakuten_ast",'Rakuten and AST SpaceMobile Establish "Rakuten AST" Joint Venture in Japan')=="jv_agreement"
+ assert stage("rakuten_ast","Rakuten AST joint venture planned to start service in 2029")=="jv_agreement"
+ assert stage("rakuten_ast","Rakuten AST company registration completed in Japan")=="jv_established"
+ assert stage("rakuten_ast","Rakuten AST grant received from Japan MIC")=="grant_disbursed"
+ assert event_id("rakuten_ast","jv_agreement","Yomiuri: Rakuten AST SpaceMobile JV")==RAKUTEN_AST_JV_KEY
+ assert event_id("rakuten_ast","jv_agreement","Rakuten AST joint venture announcement")==RAKUTEN_AST_JV_KEY
+ assert event_id("rakuten_ast","jv_established","Rakuten AST completed incorporation")!=RAKUTEN_AST_JV_KEY
+ old_state={"seen":{RAKUTEN_AST_OLD_KEYS[0]:"2026-11-11T18:46:13Z",
+                    RAKUTEN_AST_OLD_KEYS[1]:"2026-11-11T18:46:13Z",
+                    "other:existing:event":"2026-11-10T01:00:00Z"}}
+ assert migrate_rakuten_ast_state(old_state)
+ assert old_state["seen"][RAKUTEN_AST_JV_KEY]=="2026-11-11T18:46:13Z"
+ assert all(k in old_state["seen"] for k in RAKUTEN_AST_OLD_KEYS)
+ assert not migrate_rakuten_ast_state(old_state)
+ rakuten1={"title":"Yomiuri: Rakuten AST SpaceMobile to launch joint venture for satellite-smartphone services",
+           "publisher":"MarketWatch","pub":NOW,"url":"https://news.google.com/rss/articles/yomiuri"}
+ rakuten2={"title":'Rakuten and AST SpaceMobile Establish "Rakuten AST" Joint Venture to Build D2D Network',
+           "publisher":"Financial Times","pub":NOW,"url":"https://news.google.com/rss/articles/rakuten"}
+ group={"rakuten_ast":{"a":("jv_agreement",rakuten1),"b":("jv_agreement",rakuten2)}}
+ assert match_articles(rakuten1,rakuten2,"rakuten_ast","jv_agreement")
+ alerts,added=choose_events(group,{},False)
+ assert len(alerts)==1 and len(added)==1 and RAKUTEN_AST_JV_KEY in added
+ assert "51%" in alerts[0] and "1,480억" in alerts[0] and "2029년 3월" in alerts[0]
+ prior_alerts,unchanged=choose_events(group,old_state["seen"],False)
+ assert prior_alerts==[] and unchanged==old_state["seen"]
+ forced,_=choose_events(group,old_state["seen"],False,force=True)
+ assert len(forced)==1
  assert "license:grain_spacex_800:fcc_approval" not in KNOWN_BASELINE_KEYS
  assert "license:grain_spacex_800:close" not in KNOWN_BASELINE_KEYS
  print("starlink_mobile_d2d_self_test=ok approvals_separated=1 government_rss_excluded=1 media_duo=1 no_duplicates=1 known_baseline=1")
@@ -901,6 +1032,7 @@ def test()->int:
 def main()->int:
  if os.environ.get("STARLINK_D2D_SELF_TEST")=="1":return test()
  state,initial=load_state()
+ rakuten_migrated=migrate_rakuten_ast_state(state)
  official,failed=verified_primary_sources()
  groups,errors,good=collect()
  if good<5:
@@ -964,7 +1096,7 @@ def main()->int:
    seeded+=1
  state["seen"]=next_seen
  # Avoid 48 contentless commits/day and related repo push-trigger storms.
- if initial or events or seeded:
+ if initial or events or seeded or rakuten_migrated:
   state["updated_at"]=NOW.isoformat()
   state["official_sources_verified"]=official
  if initial:
@@ -984,6 +1116,8 @@ def main()->int:
   f"- 뉴스 피드 정상: {good}/{sum(len(x['queries']) for x in TOPICS.values())}",
   f"- 뉴스 피드 장애: {len(errors)}",
   f"- 최초 기준선: {initial}, 이번 알림 사건: {len(events)}",
+  f"- 라쿠텐·AST 기존 2개 중복 키 보존·대표 사건 키 연결: {rakuten_migrated}",
+  f"- 이번 검사에서 같은 논리적 사건을 두 번 알리지 않음",
   f"- 퀄컴 계약·AST 전환시험 신규 공식 근거: {[key for key,_ in official_new]}",
   f"- 10월 6일 별도 FCC 직접통신 허가 정정 알림: {correction}",
   f"- 10월 11일 주가·Falcon/Dragon 팩트체크: {factcheck_20261011} | NASA+Grain 공식 원문: {claim_verified}",
