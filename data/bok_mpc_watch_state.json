@@ -51,8 +51,8 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-11-11T15:04:37+09:00",
-    "risk_score": 1,
+    "updated_at_kst": "2026-11-12T11:56:42+09:00",
+    "risk_score": 3,
     "grade_emoji": "🟡",
     "grade_label": "추가인상 가능성 유지",
     "next_mpc_date": "2026-11-26",
@@ -71,12 +71,12 @@
         "stale": false
       },
       "household": {
-        "period": "2026-09",
-        "total_trn": -2.2,
-        "mortgage_trn": 3.3,
-        "mortgage_prev_trn": 4.3,
-        "mortgage_reaccelerating": false,
-        "source": "https://www.fsc.go.kr/no010101/87939?srchCtgry=&curPage=&srchKey=&srchText=%EA%B0%80%EA%B3%84%EB%8C%80%EC%B6%9C&srchBeginDt=&srchEndDt=",
+        "period": "2026-10",
+        "total_trn": 6.4,
+        "mortgage_trn": 4.0,
+        "mortgage_prev_trn": 3.2,
+        "mortgage_reaccelerating": true,
+        "source": "https://www.fsc.go.kr/no010101/88124?srchCtgry=&curPage=&srchKey=&srchText=%EA%B0%80%EA%B3%84%EB%8C%80%EC%B6%9C&srchBeginDt=&srchEndDt=",
         "source_tier": "공식",
         "stale": false
       },
