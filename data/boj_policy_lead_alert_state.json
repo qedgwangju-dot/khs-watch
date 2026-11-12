@@ -1,12 +1,12 @@
 {
-  "last_signal_key": "bf8077394bdbe764006888f8",
-  "last_alert_at_kst": "2026-11-10T11:26:07+09:00",
-  "last_published_at_kst": "2026-11-10T09:22:00+09:00",
-  "last_source": "Reuters",
-  "last_title": "Some in BOJ called for faster rate hikes, October summary shows - Reuters",
+  "last_signal_key": "77fa7cd3a542ebf90805622f",
+  "last_alert_at_kst": "2026-11-12T11:05:19+09:00",
+  "last_published_at_kst": "2026-11-12T10:30:00+09:00",
+  "last_source": "Bank of Japan",
+  "last_title": "Speech by Board Member ASADA in Nagasaki (Economic Activity, Prices, and Monetary Policy in Japan)",
   "signature": {
-    "level": 2,
-    "event_type": "market_path",
+    "level": 1,
+    "event_type": "official_speech",
     "policy_rate": null,
     "hike_bp": null,
     "vote_for": null,
@@ -29,7 +29,7 @@
     "accommodative": false,
     "neutral_rate": false,
     "inflation_upside": false,
-    "risk_channels": false,
+    "risk_channels": true,
     "rate_unchanged": false,
     "underlying_target_reached": false
   }
