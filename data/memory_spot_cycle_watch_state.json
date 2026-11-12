@@ -931,10 +931,22 @@
       "source": "investingLive",
       "published_kst": "2026-11-11T12:00:32+09:00",
       "first_seen_kst": "2026-11-12T03:44:27+09:00"
+    },
+    "d52c349aa782d2cadd4e0dda": {
+      "title": "Memory shortage spurs smartphone makers to melt used memory off old devices, then re-solder it onto new products — recycled memory to keep budget phones affordable; 'reballing' adoption to double by 2027 - Tom's Hardware",
+      "source": "Tom's Hardware",
+      "published_kst": "2026-11-09T22:40:00+09:00",
+      "first_seen_kst": "2026-11-12T17:25:46+09:00"
+    },
+    "de8d1f0182b34fe2250124a9": {
+      "title": "Persistently High DRAM Prices Drive Adoption of Reballed Memory, with Smartphone Penetration Expected to Reach 7–9% in 2027, Says TrendForce",
+      "source": "TrendForce",
+      "published_kst": "2026-11-06T09:00:00+09:00",
+      "first_seen_kst": "2026-11-12T17:25:46+09:00"
     }
   },
-  "updated_at_kst": "2026-11-12T17:21:06+09:00",
-  "last_scan_count": 8,
+  "updated_at_kst": "2026-11-12T17:25:46+09:00",
+  "last_scan_count": 10,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -995,20 +1007,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-12T03:44:40+09:00",
+  "last_successful_delivery_kst": "2026-11-12T17:25:58+09:00",
   "telegram_message_ids": [
-    396
+    399
   ],
-  "telegram_message_id": 396,
+  "telegram_message_id": 399,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      396
+      399
     ],
-    "confirmed_at_kst": "2026-11-12T03:44:40+09:00",
-    "alert_signature": "21cad298ce4cf5efce11956b77c27d4aadf85c97834111a395cb5beee6d44c13"
+    "confirmed_at_kst": "2026-11-12T17:25:58+09:00",
+    "alert_signature": "78c90e5714dd374a5a5e0d29707376909c1cb32de954c098b016e675dfa2344f"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1269,5 +1281,21 @@
     "ministry_url": "https://www.interfax.ru/1092170",
     "legal_reference_url": "https://www.kontur-extern.ru/info/normativ/document/1/502969-prikaz-minpromtorga-rf-ot-26-09-2025-n-4769",
     "source_kind": "비공식 논의·공식 개정령 미확인"
+  },
+  "reballed_smartphone": {
+    "share_2027_low_pct": 7.0,
+    "share_2027_high_pct": 9.0,
+    "scope": "smartphone_unit_penetration_not_dram_bit_share",
+    "oem_specific_supply_confirmed": false,
+    "source_date": "2026-11-06",
+    "source_url": "https://www.trendforce.com/presscenter/news/20261106-13297.html"
+  },
+  "china_essd_demand": {
+    "china_procurement_status": "cautious",
+    "north_america_status": "firm",
+    "confirmed_cancellation_count": null,
+    "china_ai_subscription_risk": false,
+    "source_date": "2026-11-05",
+    "source_url": "https://www.trendforce.com/research/download/RP261105BM"
   }
 }
