@@ -1440,7 +1440,7 @@ STORY_RULES = (
              "원격 접근", "원격 접속", "원격 이용"),
             ("ai chip", "advanced computing", "semiconductor", "gpu", "data center",
              "datacenter", "cloud computing", "ai remote access", "반도체", "데이터센터"),
-            ("china", "chinese", "prc", "중국"),
+            ("china", "chinese", "prc", "country group d:5", "중국"),
         ),
         core="The Information은 2026년 11월 11일 미국 상무부가 중국 기업의 제3국 데이터센터 첨단 GPU 원격 이용을 제한하는 수출통제안을 부처 간 최종 조율하고 있다고 보도했습니다. 공식 규정의 확정·공포·발효와는 다릅니다.",
         impact="엔비디아·AMD 첨단 가속기 수출, 미국·아시아 데이터센터 GPU 조달·임대, 한국 HBM·서버 부품의 주문 시점 | 매출·마진·현금흐름·시간표",
@@ -1921,19 +1921,32 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 doc_type = str(doc.get("type") or "").lower()
                 if doc_type not in {"rule", "proposed rule"}:
                     continue
-                meta = f"{doc.get('title') or ''} {doc.get('abstract') or ''}"
+                meta = f"{doc.get('title') or ''} {doc.get('abstract') or ''} {agency_names}"
                 if not bis_gpu_remote_official_identity(meta):
                     continue
                 official_link = str(doc.get("html_url") or "")
                 text_url = str(doc.get("raw_text_url") or "")
-                if not official_link.startswith("https://www.federalregister.gov/") or not text_url.startswith("https://www.federalregister.gov/"):
+                if not official_link.startswith("https://www.federalregister.gov/"):
+                    continue
+                if not text_url:
+                    try:
+                        detail = json.loads(fetch_text(
+                            f"https://www.federalregister.gov/api/v1/documents/{doc_number}.json", timeout=8
+                        ))
+                        text_url = str(detail.get("raw_text_url") or "")
+                    except Exception as exc:
+                        print(f"trusted_policy_news=bis_gpu_remote_fr_detail_unavailable document={doc_number} error={type(exc).__name__}")
+                        continue
+                if not text_url.startswith(("https://www.federalregister.gov/", "https://www.govinfo.gov/")):
                     continue
                 stage = bis_gpu_remote_news_stage(str(doc.get("title") or ""), official=True, document=doc_number)
                 if doc_type == "proposed rule":
                     stage = f"official-proposal-{doc_number}"
-                elif doc_type == "rule" and not stage.startswith("official-"):
-                    stage = f"official-final-{doc_number}"
-                if doc_type == "rule" and stage.endswith("negotiation-" + doc_number):
+                elif doc_type == "rule" and not any(
+                    marker in stage for marker in ("-exception-", "-withdrawal-", "-effective-", "-enforcement-")
+                ):
+                    # Federal Register document type is stronger evidence than
+                    # vague document-title wording; do not downgrade a Rule.
                     stage = f"official-final-{doc_number}"
                 doc_fp = story_event_fingerprint(rule, [{"bis_gpu_remote_stage": stage}])
                 if doc_fp in (load_seen().get("seen") or {}):
@@ -2570,9 +2583,28 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 continue
             if not is_trusted_source(publisher) and not rule_source_ok and not is_trusted_wire_relay(publisher, haystack):
                 continue
-            if (now - published).total_seconds() / 3600 > MAX_AGE_HOURS:
+            max_rss_age = max_age_hours_for_rule(rule) if rule.key == BIS_GPU_REMOTE_KEY else MAX_AGE_HOURS
+            if (now - published).total_seconds() / 3600 > max_rss_age:
                 continue
-            if not has_required_terms(haystack, rule):
+            if rule.key == BIS_GPU_REMOTE_KEY:
+                title_low = title.lower()
+                exact_press = (
+                    source_key(publisher) == "the information"
+                    and "commerce department finalizing long-awaited ai remote access rule" in title_low
+                    and published.date() == BIS_GPU_REMOTE_BASELINE_KST.date()
+                )
+                relevant_remote_title = (
+                    ("remote access" in title_low or "remote computing" in title_low)
+                    and any(x in title_low for x in ("chip", "gpu", "cloud", "data center",
+                                                     "commerce department", "advanced computing"))
+                )
+                if not (exact_press or (relevant_remote_title and has_required_terms(haystack, rule))):
+                    continue
+                rss_stage = (
+                    "press-negotiation-2026-11-11" if exact_press
+                    else bis_gpu_remote_news_stage(title)
+                )
+            elif not has_required_terms(haystack, rule):
                 continue
             # A direct Trump quote is sendable only when its English headline maps
             # to a concrete Korean policy event. Do not fall back to a broad
@@ -2604,6 +2636,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                     "source": display_source,
                     "published_kst": published.isoformat(timespec="seconds"),
                     "priority": SOURCE_PRIORITY.get(priority_key, 99),
+                    **({"bis_gpu_remote_stage": rss_stage} if rule.key == BIS_GPU_REMOTE_KEY else {}),
                 }
             )
     # If every release and trusted copy is unavailable, do not silently
@@ -5444,6 +5477,7 @@ def _self_test_bis_gpu_remote_access_event_model() -> None:
     )
     assert not bis_gpu_remote_press_identity("Commerce considers AI Diffusion rule in 2025")
     assert bis_gpu_remote_news_stage(sample["title"]) == "press-negotiation-2026-11-11"
+    assert bis_gpu_remote_news_stage("BIS issues final rule limiting Chinese remote access to AI chips") == "reported-final"
     assert has_required_terms(" ".join([sample["title"], sample["description"], sample["source"]]), rule)
     assert alert_confirmation_status(rule, [sample])[0] == "공식 확인 전"
     assert "미공포" in str(item_story_profile(rule, [sample])["stage"])
