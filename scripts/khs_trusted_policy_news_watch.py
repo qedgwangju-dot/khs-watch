@@ -154,8 +154,10 @@ BIS_GPU_REMOTE_BASELINE_KST = dt.datetime(2026, 11, 12, 11, 52, tzinfo=KST)
 BIS_GPU_REMOTE_PRESS_SOURCES = (
     ("https://www.theinformation.com/articles/commerce-department-finalizing-long-awaited-ai-remote-access-rule",
      "The Information (원문 기사)"),
-    ("https://www.theinformation.com/features/exclusive",
-     "The Information (발행사 기사 목록)"),
+    ("https://www.theinformation.com/topics/ai-remote-access-rule",
+     "The Information (발행사 주제별 원문 색인)"),
+    ("https://uk.investing.com/news/stock-market-news/us-finalizing-rule-to-block-chinas-remote-ai-chip-access-the-information-4976036",
+     "Investing.com (The Information 보도 재인용)"),
 )
 BIS_GPU_REMOTE_FR_QUERIES = (
     "https://www.federalregister.gov/api/v1/documents.json?"
@@ -1838,6 +1840,19 @@ def bis_gpu_remote_official_identity(raw: str) -> bool:
     )
 
 
+def bis_gpu_remote_reprint_identity(raw: str) -> bool:
+    """Independently validate an article reproducing the specific The Information report."""
+    low = clean_text(raw).lower()
+    return (
+        "the information" in low
+        and "commerce department" in low
+        and "remote" in low
+        and any(x in low for x in ("seven additional countries", "seven countries", "seven additional"))
+        and any(x in low for x in ("u.s. finalizing rule", "us finalizing rule", "rule to block china"))
+        and ("november 2026" in low or "12/11/2026" in low or "reported on wednesday" in low)
+    )
+
+
 def bis_gpu_remote_official_candidate(raw: str) -> bool:
     """A loose metadata filter; full BIS body must pass the stronger identity."""
     low = clean_text(raw).lower()
@@ -1924,11 +1939,16 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 except Exception as exc:
                     print(f"trusted_policy_news=bis_gpu_remote_press_unavailable source={press_label!r} error={type(exc).__name__}")
                     continue
-                if not bis_gpu_remote_press_identity(press_raw):
+                is_secondary = "Investing.com" in press_label
+                verified_press = (
+                    bis_gpu_remote_reprint_identity(press_raw) if is_secondary
+                    else bis_gpu_remote_press_identity(press_raw)
+                )
+                if not verified_press:
                     continue
                 items.append({
                     "title": "Commerce Department Finalizing Long-Awaited AI Remote Access Rule",
-                    "description": "Publisher headline and date verified; The Information reports negotiations on China remote access via overseas AI data centers. Legal rule not yet confirmed.",
+                    "description": ("The Information's November 11 report confirmed from the reprint; remote access via overseas AI data centers is in negotiations, not a final rule." if is_secondary else "Publisher headline and date verified; The Information reports negotiations on China remote access via overseas AI data centers. Legal rule not yet confirmed."),
                     "link": BIS_GPU_REMOTE_PRESS_SOURCES[0][0],
                     "source": press_label,
                     "published_kst": BIS_GPU_REMOTE_BASELINE_KST.isoformat(timespec="seconds"),
@@ -5620,6 +5640,8 @@ def _self_test_bis_gpu_remote_access_event_model() -> None:
         "Chinese AI firms remotely accessing AI chips Nov 11, 2026"
     )
     assert not bis_gpu_remote_press_identity("Commerce considers AI Diffusion rule in 2025")
+    assert bis_gpu_remote_reprint_identity("U.S. finalizing rule to block China's remote AI chip access – The Information. Commerce Department consulting, seven additional countries, reported on Wednesday.")
+    assert not bis_gpu_remote_reprint_identity("The Information says Commerce Department is discussing AI without seven additional countries")
     assert bis_gpu_remote_news_stage(sample["title"]) == "press-negotiation-2026-11-11"
     assert bis_gpu_remote_news_stage("BIS issues final rule limiting Chinese remote access to AI chips") == "reported-final"
     assert has_required_terms(" ".join([sample["title"], sample["description"], sample["source"]]), rule)
