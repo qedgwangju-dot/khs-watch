@@ -31,9 +31,10 @@ on:
     # UK-China EV tariff stages are handled by the existing trusted-policy lane.
     - cron: "7,22,37,52 * * * *"
   workflow_run:
-    # Existing AI policy watcher provides a backup wake-up when GitHub cron
-    # skips the policy watch. This changes only this workflow, not the upstream.
-    workflows: ["AI Safety Standards Policy Watch"]
+    # Existing AI security watcher provides a backup wake-up when GitHub cron
+    # skips the policy watch. The shorter chain avoids workflow_run depth limits.
+    # This changes only this workflow, not the upstream.
+    workflows: ["AI Security Web Watch"]
     types: [completed]
     branches: [main]
   workflow_dispatch:
@@ -400,7 +401,7 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           source = Path(".github/workflows/khs-policy-watch.yml").read_text(encoding="utf-8")
-          assert 'workflows: ["AI Safety Standards Policy Watch"]' in source
+          assert 'workflows: ["AI Security Web Watch"]' in source
           assert 'branches: [main]' in source
           assert 'github.event.workflow_run.repository.full_name == github.repository' in source
           assert "github.event.workflow_run.conclusion == 'success'" in source
