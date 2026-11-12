@@ -147,6 +147,23 @@ OFFICIAL_DIRECT_STORIES = {
     ),
 }
 
+# Existing KHS policy lane: China remote use of U.S. GPUs in overseas data centers.
+# A November 11 press report is NOT a published BIS rule or an effective ban.
+BIS_GPU_REMOTE_KEY = "us_bis_overseas_gpu_remote_access_rule"
+BIS_GPU_REMOTE_BASELINE_KST = dt.datetime(2026, 11, 12, 11, 52, tzinfo=KST)
+BIS_GPU_REMOTE_PRESS_SOURCES = (
+    ("https://www.theinformation.com/articles/commerce-department-finalizing-long-awaited-ai-remote-access-rule",
+     "The Information (원문 기사)"),
+    ("https://www.theinformation.com/features/exclusive",
+     "The Information (발행사 기사 목록)"),
+)
+BIS_GPU_REMOTE_FR_QUERIES = (
+    "https://www.federalregister.gov/api/v1/documents.json?"
+    "conditions%5Bterm%5D=remote+access+advanced+computing&order=newest&per_page=20",
+    "https://www.federalregister.gov/api/v1/documents.json?"
+    "conditions%5Bterm%5D=cloud+computing+export+controls+China&order=newest&per_page=20",
+)
+
 # Verified FCC event identities: use first-party documents, not headline reprints.
 FCC_VERIFIED_CASES = {
     "us_fcc_hisilicon_first_component_enforcement": {
@@ -361,6 +378,7 @@ ALERTS_JSON_PATH = OUT_DIR / "khs_trusted_policy_news_alerts.json"
 MAX_AGE_HOURS = int(os.getenv("KHS_TRUSTED_NEWS_MAX_AGE_HOURS", "72"))
 RULE_MAX_AGE_HOURS = {
     "us_fcc_800mhz_uas_cellular_authorization": 24 * 21,
+    BIS_GPU_REMOTE_KEY: 24 * 21,
     "eu_china_hybrid_vehicle_safeguard": 24 * 45,
     "eu_china_sector_import_safeguards": 24 * 30,
     # One-time recovery lane for the already-official Auction 115 schedule plus
@@ -1409,6 +1427,33 @@ STORY_RULES = (
         follow_up="사망자 공식 집계, 기상 경보 범위, 전력피크·LNG·농산물·보험손해·항만/물류 지표가 같은 방향으로 확인될 때만 가격 재료로 유지합니다.",
     ),
     StoryRule(
+        key=BIS_GPU_REMOTE_KEY,
+        title="미 상무부, 제3국 데이터센터 GPU 원격 접근 제한 추진",
+        google_queries=(
+            '"Commerce Department Finalizing Long-Awaited AI Remote Access Rule" "The Information"',
+            '"China" "remote access" "AI chips" "Commerce Department" November 2026',
+            'BIS remote access advanced computing cloud data centers China export controls 2026',
+            'site:federalregister.gov "remote access" "advanced computing" "Bureau of Industry and Security"',
+        ),
+        required_groups=(
+            ("remote access", "remotely accessing", "remote computing", "remote use",
+             "원격 접근", "원격 접속", "원격 이용"),
+            ("ai chip", "advanced computing", "semiconductor", "gpu", "data center",
+             "datacenter", "cloud computing", "ai remote access", "반도체", "데이터센터"),
+            ("china", "chinese", "prc", "중국"),
+        ),
+        core="The Information은 2026년 11월 11일 미국 상무부가 중국 기업의 제3국 데이터센터 첨단 GPU 원격 이용을 제한하는 수출통제안을 부처 간 최종 조율하고 있다고 보도했습니다. 공식 규정의 확정·공포·발효와는 다릅니다.",
+        impact="엔비디아·AMD 첨단 가속기 수출, 미국·아시아 데이터센터 GPU 조달·임대, 한국 HBM·서버 부품의 주문 시점 | 매출·마진·현금흐름·시간표",
+        point="싱가포르·말레이시아·태국·인도네시아·브라질·노르웨이·남아공 7개국과 블랙웰급 이상 칩이 보도상 대상입니다. 신규 GPU 수출과 원격 서비스 제공의 제한 범위는 최종 BIS 원문으로 확인해야 합니다.",
+        counter="7개국·칩 등급·미국 운영사 허가 면제·고객 신원/컴퓨팅 용량 보고는 아직 언론 보도상 조건이며, 현행 2026년 5월 BIS 지침과 새로운 규칙을 혼동하지 않습니다.",
+        sectors="엔비디아·AMD AI 가속기, GPU 임대·클라우드, 한국 HBM·서버 제조·네트워크",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("보도·협의", "BIS 공식 규칙안", "연방관보 최종 규칙", "시행·허가 예외", "집행·고객 주문"),
+        follow_up="BIS·연방관보의 규칙번호, 대상 7개국, ECCN·칩 성능 문턱, 미국 운영사 예외·원격차단·고객/용량 신고, 공포·발효일, 허가·단속·실제 데이터센터 주문 변화를 확인합니다.",
+        trusted_sources=("The Information", "Reuters", "Bloomberg", "Associated Press",
+                         "Bureau of Industry and Security", "Federal Register", "U.S. Department of Commerce"),
+    ),
+    StoryRule(
         key="us_trusted_policy_shock_broad",
         title="신뢰외신, 미국 고충격 정책 후보 보도",
         google_queries=(
@@ -1759,6 +1804,53 @@ def load_seen() -> dict:
         return {"seen": {}, "updated_at_kst": ""}
 
 
+def bis_gpu_remote_press_identity(raw: str) -> bool:
+    """Verify the publisher's exact headline and date; never call the index the full article."""
+    low = clean_text(raw).lower()
+    return (
+        "commerce department finalizing long-awaited ai remote access rule" in low
+        and ("chinese ai firms" in low or "china" in low or "remote access" in low)
+        and ("nov 11, 2026" in low or "november 11, 2026" in low or "remotely accessing" in low)
+    )
+
+
+def bis_gpu_remote_official_identity(raw: str) -> bool:
+    """Require the actual newly published BIS subject, not an old AI diffusion rule."""
+    low = clean_text(raw).lower()
+    return (
+        ("remote access" in low or "remote computing" in low)
+        and any(x in low for x in ("advanced computing", "artificial intelligence", "ai chips"))
+        and any(x in low for x in ("china", "chinese", "prc", "country group d:5"))
+        and any(x in low for x in ("export control", "export administration regulations", "bureau of industry and security"))
+    )
+
+
+def bis_gpu_remote_news_stage(title: str, *, official: bool = False, document: str = "") -> str:
+    """A media forecast cannot become a final rule by containing 'finalizing'."""
+    low = clean_story_title(title).lower()
+    official_label = "official" if official else "reported"
+    if any(x in low for x in ("rescinds", "withdraws", "revokes", "repeals", "철회", "폐지")):
+        kind = "withdrawal"
+    elif any(x in low for x in ("enforcement action", "fines", "penalty", "charges", "집행", "제재 집행")):
+        kind = "enforcement"
+    elif any(x in low for x in ("exemption", "license exception", "licensing waiver", "면제", "예외")):
+        kind = "exception"
+    elif any(x in low for x in ("takes effect", "enters into force", "effective today", "발효", "시행")):
+        kind = "effective"
+    elif any(x in low for x in ("final rule", "adopts rule", "issues final", "rule published", "promulgates", "최종 규정", "최종 규칙", "공포")):
+        kind = "final"
+    elif any(x in low for x in ("proposed rule", "notice of proposed", "rule proposal", "official proposal", "규칙안", "입법예고")):
+        kind = "proposal"
+    else:
+        kind = "negotiation"
+    if kind == "negotiation":
+        return "press-negotiation-2026-11-11"
+    if official and not document:
+        return ""
+    suffix = ("-" + re.sub(r"[^a-zA-Z0-9-]", "", document)) if official else ""
+    return f"{official_label}-{kind}{suffix}"
+
+
 def fcc_800_uas_adoption_body_verified(raw: str) -> bool:
     """Require the October 29 adoption, not the October 8 draft or vote agenda."""
     low = clean_text(raw).lower()
@@ -1775,6 +1867,98 @@ def fcc_800_uas_adoption_body_verified(raw: str) -> bool:
 def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     items: list[dict] = []
     seen_links: set[str] = set()
+
+    if rule.key == BIS_GPU_REMOTE_KEY:
+        # Restore the November 11 reporting stage once, but only if its actual
+        # publisher identity can be established. Never consume seen on failure.
+        press_stage = "press-negotiation-2026-11-11"
+        press_fp = story_event_fingerprint(rule, [{"bis_gpu_remote_stage": press_stage}])
+        in_window = 0 <= (now - BIS_GPU_REMOTE_BASELINE_KST).total_seconds() / 3600 <= max_age_hours_for_rule(rule)
+        if in_window and press_fp not in (load_seen().get("seen") or {}):
+            for press_url, press_label in BIS_GPU_REMOTE_PRESS_SOURCES:
+                try:
+                    press_raw = fetch_text(press_url, timeout=8)
+                except Exception as exc:
+                    print(f"trusted_policy_news=bis_gpu_remote_press_unavailable source={press_label!r} error={type(exc).__name__}")
+                    continue
+                if not bis_gpu_remote_press_identity(press_raw):
+                    continue
+                items.append({
+                    "title": "Commerce Department Finalizing Long-Awaited AI Remote Access Rule",
+                    "description": "Publisher headline and date verified; The Information reports negotiations on China remote access via overseas AI data centers. Legal rule not yet confirmed.",
+                    "link": BIS_GPU_REMOTE_PRESS_SOURCES[0][0],
+                    "source": press_label,
+                    "published_kst": BIS_GPU_REMOTE_BASELINE_KST.isoformat(timespec="seconds"),
+                    "priority": 1,
+                    "official_direct_verified": False,
+                    "bis_gpu_remote_stage": press_stage,
+                })
+                seen_links.add(BIS_GPU_REMOTE_PRESS_SOURCES[0][0])
+                print("trusted_policy_news=bis_gpu_remote_press_verified stage=reported not_final=true")
+                break
+
+        # Independently confirm future legal stages from NEW Federal Register
+        # documents. A headline, old 2025 diffusion rule, or press repeat is
+        # insufficient for an official confirmation.
+        known_docs: set[str] = set()
+        for api_url in BIS_GPU_REMOTE_FR_QUERIES:
+            try:
+                payload = json.loads(fetch_text(api_url, timeout=9))
+            except Exception as exc:
+                print(f"trusted_policy_news=bis_gpu_remote_fr_unavailable error={type(exc).__name__}")
+                continue
+            for doc in (payload.get("results") or [])[:20]:
+                doc_number = str(doc.get("document_number") or "")
+                if not doc_number or doc_number in known_docs:
+                    continue
+                known_docs.add(doc_number)
+                doc_date = str(doc.get("publication_date") or "")
+                if not doc_date or doc_date < "2026-11-11":
+                    continue
+                agency_names = " ".join(str(a.get("name") or "") for a in (doc.get("agencies") or []) if isinstance(a, dict)).lower()
+                if not any(x in agency_names for x in ("bureau of industry and security", "commerce")):
+                    continue
+                doc_type = str(doc.get("type") or "").lower()
+                if doc_type not in {"rule", "proposed rule"}:
+                    continue
+                meta = f"{doc.get('title') or ''} {doc.get('abstract') or ''}"
+                if not bis_gpu_remote_official_identity(meta):
+                    continue
+                official_link = str(doc.get("html_url") or "")
+                text_url = str(doc.get("raw_text_url") or "")
+                if not official_link.startswith("https://www.federalregister.gov/") or not text_url.startswith("https://www.federalregister.gov/"):
+                    continue
+                stage = bis_gpu_remote_news_stage(str(doc.get("title") or ""), official=True, document=doc_number)
+                if doc_type == "proposed rule":
+                    stage = f"official-proposal-{doc_number}"
+                elif doc_type == "rule" and not stage.startswith("official-"):
+                    stage = f"official-final-{doc_number}"
+                if doc_type == "rule" and stage.endswith("negotiation-" + doc_number):
+                    stage = f"official-final-{doc_number}"
+                doc_fp = story_event_fingerprint(rule, [{"bis_gpu_remote_stage": stage}])
+                if doc_fp in (load_seen().get("seen") or {}):
+                    continue
+                try:
+                    doc_body = fetch_text(text_url, timeout=9)
+                except Exception as exc:
+                    print(f"trusted_policy_news=bis_gpu_remote_fr_text_unavailable document={doc_number} error={type(exc).__name__}")
+                    continue
+                if not bis_gpu_remote_official_identity(doc_body):
+                    print(f"trusted_policy_news=bis_gpu_remote_fr_rejected document={doc_number} reason=body_scope_mismatch")
+                    continue
+                items.append({
+                    "title": str(doc.get("title") or rule.title),
+                    "description": clean_text(doc_body)[:50000],
+                    "link": official_link,
+                    "source": "미 연방관보·BIS",
+                    "published_kst": dt.datetime.fromisoformat(doc_date).replace(tzinfo=KST).isoformat(timespec="seconds"),
+                    "published_precision": "date",
+                    "priority": 0,
+                    "official_api_verified": True,
+                    "bis_gpu_remote_stage": stage,
+                })
+                seen_links.add(official_link)
+                print(f"trusted_policy_news=bis_gpu_remote_official_verified document={doc_number} stage={stage}")
 
     # The October 29 FCC decision must not depend on a news-feed index that
     # can truncate one particular FCC release. Check the exact FCC source first,
@@ -2526,6 +2710,12 @@ def is_polysilicon_11052_base_rehash_text(value: str) -> bool:
 
 
 def semantic_policy_event_key(item: dict) -> str:
+    if item.get("bis_gpu_remote_stage"):
+        # Preserves exact reporting, proposed, final, exception and enforcement
+        # identities across publishers. No false final merely from 'finalizing'.
+        stage = str(item["bis_gpu_remote_stage"])
+        if re.fullmatch(r"(?:press-negotiation-2026-11-11|(?:official|reported)-(?:proposal|final|effective|exception|enforcement|withdrawal)(?:-[A-Za-z0-9-]+)?)", stage):
+            return "us-bis-overseas-gpu-remote-access-" + stage
     # The same three first-party notices may be printed at two official URLs.
     # De-duplicate mirrors and news reprints, but never merge distinct notices
     # or the announced and effective-date-arrived stages.
@@ -3199,6 +3389,7 @@ def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
         "us_fcc_hisilicon_first_component_enforcement",
         "us_fcc_intel_agv_one_year_waiver",
         "us_fcc_800mhz_uas_cellular_authorization",
+        BIS_GPU_REMOTE_KEY,
         "eu_china_hybrid_vehicle_safeguard",
         "eu_china_sector_import_safeguards",
         "china_mofcom_2026_technology_catalogue48",
@@ -3762,6 +3953,40 @@ def korean_trump_story_title(title: str) -> str:
 def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] | None:
     if not items:
         return None
+    if rule.key == BIS_GPU_REMOTE_KEY:
+        stage = str(items[0].get("bis_gpu_remote_stage") or "press-negotiation-2026-11-11")
+        official = stage.startswith("official-") and any(x.get("official_api_verified") is True for x in items)
+        reporting = stage == "press-negotiation-2026-11-11"
+        return {
+            "title": (rule.title if reporting else
+                      "미 BIS, 해외 데이터센터 GPU 원격 접근 수출통제 공식 문서" if official else
+                      "미 BIS, 해외 데이터센터 GPU 원격 접근 수출통제 후속 보도"),
+            "core": (rule.core if reporting else
+                     "BIS 신규 공식 규칙문서가 확인됐습니다. 실제 국가·칩 성능 문턱·운영사 예외·시행일은 해당 공식 원문을 기준으로 판단합니다." if official else
+                     "해외 GPU 원격 접근 수출통제의 후속 보도이며 BIS 공식 규정·발효 확인 전입니다."),
+            "stage": ("부처 간 최종 조율 보도·미공포·미시행" if reporting else
+                      "연방관보 신규 공식 규칙문서 확인·실제 적용일 확인 필요" if official else
+                      "후속 언론 보도·공식 규정 독립 확인 전"),
+            "event_date": "2026년 11월 11일(미국 태평양시간)" if reporting else
+                          (str(items[0].get("published_kst") or "")[:10] or "후속 확인 필요"),
+            "event_date_label": "The Information 보도일" if reporting else "공식 문서 게시일" if official else "후속 보도일",
+            "actual_bullets": [
+                "보도상 추가 대상 7개국: 싱가포르·말레이시아·태국·인도네시아·브라질·노르웨이·남아공.",
+                "보도상 엔비디아 블랙웰급 이상 반도체에 최종 사용자·사용 목적 확인, 원격 이용 차단과 지속 점검을 추진.",
+                "보도상 미국 운영사 데이터센터는 금수 대상 국가의 원격 이용 차단 시 개별 허가 면제 가능. 대신 고객 정보·컴퓨팅 용량 보고 조건.",
+                "규정 확정과 시행은 아직 아니며, 11월 중 발표 가능성은 언론 전망입니다.",
+            ] if reporting else [
+                "확인된 공식 규칙문서의 대상 국가·ECCN·성능 문턱·발효일·허가 예외를 원문과 대조해야 합니다.",
+                "기존 BIS 허가 요건과 원격 이용에 대한 신규 제한을 분리해 추적합니다.",
+            ],
+            "timeline": "11월 11일 보도·부처 조율 → BIS 규칙안/최종문 → 관보 공포·시행일 → 허가·예외 → 고객·GPU 공급 영향",
+            "scope_note": rule.counter if reporting else "기존 보도의 7개국·블랙웰·면제 범위가 법적으로 확정됐다고 간주하지 않습니다.",
+            "next": rule.follow_up, "investment": rule.point,
+            "korea": "삼성전자·SK하이닉스 HBM 및 서버 부품 기업의 신규 주문·납기를 확인하고 이번 보도를 직접 수주·매출로 계산하지 않습니다.",
+            "priced_in": "규칙 최종 공포와 반도체 주문 변화가 확인되기 전에는 보도 단계 기대·위험을 분리합니다.",
+            "failure": "BIS 규정 지연·범위 변경, 해외 GPU 발주 지연, 허가 심사 비용, 중국 고객의 대체 경로 사용.",
+            "counter": rule.counter, "impacts": rule.impacts, "paths": rule.paths, "sectors": rule.sectors,
+        }
     if rule.key == "us_fcc_800mhz_uas_cellular_authorization":
         adopted = semantic_policy_event_key(items[0]) == "us-fcc-800mhz-uas-cellular-order-adopted-2026-10-29"
         direct = any(x.get("official_direct_verified") is True and
@@ -4811,6 +5036,13 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
+    if rule.key == BIS_GPU_REMOTE_KEY and any(
+        x.get("official_api_verified") is True
+        and str(x.get("bis_gpu_remote_stage") or "").startswith("official-")
+        and str(x.get("link") or "").startswith("https://www.federalregister.gov/")
+        for x in items
+    ):
+        return "공식 확인", "미 연방관보·BIS 신규 문서 본문·주제 검증"
     if rule.key == "us_fcc_800mhz_uas_cellular_authorization" and any(
         x.get("official_direct_verified") is True
         and x.get("fcc_800_uas_stage") == "adopted"
@@ -5194,6 +5426,49 @@ def _self_test_fcc_component_and_agv_cases() -> None:
         assert story_event_fingerprint(rule, [item]) == story_event_fingerprint(rule, [repeated])
     assert len(set(observed)) == 2
 
+def _self_test_bis_gpu_remote_access_event_model() -> None:
+    """Offline regression: no press-to-final promotion, old-rule confusion or reprint storm."""
+    rule = next(r for r in STORY_RULES if r.key == BIS_GPU_REMOTE_KEY)
+    sample = {
+        "title": "Commerce Department Finalizing Long-Awaited AI Remote Access Rule",
+        "description": "Chinese AI firms remotely accessing advanced AI chips through data centers in other countries.",
+        "link": BIS_GPU_REMOTE_PRESS_SOURCES[0][0],
+        "source": "The Information",
+        "published_kst": BIS_GPU_REMOTE_BASELINE_KST.isoformat(timespec="seconds"),
+        "bis_gpu_remote_stage": "press-negotiation-2026-11-11",
+        "official_direct_verified": False,
+    }
+    assert bis_gpu_remote_press_identity(
+        "Commerce Department Finalizing Long-Awaited AI Remote Access Rule "
+        "Chinese AI firms remotely accessing AI chips Nov 11, 2026"
+    )
+    assert not bis_gpu_remote_press_identity("Commerce considers AI Diffusion rule in 2025")
+    assert bis_gpu_remote_news_stage(sample["title"]) == "press-negotiation-2026-11-11"
+    assert has_required_terms(" ".join([sample["title"], sample["description"], sample["source"]]), rule)
+    assert alert_confirmation_status(rule, [sample])[0] == "공식 확인 전"
+    assert "미공포" in str(item_story_profile(rule, [sample])["stage"])
+    duplicate = {**sample, "source": "Reuters", "link": "https://example.org/second-hand"}
+    assert story_event_fingerprint(rule, [sample]) == story_event_fingerprint(rule, [duplicate])
+    proposed = {**sample, "title": "BIS proposes rule to restrict Chinese remote access to cloud AI chips",
+                "bis_gpu_remote_stage": "official-proposal-2026-24680",
+                "official_api_verified": True, "link": "https://www.federalregister.gov/d/2026-24680"}
+    final = {**proposed, "title": "BIS issues final rule restricting Chinese remote access to AI chips",
+             "bis_gpu_remote_stage": "official-final-2026-24700",
+             "link": "https://www.federalregister.gov/d/2026-24700"}
+    assert story_event_fingerprint(rule, [sample]) != story_event_fingerprint(rule, [proposed])
+    assert story_event_fingerprint(rule, [proposed]) != story_event_fingerprint(rule, [final])
+    assert len(alert_item_groups(rule, [sample, duplicate, proposed, final])) == 3
+    assert alert_confirmation_status(rule, [final])[0] == "공식 확인"
+    assert alert_confirmation_status(rule, [{**final, "official_api_verified": False}])[0] == "공식 확인 전"
+    assert bis_gpu_remote_official_identity(
+        "Bureau of Industry and Security export controls advanced computing "
+        "remote access for Chinese data center AI chips under Export Administration Regulations"
+    )
+    assert not bis_gpu_remote_official_identity(
+        "Bureau of Industry and Security 2025 AI Diffusion Rule license policy for China"
+    )
+
+
 def _self_test_deepseek_and_biotech_policy_events() -> None:
     rules = {r.key: r for r in STORY_RULES}
     deep = rules["us_dhs_deepseek_federal_civilian_exclusion"]
@@ -5228,6 +5503,7 @@ def _self_test_deepseek_and_biotech_policy_events() -> None:
     assert "단순 신고 단계가 없으며" in bio.core
     assert "금지 기술에만" in " ".join(item_story_profile(bio, [b])["actual_bullets"])
     _self_test_fcc_component_and_agv_cases()
+    _self_test_bis_gpu_remote_access_event_model()
 
 
 def _self_test_us_treasury_outbound_event_model() -> None:
@@ -5570,6 +5846,7 @@ def main() -> int:
         "us_treasury_coins_biotechnology_outbound_nprm": 11,
         "china_mofcom_2026_technology_catalogue48": 10,
         "us_fcc_hisilicon_first_component_enforcement": 13,
+        BIS_GPU_REMOTE_KEY: 17,
         "us_fcc_800mhz_uas_cellular_authorization": 16,
         "us_fcc_intel_agv_one_year_waiver": 12,
         "us_treasury_outbound_ai_robotics_enforcement": 3,
