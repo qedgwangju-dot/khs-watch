@@ -33,6 +33,35 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertIsNotNone(different)  # A different issuer article may still report 2027.
         self.assertNotIn("share_2026_low_pct", different)  # No invented historical baseline.
 
+    def test_china_essd_zdnet_report_is_dated_press_stage_not_confirmed_order(self):
+        import datetime as dt
+        prior = {
+            "china_procurement_status": "cautious",
+            "north_america_status": "firm",
+            "china_ai_subscription_risk": True,
+            "confirmed_cancellation_count": None,
+            "source_url": "https://www.trendforce.com/research/download/RP261105BM",
+        }
+        now = dt.datetime(2026, 11, 13, 7, 30, tzinfo=w.KST)
+        upgraded, changes = w._china_essd_reported_order_cut(prior, now)
+        self.assertEqual(len(changes), 1)
+        self.assertIn("보도", changes[0])
+        self.assertEqual(upgraded["china_procurement_status"], "cautious")
+        self.assertEqual(upgraded["north_america_status"], "firm")
+        self.assertIsNone(upgraded["confirmed_cancellation_count"])
+        self.assertEqual(upgraded["source_url"], prior["source_url"])
+        self.assertEqual(upgraded["press_source_url"], w.CHINA_ESSD_20261112_REPORT_URL)
+        self.assertEqual(upgraded["china_order_cut_stage"], "reported_not_supplier_confirmed")
+        self.assertEqual(upgraded["north_america_reallocation_stage"], "reported_not_supplier_confirmed")
+        self.assertEqual(prior.get("press_report_fact_key"), None)
+        second, repeated = w._china_essd_reported_order_cut(upgraded, now)
+        self.assertEqual(second, upgraded)
+        self.assertEqual(repeated, [])
+        late, skipped = w._china_essd_reported_order_cut(prior, dt.datetime(2026, 11, 23, tzinfo=w.KST))
+        self.assertEqual(late, prior)
+        self.assertEqual(skipped, [])
+
+
     def test_memory_workflow_requires_matching_telegram_ack_recipient(self):
         workflow = (pathlib.Path(__file__).resolve().parents[1] /
                     ".github/workflows/memory-spot-cycle-telegram-watch.yml").read_text(encoding="utf-8")

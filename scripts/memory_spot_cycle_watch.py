@@ -419,6 +419,8 @@ QUERIES = [
     ("ko", '노트북 출하량 전망 2027 CPU DRAM SSD 가격 원가 전가 TrendForce 소비 수요'),
     ("ko", '중국 메모리 품귀 폐휴대폰 재활용 칩 화창베이 스마트폰 제조사'),
     ("ko", '스마트폰 리볼링 재생 메모리 보급형 LPDDR4X 침투율 2027 TrendForce'),
+    ("ko", '중국 AI칩 수급난 eSSD 주문 축소 삼성전자 SK하이닉스 미국 공급 확대'),
+    ("ko", '중국 기업용 SSD 발주 축소 북미 CSP 물량 재배정 삼성 하이닉스 신규 계약'),
     ("en", 'TrendForce reballed memory smartphone penetration 2027'),
     ("en", 'China enterprise SSD procurement cuts North American CSP TrendForce GPU constraint'),
     ("ko", '중국 선전 화창베이 회수 메모리칩 제조사 공식 구매 확인 품질 불량'),
@@ -2743,6 +2745,38 @@ def _china_essd_demand_record(item: dict) -> dict | None:
     }
 
 
+CHINA_ESSD_20261112_REPORT_KEY = "zdnet-2026-11-12-china-essd-order-cut-us-reallocation"
+CHINA_ESSD_20261112_REPORT_URL = "https://zdnet.co.kr/view/?no=20261112144609"
+
+
+def _china_essd_reported_order_cut(previous: dict, now: dt.datetime) -> tuple[dict, list[str]]:
+    """One dated press-stage incident; keep TrendForce outlook and confirmations distinct.
+
+    The 2026-11-12 ZDNet headline and opening paragraphs were corroborated via
+    public indexes, not by opening the blocked publisher article in the runner.
+    Supplier/customer signed order cancellations and transfer quantities remain unverified.
+    """
+    old = dict(previous or {})
+    if not dt.date(2026, 11, 12) <= now.date() <= dt.date(2026, 11, 22):
+        return old, []
+    if old.get("press_report_fact_key") == CHINA_ESSD_20261112_REPORT_KEY:
+        return old, []
+    updated = dict(old)
+    updated.update({
+        "press_report_fact_key": CHINA_ESSD_20261112_REPORT_KEY,
+        "press_report_date": "2026-11-12",
+        "china_order_cut_stage": "reported_not_supplier_confirmed",
+        "north_america_reallocation_stage": "reported_not_supplier_confirmed",
+        "press_source_url": CHINA_ESSD_20261112_REPORT_URL,
+        "press_source_kind": "지디넷코리아 보도·공개 색인 교차확인, 공급사 공식 물량 미확인",
+        "confirmed_cancellation_count": old.get("confirmed_cancellation_count"),
+    })
+    return updated, [
+        "중국향 eSSD 발주 축소 및 삼성전자·SK하이닉스 미국 고객 재배정 보도 최초 포착"
+        " — 11/5 조달 신중 전망과 다른 11/12 보도 단계, 실제 계약 취소량·배정량 미확인"
+    ]
+
+
 def _watch_axis_change(old: dict, new: dict, keys: tuple[str, ...], label: str) -> list[str]:
     if not new:
         return []
@@ -3800,6 +3834,12 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
                 merged_regional["china_ai_subscription_risk"] = True
             essd_region_state = merged_regional
 
+    # Explicitly track the later 11/12 press report as a separate evidence tier.
+    # It is not a signed cancellation and must not overwrite TrendForce's 11/05
+    # cautious-procurement baseline or trigger again after Telegram ACK.
+    essd_region_state, reported_changes = _china_essd_reported_order_cut(essd_region_state, now)
+    essd_region_changes.extend(reported_changes)
+
     pc_notebook_changes: list[str] = []
     pc_notebook_source_url = ""
     if pc_notebook_upgrade_due:
@@ -4444,10 +4484,16 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             lines.append("  " + html.escape(reason))
         lines.append("  중국: AI 서비스 수익화 부진·칩 공급 제약이 구매 보수화로 이어질 위험")
         lines.append("  북미: 클라우드 인프라 투자와 기업용 SSD 주문 강세를 중국과 별도 관찰")
-        lines.append("  확정 단계: TrendForce 연구 공개 요약의 조달 분위기 · 특정 고객의 주문 취소 수량은 미확인")
+        lines.append("  확정 단계: TrendForce 11/5 연구 공개 요약은 중국 조달 보수화 전망 · 실제 취소 계약금액·물량 미확인")
+        if essd_region_state.get("press_report_fact_key"):
+            lines.append("  11/12 보도: 중국 고객사와 협의 중이던 eSSD 주문 규모 일부 축소, 삼성전자·SK하이닉스의 미국 고객 추가 배정")
+            lines.append("  근거 단계: 지디넷 보도·공개 색인 교차확인. 두 공급사와 중국 고객의 확정 변경 계약·수량·금액은 미확인")
+            lines.append("  반대축: 북미 클라우드 고객의 추가 주문으로 흡수될 수 있으며, 중국발 주문 축소를 글로벌 SSD 전체 수요 붕괴로 해석하지 않음")
+            lines.append('  <a href="' + html.escape(CHINA_ESSD_20261112_REPORT_URL, quote=True) + '">11/12 지디넷 보도 원문 주소</a>')
         lines.append("  공급사: 삼성전자·SK하이닉스/Solidigm의 지역별 주문·가격·매출 구성 확인 필요")
         lines.append("  조기경보: 중국 실제 발주·GPU 공급, 북미 추가 주문, NAND 현물가·재고·eSSD 평균판매단가")
-        lines.append('  <a href="' + html.escape(essd_region_state["source_url"], quote=True) + '">TrendForce 연구 공개 요약</a>')
+        if essd_region_state.get("source_url"):
+            lines.append('  <a href="' + html.escape(essd_region_state["source_url"], quote=True) + '">TrendForce 연구 공개 요약</a>')
 
     if divergence_changes:
         lines.append("• <b>NAND 소비자↔기업용 eSSD 양극화 변화</b>")

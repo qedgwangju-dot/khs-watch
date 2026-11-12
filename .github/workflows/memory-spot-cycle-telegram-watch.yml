@@ -17,7 +17,7 @@ on:
       - "tests/test_samsung_mx_production_watch.py"
       - "tests/test_samsung_buds_on_rollout_watch.py"
   schedule:
-    - cron: "17,47 * * * *"
+    - cron: "17,47 0-23 * * *"
   workflow_dispatch:
     inputs:
       force_notify:
