@@ -67,6 +67,35 @@ def _active_adverse(title):
     return False
 
 
+def _explicit_no_deal_position(title):
+    """A stated refusal of an Iran deal is a negotiation setback, not progress."""
+    korean = re.search(r'(?:합의|협상)(?:를|을|할)?\s*필요\s*없', title)
+    english = re.search(r'\b(?:no\s+(?:iran\s+)?deal\s+(?:needed|required)|'
+                        r'(?:do\s+not|don\x27t|no)\s+need\s+(?:for\s+)?(?:an?\s+)?'
+                        r'(?:iran\s+)?deal)\b', title)
+    if not (korean or english):
+        return False
+    # A headline denying the quoted refusal and reporting resumed talks must
+    # retain that separate constructive action.
+    denial = re.search(r'(?:합의|협상)(?:를|을|할)?\s*필요\s*없.{0,35}'
+                       r'(?:보도|발언|주장).{0,12}부인', title)
+    return not bool(denial)
+
+
+def _unattributed_satellite_disruption(title, row):
+    """A title-only passive service restriction does not prove war pressure."""
+    if (row.get('body_verified') or _active_adverse(title)
+            or _explicit_no_deal_position(title)
+            or _separate_attack_headline(title)
+            or _completed_attack_headline(title)
+            or _explicit_easing_restoration(title)):
+        return False
+    satellite = re.search(r'\b(?:starshield|starlink|satellite)\b|위성\s*(?:시스템|서비스|통신)?', title)
+    passive = re.search(r'\b(?:throttled|restricted|limited|disrupted|curtailed)\b|'
+                        r'(?:제한|차단|중단)(?:됐|되었|돼|된|중)', title)
+    return bool(satellite and passive and satellite.start() < passive.start())
+
+
 def _separate_attack_headline(title):
     """An explicit current attack in the headline wins over any easing clause."""
     return bool(re.search(
@@ -283,12 +312,14 @@ def direction(stage, row):
             and re.search(r'기대(?:감)?|전망|가능성|협상\s*재개|\b(?:hopes?|expectations?|possible\s+talks)\b', title)
             and not _separate_attack_headline(title)):
         return None
+    if _unattributed_satellite_disruption(title, row):
+        return None
     # A separate actual action wins over a diplomatic or financial background.
     if color == 'red':
         return 'red'
     if kind in REFERENCE_KINDS:
         return None
-    adverse = _active_adverse(title)
+    adverse = _active_adverse(title) or _explicit_no_deal_position(title)
     # A hypothetical postwar compromise is context, not a current attack or a
     # confirmed peace action. Preserve the exact headline and title-only label.
     if (tags & DIPLOMATIC_TAGS and _postwar_compromise_context(title)
@@ -370,6 +401,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
     core, references, matched = [], [], []
     background_reference = False
     uncertain_reference = False
+    satellite_reference = False
     for n, start in enumerate(starts):
         end = starts[n + 1] if n + 1 < len(starts) else tail_at
         block = lines[start:end]
@@ -388,6 +420,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         policy_options = stage._iran_war_policy_options_headline(title)
         hypothetical = (_hypothetical_war_options(title)
                         or _pending_iran_war_decision(title))
+        satellite_disruption = _unattributed_satellite_disruption(title, row)
         postwar = (bool({str(tag).strip() for tag in row.get('tags', [])} & DIPLOMATIC_TAGS)
                    and _postwar_compromise_context(title))
         source_tags = {str(tag).strip() for tag in row.get('tags', [])}
@@ -396,6 +429,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             or (re.search(r'재공격\s*가능성.{0,12}매우\s*작', title)
                 and '폭발음 보도·공격 원인 미확인' in source_tags)))
         context = (commentary or policy_options or hypothetical or postwar
+                   or satellite_disruption
                    or uncertain or stalemate_statement)
         row['semantic_classification_color'] = row.get('classification_color')
         row['classification_color'] = color
@@ -422,6 +456,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             # Rebuild the reference heading from that matched article.
             background_reference |= context
             uncertain_reference |= uncertain
+            satellite_reference |= satellite_disruption
             if commentary:
                 midterm = re.search(r'중간선거|\bmidterms?\b', title, re.IGNORECASE)
                 if _war_secretary_impeachment_commentary(title):
@@ -440,6 +475,8 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                 label = '이란전 대응 방안·정책 이견'
             elif hypothetical:
                 label = '종전·확전 전망'
+            elif satellite_disruption:
+                label = '위성 시스템 제한 보도·원인 미확인'
             elif uncertain and re.search(r'재공격\s*가능성.{0,12}매우\s*작', title):
                 label = '낮은 재공격 가능성 발언·폭발음 원인 미확인'
             else:
@@ -468,9 +505,11 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
     if references:
         if background_reference:
             output += ['<b>배경·시장 참고</b>',
-                       ('원인 미확정 폭발음·조건부 발언은 실제 공격·완화 행동을 입증하지 않음'
-                        if uncertain_reference else
-                        '정치 발언·전망·구상은 현재 공격·완화 행동을 입증하지 않음'), '']
+                        ('원인 미확정 폭발음·조건부 발언은 실제 공격·완화 행동을 입증하지 않음'
+                         if uncertain_reference else
+                         '위성 시스템 제한은 원인·책임 주체 확인 전까지 공격·완화로 단정하지 않음'
+                         if satellite_reference else
+                         '정치 발언·전망·구상은 현재 공격·완화 행동을 입증하지 않음'), '']
         else:
             output += ['<b>시장 참고</b>', '시장 기사는 전쟁·완화 방향 표시에서 제외', '']
         for block in references:
