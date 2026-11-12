@@ -13,22 +13,13 @@
   "vix_official_crosscheck_date": "2026-11-10",
   "vix_official_same_day": false,
   "vix_official_lag_days": 1,
-  "vix_cboe_quote_date": "2026-11-11",
-  "vix_cboe_quote_same_day": true,
-  "vix_cboe_quote_diff": 0.0,
+  "vix_cboe_quote_date": "2026-11-12",
+  "vix_cboe_quote_same_day": false,
+  "vix_cboe_quote_diff": null,
   "vix_crosscheck_max_abs_diff": 9.155273446026513e-07,
   "etf_final_close_source": "StockAnalysis / S&P Global Market Intelligence",
   "etf_final_close_date": "2026-11-11",
-  "settlement_overrides": {
-    "금융": {
-      "yahoo": 58.63,
-      "final": 58.61
-    },
-    "유틸리티": {
-      "yahoo": 43.82,
-      "final": 43.85
-    }
-  },
+  "settlement_overrides": {},
   "breadth_warning": false,
   "rsp_warning": false,
   "iwm_warning": false,
@@ -83,9 +74,9 @@
       "5d": -0.23614681467676313
     },
     "금융": {
-      "1d": 0.5489776624577392,
-      "3d": 2.5367392520270204,
-      "5d": -0.9966228975267333
+      "1d": 0.5832888645264989,
+      "3d": 2.571728755269498,
+      "5d": -0.9628391141783266
     },
     "헬스케어": {
       "1d": 0.03705798145807737,
@@ -113,9 +104,9 @@
       "5d": -1.2124645892351182
     },
     "유틸리티": {
-      "1d": 0.2744122090551748,
-      "3d": 1.669369149209321,
-      "5d": 0.5503310852774224
+      "1d": 0.2058094184902659,
+      "3d": 1.5998119981380343,
+      "5d": 0.4815395246717591
     }
   }
 }
