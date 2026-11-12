@@ -150,6 +150,13 @@ def early(rows):
     for boundary in (3.80,4.00):
         if now["rates"]["cp"]>=boundary>prev["rates"]["cp"]:
             events.append(f"CP {boundary:.2f}% 신규 상향 돌파(보조 경보)")
+    # 종합 등급이 다른 지표 때문에 유지되어도 개별 신용위험 상승은 알린다.
+    # 단순 가격 변경이나 회복은 이 선행경보에 포함하지 않는다.
+    for metric,label in (("cp_cd","CP–CD"),("credit","AA- 회사채–국고채")):
+        previous,_=spread_bucket(metric,prev[metric])
+        current,_=spread_bucket(metric,now[metric])
+        if LEVELS.index(current)>LEVELS.index(previous):
+            events.append(f"{label} 개별 구간 {previous}→{current} 상향(선행경보)")
     return events
 
 def decide(rows,state):

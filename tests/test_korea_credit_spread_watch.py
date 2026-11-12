@@ -231,6 +231,29 @@ class CreditWatchTests(unittest.TestCase):
                 with self.assertRaisesRegex(RuntimeError,"대화방 ID 불일치"):
                     c.verify_telegram_route()
 
+    def test_individual_spread_worsening_alerts_without_aggregate_rank_change(self):
+        # 2026-11-06: CP–CD는 주의 53bp 유지, AA-만 안정 68.9→관찰 70bp.
+        rows=sample(53,68.9)
+        latest=rows[-1]
+        latest.update(credit=70.0,rank=c.level(53,70.0))
+        action=c.decide(rows,{"notified_rank":2})
+        self.assertEqual((action["rank"],action["transition"]),(2,"유지"))
+        self.assertTrue(action["send"])
+        self.assertIn("AA- 회사채–국고채 개별 구간 안정→관찰 상향(선행경보)",action["events"])
+        message=c.render(rows,action,dt.datetime(2026,11,6,21,10,tzinfo=ZoneInfo("Asia/Seoul")))
+        self.assertIn("AA- 회사채–국고채 개별 구간 안정→관찰 상향(선행경보)",message)
+        self.assertLess(len(message),c.MAX_MESSAGE_CHARS)
+        # 같은 위험 구간에서 재실행해도 선행경보를 반복 발송하지 않는다.
+        rows[-2].update(credit=70.0,rank=2)
+        again=c.decide(rows,{"notified_rank":2})
+        self.assertFalse(again["send"])
+        # AA-가 이미 악화된 동안 CP–CD만 다음 구간으로 가도 별도로 인지한다.
+        rows=sample(49,95)
+        rows[-1].update(cp_cd=50,rank=c.level(50,95))
+        action=c.decide(rows,{"notified_rank":3})
+        self.assertTrue(action["send"])
+        self.assertIn("CP–CD 개별 구간 관찰→주의 상향(선행경보)",action["events"])
+
     def test_utc_cron_mapping_and_health_persistence_declared(self):
         path=pathlib.Path(__file__).parents[1]/".github/workflows/korea-credit-spread-telegram-watch.yml"
         workflow=path.read_text(encoding="utf-8")
