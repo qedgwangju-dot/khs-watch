@@ -27,9 +27,9 @@ on:
       - "scripts/verify_khs_policy_delivery_contract.py"
       - "tests/test_polysilicon_policy_guard.py"
   schedule:
-    # Run every 15 minutes, offset from crowded 00/15/30/45 slots.
+    # Run every 15 minutes, offset from crowded top-of-hour slots; cron refreshed to recover delayed schedule triggers.
     # UK-China EV tariff stages are handled by the existing trusted-policy lane.
-    - cron: "2,17,32,47 * * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
     inputs:
       telegram_test:
