@@ -164,6 +164,19 @@ BIS_GPU_REMOTE_FR_QUERIES = (
     "conditions%5Bterm%5D=cloud+computing+export+controls+China&order=newest&per_page=20",
 )
 
+
+# These two events are independent from a news story predicting a remote-access rule.
+# 2025-05-13: BIS announced non-enforcement and FUTURE formal repeal; the
+# 2025 press release is not evidence that repeal was legally completed.
+BIS_GPU_REMOTE_FOLLOWUP_FR_QUERIES = (
+    ("diffusion",
+     "https://www.federalregister.gov/api/v1/documents.json?"
+     "conditions%5Bterm%5D=Framework+for+Artificial+Intelligence+Diffusion+rescission&order=newest&per_page=20"),
+    ("megaspeed",
+     "https://www.federalregister.gov/api/v1/documents.json?"
+     "conditions%5Bterm%5D=Megaspeed+Entity+List&order=newest&per_page=20"),
+)
+
 # Verified FCC event identities: use first-party documents, not headline reprints.
 FCC_VERIFIED_CASES = {
     "us_fcc_hisilicon_first_component_enforcement": {
@@ -1825,6 +1838,36 @@ def bis_gpu_remote_official_identity(raw: str) -> bool:
     )
 
 
+def bis_gpu_remote_official_candidate(raw: str) -> bool:
+    """A loose metadata filter; full BIS body must pass the stronger identity."""
+    low = clean_text(raw).lower()
+    return (
+        any(x in low for x in ("remote access", "remote computing", "remotely access"))
+        and any(x in low for x in ("advanced computing", "artificial intelligence", "ai chips", "data center", "cloud computing"))
+    )
+
+
+def bis_gpu_remote_diffusion_rescission_body_verified(raw: str) -> bool:
+    """Only actual BIS rule language, not the May 2025 non-enforcement press release."""
+    low = clean_text(raw).lower()
+    return (
+        any(x in low for x in ("framework for artificial intelligence diffusion", "ai diffusion rule"))
+        and any(x in low for x in ("rescind", "rescission", "revok", "repeal", "remove the", "removing the"))
+        and any(x in low for x in ("export administration regulations", "bureau of industry and security", "department of commerce"))
+    )
+
+
+def bis_gpu_remote_megaspeed_entity_list_body_verified(raw: str) -> bool:
+    """Official designation only; a congressional inquiry is not a BIS listing."""
+    low = clean_text(raw).lower()
+    return (
+        "megaspeed" in low
+        and "entity list" in low
+        and any(x in low for x in ("additions to the entity list", "adding", "added", "addition of", "designation"))
+        and any(x in low for x in ("bureau of industry and security", "export administration regulations", "department of commerce"))
+    )
+
+
 def bis_gpu_remote_news_stage(title: str, *, official: bool = False, document: str = "") -> str:
     """A media forecast cannot become a final rule by containing 'finalizing'."""
     low = clean_story_title(title).lower()
@@ -1901,7 +1944,11 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         # documents. A headline, old 2025 diffusion rule, or press repeat is
         # insufficient for an official confirmation.
         known_docs: set[str] = set()
-        for api_url in BIS_GPU_REMOTE_FR_QUERIES:
+        official_searches = (
+            [("remote", query) for query in BIS_GPU_REMOTE_FR_QUERIES]
+            + list(BIS_GPU_REMOTE_FOLLOWUP_FR_QUERIES)
+        )
+        for source_kind, api_url in official_searches:
             try:
                 payload = json.loads(fetch_text(api_url, timeout=9))
             except Exception as exc:
@@ -1916,13 +1963,25 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 if not doc_date or doc_date < "2026-11-11":
                     continue
                 agency_names = " ".join(str(a.get("name") or "") for a in (doc.get("agencies") or []) if isinstance(a, dict)).lower()
-                if not any(x in agency_names for x in ("bureau of industry and security", "commerce")):
+                if not any(x in agency_names for x in ("industry and security", "commerce")):
                     continue
                 doc_type = str(doc.get("type") or "").lower()
                 if doc_type not in {"rule", "proposed rule"}:
                     continue
                 meta = f"{doc.get('title') or ''} {doc.get('abstract') or ''} {agency_names}"
-                if not bis_gpu_remote_official_identity(meta):
+                meta_low = meta.lower()
+                if source_kind == "remote":
+                    candidate = bis_gpu_remote_official_candidate(meta)
+                elif source_kind == "diffusion":
+                    candidate = (
+                        "diffusion" in meta_low
+                        and any(word in meta_low for word in ("rescind", "rescission", "repeal", "withdraw", "revok"))
+                    )
+                else:
+                    # The Federal Register search term is Megaspeed, but titles
+                    # may simply say "Additions to the Entity List".
+                    candidate = ("megaspeed" in meta_low or "entity list" in meta_low)
+                if not candidate:
                     continue
                 official_link = str(doc.get("html_url") or "")
                 text_url = str(doc.get("raw_text_url") or "")
@@ -1939,15 +1998,19 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                         continue
                 if not text_url.startswith(("https://www.federalregister.gov/", "https://www.govinfo.gov/")):
                     continue
-                stage = bis_gpu_remote_news_stage(str(doc.get("title") or ""), official=True, document=doc_number)
-                if doc_type == "proposed rule":
-                    stage = f"official-proposal-{doc_number}"
-                elif doc_type == "rule" and not any(
-                    marker in stage for marker in ("-exception-", "-withdrawal-", "-effective-", "-enforcement-")
-                ):
-                    # Federal Register document type is stronger evidence than
-                    # vague document-title wording; do not downgrade a Rule.
-                    stage = f"official-final-{doc_number}"
+                if source_kind == "remote":
+                    stage = bis_gpu_remote_news_stage(str(doc.get("title") or ""), official=True, document=doc_number)
+                    if doc_type == "proposed rule":
+                        stage = f"official-proposal-{doc_number}"
+                    elif doc_type == "rule" and not any(
+                        marker in stage for marker in ("-exception-", "-withdrawal-", "-effective-", "-enforcement-")
+                    ):
+                        stage = f"official-final-{doc_number}"
+                elif source_kind == "diffusion":
+                    stage = f"official-diffusion-rescission-{'final' if doc_type == 'rule' else 'proposal'}-{doc_number}"
+                else:
+                    # An Entity List proposal and final listing are separate.
+                    stage = f"official-megaspeed-entity-list-{'final' if doc_type == 'rule' else 'proposal'}-{doc_number}"
                 doc_fp = story_event_fingerprint(rule, [{"bis_gpu_remote_stage": stage}])
                 if doc_fp in (load_seen().get("seen") or {}):
                     continue
@@ -1956,8 +2019,13 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 except Exception as exc:
                     print(f"trusted_policy_news=bis_gpu_remote_fr_text_unavailable document={doc_number} error={type(exc).__name__}")
                     continue
-                if not bis_gpu_remote_official_identity(doc_body):
-                    print(f"trusted_policy_news=bis_gpu_remote_fr_rejected document={doc_number} reason=body_scope_mismatch")
+                body_ok = (
+                    bis_gpu_remote_official_identity(doc_body) if source_kind == "remote"
+                    else bis_gpu_remote_diffusion_rescission_body_verified(doc_body) if source_kind == "diffusion"
+                    else bis_gpu_remote_megaspeed_entity_list_body_verified(doc_body)
+                )
+                if not body_ok:
+                    print(f"trusted_policy_news=bis_gpu_remote_fr_rejected document={doc_number} kind={source_kind} reason=body_scope_mismatch")
                     continue
                 items.append({
                     "title": str(doc.get("title") or rule.title),
@@ -2773,7 +2841,7 @@ def semantic_policy_event_key(item: dict) -> str:
         # Preserves exact reporting, proposed, final, exception and enforcement
         # identities across publishers. No false final merely from 'finalizing'.
         stage = str(item["bis_gpu_remote_stage"])
-        if re.fullmatch(r"(?:press-negotiation-2026-11-11|(?:official|reported)-(?:proposal|final|effective|exception|enforcement|withdrawal)(?:-[A-Za-z0-9-]+)?)", stage):
+        if re.fullmatch(r"(?:press-negotiation-2026-11-11|official-(?:diffusion-rescission|megaspeed-entity-list)-(?:final|proposal)-[A-Za-z0-9-]+|(?:official|reported)-(?:proposal|final|effective|exception|enforcement|withdrawal)(?:-[A-Za-z0-9-]+)?)", stage):
             return "us-bis-overseas-gpu-remote-access-" + stage
     # The same three first-party notices may be printed at two official URLs.
     # De-duplicate mirrors and news reprints, but never merge distinct notices
@@ -4014,6 +4082,54 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
         return None
     if rule.key == BIS_GPU_REMOTE_KEY:
         stage = str(items[0].get("bis_gpu_remote_stage") or "press-negotiation-2026-11-11")
+        if stage.startswith("official-diffusion-rescission-"):
+            is_final = "-final-" in stage
+            return {
+                "title": "미 BIS, 기존 AI Diffusion Rule 공식 폐지" if is_final else
+                         "미 BIS, 기존 AI Diffusion Rule 폐지 규칙안",
+                "core": "2025년 5월 13일 BIS의 불집행·폐지 예고와 달리, 새로운 연방관보 규칙문서가 확인됐습니다. 법적 완료 단계는 문서 종류와 발효일을 따로 확인합니다.",
+                "stage": "연방관보 최종 폐지 규칙 공표·시행일 확인 필요" if is_final else
+                         "연방관보 폐지 제안·최종 규칙 미공포",
+                "event_date": str(items[0].get("published_kst") or "")[:10],
+                "event_date_label": "연방관보 게시일",
+                "actual_bullets": [
+                    "2025년 5월 13일 BIS는 AI Diffusion Rule을 집행하지 않고 공식 폐지를 추진한다고 발표했습니다.",
+                    "2026년 이후 새 연방관보 원문의 실제 폐지조항과 법적 발효 시점이 기준이며, 해외 GPU 원격접근 신규 규정과 별개입니다.",
+                ],
+                "timeline": "2025년 5월 불집행·폐지 예고 → 정식 폐지 규칙문서 → 시행일 확인 → 대체 원격접근 규정과 비교",
+                "scope_note": "공식 발표에서 '폐지 계획'이라고 한 것과 법령상 실제 폐지 완료를 구분합니다.",
+                "next": "해당 문서번호·철회 대상 조항·효력 발생일, 대체 규칙과의 관계를 확인합니다.",
+                "investment": "한국 HBM·AI 반도체와 데이터센터의 수출허가 적용 범위가 실제로 바뀌는지 확인합니다.",
+                "korea": "실제 적용 대상과 수출허가 변화가 확인된 기업만 분류합니다.",
+                "priced_in": "규정 폐지 공포가 즉시 모든 반도체 수출허가를 없애는 것은 아닙니다.",
+                "failure": "기존 반도체 수출 제한은 유지되거나 별도 규정으로 대체될 수 있습니다.",
+                "counter": "폐지 대상 조항과 현재 유지되는 국가·최종사용자 허가 규정을 혼동하면 안 됩니다.",
+                "impacts": rule.impacts, "paths": rule.paths, "sectors": rule.sectors,
+            }
+        if stage.startswith("official-megaspeed-entity-list-"):
+            is_final = "-final-" in stage
+            return {
+                "title": "미 BIS, 메가스피드 수출제한 명단 등재" if is_final else
+                         "미 BIS, 메가스피드 수출제한 명단 등재 제안",
+                "core": "싱가포르 메가스피드에 관한 BIS 신규 연방관보 문서가 확인됐습니다. 기존 조사 의혹이나 의회 질의만으로 제재가 확정됐다고 판단하지 않습니다.",
+                "stage": "연방관보 BIS 최종 규칙·실제 지정범위 확인 필요" if is_final else
+                         "제안 단계·실제 등재 전",
+                "event_date": str(items[0].get("published_kst") or "")[:10],
+                "event_date_label": "연방관보 게시일",
+                "actual_bullets": [
+                    "2026년 11월 11일 미 상원의원 마이클 베넷은 메가스피드 조사·제재 검토를 요구했으며 11월 24일 서면 답변을 요청했습니다.",
+                    "해당 관보 문서가 실제로 메가스피드를 등재했는지, 관련 법인과 허가 심사 기준이 무엇인지 확인해야 합니다.",
+                ],
+                "timeline": "11월 11일 의회 질의 → 11월 24일 답변 요청 기한 → BIS 공식 등재·허가 조건 → 실제 공급 영향",
+                "scope_note": "의혹·조사·의회 요구는 법적 제재가 아니며, 문서의 법인명과 등재 유형을 확인해야 합니다.",
+                "next": "Megaspeed 법인명, Entity List 등재일·수출허가 제한·유예·이의제기 및 엔비디아 공급 영향 확인",
+                "investment": "실제 수출제한이 확인된 경우에만 첨단 GPU 고객·데이터센터 주문에 반영합니다.",
+                "korea": "한국 HBM·서버 부품의 해당 고객 직접 공급과 발주 영향은 별도 확인합니다.",
+                "priced_in": "보도상 조사 중단 의혹과 BIS 공식 등재는 다른 사건입니다.",
+                "failure": "등재 없이 의회 질의·조사 단계에서 끝날 수 있습니다.",
+                "counter": "정치적 공방을 확정된 법적 제재로 해석하지 않습니다.",
+                "impacts": rule.impacts, "paths": rule.paths, "sectors": rule.sectors,
+            }
         official = stage.startswith("official-") and any(x.get("official_api_verified") is True for x in items)
         reporting = stage == "press-negotiation-2026-11-11"
         return {
@@ -4034,6 +4150,8 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
                 "보도상 엔비디아 블랙웰급 이상 반도체에 최종 사용자·사용 목적 확인, 원격 이용 차단과 지속 점검을 추진.",
                 "보도상 미국 운영사 데이터센터는 금수 대상 국가의 원격 이용 차단 시 개별 허가 면제 가능. 대신 고객 정보·컴퓨팅 용량 보고 조건.",
                 "규정 확정과 시행은 아직 아니며, 11월 중 발표 가능성은 언론 전망입니다.",
+                "기존 AI Diffusion Rule은 2025년 5월 불집행·폐지 예고 후 정식 폐지 공포 여부를 별도로 확인합니다.",
+                "11월 11일 미 상원의원 메가스피드 조사·제재 요구는 공식 서한이지만 실제 제재와는 다릅니다. 11월 24일 답변 요청 기한입니다.",
             ] if reporting else [
                 "확인된 공식 규칙문서의 대상 국가·ECCN·성능 문턱·발효일·허가 예외를 원문과 대조해야 합니다.",
                 "기존 BIS 허가 요건과 원격 이용에 대한 신규 제한을 분리해 추적합니다.",
@@ -5532,6 +5650,47 @@ def _self_test_bis_gpu_remote_access_event_model() -> None:
     assert not bis_gpu_remote_official_identity(
         "Bureau of Industry and Security 2025 AI Diffusion Rule license policy for China"
     )
+    assert bis_gpu_remote_official_candidate(
+        "Industry and Security Bureau updates advanced computing remote access licensing"
+    )
+    assert not bis_gpu_remote_official_candidate("Commerce issues non-AI tariffs")
+    diffusion_body = (
+        "Bureau of Industry and Security amends the Export Administration Regulations "
+        "to rescind the Framework for Artificial Intelligence Diffusion."
+    )
+    megaspeed_body = (
+        "Bureau of Industry and Security issues Additions to the Entity List, "
+        "adding Megaspeed International Pte. Ltd under the Export Administration Regulations."
+    )
+    assert bis_gpu_remote_diffusion_rescission_body_verified(diffusion_body)
+    assert bis_gpu_remote_megaspeed_entity_list_body_verified(megaspeed_body)
+    assert not bis_gpu_remote_megaspeed_entity_list_body_verified(
+        "Senator requests Commerce investigation of Megaspeed's export controls."
+    )
+    for follow_stage, synthetic_doc in (
+        ("official-diffusion-rescission-final-2026-27101", diffusion_body),
+        ("official-megaspeed-entity-list-final-2026-27102", megaspeed_body),
+    ):
+        official_item = {
+            **sample,
+            "title": "BIS official new rule",
+            "description": synthetic_doc,
+            "source": "미 연방관보·BIS",
+            "link": "https://www.federalregister.gov/d/2026-27101",
+            "official_api_verified": True,
+            "bis_gpu_remote_stage": follow_stage,
+        }
+        assert semantic_policy_event_key(official_item), follow_stage
+        assert story_event_fingerprint(rule, [official_item]) != story_event_fingerprint(rule, [sample])
+        assert alert_confirmation_status(rule, [official_item])[0] == "공식 확인"
+        follow_report = render_alert(rule, [official_item], BIS_GPU_REMOTE_BASELINE_KST)
+        assert len(follow_report) < 4096, follow_stage
+        assert ("공식 폐지" in follow_report if "diffusion" in follow_stage else "메가스피드" in follow_report)
+    assert len(alert_item_groups(rule, [
+        sample,
+        {**sample, "bis_gpu_remote_stage": "official-diffusion-rescission-final-2026-27101"},
+        {**sample, "bis_gpu_remote_stage": "official-megaspeed-entity-list-final-2026-27102"},
+    ])) == 3
 
 
 def _self_test_deepseek_and_biotech_policy_events() -> None:
