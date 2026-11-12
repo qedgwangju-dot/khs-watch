@@ -72,10 +72,11 @@
     "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/hitachi-deepens-commitment-to-u-s-manufacturing-with-528-million-mississippi-transformer-factory",
     "https://www.hitachienergy.com/us/en/news-and-events/press-releases/2026/06/hitachi-energy-breaks-ground-on-the-nation-s-largest-facility-for-the-production-of-large-power-transformers-in-south-boston-virginia",
     "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
+    "https://www.koreaittimes.com/news/articleView.html?idxno=159114",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-11-12T20:08:36+09:00",
-  "metric_observation_count": 0,
+  "last_checked_at_kst": "2026-11-13T03:36:25+09:00",
+  "metric_observation_count": 1,
   "event_count": 0,
   "latest_evidence_urls": [],
   "transformer_imports": {
@@ -816,12 +817,12 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-11-12T20:08:36+09:00",
+    "last_checked_at_kst": "2026-11-13T03:36:25+09:00",
     "last_error": "",
     "pending_month": "2026-10"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-12T20:10:11+09:00",
+    "checked_at_kst": "2026-11-13T03:38:01+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-11T10:51:27+09:00",
@@ -1004,11 +1005,11 @@
       }
     },
     "latest_official_us_month": "2026-10",
-    "last_attempt_day": "2026-11-12",
-    "last_checked_at_kst": "2026-11-12T10:00:46+09:00",
+    "last_attempt_day": "2026-11-13",
+    "last_checked_at_kst": "2026-11-13T03:36:25+09:00",
     "last_status": "verified",
     "last_error_kind": "",
-    "last_attempt_at_kst": "2026-11-12T10:00:46+09:00",
+    "last_attempt_at_kst": "2026-11-13T03:36:25+09:00",
     "fetch_revision": 3,
     "source_blocker_notified": false,
     "connection_restored_notified": true,
@@ -1017,14 +1018,14 @@
   "discovery_health": {
     "rss_ok": 62,
     "rss_failed": 0,
-    "urls_resolved": 110,
-    "pages_opened": 12,
+    "urls_resolved": 112,
+    "pages_opened": 16,
     "bing_ok": 40,
     "bing_failed": 0,
     "google_ok": 22,
     "gdelt_ok": 0,
     "gdelt_failed": 0,
-    "news_candidates": 37
+    "news_candidates": 38
   },
   "power_squeeze_alerts": {
     "sent_fact_keys": [
@@ -1050,7 +1051,7 @@
   "news_collection_outage": {
     "consecutive_failures": 0,
     "alerted": false,
-    "last_success_at_kst": "2026-11-12T20:08:36+09:00",
+    "last_success_at_kst": "2026-11-13T03:36:25+09:00",
     "last_failure_at_kst": "2026-11-12T03:43:34+09:00"
   }
 }
