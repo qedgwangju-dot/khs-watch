@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-12T18:52:36.825203+00:00",
+  "updated_at": "2026-11-12T21:04:35.097910+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -899,9 +899,7 @@
     "e6e998155e1302d199ddd7f402ccc1621b73f4eb710cb8df20b56ca8af27c9fb",
     "faf396d15e6cbddb35074eab91cff682354b618ca69c7bfeb1a369f4edfa5546"
   ],
-  "last_selected": [
-    "faf396d15e6cbddb35074eab91cff682354b618ca69c7bfeb1a369f4edfa5546"
-  ],
+  "last_selected": [],
   "groups": [
     "ess_battery",
     "ev_46_series",
@@ -915,15 +913,6 @@
     "wonik"
   ],
   "delivery_history": [
-    {
-      "run_id": 42820070599,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-10T12:57:06.673078+00:00"
-    },
     {
       "run_id": 42868067820,
       "outcome": "normal_silence",
@@ -1166,21 +1155,24 @@
         false
       ],
       "state_timestamp_utc": "2026-11-12T18:52:36.825203+00:00"
+    },
+    {
+      "run_id": 43306541102,
+      "outcome": "normal_silence",
+      "message_ids": [],
+      "recipient_verified": null,
+      "recipient_checks": [],
+      "message_topic_present": [],
+      "state_timestamp_utc": "2026-11-12T21:04:35.097910+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 43284305112,
-    "outcome": "sent",
-    "message_ids": [
-      358
-    ],
-    "recipient_verified": true,
-    "recipient_checks": [
-      "numeric_id_equal"
-    ],
-    "message_topic_present": [
-      false
-    ],
-    "state_timestamp_utc": "2026-11-12T18:52:36.825203+00:00"
+    "run_id": 43306541102,
+    "outcome": "normal_silence",
+    "message_ids": [],
+    "recipient_verified": null,
+    "recipient_checks": [],
+    "message_topic_present": [],
+    "state_timestamp_utc": "2026-11-12T21:04:35.097910+00:00"
   }
 }
