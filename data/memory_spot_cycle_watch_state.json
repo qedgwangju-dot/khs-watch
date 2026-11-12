@@ -945,7 +945,7 @@
       "first_seen_kst": "2026-11-12T17:25:46+09:00"
     }
   },
-  "updated_at_kst": "2026-11-12T17:25:46+09:00",
+  "updated_at_kst": "2026-11-12T17:44:31+09:00",
   "last_scan_count": 10,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
@@ -1007,20 +1007,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-12T17:25:58+09:00",
+  "last_successful_delivery_kst": "2026-11-12T17:44:42+09:00",
   "telegram_message_ids": [
-    399
+    400
   ],
-  "telegram_message_id": 399,
+  "telegram_message_id": 400,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      399
+      400
     ],
-    "confirmed_at_kst": "2026-11-12T17:25:58+09:00",
-    "alert_signature": "78c90e5714dd374a5a5e0d29707376909c1cb32de954c098b016e675dfa2344f"
+    "recipient_verified": true,
+    "confirmed_at_kst": "2026-11-12T17:44:42+09:00",
+    "alert_signature": "f784d45a9e268275e5f51a876193dea6ff0a807c20cd38baa9803e51607a86e5"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1288,13 +1289,15 @@
     "scope": "smartphone_unit_penetration_not_dram_bit_share",
     "oem_specific_supply_confirmed": false,
     "source_date": "2026-11-06",
-    "source_url": "https://www.trendforce.com/presscenter/news/20261106-13297.html"
+    "source_url": "https://www.trendforce.com/presscenter/news/20261106-13297.html",
+    "share_2026_low_pct": 3.0,
+    "share_2026_high_pct": 4.0
   },
   "china_essd_demand": {
     "china_procurement_status": "cautious",
     "north_america_status": "firm",
     "confirmed_cancellation_count": null,
-    "china_ai_subscription_risk": false,
+    "china_ai_subscription_risk": true,
     "source_date": "2026-11-05",
     "source_url": "https://www.trendforce.com/research/download/RP261105BM"
   }
