@@ -333,6 +333,45 @@ jobs:
           print("policy_primary_source_check=passed both_policy_families=2")
           PY
 
+      - name: Probe BIS remote-GPU reporting sources without sending
+        continue-on-error: true
+        timeout-minutes: 2
+        run: |
+          PYTHONPATH=. python - <<'PY'
+          import xml.etree.ElementTree as ET
+          from scripts.khs_trusted_policy_news_watch import (
+              BIS_GPU_REMOTE_PRESS_SOURCES, bis_gpu_remote_press_identity,
+              bis_gpu_remote_reprint_identity, fetch_text, google_news_rss_url,
+          )
+          found = []
+          for url, label in BIS_GPU_REMOTE_PRESS_SOURCES:
+              try:
+                  raw = fetch_text(url, timeout=8)
+                  matched = (bis_gpu_remote_reprint_identity(raw)
+                             if "Investing.com" in label else bis_gpu_remote_press_identity(raw))
+                  print(f"bis_gpu_remote_source_probe={label} matched={matched}")
+                  if matched:
+                      found.append(label)
+              except Exception as exc:
+                  print(f"bis_gpu_remote_source_probe={label} fetch_failed={type(exc).__name__}: {str(exc)[:120]}")
+          try:
+              rss = fetch_text(google_news_rss_url(
+                  '"Commerce Department Finalizing Long-Awaited AI Remote Access Rule"'
+              ), timeout=8)
+              root = ET.fromstring(rss)
+              indexed = any("commerce department finalizing long-awaited ai remote access rule"
+                            in (item.findtext("title") or "").lower()
+                            for item in root.findall("./channel/item"))
+              print(f"bis_gpu_remote_source_probe=news_rss_exact_title_indexed={indexed}")
+              if indexed:
+                  found.append("Google News exact-title index")
+          except Exception as exc:
+              print(f"bis_gpu_remote_source_probe=news_rss_failed={type(exc).__name__}: {str(exc)[:120]}")
+          if not found:
+              raise RuntimeError("BIS remote-GPU press source unavailable on GitHub runner; no Telegram sent or seen state consumed")
+          print(f"bis_gpu_remote_source_probe=passed available_sources={len(found)}")
+          PY
+
       # Maintenance pushes validate only; they do not enable, resume, or dispatch the live watch.
 
   watch:
