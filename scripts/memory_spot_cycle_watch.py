@@ -3787,7 +3787,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             ), "스마트폰 재생 메모리 침투율")
             if changes:
                 rb_changes.extend(changes)
-                rb_state = merged_rb
+            rb_state = merged_rb  # Retain verified numbers even without a fresh alert.
         regional = _china_essd_demand_record(x)
         if regional:
             merged_regional = {**essd_region_state, **{k: v for k, v in regional.items() if v is not None}}
@@ -3796,7 +3796,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             ), "중국↔북미 기업용 SSD 수요")
             if changes:
                 essd_region_changes.extend(changes)
-                essd_region_state = merged_regional
+            if essd_region_state.get("china_ai_subscription_risk") is True:
+                merged_regional["china_ai_subscription_risk"] = True
+            essd_region_state = merged_regional
 
     pc_notebook_changes: list[str] = []
     pc_notebook_source_url = ""
