@@ -30,6 +30,12 @@ on:
     # Run every 15 minutes, offset from crowded top-of-hour slots; cron refreshed to recover delayed schedule triggers.
     # UK-China EV tariff stages are handled by the existing trusted-policy lane.
     - cron: "7,22,37,52 * * * *"
+  workflow_run:
+    # Existing AI policy watcher provides a backup wake-up when GitHub cron
+    # skips the policy watch. This changes only this workflow, not the upstream.
+    workflows: ["AI Safety Standards Policy Watch"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
     inputs:
       telegram_test:
@@ -58,7 +64,9 @@ concurrency:
   # 코드검증(push)과 실제 감시(schedule/workflow_dispatch)가 서로 취소하지 않게 분리한다.
   # 실제 감시끼리는 동일 runtime 그룹을 사용해 중복 송출을 계속 차단한다.
   group: khs-policy-watch-${{ github.event_name == 'push' && 'validation' || 'runtime' }}
-  cancel-in-progress: true
+  # Never cancel an in-flight production send/state write. Keep validation
+  # pushes replaceable without affecting a live schedule/workflow_run job.
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 
 jobs:
   verify:
@@ -387,10 +395,31 @@ jobs:
           print(f"bis_gpu_remote_source_probe=passed available_sources={len(found)}")
           PY
 
+      - name: Verify policy backup wake-up isolation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source = Path(".github/workflows/khs-policy-watch.yml").read_text(encoding="utf-8")
+          assert 'workflows: ["AI Safety Standards Policy Watch"]' in source
+          assert 'branches: [main]' in source
+          assert 'github.event.workflow_run.repository.full_name == github.repository' in source
+          assert "github.event.workflow_run.conclusion == 'success'" in source
+          assert "cancel-in-progress: ${{ github.event_name == 'push' }}" in source
+          assert 'cron: "7,22,37,52 * * * *"' in source
+          print("khs_policy_backup_trigger_regression=passed no_send=true")
+          PY
+
       # Maintenance pushes validate only; they do not enable, resume, or dispatch the live watch.
 
   watch:
-    if: github.event_name != 'push'
+    if: >-
+      github.event_name != 'push' &&
+      (github.event_name != 'workflow_run' ||
+       (github.event.workflow_run.repository.full_name == github.repository &&
+        github.event.workflow_run.head_branch == 'main' &&
+        github.event.workflow_run.conclusion == 'success' &&
+        (github.event.workflow_run.event == 'schedule' ||
+         github.event.workflow_run.event == 'workflow_run')))
     runs-on: ubuntu-latest
     env:
       CREATE_GITHUB_ISSUE: "true"
