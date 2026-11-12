@@ -9,7 +9,7 @@ on:
       - "scripts/currency_krw_guard.py"
       - "scripts/fx_api.py"
   schedule:
-    - cron: "13,43 * * * *"
+    - cron: "13,43 0-23 * * *"
   workflow_dispatch:
 
 permissions:
