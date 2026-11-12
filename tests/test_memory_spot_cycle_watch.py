@@ -10,6 +10,85 @@ import memory_spot_cycle_watch as w
 
 class MemorySpotCycleWatchTests(unittest.TestCase):
 
+    def test_official_reballed_smartphone_share_and_revision(self):
+        item = {
+            "title": "Persistently High DRAM Prices Drive Adoption of Reballed Memory, with Smartphone Penetration Expected to Reach 7–9% in 2027",
+            "description": "Reballed memory penetration 3–4% in 2026 and 7–9% in 2027. LPDDR4X 4GB.",
+            "source": "TrendForce",
+            "link": "https://www.trendforce.com/presscenter/news/20261106-13297.html",
+            "published_kst": "2026-11-06T09:00:00+09:00",
+            "fingerprint": "reball-official",
+            "score": 12,
+        }
+        a = w._reballed_smartphone_record(item)
+        self.assertEqual([a["share_2026_low_pct"], a["share_2026_high_pct"],
+                          a["share_2027_low_pct"], a["share_2027_high_pct"]], [3, 4, 7, 9])
+        self.assertEqual(a["reused_memory_spec"], "LPDDR4X 4GB")
+        self.assertFalse(a["oem_specific_supply_confirmed"])
+        keys = ("share_2027_low_pct", "share_2027_high_pct")
+        self.assertEqual(len(w._watch_axis_change({}, a, keys, "재생 DRAM")), 1)
+        self.assertFalse(w._watch_axis_change(a, a, keys, "재생 DRAM"))
+        self.assertTrue(w._watch_axis_change(a, dict(a, share_2027_high_pct=10), keys, "재생 DRAM"))
+        item["link"] = "https://www.tomshardware.com/pc-components/dram/reballed"
+        self.assertIsNone(w._reballed_smartphone_record(item))
+
+    def test_official_china_essd_cautious_not_confirmed_cancellation(self):
+        item = {
+            "title": "Module Dumping Drags NAND Spot Prices Lower",
+            "description": (
+                "China's unproven AI business models made server SSD procurement cautious. "
+                "Paid AI subscriptions remain hard to monetize; enterprise SSD procurement has turned conservative. "
+                "Demand now rests solely on North American CSPs."
+            ),
+            "link": "https://www.trendforce.com/research/download/RP261105BM",
+            "source": "TrendForce Research",
+            "published_kst": "2026-11-05T09:00:00+09:00",
+            "fingerprint": "china-essd-official",
+            "score": 12,
+        }
+        record = w._china_essd_demand_record(item)
+        self.assertEqual(record["china_procurement_status"], "cautious")
+        self.assertEqual(record["north_america_status"], "firm")
+        self.assertIsNone(record["confirmed_cancellation_count"])
+        self.assertFalse(w._watch_axis_change(record, record, ("china_procurement_status",), "eSSD"))
+        item["link"] = "https://fakesite.com/research/download/RP261105BM"
+        self.assertIsNone(w._china_essd_demand_record(item))
+
+    def test_regional_memory_upgrade_alert_once_with_persisted_state(self):
+        import json
+        rb = {
+            "title": "Reballed smartphone memory penetration 7–9% in 2027",
+            "description": "Penetration 3–4% in 2026 and 7–9% in 2027, LPDDR4X 4GB.",
+            "link": "https://www.trendforce.com/presscenter/news/20261106-13297.html",
+            "source": "TrendForce",
+            "published_kst": "2026-11-06T09:00:00+09:00",
+            "fingerprint": "rb-v1", "score": 12,
+        }
+        essd = {
+            "title": "Module Dumping Drags NAND Spot Prices Lower",
+            "description": "China server SSD procurement cautious. Enterprise SSD procurement has turned conservative; North American CSPs demand firm.",
+            "link": "https://www.trendforce.com/research/download/RP261105BM",
+            "source": "TrendForce Research",
+            "published_kst": "2026-11-05T09:00:00+09:00",
+            "fingerprint": "essd-v1", "score": 12,
+        }
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            with patch.object(w, "STATE_PATH", root/"state.json"), patch.object(w, "OUT_DIR", root), \
+                 patch.object(w, "PENDING_PATH", root/"pending.json"), patch.object(w, "ALERT_PATH", root/"alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root/"status.md"):
+                w.write_outputs([rb, essd], [])
+                alert = w.ALERT_PATH.read_text()
+                self.assertIn("재생 스마트폰 DRAM 침투율", alert)
+                self.assertIn("중국과 북미 기업용 SSD", alert)
+                pending = json.loads(w.PENDING_PATH.read_text())
+                self.assertEqual(pending["reballed_smartphone"]["share_2027_high_pct"], 9)
+                self.assertEqual(pending["china_essd_demand"]["china_procurement_status"], "cautious")
+                w.STATE_PATH.write_text(json.dumps(pending), encoding="utf-8")
+                w.write_outputs([rb, essd], [])
+                self.assertFalse(w.ALERT_PATH.exists())
+
+
     def test_reclaimed_headline_scored_without_price_word(self):
         item = {
             "title": "메모리 품귀에 폐폰까지 뜯는다…中서 재활용 칩 거래 확산",

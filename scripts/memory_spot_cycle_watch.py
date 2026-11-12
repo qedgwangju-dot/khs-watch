@@ -381,11 +381,13 @@ RUSSIA_MEMORY_IMPORT_BASELINE = {
 }
 
 TREND_PINNED_PRESS_URLS = [
+    "https://www.trendforce.com/presscenter/news/20261106-13297.html",
     "https://www.trendforce.com/presscenter/news/20261008-13264.html",
     "https://www.trendforce.com/presscenter/news/20260930-13258.html",
     "https://www.trendforce.com/presscenter/news/20260929-13255.html",
 ]
 TREND_PINNED_REPORT_URLS = [
+    "https://www.trendforce.com/research/download/RP261105BM",
     # Seed the latest quarterly forecast explicitly; it is removed naturally by the
     # rolling cutoff once stale, but guarantees paid-research summaries are not missed
     # when TrendForce listing HTML/search indexing changes.
@@ -393,6 +395,8 @@ TREND_PINNED_REPORT_URLS = [
     "https://www.trendforce.com/research/download/RP260922FJ3",
 ]
 TREND_SEARCH_QUERIES = [
+    'site:trendforce.com/presscenter/news reballed smartphone memory penetration',
+    'site:trendforce.com/research/download China enterprise SSD procurement North America',
     'site:trendforce.com/presscenter/news notebook shipments 2027 CPU DRAM SSD cost demand',
     'site:trendforce.com/research/download "Memory Price Forecast" DRAM NAND',
     'site:trendforce.com/research/download "DRAM Market Bulletin" TrendForce',
@@ -414,6 +418,9 @@ QUERIES = [
     ("en", 'CXMT Apple quote refusal 2026 independent confirmation supplier allocation'),
     ("ko", '노트북 출하량 전망 2027 CPU DRAM SSD 가격 원가 전가 TrendForce 소비 수요'),
     ("ko", '중국 메모리 품귀 폐휴대폰 재활용 칩 화창베이 스마트폰 제조사'),
+    ("ko", '스마트폰 리볼링 재생 메모리 보급형 LPDDR4X 침투율 2027 TrendForce'),
+    ("en", 'TrendForce reballed memory smartphone penetration 2027'),
+    ("en", 'China enterprise SSD procurement cuts North American CSP TrendForce GPU constraint'),
     ("ko", '중국 선전 화창베이 회수 메모리칩 제조사 공식 구매 확인 품질 불량'),
     ("en", 'China smartphone brands salvaged memory chips used phone Huaqiangbei sourcing confirmation'),
     ("en", 'Cathie Wood ARK Hong Kong China CXMT memory chip avoid vicious cycles'),
@@ -965,7 +972,7 @@ def _collect_trendforce_search(cutoff: dt.datetime) -> tuple[list[dict], list[st
                 is_pc_press = (
                     "/presscenter/news/" in link
                     and any(k in (title + " " + snippet).lower()
-                            for k in ("notebook", "laptop", "노트북"))
+                            for k in ("notebook", "laptop", "노트북", "reballed", "리볼링"))
                 )
                 if host not in ("trendforce.com", "www.trendforce.com") or not (is_report or is_pc_press):
                     continue
@@ -2655,6 +2662,89 @@ def _merge_typed_state(old: dict, obs: dict) -> dict:
 
 
 
+def _official_trendforce(item: dict, part: str) -> bool:
+    parsed = urllib.parse.urlparse(str(item.get("link") or ""))
+    return (parsed.hostname or "").lower() in ("trendforce.com", "www.trendforce.com") and part in parsed.path
+
+
+def _reballed_smartphone_record(item: dict) -> dict | None:
+    """Forecast is % of phones, never % of LPDRAM bits or signed OEM purchases."""
+    title = str(item.get("title") or "")
+    if not (_official_trendforce(item, "/presscenter/news/") and
+            "reball" in title.lower() and "smartphone" in title.lower()):
+        return None
+    text = _clean(title + " " + str(item.get("description") or ""))
+    if "penetration" not in text.lower():
+        return None
+    years = {}
+    for m in re.finditer(
+        r"(\d{1,2}(?:\.\d+)?)\s*[-–—~]\s*(\d{1,2}(?:\.\d+)?)\s*%"
+        r"\s*(?:in|by|for)\s*(20\d{2})", text, re.I,
+    ):
+        lo, hi, yr = float(m.group(1)), float(m.group(2)), int(m.group(3))
+        if 0 <= lo <= hi <= 100:
+            years[yr] = (lo, hi)
+    if 2027 not in years:
+        return None
+    result = {
+        "share_2027_low_pct": years[2027][0],
+        "share_2027_high_pct": years[2027][1],
+        "scope": "smartphone_unit_penetration_not_dram_bit_share",
+        "oem_specific_supply_confirmed": False,
+        "source_date": str(item.get("published_kst") or "")[:10],
+        "source_url": str(item["link"]),
+    }
+    if 2026 in years:
+        result["share_2026_low_pct"], result["share_2026_high_pct"] = years[2026]
+    if re.search(r"(?:LPDDR4X\s*4GB|4GB\s*LPDDR4X)", text, re.I):
+        result["reused_memory_spec"] = "LPDDR4X 4GB"
+    return result
+
+
+def _china_essd_demand_record(item: dict) -> dict | None:
+    """A conservative purchasing forecast is not a confirmed order cancellation."""
+    title = str(item.get("title") or "").lower()
+    if not (_official_trendforce(item, "/research/download/") and
+            any(x in title for x in ("module dumping", "enterprise ssd", "server ssd", "nand flash market"))):
+        return None
+    text = _clean(title + " " + str(item.get("description") or "")).lower()
+    if "china" not in text or not any(x in text for x in ("enterprise ssd", "server ssd")):
+        return None
+    if any(x in text for x in ("china enterprise ssd orders rebounded", "china server ssd procurement recovering")):
+        stage = "recovering"
+    elif any(x in text for x in (
+        "server ssd procurement cautious", "enterprise ssd procurement has turned conservative",
+        "enterprise ssd procurement turned conservative", "investments in server ssds have turned conservative",
+        "downward revisions to china’s enterprise ssd demand",
+        "downward revisions to china's enterprise ssd demand",
+    )):
+        stage = "cautious"
+    else:
+        return None
+    return {
+        "china_procurement_status": stage,
+        "north_america_status": "firm" if any(x in text for x in (
+            "north american csps", "us server: ai model subscription", "north american buyers continue to raise",
+        )) else None,
+        "confirmed_cancellation_count": None,
+        "china_ai_subscription_risk": "subscriptions remain hard to monetize" in text,
+        "source_date": str(item.get("published_kst") or "")[:10],
+        "source_url": str(item["link"]),
+    }
+
+
+def _watch_axis_change(old: dict, new: dict, keys: tuple[str, ...], label: str) -> list[str]:
+    if not new:
+        return []
+    if not old:
+        return [label + " 첫 공식 전망 확인"]
+    changes = []
+    for key in keys:
+        if old.get(key) is not None and new.get(key) is not None and old[key] != new[key]:
+            changes.append(label + " " + key + ": " + str(old[key]) + " → " + str(new[key]))
+    return changes
+
+
 def _is_reclaimed_memory_item(item: dict) -> bool:
     blob = _clean(f"{item.get('title', '')} {item.get('description', '')}").lower()
     memory = any(x in blob for x in (
@@ -3665,6 +3755,29 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             reclaimed_changes.extend(changes)
             reclaimed_source_url = obs.get("source_url") or reclaimed_source_url
 
+    rb_state = dict(state.get("reballed_smartphone") or {})
+    essd_region_state = dict(state.get("china_essd_demand") or {})
+    rb_changes: list[str] = []
+    essd_region_changes: list[str] = []
+    for x in sorted(items, key=lambda v: v.get("published_kst") or ""):
+        rb = _reballed_smartphone_record(x)
+        if rb:
+            changes = _watch_axis_change(rb_state, rb, (
+                "share_2026_low_pct", "share_2026_high_pct",
+                "share_2027_low_pct", "share_2027_high_pct",
+            ), "스마트폰 재생 메모리 침투율")
+            if changes:
+                rb_changes.extend(changes)
+                rb_state = rb
+        regional = _china_essd_demand_record(x)
+        if regional:
+            changes = _watch_axis_change(essd_region_state, regional, (
+                "china_procurement_status", "north_america_status",
+            ), "중국↔북미 기업용 SSD 수요")
+            if changes:
+                essd_region_changes.extend(changes)
+                essd_region_state = regional
+
     pc_notebook_changes: list[str] = []
     pc_notebook_source_url = ""
     if pc_notebook_upgrade_due:
@@ -3741,6 +3854,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         if _extract_pc_notebook_demand(x):
             continue
+        if _reballed_smartphone_record(x) or _china_essd_demand_record(x):
+            continue
         if _is_reclaimed_memory_item(x):
             # Prevent syndicated articles from leaking through the generic path.
             continue
@@ -3801,6 +3916,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "trendforce_3q4q_pace": trend_3q4q_state,
         "reclaimed_memory_track_version": RECLAIMED_MEMORY_TRACK_VERSION,
         "reclaimed_memory": reclaimed_state,
+        "reballed_smartphone": rb_state,
+        "china_essd_demand": essd_region_state,
         "china_dram_cycle_track_version": CHINA_DRAM_CYCLE_TRACK_VERSION,
         "china_dram_cycle": china_cycle_state,
         "pc_notebook_demand_track_version": PC_NOTEBOOK_DEMAND_TRACK_VERSION,
@@ -3842,6 +3959,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- NAND 소비자↔기업용 eSSD 양극화 변화: {len(divergence_changes)}건",
         f"- CXMT DRAM·ARK 투자 회피 역풍 변화: {len(china_cycle_changes)}건",
         f"- 중국 회수 메모리칩 거래·제조사 실제 채택 변화: {len(reclaimed_changes)}건",
+        f"- 공식 리볼링 스마트폰 침투율 변화: {len(rb_changes)}건",
+        f"- 중국↔북미 기업용 SSD 수요 차별화 변화: {len(essd_region_changes)}건",
         f"- PC 메모리·CPU 원가→노트북 수요 역풍 변화: {len(pc_notebook_changes)}건",
         f"- 러시아 서버·eSSD 병행수입 규제 변화: {len(russian_changes)}건",
         f"- 구세대 DRAM EOL·배정 변화: {len(legacy_changes)}건",
@@ -3853,11 +3972,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not russian_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not russian_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(russian_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(rb_changes) + len(essd_region_changes) + len(russian_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if trend_4q26_changes:
@@ -3896,6 +4015,10 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif china_cycle_changes:
         lines.append("한눈에: <b>" + html.escape(china_cycle_changes[0]) + "</b>")
+    elif rb_changes:
+        lines.append("한눈에: <b>" + html.escape(rb_changes[0]) + "</b>")
+    elif essd_region_changes:
+        lines.append("한눈에: <b>" + html.escape(essd_region_changes[0]) + "</b>")
     elif reclaimed_changes:
         lines.append("한눈에: <b>" + html.escape(reclaimed_changes[0]) + "</b>")
     elif russian_changes:
@@ -4277,6 +4400,33 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         for label, url in source_links:
             lines.append('  <a href="' + html.escape(url, quote=True) + '">' + html.escape(label) + '</a>')
 
+    if rb_changes:
+        lines.append("• <b>TrendForce 재생 스마트폰 DRAM 침투율 전망</b>")
+        for reason in list(dict.fromkeys(rb_changes)):
+            lines.append("  " + html.escape(reason))
+        if rb_state.get("share_2026_low_pct") is not None:
+            lines.append(
+                f"  2026년 <b>{rb_state['share_2026_low_pct']:g}~{rb_state['share_2026_high_pct']:g}%</b>"
+                f" → 2027년 <b>{rb_state['share_2027_low_pct']:g}~{rb_state['share_2027_high_pct']:g}%</b>"
+                " · 전체 스마트폰 출하 대수 기준, 신규 LPDRAM 비트 수요 점유율 아님"
+            )
+        lines.append("  주력 규격: LPDDR4X 4GB · 보급형 4G 스마트폰; LPDDR5X 재생 채택 급증으로 오인 금지")
+        lines.append("  단계: 시장 전망이며 개별 OEM 공급계약·재생칩 출하량은 확인 전")
+        lines.append("  영향·위험: 신품 메모리 원가 압박 완화 vs 품질 편차·불량·수리·보증비용")
+        lines.append("  선행지표: 제조사 공식 채택, 스마트폰 대당 메모리 용량, 재생칩 불량률·DRAM 계약가")
+        lines.append('  <a href="' + html.escape(rb_state["source_url"], quote=True) + '">TrendForce 원문</a>')
+
+    if essd_region_changes:
+        lines.append("• <b>중국과 북미 기업용 SSD 주문 흐름 분화</b>")
+        for reason in list(dict.fromkeys(essd_region_changes)):
+            lines.append("  " + html.escape(reason))
+        lines.append("  중국: AI 서비스 수익화 부진·칩 공급 제약이 구매 보수화로 이어질 위험")
+        lines.append("  북미: 클라우드 인프라 투자와 기업용 SSD 주문 강세를 중국과 별도 관찰")
+        lines.append("  확정 단계: TrendForce 연구 공개 요약의 조달 분위기 · 특정 고객의 주문 취소 수량은 미확인")
+        lines.append("  공급사: 삼성전자·SK하이닉스/Solidigm의 지역별 주문·가격·매출 구성 확인 필요")
+        lines.append("  조기경보: 중국 실제 발주·GPU 공급, 북미 추가 주문, NAND 현물가·재고·eSSD 평균판매단가")
+        lines.append('  <a href="' + html.escape(essd_region_state["source_url"], quote=True) + '">TrendForce 연구 공개 요약</a>')
+
     if divergence_changes:
         lines.append("• <b>NAND 소비자↔기업용 eSSD 양극화 변화</b>")
         for change in list(dict.fromkeys(divergence_changes)):
@@ -4505,7 +4655,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not russian_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not russian_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
