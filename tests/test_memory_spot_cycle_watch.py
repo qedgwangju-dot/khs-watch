@@ -29,7 +29,16 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertIn("2026년 기존 침투율 기준 3~4%", delta[0])
         self.assertEqual(w._watch_axis_change(obs, obs, keys, "스마트폰 재생 메모리 침투율"), [])
         item["link"] = "https://www.trendforce.com/presscenter/news/20261107-other.html"
-        self.assertIsNone(w._reballed_smartphone_record(item))
+        different = w._reballed_smartphone_record(item)
+        self.assertIsNotNone(different)  # A different issuer article may still report 2027.
+        self.assertNotIn("share_2026_low_pct", different)  # No invented historical baseline.
+
+    def test_memory_workflow_requires_matching_telegram_ack_recipient(self):
+        workflow = (pathlib.Path(__file__).resolve().parents[1] /
+                    ".github/workflows/memory-spot-cycle-telegram-watch.yml").read_text(encoding="utf-8")
+        self.assertIn('recipient = sent.get("chat") or {}', workflow)
+        self.assertIn('if not recipient_matches or', workflow)
+        self.assertIn('"recipient_verified": True', workflow)
 
     def test_china_essd_exact_issuer_summary_preserves_monetization_risk(self):
         item = {
