@@ -945,8 +945,8 @@
       "first_seen_kst": "2026-11-12T17:25:46+09:00"
     }
   },
-  "updated_at_kst": "2026-11-13T02:08:32+09:00",
-  "last_scan_count": 9,
+  "updated_at_kst": "2026-11-13T07:45:48+09:00",
+  "last_scan_count": 10,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -1007,21 +1007,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-12T17:44:42+09:00",
+  "last_successful_delivery_kst": "2026-11-13T07:46:00+09:00",
   "telegram_message_ids": [
-    400
+    415
   ],
-  "telegram_message_id": 400,
+  "telegram_message_id": 415,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      400
+      415
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-12T17:44:42+09:00",
-    "alert_signature": "f784d45a9e268275e5f51a876193dea6ff0a807c20cd38baa9803e51607a86e5"
+    "confirmed_at_kst": "2026-11-13T07:46:00+09:00",
+    "alert_signature": "d136e431a3517f0e69a62a880eb07e8540d00f55776d88adf71d93345faeb1de"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1299,6 +1299,12 @@
     "confirmed_cancellation_count": null,
     "china_ai_subscription_risk": true,
     "source_date": "2026-11-05",
-    "source_url": "https://www.trendforce.com/research/download/RP261105BM"
+    "source_url": "https://www.trendforce.com/research/download/RP261105BM",
+    "press_report_fact_key": "zdnet-2026-11-12-china-essd-order-cut-us-reallocation",
+    "press_report_date": "2026-11-12",
+    "china_order_cut_stage": "reported_not_supplier_confirmed",
+    "north_america_reallocation_stage": "reported_not_supplier_confirmed",
+    "press_source_url": "https://zdnet.co.kr/view/?no=20261112144609",
+    "press_source_kind": "지디넷코리아 보도·공개 색인 교차확인, 공급사 공식 물량 미확인"
   }
 }
