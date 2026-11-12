@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-11-11T09:07:20+09:00",
+  "last_checked_kst": "2026-11-13T04:30:04+09:00",
   "schedule_sha256": "7fd8bf4054ff9184c130b9d6dd9d699853f559b166fef6469083e9b76649b248",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -8,59 +8,59 @@
   "seen_source_ids": [],
   "upgrade_note": "one-time resend armed for upgraded Bessent policy-boundary interpretation",
   "bessent_policy_boundary_revision": 12,
-  "bessent_causal_verdict_key": "energy_disinflation_support",
-  "bessent_causal_verdict": "⚪ 공통 원자료 5거래일 시차 — 최신 원인 판정 보류",
+  "bessent_causal_verdict_key": "fiscal_real_dominant",
+  "bessent_causal_verdict": "🔴 Bessent 설명 약화 — 에너지·기대인플레이션은 내려가는데 실질금리·기간프리미엄이 장기금리를 떠받침",
   "bessent_causal_snapshot": {
-    "common_prev_date": "2026-11-02",
-    "common_date": "2026-11-03",
+    "common_prev_date": "2026-11-09",
+    "common_date": "2026-11-10",
     "common_values": {
-      "brent": 107.03,
-      "nom10": 4.95,
-      "real10": 2.65,
-      "bei10": 2.3000000000000003
+      "brent": 90.16,
+      "nom10": 4.98,
+      "real10": 2.78,
+      "bei10": 2.2000000000000006
     },
     "common_changes": {
-      "brent_pct": -0.33522674364465654,
-      "bei_bp": 1.000000000000023,
-      "real_bp": 2.9999999999999805,
-      "nom_bp": 4.0000000000000036,
-      "term_bp": 6.5737986093930445
+      "brent_pct": -0.9557288805888242,
+      "bei_bp": -1.999999999999913,
+      "real_bp": 11.999999999999966,
+      "nom_bp": 10.000000000000053,
+      "term_bp": -5.828059612035741
     },
     "changes_5d": {
-      "start_date": "2026-10-27",
-      "brent_pct": -13.05442729488221,
-      "bei_bp": -4.999999999999982,
-      "real_bp": 0.9999999999999787,
-      "nom_bp": -4.0000000000000036
+      "start_date": "2026-11-03",
+      "brent_pct": -15.7619359058208,
+      "bei_bp": -9.999999999999964,
+      "real_bp": 12.99999999999999,
+      "nom_bp": 3.000000000000025
     },
     "verdict_basis": "5거래일 공통창",
     "term_latest": {
       "available": true,
-      "prev_date": "2026-11-06",
-      "prev": 0.6428249560670167,
-      "date": "2026-11-09",
-      "value": 0.7085629421609472,
-      "change_bp": 6.5737986093930445,
+      "prev_date": "2026-11-09",
+      "prev": 0.7085629421609472,
+      "date": "2026-11-10",
+      "value": 0.6502823460405898,
+      "change_bp": -5.828059612035741,
       "source": "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs",
       "data_source": "NY Fed ACM primary XLS"
     },
     "term_aligned": {
       "available": true,
-      "change_bp": 6.851759454860495,
-      "start_date": "2026-10-27",
-      "end_date": "2026-11-03"
+      "change_bp": -2.700291972293467,
+      "start_date": "2026-11-03",
+      "end_date": "2026-11-10"
     },
     "latest_bond_common_date": "2026-11-10",
-    "lag_market_sessions": 5,
-    "is_lagged": true,
+    "lag_market_sessions": 0,
+    "is_lagged": false,
     "latest": {
       "brent": {
-        "date": "2026-11-03",
-        "value": 107.03
+        "date": "2026-11-11",
+        "value": 92.14
       },
       "brent_prev": {
-        "date": "2026-11-02",
-        "value": 107.39
+        "date": "2026-11-10",
+        "value": 90.16
       },
       "nom10": {
         "date": "2026-11-10",
@@ -71,9 +71,9 @@
         "value": 2.78
       }
     },
-    "verdict_key": "energy_disinflation_support",
-    "verdict": "⚪ 공통 원자료 5거래일 시차 — 최신 원인 판정 보류",
-    "oil_scenario_key": "100_plus",
+    "verdict_key": "fiscal_real_dominant",
+    "verdict": "🔴 Bessent 설명 약화 — 에너지·기대인플레이션은 내려가는데 실질금리·기간프리미엄이 장기금리를 떠받침",
+    "oil_scenario_key": "80_100",
     "oil_scenario_stable": true,
     "sources": {
       "brent": "EIA Brent Europe spot price",
@@ -84,7 +84,7 @@
     },
     "available": true
   },
-  "bessent_oil_scenario_key": "100_plus",
+  "bessent_oil_scenario_key": "80_100",
   "seen_long_end_special_shas": [],
   "bessent_causal_last_error": "RuntimeError: 자료 다운로드 실패: https://www.eia.gov/dnav/pet/hist/rbrteD.htm / HTTPError: HTTP Error 503: Service Unavailable"
 }
