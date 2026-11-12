@@ -255,8 +255,17 @@ jobs:
               with urllib.request.urlopen(req, timeout=25) as response:
                   result = json.loads(response.read().decode("utf-8"))
               if not result.get("ok"):
-                  raise RuntimeError(f"Telegram rejected message: {result}")
-              ids.append((result.get("result") or {}).get("message_id"))
+                  raise RuntimeError("Telegram sendMessage returned ok=false")
+              sent = result.get("result") or {}
+              recipient = sent.get("chat") or {}
+              message_id = sent.get("message_id")
+              recipient_matches = (
+                  str(recipient.get("username") or "").casefold() == chat_id[1:].casefold()
+                  if chat_id.startswith("@") else str(recipient.get("id") or "") == chat_id
+              )
+              if not recipient_matches or type(message_id) is not int or message_id <= 0:
+                  raise RuntimeError("Telegram recipient/message acknowledgment mismatch; state not promoted")
+              ids.append(message_id)
 
           normalized = re.sub(
               r"조회\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s+KST",
@@ -271,6 +280,7 @@ jobs:
               "status": "confirmed",
               "bot_username": username,
               "message_ids": ids,
+              "recipient_verified": True,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
               "alert_signature": alert_signature,
           }
