@@ -75,7 +75,7 @@
     "https://www.koreaittimes.com/news/articleView.html?idxno=159114",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-11-13T03:36:25+09:00",
+  "last_checked_at_kst": "2026-11-13T03:57:48+09:00",
   "metric_observation_count": 1,
   "event_count": 0,
   "latest_evidence_urls": [],
@@ -817,12 +817,12 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-11-13T03:36:25+09:00",
+    "last_checked_at_kst": "2026-11-13T03:57:48+09:00",
     "last_error": "",
     "pending_month": "2026-10"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-13T03:38:01+09:00",
+    "checked_at_kst": "2026-11-13T03:59:51+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-11T10:51:27+09:00",
@@ -1018,7 +1018,7 @@
   "discovery_health": {
     "rss_ok": 62,
     "rss_failed": 0,
-    "urls_resolved": 112,
+    "urls_resolved": 111,
     "pages_opened": 16,
     "bing_ok": 40,
     "bing_failed": 0,
@@ -1051,7 +1051,7 @@
   "news_collection_outage": {
     "consecutive_failures": 0,
     "alerted": false,
-    "last_success_at_kst": "2026-11-13T03:36:25+09:00",
+    "last_success_at_kst": "2026-11-13T03:57:48+09:00",
     "last_failure_at_kst": "2026-11-12T03:43:34+09:00"
   }
 }
