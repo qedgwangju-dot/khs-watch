@@ -74,7 +74,7 @@
     "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-11-12T10:35:06+09:00",
+  "last_checked_at_kst": "2026-11-12T19:15:55+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
   "latest_evidence_urls": [],
@@ -816,12 +816,12 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-11-12T10:35:06+09:00",
+    "last_checked_at_kst": "2026-11-12T19:15:55+09:00",
     "last_error": "",
     "pending_month": "2026-10"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-12T10:36:41+09:00",
+    "checked_at_kst": "2026-11-12T19:17:25+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-11T10:51:27+09:00",
@@ -1017,8 +1017,8 @@
   "discovery_health": {
     "rss_ok": 62,
     "rss_failed": 0,
-    "urls_resolved": 108,
-    "pages_opened": 13,
+    "urls_resolved": 111,
+    "pages_opened": 12,
     "bing_ok": 40,
     "bing_failed": 0,
     "google_ok": 22,
@@ -1050,7 +1050,7 @@
   "news_collection_outage": {
     "consecutive_failures": 0,
     "alerted": false,
-    "last_success_at_kst": "2026-11-12T10:35:06+09:00",
+    "last_success_at_kst": "2026-11-12T19:15:55+09:00",
     "last_failure_at_kst": "2026-11-12T03:43:34+09:00"
   }
 }
