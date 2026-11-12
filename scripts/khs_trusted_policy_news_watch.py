@@ -2639,6 +2639,32 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                     **({"bis_gpu_remote_stage": rss_stage} if rule.key == BIS_GPU_REMOTE_KEY else {}),
                 }
             )
+    # A publisher outage or empty Google News index must not silently turn
+    # this requested policy monitor into a permanent no-op. Record the failure
+    # without consuming the Telegram acknowledgement/deduplication key.
+    if rule.key == BIS_GPU_REMOTE_KEY:
+        baseline_fp = story_event_fingerprint(
+            rule, [{"bis_gpu_remote_stage": "press-negotiation-2026-11-11"}]
+        )
+        delivered = baseline_fp in (load_seen().get("seen") or {})
+        reported = any(
+            item.get("bis_gpu_remote_stage") == "press-negotiation-2026-11-11"
+            for item in items
+        )
+        age_hours = (now - BIS_GPU_REMOTE_BASELINE_KST).total_seconds() / 3600
+        if 0 <= age_hours <= max_age_hours_for_rule(rule) and not delivered and not reported:
+            try:
+                record_policy_source_failure(
+                    lane="trusted_policy",
+                    source_name="BIS overseas GPU remote access press baseline",
+                    source_url=BIS_GPU_REMOTE_PRESS_SOURCES[0][0],
+                    error="Publisher headline and trusted-index report not verified; baseline remains pending.",
+                    checked_at=now,
+                )
+                print("trusted_policy_news=bis_gpu_remote_source_unverified failure_checkpoint=recorded")
+            except Exception as exc:
+                print(f"trusted_policy_news=bis_gpu_remote_failure_checkpoint_error={type(exc).__name__}: {exc}")
+
     # If every release and trusted copy is unavailable, do not silently
     # treat the FCC adoption as 'no event'. Feed the existing source-failure
     # streak monitor while leaving the Telegram seen state untouched.
@@ -5481,6 +5507,11 @@ def _self_test_bis_gpu_remote_access_event_model() -> None:
     assert has_required_terms(" ".join([sample["title"], sample["description"], sample["source"]]), rule)
     assert alert_confirmation_status(rule, [sample])[0] == "공식 확인 전"
     assert "미공포" in str(item_story_profile(rule, [sample])["stage"])
+    rendered = render_alert(rule, [sample], BIS_GPU_REMOTE_BASELINE_KST)
+    for country in ("싱가포르", "말레이시아", "태국", "인도네시아", "브라질", "노르웨이", "남아공"):
+        assert country in rendered, country
+    assert "블랙웰" in rendered and "미시행" in rendered
+    assert len(rendered) < 4096, f"BIS GPU remote access Telegram report too long: {len(rendered)}"
     duplicate = {**sample, "source": "Reuters", "link": "https://example.org/second-hand"}
     assert story_event_fingerprint(rule, [sample]) == story_event_fingerprint(rule, [duplicate])
     proposed = {**sample, "title": "BIS proposes rule to restrict Chinese remote access to cloud AI chips",
