@@ -495,6 +495,8 @@ def _primary_topic(row):
             group += '·유럽'
         return group + ' · ' + KIND_LABELS[kind]
     if kind in ('diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal'):
+        if kind == 'diplomatic_position' and _negotiation_standoff_headline(title):
+            return _diplomatic_group(title) + ' · 협상 입장 대립·신경전'
         talks_label = _talks_stage_label(title)
         if talks_label:
             return _diplomatic_group(title) + ' · ' + talks_label
@@ -1030,6 +1032,13 @@ def _negotiation_stalemate_headline(title):
                 or _negotiation_obstruction_headline(title))
 
 
+def _negotiation_standoff_headline(title):
+    """A reported negotiating standoff is not a new diplomatic contact."""
+    standoff = re.search(r'(?:종전|휴전|평화|핵)\s*협상.{0,20}신경전', title)
+    easing = re.search(r'신경전.{0,20}(?:끝|종식|완화|해소|타결|합의)', title)
+    return bool(standoff and not easing)
+
+
 def _negotiation_obstruction_headline(title):
     """A reported brake on peace talks is not a diplomatic contact."""
     obstruction = re.search(r'(?:종전|평화|휴전)?\s*협상(?:에|의|을|를)?\s*제동', title)
@@ -1289,6 +1298,8 @@ def _no_war_no_peace_stalemate_statement(title):
 
 
 def _diplomatic_headline_kind(title):
+    if _negotiation_standoff_headline(title):
+        return 'diplomatic_position'
     if _peace_plan_discussion_headline(title):
         return 'diplomatic_plan'
     intent = _negotiation_intent_stage(title)

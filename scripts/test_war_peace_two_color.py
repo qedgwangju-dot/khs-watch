@@ -2181,5 +2181,40 @@ class Run858LowReattackStatementTests(unittest.TestCase):
         self.assertEqual(presentation.direction(stage, attacked), 'red')
 
 
+class Run869NegotiationStandoffTests(unittest.TestCase):
+    def test_saved_sent_false_contact_and_green_replay(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run869_negotiation_standoff_43177720603.json')
+                             .read_text(encoding='utf-8'))
+        provenance, saved = fixture['provenance'], fixture['article']
+        self.assertEqual(provenance['telegram_message_id'], 448)
+        self.assertEqual(saved['non_military_kind'], 'diplomatic_contact')
+        self.assertEqual(saved['classification_color'], 'green')
+        self.assertFalse(saved['body_verified'])
+        self.assertEqual(hashlib.sha256(saved['title_original'].encode('utf-8')).hexdigest(),
+                         provenance['title_sha256'])
+
+        row = copy.deepcopy(saved)
+        row['classification_color'] = row['semantic_classification_color']
+        self.assertEqual(stage.non_military_kind(row), 'diplomatic_position')
+        self.assertEqual(stage.topic_label(row), '미국·이란 · 협상 입장 대립·신경전')
+        self.assertEqual(presentation.direction(stage, row), 'red')
+        fresh = copy.deepcopy(row)
+        fresh.pop('non_military_kind', None)
+        fresh.pop('classification_color', None)
+        score, tags = stage.score_item(
+            fresh, dt.datetime.fromisoformat('2026-11-12T16:48:18+09:00'))
+        self.assertGreater(score, 0)
+        self.assertEqual(tags, ['외교 갈등·압박 보도'])
+        self.assertEqual(stage.final_color(fresh), 'yellow')
+        self.assertEqual(presentation.direction(stage, fresh), 'red')
+
+    def test_standoff_ending_does_not_hide_negotiation_resumption(self):
+        row = {'title_original': '트럼프·이란, 종전협상 신경전 끝내고 회담 재개 합의',
+               'body_verified': False}
+        self.assertFalse(stage._negotiation_standoff_headline(row['title_original']))
+        self.assertEqual(presentation.direction(stage, row), 'green')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
