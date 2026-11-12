@@ -306,6 +306,7 @@ def direction(stage, row):
         return 'green'
     if (kind in RISK_KINDS or adverse or stage._settlement_pressure_headline(title)
             or stage._negotiation_obstruction_headline(title)
+            or stage._negotiation_standoff_headline(title)
             or stage._negotiation_concession_pressure_headline(title)):
         return 'red'
     if color == 'green':
