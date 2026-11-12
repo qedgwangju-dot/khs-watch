@@ -2216,5 +2216,84 @@ class Run869NegotiationStandoffTests(unittest.TestCase):
         self.assertEqual(presentation.direction(stage, row), 'green')
 
 
+class Run872SatelliteThrottleTests(unittest.TestCase):
+    def test_saved_title_only_restriction_has_no_invented_direction(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run872_satellite_throttle_43257768510.json')
+                             .read_text(encoding='utf-8'))
+        provenance, saved = fixture['provenance'], fixture['article']
+        self.assertEqual(provenance['telegram_message_id'], 451)
+        self.assertEqual(saved['classification_color'], 'red')
+        self.assertFalse(saved['body_verified'])
+        self.assertEqual(hashlib.sha256(saved['title_original'].encode()).hexdigest(),
+                         provenance['title_sha256'])
+        proof, snapshot = fixture['semantic_proof'], fixture['semantic_snapshot']
+        alert = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+        original = json.loads(evidence_bytes)
+        row = next(row for row in original['articles'] if row['id'] == saved['id'])
+        self.assertIsNone(presentation.direction(stage, row))
+
+        text, projected = presentation.project(stage, alert.decode('utf-8'),
+                                               original, proof, snapshot)
+        target = next(row for row in projected['articles'] if row['id'] == saved['id'])
+        self.assertIsNone(target['classification_color'])
+        self.assertEqual(target['display_section'], 'context_reference')
+        self.assertIn('위성 시스템 제한 보도·원인 미확인', text)
+        self.assertIn('RSS 입력 기준·본문 미확인', text)
+        self.assertNotIn('🔴 [신규]', text)
+        self.assertNotIn('🟡', text)
+        self.assertNotEqual(projected['alert_sha256'],
+                            provenance['observed_delivered_alert_sha256'])
+
+    def test_explicit_attack_pressure_and_restoration_keep_their_direction(self):
+        for title, expected in (
+                ('Russia attacked a Starshield satellite station today', 'red'),
+                ('SpaceX throttled Starshield to pressure Ukraine', 'red'),
+                ('Starshield satellite service restored after restriction', 'green')):
+            with self.subTest(title=title):
+                self.assertEqual(presentation.direction(stage, {
+                    'title_original': title, 'body_verified': False}), expected)
+
+
+class Run873NoDealRejectionTests(unittest.TestCase):
+    def test_saved_no_deal_headline_cannot_turn_semantic_red_green(self):
+        fixture = json.loads((Path(__file__).parent / 'test_fixtures'
+                              / 'war_run873_no_deal_43319215337.json')
+                             .read_text(encoding='utf-8'))
+        provenance, saved = fixture['provenance'], fixture['article']
+        self.assertEqual(provenance['telegram_message_id'], 452)
+        self.assertEqual(saved['classification_color'], 'green')
+        self.assertEqual(saved['semantic_classification_color'], 'red')
+        self.assertTrue(saved['body_verified'])
+        self.assertEqual(hashlib.sha256(saved['title_original'].encode()).hexdigest(),
+                         provenance['title_sha256'])
+        proof, snapshot = fixture['semantic_proof'], fixture['semantic_snapshot']
+        alert = base64.b64decode(snapshot['alert_utf8_base64'])
+        evidence_bytes = base64.b64decode(snapshot['evidence_utf8_base64'])
+        self.assertEqual(hashlib.sha256(alert).hexdigest(), proof['alert_sha256'])
+        self.assertEqual(hashlib.sha256(evidence_bytes).hexdigest(), proof['evidence_sha256'])
+        original = json.loads(evidence_bytes)
+        row = next(row for row in original['articles'] if row['id'] == saved['id'])
+        self.assertEqual(row['classification_color'], 'red')
+        self.assertEqual(presentation.direction(stage, row), 'red')
+
+        text, projected = presentation.project(stage, alert.decode('utf-8'),
+                                               original, proof, snapshot)
+        target = next(row for row in projected['articles'] if row['id'] == saved['id'])
+        self.assertEqual(target['classification_color'], 'red')
+        self.assertIn('🔴 [신규] <b>1.', text)
+        self.assertNotIn('🟢 [신규] <b>1.', text)
+        self.assertNotEqual(projected['alert_sha256'],
+                            provenance['observed_delivered_alert_sha256'])
+
+    def test_no_deal_rejection_does_not_hide_a_separate_easing_event(self):
+        title = '트럼프 "이란과 합의 필요 없다"는 보도를 부인하고 회담 재개에 합의'
+        self.assertEqual(presentation.direction(stage, {
+            'title_original': title, 'body_verified': False}), 'green')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
