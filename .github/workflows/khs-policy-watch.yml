@@ -340,8 +340,11 @@ jobs:
           PYTHONPATH=. python - <<'PY'
           import xml.etree.ElementTree as ET
           from scripts.khs_trusted_policy_news_watch import (
-              BIS_GPU_REMOTE_PRESS_SOURCES, bis_gpu_remote_press_identity,
-              bis_gpu_remote_reprint_identity, fetch_text, google_news_rss_url,
+              BIS_GPU_REMOTE_BASELINE_KST, BIS_GPU_REMOTE_KEY,
+              BIS_GPU_REMOTE_PRESS_SOURCES, STORY_RULES,
+              bis_gpu_remote_press_identity, bis_gpu_remote_reprint_identity,
+              fetch_text, google_news_rss_url, is_rule_trusted_source,
+              parse_pub_date, source_name,
           )
           found = []
           for url, label in BIS_GPU_REMOTE_PRESS_SOURCES:
@@ -359,12 +362,24 @@ jobs:
                   '"Commerce Department Finalizing Long-Awaited AI Remote Access Rule"'
               ), timeout=8)
               root = ET.fromstring(rss)
-              indexed = any("commerce department finalizing long-awaited ai remote access rule"
-                            in (item.findtext("title") or "").lower()
-                            for item in root.findall("./channel/item"))
-              print(f"bis_gpu_remote_source_probe=news_rss_exact_title_indexed={indexed}")
-              if indexed:
-                  found.append("Google News exact-title index")
+              rule = next(r for r in STORY_RULES if r.key == BIS_GPU_REMOTE_KEY)
+              candidates = []
+              accepted = []
+              for item in root.findall("./channel/item"):
+                  title = item.findtext("title") or ""
+                  if "commerce department finalizing long-awaited ai remote access rule" not in title.lower():
+                      continue
+                  publisher = source_name(item)
+                  published = parse_pub_date(item.findtext("pubDate"))
+                  candidates.append({"publisher": publisher, "published": str(published)[:19]})
+                  if (publisher.lower() == "the information"
+                      and published is not None
+                      and published.date() == BIS_GPU_REMOTE_BASELINE_KST.date()
+                      and is_rule_trusted_source(publisher, rule)):
+                      accepted.append(publisher)
+              print(f"bis_gpu_remote_source_probe=news_rss_exact_title_indexed={bool(candidates)} source_gate_accepted={bool(accepted)} candidates={candidates[:3]}")
+              if accepted:
+                  found.append("Google News publisher/date verified")
           except Exception as exc:
               print(f"bis_gpu_remote_source_probe=news_rss_failed={type(exc).__name__}: {str(exc)[:120]}")
           if not found:
