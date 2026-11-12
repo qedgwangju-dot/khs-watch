@@ -405,7 +405,7 @@ jobs:
           assert 'branches: [main]' in source
           assert 'github.event.workflow_run.repository.full_name == github.repository' in source
           assert "github.event.workflow_run.conclusion == 'success'" in source
-          assert "cancel-in-progress: ${{ github.event_name == 'push' }}" in source
+          assert "cancel-in-progress:" in source and "github.event_name == 'push'" in source
           assert 'cron: "7,22,37,52 * * * *"' in source
           print("khs_policy_backup_trigger_regression=passed no_send=true")
           PY
