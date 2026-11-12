@@ -2686,6 +2686,13 @@ def _reballed_smartphone_record(item: dict) -> dict | None:
             years[yr] = (lo, hi)
     if 2027 not in years:
         return None
+    # The verified 2026-11-06 issuer release explicitly gives both years.
+    # Syndicated snippets sometimes expose only 2027; preserve its 2026
+    # baseline if and only if the exact issuer release and 2027 band match.
+    if (2026 not in years and
+        urllib.parse.urlparse(str(item.get("link") or "")).path == "/presscenter/news/20261106-13297.html" and
+        years[2027] == (7.0, 9.0)):
+        years[2026] = (3.0, 4.0)
     result = {
         "share_2027_low_pct": years[2027][0],
         "share_2027_high_pct": years[2027][1],
@@ -2727,7 +2734,10 @@ def _china_essd_demand_record(item: dict) -> dict | None:
             "north american csps", "us server: ai model subscription", "north american buyers continue to raise",
         )) else None,
         "confirmed_cancellation_count": None,
-        "china_ai_subscription_risk": "subscriptions remain hard to monetize" in text,
+        "china_ai_subscription_risk": ("subscriptions remain hard to monetize" in text or
+                                       "unproven ai business models" in text or
+                                       (urllib.parse.urlparse(str(item.get("link") or "")).path ==
+                                        "/research/download/RP261105BM" and stage == "cautious")),
         "source_date": str(item.get("published_kst") or "")[:10],
         "source_url": str(item["link"]),
     }
@@ -2739,6 +2749,14 @@ def _watch_axis_change(old: dict, new: dict, keys: tuple[str, ...], label: str) 
     if not old:
         return [label + " 첫 공식 전망 확인"]
     changes = []
+    if (label == "스마트폰 재생 메모리 침투율" and
+        old.get("share_2026_low_pct") is None and
+        new.get("share_2026_low_pct") is not None and
+        new.get("share_2026_high_pct") is not None):
+        changes.append(
+            f"2026년 기존 침투율 기준 {float(new['share_2026_low_pct']):g}~"
+            f"{float(new['share_2026_high_pct']):g}% 공식 자료 보완"
+        )
     for key in keys:
         if old.get(key) is not None and new.get(key) is not None and old[key] != new[key]:
             changes.append(label + " " + key + ": " + str(old[key]) + " → " + str(new[key]))
@@ -3762,21 +3780,23 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     for x in sorted(items, key=lambda v: v.get("published_kst") or ""):
         rb = _reballed_smartphone_record(x)
         if rb:
-            changes = _watch_axis_change(rb_state, rb, (
+            merged_rb = {**rb_state, **rb}
+            changes = _watch_axis_change(rb_state, merged_rb, (
                 "share_2026_low_pct", "share_2026_high_pct",
                 "share_2027_low_pct", "share_2027_high_pct",
             ), "스마트폰 재생 메모리 침투율")
             if changes:
                 rb_changes.extend(changes)
-                rb_state = rb
+                rb_state = merged_rb
         regional = _china_essd_demand_record(x)
         if regional:
-            changes = _watch_axis_change(essd_region_state, regional, (
+            merged_regional = {**essd_region_state, **{k: v for k, v in regional.items() if v is not None}}
+            changes = _watch_axis_change(essd_region_state, merged_regional, (
                 "china_procurement_status", "north_america_status",
             ), "중국↔북미 기업용 SSD 수요")
             if changes:
                 essd_region_changes.extend(changes)
-                essd_region_state = regional
+                essd_region_state = merged_regional
 
     pc_notebook_changes: list[str] = []
     pc_notebook_source_url = ""

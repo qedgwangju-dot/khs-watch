@@ -10,6 +10,39 @@ import memory_spot_cycle_watch as w
 
 class MemorySpotCycleWatchTests(unittest.TestCase):
 
+    def test_reballed_official_short_snippet_restores_prior_2026_band_once(self):
+        item = {
+            "title": "Reballed Memory, with Smartphone Penetration 7–9% in 2027",
+            "description": "TrendForce expects smartphone penetration to climb to 7–9% in 2027.",
+            "source": "TrendForce",
+            "link": "https://www.trendforce.com/presscenter/news/20261106-13297.html",
+            "published_kst": "2026-11-06T09:00:00+09:00",
+        }
+        obs = w._reballed_smartphone_record(item)
+        self.assertEqual((obs["share_2026_low_pct"], obs["share_2026_high_pct"]), (3.0, 4.0))
+        prev = dict(obs)
+        del prev["share_2026_low_pct"]
+        del prev["share_2026_high_pct"]
+        keys = ("share_2026_low_pct", "share_2026_high_pct", "share_2027_low_pct", "share_2027_high_pct")
+        delta = w._watch_axis_change(prev, obs, keys, "스마트폰 재생 메모리 침투율")
+        self.assertEqual(len(delta), 1)
+        self.assertIn("2026년 기존 침투율 기준 3~4%", delta[0])
+        self.assertEqual(w._watch_axis_change(obs, obs, keys, "스마트폰 재생 메모리 침투율"), [])
+        item["link"] = "https://www.trendforce.com/presscenter/news/20261107-other.html"
+        self.assertIsNone(w._reballed_smartphone_record(item))
+
+    def test_china_essd_exact_issuer_summary_preserves_monetization_risk(self):
+        item = {
+            "title": "Module Dumping Drags NAND Spot Prices Lower",
+            "description": "China enterprise SSD procurement has turned conservative; North American CSPs demand firm.",
+            "link": "https://www.trendforce.com/research/download/RP261105BM",
+            "published_kst": "2026-11-05T09:00:00+09:00",
+        }
+        result = w._china_essd_demand_record(item)
+        self.assertTrue(result["china_ai_subscription_risk"])
+        self.assertIsNone(result["confirmed_cancellation_count"])
+
+
     def test_official_reballed_smartphone_share_and_revision(self):
         item = {
             "title": "Persistently High DRAM Prices Drive Adoption of Reballed Memory, with Smartphone Penetration Expected to Reach 7–9% in 2027",
