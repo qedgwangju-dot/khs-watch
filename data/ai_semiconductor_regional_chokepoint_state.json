@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-13T11:59:35+09:00",
-  "last_scan_count": 2,
+  "updated_at_kst": "2026-11-13T19:55:01+09:00",
+  "last_scan_count": 5,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -132,7 +132,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 1,
+  "last_held_count": 3,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -145,6 +145,7 @@
     "2ff967f0a83d4f9d09737f69",
     "305d1d885ff5dbd87c0680db",
     "3547810262aea5ccef036765",
+    "37036291af05847d86890445",
     "3721dcaa772b61f44f972d28",
     "3898ddc3349f7aa8502740b4",
     "3c256fe8dff8e167b043d264",
@@ -159,6 +160,7 @@
     "6cb3f9fee458cbd5414c2744",
     "6f7d4edee62f9cb2d4432ccf",
     "72e51f5d7b884367520ec10d",
+    "781240f795d70b6a2663b3fd",
     "89e73411422b9d710eee6410",
     "8e83ced6f5ddad839f021a48",
     "928e5521196664bfaa5b475c",
@@ -176,6 +178,7 @@
     "d48264b617e856e8ce2d499e",
     "d598b87380cce293712421fa",
     "d60dfe850a361eaa2e1fd5cf",
+    "e1d440cfbe88d3ed7f2505b8",
     "e3172365bd8c10ce9681459f",
     "e4009352aa0ce40c6ab54a73",
     "ede3b0fedd83163d4bff4e78",
@@ -188,10 +191,22 @@
   "delivered_event_keys": [],
   "last_held": [
     {
-      "event_key": "taiwan|diversification|TSMC|arizona",
-      "source": "AZ Family",
+      "event_key": "taiwan|diversification|TSMC|core",
+      "source": "Beansprout - Singapore’s Leading Financial Insights Platform - Growbeansprout.com",
       "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-13T09:44:00+09:00"
+      "published_kst": "2026-11-13T18:19:45+09:00"
+    },
+    {
+      "event_key": "korea|capacity|SK hynix|hbm4",
+      "source": "digitimes",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-11-13T11:18:28+09:00"
+    },
+    {
+      "event_key": "china|capacity|Zhongji Innolight|1.6t",
+      "source": "TechInsights",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-11-06T00:20:18+09:00"
     }
   ],
   "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
