@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-13T03:58:35+09:00",
+  "updated_at_kst": "2026-11-13T09:25:49+09:00",
   "circle": {
     "date": "2026-11-09",
     "circulation_usd_b": 68.9,
@@ -39,48 +39,48 @@
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-11-10",
-    "three_month": 4.3,
-    "ten_year": 4.98,
-    "prev_date": "2026-11-09",
-    "prev_three_month": 4.24,
-    "prev_ten_year": 4.88,
-    "daily_3m_bp": 6.0,
-    "daily_10y_bp": 10.0,
+    "date": "2026-11-12",
+    "three_month": 4.32,
+    "ten_year": 5.1,
+    "prev_date": "2026-11-10",
+    "prev_three_month": 4.3,
+    "prev_ten_year": 4.98,
+    "daily_3m_bp": 2.0,
+    "daily_10y_bp": 12.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
     "date": "2026-11-12",
-    "close": 64.71,
+    "close": 63.8,
     "prev_date": "2026-11-11",
     "prev_close": 67.12,
-    "daily_pct": -3.59,
+    "daily_pct": -4.95,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
     "crosscheck_date": "2026-11-12",
-    "crosscheck_close": 64.72000122070312,
-    "crosscheck_daily_pct": -3.58,
-    "crosscheck_gap_pct": 0.015,
+    "crosscheck_close": 63.81999969482422,
+    "crosscheck_daily_pct": -4.92,
+    "crosscheck_gap_pct": 0.031,
     "crosscheck_status": "confirmed"
   },
   "tbx": {
     "date": "2026-11-12",
-    "close": 29.579500198364258,
+    "close": 29.6200008392334,
     "prev_date": "2026-11-11",
     "prev_close": 29.3799991607666,
-    "daily_pct": 0.68
+    "daily_pct": 0.82
   },
   "fx": {
-    "rate": 1355.7,
-    "date": "2026-11-10",
-    "requested_date": "2026-11-10",
+    "rate": 1336.7,
+    "date": "2026-11-12",
+    "requested_date": "2026-11-12",
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,343.84원, 차이 0.87%"
+    "crosscheck": "Yahoo Finance 1,336.26원, 차이 0.03%"
   },
-  "crcl_last_alerted_close_date": "2026-11-11",
+  "crcl_last_alerted_close_date": "2026-11-12",
   "correction_pending": false,
   "errors": []
 }
