@@ -223,6 +223,45 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
         self.assertEqual(impact, "🟡 중립 / 구조 변동성 주의")
         self.assertIn("사실상 보합", compact.live_fx_line(pending))
 
+    def test_2026_november_13_flat_fx_modest_rates_is_not_false_conflict(self):
+        # Regression: the actual 2026-11-13 12:17 KST message was labelled
+        # as conflicting even though 30m/60m FX were <0.10%, JGB2 +7.3bp,
+        # and the US-Japan spread *widened* only +5.7bp.
+        payload = {
+            "verdict": {"unwind_level": 0, "rebuild_level": 2, "evidence": {
+                "unwind::일본 단기금리 상승": True,
+                "unwind::USD/JPY 급락·엔화 급등": False,
+                "unwind::미·일 2년 금리차 축소": False,
+                "rebuild::USD/JPY 완만한 상승 방향": True,
+                "rebuild::미·일 2년 금리차 여전히 넓음": True,
+            }},
+            "refined_risk": {"level": 1, "signals": {}},
+        }
+        pending = {
+            "fx_signal_eligible": True,
+            "values": {
+                "usdjpy": 159.954, "usdjpy_15m_pct": 0.0075,
+                "usdjpy_30m_pct": 0.0288, "usdjpy_60m_pct": 0.0356,
+            },
+            "policy_path": {"jgb2_change_bp": 7.3, "spread_change_bp": 5.7},
+        }
+        title, direction, impact = compact.direction_call(payload, pending)
+        self.assertIn("↔ 중립", title)
+        self.assertNotIn("신호 충돌", title)
+        self.assertEqual(direction, "↔ 중립·방향 확인 대기")
+        self.assertEqual(impact, "🟡 중립 / 구조 변동성 주의")
+        self.assertIn("사실상 보합", compact.live_fx_line(pending))
+
+    def test_genuinely_mixed_30_and_60_minute_fx_is_conflict(self):
+        payload = {"verdict": {"unwind_level": 0, "rebuild_level": 0, "evidence": {}},
+                   "refined_risk": {"level": 1, "signals": {}}}
+        pending = {"fx_signal_eligible": True,
+                   "values": {"usdjpy_30m_pct": 0.13, "usdjpy_60m_pct": -0.14},
+                   "policy_path": {"spread_change_bp": 0.0}}
+        title, direction, _ = compact.direction_call(payload, pending)
+        self.assertIn("신호 충돌", title)
+        self.assertIn("30·60분", direction)
+
     def test_widening_spread_blocks_unconfirmed_unwind_arrow(self):
         payload = {
             "verdict": {"unwind_level": 0, "rebuild_level": 0,
