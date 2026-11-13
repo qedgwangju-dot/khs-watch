@@ -58,6 +58,26 @@ class YenPolicyNewsRunnerTests(unittest.TestCase):
         finally:
             runner._nyfed_q3_event_verified.cache_clear()
 
+
+    def test_same_article_official_upgrade_allowed_once_not_repeated(self):
+        news = runner.base.NewsItem(
+            title="US Confirms $500 Million Spent on Yen Intervention, With Euros",
+            link="https://example.org/story", source="Bloomberg",
+            description="", published=dt.datetime(2026, 11, 13, 1, 12, tzinfo=dt.timezone.utc),
+        )
+        classified = runner.base.classify(news)
+        previous = {
+            "seen_item_ids": [news.item_id],
+            "clusters": {
+                runner.base.topic_key(runner.INTERVENTION_SCALE_TOPIC):
+                    {"rank": 2, "material_score": 5, "sent_epoch": news.published.timestamp()}
+            },
+        }
+        self.assertTrue(runner.base.should_alert(classified, 3, previous, news.published))
+        self.assertFalse(runner.base.should_alert(classified, 2, previous, news.published))
+        previous["clusters"][runner.base.topic_key(runner.INTERVENTION_SCALE_TOPIC)]["rank"] = 3
+        self.assertFalse(runner.base.should_alert(classified, 3, previous, news.published))
+
     def test_nyfed_unavailable_does_not_upgrade_to_official(self):
         news = runner.base.NewsItem(
             title="US Confirms $500 Million Spent on Yen Intervention, With Euros",

@@ -162,6 +162,7 @@ _original_translate_headline = base.translate_headline_to_korean
 _original_build_message = base.build_message
 _original_collect_items = base.collect_items
 _original_corroboration_rank = base.corroboration_rank
+_original_should_alert = base.should_alert
 
 
 
@@ -188,14 +189,17 @@ def _nyfed_q3_event_verified() -> bool:
         accept="text/html,application/xhtml+xml,*/*",
     )
     if error or not body:
+        print("nyfed_q3_event_check=unavailable; official upgrade withheld")
         return False
     normalized = base.normalize_text(re.sub(r"<[^>]+>", " ", body))
-    return all(phrase in normalized for phrase in (
+    verified = all(phrase in normalized for phrase in (
         "november 12 2026",
         "the federal reserve did not intervene",
         "the u s treasury purchased japanese yen",
         "third quarter",
     ))
+    print(f"nyfed_q3_event_check={'verified' if verified else 'content_mismatch'}")
+    return verified
 
 
 def _intervention_actor(item: base.NewsItem) -> str:
@@ -223,6 +227,16 @@ def _same_intervention_amount_event(a: base.NewsItem, b: base.NewsItem) -> bool:
     if yen_a is not None and yen_b is not None:
         return abs(yen_a - yen_b) <= 0.05 * max(yen_a, yen_b)
     return False
+
+
+
+def should_alert(classified, rank, state, current):
+    """Allow same article to re-alert solely on a VERIFIED source-rank upgrade."""
+    if (classified.topic == INTERVENTION_SCALE_TOPIC
+            and classified.item.item_id in set(state.get("seen_item_ids") or [])):
+        cluster = (state.get("clusters") or {}).get(base.topic_key(classified.topic)) or {}
+        return rank > int(cluster.get("rank") or 0)
+    return _original_should_alert(classified, rank, state, current)
 
 
 def corroboration_rank(classified, universe):
@@ -636,6 +650,7 @@ def install() -> None:
     base.source_group = source_group
     base.classify = classify
     base.corroboration_rank = corroboration_rank
+    base.should_alert = should_alert
     base.translate_headline_to_korean = translate_headline_to_korean
     base.collect_items = collect_items
     base.build_message = build_message
