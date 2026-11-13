@@ -5,8 +5,8 @@
   "ray_official_index_verified": true,
   "maplight_track_version": 3,
   "maplight_last_successful_check_kst": "2026-11-13T08:54:17+09:00",
-  "maplight_health_ok": true,
-  "maplight_optogenetics_bridge_verified": true,
+  "maplight_health_ok": false,
+  "maplight_optogenetics_bridge_verified": false,
   "maplight_seen_milestone_keys": [
     "maplight|financing|pipe-150m",
     "maplight|ml004|iris-phase2-results",
@@ -15,7 +15,7 @@
     "maplight|nobel-optogenetics-bridge",
     "maplight|portfolio|discovery-paused"
   ],
-  "last_checked_kst": "2026-11-13T08:54:17+09:00",
+  "last_checked_kst": "2026-11-13T11:45:43+09:00",
   "nobel_2026_verified": true,
   "seen_event_keys": [
     "d3e43c74900cbe45ced82930",
@@ -26,14 +26,14 @@
     "89edfd25162fb70a90bc15ef",
     "3b9006d3c6cdc45c8b4799ae",
     "a168e38fecc4618002c9078e",
-    "8866680814947b6d915472c7",
+    "00ed4a9deda349c6d10d12e3",
     "f9150ec8a2689f8d887bf8b4",
+    "c5a24b19156b204bb494d543",
+    "8866680814947b6d915472c7",
     "c5b07942c2f87f613c2d6534",
     "7068d58d13d508a32621ac78",
-    "c86d41ca8fb34c35eec7ea49",
-    "c5a24b19156b204bb494d543",
     "518319b133f8374c9c1ae187",
-    "00ed4a9deda349c6d10d12e3"
+    "c86d41ca8fb34c35eec7ea49"
   ],
   "trial_snapshots": {
     "NCT06460844": {
@@ -307,7 +307,9 @@
   "source_errors": [
     "GenSight Biologics: HTTPError"
   ],
-  "maplight_source_errors": [],
+  "maplight_source_errors": [
+    "MapLight 공식 RSS: MapLight RSS HTTP 403; official newsroom fallback: HTTPError status=403 retryable=false"
+  ],
   "last_successful_delivery_kst": "2026-11-13T08:54:21+09:00",
   "telegram_message_ids": [
     342
