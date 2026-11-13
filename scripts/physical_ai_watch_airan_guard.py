@@ -8847,6 +8847,10 @@ _openai_infra_robots.install(base)
 import robot_watch_2026_nov_material_milestones as _industrial_robot_kpis
 _industrial_robot_kpis.install(base)
 
+# Source-graded 2026-11-13 merger, DKT OLED and robotics-economics milestones.
+import robot_watch_nov13_milestones as _nov13_milestones
+_nov13_milestones.install(base)
+
 
 if __name__ == '__main__':
     pre_state = base.load_state()

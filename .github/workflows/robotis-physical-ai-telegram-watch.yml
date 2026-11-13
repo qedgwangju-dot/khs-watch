@@ -104,6 +104,8 @@ jobs:
           python -m py_compile scripts/robot_watch_2026_nov_material_milestones.py scripts/test_robot_watch_material_milestones.py
           python scripts/test_robot_watch_material_milestones.py
           python scripts/physical_ai_watch_regression_check.py
+          python -m py_compile scripts/robot_watch_nov13_milestones.py scripts/test_robot_watch_nov13_milestones.py
+          python scripts/test_robot_watch_nov13_milestones.py
           python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py'
 
       - name: Refresh latest ROBOTIS dedup state without changing checked-out code
