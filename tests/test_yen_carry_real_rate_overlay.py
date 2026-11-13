@@ -63,6 +63,45 @@ class YenCarryRealRateOverlayTests(unittest.TestCase):
         self.assertEqual(period, "2026-08")
         self.assertAlmostEqual(yoy, 3.3919, places=3)
 
+    def test_october_2026_year_ago_missing_falls_back_with_explicit_period(self):
+        # Official Oct 2025 CPI was never collected; no Oct 2026 YoY exists.
+        # Sep 2026 remains the latest official year-over-year comparison.
+        payload = {"status": "REQUEST_SUCCEEDED", "Results": {"series": [{
+            "seriesID": "CUUR0000SA0", "data": [
+                {"year": "2026", "period": "M10", "value": "337.511"},
+                {"year": "2026", "period": "M09", "value": "336.940"},
+                {"year": "2025", "period": "M09", "value": "325.000"},
+                {"year": "2025", "period": "M08", "value": "324.000"},
+            ],
+        }]}}
+        period, yoy, latest = overlay.parse_bls_cpi_api_with_availability(json.dumps(payload))
+        self.assertEqual(period, "2026-09")
+        self.assertEqual(latest, "2026-10")
+        self.assertAlmostEqual(yoy, (336.940 / 325.0 - 1.0) * 100)
+        self.assertEqual(overlay.parse_bls_cpi_api(json.dumps(payload))[0], "2026-09")
+        context = overlay.classify(
+            composite_state(), composite_state(),
+            inputs(us_period=period),
+        )
+        context["inputs"]["us_cpi_latest_period"] = latest
+        block = overlay.context_block(context)
+        self.assertIn("최신 지수 관측월 2026-10", block)
+        self.assertIn("마지막 비교 가능월 2026-09", block)
+        self.assertIn("미공개 수치 추정 안 함", block)
+
+    def test_bls_missing_recent_year_ago_never_reuses_old_yoy_as_latest(self):
+        payload = {"status": "REQUEST_SUCCEEDED", "Results": {"series": [{
+            "seriesID": "CUUR0000SA0", "data": [
+                {"year": "2026", "period": "M10", "value": "337.511"},
+                {"year": "2026", "period": "M09", "value": "336.940"},
+                {"year": "2026", "period": "M08", "value": "336.000"},
+                {"year": "2026", "period": "M07", "value": "335.000"},
+                {"year": "2025", "period": "M07", "value": "325.000"},
+            ],
+        }]}}
+        with self.assertRaisesRegex(RuntimeError, "no recent pair"):
+            overlay.parse_bls_cpi_api_with_availability(json.dumps(payload))
+
     def test_parse_boj_home_policy_guideline(self):
         text = """
         <div>Interest Rate Applied to the Complementary Deposit Facility 1.0% since June 17, 2026</div>

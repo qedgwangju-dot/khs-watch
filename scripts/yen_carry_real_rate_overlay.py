@@ -65,6 +65,7 @@ class RealRateInputs:
     boj_effective_date: str | None
     jp_cpi_yoy: float
     jp_cpi_period: str
+    us_cpi_latest_period: str | None = None
 
 
 @dataclass(frozen=True)
@@ -130,7 +131,13 @@ def parse_fred_latest_csv(text: str) -> tuple[str, float]:
     return latest
 
 
-def parse_bls_cpi_api(text: str) -> tuple[str, float]:
+def parse_bls_cpi_api_with_availability(text: str) -> tuple[str, float, str]:
+    """Return latest *officially comparable* 12-month CPI and latest index month.
+
+    BLS cannot calculate Oct 2026 YoY because Oct 2025 was not published.
+    Never invent the missing base month or call an unavailable YoY an API error.
+    A fallback is allowed only within two months of the latest raw observation.
+    """
     payload = json.loads(text)
     if payload.get("status") != "REQUEST_SUCCEEDED":
         raise RuntimeError(f"BLS API request failed: {payload.get('message')}")
@@ -148,15 +155,27 @@ def parse_bls_cpi_api(text: str) -> tuple[str, float]:
             value = float(item["value"])
         except (KeyError, TypeError, ValueError):
             continue
-        rows[(year, month)] = value
+        if value > 0:
+            rows[(year, month)] = value
     if not rows:
         raise RuntimeError("BLS CPI monthly observations missing")
-    year, month = max(rows)
-    current = rows[(year, month)]
-    prior = rows.get((year - 1, month))
-    if prior is None or prior <= 0:
-        raise RuntimeError("BLS CPI year-ago observation missing")
-    return f"{year:04d}-{month:02d}", (current / prior - 1.0) * 100.0
+
+    latest_year, latest_month = max(rows)
+    latest_period = f"{latest_year:04d}-{latest_month:02d}"
+    latest_month_index = latest_year * 12 + latest_month
+    for year, month in sorted(rows, reverse=True):
+        # An old, technically comparable value is not current information.
+        if latest_month_index - (year * 12 + month) > 2:
+            break
+        prior = rows.get((year - 1, month))
+        if prior is not None and prior > 0:
+            return f"{year:04d}-{month:02d}", (rows[(year, month)] / prior - 1.0) * 100.0, latest_period
+    raise RuntimeError("BLS CPI has no recent pair with a published year-ago index")
+
+
+def parse_bls_cpi_api(text: str) -> tuple[str, float]:
+    period, yoy, _latest_period = parse_bls_cpi_api_with_availability(text)
+    return period, yoy
 
 
 def parse_boj_policy_home(text: str) -> tuple[float, str | None]:
@@ -264,7 +283,7 @@ def fetch_inputs() -> RealRateInputs:
         raise RuntimeError(f"Fed target range invalid: lower={lower}, upper={upper}")
     fed_date = min(upper_date, lower_date)
 
-    us_period, us_cpi = parse_bls_cpi_api(_fetch(BLS_CPI_API, accept="application/json,*/*"))
+    us_period, us_cpi, us_latest = parse_bls_cpi_api_with_availability(_fetch(BLS_CPI_API, accept="application/json,*/*"))
     boj_rate, boj_effective = parse_boj_policy_home(_fetch(BOJ_HOME))
     jp_period, jp_cpi = fetch_japan_cpi()
 
@@ -275,6 +294,7 @@ def fetch_inputs() -> RealRateInputs:
         fed_observation_date=fed_date,
         us_cpi_yoy=us_cpi,
         us_cpi_period=us_period,
+        us_cpi_latest_period=us_latest,
         boj_policy_rate=boj_rate,
         boj_effective_date=boj_effective,
         jp_cpi_yoy=jp_cpi,
@@ -433,9 +453,17 @@ def context_block(context: dict) -> str:
     inputs = context.get("inputs") or {}
     m = context.get("metrics") or {}
     changed = ", ".join(m.get("changed_sources") or []) or "새 공식 이벤트 없음"
+    us_latest = inputs.get("us_cpi_latest_period")
+    us_used = inputs.get("us_cpi_period")
+    us_gap = (
+        f"- 미국 CPI 비교 제한: 최신 지수 관측월 {us_latest}의 전년동월 기준지수가 미공개되어 "
+        f"마지막 비교 가능월 {us_used}의 전년동월비만 사용(미공개 수치 추정 안 함)"
+        if us_latest and us_used and us_latest != us_used else None
+    )
     return "\n".join([
         "실질금리·정책 정상화",
         f"- 미국 사후 실질정책금리: {fmt(m.get('us_real_policy_rate'), '%')} = Fed 중간값 {fmt(inputs.get('fed_midpoint'), '%')} - 전체 CPI {fmt(inputs.get('us_cpi_yoy'), '%')} ({inputs.get('us_cpi_period')})",
+        *([us_gap] if us_gap else []),
         f"- 일본 사후 실질정책금리: {fmt(m.get('jp_real_policy_rate'), '%')} = BOJ {fmt(inputs.get('boj_policy_rate'), '%')} - 전체 CPI {fmt(inputs.get('jp_cpi_yoy'), '%')} ({inputs.get('jp_cpi_period')})",
         f"- 미·일 실질정책금리 갭: {fmt(m.get('us_jp_real_gap'), '%p')} / 직전 공식 이벤트 대비 {fmt(m.get('real_gap_change_pp'), '%p')}",
         f"- Fed-BOJ 명목 정책금리 격차: {fmt(m.get('nominal_policy_gap'), '%p')} / 직전 대비 {fmt(m.get('policy_gap_change_pp'), '%p')}",
