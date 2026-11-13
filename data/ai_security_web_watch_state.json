@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 10,
-    "new_material_items": 0,
-    "raw_items": 96,
+    "material_items": 11,
+    "new_material_items": 1,
+    "raw_items": 97,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1077,6 +1077,16 @@
       "url": "https://www.php.net/archive/2026.php#2026-10-21-5",
       "vendor": "PHP 재단"
     },
+    "bbcff96fefdb205826cf5498": {
+      "category": "미분류 AI 보안 변화",
+      "first_seen_at": "2026-11-13T19:25:26.844569+00:00",
+      "published_at": "2026-11-11T06:45:30+00:00",
+      "severity": 1,
+      "source": "OpenAI Alignment Research Blog",
+      "title": "What affects chain-of-thought monitorability across the model lifecycle? - OpenAI Alignment Research Blog",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBaRWhCSnZabGY1Nk9pUl9tbGdsY1RTWGZ4bTV4SVFSSVB2aHhYX2F6cGpTUVZsQXRZR1Z6SXhrLTZuejZWUFpMdDZMQWlQX1VGbVJTQkJhUXdRdWFOSGFzVEg2SE1yb2FmZjNKSDVzb08?oc=5",
+      "vendor": "OpenAI"
+    },
     "bd54e3b04cec0488b3f41c95": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-29T15:25:57.640731+00:00",
@@ -1520,5 +1530,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-14T03:52:51+09:00"
+  "updated_at_kst": "2026-11-14T04:25:26+09:00"
 }
