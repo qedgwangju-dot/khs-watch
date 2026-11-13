@@ -195,11 +195,28 @@ def direction_call(payload: dict, pending: dict | None = None) -> tuple[str, str
     spread_opposes_unwind = spread_move is not None and spread_move >= 1.0
     spread_opposes_carry = spread_move is not None and spread_move <= -1.0
     fresh_fx = (pending or {}).get("fx_signal_eligible") is True
-    if not fresh_fx:
+    fx_bias = _live_fx_bias(pending)
+    # Small, opposing daily rate moves must not manufacture a live "signal
+    # conflict" when both 30m and 60m yen moves are below the 0.10% gate.
+    # Keep these as context; genuine rate repricing >=10bp still counts.
+    jgb2_move = (pending or {}).get("policy_path", {}).get("jgb2_change_bp")
+    try:
+        jgb2_move = float(jgb2_move) if jgb2_move is not None else None
+    except (ValueError, TypeError):
+        jgb2_move = None
+    material_rate_move = bool(
+        (spread_move is not None and abs(spread_move) >= 10.0)
+        or (jgb2_move is not None and jgb2_move >= 10.0)
+    )
+    confirmed_shock = bool((verdict.get("evidence") or {}).get("unwind::USD/JPY 급락·엔화 급등")
+                           or (refined.get("signals") or {}).get("target_currency_spread_confirmation"))
+    if fx_bias == "flat" and not material_rate_move and not confirmed_shock:
+        unwind_score = carry_score = 0
+    if not fresh_fx or fx_bias == "unknown":
         unwind_score = carry_score = 0
     risk_emoji = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}.get(min(risk_level, 3), "🟡")
 
-    if not fresh_fx:
+    if not fresh_fx or fx_bias == "unknown":
         # A weekend/market closure or failed live request must not be called
         # live neutral (or a live carry/unwind direction). Retain structural
         # risk, but explicitly withhold the current directional assessment.
@@ -209,7 +226,11 @@ def direction_call(payload: dict, pending: dict | None = None) -> tuple[str, str
             "⚪ 주식시장 실시간 영향 판정 보류 / 구조적 위험은 별도",
         )
 
-    if spread_opposes_unwind and unwind_score > carry_score and unwind_score < 4:
+    if fx_bias == "mixed":
+        direction = "↔ 신호 충돌 — 30·60분 엔화 방향 상반"
+        title_dir = "↔ 신호 충돌"
+        direction_kind = "conflict"
+    elif spread_opposes_unwind and unwind_score > carry_score and unwind_score < 4:
         direction = "↔ 신호 충돌 — 금리차 확대·청산 취약성 병존"
         title_dir = "↔ 신호 충돌"
         direction_kind = "conflict"
