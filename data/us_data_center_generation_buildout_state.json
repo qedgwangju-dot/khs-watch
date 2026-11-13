@@ -115,8 +115,8 @@
   ],
   "last_fx_krw_per_usd": 1334.182801,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-11-13T22:53:20+00:00",
-  "updated_at_utc": "2026-11-13T22:53:23+00:00",
+  "fx_checked_utc": "2026-11-13T23:59:27+00:00",
+  "updated_at_utc": "2026-11-13T23:59:30+00:00",
   "venture_global_power_island": {
     "framework_signed": "2026-10-09",
     "announcement_date": "2026-10-15",
@@ -143,7 +143,7 @@
     "official_release_verified_live": true,
     "baker_official_verified_live": true,
     "sec_verified_live": false,
-    "last_checked_utc": "2026-11-13T22:53:23+00:00",
+    "last_checked_utc": "2026-11-13T23:59:30+00:00",
     "source_errors": [
       "SEC 2026-10-15 8-K 실시간 확인 불가: HTTPError: 403 Client Error: Forbidden for url: https://www.sec.gov/Archives/edgar/data/2007855/00020"
     ],
@@ -326,5 +326,81 @@
       ],
       "destination_verified": true
     }
+  },
+  "jet_turbine_reuse_data_center": {
+    "version": 1,
+    "event_id": "used-turbines-aircraft-derived-ai-power-20261109-reuters-firstparty-v1",
+    "delivered_event_id": "used-turbines-aircraft-derived-ai-power-20261109-reuters-firstparty-v1",
+    "first_source_date": "2026-11-09",
+    "source_snapshot": {
+      "story_date": "2026-11-09",
+      "woodmac_us_new_turbine_average_delivery_years_reported": 6,
+      "global_orders_gw_over": 100,
+      "global_annual_production_capacity_gw_range": [
+        60,
+        70
+      ],
+      "jefferies_us_dc_turbine_demand_2026_gw_approx": 17,
+      "jefferies_us_dc_turbine_demand_2028_growth_multiple_floor": 3.0,
+      "jefferies_global_2028_turbine_demand_gw_est": 129,
+      "jefferies_global_2028_manufacturing_capacity_gw_est": 87,
+      "jefferies_global_2028_supply_gap_gw_derived": 42,
+      "crusoe_proenergy_original_contract_date": "2026-04-16",
+      "crusoe_units_contracted": 13,
+      "crusoe_pe6000_mw_each": 50,
+      "crusoe_contract_total_mw": 650,
+      "crusoe_ordered_used_retired_aircraft_engines": false,
+      "ftai_original_conversion_platform": "CFM56",
+      "ftai_mod1_unit_mw": 25,
+      "ftai_jf_initial_purchase_order_usd_b": 1.465,
+      "ftai_jf_order_date": "2026-07-22",
+      "ftai_jf_delivery_target": "2027-11",
+      "ftai_cloud_customer_publicly_named": false,
+      "ftai_jf_master_contract_years": 5,
+      "ftai_performance_price_downward_adjustment_cap_pct": 10,
+      "used_turbine_price_usd_m_per_mw_reported": [
+        1.5,
+        1.7
+      ],
+      "new_turbine_price_usd_m_per_mw_reported": [
+        2.0,
+        2.5
+      ],
+      "broker_used_pair_mw_reported": 29,
+      "broker_used_pair_usd_m_reported": 12.5,
+      "broker_equivalent_new_pair_usd_m_reported": 35,
+      "cleanview_proposed_onsite_generation_gw_reported": 90,
+      "cleanview_operating_onsite_generation_gw_reported": 2,
+      "w506_gas_piston_engines_us_data_center_orders_gw_reported": 3,
+      "gev_q2_contract_and_reservation_gw": 116,
+      "gev_q3_contract_and_reservation_gw": 122,
+      "gev_q2_year_end_target_gw": 125,
+      "gev_q3_year_end_target_gw": 130,
+      "contract_scope_warning": "Crusoe PE6000 is aircraft-derived generator, not proof it bought retired aircraft engines; FTAI order different customer",
+      "source_level": "Reuters/Decrypt Nov09 interviews for lead time/price; manufacturer primary for Crusoe & FTAI orders; GE official Q3",
+      "official": [
+        "https://www.proenergyservices.com/2026/04/proenergy-to-deliver-major-generating-equipment-to-power-crusoe-ai-factories/",
+        "https://ir.ftaiaviation.com/news-releases/news-release-details/ftai-aviation-announces-launch-ftai-power-ftai-adapts-worlds",
+        "https://ir.ftaiaviation.com/news-releases/news-release-details/ftai-announces-1465-billion-gas-turbine-generator-set-order",
+        "https://www.gevernova.com/news/articles/ge-vernova-releases-third-quarter-2026-financial-results-announces-agreement-acquire",
+        "https://www.epa.gov/stationary-sources-air-pollution/clean-air-act-resources-data-centers"
+      ],
+      "reported": [
+        "https://www.reuters.com/business/aerospace-defense/ai-power-rush-sends-data-centres-hunting-used-turbines-jet-engines-2026-11-09/",
+        "https://decrypt.co/382890/ai-data-centers-used-jet-engines-power-turbines"
+      ]
+    },
+    "official_sources_verified_live": {
+      "proenergy_crusoe": true,
+      "ftai_jf_order": true,
+      "ftai_engine_conversion": true,
+      "gev_q3": true,
+      "epa_standards": true
+    },
+    "press_report_status": "Reuters/Decrypt Nov09 attributed; direct Reuters text may be access-limited",
+    "crusoe_contract_stage": "signed_equipment_supply_not_energized",
+    "ftai_contract_stage": "signed_initial_order_not_delivered",
+    "gev_reference_period": "2026-Q3",
+    "prepared_at_utc": "2026-11-13T23:59:33+00:00"
   }
 }
