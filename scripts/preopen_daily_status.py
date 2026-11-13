@@ -113,7 +113,10 @@ def _us_horizon_details(status_text, saved):
             else:
                 rendered.append(f"{horizon_label} {_usd_billion_with_krw(value, fx)}")
         lines.append(f"• {title} ({entry['period']}): " + " / ".join(rendered))
-    lines.append("• 주식형은 주간 순유입 합계, MMF·마진부채는 시점 간 잔액 차이입니다. 10/14 ICI 집합투자신탁 활동 주석을 포함하며, MMF 감소가 주식 순유입을 뜻하지 않습니다.")
+    lines.append("• 쉽게 읽기(주식형): 순유입은 주가 상승 압력, 순유출은 하락 압력으로 작용할 수 있지만 가격 방향을 확정하지 않습니다.")
+    lines.append("• 주식형은 주간 순유입 합계, MMF·마진부채는 시점 간 잔액 차이입니다. 10/14 ICI 집합투자신탁 활동 주석을 포함합니다.")
+    lines.append("• MMF 잔액 변화는 주식 자금 유입·유출이나 직접 이동을 뜻하지 않습니다; 마진부채 증가는 레버리지 확대이지 상승 방향 확정이 아닙니다.")
+    lines.append("• ↑/↓는 지표값의 증감 부호이지 주가 방향 표시가 아닙니다.")
     return lines
 
 
