@@ -76,7 +76,7 @@
     "https://www.koreaittimes.com/news/articleView.html?idxno=159114",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-11-14T01:44:12+09:00",
+  "last_checked_at_kst": "2026-11-14T02:15:04+09:00",
   "metric_observation_count": 1,
   "event_count": 0,
   "latest_evidence_urls": [
@@ -820,13 +820,13 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-11-14T01:44:12+09:00",
+    "last_checked_at_kst": "2026-11-14T02:15:04+09:00",
     "last_error": "",
     "pending_month": "2026-10"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-14T01:46:15+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-11-14T02:16:35+09:00",
+    "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-14T01:46:15+09:00",
   "telegram_message_ids": [
@@ -1019,16 +1019,16 @@
     "alert_layout_version": 2
   },
   "discovery_health": {
-    "rss_ok": 60,
+    "rss_ok": 62,
     "rss_failed": 0,
-    "urls_resolved": 105,
-    "pages_opened": 13,
-    "bing_ok": 35,
-    "bing_failed": 1,
-    "google_ok": 25,
+    "urls_resolved": 113,
+    "pages_opened": 14,
+    "bing_ok": 40,
+    "bing_failed": 0,
+    "google_ok": 22,
     "gdelt_ok": 0,
     "gdelt_failed": 0,
-    "news_candidates": 40
+    "news_candidates": 43
   },
   "power_squeeze_alerts": {
     "sent_fact_keys": [
@@ -1054,7 +1054,7 @@
   "news_collection_outage": {
     "consecutive_failures": 0,
     "alerted": false,
-    "last_success_at_kst": "2026-11-14T01:44:12+09:00",
+    "last_success_at_kst": "2026-11-14T02:15:04+09:00",
     "last_failure_at_kst": "2026-11-12T03:43:34+09:00"
   }
 }
