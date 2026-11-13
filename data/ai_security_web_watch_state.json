@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 8,
+    "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 88,
+    "raw_items": 91,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -587,6 +587,16 @@
       "url": "https://www.anthropic.com/research/self-replicating-ai",
       "vendor": "Anthropic"
     },
+    "656b6d21882a239dc0fd8c8c": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-11-13T08:21:55.582693+00:00",
+      "published_at": "2026-11-13T07:39:04+00:00",
+      "severity": 2,
+      "source": "SecurityWeek",
+      "title": "PHP2Shell Exploited in Destructive Check Point Gateway Attacks - SecurityWeek",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRFNEUXdNODNqRGZZOUU5WU5SS0xGdnRmYWVFczZXTlRxaFB2cllLbm40cEM4ekdvMUdWTmhWMm1fTl92dU8zUnN3eXhIRVNreE5JZHZOV2dhMmQ1SkVvRW5ueEF5Y0ZKQ1ZjZ2U0ZHJHYkF6YjE0UFdTeTVDajVLRVZCSHl0enJVcmNZNk9tVWlGa0R3WVQ0?oc=5",
+      "vendor": "PHP 재단"
+    },
     "6667fcaf29c68af8a3ddc4e6": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
@@ -955,6 +965,16 @@
       "source": "BleepingComputer",
       "title": "PHP2Shell security flaws now sucessfully exploited in the wild - BleepingComputer",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPS3pQZy1nXy15UXp3MjRyUXBrQUJ3dnRpRndoMU1aT2pudXVCYjdMdWFxTDNBUEloTVRZcFVBZ3VVSjNVeXAxQmxyQjN1bEZOdXRHQzVRZUU4VmlCR0JobmctdEg2VXdTTUxTekx2VEdzMmdvYVFtZ2lwYThlZVZvdlZZQ3hwd2d3VFp6aC1zS2N5aU94ZU5CVElmVFFUT0JRdnNoVm5BRDhMbktiekM40gG0AUFVX3lxTE8zZlJCNVJsc05wdVlKTVJ6XzRINkxsbmFudWEtaDJlWndDdC1xV2Jyd29YRFU5UkRrcjZoNUgwWkNSY2x4SWwtX3VFLTdUS3dLcjJWYWR3eS1meHJBU1VwTmRnNWhISTEyR0x3dlBHSUg3NWNWN2VSc1RVb3JYQlZDbU1mV2ZiM003aTcydTZ0R1hhZXhDdnNIRXF5cXFZcHRNVXpaMjc5WEJDeUc0ZTNZTld1MA?oc=5",
+      "vendor": "PHP 재단"
+    },
+    "a7f32b302b0b54f718567b70": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-11-13T08:21:55.582693+00:00",
+      "published_at": "2026-11-13T08:05:00+00:00",
+      "severity": 2,
+      "source": "The Hacker News",
+      "title": "Hackers Exploit PHP2Shell Flaws in Check Point Gateways to Deploy TSGA Backdoor and Wipe ESXi Files - The Hacker News",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5wY25ETkp0RWNhWVQzZ0xZcXR0RUdSd09HNW52U2JHTmlmTENZcmh0MEdaV0U1RDI4YUk1YTFka196Y3F1NTl5V0NzUFM5NTJjckE1MkpldjEtdjZGRUphbWpDQ1VNVW40azljbTNpWGdpR3hZYUZtMUkzaGdjZw?oc=5",
       "vendor": "PHP 재단"
     },
     "a83e1baad455d70adaab0ab9": {
@@ -1490,5 +1510,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-13T16:54:55+09:00"
+  "updated_at_kst": "2026-11-13T17:21:55+09:00"
 }
