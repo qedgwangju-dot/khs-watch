@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-14T02:43:23+09:00",
+  "updated_at_kst": "2026-11-14T07:57:30+09:00",
   "correction_pending": false,
   "buyback": {
     "sha256": "fb510b050dab3504e1291e77b8763449675924b6d6eed10cb18bbd3203ec5941",
@@ -7,19 +7,19 @@
     "long_bucket_summary": "26-11-12 2027-02-09 TIPS 1Y to 10Y TIPS Liquidity Support 0 750000000 2027-11-13 2036-11-12 2026-11-10 2026-11-12 2026-11-13 13:40 14:00 Nominal Coupons 20Y to 30Y NOMINAL COUPONS Liquidity Support 0 6000000000 2046-11-18 2056-11-17 2026-11-16 2026-11-17 2026-11-18 13:40 14:0 | port 0 750000000 2027-11-13 2036-11-12 2026-11-10 2026-11-12 2026-11-13 13:40 14:00 Nominal Coupons 20Y to 30Y NOMINAL COUPONS Liquidity Support 0 6000000000 2046-11-18 2056-11-17 2026-11-16 2026-11-17 2026-11-18 13:40 14:00 Nominal Coupons 7Y to 10Y NOMINAL COUPONS Li"
   },
   "rates": {
-    "date": "2026-11-12",
-    "10y": 5.1,
-    "30y": 5.43,
-    "prev_date": "2026-11-10",
-    "prev_10y": 4.98,
-    "prev_30y": 5.35,
-    "daily_10y_bp": 12.0,
-    "daily_30y_bp": 8.0,
-    "prev5_date": "2026-11-04",
-    "prev5_10y": 4.9,
-    "prev5_30y": 5.28,
-    "five_day_10y_bp": 20.0,
-    "five_day_30y_bp": 15.0
+    "date": "2026-11-13",
+    "10y": 5.15,
+    "30y": 5.47,
+    "prev_date": "2026-11-12",
+    "prev_10y": 5.1,
+    "prev_30y": 5.43,
+    "daily_10y_bp": 5.0,
+    "daily_30y_bp": 4.0,
+    "prev5_date": "2026-11-05",
+    "prev5_10y": 4.84,
+    "prev5_30y": 5.25,
+    "five_day_10y_bp": 31.0,
+    "five_day_30y_bp": 22.0
   },
   "btc_etf": {
     "date": "2026-11-12",
