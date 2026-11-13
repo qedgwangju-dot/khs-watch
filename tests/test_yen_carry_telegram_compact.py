@@ -262,6 +262,50 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
         self.assertIn("신호 충돌", title)
         self.assertIn("30·60분", direction)
 
+    def test_telegram_marks_partial_fx_coverage_and_missing_cpi_comparison(self):
+        body = """조회 시각: 2026-11-13 12:17:58 KST
+
+판정
+- 캐리 청산 위험: 🟡 구조적 취약성·경계
+- 엔화 재약세·캐리 재구축: 🟠 재구축 주의
+
+이번 변화
+- 일본 재무성 신규 주간 발표
+"""
+        payload = {"verdict": {"unwind_level": 0, "rebuild_level": 2, "evidence": {}},
+                   "refined_risk": {"level": 1, "signals": {}}}
+        pending = {
+            "fx_signal_eligible": True,
+            "values": {"usdjpy": 159.954, "usdjpy_15m_pct": 0.01,
+                       "usdjpy_30m_pct": 0.03, "usdjpy_60m_pct": 0.04},
+            "policy_path": {"spread_change_bp": 5.7, "jgb2_change_bp": 7.3},
+            "target_currency": {"initialized": True, "available_count": 2},
+            "real_rate_overlay": {"initialized": True, "available": True,
+                                  "inputs": {"us_cpi_latest_period": "2026-10",
+                                             "us_cpi_period": "2026-09"}},
+        }
+        with tempfile.TemporaryDirectory() as td:
+            out = pathlib.Path(td)
+            paths = {
+                "BODY": out / "yen_carry_composite_alert.md",
+                "DETAIL": out / "yen_carry_composite_alert_detail.md",
+                "PAYLOAD": out / "yen_carry_composite_alert.json",
+                "PENDING": out / "yen_carry_composite_pending_state.json",
+                "TITLE": out / "yen_carry_composite_alert_title.txt",
+            }
+            paths["BODY"].write_text(body, encoding="utf-8")
+            paths["PAYLOAD"].write_text(json.dumps(payload), encoding="utf-8")
+            paths["PENDING"].write_text(json.dumps(pending), encoding="utf-8")
+            with mock.patch.multiple(compact, **paths):
+                self.assertEqual(compact.main(), 0)
+            result = paths["BODY"].read_text(encoding="utf-8")
+            self.assertIn("↔ 중립", paths["TITLE"].read_text(encoding="utf-8"))
+            self.assertIn("자료 확인 제한", result)
+            self.assertIn("투자통화 교차확인 2/3개", result)
+            self.assertIn("미국 CPI 최신 2026-10", result)
+            self.assertIn("2026-09 비교 가능치만 사용", result)
+            self.assertIn("approximating-missing-data.htm", result)
+
     def test_widening_spread_blocks_unconfirmed_unwind_arrow(self):
         payload = {
             "verdict": {"unwind_level": 0, "rebuild_level": 0,
