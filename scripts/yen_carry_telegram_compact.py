@@ -599,6 +599,36 @@ def main() -> int:
     if new_auction_url and auction:
         source_lines.append(f"- Japan MOF JGB 30Y auction: {new_auction_url}")
 
+    # A successful workflow with incomplete market inputs is not full coverage.
+    # Expose source limitations without turning them into an extra market alert.
+    verification_limits: list[str] = []
+    targets = pending.get("target_currency") or {}
+    if targets.get("initialized") and targets.get("available_count") is not None:
+        try:
+            count = int(targets["available_count"])
+            if count < 3:
+                verification_limits.append(
+                    f"투자통화 교차확인 {count}/3개 — 확산 확정 판정 제외"
+                )
+        except (ValueError, TypeError):
+            verification_limits.append("투자통화 교차확인 수량 오류 — 확산 판정 보류")
+    real = pending.get("real_rate_overlay") or {}
+    if real.get("initialized"):
+        if real.get("available") is False:
+            verification_limits.append("공식 CPI·실질금리 보조자료 확인 불가 — 보조 판단 제외")
+        else:
+            us_inputs = real.get("inputs") or {}
+            latest_cpi = us_inputs.get("us_cpi_latest_period")
+            comparable_cpi = us_inputs.get("us_cpi_period")
+            if latest_cpi and comparable_cpi and latest_cpi != comparable_cpi:
+                verification_limits.append(
+                    f"미국 CPI 최신 {latest_cpi} 전년동월 기준지수 미공개"
+                    f" — {comparable_cpi} 비교 가능치만 사용"
+                )
+                source_lines.append(
+                    "- U.S. CPI missing-data notice (BLS): https://www.bls.gov/cpi/factsheets/approximating-missing-data.htm"
+                )
+
     checked = next((x.strip() for x in preamble if x.strip().startswith("조회 시각:")), "")
     if not checked:
         checked = f"조회 시각: {dt.datetime.now(KST).strftime('%Y-%m-%d %H:%M KST')}"
@@ -641,6 +671,9 @@ def main() -> int:
 
     if policy_block:
         lines += ["", *policy_block[:-1]]
+
+    if verification_limits:
+        lines += ["", "자료 확인 제한", *[f"• {item}" for item in verification_limits]]
 
     lines += [
         "",
