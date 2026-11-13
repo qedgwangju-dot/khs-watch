@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-14T03:32:55+09:00",
-  "last_scan_count": 8,
+  "updated_at_kst": "2026-11-14T08:55:33+09:00",
+  "last_scan_count": 7,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -132,7 +132,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 3,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -189,27 +189,16 @@
     "f0a97311dc41ab73008f930b",
     "f2fefec91a3da1f1885a7a2a",
     "f3274f98949ddbb5ad284b00",
+    "f85f3c97ab7f757538e1c965",
     "fbb3374837c522b4bf3b2884"
   ],
   "delivered_event_keys": [],
   "last_held": [
     {
-      "event_key": "taiwan|capacity|ASE,TSMC|core",
-      "source": "TradingKey",
-      "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-13T22:36:26+09:00"
-    },
-    {
       "event_key": "taiwan|capacity|TSMC|core",
       "source": "Taiwan News",
       "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-13T21:54:00+09:00"
-    },
-    {
-      "event_key": "taiwan|diversification|TSMC|arizona",
-      "source": "BigGo Finance",
-      "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-13T20:05:00+09:00"
+      "published_kst": "2026-11-13T22:03:00+09:00"
     }
   ],
   "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
