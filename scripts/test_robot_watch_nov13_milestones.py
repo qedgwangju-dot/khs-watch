@@ -22,7 +22,7 @@ merger = base.query_news(MERGER_BACKFILL)[0]
 dkt = base.query_news(DKT_BACKFILL)[0]
 mg, ms, mk, mc = check(merger)
 dg, ds, dk, dc = check(dkt)
-assert mg == "spacex_tesla_combination" and ms >= 11 and "합병" in mc
+assert mg == "spacex_tesla_combination" and ms >= 11 and "기업결합" in mc
 assert dg == "dkt_auto_oled_expansion" and ds >= 11 and "OLED" in dc
 assert "독립 확인 전" in base.verification(dkt,dg,dkt["description"])
 reprint = item("SpaceX Tesla merger talks progress, Bloomberg News reports","December potential", "Investing.com")
