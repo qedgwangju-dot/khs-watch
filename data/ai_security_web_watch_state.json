@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 9,
+    "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 94,
+    "raw_items": 96,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -146,6 +146,16 @@
       "title": "Anthropic Finds Ingredients for Future AI Worms - Dark Reading",
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQRG9fTjV5OXR5VEFUcmhNU3ZxMlp2ZmVReGJMVFc5MU1JTmNEaFZ0UEl5YnlaWnJFUlBqR1ZjcWlyQzRQNXNZREtULVVaelFjMGYwSkozNzVUY0tCaURVRnc4aGNBX2NidWxTRi1vUld2djZFSTlyOVBiMnByTFBFaA?oc=5",
       "vendor": "Anthropic"
+    },
+    "12c74139e0101e3b37a0fed7": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-11-13T18:52:51.691129+00:00",
+      "published_at": "2026-11-13T16:21:43+00:00",
+      "severity": 2,
+      "source": "BleepingComputer",
+      "title": "Check Point gateways hacked via PHP2Shell to deploy VMware ESXi wiper - BleepingComputer",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQTXd3ZkRGbkx5TGRFckNrTmFCbGJRYlVtOHItRUwxR0h3Y3Bka2p6OFhNSkE5amxYbkVHMFpBQkdVTFBnbFZfbkJERFNjaWp3RER6Z2ZWUldrSGcyWU1XU3F6Y3FKa2ZYeVlyX2dCYWtqdXZ4b29VUi1yTnMxYUNOMTVSVFRxSWNVMy1GWUJDQi1NeTZDQUZIZXhjMl9JNHItMHowekZNZEhTSnFQOEJpcmZvNXhfYl80?oc=5",
+      "vendor": "PHP 재단"
     },
     "133539b81ece8c44aa4784dc": {
       "category": "국내 AI 악용 개인정보 탈취·피의자 검거",
@@ -1510,5 +1520,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-14T03:20:14+09:00"
+  "updated_at_kst": "2026-11-14T03:52:51+09:00"
 }
