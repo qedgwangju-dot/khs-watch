@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-13T09:56:54.502109+00:00",
+  "updated_at": "2026-11-13T16:15:34.315874+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -903,40 +903,24 @@
     "8bc61dff1448548fdfec45eceead997efbfb6c56e4f084f8e6aedbc124380da6",
     "42940b56346de9e37fbac8b1e61b71667b2051804b94c2f386473f4539840699",
     "510e343218c801fedbd88895d6373abb62710c909f35b6f1aacad556a9077dc7",
-    "0f5b522f14947d8eea54e6c7d79b85a206b46e9e4111baabd9086590eecf9e57"
+    "0f5b522f14947d8eea54e6c7d79b85a206b46e9e4111baabd9086590eecf9e57",
+    "05e8d59076e3f5bd681c429b905dcf53bb0a2c263d2b81087f3239ab705a8137"
   ],
   "last_selected": [
-    "0f5b522f14947d8eea54e6c7d79b85a206b46e9e4111baabd9086590eecf9e57"
+    "05e8d59076e3f5bd681c429b905dcf53bb0a2c263d2b81087f3239ab705a8137"
   ],
   "groups": [
     "dkt_auto_oled_expansion",
     "ess_battery",
     "ev_46_series",
-    "google_gemini_robotics",
     "humanoid_component_policy",
     "hyundai_mobis_atlas",
     "lg_factory_loop",
     "robotis",
     "robotis_excess_demand",
-    "spacex_tesla_combination",
-    "wonik"
+    "spacex_tesla_combination"
   ],
   "delivery_history": [
-    {
-      "run_id": 42967149272,
-      "outcome": "sent",
-      "message_ids": [
-        350
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-11T05:39:26.997679+00:00"
-    },
     {
       "run_id": 42967937520,
       "outcome": "sent",
@@ -1173,13 +1157,28 @@
         false
       ],
       "state_timestamp_utc": "2026-11-13T09:56:54.502109+00:00"
+    },
+    {
+      "run_id": 43460846052,
+      "outcome": "sent",
+      "message_ids": [
+        362
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-13T16:15:34.315874+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 43405281994,
+    "run_id": 43460846052,
     "outcome": "sent",
     "message_ids": [
-      361
+      362
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1188,6 +1187,6 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-13T09:56:54.502109+00:00"
+    "state_timestamp_utc": "2026-11-13T16:15:34.315874+00:00"
   }
 }
