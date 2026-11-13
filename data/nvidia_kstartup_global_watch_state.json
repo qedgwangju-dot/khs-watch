@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-11-09T14:45:03+09:00",
-  "last_checked_kst": "2026-11-13T19:03:21+09:00",
+  "last_checked_kst": "2026-11-13T19:56:38+09:00",
   "seen": {
     "126be798477cbd897413b8c2": {
       "title": "국산 AI 반도체, 엔비디아 GPU와 연결…SKT·리벨리온 3자 협력 - MTN 머니투데이방송",
@@ -290,6 +290,18 @@
       "tier": "신뢰보도",
       "first_seen_kst": "2026-11-12T09:03:06+09:00",
       "suppressed_duplicate": "same_event"
+    },
+    "b9c36cd41e5a59df023f409d": {
+      "title": "\"매디슨 황은 불참했지만, 협약 예정대로\" 엔비디아-SKT-리벨리온 3자 MOU - 뉴시스",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE81Y3RFMWYyNVhVT1hNQlk0dUdyaVhYYUtteXBXY3dBT3FJdjQzMUlra0RpemZpek1YUV9VTlRDQTNwMGZqRmc5cklsNUhvalg5a1I4UGQxY0JwUWNtaGdZS9IBeEFVX3lxTE1xZEtEQ2t0ZXpmbWo2SmJVRVJ1ZXBMYjFiaGlaV3RTcUppSGcyMTdEVW9lM2hmZXhtVUQ0V2QweXRWSHhScU5RV0REV01GSWZrYm5qUkN2cFlqS1FhU0w5ZWpGRjkzR0xDZG5xQ2RoY0IteDEyNmc4WQ?oc=5",
+      "source": "뉴시스",
+      "published_kst": "2026-11-09T14:00+09:00",
+      "event_id": "nvidia_korea|visit_cancelled|2026-11",
+      "kind": "visit_cancelled",
+      "stage": 3,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-13T19:56:38+09:00",
+      "alerted": true
     }
   },
   "events": {
@@ -379,6 +391,13 @@
       "source": "https://news.google.com/rss/articles/CBMickFVX3lxTE1GSXNJRUpZcklOdDRkUXRaTVNNWnFiTUFkZXc2S3VmRmg1Ull5NlFnUm5zcGlJT0lnYWV3cTg1ZVpfUzdjc2NhZl9GY1JzSXdZeXN0QlNOaEpCdzdmWk1mUE51MV9JSlFacEM3YzlZTmZQUQ?oc=5",
       "stage": 2,
       "registered_kst": "2026-11-09T20:27:24+09:00",
+      "alerted": true
+    },
+    "nvidia_korea|visit_cancelled|2026-11": {
+      "title": "\"매디슨 황은 불참했지만, 협약 예정대로\" 엔비디아-SKT-리벨리온 3자 MOU - 뉴시스",
+      "source": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE81Y3RFMWYyNVhVT1hNQlk0dUdyaVhYYUtteXBXY3dBT3FJdjQzMUlra0RpemZpek1YUV9VTlRDQTNwMGZqRmc5cklsNUhvalg5a1I4UGQxY0JwUWNtaGdZS9IBeEFVX3lxTE1xZEtEQ2t0ZXpmbWo2SmJVRVJ1ZXBMYjFiaGlaV3RTcUppSGcyMTdEVW9lM2hmZXhtVUQ0V2QweXRWSHhScU5RV0REV01GSWZrYm5qUkN2cFlqS1FhU0w5ZWpGRjkzR0xDZG5xQ2RoY0IteDEyNmc4WQ?oc=5",
+      "stage": 3,
+      "registered_kst": "2026-11-13T19:56:38+09:00",
       "alerted": true
     }
   }
