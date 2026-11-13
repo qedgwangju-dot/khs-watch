@@ -6,6 +6,7 @@ from __future__ import annotations
 import datetime as dt
 import html
 import re
+from functools import lru_cache
 import sys
 import urllib.parse
 
@@ -160,7 +161,86 @@ _original_classify = base.classify
 _original_translate_headline = base.translate_headline_to_korean
 _original_build_message = base.build_message
 _original_collect_items = base.collect_items
+_original_corroboration_rank = base.corroboration_rank
 
+
+
+# Official press release validates Treasury yen buying, not an unstated
+# transaction amount or euro settlement details. Do not blend their evidence.
+NYFED_Q3_PRESS_URL = "https://www.newyorkfed.org/newsevents/news/markets/2026/20261112"
+
+
+def _is_us_q3_funding_amount_story(item: base.NewsItem) -> bool:
+    headline = base.normalize_text(base.clean_headline(item.title, item.source))
+    return (
+        "us confirms 500 million spent on yen intervention" in headline
+        and "with euros" in headline
+        and dt.datetime(2026, 11, 12, tzinfo=dt.timezone.utc)
+        <= item.published
+        < dt.datetime(2026, 11, 15, tzinfo=dt.timezone.utc)
+    )
+
+
+@lru_cache(maxsize=1)
+def _nyfed_q3_event_verified() -> bool:
+    body, error = base.fetch_text(
+        NYFED_Q3_PRESS_URL, base.USER_AGENT, timeout=10, attempts=1,
+        accept="text/html,application/xhtml+xml,*/*",
+    )
+    if error or not body:
+        return False
+    normalized = base.normalize_text(re.sub(r"<[^>]+>", " ", body))
+    return all(phrase in normalized for phrase in (
+        "november 12 2026",
+        "the federal reserve did not intervene",
+        "the u s treasury purchased japanese yen",
+        "third quarter",
+    ))
+
+
+def _intervention_actor(item: base.NewsItem) -> str:
+    title = base.normalize_text(base.clean_headline(item.title, item.source))
+    if re.search(r"^(?:us|u s|united states|treasury|fed|new york fed)\b", title):
+        return "US"
+    if re.search(r"^(?:japan|japans|japanese|tokyo)\b", title):
+        return "JP"
+    return "unknown"
+
+
+def _same_intervention_amount_event(a: base.NewsItem, b: base.NewsItem) -> bool:
+    # Shared topic and publishing window alone do not confirm the same trade.
+    actor_a, actor_b = _intervention_actor(a), _intervention_actor(b)
+    if actor_a == "unknown" and actor_b == "unknown":
+        return False
+    if actor_a != "unknown" and actor_b != "unknown" and actor_a != actor_b:
+        return False
+    usd_a = _extract_usd_amount(base.clean_headline(a.title, a.source))
+    usd_b = _extract_usd_amount(base.clean_headline(b.title, b.source))
+    if usd_a is not None and usd_b is not None:
+        return abs(usd_a - usd_b) <= 0.05 * max(usd_a, usd_b)
+    yen_a = _extract_jpy_amount(base.clean_headline(a.title, a.source))
+    yen_b = _extract_jpy_amount(base.clean_headline(b.title, b.source))
+    if yen_a is not None and yen_b is not None:
+        return abs(yen_a - yen_b) <= 0.05 * max(yen_a, yen_b)
+    return False
+
+
+def corroboration_rank(classified, universe):
+    if classified.topic != INTERVENTION_SCALE_TOPIC:
+        return _original_corroboration_rank(classified, universe)
+    if classified.source_level >= 3:
+        return 3, [classified.source_group]
+    main = classified.item
+    groups = {classified.source_group}
+    for other in universe:
+        if (other.topic == classified.topic and other.source_level >= 1
+                and abs((other.item.published - main.published).total_seconds()) <= 6 * 3600
+                and _same_intervention_amount_event(main, other.item)):
+            groups.add(other.source_group)
+    if _is_us_q3_funding_amount_story(main) and _nyfed_q3_event_verified():
+        groups.add("뉴욕연준")
+        return 3, sorted(groups)
+    return (2 if len(groups) >= 2 else 1), sorted(groups)
 
 def _contains(text: str, markers: tuple[str, ...]) -> bool:
     lowered = html.unescape(text or "").lower()
@@ -355,7 +435,7 @@ def collect_items(current: dt.datetime):
 def _source_nature(topic: str, rank: int) -> str:
     if topic == INTERVENTION_SCALE_TOPIC:
         if rank >= 3:
-            return "일본 재무성 공식 월간 외환시장 개입 실적 공개"
+            return "외환당국 공식자료로 개입 실적 존재 확인 — 개별 금액·결제통화의 확인 범위는 별도 구분"
         return "주요매체의 외환시장 개입 실적 보도 — 실행기간과 발표시점을 구분"
     if topic == COORDINATION_TOPIC:
         return "미·일 당국의 엔화 정책 공조 확인 — 실제 신규 시장개입 실행과는 구분"
@@ -466,6 +546,11 @@ def build_message(selected, current):
             if 0 <= item_index < len(selected):
                 classified, rank, _groups = selected[item_index]
                 output.append(f"원문 성격: {_source_nature(classified.topic, rank)}")
+                if rank >= 3 and _is_us_q3_funding_amount_story(classified.item) and "뉴욕연준" in _groups:
+                    output.append("공식 확인: 뉴욕연준 2026-11-12 발표에서 미 재무부 3분기 엔화 매입과 연준 자체 외환개입 없음을 확인")
+                    output.append("실제 거래일(별도 보도): 2026-07-31 — 11월 신규 매입으로 해석 금지")
+                    output.append("금액·유로화 결제: 공식 보도자료 본문은 금액 미제시; 언론 보도·분기보고서 세부 확인과 구분")
+                    output.append(f"공식 발표 원문: {NYFED_Q3_PRESS_URL}")
                 if classified.topic == INTERVENTION_SCALE_TOPIC:
                     if money_quote is None:
                         raise RuntimeError("KRW quote unavailable for intervention-scale alert")
@@ -499,6 +584,11 @@ def build_message(selected, current):
             classified, rank, _groups = selected[index]
             item_payload["source_nature"] = _source_nature(classified.topic, rank)
             item_payload["policy_stage"] = _policy_stage(classified.topic)
+            if rank >= 3 and _is_us_q3_funding_amount_story(classified.item) and "뉴욕연준" in _groups:
+                item_payload["official_verification_url"] = NYFED_Q3_PRESS_URL
+                item_payload["official_verification_scope"] = "US Treasury yen purchases in 2026Q3; Fed no independent FX intervention; press release omits transaction amount and settlement details"
+                item_payload["intervention_execution_date_reported"] = "2026-07-31"
+                item_payload["evidence_scope"] = "official_event_verified; media_amount_and_euro_details"
             if classified.topic == INTERVENTION_SCALE_TOPIC and money_quote is not None:
                 item_payload["krw_conversion"] = {
                     "required": True,
@@ -545,6 +635,7 @@ def install() -> None:
             base.MAJOR_SOURCE_MARKERS = base.MAJOR_SOURCE_MARKERS + (marker,)
     base.source_group = source_group
     base.classify = classify
+    base.corroboration_rank = corroboration_rank
     base.translate_headline_to_korean = translate_headline_to_korean
     base.collect_items = collect_items
     base.build_message = build_message

@@ -581,7 +581,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -682,7 +682,11 @@ jobs:
                   result = json.loads(response.read().decode("utf-8"))
               if not result.get("ok") or not (result.get("result") or {}).get("message_id"):
                   raise RuntimeError(f"Telegram rejected yen_policy_news message: {result}")
+              response_chat_id = str(((result.get("result") or {}).get("chat") or {}).get("id") or "")
+              if response_chat_id != resolved_chat:
+                  raise RuntimeError("Telegram response chat does not match verified getChat; state not advanced")
               message_ids.append(result["result"]["message_id"])
+              print("yen_policy_news_destination_chat_verified=true")
 
           confirmed = {
               "status": "confirmed",

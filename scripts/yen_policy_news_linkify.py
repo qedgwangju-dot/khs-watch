@@ -36,6 +36,9 @@ def source_links_for_item(alert_item: dict, current: dt.datetime) -> list[dict]:
     links: dict[str, str] = {}
     if primary_group and primary_link:
         links[primary_group] = primary_link
+    official = str(alert_item.get("official_verification_url") or "").strip()
+    if official and "뉴욕연준" in groups:
+        links["뉴욕연준"] = official
 
     topic = str(alert_item.get("topic") or "")
     published = parse_published(str(alert_item.get("published_at_kst") or ""))

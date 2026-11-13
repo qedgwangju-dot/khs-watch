@@ -13,6 +13,67 @@ import yen_policy_news_alert_runner as runner  # noqa: E402
 
 
 class YenPolicyNewsRunnerTests(unittest.TestCase):
+
+    def test_distinct_us_japan_intervention_amounts_not_corrobated(self):
+        us = self.item("US Confirms $500 Million Spent on Yen Intervention, With Euros", "Bloomberg")
+        jp = self.item("Japan Spent Record $50 Billion on Yen Intervention", "The Wall Street Journal")
+        classified_us, classified_jp = runner.base.classify(us), runner.base.classify(jp)
+        self.assertEqual(classified_us.topic, runner.INTERVENTION_SCALE_TOPIC)
+        self.assertEqual(classified_jp.topic, runner.INTERVENTION_SCALE_TOPIC)
+        with mock.patch.object(runner, "_nyfed_q3_event_verified", return_value=False):
+            rank, groups = runner.base.corroboration_rank(classified_us, [classified_us, classified_jp])
+        self.assertEqual(rank, 1)
+        self.assertEqual(groups, ["Bloomberg"])
+
+    def test_nyfed_press_release_upgrades_only_treasury_buying_event(self):
+        news = runner.base.NewsItem(
+            title="US Confirms $500 Million Spent on Yen Intervention, With Euros",
+            link="https://example.org/bloomberg", source="Bloomberg.com", description="",
+            published=dt.datetime(2026, 11, 13, 1, 12, tzinfo=dt.timezone.utc),
+        )
+        classified = runner.base.classify(news)
+        official_html = (
+            "<html>November 12, 2026. The Federal Reserve did not intervene "
+            "in FX markets during the third quarter. The U.S. Treasury purchased "
+            "Japanese yen in FX markets during the third quarter.</html>"
+        )
+        runner._nyfed_q3_event_verified.cache_clear()
+        try:
+            with mock.patch.object(runner.base, "fetch_text", return_value=(official_html, None)):
+                rank, groups = runner.base.corroboration_rank(classified, [classified])
+            self.assertEqual(rank, 3)
+            self.assertIn("뉴욕연준", groups)
+            with mock.patch.object(runner, "latest_jpy_krw") as fx:
+                fx.return_value = runner.JpyKrwQuote(
+                    "2026-11-06", 1361.89, 158.23, 1361.89 / 158.23
+                )
+                title, body, payload = runner.base.build_message(
+                    [(classified, rank, groups)], news.published
+                )
+            self.assertIn("공식 발표 원문:", body)
+            self.assertIn("2026-07-31", body)
+            self.assertIn("금액·유로화 결제", body)
+            self.assertEqual(payload["items"][0]["official_verification_url"], runner.NYFED_Q3_PRESS_URL)
+            self.assertIn("공식 확인", title)
+        finally:
+            runner._nyfed_q3_event_verified.cache_clear()
+
+    def test_nyfed_unavailable_does_not_upgrade_to_official(self):
+        news = runner.base.NewsItem(
+            title="US Confirms $500 Million Spent on Yen Intervention, With Euros",
+            link="https://example.org/bloomberg", source="Bloomberg.com", description="",
+            published=dt.datetime(2026, 11, 13, 1, 12, tzinfo=dt.timezone.utc),
+        )
+        classified = runner.base.classify(news)
+        runner._nyfed_q3_event_verified.cache_clear()
+        try:
+            with mock.patch.object(runner.base, "fetch_text", return_value=("", "unavailable")):
+                rank, groups = runner.base.corroboration_rank(classified, [classified])
+            self.assertEqual(rank, 1)
+            self.assertNotIn("뉴욕연준", groups)
+        finally:
+            runner._nyfed_q3_event_verified.cache_clear()
+
     def item(self, title: str, source: str, description: str = "") -> runner.base.NewsItem:
         return runner.base.NewsItem(
             title=title,
