@@ -1803,10 +1803,17 @@ def parse_goldman_prime_deleveraging_public(*, article_fetch=extract_article_bod
         visited.add(url)
         if not re.search(r"hedge|goldman|technology|tech", str(item.get("title") or ""), re.I):
             continue
+        publication = str(item.get("pub") or "").strip()
         try:
-            published = parsedate_to_datetime(str(item.get("pub") or "")).date()
+            published = parsedate_to_datetime(publication).date()
         except (TypeError, ValueError, IndexError, OverflowError):
-            continue
+            # RSS supplies RFC timestamps, but trusted seed articles often
+            # provide a date only. Preserve an explicit date without inventing
+            # a release clock time, as in the existing Goldman collector.
+            try:
+                published = datetime.strptime(publication, "%a, %d %b %Y").date()
+            except (TypeError, ValueError):
+                continue
         if not 0 <= (today - published).days <= 14:
             continue
         if (urlparse(url).hostname or "").removeprefix("www.") not in allowed:
