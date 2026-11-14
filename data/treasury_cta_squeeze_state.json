@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-14T22:51:52+09:00",
+  "last_checked_kst": "2026-11-15T00:42:22+09:00",
   "media_id": null,
   "cftc_date": "November 3, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-14T22:51:52+09:00",
+    "checked_kst": "2026-11-15T00:42:22+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "November 3, 2026",
@@ -228,7 +228,7 @@
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-11-13",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026111408"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026111410"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -450,7 +450,7 @@
       "repo_worse": [],
       "data_fresh": false,
       "stale_reasons": [
-        "CFTC November 3, 2026 · 11일 경과"
+        "CFTC November 3, 2026 · 12일 경과"
       ]
     },
     "cta_short_breadth": {
@@ -462,7 +462,7 @@
       "total_tenors": 6,
       "model_confirmation": "기관 CTA 모델 원문 독립 확인 전",
       "source": "https://www.cftc.gov/dea/futures/financial_lf.htm",
-      "reason": "CFTC 자료 유효기간 경과 또는 미래 날짜 (11일)"
+      "reason": "CFTC 자료 유효기간 경과 또는 미래 날짜 (12일)"
     }
   },
   "format_revision": 14,
@@ -481,7 +481,7 @@
     "repo_not_worse": true,
     "data_fresh": false,
     "stale_reasons": [
-      "CFTC November 3, 2026 · 11일 경과"
+      "CFTC November 3, 2026 · 12일 경과"
     ],
     "composite_confirmed": false,
     "stage": 0,
