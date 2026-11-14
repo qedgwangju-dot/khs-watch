@@ -32,6 +32,13 @@ CAPITAL_RETURN_TRACK_VERSION = 1
 CAPITAL_RETURN_CORRECTION_VERSION = 1
 CAPITAL_RETURN_DEDUPE_VERSION = 1
 SCHEDULE_AUDIT_VERSION = 1
+NVIDIA_CEO_20261112_KEY = "nvidia_ceo_resignation_20261111_filed_20261112"
+NVIDIA_CEO_20261112_SOURCES = (
+    "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-CEO-Transition/default.aspx",
+    "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition",
+    "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvda-20261111.htm",
+)
+NVIDIA_WEEKLY_RECORD_SOURCE = "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-13-2026/card/nvidia-braces-for-biggest-weekly-market-cap-decline-on-record-JcfwFNhoTtGpQenCU5Ft"
 
 OFFICIAL_Q2_TRANSCRIPT = (
     "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-"
@@ -69,6 +76,8 @@ QUERIES = [
     '"NVIDIA" buyback authorization 150 billion 235 billion',
     '"NVIDIA" capital return repurchase dividend',
     '"엔비디아" 자사주 매입 승인',
+    'NVIDIA new CEO interim CEO resignation appointment official',
+    '엔비디아 최고경영자 퇴임 후임 임시 CEO 공식 발표',
     '"엔비디아" 자사주 매입 1500억 달러',
 ]
 
@@ -173,6 +182,9 @@ def classify(text: str) -> str:
         "capital return", "return capital", "자사주", "주식 매입", "주주환원", "주주 환원",
     )
 
+    if (("chief executive officer" in low or " ceo" in low or "최고경영자" in low)
+            and any(k in low for k in ("resign", "ousted", "steps down", "interim", "appointed", "신임", "사임", "퇴임"))):
+        return "leadership"
     if any(k in low for k in capital_terms):
         return "capital_return"
     if any(k in low for k in demand_terms):
@@ -245,6 +257,12 @@ def _key_number(value) -> str:
 
 def fact_key(kind: str, text: str) -> str:
     low = text.lower()
+    if kind == "leadership":
+        if ("huang" in low or "젠슨 황" in low) and any(k in low for k in ("resign", "ousted", "사임", "퇴임")):
+            return NVIDIA_CEO_20261112_KEY
+        if ("colette" in low or "콜레트" in low) and "interim" in low:
+            return NVIDIA_CEO_20261112_KEY
+        return "nvidia_leadership_" + hashlib.sha1(low.encode()).hexdigest()[:14]
     if kind == "capital_return":
         cap = extract_capital_return(text)
         actual = cap.get("actual_repurchase_usd_b")
@@ -465,6 +483,58 @@ def _official_press_release_events() -> list[dict]:
     return rows
 
 
+
+def _official_ceo_transition_event() -> dict | None:
+    """Require NVIDIA investor release, newsroom or SEC filing; never rumor-only."""
+    for url in NVIDIA_CEO_20261112_SOURCES:
+        try:
+            plain = clean(fetch(url, timeout=18).decode("utf-8", errors="replace")).lower()
+        except Exception:
+            continue
+        if not all(k in plain for k in ("nvidia", "huang", "colette", "interim chief executive officer", "resign")):
+            continue
+        if not ("jensen huang" in plain or "jen-hsun huang" in plain):
+            continue
+        if not ("november 11, 2026" in plain or "november 12, 2026" in plain):
+            continue
+        return {
+            "id": "nvidia_ceo_official_20261112",
+            "kind": "leadership",
+            "fact_key": NVIDIA_CEO_20261112_KEY,
+            "title": "NVIDIA 공식 8-K·기업발표: Jensen Huang 사임, Colette Kress 임시 CEO",
+            "description": "2026-11-11 이사회 사임 수락, 11/12 공개. Harvey C. Jones 이사회 의장 선임.",
+            "source": "NVIDIA 공식 IR / SEC",
+            # Date-only anchor for bounded recall; not an issuer intraday timestamp.
+            "published_at_kst": "2026-11-12T00:00:00+09:00",
+            "direct_link": url,
+            "rank": 100,
+        }
+    return None
+
+
+def build_ceo_transition_alert(events: list[dict], now: datetime) -> str:
+    ceo = next(e for e in events if e.get("kind") == "leadership")
+    lines = [
+        "<b>[NVIDIA 경영진 교체·주간 시가총액 기록]</b>",
+        "• <b>공식 확정:</b> 2026-11-11 이사회에서 젠슨 황의 최고경영자·이사직 사임 수락, 11/12 공개(SEC 8-K).",
+        "• <b>후임 체계:</b> 콜레트 크레스 임시 최고경영자 겸 최고재무책임자, 하비 존스 이사회 의장 선임. 정식 CEO 물색 중.",
+        "• <b>11/13 주간 시장 기록(언론 데이터):</b> NVIDIA 주가 약 -13%, 주간 시가총액 감소 약 $573 billion — 역대 주간 최대, 실제 시장 가격·회사 현금손실을 혼동하지 않음.",
+        "• <b>원인 구분:</b> 리더십·지배구조 충격과 AI 서버 수요·GPU 출하 실적은 별도 판단해야 함.",
+        "• <b>다음 확인:</b> 11/17 FY27 3분기 실적발표, 정식 CEO 선임, 고객 주문·출하, Rubin/Blackwell 일정, 현금흐름.",
+        '• <a href="' + html.escape(ceo["direct_link"], quote=True) + '">NVIDIA·SEC 공식 자료</a>',
+        '• <a href="' + html.escape(NVIDIA_WEEKLY_RECORD_SOURCE, quote=True) + '">주간 시가총액 기록 — WSJ/Dow Jones</a>',
+    ]
+    others = [e for e in events if e.get("kind") != "leadership"]
+    if others:
+        lines.append("• 같은 조회에서 포착된 다른 독립 변화:")
+        for e in others:
+            lines.append("  " + html.escape(str(e.get("kind", ""))) + ": " +
+                         html.escape(str(e.get("title", ""))[:120]) +
+                         ' <a href="' + html.escape(str(e.get("direct_link", "")), quote=True) + '">원문</a>')
+    lines.append("조회 " + now.strftime("%Y-%m-%d %H:%M KST"))
+    return "\n".join(lines) + "\n"
+
+
 def read_events() -> list[dict]:
     rows: dict[str, dict] = {}
     for query in QUERIES:
@@ -491,6 +561,10 @@ def read_events() -> list[dict]:
                 direct = decode_google(link)
                 if not direct:
                     continue
+                if kind == "leadership":
+                    official_host = (urllib.parse.urlparse(direct).hostname or "").lower()
+                    if official_host not in ("investor.nvidia.com", "nvidianews.nvidia.com", "www.sec.gov", "sec.gov"):
+                        continue  # Rumors of a potential ouster are not company filings.
                 key = event_id(title, source)
                 rows[key] = {
                     "id": key,
@@ -503,6 +577,9 @@ def read_events() -> list[dict]:
                     "direct_link": direct,
                     "rank": source_rank(source, title),
                 }
+    official_ceo = _official_ceo_transition_event()
+    if official_ceo:
+        rows[official_ceo["id"]] = official_ceo
     for e in _official_press_release_events():
         rows[e["id"]] = e
     for e in _official_science_events():
@@ -596,7 +673,8 @@ def choose_new(events: list[dict], seen_ids: set[str], seen_fact_keys: set[str],
             dt = datetime.fromisoformat(e.get("published_at_kst") or "")
         except Exception:
             continue
-        if not (cutoff <= dt <= now + timedelta(minutes=10)):
+        effective_cutoff = now - timedelta(hours=96) if e.get("fact_key") == NVIDIA_CEO_20261112_KEY else cutoff
+        if not (effective_cutoff <= dt <= now + timedelta(minutes=10)):
             continue
         if e["id"] in seen_ids or e["fact_key"] in seen_fact_keys:
             continue
@@ -614,6 +692,8 @@ def choose_new(events: list[dict], seen_ids: set[str], seen_fact_keys: set[str],
 
 
 def build_alert(events: list[dict], now: datetime) -> str:
+    if any(e.get("fact_key") == NVIDIA_CEO_20261112_KEY for e in events):
+        return build_ceo_transition_alert(events, now)
     if any(e.get("kind") in ("science_commitment", "science_execution") for e in events):
         return build_science_alert(events, now)
     demand = next((e for e in reversed(events) if e["kind"] == "demand"), None)

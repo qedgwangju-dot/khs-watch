@@ -122,15 +122,20 @@ jobs:
               result = json.loads(r.read().decode("utf-8"))
           if not result.get("ok"):
               raise RuntimeError(f"Telegram rejected NVIDIA executive signal: {result}")
-          message_id = (result.get("result") or {}).get("message_id")
-          if type(message_id) is not int or message_id <= 0:
-              raise RuntimeError("Telegram acknowledgement lacks a valid message_id")
+          sent = result.get("result") or {}
+          message_id = sent.get("message_id")
+          recipient = sent.get("chat") or {}
+          recipient_match = (str(recipient.get("username") or "").casefold() == chat_id[1:].casefold()
+                             if chat_id.startswith("@") else str(recipient.get("id") or "") == chat_id)
+          if not recipient_match or type(message_id) is not int or message_id <= 0:
+              raise RuntimeError("Telegram recipient/message acknowledgement mismatch; state not promoted")
           import datetime as dt
           from zoneinfo import ZoneInfo
           receipt = {
               "status": "confirmed",
               "bot_username": username,
               "message_id": message_id,
+            "recipient_verified": True,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
           pathlib.Path("out/nvidia_exec_signal_telegram_confirmed.json").write_text(

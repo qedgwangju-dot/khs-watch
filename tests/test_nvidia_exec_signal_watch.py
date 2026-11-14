@@ -134,5 +134,49 @@ class NvidiaScienceFollowupTests(unittest.TestCase):
         self.assertEqual(matches[0]["direct_link"], url)
 
 
+
+class NvidiaChiefExecutiveTransitionTests(unittest.TestCase):
+    def test_official_issuer_or_sec_required(self):
+        original = (
+            "NVIDIA Announces CEO Transition November 12, 2026. "
+            "Jensen Huang resigned and Colette Kress appointed interim chief executive officer."
+        )
+        with patch.object(w, "fetch", side_effect=lambda url, timeout=18: original.encode()):
+            event = w._official_ceo_transition_event()
+        self.assertIsNotNone(event)
+        self.assertEqual(event["fact_key"], w.NVIDIA_CEO_20261112_KEY)
+        self.assertEqual(event["kind"], "leadership")
+        with patch.object(w, "fetch", return_value=b"NVIDIA possible CEO ouster rumor"):
+            self.assertIsNone(w._official_ceo_transition_event())
+
+    def test_official_ceo_transition_alert_once_and_stale_gate(self):
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        now = datetime(2026, 11, 14, 18, 35, tzinfo=ZoneInfo("Asia/Seoul"))
+        event = {
+            "id": "nvidia_ceo_official_20261112", "kind": "leadership",
+            "fact_key": w.NVIDIA_CEO_20261112_KEY,
+            "published_at_kst": "2026-11-12T00:00:00+09:00",
+            "direct_link": w.NVIDIA_CEO_20261112_SOURCES[0],
+            "source": "NVIDIA official", "rank": 100, "title": "CEO Transition",
+        }
+        chosen = w.choose_new([event], set(), set(), now)
+        self.assertEqual(len(chosen), 1)
+        self.assertEqual(w.choose_new([event], set(), {event["fact_key"]}, now), [])
+        self.assertEqual(w.choose_new([event], set(), set(),
+                         datetime(2026, 11, 18, tzinfo=ZoneInfo("Asia/Seoul"))), [])
+        body = w.build_alert(chosen, now)
+        self.assertIn("콜레트 크레스", body)
+        self.assertIn("주간 시가총액", body)
+        self.assertIn("$573 billion", body)
+        self.assertNotIn("2027년에 올해보다 약 2배 많은", body)
+
+    def test_telegram_workflow_confirms_receiving_chat(self):
+        yml = (pathlib.Path(__file__).resolve().parents[1] /
+               ".github/workflows/nvidia-exec-signal-telegram.yml").read_text(encoding="utf-8")
+        self.assertIn("recipient_match =", yml)
+        self.assertIn('"recipient_verified": True', yml)
+
+
 if __name__ == "__main__":
     unittest.main()

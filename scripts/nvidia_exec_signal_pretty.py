@@ -22,6 +22,8 @@ def main() -> None:
         return
 
     raw = ALERT.read_text(encoding="utf-8").strip()
+    if raw.startswith("<b>[NVIDIA 경영진 교체·주간 시가총액 기록]</b>"):
+        return  # Preserve issuer-confirmed governance alert rather than stripping it.
     has_demand = "2027년에 올해보다 약 2배 많은 칩을 판매할 것으로 예상" in raw
     has_safety = "같은 스코틀랜드 회의 현장에서 Huang은 AI 안전" in raw
     has_capital = "• <b>자본환원</b>: NVIDIA 이사회가 자사주 매입 승인 규모를 대폭 확대했습니다." in raw
