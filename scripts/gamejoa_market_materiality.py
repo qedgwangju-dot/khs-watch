@@ -3324,6 +3324,7 @@ def macro_model_report_observation(title: str, body: str) -> dict[str, str]:
 
 
 QUARTERLY_EARNINGS_ISSUER_ALIASES = {
+    '쿠팡': ('쿠팡', '쿠팡Inc', 'Coupang', 'Coupang Inc'),
     'LG에너지솔루션': ('LG에너지솔루션', 'LG엔솔'),
     '삼성전자': ('삼성전자',),
     'SK하이닉스': ('SK하이닉스',),
@@ -3336,6 +3337,153 @@ QUARTERLY_EARNINGS_ISSUER_ALIASES = {
     '카카오': ('카카오',),
     'POSCO홀딩스': ('POSCO홀딩스', '포스코홀딩스'),
 }
+
+
+def coupang_quarterly_earnings_release_observation(
+    title: str, body: str, published: str,
+) -> dict[str, str]:
+    """Identify a Coupang SEC quarterly result by both reported revenue and loss."""
+    if not re.match(r'20\d{2}-\d{2}-\d{2}', published):
+        return {}
+    if not re.search(r'쿠팡|coupang', title, re.I) or not re.search(
+        r'분기|실적|매출|영업손실', title,
+    ) or re.search(r'전망|예상|컨센서스|추정|목표|forecast|estimate', title, re.I):
+        return {}
+    source = source_reported_body(body)
+    rows = source_sentences(source)
+    report_index = next((index for index, row in enumerate(rows) if
+        re.search(r'쿠팡|coupang', row, re.I)
+        and re.search(r'(?<!\d)([1-4])\s*분기', row)
+        and re.search(r'SEC|증권거래위원회', row, re.I)
+        and re.search(r'실적\s*보고서.{0,20}(?:제출|공시)|(?:제출|공시).{0,20}실적\s*보고서', row)
+    ), None)
+    if report_index is None:
+        return {}
+    quarter_match = re.search(r'(?<!\d)(?P<quarter>[1-4])\s*분기', rows[report_index])
+    if not quarter_match:
+        return {}
+    quarter = quarter_match['quarter']
+    report_rows = rows[max(0, report_index - 1):report_index + 16]
+
+    revenue = None
+    for index, row in enumerate(report_rows):
+        if '매출' not in row:
+            continue
+        window = ' '.join(report_rows[index:index + 3])
+        converted = re.search(r'원화로\s*환산하면\s*([^.!?]{1,55})', window)
+        if converted:
+            amounts = [match for match in re.finditer(SOURCE_MONEY, converted[1])
+                       if match[2] == '원']
+        else:
+            direct = re.search(rf'매출(?:액)?(?:은|이|:)?\s*(?:약\s*)?{SOURCE_MONEY}', window)
+            amounts = [direct] if direct and direct[2] == '원' else []
+        if amounts:
+            candidate = amounts[0]
+            following = window[candidate.end():candidate.end() + 10]
+            if re.match(r'\s*(?:을|를)?\s*(?:넘|웃돌|초과|육박|가량|정도|돌파|상회|이상|안팎)', following):
+                continue
+            if re.search(r'(?:약|대략)\s*$', window[max(0, candidate.start() - 5):candidate.start()]):
+                continue
+            value = korean_amount_value(candidate[1])
+            if value:
+                revenue = {
+                    'amount_won': value,
+                    'display': re.sub(r'\s+', '', candidate[0]),
+                    'context': window,
+                }
+                break
+    if not revenue:
+        return {}
+
+    operating_loss = None
+    for row in report_rows:
+        if not re.search(r'영업\s*손실', row):
+            continue
+        loss_label = re.search(r'영업\s*손실(?:은|이|:)?', row)
+        loss_terms = row[loss_label.end():] if loss_label else ''
+        amounts = [match for match in re.finditer(SOURCE_MONEY, loss_terms) if match[2] == '원']
+        for candidate in amounts:
+            following = loss_terms[candidate.end():candidate.end() + 10]
+            if re.match(r'\s*(?:을|를)?\s*(?:넘|웃돌|초과|육박|가량|정도|돌파|상회|이상|안팎)', following):
+                continue
+            if re.search(r'(?:약|대략)\s*$', loss_terms[max(0, candidate.start() - 5):candidate.start()]):
+                continue
+            value = korean_amount_value(candidate[1])
+            if value:
+                operating_loss = {
+                    'amount_won': value,
+                    'display': re.sub(r'\s+', '', candidate[0]),
+                    'context': row,
+                }
+                break
+        if operating_loss:
+            break
+    if not operating_loss:
+        return {}
+
+    growth_matches = list(re.finditer(
+        r'(?:지난해|전년)\s*(?:같은\s*기간|동기)[^.!?]{0,55}?(?:보다|대비)\s*'
+        r'(?P<pct>\d+(?:\.\d+)?)\s*%\s*(?:증가|늘|성장)',
+        revenue['context'],
+    ))
+    growth = growth_matches[-1] if growth_matches else None
+    loss_streak = re.search(r'(?P<count>\d+)\s*개\s*분기\s*연속\s*적자', ' '.join(report_rows))
+    return {
+        'issuer': '쿠팡',
+        'fiscal_year': published[:4],
+        'quarter': quarter,
+        'metric': 'reported_revenue_and_operating_loss',
+        'revenue_won': revenue['amount_won'],
+        'revenue_display': revenue['display'],
+        'revenue_growth_pct': growth['pct'] if growth else '',
+        'operating_loss_won': '-' + operating_loss['amount_won'],
+        'operating_loss_display': operating_loss['display'],
+        'loss_streak_quarters': loss_streak['count'] if loss_streak else '',
+        'stage': 'sec_quarterly_filing',
+    }
+
+
+def nvidia_ceo_departure_observation(title: str, body: str, published: str) -> dict[str, str]:
+    """Group only source-confirmed Jensen Huang CEO-departure reprints."""
+    if not re.match(r'20\d{2}-\d{2}-\d{2}', published):
+        return {}
+    if not re.search(r'(?:엔비디아|nvidia|젠슨\s*황|jensen\s*huang|jen-hsun\s*huang)', title, re.I):
+        return {}
+    if not re.search(r'사임|퇴진|사퇴|resign|departure|stepping\s*down', title, re.I):
+        return {}
+    if re.search(r'후임\s*(?:선임|확정)|permanent\s*successor|successor\s*appointed', title, re.I):
+        return {}
+    if re.search(
+        r'주가|주식|시총|급락|급등|하락|상승|증발|수혜|공급|수요|반도체|메모리|'
+        r'shares|stock|market\s*cap|plung|rall|fell|drop|gain|surge|market reaction',
+        title, re.I,
+    ):
+        return {}
+    source = source_reported_body(body)
+    flat = re.sub(r'\s+', ' ', source)
+    official_action = re.search(
+        r'(?:NVIDIA|엔비디아).{0,180}(?:board of directors|이사회).{0,180}'
+        r'(?:Jensen Huang|Jen-Hsun Huang|젠슨\s*황).{0,100}(?:resign|사임|퇴진)|'
+        r'(?:board of directors|이사회).{0,180}(?:Jensen Huang|Jen-Hsun Huang|젠슨\s*황)'
+        r'.{0,100}(?:resign|사임|퇴진)',
+        flat, re.I,
+    )
+    if not official_action:
+        return {}
+    confirmation = re.search(
+        r'effective immediately|즉시\s*효력|사임을\s*수리|interim\s+(?:CEO|chief executive)|'
+        r'임시\s*CEO|중간\s*CEO|SEC\s*(?:Form\s*)?8-K|공식\s*발표',
+        flat, re.I,
+    )
+    if not confirmation:
+        return {}
+    return {
+        'issuer': 'NVIDIA',
+        'executive': 'Jensen Huang',
+        'action': 'CEO_departure_confirmed',
+        'event_year': published[:4],
+        'stage': 'confirmed_departure',
+    }
 
 
 def quarterly_earnings_release_observation(alert: dict) -> dict[str, str]:
@@ -3665,6 +3813,19 @@ def source_event_identity(alert: dict) -> str:
     """
     title = str(alert.get('source_title') or alert.get('original_news') or alert.get('news') or '')
     body = str(alert.get('source_body') or '') if alert.get('body_verified') else ''
+    published = str(alert.get('published') or '')
+    nvidia_departure = nvidia_ceo_departure_observation(title, body, published)
+    if nvidia_departure:
+        return f"source_event:v2:nvidia_ceo_departure:confirmed:{nvidia_departure['event_year']}"
+    coupang_earnings = coupang_quarterly_earnings_release_observation(title, body, published)
+    if coupang_earnings:
+        identity_terms = {key: coupang_earnings[key] for key in (
+            'issuer', 'fiscal_year', 'quarter', 'revenue_won', 'operating_loss_won', 'stage',
+        )}
+        digest = hashlib.sha256(json.dumps(
+            identity_terms, ensure_ascii=False, sort_keys=True,
+        ).encode('utf-8')).hexdigest()
+        return f'source_event:v2:coupang_quarterly_earnings:{digest}'
     solidigm_listing = solidigm_listing_stage_observation(title, body, str(alert.get('published') or ''))
     if solidigm_listing:
         return f"source_event:v2:solidigm_ipo:{solidigm_listing}"
