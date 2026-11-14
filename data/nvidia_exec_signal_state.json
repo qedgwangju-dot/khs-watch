@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-14T18:34:22+09:00",
+  "updated_at_kst": "2026-11-15T01:05:51+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "13736d06804f15f7083db8c9",
@@ -72,7 +72,8 @@
     "f4432c9da71c10edc7dcd816",
     "f8c87aa90edcd1810015abdb",
     "f9d52168b0fec42a09f2a476",
-    "fadea935dd4d4f4ffcc628d3"
+    "fadea935dd4d4f4ffcc628d3",
+    "nvidia_ceo_official_20261112"
   ],
   "seen_fact_keys": [
     "nvidia_2027_chip_sales_double",
@@ -83,6 +84,7 @@
     "nvidia_capital_return_na_235_0_2028_na",
     "nvidia_capital_return_na_na_na_na",
     "nvidia_capital_return_unspecified",
+    "nvidia_ceo_resignation_20261111_filed_20261112",
     "nvidia_demand_1a1f7b602f",
     "nvidia_demand_690a5da5ab",
     "nvidia_demand_8fb66e4a61",
@@ -90,9 +92,9 @@
     "nvidia_demand_b9dff9a4c6",
     "nvidia_science_20261008_1b_5year_commitment"
   ],
-  "last_event_count": 2,
-  "last_new_event_count": 0,
-  "alert_generated": false,
+  "last_event_count": 3,
+  "last_new_event_count": 1,
+  "alert_generated": true,
   "format_version": 3,
   "capital_return_track_version": 1,
   "capital_return_dedupe_version": 1,
@@ -109,18 +111,19 @@
     "source": "Reuters",
     "source_rank": 95
   },
-  "last_successful_delivery_kst": "2026-09-29T00:42:23+09:00",
-  "telegram_message_id": 161,
+  "last_successful_delivery_kst": "2026-11-15T01:06:04+09:00",
+  "telegram_message_id": 438,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
-    "message_id": 161,
-    "confirmed_at_kst": "2026-09-29T00:42:23+09:00"
+    "message_id": 438,
+    "recipient_verified": true,
+    "confirmed_at_kst": "2026-11-15T01:06:04+09:00"
   },
   "schedule_audit_version": 1,
   "last_run_event": "schedule",
-  "last_schedule_check_kst": "2026-11-14T18:34:22+09:00",
-  "schedule_gap_minutes": 406.7,
+  "last_schedule_check_kst": "2026-11-15T01:05:51+09:00",
+  "schedule_gap_minutes": 391.5,
   "last_push_check_kst": "2026-10-12T22:43:05+09:00"
 }
