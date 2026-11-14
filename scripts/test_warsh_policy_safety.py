@@ -1233,10 +1233,10 @@ class WarshInflationMissingBaselineTests(unittest.TestCase):
             {'date':'2026-11-12','2y':4.03,'10y':4.53,'30y':4.75},
             {'date':'2026-11-13','2y':4.04,'10y':4.54,'30y':4.76},
         ]
-        with patch.object(inflation, 'load_state', return_value=old), \\
-             patch.object(inflation, 'bls_values', return_value=self.values()), \\
-             patch.object(inflation, 'treasury_rows', return_value=rows), \\
-             patch.object(inflation, 'send', return_value={'message_id': 99, 'recipient_verified': True}) as send, \\
+        with patch.object(inflation, 'load_state', return_value=old), \
+             patch.object(inflation, 'bls_values', return_value=self.values()), \
+             patch.object(inflation, 'treasury_rows', return_value=rows), \
+             patch.object(inflation, 'send', return_value={'message_id': 99, 'recipient_verified': True}) as send, \
              patch.object(inflation, 'save_state') as save:
             inflation.main()
         self.assertEqual(send.call_count, 2)
