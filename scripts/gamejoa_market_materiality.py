@@ -3814,6 +3814,29 @@ def source_event_identity(alert: dict) -> str:
     title = str(alert.get('source_title') or alert.get('original_news') or alert.get('news') or '')
     body = str(alert.get('source_body') or '') if alert.get('body_verified') else ''
     published = str(alert.get('published') or '')
+    trade_policy_title = f" {title} "
+    trade_policy_text = f"{title}\n{body}"
+    trade_policy_month = (
+        "2025-05" if re.search(r"(?:2025\s*년\s*5\s*월|May\s+2025|지난해\s*5\s*월)", trade_policy_text, re.I)
+        and ("지난해" not in trade_policy_text or published.startswith("2026-"))
+        else ""
+    )
+    if (
+        body
+        and re.search(r"트럼프|도널드\s*트럼프|donald\s+trump|president\s+trump", trade_policy_title, re.I)
+        and re.search(r"엔비디아|nvidia", trade_policy_title, re.I)
+        and re.search(r"주식|지분|shares?|stock", trade_policy_title, re.I)
+        and re.search(r"매수|매입|구매|사들|buy|bought|purchase", trade_policy_title, re.I)
+        and re.search(r"AI\s*(?:확산|반도체)|AI diffusion|advanced AI chip", trade_policy_text, re.I)
+        and re.search(r"수출\s*(?:규제|통제|규정)|export\s*(?:control|rule)", trade_policy_text, re.I)
+        and re.search(r"폐기|철회|폐지|해제|완화|rescinded|repeal(?:ed)?|revok(?:ed|e)|lifted", trade_policy_text, re.I)
+        and re.search(r"직전|앞두고|며칠\s*전|days?\s+before|prior\s+to", trade_policy_text, re.I)
+        and trade_policy_month
+    ):
+        return (
+            "source_event:v2:politician_equity_trade_policy_overlap:"
+            f"nvidia:{trade_policy_month}:ai_diffusion_rule_rescission"
+        )
     nvidia_departure = nvidia_ceo_departure_observation(title, body, published)
     if nvidia_departure:
         return f"source_event:v2:nvidia_ceo_departure:confirmed:{nvidia_departure['event_year']}"

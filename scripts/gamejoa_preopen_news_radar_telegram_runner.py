@@ -34,6 +34,7 @@ DELIVERY_PATH = base.OUT / "gamejoa_preopen_news_radar_delivery.json"
 
 ISSUER_ALERT_WINDOW = dt.timedelta(hours=24)
 ISSUER_ALERT_CAP = 2
+ISSUER_HARD_CATALYST_OVERAGE = 1
 VERIFIED_DISTINCT_ISSUER_EVENT_TYPES = frozenset({
     "ai_chip_deployment", "capital_participation", "capacity_supply_contract",
     "commercial_delivery", "commercial_order", "construction_order",
@@ -41,6 +42,7 @@ VERIFIED_DISTINCT_ISSUER_EVENT_TYPES = frozenset({
     "industrial_development_mou", "industrial_product_milestone",
     "issuer_quarterly_earnings", "legislative_action", "license",
     "listing_suspension_ruling", "merger_agreement", "named_supply_order",
+    "politician_equity_trade_policy_overlap",
     "project_safety_assessment",
     "public_energy_supply_assurance", "regulatory_package", "research_award",
     "scoped_anonymous_order", "site_development_mou", "solidigm_ipo",
@@ -444,16 +446,20 @@ def apply_issuer_frequency_cap(alerts: list[dict], now) -> tuple[list[dict], lis
         signature = issuer_event_signature(alert)
         event_type = market_materiality.source_event_identity(alert).split(":")[2:3]
         event_type_value = event_type[0] if event_type else ""
+        is_distinct_hard_event = verified_distinct_issuer_event(alert)
         blocking_issuers = []
         for issuer in issuer_keys:
             issuer_events = events_by_issuer.setdefault(issuer, {})
             if signature in issuer_events:
                 blocking_issuers.append(issuer)
                 continue
-            if len(issuer_events) >= ISSUER_ALERT_CAP:
+            issuer_cap = ISSUER_ALERT_CAP + (
+                ISSUER_HARD_CATALYST_OVERAGE if is_distinct_hard_event else 0
+            )
+            if len(issuer_events) >= issuer_cap:
                 blocking_issuers.append(issuer)
                 continue
-            if issuer_events and not verified_distinct_issuer_event(alert):
+            if issuer_events and not is_distinct_hard_event:
                 blocking_issuers.append(issuer)
 
         if blocking_issuers:
