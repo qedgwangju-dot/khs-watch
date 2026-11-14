@@ -172,7 +172,7 @@ class RubinStackDemandCrossTests(unittest.TestCase):
     def test_stack_change_is_a_conditional_scenario_not_positive_demand_forecast(self):
         with tempfile.TemporaryDirectory() as tmp:
             file = pathlib.Path(tmp) / "rubin_alert.html"
-            file.write_text("<b>HBM 구조 변화</b>\\n■ Rubin Ultra HBM4/HBM4E 옵션 변화\\n8단↔12단 방향 전환\\n",
+            file.write_text("<b>HBM 구조 변화</b>\n■ Rubin Ultra HBM4/HBM4E 옵션 변화\n8단↔12단 방향 전환\n",
                             encoding="utf-8")
             with patch.object(leverage, "ALERT", file):
                 leverage.main()
@@ -189,7 +189,7 @@ class RubinStackDemandCrossTests(unittest.TestCase):
     def test_hbf_only_notice_has_no_rubin_gpu_demand_scenario(self):
         with tempfile.TemporaryDirectory() as tmp:
             file = pathlib.Path(tmp) / "hbf_alert.html"
-            source = "<b>HBF 규격 변경</b>\\n2027년 1월 최종 규격 목표\\n"
+            source = "<b>HBF 규격 변경</b>\n2027년 1월 최종 규격 목표\n"
             file.write_text(source, encoding="utf-8")
             with patch.object(leverage, "ALERT", file):
                 leverage.main()
