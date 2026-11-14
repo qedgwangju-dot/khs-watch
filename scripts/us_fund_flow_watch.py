@@ -1861,6 +1861,23 @@ assert goldman_prime_deleveraging_article(
     date(2026, 11, 9),
 ) is None
 
+# Source count is a publication count, not two independent Goldman datasets.
+assert parse_goldman_prime_deleveraging_public(
+    article_fetch=lambda url: (url, _GS_DELEVERAGING_SAMPLE),
+    discover=lambda _query: [],
+    today=date(2026, 11, 14),
+)["metrics"] == {
+    "gross_leverage_pct": 207.5,
+    "gross_change_pp": -8.7,
+    "net_leverage_pct": 43.3,
+    "net_change_pp": -3.7,
+}
+assert parse_goldman_prime_deleveraging_public(
+    article_fetch=lambda url: (url, _GS_DELEVERAGING_SAMPLE if "investing.com" in url else ""),
+    discover=lambda _query: [],
+    today=date(2026, 11, 14),
+) is None
+
 # Regression checks run as part of the existing Python execution path.
 assert goldman_prime_public_article(
     "Goldman Sachs prime brokerage hedge funds cut technology stock positions "
