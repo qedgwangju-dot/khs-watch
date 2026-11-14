@@ -2216,7 +2216,15 @@ def _monthly_horizon_snapshot(ici, ici_mmf, finra, bofa, lipper, goldman, jpm, f
 def source_block(x, fx):
     m = x["metrics"]
     lines = []
-    if x["kind"] == "goldman_prime":
+    if x["kind"] == "goldman_prime_deleveraging":
+        lines.append(
+            f"• 헤지펀드 총레버리지 {m['gross_leverage_pct']:.1f}% "
+            f"(주간 {m['gross_change_pp']:+.1f}%p) / 순레버리지 "
+            f"{m['net_leverage_pct']:.1f}% (주간 {m['net_change_pp']:+.1f}%p)"
+        )
+        lines.append("• 기술주 위험축소 방향. 지수·ETF 숏커버는 개별 기술주 롱 재매수와 구별")
+        lines.append("• Goldman 고객 전용 원자료 직접 열람 전. 복수 공개보도의 동일 인용치이며 실제 자금유출액 아님")
+    elif x["kind"] == "goldman_prime":
         lines.append(f"• 기술주 프라임 장부 순편입 비중 {m['tech_net_allocation_pct']:.2f}% / 헤지펀드 순레버리지 {m['net_leverage_pct']:.2f}%")
         lines.append("• 주간 기준일을 확인한 복수 언론 인용치. 고객 전용 업종별 정규화 매도·공매도 강도는 자동 수집·검증되지 않음")
         lines.append("• 펀드 순유입 지표가 아니므로 1M/3M 유입액 비교 대상 아님")
@@ -2326,6 +2334,7 @@ for name, fn in [
     ("BofA/EPFR Reuters", lambda: parse_reuters("bofa")),
     ("LSEG Lipper Reuters", lambda: parse_reuters("lipper")),
     ("Goldman Prime 공개보도", parse_goldman_prime_public),
+    ("Goldman Prime 대규모 위험축소 공개보도", parse_goldman_prime_deleveraging_public),
 ]:
     try:
         x = fn()
@@ -2384,6 +2393,7 @@ finra = next((x for x in results if x["kind"] == "margin"), None)
 bofa = next((x for x in results if x["kind"] == "bofa"), None)
 lipper = next((x for x in results if x["kind"] == "lipper"), None)
 goldman_prime = next((x for x in results if x["kind"] == "goldman_prime"), None)
+goldman_risk = next((x for x in results if x["kind"] == "goldman_prime_deleveraging"), None)
 jpm_household = next((x for x in results if x["kind"] == "household_withdrawals"), None)
 fed_household = next((x for x in results if x["kind"] == "household_balance_sheet"), None)
 
@@ -2469,6 +2479,14 @@ for i in range(len(known)):
             )
 
 interpret = []
+if goldman_risk:
+    gm = goldman_risk["metrics"]
+    interpret.append(
+        f"Goldman 공개보도({goldman_risk['reference_week']}): 총레버리지 "
+        f"{gm['gross_leverage_pct']:.1f}%({gm['gross_change_pp']:+.1f}%p), "
+        f"순레버리지 {gm['net_leverage_pct']:.1f}%({gm['net_change_pp']:+.1f}%p) "
+        "→ 위험노출 축소. 지수·ETF 숏커버 반등만으로 개별 기술주 재매수 확정 불가."
+    )
 if goldman_prime:
     gm = goldman_prime["metrics"]
     interpret.append(
@@ -2712,6 +2730,7 @@ if should_alert and fx is None:
     raise RuntimeError("ECOS USD/KRW unavailable or stale; alert withheld and fingerprints preserved")
 if should_alert:
     title = (
+        "헤지펀드 기술주 위험축소" if any(x.get("kind") == "goldman_prime_deleveraging" for x in updates) else
         "수치 정정" if source_corrections or media_correction else
         "기간 비교 표시 보완" if presentation_upgrade and (not updates or presentation_only_updates) else
         "기간 비교 갱신" if presentation_only_updates else
@@ -2731,6 +2750,14 @@ if should_alert:
         body.append(
             f"• 현금성 대기자금(MMF): {fmt_usd_bn_kr(ch, fx)} → "
             f"{'감소' if ch is not None and ch < 0 else '증가' if ch is not None and ch > 0 else '변화 없음'}"
+        )
+    if goldman_risk:
+        gm = goldman_risk["metrics"]
+        body.append(
+            f"• 헤지펀드(공개보도 {goldman_risk['reference_week']}): 총레버리지 "
+            f"{gm['gross_leverage_pct']:.1f}%({gm['gross_change_pp']:+.1f}%p) · "
+            f"순레버리지 {gm['net_leverage_pct']:.1f}%({gm['net_change_pp']:+.1f}%p) "
+            "→ 기술주 위험축소. 반등 시 개별종목 재매수 여부 확인 필요"
         )
     if goldman_prime:
         gm = goldman_prime["metrics"]
