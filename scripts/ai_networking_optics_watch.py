@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """AI networking / optics structural-change web watcher.
 
-Sources are Google News RSS queries spanning official company releases and major media.
+Sources include Google News RSS and the public FUNDA CPO research RSS feed.
 The watcher is deliberately event-driven: first run establishes a baseline and later
 runs emit Telegram-ready HTML only for new, high-signal items.
 """
@@ -33,6 +33,12 @@ KST = ZoneInfo("Asia/Seoul")
 NOW = dt.datetime.now(dt.timezone.utc)
 # Distinct R&D-only channel inside the existing optics workflow; no new runner,
 # state file, schedule, credential or Telegram destination is introduced.
+COUPE_FUNDA_PRIOR_KEYS = {"cpo-coupe|funda|2026-11-13|bonding-test-ramp-delay"}
+COUPE_SIGNAL_CATEGORIES = {
+    "COUPE W2W 진공본딩 장비·수율",
+    "COUPE 2차 검사 장비 선정",
+    "COUPE 스위치 양산 일정·출하 위험",
+}
 OOI_COMPANY = "NVIDIA OOI & DWDM"
 OOI_WATCH_VERSION = 1
 OOI_REFERENCE_BASELINE_KEYS = {
@@ -280,6 +286,9 @@ COMPANIES = {
             '("silicon photonics" OR SiPh) (packaging OR "fiber attach" OR FAU OR coupling) (yield OR production OR capacity OR qualification OR reliability OR shipment)',
             '("CPO" OR "COUPE") ("FAU" OR "fiber array" OR "grating coupling" OR "edge coupling") ("test time" OR "insertion loss" OR "coupling loss" OR "alignment" OR "yield" OR "volume production")',
             '("CPO" OR "co-packaged optics" OR "silicon photonics" OR SiPh OR COUPE) ("package substrate" OR "packaging substrate" OR "packaged substrate" OR "substrate-level multi-chip" OR interposer OR "glass substrate" OR "glass interposer" OR "ABF substrate" OR "organic substrate") (customer OR "design win" OR qualification OR production OR shipment OR order OR capacity OR yield OR warpage OR thermal OR "insertion loss" OR "low loss" OR CTE OR bottleneck)',
+            '("TSMC" OR COUPE OR "Spectrum-X") ("W2W" OR "wafer-to-wafer" OR "vacuum bonding" OR "hybrid bonding") (yield OR sampling OR selection OR tool OR delivery OR production OR 2027 OR 2028)',
+            '("CPO" OR COUPE) ("Insertion 2" OR "second test insertion" OR "test vendor") (selection OR undecided OR award OR certification OR qualification OR delay OR 2028)',
+            '("FUNDA" OR "FUNDAAI") ("CPO" OR COUPE OR "co-packaged optics") (bonding OR testing OR delay OR shipment OR yield)',
         ],
     },
     "Opticore": {
@@ -495,7 +504,7 @@ TRUSTED_SOURCES = {
     "Amphenol", "Amphenol Corporation", "Ciena", "Ciena Corporation", "Celestica",
     "Lumentum", "Coherent", "Credo", "Credo Technology Group Holding Ltd",
     "Business Wire", "AXT", "WIN Semiconductors", "VPEC", "Applied Optoelectronics",
-    "Fabrinet", "TSMC", "TrendForce",
+    "Fabrinet", "TSMC", "TrendForce", "FUNDA", "FundaAI",
     "Opticore", "옵티코어", "OE Solutions", "오이솔루션",
     "Sungho Electronics", "성호전자", "ADST", "에이디에스테크",
     "POET Technologies", "POET", "Sivers Semiconductors",
@@ -642,7 +651,7 @@ SOURCE_PRIORITY = {
     "Amazon": 100, "Microsoft Source": 100, "대한광통신": 100,
     "TAIHAN FIBEROPTICS": 100, "TFO America": 100,
     "데이터투자": 80, "뉴시스": 85, "Newsis": 85,
-    "TrendForce": 92, "GMT GLOBAL INC.": 100, "TOYO Automation": 100,
+    "TrendForce": 92, "FUNDA": 74, "FundaAI": 74, "GMT GLOBAL INC.": 100, "TOYO Automation": 100,
     "Open Compute Project": 100, "OCP": 100, "iPronics": 100,
     "Lumotive": 100, "nEye": 100, "POLATIS": 100, "HUBER+SUHNER": 100,
     "Huawei": 100, "华为": 100, "Huawei Cloud": 100, "华为云": 100,
@@ -1040,7 +1049,50 @@ def official_ooi_source(item: dict) -> bool:
     return official and named
 
 
+
+def cpo_coupe_milestone(title: str) -> tuple[str, str, str] | None:
+    """Distinguish an expert delay forecast from confirmed tool orders and shipments."""
+    t = html.unescape(title or "").strip()
+    if re.search(r"what.s holding back co[- ]packaged optics mass production", t, re.I):
+        return (
+            "COUPE 스위치 양산 일정·출하 위험",
+            "FUNDA 전문가 조사·대규모 출하 지연 전망(기업 공식 확정 전)",
+            "cpo-coupe|funda|2026-11-13|bonding-test-ramp-delay",
+        )
+    if not re.search(r"\bCOUPE\b|\bCPO\b|co[- ]packaged optics?|Spectrum[- ]?X", t, re.I):
+        return None
+    pending = bool(re.search(r"undecided|unselected|not yet selected|still pending|awaits? (?:vendor )?selection|unresolved|미정|미선정", t, re.I))
+    forecast = bool(re.search(r"expected|forecast|may |could |might |target|plan|estimated|projected|analysis|report says|likely|전망|예상|추정|목표", t, re.I))
+    verified = bool(re.search(r"has selected|selected as|awards? (?:the )?(?:tool|test|vendor)|wins? (?:the )?(?:tool|test|vendor)|"
+                              r"selection completed|qualification completed|begins? shipments?|has shipped|mass production begins|"
+                              r"실제 출하|선정 완료|공급 계약 체결", t, re.I))
+    stage = "당사자 실행·검증 주장(공식 원문 확인 필요)" if verified and not pending and not forecast else "업계 조사·일정 전망(공식 확정 전)"
+    year = "2029" if "2029" in t else "2028" if "2028" in t else "2027" if "2027" in t else "undated"
+    if re.search(r"insertion\s*[- ]?2|second test insertion|test(?:ing)? vendor|2차 검사|두 번째 검사", t, re.I):
+        phase = "selected" if verified and not pending and not forecast else "pending" if pending else "watch"
+        return ("COUPE 2차 검사 장비 선정", stage, f"cpo-coupe|insertion-2|{phase}|{year}")
+    if re.search(r"\bW2W\b|wafer[- ]to[- ]wafer|웨이퍼.{0,3}웨이퍼", t, re.I):
+        if re.search(r"vacuum|진공", t, re.I):
+            phase = "vendor-selected" if verified and re.search(r"select|award|wins?|선정", t, re.I) else (
+                "production" if verified and re.search(r"production|shipment|양산|출하", t, re.I) else
+                "sample" if re.search(r"sample|demo|prototype|시제품", t, re.I) else "development")
+            return ("COUPE W2W 진공본딩 장비·수율", stage, f"cpo-coupe|w2w-vacuum|{phase}|{year}|" + ("actual" if verified and not forecast else "forecast"))
+        if re.search(r"yield|수율", t, re.I):
+            values = re.findall(r"(?<!\d)(?:[1-9]\d?|100)\s*%", t)
+            suffix = "-".join(v.replace(" ", "") for v in values[:3]) or "unknown"
+            return ("COUPE W2W 진공본딩 장비·수율", stage, f"cpo-coupe|w2w-yield|{suffix}|" + ("actual" if verified and not forecast else "reported"))
+    if re.search(r"delay|delayed|pushed?|postpon|defer|slip|fall(?:s|ing)? short|shortfall|miss(?:es|ed)? target|below.{0,25}target|양산 지연|일정 지연|출하 지연", t, re.I) and re.search(r"mass production|volume production|volume shipment|delivery|deliveries|shipment|switch|양산|출하|납품|ramp", t, re.I):
+        return ("COUPE 스위치 양산 일정·출하 위험", stage, f"cpo-coupe|ramp-delay|{year}|" + ("actual" if verified and not forecast else "forecast"))
+    if re.search(r"\bNPO\b", t, re.I) and re.search(r"scale[- ]?up|NVLink", t, re.I) and re.search(r"decision|selected|adoption|delayed|timeline|decide|미정|결정|채택|지연", t, re.I):
+        return ("COUPE 스위치 양산 일정·출하 위험", "대안 NPO 채택 가능성·고객 확정 전", f"cpo-coupe|scale-up-alternative|{year}")
+    return None
+
+
 def canonical_story_key(company: str, title: str) -> str | None:
+    if company == "CPO Packaging & Test":
+        event = cpo_coupe_milestone(title)
+        if event:
+            return event[2]
     if company in NEW_OPTICAL_INFRA_SCOPES:
         event = new_infra_milestone(company, title)
         return event[2] if event else None
@@ -2198,6 +2250,8 @@ def prefer_story_item(candidate: dict, current: dict) -> bool:
     o_rank = source_priority(current.get("source") or "")
     if c_rank != o_rank:
         return c_rank > o_rank
+    if candidate.get("category") in COUPE_SIGNAL_CATEGORIES and current.get("category") not in COUPE_SIGNAL_CATEGORIES:
+        return True
     if candidate.get("score", 0) != current.get("score", 0):
         return candidate.get("score", 0) > current.get("score", 0)
     return (candidate.get("published") or "") > (current.get("published") or "")
@@ -2234,6 +2288,25 @@ def query_google_news(
                 "source_url": source_url,
             })
     return items
+
+
+
+def query_funda_cpo_feed() -> list[dict]:
+    """Public source originals; research statements remain separate from company confirmation."""
+    root = ET.fromstring(fetch("https://fundaai.substack.com/feed", timeout=15))
+    rows: list[dict] = []
+    for node in root.findall("./channel/item")[:40]:
+        title = normalize_text(node.findtext("title") or "")
+        if not re.search(r"\bCPO\b|COUPE|co[- ]packaged optics?|optical engines?|W2W.{0,30}bonding", title, re.I):
+            continue
+        link = normalize_text(node.findtext("link") or "")
+        if not link.startswith("https://fundaai.substack.com/p/"):
+            continue
+        published = parse_date(node.findtext("pubDate"))
+        rows.append({"title": title, "link": link,
+                     "published": published.isoformat() if published else None,
+                     "source": "FUNDA", "source_url": "https://fundaai.substack.com"})
+    return rows
 
 
 def is_noise(text: str) -> bool:
@@ -2398,6 +2471,10 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company == "CPO Packaging & Test":
+        event = cpo_coupe_milestone(title)
+        if event:
+            return event[0]
     if company in NEW_OPTICAL_INFRA_SCOPES:
         event = new_infra_milestone(company, title)
         return event[0] if event else "근거 검증 대기"
@@ -2688,6 +2765,9 @@ def meaning_for(category: str) -> str:
         "CPO 광패키징 기판·수율·열검증": "고집적 CPO 패키지의 휨·열팽창계수·삽입손실·저손실 특성·수율 검증은 광엔진과 ASIC을 같은 패키지에서 대량생산할 수 있는지를 좌우하는 핵심 병목입니다.",
         "CPO 광패키징 기판·인터포저": "CPO는 광학과 실리콘을 하나의 패키지 기판·인터포저 계층에서 통합하므로, 고밀도 배선·저손실·열안정성이 확보될수록 광연결의 전력·거리 병목을 줄일 수 있습니다.",
         "CPO 첨단패키징·COUPE": "CPO는 광엔진과 SiPh 칩을 정밀 패키징해야 하며, COUPE 같은 첨단패키징 생산능력·수율이 CPO 양산 속도를 직접 제한할 수 있습니다.",
+        "COUPE W2W 진공본딩 장비·수율": "FUNDA 2026-11-13 전문가 추정 D2W 수율 80%·W2W 50%, 각각 안정적 양산 목표 90% 이상입니다. 진공 장비 시제품 2027년 하반기·성숙 2028년 전망과 실제 고객 검증을 분리합니다.",
+        "COUPE 2차 검사 장비 선정": "FUNDA 조사상 Insertion 2 장비 공급사는 미정입니다. 향후 공급사 선정, 계약, 장비 성능·검사 처리량 검증, 고객 인증을 별개의 사건으로 추적합니다.",
+        "COUPE 스위치 양산 일정·출하 위험": "FUNDA는 2027년 약 10만 대 전망 미달과 대규모 출하 2027년 말~2028년 지연 가능성을 제시했습니다. 엔비디아 기존 소량 출하와 SPIL의 2027년 15배·2028년 말 추가 2배 생산능력 계획은 실제 대량 출하와 다릅니다.",
         "CPO 검사·신뢰성 병목": "CPO 양산에서는 단순 광정렬보다 검사 처리량·번인·고출력 모듈 소켓·신뢰성 표준이 원가와 출하 속도를 좌우하는 병목으로 이동하고 있습니다.",
         "CPO 광엔진 수율·광결합": "광엔진 수율과 FAU·광섬유 결합 손실은 양품률과 테스트 시간을 동시에 좌우하므로 고객 양산 물량의 핵심 선행지표입니다.",
         "CPO 패키징·검사": "CPO가 시제품에서 양산으로 넘어갈수록 패키징·검사·광결합의 처리량과 수율이 실제 출하량을 결정합니다.",
@@ -2836,6 +2916,9 @@ def risk_for(category: str) -> str:
         "CPO 광패키징 기판·수율·열검증": "대형 패키지의 휨·열팽창 불일치·광결합 오차·삽입손실이 높으면 재작업과 검사시간이 늘고 양품률이 떨어져 고객 승인과 양산 일정이 지연될 수 있습니다.",
         "CPO 광패키징 기판·인터포저": "유리기판·유리인터포저는 TGV 성숙도와 대량생산 수율이 아직 핵심 변수이고, 기존 ABF·실리콘 인터포저가 예상보다 오래 유지되면 신소재 기판 전환 시점이 늦어질 수 있습니다.",
         "CPO 첨단패키징·COUPE": "CPO가 AI 칩과 동일한 2.5D·3D 패키징 자원을 놓고 경쟁하면 생산능력 확보가 늦어지고, 패키징 수율 저하는 광엔진보다 더 큰 출하 병목이 될 수 있습니다.",
+        "COUPE W2W 진공본딩 장비·수율": "진공챔버 성숙도, 기포·휨·정렬 오차와 양산 수율 미달 위험. TEL·EVG는 후보이며 확정 단독 공급사가 아닙니다.",
+        "COUPE 2차 검사 장비 선정": "검사장비 공급사 미정 및 검사 처리량·고객 승인 지연은 실제 광엔진 출하와 현금 회수 시점을 늦출 수 있습니다.",
+        "COUPE 스위치 양산 일정·출하 위험": "초기 선택 고객 출하는 대량 양산이 아닙니다. 광엔진 수율·검사·고객 승인·스위치 실제 인도·매출을 구분해야 합니다.",
         "CPO 검사·신뢰성 병목": "검사 표준이 통일되지 않고 검사시간이 길면 장비 증설만으로 처리량을 늘리기 어렵고 고객 인증·매출 인식이 지연될 수 있습니다.",
         "CPO 광엔진 수율·광결합": "광결합 오차·열·패키징 불량이 누적되면 광엔진 양품률이 떨어지고 검사·재작업 비용이 급증할 수 있습니다.",
         "CPO 패키징·검사": "기술 시연이 성공해도 패키징 수율·검사 처리량·고객 신뢰성 인증이 확보되지 않으면 대량생산은 지연될 수 있습니다.",
@@ -3378,6 +3461,7 @@ def main() -> None:
     new_infra_source_ok = {k: False for k in NEW_OPTICAL_INFRA_SCOPES}
     new_infra_source_errors = {k: [] for k in NEW_OPTICAL_INFRA_SCOPES}
     new_infra_event_candidates = {k: 0 for k in NEW_OPTICAL_INFRA_SCOPES}
+    funda_feed_ok = False
     taihan_direct_verified = False
     taihan_direct_status = "기존 기사 기준선"
     # Query-level evidence: a successful RSS HTTP response can legitimately
@@ -3424,6 +3508,19 @@ def main() -> None:
                         else:
                             infra_query_failed = True
                             new_infra_source_errors[company].append(info)
+            if company == "CPO Packaging & Test":
+                # Independent first-hand research lane: show errors without
+                # interrupting the established Google News CPO collection.
+                query_health[company]["attempted"] += 1
+                try:
+                    direct_rows = query_funda_cpo_feed()
+                    feed_items.extend(direct_rows)
+                    query_health[company]["successful"] += 1
+                    query_health[company]["raw_articles"] += len(direct_rows)
+                    funda_feed_ok = True
+                except Exception as exc:
+                    query_health[company]["failed"] += 1
+                    errors.append(f"FUNDA CPO 직접 RSS 조회 실패: {type(exc).__name__} (원천 미확인)")
             if company in NEW_OPTICAL_INFRA_SCOPES:
                 # An RSS outage of a specialist lane may not silently advance
                 # that lane's semantic baseline; other healthy lanes still run.
@@ -3514,6 +3611,7 @@ def main() -> None:
             if company == CREDO_COMPANY and credo_event is None:
                 continue
             lite_event = lite_supply_event(title) if company == LITE_CAPACITY_COMPANY else None
+            cpo_event = cpo_coupe_milestone(title) if company == "CPO Packaging & Test" else None
             if company == LITE_CAPACITY_COMPANY and lite_event is None:
                 continue
 
@@ -3572,6 +3670,8 @@ def main() -> None:
                 # Supply booked until 2029 has no conventional product-speed or
                 # "order" token. Never exclude a first-hand CEO quote on that basis.
                 score = max(score, 18)
+            if cpo_event:
+                score = max(score, 12)
             if networking_event:
                 # Only strictly verified commercial stages; network switches
                 # may have no optical/CPO keyword in the headline.
@@ -3586,7 +3686,7 @@ def main() -> None:
             has_high = any(re.search(p, title, re.I) for p in HIGH_SIGNAL_PATTERNS)
             has_action = any(re.search(p, title, re.I) for p in ACTION_PATTERNS)
             very_strong = bool(re.search(r"\b3\.2\s*[Tt]\b", title, re.I))
-            if not infra_event and not ooi_event and not power_event and not lite_event and not meta_event and not credo_event and not networking_event and (
+            if not infra_event and not ooi_event and not power_event and not lite_event and not meta_event and not credo_event and not networking_event and not cpo_event and (
                 score < 7 or not has_high or (not has_action and not very_strong)
             ):
                 continue
@@ -3596,8 +3696,8 @@ def main() -> None:
                 "ticker": meta["ticker"],
                 "score": score,
                 "key": key,
-                "stage": infra_event[1] if infra_event else ooi_event[1] if ooi_event else networking_event[1] if networking_event else credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
-                "category": infra_event[0] if infra_event else ooi_event[0] if ooi_event else networking_event[0] if networking_event else credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else category_for(title, company),
+                "stage": infra_event[1] if infra_event else ooi_event[1] if ooi_event else networking_event[1] if networking_event else credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else cpo_event[1] if cpo_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
+                "category": infra_event[0] if infra_event else ooi_event[0] if ooi_event else networking_event[0] if networking_event else credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else cpo_event[0] if cpo_event else category_for(title, company),
             })
             all_relevant.append(item)
 
@@ -3650,6 +3750,9 @@ def main() -> None:
     # Source-quality gate: unknown/low-quality sources cannot trigger by themselves.
     # They are admitted only when a higher-quality source independently reports the same event.
     def source_is_corroborated(item: dict) -> bool:
+        if item.get("company") == "CPO Packaging & Test" and str(item.get("source") or "").lower() in {"funda", "fundaai"}:
+            origin = urllib.parse.urlparse(item.get("source_url") or "").hostname or ""
+            return origin.lower() == "fundaai.substack.com"
         if item.get("company") == CREDO_COMPANY and source_priority(item.get("source") or "") < 80:
             return False
         if item.get("company") == META_COMPANY and meta_official_source(item):
@@ -3737,6 +3840,7 @@ def main() -> None:
         | set(CREDO_PRIOR_EVENT_KEYS)
         | set(OOI_REFERENCE_BASELINE_KEYS)
         | set(NEW_OPTICAL_INFRA_BASELINES)
+        | set(COUPE_FUNDA_PRIOR_KEYS)
     )
     seen_story_records = [
         record for record in (state.get("seen_story_records") or [])
@@ -3845,6 +3949,8 @@ def main() -> None:
         "relevant_item_count": len(deduped),
         "source_errors": errors,
         "query_health": query_health,
+        "funda_cpo_source_ok": funda_feed_ok,
+        "funda_cpo_last_healthy_kst": dt.datetime.now(KST).isoformat(timespec="seconds") if funda_feed_ok else state.get("funda_cpo_last_healthy_kst"),
         "query_diagnostics_version": 1,
         # The one-time correction is committed only after a Telegram API
         # delivery confirmation (push validation never persists any state).
@@ -3976,6 +4082,8 @@ def main() -> None:
             alert_header = "🚨 <b>국내 AI 광통신 수주·검증 변화 감지</b>"
         elif photonic_compute_only:
             alert_header = "🚨 <b>AI 광컴퓨팅·광메모리 구조 변화 감지</b>"
+        elif all(item.get("category") in COUPE_SIGNAL_CATEGORIES for item in alert_items):
+            alert_header = "🚨 <b>TSMC COUPE·CPO 본딩·검사·양산 일정 변화</b>"
         elif all(item.get("company") == OOI_COMPANY for item in alert_items):
             alert_header = "🚨 <b>엔비디아 OOI·DWDM 기술검증·양산 단계 변화</b>"
         elif all(item.get("company") == CREDO_COMPANY for item in alert_items):
@@ -4041,6 +4149,8 @@ def main() -> None:
                 f"• 원문 제목: {html.escape(public_title)}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
+            if item.get("category") in COUPE_SIGNAL_CATEGORIES:
+                lines.append("• 확인 수준: " + ("FUNDA 전문가 조사·추정, 회사 공식 확인 전" if str(item.get("source") or "").lower() in {"funda", "fundaai"} else "보도·당사자 발표 구분 필요, 실제 수율·선정·출하 원문 재확인"))
             related_categories = []
             for scope in item.get("related_scopes") or []:
                 related = str(scope.get("category") or "")
@@ -4101,6 +4211,8 @@ def main() -> None:
         f"- 신규 3축 원천조회 정상 여부: {new_infra_source_ok}",
         f"- 신규 3축 기사 후보: {new_infra_event_candidates}",
         f"- 대한광통신 9월 실제 출하 기사 원문: {taihan_direct_status}",
+        f"- FUNDA CPO 1차 리서치 RSS: {'정상' if funda_feed_ok else '조회 실패·해당 원천 미확인(타 원천 유지)'}",
+        "- COUPE W2W 수율·진공 본딩 장비 샘플/선정·Insertion 2 검사 업체·2027~2028 출하 일정은 별도 선행경보",
         f"- 메타 광모듈·공급사 공식자료 감시: {'정상' if meta_source_healthy else '보류·해당 감시축 기준선 미갱신'}",
         f"- 메타 감시 버전: {pending.get('meta_optical_watch_version')}",
         f"- 크레도 광학·NPO 감시: {'정상' if credo_source_healthy else '보류·원천조회 실패 / 기준선 승격 금지'}",

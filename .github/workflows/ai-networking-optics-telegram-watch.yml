@@ -278,6 +278,24 @@ jobs:
           assert carried["telegram_message_ids"] == previous_delivery["telegram_message_ids"]
           assert carried["bot_username"] == previous_delivery["bot_username"]
 
+
+          # Historical FUNDA analysis is a baseline, not a fresh official delay.
+          funda_prior = "Deep | What's Holding Back Co-Packaged Optics Mass Production?"
+          assert watch.cpo_coupe_milestone(funda_prior)[2] in watch.COUPE_FUNDA_PRIOR_KEYS
+          w2w_sample = "TSMC COUPE CPO W2W vacuum bonding tool samples expected in 2H 2027"
+          w2w_select = "TSMC COUPE CPO W2W vacuum bonder vendor selected as Tokyo Electron for 2028 production"
+          test_pending = "TSMC COUPE CPO Insertion 2 test vendor remains undecided in 2027"
+          test_won = "TSMC COUPE CPO Insertion 2 test vendor selected as Chroma for 2028"
+          delay = "FUNDA sees TSMC COUPE Spectrum-X CPO switch shipments delayed to 2028"
+          assert watch.cpo_coupe_milestone(w2w_sample)[0] == "COUPE W2W 진공본딩 장비·수율"
+          assert watch.cpo_coupe_milestone(w2w_select)[2] != watch.cpo_coupe_milestone(w2w_sample)[2]
+          assert watch.cpo_coupe_milestone(test_pending)[0] == "COUPE 2차 검사 장비 선정"
+          assert watch.cpo_coupe_milestone(test_won)[2] != watch.cpo_coupe_milestone(test_pending)[2]
+          assert watch.cpo_coupe_milestone(delay)[0] == "COUPE 스위치 양산 일정·출하 위험"
+          assert watch.category_for(w2w_sample, "CPO Packaging & Test") in watch.COUPE_SIGNAL_CATEGORIES
+          assert watch.cpo_coupe_milestone("SiC 800V DC power inverter supply") is None
+          assert watch.source_priority("FUNDA") < watch.source_priority("TSMC")
+
           print("dedupe_and_quality_regression_test=passed")
           PY
 
