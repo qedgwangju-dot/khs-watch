@@ -138,8 +138,9 @@ class RecoveryIsolationTests(unittest.TestCase):
         state = {'value': 1, '_delivery': {'status': 'partial', 'next_chunk': 1,
             'chunks': ['first', 'second'], 'message_ids': [133], 'candidate': {'value': 2}}}
         self.repo.states[self.path] = copy.deepcopy(state)
-        send = Mock(return_value={'message_id': 134})
-        result = d.resume_one(self.repo, self.path, state, send)
+        send = Mock(return_value={'message_id': 134, 'chat': {'id': 1234}})
+        with patch.dict(d.os.environ, {'TELEGRAM_CHAT_ID': '1234'}):
+            result = d.resume_one(self.repo, self.path, state, send)
         self.assertEqual(send.call_count, 1)
         self.assertEqual(send.call_args.args[1]['text'], 'second')
         self.assertEqual(result['message_ids'], [133, 134])
@@ -205,6 +206,46 @@ class RubinRecipientGuardTests(unittest.TestCase):
         self.assertEqual(repo.states[path]['telegram_message_id'], 388)
         self.assertTrue(receipt['all_message_chat_ids_verified'])
         self.assertNotIn('chat_id', receipt)
+
+    def test_all_routes_reject_wrong_delivery_chat_without_state_promotion(self):
+        for name in ('samsung', 'skhynix', 'solidigm', 'tsmc_cross'):
+            with self.subTest(name=name):
+                repo = FakeRepository()
+                path = d.ROUTES[name][0]
+                before = copy.deepcopy(repo.states[path])
+                with patch.dict(d.os.environ, {'TELEGRAM_CHAT_ID': '1234'}):
+                    with self.assertRaisesRegex(RuntimeError, 'delivery not acknowledged'):
+                        d.transact(repo, path, before, {'value': 2}, 'notice',
+                                   lambda *_: {'message_id': 388, 'chat': {'id': 9999}})
+                self.assertEqual(repo.states[path]['value'], 1)
+                self.assertEqual(repo.states[path]['_delivery']['status'], 'uncertain')
+
+    def test_all_routes_confirm_matching_delivery_chat(self):
+        for name in ('samsung', 'skhynix', 'solidigm', 'tsmc_cross'):
+            with self.subTest(name=name):
+                repo = FakeRepository()
+                path = d.ROUTES[name][0]
+                before = copy.deepcopy(repo.states[path])
+                with patch.dict(d.os.environ, {'TELEGRAM_CHAT_ID': '1234'}):
+                    receipt = d.transact(repo, path, before, {'value': 2}, 'notice',
+                                         lambda *_: {'message_id': 388, 'chat': {'id': 1234}})
+                self.assertEqual(repo.states[path]['value'], 2)
+                self.assertTrue(receipt['all_message_chat_ids_verified'])
+                self.assertNotIn('chat_id', receipt)
+
+    def test_preflight_checks_destination_before_collectors(self):
+        with patch.dict(d.os.environ, {'TELEGRAM_CHAT_ID': '1234'}):
+            with patch.object(d, 'read_only_telegram', side_effect=[
+                {'username': d.EXPECTED}, {'id': 9999},
+            ]) as lookups:
+                with self.assertRaisesRegex(RuntimeError, 'recipient mismatch'):
+                    d.route_check()
+                self.assertEqual(lookups.call_count, 2)
+            with patch.object(d, 'read_only_telegram', side_effect=[
+                {'username': d.EXPECTED}, {'id': 1234},
+            ]) as lookups:
+                d.route_check()
+                self.assertEqual(lookups.call_count, 2)
 
 
 if __name__ == '__main__':

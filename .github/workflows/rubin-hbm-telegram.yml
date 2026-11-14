@@ -34,6 +34,9 @@ on:
       - "tests/test_hbm*.py"
   schedule:
     - cron: "23 * * * *"
+    # Same-hour backup when GitHub delays or drops the primary schedule.
+    # Reuse existing durable states and delivery deduplication; no new bot.
+    - cron: "47 * * * *"
     # Weekly Radar publication fallback; same deduplicated bot and state.
     - cron: "53 12 * * 1"  # Monday 21:53 Korea time
     - cron: "53 0 * * 2"   # Tuesday 09:53 Korea time

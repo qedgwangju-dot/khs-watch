@@ -39,6 +39,7 @@ ROUTES = {
     'server_bottleneck': ('data/ai_server_physical_bottleneck_watch_state.json', 'out/ai_server_physical_bottleneck_alert.html', 'out/ai_server_physical_bottleneck_pending_state.json'),
 }
 EXPECTED = 'khs88798879887988798879_bot'
+PRODUCTION_STATE_PATHS = frozenset(path for path, _, _ in ROUTES.values())
 
 
 def now():
@@ -179,9 +180,13 @@ def route_check():
     identity = read_only_telegram('getMe')
     if identity.get('username', '').lower() != EXPECTED.lower():
         raise RuntimeError('unexpected Telegram bot; delivery blocked')
-    if not os.environ.get('TELEGRAM_CHAT_ID', '').strip():
+    destination = os.environ.get('TELEGRAM_CHAT_ID', '').strip()
+    if not destination:
         raise RuntimeError('HBM Telegram chat missing')
-    print('telegram_route_valid=true bot=@' + EXPECTED)
+    chat = read_only_telegram('getChat', {'chat_id': destination})
+    if not recipient_matches(destination, chat):
+        raise RuntimeError('HBM Telegram recipient mismatch; delivery blocked')
+    print('telegram_route_valid=true bot=@' + EXPECTED + ' recipient_match=true')
 
 
 class HTMLBalance(HTMLParser):
@@ -413,10 +418,13 @@ def resume_one(repo, path, state, send=api):
             mid = result.get('message_id') if isinstance(result, dict) else None
             if type(mid) is not int or mid <= 0:
                 raise RuntimeError('Telegram acknowledgement lacks a usable positive message_id')
-            if path == ROUTES['rubin'][0]:
+            if path in PRODUCTION_STATE_PATHS:
                 if not recipient_matches(os.environ.get('TELEGRAM_CHAT_ID'), result.get('chat')):
-                    raise RuntimeError('Rubin Telegram send recipient mismatch; state not promoted')
-                print('telegram_rubin_send_recipient_match=true')
+                    raise RuntimeError('HBM Telegram send recipient mismatch; state not promoted')
+                if path == ROUTES['rubin'][0]:
+                    print('telegram_rubin_send_recipient_match=true')
+                else:
+                    print('telegram_hbm_send_recipient_match=true')
         except Exception as exc:
             held = copy.deepcopy(current)
             held['_delivery']['status'] = 'uncertain'
@@ -432,7 +440,7 @@ def resume_one(repo, path, state, send=api):
     receipt = {'status': 'confirmed', 'bot_username': EXPECTED,
                'message_ids': current['_delivery']['message_ids'], 'confirmed_at_kst': now(),
                'payload_hash': digest(journal['chunks'])}
-    if path == ROUTES['rubin'][0]:
+    if path in PRODUCTION_STATE_PATHS:
         receipt['all_message_chat_ids_verified'] = index_start == 0
     final = promote(journal['candidate'], current)
     final['last_successful_delivery_kst'] = receipt['confirmed_at_kst']

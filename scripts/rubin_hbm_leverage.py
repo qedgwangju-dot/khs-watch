@@ -62,7 +62,40 @@ def main() -> None:
     if not any(topic in html.unescape(re.sub(r"</?b>", "", text)) for topic in evidence_topics):
         ALERT.write_text(text.strip() + "\n", encoding="utf-8")
         return
-    if "[HBM 수요·가격 레버리지]" in text:
+    if "[HBM 수요·가격 레버리지]" in text or "[HBM 적층·GPU·전력 교차판정]" in text:
+        ALERT.write_text(text.strip() + "\n", encoding="utf-8")
+        return
+
+
+    # A stack-height change may REDUCE installed bits despite more accelerators.
+    # The +17% acceleration and +10~20%/Gb examples are scenario inputs,
+    # never evidence of actual GPU shipments, energization or signed memory ASP.
+    normalized = html.unescape(re.sub(r"</?b>", "", text))
+    if any(topic in normalized for topic in (
+        "■ Rubin Ultra 최종 HBM 사양",
+        "■ Rubin Ultra HBM4/HBM4E 옵션 변화",
+    )):
+        ratio_12_to_8 = 8 / 12
+        assumed_gpu_ratio = 1 + ACCELERATOR_GROWTH
+        bits_delta = (assumed_gpu_ratio * ratio_12_to_8 - 1) * 100
+        revenue_low = (assumed_gpu_ratio * ratio_12_to_8 * 1.10 - 1) * 100
+        revenue_high = (assumed_gpu_ratio * ratio_12_to_8 * 1.20 - 1) * 100
+        block = [
+            "",
+            "<b>[HBM 적층·GPU·전력 교차판정]</b>",
+            "• 구조 변화 시나리오(미확정): 동일 다이 용량·GPU당 스택 수를 가정하면 12단→8단은 스택당 HBM 비트 -33.3%, 반대로 8단→12단은 +50.0%입니다.",
+            "• 12단→8단 시 GPU 출하가 +50.0% 증가해야 전체 HBM 비트 총수요가 유지됩니다. 실제 GPU 출하량·GPU당 용량은 별도 확인 대상입니다.",
+            f"• 가정 예시: GPU 출하 +17%와 12단→8단 변화가 함께 일어날 경우 총 HBM 비트 수요 {bits_delta:+.1f}%(이는 실제 전망·출하가 아닙니다).",
+            f"• 같은 가정에 Gb당 가격 +10~20%를 적용한 HBM 매출은 {revenue_low:+.1f}~{revenue_high:+.1f}%(계약가·실적 미확인).",
+            "• 판정 보류: GPU 실제 출하·GPU당 스택 수·다이 용량·8/12/16단 혼합 및 공급사별 가격이 공개되지 않으면 실제 총 비트 수요 증가·감소를 확정할 수 없습니다.",
+            "• 전력 교차확인: 데이터센터 발표·착공 GW와 전력 접속·전원 인가·실제 가동 GW를 구분합니다. 전력 부족으로 칩 사용이 늦어질 위험과 HBM 발주 물량 변화는 별개로 검증합니다.",
+            "• 시장 전체 2028년 공급 부족 전망도 개별 GPU의 적층 확정 사양이나 특정 공급사의 확정 매출로 승격하지 않습니다.",
+        ]
+        marker = "\n━━━━━━━━━━━━━━━━\n<b>[상세 근거]</b>"
+        if marker in text:
+            text = text.replace(marker, "\n" + "\n".join(block) + marker, 1)
+        else:
+            text = text + "\n" + "\n".join(block)
         ALERT.write_text(text.strip() + "\n", encoding="utf-8")
         return
 

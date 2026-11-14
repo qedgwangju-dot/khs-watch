@@ -1,10 +1,13 @@
 import pathlib
 import sys
+import tempfile
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import rubin_hbm_watch as r
 import hbm_delivery as d
+import rubin_hbm_leverage as leverage
 
 
 class RubinHBMUpgradeTests(unittest.TestCase):
@@ -164,6 +167,33 @@ class HBFStandardMilestoneTests(unittest.TestCase):
         self.assertIn('512GB',str(notice))
         self.assertIn('양산',notice['verdict'])
         self.assertIn('HBF',notice['headline_ko'])
+
+class RubinStackDemandCrossTests(unittest.TestCase):
+    def test_stack_change_is_a_conditional_scenario_not_positive_demand_forecast(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            file = pathlib.Path(tmp) / "rubin_alert.html"
+            file.write_text("<b>HBM 구조 변화</b>\\n■ Rubin Ultra HBM4/HBM4E 옵션 변화\\n8단↔12단 방향 전환\\n",
+                            encoding="utf-8")
+            with patch.object(leverage, "ALERT", file):
+                leverage.main()
+                rendered = file.read_text(encoding="utf-8")
+                self.assertIn("12단→8단", rendered)
+                self.assertIn("-22.0%", rendered)
+                self.assertIn("-14.2~-6.4%", rendered)
+                self.assertIn("전원 인가", rendered)
+                self.assertIn("미확정", rendered)
+                self.assertNotIn("GPU당 HBM +25~30%", rendered)
+                leverage.main()
+                self.assertEqual(file.read_text(encoding="utf-8"), rendered)
+
+    def test_hbf_only_notice_has_no_rubin_gpu_demand_scenario(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            file = pathlib.Path(tmp) / "hbf_alert.html"
+            source = "<b>HBF 규격 변경</b>\\n2027년 1월 최종 규격 목표\\n"
+            file.write_text(source, encoding="utf-8")
+            with patch.object(leverage, "ALERT", file):
+                leverage.main()
+                self.assertEqual(file.read_text(encoding="utf-8"), source)
 
 
 if __name__ == "__main__":
