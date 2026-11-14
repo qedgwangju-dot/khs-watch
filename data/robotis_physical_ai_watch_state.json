@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-14T17:01:35.404962+00:00",
+  "updated_at": "2026-11-14T19:27:38.753663+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -910,7 +910,6 @@
   "last_selected": [],
   "groups": [
     "dkt_auto_oled_expansion",
-    "ess_battery",
     "humanoid_component_policy",
     "hungary_battery_environment",
     "hyundai_mobis_atlas",
@@ -919,21 +918,6 @@
     "spacex_tesla_combination"
   ],
   "delivery_history": [
-    {
-      "run_id": 43204919564,
-      "outcome": "sent",
-      "message_ids": [
-        357
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-12T10:57:57.216942+00:00"
-    },
     {
       "run_id": 43225101264,
       "outcome": "normal_silence",
@@ -1140,15 +1124,24 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-14T17:01:35.404962+00:00"
+    },
+    {
+      "run_id": 43632172291,
+      "outcome": "normal_silence",
+      "message_ids": [],
+      "recipient_verified": null,
+      "recipient_checks": [],
+      "message_topic_present": [],
+      "state_timestamp_utc": "2026-11-14T19:27:38.753663+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 43618783955,
+    "run_id": 43632172291,
     "outcome": "normal_silence",
     "message_ids": [],
     "recipient_verified": null,
     "recipient_checks": [],
     "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-14T17:01:35.404962+00:00"
+    "state_timestamp_utc": "2026-11-14T19:27:38.753663+00:00"
   }
 }
