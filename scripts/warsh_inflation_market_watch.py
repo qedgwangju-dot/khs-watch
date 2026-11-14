@@ -340,6 +340,14 @@ def main():
 
     rows=treasury_rows(); by_date={r['date']:i for i,r in enumerate(rows)}
     keep=[]; integrated_date=state.get('last_integrated_market_date')
+    # 같은 실행에서 PPI(11/13) 다음 CPI(11/10)를 보내도 기준일이 역행하면 안 된다.
+    # 이미 전송이 확인된 과거 기록을 사용해 이전 실행의 역행 상태도 복구한다.
+    for key, receipt in receipts.items():
+        if key not in processed or not isinstance(receipt, dict) or not receipt.get('recipient_verified'):
+            continue
+        verified_release_date = OFFICIAL_RELEASE_EXCEPTIONS.get(key)
+        if verified_release_date in by_date:
+            integrated_date = max(integrated_date or verified_release_date, verified_release_date)
     sent=[]
     for event in pending:
         if not event.get('release_date'):
@@ -354,7 +362,8 @@ def main():
         row=rows[idx]; prev=rows[idx-1]
         if FORCE_NOTIFY or event['key'] not in processed:
             receipt = send(build_message(event,row,prev))
-            processed.add(event['key']); sent.append(event['key']); integrated_date=row['date']
+            processed.add(event['key']); sent.append(event['key'])
+            integrated_date=max(integrated_date or row['date'], row['date'])
             receipts[event['key']] = receipt if isinstance(receipt, dict) else {'receipt_status': 'unavailable'}
         else:
             processed.add(event['key'])

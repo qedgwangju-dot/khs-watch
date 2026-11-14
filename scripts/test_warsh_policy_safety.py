@@ -1248,6 +1248,29 @@ class WarshInflationMissingBaselineTests(unittest.TestCase):
         self.assertIn('CPI:2026-10', state['processed_events'])
         self.assertIn('PPI:2026-10', state['processed_events'])
         self.assertTrue(state['delivery_receipts']['CPI:2026-10']['recipient_verified'])
+        self.assertEqual(state['last_integrated_market_date'], '2026-11-13')
+
+    def test_existing_receipts_repair_market_date_without_resend(self):
+        v=self.values()
+        state={'last_seen': {'CPI':'2026-10','PPI':'2026-10'},
+               'processed_events':['PPI:2026-10','CPI:2026-10'],
+               'pending_events':[],
+               'delivery_receipts': {'PPI:2026-10':{'message_id':145,'recipient_verified':True},
+                                     'CPI:2026-10':{'message_id':146,'recipient_verified':True}},
+               'last_integrated_market_date':'2026-11-10'}
+        rows=[{'date':'2026-11-10','2y':4.02,'10y':4.51,'30y':4.71},
+              {'date':'2026-11-13','2y':4.04,'10y':4.54,'30y':4.76}]
+        with patch.object(inflation, 'load_state', return_value=state), \
+             patch.object(inflation, 'bls_values', return_value=v), \
+             patch.object(inflation, 'treasury_rows', return_value=rows), \
+             patch.object(inflation, 'send') as send, \
+             patch.object(inflation, 'save_state') as save:
+            inflation.main()
+        send.assert_not_called()
+        new_state=save.call_args.args[0]
+        self.assertEqual(new_state['last_integrated_market_date'],'2026-11-13')
+        self.assertEqual(new_state['delivery_receipts'],state['delivery_receipts'])
+        self.assertEqual(new_state['processed_events'],state['processed_events'])
 
 
 if __name__ == "__main__":
