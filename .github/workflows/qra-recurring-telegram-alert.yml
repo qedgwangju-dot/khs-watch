@@ -44,6 +44,9 @@ concurrency:
 jobs:
 
   requested_dealer_bot_once:
+    # The October 2026 dealer event was already delivered; do not repeat a
+    # costly full checkout on every regular QRA schedule or source-code push.
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run == 'false' }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
