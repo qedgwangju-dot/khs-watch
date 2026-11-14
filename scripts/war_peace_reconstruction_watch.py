@@ -477,7 +477,7 @@ def run(test=False):
         "",
         f"- 조회: {now.isoformat(timespec='seconds')}",
         f"- 수집: {len(gathered)}건",
-        f"- 신규 후보: {len(items)}건 / 실제 본문 포함: {sum(row['rendered'] for row in receipt['articles'])}건",
+        f"- 신규 후보: {len(items)}건 / 실제 본문 포함: {sum(bool(row.get('rendered') and row.get('body_verified')) for row in receipt['articles'])}건",
         "- 실행 설정: GitHub Actions 5분 예약 + 1시간 속보 검색창 우선 (실제 실행 시각은 Actions 기록 기준)",
         "- 번역: 영문 제목은 한국어로 강제 변환, 실패 시 영문 원문 미노출",
         "- Telegram 형식: 핵심 변화 → 시장 반응 → 투자 판정 → 다음 확인 → 원문",
