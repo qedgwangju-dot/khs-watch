@@ -3044,12 +3044,15 @@ def gm_vac_contract_termination_core(title: str, body: str) -> str:
     return fact if core_sentence_is_complete(fact) else ""
 
 
-def source_headline_event_fact(title: str, body: str) -> str:
+def source_headline_event_fact(title: str, body: str, published: str = "") -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
     flat_source = re.sub(r"\s+", " ", source)
+    coupang_core = coupang_quarterly_earnings_core(title, source, published)
+    if coupang_core:
+        return coupang_core
     for event_core in (
         hormuz_carrier_share_core(title, source),
         american_airlines_fuel_guidance_core(title, source),
@@ -6310,6 +6313,32 @@ def frontier_ai_support_structure_core(title: str, body: str) -> str:
     return fact if core_sentence_is_complete(fact) else ""
 
 
+def coupang_quarterly_earnings_core(title: str, body: str, published: str = "") -> str:
+    observation = market_materiality.coupang_quarterly_earnings_release_observation(
+        title, body, published,
+    )
+    if not observation:
+        return ""
+    source = market_materiality.source_reported_body(body)
+    record = bool(re.search(r"사상\s*최대|역대\s*최대|분기\s*기준\s*최대", title + " " + source))
+    growth = observation.get("revenue_growth_pct")
+    revenue = observation["revenue_display"]
+    operating_loss = observation["operating_loss_display"]
+    sales_text = f"매출 {revenue}"
+    if growth:
+        sales_text += f"(원화 기준 전년비 {growth}% 증가)"
+    core = f"쿠팡 {observation['quarter']}분기 {sales_text}"
+    core += "으로 역대 최대였지만" if record else "였지만"
+    core += f", 영업손실 {operating_loss}"
+    if observation.get("loss_streak_quarters"):
+        core += f"으로 {observation['loss_streak_quarters']}개 분기 연속 적자다."
+    elif re.search(r"전년\s*동기[^.!?]{0,35}적자\s*전환", source):
+        core += "으로 전년 동기 대비 적자 전환했다."
+    else:
+        core += "을 기록했다."
+    return core if core_sentence_is_complete(core) else ""
+
+
 def detailed_article_core(title: str, body: str, published: str = "") -> str:
     raw_body = str(body or "")
     if core_has_ui_garbage(raw_body):
@@ -6329,6 +6358,7 @@ def detailed_article_core(title: str, body: str, published: str = "") -> str:
                 raw_body = body_tail
     body = article_summary_body(raw_body)
     for event_core in (
+        coupang_quarterly_earnings_core(title, body, published),
         skydance_acquisition_financing_core(title, body),
         hormuz_carrier_share_core(title, body),
         american_airlines_fuel_guidance_core(title, body),
@@ -13440,6 +13470,7 @@ def verified_alert_core(alert: dict, title: str) -> str:
         if alert.get("body_verified"):
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
             for event_core in (
+                coupang_quarterly_earnings_core(source_title or title, body, str(alert.get("published") or "")),
                 skydance_acquisition_financing_core(source_title or title, body),
                 frontier_ai_support_structure_core(source_title or title, body),
                 hormuz_carrier_share_core(source_title or title, body),
@@ -13465,7 +13496,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
                 event_core = fomc_minutes_guidance_core(source_title or title, body)
             if event_core and valid_source_fact(event_core):
                 return event_core
-            observed_fact = source_headline_event_fact(source_title or title, article_summary_body(body))
+            observed_fact = source_headline_event_fact(
+                source_title or title, article_summary_body(body), str(alert.get("published") or ""),
+            )
             if observed_fact and valid_source_fact(observed_fact):
                 return observed_fact
             entry_fact = conditional_financial_market_entry_fact(source_title or title, article_summary_body(body))
@@ -13666,7 +13699,7 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not expected_observation:
         expected_observation = lg_cloid_humanoid_launch_core(title, source, published)
     if not expected_observation:
-        expected_observation = source_headline_event_fact(title, source)
+        expected_observation = source_headline_event_fact(title, source, published)
     observation_core = re.sub(r"\((?:약[^)]*|원화\s*환산\s*확인\s*불가)\)", "", core)
     petroleum_cartel_alignment = korean_petroleum_cartel_core_matches(alert, observation_core)
     if expected_observation and market_materiality.canonical_source_fact(expected_observation) != market_materiality.canonical_source_fact(observation_core):

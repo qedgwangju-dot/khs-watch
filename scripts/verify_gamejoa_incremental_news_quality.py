@@ -4994,6 +4994,100 @@ class IncrementalNewsTests(unittest.TestCase):
             cases[2][0], cases[2][1] + ' 임상 2상 결과가 발표됐다.')['reason'],
             cases[2][2])
 
+    def test_coupang_quarterly_result_keeps_exact_revenue_and_loss_and_dedupes_reprints(self):
+        published = '2026-11-04T13:43:00+09:00'
+        title_a = "쿠팡, 분기 매출 14兆 돌파 '역대 최대'…영업손실 6423억에 빛바래"
+        body_a = (
+            '쿠팡이 올해 3분기 매출 14조원을 돌파하며 사상 최대 실적을 달성했지만 '
+            '6000억원을 넘는 대규모 영업손실로 빛이 바랬다. '
+            '쿠팡Inc는 4일 미국 증권거래위원회(SEC)에 3분기 실적 보고서를 제출했다. '
+            '매출은 99억6200만달러로 전년 동기 대비 7% 증가했다. '
+            '원화로 환산하면 14조2209억원이다. 지난해 같은 기간보다 11% 늘었다. '
+            '반면 3분기 영업손실은 4억5000만달러(6423억원)로 전년 동기 적자 전환했다. '
+            '올해 1분기 3545억원, 2분기 8350억원에 이어 3개 분기 연속 적자다.'
+        )
+        title_b = '쿠팡 3분기 매출 14조2209억원으로 최대…영업손실 6423억원'
+        body_b = (
+            '쿠팡Inc는 2026년 3분기 실적 보고서를 미국 증권거래위원회에 제출했다. '
+            '원화 기준 매출액 14조2209억원은 전년 동기보다 11% 증가한 분기 최대다. '
+            '회사의 3분기 영업손실은 6423억원으로 전년 동기 대비 적자 전환했고, '
+            '올해 1분기와 2분기에 이어 3개 분기 연속 적자다.'
+        )
+        first = {**alert(title_a, body_a, 'https://www.etnews.com/20261104000267'),
+                 'published': published}
+        second = {**alert(title_b, body_b, 'https://www.newsis.com/view/NISX20261104_0000000000'),
+                  'published': published, 'publisher': '뉴시스'}
+
+        observation = materiality.coupang_quarterly_earnings_release_observation(
+            title_a, body_a, published,
+        )
+        self.assertEqual(observation['revenue_won'], '14220900000000')
+        self.assertEqual(observation['operating_loss_won'], '-642300000000')
+        self.assertEqual(observation['revenue_growth_pct'], '11')
+        self.assertEqual(observation['loss_streak_quarters'], '3')
+        self.assertNotEqual(observation['revenue_display'], '14조원')
+
+        core = radar.detailed_article_core(title_a, body_a, published)
+        self.assertIn('14조2209억원', core)
+        self.assertIn('원화 기준 전년비 11% 증가', core)
+        self.assertIn('영업손실 6423억원', core)
+        self.assertIn('3개 분기 연속 적자', core)
+        self.assertNotIn('6000억원', core)
+        first['telegram_core_fact'] = core
+        second['telegram_core_fact'] = radar.detailed_article_core(title_b, body_b, published)
+        self.assertFalse(radar.source_core_fact_errors(first))
+        self.assertFalse(radar.source_core_fact_errors(second))
+
+        identity = materiality.source_event_identity(first)
+        self.assertTrue(identity.startswith('source_event:v2:coupang_quarterly_earnings:'))
+        self.assertEqual(identity, materiality.source_event_identity(second))
+        changed_result = {**second, 'source_body': body_b.replace('6423억원', '6500억원')}
+        self.assertNotEqual(identity, materiality.source_event_identity(changed_result))
+        changed_period = {**second, 'source_title': '쿠팡 4분기 매출 14조2209억원…영업손실 6423억원',
+                          'source_body': body_b.replace('3분기', '4분기')}
+        self.assertNotEqual(identity, materiality.source_event_identity(changed_period))
+
+        now = dt.datetime.fromisoformat(published)
+        with patch.object(radar.base, 'kst_now', return_value=now):
+            selected = radar.quality_display_alerts([first, second], 10)
+        self.assertEqual(len(selected), 1)
+
+    def test_nvidia_ceo_departure_reprints_require_official_action_and_preserve_successor_stage(self):
+        published = '2026-11-12T18:38:00+09:00'
+        english_title = 'NVIDIA board confirms Jensen Huang CEO resignation'
+        english_body = (
+            'The NVIDIA Board of Directors accepted Jensen Huang’s resignation as President and CEO, '
+            'effective immediately. CFO Colette Kress will serve as interim CEO while the board searches '
+            'for a permanent successor.'
+        )
+        korean_title = '엔비디아 이사회, 젠슨 황 CEO 사임 발표…콜렛 크레스 임시 CEO'
+        korean_body = (
+            '엔비디아 이사회는 젠슨 황의 CEO 사임을 발표하고 즉시 효력이 발생한다고 밝혔다. '
+            '최고재무책임자 콜렛 크레스가 후임을 찾을 때까지 임시 CEO를 맡는다.'
+        )
+        english = {**alert(english_title, english_body, 'https://example.com/nvidia-release'),
+                   'published': published, 'publisher': 'NVIDIA'}
+        korean = {**alert(korean_title, korean_body, 'https://example.com/nvidia-recap'),
+                  'published': published, 'publisher': '연합뉴스'}
+        identity = materiality.source_event_identity(english)
+        self.assertEqual(identity, 'source_event:v2:nvidia_ceo_departure:confirmed:2026')
+        self.assertEqual(identity, materiality.source_event_identity(korean))
+
+        rumor = {**english, 'source_title': '젠슨 황 사임설…엔비디아 위기',
+                 'source_body': '시장 소문만 돌고 회사나 이사회는 사임을 공식 발표하지 않았다.'}
+        self.assertEqual(materiality.source_event_identity(rumor), '')
+        unverified = {**english, 'body_verified': False}
+        self.assertEqual(materiality.source_event_identity(unverified), '')
+
+        successor = {**english, 'source_title': '엔비디아, 젠슨 황 후임 CEO 선임',
+                     'source_body': english_body + ' The board appointed a permanent successor.'}
+        self.assertEqual(materiality.source_event_identity(successor), '')
+
+        market_reaction = {**english, 'source_title': '젠슨 황 사임에 엔비디아 주가 8% 급락, 시총 2천억달러 증발'}
+        self.assertEqual(materiality.nvidia_ceo_departure_observation(
+            market_reaction['source_title'], market_reaction['source_body'], published,
+        ), {})
+
     def test_quarterly_earnings_identity_matches_outlets_but_preserves_revision(self):
         published = '2026-10-07T11:22+09:00'
         first = {'source_title': 'LG전자 3분기 영업익 7천818억…3분기 누적 첫 4조 넘어(종합)',
