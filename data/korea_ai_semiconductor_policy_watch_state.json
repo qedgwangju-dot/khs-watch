@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-11-14T15:47:07+09:00",
+  "last_checked_kst": "2026-11-14T23:22:05+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -620,6 +620,15 @@
       "category": "해외진출 지원",
       "first_seen_kst": "2026-11-11T15:50:00+09:00",
       "suppressed_duplicate": "same_title"
+    },
+    "239218b00a65cdbfcc2719cd": {
+      "title": "노타, 하이퍼엑셀 LLM 최적화 기술 후속 수주…LPU로 적용 확대 - 이코노미스트",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5mdm55VEFqSE5CUkZTTUV6ZmxKYzRyX3JnNktoRGdULWRQbXFrNW56QnByMmFMeEI5eWZYQ29ENy1hUmhmZXQ3bTJLXzY0dDNuMnNfbERpb3ZPVkZBRTRWWl93?oc=5",
+      "event_signature": "하이퍼엑셀|실제 수주·구매|일반",
+      "stage": 5,
+      "category": "실제 수주·구매",
+      "first_seen_kst": "2026-11-14T23:22:05+09:00",
+      "suppressed_stale": true
     }
   }
 }
