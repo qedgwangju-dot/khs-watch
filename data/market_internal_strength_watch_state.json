@@ -13,34 +13,25 @@
   "vix_official_crosscheck_date": "2026-11-12",
   "vix_official_same_day": false,
   "vix_official_lag_days": 1,
-  "vix_cboe_quote_date": "2026-11-13",
-  "vix_cboe_quote_same_day": true,
-  "vix_cboe_quote_diff": 0.0,
+  "vix_cboe_quote_date": "2026-11-14",
+  "vix_cboe_quote_same_day": false,
+  "vix_cboe_quote_diff": null,
   "vix_crosscheck_max_abs_diff": 7.629394538355427e-07,
   "etf_final_close_source": "StockAnalysis / S&P Global Market Intelligence",
   "etf_final_close_date": "2026-11-13",
-  "settlement_overrides": {
-    "S&P500": {
-      "yahoo": 754.37,
-      "final": 754.25
-    },
-    "중소형주": {
-      "yahoo": 277.54,
-      "final": 277.55
-    }
-  },
+  "settlement_overrides": {},
   "breadth_warning": true,
   "rsp_warning": false,
   "iwm_warning": true,
-  "rsp_rel_5d": -0.21338570899818166,
-  "iwm_rel_5d": -1.1608165590144326,
+  "rsp_rel_5d": -0.229705800878377,
+  "iwm_rel_5d": -1.1807906865979767,
   "sector_up_1d": 7,
   "sector_up_5d": 11,
   "returns": {
     "S&P500": {
-      "1d": -0.3790674048627207,
-      "3d": 0.5773972141721817,
-      "5d": 2.5785775053704274
+      "1d": -0.3632178696801991,
+      "3d": 0.5933989213855684,
+      "5d": 2.5948975972506227
     },
     "동일가중 S&P500": {
       "1d": 0.19934703554884692,
@@ -48,9 +39,9 @@
       "5d": 2.3651917963722457
     },
     "중소형주": {
-      "1d": -0.31963885706168815,
-      "3d": -1.079901175162834,
-      "5d": 1.4177609463559948
+      "1d": -0.3232302950419763,
+      "3d": -1.0834652212383,
+      "5d": 1.414106910652646
     },
     "하이일드 회사채": {
       "1d": -0.051965906974715814,
