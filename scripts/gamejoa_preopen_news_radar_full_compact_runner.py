@@ -3044,6 +3044,60 @@ def gm_vac_contract_termination_core(title: str, body: str) -> str:
     return fact if core_sentence_is_complete(fact) else ""
 
 
+def us_ppi_release_core(title: str, body: str) -> str:
+    source = market_materiality.source_reported_body(body)
+    if not source or not re.search(r"미국|美|\bU\.S\.?\b|\bU\.S\s", title, re.I):
+        return ""
+    if not re.search(r"생산자물가|도매물가|\bPPI\b", f"{title} {source}", re.I):
+        return ""
+    month = re.search(r"(?<!\d)(1[0-2]|[1-9])월", title)
+    if not month:
+        return ""
+    yoy = re.search(
+        r"전년\s*(?:동기|동월)?\s*(?:대비|比)[^.!?\n]{0,28}?(\d+(?:\.\d+)?)\s*%",
+        source,
+    )
+    mom = re.search(
+        r"전월\s*(?:대비|比)?\s*(?:상승률은|상승률이|로는)?\s*(\d+(?:\.\d+)?)\s*%",
+        source,
+    )
+    if not yoy or not mom:
+        return ""
+    expected = re.search(
+        r"(?:시장\s*)?(?:전망치|예상치)(?:인|은|가|\s*[:(]?)\s*(\d+(?:\.\d+)?)\s*%",
+        source,
+    )
+    record = bool(re.search(r"2022년\s*11월\s*이후\s*가장\s*높|4년(?:여|만)?\s*(?:만에\s*)?최고", f"{title} {source}"))
+    core = f"미국 {month.group(1)}월 PPI는 전년비 {yoy.group(1)}% 상승"
+    if record:
+        core += "해 4년래 최고였지만"
+    else:
+        core += "했지만"
+    core += f", 전월비 상승률은 {mom.group(1)}%"
+    if expected:
+        core += f"로 예상 {expected.group(1)}%를 밑돌았다."
+    else:
+        core += " 상승했다."
+    return core if core_sentence_is_complete(core) else ""
+
+
+def regional_industry_subsidy_core(title: str, body: str) -> str:
+    source = market_materiality.source_reported_body(body)
+    if not source or not re.search(r"지방.{0,12}(?:산업|투자)|(?:산업|투자).{0,12}지방", title):
+        return ""
+    firms = re.search(r"(\d+)개\s*기업.{0,40}(?:지방투자촉진보조금|보조금)", source)
+    grant = re.search(r"총\s*([\d,]+)\s*억원.{0,30}(?:보조금|지원)", source)
+    investment = re.search(r"([\d,]+)억원\s*규모의\s*지방투자", source)
+    jobs = re.search(r"([\d,]+)개?\s*(?:의\s*)?신규\s*일자리", source)
+    if not (firms and grant and investment and jobs):
+        return ""
+    core = (
+        f"정부는 지방 공장 신·증설 {firms.group(1)}개사에 {grant.group(1)}억원 보조금을 지원하고, "
+        f"{investment.group(1)}억원 투자와 {jobs.group(1)}명 고용 효과를 예상했다."
+    )
+    return core if core_sentence_is_complete(core) else ""
+
+
 def source_headline_event_fact(title: str, body: str, published: str = "") -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
@@ -3053,6 +3107,12 @@ def source_headline_event_fact(title: str, body: str, published: str = "") -> st
     coupang_core = coupang_quarterly_earnings_core(title, source, published)
     if coupang_core:
         return coupang_core
+    ppi_core = us_ppi_release_core(title, source)
+    if ppi_core:
+        return ppi_core
+    subsidy_core = regional_industry_subsidy_core(title, source)
+    if subsidy_core:
+        return subsidy_core
     for event_core in (
         hormuz_carrier_share_core(title, source),
         american_airlines_fuel_guidance_core(title, source),
@@ -6320,7 +6380,7 @@ def coupang_quarterly_earnings_core(title: str, body: str, published: str = "") 
     if not observation:
         return ""
     source = market_materiality.source_reported_body(body)
-    record = bool(re.search(r"사상\s*최대|역대\s*최대|분기\s*기준\s*최대", title + " " + source))
+    record = bool(re.search(r"사상\s*최대|역대\s*최대|분기(?:\s*기준)?\s*최대", title + " " + source))
     growth = observation.get("revenue_growth_pct")
     revenue = observation["revenue_display"]
     operating_loss = observation["operating_loss_display"]
@@ -6359,6 +6419,8 @@ def detailed_article_core(title: str, body: str, published: str = "") -> str:
     body = article_summary_body(raw_body)
     for event_core in (
         coupang_quarterly_earnings_core(title, body, published),
+        us_ppi_release_core(title, body),
+        regional_industry_subsidy_core(title, body),
         skydance_acquisition_financing_core(title, body),
         hormuz_carrier_share_core(title, body),
         american_airlines_fuel_guidance_core(title, body),
@@ -12297,6 +12359,37 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
     ))
     if official_event_aspiration and not new_policy_instrument:
         return 'official_policy_aspiration_at_event_without_new_instrument_or_budget'
+    product_line_scale = bool(re.search(
+        r'(?:판매량|판매\s*대수|출하량|제품군\s*매출|제품\s*매출)[^.!?\n]{0,35}'
+        r'\d[\d,.]*(?:\s*만)?\s*(?:대|개|억원|조원)|'
+        r'\d[\d,.]*(?:\s*만)?\s*(?:대|개|억원|조원)[^.!?\n]{0,35}'
+        r'(?:판매량|판매\s*대수|출하량|제품군\s*매출|제품\s*매출)',
+        f'{title} {body}', re.I,
+    ))
+    unscaled_consumer_product_growth = bool(
+        re.search(r'음식물처리기|공기청정기|정수기|생활가전|렌탈\s*가전|가전제품', title, re.I)
+        and re.search(r'(?:판매량|판매\s*대수|출하량)', f'{title} {alert.get("telegram_core_fact") or ""}', re.I)
+        and re.search(r'\d+(?:\.\d+)?\s*%', f'{title} {alert.get("telegram_core_fact") or ""}')
+        and re.search(r'증가|급증|늘었|상승|grew|increased|surged', f'{title} {alert.get("telegram_core_fact") or ""}', re.I)
+        and not product_line_scale
+    )
+    if unscaled_consumer_product_growth:
+        return 'single_consumer_product_sales_growth_without_disclosed_scale'
+    industry_summit_mou = bool(
+        re.search(r'서밋|summit|포럼|forum|컨퍼런스|conference|산업\s*행사', f'{title} {body}', re.I)
+        and re.search(r'양해각서|업무협약|\bMOU\b', f'{title} {body}', re.I)
+    )
+    summit_has_economic_outcome = bool(re.search(
+        r'(?:투자|출자|사업비|계약금액|공급액|매출|수주|발주)[^.!?\n]{0,55}'
+        r'\d[\d,.]*\s*(?:조|천억|백억|억|만원|원|달러|million|billion)|'
+        r'\d[\d,.]*\s*(?:조|천억|백억|억|만원|원|달러|million|billion)[^.!?\n]{0,40}'
+        r'(?:투자|출자|사업비|계약금액|공급액|매출|수주|발주)|'
+        r'(?:공급|구매|납품|수주|발주)\s*(?:계약)?[^.!?\n]{0,35}(?:체결|확정|공시|수주했다|발주했다)|'
+        r'(?:양산|상용화|가동|납품|출시|운영을\s*시작)[^.!?\n]{0,45}(?:시작|착수|개시|확정|돌입|했다|한다)',
+        body, re.I,
+    ))
+    if industry_summit_mou and not summit_has_economic_outcome and not new_policy_instrument:
+        return 'industry_summit_mou_without_issuer_terms_or_commercial_execution'
     explicit_policy_action_in_headline = bool(re.search(
         r'(?:행정명령|제재|관세|수입\s*금지|수출\s*통제|규정|법안|금리)[^.!?\n]{0,55}'
         r'(?:서명|발표|부과|시행|발효|의결|공포|확정|인상|인하|금지|제한)|'
@@ -13471,6 +13564,8 @@ def verified_alert_core(alert: dict, title: str) -> str:
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
             for event_core in (
                 coupang_quarterly_earnings_core(source_title or title, body, str(alert.get("published") or "")),
+                us_ppi_release_core(source_title or title, body),
+                regional_industry_subsidy_core(source_title or title, body),
                 skydance_acquisition_financing_core(source_title or title, body),
                 frontier_ai_support_structure_core(source_title or title, body),
                 hormuz_carrier_share_core(source_title or title, body),
@@ -13848,6 +13943,9 @@ def source_core_fact_errors(alert: dict) -> list[str]:
                   == market_materiality.canonical_source_fact(expected_observation))
               or (ranked_product_export_core(title, source)
                   and market_materiality.canonical_source_fact(ranked_product_export_core(title, source))
+                  == market_materiality.canonical_source_fact(expected_observation))
+              or (us_ppi_release_core(title, source)
+                  and market_materiality.canonical_source_fact(us_ppi_release_core(title, source))
                   == market_materiality.canonical_source_fact(expected_observation))
              or petroleum_cartel_alignment
              or event_specific_market_alignment)

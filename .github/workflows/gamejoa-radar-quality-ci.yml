@@ -34,7 +34,7 @@ concurrency:
 jobs:
   source-and-event-regressions:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       SEND_TELEGRAM: 'false'
       TELEGRAM_DRY_RUN: 'true'
@@ -47,6 +47,15 @@ jobs:
           python-version: '3.12'
       - name: Verify source, materiality, deduplication and delivery contracts
         run: |
+          python scripts/verify_gamejoa_native_schedule.py
+          python scripts/verify_gamejoa_news_coverage_contract.py
+          python scripts/verify_gamejoa_heat_grid_contract.py
+          python scripts/verify_gamejoa_cross_market_coverage_contract.py
+          python scripts/verify_gamejoa_article_detail_queue.py
+          python scripts/verify_khs_source_fetch_contract.py
+          python scripts/verify_gamejoa_semisupply_contract.py
+          python scripts/verify_high_impact_news_self_audit.py
+          python scripts/verify_khs_policy_readability.py --write-previews
           python scripts/verify_gamejoa_market_materiality.py
           python scripts/verify_gamejoa_incremental_news_quality.py
           python scripts/verify_gamejoa_stock_market_scope.py

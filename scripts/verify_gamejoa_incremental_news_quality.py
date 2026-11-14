@@ -5021,20 +5021,26 @@ class IncrementalNewsTests(unittest.TestCase):
         observation = materiality.coupang_quarterly_earnings_release_observation(
             title_a, body_a, published,
         )
+        observation_b = materiality.coupang_quarterly_earnings_release_observation(
+            title_b, body_b, published,
+        )
         self.assertEqual(observation['revenue_won'], '14220900000000')
         self.assertEqual(observation['operating_loss_won'], '-642300000000')
         self.assertEqual(observation['revenue_growth_pct'], '11')
         self.assertEqual(observation['loss_streak_quarters'], '3')
         self.assertNotEqual(observation['revenue_display'], '14조원')
+        self.assertEqual(observation_b['revenue_display'], '14조2209억원')
 
         core = radar.detailed_article_core(title_a, body_a, published)
+        self.assertEqual(radar.detailed_article_core(title_b, body_b, published), core)
         self.assertIn('14조2209억원', core)
         self.assertIn('원화 기준 전년비 11% 증가', core)
         self.assertIn('영업손실 6423억원', core)
         self.assertIn('3개 분기 연속 적자', core)
         self.assertNotIn('6000억원', core)
-        first['telegram_core_fact'] = core
-        second['telegram_core_fact'] = radar.detailed_article_core(title_b, body_b, published)
+        self.assertEqual(radar.source_headline_event_fact(title_a, body_a, published), core)
+        first['telegram_core_fact'] = ''
+        second['telegram_core_fact'] = ''
         self.assertFalse(radar.source_core_fact_errors(first))
         self.assertFalse(radar.source_core_fact_errors(second))
 
@@ -5051,6 +5057,7 @@ class IncrementalNewsTests(unittest.TestCase):
         with patch.object(radar.base, 'kst_now', return_value=now):
             selected = radar.quality_display_alerts([first, second], 10)
         self.assertEqual(len(selected), 1)
+        self.assertEqual(selected[0]['telegram_core_fact'], core)
 
     def test_nvidia_ceo_departure_reprints_require_official_action_and_preserve_successor_stage(self):
         published = '2026-11-12T18:38:00+09:00'
@@ -8564,6 +8571,87 @@ class LiveQualityRegressionTests(unittest.TestCase):
             self.assertIn("issuer_only_story", production.runner.low_scope_live_market_relevance_reason(weak))
             self.assertEqual(production.runner.low_scope_live_market_relevance_reason(samsung), "")
             self.assertEqual(production.runner.low_scope_live_market_relevance_reason(global_market), "")
+
+    def test_same_us_ppi_release_is_sent_once_across_metric_focused_headlines(self):
+        now = dt.datetime(2026, 11, 14, 1, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        first_title = "美 10월 도매물가 전년 대비 6.5%↑…약 4년만에 최고(종합) | 연합뉴스"
+        first_body = (
+            "미 노동부 노동통계국은 10월 미국의 생산자물가지수(PPI)가 전년 대비 6.5% 상승했다고 밝혔다. "
+            "전월 대비 상승률은 0.3%로 전문가 전망치 0.4%를 밑돌았다. "
+            "2022년 11월 이후 가장 높은 상승률이다."
+        )
+        second_title = "美 10월 생산자물가 0.3%↑…연 6.5% 상승 4년만에 최고"
+        second_body = (
+            "미 노동통계국(BLS)은 10월 생산자물가지수(PPI)가 전월 대비 0.3% 상승했다고 밝혔다. "
+            "시장 예상치인 0.4%를 밑돌았다. 전년 동월 대비 PPI 상승률은 6.5%로 2022년 11월 이후 가장 높았다."
+        )
+        first_core = radar.us_ppi_release_core(first_title, first_body)
+        second_core = radar.us_ppi_release_core(second_title, second_body)
+        self.assertTrue(first_core, first_core)
+        self.assertEqual(first_core, second_core)
+        self.assertIn("전년비 6.5%", first_core)
+        self.assertIn("전월비 상승률은 0.3%", first_core)
+        self.assertIn("예상 0.4%", first_core)
+
+        first = {**alert(first_title, first_body, "https://example.com/ppi-annual"),
+                 "published": now.isoformat(), "telegram_core_fact": first_core}
+        second = {**alert(second_title, second_body, "https://example.com/ppi-monthly"),
+                  "published": (now - dt.timedelta(minutes=30)).isoformat(), "telegram_core_fact": second_core}
+        self.assertEqual(telegram.macro_release_theme(first), telegram.macro_release_theme(second))
+        with patch.object(radar.base, "kst_now", return_value=now), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            selected = radar.quality_display_alerts([first, second], 7)
+        self.assertEqual(len(selected), 1, {
+            "first_reason": first.get("_exclusion_reason"),
+            "second_reason": second.get("_exclusion_reason"),
+            "first_theme": telegram.macro_release_theme(first),
+            "second_theme": telegram.macro_release_theme(second),
+        })
+        self.assertIn("전월비 상승률은 0.3%", selected[0]["telegram_core_fact"])
+        self.assertIn("전년비 6.5%", selected[0]["telegram_core_fact"])
+
+    def test_unscaled_consumer_product_growth_and_mou_only_summit_do_not_fill_live_slots(self):
+        product = alert(
+            "코웨이, 음식물처리기 판매 106% 급증…11년만의 재도전 통했다",
+            "3분기 음식물처리기 판매량은 직전 분기 대비 106% 증가했다. 국내 사업 매출은 전년 대비 2.0% 늘었다.",
+            "https://example.com/coway-food-waste-sales",
+        )
+        product["telegram_core_fact"] = "코웨이에 따르면 3분기 음식물처리기 판매량은 직전 분기 대비 106% 증가했다."
+        summit = alert(
+            "VKAISS 2026, 베트남과 한국의 AI 및 반도체 협력 강화",
+            "제1회 베트남-한국 AI-반도체 서밋에 50개가 넘는 기업과 기관에서 400명 이상이 참석했다. "
+            "이번 서밋에서 양해각서(MOU) 8건이 체결됐고 약 100건의 비즈니스 매칭 상담이 진행됐다. "
+            "하나마이크론과 FPT 등은 반도체 패키징·테스트 분야 협력을 포함했다.",
+            "https://example.com/vkaiss-mous",
+        )
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}, clear=False):
+            self.assertEqual(
+                radar.low_impact_live_publication_reason(product, LIVE_NOW),
+                "single_consumer_product_sales_growth_without_disclosed_scale",
+            )
+            self.assertEqual(
+                radar.low_impact_live_publication_reason(summit, LIVE_NOW),
+                "industry_summit_mou_without_issuer_terms_or_commercial_execution",
+            )
+
+            scaled_product = {**product, "source_body": product["source_body"].replace(
+                "직전 분기 대비 106% 증가했다", "직전 분기 대비 106% 증가해 1만2000대를 판매했다"),
+                "telegram_core_fact": "코웨이는 3분기 음식물처리기 1만2000대를 판매해 전분기보다 106% 늘었다."}
+            self.assertEqual(radar.low_impact_live_publication_reason(scaled_product, LIVE_NOW), "")
+
+            priced_summit = {**summit, "source_body": summit["source_body"] +
+                " 하나마이크론과 FPT는 후공정 생산라인에 500억원을 투자하기로 확정했다."}
+            self.assertEqual(radar.low_impact_live_publication_reason(priced_summit, LIVE_NOW), "")
+
+    def test_regional_industry_grant_core_uses_the_funded_event_not_housing_sidebar(self):
+        title = "지방 산업 투자 확대⋯영주·구미·천안서 신규 아파트 분양"
+        body = (
+            "정부가 9월 지방에 공장 신·증설 투자를 결정한 10개 기업에 총 816억원의 지방투자촉진보조금을 지원하기로 했다. "
+            "정부는 이번 지원을 통해 3918억원 규모의 지방투자와 429개의 신규 일자리가 창출될 것으로 예상했다. "
+            "이런 가운데 지방 주요 도시에서는 신규 아파트 분양이 예정돼 있다."
+        )
+        expected = "정부는 지방 공장 신·증설 10개사에 816억원 보조금을 지원하고, 3918억원 투자와 429명 고용 효과를 예상했다."
+        self.assertEqual(radar.regional_industry_subsidy_core(title, body), expected)
+        self.assertEqual(radar.source_headline_event_fact(title, body), expected)
 
     def test_routine_fuel_and_brand_concept_launch_are_low_impact(self):
         with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}, clear=False):
