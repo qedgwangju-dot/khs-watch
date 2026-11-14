@@ -37,6 +37,17 @@ SEEDS = (
 )
 EVENT_START = dt.date(2026, 11, 10)
 SCHEDULE_KEY = "calendar:2027:monetary20261112a"
+DALY_KEY = "regional:daly:20261113:unlv-services"
+DALY_OFFICIAL = "https://www.frbsf.org/news-and-media/events/2026/11/conversation-mary-c-daly-unlv-2026-economic-forecast/"
+DALY_UNLV_OFFICIAL = "https://cber.unlv.edu/events/outlook/"
+DALY_REUTERS = "https://www.reuters.com/business/fed-likely-need-raise-rates-amid-worsening-inflation-daly-2026-11-13/"
+DALY_NEWS_SOURCES = (
+    DALY_REUTERS,
+    "https://kfgo.com/2026/11/13/fed-likely-to-need-to-raise-rates-amid-worsening-inflation-daly/",
+    "https://wdez.com/2026/11/13/fed-likely-to-need-to-raise-rates-amid-worsening-inflation-daly/",
+    "https://www.investing.com/news/economy-news/fed-likely-to-need-to-raise-rates-amid-worsening-inflation-daly-5026338",
+)
+DALY_NEWS_KO = "https://news.einfomax.co.kr/news/articleView.html?idxno=4444757"
 FORMAT_VERSION = 2
 NEWS_WALLER = "https://tv.edaily.co.kr/News/NewsRead?Kind=257&NewsId=07216006645644408"
 BLS_CPI = "https://www.bls.gov/news.release/cpi.htm"
@@ -49,6 +60,8 @@ def shortlink(label: str, url: str) -> str:
     allowed = {
         "www.federalreserve.gov", "www.bls.gov",
         "tv.edaily.co.kr", "english.mofe.go.kr",
+        "www.frbsf.org", "cber.unlv.edu", "www.reuters.com",
+        "news.einfomax.co.kr",
     }
     if parsed.scheme != "https" or parsed.hostname not in allowed:
         raise ValueError("Unapproved Telegram source URL")
@@ -244,6 +257,122 @@ def schedule_message(raw: str):
     ))
 
 
+# Regional Fed presidents speak at separately hosted bank events, outside the
+# Federal Reserve Board's speeches.xml feed. This is one verified high-impact
+# policy event, not an automatic conversion of every Fed event to an alert.
+DALY_PUBLIC_HOSTS = frozenset({
+    "www.frbsf.org", "frbsf.org", "cber.unlv.edu", "www.reuters.com",
+    "kfgo.com", "www.kfgo.com", "wdez.com", "www.wdez.com",
+    "www.investing.com", "investing.com",
+})
+
+
+def fetch_public_event(url: str) -> str:
+    """Read only known HTTPS source hosts. Never use external snippets as official text."""
+    parsed = urllib.parse.urlsplit(url)
+    if parsed.scheme != "https" or parsed.hostname not in DALY_PUBLIC_HOSTS:
+        raise ValueError("Unapproved policy-event source host")
+    req = urllib.request.Request(
+        url, headers={"User-Agent": "Mozilla/5.0 (compatible; KHS-Warsh-macro-watch/2.0)",
+                      "Accept-Language": "en-US,en;q=0.9"},
+    )
+    with urllib.request.urlopen(req, timeout=12) as response:
+        final = urllib.parse.urlsplit(response.geturl())
+        if final.scheme != "https" or final.hostname not in DALY_PUBLIC_HOSTS:
+            raise RuntimeError("Untrusted redirect in regional Fed event source")
+        return response.read().decode("utf-8", errors="replace")
+
+
+def verify_daly_official_event(raw: str) -> bool:
+    text = re.sub(r"\s+", " ", clean_text(raw)).lower()
+    has_day = bool(re.search(r"(?:nov(?:ember)?\.?\s+13,?\s+2026|2026[./-]11[./-]13)", text))
+    return (has_day
+            and ("mary c. daly" in text or "mary daly" in text)
+            and ("unlv" in text or "university of nevada" in text)
+            and ("economic forecast" in text or "economic outlook" in text))
+
+
+def verify_daly_report(raw: str) -> bool:
+    """Reuters account must corroborate the exact date, venue and rate/services claim."""
+    text = re.sub(r"\s+", " ", clean_text(raw)).lower()
+    date_ok = bool(re.search(r"(?:nov(?:ember)?\.?\s+13\b|2026-11-13)", text))
+    name_ok = "daly" in text and ("san francisco" in text or "fed" in text)
+    site_ok = "las vegas" in text or "unlv" in text or "nevada" in text
+    service_ok = ("services inflation excluding housing" in text
+                  or "services inflation ex-housing" in text
+                  or "services ex-housing inflation" in text)
+    direction_ok = ("not moving in the correct direction" in text
+                    or "wrong direction" in text
+                    or "not moving in the right direction" in text)
+    hike_ok = ("raise rates" in text or "increase its policy rate" in text
+               or "rates need to go up" in text)
+    pass_ok = ("pass" in text and ("cost" in text or "consumer" in text))
+    return bool(date_ok and name_ok and site_ok and service_ok
+                and direction_ok and hike_ok and pass_ok)
+
+
+def daly_event_sources():
+    """Official event page proves participation, Reuters reporting proves spoken words.
+
+    The official event listing is *not* a transcript or a Fed rate decision.
+    Do not emit the quote when independent live report text is unavailable.
+    """
+    official_source = None
+    issues = []
+    for url in (DALY_OFFICIAL, DALY_UNLV_OFFICIAL):
+        try:
+            if verify_daly_official_event(fetch_public_event(url)):
+                official_source = url
+                break
+            issues.append("official page lacks matching date/speaker/venue")
+        except Exception as exc:
+            issues.append("official " + type(exc).__name__)
+    if not official_source:
+        raise RuntimeError("Daly official UNLV appearance unverified: " + ", ".join(issues)[:170])
+
+    quoted_source = None
+    for url in DALY_NEWS_SOURCES:
+        try:
+            if verify_daly_report(fetch_public_event(url)):
+                quoted_source = url
+                break
+            issues.append("Reuters report lacks matching services/rates quotes")
+        except Exception as exc:
+            issues.append("Reuters " + type(exc).__name__)
+    if not quoted_source:
+        raise RuntimeError("Daly remarks lack a directly verified Reuters source: " +
+                           ", ".join(issues)[:170])
+    return official_source, quoted_source
+
+
+def daly_event_message(official_source: str, quoted_source: str) -> str:
+    """Date-qualified official event + reported quotes, with attribution kept separate."""
+    return "\n".join((
+        "<b>[Warsh 관련 연준 발언] 데일리 | 서비스 물가·추가 인상</b>",
+        "발언 2026.11.13 · 샌프란시스코 연은 총재 · UNLV 경제전망 행사",
+        "<i>연준 공식 행사 확인 · 발언 내용은 로이터 현장 취재</i>",
+        "",
+        "<b>핵심 사실</b>",
+        "• <b>정책 방향:</b> 데일리는 추가 금리 인상이 <b>필요할 가능성이 높다</b>고 밝혔으나, 12월 인상 여부·폭을 확정하지 않았습니다.",
+        "• <b>끈적한 물가:</b> 특히 <b>주거비 제외 서비스 물가</b>가 올바른 방향으로 움직이지 않는다고 우려했습니다.",
+        "• <b>근원 CPI:</b> 최근 3개월간 전월 대비 약 <b>+0.3%씩</b> 상승(로이터 보도). 연준의 공식 2% 목표 지표는 CPI가 아닌 <b>PCE 물가지수</b>입니다.",
+        "• <b>기업의 가격 전가:</b> 에너지·IT 기기 등 원가 상승을 이익으로 흡수하기 어려워 고객 가격을 올리려는 움직임을 경고했습니다.",
+        "• <b>소비 확인:</b> 소비는 예상보다 견조하지만 일부 지역에서 둔화 조짐이 있어 향후 <b>1~3개월, 특히 연말 소비</b>를 살피겠다고 밝혔습니다.",
+        "",
+        "<b>쉽게 말하면</b>",
+        "상품·유가가 안정돼도 서비스 요금이 계속 오르면 물가가 쉽게 내려가지 않습니다. 기업이 오른 원가를 소비자에게 넘기면 금리 인상이 더 필요할 수 있다는 뜻입니다.",
+        "",
+        "<b>시장과 다음 확인</b>",
+        "• <b>주식·채권:</b> 추가 긴축 우려는 단기 국채금리와 성장주 할인율에 부담이 될 수 있습니다. 실제 시장 반응을 확인해야 합니다.",
+        "• 2026.12.8~9 FOMC · 다음 근원 PCE · 주거비 제외 서비스 물가 · 임금·연말 소비.",
+        "• <b>구분:</b> 11월 12일 스탠퍼드 발언과 13일 UNLV 발언은 별도 행사입니다. 동일한 정책 입장을 신규 결정 2건으로 계산하지 않습니다.",
+        "",
+        "출처 " + shortlink("샌프란시스코 연은 행사", official_source) +
+        " · " + shortlink("로이터 현장 보도", DALY_REUTERS) +
+        " · " + shortlink("연합인포맥스 기사", DALY_NEWS_KO),
+    ))
+
+
 def _load_state():
     if not STATE_PATH.exists():
         return {}
@@ -355,6 +484,9 @@ def _upgrade_message(key: str, receipt: dict):
         return speech_message(url, fetch(url))
     if key == SCHEDULE_KEY and url == SCHEDULE:
         return schedule_message(fetch(SCHEDULE))
+    if key == DALY_KEY and url in (DALY_OFFICIAL, DALY_UNLV_OFFICIAL):
+        official, reported = daly_event_sources()
+        return daly_event_message(official, reported)
     return None
 
 
@@ -427,6 +559,20 @@ def main():
         except Exception as exc:
             errors.append(key + " source/delivery: " + type(exc).__name__)
             if key in state["pending"]:
+                raise
+
+    # One event = one key. A rate-hike remark is not an FOMC decision;
+    # do not conflate Nov 12 Stanford coverage with Nov 13 UNLV quotes.
+    if DALY_KEY not in state["sent"] and DALY_KEY not in state["pending"]:
+        try:
+            verified_official, quoted_report = daly_event_sources()
+            if deliver(state, DALY_KEY,
+                       daly_event_message(verified_official, quoted_report),
+                       verified_official):
+                delivered.append(DALY_KEY)
+        except Exception as exc:
+            errors.append("SF Fed Daly UNLV source/delivery: " + type(exc).__name__)
+            if DALY_KEY in state["pending"]:
                 raise
 
     if SCHEDULE_KEY not in state["sent"] and SCHEDULE_KEY not in state["pending"]:

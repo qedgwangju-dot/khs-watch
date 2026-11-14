@@ -275,5 +275,108 @@ class WarshClickableReadableAlertsTests(unittest.TestCase):
 
 
 
+
+class WarshRegionalFedDalyTests(unittest.TestCase):
+    OFFICIAL = ("<html><h1>A Conversation with Mary C. Daly at UNLV's 2026 Economic "
+                "Forecast</h1>Date Friday, Nov 13, 2026. University of Nevada, "
+                "Las Vegas Center for Business and Economic Research. "
+                "Mary C. Daly, president and CEO of the San Francisco Fed.</html>")
+    REUTERS = ("Nov 13 (Reuters) - San Francisco Fed President Mary Daly said at "
+               "the University of Nevada, Las Vegas event she would in all "
+               "likelihood raise rates. services inflation excluding housing "
+               "was not moving in the correct direction and producers "
+               "want to pass on costs to consumers.")
+
+    def test_official_event_date_venue_speaker_required(self):
+        self.assertTrue(context.verify_daly_official_event(self.OFFICIAL))
+        self.assertFalse(context.verify_daly_official_event(
+            self.OFFICIAL.replace("Nov 13, 2026", "Nov 13, 2022")))
+        self.assertFalse(context.verify_daly_official_event(
+            self.OFFICIAL.replace("Mary C. Daly", "Someone Else")))
+
+    def test_report_requires_quotes_and_specific_venue(self):
+        self.assertTrue(context.verify_daly_report(self.REUTERS))
+        self.assertFalse(context.verify_daly_report(self.REUTERS.replace(
+            "not moving in the correct direction", "moving in the correct direction")))
+        self.assertFalse(context.verify_daly_report(self.REUTERS.replace(
+            "Nov 13", "Nov 12")))
+        self.assertFalse(context.verify_daly_report(self.REUTERS.replace(
+            "pass on costs", "absorb costs")))
+
+    def test_official_and_reuters_source_fallback(self):
+        def fetch(url):
+            if url == context.DALY_OFFICIAL: return self.OFFICIAL
+            if url == context.DALY_REUTERS: raise TimeoutError("origin not accessible")
+            if url == context.DALY_NEWS_SOURCES[1]: return self.REUTERS
+            raise AssertionError("unexpected source "+url)
+        with patch.object(context, "fetch_public_event", side_effect=fetch):
+            official, report = context.daly_event_sources()
+        self.assertEqual(official, context.DALY_OFFICIAL)
+        self.assertEqual(report, context.DALY_NEWS_SOURCES[1])
+
+    def test_reuters_quote_missing_does_not_create_fake_event(self):
+        with patch.object(context, "fetch_public_event",
+                          side_effect=lambda url: self.OFFICIAL if url==context.DALY_OFFICIAL
+                          else "<h1>Fed policy</h1>"):
+            with self.assertRaisesRegex(RuntimeError, "lack a directly verified Reuters"):
+                context.daly_event_sources()
+
+    def test_daly_alert_explains_services_costs_consumption_and_decision(self):
+        msg = context.daly_event_message(context.DALY_OFFICIAL,
+                                         context.DALY_NEWS_SOURCES[1])
+        self.assertIn("주거비 제외 서비스 물가", msg)
+        self.assertIn("+0.3%", msg)
+        self.assertIn("PCE", msg)
+        self.assertIn("1~3개월", msg)
+        self.assertIn("확정하지", msg)
+        self.assertIn("스탠퍼드", msg)
+        self.assertIn('>샌프란시스코 연은 행사</a>', msg)
+        self.assertIn('>로이터 현장 보도</a>', msg)
+        self.assertIn('>연합인포맥스 기사</a>', msg)
+        self.assertLess(len(msg), 3900)
+
+    def test_no_unverified_host(self):
+        with self.assertRaises(ValueError):
+            context.fetch_public_event("https://frbsf.org.attacker.example/speech")
+
+    def test_same_event_new_key_is_never_resent(self):
+        with tempfile.TemporaryDirectory() as p:
+            st={"sent":{}, "pending":{}, "skipped":{}}
+            with (patch.object(context, "STATE_PATH", Path(p)/"state.json"),
+                  patch.object(context, "send", return_value={
+                      "message_id": 155, "recipient_verified": True}) as snd):
+                self.assertTrue(context.deliver(
+                    st, context.DALY_KEY, "msg", context.DALY_OFFICIAL))
+                self.assertFalse(context.deliver(
+                    st, context.DALY_KEY, "msg", context.DALY_OFFICIAL))
+                self.assertEqual(snd.call_count,1)
+                self.assertEqual(st["sent"][context.DALY_KEY]["message_id"],155)
+                self.assertEqual(st["formatted"][context.DALY_KEY]["version"],
+                                 context.FORMAT_VERSION)
+
+
+    def test_daly_format_upgrade_keeps_original_message_id(self):
+        with tempfile.TemporaryDirectory() as p:
+            state = {
+                "sent": {context.DALY_KEY:{
+                    "message_id":155, "recipient_verified":True,
+                    "source":context.DALY_OFFICIAL,
+                }},
+                "pending":{}, "skipped":{}, "formatted":{},
+            }
+            with (patch.object(context,"STATE_PATH",Path(p)/"state.json"),
+                  patch.object(context,"daly_event_sources",return_value=(
+                      context.DALY_OFFICIAL,context.DALY_NEWS_SOURCES[1])),
+                  patch.object(context,"edit_message",return_value={
+                      "message_id":155,"recipient_verified":True}) as edit):
+                changed=context.upgrade_delivered_messages(state)
+                self.assertEqual(changed,[context.DALY_KEY])
+                self.assertEqual(edit.call_count,1)
+                self.assertEqual(state["formatted"][context.DALY_KEY]["message_id"],155)
+                self.assertEqual(context.upgrade_delivered_messages(state),[])
+                self.assertEqual(edit.call_count,1)
+
+
+
 if __name__ == "__main__":
     unittest.main()
