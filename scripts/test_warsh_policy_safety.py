@@ -20,6 +20,7 @@ import warsh_ai_taskforce_watch_v2 as gartner
 import warsh_fomc_event_watch as fomc_base
 import warsh_fomc_event_watch_v4 as fomc_v4
 import warsh_press_conference_watch_v3 as press_v3
+import warsh_inflation_market_watch as inflation
 
 
 class WarshSafetyTests(unittest.TestCase):
@@ -1172,6 +1173,81 @@ class WarshFOMCOfficialClockRegressionTests(unittest.TestCase):
 
     def test_release_time_invalid_date_fails_closed(self):
         self.assertIsNone(fomc_v4.official_fomc_release_utc('not-a-date'))
+
+
+class WarshInflationMissingBaselineTests(unittest.TestCase):
+    @staticmethod
+    def values():
+        v = {k: {} for k in inflation.SERIES}
+        for k in ('cpi_sa', 'cpi_core_sa', 'cpi_nsa', 'cpi_core_nsa'):
+            v[k] = {'2026-09': 100.0, '2026-10': 100.4}
+        for k in ('ppi_sa', 'ppi_core_sa', 'ppi_nsa', 'ppi_core_nsa'):
+            v[k] = {'2025-10': 90.0, '2026-09': 100.0, '2026-10': 101.0}
+        return v
+
+    def test_missing_oct_2025_cpi_yoy_keeps_2026_oct_mom(self):
+        snap = inflation.snapshot('CPI', self.values())
+        self.assertEqual(snap['period'], '2026-10')
+        self.assertEqual(snap['headline_mom'], 0.4)
+        self.assertIsNone(snap['headline_yoy'])
+        self.assertIsNone(snap['core_yoy'])
+        msg = inflation.build_message({**snap, 'release_date': '2026-11-10'},
+            {'date': '2026-11-10', '2y': 4.0, '10y': 4.5, '30y': 4.7},
+            {'date': '2026-11-09', '2y': 3.95, '10y': 4.48, '30y': 4.66})
+        self.assertIn('비교할 수 없습니다', msg)
+        self.assertIn('2025년 10월', msg)
+
+    def test_absent_prior_month_still_fails_closed(self):
+        v = self.values()
+        del v['cpi_sa']['2026-09']
+        with self.assertRaisesRegex(RuntimeError, 'previous-month period missing'):
+            inflation.snapshot('CPI', v)
+
+    def test_existing_year_comparison_is_not_dropped(self):
+        v = self.values()
+        v['cpi_nsa']['2025-10'] = 99.0
+        v['cpi_core_nsa']['2025-10'] = 99.0
+        snap = inflation.snapshot('CPI', v)
+        self.assertIsNotNone(snap['headline_yoy'])
+        self.assertIsNotNone(snap['core_yoy'])
+
+    def test_official_backfill_dates_not_recovery_day(self):
+        self.assertEqual(inflation.official_release_date('CPI', '2026-10'), '2026-11-10')
+        self.assertEqual(inflation.official_release_date('PPI', '2026-10'), '2026-11-13')
+
+    def test_future_release_date_must_match_current_bls_headline(self):
+        page = ('<h1>CONSUMER PRICE INDEX - NOVEMBER 2026</h1>'
+                '<p>Transmission of material in this release is embargoed until '
+                '8:30 a.m. (ET) Thursday, December 10, 2026</p>')
+        with patch.object(inflation, 'fetch', return_value=page):
+            self.assertEqual(inflation.official_release_date('CPI', '2026-11'), '2026-12-10')
+            with self.assertRaisesRegex(RuntimeError, 'does not match'):
+                inflation.official_release_date('CPI', '2026-09')
+
+    def test_delayed_cpi_and_ppi_are_anchored_to_actual_official_close(self):
+        old = {'last_seen': {'CPI':'2026-09', 'PPI':'2026-09'},
+               'pending_events': [], 'processed_events': ['CPI:2026-09', 'PPI:2026-09']}
+        rows = [
+            {'date':'2026-11-09','2y':4.0,'10y':4.5,'30y':4.7},
+            {'date':'2026-11-10','2y':4.02,'10y':4.51,'30y':4.71},
+            {'date':'2026-11-12','2y':4.03,'10y':4.53,'30y':4.75},
+            {'date':'2026-11-13','2y':4.04,'10y':4.54,'30y':4.76},
+        ]
+        with patch.object(inflation, 'load_state', return_value=old), \\
+             patch.object(inflation, 'bls_values', return_value=self.values()), \\
+             patch.object(inflation, 'treasury_rows', return_value=rows), \\
+             patch.object(inflation, 'send', return_value={'message_id': 99, 'recipient_verified': True}) as send, \\
+             patch.object(inflation, 'save_state') as save:
+            inflation.main()
+        self.assertEqual(send.call_count, 2)
+        msgs = [c.args[0] for c in send.call_args_list]
+        self.assertTrue(any('공식 발표일 2026-11-10' in msg for msg in msgs))
+        self.assertTrue(any('공식 발표일 2026-11-13' in msg for msg in msgs))
+        state = save.call_args.args[0]
+        self.assertEqual(state['pending_events'], [])
+        self.assertIn('CPI:2026-10', state['processed_events'])
+        self.assertIn('PPI:2026-10', state['processed_events'])
+        self.assertTrue(state['delivery_receipts']['CPI:2026-10']['recipient_verified'])
 
 
 if __name__ == "__main__":

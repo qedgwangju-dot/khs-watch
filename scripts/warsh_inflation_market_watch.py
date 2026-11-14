@@ -3,6 +3,7 @@ import calendar
 import html
 import json
 import os
+import re
 import urllib.parse
 import urllib.request
 import time
@@ -31,6 +32,12 @@ SERIES = {
     'cpi_core_sa': 'CUSR0000SA0L1E',
     'cpi_nsa': 'CUUR0000SA0',
     'cpi_core_nsa': 'CUUR0000SA0L1E',
+}
+
+# 실제 BLS 발표 일정 확인치. 소급 복구 때 감지 날짜를 공식 발표일로 오인하지 않는다.
+OFFICIAL_RELEASE_EXCEPTIONS = {
+    'CPI:2026-10': '2026-11-10',
+    'PPI:2026-10': '2026-11-13',
 }
 
 
@@ -106,8 +113,13 @@ def snapshot(kind: str, vals: dict[str,dict[str,float]]) -> dict:
     if not common: raise RuntimeError(f'BLS {kind} common period not found')
     period = common[-1]
     pm = prev_period(period,1); py = prev_period(period,12)
-    needed = [(sa,pm),(core_sa,pm),(nsa,py),(core_nsa,py)]
-    if any(p not in vals[k] for k,p in needed): raise RuntimeError(f'BLS {kind} comparison period missing')
+    if any(pm not in vals[k] for k in (sa, core_sa)):
+        raise RuntimeError(f'BLS {kind} previous-month period missing')
+    # 2025-10 CPI는 정부 셧다운으로 대부분의 공식 지수가 없어
+    # 2026-10 전년비를 발표할 수 없다. 없는 전년비를 임의 보간하거나
+    # 전월비 보고까지 중단하지 않는다.
+    headline_yoy = pct(vals[nsa][period], vals[nsa][py]) if py in vals[nsa] else None
+    core_yoy = pct(vals[core_nsa][period], vals[core_nsa][py]) if py in vals[core_nsa] else None
     m = int(period[-2:])
     return {
         'kind': kind,
@@ -115,10 +127,30 @@ def snapshot(kind: str, vals: dict[str,dict[str,float]]) -> dict:
         'period_label': f'{m}월 {kind}',
         'url': url,
         'headline_mom': pct(vals[sa][period], vals[sa][pm]),
-        'headline_yoy': pct(vals[nsa][period], vals[nsa][py]),
+        'headline_yoy': headline_yoy,
         'core_mom': pct(vals[core_sa][period], vals[core_sa][pm]),
-        'core_yoy': pct(vals[core_nsa][period], vals[core_nsa][py]),
+        'core_yoy': core_yoy,
     }
+
+
+def official_release_date(kind: str, period: str) -> str:
+    """BLS 실제 발표일로 국채 종가를 연결한다. 늦은 복구일을 발표일로 사용하지 않는다."""
+    key = f'{kind}:{period}'
+    if key in OFFICIAL_RELEASE_EXCEPTIONS:
+        return OFFICIAL_RELEASE_EXCEPTIONS[key]
+    raw = fetch(PPI_URL if kind == 'PPI' else CPI_URL)
+    plain = re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]*>', ' ', raw)))
+    month_name = calendar.month_name[int(period[-2:])]
+    heading = 'PRODUCER PRICE INDEXES' if kind == 'PPI' else 'CONSUMER PRICE INDEX'
+    if not re.search(rf'{heading}\s*[-–—]\s*{month_name}\s+{period[:4]}\b', plain, re.I):
+        raise RuntimeError('BLS news release period does not match API reference month')
+    match = re.search(
+        r'embargoed until.{0,230}?\b(?:Monday|Tuesday|Wednesday|Thursday|Friday),\s*'
+        r'(January|February|March|April|May|June|July|August|September|October|November|December)'
+        r'\s+(\d{1,2}),\s*(\d{4})', plain, re.I)
+    if not match:
+        raise RuntimeError('BLS official publication date is unavailable')
+    return datetime.strptime(' '.join(match.groups()), '%B %d %Y').date().isoformat()
 
 
 def treasury_url(year: int) -> str:
@@ -164,7 +196,17 @@ def send(text: str):
     req=urllib.request.Request(f'https://api.telegram.org/bot{TOKEN}/sendMessage',data=payload,method='POST')
     with urllib.request.urlopen(req,timeout=20) as r:
         result=json.loads(r.read().decode('utf-8'))
-    if not result.get('ok'): raise RuntimeError(f'Telegram send failed: {result}')
+    if not result.get('ok'): raise RuntimeError('Telegram sendMessage returned ok=false')
+    message = result.get('result') or {}
+    chat = message.get('chat') or {}
+    target = CHAT_ID.strip()
+    if re.fullmatch(r'-?\d+', target):
+        recipient_verified = str(chat.get('id') or '') == target
+    elif target.startswith('@'):
+        recipient_verified = str(chat.get('username') or '').casefold() == target[1:].casefold()
+    else:
+        recipient_verified = False
+    return {'message_id': message.get('message_id'), 'recipient_verified': recipient_verified}
 
 
 def load_state() -> dict:
@@ -241,6 +283,10 @@ def build_message(event: dict, row: dict, prev: dict) -> str:
     ]
     if event['kind']=='CPI' and event.get('headline_mom') is not None:
         lines.append(f"• 참고용 단순 연율: 종합 약 {annualized(event['headline_mom']):.1f}% · 근원 약 {annualized(event['core_mom']):.1f}% — 실제 전망이 아니라 현재 한 달 속도 비교용입니다.")
+    if event.get('headline_yoy') is None or event.get('core_yoy') is None:
+        lines.append('• 전년 동월의 공식 지수가 없어 해당 전년 대비 상승률은 비교할 수 없습니다. 누락값을 추정하지 않습니다.')
+    if event['kind'] == 'CPI' and event['period'] == '2026-10':
+        lines.append('• 원인: 2025년 10월 연방정부 셧다운으로 BLS가 비교 기준 지수를 발표하지 못했습니다.')
     lines += [
         '', '<b>채권시장이 말한 것</b>',
         f"• {html.escape(market_plain)}",
@@ -274,6 +320,7 @@ def main():
     last_seen=state.get('last_seen',{})
     pending=state.get('pending_events',[])
     processed=set(state.get('processed_events',[]))
+    receipts=dict(state.get('delivery_receipts') or {})
     today_et=datetime.now(ZoneInfo('America/New_York')).date()
     expected_ref=prior_month(today_et)
 
@@ -283,26 +330,39 @@ def main():
         is_new=last_seen.get(kind) not in (None,snap['period'])
         fresh_bootstrap=first and snap['period']==expected_ref and today_et.day<=15
         if (is_new or fresh_bootstrap) and key not in known and key not in processed:
-            pending.append({'key':key,'release_date':today_et.isoformat(),**snap}); known.add(key)
+            try:
+                release_date = official_release_date(kind, snap['period'])
+            except Exception as exc:
+                print(json.dumps({'BLS_release_date': kind, 'status': 'unverified', 'reason': str(exc)[:140]}, ensure_ascii=False))
+                release_date = None
+            pending.append({'key':key,'release_date':release_date,**snap}); known.add(key)
         last_seen[kind]=snap['period']
 
     rows=treasury_rows(); by_date={r['date']:i for i,r in enumerate(rows)}
     keep=[]; integrated_date=state.get('last_integrated_market_date')
     sent=[]
     for event in pending:
+        if not event.get('release_date'):
+            try:
+                event['release_date'] = official_release_date(event['kind'], event['period'])
+            except Exception:
+                keep.append(event)
+                continue
         idx=by_date.get(event.get('release_date'))
         if idx is None or idx==0:
             keep.append(event); continue
         row=rows[idx]; prev=rows[idx-1]
         if FORCE_NOTIFY or event['key'] not in processed:
-            send(build_message(event,row,prev))
+            receipt = send(build_message(event,row,prev))
             processed.add(event['key']); sent.append(event['key']); integrated_date=row['date']
+            receipts[event['key']] = receipt if isinstance(receipt, dict) else {'receipt_status': 'unavailable'}
         else:
             processed.add(event['key'])
 
     save_state({'last_seen':last_seen,'pending_events':keep,'processed_events':sorted(processed)[-24:],
-                'last_integrated_market_date':integrated_date,'latest_ppi':ppi,'latest_cpi':cpi})
-    print(json.dumps({'first_run':first,'sent':sent,'pending':[e['key'] for e in keep],
+                'last_integrated_market_date':integrated_date,'latest_ppi':ppi,'latest_cpi':cpi,
+                'delivery_receipts':dict(list(receipts.items())[-24:])})
+    print(json.dumps({'first_run':first,'sent':sent,'sent_receipts':{k:receipts.get(k) for k in sent},'pending':[e['key'] for e in keep],
                       'latest_ppi':ppi['period'],'latest_cpi':cpi['period'],
                       'treasury_latest':rows[-1]['date'],'last_integrated_market_date':integrated_date},ensure_ascii=False))
 
