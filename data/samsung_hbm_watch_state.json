@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-11-14T18:58:51+09:00",
+  "updated_at_kst": "2026-11-14T19:30:12+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -318,9 +318,7 @@
   "compare_version": 5,
   "official_month": "202609",
   "official_data_ok": false,
-  "official_errors": [
-    "지역 K-stat HSK10 월별 범위 검증 보류: invalid:kstat_reference_requested_month_unavailable"
-  ],
+  "official_errors": [],
   "last_official_alert_month": "202609",
   "official_api_key_configured": true,
   "official_api_used": false,
@@ -2977,7 +2975,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-11-14T18:58:51+09:00",
+      "last_checked_at_kst": "2026-11-14T19:30:11+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -3053,7 +3051,7 @@
     "payload_hash": "e6e00868379df47dd52648e00b5e3d18940a93ab5b1fdce0223e0b7771753bd3"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-14T18:59:50+09:00",
+    "checked_at_kst": "2026-11-14T19:31:06+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
