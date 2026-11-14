@@ -235,13 +235,38 @@ def macro_release_theme(alert: dict) -> str:
     country = next((name for name, aliases in countries.items() if any(
         alias.lower() in release_text for alias in aliases
     )), "")
-    month_match = re.search(r"(?<!\d)(1[0-2]|[1-9])월", title)
-    if not month_match and core:
-        month_match = re.search(r"(?<!\d)(1[0-2]|[1-9])월", core)
+    source_context = ""
+    if not country and body_verified:
+        source_context = " ".join(str(alert.get(field) or "") for field in (
+            "source_body", "source_abstract", "telegram_core_fact",
+        ))
+        if (
+            re.search(r"국가데이터처|통계청|한국은행", source_context)
+            and not re.search(r"부산|대구|인천|광주|대전|울산|세종|충북|충남|전북|전남|경북|경남|제주", title)
+        ):
+            country = "korea"
+    month_pattern = r"(?<!\d)(1[0-2]|[1-9])월"
+    month_match = re.search(month_pattern, core) if core else None
+    if not month_match:
+        month_match = re.search(month_pattern, title)
+    if not month_match and body_verified:
+        if not source_context:
+            source_context = " ".join(str(alert.get(field) or "") for field in (
+                "source_body", "source_abstract",
+            ))
+        month_match = re.search(
+            month_pattern + r"\s*(?:소비자\s*물가|개인소비지출|생산자\s*물가|(?:근원\s*)?(?:cpi|pce|ppi))",
+            source_context,
+            re.I,
+        )
     published = parse_seen_time(str(alert.get("published") or ""))
-    if re.search(r"(?:상승|하락|증가|감소)\s*(?:예상|전망)", title):
+    if re.search(r"(?:상승|하락|증가|감소)\s*(?:예상|전망)", f"{title} {core}"):
         return ""
-    rates = {float(value) for value in re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", release_text)}
+    rate_text = core if body_verified and core else title
+    rates = sorted(set(
+        format(float(value), ".12g")
+        for value in re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", rate_text)
+    ))
     released_value = bool(re.search(
         r"발표|기록|집계|상승했다|하락했다|상승했다고|하락했다고|rose|fell|reported|released",
         title if not core else f"{title} {core}", re.I,
@@ -254,7 +279,9 @@ def macro_release_theme(alert: dict) -> str:
     month = int(month_match.group(1))
     year = published.year - (month > published.month)
     revision = "revision" if re.search(r"수정치|정정|재개정|\brevised\b|\brevision\b", title, re.I) else "release"
-    return f"macro_release:{country}:{indicator}:{year}-{month:02d}:{revision}"
+    basis = "core" if "근원" in release_text or re.search(r"\bcore\b", release_text) else "headline"
+    comparison = "mom" if re.search(r"전월|전달|\bmom\b", release_text, re.I) else "headline"
+    return f"macro_release:{country}:{indicator}:{year}-{month:02d}:{basis}:{comparison}:{revision}:{'+'.join(rates)}"
 
 
 def verified_trade_theme(alert: dict) -> str:
