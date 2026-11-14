@@ -211,16 +211,19 @@ def korean_joint_ceo_theme(alert: dict) -> str:
 
 
 def macro_release_theme(alert: dict) -> str:
-    """Merge same-period, same-value releases, not forecasts or revised values."""
+    """Merge publisher variants of one released macro series and reference period."""
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     lowered = title.lower()
+    body_verified = bool(alert.get("body_verified"))
+    core = str(alert.get("telegram_core_fact") or "") if body_verified else ""
+    release_text = f"{title} {core}".lower()
     indicators = {
         "pce": ("pce", "개인소비지출"),
         "cpi": ("cpi", "소비자물가"),
-        "ppi": ("ppi", "생산자물가"),
+        "ppi": ("ppi", "생산자물가", "도매물가"),
     }
     indicator = next((name for name, aliases in indicators.items() if any(
-        re.search(rf"(?<![a-z]){re.escape(alias)}(?![a-z])", lowered) for alias in aliases
+        re.search(rf"(?<![a-z]){re.escape(alias)}(?![a-z])", release_text) for alias in aliases
     )), "")
     countries = {
         "us": ("미국", "美", "u.s.", "us "),
@@ -230,42 +233,55 @@ def macro_release_theme(alert: dict) -> str:
         "korea": ("한국", "국내", "korea"),
     }
     country = next((name for name, aliases in countries.items() if any(
-        alias.lower() in lowered for alias in aliases
+        alias.lower() in release_text for alias in aliases
     )), "")
-    month_match = re.search(r"(?<!\d)(1[0-2]|[1-9])월", title)
+    source_context = ""
+    if not country and body_verified:
+        source_context = " ".join(str(alert.get(field) or "") for field in (
+            "source_body", "source_abstract", "telegram_core_fact",
+        ))
+        if (
+            re.search(r"국가데이터처|통계청|한국은행", source_context)
+            and not re.search(r"부산|대구|인천|광주|대전|울산|세종|충북|충남|전북|전남|경북|경남|제주", title)
+        ):
+            country = "korea"
+    month_pattern = r"(?<!\d)(1[0-2]|[1-9])월"
+    month_match = re.search(month_pattern, core) if core else None
+    if not month_match:
+        month_match = re.search(month_pattern, title)
+    if not month_match and body_verified:
+        if not source_context:
+            source_context = " ".join(str(alert.get(field) or "") for field in (
+                "source_body", "source_abstract",
+            ))
+        month_match = re.search(
+            month_pattern + r"\s*(?:소비자\s*물가|개인소비지출|생산자\s*물가|(?:근원\s*)?(?:cpi|pce|ppi))",
+            source_context,
+            re.I,
+        )
     published = parse_seen_time(str(alert.get("published") or ""))
-    rates = {float(value) for value in re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", title)}
-    if re.search(r"(?:상승|하락|증가|감소)\s*(?:예상|전망)", title):
+    if re.search(r"(?:상승|하락|증가|감소)\s*(?:예상|전망)", f"{title} {core}"):
         return ""
-    if not (indicator and country and month_match and published and len(rates) == 1):
-        # A headline can omit Korea or quote a counterfactual second rate.
-        # Only a verified released-value core may resolve that ambiguity.
-        core = str(alert.get("telegram_core_fact") or "")
-        if alert.get("body_verified") and core and re.search(
-            r"발표|기록|집계|상승했다|하락했다|rose|fell|reported", core, re.I,
-        ) and not re.search(r"예상|전망|내외|것으로|forecast|expect", core, re.I):
-            context = " ".join(str(alert.get("source_body") or alert.get("source_abstract") or "").split())[:1200]
-            core_country = country
-            if not core_country and re.search(r"국가데이터처|통계청|한국은행", f"{core} {context}"):
-                core_country = "korea"
-            source_month = re.search(
-                r"(?<!\d)(1[0-2]|[1-9])월\s*(?:소비자\s*물가|개인소비지출|생산자\s*물가|(?:근원\s*)?(?:cpi|pce|ppi))", context, re.I,
-            )
-            core_has_month = re.search(r"(?<!\d)(1[0-2]|[1-9])월", core)
-            if not core_has_month and source_month:
-                core = f"{source_month.group(1)}월 {core}"
-            if core_country and not re.search(r"부산|대구|인천|광주|대전|울산|세종|충북|충남|전북|전남|경북|경남|제주", title):
-                resolved = {"source_title": f"{core_country} {core}", "published": alert.get("published")}
-                return macro_release_theme(resolved)
-        return ""
-    if not any(term in lowered for term in ("상승", "하락", "발표", "기록", "집계", "↑", "↓", "rose", "fell")):
+    rate_text = core if body_verified and core else title
+    rates = sorted(set(
+        format(float(value), ".12g")
+        for value in re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", rate_text)
+    ))
+    released_value = bool(re.search(
+        r"발표|기록|집계|상승했다|하락했다|상승했다고|하락했다고|rose|fell|reported|released",
+        title if not core else f"{title} {core}", re.I,
+    ))
+    has_release_rate = bool(rates) and (bool(re.search(
+        r"상승|하락|증가|감소|발표|기록|집계|↑|↓|rose|fell|reported|released", title, re.I,
+    )) or (body_verified and released_value))
+    if not (indicator and country and month_match and published and has_release_rate):
         return ""
     month = int(month_match.group(1))
     year = published.year - (month > published.month)
-    basis = "core" if "근원" in title or "core" in lowered else "headline"
-    comparison = "mom" if any(term in lowered for term in ("전월", "전달", "mom")) else "headline"
-    rate = format(next(iter(rates)), ".12g")
-    return f"macro_release:{country}:{indicator}:{year}-{month:02d}:{basis}:{comparison}:{rate}"
+    revision = "revision" if re.search(r"수정치|정정|재개정|\brevised\b|\brevision\b", title, re.I) else "release"
+    basis = "core" if "근원" in release_text or re.search(r"\bcore\b", release_text) else "headline"
+    comparison = "mom" if re.search(r"전월|전달|\bmom\b", release_text, re.I) else "headline"
+    return f"macro_release:{country}:{indicator}:{year}-{month:02d}:{basis}:{comparison}:{revision}:{'+'.join(rates)}"
 
 
 def verified_trade_theme(alert: dict) -> str:

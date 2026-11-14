@@ -81,6 +81,9 @@ jobs:
 
 
       - name: Verify GAMEJOA delivery contract
+        # Full offline contracts run in PR/push CI. Keep them for explicit dry runs,
+        # but do not consume the live 20-minute schedule window with duplicate checks.
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_dry_run == 'true' }}
         # Fixture suites test broad policy behavior; live ranking is asserted explicitly by their live-mode cases.
         env:
           RADAR_RUN_MODE: "preopen"
@@ -123,6 +126,9 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Preflight GAMEJOA preopen news radar quality
+        # Preflight recollects every source; a real run validates the exact report
+        # it sends, so scheduled/live deliveries should build only once.
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_dry_run == 'true' }}
         env:
           SEND_TELEGRAM: "false"
           TELEGRAM_DRY_RUN: "true"

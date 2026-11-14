@@ -3388,7 +3388,7 @@ def coupang_quarterly_earnings_release_observation(
             if value:
                 revenue = {
                     'amount_won': value,
-                    'display': re.sub(r'\s+', '', candidate[0]),
+                    'display': re.sub(r'\s+', '', f'{candidate[1]}{candidate[2]}'),
                     'context': window,
                 }
                 break

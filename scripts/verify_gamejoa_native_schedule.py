@@ -15,6 +15,9 @@ WORKFLOW = ROOT / ".github/workflows/gamejoa-preopen-news-radar.yml"
 REQUIRED = (
     'cron: "7,27,47 * * * *"',
     "RADAR_RUN_MODE: ${{ github.event_name == 'schedule' && 'live' || github.event.inputs.radar_run_mode || 'preopen' }}",
+    "if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_dry_run == 'true' }}",
+    "- name: Build and send GAMEJOA preopen news radar",
+    "- name: Verify GAMEJOA runtime delivery result",
 )
 
 def main() -> int:
@@ -23,6 +26,9 @@ def main() -> int:
     if missing:
         for snippet in missing:
             print(f"GAMEJOA native schedule contract error: missing {snippet}")
+        return 1
+    if text.count("if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_dry_run == 'true' }}") != 2:
+        print("GAMEJOA native schedule contract error: static checks and preflight must both be dry-run only")
         return 1
     rendered = radar.compact_alert(
         {
