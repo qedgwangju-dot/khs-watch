@@ -1,4 +1,5 @@
 import datetime as dt
+import urllib.parse
 import json
 import tempfile
 import unittest
@@ -37,7 +38,9 @@ class WarshFedBoardContextTests(unittest.TestCase):
     def test_bowman_credits_and_rate_costs_both_required(self):
         body = ("off-balance-sheet liabilities may be a concern if "
                 "revenues from AI customers disappoint. The benefit of "
-                "additional policy tightening must be carefully weighed.")
+                "additional policy tightening must be carefully weighed. "
+                "AI related debt will exceed $800 billion, and other obligations "
+                "are more than three times the amount of debt.")
         msg = context.speech_message(context.SEEDS[1],
             example_speech("bowman", "November 10, 2026", body))
         self.assertIn("금융안정", msg)
@@ -138,6 +141,138 @@ class ExistingWarshSpeechArchiveFallbackTests(unittest.TestCase):
                 'Economic Outlook</a></html>')
         with patch.object(original_speech, "fetch", return_value=(page, original_speech.SPEECH_ARCHIVE_URL)):
             self.assertIsNone(original_speech.latest_warsh_archive_item())
+
+
+class WarshClickableReadableAlertsTests(unittest.TestCase):
+    def test_bowman_links_and_financing_numbers_are_readable(self):
+        body = ("off-balance-sheet liabilities; revenues from AI customers disappoint; "
+                "benefit of additional policy tightening; AI debt exceed $800 billion, "
+                "long-term commitments more than three times the amount of debt")
+        msg = context.speech_message(context.SEEDS[1],
+            example_speech("bowman", "November 10, 2026", body))
+        self.assertIn("<b>핵심 사실</b>", msg)
+        self.assertIn("<b>쉽게 말하면</b>", msg)
+        self.assertIn("8,000억달러", msg)
+        self.assertIn("1,069조3,600억원", msg)
+        self.assertIn("3배", msg)
+        self.assertIn('<a href="https://www.federalreserve.gov/newsevents/speech/bowman20261110a.htm">연준 공식 연설</a>', msg)
+        self.assertNotIn("연준 공식 원문: https://", msg)
+        self.assertLess(len(msg), 3900)
+
+    def test_waller_clickable_links_separate_quote_time_and_current_odds(self):
+        body = ("support a 25 basis point increase at the December meeting, "
+                "and a 50 basis point hike if core CPI stays high.")
+        msg = context.speech_message(context.SEEDS[0],
+            example_speech("waller", "November 10, 2026", body))
+        self.assertIn("0.25%p", msg)
+        self.assertIn("0.50%p", msg)
+        self.assertIn("현재 확률 아님", msg)
+        self.assertIn("<b>쉽게 말하면</b>", msg)
+        self.assertIn('NewsId=07216006645644408', msg)
+        self.assertIn("Kind=257&amp;NewsId=", msg)
+        self.assertIn(">당시 확률 보도</a>", msg)
+        self.assertIn(">BLS 10월 CPI</a>", msg)
+        self.assertLess(len(msg), 3900)
+
+    def test_schedule_url_is_link_and_decision_year_is_clear(self):
+        raw = ("Federal Reserve announces revised tentative schedule of Federal Open Market "
+               "Committee meetings in 2027. January 26-27 March 16-17 April 27-28 "
+               "June 8-9 July 27-28 September 14-15 October 26-27 "
+               "November 16-17. The October 26-27 meeting will be dedicated to "
+               "broad monetary policy strategy issues.")
+        msg = context.schedule_message(raw)
+        self.assertIn("8회 유지", msg)
+        self.assertIn("7회만", msg)
+        self.assertIn("2026년 12월 FOMC", msg)
+        self.assertIn(">연준 일정 변경 발표</a>", msg)
+        self.assertIn(">공식 FOMC 달력</a>", msg)
+        self.assertLess(len(msg), 3900)
+
+    def test_unapproved_external_url_rejected(self):
+        with self.assertRaises(ValueError):
+            context.shortlink("이동", "http://www.federalreserve.gov/fake")
+        with self.assertRaises(ValueError):
+            context.shortlink("이동", "https://www.federalreserve.gov.evil.net/")
+
+    def test_actual_telegram_api_payload_uses_html_and_edit_id(self):
+        calls = []
+        def fake_urlopen(req, timeout=0):
+            url = req.full_url if hasattr(req, "full_url") else req
+            if url.endswith("/getMe"):
+                response = {"ok": True, "result": {"username": "verified_test_bot"}}
+            else:
+                payload = urllib.parse.parse_qs(req.data.decode("utf-8"))
+                calls.append((url, payload))
+                response = {
+                    "ok": True, "result": {"message_id": 147, "chat": {"id": -1001234567890}},
+                }
+            stream = MagicMock()
+            stream.__enter__.return_value = stream
+            stream.read.return_value = json.dumps(response).encode("utf-8")
+            return stream
+        with (patch.object(context, "BOT_TOKEN", "TEST_TOKEN"),
+              patch.object(context, "EXPECTED_BOT", "verified_test_bot"),
+              patch.object(context, "CHAT_ID", "-1001234567890"),
+              patch.object(context.urllib.request, "urlopen", side_effect=fake_urlopen)):
+            receipt = context.edit_message(
+                147, context.shortlink("연준 공식 연설", context.SEEDS[1]))
+        self.assertEqual(receipt["message_id"], 147)
+        self.assertTrue(receipt["recipient_verified"])
+        self.assertTrue(calls[0][0].endswith("/editMessageText"))
+        self.assertEqual(calls[0][1]["parse_mode"], ["HTML"])
+        self.assertEqual(calls[0][1]["message_id"], ["147"])
+        self.assertIn('<a href="https://www.federalreserve.gov/newsevents/speech/',
+                      calls[0][1]["text"][0])
+
+    def test_existing_messages_edited_once_not_resent(self):
+        with tempfile.TemporaryDirectory() as p:
+            state = {
+                "sent": {
+                    "speech:bowman:20261110a": {
+                        "message_id": 147,
+                        "recipient_verified": True,
+                        "source": context.SEEDS[1],
+                    },
+                    "speech:waller:20261110a": {
+                        "message_id": 148,
+                        "recipient_verified": True,
+                        "source": context.SEEDS[0],
+                    },
+                    context.SCHEDULE_KEY: {
+                        "message_id": 149,
+                        "recipient_verified": True,
+                        "source": context.SCHEDULE,
+                    },
+                },
+                "pending": {}, "skipped": {},
+            }
+            with (patch.object(context, "STATE_PATH", Path(p)/"state.json"),
+                  patch.object(context, "_upgrade_message",
+                               side_effect=lambda key, receipt: "<b>갱신 확인</b>") as render,
+                  patch.object(context, "edit_message",
+                               side_effect=lambda mid, msg: {"message_id":mid,"recipient_verified":True}) as edited,
+                  patch.object(context, "send") as sent):
+                items = context.upgrade_delivered_messages(state)
+                self.assertEqual(len(items), 3)
+                self.assertEqual(edited.call_count, 3)
+                self.assertEqual(len(state["formatted"]), 3)
+                self.assertEqual(context.upgrade_delivered_messages(state), [])
+                sent.assert_not_called()
+                self.assertEqual(edited.call_count, 3)
+                self.assertTrue(all(x["version"] == context.FORMAT_VERSION
+                                    for x in state["formatted"].values()))
+
+    def test_future_new_delivery_stores_format_version_with_original_dedup(self):
+        with tempfile.TemporaryDirectory() as p:
+            state = {"sent": {}, "pending": {}, "skipped": {}}
+            with (patch.object(context, "STATE_PATH", Path(p)/"state.json"),
+                  patch.object(context, "send", return_value={"message_id":151,"recipient_verified":True}) as sender):
+                self.assertTrue(context.deliver(state, "speech:waller:20261116a", "<b>신규</b>", context.SEEDS[0]))
+                self.assertEqual(state["formatted"]["speech:waller:20261116a"]["version"],
+                                 context.FORMAT_VERSION)
+                self.assertFalse(context.deliver(state, "speech:waller:20261116a", "<b>신규</b>", context.SEEDS[0]))
+                self.assertEqual(sender.call_count, 1)
+
 
 
 if __name__ == "__main__":
