@@ -1710,6 +1710,157 @@ def parse_goldman_prime_public():
     }
 
 
+
+def goldman_prime_deleveraging_article(text, published):
+    """Return explicitly dated gross/net leverage levels and weekly reductions."""
+    if not isinstance(text, str) or not isinstance(published, date):
+        return None
+    clean = " ".join(text.split())
+    if not all(re.search(p, clean, re.I) for p in (
+        r"Goldman(?:\s+Sachs|'s)", r"prime\s+(?:brokerage|book|desk)|prime-brokerage",
+        r"hedge\s+funds?", r"tech(?:nology)?",
+    )):
+        return None
+    months = (r"Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|"
+              r"Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|"
+              r"Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?")
+    ref = re.search(
+        rf"\b(?:week\s+(?:to|through|ending)|figures?\s+(?:through|as\s+of)|"
+        rf"data\s+(?:runs\s+)?through)\s+({months})\.?\s*(\d{{1,2}})"
+        rf"(?:,\s*(20\d{{2}}))?\b", clean, re.I,
+    )
+    if not ref:
+        return None
+    month_index = ("jan", "feb", "mar", "apr", "may", "jun",
+                   "jul", "aug", "sep", "oct", "nov", "dec")
+    try:
+        observed = date(
+            int(ref.group(3)) if ref.group(3) else published.year,
+            month_index.index(ref.group(1)[:3].lower()) + 1,
+            int(ref.group(2)),
+        )
+    except ValueError:
+        return None
+    if not 0 <= (published - observed).days <= 14:
+        return None
+
+    def metric(name, lower, upper):
+        found = re.search(r"\b" + name + r"\s+leverage\b", clean, re.I)
+        if not found:
+            return None
+        rest = clean[found.end():]
+        next_metric = re.search(r"\b(?:gross|net)\s+leverage\b", rest, re.I)
+        nearby = rest[:min(180, next_metric.start() if next_metric else len(rest))]
+        level = re.search(r"(\d{1,3}(?:\.\d+)?)\s*%", nearby)
+        drop = re.search(
+            r"(?<!\d)[-−]\s*(\d+(?:\.\d+)?)\s*(?:pts?|pp|percentage\s+points?)"
+            r"|\b(?:fell|shrank|declined|dropped|decreased|down|drop)\s+"
+            r"(?:by\s+)?(\d+(?:\.\d+)?)\s*(?:pts?|pp|percentage\s+points?)",
+            nearby, re.I,
+        )
+        if not level or not drop:
+            return None
+        value, change = float(level.group(1)), float(drop.group(1) or drop.group(2))
+        if not lower <= value <= upper or not 0 < change < 40:
+            return None
+        return round(value, 2), round(-change, 2)
+
+    gross, net = metric("gross", 100, 450), metric("net", 0, 100)
+    if not gross or not net or gross[1] > -5.0 or net[1] > -2.0:
+        return None
+    return (observed, gross[0], gross[1], net[0], net[1])
+
+
+def parse_goldman_prime_deleveraging_public(*, article_fetch=extract_article_body,
+                                           discover=news_items, today=None):
+    """Corroborate a SEPARATE risk-reduction event; never fabricate Goldman data."""
+    today = today or datetime.now(ZoneInfo("America/New_York")).date()
+    try:
+        live = discover(
+            "Goldman Sachs prime brokerage hedge funds gross leverage net leverage technology"
+        )[:8]
+    except Exception as exc:
+        print(f"goldman_prime_leverage_discovery_error={type(exc).__name__}")
+        live = []
+    seeds = [
+        {"title": "Hedge funds cut tech exposure at near-record pace",
+         "link": "https://www.investing.com/news/stock-market-news/hedge-funds-cut-tech-exposure-at-nearrecord-pace-as-nasdaq-drops-64-93CH-5012790",
+         "pub": "Mon, 09 Nov 2026"},
+        {"title": "Hedge funds sold tech stocks at a near-record pace",
+         "link": "https://qz.com/hedge-funds-tech-stocks-near-record-pace-midterms-110926",
+         "pub": "Mon, 09 Nov 2026"},
+        {"title": "Hedge Funds Rush Out of Tech as Data-Center Doubts",
+         "link": "https://www.briefs.co/news/hedge-funds-rush-out-of-tech-as-data-center-doubts-hit-the-a/",
+         "pub": "Mon, 09 Nov 2026"},
+    ]
+    from urllib.parse import urlparse
+    allowed = {"investing.com", "qz.com", "briefs.co", "bloomberg.com", "reuters.com"}
+    grouped, visited = {}, set()
+    for item in live + seeds:
+        url = str(item.get("link") or "")
+        if not url.startswith("https://") or url in visited:
+            continue
+        visited.add(url)
+        if not re.search(r"hedge|goldman|technology|tech", str(item.get("title") or ""), re.I):
+            continue
+        try:
+            published = parsedate_to_datetime(str(item.get("pub") or "")).date()
+        except (TypeError, ValueError, IndexError, OverflowError):
+            continue
+        if not 0 <= (today - published).days <= 14:
+            continue
+        if (urlparse(url).hostname or "").removeprefix("www.") not in allowed:
+            continue
+        final, body = article_fetch(url)
+        domain = (urlparse(final).hostname or "").removeprefix("www.")
+        if domain not in allowed:
+            continue
+        parsed = goldman_prime_deleveraging_article(body, published)
+        if parsed is not None:
+            grouped.setdefault(parsed, {})[domain] = final
+    verified = [(numbers, urls) for numbers, urls in grouped.items() if len(urls) >= 2]
+    if not verified:
+        return None
+    (when, gross, dg, net, dn), sources = max(verified, key=lambda row: row[0][0])
+    if not 0 <= (today - when).days <= 14:
+        return None
+    return {
+        "source": "Goldman Prime 위험축소 공개보도",
+        "kind": "goldman_prime_deleveraging",
+        "period": when.strftime("%B %d, %Y"),
+        "reference_week": when.isoformat(),
+        "reference_week_verified": True,
+        "published": today.isoformat(),
+        "url": next(iter(sources.values())),
+        "metrics": {
+            "gross_leverage_pct": gross, "gross_change_pp": dg,
+            "net_leverage_pct": net, "net_change_pp": dn,
+        },
+        "crosschecked_sources": list(sources.values()),
+        "comparison_note": (
+            "복수 언론이 Goldman의 동일 자료를 인용한 수치임. "
+            "Goldman 고객 전용 원자료를 독립적으로 재조회한 것은 아님."
+        ),
+    }
+
+
+_GS_DELEVERAGING_SAMPLE = (
+    "Goldman Sachs prime brokerage hedge funds cut technology stock exposure. "
+    "Data runs through Nov 6. Gross leverage 207.5% -8.7 pts; "
+    "Net leverage 43.3% -3.7 pts."
+)
+assert goldman_prime_deleveraging_article(
+    _GS_DELEVERAGING_SAMPLE, date(2026, 11, 9)
+) == (date(2026, 11, 6), 207.5, -8.7, 43.3, -3.7)
+assert goldman_prime_deleveraging_article(
+    _GS_DELEVERAGING_SAMPLE.replace("Data runs through Nov 6.", ""),
+    date(2026, 11, 9),
+) is None
+assert goldman_prime_deleveraging_article(
+    _GS_DELEVERAGING_SAMPLE.replace("Net leverage 43.3% -3.7 pts.", ""),
+    date(2026, 11, 9),
+) is None
+
 # Regression checks run as part of the existing Python execution path.
 assert goldman_prime_public_article(
     "Goldman Sachs prime brokerage hedge funds cut technology stock positions "
