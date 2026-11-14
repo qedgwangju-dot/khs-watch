@@ -1,35 +1,47 @@
 {
   "last_seen": {
-    "PPI": "2026-09",
-    "CPI": "2026-09"
+    "PPI": "2026-10",
+    "CPI": "2026-10"
   },
   "pending_events": [],
   "processed_events": [
     "CPI:2026-08",
     "CPI:2026-09",
+    "CPI:2026-10",
     "PPI:2026-08",
-    "PPI:2026-09"
+    "PPI:2026-09",
+    "PPI:2026-10"
   ],
-  "last_integrated_market_date": "2026-10-15",
+  "last_integrated_market_date": "2026-11-10",
   "latest_ppi": {
     "kind": "PPI",
-    "period": "2026-09",
-    "period_label": "9월 PPI",
+    "period": "2026-10",
+    "period_label": "10월 PPI",
     "url": "https://www.bls.gov/news.release/ppi.htm",
-    "headline_mom": 1.3,
-    "headline_yoy": 6.3,
+    "headline_mom": 0.3,
+    "headline_yoy": 6.5,
     "core_mom": 0.5,
-    "core_yoy": 5.0
+    "core_yoy": 4.9
   },
   "latest_cpi": {
     "kind": "CPI",
-    "period": "2026-09",
-    "period_label": "9월 CPI",
+    "period": "2026-10",
+    "period_label": "10월 CPI",
     "url": "https://www.bls.gov/news.release/cpi.htm",
-    "headline_mom": 0.6,
-    "headline_yoy": 3.7,
+    "headline_mom": 0.4,
+    "headline_yoy": null,
     "core_mom": 0.3,
-    "core_yoy": 2.6
+    "core_yoy": null
   },
-  "updated_at_utc": "2026-10-15T20:25:42.776673+00:00"
+  "delivery_receipts": {
+    "PPI:2026-10": {
+      "message_id": 145,
+      "recipient_verified": true
+    },
+    "CPI:2026-10": {
+      "message_id": 146,
+      "recipient_verified": true
+    }
+  },
+  "updated_at_utc": "2026-11-14T09:35:44.033460+00:00"
 }
