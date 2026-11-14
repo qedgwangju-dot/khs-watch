@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """AI networking / optics structural-change web watcher.
 
-Sources include Google News RSS and the public FUNDA CPO research RSS feed.
+Sources are Google News RSS queries, including a FUNDA publication-specific search.
 The watcher is deliberately event-driven: first run establishes a baseline and later
 runs emit Telegram-ready HTML only for new, high-signal items.
 """
@@ -289,6 +289,7 @@ COMPANIES = {
             '("TSMC" OR COUPE OR "Spectrum-X") ("W2W" OR "wafer-to-wafer" OR "vacuum bonding" OR "hybrid bonding") (yield OR sampling OR selection OR tool OR delivery OR production OR 2027 OR 2028)',
             '("CPO" OR COUPE) ("Insertion 2" OR "second test insertion" OR "test vendor") (selection OR undecided OR award OR certification OR qualification OR delay OR 2028)',
             '("FUNDA" OR "FUNDAAI") ("CPO" OR COUPE OR "co-packaged optics") (bonding OR testing OR delay OR shipment OR yield)',
+            'site:fundaai.substack.com ("COUPE" OR "CPO" OR "co-packaged optics" OR "W2W" OR "Insertion 2")',
         ],
     },
     "Opticore": {
@@ -2291,23 +2292,6 @@ def query_google_news(
 
 
 
-def query_funda_cpo_feed() -> list[dict]:
-    """Public source originals; research statements remain separate from company confirmation."""
-    root = ET.fromstring(fetch("https://fundaai.substack.com/feed", timeout=15))
-    rows: list[dict] = []
-    for node in root.findall("./channel/item")[:40]:
-        title = normalize_text(node.findtext("title") or "")
-        if not re.search(r"\bCPO\b|COUPE|co[- ]packaged optics?|optical engines?|W2W.{0,30}bonding", title, re.I):
-            continue
-        link = normalize_text(node.findtext("link") or "")
-        if not link.startswith("https://fundaai.substack.com/p/"):
-            continue
-        published = parse_date(node.findtext("pubDate"))
-        rows.append({"title": title, "link": link,
-                     "published": published.isoformat() if published else None,
-                     "source": "FUNDA", "source_url": "https://fundaai.substack.com"})
-    return rows
-
 
 def is_noise(text: str) -> bool:
     return any(re.search(pattern, text, flags=re.I) for pattern in NOISE_PATTERNS)
@@ -3461,7 +3445,7 @@ def main() -> None:
     new_infra_source_ok = {k: False for k in NEW_OPTICAL_INFRA_SCOPES}
     new_infra_source_errors = {k: [] for k in NEW_OPTICAL_INFRA_SCOPES}
     new_infra_event_candidates = {k: 0 for k in NEW_OPTICAL_INFRA_SCOPES}
-    funda_feed_ok = False
+    funda_index_ok = False
     taihan_direct_verified = False
     taihan_direct_status = "기존 기사 기준선"
     # Query-level evidence: a successful RSS HTTP response can legitimately
@@ -3493,6 +3477,9 @@ def main() -> None:
                         feed_items.extend(rows)
                         query_health[company]["successful"] += 1
                         query_health[company]["raw_articles"] += len(rows)
+                        if company == "CPO Packaging & Test" and "site:fundaai.substack.com" in query:
+                            # A successful search is not original article retrieval.
+                            funda_index_ok = True
                         if company == POWER_COMPANY:
                             power_locales_ok.add(locale.get("gl", "US"))
                         if company in NEW_OPTICAL_INFRA_SCOPES:
@@ -3508,19 +3495,6 @@ def main() -> None:
                         else:
                             infra_query_failed = True
                             new_infra_source_errors[company].append(info)
-            if company == "CPO Packaging & Test":
-                # Independent first-hand research lane: show errors without
-                # interrupting the established Google News CPO collection.
-                query_health[company]["attempted"] += 1
-                try:
-                    direct_rows = query_funda_cpo_feed()
-                    feed_items.extend(direct_rows)
-                    query_health[company]["successful"] += 1
-                    query_health[company]["raw_articles"] += len(direct_rows)
-                    funda_feed_ok = True
-                except Exception as exc:
-                    query_health[company]["failed"] += 1
-                    errors.append(f"FUNDA CPO 직접 RSS 조회 실패: {type(exc).__name__} (원천 미확인)")
             if company in NEW_OPTICAL_INFRA_SCOPES:
                 # An RSS outage of a specialist lane may not silently advance
                 # that lane's semantic baseline; other healthy lanes still run.
@@ -3949,8 +3923,8 @@ def main() -> None:
         "relevant_item_count": len(deduped),
         "source_errors": errors,
         "query_health": query_health,
-        "funda_cpo_source_ok": funda_feed_ok,
-        "funda_cpo_last_healthy_kst": dt.datetime.now(KST).isoformat(timespec="seconds") if funda_feed_ok else state.get("funda_cpo_last_healthy_kst"),
+        "funda_cpo_search_ok": funda_index_ok,
+        "funda_cpo_last_search_healthy_kst": dt.datetime.now(KST).isoformat(timespec="seconds") if funda_index_ok else state.get("funda_cpo_last_search_healthy_kst"),
         "query_diagnostics_version": 1,
         # The one-time correction is committed only after a Telegram API
         # delivery confirmation (push validation never persists any state).
@@ -4211,7 +4185,7 @@ def main() -> None:
         f"- 신규 3축 원천조회 정상 여부: {new_infra_source_ok}",
         f"- 신규 3축 기사 후보: {new_infra_event_candidates}",
         f"- 대한광통신 9월 실제 출하 기사 원문: {taihan_direct_status}",
-        f"- FUNDA CPO 1차 리서치 RSS: {'정상' if funda_feed_ok else '조회 실패·해당 원천 미확인(타 원천 유지)'}",
+        f"- FUNDA CPO 검색 색인: {'검색 연결 정상·원문 직접 열람 아님' if funda_index_ok else '검색 접근 실패·원문 미확인(타 원천 유지)'}",
         "- COUPE W2W 수율·진공 본딩 장비 샘플/선정·Insertion 2 검사 업체·2027~2028 출하 일정은 별도 선행경보",
         f"- 메타 광모듈·공급사 공식자료 감시: {'정상' if meta_source_healthy else '보류·해당 감시축 기준선 미갱신'}",
         f"- 메타 감시 버전: {pending.get('meta_optical_watch_version')}",
