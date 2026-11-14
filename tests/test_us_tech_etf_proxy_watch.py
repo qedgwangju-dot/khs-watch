@@ -493,5 +493,13 @@ class TechEtfProxyTests(unittest.TestCase):
         self.assertIn("최근 5거래일 합계: 확인 보류",w.render(outcome,1327.75,"2026-10-27"))
 
 
+
+    def test_soxx_split_notice_not_falsely_future_after_effective_date(self):
+        result=w.calculate(snap("2026-11-05"),prior_state("2026-11-04"))
+        notice=w.render(result,1350,"2026-11-05")
+        self.assertIn("2026-11-05 시행된 3대 1 주식분할",notice)
+        self.assertNotIn("예정 주식분할",notice)
+
+
 if __name__=="__main__":
     unittest.main()
