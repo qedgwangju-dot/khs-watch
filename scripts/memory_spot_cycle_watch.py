@@ -2777,6 +2777,87 @@ def _china_essd_reported_order_cut(previous: dict, now: dt.datetime) -> tuple[di
     ]
 
 
+
+# 2026-11-12 issuer and reported pricing: separate official outlook from
+# distributor quotes, avoiding synthetic signed orders or price announcements.
+FOXCONN_20261112_FACT_KEY = "foxconn-2026-11-12-2027-memory-shortage-4segments"
+FOXCONN_20261112_URLS = (
+    "https://www.foxconn.com/en-us/press-center/press-releases/latest-news/2154",
+    "https://www.honhai.com/en-us/press-center/press-releases/latest-news/2154",
+)
+TREND_PRICE_20261112_FACT_KEY = "trendforce-news-2026-11-12-enterprise-verbal-hikes"
+TREND_PRICE_20261112_URL = (
+    "https://www.trendforce.com/news/2026/11/12/"
+    "news-memory-makers-reportedly-plan-new-price-hikes-while-ai-demand-widens-enterprise-consumer-divide/"
+)
+
+
+def _foxconn_2027_official(raw: str) -> bool:
+    low = _clean(raw).lower()
+    return all(term in low for term in (
+        "hon hai technology group", "third quarter 2026", "2027",
+        "memory", "supply", "demand", "four major product segments",
+    )) and "demand is expected to continue exceeding supply next year" in low
+
+
+def _trendforce_enterprise_verbal_hike(raw: str) -> bool:
+    low = _clean(raw).lower()
+    return all(term in low for term in (
+        "memory makers reportedly plan new price hikes",
+        "formal price increase notices have yet to be issued",
+        "enterprise ssd", "15%", "20%", "pc dram",
+    ))
+
+
+def _collect_supplier_followups(now: dt.datetime, state: dict) -> tuple[dict | None, dict | None, list[str]]:
+    """Check exact issuer originals. Never let optional 403 break core monitoring."""
+    warnings: list[str] = []
+    if not dt.date(2026, 11, 12) <= now.date() <= dt.date(2026, 11, 24):
+        return None, None, warnings
+    foxconn = None
+    if (state.get("foxconn_supply_outlook") or {}).get("fact_key") != FOXCONN_20261112_FACT_KEY:
+        for url in FOXCONN_20261112_URLS:
+            try:
+                raw = _fetch(url).decode("utf-8", errors="replace")
+                if _foxconn_2027_official(raw):
+                    foxconn = {
+                        "fact_key": FOXCONN_20261112_FACT_KEY,
+                        "release_date": "2026-11-12",
+                        "memory_shortage_through_year_forecast": 2027,
+                        "fy2026_four_segments_outlook_upgraded": True,
+                        "neocloud_2027_status": "press_report_not_confirmed_contract",
+                        "source_kind": "폭스콘 3Q26 공식 발표·회사 2027 공급부족 전망",
+                        "source_url": url,
+                    }
+                    break
+            except Exception as exc:
+                warnings.append("폭스콘 공식 발표 직접 접근 실패: " + type(exc).__name__)
+        if foxconn is None:
+            warnings.append("폭스콘 2027 공급 제약 공식 자료 검증 미완료·알림 보류")
+    price = None
+    if (state.get("trendforce_price_nov12") or {}).get("fact_key") != TREND_PRICE_20261112_FACT_KEY:
+        try:
+            raw = _fetch(TREND_PRICE_20261112_URL).decode("utf-8", errors="replace")
+            if _trendforce_enterprise_verbal_hike(raw):
+                price = {
+                    "fact_key": TREND_PRICE_20261112_FACT_KEY,
+                    "release_date": "2026-11-12",
+                    "formal_manufacturer_price_notice_confirmed": False,
+                    "enterprise_ssd_q4_2026_min_pct": 15,
+                    "enterprise_ssd_q4_2026_max_pct": 20,
+                    "pc_dram_q4_2026_min_pct": 13,
+                    "pc_dram_q4_2026_max_pct": 18,
+                    "consumer_client_ssd_increase_upper_pct": 5,
+                    "source_kind": "TrendForce 11/12 뉴스·중국매체 인용, 확정된 공급사 가격공지 아님",
+                    "source_url": TREND_PRICE_20261112_URL,
+                }
+            else:
+                warnings.append("트렌드포스 11/12 가격 보도 문구·수치 검증 미완료·알림 보류")
+        except Exception as exc:
+            warnings.append("트렌드포스 가격 보도 직접 접근 실패: " + type(exc).__name__)
+    return foxconn, price, warnings
+
+
 def _watch_axis_change(old: dict, new: dict, keys: tuple[str, ...], label: str) -> list[str]:
     if not new:
         return []
@@ -3526,11 +3607,20 @@ def _prepare_report_item(item: dict) -> dict | None:
     }
 
 
-def write_outputs(items: list[dict], errors: list[str]) -> None:
+def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | None = None,
+                  price_record: dict | None = None, source_warnings: list[str] | None = None) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     state = load_state()
     seen: dict = state.get("seen", {})
     now = dt.datetime.now(KST)
+    foxconn_previous = dict(state.get("foxconn_supply_outlook") or {})
+    foxconn_changes = (["폭스콘 2027 메모리·핵심부품 부족 전망과 2026년 4대 제품군 상향 확인"]
+                       if foxconn_record and foxconn_previous.get("fact_key") != FOXCONN_20261112_FACT_KEY else [])
+    foxconn_state = foxconn_record if foxconn_changes else foxconn_previous
+    price_previous = dict(state.get("trendforce_price_nov12") or {})
+    price_changes = (["TrendForce 11/12 기업용 메모리 구두 인상 계획·기업/소비자 가격 분화 보도 확인"]
+                     if price_record and price_previous.get("fact_key") != TREND_PRICE_20261112_FACT_KEY else [])
+    price_state = price_record if price_changes else price_previous
     initialized = bool(state.get("initialized"))
     market_state = dict(state.get("hbm_market_pricing") or {})
     if int(state.get("hbm_market_pricing_track_version") or 0) < HBM_MARKET_PRICE_TRACK_VERSION:
@@ -3980,6 +4070,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "reclaimed_memory": reclaimed_state,
         "reballed_smartphone": rb_state,
         "china_essd_demand": essd_region_state,
+        "foxconn_supply_outlook": foxconn_state,
+        "trendforce_price_nov12": price_state,
         "china_dram_cycle_track_version": CHINA_DRAM_CYCLE_TRACK_VERSION,
         "china_dram_cycle": china_cycle_state,
         "pc_notebook_demand_track_version": PC_NOTEBOOK_DEMAND_TRACK_VERSION,
@@ -4023,6 +4115,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- 중국 회수 메모리칩 거래·제조사 실제 채택 변화: {len(reclaimed_changes)}건",
         f"- 공식 리볼링 스마트폰 침투율 변화: {len(rb_changes)}건",
         f"- 중국↔북미 기업용 SSD 수요 차별화 변화: {len(essd_region_changes)}건",
+        f"- 폭스콘 2027 메모리 공급 전망 변화: {len(foxconn_changes)}건",
+        f"- TrendForce 11/12 가격 분화 보도 변화: {len(price_changes)}건",
+        f"- 부가 원문 접근·검증 경고: {len(source_warnings or [])}건",
         f"- PC 메모리·CPU 원가→노트북 수요 역풍 변화: {len(pc_notebook_changes)}건",
         f"- 러시아 서버·eSSD 병행수입 규제 변화: {len(russian_changes)}건",
         f"- 구세대 DRAM EOL·배정 변화: {len(legacy_changes)}건",
@@ -4030,15 +4125,17 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     ]
     if errors:
         status_lines += ["", "## 오류", *[f"- {x}" for x in errors[:6]]]
+    if source_warnings:
+        status_lines += ["", "## 부가 원천 검증 보류", *[f"- {x}" for x in source_warnings[:4]]]
     STATUS_PATH.write_text("\n".join(status_lines) + "\n", encoding="utf-8")
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not russian_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(rb_changes) + len(essd_region_changes) + len(russian_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(rb_changes) + len(essd_region_changes) + len(foxconn_changes) + len(price_changes) + len(russian_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if trend_4q26_changes:
@@ -4077,6 +4174,10 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif china_cycle_changes:
         lines.append("한눈에: <b>" + html.escape(china_cycle_changes[0]) + "</b>")
+    elif foxconn_changes:
+        lines.append("한눈에: <b>" + html.escape(foxconn_changes[0]) + "</b>")
+    elif price_changes:
+        lines.append("한눈에: <b>" + html.escape(price_changes[0]) + "</b>")
     elif rb_changes:
         lines.append("한눈에: <b>" + html.escape(rb_changes[0]) + "</b>")
     elif essd_region_changes:
@@ -4462,6 +4563,26 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         for label, url in source_links:
             lines.append('  <a href="' + html.escape(url, quote=True) + '">' + html.escape(label) + '</a>')
 
+
+    if foxconn_changes:
+        lines.append("• <b>폭스콘 2027 메모리·부품 수급과 서버 출하 전망</b>")
+        lines.append("  2027년 메모리·반도체·핵심부품 수요가 공급을 초과할 가능성 · 폭스콘 회장 공식 전망, 확정 부족 물량은 미공개")
+        lines.append("  기존→신규: 2026년 전체 강한 성장 목표 유지, 4대 제품군별 전망은 8월 발표 대비 상향")
+        lines.append("  AI 서버는 성장 동력. 2027년 AI 랙 높은 두 자릿수 출하 성장·신규 Neocloud 고객 확대는 언론에 전해진 회사 전망")
+        lines.append("  단, 2027년 NeoCloud 계약 상대방·확정 주문액 및 물량은 공개 확인 전")
+        lines.append("  반대축: 메모리 부족·원가 상승이 PC 출하·마진을 압박하고 증설 가동으로 부족이 완화될 수 있음")
+        lines.append("  조기경보: HBM/서버 DDR5/기업용 SSD 가격·확정 납기, 클라우드 서버 주문·가동률, 부품 조달비")
+        lines.append('  <a href="' + html.escape(foxconn_state["source_url"], quote=True) + '">폭스콘 2026년 3분기 공식 발표</a>')
+    if price_changes:
+        lines.append("• <b>TrendForce 기업용 메모리 인상 계획 보도·실제 가격 분화</b>")
+        lines.append("  가격 인상: 일부 공급사의 유통망 구두 통지 보도 · 공급사 공식 인상 공문은 미확인")
+        lines.append("  2026년 4분기 전망: 기업용 SSD 전분기 대비 +15~20%, PC DRAM +13~18%, 소비자용 SSD +5% 미만")
+        lines.append("  2026년 9월 제시된 기업용 SSD +23~28%와 현재 +15~20%는 발표 판본·산정 범위 확인 전 동일 지표로 직접 대체하지 않음")
+        lines.append("  원인: HBM·서버 DDR5·기업용 QLC SSD 우선배정, 소형 모듈사 현물조달 비용 증가")
+        lines.append("  반대축: PC용 수요 둔화·소비자 SSD 상승폭 제한 · 구두 가격 인상과 계약 체결 구분")
+        lines.append("  다음 확인: 공급사 확정 인상공문, 실제 4Q 계약가, 구형 재고·모듈 완제품 판매가, 고객별 구매물량")
+        lines.append('  <a href="' + html.escape(price_state["source_url"], quote=True) + '">TrendForce 11/12 기사</a>')
+
     if rb_changes:
         lines.append("• <b>TrendForce 재생 스마트폰 DRAM 침투율 전망</b>")
         for reason in list(dict.fromkeys(rb_changes)):
@@ -4723,7 +4844,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not russian_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
@@ -4755,7 +4876,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
 def main() -> int:
     items, errors = collect()
-    write_outputs(items, errors)
+    foxconn, price, warnings = _collect_supplier_followups(dt.datetime.now(KST), load_state())
+    write_outputs(items, errors, foxconn, price, warnings)
     if errors:
         ALERT_PATH.unlink(missing_ok=True)
         print(f"memory_watch_incomplete=true source_errors={len(errors)}; Telegram suppressed")

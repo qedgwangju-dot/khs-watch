@@ -62,6 +62,57 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertEqual(skipped, [])
 
 
+
+    def test_foxconn_q3_issuer_verification_never_treats_neocloud_as_signed(self):
+        issuer = (
+            "Hon Hai Technology Group (Foxconn) Announces Third Quarter 2026 Financial Results "
+            "November 12 2026. Looking ahead to 2027, memory, chips and certain key components "
+            "are in tight supply, and overall demand is expected to continue exceeding supply next year. "
+            "The outlook for all four major product segments has been revised upward."
+        )
+        self.assertTrue(w._foxconn_2027_official(issuer))
+        self.assertFalse(w._foxconn_2027_official(
+            issuer.replace("demand is expected to continue exceeding supply next year", "might improve")
+        ))
+
+    def test_trendforce_verbal_hike_is_not_formal_price_notice(self):
+        article = (
+            "Memory Makers Reportedly Plan New Price Hikes While AI Demand Widens Enterprise-Consumer Divide "
+            "formal price increase notices have yet to be issued. Enterprise SSD prices expected 15%-20% in 4Q26 "
+            "PC DRAM 13-18% quarter on quarter."
+        )
+        self.assertTrue(w._trendforce_enterprise_verbal_hike(article))
+        self.assertFalse(w._trendforce_enterprise_verbal_hike(
+            article.replace("formal price increase notices have yet to be issued", "official signed contracts")
+        ))
+
+    def test_issuer_followups_alert_once_and_keep_prior_state(self):
+        import json
+        baseline = w.load_state()
+        fox = {"fact_key": w.FOXCONN_20261112_FACT_KEY, "source_url": w.FOXCONN_20261112_URLS[0]}
+        price = {"fact_key": w.TREND_PRICE_20261112_FACT_KEY, "source_url": w.TREND_PRICE_20261112_URL}
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            baseline["foxconn_supply_outlook"] = {}
+            baseline["trendforce_price_nov12"] = {}
+            (root / "state.json").write_text(json.dumps(baseline), encoding="utf-8")
+            with patch.object(w, "STATE_PATH", root / "state.json"), \
+                 patch.object(w, "OUT_DIR", root), \
+                 patch.object(w, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(w, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root / "status.md"):
+                w.write_outputs([], [], fox, price)
+                output = w.ALERT_PATH.read_text(encoding="utf-8")
+                self.assertIn("폭스콘 2027", output)
+                self.assertIn("구두 통지", output)
+                pending = json.loads(w.PENDING_PATH.read_text(encoding="utf-8"))
+                self.assertEqual(pending["foxconn_supply_outlook"]["fact_key"], fox["fact_key"])
+                self.assertEqual(pending["trendforce_price_nov12"]["fact_key"], price["fact_key"])
+                self.assertEqual(pending.get("china_essd_demand"), baseline.get("china_essd_demand"))
+                w.STATE_PATH.write_text(json.dumps(pending), encoding="utf-8")
+                w.write_outputs([], [], fox, price)
+                self.assertFalse(w.ALERT_PATH.exists())
+
     def test_memory_workflow_requires_matching_telegram_ack_recipient(self):
         workflow = (pathlib.Path(__file__).resolve().parents[1] /
                     ".github/workflows/memory-spot-cycle-telegram-watch.yml").read_text(encoding="utf-8")
