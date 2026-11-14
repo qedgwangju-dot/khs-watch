@@ -38,6 +38,8 @@ on:
       - 'scripts/warsh_reaction_watch_v3.py'
       - 'scripts/warsh_reaction_watch_v4.py'
       - 'scripts/warsh_speech_watch.py'
+      - 'scripts/warsh_fed_board_context_watch.py'
+      - 'tests/test_warsh_fed_board_context_watch.py'
       - 'scripts/warsh_beige_book_watch.py'
       - 'scripts/warsh_imf_policy_shift_watch.py'
       - 'tests/test_warsh_beige_imf_watch.py'
@@ -261,6 +263,13 @@ jobs:
           fi
           run_watch scripts/warsh_reaction_watch_v4.py
           run_watch scripts/warsh_speech_watch.py
+          # 보먼·월러 정책 발언과 2027 FOMC 일정: Warsh 기존 경로에만 추가.
+          if python -m unittest discover -s tests -p 'test_warsh_fed_board_context_watch.py' -v; then
+            run_watch scripts/warsh_fed_board_context_watch.py
+          else
+            echo '::error::연준 위원·FOMC 일정 회귀검증 실패 — 해당 감시만 보류'
+            MACRO_RC=1
+          fi
           run_watch scripts/warsh_inflation_market_watch.py
           run_watch scripts/warsh_market_watch_v2.py
           if python -m unittest discover -s tests -p 'test_warsh_gartner_dedup.py' -v; then
@@ -346,6 +355,7 @@ jobs:
           paths = [
               pathlib.Path('data/warsh_reaction_watch_state.json'),
               pathlib.Path('data/warsh_speech_watch_state.json'),
+              pathlib.Path('data/warsh_fed_board_context_state.json'),
               pathlib.Path('data/warsh_beige_book_watch_state.json'),
               pathlib.Path('data/warsh_imf_policy_shift_watch_state.json'),
               pathlib.Path('data/warsh_inflation_market_watch_state.json'),
@@ -385,7 +395,7 @@ jobs:
       - name: Persist deduplication baselines
         if: ${{ always() && !cancelled() }}
         run: |
-          CHANGED="$(git status --porcelain -- data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_beige_book_watch_state.json data/warsh_imf_policy_shift_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json data/warsh_ib_consensus_watch_state.json data/warsh_post_fomc_ib_reaction_watch_state.json data/warsh_fomc_event_watch_state.json data/warsh_fomc_minutes_watch_state.json data/warsh_press_conference_watch_state.json data/market_internal_strength_watch_state.json)"
+          CHANGED="$(git status --porcelain -- data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_fed_board_context_state.json data/warsh_beige_book_watch_state.json data/warsh_imf_policy_shift_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json data/warsh_ib_consensus_watch_state.json data/warsh_post_fomc_ib_reaction_watch_state.json data/warsh_fomc_event_watch_state.json data/warsh_fomc_minutes_watch_state.json data/warsh_press_conference_watch_state.json data/market_internal_strength_watch_state.json)"
           if [ -z "$CHANGED" ]; then
             echo 'No meaningful state change to commit.'
             exit 0
@@ -394,7 +404,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           # 알림이 보류되면 새 state 파일이 아직 없을 수 있으므로 존재하는 파일만 스테이징.
           # 미존재 경로 하나 때문에 전송확인된 다른 상태파일 전체의 저장이 실패하지 않게 한다.
-          for STATE_FILE in data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_beige_book_watch_state.json data/warsh_imf_policy_shift_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json data/warsh_ib_consensus_watch_state.json data/warsh_post_fomc_ib_reaction_watch_state.json data/warsh_fomc_event_watch_state.json data/warsh_fomc_minutes_watch_state.json data/warsh_press_conference_watch_state.json data/market_internal_strength_watch_state.json; do
+          for STATE_FILE in data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_fed_board_context_state.json data/warsh_beige_book_watch_state.json data/warsh_imf_policy_shift_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json data/warsh_ib_consensus_watch_state.json data/warsh_post_fomc_ib_reaction_watch_state.json data/warsh_fomc_event_watch_state.json data/warsh_fomc_minutes_watch_state.json data/warsh_press_conference_watch_state.json data/market_internal_strength_watch_state.json; do
             if [ -f "$STATE_FILE" ]; then git add -- "$STATE_FILE"; fi
           done
           git commit -m 'Update Warsh reaction watch state'

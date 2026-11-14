@@ -278,8 +278,18 @@ def official_fomc_dates():
                 d = datetime(year, month, day).date()
             except ValueError:
                 continue
+            # 2026-11-12 연준 공식 수정 일정: 2027-10-27은 전략 전용 회의,
+            # 과거 달력의 2027-12-08은 11-17 금리 결정일로 대체됐다.
+            if year == 2027 and (month, day) in ((10, 27), (12, 8)):
+                continue
             if d >= today:
                 out.append(d)
+        if year == 2027:
+            revised_final = datetime(2027, 11, 17).date()
+            if revised_final >= today:
+                # 공식 달력 캐시가 아직 옛 12월 일정을 표시해도
+                # 최신 연준 수정 발표의 11월 금리 결정일을 누락하지 않는다.
+                out.append(revised_final)
     out = sorted(dict.fromkeys(out))
     if not out:
         raise RuntimeError("연준 공식 FOMC 회의일 파싱 실패")
