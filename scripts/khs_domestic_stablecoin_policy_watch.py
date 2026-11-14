@@ -14,6 +14,7 @@ import html
 import json
 import os
 import re
+import time
 import urllib.parse
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -32,6 +33,7 @@ MAX_AGE_HOURS = int(os.getenv("KHS_SOURCE_MAX_AGE_HOURS", "72"))
 MAX_ALERTS = int(os.getenv("KHS_DOMESTIC_STABLECOIN_MAX_ALERTS", "3"))
 MAX_DETAIL_LINKS_PER_SOURCE = int(os.getenv("KHS_DOMESTIC_STABLECOIN_MAX_DETAIL_LINKS_PER_SOURCE", "8"))
 UA = os.getenv("SEC_USER_AGENT", "KHS-domestic-stablecoin-policy-watch contact=github-actions")
+FSC_TRANSIENT_RETRY_DELAY_SECONDS = 2
 
 STABLECOIN_QUERY = urllib.parse.quote("스테이블코인")
 DIGITAL_ASSET_QUERY = urllib.parse.quote("디지털자산")
@@ -189,13 +191,38 @@ def fetch_text(url: str, timeout: int = 10, attempts: int = 1) -> tuple[str | No
     return fetch_text_shared(url, UA, timeout=timeout, attempts=attempts)
 
 
+def is_transient_source_error(error: str | None) -> bool:
+    normalized = str(error or "").lower()
+    return bool(
+        "timeout" in normalized
+        or "timed out" in normalized
+        or re.search(r"\b(?:408|425|429|5\d\d)\b", normalized)
+        or any(
+            marker in normalized
+            for marker in (
+                "temporary failure",
+                "temporarily unavailable",
+                "connection reset",
+                "remote end closed connection",
+            )
+        )
+    )
+
+
 def fetch_source_text(source_name: str, source_url: str) -> tuple[str | None, str | None, str]:
     errors: list[str] = []
     for idx, url in enumerate([source_url, *SOURCE_ALTERNATES.get(source_name, [])], start=1):
-        text, error = fetch_text(url, timeout=10, attempts=1)
-        if error is None:
-            return text, None, url
-        errors.append(f"source_url={idx} {url} :: {error}")
+        retry_transient_fsc = source_name.startswith("Financial Services Commission")
+        max_attempts = 2 if retry_transient_fsc else 1
+        for attempt in range(1, max_attempts + 1):
+            text, error = fetch_text(url, timeout=10, attempts=1)
+            if error is None:
+                return text, None, url
+            errors.append(f"source_url={idx} attempt={attempt}/{max_attempts} {url} :: {error}")
+            if attempt == max_attempts or not retry_transient_fsc or not is_transient_source_error(error):
+                break
+            print(f"domestic_stablecoin_source_retry source={source_name} source_url={idx} reason=transient")
+            time.sleep(FSC_TRANSIENT_RETRY_DELAY_SECONDS)
     return None, " || ".join(errors), source_url
 
 
