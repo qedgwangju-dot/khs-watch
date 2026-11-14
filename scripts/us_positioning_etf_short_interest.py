@@ -243,15 +243,26 @@ def collect(*, now: dt.date | None = None, getter=get) -> dict:
     # Only compare percent changes on identical settlement intervals.
     divergence = q["change_pct"] - s["change_pct"]
     opp = (q["change_pct"] > 0 and s["change_pct"] < 0) or (q["change_pct"] < 0 and s["change_pct"] > 0)
-    signal = bool(opp and abs(divergence) >= 15.0)
-    if not signal and q["change_pct"] >= 20.0 and q["change_shares"] >= 10_000_000:
-        signal = True
+    legacy_divergence = bool(opp and abs(divergence) >= 15.0)
+    legacy_surge = bool(q["change_pct"] >= 20.0 and q["change_shares"] >= 10_000_000)
+    # A new, source-confirmed multi-month high can matter even when QQQ's
+    # two-week percentage change is small or SPY shorts also rise.
+    qqq_peak = _verified_qqq_high(settlement, validated_histories["QQQ"])
+    reasons = []
+    if legacy_divergence:
+        reasons.append("qqq_spy_divergence")
+    if legacy_surge:
+        reasons.append("qqq_rapid_short_growth")
+    if qqq_peak is not None:
+        reasons.append("qqq_verified_short_peak")
+    signal = bool(reasons)
     key = f"{settlement}:{q['shares']}:{s['shares']}"
     return {
         "settlement": settlement, "previous_settlement": q["previous_settlement"],
         "published": published, "publication_age_days": age,
         "QQQ": q, "SPY": s, "divergence_pp": divergence,
         "signal": signal, "signal_key": key,
+        "signal_reasons": reasons, "qqq_verified_peak": qqq_peak,
         "period_comparisons": _aligned_period_comparisons(settlement, validated_histories),
         "sources": sources, "official_schedule": FINRA_CALENDAR,
         "source_type": "FINRA calendar + two independent secondary per-ticker republishes",
@@ -285,6 +296,36 @@ def _validated_history(reports: list, matched_sources: list) -> dict[str, int]:
                 counts[settlement] = shares
     return {date_str: amount for date_str, amount in counts.items()
             if isinstance(amount, int)}
+
+
+def _verified_qqq_high(latest: str, history: dict[str, int]) -> dict | None:
+    """High watermark only from agreed, dated share counts (not an image).
+
+    Do not claim "since 2023" without source-matched coverage since 2023.
+    Need >=8 prior settlement observations spanning >=145 days for six months,
+    or >=18 spanning >=300 days for 12 months; otherwise withhold this signal.
+    """
+    when = dt.date.fromisoformat(latest)
+    current = history.get(latest)
+    if not isinstance(current, int) or current <= 0:
+        return None
+    for months, required_span, required_points in ((12, 300, 18), (6, 145, 8)):
+        start = _calendar_months_before(when, months)
+        prior = sorted(
+            (dt.date.fromisoformat(d), amount)
+            for d, amount in history.items()
+            if isinstance(amount, int) and start <= dt.date.fromisoformat(d) < when
+        )
+        if len(prior) < required_points or (when - prior[0][0]).days < required_span:
+            continue
+        prior_max = max(amount for _d, amount in prior)
+        if current > prior_max:
+            return {
+                "months": months, "prior_max_shares": prior_max,
+                "observations": len(prior) + 1,
+                "oldest_verified_settlement": prior[0][0].isoformat(),
+            }
+    return None
 
 
 def _aligned_period_comparisons(latest: str, histories: dict) -> dict:
@@ -339,7 +380,9 @@ def load_state(path: pathlib.Path = STATE) -> dict:
 
 def render(d: dict) -> tuple[str, str]:
     q, s = d["QQQ"], d["SPY"]
-    title = "미국 QQQ·SPY 공매도 잔량 괴리 확대"
+    peak = d.get("qqq_verified_peak")
+    title = ("QQQ 공매도 잔량 장기 최고 · 기술주 헤지 경계"
+             if peak else "미국 QQQ·SPY 공매도 잔량 괴리 확대")
     periods = d.get("period_comparisons") or {}
     historical = ["<b>동일 기준일 1·2·3·6개월 및 연초 비교</b>"]
     for label in ("1개월", "2개월", "3개월", "6개월", "연초"):
@@ -357,6 +400,7 @@ def render(d: dict) -> tuple[str, str]:
             f"({old_s['change_shares']:+,}주, {old_s['change_pct']:+.2f}%)"
         )
     body = "\n".join([
+        "<b>방향: QQQ 공매도 잔량 증가 → 기술주 수급 위험, 향후 숏커버 반등 가능성 병행 점검</b>",
         "<b>QQQ·SPY 공매도 미청산 잔량 — 공식 공표 자료</b>",
         f"• 결제 기준일: {d['settlement']} · 공표일: {d['published']}",
         f"• 비교기간: 직전 결제일 {d['previous_settlement']} → {d['settlement']} (약 2주)",
@@ -366,6 +410,12 @@ def render(d: dict) -> tuple[str, str]:
         f" ({s['change_shares']:+,}주, {s['change_pct']:+.2f}%)",
         f"• 직전 발표 대비 증감률 격차: {d['divergence_pp']:+.2f}%p"
         " (같은 기간 비교, 선행경보 기준 15%p)",
+        *((
+            f"• 신규 경보: QQQ 공매도 잔량 {peak['months']}개월 확인 이력 최고치 "
+            f"({peak['observations']}개 결제일·2개 이상 제공처 교차확인, "
+            f"기존 최고 {peak['prior_max_shares']:,}주 → 현재 {q['shares']:,}주). "
+            "2023년 이후 최고라는 의미는 아닙니다.",
+        ) if peak else ()),
         "",
         *historical,
         "• 과거 비교는 두 종목의 결제 기준일을 일치시켰으며, "
@@ -375,6 +425,8 @@ def render(d: dict) -> tuple[str, str]:
         "• 공매도 미청산 잔량은 일별 공매도 거래량이 아닙니다.",
         "• 기술주 위험 회피·ETF 헤지·상대가치 거래 등 원인을 구분해야 합니다.",
         "• SPY 잔량 감소가 미국 주식시장 전체의 순매수 확정은 아닙니다.",
+        "• 잔량 증가 자체는 약세 헤지 또는 상대가치 거래일 수 있습니다.",
+        "• 가격 반등과 공매도 청산이 동시에 확인될 때만 숏커버 주도 반등으로 판단합니다.",
         "• 잔량 변화만으로 나스닥 폭락·숏 스퀴즈를 확정할 수 없습니다.",
         "• 다음 확인: 다음 FINRA 공표, 두 ETF 잔량·유통주식 대비 비중, "
         "NQ 선물 포지션·옵션·시장 확산 지표.",
@@ -454,6 +506,8 @@ def run(*, validate_only: bool, now: dt.date | None = None, getter=get,
         "QQQ": {"shares": current["QQQ"]["shares"], "change_pct": round(current["QQQ"]["change_pct"], 3)},
         "SPY": {"shares": current["SPY"]["shares"], "change_pct": round(current["SPY"]["change_pct"], 3)},
         "divergence_pp": round(current["divergence_pp"], 3),
+        "signal_reasons": current.get("signal_reasons", []),
+        "qqq_verified_peak": current.get("qqq_verified_peak"),
         "period_comparisons": current.get("period_comparisons", {}),
         "sources": {k: current[k]["sources"] for k in ("QQQ", "SPY")},
         "telegram_sent": False,
