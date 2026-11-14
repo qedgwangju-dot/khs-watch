@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "last_date": "2026-11-12",
-  "digest": "f77845382e0be23a22609f9b",
+  "last_date": "2026-11-13",
+  "digest": "6cc9047b958bb0de33f7c40b",
   "format_version": 3,
   "sector_history": [
     {
@@ -359,22 +359,36 @@
         "AI·클라우드·기업용 소프트웨어": 2,
         "우주·방산": 5
       }
+    },
+    {
+      "date": "2026-11-13",
+      "digest": "6cc9047b958bb0de33f7c40b",
+      "complete": false,
+      "buy_complete": false,
+      "sell_complete": false,
+      "buy_usd": {
+        "바이오·헬스케어": 0.0,
+        "우주·방산": 840425.436218
+      },
+      "sell_usd": {
+        "바이오·헬스케어": 0.0,
+        "자동차·자율주행": 1830363.153488
+      },
+      "buy_rows": {
+        "바이오·헬스케어": 1,
+        "우주·방산": 1
+      }
     }
   ],
-  "updated_at": "2026-11-13T03:31:15.686622+00:00",
+  "updated_at": "2026-11-14T01:34:26.570405+00:00",
   "last_delivery": {
-    "last_date": "2026-11-12",
-    "digest": "f77845382e0be23a22609f9b",
+    "last_date": "2026-11-13",
+    "digest": "6cc9047b958bb0de33f7c40b",
     "message_ids": [
-      137
+      141
     ],
     "chat_id": "1551003698",
     "bot": "khs887988798879_bot",
-    "confirmed_at": "2026-11-13T03:31:19.430552+00:00"
-  },
-  "pending_delivery": {
-    "last_date": "2026-11-13",
-    "digest": "6cc9047b958bb0de33f7c40b",
-    "reserved_at": "2026-11-14T01:34:27.304464+00:00"
+    "confirmed_at": "2026-11-14T01:34:30.241447+00:00"
   }
 }
