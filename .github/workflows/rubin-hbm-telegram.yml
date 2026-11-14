@@ -8,6 +8,7 @@ on:
       - "scripts/rubin_hbm_watch.py"
       - "scripts/rubin_hbm_pretty.py"
       - "scripts/rubin_hbm_leverage.py"
+      - "scripts/hbm_material_event_watch.py"
       - "scripts/ai_component_leadtime_watch.py"
       - "scripts/agentic_cpu_watch.py"
       - "scripts/samsung_electromechanics_cpu_watch.py"
@@ -84,7 +85,7 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p out
-          python -m py_compile scripts/hbm_delivery.py scripts/currency_krw_guard.py scripts/hbm_memory_axes.py scripts/samsung_hbm_watch.py scripts/rubin_hbm_watch.py scripts/rubin_hbm_pretty.py scripts/rubin_hbm_leverage.py scripts/skhynix_us_memory_watch.py scripts/ai_component_leadtime_watch.py scripts/agentic_cpu_watch.py scripts/samsung_electromechanics_cpu_watch.py scripts/abf_cpu_monetization_watch.py scripts/ai_inference_structure_watch.py scripts/ai_server_physical_bottleneck_watch.py scripts/solidigm_ipo_watch.py scripts/tsmc_advanced_packaging_watch.py scripts/tsmc_leading_node_watch.py
+          python -m py_compile scripts/hbm_material_event_watch.py scripts/hbm_delivery.py scripts/currency_krw_guard.py scripts/hbm_memory_axes.py scripts/samsung_hbm_watch.py scripts/rubin_hbm_watch.py scripts/rubin_hbm_pretty.py scripts/rubin_hbm_leverage.py scripts/skhynix_us_memory_watch.py scripts/ai_component_leadtime_watch.py scripts/agentic_cpu_watch.py scripts/samsung_electromechanics_cpu_watch.py scripts/abf_cpu_monetization_watch.py scripts/ai_inference_structure_watch.py scripts/ai_server_physical_bottleneck_watch.py scripts/solidigm_ipo_watch.py scripts/tsmc_advanced_packaging_watch.py scripts/tsmc_leading_node_watch.py
           python -m unittest discover -s tests -p 'test_hbm*.py' -v 2>&1 | tee out/hbm_regression_tests.txt
 
       - name: Validate existing Telegram destination without sending
@@ -162,6 +163,7 @@ jobs:
             out/hbm_begin_summary.json
             out/hbm_regression_tests.txt
             out/hbm_delivery_summary.json
+            out/hbm_material_event_coverage.json
             out/*_hbm_delivery_receipt.json
             out/hbm_candidate_*.json
             out/hbm_before_*.json
