@@ -6176,4 +6176,6 @@ finally:
 import robot_hand_tactile_regression as _hand_regression
 _hand_regression.run()
 
+import robot_watch_hungary_battery_regression as _hungary_battery_regression
+
 print("Physical-AI watcher regression guards: PASS")

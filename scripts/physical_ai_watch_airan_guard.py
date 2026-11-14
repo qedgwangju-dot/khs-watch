@@ -8851,6 +8851,11 @@ _industrial_robot_kpis.install(base)
 import robot_watch_nov13_milestones as _nov13_milestones
 _nov13_milestones.install(base)
 
+# Verified Hungarian battery-environment enforcement and monthly ex-China battery trends.
+# Preserve existing battery, CATL, ESS and robotics alerts and their dedup keys.
+import robot_watch_hungary_battery_risk as _hungary_battery
+_hungary_battery.install(base)
+
 
 if __name__ == '__main__':
     pre_state = base.load_state()
