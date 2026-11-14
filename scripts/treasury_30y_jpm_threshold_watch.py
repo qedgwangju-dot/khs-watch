@@ -209,12 +209,6 @@ def crossing_message(date, current_bp, previous_date, previous_bp, triggers, url
         "새로 확인된 기준선:",
         *parts,
         f"시장 의미: {market}",
-        "CTD(최저가 인도채권): 실제 전환 미확인. 30년물 시장금리 6% 도달은 선물 CTD 교체의 확정 조건이 아님.",
-        "CTD 검증 조건: CME ZB(인도 가능 잔존만기 15~25년)와 UB(25년 이상)를 구분하고, 해당 계약월의 인도 바구니·현물가격·환산계수·내재 환매조건부채권 금리·DV01(금리 1bp당 가격변화)을 확인.",
-        "레버리지 전이 확인: CFTC 레버리지 펀드 선물 포지션과 SOFR/TGCR·OFR 레포 거래량이 동반 악화하는지 별도 주간 감시에서 확인.",
-        "검증: 미 재무부 일별 30년물 기준. 장중 실시간 돌파가 아닌 공식 일별 관측치.",
-        "주의: JPM 2026-09-29 기술적 기준은 사용자 제공 리서치 맥락이며, CTD 전환·강제청산·CTA 주문 실행의 확정 근거가 아님.",
-        "CME CTD 설명: https://www.cmegroup.com/articles/2023/navigating-higher-yields-the-role-of-treasury-futures-in-todays-market.html",
         # 6%는 선물 인도채권 환산계수 계산에 쓰는 가정수익률과 연관된
         # 관찰 구간일 뿐, 실제 CTD 자동 교체나 청산 확정을 의미하지 않는다.
         "CTD(최저비용 인도채권) 점검: CME의 국채선물 인도환산계수는 연 6% 수익률 가정을 사용합니다.",
