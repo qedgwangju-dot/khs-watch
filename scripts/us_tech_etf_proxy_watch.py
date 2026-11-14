@@ -341,16 +341,16 @@ def calculate(observations, state):
             gap = (current_date - anchor_date).days
             cross_split = ticker == "SOXX" and anchor["date"] < "2026-11-05" <= today
             if 0 < gap <= 10 and _consecutive_weekday_dates(rows[-6:]) and not cross_split and not split_guard:
-                share_base = float(anchor["shares"])
-                if share_base > 0:
-                    share_delta_5 = row["shares"] - share_base
-                    pct5 = share_delta_5 / share_base * 100
-                    if -50 <= pct5 <= 65:
-                        obs.update({
-                            "five_observations_from": anchor["date"],
-                            "five_observations_share_change_pct": pct5,
-                            "five_observations_creation_usd": share_delta_5 * row["nav"],
-                        })
+                # Five-day money is the sum of five DAILY share changes at
+                # their own NAVs. End-day NAV times net shares is only a
+                # different proxy and must not be mislabeled as cumulative.
+                five = rolling_estimated_flows(rows, 5, ticker)
+                if five is not None and -50 <= five["share_pct"] <= 65:
+                    obs.update({
+                        "five_observations_from": five["start"],
+                        "five_observations_share_change_pct": five["share_pct"],
+                        "five_observations_creation_usd": five["net_usd"],
+                    })
         obs["rolling"]={n:rolling_estimated_flows(rows,n,ticker) for n,_ in WINDOWS}
         obs["history_points"]=len(rows)
         new_history[ticker] = rows
@@ -451,7 +451,12 @@ def render(result, fx, fx_date):
             lines.append(
                 f"  최근 5개 관측 간격 ({x['five_observations_from']}→{x['date']}): "
                 f"{x['five_observations_share_change_pct']:+.2f}% "
-                f"· {html.escape(money_usd(v5))} ({html.escape(money_krw(v5, fx))})"
+                f"· 일별 기준가격 적용 합계 {html.escape(money_usd(v5))} "
+                f"({html.escape(money_krw(v5, fx))})"
+            )
+        elif any(signal.startswith(ticker + " 발행좌수 당일 ") for signal in result["signals"]):
+            lines.append(
+                "  최근 5거래일 합계: 확인 보류(6개 연속 관측점 부족·휴장·분할 등)"
             )
     for ticker in ("IYW","SOXX","EWY"):
         if ticker not in result["movements"]:

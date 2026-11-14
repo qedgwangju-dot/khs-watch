@@ -456,5 +456,42 @@ class TechEtfProxyTests(unittest.TestCase):
         self.assertNotAlmostEqual(stat["net_usd"],
                                   (last[-1]["shares"]-last[0]["shares"])*last[-1]["nav"])
 
+
+    def test_five_session_amount_is_sum_of_daily_nav_weighted_changes(self):
+        # Retrospective issuer-validated SOXX observation window: 19-26 Oct.
+        # A 4.26% one-day creation is not the full five-session cash proxy.
+        prev=[
+            ("2026-10-19",502.003427,81_100_000),
+            ("2026-10-20",500.282491,83_900_000),
+            ("2026-10-21",510.40,89_000_000),
+            ("2026-10-22",475.34,91_550_000),
+            ("2026-10-23",478.50,90_350_000),
+        ]
+        old=prior_state()
+        old["history"]["SOXX"]=[{"date":date,"nav":nav,"shares":shares}
+                                   for date,nav,shares in prev]
+        recent=snap("2026-10-26",soxx_shares=94_200_000)
+        recent["SOXX"]["nav"]=492.25
+        outcome=w.calculate(recent,old)
+        actual=outcome["movements"]["SOXX"]
+        expected=6_536_910_474.8
+        old_proxy=(94_200_000-81_100_000)*492.25
+        self.assertAlmostEqual(actual["five_observations_creation_usd"],expected,places=1)
+        self.assertNotAlmostEqual(actual["five_observations_creation_usd"],old_proxy)
+        self.assertAlmostEqual(actual["five_observations_share_change_pct"],16.1528976572,places=7)
+        self.assertIn("SOXX 최근 5회 발행좌수 +2.5% 이상",outcome["signals"])
+        self.assertIn("일별 기준가격 적용 합계",w.render(outcome,1327.75,"2026-10-27"))
+
+    def test_first_daily_alert_discloses_missing_five_session_history(self):
+        old=prior_state("2026-10-23")
+        old["history"]["SOXX"]=[{"date":"2026-10-23","nav":478.5,"shares":90_350_000}]
+        current=snap("2026-10-26",soxx_shares=94_200_000)
+        current["SOXX"]["nav"]=492.25
+        outcome=w.calculate(current,old)
+        self.assertIn("SOXX 발행좌수 당일 +1% 이상",outcome["signals"])
+        self.assertIsNone(outcome["movements"]["SOXX"]["five_observations_creation_usd"])
+        self.assertIn("최근 5거래일 합계: 확인 보류",w.render(outcome,1327.75,"2026-10-27"))
+
+
 if __name__=="__main__":
     unittest.main()
