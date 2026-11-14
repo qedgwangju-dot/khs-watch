@@ -221,6 +221,42 @@ class ETFShortInterestTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "publication lag"):
             etf.collect(now=dt.date(2026, 11, 12), getter=getter())
 
+    def test_qqq_high_watermark_uses_verified_history_not_a_chart_caption(self):
+        latest = "2026-10-30"
+        start = dt.date(2025, 11, 14)
+        prior = {
+            (start + dt.timedelta(days=15 * i)).isoformat(): 43_000_000 + 1_000_000 * i
+            for i in range(23)
+        }
+        prior["2026-10-15"] = 82_001_618
+        history = {**prior, latest: 82_794_708}
+        peak = etf._verified_qqq_high(latest, history)
+        self.assertEqual(peak["months"], 12)
+        self.assertEqual(peak["prior_max_shares"], 82_001_618)
+        self.assertGreaterEqual(peak["observations"], 18)
+        self.assertIsNone(etf._verified_qqq_high(latest, {
+            **prior, latest: 81_000_000
+        }))
+        self.assertIsNone(etf._verified_qqq_high(latest, {
+            "2026-10-15": 82_001_618, latest: 82_794_708
+        }))
+        self.assertNotIn("2023", str(peak))
+
+    def test_qqq_peak_is_independent_of_spy_two_week_change(self):
+        # 0.97% QQQ short increase vs 10.51% SPY increase would miss
+        # the historical SPY-relative threshold; verified QQQ high is new.
+        qqq_change = (82_794_708 / 82_001_618 - 1) * 100
+        spy_change = (102_769_489 / 92_995_326 - 1) * 100
+        self.assertLess(abs(qqq_change - spy_change), 15.0)
+        self.assertLess(qqq_change, 20.0)
+        history = {
+            (dt.date(2025, 11, 14) + dt.timedelta(days=15 * i)).isoformat():
+            43_000_000 + 1_000_000 * i for i in range(23)
+        }
+        history["2026-10-15"] = 82_001_618
+        history["2026-10-30"] = 82_794_708
+        self.assertIsNotNone(etf._verified_qqq_high("2026-10-30", history))
+
     def test_valid_latest_publication_remains_current_after_twelve_days(self):
         # 2026-10-15 settles / 10-26 release; next release is 11-10.
         data = etf.collect(now=dt.date(2026, 11, 9), getter=getter())
