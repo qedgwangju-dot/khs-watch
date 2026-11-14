@@ -5,6 +5,10 @@
       "message_id": 149,
       "version": 2
     },
+    "regional:daly:20261113:unlv-services": {
+      "message_id": 150,
+      "version": 2
+    },
     "speech:bowman:20261110a": {
       "edited_at_utc": "2026-11-14T11:21:46.816590+00:00",
       "message_id": 147,
@@ -23,6 +27,11 @@
       "recipient_verified": true,
       "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm"
     },
+    "regional:daly:20261113:unlv-services": {
+      "message_id": 150,
+      "recipient_verified": true,
+      "source": "https://www.frbsf.org/news-and-media/events/2026/11/conversation-mary-c-daly-unlv-2026-economic-forecast/"
+    },
     "speech:bowman:20261110a": {
       "message_id": 147,
       "recipient_verified": true,
@@ -35,5 +44,5 @@
     }
   },
   "skipped": {},
-  "updated_at_utc": "2026-11-14T11:21:47.748767+00:00"
+  "updated_at_utc": "2026-11-14T12:51:25.478480+00:00"
 }
