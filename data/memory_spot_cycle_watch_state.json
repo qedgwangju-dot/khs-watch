@@ -963,8 +963,8 @@
       "first_seen_kst": "2026-11-14T03:34:32+09:00"
     }
   },
-  "updated_at_kst": "2026-11-14T15:27:49+09:00",
-  "last_scan_count": 9,
+  "updated_at_kst": "2026-11-14T18:51:02+09:00",
+  "last_scan_count": 10,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -1025,21 +1025,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-14T03:34:45+09:00",
+  "last_successful_delivery_kst": "2026-11-14T18:51:17+09:00",
   "telegram_message_ids": [
-    431
+    432
   ],
-  "telegram_message_id": 431,
+  "telegram_message_id": 432,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      431
+      432
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-14T03:34:45+09:00",
-    "alert_signature": "6d2ae00a10593db5dc22ac89b7fbf5c34df8b7a9489a38151dea701a2427a2aa"
+    "confirmed_at_kst": "2026-11-14T18:51:17+09:00",
+    "alert_signature": "547d3ec1aad1f76b739f1a7d835a2b0b67da31c6e82fd779ceeb7041c6dc42a7"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1324,5 +1324,26 @@
     "north_america_reallocation_stage": "reported_not_supplier_confirmed",
     "press_source_url": "https://zdnet.co.kr/view/?no=20261112144609",
     "press_source_kind": "지디넷코리아 보도·공개 색인 교차확인, 공급사 공식 물량 미확인"
+  },
+  "foxconn_supply_outlook": {
+    "fact_key": "foxconn-2026-11-12-2027-memory-shortage-4segments",
+    "release_date": "2026-11-12",
+    "memory_shortage_through_year_forecast": 2027,
+    "fy2026_four_segments_outlook_upgraded": true,
+    "neocloud_2027_status": "press_report_not_confirmed_contract",
+    "source_kind": "폭스콘 3Q26 공식 발표·회사 2027 공급부족 전망",
+    "source_url": "https://www.foxconn.com/en-us/press-center/press-releases/latest-news/2154"
+  },
+  "trendforce_price_nov12": {
+    "fact_key": "trendforce-news-2026-11-12-enterprise-verbal-hikes",
+    "release_date": "2026-11-12",
+    "formal_manufacturer_price_notice_confirmed": false,
+    "enterprise_ssd_q4_2026_min_pct": 15,
+    "enterprise_ssd_q4_2026_max_pct": 20,
+    "pc_dram_q4_2026_min_pct": 13,
+    "pc_dram_q4_2026_max_pct": 18,
+    "consumer_client_ssd_increase_upper_pct": 5,
+    "source_kind": "TrendForce 11/12 뉴스·중국매체 인용, 확정된 공급사 가격공지 아님",
+    "source_url": "https://www.trendforce.com/news/2026/11/12/news-memory-makers-reportedly-plan-new-price-hikes-while-ai-demand-widens-enterprise-consumer-divide/"
   }
 }
