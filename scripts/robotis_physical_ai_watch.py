@@ -566,7 +566,11 @@ def main() -> None:
     else:
         selected = select_diverse(recent, seen, FORCE, MAX_ALERTS)
 
-    for x in recent:
+    # Initial no-alert seeding still marks the discovery baseline.
+    # Thereafter only candidates actually selected for possible delivery may
+    # become seen; never retire overflow items merely because MAX_ALERTS
+    # excluded them from this run's Telegram payload.
+    for x in (recent if first and not FORCE else selected):
         seen.add(x["key"])
     seen_list = list(seen)[-3500:]
     pending = {
