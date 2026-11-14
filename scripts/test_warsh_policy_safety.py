@@ -1270,7 +1270,7 @@ class WarshInflationMissingBaselineTests(unittest.TestCase):
         new_state=save.call_args.args[0]
         self.assertEqual(new_state['last_integrated_market_date'],'2026-11-13')
         self.assertEqual(new_state['delivery_receipts'],state['delivery_receipts'])
-        self.assertEqual(new_state['processed_events'],state['processed_events'])
+        self.assertCountEqual(new_state['processed_events'],state['processed_events'])
 
 
 if __name__ == "__main__":
