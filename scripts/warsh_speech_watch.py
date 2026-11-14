@@ -111,7 +111,7 @@ def latest_warsh_archive_item():
         return None
     rows = []
     for m in re.finditer(
-        r'<a\\b[^>]*href=["\\\']([^"\\\']*/newsevents/speech/warsh(20\\d{6})[a-z]?\\.htm)["\\\'][^>]*>(.*?)</a>',
+        r"""href=["']([^"']*/newsevents/speech/warsh(20\d{6})[a-z]?\.htm)["'][^>]*>(.*?)</a>""",
         raw, re.I | re.S
     ):
         href = urllib.parse.urljoin(SPEECH_ARCHIVE_URL, m.group(1))

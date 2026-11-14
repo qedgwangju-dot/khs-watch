@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import warsh_fed_board_context_watch as context
+import warsh_speech_watch as original_speech
 import warsh_policy_path_watch_v4 as futures
 
 
@@ -117,6 +118,26 @@ class WarshFedBoardContextTests(unittest.TestCase):
             dates = futures.official_fomc_dates()
         self.assertEqual(dates.count(dt.date(2027, 11, 17)), 1)
         self.assertNotIn(dt.date(2027, 10, 27), dates)
+
+
+class ExistingWarshSpeechArchiveFallbackTests(unittest.TestCase):
+    def test_archive_fallback_identifies_official_warsh_link(self):
+        page = ('<html><a class="speech-item" '
+                'href="/newsevents/speech/warsh20260828a.htm">In Our Time</a></html>')
+        with patch.object(original_speech, "fetch", return_value=(
+            page, "https://www.federalreserve.gov/newsevents/2026-speeches.htm"
+        )):
+            row = original_speech.latest_warsh_archive_item()
+        self.assertIsNotNone(row)
+        self.assertEqual(row[2], "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm")
+        self.assertEqual(row[1], "In Our Time")
+        self.assertEqual(row[0].date(), dt.date(2026, 8, 28))
+
+    def test_archive_fallback_does_not_pick_other_speakers(self):
+        page = ('<html><a href="/newsevents/speech/waller20261110a.htm">'
+                'Economic Outlook</a></html>')
+        with patch.object(original_speech, "fetch", return_value=(page, original_speech.SPEECH_ARCHIVE_URL)):
+            self.assertIsNone(original_speech.latest_warsh_archive_item())
 
 
 if __name__ == "__main__":
