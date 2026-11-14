@@ -5223,6 +5223,45 @@ class IncrementalNewsTests(unittest.TestCase):
             self.assertFalse(accepted)
             self.assertEqual(suppressed[0]['_issuer_frequency_keys'], ['hanmi_semiconductor'])
 
+    def test_live_issuer_cap_allows_one_verified_high_impact_event_and_dedupes_its_reprint(self):
+        now = dt.datetime(2026, 11, 15, 9, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        seen = {'seen': {}}
+        first = alert('엔비디아, AI 수요 전망에 주가 강세', 'AI 수요 전망이 이어졌다.', 'https://example.com/nvda-first')
+        second = alert('엔비디아, 신제품 발표에 시장 주목', '신제품 발표가 있었다.', 'https://example.com/nvda-second')
+        for item in (first, second):
+            item['published'] = now.isoformat()
+        trade_body = (
+            '도널드 트럼프 대통령은 2025년 5월 AI 반도체 수출 규정인 AI 확산 프레임워크를 '
+            '폐기하기 며칠 전 엔비디아 주식 100만~500만 달러어치를 매수한 것으로 공개 재산신고에 나타났다.'
+        )
+        trade = alert(
+            '트럼프, AI 반도체 수출 규제 폐기 직전 엔비디아 주식 매수', trade_body,
+            'https://example.com/trump-nvidia-trade',
+        )
+        reprint = alert(
+            '트럼프, 대중 AI칩 규제 철회 전 엔비디아 주식 매입', trade_body,
+            'https://example.net/trump-nvidia-trade-reprint',
+        )
+        weak = alert('엔비디아, AI 업계 전망 관련 보도', '시장이 관심을 보였다.', 'https://example.com/nvda-weak')
+        for item in (trade, reprint, weak):
+            item['published'] = now.isoformat()
+
+        identity = materiality.source_event_identity(trade)
+        self.assertTrue(identity.startswith('source_event:v2:politician_equity_trade_policy_overlap:'))
+        self.assertEqual(identity, materiality.source_event_identity(reprint))
+        self.assertFalse(materiality.source_event_identity({**trade, 'body_verified': False}))
+
+        with (patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}),
+              patch.object(telegram, 'load_seen_state', return_value=seen),
+              patch.object(telegram, 'save_seen_state', return_value=None)):
+            telegram.record_seen_alerts([first, second], now)
+            accepted, suppressed = telegram.apply_issuer_frequency_cap([trade, reprint, weak], now)
+
+        self.assertEqual(accepted, [trade])
+        self.assertEqual(len(suppressed), 2)
+        self.assertEqual(suppressed[0]['_exclusion_reason'], 'issuer_frequency_cap_24h')
+        self.assertEqual(suppressed[1]['_exclusion_reason'], 'issuer_frequency_cap_24h')
+
     def test_issuer_alias_matching_uses_word_boundaries_for_latin_tickers(self):
         false_positive = alert('뮤직 업계의 새 흐름', '관련 시장 소식입니다.', 'https://example.com/music')
         ticker = alert('MU, 실적 전망 발표', '마이크론의 실적 전망입니다.', 'https://example.com/mu')
