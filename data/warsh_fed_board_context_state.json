@@ -1,4 +1,21 @@
 {
+  "formatted": {
+    "calendar:2027:monetary20261112a": {
+      "edited_at_utc": "2026-11-14T11:21:45.919371+00:00",
+      "message_id": 149,
+      "version": 2
+    },
+    "speech:bowman:20261110a": {
+      "edited_at_utc": "2026-11-14T11:21:46.816590+00:00",
+      "message_id": 147,
+      "version": 2
+    },
+    "speech:waller:20261110a": {
+      "edited_at_utc": "2026-11-14T11:21:47.748695+00:00",
+      "message_id": 148,
+      "version": 2
+    }
+  },
   "pending": {},
   "sent": {
     "calendar:2027:monetary20261112a": {
@@ -18,5 +35,5 @@
     }
   },
   "skipped": {},
-  "updated_at_utc": "2026-11-14T10:18:52.552246+00:00"
+  "updated_at_utc": "2026-11-14T11:21:47.748767+00:00"
 }
