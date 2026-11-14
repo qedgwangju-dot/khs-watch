@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 55,
     "errors": [],
-    "material_items": 12,
-    "new_material_items": 0,
-    "raw_items": 94,
+    "material_items": 11,
+    "new_material_items": 1,
+    "raw_items": 93,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -697,16 +697,6 @@
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
       "vendor": "PHP 재단"
     },
-    "79ec23f71c9b0e66facf254c": {
-      "category": "모델 비의도적 외부접근·사고 공개",
-      "first_seen_at": "2026-10-10T04:23:10.169394+00:00",
-      "published_at": null,
-      "severity": 1,
-      "source": "Anthropic Model Incident Reports",
-      "title": "Anthropic Model Incident Reports: investigating unintended model actions",
-      "url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
-      "vendor": "Anthropic"
-    },
     "7a8bc957348170dfec17b11b": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
@@ -759,7 +749,7 @@
     },
     "81d35a0a15dc2621cc663ee8": {
       "category": "모델 비의도적 외부접근·사고 공개",
-      "first_seen_at": "2026-10-10T04:23:10.169394+00:00",
+      "first_seen_at": "2026-11-14T04:42:20.962010+00:00",
       "published_at": null,
       "severity": 1,
       "source": "Anthropic Research",
@@ -1530,5 +1520,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-14T13:16:22+09:00"
+  "updated_at_kst": "2026-11-14T13:42:20+09:00"
 }
