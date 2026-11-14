@@ -19,6 +19,40 @@ def official_html(title, date, body):
 
 
 class CbdcOfficialPolicyWatch(unittest.TestCase):
+    def test_fsc_listing_retries_transient_failure_once(self):
+        source_name, url = watch.SOURCES[0]
+        transient = "direct race timeout=10s TimeoutError | proxy race timeout=20s HTTP Error 502"
+        with patch.object(watch, "fetch_text", side_effect=[(None, transient), ("<html>recovered</html>", None)]) as fetch, \
+             patch.object(watch.time, "sleep") as sleep:
+            body, error, effective_url = watch.fetch_source_text(source_name, url)
+        self.assertEqual(body, "<html>recovered</html>")
+        self.assertIsNone(error)
+        self.assertEqual(effective_url, url)
+        self.assertEqual(fetch.call_count, 2)
+        sleep.assert_called_once_with(watch.FSC_TRANSIENT_RETRY_DELAY_SECONDS)
+
+    def test_fsc_listing_does_not_retry_permanent_or_non_fsc_failures(self):
+        source_name, url = watch.SOURCES[0]
+        with patch.object(watch, "fetch_text", return_value=(None, "HTTP Error 403: Forbidden")) as fetch, \
+             patch.object(watch.time, "sleep") as sleep:
+            body, error, _ = watch.fetch_source_text(source_name, url)
+        self.assertIsNone(body)
+        self.assertIn("HTTP Error 403", error)
+        fetch.assert_called_once()
+        sleep.assert_not_called()
+
+        non_fsc_name, non_fsc_url = watch.SOURCES[3]
+        with patch.object(watch, "fetch_text", return_value=(None, "TimeoutError: timed out")) as fetch, \
+             patch.object(watch.time, "sleep") as sleep:
+            body, error, _ = watch.fetch_source_text(non_fsc_name, non_fsc_url)
+        self.assertIsNone(body)
+        self.assertIn("TimeoutError", error)
+        self.assertEqual(
+            [call.args[0] for call in fetch.call_args_list],
+            [non_fsc_url, *watch.SOURCE_ALTERNATES[non_fsc_name]],
+        )
+        sleep.assert_not_called()
+
     def test_2026_11_09_bank_majority_news_is_not_law(self):
         headline = "원화 스테이블코인 은행 중심 발행 가닥…은행권 사업화 탄력받나"
         article = (
