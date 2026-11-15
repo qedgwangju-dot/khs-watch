@@ -523,24 +523,49 @@ def main() -> None:
     errors: list[str] = []
     ok_queries = 0
 
-    for q in QUERIES:
+    # RSS discovery is I/O-bound. Keep result processing in original query
+    # order, but overlap a few slow network reads so one feed cannot stall
+    # all other feeds until the 18-minute GitHub Actions job limit.
+    # Wrappers only collect; dedup and source grading remain single-threaded.
+    from concurrent.futures import ThreadPoolExecutor
+    import time
+
+    def _fetch_one(q):
+        started = time.monotonic()
         try:
-            items = query_news(q)
-            ok_queries += 1
-            for x in items:
-                text = f"{x['title']} {x.get('description','')} {x.get('source','')}"
-                group = topic_group(text)
-                if group is None:
-                    continue
-                k = key(x)
-                x["key"] = k
-                x["group"] = group
-                x["score"] = score(x)
-                prev = all_items.get(k)
-                if prev is None or x["score"] > prev["score"]:
-                    all_items[k] = x
-        except Exception as e:
-            errors.append(f"{q}: {type(e).__name__}: {e}")
+            return query_news(q), None, time.monotonic() - started
+        except Exception as exc:
+            return None, exc, time.monotonic() - started
+
+    with ThreadPoolExecutor(max_workers=max(1, min(3, len(QUERIES)))) as pool:
+        for i, (q, outcome) in enumerate(zip(QUERIES, pool.map(_fetch_one, QUERIES)), 1):
+            items, fetch_error, elapsed = outcome
+            # Query hashes make slow/failed feeds diagnosable without logging
+            # entire search terms or private operational configuration.
+            print(f"ROBOTIS feed {i}/{len(QUERIES)} "
+                  f"query_hash={hashlib.sha256(q.encode()).hexdigest()[:12]} "
+                  f"duration_sec={elapsed:.1f} "
+                  f"result={'error' if fetch_error else 'ok'}",
+                  flush=True)
+            if fetch_error is not None:
+                errors.append(f"{q}: {type(fetch_error).__name__}: {fetch_error}")
+                continue
+            try:
+                ok_queries += 1
+                for x in items:
+                    text = f"{x['title']} {x.get('description','')} {x.get('source','')}"
+                    group = topic_group(text)
+                    if group is None:
+                        continue
+                    k = key(x)
+                    x["key"] = k
+                    x["group"] = group
+                    x["score"] = score(x)
+                    prev = all_items.get(k)
+                    if prev is None or x["score"] > prev["score"]:
+                        all_items[k] = x
+            except Exception as e:
+                errors.append(f"{q}: {type(e).__name__}: {e}")
 
     if ok_queries == 0:
         raise SystemExit("All Google News RSS queries failed")

@@ -6183,4 +6183,7 @@ _selection_regression.run()
 
 import robot_watch_jpm_humanoid_regression as _jpm_humanoid_regression
 
+import robot_watch_query_parallel_regression as _query_parallel_regression
+_query_parallel_regression.run()
+
 print("Physical-AI watcher regression guards: PASS")
