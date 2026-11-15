@@ -87,7 +87,13 @@ def candidates(page,list_url,source):
                 if attrs:
                     sample.append({"tag":tag.name,"text":title[:65],"attrs":attrs})
             if len(sample)>=8:break
-        raise RuntimeError("공식 목록 게시물 링크 2개 미만; 구조 진단="+repr(sample))
+        raw_samples=[]
+        for word in ("2026년 4분기", "연료비조정단가", "2026년 3분기", "결산실적", "가스公,", "보도자료", "2026.11.13"):
+            idx=page.find(word)
+            if idx>=0:
+                raw_samples.append({"word":word, "context":page[max(0,idx-220):idx+300][:520]})
+            if len(raw_samples)>=4:break
+        raise RuntimeError("공식 목록 게시물 링크 2개 미만; raw_snippets="+repr(raw_samples)+"; elements="+repr(sample[:2]))
     return list(found.values())
 
 def get_page(url):
