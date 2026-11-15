@@ -5468,6 +5468,10 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
             fact = re.sub(r"\s*\(현지\s*시간\)", "", fact)
             fact = re.sub(r"미국\s*국가환경정책법\s*\(NEPA\)", "NEPA", fact)
             fact = re.sub(r"최종\s*환경평가\s*\(Final\s*EA\)", "최종 환경평가", fact, flags=re.I)
+            headline_issuer = re.match(r"^([A-Za-z0-9가-힣&·-]{2,24})\s+", title)
+            project = re.search(r"(?:프로젝트|Project)\s+[A-Za-z0-9가-힣-]{2,40}", title, re.I)
+            if headline_issuer and project and headline_issuer.group(1) not in fact:
+                fact = fact.replace(project.group(0), f"{headline_issuer.group(1)} {project.group(0)}", 1)
         if market_materiality.focus_kind(title) == "nuclear_warning":
             speaker = re.match(r"^([A-Za-z가-힣]{2,20})\s*[,，]", title)
             if speaker and speaker.group(1) in fact[:60]:
