@@ -1,0 +1,127 @@
+name: Korea Energy Price Control and Fiscal Burden Watch
+
+on:
+  schedule:
+    # UTC 기준 두 시간마다 13분: 기존 전원믹스·전력망 알림과 별도 일정
+    - cron: "13 */2 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/energy-price-fiscal-watch.yml"
+      - "scripts/energy_price_fiscal_watch.py"
+      - "tests/test_energy_price_fiscal_watch.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: energy-price-fiscal-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.ENERGY_MIX_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.ENERGY_MIX_TELEGRAM_CHAT_ID }}
+      FALLBACK_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      EXPECTED_BOT: khs887988798879887988798879_bot
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 의존성 설치
+        run: pip install --quiet requests beautifulsoup4
+      - name: 코드·회귀 테스트
+        run: |
+          python -m py_compile scripts/energy_price_fiscal_watch.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_energy_price_fiscal_watch.py' -v
+      - name: 기존 에너지 Telegram 경로 검증
+        run: |
+          python - <<'PY'
+          import os,requests
+          token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat=(os.getenv("TELEGRAM_CHAT_ID") or "").strip() or (os.getenv("FALLBACK_TELEGRAM_CHAT_ID") or "").strip()
+          expected=os.environ["EXPECTED_BOT"]
+          if not token or not chat: raise RuntimeError("에너지 전용 Telegram Secret 없음: 다른 봇으로 대체 전송하지 않음")
+          r=requests.get(f"https://api.telegram.org/bot{token}/getMe",timeout=20)
+          r.raise_for_status()
+          result=r.json()
+          actual=str((result.get("result") or {}).get("username") or "")
+          if not result.get("ok") or actual.lower()!=expected.lower():
+              raise RuntimeError(f"잘못된 텔레그램 봇: expected @{expected}, got @{actual}")
+          print(f"telegram_route_valid=true bot=@{actual}")
+          PY
+      - name: 공식자료 조회 및 신규 변화 판정
+        id: scan
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            python scripts/energy_price_fiscal_watch.py --no-alert
+          else
+            python scripts/energy_price_fiscal_watch.py
+          fi
+          if [ -s out/energy_price_fiscal_alert.html ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+          cat out/energy_price_fiscal_status.md >> "$GITHUB_STEP_SUMMARY"
+      - name: 공식 신규 변화만 Telegram 발송
+        id: send
+        if: steps.scan.outputs.changed == 'true' && github.event_name != 'push'
+        run: |
+          python - <<'PY'
+          import os,pathlib,requests
+          token=os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat=(os.getenv("TELEGRAM_CHAT_ID") or "").strip() or (os.getenv("FALLBACK_TELEGRAM_CHAT_ID") or "").strip()
+          msg=pathlib.Path("out/energy_price_fiscal_alert.html").read_text(encoding="utf-8").strip()
+          if not msg: raise RuntimeError("전송 내용 누락")
+          remaining=msg;chunks=[]
+          while remaining:
+              if len(remaining)<=3500:
+                  chunks.append(remaining);break
+              cut=remaining.rfind("\n\n",0,3500)
+              if cut<1200:cut=3500
+              chunks.append(remaining[:cut].strip());remaining=remaining[cut:].strip()
+          ids=[]
+          for chunk in chunks:
+              r=requests.post(f"https://api.telegram.org/bot{token}/sendMessage",
+                  json={"chat_id":chat,"text":chunk,"parse_mode":"HTML","disable_web_page_preview":True},timeout=30)
+              r.raise_for_status()
+              result=r.json()
+              if not result.get("ok"):raise RuntimeError(f"Telegram 전송 거부: {result}")
+              ids.append((result.get("result") or {}).get("message_id"))
+          print(f"telegram_delivery_confirmed=true messages={len(ids)} ids={ids}")
+          PY
+      - name: 조회·전송 성공한 상태만 저장
+        if: steps.scan.conclusion == 'success' && (steps.scan.outputs.changed == 'false' || steps.send.conclusion == 'success')
+        run: |
+          cp out/energy_price_fiscal_pending.json data/energy_price_fiscal_state.json
+          git config user.name "energy-price-fiscal-watch[bot]"
+          git config user.email "energy-price-fiscal-watch[bot]@users.noreply.github.com"
+          git add data/energy_price_fiscal_state.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update energy price fiscal watch state [skip ci]"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then exit 0; fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+      - name: 감사 기록 저장
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: energy-price-fiscal-${{ github.run_id }}
+          path: |
+            out/energy_price_fiscal_status.md
+            out/energy_price_fiscal_pending.json
+            out/energy_price_fiscal_alert.html
+          if-no-files-found: ignore
+          retention-days: 14
