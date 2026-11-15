@@ -1006,7 +1006,7 @@ def previously_reported_flight15_summary(item: dict, seen: dict) -> bool:
     if FLIGHT15_COMPLETED_KEY not in seen:
         return False
     title = str(item.get("title") or "").casefold()
-    if not re.search(r"flight[ -]?15\\b|ship[ -]?42\\b|15차", title):
+    if not re.search(r"flight[ -]?15\b|ship[ -]?42\b|15차", title):
         return False
     if re.search(r"root cause|investigat|confirmed fault|identified failure|"
                  r"postflight inspection|heat.?shield damage|refurbish|repair|"
