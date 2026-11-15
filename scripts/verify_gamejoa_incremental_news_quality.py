@@ -8714,7 +8714,7 @@ class LiveQualityRegressionTests(unittest.TestCase):
             ]
             samsung = {"source_title": "삼성전자, 3분기 영업이익 106조원", "market_materiality": {
                 "news_value_rank": 4, "transmission_scope_rank": 1, "priority": 3,
-                "focus": 40}}
+                "focus": 40, "equity_publication": {"eligible": True}}}
             global_market = {"source_title": "미국 CPI 발표", "market_materiality": {
                 "news_value_rank": 3, "transmission_scope_rank": 3}}
             verified_industry_event = {"source_title": "JEDEC, 광통신 반도체 표준 발표", "market_materiality": {
@@ -8728,6 +8728,32 @@ class LiveQualityRegressionTests(unittest.TestCase):
                     "news_value_rank": 4, "transmission_scope_rank": 2, "priority": 3,
                     "focus": 0, "equity_publication": {"eligible": True},
                     "evidence": [{"kind": "physical_supply_or_capacity", "stage": "reported_change"}]}}
+            uncommitted_interview = {
+                "source_title": '"화학업계 新시장 된 로봇·AI…현대차와 휴머노이드 소재 협력"',
+                "source_body": (
+                    "바스프는 현대자동차와 기아, 보스턴다이내믹스 등과 소재 공동 개발을 논의하고 있다. "
+                    "다만 아직 구체적으로 진행 중인 프로젝트는 없고 향후 협력에 관심이 있다고 밝혔다."
+                ),
+                "body_verified": True,
+                "market_materiality": {
+                    "news_value_rank": 4, "transmission_scope_rank": 1, "priority": 3,
+                    "focus": 0, "equity_publication": {"eligible": True},
+                    "evidence": [
+                        {"kind": "customer_discussions", "stage": "early_signal"},
+                        {"kind": "physical_supply_or_capacity", "stage": "early_signal"},
+                        {"kind": "policy_scope_or_stage", "stage": "reported_change"},
+                    ],
+                },
+            }
+            insider_trade = {
+                "source_title": "최태원 SK하이닉스 회장, 주식 3620주 장내 매수",
+                "body_verified": True,
+                "market_materiality": {
+                    "news_value_rank": 4, "transmission_scope_rank": 1, "priority": 3,
+                    "focus": 0, "equity_publication": {"eligible": True},
+                    "evidence": [{"kind": "insider_disclosed_trade", "stage": "reported_disclosure"}],
+                },
+            }
             official_trade_rule = {"source_title": "Enhanced Favorable Treatment for the United Arab Emirates",
                 "publisher": "Federal Register", "link": "https://www.federalregister.gov/documents/2026/07/14/2026-14132/example",
                 "body_verified": True, "market_materiality": {
@@ -8741,6 +8767,11 @@ class LiveQualityRegressionTests(unittest.TestCase):
                     "evidence": [{"kind": "customer_discussions", "stage": "early_signal"}]}}
             for weak in weak_stories:
                 self.assertIn("issuer_only_story", production.runner.low_scope_live_market_relevance_reason(weak))
+            self.assertIn(
+                "issuer_only_story",
+                production.runner.low_scope_live_market_relevance_reason(uncommitted_interview),
+            )
+            self.assertEqual(production.runner.low_scope_live_market_relevance_reason(insider_trade), "")
             self.assertEqual(production.runner.low_scope_live_market_relevance_reason(samsung), "")
             self.assertEqual(production.runner.low_scope_live_market_relevance_reason(global_market), "")
             self.assertEqual(production.runner.low_scope_live_market_relevance_reason(verified_industry_event), "")
@@ -8756,6 +8787,38 @@ class LiveQualityRegressionTests(unittest.TestCase):
                 return_value="source_event:v2:named_supply_order:fixture",
             ):
                 self.assertEqual(production.runner.low_scope_live_market_relevance_reason(execution), "")
+
+    def test_verified_business_core_must_preserve_named_headline_issuer(self):
+        title = '"화학업계 新시장 된 로봇·AI…현대차와 휴머노이드 소재 협력"'
+        body = (
+            "바스프는 현대자동차와 기아, 보스턴다이내믹스 등과 소재 공동 개발을 논의하고 있다. "
+            "다만 아직 구체적으로 진행 중인 프로젝트는 없고 향후 협력에 관심이 있다고 밝혔다."
+        )
+        mismatched = alert(
+            title,
+            body,
+            "https://www.hankyung.com/article/2026111574371",
+        )
+        mismatched.update({
+            "body_verified": True,
+            "korean_business_news": True,
+            "telegram_core_fact": "한국 기업이 미국과 중국, 인도 등으로 해외 생산기지를 확대할 때도 기술, 소재 등에서 협력하고 있습니다.",
+        })
+        errors = production.runner.source_core_fact_errors(mismatched)
+        self.assertIn("headline_issuer_missing_from_core", errors)
+        self.assertFalse(production.runner.source_output_aligned(mismatched))
+
+        aligned = {
+            **mismatched,
+            "telegram_core_fact": (
+                "바스프는 현대차·기아·보스턴다이내믹스와 휴머노이드 소재 협력을 논의 중이나, "
+                "구체적인 한국 프로젝트는 아직 없다고 밝혔다."
+            ),
+        }
+        self.assertNotIn(
+            "headline_issuer_missing_from_core",
+            production.runner.source_core_fact_errors(aligned),
+        )
 
     def test_same_us_ppi_release_is_sent_once_across_metric_focused_headlines(self):
         now = dt.datetime(2026, 11, 14, 1, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))

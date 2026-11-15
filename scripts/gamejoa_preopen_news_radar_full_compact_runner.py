@@ -13091,15 +13091,15 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
     scope = int(materiality.get("transmission_scope_rank", 0) or 0)
     if scope >= 3:
         return ""
-    if telegram.alert_issuer_keys(alert):
-        return ""
     identity = market_materiality.source_event_identity(alert)
     parts = identity.split(":")
     event_type = parts[2] if len(parts) >= 4 and parts[:2] == ["source_event", "v2"] else ""
     material_execution_types = {
         "commercial_delivery", "commercial_order", "construction_order",
-        "dated_public_supply_package", "industrial_product_milestone",
+        "coupang_quarterly_earnings", "dated_public_supply_package",
+        "humanoid_product_launch", "industrial_product_milestone",
         "license", "merger_agreement", "named_supply_order",
+        "nvidia_ceo_departure", "issuer_quarterly_earnings",
         "regulatory_package", "scoped_anonymous_order", "solidigm_ipo",
     }
     if event_type in material_execution_types:
@@ -13168,6 +13168,24 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
         and any(
             item.get("kind") == "customer_discussions"
             and item.get("stage") == "early_signal"
+            for item in evidence
+        )
+    ):
+        return ""
+
+    issuer_execution_kinds = {
+        "capital_or_shareholder_action", "commercial_order", "corporate_ownership_execution",
+        "corporate_transaction", "earnings_or_guidance", "industrial_product_milestone",
+        "insider_disclosed_trade", "order_backlog_level", "customer_supply_start",
+    }
+    if (
+        alert.get("body_verified")
+        and priority >= 2
+        and news_value_rank >= 3
+        and eligible
+        and any(
+            item.get("kind") in issuer_execution_kinds
+            and item.get("stage") not in {"early_signal", "forecast", "estimate", "conditional"}
             for item in evidence
         )
     ):
@@ -13832,6 +13850,10 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     primary_alignment = primary_headline_core_matches(alert, core)
     if expected_primary and not primary_alignment:
         errors.append('headline_primary_amount_period_or_population_mismatch')
+    title_issuers = set(telegram.alert_issuer_keys({"source_title": title}))
+    core_issuers = set(telegram.alert_issuer_keys({"source_title": core}))
+    if title_issuers and not title_issuers.intersection(core_issuers):
+        errors.append("headline_issuer_missing_from_core")
     expected_analyst_forecast = analyst_quarterly_forecast_pair_core(title, source)
     analyst_forecast_alignment = bool(
         expected_analyst_forecast
