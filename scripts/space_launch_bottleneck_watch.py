@@ -1214,8 +1214,9 @@ def self_test() -> int:
     assert "Ship 42" in "".join(t for t,_ in pages)
     try:
         starship_flight15_postflight_notice(
-            check=lambda url,*markers: "old launch plan" if not "On Saturday" in markers else
-            (_ for _ in ()).throw(ValueError("postflight not published"))
+            check=lambda url,*markers: "old launch plan"
+            if url==FLIGHT15_OFFICIAL and "On Saturday, November 14" not in markers
+            else (_ for _ in ()).throw(ValueError("only preflight was accessible"))
         )
     except RuntimeError:pass
     else:raise AssertionError("preflight plan alone must never trigger first ship catch")
