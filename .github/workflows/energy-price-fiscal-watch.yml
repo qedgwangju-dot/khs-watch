@@ -108,6 +108,7 @@ jobs:
       - name: 조회·전송 성공한 상태만 저장
         if: steps.scan.conclusion == 'success' && (steps.scan.outputs.changed == 'false' || steps.send.conclusion == 'success')
         run: |
+          mkdir -p data
           cp out/energy_price_fiscal_pending.json data/energy_price_fiscal_state.json
           git config user.name "energy-price-fiscal-watch[bot]"
           git config user.email "energy-price-fiscal-watch[bot]@users.noreply.github.com"
