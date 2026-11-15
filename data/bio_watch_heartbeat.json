@@ -1,6 +1,6 @@
 {
   "status": "degraded",
-  "checked_at_kst": "2026-11-15T11:56:16+09:00",
+  "checked_at_kst": "2026-11-15T15:15:29+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -33,7 +33,7 @@
   "halozyme_search_task_count": 80,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-11-15",
-  "failure_notice_message_id": 357,
+  "failure_notice_message_id": 358,
   "last_qlex_telegram_message_ids": [
     334
   ],
@@ -43,8 +43,8 @@
   "last_jemperli_telegram_sent_at_kst": "2026-11-13T07:21:43+09:00",
   "last_qlex_telegram_sent_at_kst": "2026-11-11T15:00:07+09:00",
   "errors": [
-    "QLEX WAC sender rc=1: RuntimeError: 한국어 자동번역 실패: HTTPError"
+    "QLEX WAC sender rc=1: RuntimeError: 한국어 송출 검증 실패 — ECB"
   ],
   "failed_component": "월간 WAC Telegram 전송",
-  "error_signature": "QLEX WAC sender rc=1: RuntimeError: 한국어 자동번역 실패: HTTPError"
+  "error_signature": "QLEX WAC sender rc=1: RuntimeError: 한국어 송출 검증 실패 — ECB"
 }
