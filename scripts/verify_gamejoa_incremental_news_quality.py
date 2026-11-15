@@ -5262,6 +5262,76 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertEqual(suppressed[0]['_exclusion_reason'], 'issuer_frequency_cap_24h')
         self.assertEqual(suppressed[1]['_exclusion_reason'], 'issuer_frequency_cap_24h')
 
+    def test_live_issuer_cap_allows_distinct_hard_events_but_blocks_reprints(self):
+        now = dt.datetime(2026, 11, 15, 9, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        event_types = (
+            'coupang_quarterly_earnings',
+            'korean_data_center_grid_rule',
+            'nvidia_ceo_departure',
+            'robot_dram_demand_outlook',
+            'sk_honam_project_statement',
+            'us_treasury_yield_shock',
+        )
+
+        for event_type in event_types:
+            with self.subTest(event_type=event_type):
+                state = {'seen': {
+                    f'prior-{index}': {
+                        'last_seen_kst': now.isoformat(),
+                        'issuer_keys': ['nvidia'],
+                        'issuer_event_signature': f'prior-event-{index}',
+                    }
+                    for index in (1, 2)
+                }}
+                identity = f'source_event:v2:{event_type}:fixture-event'
+                distinct = alert(
+                    '엔비디아, 확인된 별도 사업·정책 이벤트',
+                    '원문 본문에서 확인된 새 사건입니다.',
+                    f'https://example.com/{event_type}',
+                )
+                distinct.update({
+                    'published': now.isoformat(),
+                    'body_verified': True,
+                    '_fixture_identity': identity,
+                })
+                reprint = {
+                    **distinct,
+                    'source_title': '엔비디아, 확인된 별도 사업·정책 이벤트 재보도',
+                    'link': f'https://example.net/{event_type}-reprint',
+                }
+                weak = alert(
+                    '엔비디아, 업계 전망 관련 해설',
+                    '시장 관심이 이어진다는 분석이다.',
+                    f'https://example.com/{event_type}-weak',
+                )
+                weak.update({'published': now.isoformat(), 'body_verified': True})
+                unverified = {
+                    **distinct,
+                    'source_title': '엔비디아, 미확인 별도 이벤트',
+                    'link': f'https://example.com/{event_type}-unverified',
+                    'body_verified': False,
+                    '_fixture_identity': f'source_event:v2:{event_type}:unverified',
+                }
+
+                def fixture_identity(item):
+                    return str(item.get('_fixture_identity') or '')
+
+                with (patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}),
+                      patch.object(telegram, 'load_seen_state', return_value=state),
+                      patch.object(telegram, 'save_seen_state', return_value=None),
+                      patch.object(telegram.market_materiality, 'source_event_identity',
+                                   side_effect=fixture_identity)):
+                    accepted, suppressed = telegram.apply_issuer_frequency_cap(
+                        [distinct, reprint, weak, unverified], now,
+                    )
+
+                self.assertEqual(accepted, [distinct])
+                self.assertEqual(len(suppressed), 3)
+                self.assertTrue(all(
+                    item['_exclusion_reason'] == 'issuer_frequency_cap_24h'
+                    for item in suppressed
+                ))
+
     def test_issuer_alias_matching_uses_word_boundaries_for_latin_tickers(self):
         false_positive = alert('뮤직 업계의 새 흐름', '관련 시장 소식입니다.', 'https://example.com/music')
         ticker = alert('MU, 실적 전망 발표', '마이크론의 실적 전망입니다.', 'https://example.com/mu')
