@@ -961,11 +961,17 @@
       "source": "지디넷코리아",
       "published_kst": "2026-11-12T15:20:45+09:00",
       "first_seen_kst": "2026-11-14T03:34:32+09:00"
+    },
+    "360737d89e6088b0e13e802f": {
+      "title": "주간 12% 하락한 512Gb NAND…DDR5 현물가는 보합 - 토큰포스트",
+      "source": "토큰포스트",
+      "published_kst": "2026-11-15T23:47:47+09:00",
+      "first_seen_kst": "2026-11-16T02:15:02+09:00"
     }
   },
-  "updated_at_kst": "2026-11-15T18:59:31+09:00",
-  "last_scan_count": 7,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-11-16T02:15:02+09:00",
+  "last_scan_count": 8,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -1025,21 +1031,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-14T18:51:17+09:00",
+  "last_successful_delivery_kst": "2026-11-16T02:15:13+09:00",
   "telegram_message_ids": [
-    432
+    459
   ],
-  "telegram_message_id": 432,
+  "telegram_message_id": 459,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      432
+      459
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-14T18:51:17+09:00",
-    "alert_signature": "547d3ec1aad1f76b739f1a7d835a2b0b67da31c6e82fd779ceeb7041c6dc42a7"
+    "confirmed_at_kst": "2026-11-16T02:15:13+09:00",
+    "alert_signature": "211e98b70d08b7237781edb430648b638d55e45da2e470a2b7b3f4e82e1b8ae0"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
