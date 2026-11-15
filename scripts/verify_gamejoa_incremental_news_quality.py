@@ -5093,7 +5093,48 @@ class IncrementalNewsTests(unittest.TestCase):
         market_reaction = {**english, 'source_title': '젠슨 황 사임에 엔비디아 주가 8% 급락, 시총 2천억달러 증발'}
         self.assertEqual(materiality.nvidia_ceo_departure_observation(
             market_reaction['source_title'], market_reaction['source_body'], published,
-        ), {})
+        ), materiality.nvidia_ceo_departure_observation(
+            english_title, english_body, published,
+        ))
+        self.assertEqual(materiality.source_event_identity(market_reaction), identity)
+        self.assertEqual(radar.alert_dedup_key(market_reaction), radar.alert_dedup_key(english))
+
+        attachment_reprints = (
+            '젠슨 황 사임 쇼크…엔비디아 시총 일주일새 659조원 증발',
+            '엔비디아 시총 장중 801조원 증발…리더십 교체 부담',
+            '젠슨 황 퇴진에 HBM 4E 개발 변수…삼성·SK, 기술협력 시험대',
+            '젠슨 황 없는 엔비디아 괜찮을까…월가 “향후 3년은 끄떡없다”',
+            '황 떠난 엔비디아, 돈줄 조이나…中은 혼란 틈타 한국산 HBM 요구',
+            '젠슨 황 결국 쫓겨났는데…중국이 원하는 일',
+        )
+        for index, title in enumerate(attachment_reprints):
+            with self.subTest(reprint=title):
+                reprint = {**english, 'source_title': title, 'original_news': title,
+                           'news': title, 'link': f'https://example.com/nvidia-exit-reprint-{index}'}
+                self.assertEqual(materiality.source_event_identity(reprint), identity)
+                self.assertEqual(radar.alert_dedup_key(reprint), radar.alert_dedup_key(english))
+
+        regulatory_update = {
+            **english,
+            'source_title': '젠슨 황 사퇴 불렀지만…美 법무부 “앨리스 황 간첩 결론 없어”',
+            'source_body': english_body + ' The U.S. Department of Justice said it reached no espionage conclusion.',
+        }
+        self.assertNotEqual(materiality.source_event_identity(regulatory_update), identity)
+
+        congressional_update = {
+            **english,
+            'source_title': '황의 퇴임 이후 미국 의회가 트럼프와 엔비디아에 대한 감시 강화',
+            'source_body': english_body + ' Congress increased oversight of NVIDIA and the administration.',
+        }
+        self.assertNotEqual(materiality.source_event_identity(congressional_update), identity)
+
+        departure_in_background = {
+            **english,
+            'source_title': '로이터 “엔비디아 의존 中 AI 프로젝트 규모 4조6000억원 이상”',
+            'source_body': 'Reuters estimated China AI projects and equipment contracts at RMB 23 billion. '
+                           + english_body,
+        }
+        self.assertNotEqual(materiality.source_event_identity(departure_in_background), identity)
 
     def test_quarterly_earnings_identity_matches_outlets_but_preserves_revision(self):
         published = '2026-10-07T11:22+09:00'
