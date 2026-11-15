@@ -3045,6 +3045,14 @@ class MaterialityChecks(unittest.TestCase):
         self.assertEqual(committed["disposition"], "keep", committed)
         self.assertIn("capital_or_shareholder_action", [entry["kind"] for entry in committed["evidence"]])
 
+        government_commitment = materiality.assess(
+            "정부, AI 반도체 펀드에 1조원 신규 출자금 배정",
+            "정부는 신규 AI 반도체 펀드에 출자금 1조원을 배정하기로 확정했다.",
+            published=NOW.isoformat(),
+        )
+        self.assertEqual(government_commitment["disposition"], "keep", government_commitment)
+        self.assertIn("capital_or_shareholder_action", [entry["kind"] for entry in government_commitment["evidence"]])
+
     def test_material_and_early_news_survive_without_signed_contract_or_ticker_list(self):
         for title, body in KEEP:
             with self.subTest(title=title):

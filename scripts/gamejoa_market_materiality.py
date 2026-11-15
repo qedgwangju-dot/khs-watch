@@ -4406,7 +4406,7 @@ RULES = (
      r"받기로\s*합의|대출\s*(?:계약|약정).{0,15}(?:체결|서명)|대출.{0,20}(?:집행했다|승인했다)|agreed to (?:lend|borrow)|loan agreement.{0,20}(?:signed|executed)"),
     ("capital_or_shareholder_action", ("earnings", "timeline"),
      r"투자(?=\s*(?:\d|를|한다|한다고|하는|하고|해|했다|할|하겠|금|액|규모|계획|협약|계약|자금|라운드)|.{0,12}유치)|전략투자|설비투자|capex|자본지출|(?<![가-힣])출자|자금\s*조달|자본\s*조달|회사채|전환사채|전환\s*(?:선순위)?\s*채권|주주환원|배당|자사주|자기주식|지분|funding|financing|buyback|dividend|bond issuance|stake",
-     r"체결|유치|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|협상|추진|계획|증가|감소|늘리|결정|확정|공시|발표|승인|투입|금융\s*종결|납입|집행|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|negotiat|approv|financing closed|funding disbursed"),
+     r"체결|유치|(?<![가-힣])출자(?!금)|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|협상|추진|계획|증가|감소|늘리|결정|확정|공시|발표|승인|배정|투입|금융\s*종결|납입|집행|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|negotiat|approv|financing closed|funding disbursed"),
     ("authorized_capital_proposal", ("flows", "timeline"),
      r"수권\s*(?:자본|주식)|authorized (?:capital|shares)", r"안건|상정|제안|표결|proposal|vote"),
     ("financing_infrastructure", ("earnings", "timeline"),
