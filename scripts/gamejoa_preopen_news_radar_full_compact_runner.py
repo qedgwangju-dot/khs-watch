@@ -7138,7 +7138,7 @@ def build_hyundai_nvidia_meeting_alert(row: dict, now, text: str) -> dict | None
         any(term in title for term in ("정의선", "현대차", "현대자동차"))
         and "엔비디아" in title
         and any(term in text for term in ("정의선", "현대차", "현대자동차"))
-        and "엔비디아" in text
+        and any(term in text for term in ("엔비디아", "젠슨 황"))
         and any(term in text for term in ("회동", "만나", "본사", "협력"))
         and any(term in text for term in ("자율주행", "로봇", "제조 ai", "새만금", "ai 밸리"))
     ):
@@ -7150,7 +7150,7 @@ def build_hyundai_nvidia_meeting_alert(row: dict, now, text: str) -> dict | None
     if stage == "robot_platform":
         core = "현대차·엔비디아가 로봇 플랫폼 공동 구축을 제시했습니다."
     else:
-        core = "정의선·젠슨 황이 자율주행·로봇·제조AI 협력을 논의했습니다."
+        core = "정의선과 엔비디아 CEO 젠슨 황이 자율주행·로봇·제조AI 협력을 논의했습니다."
     alert = base_korean_business_alert(
         row,
         now,
@@ -13113,6 +13113,47 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
     priority = int(materiality.get("priority", 0) or 0)
     news_value_rank = int(materiality.get("news_value_rank", 0) or 0)
     eligible = bool(equity_publication.get("eligible"))
+    business_kind = str(alert.get("korean_business_kind") or "")
+    headline = str(alert.get("source_title") or alert.get("original_news") or "")
+    body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+
+    if alert.get("body_verified") and eligible and priority >= 2 and news_value_rank >= 3:
+        verified_execution = any(
+            item.get("kind") == "physical_supply_or_capacity"
+            and item.get("stage") == "reported_change"
+            for item in evidence
+        )
+        if business_kind == "korea_ai_factory_deployment" and verified_execution and priority >= 3 and news_value_rank >= 4:
+            return ""
+        if (
+            business_kind == "ai_infrastructure_finance_platform"
+            and priority >= 3
+            and news_value_rank >= 4
+            and any(
+                item.get("kind") == "financing_infrastructure"
+                and item.get("stage") == "reported_change"
+                for item in evidence
+            )
+        ):
+            return ""
+        if (
+            business_kind == "korea_anthropic_strategic_investment"
+            and "네이버" in body
+            and "앤트로픽" in body
+            and re.search(r"첫\s*투자|처음\s*투자", body)
+            and not re.search(r"(?:투자|출자).{0,12}(?:검토|논의|가능성|예정|계획)", body)
+        ):
+            return ""
+        if (
+            business_kind == "apple_cxmt_memory_supply_test"
+            and all(term in headline for term in ("애플", "CXMT", "아이폰"))
+            and any(
+                item.get("kind") == "technology_or_clinical_stage"
+                and item.get("stage") == "early_signal"
+                for item in evidence
+            )
+        ):
+            return ""
 
     # Preserve verified operational capacity and official trade-rule changes;
     # neither should depend on a headline issuer alias or focus score.
@@ -13148,16 +13189,14 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
 
     # A confirmed meeting between named semiconductor/AI leaders is a live
     # signal even when the follow-on commercial agreement is still unconfirmed.
-    headline = str(alert.get("source_title") or alert.get("original_news") or "")
-    body = str(alert.get("source_body") or alert.get("source_abstract") or "")
     executive_names = (
         "이재용", "최태원", "정의선", "샘 올트먼", "젠슨 황", "리사 수",
         "일론 머스크", "사티아 나델라", "마크 저커버그", "팀 쿡",
     )
     meeting_signal = bool(re.search(r"만났|회동|면담|방문|찾아", headline))
-    named_leaders = sum(name in headline for name in executive_names)
+    named_leaders = sum(name in f"{headline} {body}" for name in executive_names)
     technology_signal = bool(re.search(
-        r"HBM|D램|DRAM|반도체|파운드리|AI\s*(?:칩|반도체|인프라)|데이터센터",
+        r"HBM|D램|DRAM|반도체|파운드리|AI\s*(?:칩|반도체|인프라)|데이터센터|로봇|자율주행|제조\s*AI",
         body,
         re.I,
     ))
