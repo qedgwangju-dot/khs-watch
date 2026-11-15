@@ -85,7 +85,13 @@ def candidates(page,list_url,source):
                 url="https://www.kogas.or.kr/site/koGas/bbs/View.do?Key=1010202000000&cbIdx=41&boardIdx="+m.group(1)
         ident=official_id(url,source)
         if ident and len(title)>=5:
-            found.setdefault(ident,{"id":ident,"title":title,"url":url,"source":source,"category":category(title)})
+            date_node=a.select_one(".date")
+            list_date=None
+            if date_node:
+                m=re.search(r"(20\d{2})[.\-/](\d{1,2})[.\-/](\d{1,2})",date_node.get_text(" ",strip=True))
+                if m:
+                    list_date=dt.date(int(m.group(1)),int(m.group(2)),int(m.group(3))).isoformat()
+            found.setdefault(ident,{"id":ident,"title":title,"url":url,"source":source,"category":category(title),"list_date":list_date})
     if len(found)<2:
         sample=[]
         for tag in soup.find_all(["a","div","li","button","span"]):
@@ -112,7 +118,7 @@ def get_page(url):
     return r.text
 
 def published_date(detail):
-    t=compact(BeautifulSoup(detail,"html.parser").get_text(" ",strip=True))[:2500]
+    t=compact(BeautifulSoup(detail,"html.parser").get_text(" ",strip=True))[:15000]
     m=re.search(r"(?:등록일|작성일|게시일)\s*(20\d{2})[.\-/년 ]+\s*(\d{1,2})[.\-/월 ]+\s*(\d{1,2})",t)
     if not m: raise ValueError("공식 문서 발표일 확인 불가")
     return dt.date(int(m.group(1)),int(m.group(2)),int(m.group(3))).isoformat()
@@ -148,7 +154,13 @@ def scan(now):
             for item in [x for x in entries if x["category"]][:10]:
                 content=get_page(item["url"])
                 item=dict(item)
-                item["published"]=published_date(content)
+                try:
+                    item["published"]=published_date(content)
+                except ValueError:
+                    # 공식 목록에서 확인한 해당 문서의 게시일만 사용한다.
+                    if not item.get("list_date"):
+                        raise
+                    item["published"]=item["list_date"]
                 item["stage"]=stage(item)
                 item["prices"]=prices(content) if item["category"]=="oil_cap" else {}
                 good.append(item)
