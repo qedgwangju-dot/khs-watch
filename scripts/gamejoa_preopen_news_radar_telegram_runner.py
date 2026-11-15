@@ -38,14 +38,18 @@ ISSUER_HARD_CATALYST_OVERAGE = 1
 VERIFIED_DISTINCT_ISSUER_EVENT_TYPES = frozenset({
     "ai_chip_deployment", "capital_participation", "capacity_supply_contract",
     "commercial_delivery", "commercial_order", "construction_order",
+    "coupang_quarterly_earnings",
     "dated_public_supply_package", "humanoid_product_launch",
     "industrial_development_mou", "industrial_product_milestone",
-    "issuer_quarterly_earnings", "legislative_action", "license",
+    "issuer_quarterly_earnings", "korean_data_center_grid_rule",
+    "legislative_action", "license",
     "listing_suspension_ruling", "merger_agreement", "named_supply_order",
-    "politician_equity_trade_policy_overlap",
+    "nvidia_ceo_departure", "politician_equity_trade_policy_overlap",
     "project_safety_assessment",
     "public_energy_supply_assurance", "regulatory_package", "research_award",
-    "scoped_anonymous_order", "site_development_mou", "solidigm_ipo",
+    "robot_dram_demand_outlook", "scoped_anonymous_order",
+    "site_development_mou", "sk_honam_project_statement", "solidigm_ipo",
+    "us_treasury_yield_shock",
 })
 MARKET_ISSUER_ALIASES = {
     "samsung_electronics": ("삼성전자", "Samsung Electronics", "005930"),
