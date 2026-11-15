@@ -83,7 +83,7 @@ def _period(text: str) -> str:
 def identity(text: str) -> str:
     if BATTERY_ACTOR.search(text) and HUNGARY_PLACE.search(text) and re.search(
         r"환경|오염|황산구리|구리\s*유출|규제|인허가|과태료|행정\s*처분|"
-        r"fines?|pollut|contaminat|suspend|shutdown|resume|reopen|permit|"
+        r"fines?|pollut|contaminat|suspend|suspension|shutdown|resume|reopen|permit|"
         r"gyártócsarnok|környezetvédel|bírság", text, re.I
     ):
         return HUNGARY

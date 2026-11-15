@@ -46,7 +46,7 @@ try:
     semcorp_shutdown=item("Semcorp Debrecen Hungary production suspension ordered", "new official environment order", "Kormányhivatalok", "2026-11-21T00:00:00+00:00")
     ecopro_fine=item("EcoPro BM Debrecen Hungary environmental fine imposed", "new official environment order", "Kormányhivatalok", "2026-11-21T00:00:00+00:00")
     for company_event in (catl_fine, semcorp_shutdown, ecopro_fine):
-        assert audit(company_event)[0]==HUNGARY and audit(company_event)[1]>=11, "New named official Hungary action must alert"
+        assert audit(company_event)[0]==HUNGARY and audit(company_event)[1]>=11, ("New named official Hungary action must alert", company_event["title"], audit(company_event))
         assert audit(item(company_event["title"],company_event["description"],"Telex",company_event["published"]))[1]==0, "Media report must not become official action"
     assert len({audit(x)[2] for x in (catl_fine,semcorp_shutdown,ecopro_fine)})==3, "Different businesses need different dedup keys"
     old_catl=item(catl_fine["title"],catl_fine["description"],"Kormányhivatalok","2026-08-25T00:00:00+00:00")
