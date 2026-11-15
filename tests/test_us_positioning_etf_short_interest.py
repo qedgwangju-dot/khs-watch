@@ -342,6 +342,63 @@ class ETFShortInterestTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "unreadable"):
                 etf.load_state(path)
 
+
+    def test_same_date_krw_equivalent_and_direction_labels(self):
+        from us_positioning_fx import STAT_CODE, ITEM_CODE, ITEM_NAME
+        stamp = int(dt.datetime(2026, 10, 30, 20, tzinfo=dt.timezone.utc).timestamp())
+        fx = {"StatisticSearch": {"list_total_count": 1, "row": [{
+            "STAT_CODE": STAT_CODE, "ITEM_CODE1": ITEM_CODE, "ITEM_NAME1": ITEM_NAME,
+            "UNIT_NAME": "원", "TIME": "20261030", "DATA_VALUE": "1334.30"
+        }]}}
+        def fetch(url):
+            if "ecos.bok.or.kr" in url:
+                return json.dumps(fx)
+            if "/v8/finance/chart/" in url:
+                symbol = "QQQ" if "/QQQ?" in url else "SPY"
+                quote = 690.49 if symbol == "QQQ" else 755.72
+                return json.dumps({"chart": {"result": [{
+                    "meta": {"symbol": symbol, "currency": "USD"},
+                    "timestamp": [stamp], "indicators": {"quote": [{"close": [quote]}]},
+                }]}})
+            raise AssertionError("unexpected URL")
+        basis = etf.collect_krw_basis("2026-10-30", getter=fetch)
+        self.assertEqual(basis["status"], "verified")
+        self.assertEqual(etf._krw_change(793_090, "QQQ", basis),
+                         "원화 상당액 약 7,307억원 증가")
+        self.assertEqual(etf._krw_change(9_774_163, "SPY", basis),
+                         "원화 상당액 약 9조 8,558억원 증가")
+        self.assertEqual(etf._krw_change(-17_027_840, "SPY", basis),
+                         "원화 상당액 약 17조 1,701억원 감소")
+        self.assertIn("QQQ·SPY 공매도 잔량 동반 증가",
+                      etf._position_direction({"change_shares": 793090, "change_pct": 0.97},
+                                              {"change_shares": 9774163, "change_pct": 10.51}, {})[0])
+        self.assertIn("주가 방향(미확정)",
+                      etf._position_direction({"change_shares": 793090, "change_pct": 0.97},
+                                              {"change_shares": 9774163, "change_pct": 10.51}, {})[-1])
+
+    def test_krw_notional_missing_fx_or_close_never_invents_money(self):
+        unavailable = etf.collect_krw_basis("2026-10-30", getter=lambda _: "")
+        self.assertEqual(unavailable["status"], "unavailable")
+        self.assertEqual(etf._krw_change(793_090, "QQQ", unavailable), "원화 환산 확인 대기")
+        from us_positioning_fx import STAT_CODE, ITEM_CODE, ITEM_NAME
+        fx = {"StatisticSearch": {"list_total_count": 1, "row": [{
+            "STAT_CODE": STAT_CODE, "ITEM_CODE1": ITEM_CODE, "ITEM_NAME1": ITEM_NAME,
+            "UNIT_NAME": "원", "TIME": "20261030", "DATA_VALUE": "1334.30"
+        }]}}
+        def stale_price(url):
+            if "ecos.bok.or.kr" in url:
+                return json.dumps(fx)
+            stamp = int(dt.datetime(2026, 10, 29, 20, tzinfo=dt.timezone.utc).timestamp())
+            symbol = "QQQ" if "/QQQ?" in url else "SPY"
+            return json.dumps({"chart": {"result": [{
+                "meta": {"symbol": symbol, "currency": "USD"},
+                "timestamp": [stamp], "indicators": {"quote": [{"close": [690.49]}]},
+            }]}})
+        unavailable_price = etf.collect_krw_basis("2026-10-30", getter=stale_price)
+        self.assertEqual(unavailable_price["status"], "partial")
+        self.assertEqual(etf._krw_change(793_090, "QQQ", unavailable_price),
+                         "원화 환산 확인 대기")
+
     def test_disallow_daily_short_volume_as_short_interest(self):
         with self.assertRaises(ValueError):
             etf.parse_provider("finshort", "<p>QQQ daily short volume 20,683,025 2026-10-30</p>")

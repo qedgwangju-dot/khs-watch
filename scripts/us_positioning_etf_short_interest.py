@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import calendar
 import datetime as dt
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 import json
 import os
 import pathlib
@@ -21,6 +22,7 @@ from html import escape
 from zoneinfo import ZoneInfo
 
 from bs4 import BeautifulSoup
+from us_positioning_fx import collect_fx, checked_fx
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE = ROOT / "data" / "us_positioning_etf_short_interest_state.json"
@@ -378,12 +380,140 @@ def load_state(path: pathlib.Path = STATE) -> dict:
     return data
 
 
+
+def _close_on_settlement(ticker: str, settlement: str, getter=get) -> dict | None:
+    """Exact-date regular-session close, never a live or adjusted quote."""
+    if ticker not in ("QQQ", "SPY"):
+        return None
+    date = day(settlement)
+    a = int(dt.datetime.combine(date - dt.timedelta(days=1), dt.time.min,
+                                tzinfo=dt.timezone.utc).timestamp())
+    b = int(dt.datetime.combine(date + dt.timedelta(days=2), dt.time.min,
+                                tzinfo=dt.timezone.utc).timestamp())
+    for hostname in ("query1.finance.yahoo.com", "query2.finance.yahoo.com"):
+        url = f"https://{hostname}/v8/finance/chart/{ticker}?period1={a}&period2={b}&interval=1d"
+        try:
+            rows = json.loads(getter(url))["chart"]["result"]
+            if len(rows) != 1:
+                continue
+            row = rows[0]
+            meta = row["meta"]
+            if meta.get("symbol") != ticker or meta.get("currency") != "USD":
+                continue
+            stamps = row["timestamp"]
+            close = row["indicators"]["quote"][0]["close"]
+            if len(stamps) != len(close):
+                continue
+            prices = []
+            for stamp, value in zip(stamps, close):
+                if type(stamp) is not int or type(value) not in (float, int):
+                    continue
+                observed = dt.datetime.fromtimestamp(stamp, ZoneInfo("America/New_York")).date()
+                if observed == date:
+                    parsed = Decimal(str(value)).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+                    if Decimal("0") < parsed < Decimal("10000"):
+                        prices.append(parsed)
+            if len(prices) == 1:
+                return {"date": settlement, "close_usd": str(prices[0]), "source": url}
+        except (OSError, KeyError, IndexError, ValueError, TypeError, InvalidOperation,
+                AttributeError, OverflowError):
+            continue
+    return None
+
+
+def collect_krw_basis(settlement: str, getter=get) -> dict:
+    """Only a verified same-date price and official FX may create a KRW estimate."""
+    class Reader:
+        def get(self, url, *, evidence_url=None):
+            return getter(url)
+    snapshot = checked_fx(collect_fx(Reader(), settlement), settlement)
+    if snapshot is None:
+        return {"date": settlement, "status": "unavailable", "prices": {},
+                "reason": "한국은행 기준일 환율 확인 실패"}
+    prices = {}
+    for ticker in ("QQQ", "SPY"):
+        quote = _close_on_settlement(ticker, settlement, getter=getter)
+        if quote is not None:
+            prices[ticker] = quote
+    return {"date": settlement,
+            "status": "verified" if len(prices) == 2 else "partial",
+            "fx": snapshot, "prices": prices}
+
+
+def _won_value(shares: int, ticker: str, basis: dict | None) -> Decimal | None:
+    if not isinstance(basis, dict) or not isinstance(basis.get("date"), str):
+        return None
+    fx = checked_fx(basis.get("fx"), basis["date"])
+    px = (basis.get("prices") or {}).get(ticker) or {}
+    if not fx or px.get("date") != basis["date"] or type(shares) is not int:
+        return None
+    try:
+        p = Decimal(px["close_usd"])
+        r = Decimal(fx["krw_per_usd"])
+        if not (0 < p < 10000 and 0 < r < 10000):
+            return None
+        return Decimal(abs(shares)) * p * r
+    except (ValueError, InvalidOperation, KeyError, TypeError):
+        return None
+
+
+def _won_text(value: Decimal) -> str:
+    eok = int((value / Decimal("100000000")).quantize(Decimal("1"), rounding=ROUND_HALF_UP))
+    if eok == 0:
+        return "1억원 미만"
+    jo, remainder = divmod(eok, 10000)
+    if jo and remainder:
+        return f"{jo:,}조 {remainder:,}억원"
+    if jo:
+        return f"{jo:,}조원"
+    return f"{remainder:,}억원"
+
+
+def _krw_change(shares: int, ticker: str, basis: dict | None) -> str:
+    amount = _won_value(shares, ticker, basis)
+    if amount is None:
+        return "원화 환산 확인 대기"
+    direction = "증가" if shares > 0 else "감소" if shares < 0 else "변화 없음"
+    return "원화 상당액 약 " + _won_text(amount) + " " + direction
+
+
+def _position_direction(q: dict, spy: dict, periods: dict) -> list[str]:
+    qa, sa = q["change_shares"], spy["change_shares"]
+    if qa > 0 and sa > 0:
+        direction = "QQQ·SPY 공매도 잔량 동반 증가 → 헤지·약세 포지션 경계"
+    elif qa > 0 and sa < 0:
+        direction = "QQQ 공매도 증가·SPY 감소 → 기술주 상대 헤지 경계"
+    elif qa < 0 and sa < 0:
+        direction = "QQQ·SPY 공매도 잔량 동반 감소 → 숏커버 가능성 점검"
+    elif qa < 0 and sa > 0:
+        direction = "QQQ 공매도 감소·SPY 증가 → 기술주 상대 위험 완화 가능성"
+    else:
+        direction = "공매도 잔량 혼조 또는 변화 없음"
+    lines = ["<b>포지션 방향(확인): " + direction + "</b>",
+             f"• 최근 2주: QQQ {q['change_pct']:+.2f}% / SPY {spy['change_pct']:+.2f}% "
+             "(동일 결제기간 기준)"]
+    six = periods.get("6개월")
+    if six:
+        q6, s6 = six["QQQ"]["change_pct"], six["SPY"]["change_pct"]
+        note = ("기술주 ETF 공매도 중기 확대·SPY 축소"
+                if q6 > 0 and s6 < 0 else
+                "두 ETF 모두 중기 확대" if q6 > 0 and s6 > 0 else
+                "두 ETF 모두 중기 축소" if q6 < 0 and s6 < 0 else
+                "중기 방향 혼조")
+        lines.append(f"• 6개월: QQQ {q6:+.2f}% / SPY {s6:+.2f}% → {note}")
+    else:
+        lines.append("• 6개월 방향: 동일 날짜 교차검증 대기")
+    lines.append("<b>주가 방향(미확정): 잔량만으로 상승·하락을 100% 예측할 수 없음</b>")
+    return lines
+
+
 def render(d: dict) -> tuple[str, str]:
     q, s = d["QQQ"], d["SPY"]
     peak = d.get("qqq_verified_peak")
     title = ("QQQ 공매도 잔량 장기 최고 · 기술주 헤지 경계"
              if peak else "미국 QQQ·SPY 공매도 잔량 괴리 확대")
     periods = d.get("period_comparisons") or {}
+    basis = d.get("krw_basis")
     historical = ["<b>동일 기준일 1·2·3·6개월 및 연초 비교</b>"]
     for label in ("1개월", "2개월", "3개월", "6개월", "연초"):
         period = periods.get(label)
@@ -395,19 +525,37 @@ def render(d: dict) -> tuple[str, str]:
         historical.append(
             f"• {label}({previous}): "
             f"QQQ {old_q['previous_shares']:,}→{old_q['shares']:,}주 "
-            f"({old_q['change_shares']:+,}주, {old_q['change_pct']:+.2f}%) · "
+            f"({old_q['change_shares']:+,}주, {old_q['change_pct']:+.2f}%, "
+            f"{_krw_change(old_q['change_shares'], 'QQQ', basis)}) · "
             f"SPY {old_s['previous_shares']:,}→{old_s['shares']:,}주 "
-            f"({old_s['change_shares']:+,}주, {old_s['change_pct']:+.2f}%)"
+            f"({old_s['change_shares']:+,}주, {old_s['change_pct']:+.2f}%, "
+            f"{_krw_change(old_s['change_shares'], 'SPY', basis)})"
         )
+    basis_note = ["• 원화 환산: 동일 결제일 종가·환율 교차 확인 대기"]
+    if isinstance(basis, dict) and basis.get("date") == d["settlement"]:
+        fx = checked_fx(basis.get("fx"), d["settlement"])
+        px = basis.get("prices") or {}
+        if fx and all(t in px for t in ("QQQ", "SPY")):
+            valuation_q = _won_value(q["shares"], "QQQ", basis)
+            valuation_s = _won_value(s["shares"], "SPY", basis)
+            basis_note = [
+                f"• 원화 환산 기준({d['settlement']}): QQQ 종가 "
+                f"{px['QQQ']['close_usd']}달러 / SPY 종가 {px['SPY']['close_usd']}달러, "
+                f"한국은행 원/달러 {fx['krw_per_usd']}원",
+                "• 잔량 평가상 규모: QQQ 약 " + _won_text(valuation_q)
+                + " / SPY 약 " + _won_text(valuation_s),
+            ]
     body = "\n".join([
-        "<b>방향: QQQ 공매도 잔량 증가 → 기술주 수급 위험, 향후 숏커버 반등 가능성 병행 점검</b>",
+        *_position_direction(q, s, periods),
         "<b>QQQ·SPY 공매도 미청산 잔량 — 공식 공표 자료</b>",
         f"• 결제 기준일: {d['settlement']} · 공표일: {d['published']}",
         f"• 비교기간: 직전 결제일 {d['previous_settlement']} → {d['settlement']} (약 2주)",
         f"• QQQ: {q['previous_shares']:,}→{q['shares']:,}주"
-        f" ({q['change_shares']:+,}주, {q['change_pct']:+.2f}%)",
+        f" ({q['change_shares']:+,}주, {q['change_pct']:+.2f}%, "
+        f"{_krw_change(q['change_shares'], 'QQQ', basis)})",
         f"• SPY: {s['previous_shares']:,}→{s['shares']:,}주"
-        f" ({s['change_shares']:+,}주, {s['change_pct']:+.2f}%)",
+        f" ({s['change_shares']:+,}주, {s['change_pct']:+.2f}%, "
+        f"{_krw_change(s['change_shares'], 'SPY', basis)})",
         f"• 직전 발표 대비 증감률 격차: {d['divergence_pp']:+.2f}%p"
         " (같은 기간 비교, 선행경보 기준 15%p)",
         *((
@@ -418,6 +566,10 @@ def render(d: dict) -> tuple[str, str]:
         ) if peak else ()),
         "",
         *historical,
+        *basis_note,
+        "• 원화 상당액 = 해당 기간 증감 주식 수 × 최신 결제일 ETF 정규장 종가 × 동일일 환율."
+        " 모든 기간에 같은 최신 결제일 가격을 적용해 주식 수 변화만 환산합니다.",
+        "• 원화 상당액은 신규 공매도 거래대금·현금유출입·실현손익이 아닙니다.",
         "• 과거 비교는 두 종목의 결제 기준일을 일치시켰으며, "
         "기간별 잔량을 두 자료 제공처 이상에서 대조했습니다.",
         "• 서로 다른 비교기간의 변화율·주식수 감소를 하나의 괴리율로 합치지 않습니다.",
@@ -514,6 +666,8 @@ def run(*, validate_only: bool, now: dt.date | None = None, getter=get,
         "validate_only": validate_only,
     }
     if due:
+        current["krw_basis"] = collect_krw_basis(current["settlement"], getter=getter)
+        result["krw_valuation_status"] = current["krw_basis"]["status"]
         title, body = render(current)
         if not validate_only:
             receipt = send_message(title, body)

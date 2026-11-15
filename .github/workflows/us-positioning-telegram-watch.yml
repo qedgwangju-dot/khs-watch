@@ -371,6 +371,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
 
     steps:
       - name: Checkout latest US positioning delivery state
