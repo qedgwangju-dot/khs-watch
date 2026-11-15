@@ -50,6 +50,8 @@ jobs:
           assert m.source_quality('뉴스1', '공식-과기정통부') == '신뢰보도'
           assert m.source_quality('과학기술정보통신부', 'AIDC-국산광통신') == '공식'
           assert m.aidc_milestone('정부 AIDC 전력망 송전설비 착공', 'AIDC 변압기 정책') is None
+          assert m.aidc_milestone('글로벌테크, CPO 핵심 광원 국산화 성공', '국산 광통신 부품 고객 공급') is None
+          assert m.aidc_milestone('글로벌테크, CPO 광원 국산화', '정부 지원 기술을 포함한 기업 신제품') is None
           for s,axis,phase in [
               ('과기정통부 2027 AIDC CPO NPO 광트랜시버 연구개발 사업 공고','cpo-npo','call'),
               ('과기정통부 2027 AIDC OCS MEMS L-COS 주관기관 선정','ocs','award'),
@@ -157,13 +159,27 @@ jobs:
               with urllib.request.urlopen(req, timeout=25) as response:
                   result = json.loads(response.read().decode("utf-8"))
               if not result.get("ok"):
-                  raise RuntimeError(f"Telegram rejected message: {result}")
-              message_ids.append(result.get("result", {}).get("message_id"))
+                  raise RuntimeError("Telegram rejected message (no delivery confirmation)")
+              delivered = result.get("result") or {}
+              delivered_chat = delivered.get("chat") or {}
+              message_id = delivered.get("message_id")
+              if not isinstance(message_id, int):
+                  raise RuntimeError("Telegram response lacks valid message_id")
+              if chat_id.lstrip("-").isdigit():
+                  route_ok = str(delivered_chat.get("id")) == chat_id
+              elif chat_id.startswith("@"):
+                  route_ok = str(delivered_chat.get("username") or "").lower() == chat_id[1:].lower()
+              else:
+                  route_ok = False
+              if not route_ok:
+                  raise RuntimeError("Telegram response chat identity differs from configured destination")
+              message_ids.append(message_id)
 
           pathlib.Path("out/korea_ai_semiconductor_policy_watch_telegram_confirmed.json").write_text(
               json.dumps({
                   "status": "confirmed",
                   "bot_username": username,
+                  "chat_identity_verified": True,
                   "message_ids": message_ids,
                   "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
               }, ensure_ascii=False, indent=2) + "\n",

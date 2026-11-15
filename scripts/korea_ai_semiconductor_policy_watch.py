@@ -171,8 +171,12 @@ def aidc_milestone(title: str, summary: str = "") -> tuple[str, int, str, str] |
     if not re.search(r"네트워크|광통신|광회선|광스위칭|광반도체|광트랜시버|"
                      r"광원|\bCPO\b|\bNPO\b|\bOCS\b|인화인듐|\bInP\b|도파관|AI\s*기지국", text, re.I):
         return None
-    if not re.search(r"정부|국산|한국|과기정통부|과학기술정보통신부|정보통신기획평가원|"
-                     r"\bIITP\b|국회|공공\s*파운드리|연구개발|R&D", text, re.I):
+    # Vendor announcements about domestic CPO alone are not government R&D events.
+    if not re.search(r"정부|과기정통부|과학기술정보통신부|정보통신기획평가원|"
+                     r"\bIITP\b|국회|공공\s*파운드리|국책|국가연구개발|정부\s*R&D", text, re.I):
+        return None
+    if not re.search(r"정부|과기정통부|정보통신기획평가원|국회|공공\s*파운드리|"
+                     r"예산안|사업\s*공고|과제\s*공모|국가연구개발|정부\s*지원|국산화\s*추진", head, re.I):
         return None
     if not re.search(r"예산|사업|지원|과제|공모|공고|연구개발|R&D|국산화|개발|"
                      r"선정|협약|조달|구축|생산|검증|실증|착수|시제품|양산", text, re.I):
