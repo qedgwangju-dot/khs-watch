@@ -1,6 +1,7 @@
 import datetime as dt
 import importlib.util
 import pathlib
+import tempfile
 import unittest
 from zoneinfo import ZoneInfo
 from unittest.mock import patch
@@ -253,6 +254,91 @@ class CreditWatchTests(unittest.TestCase):
         action=c.decide(rows,{"notified_rank":3})
         self.assertTrue(action["send"])
         self.assertIn("CP–CD 개별 구간 관찰→주의 상향(선행경보)",action["events"])
+
+    def test_daily_report_once_per_new_official_day_without_alert(self):
+        rows=sample(52,68.3)
+        state={"notified_rank":2,"last_alert_signature":"confirmed-old-risk",
+               "delivery_receipt":{"message_id":509},"last_daily_report_date":rows[-2]["date"]}
+        action=c.decide(rows,state)
+        self.assertFalse(action["send"])
+        kind,due=c.delivery_plan(rows,state,action)
+        self.assertEqual((kind,due),("daily",True))
+        msg=c.render(rows,action,dt.datetime(2026,11,16,20,tzinfo=ZoneInfo("Asia/Seoul")),daily=True)
+        self.assertIn("국내 신용금리 일일 보고 | 주의",msg)
+        self.assertIn("CP–CD",msg)
+        self.assertIn("AA- 회사채–국고채",msg)
+        self.assertIn("CP 91일",msg)
+        self.assertLess(len(msg),c.MAX_MESSAGE_CHARS)
+        pending=c.pending_delivery_state(state,action,rows[-1],
+            dt.datetime(2026,11,16,20,tzinfo=ZoneInfo("Asia/Seoul")),kind,due)
+        self.assertEqual(pending["delivery_receipt"],state["delivery_receipt"])
+        self.assertEqual(pending["last_alert_signature"],state["last_alert_signature"])
+        self.assertEqual(pending["notified_rank"],2)
+        self.assertEqual(pending["last_daily_report_date"],rows[-1]["date"])
+        # 동일 기준일·보합 자료는 재발송하지 않는다.
+        self.assertEqual(c.delivery_plan(rows,pending,action),(None,False))
+        # 이전보다 오래된 기준일도 다시 보내지 않는다.
+        older=rows[:-1]
+        self.assertEqual(c.delivery_plan(older,pending,c.decide(older,pending)),(None,False))
+
+    def test_confirmed_daily_receipt_keeps_prior_alert_receipt(self):
+        rows=sample(52,68.3)
+        prior={"notified_rank":2,"delivery_receipt":{"message_id":509},
+               "last_alert_signature":"original-alert-signature"}
+        action=c.decide(rows,prior)
+        kind,due=c.delivery_plan(rows,prior,action)
+        self.assertEqual((kind,due),("daily",True))
+        pending=c.pending_delivery_state(prior,action,rows[-1],
+            dt.datetime(2026,11,16,20,tzinfo=ZoneInfo("Asia/Seoul")),kind,due)
+        message="<b>국내 신용금리 일일 보고 | 주의</b>"
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            alert=root/"daily.html"; statefile=root/"pending.json"; ack=root/"confirmed.json"
+            alert.write_text(message,encoding="utf-8")
+            statefile.write_text(__import__("json").dumps(pending),encoding="utf-8")
+            def fake(url,params=None):
+                if url.endswith("/getMe"): return {"ok":True,"result":{"username":c.BOT}}
+                if url.endswith("/sendMessage"):
+                    self.assertEqual(params["chat_id"],"-1234567")
+                    return {"ok":True,"result":{"message_id":510,
+                        "text":c.telegram_plaintext(message),"chat":{"id":-1234567}}}
+                raise AssertionError("Unexpected Telegram call")
+            with patch.dict(c.os.environ,{"TELEGRAM_BOT_TOKEN":"TESTONLY",
+                        "TELEGRAM_CHAT_ID":"-1234567","FORMAT_SAMPLE_SEND":"false"}):
+                with patch.object(c,"ALERT",alert),patch.object(c,"PENDING",statefile),patch.object(c,"ACK",ack):
+                    with patch.object(c,"telegram",side_effect=fake):
+                        c.send(dt.datetime(2026,11,16,20,1,tzinfo=ZoneInfo("Asia/Seoul")))
+            done=__import__("json").loads(statefile.read_text(encoding="utf-8"))
+            self.assertNotIn("_pending_message_kind",done)
+            self.assertNotIn("_pending_daily_due",done)
+            self.assertEqual(done["delivery_receipt"]["message_id"],509)
+            self.assertEqual(done["last_daily_report_receipt"]["message_id"],510)
+            self.assertEqual(done["last_delivery_receipt"]["message_id"],510)
+            self.assertEqual(done["last_alert_signature"],"original-alert-signature")
+
+    def test_risk_still_sends_after_same_day_daily_report(self):
+        rows=sample(52,68.3)
+        state={"notified_rank":2,"last_daily_report_date":rows[-1]["date"]}
+        rows[-1].update(cp_cd=70,rank=c.level(70,68.3))
+        action=c.decide(rows,state)
+        self.assertTrue(action["send"])
+        kind,due=c.delivery_plan(rows,state,action)
+        self.assertEqual((kind,due),("alert",False))
+        pending=c.pending_delivery_state(state,action,rows[-1],
+            dt.datetime(2026,11,16,20,tzinfo=ZoneInfo("Asia/Seoul")),kind,due)
+        self.assertEqual(pending["last_daily_report_date"],state["last_daily_report_date"])
+        self.assertEqual(pending["last_alert_signature"],action["signature"])
+        self.assertEqual(pending["notified_rank"],3)
+
+    def test_risk_and_daily_merged_when_both_due(self):
+        rows=sample(52,68.3)
+        rows[-1].update(cp_cd=70,rank=3)
+        action=c.decide(rows,{"notified_rank":2})
+        kind,due=c.delivery_plan(rows,{"notified_rank":2},action)
+        self.assertEqual((kind,due),("alert",True))
+        pending=c.pending_delivery_state({"notified_rank":2},action,rows[-1],
+            dt.datetime(2026,11,16,20,tzinfo=ZoneInfo("Asia/Seoul")),kind,due)
+        self.assertEqual(pending["last_daily_report_date"],rows[-1]["date"])
 
     def test_utc_cron_mapping_and_health_persistence_declared(self):
         path=pathlib.Path(__file__).parents[1]/".github/workflows/korea-credit-spread-telegram-watch.yml"

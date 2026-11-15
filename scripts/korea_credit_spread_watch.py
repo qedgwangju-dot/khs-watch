@@ -179,6 +179,30 @@ def decide(rows,state):
     return {"send":send,"rank":target,"previous_rank":old,"transition":transition,
             "events":events,"signature":signature}
 
+def delivery_plan(rows,state,decision):
+    """확정 경보는 즉시, 정상·보합이어도 신규 공식 기준일은 1회 정기 보고."""
+    latest_date=rows[-1]["date"]
+    last_daily=str(state.get("last_daily_report_date") or "")
+    daily_due=latest_date>last_daily
+    if decision["send"]: return "alert",daily_due
+    if daily_due: return "daily",True
+    return None,False
+
+def pending_delivery_state(state,decision,latest,now,kind,daily_due):
+    """실제 전송 전에는 커밋하지 않으며 기존 경보 기록도 보존."""
+    if kind not in ("alert","daily"): raise ValueError("잘못된 발송 종류")
+    new=dict(state)
+    if kind=="alert":
+        new.update({"notified_rank":decision["rank"],"last_source_date":latest["date"],
+                    "last_alert_signature":decision["signature"],"transition":decision["transition"],
+                    "last_alert_at_kst":now.isoformat(timespec="seconds"),
+                    "cp_cd_bp":latest["cp_cd"],"aa_spread_bp":latest["credit"],
+                    "source":SOURCE,"stat_code":TABLE})
+    if daily_due: new["last_daily_report_date"]=latest["date"]
+    new["_pending_message_kind"]=kind
+    new["_pending_daily_due"]=daily_due
+    return new
+
 def signed(v):
     # 반올림으로 생기는 -0.0bp 표시를 제거한다.
     z=round(float(v),1)
@@ -265,7 +289,7 @@ def verified_health_snapshot(rows,codes,now,decision):
             "source":SOURCE,"stat_code":TABLE,
             "codes":codes,"note":"원자료 검증 성공 기록. 텔레그램 발송 확인과는 별개"}
 
-def render(rows,decision,now,sample=False):
+def render(rows,decision,now,sample=False,daily=False):
     if len(rows)<7: raise ValueError("원문 통계가 7공표일 미만이라 메시지 생성 불가")
     latest,prev,week=rows[-1],rows[-2],rows[-6]
     measured=LEVELS[latest["rank"]]
@@ -280,7 +304,7 @@ def render(rows,decision,now,sample=False):
     lines=[]
     if sample: lines.append("<b>[양식 검증 · 새 경보가 아닙니다]</b>")
     lines += [
-        f"<b>국내 신용금리 경보 | {applied}</b>",
+        f"<b>국내 신용금리 {'일일 보고' if daily else '경보'} | {applied}</b>",
         f"<b>5영업일 방향: {d['summary']}</b>",
         f"전일: CP–CD {signed(diff1('cp_cd'))}bp {day_word(diff1('cp_cd'))} / "
         f"AA-금리차 {signed(diff1('credit'))}bp {day_word(diff1('credit'))}",
@@ -381,7 +405,14 @@ def send(now):
     if not token or not chat: raise RuntimeError("기존 GLOBAL_RATES 텔레그램 보안 설정 누락")
     sample=os.environ.get("FORMAT_SAMPLE_SEND","").strip().lower()=="true"
     if not ALERT.exists() or (not sample and not PENDING.exists()):
-        raise RuntimeError("검증된 신규 경보 없음")
+        raise RuntimeError("검증된 신규 경보 또는 정기 보고 없음")
+    pending=None
+    if not sample:
+        pending=json.loads(PENDING.read_text(encoding="utf-8"))
+        if pending.get("_pending_message_kind") not in ("alert","daily"):
+            raise RuntimeError("검증된 보고 종류 없음: Telegram 전송 중단")
+        if not isinstance(pending.get("_pending_daily_due"),bool):
+            raise RuntimeError("정기 보고 중복 방지 상태 누락")
     who=telegram(f"https://api.telegram.org/bot{token}/getMe")
     got=str((who.get("result") or {}).get("username") or "")
     if who.get("ok") is not True or got.lower()!=BOT.lower():
@@ -406,9 +437,12 @@ def send(now):
              "run_id":os.environ.get("GITHUB_RUN_ID","local")}
     ACK.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     if not sample:
-        state=json.loads(PENDING.read_text(encoding="utf-8"))
-        state["delivery_receipt"]=receipt
-        PENDING.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+        kind=pending.pop("_pending_message_kind")
+        daily_due=pending.pop("_pending_daily_due")
+        pending["last_delivery_receipt"]=receipt
+        if kind=="alert": pending["delivery_receipt"]=receipt
+        if daily_due: pending["last_daily_report_receipt"]=receipt
+        PENDING.write_text(json.dumps(pending,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(f"telegram_delivery_confirmed=true full_text_verified=true sample={sample} bot=@{got} message_id={mid}")
 
 def watch(now):
@@ -420,6 +454,7 @@ def watch(now):
     rows=aligned(values,now)
     state=json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
     action=decide(rows,state)
+    kind,daily_due=delivery_plan(rows,state,action)
     health=verified_health_snapshot(rows,codes,now,action)
     prior=json.loads(HEALTH.read_text(encoding="utf-8")) if HEALTH.exists() else {}
     if prior.get("fingerprint")!=health["fingerprint"] or prior.get("alert_rank")!=health["alert_rank"]:
@@ -437,17 +472,13 @@ def watch(now):
         f"추가 신호: {'; '.join(action['events']) or '없음'}",
         f"CP–CD {latest['cp_cd']:.1f}bp / 회사채 AA- {latest['credit']:.1f}bp",
         "공식 항목코드: "+", ".join(k+"="+v for k,v in codes.items()),
-        "알림 상태: "+("형식 시험(실제 새 경보 아님)" if sample else ("새 경보 검증됨" if action["send"] else "새 경보 없음")),
+        "알림 상태: "+("형식 시험(실제 새 경보 아님)" if sample else ("신규 경보" if kind=="alert" else ("공식 기준일 신규 일일 보고" if kind=="daily" else "중복 기준일·신규 경보 없음"))),
         "원천: "+SOURCE])+"\n",encoding="utf-8")
-    print(f"credit_source_valid=true day={latest['date']} cp_cd={latest['cp_cd']} credit={latest['credit']} alert={action['send']}")
-    if action["send"] or sample or preview:
-        ALERT.write_text(render(rows,action,now,sample=sample)+"\n",encoding="utf-8")
-    if action["send"] and not sample and not preview:
-        new={"notified_rank":action["rank"],"last_source_date":latest["date"],
-             "last_alert_signature":action["signature"],"transition":action["transition"],
-             "last_alert_at_kst":now.isoformat(timespec="seconds"),
-             "cp_cd_bp":latest["cp_cd"],"aa_spread_bp":latest["credit"],
-             "source":SOURCE,"stat_code":TABLE}
+    print(f"credit_source_valid=true day={latest['date']} cp_cd={latest['cp_cd']} credit={latest['credit']} alert={action['send']} daily_due={daily_due} message_kind={kind}")
+    if kind or sample or preview:
+        ALERT.write_text(render(rows,action,now,sample=sample,daily=(kind=="daily"))+"\n",encoding="utf-8")
+    if kind and not sample and not preview:
+        new=pending_delivery_state(state,action,latest,now,kind,daily_due)
         PENDING.write_text(json.dumps(new,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 
 if __name__=="__main__":

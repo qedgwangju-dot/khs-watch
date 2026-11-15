@@ -57,6 +57,7 @@ jobs:
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
       # 코드 push는 무조건 미전송 검사, 명시적 [format-sample]만 1회 시험 발송.
+      # 정기 실행은 신규 공식 기준일당 1회 보고 + 확정 위험 경보; 중복은 상태파일로 차단.
       DRY_RUN: ${{ ((github.event_name == 'push' && !contains(github.event.head_commit.message, '[format-sample]')) || (github.event_name == 'workflow_dispatch' && inputs.dry_run == 'true')) && 'true' || 'false' }}
       FORMAT_SAMPLE_SEND: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[format-sample]') && 'true' || 'false' }}
     steps:
@@ -107,14 +108,14 @@ jobs:
         run: |
           echo "금리 경보 임계값 테스트 성공 / 텔레그램 미전송" >> "$GITHUB_STEP_SUMMARY"
           cat out/korea_credit_spread_watch_alert.html >> "$GITHUB_STEP_SUMMARY"
-      - name: Send alert only to exact designated Telegram bot
+      - name: Send confirmed daily report or risk alert to designated Telegram bot
         if: env.DRY_RUN != 'true' && hashFiles('out/korea_credit_spread_watch_alert.html') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
           FORMAT_SAMPLE_SEND: ${{ env.FORMAT_SAMPLE_SEND }}
         run: python scripts/korea_credit_spread_watch.py --send
-      - name: Persist alert state only after Telegram delivery acknowledgement
+      - name: Persist daily report and alert state only after Telegram acknowledgement
         if: success() && env.DRY_RUN != 'true' && env.FORMAT_SAMPLE_SEND != 'true' && hashFiles('out/korea_credit_spread_watch_confirmed.json') != ''
         run: |
           set -e
