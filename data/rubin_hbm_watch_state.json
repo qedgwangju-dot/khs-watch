@@ -1368,7 +1368,7 @@
   },
   "_delivery": {
     "id": "2f2bf79c49dfe78c88e9dfa048d9be9f6d67c0555b411f131778af41c1ed243e",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-11-16T03:36:13+09:00",
     "chunks": [
       "<b>[HBM 기존 감시 보강 | 중요 신규·누락 사건]</b>\n<b>엔비디아·비엔비디아 HBM4 공급 배분·고객별 가격</b>\n확인: 2026-11-16T03:35:58+09:00 · 최초 보도일 기준 · 원보도/재인용 구분\n\n<b>■ SemiAnalysis: 젠슨 사임 이후 HBM4 공급 우선순위·2028년 비엔비디아 비중 전망</b>\n• 최초 보도: 2026-11-12 · 출처 단계: 원문·리서치 추정\n• 확정 사실: NVIDIA는 11월 12일 젠슨 황 사임·콜레트 크레스 임시 CEO 선임 발표(기존 NVIDIA 임원변화 감시에서 별도 관리).\n• SemiAnalysis 전망: 젠슨 퇴임 뒤 메모리 공급사의 NVIDIA 우선 배정 약화, 2028년 비엔비디아 AI 칩 고객이 전체 공급능력의 70% 초과를 확보할 가능성.\n• 중요한 분모: 원문은 &#x27;total capacity&#x27;라고 표현하며 이를 전 세계 HBM4 생산능력 중 70% 확정 배정으로 볼 근거는 없습니다.\n• 2027년 SK하이닉스 HBM4 1Gb당 계약가격 추정: NVIDIA 3.0달러/Gb(약 4,011원/Gb)~3.3달러/Gb(약 4,413원/Gb), AMD·Broadcom·Amazon·Google 3.7달러/Gb(약 4,947원/Gb)~4.1달러/Gb(약 5,482원/Gb).\n• 구분·위험: 모두 SemiAnalysis 추정·전망으로 계약확정·고객별 구매물량·SK하이닉스 공시 평균판매단가 아님; 공급사 확정 주문·고객별 생산능력·양산 출하 변화는 공식 자료로 별도 판정.\n• <a href=\"https://newsletter.semianalysis.com/p/nvidia-and-the-world-without-jensen\">근거 기사</a> (SemiAnalysis 11월 12일 원문)\n\n환율 기준: USD/KRW 1,337.1300원 · 2026-11-13 일일 기준 · ECB/Frankfurter · 조회 2026-11-16 03:36 KST · 보조 API 2026-11-15 · 차이 0.08% · 일중 기준시각 차이 가능"
@@ -2746,6 +2746,7 @@
         "unconfirmed_sources": [],
         "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield"
       }
-    }
+    },
+    "attempt_at_kst": "2026-11-16T03:36:15+09:00"
   }
 }
