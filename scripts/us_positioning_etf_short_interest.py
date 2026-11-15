@@ -665,6 +665,16 @@ def run(*, validate_only: bool, now: dt.date | None = None, getter=get,
         "telegram_sent": False,
         "validate_only": validate_only,
     }
+    if validate_only and not due:
+        # Code-only checks may verify live pricing/FX safely after an earlier alert.
+        # Never retransmit an already-sent settlement or advance its dedupe key.
+        basis = collect_krw_basis(current["settlement"], getter=getter)
+        result["krw_valuation_status"] = basis["status"]
+        result["krw_verified_closes"] = {
+            ticker: item["close_usd"] for ticker, item in basis.get("prices", {}).items()
+        }
+        verified_fx = checked_fx(basis.get("fx"), current["settlement"])
+        result["krw_verified_fx"] = verified_fx.get("krw_per_usd") if verified_fx else None
     if due:
         current["krw_basis"] = collect_krw_basis(current["settlement"], getter=getter)
         result["krw_valuation_status"] = current["krw_basis"]["status"]
