@@ -42,6 +42,15 @@ try:
     october=item("Jan-Oct 2026 Global (Excl. China) EV Battery Usage","SNE Research battery usage and market share","SNE Research","2026-12-04T00:00:00+00:00")
     oct_reprint=item("2026년 1~10월 중국 제외 전기차 배터리 점유율","SNE리서치 비중국 시장 배터리 사용량 GWh","SNE리서치","2026-12-05T00:00:00+00:00")
     assert audit(october)[1]>=11 and audit(october)[2]==audit(oct_reprint)[2],"Monthly source rewrites must dedup by period"
+    catl_fine=item("CATL Debrecen Hungary environmental fine imposed", "new official environmental order", "Kormányhivatalok", "2026-11-21T00:00:00+00:00")
+    semcorp_shutdown=item("Semcorp Debrecen Hungary production suspension ordered", "new official environment order", "Kormányhivatalok", "2026-11-21T00:00:00+00:00")
+    ecopro_fine=item("EcoPro BM Debrecen Hungary environmental fine imposed", "new official environment order", "Kormányhivatalok", "2026-11-21T00:00:00+00:00")
+    for company_event in (catl_fine, semcorp_shutdown, ecopro_fine):
+        assert audit(company_event)[0]==HUNGARY and audit(company_event)[1]>=11, "New named official Hungary action must alert"
+        assert audit(item(company_event["title"],company_event["description"],"Telex",company_event["published"]))[1]==0, "Media report must not become official action"
+    assert len({audit(x)[2] for x in (catl_fine,semcorp_shutdown,ecopro_fine)})==3, "Different businesses need different dedup keys"
+    old_catl=item(catl_fine["title"],catl_fine["description"],"Kormányhivatalok","2026-08-25T00:00:00+00:00")
+    assert audit(old_catl)[1]==0, "CATL August 2026 penalty is historical, not new"
     generic=item("CATL 2026 Debrecen Hungary trial cell production","First two lines start trial","CATL","2026-09-22T00:00:00+00:00")
     assert audit(generic)[0]!=HUNGARY,"Existing CATL capacity lane stays intact"
     base.NOW=dt.datetime(2026,11,19,0,0,tzinfo=dt.timezone.utc)

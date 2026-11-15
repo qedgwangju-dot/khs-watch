@@ -22,12 +22,12 @@ OFFICIAL_GOVERNMENT = re.compile(
 )
 OFFICIAL_COMPANY = re.compile(
     r"^(?:Volta Energy Solutions Hungary|Solus Advanced Materials|솔루스첨단소재|"
-    r"SK On|SK온|Samsung SDI|삼성SDI)$", re.I,
+    r"SK On|SK온|Samsung SDI|삼성SDI|CATL|宁德时代|닝더스다이|Semcorp|셈코프|EcoPro BM|에코프로비엠)$", re.I,
 )
 OFFICIAL_SNE = re.compile(r"^(?:SNE\s*Research|SNE\s*리서치|SNE리서치)$", re.I)
 TRUSTED_MEDIA = re.compile(r"^(?:Telex|Portfolio|Kemma|24\.hu|Reuters|연합뉴스|전자신문|한국경제)$", re.I)
 HUNGARY_PLACE = re.compile(r"헝가리|Hungar|Magyar|Környe|Kornye|쾨르녜|Tatabánya|Iváncsa|Ivancsa|이반차|괴드|\bGöd\b|Debrecen|데브레첸", re.I)
-BATTERY_ACTOR = re.compile(r"Volta Energy Solutions|볼타\s*에너지|솔루스첨단소재|Solus|SK\s*On|SK온|Samsung\s*SDI|삼성SDI", re.I)
+BATTERY_ACTOR = re.compile(r"Volta Energy Solutions|볼타\s*에너지|솔루스첨단소재|Solus|SK\s*On|SK온|Samsung\s*SDI|삼성SDI|CATL|宁德时代|닝더스다이|Semcorp|셈코프|EcoPro\s*BM|에코프로비엠", re.I)
 SNE_ACTOR = re.compile(r"SNE\s*Research|SNE리서치|SNE\s*리서치", re.I)
 SNE_EXCHINA = re.compile(r"비\s*중국|非\s*중국|중국\s*제외|excluding\s*China|excl\.?\s*China|ex-China|비중국", re.I)
 SNE_USAGE = re.compile(r"전기차|EV\s*battery|battery\s*usage|배터리\s*(?:사용량|시장|점유율)|GWh", re.I)
@@ -41,6 +41,8 @@ QUERIES = (
     '(SK온 OR "SK On" OR "Samsung SDI" OR 삼성SDI) (Iváncsa OR 이반차 OR Göd OR 괴드 OR Hungary OR 헝가리) (환경 과태료 OR 환경 인허가 OR 생산 중단 OR pollution OR fine OR revocation)',
     '(280/2026 OR 412/2026 OR "Országos Élőkörnyezet") (battery OR akkumulátor OR 환경 OR appeal OR fines OR permit)',
     '("SNE Research" OR SNE리서치) (비중국 OR 중국 제외 OR ex-China OR excluding China) (배터리 사용량 OR battery usage OR market share OR 점유율) 2026 2027',
+    '(CATL OR 宁德时代 OR Semcorp OR 셈코프) (Hungary OR 헝가리 OR Debrecen OR 데브레첸) (환경 OR 오염 OR 과태료 OR 벌금 OR 가동중단 OR 허가 OR fine OR suspension OR pollution OR permit)',
+    '("EcoPro BM" OR 에코프로비엠) (Hungary OR 헝가리 OR Debrecen OR 데브레첸) (환경 OR 과태료 OR 벌금 OR 가동중단 OR 인허가 OR fine OR suspension OR pollution OR permit)',
 )
 
 def _body(item: dict) -> str:
@@ -53,6 +55,12 @@ def _company(text: str) -> str:
         return "skon"
     if re.search(r"Samsung\s*SDI|삼성SDI", text, re.I):
         return "sdi"
+    if re.search(r"CATL|宁德时代|닝더스다이", text, re.I):
+        return "catl"
+    if re.search(r"Semcorp|셈코프", text, re.I):
+        return "semcorp"
+    if re.search(r"EcoPro\s*BM|에코프로비엠", text, re.I):
+        return "ecoprobm"
     return "unspecified"
 
 def _period(text: str) -> str:
