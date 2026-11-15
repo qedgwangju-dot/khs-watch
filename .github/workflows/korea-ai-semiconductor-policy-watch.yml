@@ -68,6 +68,7 @@ jobs:
           workflow=Path('.github/workflows/korea-ai-semiconductor-policy-watch.yml').read_text(encoding='utf-8')
           assert 'cron: "23,53 * * * *"' in workflow
           assert 'cancel-in-progress: false' in workflow
+          assert 'chat_identity_verified' in workflow and 'telegram_message_ids' in workflow
           assert "github.event_name != 'push'" in workflow
           print('aidc_policy_stage_regression=passed')
           PY
@@ -198,6 +199,27 @@ jobs:
         if: github.event_name != 'push' && success() && hashFiles('out/korea_ai_semiconductor_policy_watch_pending_state.json') != '' && (hashFiles('out/korea_ai_semiconductor_policy_watch_alert.html') == '' || hashFiles('out/korea_ai_semiconductor_policy_watch_telegram_confirmed.json') != '')
         run: |
           cp out/korea_ai_semiconductor_policy_watch_pending_state.json data/korea_ai_semiconductor_policy_watch_state.json
+          # Only an actual successful API response may update delivery metadata.
+          # Silent runs retain the last genuine successful send information unchanged.
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("data/korea_ai_semiconductor_policy_watch_state.json")
+          receipt = Path("out/korea_ai_semiconductor_policy_watch_telegram_confirmed.json")
+          if receipt.exists():
+              confirmation = json.loads(receipt.read_text(encoding="utf-8"))
+              message_ids = confirmation.get("message_ids") or []
+              if confirmation.get("status") != "confirmed" or confirmation.get("chat_identity_verified") is not True:
+                  raise RuntimeError("Invalid Telegram delivery receipt; state intentionally not marked delivered")
+              if not message_ids or any(not isinstance(i, int) for i in message_ids):
+                  raise RuntimeError("Telegram delivery receipt missing valid message ids")
+              state = json.loads(path.read_text(encoding="utf-8"))
+              state["last_successful_delivery_kst"] = confirmation.get("confirmed_at_kst")
+              state["telegram_message_ids"] = message_ids
+              state["telegram_bot_username"] = confirmation.get("bot_username")
+              state["telegram_chat_identity_verified"] = True
+              path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/korea_ai_semiconductor_policy_watch_state.json
