@@ -69,7 +69,7 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-15T18:56:05+09:00",
+  "updated_at_kst": "2026-11-16T02:05:40+09:00",
   "last_scan_count": 4,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
@@ -132,7 +132,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -178,6 +178,7 @@
     "c21f43569955742f3d6b1742",
     "c579cb29ce77119cfbcdf008",
     "d48264b617e856e8ce2d499e",
+    "d545efe8109e5a327521088c",
     "d598b87380cce293712421fa",
     "d60dfe850a361eaa2e1fd5cf",
     "e1d440cfbe88d3ed7f2505b8",
@@ -193,7 +194,14 @@
     "fbb3374837c522b4bf3b2884"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "korea|capacity|SK hynix|hbm4",
+      "source": "KuCoin",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-11-15T20:13:16+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
   "telegram_message_ids": [
     397
