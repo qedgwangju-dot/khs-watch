@@ -8856,6 +8856,10 @@ _nov13_milestones.install(base)
 import robot_watch_hungary_battery_risk as _hungary_battery
 _hungary_battery.install(base)
 
+# Reuters-reported J.P. Morgan ROBOTIS outlook: broker view, not a supply contract.
+import robot_watch_jpm_humanoid_outlook as _jpm_humanoid
+_jpm_humanoid.install(base)
+
 
 if __name__ == '__main__':
     pre_state = base.load_state()

@@ -6181,4 +6181,6 @@ import robot_watch_hungary_battery_regression as _hungary_battery_regression
 import robot_watch_seen_selection_regression as _selection_regression
 _selection_regression.run()
 
+import robot_watch_jpm_humanoid_regression as _jpm_humanoid_regression
+
 print("Physical-AI watcher regression guards: PASS")
