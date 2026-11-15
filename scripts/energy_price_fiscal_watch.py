@@ -67,12 +67,20 @@ def candidates(page,list_url,source):
     soup=BeautifulSoup(page,"html.parser")
     found={}
     for a in soup.select("a"):
-        title=compact(a.get_text(" ",strip=True))
+        title_node=a.select_one("strong.tit, strong.title")
+        title=compact(title_node.get_text(" ",strip=True) if title_node else a.get_text(" ",strip=True))
         href=str(a.get("href") or "")
         onclick=str(a.get("onclick") or "")
         url=urljoin(list_url,href)
+        if source.startswith("kepco") and not official_id(url,source):
+            # KEPCO 게시판의 실제 목록 링크는 javascript:fn_Detail('15','3189') 형태
+            m=re.search(r"fn_Detail\s*\(\s*['\"]?(\d+)['\"]?\s*,\s*['\"]?(\d+)['\"]?\s*\)",href+" "+onclick,re.I)
+            if m:
+                section="pr" if source=="kepco_press" else "notice"
+                url=f"https://www.kepco.co.kr/home/media/newsroom/{section}/boardView.do?boardMngNo={m.group(1)}&boardNo={m.group(2)}"
         if source=="kogas_press" and not official_id(url,source):
-            m=re.search(r"(?:boardIdx\s*=\s*|goView\s*\(\s*|fnView\s*\(\s*)(\d{4,})",href+" "+onclick,re.I)
+            # KOGAS 공식 목록: javascript:readPermissionChk(47879);
+            m=re.search(r"(?:readPermissionChk|goView|fnView)\s*\(\s*['\"]?(\d{4,})",href+" "+onclick,re.I)
             if m:
                 url="https://www.kogas.or.kr/site/koGas/bbs/View.do?Key=1010202000000&cbIdx=41&boardIdx="+m.group(1)
         ident=official_id(url,source)

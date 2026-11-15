@@ -34,6 +34,27 @@ class PriceFiscalTests(unittest.TestCase):
         self.assertEqual(len(a),2)
         self.assertEqual([x["category"] for x in a],["oil_cap",None])
 
+    def test_kepco_javascript_post_links(self):
+        html = """<html><body>
+        <a href="javascript:fn_Detail('15','3190');"><strong class="tit">한전, ’26년 3분기(누계, 1~9월) 결산실적 발표</strong><span class="date">2026.11.12</span></a>
+        <a href="javascript:fn_Detail('15','3189');"><strong class="tit">한전, 기술 혁신 성과 공유</strong><span class="date">2026.11.12</span></a>
+        </body></html>"""
+        rows=w.candidates(html,w.SOURCES["kepco_press"][0],"kepco_press")
+        self.assertEqual(len(rows),2)
+        self.assertEqual(rows[0]["id"],"kepco:3190")
+        self.assertEqual(rows[0]["category"],"kepco_financial")
+        self.assertNotIn("2026.11.12",rows[0]["title"])
+
+    def test_kogas_javascript_post_links(self):
+        html = """<html><body>
+        <a href="javascript:readPermissionChk(47879);"><strong class="title">가스공사, 전국 쪽방촌 주민 지원</strong></a>
+        <a href="javascript:readPermissionChk(47880);"><strong class="title">가스공사, 민수용 미수금 14조원 발표</strong></a>
+        </body></html>"""
+        rows=w.candidates(html,w.SOURCES["kogas_press"][0],"kogas_press")
+        self.assertEqual(len(rows),2)
+        self.assertEqual(rows[1]["id"],"kogas:47880")
+        self.assertEqual(rows[1]["category"],"kogas_financial")
+
     def test_identifier_strict_exact_official(self):
         self.assertEqual(w.official_id("https://www.kepco.co.kr/home/media/newsroom/pr/boardView.do?boardMngNo=15&boardNo=3115","kepco_press"),"kepco:3115")
         self.assertEqual(w.official_id("https://www.kogas.or.kr/site/koGas/bbs/View.do?Key=1010202000000&boardIdx=47869&cbIdx=41","kogas_press"),"kogas:47869")
