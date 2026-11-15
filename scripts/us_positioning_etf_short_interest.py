@@ -418,6 +418,51 @@ def _close_on_settlement(ticker: str, settlement: str, getter=get) -> dict | Non
         except (OSError, KeyError, IndexError, ValueError, TypeError, InvalidOperation,
                 AttributeError, OverflowError):
             continue
+    # Yahoo's chart API may be rate-limited on GitHub runners.  Only exact-date,
+    # non-adjusted 'Close' cells from trusted dated historical tables qualify.
+    html_sources = [
+        "https://www.quiverquant.com/stock/" + ticker + "/historical-prices/",
+        "https://stockanalysis.com/etf/" + ticker.lower() + "/history/",
+        "https://finance.yahoo.com/quote/" + ticker + "/history/",
+    ]
+    for url in html_sources:
+        try:
+            soup = BeautifulSoup(getter(url), "html.parser")
+            for table in soup.select("table"):
+                head = table.find("tr")
+                if head is None:
+                    continue
+                headings = [x.get_text(" ", strip=True).lower()
+                            for x in head.find_all(["th", "td"], recursive=False)]
+                dcol = next((i for i, text in enumerate(headings)
+                             if text.strip().startswith("date")), None)
+                ccol = next((i for i, text in enumerate(headings)
+                             if text.strip().startswith("close") and not text.strip().startswith("adj")), None)
+                if dcol is None or ccol is None:
+                    continue
+                matched = []
+                for tr in table.select("tr")[1:]:
+                    cells = [x.get_text(" ", strip=True) for x in
+                             tr.find_all(["th", "td"], recursive=False)]
+                    if len(cells) <= max(dcol, ccol):
+                        continue
+                    try:
+                        row_date = day(cells[dcol])
+                    except ValueError:
+                        continue
+                    if row_date != date:
+                        continue
+                    raw = cells[ccol].replace(",", "")
+                    if not re.fullmatch(r"\d+(?:\.\d{1,4})?", raw):
+                        continue
+                    value = Decimal(raw).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+                    if 0 < value < 10000:
+                        matched.append(value)
+                if len(matched) == 1:
+                    return {"date": settlement, "close_usd": str(matched[0]),
+                            "source": url}
+        except (OSError, ValueError, TypeError, InvalidOperation, AttributeError):
+            continue
     return None
 
 

@@ -376,6 +376,23 @@ class ETFShortInterestTests(unittest.TestCase):
                       etf._position_direction({"change_shares": 793090, "change_pct": 0.97},
                                               {"change_shares": 9774163, "change_pct": 10.51}, {})[-1])
 
+
+    def test_historical_close_html_fallback_uses_exact_date_and_unadjusted_column(self):
+        sample = """<table><tr><th>Date</th><th>Open</th><th>High</th>
+        <th>Low</th><th>Close</th><th>Adj Close</th><th>Volume</th></tr>
+        <tr><td>Oct 30, 2026</td><td>697.21</td><td>698.63</td>
+        <td>683.45</td><td>690.49</td><td>620.00</td><td>85,242,100</td></tr></table>"""
+        def web_get(url):
+            if "quiverquant.com" in url:
+                return sample
+            raise ValueError("source temporarily inaccessible")
+        quote = etf._close_on_settlement("QQQ", "2026-10-30", getter=web_get)
+        self.assertIsNotNone(quote)
+        self.assertEqual(quote["close_usd"], "690.49")
+        self.assertIn("quiverquant.com", quote["source"])
+        self.assertIsNone(etf._close_on_settlement("QQQ", "2026-10-29",
+                                                  getter=web_get))
+
     def test_krw_notional_missing_fx_or_close_never_invents_money(self):
         unavailable = etf.collect_krw_basis("2026-10-30", getter=lambda _: "")
         self.assertEqual(unavailable["status"], "unavailable")
