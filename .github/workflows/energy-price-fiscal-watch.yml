@@ -108,20 +108,49 @@ jobs:
       - name: 조회·전송 성공한 상태만 저장
         if: steps.scan.conclusion == 'success' && (steps.scan.outputs.changed == 'false' || steps.send.conclusion == 'success')
         run: |
-          mkdir -p data
-          cp out/energy_price_fiscal_pending.json data/energy_price_fiscal_state.json
           git config user.name "energy-price-fiscal-watch[bot]"
           git config user.email "energy-price-fiscal-watch[bot]@users.noreply.github.com"
-          git add data/energy_price_fiscal_state.json
-          if ! git diff --cached --quiet; then
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p data
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          incoming = json.loads(Path("out/energy_price_fiscal_pending.json").read_text(encoding="utf-8"))
+          path = Path("data/energy_price_fiscal_state.json")
+          previous = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+          latest = incoming if str(incoming.get("updated_at_kst","")) >= str(previous.get("updated_at_kst","")) else previous
+          merged = json.loads(json.dumps(latest))
+          seen = merged.setdefault("seen", {})
+          for snapshot in (previous, incoming):
+              for source, doc_ids in (snapshot.get("seen") or {}).items():
+                  seen[source] = sorted(set(seen.get(source,[])) | set(doc_ids))[-2500:]
+          merged["initialized"] = bool(previous.get("initialized") or incoming.get("initialized"))
+          seed_dates = [x for x in (previous.get("seeded_date"),incoming.get("seeded_date")) if x]
+          if seed_dates:
+              merged["seeded_date"] = min(seed_dates)
+          sources = merged.setdefault("sources", {})
+          for snapshot in (previous, incoming):
+              for source, metadata in (snapshot.get("sources") or {}).items():
+                  if source not in sources or metadata.get("last_ok_kst","") >= sources[source].get("last_ok_kst",""):
+                      sources[source] = metadata
+          path.write_text(json.dumps(merged,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+            git add data/energy_price_fiscal_state.json
+            if git diff --cached --quiet; then
+              echo "energy_state_unchanged=true"
+              exit 0
+            fi
             git commit -m "Update energy price fiscal watch state [skip ci]"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then exit 0; fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            exit 1
-          fi
+            if git push origin HEAD:main; then
+              echo "energy_state_committed=true"
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "State commit failed after merging latest remote state" >&2
+          exit 1
       - name: 감사 기록 저장
         if: always()
         uses: actions/upload-artifact@v4
