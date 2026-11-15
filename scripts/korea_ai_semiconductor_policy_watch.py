@@ -24,6 +24,9 @@ STATUS = OUT / "korea_ai_semiconductor_policy_watch_status.md"
 KST = ZoneInfo("Asia/Seoul")
 UA = "Mozilla/5.0 (compatible; KHSAISemiconductorPolicyWatch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 
+AIDC_RND_VERSION = 1
+# The 2026-11-12 conference plan is a baseline, not a new government award.
+AIDC_PRIOR_PLAN = "aidc-network|integrated|2027|plan"
 COMPANIES = (
     "리벨리온", "rebellions", "퓨리오사ai", "퓨리오사 ai", "furiosa", "딥엑스", "deepx",
     "모빌린트", "mobilint", "하이퍼엑셀", "hyperaccel",
@@ -49,13 +52,13 @@ OFFICIAL_MARKERS = (
     "과학기술정보통신부", "산업통상자원부", "금융위원회", "조달청", "기획재정부",
     "정보통신산업진흥원", "nipa", "한국수출입은행", "해외경제연구소", "수출입은행",
     "한국무역보험공사", "무역보험공사", "k-sure", "kotra", "대한무역투자진흥공사",
-    "정책브리핑", "대통령실", "산업은행", "한국산업은행", "국회도서관", "국가전략포털",
+    "정책브리핑", "대통령실", "산업은행", "한국산업은행", "국회도서관", "국가전략포털", "정보통신기획평가원", "iitp", "국회예산정책처", "nabo",
 )
 TRUSTED_NEWS_MARKERS = (
     "연합뉴스", "뉴시스", "전자신문", "지디넷코리아", "zdnet", "디지털데일리",
     "디일렉", "thelec", "서울경제", "한국경제", "매일경제", "머니투데이", "이데일리",
     "조선비즈", "아시아경제", "파이낸셜뉴스", "뉴스핌", "블로터", "아이뉴스24",
-    "이투데이", "아주경제", "비즈워치", "서울경제tv", "더벨",
+    "이투데이", "아주경제", "비즈워치", "서울경제tv", "더벨", "뉴스1", "news1",
 )
 
 QUERY_SPECS = [
@@ -72,6 +75,12 @@ QUERY_SPECS = [
     ("공식-국가전략포털", 'site:nsp.nanet.go.kr ("AI반도체" OR "AI 반도체" OR "NPU") (한국수출입은행 OR 정부 OR 정책 OR 지원) when:180d'),
     ("공식-KOTRA", 'site:kotra.or.kr ("AI 반도체" OR "NPU") (중동 OR 사우디 OR UAE OR 해외진출) when:180d'),
     ("공식-무보", 'site:ksure.or.kr ("AI 반도체" OR "NPU") (수출 OR 보증 OR 금융 OR 중동) when:180d'),
+    ("AIDC-국산광통신", '("AIDC" OR "AI 데이터센터") (국산화 OR 광통신 OR 광회선스위칭 OR 광스위칭 OR 광반도체 OR 도파관 OR "AI 기지국") (예산 OR 연구개발 OR 과제 OR 실증 OR 선정 OR 공고) when:60d'),
+    ("AIDC-광부품", '(CPO OR NPO OR OCS OR MEMS OR "L-COS" OR 광트랜시버 OR 인화인듐) (IITP OR 과기정통부 OR 국산화 OR "공공 파운드리") (연구개발 OR 사업 OR 과제 OR 예산 OR 선정 OR 공고 OR 양산) when:90d'),
+    ("AIDC-공식-과기", 'site:msit.go.kr (AIDC OR "AI데이터센터") (광통신 OR 광반도체 OR 광회선 OR 네트워크 OR 국산 OR 과제) when:120d'),
+    ("AIDC-공식-IITP", 'site:iitp.kr (AIDC OR 광집적회로 OR 광반도체 OR 광회선스위칭) (2027 OR 공고 OR 과제 OR 연구개발) when:120d'),
+    ("AIDC-공식-조달", 'site:pps.go.kr (AIDC OR 광회선스위칭 OR 광반도체 OR 광트랜시버) (입찰 OR 낙찰 OR 공고 OR 조달) when:180d'),
+    ("AIDC-공식-NABO", 'site:nabo.go.kr (AIDC OR "K-AIDC") ("소부장" OR 광통신 OR 예산안) 2027 when:120d'),
 ]
 
 
@@ -138,20 +147,77 @@ def resolve_original_url(value: str) -> str:
     return value
 
 
-def source_quality(source: str, lane: str) -> str:
-    text = f"{source} {lane}".lower()
-    if lane.startswith("공식-") or any(x.lower() in text for x in OFFICIAL_MARKERS):
+def source_quality(source: str, lane: str, source_url: str = "") -> str:
+    # A search on an official domain is NOT evidence that the publisher is official.
+    name = norm(source).lower()
+    host = (urllib.parse.urlsplit(source_url).hostname or "").lower()
+    primary_hosts = ("msit.go.kr", "iitp.kr", "korea.kr", "nabo.go.kr",
+                     "nipa.kr", "pps.go.kr", "nrf.re.kr", "kotra.or.kr", "ksure.or.kr")
+    if any(host == h or host.endswith("." + h) for h in primary_hosts) or any(x.lower() in name for x in OFFICIAL_MARKERS):
         return "공식"
-    if any(x.lower() in text for x in TRUSTED_NEWS_MARKERS):
+    if any(x.lower() in name for x in TRUSTED_NEWS_MARKERS):
         return "신뢰보도"
     return "기타보도"
+
+
+def aidc_milestone(title: str, summary: str = "") -> tuple[str, int, str, str] | None:
+    """AIDC optical R&D plan, budget, RFP, award and production are separate."""
+    head = norm(title)
+    text = f"{head} {norm(summary)}"
+    if not re.search(r"AIDC|AI\s*데이터센터|인공지능\s*데이터센터|광회선\s*스위칭|"
+                     r"광스위칭|\bOCS\b|\bCPO\b|\bNPO\b|\bInP\b|인화인듐|광반도체|"
+                     r"광트랜시버|도파관|AI\s*기지국", head, re.I):
+        return None
+    if not re.search(r"네트워크|광통신|광회선|광스위칭|광반도체|광트랜시버|"
+                     r"광원|\bCPO\b|\bNPO\b|\bOCS\b|인화인듐|\bInP\b|도파관|AI\s*기지국", text, re.I):
+        return None
+    if not re.search(r"정부|국산|한국|과기정통부|과학기술정보통신부|정보통신기획평가원|"
+                     r"\bIITP\b|국회|공공\s*파운드리|연구개발|R&D", text, re.I):
+        return None
+    if not re.search(r"예산|사업|지원|과제|공모|공고|연구개발|R&D|국산화|개발|"
+                     r"선정|협약|조달|구축|생산|검증|실증|착수|시제품|양산", text, re.I):
+        return None
+    if re.search(r"공공\s*파운드리|인화인듐|\bInP\b|광반도체", head, re.I):
+        axis, label = "inp-foundry", "InP 광반도체 공공 파운드리"
+    elif re.search(r"광회선\s*스위칭|광스위칭|\bOCS\b|\bMEMS\b|L-COS", head, re.I):
+        axis, label = "ocs", "OCS·MEMS·L-COS 광스위칭"
+    elif re.search(r"\bCPO\b|\bNPO\b|광트랜시버|광원\s*국산", head, re.I):
+        axis, label = "cpo-npo", "CPO·NPO·광트랜시버·광원"
+    elif re.search(r"도파관|구리\s*케이블|고주파", head, re.I):
+        axis, label = "waveguide", "랙 내부 구리·플라스틱 도파관"
+    elif re.search(r"AI\s*기지국|분산\s*추론", head, re.I):
+        axis, label = "ai-base-station", "AI 기지국·분산 추론"
+    else:
+        axis, label = "integrated", "AIDC 네트워크 국산화·기술개발"
+    if re.search(r"국회.{0,35}(본회의|예산안|예산).{0,25}(최종\s*의결|통과|확정)|"
+                 r"예산안.{0,20}국회.{0,20}(의결|통과)", head, re.I):
+        phase, level, status = "budget-approved", 4, "국회 의결 보도·공식 확인 필요"
+    elif re.search(r"실제\s*출하|첫\s*공급|양산\s*개시|생산\s*라인\s*가동|"
+                   r"파운드리\s*준공|시제품\s*검증\s*완료", head, re.I):
+        phase, level, status = "production", 5, "가동·검증·출하 주장·원문 확인 필요"
+    elif re.search(r"협약\s*체결|사업자\s*선정\s*완료|수행기관\s*최종\s*선정|"
+                   r"주관기관\s*선정|낙찰\s*결과|공급계약\s*체결", head, re.I):
+        phase, level, status = "award", 4, "선정·협약 보도·원문 확인 필요"
+    elif re.search(r"신규\s*과제\s*공고|연구개발\s*공모|사업\s*공고|"
+                   r"과제\s*공모|제안요청서|입찰\s*공고|모집\s*공고", head, re.I) \
+            and not re.search(r"(공고|공모).{0,10}(예정|계획|검토)", head, re.I):
+        phase, level, status = "call", 3, "과제 공고·공모(선정·매출 전)"
+    elif re.search(r"삭감|증액|감액|예산\s*조정|일정\s*연기|사업\s*보류|사업\s*취소", head, re.I):
+        phase, level, status = "change", 3, "예산·일정 변경 보도·확정 단계 확인 필요"
+    else:
+        phase, level, status = "plan", 2, "정부 기획·예산안(선정·수주 아님)"
+    year = "2028" if "2028" in text else "2027"
+    amounts = re.findall(r"\d[\d,]*(?:\.\d+)?\s*(?:조\s*원|억\s*원|억원)", head)
+    suffix = "-" + "-".join(re.sub(r"\s+", "", a) for a in amounts[:2]) if phase == "change" and amounts else ""
+    key = f"aidc-network|{axis}|{year}|{phase}{suffix}"
+    return (label, level, key, status)
 
 
 def is_relevant(title: str, summary: str) -> bool:
     text = f"{norm(title)} {norm(summary)}".lower()
     if any(term in text for term in NOISE_TERMS):
         return False
-    return any(term in text for term in CORE_TERMS) and any(term in text for term in ACTION_TERMS)
+    return bool(aidc_milestone(title, summary)) or (any(term in text for term in CORE_TERMS) and any(term in text for term in ACTION_TERMS))
 
 
 def classify(text: str, quality: str) -> tuple[str, int]:
@@ -218,6 +284,8 @@ def topic_key(text: str) -> str:
 
 
 def event_signature(item: dict) -> str:
+    if item.get("aidc_event_key"):
+        return item["aidc_event_key"]
     category, _ = classify(f"{item['title']} {item.get('summary','')}", item["quality"])
     return f"{entity_key(item['title'] + ' ' + item.get('summary',''))}|{category}|{topic_key(item['title'] + ' ' + item.get('summary',''))}"
 
@@ -240,14 +308,26 @@ def key_for(item: dict) -> str:
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
 
 
-def collect_google_news() -> list[dict]:
+def collect_google_news() -> tuple[list[dict], dict]:
     items = []
+    health = {"attempted": 0, "successful": 0, "failed": 0, "aidc_attempted": 0, "aidc_successful": 0, "aidc_failed": 0, "errors": []}
     for lane, query in QUERY_SPECS:
+        aidc_lane = lane.startswith("AIDC-")
+        health["attempted"] += 1
+        if aidc_lane:
+            health["aidc_attempted"] += 1
         url = "https://news.google.com/rss/search?q=" + urllib.parse.quote(query) + "&hl=ko&gl=KR&ceid=KR:ko"
         try:
             xml_text, _ = fetch_text(url)
             root = ET.fromstring(xml_text)
-        except Exception:
+            health["successful"] += 1
+            if aidc_lane:
+                health["aidc_successful"] += 1
+        except Exception as exc:
+            health["failed"] += 1
+            if aidc_lane:
+                health["aidc_failed"] += 1
+            health["errors"].append(f"{lane}: {type(exc).__name__}")
             continue
         for node in root.findall(".//item"):
             title = norm(node.findtext("title") or "")
@@ -258,8 +338,10 @@ def collect_google_news() -> list[dict]:
             if not title or not link or not is_relevant(title, summary):
                 continue
             pub = parse_pubdate(node.findtext("pubDate"))
-            quality = source_quality(source, lane)
-            category, stage = classify(f"{title} {summary}", quality)
+            source_url = norm(source_node.attrib.get("url", "") if source_node is not None else "")
+            quality = source_quality(source, lane, source_url)
+            aidc = aidc_milestone(title, summary)
+            category, stage = (aidc[0], aidc[1]) if aidc else classify(f"{title} {summary}", quality)
             # Low-signal items are only kept when they come from official sources.
             if stage <= 1 and quality != "공식":
                 continue
@@ -273,10 +355,14 @@ def collect_google_news() -> list[dict]:
                     "quality": quality,
                     "category": category,
                     "stage": stage,
+                    "aidc_event_key": aidc[2] if aidc else None,
+                    "aidc_stage_label": aidc[3] if aidc else None,
                     "published_kst": pub.isoformat(timespec="minutes") if pub else None,
                 }
             )
-    return items
+    if health["successful"] == 0:
+        raise RuntimeError("All policy news queries failed; state must not advance")
+    return items, health
 
 
 def load_state() -> dict:
@@ -333,7 +419,10 @@ def main() -> None:
     state = load_state()
     seen = dict(state.get("seen") or {})
 
-    candidates = collect_google_news()
+    candidates, source_health = collect_google_news()
+    aidc_healthy = source_health["aidc_successful"] > 0
+    if not aidc_healthy:
+        candidates = [item for item in candidates if not item.get("aidc_event_key")]
     deduped = {}
     for item in candidates:
         key = key_for(item)
@@ -382,11 +471,22 @@ def main() -> None:
         last_checked = now - dt.timedelta(days=2)
 
     fresh = []
+    fresh_aidc_keys = set()
     suppressed_duplicate = 0
     suppressed_stale = 0
 
     for key, item in ordered:
         if key in seen:
+            continue
+        aidc_key = item.get("aidc_event_key")
+        if aidc_key == AIDC_PRIOR_PLAN:
+            # Known 2026-11-12 planning speech and the reported 180억원 are old.
+            seen[key] = {"title": item["title"], "url": item["url"], "event_signature": aidc_key,
+                         "stage": item["stage"], "category": item["category"],
+                         "first_seen_kst": now.isoformat(timespec="seconds"), "baseline": True}
+            continue
+        if aidc_key and aidc_key in fresh_aidc_keys:
+            suppressed_duplicate += 1
             continue
 
         reason = duplicate_reason(item, seen, now)
@@ -409,7 +509,13 @@ def main() -> None:
                 pub = dt.datetime.fromisoformat(item["published_kst"])
             except Exception:
                 pass
-        if pub and pub < last_checked - dt.timedelta(hours=30):
+        aidc_checked = last_checked
+        if aidc_key:
+            try:
+                aidc_checked = dt.datetime.fromisoformat(str(state.get("aidc_network_last_healthy_kst") or state.get("last_checked_kst") or ""))
+            except Exception:
+                pass
+        if pub and pub < aidc_checked - dt.timedelta(hours=30):
             suppressed_stale += 1
             seen[key] = {
                 "title": item["title"],
@@ -435,8 +541,10 @@ def main() -> None:
             }
             continue
         # Stage 2 policy research is useful only from official/public research sources.
-        if item["stage"] == 2 and item["quality"] != "공식":
+        if item["stage"] == 2 and item["quality"] != "공식" and not (aidc_key and item["quality"] == "신뢰보도"):
             continue
+        if aidc_key:
+            fresh_aidc_keys.add(aidc_key)
         fresh.append((key, item))
 
     if fresh:
@@ -462,6 +570,11 @@ def main() -> None:
             )
             if amounts:
                 lines.append("• 금액: " + esc(" · ".join(amounts)))
+            if item.get("aidc_event_key"):
+                lines.append("• 정책 단계: " + esc(item.get("aidc_stage_label")))
+                lines.append("• 추적: 계획→국회 예산 의결→과제 공고→수행기업 선정·협약→시제품·양산·매출")
+                if item["stage"] <= 2:
+                    lines.append("• 예산 구분: 뉴스1 보도상 2027년 네트워크 180억원 계획은 과기정통부 상위 AIDC R&D 정부안 1,155억원과 중복 합산 금지")
             if item.get("published_kst"):
                 lines.append(f"• 공개: {esc(item['published_kst'])}")
             lines.append(f"• 출처: {esc(item['source'])}")
@@ -491,6 +604,8 @@ def main() -> None:
         **{k: v for k, v in state.items() if k != "seen"},
         "initialized": True,
         "last_checked_kst": now.isoformat(timespec="seconds"),
+        "aidc_network_watch_version": AIDC_RND_VERSION,
+        "aidc_network_last_healthy_kst": now.isoformat(timespec="seconds") if aidc_healthy else state.get("aidc_network_last_healthy_kst"),
         "seen": seen,
     }
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -502,6 +617,10 @@ def main() -> None:
         f"- 중복 억제: {suppressed_duplicate}개\n"
         f"- 오래된 재노출 억제: {suppressed_stale}개\n"
         f"- 누적 상태: {len(seen)}개\n"
+        f"- 전체 검색: {source_health['successful']}/{source_health['attempted']} 성공 · 오류 {source_health['failed']}\n"
+        f"- AIDC 광통신·OCS·InP 검색: {source_health['aidc_successful']}/{source_health['aidc_attempted']} 성공 · 오류 {source_health['aidc_failed']}\n"
+        f"- AIDC 검색 오류: {', '.join(source_health['errors'][:5]) if source_health['aidc_failed'] else '없음'}\n"
+        "- 금액 구분: 뉴스1 보도 180억원(좁은 네트워크 계획)과 과기정통부 상위 1,155억원(정부안) 중복 합산 금지\n"
         f"- 조회시각: {now:%Y-%m-%d %H:%M:%S} KST\n",
         encoding="utf-8",
     )

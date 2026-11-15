@@ -14,8 +14,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: korea-ai-semiconductor-policy-demand-watch
-  cancel-in-progress: true
+  group: korea-ai-semiconductor-policy-demand-watch-${{ github.event_name == 'push' && 'validation' || 'runtime' }}
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -37,6 +37,32 @@ jobs:
 
       - name: Validate watcher
         run: python -m py_compile scripts/korea_ai_semiconductor_policy_watch.py
+
+      - name: Regression test AIDC budget-vs-contract and technology stages
+        run: |
+          python - <<'PY'
+          from scripts import korea_ai_semiconductor_policy_watch as m
+          title = '"엔비디아에만 의존 못 해"…정부, AIDC 네트워크 국산화 추진'
+          summary = '과기정통부 IITP가 2027년 CPO NPO OCS 광통신 국산화 기술개발에 180억원을 계획'
+          initial = m.aidc_milestone(title, summary)
+          assert initial and initial[2] == m.AIDC_PRIOR_PLAN and initial[1] == 2
+          assert m.is_relevant(title, summary)
+          assert m.source_quality('뉴스1', '공식-과기정통부') == '신뢰보도'
+          assert m.source_quality('과학기술정보통신부', 'AIDC-국산광통신') == '공식'
+          assert m.aidc_milestone('정부 AIDC 전력망 송전설비 착공', 'AIDC 변압기 정책') is None
+          for s,axis,phase in [
+              ('과기정통부 2027 AIDC CPO NPO 광트랜시버 연구개발 사업 공고','cpo-npo','call'),
+              ('과기정통부 2027 AIDC OCS MEMS L-COS 주관기관 선정','ocs','award'),
+              ('과기정통부 2027 AIDC InP 공공 파운드리 생산 라인 가동','inp-foundry','production'),
+              ('과기정통부 2027 AIDC 광통신 네트워크 예산안 국회 본회의 최종 의결','integrated','budget-approved'),
+              ('정부 2027 AIDC AI 기지국 분산 추론 연구개발 계획','ai-base-station','plan'),
+              ('정부 2027 AIDC 플라스틱 도파관 연구개발 신규 과제 공고','waveguide','call'),
+          ]:
+              result=m.aidc_milestone(s)
+              assert result and ('|' + axis + '|') in result[2] and result[2].endswith('|'+phase), (s,result)
+          assert m.aidc_milestone('정부 2027 AIDC OCS 사업 공고 예정')[1]==2
+          print('aidc_policy_stage_regression=passed')
+          PY
 
       - name: Verify Telegram route
         env:
@@ -71,7 +97,7 @@ jobs:
           fi
 
       - name: Send new material change to Telegram
-        if: hashFiles('out/korea_ai_semiconductor_policy_watch_alert.html') != ''
+        if: github.event_name != 'push' && hashFiles('out/korea_ai_semiconductor_policy_watch_alert.html') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
@@ -147,7 +173,7 @@ jobs:
           PY
 
       - name: Persist confirmed state
-        if: success() && hashFiles('out/korea_ai_semiconductor_policy_watch_pending_state.json') != '' && (hashFiles('out/korea_ai_semiconductor_policy_watch_alert.html') == '' || hashFiles('out/korea_ai_semiconductor_policy_watch_telegram_confirmed.json') != '')
+        if: github.event_name != 'push' && success() && hashFiles('out/korea_ai_semiconductor_policy_watch_pending_state.json') != '' && (hashFiles('out/korea_ai_semiconductor_policy_watch_alert.html') == '' || hashFiles('out/korea_ai_semiconductor_policy_watch_telegram_confirmed.json') != '')
         run: |
           cp out/korea_ai_semiconductor_policy_watch_pending_state.json data/korea_ai_semiconductor_policy_watch_state.json
           git config user.name "github-actions[bot]"
