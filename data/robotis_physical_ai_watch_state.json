@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-15T17:28:33.073416+00:00",
+  "updated_at": "2026-11-15T17:57:15.734136+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -921,9 +921,7 @@
     "585a6f19d11d4e42cf9d51c0d152c12fcfac95a7d3b1716123f082fb13bc93dd",
     "0af7ca20f63d674bc22c009c3e8e1d06aab97b36bb6c6b78d33676b1a6dc2c90"
   ],
-  "last_selected": [
-    "0af7ca20f63d674bc22c009c3e8e1d06aab97b36bb6c6b78d33676b1a6dc2c90"
-  ],
+  "last_selected": [],
   "groups": [
     "dkt_auto_oled_expansion",
     "ess_battery",
@@ -934,21 +932,6 @@
     "spacex_tesla_combination"
   ],
   "delivery_history": [
-    {
-      "run_id": 43460846052,
-      "outcome": "sent",
-      "message_ids": [
-        362
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-13T16:15:34.315874+00:00"
-    },
     {
       "run_id": 43478540365,
       "outcome": "normal_silence",
@@ -1161,21 +1144,24 @@
         false
       ],
       "state_timestamp_utc": "2026-11-15T17:28:33.073416+00:00"
+    },
+    {
+      "run_id": 43743941574,
+      "outcome": "normal_silence",
+      "message_ids": [],
+      "recipient_verified": null,
+      "recipient_checks": [],
+      "message_topic_present": [],
+      "state_timestamp_utc": "2026-11-15T17:57:15.734136+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 43741269057,
-    "outcome": "sent",
-    "message_ids": [
-      369
-    ],
-    "recipient_verified": true,
-    "recipient_checks": [
-      "numeric_id_equal"
-    ],
-    "message_topic_present": [
-      false
-    ],
-    "state_timestamp_utc": "2026-11-15T17:28:33.073416+00:00"
+    "run_id": 43743941574,
+    "outcome": "normal_silence",
+    "message_ids": [],
+    "recipient_verified": null,
+    "recipient_checks": [],
+    "message_topic_present": [],
+    "state_timestamp_utc": "2026-11-15T17:57:15.734136+00:00"
   }
 }
