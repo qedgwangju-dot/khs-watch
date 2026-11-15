@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "initialized": true,
+  "seen": {
+    "motir_press": [
+      "motir:ATCL3f49a5a8c:172406"
+    ],
+    "motir_clarification": [
+      "motir:ATCLe0854704d:172347",
+      "motir:ATCLe0854704d:172392",
+      "motir:ATCLe0854704d:172393"
+    ]
+  },
+  "sources": {
+    "motir_press": {
+      "last_ok_kst": "2026-11-16T03:17:02+09:00",
+      "matched": 1
+    },
+    "motir_clarification": {
+      "last_ok_kst": "2026-11-16T03:17:02+09:00",
+      "matched": 3
+    }
+  },
+  "seeded_date": "2026-11-16",
+  "updated_at_kst": "2026-11-16T03:17:02+09:00",
+  "source_health": {
+    "ok": [
+      "motir_clarification",
+      "motir_press"
+    ],
+    "failed": {
+      "kepco_notice": "RuntimeError: 공식 목록 게시물 링크 2개 미만: 레이아웃 변경 또는 접근차단",
+      "kepco_press": "RuntimeError: 공식 목록 게시물 링크 2개 미만: 레이아웃 변경 또는 접근차단",
+      "kogas_press": "RuntimeError: 공식 목록 게시물 링크 2개 미만: 레이아웃 변경 또는 접근차단"
+    },
+    "complete": false
+  }
+}
