@@ -8659,7 +8659,8 @@ class LiveQualityRegressionTests(unittest.TestCase):
                     "focus": 0, "equity_publication": {"eligible": True},
                     "evidence": [{"kind": "physical_supply_or_capacity", "stage": "reported_change"}]}}
             official_trade_rule = {"source_title": "Enhanced Favorable Treatment for the United Arab Emirates",
-                "layer": "official", "body_verified": True, "market_materiality": {
+                "publisher": "Federal Register", "link": "https://www.federalregister.gov/documents/2026/07/14/2026-14132/example",
+                "body_verified": True, "market_materiality": {
                     "news_value_rank": 4, "transmission_scope_rank": 1, "priority": 3,
                     "focus": 0, "equity_publication": {"eligible": True},
                     "evidence": [{"kind": "export_control_scope", "stage": "reported_change"}]}}

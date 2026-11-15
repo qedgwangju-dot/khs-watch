@@ -13070,7 +13070,11 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
     ):
         return ""
     if (
-        alert.get("layer") == "official"
+        (
+            alert.get("layer") == "official"
+            or str(alert.get("publisher") or "").strip().lower() == "federal register"
+            or "federalregister.gov/" in str(alert.get("link") or "").lower()
+        )
         and alert.get("body_verified")
         and priority >= 2
         and news_value_rank >= 3
