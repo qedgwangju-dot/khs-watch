@@ -79,7 +79,15 @@ def candidates(page,list_url,source):
         if ident and len(title)>=5:
             found.setdefault(ident,{"id":ident,"title":title,"url":url,"source":source,"category":category(title)})
     if len(found)<2:
-        raise RuntimeError("공식 목록 게시물 링크 2개 미만: 레이아웃 변경 또는 접근차단")
+        sample=[]
+        for tag in soup.find_all(["a","div","li","button","span"]):
+            title=compact(tag.get_text(" ",strip=True))
+            if re.search(r"요금|미수금|3분기|보도|가스|전기|부채|연료비|단가|결산|한전|경영|최고가격",title):
+                attrs={k:str(v)[:150] for k,v in tag.attrs.items() if k in ("href","onclick","data-id","data-board-no","class")}
+                if attrs:
+                    sample.append({"tag":tag.name,"text":title[:65],"attrs":attrs})
+            if len(sample)>=8:break
+        raise RuntimeError("공식 목록 게시물 링크 2개 미만; 구조 진단="+repr(sample))
     return list(found.values())
 
 def get_page(url):
