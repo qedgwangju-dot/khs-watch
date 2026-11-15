@@ -45,6 +45,15 @@ class PriceFiscalTests(unittest.TestCase):
         self.assertEqual(rows[0]["category"],"kepco_financial")
         self.assertNotIn("2026.11.12",rows[0]["title"])
 
+    def test_kepco_list_date_grounded_in_the_same_official_item(self):
+        page = """<html><body>
+        <a href="javascript:fn_Detail('15','3190');"><strong class="tit">한전, ’26년 3분기(누계, 1~9월) 결산실적 발표</strong><span class="date">2026.11.12</span></a>
+        <a href="javascript:fn_Detail('15','3189');"><strong class="tit">한전, 기술 교류 협약</strong><span class="date">2026.11.12</span></a>
+        </body></html>"""
+        docs=w.candidates(page,w.SOURCES["kepco_press"][0],"kepco_press")
+        self.assertEqual(docs[0]["list_date"],"2026-11-12")
+        self.assertEqual(docs[0]["id"],"kepco:3190")
+
     def test_kogas_javascript_post_links(self):
         html = """<html><body>
         <a href="javascript:readPermissionChk(47879);"><strong class="title">가스공사, 전국 쪽방촌 주민 지원</strong></a>
