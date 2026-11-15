@@ -1717,7 +1717,7 @@ def goldman_prime_deleveraging_article(text, published):
         return None
     clean = " ".join(text.split())
     if not all(re.search(p, clean, re.I) for p in (
-        r"Goldman(?:\s+Sachs|'s)", r"prime\s+(?:brokerage|book|desk)|prime-brokerage",
+        r"Goldman(?:\s+Sachs|'s)", r"prime\s+(?:brokerage|book|desk)|prime-broker(?:age)?",
         r"hedge\s+funds?", r"tech(?:nology)?",
     )):
         return None
@@ -1755,12 +1755,14 @@ def goldman_prime_deleveraging_article(text, published):
         drop = re.search(
             r"(?<!\d)[-−]\s*(\d+(?:\.\d+)?)\s*(?:pts?|pp|percentage\s+points?)"
             r"|\b(?:fell|shrank|declined|dropped|decreased|down|drop)\s+"
-            r"(?:by\s+)?(\d+(?:\.\d+)?)\s*(?:pts?|pp|percentage\s+points?)",
+            r"(?:by\s+)?(\d+(?:\.\d+)?)\s*(?:pts?|pp|percentage\s+points?)"
+            r"|\b(?:a\s+)?decrease\s+of\s+(\d+(?:\.\d+)?)\s*"
+            r"(?:pts?|pp|percentage\s+points?)",
             nearby, re.I,
         )
         if not level or not drop:
             return None
-        value, change = float(level.group(1)), float(drop.group(1) or drop.group(2))
+        value, change = float(level.group(1)), float(drop.group(1) or drop.group(2) or drop.group(3))
         if not lower <= value <= upper or not 0 < change < 40:
             return None
         return round(value, 2), round(-change, 2)
@@ -1914,6 +1916,22 @@ _GS_PROSE_SAMPLE = (
 )
 assert goldman_prime_deleveraging_article(
     _GS_PROSE_SAMPLE, date(2026, 11, 10)
+) == (date(2026, 11, 6), 207.5, -8.7, 43.3, -3.7)
+_GS_DECREASE_PROSE = (
+    "Goldman Sachs prime brokerage data show hedge funds led tech net selling. "
+    "Gross leverage was 207.5% in the week ended Nov. 6, down 8.7 percentage points. "
+    "Net leverage finished at 43.3%, a decrease of 3.7 percentage points."
+)
+assert goldman_prime_deleveraging_article(
+    _GS_DECREASE_PROSE, date(2026, 11, 10)
+) == (date(2026, 11, 6), 207.5, -8.7, 43.3, -3.7)
+_GS_PRIME_BROKER_PROSE = (
+    "Goldman Sachs said hedge funds slashed tech exposure; prime-broker figures as of "
+    "Nov. 6 show gross leverage among US long-short funds dropped 8.7 percentage "
+    "points to 207.5%. Net leverage dropped by 3.7 percentage points to 43.3%."
+)
+assert goldman_prime_deleveraging_article(
+    _GS_PRIME_BROKER_PROSE, date(2026, 11, 9)
 ) == (date(2026, 11, 6), 207.5, -8.7, 43.3, -3.7)
 
 # Regression checks run as part of the existing Python execution path.
