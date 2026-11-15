@@ -997,6 +997,28 @@ def spacex_jpm_verified_target_notice(check=check_primary, rate_getter=fetch_usd
     ))
 
 
+def previously_reported_flight15_summary(item: dict, seen: dict) -> bool:
+    """Prevent recycled Flight 15 recap in other space-alert categories.
+
+    A later confirmed engineering finding or an actual upper-stage reflight
+    remains eligible as a separate, material event.
+    """
+    if FLIGHT15_COMPLETED_KEY not in seen:
+        return False
+    title = str(item.get("title") or "").casefold()
+    if not re.search(r"flight[ -]?15\\b|ship[ -]?42\\b|15차", title):
+        return False
+    if re.search(r"root cause|investigat|confirmed fault|identified failure|"
+                 r"postflight inspection|heat.?shield damage|refurbish|repair|"
+                 r"re.?flight|subsequent test|원인 규명|손상 확인|정비 결과|재비행", title):
+        return False
+    return bool(re.search(
+        r"catch|caught|recovered|reentry|deployment|deployed|"
+        r"26 (?:starlink|satellites)|first return|first recovery|"
+        r"booster (?:abort|lost)|포획|회수|위성 배치", title
+    ))
+
+
 def previously_corrected_neutron_delay(category_key: str, item: dict, seen: dict) -> bool:
     """Do not re-announce the verified 2027 correction as a new RSS headline."""
     return (
@@ -1070,6 +1092,8 @@ def main() -> int:
         peers = all_by_category[category.key]
         candidates: list[dict] = []
         for item in peers:
+            if previously_reported_flight15_summary(item, seen):
+                continue
             score = signal_score(category, item)
             if score < 8:
                 continue
@@ -1197,6 +1221,17 @@ def self_test() -> int:
     assert "starship_flight_results" in [x.key for x in CATEGORIES]
     assert NASA_CLPS2_EVENT != STARLINK_V4_VISION_EVENT
     assert FLIGHT15_COMPLETED_KEY not in {NASA_CLPS2_EVENT,STARLINK_V4_VISION_EVENT}
+    seen_flight15={FLIGHT15_COMPLETED_KEY:"2026-11-15T18:23:43Z"}
+    assert previously_reported_flight15_summary(
+        {"title":"SpaceX Starship Flight 15 upper-stage caught after reentry"},seen_flight15)
+    assert previously_reported_flight15_summary(
+        {"title":"Starship Ship 42 deployed 26 Starlink V3 satellites"},seen_flight15)
+    assert not previously_reported_flight15_summary(
+        {"title":"SpaceX Starship Flight 15 postflight inspection identifies new heat shield damage"},seen_flight15)
+    assert not previously_reported_flight15_summary(
+        {"title":"SpaceX Starship Flight 16 caught both stages"},seen_flight15)
+    assert not previously_reported_flight15_summary(
+        {"title":"SpaceX Starship Flight 15 caught after reentry"}, {})
     def flight15_fake_source(url,*markers):
         if url==FLIGHT15_OFFICIAL_MIRROR and "deployed 26 Starlink V3" in markers:
             return "issuer completed statement"
