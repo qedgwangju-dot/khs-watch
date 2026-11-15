@@ -13050,11 +13050,75 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
     if event_type in material_execution_types:
         return ""
     equity_publication = materiality.get("equity_publication") or {}
+    evidence = materiality.get("evidence") or []
+    priority = int(materiality.get("priority", 0) or 0)
+    news_value_rank = int(materiality.get("news_value_rank", 0) or 0)
+    eligible = bool(equity_publication.get("eligible"))
+
+    # Preserve verified operational capacity and official trade-rule changes;
+    # neither should depend on a headline issuer alias or focus score.
     if (
-        int(materiality.get("priority", 0) or 0) >= 2
-        and int(materiality.get("news_value_rank", 0) or 0) >= 3
+        scope >= 2
+        and priority >= 2
+        and news_value_rank >= 3
+        and eligible
+        and any(
+            item.get("kind") == "physical_supply_or_capacity"
+            and item.get("stage") == "reported_change"
+            for item in evidence
+        )
+    ):
+        return ""
+    if (
+        alert.get("layer") == "official"
+        and alert.get("body_verified")
+        and priority >= 2
+        and news_value_rank >= 3
+        and eligible
+        and any(
+            item.get("kind") == "export_control_scope"
+            and item.get("stage") == "reported_change"
+            for item in evidence
+        )
+    ):
+        return ""
+
+    # A confirmed meeting between named semiconductor/AI leaders is a live
+    # signal even when the follow-on commercial agreement is still unconfirmed.
+    headline = str(alert.get("source_title") or alert.get("original_news") or "")
+    body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+    executive_names = (
+        "이재용", "최태원", "정의선", "샘 올트먼", "젠슨 황", "리사 수",
+        "일론 머스크", "사티아 나델라", "마크 저커버그", "팀 쿡",
+    )
+    meeting_signal = bool(re.search(r"만났|회동|면담|방문|찾아", headline))
+    named_leaders = sum(name in headline for name in executive_names)
+    technology_signal = bool(re.search(
+        r"HBM|D램|DRAM|반도체|파운드리|AI\s*(?:칩|반도체|인프라)|데이터센터",
+        body,
+        re.I,
+    ))
+    if (
+        alert.get("body_verified")
+        and priority >= 2
+        and news_value_rank >= 3
+        and eligible
+        and named_leaders >= 2
+        and meeting_signal
+        and technology_signal
+        and any(
+            item.get("kind") == "customer_discussions"
+            and item.get("stage") == "early_signal"
+            for item in evidence
+        )
+    ):
+        return ""
+
+    if (
+        priority >= 2
+        and news_value_rank >= 3
         and int(materiality.get("focus", 0) or 0) >= 25
-        and equity_publication.get("eligible")
+        and eligible
     ):
         return ""
     return "issuer_only_story_without_major_issuer_or_verified_execution"

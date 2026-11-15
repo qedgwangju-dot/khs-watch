@@ -8653,12 +8653,30 @@ class LiveQualityRegressionTests(unittest.TestCase):
             material_financing = {"source_title": "AI 인프라 기업, 최대 420억달러 금융지원 협상", "market_materiality": {
                 "news_value_rank": 3, "transmission_scope_rank": 1, "priority": 3,
                 "focus": 25, "equity_publication": {"eligible": True}}}
+            verified_capacity = {"source_title": "신성이엔지, 김제공장 신규 라인 가동…태양광 모듈 양산",
+                "body_verified": True, "market_materiality": {
+                    "news_value_rank": 4, "transmission_scope_rank": 2, "priority": 3,
+                    "focus": 0, "equity_publication": {"eligible": True},
+                    "evidence": [{"kind": "physical_supply_or_capacity", "stage": "reported_change"}]}}
+            official_trade_rule = {"source_title": "Enhanced Favorable Treatment for the United Arab Emirates",
+                "layer": "official", "body_verified": True, "market_materiality": {
+                    "news_value_rank": 4, "transmission_scope_rank": 1, "priority": 3,
+                    "focus": 0, "equity_publication": {"eligible": True},
+                    "evidence": [{"kind": "export_control_scope", "stage": "reported_change"}]}}
+            executive_meeting = {"source_title": "이재용, 오픈AI 본사서 샘 올트먼 만났다",
+                "source_body": "양측은 HBM·D램·첨단 파운드리 협력을 논의했다.", "body_verified": True,
+                "market_materiality": {"news_value_rank": 3, "transmission_scope_rank": 1,
+                    "priority": 2, "focus": 0, "equity_publication": {"eligible": True},
+                    "evidence": [{"kind": "customer_discussions", "stage": "early_signal"}]}}
             for weak in weak_stories:
                 self.assertIn("issuer_only_story", production.runner.low_scope_live_market_relevance_reason(weak))
             self.assertEqual(production.runner.low_scope_live_market_relevance_reason(samsung), "")
             self.assertEqual(production.runner.low_scope_live_market_relevance_reason(global_market), "")
             self.assertEqual(production.runner.low_scope_live_market_relevance_reason(verified_industry_event), "")
             self.assertEqual(production.runner.low_scope_live_market_relevance_reason(material_financing), "")
+            self.assertEqual(production.runner.low_scope_live_market_relevance_reason(verified_capacity), "")
+            self.assertEqual(production.runner.low_scope_live_market_relevance_reason(official_trade_rule), "")
+            self.assertEqual(production.runner.low_scope_live_market_relevance_reason(executive_meeting), "")
 
             execution = {**weak_stories[0], "source_title": "중소기업, 대형 공급계약 체결"}
             with patch.object(
