@@ -8632,15 +8632,60 @@ class LiveQualityRegressionTests(unittest.TestCase):
 
     def test_narrow_issuer_stories_need_major_issuer_or_verified_execution(self):
         with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}, clear=False):
-            weak = {"source_title": "지역은행 3분기 소액 순손실", "market_materiality": {
-                "news_value_rank": 4, "transmission_scope_rank": 1}}
+            weak_stories = [
+                {"source_title": "지역까지 외국인 관광객 늘어나는데…숙박 수요 이어갈 인프라는 부족",
+                 "market_materiality": {"news_value_rank": 4, "transmission_scope_rank": 1,
+                                        "priority": 3, "focus": 0,
+                                        "equity_publication": {"eligible": True}}},
+                {"source_title": "수천억 덩치는 부담…물류센터 뭉칫돈 ‘소형’으로 쏠렸다",
+                 "market_materiality": {"news_value_rank": 4, "transmission_scope_rank": 1,
+                                        "priority": 3, "focus": 0,
+                                        "equity_publication": {"eligible": True}}},
+            ]
             samsung = {"source_title": "삼성전자, 3분기 영업이익 106조원", "market_materiality": {
-                "news_value_rank": 4, "transmission_scope_rank": 1}}
+                "news_value_rank": 4, "transmission_scope_rank": 1, "priority": 3,
+                "focus": 40}}
             global_market = {"source_title": "미국 CPI 발표", "market_materiality": {
                 "news_value_rank": 3, "transmission_scope_rank": 3}}
-            self.assertIn("issuer_only_story", production.runner.low_scope_live_market_relevance_reason(weak))
+            verified_industry_event = {"source_title": "JEDEC, 광통신 반도체 표준 발표", "market_materiality": {
+                "news_value_rank": 3, "transmission_scope_rank": 2, "priority": 2,
+                "focus": 40, "equity_publication": {"eligible": True}}}
+            material_financing = {"source_title": "AI 인프라 기업, 최대 420억달러 금융지원 협상", "market_materiality": {
+                "news_value_rank": 3, "transmission_scope_rank": 1, "priority": 3,
+                "focus": 25, "equity_publication": {"eligible": True}}}
+            verified_capacity = {"source_title": "신성이엔지, 김제공장 신규 라인 가동…태양광 모듈 양산",
+                "body_verified": True, "market_materiality": {
+                    "news_value_rank": 4, "transmission_scope_rank": 2, "priority": 3,
+                    "focus": 0, "equity_publication": {"eligible": True},
+                    "evidence": [{"kind": "physical_supply_or_capacity", "stage": "reported_change"}]}}
+            official_trade_rule = {"source_title": "Enhanced Favorable Treatment for the United Arab Emirates",
+                "publisher": "Federal Register", "link": "https://www.federalregister.gov/documents/2026/07/14/2026-14132/example",
+                "body_verified": True, "market_materiality": {
+                    "news_value_rank": 4, "transmission_scope_rank": 1, "priority": 3,
+                    "focus": 0, "equity_publication": {"eligible": True},
+                    "evidence": [{"kind": "export_control_scope", "stage": "reported_change"}]}}
+            executive_meeting = {"source_title": "이재용, 오픈AI 본사서 샘 올트먼 만났다",
+                "source_body": "양측은 HBM·D램·첨단 파운드리 협력을 논의했다.", "body_verified": True,
+                "market_materiality": {"news_value_rank": 3, "transmission_scope_rank": 1,
+                    "priority": 2, "focus": 0, "equity_publication": {"eligible": True},
+                    "evidence": [{"kind": "customer_discussions", "stage": "early_signal"}]}}
+            for weak in weak_stories:
+                self.assertIn("issuer_only_story", production.runner.low_scope_live_market_relevance_reason(weak))
             self.assertEqual(production.runner.low_scope_live_market_relevance_reason(samsung), "")
             self.assertEqual(production.runner.low_scope_live_market_relevance_reason(global_market), "")
+            self.assertEqual(production.runner.low_scope_live_market_relevance_reason(verified_industry_event), "")
+            self.assertEqual(production.runner.low_scope_live_market_relevance_reason(material_financing), "")
+            self.assertEqual(production.runner.low_scope_live_market_relevance_reason(verified_capacity), "")
+            self.assertEqual(production.runner.low_scope_live_market_relevance_reason(official_trade_rule), "")
+            self.assertEqual(production.runner.low_scope_live_market_relevance_reason(executive_meeting), "")
+
+            execution = {**weak_stories[0], "source_title": "중소기업, 대형 공급계약 체결"}
+            with patch.object(
+                production.runner.market_materiality,
+                "source_event_identity",
+                return_value="source_event:v2:named_supply_order:fixture",
+            ):
+                self.assertEqual(production.runner.low_scope_live_market_relevance_reason(execution), "")
 
     def test_same_us_ppi_release_is_sent_once_across_metric_focused_headlines(self):
         now = dt.datetime(2026, 11, 14, 1, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))

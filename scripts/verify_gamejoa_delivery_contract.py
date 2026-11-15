@@ -1517,6 +1517,7 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
             allowed_exclusion_reasons = {
                 "live_quality_floor_below_rank_3_without_market_wide_scope",
                 "live_quality_floor:unquantified_commentary_or_forecast_without_new_market_fact",
+                "live_market_relevance:issuer_only_story_without_major_issuer_or_verified_execution",
             }
             if selected or alert.get("_exclusion_reason") not in allowed_exclusion_reasons:
                 errors.append(
