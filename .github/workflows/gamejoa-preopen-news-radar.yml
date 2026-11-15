@@ -4,7 +4,7 @@ on:
   # Native live fallback keeps the radar running if the Cloudflare GitHub
   # dispatch token expires. Cloudflare still owns the 06:30 preopen lane.
   schedule:
-    - cron: "7,27,47 * * * *"
+    - cron: "13,33,53 * * * *"
   workflow_dispatch:
     inputs:
       telegram_dry_run:

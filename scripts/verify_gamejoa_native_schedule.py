@@ -13,7 +13,7 @@ import gamejoa_preopen_news_radar_full_compact_runner as radar
 
 WORKFLOW = ROOT / ".github/workflows/gamejoa-preopen-news-radar.yml"
 REQUIRED = (
-    'cron: "7,27,47 * * * *"',
+    'cron: "13,33,53 * * * *"',
     "RADAR_RUN_MODE: ${{ github.event_name == 'schedule' && 'live' || github.event.inputs.radar_run_mode || 'preopen' }}",
     "if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_dry_run == 'true' }}",
     "- name: Build and send GAMEJOA preopen news radar",
