@@ -13841,9 +13841,14 @@ def primary_headline_issuer_keys(title: str) -> set[str]:
     # In "A·B 이어 C까지" headlines, A and B are comparisons; C is the
     # newly reported issuer and should be the core's required subject.
     cumulative_subject = re.search(r"이어\s*([^…|]+?)까지", title)
-    headline = telegram.base.norm(
-        cumulative_subject.group(1) if cumulative_subject else title
+    # In "A 넘어선 B" headlines, A is the comparison and B is the subject.
+    comparative_subject = re.search(r"(?:넘어선|제친)\s*([^…|]+)", title)
+    subject_text = (
+        cumulative_subject.group(1) if cumulative_subject
+        else comparative_subject.group(1) if comparative_subject
+        else title
     )
+    headline = telegram.base.norm(subject_text)
     matches = []
     for issuer, aliases in telegram.MARKET_ISSUER_ALIASES.items():
         for alias in aliases:
