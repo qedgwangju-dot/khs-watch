@@ -12,6 +12,7 @@ from unittest.mock import patch
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import hbm_material_event_watch as m
 import hbm_delivery as d
+import rubin_hbm_watch as r
 
 class MaterialEventTests(unittest.TestCase):
     def fixture(self, report):
@@ -93,9 +94,11 @@ class MaterialEventTests(unittest.TestCase):
             p = root / "out" / "rubin_hbm_pending_state.json"
             a = root / "out" / "rubin_hbm_alert.md"
             c = root / "out" / "hbm_material_event_coverage.json"
+            base = root / "out" / "hbm_before_rubin.json"
             p.parent.mkdir()
             p.write_text(json.dumps({"memory_axes": {"keep": 1}}), encoding="utf-8")
-            with patch.object(m, "PENDING", p), patch.object(m, "ALERT", a), patch.object(m, "AUDIT", c):
+            base.write_text(json.dumps({"memory_axes": {"keep": 1}}), encoding="utf-8")
+            with patch.object(m, "PENDING", p), patch.object(m, "ALERT", a), patch.object(m, "AUDIT", c), patch.object(m, "BASELINE", base):
                 with patch.object(m, "fetch_article", side_effect=RuntimeError("test_only")):
                     # The default fetcher is bound at function definition; pass a
                     # mock apply instead to verify I/O without live sources.
@@ -106,6 +109,57 @@ class MaterialEventTests(unittest.TestCase):
             self.assertFalse(a.exists())
             self.assertEqual(json.loads(p.read_text())["memory_axes"]["keep"], 1)
             self.assertTrue(c.exists())
+
+    def test_real_collector_rebuild_preserves_acknowledged_seven_keys(self):
+        acknowledged = [report["key"] for report in m.REPORTS]
+        durable = {"seen_ids": ["keep-existing"], "hbm_material_event_watch": {"seen_keys": acknowledged}}
+        carried = r.carry_material_event_state(durable)
+        self.assertEqual(carried["seen_keys"], acknowledged)
+        candidate = {"seen_ids": ["keep-existing"], "hbm_material_event_watch": carried}
+        m.require_durable_seen_keys(durable, candidate)
+        def never_fetch(_):
+            raise AssertionError("Already sent articles must never be fetched again")
+        result, messages, audit = m.apply(candidate, "2026-11-15T14:30:00+09:00", never_fetch)
+        self.assertEqual(messages, [])
+        self.assertEqual(audit["verified_events"], 0)
+        self.assertEqual(set(result["hbm_material_event_watch"]["seen_keys"]), set(acknowledged))
+
+    def test_missing_durable_seen_keys_preflight_fails_closed_before_fetch_or_send(self):
+        before = {"hbm_material_event_watch": {"seen_keys": [m.REPORTS[0]["key"]]}}
+        with self.assertRaisesRegex(RuntimeError, "duplicate alert blocked"):
+            m.require_durable_seen_keys(before, {})
+        with self.assertRaisesRegex(RuntimeError, "duplicate alert blocked"):
+            m.require_durable_seen_keys(before, {"hbm_material_event_watch": {"seen_keys": []}})
+        m.require_durable_seen_keys(before, {"hbm_material_event_watch": {"seen_keys": [m.REPORTS[0]["key"]]}})
+
+    def test_missing_baseline_main_fails_closed_and_preserves_existing_alert(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = pathlib.Path(tmp)
+            pending = path / "rubin_pending.json"
+            existing_alert = path / "alert.html"
+            absent_baseline = path / "missing_baseline.json"
+            pending.write_text(json.dumps({"hbm_material_event_watch": {"seen_keys": []}}), encoding="utf-8")
+            existing_alert.write_text("existing-notification", encoding="utf-8")
+            with patch.object(m, "PENDING", pending), patch.object(m, "BASELINE", absent_baseline), patch.object(m, "ALERT", existing_alert):
+                with self.assertRaisesRegex(RuntimeError, "duplicate alert blocked"):
+                    m.main()
+            self.assertEqual(existing_alert.read_text(encoding="utf-8"), "existing-notification")
+
+    def test_replay_across_four_rubins_is_silent_after_acknowledgement(self):
+        prior = {"hbm_material_event_watch": {"seen_keys": []}}
+        def evidence(url):
+            report = next(r for r in m.REPORTS if url in [s[1] for s in r["sources"]])
+            return self.fixture(report)
+        prior, first, first_audit = m.apply(prior, "2026-11-14T19:29:30+09:00", evidence)
+        self.assertEqual(first_audit["verified_events"], 7)
+        self.assertEqual(len(first), 3)
+        for t in ("2026-11-15T06:02:09+09:00","2026-11-15T08:20:32+09:00","2026-11-15T10:24:06+09:00","2026-11-15T11:58:29+09:00"):
+            candidate={"hbm_material_event_watch": r.carry_material_event_state(prior)}
+            m.require_durable_seen_keys(prior,candidate)
+            def reject_fetch(url): raise AssertionError("unexpected repeated lookup")
+            prior, alerts, audit = m.apply(candidate,t,reject_fetch)
+            self.assertEqual(alerts, [])
+            self.assertEqual(audit["verified_events"], 0)
 
 if __name__ == "__main__":
     unittest.main()

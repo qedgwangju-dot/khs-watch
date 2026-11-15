@@ -18,6 +18,7 @@ from bs4 import BeautifulSoup
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PENDING = ROOT / "out/rubin_hbm_pending_state.json"
+BASELINE = ROOT / "out/hbm_before_rubin.json"
 ALERT = ROOT / "out/rubin_hbm_alert.md"
 AUDIT = ROOT / "out/hbm_material_event_coverage.json"
 BREAK = "<<<TELEGRAM_MESSAGE_BREAK>>>"
@@ -232,12 +233,33 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
              "durable_state_only_after_existing_hbm_delivery_receipt": True}
     return result, rendered, audit
 
+def require_durable_seen_keys(durable: dict, candidate: dict) -> None:
+    """Fail closed when a collector drops previously acknowledged event keys.
+
+    Calling this both before event classification and before Telegram delivery
+    protects against a lost ledger at any intermediate collector stage.
+    """
+    previous = (durable.get("hbm_material_event_watch") or {}).get("seen_keys") or []
+    upcoming = (candidate.get("hbm_material_event_watch") or {}).get("seen_keys") or []
+    if not isinstance(previous, list) or not isinstance(upcoming, list):
+        raise RuntimeError("HBM material dedup journal malformed; notification held")
+    if any(not isinstance(key, str) or not key for key in previous + upcoming):
+        raise RuntimeError("HBM material dedup journal keys malformed; notification held")
+    lost = set(previous) - set(upcoming)
+    if lost:
+        raise RuntimeError("HBM material acknowledged seen_keys missing in collector candidate; duplicate alert blocked")
+
+
 def main() -> None:
     if not PENDING.exists():
         raise RuntimeError("Rubin HBM pending state is missing; no material-event update permitted")
     if not PENDING.parent.is_dir():
         raise RuntimeError("HBM output directory missing")
     prior = json.loads(PENDING.read_text(encoding="utf-8"))
+    if not BASELINE.exists():
+        raise RuntimeError("HBM durable transaction baseline unavailable; duplicate alert blocked")
+    durable = json.loads(BASELINE.read_text(encoding="utf-8"))
+    require_durable_seen_keys(durable, prior)
     checked_at = datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")
     result, rendered, audit = apply(prior, checked_at)
     # Do not consume these keys outside the existing acknowledged delivery.

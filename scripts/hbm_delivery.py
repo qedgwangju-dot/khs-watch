@@ -516,6 +516,10 @@ def finish(name):
         from samsung_hbm_watch import validate_monthly_payload
         validate_monthly_payload(text, candidate, OUT)
     if name == 'rubin':
+        # A later shared-state collector must not erase acknowledged dedupe keys.
+        # Check before Telegram send or state promotion, even when there is no alert.
+        from hbm_material_event_watch import require_durable_seen_keys
+        require_durable_seen_keys(before, candidate)
         validate_rubin_hybrid_notification(text)
         validate_rubin_nvhbm_foundry_notification(text)
         verify_rubin_recipient()

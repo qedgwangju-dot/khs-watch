@@ -4010,6 +4010,11 @@ def hbf_stage_notice(obs,changes):
       'published_at_kst':obs.get('observed_at') or '', 'direct_link':obs.get('source_url') or HBF_INITIAL_SOURCE,
       'article_text':''}
 
+def carry_material_event_state(state: dict) -> dict:
+    """Carry the acknowledged material-event ledger across collector executions."""
+    return json.loads(json.dumps(state.get("hbm_material_event_watch") or {}))
+
+
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     history_cutoff = now - timedelta(days=14)
@@ -4492,6 +4497,9 @@ def main() -> None:
 
     pending = {
         "updated_at_kst": now.isoformat(timespec="seconds"),
+        # Keep acknowledged follow-up event keys when rebuilding a fresh pending state.
+        # Otherwise a later collector mistakes previously delivered news for new events.
+        "hbm_material_event_watch": carry_material_event_state(state),
         "seen_ids": sorted((seen_before | current_ids))[-1200:],
         "seen_fact_keys": sorted(seen_fact_keys | new_fact_keys)[-500:],
         "structure_baseline_version": STRUCTURE_BASELINE_VERSION,
