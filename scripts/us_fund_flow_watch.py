@@ -1725,7 +1725,7 @@ def goldman_prime_deleveraging_article(text, published):
               r"Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|"
               r"Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?")
     ref = re.search(
-        rf"\b(?:week\s+(?:to|through|ending)|figures?\s+(?:through|as\s+of)|"
+        rf"\b(?:week\s+(?:to|through|ending|ended)|figures?\s+(?:through|as\s+of)|"
         rf"data\s+(?:runs\s+)?through)\s+({months})\.?\s*(\d{{1,2}})"
         rf"(?:,\s*(20\d{{2}}))?\b", clean, re.I,
     )
@@ -1792,9 +1792,17 @@ def parse_goldman_prime_deleveraging_public(*, article_fetch=extract_article_bod
         {"title": "Hedge Funds Rush Out of Tech as Data-Center Doubts",
          "link": "https://www.briefs.co/news/hedge-funds-rush-out-of-tech-as-data-center-doubts-hit-the-a/",
          "pub": "Mon, 09 Nov 2026"},
+        {"title": "Goldman U.S. Long-Short Clients Cut Leverage as Tech Leads Net Selling",
+         "link": "https://econotimes.com/Goldman-U-S-Long-Short-Clients-Cut-Leverage-as-Tech-Leads-Net-Selling-1774324",
+         "pub": "Tue, 10 Nov 2026"},
+        # Yahoo republishes Investing.com; count it as the SAME publisher, not a second source.
+        {"title": "Hedge funds cut tech exposure at near-record pace",
+         "link": "https://sg.finance.yahoo.com/news/hedge-funds-cut-tech-exposure-161540678.html",
+         "pub": "Mon, 09 Nov 2026"},
     ]
     from urllib.parse import urlparse
-    allowed = {"investing.com", "qz.com", "briefs.co", "bloomberg.com", "reuters.com"}
+    allowed = {"investing.com", "qz.com", "briefs.co", "econotimes.com",
+               "sg.finance.yahoo.com", "bloomberg.com", "reuters.com"}
     grouped, visited = {}, set()
     for item in live + seeds:
         url = str(item.get("link") or "")
@@ -1823,10 +1831,18 @@ def parse_goldman_prime_deleveraging_public(*, article_fetch=extract_article_bod
         if domain not in allowed:
             continue
         parsed = goldman_prime_deleveraging_article(body, published)
-        if parsed is not None:
-            grouped.setdefault(parsed, {})[domain] = final
+        if parsed is None:
+            # Report source-access versus article-format failures without relaxing the alert gate.
+            print(f"goldman_deleveraging_source={domain} outcome={'format_unmatched' if body else 'empty_body'}")
+            continue
+        # Syndication must not manufacture independent corroboration.
+        publisher = "investing.com" if domain == "sg.finance.yahoo.com" else domain
+        grouped.setdefault(parsed, {})[publisher] = final
+        print(f"goldman_deleveraging_source={domain} outcome=parsed reference={parsed[0]}")
     verified = [(numbers, urls) for numbers, urls in grouped.items() if len(urls) >= 2]
     if not verified:
+        max_sources = max((len(urls) for urls in grouped.values()), default=0)
+        print(f"goldman_deleveraging_crosscheck=withheld observations={len(grouped)} agreeing_publishers_max={max_sources}")
         return None
     (when, gross, dg, net, dn), sources = max(verified, key=lambda row: row[0][0])
     if not 0 <= (today - when).days <= 14:
@@ -1884,6 +1900,21 @@ assert parse_goldman_prime_deleveraging_public(
     discover=lambda _query: [],
     today=date(2026, 11, 14),
 ) is None
+assert parse_goldman_prime_deleveraging_public(
+    article_fetch=lambda url: (url, _GS_DELEVERAGING_SAMPLE if
+                               ("investing.com" in url or "sg.finance.yahoo.com" in url) else ""),
+    discover=lambda _query: [],
+    today=date(2026, 11, 14),
+) is None, "An Investing.com syndication mirror is not an independent publisher"
+_GS_PROSE_SAMPLE = (
+    "Goldman Sachs prime brokerage data showed hedge funds sold tech stocks "
+    "in the week ended Nov. 6. Gross leverage at U.S. fundamental long-short funds "
+    "fell 8.7 percentage points to 207.5%. Net leverage fell by 3.7 percentage "
+    "points to 43.3%."
+)
+assert goldman_prime_deleveraging_article(
+    _GS_PROSE_SAMPLE, date(2026, 11, 10)
+) == (date(2026, 11, 6), 207.5, -8.7, 43.3, -3.7)
 
 # Regression checks run as part of the existing Python execution path.
 assert goldman_prime_public_article(
