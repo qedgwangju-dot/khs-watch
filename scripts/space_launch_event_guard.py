@@ -28,7 +28,7 @@ def kind(category,title):
     if category=="starship_flight_results":
         if not re.search(r"starship|spacex|ship 4[0-9]|스타십|스페이스x",t):
             return "unrelated"
-        if re.search(r"\b(plan|planned|planning|expected|aim|target|will|to catch|could|"
+        if re.search(r"\b(plans?|planned|planning|expected|aims?|target|will|could|"
                      r"prepares?|attempt|예정|계획|목표|시도)\b",t) and not re.search(
                      r"\b(caught|successfully|completed|confirmed|실제 성공|포획 성공)\b",t):
             return "plan_only"
