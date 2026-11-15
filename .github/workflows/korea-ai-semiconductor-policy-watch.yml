@@ -2,8 +2,9 @@ name: Korea AI Semiconductor Policy Demand Watch
 
 on:
   schedule:
-    # GitHub cron is UTC. Hourly, separated from the Rebellions company watcher.
-    - cron: "23 * * * *"
+    # GitHub cron is UTC. Keep original :23 and add :53 backup for skipped runs.
+    # Serialization and semantic state prevent duplicate sends across both checks.
+    - cron: "23,53 * * * *"
   workflow_dispatch:
   push:
     paths:
@@ -63,6 +64,11 @@ jobs:
               result=m.aidc_milestone(s)
               assert result and ('|' + axis + '|') in result[2] and result[2].endswith('|'+phase), (s,result)
           assert m.aidc_milestone('정부 2027 AIDC OCS 사업 공고 예정')[1]==2
+          from pathlib import Path
+          workflow=Path('.github/workflows/korea-ai-semiconductor-policy-watch.yml').read_text(encoding='utf-8')
+          assert 'cron: "23,53 * * * *"' in workflow
+          assert 'cancel-in-progress: false' in workflow
+          assert "github.event_name != 'push'" in workflow
           print('aidc_policy_stage_regression=passed')
           PY
 
