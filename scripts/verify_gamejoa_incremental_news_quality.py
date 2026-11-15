@@ -8789,7 +8789,7 @@ class LiveQualityRegressionTests(unittest.TestCase):
                 self.assertEqual(production.runner.low_scope_live_market_relevance_reason(execution), "")
 
     def test_verified_business_core_must_preserve_named_headline_issuer(self):
-        title = '"화학업계 新시장 된 로봇·AI…현대차와 휴머노이드 소재 협력"'
+        title = '현대차, 바스프·보스턴다이내믹스와 휴머노이드 소재 협력 논의'
         body = (
             "바스프는 현대자동차와 기아, 보스턴다이내믹스 등과 소재 공동 개발을 논의하고 있다. "
             "다만 아직 구체적으로 진행 중인 프로젝트는 없고 향후 협력에 관심이 있다고 밝혔다."

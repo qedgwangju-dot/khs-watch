@@ -13179,19 +13179,31 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
 
     issuer_execution_kinds = {
         "capital_or_shareholder_action", "commercial_order", "corporate_ownership_execution",
-        "corporate_transaction", "earnings_or_guidance", "industrial_product_milestone",
+        "convertible_ownership_rights", "corporate_transaction", "earnings_or_guidance",
+        "industrial_product_milestone",
         "insider_disclosed_trade", "order_backlog_level", "customer_supply_start",
     }
+    verified_issuer_execution = any(
+        item.get("kind") in issuer_execution_kinds
+        and item.get("stage") not in {"early_signal", "forecast", "estimate", "conditional"}
+        for item in evidence
+    )
+    high_impact_issuer_market_move = (
+        scope >= 2
+        and priority >= 3
+        and news_value_rank >= 4
+        and any(
+            item.get("kind") == "market_price_or_flow"
+            and item.get("stage") == "reported_change"
+            for item in evidence
+        )
+    )
     if (
         alert.get("body_verified")
+        and (verified_issuer_execution or high_impact_issuer_market_move)
         and priority >= 2
         and news_value_rank >= 3
         and eligible
-        and any(
-            item.get("kind") in issuer_execution_kinds
-            and item.get("stage") not in {"early_signal", "forecast", "estimate", "conditional"}
-            for item in evidence
-        )
     ):
         return ""
 
@@ -13825,6 +13837,28 @@ def primary_headline_core_matches(alert: dict, core: str) -> bool:
     return bool(expected and comparable(expected) == comparable(core))
 
 
+def primary_headline_issuer_keys(title: str) -> set[str]:
+    headline = telegram.base.norm(title)
+    matches = []
+    for issuer, aliases in telegram.MARKET_ISSUER_ALIASES.items():
+        for alias in aliases:
+            normalized_alias = telegram.base.norm(alias)
+            if not normalized_alias:
+                continue
+            pattern = (
+                rf"(?<![a-z0-9]){re.escape(normalized_alias)}(?![a-z0-9])"
+                if re.search(r"[a-z0-9]", normalized_alias)
+                else re.escape(normalized_alias)
+            )
+            match = re.search(pattern, headline)
+            if match and match.start() <= 12:
+                matches.append((match.start(), issuer))
+    if not matches:
+        return set()
+    first_position = min(position for position, _ in matches)
+    return {issuer for position, issuer in matches if position == first_position}
+
+
 def source_core_fact_errors(alert: dict) -> list[str]:
     title = str(alert.get("source_title") or alert.get("news") or "")
     source = article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or ""))
@@ -13854,7 +13888,9 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     primary_alignment = primary_headline_core_matches(alert, core)
     if expected_primary and not primary_alignment:
         errors.append('headline_primary_amount_period_or_population_mismatch')
-    title_issuers = set(telegram.alert_issuer_keys({"source_title": title}))
+    # Only bind the named company when it leads the headline; later names may
+    # be peers, comparators, or broad-market context rather than the main subject.
+    title_issuers = primary_headline_issuer_keys(title)
     core_issuers = set(telegram.alert_issuer_keys({"source_title": core}))
     if title_issuers and not title_issuers.intersection(core_issuers):
         errors.append("headline_issuer_missing_from_core")
