@@ -13034,12 +13034,7 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
         return ""
     materiality = alert.get("market_materiality") or {}
     scope = int(materiality.get("transmission_scope_rank", 0) or 0)
-    rank = int(materiality.get("news_value_rank", 0) or 0)
     if scope >= 3:
-        return ""
-    if rank < 3:
-        return "issuer_only_story_below_live_quality_floor"
-    if rank == 3:
         return ""
     if telegram.alert_issuer_keys(alert):
         return ""
@@ -13054,10 +13049,13 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
     }
     if event_type in material_execution_types:
         return ""
-    if int(materiality.get("priority", 0) or 0) >= 3:
-        return ""
     equity_publication = materiality.get("equity_publication") or {}
-    if equity_publication.get("eligible"):
+    if (
+        int(materiality.get("priority", 0) or 0) >= 2
+        and int(materiality.get("news_value_rank", 0) or 0) >= 3
+        and int(materiality.get("focus", 0) or 0) >= 25
+        and equity_publication.get("eligible")
+    ):
         return ""
     return "issuer_only_story_without_major_issuer_or_verified_execution"
 
