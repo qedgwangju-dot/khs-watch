@@ -350,7 +350,8 @@
     "stateevt_bf2ae1b505008051da7f": "2026-10-21T00:09:16.454329+00:00",
     "stateevt_645a045a987f420d5621": "2026-10-31T21:59:25.771008+00:00",
     "stateevt_dc2afa8f41f02a61be5c": "2026-11-02T09:42:47.232236+00:00",
-    "stateevt_4ba3f19924b30a326bc8": "2026-11-09T08:45:19.892081+00:00"
+    "stateevt_4ba3f19924b30a326bc8": "2026-11-09T08:45:19.892081+00:00",
+    "stateevt_4fe1d29c9857c26a2c2a": "2026-11-15T19:54:04.141358+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -392,13 +393,14 @@
     "eventstate_us_trade_surplus_bf2ae1b505008051da7f": "2026-10-21T00:09:16.454329+00:00",
     "eventstate_power_equipment_supply_645a045a987f420d5621": "2026-10-31T21:59:25.771008+00:00",
     "eventstate_nuclear_build_dc2afa8f41f02a61be5c": "2026-11-02T09:42:47.232236+00:00",
-    "eventstate_nuclear_build_4ba3f19924b30a326bc8": "2026-11-09T08:45:19.892081+00:00"
+    "eventstate_nuclear_build_4ba3f19924b30a326bc8": "2026-11-09T08:45:19.892081+00:00",
+    "eventstate_legacy_funding_official_4fe1d29c9857c26a2c2a": "2026-11-15T19:54:04.141358+00:00"
   },
   "official_status": {
     "status": "official_seen",
-    "title": "[상태 변화] 알래스카 LNG — 현지 주의원 발언 보도: Glenfarne FID 이후 한국 별도 상업성 심사, 아직 투자결정 없음 · 알래스카 LNG 보도수치 540억달러",
+    "title": "[상태 변화] legacy funding official — 송금집행",
     "source": "대한민국 정책브리핑",
-    "updated_at": "2026-10-14T01:14:00.594660+00:00"
+    "updated_at": "2026-11-15T19:54:08.366342+00:00"
   },
   "event_states": {
     "nuclear_build": {
@@ -784,6 +786,26 @@
           "title": "대미 무역흑자 1천억불 눈앞…트럼프 투자 압박에 난감한 정부",
           "link": "https://www.yna.co.kr/amp/view/AKR20261017041500003",
           "published": "2026-10-17T21:17:00+00:00"
+        }
+      ]
+    },
+    "legacy_funding_official": {
+      "facts": [
+        "stage:송금집행"
+      ],
+      "slots": {
+        "legacy_funding_official|stage:송금집행": "stage:송금집행"
+      },
+      "initialized_at": "2026-11-15T19:54:08.357622+00:00",
+      "updated_at": "2026-11-15T19:54:08.357622+00:00",
+      "last_title": "(보도설명) 대미투자 관련, 송금 규모·시기, 1호 사업 발표 등은 확정된 바가 없습니다. - 대한민국 정책브리핑",
+      "last_source": "대한민국 정책브리핑",
+      "evidence": [
+        {
+          "source": "대한민국 정책브리핑",
+          "title": "(보도설명) 대미투자 관련, 송금 규모·시기, 1호 사업 발표 등은 확정된 바가 없습니다. - 대한민국 정책브리핑",
+          "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOR2F6NXh6Z1hwS05mOXUzRmtmSUpmQmJHTlY2X2xpckwtRndXX3p6WmM0TGxSaGQwTENVa19OV1dQemFocjJFMW9FQUMyZVNGR182d3Z0dDVHbGRBU3M0Y2FtRC1mVkhkUVE4eXdKZFJ5ZmdaTTRUdkNPR1BfMHV0QmpFQW9BN1BmM2pZ?oc=5",
+          "published": "2026-11-15T05:13:24+00:00"
         }
       ]
     }
