@@ -11,38 +11,44 @@
       "motir:ATCLe0854704d:172393"
     ],
     "kepco_notice": [],
-    "kogas_press": []
+    "kogas_press": [],
+    "kepco_press": [
+      "kepco:3190"
+    ]
   },
   "sources": {
     "motir_press": {
-      "last_ok_kst": "2026-11-16T03:20:57+09:00",
+      "last_ok_kst": "2026-11-16T03:22:36+09:00",
       "matched": 1
     },
     "motir_clarification": {
-      "last_ok_kst": "2026-11-16T03:20:57+09:00",
+      "last_ok_kst": "2026-11-16T03:22:36+09:00",
       "matched": 3
     },
     "kepco_notice": {
-      "last_ok_kst": "2026-11-16T03:20:57+09:00",
+      "last_ok_kst": "2026-11-16T03:22:36+09:00",
       "matched": 0
     },
     "kogas_press": {
-      "last_ok_kst": "2026-11-16T03:20:57+09:00",
+      "last_ok_kst": "2026-11-16T03:22:36+09:00",
       "matched": 0
+    },
+    "kepco_press": {
+      "last_ok_kst": "2026-11-16T03:22:36+09:00",
+      "matched": 1
     }
   },
   "seeded_date": "2026-11-16",
-  "updated_at_kst": "2026-11-16T03:20:57+09:00",
+  "updated_at_kst": "2026-11-16T03:22:36+09:00",
   "source_health": {
     "ok": [
       "kepco_notice",
+      "kepco_press",
       "kogas_press",
       "motir_clarification",
       "motir_press"
     ],
-    "failed": {
-      "kepco_press": "ValueError: 공식 문서 발표일 확인 불가"
-    },
-    "complete": false
+    "failed": {},
+    "complete": true
   }
 }
