@@ -3018,6 +3018,33 @@ class MaterialityChecks(unittest.TestCase):
         self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS)
         self.assertEqual(radar.verified_alert_core(alert(title, body), title), "")
 
+    def test_historical_government_fund_capital_does_not_promote_routine_ship_support_call(self):
+        title = "건조비 30~60% 지원…'연안선박 현대화 펀드' 4차 지원대상자 공모"
+        body = (
+            "해양수산부는 11월 16일부터 12월 4일까지 2026년 제4차 연안선박 현대화 펀드 지원 대상자를 공모한다. "
+            "노후 연안여객선과 연안화물선의 새 선박 교체를 위해 건조비의 30~60%를 지원한다. "
+            "현대화 펀드는 세월호 참사 이후 안전한 해상 교통망 구축을 위해 정부 출자금과 금융기관 대출, "
+            "선사 자부담을 결합해 도입됐으며 총 2490억 원이 조성됐다. "
+            "현재까지 총 14척의 건조를 지원했고 이 가운데 7척이 운항 중이다. "
+            "올해부터 지원 기준 선가를 2.5배 높여 150억 원 이하 선박은 건조비의 60%, "
+            "150억 원 초과 300억 원 이하는 50%, 300억 원 초과는 30%를 지원한다."
+        )
+        item = alert(title, body)
+        audit = radar.source_market_materiality(item)
+        self.assertNotEqual(audit["disposition"], "keep", audit)
+        self.assertLess(audit["priority"], 3, audit)
+        self.assertNotIn("capital_or_shareholder_action", [entry["kind"] for entry in audit["evidence"]])
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([item], 7), [])
+
+        committed = materiality.assess(
+            "기관, 펀드에 1조원 신규 출자 확정",
+            "기관은 6일 펀드에 1조원 신규 출자를 확정했다고 발표했다.",
+            published=NOW.isoformat(),
+        )
+        self.assertEqual(committed["disposition"], "keep", committed)
+        self.assertIn("capital_or_shareholder_action", [entry["kind"] for entry in committed["evidence"]])
+
     def test_material_and_early_news_survive_without_signed_contract_or_ticker_list(self):
         for title, body in KEEP:
             with self.subTest(title=title):
