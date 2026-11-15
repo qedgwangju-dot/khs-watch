@@ -6,6 +6,7 @@ from __future__ import annotations
 import concurrent.futures
 import datetime as dt
 from difflib import SequenceMatcher
+from decimal import Decimal
 import html
 import hashlib
 import json
@@ -3098,6 +3099,47 @@ def regional_industry_subsidy_core(title: str, body: str) -> str:
     return core if core_sentence_is_complete(core) else ""
 
 
+def us_treasury_yield_shock_core(title: str, body: str, published: str = "") -> str:
+    observation = market_materiality.us_treasury_yield_shock_observation(title, body, published)
+    if not observation:
+        return ""
+    source = market_materiality.source_reported_body(body)
+    rows = market_materiality.source_sentences(source)
+    index_moves = {}
+    for row in rows:
+        match = re.search(r"(S\s*&\s*P\s*500|나스닥(?:\s*100)?|Nasdaq(?:\s*100)?)", row, re.I)
+        rate = re.search(r"(\d+(?:[.,]\d+)?)\s*%", row)
+        if not match or not rate or not re.search(r"하락|떨어|내렸|밀렸|fall|drop|declin", row, re.I):
+            continue
+        label = "S&P500" if re.match(r"S", match.group(1), re.I) else "나스닥100" if re.search(r"100", match.group(1)) else "나스닥"
+        index_moves[label] = rate.group(1).replace(",", ".")
+    if "S&P500" not in index_moves or not any(key in index_moves for key in ("나스닥100", "나스닥")):
+        return ""
+    yield_pct = observation["yield_pct"]
+    weekly_change = Decimal(observation["weekly_change_bp"]) / Decimal("100")
+    weekly_text = format(weekly_change.normalize(), "f")
+    nasdaq_name = "나스닥100" if "나스닥100" in index_moves else "나스닥"
+    fact = (
+        f"미 10년물 금리는 {yield_pct}%를 기록했고 주간 {weekly_text}%포인트 상승했다. "
+        f"S&P500은 {index_moves['S&P500']}%, {nasdaq_name}은 {index_moves[nasdaq_name]}% 하락했다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def korean_data_center_grid_rule_core(title: str, body: str, published: str = "") -> str:
+    observation = market_materiality.korean_data_center_grid_rule_observation(title, body, published)
+    if not observation:
+        return ""
+    effective_date = dt.date.fromisoformat(observation["effective_date"])
+    fact = (
+        f"정부는 {effective_date.month}월 {effective_date.day}일부터 수도권 데이터센터 평가 기준을 "
+        f"70점에서 {observation['metro_datacenter_pass_score']}점으로 높이고, "
+        f"전력 이용밀도 기준 초과 시 {observation['high_density_penalty_points']}점 감점한다. "
+        f"비수도권은 {observation['nonmetro_datacenter_pass_score']}점을 유지한다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
 def source_headline_event_fact(title: str, body: str, published: str = "") -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
@@ -3113,6 +3155,12 @@ def source_headline_event_fact(title: str, body: str, published: str = "") -> st
     subsidy_core = regional_industry_subsidy_core(title, source)
     if subsidy_core:
         return subsidy_core
+    for event_core in (
+        us_treasury_yield_shock_core(title, source, published),
+        korean_data_center_grid_rule_core(title, source, published),
+    ):
+        if event_core:
+            return event_core
     for event_core in (
         hormuz_carrier_share_core(title, source),
         american_airlines_fuel_guidance_core(title, source),
@@ -10738,11 +10786,18 @@ def source_output_aligned(alert: dict) -> bool:
                 market_materiality.boj_rate_yen_fx_observation(event_title, event_body),
                 market_materiality.shin_hawks_tightening_observation(event_title, event_body),
                 market_materiality.kospi_semis_foreign_buying_rebound_observation(event_title, event_body),
+                market_materiality.us_treasury_yield_shock_observation(
+                    event_title, event_body, str(alert.get("published") or ""),
+                ),
+                market_materiality.korean_data_center_grid_rule_observation(
+                    event_title, event_body, str(alert.get("published") or ""),
+                ),
             ) if observation), {})
         if not event_specific_core and event_specific_observation:
             event_specific_core = source_headline_event_fact(
                 str(alert.get("source_title") or ""),
                 article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or "")),
+                str(alert.get("published") or ""),
             )
         event_specific_market_alignment = bool(
             event_specific_core
@@ -13956,6 +14011,8 @@ def source_core_fact_errors(alert: dict) -> list[str]:
              or market_materiality.ai_infrastructure_credit_stress_observation(title, source)
              or market_materiality.sovereign_credit_spread_observation(title, source)
              or market_materiality.iran_military_readiness_observation(title, source)
+             or market_materiality.us_treasury_yield_shock_observation(title, source, published)
+             or market_materiality.korean_data_center_grid_rule_observation(title, source, published)
              or market_materiality.declared_capital_participation_observation(title, source)
              or market_materiality.quantified_oil_shipping_constraints_observation(title, source)
              or market_materiality.procurement_lead_time_observation(title, source)

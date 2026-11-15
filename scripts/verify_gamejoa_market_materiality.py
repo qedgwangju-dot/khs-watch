@@ -117,6 +117,115 @@ def alert(title, body):
             "link": "https://www.yna.co.kr/view/materiality-fixture"}
 
 
+class AttachmentMissedHighImpactRegressions(unittest.TestCase):
+    def test_us_treasury_weekly_shock_survives_and_reprints_collapse(self):
+        published = "2026-11-15T10:49:00+09:00"
+        title = "1년반 만 ‘최악의 한 주’…또 5%대 뚫은 美국채"
+        body = (
+            "14일(현지시간) 영국 파이낸셜타임스(FT) 보도에 따르면 13일 오후 미국 10년물 국채 금리는 연 5.14%를 기록했다. "
+            "장중에는 한 달 만의 최고치인 5.17%까지 올랐다.\n"
+            "전 세계 자산 가격의 기준이 되는 미 10년물 금리는 11월 둘째 주에만 0.28%포인트 뛰었다. "
+            "미 국채 금리의 상승 여파로 뉴욕 증시도 하락했다.\n"
+            "13일 S&P500지수는 0.4% 떨어졌다. 기술주 중심의 나스닥100지수 역시 1.2% 떨어졌다."
+        )
+        observation = materiality.us_treasury_yield_shock_observation(title, body, published)
+        self.assertEqual(observation["yield_pct"], "5.14")
+        self.assertEqual(observation["weekly_change_bp"], "28")
+        self.assertEqual(observation["period"], "2026-11-week-둘째")
+        self.assertIn("S&P500지수는 0.4% 떨어졌다", observation["source_excerpt"])
+        self.assertIn("나스닥100지수 역시 1.2% 떨어졌다", observation["source_excerpt"])
+
+        audit = materiality.assess(title, body, published=published)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertEqual(audit["news_value_rank"], 4, audit)
+        self.assertEqual(audit["transmission_scope_rank"], 3, audit)
+        self.assertEqual(audit["evidence"][0]["stage"], "reported_benchmark_yield_shock")
+        expected_core = radar.source_headline_event_fact(title, body, published)
+        self.assertIn("5.14%", expected_core)
+        self.assertIn("0.28%포인트", expected_core)
+        self.assertIn("S&P500은 0.4%", expected_core)
+        self.assertIn("나스닥100은 1.2%", expected_core)
+        self.assertTrue(radar.core_sentence_is_complete(expected_core), expected_core)
+
+        first = {**alert(title, body), "published": published, "link": "https://www.edaily.co.kr/news/yield-a"}
+        first["telegram_core_fact"] = expected_core
+        self.assertTrue(radar.source_output_aligned(first), radar.source_core_fact_errors(first))
+        reprint = {**first, "source_title": "미 10년물 5.14%…주간 급등에 뉴욕 증시 하락", "news": "미 10년물 5.14%…주간 급등에 뉴욕 증시 하락",
+                   "original_news": "미 10년물 5.14%…주간 급등에 뉴욕 증시 하락", "link": "https://www.example.com/yield-reprint"}
+        changed = {**first, "source_body": body.replace("5.14%", "5.20%").replace("0.28%포인트", "0.31%포인트"),
+                   "link": "https://www.edaily.co.kr/news/yield-updated"}
+        self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(reprint))
+        self.assertNotEqual(materiality.source_event_identity(first), materiality.source_event_identity(changed))
+        with patch.object(radar.base, "kst_now", return_value=dt.datetime.fromisoformat(published)):
+            selected = radar.quality_display_alerts([first, reprint, changed], 7)
+        self.assertEqual(len(selected), 1, [(item.get("source_title"), item.get("_exclusion_reason")) for item in (first, reprint, changed)])
+
+    def test_yield_shock_requires_large_weekly_move_and_broad_equity_confirmation(self):
+        title = "미국 국채 금리 5%대 재진입"
+        body = (
+            "미국 10년물 국채 금리는 연 5.14%를 기록했다. "
+            "미 10년물 금리는 11월 둘째 주에만 0.08%포인트 상승했다. "
+            "S&P500지수는 0.4% 떨어졌다. 나스닥100지수도 1.2% 떨어졌다."
+        )
+        self.assertEqual(materiality.us_treasury_yield_shock_observation(title, body, "2026-11-15T10:00:00+09:00"), {})
+        no_market_confirmation = body.replace("S&P500지수는 0.4% 떨어졌다. 나스닥100지수도 1.2% 떨어졌다.", "나스닥100지수도 1.2% 떨어졌다.")
+        self.assertEqual(materiality.us_treasury_yield_shock_observation(
+            title, no_market_confirmation.replace("0.08%포인트", "0.28%포인트"), "2026-11-15T10:00:00+09:00",
+        ), {})
+
+    def test_korean_data_center_grid_rule_is_scoped_and_deduplicated(self):
+        published = "2026-11-15T12:00:07+09:00"
+        title = "데이터센터 지방 분산 유도…수도권 전력망 심사 문턱 높인다"
+        body = (
+            "기후에너지환경부는 15일 ‘전력계통영향평가 제도 운영에 관한 규정’을 16일부터 시행한다고 밝혔다.\n"
+            "상시 많은 전력을 쓰는 데이터센터의 경우 수도권 입지에 적용하는 통과 기준을 70점에서 75점으로 높였다.\n"
+            "비수도권 데이터센터는 70점 기준을 유지한다.\n"
+            "사업 예정지의 전력 이용밀도가 기준을 넘으면 평가에서 5점 감점을 적용한다.\n"
+            "시범운영 기간 데이터센터 입지는 수도권 28건(1.9GW), 비수도권 64건(7GW)이었다."
+        )
+        observation = materiality.korean_data_center_grid_rule_observation(title, body, published)
+        self.assertEqual(observation["stage"], "published_rule_with_future_effective_date")
+        self.assertEqual(observation["effective_date"], "2026-11-16")
+        self.assertEqual(observation["metro_datacenter_pass_score"], "75")
+        self.assertEqual(observation["nonmetro_datacenter_pass_score"], "70")
+        self.assertEqual(observation["high_density_penalty_points"], "5")
+        self.assertIn("1.9GW", observation["source_excerpt"])
+        self.assertIn("7GW", observation["source_excerpt"])
+
+        audit = materiality.assess(title, body, published=published)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertEqual(audit["news_value_rank"], 4, audit)
+        self.assertEqual(audit["transmission_scope_rank"], 3, audit)
+        self.assertEqual(audit["evidence"][0]["stage"], "published_rule_with_future_effective_date")
+        expected_core = radar.source_headline_event_fact(title, body, published)
+        self.assertIn("11월 16일", expected_core)
+        self.assertIn("70점에서 75점", expected_core)
+        self.assertIn("전력 이용밀도 기준 초과 시 5점 감점", expected_core)
+        self.assertIn("비수도권은 70점", expected_core)
+        self.assertTrue(radar.core_sentence_is_complete(expected_core), expected_core)
+        first = {**alert(title, body), "published": published, "link": "https://www.edaily.co.kr/news/grid-a"}
+        first["telegram_core_fact"] = expected_core
+        self.assertTrue(radar.source_output_aligned(first), radar.source_core_fact_errors(first))
+        reprint = {**first, "source_title": "수도권 데이터센터 전력계통 평가 75점으로 상향", "news": "수도권 데이터센터 전력계통 평가 75점으로 상향",
+                   "original_news": "수도권 데이터센터 전력계통 평가 75점으로 상향", "link": "https://www.example.com/grid-reprint"}
+        self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(reprint))
+        changed_effective_date = {**first, "source_body": body.replace("16일부터 시행", "17일부터 시행")}
+        self.assertNotEqual(materiality.source_event_identity(first), materiality.source_event_identity(changed_effective_date))
+        with patch.object(radar.base, "kst_now", return_value=dt.datetime.fromisoformat(published)):
+            selected = radar.quality_display_alerts([first, reprint], 7)
+        self.assertEqual(len(selected), 1, [(item.get("source_title"), item.get("_exclusion_reason")) for item in (first, reprint)])
+
+    def test_korean_data_center_rule_needs_all_scoped_terms(self):
+        title = "데이터센터 지방 분산 유도…수도권 전력망 심사 문턱 높인다"
+        published = "2026-11-15T12:00:00+09:00"
+        incomplete = (
+            "기후에너지환경부는 ‘전력계통영향평가 제도 운영에 관한 규정’을 16일부터 시행한다고 밝혔다. "
+            "수도권 데이터센터 통과 기준은 70점에서 75점으로 높였다. "
+            "비수도권 데이터센터는 70점 기준이다."
+        )
+        self.assertEqual(materiality.korean_data_center_grid_rule_observation(title, incomplete, published), {})
+
+
 # Source excerpts from actual deliveries on 2026-10-02, not sector-label fixtures.
 DELIVERED_LOCAL_ADMINISTRATION = (
     ("강원도, 지역 생산 전력 활용법 찾는다…현안 6건 돌파구 모색 | 연합뉴스",

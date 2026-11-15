@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 140
+VERSION = 141
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1651,6 +1651,136 @@ def sovereign_credit_spread_observation(title: str, body: str) -> dict:
         'stage': 'reported_sovereign_spread_widening',
         'source_excerpt': ' '.join((selloff, spread, contagion)),
         'comparison': '2012년 이후 최대',
+    }
+
+
+def us_treasury_yield_shock_observation(title: str, body: str, published: str = "") -> dict:
+    """Require a 10Y yield above 5%, a sharp weekly repricing and equity confirmation."""
+    if not re.search(r"미국|美|(?<![가-힣])미(?=\s*(?:10년물|국채))|\bU\.?S\.?\b|\bTreasur(?:y|ies)\b", title, re.I):
+        return {}
+    if not re.search(r"국채|10년물|treasur", title, re.I):
+        return {}
+    if not re.search(r"5(?:[.,]\d+)?\s*%|최악의\s*한\s*주|급등|급락|selloff|surge", title, re.I):
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    yield_row = next((
+        row for row in rows
+        if re.search(r"(?:미국|미)\s*10년물.{0,45}(?:국채\s*)?금리", row)
+        and re.search(r"(?:연\s*)?([5-9](?:[.,]\d+)?)\s*%", row)
+    ), "")
+    weekly_row = next((
+        row for row in rows
+        if re.search(r"(?:미국|미)\s*10년물.{0,45}금리", row)
+        and re.search(r"(?:한\s*주|주간|\d{1,2}월\s*(?:첫째|둘째|셋째|넷째|다섯째|[1-5]째)\s*주|week)", row, re.I)
+        and re.search(r"(?:뛰|상승|급등|올랐|올라|rose|jump|surged)", row, re.I)
+    ), "")
+    sp500_row = next((
+        row for row in rows
+        if re.search(r"S\s*&\s*P\s*500", row, re.I)
+        and re.search(r"\d+(?:[.,]\d+)?\s*%", row)
+        and re.search(r"하락|떨어|내렸|밀렸|fall|drop|declin", row, re.I)
+    ), "")
+    nasdaq_row = next((
+        row for row in rows
+        if re.search(r"나스닥(?:\s*100)?|Nasdaq(?:\s*100)?", row, re.I)
+        and re.search(r"\d+(?:[.,]\d+)?\s*%", row)
+        and re.search(r"하락|떨어|내렸|밀렸|fall|drop|declin", row, re.I)
+    ), "")
+    level_match = re.search(r"(?:연\s*)?([5-9](?:[.,]\d+)?)\s*%", yield_row)
+    move_match = re.search(r"(\d+(?:[.,]\d+)?)\s*(%\s*포인트|%p|bp)", weekly_row, re.I)
+    period_match = re.search(
+        r"(?P<month>1[0-2]|0?[1-9])\s*월\s*(?P<week>첫째|둘째|셋째|넷째|다섯째|[1-5]째)\s*주",
+        weekly_row,
+    )
+    if not all((yield_row, weekly_row, sp500_row, nasdaq_row, level_match, move_match, period_match)):
+        return {}
+    try:
+        level = Decimal(level_match.group(1).replace(",", "."))
+        raw_move = Decimal(move_match.group(1).replace(",", "."))
+        move_bp = raw_move * (100 if "%" in move_match.group(2) else 1)
+        if level < Decimal("5") or move_bp < Decimal("25"):
+            return {}
+        published_dt = dt.datetime.fromisoformat(str(published).replace("Z", "+00:00")) if published else None
+        year = published_dt.astimezone(dt.timezone(dt.timedelta(hours=9))).year if published_dt and published_dt.tzinfo else None
+        period = f"{year or 'unknown'}-{int(period_match.group('month')):02d}-week-{period_match.group('week')}"
+    except (InvalidOperation, TypeError, ValueError):
+        return {}
+    excerpt = " ".join((yield_row, weekly_row, sp500_row, nasdaq_row))
+    return {
+        "stage": "reported_benchmark_yield_shock",
+        "country": "US",
+        "tenor": "10Y",
+        "yield_pct": format(level.normalize(), "f"),
+        "weekly_change_bp": format(move_bp.normalize(), "f"),
+        "period": period,
+        "source_excerpt": excerpt,
+    }
+
+
+def korean_data_center_grid_rule_observation(title: str, body: str, published: str = "") -> dict:
+    """Bind a scheduled Korean data-center grid rule to all disclosed score terms."""
+    if not re.search(r"데이터\s*센터|데이터센터", title, re.I):
+        return {}
+    if not re.search(r"전력계통|전력망|전력\s*평가", title):
+        return {}
+    source = source_reported_body(body)
+    if not re.search(r"기후에너지환경부", source) or not re.search(r"전력계통영향평가\s*제도\s*운영에\s*관한\s*규정", source):
+        return {}
+    rows = source_sentences(source)
+    rule_row = next((
+        row for row in rows
+        if re.search(r"기후에너지환경부", row)
+        and re.search(r"\d{1,2}일.{0,100}\d{1,2}일부터\s*시행", row)
+    ), "")
+    metro_row = next((
+        row for row in rows
+        if re.search(r"수도권", row) and re.search(r"데이터\s*센터|데이터센터", row)
+        and re.search(r"70\s*점.{0,18}75\s*점", row)
+    ), "")
+    nonmetro_row = next((
+        row for row in rows
+        if re.search(r"비수도권", row) and re.search(r"데이터\s*센터|데이터센터", row)
+        and re.search(r"70\s*점", row)
+    ), "")
+    density_row = next((
+        row for row in rows
+        if re.search(r"전력\s*이용\s*밀도|전력이용밀도", row)
+        and re.search(r"5\s*점\s*감점", row)
+    ), "")
+    if not all((rule_row, metro_row, nonmetro_row, density_row)):
+        return {}
+    try:
+        published_dt = dt.datetime.fromisoformat(str(published).replace("Z", "+00:00"))
+        if not published_dt.tzinfo:
+            return {}
+        local_date = published_dt.astimezone(dt.timezone(dt.timedelta(hours=9))).date()
+        effective_day = int(re.search(r"(\d{1,2})일부터\s*시행", rule_row).group(1))
+        effective_year, effective_month = local_date.year, local_date.month
+        if effective_day < local_date.day:
+            next_month = (local_date.replace(day=1) + dt.timedelta(days=32)).replace(day=1)
+            effective_year, effective_month = next_month.year, next_month.month
+        effective_date = dt.date(effective_year, effective_month, effective_day)
+        if not dt.timedelta(days=0) <= effective_date - local_date <= dt.timedelta(days=31):
+            return {}
+    except (TypeError, ValueError, AttributeError):
+        return {}
+    pilot_row = next((
+        row for row in rows
+        if re.search(r"수도권.{0,35}1\.9\s*GW", row)
+        and re.search(r"비수도권.{0,35}7\s*GW", row)
+    ), "")
+    excerpt_rows = [rule_row, metro_row, nonmetro_row, density_row]
+    if pilot_row:
+        excerpt_rows.append(pilot_row)
+    return {
+        "stage": "published_rule_with_future_effective_date",
+        "effective_date": effective_date.isoformat(),
+        "metro_datacenter_pass_score": "75",
+        "nonmetro_datacenter_pass_score": "70",
+        "high_density_penalty_points": "5",
+        "pilot_metro_capacity_gw": "1.9" if pilot_row else "",
+        "pilot_nonmetro_capacity_gw": "7" if pilot_row else "",
+        "source_excerpt": " ".join(excerpt_rows),
     }
 
 
@@ -3931,6 +4061,8 @@ def source_event_identity(alert: dict) -> str:
         ('ai_infrastructure_credit_stress', ai_infrastructure_credit_stress_observation(title, body)),
         ('sovereign_credit_spread_stress', sovereign_credit_spread_observation(title, body)),
         ('iran_military_readiness', iran_military_readiness_observation(title, body)),
+        ('us_treasury_yield_shock', us_treasury_yield_shock_observation(title, body, published)),
+        ('korean_data_center_grid_rule', korean_data_center_grid_rule_observation(title, body, published)),
     ):
         if not observation:
             continue
@@ -4734,6 +4866,12 @@ def news_value_rank(evidence: list[dict]) -> int:
     )
     if quantified_flow:
         return 4
+    if any(
+        item.get("kind") == "rates_fx_or_macro"
+        and item.get("stage") == "reported_benchmark_yield_shock"
+        for item in realized
+    ):
+        return 4
     quantified_macro_surprise = any(
         item["kind"] == "rates_fx_or_macro"
         and item in realized
@@ -4777,6 +4915,18 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
         return 3, 'euro_area_sovereign_spread_and_contagion_risk'
     if 'iran_military_readiness' in kinds:
         return 3, 'iran_conflict_readiness_energy_and_risk_premium'
+    if any(
+        item.get('kind') == 'rates_fx_or_macro'
+        and item.get('stage') == 'reported_benchmark_yield_shock'
+        for item in evidence
+    ):
+        return 3, 'measured_sovereign_benchmark_yield_and_equity_repricing'
+    if any(
+        item.get('kind') == 'policy_scope_or_stage'
+        and item.get('stage') == 'published_rule_with_future_effective_date'
+        for item in evidence
+    ):
+        return 3, 'scheduled_national_data_center_grid_rule'
     if 'business_investment_observation' in kinds:
         return 3, 'dated_business_equipment_investment_observation'
     if "energy_import_mix" in kinds:
@@ -6208,6 +6358,22 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
             4,
             2,
         ),
+        (
+            us_treasury_yield_shock_observation(title, body, published),
+            "rates_fx_or_macro",
+            ["discount_rate", "price"],
+            "measured_us_benchmark_yield_and_equity_selloff",
+            4,
+            3,
+        ),
+        (
+            korean_data_center_grid_rule_observation(title, body, published),
+            "policy_scope_or_stage",
+            ["earnings", "timeline"],
+            "scheduled_korean_data_center_grid_assessment_rule",
+            4,
+            3,
+        ),
     )
     for observation, kind, axes, reason, rank, scope in event_overrides:
         if not observation:
@@ -6218,7 +6384,7 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
             axes=axes,
             evidence=[{
                 "kind": kind,
-                "stage": "reported_change",
+                "stage": observation.get("stage", "reported_change"),
                 "source_excerpt": observation["source_excerpt"],
             }],
             reason="source_change_evidence",
