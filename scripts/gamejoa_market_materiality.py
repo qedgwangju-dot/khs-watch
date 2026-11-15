@@ -3574,23 +3574,32 @@ def coupang_quarterly_earnings_release_observation(
 
 
 def nvidia_ceo_departure_observation(title: str, body: str, published: str) -> dict[str, str]:
-    """Group only source-confirmed Jensen Huang CEO-departure reprints."""
+    """Group source-confirmed CEO-departure coverage, including market reactions."""
     if not re.match(r'20\d{2}-\d{2}-\d{2}', published):
         return {}
     if not re.search(r'(?:엔비디아|nvidia|젠슨\s*황|jensen\s*huang|jen-hsun\s*huang)', title, re.I):
         return {}
-    if not re.search(r'사임|퇴진|사퇴|resign|departure|stepping\s*down', title, re.I):
-        return {}
-    if re.search(r'후임\s*(?:선임|확정)|permanent\s*successor|successor\s*appointed', title, re.I):
-        return {}
-    if re.search(
-        r'주가|주식|시총|급락|급등|하락|상승|증발|수혜|공급|수요|반도체|메모리|'
-        r'shares|stock|market\s*cap|plung|rall|fell|drop|gain|surge|market reaction',
+    source = source_reported_body(body)
+    flat = re.sub(r'\s+', ' ', source)
+    if not re.search(
+        r'사임|퇴진|퇴임|사퇴|해임|쫓겨났|쫓겨나|물러나|떠난|전\s*(?:최고경영자|CEO)|없는\s*엔비디아|'
+        r'리더십\s*교체|leadership\s+(?:change|transition|shift|vacuum)|'
+        r'resign|departure|stepping\s*down|former\s+CEO|left\s+(?:the\s+)?company|'
+        r'pushed\s+out|ousted|forced\s+out',
         title, re.I,
     ):
         return {}
-    source = source_reported_body(body)
-    flat = re.sub(r'\s+', ' ', source)
+    if re.search(r'후임\s*(?:선임|확정)|permanent\s*successor|successor\s*appointed', title, re.I):
+        return {}
+    separate_action = re.search(
+        r'(?:미국\s*법무부|법무부|검찰|SEC|의회|국회|DOJ|Congress|Justice\s+Department)'
+        r'.{0,65}(?:조사|수사|결론|청문회|감시|소환|제재|investigat|probe|conclusion|hearing|scrutiny)|'
+        r'(?:조사|수사|청문회|제재|investigation|probe|hearing|scrutiny).{0,65}'
+        r'(?:미국\s*법무부|법무부|검찰|SEC|의회|국회|DOJ|Congress|Justice\s+Department)',
+        title, re.I,
+    )
+    if separate_action:
+        return {}
     official_action = re.search(
         r'(?:NVIDIA|엔비디아).{0,180}(?:board of directors|이사회).{0,180}'
         r'(?:Jensen Huang|Jen-Hsun Huang|젠슨\s*황).{0,100}(?:resign|사임|퇴진)|'
