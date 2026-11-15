@@ -191,6 +191,24 @@ class MaterialEventTests(unittest.TestCase):
         self.assertIsNone(r.make_fact(dict(good, title="SK hynix HBM4 2028 non-NVIDIA 45% estimated by SemiAnalysis")))
         self.assertIsNone(r.make_fact(dict(good, title="SK hynix 2028 customers HBM4 45% signed capacity")))
 
+    def test_official_article_cannot_join_signed_other_contract_and_hbm4_analyst_estimate(self):
+        original = {
+            "category": "hbm_supply_allocation",
+            "direct_link": "https://news.skhynix.com/en/official-2028",
+        }
+        wrong = dict(original, title=(
+            "SK hynix signed NAND agreements with 15 customers in 2028. "
+            "SemiAnalysis estimates HBM4 2028 non-NVIDIA capacity allocation may reach 70%."))
+        self.assertIsNone(r.make_fact(wrong))
+        wrong2 = dict(original, title=(
+            "SK hynix HBM4 2028 non-NVIDIA allocation 70% could be signed. "
+            "A separate HBM4 customer signed a 2027 LTA."))
+        self.assertIsNone(r.make_fact(wrong2))
+        yes = dict(original, title="SK hynix HBM4 2028 non-NVIDIA customers 45.5% signed allocation contracts")
+        got = r.make_fact(yes)
+        self.assertIsNotNone(got)
+        self.assertIn("45.5%", got["headline_ko"])
+
     def test_forecast_notice_stays_silent_on_repeated_main_collector_runs(self):
         report = next(x for x in m.REPORTS if "semianalysis" in x["key"])
         previously_sent = {"hbm_material_event_watch": {"seen_keys": [x["key"] for x in m.REPORTS]}}

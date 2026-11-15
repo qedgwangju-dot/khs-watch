@@ -3227,14 +3227,18 @@ def make_fact(event: dict) -> dict | None:
             and any(x in low for x in ("non-nvidia", "non nvidia", "비엔비디아", "비 엔비디아"))
         ):
             return None
-        if not any(x in low for x in ("signed", "contracted", "binding agreement", "confirmed allocation", "계약 체결", "계약 확정", "확정 배정")):
-            return None
-        # Do not pull a percentage from another company/period in the article.
+        # Every required fact must occur in ONE allocation statement. A signed
+        # unrelated LTA and a quoted analyst forecast elsewhere in an issuer
+        # article must never be combined into a "confirmed" HBM4 allocation.
         allocation_pct = None
-        for clause in re.split(r"[.。；;\n]+", text):
+        for clause in re.split(r"(?<!\d)\.(?!\d)|[。；;\n]+", text):
             c = clause.lower()
             if not ("2028" in c and "hbm4" in c and
                     any(x in c for x in ("non-nvidia", "non nvidia", "비엔비디아", "비 엔비디아"))):
+                continue
+            if not any(x in c for x in ("signed", "contracted", "binding agreement", "confirmed allocation", "계약 체결", "계약 확정", "확정 배정")):
+                continue
+            if re.search(r"\b(?:may|might|could|would|estimate|estimated|forecast|expected|projected|potential|hypothetical)\b|예상|전망|추정|목표|가능", c, re.I):
                 continue
             match = re.search(r"(\d{1,3}(?:\.\d+)?)\s*%", clause)
             if match and 0 < float(match.group(1)) <= 100:
