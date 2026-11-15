@@ -13,16 +13,16 @@
   },
   "sources": {
     "motir_press": {
-      "last_ok_kst": "2026-11-16T03:18:24+09:00",
+      "last_ok_kst": "2026-11-16T03:18:56+09:00",
       "matched": 1
     },
     "motir_clarification": {
-      "last_ok_kst": "2026-11-16T03:18:24+09:00",
+      "last_ok_kst": "2026-11-16T03:18:56+09:00",
       "matched": 3
     }
   },
   "seeded_date": "2026-11-16",
-  "updated_at_kst": "2026-11-16T03:18:24+09:00",
+  "updated_at_kst": "2026-11-16T03:18:56+09:00",
   "source_health": {
     "ok": [
       "motir_clarification",
@@ -31,7 +31,7 @@
     "failed": {
       "kepco_notice": "RuntimeError: 공식 목록 게시물 링크 2개 미만; 구조 진단=[{'tag': 'div', 'text': 'KEPCO ENG 로그인 유튜브 전체메뉴 닫기 회사소개 회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑', 'attrs': {'class': \"['header-gnb']\"}}, {'tag': 'div', 'text': 'KEPCO ENG 로그인 유튜브 전체메뉴 닫기 회사소개 회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑', 'attrs': {'class': \"['gnb-inner']\"}}, {'tag': 'div', 'text': 'KEPCO ENG 로그인 유튜브 전체메뉴 닫기 회사소개 회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑', 'attrs': {'class': \"['inner-left']\"}}, {'tag': 'li', 'text': '회사소개 회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑니다. KEPCO 소개 메뉴 열기 KEPCO 개', 'attrs': {'class': \"['gnb-1depth']\"}}, {'tag': 'div', 'text': '회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑니다. KEPCO 소개 메뉴 열기 KEPCO 개요 연혁 ', 'attrs': {'class': \"['gnb-2depth']\"}}, {'tag': 'div', 'text': '회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑니다. KEPCO 소개 메뉴 열기 KEPCO 개요 연혁 ', 'attrs': {'class': \"['gnb-2depth-inner']\"}}, {'tag': 'div', 'text': 'KEPCO 개요 연혁 CEO 인사말 경영방침 CI', 'attrs': {'class': \"['gnb-3depth']\"}}, {'tag': 'a', 'text': '경영방침', 'attrs': {'href': '/home/about/introduce/policy/ceo/conts.do', 'onclick': \"javascript:gaEvent('gnb', 'click', 'gnb_policy');\"}}]",
       "kepco_press": "RuntimeError: 공식 목록 게시물 링크 2개 미만; 구조 진단=[{'tag': 'div', 'text': 'KEPCO ENG 로그인 유튜브 전체메뉴 닫기 회사소개 회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑', 'attrs': {'class': \"['header-gnb']\"}}, {'tag': 'div', 'text': 'KEPCO ENG 로그인 유튜브 전체메뉴 닫기 회사소개 회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑', 'attrs': {'class': \"['gnb-inner']\"}}, {'tag': 'div', 'text': 'KEPCO ENG 로그인 유튜브 전체메뉴 닫기 회사소개 회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑', 'attrs': {'class': \"['inner-left']\"}}, {'tag': 'li', 'text': '회사소개 회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑니다. KEPCO 소개 메뉴 열기 KEPCO 개', 'attrs': {'class': \"['gnb-1depth']\"}}, {'tag': 'div', 'text': '회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑니다. KEPCO 소개 메뉴 열기 KEPCO 개요 연혁 ', 'attrs': {'class': \"['gnb-2depth']\"}}, {'tag': 'div', 'text': '회사소개 미래를 밝히는 기술로 글로벌 에너지 산업을 이끌어 갑니다. KEPCO 소개 메뉴 열기 KEPCO 개요 연혁 ', 'attrs': {'class': \"['gnb-2depth-inner']\"}}, {'tag': 'div', 'text': 'KEPCO 개요 연혁 CEO 인사말 경영방침 CI', 'attrs': {'class': \"['gnb-3depth']\"}}, {'tag': 'a', 'text': '경영방침', 'attrs': {'href': '/home/about/introduce/policy/ceo/conts.do', 'onclick': \"javascript:gaEvent('gnb', 'click', 'gnb_policy');\"}}]",
-      "kogas_press": "RuntimeError: 공식 목록 게시물 링크 2개 미만; 구조 진단=[{'tag': 'div', 'text': '어린이 KOGAS Language 홈페이지 언어 선택 KOR ENG 통합검색 통합검색 통합검색 통합검색 분류 선택 통', 'attrs': {'class': \"['wrapper']\"}}, {'tag': 'div', 'text': '어린이 KOGAS Language 홈페이지 언어 선택 KOR ENG 통합검색 통합검색 통합검색 통합검색 분류 선택 통', 'attrs': {'class': \"['header']\"}}, {'tag': 'div', 'text': '어린이 KOGAS Language 홈페이지 언어 선택 KOR ENG 통합검색 통합검색 통합검색 통합검색 분류 선택 통', 'attrs': {'class': \"['pu_hd_w']\"}}, {'tag': 'div', 'text': '통합검색 통합검색 통합검색 통합검색 분류 선택 통합검색 메뉴 게시물 웹문서 부서/직원 검색어 입력 검색하기 전체메뉴 ', 'attrs': {'class': \"['pu_hd_box']\"}}, {'tag': 'div', 'text': '정보공개 정보공개 경영공시 KOGAS정보 정보공개제도 공공데이터제공 사전정보공표 사업실명제 IR정보 본인전송요구 KO', 'attrs': {'class': \"['pu_gnb_box_w']\"}}, {'tag': 'div', 'text': '정보공개 정보공개 경영공시 KOGAS정보 정보공개제도 공공데이터제공 사전정보공표 사업실명제 IR정보 본인전송요구 KO', 'attrs': {'class': \"['pu_gnb_box']\"}}, {'tag': 'div', 'text': '정보공개 정보공개 경영공시 KOGAS정보 정보공개제도 공공데이터제공 사전정보공표 사업실명제 IR정보 본인전송요구 KO', 'attrs': {'class': \"['pu_gnb_w']\"}}, {'tag': 'div', 'text': '정보공개 경영공시 KOGAS정보 정보공개제도 공공데이터제공 사전정보공표 사업실명제 IR정보 본인전송요구', 'attrs': {'class': \"['pu_dep2_w']\"}}]"
+      "kogas_press": "ConnectionError: HTTPSConnectionPool(host='www.kogas.or.kr', port=443): Max retries exceeded with url: /site/koGas/goBoard.do?Key=1010202000000&boardNo=41&pageIndex=1&pageOffset=0&pageSize=10 (Caused by NameResolutionError(\"HTTPSConnection(host='www.kogas.or.kr', port=443): Failed to resolve 'www.kogas.or.kr' ([Errno -5] No address associated with hostname)\"))"
     },
     "complete": false
   }
