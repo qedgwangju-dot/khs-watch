@@ -512,6 +512,8 @@ QUERIES = [
         'TrendForce HBM "KV cache" (offload OR offloading OR HBF OR "SSD POD" OR CMX OR "8-Hi" OR "12-Hi" OR "4-Hi")',
     ),
     ("hbf_roadmap", '(HBF OR "High Bandwidth Flash" OR 고대역폭플래시) (SK하이닉스 OR "SK hynix" OR Sandisk OR 샌디스크 OR OCP) (standard OR specification OR January OR 2027 OR 규격 OR 표준 OR 샘플 OR 양산 OR 계약 OR 검증)'),
+    ("hbm_supply_allocation", '(site:news.skhynix.com OR site:news.skhynix.co.kr OR site:news.samsung.com OR site:investors.micron.com OR site:nvidianews.nvidia.com) HBM4 NVIDIA 2028 non-Nvidia allocation capacity contracted percent'),
+    ("hbm_supply_allocation", '(SK하이닉스 OR 삼성전자 OR Micron) HBM4 2028 NVIDIA 비엔비디아 고객 배정 물량 비중 공급계약 공식 발표'),
 ]
 
 CATEGORY_KO = {
@@ -536,6 +538,7 @@ CATEGORY_KO = {
     "hbm_wafer_economics": "HBM↔DDR5 웨이퍼 경제성",
     "memory_migration": "별도 알림 · HBM 용량 축소→KV 캐시 외부 메모리 전환",
     "hbf_roadmap": "별도 알림 · HBF 표준규격·고객검증·양산 전환",
+    "hbm_supply_allocation": "별도 알림 · 엔비디아/비엔비디아 HBM4 공급계약·배분 확정 변화",
 }
 
 OFFICIAL_SOURCE_HINTS = (
@@ -673,6 +676,14 @@ def relevant(category: str, text: str) -> bool:
                 "memory controller", "메모리 컨트롤러", "base die", "베이스 다이", "phy", "nv-hbi", "bandwidth",
                 "대역폭", "power", "전력", "die area", "다이 면적", "interface", "인터페이스",
             ))
+        )
+    if category == "hbm_supply_allocation":
+        # Supplier allocations must be distinct from SemiAnalysis speculation.
+        return (
+            "hbm4" in low and "2028" in low
+            and any(k in low for k in ("nvidia", "엔비디아"))
+            and any(k in low for k in ("non-nvidia", "non nvidia", "비엔비디아", "비 엔비디아", "외 고객", "other customers"))
+            and any(k in low for k in ("allocation", "allocate", "capacity", "배정", "공급능력", "비중", "share"))
         )
     if category == "hbm_2027_contract":
         return "2027" in low and "hbm" in low and any(k in low for k in ("contract", "price", "pricing", "lta", "supply", "allocation", "volume", "agreement", "negotiation", "계약", "가격", "공급", "물량", "협상", "타결"))
@@ -3196,7 +3207,56 @@ def make_fact(event: dict) -> dict | None:
     verdict = ""
     fact_key = ""
 
-    if cat == "rubin_broker_model":
+    if cat == "hbm_supply_allocation":
+        # Official issuer-owned signed HBM4 allocation only. Analyst estimates
+        # and recycled article snippets are never promoted into contracts.
+        uri = (e.get("direct_link") or "").strip()
+        domain = (urlparse(uri).hostname or "").lower().removeprefix("www.")
+        official = {
+            "news.skhynix.com", "news.skhynix.co.kr",
+            "news.samsung.com", "semiconductor.samsung.com",
+            "investors.micron.com", "nvidianews.nvidia.com", "investor.nvidia.com",
+        }
+        if domain not in official:
+            return None
+        if any(x in low for x in ("semianalysis estimates", "according to semianalysis", "세미애널러시스 추정")):
+            return None
+        if not (
+            "hbm4" in low and "2028" in low
+            and ("nvidia" in low or "엔비디아" in low)
+            and any(x in low for x in ("non-nvidia", "non nvidia", "비엔비디아", "비 엔비디아"))
+        ):
+            return None
+        if not any(x in low for x in ("signed", "contracted", "binding agreement", "confirmed allocation", "계약 체결", "계약 확정", "확정 배정")):
+            return None
+        # Do not pull a percentage from another company/period in the article.
+        allocation_pct = None
+        for clause in re.split(r"[.。；;\n]+", text):
+            c = clause.lower()
+            if not ("2028" in c and "hbm4" in c and
+                    any(x in c for x in ("non-nvidia", "non nvidia", "비엔비디아", "비 엔비디아"))):
+                continue
+            match = re.search(r"(\d{1,3}(?:\.\d+)?)\s*%", clause)
+            if match and 0 < float(match.group(1)) <= 100:
+                allocation_pct = float(match.group(1))
+                break
+        if allocation_pct is None:
+            return None
+        supplier = (
+            "SK하이닉스" if "skhynix" in domain
+            else "삼성전자" if "samsung" in domain
+            else "마이크론" if "micron" in domain
+            else "엔비디아"
+        )
+        fact_key = "issuer_hbm4_non_nvidia_allocation_2028_" + supplier + "_" + str(allocation_pct).replace(".", "p")
+        headline = f"{supplier} 공식: 2028년 HBM4 비엔비디아 계약 배정 {allocation_pct:g}%"
+        bullets = [
+            f"• 공식 원문에서 2028년 HBM4 고객별 계약 배정 비율 {allocation_pct:g}%를 명시했습니다.",
+            "• 회사 공식 신규 수치이며 SemiAnalysis의 70% 전망과 독립적으로 비교합니다.",
+            "• 매출 실현·최종 출하·전체 산업 점유율과 개별 공급사 계약 비중은 별도 확인 대상입니다.",
+        ]
+        verdict = "고객별 확정 배정 변화. 직접 출하 및 매출 인식으로 자동 승격하지 않습니다."
+    elif cat == "rubin_broker_model":
         old_gb, new_gb, share_8, share_12 = _bernstein_rubin_model_values(text)
         if old_gb is None or new_gb is None or old_gb <= 0 or new_gb <= 0:
             return None
@@ -3685,7 +3745,7 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "hbm_hybrid_bonding", "rubin_shipments", "rubin_hbm_option_set", "rubin_supply_media_news", "samsung_hbm4_price", "samsung_nextgen_hbm", "nvhbm_architecture", "hbm_2027_contract", "morgan_stanley_nvidia_hbm_margin", "jpm_hbm_structural", "micron_sca_visibility", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
+    for category in ("rubin_spec", "rubin_broker_model", "hbm_supply_allocation", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "hbm_hybrid_bonding", "rubin_shipments", "rubin_hbm_option_set", "rubin_supply_media_news", "samsung_hbm4_price", "samsung_nextgen_hbm", "nvhbm_architecture", "hbm_2027_contract", "morgan_stanley_nvidia_hbm_margin", "jpm_hbm_structural", "micron_sca_visibility", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
@@ -3695,6 +3755,8 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
                 lines.append(render_hbm_hybrid_bonding_notice(item, now).strip())
                 n += 1
             continue
+        if category == "hbm_supply_allocation" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 HBM4 고객별 공식 공급 배분 변화", ""]
         if category == "hbm4e_thermal_package" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성 HBM4E 발열·패키징 병목 감시", ""]
         if category == "rubin_hbm_option_set" and n > 1:

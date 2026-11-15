@@ -132,12 +132,34 @@ REPORTS = (
         "facts": ("여러 AI 서버가 대용량 메모리를 공유하는 '메모리 랙' 등 메모리 중심 구조 협력 방향 보도.",),
         "caution": "CXL 실증·호환성·실제 고객 채택·정식 제품 공급계약·매출액은 개별 확인 필요.",
     },
+    {
+        "key": "20261112_semianalysis_post_jensen_supply_non_nvidia_2028_gt70",
+        "date": "2026-11-12",
+        "group": "allocation",
+        "label": "SemiAnalysis: 젠슨 사임 이후 HBM4 공급 우선순위·2028년 비엔비디아 비중 전망",
+        "sources": (
+            ("SemiAnalysis 11월 12일 원문",
+             "https://newsletter.semianalysis.com/p/nvidia-and-the-world-without-jensen", "원문·리서치 추정"),
+            ("원문 인용 해설: P Equity Research",
+             "https://pequityresearch.substack.com/p/nvidias-future-my-question-marks", "원문 재인용·독립 전망 아님"),
+        ),
+        "need": (("Nvidia", "엔비디아"), ("SK Hynix", "SK하이닉스"),
+                 ("2028",), ("70%", "70 percent"), ("HBM4",)),
+        "facts": (
+            "확정 사실: NVIDIA는 11월 12일 젠슨 황 사임·콜레트 크레스 임시 CEO 선임 발표(기존 NVIDIA 임원변화 감시에서 별도 관리).",
+            "SemiAnalysis 전망: 젠슨 퇴임 뒤 메모리 공급사의 NVIDIA 우선 배정 약화, 2028년 비엔비디아 AI 칩 고객이 전체 공급능력의 70% 초과를 확보할 가능성.",
+            "중요한 분모: 원문은 'total capacity'라고 표현하며 이를 전 세계 HBM4 생산능력 중 70% 확정 배정으로 볼 근거는 없습니다.",
+            "2027년 SK하이닉스 HBM4 1Gb당 계약가격 추정: NVIDIA 3.0달러/Gb~3.3달러/Gb, AMD·Broadcom·Amazon·Google 3.7달러/Gb~4.1달러/Gb.",
+        ),
+        "caution": "모두 SemiAnalysis 추정·전망으로 계약확정·고객별 구매물량·SK하이닉스 공시 평균판매단가 아님; 공급사 확정 주문·고객별 생산능력·양산 출하 변화는 공식 자료로 별도 판정.",
+    },
 )
 
 GROUPS = {
     "glass": "삼성전기 유리기판 LOI·공정별 공급망",
     "hbm": "SK하이닉스 HBM4·삼성 온양 증설·8인치 공정 재편",
     "intel": "인텔 추론 GPU·국내 23개사·공유 메모리",
+    "allocation": "엔비디아·비엔비디아 HBM4 공급 배분·고객별 가격",
 }
 
 def text_matches(body: str, required: tuple) -> bool:
@@ -226,7 +248,7 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
         "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield",
     }
     rendered = [render(group, [x for x in new if x["group"] == group], checked_at)
-                for group in ("glass", "hbm", "intel")
+                for group in ("glass", "hbm", "intel", "allocation")
                 if any(x["group"] == group for x in new)]
     audit = {"checked_at_kst": checked_at, "verified_events": len(new),
              "verified_keys": [x["key"] for x in new], "gaps": gaps[-20:],

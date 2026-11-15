@@ -20,15 +20,15 @@ class MaterialEventTests(unittest.TestCase):
                 " ".join(group[0] for group in report["need"]) +
                 " 세부사항 검증 완료" * 12)
 
-    def test_all_seven_reports_detected_only_with_original_evidence(self):
+    def test_all_eight_reports_detected_only_with_original_evidence(self):
         current = {"seen_ids": ["existing-event"], "delivery_receipt": {"message_ids": [387]}}
         expected = {x["key"] for x in m.REPORTS}
         result, rendered, audit = m.apply(current, "2026-11-14T20:00:00+09:00", lambda url: self.fixture(next(
             r for r in m.REPORTS if url in [x[1] for x in r["sources"]]
         )))
-        self.assertEqual(audit["verified_events"], 7)
+        self.assertEqual(audit["verified_events"], 8)
         self.assertEqual(set(result["hbm_material_event_watch"]["seen_keys"]), expected)
-        self.assertEqual(len(rendered), 3)
+        self.assertEqual(len(rendered), 4)
         self.assertEqual(result["seen_ids"], ["existing-event"])
         self.assertEqual(result["delivery_receipt"], {"message_ids": [387]})
         for segment in rendered:
@@ -46,7 +46,7 @@ class MaterialEventTests(unittest.TestCase):
         result, msgs, audit = m.apply(cached, "2026-11-14T20:10:00+09:00", never)
         self.assertEqual(msgs, [])
         self.assertEqual(audit["verified_events"], 0)
-        self.assertEqual(len(result["hbm_material_event_watch"]["seen_keys"]), 7)
+        self.assertEqual(len(result["hbm_material_event_watch"]["seen_keys"]), 8)
 
     def test_missing_loi_or_supplier_does_not_trigger_false_contract(self):
         r = m.REPORTS[0]
@@ -151,8 +151,8 @@ class MaterialEventTests(unittest.TestCase):
             report = next(r for r in m.REPORTS if url in [s[1] for s in r["sources"]])
             return self.fixture(report)
         prior, first, first_audit = m.apply(prior, "2026-11-14T19:29:30+09:00", evidence)
-        self.assertEqual(first_audit["verified_events"], 7)
-        self.assertEqual(len(first), 3)
+        self.assertEqual(first_audit["verified_events"], 8)
+        self.assertEqual(len(first), 4)
         for t in ("2026-11-15T06:02:09+09:00","2026-11-15T08:20:32+09:00","2026-11-15T10:24:06+09:00","2026-11-15T11:58:29+09:00"):
             candidate={"hbm_material_event_watch": r.carry_material_event_state(prior)}
             m.require_durable_seen_keys(prior,candidate)
@@ -160,6 +160,45 @@ class MaterialEventTests(unittest.TestCase):
             prior, alerts, audit = m.apply(candidate,t,reject_fetch)
             self.assertEqual(alerts, [])
             self.assertEqual(audit["verified_events"], 0)
+
+
+    def test_semianalysis_forecast_is_not_a_customer_contract(self):
+        report = next(row for row in m.REPORTS if "semianalysis" in row["key"])
+        self.assertIn("total capacity", " ".join(report["facts"]))
+        self.assertIn("전망", " ".join(report["facts"]))
+        self.assertIn("분모", " ".join(report["facts"]))
+        self.assertIn("평균판매단가", report["caution"])
+        found, gaps = m.probe(report, lambda url: self.fixture(report))
+        self.assertEqual(gaps, [])
+        self.assertEqual(found["verified_kind"], "reported_not_issuer_confirmed")
+        rendered = m.render("allocation", [found], "2026-11-16T03:25:00+09:00")
+        self.assertIn("70%", rendered)
+        self.assertIn("3.7달러/Gb", rendered)
+        self.assertTrue(d.chunks(rendered))
+
+    def test_official_new_allocation_requires_named_denominator_and_contract(self):
+        good = {
+            "category": "hbm_supply_allocation",
+            "direct_link": "https://news.skhynix.com/en/example",
+            "title": "SK hynix HBM4 2028 non-NVIDIA customers 45% signed allocation contracts",
+        }
+        fact = r.make_fact(good)
+        self.assertIsNotNone(fact)
+        self.assertIn("45", fact["headline_ko"])
+        self.assertTrue(r.relevant("hbm_supply_allocation", good["title"]))
+        self.assertIsNone(r.make_fact(dict(good, direct_link="https://newsletter.semianalysis.com/p/post")))
+        self.assertIsNone(r.make_fact(dict(good, title="SK hynix HBM4 2028 non-NVIDIA 45% allocation may change")))
+        self.assertIsNone(r.make_fact(dict(good, title="SK hynix HBM4 2028 non-NVIDIA 45% estimated by SemiAnalysis")))
+        self.assertIsNone(r.make_fact(dict(good, title="SK hynix 2028 customers HBM4 45% signed capacity")))
+
+    def test_forecast_notice_stays_silent_on_repeated_main_collector_runs(self):
+        report = next(x for x in m.REPORTS if "semianalysis" in x["key"])
+        previously_sent = {"hbm_material_event_watch": {"seen_keys": [x["key"] for x in m.REPORTS]}}
+        result, alert, audit = m.apply(previously_sent, "2026-11-16T03:25:00+09:00",
+                                       lambda _: (_ for _ in ()).throw(AssertionError("previously sent")))
+        self.assertEqual(alert, [])
+        self.assertEqual(audit["verified_events"], 0)
+        self.assertIn(report["key"], result["hbm_material_event_watch"]["seen_keys"])
 
 if __name__ == "__main__":
     unittest.main()
