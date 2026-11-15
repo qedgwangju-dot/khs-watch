@@ -32,12 +32,12 @@ def kind(category,title):
                      r"prepares?|attempt|예정|계획|목표|시도)\b",t) and not re.search(
                      r"\b(caught|successfully|completed|confirmed|실제 성공|포획 성공)\b",t):
             return "plan_only"
+        if re.search(r"(double catch|both stages caught|양단 포획|동시 포획 성공)",t):
+            return "double_catch"
         if re.search(r"first.*(ship|upper.stage|상단부).*(catch|caught|포획)|"
                      r"(ship|upper.stage|상단부).*(first|최초).*(catch|caught|포획)|"
                      r"(ship|upper.stage|상단부).*(caught|catch|포획)|"
                      r"(caught|포획).*(ship|starship|상단부)",t):return "ship_catch"
-        if re.search(r"(double catch|both stages caught|양단 포획|동시 포획 성공)",t):
-            return "double_catch"
         if re.search(r"(booster|super heavy|부스터).*(lost|destroyed|abort|explod|회수 실패|소실)",t):
             return "booster_loss"
         if re.search(r"(deployed|deployment confirmed|배치 완료|배치 성공).*(starlink|satellites|위성)|"
