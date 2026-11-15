@@ -34,6 +34,7 @@ def kind(category,title):
             return "plan_only"
         if re.search(r"first.*(ship|upper.stage|상단부).*(catch|caught|포획)|"
                      r"(ship|upper.stage|상단부).*(first|최초).*(catch|caught|포획)|"
+                     r"(ship|upper.stage|상단부).*(caught|catch|포획)|"
                      r"(caught|포획).*(ship|starship|상단부)",t):return "ship_catch"
         if re.search(r"(double catch|both stages caught|양단 포획|동시 포획 성공)",t):
             return "double_catch"
