@@ -19,7 +19,7 @@ REUTERS_URL = "https://www.reuters.com/business/us-humanoid-robot-production-cou
 BANK = re.compile(r"J\.?\s*P\.?\s*Morgan|JPMorgan|JP모건|제이피모건", re.I)
 ROBOTIS = re.compile(r"로보티즈|ROBOTIS", re.I)
 HUMANOID = re.compile(r"휴머노이드|humanoid", re.I)
-REVISED = re.compile(r"전망.{0,22}(상향|하향|수정)|(?:상향|하향|수정).{0,22}전망|revis(?:es|ed|ion)|raise[sd]? forecast|cut[s]? forecast|lifts? forecast|lowers? forecast", re.I)
+REVISED = re.compile(r"전망.{0,22}(상향|하향|수정)|(?:상향|하향|수정).{0,22}전망|revis(?:es|ed|ion)|raise[sd]?.{0,48}forecast|cut[s]?.{0,48}forecast|lifts?.{0,48}forecast|lowers?.{0,48}forecast", re.I)
 PRIMARY = re.compile(r"^(?:Reuters|로이터|J\.?\s*P\.?\s*Morgan|JPMorgan)$", re.I)
 QUERIES = (
     BACKFILL,
