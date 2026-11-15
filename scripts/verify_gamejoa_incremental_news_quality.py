@@ -6962,6 +6962,37 @@ class IncrementalNewsTests(unittest.TestCase):
 
 
 class ConcreteLiveSelectionRegressions(unittest.TestCase):
+    def test_fintech_festival_profile_does_not_pass_as_a_market_policy_event(self):
+        now = dt.datetime(2026, 11, 15, 3, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        title = "현지 스타트업에서 필리핀 최대 IPO로: 마인트, 세계 최대 핀테크 무대에서 성장 스토리 소개"
+        body = (
+            "Singapore FinTech Festival 2026에 참가한 필리핀 핀테크 기업 Mynt는 행사에서 성장 스토리를 소개했다. "
+            "패널 세션은 선진적인 규제, 업계 협력과 핀테크 혁신이 더 많은 국민에게 채권·펀드·주식 투자 접근성을 높이고 "
+            "비용을 낮추며 소비자 보호를 강화하는 방안을 다뤘다. "
+            "과거 기업공개(IPO)와 회사의 기존 성장 과정은 배경으로 소개됐다."
+        )
+        candidate = alert(title, body, "https://biz.heraldcorp.com/article/10937257")
+        candidate["published"] = now.isoformat()
+
+        assessment = materiality.assess(title, body, source_url=candidate["link"], published=candidate["published"])
+        self.assertLess(assessment["priority"], 2, assessment)
+        self.assertIn("business_event_without_contract_shipment_result_or_market_data", assessment.get("scope_note", ""))
+        with patch.object(radar.base, "kst_now", return_value=now), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            self.assertEqual(radar.quality_display_alerts([candidate], 5), [])
+
+        event_with_contract = materiality.assess(
+            title,
+            body + " Mynt는 상장사와 500억원 규모의 플랫폼 공급계약을 체결했다.",
+            source_url=candidate["link"], published=now.isoformat(),
+        )
+        self.assertGreaterEqual(event_with_contract["priority"], 2, event_with_contract)
+
+        capacity_plan = materiality.assess(
+            "에볼루션 메탈스, 포항 희토류 자석공장 쇼케이스…연 1만t 생산능력 확대 추진",
+            "회사는 포항 공장의 운영 쇼케이스를 열고 연간 생산능력을 1만 미터톤 이상으로 단계적으로 확대할 계획이라고 밝혔다.",
+        )
+        self.assertGreaterEqual(capacity_plan["priority"], 2, capacity_plan)
+
     def test_oct23_attachment_withholds_commentary_and_groups_one_kiet_report(self):
         now = dt.datetime(2026, 10, 25, 18, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
         political_spend = alert(

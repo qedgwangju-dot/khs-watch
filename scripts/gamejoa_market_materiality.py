@@ -7413,7 +7413,8 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
             result["scope_note"] = "policy_advocacy_without_announced_instrument_change"
         forum_agenda = re.search(
             r"포럼|패널토론|토론회|기조\s*발제|컨퍼런스|콘퍼런스|심포지엄|세미나|행사\s*(?:개최|열어)|"
-            r"conference|symposium|seminar|customer day|infrastructure day|forum|panel discussion",
+            r"페스티벌|축제|엑스포|박람회|전시회|쇼케이스|성장\s*스토리|"
+            r"conference|symposium|seminar|festival|expo|showcase|growth story|customer day|infrastructure day|forum|panel discussion",
             headline_lead + " " + body[:500], re.I,
         )
         forum_change = any(
@@ -7430,9 +7431,17 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
                 re.search(
                     r"(?:수주|공급\s*계약|납품\s*계약|발주|매출|영업이익|순이익|CAPEX|설비투자|예산|출하|납품|"
                     r"고객사.{0,20}(?:채택|도입|선정)|(?:채택|도입|선정).{0,20}고객사|"
-                    r"점유율|수율|대역폭|전력효율|주가|순매수|순매도|수출액|수출량)", sentence, re.I,
+                    r"점유율|수율|대역폭|전력효율|주가|순매수|순매도|수출액|수출량|"
+                    r"(?:생산능력|생산량|production capacity).{0,45}(?:확대|증설|상향|목표|계획)|"
+                    r"(?:확대|증설|상향|목표|계획).{0,45}(?:생산능력|생산량|production capacity)|"
+                    r"임상\s*[123]\s*상.{0,50}(?:결과|반응률|유효성|안전성)|"
+                    r"(?:임상\s*[123]\s*상\s*)?(?:반응률|유효성|안전성).{0,35}(?:개선|증가|감소|차이|결과))", sentence, re.I,
                 )
-                and (QUANTITY.search(sentence) or NEW_EXECUTION.search(sentence))
+                and (
+                    QUANTITY.search(sentence)
+                    or NEW_EXECUTION.search(sentence)
+                    or re.search(r"\d[\d,.]*\s*(?:만|천)?\s*(?:미터톤|톤|t\b|대|기|MW|GW|MWh|GWh)", sentence, re.I)
+                )
                 or re.search(r"\d[\d,.]*\s*(?:호기|대|톤|기|MW|GW).{0,25}(?:출하|납품|가동|생산)", sentence, re.I)
             )
             for sentence in sentences[:12]
