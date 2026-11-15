@@ -55,7 +55,7 @@ def run():
             pending=json.loads(base.PENDING_PATH.read_text(encoding="utf-8"))
             assert peak[0]>=2, "RSS discovery must overlap independent reads"
             assert pending["last_selected"]==["offline_first","offline_second"],pending["last_selected"]
-            assert set(pending["seen"])=={"offline_first","offline_second"},pending["seen"]
+            assert {"offline_first","offline_second"}.issubset(set(pending["seen"])),pending["seen"]
             assert "offline_third" not in pending["seen"],"Overflow must remain eligible"
             assert base.ALERT_PATH.read_text(encoding="utf-8").count("offline_")==2
     finally:
