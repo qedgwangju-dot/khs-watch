@@ -25,6 +25,26 @@ def material_words(title):
 
 def kind(category,title):
     t=title.lower()
+    if category=="starship_flight_results":
+        if not re.search(r"starship|spacex|ship 4[0-9]|스타십|스페이스x",t):
+            return "unrelated"
+        if re.search(r"\b(plan|planned|planning|expected|aim|target|will|to catch|could|"
+                     r"prepares?|attempt|예정|계획|목표|시도)\b",t) and not re.search(
+                     r"\b(caught|successfully|completed|confirmed|실제 성공|포획 성공)\b",t):
+            return "plan_only"
+        if re.search(r"first.*(ship|upper.stage|상단부).*(catch|caught|포획)|"
+                     r"(ship|upper.stage|상단부).*(first|최초).*(catch|caught|포획)|"
+                     r"(caught|포획).*(ship|starship|상단부)",t):return "ship_catch"
+        if re.search(r"(double catch|both stages caught|양단 포획|동시 포획 성공)",t):
+            return "double_catch"
+        if re.search(r"(booster|super heavy|부스터).*(lost|destroyed|abort|explod|회수 실패|소실)",t):
+            return "booster_loss"
+        if re.search(r"(deployed|deployment confirmed|배치 완료|배치 성공).*(starlink|satellites|위성)|"
+                     r"(starlink|satellites|위성).*(deployed|배치 완료|배치 성공)",t):
+            return "satellite_deploy"
+        if re.search(r"re.?flight|flown again|reused upper stage|상단부 재비행",t):
+            return "reflight"
+        return "unrelated"
     if category=="rocketlab":
         # Broker actions are independent from the underlying Neutron delay.
         if TARGET.search(t) or BROKER.search(t):return "analyst"
@@ -104,6 +124,8 @@ def eligible(category,item,now):
     if not -dt.timedelta(minutes=20)<=age<=window:
         return False
     if category=="golden_dome" and kind(category,title)=="unrelated":return False
+    if category=="starship_flight_results" and kind(category,title) in ("unrelated","plan_only"):
+        return False
     if category in {"moon_base_clps","starlink_optical"} and kind(category,title) in {
         "unrelated","framework_selection","projection_only"
     }:return False
@@ -121,6 +143,11 @@ def semantic_pair(category,a,b):
     ta,tb=str(a.get("title") or ""),str(b.get("title") or "")
     if NOISE.search(ta) or NOISE.search(tb):return False
     if kind(category,ta)!=kind(category,tb):return False
+    if category=="starship_flight_results":
+        # Two articles describing different flights must not corroborate.
+        flights=lambda t: set(re.findall(r"flight[ -]?(\d+)",t.lower()))
+        if flights(ta) and flights(tb) and not flights(ta)&flights(tb):
+            return False
     if category=="moon_base_clps":
         # Two unrelated Moon Base missions must not corroborate one another.
         tokens=("promise","minicast","cislunar communications","blue ghost",
@@ -158,6 +185,10 @@ def semantic_id(category,item):
         # Preserve 2027 dedup identity, but do not suppress a future 2028 slip.
         years=re.findall(r"\b20\d{2}\b",item["title"])
         return "semantic:rocketlab:neutron:first_flight_shift_"+(years[-1] if years else "undated")
+    if category=="starship_flight_results":
+        match=re.search(r"flight[ -]?(\d+)",item["title"],re.I)
+        flight=(match.group(1) if match else "undated")
+        return "semantic:starship:flight"+flight+":"+event
     if category in {"moon_base_clps","starlink_optical"}:
         # Same stage and project must keep one key across republished articles.
         label="moon" if category=="moon_base_clps" else "optical"
@@ -181,6 +212,18 @@ def self_test():
     now=dt.datetime(2026,10,17,10,tzinfo=dt.timezone.utc)
     article=lambda title,date="2026-10-16T10:00:00+00:00":dict(title=title,published=date,source="Reuters")
     assert kind("rocketlab","Rocket Lab Neutron first launch delayed to 2027")=="development_delay"
+    assert kind("starship_flight_results","Starship Flight 15 plans upper stage catch tomorrow")=="plan_only"
+    assert kind("starship_flight_results","Starship Flight 15 Ship 42 first upper stage catch successful")=="ship_catch"
+    assert kind("starship_flight_results","Starship Flight 15 Super Heavy booster abort destroyed")=="booster_loss"
+    assert kind("starship_flight_results","SpaceX Starship Flight 15 deployed 26 Starlink V3 satellites")=="satellite_deploy"
+    assert kind("starship_flight_results","SpaceX Starship Flight 16 both stages caught in double catch")=="double_catch"
+    f15=article("SpaceX Starship Flight 15 Ship 42 first upper stage catch successful")
+    f15b=dict(article("Starship Flight 15 Ship 42 caught upper stage at launch tower"),source="Bloomberg")
+    f16=dict(article("SpaceX Starship Flight 16 Ship caught upper stage"),source="Bloomberg")
+    assert semantic_pair("starship_flight_results",f15,f15b)
+    assert not semantic_pair("starship_flight_results",f15,f16)
+    assert semantic_id("starship_flight_results",f15)==semantic_id("starship_flight_results",f15b)
+    assert semantic_id("starship_flight_results",f15)!=semantic_id("starship_flight_results",f16)
     assert kind("rocketlab","Citizens cuts Rocket Lab target after Neutron delay")=="analyst"
     assert kind("rocketlab","Rocket Lab signs Neutron launch contract for 2027")=="contract"
     assert kind("rocketlab","Rocket Lab Neutron maiden flight delayed")=="development_delay"

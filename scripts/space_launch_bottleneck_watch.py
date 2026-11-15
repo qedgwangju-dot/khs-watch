@@ -110,6 +110,28 @@ CATEGORIES = (
         indicator="비행 후 교체 타일 수, 동일 기체 재비행 간격, Flight 15 이후 재사용 하드웨어 비율",
     ),
     Category(
+        key="starship_flight_results",
+        tag="[스타십 비행 성과]",
+        name="Starship 실제 포획·위성배치·회수·재비행",
+        queries=(
+            '"Starship" ("Flight 15" OR "Flight 16") ("caught" OR "catch" OR "recovered" OR "deployed") when:7d',
+            '"Ship 42" ("Mechazilla" OR "Starlink V3" OR "Super Heavy") when:7d',
+            '"Starship" (first catch OR reflight OR flight termination OR booster loss) when:7d',
+            '"SpaceX" "Starship" (tanker transfer OR reuse OR double catch OR second flight) when:7d',
+            '스타십 (상단부 포획 OR 26기 OR 부스터 회수 OR 재사용) when:7d',
+        ),
+        relevance=re.compile(
+            r"(Starship|SpaceX|Ship 42|스타십|스페이스X).*(Flight 1[5-9]|"
+            r"Mechazilla|catch|caught|recovered|reflight|deployed|satellites|"
+            r"포획|회수|배치|재사용|연료 이송|fuel transfer)|"
+            r"(first upper.stage catch|booster abort|Ship 42).*(Starship|SpaceX)",
+            re.I,
+        ),
+        meaning="발사 계획·시험 목표와 실제 성공한 궤도비행·위성배치·상단부 회수·재비행을 구분합니다.",
+        failure="1단 회수 실패·재진입 열차폐 정비·연료 이송·재비행 인증·발사장 허가 지연",
+        indicator="비행번호별 1·2단 포획 여부, 실제 배치 위성·가동 수, 열차폐 교체·재비행 소요시간",
+    ),
+    Category(
         key="rocketlab",
         tag="[계약]",
         name="Rocket Lab Electron·Neutron 발사 공급",
@@ -417,6 +439,8 @@ def event_signature(category: Category, item: dict) -> str:
         if "flight 15" in text:
             return "flight15"
         return "thermal"
+    if category.key == "starship_flight_results":
+        return "flight_"+str(next(iter(re.findall(r"flight[ -]?(1[5-9]|2[0-9])",text,re.I)), "unknown"))
     if category.key == "rocketlab":
         if "synspective" in text:
             return "synspective"
@@ -588,6 +612,18 @@ def render_item(category: Category, item: dict, rate: float | None) -> str:
 
     tag, meaning, failure, indicator = category.tag, category.meaning, category.failure, category.indicator
     event = kind(category.key, str(item.get("title") or ""))
+    if category.key == "starship_flight_results":
+        stage_labels={
+            "ship_catch":"[확인된 상단부 포획 보도]",
+            "booster_loss":"[부스터 회수 실패 보도]",
+            "satellite_deploy":"[실제 위성 배치 보도]",
+            "double_catch":"[1·2단 동시 포획 보도]",
+            "reflight":"[재비행 성과 보도]",
+        }
+        tag=stage_labels.get(event,"[비행 성과·원문 확인 필요]")
+        meaning="실제 회수·발사·탑재 성과를 출처별로 대조합니다. 시험목표나 향후 계획을 달성으로 바꾸지 않습니다."
+        failure="열차폐 정비·부스터 복귀 연소·다음 비행 인증·위성 정상가동 미확인"
+        indicator="비행번호·1/2단 별 실제 포획·발사/배치 수·회수 후 실물 검사·재비행 여부"
     if category.key == "rocketlab":
         if event == "contract":
             tag = "[신규 발사계약·실제 매출 미발생]"
@@ -706,6 +742,55 @@ def space_funding_notice() -> str:
         "• 원문: "+SERAPHIM_TRACKER,
     ))
 
+
+# Flight 15's completed ship catch is NOT the preflight plan. The original
+# SpaceX page and its time-stamped text mirror are two views of the same
+# issuer release; require an independent outlet for confirmation.
+FLIGHT15_COMPLETED_KEY="starship:flight15:20261114:ship42_catch_v3_26_booster22_lost"
+FLIGHT15_OFFICIAL="https://www.spacex.com/launches/starship-flight-15"
+FLIGHT15_OFFICIAL_MIRROR="https://space-notices.com/notice/infopage-spacex-starship-flight-15"
+FLIGHT15_INDEPENDENT_LIVE="https://www.space.com/news/live/spacex-starship-flight-15-live-updates-nov-14-2026-starship-first-double-landing-attempt"
+FLIGHT15_INDEPENDENT_AIAA="https://aerospaceamerica.aiaa.org/spacex-achieves-first-starship-tower-catch/"
+FLIGHT15_INDEPENDENT_REPORT="https://www.space.com/space-exploration/launches-spacecraft/spacex-chopsticks-catch-starship-upper-stage-flight-14"
+
+def starship_flight15_postflight_notice(check=check_primary)->str:
+    # A cached *preflight* SpaceX launch plan includes 26 and catch but must
+    # never count as evidence of a real successful ship capture.
+    primary=first_readable_source((
+        (FLIGHT15_OFFICIAL,("On Friday, November 13","On Saturday, November 14",
+                            "low fuel mass","deployed 26 Starlink V3",
+                            "waiting arms","catch Starship for the very first time")),
+        (FLIGHT15_OFFICIAL_MIRROR,("On Friday, November 13","On Saturday, November 14",
+                                   "low fuel mass","deployed 26 Starlink V3",
+                                   "waiting arms","catch Starship for the very first time")),
+    ),check)
+    independent=first_readable_source((
+        (FLIGHT15_INDEPENDENT_LIVE,("26 Starlink","Ship has come home",
+                                    "Super Heavy","chopstick")),
+        (FLIGHT15_INDEPENDENT_AIAA,("Flight 15","26 V3 Starlink",
+                                    "caught","Super Heavy")),
+        (FLIGHT15_INDEPENDENT_REPORT,("Flight 15","22.5 hours","Ship",
+                                      "Super Heavy")),
+    ),check)
+    provenance=("SpaceX 완료 발표를 회사 홈페이지에서 직접 확인" if primary==FLIGHT15_OFFICIAL
+                else "SpaceX 완료 발표의 2026-11-14 시각 명시 공개 복원본 확인; 회사 사이트 완료 본문 직접 접근은 미확인")
+    return "\n".join((
+        "[최우선·비행 성공] Starship 15차: 최초 상단부 포획, 위성 26기 배치",
+        "■ 날짜: 2026년 11월 13일 미국 발사(한국시간 14일 오전 7시 47분), "
+        "14일 미국 포획(한국시간 15일 오전 6시 20분경).",
+        "■ 상단부 Ship 42: 약 22시간 30분 동안 지구 궤도 14바퀴 비행하고 재진입한 뒤 "
+        "스타베이스 발사대의 메카질라 팔에 최초 포획 성공.",
+        "■ 실제 탑재 성과: Starlink V3 위성 26기를 궤도에 배치했고 회사는 각 위성과 교신 성공을 발표. "
+        "위성당 약 1Tbps 추가 용량은 설계기준이지 전량 즉시 매출이 아닙니다.",
+        "■ 1단 Super Heavy Booster 22: 저연료 경고로 복귀 연소를 조기 종료하고 포획을 중단, "
+        "멕시코만 해상으로 분리된 뒤 비행 종료 장치가 작동해 소실. 1·2단 동시 포획은 실패.",
+        "■ 의미: 상단부 회수라는 신규 실증 단계에 진입했지만 '완전 재사용·상단부 실제 재비행 성공'은 아직 아님.",
+        "■ 후속 지표: Ship 42 회수 후 열차폐 교체량·정비시간·실제 재비행, "
+        "부스터 저연료 경고 원인, V3 위성 정상 서비스 개시, 1·2단 동시 포획.",
+        "■ 검증 경로: "+provenance+" 및 별개 우주 전문매체 교차확인.",
+        "• 원문: "+primary,
+        "• 원문: "+independent,
+    ))
 
 # Already-announced NASA milestones and Musk's proposal are different
 # evidence classes. Never count program ceilings or laser terminal targets as sales.
@@ -962,6 +1047,7 @@ def main() -> int:
         (KASA_AI_EVENT, korea_space_ai_notice),
         (SPACE_FUND_EVENT, space_funding_notice),
         (JPM_SPACEX_EVENT, spacex_jpm_verified_target_notice),
+        (FLIGHT15_COMPLETED_KEY, starship_flight15_postflight_notice),
         (ROCKETLAB_Q3_NEUTRON_CORRECTION_KEY, rocketlab_neutron_contract_correction),
         (NASA_CLPS2_EVENT, nasa_clps2_release_notice),
         (STARLINK_V4_VISION_EVENT, starlink_v4_projection_notice),
@@ -1017,6 +1103,10 @@ def main() -> int:
             for item in candidates:
                 # Old Neutron $515M headline was already sent as development.
                 # The verified notice above is its one and only correction.
+                if category.key == "starship_flight_results" and re.search(r"flight[ -]?15|ship 42|15차",item["title"],re.I):
+                    # Flight 15 outcome is already handled by the independently
+                    # verified full mission bulletin above, never a clipped RSS recap.
+                    continue
                 if category.key == "rocketlab" and rocketlab_q3_neutron_mislabelled(item["title"]):
                     continue
                 if previously_corrected_neutron_delay(category.key, item, seen):
@@ -1104,7 +1194,31 @@ def self_test() -> int:
     assert "moon_base_clps" in [x.key for x in CATEGORIES]
     assert any("amendment OR ceiling" in query for query in next(x for x in CATEGORIES if x.key=="moon_base_clps").queries)
     assert "starlink_optical" in [x.key for x in CATEGORIES]
+    assert "starship_flight_results" in [x.key for x in CATEGORIES]
     assert NASA_CLPS2_EVENT != STARLINK_V4_VISION_EVENT
+    assert FLIGHT15_COMPLETED_KEY not in {NASA_CLPS2_EVENT,STARLINK_V4_VISION_EVENT}
+    def flight15_fake_source(url,*markers):
+        if url==FLIGHT15_OFFICIAL_MIRROR and "deployed 26 Starlink V3" in markers:
+            return "issuer completed statement"
+        if url==FLIGHT15_INDEPENDENT_LIVE and "Ship has come home" in markers:
+            return "independent coverage"
+        raise RuntimeError("preflight plan or unavailable")
+    flight15_report=starship_flight15_postflight_notice(check=flight15_fake_source)
+    assert "14바퀴" in flight15_report and "26기를" in flight15_report
+    assert "1·2단 동시 포획은 실패" in flight15_report
+    assert "회사 사이트 완료 본문 직접 접근은 미확인" in flight15_report
+    assert flight15_report.count("• 원문: ")==2
+    from space_launch_telegram_send import readable_messages
+    pages=readable_messages("🚀 우주 발사 병목 웹감시\n기준: 모의검사\n\n"+flight15_report)
+    assert len(pages)>=1 and sum(e.get("type")=="text_link" for _,en in pages for e in en)==2
+    assert "Ship 42" in "".join(t for t,_ in pages)
+    try:
+        starship_flight15_postflight_notice(
+            check=lambda url,*markers: "old launch plan" if not "On Saturday" in markers else
+            (_ for _ in ()).throw(ValueError("postflight not published"))
+        )
+    except RuntimeError:pass
+    else:raise AssertionError("preflight plan alone must never trigger first ship catch")
     assert FIREFLY_CLPS2_FACTORY_EVENT != VOYAGER_GRIFFIN1_TEST_EVENT
     assert FIREFLY_CLPS2_FACTORY_EVENT != NASA_CLPS2_EVENT
     release_stub=lambda url,*markers:"verified" if (
