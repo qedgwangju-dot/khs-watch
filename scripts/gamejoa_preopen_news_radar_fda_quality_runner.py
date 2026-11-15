@@ -11,6 +11,7 @@ from __future__ import annotations
 # Keep chained radar overlays on the same checkout as this entrypoint. The
 # Windows wrapper can leave the project-root scripts directory on sys.path.
 import sys
+import re
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -213,6 +214,25 @@ def enforce_fda_quality_gate() -> None:
                     )
                 if alert:
                     source_core = runner.detailed_article_core(title, body)
+                    if alert.get("korean_business_kind") == "hyundai_nvidia_ai_partnership":
+                        profile_core = str(alert.get("telegram_core_fact") or "").strip()
+                        undisclosed_contract = re.search(
+                            r"(?:공급계약\s*금액|계약\s*(?:금액|규모)|발주\s*규모)"
+                            r"[^.!?]{0,45}(?:공개하지\s*않았|밝히지\s*않았|공개되지\s*않았|미공개)",
+                            body,
+                        )
+                        if runner.core_sentence_is_complete(profile_core):
+                            source_core = profile_core
+                            if undisclosed_contract:
+                                candidate = (
+                                    source_core.rstrip().rstrip(".")
+                                    + ". 별도 계약금액과 발주 규모는 공개되지 않았습니다."
+                                )
+                                if (
+                                    len(candidate) <= runner.GAMEJOA_CORE_MAX_CHARS
+                                    and runner.core_sentence_is_complete(candidate)
+                                ):
+                                    source_core = candidate
                     alert["news"] = title
                     alert["source_title"] = title
                     alert["telegram_core_fact"] = source_core

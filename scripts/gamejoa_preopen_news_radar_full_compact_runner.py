@@ -5468,6 +5468,10 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
             fact = re.sub(r"\s*\(현지\s*시간\)", "", fact)
             fact = re.sub(r"미국\s*국가환경정책법\s*\(NEPA\)", "NEPA", fact)
             fact = re.sub(r"최종\s*환경평가\s*\(Final\s*EA\)", "최종 환경평가", fact, flags=re.I)
+            headline_issuer = re.match(r"^([A-Za-z0-9가-힣&·-]{2,24})\s+", title)
+            project = re.search(r"(?:프로젝트|Project)\s+[A-Za-z0-9가-힣-]{2,40}", title, re.I)
+            if headline_issuer and project and headline_issuer.group(1) not in fact:
+                fact = fact.replace(project.group(0), f"{headline_issuer.group(1)} {project.group(0)}", 1)
         if market_materiality.focus_kind(title) == "nuclear_warning":
             speaker = re.match(r"^([A-Za-z가-힣]{2,20})\s*[,，]", title)
             if speaker and speaker.group(1) in fact[:60]:
@@ -7134,7 +7138,7 @@ def build_hyundai_nvidia_meeting_alert(row: dict, now, text: str) -> dict | None
         any(term in title for term in ("정의선", "현대차", "현대자동차"))
         and "엔비디아" in title
         and any(term in text for term in ("정의선", "현대차", "현대자동차"))
-        and "엔비디아" in text
+        and any(term in text for term in ("엔비디아", "젠슨 황"))
         and any(term in text for term in ("회동", "만나", "본사", "협력"))
         and any(term in text for term in ("자율주행", "로봇", "제조 ai", "새만금", "ai 밸리"))
     ):
@@ -7146,7 +7150,7 @@ def build_hyundai_nvidia_meeting_alert(row: dict, now, text: str) -> dict | None
     if stage == "robot_platform":
         core = "현대차·엔비디아가 로봇 플랫폼 공동 구축을 제시했습니다."
     else:
-        core = "정의선·젠슨 황이 자율주행·로봇·제조AI 협력을 논의했습니다."
+        core = "정의선과 엔비디아 CEO 젠슨 황이 자율주행·로봇·제조AI 협력을 논의했습니다."
     alert = base_korean_business_alert(
         row,
         now,
@@ -13091,15 +13095,15 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
     scope = int(materiality.get("transmission_scope_rank", 0) or 0)
     if scope >= 3:
         return ""
-    if telegram.alert_issuer_keys(alert):
-        return ""
     identity = market_materiality.source_event_identity(alert)
     parts = identity.split(":")
     event_type = parts[2] if len(parts) >= 4 and parts[:2] == ["source_event", "v2"] else ""
     material_execution_types = {
         "commercial_delivery", "commercial_order", "construction_order",
-        "dated_public_supply_package", "industrial_product_milestone",
+        "coupang_quarterly_earnings", "dated_public_supply_package",
+        "humanoid_product_launch", "industrial_product_milestone",
         "license", "merger_agreement", "named_supply_order",
+        "nvidia_ceo_departure", "issuer_quarterly_earnings",
         "regulatory_package", "scoped_anonymous_order", "solidigm_ipo",
     }
     if event_type in material_execution_types:
@@ -13109,6 +13113,47 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
     priority = int(materiality.get("priority", 0) or 0)
     news_value_rank = int(materiality.get("news_value_rank", 0) or 0)
     eligible = bool(equity_publication.get("eligible"))
+    business_kind = str(alert.get("korean_business_kind") or "")
+    headline = str(alert.get("source_title") or alert.get("original_news") or "")
+    body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+
+    if alert.get("body_verified") and eligible and priority >= 2 and news_value_rank >= 3:
+        verified_execution = any(
+            item.get("kind") == "physical_supply_or_capacity"
+            and item.get("stage") == "reported_change"
+            for item in evidence
+        )
+        if business_kind == "korea_ai_factory_deployment" and verified_execution and priority >= 3 and news_value_rank >= 4:
+            return ""
+        if (
+            business_kind == "ai_infrastructure_finance_platform"
+            and priority >= 3
+            and news_value_rank >= 4
+            and any(
+                item.get("kind") == "financing_infrastructure"
+                and item.get("stage") == "reported_change"
+                for item in evidence
+            )
+        ):
+            return ""
+        if (
+            business_kind == "korea_anthropic_strategic_investment"
+            and "네이버" in body
+            and "앤트로픽" in body
+            and re.search(r"첫\s*투자|처음\s*투자", body)
+            and not re.search(r"(?:투자|출자).{0,12}(?:검토|논의|가능성|예정|계획)", body)
+        ):
+            return ""
+        if (
+            business_kind == "apple_cxmt_memory_supply_test"
+            and all(term in headline for term in ("애플", "CXMT", "아이폰"))
+            and any(
+                item.get("kind") == "technology_or_clinical_stage"
+                and item.get("stage") == "early_signal"
+                for item in evidence
+            )
+        ):
+            return ""
 
     # Preserve verified operational capacity and official trade-rule changes;
     # neither should depend on a headline issuer alias or focus score.
@@ -13144,16 +13189,14 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
 
     # A confirmed meeting between named semiconductor/AI leaders is a live
     # signal even when the follow-on commercial agreement is still unconfirmed.
-    headline = str(alert.get("source_title") or alert.get("original_news") or "")
-    body = str(alert.get("source_body") or alert.get("source_abstract") or "")
     executive_names = (
         "이재용", "최태원", "정의선", "샘 올트먼", "젠슨 황", "리사 수",
         "일론 머스크", "사티아 나델라", "마크 저커버그", "팀 쿡",
     )
     meeting_signal = bool(re.search(r"만났|회동|면담|방문|찾아", headline))
-    named_leaders = sum(name in headline for name in executive_names)
+    named_leaders = sum(name in f"{headline} {body}" for name in executive_names)
     technology_signal = bool(re.search(
-        r"HBM|D램|DRAM|반도체|파운드리|AI\s*(?:칩|반도체|인프라)|데이터센터",
+        r"HBM|D램|DRAM|반도체|파운드리|AI\s*(?:칩|반도체|인프라)|데이터센터|로봇|자율주행|제조\s*AI",
         body,
         re.I,
     ))
@@ -13170,6 +13213,36 @@ def low_scope_live_market_relevance_reason(alert: dict) -> str:
             and item.get("stage") == "early_signal"
             for item in evidence
         )
+    ):
+        return ""
+
+    issuer_execution_kinds = {
+        "capital_or_shareholder_action", "commercial_order", "corporate_ownership_execution",
+        "convertible_ownership_rights", "corporate_transaction", "earnings_or_guidance",
+        "industrial_product_milestone",
+        "insider_disclosed_trade", "order_backlog_level", "customer_supply_start",
+    }
+    verified_issuer_execution = any(
+        item.get("kind") in issuer_execution_kinds
+        and item.get("stage") not in {"early_signal", "forecast", "estimate", "conditional"}
+        for item in evidence
+    )
+    high_impact_issuer_market_move = (
+        scope >= 2
+        and priority >= 3
+        and news_value_rank >= 4
+        and any(
+            item.get("kind") == "market_price_or_flow"
+            and item.get("stage") == "reported_change"
+            for item in evidence
+        )
+    )
+    if (
+        alert.get("body_verified")
+        and (verified_issuer_execution or high_impact_issuer_market_move)
+        and priority >= 2
+        and news_value_rank >= 3
+        and eligible
     ):
         return ""
 
@@ -13803,6 +13876,38 @@ def primary_headline_core_matches(alert: dict, core: str) -> bool:
     return bool(expected and comparable(expected) == comparable(core))
 
 
+def primary_headline_issuer_keys(title: str) -> set[str]:
+    # In "A·B 이어 C까지" headlines, A and B are comparisons; C is the
+    # newly reported issuer and should be the core's required subject.
+    cumulative_subject = re.search(r"이어\s*([^…|]+?)까지", title)
+    # In "A 넘어선 B" headlines, A is the comparison and B is the subject.
+    comparative_subject = re.search(r"(?:넘어선|제친)\s*([^…|]+)", title)
+    subject_text = (
+        cumulative_subject.group(1) if cumulative_subject
+        else comparative_subject.group(1) if comparative_subject
+        else title
+    )
+    headline = telegram.base.norm(subject_text)
+    matches = []
+    for issuer, aliases in telegram.MARKET_ISSUER_ALIASES.items():
+        for alias in aliases:
+            normalized_alias = telegram.base.norm(alias)
+            if not normalized_alias:
+                continue
+            pattern = (
+                rf"(?<![a-z0-9]){re.escape(normalized_alias)}(?![a-z0-9])"
+                if re.search(r"[a-z0-9]", normalized_alias)
+                else re.escape(normalized_alias)
+            )
+            match = re.search(pattern, headline)
+            if match and match.start() <= 12:
+                matches.append((match.start(), issuer))
+    if not matches:
+        return set()
+    first_position = min(position for position, _ in matches)
+    return {issuer for position, issuer in matches if position == first_position}
+
+
 def source_core_fact_errors(alert: dict) -> list[str]:
     title = str(alert.get("source_title") or alert.get("news") or "")
     source = article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or ""))
@@ -13832,6 +13937,12 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     primary_alignment = primary_headline_core_matches(alert, core)
     if expected_primary and not primary_alignment:
         errors.append('headline_primary_amount_period_or_population_mismatch')
+    # Only bind the named company when it leads the headline; later names may
+    # be peers, comparators, or broad-market context rather than the main subject.
+    title_issuers = primary_headline_issuer_keys(title)
+    core_issuers = set(telegram.alert_issuer_keys({"source_title": core}))
+    if title_issuers and not title_issuers.intersection(core_issuers):
+        errors.append("headline_issuer_missing_from_core")
     expected_analyst_forecast = analyst_quarterly_forecast_pair_core(title, source)
     analyst_forecast_alignment = bool(
         expected_analyst_forecast

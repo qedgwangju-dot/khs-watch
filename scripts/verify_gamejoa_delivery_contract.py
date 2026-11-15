@@ -1198,6 +1198,7 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
         "korea_public_fund_asset_flow",
         "korea_nvidia_ai_ecosystem",
         "china_memory_ipo",
+        "foreign_sovereign_fund_korea_semis",
     }
     publisher_domains = {
         "파이낸셜뉴스": "fnnews.com",

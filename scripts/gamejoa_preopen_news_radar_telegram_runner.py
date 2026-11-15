@@ -100,7 +100,7 @@ MARKET_ISSUER_ALIASES = {
     "alphabet": ("알파벳", "구글", "Alphabet", "Google", "GOOGL", "GOOG"),
     "meta": ("메타", "Meta Platforms", "META"),
     "apple": ("애플", "Apple Inc", "AAPL"),
-    "amazon": ("아마존", "Amazon.com", "AMZN"),
+    "amazon": ("아마존", "Amazon.com", "Amazon Web Services", "AWS", "AMZN"),
     "tesla": ("테슬라", "Tesla", "TSLA"),
     "oracle": ("오라클", "Oracle", "ORCL"),
     "cisco": ("시스코", "Cisco", "CSCO"),

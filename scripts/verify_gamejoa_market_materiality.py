@@ -780,7 +780,7 @@ class MaterialityChecks(unittest.TestCase):
                 "평가서에 따르면 고려아연은 연간 약 35만t의 주요 공정 잔재·부산물 가운데 약 96%인 33만5000t을 재활용할 계획이다.")
         item = {**alert(title, body), "telegram_core_fact": "고려아연은 공정 잔재 96%를 재활용할 계획이다."}
         core = radar.verified_alert_core(item, title)
-        for term in ("미국 전쟁부", "지난달 11일", "크루서블", "최종 환경평가", "FONSI", "결정"):
+        for term in ("고려아연", "미국 전쟁부", "지난달 11일", "크루서블", "최종 환경평가", "FONSI", "결정"):
             self.assertIn(term, core)
         self.assertNotIn("96%", core)
         self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
