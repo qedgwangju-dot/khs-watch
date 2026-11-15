@@ -179,8 +179,27 @@ def decide(rows,state):
     return {"send":send,"rank":target,"previous_rank":old,"transition":transition,
             "events":events,"signature":signature}
 
-def delivery_plan(rows,state,decision):
-    """확정 경보는 즉시, 정상·보합이어도 신규 공식 기준일은 1회 정기 보고."""
+def delivery_kst_date(now):
+    """실제 실행시각을 한국시간 날짜로 정규화."""
+    if now.tzinfo is None: raise ValueError("한국시간 날짜 판정에 시간대 정보 필요")
+    return now.astimezone(ZoneInfo("Asia/Seoul")).date().isoformat()
+
+def last_delivery_kst_date(state):
+    """기존 수신 확인 기록까지 이용하여 마이그레이션 시에도 중복을 차단."""
+    dates=[str(state.get("last_sent_kst_date") or "")]
+    for key in ("last_delivery_receipt","last_daily_report_receipt","delivery_receipt"):
+        record=state.get(key)
+        if not isinstance(record,dict): continue
+        value=record.get("delivered_at_kst")
+        if not value: continue
+        try: dates.append(delivery_kst_date(dt.datetime.fromisoformat(str(value))))
+        except (ValueError,TypeError): continue
+    return max(dates)
+
+def delivery_plan(rows,state,decision,now):
+    """한국시간 하루 최대 1개 메시지: 정기보고·상향경보 합산."""
+    if last_delivery_kst_date(state)>=delivery_kst_date(now):
+        return None,False
     latest_date=rows[-1]["date"]
     last_daily=str(state.get("last_daily_report_date") or "")
     daily_due=latest_date>last_daily
@@ -199,6 +218,8 @@ def pending_delivery_state(state,decision,latest,now,kind,daily_due):
                     "cp_cd_bp":latest["cp_cd"],"aa_spread_bp":latest["credit"],
                     "source":SOURCE,"stat_code":TABLE})
     if daily_due: new["last_daily_report_date"]=latest["date"]
+    # 상태 파일은 실제 Telegram 응답 검증 후에만 커밋된다.
+    new["last_sent_kst_date"]=delivery_kst_date(now)
     new["_pending_message_kind"]=kind
     new["_pending_daily_due"]=daily_due
     return new
@@ -413,6 +434,8 @@ def send(now):
             raise RuntimeError("검증된 보고 종류 없음: Telegram 전송 중단")
         if not isinstance(pending.get("_pending_daily_due"),bool):
             raise RuntimeError("정기 보고 중복 방지 상태 누락")
+        if pending.get("last_sent_kst_date")!=delivery_kst_date(now):
+            raise RuntimeError("자정 경과로 발송 예정일 변경: 재조회 후 재판정 필요")
     who=telegram(f"https://api.telegram.org/bot{token}/getMe")
     got=str((who.get("result") or {}).get("username") or "")
     if who.get("ok") is not True or got.lower()!=BOT.lower():
@@ -454,7 +477,7 @@ def watch(now):
     rows=aligned(values,now)
     state=json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
     action=decide(rows,state)
-    kind,daily_due=delivery_plan(rows,state,action)
+    kind,daily_due=delivery_plan(rows,state,action,now)
     health=verified_health_snapshot(rows,codes,now,action)
     prior=json.loads(HEALTH.read_text(encoding="utf-8")) if HEALTH.exists() else {}
     if prior.get("fingerprint")!=health["fingerprint"] or prior.get("alert_rank")!=health["alert_rank"]:
