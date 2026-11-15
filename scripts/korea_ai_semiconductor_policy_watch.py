@@ -52,7 +52,7 @@ OFFICIAL_MARKERS = (
     "과학기술정보통신부", "산업통상자원부", "금융위원회", "조달청", "기획재정부",
     "정보통신산업진흥원", "nipa", "한국수출입은행", "해외경제연구소", "수출입은행",
     "한국무역보험공사", "무역보험공사", "k-sure", "kotra", "대한무역투자진흥공사",
-    "정책브리핑", "대통령실", "산업은행", "한국산업은행", "국회도서관", "국가전략포털", "정보통신기획평가원", "iitp", "국회예산정책처", "nabo",
+    "정책브리핑", "대통령실", "산업은행", "한국산업은행", "국회도서관", "국가전략포털", "정보통신기획평가원", "iitp", "국회예산정책처", "nabo", "범부처통합연구지원시스템", "iris",
 )
 TRUSTED_NEWS_MARKERS = (
     "연합뉴스", "뉴시스", "전자신문", "지디넷코리아", "zdnet", "디지털데일리",
@@ -81,6 +81,7 @@ QUERY_SPECS = [
     ("AIDC-공식-IITP", 'site:iitp.kr (AIDC OR 광집적회로 OR 광반도체 OR 광회선스위칭) (2027 OR 공고 OR 과제 OR 연구개발) when:120d'),
     ("AIDC-공식-조달", 'site:pps.go.kr (AIDC OR 광회선스위칭 OR 광반도체 OR 광트랜시버) (입찰 OR 낙찰 OR 공고 OR 조달) when:180d'),
     ("AIDC-공식-NABO", 'site:nabo.go.kr (AIDC OR "K-AIDC") ("소부장" OR 광통신 OR 예산안) 2027 when:120d'),
+    ("AIDC-공식-IRIS", 'site:iris.go.kr (AIDC OR 광반도체 OR 광회선스위칭 OR 광트랜시버 OR 광집적회로) (공모 OR 신규과제 OR 공고 OR 선정 OR R&D) when:180d'),
 ]
 
 
@@ -151,7 +152,7 @@ def source_quality(source: str, lane: str, source_url: str = "") -> str:
     # A search on an official domain is NOT evidence that the publisher is official.
     name = norm(source).lower()
     host = (urllib.parse.urlsplit(source_url).hostname or "").lower()
-    primary_hosts = ("msit.go.kr", "iitp.kr", "korea.kr", "nabo.go.kr",
+    primary_hosts = ("msit.go.kr", "iitp.kr", "korea.kr", "nabo.go.kr", "iris.go.kr",
                      "nipa.kr", "pps.go.kr", "nrf.re.kr", "kotra.or.kr", "ksure.or.kr")
     if any(host == h or host.endswith("." + h) for h in primary_hosts) or any(x.lower() in name for x in OFFICIAL_MARKERS):
         return "공식"
@@ -424,7 +425,9 @@ def main() -> None:
     seen = dict(state.get("seen") or {})
 
     candidates, source_health = collect_google_news()
-    aidc_healthy = source_health["aidc_successful"] > 0
+    # Freeze the AIDC lane until EVERY independently monitored source query succeeds.
+    # A partial upstream outage must not advance its own last-healthy checkpoint.
+    aidc_healthy = (source_health["aidc_attempted"] > 0 and source_health["aidc_successful"] == source_health["aidc_attempted"])
     if not aidc_healthy:
         candidates = [item for item in candidates if not item.get("aidc_event_key")]
     deduped = {}
@@ -615,7 +618,7 @@ def main() -> None:
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     STATUS.write_text(
         f"# 국산 AI반도체 정책·초기수요·해외수주 감시\n\n"
-        f"- 상태: 정상 조회\n"
+        f"- 상태: {'정상 조회' if source_health['failed'] == 0 else '부분 조회 실패·원천 확인 필요'}\n"
         f"- 후보 항목: {len(ordered)}개\n"
         f"- 신규 알림: {len(fresh)}개\n"
         f"- 중복 억제: {suppressed_duplicate}개\n"
@@ -623,7 +626,7 @@ def main() -> None:
         f"- 누적 상태: {len(seen)}개\n"
         f"- 전체 검색: {source_health['successful']}/{source_health['attempted']} 성공 · 오류 {source_health['failed']}\n"
         f"- AIDC 광통신·OCS·InP 검색: {source_health['aidc_successful']}/{source_health['aidc_attempted']} 성공 · 오류 {source_health['aidc_failed']}\n"
-        f"- AIDC 검색 오류: {', '.join(source_health['errors'][:5]) if source_health['aidc_failed'] else '없음'}\n"
+        f"- AIDC 검색 오류: {', '.join([e for e in source_health['errors'] if e.startswith('AIDC-')][:5]) if source_health['aidc_failed'] else '없음'}\n"
         "- 금액 구분: 뉴스1 보도 180억원(좁은 네트워크 계획)과 과기정통부 상위 1,155억원(정부안) 중복 합산 금지\n"
         f"- 조회시각: {now:%Y-%m-%d %H:%M:%S} KST\n",
         encoding="utf-8",
