@@ -906,6 +906,75 @@ class Weekly009ScreenshotRegression(unittest.TestCase):
                 self.assertFalse(alert.exists())
 
 
+class Weekly010MLCCRegression(unittest.TestCase):
+    def test_010_mlcc_changed_only_one_row_and_alert_provenance(self):
+        import copy
+        old = copy.deepcopy(w.WEEKLY_009_IMAGE_LOCK)
+        new = w.weekly_010_mlcc_upgrade(old, old["as_of"], old["components"], "2026-11-16")
+        self.assertIsNotNone(new)
+        self.assertEqual(new["as_of"], "2026-11-16")
+        self.assertEqual(new["components"]["MLCC"]["status"], "Very Tight")
+        self.assertEqual(new["components"]["MLCC"]["current"], "40")
+        for item in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF"):
+            self.assertEqual(new["components"][item], old["components"][item])
+        notice = w.build_weekly_010_mlcc_alert(old["components"], new["components"])
+        for expected in ("38주 → 40주(+2주)", "Tight(공급 제약) → Very Tight",
+                         "3.33배", "다른 6개", "유료 상세표", "weekly-radar-010"):
+            self.assertIn(expected, notice)
+
+    def test_010_never_replays_or_overwrites_other_data(self):
+        import copy
+        old = copy.deepcopy(w.WEEKLY_009_IMAGE_LOCK)
+        new = w.weekly_010_mlcc_upgrade(old, old["as_of"], old["components"], "2026-11-16")
+        self.assertIsNone(w.weekly_010_mlcc_upgrade(
+            new, new["as_of"], new["components"], "2026-11-17"))
+        self.assertIsNone(w.weekly_010_mlcc_upgrade(
+            old, old["as_of"], old["components"], "2026-11-15"))
+        self.assertIsNone(w.weekly_010_mlcc_upgrade(
+            old, old["as_of"], old["components"], "2026-11-28"))
+        self.assertIsNone(w.weekly_010_mlcc_upgrade(
+            old, "2026-11-23", old["components"], "2026-11-23"))
+        changed = copy.deepcopy(old["components"])
+        changed["MLCC"]["current"] = "39"
+        self.assertIsNone(w.weekly_010_mlcc_upgrade(
+            old, old["as_of"], changed, "2026-11-16"))
+
+    def test_010_existing_pending_route_send_gate_and_no_repeat(self):
+        import copy
+        class Clock(w.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                fixed = cls.fromisoformat("2026-11-16T22:05:00+09:00")
+                return fixed.astimezone(tz) if tz else fixed.replace(tzinfo=None)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            state, pending, alert = (
+                root / "state.json", root / "pending.json", root / "alert.html",
+            )
+            state.write_text(json.dumps({
+                "ai_component_leadtime": copy.deepcopy(w.WEEKLY_009_IMAGE_LOCK),
+                "telegram_message_id": 461,
+                "another_route": {"preserve": True},
+            }, ensure_ascii=False), encoding="utf-8")
+            with mock.patch.object(w, "datetime", Clock), \
+                 mock.patch.object(w, "STATE_PATH", state), \
+                 mock.patch.object(w, "PENDING_PATH", pending), \
+                 mock.patch.object(w, "ALERT_PATH", alert), \
+                 mock.patch.object(w, "read_rss", return_value=[]):
+                w.main()
+                first = json.loads(pending.read_text(encoding="utf-8"))
+                self.assertEqual(first["ai_component_leadtime"]["as_of"], "2026-11-16")
+                self.assertEqual(first["ai_component_leadtime"]["components"]["MLCC"]["current"], "40")
+                self.assertEqual(first["telegram_message_id"], 461)
+                self.assertEqual(first["another_route"], {"preserve": True})
+                self.assertTrue(alert.exists())
+                self.assertIn("38주 → 40주", alert.read_text(encoding="utf-8"))
+                state.write_text(json.dumps(first, ensure_ascii=False), encoding="utf-8")
+                alert.unlink()
+                w.main()
+                self.assertFalse(alert.exists())
+
+
 class LeadTimeAlertTests(unittest.TestCase):
     def setUp(self):
         self.old = {

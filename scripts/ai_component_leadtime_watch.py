@@ -221,6 +221,22 @@ WEEKLY_009_IMAGE_LOCK = {
     },
 }
 
+# Verified 2026-11-16 public issue: the issuer's summary confirms the
+# Very Tight MLCC tier, and its public social posting (accessible via indexed
+# republication) specifies 40 weeks vs 12 weeks balanced. The previous 38
+# weeks and six unchanged rows are from the supplied Meritz note and the
+# existing 2026-11-09 checkpoint; full paywalled table was not accessed.
+WEEKLY_010_MLCC_LOCK = {
+    "as_of": "2026-11-16",
+    "source": "https://insights.trendforce.com/p/weekly-radar-010",
+    "source_kind": (
+        "TrendForce 11/16 공개 요약에서 Very Tight 확인·공개 SNS 전재에서 40주/12주 확인. "
+        "기타 6개는 제공 메모·직전 저장값 기준; 유료 상세표 직접 대조 전"
+    ),
+    "mlcc": {"status": "Very Tight", "current": "40", "balanced": "12"},
+}
+
+
 TOSHIBA_HDD_OFFICIAL = {
     "as_of": "2026-10-02",
     "source": "https://toshiba.semicon-storage.com/ap-en/company/news/news-topics/2026/10/storage-20261002-1.html",
@@ -1691,6 +1707,67 @@ def build_weekly_009_image_alert(previous: dict, current: dict, correction: bool
     return "\n".join(lines).strip() + "\n"
 
 
+def weekly_010_mlcc_upgrade(
+    prior: dict, latest_as_of: str, latest_components: dict, today_kst: str,
+) -> dict | None:
+    """Apply this dated change only once, never override different newer data."""
+    lock = WEEKLY_010_MLCC_LOCK
+    if not lock["as_of"] <= today_kst <= "2026-11-27":
+        return None
+    if str(prior.get("as_of") or "") != "2026-11-09":
+        return None
+    if str(latest_as_of or "") != "2026-11-09":
+        return None
+    old = {"status": "Tight", "current": "38", "balanced": "12"}
+    previous_mlcc = (prior.get("components") or {}).get("MLCC") or {}
+    current_mlcc = (latest_components or {}).get("MLCC") or {}
+    if (canonical_component(previous_mlcc) != canonical_component(old)
+            or canonical_component(current_mlcc) != canonical_component(old)):
+        return None
+    changed = copy.deepcopy(latest_components)
+    changed["MLCC"] = copy.deepcopy(lock["mlcc"])
+    return {
+        "as_of": lock["as_of"], "source": lock["source"],
+        "source_kind": lock["source_kind"], "components": changed,
+    }
+
+
+def build_weekly_010_mlcc_alert(previous: dict, current: dict) -> str:
+    assert canonical_component(previous["MLCC"]) == ("Tight", "38", "12")
+    assert canonical_component(current["MLCC"]) == ("Very Tight", "40", "12")
+    lines = [
+        "<b>🚨 AI 서버 핵심 부품 공급 부족 악화 — TrendForce 11/16</b>",
+        "",
+        "<b>이번 주 신규 변화: MLCC 1개 품목</b>",
+        "• <b>MLCC 납기: 38주 → 40주(+2주).</b>",
+        "• <b>수급: Tight(공급 제약) → Very Tight(극심한 공급 부족).</b>",
+        "• 균형 수준 12주 대비 <b>3.33배</b>. AI 고용량 수요 증가와 범용 제품 수요 둔화를 구별.",
+        "• 다른 6개 품목은 메리츠 제공 메모상 전주 동일; 유료 상세표 전량 직접 확인 전까지 직전 저장값 이월.",
+        "",
+        "<b>7개 부품 현황</b>",
+    ]
+    for name in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC"):
+        entry = current.get(name) or {}
+        kind = "신규 확인" if name == "MLCC" else "기존값 유지"
+        lines.append(
+            f"• {html.escape(name)}: {html.escape(fmt_week(entry.get('current')))}"
+            f" / 균형 {html.escape(fmt_week(entry.get('balanced')))}"
+            f" / {html.escape(fmt_status(entry))} ({kind})"
+        )
+    lines += [
+        "",
+        "• <b>매출 해석:</b> 업계 납기 악화가 개별 업체의 확정 가격 인상·신규 계약을 의미하지는 않음.",
+        "• <b>추적:</b> 고용량 MLCC 단가·계약·실제 출하·생산능력·가동률과 다음 주 공급 상태.",
+        "• <b>출처 구분:</b> TrendForce 공개 Weekly Radar 010에서 MLCC Very Tight 확인, "
+        "40주/균형 12주는 발행사 SNS 공개 문구 전재·제공 메모를 대조; "
+        "다른 6개는 기존 저장값·메리츠 메모 기준.",
+        '<a href="https://insights.trendforce.com/p/weekly-radar-010">TrendForce 11/16 공식 공개 요약</a>',
+        '<a href="https://www.trendforce.com/research/download/RP261113ML">TrendForce 11/13 MLCC 보고서 공개 요약</a>',
+    ]
+    return "\n".join(lines).strip() + "\n"
+
+
+
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state = load_json(STATE_PATH)
@@ -1917,6 +1994,22 @@ def main() -> None:
             latest_source = candidate_url_value
             latest_source_kind = "발행사 해당 주차 원문 7개 행과 사용자 제공 이미지 일치"
 
+    # The free public Weekly Radar 010 summary is qualitative. Upgrade the
+    # separately verified 40-week MLCC reading without reclassifying other rows.
+    mlcc_010 = weekly_010_mlcc_upgrade(
+        previous, latest_as_of, latest_components, now.date().isoformat(),
+    )
+    if mlcc_010 is not None:
+        notice = build_weekly_010_mlcc_alert(previous_components, mlcc_010["components"])
+        notify_text = (
+            notify_text.rstrip() + "\n\n" + notice.strip()
+        ).strip() + "\n" if notify_text else notice
+        latest_components = mlcc_010["components"]
+        latest_as_of = mlcc_010["as_of"]
+        latest_source = mlcc_010["source"]
+        latest_source_kind = mlcc_010["source_kind"]
+        new_seen.add(latest_source)
+
     latest_chain = memory_storage_chain_state(
         latest_components,
         latest_signals,
@@ -1972,7 +2065,10 @@ def main() -> None:
         "candidate_count": len(candidates),
         "mlcc_vendor_watch": vendor_state,
         "caspa_panel_watch": caspa_state,
-        "image_verified_issue": ("weekly-radar-009-user-image" if (
+        "image_verified_issue": ("weekly-radar-010-mlcc-public" if (
+                                     latest_as_of == WEEKLY_010_MLCC_LOCK["as_of"]
+                                     and canonical_component(latest_components.get("MLCC") or {}) == ("Very Tight", "40", "12"))
+                                 else "weekly-radar-009-user-image" if (
                                      latest_as_of == WEEKLY_009_IMAGE_LOCK["as_of"]
                                      and (latest_source == WEEKLY_009_IMAGE_LOCK["source"]
                                           or "사용자 제공 이미지 일치" in latest_source_kind)
