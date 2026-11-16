@@ -3614,6 +3614,113 @@ def _prepare_report_item(item: dict) -> dict | None:
     }
 
 
+
+# SemiAnalysis Accelerator & HBM model, November 13 revision vs November 2.
+# Distinct analyst forecast: not company orders, shipments or recognized revenue.
+SEMIA_REVISED_EVENT = "semia-accel-hbm-20261113-secondary-v1"
+SEMIA_CONFIRMED_EVENT = "semia-accel-hbm-20261113-publisher-v1"
+SEMIA_MODEL_URL = "https://semianalysis.com/accelerator-hbm-model/"
+SEMIA_REPORT_URL = "https://wallstreetcn.com/articles/3786019"
+SEMIA_REPRINT_URL = "https://www.itiger.com/news/1126271736"
+SEMIA_REVISED_CAPEX_USD_B = {
+    "2026": (398, 392), "2027": (770, 627), "2028": (1054, 758),
+    "2029": (1352, 796), "2030": (1531, 923),
+}
+SEMIA_REVISED_HBM_EB = {
+    "2026": (4.6, 4.6), "2027": (6.0, 5.5), "2028": (9.0, 6.4),
+    "2029": (10.3, 7.9), "2030": (10.9, 9.6),
+}
+SEMIA_REVISED_LOGIC_1000M2 = {
+    "2026": (24, 24), "2027": (46, 40), "2028": (86, 72),
+    "2029": (150, 113), "2030": (164, 139),
+}
+
+
+def _semia_revision_publisher_probe(previous: dict, now: dt.datetime) -> dict:
+    """Upgrade only when numerical before/after figures occur on publisher site.
+
+    Check once per local date; no repeated 25-second retries during every
+    memory scan. A publisher product description alone is not verification.
+    """
+    prev = dict(previous or {})
+    if prev.get("verified") or prev.get("checked_date") == now.date().isoformat():
+        return prev
+    observation = {"checked_date": now.date().isoformat(), "verified": False,
+                   "source_kind": "publisher_model_numeric_unverified"}
+    try:
+        request = urllib.request.Request(
+            SEMIA_MODEL_URL, headers={"User-Agent": "Mozilla/5.0"}
+        )
+        with urllib.request.urlopen(request, timeout=7) as response:
+            body = html.unescape(response.read(1500000).decode("utf-8", "ignore"))
+        normalized = re.sub(r"<[^>]*>", " ", body).replace(",", "").lower()
+        if all(token in normalized for token in ("2028", "1054", "758", "hbm", "9.0", "6.4")):
+            observation.update({"verified": True, "source_kind": "publisher_numeric_verified",
+                                "source_url": SEMIA_MODEL_URL})
+    except Exception as exc:
+        observation["access_warning"] = type(exc).__name__
+    return observation
+
+
+def _semia_revision_gate(old: dict, now: dt.datetime, official: dict) -> tuple[dict, bool]:
+    """Semantic dedupe: one secondary early-warning, one later primary upgrade."""
+    next_state = dict(old or {})
+    next_state["source_level"] = "SemiAnalysis 모델 이미지·2차 전재; 유료 원표 미열람"
+    next_state["published_model_date"] = "2026-11-13"
+    next_state["comparison_model_date"] = "2026-11-02"
+    next_state["publisher_probe"] = official
+    event = SEMIA_CONFIRMED_EVENT if official.get("verified") else SEMIA_REVISED_EVENT
+    is_recent = dt.date(2026, 11, 13) <= now.date() <= dt.date(2026, 12, 13)
+    send = is_recent and event != (old or {}).get("fact_key")
+    if send:
+        next_state["fact_key"] = event
+        next_state["source_level"] = ("발행처 수치 직접 확인" if official.get("verified")
+                                      else "제공 그래프·2차 보도 기준, 원표 독립 확인 전")
+    return next_state, send
+
+
+def _semia_revision_alert(rate: float, official: bool) -> list[str]:
+    """Create a separate HBM demand-revision warning, preserving time bases."""
+    def money(billions: int) -> str:
+        eok = round(billions * 10 * rate)
+        jo, residual = divmod(eok, 10000)
+        krw = f"{jo:,}조{residual:,}억원" if residual else f"{jo:,}조원"
+        return f"{billions * 10:,}억달러(약 {krw})"
+
+    lines = [
+        "<b>[SemiAnalysis 가속기 투자·HBM 수요 하향]</b>",
+        "■ <b>" + ("발행처 원수치 직접 확인" if official
+                    else "선행경보: 제공 그래프 및 2차 보도, 유료 원자료 미열람") + "</b>",
+        "• 비교: 2026-11-02 구모델 → 2026-11-13 신모델. 기관 추정치 변경으로, 계약 취소·확정 실적이 아닙니다.",
+        "• 범위: 세계 AI 가속기 구매 설비투자. 전체 데이터센터 건설비·임대 계약·발전비와 직접 합산 금지.",
+        "<b>가속기 설비투자 기존→신규</b>",
+    ]
+    for year, (prior, new) in SEMIA_REVISED_CAPEX_USD_B.items():
+        lines.append(f"• {year}년: {money(prior)} → {money(new)} ({(new/prior - 1)*100:+.0f}%)")
+    lines += [
+        "<b>실제 하드웨어 필요량 전망의 변화</b>",
+        "• 2026~2030 로직 실리콘 면적 누적 −17%; 2028년 86→72천㎡(−16%), "
+        "2029년 150→113천㎡(−24%). HBM과 인터포저 면적 제외.",
+        "• 전체 로직 면적 감소분 중 엔비디아 비중 66%: 엔비디아 매출이 66% 감소한다는 뜻이 아님.",
+        "• HBM 출하 2028년 9.0→6.4EB(그래프 표기 −30%); "
+        "2029년 10.3→7.9EB(−23%); 2030년 10.9→9.6EB(−12%).",
+        "• 2030년 데이터센터 전력수요 전망 −34%, 2027년 하반기~2028년 상반기 "
+        "미국 5.8GW 개발 지연은 원문 재인용상 추정이며 실제 계약 취소량 아님.",
+        "<b>하향 원인과 다음 확인</b>",
+        "• 선도 AI 모델사의 3분기 신규 연간반복매출 증가 둔화, "
+        "대형 임차인 없는 프로젝트의 대출·지분투자 약화, 미국 인허가 지연.",
+        "• 우선 확인: AI 기업 실제 토큰매출·클라우드 설비투자 지침·HBM 장기구매계약·"
+        "데이터센터 전원 인가 MW·반도체 출하량.",
+        "• 10월 19일 SemiAnalysis의 2027년 데이터센터 신규용량 50GW는 다른 추정 모델·"
+        "분모로 직접 50→25GW 하향이라고 판정하지 않음.",
+        f"• 적용 환율: 1달러={rate:,.2f}원, 감시 실행 시 조회한 환율.",
+        f'• <a href="{SEMIA_REPORT_URL}">중국 최초 공유기사</a> · '
+        f'<a href="{SEMIA_REPRINT_URL}">동일 보도 대체본</a> · '
+        f'<a href="{SEMIA_MODEL_URL}">SemiAnalysis 발행처 모델 소개</a>',
+    ]
+    return lines
+
+
 def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | None = None,
                   price_record: dict | None = None, source_warnings: list[str] | None = None) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -3628,6 +3735,9 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
     price_changes = (["TrendForce 11/12 기업용 메모리 구두 인상 계획·기업/소비자 가격 분화 보도 확인"]
                      if price_record and price_previous.get("fact_key") != TREND_PRICE_20261112_FACT_KEY else [])
     price_state = price_record if price_changes else price_previous
+    semia_old = dict(state.get("semianalysis_accelerator_revision") or {})
+    semia_probe = _semia_revision_publisher_probe(semia_old.get("publisher_probe") or {}, now)
+    semia_next, semia_change = _semia_revision_gate(semia_old, now, semia_probe)
     initialized = bool(state.get("initialized"))
     market_state = dict(state.get("hbm_market_pricing") or {})
     if int(state.get("hbm_market_pricing_track_version") or 0) < HBM_MARKET_PRICE_TRACK_VERSION:
@@ -4079,6 +4189,7 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         "china_essd_demand": essd_region_state,
         "foxconn_supply_outlook": foxconn_state,
         "trendforce_price_nov12": price_state,
+        "semianalysis_accelerator_revision": semia_next,
         "china_dram_cycle_track_version": CHINA_DRAM_CYCLE_TRACK_VERSION,
         "china_dram_cycle": china_cycle_state,
         "pc_notebook_demand_track_version": PC_NOTEBOOK_DEMAND_TRACK_VERSION,
@@ -4123,6 +4234,7 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         f"- 공식 리볼링 스마트폰 침투율 변화: {len(rb_changes)}건",
         f"- 중국↔북미 기업용 SSD 수요 차별화 변화: {len(essd_region_changes)}건",
         f"- 폭스콘 2027 메모리 공급 전망 변화: {len(foxconn_changes)}건",
+        f"- SemiAnalysis 가속기·HBM 모델 전망 경보: {'신규' if semia_change else '중복 차단'}",
         f"- TrendForce 11/12 가격 분화 보도 변화: {len(price_changes)}건",
         f"- 부가 원문 접근·검증 경고: {len(source_warnings or [])}건",
         f"- PC 메모리·CPU 원가→노트북 수요 역풍 변화: {len(pc_notebook_changes)}건",
@@ -4138,14 +4250,16 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes and not semia_change:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(rb_changes) + len(essd_region_changes) + len(foxconn_changes) + len(price_changes) + len(russian_changes) + len(legacy_changes)
+    typed_changes = int(semia_change) + len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(rb_changes) + len(essd_region_changes) + len(foxconn_changes) + len(price_changes) + len(russian_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
-    if trend_4q26_changes:
+    if semia_change:
+        lines.append("한눈에: <b>SemiAnalysis 2028년 가속기 설비투자 −28%·HBM 수요 −30% 전망 하향</b>")
+    elif trend_4q26_changes:
         lines.append(
             "한눈에: <b>TrendForce 4Q26 전망 대폭 상향 — "
             + f"DRAM +{TREND_4Q26_PRIOR_BASELINE['conventional_dram_min_pct']:.0f}~{TREND_4Q26_PRIOR_BASELINE['conventional_dram_max_pct']:.0f}%→+"
@@ -4851,7 +4965,7 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes and not semia_change:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
@@ -4877,6 +4991,11 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         if legacy_source_url:
             lines.append('• <a href="' + html.escape(legacy_source_url, quote=True) + '">근거 원문</a>')
 
+    if semia_change:
+        from fx_api import daily_krw
+        quote = daily_krw()
+        lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
+        lines.extend(_semia_revision_alert(float(quote.rate), bool(semia_probe.get('verified'))))
     lines.append("※ 메모리 공급·가격·고객 승인 등 실질 변화만 재알림하며, 투자자 발언과 실제 매매를 구별함")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
