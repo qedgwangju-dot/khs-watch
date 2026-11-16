@@ -3679,6 +3679,32 @@ def _semia_revision_gate(old: dict, now: dt.datetime, official: dict) -> tuple[d
     return next_state, send
 
 
+
+# One-time follow-up: SemiAnalysis vendor and price details distinct from HBM volumes.
+SEMIA_NVIDIA_DETAILS_ID = "semia-nvidia-20261113-vendor-price-detail-v1"
+
+
+def _semia_nvidia_details_lines(rate: float) -> list[str]:
+    def price(usd: int) -> str:
+        won = round(usd * rate)
+        eok, rest = divmod(won, 100_000_000)
+        return f"{usd:,}달러(약 {eok}억{round(rest/10000):,}만원)"
+    return [
+        "<b>[SemiAnalysis 엔비디아 출하·가격 전망 세부 보강]</b>",
+        "■ 동일 11/13 모델의 신규 세부 수치만 1회 보강; 이전 HBM·가속기 총액 경보 반복 아님.",
+        "• 엔비디아 컴퓨팅 매출 가중 출하 전망: 2027년 −22%, 2028년 −39%, 2029년 −56%, 2030년 −66%.",
+        "• 엔비디아 시스템 전력 가중 출하 전망: 2027년 −14%, 2028년 −35%, 2029년 −50%, 2030년 −59%.",
+        f"• Feynman 평균판매단가 추정: {price(110000)} → {price(78000)} (−29%).",
+        f"• Feynman Ultra 평균판매단가 추정: {price(175000)} → {price(98000)} (−44%).",
+        f"• Feynman Next 평균판매단가 추정: {price(191000)} → {price(118000)} (−38%).",
+        "• 위 수치는 SemiAnalysis 유료 모델을 재인용한 업계 보도이며 실제 출하 감소·NVIDIA 공식 가격·확정 매출 아님.",
+        "• 선행지표: TPU·Trainium·AMD 대비 고객 조달 비중, HBM 주문, 평균판매단가, 신규 공급계약.",
+        f"• 환율: 달러당 {rate:,.2f}원 · 실행 시 조회.",
+        f'• <a href="{SEMIA_REPRINT_URL}">동일 보도 대체본</a> · '
+        f'<a href="{SEMIA_MODEL_URL}">발행처 모델 소개</a>',
+    ]
+
+
 def _semia_revision_alert(rate: float, official: bool) -> list[str]:
     """Create a separate HBM demand-revision warning, preserving time bases."""
     def money(billions: int) -> str:
@@ -3742,6 +3768,11 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
     semia_old = dict(state.get("semianalysis_accelerator_revision") or {})
     semia_probe = _semia_revision_publisher_probe(semia_old.get("publisher_probe") or {}, now)
     semia_next, semia_change = _semia_revision_gate(semia_old, now, semia_probe)
+    semia_nvidia_due = (semia_old.get("fact_key") in (SEMIA_REVISED_EVENT, SEMIA_CONFIRMED_EVENT)
+                        and semia_old.get("nvidia_details_id") != SEMIA_NVIDIA_DETAILS_ID
+                        and dt.date(2026, 11, 13) <= now.date() <= dt.date(2026, 12, 13))
+    if semia_nvidia_due:
+        semia_next["nvidia_details_id"] = SEMIA_NVIDIA_DETAILS_ID
     initialized = bool(state.get("initialized"))
     market_state = dict(state.get("hbm_market_pricing") or {})
     if int(state.get("hbm_market_pricing_track_version") or 0) < HBM_MARKET_PRICE_TRACK_VERSION:
@@ -4239,6 +4270,7 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         f"- 중국↔북미 기업용 SSD 수요 차별화 변화: {len(essd_region_changes)}건",
         f"- 폭스콘 2027 메모리 공급 전망 변화: {len(foxconn_changes)}건",
         f"- SemiAnalysis 가속기·HBM 모델 전망 경보: {'신규' if semia_change else '중복 차단'}",
+        f"- 엔비디아 가격·출하 세부 보강: {'신규' if semia_nvidia_due else '중복 차단'}",
         f"- TrendForce 11/12 가격 분화 보도 변화: {len(price_changes)}건",
         f"- 부가 원문 접근·검증 경고: {len(source_warnings or [])}건",
         f"- PC 메모리·CPU 원가→노트북 수요 역풍 변화: {len(pc_notebook_changes)}건",
@@ -4254,15 +4286,17 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes and not semia_change:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes and not semia_change and not semia_nvidia_due:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = int(semia_change) + len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(rb_changes) + len(essd_region_changes) + len(foxconn_changes) + len(price_changes) + len(russian_changes) + len(legacy_changes)
+    typed_changes = int(semia_change) + int(semia_nvidia_due) + len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(rb_changes) + len(essd_region_changes) + len(foxconn_changes) + len(price_changes) + len(russian_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if semia_change:
         lines.append("한눈에: <b>SemiAnalysis 2028년 가속기 설비투자 −28%·HBM 수요 −30% 전망 하향</b>")
+    elif semia_nvidia_due:
+        lines.append("한눈에: <b>엔비디아 출하·Feynman 평균판매단가 전망 하향 세부 수치</b>")
     elif trend_4q26_changes:
         lines.append(
             "한눈에: <b>TrendForce 4Q26 전망 대폭 상향 — "
@@ -4995,6 +5029,11 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         if legacy_source_url:
             lines.append('• <a href="' + html.escape(legacy_source_url, quote=True) + '">근거 원문</a>')
 
+    if semia_nvidia_due:
+        from fx_api import daily_krw
+        q = daily_krw()
+        lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
+        lines.extend(_semia_nvidia_details_lines(float(q.rate)))
     if semia_change:
         from fx_api import daily_krw
         quote = daily_krw()
