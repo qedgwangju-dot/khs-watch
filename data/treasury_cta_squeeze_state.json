@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-17T05:33:56+09:00",
+  "last_checked_kst": "2026-11-17T06:14:02+09:00",
   "media_id": null,
   "cftc_date": "November 10, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-17T05:33:56+09:00",
+    "checked_kst": "2026-11-17T06:14:02+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "November 10, 2026",
@@ -145,28 +145,28 @@
       }
     },
     "yield10": {
-      "date": "2026-11-13",
-      "yield": 5.15,
-      "mean20": 4.9990000000000006,
-      "sd20": 0.09570266453970858,
-      "z20": 1.5778035097167797,
-      "distance_to_4_3_bp": 85.00000000000006,
+      "date": "2026-11-16",
+      "yield": 5.12,
+      "mean20": 5.0005,
+      "sd20": 0.09733832749744571,
+      "z20": 1.2276767340504822,
+      "distance_to_4_3_bp": 82.00000000000003,
       "window_n": 20,
       "monthly_comparisons": {
         "1": {
-          "date": "2026-10-13",
-          "value": 5.21,
-          "change": -0.05999999999999961
+          "date": "2026-10-16",
+          "value": 5.09,
+          "change": 0.03000000000000025
         },
         "2": {
-          "date": "2026-09-11",
-          "value": 4.96,
-          "change": 0.1900000000000004
+          "date": "2026-09-16",
+          "value": 5.01,
+          "change": 0.11000000000000032
         },
         "3": {
-          "date": "2026-08-13",
-          "value": 4.63,
-          "change": 0.5200000000000005
+          "date": "2026-08-14",
+          "value": 4.68,
+          "change": 0.4400000000000004
         }
       },
       "source_years": [
@@ -228,7 +228,7 @@
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-11-13",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026111615"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026111616"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -316,7 +316,7 @@
         "scope": "CFTC TFF NASDAQ MINI 전체시장 주간"
       },
       "stored_cftc_period": "November 3, 2026",
-      "history_status": "CFTC 최신 주간 보고서와 10년 공식자료 교차검증",
+      "history_status": "이전 운영 실행의 공식 CFTC 현재주 검증 재사용",
       "errors": [],
       "stage": 0,
       "label": "⚪ 채권→Nasdaq 이중 숏 스퀴즈 미확인",
@@ -368,255 +368,6 @@
       "event_key": null,
       "source_mode": "CFTC TFF live HTML",
       "report_age_days": 7
-    },
-    "monthly_trends": {
-      "cftc": {
-        "2Y": {
-          "1": {
-            "date": "2026-10-06",
-            "value": -1257484.0,
-            "change": -247720.0
-          },
-          "2": {
-            "date": "2026-09-08",
-            "value": -1290479.0,
-            "change": -214725.0
-          },
-          "3": {
-            "date": "2026-08-04",
-            "value": -1334181.0,
-            "change": -171023.0
-          }
-        },
-        "5Y": {
-          "1": {
-            "date": "2026-10-06",
-            "value": -2127567.0,
-            "change": -201515.0
-          },
-          "2": {
-            "date": "2026-09-08",
-            "value": -2066289.0,
-            "change": -262793.0
-          },
-          "3": {
-            "date": "2026-08-04",
-            "value": -2211439.0,
-            "change": -117643.0
-          }
-        },
-        "10Y": {
-          "1": {
-            "date": "2026-10-06",
-            "value": -2139785.0,
-            "change": -161542.0
-          },
-          "2": {
-            "date": "2026-09-08",
-            "value": -1938754.0,
-            "change": -362573.0
-          },
-          "3": {
-            "date": "2026-08-04",
-            "value": -2231670.0,
-            "change": -69657.0
-          }
-        },
-        "ULTRA10Y": {
-          "1": {
-            "date": "2026-10-06",
-            "value": -319061.0,
-            "change": 15462.0
-          },
-          "2": {
-            "date": "2026-09-08",
-            "value": -426360.0,
-            "change": 122761.0
-          },
-          "3": {
-            "date": "2026-08-04",
-            "value": -419861.0,
-            "change": 116262.0
-          }
-        },
-        "BOND": {
-          "1": {
-            "date": "2026-10-06",
-            "value": -189678.0,
-            "change": 39820.0
-          },
-          "2": {
-            "date": "2026-09-08",
-            "value": -276965.0,
-            "change": 127107.0
-          },
-          "3": {
-            "date": "2026-08-04",
-            "value": -376226.0,
-            "change": 226368.0
-          }
-        },
-        "ULTRABOND": {
-          "1": {
-            "date": "2026-10-06",
-            "value": -726257.0,
-            "change": -89431.0
-          },
-          "2": {
-            "date": "2026-09-08",
-            "value": -864271.0,
-            "change": 48583.0
-          },
-          "3": {
-            "date": "2026-08-04",
-            "value": -849690.0,
-            "change": 34002.0
-          }
-        }
-      },
-      "repo": {
-        "SOFR": {
-          "1": {
-            "date": "2026-10-13",
-            "value": 3.89,
-            "change": 0.009999999999999787
-          },
-          "2": {
-            "date": "2026-09-11",
-            "value": 3.62,
-            "change": 0.2799999999999998
-          },
-          "3": {
-            "date": "2026-08-13",
-            "value": 3.62,
-            "change": 0.2799999999999998
-          }
-        },
-        "BGCR": {
-          "1": {
-            "date": "2026-10-13",
-            "value": 3.88,
-            "change": -0.009999999999999787
-          },
-          "2": {
-            "date": "2026-09-11",
-            "value": 3.6,
-            "change": 0.27
-          },
-          "3": {
-            "date": "2026-08-13",
-            "value": 3.6,
-            "change": 0.27
-          }
-        },
-        "TGCR": {
-          "1": {
-            "date": "2026-10-13",
-            "value": 3.88,
-            "change": -0.009999999999999787
-          },
-          "2": {
-            "date": "2026-09-11",
-            "value": 3.6,
-            "change": 0.27
-          },
-          "3": {
-            "date": "2026-08-13",
-            "value": 3.6,
-            "change": 0.27
-          }
-        }
-      },
-      "futures": {
-        "ZN": {
-          "date": "2026-11-13",
-          "current": 105.1875,
-          "comparisons": {
-            "1": {
-              "date": "2026-10-13",
-              "value": 104.734375,
-              "change": 0.453125
-            },
-            "2": {
-              "date": "2026-09-11",
-              "value": 106.359375,
-              "change": -1.171875
-            },
-            "3": {
-              "date": "2026-08-13",
-              "value": 108.921875,
-              "change": -3.734375
-            }
-          },
-          "source": "https://query1.finance.yahoo.com/v8/finance/chart/ZN%3DF?range=6mo&interval=1d&includePrePost=false"
-        },
-        "ZB": {
-          "date": "2026-11-13",
-          "current": 105.28125,
-          "comparisons": {
-            "1": {
-              "date": "2026-10-13",
-              "value": 103.75,
-              "change": 1.53125
-            },
-            "2": {
-              "date": "2026-09-11",
-              "value": 107.28125,
-              "change": -2.0
-            },
-            "3": {
-              "date": "2026-08-13",
-              "value": 109.65625,
-              "change": -4.375
-            }
-          },
-          "source": "https://query1.finance.yahoo.com/v8/finance/chart/ZB%3DF?range=6mo&interval=1d&includePrePost=false"
-        },
-        "UB": {
-          "date": "2026-11-13",
-          "current": 106.40625,
-          "comparisons": {
-            "1": {
-              "date": "2026-10-13",
-              "value": 104.90625,
-              "change": 1.5
-            },
-            "2": {
-              "date": "2026-09-11",
-              "value": 108.71875,
-              "change": -2.3125
-            },
-            "3": {
-              "date": "2026-08-13",
-              "value": 110.875,
-              "change": -4.46875
-            }
-          },
-          "source": "https://query1.finance.yahoo.com/v8/finance/chart/UB%3DF?range=6mo&interval=1d&includePrePost=false"
-        },
-        "NQ": {
-          "date": "2026-11-13",
-          "current": 28034.75,
-          "comparisons": {
-            "1": {
-              "date": "2026-10-13",
-              "value": 30791.5,
-              "change": -2756.75
-            },
-            "2": {
-              "date": "2026-09-11",
-              "value": 29387.0,
-              "change": -1352.25
-            },
-            "3": {
-              "date": "2026-08-13",
-              "value": 30188.5,
-              "change": -2153.75
-            }
-          },
-          "source": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=6mo&interval=1d&includePrePost=false"
-        }
-      }
     }
   },
   "format_revision": 14,
