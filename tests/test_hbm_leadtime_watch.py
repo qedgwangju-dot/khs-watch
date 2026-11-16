@@ -760,7 +760,7 @@ class Weekly009ScreenshotRegression(unittest.TestCase):
             }, ensure_ascii=False), encoding="utf-8")
             feed = lambda kind, query: [item] if kind == "trendforce_feed" else []
             with mock.patch.object(w, "datetime", FrozenDatetime), \
-            with mock.patch.object(w, "STATE_PATH", state), \
+                 mock.patch.object(w, "STATE_PATH", state), \
                  mock.patch.object(w, "PENDING_PATH", pending), \
                  mock.patch.object(w, "ALERT_PATH", alert), \
                  mock.patch.object(w, "read_rss", side_effect=feed), \
