@@ -6,30 +6,24 @@
     "deferred_material_items": 0,
     "direct_official_items": 56,
     "errors": [
-      "Google News RSS 실패: (\"php2shell\" OR \"CVE-2026-109618\") (\"10 million\" OR \"10… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"AI agent\" security vulnerability exploit \"data leak\" \"… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"Claude\" \"Georgia\" (vote counts OR voter data OR unauth… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (\"Model Context Protocol\" OR MCP) security vulnerabilit… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (Grok OR xAI OR Bedrock) AI security vulnerability expl… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (\"AI agent\" OR agentic OR LLM) misalignment \"third part… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"AI agent\" \"third-party\" impact security controls… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Preparedness F… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"php2shell\" (CISA OR CERT-EU OR exploit OR update OR at… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"Cathedral\" \"Anthropic\" (security research OR breach OR… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (Anthropic OR Claude) security vulnerability exploit \"p… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (Copilot OR \"Microsoft AI\") security vulnerability expl… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Critical cyber… / HTTPError: HTTP Error 429: Too Many Requests",
       "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"training pause… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) \"security release\" OR \"… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) model release c… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) deployment bloc… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic) \"blocking alignment evaluation\" f… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: frontier AI independent auditor found sandbox unauthori… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell OR NemoClaw) security vu… / HTTPError: HTTP Error 429: Too Many Requests",
       "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) (\"affected part… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"eval awareness… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) regression test… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (Anthropic OR Claude) (Mythos OR \"Cyber Verification Pr… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"Jamie Dimon\" (Mythos OR Anthropic) cyber risk bank fin… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"Abdulrahman Alfozan\" (detention OR court OR hearing OR… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (Anthropic OR \"AI model\") (\"self-replicating\" OR \"self … / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) tool-use traini… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR \"AI lab\") (\"recording device\" O… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"Abdulrahman Alfozan\" (detention OR court OR hearing OR… / HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "material_items": 12,
     "new_material_items": 0,
-    "raw_items": 91,
+    "raw_items": 83,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1551,5 +1545,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-17T05:07:41+09:00"
+  "updated_at_kst": "2026-11-17T05:24:53+09:00"
 }
