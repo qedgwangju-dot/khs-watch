@@ -142,9 +142,16 @@ jobs:
               if [ -f "$tmpdir/$file" ]; then
                 mkdir -p "$(dirname "$file")"
                 cp "$tmpdir/$file" "$file"
+              elif [ "$file" = "data/qlex_wac_delivery_uncertain.json" ]; then
+                rm -f "$file"
               fi
             done
-            git add "${files[@]}" 2>/dev/null || true
+            # Missing optional paths must not invalidate the entire git add.
+            for file in "${files[@]}"; do
+              if [ -f "$file" ] || git ls-files --error-unmatch "$file" >/dev/null 2>&1; then
+                git add -A -- "$file"
+              fi
+            done
             if git diff --cached --quiet; then
               echo "Bio watchdog states unchanged"
               exit 0

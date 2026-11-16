@@ -303,6 +303,18 @@ class BioAlertRegressionTests(unittest.TestCase):
             "RuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있음: Bing, News",
         )
 
+    def test_optional_wac_quarantine_file_does_not_break_state_commit(self):
+        for workflow_path in (
+            ".github/workflows/bio-qlex-intismeran-watch.yml",
+            ".github/workflows/qlex-sc-bio-fallback.yml",
+        ):
+            text = (ROOT / workflow_path).read_text(encoding="utf-8")
+            self.assertIn("data/qlex_wac_delivery_uncertain.json", text)
+            self.assertNotIn('git add "${files[@]}" 2>/dev/null || true', text)
+            self.assertIn('git add -A -- "$file"', text)
+            self.assertIn('git ls-files --error-unmatch "$file"', text)
+            self.assertIn('rm -f "$file"', text)
+
     def test_watchdog_does_not_repeat_primary_failure_notice(self):
         source = (ROOT / ".github/workflows/qlex-sc-bio-fallback.yml").read_text(encoding="utf-8")
         primary = (ROOT / ".github/workflows/bio-qlex-intismeran-watch.yml").read_text(encoding="utf-8")
