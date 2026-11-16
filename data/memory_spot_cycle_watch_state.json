@@ -981,7 +981,7 @@
       "first_seen_kst": "2026-11-16T21:19:51+09:00"
     }
   },
-  "updated_at_kst": "2026-11-16T22:42:25+09:00",
+  "updated_at_kst": "2026-11-16T22:52:04+09:00",
   "last_scan_count": 7,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
@@ -1043,23 +1043,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-16T22:29:57+09:00",
+  "last_successful_delivery_kst": "2026-11-16T22:52:17+09:00",
   "telegram_message_ids": [
-    471,
-    472
+    474
   ],
-  "telegram_message_id": 472,
+  "telegram_message_id": 474,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      471,
-      472
+      474
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-16T22:29:57+09:00",
-    "alert_signature": "6df056938002ae836d81f3cd75eb406fc92f29697dcd7e11ad6ae2fb57b934db"
+    "confirmed_at_kst": "2026-11-16T22:52:17+09:00",
+    "alert_signature": "b9f62d43d22f28c2ebaefc6cc5d68c1aa2332e4508a24d9a1b3d3b47b6582b67"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1376,6 +1374,6 @@
       "source_kind": "publisher_model_numeric_unverified"
     },
     "fact_key": "semia-accel-hbm-20261113-secondary-v1",
-    "nvidia_details_id": "semia-nvidia-20261113-vendor-price-detail-v1"
+    "nvidia_details_id": "semia-nvidia-20261113-vendor-price-detail-v2"
   }
 }
