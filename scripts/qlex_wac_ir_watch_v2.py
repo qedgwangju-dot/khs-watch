@@ -46,7 +46,7 @@ def build_alert(post, metrics, state) -> str:
     old = f'- **누적 추정:** 1~{cum_month}월 약 {base.fmt_usd_m(metrics.cumulative_m)}'
     new = (
         f'{old} → {format_krw_from_usd_m(metrics.cumulative_m, rate)} '
-        f'(USD/KRW {rate:,.2f}, {day}, ECB 기준)'
+        f'(USD/KRW {rate:,.2f}, {day}, 유럽중앙은행 기준환율 기반)'
     )
     return text.replace(old, new)
 

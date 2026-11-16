@@ -120,6 +120,42 @@ def send_text(token: str, chat_id: str, text: str) -> int:
     return int((result.get("result") or {}).get("message_id") or 0)
 
 
+
+def error_component(error: str) -> str:
+    """Derive the failure label from the actual error, not a stale last step."""
+    raw = str(error)
+    prefixes = (
+        ("QLEX WAC", "월간 WAC"),
+        ("QLEX collector", "QLEX 전환율"),
+        ("QLEX sender", "QLEX Telegram"),
+        ("Intismeran", "Intismeran"),
+        ("Jemperli", "Jemperli"),
+        ("Enhertu", "Enhertu"),
+        ("Halozyme", "Halozyme 특허분쟁"),
+    )
+    for prefix, label in prefixes:
+        if raw.startswith(prefix):
+            return label
+    return "바이오 통합 감시"
+
+
+def error_family(error: str) -> str:
+    """Stable per-component error category for cross-run deduplication."""
+    raw = str(error)
+    lane = error_component(raw)
+    if "한국어 송출 검증 실패" in raw or "고유명 보존" in raw:
+        cause = "language_validation"
+    elif "source" in raw.lower() or "검색 원천" in raw or "수집" in raw:
+        cause = "source_access"
+    elif any(term in raw for term in ("URLError", "Connection", "urlopen", "Timeout", "timed out", "reset by peer")):
+        cause = "network_transport"
+    elif "message_id" in raw or "delivery_unconfirmed" in raw:
+        cause = "acknowledgment_unconfirmed"
+    else:
+        cause = "other"
+    return f"{lane}|{cause}"
+
+
 def previous_heartbeat() -> dict:
     try:
         return json.loads(HEARTBEAT.read_text(encoding="utf-8")) if HEARTBEAT.exists() else {}
@@ -176,6 +212,8 @@ def main() -> int:
         "last_qlex_telegram_sent_at_kst": prev.get("last_qlex_telegram_sent_at_kst", ""),
         "errors": [],
         "failed_component": "",
+        "failed_components": [],
+        "failure_notice_signatures": list(prev.get("failure_notice_signatures") or []) if prev.get("status") in {"degraded", "failed"} else [],
     }
 
     token = ""
@@ -378,34 +416,37 @@ def main() -> int:
         previous_status = str(prev.get("status") or "")
         previous_errors = [str(x) for x in (prev.get("errors") or [])]
         current_errors = [str(x) for x in (hb.get("errors") or [])]
-        current_signature = " | ".join(sorted(set(current_errors)))[:1000]
-        previous_signature = str(prev.get("error_signature") or " | ".join(sorted(set(previous_errors))))[:1000]
+        current_families = sorted({error_family(err) for err in current_errors})
+        current_signature = " | ".join(current_families)[:1000]
         hb["error_signature"] = current_signature
 
         if not operational:
-            hb["failed_component"] = hb.get("failed_component") or (
-                "Halozyme 특허분쟁 감시"
-                if any("Halozyme" in err or "halozyme" in err for err in current_errors)
-                else "바이오 통합 감시"
-            )
-            should_notify_failure = (
-                previous_status == "ok"
-                or previous_status == ""
-                or current_signature != previous_signature
-            )
-            if token and chat_id and should_notify_failure:
+            root = current_errors[0] if current_errors else "세부 오류 확인 필요"
+            hb["failed_component"] = error_component(root)
+            hb["failed_components"] = sorted({error_component(err) for err in current_errors})
+            previously_notified = set(prev.get("failure_notice_signatures") or [])
+            if previous_status == "ok":
+                previously_notified = set()
+            new_families = [family for family in current_families if family not in previously_notified]
+            if token and chat_id and new_families:
                 failure_dt = dt.datetime.now(KST)
-                detail = current_errors[0] if current_errors else "세부 오류 확인 필요"
-                hb["failure_notice_message_id"] = send_text(
+                other = " · ".join(hb["failed_components"][1:])
+                extra = f"\n- 추가 영향 구간: {other}" if other else ""
+                mid = send_text(
                     token,
                     chat_id,
                     "[바이오 감시] 실행 오류\n\n"
                     f"- 실제 오류 시각: {failure_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
                     f"- 실패 구간: {hb.get('failed_component')}\n"
-                    f"- 확인 원인: {detail[:500]}\n"
-                    "- 동일 원인이 반복되면 중복 오류 알림은 보내지 않고 계속 재확인합니다.",
+                    f"- 확인 원인: {root[:500]}"
+                    + extra + "\n"
+                    "- 동일 오류 유형은 복구 전까지 중복 발송하지 않고 계속 재확인합니다.",
                 )
+                hb["failure_notice_message_id"] = mid
+                previously_notified.update(current_families)
+            hb["failure_notice_signatures"] = sorted(previously_notified)[-40:]
         elif previous_status in {"failed", "degraded"}:
+            hb["failure_notice_signatures"] = []
             detail = previous_errors[0] if previous_errors else "직전 실행 오류"
             hb["recovery_notice_message_id"] = send_text(
                 token,

@@ -36,6 +36,7 @@ ALLOWED_IDENTIFIERS = (
 )
 
 COMMON_REPLACEMENTS = (
+    (r'\bECB\b', '유럽중앙은행'),
     # Single-character geographic shorthand in Korean financial headlines.
     (r'(?<![一-龯])美(?![一-龯])', '미국'),
     (r'(?<![一-龯])日(?![一-龯])', '일본'),

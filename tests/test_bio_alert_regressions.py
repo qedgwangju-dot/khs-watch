@@ -521,6 +521,39 @@ class BioAlertRegressionTests(unittest.TestCase):
                 self.assertIn("official_fetch_failed", pending["cms_policy_status"])
                 self.assertIn("official_fetch_failed", (root / "status.md").read_text(encoding="utf-8"))
 
+
+    def test_wac_ecb_exchange_label_is_korean_without_network(self):
+        from qlex_wac_ir_watch import Post, Metrics
+        from unittest.mock import patch as local_patch
+        post = Post(361, "https://t.me/alteogenIR/361", "2026-11-15T00:37:58+00:00", "")
+        metrics = Metrics(month=10, wac_m=370.0, mom_pct=14.3, share_pct=18.4,
+                          prev_share_pct=15.7, share_delta_pp=2.7, cumulative_m=1790,
+                          cumulative_month=10)
+        old = {"last_wac_m":324.0, "last_share_pct":15.7}
+        with local_patch.object(wac, "usdkrw", return_value=(1337.13, "2026-11-13")):
+            notice = wac.build_alert(post, metrics, old)
+        for fact in ("370.0M달러", "18.4%", "+2.7%p", "1.790B달러", "2조3,935억원"):
+            self.assertIn(fact, notice)
+        self.assertNotIn("ECB", notice)
+        with local_patch.object(base_korean_guard, "translate_to_korean",
+                                side_effect=AssertionError("unexpected external translation")):
+            self.assertEqual(guard.ensure_korean_text(notice), notice.strip())
+            self.assertIn("유럽중앙은행", guard.ensure_korean_text("ECB 기준"))
+        self.assertIn("https://t.me/alteogenIR/361", notice)
+
+    def test_bio_error_labels_follow_actual_error_not_last_attempted_component(self):
+        halo = "Halozyme 검색 원천 가용성 저하: 정상 응답 부족"
+        wac = "QLEX WAC sender rc=1: RuntimeError: 한국어 송출 검증 실패 — ECB"
+        network = "QLEX WAC sender rc=1: urllib.error.URLError: <urlopen error [Errno 104] Connection reset by peer>"
+        self.assertEqual(bio_runner.error_component(halo), "Halozyme 특허분쟁")
+        self.assertEqual(bio_runner.error_component(wac), "월간 WAC")
+        self.assertEqual(bio_runner.error_component(network), "월간 WAC")
+        self.assertEqual(bio_runner.error_family(wac), "월간 WAC|language_validation")
+        self.assertEqual(bio_runner.error_family(network), "월간 WAC|network_transport")
+        self.assertEqual(bio_runner.error_family(halo), "Halozyme 특허분쟁|source_access")
+        self.assertNotEqual(bio_runner.error_family(wac), bio_runner.error_family(network))
+        self.assertEqual(bio_runner.error_family(wac), bio_runner.error_family(wac))
+
     def test_qlex_wac_cumulative_has_krw_formatter(self):
         self.assertEqual(
             wac.format_krw_from_usd_m(1026.0, 1343.8),
