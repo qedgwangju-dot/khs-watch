@@ -981,7 +981,7 @@
       "first_seen_kst": "2026-11-16T21:19:51+09:00"
     }
   },
-  "updated_at_kst": "2026-11-16T22:34:30+09:00",
+  "updated_at_kst": "2026-11-16T22:38:14+09:00",
   "last_scan_count": 7,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
@@ -1375,6 +1375,7 @@
       "verified": false,
       "source_kind": "publisher_model_numeric_unverified"
     },
-    "fact_key": "semia-accel-hbm-20261113-secondary-v1"
+    "fact_key": "semia-accel-hbm-20261113-secondary-v1",
+    "nvidia_details_id": "semia-nvidia-20261113-vendor-price-detail-v1"
   }
 }
