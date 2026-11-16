@@ -824,6 +824,7 @@ def collect() -> tuple[list[dict], list[str]]:
     now = dt.datetime.now(KST)
     cutoff = now - dt.timedelta(days=10)
     article_cache: dict[str, str] = {}
+    decoded_link_cache: dict[str, str] = {}
 
     for lang, query in QUERIES:
         url = _rss_url(lang, query)
@@ -831,7 +832,7 @@ def collect() -> tuple[list[dict], list[str]]:
             root = ET.fromstring(_fetch(url))
             for node in root.findall(".//item"):
                 title = _clean(node.findtext("title"))
-                link = _decode_google_news_link(_clean(node.findtext("link")))
+                link = _clean(node.findtext("link"))
                 description = _clean(node.findtext("description"))
                 pub = _parse_date(node.findtext("pubDate"))
                 source_node = node.find("source")
@@ -850,6 +851,12 @@ def collect() -> tuple[list[dict], list[str]]:
                 }
                 item["score"] = _score(item)
                 if item["score"] >= 8:
+                    # Resolve only relevant items: URL decoding is network-bound,
+                    # while scoring uses title, source and description alone.
+                    # Cache repeated RSS links across overlapping search queries.
+                    if link not in decoded_link_cache:
+                        decoded_link_cache[link] = _decode_google_news_link(link)
+                    item["link"] = decoded_link_cache[link]
                     item["description"] = _enrich_news_description(
                         item["link"], item.get("description") or "", article_cache
                     )
