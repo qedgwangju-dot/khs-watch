@@ -575,6 +575,7 @@
     "85f457a8cc0c485a6802",
     "860b7125b1a0d831eab8",
     "8671c72b10625af82c4e",
+    "8730eeff6e8abeba1a32",
     "876f4463a52a83b9c6b6",
     "881c9c0c9853d16e3e80",
     "88413c97d75aa1653b46",
@@ -787,6 +788,7 @@
     "bb74de03798d1c1ee109",
     "bb8c4b16e5d2f578383b",
     "bba555f5c862789c317ecea4",
+    "bbb9ccfb6dd3a6d2f5bb",
     "bc02e32ba64531c0fd3cc324",
     "bc25bcd345a2ba4948d2",
     "bca5c9db8ed68678f38e",
@@ -1097,7 +1099,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-11-16T06:59:32+09:00",
+  "last_scan_kst": "2026-11-16T10:39:05+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -1105,9 +1107,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 10,
-  "fetch_errors": [
-    "google Apple M8 Ultra enterprise server NV: HTTPError HTTP Error 503: Service Unavailable",
-    "google 애플 M8 Ultra 기업 서버 메모리: HTTPError HTTP Error 503: Service Unavailable"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
