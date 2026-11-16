@@ -1,12 +1,12 @@
 {
-  "last_signal_key": "77fa7cd3a542ebf90805622f",
-  "last_alert_at_kst": "2026-11-12T11:05:19+09:00",
-  "last_published_at_kst": "2026-11-12T10:30:00+09:00",
+  "last_signal_key": "02839ac8d8214aae5e550dca",
+  "last_alert_at_kst": "2026-11-16T17:28:55+09:00",
+  "last_published_at_kst": "2026-11-16T17:00:00+09:00",
   "last_source": "Bank of Japan",
-  "last_title": "Speech by Board Member ASADA in Nagasaki (Economic Activity, Prices, and Monetary Policy in Japan)",
+  "last_title": "Highlights of the Outlook for Economic Activity and Prices (October 2026)",
   "signature": {
     "level": 1,
-    "event_type": "official_speech",
+    "event_type": "decision",
     "policy_rate": null,
     "hike_bp": null,
     "vote_for": null,
@@ -19,18 +19,18 @@
     "expected_move": false,
     "hawkish_tail_50bp": false,
     "inflation_spillover": false,
-    "cpi_h2_clearly_above_2": false,
-    "stabilize_underlying_around_2": false,
+    "cpi_h2_clearly_above_2": true,
+    "stabilize_underlying_around_2": true,
     "outlook_dissenters": [],
     "outlook_dissent_view": null,
-    "official_statement_detail_verified": false,
-    "further_hikes": false,
-    "conditional_pace": false,
+    "official_statement_detail_verified": true,
+    "further_hikes": true,
+    "conditional_pace": true,
     "accommodative": false,
     "neutral_rate": false,
-    "inflation_upside": false,
+    "inflation_upside": true,
     "risk_channels": true,
     "rate_unchanged": false,
-    "underlying_target_reached": false
+    "underlying_target_reached": true
   }
 }
