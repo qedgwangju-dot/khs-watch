@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-16T03:04:13.459408+00:00",
+  "updated_at": "2026-11-16T09:32:40.576934+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -937,35 +937,14 @@
     "bb77c56618e7dec09ef262d29534697400c33d88fe502304722c4460b002a4d3",
     "a33142fa3594715777088ed949a77569f0332f7ebf207f51421a0e9004ee48a6"
   ],
-  "last_selected": [
-    "136eef64d0fbfe00d7fd8c9e98c72ce58e1bff9ea1ca734405435f0155b74ca0",
-    "4b418e56193cb32f75995895991406981a8e36f5527fb237bab31a52b5086270",
-    "dd78d0422b4d5963a0a908ed9b4982e279401f06109185956b675bee4e722c3a",
-    "6dd307a633c4096c8a82ba60b6d071a5f083b048c31cd26f24ffb4533fddd1a9",
-    "902babc2dd4bbc46bf4f687faba42dd915f1d039fcdba1fe7a6e92abba8fbd0f",
-    "b075d33aca1e0be789e257ceb0e8b59d88b513684d2e26f5fbeb9238ead73765",
-    "bb77c56618e7dec09ef262d29534697400c33d88fe502304722c4460b002a4d3",
-    "a33142fa3594715777088ed949a77569f0332f7ebf207f51421a0e9004ee48a6"
-  ],
+  "last_selected": [],
   "groups": [
     "dkt_auto_oled_expansion",
-    "ess_battery",
     "hungary_battery_environment",
     "jpm_humanoid_component_outlook",
-    "lg_factory_loop",
-    "robotis",
     "spacex_tesla_combination"
   ],
   "delivery_history": [
-    {
-      "run_id": 43568887428,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-14T06:58:55.972599+00:00"
-    },
     {
       "run_id": 43585016366,
       "outcome": "normal_silence",
@@ -1196,24 +1175,24 @@
         false
       ],
       "state_timestamp_utc": "2026-11-16T03:04:13.459408+00:00"
+    },
+    {
+      "run_id": 43840639041,
+      "outcome": "normal_silence",
+      "message_ids": [],
+      "recipient_verified": null,
+      "recipient_checks": [],
+      "message_topic_present": [],
+      "state_timestamp_utc": "2026-11-16T09:32:40.576934+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 43795866726,
-    "outcome": "sent",
-    "message_ids": [
-      372,
-      373
-    ],
-    "recipient_verified": true,
-    "recipient_checks": [
-      "numeric_id_equal",
-      "numeric_id_equal"
-    ],
-    "message_topic_present": [
-      false,
-      false
-    ],
-    "state_timestamp_utc": "2026-11-16T03:04:13.459408+00:00"
+    "run_id": 43840639041,
+    "outcome": "normal_silence",
+    "message_ids": [],
+    "recipient_verified": null,
+    "recipient_checks": [],
+    "message_topic_present": [],
+    "state_timestamp_utc": "2026-11-16T09:32:40.576934+00:00"
   }
 }
