@@ -742,6 +742,14 @@ class Weekly009ScreenshotRegression(unittest.TestCase):
             "mlcc_vendor_watch": copy.deepcopy(w.MLCC_VENDOR_BASELINE),
             "caspa_panel_watch": copy.deepcopy(w.CASPA_PANEL_BASELINE),
         }
+        # Freeze the clock: this historical 2026-10-26 issue falls outside the
+        # rolling 21-day collection window after 2026-11-16.
+        class FrozenDatetime(w.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                fixed = cls.fromisoformat("2026-10-27T12:00:00+09:00")
+                return fixed.astimezone(tz) if tz else fixed.replace(tzinfo=None)
+
         with tempfile.TemporaryDirectory() as root:
             folder = pathlib.Path(root)
             state, pending, alert = folder / "state.json", folder / "pending.json", folder / "alert.md"
@@ -751,6 +759,7 @@ class Weekly009ScreenshotRegression(unittest.TestCase):
                 "another_route": {"preserve": True},
             }, ensure_ascii=False), encoding="utf-8")
             feed = lambda kind, query: [item] if kind == "trendforce_feed" else []
+            with mock.patch.object(w, "datetime", FrozenDatetime), \
             with mock.patch.object(w, "STATE_PATH", state), \
                  mock.patch.object(w, "PENDING_PATH", pending), \
                  mock.patch.object(w, "ALERT_PATH", alert), \
