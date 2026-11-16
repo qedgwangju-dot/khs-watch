@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at_kst": "2026-11-16T22:52:08+09:00",
+  "updated_at_kst": "2026-11-17T04:57:41+09:00",
   "initial_alert_sent": true,
   "seen": [
     "0476c77ae806a2663597a257",
@@ -130,5 +130,8 @@
     "at_kst": "2026-10-06T07:37:33+09:00",
     "kind": "change"
   },
-  "errors": []
+  "errors": [
+    "ko:\"갤럭시 S27\" 가격 인상 메모리 LPDDR6 NAND 13만원 -> HTTPError",
+    "ko:스마트폰 가격 인상 메모리 DRAM NAND 애플 OPPO vivo 구글 -> HTTPError"
+  ]
 }
