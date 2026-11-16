@@ -440,7 +440,7 @@ def main() -> int:
                     f"- 실패 구간: {hb.get('failed_component')}\n"
                     f"- 확인 원인: {root[:500]}"
                     + extra + "\n"
-                    "- 동일 오류 유형은 복구 전까지 중복 발송하지 않고 계속 재확인합니다.",
+                    "- 동일 원인이 반복되면 중복 오류 알림은 보내지 않고 계속 재확인합니다. (오류 유형별 관리)",
                 )
                 hb["failure_notice_message_id"] = mid
                 previously_notified.update(current_families)
