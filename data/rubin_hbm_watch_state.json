@@ -1366,13 +1366,15 @@
   },
   "_delivery": {
     "id": "62dd0b3ca60576e42a865ca6d1fd0f606283e468e53fa36cb5e03da3c9a968db",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-11-16T22:32:30+09:00",
     "chunks": [
       "<b>🚨 AI 서버 핵심 부품 공급 부족 악화 — TrendForce 11/16</b>\n\n<b>이번 주 신규 변화: MLCC 1개 품목</b>\n• <b>MLCC 납기: 38주 → 40주(+2주).</b>\n• <b>수급: Tight(공급 제약) → Very Tight(극심한 공급 부족).</b>\n• 균형 수준 12주 대비 <b>3.33배</b>. AI 고용량 수요 증가와 범용 제품 수요 둔화를 구별.\n• 다른 6개 품목은 메리츠 제공 메모상 전주 동일; 유료 상세표 전량 직접 확인 전까지 직전 저장값 이월.\n\n<b>7개 부품 현황</b>\n• CPU: 25~30주 / 균형 16~20주 / 공급 제약 (기존값 유지)\n• GPU: 30~45주 / 균형 30~40주 / 공급 악화 중 (기존값 유지)\n• DRAM: 18주 / 균형 8주 / 심각한 공급 부족 (기존값 유지)\n• NAND(eSSD): 16주 / 균형 8주 / 공급 제약 (기존값 유지)\n• HDD: 50주 / 균형 16주 / 심각한 공급 부족 (기존값 유지)\n• ABF: 48~56주 / 균형 12주 / 심각한 공급 부족 (기존값 유지)\n• MLCC: 40주 / 균형 12주 / 심각한 공급 부족 (신규 확인)\n\n• <b>매출 해석:</b> 업계 납기 악화가 개별 업체의 확정 가격 인상·신규 계약을 의미하지는 않음.\n• <b>추적:</b> 고용량 MLCC 단가·계약·실제 출하·생산능력·가동률과 다음 주 공급 상태.\n• <b>출처 구분:</b> TrendForce 공개 Weekly Radar 010에서 MLCC Very Tight 확인, 40주/균형 12주는 발행사 SNS 공개 문구 전재·제공 메모를 대조; 다른 6개는 기존 저장값·메리츠 메모 기준.\n<a href=\"https://insights.trendforce.com/p/weekly-radar-010\">TrendForce 11/16 공식 공개 요약</a>\n<a href=\"https://www.trendforce.com/research/download/RP261113ML\">TrendForce 11/13 MLCC 보고서 공개 요약</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      473
+    ],
     "candidate": {
       "updated_at_kst": "2026-11-16T22:31:27+09:00",
       "seen_ids": [
