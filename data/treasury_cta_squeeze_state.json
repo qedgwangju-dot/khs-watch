@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-16T18:49:53+09:00",
+  "last_checked_kst": "2026-11-17T00:52:33+09:00",
   "media_id": null,
   "cftc_date": "November 3, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-16T18:49:53+09:00",
+    "checked_kst": "2026-11-17T00:52:33+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "November 3, 2026",
@@ -176,26 +176,26 @@
     },
     "repo": {
       "SOFR": {
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "rate": 3.9,
-        "volume_bn": 3138,
-        "previous_date": "2026-11-10",
-        "previous_rate": 3.89,
-        "change_bp": 1.0
+        "volume_bn": 3092,
+        "previous_date": "2026-11-12",
+        "previous_rate": 3.9,
+        "change_bp": 0.0
       },
       "BGCR": {
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "rate": 3.87,
-        "volume_bn": 1254,
-        "previous_date": "2026-11-10",
+        "volume_bn": 1251,
+        "previous_date": "2026-11-12",
         "previous_rate": 3.87,
         "change_bp": 0.0
       },
       "TGCR": {
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "rate": 3.87,
-        "volume_bn": 1220,
-        "previous_date": "2026-11-10",
+        "volume_bn": 1218,
+        "previous_date": "2026-11-12",
         "previous_rate": 3.87,
         "change_bp": 0.0
       }
@@ -228,7 +228,7 @@
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-11-13",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026111604"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026111610"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -450,7 +450,7 @@
       "repo_worse": [],
       "data_fresh": false,
       "stale_reasons": [
-        "CFTC November 3, 2026 · 13일 경과"
+        "CFTC November 3, 2026 · 14일 경과"
       ]
     },
     "cta_short_breadth": {
@@ -462,7 +462,7 @@
       "total_tenors": 6,
       "model_confirmation": "기관 CTA 모델 원문 독립 확인 전",
       "source": "https://www.cftc.gov/dea/futures/financial_lf.htm",
-      "reason": "CFTC 자료 유효기간 경과 또는 미래 날짜 (13일)"
+      "reason": "CFTC 자료 유효기간 경과 또는 미래 날짜 (14일)"
     }
   },
   "format_revision": 14,
@@ -481,7 +481,7 @@
     "repo_not_worse": true,
     "data_fresh": false,
     "stale_reasons": [
-      "CFTC November 3, 2026 · 13일 경과"
+      "CFTC November 3, 2026 · 14일 경과"
     ],
     "composite_confirmed": false,
     "stage": 0,
