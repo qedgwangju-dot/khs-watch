@@ -1709,8 +1709,11 @@ def build_weekly_009_image_alert(previous: dict, current: dict, correction: bool
 
 def weekly_010_mlcc_upgrade(
     prior: dict, latest_as_of: str, latest_components: dict, today_kst: str,
+    issue_verified: bool = False,
 ) -> dict | None:
-    """Apply this dated change only once, never override different newer data."""
+    """Apply only if the current issuer Weekly Radar 010 was newly observed."""
+    if not issue_verified:
+        return None
     lock = WEEKLY_010_MLCC_LOCK
     if not lock["as_of"] <= today_kst <= "2026-11-27":
         return None
@@ -1816,7 +1819,12 @@ def main() -> None:
                 continue
             body = article_text(direct)
             full_text = clean_text(f"{base_text} {body}")
-            if not is_relevant(full_text):
+            is_official_010 = (
+                direct.split("?")[0].rstrip("/") == WEEKLY_010_MLCC_LOCK["source"]
+                and "mlcc" in full_text.lower()
+                and "very tight" in full_text.lower()
+            )
+            if not is_relevant(full_text) and not is_official_010:
                 continue
             components = extract_components(full_text)
             if direct.rstrip("/").endswith("weekly-radar-003"):
@@ -1996,8 +2004,14 @@ def main() -> None:
 
     # The free public Weekly Radar 010 summary is qualitative. Upgrade the
     # separately verified 40-week MLCC reading without reclassifying other rows.
+    issuer_010_verified = any(
+        row.get("direct_url", "").split("?")[0].rstrip("/") == WEEKLY_010_MLCC_LOCK["source"]
+        and "very tight" in str(row.get("full_text") or "").lower()
+        for row in candidates
+    )
     mlcc_010 = weekly_010_mlcc_upgrade(
         previous, latest_as_of, latest_components, now.date().isoformat(),
+        issue_verified=issuer_010_verified,
     )
     if mlcc_010 is not None:
         notice = build_weekly_010_mlcc_alert(previous_components, mlcc_010["components"])

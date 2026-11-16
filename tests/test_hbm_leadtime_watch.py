@@ -910,9 +910,11 @@ class Weekly010MLCCRegression(unittest.TestCase):
     def test_010_mlcc_changed_only_one_row_and_alert_provenance(self):
         import copy
         old = copy.deepcopy(w.WEEKLY_009_IMAGE_LOCK)
-        new = w.weekly_010_mlcc_upgrade(old, old["as_of"], old["components"], "2026-11-16")
+        self.assertIsNone(w.weekly_010_mlcc_upgrade(
+            old, old["as_of"], old["components"], "2026-11-16"))
+        new = w.weekly_010_mlcc_upgrade(old, old["as_of"], old["components"], "2026-11-16", True)
         self.assertIsNotNone(new)
-        self.assertEqual(new["as_of"], "2026-11-16")
+        self.assertEqual(new["as_of"], "2026-11-16", True)
         self.assertEqual(new["components"]["MLCC"]["status"], "Very Tight")
         self.assertEqual(new["components"]["MLCC"]["current"], "40")
         for item in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF"):
@@ -925,19 +927,19 @@ class Weekly010MLCCRegression(unittest.TestCase):
     def test_010_never_replays_or_overwrites_other_data(self):
         import copy
         old = copy.deepcopy(w.WEEKLY_009_IMAGE_LOCK)
-        new = w.weekly_010_mlcc_upgrade(old, old["as_of"], old["components"], "2026-11-16")
+        new = w.weekly_010_mlcc_upgrade(old, old["as_of"], old["components"], "2026-11-16", True)
         self.assertIsNone(w.weekly_010_mlcc_upgrade(
-            new, new["as_of"], new["components"], "2026-11-17"))
+            new, new["as_of"], new["components"], "2026-11-17", True))
         self.assertIsNone(w.weekly_010_mlcc_upgrade(
-            old, old["as_of"], old["components"], "2026-11-15"))
+            old, old["as_of"], old["components"], "2026-11-15", True))
         self.assertIsNone(w.weekly_010_mlcc_upgrade(
-            old, old["as_of"], old["components"], "2026-11-28"))
+            old, old["as_of"], old["components"], "2026-11-28", True))
         self.assertIsNone(w.weekly_010_mlcc_upgrade(
-            old, "2026-11-23", old["components"], "2026-11-23"))
+            old, "2026-11-23", old["components"], "2026-11-23", True))
         changed = copy.deepcopy(old["components"])
         changed["MLCC"]["current"] = "39"
         self.assertIsNone(w.weekly_010_mlcc_upgrade(
-            old, old["as_of"], changed, "2026-11-16"))
+            old, old["as_of"], changed, "2026-11-16", True))
 
     def test_010_existing_pending_route_send_gate_and_no_repeat(self):
         import copy
@@ -956,14 +958,23 @@ class Weekly010MLCCRegression(unittest.TestCase):
                 "telegram_message_id": 461,
                 "another_route": {"preserve": True},
             }, ensure_ascii=False), encoding="utf-8")
+            official_010 = {
+                "kind": "trendforce_feed",
+                "title": "Weekly Radar 010: AI Demand Pushes MLCC to Very Tight",
+                "link": w.WEEKLY_010_MLCC_LOCK["source"],
+                "description": "MLCC lead times extend, moving to Very Tight.",
+                "published_at_kst": "2026-11-16T21:45:00+09:00",
+            }
+            feed = lambda kind, query: [official_010] if kind == "trendforce_feed" else []
             with mock.patch.object(w, "datetime", Clock), \
                  mock.patch.object(w, "STATE_PATH", state), \
                  mock.patch.object(w, "PENDING_PATH", pending), \
                  mock.patch.object(w, "ALERT_PATH", alert), \
-                 mock.patch.object(w, "read_rss", return_value=[]):
+                 mock.patch.object(w, "read_rss", side_effect=feed), \
+                 mock.patch.object(w, "article_text", return_value=""):
                 w.main()
                 first = json.loads(pending.read_text(encoding="utf-8"))
-                self.assertEqual(first["ai_component_leadtime"]["as_of"], "2026-11-16")
+                self.assertEqual(first["ai_component_leadtime"]["as_of"], "2026-11-16", True)
                 self.assertEqual(first["ai_component_leadtime"]["components"]["MLCC"]["current"], "40")
                 self.assertEqual(first["telegram_message_id"], 461)
                 self.assertEqual(first["another_route"], {"preserve": True})
