@@ -981,9 +981,9 @@
       "first_seen_kst": "2026-11-16T21:19:51+09:00"
     }
   },
-  "updated_at_kst": "2026-11-16T21:19:51+09:00",
+  "updated_at_kst": "2026-11-16T22:29:46+09:00",
   "last_scan_count": 7,
-  "last_new_count": 1,
+  "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -1043,21 +1043,23 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-16T21:20:07+09:00",
+  "last_successful_delivery_kst": "2026-11-16T22:29:57+09:00",
   "telegram_message_ids": [
-    470
+    471,
+    472
   ],
-  "telegram_message_id": 470,
+  "telegram_message_id": 472,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      470
+      471,
+      472
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-16T21:20:07+09:00",
-    "alert_signature": "5fc3bd7143b4fe574c3ccb81a261845229f1ccb858d00de85dd55f5d5d6360ce"
+    "confirmed_at_kst": "2026-11-16T22:29:57+09:00",
+    "alert_signature": "6df056938002ae836d81f3cd75eb406fc92f29697dcd7e11ad6ae2fb57b934db"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1363,5 +1365,16 @@
     "consumer_client_ssd_increase_upper_pct": 5,
     "source_kind": "TrendForce 11/12 뉴스·중국매체 인용, 확정된 공급사 가격공지 아님",
     "source_url": "https://www.trendforce.com/news/2026/11/12/news-memory-makers-reportedly-plan-new-price-hikes-while-ai-demand-widens-enterprise-consumer-divide/"
+  },
+  "semianalysis_accelerator_revision": {
+    "source_level": "제공 그래프·2차 보도 기준, 원표 독립 확인 전",
+    "published_model_date": "2026-11-13",
+    "comparison_model_date": "2026-11-02",
+    "publisher_probe": {
+      "checked_date": "2026-11-16",
+      "verified": false,
+      "source_kind": "publisher_model_numeric_unverified"
+    },
+    "fact_key": "semia-accel-hbm-20261113-secondary-v1"
   }
 }
