@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-16T18:36:57+09:00",
-  "last_scan_count": 6,
+  "updated_at_kst": "2026-11-17T04:54:29+09:00",
+  "last_scan_count": 5,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -132,7 +132,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 2,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -156,6 +156,7 @@
     "51e0a57c2a721f4c77c22710",
     "54b6b1272069c443515550b7",
     "54bea3d4ab4510e9d52b3b53",
+    "553144098b72bd7e1ac519c2",
     "55bbf1575d333d5e4db815d4",
     "591d05e5e3f4eaa51513ff0b",
     "64af899b665a191e2b03d200",
@@ -200,15 +201,9 @@
   "last_held": [
     {
       "event_key": "taiwan|capacity|TSMC|cowos",
-      "source": "BigGo Finance",
+      "source": "MLQ.ai",
       "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-16T13:35:00+09:00"
-    },
-    {
-      "event_key": "korea|capacity|SK hynix|hbm4",
-      "source": "BigGo Finance",
-      "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-16T11:05:00+09:00"
+      "published_kst": "2026-11-16T23:04:36+09:00"
     }
   ],
   "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
