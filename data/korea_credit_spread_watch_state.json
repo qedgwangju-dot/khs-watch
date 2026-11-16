@@ -15,5 +15,23 @@
     "delivered_at_kst": "2026-10-29T01:00:45+09:00",
     "message_sha256": "0dd916a4c8cf869e92c9227b430b3f53b9de39ef3b99ff8f15b85f35707252f7",
     "run_id": "40721171786"
+  },
+  "last_daily_report_date": "20261116",
+  "last_sent_kst_date": "2026-11-17",
+  "last_delivery_receipt": {
+    "status": "confirmed",
+    "bot_username": "khs8879887988798879_bot",
+    "message_id": 610,
+    "delivered_at_kst": "2026-11-17T04:35:13+09:00",
+    "message_sha256": "e204f5e5476d6f30022f8ebd44f0fdbda42b0487f044b8ca20a0f9b7c7e45d21",
+    "run_id": "43940199904"
+  },
+  "last_daily_report_receipt": {
+    "status": "confirmed",
+    "bot_username": "khs8879887988798879_bot",
+    "message_id": 610,
+    "delivered_at_kst": "2026-11-17T04:35:13+09:00",
+    "message_sha256": "e204f5e5476d6f30022f8ebd44f0fdbda42b0487f044b8ca20a0f9b7c7e45d21",
+    "run_id": "43940199904"
   }
 }
