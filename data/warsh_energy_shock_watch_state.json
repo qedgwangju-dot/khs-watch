@@ -33,16 +33,16 @@
   },
   "verdict": "에너지 충격 경보 기준 미충족",
   "oil_rates": {
-    "date": "2026-11-12",
+    "date": "2026-11-13",
     "observations": 63,
-    "corr_3m": 0.41828564442573263,
+    "corr_3m": 0.3738025039848875,
     "corr_band": "일반",
-    "beta_bp_per_1pct": 0.27750805252985494,
+    "beta_bp_per_1pct": 0.2646960051911942,
     "beta_hot": false,
-    "wti": 88.73999786376953,
-    "wti_move_pct": 0.703580456040731,
-    "dgs10": 5.1,
-    "dgs10_move_bp": 19.99999999999993,
+    "wti": 88.55999755859375,
+    "wti_move_pct": -2.1652664131233013,
+    "dgs10": 5.15,
+    "dgs10_move_bp": 31.00000000000005,
     "move_days": 5,
     "measurement_basis": "WTI 선물 완료 일봉·FRED DGS10 공통 거래일 자체 계산",
     "wti_url": "https://finance.yahoo.com/quote/CL=F/",
@@ -50,7 +50,7 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-11-16T20:12:31.664845+00:00",
+    "date": "2026-11-16T21:39:50.503762+00:00",
     "meeting_date": null,
     "hike25_prob": null,
     "extra_bp": null,
@@ -59,6 +59,6 @@
     "source_status": "CME FedWatch 공식 API 미연결 — 금리확률판정 보류",
     "fresh": false
   },
-  "oil_rates_verdict": "유가·장기금리 상관 일반 범위",
-  "updated_at_utc": "2026-11-16T20:12:32.345307+00:00"
+  "oil_rates_verdict": "유가와 10년물 분리 — 재정·실질금리·기간프리미엄 등 비유가 요인 우세",
+  "updated_at_utc": "2026-11-16T21:39:52.226207+00:00"
 }
