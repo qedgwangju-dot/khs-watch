@@ -119,6 +119,13 @@ class AIDCSemanticRegression(unittest.TestCase):
         second = row("AIDC 알박기 93% 신청물량")
         first["id"] = "first"
         second["id"] = "second"
+        # This regression tests queue isolation, not the 2026-10-21 news age.
+        # Keep synthetic events inside the current 21-day live collection window.
+        from datetime import datetime, timezone
+        from email.utils import format_datetime
+        current_publication = format_datetime(datetime.now(timezone.utc), usegmt=True)
+        first["published"] = current_publication
+        second["published"] = current_publication
         mock_session = Mock()
         mock_session.get.return_value.text = "<rss/>"
         mock_session.get.return_value.raise_for_status.return_value = None
