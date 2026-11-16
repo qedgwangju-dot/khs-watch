@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at_kst": "2026-11-16T20:29:14+09:00",
+  "checked_at_kst": "2026-11-16T20:41:11+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -10,12 +10,12 @@
   "enhertu_collector_rc": 0,
   "halozyme_collector_rc": 0,
   "qlex_alert_present": false,
-  "qlex_wac_alert_present": true,
+  "qlex_wac_alert_present": false,
   "intismeran_alert_present": false,
   "jemperli_alert_present": false,
   "enhertu_alert_present": false,
   "qlex_send_outcome": "skipped",
-  "qlex_wac_send_outcome": "success",
+  "qlex_wac_send_outcome": "skipped",
   "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
@@ -32,7 +32,7 @@
   "halozyme_search_failed_tasks": 0,
   "halozyme_search_task_count": 80,
   "intismeran_retry_pending": false,
-  "last_health_notice_date": "2026-11-15",
+  "last_health_notice_date": "2026-11-16",
   "failure_notice_message_id": 365,
   "last_qlex_telegram_message_ids": [
     334
@@ -45,7 +45,9 @@
   "errors": [],
   "failed_component": "",
   "failed_components": [],
+  "last_wac_telegram_message_ids": [],
+  "last_wac_telegram_sent_at_kst": "",
   "failure_notice_signatures": [],
   "error_signature": "",
-  "recovery_notice_message_id": 367
+  "health_notice_message_id": 369
 }
