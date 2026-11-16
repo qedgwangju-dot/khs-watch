@@ -3681,7 +3681,7 @@ def _semia_revision_gate(old: dict, now: dt.datetime, official: dict) -> tuple[d
 
 
 # One-time follow-up: SemiAnalysis vendor and price details distinct from HBM volumes.
-SEMIA_NVIDIA_DETAILS_ID = "semia-nvidia-20261113-vendor-price-detail-v1"
+SEMIA_NVIDIA_DETAILS_ID = "semia-nvidia-20261113-vendor-price-detail-v2"
 
 
 def _semia_nvidia_details_lines(rate: float) -> list[str]:
@@ -5003,7 +5003,7 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes and not semia_change:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes and not semia_change and not semia_nvidia_due:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
@@ -5053,6 +5053,22 @@ def main() -> int:
     items, errors = collect()
     foxconn, price, warnings = _collect_supplier_followups(dt.datetime.now(KST), load_state())
     write_outputs(items, errors, foxconn, price, warnings)
+    # A pending semantic key must never be checkpointed unless its exact alert
+    # section exists. In particular no-alert state saves must not acknowledge
+    # an unsent analyst model detail or future publisher-stage upgrade.
+    if PENDING_PATH.exists():
+        staged_doc = json.loads(PENDING_PATH.read_text(encoding="utf-8"))
+        previous_semia = dict(load_state().get("semianalysis_accelerator_revision") or {})
+        staged_semia = dict(staged_doc.get("semianalysis_accelerator_revision") or {})
+        required = []
+        if staged_semia.get("fact_key") != previous_semia.get("fact_key"):
+            required.append("<b>[SemiAnalysis 가속기 투자·HBM 수요 하향]</b>")
+        if staged_semia.get("nvidia_details_id") != previous_semia.get("nvidia_details_id"):
+            required.append("<b>[SemiAnalysis 엔비디아 출하·가격 전망 세부 보강]</b>")
+        if required:
+            body = ALERT_PATH.read_text(encoding="utf-8") if ALERT_PATH.exists() else ""
+            if any(section not in body for section in required):
+                raise RuntimeError("Semia event key staged without its matching Telegram alert; state save blocked")
     if errors:
         ALERT_PATH.unlink(missing_ok=True)
         print(f"memory_watch_incomplete=true source_errors={len(errors)}; Telegram suppressed")
