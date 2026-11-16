@@ -5032,12 +5032,18 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
     if semia_nvidia_due:
         from fx_api import daily_krw
         q = daily_krw()
-        lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
+        if total_visible == int(semia_change) + int(semia_nvidia_due):
+            lines = []  # No empty generic header before the only meaningful alert.
+        else:
+            lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
         lines.extend(_semia_nvidia_details_lines(float(q.rate)))
     if semia_change:
         from fx_api import daily_krw
         quote = daily_krw()
-        lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
+        if total_visible == int(semia_change) and not semia_nvidia_due:
+            lines = []
+        else:
+            lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
         lines.extend(_semia_revision_alert(float(quote.rate), bool(semia_probe.get('verified'))))
     lines.append("※ 메모리 공급·가격·고객 승인 등 실질 변화만 재알림하며, 투자자 발언과 실제 매매를 구별함")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
