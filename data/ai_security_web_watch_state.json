@@ -4,11 +4,11 @@
   "initialized": true,
   "last_collection": {
     "deferred_material_items": 0,
-    "direct_official_items": 55,
+    "direct_official_items": 56,
     "errors": [],
-    "material_items": 11,
-    "new_material_items": 0,
-    "raw_items": 92,
+    "material_items": 12,
+    "new_material_items": 1,
+    "raw_items": 91,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -276,6 +276,16 @@
       "title": "PHP2Shell Exploitation Moves From Probes to Working Shells - SecurityWeek",
       "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOWjBYX2hQRGVrOXlQNDhZNzRXZWkwdzV4UEV6RWtLRnhJbElBNmt3bGlKYndtOGg2Sm5tUTVuaUdsY21tRkNmeXhGMlAxQTVQLW4zcVQwaEl2cW1lUmFKUDVvWS1jMkwtM2VPQlVQVnBqWDY5YmtFbVBBOV9kU05xQjRibHVwY0RXMlc5bnEzWmEtRXA2TmhZ0gGXAUFVX3lxTE5aMFhfaFBEZWs5eVA0OFk3NFdlaTB3NXhQRXpFa0tGeElsSUE2a3dsaUpid204aDZKbm1RNW5pR2xjbW1GQ2Z5eEYyUDFBNVAtbjNxVDBoSXZxbWVSYUpQNW9ZLWMyTC0zZU9CVVBWcGpYNjlia0VtUEE5X2RTTnFCNGJsdXBjRFcyVzlucTNaYS1FcDZOaFk?oc=5",
       "vendor": "PHP 재단"
+    },
+    "26c7e09fd6b91a1676856947": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-11-16T14:31:50.048156+00:00",
+      "published_at": null,
+      "severity": 2,
+      "source": "Anthropic Research",
+      "title": "Anthropic Research: coordinated vulnerability disclosure timelines",
+      "url": "https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines",
+      "vendor": "Anthropic"
     },
     "282734f67d13b56d03fe3422": {
       "category": "AI 자율복제·사물인터넷 모의평가",
@@ -1520,5 +1530,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-16T23:04:24+09:00"
+  "updated_at_kst": "2026-11-16T23:31:50+09:00"
 }
