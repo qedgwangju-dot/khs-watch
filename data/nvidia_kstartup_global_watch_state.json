@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-11-09T14:45:03+09:00",
-  "last_checked_kst": "2026-11-17T05:40:16+09:00",
+  "last_checked_kst": "2026-11-17T06:35:27+09:00",
   "seen": {
     "126be798477cbd897413b8c2": {
       "title": "국산 AI 반도체, 엔비디아 GPU와 연결…SKT·리벨리온 3자 협력 - MTN 머니투데이방송",
@@ -302,6 +302,18 @@
       "tier": "신뢰보도",
       "first_seen_kst": "2026-11-13T19:56:38+09:00",
       "alerted": true
+    },
+    "7c264d72469330d0f47a1a81": {
+      "title": "\"매디슨 황은 불참했지만, 협약 예정대로\" 엔비디아-SKT-리벨리온 3자 MOU - 뉴시스",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE81Y3RFMWYyNVhVT1hNQlk0dUdyaVhYYUtteXBXY3dBT3FJdjQzMUlra0RpemZpek1YUV9VTlRDQTNwMGZqRmc5cklsNUhvalg5a1I4UGQxY0JwUWNtaGdZSw?oc=5",
+      "source": "뉴시스",
+      "published_kst": "2026-11-09T14:00+09:00",
+      "event_id": "nvidia_korea|visit_cancelled|2026-11",
+      "kind": "visit_cancelled",
+      "stage": 3,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-17T06:35:27+09:00",
+      "suppressed_stale": true
     }
   },
   "events": {
