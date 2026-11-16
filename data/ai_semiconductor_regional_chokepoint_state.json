@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-16T11:02:02+09:00",
-  "last_scan_count": 4,
+  "updated_at_kst": "2026-11-16T18:36:57+09:00",
+  "last_scan_count": 6,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -132,7 +132,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 1,
+  "last_held_count": 2,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -141,6 +141,7 @@
     "2ae1e9765b7f711072162d1c",
     "2b04eb17a0ebb0a08a2d3235",
     "2cd2b0f9d66a3572fe285d81",
+    "2cf3dc0b5819f2d176a8656a",
     "2e4ce20f85e2413b949cc500",
     "2ff967f0a83d4f9d09737f69",
     "305d1d885ff5dbd87c0680db",
@@ -162,6 +163,7 @@
     "6cb3f9fee458cbd5414c2744",
     "6f7d4edee62f9cb2d4432ccf",
     "72e51f5d7b884367520ec10d",
+    "76bed2e41196356720195d24",
     "781240f795d70b6a2663b3fd",
     "89e73411422b9d710eee6410",
     "8e83ced6f5ddad839f021a48",
@@ -197,10 +199,16 @@
   "delivered_event_keys": [],
   "last_held": [
     {
-      "event_key": "korea|capacity|SK hynix|hbm4",
-      "source": "Chosunbiz",
+      "event_key": "taiwan|capacity|TSMC|cowos",
+      "source": "BigGo Finance",
       "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-16T07:34:00+09:00"
+      "published_kst": "2026-11-16T13:35:00+09:00"
+    },
+    {
+      "event_key": "korea|capacity|SK hynix|hbm4",
+      "source": "BigGo Finance",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-11-16T11:05:00+09:00"
     }
   ],
   "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
