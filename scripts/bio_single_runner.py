@@ -121,6 +121,25 @@ def send_text(token: str, chat_id: str, text: str) -> int:
 
 
 
+
+def unresolved_wac_delivery() -> dict:
+    """Do not resend an event after a Telegram POST lost its response."""
+    marker_path = DATA / "qlex_wac_delivery_uncertain.json"
+    if not marker_path.exists():
+        return {}
+    try:
+        marker = json.loads(marker_path.read_text(encoding="utf-8"))
+        if marker.get("status") != "unconfirmed" or int(marker.get("post_id") or 0) <= 0:
+            raise ValueError("invalid uncertain WAC marker")
+        baseline = json.loads((DATA / "qlex_wac_ir_watch_state.json").read_text(encoding="utf-8"))
+        if int(baseline.get("last_post_id") or 0) >= int(marker["post_id"]):
+            marker_path.unlink()
+            return {}
+        return marker
+    except (ValueError, OSError, TypeError, KeyError) as exc:
+        raise RuntimeError("WAC Telegram uncertain-delivery record requires reconciliation") from exc
+
+
 def error_component(error: str) -> str:
     """Derive the failure label from the actual error, not a stale last step."""
     raw = str(error)
@@ -213,6 +232,8 @@ def main() -> int:
         "errors": [],
         "failed_component": "",
         "failed_components": [],
+        "last_wac_telegram_message_ids": prev.get("last_wac_telegram_message_ids", []),
+        "last_wac_telegram_sent_at_kst": prev.get("last_wac_telegram_sent_at_kst", ""),
         "failure_notice_signatures": list(prev.get("failure_notice_signatures") or []) if prev.get("status") in {"degraded", "failed"} else [],
     }
 
@@ -226,6 +247,7 @@ def main() -> int:
         for name in (
             "qlex_sc_conversion_alert.md",
             "qlex_wac_ir_alert.md",
+            "qlex_wac_delivery_uncertain.json",
             "intismeran_qlex_alert.md",
             "intismeran_structured_send_confirmed.json",
             "jemperli_altb4_alert.md",
@@ -320,14 +342,31 @@ def main() -> int:
 
         wac_handled = wac_rc == 0
         if wac_rc == 0 and wac_alert.exists():
-            rc, log = run([sys.executable, "scripts/qlex_telegram_send.py", str(wac_alert.relative_to(ROOT))])
-            ids = confirmed_telegram_ids(log) if rc == 0 else []
-            wac_handled = rc == 0 and bool(ids)
-            hb["qlex_wac_send_outcome"] = "success" if wac_handled else "failure"
-            if not wac_handled:
+            uncertain = unresolved_wac_delivery()
+            if uncertain:
+                wac_handled = False
+                hb["qlex_wac_send_outcome"] = "unconfirmed"
                 hb["failed_component"] = "월간 WAC Telegram 전송"
-                reason = concise_delivery_error(log) if rc != 0 else "Telegram message_id 미확인"
-                hb["errors"].append(f"QLEX WAC sender rc={rc}: {reason}")
+                hb["errors"].append(
+                    f"QLEX WAC sender delivery_unconfirmed: 기존 게시물 {uncertain['post_id']}의 "
+                    "Telegram POST 응답 미확인; 자동 재발송 중단, 수신 내역 대조 필요"
+                )
+            else:
+                rc, log = run([sys.executable, "scripts/qlex_telegram_send.py", str(wac_alert.relative_to(ROOT))])
+                ids = confirmed_telegram_ids(log) if rc == 0 else []
+                wac_handled = rc == 0 and bool(ids) and "chat_verified=true" in str(log)
+                hb["qlex_wac_send_outcome"] = "success" if wac_handled else "failure"
+                uncertain_out = OUT / "qlex_wac_delivery_uncertain.json"
+                if uncertain_out.exists():
+                    shutil.copy2(uncertain_out, DATA / "qlex_wac_delivery_uncertain.json")
+                    hb["qlex_wac_send_outcome"] = "unconfirmed"
+                if wac_handled:
+                    hb["last_wac_telegram_message_ids"] = ids
+                    hb["last_wac_telegram_sent_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
+                else:
+                    hb["failed_component"] = "월간 WAC Telegram 전송"
+                    reason = concise_delivery_error(log) if rc != 0 else "Telegram message_id/chat.id 미확인"
+                    hb["errors"].append(f"QLEX WAC sender rc={rc}: {reason}")
 
         wac_pending = OUT / "qlex_wac_ir_watch_state_pending.json"
         if wac_handled and wac_pending.exists():

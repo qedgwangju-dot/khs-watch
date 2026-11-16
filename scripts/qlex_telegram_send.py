@@ -9,6 +9,9 @@ import re
 import sys
 import urllib.parse
 import urllib.request
+import urllib.error
+import time
+import hashlib
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
@@ -461,6 +464,60 @@ def render_html(text: str) -> str:
     return '\n'.join(rendered)
 
 
+
+def get_bot_identity(token: str, attempts: int = 3) -> dict:
+    """Retry only safe GET requests, never an ambiguous sendMessage POST."""
+    for attempt in range(attempts):
+        try:
+            with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as response:
+                return json.loads(response.read().decode('utf-8'))
+        except urllib.error.HTTPError as exc:
+            raise RuntimeError(f'Telegram getMe HTTP {exc.code}, before sending a message') from None
+        except (urllib.error.URLError, TimeoutError, ConnectionResetError) as exc:
+            if attempt + 1 == attempts:
+                raise RuntimeError(
+                    f'Telegram getMe connectivity failure before sending ({type(exc).__name__})'
+                ) from None
+            time.sleep(attempt + 1)
+    raise RuntimeError('Telegram bot identity unavailable')
+
+
+def mark_wac_delivery_uncertain(report: pathlib.Path, acknowledged_ids: list[int], chunk: int) -> None:
+    """Durable local evidence when a WAC sendMessage POST may already have arrived."""
+    if report.name != 'qlex_wac_ir_alert.md':
+        return
+    pending = report.parent / 'qlex_wac_ir_watch_state_pending.json'
+    if not pending.exists():
+        raise RuntimeError('WAC sendMessage response missing, pending WAC event is unavailable')
+    state = json.loads(pending.read_text(encoding='utf-8'))
+    post_id = int(state.get('last_post_id') or 0)
+    if post_id <= 0:
+        raise RuntimeError('WAC sendMessage response missing, event ID is unavailable')
+    record = {
+        'status': 'unconfirmed',
+        'post_id': post_id,
+        'post_url': str(state.get('last_post_url') or ''),
+        'report_sha256': hashlib.sha256(report.read_bytes()).hexdigest(),
+        'failed_chunk': chunk,
+        'prior_ack_message_ids': acknowledged_ids,
+        'recorded_at_kst': dt.datetime.now(KST).isoformat(timespec='seconds'),
+        'cause': 'sendMessage POST response missing; no blind resend until verified',
+    }
+    (report.parent / 'qlex_wac_delivery_uncertain.json').write_text(
+        json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+    )
+
+
+def correct_destination(chat_id: str, result_message: dict) -> bool:
+    destination = str(chat_id).strip()
+    found = result_message.get('chat') or {}
+    if destination.lstrip('-').isdecimal():
+        return str(found.get('id') or '') == destination
+    if destination.startswith('@'):
+        return str(found.get('username') or '').casefold() == destination[1:].casefold()
+    return False
+
+
 def main() -> int:
     if len(sys.argv) != 2:
         print('usage: qlex_telegram_send.py REPORT_PATH', file=sys.stderr)
@@ -470,8 +527,7 @@ def main() -> int:
     expected = (os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
     if not token or not chat_id or not expected:
         raise RuntimeError('bio Telegram token/chat_id/expected username is missing')
-    with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as response:
-        identity = json.loads(response.read().decode('utf-8'))
+    identity = get_bot_identity(token)
     actual = str((identity.get('result') or {}).get('username') or '')
     if not identity.get('ok') or actual.lower() != expected.lower():
         raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
@@ -492,12 +548,26 @@ def main() -> int:
             'disable_web_page_preview': 'true',
         }).encode('utf-8')
         request = urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage', data=payload, method='POST')
-        with urllib.request.urlopen(request, timeout=25) as response:
-            result = json.loads(response.read().decode('utf-8'))
+        try:
+            with urllib.request.urlopen(request, timeout=25) as response:
+                result = json.loads(response.read().decode('utf-8'))
+        except urllib.error.HTTPError as exc:
+            raise RuntimeError(f'Telegram sendMessage HTTP {exc.code}; receipt not confirmed') from None
+        except (urllib.error.URLError, TimeoutError, ConnectionResetError, OSError, ValueError) as exc:
+            # A reset after POST is ambiguous; automatic resending may duplicate it.
+            mark_wac_delivery_uncertain(path, ids, index)
+            raise RuntimeError(
+                f'Telegram sendMessage delivery_unconfirmed after POST ({type(exc).__name__}); '
+                'no blind resend before receipt reconciliation'
+            ) from None
         if not result.get('ok'):
-            raise RuntimeError(f'Telegram rejected message: {result}')
-        ids.append(int(result['result']['message_id']))
-    print(f'telegram_delivery_confirmed=true bot=@{actual} message_ids={ids}')
+            raise RuntimeError('Telegram rejected sendMessage; API success not confirmed')
+        msg = result.get('result') or {}
+        mid = int(msg.get('message_id') or 0)
+        if mid <= 0 or not correct_destination(chat_id, msg):
+            raise RuntimeError('Telegram message_id or destination chat mismatch; receipt not confirmed')
+        ids.append(mid)
+    print(f'telegram_delivery_confirmed=true chat_verified=true bot=@{actual} message_ids={ids}')
     return 0
 
 

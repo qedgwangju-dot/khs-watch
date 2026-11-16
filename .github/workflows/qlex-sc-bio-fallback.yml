@@ -116,6 +116,7 @@ jobs:
           files=(
             data/qlex_sc_conversion_watch_state.json
             data/qlex_wac_ir_watch_state.json
+            data/qlex_wac_delivery_uncertain.json
             data/intismeran_qlex_watch_state.json
             data/jemperli_altb4_watch_state.json
             data/enhertu_altb4_watch_state.json

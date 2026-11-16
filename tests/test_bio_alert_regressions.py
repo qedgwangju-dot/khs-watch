@@ -239,6 +239,48 @@ class BioAlertRegressionTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 guard.ensure_korean_text("- 설명: unknownuntranslatedgeneralword")
 
+
+    def test_safe_getme_retries_without_exposing_token_or_sendmessage(self):
+        import urllib.error
+        with patch.object(qlex_sender.urllib.request, "urlopen",
+                          side_effect=urllib.error.URLError("connection reset")) as mocked, \
+             patch.object(qlex_sender.time, "sleep", return_value=None) as delays:
+            with self.assertRaisesRegex(RuntimeError, "getMe connectivity failure before sending") as caught:
+                qlex_sender.get_bot_identity("offline-token")
+            self.assertNotIn("offline-token", str(caught.exception))
+            self.assertEqual(mocked.call_count, 3)
+            self.assertEqual(delays.call_count, 2)
+
+    def test_wac_ambiguous_post_marker_blocks_resend_until_checkpoint_confirmed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            folder = pathlib.Path(directory)
+            report = folder / "qlex_wac_ir_alert.md"
+            report.write_text("월간 WAC 10월", encoding="utf-8")
+            (folder / "qlex_wac_ir_watch_state_pending.json").write_text(
+                json.dumps({"last_post_id":361, "last_post_url":"https://t.me/alteogenIR/361"}),
+                encoding="utf-8")
+            qlex_sender.mark_wac_delivery_uncertain(report, [], 1)
+            uncertain = json.loads((folder / "qlex_wac_delivery_uncertain.json").read_text(encoding="utf-8"))
+            self.assertEqual(uncertain["post_id"], 361)
+            self.assertEqual(uncertain["status"], "unconfirmed")
+            self.assertNotIn("token", json.dumps(uncertain).lower())
+            data = folder / "data"
+            data.mkdir()
+            (data / "qlex_wac_ir_watch_state.json").write_text(json.dumps({"last_post_id":328}), encoding="utf-8")
+            (data / "qlex_wac_delivery_uncertain.json").write_text(json.dumps(uncertain), encoding="utf-8")
+            with patch.object(bio_runner, "DATA", data):
+                self.assertEqual(bio_runner.unresolved_wac_delivery()["post_id"], 361)
+                (data / "qlex_wac_ir_watch_state.json").write_text(json.dumps({"last_post_id":361}), encoding="utf-8")
+                self.assertEqual(bio_runner.unresolved_wac_delivery(), {})
+                self.assertFalse((data / "qlex_wac_delivery_uncertain.json").exists())
+
+    def test_telegram_response_confirms_correct_numeric_or_username_route(self):
+        self.assertTrue(qlex_sender.correct_destination("-1001234", {"chat":{"id":-1001234}}))
+        self.assertFalse(qlex_sender.correct_destination("-1001234", {"chat":{"id":-1001235}}))
+        self.assertTrue(qlex_sender.correct_destination("@confirmed_name", {"chat":{"username":"Confirmed_Name"}}))
+        self.assertFalse(qlex_sender.correct_destination("@wrong", {"chat":{"username":"Correct"}}))
+        self.assertFalse(qlex_sender.correct_destination("invalid", {"chat":{"id":123}}))
+
     def test_bio_message_ids_require_real_sender_acknowledgment(self):
         self.assertEqual(bio_runner.confirmed_telegram_ids(
             "telegram_delivery_confirmed=true bot=@sample message_ids=[170, 171]"), [170, 171])
