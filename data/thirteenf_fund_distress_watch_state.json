@@ -1,7 +1,7 @@
 {
   "events": {},
-  "last_checked_utc": "2026-11-16T20:50:14.854893+00:00",
-  "last_complete_news_scan_utc": "2026-11-16T20:50:14.854893+00:00",
+  "last_checked_utc": "2026-11-16T21:40:35.495390+00:00",
+  "last_complete_news_scan_utc": "2026-11-16T21:40:35.495390+00:00",
   "last_scan_errors": [],
   "manual_claim": {
     "situational:user-submitted-x:2118364772370427985:2026-11-06": {
@@ -11,7 +11,7 @@
     }
   },
   "ownership_delivery_initialized": true,
-  "ownership_last_checked_utc": "2026-11-16T20:50:14.854893+00:00",
+  "ownership_last_checked_utc": "2026-11-16T21:40:35.495390+00:00",
   "ownership_seen": {
     "0000919574-26-004796": {
       "baseline": true
@@ -36,6 +36,13 @@
     },
     "0000935836-26-000500": {
       "baseline": true
+    },
+    "0000935836-26-000604": {
+      "chat_fingerprint": "46ff1e104ec2",
+      "filed": "2026-11-16",
+      "form": "SCHEDULE 13G/A",
+      "message_id": 150,
+      "sent_at_utc": "2026-11-16T21:40:37.765292+00:00"
     }
   },
   "schema": 1
