@@ -1,6 +1,6 @@
 {
   "status": "degraded",
-  "checked_at_kst": "2026-11-16T10:58:58+09:00",
+  "checked_at_kst": "2026-11-16T11:09:47+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -8,7 +8,7 @@
   "intismeran_collector_rc": 0,
   "jemperli_collector_rc": 0,
   "enhertu_collector_rc": 0,
-  "halozyme_collector_rc": 2,
+  "halozyme_collector_rc": 0,
   "qlex_alert_present": false,
   "qlex_wac_alert_present": true,
   "intismeran_alert_present": false,
@@ -19,21 +19,21 @@
   "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
-  "halozyme_run_outcome": "failure",
+  "halozyme_run_outcome": "success",
   "qlex_state_persisted": true,
   "qlex_wac_state_persisted": false,
   "intismeran_state_persisted": true,
   "jemperli_state_persisted": true,
   "enhertu_state_persisted": true,
-  "halozyme_state_persisted": false,
-  "halozyme_source_health": "degraded",
+  "halozyme_state_persisted": true,
+  "halozyme_source_health": "ok",
   "cms_policy_status": "previously_delivered",
   "maplight_source_health": "last_incomplete",
-  "halozyme_search_failed_tasks": 40,
+  "halozyme_search_failed_tasks": 0,
   "halozyme_search_task_count": 80,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-11-15",
-  "failure_notice_message_id": 360,
+  "failure_notice_message_id": 361,
   "last_qlex_telegram_message_ids": [
     334
   ],
@@ -43,9 +43,8 @@
   "last_jemperli_telegram_sent_at_kst": "2026-11-13T07:21:43+09:00",
   "last_qlex_telegram_sent_at_kst": "2026-11-11T15:00:07+09:00",
   "errors": [
-    "Halozyme 검색 원천 가용성 저하: 정상 응답 부족; 상세 실패 수는 heartbeat와 Halozyme 상태 파일 확인",
-    "QLEX WAC sender rc=1: RuntimeError: 한국어 자동번역 실패: HTTPError"
+    "QLEX WAC sender rc=1: RuntimeError: 한국어 송출 검증 실패 — ECB"
   ],
   "failed_component": "월간 WAC Telegram 전송",
-  "error_signature": "Halozyme 검색 원천 가용성 저하: 정상 응답 부족; 상세 실패 수는 heartbeat와 Halozyme 상태 파일 확인 | QLEX WAC sender rc=1: RuntimeError: 한국어 자동번역 실패: HTTPError"
+  "error_signature": "QLEX WAC sender rc=1: RuntimeError: 한국어 송출 검증 실패 — ECB"
 }
