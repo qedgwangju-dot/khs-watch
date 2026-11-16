@@ -3768,7 +3768,14 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
     semia_old = dict(state.get("semianalysis_accelerator_revision") or {})
     semia_probe = _semia_revision_publisher_probe(semia_old.get("publisher_probe") or {}, now)
     semia_next, semia_change = _semia_revision_gate(semia_old, now, semia_probe)
+    # Supplemental facts require ACK of the parent alert; a staged test-only
+    # model baseline, or an unsent no-alert checkpoint, must not create a new event.
+    semia_parent_receipt = dict(state.get("delivery_receipt") or {})
+    semia_parent_ack = (semia_parent_receipt.get("status") == "confirmed"
+                        and semia_parent_receipt.get("recipient_verified") is True
+                        and bool(semia_parent_receipt.get("message_ids")))
     semia_nvidia_due = (semia_old.get("fact_key") in (SEMIA_REVISED_EVENT, SEMIA_CONFIRMED_EVENT)
+                        and semia_parent_ack
                         and semia_old.get("nvidia_details_id") != SEMIA_NVIDIA_DETAILS_ID
                         and dt.date(2026, 11, 13) <= now.date() <= dt.date(2026, 12, 13))
     if semia_nvidia_due:
