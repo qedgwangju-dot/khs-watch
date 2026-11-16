@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-15T21:44:03.411949+00:00",
+  "updated_at": "2026-11-16T01:58:39.479462+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -919,9 +919,26 @@
     "7dbf112387c116b6111de0f204ab196fac5af6eaa2c24d99eeaea39776b8e32a",
     "6529442c825fd9d15bbd7c8e4a20f957d23cc31dd997e4ae8379b2de5f6d537c",
     "585a6f19d11d4e42cf9d51c0d152c12fcfac95a7d3b1716123f082fb13bc93dd",
-    "0af7ca20f63d674bc22c009c3e8e1d06aab97b36bb6c6b78d33676b1a6dc2c90"
+    "0af7ca20f63d674bc22c009c3e8e1d06aab97b36bb6c6b78d33676b1a6dc2c90",
+    "3ded819cdb8e673fffd7e6deeeb339c6eca229fbc06c2315394ddfda28eadb8a",
+    "aeafc1a0e98ae9cb2ab2c0bd5da385dbeca750f0b0a8557cdffce1d3c3bbf115",
+    "d583d0d35657ffd2df4eff6d4496c4c284423f194adfc38ded954f5b1df14939",
+    "7fd779f6c1bc12fd4d009424075af096779d83a9c259729e10cd3c450738eb9d",
+    "92b6f86284ec9f9c1d7f36319e7e6749e22c19870a94a8770260742fe7bbd46a",
+    "a65a5e6a4708bc1c6f513051fcdb211ecb6a3778148e2c33b17ccee8e3b95381",
+    "55eca00120f5ff4693cbd47aef57bc19668946d71efe8982ec1e5e4b54827f9a",
+    "1775ee6542fcd0cffcec954943ab2781b899aab04e947ab1a8a10de229f4a9fe"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "3ded819cdb8e673fffd7e6deeeb339c6eca229fbc06c2315394ddfda28eadb8a",
+    "aeafc1a0e98ae9cb2ab2c0bd5da385dbeca750f0b0a8557cdffce1d3c3bbf115",
+    "d583d0d35657ffd2df4eff6d4496c4c284423f194adfc38ded954f5b1df14939",
+    "7fd779f6c1bc12fd4d009424075af096779d83a9c259729e10cd3c450738eb9d",
+    "92b6f86284ec9f9c1d7f36319e7e6749e22c19870a94a8770260742fe7bbd46a",
+    "a65a5e6a4708bc1c6f513051fcdb211ecb6a3778148e2c33b17ccee8e3b95381",
+    "55eca00120f5ff4693cbd47aef57bc19668946d71efe8982ec1e5e4b54827f9a",
+    "1775ee6542fcd0cffcec954943ab2781b899aab04e947ab1a8a10de229f4a9fe"
+  ],
   "groups": [
     "dkt_auto_oled_expansion",
     "ess_battery",
@@ -932,15 +949,6 @@
     "spacex_tesla_combination"
   ],
   "delivery_history": [
-    {
-      "run_id": 43530100420,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-13T23:51:04.446951+00:00"
-    },
     {
       "run_id": 43550097338,
       "outcome": "normal_silence",
@@ -1153,15 +1161,42 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-15T21:44:03.411949+00:00"
+    },
+    {
+      "run_id": 43789331016,
+      "outcome": "sent",
+      "message_ids": [
+        370,
+        371
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal",
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false,
+        false
+      ],
+      "state_timestamp_utc": "2026-11-16T01:58:39.479462+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 43765284612,
-    "outcome": "normal_silence",
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-15T21:44:03.411949+00:00"
+    "run_id": 43789331016,
+    "outcome": "sent",
+    "message_ids": [
+      370,
+      371
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal",
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false,
+      false
+    ],
+    "state_timestamp_utc": "2026-11-16T01:58:39.479462+00:00"
   }
 }
