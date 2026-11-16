@@ -1208,7 +1208,8 @@ def inbound_report(probe: dict, official_events: list[dict]) -> str:
     must = ("3.0~4.2GW", "5.1~7.0GW", "30조~40조원", "41MW", "103MW",
             "2027년", "2029년", "양해각서", "확정", "전원 인가",
             INBOUND_TEXAS_GOV, INBOUND_MOTIR, INBOUND_HANA, INBOUND_SKT_AWS)
-    missing = [token for token in must if token not in result]
+    # Compare literal source URLs against decoded text; HTML links correctly escape '&' as '&amp;'.
+    missing = [token for token in must if token not in html.unescape(result)]
     if missing or result.count("<b>") != result.count("</b>") or result.count("<a href=") != result.count("</a>"):
         raise RuntimeError(f"해외 데이터센터 국내 유치 알림 누락·HTML 오류: {missing}")
     if any(len(line) > 2300 for line in result.splitlines()):
