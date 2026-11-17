@@ -16,6 +16,7 @@ on:
       - "scripts/thirteenf_sector_watch_entry.py"
       - "scripts/thirteenf_sector_rank.py"
       - "scripts/test_thirteenf_sector_rank.py"
+      - "scripts/test_thirteenf_auto_live.py"
       - "scripts/thirteenf_context_watch.py"
       - "scripts/thirteenf_fund_distress_watch.py"
       - "scripts/test_thirteenf_context_watch.py"
@@ -82,6 +83,12 @@ jobs:
           PYTHONPATH=scripts python scripts/test_thirteenf_context_watch.py
           python -m py_compile scripts/thirteenf_fund_distress_watch.py
           PYTHONPATH=scripts python scripts/thirteenf_fund_distress_watch.py --self-test
+
+      - name: Verify top 13F discoveries using live SEC Q3 data without sending
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python scripts/test_thirteenf_auto_live.py
 
       - name: Validate exact Telegram bot route without sending
         env:
