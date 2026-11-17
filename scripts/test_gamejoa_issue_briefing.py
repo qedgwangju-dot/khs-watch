@@ -216,6 +216,16 @@ class IssueBriefingTests(unittest.TestCase):
         major = {**alert, "source_title": "엔비디아 3분기 매출 103만달러 증가"}
         self.assertFalse(b.low_materiality_foreign_earnings(major, {}, runner, telegram))
 
+    def test_source_sentence_with_subject_preferred_to_subjectless_fragment(self):
+        import gamejoa_preopen_news_radar_fda_quality_runner as pipeline
+        runner = pipeline.runner
+        title = "두나무마저 적자 전환…코인 거래소들 '버티기' 한계"
+        actual = "16일 금융감독원 전자공시시스템에 따르면 업비트를 운영하는 두나무는 올해 3분기 연결 기준 매출 1517억원, 영업손실 35억원을 기록했다."
+        fragment = "당기순손실도 186억원을 기록하며 적자 전환했다."
+        alert = {"source_title": title, "telegram_core_fact": fragment, "source_body": actual + " " + fragment}
+        self.assertEqual(b.headline_backed_core(alert, runner), actual)
+        self.assertEqual(b.headline_backed_core({**alert, "source_body": fragment}, runner), fragment)
+
     def test_all_foreign_amount_occurrences_are_converted_without_nested_brackets(self):
         import gamejoa_preopen_news_radar_fda_quality_runner as pipeline
         runner = pipeline.runner

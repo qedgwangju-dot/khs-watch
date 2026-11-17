@@ -350,6 +350,17 @@ def headline_backed_core(alert: dict, runner) -> str:
     body = str(alert.get("source_body") or "")
     normalized_body = re.sub(r"\s+", " ", html.unescape(body)).strip()
     normalized_core = re.sub(r"\s+", " ", html.unescape(core)).strip()
+    lead = re.sub(r"^(?:\[[^\]]+\]\s*)*[^가-힣A-Za-z0-9]*", "", title)
+    match = re.match(r"[가-힣A-Za-z][가-힣A-Za-z0-9]{1,30}", lead)
+    anchor = re.sub(r"(?:마저|까지|은|는|이|가|의)$", "", match.group()) if match else ""
+    if len(anchor) >= 2 and anchor not in core:
+        for part in re.split(r"(?<=[.!?。])\s+|\n+", body):
+            candidate = runner.clean_article_summary_text(part).strip()
+            if (anchor in candidate and len(candidate) <= 240 and runner.core_sentence_is_complete(candidate)
+                    and not runner.core_has_ui_garbage(candidate)
+                    and re.sub(r"\s+", " ", html.unescape(candidate)).strip() in normalized_body
+                    and action_core_aligned(title, candidate, runner)):
+                return candidate
     if normalized_core and normalized_core in normalized_body and action_core_aligned(title, core, runner):
         return core
     for part in re.split(r"(?<=[.!?。])\s+|\n+", body):
