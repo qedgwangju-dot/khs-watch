@@ -187,22 +187,33 @@ def build_q3_cross_report(snapshots, *, fx_rate=1334.87):
         "■ 시추에이셔널: 보통주 철수와 옵션 보유를 구분",
         c(a,"SHARONAI","샤론AI")+" / "+c(a,"NEBIUS","네비우스"),
         f"샌디스크 콜옵션 기초주식 {sndk_call:,}주, 네비우스 콜옵션 {nbis_call:,}주 (옵션 매입대금 아님)",
+        "코어위브·코어사이언티픽·어플라이드디지털: "+
+        " / ".join([c(a,"COREWEAVE","CRWV"),c(a,"CORE SCIENTIFIC","CORZ"),
+                    c(a,"APPLIED DIGITAL","APLD")]),
+        "IREN·페르미: "+c(a,"IREN","IREN")+" / "+c(a,"FERMI","FRMI"),
         "",
         "■ 듀케인: 메모리·소프트웨어 확대, 일부 파운드리 축소",
         " / ".join([c(d,"SEAGATE","시게이트"),c(d,"UNITY SOFTWARE","유니티"),
                     c(d,"AMAZON","아마존"),c(d,"TAIWAN SEMICONDUCTOR","TSMC")]),
+        "축소·신고제외: "+" / ".join([c(d,"STMICRO","STM"),c(d,"SANDISK","SNDK"),c(d,"UNITED AIR","UAL")]),
+        "새 금·소비 관련: "+" / ".join([c(d,"NEWMONT","NEM"),c(d,"BARRICK","B"),
+                                      c(d,"AGNICO EAGLE","AEM"),c(d,"SOMNIGROUP","SGI")]),
         "",
         "■ 엔비디아 자체 포트폴리오",
         c(nv,"INTEL","인텔")+" / "+c(nv,"SPACE EXPLORATION","스페이스X"),
         "",
         "■ 버크셔: 항공·주택 확대",
         c(br,"DELTA AIR","델타항공")+" / "+c(br,"LENNAR","레나"),
+        "신규 보고: "+c(br,"BENDING SPOONS","벤딩스푼스"),
         "비공개 취급 가능 종목은 미신고만으로 매도 확정 금지.",
         "",
         "■ 13F 밖의 11월 16일 독립 발표",
-        "블랙록 모델포트폴리오 주식 초과편입 1%→3%(Bloomberg 보도·실제 거래 아님).",
+        f"블랙록 모델 포트폴리오군 약 3,000억달러(약 {300_000_000_000*fx_rate/1_000_000_000_000:.1f}조원)에서"
+        " 주식 초과편입 1%→3%(Bloomberg 보도·실제 거래 아님).",
         f"블랙스톤 BXDC·AWS: 데이터센터 총자산가치 50억달러(약 {aws_value:.2f}조원),"
-        " BXDC 합작법인 지분 75.1%, AWS 24.9%, 13개 건물·647MW, 계약 체결/완료 전.",
+        " BXDC 합작법인 지분 75.1%, AWS 24.9%, 13개 건물·647MW."
+        " 7.0% 초기 자본환원율, 연 2.75% 임대료 인상, 최초 12년/최장 32년 임대."
+        " 11월 11일 계약, 4분기 종결 예정(미완료).",
         "로이터: 데이터센터 신규편입 119곳·청산 138곳, 전력주 신규 96곳·청산 212곳.",
         "",
         "※ SEC는 2023년부터 13F 평가액을 달러 단위로 신고하도록 규정."
