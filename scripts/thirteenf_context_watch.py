@@ -274,7 +274,20 @@ def q3_crosscheck_main():
         subprocess.run(["git","config","user.email","41898282+github-actions[bot]@users.noreply.github.com"],check=True)
         subprocess.run(["git","add",w.STATE_PATH.as_posix()],check=True)
         subprocess.run(["git","commit","-m","Reserve verified Q3 13F cross-manager Telegram delivery"],check=True)
-        subprocess.run(["git","push","origin","HEAD:main"],check=True)
+        import time
+        reserved=False
+        for attempt in range(4):
+            subprocess.run(["git","fetch","origin","main"],check=True)
+            subprocess.run(["git","rebase","origin/main"],check=True)
+            # GitHub Actions may have other independent state writers.
+            result=subprocess.run(["git","push","origin","HEAD:main"],capture_output=True,text=True)
+            if result.returncode==0:
+                reserved=True
+                break
+            print(f"Q3_CROSSCHECK_RESERVATION_RACE attempt={attempt+1}",flush=True)
+            time.sleep(attempt+1)
+        if not reserved:
+            raise RuntimeError("Q3 comparison reservation push conflict; no Telegram sent")
     except subprocess.CalledProcessError as exc:
         raise RuntimeError("Q3 comparison reservation not committed; no Telegram sent") from exc
     print("Q3_CROSSCHECK_DELIVERY_RESERVED_COMMIT_PUSHED")
