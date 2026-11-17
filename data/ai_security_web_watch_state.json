@@ -5,13 +5,10 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [
-      "Google News RSS 실패: (\"Model Context Protocol\" OR MCP) security vulnerabilit… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (\"AI agent\" OR agentic OR LLM) misalignment \"third part… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
+    "errors": [],
     "material_items": 12,
     "new_material_items": 0,
-    "raw_items": 94,
+    "raw_items": 92,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1553,5 +1550,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-17T21:44:56+09:00"
+  "updated_at_kst": "2026-11-17T22:08:55+09:00"
 }
