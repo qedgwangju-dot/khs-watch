@@ -434,6 +434,8 @@ def _statement_with_actual_action(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if _summit_venue_description_only(row):
+        return _diplomatic_group(title) + ' · 정상회담 장소 보도'
     if kind == 'diplomatic_contact' and _qatar_us_iran_negotiations_contact(title):
         # Iran is the subject of the talks; the named meeting participants are
         # Qatar's prime minister and the U.S. officials.
@@ -1431,6 +1433,8 @@ def _title_only_unconfirmed_explosion(row):
 
 
 def non_military_kind(row):
+    if _summit_venue_description_only(row):
+        return 'diplomatic_analysis'
     if _title_only_unconfirmed_explosion(row):
         return 'unconfirmed_explosion'
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
@@ -1560,6 +1564,8 @@ def _clear_market_event_cache(row):
 
 
 def _headline_event_label(row, kind):
+    if _summit_venue_description_only(row):
+        return '정상회담 장소 보도'
     title = _headline(row)
     if kind == 'military_position' and _low_reattack_statement(title):
         return '공격 재개 가능성 낮다는 발언'
@@ -1689,6 +1695,19 @@ def _speculative_election_nuclear_opinion(row):
     fear = bool(re.search(r'핵공격|핵\s*공격|nuclear\s+(?:strike|attack)', title))
     speculative = bool(re.search(r'우려|가능성|전망|\b(?:fears?|could|might)\b', title))
     return election and conditional and fear and speculative and not _separate_current_iran_attack(row)
+
+
+def _summit_venue_description_only(row):
+    """A building profile is not, by itself, a conflict or peace event."""
+    title = _headline(row)
+    if not (re.search(r'(?:정상\s*)?회담장', title)
+            and re.search(r'영빈관|산장|호텔|숙소', title)):
+        return False
+    # Keep a separate action in the headline, even if it also names the venue.
+    return not bool(re.search(
+        r'공격|공습|폭격|포격|타격|피격|미사일|드론|테러|폭발|'
+        r'우크라|이란|가자|전쟁|군사|휴전|종전|정전|평화|협상|대화|'
+        r'논의|협의|합의|성명|거부|결렬|제재|봉쇄', title))
 
 
 def score_item(row, now):

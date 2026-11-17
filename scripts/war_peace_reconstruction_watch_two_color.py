@@ -241,12 +241,27 @@ def _war_secretary_impeachment_commentary(title):
                 and not _completed_attack_headline(title))
 
 
+def _title_only_war_end_pledge(stage, row):
+    """A title-only end-of-war pledge does not establish an actual change."""
+    title = stage._headline(row)
+    return bool(not row.get('body_verified')
+                and re.search(r'(?:종전|휴전|정전).{0,12}약속', title)
+                and not re.search(r'거부|부인|부정|반대|불발|취소|파기|철회|위반|확전', title)
+                and not _active_adverse(title)
+                and not _separate_attack_headline(title)
+                and not _completed_attack_headline(title)
+                and not stage._statement_with_actual_action(title))
+
+
 def direction(stage, row):
     """Return a display color, or None for a neutral market reference."""
     kind = stage.non_military_kind(row)
     color = stage.final_color(row)
     title = stage._headline(row)
     tags = {str(tag).strip() for tag in row.get('tags', [])}
+    if (_title_only_war_end_pledge(stage, row)
+            or stage._summit_venue_description_only(row)):
+        return None
     # An order to end an indeterminate "neither war nor peace" state does not
     # identify whether the next step is negotiation or renewed fighting.
     if stage._no_war_no_peace_stalemate_statement(title):
@@ -402,6 +417,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
     background_reference = False
     uncertain_reference = False
     satellite_reference = False
+    summit_venue_reference = False
     for n, start in enumerate(starts):
         end = starts[n + 1] if n + 1 < len(starts) else tail_at
         block = lines[start:end]
@@ -421,6 +437,8 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         hypothetical = (_hypothetical_war_options(title)
                         or _pending_iran_war_decision(title))
         satellite_disruption = _unattributed_satellite_disruption(title, row)
+        title_only_pledge = _title_only_war_end_pledge(stage, row)
+        summit_venue = stage._summit_venue_description_only(row)
         postwar = (bool({str(tag).strip() for tag in row.get('tags', [])} & DIPLOMATIC_TAGS)
                    and _postwar_compromise_context(title))
         source_tags = {str(tag).strip() for tag in row.get('tags', [])}
@@ -428,7 +446,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             {'원인미확정', '공식확인대기'} <= source_tags
             or (re.search(r'재공격\s*가능성.{0,12}매우\s*작', title)
                 and '폭발음 보도·공격 원인 미확인' in source_tags)))
-        context = (commentary or policy_options or hypothetical or postwar
+        context = (commentary or policy_options or hypothetical or postwar or title_only_pledge or summit_venue
                    or satellite_disruption
                    or uncertain or stalemate_statement)
         row['semantic_classification_color'] = row.get('classification_color')
@@ -457,6 +475,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             background_reference |= context
             uncertain_reference |= uncertain
             satellite_reference |= satellite_disruption
+            summit_venue_reference |= summit_venue
             if commentary:
                 midterm = re.search(r'중간선거|\bmidterms?\b', title, re.IGNORECASE)
                 if _war_secretary_impeachment_commentary(title):
@@ -475,6 +494,11 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                 label = '이란전 대응 방안·정책 이견'
             elif hypothetical:
                 label = '종전·확전 전망'
+            elif title_only_pledge:
+                label = '이란전 종전 약속 발언 · 본문 미확인' if re.search(r'이란|iran', title) else '종전 약속 발언 · 본문 미확인'
+                block = [line.replace(' · 종전·협상 · ', ' · 종전 약속 발언 · ') for line in block]
+            elif summit_venue:
+                label = stage.topic_label(row)
             elif satellite_disruption:
                 label = '위성 시스템 제한 보도·원인 미확인'
             elif uncertain and re.search(r'재공격\s*가능성.{0,12}매우\s*작', title):
@@ -509,6 +533,8 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                          if uncertain_reference else
                          '위성 시스템 제한은 원인·책임 주체 확인 전까지 공격·완화로 단정하지 않음'
                          if satellite_reference else
+                         '회담 장소·정치 발언·전망은 현재 공격·완화 행동을 입증하지 않음'
+                         if summit_venue_reference else
                          '정치 발언·전망·구상은 현재 공격·완화 행동을 입증하지 않음'), '']
         else:
             output += ['<b>시장 참고</b>', '시장 기사는 전쟁·완화 방향 표시에서 제외', '']
