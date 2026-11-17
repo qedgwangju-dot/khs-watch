@@ -5166,6 +5166,60 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
 
+
+def _semia_independent_chart_fallback(errors: list[str],
+                                      now: dt.datetime | None = None) -> bool:
+    """Send only the already-user-supplied scenario when unrelated RSS is 429.
+
+    Never acknowledge new RSS items or other typed pricing states on incomplete
+    ingestion. This does not weaken the ordinary fail-closed signal collector.
+    """
+    if not errors or not all(
+        e.startswith(("ko:", "en:")) and "HTTP Error 429" in e for e in errors
+    ):
+        return False
+    old = load_state()
+    old_semia = dict(old.get("semianalysis_accelerator_revision") or {})
+    receipt = dict(old.get("delivery_receipt") or {})
+    valid_parent = (
+        old_semia.get("fact_key") in (SEMIA_REVISED_EVENT, SEMIA_CONFIRMED_EVENT)
+        and receipt.get("status") == "confirmed"
+        and receipt.get("recipient_verified") is True
+        and bool(receipt.get("message_ids"))
+    )
+    if not valid_parent or old_semia.get("capex_mix_id") == SEMIA_CAPEX_MIX_ID:
+        return False
+    now = now or dt.datetime.now(KST)
+    if not dt.date(2026, 11, 17) <= now.date() <= dt.date(2026, 12, 17):
+        return False
+    _semia_capex_mix_regression()
+    from fx_api import daily_krw
+    q = daily_krw()  # No cached/stale exchange rate or unconverted send.
+    alert = "\n".join(_semia_capex_mix_alert(float(q.rate))) + "\n"
+    if "<b>[SemiAnalysis 40% 가정·전체 AI 설비투자 해석 보강]</b>" not in alert:
+        raise RuntimeError("User-provided scenario alert missing; hold state")
+    # Keep every old event and seen-item key unchanged. Stage only this
+    # independent user-provided chart interpretation event for ACK-gated commit.
+    staged = dict(old)
+    semia = dict(old_semia)
+    semia["capex_mix_id"] = SEMIA_CAPEX_MIX_ID
+    staged["semianalysis_accelerator_revision"] = semia
+    staged["updated_at_kst"] = now.isoformat(timespec="seconds")
+    staged["rss_outage_note"] = "Google News HTTP 429; generic news not acknowledged"
+    PENDING_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PENDING_PATH.write_text(
+        json.dumps(staged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    ALERT_PATH.write_text(alert, encoding="utf-8")
+    if STATUS_PATH.exists():
+        with STATUS_PATH.open("a", encoding="utf-8") as fd:
+            fd.write(
+                "\n- 예외 경보: 사용자 제공 차트 기반 40% 비중 시나리오만 분리 발송 대상"
+                " · RSS 429 수집 미완료 · 다른 뉴스와 상태변화 미확정\n"
+            )
+    return True
+
+
 def main() -> int:
     items, errors = collect()
     foxconn, price, warnings = _collect_supplier_followups(dt.datetime.now(KST), load_state())
@@ -5189,6 +5243,13 @@ def main() -> int:
             if any(section not in body for section in required):
                 raise RuntimeError("Semia event key staged without its matching Telegram alert; state save blocked")
     if errors:
+        if _semia_independent_chart_fallback(errors):
+            # Old RSS and all typed-price baselines remain untouched; only
+            # a source-independent event can be acknowledged after sendMessage.
+            currency_krw_guard.enforce_file(ALERT_PATH)
+            print(f"semia_chart_only_alert=true rss_429_errors={len(errors)}; "
+                  "generic_news_unacknowledged=true")
+            return 0
         ALERT_PATH.unlink(missing_ok=True)
         print(f"memory_watch_incomplete=true source_errors={len(errors)}; Telegram suppressed")
         return 2

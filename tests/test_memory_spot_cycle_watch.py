@@ -64,6 +64,58 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
 
 
 
+
+    def test_semia_chart_independent_429_fallback_preserves_existing_states(self):
+        import json
+        import datetime as dt
+        from types import SimpleNamespace
+        old = {
+            "initialized": True,
+            "seen": {"prior_rss_fact": {"title": "previous confirmation"}},
+            "last_successful_delivery_kst": "2026-11-16T22:52:17+09:00",
+            "delivery_receipt": {"status": "confirmed", "recipient_verified": True,
+                                 "message_ids": [474]},
+            "semianalysis_accelerator_revision": {
+                "fact_key": w.SEMIA_REVISED_EVENT,
+                "nvidia_details_id": w.SEMIA_NVIDIA_DETAILS_ID,
+            },
+            "trendforce_4q26_revision": {"conventional_dram_min_pct": 12},
+        }
+        err = ["en:DRAM shortage: HTTPError: HTTP Error 429: Too Many Requests"]
+        with tempfile.TemporaryDirectory() as td, \
+             patch.object(w, "load_state", return_value=old), \
+             patch.object(w, "PENDING_PATH", pathlib.Path(td) / "pending.json"), \
+             patch.object(w, "ALERT_PATH", pathlib.Path(td) / "alert.txt"), \
+             patch.object(w, "STATUS_PATH", pathlib.Path(td) / "status.md"), \
+             patch("fx_api.daily_krw", return_value=SimpleNamespace(rate=1338.00)):
+            self.assertTrue(w._semia_independent_chart_fallback(
+                err, dt.datetime(2026, 11, 17, 16, 45, tzinfo=w.KST)))
+            saved = json.loads(w.PENDING_PATH.read_text(encoding="utf-8"))
+            body = w.ALERT_PATH.read_text(encoding="utf-8")
+            self.assertEqual(saved["seen"], old["seen"])
+            self.assertEqual(saved["trendforce_4q26_revision"], old["trendforce_4q26_revision"])
+            self.assertEqual(saved["delivery_receipt"], old["delivery_receipt"])
+            self.assertEqual(saved["semianalysis_accelerator_revision"]["capex_mix_id"],
+                             w.SEMIA_CAPEX_MIX_ID)
+            self.assertIn("11.2%", body)
+            self.assertNotIn("기존 뉴스 속보", body)
+
+    def test_semia_independent_fallback_does_not_override_other_source_failures(self):
+        import datetime as dt
+        old = {"semianalysis_accelerator_revision": {"fact_key": w.SEMIA_REVISED_EVENT},
+               "delivery_receipt": {"status": "confirmed",
+                                    "recipient_verified": True,
+                                    "message_ids": [474]}}
+        with tempfile.TemporaryDirectory() as td, \
+             patch.object(w, "load_state", return_value=old), \
+             patch.object(w, "PENDING_PATH", pathlib.Path(td) / "pending.json"), \
+             patch.object(w, "ALERT_PATH", pathlib.Path(td) / "alert.txt"):
+            self.assertFalse(w._semia_independent_chart_fallback(
+                ["TrendForce primary: HTTP Error 503"],
+                dt.datetime(2026, 11, 17, tzinfo=w.KST)))
+            self.assertFalse(w.ALERT_PATH.exists())
+            self.assertFalse(w.PENDING_PATH.exists())
+
     def test_google_news_429_paces_retries_without_suppressing_source_errors(self):
         import io
         import urllib.error
