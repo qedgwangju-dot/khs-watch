@@ -997,11 +997,17 @@
       "source": "Wccftech",
       "published_kst": "2026-11-14T21:11:17+09:00",
       "first_seen_kst": "2026-11-17T17:19:46+09:00"
+    },
+    "da0045c313780ccc504c4e76": {
+      "title": "Enterprise SSD Cuts Pull NAND Price Drop to 2Q27 - TrendForce",
+      "source": "TrendForce",
+      "published_kst": "2026-11-17T18:00:07+09:00",
+      "first_seen_kst": "2026-11-17T20:58:33+09:00"
     }
   },
-  "updated_at_kst": "2026-11-17T17:27:05+09:00",
-  "last_scan_count": 8,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-11-17T20:58:33+09:00",
+  "last_scan_count": 10,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -1061,23 +1067,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-17T17:20:15+09:00",
+  "last_successful_delivery_kst": "2026-11-17T20:58:52+09:00",
   "telegram_message_ids": [
-    489,
-    490
+    492
   ],
-  "telegram_message_id": 490,
+  "telegram_message_id": 492,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      489,
-      490
+      492
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-17T17:20:15+09:00",
-    "alert_signature": "8312c750d87ecbf713a6e00279e121dd1cec3769c5312674fa033dbb7dc448b3"
+    "confirmed_at_kst": "2026-11-17T20:58:52+09:00",
+    "alert_signature": "5951885b15506cf5c74c150d28cc1db093e17c411221e723b1af6d0b9ac2ec35"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {

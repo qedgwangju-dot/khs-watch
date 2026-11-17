@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-11-17T17:27:12+09:00",
+  "updated_at_kst": "2026-11-17T20:58:45+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-08T04:00:00+09:00",
   "seen": [
@@ -95,9 +95,7 @@
   },
   "last_scan_items": 1,
   "last_new_signal_count": 0,
-  "errors": [
-    "ko: HTTPError"
-  ],
+  "errors": [],
   "last_alert": {
     "at_kst": "2026-10-08T15:02:49+09:00",
     "kind": "baseline"
