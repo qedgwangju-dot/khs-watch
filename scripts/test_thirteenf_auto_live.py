@@ -16,6 +16,13 @@ def main():
     previous,_=w.parse_holdings(cik,q2["accession"])
     if len(current)<55 or len(previous)<80:
         raise RuntimeError("SEC holdings truncated: refuse false liquidation")
+    # Distinguish issuer name from CUSIP/title: both can change between
+    # filings, so an apparent exit+new position may be a security ID change.
+    for when,positions in (("current",current),("previous",previous)):
+        evidence=[(k,r["issuer"],r["title"],int(r["shares"]))
+                  for k,r in positions.items()
+                  if "YPF" in str(r.get("issuer") or "").upper()]
+        print(f"SEC_ISSUER_IDENTITY_DIAGNOSTIC period={when} rows={evidence}")
     changes=w.classify_changes(current,previous)
     old_rate,old_basis=entry.FX_RATE,entry.FX_BASIS
     try:
