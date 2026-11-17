@@ -11,6 +11,13 @@ def main():
     assert "743,950주" in c.build(1342.78,"검산")
     assert "250,000주" in c.build(1342.78,"검산")
     assert "옵션 매입 비용" in c.build(1342.78,"검산")
+    # The one-time Q3 monetary addendum must use the same compact Korean
+    # display as future recurring 13F sector alerts (display rounded only).
+    assert c.amount(202_721_373,1334.87)=="2.03억달러 (약 2,706억원)"
+    assert c.amount(146_045_336,1334.87)=="1.46억달러 (약 1,950억원)"
+    assert c.amount(57_553_563,1334.87)=="5,760만달러 (약 768억원)"
+    assert c.amount(5_573_819_392,1334.87)=="55.74억달러 (약 7.44조원)"
+
     state["seen_context_events"]=[c.KEY]
     assert not c.should_send(state)
     state["seen_context_events"]=[]
