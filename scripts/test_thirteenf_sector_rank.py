@@ -249,7 +249,7 @@ def main():
                      "시게이트(STX)","유니티(U)","아마존(AMZN)",
                      "TSMC(TSM)","나테라(NTRA)","29.2%"):
         assert required in rank_output, (required,rank_output)
-    assert "신고상 종료" in rank_output and "실제" in rank_output
+    assert "신고상 종료" in rank_output and "현금거래" in rank_output
     assert len(rank_output)<=3300
     assert "전체 13F 신고 평가액" in rank_output
     # A missing verified unit must never silently become a dollar amount.
