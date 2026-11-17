@@ -2,6 +2,7 @@
 import base64
 import datetime as dt
 from decimal import Decimal
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -252,6 +253,37 @@ class IssueBriefingTests(unittest.TestCase):
                 ledger.update("2026-11-17:preopen", "2", "sent", 123)
             self.assertTrue(ledger.update("2026-11-17:preopen", "1", "sent", 123))
             self.assertEqual(api.doc["slots"]["2026-11-17:preopen"]["message_id"], 123)
+
+    def test_refresh_history_checks_exact_commit_blob_and_fails_closed(self):
+        data = b'{"seen":{},"updated_at_kst":""}'
+        digest = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+        class Response:
+            def __enter__(self): return self
+            def __exit__(self, *args): return None
+            def read(self, limit): return data[:limit]
+        def api(method, url, token, payload=None):
+            if "/commits/main" in url:
+                return 200, {"sha": "a" * 40}
+            return 200, {"sha": digest, "size": len(data)}
+        env = {"BRIEFING_REFRESH_SEEN": "true", "GITHUB_REPOSITORY": "owner/repo", "GITHUB_TOKEN": "token"}
+        telegram = SimpleNamespace(SEEN_PATH=None)
+        with tempfile.TemporaryDirectory() as temp, patch.object(b, "OUT", Path(temp)), \
+                patch.dict(os.environ, env), patch.object(b, "api_json", side_effect=api), \
+                patch.object(b.urllib.request, "urlopen", return_value=Response()):
+            b.refresh_sent_history(telegram)
+            self.assertEqual(telegram.SEEN_PATH.read_bytes(), data)
+            with patch.object(b.hashlib, "sha1") as sha:
+                sha.return_value.hexdigest.return_value = "b" * 40
+                with self.assertRaisesRegex(RuntimeError, "SHA"):
+                    b.refresh_sent_history(telegram)
+
+    @unittest.skipUnless(os.getenv("GAMEJOA_GITHUB_INTEGRATION") == "true", "live GitHub check off by default")
+    def test_current_github_history_blob_refresh(self):
+        telegram = SimpleNamespace(SEEN_PATH=None)
+        with tempfile.TemporaryDirectory() as temp, patch.object(b, "OUT", Path(temp)), \
+                patch.dict(os.environ, {"BRIEFING_REFRESH_SEEN": "true"}):
+            b.refresh_sent_history(telegram)
+            self.assertGreater(telegram.SEEN_PATH.stat().st_size, 1000)
 
     def test_uncertain_telegram_send_is_not_retried(self):
         class Runner:

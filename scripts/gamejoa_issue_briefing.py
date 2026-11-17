@@ -13,7 +13,6 @@ import json
 import os
 from pathlib import Path
 import re
-import subprocess
 import time
 import urllib.error
 import urllib.parse
@@ -435,22 +434,45 @@ def add_social_evidence(groups: list[dict], sample: list[dict], listed: dict[str
 
 
 def refresh_sent_history(telegram) -> None:
-    """Use a fresh main receipt snapshot without changing the checkout."""
+    """Read and verify only the latest main receipt blob, not repository history."""
     if os.getenv("BRIEFING_REFRESH_SEEN", "").lower() not in {"1", "true", "yes"}:
         return
-    env = {**os.environ, "GIT_TERMINAL_PROMPT": "0", "GIT_OPTIONAL_LOCKS": "0"}
-    fetch = subprocess.run(["git", "-c", "maintenance.auto=false", "fetch", "--no-tags", "origin", "main"],
-                           cwd=ROOT, env=env, capture_output=True, timeout=90)
-    if fetch.returncode:
-        raise RuntimeError("Cannot refresh live alert history; briefing send blocked")
-    show = subprocess.run(["git", "show", "FETCH_HEAD:data/gamejoa_preopen_news_radar_seen.json"],
-                          cwd=ROOT, env=env, capture_output=True, timeout=30)
-    if show.returncode:
-        raise RuntimeError("Cannot read refreshed live alert history; briefing send blocked")
+    repo = os.getenv("GITHUB_REPOSITORY", "")
+    token = os.getenv("GITHUB_TOKEN", "")
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repo) or not token:
+        raise RuntimeError("Cannot authenticate live alert history refresh")
+    root = f"https://api.github.com/repos/{repo}"
+    code, head = api_json("GET", root + "/commits/main", token)
+    commit = str(head.get("sha") or "")
+    if code != 200 or not re.fullmatch(r"[0-9a-f]{40}", commit):
+        raise RuntimeError("Cannot resolve current main for live alert history")
+    url = root + "/contents/data/gamejoa_preopen_news_radar_seen.json?ref=" + commit
+    code, metadata = api_json("GET", url, token)
+    blob = str(metadata.get("sha") or "")
+    size = metadata.get("size")
+    if code != 200 or not re.fullmatch(r"[0-9a-f]{40}", blob) or not isinstance(size, int) or not 0 < size <= 100_000_000:
+        raise RuntimeError("Cannot verify live alert history metadata")
+    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT,
+                                     "Authorization": "Bearer " + token,
+                                     "Accept": "application/vnd.github.raw+json"})
+    try:
+        with urllib.request.urlopen(request, timeout=90) as response:
+            data = response.read(size + 1)
+    except Exception as exc:
+        raise RuntimeError("Cannot download live alert history: " + type(exc).__name__) from None
+    digest = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+    if len(data) != size or digest != blob:
+        raise RuntimeError("Live alert history blob failed size or SHA verification")
+    try:
+        if not isinstance(json.loads(data), dict):
+            raise ValueError("not an object")
+    except Exception:
+        raise RuntimeError("Live alert history is not valid JSON") from None
     OUT.mkdir(parents=True, exist_ok=True)
     path = OUT / "gamejoa_issue_briefing_seen_snapshot.json"
-    path.write_bytes(show.stdout)
+    path.write_bytes(data)
     telegram.SEEN_PATH = path
+    print(f"Briefing: refreshed sent history commit={commit[:12]} blob={blob[:12]}", flush=True)
 
 
 def escape(value: object) -> str:
