@@ -384,7 +384,7 @@ def build_q3_amount_addendum(snapshots,rate,basis):
         raise RuntimeError("SEC amount reference did not match independent Q3/Q2 valuation checks")
 
     def fmt(usd):
-        return amount(round(usd),rate)"
+        return amount(round(usd),rate)
     def line(label,term,short):
         row=_q3_reference_change(snapshots,label,term,short)
         if row is None:
