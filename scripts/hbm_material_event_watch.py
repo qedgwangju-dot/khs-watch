@@ -153,6 +153,60 @@ REPORTS = (
         ),
         "caution": "모두 SemiAnalysis 추정·전망으로 계약확정·고객별 구매물량·SK하이닉스 공시 평균판매단가 아님; 공급사 확정 주문·고객별 생산능력·양산 출하 변화는 공식 자료로 별도 판정.",
     },
+    {
+        "key": "20261116_skhynix_2026q3_geo_customer_concentration",
+        "date": "2026-11-16",
+        "group": "financial",
+        "label": "SK하이닉스 2026년 1~9월 미국·중국 매출과 익명 고객 집중도",
+        "sources": (
+            ("한국경제 분기보고서 인용 분석", "https://www.hankyung.com/article/2026111603647", "공시 인용 언론 보도"),
+            ("이투데이 지역·고객 매출 보도", "https://www.etoday.co.kr/news/view/2648918", "별도 보도"),
+            ("연합뉴스 원보도", "https://www.yna.co.kr/view/AKR20261116152900003", "별도 보도"),
+        ),
+        "need": (
+            ("SK하이닉스", "SK hynix"),
+            ("236조5105", "236조5천105", "236조 5,105", "236조5,105"),
+            ("147조7392", "147조7천392", "147조7,392", "147조 7,392"),
+            ("62.5%",),
+            ("34조9778", "34조9천778", "34조9,778", "34조 9,778"),
+            ("23조8509", "23조8천509", "23조8,509", "23조 8,509"),
+            ("56조1378", "56조1천378", "56조1,378", "56조 1,378"),
+        ),
+        "facts": (
+            "2026년 1~9월 연결 매출 236조5,105억원(전년 같은 기간 64조3,200억원 대비 +267.7%).",
+            "미국 매출 45조1,802억원→147조7,392억원(+102조5,590억원, +227.0%).",
+            "미국 매출 비중은 전년 약 70.2%→62.5%(-7.8%p). 미국 매출액 급증과 비중 하락을 구분.",
+            "중국 매출 11조7,489억원→56조1,378억원(+377.8%), 올해 1~9월 전체의 23.7%.",
+            "공시상 익명 최대 고객 '가': 17조3,551억원→34조9,778억원(+101.5%), 전체의 14.8%; 엔비디아는 언론·업계 추정으로만 표기.",
+            "공시상 익명 주요 고객 '나': 23조8,509억원(10.1%), 고객 실명 미공개. 두 고객 합계 58조8,287억원(24.9%).",
+            "제품 구성 해석: 미국은 HBM·서버 D램, 중국은 LPDDR·낸드 수요 중심이라는 언론 보도이며 지역별 제품별 확정 매출은 미공개.",
+        ),
+        "caution": "지역별 외부매출을 엔비디아향 확정 매출로 환산 금지. 2029년까지 '완판' 컨퍼런스콜 발언과 14개 고객이 체결한 2027~2028 전체 생산능력 50% 초과 장기공급계약은 별도 단계. 공시 접수 20261116001715 원본 웹뷰어 직접 열람 제한으로 언론 인용 수치를 대조.",
+    },
+    {
+        "key": "20261116_skhynix_2026q3_capex_rnd_cumulative",
+        "date": "2026-11-16",
+        "group": "financial",
+        "label": "SK하이닉스 누적 설비투자 31조·연구개발비 10조 돌파",
+        "sources": (
+            ("이투데이 분기보고서 자산취득·연구개발비", "https://www.etoday.co.kr/news/view/2648882", "공시 인용 언론 보도"),
+            ("연합뉴스 설비투자·연구개발비", "https://www.yna.co.kr/amp/view/AKR20261116160500003", "별도 보도"),
+            ("전자신문 설비투자·연구개발비", "https://www.etnews.com/20261116000525", "별도 보도"),
+        ),
+        "need": (
+            ("SK하이닉스", "SK hynix"),
+            ("10조948", "10조 948", "10조9백48"),
+            ("31조2163", "31조2160", "31조2천160", "31조 2163", "31조2,160"),
+            ("설비투자", "시설투자"),
+        ),
+        "facts": (
+            "2026년 1~9월 유형자산 취득 기준 설비투자 31조2,163억원(이투데이 공시 인용), 전년 연간 30조1,728억원을 초과. 일부 언론은 31조2,160억원으로 표기해 3억원 차이 확인 필요.",
+            "1~9월 연구개발비 10조948억원, 전년 같은 기간 4조6,473억원 대비 +117.2%, 2025년 연간 6조7,325억원 대비 +49.9%.",
+            "2026년 3분기에만 설비투자 약 13조6,213억원, 연구개발비 4조520억원; 1~9월 매출 대비 연구개발비 비중 4.3%.",
+            "청주 M15X HBM4 생산능력 확대, 용인 신규 공장 투자 진행 중. 장비 반입·시험생산·고객 승인·양산 출하·매출 인식은 별도 확인.",
+        ),
+        "caution": "설비투자 집행은 HBM4 신규수주·가동률·잉여현금흐름 증가의 확정 증거가 아닙니다. 31조2,160억~2,163억원의 언론 표기 차이는 공시 원문 대조 전까지 보존.",
+    },
 )
 
 GROUPS = {
@@ -160,6 +214,7 @@ GROUPS = {
     "hbm": "SK하이닉스 HBM4·삼성 온양 증설·8인치 공정 재편",
     "intel": "인텔 추론 GPU·국내 23개사·공유 메모리",
     "allocation": "엔비디아·비엔비디아 HBM4 공급 배분·고객별 가격",
+    "financial": "SK하이닉스 지역별 매출·고객 집중도·설비투자·연구개발비",
 }
 
 def text_matches(body: str, required: tuple) -> bool:
@@ -232,6 +287,9 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
     for report in REPORTS:
         if report["key"] in existing:
             continue
+        # A publication scheduled in the future must not be fetched or sent.
+        if date.fromisoformat(checked_at[:10]) < date.fromisoformat(report["date"]):
+            continue
         if (date.fromisoformat(checked_at[:10]) - date.fromisoformat(report["date"])).days > MAX_AGE_DAYS:
             gaps.append({"key": report["key"], "status": "older_than_backfill_window"})
             continue
@@ -248,7 +306,7 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
         "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield",
     }
     rendered = [render(group, [x for x in new if x["group"] == group], checked_at)
-                for group in ("glass", "hbm", "intel", "allocation")
+                for group in ("glass", "hbm", "intel", "allocation", "financial")
                 if any(x["group"] == group for x in new)]
     audit = {"checked_at_kst": checked_at, "verified_events": len(new),
              "verified_keys": [x["key"] for x in new], "gaps": gaps[-20:],

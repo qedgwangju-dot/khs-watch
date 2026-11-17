@@ -22,7 +22,7 @@ class MaterialEventTests(unittest.TestCase):
 
     def test_all_eight_reports_detected_only_with_original_evidence(self):
         current = {"seen_ids": ["existing-event"], "delivery_receipt": {"message_ids": [387]}}
-        expected = {x["key"] for x in m.REPORTS}
+        expected = {x["key"] for x in m.REPORTS if x["date"] <= "2026-11-14"}
         result, rendered, audit = m.apply(current, "2026-11-14T20:00:00+09:00", lambda url: self.fixture(next(
             r for r in m.REPORTS if url in [x[1] for x in r["sources"]]
         )))
@@ -46,7 +46,7 @@ class MaterialEventTests(unittest.TestCase):
         result, msgs, audit = m.apply(cached, "2026-11-14T20:10:00+09:00", never)
         self.assertEqual(msgs, [])
         self.assertEqual(audit["verified_events"], 0)
-        self.assertEqual(len(result["hbm_material_event_watch"]["seen_keys"]), 8)
+        self.assertEqual(len(result["hbm_material_event_watch"]["seen_keys"]), len(m.REPORTS))
 
     def test_missing_loi_or_supplier_does_not_trigger_false_contract(self):
         r = m.REPORTS[0]
@@ -217,6 +217,50 @@ class MaterialEventTests(unittest.TestCase):
         self.assertEqual(alert, [])
         self.assertEqual(audit["verified_events"], 0)
         self.assertIn(report["key"], result["hbm_material_event_watch"]["seen_keys"])
+
+    def test_future_dated_filing_is_never_fetched_or_sent_before_nov16(self):
+        previously_sent = {"hbm_material_event_watch": {"seen_keys": [
+            row["key"] for row in m.REPORTS if row["date"] <= "2026-11-15"
+        ]}}
+        def never_fetch(url):
+            raise AssertionError("Future filing cannot be fetched")
+        _, alerts, audit = m.apply(previously_sent, "2026-11-15T23:59:00+09:00", never_fetch)
+        self.assertEqual(alerts, [])
+        self.assertEqual(audit["verified_events"], 0)
+
+    def test_two_2026q3_filing_events_recover_once_with_exact_period_and_anonymity(self):
+        earlier = [row["key"] for row in m.REPORTS if row["date"] < "2026-11-16"]
+        state = {"hbm_material_event_watch": {"seen_keys": earlier}}
+        def fact_fixture(url):
+            row = next(r for r in m.REPORTS if url in [v[1] for v in r["sources"]])
+            return self.fixture(row)
+        out, alerts, audit = m.apply(state, "2026-11-17T15:20:00+09:00", fact_fixture)
+        self.assertEqual(audit["verified_events"], 2)
+        self.assertEqual(len(alerts), 1)
+        self.assertIn("70.2%", alerts[0])
+        self.assertIn("62.5%", alerts[0])
+        self.assertIn("34조9,778", alerts[0])
+        self.assertIn("10조948", alerts[0])
+        self.assertIn("실명 미공개", alerts[0])
+        self.assertIn("50% 초과", alerts[0])
+        self.assertEqual(len(out["hbm_material_event_watch"]["seen_keys"]), len(m.REPORTS))
+        for chunk in d.chunks(alerts[0]):
+            self.assertTrue(chunk.strip())
+        def no_repeat(_):
+            raise AssertionError("Previously acknowledged filing must not be fetched")
+        again, no_alert, repeat_audit = m.apply(out, "2026-11-17T15:47:00+09:00", no_repeat)
+        self.assertEqual(no_alert, [])
+        self.assertEqual(repeat_audit["verified_events"], 0)
+        self.assertEqual(len(again["hbm_material_event_watch"]["seen_keys"]), len(m.REPORTS))
+
+    def test_skhynix_filing_bogus_big_customer_or_revenue_is_not_promoted(self):
+        row = next(x for x in m.REPORTS if "geo_customer_concentration" in x["key"])
+        for missing in ("34조9778", "23조8509", "147조7392", "62.5%"):
+            body = self.fixture(row).replace(missing, "0원")
+            found, gaps = m.probe(row, lambda url: body)
+            self.assertIsNone(found)
+            self.assertTrue(gaps)
+        self.assertNotIn("엔비디아 확정", " ".join(row["facts"]))
 
 if __name__ == "__main__":
     unittest.main()
