@@ -19,6 +19,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from warsh_speech_watch import clean_text
+from warsh_rba_minutes_context import RBA_KEY, RBA_MINUTES_URL, RBA_RELEASED_AT, rba_minutes_message
 
 ROOT = "https://www.federalreserve.gov"
 RSS = ROOT + "/feeds/speeches.xml"
@@ -49,8 +50,12 @@ DALY_NEWS_SOURCES = (
 )
 DALY_NEWS_KO = "https://news.einfomax.co.kr/news/articleView.html?idxno=4444757"
 FORMAT_VERSION = 2
+WALLER_KEY = "speech:waller:20261110a"
+WALLER_FORMAT_VERSION = 3
 NEWS_WALLER = "https://tv.edaily.co.kr/News/NewsRead?Kind=257&NewsId=07216006645644408"
-BLS_CPI = "https://www.bls.gov/news.release/cpi.htm"
+BLS_CPI = "https://www.bls.gov/news.release/archives/cpi_11102026.htm"
+BEA_PCE = "https://www.bea.gov/news/2026/personal-income-and-outlays-september-2026"
+FOMC_CALENDAR = ROOT + "/monetarypolicy/fomccalendars.htm"
 OFFICIAL_FX = "https://english.mofe.go.kr/"
 
 
@@ -58,7 +63,7 @@ def shortlink(label: str, url: str) -> str:
     """Telegram-supported HTML link, never an exposed long URL."""
     parsed = urllib.parse.urlsplit(url)
     allowed = {
-        "www.federalreserve.gov", "www.bls.gov",
+        "www.federalreserve.gov", "www.bls.gov", "www.bea.gov",
         "tv.edaily.co.kr", "english.mofe.go.kr",
         "www.frbsf.org", "cber.unlv.edu", "www.reuters.com",
         "news.einfomax.co.kr",
@@ -70,11 +75,14 @@ def shortlink(label: str, url: str) -> str:
 
 
 def fetch(url: str) -> str:
+    host = urllib.parse.urlsplit(url).hostname
+    if host != "www.federalreserve.gov" and url not in (BLS_CPI, BEA_PCE):
+        raise ValueError("Unapproved official source")
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; KHS-Warsh-watch/2.0)"})
     with urllib.request.urlopen(req, timeout=16) as response:
         actual = urllib.parse.urlparse(response.geturl())
-        if actual.scheme != "https" or actual.hostname != "www.federalreserve.gov":
-            raise RuntimeError("Official Federal Reserve source redirected to an untrusted host")
+        if actual.scheme != "https" or actual.hostname != host:
+            raise RuntimeError("Official source redirected to an untrusted host")
         return response.read().decode("utf-8", errors="replace")
 
 
@@ -119,6 +127,33 @@ def speech_urls(now=None):
     return sorted(result, key=lambda x: (_extract_pubday(x), x)), errors
 
 
+def verify_waller_releases():
+    """Check the dated releases, including units and comparison periods, before publishing."""
+    sources = (
+        (BLS_CPI, (
+            "consumer price index - october 2026",
+            "increased 0.4 percent on a seasonally adjusted basis in october after rising 0.6 percent in september",
+            "index for all items less food and energy rose 0.3 percent in october, as it did in september and august",
+            "november 2026 is scheduled to be published on thursday, december 10, 2026",
+        )),
+        (BEA_PCE, (
+            "personal income and outlays, september 2026",
+            "from the preceding month, the pce price index for september increased 0.5 percent",
+            "excluding food and energy, the pce price index increased 0.3 percent",
+            "from the same month one year ago, the pce price index for september increased 3.6 percent",
+            "excluding food and energy, the pce price index increased 3.1 percent from one year ago",
+        )),
+    )
+    for url, phrases in sources:
+        plain = " ".join(clean_text(fetch(url)).lower().split())
+        plain = re.sub(r"\s+([,.])", r"\1", plain).replace("–", "-").replace("—", "-")
+        if not all(phrase in plain for phrase in phrases):
+            raise RuntimeError(f"Release contents could not be verified: {url}")
+    calendar_text = " ".join(clean_text(fetch(FOMC_CALENDAR)).lower().split())
+    if not re.search(r"2026 fomc meetings(?:(?!20\d{2} fomc meetings).)*?december\s+8\s*[-–]\s*9\b", calendar_text):
+        raise RuntimeError("December 2026 FOMC dates could not be verified")
+
+
 def speech_message(url: str, raw: str):
     match = SPEECH_RE.fullmatch(url)
     if not match:
@@ -137,28 +172,44 @@ def speech_message(url: str, raw: str):
     original = shortlink("연준 공식 연설", url)
 
     if speaker.lower() == "waller" and stamp == "20261110a":
-        must = ("support a 25 basis point increase", "50 basis point hike",
-                "core cpi", "december meeting")
+        must = ("support a 25 basis point increase", "50 basis point hike", "december meeting",
+                "core cpi inflation around 0.3 percent or even higher", "should be considered",
+                "3.7 percent over the previous 12 months", "put our credibility at risk",
+                "markets to price in some tightening", "3.4 percent in the third quarter",
+                "4.1 percent in october", "october gains of 165,000 jobs", "80,000 jobs a month",
+                "low hire, low fire", "share of new labor force entrants in unemployment",
+                "more than 70 percent of the components of core pce service prices",
+                "core inflation may be more responsive to energy shocks",
+                "ship-to-ship transfer of oil", "reportedly boosting oil prices")
         if not all(x in low for x in must):
             raise RuntimeError("Waller's conditional 25/50bp policy view cannot be verified")
+        verify_waller_releases()
         return "\n".join((
             "<b>[연준 공식 발언] 월러 | 12월 금리 인상 주장</b>",
             "발언 2026.11.10 · <i>연준 이사 개인 견해 / FOMC 확정 결정 아님</i>",
             "",
             "<b>핵심 사실</b>",
-            "• <b>기본 입장:</b> 12월 FOMC에서 <b>0.25%p 인상 지지.</b> 10월 물가가 다소 둔화해도 인상이 필요하다는 주장.",
-            "• <b>더 큰 인상 조건:</b> 10월 근원 CPI 전월비가 약 <b>+0.3% 이상</b>이면 <b>0.50%p 인상도 검토</b>해야 한다고 발언.",
-            "• <b>발표 후 확인:</b> BLS가 11월 10일 발표한 10월 근원 CPI는 전월비 <b>+0.3%</b>. 조건에 근접·부합하지만 0.50%p 결정은 아님.",
-            "• <b>물가 판단 근거:</b> 9월 종합 PCE 전월비 +0.5%·전년비 +3.7%, 근원 PCE 전월비 +0.3%·전년비 +3.1%를 언급.",
-            "• <b>당시 시장가격:</b> 11월 10일 미 동부시간 07:50 기준, <b>0.25%p 인상 확률 84.0% → 99.1%(+15.1%p)</b>라는 언론 보도. <b>현재 확률 아님.</b>",
+            "■ 월러는 10월 물가가 다소 둔화해도 12월 연방공개시장위원회(FOMC)에서 <b>0.25%p 인상</b>을 지지한다고 밝혔습니다.",
+            "■ 월러는 10월 근원 소비자물가지수(CPI)가 전월비 <b>0.3% 안팎이거나 더 높으면 0.50%p 인상을 검토</b>해야 하며, 이 경우 0.25%p 인상에 그치면 연준의 신뢰성이 흔들릴 수 있다고 말했습니다.",
+            "■ 연설 뒤 미국 노동통계국이 발표한 10월 CPI는 계절조정 전월비 <b>0.6% → 0.4%</b>로 둔화했고, 근원 CPI는 8~10월 석 달 연속 <b>0.3%</b> 올라 월러가 언급한 범위에 들었습니다.",
+            "■ 9월 전체 개인소비지출(PCE) 물가 전년비는 <b>월러 연설문 3.7%, 미국 경제분석국 발표 3.6%</b>이며, 경제분석국 기준 전체 전월비는 0.5%, 근원은 전월비 0.3%·전년비 3.1%입니다.",
+            "■ 월러는 9월 근원 PCE 서비스 구성 항목의 <b>70% 넘는 항목</b>이 전년비 3% 넘게 올랐고, 근원 상품과 주거비 제외 시장 서비스로 물가 압력이 번졌다고 설명했습니다.",
+            "■ 월러는 에너지 충격이 근원 물가에 더 오래 전가될 수 있다는 연준 연구와, 호르무즈해협의 선박 보험료·해상 환적비가 유가를 높인다는 현장 보도를 각각 인용했습니다.",
+            "■ 그는 10월에는 시장금리에 긴축 예고가 이미 반영돼 동결에 찬성했지만, 예고한 인상을 합리적인 기간 안에 이행해야 한다고 봤습니다.",
+            "■ 월러가 인용한 미국 3분기 실질 국내총생산 속보치는 전분기 대비 연율 <b>3.4%</b>, 10월 실업률은 <b>4.1%</b>, 비농업 고용은 <b>16만 5천 명 증가</b>였고, 6개월·12개월 평균 증가폭은 각각 월 약 8만 명이었습니다.",
+            "■ 단기적으로 노동 수급은 대체로 균형이라고 평가했지만, 저채용·저해고 속에서 실업자 중 장기 실업자와 신규 진입자 비중이 높아진 점은 생산성에 영향을 줄 중장기 문제로 짚었습니다.",
+            "■ 이데일리가 인용한 12월 0.25%p 인상 확률은 전날 84.0%에서 <b>11월 10일 미 동부시간 07:50에 99.1%</b>로 올랐으며, 이날 08:30 CPI 발표 전 가격입니다.",
             "",
             "<b>쉽게 말하면</b>",
             "물가가 조금 식더라도 지금 수준이 높아 금리를 올려야 한다는 주장입니다. 다만 최종 결정은 연준 위원들의 표결과 새 경제지표에 달렸습니다.",
             "",
             "<b>다음 확인</b>",
-            "• 2026.12.8~9 FOMC 결정, 후속 PCE·고용지표, 현재 금리선물 확률(공식 CME API 미연결로 판정 보류).",
+            "■ 12월 FOMC는 현지시간 8~9일 열리며, 11월 CPI는 회의가 끝난 뒤인 <b>12월 10일</b> 발표 예정입니다.",
+            "■ 회의 전에는 후속 PCE 물가와 고용지표를 확인할 수 있으며, 위 확률은 11월 10일 보도 시점 기준입니다.",
             "",
             "원문 " + original + " · " + shortlink("BLS 10월 CPI", BLS_CPI) +
+            " · " + shortlink("미 경제분석국 9월 PCE", BEA_PCE) +
+            " · " + shortlink("연준 회의 일정", FOMC_CALENDAR) +
             " · " + shortlink("당시 확률 보도", NEWS_WALLER),
         ))
 
@@ -415,14 +466,21 @@ def save_state(state):
     STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
+class TelegramNotSent(RuntimeError):
+    """No message was created. A later scheduled run may retry delivery."""
+
+
 def _verified_telegram_call(method: str, data: dict, expected_message_id=None):
     if not BOT_TOKEN or not CHAT_ID or not EXPECTED_BOT:
-        raise RuntimeError("Existing Telegram bot/chat settings missing")
+        raise TelegramNotSent("Existing Telegram bot/chat settings missing")
     bot_url = f"https://api.telegram.org/bot{BOT_TOKEN}/"
-    with urllib.request.urlopen(bot_url + "getMe", timeout=18) as r:
-        bot = json.loads(r.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(bot_url + "getMe", timeout=18) as r:
+            bot = json.loads(r.read().decode("utf-8"))
+    except Exception as exc:
+        raise TelegramNotSent("Telegram identity check failed before delivery") from exc
     if not bot.get("ok") or str((bot.get("result") or {}).get("username") or "").lower() != EXPECTED_BOT.lower():
-        raise RuntimeError("Warsh Telegram bot identity mismatch")
+        raise TelegramNotSent("Warsh Telegram bot identity mismatch")
     payload = {
         "chat_id": CHAT_ID,
         "text": data["text"],
@@ -445,7 +503,9 @@ def _verified_telegram_call(method: str, data: dict, expected_message_id=None):
         if method == "editMessageText" and "message is not modified" in description:
             # An idempotent edit succeeded earlier but its state wasn't yet saved.
             return {"message_id": expected_message_id, "recipient_verified": True, "unchanged": True}
-        raise RuntimeError("Telegram HTML message edit failed; never resend as a new message") from exc
+        if method == "sendMessage" and 400 <= exc.code < 500 and response.get("ok") is False:
+            raise TelegramNotSent(f"Telegram rejected the delivery (HTTP {exc.code})") from exc
+        raise RuntimeError("Telegram request failed without a verified receipt") from exc
     if not response.get("ok"):
         raise RuntimeError("Telegram send/editMessageText returned ok=false")
     result = response.get("result") or {}
@@ -480,7 +540,8 @@ def edit_message(message_id: int, msg: str):
 def _upgrade_message(key: str, receipt: dict):
     """Refetch official text before editing a previously delivered old-format alert."""
     url = receipt.get("source") or ""
-    if key.startswith("speech:") and _extract_pubday(url):
+    speech_match = SPEECH_RE.fullmatch(url)
+    if speech_match and key == "speech:" + ":".join(speech_match.groups()).lower():
         return speech_message(url, fetch(url))
     if key == SCHEDULE_KEY and url == SCHEDULE:
         return schedule_message(fetch(SCHEDULE))
@@ -498,7 +559,8 @@ def upgrade_delivered_messages(state):
         if (not isinstance(receipt, dict) or receipt.get("recipient_verified") is not True
                 or not isinstance(receipt.get("message_id"), int)):
             continue
-        if (state["formatted"].get(key) or {}).get("version", 0) >= FORMAT_VERSION:
+        target_version = WALLER_FORMAT_VERSION if key == WALLER_KEY else FORMAT_VERSION
+        if (state["formatted"].get(key) or {}).get("version", 0) >= target_version:
             continue
         message = _upgrade_message(key, receipt)
         if message is None:
@@ -507,7 +569,7 @@ def upgrade_delivered_messages(state):
         if not answer.get("recipient_verified") or answer.get("message_id") != receipt["message_id"]:
             raise RuntimeError("Unverified Telegram edit response")
         state["formatted"][key] = {
-            "version": FORMAT_VERSION, "message_id": receipt["message_id"],
+            "version": target_version, "message_id": receipt["message_id"],
             "edited_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         }
         save_state(state)
@@ -522,15 +584,36 @@ def deliver(state, key, message, url):
     save_state(state)
     try:
         receipt = send(message)
+    except TelegramNotSent:
+        state["pending"].pop(key)
+        save_state(state)
+        raise
     except Exception:
         state["pending"][key]["status"] = "delivery_uncertain"
         save_state(state)
         raise
     state["sent"][key] = {**receipt, "source": url}
-    state.setdefault("formatted", {})[key] = {"version": FORMAT_VERSION, "message_id": receipt["message_id"]}
+    target_version = WALLER_FORMAT_VERSION if key == WALLER_KEY else FORMAT_VERSION
+    state.setdefault("formatted", {})[key] = {"version": target_version, "message_id": receipt["message_id"]}
     state["pending"].pop(key, None)
     save_state(state)
     return True
+
+
+def fetch_rba_minutes(url):
+    if url != RBA_MINUTES_URL:
+        raise ValueError("Unexpected RBA minutes URL")
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; KHS-macro-watch/2.0)"})
+    with urllib.request.urlopen(req, timeout=16) as response:
+        if response.geturl() != url:
+            raise RuntimeError("Unexpected RBA minutes redirect")
+        return response.read().decode("utf-8")
+
+
+def check_rba_minutes(state, now):
+    if now < RBA_RELEASED_AT or RBA_KEY in state["sent"] or RBA_KEY in state["pending"]:
+        return False
+    return deliver(state, RBA_KEY, rba_minutes_message(fetch_rba_minutes), RBA_MINUTES_URL)
 
 
 def main():
@@ -586,6 +669,12 @@ def main():
                 raise
 
     try:
+        if check_rba_minutes(state, dt.datetime.now(dt.timezone.utc)):
+            delivered.append(RBA_KEY)
+    except Exception as exc:
+        errors.append("RBA minutes source/delivery: " + type(exc).__name__)
+
+    try:
         edited = upgrade_delivered_messages(state)
     except Exception as exc:
         errors.append("기존 메시지 서식 수정 실패: " + type(exc).__name__)
@@ -603,8 +692,8 @@ def main():
         "delivery_uncertain": list(state["pending"]),
         "source_errors": errors[:10],
     }, ensure_ascii=False))
-    if errors:
-        raise RuntimeError("Some official Fed sources could not be verified; confirmed keys preserved")
+    if errors or state["pending"]:
+        raise RuntimeError("Policy source or delivery unresolved; see per-event status above")
 
 
 if __name__ == "__main__":

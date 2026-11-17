@@ -11,6 +11,35 @@ import warsh_speech_watch as original_speech
 import warsh_policy_path_watch_v4 as futures
 
 
+WALLER_POLICY = (
+    "I would still support a 25 basis point increase at our December meeting. "
+    "With core CPI inflation around 0.3 percent or even higher, a 50 basis point hike "
+    "should be considered. Hiking only 25 basis points would put our credibility at risk. "
+    "PCE rose 3.7 percent over the previous 12 months. Markets to price in some tightening. "
+    "GDP rose 3.4 percent in the third quarter. Unemployment reached 4.1 percent in October. "
+    "October gains of 165,000 jobs, average closer to 80,000 jobs a month. Low hire, low fire. "
+    "The share of new labor force entrants in unemployment. More than 70 percent of the components of core PCE service prices."
+    "Core inflation may be more responsive to energy shocks. Ship-to-ship transfer of oil. Reportedly boosting oil prices."
+)
+WALLER_RELEASES = {
+    context.BLS_CPI: """
+        CONSUMER PRICE INDEX - OCTOBER 2026
+        The Consumer Price Index for All Urban Consumers (CPI-U) increased 0.4 percent
+        on a seasonally adjusted basis in October after rising 0.6 percent in September.
+        The index for all items less food and energy rose 0.3 percent in October, as it did in September and August.
+        The Consumer Price Index news release for November 2026 is scheduled to be published on Thursday, December 10, 2026.
+    """,
+    context.BEA_PCE: """
+        <h1>Personal Income and Outlays, September 2026</h1>
+        <a>From the preceding month, the PCE price index for September increased 0.5 percent</a>.
+        Excluding food and energy, the PCE price index increased 0.3 percent.
+        <a>From the same month one year ago, the PCE price index for September increased 3.6 percent</a>.
+        Excluding food and energy, the PCE price index increased 3.1 percent from one year ago.
+    """,
+    context.FOMC_CALENDAR: "<h4>2026 FOMC Meetings</h4><div>December</div><div>8-9*</div>",
+}
+
+
 def example_speech(speaker, day, body):
     name = "Christopher J. Waller" if speaker == "waller" else "Michelle W. Bowman"
     return f"<html><h1>{name}</h1><p>{day}</p><p>{body}</p></html>"
@@ -24,16 +53,39 @@ class WarshFedBoardContextTests(unittest.TestCase):
             context._extract_pubday(context.SEEDS[0]), dt.date(2026, 11, 10))
 
     def test_waller_december_25_50_is_conditional(self):
-        body = ("even if prices cool, I would support a 25 basis point increase "
-                "at our December meeting. With core CPI elevated, a "
-                "50 basis point hike should be considered.")
-        msg = context.speech_message(context.SEEDS[0],
-            example_speech("waller", "November 10, 2026", body))
+        with patch.object(context, "fetch", side_effect=WALLER_RELEASES.__getitem__):
+            msg = context.speech_message(context.SEEDS[0],
+                example_speech("waller", "November 10, 2026", WALLER_POLICY))
         self.assertIn("0.25%p", msg)
         self.assertIn("0.50%p", msg)
         self.assertIn("99.1%", msg)
-        self.assertIn("당시", msg)
+        self.assertIn("발표 전 가격", msg)
+        self.assertIn("0.3% 안팎", msg)
+        self.assertIn("월러 연설문 3.7%, 미국 경제분석국 발표 3.6%", msg)
         self.assertIn("확정", msg)
+
+    def test_waller_unverified_data_keeps_received_alert_for_retry(self):
+        for url, original, changed in (
+            (context.BLS_CPI, "0.3 percent", "0.2 percent"),
+            (context.BLS_CPI, "OCTOBER 2026", "SEPTEMBER 2026"),
+            (context.BEA_PCE, "3.6 percent", "3.7 percent"),
+            (context.BEA_PCE, "3.1 percent", "3.0 percent"),
+            (context.FOMC_CALENDAR, "December", "2027 FOMC Meetings December"),
+        ):
+            with self.subTest(url=url, changed=changed):
+                documents = dict(WALLER_RELEASES)
+                documents[context.SEEDS[0]] = example_speech("waller", "November 10, 2026", WALLER_POLICY)
+                documents[url] = documents[url].replace(original, changed)
+                state = {"sent": {context.WALLER_KEY: {"message_id": 148, "recipient_verified": True,
+                                                       "source": context.SEEDS[0]}},
+                         "formatted": {context.WALLER_KEY: {"message_id": 148, "version": 2}}}
+                with (patch.object(context, "fetch", side_effect=documents.__getitem__),
+                      patch.object(context, "edit_message") as edit, patch.object(context, "send") as send):
+                    with self.assertRaises(RuntimeError):
+                        context.upgrade_delivered_messages(state)
+                edit.assert_not_called()
+                send.assert_not_called()
+                self.assertEqual(state["formatted"][context.WALLER_KEY]["version"], 2)
 
     def test_bowman_credits_and_rate_costs_both_required(self):
         body = ("off-balance-sheet liabilities may be a concern if "
@@ -160,18 +212,19 @@ class WarshClickableReadableAlertsTests(unittest.TestCase):
         self.assertLess(len(msg), 3900)
 
     def test_waller_clickable_links_separate_quote_time_and_current_odds(self):
-        body = ("support a 25 basis point increase at the December meeting, "
-                "and a 50 basis point hike if core CPI stays high.")
-        msg = context.speech_message(context.SEEDS[0],
-            example_speech("waller", "November 10, 2026", body))
+        with patch.object(context, "fetch", side_effect=WALLER_RELEASES.__getitem__):
+            msg = context.speech_message(context.SEEDS[0],
+                example_speech("waller", "November 10, 2026", WALLER_POLICY))
         self.assertIn("0.25%p", msg)
         self.assertIn("0.50%p", msg)
-        self.assertIn("현재 확률 아님", msg)
+        self.assertIn("발표 전 가격", msg)
         self.assertIn("<b>쉽게 말하면</b>", msg)
         self.assertIn('NewsId=07216006645644408', msg)
         self.assertIn("Kind=257&amp;NewsId=", msg)
         self.assertIn(">당시 확률 보도</a>", msg)
         self.assertIn(">BLS 10월 CPI</a>", msg)
+        self.assertIn(context.BLS_CPI, msg)
+        self.assertIn(context.BEA_PCE, msg)
         self.assertLess(len(msg), 3900)
 
     def test_schedule_url_is_link_and_decision_year_is_clear(self):
@@ -259,8 +312,34 @@ class WarshClickableReadableAlertsTests(unittest.TestCase):
                 self.assertEqual(context.upgrade_delivered_messages(state), [])
                 sent.assert_not_called()
                 self.assertEqual(edited.call_count, 3)
-                self.assertTrue(all(x["version"] == context.FORMAT_VERSION
-                                    for x in state["formatted"].values()))
+                self.assertEqual(state["formatted"][context.WALLER_KEY]["version"], context.WALLER_FORMAT_VERSION)
+                self.assertEqual(state["formatted"][context.SCHEDULE_KEY]["version"], context.FORMAT_VERSION)
+
+    def test_only_delivered_waller_v2_is_edited_in_place_and_only_once(self):
+        receipts = {
+            context.WALLER_KEY: (148, context.SEEDS[0]),
+            "speech:bowman:20261110a": (147, context.SEEDS[1]),
+            context.DALY_KEY: (150, context.DALY_OFFICIAL),
+            context.SCHEDULE_KEY: (149, context.SCHEDULE),
+        }
+        state = {
+            "sent": {key: {"message_id": mid, "source": url, "recipient_verified": True}
+                     for key, (mid, url) in receipts.items()},
+            "formatted": {key: {"message_id": mid, "version": 2} for key, (mid, _) in receipts.items()},
+        }
+        documents = dict(WALLER_RELEASES)
+        documents[context.SEEDS[0]] = example_speech("waller", "November 10, 2026", WALLER_POLICY)
+        with (tempfile.TemporaryDirectory() as tmp,
+              patch.object(context, "STATE_PATH", Path(tmp) / "state.json"),
+              patch.object(context, "fetch", side_effect=documents.__getitem__),
+              patch.object(context, "edit_message", return_value={"message_id": 148, "recipient_verified": True}) as edit,
+              patch.object(context, "send") as send):
+            self.assertEqual(context.upgrade_delivered_messages(state), [context.WALLER_KEY])
+            self.assertEqual(context.upgrade_delivered_messages(state), [])
+            self.assertEqual(edit.call_count, 1)
+            self.assertEqual(edit.call_args.args[0], 148)
+            self.assertIn("미국 경제분석국 발표 3.6%", edit.call_args.args[1])
+            send.assert_not_called()
 
     def test_future_new_delivery_stores_format_version_with_original_dedup(self):
         with tempfile.TemporaryDirectory() as p:

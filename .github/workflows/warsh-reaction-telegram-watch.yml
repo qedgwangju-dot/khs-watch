@@ -38,7 +38,11 @@ on:
       - 'scripts/warsh_reaction_watch_v3.py'
       - 'scripts/warsh_reaction_watch_v4.py'
       - 'scripts/warsh_speech_watch.py'
+      - 'tests/test_warsh_speech_receipts.py'
       - 'scripts/warsh_fed_board_context_watch.py'
+      - 'scripts/warsh_rba_minutes_context.py'
+      - 'tests/test_warsh_context_delivery.py'
+      - 'tests/test_warsh_rba_minutes_context.py'
       - 'tests/test_warsh_fed_board_context_watch.py'
       - 'scripts/warsh_beige_book_watch.py'
       - 'scripts/warsh_imf_policy_shift_watch.py'
@@ -262,9 +266,13 @@ jobs:
             MACRO_RC=1
           fi
           run_watch scripts/warsh_reaction_watch_v4.py
-          run_watch scripts/warsh_speech_watch.py
-          # 보먼·월러 정책 발언과 2027 FOMC 일정: Warsh 기존 경로에만 추가.
-          if python -m unittest discover -s tests -p 'test_warsh_fed_board_context_watch.py' -v; then
+          if python -m unittest discover -s tests -p 'test_warsh_speech_receipts.py' -v; then
+            run_watch scripts/warsh_speech_watch.py
+          else
+            echo '::error::워시 연설 발송 기록 검증 실패'
+            MACRO_RC=1
+          fi
+          if python -m unittest discover -s tests -p 'test_warsh_*context*.py' -v; then
             run_watch scripts/warsh_fed_board_context_watch.py
           else
             echo '::error::연준 위원·FOMC 일정 회귀검증 실패 — 해당 감시만 보류'
