@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-11-09T14:45:03+09:00",
-  "last_checked_kst": "2026-11-17T09:32:29+09:00",
+  "last_checked_kst": "2026-11-17T10:07:13+09:00",
   "seen": {
     "126be798477cbd897413b8c2": {
       "title": "국산 AI 반도체, 엔비디아 GPU와 연결…SKT·리벨리온 3자 협력 - MTN 머니투데이방송",
@@ -313,6 +313,18 @@
       "stage": 3,
       "tier": "신뢰보도",
       "first_seen_kst": "2026-11-17T06:35:27+09:00",
+      "suppressed_stale": true
+    },
+    "46eab4dcc40d5a8c1b109b81": {
+      "title": "SKT-엔비디아-리벨리온, 한국형 소버린 AI 인프라 구축 협력 - 연합뉴스",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE52RkhNMFlYSm14WnBlb2N6bUl1XzZZT1RDeU9MUnpnSVkxWnh1aXBOUTVDSlhvVnp6MHVxY1hpYVRsdGVxZzlNeHYtQTRoT05IYk9xSTg1ZmMzTHc?oc=5",
+      "source": "연합뉴스",
+      "published_kst": "2026-11-09T16:13+09:00",
+      "event_id": "rebellions|ecosystem_news|2026-11",
+      "kind": "ecosystem_news",
+      "stage": 1,
+      "tier": "신뢰보도",
+      "first_seen_kst": "2026-11-17T10:07:13+09:00",
       "suppressed_stale": true
     }
   },
