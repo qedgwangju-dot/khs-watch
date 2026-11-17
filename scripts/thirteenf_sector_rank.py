@@ -7,6 +7,59 @@ Do not calculate a bogus buy-minus-sell cash flow across quarterly marks.
 """
 from collections import defaultdict
 
+# SEC has required whole-dollar 13F values since 2023-01-03. These exact
+# Duquesne filings are independently reconciled at 1000x the submitted
+# numbers: 2026-Q3 raw cover total 4,470,866 vs independently reconstructed
+# 4,470,866,000 USD; 2026-Q2 raw about 5.21M vs 5.21B USD.
+# Sources: SEC 13F primary_doc.xml; SEC 13F FAQ Q36; PortfolioSavvy,
+# FilingExplorer and TradingJournl 2026-Q2/Q3 13F holdings.
+# This is an explicitly identified reported-unit anomaly, NOT a claim
+# that 13F generally uses thousand-dollar values.
+VERIFIED_ANOMALOUS_SCALE = {
+    ("Duquesne Family Office","0001536411-26-000011"): 1000,
+    ("Duquesne Family Office","0001536411-26-000006"): 1000,
+}
+
+
+def verified_scale(label, filing):
+    """Returns 1/1000 for audited filings, None if unit is unknown."""
+    if filing is None:
+        return None
+    accession = (filing or {}).get("accession")
+    if not accession:
+        return None
+    if (label, accession) in VERIFIED_ANOMALOUS_SCALE:
+        return VERIFIED_ANOMALOUS_SCALE[(label, accession)]
+    if label == "Duquesne Family Office":
+        # This manager has submitted recurring nonstandard value units.
+        # A future accession must be re-audited before USD amounts appear.
+        return None
+    return 1  # SEC's post-2023 actual-dollar unit (no arbitrary ×1000)
+
+
+def verified_change_values(changes, label, filing, previous):
+    """Scale 13F valuation columns ONLY for audited report accessions.
+
+    Keeps the precise share changes and category classification untouched.
+    Flags an unknown previous/current filing, so the renderer can suppress
+    currency amounts while preserving share-count direction.
+    """
+    current_scale=verified_scale(label,filing)
+    previous_scale=verified_scale(label,previous)
+    out=[]
+    for change in changes:
+        x=dict(change)
+        action=x.get("action")
+        use_current=action in ("신규 매수","보유 확대")
+        factor=current_scale if use_current else previous_scale
+        x["valuation_verified"]=(factor is not None)
+        x["valuation_scale"]=factor
+        x["cur_value"]=float(x.get("cur_value") or 0) * (current_scale or 1)
+        x["prev_value"]=float(x.get("prev_value") or 0) * (previous_scale or 1)
+        out.append(x)
+    return out
+
+
 
 def changed_share_reference_value(x):
     """Return (side, reference USD) for an ordinary share change, or (None, 0)."""
@@ -217,7 +270,7 @@ def _short_share_move(item, display):
     return f"{name} {sign}{qty}{rate}"
 
 
-def build_sector_direction(changes, display, *, top_n=4):
+def build_sector_direction(changes, display, *, top_n=4, money=None):
     """Compact, reliable industry direction from 13F holdings.
 
     Securities' filed value units are NOT used as currency. Some SEC filing
@@ -261,8 +314,34 @@ def build_sector_direction(changes, display, *, top_n=4):
     denominator=total_buy+total_sell
     coverage=(100*(known_buy+known_sell)/denominator) if denominator else 0
 
+    def _formatted_value(rows):
+        if money is None:
+            return None
+        if not rows or not all(record.get("valuation_verified",True)
+                               for _,record in rows):
+            return "평가액 단위 확인 전"
+        return money(sum(ref for ref,_ in rows))
+
+    def _representative(rows):
+        if not rows:
+            return ""
+        items=[]
+        for reference,row in sorted(rows,key=lambda r:-r[0])[:2]:
+            label=_short_share_move(row,display)
+            if money is not None:
+                if row.get("valuation_verified",True):
+                    label+=f" · 변경분 {money(reference)}"
+                else:
+                    label+=" · 변경분 평가액 미검증"
+            items.append(label)
+        return " · ".join(items)
+
     def headline(changes, side):
-        return ", ".join(f"{sector}({len(v[side])}행)" for sector,v in changes[:2]) or "없음"
+        lines=[]
+        for sector,values in changes[:2]:
+            val=_formatted_value(values[side])
+            lines.append(f"{sector}({len(values[side])}행"+(f", {val}" if val else "")+")")
+        return ", ".join(lines) or "없음"
 
     lines=[
         "13F 비옵션 증권 업종 방향 — 분기말 보유수량 변화",
@@ -276,9 +355,10 @@ def build_sector_direction(changes, display, *, top_n=4):
     for i,(sector,data) in enumerate(buy[:top_n],1):
         rows=data["buy"]
         newly=sum(r["action"]=="신규 매수" for _,r in rows)
-        ordered=sorted(rows,key=lambda v:(-v[0],-abs(v[1].get("delta_shares") or 0)))[:2]
-        lines.append(f"{i}. {sector} — {len(rows)}행 (신규 {newly}·확대 {len(rows)-newly})")
-        lines.append("   "+ " · ".join(_short_share_move(r,display) for _,r in ordered))
+        val=_formatted_value(rows)
+        lines.append(f"{i}. {sector} — {len(rows)}행 (신규 {newly}·확대 {len(rows)-newly})"+
+                     (f" · 변경분 {val}" if val else ""))
+        lines.append("   "+_representative(rows))
     if len(buy)>top_n:
         lines.append(f"• 그 외 확대 업종 {len(buy)-top_n}개")
 
@@ -288,9 +368,10 @@ def build_sector_direction(changes, display, *, top_n=4):
     for i,(sector,data) in enumerate(sell[:top_n],1):
         rows=data["sell"]
         exits=sum(r["action"]=="전량 청산" for _,r in rows)
-        ordered=sorted(rows,key=lambda v:(-v[0],-abs(v[1].get("delta_shares") or 0)))[:2]
-        lines.append(f"{i}. {sector} — {len(rows)}행 (청산 {exits}·축소 {len(rows)-exits})")
-        lines.append("   "+ " · ".join(_short_share_move(r,display) for _,r in ordered))
+        val=_formatted_value(rows)
+        lines.append(f"{i}. {sector} — {len(rows)}행 (청산 {exits}·축소 {len(rows)-exits})"+
+                     (f" · 변경분 {val}" if val else ""))
+        lines.append("   "+_representative(rows))
     if len(sell)>top_n:
         lines.append(f"• 그 외 축소 업종 {len(sell)-top_n}개")
 
@@ -314,7 +395,10 @@ def build_sector_direction(changes, display, *, top_n=4):
         lines.append(f"• 수량·유형 불명 {other}행: 방향 산정 제외")
     lines.extend([
         "※ 순위는 분류된 비옵션 증권(보통주·ETF 등)의 변동행 수 기준이며, 실제 주문·자금이동 규모의 순위가 아닙니다.",
-        "※ 일부 공시에서 신고 평가액과 주수×주가의 단위 불일치가 확인되어, 검증 전 달러·원화 금액은 표시하지 않습니다.",
+        ("※ 검증된 13F 변경분 평가액만 달러·원화로 병기합니다. "
+         "일부 듀케인 2026년 공시값은 독립 검증한 접수번호에 한해 ×1,000 보정했으며 "
+         "향후 미검증 공시는 금액을 보류합니다." if money is not None else
+         "※ 일부 공시에서 신고 평가액과 주수×주가의 단위 불일치가 확인되어, 검증 전 달러·원화 금액은 표시하지 않습니다."),
         "※ 13F는 분기말 보유 현황이며 매매시점·매매단가·공매도·현금은 확인되지 않습니다.",
     ])
     return "\n".join(lines)
