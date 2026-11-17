@@ -176,15 +176,13 @@ def build_message_with_owner(label, filing, previous, changes, info_url):
     this changes only the manager Telegram presentation, not dedup or routing.
     """
     owner = PORTFOLIO_OWNER_KR.get(label, watch.MANAGER_KR.get(label, label))
-    rate, basis = ensure_fx()
     lines = [
-        f"[13F 산업별 매수·매도 방향] {owner}",
+        f"[13F 업종별 보유 확대·축소] {owner}",
         f"보유 기준 {filing['report_date']} · 공시 {filing['filing_date']} · "
         f"비교 {previous['report_date'] if previous else '직전 분기 미확인'}",
-        f"원화 환산 1달러={rate:,.2f}원 ({basis})",
         "",
-        sector_rank.build_sector_brief(
-            changes, money_with_krw, watch.security_name_kr, top_n=3),
+        sector_rank.build_sector_direction(
+            changes, watch.security_name_kr, top_n=4),
         f"SEC 공식 원문: {info_url}",
     ]
     return "\n".join(lines)
