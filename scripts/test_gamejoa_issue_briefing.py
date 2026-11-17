@@ -279,6 +279,51 @@ class IssueBriefingTests(unittest.TestCase):
             self.assertIn("삼성전자 195,000원(-6.70%)", (Path(temp) / "gamejoa_issue_briefing.md").read_text(encoding="utf-8"))
             send.assert_not_called()
 
+    def test_live_reservation_prevents_repeat_after_ack_and_after_timeout(self):
+        stamp = now("2026-11-17T06:31:00+09:00")
+        runner = SimpleNamespace(hydrate_korean_business_details=lambda rows, when: [],
+                                 korean_news_search_url=lambda query: "https://search.test/" + query,
+                                 quality_display_alerts=lambda alerts, limit: [],
+                                 market_materiality=materiality,
+                                 collect_fx_snapshot=lambda alerts, when: {"rates": {}},
+                                 telegram_text_and_entities=lambda text: (text, []),
+                                 telegram_utf16_length=lambda text: len(text))
+        base = SimpleNamespace(kst_now=lambda: stamp, SOURCES=[])
+        strict = SimpleNamespace(collect_items=lambda when: ([], []), classify=lambda row, when: None)
+        telegram = SimpleNamespace(normalize_alert=lambda item: item,
+                                   filter_previously_seen_alerts=lambda alerts, when, lane: ([], []))
+        pipeline = SimpleNamespace(runner=runner, base=base, telegram=telegram,
+                                   contract=SimpleNamespace(strict=strict))
+        class Ledger:
+            slots = {}
+            def __init__(self, repo, token): pass
+            def has_slot(self, key): return key in self.slots
+            def update(self, key, run_id, status, message_id=None):
+                if status == "reserved" and key in self.slots:
+                    return False
+                self.slots[key] = {"run_id": run_id, "status": status, "message_id": message_id}
+                return True
+        env = {"BRIEFING_SLOT": "preopen", "TELEGRAM_DRY_RUN": "false", "BRIEFING_REFRESH_SEEN": "false",
+               "GITHUB_REF": "refs/heads/main", "GITHUB_RUN_ID": "1", "GITHUB_REPOSITORY": "owner/repo",
+               "GITHUB_TOKEN": "token", "TELEGRAM_BOT_TOKEN": "token", "TELEGRAM_CHAT_ID": "chat"}
+        with tempfile.TemporaryDirectory() as temp, patch.object(b, "OUT", Path(temp)), \
+                patch.dict(sys.modules, {"gamejoa_preopen_news_radar_fda_quality_runner": pipeline}), \
+                patch.dict(os.environ, env), patch.object(b, "get_bytes", side_effect=TimeoutError()), \
+                patch.object(b, "GitHubLedger", Ledger), patch.object(b, "send_telegram", return_value=123) as send:
+            self.assertEqual(b.main(), 0)
+            receipt = json.loads((Path(temp) / "gamejoa_issue_briefing.json").read_text(encoding="utf-8"))
+            self.assertEqual((receipt["delivery_status"], receipt["message_id"]), ("sent", 123))
+            self.assertEqual(b.main(), 0)
+            self.assertEqual(send.call_count, 1)
+            self.assertEqual(json.loads((Path(temp) / "gamejoa_issue_briefing.json").read_text(encoding="utf-8"))["delivery_status"], "skipped_existing_reservation")
+            Ledger.slots.clear()
+            send.side_effect = RuntimeError("uncertain")
+            with self.assertRaisesRegex(RuntimeError, "uncertain"):
+                b.main()
+            self.assertEqual(Ledger.slots["2026-11-17:preopen"]["status"], "reserved")
+            self.assertEqual(b.main(), 0)
+            self.assertEqual(send.call_count, 2)
+
     def test_report_labels_sample_and_never_invents_stock_benefit(self):
         class Runner:
             @staticmethod
