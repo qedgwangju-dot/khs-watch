@@ -24,6 +24,19 @@ def main():
                   if "YPF" in str(r.get("issuer") or "").upper()]
         print(f"SEC_ISSUER_IDENTITY_DIAGNOSTIC period={when} rows={evidence}")
     changes=w.classify_changes(current,previous)
+    # Diagnostic: apparent exit/new pairs for the same issuer can be SEC
+    # identifier or share-class changes, not independent portfolio actions.
+    entrants=[x for x in changes if x["action"]=="신규 매수"]
+    departures=[x for x in changes if x["action"]=="전량 청산"]
+    candidate_pairs=[
+        (e.get("issuer"),e.get("cusip"),e.get("title"),int(e.get("shares") or 0),
+         d.get("cusip"),d.get("title"),int(d.get("shares") or 0))
+        for e in entrants for d in departures
+        if str(e.get("issuer") or "").strip().upper()
+            ==str(d.get("issuer") or "").strip().upper()
+        and str(e.get("putcall") or "").upper()==str(d.get("putcall") or "").upper()
+    ]
+    print(f"SEC_POTENTIAL_ID_RECLASSIFICATION_PAIRED rows={candidate_pairs}")
     # Same CUSIP, revised SEC security title: not two offsetting trades.
     ypf=[x for x in changes if "YPF" in str(x.get("issuer") or "").upper()]
     if (len(ypf)!=1 or ypf[0]["action"]!="보유 확대"
