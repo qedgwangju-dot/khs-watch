@@ -404,7 +404,8 @@ def line_for(x):
     )
 
 
-def build_message(label, filing, previous, changes, info_url):
+def build_message(label, filing, previous, changes, info_url,
+                  current_holdings=None, previous_holdings=None):
     sectors = sector_summary(changes)
     buys = top_rows(changes, True)
     sells = top_rows(changes, False)
@@ -540,7 +541,10 @@ def main():
             if previous:
                 prev, _ = parse_holdings(previous["cik"], previous["accession"])
             changes = classify_changes(cur, prev)
-            alerts.append(build_message(label, latest, previous, changes, info_url))
+            alerts.append(build_message(
+                label, latest, previous, changes, info_url,
+                current_holdings=cur, previous_holdings=prev,
+            ))
             pending_updates[label] = latest
         except Exception as e:
             print(f"ERROR parse {label}: {e}", file=sys.stderr)
