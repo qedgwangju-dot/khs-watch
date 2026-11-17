@@ -6,23 +6,25 @@
     "deferred_material_items": 0,
     "direct_official_items": 56,
     "errors": [
-      "Google News RSS 실패: (\"php2shell\" OR \"CVE-2026-109618\") (\"10 million\" OR \"10… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"AI agent\" security vulnerability exploit \"data leak\" \"… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (\"AI agent\" OR agentic) \"bypassed security controls\" OR… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"AI agent\" \"undesirable behavior\" OR \"unintended behavi… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (\"AI model\" OR \"frontier model\") cybersecurity capabili… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) system card cyb… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell OR NemoClaw) security vu… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) data exfiltration netwo… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) deployment bloc… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"CVE-2026-115560\" PHP (advisory OR patch OR fix OR expl… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"아르텍스\" (820만 OR 90곳 OR 검거 OR 추가 수사)… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"Meta Muse\" security vulnerability exploit privacy patc… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (Anthropic OR Claude) security vulnerability exploit \"p… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"rogue agent\" AI OpenAI Anthropic Google Meta security… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Preparedness F… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic) model behavior guardrail sandbox … / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: frontier AI independent auditor found sandbox unauthori… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic) unauthorized access incidents tra… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) model release c… / HTTPError: HTTP Error 429: Too Many Requests",
       "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) limited release… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic) \"blocking alignment evaluation\" f… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) regression test… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"Abdulrahman Alfozan\" (detention OR court OR hearing OR… / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) tool-use traini… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"Jamie Dimon\" (Mythos OR Anthropic) cyber risk bank fin… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (Anthropic OR \"AI model\") (\"self-replicating\" OR \"self … / HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "material_items": 14,
     "new_material_items": 0,
-    "raw_items": 91,
+    "raw_items": 94,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1564,5 +1566,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-17T11:46:31+09:00"
+  "updated_at_kst": "2026-11-17T12:06:08+09:00"
 }
