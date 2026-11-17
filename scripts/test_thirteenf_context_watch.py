@@ -49,9 +49,9 @@ def main():
     finally:
         w.info_xml_url=original_xml
 
-    def row(issuer,shares,pc=""):
+    def row(issuer,shares,pc="",cusip="123456789"):
         return {"issuer":issuer,"shares":shares,"value":shares*100,
-                "putcall":pc,"title":"COM","cusip":"123456789"}
+                "putcall":pc,"title":"COM","cusip":cusip}
     def make(prev=None,cur=None,url=None):
         return {"previous":{str(i):row(*x) for i,x in enumerate(prev or [])},
                 "current":{str(i):row(*x) for i,x in enumerate(cur or [])},
@@ -60,7 +60,8 @@ def main():
     holdings={
         "Duquesne Family Office":make(
             prev=[("SEAGATE TECHNOLOGY",122000),("UNITY SOFTWARE",738000),
-                  ("AMAZON.COM INC",541500),("TAIWAN SEMICONDUCTOR",606000)],
+                  ("AMAZON.COM INC",541500),("TAIWAN SEMICONDUCTOR",606000),
+                  ("ALPHABET INC",10000,"","02079K305")],
             cur=[("SEAGATE TECHNOLOGY",341790),("UNITY SOFTWARE",3956385),
                  ("AMAZON.COM INC",772600),("TAIWAN SEMICONDUCTOR",49000)]),
         "Situational Awareness":make(
@@ -85,7 +86,7 @@ def main():
     message=c.build_q3_cross_report(holdings)
     for phrase in ("마이크론 신고상 소멸", "샌디스크 콜옵션",
                    "엔비디아 신규보고", "시게이트 +180.2%",
-                   "인텔 -25.0%", "스페이스X +6.3%",
+                   "인텔 -25.0%", "스페이스X +6.3%", "GOOGL 신고상 소멸",
                    "지분 75.1%", "초과편입 1%→3%",
                    "매도 확정 금지", "달러 단위"):
         assert phrase in message, phrase
@@ -93,6 +94,9 @@ def main():
     ready["seen_context_events"]=[c.Q3_COMPARE_KEY]
     assert not c.q3_ready(ready)
     ready["seen_context_events"]=[]
+    ready["q3_pending_delivery"]={"key":c.Q3_COMPARE_KEY}
+    assert not c.q3_ready(ready)
+    del ready["q3_pending_delivery"]
     ready["managers"]["NVIDIA"]["report_date"]="2026-06-30"
     assert not c.q3_ready(ready)
     try:
