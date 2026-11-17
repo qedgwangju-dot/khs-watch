@@ -44,6 +44,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install Korean PNG chart font and renderer
+        run: |
+          python -m pip install --disable-pip-version-check 'Pillow>=11,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-nanum
+          test -s /usr/share/fonts/truetype/nanum/NanumGothic.ttf
       - name: Validate thresholds, recovery, date alignment and deduplication
         run: |
           python -m py_compile scripts/korea_credit_spread_watch.py
@@ -56,10 +62,10 @@ jobs:
     timeout-minutes: 12
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
-      # 코드 push는 무조건 미전송 검사, 명시적 [format-sample]만 1회 시험 발송.
-      # 정기 실행은 신규 공식 기준일당 1회 보고 + 확정 위험 경보; 중복은 상태파일로 차단.
-      DRY_RUN: ${{ ((github.event_name == 'push' && !contains(github.event.head_commit.message, '[format-sample]')) || (github.event_name == 'workflow_dispatch' && inputs.dry_run == 'true')) && 'true' || 'false' }}
-      FORMAT_SAMPLE_SEND: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[format-sample]') && 'true' || 'false' }}
+      # 모든 코드 push는 미전송 검증만 수행. 양식 시험 추가 발송 금지(하루 1건).
+      # 정기 실행은 사진 1장+설명 1개 메시지로 발송하고 성공 응답 후 상태 저장.
+      DRY_RUN: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.dry_run == 'true')) && 'true' || 'false' }}
+      FORMAT_SAMPLE_SEND: "false"
     steps:
       - name: Checkout latest production main
         uses: actions/checkout@v4
@@ -83,6 +89,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install Korean PNG chart font and renderer
+        run: |
+          python -m pip install --disable-pip-version-check 'Pillow>=11,<13'
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-nanum
+          test -s /usr/share/fonts/truetype/nanum/NanumGothic.ttf
       - name: Query Bank of Korea official market yields
         env:
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
@@ -103,13 +115,14 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
         run: python scripts/korea_credit_spread_watch.py --probe
-      - name: Preview alert without delivery on dry run
-        if: env.DRY_RUN == 'true' && hashFiles('out/korea_credit_spread_watch_alert.html') != ''
+      - name: Preview Korean risk-chart photo caption without delivery
+        if: env.DRY_RUN == 'true' && hashFiles('out/korea_credit_spread_watch_alert.html') != '' && hashFiles('out/korea_credit_spread_watch_chart.png') != ''
         run: |
-          echo "금리 경보 임계값 테스트 성공 / 텔레그램 미전송" >> "$GITHUB_STEP_SUMMARY"
+          echo "차트 PNG와 한글 위험 판정 생성 성공 / Telegram 미전송" >> "$GITHUB_STEP_SUMMARY"
           cat out/korea_credit_spread_watch_alert.html >> "$GITHUB_STEP_SUMMARY"
-      - name: Send confirmed daily report or risk alert to designated Telegram bot
-        if: env.DRY_RUN != 'true' && hashFiles('out/korea_credit_spread_watch_alert.html') != ''
+          file out/korea_credit_spread_watch_chart.png >> "$GITHUB_STEP_SUMMARY"
+      - name: Send one verified Korean risk-chart photo with caption to Telegram
+        if: env.DRY_RUN != 'true' && hashFiles('out/korea_credit_spread_watch_alert.html') != '' && hashFiles('out/korea_credit_spread_watch_chart.png') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
@@ -184,6 +197,7 @@ jobs:
             out/korea_credit_spread_watch_status.md
             out/korea_credit_spread_watch_health_pending.json
             out/korea_credit_spread_watch_alert.html
+            out/korea_credit_spread_watch_chart.png
             out/korea_credit_spread_watch_pending.json
             out/korea_credit_spread_watch_confirmed.json
           if-no-files-found: ignore

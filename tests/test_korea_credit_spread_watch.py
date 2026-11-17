@@ -290,22 +290,28 @@ class CreditWatchTests(unittest.TestCase):
         self.assertEqual((kind,due),("daily",True))
         pending=c.pending_delivery_state(prior,action,rows[-1],
             dt.datetime(2026,11,16,20,tzinfo=ZoneInfo("Asia/Seoul")),kind,due)
-        message="<b>국내 신용금리 일일 보고 | 주의</b>"
+        message="<b>국내 신용금리 일일 보고 | 종합 위험: 주의</b>"
         with tempfile.TemporaryDirectory() as directory:
             root=pathlib.Path(directory)
             alert=root/"daily.html"; statefile=root/"pending.json"; ack=root/"confirmed.json"
+            chart=root/"daily_chart.png"
             alert.write_text(message,encoding="utf-8")
+            chart.write_bytes(b"\x89PNG\r\n\x1a\n"+b"img"*90)
             statefile.write_text(__import__("json").dumps(pending),encoding="utf-8")
-            def fake(url,params=None):
+            def fake(url,params=None,photo=None):
                 if url.endswith("/getMe"): return {"ok":True,"result":{"username":c.BOT}}
-                if url.endswith("/sendMessage"):
+                if url.endswith("/sendPhoto"):
                     self.assertEqual(params["chat_id"],"-1234567")
+                    self.assertEqual(params["parse_mode"],"HTML")
+                    self.assertEqual(params["show_caption_above_media"],"true")
+                    self.assertTrue(photo.startswith(b"\x89PNG\r\n\x1a\n"))
                     return {"ok":True,"result":{"message_id":510,
-                        "text":c.telegram_plaintext(message),"chat":{"id":-1234567}}}
+                        "caption":c.telegram_plaintext(message),"chat":{"id":-1234567},
+                        "photo":[{"file_id":"TEST_PHOTO_ID"}]}}
                 raise AssertionError("Unexpected Telegram call")
             with patch.dict(c.os.environ,{"TELEGRAM_BOT_TOKEN":"TESTONLY",
                         "TELEGRAM_CHAT_ID":"-1234567","FORMAT_SAMPLE_SEND":"false"}):
-                with patch.object(c,"ALERT",alert),patch.object(c,"PENDING",statefile),patch.object(c,"ACK",ack):
+                with patch.object(c,"ALERT",alert),patch.object(c,"CHART",chart),patch.object(c,"PENDING",statefile),patch.object(c,"ACK",ack):
                     with patch.object(c,"telegram",side_effect=fake):
                         c.send(dt.datetime(2026,11,16,20,1,tzinfo=ZoneInfo("Asia/Seoul")))
             done=__import__("json").loads(statefile.read_text(encoding="utf-8"))
@@ -389,6 +395,81 @@ class CreditWatchTests(unittest.TestCase):
                         with self.assertRaisesRegex(RuntimeError,"자정 경과"):
                             c.send(dt.datetime(2026,11,17,0,1,tzinfo=ZoneInfo("Asia/Seoul")))
             self.assertFalse(ack.exists())
+
+    def test_exact_nov16_risk_vs_direction_caption(self):
+        rows=sample(51,69.3,n=17)
+        rows[-6].update(cp_cd=51.0,credit=69.3)
+        rows[-2].update(cp_cd=51.0,credit=67.5)
+        rows[-1].update(date="20261116",cp_cd=50.0,credit=67.3,rank=2,
+                        rates={"cp":3.880,"cd":3.380,"corp":4.416,"gov":3.743})
+        act=c.decide(rows,{"notified_rank":2})
+        now=dt.datetime(2026,11,17,4,35,tzinfo=ZoneInfo("Asia/Seoul"))
+        caption=c.photo_caption(rows,act,now,daily=True)
+        self.assertIn("종합 위험: 주의",caption)
+        self.assertIn("최근 방향: 부분 개선 (단기 보합 / 회사채 개선)",caption)
+        self.assertIn("CP–CD 50.0bp [주의]",caption)
+        self.assertIn("AA- 회사채 차이 67.3bp [안정]",caption)
+        self.assertIn("공식 기준일 2026-11-16",caption)
+        self.assertLessEqual(len(c.telegram_plaintext(caption)),1024)
+        with tempfile.TemporaryDirectory() as d:
+            target=pathlib.Path(d)/"chart.png"
+            c.render_chart(rows,act,now,target)
+            self.assertGreater(target.stat().st_size,100)
+            self.assertLessEqual(target.stat().st_size,9_000_000)
+            from PIL import Image
+            with Image.open(target) as img:
+                self.assertEqual(img.format,"PNG")
+                self.assertEqual(img.size,(1440,1580))
+                img.verify()
+
+    def test_photo_delivery_rejects_missing_photo_in_telegram_reply(self):
+        rows=sample(52,68.3)
+        now=dt.datetime(2026,11,16,20,1,tzinfo=ZoneInfo("Asia/Seoul"))
+        act=c.decide(rows,{"notified_rank":2})
+        pending=c.pending_delivery_state({"notified_rank":2},act,rows[-1],now,"daily",True)
+        with tempfile.TemporaryDirectory() as d:
+            root=pathlib.Path(d)
+            alert=root/"caption.html"; chart=root/"chart.png"; ack=root/"ack.json"; statefile=root/"state.json"
+            alert.write_text("<b>일일 보고</b>",encoding="utf-8")
+            chart.write_bytes(b"\x89PNG\r\n\x1a\n"+b"img"*90)
+            statefile.write_text(__import__("json").dumps(pending),encoding="utf-8")
+            def bad(url,params=None,photo=None):
+                if url.endswith("/getMe"): return {"ok":True,"result":{"username":c.BOT}}
+                if url.endswith("/sendPhoto"):
+                    return {"ok":True,"result":{"message_id":511,
+                        "caption":"일일 보고","chat":{"id":-1234567},"photo":[]}}
+                raise AssertionError("Unexpected network request")
+            with patch.dict(c.os.environ,{"TELEGRAM_BOT_TOKEN":"TESTONLY",
+                                   "TELEGRAM_CHAT_ID":"-1234567","FORMAT_SAMPLE_SEND":"false"}):
+                with patch.object(c,"ALERT",alert),patch.object(c,"CHART",chart),patch.object(c,"ACK",ack),patch.object(c,"PENDING",statefile):
+                    with patch.object(c,"telegram",side_effect=bad):
+                        with self.assertRaisesRegex(RuntimeError,"사진 실제 첨부 확인 실패"):
+                            c.send(now)
+            self.assertFalse(ack.exists())
+            self.assertNotIn("last_delivery_receipt",__import__("json").loads(statefile.read_text()))
+
+    def test_multipart_upload_is_one_photo_request(self):
+        # 실제 네트워크를 사용하지 않고 multipart 요청 본문·PNG 첨부를 검사한다.
+        from unittest.mock import MagicMock
+        class FakeHTTP:
+            def __enter__(self): return self
+            def __exit__(self,*args): return False
+            def read(self): return b'{"ok":true,"result":{"message_id":1}}'
+        def check_request(req,timeout):
+            self.assertEqual(req.get_method(),"POST")
+            self.assertIn("multipart/form-data",req.headers["Content-type"])
+            payload=req.data
+            self.assertIn(b'name="photo"; filename="credit_spread.png"',payload)
+            self.assertIn(b'Content-Type: image/png',payload)
+            self.assertIn(b"\\x89PNG",payload.replace(b"\x89PNG",b"\\x89PNG"))
+            self.assertIn(b'name="caption"',payload)
+            return FakeHTTP()
+        with patch.object(c.urllib.request,"urlopen",side_effect=check_request):
+            response=c.telegram("https://api.telegram.org/botTEST/sendPhoto",
+                    {"chat_id":"-1234567","caption":"주의","parse_mode":"HTML"},
+                    photo=b"\x89PNG\r\n\x1a\n"+b"123")
+        self.assertTrue(response["ok"])
+
     def test_utc_cron_mapping_and_health_persistence_declared(self):
         path=pathlib.Path(__file__).parents[1]/".github/workflows/korea-credit-spread-telegram-watch.yml"
         workflow=path.read_text(encoding="utf-8")

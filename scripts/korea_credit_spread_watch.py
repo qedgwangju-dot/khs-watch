@@ -19,6 +19,7 @@ SOURCE="https://ecos.bok.or.kr/#/SearchStat"
 BOT="khs8879887988798879_bot"
 STATE=pathlib.Path("data/korea_credit_spread_watch_state.json")
 ALERT=pathlib.Path("out/korea_credit_spread_watch_alert.html")
+CHART=pathlib.Path("out/korea_credit_spread_watch_chart.png")
 PENDING=pathlib.Path("out/korea_credit_spread_watch_pending.json")
 ACK=pathlib.Path("out/korea_credit_spread_watch_confirmed.json")
 STATUS=pathlib.Path("out/korea_credit_spread_watch_status.md")
@@ -310,6 +311,159 @@ def verified_health_snapshot(rows,codes,now,decision):
             "source":SOURCE,"stat_code":TABLE,
             "codes":codes,"note":"원자료 검증 성공 기록. 텔레그램 발송 확인과는 별개"}
 
+
+def overall_trend(rows):
+    """종합 위험 절대수준과 최근 5영업일 추세는 별도로 표현한다."""
+    d=direction_overview(rows)
+    a,b=d["cp"][0],d["aa"][0]
+    if a==b=="개선": return "동반 개선"
+    if a==b=="악화": return "동반 악화"
+    if a==b=="보합": return "보합"
+    if "악화" in (a,b) and "개선" in (a,b): return "혼조"
+    return "부분 악화" if "악화" in (a,b) else "부분 개선"
+
+def photo_caption(rows,decision,now,daily=False,sample=False):
+    """한 장의 사진과 함께 전송할 짧은 텔레그램 캡션."""
+    latest,prev,week=rows[-1],rows[-2],rows[-6]
+    risk=LEVELS[decision["rank"]]
+    trend=direction_overview(rows)
+    cp_band,_=spread_bucket("cp_cd",latest["cp_cd"])
+    aa_band,_=spread_bucket("credit",latest["credit"])
+    day=dt.datetime.strptime(latest["date"],"%Y%m%d").strftime("%Y-%m-%d")
+    lines=[]
+    if sample: lines.append("<b>[양식 검증 · 시장 경보 아님]</b>")
+    lines += [
+        f"<b>국내 신용금리 {'일일 보고' if daily else '경보'} | 종합 위험: {risk}</b>",
+        f"<b>최근 방향: {overall_trend(rows)} (단기 {trend['cp'][0]} / 회사채 {trend['aa'][0]})</b>",
+        "위험 등급과 변화 방향은 별개 · 주의는 정상 회복을 뜻하지 않음",
+        f"CP–CD {latest['cp_cd']:.1f}bp [{cp_band}] "
+        f"전일 {signed(latest['cp_cd']-prev['cp_cd'])}bp / 5일 {signed(latest['cp_cd']-week['cp_cd'])}bp",
+        f"AA- 회사채 차이 {latest['credit']:.1f}bp [{aa_band}] "
+        f"전일 {signed(latest['credit']-prev['credit'])}bp / 5일 {signed(latest['credit']-week['credit'])}bp",
+        f"실제 금리: CP {latest['rates']['cp']:.3f}% · CD {latest['rates']['cd']:.3f}% · "
+        f"회사채 AA- {latest['rates']['corp']:.3f}% · 국고채 {latest['rates']['gov']:.3f}%",
+    ]
+    if LEVELS[latest["rank"]]!=risk:
+        lines.append(f"실측 {LEVELS[latest['rank']]} / 경보 {risk}(회복 연속 확인 중)")
+    if decision["transition"]!="유지": lines.append("단계 변경: "+html.escape(decision["transition"]))
+    lines.append("다음 위험 경계: "+html.escape(next_boundary(latest)))
+    if decision["rank"]>0:
+        low_cp,low_aa,n=DOWN[decision["rank"]-1]
+        count,_=recovery_streak(rows,decision["rank"]-1)
+        lines.append(f"하향: CP–CD {low_cp:g}bp·AA- {low_aa:g}bp 미만 동시 {n}영업일({count}/{n})")
+    if decision["events"]:
+        lines.append("선행경보: "+"; ".join(html.escape(x) for x in decision["events"]))
+    lines += [f"공식 기준일 {day} · 한국은행 ECOS {TABLE} (자체 위험 기준)",SOURCE]
+    caption="\n".join(lines)
+    if len(telegram_plaintext(caption))>1024 or len(caption)>1150:
+        raise ValueError("Telegram 사진 설명 길이 초과: 생략 없이 발송 차단")
+    return caption
+
+def _kr_font(size,bold=False):
+    from PIL import ImageFont
+    name="NanumGothicBold.ttf" if bold else "NanumGothic.ttf"
+    alt="NanumBarunGothicBold.ttf" if bold else "NanumBarunGothic.ttf"
+    for filename in (name,alt):
+        candidate=pathlib.Path("/usr/share/fonts/truetype/nanum")/filename
+        if candidate.is_file(): return ImageFont.truetype(str(candidate),size)
+    raise RuntimeError("한글 이미지 차트 글꼴 없음: 발송 중단")
+
+def render_chart(rows,decision,now,target):
+    """두 개의 별도 시계열 차트·위험 단계·상승/개선 추세를 한 PNG에 표현."""
+    from PIL import Image,ImageDraw
+    if len(rows)<7: raise ValueError("차트 공표일 7개 미만")
+    W,H=1440,1580
+    pic=Image.new("RGB",(W,H),"#F4F7FB")
+    draw=ImageDraw.Draw(pic)
+    font=lambda n:_kr_font(n)
+    bold=lambda n:_kr_font(n,True)
+    navy="#12243D"; gray="#50647B"
+    colors={"안정":("#DDF5E9","#166948"),"관찰":("#FFF2CA","#806208"),
+            "주의":("#FFE4C6","#A45D08"),"악화":("#FBD7DA","#AC303E"),
+            "심각":("#F4B9C1","#841525")}
+    risk=LEVELS[decision["rank"]]
+    d=direction_overview(rows)
+    latest,prev=rows[-1],rows[-2]
+    day=dt.datetime.strptime(latest["date"],"%Y%m%d").strftime("%Y-%m-%d")
+    draw.rectangle((0,0,W,261),fill=navy)
+    draw.text((62,30),"국내 신용금리 · 위험 추세 차트",font=bold(50),fill="#FFFFFF")
+    draw.text((63,99),f"한국은행 ECOS {TABLE} · 공식 기준일 {day}",font=font(29),fill="#CAD7E9")
+    bg,fg=colors[risk]
+    draw.rounded_rectangle((61,163,660,237),radius=15,fill=bg)
+    draw.text((87,174),f"현재 종합 위험: {risk}",font=bold(45),fill=fg)
+    draw.rounded_rectangle((683,163,1380,237),radius=15,fill="#E3EBF7")
+    draw.text((709,179),f"최근 방향: {overall_trend(rows)}",font=bold(40),fill="#254D7C")
+    def card(x0,label,value,bucket,change,trend):
+        x1=x0+644
+        draw.rounded_rectangle((x0,291,x1,497),radius=20,fill="#FFFFFF")
+        draw.text((x0+28,316),label,font=bold(34),fill=navy)
+        draw.text((x0+28,369),f"{value:.1f} bp",font=bold(62),fill=navy)
+        bb,ff=colors[bucket]
+        draw.rounded_rectangle((x1-177,387,x1-24,446),radius=14,fill=bb)
+        draw.text((x1-147,399),bucket,font=bold(33),fill=ff)
+        draw.text((x0+28,457),f"전일 {signed(change)}bp · 5일 {trend}",
+                  font=font(27),fill=gray)
+    cp,_=spread_bucket("cp_cd",latest["cp_cd"])
+    aa,_=spread_bucket("credit",latest["credit"])
+    card(60,"CP–CD · 기업 단기자금",latest["cp_cd"],cp,
+         latest["cp_cd"]-prev["cp_cd"],d["cp"][0])
+    card(737,"AA- 회사채 · 국고채",latest["credit"],aa,
+         latest["credit"]-prev["credit"],d["aa"][0])
+    def panel(top,metric,title,bucket,trend,color,bands):
+        draw.rounded_rectangle((60,top,1380,top+438),radius=19,fill="#FFFFFF")
+        draw.text((90,top+25),title,font=bold(35),fill=navy)
+        fill,fg=colors[bucket]
+        draw.rounded_rectangle((1020,top+28,1343,top+84),radius=12,fill=fill)
+        draw.text((1040,top+40),f"{bucket} · {trend}",font=bold(27),fill=fg)
+        hist=rows[-15:]
+        vals=[float(z[metric]) for z in hist]
+        lower,upper=min(vals),max(vals)
+        pad=max(1.5,(upper-lower)*0.3)
+        lower-=pad;upper+=pad
+        xL,xR=153,1310; yT,yB=top+105,top+283
+        def to_y(v): return round(yB-(v-lower)/(upper-lower)*(yB-yT))
+        for k in range(3):
+            v=lower+(upper-lower)*k/2
+            y=to_y(v)
+            draw.line((xL,y,xR,y),fill="#DDE6F0",width=2)
+            draw.text((81,y-17),f"{v:.1f}",font=font(22),fill=gray)
+        pts=[(round(xL+i*(xR-xL)/max(1,len(vals)-1)),to_y(v))
+             for i,v in enumerate(vals)]
+        if len(pts)>1: draw.line(pts,fill=color,width=7)
+        for x,y in pts[:-1]: draw.ellipse((x-5,y-5,x+5,y+5),fill=color)
+        x,y=pts[-1]
+        draw.ellipse((x-13,y-13,x+13,y+13),outline=color,fill="#FFFFFF",width=6)
+        for xpos,at in ((xL,hist[0]),(xR-100,hist[-1])):
+            val=at["date"]
+            draw.text((xpos,yB+14),val[4:6]+"/"+val[6:8],font=font(23),fill=gray)
+        seg=(xR-xL)/5
+        for idx,(name,range_txt) in enumerate(zip(LEVELS,bands)):
+            l=round(xL+idx*seg); r=round(xL+(idx+1)*seg)-5
+            bb,ff=colors[name]
+            draw.rounded_rectangle((l,top+345,r,top+396),radius=9,fill=bb,
+                                   outline=ff if name==bucket else None,
+                                   width=5 if name==bucket else 1)
+            draw.text((l+9,top+356),name+" "+range_txt,font=bold(21),fill=ff)
+        draw.text((89,top+407),"위험 구간은 별도 기준 · 추세선 세로축은 최근 값에 맞춰 표시",
+                  font=font(20),fill=gray)
+    panel(523,"cp_cd","① CP–CD 금리차 (bp)",cp,d["cp"][0],"#C56A19",
+          ["30미만","30~50","50~70","70~100","100이상"])
+    panel(977,"credit","② AA- 회사채 금리차 (bp)",aa,d["aa"][0],"#226BB2",
+          ["70미만","70~80","80~90","90~120","120이상"])
+    draw.rounded_rectangle((61,1437,1380,1555),radius=18,fill="#E7EDF5")
+    draw.text((90,1458),
+              f"5영업일: 단기 {d['cp'][0]} ({signed(d['cp_delta'])}bp) · "
+              f"회사채 {d['aa'][0]} ({signed(d['aa_delta'])}bp)",
+              font=bold(28),fill=navy)
+    draw.text((90,1508),"위험 단계는 자체 감시 기준이며 금융당국 공식 위기등급이 아님",
+              font=font(25),fill=gray)
+    path=pathlib.Path(target)
+    path.parent.mkdir(parents=True,exist_ok=True)
+    pic.save(path,format="PNG",optimize=True)
+    if not 100<path.stat().st_size<=9_000_000:
+        raise ValueError("차트 이미지 크기 이상")
+    return path
+
 def render(rows,decision,now,sample=False,daily=False):
     if len(rows)<7: raise ValueError("원문 통계가 7공표일 미만이라 메시지 생성 불가")
     latest,prev,week=rows[-1],rows[-2],rows[-6]
@@ -392,11 +546,30 @@ def telegram_plaintext(message):
         raise ValueError("텔레그램 미허용 HTML 태그")
     return html.unescape(re.sub(r"</?b>","",message))
 
-def telegram(url,params=None):
-    req=urllib.request.Request(url,method="POST" if params else "GET",
-         data=urllib.parse.urlencode(params).encode() if params else None)
+def telegram(url,params=None,photo=None):
+    """1개의 sendPhoto 응답으로 이미지와 한국어 설명을 동시에 확인."""
+    if photo is None:
+        req=urllib.request.Request(url,method="POST" if params else "GET",
+             data=urllib.parse.urlencode(params).encode() if params else None)
+    else:
+        if not isinstance(photo,bytes) or not photo.startswith(b"\x89PNG\r\n\x1a\n"):
+            raise ValueError("PNG가 아닌 파일은 사진으로 전송할 수 없음")
+        boundary="----CreditWatch"+os.urandom(12).hex()
+        chunks=[]
+        for key,value in (params or {}).items():
+            chunks.append((f'--{boundary}\r\n'
+                           f'Content-Disposition: form-data; name="{key}"\r\n\r\n'
+                           f'{value}\r\n').encode("utf-8"))
+        chunks.append((f'--{boundary}\r\n'
+                       'Content-Disposition: form-data; name="photo"; filename="credit_spread.png"\r\n'
+                       'Content-Type: image/png\r\n\r\n').encode("utf-8"))
+        chunks.append(photo)
+        chunks.append(("\r\n--"+boundary+"--\r\n").encode("utf-8"))
+        req=urllib.request.Request(
+            url,method="POST",data=b"".join(chunks),
+            headers={"Content-Type":"multipart/form-data; boundary="+boundary})
     try:
-        with urllib.request.urlopen(req,timeout=30) as response:
+        with urllib.request.urlopen(req,timeout=35) as response:
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         raise RuntimeError(f"Telegram HTTP {exc.code} (인증정보 비공개)") from None
@@ -441,22 +614,31 @@ def send(now):
     if who.get("ok") is not True or got.lower()!=BOT.lower():
         raise RuntimeError(f"잘못된 텔레그램 봇: expected @{BOT} got @{got or 'unknown'}")
     message=ALERT.read_text(encoding="utf-8").strip()
-    if not message or len(message)>MAX_MESSAGE_CHARS:
-        raise ValueError("메시지 길이 또는 공백 오류")
+    if not message or len(telegram_plaintext(message))>1024:
+        raise ValueError("Telegram 사진 설명 1024자 초과 또는 내용 오류")
+    if not CHART.exists(): raise RuntimeError("한글 추세 차트 PNG가 없어 전송 중단")
+    photo=CHART.read_bytes()
+    if not photo.startswith(b"\x89PNG\r\n\x1a\n") or not 100<len(photo)<=9_000_000:
+        raise ValueError("차트 PNG 포맷·크기 이상")
     expected_text=telegram_plaintext(message)
-    reply=telegram(f"https://api.telegram.org/bot{token}/sendMessage",
-                   {"chat_id":chat,"text":message,"parse_mode":"HTML","disable_web_page_preview":"true"})
+    reply=telegram(f"https://api.telegram.org/bot{token}/sendPhoto",
+                   {"chat_id":chat,"caption":message,"parse_mode":"HTML",
+                    "show_caption_above_media":"true"},photo=photo)
     obj=reply.get("result") or {}
     mid=obj.get("message_id")
-    if reply.get("ok") is not True or not isinstance(mid,int) or mid<1 or not str(obj.get("text") or "").strip():
-        raise RuntimeError("Telegram 실제 메시지 수신 확인 실패")
-    if obj.get("text")!=expected_text:
-        raise RuntimeError("Telegram 응답 본문과 발송 원문이 다름: 내용 보존 미확인")
+    if reply.get("ok") is not True or not isinstance(mid,int) or mid<1:
+        raise RuntimeError("Telegram 사진 메시지 수신 확인 실패")
+    if obj.get("caption")!=expected_text:
+        raise RuntimeError("Telegram 사진 설명 원문과 응답 불일치")
+    if not isinstance(obj.get("photo"),list) or not any(
+            isinstance(p,dict) and p.get("file_id") for p in obj["photo"]):
+        raise RuntimeError("Telegram 사진 실제 첨부 확인 실패")
     if re.fullmatch(r"-?\d+",chat) and str((obj.get("chat") or {}).get("id"))!=chat:
-        raise RuntimeError("Telegram 수신 대화방 불일치")
+        raise RuntimeError("Telegram 사진 수신 대화방 불일치")
     receipt={"status":"confirmed","bot_username":got,"message_id":mid,
              "delivered_at_kst":now.isoformat(timespec="seconds"),
              "message_sha256":hashlib.sha256(message.encode()).hexdigest(),
+             "chart_sha256":hashlib.sha256(photo).hexdigest(),"photo_verified":True,
              "run_id":os.environ.get("GITHUB_RUN_ID","local")}
     ACK.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     if not sample:
@@ -470,7 +652,7 @@ def send(now):
 
 def watch(now):
     ALERT.parent.mkdir(parents=True,exist_ok=True)
-    for p in (ALERT,PENDING,ACK,HEALTH_PENDING): p.unlink(missing_ok=True)
+    for p in (ALERT,CHART,PENDING,ACK,HEALTH_PENDING): p.unlink(missing_ok=True)
     key=os.environ.get("ECOS_API_KEY","").strip()
     if not key: raise RuntimeError("기존 ECOS_API_KEY 보안 설정 누락")
     values,codes=fetch_rates(key,now)
@@ -499,7 +681,8 @@ def watch(now):
         "원천: "+SOURCE])+"\n",encoding="utf-8")
     print(f"credit_source_valid=true day={latest['date']} cp_cd={latest['cp_cd']} credit={latest['credit']} alert={action['send']} daily_due={daily_due} message_kind={kind}")
     if kind or sample or preview:
-        ALERT.write_text(render(rows,action,now,sample=sample,daily=(kind=="daily"))+"\n",encoding="utf-8")
+        ALERT.write_text(photo_caption(rows,action,now,sample=sample,daily=(kind=="daily"))+"\n",encoding="utf-8")
+        render_chart(rows,action,now,CHART)
     if kind and not sample and not preview:
         new=pending_delivery_state(state,action,latest,now,kind,daily_due)
         PENDING.write_text(json.dumps(new,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
