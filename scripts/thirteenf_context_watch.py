@@ -494,3 +494,231 @@ def q3_amount_followup_main():
     w.save_state(state)
     print(f"Q3_AMOUNT_TELEGRAM_CONFIRMED chat_match=true message_id={mid}")
     return True
+
+
+# 2026-11-17 WallstreetCN / Dow Jones follow-up to SEC 2026-Q3 Duquesne
+# 13F. This is NOT another new-filing alert: only newly corroborated facts
+# missing from the prior cross-manager digest are emphasized.
+DUQ_ARTICLE_KEY="13f-duquesne-2026q3-article-audit-20261117-v1"
+DUQ_ARTICLE_URL="https://wallstreetcn.com/articles/3786071"
+DUQ_Q3_ACCESSION="0001536411-26-000011"
+DUQ_Q2_ACCESSION="0001536411-26-000006"
+
+
+def duq_article_ready(state):
+    if DUQ_ARTICLE_KEY in state.get("seen_context_events",[]):
+        return False
+    if state.get("duq_article_pending_delivery"):
+        return False
+    manager=(state.get("managers") or {}).get("Duquesne Family Office") or {}
+    if manager.get("report_date")!="2026-09-30" or manager.get("accession")!=DUQ_Q3_ACCESSION:
+        return False
+    # This is an incremental editorial audit, not a substitute for the
+    # original filed-position and valuation messages.
+    return Q3_COMPARE_KEY in state.get("seen_context_events",[])
+
+
+def _duq_article_sec_sources(state):
+    """Confirm Q3 and Q2 exact SEC accessions and fetch both primary XMLs."""
+    manager=state["managers"]["Duquesne Family Office"]
+    cik=manager["cik"]
+    if cik!="0001536411":
+        raise RuntimeError("Duquesne SEC identity changed: no article alert")
+    filings=w.recent_13f(cik)
+    for acc,period in ((DUQ_Q3_ACCESSION,"2026-09-30"),
+                       (DUQ_Q2_ACCESSION,"2026-06-30")):
+        if not any(f["accession"]==acc and f["report_date"]==period
+                   and f["form"] in {"13F-HR","13F-HR/A"} for f in filings):
+            raise RuntimeError("Duquesne Q2/Q3 SEC accession-date match failed")
+    current,source=w.parse_holdings(cik,DUQ_Q3_ACCESSION)
+    prior,_=w.parse_holdings(cik,DUQ_Q2_ACCESSION)
+    if len(current)<55 or len(prior)<80:
+        raise RuntimeError("Incomplete Duquesne SEC 13F information table")
+    import thirteenf_sector_rank as ranking
+    factor3=ranking.verified_scale("Duquesne Family Office",
+                                 {"accession":DUQ_Q3_ACCESSION})
+    factor2=ranking.verified_scale("Duquesne Family Office",
+                                 {"accession":DUQ_Q2_ACCESSION})
+    if factor3!=1000 or factor2!=1000:
+        raise RuntimeError("Unaudited Duquesne 13F value unit: no article alert")
+    return {"current":current,"previous":prior,"url":source,
+            "factors":(factor3,factor2)}
+
+
+def _duq_article_position(positions,needle,scale,*,cusip=None):
+    subset=[r for r in positions.values()
+            if needle.upper() in str(r.get("issuer") or "").upper()
+            and not (r.get("putcall") or "")
+            and (cusip is None or str(r.get("cusip") or "")==cusip)]
+    quantity=int(round(sum(float(r["shares"]) for r in subset)))
+    dollars=sum(float(r["value"]) for r in subset)*scale
+    return quantity,dollars
+
+
+def build_duq_article_followup(snapshot,rate,basis):
+    """One short article-vs-SEC audit, scoped to NEW facts and corrections."""
+    from decimal import Decimal
+    import thirteenf_sector_rank as ranking
+    if not Decimal(str(rate)).is_finite() or float(rate)<=0:
+        raise RuntimeError("Duquesne article audit requires verified FX")
+    current=snapshot["current"]
+    previous=snapshot["previous"]
+    factor3,factor2=snapshot["factors"]
+    def p(name,cusip=None):
+        return (_duq_article_position(previous,name,factor2,cusip=cusip),
+                _duq_article_position(current,name,factor3,cusip=cusip))
+    inputs={
+        "AMD":p("ADVANCED MICRO"),
+        "SNDK":p("SANDISK"),
+        "GOOGL":p("ALPHABET",cusip="02079K305"),
+        "SPCX":p("SPACE EXPLORATION"),
+        "PLTR":p("PALANTIR"),
+        "APP":p("APPLOVIN"),
+        "TSM":p("TAIWAN SEMICONDUCTOR"),
+        "NEM":p("NEWMONT"),
+        "B":p("BARRICK"),
+        "AEM":p("AGNICO EAGLE"),
+        "NTRA":p("NATERA"),
+        "STX":p("SEAGATE"),
+    }
+    checks={
+        "AMD":(72900,0),
+        "SNDK":(34900,0),
+        "GOOGL":(336300,0),
+        "SPCX":(0,202125),
+        "PLTR":(0,80100),
+        "APP":(0,109460),
+        "TSM":(589680,32700),
+        "NTRA":(3186306,3160666),
+        "NEM":(0,380400),
+        "B":(0,1054600),
+        "AEM":(0,231050),
+        "STX":(122000,341790),
+    }
+    for key,(oldcount,newcount) in checks.items():
+        old,new=inputs[key]
+        if (old[0],new[0])!=(oldcount,newcount):
+            raise RuntimeError(f"SEC article disagreement {key}: {(old[0],new[0])} vs {(oldcount,newcount)}")
+    if not all((inputs[k][1][1]>0) for k in ("SPCX","PLTR","APP","NTRA")):
+        raise RuntimeError("SEC article new holdings missing verified valuation")
+    fullvalue=sum(float(r["value"]) for r in current.values())*factor3
+    ntra_value=inputs["NTRA"][1][1]
+    proportion=100*ntra_value/fullvalue if fullvalue else 0
+    if not (4_400_000_000<fullvalue<4_530_000_000 and 29.1<proportion<29.4):
+        raise RuntimeError("SEC 13F total/weight discrepancy; suppress 29.2% claim")
+
+    def amount(usd):
+        value=Decimal(str(usd))
+        won=value*Decimal(str(rate))
+        return ranking.compact_usd(value)+" ("+ranking.compact_krw(won)+")"
+
+    def entered(k,label):
+        _,(newshares,value)=inputs[k]
+        return f"• {label}: 신규 {newshares:,}주 · 3분기말 {amount(value)}"
+
+    def exited(k,label):
+        (oldshares,oldvalue),_=inputs[k]
+        return f"• {label}: 2분기 {oldshares:,}주 → 3분기 신고 없음 · 2분기말 {amount(oldvalue)}"
+
+    from math import isclose
+    oldtsm=inputs["TSM"][0][0]
+    newtsm=inputs["TSM"][1][0]
+    tsmpercent=100*(newtsm/oldtsm-1)
+    if not isclose(tsmpercent,-94.4547,abs_tol=.02):
+        raise RuntimeError("Unverified TSMC contraction")
+    return "\n".join([
+        "[드러켄밀러 13F · 11월 17일 기사 추가 교차검증]",
+        "SEC 신고 11월 16일 · 보유 기준 9월 30일 / 직전 6월 30일",
+        "■ 이번 기사에서 새로 확인한 신고 변화",
+        entered("SPCX","스페이스X"),
+        entered("PLTR","팔란티어(PLTR)"),
+        entered("APP","앱러빈(APP)"),
+        exited("AMD","AMD"),
+        "",
+        "■ 기존 알림과 대조",
+        exited("SNDK","샌디스크(SNDK)"),
+        exited("GOOGL","알파벳 A(GOOGL)"),
+        f"• TSMC 589,680→32,700주 ({tsmpercent:+.1f}%), 시게이트(STX) 122,000→341,790주(+180.2%).",
+        "• 금광업 신규: 뉴몬트(NEM) 380,400주·배릭(B) 1,054,600주·애그니코이글(AEM) 231,050주.",
+        f"• 나테라(NTRA) 3,160,666주 · 3분기말 평가액 {amount(ntra_value)}"
+        f" · 전체 13F 신고 평가액 {proportion:.1f}%로 1위(주식 수는 25,640주 감소).",
+        "",
+        "※ AMD·SNDK·GOOGL은 3분기말 신고에서 사라진 것이며 실제 매도일·매도가격은 미공개.",
+        "※ 반도체 노출 전체 청산이 아님: TSMC 잔여 보유, 시게이트 확대.",
+        "※ 금액은 분기말 평가액이며 실제 주문대금 아님. 듀케인 Q2·Q3 신고값 ×1,000 단위 보정(검증된 접수번호만).",
+        f"※ 1달러={rate:,.2f}원 · {basis}",
+        "SEC 원문: "+snapshot["url"],
+        "기사: "+DUQ_ARTICLE_URL,
+    ])
+
+
+def duq_article_followup_main():
+    state=w.load_state()
+    if not duq_article_ready(state):
+        print("DUQ_ARTICLE_NO_ACTION already_delivered_or_unready")
+        return False
+    sec=_duq_article_sec_sources(state)
+    from fx_api import daily_krw
+    quote=daily_krw()
+    body=build_duq_article_followup(sec,quote.rate,quote.basis)
+    if len(body)>3750:
+        raise RuntimeError("Duquesne article Telegram message exceeds single-send limit")
+    if (os.getenv("DUQ_ARTICLE_PROBE_ONLY","true").lower()=="true"
+            or os.getenv("DUQ_ARTICLE_ENABLED","false").lower()!="true"):
+        print(f"DUQ_ARTICLE_SEC_PROBE new_verified=true chars={len(body)}")
+        print("DUQ_ARTICLE_PREVIEW_BEGIN\n"+body+"\nDUQ_ARTICLE_PREVIEW_END")
+        return False
+
+    token=(os.getenv("THIRTEENF_TELEGRAM_BOT_TOKEN") or "").strip()
+    chat=(os.getenv("THIRTEENF_TELEGRAM_CHAT_ID") or
+          os.getenv("KHS_POLICY_TELEGRAM_CHAT_ID") or "").strip()
+    if not token or not chat:
+        raise RuntimeError("Duquesne article Telegram secret missing")
+    username=w.verify_bot(token)
+    if username.lower()!="khs887988798879_bot":
+        raise RuntimeError("Unexpected 13F alert bot")
+
+    # Reserve BEFORE sending; after an ambiguous response we must not replay.
+    state["duq_article_pending_delivery"]={
+        "key":DUQ_ARTICLE_KEY,
+        "q3_accession":DUQ_Q3_ACCESSION,
+        "q2_accession":DUQ_Q2_ACCESSION,
+        "reserved_utc":__import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
+    }
+    w.save_state(state)
+    import subprocess,time
+    subprocess.run(["git","config","user.name","github-actions[bot]"],check=True)
+    subprocess.run(["git","config","user.email","41898282+github-actions[bot]@users.noreply.github.com"],check=True)
+    subprocess.run(["git","add",w.STATE_PATH.as_posix()],check=True)
+    subprocess.run(["git","commit","-m","Reserve Duquesne 2026Q3 verified article follow-up"],check=True)
+    reserved=False
+    for attempt in range(4):
+        subprocess.run(["git","fetch","origin","main"],check=True)
+        subprocess.run(["git","rebase","origin/main"],check=True)
+        push=subprocess.run(["git","push","origin","HEAD:main"],capture_output=True,text=True)
+        if push.returncode==0:
+            reserved=True
+            break
+        print(f"DUQ_ARTICLE_RESERVATION_RACE attempt={attempt+1}")
+        time.sleep(attempt+1)
+    if not reserved:
+        raise RuntimeError("Duquesne article reservation not persisted; do not send")
+    print("DUQ_ARTICLE_DELIVERY_RESERVED_COMMIT_PUSHED")
+
+    receipt=w.telegram_api(token,"sendMessage",{
+        "chat_id":chat,"text":body,"disable_web_page_preview":"true",
+    })
+    mid=(receipt or {}).get("message_id")
+    actual_chat=str((receipt.get("chat") or {}).get("id") or "")
+    if mid is None or not actual_chat or (chat.lstrip("-").isdigit() and actual_chat!=chat):
+        raise RuntimeError("Duquesne article Telegram result uncertain; block resend")
+    state.pop("duq_article_pending_delivery",None)
+    state["seen_context_events"]=sorted(set(state.get("seen_context_events",[]))|{DUQ_ARTICLE_KEY})
+    state.setdefault("context_receipts",{})[DUQ_ARTICLE_KEY]={
+        "message_id":mid,"bot":username,
+        "q3_accession":DUQ_Q3_ACCESSION,"q2_accession":DUQ_Q2_ACCESSION,
+        "confirmed_utc":__import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
+    }
+    w.save_state(state)
+    print(f"DUQ_ARTICLE_TELEGRAM_CONFIRMED chat_match=true message_id={mid}")
+    return True
