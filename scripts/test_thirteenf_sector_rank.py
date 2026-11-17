@@ -167,6 +167,36 @@ def main():
     finally:
         entry.FX_RATE,entry.FX_BASIS=old_rate,old_basis
 
+    # Korean currency rendering is display-only: USD amounts retain their
+    # exact source values for all valuation and USD/KRW calculations.
+    assert sector.compact_usd(202_721_373)=="2.03억달러"
+    assert sector.compact_usd(131_696_500)=="1.32억달러"
+    assert sector.compact_usd(265_996_487)=="2.66억달러"
+    assert sector.compact_usd(146_045_336)=="1.46억달러"
+    assert sector.compact_usd(57_553_563)=="5,760만달러"
+    assert sector.compact_usd(105_000)=="11만달러"
+    assert sector.compact_usd(10_000)=="1만달러"
+    assert sector.compact_usd(100_500_000)=="1.01억달러"  # half-up not bankers
+    assert sector.compact_usd(0)=="0달러"
+    assert sector.compact_krw(202_721_373*1334.87)=="약 2,706억원"
+    assert sector.compact_krw(131_696_500*1334.87)=="약 1,758억원"
+    assert sector.compact_krw(146_045_336*1334.87)=="약 1,950억원"
+    assert sector.compact_krw(7_573_700_000_000)=="약 7.57조원"
+    assert sector.compact_krw(950_000_000)=="약 9.5억원"
+    assert sector.compact_krw(1_250_000_000)=="약 13억원"
+    assert sector.compact_krw(1_000_000_000)=="약 10억원"
+    assert entry._usd_text(202_721_373)=="2.03억달러"
+    assert entry._krw_text(270_606_679_000)=="약 2,706억원"
+    assert entry.money_with_krw(0).endswith("원)")
+
+    old_rate,old_basis=entry.FX_RATE,entry.FX_BASIS
+    try:
+        entry.FX_RATE,entry.FX_BASIS=1334.87,"회귀 검증"
+        assert entry.money_with_krw(202_721_373)=="2.03억달러 (약 2,706억원)"
+        assert entry.money_with_krw(146_045_336)=="1.46억달러 (약 1,950억원)"
+    finally:
+        entry.FX_RATE,entry.FX_BASIS=old_rate,old_basis
+
     print("13F sector position-ranking regression checks passed.")
 
 if __name__=="__main__":
