@@ -4,9 +4,9 @@
   "source_version": 9,
   "ray_official_index_verified": true,
   "maplight_track_version": 3,
-  "maplight_last_successful_check_kst": "2026-11-15T05:42:36+09:00",
-  "maplight_health_ok": false,
-  "maplight_optogenetics_bridge_verified": false,
+  "maplight_last_successful_check_kst": "2026-11-17T11:45:00+09:00",
+  "maplight_health_ok": true,
+  "maplight_optogenetics_bridge_verified": true,
   "maplight_seen_milestone_keys": [
     "maplight|financing|pipe-150m",
     "maplight|ml004|iris-phase2-results",
@@ -15,7 +15,7 @@
     "maplight|nobel-optogenetics-bridge",
     "maplight|portfolio|discovery-paused"
   ],
-  "last_checked_kst": "2026-11-17T05:59:49+09:00",
+  "last_checked_kst": "2026-11-17T11:45:00+09:00",
   "nobel_2026_verified": true,
   "seen_event_keys": [
     "d3e43c74900cbe45ced82930",
@@ -26,14 +26,14 @@
     "89edfd25162fb70a90bc15ef",
     "3b9006d3c6cdc45c8b4799ae",
     "a168e38fecc4618002c9078e",
+    "c86d41ca8fb34c35eec7ea49",
+    "c5a24b19156b204bb494d543",
+    "7068d58d13d508a32621ac78",
+    "00ed4a9deda349c6d10d12e3",
+    "518319b133f8374c9c1ae187",
     "c5b07942c2f87f613c2d6534",
     "8866680814947b6d915472c7",
-    "c86d41ca8fb34c35eec7ea49",
-    "518319b133f8374c9c1ae187",
-    "00ed4a9deda349c6d10d12e3",
-    "c5a24b19156b204bb494d543",
-    "f9150ec8a2689f8d887bf8b4",
-    "7068d58d13d508a32621ac78"
+    "f9150ec8a2689f8d887bf8b4"
   ],
   "trial_snapshots": {
     "NCT06460844": {
@@ -205,6 +205,22 @@
     "last_modified": "June. 05, 2026"
   },
   "maplight_trial_snapshots": {
+    "NCT05081245": {
+      "brief_title": "ML-004 in Adolescents and Adults With Autism Spectrum Disorders (ASD)",
+      "overall_status": "COMPLETED",
+      "phases": [
+        "PHASE2"
+      ],
+      "enrollment": 168,
+      "start_date": "2022-09-13",
+      "primary_completion": "2026-03-10",
+      "study_completion": "2026-04-17",
+      "last_update": "2026-05-19",
+      "conditions": [
+        "Autism Spectrum Disorder"
+      ],
+      "locations": 29
+    },
     "NCT06887192": {
       "brief_title": "A Study to Assess the Efficacy and Safety of ML-007C-MA for the Treatment of Alzheimer's Disease Psychosis",
       "overall_status": "RECRUITING",
@@ -220,6 +236,22 @@
         "Psychosis Associated With Alzheimer's Disease"
       ],
       "locations": 69
+    },
+    "NCT05889273": {
+      "brief_title": "ML-004 Open-Label Extension Study in Adults and Adolescents With Autism Spectrum Disorders (ASD)",
+      "overall_status": "ACTIVE_NOT_RECRUITING",
+      "phases": [
+        "PHASE2"
+      ],
+      "enrollment": 120,
+      "start_date": "2023-06-01",
+      "primary_completion": "2027-11",
+      "study_completion": "2027-12",
+      "last_update": "2026-07-20",
+      "conditions": [
+        "Autism Spectrum Disorder"
+      ],
+      "locations": 21
     },
     "NCT07459660": {
       "brief_title": "An Open-Label Study of ML-007C-MA in Adults With Alzheimer's Disease Psychosis",
@@ -237,38 +269,6 @@
       ],
       "locations": 11
     },
-    "NCT05081245": {
-      "brief_title": "ML-004 in Adolescents and Adults With Autism Spectrum Disorders (ASD)",
-      "overall_status": "COMPLETED",
-      "phases": [
-        "PHASE2"
-      ],
-      "enrollment": 168,
-      "start_date": "2022-09-13",
-      "primary_completion": "2026-03-10",
-      "study_completion": "2026-04-17",
-      "last_update": "2026-05-19",
-      "conditions": [
-        "Autism Spectrum Disorder"
-      ],
-      "locations": 29
-    },
-    "NCT07038876": {
-      "brief_title": "A Study to Assess the Efficacy and Safety of ML-007C-MA for the Treatment of Inpatient Adults With Schizophrenia",
-      "overall_status": "COMPLETED",
-      "phases": [
-        "PHASE2"
-      ],
-      "enrollment": 307,
-      "start_date": "2025-06-27",
-      "primary_completion": "2026-06-04",
-      "study_completion": "2026-06-11",
-      "last_update": "2026-07-09",
-      "conditions": [
-        "Schizophrenia"
-      ],
-      "locations": 24
-    },
     "NCT07459647": {
       "brief_title": "A Long-Term Open-Label Study of ML-007C-MA in Adults With Schizophrenia",
       "overall_status": "RECRUITING",
@@ -285,21 +285,21 @@
       ],
       "locations": 45
     },
-    "NCT05889273": {
-      "brief_title": "ML-004 Open-Label Extension Study in Adults and Adolescents With Autism Spectrum Disorders (ASD)",
-      "overall_status": "ACTIVE_NOT_RECRUITING",
+    "NCT07038876": {
+      "brief_title": "A Study to Assess the Efficacy and Safety of ML-007C-MA for the Treatment of Inpatient Adults With Schizophrenia",
+      "overall_status": "COMPLETED",
       "phases": [
         "PHASE2"
       ],
-      "enrollment": 120,
-      "start_date": "2023-06-01",
-      "primary_completion": "2027-11",
-      "study_completion": "2027-12",
-      "last_update": "2026-07-20",
+      "enrollment": 307,
+      "start_date": "2025-06-27",
+      "primary_completion": "2026-06-04",
+      "study_completion": "2026-06-11",
+      "last_update": "2026-07-09",
       "conditions": [
-        "Autism Spectrum Disorder"
+        "Schizophrenia"
       ],
-      "locations": 21
+      "locations": 24
     }
   },
   "cns_trial_ids": [],
@@ -307,9 +307,7 @@
   "source_errors": [
     "GenSight Biologics: HTTPError"
   ],
-  "maplight_source_errors": [
-    "MapLight 공식 RSS: MapLight RSS HTTP 403; official newsroom fallback: HTTPError status=403 retryable=false"
-  ],
+  "maplight_source_errors": [],
   "last_successful_delivery_kst": "2026-11-13T08:54:21+09:00",
   "telegram_message_ids": [
     342
