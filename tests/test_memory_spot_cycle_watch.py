@@ -63,6 +63,32 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
 
 
 
+
+    def test_google_news_429_paces_retries_without_suppressing_source_errors(self):
+        import io
+        import urllib.error
+        url = "https://news.google.com/rss/search?q=dram"
+        throttle = urllib.error.HTTPError(url, 429, "Too Many Requests",
+                                          {"Retry-After": "1"}, None)
+        with patch.object(w, "_GOOGLE_NEWS_NEXT_ALLOWED", 0.0), \
+             patch.object(w.urllib.request, "urlopen",
+                          side_effect=[throttle, io.BytesIO(b"<rss>ok</rss>")]) as reader, \
+             patch.object(w.time, "sleep") as sleeper:
+            self.assertEqual(w._fetch(url), b"<rss>ok</rss>")
+            self.assertEqual(reader.call_count, 2)
+            self.assertTrue(sleeper.called)
+
+    def test_google_news_429_exhaustion_keeps_existing_fail_closed_rule(self):
+        import urllib.error
+        url = "https://news.google.com/rss/search?q=memory"
+        throttle = urllib.error.HTTPError(url, 429, "Too Many Requests", {}, None)
+        with patch.object(w, "_GOOGLE_NEWS_NEXT_ALLOWED", 0.0), \
+             patch.object(w.urllib.request, "urlopen", side_effect=throttle) as reader, \
+             patch.object(w.time, "sleep"):
+            with self.assertRaises(urllib.error.HTTPError):
+                w._fetch(url)
+            self.assertEqual(reader.call_count, 3)
+
     def test_foxconn_q3_issuer_verification_never_treats_neocloud_as_signed(self):
         issuer = (
             "Hon Hai Technology Group (Foxconn) Announces Third Quarter 2026 Financial Results "

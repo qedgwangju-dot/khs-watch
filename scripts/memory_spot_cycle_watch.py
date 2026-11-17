@@ -25,6 +25,7 @@ import re
 import time
 import urllib.parse
 import urllib.request
+import urllib.error
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
@@ -532,7 +533,19 @@ def _rss_url(lang: str, query: str) -> str:
     return "https://news.google.com/rss/search?" + urllib.parse.urlencode(params)
 
 
+_GOOGLE_NEWS_MIN_GAP_SECONDS = 2.5
+_GOOGLE_NEWS_NEXT_ALLOWED = 0.0
+
+
 def _fetch(url: str) -> bytes:
+    """Respect Google News RSS rate limits without reusing stale feed results.
+
+    Every original source remains required. HTTP 429 pauses later RSS requests;
+    exhaustion propagates and existing fail-closed Telegram logic is preserved.
+    """
+    global _GOOGLE_NEWS_NEXT_ALLOWED
+    rss_host = urllib.parse.urlparse(url).hostname or ""
+    news_rss = rss_host.lower() == "news.google.com"
     req = urllib.request.Request(
         url,
         headers={
@@ -542,9 +555,25 @@ def _fetch(url: str) -> bytes:
     )
     last_error = None
     for attempt in range(3):
+        if news_rss:
+            pause = max(0.0, _GOOGLE_NEWS_NEXT_ALLOWED - time.monotonic())
+            if pause > 0:
+                time.sleep(pause)
+            _GOOGLE_NEWS_NEXT_ALLOWED = time.monotonic() + _GOOGLE_NEWS_MIN_GAP_SECONDS
         try:
             with urllib.request.urlopen(req, timeout=25) as response:
                 return response.read()
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if news_rss and exc.code == 429:
+                retry_after = (exc.headers.get("Retry-After", "") if exc.headers else "")
+                server_delay = float(retry_after) if str(retry_after).strip().isdigit() else 0.0
+                cooldown = min(60.0, max(server_delay, 10.0 * (attempt + 1)))
+                _GOOGLE_NEWS_NEXT_ALLOWED = max(
+                    _GOOGLE_NEWS_NEXT_ALLOWED, time.monotonic() + cooldown
+                )
+            elif attempt < 2:
+                time.sleep(1.2 * (attempt + 1))
         except Exception as exc:
             last_error = exc
             if attempt < 2:
