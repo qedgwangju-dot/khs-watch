@@ -325,31 +325,66 @@ def option_name_kr(putcall):
 
 
 def classify_changes(cur, prev):
-    changes = []
-    keys = set(cur) | set(prev)
-    for k in keys:
-        c = cur.get(k)
-        p = prev.get(k)
-        if c and not p:
-            action = "신규 매수"
-            delta_shares = c["shares"]
-        elif p and not c:
-            action = "전량 청산"
-            delta_shares = -p["shares"]
+    """Compare complete 13F tables by CUSIP+option before security-title wording.
+
+    SEC security titles sometimes change (e.g. YPF SPON ADR CL D ->
+    SPONSORED ADS), while CUSIP, issuer, and instrument are identical.
+    Keying on CUSIP/title/putCall alone would fabricate an EXIT and a NEW.
+    Only reconcile if CUSIP+option is unambiguous *in both quarters*.
+    """
+    from collections import Counter
+    def identity(record):
+        return (str(record.get("cusip") or "").strip().upper(),
+                str(record.get("putcall") or "").strip().upper())
+    current_count=Counter(identity(x) for x in cur.values())
+    prior_count=Counter(identity(x) for x in prev.values())
+    unique_previous={}
+    for key,p in prev.items():
+        k=identity(p)
+        if k[0] and prior_count[k]==1:
+            unique_previous[k]=(key,p)
+    used_previous=set()
+    changes=[]
+    for k,c in sorted(cur.items()):
+        p=prev.get(k)
+        if p is not None:
+            used_previous.add(k)
         else:
-            delta_shares = c["shares"] - p["shares"]
-            if p["shares"] == 0 and c["shares"] == 0:
+            ident=identity(c)
+            match=unique_previous.get(ident)
+            if (match and current_count[ident]==1
+                    and str(match[1].get("issuer") or "").strip().upper()
+                        == str(c.get("issuer") or "").strip().upper()):
+                oldkey,p=match
+                if oldkey not in used_previous:
+                    used_previous.add(oldkey)
+                    print(f"13F_SECURITY_TITLE_RECONCILED "
+                          f"cusip={ident[0]} prior_title={p.get('title')} "
+                          f"current_title={c.get('title')}")
+                else:
+                    p=None
+        if p is None:
+            action="신규 매수"
+            delta_shares=float(c["shares"])
+        else:
+            delta_shares=float(c["shares"])-float(p["shares"])
+            tol=max(1.0,abs(float(p["shares"]))*1e-6)
+            if abs(delta_shares)<=tol:
                 continue
-            tol = max(1.0, abs(p["shares"]) * 1e-6)
-            if abs(delta_shares) <= tol:
-                continue
-            action = "보유 확대" if delta_shares > 0 else "보유 축소"
-        x = dict(c or p)
-        x["action"] = action
-        x["delta_shares"] = delta_shares
-        x["cur_value"] = c["value"] if c else 0.0
-        x["prev_value"] = p["value"] if p else 0.0
-        x["sector"] = sector_for(x["issuer"])
+            action="보유 확대" if delta_shares>0 else "보유 축소"
+        x=dict(c)
+        x.update({"action":action,"delta_shares":delta_shares,
+                  "cur_value":float(c["value"]),
+                  "prev_value":float(p["value"]) if p else 0.0,
+                  "sector":sector_for(c["issuer"])})
+        changes.append(x)
+    for k,p in sorted(prev.items()):
+        if k in used_previous:
+            continue
+        x=dict(p)
+        x.update({"action":"전량 청산","delta_shares":-float(p["shares"]),
+                  "cur_value":0.0,"prev_value":float(p["value"]),
+                  "sector":sector_for(p["issuer"])})
         changes.append(x)
     return changes
 
