@@ -434,6 +434,10 @@ def _statement_with_actual_action(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if _conditional_nuclear_inspection_headline(row):
+        return '이란 · 종전 전 핵시설 사찰 제한 입장'
+    if _us_north_korea_possible_meeting_headline(row):
+        return '미국·북한 · 정상 회동 가능성 발언'
     if _summit_venue_description_only(row):
         return _diplomatic_group(title) + ' · 정상회담 장소 보도'
     if kind == 'diplomatic_contact' and _qatar_us_iran_negotiations_contact(title):
@@ -1433,6 +1437,10 @@ def _title_only_unconfirmed_explosion(row):
 
 
 def non_military_kind(row):
+    if _conditional_nuclear_inspection_headline(row):
+        return 'diplomatic_position'
+    if _us_north_korea_possible_meeting_headline(row):
+        return 'diplomatic_plan'
     if _summit_venue_description_only(row):
         return 'diplomatic_analysis'
     if _title_only_unconfirmed_explosion(row):
@@ -1564,6 +1572,10 @@ def _clear_market_event_cache(row):
 
 
 def _headline_event_label(row, kind):
+    if _conditional_nuclear_inspection_headline(row):
+        return '종전 전 사찰 제한 입장'
+    if _us_north_korea_possible_meeting_headline(row):
+        return '정상 회동 가능성 발언'
     if _summit_venue_description_only(row):
         return '정상회담 장소 보도'
     title = _headline(row)
@@ -1697,6 +1709,26 @@ def _speculative_election_nuclear_opinion(row):
     return election and conditional and fear and speculative and not _separate_current_iran_attack(row)
 
 
+def _conditional_nuclear_inspection_headline(row):
+    """A prior attack identifies a site; the reported event is inspection policy."""
+    title = _headline(row)
+    return bool(re.match(r'이란\s', title)
+                and re.search(r'(?:美|미국|이스라엘)\s*(?:의\s*)?(?:공격|공습|폭격).{0,16}핵\s*시설', title)
+                and re.search(r'(?:종전|휴전|전쟁\s*종식).{0,12}전(?:에는|까지|에)', title)
+                and re.search(r'사찰.{0,10}(?:불가|불허|허용하지\s*않)', title)
+                and not re.search(r'(?:공격|공습|폭격|포격|타격).{0,10}'
+                                  r'(?:감행|실시|발생|재개|예고|지시|명령|했다|계획)', title))
+
+
+def _us_north_korea_possible_meeting_headline(row):
+    """A possible Trump-Kim meeting is not a meeting that took place."""
+    title = _headline(row)
+    return bool(re.search(r'트럼프', title) and re.search(r'김정은', title)
+                and re.search(r'만날\s*수도|만남\s*가능성|회동\s*가능성', title)
+                and not re.search(r'(?:트럼프|김정은).{0,25}'
+                                  r'(?:만났다|회동했다|회담했다|회동\s*확정|회담\s*성사)', title))
+
+
 def _summit_venue_description_only(row):
     """A building profile is not, by itself, a conflict or peace event."""
     title = _headline(row)
@@ -1762,6 +1794,8 @@ def score_item(row, now):
 
 def final_color(row):
     title = _headline(row)
+    if _conditional_nuclear_inspection_headline(row):
+        return 'yellow'
     if _reported_energy_facility_missile_use(title):
         return 'red'
     if _reported_major_airstrike(title):

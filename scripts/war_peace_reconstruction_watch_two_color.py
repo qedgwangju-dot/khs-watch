@@ -260,6 +260,7 @@ def direction(stage, row):
     title = stage._headline(row)
     tags = {str(tag).strip() for tag in row.get('tags', [])}
     if (_title_only_war_end_pledge(stage, row)
+            or stage._conditional_nuclear_inspection_headline(row)
             or stage._summit_venue_description_only(row)):
         return None
     # An order to end an indeterminate "neither war nor peace" state does not
@@ -439,6 +440,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         satellite_disruption = _unattributed_satellite_disruption(title, row)
         title_only_pledge = _title_only_war_end_pledge(stage, row)
         summit_venue = stage._summit_venue_description_only(row)
+        inspection_condition = stage._conditional_nuclear_inspection_headline(row)
         postwar = (bool({str(tag).strip() for tag in row.get('tags', [])} & DIPLOMATIC_TAGS)
                    and _postwar_compromise_context(title))
         source_tags = {str(tag).strip() for tag in row.get('tags', [])}
@@ -446,7 +448,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             {'원인미확정', '공식확인대기'} <= source_tags
             or (re.search(r'재공격\s*가능성.{0,12}매우\s*작', title)
                 and '폭발음 보도·공격 원인 미확인' in source_tags)))
-        context = (commentary or policy_options or hypothetical or postwar or title_only_pledge or summit_venue
+        context = (commentary or policy_options or hypothetical or postwar or title_only_pledge or summit_venue or inspection_condition
                    or satellite_disruption
                    or uncertain or stalemate_statement)
         row['semantic_classification_color'] = row.get('classification_color')
@@ -497,6 +499,10 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             elif title_only_pledge:
                 label = '이란전 종전 약속 발언 · 본문 미확인' if re.search(r'이란|iran', title) else '종전 약속 발언 · 본문 미확인'
                 block = [line.replace(' · 종전·협상 · ', ' · 종전 약속 발언 · ') for line in block]
+            elif inspection_condition:
+                label = '이란 · 종전 전 핵시설 사찰 제한 입장'
+                if not row.get('body_verified'):
+                    label += ' · 본문 미확인'
             elif summit_venue:
                 label = stage.topic_label(row)
             elif satellite_disruption:
