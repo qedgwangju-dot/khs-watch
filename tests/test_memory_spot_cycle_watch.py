@@ -65,6 +65,24 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
 
 
 
+
+    def test_google_news_collection_stops_after_persistent_429_without_marking_terms_seen(self):
+        import urllib.error
+        url = "https://news.google.com/rss/search?q=one"
+        blocked = urllib.error.HTTPError(url, 429, "Too Many Requests", {}, None)
+        with patch.object(w, "QUERIES", [("en", "one"), ("en", "two")]), \
+             patch.object(w, "_fetch", side_effect=blocked) as fetcher, \
+             patch.object(w, "_collect_trendforce_research", return_value=([], [])), \
+             patch.object(w, "_collect_trendforce_press", return_value=([], [])), \
+             patch.object(w, "_collect_trendforce_search", return_value=([], [])):
+            items, errors = w.collect()
+            self.assertEqual(items, [])
+            self.assertEqual(len(errors), 1)
+            self.assertIn("HTTP Error 429", errors[0])
+            self.assertIn("remaining_google_news_queries_unchecked=1", errors[0])
+            self.assertEqual(fetcher.call_count, 1)
+
+
     def test_semia_chart_independent_429_fallback_preserves_existing_states(self):
         import json
         import datetime as dt

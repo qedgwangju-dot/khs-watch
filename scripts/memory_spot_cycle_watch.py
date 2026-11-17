@@ -855,7 +855,7 @@ def collect() -> tuple[list[dict], list[str]]:
     article_cache: dict[str, str] = {}
     decoded_link_cache: dict[str, str] = {}
 
-    for lang, query in QUERIES:
+    for query_index, (lang, query) in enumerate(QUERIES):
         url = _rss_url(lang, query)
         try:
             root = ET.fromstring(_fetch(url))
@@ -894,6 +894,13 @@ def collect() -> tuple[list[dict], list[str]]:
                     items.append(item)
         except Exception as exc:
             errors.append(f"{lang}:{query}: {type(exc).__name__}: {exc}")
+            if isinstance(exc, urllib.error.HTTPError) and exc.code == 429:
+                # 429 is often a shared-IP cooldown. Do not hammer the
+                # remaining RSS terms with 3 retries each. No unsampled terms
+                # enter seen-state; the existing fail-closed gate remains.
+                missed = len(QUERIES) - query_index - 1
+                errors[-1] += f" [remaining_google_news_queries_unchecked={missed}]"
+                break
 
     direct_items, direct_errors = _collect_trendforce_research(cutoff)
     press_items, press_errors = _collect_trendforce_press(cutoff)
