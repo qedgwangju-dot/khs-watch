@@ -265,6 +265,19 @@ def q3_crosscheck_main():
         "reserved_utc":__import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
     }
     w.save_state(state)
+    # Commit the reservation BEFORE the Telegram API request. A timeout after
+    # Telegram accepts a message cannot be replayed safely. The persisted
+    # reservation forces later scheduled runs into manual-reconciliation mode.
+    import subprocess
+    try:
+        subprocess.run(["git","config","user.name","github-actions[bot]"],check=True)
+        subprocess.run(["git","config","user.email","41898282+github-actions[bot]@users.noreply.github.com"],check=True)
+        subprocess.run(["git","add",w.STATE_PATH.as_posix()],check=True)
+        subprocess.run(["git","commit","-m","Reserve verified Q3 13F cross-manager Telegram delivery"],check=True)
+        subprocess.run(["git","push","origin","HEAD:main"],check=True)
+    except subprocess.CalledProcessError as exc:
+        raise RuntimeError("Q3 comparison reservation not committed; no Telegram sent") from exc
+    print("Q3_CROSSCHECK_DELIVERY_RESERVED_COMMIT_PUSHED")
     # One attempt only. Ambiguous timeout must be reconciled manually.
     receipt=w.telegram_api(token,"sendMessage",{
         "chat_id":chat,"text":body,"disable_web_page_preview":"true",
