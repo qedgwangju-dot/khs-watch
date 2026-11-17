@@ -62,6 +62,42 @@ CRYPTO_ISSUER_NEEDLES = [
 ]
 watch.SECTOR_RULES.insert(0, ("디지털자산·온체인 금융", CRYPTO_ISSUER_NEEDLES))
 
+# 업종 방향 알림은 SEC 신고 법인명/정확한 제품·사업에 한정해 분류한다.
+# 과거 13F 신고는 보존하고, 새 보고서에서만 확대된 분류를 적용한다.
+EXTRA_SECTORS = [
+    ("메모리·저장장치", ["SEAGATE", "SANDISK", "MICRON TECHNOLOGY", "WESTERN DIGITAL", "PURE STORAGE"]),
+    ("AI 데이터센터·전력", ["SHARONAI", "FERMI INC", "BLOOM ENERGY",
+                         "COREWEAVE", "NEBIUS", "APPLIED DIGITAL"]),
+    ("금·귀금속", ["NEWMONT", "AGNICO EAGLE", "BARRICK", "SKEENA RESOURCES", "GOLD FIELDS"]),
+    ("게임·3D 소프트웨어", ["UNITY SOFTWARE", "ROBLOX"]),
+    ("기업·응용 소프트웨어", ["PALANTIR", "BENDING SPOONS", "VERISIGN"]),
+    ("우주·위성·발사체", ["SPACE EXPLORATION", "SPACEX", "SPCX"]),
+    ("암호화폐 채굴·인프라", ["CLEANSPARK", "BITDEER", "RIOT PLATFORMS", "IREN LIMITED"]),
+    ("소비재·가구", ["SOMNIGROUP", "MACYS", "MACY'S"]),
+]
+for sec, phrases in reversed(EXTRA_SECTORS):
+    watch.SECTOR_RULES.insert(0, (sec, phrases))
+
+EXTRA_NAMES = [
+    ("SEAGATE", "시게이트(STX)"),
+    ("UNITY SOFTWARE", "유니티(U)"),
+    ("NEWMONT", "뉴몬트(NEM)"),
+    ("AGNICO EAGLE", "애그니코이글(AEM)"),
+    ("BARRICK", "배릭(B)"),
+    ("SHARONAI", "샤론AI(SHAZ)"),
+    ("FERMI INC", "페르미(FRMI)"),
+    ("COREWEAVE", "코어위브(CRWV)"),
+    ("BLOOM ENERGY", "블룸에너지(BE)"),
+    ("PALANTIR", "팔란티어(PLTR)"),
+    ("SPACE EXPLORATION", "스페이스X"),
+    ("BENDING SPOONS", "벤딩스푼스"),
+    ("SOMNIGROUP", "솜니그룹(SGI)"),
+]
+for needle, name in reversed(EXTRA_NAMES):
+    watch.SECURITY_DISPLAY_RULES.insert(0, (needle, name))
+
+
+
 # 텔레그램에서 '누가 이 포트폴리오를 공시했는지'를 반드시 먼저 표시한다.
 PORTFOLIO_OWNER_KR = {
     "Situational Awareness": "레오폴드 아셴브레너의 시추에이셔널 어웨어니스",
@@ -134,19 +170,23 @@ _original_build_message = watch.build_message
 
 
 def build_message_with_owner(label, filing, previous, changes, info_url):
-    text = _original_build_message(label, filing, previous, changes, info_url)
-    lines = text.splitlines()
+    """Send the industry-direction summary FIRST and omit long per-ticker listings.
+
+    Full underlying 13F parsing and original report builder remain untouched;
+    this changes only the manager Telegram presentation, not dedup or routing.
+    """
     owner = PORTFOLIO_OWNER_KR.get(label, watch.MANAGER_KR.get(label, label))
     rate, basis = ensure_fx()
-    lines.insert(1, f"포트폴리오 공시 주체: {owner}")
-    lines.insert(2, f"원화 환산 기준: 1달러={rate:,.2f}원 ({basis})")
-
-    # Industry rankings are quarter-end *position-change reference values*.
-    # The filing gives holdings, not execution prices or exact purchased cash.
-    ranked = sector_rank.build_ranking(changes, money_with_krw).splitlines()
-    anchor = next((i for i,line in enumerate(lines)
-                   if line.strip()=="▶ 산업별 매수·매도 방향"), len(lines))
-    lines[anchor:anchor] = ranked + [""]
+    lines = [
+        f"[13F 산업별 매수·매도 방향] {owner}",
+        f"보유 기준 {filing['report_date']} · 공시 {filing['filing_date']} · "
+        f"비교 {previous['report_date'] if previous else '직전 분기 미확인'}",
+        f"원화 환산 1달러={rate:,.2f}원 ({basis})",
+        "",
+        sector_rank.build_sector_brief(
+            changes, money_with_krw, watch.security_name_kr, top_n=3),
+        f"SEC 공식 원문: {info_url}",
+    ]
     return "\n".join(lines)
 
 
