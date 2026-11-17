@@ -39,7 +39,9 @@ def compact_usd(usd):
     if magnitude >= 100_000:
         return f"{_human_round(value, 10_000):,.0f}만달러"
     if magnitude >= 10_000:
-        return f"{_human_round(value, 10_000, 1):,.1f}만달러"
+        man = _human_round(value, 10_000, 1)
+        return (f"{man:,.0f}만달러" if man == man.to_integral_value()
+                else f"{man:,.1f}만달러")
     return f"{_human_round(value, 1):,.0f}달러"
 
 
@@ -55,7 +57,9 @@ def compact_krw(won):
             return f"약 {_human_round(value, 1_000_000_000_000, 2):,.2f}조원"
         return f"약 {eok:,.0f}억원"
     if magnitude >= 100_000_000:
-        return f"약 {_human_round(value, 100_000_000, 1):,.1f}억원"
+        eok = _human_round(value, 100_000_000, 1)
+        return (f"약 {eok:,.0f}억원" if eok == eok.to_integral_value()
+                else f"약 {eok:,.1f}억원")
     if magnitude >= 10_000:
         return f"약 {_human_round(value, 10_000):,.0f}만원"
     return f"약 {_human_round(value, 1):,.0f}원"
@@ -449,9 +453,9 @@ def build_sector_direction(changes, display, *, top_n=4, money=None):
         lines.append(f"• 수량·유형 불명 {other}행: 방향 산정 제외")
     lines.extend([
         "※ 순위는 분류된 비옵션 증권(보통주·ETF 등)의 변동행 수 기준이며, 실제 주문·자금이동 규모의 순위가 아닙니다.",
-        ("※ 검증된 13F 변경분 평가액만 달러·원화로 병기합니다. "
-         "일부 듀케인 2026년 공시값은 독립 검증한 접수번호에 한해 ×1,000 보정했으며 "
-         "향후 미검증 공시는 금액을 보류합니다." if money is not None else
+        ("※ 검증된 13F 변경분 평가액을 반올림해 표시합니다. 원화는 반올림 전 달러×검증 환율로 계산. "
+         "일부 듀케인 2026년 공시값은 독립 검증한 접수번호에 한해 ×1,000 보정하며 "
+         "미검증 공시는 금액을 보류합니다." if money is not None else
          "※ 일부 공시에서 신고 평가액과 주수×주가의 단위 불일치가 확인되어, 검증 전 달러·원화 금액은 표시하지 않습니다."),
         "※ 13F는 분기말 보유 현황이며 매매시점·매매단가·공매도·현금은 확인되지 않습니다.",
     ])
