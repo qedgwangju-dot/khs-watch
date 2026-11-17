@@ -254,3 +254,5 @@ if __name__ == "__main__":
         # Distinct cross-manager 2026-Q3 SEC source reconciliation, once only.
         # Preview is always no-send until the existing workflow explicitly enables it.
         thirteenf_context_watch.q3_crosscheck_main()
+        # Separate once-only verified 13F valuation addendum, no previous alerts replayed.
+        thirteenf_context_watch.q3_amount_followup_main()
