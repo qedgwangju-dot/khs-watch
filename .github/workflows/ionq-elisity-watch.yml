@@ -18,7 +18,7 @@ permissions:
   actions: write
 concurrency:
   group: ionq-elisity-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   watch:
     runs-on: ubuntu-latest
@@ -34,13 +34,8 @@ jobs:
         run: |
           python -m py_compile scripts/ionq_elisity_watch.py
           PYTHONPATH=. python tests/test_ionq_elisity_watch.py
-      - name: Enable schedule
-        if: github.event_name == 'push'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api -X PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/ionq-elisity-watch.yml/enable"
-          echo "ionq_elisity_schedule_enable=confirmed"
+      # Code pushes must not automatically restart a user-disabled schedule.
+
       - name: Watch official lifecycle events
         run: python scripts/ionq_elisity_watch.py
       - name: Send only true new stage
@@ -66,16 +61,31 @@ jobs:
           req=urllib.request.Request(root+"/sendMessage",data=payload,headers={"Content-Type":"application/json"},method="POST")
           with urllib.request.urlopen(req,timeout=30) as r:
               result=json.load(r)
-          mid=(result.get("result") or {}).get("message_id")
-          if not result.get("ok") or not isinstance(mid,int):
-              raise RuntimeError("Telegram send not confirmed")
-          pathlib.Path("out/ionq_elisity_delivery.json").write_text(json.dumps({"ok":True,"message_id":mid,"bot":got,"sent_at_kst":dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat()},ensure_ascii=False)+"\n",encoding="utf-8")
-          print("ionq_telegram_send_confirmed message_id="+str(mid))
+          from scripts.ionq_elisity_watch import verify_telegram_ack
+          mid=verify_telegram_ack(result,chat)
+          receipt={"ok":True,"message_id":mid,"bot":got,
+              "chat_id_match":True,"sent_at_kst":dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat()}
+          pathlib.Path("out/ionq_elisity_delivery.json").write_text(json.dumps(receipt,ensure_ascii=False)+"\n",encoding="utf-8")
+          print("ionq_telegram_send_confirmed chat_id_match=true message_id="+str(mid))
           PY
       - name: Commit only confirmed or no-alert state
         if: github.event_name != 'push' && inputs.dry_run != true && hashFiles('out/ionq_elisity_pending.json') != '' && (hashFiles('out/ionq_elisity_alert.html') == '' || hashFiles('out/ionq_elisity_delivery.json') != '')
         run: |
-          cp out/ionq_elisity_pending.json data/ionq_elisity_watch_state.json
+          python - <<'PY'
+          import json,pathlib
+          pending=pathlib.Path("out/ionq_elisity_pending.json")
+          payload=json.loads(pending.read_text(encoding="utf-8"))
+          receipt=pathlib.Path("out/ionq_elisity_delivery.json")
+          if receipt.exists():
+              ack=json.loads(receipt.read_text(encoding="utf-8"))
+              if ack.get("ok") is not True or ack.get("chat_id_match") is not True or type(ack.get("message_id")) is not int or ack["message_id"]<=0:
+                  raise RuntimeError("Unverified Telegram receipt: state remains unchanged")
+              payload["last_successful_delivery"]=ack
+          elif pathlib.Path("out/ionq_elisity_alert.html").exists():
+              raise RuntimeError("Unconfirmed Telegram alert: refuse to advance seen state")
+          pathlib.Path("data/ionq_elisity_watch_state.json").write_text(
+              json.dumps(payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
           git config user.name "ionq-elisity-watch[bot]"
           git config user.email "ionq-elisity-watch[bot]@users.noreply.github.com"
           git add data/ionq_elisity_watch_state.json
