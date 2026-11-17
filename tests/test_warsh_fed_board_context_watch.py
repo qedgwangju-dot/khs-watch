@@ -1,9 +1,12 @@
 import datetime as dt
+import io
+import urllib.error
 import urllib.parse
 import json
 import tempfile
 import unittest
 from pathlib import Path
+from contextlib import redirect_stdout
 from unittest.mock import MagicMock, patch
 
 import warsh_fed_board_context_watch as context
@@ -86,6 +89,42 @@ class WarshFedBoardContextTests(unittest.TestCase):
                 edit.assert_not_called()
                 send.assert_not_called()
                 self.assertEqual(state["formatted"][context.WALLER_KEY]["version"], 2)
+
+    def test_waller_blocked_releases_use_only_date_bound_sources(self):
+        body = example_speech("waller", "November 10, 2026", WALLER_POLICY)
+        def source(url):
+            if url in (context.BLS_CPI, context.BEA_PCE):
+                raise urllib.error.HTTPError(url, 403, "Access denied", {}, None)
+            if url == context.BLS_CPI_LATEST:
+                return rolling
+            return WALLER_RELEASES[url]
+        with patch.object(context, "fetch", side_effect=source):
+            rolling = WALLER_RELEASES[context.BLS_CPI]
+            msg = context.speech_message(context.SEEDS[0], body)
+            self.assertIn("미 경제분석국 9월 PCE는 2026.11.17 확인·보관", msg)
+            self.assertNotIn("미 노동통계국 10월 CPI, 미 경제분석국", msg)
+            rolling = "CONSUMER PRICE INDEX - NOVEMBER 2026"
+            msg = context.speech_message(context.SEEDS[0], body)
+            self.assertIn("미 노동통계국 10월 CPI, 미 경제분석국 9월 PCE는 2026.11.17 확인·보관", msg)
+            rolling = WALLER_RELEASES[context.BLS_CPI].replace("0.3 percent", "0.2 percent")
+            with self.assertRaisesRegex(RuntimeError, "contents"):
+                context.speech_message(context.SEEDS[0], body)
+
+    def test_waller_refuses_corrupt_historical_excerpt(self):
+        with (patch.object(context, "fetch", side_effect=TimeoutError),
+              patch.dict(context.WALLER_RELEASE_HASHES, {context.BLS_CPI: ("source", "invalid")})):
+            with self.assertRaisesRegex(RuntimeError, "checksum"):
+                context.verify_waller_releases()
+
+    def test_waller_logs_failed_public_stage_without_error_body_or_url(self):
+        problem = urllib.error.HTTPError(context.BLS_CPI, 403, "upstream body", {}, None)
+        log = io.StringIO()
+        with (patch.object(context.urllib.request, "urlopen", side_effect=problem), redirect_stdout(log)):
+            with self.assertRaises(urllib.error.HTTPError):
+                context.fetch(context.BLS_CPI)
+        self.assertEqual(json.loads(log.getvalue()), {
+            "source_host": "www.bls.gov", "stage": "cpi_archive", "http_status": 403,
+        })
 
     def test_bowman_credits_and_rate_costs_both_required(self):
         body = ("off-balance-sheet liabilities may be a concern if "

@@ -7,6 +7,7 @@ Confirmed send receipts are deduplicated; ambiguous sends remain quarantined.
 import calendar
 import datetime as dt
 import email.utils
+import hashlib
 import html
 import json
 import os
@@ -54,9 +55,23 @@ WALLER_KEY = "speech:waller:20261110a"
 WALLER_FORMAT_VERSION = 3
 NEWS_WALLER = "https://tv.edaily.co.kr/News/NewsRead?Kind=257&NewsId=07216006645644408"
 BLS_CPI = "https://www.bls.gov/news.release/archives/cpi_11102026.htm"
+BLS_CPI_LATEST = "https://www.bls.gov/news.release/cpi.htm"
 BEA_PCE = "https://www.bea.gov/news/2026/personal-income-and-outlays-september-2026"
 FOMC_CALENDAR = ROOT + "/monetarypolicy/fomccalendars.htm"
 OFFICIAL_FX = "https://english.mofe.go.kr/"
+WALLER_SOURCE_STAGES = {
+    SEEDS[0]: "speech", BLS_CPI: "cpi_archive", BLS_CPI_LATEST: "cpi_latest",
+    BEA_PCE: "pce_release", FOMC_CALENDAR: "fomc_calendar",
+}
+# Historical editions downloaded and checked on 2026-11-17 UTC. The first hash
+# identifies the downloaded HTML, the second binds its normalized excerpts below
+# to the canonical release URL. Only these two historical releases use this cache.
+WALLER_RELEASE_HASHES = {
+    BLS_CPI: ("ee0bffd2cfb13f9faf79b5b23e5b74d87d67f61888dfd34346f81dee9182a320",
+              "ef7fbdb7c6623f4ba69a6c374ab386f44ded2c5ad9c0f558d738a2e48e689e4f"),
+    BEA_PCE: ("34031398fa5294f136949baf76f39d0ed6d2819924a425f87d04318fae12bfd4",
+              "3481bf0a1311aff3e0ff58c3d76d9ef5f6f67cee008460726f70dbffe27368a8"),
+}
 
 
 def shortlink(label: str, url: str) -> str:
@@ -76,14 +91,20 @@ def shortlink(label: str, url: str) -> str:
 
 def fetch(url: str) -> str:
     host = urllib.parse.urlsplit(url).hostname
-    if host != "www.federalreserve.gov" and url not in (BLS_CPI, BEA_PCE):
+    if host != "www.federalreserve.gov" and url not in (BLS_CPI, BLS_CPI_LATEST, BEA_PCE):
         raise ValueError("Unapproved official source")
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; KHS-Warsh-watch/2.0)"})
-    with urllib.request.urlopen(req, timeout=16) as response:
-        actual = urllib.parse.urlparse(response.geturl())
-        if actual.scheme != "https" or actual.hostname != host:
-            raise RuntimeError("Official source redirected to an untrusted host")
-        return response.read().decode("utf-8", errors="replace")
+    try:
+        with urllib.request.urlopen(req, timeout=16) as response:
+            actual = urllib.parse.urlparse(response.geturl())
+            if actual.scheme != "https" or actual.hostname != host:
+                raise RuntimeError("Official source redirected to an untrusted host")
+            return response.read().decode("utf-8", errors="replace")
+    except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
+        if url in WALLER_SOURCE_STAGES:
+            print(json.dumps({"source_host": host, "stage": WALLER_SOURCE_STAGES[url],
+                              "http_status": getattr(exc, "code", None)}), flush=True)
+        raise
 
 
 def _extract_pubday(link: str):
@@ -144,14 +165,33 @@ def verify_waller_releases():
             "excluding food and energy, the pce price index increased 3.1 percent from one year ago",
         )),
     )
+    cached = []
     for url, phrases in sources:
-        plain = " ".join(clean_text(fetch(url)).lower().split())
-        plain = re.sub(r"\s+([,.])", r"\1", plain).replace("–", "-").replace("—", "-")
-        if not all(phrase in plain for phrase in phrases):
-            raise RuntimeError(f"Release contents could not be verified: {url}")
+        candidates = (url, BLS_CPI_LATEST) if url == BLS_CPI else (url,)
+        for candidate in candidates:
+            try:
+                raw = fetch(candidate)
+            except (urllib.error.URLError, TimeoutError, ConnectionError):
+                continue
+            plain = " ".join(clean_text(raw).lower().split())
+            plain = re.sub(r"\s+([,.])", r"\1", plain).replace("–", "-").replace("—", "-")
+            if (candidate == BLS_CPI_LATEST and phrases[0] not in plain and
+                    re.search(r"consumer price index - [a-z]+ 20\d{2}\b", plain)):
+                # The rolling publication has advanced to a different month.
+                continue
+            if not all(phrase in plain for phrase in phrases):
+                raise RuntimeError(f"Release contents could not be verified: {url}")
+            break
+        else:
+            # A reachable, conflicting edition must never reach this path.
+            digest = hashlib.sha256("\n".join((url, *phrases)).encode()).hexdigest()
+            if digest != WALLER_RELEASE_HASHES[url][1]:
+                raise RuntimeError("Historical release excerpt checksum mismatch")
+            cached.append("미 노동통계국 10월 CPI" if url == BLS_CPI else "미 경제분석국 9월 PCE")
     calendar_text = " ".join(clean_text(fetch(FOMC_CALENDAR)).lower().split())
     if not re.search(r"2026 fomc meetings(?:(?!20\d{2} fomc meetings).)*?december\s+8\s*[-–]\s*9\b", calendar_text):
         raise RuntimeError("December 2026 FOMC dates could not be verified")
+    return cached
 
 
 def speech_message(url: str, raw: str):
@@ -183,7 +223,8 @@ def speech_message(url: str, raw: str):
                 "ship-to-ship transfer of oil", "reportedly boosting oil prices")
         if not all(x in low for x in must):
             raise RuntimeError("Waller's conditional 25/50bp policy view cannot be verified")
-        verify_waller_releases()
+        cached = verify_waller_releases()
+        source_note = (" · " + ", ".join(cached) + "는 2026.11.17 확인·보관한 공식 발표문 발췌 기준") if cached else ""
         return "\n".join((
             "<b>[연준 공식 발언] 월러 | 12월 금리 인상 주장</b>",
             "발언 2026.11.10 · <i>연준 이사 개인 견해 / FOMC 확정 결정 아님</i>",
@@ -210,7 +251,7 @@ def speech_message(url: str, raw: str):
             "원문 " + original + " · " + shortlink("BLS 10월 CPI", BLS_CPI) +
             " · " + shortlink("미 경제분석국 9월 PCE", BEA_PCE) +
             " · " + shortlink("연준 회의 일정", FOMC_CALENDAR) +
-            " · " + shortlink("당시 확률 보도", NEWS_WALLER),
+            " · " + shortlink("당시 확률 보도", NEWS_WALLER) + source_note,
         ))
 
     if speaker.lower() == "bowman" and stamp == "20261110a":
