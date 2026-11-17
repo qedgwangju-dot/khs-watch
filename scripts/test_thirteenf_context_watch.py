@@ -226,6 +226,29 @@ def main():
     except RuntimeError as error:
         assert "SEC article disagreement" in str(error)
 
+
+    # 13F source uses the same CUSIP with a renamed security class title:
+    # YPF sponsored ADR class D -> sponsored ADS. It is not both a new and
+    # liquidated position; original issuer and put/call must be unchanged.
+    old_ypf={"YPF_OLD":{"issuer":"Ypf Sociedad Anonima",
+             "cusip":"984245100","title":"SPON ADR CL D","putcall":"",
+             "shares":3138897,"value":143000000}}
+    new_ypf={"YPF_NEW":{"issuer":"Ypf Sociedad Anonima",
+             "cusip":"984245100","title":"SPONSORED ADS","putcall":"",
+             "shares":3541897,"value":177600000}}
+    matched=w.classify_changes(new_ypf,old_ypf)
+    assert len(matched)==1 and matched[0]["action"]=="보유 확대"
+    assert matched[0]["delta_shares"]==403000
+    assert matched[0]["prev_value"]==143000000
+    # Options are a distinct security even with the same CUSIP.
+    opt=dict(old_ypf["YPF_OLD"],putcall="CALL",title="CALL",shares=250000)
+    second=w.classify_changes({"current":new_ypf["YPF_NEW"]},
+                              {"prior":old_ypf["YPF_OLD"],"option":opt})
+    assert len(second)==2
+    assert {x["action"] for x in second}=={"보유 확대","전량 청산"}
+    assert any(x.get("putcall")=="CALL" and x["action"]=="전량 청산"
+               for x in second)
+
     print("13F CDW manager-context regression checks passed.")
 
 if __name__=="__main__":
