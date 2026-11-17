@@ -369,7 +369,6 @@ def _q3_reference_change(snapshots,label,term,short):
 def build_q3_amount_addendum(snapshots,rate,basis):
     """A short money-reference supplement, not executed trading cash."""
     import math
-    import thirteenf_sector_watch_entry as entry
     if not math.isfinite(float(rate)) or rate<=0:
         raise ValueError("Q3 amount supplement missing validated USD/KRW")
     if any(k not in snapshots for k in Q3_FOCUS_MANAGERS):
@@ -385,7 +384,7 @@ def build_q3_amount_addendum(snapshots,rate,basis):
         raise RuntimeError("SEC amount reference did not match independent Q3/Q2 valuation checks")
 
     def fmt(usd):
-        return entry._usd_text(usd)+" ("+entry._krw_text(usd*rate)+")"
+        return amount(round(usd),rate)"
     def line(label,term,short):
         row=_q3_reference_change(snapshots,label,term,short)
         if row is None:
