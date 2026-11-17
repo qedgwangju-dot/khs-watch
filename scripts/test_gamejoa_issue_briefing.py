@@ -185,6 +185,26 @@ class IssueBriefingTests(unittest.TestCase):
                       "source_body": "에게티스 인수 제안만 검토했다."}
         self.assertEqual(b.headline_backed_core(fabricated, Runner()), "")
 
+    def test_same_us_revenue_report_is_one_topic_despite_different_headline_figures(self):
+        import gamejoa_market_materiality as actual_materiality
+        start, end = b.briefing_window("preopen", now("2026-11-17T06:30:00+09:00"))
+        title_a = "SK하이닉스, 美 매출 1년 새 102조원 증가…엔비디아 추정 매출 35조"
+        title_b = "SK하이닉스, 美 매출 148조원…전체 62.5% 차지"
+        core_a = "SK하이닉스의 올해 1~3분기 미국 매출이 지난해 같은 기간보다 102조원 이상 증가하며 전체 매출의 62.5%를 차지했다."
+        core_b = "SK하이닉스가 공시한 분기보고서에 따르면 올해 1~3분기 누적 지역별 매출 합계 236조5105억원 가운데 미국 매출은 147조7392억원으로 전체의 62.5%를 차지했다."
+        def row(title, core, link, publisher):
+            return {"source_title": title, "title": title, "telegram_core_fact": core, "source_body": core,
+                    "body_verified": True, "link": link, "publisher": publisher,
+                    "published": "2026-11-16T19:00:00+09:00", "market_materiality": {"priority": 3, "news_value_rank": 4}}
+        sample = [row(title_a, core_a, "https://a.test/1", "A"), row(title_b, core_b, "https://b.test/2", "B")]
+        groups = b.group_alerts(sample, sample, start, end, actual_materiality)
+        self.assertEqual(len(groups), 1)
+        self.assertEqual(groups[0]["stats"]["articles"], 2)
+        self.assertEqual(len(b.digest_groups(sample[:1], sample[1:], sample, start, end, actual_materiality)), 1)
+        self.assertFalse(b.same_regional_result("SK하이닉스 美 2분기 매출 62.5%", "SK하이닉스 美 3분기 매출 62.5%", "", ""))
+        self.assertFalse(b.same_regional_result("SK하이닉스 中 매출 62.5%", title_b, "", core_b))
+        self.assertFalse(b.same_regional_result("삼성전자 美 매출 62.5%", title_b, "", core_b))
+
     def test_acquisition_guard_with_real_radar_alignment(self):
         import gamejoa_preopen_news_radar_fda_quality_runner as pipeline
         runner = pipeline.runner

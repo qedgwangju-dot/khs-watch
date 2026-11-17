@@ -280,16 +280,44 @@ def social_observation_verified(alert: dict, observation: dict, runner) -> bool:
     return not (set(runner.source_core_fact_errors(alert)) - allowable)
 
 
-def event_matches(a: str, b: str, materiality) -> bool:
+def headline_subject(title: str) -> str:
+    lead = re.sub(r"^(?:\[[^\]]+\]\s*)*[^가-힣A-Za-z0-9]*", "", title)
+    match = re.match(r"[가-힣A-Za-z][가-힣A-Za-z0-9]{1,30}", lead)
+    return re.sub(r"(?:마저|까지|은|는|이|가|의)$", "", match.group()) if match else ""
+
+
+def same_regional_result(a: str, b: str, fact_a: str, fact_b: str) -> bool:
+    subject = headline_subject(a)
+    if len(subject) < 2 or subject.casefold() != headline_subject(b).casefold():
+        return False
+    metrics = (r"매출", r"영업(?:이익|익|손실|적자)", r"순(?:이익|손실|적자)")
+    if not any(re.search(pattern, a) and re.search(pattern, b) for pattern in metrics):
+        return False
+    regions = (r"미국|美(?![가-힣])", r"중국|中(?![가-힣])", r"한국|국내|韓(?![가-힣])", r"유럽|EU(?![A-Za-z])")
+    if not any(re.search(pattern, a, re.I) and re.search(pattern, b, re.I) for pattern in regions):
+        return False
+    left, right = f"{a} {fact_a}", f"{b} {fact_b}"
+    for pattern in (r"(20\d{2})\s*년", r"([1-4])\s*(?:분기|Q)"):
+        left_periods, right_periods = set(re.findall(pattern, left, re.I)), set(re.findall(pattern, right, re.I))
+        if left_periods and right_periods and left_periods.isdisjoint(right_periods):
+            return False
+    left_rates = {Decimal(value) for value in re.findall(r"(?<!\d)(\d+(?:\.\d+)?)\s*%", left)}
+    right_rates = {Decimal(value) for value in re.findall(r"(?<!\d)(\d+(?:\.\d+)?)\s*%", right)}
+    return bool(left_rates & right_rates)
+
+
+def event_matches(a: str, b: str, materiality, fact_a: str = "", fact_b: str = "") -> bool:
     if re.sub(r"\s+", " ", a).strip().casefold() == re.sub(r"\s+", " ", b).strip().casefold():
         return bool(a.strip())
     if TOPIC_AI_CHEATING.search(a) and TOPIC_AI_CHEATING.search(b):
         return True
-    return bool(materiality.same_headline_event(a, b))
+    return bool(materiality.same_headline_event(a, b) or same_regional_result(a, b, fact_a, fact_b))
 
 
-def topic_statistics(title: str, sample: list[dict], start: dt.datetime, end: dt.datetime, materiality) -> dict:
-    matching = [row for row in sample if event_matches(title, str(row.get("source_title") or row.get("title") or ""), materiality)]
+def topic_statistics(title: str, sample: list[dict], start: dt.datetime, end: dt.datetime, materiality, fact: str = "") -> dict:
+    matching = [row for row in sample if event_matches(
+        title, str(row.get("source_title") or row.get("title") or ""), materiality, fact,
+        str(row.get("source_body") or "") if row.get("body_verified") else "")]
     midpoint = start + (end - start) / 2
     early = sum(in_window(row.get("published"), start, midpoint) for row in matching)
     late = sum(in_window(row.get("published"), midpoint, end) for row in matching)
@@ -350,9 +378,7 @@ def headline_backed_core(alert: dict, runner) -> str:
     body = str(alert.get("source_body") or "")
     normalized_body = re.sub(r"\s+", " ", html.unescape(body)).strip()
     normalized_core = re.sub(r"\s+", " ", html.unescape(core)).strip()
-    lead = re.sub(r"^(?:\[[^\]]+\]\s*)*[^가-힣A-Za-z0-9]*", "", title)
-    match = re.match(r"[가-힣A-Za-z][가-힣A-Za-z0-9]{1,30}", lead)
-    anchor = re.sub(r"(?:마저|까지|은|는|이|가|의)$", "", match.group()) if match else ""
+    anchor = headline_subject(title)
     if len(anchor) >= 2 and anchor not in core:
         for part in re.split(r"(?<=[.!?。])\s+|\n+", body):
             candidate = runner.clean_article_summary_text(part).strip()
@@ -385,12 +411,12 @@ def group_alerts(alerts: list[dict], sample: list[dict], start: dt.datetime, end
         url = canonical_url(str(alert.get("link") or ""))
         if not title or not core or not url or not re.search(r"[가-힣]", title) or not re.search(r"[가-힣]", core):
             continue
-        existing = next((g for g in groups if event_matches(source_title, g["source_title"], materiality)), None)
+        existing = next((g for g in groups if event_matches(source_title, g["source_title"], materiality, core, g["core"])), None)
         if existing:
             continue
         audit = alert.get("market_materiality") or {}
         groups.append({"title": title, "source_title": source_title, "core": core, "url": url, "alert": alert,
-                       "stats": topic_statistics(source_title, sample, start, end, materiality),
+                       "stats": topic_statistics(source_title, sample, start, end, materiality, core),
                        "rank": int(audit.get("news_value_rank") or 0),
                        "priority": int(audit.get("priority") or 0)})
     groups.sort(key=group_sort_key, reverse=True)
@@ -403,7 +429,7 @@ def digest_groups(fresh: list[dict], previously_sent: list[dict], sample: list[d
     for group in group_alerts(previously_sent, sample, start, end, materiality):
         if group["stats"]["articles"] < 2:
             continue
-        if any(event_matches(group["source_title"], item["source_title"], materiality) for item in groups):
+        if any(event_matches(group["source_title"], item["source_title"], materiality, group["core"], item["core"]) for item in groups):
             continue
         group["previously_sent"] = True
         groups.append(group)
@@ -736,6 +762,12 @@ def main() -> int:
         listed = parse_krx_list(get_bytes(KRX_LIST_URL, 25))
     except Exception as exc:
         listed, listing_error = {}, type(exc).__name__
+    social_audit = [{"title": str(row.get("source_title") or row.get("title") or ""),
+                     "url": str(row.get("link") or ""), "published": str(row.get("published") or ""),
+                     "body_verified": bool(row.get("body_verified")),
+                     "detail_skipped_reason": str(row.get("_detail_skipped_reason") or row.get("_article_verification_failed") or ""),
+                     "evidence_companies": ai_cheating_market_observation(row, listed).get("companies", [])}
+                    for row in social_candidates[:30]]
     os.environ["RADAR_RUN_MODE"] = "live"
     classified = []
     for row in sample:
@@ -800,6 +832,7 @@ def main() -> int:
     result = {"slot": slot, "window_start_kst": start.isoformat(), "window_end_kst": end.isoformat(),
               "query_time_kst": now.isoformat(timespec="seconds"), "sample_count": len(sample),
               "social_candidates": len(social_candidates), "social_verified": social_verified,
+              "social_audit": social_audit,
               "selected_topics": len(groups), "seen_suppressed": len(skipped),
               "coverage_incomplete": incomplete, "listing_error": listing_error,
               "quotes": quotes, "groups": [{k: v for k, v in g.items() if k != "alert"} for g in groups],
