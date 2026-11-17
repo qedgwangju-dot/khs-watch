@@ -89,7 +89,7 @@ def main():
     assert "시게이트(STX) +180주 (180.0%)" in direction
     assert "샌디스크(SNDK) 전량 -100주" in direction
     assert "TSMC(TSM) -95주 (95.0%)" in direction
-    assert "업종 분류 4/5행 (80%)" in direction
+    assert "업종 분류 5/6행 (83%)" in direction
     assert "미분류 확대 1행 / 축소 0행" in direction
     assert "옵션 별도: 콜 1행 / 풋 0행" in direction
     assert "달러·원화 금액은 표시하지 않습니다" in direction
