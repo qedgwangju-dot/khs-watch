@@ -87,10 +87,44 @@ class IssueBriefingTests(unittest.TestCase):
         listing = {"지슨": "123456"}
         row = {"title": "AI 커닝 관련주 지슨 주가 상승", "body_verified": True,
                "source_body": "AI 커닝 관련주 지슨 주가가 20% 상승했다. 정부도 대책을 논의했다."}
-        self.assertEqual(b.ai_cheating_market_sentence(row, listing), "AI 커닝 관련주 지슨 주가가 20% 상승했다.")
-        self.assertFalse(b.ai_cheating_market_sentence({**row, "body_verified": False}, listing))
-        self.assertFalse(b.ai_cheating_market_sentence({**row, "source_body": "AI 커닝이 확산했다. 지슨은 제품을 만든다."}, listing))
-        self.assertFalse(b.ai_cheating_market_sentence({**row, "title": "AI 박물관 체험"}, listing))
+        self.assertEqual(b.ai_cheating_market_observation(row, listing)["core"], "AI 커닝 관련주 지슨 주가가 20% 상승했다.")
+        self.assertFalse(b.ai_cheating_market_observation({**row, "body_verified": False}, listing))
+        self.assertFalse(b.ai_cheating_market_observation({**row, "source_body": "AI 커닝이 확산했다. 지슨은 제품을 만든다."}, listing))
+        self.assertFalse(b.ai_cheating_market_observation({**row, "title": "AI 박물관 체험"}, listing))
+        adjacent = {"title": "AI 커닝 충격에 보안·카메라주 솟구쳐", "body_verified": True,
+                    "source_body": "나무가와 지슨 등 보안 관련주가 상한가를 기록했다. 최근 생성형 인공지능(AI)을 이용한 부정행위를 시인했다. 다른 기업은 별도의 실적 개선을 발표했다."}
+        observation = b.ai_cheating_market_observation(adjacent, {"나무가": "190510", "지슨": "123456", "다른기업": "111111"})
+        self.assertEqual(observation["core"], "최근 생성형 인공지능(AI)을 이용한 부정행위를 시인했다.")
+        self.assertEqual(observation["companies"], [("나무가", "190510"), ("지슨", "123456")])
+
+    def test_social_theme_source_alignment_with_separate_stock_sentence(self):
+        import gamejoa_preopen_news_radar_fda_quality_runner as pipeline
+        runner = pipeline.runner
+        title = "'AI 커닝', 증시도 흔들었다…AI안경·카메라株 뛰고 보안株는 희비 엇갈려"
+        body = ("올해 세무사 시험 수석 합격자의 인공지능(AI) 부정행위 자백으로 국내 증시에서 관련 테마주가 장중 일제히 들썩였다. "
+                "정부는 시험장 보안 대책에 착수했다. "
+                "지슨은 전 거래일 대비 29.97% 올라 상한가를 기록했다.")
+        row = {"title": title, "source_title": title, "source_body": body, "body_verified": True}
+        observation = b.ai_cheating_market_observation(row, {"지슨": "446840"})
+        self.assertEqual(observation["companies"], [("지슨", "446840")])
+        item = {"source_title": title, "news": title, "source_body": body, "source_abstract": body,
+                "telegram_core_fact": observation["core"], "policy_plain_summary": observation["core"],
+                "body_verified": True, "korean_business_news": True, "publisher": "뉴시스",
+                "link": "https://www.newsis.com/view/NISX20261116_0003869829"}
+        self.assertTrue(b.social_observation_verified(item, observation, runner), runner.source_core_fact_errors(item))
+        self.assertFalse(b.social_observation_verified(item, {**observation, "company_evidence": "지슨이 급등했다."}, runner))
+        stamp = now("2026-11-17T06:30:00+09:00")
+        start, end = b.briefing_window("preopen", stamp)
+        row.update(link=item["link"], publisher="뉴시스", published=now("2026-11-16T16:02:00+09:00"))
+        telegram = SimpleNamespace(filter_previously_seen_alerts=lambda alerts, when, lane: (alerts, []))
+        groups = b.add_social_evidence([], [row], {"지슨": "446840"}, start, end, stamp, runner, telegram)
+        self.assertEqual(len(groups), 1)
+        self.assertEqual(groups[0]["explicit_companies"], [("지슨", "446840")])
+
+    def test_relevant_sample_coverage_can_affect_order_without_promoting_unverified_story(self):
+        single = {"rank": 4, "priority": 3, "stats": {"articles": 1, "late": 1}}
+        repeated = {"rank": 3, "priority": 2, "stats": {"articles": 5, "late": 3}}
+        self.assertGreater(b.group_sort_key(repeated), b.group_sort_key(single))
 
     def test_issue_statistics_are_sample_counts_not_social_metrics(self):
         start, end = b.briefing_window("preopen", now("2026-11-17T06:30:00+09:00"))
@@ -335,12 +369,13 @@ class IssueBriefingTests(unittest.TestCase):
         groups = [{"title": "삼성전자 실적 발표", "core": "삼성전자가 실적을 발표했다.",
                    "url": "https://example.com/a?x=1&y=2", "alert": {},
                    "stats": {"articles": 3, "publishers": 2, "early": 1, "late": 2},
-                   "companies": [("삼성전자", "005930")]}]
+                   "companies": [("삼성전자", "005930")], "company_source_url": "https://news.test/stock"}]
         quotes = {"005930": {"date": "2026-11-16", "close": "195000", "change_pct": "-6.70"}}
         report = b.render_report("preopen", stamp, start, end, 100, groups, quotes, True, "", {}, Runner())
         self.assertIn("수집 표본: 기사 100건 · 전수 아님", report)
         self.assertIn("기사 직접 언급: 삼성전자 195,000원(-6.70%) | 2026-11-16 종가", report)
         self.assertIn('href="https://example.com/a?x=1&amp;y=2"', report)
+        self.assertIn('<a href="https://news.test/stock">종목 근거</a>', report)
         self.assertIn("일부 출처 또는 기사 본문 확인 불가", report)
         self.assertNotIn("수혜", report)
 

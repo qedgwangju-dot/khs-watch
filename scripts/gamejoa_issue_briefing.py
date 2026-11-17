@@ -36,7 +36,7 @@ TOPIC_AI_CHEATING = re.compile(
     r"(?:커닝|컨닝|부정\s*행위|부정\s*시험).{0,35}(?:AI|인공지능|스마트\s*안경))",
     re.I,
 )
-MARKET_EVIDENCE = re.compile(r"상한가|하한가|주가|증시|증권시장|관련주|테마주|주식|급등|급락|상승|하락|거래대금")
+MARKET_EVIDENCE = re.compile(r"상한가|하한가|주가|증시|증권시장|관련주|테마주|보안주|카메라주|종목|주식|급등|급락|상승|하락|거래대금|株|솟구쳐")
 TRACKING_KEYS = {"utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "ref", "source", "oc", "input"}
 HEADLINE_ACTIONS = [
     ("acquisition", re.compile(r"인수|인수합병|매입"), re.compile(r"인수|인수합병|매입")),
@@ -228,7 +228,7 @@ def company_mentions(text: str, listed: dict[str, str]) -> list[tuple[str, str]]
                 if not re.match(r"(?:은|는|이|가|을|를|과|와|의|도|에|에서|로|으로)(?:[^가-힣A-Za-z0-9]|$)", tail):
                     continue
             if len(re.sub(r"\s+", "", name)) <= 2:
-                sentence = re.split(r"[.!?。\n]", text[max(0, start - 120):min(len(text), end + 120)])
+                sentence = re.split(r"(?<!\d)[.!?。](?!\d)|\n", text[max(0, start - 120):min(len(text), end + 120)])
                 if not any(name in part and (MARKET_EVIDENCE.search(part) or code in part) for part in sentence):
                     continue
             matches.append((start, end, name, code))
@@ -244,15 +244,39 @@ def company_mentions(text: str, listed: dict[str, str]) -> list[tuple[str, str]]
     return result
 
 
-def ai_cheating_market_sentence(row: dict, listed: dict[str, str]) -> str:
+def ai_cheating_market_observation(row: dict, listed: dict[str, str]) -> dict:
     if not row.get("body_verified") or not TOPIC_AI_CHEATING.search(str(row.get("source_title") or row.get("title") or "")):
-        return ""
+        return {}
     body = re.sub(r"\s+", " ", str(row.get("source_body") or ""))
-    for sentence in re.split(r"(?<=[.!?。])\s+", body):
-        if TOPIC_AI_CHEATING.search(sentence) and MARKET_EVIDENCE.search(sentence) and company_mentions(sentence, listed):
-            if len(sentence) <= 230 and re.search(r"[.!?。]$", sentence):
-                return sentence
-    return ""
+    sentences = re.split(r"(?<=[.!?。])\s+", body)
+    for index, sentence in enumerate(sentences):
+        if not TOPIC_AI_CHEATING.search(sentence) or len(sentence) > 230 or not re.search(r"[.!?。]$", sentence):
+            continue
+        neighbors = sorted(range(max(0, index - 2), min(len(sentences), index + 3)), key=lambda i: abs(i - index))
+        for nearby in neighbors:
+            market_sentence = sentences[nearby]
+            companies = company_mentions(market_sentence, listed) if MARKET_EVIDENCE.search(market_sentence) else []
+            if companies:
+                return {"core": sentence, "companies": companies, "company_evidence": market_sentence}
+    return {}
+
+
+def social_observation_verified(alert: dict, observation: dict, runner) -> bool:
+    title = str(alert.get("source_title") or "")
+    body = re.sub(r"\s+", " ", str(alert.get("source_body") or "")).strip()
+    core = re.sub(r"\s+", " ", str(observation.get("core") or "")).strip()
+    evidence = re.sub(r"\s+", " ", str(observation.get("company_evidence") or "")).strip()
+    if not (alert.get("body_verified") and runner.korean_business_source_allowed(alert)
+            and TOPIC_AI_CHEATING.search(title) and TOPIC_AI_CHEATING.search(core)
+            and core in body and evidence in body and MARKET_EVIDENCE.search(evidence)
+            and observation.get("companies") and runner.core_sentence_is_complete(core)
+            and not runner.core_has_ui_garbage(core) and not runner.core_has_ui_garbage(evidence)
+            and runner.korean_title_core_aligned(title, core)):
+        return False
+    # The ordinary gate expects the market movement in the same sentence as
+    # the event. Here it is independently bound to a nearby source sentence.
+    allowable = {"article_without_headline_market_change_evidence", "core_without_market_change_evidence"}
+    return not (set(runner.source_core_fact_errors(alert)) - allowable)
 
 
 def event_matches(a: str, b: str, materiality) -> bool:
@@ -270,6 +294,11 @@ def topic_statistics(title: str, sample: list[dict], start: dt.datetime, end: dt
     late = sum(in_window(row.get("published"), midpoint, end) for row in matching)
     publishers = {str(row.get("publisher") or "").strip() for row in matching} - {""}
     return {"articles": len(matching), "publishers": len(publishers), "early": early, "late": late}
+
+
+def group_sort_key(group: dict) -> tuple[int, int, int, int]:
+    count = group["stats"]["articles"]
+    return (group["rank"] * 2 + min(4, max(0, count - 1)), group["priority"], count, group["stats"]["late"])
 
 
 def headline_action(title: str):
@@ -352,7 +381,7 @@ def group_alerts(alerts: list[dict], sample: list[dict], start: dt.datetime, end
                        "stats": topic_statistics(source_title, sample, start, end, materiality),
                        "rank": int(audit.get("news_value_rank") or 0),
                        "priority": int(audit.get("priority") or 0)})
-    groups.sort(key=lambda g: (g["rank"], g["priority"], g["stats"]["articles"], g["stats"]["late"]), reverse=True)
+    groups.sort(key=group_sort_key, reverse=True)
     return groups[:MAX_TOPICS]
 
 
@@ -366,7 +395,42 @@ def digest_groups(fresh: list[dict], previously_sent: list[dict], sample: list[d
             continue
         group["previously_sent"] = True
         groups.append(group)
-    groups.sort(key=lambda g: (g["rank"], g["priority"], g["stats"]["articles"], g["stats"]["late"]), reverse=True)
+    groups.sort(key=group_sort_key, reverse=True)
+    return groups[:MAX_TOPICS]
+
+
+def add_social_evidence(groups: list[dict], sample: list[dict], listed: dict[str, str],
+                        start: dt.datetime, end: dt.datetime, now: dt.datetime, runner, telegram) -> list[dict]:
+    for row in sample:
+        observation = ai_cheating_market_observation(row, listed)
+        if not observation:
+            continue
+        core = observation["core"]
+        title = str(row.get("source_title") or row.get("title") or "")
+        alert = {"source_title": title, "news": title, "source_body": row.get("source_body"),
+                 "source_abstract": row.get("source_body"), "publisher": row.get("publisher"),
+                 "body_verified": True, "korean_business_news": True,
+                 "telegram_core_fact": core, "policy_plain_summary": core,
+                 "link": row.get("link"), "published": row.get("published")}
+        if not social_observation_verified(alert, observation, runner):
+            continue
+        link = canonical_url(str(row.get("link") or ""))
+        existing = next((group for group in groups if TOPIC_AI_CHEATING.search(group["title"])), None)
+        if existing:
+            existing["explicit_companies"] = observation["companies"]
+            existing["company_evidence"] = observation["company_evidence"]
+            existing["company_source_url"] = link
+            break
+        fresh, seen = telegram.filter_previously_seen_alerts([alert], now, lane="all")
+        stats = topic_statistics(title, sample, start, end, runner.market_materiality)
+        if not fresh and not (seen and stats["articles"] >= 2):
+            continue
+        groups.append({"title": title, "source_title": title, "core": core, "url": link,
+                       "alert": alert, "stats": stats, "explicit_companies": observation["companies"],
+                       "company_evidence": observation["company_evidence"], "company_source_url": link,
+                       "previously_sent": bool(seen), "rank": 3, "priority": 2})
+        break
+    groups.sort(key=group_sort_key, reverse=True)
     return groups[:MAX_TOPICS]
 
 
@@ -462,7 +526,9 @@ def render_report(slot: str, now: dt.datetime, start: dt.datetime, end: dt.datet
         if quote_parts:
             dates = {quotes[code]["date"] for _, code in names[:MAX_STOCKS_PER_TOPIC] if code in quotes}
             date_label = next(iter(dates)) if len(dates) == 1 else "각 종목 조회 기준일"
-            lines.append(f"- 기사 직접 언급: {escape(' · '.join(quote_parts))} | {date_label} 종가")
+            source_link = group.get("company_source_url") or ""
+            extra_link = f' · <a href="{escape(source_link)}">종목 근거</a>' if source_link and source_link != group["url"] else ""
+            lines.append(f"- 기사 직접 언급: {escape(' · '.join(quote_parts))} | {date_label} 종가{extra_link}")
         lines.append(f'- 출처: <a href="{escape(group["url"])}">원문</a>')
         lines.append("")
     if coverage_incomplete:
@@ -651,28 +717,13 @@ def main() -> int:
     fresh, skipped = telegram.filter_previously_seen_alerts(quality, now, lane="all")
     groups = digest_groups(fresh, skipped, sample, start, end, runner.market_materiality)
     print(f"Briefing: unseen_candidates={len(fresh)} seen_suppressed={len(skipped)}", flush=True)
-    # Social stories require a verified source sentence linking the named listed
-    # company to the theme and market reaction, not just an AI keyword.
-    cheating = [row for row in sample if ai_cheating_market_sentence(row, listed)]
-    if cheating and not any(TOPIC_AI_CHEATING.search(g["title"]) for g in groups):
-        row = cheating[0]
-        core = ai_cheating_market_sentence(row, listed)
-        title = str(row.get("source_title") or row.get("title") or "")
-        if runner.core_sentence_is_complete(core):
-            alert = {"source_title": title, "news": title, "source_body": row.get("source_body"),
-                     "source_abstract": row.get("source_body"), "publisher": row.get("publisher"),
-                     "body_verified": True, "korean_business_news": True,
-                     "telegram_core_fact": core, "policy_plain_summary": core,
-                     "link": row.get("link"), "published": row.get("published")}
-            new, _ = telegram.filter_previously_seen_alerts([alert], now, lane="all") if runner.source_output_aligned(alert) else ([], [])
-            if new:
-                groups.append({"title": title, "source_title": title, "core": core, "url": canonical_url(str(row.get("link") or "")),
-                               "alert": alert, "stats": topic_statistics(title, sample, start, end, runner.market_materiality),
-                               "rank": 3, "priority": 2})
-                groups.sort(key=lambda g: (g["rank"], g["priority"], g["stats"]["articles"], g["stats"]["late"]), reverse=True)
-                groups = groups[:MAX_TOPICS]
+    groups = add_social_evidence(groups, sample, listed, start, end, now, runner, telegram)
     for group in groups:
-        group["companies"] = company_mentions(group["title"] + " " + group["core"], listed)[:MAX_STOCKS_PER_TOPIC]
+        mentions = company_mentions(group["title"] + " " + group["core"], listed)
+        for company in group.get("explicit_companies") or []:
+            if company not in mentions:
+                mentions.append(company)
+        group["companies"] = mentions[:MAX_STOCKS_PER_TOPIC]
     companies = {(name, code) for group in groups for name, code in group["companies"]}
     quotes: dict[str, dict] = {}
     def quote(company):
