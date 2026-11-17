@@ -70,6 +70,11 @@ def rss_discovery(reader=fetch):
     print(f"cta_public_feeds_ok={feed_ok} failed={feed_failed} candidates={len(items)}")
     return list(items.values())[:24]
 
+
+def datetime_month(s):
+    names=("jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec")
+    return names.index(s[:3].lower())+1
+
 def parse_note(text,published):
     text=" ".join(html.unescape(text or "").split())
     if not re.search(r"(?:골드만삭스|Goldman Sachs)",text,re.I) or not re.search("CTA",text,re.I):
@@ -80,9 +85,22 @@ def parse_note(text,published):
         report=dt.date(2026,11,17)
     else:
         pattern=re.search(r"(20\d{2}-\d{2}-\d{2}).{0,90}(?:Goldman|골드만)",text,re.I)
-        if not pattern:return None
-        try:report=dt.date.fromisoformat(pattern.group(1))
-        except ValueError:return None
+        report=None
+        if pattern:
+            try:report=dt.date.fromisoformat(pattern.group(1))
+            except ValueError:pass
+        if report is None:
+            named=re.search(
+                r"(?:Goldman Sachs.{0,110}?)?\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|"
+                r"May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|"
+                r"Nov(?:ember)?|Dec(?:ember)?)\.?\s*(\d{1,2}),?\s*(20\d{2})\b",
+                text,re.I)
+            if named:
+                try:
+                    month=datetime_month(named.group(1))
+                    report=dt.date(int(named.group(3)),month,int(named.group(2)))
+                except ValueError:pass
+        if report is None:return None
     if not 0<=(published-report).days<=7:
         return None
     start=re.search(r"향후\s*1\s*주일.{0,80}(?:CTA|수급)|over\s+the\s+next\s+1\s+week",text,re.I)
@@ -112,15 +130,17 @@ def parse_note(text,published):
         if not all(0<x<500 for x in numbers):return None
         sign=-1 if key=="down" else 1
         result[key]=[round(sign*n,2) for n in numbers]
-    up=re.search(r"(?:상승\s*시|up tape)[^。\.]{0,180}",month,re.I)
-    down=re.search(r"(?:하락\s*시|down tape)[^。\.]{0,180}",month,re.I)
-    if not up or not down:return None
+    up_mark=re.search(r"(?:상승\s*시|up tape)",month,re.I)
+    down_mark=re.search(r"(?:하락\s*시|down tape)",month,re.I)
+    if not up_mark or not down_mark or down_mark.start()<=up_mark.start():return None
+    up=month[up_mark.start():down_mark.start()]
+    down=month[down_mark.start():down_mark.start()+220]
     def monthly(s):
         m=re.search(NUM+r"\s*억\s*달러",s)
         if m:return float(m.group(1).replace(",",""))/10
         m=re.search(r"\$\s*(\d+(?:\.\d+)?)\s*(?:bn|billion)",s,re.I)
         return float(m.group(1)) if m else None
-    a,b=monthly(up.group()),monthly(down.group())
+    a,b=monthly(up),monthly(down)
     if a is None or b is None or not(0<a<500 and 0<b<500):return None
     return {"report":report.isoformat(),"week":result,
             "month":{"up_global":round(a,2),"down_global":-round(b,2)}}

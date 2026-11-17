@@ -19,6 +19,21 @@ def test_model_and_periods_are_separate():
     assert x["week"]=={"up":[30.8,16.1],"flat":[23.0,9.9],"down":[-6.1,-5.2]}
     assert x["month"]=={"up_global":89.1,"down_global":-123.0}
 
+
+def test_english_date_and_decimal_month_amount():
+    message="""Goldman Sachs on November 17, 2026 published Eq Positioning and Key Levels.
+    Over the next 1 week, CTA scenarios:
+    Up tape: Buyers $30.8bn worldwide ($16.1bn US).
+    Flat tape: Buyers $23.0bn worldwide ($9.9bn US).
+    Down tape: Sellers $6.1bn worldwide ($5.2bn US).
+    Over the next 1 month:
+    Up tape: Buyers $89.1bn in global equities.
+    Down tape: Sellers $123bn in global equities."""
+    p=cta.parse_note(message,PUB)
+    assert p is not None
+    assert p["week"]["flat"]==[23.0,9.9]
+    assert p["month"]=={"up_global":89.1,"down_global":-123.0}
+
 def test_dated_and_complete_fail_closed():
     assert cta.parse_note(NOTE,dt.date(2026,10,17)) is None
     assert cta.parse_note(NOTE.replace("11월 17일 골드만삭스","금융사"),PUB) is None
