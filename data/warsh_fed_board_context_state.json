@@ -52,7 +52,11 @@
       "source": "https://www.federalreserve.gov/newsevents/speech/waller20261110a.htm"
     }
   },
-  "skipped": {},
+  "skipped": {
+    "speech:waller:20261117a": {
+      "reason": "no_direct_policy_or_ai_financing_signal"
+    }
+  },
   "source_errors": [],
-  "updated_at_utc": "2026-11-17T12:12:17.051083+00:00"
+  "updated_at_utc": "2026-11-17T14:18:46.613703+00:00"
 }
