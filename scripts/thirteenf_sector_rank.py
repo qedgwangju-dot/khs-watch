@@ -265,11 +265,11 @@ def build_sector_direction(changes, display, *, top_n=4):
         return ", ".join(f"{sector}({len(v[side])}행)" for sector,v in changes[:2]) or "없음"
 
     lines=[
-        "<b>13F 보통주 업종 방향 — 분기말 보유수량 변화</b>",
+        "13F 보통주 업종 방향 — 분기말 보유수량 변화",
         f"■ 집중 확대: {headline(buy,'buy')}",
         f"■ 집중 축소: {headline(sell,'sell')}",
         "",
-        "<b>▶ 신규 편입·보유 확대</b>",
+        "▶ 신규 편입·보유 확대",
     ]
     if not buy:
         lines.append("• 분류된 업종의 확대 기록 없음")
@@ -277,19 +277,19 @@ def build_sector_direction(changes, display, *, top_n=4):
         rows=data["buy"]
         newly=sum(r["action"]=="신규 매수" for _,r in rows)
         ordered=sorted(rows,key=lambda v:(-v[0],-abs(v[1].get("delta_shares") or 0)))[:2]
-        lines.append(f"{i}. <b>{sector}</b> — {len(rows)}행 (신규 {newly}·확대 {len(rows)-newly})")
+        lines.append(f"{i}. {sector} — {len(rows)}행 (신규 {newly}·확대 {len(rows)-newly})")
         lines.append("   "+ " · ".join(_short_share_move(r,display) for _,r in ordered))
     if len(buy)>top_n:
         lines.append(f"• 그 외 확대 업종 {len(buy)-top_n}개")
 
-    lines.extend(["", "<b>▶ 보유 축소·전량 청산</b>"])
+    lines.extend(["", "▶ 보유 축소·전량 청산"])
     if not sell:
         lines.append("• 분류된 업종의 축소 기록 없음")
     for i,(sector,data) in enumerate(sell[:top_n],1):
         rows=data["sell"]
         exits=sum(r["action"]=="전량 청산" for _,r in rows)
         ordered=sorted(rows,key=lambda v:(-v[0],-abs(v[1].get("delta_shares") or 0)))[:2]
-        lines.append(f"{i}. <b>{sector}</b> — {len(rows)}행 (청산 {exits}·축소 {len(rows)-exits})")
+        lines.append(f"{i}. {sector} — {len(rows)}행 (청산 {exits}·축소 {len(rows)-exits})")
         lines.append("   "+ " · ".join(_short_share_move(r,display) for _,r in ordered))
     if len(sell)>top_n:
         lines.append(f"• 그 외 축소 업종 {len(sell)-top_n}개")
@@ -297,7 +297,7 @@ def build_sector_direction(changes, display, *, top_n=4):
     mixed=sorted(((k,v) for k,v in classified.items() if v["buy"] and v["sell"]),
                  key=lambda kv:-(len(kv[1]["buy"])+len(kv[1]["sell"])))
     if mixed:
-        lines.extend(["","<b>▶ 동일 업종 내 양방향 변화</b>"])
+        lines.extend(["","▶ 동일 업종 내 양방향 변화"])
         for sector,v in mixed[:2]:
             lines.append(f"• {sector}: 확대 {len(v['buy'])}행 / 축소 {len(v['sell'])}행 — 금액 순매수 판정 안 함")
 
