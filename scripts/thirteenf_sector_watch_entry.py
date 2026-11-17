@@ -244,3 +244,6 @@ if __name__ == "__main__":
         # Separate quarter-end ownership from newer editorial analysis.
         import thirteenf_context_watch
         thirteenf_context_watch.main()
+        # Distinct cross-manager 2026-Q3 SEC source reconciliation, once only.
+        # Preview is always no-send until the existing workflow explicitly enables it.
+        thirteenf_context_watch.q3_crosscheck_main()
