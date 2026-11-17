@@ -2,14 +2,16 @@
   "initialized": true,
   "last_collection": {
     "deferred_events": 0,
-    "errors": [],
-    "material_items": 21,
+    "errors": [
+      "Google News 실패: 네이버클라우드 S2W 샌즈랩 LG CNS 사이버보안 AI 계약 실증 / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "material_items": 22,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 36,
+    "raw_items": 43,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -96,7 +98,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-17T20:53:49.186581+00:00",
+    "updated_at": "2026-11-17T21:09:58.607864+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -262,6 +264,15 @@
       "source": "대한민국 정책브리핑",
       "title": "금융권 580여 개사 보안 전수점검…\"보안체계 전면 쇄신\" - 대한민국 정책브리핑",
       "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE4tU2VVNUFMUTBQNUlMazY0ajBRLVgzeHU0TTF2UlY5MklIRGZDdnIzLVNwZmxlMEVLWjVvcEtqd3RYc3N6eGRfWG8xLTN3WlAySFNlMTUwQlpGcGF5My1zY1MycnRoV3VNYVAtWQ?oc=5"
+    },
+    "57177522c8085ab8de2b5a52": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-17T21:09:58.607864+00:00",
+      "published_at": "2026-11-17T21:00:09+00:00",
+      "source": "이데일리",
+      "title": "금융권 IT자산 관리 의무화…대형 금융사 취약점 점검 연 2회 - 이데일리",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNWE43aGN3NHNpVW5sSE9CbDNVbDYxVzJDV2FkdW1wdy1XOGtMX1FSNkdnOEZpbW51Yk5xQkFUZS1HSDh2dG5qMFRCeTNQVlMySmVZUzBYM2lnTFBUZU9hZk85UmpwTlBsanc0OFlWM3FrVFFCV1VON1pFY3V1ZE8zQg?oc=5"
     },
     "5903f77702888d59a163baee": {
       "category": "민간 기반시설 172개 보안 점검·조달 단계",
@@ -850,11 +861,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-18T05:53:49+09:00",
+  "updated_at_kst": "2026-11-18T06:09:58+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-17T20:54:29.852182+00:00",
+    "last_success_at": "2026-11-17T21:10:47.417162+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
