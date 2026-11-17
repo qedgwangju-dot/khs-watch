@@ -208,6 +208,31 @@ REPORTS = (
         ),
         "caution": "설비투자 집행은 HBM4 신규수주·가동률·잉여현금흐름 증가의 확정 증거가 아닙니다. 미 SEC 제출 6-K의 투자현황표(십억원 단위)와 유형자산 주석(백만원 단위) 표시 차이 약 3억원으로 확인; DART 국문 원문 직접 열람은 제한됨.",
     },
+    {
+        "key": "20261116_kiwoom_2028_conventional_memory_hbm_divergence",
+        "date": "2026-11-16",
+        "group": "cycle",
+        "label": "키움증권: 2027년 범용 DRAM·NAND 공급과잉과 2028년 HBM 성장의 반대 방향",
+        "sources": (
+            ("키움증권 전망 11월 16일 재정리", "https://theddari.com/trends/telegram/3692986659/13638", "키움 자료 인용 2차 요약·원본 PDF 직접 검증 아님"),
+            ("키움 보고서 해설", "https://arod2750.cafe24.com/doc/blog-naver-blog-dc56bd13aed5d90e-aae184a1dc2e", "리서치 내용 별도 정리·원본 직접 검증 아님"),
+        ),
+        "need": (
+            ("키움증권",), ("2028",), ("DRAM", "D램", "디램"),
+            ("NAND", "낸드"), ("-54%", "−54%"), ("-47%", "−47%"),
+            ("HBM",), ("81조",), ("450조",),
+        ),
+        "facts": (
+            "2026년 11월 16일 키움증권 박유악 반도체 산업 전망: NAND는 2027년 상반기, 범용 DRAM은 2027년 하반기 공급과잉 진입을 예상. 발표된 실제 수급 전환이나 확정 계약가격이 아닌 증권사 모델.",
+            "DRAM 공급과잉률 모델: 2026년 -2.8%→2027년 -0.5%→2028년 +4.9%; 가격 연간 전망 +250%→+17%→-54%(2028년 전년 대비).",
+            "NAND 공급과잉률 모델: 2026년 -5.8%→2027년 -4.1%→2028년 +8.4%; 가격 연간 전망 +289%→-3%→-47%(2028년 전년 대비).",
+            "HBM 전체 시장 규모는 2026년 81조원(+55%)→2027년 234조원(+188%)→2028년 450조원(+92%)으로 확대 예상. 삼성전자·SK하이닉스·Micron 합산 확정 매출과는 다른 시장 추정치.",
+            "원문 캡처상 CXMT의 2028년 HBM 매출은 10조~20조원 수준 예상으로, 시장점유율 10~20% 또는 확정 수주라는 뜻이 아님.",
+            "반대 전망: SK하이닉스 2026년 10월 28일 공식 발표는 2027~2028년 총 생산능력 50% 초과의 14개 고객 장기계약과 2030년까지 공급 부족 전망을 제시. 기존 Goldman Sachs 2028년 공급부족 전망과도 방향이 상충.",
+            "선행 확인: 스마트폰·PC 고객 메모리 재고와 탑재량, DRAM/NAND 계약가·현물가, CXMT·YMTC 웨이퍼 실제 가동량·수율, HBM4 고객 승인·실제 출하·장기계약 가격·빅테크 설비투자. 가격 전망 자체로 확정 공급과잉 경보 발송 금지.",
+        ),
+        "caution": "키움 공식 보고서 게시 https://bbn.kiwoom.com/rfCI5748 는 확인했으나 원본 PDF 전문 직접 확인은 제한됨. 수치는 사용자 캡처·2차 정리 근거의 증권사 예상으로만 발송. 첨부글의 HBM 출하비트 15%→가격 -2%, 20%→가격 -10%는 글쓴이의 별도 민감도 가정이며 키움 확정 전망 아님. 동일 기사 재게시·과거 전망을 실제 공급과잉 발생으로 재알림하지 않음.",
+    },
 )
 
 GROUPS = {
@@ -216,6 +241,7 @@ GROUPS = {
     "intel": "인텔 추론 GPU·국내 23개사·공유 메모리",
     "allocation": "엔비디아·비엔비디아 HBM4 공급 배분·고객별 가격",
     "financial": "SK하이닉스 지역별 매출·고객 집중도·설비투자·연구개발비",
+    "cycle": "2027~2028 DRAM·NAND 공급과잉 전망 vs HBM 수요·고객 계약",
 }
 
 def text_matches(body: str, required: tuple) -> bool:
@@ -307,7 +333,7 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
         "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield",
     }
     rendered = [render(group, [x for x in new if x["group"] == group], checked_at)
-                for group in ("glass", "hbm", "intel", "allocation", "financial")
+                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle")
                 if any(x["group"] == group for x in new)]
     audit = {"checked_at_kst": checked_at, "verified_events": len(new),
              "verified_keys": [x["key"] for x in new], "gaps": gaps[-20:],

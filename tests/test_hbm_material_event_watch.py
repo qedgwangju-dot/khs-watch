@@ -235,14 +235,18 @@ class MaterialEventTests(unittest.TestCase):
             row = next(r for r in m.REPORTS if url in [v[1] for v in r["sources"]])
             return self.fixture(row)
         out, alerts, audit = m.apply(state, "2026-11-17T15:20:00+09:00", fact_fixture)
-        self.assertEqual(audit["verified_events"], 2)
-        self.assertEqual(len(alerts), 1)
+        self.assertEqual(audit["verified_events"], 3)
+        self.assertEqual(len(alerts), 2)
         self.assertIn("70.2%", alerts[0])
         self.assertIn("62.5%", alerts[0])
         self.assertIn("34조9,778", alerts[0])
         self.assertIn("10조948", alerts[0])
         self.assertIn("실명 미공개", alerts[0])
         self.assertIn("50% 초과", alerts[0])
+        self.assertIn("2027년 상반기", alerts[1])
+        self.assertIn("2028년 +4.9%", alerts[1])
+        self.assertIn("2028년 450조원", alerts[1])
+        self.assertIn("10조~20조원", alerts[1])
         self.assertEqual(len(out["hbm_material_event_watch"]["seen_keys"]), len(m.REPORTS))
         for chunk in d.chunks(alerts[0]):
             self.assertTrue(chunk.strip())
@@ -261,6 +265,42 @@ class MaterialEventTests(unittest.TestCase):
             self.assertIsNone(found)
             self.assertTrue(gaps)
         self.assertNotIn("엔비디아 확정", " ".join(row["facts"]))
+
+    def test_kiwoom_2028_forecast_keeps_sources_stages_and_rejects_missing_prices(self):
+        row = next(x for x in m.REPORTS if "kiwoom_2028" in x["key"])
+        self.assertEqual(row["date"], "2026-11-16")
+        self.assertIn("박유악", " ".join(row["facts"]))
+        self.assertIn("원본 PDF 전문 직접 확인은 제한", row["caution"])
+        self.assertIn("시장점유율 10~20%", " ".join(row["facts"]))
+        self.assertIn("2027년 상반기", " ".join(row["facts"]))
+        self.assertIn("2027년 하반기", " ".join(row["facts"]))
+        for absent in ("-54%", "-47%", "450조"):
+            evidence = self.fixture(row).replace(absent, "삭제됨")
+            result, errors = m.probe(row, lambda url: evidence)
+            self.assertIsNone(result)
+            self.assertTrue(errors)
+
+    def test_kiwoom_scenario_recovers_once_without_resetting_old_confirmed_receipt(self):
+        row = next(x for x in m.REPORTS if "kiwoom_2028" in x["key"])
+        earlier = [x["key"] for x in m.REPORTS if x is not row]
+        preserved = {
+            "delivery_receipt": {"status": "confirmed", "message_ids": [488]},
+            "hbm_material_event_watch": {"seen_keys": earlier},
+        }
+        updated, alerts, audit = m.apply(preserved, "2026-11-17T23:10:00+09:00",
+                                         lambda url: self.fixture(row))
+        self.assertEqual(audit["verified_events"], 1)
+        self.assertEqual(len(alerts), 1)
+        self.assertIn("증권사", alerts[0])
+        self.assertIn("2028년 +8.4%", alerts[0])
+        self.assertEqual(updated["delivery_receipt"], preserved["delivery_receipt"])
+        again, alerts_again, audit_again = m.apply(
+            updated, "2026-11-17T23:20:00+09:00",
+            lambda _: (_ for _ in ()).throw(AssertionError("must not refetch")))
+        self.assertEqual(alerts_again, [])
+        self.assertEqual(audit_again["verified_events"], 0)
+        self.assertEqual(again["hbm_material_event_watch"]["seen_keys"],
+                         updated["hbm_material_event_watch"]["seen_keys"])
 
 if __name__ == "__main__":
     unittest.main()
