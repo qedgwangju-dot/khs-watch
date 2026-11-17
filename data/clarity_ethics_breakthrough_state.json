@@ -2,14 +2,11 @@
   "initialized": true,
   "signature_version": 2,
   "monitoring_unit": "event_state_change_not_article",
-  "last_checked_utc": "2026-11-17T04:34:37+00:00",
+  "last_checked_utc": "2026-11-17T14:31:58+00:00",
   "seen_signatures": [
     "63e22c44853614a5fcdaa2aba977d8b887dcf8f9e00ebb96e5322a8230cf38de"
   ],
   "accepted_current": 0,
-  "raw_articles": 72,
-  "source_errors": [
-    "\"Trump agrees\" crypto bill ethics: HTTP Error 429: Too Many Requests",
-    "\"Trump accepts\" crypto bill ethics: HTTP Error 429: Too Many Requests"
-  ]
+  "raw_articles": 81,
+  "source_errors": []
 }
