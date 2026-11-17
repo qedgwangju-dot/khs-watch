@@ -161,6 +161,71 @@ def main():
     except RuntimeError as error:
         assert "reference" in str(error)
 
+
+    # WallstreetCN/Dow Jones 2026Q3 Duquesne follow-up is checked against
+    # SEC Q2+Q3 share deltas, dollar units and portfolio-weight denominator.
+    duq={"managers":{"Duquesne Family Office":{
+           "cik":"0001536411","report_date":"2026-09-30",
+           "accession":c.DUQ_Q3_ACCESSION}},
+         "seen_context_events":[c.Q3_COMPARE_KEY]}
+    assert c.duq_article_ready(duq)
+    duq["duq_article_pending_delivery"]={"key":c.DUQ_ARTICLE_KEY}
+    assert not c.duq_article_ready(duq)
+    del duq["duq_article_pending_delivery"]
+    duq["seen_context_events"].append(c.DUQ_ARTICLE_KEY)
+    assert not c.duq_article_ready(duq)
+
+    def secrow(issuer,shares,value,cusip=""):
+        return {"issuer":issuer,"shares":shares,"value":value,
+                "cusip":cusip,"title":"COM","putcall":""}
+    before=[
+        secrow("ADVANCED MICRO DEVICES",72900,42300),
+        secrow("SANDISK CORP",34900,79400),
+        secrow("ALPHABET INC",336300,120200,"02079K305"),
+        secrow("TAIWAN SEMICONDUCTOR",589680,281600),
+        secrow("NATERA INC",3186306,1260000),
+        secrow("SEAGATE TECHNOLOGY",122000,117728),
+    ]
+    current=[
+        secrow("SPACE EXPLORATION TECHN CORP",202125,30493),
+        secrow("PALANTIR TECHNOLOGIES",80100,14983),
+        secrow("APPLOVIN CORP",109460,31790),
+        secrow("TAIWAN SEMICONDUCTOR",32700,14917),
+        secrow("NATERA INC",3160666,1306335),
+        secrow("SEAGATE TECHNOLOGY",341790,315247),
+        secrow("NEWMONT CORP",380400,43875),
+        secrow("BARRICK MNG CORP",1054600,42891),
+        secrow("AGNICO EAGLE MINES",231050,42345),
+    ]
+    remaining=4470867-sum(row0["value"] for row0 in current)
+    assert remaining>0
+    current.append(secrow("OTHER HOLDINGS INC",100000,remaining))
+    snapshot={"current":{str(i):z for i,z in enumerate(current)},
+              "previous":{str(i):z for i,z in enumerate(before)},
+              "factors":(1000,1000),"url":"https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/form13f_20260930.xml"}
+    report=c.build_duq_article_followup(snapshot,1334.87,"2026-11-16 ECB 테스트")
+    for phrase in (
+        "스페이스X: 신규 202,125주",
+        "팔란티어(PLTR): 신규 80,100주",
+        "앱러빈(APP): 신규 109,460주",
+        "AMD: 2분기 72,900주 → 3분기 신고 없음",
+        "샌디스크(SNDK): 2분기 34,900주",
+        "알파벳 A(GOOGL): 2분기 336,300주",
+        "TSMC 589,680→32,700주 (-94.5%)",
+        "나테라(NTRA) 3,160,666주",
+        "29.2%로 1위",
+        "매도일·매도가격은 미공개",
+        "3분기말", "억원",
+    ):
+        assert phrase in report,phrase
+    assert len(report)<3750,len(report)
+    snapshot["current"]["0"]["shares"]=202124
+    try:
+        c.build_duq_article_followup(snapshot,1334.87,"unit regression")
+        raise AssertionError("Bad SpaceX position must block article alert")
+    except RuntimeError as error:
+        assert "SEC article disagreement" in str(error)
+
     print("13F CDW manager-context regression checks passed.")
 
 if __name__=="__main__":
