@@ -156,29 +156,38 @@ watch.money = money_with_krw
 _original_build_message = watch.build_message
 
 
-def build_message_with_owner(label, filing, previous, changes, info_url):
-    """Send the industry-direction summary FIRST and omit long per-ticker listings.
+def build_message_with_owner(label, filing, previous, changes, info_url,
+                             current_holdings=None, previous_holdings=None):
+    """Automatic SEC 13F position intelligence, not a hand-entered news alert.
 
-    Full underlying 13F parsing and original report builder remain untouched;
-    this changes only the manager Telegram presentation, not dedup or routing.
+    Every changed security is inspected BEFORE sectors or specific names are
+    ranked. The public information table supplies holdings and valuations;
+    media headlines are neither prerequisites nor substituted for SEC rows.
     """
-    owner = PORTFOLIO_OWNER_KR.get(label, watch.MANAGER_KR.get(label, label))
-    validated = sector_rank.verified_change_values(changes,label,filing,previous)
-    rate, basis = ensure_fx()
-    lines = [
-        f"[13F 업종별 보유 확대·축소] {owner}",
-        f"보유 기준 {filing['report_date']} · 공시 {filing['filing_date']} · "
-        f"비교 {previous['report_date'] if previous else '직전 분기 미확인'}",
-        f"평가액 원화환산: 1달러={rate:,.2f}원 ({basis})",
+    owner=PORTFOLIO_OWNER_KR.get(label,watch.MANAGER_KR.get(label,label))
+    validated=sector_rank.verified_change_values(changes,label,filing,previous)
+    rate,basis=ensure_fx()
+    if current_holdings is not None:
+        # Quarterly public filing: source-based, works for every watched manager.
+        summary=sector_rank.build_automatic_13f_digest(
+            validated,current_holdings,watch.security_name_kr,money_with_krw,
+            report_scale=sector_rank.verified_scale(label,filing),max_chars=2950)
+    else:
+        # Preserve direct legacy callsites that only pass an existing diff.
+        summary=sector_rank.build_sector_direction(
+            validated,watch.security_name_kr,top_n=3,money=money_with_krw)
+    lines=[
+        f"[13F 핵심 변화 자동 추출] {owner}",
+        f"보유 기준 {filing['report_date']} · 제출 {filing['filing_date']} · "
+        f"직전 {previous['report_date'] if previous else '비교 불가'}",
+        f"환율 1달러={rate:,.2f}원 ({basis})",
         "",
-        sector_rank.build_sector_direction(
-            validated, watch.security_name_kr, top_n=3,
-            money=money_with_krw),
+        summary,
         f"SEC 공식 원문: {info_url}",
     ]
     message="\n".join(lines)
     if len(message)>3700:
-        raise RuntimeError("13F sector amount report exceeds single Telegram message; no partial delivery")
+        raise RuntimeError("13F automatic message too long; refuse partial/duplicate sending")
     return message
 
 
