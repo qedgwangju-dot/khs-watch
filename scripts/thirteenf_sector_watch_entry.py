@@ -74,6 +74,7 @@ EXTRA_SECTORS = [
     ("우주·위성·발사체", ["SPACE EXPLORATION", "SPACEX", "SPCX"]),
     ("암호화폐 채굴·인프라", ["CLEANSPARK", "BITDEER", "RIOT PLATFORMS", "IREN LIMITED"]),
     ("소비재·가구", ["SOMNIGROUP", "MACYS", "MACY'S"]),
+    ("디지털 광고·AI 앱 플랫폼", ["APPLOVIN"]),
 ]
 for sec, phrases in reversed(EXTRA_SECTORS):
     watch.SECTOR_RULES.insert(0, (sec, phrases))
@@ -92,6 +93,7 @@ EXTRA_NAMES = [
     ("SPACE EXPLORATION", "스페이스X"),
     ("BENDING SPOONS", "벤딩스푼스"),
     ("SOMNIGROUP", "솜니그룹(SGI)"),
+    ("APPLOVIN", "앱러빈(APP)"),
 ]
 for needle, name in reversed(EXTRA_NAMES):
     watch.SECURITY_DISPLAY_RULES.insert(0, (needle, name))
