@@ -40,10 +40,11 @@ def test_two_independent_publishers_same_observation_only():
     found=cta.collect(today=PUB,discovery=news,reader=read)
     assert found["status"]=="verified_secondary"
     assert found["note"]["week"]["flat"][1]==9.9
-    assert cta.collect(today=PUB,discovery=lambda:news()[:1],reader=read)["status"]=="withheld"
+    assert cta.collect(today=PUB,discovery=lambda:news()[:1],reader=read)["status"]=="reported_single"
     news,read=inputs(agree=False)
     assert cta.collect(today=PUB,discovery=news,reader=read)["status"]=="withheld"
     news,read=inputs(verbatim=True)
+    # Duplicate syndicated text must not be accepted as independent research.
     assert cta.collect(today=PUB,discovery=news,reader=read)["status"]=="withheld"
 
 def test_report_and_krw_are_explicitly_estimates():
@@ -54,6 +55,17 @@ def test_report_and_krw_are_explicitly_estimates():
     assert "52억달러(약 6조 9,420억원)" in text
     assert "실제 체결된 CTA" in text
     assert "CFTC Leveraged Funds" in text
+
+
+def test_single_source_prealert_is_labeled_and_stage_deduped():
+    news,read=inputs()
+    single=cta.collect(today=PUB,discovery=lambda:news()[:1],reader=read)
+    checked=cta.collect(today=PUB,discovery=news,reader=read)
+    assert single["status"]=="reported_single" and checked["status"]=="verified_secondary"
+    assert single["key"]!=checked["key"]
+    msg=cta.render(single,"1335.00","2026-11-17")
+    assert "단일 보도 선행경보·미확정" in msg
+    assert "골드만삭스 원본 미확인" in msg
 
 def test_validate_only_preserves_delivery_and_duplicate_keys():
     n,r=inputs()

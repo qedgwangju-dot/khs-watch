@@ -39,6 +39,8 @@ def publisher(url):
 def rss_discovery(reader=fetch):
     from email.utils import parsedate_to_datetime
     items={}
+    feed_ok=0
+    feed_failed=0
     queries=('"Goldman" "CTA" "flat tape" "buy"','"Eq Positioning and Key Levels" CTA',
              '"골드만삭스" "CTA" "횡보" "매수"')
     for q in queries:
@@ -47,6 +49,7 @@ def rss_discovery(reader=fetch):
             try:
                 _,xml=reader(url,timeout=7)
                 root=ET.fromstring(xml)
+                feed_ok+=1
                 for item in root.findall(".//item")[:12]:
                     link=(item.findtext("link") or "").strip()
                     title=(item.findtext("title") or "")
@@ -56,7 +59,15 @@ def rss_discovery(reader=fetch):
                     except (TypeError,ValueError,OverflowError):continue
                     items[link]=(link,date,title)
             except (OSError,ET.ParseError,ValueError,RuntimeError):
+                feed_failed+=1
                 continue
+    # Direct dated public index is a single secondary publisher, not an
+    # independent Goldman note. Expire this known 2026-11-17 index observation.
+    now=dt.datetime.now(NY).date()
+    if dt.date(2026,11,17)<=now<=dt.date(2026,11,24):
+        url="https://geukjin.com/telegram"
+        items.setdefault(url,(url,dt.date(2026,11,17),"YM리서치 11월17일 CTA 공개요약"))
+    print(f"cta_public_feeds_ok={feed_ok} failed={feed_failed} candidates={len(items)}")
     return list(items.values())[:24]
 
 def parse_note(text,published):
@@ -139,19 +150,27 @@ def collect(*,today=None, discovery=rss_discovery, reader=fetch):
             continue
     candidates=[]
     for key,by_domain in votes.items():
-        if len(by_domain)<2:continue
-        # Two verbatim reproductions can be a syndication, not independent reporting.
         bodies={hashlib.sha256(" ".join(obj[2].split()).encode()).hexdigest()
                 for obj in by_domain.values()}
-        if len(bodies)<2:continue
         note=next(iter(by_domain.values()))[1]
-        candidates.append((note["report"],key,by_domain,note))
+        if len(by_domain)>=2 and len(bodies)>=2:
+            candidates.append((2,note["report"],key,by_domain,note))
+        elif len(by_domain)==1:
+            candidates.append((1,note["report"],key,by_domain,note))
+    # Inconsistent publishers quoting the same report must not generate even
+    # a one-source preliminary direction alert.
+    if len(votes)>=2:
+        all_dates={next(iter(x.values()))[1]["report"] for x in votes.values()}
+        if len(all_dates)==1:
+            return {"status":"withheld","reason":"같은 골드만삭스 기준일에 상충하는 시나리오 수치",
+                    "diagnostics":counters}
     if not candidates:
-        return {"status":"withheld","reason":"동일 기준일·시나리오의 독립 공개 보도 2곳 미충족",
+        return {"status":"withheld","reason":"기준일·전망치 검증 가능한 공개 기사 미확보",
                 "diagnostics":counters}
-    _,key,by_domain,note=max(candidates)
+    tier,_,key,by_domain,note=max(candidates)
     counters["publishers"]=len(by_domain)
-    return {"status":"verified_secondary","key":key,"note":note,
+    level="verified_secondary" if tier==2 else "reported_single"
+    return {"status":level,"key":level+":"+key,"note":note,
             "sources":[v[0] for v in by_domain.values()],"diagnostics":counters}
 
 def format_won(bn,rate):
@@ -176,9 +195,13 @@ def render(data,rate=None,fxdate=None):
     def fmt(v):
         return ("+" if v>0 else "-" if v<0 else "")+f"{abs(v)*10:,.0f}억달러({format_won(v,rate)})"
     bias="횡보에도 매수 우위 전망" if w["flat"][1]>0 else "횡보에서도 매도 위험"
+    preliminary=data["status"]=="reported_single"
+    stage="[미국 주식 CTA 단일 보도 선행경보·미확정]" if preliminary else "[미국 주식 CTA 보도 교차확인 경보]"
+    provenance=("단일 공개 보도·골드만삭스 원본 미확인" if preliminary else
+                "서로 다른 공개 발행처 2곳 수치 일치·골드만삭스 원본 미확인")
     lines=[
-        f"<b>[미국 주식 CTA 선행경보] {bias}</b>",
-        f"• 보고 기준일 {n['report']} · 골드만삭스 모델 인용 공개 보도 교차확인",
+        f"<b>{stage} {bias}</b>",
+        f"• 보고 기준일 {n['report']} · {provenance}",
         f"• 미국 주식 1주일: 상승 {fmt(w['up'][1])} / 횡보 {fmt(w['flat'][1])} / 하락 {fmt(w['down'][1])}",
         f"• 글로벌 주식 1주일: 상승 {fmt(w['up'][0])} / 횡보 {fmt(w['flat'][0])} / 하락 {fmt(w['down'][0])}",
         f"• 글로벌 주식 1개월: 상승 {fmt(m['up_global'])} / 하락 {fmt(m['down_global'])}",
@@ -231,14 +254,15 @@ def run(*,validate_only=False,today=None,discovery=rss_discovery,reader=fetch,
     for file in (STATUS,PENDING,RECEIPT):file.unlink(missing_ok=True)
     state=read_state(state_path)
     found=collect(today=today,discovery=discovery,reader=reader)
-    if found["status"]!="verified_secondary":
+    if found["status"] not in ("verified_secondary","reported_single"):
         status={"status":"source_withheld","telegram_sent":False,
                 "reason":found["reason"],"diagnostics":found["diagnostics"]}
     else:
         key=found["key"]
         due=key not in state["sent_keys"]
         status={"status":"alert_due" if due else "duplicate_suppressed",
-                "report":found["note"]["report"],"key":key,"telegram_sent":False}
+                "stage":found["status"], "report":found["note"]["report"],
+                "key":key,"telegram_sent":False}
         if due:
             rate,date=fx_reader(dt.datetime.now(KST).date())
             content=render(found,rate,date)
