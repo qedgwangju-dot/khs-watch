@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at_kst": "2026-11-17T12:24:17+09:00",
+  "checked_at_kst": "2026-11-17T14:47:41+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -28,8 +28,8 @@
   "halozyme_state_persisted": true,
   "halozyme_source_health": "partial",
   "cms_policy_status": "previously_delivered",
-  "maplight_source_health": "last_verified",
-  "halozyme_search_failed_tasks": 3,
+  "maplight_source_health": "last_incomplete",
+  "halozyme_search_failed_tasks": 2,
   "halozyme_search_task_count": 80,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-11-17",
