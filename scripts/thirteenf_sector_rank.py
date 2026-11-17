@@ -94,3 +94,107 @@ def build_ranking(changes, money):
         "두 값을 빼 실제 현금 순매수라고 표시하지 않습니다."
     )
     return "\n".join(lines)
+
+
+def _security_delta_label(item, display):
+    """Use share-count deltas, not valuation-weight movement, for changes."""
+    import math
+    action=item.get("action")
+    name=str(display(item))
+    if action=="신규 매수":
+        return f"{name} 신규"
+    if action=="전량 청산":
+        return f"{name} 전량"
+    shares=float(item.get("shares") or 0)
+    delta=float(item.get("delta_shares") or 0)
+    old=shares-delta
+    if old<=0 or not math.isfinite(old):
+        return f"{name} 수량 변동"
+    pct=abs(100*delta/old)
+    if not math.isfinite(pct):
+        return f"{name} 수량 변동"
+    sign="+" if delta>0 else "-"
+    return f"{name} {sign}{pct:,.1f}%"
+
+
+def _group_sector_changes(changes):
+    """Reference values of changed ordinary shares, never actual trade cash.
+
+    Compare buy/sell within each separately, because quarters use different
+    marking dates. Preserve misc sectors and unpriced rows as visibility gaps.
+    """
+    groups=defaultdict(lambda: {
+        "buy":0.0, "sell":0.0, "buys":[], "sells":[],
+    })
+    options={"CALL":0,"PUT":0}
+    missing=0
+    for row in changes:
+        pc=str(row.get("putcall") or "").upper()
+        if pc in options:
+            options[pc]+=1
+            continue
+        side,value=changed_share_reference_value(row)
+        if not side:
+            missing+=1
+            continue
+        group=groups[row.get("sector") or "기타"]
+        group[side]+=value
+        group["buys" if side=="buy" else "sells"].append((value,row))
+    return groups,options,missing
+
+
+def build_sector_brief(changes, money, display, *, top_n=4):
+    """Telegram top-line: industry rotation, leading names and caveats.
+
+    This is a quarterly 13F *position* change, not executed buy/sell flows.
+    Existing old-format builder stays available for diagnostics.
+    """
+    groups,options,missing=_group_sector_changes(changes)
+    excluded=groups.get("기타",{})
+    recognized={k:v for k,v in groups.items() if k!="기타"}
+    buying=sorted(((k,v) for k,v in recognized.items() if v["buys"]),
+                  key=lambda kv:(-kv[1]["buy"],kv[0]))
+    selling=sorted(((k,v) for k,v in recognized.items() if v["sells"]),
+                   key=lambda kv:(-kv[1]["sell"],kv[0]))
+    lines=["[업종별 신규편입·보유확대]"]
+    if not buying:
+        lines.append("• 분류된 보통주 확대 없음")
+    for i,(sector,v) in enumerate(buying[:top_n],1):
+        important=sorted(v["buys"],key=lambda p:-p[0])[:2]
+        names=" · ".join(_security_delta_label(x,display) for _,x in important)
+        lines.append(f"• {i}. {sector}: {money(v['buy'])} / {len(v['buys'])}건")
+        lines.append(f"  {names}")
+
+    lines += ["", "[업종별 축소·전량청산]"]
+    if not selling:
+        lines.append("• 분류된 보통주 축소 없음")
+    for i,(sector,v) in enumerate(selling[:top_n],1):
+        important=sorted(v["sells"],key=lambda p:-p[0])[:2]
+        names=" · ".join(_security_delta_label(x,display) for _,x in important)
+        lines.append(f"• {i}. {sector}: {money(v['sell'])} / {len(v['sells'])}건")
+        lines.append(f"  {names}")
+
+    both=sorted(((k,v) for k,v in recognized.items()
+                 if v["buys"] and v["sells"]),
+                key=lambda kv:-(kv[1]["buy"]+kv[1]["sell"]))
+    if both:
+        lines += ["", "[같은 업종 양방향]"]
+        for sec,v in both[:2]:
+            buy=sorted(v["buys"],key=lambda p:-p[0])[0][1]
+            sell=sorted(v["sells"],key=lambda p:-p[0])[0][1]
+            lines.append(f"• {sec}: 확대 {_security_delta_label(buy,display)}"
+                         f" / 축소 {_security_delta_label(sell,display)}")
+
+    if excluded and (excluded["buys"] or excluded["sells"]):
+        lines += ["",f"• 업종 미분류: 확대 {len(excluded['buys'])}건 ({money(excluded['buy'])})"
+                 f" / 축소 {len(excluded['sells'])}건 ({money(excluded['sell'])}) · 순위 제외"]
+    if options["CALL"] or options["PUT"]:
+        lines.append(f"• 옵션 변동 별도: 콜 {options['CALL']}건 / 풋 {options['PUT']}건 (보통주 합산 제외)")
+    if missing:
+        lines.append(f"• 평가·수량 미확인 변동 {missing}건 제외")
+    lines += [
+        "※ 확대액=추가 보통주 수량×당분기말 평가단가, 축소액=감소 수량×직전분기말 평가단가의 참고값.",
+        "※ 두 금액은 기준시점이 달라 순매수 금액으로 차감하지 않으며 실제 체결대금이 아닙니다.",
+        "※ 실제 매매시점·공매도·비상장자산·현금은 13F로 확인되지 않습니다.",
+    ]
+    return "\n".join(lines)
