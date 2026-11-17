@@ -985,10 +985,22 @@
       "source": "BigGo Finance",
       "published_kst": "2026-11-16T23:25:00+09:00",
       "first_seen_kst": "2026-11-17T04:57:34+09:00"
+    },
+    "2b5a437cd2971694ee2013da": {
+      "title": "New Enterprise SSD Cuts Pull NAND Price Drop to 2Q27",
+      "source": "TrendForce Research",
+      "published_kst": "2026-11-17T09:00:00+09:00",
+      "first_seen_kst": "2026-11-17T17:19:46+09:00"
+    },
+    "6a636cc916360e2e5b66f0bb": {
+      "title": "TeamGroup CEO Warns 2027 DRAM Shortage Could Become So Severe That Even Money Won’t Guarantee Supply - Wccftech",
+      "source": "Wccftech",
+      "published_kst": "2026-11-14T21:11:17+09:00",
+      "first_seen_kst": "2026-11-17T17:19:46+09:00"
     }
   },
-  "updated_at_kst": "2026-11-17T04:57:34+09:00",
-  "last_scan_count": 8,
+  "updated_at_kst": "2026-11-17T17:19:46+09:00",
+  "last_scan_count": 9,
   "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -1039,31 +1051,33 @@
     "secondary_fab_timeline_source_kind": "뉴시스 업계 관계자 익명 발언 · TrendForce 공식 가이던스 아님",
     "secondary_fab_timeline_source_url": "https://www.newsis.com/view/NISX20261002_0003812363",
     "source": "TrendForce Research",
-    "source_url": "https://www.trendforce.com/research/download/RP261104YZ",
+    "source_url": "https://www.trendforce.com/research/download/RP261116WI",
     "research_url": "https://www.trendforce.com/research/download/RP260924PL",
     "capacity_source_url": "https://www.trendforce.com/research/download/RP260819HW",
     "easing_source_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
     "secondary_source_url": "https://www.trendforce.com/presscenter/news/20260921-13246.html",
     "source_rank": 3,
-    "as_of": "2026-11-04"
+    "as_of": "2026-11-17"
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-16T22:52:17+09:00",
+  "last_successful_delivery_kst": "2026-11-17T17:20:15+09:00",
   "telegram_message_ids": [
-    474
+    489,
+    490
   ],
-  "telegram_message_id": 474,
+  "telegram_message_id": 490,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      474
+      489,
+      490
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-16T22:52:17+09:00",
-    "alert_signature": "b9f62d43d22f28c2ebaefc6cc5d68c1aa2332e4508a24d9a1b3d3b47b6582b67"
+    "confirmed_at_kst": "2026-11-17T17:20:15+09:00",
+    "alert_signature": "8312c750d87ecbf713a6e00279e121dd1cec3769c5312674fa033dbb7dc448b3"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1380,6 +1394,7 @@
       "source_kind": "publisher_model_numeric_unverified"
     },
     "fact_key": "semia-accel-hbm-20261113-secondary-v1",
-    "nvidia_details_id": "semia-nvidia-20261113-vendor-price-detail-v2"
+    "nvidia_details_id": "semia-nvidia-20261113-vendor-price-detail-v2",
+    "capex_mix_id": "semia-20261117-capex-share-scenario-and-scope-v1"
   }
 }
