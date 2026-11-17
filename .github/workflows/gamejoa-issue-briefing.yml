@@ -1,0 +1,82 @@
+name: GAMEJOA twice-daily market issue briefing
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/gamejoa_issue_briefing.py'
+      - 'scripts/test_gamejoa_issue_briefing.py'
+      - '.github/workflows/gamejoa-issue-briefing.yml'
+  schedule:
+    - cron: "30 21 * * *" # 06:30 KST
+    - cron: "30 7 * * *"  # 16:30 KST
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: "Which briefing window to build"
+        required: true
+        default: preopen
+        type: choice
+        options: [preopen, close]
+      telegram_dry_run:
+        description: "Build without reserving or sending"
+        required: true
+        default: "true"
+        type: choice
+        options: ["true", "false"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gamejoa-issue-briefing
+  cancel-in-progress: false
+
+jobs:
+  briefing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      BRIEFING_SLOT: ${{ github.event_name == 'schedule' && (github.event.schedule == '30 21 * * *' && 'preopen' || 'close') || github.event_name == 'pull_request' && 'preopen' || inputs.slot }}
+      TELEGRAM_DRY_RUN: ${{ github.event_name == 'schedule' && 'false' || github.event_name == 'pull_request' && 'true' || inputs.telegram_dry_run }}
+      BRIEFING_REFRESH_SEEN: "true"
+      GITHUB_TOKEN: ${{ github.token }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      RADAR_MAX_AGE_HOURS: "24"
+      RADAR_FETCH_TIMEOUT_SECONDS: "10"
+      RADAR_QUERY_FETCH_WORKERS: "4"
+      GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT: "240"
+      GAMEJOA_KOREAN_BUSINESS_DETAIL_WORKERS: "12"
+      KHS_SOURCE_PROXY_URL: https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+      SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || vars.SEC_USER_AGENT || 'GAMEJOA-issue-briefing contact=please-set-secret' }}
+      PYTHONUTF8: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'schedule' && 'main' || github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify briefing contracts
+        run: python scripts/test_gamejoa_issue_briefing.py
+      - name: Build and optionally send briefing
+        run: python scripts/gamejoa_issue_briefing.py
+      - name: Publish non-secret report summary
+        if: always()
+        run: |
+          if [ -f out/gamejoa_issue_briefing.md ]; then
+            cat out/gamejoa_issue_briefing.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload briefing evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gamejoa-issue-briefing
+          path: |
+            out/gamejoa_issue_briefing.md
+            out/gamejoa_issue_briefing.json
+          if-no-files-found: warn
