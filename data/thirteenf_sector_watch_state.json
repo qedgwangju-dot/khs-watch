@@ -80,9 +80,10 @@
       "cik": "0001512857"
     }
   },
-  "updated_at": "2026-11-17T07:58:12.928010+00:00",
+  "updated_at": "2026-11-17T07:58:14.763383+00:00",
   "seen_context_events": [
     "13f-context:duquesne:2026-06-30:CDW:shindonga-2026-10-08",
+    "13f-duquesne-2026q3-article-audit-20261117-v1",
     "verified-13f-crossmanager-2026q3-20261117-v1",
     "verified-13f-q3-value-addendum-20261117-v1"
   ],
@@ -112,12 +113,13 @@
         "NVIDIA": "0001045810-26-000084",
         "Berkshire Hathaway": "0001193125-26-463399"
       }
+    },
+    "13f-duquesne-2026q3-article-audit-20261117-v1": {
+      "message_id": 156,
+      "bot": "khs887988798879_bot",
+      "q3_accession": "0001536411-26-000011",
+      "q2_accession": "0001536411-26-000006",
+      "confirmed_utc": "2026-11-17T07:58:14.763311+00:00"
     }
-  },
-  "duq_article_pending_delivery": {
-    "key": "13f-duquesne-2026q3-article-audit-20261117-v1",
-    "q3_accession": "0001536411-26-000011",
-    "q2_accession": "0001536411-26-000006",
-    "reserved_utc": "2026-11-17T07:58:12.927929+00:00"
   }
 }
