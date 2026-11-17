@@ -13,12 +13,16 @@ on:
       - "scripts/us_positioning_fx.py"
       - "scripts/us_positioning_etf_short_interest.py"
       - "tests/test_us_positioning_etf_short_interest.py"
+      - "scripts/us_equity_cta_scenario_watch.py"
+      - "tests/test_us_equity_cta_scenario_watch.py"
   schedule:
     # Completed-session checks only. KST 08:12 / 10:12 are after the U.S. close;
     # the former 22:12 KST pre-open slot was removed because it could mix live
     # SOX/Cboe values with completed-session CFTC data.
     - cron: "12 23 * * 0-4"  # KST Mon-Fri 08:12 (UTC Sun-Thu)
     - cron: "12 1 * * 1-5"   # KST Mon-Fri 10:12 (UTC Mon-Fri)
+    # Separate public Goldman US equity CTA checks: 14:17 and 20:17 KST.
+    - cron: "17 5,11 * * 1-5"
     # Backups for GitHub scheduled-event delay/drop. State fingerprints dedupe sends.
     - cron: "27 23 * * 0-4"  # KST Mon-Fri 08:27 (UTC Sun-Thu)
     - cron: "27 1 * * 1-5"   # KST Mon-Fri 10:27 (UTC Mon-Fri)
@@ -94,7 +98,7 @@ jobs:
 
   watch:
     needs: missed_digest_gate
-    if: ${{ always() && (github.event_name != 'workflow_run' || needs.missed_digest_gate.outputs.due == 'true') }}
+    if: ${{ always() && (github.event_name != 'workflow_run' || needs.missed_digest_gate.outputs.due == 'true') && !(github.event_name == 'schedule' && github.event.schedule == '17 5,11 * * 1-5') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -364,7 +368,7 @@ jobs:
   etf_short_interest:
     needs: missed_digest_gate
     # The trusted missing-digest recovery also checks the existing ETF SI lane.
-    if: ${{ always() && (github.event_name == 'schedule' || github.event_name == 'push' || (github.event_name == 'workflow_run' && needs.missed_digest_gate.outputs.due == 'true')) }}
+    if: ${{ always() && ((github.event_name == 'schedule' && github.event.schedule != '17 5,11 * * 1-5') || github.event_name == 'push' || (github.event_name == 'workflow_run' && needs.missed_digest_gate.outputs.due == 'true')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 7
     env:
@@ -430,5 +434,67 @@ jobs:
             out/us_positioning_etf_short_interest_status.json
             out/us_positioning_etf_short_interest_confirmed.json
             data/us_positioning_etf_short_interest_state.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+  equity_cta_scenario:
+    needs: missed_digest_gate
+    if: ${{ always() && (github.event_name == 'push' || github.event_name == 'schedule' || (github.event_name == 'workflow_run' && needs.missed_digest_gate.outputs.due == 'true')) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate public CTA two-source and scenario guards
+        run: |
+          python -m pip install --disable-pip-version-check --quiet beautifulsoup4 pytest
+          python -m py_compile scripts/us_equity_cta_scenario_watch.py
+          python -m pytest -q tests/test_us_equity_cta_scenario_watch.py
+      - name: Check public CTA scenarios independently
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            python scripts/us_equity_cta_scenario_watch.py --validate-only
+          else
+            python scripts/us_equity_cta_scenario_watch.py
+          fi
+      - name: Commit CTA delivery receipt only after Telegram confirms
+        if: ${{ github.event_name != 'push' && hashFiles('out/us_equity_cta_scenario_receipt.json') != '' }}
+        run: |
+          test -s out/us_equity_cta_scenario_pending.json
+          test -s out/us_equity_cta_scenario_receipt.json
+          cp out/us_equity_cta_scenario_pending.json /tmp/cta_state.json
+          git config user.name "us-equity-cta[bot]"
+          git config user.email "us-equity-cta[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch --quiet origin main
+            git reset --hard origin/main
+            mkdir -p data
+            cp /tmp/cta_state.json data/us_equity_cta_scenario_state.json
+            git add data/us_equity_cta_scenario_state.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Record US equity CTA verified Telegram receipt"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 3))
+          done
+          exit 1
+      - name: Upload CTA scenario audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: us-equity-cta-${{ github.run_id }}
+          path: |
+            out/us_equity_cta_scenario_status.json
+            out/us_equity_cta_scenario_receipt.json
+            out/us_equity_cta_scenario_pending.json
           if-no-files-found: ignore
           retention-days: 14
