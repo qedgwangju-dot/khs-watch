@@ -30,7 +30,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: gamejoa-issue-briefing
+  group: ${{ github.event_name == 'pull_request' && format('gamejoa-issue-briefing-pr-{0}', github.event.pull_request.number) || github.event_name == 'workflow_dispatch' && inputs.telegram_dry_run == 'true' && format('gamejoa-issue-briefing-dry-{0}', github.run_id) || 'gamejoa-issue-briefing-live' }}
   cancel-in-progress: false
 
 jobs:
