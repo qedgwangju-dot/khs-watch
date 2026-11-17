@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-17T23:59:41+09:00",
+  "last_checked_kst": "2026-11-18T03:31:31+09:00",
   "media_id": null,
   "cftc_date": "November 10, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-17T23:59:41+09:00",
+    "checked_kst": "2026-11-18T03:31:31+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "November 10, 2026",
@@ -89,8 +89,8 @@
         "settlement": 105.4375,
         "change": 0.25,
         "pct_change": 0.23767082590612004,
-        "open_interest": 6021516,
-        "oi_change": -3300,
+        "open_interest": 5972664,
+        "oi_change": -52152,
         "volume": 1854595,
         "source": "https://www.cmegroup.com/daily_bulletin/current/Section09_Interest_Rate_Futures.pdf",
         "trade_date_iso": "2026-11-16",
@@ -110,8 +110,8 @@
         "settlement": 105.53125,
         "change": 0.25,
         "pct_change": 0.23745918670228555,
-        "open_interest": 1931573,
-        "oi_change": -20615,
+        "open_interest": 1931035,
+        "oi_change": -21153,
         "volume": 442997,
         "source": "https://www.cmegroup.com/daily_bulletin/current/Section09_Interest_Rate_Futures.pdf",
         "trade_date_iso": "2026-11-16",
@@ -131,8 +131,8 @@
         "settlement": 106.5625,
         "change": 0.15625,
         "pct_change": 0.14684287812041116,
-        "open_interest": 2415577,
-        "oi_change": -12515,
+        "open_interest": 2415628,
+        "oi_change": -12464,
         "volume": 401040,
         "source": "https://www.cmegroup.com/daily_bulletin/current/Section09_Interest_Rate_Futures.pdf",
         "trade_date_iso": "2026-11-16",
@@ -220,15 +220,15 @@
         "previous_close": 28034.75,
         "pct_change": -2.6770347515137463,
         "change_points": -750.5,
-        "open_interest": 291829,
-        "oi_change": 15019,
+        "open_interest": 290353,
+        "oi_change": 13543,
         "oi_scope": "CME EMINI NASD FUT total product daily",
         "source": "CME Daily Bulletin PG11 official settlement/OI",
         "official": true,
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-11-16",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026111709"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026111713"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -441,7 +441,7 @@
       "nq_price_fresh": true,
       "nq_price_expected_session": "2026-11-16",
       "nq_weekly_oi_down": true,
-      "nq_daily_oi_change": 15019,
+      "nq_daily_oi_change": 13543,
       "nq_daily_oi_down": false,
       "nq_oi_down": false,
       "nq_short_cover": true,
@@ -467,7 +467,7 @@
       "ten_year_short_oi_share": 47.384234201569306,
       "event_key": null,
       "source_mode": "CFTC TFF live HTML",
-      "report_age_days": 7
+      "report_age_days": 8
     }
   },
   "format_revision": 14,
