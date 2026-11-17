@@ -249,18 +249,43 @@ def parse_holdings(cik: str, accession: str):
         issuer = child_text(node, ["nameOfIssuer"])
         title = child_text(node, ["titleOfClass"])
         cusip = child_text(node, ["cusip"])
-        value = num(child_text(node, ["value"]))
-        shares = num(child_text(node, ["shrsOrPrnAmt", "sshPrnamt"]))
+        raw_value = child_text(node, ["value"])
+        raw_shares = child_text(node, ["shrsOrPrnAmt", "sshPrnamt"])
+        try:
+            value = float(raw_value.replace(",", ""))
+            shares = float(raw_shares.replace(",", ""))
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"SEC 13F missing or invalid shares/value in {accession}") from exc
+        import math
+        if not math.isfinite(value) or not math.isfinite(shares) or value < 0 or shares <= 0:
+            raise ValueError(f"SEC 13F non-finite or invalid shares/value in {accession}")
+        if not cusip or not issuer:
+            raise ValueError(f"SEC 13F missing CUSIP/issuer in {accession}")
         putcall = child_text(node, ["putCall"]).upper()
+        if putcall not in ("", "PUT", "CALL"):
+            raise ValueError(f"SEC 13F unexpected option classification {putcall!r}")
         key = "|".join([cusip, title, putcall])
-        out[key] = {
-            "issuer": issuer,
-            "title": title,
-            "cusip": cusip,
-            "value": value,
-            "shares": shares,
-            "putcall": putcall,
-        }
+        if key in out:
+            # SEC explicitly permits separate rows by investment discretion.
+            # Earlier code overwrote such rows, creating false reductions/exits.
+            previous = out[key]
+            if previous["issuer"].strip().upper() != issuer.strip().upper():
+                raise ValueError("SEC 13F same CUSIP/title/option with conflicting issuers")
+            previous["value"] += value
+            previous["shares"] += shares
+            previous["source_rows"] += 1
+        else:
+            out[key] = {
+                "issuer": issuer,
+                "title": title,
+                "cusip": cusip,
+                "value": value,
+                "shares": shares,
+                "putcall": putcall,
+                "source_rows": 1,
+            }
+    if not out:
+        raise RuntimeError(f"SEC 13F empty information table: {accession}; no false liquidation alert")
     return out, url
 
 
