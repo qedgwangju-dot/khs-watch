@@ -460,3 +460,146 @@ def build_sector_direction(changes, display, *, top_n=4, money=None):
         "※ 13F는 분기말 보유 현황이며 매매시점·매매단가·공매도·현금은 확인되지 않습니다.",
     ])
     return "\n".join(lines)
+
+
+# The source SEC information table is the discovery source for every newly
+# filed manager. Never require a media headline or hand-entered ticker.
+# The old sector-only report remains available for past reports/tests.
+def build_automatic_13f_digest(changes, current_holdings, display, money,
+                                *, report_scale=None, max_chars=3050):
+    """Autonomously surfaces *all* noteworthy holdings changes from Q2 vs Q3.
+
+    The algorithm scans every current/prior filing change, including unknown
+    sectors; ranks by verified changed-share reference value when possible,
+    and independently surfaces AI/space/chip additions or exits. It cannot
+    identify actual fills, short selling, or confidentially omitted positions.
+    Options are counted but never mixed into common-share changes.
+    """
+    if not isinstance(changes,list) or not isinstance(current_holdings,dict):
+        raise ValueError("13F automatic digest needs complete position changes and current holdings")
+    nonoptions=[x for x in changes if str(x.get("putcall") or "").upper() not in ("PUT","CALL")]
+    options=[x for x in changes if str(x.get("putcall") or "").upper() in ("PUT","CALL")]
+    new=[x for x in nonoptions if x.get("action")=="신규 매수"]
+    ended=[x for x in nonoptions if x.get("action")=="전량 청산"]
+    up=[x for x in nonoptions if x.get("action")=="보유 확대"]
+    down=[x for x in nonoptions if x.get("action")=="보유 축소"]
+    unknown_sector=sum(x.get("sector") in ("기타","업종 미확인",None,"") for x in nonoptions)
+    category=("AI","우주","반도체","메모리","데이터센터","기업·응용",
+              "디지털 광고","자동화","게임·3D","디지털자산")
+    def tech(row):
+        return any(term in str(row.get("sector") or "") for term in category)
+    def reference(row):
+        side,value=changed_share_reference_value(row)
+        return float(value) if side and row.get("valuation_verified",False) else None
+    def rank(rows):
+        return sorted(rows,key=lambda row:(reference(row) is not None,
+                      reference(row) or 0,abs(float(row.get("delta_shares") or 0))),
+                      reverse=True)
+    def label(row):
+        text=str(display(row))
+        if len(text)>47:
+            text=text[:45]+"…"
+        return text
+    def currency(row):
+        value=reference(row)
+        if value is None or money is None:
+            return " · 금액 미검증"
+        return " · "+money(value)
+    def describe(row):
+        action=row.get("action")
+        n=abs(int(round(float(row.get("delta_shares") or 0))))
+        if action=="신규 매수":
+            change=f"신규 {n:,}주"
+        elif action=="전량 청산":
+            change=f"신고상 종료 {n:,}주"
+        else:
+            old=float(row.get("shares") or 0)-float(row.get("delta_shares") or 0)
+            pct=(100*float(row["delta_shares"])/old) if old>0 else None
+            change=(f"{float(row['delta_shares'])/abs(float(row['delta_shares'])):+.0f}{n:,}주"
+                    if pct is None else f"{pct:+.1f}% ({n:,}주)")
+        return f"{label(row)} {change}{currency(row)}"
+    def distinct(a,b,limit):
+        used={id(x) for x in a}
+        return [x for x in rank(b) if id(x) not in used][:limit]
+
+    total_value=None
+    top_holding=None
+    if current_holdings and report_scale is not None:
+        rows=list(current_holdings.values())
+        total_value=sum(float(r.get("value") or 0) for r in rows)*report_scale
+        shares=[r for r in rows if str(r.get("putcall") or "").upper() not in ("PUT","CALL")]
+        if total_value>0 and shares:
+            top_holding=max(shares,key=lambda x:float(x.get("value") or 0))
+    def report(limits):
+        n_large,n_themes,n_changed,n_sectors=limits
+        primary_new=rank(new)[:n_large]
+        extra_new=distinct(primary_new,(x for x in new if tech(x)),n_themes)
+        primary_exit=rank(ended)[:n_large]
+        extra_exit=distinct(primary_exit,(x for x in ended if tech(x)),n_themes)
+        def big(rows):
+            filt=[]
+            for x in rows:
+                old=float(x.get("shares") or 0)-float(x.get("delta_shares") or 0)
+                if old<=0:
+                    continue
+                pct=abs(float(x["delta_shares"])/old*100)
+                if pct>=40:
+                    filt.append(x)
+            return rank(filt)[:n_changed]
+        big_up=big(up)
+        big_down=big(down)
+        lines=[
+            f"■ 신규 편입 {len(new)}행 · 신고상 보유 종료 {len(ended)}행"
+            f" · 확대 {len(up)}행 · 축소 {len(down)}행",
+            "▶ 주요 신규 편입(평가액 기준)" if any(reference(x) is not None for x in new)
+                else "▶ 주요 신규 편입(보유수량 기준)",
+        ]
+        lines += ["• "+describe(x) for x in primary_new] or ["• 없음"]
+        if extra_new:
+            lines.append("▶ 추가 확인: AI·반도체·우주 등 기술 분야 신규 편입")
+            lines += ["• "+describe(x) for x in extra_new]
+        lines.append("▶ 신고에서 사라진 주요 보유증권")
+        lines += ["• "+describe(x) for x in primary_exit] or ["• 없음"]
+        if extra_exit:
+            lines.append("▶ 추가 확인: AI·반도체·우주 등 기술 분야 신고 종료")
+            lines += ["• "+describe(x) for x in extra_exit]
+        if big_up:
+            lines.append("▶ 큰 폭으로 보유 확대(직전 보유수량 대비 40% 이상)")
+            lines += ["• "+describe(x) for x in big_up]
+        if big_down:
+            lines.append("▶ 큰 폭으로 보유 축소(직전 보유수량 대비 40% 이상)")
+            lines += ["• "+describe(x) for x in big_down]
+        if top_holding is not None:
+            amount=float(top_holding["value"])*report_scale
+            percent=100*amount/total_value
+            toprow=dict(top_holding)
+            lines.append(f"■ 현재 최대 공개 비옵션 보유: {label(toprow)}"
+                         f" {int(toprow.get('shares') or 0):,}주"
+                         f" · 전체 13F 신고 평가액의 {percent:.1f}%"
+                         f" · {money(amount) if money else '평가액 표시 안 함'}")
+        if n_sectors:
+            groups=defaultdict(lambda: {"new":0,"exit":0,"up":0,"down":0})
+            for x in nonoptions:
+                sector=x.get("sector") or "기타"
+                action=x.get("action")
+                field={"신규 매수":"new","전량 청산":"exit",
+                       "보유 확대":"up","보유 축소":"down"}.get(action)
+                if field:
+                    groups[sector][field]+=1
+            non_misc=[(k,v) for k,v in groups.items() if k not in ("기타","업종 미확인")]
+            buy_group=sorted(non_misc,key=lambda a:-(a[1]["new"]+a[1]["up"]))[:n_sectors]
+            sell_group=sorted(non_misc,key=lambda a:-(a[1]["exit"]+a[1]["down"]))[:n_sectors]
+            fmt=lambda v,side:f"{v['new']+v['up']}행" if side=="buy" else f"{v['exit']+v['down']}행"
+            lines.append("■ 업종별 보유변동 행 수: 확대 "+
+                         (", ".join(f"{k} {fmt(v,'buy')}" for k,v in buy_group) or "없음")
+                         +" / 축소 "+
+                         (", ".join(f"{k} {fmt(v,'sell')}" for k,v in sell_group) or "없음"))
+        lines.append(f"• 업종 미분류 {unknown_sector}/{len(nonoptions)}행 · 옵션 {len(options)}행 별도")
+        lines.append("※ 13F는 분기말 공개 보유현황입니다. '신고상 종료'는 매도일·현금거래·비공개 보유의 확정 증거가 아닙니다.")
+        lines.append("※ 변경분 금액은 확대 주수×이번 분기말 단가, 축소 주수×직전 분기말 단가의 참고 평가액입니다.")
+        return "\n".join(lines)
+    for limits in ((4,4,5,2),(3,3,4,2),(3,2,3,1),(2,2,2,1),(2,1,2,0)):
+        summary=report(limits)
+        if len(summary)<=max_chars:
+            return summary
+    raise ValueError("13F automatic report too long even in compact mode")
