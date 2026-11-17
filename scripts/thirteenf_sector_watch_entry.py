@@ -241,3 +241,6 @@ if __name__ == "__main__":
         thirteenf_context_watch.q3_crosscheck_main()
         # Separate once-only verified 13F valuation addendum, no previous alerts replayed.
         thirteenf_context_watch.q3_amount_followup_main()
+        # WallstreetCN article is verified against Q2+Q3 SEC XML.
+        # By default this is read-only and produces no Telegram message.
+        thirteenf_context_watch.duq_article_followup_main()
