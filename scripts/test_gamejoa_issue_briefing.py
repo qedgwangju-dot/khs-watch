@@ -93,10 +93,12 @@ class IssueBriefingTests(unittest.TestCase):
         self.assertFalse(b.ai_cheating_market_observation({**row, "source_body": "AI 커닝이 확산했다. 지슨은 제품을 만든다."}, listing))
         self.assertFalse(b.ai_cheating_market_observation({**row, "title": "AI 박물관 체험"}, listing))
         adjacent = {"title": "AI 커닝 충격에 보안·카메라주 솟구쳐", "body_verified": True,
-                    "source_body": "나무가와 지슨 등 보안 관련주가 상한가를 기록했다. 최근 생성형 인공지능(AI)을 이용한 부정행위를 시인했다. 다른 기업은 별도의 실적 개선을 발표했다."}
+                    "source_body": "나무가와 지슨 등 보안 관련주가 상한가를 기록했다. 최근 생성형 인공지능(AI)을 이용한 부정행위를 시인했다. 다른기업은 별도의 실적 개선으로 상한가를 기록했다."}
         observation = b.ai_cheating_market_observation(adjacent, {"나무가": "190510", "지슨": "123456", "다른기업": "111111"})
         self.assertEqual(observation["core"], "최근 생성형 인공지능(AI)을 이용한 부정행위를 시인했다.")
         self.assertEqual(observation["companies"], [("나무가", "190510"), ("지슨", "123456")])
+        unrelated = {**adjacent, "source_body": "최근 생성형 인공지능(AI)을 이용한 부정행위를 시인했다. 다른기업은 별도의 실적 개선으로 상한가를 기록했다."}
+        self.assertFalse(b.ai_cheating_market_observation(unrelated, {"다른기업": "111111"}))
 
     def test_social_theme_source_alignment_with_separate_stock_sentence(self):
         import gamejoa_preopen_news_radar_fda_quality_runner as pipeline
@@ -104,7 +106,7 @@ class IssueBriefingTests(unittest.TestCase):
         title = "'AI 커닝', 증시도 흔들었다…AI안경·카메라株 뛰고 보안株는 희비 엇갈려"
         body = ("올해 세무사 시험 수석 합격자의 인공지능(AI) 부정행위 자백으로 국내 증시에서 관련 테마주가 장중 일제히 들썩였다. "
                 "정부는 시험장 보안 대책에 착수했다. "
-                "지슨은 전 거래일 대비 29.97% 올라 상한가를 기록했다.")
+                "전파 탐지 전문기업 지슨은 전 거래일 대비 29.97% 올라 상한가를 기록했다.")
         row = {"title": title, "source_title": title, "source_body": body, "body_verified": True}
         observation = b.ai_cheating_market_observation(row, {"지슨": "446840"})
         self.assertEqual(observation["companies"], [("지슨", "446840")])
@@ -418,6 +420,24 @@ class IssueBriefingTests(unittest.TestCase):
         quote = b.parse_daily_quote(b.get_bytes(b.chart_url("005930")), "005930", "삼성전자",
                                     dt.datetime.now(b.KST))
         self.assertGreater(Decimal(quote["close"]), 0)
+
+    @unittest.skipUnless(os.getenv("GAMEJOA_ARTICLE_INTEGRATION") == "true", "live article check off by default")
+    def test_actual_ai_cheating_article_body_and_stock_link(self):
+        import gamejoa_preopen_news_radar_fda_quality_runner as pipeline
+        title = "'AI 커닝', 증시도 흔들었다…AI안경·카메라株 뛰고 보안株는 희비 엇갈려"
+        url = "https://www.newsis.com/view/NISX20261116_0003869829"
+        source, error = pipeline.base.fetch(url, 20)
+        self.assertFalse(error, error)
+        detail = pipeline.runner.extract_article_detail(source, title, url)
+        self.assertTrue(detail.get("body_verified"), detail)
+        row = {"source_title": detail["title"], "source_body": detail["body"],
+               "body_verified": True, "link": url, "publisher": "뉴시스"}
+        observation = b.ai_cheating_market_observation(row, {"지슨": "446840", "나무가": "190510"})
+        self.assertTrue(observation, "Verified article and adjacent listed-stock evidence did not match")
+        alert = {**row, "news": row["source_title"], "source_abstract": row["source_body"],
+                 "korean_business_news": True, "telegram_core_fact": observation["core"],
+                 "policy_plain_summary": observation["core"]}
+        self.assertTrue(b.social_observation_verified(alert, observation, pipeline.runner))
 
 
 if __name__ == "__main__":

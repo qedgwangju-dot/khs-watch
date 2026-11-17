@@ -36,6 +36,7 @@ TOPIC_AI_CHEATING = re.compile(
     re.I,
 )
 MARKET_EVIDENCE = re.compile(r"상한가|하한가|주가|증시|증권시장|관련주|테마주|보안주|카메라주|종목|주식|급등|급락|상승|하락|거래대금|株|솟구쳐")
+SOCIAL_LINK_EVIDENCE = re.compile(r"관련주|테마주|보안|카메라|전파|탐지|촬영|시험|부정|커닝|컨닝")
 TRACKING_KEYS = {"utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "ref", "source", "oc", "input"}
 HEADLINE_ACTIONS = [
     ("acquisition", re.compile(r"인수|인수합병|매입"), re.compile(r"인수|인수합병|매입")),
@@ -254,7 +255,8 @@ def ai_cheating_market_observation(row: dict, listed: dict[str, str]) -> dict:
         neighbors = sorted(range(max(0, index - 2), min(len(sentences), index + 3)), key=lambda i: abs(i - index))
         for nearby in neighbors:
             market_sentence = sentences[nearby]
-            companies = company_mentions(market_sentence, listed) if MARKET_EVIDENCE.search(market_sentence) else []
+            companies = company_mentions(market_sentence, listed) if (MARKET_EVIDENCE.search(market_sentence)
+                                                                      and SOCIAL_LINK_EVIDENCE.search(market_sentence)) else []
             if companies:
                 return {"core": sentence, "companies": companies, "company_evidence": market_sentence}
     return {}
@@ -267,7 +269,7 @@ def social_observation_verified(alert: dict, observation: dict, runner) -> bool:
     evidence = re.sub(r"\s+", " ", str(observation.get("company_evidence") or "")).strip()
     if not (alert.get("body_verified") and runner.korean_business_source_allowed(alert)
             and TOPIC_AI_CHEATING.search(title) and TOPIC_AI_CHEATING.search(core)
-            and core in body and evidence in body and MARKET_EVIDENCE.search(evidence)
+            and core in body and evidence in body and MARKET_EVIDENCE.search(evidence) and SOCIAL_LINK_EVIDENCE.search(evidence)
             and observation.get("companies") and runner.core_sentence_is_complete(core)
             and not runner.core_has_ui_garbage(core) and not runner.core_has_ui_garbage(evidence)
             and runner.korean_title_core_aligned(title, core)):
