@@ -2400,6 +2400,13 @@ def prefer_story_item(candidate: dict, current: dict) -> bool:
     o_rank = source_priority(current.get("source") or "")
     if c_rank != o_rank:
         return c_rank > o_rank
+    # On one identical article discovered by both broad optics and the dedicated
+    # SC26 lane, keep the event-specific interpretation and its historical key.
+    # Otherwise generic "CPO" classifications can replay Nov-16 releases.
+    if candidate.get("company") in SC26_COMPANIES and current.get("company") not in SC26_COMPANIES:
+        return True
+    if current.get("company") in SC26_COMPANIES and candidate.get("company") not in SC26_COMPANIES:
+        return False
     if candidate.get("category") in COUPE_SIGNAL_CATEGORIES and current.get("category") not in COUPE_SIGNAL_CATEGORIES:
         return True
     if candidate.get("score", 0) != current.get("score", 0):
