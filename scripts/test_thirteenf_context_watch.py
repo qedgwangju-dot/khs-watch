@@ -116,6 +116,44 @@ def main():
     ready["seen_context_events"].append(c.Q3_VALUE_KEY)
     assert not c.q3_amount_ready(ready)
 
+    # Verified monetary addendum; synthetic SEC snapshots, never sends a message.
+    import copy
+    audit=copy.deepcopy(holdings)
+    for label in c.Q3_FOCUS_MANAGERS:
+        audit[label]["previous_accession"]="0009999999-26-000002"
+    audit["Duquesne Family Office"]["accession"]="0001536411-26-000011"
+    audit["Duquesne Family Office"]["previous_accession"]="0001536411-26-000006"
+    for entry in audit["Duquesne Family Office"]["current"].values():
+        if "SEAGATE" in entry["issuer"]:
+            entry["value"]=315247
+    for entry in audit["Duquesne Family Office"]["previous"].values():
+        if "SEAGATE" in entry["issuer"]:
+            entry["value"]=117728
+    for entry in audit["Situational Awareness"]["current"].values():
+        if "SHARONAI" in entry["issuer"]:
+            entry["value"]=440670000
+    valid=c.build_q3_amount_addendum(audit,1334.87,"2026-11-16 ECB 테스트")
+    assert "시게이트(STX)" in valid and "약" in valid and "억원" in valid
+    assert "아팔루사 MU" in valid and "엔비디아 INTC" in valid
+    assert "원문 단위 차이에 한해 ×1,000" in valid
+    assert "보강본이며 신규 13F 공시는 아닙니다" in valid
+    assert len(valid)<3600
+    audit["Duquesne Family Office"]["accession"]="0001536411-27-000001"
+    try:
+        c.build_q3_amount_addendum(audit,1334.87,"미검증 단위")
+        raise AssertionError("An unaudited filing must not show corrected cash amounts")
+    except RuntimeError as error:
+        assert "valuation unit not verified" in str(error)
+    audit["Duquesne Family Office"]["accession"]="0001536411-26-000011"
+    for entry in audit["Duquesne Family Office"]["current"].values():
+        if "SEAGATE" in entry["issuer"]:
+            entry["value"]=315
+    try:
+        c.build_q3_amount_addendum(audit,1334.87,"규모 오류")
+        raise AssertionError("An incorrectly scaled 13F must be suppressed")
+    except RuntimeError as error:
+        assert "reference" in str(error)
+
     print("13F CDW manager-context regression checks passed.")
 
 if __name__=="__main__":
