@@ -76,10 +76,12 @@
     "https://www.koreaittimes.com/news/articleView.html?idxno=159114",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-11-17T12:08:45+09:00",
-  "metric_observation_count": 0,
+  "last_checked_at_kst": "2026-11-17T12:54:54+09:00",
+  "metric_observation_count": 1,
   "event_count": 0,
-  "latest_evidence_urls": [],
+  "latest_evidence_urls": [
+    "https://finance.yahoo.com/technology/ai/articles/data-center-transformer-market-research-141800508.html"
+  ],
   "transformer_imports": {
     "version": 1,
     "source": {
@@ -818,12 +820,12 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-11-17T12:08:45+09:00",
+    "last_checked_at_kst": "2026-11-17T12:54:54+09:00",
     "last_error": "",
     "pending_month": "2026-10"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-17T12:10:31+09:00",
+    "checked_at_kst": "2026-11-17T12:56:16+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-14T01:46:15+09:00",
@@ -1017,16 +1019,16 @@
     "alert_layout_version": 2
   },
   "discovery_health": {
-    "rss_ok": 31,
-    "rss_failed": 10,
-    "urls_resolved": 12,
-    "pages_opened": 0,
-    "bing_ok": 2,
-    "bing_failed": 1,
-    "google_ok": 29,
-    "gdelt_ok": 1,
+    "rss_ok": 54,
+    "rss_failed": 7,
+    "urls_resolved": 110,
+    "pages_opened": 15,
+    "bing_ok": 40,
+    "bing_failed": 0,
+    "google_ok": 14,
+    "gdelt_ok": 0,
     "gdelt_failed": 0,
-    "news_candidates": 0
+    "news_candidates": 45
   },
   "power_squeeze_alerts": {
     "sent_fact_keys": [
@@ -1050,9 +1052,9 @@
     }
   },
   "news_collection_outage": {
-    "consecutive_failures": 1,
+    "consecutive_failures": 0,
     "alerted": false,
-    "last_success_at_kst": "2026-11-17T04:39:04+09:00",
+    "last_success_at_kst": "2026-11-17T12:54:54+09:00",
     "last_failure_at_kst": "2026-11-17T12:08:45+09:00"
   }
 }
