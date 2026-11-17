@@ -136,27 +136,12 @@ def ensure_fx():
 
 
 def _usd_text(v):
-    a = abs(v)
-    if a >= 1_000_000_000:
-        return f"{v/1_000_000_000:.2f}십억달러"
-    if a >= 100_000_000:
-        return f"{v/100_000_000:.2f}억달러"
-    if a >= 1_000_000:
-        return f"{v/1_000_000:.1f}백만달러"
-    if a >= 1_000:
-        return f"{v/1_000:.1f}천달러"
-    return f"{v:,.0f}달러"
+    # Presentation only. Do not round before computing holdings/FX conversion.
+    return sector_rank.compact_usd(v)
 
 
 def _krw_text(won):
-    a = abs(won)
-    if a >= 1_000_000_000_000:
-        return f"약 {won/1_000_000_000_000:,.2f}조원"
-    if a >= 100_000_000:
-        return f"약 {won/100_000_000:,.1f}억원"
-    if a >= 10_000:
-        return f"약 {won/10_000:,.0f}만원"
-    return f"약 {won:,.0f}원"
+    return sector_rank.compact_krw(won)
 
 
 def money_with_krw(v):
