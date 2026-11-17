@@ -3,24 +3,29 @@
   "last_collection": {
     "deferred_events": 0,
     "errors": [
-      "Google News 실패: OpenAI AI safety standard recursive self-improvement in / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"AI Safety Institute\" standard evaluation incident repo / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Federal Reserve\" \"GENIUS Act\" (final rule OR proposed  / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"OCC\" \"Cybersecurity Supervision Work Program\" (updated / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"community banks\" \"third-party risk management\" (\"Feder / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"사이버보안 특화 AI\" 네이버클라우드 과기정통부 NIPA / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Michelle Bowman\" (cybersecurity OR fraud OR scams) (ba / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"OCC\" \"GENIUS Act\" (final rule OR effective OR amendmen / HTTPError: HTTP Error 429: Too Many Requests",
       "Google News 실패: \"과기정통부\" \"금융권\" (24시간 비상대응 OR CISO 보안점검 OR C-TAS 차단) / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (Palo Alto Networks OR CrowdStrike OR IBM OR Microsoft  / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"금융권\" \"망분리 규제\" (전면해제 TF OR 개정안 확정 OR 시행 OR 제로트러스트) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"SGA솔루션즈\" \"PHP2Shell\" (가상패치 OR 유료 OR 계약) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (\"지니언스\" OR \"Genians\") (\"넥서스 프레임워크\" OR \"Nexus Framework\" / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (\"케이사인\" OR \"KSign\") (\"전기차 충전\" OR \"EV charging\") (취약점 OR / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (NAVER Cloud OR S2W OR SandLab OR \"LG CNS\") cybersecuri / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"AWS Continuum\" (autonomous remediation OR enforce mode / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (IBM OR Microsoft) AI cybersecurity autonomous SOC paid / HTTPError: HTTP Error 429: Too Many Requests",
       "Google News 실패: (OpenShell OR \"Open Agent Safety Platform\") AI Enterpri / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (OpenShell OR \"agent safety runtime\") telemetry active  / HTTPError: HTTP Error 429: Too Many Requests",
       "Google News 실패: (OpenShell OR Sentry) default integration bundled \"AI E / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"BlueField-4\" Sentry Arm Intel x86 server deployment no / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (\"Open Agent Safety Platform\" OR OpenShell OR Sentry) p / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Safety Case\" t / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: site:whitehouse.gov \"Super Intelligence\" safety regulat / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: site:federalregister.gov \"Super Intelligence\" executive / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (Anthropic \"Cyber Mission\" OR \"Critical Infrastructure  / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"hardware isolation\" AI agents procurement insurance re / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (\"BlueField-4\" OR Sentry) Rubin included baseline incre / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) frontier AI ind / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) safety case ado / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"AI safety\" independent board committee external audit  / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"AI accord\" codified law regulation procurement insuran / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Dean Ball\" OpenAI OSTP Strategic Futures AI Action Pla / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (OpenAI OR Anthropic OR Google DeepMind OR xAI OR Meta) / HTTPError: HTTP Error 429: Too Many Requests",
       "Google News 실패: \"SoftBank\" \"Allied Universal\" (robots OR data center se / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Anthropic\" \"frontier AI\" (bill OR legislation) (Commer / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Aidan Gomez\" \"AISLE\" (CNBC OR \"rogue agents\" OR cybers / HTTPError: HTTP Error 429: Too Many Requests",
       "Google News 실패: \"FTC\" (\"OpenAI\" OR \"Anthropic\") (\"AI agents\" OR \"AI mod / HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "material_items": 21,
@@ -29,7 +34,7 @@
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 31,
+    "raw_items": 28,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -116,7 +121,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-17T02:45:07.626186+00:00",
+    "updated_at": "2026-11-17T02:47:33.622838+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -870,11 +875,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-17T11:45:07+09:00",
+  "updated_at_kst": "2026-11-17T11:47:33+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-17T02:45:52.922580+00:00",
+    "last_success_at": "2026-11-17T02:48:16.264833+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
