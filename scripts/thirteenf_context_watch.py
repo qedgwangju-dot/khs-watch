@@ -96,7 +96,7 @@ Q3_FOCUS_MANAGERS = (
 )
 
 def q3_ready(state):
-    if Q3_COMPARE_KEY in state.get("seen_context_events", []):
+    if Q3_COMPARE_KEY in state.get("seen_context_events", []) or state.get("q3_pending_delivery"):
         return False
     managers=state.get("managers", {})
     return all(
@@ -105,7 +105,7 @@ def q3_ready(state):
         for label in Q3_FOCUS_MANAGERS
     )
 
-def _reported_shares(positions, term, pc=""):
+def _reported_shares(positions, term, pc="", cusip=None):
     """Aggregate equal-issuer classes for this alert; CALL/PUT are distinct."""
     needle=term.upper()
     return int(round(sum(
@@ -113,12 +113,13 @@ def _reported_shares(positions, term, pc=""):
         for row in positions.values()
         if needle in str(row.get("issuer") or "").upper()
         and str(row.get("putcall") or "").upper()==pc
+        and (cusip is None or str(row.get("cusip") or "")==cusip)
     )))
 
-def _movement(snapshots, label, term, short, pc=""):
+def _movement(snapshots, label, term, short, pc="", cusip=None):
     prev,cur=snapshots[label]["previous"],snapshots[label]["current"]
-    old=_reported_shares(prev,term,pc)
-    new=_reported_shares(cur,term,pc)
+    old=_reported_shares(prev,term,pc,cusip)
+    new=_reported_shares(cur,term,pc,cusip)
     if old==new:
         return f"{short} 유지 {new:,}주" if new else f"{short} 신고 없음"
     if old==0:
@@ -168,7 +169,7 @@ def build_q3_cross_report(snapshots, *, fx_rate=1334.87):
     for manager in Q3_FOCUS_MANAGERS:
         if manager not in snapshots:
             raise ValueError("Missing SEC verified snapshot: "+manager)
-    c=lambda manager,term,short,pc="":_movement(snapshots,manager,term,short,pc)
+    c=lambda manager,term,short,pc="",cusip=None:_movement(snapshots,manager,term,short,pc,cusip)
     sndk_call=_reported_shares(snapshots[a]["current"],"SANDISK","CALL")
     nbis_call=_reported_shares(snapshots[a]["current"],"NEBIUS","CALL")
     aws_value=5_000_000_000*fx_rate/1_000_000_000_000
@@ -195,7 +196,9 @@ def build_q3_cross_report(snapshots, *, fx_rate=1334.87):
         "■ 듀케인: 메모리·소프트웨어 확대, 일부 파운드리 축소",
         " / ".join([c(d,"SEAGATE","시게이트"),c(d,"UNITY SOFTWARE","유니티"),
                     c(d,"AMAZON","아마존"),c(d,"TAIWAN SEMICONDUCTOR","TSMC")]),
-        "축소·신고제외: "+" / ".join([c(d,"STMICRO","STM"),c(d,"SANDISK","SNDK"),c(d,"UNITED AIR","UAL")]),
+        "축소·신고제외: "+" / ".join([c(d,"STMICRO","STM"),c(d,"SANDISK","SNDK"),
+                                   c(d,"UNITED AIR","UAL"),
+                                   c(d,"ALPHABET","GOOGL",cusip="02079K305")]),
         "새 금·소비 관련: "+" / ".join([c(d,"NEWMONT","NEM"),c(d,"BARRICK","B"),
                                       c(d,"AGNICO EAGLE","AEM"),c(d,"SOMNIGROUP","SGI")]),
         "",
@@ -254,6 +257,14 @@ def q3_crosscheck_main():
     bot=w.verify_bot(token)
     if bot.lower()!="khs887988798879_bot":
         raise RuntimeError("Unexpected Q3 compare Telegram bot")
+    # Local reservation is persisted by the existing Actions checkpoint step,
+    # even on an ambiguous Telegram error. Later schedules must not resend it.
+    state["q3_pending_delivery"]={
+        "key":Q3_COMPARE_KEY,
+        "accessions":{k:v["accession"] for k,v in snapshots.items()},
+        "reserved_utc":__import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
+    }
+    w.save_state(state)
     # One attempt only. Ambiguous timeout must be reconciled manually.
     receipt=w.telegram_api(token,"sendMessage",{
         "chat_id":chat,"text":body,"disable_web_page_preview":"true",
@@ -262,6 +273,7 @@ def q3_crosscheck_main():
     confirmed_chat=str((receipt.get("chat") or {}).get("id") or "")
     if mid is None or not confirmed_chat or (chat.lstrip("-").isdigit() and confirmed_chat!=chat):
         raise RuntimeError("Q3 compare response did not verify chat.id and message_id")
+    state.pop("q3_pending_delivery",None)
     state["seen_context_events"]=sorted(set(state.get("seen_context_events",[]))|{Q3_COMPARE_KEY})
     state.setdefault("context_receipts",{})[Q3_COMPARE_KEY]={
         "message_id":mid,"bot":bot,
