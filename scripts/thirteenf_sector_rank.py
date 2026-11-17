@@ -6,6 +6,60 @@ Option rows are excluded because 13F underlying values are not paid premiums.
 Do not calculate a bogus buy-minus-sell cash flow across quarterly marks.
 """
 from collections import defaultdict
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
+
+
+def _display_number(value):
+    """Finite decimal for display only. All financial calculations stay raw."""
+    try:
+        out = Decimal(str(value))
+    except (InvalidOperation, ValueError, TypeError) as exc:
+        raise ValueError("13F currency display requires a numeric value") from exc
+    if not out.is_finite():
+        raise ValueError("13F currency display requires a finite value")
+    return out
+
+
+def _human_round(value, base, digits=0):
+    return (value / Decimal(base)).quantize(
+        Decimal("1").scaleb(-digits), rounding=ROUND_HALF_UP)
+
+
+def compact_usd(usd):
+    """Readable Korean dollars: >=100m two-decimal 억; >=1m 10만 precision."""
+    value = _display_number(usd)
+    magnitude = abs(value)
+    if magnitude >= 100_000_000:
+        return f"{_human_round(value, 100_000_000, 2):,.2f}억달러"
+    if magnitude >= 1_000_000:
+        man_dollars = _human_round(value, 100_000) * 10
+        if abs(man_dollars) >= 10_000:
+            return f"{_human_round(value, 100_000_000, 2):,.2f}억달러"
+        return f"{man_dollars:,.0f}만달러"
+    if magnitude >= 100_000:
+        return f"{_human_round(value, 10_000):,.0f}만달러"
+    if magnitude >= 10_000:
+        return f"{_human_round(value, 10_000, 1):,.1f}만달러"
+    return f"{_human_round(value, 1):,.0f}달러"
+
+
+def compact_krw(won):
+    """Readable Korean won: >=1tn two-decimal 조; >=10억 integer 억."""
+    value = _display_number(won)
+    magnitude = abs(value)
+    if magnitude >= 1_000_000_000_000:
+        return f"약 {_human_round(value, 1_000_000_000_000, 2):,.2f}조원"
+    if magnitude >= 1_000_000_000:
+        eok = _human_round(value, 100_000_000)
+        if abs(eok) >= 10_000:
+            return f"약 {_human_round(value, 1_000_000_000_000, 2):,.2f}조원"
+        return f"약 {eok:,.0f}억원"
+    if magnitude >= 100_000_000:
+        return f"약 {_human_round(value, 100_000_000, 1):,.1f}억원"
+    if magnitude >= 10_000:
+        return f"약 {_human_round(value, 10_000):,.0f}만원"
+    return f"약 {_human_round(value, 1):,.0f}원"
+
 
 # SEC has required whole-dollar 13F values since 2023-01-03. These exact
 # Duquesne filings are independently reconciled at 1000x the submitted
