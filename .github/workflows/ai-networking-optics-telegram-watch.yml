@@ -295,6 +295,9 @@ jobs:
           assert watch.category_for(w2w_sample, "CPO Packaging & Test") in watch.COUPE_SIGNAL_CATEGORIES
           assert watch.cpo_coupe_milestone("SiC 800V DC power inverter supply") is None
           assert watch.source_priority("FUNDA") < watch.source_priority("TSMC")
+          weekly = "Weekly|The Rebound and What Comes Next, NVDA Financing, Cybersecurity, CPO, IFX & AMAT"
+          assert watch.is_noise(weekly), "A multi-topic newsletter is not a CPO milestone"
+          assert watch.signal_score(weekly, "FUNDA") < 0
 
           print("dedupe_and_quality_regression_test=passed")
           PY
@@ -629,13 +632,27 @@ jobs:
               return translated
 
           output = []
+          translation_fallbacks = 0
           for line in text.splitlines():
               if line.startswith("• 출처·시각:"):
                   continue
               if line.startswith("• 원문 제목:"):
                   raw_title = line.split(":", 1)[1].strip()
-                  translated = translate_to_korean(raw_title)
-                  output.append(f"• 제목: {html.escape(translated)}")
+                  try:
+                      # Already-Korean titles require no external translation call.
+                      decoded = html.unescape(raw_title)
+                      if re.search(r"[가-힣]", decoded) and not re.search(r"[\u3400-\u4DBF\u4E00-\u9FFF]", decoded):
+                          translated = strip_publisher_suffix(decoded)
+                      else:
+                          translated = translate_to_korean(raw_title)
+                      output.append(f"• 제목: {html.escape(translated)}")
+                  except Exception as exc:
+                      # Keep the verified Korean category/stage and source URL rather
+                      # than losing an entire high-signal alert on translator 429.
+                      # Never fabricate a translated meaning or repeat raw Chinese.
+                      translation_fallbacks += 1
+                      output.append("• 제목 번역: 확인 불가 — 기사 내용은 원문 링크에서 직접 확인")
+                      output.append(f"• 번역 경고: 자동번역 오류({html.escape(type(exc).__name__)})로 제목 의미를 임의 작성하지 않음")
                   continue
               output.append(line)
 
@@ -648,7 +665,7 @@ jobs:
               raise RuntimeError("Chinese/Hanja remained in Telegram alert; refusing to send.")
 
           path.write_text(rendered, encoding="utf-8")
-          print("telegram_alert_korean_translation=true chinese_hanja_guard=true source_timestamp_removed=true")
+          print(f"telegram_alert_korean_translation=true title_fallbacks={translation_fallbacks} chinese_hanja_guard=true source_timestamp_removed=true")
           PY
           python scripts/currency_krw_guard.py out/ai_networking_optics_watch_telegram.html
 
@@ -786,12 +803,26 @@ jobs:
               with urllib.request.urlopen(request, timeout=25) as response:
                   result = json.loads(response.read().decode("utf-8"))
               if not result.get("ok"):
-                  raise RuntimeError(f"Telegram rejected message: {result}")
-              message_ids.append((result.get("result") or {}).get("message_id"))
+                  raise RuntimeError("Telegram rejected the alert (no delivery receipt)")
+              delivered = result.get("result") or {}
+              delivered_chat = delivered.get("chat") or {}
+              msg_id = delivered.get("message_id")
+              if not isinstance(msg_id, int) or msg_id < 1:
+                  raise RuntimeError("Telegram receipt missing valid message ID")
+              if chat_id.lstrip("-").isdigit():
+                  valid_route = str(delivered_chat.get("id")) == chat_id
+              elif chat_id.startswith("@"):
+                  valid_route = str(delivered_chat.get("username") or "").lower() == chat_id[1:].lower()
+              else:
+                  valid_route = False
+              if not valid_route:
+                  raise RuntimeError("Telegram receipt destination differs from configured chat")
+              message_ids.append(msg_id)
 
           confirmed = {
               "status": "confirmed",
               "bot_username": username,
+              "chat_identity_verified": True,
               "message_ids": message_ids,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
@@ -824,8 +855,13 @@ jobs:
           state = json.loads(state_path.read_text(encoding="utf-8"))
           confirmed = json.loads(pathlib.Path("out/ai_networking_optics_watch_telegram_confirmed.json").read_text(encoding="utf-8"))
           state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
-          state["telegram_message_ids"] = confirmed.get("message_ids")
+          if confirmed.get("chat_identity_verified") is not True:
+              raise RuntimeError("Telegram destination was not verified; state unchanged")
+          if not confirmed.get("message_ids") or any(not isinstance(n, int) for n in confirmed["message_ids"]):
+              raise RuntimeError("Telegram receipt lacks valid message ids; state unchanged")
+          state["telegram_message_ids"] = confirmed["message_ids"]
           state["bot_username"] = confirmed.get("bot_username")
+          state["telegram_chat_identity_verified"] = True
           state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
 

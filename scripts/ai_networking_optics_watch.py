@@ -614,6 +614,8 @@ ACTION_PATTERNS = [
 ]
 
 NOISE_PATTERNS = [
+    # Multi-topic weekly newsletters are not verified new CPO milestones.
+    r"^weekly\s*[|:]\s*.*?,.*?,",
     r"stock price", r"price target", r"analyst rating", r"upgrade[s]? .* stock",
     r"downgrade[s]? .* stock", r"options activity", r"insider sells?", r"dividend",
     r"investment story", r"investment case", r"why .* stock", r"simply wall st",
@@ -2271,6 +2273,8 @@ def query_google_news(
         "ceid": ceid,
     })
     url = f"https://news.google.com/rss/search?{params}"
+    # Gentle pacing reduces bursts of HTTP 429 across many topic queries.
+    time.sleep(0.45)
     root = ET.fromstring(fetch(url))
     items: list[dict] = []
     for item in root.findall("./channel/item")[:20]:
