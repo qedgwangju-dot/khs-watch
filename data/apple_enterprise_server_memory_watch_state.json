@@ -199,6 +199,7 @@
     "2e42cb0dc6022ea38071",
     "2e86edb5c16fb3f28825",
     "2ecf0f4deaeef46e5ce0",
+    "2f006f1eb48d4185d2f4",
     "2f243341b2e14b8edfde",
     "2f3e9b51e85129c877e1",
     "2f4031617caa88b3a2d4",
@@ -322,6 +323,7 @@
     "4c306ac525b99cf2b8e7b946",
     "4c98e16fbd3a68a14516",
     "4cc103beec3d5278e586",
+    "4cdcd6ef2e756dfea5f6",
     "4d662f4541cddfab38db",
     "4d6cb1391cdc6b8a0bad4270",
     "4d7997d3c9e1f23a9b0b",
@@ -1151,7 +1153,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-11-17T11:18:09+09:00",
+  "last_scan_kst": "2026-11-17T19:49:27+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -1159,8 +1161,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 11,
-  "fetch_errors": [
-    "google Apple M8 Ultra enterprise server NV: HTTPError HTTP Error 429: Too Many Requests"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
