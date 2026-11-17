@@ -1131,6 +1131,10 @@ def sc26_milestone(company: str, title: str) -> tuple[str, str, str] | None:
     if company == SC26_AMD:
         if "amd" not in t and "oak ridge" not in t:
             return None
+        # Lux currently runs MI355X; a headline casually attaching MI430X
+        # to Lux is not evidence of a real customer installation or upgrade.
+        if re.search(r"\blux\b", t, re.I) and re.search(r"\bmi430x\b", t, re.I) and not re.search(r"upgrad|replac|retrofit|new procurement", t, re.I):
+            return None
         if re.search(r"\blux\b", t, re.I) and re.search(r"supercomputer|ai factory|ornl|oak ridge|hpe|top500", t, re.I):
             if re.search(r"new contract|additional (?:cluster|capacity|gpus?)|capacity expanded|"
                          r"new procurement|upgraded to", t, re.I):
