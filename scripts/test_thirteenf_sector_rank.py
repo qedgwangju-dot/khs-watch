@@ -159,7 +159,7 @@ def main():
         assert "시게이트(STX)" in text and "샌디스크(SNDK)" in text
         assert "메모리·저장장치" in text and "반도체·파운드리·장비" in text
         assert "SEC 공식 원문:" in text
-        assert "평가액 원화환산: 1달러=1,350.00원" in text
+        assert "환율 1달러=1,350.00원" in text
         assert "변경분" in text and "달러" in text and "원" in text
         assert "▶ 주요 신규 매수·보유 확대" not in text
         assert "<b>" not in text
