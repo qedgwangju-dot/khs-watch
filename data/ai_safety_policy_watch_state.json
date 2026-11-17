@@ -3,7 +3,10 @@
   "last_collection": {
     "deferred_events": 0,
     "errors": [
-      "Google News 실패: government procurement insurance \"Safety Case\" frontier / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News 실패: \"Bowman\" (\"third-party risk\" OR \"cyber exam\" OR \"fraud  / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"과기정통부\" \"금융권\" (24시간 비상대응 OR CISO 보안점검 OR C-TAS 차단) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"금융권\" \"연 2회\" \"취약점\" (의무화 OR 규정 개정 OR 시행) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (\"지니언스\" OR \"Genians\") (\"넥서스 프레임워크\" OR \"Nexus Framework\" / HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "material_items": 21,
     "new_articles": 0,
@@ -11,7 +14,7 @@
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 37,
+    "raw_items": 36,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -98,7 +101,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-17T13:09:51.453522+00:00",
+    "updated_at": "2026-11-17T13:26:18.398844+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -852,11 +855,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-17T22:09:51+09:00",
+  "updated_at_kst": "2026-11-17T22:26:18+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-17T13:10:30.609990+00:00",
+    "last_success_at": "2026-11-17T13:27:06.563012+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
