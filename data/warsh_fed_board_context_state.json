@@ -5,6 +5,10 @@
       "message_id": 149,
       "version": 2
     },
+    "rba:minutes:20261117:20261103": {
+      "message_id": 154,
+      "version": 2
+    },
     "regional:daly:20261113:unlv-services": {
       "message_id": 150,
       "version": 2
@@ -27,6 +31,11 @@
       "recipient_verified": true,
       "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm"
     },
+    "rba:minutes:20261117:20261103": {
+      "message_id": 154,
+      "recipient_verified": true,
+      "source": "https://www.rba.gov.au/monetary-policy/rba-board-minutes/2026/2026-11-03.html"
+    },
     "regional:daly:20261113:unlv-services": {
       "message_id": 150,
       "recipient_verified": true,
@@ -44,5 +53,8 @@
     }
   },
   "skipped": {},
-  "updated_at_utc": "2026-11-14T12:51:25.478480+00:00"
+  "source_errors": [
+    "기존 메시지 서식 수정 실패: HTTPError"
+  ],
+  "updated_at_utc": "2026-11-17T12:04:41.971051+00:00"
 }
