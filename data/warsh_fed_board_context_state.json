@@ -19,9 +19,9 @@
       "version": 2
     },
     "speech:waller:20261110a": {
-      "edited_at_utc": "2026-11-14T11:21:47.748695+00:00",
+      "edited_at_utc": "2026-11-17T12:12:17.050748+00:00",
       "message_id": 148,
-      "version": 2
+      "version": 3
     }
   },
   "pending": {},
@@ -53,8 +53,6 @@
     }
   },
   "skipped": {},
-  "source_errors": [
-    "기존 메시지 서식 수정 실패: HTTPError"
-  ],
-  "updated_at_utc": "2026-11-17T12:04:41.971051+00:00"
+  "source_errors": [],
+  "updated_at_utc": "2026-11-17T12:12:17.051083+00:00"
 }
