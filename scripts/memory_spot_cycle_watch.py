@@ -3684,6 +3684,69 @@ def _semia_revision_gate(old: dict, now: dt.datetime, official: dict) -> tuple[d
 SEMIA_NVIDIA_DETAILS_ID = "semia-nvidia-20261113-vendor-price-detail-v2"
 
 
+
+# Separate user-provided 40%-share interpretation of the Nov. 13 model.
+# Neither global total nor bank comparisons have been verified as publisher-origin forecasts.
+SEMIA_CAPEX_MIX_ID = "semia-20261117-capex-share-scenario-and-scope-v1"
+SEMIA_CAPEX_MIX_UBS = "https://www.ubs.com/us/en/wealth-management/insights/investment-research/insights-display-adp/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-25092026.html"
+
+
+def _semia_capex_mix_model() -> dict:
+    def calc(year: str) -> dict:
+        previous, revised = SEMIA_REVISED_CAPEX_USD_B[year]
+        old_total = previous / 0.4
+        same_mix = revised / 0.4
+        fixed_other = old_total - previous + revised
+        return {"old_total_b": old_total, "same_mix_total_b": same_mix,
+                "fixed_other_total_b": fixed_other,
+                "fixed_other_cut_pct": 100 * (1 - fixed_other / old_total),
+                "new_share_pct": 100 * revised / fixed_other}
+    return {year: calc(year) for year in ("2027", "2028", "2030")}
+
+
+def _semia_capex_mix_alert(rate: float) -> list[str]:
+    scenarios = _semia_capex_mix_model()
+    s28, s30 = scenarios["2028"], scenarios["2030"]
+    def dollars(b: float) -> str:
+        eok = int(round(b * 10 * rate))
+        jo, rest = divmod(eok, 10000)
+        return f"{b/1000:.3f}조달러(약 {jo:,}조{rest:,}억원)"
+    return [
+        "<b>[SemiAnalysis 40% 가정·전체 AI 설비투자 해석 보강]</b>",
+        "■ 새 분석: 2028년 가속기 구매비 전망 −28%와 전체 인프라 투자 −28%는 다른 주장",
+        "• 신규 제공 그래프는 가속기 비중을 약 40%로 고정해 전체 투자를 역산한 참고 비교이며, "
+        "SemiAnalysis의 유료 원모델에서 독립 발표된 전체 투자 공식 수정치는 미확인.",
+        f"• <b>가속기 40% 비중 고정</b>: 2028년 전체 {dollars(2640)} → {dollars(1900)} (약 −28%). "
+        "나머지 60%도 같은 비율로 줄어든다는 조건이 숨겨져 있음.",
+        f"• <b>비가속기 투자 유지</b>: 2028년 {dollars(s28['old_total_b'])} → "
+        f"{dollars(s28['fixed_other_total_b'])} "
+        f"({-s28['fixed_other_cut_pct']:.1f}%); 수정 뒤 가속기 비중 {s28['new_share_pct']:.1f}%.",
+        f"• 2030년 동일 비가속기 유지 가정에서는 총투자 감소 약 "
+        f"{s30['fixed_other_cut_pct']:.1f}%, 수정 뒤 가속기 비중 {s30['new_share_pct']:.1f}%. "
+        "2030년 전체 시장의 공식 전망치가 아니라 자체 계산.",
+        "• 참고 그림의 2028년 타 기관: Morgan Stanley 1.76, UBS 1.62, "
+        "UBS CIO·BofA 1.50(조달러 단위); Goldman 1.40과 컨센서스 1.30은 상위 5개사만의 범위. "
+        "독립 원문·집계범위 미확인으로 수치 간 순위 비교 불가.",
+        "• 단순 대체가정이므로 건설·전력·냉각·통신 투자 지연까지 동반되면 실제 하향폭은 커질 수 있음.",
+        "• 다음 경보: 회사별 최신 설비투자 지침, HBM 구매확약, 데이터센터 전원 인가 GW, "
+        "실제 서버·변압기·냉각설비 주문, 가속기 비중에 관한 직접 추정 변경.",
+        f"• 적용 환율: 달러당 {rate:,.2f}원 (실행 시 재조회). 시나리오와 확정 실적은 구분.",
+        f'• <a href="{SEMIA_MODEL_URL}">SemiAnalysis 원모델 설명</a> · '
+        f'<a href="{SEMIA_CAPEX_MIX_UBS}">UBS 전력·부지 지연과 투자전망</a>',
+    ]
+
+
+def _semia_capex_mix_regression() -> None:
+    s = _semia_capex_mix_model()
+    assert 11.1 < s["2028"]["fixed_other_cut_pct"] < 11.4
+    assert 32.2 < s["2028"]["new_share_pct"] < 32.6
+    assert 15.8 < s["2030"]["fixed_other_cut_pct"] < 16.0
+    body = "\n".join(_semia_capex_mix_alert(1338.0))
+    assert all(x in body for x in ("2028년", "2030년", "−28%", "11.2%", "15.9%", "미확인"))
+    assert body.count("<b>") == body.count("</b>")
+    assert body.count("<a href=") == body.count("</a>")
+
+
 def _semia_nvidia_details_lines(rate: float) -> list[str]:
     def price(usd: int) -> str:
         won = round(usd * rate)
@@ -3780,6 +3843,12 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
                         and dt.date(2026, 11, 13) <= now.date() <= dt.date(2026, 12, 13))
     if semia_nvidia_due:
         semia_next["nvidia_details_id"] = SEMIA_NVIDIA_DETAILS_ID
+    capex_mix_due = (semia_old.get("fact_key") in (SEMIA_REVISED_EVENT, SEMIA_CONFIRMED_EVENT)
+                     and semia_parent_ack
+                     and semia_old.get("capex_mix_id") != SEMIA_CAPEX_MIX_ID
+                     and dt.date(2026, 11, 17) <= now.date() <= dt.date(2026, 12, 17))
+    if capex_mix_due:
+        semia_next["capex_mix_id"] = SEMIA_CAPEX_MIX_ID
     initialized = bool(state.get("initialized"))
     market_state = dict(state.get("hbm_market_pricing") or {})
     if int(state.get("hbm_market_pricing_track_version") or 0) < HBM_MARKET_PRICE_TRACK_VERSION:
@@ -4278,6 +4347,7 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         f"- 폭스콘 2027 메모리 공급 전망 변화: {len(foxconn_changes)}건",
         f"- SemiAnalysis 가속기·HBM 모델 전망 경보: {'신규' if semia_change else '중복 차단'}",
         f"- 엔비디아 가격·출하 세부 보강: {'신규' if semia_nvidia_due else '중복 차단'}",
+        f"- 40% 비중 가정·전체 투자 환산 분석: {'신규' if capex_mix_due else '중복 차단'}",
         f"- TrendForce 11/12 가격 분화 보도 변화: {len(price_changes)}건",
         f"- 부가 원문 접근·검증 경고: {len(source_warnings or [])}건",
         f"- PC 메모리·CPU 원가→노트북 수요 역풍 변화: {len(pc_notebook_changes)}건",
@@ -4293,17 +4363,19 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes and not semia_change and not semia_nvidia_due:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes and not semia_change and not semia_nvidia_due and not capex_mix_due:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = int(semia_change) + int(semia_nvidia_due) + len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(rb_changes) + len(essd_region_changes) + len(foxconn_changes) + len(price_changes) + len(russian_changes) + len(legacy_changes)
+    typed_changes = int(semia_change) + int(semia_nvidia_due) + int(capex_mix_due) + len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(reclaimed_changes) + len(rb_changes) + len(essd_region_changes) + len(foxconn_changes) + len(price_changes) + len(russian_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if semia_change:
         lines.append("한눈에: <b>SemiAnalysis 2028년 가속기 설비투자 −28%·HBM 수요 −30% 전망 하향</b>")
     elif semia_nvidia_due:
         lines.append("한눈에: <b>엔비디아 출하·Feynman 평균판매단가 전망 하향 세부 수치</b>")
+    elif capex_mix_due:
+        lines.append("한눈에: <b>가속기 투자 −28%는 전체 AI 시설 투자 −28%와 다름</b>")
     elif trend_4q26_changes:
         lines.append(
             "한눈에: <b>TrendForce 4Q26 전망 대폭 상향 — "
@@ -5010,7 +5082,7 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes and not semia_change and not semia_nvidia_due:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not reclaimed_changes and not rb_changes and not essd_region_changes and not foxconn_changes and not price_changes and not russian_changes and not legacy_changes and not semia_change and not semia_nvidia_due and not capex_mix_due:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
@@ -5036,6 +5108,15 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
         if legacy_source_url:
             lines.append('• <a href="' + html.escape(legacy_source_url, quote=True) + '">근거 원문</a>')
 
+    if capex_mix_due:
+        _semia_capex_mix_regression()
+        from fx_api import daily_krw
+        q = daily_krw()
+        if total_visible == 1:
+            lines = []
+        else:
+            lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
+        lines.extend(_semia_capex_mix_alert(float(q.rate)))
     if semia_nvidia_due:
         from fx_api import daily_krw
         q = daily_krw()
@@ -5072,6 +5153,8 @@ def main() -> int:
             required.append("<b>[SemiAnalysis 가속기 투자·HBM 수요 하향]</b>")
         if staged_semia.get("nvidia_details_id") != previous_semia.get("nvidia_details_id"):
             required.append("<b>[SemiAnalysis 엔비디아 출하·가격 전망 세부 보강]</b>")
+        if staged_semia.get("capex_mix_id") != previous_semia.get("capex_mix_id"):
+            required.append("<b>[SemiAnalysis 40% 가정·전체 AI 설비투자 해석 보강]</b>")
         if required:
             body = ALERT_PATH.read_text(encoding="utf-8") if ALERT_PATH.exists() else ""
             if any(section not in body for section in required):
