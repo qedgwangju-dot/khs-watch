@@ -239,6 +239,8 @@ def main():
         move("AMAZON.COM INC","보유 확대",231000,772600,192500000,135000000,"AI 플랫폼·클라우드"),
         move("TAIWAN SEMICONDUCTOR","보유 축소",-556980,32700,16000000,281600000,"반도체·파운드리·장비"),
     ]
+    # Alphabet A and C shares are distinct CUSIPs/13F security classes.
+    next(x for x in list_changes if x["issuer"]=="ALPHABET INC")["title"]="CAP STK CL A"
     rank_output=sector.build_automatic_13f_digest(
         list_changes,holdings,watch.security_name_kr,lambda x:sector.compact_usd(x),
         report_scale=1,max_chars=3300)
