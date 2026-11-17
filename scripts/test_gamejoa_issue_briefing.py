@@ -24,10 +24,14 @@ class IssueBriefingTests(unittest.TestCase):
     def test_nonoverlapping_windows(self):
         morning = b.briefing_window("preopen", now("2026-11-17T06:35:00+09:00"))
         self.assertEqual(tuple(x.isoformat() for x in morning),
-                         ("2026-11-16T15:30:00+09:00", "2026-11-17T06:30:00+09:00"))
+                         ("2026-11-16T16:30:00+09:00", "2026-11-17T06:30:00+09:00"))
         close = b.briefing_window("close", now("2026-11-17T16:30:00+09:00"))
         self.assertEqual(close[0], morning[1])
-        self.assertEqual(close[1].isoformat(), "2026-11-17T15:30:00+09:00")
+        self.assertEqual(close[1].isoformat(), "2026-11-17T16:30:00+09:00")
+        next_morning = b.briefing_window("preopen", now("2026-11-18T06:30:00+09:00"))
+        self.assertEqual(close[1], next_morning[0])
+        self.assertTrue(b.in_window("2026-11-17T16:00:00+09:00", *close))
+        self.assertFalse(b.in_window("2026-11-17T16:00:00+09:00", *next_morning))
         self.assertFalse(b.in_window("2026-11-17T06:30:00+09:00", *morning))
         self.assertTrue(b.in_window("2026-11-17T06:30:00+09:00", *close))
         self.assertFalse(b.in_window("2026-11-17T06:31:00", *close))
@@ -35,9 +39,9 @@ class IssueBriefingTests(unittest.TestCase):
     def test_unique_sample_removes_tracking_but_not_article_ids(self):
         start, end = b.briefing_window("preopen", now("2026-11-17T06:30:00+09:00"))
         rows = [
-            {"link": "https://x.test/news/1?utm_source=a&id=1", "published": "2026-11-16T16:00:00+09:00"},
-            {"link": "https://x.test/news/1?id=1&utm_medium=b", "published": "2026-11-16T16:00:00+09:00", "body_verified": True},
-            {"link": "https://x.test/news/1?id=2", "published": "2026-11-16T16:01:00+09:00"},
+            {"link": "https://x.test/news/1?utm_source=a&id=1", "published": "2026-11-16T17:00:00+09:00"},
+            {"link": "https://x.test/news/1?id=1&utm_medium=b", "published": "2026-11-16T17:00:00+09:00", "body_verified": True},
+            {"link": "https://x.test/news/1?id=2", "published": "2026-11-16T17:01:00+09:00"},
             {"link": "https://x.test/news/3", "published": "2026-11-17T06:30:00+09:00"},
         ]
         sample = b.unique_sample(rows, start, end)
@@ -116,8 +120,8 @@ class IssueBriefingTests(unittest.TestCase):
                 "link": "https://www.newsis.com/view/NISX20261116_0003869829"}
         self.assertTrue(b.social_observation_verified(item, observation, runner), runner.source_core_fact_errors(item))
         self.assertFalse(b.social_observation_verified(item, {**observation, "company_evidence": "지슨이 급등했다."}, runner))
-        stamp = now("2026-11-17T06:30:00+09:00")
-        start, end = b.briefing_window("preopen", stamp)
+        stamp = now("2026-11-16T16:30:00+09:00")
+        start, end = b.briefing_window("close", stamp)
         row.update(link=item["link"], publisher="뉴시스", published=now("2026-11-16T16:02:00+09:00"))
         telegram = SimpleNamespace(filter_previously_seen_alerts=lambda alerts, when, lane: (alerts, []))
         groups = b.add_social_evidence([], [row], {"지슨": "446840"}, start, end, stamp, runner, telegram)
@@ -131,7 +135,7 @@ class IssueBriefingTests(unittest.TestCase):
 
     def test_issue_statistics_are_sample_counts_not_social_metrics(self):
         start, end = b.briefing_window("preopen", now("2026-11-17T06:30:00+09:00"))
-        sample = [{"title": "AI 커닝 확산", "publisher": "A", "published": "2026-11-16T16:00:00+09:00"},
+        sample = [{"title": "AI 커닝 확산", "publisher": "A", "published": "2026-11-16T17:00:00+09:00"},
                   {"title": "인공지능 부정행위 대책", "publisher": "B", "published": "2026-11-17T04:00:00+09:00"},
                   {"title": "전기차 판매", "publisher": "C", "published": "2026-11-17T04:00:00+09:00"}]
         self.assertEqual(b.topic_statistics("AI 커닝 수능 대책", sample, start, end, materiality),
@@ -148,7 +152,7 @@ class IssueBriefingTests(unittest.TestCase):
         repeat = alert("인공지능 부정행위 관련주 급등", "인공지능 부정행위 관련주가 올랐다.", "https://x.test/2")
         unverified = alert("삼성 실적 발표", "삼성이 실적을 발표했다.", "https://x.test/3", False)
         english = alert("Company announces results", "Revenue increased.", "https://x.test/4")
-        sample = [{"title": first["source_title"], "publisher": "A", "published": "2026-11-16T16:00:00+09:00"},
+        sample = [{"title": first["source_title"], "publisher": "A", "published": "2026-11-16T17:00:00+09:00"},
                   {"title": repeat["source_title"], "publisher": "B", "published": "2026-11-17T05:00:00+09:00"}]
         groups = b.group_alerts([first, repeat, unverified, english], sample, start, end, materiality)
         self.assertEqual(len(groups), 1)

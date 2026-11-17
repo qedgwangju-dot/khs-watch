@@ -59,10 +59,10 @@ def briefing_window(slot: str, now: dt.datetime) -> tuple[dt.datetime, dt.dateti
     day = now.date()
     if slot == "preopen":
         end = dt.datetime.combine(day, dt.time(6, 30), KST)
-        return end - dt.timedelta(hours=15), end
+        return end - dt.timedelta(hours=14), end
     if slot == "close":
         return (dt.datetime.combine(day, dt.time(6, 30), KST),
-                dt.datetime.combine(day, dt.time(15, 30), KST))
+                dt.datetime.combine(day, dt.time(16, 30), KST))
     raise ValueError("slot must be preopen or close")
 
 
