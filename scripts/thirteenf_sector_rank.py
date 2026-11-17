@@ -222,7 +222,7 @@ def build_sector_direction(changes, display, *, top_n=4):
 
     Securities' filed value units are NOT used as currency. Some SEC filing
     numbers disagree with share count times quarter-end market price by 1000x.
-    Ranking is by count of changed, classified *common-stock reporting rows*,
+    Ranking is by count of changed, classified *non-option reporting rows*,
     NOT cash flow or purchased dollars. Option positions are separate.
     """
     groups=defaultdict(lambda: {"buy":[],"sell":[]})
@@ -265,7 +265,7 @@ def build_sector_direction(changes, display, *, top_n=4):
         return ", ".join(f"{sector}({len(v[side])}행)" for sector,v in changes[:2]) or "없음"
 
     lines=[
-        "13F 보통주 업종 방향 — 분기말 보유수량 변화",
+        "13F 비옵션 증권 업종 방향 — 분기말 보유수량 변화",
         f"■ 집중 확대: {headline(buy,'buy')}",
         f"■ 집중 축소: {headline(sell,'sell')}",
         "",
@@ -313,7 +313,7 @@ def build_sector_direction(changes, display, *, top_n=4):
     if other:
         lines.append(f"• 수량·유형 불명 {other}행: 방향 산정 제외")
     lines.extend([
-        "※ 순위는 분류된 보통주 변동행 수 기준이며, 실제 주문·자금이동 규모의 순위가 아닙니다.",
+        "※ 순위는 분류된 비옵션 증권(보통주·ETF 등)의 변동행 수 기준이며, 실제 주문·자금이동 규모의 순위가 아닙니다.",
         "※ 일부 공시에서 신고 평가액과 주수×주가의 단위 불일치가 확인되어, 검증 전 달러·원화 금액은 표시하지 않습니다.",
         "※ 13F는 분기말 보유 현황이며 매매시점·매매단가·공매도·현금은 확인되지 않습니다.",
     ])
