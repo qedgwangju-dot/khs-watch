@@ -81,6 +81,36 @@ def main():
         assert required in short,required
     assert "$999,000,000" not in short
 
+    # New industry-first alert is quantity-based, not an unverified cash-flow table.
+    direction=sector.build_sector_direction(
+        cases,watch.security_name_kr,top_n=3)
+    assert direction.index("▶ 신규 편입·보유 확대") < direction.index("▶ 보유 축소·전량 청산")
+    assert "■ 집중 확대:" in direction and "■ 집중 축소:" in direction
+    assert "시게이트(STX) +180주 (180.0%)" in direction
+    assert "샌디스크(SNDK) 전량 -100주" in direction
+    assert "TSMC(TSM) -95주 (95.0%)" in direction
+    assert "업종 분류 4/5행 (80%)" in direction
+    assert "미분류 확대 1행 / 축소 0행" in direction
+    assert "옵션 별도: 콜 1행 / 풋 0행" in direction
+    assert "달러·원화 금액은 표시하지 않습니다" in direction
+    assert "$" not in direction
+    assert "실제 체결대금" not in direction
+    assert len(direction)<2400,len(direction)
+
+    # On mixed sectors, do not convert different quarter-end marks to a net cash buy.
+    mix=change("보유 축소",-30,70,10000000,12000000,
+               "메모리·저장장치")
+    mix["issuer"]="SEAGATE TECHNOLOGY HOLDINGS"
+    mixed=sector.build_sector_direction([stx,mix],watch.security_name_kr,top_n=3)
+    assert "동일 업종 내 양방향 변화" in mixed
+    assert "확대 1행 / 축소 1행" in mixed
+    assert "금액 순매수 판정 안 함" in mixed
+
+    # Mark low sector coverage as incomplete, without showing all funds as sold.
+    limited=sector.build_sector_direction(
+        [unknown,unknown,unknown,unknown,new],watch.security_name_kr)
+    assert "전체 포트폴리오 방향을 대표하지 못할 수 있습니다" in limited
+
     # No network request or Telegram send: only the presentation is tested.
     old_rate,old_basis=entry.FX_RATE,entry.FX_BASIS
     try:
@@ -90,11 +120,17 @@ def main():
             {"report_date":"2026-09-30","filing_date":"2026-11-16","form":"13F-HR"},
             {"report_date":"2026-06-30"},cases,
             "https://www.sec.gov/Archives/test")
-        assert text.startswith("[13F 산업별 매수·매도 방향] 스탠리 드러켄밀러")
-        assert text.index("업종별 신규편입·보유확대") < text.index("업종별 축소·전량청산")
-        assert "원화 환산 1달러=1,350.00원" in text
+        assert text.startswith("[13F 업종별 보유 확대·축소] 스탠리 드러켄밀러")
+        assert text.index("▶ 신규 편입·보유 확대") < text.index("▶ 보유 축소·전량 청산")
+        assert "■ 집중 확대:" in text and "■ 집중 축소:" in text
+        assert "보유 기준 2026-09-30" in text
+        assert "시게이트(STX)" in text and "샌디스크(SNDK)" in text
+        assert "메모리·저장장치" in text and "반도체·파운드리·장비" in text
         assert "SEC 공식 원문:" in text
+        assert "원화 환산 1달러" not in text
+        assert "달러 금액" not in text
         assert "▶ 주요 신규 매수·보유 확대" not in text
+        assert "<b>" not in text
         assert len(text)<3800,len(text)
     finally:
         entry.FX_RATE,entry.FX_BASIS=old_rate,old_basis
