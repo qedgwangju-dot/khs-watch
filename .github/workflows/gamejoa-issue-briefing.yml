@@ -9,6 +9,8 @@ on:
   schedule:
     - cron: "30 21 * * *" # 06:30 KST
     - cron: "30 7 * * *"  # 16:30 KST
+    - cron: "45 21 * * *" # 06:45 KST backup
+    - cron: "45 7 * * *"  # 16:45 KST backup
   workflow_dispatch:
     inputs:
       slot:
@@ -36,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 40
     env:
-      BRIEFING_SLOT: ${{ github.event_name == 'schedule' && (github.event.schedule == '30 21 * * *' && 'preopen' || 'close') || github.event_name == 'pull_request' && 'preopen' || inputs.slot }}
+      BRIEFING_SLOT: ${{ github.event_name == 'schedule' && ((github.event.schedule == '30 21 * * *' || github.event.schedule == '45 21 * * *') && 'preopen' || 'close') || github.event_name == 'pull_request' && 'preopen' || inputs.slot }}
       TELEGRAM_DRY_RUN: ${{ github.event_name == 'schedule' && 'false' || github.event_name == 'pull_request' && 'true' || inputs.telegram_dry_run }}
       BRIEFING_REFRESH_SEEN: "true"
       GITHUB_TOKEN: ${{ github.token }}

@@ -504,19 +504,27 @@ class GitHubLedger:
         self.url = f"https://api.github.com/repos/{repo}/contents/{LEDGER_PATH}"
         self.token, self.api = token, api
 
+    def read(self) -> tuple[dict, str]:
+        code, doc = self.api("GET", self.url + "?ref=main", self.token)
+        if code == 404:
+            return {"version": 1, "slots": {}}, ""
+        if code != 200:
+            raise RuntimeError(f"GitHub ledger read HTTP {code}")
+        try:
+            payload = json.loads(base64.b64decode(doc["content"]).decode("utf-8"))
+            if not isinstance(payload.get("slots"), dict):
+                raise ValueError("missing slots")
+            return payload, str(doc.get("sha") or "")
+        except Exception:
+            raise RuntimeError("Invalid briefing delivery ledger") from None
+
+    def has_slot(self, key: str) -> bool:
+        payload, _ = self.read()
+        return key in payload["slots"]
+
     def update(self, key: str, run_id: str, status: str, message_id: int | None = None) -> bool:
         for _ in range(4):
-            code, doc = self.api("GET", self.url + "?ref=main", self.token)
-            if code == 404:
-                payload, sha = {"version": 1, "slots": {}}, ""
-            elif code == 200:
-                sha = str(doc.get("sha") or "")
-                try:
-                    payload = json.loads(base64.b64decode(doc["content"]).decode("utf-8"))
-                except Exception:
-                    raise RuntimeError("Invalid briefing delivery ledger") from None
-            else:
-                raise RuntimeError(f"GitHub ledger read HTTP {code}")
+            payload, sha = self.read()
             slots = payload.setdefault("slots", {})
             existing = slots.get(key)
             if status == "reserved" and existing:
@@ -578,6 +586,19 @@ def main() -> int:
         raise RuntimeError("Outside briefing delivery window")
     if dry and now < end:
         end = now
+    ledger = None
+    key, run_id = f"{now.date().isoformat()}:{slot}", os.getenv("GITHUB_RUN_ID", "")
+    if not dry:
+        if not os.getenv("TELEGRAM_BOT_TOKEN", "").strip() or not os.getenv("TELEGRAM_CHAT_ID", "").strip() or not run_id:
+            raise RuntimeError("Telegram credentials or GitHub run identifier missing")
+        ledger = GitHubLedger(os.getenv("GITHUB_REPOSITORY", ""), os.getenv("GITHUB_TOKEN", ""))
+        if ledger.has_slot(key):
+            OUT.mkdir(parents=True, exist_ok=True)
+            (OUT / "gamejoa_issue_briefing.json").write_text(json.dumps({
+                "slot": slot, "delivery_status": "skipped_existing_reservation", "slot_key": key,
+            }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            print("Briefing: existing reservation; duplicate send skipped", flush=True)
+            return 0
     print(f"Briefing: slot={slot} window={start.isoformat()}..{end.isoformat()} dry_run={dry}", flush=True)
     additions = [
         ("국내 신뢰매체 AI 시험 부정행위", runner.korean_news_search_url('(AI OR 인공지능 OR 스마트안경) (커닝 OR 컨닝 OR 부정행위) (수능 OR 정부 OR 증시 OR 관련주)'), "trusted"),
@@ -701,10 +722,8 @@ def main() -> int:
     chat = os.getenv("TELEGRAM_CHAT_ID", "").strip()
     if not token or not chat:
         raise RuntimeError("Telegram credentials missing")
-    ledger = GitHubLedger(os.getenv("GITHUB_REPOSITORY", ""), os.getenv("GITHUB_TOKEN", ""))
-    key, run_id = f"{now.date().isoformat()}:{slot}", os.getenv("GITHUB_RUN_ID", "")
-    if not run_id:
-        raise RuntimeError("GitHub run identifier missing")
+    if ledger is None:
+        raise RuntimeError("GitHub ledger missing")
     if not ledger.update(key, run_id, "reserved"):
         result["delivery_status"] = "skipped_existing_reservation"
         receipt.write_text(json.dumps(result, ensure_ascii=False, indent=2, default=str) + "\n", encoding="utf-8")

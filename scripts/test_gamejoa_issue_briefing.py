@@ -211,6 +211,8 @@ class IssueBriefingTests(unittest.TestCase):
         ledger = b.GitHubLedger("owner/repo", "token", api)
         with patch.object(b.time, "sleep"):
             self.assertTrue(ledger.update("2026-11-17:preopen", "1", "reserved"))
+            self.assertTrue(ledger.has_slot("2026-11-17:preopen"))
+            self.assertFalse(ledger.has_slot("2026-11-17:close"))
             self.assertFalse(ledger.update("2026-11-17:preopen", "2", "reserved"))
             with self.assertRaises(RuntimeError):
                 ledger.update("2026-11-17:preopen", "2", "sent", 123)
