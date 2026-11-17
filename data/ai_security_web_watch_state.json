@@ -5,22 +5,10 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [
-      "Google News RSS 실패: (\"CVE-2026-109618\" OR \"CVE-2026-109619\" OR \"php2shell\")… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (Gemini OR \"Google AI\") security vulnerability exploit … / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (\"AI agent\" OR agentic) \"sandbox escape\" OR \"unauthoriz… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"AI agent\" \"undesirable behavior\" OR \"unintended behavi… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: OpenAI \"Hugging Face\" agent incident misalignment… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic) model behavior guardrail sandbox … / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"training pause… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell OR NemoClaw) security vu… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Safety Case\" f… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) tool-use traini… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "material_items": 9,
+    "errors": [],
+    "material_items": 12,
     "new_material_items": 0,
-    "raw_items": 79,
+    "raw_items": 94,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1562,5 +1550,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-17T17:08:03+09:00"
+  "updated_at_kst": "2026-11-17T17:32:55+09:00"
 }
