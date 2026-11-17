@@ -212,7 +212,9 @@ def main():
                         "기업·응용 소프트웨어"),
         "app":position("APPLOVIN CORP","APP",109460,31790000,
                        "디지털 광고·AI 앱 플랫폼"),
-        "other":position("OTHER TRUST","OTR",100000,2748019000),
+        "other1":position("OTHER ONE","OT1",100000,1000000000),
+        "other2":position("OTHER TWO","OT2",100000,1000000000),
+        "other3":position("OTHER THREE","OT3",100000,774902000),
     }
     def move(issuer,action,delta,current_shares,cur_value,prev_value,sector_name):
         return {"issuer":issuer,"title":"COM","cusip":issuer,
