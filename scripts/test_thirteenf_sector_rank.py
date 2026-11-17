@@ -111,14 +111,46 @@ def main():
         [unknown,unknown,unknown,unknown,new],watch.security_name_kr)
     assert "전체 포트폴리오 방향을 대표하지 못할 수 있습니다" in limited
 
+    # SEC Q3/Q2 Duquesne values are demonstrably thousand-scaled outliers.
+    cur={"accession":"0001536411-26-000011"}
+    prev={"accession":"0001536411-26-000006"}
+    assert sector.verified_scale("Duquesne Family Office",cur)==1000
+    assert sector.verified_scale("Duquesne Family Office",prev)==1000
+    assert sector.verified_scale("Appaloosa",cur)==1
+    assert sector.verified_scale("Duquesne Family Office",
+                                 {"accession":"0001536411-27-000001"}) is None
+    seagate=change("보유 확대",219790,341790,315247,117728,"메모리·저장장치")
+    seagate["issuer"]="SEAGATE TECHNOLOGY HLDNGS"
+    checked=sector.verified_change_values([seagate],"Duquesne Family Office",cur,prev)
+    assert checked[0]["valuation_verified"]
+    assert checked[0]["cur_value"]==315_247_000
+    assert checked[0]["prev_value"]==117_728_000
+    side,amount=sector.changed_share_reference_value(checked[0])
+    assert side=="buy" and 202_000_000<amount<204_000_000
+    display_money=lambda x:f"{x/1_000_000:,.1f}백만달러(약 {x*1350/100_000_000:,.1f}억원)"
+    rendered=sector.build_sector_direction(checked,watch.security_name_kr,
+                                           money=display_money,top_n=3)
+    assert "변경분" in rendered and "백만달러(약" in rendered
+    assert "202." in rendered
+
+    unknown_filing=sector.verified_change_values(
+        [seagate],"Duquesne Family Office",
+        {"accession":"0001536411-27-000001"},prev)
+    no_amount=sector.build_sector_direction(
+        unknown_filing,watch.security_name_kr,money=display_money)
+    assert "평가액 단위 확인 전" in no_amount
+    assert "변경분 평가액 미검증" in no_amount
+    assert "202." not in no_amount
+
     # No network request or Telegram send: only the presentation is tested.
     old_rate,old_basis=entry.FX_RATE,entry.FX_BASIS
     try:
         entry.FX_RATE,entry.FX_BASIS=1350.0,"검증용"
         text=entry.build_message_with_owner(
             "Duquesne Family Office",
-            {"report_date":"2026-09-30","filing_date":"2026-11-16","form":"13F-HR"},
-            {"report_date":"2026-06-30"},cases,
+            {"report_date":"2026-09-30","filing_date":"2026-11-16",
+             "form":"13F-HR","accession":"0001536411-26-000011"},
+            {"report_date":"2026-06-30","accession":"0001536411-26-000006"},cases,
             "https://www.sec.gov/Archives/test")
         assert text.startswith("[13F 업종별 보유 확대·축소] 스탠리 드러켄밀러")
         assert text.index("▶ 신규 편입·보유 확대") < text.index("▶ 보유 축소·전량 청산")
@@ -127,8 +159,8 @@ def main():
         assert "시게이트(STX)" in text and "샌디스크(SNDK)" in text
         assert "메모리·저장장치" in text and "반도체·파운드리·장비" in text
         assert "SEC 공식 원문:" in text
-        assert "원화 환산 1달러" not in text
-        assert "달러 금액" not in text
+        assert "평가액 원화환산: 1달러=1,350.00원" in text
+        assert "변경분" in text and "달러" in text and "원" in text
         assert "▶ 주요 신규 매수·보유 확대" not in text
         assert "<b>" not in text
         assert len(text)<3800,len(text)
