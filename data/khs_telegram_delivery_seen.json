@@ -111,6 +111,16 @@
       "sent_at_utc": "2026-11-09T23:03:01.414164Z",
       "title": "신뢰외신 정책 워치: [상·공식 확인 전] 트럼프, 이란 충돌·휴전 관련 발언: 유가·운임 재상승 리스크"
     },
+    "337ec06745cdf42b6119": {
+      "message_id": 574,
+      "message_ids": [
+        574
+      ],
+      "preview": "🚨 정책·규제 고충격 워치 · 2026년 11월 17일 16:49 KST 1. [상·확정] FCC, 통신·주파수·위성 규제 문서 공표 - 핵심: FCC, 통신·주파수·위성 규제 문서 공표 - 출처: <a href=\"https://www.federalregister.gov/documents/2026/11/17/2026-23385/modernizing-the-commissions-national",
+      "route": "policy",
+      "sent_at_utc": "2026-11-17T07:49:18.692836Z",
+      "title": "정책 워치: [상] FCC, 통신·주파수·위성 규제 문서 공표"
+    },
     "392a4489bb16253a59fd": {
       "message_id": 517,
       "message_ids": [
@@ -706,6 +716,15 @@
       "route": "policy",
       "sent_at_utc": "2026-10-29T22:26:46.156342Z",
       "title": "신뢰외신 정책 워치: [상·공식 확인 전] 신뢰외신, 미국 고충격 정책 후보 보도"
+    },
+    "part-2973b3250568e49ad4c538d2": {
+      "message_id": 574,
+      "parent_digest": "337ec06745cdf42b6119",
+      "part_count": 1,
+      "part_index": 1,
+      "route": "policy",
+      "sent_at_utc": "2026-11-17T07:49:18.692836Z",
+      "title": "정책 워치: [상] FCC, 통신·주파수·위성 규제 문서 공표"
     },
     "part-31723d88bf873495b4fbb8dc": {
       "message_id": 566,
