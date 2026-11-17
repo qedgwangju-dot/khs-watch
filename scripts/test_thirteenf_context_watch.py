@@ -105,6 +105,17 @@ def main():
     except ValueError:
         pass
 
+    # Q3 13F amount supplement has a separate one-shot deduplication key.
+    ready={"managers":{label:{"report_date":"2026-09-30","accession":"test"}
+                       for label in c.Q3_FOCUS_MANAGERS},
+           "seen_context_events":[c.Q3_COMPARE_KEY]}
+    assert c.q3_amount_ready(ready)
+    ready["q3_value_pending_delivery"]={"key":c.Q3_VALUE_KEY}
+    assert not c.q3_amount_ready(ready)
+    ready.pop("q3_value_pending_delivery")
+    ready["seen_context_events"].append(c.Q3_VALUE_KEY)
+    assert not c.q3_amount_ready(ready)
+
     print("13F CDW manager-context regression checks passed.")
 
 if __name__=="__main__":
