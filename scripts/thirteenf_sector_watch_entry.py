@@ -176,16 +176,23 @@ def build_message_with_owner(label, filing, previous, changes, info_url):
     this changes only the manager Telegram presentation, not dedup or routing.
     """
     owner = PORTFOLIO_OWNER_KR.get(label, watch.MANAGER_KR.get(label, label))
+    validated = sector_rank.verified_change_values(changes,label,filing,previous)
+    rate, basis = ensure_fx()
     lines = [
         f"[13F 업종별 보유 확대·축소] {owner}",
         f"보유 기준 {filing['report_date']} · 공시 {filing['filing_date']} · "
         f"비교 {previous['report_date'] if previous else '직전 분기 미확인'}",
+        f"평가액 원화환산: 1달러={rate:,.2f}원 ({basis})",
         "",
         sector_rank.build_sector_direction(
-            changes, watch.security_name_kr, top_n=4),
+            validated, watch.security_name_kr, top_n=3,
+            money=money_with_krw),
         f"SEC 공식 원문: {info_url}",
     ]
-    return "\n".join(lines)
+    message="\n".join(lines)
+    if len(message)>3700:
+        raise RuntimeError("13F sector amount report exceeds single Telegram message; no partial delivery")
+    return message
 
 
 watch.build_message = build_message_with_owner
