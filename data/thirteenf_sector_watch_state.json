@@ -80,20 +80,24 @@
       "cik": "0001512857"
     }
   },
-  "updated_at": "2026-11-17T06:17:18.279635+00:00",
+  "updated_at": "2026-11-17T06:17:20.569414+00:00",
   "seen_context_events": [
-    "13f-context:duquesne:2026-06-30:CDW:shindonga-2026-10-08"
+    "13f-context:duquesne:2026-06-30:CDW:shindonga-2026-10-08",
+    "verified-13f-crossmanager-2026q3-20261117-v1"
   ],
-  "q3_pending_delivery": {
-    "key": "verified-13f-crossmanager-2026q3-20261117-v1",
-    "accessions": {
-      "Situational Awareness": "0000935836-26-000610",
-      "Duquesne Family Office": "0001536411-26-000011",
-      "Appaloosa": "0001656456-26-000004",
-      "Third Point": "0001040273-26-000004",
-      "NVIDIA": "0001045810-26-000084",
-      "Berkshire Hathaway": "0001193125-26-463399"
-    },
-    "reserved_utc": "2026-11-17T06:17:18.279562+00:00"
+  "context_receipts": {
+    "verified-13f-crossmanager-2026q3-20261117-v1": {
+      "message_id": 154,
+      "bot": "khs887988798879_bot",
+      "accessions": {
+        "Situational Awareness": "0000935836-26-000610",
+        "Duquesne Family Office": "0001536411-26-000011",
+        "Appaloosa": "0001656456-26-000004",
+        "Third Point": "0001040273-26-000004",
+        "NVIDIA": "0001045810-26-000084",
+        "Berkshire Hathaway": "0001193125-26-463399"
+      },
+      "sent_utc": "2026-11-17T06:17:20.569350+00:00"
+    }
   }
 }
