@@ -19,6 +19,18 @@ def sample(cp_cd=20,credit=60,n=12):
         day+=dt.timedelta(days=1)
     return rows
 
+def year_sample(end=dt.date(2026,11,16)):
+    """연초부터 지정일까지의 가상 영업일: 공식 수치를 가장하지 않는 테스트 자료."""
+    rows=[]
+    day=dt.date(2026,1,1)
+    while day<=end:
+        if day.weekday()<5 and day!=dt.date(2026,1,1):
+            rates={"cp":3.88,"cd":3.37,"corp":4.434,"gov":3.741}
+            rows.append({"date":day.strftime("%Y%m%d"),"rates":rates,
+                         "cp_cd":51.0,"credit":69.3,"rank":2})
+        day+=dt.timedelta(days=1)
+    return rows
+
 class CreditWatchTests(unittest.TestCase):
     def test_exact_boundary_levels(self):
         for p in ((29.99,69.99,0),(30,0,1),(0,70,1),(49.9,79.9,1),
@@ -397,7 +409,7 @@ class CreditWatchTests(unittest.TestCase):
             self.assertFalse(ack.exists())
 
     def test_exact_nov16_risk_vs_direction_caption(self):
-        rows=sample(51,69.3,n=17)
+        rows=year_sample()
         rows[-6].update(cp_cd=51.0,credit=69.3)
         rows[-2].update(cp_cd=51.0,credit=67.5)
         rows[-1].update(date="20261116",cp_cd=50.0,credit=67.3,rank=2,
@@ -469,6 +481,58 @@ class CreditWatchTests(unittest.TestCase):
                     {"chat_id":"-1234567","caption":"주의","parse_mode":"HTML"},
                     photo=b"\x89PNG\r\n\x1a\n"+b"123")
         self.assertTrue(response["ok"])
+
+
+    def test_ytd_chart_all_2026_trading_days_month_labels(self):
+        rows=year_sample(dt.date(2026,11,17))
+        history=c.ytd_history(rows)
+        self.assertEqual(history[0]["date"],"20260102")
+        self.assertEqual(history[-1]["date"],"20261117")
+        self.assertGreater(len(history),210)
+        labels=[d.strftime("%Y-%m-%d") for d in c.ytd_month_ticks(history)]
+        self.assertEqual(labels[0],"2026-01-01")
+        self.assertEqual(labels[-1],"2026-11-01")
+        self.assertEqual(len(labels),11)
+        # 직전 연도의 비교 기초값은 연도별 차트에서만 제외한다.
+        baseline={"date":"20251230","cp_cd":52.0,"credit":69.5}
+        self.assertEqual(c.ytd_history([baseline]+rows),rows)
+
+    def test_ytd_missing_january_is_a_failure_not_short_chart(self):
+        rows=sample(52,68.3,n=18)
+        rows[-1].update(date="20261117")
+        with self.assertRaisesRegex(ValueError,"1월 금리 자료 누락"):
+            c.ytd_history(rows)
+
+    def test_fetch_rates_requests_complete_ytd_with_prior_december(self):
+        series=[
+            ("010503000","CP(91일)"),
+            ("010502000","CD(91일)"),
+            ("010300000","회사채(3년, AA-)"),
+            ("010200000","국고채(3년)"),
+        ]
+        calls=[]
+        def fake(key,start,end,code=""):
+            calls.append((start,end,code))
+            if not code:
+                return [{"ITEM_CODE1":k,"ITEM_NAME1":name} for k,name in series]
+            name=next(n for k,n in series if k==code)
+            return [{"ITEM_CODE1":code,"ITEM_NAME1":name,"TIME":"20261117",
+                     "UNIT_NAME":"연%","DATA_VALUE":"3.880"}]
+        with patch.object(c,"ecos",side_effect=fake):
+            now=dt.datetime(2026,11,18,8,tzinfo=ZoneInfo("Asia/Seoul"))
+            values,codes=c.fetch_rates("test-key",now)
+        self.assertEqual(len(codes),4)
+        self.assertTrue(all(values[x] for x in c.KINDS))
+        self.assertEqual(len(calls),5)
+        self.assertEqual(calls[0][0],dt.date(2026,11,9))
+        self.assertEqual({q[0] for q in calls[1:]},{dt.date(2025,12,11)})
+        self.assertEqual({q[1] for q in calls[1:]},{dt.date(2026,11,18)})
+        calls.clear()
+        with patch.object(c,"ecos",side_effect=fake):
+            now=dt.datetime(2027,1,7,8,tzinfo=ZoneInfo("Asia/Seoul"))
+            c.fetch_rates("test-key",now)
+        # 연도 첫 주에는 직전 연도 연간 데이터도 유지하여 잘못된 짧은 차트를 방지.
+        self.assertEqual({q[0] for q in calls[1:]},{dt.date(2025,12,11)})
 
     def test_utc_cron_mapping_and_health_persistence_declared(self):
         path=pathlib.Path(__file__).parents[1]/".github/workflows/korea-credit-spread-telegram-watch.yml"

@@ -81,9 +81,13 @@ def ecos(key,start,end,code=""):
 def fetch_rates(key,now):
     today=now.date()
     codes=codes_for(ecos(key,today-dt.timedelta(days=9),today))
+    # 연초 이후 전 공표일을 유지하되, 연초 5영업일 비교와 연도 전환을
+    # 위해 전년도 12월을 포함한다. 1월에는 전년도 전체를 잠시 함께 조회.
+    first_year=today.year-1 if today.month==1 else today.year
+    ytd_start=dt.date(first_year,1,1)-dt.timedelta(days=21)
     series={}
     for kind,code in codes.items():
-        rows=ecos(key,today-dt.timedelta(days=50),today,code)
+        rows=ecos(key,ytd_start,today,code)
         vals={}
         for row in rows:
             if str(row.get("ITEM_CODE1","")).strip()!=code or name_kind(row.get("ITEM_NAME1",""))!=kind:
@@ -368,6 +372,25 @@ def _kr_font(size,bold=False):
         if candidate.is_file(): return ImageFont.truetype(str(candidate),size)
     raise RuntimeError("한글 이미지 차트 글꼴 없음: 발송 중단")
 
+def ytd_history(rows):
+    """최신 공식 기준일이 속한 연도의 1월 1일부터 모든 공표일을 사용."""
+    if not rows: raise ValueError("연초 이후 시계열 원자료 없음")
+    last_date=dt.datetime.strptime(rows[-1]["date"],"%Y%m%d").date()
+    first_day=dt.date(last_date.year,1,1)
+    result=[r for r in rows if first_day <=
+            dt.datetime.strptime(r["date"],"%Y%m%d").date() <= last_date]
+    if not result: raise ValueError("올해 공식 금리 자료 없음")
+    if last_date >= dt.date(last_date.year,2,1):
+        first=dt.datetime.strptime(result[0]["date"],"%Y%m%d").date()
+        if first > dt.date(last_date.year,1,15):
+            raise ValueError("연초 이후 1월 금리 자료 누락: 짧은 구간을 YTD로 표시하지 않음")
+    return result
+
+def ytd_month_ticks(history):
+    """실제 달력 간격으로 월별 눈금을 생성하며 공표일이 없는 휴일도 보존."""
+    last=dt.datetime.strptime(history[-1]["date"],"%Y%m%d").date()
+    return [dt.date(last.year,month,1) for month in range(1,last.month+1)]
+
 def render_chart(rows,decision,now,target):
     """두 개의 별도 시계열 차트·위험 단계·상승/개선 추세를 한 PNG에 표현."""
     from PIL import Image,ImageDraw
@@ -384,10 +407,13 @@ def render_chart(rows,decision,now,target):
     risk=LEVELS[decision["rank"]]
     d=direction_overview(rows)
     latest,prev=rows[-1],rows[-2]
-    day=dt.datetime.strptime(latest["date"],"%Y%m%d").strftime("%Y-%m-%d")
+    last_date=dt.datetime.strptime(latest["date"],"%Y%m%d").date()
+    history=ytd_history(rows)
+    jan_first=dt.date(last_date.year,1,1)
     draw.rectangle((0,0,W,261),fill=navy)
     draw.text((62,30),"국내 신용금리 · 위험 추세 차트",font=bold(50),fill="#FFFFFF")
-    draw.text((63,99),f"한국은행 ECOS {TABLE} · 공식 기준일 {day}",font=font(29),fill="#CAD7E9")
+    draw.text((63,99),f"{last_date.year}년 연초 이후(YTD) · 01/01~{last_date:%m/%d} · 한국은행 ECOS {TABLE}",
+              font=font(29),fill="#CAD7E9")
     bg,fg=colors[risk]
     draw.rounded_rectangle((61,163,660,237),radius=15,fill=bg)
     draw.text((87,174),f"현재 종합 위험: {risk}",font=bold(45),fill=fg)
@@ -415,7 +441,7 @@ def render_chart(rows,decision,now,target):
         fill,fg=colors[bucket]
         draw.rounded_rectangle((1020,top+28,1343,top+84),radius=12,fill=fill)
         draw.text((1040,top+40),f"{bucket} · {trend}",font=bold(27),fill=fg)
-        hist=rows[-15:]
+        hist=history
         vals=[float(z[metric]) for z in hist]
         lower,upper=min(vals),max(vals)
         pad=max(1.5,(upper-lower)*0.3)
@@ -427,15 +453,20 @@ def render_chart(rows,decision,now,target):
             y=to_y(v)
             draw.line((xL,y,xR,y),fill="#DDE6F0",width=2)
             draw.text((81,y-17),f"{v:.1f}",font=font(22),fill=gray)
-        pts=[(round(xL+i*(xR-xL)/max(1,len(vals)-1)),to_y(v))
-             for i,v in enumerate(vals)]
-        if len(pts)>1: draw.line(pts,fill=color,width=7)
-        for x,y in pts[:-1]: draw.ellipse((x-5,y-5,x+5,y+5),fill=color)
+        # 거래일별 점 간격이 아닌 실제 달력일 간격을 사용한다.
+        total_days=max(1,(last_date-jan_first).days)
+        def to_x(day): return round(xL+(day-jan_first).days*(xR-xL)/total_days)
+        pts=[(to_x(dt.datetime.strptime(r["date"],"%Y%m%d").date()),to_y(v))
+             for r,v in zip(hist,vals)]
+        for month in ytd_month_ticks(hist):
+            xpos=to_x(month)
+            draw.line((xpos,yT,xpos,yB),fill="#EDF1F5",width=2)
+            draw.text((min(xR-56,max(xL-27,xpos-27)),yB+14),
+                      f"{month.month:02d}월",font=font(22),fill=gray)
+        if len(pts)>1: draw.line(pts,fill=color,width=5)
+        # 연초 이후 200여 개 공표일이 겹치므로 점 대신 선과 최신 값만 강조.
         x,y=pts[-1]
-        draw.ellipse((x-13,y-13,x+13,y+13),outline=color,fill="#FFFFFF",width=6)
-        for xpos,at in ((xL,hist[0]),(xR-100,hist[-1])):
-            val=at["date"]
-            draw.text((xpos,yB+14),val[4:6]+"/"+val[6:8],font=font(23),fill=gray)
+        draw.ellipse((x-12,y-12,x+12,y+12),outline=color,fill="#FFFFFF",width=6)
         seg=(xR-xL)/5
         for idx,(name,range_txt) in enumerate(zip(LEVELS,bands)):
             l=round(xL+idx*seg); r=round(xL+(idx+1)*seg)-5
@@ -444,7 +475,7 @@ def render_chart(rows,decision,now,target):
                                    outline=ff if name==bucket else None,
                                    width=5 if name==bucket else 1)
             draw.text((l+9,top+356),name+" "+range_txt,font=bold(21),fill=ff)
-        draw.text((89,top+407),"위험 구간은 별도 기준 · 추세선 세로축은 최근 값에 맞춰 표시",
+        draw.text((89,top+407),f"{last_date.year}년 1월~최신 공식 공표일 {len(hist)}개 · 위험 구간은 별도 기준",
                   font=font(20),fill=gray)
     panel(523,"cp_cd","① CP–CD 금리차 (bp)",cp,d["cp"][0],"#C56A19",
           ["30미만","30~50","50~70","70~100","100이상"])
