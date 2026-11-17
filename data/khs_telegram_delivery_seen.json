@@ -540,6 +540,16 @@
       "sent_at_utc": "2026-11-12T06:58:35.093075Z",
       "title": "신뢰외신 정책 워치: [상·공식 확인 전] 미 상무부, 제3국 데이터센터 GPU 원격 접근 제한 추진"
     },
+    "cf5bf19710eaa9d5fc66": {
+      "message_id": 578,
+      "message_ids": [
+        578
+      ],
+      "preview": "🚨 정책·규제 고충격 워치 · 2026년 11월 18일 00:46 KST 1. [상·확정] 트럼프 대통령 발언, 시장 영향 정책 신호 - 핵심: 트럼프 대통령 발언, 시장 영향 정책 신호 - 출처: <a href=\"https://www.whitehouse.gov/briefings-statements/2026/11/quad-leaders-summit-joint-press-release/\">원문",
+      "route": "policy",
+      "sent_at_utc": "2026-11-17T15:46:51.103268Z",
+      "title": "정책 워치: [상] 트럼프 대통령 발언, 시장 영향 정책 신호"
+    },
     "d38228fe40fb2a7bfb81": {
       "message_id": 564,
       "message_ids": [
@@ -1050,6 +1060,15 @@
       "route": "policy",
       "sent_at_utc": "2026-11-09T13:15:46.566764Z",
       "title": "신뢰외신 정책 워치: [상·공식 확인 전] 트럼프, 이란 충돌·휴전 관련 발언: 유가·운임 재상승 리스크"
+    },
+    "part-b5e9a4038b92ed43f196bde1": {
+      "message_id": 578,
+      "parent_digest": "cf5bf19710eaa9d5fc66",
+      "part_count": 1,
+      "part_index": 1,
+      "route": "policy",
+      "sent_at_utc": "2026-11-17T15:46:51.103268Z",
+      "title": "정책 워치: [상] 트럼프 대통령 발언, 시장 영향 정책 신호"
     },
     "part-c2ec2ca97e0037dc77a702e1": {
       "message_id": 2756,
