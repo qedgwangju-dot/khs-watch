@@ -5,7 +5,10 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [],
+    "errors": [
+      "Google News RSS 실패: site:justice.gov (\"OpenAI\" OR \"AI researcher\") (wiretap… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (\"AI worm\" OR \"self-propagating AI\" OR \"autonomous AI r… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
     "material_items": 12,
     "new_material_items": 0,
     "raw_items": 94,
@@ -1550,5 +1553,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-17T23:15:39+09:00"
+  "updated_at_kst": "2026-11-17T23:21:37+09:00"
 }
