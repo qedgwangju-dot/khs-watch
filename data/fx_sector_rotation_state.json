@@ -16,56 +16,60 @@
     {
       "ts": "2026-11-17T17:48:23+09:00",
       "value": 1336.2
+    },
+    {
+      "ts": "2026-11-17T23:30:58+09:00",
+      "value": 1336.8
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-11-17T17:48:23+09:00",
+    "checked_at": "2026-11-17T23:30:58+09:00",
     "market_phase": "장마감 후",
     "fx": {
-      "value": 1336.2,
+      "value": 1336.8,
       "prev_close": 1335.7,
       "naver_prev_close": 1336.5,
       "date": "2026-11-17",
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
-      "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20261116153424840",
+      "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20261116153647216",
       "basis_error": null,
       "basis_reused": false
     },
     "session_low": 1336.2,
-    "rebound_krw": 0.0,
-    "rebound_pct": 0.0,
-    "daily_krw": 0.5,
-    "daily_pct": 0.03743355543910365,
+    "rebound_krw": 0.599999999999909,
+    "rebound_pct": 0.04490345756622549,
+    "daily_krw": 1.099999999999909,
+    "daily_pct": 0.08235382196599694,
     "kospi_pct": -2.59,
     "ship": {
-      "avg": -4.205,
+      "avg": -4.8925,
       "positive": 0,
-      "relative": -1.6150000000000002,
+      "relative": -2.3025,
       "valid": 4,
       "confirmed": false
     },
     "defense": {
-      "avg": -3.15,
+      "avg": -3.7875,
       "positive": 1,
-      "relative": -0.56,
+      "relative": -1.1975000000000002,
       "valid": 4,
       "confirmed": false
     },
     "auto": {
-      "avg": -3.0225,
+      "avg": -3.505,
       "positive": 0,
-      "relative": -0.4325000000000001,
+      "relative": -0.915,
       "valid": 4,
       "confirmed": false
     },
     "counter": {
-      "avg": -0.8625000000000002,
+      "avg": -0.9125000000000001,
       "positive": 2,
-      "relative": 1.7274999999999996,
+      "relative": 1.6774999999999998,
       "valid": 4,
       "confirmed": false
     }
