@@ -39,6 +39,25 @@ COUPE_SIGNAL_CATEGORIES = {
     "COUPE 2차 검사 장비 선정",
     "COUPE 스위치 양산 일정·출하 위험",
 }
+SC26_NVIDIA = "SC26 NVIDIA Rubin & CPO"
+SC26_AMD = "SC26 AMD HPC"
+SC26_TOP500 = "SC26 TOP500 HANGANG"
+SC26_COMPANIES = {SC26_NVIDIA, SC26_AMD, SC26_TOP500}
+SC26_END_DATE = dt.date(2026, 11, 25)
+SC26_KNOWN_KEYS = {
+    "sc26|nvidia|rubin-hpc|announced-2026-11-16",
+    "sc26|lambda|cpo|first-deployment-2026-11-16",
+    "sc26|amd|mi430x|roadmap-2026-11-12",
+    "sc26|amd|lux|open-2026-11-16",
+    "sc26|amd|venice-x|roadmap-2026-11-16",
+    "sc26|top500|hangang|2026-11|rank-12",
+    "sc26|top500|lineshine|2026-11|rank-1",
+}
+SC26_OFFICIAL_DOMAINS = {
+    "nvidia.com", "amd.com", "lambda.com", "hpe.com",
+    "top500.org", "kisti.re.kr", "ornl.gov", "energy.gov",
+}
+
 OOI_COMPANY = "NVIDIA OOI & DWDM"
 OOI_WATCH_VERSION = 1
 OOI_REFERENCE_BASELINE_KEYS = {
@@ -113,6 +132,30 @@ CREDO_VERIFIED_BASELINE = {
 }
 
 COMPANIES = {
+    "SC26 NVIDIA Rubin & CPO": {
+        "ticker": "NVDA / CPO",
+        "aliases": ["NVIDIA", "Lambda", "Rubin HPC", "NVIDIA Photonics"],
+        "queries": [
+            '("Rubin HPC" OR "NVIDIA Rubin HPC") (SC26 OR NVIDIA OR performance OR customer OR shipping OR production) when:14d',
+            '(NVIDIA Lambda) ("CPO" OR "co-packaged optics" OR photonics) (GPU OR cluster OR deployed OR latency OR customer OR shipment) when:14d',
+        ],
+    },
+    "SC26 AMD HPC": {
+        "ticker": "AMD / HPE",
+        "aliases": ["AMD", "MI430X", "Venice-X", "Lux", "Oak Ridge"],
+        "queries": [
+            '(AMD) ("MI430X" OR "Venice-X") (SC26 OR HPC OR production OR customer OR performance OR order) when:14d',
+            '(AMD) ("Lux" OR "ORNL" OR "Oak Ridge") (SC26 OR supercomputer OR "AI factory" OR deployment OR operational) when:14d',
+        ],
+    },
+    "SC26 TOP500 HANGANG": {
+        "ticker": "TOP500 / KISTI",
+        "aliases": ["KISTI", "HANGANG", "한강", "TOP500"],
+        "queries": [
+            '("HANGANG" OR "한강" OR "KISTI") ("TOP500" OR supercomputer OR "슈퍼컴퓨터") ("November" OR 2026 OR SC26 OR 12위) when:14d',
+            '("TOP500" OR "68th TOP500") ("HANGANG" OR "LineShine" OR "new entrant" OR "신규 진입") when:14d',
+        ],
+    },
     "NVIDIA": {
         "ticker": "NVDA",
         "aliases": ["NVIDIA", "Nvidia"],
@@ -452,6 +495,9 @@ COMPANIES = {
 }
 
 DISPLAY_NAMES_KO = {
+    "SC26 NVIDIA Rubin & CPO": "SC26 엔비디아·Lambda",
+    "SC26 AMD HPC": "SC26 AMD·HPE",
+    "SC26 TOP500 HANGANG": "SC26 TOP500·한강",
     "NVIDIA": "엔비디아",
     "NVIDIA OOI & DWDM": "엔비디아 인터포저 광학·DWDM",
     "Broadcom": "브로드컴",
@@ -635,7 +681,9 @@ SOURCE_PRIORITY = {
     "Broadcom": 100, "Arista Networks": 100, "Marvell": 100,
     "Amphenol": 100, "Ciena": 100, "Celestica": 100,
     "Lumentum": 100, "AXT": 100, "Applied Optoelectronics": 100,
-    "Fabrinet": 100, "TSMC": 100,
+    "Fabrinet": 100, "TSMC": 100, "AMD": 100, "AMD Newsroom": 100,
+    "Lambda": 100, "Lambda AI": 100, "TOP500": 100, "KISTI": 100,
+    "HPE": 100, "Oak Ridge National Laboratory": 100, "ORNL": 100,
     "Volantis": 100, "Lightmatter": 100, "Ayar Labs": 100, "Xscape Photonics": 100,
     "Sungho Electronics": 100, "성호전자": 100, "ADST": 100, "에이디에스테크": 100,
     "POET Technologies": 100, "POET": 100, "Sivers Semiconductors": 100,
@@ -1053,6 +1101,98 @@ def official_ooi_source(item: dict) -> bool:
 
 
 
+
+def sc26_milestone(company: str, title: str) -> tuple[str, str, str] | None:
+    """SC26 conference lanes: distinguish roadmap, operating deployment and TOP500 rank."""
+    if company not in SC26_COMPANIES:
+        return None
+    raw = html.unescape(title or "")
+    t = raw.lower()
+    if is_noise(t):
+        return None
+    if company == SC26_NVIDIA:
+        if "lambda" in t and "nvidia" in t and re.search(r"\bcpo\b|co[- ]packaged optics?|photonics", t, re.I):
+            if re.search(r"second (?:site|deployment|cluster)|additional (?:site|deployment|cluster)|"
+                         r"expands? (?:its |the )?(?:deployment|cluster)|new site|new order|new contract", t, re.I):
+                amount = re.search(r"\d[\d,]*(?:\+)?\s*(?:gpus?|mw|sites?|clusters?)", t, re.I)
+                suffix = re.sub(r"[^a-z0-9]+", "-", amount.group(0).lower()).strip("-") if amount else hashlib.sha256(t.encode()).hexdigest()[:12]
+                return ("Lambda CPO 후속 확장·계약", "추가 현장·물량 보도(첫 도입과 별도 확인)", f"sc26|lambda|cpo|expansion|{suffix}")
+            return ("Lambda CPO 실제 가동", "2026-11-16 발표: Blackwell Ultra 1만 개 이상 연결·운영(차세대 COUPE 양산과 별개)",
+                    "sc26|lambda|cpo|first-deployment-2026-11-16")
+        if re.search(r"rubin[\s-]*hpc|50,?000\s+(?:cuda\s+)?cores?", t, re.I) and "nvidia" in t:
+            if re.search(r"begins? shipping|first commercial shipment|mass production begins|"
+                         r"customer order|purchase order|first deployed|actually deployed|delivered to", t, re.I):
+                stage = "실제 고객 출하·발주 주장(공식 계약·검수 확인 필요)"
+                key = "sc26|nvidia|rubin-hpc|customer-or-shipment|" + hashlib.sha256(t.encode()).hexdigest()[:12]
+                return ("Rubin HPC 고객·양산", stage, key)
+            return ("Rubin HPC 신제품 발표", "CUDA 코어 5만 개 이상 제품 공개·고객 양산 및 매출 미확정",
+                    "sc26|nvidia|rubin-hpc|announced-2026-11-16")
+        return None
+    if company == SC26_AMD:
+        if "amd" not in t and "oak ridge" not in t:
+            return None
+        if re.search(r"\blux\b", t, re.I) and re.search(r"supercomputer|ai factory|ornl|oak ridge|hpe|top500", t, re.I):
+            if re.search(r"new contract|additional (?:cluster|capacity|gpus?)|capacity expanded|"
+                         r"new procurement|upgraded to", t, re.I):
+                return ("Lux 슈퍼컴 추가 발주", "기존 실사용 발표와 별도의 신규 조달 주장",
+                        "sc26|amd|lux|new-contract|" + hashlib.sha256(t.encode()).hexdigest()[:12])
+            return ("Lux 실제 연구자 가동", "미 에너지부 연구자용 실제 운용·MI355X 적용(MI430X가 아님)",
+                    "sc26|amd|lux|open-2026-11-16")
+        if re.search(r"\bmi430x\b", t, re.I):
+            if re.search(r"begins? (?:commercial )?shipments?|actually shipped|volume production|"
+                         r"first customer delivery|new supply agreement|purchase order", t, re.I):
+                return ("MI430X 고객·양산", "고객 인도·실제 생산 주장(회사의 목표 사양과 구분)",
+                        "sc26|amd|mi430x|commercial|" + hashlib.sha256(t.encode()).hexdigest()[:12])
+            return ("MI430X 로드맵·성능", "차세대 FP64 과학연산 제품·공개된 성능 전망은 실측 양산과 구분",
+                    "sc26|amd|mi430x|roadmap-2026-11-12")
+        if re.search(r"venice[- ]?x", t, re.I):
+            if re.search(r"now available|begins? shipping|first customer delivery|commercial launch", t, re.I):
+                return ("Venice-X 상용 출시", "출시·실제 고객 인도 주장(원문 검증 필요)",
+                        "sc26|amd|venice-x|commercial|" + hashlib.sha256(t.encode()).hexdigest()[:12])
+            return ("Venice-X CPU 로드맵", "L3 캐시 확대 로드맵·출하 확정과 별개",
+                    "sc26|amd|venice-x|roadmap-2026-11-16")
+        return None
+    if company == SC26_TOP500:
+        if re.search(r"hangang|kisti|한강", t, re.I) and re.search(r"top\s*500|supercomputer|슈퍼컴퓨터|rank|순위", t, re.I):
+            rank_match = re.search(r"(?:rank(?:ed)?|no\.?|위|#)\s*(\d{1,3})|(\d{1,3})\s*(?:st|nd|rd|th|위)\b", t, re.I)
+            rank = next((v for v in rank_match.groups() if v), "unknown") if rank_match else "unknown"
+            if (rank == "12" or re.search(r"(?:12th|12위|no\.?\s*12|ranked?\s*12)\b", t, re.I)) and not re.search(r"\b2027\b", t):
+                return ("한강 TOP500 세계 12위", "제68회 신규 진입 최고 순위·전체 12위, 전체 세계 1위 아님",
+                        "sc26|top500|hangang|2026-11|rank-12")
+            if re.search(r"\b2027\b", t) or (rank not in ("unknown", "12")):
+                return ("한강 TOP500 순위 변화", "신규 발표판·순위의 실제 변경 확인 필요",
+                        f"sc26|top500|hangang|rank-{rank}|" + ("2027" if "2027" in t else "2026-11"))
+            return ("한강 TOP500 세계 12위", "제68회 신규 진입 최고 순위·전체 12위, 전체 세계 1위 아님",
+                    "sc26|top500|hangang|2026-11|rank-12")
+        if "lineshine" in t and re.search(r"top\s*500|supercomput", t, re.I):
+            return ("TOP500 전체 1위", "LineShine가 전체 세계 1위·한강은 12위",
+                    "sc26|top500|lineshine|2026-11|rank-1")
+    return None
+
+
+def sc26_source_verified(item: dict, candidates: list[dict]) -> bool:
+    if item.get("company") not in SC26_COMPANIES:
+        return True
+    host = (urllib.parse.urlparse(item.get("source_url") or "").hostname or "").lower()
+    source = normalize_text(item.get("source") or "").lower()
+    primary = any(host == name or host.endswith("." + name) for name in SC26_OFFICIAL_DOMAINS)
+    if primary and any(word in source for word in ("nvidia", "amd", "lambda", "hpe", "top500", "kisti", "oak ridge")):
+        return True
+    # Media attribution alone is not a first-party contract or actual deployment.
+    # Allow multiple independent publications reporting the same milestone only.
+    matching = {
+        (urllib.parse.urlparse(other.get("source_url") or "").hostname or other.get("source") or "").lower()
+        for other in candidates
+        if other is not item and other.get("company") == item.get("company")
+        and sc26_milestone(item.get("company"), other.get("title") or "")
+        and sc26_milestone(item.get("company"), other.get("title") or "")[2] ==
+            sc26_milestone(item.get("company"), item.get("title") or "")[2]
+        and source_priority(other.get("source") or "") >= 75
+    }
+    matching.discard(host)
+    return source_priority(item.get("source") or "") >= 75 and bool(matching)
+
+
 def cpo_coupe_milestone(title: str) -> tuple[str, str, str] | None:
     """Distinguish an expert delay forecast from confirmed tool orders and shipments."""
     t = html.unescape(title or "").strip()
@@ -1092,6 +1232,9 @@ def cpo_coupe_milestone(title: str) -> tuple[str, str, str] | None:
 
 
 def canonical_story_key(company: str, title: str) -> str | None:
+    if company in SC26_COMPANIES:
+        event = sc26_milestone(company, title)
+        return event[2] if event else None
     if company == "CPO Packaging & Test":
         event = cpo_coupe_milestone(title)
         if event:
@@ -2459,6 +2602,9 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company in SC26_COMPANIES:
+        event = sc26_milestone(company, title)
+        return event[0] if event else "SC26 관련성 확인 대기"
     if company == "CPO Packaging & Test":
         event = cpo_coupe_milestone(title)
         if event:
@@ -2753,6 +2899,20 @@ def meaning_for(category: str) -> str:
         "CPO 광패키징 기판·수율·열검증": "고집적 CPO 패키지의 휨·열팽창계수·삽입손실·저손실 특성·수율 검증은 광엔진과 ASIC을 같은 패키지에서 대량생산할 수 있는지를 좌우하는 핵심 병목입니다.",
         "CPO 광패키징 기판·인터포저": "CPO는 광학과 실리콘을 하나의 패키지 기판·인터포저 계층에서 통합하므로, 고밀도 배선·저손실·열안정성이 확보될수록 광연결의 전력·거리 병목을 줄일 수 있습니다.",
         "CPO 첨단패키징·COUPE": "CPO는 광엔진과 SiPh 칩을 정밀 패키징해야 하며, COUPE 같은 첨단패키징 생산능력·수율이 CPO 양산 속도를 직접 제한할 수 있습니다.",
+        "Rubin HPC 신제품 발표": "엔비디아의 5만 CUDA 코어 이상 HPC GPU 발표는 신제품 공개이며 출하·고객 매출 확정은 아닙니다. 7세대 NVLink와 실제 고객 적용을 따로 감시합니다.",
+        "Rubin HPC 고객·양산": "Rubin HPC의 실제 주문·출하, GPU 당 수량과 계약금액, 제조·패키징 수율, 고객 검수를 분리합니다.",
+        "Lambda CPO 실제 가동": "Lambda 퀘벡 클러스터에 Blackwell Ultra GPU 1만 개 이상과 NVIDIA Photonics CPO 스위치가 실제 도입됐다는 고객사 발표입니다. TSMC COUPE 기반 미래 Spectrum-X 대량 양산과 동일한 사건이 아닙니다.",
+        "Lambda CPO 후속 확장·계약": "새 CPO 클러스터의 고객·GPU 수·스위치 포트 수·광원 교체 및 재발주와 현금 회수 시점을 확인합니다.",
+        "MI430X 로드맵·성능": "AMD MI430X는 과학계산용 FP64 로드맵이며 일부 비교 성능은 설계 추정입니다. 실제 양산품의 검증·고객 납품을 별도로 확인합니다.",
+        "MI430X 고객·양산": "MI430X 실제 생산·판매가 확인되면 시스템별 GPU 수·계약·출하·검수·대금 회수로 연결합니다.",
+        "Venice-X CPU 로드맵": "6세대 EPYC Venice-X의 캐시 확대 계획은 당장 납품·매출이 아닙니다.",
+        "Venice-X 상용 출시": "고객 실사용·재주문·가격 및 고성능 컴퓨팅 서버 채택을 확인합니다.",
+        "Lux 실제 연구자 가동": "미 에너지부 오크리지 Lux는 AMD MI355X를 사용하는 실가동 연구자용 슈퍼컴퓨터로 TOP500 세계 14위입니다. MI430X 미래 고객 계획과 혼동하지 않습니다.",
+        "Lux 슈퍼컴 추가 발주": "이미 열린 Lux와 별개의 신규 발주·고객·GPU 수·계약금액을 확인합니다.",
+        "한강 TOP500 세계 12위": "KISTI 한강은 342.6페타플롭스 실측·제68회 신규 진입 최고 순위지만 전체 순위는 12위입니다. 해당 순위 자체는 신규 GPU 주문이 아닙니다.",
+        "한강 TOP500 순위 변화": "TOP500 공식 원본의 발표회차·성능·전력·등수 변경을 검증하고 국내 인프라 관련 신규 발주와 분리합니다.",
+        "TOP500 전체 1위": "중국 LineShine가 2026년 11월 TOP500 전체 1위로, 국내 한강 신규 진입 1위와 다릅니다.",
+
         "COUPE W2W 진공본딩 장비·수율": "FUNDA 2026-11-13 전문가 추정 D2W 수율 80%·W2W 50%, 각각 안정적 양산 목표 90% 이상입니다. 진공 장비 시제품 2027년 하반기·성숙 2028년 전망과 실제 고객 검증을 분리합니다.",
         "COUPE 2차 검사 장비 선정": "FUNDA 조사상 Insertion 2 장비 공급사는 미정입니다. 향후 공급사 선정, 계약, 장비 성능·검사 처리량 검증, 고객 인증을 별개의 사건으로 추적합니다.",
         "COUPE 스위치 양산 일정·출하 위험": "FUNDA는 2027년 약 10만 대 전망 미달과 대규모 출하 2027년 말~2028년 지연 가능성을 제시했습니다. 엔비디아 기존 소량 출하와 SPIL의 2027년 15배·2028년 말 추가 2배 생산능력 계획은 실제 대량 출하와 다릅니다.",
@@ -2904,6 +3064,20 @@ def risk_for(category: str) -> str:
         "CPO 광패키징 기판·수율·열검증": "대형 패키지의 휨·열팽창 불일치·광결합 오차·삽입손실이 높으면 재작업과 검사시간이 늘고 양품률이 떨어져 고객 승인과 양산 일정이 지연될 수 있습니다.",
         "CPO 광패키징 기판·인터포저": "유리기판·유리인터포저는 TGV 성숙도와 대량생산 수율이 아직 핵심 변수이고, 기존 ABF·실리콘 인터포저가 예상보다 오래 유지되면 신소재 기판 전환 시점이 늦어질 수 있습니다.",
         "CPO 첨단패키징·COUPE": "CPO가 AI 칩과 동일한 2.5D·3D 패키징 자원을 놓고 경쟁하면 생산능력 확보가 늦어지고, 패키징 수율 저하는 광엔진보다 더 큰 출하 병목이 될 수 있습니다.",
+        "Rubin HPC 신제품 발표": "발표사양·양산수율·HBM 공급·NVLink 신뢰성·전력 및 냉각과 제품 출시 시점을 분리해야 합니다.",
+        "Rubin HPC 고객·양산": "고온 동작 검사, 칩 수율·열·패키징 및 주문 취소·검수 지연이 매출 인식에 영향을 줄 수 있습니다.",
+        "Lambda CPO 실제 가동": "첫 대규모 설치와 공급 생태계 전체 양산 성숙도는 다릅니다. 광원 수명·열·결합 손실·재작업 비용과 검수 규모를 확인해야 합니다.",
+        "Lambda CPO 후속 확장·계약": "초기 실측 성과가 다른 고객의 양산 수율·가격·인증으로 동일하게 재현된다는 보장은 없습니다.",
+        "MI430X 로드맵·성능": "AMD 설계 성능 추정은 실제 고객 벤치마크가 아니며 FP64 소프트웨어·HBM 수율·전력 효율이 제약입니다.",
+        "MI430X 고객·양산": "광대역 메모리 공급, FP64 실제 성능, OEM 시스템 검증 및 현장 전원 인가 지연이 출하 위험입니다.",
+        "Venice-X CPU 로드맵": "L3 캐시 확대 목표와 실제 양산 수율·메모리 대역폭·소프트웨어 적합성이 달라질 수 있습니다.",
+        "Venice-X 상용 출시": "가속기 대비 CPU 활용도, 고객별 설계 검증, 출시 단가·공급능력에 주의합니다.",
+        "Lux 실제 연구자 가동": "연구자 개방과 전체 가동률·유료 운영매출은 별개이며 전력·냉각·장기 유지보수 비용이 있습니다.",
+        "Lux 슈퍼컴 추가 발주": "추가 계약은 기존 시스템 구축비와 구분해 납품·검수·지급 조건을 확인해야 합니다.",
+        "한강 TOP500 세계 12위": "TOP500 순위는 HPL 성능이며 실제 이용률·전력 비용·연구과제 활용·추가 설비투자와 다릅니다.",
+        "한강 TOP500 순위 변화": "성능 실측 및 명단 변경과 새로운 계약·매출을 혼동하지 않아야 합니다.",
+        "TOP500 전체 1위": "순위 변화가 국내 기업의 직접 납품 증가를 보장하지 않습니다.",
+
         "COUPE W2W 진공본딩 장비·수율": "진공챔버 성숙도, 기포·휨·정렬 오차와 양산 수율 미달 위험. TEL·EVG는 후보이며 확정 단독 공급사가 아닙니다.",
         "COUPE 2차 검사 장비 선정": "검사장비 공급사 미정 및 검사 처리량·고객 승인 지연은 실제 광엔진 출하와 현금 회수 시점을 늦출 수 있습니다.",
         "COUPE 스위치 양산 일정·출하 위험": "초기 선택 고객 출하는 대량 양산이 아닙니다. 광엔진 수율·검사·고객 승인·스위치 실제 인도·매출을 구분해야 합니다.",
@@ -3458,6 +3632,8 @@ def main() -> None:
 
     cutoff = NOW - dt.timedelta(days=7)
     for company, meta in COMPANIES.items():
+        if company in SC26_COMPANIES and NOW.date() > SC26_END_DATE:
+            continue  # Event-only coverage after SC26 closes; existing watches continue.
         attempted_company_queries += 1
         query_health[company] = {"attempted": 0, "successful": 0, "failed": 0, "raw_articles": 0}
         try:
@@ -3544,6 +3720,9 @@ def main() -> None:
                 continue
             title = item["title"]
             source = item.get("source") or ""
+            sc26_event = sc26_milestone(company, title) if company in SC26_COMPANIES else None
+            if company in SC26_COMPANIES and sc26_event is None:
+                continue
             infra_event = new_infra_milestone(company, title) if company in NEW_OPTICAL_INFRA_SCOPES else None
             if company in NEW_OPTICAL_INFRA_SCOPES:
                 if infra_event is None:
@@ -3650,6 +3829,8 @@ def main() -> None:
                 score = max(score, 18)
             if cpo_event:
                 score = max(score, 12)
+            if sc26_event:
+                score = max(score, 16)
             if networking_event:
                 # Only strictly verified commercial stages; network switches
                 # may have no optical/CPO keyword in the headline.
@@ -3664,7 +3845,7 @@ def main() -> None:
             has_high = any(re.search(p, title, re.I) for p in HIGH_SIGNAL_PATTERNS)
             has_action = any(re.search(p, title, re.I) for p in ACTION_PATTERNS)
             very_strong = bool(re.search(r"\b3\.2\s*[Tt]\b", title, re.I))
-            if not infra_event and not ooi_event and not power_event and not lite_event and not meta_event and not credo_event and not networking_event and not cpo_event and (
+            if not infra_event and not ooi_event and not power_event and not lite_event and not meta_event and not credo_event and not networking_event and not cpo_event and not sc26_event and (
                 score < 7 or not has_high or (not has_action and not very_strong)
             ):
                 continue
@@ -3674,8 +3855,8 @@ def main() -> None:
                 "ticker": meta["ticker"],
                 "score": score,
                 "key": key,
-                "stage": infra_event[1] if infra_event else ooi_event[1] if ooi_event else networking_event[1] if networking_event else credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else cpo_event[1] if cpo_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
-                "category": infra_event[0] if infra_event else ooi_event[0] if ooi_event else networking_event[0] if networking_event else credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else cpo_event[0] if cpo_event else category_for(title, company),
+                "stage": infra_event[1] if infra_event else ooi_event[1] if ooi_event else networking_event[1] if networking_event else credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else sc26_event[1] if sc26_event else cpo_event[1] if cpo_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
+                "category": infra_event[0] if infra_event else ooi_event[0] if ooi_event else networking_event[0] if networking_event else credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else sc26_event[0] if sc26_event else cpo_event[0] if cpo_event else category_for(title, company),
             })
             all_relevant.append(item)
 
@@ -3728,6 +3909,8 @@ def main() -> None:
     # Source-quality gate: unknown/low-quality sources cannot trigger by themselves.
     # They are admitted only when a higher-quality source independently reports the same event.
     def source_is_corroborated(item: dict) -> bool:
+        if item.get("company") in SC26_COMPANIES:
+            return sc26_source_verified(item, all_relevant)
         if item.get("company") == "CPO Packaging & Test" and str(item.get("source") or "").lower() in {"funda", "fundaai"}:
             origin = urllib.parse.urlparse(item.get("source_url") or "").hostname or ""
             return origin.lower() == "fundaai.substack.com"
@@ -3819,6 +4002,7 @@ def main() -> None:
         | set(OOI_REFERENCE_BASELINE_KEYS)
         | set(NEW_OPTICAL_INFRA_BASELINES)
         | set(COUPE_FUNDA_PRIOR_KEYS)
+        | set(SC26_KNOWN_KEYS)
     )
     seen_story_records = [
         record for record in (state.get("seen_story_records") or [])
@@ -3927,6 +4111,11 @@ def main() -> None:
         "relevant_item_count": len(deduped),
         "source_errors": errors,
         "query_health": query_health,
+        "sc26_event_watch_version": 1,
+        "sc26_last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds") if all(
+            query_health.get(k, {}).get("successful", 0) == query_health.get(k, {}).get("attempted", -1)
+            and query_health.get(k, {}).get("attempted", 0) > 0 for k in SC26_COMPANIES
+        ) else state.get("sc26_last_checked_kst"),
         "funda_cpo_search_ok": funda_index_ok,
         "funda_cpo_last_search_healthy_kst": dt.datetime.now(KST).isoformat(timespec="seconds") if funda_index_ok else state.get("funda_cpo_last_search_healthy_kst"),
         "query_diagnostics_version": 1,
@@ -4060,6 +4249,8 @@ def main() -> None:
             alert_header = "🚨 <b>국내 AI 광통신 수주·검증 변화 감지</b>"
         elif photonic_compute_only:
             alert_header = "🚨 <b>AI 광컴퓨팅·광메모리 구조 변화 감지</b>"
+        elif all(item.get("company") in SC26_COMPANIES for item in alert_items):
+            alert_header = "🚨 <b>SC26 슈퍼컴퓨팅·CPO·TOP500 핵심 변화</b>"
         elif all(item.get("category") in COUPE_SIGNAL_CATEGORIES for item in alert_items):
             alert_header = "🚨 <b>TSMC COUPE·CPO 본딩·검사·양산 일정 변화</b>"
         elif all(item.get("company") == OOI_COMPANY for item in alert_items):
@@ -4127,8 +4318,12 @@ def main() -> None:
                 f"• 원문 제목: {html.escape(public_title)}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
+            if item.get("company") in SC26_COMPANIES:
+                lines.append("• 확인 수준: " + ("발표기관 공식 원천(계약·실가동 단계 구분)" if (
+                    any((urllib.parse.urlparse(item.get("source_url") or "").hostname or "").endswith(d) for d in SC26_OFFICIAL_DOMAINS)
+                ) else "복수 보도 대조·공식 발표 여부 별도 검증 필요"))
             if item.get("category") in COUPE_SIGNAL_CATEGORIES:
-                lines.append("• 확인 수준: " + ("FUNDA 전문가 조사·추정, 회사 공식 확인 전" if str(item.get("source") or "").lower() in {"funda", "fundaai"} else "보도·당사자 발표 구분 필요, 실제 수율·선정·출하 원문 재확인"))
+                lines.append("• 확인 수준: "  + ("FUNDA 전문가 조사·추정, 회사 공식 확인 전" if str(item.get("source") or "").lower() in {"funda", "fundaai"} else "보도·당사자 발표 구분 필요, 실제 수율·선정·출하 원문 재확인"))
             related_categories = []
             for scope in item.get("related_scopes") or []:
                 related = str(scope.get("category") or "")
@@ -4189,6 +4384,8 @@ def main() -> None:
         f"- 신규 3축 원천조회 정상 여부: {new_infra_source_ok}",
         f"- 신규 3축 기사 후보: {new_infra_event_candidates}",
         f"- 대한광통신 9월 실제 출하 기사 원문: {taihan_direct_status}",
+        f"- SC26 (11/15~20 시카고) 감시: 엔비디아 Rubin HPC·Lambda CPO 실가동 / AMD MI430X·Venice-X·Lux / KISTI 한강·TOP500",
+        f"- SC26 원천별 성공: { {name: f'{query_health.get(name,{}).get('successful',0)}/{query_health.get(name,{}).get('attempted',0)}' for name in SC26_COMPANIES} }",
         f"- FUNDA CPO 검색 색인: {'검색 연결 정상·원문 직접 열람 아님' if funda_index_ok else '검색 접근 실패·원문 미확인(타 원천 유지)'}",
         "- COUPE W2W 수율·진공 본딩 장비 샘플/선정·Insertion 2 검사 업체·2027~2028 출하 일정은 별도 선행경보",
         f"- 메타 광모듈·공급사 공식자료 감시: {'정상' if meta_source_healthy else '보류·해당 감시축 기준선 미갱신'}",

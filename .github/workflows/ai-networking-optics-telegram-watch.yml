@@ -299,6 +299,28 @@ jobs:
           assert watch.is_noise(weekly), "A multi-topic newsletter is not a CPO milestone"
           assert watch.signal_score(weekly, "FUNDA") < 0
 
+          nvidia_hpc = "NVIDIA announces Rubin HPC GPU with more than 50,000 CUDA cores at SC26"
+          lambda_live = "Lambda deploys NVIDIA Photonics CPO cluster connecting 10,000 Blackwell Ultra GPUs"
+          amd_roadmap = "AMD outlines MI430X HPC GPU roadmap at SC26"
+          amd_lux = "AMD Lux AI factory supercomputer at Oak Ridge opens to researchers with MI355X GPUs"
+          amd_venice = "AMD announces Venice-X HPC processor roadmap at SC26"
+          hangang = "KISTI HANGANG supercomputer No. 12 in November 2026 TOP500 list"
+          assert watch.sc26_milestone(watch.SC26_NVIDIA, nvidia_hpc)[2] in watch.SC26_KNOWN_KEYS
+          assert watch.sc26_milestone(watch.SC26_NVIDIA, lambda_live)[2] in watch.SC26_KNOWN_KEYS
+          assert watch.sc26_milestone(watch.SC26_AMD, amd_roadmap)[2] in watch.SC26_KNOWN_KEYS
+          assert watch.sc26_milestone(watch.SC26_AMD, amd_lux)[2] in watch.SC26_KNOWN_KEYS
+          assert watch.sc26_milestone(watch.SC26_AMD, amd_venice)[2] in watch.SC26_KNOWN_KEYS
+          assert watch.sc26_milestone(watch.SC26_TOP500, hangang)[2] in watch.SC26_KNOWN_KEYS
+          assert watch.sc26_milestone(watch.SC26_NVIDIA, "FUNDA sees TSMC COUPE CPO Spectrum-X volume ramp delayed") is None
+          assert watch.sc26_milestone(watch.SC26_AMD, "AMD Lux data center actually uses MI430X") is None
+          assert watch.sc26_milestone(watch.SC26_NVIDIA, "NVIDIA stock price surges on SC26") is None
+          assert watch.sc26_milestone(watch.SC26_TOP500, "KISTI HANGANG TOP500 rank 13 in 2027")[2] not in watch.SC26_KNOWN_KEYS
+          new_orders = "NVIDIA Rubin HPC first commercial shipment delivered to University X after SC26"
+          assert watch.sc26_milestone(watch.SC26_NVIDIA, new_orders)[2] not in watch.SC26_KNOWN_KEYS
+          assert watch.category_for(lambda_live, watch.SC26_NVIDIA) == "Lambda CPO 실제 가동"
+          assert watch.SC26_NVIDIA in watch.COMPANIES
+          assert watch.SC26_AMD in watch.COMPANIES
+          assert watch.SC26_TOP500 in watch.COMPANIES
           print("dedupe_and_quality_regression_test=passed")
           PY
 
