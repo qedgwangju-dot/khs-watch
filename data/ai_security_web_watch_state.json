@@ -6,15 +6,12 @@
     "deferred_material_items": 0,
     "direct_official_items": 56,
     "errors": [
-      "Google News RSS 실패: (\"CVE-2026-109618\" OR \"CVE-2026-109619\" OR \"php2shell\")… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic) \"time to detection\" OR \"run was k… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenShell OR Sentry OR BlueField-4) policy bypass sand… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) limited release… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) monitorability … / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News RSS 실패: (\"agent safety runtime\" OR \"secure agent runtime\") vuln… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) model release c… / HTTPError: HTTP Error 429: Too Many Requests"
     ],
-    "material_items": 10,
+    "material_items": 12,
     "new_material_items": 0,
-    "raw_items": 84,
+    "raw_items": 94,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1556,5 +1553,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-17T20:06:14+09:00"
+  "updated_at_kst": "2026-11-17T20:14:58+09:00"
 }
