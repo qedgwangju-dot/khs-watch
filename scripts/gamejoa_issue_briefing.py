@@ -693,6 +693,9 @@ def main() -> int:
     additions = [
         ("국내 신뢰매체 AI 시험 부정행위", runner.korean_news_search_url('(AI OR 인공지능 OR 스마트안경) (커닝 OR 컨닝 OR 부정행위) (수능 OR 정부 OR 증시 OR 관련주)'), "trusted"),
         ("국내 신뢰매체 주식 이슈", runner.korean_news_search_url('(증시 OR 코스피 OR 코스닥 OR 관련주) (상한가 OR 급등 OR 수주 OR 계약 OR 규제 OR 실적)'), "trusted"),
+        ("AI 시험 부정행위 관련주 단순 검색", runner.korean_news_search_url('AI 커닝 관련주'), "trusted"),
+        ("시험 보안 관련주 단순 검색", runner.korean_news_search_url('시험 부정행위 보안주'), "trusted"),
+        ("사회 이슈와 주식 관련주 단순 검색", runner.korean_news_search_url('증시 관련주 급등'), "trusted"),
     ]
     for item in additions:
         if item not in base.SOURCES:
@@ -714,7 +717,9 @@ def main() -> int:
     finally:
         runner.hydrate_korean_business_details = original_hydrate
     sample = unique_sample(rows, start, end)
-    print(f"Briefing: collected={len(rows)} window_unique={len(sample)}", flush=True)
+    social_candidates = [row for row in sample if TOPIC_AI_CHEATING.search(str(row.get("source_title") or row.get("title") or ""))]
+    social_verified = sum(bool(row.get("body_verified")) for row in social_candidates)
+    print(f"Briefing: collected={len(rows)} window_unique={len(sample)} social_candidates={len(social_candidates)} social_verified={social_verified}", flush=True)
     listing_error = ""
     try:
         listed = parse_krx_list(get_bytes(KRX_LIST_URL, 25))
@@ -783,6 +788,7 @@ def main() -> int:
     (OUT / "gamejoa_issue_briefing.md").write_text(report, encoding="utf-8")
     result = {"slot": slot, "window_start_kst": start.isoformat(), "window_end_kst": end.isoformat(),
               "query_time_kst": now.isoformat(timespec="seconds"), "sample_count": len(sample),
+              "social_candidates": len(social_candidates), "social_verified": social_verified,
               "selected_topics": len(groups), "seen_suppressed": len(skipped),
               "coverage_incomplete": incomplete, "listing_error": listing_error,
               "quotes": quotes, "groups": [{k: v for k, v in g.items() if k != "alert"} for g in groups],

@@ -344,6 +344,8 @@ class IssueBriefingTests(unittest.TestCase):
             receipt = json.loads((Path(temp) / "gamejoa_issue_briefing.json").read_text(encoding="utf-8"))
             self.assertEqual(receipt["delivery_status"], "dry_run")
             self.assertEqual(receipt["selected_topics"], 1)
+            self.assertEqual((receipt["social_candidates"], receipt["social_verified"]), (0, 0))
+            self.assertTrue(any("AI 커닝 관련주" in item[1] for item in base.SOURCES))
             self.assertIn("삼성전자 195,000원(-6.70%)", (Path(temp) / "gamejoa_issue_briefing.md").read_text(encoding="utf-8"))
             send.assert_not_called()
 
