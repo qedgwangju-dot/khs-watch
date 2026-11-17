@@ -3,6 +3,8 @@
 import html
 import os
 import thirteenf_sector_watch as w
+from decimal import Decimal
+import thirteenf_sector_rank as sector_rank
 
 KEY="13f-context:duquesne:2026-06-30:CDW:shindonga-2026-10-08"
 SEC_ACC="0001536411-26-000006"
@@ -16,18 +18,11 @@ def should_send(state):
             and m.get("report_date")=="2026-06-30" and m.get("accession")==SEC_ACC)
 
 def amount(v,r):
-    k=v*r/100_000_000
-    n=int(v)
-    eok, rem=divmod(n,100_000_000)
-    man, rest=divmod(rem,10_000)
-    parts=[]
-    if eok:
-        parts.append(f"{eok:,}억")
-    if man:
-        parts.append(f"{man:,}만")
-    if rest:
-        parts.append(f"{rest:,}")
-    return f"{''.join(parts)}달러(약 {k:,.1f}억원)"
+    """Round display units, not SEC values or USD/KRW calculations."""
+    usd = sector_rank._display_number(v)
+    krw = usd * Decimal(str(r))
+    return f"{sector_rank.compact_usd(usd)} ({sector_rank.compact_krw(krw)})"
+
 
 def link(label,url):
     return f'<a href="{html.escape(url,quote=True)}">{html.escape(label)}</a>'
@@ -385,7 +380,7 @@ def build_q3_amount_addendum(snapshots,rate,basis):
         raise RuntimeError("SEC amount reference did not match independent Q3/Q2 valuation checks")
 
     def fmt(usd):
-        return amount(round(usd),rate)
+        return amount(usd,rate)
     def line(label,term,short):
         row=_q3_reference_change(snapshots,label,term,short)
         if row is None:
