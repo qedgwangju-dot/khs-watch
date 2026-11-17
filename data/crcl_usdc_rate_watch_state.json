@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-17T12:56:00+09:00",
+  "updated_at_kst": "2026-11-17T22:27:26+09:00",
   "circle": {
     "date": "2026-11-12",
     "circulation_usd_b": 67.9,
@@ -30,11 +30,11 @@
     }
   },
   "sofr": {
-    "date": "2026-11-13",
-    "rate": 3.9,
-    "prev_date": "2026-11-12",
+    "date": "2026-11-16",
+    "rate": 3.93,
+    "prev_date": "2026-11-13",
     "prev_rate": 3.9,
-    "daily_bp": 0.0,
+    "daily_bp": 3.0,
     "source": "FRED 재게시·원출처 Federal Reserve Bank of New York",
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
@@ -51,18 +51,18 @@
   },
   "crcl": {
     "date": "2026-11-16",
-    "close": 57.71,
+    "close": 57.65,
     "prev_date": "2026-11-13",
     "prev_close": 62.2,
-    "daily_pct": -7.22,
+    "daily_pct": -7.32,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
     "crosscheck_date": "2026-11-16",
     "crosscheck_close": 57.650001525878906,
     "crosscheck_daily_pct": -7.32,
-    "crosscheck_gap_pct": 0.104,
-    "crosscheck_status": "discrepant"
+    "crosscheck_gap_pct": 0.0,
+    "crosscheck_status": "confirmed"
   },
   "tbx": {
     "date": "2026-11-16",
