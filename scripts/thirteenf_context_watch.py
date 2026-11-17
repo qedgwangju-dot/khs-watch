@@ -148,7 +148,8 @@ def _q3_snapshots(state):
         if not current or not prior:
             raise RuntimeError("SEC current or prior positions empty for "+label)
         snapshots[label]={"current":current,"previous":prior,
-                          "url":link,"accession":latest["accession"]}
+                          "url":link,"accession":latest["accession"],
+                          "previous_accession":previous["accession"]}
         print(f"Q3_COMPARE_SEC_VERIFIED manager={label} current={len(current)} "
               f"previous={len(prior)} accession={latest['accession']}")
     return snapshots
