@@ -198,3 +198,123 @@ def build_sector_brief(changes, money, display, *, top_n=4):
         "※ 실제 매매시점·공매도·비상장자산·현금은 13F로 확인되지 않습니다.",
     ]
     return "\n".join(lines)
+
+
+def _short_share_move(item, display):
+    """One position change, shares and % of prior holdings. No cash-flow claim."""
+    action=item.get("action")
+    name=str(display(item))
+    delta=abs(int(round(float(item.get("delta_shares") or 0))))
+    qty=f"{delta:,}주"
+    if action=="신규 매수":
+        return f"{name} 신규 +{qty}"
+    if action=="전량 청산":
+        return f"{name} 전량 -{qty}"
+    prior=float(item.get("shares") or 0)-float(item.get("delta_shares") or 0)
+    pct=100*delta/prior if prior>0 else None
+    rate=f" ({pct:,.1f}%)" if pct is not None and pct<1_000_000 else ""
+    sign="+" if action=="보유 확대" else "-"
+    return f"{name} {sign}{qty}{rate}"
+
+
+def build_sector_direction(changes, display, *, top_n=4):
+    """Compact, reliable industry direction from 13F holdings.
+
+    Securities' filed value units are NOT used as currency. Some SEC filing
+    numbers disagree with share count times quarter-end market price by 1000x.
+    Ranking is by count of changed, classified *common-stock reporting rows*,
+    NOT cash flow or purchased dollars. Option positions are separate.
+    """
+    groups=defaultdict(lambda: {"buy":[],"sell":[]})
+    opts={"CALL":0,"PUT":0}
+    other=0
+    for row in changes:
+        putcall=str(row.get("putcall") or "").upper()
+        if putcall in opts:
+            opts[putcall]+=1
+            continue
+        action=row.get("action")
+        delta=float(row.get("delta_shares") or 0)
+        if action in {"신규 매수","보유 확대"} and delta>0:
+            side="buy"
+        elif action in {"보유 축소","전량 청산"} and delta<0:
+            side="sell"
+        else:
+            other+=1
+            continue
+        group=groups[row.get("sector") or "기타"]
+        # Reference is used to pick representative examples within the same
+        # filing ONLY; it is not shown or compared as a verified dollar amount.
+        _,reference=changed_share_reference_value(row)
+        group[side].append((reference,row))
+
+    misc=groups.get("기타",{"buy":[],"sell":[]})
+    classified={k:v for k,v in groups.items() if k!="기타"}
+    buy=sorted(((k,v) for k,v in classified.items() if v["buy"]),
+               key=lambda item:(-len(item[1]["buy"]),-sum(r[0] for r in item[1]["buy"]),item[0]))
+    sell=sorted(((k,v) for k,v in classified.items() if v["sell"]),
+                key=lambda item:(-len(item[1]["sell"]),-sum(r[0] for r in item[1]["sell"]),item[0]))
+    total_buy=sum(len(x["buy"]) for x in groups.values())
+    total_sell=sum(len(x["sell"]) for x in groups.values())
+    known_buy=total_buy-len(misc["buy"])
+    known_sell=total_sell-len(misc["sell"])
+    denominator=total_buy+total_sell
+    coverage=(100*(known_buy+known_sell)/denominator) if denominator else 0
+
+    def headline(changes, side):
+        return ", ".join(f"{sector}({len(v[side])}행)" for sector,v in changes[:2]) or "없음"
+
+    lines=[
+        "<b>13F 보통주 업종 방향 — 분기말 보유수량 변화</b>",
+        f"■ 집중 확대: {headline(buy,'buy')}",
+        f"■ 집중 축소: {headline(sell,'sell')}",
+        "",
+        "<b>▶ 신규 편입·보유 확대</b>",
+    ]
+    if not buy:
+        lines.append("• 분류된 업종의 확대 기록 없음")
+    for i,(sector,data) in enumerate(buy[:top_n],1):
+        rows=data["buy"]
+        newly=sum(r["action"]=="신규 매수" for _,r in rows)
+        ordered=sorted(rows,key=lambda v:(-v[0],-abs(v[1].get("delta_shares") or 0)))[:2]
+        lines.append(f"{i}. <b>{sector}</b> — {len(rows)}행 (신규 {newly}·확대 {len(rows)-newly})")
+        lines.append("   "+ " · ".join(_short_share_move(r,display) for _,r in ordered))
+    if len(buy)>top_n:
+        lines.append(f"• 그 외 확대 업종 {len(buy)-top_n}개")
+
+    lines.extend(["", "<b>▶ 보유 축소·전량 청산</b>"])
+    if not sell:
+        lines.append("• 분류된 업종의 축소 기록 없음")
+    for i,(sector,data) in enumerate(sell[:top_n],1):
+        rows=data["sell"]
+        exits=sum(r["action"]=="전량 청산" for _,r in rows)
+        ordered=sorted(rows,key=lambda v:(-v[0],-abs(v[1].get("delta_shares") or 0)))[:2]
+        lines.append(f"{i}. <b>{sector}</b> — {len(rows)}행 (청산 {exits}·축소 {len(rows)-exits})")
+        lines.append("   "+ " · ".join(_short_share_move(r,display) for _,r in ordered))
+    if len(sell)>top_n:
+        lines.append(f"• 그 외 축소 업종 {len(sell)-top_n}개")
+
+    mixed=sorted(((k,v) for k,v in classified.items() if v["buy"] and v["sell"]),
+                 key=lambda kv:-(len(kv[1]["buy"])+len(kv[1]["sell"])))
+    if mixed:
+        lines.extend(["","<b>▶ 동일 업종 내 양방향 변화</b>"])
+        for sector,v in mixed[:2]:
+            lines.append(f"• {sector}: 확대 {len(v['buy'])}행 / 축소 {len(v['sell'])}행 — 금액 순매수 판정 안 함")
+
+    lines.extend([
+        "",
+        f"• 업종 분류 {known_buy+known_sell}/{denominator}행 ({coverage:.0f}%)"
+        f" · 미분류 확대 {len(misc['buy'])}행 / 축소 {len(misc['sell'])}행",
+    ])
+    if coverage<60 and denominator>0:
+        lines.append("• 주의: 미분류가 많아 위 순위는 전체 포트폴리오 방향을 대표하지 못할 수 있습니다.")
+    if opts["CALL"] or opts["PUT"]:
+        lines.append(f"• 옵션 별도: 콜 {opts['CALL']}행 / 풋 {opts['PUT']}행 (보통주 제외)")
+    if other:
+        lines.append(f"• 수량·유형 불명 {other}행: 방향 산정 제외")
+    lines.extend([
+        "※ 순위는 분류된 보통주 변동행 수 기준이며, 실제 주문·자금이동 규모의 순위가 아닙니다.",
+        "※ 일부 공시에서 신고 평가액과 주수×주가의 단위 불일치가 확인되어, 검증 전 달러·원화 금액은 표시하지 않습니다.",
+        "※ 13F는 분기말 보유 현황이며 매매시점·매매단가·공매도·현금은 확인되지 않습니다.",
+    ])
+    return "\n".join(lines)
