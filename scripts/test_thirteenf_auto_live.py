@@ -24,6 +24,11 @@ def main():
                   if "YPF" in str(r.get("issuer") or "").upper()]
         print(f"SEC_ISSUER_IDENTITY_DIAGNOSTIC period={when} rows={evidence}")
     changes=w.classify_changes(current,previous)
+    # Same CUSIP, revised SEC security title: not two offsetting trades.
+    ypf=[x for x in changes if "YPF" in str(x.get("issuer") or "").upper()]
+    if (len(ypf)!=1 or ypf[0]["action"]!="보유 확대"
+            or int(ypf[0]["delta_shares"])!=403000):
+        raise AssertionError(f"YPF false new+exit from title change: {ypf}")
     old_rate,old_basis=entry.FX_RATE,entry.FX_BASIS
     try:
         entry.FX_RATE=1334.87  # historical test rate, NOT live FX
@@ -44,6 +49,8 @@ def main():
     ):
         if needle not in summary:
             raise AssertionError(f"Important 13F fact omitted from automatic digest: {needle}")
+    if "Ypf Sociedad Anonima 신고상 종료" in summary or "Ypf Sociedad Anonima 신규" in summary:
+        raise AssertionError("Same-CUSIP title change still classified as liquidation/new entry")
     if not summary.startswith("[13F 핵심 변화 자동 추출]"):
         raise AssertionError("Old sector-only template still active")
     if len(summary)>3700:
