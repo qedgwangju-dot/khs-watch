@@ -88,6 +88,20 @@ class IssueBriefingTests(unittest.TestCase):
         self.assertEqual(b.company_mentions("지슨은 장비를 만든다.", {"지슨": "123456"}), [])
         self.assertEqual(b.company_mentions("지슨 주가가 상승했다.", {"지슨": "123456"}), [("지슨", "123456")])
 
+    def test_price_change_is_withheld_when_provider_baselines_disagree(self):
+        quote = {"date": "2026-11-16", "close": "195000", "previous_close": "209000", "change_pct": "-6.70"}
+        row = {"localTradedAt": "2026-11-16", "closePrice": "195,000",
+               "compareToPreviousClosePrice": "-11,000", "fluctuationsRatio": "-5.34"}
+        conflict = b.confirm_quote_comparison(quote, json.dumps([row]).encode())
+        self.assertIsNone(conflict["change_pct"])
+        self.assertEqual(conflict["change_status"], "source_conflict")
+        consistent = {**row, "compareToPreviousClosePrice": "-14,000", "fluctuationsRatio": "-6.70"}
+        checked = b.confirm_quote_comparison(quote, json.dumps([consistent]).encode())
+        self.assertEqual((checked["change_pct"], checked["change_status"]), ("-6.70", "confirmed_against_daily_quote"))
+        other_close = b.confirm_quote_comparison(quote, json.dumps([{**row, "closePrice": "194,000"}]).encode())
+        self.assertEqual(other_close["close_status"], "source_conflict")
+        self.assertEqual(b.confirm_quote_comparison(quote, b"invalid")["change_status"], "confirmation_unavailable")
+
     def test_social_theme_requires_verified_direct_market_sentence(self):
         listing = {"지슨": "123456"}
         row = {"title": "AI 커닝 관련주 지슨 주가 상승", "body_verified": True,
@@ -373,6 +387,7 @@ class IssueBriefingTests(unittest.TestCase):
                 patch.object(b, "get_bytes", return_value=b"fixture"), \
                 patch.object(b, "parse_krx_list", return_value={"삼성전자": "005930"}), \
                 patch.object(b, "parse_daily_quote", return_value={"date": "2026-11-16", "close": "195000", "change_pct": "-6.70"}), \
+                patch.object(b, "confirm_quote_comparison", side_effect=lambda quote, data: quote), \
                 patch.object(b, "send_telegram") as send:
             self.assertEqual(b.main(), 0)
             receipt = json.loads((Path(temp) / "gamejoa_issue_briefing.json").read_text(encoding="utf-8"))
@@ -380,6 +395,7 @@ class IssueBriefingTests(unittest.TestCase):
             self.assertEqual(receipt["selected_topics"], 1)
             self.assertEqual((receipt["social_candidates"], receipt["social_verified"]), (0, 0))
             self.assertTrue(any("AI 커닝 관련주" in item[1] for item in base.SOURCES))
+            self.assertTrue(any("AI 커닝 카메라주" in item[1] for item in base.SOURCES))
             self.assertIn("삼성전자 195,000원(-6.70%)", (Path(temp) / "gamejoa_issue_briefing.md").read_text(encoding="utf-8"))
             send.assert_not_called()
 
@@ -448,6 +464,12 @@ class IssueBriefingTests(unittest.TestCase):
         self.assertIn('<a href="https://news.test/stock">종목 근거</a>', report)
         self.assertIn("일부 출처 또는 기사 본문 확인 불가", report)
         self.assertNotIn("수혜", report)
+        conflict = {"005930": {"date": "2026-11-16", "close": "195000", "change_pct": None,
+                               "change_status": "source_conflict", "close_status": "confirmed_same_provider"}}
+        held = b.render_report("preopen", stamp, start, end, 100, groups, conflict, True, "", {}, Runner())
+        self.assertIn("삼성전자 195,000원(등락률 확인 보류)", held)
+        self.assertNotIn("-6.70%", held)
+        self.assertIn("기준값 불일치", held)
 
     @unittest.skipUnless(os.getenv("GAMEJOA_INTEGRATION_TEST") == "true", "offline by default")
     def test_current_krx_and_chart_sources(self):
@@ -456,6 +478,8 @@ class IssueBriefingTests(unittest.TestCase):
         quote = b.parse_daily_quote(b.get_bytes(b.chart_url("005930")), "005930", "삼성전자",
                                     dt.datetime.now(b.KST))
         self.assertGreater(Decimal(quote["close"]), 0)
+        checked = b.confirm_quote_comparison(quote, b.get_bytes(b.NAVER_DAILY_URL.format(code="005930")))
+        self.assertIn(checked["change_status"], {"source_conflict", "confirmed_against_daily_quote"})
 
     @unittest.skipUnless(os.getenv("GAMEJOA_ARTICLE_INTEGRATION") == "true", "live article check off by default")
     def test_actual_ai_cheating_article_body_and_stock_link(self):
@@ -470,6 +494,23 @@ class IssueBriefingTests(unittest.TestCase):
                "body_verified": True, "link": url, "publisher": "뉴시스"}
         observation = b.ai_cheating_market_observation(row, {"지슨": "446840", "나무가": "190510"})
         self.assertTrue(observation, "Verified article and adjacent listed-stock evidence did not match")
+        alert = {**row, "news": row["source_title"], "source_abstract": row["source_body"],
+                 "korean_business_news": True, "telegram_core_fact": observation["core"],
+                 "policy_plain_summary": observation["core"]}
+        self.assertTrue(b.social_observation_verified(alert, observation, pipeline.runner))
+
+    @unittest.skipUnless(os.getenv("GAMEJOA_ARTICLE_INTEGRATION") == "true", "live article check off by default")
+    def test_actual_after_close_social_market_article(self):
+        import gamejoa_preopen_news_radar_fda_quality_runner as pipeline
+        title = "[급등락주 짚어보기] ‘AI 커닝’ 충격에 보안·카메라주 솟구쳐⋯나무가·지슨 등 上"
+        url = "https://www.etoday.co.kr/news/view/2648897"
+        source, error = pipeline.base.fetch(url, 20)
+        self.assertFalse(error, error)
+        detail = pipeline.runner.extract_article_detail(source, title, url)
+        row = {"source_title": detail["title"], "source_body": detail["body"],
+               "body_verified": detail.get("body_verified"), "link": url, "publisher": "이투데이"}
+        observation = b.ai_cheating_market_observation(row, {"지슨": "446840", "나무가": "190510", "세코닉스": "053450"})
+        self.assertTrue(observation, row["source_title"])
         alert = {**row, "news": row["source_title"], "source_abstract": row["source_body"],
                  "korean_business_news": True, "telegram_core_fact": observation["core"],
                  "policy_plain_summary": observation["core"]}

@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "out"
 KRX_LIST_URL = "https://kind.krx.co.kr/corpgeneral/corpList.do?method=download"
 NAVER_CHART_URL = "https://fchart.stock.naver.com/sise.nhn"
+NAVER_DAILY_URL = "https://m.stock.naver.com/api/stock/{code}/price?page=1&pageSize=12"
 LEDGER_PATH = "data/gamejoa_issue_briefing_receipts.json"
 USER_AGENT = "Mozilla/5.0 (compatible; GAMEJOA-issue-briefing/1.0)"
 MAX_TOPICS = 4
@@ -213,6 +214,32 @@ def parse_daily_quote(data: bytes, code: str, expected_name: str, now: dt.dateti
 def chart_url(code: str) -> str:
     return NAVER_CHART_URL + "?" + urllib.parse.urlencode({
         "symbol": code, "timeframe": "day", "count": "12", "requestType": "0"})
+
+
+def confirm_quote_comparison(quote: dict, data: bytes) -> dict:
+    result = {**quote, "change_pct": None, "change_status": "confirmation_unavailable", "close_status": "single_source"}
+    try:
+        rows = json.loads(data.decode("utf-8"))
+        row = next(item for item in rows if item.get("localTradedAt") == quote["date"])
+        close = Decimal(str(row["closePrice"]).replace(",", ""))
+        delta = Decimal(str(row["compareToPreviousClosePrice"]).replace(",", ""))
+        reported = Decimal(str(row["fluctuationsRatio"]).replace(",", ""))
+        previous = Decimal(quote["previous_close"])
+        if close != Decimal(quote["close"]):
+            result.update(change_status="source_conflict", close_status="source_conflict")
+            return result
+        result["close_status"] = "confirmed_same_provider"
+        if close - delta != previous or previous <= 0:
+            result["change_status"] = "source_conflict"
+            return result
+        computed = (delta / previous * 100).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+        if abs(computed - reported) > Decimal("0.01"):
+            result["change_status"] = "source_conflict"
+            return result
+        result.update(change_pct=str(reported), change_status="confirmed_against_daily_quote")
+    except (ValueError, TypeError, KeyError, StopIteration, InvalidOperation, UnicodeDecodeError, AttributeError):
+        pass
+    return result
 
 
 def company_mentions(text: str, listed: dict[str, str]) -> list[tuple[str, str]]:
@@ -579,7 +606,11 @@ def render_report(slot: str, now: dt.datetime, start: dt.datetime, end: dt.datet
         quote_parts = []
         for name, code in names[:MAX_STOCKS_PER_TOPIC]:
             q = quotes.get(code)
-            if q:
+            if q and q.get("close_status") == "source_conflict":
+                quote_parts.append(f"{name} 종가 확인 보류")
+            elif q and q.get("change_pct") is None:
+                quote_parts.append(f"{name} {int(Decimal(q['close'])):,}원(등락률 확인 보류)")
+            elif q:
                 pct = Decimal(q["change_pct"])
                 quote_parts.append(f"{name} {int(Decimal(q['close'])):,}원({pct:+.2f}%)")
             else:
@@ -597,7 +628,11 @@ def render_report(slot: str, now: dt.datetime, start: dt.datetime, end: dt.datet
     if listing_error:
         lines.append("※ 거래소 종목목록 확인 불가: 관련주 확인을 생략했습니다.")
     if any(quotes.values()):
-        lines.append("※ 주가: 네이버 금융 일봉의 확인된 정규장 종가와 직전 거래일 종가로 계산. 시간외 미포함.")
+        lines.append("※ 주가: 네이버 금융 일별 자료. KRX·NXT 거래시장 구분은 별도 확인 필요.")
+    if any(q.get("change_status") == "source_conflict" for q in quotes.values()):
+        lines.append("※ 일부 주가·등락률은 일별 자료 간 기준값 불일치로 확인 보류.")
+    if any(q.get("change_status") == "confirmation_unavailable" for q in quotes.values()):
+        lines.append("※ 일부 등락률은 일별시세 대조 불가로 확인 보류.")
     rates = fx_snapshot.get("rates") or {}
     if rates:
         provenance = []
@@ -731,6 +766,7 @@ def main() -> int:
         ("국내 신뢰매체 AI 시험 부정행위", runner.korean_news_search_url('(AI OR 인공지능 OR 스마트안경) (커닝 OR 컨닝 OR 부정행위) (수능 OR 정부 OR 증시 OR 관련주)'), "trusted"),
         ("국내 신뢰매체 주식 이슈", runner.korean_news_search_url('(증시 OR 코스피 OR 코스닥 OR 관련주) (상한가 OR 급등 OR 수주 OR 계약 OR 규제 OR 실적)'), "trusted"),
         ("AI 시험 부정행위 관련주 단순 검색", runner.korean_news_search_url('AI 커닝 관련주'), "trusted"),
+        ("AI 시험 부정행위 카메라주 단순 검색", runner.korean_news_search_url('AI 커닝 카메라주'), "trusted"),
         ("시험 보안 관련주 단순 검색", runner.korean_news_search_url('시험 부정행위 보안주'), "trusted"),
         ("사회 이슈와 주식 관련주 단순 검색", runner.korean_news_search_url('증시 관련주 급등'), "trusted"),
     ]
@@ -801,7 +837,12 @@ def main() -> int:
     def quote(company):
         name, code = company
         try:
-            return code, parse_daily_quote(get_bytes(chart_url(code)), code, name, now)
+            value = parse_daily_quote(get_bytes(chart_url(code)), code, name, now)
+            try:
+                value = confirm_quote_comparison(value, get_bytes(NAVER_DAILY_URL.format(code=code)))
+            except Exception:
+                value = {**value, "change_pct": None, "change_status": "confirmation_unavailable", "close_status": "single_source"}
+            return code, value
         except Exception:
             return code, None
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
