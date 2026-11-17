@@ -152,7 +152,7 @@ def main():
              "form":"13F-HR","accession":"0001536411-26-000011"},
             {"report_date":"2026-06-30","accession":"0001536411-26-000006"},cases,
             "https://www.sec.gov/Archives/test")
-        assert text.startswith("[13F 업종별 보유 확대·축소] 스탠리 드러켄밀러")
+        assert text.startswith("[13F 핵심 변화 자동 추출] 스탠리 드러켄밀러")
         assert text.index("▶ 신규 편입·보유 확대") < text.index("▶ 보유 축소·전량 청산")
         assert "■ 집중 확대:" in text and "■ 집중 축소:" in text
         assert "보유 기준 2026-09-30" in text
@@ -195,6 +195,65 @@ def main():
         assert entry.money_with_krw(146_045_336)=="1.46억달러 (약 1,950억원)"
     finally:
         entry.FX_RATE,entry.FX_BASIS=old_rate,old_basis
+
+
+    # Crucially, no article or ticker allowlist is supplied to the generic
+    # filing renderer: scan the full diff, even if a position's sector is '기타'.
+    def position(issuer,ticker,shares,value,sector_name="기타"):
+        return {"issuer":issuer,"title":"COM","cusip":ticker,
+                "shares":shares,"value":value,"putcall":"","sector":sector_name}
+    holdings={
+        "ntra":position("NATERA INC","NTRA",3160666,1306335000,"헬스케어"),
+        "stx":position("SEAGATE TECHNOLOGY HOLDINGS","STX",341790,315247000,
+                       "메모리·저장장치"),
+        "spcx":position("SPACE EXPLORATION TECHNOLOGIES","SPCX",202125,30493000,
+                        "우주·위성·발사체"),
+        "pltr":position("PALANTIR TECHNOLOGIES","PLTR",80100,14983000,
+                        "기업·응용 소프트웨어"),
+        "app":position("APPLOVIN CORP","APP",109460,31790000,
+                       "디지털 광고·AI 앱 플랫폼"),
+        "other":position("OTHER TRUST","OTR",100000,2748019000),
+    }
+    def move(issuer,action,delta,current_shares,cur_value,prev_value,sector_name):
+        return {"issuer":issuer,"title":"COM","cusip":issuer,
+                "action":action,"delta_shares":delta,"shares":current_shares,
+                "cur_value":cur_value,"prev_value":prev_value,"sector":sector_name,
+                "putcall":"","valuation_verified":True}
+    list_changes=[
+        move("SOMNIGROUP","신규 매수",200000,200000,61700000,0,"소비재·가구"),
+        move("NEWMONT CORP","신규 매수",380400,380400,43900000,0,"금·귀금속"),
+        move("BARRICK CORP","신규 매수",1054600,1054600,42900000,0,"금·귀금속"),
+        move("AGNICO EAGLE","신규 매수",231050,231050,42300000,0,"금·귀금속"),
+        move("WESTERN DIGITAL","신규 매수",100000,100000,36800000,0,"메모리·저장장치"),
+        move("APPLOVIN CORP","신규 매수",109460,109460,31790000,0,"디지털 광고·AI 앱 플랫폼"),
+        move("SPACE EXPLORATION TECHNOLOGIES","신규 매수",202125,202125,30493000,0,"우주·위성·발사체"),
+        move("PALANTIR TECHNOLOGIES","신규 매수",80100,80100,14983000,0,"기업·응용 소프트웨어"),
+        move("UNITED AIR LINES","전량 청산",-794795,794795,0,164000000,"항공·항공우주·여행"),
+        move("ALPHABET INC","전량 청산",-336300,336300,0,120200000,"AI 플랫폼·클라우드"),
+        move("SANDISK CORP","전량 청산",-34900,34900,0,79400000,"메모리·저장장치"),
+        move("ADVANCED MICRO DEVICES","전량 청산",-72900,72900,0,42300000,"반도체·파운드리·장비"),
+        move("SEAGATE TECHNOLOGY HOLDINGS","보유 확대",219790,341790,315247000,117728000,"메모리·저장장치"),
+        move("UNITY SOFTWARE","보유 확대",3217600,3956385,161900000,30500000,"게임·3D 소프트웨어"),
+        move("AMAZON.COM INC","보유 확대",231000,772600,192500000,135000000,"AI 플랫폼·클라우드"),
+        move("TAIWAN SEMICONDUCTOR","보유 축소",-556980,32700,16000000,281600000,"반도체·파운드리·장비"),
+    ]
+    rank_output=sector.build_automatic_13f_digest(
+        list_changes,holdings,watch.security_name_kr,lambda x:sector.compact_usd(x),
+        report_scale=1,max_chars=3300)
+    for required in ("스페이스X","팔란티어(PLTR)","앱러빈(APP)",
+                     "AMD","샌디스크(SNDK)","알파벳 A(GOOGL)",
+                     "시게이트(STX)","유니티(U)","아마존(AMZN)",
+                     "TSMC(TSM)","나테라(NTRA)","29.2%"):
+        assert required in rank_output, (required,rank_output)
+    assert "신고상 종료" in rank_output and "실제" in rank_output
+    assert len(rank_output)<=3300
+    assert "전체 13F 신고 평가액" in rank_output
+    # A missing verified unit must never silently become a dollar amount.
+    unknown_scale=[dict(list_changes[6],valuation_verified=False)]
+    check=sector.build_automatic_13f_digest(
+        unknown_scale,{"test":holdings["spcx"]},watch.security_name_kr,
+        lambda x:sector.compact_usd(x),report_scale=None)
+    assert "금액 미검증" in check and "3,049만달러" not in check
 
     print("13F sector position-ranking regression checks passed.")
 
