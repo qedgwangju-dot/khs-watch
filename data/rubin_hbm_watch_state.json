@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-17T23:18:34+09:00",
+  "updated_at_kst": "2026-11-17T23:49:25+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "00c1b5afae079534fa6aa588",
@@ -339,7 +339,7 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1334.87,
-    "date": "2026-11-16 일일 기준 · ECB/Frankfurter · 조회 2026-11-17 23:18 KST · 보조 API 2026-11-17 · 차이 0.05% · 일중 기준시각 차이 가능",
+    "date": "2026-11-16 일일 기준 · ECB/Frankfurter · 조회 2026-11-17 23:49 KST · 보조 API 2026-11-17 · 차이 0.05% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -473,7 +473,7 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-11-17T23:18:49+09:00",
+    "last_checked_at_kst": "2026-11-17T23:49:40+09:00",
     "candidate_count": 3,
     "mlcc_vendor_watch": {
       "version": 2,
@@ -539,8 +539,8 @@
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-11-17T23:19:38+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-11-17T23:50:26+09:00",
+    "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-17T23:19:38+09:00",
   "telegram_message_ids": [
@@ -608,7 +608,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-11-17",
-    "last_checked_at_kst": "2026-11-17T23:19:18+09:00",
+    "last_checked_at_kst": "2026-11-17T23:50:10+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -667,7 +667,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-11-17T23:19:18+09:00",
+        "checked_at_kst": "2026-11-17T23:50:10+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -745,7 +745,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-11-17",
-    "last_checked_at_kst": "2026-11-17T23:19:23+09:00",
+    "last_checked_at_kst": "2026-11-17T23:50:14+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -789,7 +789,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-11-17T23:19:25+09:00",
+    "last_checked_at_kst": "2026-11-17T23:50:16+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -913,7 +913,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-11-17T23:19:25+09:00",
+      "checked_at_kst": "2026-11-17T23:50:16+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
@@ -1353,7 +1353,7 @@
   },
   "hbm_material_event_watch": {
     "version": 1,
-    "checked_at_kst": "2026-11-17T23:19:17+09:00",
+    "checked_at_kst": "2026-11-17T23:50:10+09:00",
     "seen_keys": [
       "20261112_intel_hbmfree_lpddr_inference_proposal",
       "20261112_intel_kai_23_company_alliance",
@@ -1367,9 +1367,7 @@
       "20261116_skhynix_2026q3_capex_rnd_cumulative",
       "20261116_skhynix_2026q3_geo_customer_concentration"
     ],
-    "last_new_fact_keys": [
-      "20261116_kiwoom_2028_conventional_memory_hbm_divergence"
-    ],
+    "last_new_fact_keys": [],
     "unconfirmed_source_count": 0,
     "unconfirmed_sources": [],
     "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield"
