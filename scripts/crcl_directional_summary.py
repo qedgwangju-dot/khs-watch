@@ -104,11 +104,12 @@ def direct_earnings(pending: dict) -> tuple[str, str, int]:
 
     current_gap = _date_gap_days(c_date, y_date)
     prior_gap = _date_gap_days(cp_date, yp_date)
-    if current_gap is None or prior_gap is None or current_gap > 3 or prior_gap > 3:
-        parts.append(
-            f"USDC와 준비금 수익률 기준일 차이"
-            f"{f' {current_gap}일' if current_gap is not None else ''} → 합산 이익 프록시 판정 보류"
+    if current_gap is None or prior_gap is None or current_gap != 0 or prior_gap != 0:
+        gap_detail = (
+            f"현재 {current_gap}일·이전 {prior_gap}일"
+            if current_gap is not None and prior_gap is not None else "비교 날짜 확인 불가"
         )
+        parts.append(f"USDC와 펀드 수익률 기준일 차이({gap_detail}) → 합산 이익 프록시 판정 보류")
         return "판정 보류", " · ".join(parts), 0
 
     if None not in (c_now, c_prev, y_now, y_prev):
@@ -191,6 +192,8 @@ def discount_view(pending: dict) -> tuple[str, str, int]:
     t10 = float(treasury.get("daily_10y_bp", 0.0) or 0.0)
     prev = treasury.get("prev_ten_year")
     now = treasury.get("ten_year")
+    if not treasury_date or prev is None or now is None:
+        return "판정 보류", "미 국채 10년 공식 기준일·비교값 부족 → 할인율 판정 보류", 0
     base = f"미 국채 10년 {prev}%→{now}% ({fbp(t10)})"
     if t10 > 0:
         label = "불리" if abs(t10) >= 3 else "소폭 불리"
@@ -287,7 +290,7 @@ def build_summary(pending: dict) -> tuple[str, str]:
 
 def _fmt_krw_from_usd_m(value_usd_m: float, rate: float) -> str:
     eok = value_usd_m * rate / 100.0
-    sign = "-" if eok < 0 else "+" if eok > 0 else ""
+    sign = "-" if eok < 0 else ""
     rounded = int(round(abs(eok)))
     jo, rem = divmod(rounded, 10000)
     if jo:
@@ -310,7 +313,7 @@ def _extract_changes(text: str) -> list[str]:
         line = line.strip()
         if line.startswith("• "):
             changes.append(line)
-    return changes[:4]
+    return changes
 
 
 def _source_href(text: str, label_fragment: str) -> str | None:
@@ -336,15 +339,136 @@ def _direct_proxy_pct(pending: dict) -> float | None:
     )
     if any(v is None for v in vals):
         return None
-    if (_date_gap_days(circle.get("date"), usdxx.get("date")) or 0) > 3:
+    if _date_gap_days(circle.get("date"), usdxx.get("date")) != 0:
         return None
-    if (_date_gap_days(cp.get("date"), up.get("date")) or 0) > 3:
+    if _date_gap_days(cp.get("date"), up.get("date")) != 0:
         return None
     c_now, c_prev, y_now, y_prev = map(float, vals)
     prev_proxy = c_prev * y_prev
     if not prev_proxy:
         return None
     return (c_now * y_now / prev_proxy - 1.0) * 100.0
+
+
+
+def _change_direction(current: object, previous: object, *, rate: bool = False) -> str:
+    if current is None or previous is None:
+        return "비교 보류"
+    try:
+        current_value, previous_value = float(current), float(previous)
+    except (TypeError, ValueError):
+        return "비교 보류"
+    delta = current_value - previous_value
+    if abs(delta) < 1e-8:
+        return "보합 →"
+    return ("상승 ↑" if rate else "증가 ↑") if delta > 0 else ("하락 ↓" if rate else "감소 ↓")
+
+
+def build_direction_dashboard(pending: dict) -> list[str]:
+    """Lead with literal upward/downward movement, then economic interpretation."""
+    circle = pending.get("circle") or {}
+    usdxx = pending.get("usdxx") or {}
+    sofr = pending.get("sofr") or {}
+    treasury = pending.get("treasury") or {}
+    crcl = pending.get("crcl") or {}
+    tbx = pending.get("tbx") or {}
+    fx = pending.get("fx") or {}
+    errors = {str(error).split(":", 1)[0] for error in (pending.get("errors") or [])}
+    lines = ["<b>방향 한눈에 · 이전 → 현재</b>"]
+
+    def warn(name: str) -> str:
+        return " · 원천 재조회 실패·직전 확인값(신규 판정 보류)" if name in errors else ""
+
+    c, cp = circle.get("circulation_usd_b"), (circle.get("_previous_distinct") or {}).get("circulation_usd_b")
+    c_now_date = str(circle.get("date") or "날짜 미확인")
+    c_prev_date = str((circle.get("_previous_distinct") or {}).get("date") or "날짜 미확인")
+    if c is not None and cp is not None:
+        delta = float(c) - float(cp)
+        percent = delta / float(cp) * 100 if float(cp) else 0.0
+        balance = (
+            f"68.0"
+            if False else f"{float(c):.1f}"
+        )
+        krw = ""
+        if fx.get("rate"):
+            krw = f" (잔액 {_fmt_krw_from_usd_m(float(c) * 1000, float(fx['rate']))})"
+        lines.append(
+            f"• <b>USDC 유통량 {_change_direction(c, cp)}</b> "
+            f"{float(cp):.1f}→{balance}십억달러{krw} · 증감 {delta:+.1f}십억달러({percent:+.2f}%)"
+            f" · {c_prev_date}→{c_now_date}{warn('circle')}"
+        )
+    else:
+        lines.append("• <b>USDC 유통량 · 비교 보류</b> · 비교 수치 없음")
+
+    y, yp = usdxx.get("sec_yield_7d"), (usdxx.get("_previous_distinct") or {}).get("sec_yield_7d")
+    if y is not None and yp is not None:
+        delta = (float(y) - float(yp)) * 100
+        lines.append(
+            f"• <b>블랙록 준비금 펀드 수익률 {_change_direction(y, yp, rate=True)}</b> "
+            f"{float(yp):.2f}%→{float(y):.2f}%({delta:+.1f}bp) · "
+            f"{(usdxx.get('_previous_distinct') or {}).get('date') or '?'}→{usdxx.get('date') or '?'}"
+            f" · 서클 이자수익 {'우호 가능' if delta > 0 else '불리 가능' if delta < 0 else '중립'}"
+            f"{warn('usdxx')}"
+        )
+    else:
+        lines.append("• <b>준비금 펀드 수익률 · 비교 보류</b> · 두 날짜의 수치가 필요")
+
+    so, sp = sofr.get("rate"), sofr.get("prev_rate")
+    if so is not None and sp is not None:
+        lines.append(
+            f"• <b>SOFR {_change_direction(so, sp, rate=True)}</b> "
+            f"{float(sp):.2f}%→{float(so):.2f}%({(float(so)-float(sp))*100:+.1f}bp) · "
+            f"{sofr.get('prev_date') or '?'}→{sofr.get('date') or '?'} · 단기금리 선행 보조"
+            f"{warn('sofr')}"
+        )
+    else:
+        lines.append("• <b>SOFR · 비교 보류</b> · 두 날짜의 수치가 필요")
+
+    for label, key, prev_key in (
+        ("미 국채 3개월", "three_month", "prev_three_month"),
+        ("미 국채 10년", "ten_year", "prev_ten_year"),
+    ):
+        curr, prev = treasury.get(key), treasury.get(prev_key)
+        if curr is None or prev is None:
+            lines.append(f"• <b>{label} · 비교 보류</b> · 공식 비교값 부족")
+            continue
+        delta = (float(curr) - float(prev)) * 100
+        outcome = (
+            " · 할인율 부담 완화 가능" if key == "ten_year" and delta < 0
+            else " · 할인율 부담 확대 가능" if key == "ten_year" and delta > 0
+            else " · 준비금 수익 선행 보조" if key == "three_month" else ""
+        )
+        lines.append(
+            f"• <b>{label} 금리 {_change_direction(curr, prev, rate=True)}</b> "
+            f"{float(prev):.2f}%→{float(curr):.2f}%({delta:+.1f}bp) · "
+            f"{treasury.get('prev_date') or '?'}→{treasury.get('date') or '?'}{outcome}"
+            f"{warn('treasury')}"
+        )
+
+    close, prior = crcl.get("close"), crcl.get("prev_close")
+    if close is not None and prior is not None:
+        direction = _change_direction(close, prior, rate=True)
+        status = str(crcl.get("crosscheck_status") or "")
+        note = (
+            " · 두 시세원 종가 차이(반올림·집계), 완전 일치 아님"
+            if status == "rounding_difference" else
+            " · 서로 다른 출처 종가 일치" if status == "confirmed" else
+            " · 종가 교차검증 보류"
+        )
+        lines.append(
+            f"• <b>CRCL 주가 {direction}</b> "
+            f"${float(prior):.2f}→${float(close):.2f}({float(crcl.get('daily_pct',0)):+.2f}%)"
+            f" · {crcl.get('prev_date') or '?'}→{crcl.get('date') or '?'}{note}{warn('crcl')}"
+        )
+    else:
+        lines.append("• <b>CRCL 주가 · 비교 보류</b> · 확인된 종가·전일 종가 부족")
+
+    tbx_change = tbx.get("daily_pct")
+    if tbx_change is not None:
+        direction = "상승 ↑" if float(tbx_change)>0 else "하락 ↓" if float(tbx_change)<0 else "보합 →"
+        lines.append(f"• <b>TBX 가격 {direction}</b> {float(tbx_change):+.2f}%"
+                     f" · {tbx.get('date') or '?'} · 국채가격 역방향 보조지표·본업 수익 아님{warn('tbx')}")
+    return lines
 
 
 def build_compact_alert(pending: dict, original_text: str) -> str:
@@ -373,6 +497,8 @@ def build_compact_alert(pending: dict, original_text: str) -> str:
         "",
         f"<blockquote><b>판정 · {html.escape(verdict)}</b>\n{html.escape(take)}</blockquote>",
     ]
+
+    lines += ["", *build_direction_dashboard(pending)]
 
     changes = _extract_changes(original_text)
     if changes:
@@ -449,7 +575,9 @@ def build_compact_alert(pending: dict, original_text: str) -> str:
         check = str(crcl.get("crosscheck_status") or "")
         check_note = ""
         if check == "confirmed":
-            check_note = " · ChartExchange·Yahoo 일치"
+            check_note = " · Yahoo·ChartExchange 종가 일치"
+        elif check == "rounding_difference":
+            check_note = f" · Yahoo 기준·ChartExchange ${float(crcl.get('crosscheck_close',0)):.2f}(소폭 차이)"
         elif check == "yahoo_lagging":
             check_note = (
                 f" · ChartExchange 마감 · Yahoo 일봉 {crcl.get('crosscheck_date') or 'N/A'}로 지연"
@@ -486,12 +614,14 @@ def build_compact_alert(pending: dict, original_text: str) -> str:
         ("Circle Reserve Fund", "BlackRock"),
         ("SOFR", "NY Fed"),
         ("미 국채 금리", "미 재무부"),
+        ("Circle 3Q26 10-Q", "SEC"),
         ("Circle 2Q26 10-Q", "SEC"),
     ):
         href = _source_href(original_text, frag)
         if href:
             links.append(f'<a href="{href}">{label}</a>')
     if links:
+        links.append('<a href="https://investor.circle.com/stock-info/">Circle IR(공식 주가)</a>')
         lines.append("<b>원문</b> · " + " · ".join(links))
 
     compact: list[str] = []
