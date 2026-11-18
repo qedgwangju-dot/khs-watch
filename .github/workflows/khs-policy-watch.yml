@@ -1051,6 +1051,9 @@ jobs:
             out/khs_policy_watch_alert.md
             out/khs_policy_watch_alerts.json
             out/khs_policy_watch_pending_seen.json
+            out/khs_trusted_policy_news_alert.md
+            out/khs_trusted_policy_news_title.txt
+            out/khs_trusted_policy_news_alerts.json
             out/khs_telegram_dry_run.md
             out/khs_telegram_delivery_confirmed.json
             out/khs_telegram_delivery_partial.json

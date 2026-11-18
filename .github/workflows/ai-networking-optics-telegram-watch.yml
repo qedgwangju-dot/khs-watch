@@ -5,7 +5,10 @@ on:
     paths:
       - ".github/workflows/ai-networking-optics-telegram-watch.yml"
       - "scripts/ai_networking_optics_watch.py"
+      - "scripts/ai_networking_optics_delivery.py"
       - "scripts/currency_krw_guard.py"
+      - "tests/test_ai_networking_optics_reliability.py"
+      - "tests/test_ai_networking_optics_delivery.py"
   schedule:
     # Direct twice-hourly check, away from top-of-hour congestion.
     - cron: "8,38 * * * *"
@@ -15,11 +18,13 @@ on:
     workflows:
       - "Vera Rubin SOCAMM Capacity Telegram Watch"
       - "Korea AI Semiconductor Policy Demand Watch"
+      - "AI Security Web Watch"
     types: [completed]
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
   group: ai-networking-optics-telegram-watch
@@ -38,16 +43,23 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event_name == 'push' && github.sha || 'main' }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      - name: Gate new backup by trusted upstream and 25-minute freshness
+        id: runtime_gate
+        run: python scripts/ai_networking_optics_delivery.py preflight
+
       - name: Validate watcher
-        run: python -m py_compile scripts/ai_networking_optics_watch.py scripts/currency_krw_guard.py
+        if: steps.runtime_gate.outputs.run_watch == 'true'
+        run: python -m py_compile scripts/ai_networking_optics_watch.py scripts/ai_networking_optics_delivery.py scripts/currency_krw_guard.py
 
       - name: Regression test event deduplication
+        if: steps.runtime_gate.outputs.run_watch == 'true'
         run: |
           python - <<'PY'
           import importlib.util
@@ -324,36 +336,27 @@ jobs:
           print("dedupe_and_quality_regression_test=passed")
           PY
 
+      - name: Regression test alert limits and policy stages without sending
+        if: steps.runtime_gate.outputs.run_watch == 'true'
+        run: python -m unittest discover -s tests -p test_ai_networking_optics_reliability.py -v
+
+      - name: Regression test partial delivery and unknown outcomes without sending
+        if: steps.runtime_gate.outputs.run_watch == 'true'
+        run: python -m unittest discover -s tests -p test_ai_networking_optics_delivery.py -v
+
       - name: Validate exact requested Telegram route without sending
+        if: steps.runtime_gate.outputs.run_watch == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
-        run: |
-          python - <<'PY'
-          import json
-          import os
-          import urllib.request
-
-          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
-          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
-          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
-          if not token:
-              raise RuntimeError("HBM_TELEGRAM_BOT_TOKEN secret is missing")
-          if not chat_id:
-              raise RuntimeError("HBM_TELEGRAM_CHAT_ID secret is missing")
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
-              identity = json.loads(response.read().decode("utf-8"))
-          username = str((identity.get("result") or {}).get("username") or "")
-          if not identity.get("ok") or username.lower() != expected.lower():
-              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
-          print(f"telegram_route_valid=true bot=@{username}")
-          PY
+        run: python scripts/ai_networking_optics_delivery.py verify-route
 
       - name: Check AI networking, optics and Corning signals
+        if: steps.runtime_gate.outputs.run_watch == 'true'
         run: python scripts/ai_networking_optics_watch.py
 
       - name: Translate alert to Korean, remove source timestamp, and convert currency to KRW
-        if: hashFiles('out/ai_networking_optics_watch_telegram.html') != ''
+        if: steps.runtime_gate.outputs.run_watch == 'true' && (hashFiles('out/ai_networking_optics_watch_telegram.html') != '')
         run: |
           python - <<'PY'
           import datetime as dt
@@ -692,6 +695,7 @@ jobs:
           python scripts/currency_krw_guard.py out/ai_networking_optics_watch_telegram.html
 
       - name: Validate immediate KRW conversion rule
+        if: steps.runtime_gate.outputs.run_watch == 'true'
         run: |
           python - <<'PY'
           import pathlib, sys
@@ -754,150 +758,45 @@ jobs:
             cat out/ai_networking_optics_watch_telegram.html >> "$GITHUB_STEP_SUMMARY"
           fi
 
+      - name: Verify prior optics delivery persistence before sending
+        if: steps.runtime_gate.outputs.run_watch == 'true' && (github.event_name != 'push' && (hashFiles('out/ai_networking_optics_watch_telegram.html') != '' || hashFiles('data/ai_networking_optics_delivery_receipts.json') != ''))
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/ai_networking_optics_delivery.py guard
+
       - name: Send meaningful new signal to exact requested Telegram bot
-        # Defensive two-phase rollout: code pushes validate but may not emit
-        # market alerts or consume the baseline. Only schedule/workflow_run or
-        # an intentional manual run may deliver new confirmed events.
-        if: github.event_name != 'push' && hashFiles('out/ai_networking_optics_watch_telegram.html') != ''
+        # Code pushes validate only. Existing unfinished bundles resume their
+        # pinned payload; an unknown send outcome blocks automatic retry.
+        if: steps.runtime_gate.outputs.run_watch == 'true' && (github.event_name != 'push' && (hashFiles('out/ai_networking_optics_watch_telegram.html') != '' || hashFiles('data/ai_networking_optics_delivery_receipts.json') != ''))
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
-        run: |
-          python - <<'PY'
-          import datetime as dt
-          import json
-          import os
-          import pathlib
-          import urllib.parse
-          import urllib.request
-          from zoneinfo import ZoneInfo
-
-          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
-          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
-          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
-          if not token or not chat_id:
-              raise RuntimeError("HBM Telegram token/chat id is missing")
-
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
-              identity = json.loads(response.read().decode("utf-8"))
-          username = str((identity.get("result") or {}).get("username") or "")
-          if not identity.get("ok") or username.lower() != expected.lower():
-              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
-
-          text = pathlib.Path("out/ai_networking_optics_watch_telegram.html").read_text(encoding="utf-8").strip()
-          if not text:
-              raise RuntimeError("Telegram alert is empty")
-
-          def split_message(value, limit=3900):
-              chunks, current = [], ""
-              for paragraph in value.split("\n\n"):
-                  candidate = paragraph if not current else current + "\n\n" + paragraph
-                  if len(candidate) <= limit:
-                      current = candidate
-                      continue
-                  if current:
-                      chunks.append(current)
-                      current = ""
-                  while len(paragraph) > limit:
-                      cut = paragraph.rfind("\n", 0, limit)
-                      if cut < 1:
-                          cut = limit
-                      chunks.append(paragraph[:cut])
-                      paragraph = paragraph[cut:].lstrip()
-                  current = paragraph
-              if current:
-                  chunks.append(current)
-              return chunks
-
-          message_ids = []
-          for chunk in split_message(text):
-              payload = urllib.parse.urlencode({
-                  "chat_id": chat_id,
-                  "text": chunk,
-                  "parse_mode": "HTML",
-                  "disable_web_page_preview": "true",
-              }).encode("utf-8")
-              request = urllib.request.Request(
-                  f"https://api.telegram.org/bot{token}/sendMessage",
-                  data=payload,
-                  method="POST",
-              )
-              with urllib.request.urlopen(request, timeout=25) as response:
-                  result = json.loads(response.read().decode("utf-8"))
-              if not result.get("ok"):
-                  raise RuntimeError("Telegram rejected the alert (no delivery receipt)")
-              delivered = result.get("result") or {}
-              delivered_chat = delivered.get("chat") or {}
-              msg_id = delivered.get("message_id")
-              if not isinstance(msg_id, int) or msg_id < 1:
-                  raise RuntimeError("Telegram receipt missing valid message ID")
-              if chat_id.lstrip("-").isdigit():
-                  valid_route = str(delivered_chat.get("id")) == chat_id
-              elif chat_id.startswith("@"):
-                  valid_route = str(delivered_chat.get("username") or "").lower() == chat_id[1:].lower()
-              else:
-                  valid_route = False
-              if not valid_route:
-                  raise RuntimeError("Telegram receipt destination differs from configured chat")
-              message_ids.append(msg_id)
-
-          confirmed = {
-              "status": "confirmed",
-              "bot_username": username,
-              "chat_identity_verified": True,
-              "message_ids": message_ids,
-              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
-          }
-          pathlib.Path("out/ai_networking_optics_watch_telegram_confirmed.json").write_text(
-              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8",
-          )
-          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids}")
-          PY
+        run: python scripts/ai_networking_optics_delivery.py send
 
       - name: Persist baseline or delivered state
-        if: always() && github.event_name != 'push'
-        run: |
-          if [ ! -f out/ai_networking_optics_watch_telegram.html ] || [ -f out/ai_networking_optics_watch_telegram_confirmed.json ]; then
-            if [ -f out/ai_networking_optics_watch_pending_state.json ]; then
-              cp out/ai_networking_optics_watch_pending_state.json data/ai_networking_optics_watch_state.json
-            fi
-          else
-            echo "Telegram delivery was not confirmed; watcher state intentionally not advanced."
-          fi
+        if: steps.runtime_gate.outputs.run_watch == 'true' && (always() && github.event_name != 'push')
+        run: python scripts/ai_networking_optics_delivery.py persist-state
 
-      - name: Record confirmed Telegram delivery in watcher state
-        if: always() && github.event_name != 'push' && hashFiles('data/ai_networking_optics_watch_state.json') != '' && hashFiles('out/ai_networking_optics_watch_telegram_confirmed.json') != ''
+      - name: Commit watcher state and part receipts
+        if: steps.runtime_gate.outputs.run_watch == 'true' && (always() && github.event_name != 'push')
         run: |
-          python - <<'PY'
-          import json
-          import pathlib
-
-          state_path = pathlib.Path("data/ai_networking_optics_watch_state.json")
-          state = json.loads(state_path.read_text(encoding="utf-8"))
-          confirmed = json.loads(pathlib.Path("out/ai_networking_optics_watch_telegram_confirmed.json").read_text(encoding="utf-8"))
-          state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
-          if confirmed.get("chat_identity_verified") is not True:
-              raise RuntimeError("Telegram destination was not verified; state unchanged")
-          if not confirmed.get("message_ids") or any(not isinstance(n, int) for n in confirmed["message_ids"]):
-              raise RuntimeError("Telegram receipt lacks valid message ids; state unchanged")
-          state["telegram_message_ids"] = confirmed["message_ids"]
-          state["bot_username"] = confirmed.get("bot_username")
-          state["telegram_chat_identity_verified"] = True
-          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-          PY
-
-      - name: Commit watcher state
-        if: always() && github.event_name != 'push'
-        run: |
-          if [ ! -f data/ai_networking_optics_watch_state.json ]; then
+          if [ ! -f data/ai_networking_optics_watch_state.json ] && [ ! -f data/ai_networking_optics_delivery_receipts.json ]; then
             exit 0
           fi
 
-          # Preserve the freshly generated state, then replay it on top of the
-          # latest main branch. This avoids rebase conflicts if another workflow
-          # updated the repository while this monitor was running.
-          cp data/ai_networking_optics_watch_state.json /tmp/ai_networking_optics_watch_state.json
+          # Preserve receipts even when delivery failed after a successful part.
+          # Three-way merging retains concurrent state additions and intentional
+          # false-positive cleanup. The state and ledger are committed together.
+          optics_snapshot_dir="$RUNNER_TEMP/ai-networking-optics-state"
+          mkdir -p "$optics_snapshot_dir"
+          for state_file in ai_networking_optics_watch_state.json ai_networking_optics_delivery_receipts.json; do
+            if [ -f "data/$state_file" ]; then
+              cp "data/$state_file" "$optics_snapshot_dir/$state_file"
+            fi
+          done
+          if ! git show HEAD:data/ai_networking_optics_watch_state.json > "$optics_snapshot_dir/base-state.json"; then
+            echo '{}' > "$optics_snapshot_dir/base-state.json"
+          fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -905,17 +804,21 @@ jobs:
           for attempt in 1 2 3 4; do
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/ai_networking_optics_watch_state.json data/ai_networking_optics_watch_state.json
-            git add data/ai_networking_optics_watch_state.json
+            python scripts/ai_networking_optics_delivery.py merge-commit --snapshot-dir "$optics_snapshot_dir"
+            for state_file in ai_networking_optics_watch_state.json ai_networking_optics_delivery_receipts.json; do
+              if [ -f "data/$state_file" ]; then
+                git add "data/$state_file"
+              fi
+            done
 
             if git diff --cached --quiet; then
-              echo "AI networking optics state unchanged"
+              echo "AI networking optics state and receipts unchanged"
               exit 0
             fi
 
             git commit -m "Update AI networking optics watch state"
             if git push origin HEAD:main; then
-              echo "AI networking optics state persisted"
+              echo "AI networking optics state and receipts persisted"
               exit 0
             fi
 
@@ -923,7 +826,7 @@ jobs:
             sleep $((attempt * 2))
           done
 
-          echo "Failed to persist AI networking optics state after retries"
+          echo "Failed to persist AI networking optics state and receipts after retries; inspect uploaded receipts before another delivery"
           exit 1
 
       - name: Upload verification artifacts
@@ -936,5 +839,9 @@ jobs:
             out/ai_networking_optics_watch_telegram.html
             out/ai_networking_optics_watch_pending_state.json
             out/ai_networking_optics_watch_telegram_confirmed.json
+            out/ai_networking_optics_watch_telegram_partial.json
+            out/ai_networking_optics_watch_delivered_pending_state.json
+            out/ai_networking_optics_watch_delivery_guard.json
+            data/ai_networking_optics_delivery_receipts.json
           if-no-files-found: ignore
           retention-days: 14

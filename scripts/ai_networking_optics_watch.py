@@ -963,7 +963,8 @@ def credo_milestone(title: str) -> tuple[str, str, str] | None:
 
 def preserve_delivery_metadata(previous: dict, pending: dict) -> dict:
     # Silent checks must not erase proof of the most recent confirmed Telegram send.
-    for key in ("last_successful_delivery_kst", "telegram_message_ids", "bot_username"):
+    for key in ("last_successful_delivery_kst", "telegram_message_ids", "bot_username",
+                "telegram_chat_identity_verified"):
         if previous.get(key) is not None:
             pending[key] = previous[key]
     return pending
@@ -1355,6 +1356,8 @@ def canonical_story_key(company: str, title: str) -> str | None:
         return structure_key
 
     if company == "US Optical Policy":
+        if optical_policy_is_pending(title):
+            return "us-optical-policy|fcc|proposal"
         if re.search(r"senate|congress|bill|legislation|national security systems?", text, re.I):
             if re.search(r"signed|enacted|becomes? law", text, re.I):
                 return "us-optical-policy|congress|enacted"
@@ -2552,7 +2555,26 @@ def signal_score(title: str, source: str) -> int:
     return score
 
 
+def optical_policy_is_pending(title: str) -> bool:
+    """Prevent reports about a possible/forthcoming rule from consuming its adoption."""
+    text = html.unescape(title or "")
+    policy = re.search(r"\bFCC\b|Federal Communications Commission|Covered List", text, re.I)
+    if not policy:
+        return False
+    return bool(re.search(
+        r"\bfinalizing\b|\b(?:could|may|might|would|will)\s+(?:\w+\s+){0,3}"
+        r"(?:take\s+effect|become\s+effective|adopt|finalize|impose|ban|restrict)|"
+        r"\b(?:plans?|prepares?|preparing|seeks?|proposes?)\s+(?:\w+\s+){0,4}"
+        r"(?:final|ban|restrict|adopt)|\b(?:proposed|draft)\s+final\s+rule|"
+        r"\bif\b.{0,60}\b(?:adopted|finalized|takes? effect)\b|"
+        r"(?:검토|추진|준비|가능성|시행 예정)",
+        text, re.I,
+    ))
+
+
 def stage_for(title: str) -> str:
+    if optical_policy_is_pending(title):
+        return "규제 검토·추진(최종 확정 전)"
     if re.search(r"reliability|lifetime|MTBF|failure rate|thermal|laser failure", title, re.I):
         return "신뢰성·열검증"
     if re.search(r"blind[- ]mate|insertion loss|hot[- ]swap|field[- ]replaceable|OIF[- ]ELSFP", title, re.I):
@@ -3583,11 +3605,13 @@ def networking_supplier_regression_checks() -> None:
 
 
 def main() -> None:
+    (ROOT / "out").mkdir(parents=True, exist_ok=True)
+    (ROOT / "data").mkdir(parents=True, exist_ok=True)
+    if PENDING_PATH.exists():
+        PENDING_PATH.unlink()  # Never reuse state prepared by an earlier failed attempt.
     _self_test_korean_optics_alerts()
     networking_supplier_regression_checks()
     new_optical_infra_regression_checks()
-    (ROOT / "out").mkdir(parents=True, exist_ok=True)
-    (ROOT / "data").mkdir(parents=True, exist_ok=True)
 
     state = load_state()
 
@@ -4135,7 +4159,6 @@ def main() -> None:
         "aaoi_power_prior_alert_correction_done": True,
     }
     pending = preserve_delivery_metadata(state, pending)
-    PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     # One-time migration: establish the semantic/event baseline silently so the
     # dedupe upgrade itself cannot resend already reported stories.
@@ -4240,6 +4263,20 @@ def main() -> None:
                 }
             ]
         alert_items = new_items[:8] if initialized else []
+    # A full candidate scan is not a delivery receipt. In steady-state runs,
+    # leave events beyond the eight-alert cap eligible for the following check.
+    # Silent first-run/migration baselines remain unchanged.
+    selected_keys = {item["key"] for item in alert_items}
+    deferred_items = [item for item in new_items if item["key"] not in selected_keys] if initialized and dedupe_version >= 2 else []
+    deferred_keys = {item["key"] for item in deferred_items}
+    deferred_story_keys = {item["story_key"] for item in deferred_items if item.get("story_key")}
+    if deferred_keys:
+        pending["seen_keys"] = [key for key in pending["seen_keys"] if key not in deferred_keys]
+        pending["seen_story_keys"] = [key for key in pending["seen_story_keys"] if key not in deferred_story_keys]
+        pending["seen_story_records"] = [record for record in pending["seen_story_records"] if event_key(
+            str(record.get("company") or ""), str(record.get("title") or ""),
+            str(record.get("source") or "")) not in deferred_keys]
+    pending["deferred_alert_count"] = len(deferred_items)
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
 
@@ -4311,7 +4348,9 @@ def main() -> None:
                     public_title = detail[0] + " — " + detail[1]
             lines.extend([
                 f"<b>{idx}) {html.escape(DISPLAY_NAMES_KO.get(item['company'], item['company']))} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
-                f"• 단계: {html.escape(item['stage'])}",
+                f"• 단계: {html.escape(item['stage'])}" + (
+                    " — 검색 기사 분류·공식 원문과 실제 발효 여부 확인 필요"
+                    if item.get("company") == "US Optical Policy" else ""),
                 ("• 확인 수준: 취재 원문 직접 열람·회사 관계자 발언(공식 분기 매출 공시 별도)"
                  if item.get("firsthand_report_verified") is True
                  else "• 확인 수준: 당사자·공식자료" if new_infra_official_source(item)
@@ -4387,6 +4426,7 @@ def main() -> None:
         f"- 기준선 초기화 여부: {'예' if initialized else '아니오 — 이번 실행은 기준선만 저장'}",
         f"- 관련 신규 사건 후보: {len(new_items)}건",
         f"- Telegram 발송 사건: {len(alert_items)}건",
+        f"- 발송 한도 초과로 다음 조회에 남긴 사건: {len(deferred_items)}건",
         f"- 중복 기사 통합 후 사건 기준선: {len(deduped)}건",
         f"- 중복 제거 방식: 동일 원문 URL·제목/출처 통합 + 동일 사건 의미 클러스터 + 사건키 v3",
         f"- FAU·OCS·OPEN NPO 감시 버전: {STRUCTURAL_OPTICS_VERSION} (2025 OCP·2026년 7월 OPEN NPO 기존사건 기준선)",
@@ -4417,6 +4457,9 @@ def main() -> None:
     if errors:
         status_lines.extend(["", "## 소스 오류"] + [f"- {e}" for e in errors])
     STATUS_PATH.write_text("\n".join(status_lines).strip() + "\n", encoding="utf-8")
+    # Publish pending state only after report construction succeeds. A render
+    # failure must not let the workflow's always() step consume unsent events.
+    PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     print(f"initialized_before={initialized}")
     print(f"relevant={len(deduped)} new={len(new_items)} alert={len(alert_items)} errors={len(errors)}")
