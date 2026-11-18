@@ -1436,6 +1436,42 @@
       ],
       "prepared_at_utc": "2026-11-18T05:26:52.556988+00:00",
       "completed_at_utc": "2026-11-18T05:26:59.159368+00:00"
+    },
+    "robot-message-correction-20261118-44241145265-v1": {
+      "schema_version": 1,
+      "source_run_id": 44241145265,
+      "artifact_id": 14400150914,
+      "artifact_digest": "sha256:1eb959bdbedb34a6fc36585e80e0b1ae33d33f403253d46860a10533dc6b1003",
+      "route_fingerprint": "14816dc9bc6c054e9fdfc5d6ce0871dffed039dc5e8e27016b34273acffdf94e",
+      "message_ids": [
+        378,
+        379
+      ],
+      "original_alert_sha256": "bb867be0b43b13e13e44c11d806e0923ca853826d17153b165ee448208dce199",
+      "original_pending_sha256": "063b7af419d48b6ab275aac6b7a32cefcc325d954645357796bc2adb6337a400",
+      "original_receipts_sha256": "f6593455278b8da1fb0f470a854f1ac1594f29b0d04e1544f6865918c4e12772",
+      "original_chunk_sha256": [
+        "e1bd3b80b776c2ab9ea460c84e95e537c1e0a3404d8b03f13f301ba7923444a9",
+        "dbe1ad4de88be2f23e0370f4e3510822f03d6f9b05b4ac48f0c00d1da5ec0e65"
+      ],
+      "corrected_chunk_sha256": [
+        "3dbb6684d812a358e9514f5329d6841c98ea5e1f103e2c87d0f3107b0b6d3033",
+        "54d557ca9c743be916810e098f7edf3de89970ef0db2e92bb72ad57722efdf2d"
+      ],
+      "payload_sha256": "115f7ef554523c7dc18341e67a5b26435ed10a34dc2157ca8d5b85f39ad8ce7b",
+      "status": "partial",
+      "messages": {
+        "378": {
+          "message_id": 378,
+          "status": "in_flight",
+          "request_sha256": "e4b632be6839d65aada1d0d310c80c7218c13566e3bc747deb2c8f3eb74214e5",
+          "replacement_sha256": "3dbb6684d812a358e9514f5329d6841c98ea5e1f103e2c87d0f3107b0b6d3033",
+          "request_count": 1,
+          "requested_at_utc": "2026-11-18T05:27:00.769185+00:00"
+        }
+      },
+      "completed_message_ids": [],
+      "prepared_at_utc": "2026-11-18T05:27:00.769162+00:00"
     }
   }
 }
