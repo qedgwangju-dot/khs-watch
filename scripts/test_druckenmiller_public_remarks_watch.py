@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """No-network tests: source identity, timeline, news gate, format and dedup."""
 from datetime import datetime,timezone,timedelta
-from html import escape as xml_escape
-from unittest.mock import patch
+from html import escape as xml_escape, unescape as html_unescape
+from urllib.parse import parse_qs
+from unittest.mock import patch, MagicMock
 import io
 import json
+import re
+import os
 import unittest
 import druckenmiller_public_remarks_watch as watcher
 
@@ -135,6 +138,62 @@ class WatchTests(unittest.TestCase):
                 watcher.main()
             sender.assert_not_called()
             saver.assert_not_called()
+
+    def test_clickable_seed_sources_and_html_escaping(self):
+        msg=watcher.seed_message()
+        self.assertIn("<b>한눈에 보기</b>",msg)
+        self.assertIn("<b>쉽게 해석하면</b>",msg)
+        links=re.findall(r'<a href="([^"]+)">([^<]+)</a>',msg)
+        self.assertEqual(len(links),4)
+        self.assertIn("CoinDesk 보도",msg)
+        self.assertIn("FOMC 공식 성명",msg)
+        self.assertNotIn("\nhttps://",msg)
+        self.assertLess(len(msg),3800)
+        anchor=watcher.source_link("원문 & 보고서","https://example.com/report?a=1&b=2")
+        self.assertIn("report?a=1&amp;b=2",anchor)
+        self.assertIn("원문 &amp; 보고서",anchor)
+        self.assertEqual(html_unescape(links[0][0]),watcher.SEED_PUBLISHERS["CoinDesk"])
+        for invalid in ("javascript:alert(1)","http://example.com","https://user:pass@example.com/a"):
+            with self.assertRaises(RuntimeError):
+                watcher.source_link("invalid",invalid)
+
+    def test_dynamic_source_links_are_html_safe(self):
+        proof=[
+            {"publisher":"coindesk","signals":["copper_short"],
+             "published":NOW.isoformat(),"url":"https://www.coindesk.com/a?x=1&y=2"},
+            {"publisher":"barrons","signals":["copper_short"],
+             "published":NOW.isoformat(),"url":"https://www.barrons.com/a"},
+        ]
+        msg=watcher.news_message([("copper_short",proof)])
+        self.assertIn("<b>이번 신규 변화</b>",msg)
+        self.assertIn("coindesk</a>",msg)
+        self.assertIn("a?x=1&amp;y=2",msg)
+        self.assertLess(len(msg),3600)
+
+    def test_telegram_payload_html_is_guarded_without_network(self):
+        me=MagicMock()
+        me.__enter__.return_value=io.BytesIO(json.dumps({
+            "ok":True,"result":{"username":watcher.BOT_USERNAME}
+        }).encode())
+        sent=MagicMock()
+        sent.__enter__.return_value=io.BytesIO(json.dumps({
+            "ok":True,"result":{"message_id":987,"chat":{"id":12345}}
+        }).encode())
+        calls=[]
+        def no_network(request,timeout=None):
+            calls.append(request)
+            return me if len(calls)==1 else sent
+        with patch.dict(os.environ,{"THIRTEENF_TELEGRAM_BOT_TOKEN":"fake-test-token",
+                                   "THIRTEENF_TELEGRAM_CHAT_ID":"12345"}),\
+             patch.object(watcher,"urlopen",side_effect=no_network):
+            receipt=watcher.telegram_send(watcher.seed_message())
+        self.assertEqual(receipt["message_id"],987)
+        self.assertEqual(receipt["chat_id"],"12345")
+        self.assertEqual(len(calls),2)
+        sent_payload=parse_qs(calls[1].data.decode())
+        self.assertEqual(sent_payload["parse_mode"],["HTML"])
+        self.assertEqual(json.loads(sent_payload["link_preview_options"][0]),{"is_disabled":True})
+        self.assertIn('<a href=',sent_payload["text"][0])
 
     def test_strict_no_live_telegram(self):
         with patch.object(watcher,"http_bytes",return_value=b"<rss/>") as ignored:
