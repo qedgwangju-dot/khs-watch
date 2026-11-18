@@ -125,7 +125,7 @@ class WatchTests(unittest.TestCase):
         msg=watcher.news_message([("copper_short",proof)])
         self.assertIn("독립 매체 2곳",msg)
         self.assertIn("매도 포지션",msg)
-        self.assertIn("원문 발언 전문",msg)
+        self.assertIn("발언 전문과 포지션 증빙",msg)
         self.assertLess(len(msg),3600)
     def test_source_outage_fails_and_never_sends(self):
         state=watcher.empty_state()
