@@ -5,9 +5,7 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) model release c… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
+    "errors": [],
     "material_items": 11,
     "new_material_items": 0,
     "raw_items": 97,
@@ -217,16 +215,6 @@
       "source": "CNBC",
       "title": "OpenAI bugging suspect Alfozan ordered held without bond - CNBC",
       "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNNlEzbWo0NE1pc3VuQnRxbDZtNHZGVXd6STNFejRBYTE0T191XzF3dTNWcmc4UmwyUG5Rd0dwNWh5T3Zvb2FTd0IyNm1KTXVhMnpKUlJlUXZRY3B3S0IwRExRV3l6UXVPMlctUGRoV1FPS2dOR096d3M5U3huQVRyZ2sySE1PRGtfU0xmei1ZNNIBlAFBVV95cUxQamxHOGJ2QWpKYjhDa08weUJKWFg1MHVhRkdCbGVQY3NHTXZPdzdHS3lZb19EX1NmMnRXRkh1WUtZUFRZTkR0Z1FiUzB6YWFTcm4yQlVwVko3Rm5mX2FWYVJlV3lEZWNqQXRYcDFNMnllNktDbVFzMUdNVnNPcUFudzc0NElpVjNSQ2QtN0h5ekFKMDlX?oc=5",
-      "vendor": "OpenAI"
-    },
-    "1643fa8b40b2c82edce3c7c6": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T06:20:51.902160+00:00",
-      "published_at": "2026-10-13T20:55:12+00:00",
-      "severity": 2,
-      "source": "CNBC",
-      "title": "FBI arrests Saudi OpenAI employee who allegedly planted recording device in conference room - CNBC",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNckJQNWJCVWJZSzdEUVRzWHZyZ2I0amJxTVVqX1ltcmZtSGxKWkRUVUdEWnp4Wm9HSUctWlFGNk9mOTQwVXBVd3A4SzQ0YXB3WHFfaE9YaE1mX3ZUZ1BpWWU2dDhIRXd1NENRaTAxdHdaRTFYNm5tVEZxWFQ4anpvdXo2ano?oc=5",
       "vendor": "OpenAI"
     },
     "1a68c42d6f189b30e3c5bbe9": {
@@ -1342,5 +1330,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-18T15:07:16+09:00"
+  "updated_at_kst": "2026-11-18T15:35:12+09:00"
 }
