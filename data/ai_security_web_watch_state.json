@@ -5,7 +5,10 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [],
+    "errors": [
+      "Google News RSS 실패: (\"Model Context Protocol\" OR MCP) security vulnerabilit… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic) \"blocking alignment evaluation\" f… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
     "material_items": 11,
     "new_material_items": 0,
     "raw_items": 97,
@@ -1330,5 +1333,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-18T15:35:12+09:00"
+  "updated_at_kst": "2026-11-18T15:51:56+09:00"
 }
