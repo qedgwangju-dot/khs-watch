@@ -253,13 +253,36 @@ def _title_only_war_end_pledge(stage, row):
                 and not stage._statement_with_actual_action(title))
 
 
+def _apec_contact_outlook(stage, row):
+    """A summit opening and possible Korea-US contact do not establish a war event."""
+    title = stage._headline(row)
+    return bool(
+        re.search(r'\bapec\b', title, re.IGNORECASE)
+        and re.search(r'개막|정상회의', title)
+        and re.search(r'정상회담|정상회의', title)
+        and re.search(r'북미\s*접촉', title)
+        and re.search(r'여부|가능성|전망|촉각', title)
+        # Do not hide a separately reported conflict or peace development.
+        and not re.search(
+            r'공격|공습|폭격|포격|타격|피격|미사일|드론|폭발|군사|'
+            r'제재|봉쇄|위협|경고|확전|휴전|정전|종전|평화|협상|'
+            r'합의|거부|결렬|무산|전쟁|\b(?:attack\w*|airstrikes?|'
+            r'missiles?|ceasefire|truce|negotiat\w*)\b', title, re.IGNORECASE)
+        and not _separate_attack_headline(title)
+        and not _completed_attack_headline(title)
+        and not _active_adverse(title)
+        and not stage._statement_with_actual_action(title)
+    )
+
+
 def direction(stage, row):
     """Return a display color, or None for a neutral market reference."""
     kind = stage.non_military_kind(row)
     color = stage.final_color(row)
     title = stage._headline(row)
     tags = {str(tag).strip() for tag in row.get('tags', [])}
-    if (_title_only_war_end_pledge(stage, row)
+    if (_apec_contact_outlook(stage, row)
+            or _title_only_war_end_pledge(stage, row)
             or stage._conditional_nuclear_inspection_headline(row)
             or stage._north_korea_meeting_possibility_observation(row)
             or stage._summit_venue_description_only(row)):
@@ -442,6 +465,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         title_only_pledge = _title_only_war_end_pledge(stage, row)
         summit_venue = stage._summit_venue_description_only(row)
         meeting_observation = stage._north_korea_meeting_possibility_observation(row)
+        apec_outlook = _apec_contact_outlook(stage, row)
         inspection_condition = stage._conditional_nuclear_inspection_headline(row)
         postwar = (bool({str(tag).strip() for tag in row.get('tags', [])} & DIPLOMATIC_TAGS)
                    and _postwar_compromise_context(title))
@@ -450,7 +474,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             {'원인미확정', '공식확인대기'} <= source_tags
             or (re.search(r'재공격\s*가능성.{0,12}매우\s*작', title)
                 and '폭발음 보도·공격 원인 미확인' in source_tags)))
-        context = (commentary or policy_options or hypothetical or postwar or title_only_pledge or summit_venue or meeting_observation or inspection_condition
+        context = (commentary or policy_options or hypothetical or postwar or title_only_pledge or summit_venue or meeting_observation or apec_outlook or inspection_condition
                    or satellite_disruption
                    or uncertain or stalemate_statement)
         row['semantic_classification_color'] = row.get('classification_color')
@@ -507,6 +531,9 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                     label += ' · 본문 미확인'
             elif summit_venue:
                 label = stage.topic_label(row)
+            elif apec_outlook:
+                label = 'APEC 정상회의·북미 접촉 전망'
+                block = [line.replace(' · 종전·협상 · ', ' · 회의·접촉 전망 · ') for line in block]
             elif satellite_disruption:
                 label = '위성 시스템 제한 보도·원인 미확인'
             elif uncertain and re.search(r'재공격\s*가능성.{0,12}매우\s*작', title):
