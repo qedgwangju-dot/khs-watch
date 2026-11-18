@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-11-18T10:57:44+09:00",
+  "updated_at_kst": "2026-11-18T18:41:33+09:00",
   "source_dates": {
     "mof_week": "2026-11-01~11-07",
     "jgb_yield": "2026/11/17",
@@ -51,15 +51,15 @@
       "prev_tail_bp": 0.20000000000002238
     },
     "20": {
-      "date": "10/20/2026",
-      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20261020.htm",
-      "btc": 5.844349283187488,
-      "btc_drop_pct": 45.90992603500506,
-      "tail_bp": 0.6000000000000227,
-      "tail_widen_bp": -0.7000000000000117,
-      "prev_date": "9/15/2026",
-      "prev_btc": 4.005450103364029,
-      "prev_tail_bp": 1.3000000000000345
+      "date": "11/18/2026",
+      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20261118.htm",
+      "btc": 3.6401673640167367,
+      "btc_drop_pct": -37.71475338600225,
+      "tail_bp": 2.6000000000000245,
+      "tail_widen_bp": 2.0000000000000018,
+      "prev_date": "10/20/2026",
+      "prev_btc": 5.844349283187488,
+      "prev_tail_bp": 0.6000000000000227
     },
     "30": {
       "date": "11/10/2026",
