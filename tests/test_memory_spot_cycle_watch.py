@@ -83,6 +83,56 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
             self.assertEqual(fetcher.call_count, 1)
 
 
+    def test_semia_publisher_upgrade_remains_highest_rank_on_quiet_scans(self):
+        moment = w.dt.datetime(2026, 11, 18, 12, 0, tzinfo=w.KST)
+        secondary, first = w._semia_revision_gate(
+            {}, moment, {"checked_date": "2026-11-18", "verified": False})
+        self.assertTrue(first)
+        self.assertEqual(secondary["fact_key"], w.SEMIA_REVISED_EVENT)
+        verified, upgraded = w._semia_revision_gate(
+            secondary, moment, {
+                "checked_date": "2026-11-18",
+                "verified": True,
+                "source_kind": "publisher_numeric_verified",
+                "source_url": w.SEMIA_MODEL_URL,
+            })
+        self.assertTrue(upgraded)
+        self.assertEqual(verified["fact_key"], w.SEMIA_CONFIRMED_EVENT)
+        self.assertEqual(verified["source_level"], "발행처 수치 직접 확인")
+        repeated, duplicate = w._semia_revision_gate(
+            verified, moment, dict(verified["publisher_probe"]))
+        self.assertFalse(duplicate)
+        self.assertEqual(repeated["source_level"], "발행처 수치 직접 확인")
+        # Temporary publisher access loss cannot create a downgraded alert.
+        outage, duplicate = w._semia_revision_gate(
+            repeated, moment, {
+                "checked_date": "2026-11-18", "verified": False,
+                "source_kind": "publisher_model_numeric_unverified",
+            })
+        self.assertFalse(duplicate)
+        self.assertEqual(outage["fact_key"], w.SEMIA_CONFIRMED_EVENT)
+        self.assertEqual(outage["source_level"], "발행처 수치 직접 확인")
+        self.assertTrue(outage["publisher_probe"]["verified"])
+
+    def test_existing_semia_secondary_model_does_not_repeat_or_upgrade_from_x_reposts(self):
+        moment = w.dt.datetime(2026, 11, 18, 12, 10, tzinfo=w.KST)
+        previous = {
+            "fact_key": w.SEMIA_REVISED_EVENT,
+            "source_level": "SemiAnalysis 모델 이미지·2차 전재; 유료 원표 미열람",
+            "nvidia_details_id": w.SEMIA_NVIDIA_DETAILS_ID,
+            "capex_mix_id": w.SEMIA_CAPEX_MIX_ID,
+        }
+        next_state, should_send = w._semia_revision_gate(
+            previous, moment, {
+                "checked_date": "2026-11-18", "verified": False,
+                "source_kind": "publisher_model_numeric_unverified",
+            })
+        self.assertFalse(should_send)
+        self.assertEqual(next_state["fact_key"], previous["fact_key"])
+        self.assertEqual(next_state["nvidia_details_id"], previous["nvidia_details_id"])
+        self.assertEqual(next_state["capex_mix_id"], previous["capex_mix_id"])
+        self.assertIn("유료 원표 미열람", next_state["source_level"])
+
     def test_semia_chart_independent_429_fallback_preserves_existing_states(self):
         import json
         import datetime as dt

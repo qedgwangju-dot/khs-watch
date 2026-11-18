@@ -3702,11 +3702,22 @@ def _semia_revision_publisher_probe(previous: dict, now: dt.datetime) -> dict:
 def _semia_revision_gate(old: dict, now: dt.datetime, official: dict) -> tuple[dict, bool]:
     """Semantic dedupe: one secondary early-warning, one later primary upgrade."""
     next_state = dict(old or {})
-    next_state["source_level"] = "SemiAnalysis 모델 이미지·2차 전재; 유료 원표 미열람"
+    prior_proof = dict((old or {}).get("publisher_probe") or {})
+    # A previously verified publisher source must never silently fall back to a
+    # secondary citation after a routine scan or transient publisher outage.
+    if prior_proof.get("verified") and not official.get("verified"):
+        official = prior_proof
+    publisher_verified = bool(official.get("verified")) or (
+        (old or {}).get("fact_key") == SEMIA_CONFIRMED_EVENT
+    )
+    next_state["source_level"] = (
+        "발행처 수치 직접 확인" if publisher_verified
+        else next_state.get("source_level") or "SemiAnalysis 모델 이미지·2차 전재; 유료 원표 미열람"
+    )
     next_state["published_model_date"] = "2026-11-13"
     next_state["comparison_model_date"] = "2026-11-02"
     next_state["publisher_probe"] = official
-    event = SEMIA_CONFIRMED_EVENT if official.get("verified") else SEMIA_REVISED_EVENT
+    event = SEMIA_CONFIRMED_EVENT if publisher_verified else SEMIA_REVISED_EVENT
     is_recent = dt.date(2026, 11, 13) <= now.date() <= dt.date(2026, 12, 13)
     send = is_recent and event != (old or {}).get("fact_key")
     if send:
