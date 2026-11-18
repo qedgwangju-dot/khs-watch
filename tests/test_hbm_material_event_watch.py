@@ -247,7 +247,7 @@ class MaterialEventTests(unittest.TestCase):
         self.assertIn("2028년 +4.9%", alerts[1])
         self.assertIn("2028년 450조원", alerts[1])
         self.assertIn("10조~20조원", alerts[1])
-        self.assertEqual(len(out["hbm_material_event_watch"]["seen_keys"]), len(m.REPORTS))
+        self.assertEqual(len(out["hbm_material_event_watch"]["seen_keys"]), sum(r["date"] <= "2026-11-17" for r in m.REPORTS))
         for chunk in d.chunks(alerts[0]):
             self.assertTrue(chunk.strip())
         def no_repeat(_):
@@ -301,6 +301,57 @@ class MaterialEventTests(unittest.TestCase):
         self.assertEqual(audit_again["verified_events"], 0)
         self.assertEqual(again["hbm_material_event_watch"]["seen_keys"],
                          updated["hbm_material_event_watch"]["seen_keys"])
+
+    def test_trendforce_roadshow_only_after_publication_and_exact_event_once(self):
+        roadshow = [r for r in m.REPORTS if r["date"] == "2026-11-18"]
+        self.assertEqual(len(roadshow), 4)
+        previous = {
+            "delivery_receipt": {"status": "confirmed", "message_ids": [493]},
+            "hbm_material_event_watch": {"seen_keys": [
+                r["key"] for r in m.REPORTS if r["date"] < "2026-11-18"
+            ]},
+        }
+        def never(url):
+            raise AssertionError("Future-dated Roadshow cannot be read")
+        _, before_alerts, before_audit = m.apply(
+            previous, "2026-11-17T23:59:59+09:00", never)
+        self.assertEqual(before_alerts, [])
+        self.assertEqual(before_audit["verified_events"], 0)
+
+        # Independently sufficient exact numeric evidence for each item.
+        evidence = " ".join(" ".join(terms[0] for terms in x["need"]) for x in roadshow)
+        updated, alerts, audit = m.apply(
+            previous, "2026-11-18T18:15:00+09:00", lambda _: evidence)
+        self.assertEqual(audit["verified_events"], 4)
+        self.assertEqual(len(alerts), 1)  # one grouped Telegram alert, not four notifications
+        alert = alerts[0]
+        for needle in ("2.05", "3~5.5", "5달러", "2027년 2분기",
+                       "31%→51%", "22%→2027년 31%", "2028년", "3만6,000"):
+            self.assertIn(needle, alert)
+        self.assertIn("전체 가격대가 100% 이상", alert)
+        self.assertIn("11월 17일", alert)  # already monitored NAND event, no duplicate
+        self.assertEqual(updated["delivery_receipt"], previous["delivery_receipt"])
+        self.assertEqual(len(updated["hbm_material_event_watch"]["seen_keys"]), len(m.REPORTS))
+        for chunk in d.chunks(alert):
+            self.assertTrue(chunk.strip())
+        _, repeated, repeated_audit = m.apply(
+            updated, "2026-11-18T19:00:00+09:00",
+            lambda _: (_ for _ in ()).throw(AssertionError("Acknowledged event refetched")))
+        self.assertEqual(repeated, [])
+        self.assertEqual(repeated_audit["verified_events"], 0)
+
+    def test_trendforce_roadshow_numeric_gate_and_price_scope(self):
+        news = next(r for r in m.REPORTS if "roadshow_hbm4_per_gb" in r["key"])
+        self.assertIn("상승률", " ".join(news["facts"]))
+        self.assertIn("분모가 다름", " ".join(news["facts"]))
+        self.assertNotIn("확정 납품", news["label"])
+        for omitted in ("2.05", "3~5.5", "HBM4E"):
+            source = " ".join(terms[0] for terms in news["need"]).replace(omitted, "MISSING")
+            obs, gaps = m.probe(news, lambda _: source)
+            self.assertIsNone(obs)
+            self.assertTrue(gaps)
+        self.assertIn("전체 생산능력으로 확정 사용 금지", " ".join(
+            next(r for r in m.REPORTS if "2028_dram_supply_risk" in r["key"])["facts"]))
 
 if __name__ == "__main__":
     unittest.main()
