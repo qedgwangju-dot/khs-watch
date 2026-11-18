@@ -775,8 +775,8 @@ if gen_seen_old not in t:
     raise SystemExit("generation ordered-dedupe insertion point not found")
 t = t.replace(gen_seen_old, gen_seen_new, 1)
 
-gen_cap_old = '''seen = list(dict.fromkeys(list(old_ids) + [x["id"] for x in items]))[-1600:]'''
-gen_cap_new = '''seen = list(dict.fromkeys(old_seen + [x["id"] for x in items]))[-SEEN_ID_LIMIT:]'''
+gen_cap_old = '''seen = list(dict.fromkeys(\n    list(old.get("seen_ids", [])) + [x["id"] for x in acknowledged_news]\n))[-1600:]'''
+gen_cap_new = '''seen = list(dict.fromkeys(\n    old_seen + [x["id"] for x in acknowledged_news]\n))[-SEEN_ID_LIMIT:]'''
 if gen_cap_old not in t:
     raise SystemExit("generation seen-limit insertion point not found")
 t = t.replace(gen_cap_old, gen_cap_new, 1)
