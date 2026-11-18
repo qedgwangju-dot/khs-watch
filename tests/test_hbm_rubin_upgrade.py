@@ -131,6 +131,23 @@ class RubinHBMUpgradeTests(unittest.TestCase):
         self.assertEqual(r.make_fact(a)["fact_key"], r.make_fact(b)["fact_key"])
         self.assertNotIn("2026-11-18", r.make_fact(a)["fact_key"])
 
+    def test_hbm4e_vendor_from_headline_not_rival_in_description(self):
+        samsung = self.base_event(
+            "hbm4e_validation",
+            "Samsung HBM4E evaluation with major partner very positive feedback")
+        samsung["description"] = "SK hynix also competes in HBM4E products."
+        fact = r.make_fact(samsung)
+        self.assertEqual(fact["fact_key"], "삼성전자_hbm4e_customer_feedback_positive")
+        self.assertEqual(r.fact_signature_from_raw(samsung), fact["fact_key"])
+        rival = self.base_event(
+            "hbm4e_validation", "SK hynix HBM4E evaluation very positive feedback")
+        rival["description"] = "Samsung Electronics is a competitor."
+        self.assertEqual(r.make_fact(rival)["fact_key"], "SK하이닉스_hbm4e_customer_feedback_positive")
+        korean = self.base_event(
+            "hbm4e_validation", "삼성 HBM4E 고객 평가 결과 매우 긍정적")
+        self.assertTrue(r.relevant("hbm4e_validation", korean["title"]))
+        self.assertEqual(r.make_fact(korean)["fact_key"], "삼성전자_hbm4e_customer_feedback_positive")
+
     def test_hbm4e_negative_qualifications_and_unrelated_optimism_not_upgraded(self):
         bad = self.base_event("hbm4e_validation",
                               "Samsung HBM4E not yet qualified, evaluation ongoing; positive shares")

@@ -611,7 +611,7 @@ def relevant(category: str, text: str) -> bool:
             and any(k in low for k in ("share", "market share", "progress", "pricing", "점유율", "진척", "가격"))
         )
     if category == "hbm4e_validation":
-        return "hbm4e" in low and any(k in low for k in ("samsung", "삼성전자", "sk hynix", "sk하이닉스", "micron")) and any(k in low for k in ("qualification", "validation", "evaluation", "evaluating", "assessment", "feedback", "sample", "mass production", "production", "yield", "수율", "양산", "검증", "평가", "피드백", "샘플"))
+        return "hbm4e" in low and any(k in low for k in ("samsung", "삼성전자", "삼성", "sk hynix", "sk하이닉스", "micron")) and any(k in low for k in ("qualification", "validation", "evaluation", "evaluating", "assessment", "feedback", "sample", "mass production", "production", "yield", "수율", "양산", "검증", "평가", "피드백", "샘플"))
     if category == "hbm_hybrid_bonding":
         return (
             "hbm" in low
@@ -3201,6 +3201,21 @@ def render_hbm_hybrid_bonding_notice(e: dict, now: datetime) -> str:
     return "\n".join(line for line in lines if line).strip() + "\n"
 
 
+def hbm4e_source_company(event: dict, full_text: str = "") -> str:
+    """Use headline subject before article context containing rival companies."""
+    pattern = r"samsung(?:\\s+electronics)?|sk[\\s-]?(?:hynix|하이닉스)|micron|삼성전자|삼성"
+    headline = str(event.get("title") or event.get("article_title") or "")
+    match = re.search(pattern, headline, re.I) or re.search(pattern, full_text, re.I)
+    if not match:
+        return ""
+    value = match.group(0).casefold()
+    if value.startswith("samsung") or value.startswith("삼성"):
+        return "삼성전자"
+    if value.startswith("sk"):
+        return "SK하이닉스"
+    return "Micron"
+
+
 def hbm4e_positive_customer_feedback(text: str) -> bool:
     """Detect early customer evaluation feedback, not a qualification milestone.
 
@@ -3332,13 +3347,7 @@ def make_fact(event: dict) -> dict | None:
         verdict = "🟢 중장기 HBM 공급 확대와 수요 강도를 확인하는 긍정 신호. 다만 단기 고객 인증 완료 신호로 해석하면 안 됩니다."
 
     elif cat == "hbm4e_validation" and "hbm4e" in low:
-        company = ""
-        if "sk hynix" in low or "sk하이닉스" in low:
-            company = "SK하이닉스"
-        elif "samsung" in low or "삼성전자" in low:
-            company = "삼성전자"
-        elif "micron" in low:
-            company = "Micron"
+        company = hbm4e_source_company(e, text)
         if not company:
             return None
 
@@ -3575,9 +3584,7 @@ def fact_signature_from_raw(event: dict) -> str:
     text = f"{event.get('title','')} {event.get('description','')}".lower()
     cat = event.get("category") or ""
     if cat == "hbm4e_validation" and hbm4e_positive_customer_feedback(text):
-        company = ("삼성전자" if ("samsung" in text or "삼성전자" in text)
-                   else "SK하이닉스" if ("sk hynix" in text or "sk하이닉스" in text)
-                   else "Micron" if "micron" in text else "")
+        company = hbm4e_source_company(event, text)
         if company:
             return f"{company}_hbm4e_customer_feedback_positive"
     if "hbm4e" in text and "indiana" in text and "2029" in text and "sk hynix" in text:
