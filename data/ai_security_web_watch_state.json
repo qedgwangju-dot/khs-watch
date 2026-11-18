@@ -5,7 +5,9 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [],
+    "errors": [
+      "Google News RSS 실패: (\"agent safety runtime\" OR \"secure agent runtime\") vuln… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
     "material_items": 11,
     "new_material_items": 0,
     "raw_items": 106,
@@ -1230,5 +1232,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-19T01:36:12+09:00"
+  "updated_at_kst": "2026-11-19T01:40:42+09:00"
 }
