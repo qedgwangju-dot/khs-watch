@@ -21,7 +21,8 @@ from scripts.honam_event_filter import (
     _power_event,
     main as event_filter_main,
 )
-from scripts.honam_semiconductor_watch import canonical_headline_key, canonical_url_key, verified_intake_events
+from scripts.honam_semiconductor_watch import canonical_headline_key, canonical_url_key, verified_intake_events, source_collection_health
+from scripts import honam_semiconductor_watch as honam_watch
 from scripts.honam_telegram_formatter import build_message, split_message
 from scripts.honam_event_filter import _action_level
 
@@ -650,6 +651,33 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
             self.assertEqual(json.loads(alert.read_text(encoding="utf-8"))["new_count"], 1)
 
 
+
+
+    def test_rss_source_failure_is_not_no_new_announcement(self):
+        self.assertIn("조회 성공", source_collection_health(3, 0, 3))
+        self.assertIn("부분 조회 실패", source_collection_health(2, 1, 3))
+        self.assertIn("전체 조회 실패", source_collection_health(0, 3, 3))
+        with self.assertRaises(ValueError):
+            source_collection_health(1, 1, 3)
+
+    def test_total_rss_outage_refuses_state_advance_without_sending(self):
+        with tempfile.TemporaryDirectory() as tempdir:
+            root = pathlib.Path(tempdir)
+            state, pending, alert, status = (root / name for name in ("state.json", "pending.json", "alert.json", "status.md"))
+            original = '{"initialized":true,"seen_event_keys":["preserve"]}'
+            state.write_text(original, encoding="utf-8")
+            with patch.object(honam_watch, "STATE_PATH", state), \
+                 patch.object(honam_watch, "PENDING_PATH", pending), \
+                 patch.object(honam_watch, "ALERT_PATH", alert), \
+                 patch.object(honam_watch, "STATUS_PATH", status), \
+                 patch.object(honam_watch, "QUERIES", ["source A", "source B"]), \
+                 patch.object(honam_watch, "google_news_items", side_effect=RuntimeError("HTTP 429")):
+                with self.assertRaisesRegex(RuntimeError, "전체 RSS 수집 실패"):
+                    honam_watch.main()
+            self.assertEqual(state.read_text(encoding="utf-8"), original)
+            self.assertFalse(pending.exists())
+            self.assertFalse(alert.exists())
+            self.assertFalse(status.exists())
 
     def test_nov18_leads_remain_preliminary_and_separately_keyed(self):
         vetted = verified_intake_events({"seen_event_keys": []})

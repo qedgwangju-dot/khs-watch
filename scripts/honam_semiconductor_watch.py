@@ -273,6 +273,17 @@ def identify_publisher(url: str, fallback: str):
     return fallback or host or "웹 원문"
 
 
+def source_collection_health(success_count: int, failure_count: int, total_count: int) -> str:
+    """Data availability is not the same as no newly published event."""
+    if total_count < 1 or success_count < 0 or failure_count < 0 or success_count + failure_count != total_count:
+        raise ValueError("Invalid RSS source collection counters")
+    if success_count == 0:
+        return "전체 조회 실패(신규 변화 없음으로 판정 금지)"
+    if failure_count:
+        return f"부분 조회 실패({failure_count}/{total_count}개 검색어, 해당 원천 확인 전)"
+    return "조회 성공(신규 발표 여부는 사건 판정 결과 참조)"
+
+
 def google_news_items(query: str):
     rss = f"https://news.google.com/rss/search?q={urllib.parse.quote(query)}&hl=ko&gl=KR&ceid=KR:ko"
     root = ET.fromstring(fetch(rss))
@@ -470,12 +481,22 @@ def main():
     seen_headlines = set(state.get("seen_headline_keys", []))
     seen_urls = set(state.get("seen_url_keys", []))
     errors, all_items = [], []
+    rss_success_count = 0
+    rss_failure_count = 0
 
     for query in QUERIES:
         try:
             all_items.extend(google_news_items(query))
+            rss_success_count += 1
         except Exception as exc:
+            rss_failure_count += 1
             errors.append(f"RSS 실패: {query}: {type(exc).__name__}: {exc}")
+
+    rss_health = source_collection_health(rss_success_count, rss_failure_count, len(QUERIES))
+    if rss_success_count == 0:
+        # An outright source outage must not advance dedupe cursors or turn
+        # the absence of data into "no news". The next scheduled scan retries.
+        raise RuntimeError("호남 반도체 전체 RSS 수집 실패: 신규 변화 없음으로 판정·상태 갱신 금지")
 
     dedup = {item["story_key"]: item for item in all_items}
     relevant_items = []
@@ -569,6 +590,10 @@ def main():
         "last_relevant_count": len(relevant_items),
         "last_stale_suppressed_count": len(stale),
         "errors": errors[-20:],
+        "rss_collection_health": rss_health,
+        "rss_failed_queries": rss_failure_count,
+        "rss_successful_queries": rss_success_count,
+        "official_source_health": "일부 원천 조회 실패(상태 변화 없음으로 단정 금지)" if any(e.startswith("LH ") for e in errors) else "LH 핵심 페이지 조회 성공",
         "alert_basis": "topic_event_official_state_change",
         "article_role": "evidence_and_crosscheck_only",
         "baseline_guard": "suppress_20260922_roadmap_rehash_unless_execution_or_status_changes",
@@ -587,9 +612,12 @@ def main():
         f"- 새 관련정보: {len(send_items)}건",
         f"- 과거·중복 차단: {len(stale)}건",
         f"- 공식 핵심페이지 변경: {len(send_official)}건",
+        f"- RSS 원천 조회: {rss_health}",
+        f"- LH 공식 원천: {'일부 조회 실패(신규 변화 없음으로 단정 금지)' if any(e.startswith('LH ') for e in errors) else '조회 성공'}",
+        f"- 전체 수집 실패 건수: {len(errors)}건(실패 원천만 해당, 나머지 정상 수집과 구별)",
         "- 감시 범위: 환경 3단계 + 정주·주거 + 전력·용수·교통·생활 인프라(ESS·LNG 열병합·재생에너지·전력구매계약·인허가·전원 인가) + 산단·기업투자·팹 일정 + 광주·함평·무안 다핵 클러스터",
     ]) + "\n", encoding="utf-8")
-    print(f"relevant={len(relevant_items)} new={len(send_items)} stale_suppressed={len(stale)} official_changes={len(send_official)} initialized_before={initialized}")
+    print(f"relevant={len(relevant_items)} new={len(send_items)} stale_suppressed={len(stale)} official_changes={len(send_official)} initialized_before={initialized} rss_ok={rss_success_count} rss_failed={rss_failure_count} official_source_partial_failure={any(e.startswith('LH ') for e in errors)}")
 
 
 if __name__ == "__main__":
