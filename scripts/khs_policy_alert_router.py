@@ -909,6 +909,8 @@ def alert_source_family(alert: dict) -> str:
 
 
 def semantic_alert_key(alert: dict) -> str:
+    if alert.get("fcc_sim_fraud_section") and alert.get("document_number"):
+        return "fcc-compliance-notice|" + str(alert["document_number"])
     if alert.get("policy_event_key") == "us-section232-robotics-machinery-proclamation-2026-10-28":
         return "policy-event|us-section232-robotics-machinery-proclamation-2026-10-28"
     probe = enrich_missing_context(dict(alert))
@@ -1021,6 +1023,21 @@ def source_markdown(alert: dict) -> str:
     return " / ".join(parts)
 
 
+def policy_timeline_lines(alert: dict) -> list[str]:
+    section = alert.get("fcc_sim_fraud_section")
+    if not section or not alert.get("body_verified"):
+        return presidential_action_timeline_lines(alert)
+    lines = [
+        f"- 대상: 미국 이동통신사업자(47 CFR {section})",
+        "- 타임라인: 미국 현지 날짜 기준",
+    ]
+    for event in alert["policy_timeline"]:
+        day = dt.date.fromisoformat(event["date"])
+        detail = f" · {event['detail']}" if event.get("detail") else ""
+        lines.append(f"  • {day.year}년 {day.month}월 {day.day}일: {event['stage']}{detail}")
+    return lines
+
+
 def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
     if not alerts:
         return no_general_report(now)
@@ -1035,7 +1052,7 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
             *compact_explanation_lines(alert),
             *robotics_232_detail_lines(alert),
             *doe_grid_scaled_detail_lines(alert),
-            *presidential_action_timeline_lines(alert),
+            *policy_timeline_lines(alert),
             f"- 출처: [원문 보기]({alert.get('link', '')}) · {display_source(alert.get('source'))} · 조회 {now:%H:%M KST}",
             "",
         ])

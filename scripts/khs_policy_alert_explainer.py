@@ -864,6 +864,8 @@ def is_eu_sanctions_export_policy(text: str, item: dict) -> bool:
 
 def ensure_explained(item: dict) -> dict:
     default_context(item)
+    if item.get("fcc_sim_fraud_section") and item.get("body_verified"):
+        return item
     text = text_for(item)
     if (
         item.get("policy_event_key") == "us-doe-grid-scaled-funding-opportunity-2026-10-30"

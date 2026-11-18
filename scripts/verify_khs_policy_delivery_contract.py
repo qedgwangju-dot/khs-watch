@@ -766,6 +766,7 @@ def main() -> int:
     assert_trusted_policy_news_render_is_compact()
     assert_fcc_chinese_optical_transceiver_ban_is_monitored()
     assert_fcc_optics_followup_reaches_telegram_once()
+    assert_fcc_sim_fraud_compliance_timeline_reaches_telegram()
     assert_korea_trade_remedy_final_rate_change_is_monitored()
     assert_congress_chinese_optical_transceiver_bill_is_monitored()
     assert_fcc_upper_c_band_auction115_is_monitored()
@@ -2427,6 +2428,88 @@ def assert_fcc_optics_followup_reaches_telegram_once() -> None:
     core = watch.compact_core(rule, items)
     assert len(core) <= 50 and core.endswith("추진합니다.")
     assert "3.2T" not in message and "오이솔루션" not in message
+
+
+def assert_fcc_sim_fraud_compliance_timeline_reaches_telegram() -> None:
+    now = dt.datetime(2026, 11, 18, 16, 44, tzinfo=ZoneInfo("Asia/Seoul"))
+    source = next(row for row in khs_policy_watch.SOURCES if row.name == "Federal Register FCC")
+    title = "Protecting Consumers From SIM-Swap and Port-Out Fraud"
+    slug = "protecting-consumers-from-sim-swap-and-port-out-fraud"
+    alerts = []
+    official_bodies = {}
+    for number, day, section, scope in (
+        ("2026-23522", 18, "52.37", "번호이동"),
+        ("2026-23400", 17, "64.2010(h)", "SIM 교체"),
+    ):
+        path = f"2026/11/{day}"
+        link = f"https://www.federalregister.gov/documents/{path}/{number}/{slug}"
+        row = {
+            "title": title,
+            "document_number": number,
+            "publication_date": f"2026-11-{day}",
+            "effective_on": "2023-12-08",
+            "type": "Rule",
+            "html_url": link,
+        }
+        item, = khs_policy_watch.parse_federal_register_json(json.dumps({"results": [row]}), source)
+        raw = f"""<pre>
+        [FR Doc No: {number}]
+        FEDERAL COMMUNICATIONS COMMISSION
+        [WC Docket No. 21-341; FCC 23-95; FR ID 378222]
+        {title}
+        ACTION: Final rule; announcement of compliance date.
+        DATES:
+            Effective date: Amendatory instruction (47 CFR {section}), published
+            at 88 FR 85794, December 8, 2023, is effective on November {day}, 2026.
+            Compliance date: Compliance with the amendments to 47 CFR {section},
+            published at 88 FR 85794, December 8, 2023, for commercial mobile radio
+            service providers is required as of December {day}, 2026.
+        ADDRESSES: Federal Communications Commission.
+        OMB Approval Date: January 15, 2025.
+        [FR Doc. {number} Filed 11-{day-1}-26; 8:45 am]
+        </pre>"""
+        official_bodies[number] = item, raw
+        with patch.object(khs_policy_watch, "fetch_text", side_effect=[(None, "timeout"), (raw, None)]) as fetch:
+            alert = khs_policy_watch.classify_item(item)
+        assert fetch.call_args.args[0].endswith(f"/{path}/{number}.txt")
+        assert alert and alert["fcc_sim_fraud_section"] == section, alert
+        assert alert["title_ko"] == f"미 FCC, {scope} 사기 방지 규칙 준수일 공지"
+        assert alert["policy_timeline"][-1]["date"] == f"2026-12-{day}"
+        assert alert["fingerprint"] == khs_policy_watch.hashlib.sha256(
+            f"{source.name}|{title}|{link}".encode("utf-8")
+        ).hexdigest()[:16], "The original Telegram delivery fingerprint must remain stable"
+        alerts.append(alert)
+
+    port_out, raw = official_bodies["2026-23522"]
+    wrong_body = official_bodies["2026-23400"][1]
+    undated = raw.replace("is required as of December 18, 2026.", "is required [INSERT DATE].")
+    for unverified in (wrong_body, undated, None):
+        with patch.object(khs_policy_watch, "fetch_text", return_value=(unverified, None)):
+            assert khs_policy_watch.classify_item(port_out) is None
+
+    assert len(khs_policy_alert_router.dedupe_alerts([*alerts, dict(alerts[0])])) == 2
+    cleanup()
+    try:
+        OUT_DIR.mkdir(exist_ok=True)
+        khs_policy_watch.write_outputs(alerts, [], now)
+        khs_policy_alert_guardrails.main()
+        khs_policy_alert_router.main()
+        khs_telegram_delivery_guard.main()
+        title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+        body_path = OUT_DIR / "khs_policy_watch_alert.md"
+        telegram = khs_policy_telegram_formatter.prepare_telegram_html(
+            title_path.read_text(encoding="utf-8"), body_path.read_text(encoding="utf-8")
+        )
+        for alert, day in zip(alerts, (18, 17)):
+            assert f'<a href="{alert["link"]}">원문</a>' in telegram, telegram
+            assert f"<b>2026년 12월 {day}일</b>: 이동통신사 준수 의무 시작" in telegram, telegram
+            assert f"<b>2026년 11월 {day}일</b>: 이번 공지 관보 게재·발효" in telegram, telegram
+            assert f"47 CFR {alert['fcc_sim_fraud_section']}" in telegram, telegram
+        assert "FCC, 통신·주파수·위성 규제 문서 공표" not in telegram, telegram
+        assert "11/17 22:45 KST" in telegram, telegram
+    finally:
+        cleanup()
+    print("fcc_sim_fraud_compliance_timeline=passed")
 
 
 def assert_korea_trade_remedy_final_rate_change_is_monitored() -> None:
