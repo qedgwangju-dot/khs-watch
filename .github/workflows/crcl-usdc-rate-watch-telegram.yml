@@ -124,8 +124,8 @@ jobs:
           assert "<b>이번 변화</b>" in rendered
           assert "<b>핵심 숫자</b>" in rendered
           assert "<b>읽는 법</b>" in rendered
-          assert "<b>SOFR</b> ↑ = 준비금 수익에 유리 / ↓ = 불리" in rendered
-          assert "<b>TBX</b> ↑ = 7~10년 국채 가격↓·금리↑" in rendered
+          assert "<b>SOFR</b> 상승 ↑ = 준비금 수익에 유리 가능 / 하락 ↓ = 불리 가능" in rendered
+          assert "<b>TBX</b> ↑ = 7~10년 국채 가격↓·금리↑ → CRCL 할인율 부담↑" in rendered
           assert "SOFR 방향 읽는 법 — 고정" not in rendered
           assert "TBX → CRCL 쉽게 해석" not in rendered
           assert "<b>고정 기준</b>" not in rendered
