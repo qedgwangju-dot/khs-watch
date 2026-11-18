@@ -1,11 +1,51 @@
 {
-  "last_success": null,
-  "pending": {
-    "key": "public-remarks:2026-11-17:TomorrowX:capital-defense-copper-short-AI-apps-v1",
-    "reserved_at": "2026-11-18T05:24:37.257227+00:00",
-    "verified_mode": "two_reported_publishers"
+  "last_success": {
+    "bot": "khs887988798879_bot",
+    "chat_id": "1551003698",
+    "message_id": 158,
+    "sent_at": "2026-11-18T05:24:40.676057+00:00"
   },
-  "sent_events": {},
-  "signal_values": {},
+  "pending": null,
+  "sent_events": {
+    "public-remarks:2026-11-17:TomorrowX:capital-defense-copper-short-AI-apps-v1": {
+      "date": "2026-11-18",
+      "receipt": {
+        "bot": "khs887988798879_bot",
+        "chat_id": "1551003698",
+        "message_id": 158,
+        "sent_at": "2026-11-18T05:24:40.676057+00:00"
+      }
+    }
+  },
+  "signal_values": {
+    "ai": {
+      "event_date": "2026-11-17T00:00:00+00:00",
+      "value": "ai_applications"
+    },
+    "copper": {
+      "event_date": "2026-11-17T00:00:00+00:00",
+      "value": "copper_short"
+    },
+    "credit": {
+      "event_date": "2026-11-17T00:00:00+00:00",
+      "value": "credit_stress"
+    },
+    "equity": {
+      "event_date": "2026-11-17T00:00:00+00:00",
+      "value": "equity_defensive"
+    },
+    "fed_view": {
+      "event_date": "2026-11-17T00:00:00+00:00",
+      "value": "fed_hawkish"
+    },
+    "growth": {
+      "event_date": "2026-11-17T00:00:00+00:00",
+      "value": "growth_2027"
+    },
+    "usd": {
+      "event_date": "2026-11-17T00:00:00+00:00",
+      "value": "dollar_long"
+    }
+  },
   "version": 1
 }
