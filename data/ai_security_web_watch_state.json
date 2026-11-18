@@ -5,10 +5,13 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [],
+    "errors": [
+      "Google News RSS 실패: \"rogue agent\" AI OpenAI Anthropic Google Meta security… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"Abdulrahman Alfozan\" (detention OR court OR hearing OR… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
     "material_items": 11,
     "new_material_items": 0,
-    "raw_items": 104,
+    "raw_items": 101,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -717,16 +720,6 @@
       "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOMXE1MTlaZ3ZHc0RqN0E3MnBqM2xDeGJLOEU5MDVodnE4RGsxeWNBZGtwdzluS3UwQ0JEU1BWa1d1dXk4SkJvOGR0alZSODV2bjNTTGQzTnllZkNGWUZXQUdYa1dtNE1IUnF1aXVfZE5pTnJXbVRyZlVQRzJ4T1hGUXYteWd4YXZrMXZTZmRxX2ZWWktLd1BEalpmNGM2YWdXYXQ1d2hxVUV0TFJET0wtTTlSTFZTUWJJM0tyUXdycmZJOEVQOVE?oc=5",
       "vendor": "PHP 재단"
     },
-    "9219d30ceb03e52d3e9047bf": {
-      "category": "AI 자율복제·사물인터넷 모의평가",
-      "first_seen_at": "2026-10-14T16:12:24.596037+00:00",
-      "published_at": "2026-10-14T15:19:02+00:00",
-      "severity": 1,
-      "source": "The Verge",
-      "title": "Anthropic’s self-replicating AI warning is alarming deja vu - The Verge",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPVmlsZkg4MjVmSXE4WDBLY29yUEZxZmo1SG9hcHlZdmRFLTF3V2lyWUpqbEZhNHF1aXpaWG9BdGdhREx6Tnk5Mjc4dWpkRUIyR0huejRDN29tM2hZQW1iNjJqM1FSdUF3cVJKS2VScUVNbG1mRFBjM3ZUV3RHeXV6TjNFM01EeW1vS2Q3SHc0TXJZcnNPb2JoMmNhNk5nQk9tTXprczFfbmlKeFBx?oc=5",
-      "vendor": "Anthropic"
-    },
     "97728dc0809c35565f941184": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-24T14:10:54.565825+00:00",
@@ -1240,5 +1233,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-19T00:53:29+09:00"
+  "updated_at_kst": "2026-11-19T01:25:42+09:00"
 }
