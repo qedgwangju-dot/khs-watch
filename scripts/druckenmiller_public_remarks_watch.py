@@ -49,6 +49,13 @@ ALL_SIGNALS={
     "fed_view":"연준 추가 긴축 우려(본인 판단)",
     "usd":"소규모 달러 매수(보도 기준)",
 }
+SIGNAL_DIMENSION={
+    "copper_short":"copper","copper_long":"copper",
+    "equity_defensive":"equity","equity_risk_on":"equity",
+    "growth_2027":"growth","ai_applications":"ai",
+    "fed_hawkish":"fed_view","credit_stress":"credit","dollar_long":"usd",
+}
+
 SPEECH_PATTERNS={
     "copper_short":(r"\bshort(?:ing)?\s+copper\b",r"\bcopper\s+short\b",
                     r"betting\s+against\s+copper",r"bearish\s+on\s+copper"),
@@ -332,7 +339,8 @@ def news_candidates(state,articles,now):
     ready=corroborated(articles,now)
     changed=[]
     for signal,proof in ready.items():
-        last=state.get("signal_values",{}).get(signal,{})
+        dimension=SIGNAL_DIMENSION.get(signal,signal)
+        last=state.get("signal_values",{}).get(dimension,{})
         published=datetime.fromisoformat(proof[0]["published"])
         if (last.get("value")==signal and last.get("event_date") and
                 (published.date()-datetime.fromisoformat(last["event_date"]).date()).days<90):
@@ -440,7 +448,7 @@ def main():
     if boot:
         message=seed_message()
         event=SEED_KEY
-        recorded={key:{"value":key,"event_date":SEED_DATE+"T00:00:00+00:00"}
+        recorded={SIGNAL_DIMENSION[key]:{"value":key,"event_date":SEED_DATE+"T00:00:00+00:00"}
                   for key in ("copper_short","equity_defensive","growth_2027","ai_applications")}
         # Also treat the specific 11/17 remarks as prior coverage; reused
         # summaries should not trigger multiple follow-up alerts.
@@ -448,7 +456,7 @@ def main():
         # follow-up fragments merely because another outlet covers one point.
         for key in ("copper_short","equity_defensive","growth_2027","ai_applications",
                     "fed_hawkish","credit_stress","dollar_long"):
-            recorded[key]={"value":key,"event_date":SEED_DATE+"T00:00:00+00:00"}
+            recorded[SIGNAL_DIMENSION[key]]={"value":key,"event_date":SEED_DATE+"T00:00:00+00:00"}
             changes=[item for item in changes if item[0]!=key]
     elif changes and healthy>=1:
         labels=";".join(key for key,_ in changes)
@@ -458,7 +466,7 @@ def main():
             print("DRUCKENMILLER_NO_NEW_SIGNALS duplicate_event_key")
             return 0
         message=news_message(changes)
-        recorded={key:{"value":key,"event_date":proof[0]["published"],
+        recorded={SIGNAL_DIMENSION.get(key,key):{"value":key,"event_date":proof[0]["published"],
                        "outlets":[x["publisher"] for x in proof[:3]]} for key,proof in changes}
     else:
         if healthy==0:
