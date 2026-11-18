@@ -12,6 +12,8 @@ import datetime as dt
 import json
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
+from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
 import khs_article_detail
@@ -763,6 +765,7 @@ def main() -> int:
     assert_trusted_policy_news_story_fingerprint_allows_intraday_updates()
     assert_trusted_policy_news_render_is_compact()
     assert_fcc_chinese_optical_transceiver_ban_is_monitored()
+    assert_fcc_optics_followup_reaches_telegram_once()
     assert_korea_trade_remedy_final_rate_change_is_monitored()
     assert_congress_chinese_optical_transceiver_bill_is_monitored()
     assert_fcc_upper_c_band_auction115_is_monitored()
@@ -2320,6 +2323,110 @@ def assert_fcc_chinese_optical_transceiver_ban_is_monitored() -> None:
     }])
     if not profile or "초안" not in str(profile.get("stage")):
         raise AssertionError("Optical-transceiver draft was promoted to a final policy stage")
+
+
+def assert_fcc_optics_followup_reaches_telegram_once() -> None:
+    watch = khs_trusted_policy_news_watch
+    rule = next(rule for rule in watch.STORY_RULES if rule.key == watch.FCC_OPTICS_RULE)
+    source, title = watch.FCC_OPTICS_RECOVERY_SOURCES[0]
+    now = dt.datetime(2026, 11, 18, 10, tzinfo=watch.KST)
+    lead = (
+        "The Trump administration plans to press ahead with Chinese data center equipment restrictions "
+        "despite opposition from Amazon and Google. The FCC has sought to ban US imports of new models "
+        "of Chinese optical transceivers for data centers."
+    )
+    facts = (
+        "Counterpoint Research puts the Chinese share of the optical transceiver market at around two-thirds. A report says that "
+        "Coherent and Lumentum lack the scale to replace Chinese suppliers."
+    )
+    def page(body: str, author: str = "Reuters") -> str:
+        return (
+            f'<meta property="og:title" content="{title}">'
+            f'<meta name="article:author" content="{author}">'
+            '<meta property="article:published_time" content="2026-11-18T01:06:35+09:00">'
+            f"<article><p>{body}</p></article>"
+        )
+
+    assert not watch.has_required_terms(title, rule)
+    assert watch.verified_fcc_optics_followup(source, title, page(facts), now) is None
+    assert watch.verified_fcc_optics_followup(source, title, page(lead + " " + facts, "Other News"), now) is None
+    assert watch.verified_fcc_optics_followup(
+        source, title, page(lead.replace("plans to press ahead", "was asked to drop") + " " + facts), now
+    ) is None
+    assert watch.verified_fcc_optics_followup(source, title, page(lead), now - dt.timedelta(days=1)) is None
+    assert watch.verified_fcc_optics_followup(source, title, page(lead), now + dt.timedelta(days=4)) is None
+
+    reprint_title = "FCC advances Chinese optical transceiver import ban despite Big Tech opposition"
+    reprint_rss = (
+        f"<rss><channel><item><title>{reprint_title}</title>"
+        "<link>https://news.google.com/rss/articles/candidate</link>"
+        "<source>Reuters</source><pubDate>Tue, 17 Nov 2026 11:02:00 GMT</pubDate>"
+        "</item></channel></rss>"
+    )
+    assert watch.has_required_terms(reprint_title, rule)
+    assert watch.fcc_optics_followup_rss_only(reprint_title)
+    assert not watch.fcc_optics_followup_rss_only(reprint_title.replace("advances", "adopts"))
+
+    def fetch(url: str, timeout: int = 8) -> str:
+        return page(lead + " " + facts) if url == source else reprint_rss
+    with patch.object(watch, "fetch_text", side_effect=fetch), patch.object(watch, "load_seen", return_value={"seen": {}}):
+        items = watch.collect_rule_items(rule, now)
+    assert len(items) == 1
+    item = items[0]
+    assert item["body_verified"] and item["link"] == source
+    assert item["fcc_optics_followup"] == {"china_share": True, "us_scale_gap": True}
+    assert watch.alert_confirmation_status(rule, items)[0] == "공식 확인 전"
+    draft = {
+        "title": "Trump administration drafting ban on new Chinese optical transceivers",
+        "description": "The FCC is drafting a ban on new Chinese optical transceiver models.",
+        "source": "Reuters",
+    }
+    final = {**draft, "title": "FCC Adds Chinese Optical Transceivers to the Covered List"}
+    mirror = watch.verified_fcc_optics_followup(
+        watch.FCC_OPTICS_RECOVERY_SOURCES[1][0], title, page("WASHINGTON, Nov 17 (Reuters) - " + lead + " " + facts), now
+    )
+    assert mirror and mirror["source"] == "Yahoo Finance (Reuters 기사 전문)"
+    groups = watch.alert_item_groups(rule, [item, mirror, draft, final])
+    assert [len(group) for group in groups] == [2, 1, 1]
+    fp = watch.story_event_fingerprint(rule, items)
+    assert fp == watch.story_event_fingerprint(rule, [mirror])
+    assert not watch.unseen_items_for_rule(rule, [mirror], {fp: {}})
+    assert len({watch.story_event_fingerprint(rule, group) for group in groups}) == 3
+    with patch.object(watch, "load_seen", return_value={"seen": {fp: {}}}), patch.object(watch, "fetch_text") as network:
+        assert not watch.collect_fcc_optics_followup(rule, now)
+        network.assert_not_called()
+
+    redirect = "http://www.bing.com/news/apiclick.aspx?url=" + quote(source, safe="")
+    assert watch.fcc_optics_press_url(redirect, from_feed=True) == source
+    assert not watch.fcc_optics_press_url("https://www.devdiscourse.com.invalid/article/test", from_feed=True)
+    rss = f"<rss><channel><item><title>{title}</title><link>{redirect}</link></item></channel></rss>"
+
+    def discover(url: str) -> str:
+        if url.startswith("https://www.bing.com/"):
+            return rss
+        return fetch(url)
+    with (
+        patch.object(watch, "FCC_OPTICS_RECOVERY_SOURCES", ()),
+        patch.object(watch, "fetch_text", side_effect=discover),
+        patch.object(watch, "load_seen", return_value={"seen": {}}),
+    ):
+        assert watch.collect_fcc_optics_followup(rule, now) == items
+
+    with tempfile.TemporaryDirectory() as tmp:
+        lane = khs_telegram_delivery_guard.Lane(
+            "trusted_policy_news", Path(tmp) / "title.txt", Path(tmp) / "body.md"
+        )
+        lane.title.write_text(f"신뢰외신 정책 워치: {watch.story_display_title(rule, items)}", encoding="utf-8")
+        lane.body.write_text(watch.render_alert_bundle([{"rule": rule, "items": items}], now), encoding="utf-8")
+        khs_telegram_delivery_guard.guard_lane(lane)
+        message = khs_policy_telegram_formatter.prepare_telegram_messages(
+            lane.title.read_text(encoding="utf-8"), lane.body.read_text(encoding="utf-8")
+        )[0]
+    for evidence in ("공식 확인 전", "반대에도", "신모델", "3분의 2", "코히런트·루멘텀", "발효일", f'href="{source}">원문</a>'):
+        assert evidence in message, evidence
+    core = watch.compact_core(rule, items)
+    assert len(core) <= 50 and core.endswith("추진합니다.")
+    assert "3.2T" not in message and "오이솔루션" not in message
 
 
 def assert_korea_trade_remedy_final_rate_change_is_monitored() -> None:

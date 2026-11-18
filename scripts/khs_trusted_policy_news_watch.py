@@ -24,10 +24,10 @@ from zoneinfo import ZoneInfo
 
 try:
     from khs_policy_alert_explainer import ensure_explained
-    from khs_article_detail import extract_article_detail
+    from khs_article_detail import ArticleHTMLParser, extract_article_detail
 except ImportError:  # pragma: no cover - supports module-style local tests.
     from scripts.khs_policy_alert_explainer import ensure_explained
-    from scripts.khs_article_detail import extract_article_detail
+    from scripts.khs_article_detail import ArticleHTMLParser, extract_article_detail
 try:
     from khs_compact_text import concise_text
 except ImportError:  # pragma: no cover - supports module-style local tests.
@@ -386,6 +386,25 @@ DIRECT_STORY_URLS = {
             "https://www.reuters.com/world/trump-administration-drafting-ban-chinese-data-center-devices-sources-say-2026-08-04/",
         ),
     ),
+}
+FCC_OPTICS_RULE = "us_fcc_chinese_optical_transceiver_ban"
+FCC_OPTICS_FOLLOWUP = "us-fcc-optical-transceiver-pursuit-despite-industry-opposition"
+FCC_OPTICS_BASELINE = dt.datetime(2026, 11, 17, 20, 2, tzinfo=KST)
+FCC_OPTICS_RECOVERY_SOURCES = (
+    (
+        "https://www.devdiscourse.com/article/international/4008502-exclusive-trumps-china-data-center-curb-advances-despite-amazon-google-meta-lobbying",
+        "Trump's China data center curb advances despite Amazon, Google, Meta lobbying",
+    ),
+    (
+        "https://ca.finance.yahoo.com/news/exclusive-trumps-china-data-center-110205801.html",
+        "Trump's China data center curb advances despite Amazon, Google, Meta lobbying",
+    ),
+)
+FCC_OPTICS_PRESS_HOSTS = {
+    "www.reuters.com": "Reuters",
+    "www.devdiscourse.com": "Devdiscourse (Reuters 기사 전문)",
+    "ca.finance.yahoo.com": "Yahoo Finance (Reuters 기사 전문)",
+    "finance.yahoo.com": "Yahoo Finance (Reuters 기사 전문)",
 }
 TITLE_PATH = OUT_DIR / "khs_trusted_policy_news_title.txt"
 ALERTS_JSON_PATH = OUT_DIR / "khs_trusted_policy_news_alerts.json"
@@ -1922,9 +1941,152 @@ def fcc_800_uas_adoption_body_verified(raw: str) -> bool:
     )
 
 
+def fcc_optics_followup_headline(title: str) -> bool:
+    return bool(
+        re.search(r"\bchin(?:a|ese)\b", title, re.I)
+        and re.search(r"optical\s+(?:transceivers?|modules?)|data\s*cent(?:er|re)", title, re.I)
+        and re.search(r"curb|ban|block|restrict", title, re.I)
+    )
+
+
+def fcc_optics_followup_rss_only(title: str) -> bool:
+    return bool(
+        fcc_optics_followup_headline(title)
+        and re.search(r"\bdespite\b.{0,100}\b(?:opposition|pushback|lobbying)\b", title, re.I)
+        and not re.search(r"\b(?:adopts?|adopted|finalizes?|finalized|takes effect|withdraws?)\b", title, re.I)
+    )
+
+
+def fcc_optics_followup_evidence(title: str, body: str) -> dict | None:
+    if not fcc_optics_followup_headline(title):
+        return None
+    text = clean_text(body).lower()
+    lead = text[:1600]
+    scope = r"\bnew models? of chinese(?:-made)? (?:optical transceivers?|optical modules?)\b|\bnew chinese(?:-made)? optical transceiver models?\b"
+    scope_verified = any(
+        re.search(r"\bfcc\b|federal communications commission", sentence)
+        and re.search(scope, sentence)
+        and re.search(r"\b(?:ban|block|bar|restrict)\w*\s+(?:u\.?s\.?\s+)?imports?\b", sentence)
+        for sentence in re.split(r"(?<=[.!?])\s+", lead)
+    )
+    progress = (
+        re.search(r"trump administration", lead)
+        and re.search(r"\b(?:plans? to press ahead|is (?:moving (?:forward|ahead)|pressing ahead))\b", lead)
+        and re.search(r"\bdespite\s+(?:pushback|opposition|.{1,75}\blobbying)\b", lead)
+    )
+    if not (scope_verified and progress):
+        return None
+    if not re.search(r"\b(?:amazon|google|meta|microsoft)\b", lead):
+        return None
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    return {
+        "china_share": any(
+            all(term in sentence for term in ("counterpoint research", "optical transceiver", "market"))
+            and bool(re.search(r"\bchin(?:a|ese)\b", sentence) and re.search(r"two[- ]thirds", sentence))
+            for sentence in sentences
+        ),
+        "us_scale_gap": any(
+            all(term in sentence for term in ("coherent", "lumentum", "lack the scale to replace"))
+            for sentence in sentences
+        ),
+    }
+
+
+def fcc_optics_press_url(value: str, *, from_feed: bool = False) -> str:
+    parsed = urllib.parse.urlsplit(value)
+    if from_feed and parsed.hostname in {"www.bing.com", "bing.com"} and parsed.path.lower() == "/news/apiclick.aspx":
+        destination = urllib.parse.parse_qs(parsed.query).get("url", [""])[0]
+        parsed = urllib.parse.urlsplit(destination)
+    if parsed.scheme != "https" or parsed.netloc.lower() not in FCC_OPTICS_PRESS_HOSTS or parsed.path in {"", "/"}:
+        return ""
+    return urllib.parse.urlunsplit(parsed._replace(fragment=""))
+
+
+def verified_fcc_optics_followup(url: str, headline: str, raw: str, now: dt.datetime) -> dict | None:
+    url = fcc_optics_press_url(url)
+    if not url:
+        return None
+    host = urllib.parse.urlsplit(url).hostname
+    detail = extract_article_detail(raw, headline, source_url=url)
+    title = clean_text(detail.get("title"))
+    body = detail.get("body") or ""
+    evidence = fcc_optics_followup_evidence(title, body) if detail.get("body_verified") else None
+    if evidence is None:
+        return None
+    published = parse_pub_date(detail.get("published_kst"))
+    if host == "www.devdiscourse.com":
+        parser = ArticleHTMLParser()
+        parser.feed(raw)
+        if parser.meta.get("article:author", "").casefold() != "reuters":
+            return None
+    elif host != "www.reuters.com" and not re.search(
+        r"^\s*WASHINGTON[^\n()]{0,35}\(Reuters\)\s*[-–]", body[:1000], re.M
+    ):
+        return None
+    if not published or not dt.timedelta() <= now - published <= dt.timedelta(hours=MAX_AGE_HOURS):
+        return None
+    return {
+        "title": title, "link": url, "source": FCC_OPTICS_PRESS_HOSTS[host],
+        "published_kst": published.isoformat(timespec="seconds"),
+        "priority": SOURCE_PRIORITY["reuters"], "body_verified": True,
+        "fcc_optics_followup": evidence,
+    }
+
+
+def collect_fcc_optics_followup(rule: StoryRule, now: dt.datetime) -> list[dict]:
+    stage_marker = {"body_verified": True, "fcc_optics_followup": {}}
+    if story_event_fingerprint(rule, [stage_marker]) in (load_seen().get("seen") or {}):
+        return []
+
+    def try_articles(candidates: dict[str, str]) -> list[dict]:
+        for url, title in list(candidates.items())[:4]:
+            host = urllib.parse.urlsplit(url).hostname
+            try:
+                item = verified_fcc_optics_followup(url, title, fetch_text(url), now)
+            except (OSError, ValueError) as exc:
+                print(f"trusted_policy_news=fcc_optics_followup_unavailable host={host} error={type(exc).__name__}")
+                continue
+            if item:
+                print(f"trusted_policy_news=fcc_optics_followup_body_verified host={host} published={item['published_kst']}")
+                return [item]
+            print(f"trusted_policy_news=fcc_optics_followup_rejected host={host} reason=body_identity_scope_or_date")
+        return []
+
+    if dt.timedelta() <= now - FCC_OPTICS_BASELINE <= dt.timedelta(hours=MAX_AGE_HOURS):
+        verified = try_articles(dict(FCC_OPTICS_RECOVERY_SOURCES))
+        if verified:
+            return verified
+
+    # Discovery only. A feed headline or timestamp is not source evidence.
+    candidates: dict[str, str] = {}
+    for query in ("Chinese optical transceiver import ban Reuters", "site:finance.yahoo.com Chinese optical transceiver FCC"):
+        rss = "https://www.bing.com/news/search?" + urllib.parse.urlencode({
+            "q": query, "format": "rss", "cc": "US", "setlang": "en-US",
+        })
+        try:
+            entries = ET.fromstring(fetch_text(rss)).findall("./channel/item")
+        except (OSError, ET.ParseError) as exc:
+            print(f"trusted_policy_news=fcc_optics_followup_search_unavailable error={type(exc).__name__}")
+            continue
+        for entry in entries:
+            title = clean_text(entry.findtext("title"))
+            if not fcc_optics_followup_headline(title):
+                continue
+            try:
+                url = fcc_optics_press_url(clean_text(entry.findtext("link")), from_feed=True)
+            except ValueError:
+                continue
+            if url:
+                candidates.setdefault(url, title)
+    return try_articles(candidates)
+
+
 def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     items: list[dict] = []
     seen_links: set[str] = set()
+    if rule.key == FCC_OPTICS_RULE:
+        items.extend(collect_fcc_optics_followup(rule, now))
+        seen_links.update(item["link"] for item in items)
 
     if rule.key == BIS_GPU_REMOTE_KEY:
         # Restore the November 11 reporting stage once, but only if its actual
@@ -2674,6 +2836,9 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             max_rss_age = max_age_hours_for_rule(rule) if rule.key == BIS_GPU_REMOTE_KEY else MAX_AGE_HOURS
             if (now - published).total_seconds() / 3600 > max_rss_age:
                 continue
+            if rule.key == FCC_OPTICS_RULE and fcc_optics_followup_rss_only(title):
+                # The opposition follow-up is admitted only in the verified body path.
+                continue
             if rule.key == BIS_GPU_REMOTE_KEY:
                 title_low = title.lower()
                 exact_press = (
@@ -2857,6 +3022,8 @@ def is_polysilicon_11052_base_rehash_text(value: str) -> bool:
 
 
 def semantic_policy_event_key(item: dict) -> str:
+    if item.get("body_verified") is True and isinstance(item.get("fcc_optics_followup"), dict):
+        return FCC_OPTICS_FOLLOWUP
     if item.get("bis_gpu_remote_stage"):
         # Preserves exact reporting, proposed, final, exception and enforcement
         # identities across publishers. No false final merely from 'finalizing'.
@@ -3536,6 +3703,7 @@ def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
         "us_fcc_hisilicon_first_component_enforcement",
         "us_fcc_intel_agv_one_year_waiver",
         "us_fcc_800mhz_uas_cellular_authorization",
+        FCC_OPTICS_RULE,
         BIS_GPU_REMOTE_KEY,
         "eu_china_hybrid_vehicle_safeguard",
         "eu_china_sector_import_safeguards",
@@ -4546,6 +4714,20 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
             **profile,
         }
     if rule.key == "us_fcc_chinese_optical_transceiver_ban":
+        if semantic_key == FCC_OPTICS_FOLLOWUP:
+            evidence = items[0]["fcc_optics_followup"]
+            actual = []
+            if evidence.get("china_share"):
+                actual.append("카운터포인트리서치에 따르면 중국 기업은 세계 광트랜시버 시장의 약 3분의 2를 차지합니다.")
+            if evidence.get("us_scale_gap"):
+                actual.append("로이터가 인용한 보고서는 코히런트·루멘텀의 생산 규모로는 중국 공급을 대체하기 어렵다고 봤습니다.")
+            return {
+                "title": "미국, 빅테크 반대에도 중국산 광트랜시버 수입금지 추진",
+                "core": "미국이 빅테크 반대에도 중국산 광트랜시버 신모델 수입금지를 계속 추진합니다.",
+                "stage": "수입금지 추진 단계입니다. FCC 최종 규칙·발효일은 확인되지 않았습니다.",
+                "actual_bullets": actual,
+                "next": "FCC의 공식 문서, 적용 모델, 예외·유예 및 시행일을 확인합니다.",
+            }
         if semantic_key == "us-fcc-optical-transceiver-3p2t-65pct-research-2026-10-01":
             return {
                 "revision": "us-fcc-optical-transceiver-3p2t-65pct-research-ko-v1",
@@ -5198,6 +5380,13 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
     title = story_display_title(rule, items)
     core = compact_policy_core(compact_core(rule, items), fallback=title)
     profile = item_story_profile(rule, items)
+    if profile and rule.key == FCC_OPTICS_RULE and semantic_policy_event_key(items[0]) == FCC_OPTICS_FOLLOWUP:
+        return [
+            f"- 핵심: {core}",
+            *(f"- {fact}" for fact in profile["actual_bullets"]),
+            f"- 현재 단계: {profile['stage']}",
+            f"- 다음 확인: {profile['next']}",
+        ]
     if profile and profile.get("stage"):
         published = parse_kst_iso(str(items[0].get("published_kst") or "")) if items else None
         published_label = (
@@ -5233,6 +5422,8 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
+    if rule.key == FCC_OPTICS_RULE and items and semantic_policy_event_key(items[0]) == FCC_OPTICS_FOLLOWUP:
+        return "공식 확인 전", "로이터 후속 보도 본문 확인"
     if rule.key == BIS_GPU_REMOTE_KEY and any(
         x.get("official_api_verified") is True
         and str(x.get("bis_gpu_remote_stage") or "").startswith("official-")
