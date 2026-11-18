@@ -385,10 +385,7 @@ def build_direction_dashboard(pending: dict) -> list[str]:
     if c is not None and cp is not None:
         delta = float(c) - float(cp)
         percent = delta / float(cp) * 100 if float(cp) else 0.0
-        balance = (
-            f"68.0"
-            if False else f"{float(c):.1f}"
-        )
+        balance = f"{float(c):.1f}"
         krw = ""
         if fx.get("rate"):
             krw = f" (잔액 {_fmt_krw_from_usd_m(float(c) * 1000, float(fx['rate']))})"
