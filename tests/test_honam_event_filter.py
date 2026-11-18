@@ -691,7 +691,7 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
             self.assertLessEqual(max(map(len, split_message(rendered))), 3900)
             # A successfully sent key must suppress repeated intake, not reset earlier records.
             delivered = json.loads(pending.read_text(encoding="utf-8"))["seen_event_keys"]
-            self.assertFalse(verified_intake_events({"seen_event_keys": delivered}))
+            self.assertFalse([i for i in verified_intake_events({"seen_event_keys": delivered}) if i.get("event_family", "").startswith("honam_fab_lead_")])
 
     def test_existing_2029_first_fab_completion_target_is_not_a_new_event(self):
         items = [

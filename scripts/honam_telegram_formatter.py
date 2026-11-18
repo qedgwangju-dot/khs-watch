@@ -100,7 +100,7 @@ def evidence_lines(item: dict):
         source = ev.get("source") or "근거자료"
         url = ev.get("url") or ""
         if url:
-            lines.append(f"  - {esc(source)} · {link_line(url, '보기')}")
+            lines.append(f"  - {esc(source)} · {link_line(url, '원문 보기')}")
         else:
             lines.append(f"  - {esc(source)}")
     return lines
