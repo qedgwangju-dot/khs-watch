@@ -1,4 +1,6 @@
 import datetime as dt
+import json
+import tempfile
 import sys
 import unittest
 from pathlib import Path
@@ -341,6 +343,72 @@ class CbdcOfficialPolicyWatch(unittest.TestCase):
         self.assertEqual(len(merged), 2)
         self.assertEqual(len(merged[0]["source_links"]), 2)
 
+
+
+    def test_domestic_seen_requires_matching_policy_delivery_and_survival(self):
+        from scripts import khs_policy_seen_finalize as finalizer
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            state_path = root / "domestic_seen.json"
+            pending_path = root / "domestic_pending.json"
+            alerts_path = root / "policy_alerts.json"
+            policy_title_path = root / "policy_title.txt"
+            candidate = {
+                "source": "Financial Services Commission stablecoin releases",
+                "title": "원화 스테이블코인 정부안 공개",
+                "original_title": "원화 스테이블코인 정부안 공개",
+                "link": "https://www.fsc.go.kr/no010101/99999",
+                "fingerprint": "raw-source-identity",
+                "published_kst": NOW.isoformat(),
+                "importance": "상",
+                "domestic_stablecoin_policy_watch": True,
+            }
+            with (
+                patch.object(watch, "SOURCES", [("Financial Services Commission stablecoin releases", "https://www.fsc.go.kr/no010101")]),
+                patch.object(watch, "SEEN_PATH", state_path),
+                patch.object(watch, "PENDING_SEEN_PATH", pending_path),
+                patch.object(watch, "ALERTS_JSON_PATH", alerts_path),
+                patch.object(watch, "fetch_source_text", return_value=("<html/>", None, "https://www.fsc.go.kr/no010101")),
+                patch.object(watch, "parse_links", return_value=[candidate]),
+                patch.object(watch, "crypto_tax_news_candidates", return_value=[]),
+                patch.object(watch, "fetch_text", return_value=(None, "offline")),
+            ):
+                self.assertEqual(watch.main(), 0)
+            self.assertFalse(state_path.exists(), "collection must not consume send-only seen keys")
+            self.assertTrue(pending_path.exists())
+            alerts = json.loads(alerts_path.read_text(encoding="utf-8"))
+            self.assertEqual(len(alerts), 1)
+            self.assertIn("raw-source-identity", json.loads(pending_path.read_text(encoding="utf-8"))["seen"])
+            title = "KHS 정책 워치: [상] 원화 스테이블코인 정부안 공개"
+            policy_title_path.write_text(title, encoding="utf-8")
+            payload = {
+                "status": "confirmed",
+                "sent": 1,
+                "confirmed_at_kst": NOW.isoformat(),
+                "sent_titles": [{"route": "policy", "title": title.removeprefix("KHS ")}],
+                "message_ids": [{"route": "policy", "message_id": 143}],
+            }
+            with (
+                patch.object(finalizer, "DOMESTIC_PENDING_PATH", pending_path),
+                patch.object(finalizer, "DOMESTIC_STATE_PATH", state_path),
+                patch.object(finalizer, "POLICY_ALERTS_PATH", alerts_path),
+                patch.object(finalizer, "POLICY_TITLE_PATH", policy_title_path),
+            ):
+                finalizer.finalize_confirmed_domestic_stablecoin({**payload, "message_ids": []})
+                self.assertFalse(state_path.exists())
+                finalizer.finalize_confirmed_domestic_stablecoin({
+                    **payload, "sent_titles": [{"route": "policy", "title": "다른 정책 알림"}]
+                })
+                self.assertFalse(state_path.exists())
+                alerts_path.write_text("[]", encoding="utf-8")
+                finalizer.finalize_confirmed_domestic_stablecoin(payload)
+                self.assertFalse(state_path.exists(), "quarantined item must remain eligible")
+                alerts_path.write_text(json.dumps(alerts, ensure_ascii=False), encoding="utf-8")
+                finalizer.finalize_confirmed_domestic_stablecoin(payload)
+                self.assertTrue(state_path.exists())
+                seen = json.loads(state_path.read_text(encoding="utf-8"))["seen"]
+                self.assertIn("raw-source-identity", seen)
+                self.assertIn(alerts[0]["fingerprint"], seen)
 
 if __name__ == "__main__":
     unittest.main()
