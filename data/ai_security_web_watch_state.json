@@ -6,11 +6,18 @@
     "deferred_material_items": 0,
     "direct_official_items": 56,
     "errors": [
+      "Google News RSS 실패: frontier AI independent auditor found sandbox unauthori… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) model release c… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) deployment bloc… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Safety Case\" f… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"Jamie Dimon\" (Mythos OR Anthropic) cyber risk bank fin… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR \"AI lab\") (\"recording device\" O… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (Anthropic OR \"AI model\") (\"self-replicating\" OR \"self … / HTTPError: HTTP Error 429: Too Many Requests",
       "Google News RSS 실패: (\"AI worm\" OR \"self-propagating AI\" OR \"autonomous AI r… / HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "material_items": 11,
     "new_material_items": 0,
-    "raw_items": 101,
+    "raw_items": 98,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1302,5 +1309,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-18T19:42:44+09:00"
+  "updated_at_kst": "2026-11-18T19:50:47+09:00"
 }
