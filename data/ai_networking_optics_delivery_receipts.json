@@ -486,6 +486,25 @@
       "checked_at_kst": "2026-11-18T11:03:34+09:00",
       "fingerprint": "a250e28693d1294c4c4296fb6ddb802d52b703cf67a5f9a38115decf92e558c0",
       "outcome": "no_send"
+    },
+    "44219669485:1": {
+      "checked_at_kst": "2026-11-18T11:43:27+09:00",
+      "completed": "2026-11-18T02:04:19+00:00",
+      "fingerprint": "bb269a85c94426134e0d35eba23e11fc045fd88010e6ed8ef9098f090c5c3894",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-18T02:04:18+00:00"
+    },
+    "44222243185:1": {
+      "checked_at_kst": "2026-11-18T11:43:26+09:00",
+      "fingerprint": "288c6229cfffd8f5e0f29142e9b0bf729f2735cfcbd65afd2a2380144edf6a8f",
+      "outcome": "no_send"
+    },
+    "44222940557:1": {
+      "checked_at_kst": "2026-11-18T11:43:26+09:00",
+      "fingerprint": "349490ff7d83e28392822eaf578a9d88774ce312319c1a21be1c70c3b476256a",
+      "outcome": "no_send"
     }
   },
   "recovery_holds": {},
