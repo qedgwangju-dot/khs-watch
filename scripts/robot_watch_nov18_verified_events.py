@@ -444,11 +444,14 @@ def normalize_followup(source_item: dict, now: dt.datetime) -> dict:
 def install(base) -> None:
     if getattr(base, "_nov18_verified_events_installed", False):
         return
-    old = {name: getattr(base, name) for name in ("query_news", "topic_group", "score", "key", "category", "meaning", "risk", "verification", "tag_for")}
+    old = {name: getattr(base, name) for name in ("query_news", "topic_group", "score", "key", "category", "meaning", "risk", "verification", "tag_for", "clean_title")}
     categories = {name: f"{name_label} · 11월 확인 사건" for name, name_label in LABELS.items()}
     future_categories = {f"{LABELS[name]} · 후속 {label}": (name, label)
                          for name, allowed in ALLOWED_STAGES.items()
                          for stage_name, (label, _) in STAGES.items() if stage_name in allowed}
+    protected_titles = {spec["title"] for spec in EVENTS.values()} | {
+        cat + " 공식 제목 확인" for cat in future_categories
+    }
 
     def query(q):
         if q == BACKFILL:
@@ -495,7 +498,9 @@ def install(base) -> None:
         return old["key"](item)
 
     def category(text, group_name):
-        event = group_name.removeprefix(PREFIX) if group_name else ""
+        if not isinstance(group_name, str) or not group_name.startswith(PREFIX):
+            return old["category"](text, group_name)
+        event = group_name[len(PREFIX):]
         if event not in LABELS:
             return old["category"](text, group_name)
         for cat in future_categories:
@@ -521,6 +526,8 @@ def install(base) -> None:
         return old["risk"](cat)
 
     def verification(item, group_name, text):
+        if not isinstance(group_name, str) or not group_name.startswith(PREFIX):
+            return old["verification"](item, group_name, text)
         event = item.get("nov18_event_id")
         if event in EVENTS:
             spec = EVENTS[event]
@@ -531,11 +538,20 @@ def install(base) -> None:
         return old["verification"](item, group_name, text)
 
     def tag(group_name):
-        event = group_name.removeprefix(PREFIX) if group_name else ""
+        if not isinstance(group_name, str) or not group_name.startswith(PREFIX):
+            return old["tag_for"](group_name)
+        event = group_name[len(PREFIX):]
         return "로봇 후속 확인" if event in LABELS else old["tag_for"](group_name)
 
+    def clean_title(title, source):
+        # Exact reviewed/normalized titles belong to this module. A broad
+        # legacy title rewriter must not replace them with another event.
+        if title in protected_titles:
+            return title
+        return old["clean_title"](title, source)
+
     for name, fn in (("query_news", query), ("topic_group", group), ("score", score), ("key", key),
-                     ("category", category), ("meaning", meaning), ("risk", risk), ("verification", verification), ("tag_for", tag)):
+                     ("category", category), ("meaning", meaning), ("risk", risk), ("verification", verification), ("tag_for", tag), ("clean_title", clean_title)):
         setattr(base, name, fn)
     for q in QUERIES:
         if q not in base.QUERIES:

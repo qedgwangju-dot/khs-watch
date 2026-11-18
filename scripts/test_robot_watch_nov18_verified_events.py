@@ -12,9 +12,11 @@ import importlib.util
 import io
 import json
 from pathlib import Path
+import re
 import tempfile
 from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 import robot_watch_nov18_verified_events as events
 
@@ -251,7 +253,7 @@ class VerifiedEventsTests(unittest.TestCase):
             score=legacy("score", 37), key=legacy("key", "legacy_key"),
             category=legacy("category", "legacy_category"), meaning=legacy("meaning", "legacy_meaning"),
             risk=legacy("risk", "legacy_risk"), verification=legacy("verification", "legacy_verification"),
-            tag_for=legacy("tag", "legacy_tag"))
+            tag_for=legacy("tag", "legacy_tag"), clean_title=legacy("clean_title", "legacy_title"))
         events.install(base)
         for title in headlines:
             with self.subTest(title=title):
@@ -269,7 +271,95 @@ class VerifiedEventsTests(unittest.TestCase):
                 self.assertEqual(base.risk(category), "legacy_risk")
                 self.assertEqual(base.verification(item, group, text), "legacy_verification")
                 self.assertEqual(base.tag_for(group), "legacy_tag")
-                self.assertEqual([name for name, _ in calls], ["group", "score", "key", "category", "meaning", "risk", "verification", "tag"])
+                self.assertEqual(base.clean_title(item["title"], item["source"]), "legacy_title")
+                self.assertEqual([name for name, _ in calls], ["group", "score", "key", "category", "meaning", "risk", "verification", "tag", "clean_title"])
+
+        # Names such as robotis and samhyun also exist in legacy lanes. The
+        # bare name must never inherit this module's reviewed-event body/tag.
+        for legacy_group in (*events.LABELS, "", None, "nov18_unknown"):
+            with self.subTest(legacy_group=legacy_group):
+                calls.clear()
+                item = dict(row("Unrelated article"), nov18_event_id="robotis")
+                self.assertEqual(base.category(item["title"], legacy_group), "legacy_category")
+                self.assertEqual(base.tag_for(legacy_group), "legacy_tag")
+                if legacy_group != "nov18_unknown":
+                    self.assertEqual(base.verification(item, legacy_group, item["title"]), "legacy_verification")
+                    self.assertEqual([name for name, _ in calls], ["category", "tag", "verification"])
+
+    def test_exact_reviewed_and_followup_titles_bypass_legacy_rewriters(self):
+        base = fixture_base()
+        # Reproduce a legacy cleaner that rewrites broad company matches.
+        base._nov18_verified_events_installed = False
+        base.clean_title = lambda title, source: "WRONG LEGACY EVENT TITLE"
+        events.install(base)
+        for spec in events.EVENTS.values():
+            self.assertEqual(base.clean_title(spec["title"], spec["source"]), spec["title"])
+        for event, allowed in events.ALLOWED_STAGES.items():
+            for stage in allowed:
+                title = f"{events.LABELS[event]} · 후속 {events.STAGES[stage][0]} 공식 제목 확인"
+                self.assertEqual(base.clean_title(title, "Source"), title)
+        self.assertEqual(base.clean_title("Boston Dynamics unrelated new event", "Boston Dynamics"), "WRONG LEGACY EVENT TITLE")
+
+    def test_real_legacy_chain_keeps_headlines_and_broker_bodies_matched(self):
+        import physical_ai_watch_airan_guard as entry
+        base = entry.base
+        hanwha_title = '한화투자證 "로보티즈, 3분기 적자전환 아쉽지만...내년 생산능력 2배 확대, 연간 흑자 기대"'
+        hanwha = row(hanwha_title, source="이투데이", link="https://example.org/hanwha-robotis-fixture",
+                     published="2026-11-18T08:10:00+09:00")
+        group = base.topic_group(events._body(hanwha))
+        self.assertEqual(group, "robotis")
+        category = base.category(events._body(hanwha), group)
+        self.assertNotEqual(category, "로보티즈 신공장·실적 · 11월 확인 사건")
+        self.assertNotIn("한투 분석가 요약", base.meaning(category))
+        self.assertNotEqual(base.tag_for(group), "로봇 후속 확인")
+        for spec in events.EVENTS.values():
+            self.assertEqual(base.clean_title(spec["title"], spec["source"]), spec["title"])
+
+        pinned = {item["nov18_event_id"]: item for item in events.rows(NOW)}
+        selected_items = [hanwha, pinned["bd_gf"], pinned["robotis"]]
+        original_now = base.NOW
+        with tempfile.TemporaryDirectory(prefix="nov18-live-mismatch-") as temporary:
+            root = Path(temporary)
+            with patch.object(base, "NOW", NOW), patch.object(base, "FORCE", False), \
+                 patch.object(base, "QUERIES", ["mixed-live-regression"]), \
+                 patch.object(base, "query_news", return_value=selected_items), \
+                 patch.object(base, "STATE_PATH", root / "state.json"), \
+                 patch.object(base, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(base, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(base, "STATUS_PATH", root / "status.md"), \
+                 patch.object(base, "OUT_DIR", root), \
+                 patch.object(entry.qty.current, "_usdkrw", return_value=(1330.2, True)), \
+                 patch.object(entry.qty, "_official_prices", return_value=({}, {})), \
+                 patch("socket.create_connection", side_effect=AssertionError("Offline test attempted network")), \
+                 patch("urllib.request.urlopen", side_effect=AssertionError("Offline test attempted HTTP")):
+                before = {"seeded": True, "seen": ["historic"]}
+                base.STATE_PATH.write_text(json.dumps(before), encoding="utf-8")
+                with contextlib.redirect_stdout(io.StringIO()):
+                    base.main()
+                    entry.qty.current.opt.current.fig.legacy.repair_pending_seen(before)
+                    entry.qty.current.opt._finalize_alert_text()
+                    entry.qty.current._append_value_estimate()
+                    entry.qty.enrich_quantity_values()
+                    entry._finalize_airan_criteria()
+                    base.reconcile_pending_with_rendered(before)
+                rendered = base.ALERT_PATH.read_text(encoding="utf-8")
+                blocks = re.split(r"(?m)(?=^<b>\d+\.\s)", rendered)
+                hanwha_block = next(block for block in blocks if "한화투자證" in block)
+                bd_block = next(block for block in blocks if events.EVENTS["bd_gf"]["url"] in block)
+                kis_block = next(block for block in blocks if events.EVENTS["robotis"]["url"] in block)
+                self.assertNotIn("한투 분석가 요약", hanwha_block)
+                self.assertNotIn("11월 확인 사건", hanwha_block)
+                bd_headline = bd_block.splitlines()[0]
+                self.assertIn("GlobalFoundries", bd_headline)
+                self.assertIn("Spot 확대", bd_headline)
+                self.assertNotIn("CFO", bd_headline)
+                self.assertNotIn("현대모비스", bd_headline)
+                self.assertNotIn("70%", bd_block)
+                self.assertIn("한투 분석가 요약", kis_block)
+                self.assertNotIn("한화투자證", kis_block)
+                pending = json.loads(base.PENDING_PATH.read_text(encoding="utf-8"))
+                self.assertEqual(len(pending["last_selected"]), 3)
+        self.assertIs(base.NOW, original_now)
 
     def test_real_base_selection_preserves_942_seen_and_overflow(self):
         with tempfile.TemporaryDirectory(prefix="robot-nov18-") as temporary:
