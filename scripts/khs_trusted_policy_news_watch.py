@@ -23,6 +23,20 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 try:
+    from khs_ndaa_ai_policy import NDAA_KEY, collect_ndaa_items, get_source_failures as ndaa_source_failures
+except ImportError:
+    from scripts.khs_ndaa_ai_policy import NDAA_KEY, collect_ndaa_items, get_source_failures as ndaa_source_failures
+
+try:
+    from khs_bis_remote_rule import (
+        collect_current_bis_items, get_source_failures as bis_current_source_failures,
+    )
+except ImportError:
+    from scripts.khs_bis_remote_rule import (
+        collect_current_bis_items, get_source_failures as bis_current_source_failures,
+    )
+
+try:
     from khs_policy_alert_explainer import ensure_explained
     from khs_article_detail import ArticleHTMLParser, extract_article_detail
 except ImportError:  # pragma: no cover - supports module-style local tests.
@@ -160,6 +174,8 @@ BIS_GPU_REMOTE_PRESS_SOURCES = (
      "Investing.com (The Information 보도 재인용)"),
 )
 BIS_GPU_REMOTE_FR_QUERIES = (
+    "https://www.federalregister.gov/api/v1/documents.json?"
+    "conditions%5Bterm%5D=0694-AK50&order=newest&per_page=20",
     "https://www.federalregister.gov/api/v1/documents.json?"
     "conditions%5Bterm%5D=remote+access+advanced+computing&order=newest&per_page=20",
     "https://www.federalregister.gov/api/v1/documents.json?"
@@ -554,6 +570,20 @@ class StoryRule:
 
 
 STORY_RULES = (
+    StoryRule(
+        key=NDAA_KEY,
+        title="미 국방수권법·AI 수출통제 4법안 공식 진행",
+        google_queries=(),
+        required_groups=(("RASA", "MATCH", "OVERWATCH", "Chip Security", "NDAA"),),
+        core="미 의회 공식 행동과 해당 문안을 대조해 네 수출통제 법안의 독립 진행을 확인합니다.",
+        impact="반도체 장비·유지보수, AI 가속기·클라우드·HBM | 매출·현금흐름·수급·시간표",
+        point="입법 단계와 행정규칙·기업별 허가·주문 변화를 나누어 판단합니다.",
+        counter="공동 촉구·수정안 제출·NDAA 전체 통과만으로 네 법안의 일괄 제정이나 즉시 시행을 단정하지 않습니다.",
+        sectors="반도체 장비·유지보수·AI 가속기·클라우드·HBM",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("촉구", "수정안", "위원회·본회의", "양원 문안·서명", "시행·예외"),
+        follow_up="119대 의회 법안 8개와 FY2027 NDAA 2개의 공식 행동·최종 문안·예외·효력일을 확인합니다.",
+    ),
     StoryRule(
         key="eu_china_hybrid_vehicle_safeguard",
         title="EU·중국 하이브리드차 수입쿼터 합의·한국산 원산지별 배정 감시",
@@ -1853,7 +1883,7 @@ def bis_gpu_remote_official_identity(raw: str) -> bool:
     low = clean_text(raw).lower()
     return (
         ("remote access" in low or "remote computing" in low)
-        and any(x in low for x in ("advanced computing", "artificial intelligence", "ai chips"))
+        and any(x in low for x in ("advanced computing", "advanced semiconductors", "super intelligence", "artificial intelligence", "ai chips"))
         and any(x in low for x in ("china", "chinese", "prc", "country group d:5"))
         and any(x in low for x in ("export control", "export administration regulations", "bureau of industry and security"))
     )
@@ -1877,7 +1907,7 @@ def bis_gpu_remote_official_candidate(raw: str) -> bool:
     low = clean_text(raw).lower()
     return (
         any(x in low for x in ("remote access", "remote computing", "remotely access"))
-        and any(x in low for x in ("advanced computing", "artificial intelligence", "ai chips", "data center", "cloud computing"))
+        and any(x in low for x in ("advanced computing", "advanced semiconductors", "super intelligence", "artificial intelligence", "ai chips", "data center", "cloud computing"))
     )
 
 
@@ -2088,13 +2118,34 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         items.extend(collect_fcc_optics_followup(rule, now))
         seen_links.update(item["link"] for item in items)
 
+    if rule.key == NDAA_KEY:
+        items = collect_ndaa_items(now, fetch_text)
+        for item in items:
+            item["published_precision"] = "date"
+        for failure in ndaa_source_failures():
+            record_policy_source_failure(
+                lane="trusted_policy", source_name=failure["source"],
+                source_url=failure["url"], error=failure["error"], checked_at=now,
+            )
+        return items
+
     if rule.key == BIS_GPU_REMOTE_KEY:
+        # Public-inspection records do not appear in the published-documents
+        # API. Read that distinct official stage and full text before RSS.
+        current_bis_items = collect_current_bis_items(now, fetch_text)
+        items.extend(current_bis_items)
+        seen_links.update(str(item["link"]) for item in current_bis_items)
+        for failure in bis_current_source_failures():
+            record_policy_source_failure(
+                lane="trusted_policy", source_name=failure["source"],
+                source_url=failure["url"], error=failure["error"], checked_at=now,
+            )
         # Restore the November 11 reporting stage once, but only if its actual
         # publisher identity can be established. Never consume seen on failure.
         press_stage = "press-negotiation-2026-11-11"
         press_fp = story_event_fingerprint(rule, [{"bis_gpu_remote_stage": press_stage}])
         in_window = 0 <= (now - BIS_GPU_REMOTE_BASELINE_KST).total_seconds() / 3600 <= max_age_hours_for_rule(rule)
-        if in_window and press_fp not in (load_seen().get("seen") or {}):
+        if in_window and not current_bis_items and press_fp not in (load_seen().get("seen") or {}):
             for press_url, press_label in BIS_GPU_REMOTE_PRESS_SOURCES:
                 try:
                     press_raw = fetch_text(press_url, timeout=8)
@@ -2125,7 +2176,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         # Independently confirm future legal stages from NEW Federal Register
         # documents. A headline, old 2025 diffusion rule, or press repeat is
         # insufficient for an official confirmation.
-        known_docs: set[str] = set()
+        known_docs: set[str] = {str(item["bis_rule_document"]) for item in current_bis_items}
         official_searches = (
             [("remote", query) for query in BIS_GPU_REMOTE_FR_QUERIES]
             + list(BIS_GPU_REMOTE_FOLLOWUP_FR_QUERIES)
@@ -2142,7 +2193,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                     continue
                 known_docs.add(doc_number)
                 doc_date = str(doc.get("publication_date") or "")
-                if not doc_date or doc_date < "2026-11-11":
+                if not doc_date or doc_date < "2026-11-11" or doc_date > now.astimezone(ZoneInfo("America/New_York")).date().isoformat():
                     continue
                 agency_names = " ".join(str(a.get("name") or "") for a in (doc.get("agencies") or []) if isinstance(a, dict)).lower()
                 if not any(x in agency_names for x in ("industry and security", "commerce")):
@@ -2167,7 +2218,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                     continue
                 official_link = str(doc.get("html_url") or "")
                 text_url = str(doc.get("raw_text_url") or "")
-                if not official_link.startswith("https://www.federalregister.gov/"):
+                if not official_link.startswith("https://www.federalregister.gov/") or "/public-inspection/" in official_link:
                     continue
                 if not text_url:
                     try:
@@ -2905,7 +2956,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             for item in items
         )
         age_hours = (now - BIS_GPU_REMOTE_BASELINE_KST).total_seconds() / 3600
-        if 0 <= age_hours <= max_age_hours_for_rule(rule) and not delivered and not reported:
+        if 0 <= age_hours <= max_age_hours_for_rule(rule) and not delivered and not reported and not current_bis_items:
             try:
                 record_policy_source_failure(
                     lane="trusted_policy",
@@ -2917,6 +2968,11 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 print("trusted_policy_news=bis_gpu_remote_source_unverified failure_checkpoint=recorded")
             except Exception as exc:
                 print(f"trusted_policy_news=bis_gpu_remote_failure_checkpoint_error={type(exc).__name__}: {exc}")
+
+        if current_bis_items:
+            # A verified current rule supersedes the old seven-country press
+            # negotiation. Do not resurrect it as a second "new" alert.
+            items = [item for item in items if item.get("bis_gpu_remote_stage") != "press-negotiation-2026-11-11"]
 
     # If every release and trusted copy is unavailable, do not silently
     # treat the FCC adoption as 'no event'. Feed the existing source-failure
@@ -3024,11 +3080,13 @@ def is_polysilicon_11052_base_rehash_text(value: str) -> bool:
 def semantic_policy_event_key(item: dict) -> str:
     if item.get("body_verified") is True and isinstance(item.get("fcc_optics_followup"), dict):
         return FCC_OPTICS_FOLLOWUP
+    if item.get("ndaa_event_key") and item.get("official_direct_verified") is True:
+        return "us-ndaa-ai-controls-" + str(item["ndaa_event_key"])
     if item.get("bis_gpu_remote_stage"):
         # Preserves exact reporting, proposed, final, exception and enforcement
         # identities across publishers. No false final merely from 'finalizing'.
         stage = str(item["bis_gpu_remote_stage"])
-        if re.fullmatch(r"(?:press-negotiation-2026-11-11|official-(?:diffusion-rescission|megaspeed-entity-list)-(?:final|proposal)-[A-Za-z0-9-]+|(?:official|reported)-(?:proposal|final|effective|exception|enforcement|withdrawal)(?:-[A-Za-z0-9-]+)?)", stage):
+        if re.fullmatch(r"(?:press-negotiation-2026-11-11|official-(?:diffusion-rescission|megaspeed-entity-list)-(?:final|proposal)-[A-Za-z0-9-]+|(?:official|reported)-(?:public-inspection|proposal|final|effective|exception|enforcement|withdrawal)(?:-[A-Za-z0-9-]+)?)", stage):
             return "us-bis-overseas-gpu-remote-access-" + stage
     # The same three first-party notices may be printed at two official URLs.
     # De-duplicate mirrors and news reprints, but never merge distinct notices
@@ -3705,6 +3763,7 @@ def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
         "us_fcc_800mhz_uas_cellular_authorization",
         FCC_OPTICS_RULE,
         BIS_GPU_REMOTE_KEY,
+        NDAA_KEY,
         "eu_china_hybrid_vehicle_safeguard",
         "eu_china_sector_import_safeguards",
         "china_mofcom_2026_technology_catalogue48",
@@ -4268,7 +4327,11 @@ def korean_trump_story_title(title: str) -> str:
 def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] | None:
     if not items:
         return None
+    if rule.key == NDAA_KEY and items[0].get("official_direct_verified") is True:
+        return items[0].get("ndaa_profile")
     if rule.key == BIS_GPU_REMOTE_KEY:
+        if items[0].get("official_api_verified") is True and isinstance(items[0].get("bis_rule_profile"), dict):
+            return items[0]["bis_rule_profile"]
         stage = str(items[0].get("bis_gpu_remote_stage") or "press-negotiation-2026-11-11")
         if stage.startswith("official-diffusion-rescission-"):
             is_final = "-final-" in stage
@@ -5424,6 +5487,15 @@ def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, 
     """Return a conservative status, upgrading only first-party verified events."""
     if rule.key == FCC_OPTICS_RULE and items and semantic_policy_event_key(items[0]) == FCC_OPTICS_FOLLOWUP:
         return "공식 확인 전", "로이터 후속 보도 본문 확인"
+    if rule.key == NDAA_KEY and items and items[0].get("official_direct_verified") is True and items[0].get("ndaa_event_key"):
+        return "공식 확인", "미 의회 공식 행동·발표 원문 확인·법적 처리 단계와 시행은 별도 표시"
+    if rule.key == BIS_GPU_REMOTE_KEY and any(
+        x.get("official_api_verified") is True
+        and str(x.get("bis_gpu_remote_stage") or "").startswith("official-public-inspection-")
+        and str(x.get("link") or "").startswith("https://www.federalregister.gov/public-inspection/")
+        for x in items
+    ):
+        return "공식 공개열람", "BIS 규칙 본문·문서번호 확인·관보 정식 게재와 효력 발생 확인 전"
     if rule.key == BIS_GPU_REMOTE_KEY and any(
         x.get("official_api_verified") is True
         and str(x.get("bis_gpu_remote_stage") or "").startswith("official-")
@@ -6138,7 +6210,9 @@ def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
     if rule.key == "us_fcc_upper_c_band_auction115":
         return render_auction115_compact_body(now)
     status_label, _ = alert_confirmation_status(rule, items)
-    header = "공식 확인 정책 뉴스 1건 확인" if status_label == "공식 확인" else "공식 문서 확인 전 정책 뉴스 1건 확인"
+    header = ("공식 공개열람 정책 뉴스 1건 확인·효력 발생 별도 확인" if status_label == "공식 공개열람" else
+              "공식 확인 정책 뉴스 1건 확인" if status_label == "공식 확인" else
+              "공식 문서 확인 전 정책 뉴스 1건 확인")
     lines = [
         f"{now:%Y년 %m월 %d일 %H:%M KST}",
         header,
@@ -6158,9 +6232,10 @@ def render_alert_bundle(alerts: list[dict], now: dt.datetime, limit: int = 3) ->
     ):
         return render_auction115_compact_body(now)
     statuses = [alert_confirmation_status(alert["rule"], alert["items"])[0] for alert in selected]
-    if selected and all(status == "공식 확인" for status in statuses):
+    official_statuses = {"공식 확인", "공식 공개열람"}
+    if selected and all(status in official_statuses for status in statuses):
         header = f"공식 확인 정책 뉴스 {len(selected)}건 확인"
-    elif "공식 확인" in statuses:
+    elif any(status in official_statuses for status in statuses):
         header = f"공식 확인·확인 전 혼합 정책 뉴스 {len(selected)}건 확인"
     else:
         header = f"공식 문서 확인 전 정책 뉴스 {len(selected)}건 확인"
@@ -6279,6 +6354,7 @@ def main() -> int:
     # busy-news day. Prioritize these three *unseen* rule families for the
     # existing three-item Telegram bundle, preserving recency within each tier.
     requested_policy_priority = {
+        NDAA_KEY: 18,
         "us_dhs_deepseek_federal_civilian_exclusion": 12,
         "us_treasury_coins_biotechnology_outbound_nprm": 11,
         "china_mofcom_2026_technology_catalogue48": 10,

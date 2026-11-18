@@ -15,6 +15,11 @@ on:
       - "scripts/khs_policy_alert_router.py"
       - "scripts/khs_telegram_delivery_guard.py"
       - "scripts/khs_trusted_policy_news_watch.py"
+      - "scripts/khs_bis_remote_rule.py"
+      - "scripts/khs_ndaa_ai_policy.py"
+      - "tests/test_khs_bis_remote_rule.py"
+      - "tests/test_khs_ndaa_ai_policy.py"
+      - "tests/test_khs_ai_policy_integration.py"
       - "scripts/khs_source_fetch.py"
       - "scripts/verify_khs_source_fetch_contract.py"
       - "scripts/khs_policy_seen_finalize.py"
@@ -113,6 +118,7 @@ jobs:
 
       - name: Validate policy regression tests
         run: |
+          PYTHONPATH=. python -m unittest tests.test_khs_bis_remote_rule tests.test_khs_ndaa_ai_policy tests.test_khs_ai_policy_integration -v
           python -m py_compile scripts/khs_policy_watch.py
           python -m py_compile scripts/khs_domestic_stablecoin_policy_watch.py
           PYTHONPATH=. python -m unittest tests.test_khs_domestic_cbdc_policy_watch -v
@@ -342,7 +348,7 @@ jobs:
           print("policy_primary_source_check=passed both_policy_families=2")
           PY
 
-      - name: Probe BIS remote-GPU reporting sources without sending
+      - name: Probe BIS remote-GPU official and reporting sources without sending
         continue-on-error: true
         timeout-minutes: 2
         run: |
@@ -355,6 +361,14 @@ jobs:
               fetch_text, google_news_rss_url, is_rule_trusted_source,
               parse_pub_date, source_name,
           )
+          import datetime as dt
+          from zoneinfo import ZoneInfo
+          from scripts.khs_bis_remote_rule import collect_current_bis_items
+          current = collect_current_bis_items(dt.datetime.now(ZoneInfo("Asia/Seoul")), fetch_text)
+          if current:
+              item = current[0]
+              print(f"bis_gpu_remote_source_probe=official_passed stage={item['bis_gpu_remote_stage']} conditions_verified={item['bis_rule_conditions_verified']} no_send=true")
+              raise SystemExit(0)
           found = []
           for url, label in BIS_GPU_REMOTE_PRESS_SOURCES:
               try:
@@ -511,7 +525,9 @@ jobs:
         if: always()
         timeout-minutes: 8
         continue-on-error: true
-        run: python scripts/khs_trusted_policy_news_watch.py
+        run: |
+          PYTHONPATH=. python -m unittest tests.test_khs_bis_remote_rule tests.test_khs_ndaa_ai_policy tests.test_khs_ai_policy_integration -v
+          python scripts/khs_trusted_policy_news_watch.py
 
       - name: Run domestic telecom policy watch
         id: domestic_telecom_watch
