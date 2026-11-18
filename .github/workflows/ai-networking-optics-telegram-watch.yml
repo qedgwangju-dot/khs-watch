@@ -9,6 +9,7 @@ on:
       - "scripts/currency_krw_guard.py"
       - "tests/test_ai_networking_optics_reliability.py"
       - "tests/test_ai_networking_optics_delivery.py"
+      - "tests/test_ai_networking_optics_translation.py"
   schedule:
     # Direct twice-hourly check, away from top-of-hour congestion.
     - cron: "8,38 * * * *"
@@ -42,7 +43,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           ref: ${{ github.event_name == 'push' && github.sha || 'main' }}
 
       - name: Set up Python
@@ -344,6 +345,10 @@ jobs:
         if: steps.runtime_gate.outputs.run_watch == 'true'
         run: python -m unittest discover -s tests -p test_ai_networking_optics_delivery.py -v
 
+      - name: Regression test complete Korean titles without sending
+        if: steps.runtime_gate.outputs.run_watch == 'true'
+        run: python -m unittest discover -s tests -p test_ai_networking_optics_translation.py -v
+
       - name: Validate exact requested Telegram route without sending
         if: steps.runtime_gate.outputs.run_watch == 'true'
         env:
@@ -381,7 +386,7 @@ jobs:
               "PhotonLink", "Spectrum-X", "NVLink", "BlueField", "Tomahawk", "Thor",
               "CPO", "NPO", "OOI", "DWDM", "EIC", "SiPh", "InP", "PIC", "FAU", "ELS", "OSAT", "CAPA",
               "DSP", "PCIe", "CXL",
-              "GPU", "XPU", "AI", "1.6T", "3.2T", "800G", "100Tbps", "FY25", "FY26",
+              "GPU", "XPU", "AI", "Lambda", "Blackwell", "1.6T", "3.2T", "800G", "100Tbps", "FY25", "FY26",
               "FY27", "FY28", "FCC", "Covered List", "Buy American", "InP", "AXT", "AXTI",
               "AAOI", "Applied Optoelectronics", "Innolight", "Eoptolink", "HBOM", "SBOM",
               "Morgan Stanley", "Marc Lehman", "Sumitomo Electric", "IQE",
@@ -567,8 +572,19 @@ jobs:
               value = re.sub(r"\$([0-9][0-9,]*(?:\.[0-9]+)?)\s*M\b", repl_m, value, flags=re.I)
               return value
 
+          # Reviewed translations of complete source headlines. Exact matching
+          # preserves the original assertion without introducing article-body facts.
+          # This observed HPCwire title must remain readable during translator 429s.
+          VERIFIED_HEADLINE_TRANSLATIONS = {
+              "lambda touts first cpo deployment of blackwell gpus":
+                  "Lambda, Blackwell GPU 기반 첫 CPO 구축 사례 강조",
+          }
+
           def translate_to_korean(value: str) -> str:
               original = strip_publisher_suffix(html.unescape(value).strip())
+              reviewed = VERIFIED_HEADLINE_TRANSLATIONS.get(re.sub(r"\s+", " ", original).casefold())
+              if reviewed:
+                  return reviewed
 
               # Convert known company/product identifiers to Korean before translation.
               # This prevents a fallback or machine translation from dropping the actual subject.
@@ -624,6 +640,11 @@ jobs:
                       last_error = RuntimeError("empty translation response")
                   except Exception as exc:
                       last_error = exc
+                      print(
+                          f"optics_title_translation_retry={attempt + 1} "
+                          f"endpoint={urllib.parse.urlsplit(endpoints[attempt % len(endpoints)]).hostname} "
+                          f"error={type(exc).__name__}: {str(exc)[:300]}"
+                      )
                   if attempt < 5:
                       time.sleep(min(2 ** attempt, 8))
 
@@ -631,7 +652,8 @@ jobs:
               # hold the alert and retry on the next run instead of sending a distorted title.
               if not translated:
                   raise RuntimeError(
-                      f"Korean translation unavailable; alert held for retry: {type(last_error).__name__ if last_error else 'empty result'}"
+                      "Korean translation unavailable; alert held for retry: "
+                      + (f"{type(last_error).__name__}: {last_error}" if last_error else "empty result")
                   )
 
               for marker, term in replacements.items():
@@ -639,6 +661,9 @@ jobs:
               translated = localize_names(translated)
               translated = naturalize_dollar_tokens(translated)
               translated = re.sub(r"\s+", " ", translated).strip()
+
+              if re.search(r"ZX\s*KEEP\s*\d+\s*QZ", translated, re.I):
+                  raise RuntimeError("Translation altered a protected identifier; alert held for retry")
 
               if not re.search(r"[가-힣]", translated):
                   raise RuntimeError(f"No Korean text after translation; refusing to send: {original}")
@@ -657,7 +682,6 @@ jobs:
               return translated
 
           output = []
-          translation_fallbacks = 0
           for line in text.splitlines():
               if line.startswith("• 출처·시각:"):
                   continue
@@ -672,12 +696,11 @@ jobs:
                           translated = translate_to_korean(raw_title)
                       output.append(f"• 제목: {html.escape(translated)}")
                   except Exception as exc:
-                      # Keep the verified Korean category/stage and source URL rather
-                      # than losing an entire high-signal alert on translator 429.
-                      # Never fabricate a translated meaning or repeat raw Chinese.
-                      translation_fallbacks += 1
-                      output.append("• 제목 번역: 확인 불가 — 기사 내용은 원문 링크에서 직접 확인")
-                      output.append(f"• 번역 경고: 자동번역 오류({html.escape(type(exc).__name__)})로 제목 의미를 임의 작성하지 않음")
+                      # Leave the original alert and pending state intact. A failed
+                      # step blocks sending, and the delivery helper cannot consume
+                      # seen keys while this unsent alert still exists.
+                      print(f"optics_title_translation=held headline={raw_title!r} error={type(exc).__name__}: {exc}")
+                      raise RuntimeError("Korean title incomplete; alert held and seen state unchanged") from exc
                   continue
               output.append(line)
 
@@ -690,7 +713,7 @@ jobs:
               raise RuntimeError("Chinese/Hanja remained in Telegram alert; refusing to send.")
 
           path.write_text(rendered, encoding="utf-8")
-          print(f"telegram_alert_korean_translation=true title_fallbacks={translation_fallbacks} chinese_hanja_guard=true source_timestamp_removed=true")
+          print("telegram_alert_korean_translation=true title_fallbacks=0 chinese_hanja_guard=true source_timestamp_removed=true")
           PY
           python scripts/currency_krw_guard.py out/ai_networking_optics_watch_telegram.html
 
@@ -802,7 +825,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           for attempt in 1 2 3 4; do
-            git fetch origin main
+            git fetch --depth=1 origin main
             git reset --hard origin/main
             python scripts/ai_networking_optics_delivery.py merge-commit --snapshot-dir "$optics_snapshot_dir"
             for state_file in ai_networking_optics_watch_state.json ai_networking_optics_delivery_receipts.json; do

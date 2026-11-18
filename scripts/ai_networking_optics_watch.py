@@ -4436,7 +4436,7 @@ def main() -> None:
         f"- 조회시각(KST): {dt.datetime.now(KST).isoformat(timespec='seconds')}",
         f"- 기준선 초기화 여부: {'예' if initialized else '아니오 — 이번 실행은 기준선만 저장'}",
         f"- 관련 신규 사건 후보: {len(new_items)}건",
-        f"- Telegram 발송 사건: {len(alert_items)}건",
+        f"- Telegram 전송 대상 사건: {len(alert_items)}건(실제 전송 여부는 수신 확인 기록으로 판정)",
         f"- 발송 한도 초과로 다음 조회에 남긴 사건: {len(deferred_items)}건",
         f"- 중복 기사 통합 후 사건 기준선: {len(deduped)}건",
         f"- 중복 제거 방식: 동일 원문 URL·제목/출처 통합 + 동일 사건 의미 클러스터 + 사건키 v3",
