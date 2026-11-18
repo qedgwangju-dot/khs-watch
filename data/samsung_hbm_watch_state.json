@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-11",
-  "updated_at_kst": "2026-11-18T13:42:51+09:00",
+  "updated_at_kst": "2026-11-18T17:44:38+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -1892,7 +1892,7 @@
       "ddr5_chip_quote|dramexchange|16|4800/5600": {
         "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
         "axis": "ddr5_chip_quote",
-        "value": 60.333,
+        "value": 60.5,
         "unit": "USD/chip",
         "period": "2026-11",
         "as_of": "2026-11-18",
@@ -2975,11 +2975,11 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-11-18T13:42:51+09:00",
+      "last_checked_at_kst": "2026-11-18T17:44:38+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
-      "observations": 6,
+      "observations": 5,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
@@ -3056,7 +3056,7 @@
     "all_message_chat_ids_verified": true
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-18T13:44:09+09:00",
+    "checked_at_kst": "2026-11-18T17:45:36+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": 3029.0,
@@ -3162,7 +3162,7 @@
   ],
   "export_alert_format_version": 4,
   "official_revision_due": false,
-  "official_observed_this_run": true,
+  "official_observed_this_run": false,
   "last_official_alert_snapshot": {
     "month": "202610",
     "hs": "8542323000",
