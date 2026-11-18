@@ -74,6 +74,19 @@ class CurrencyKRWGuardTests(unittest.TestCase):
             out = g.enforce_text("150억달러(약 20조2,500억원)")
         self.assertEqual(out, "150억달러(약 20조2,500억원)")
 
+    def test_one_dollar_per_won_quote_is_not_a_phantom_purchase_price(self):
+        with patch.object(g, "_rate", side_effect=self.fake_rate):
+            rate_only = g.enforce_text("환산 기준: 1달러당 1,333.00원", hbm_mode=True)
+            mixed = g.enforce_text(
+                "HBM4 2.05달러/Gb, 당시 환율 1달러당 1,333.00원",
+                hbm_mode=True,
+            )
+        self.assertEqual(rate_only, "환산 기준: 1달러당 1,333.00원")
+        self.assertIn("2.05달러/Gb(약 2,768원/Gb)", mixed)
+        self.assertIn("1달러당 1,333.00원", mixed)
+        self.assertNotIn("1달러(약", mixed)
+        g.validate_text(mixed, hbm_mode=True)
+
     def test_exchange_rate_basis_is_not_rewritten(self):
         with patch.object(g, "_rate", side_effect=self.fake_rate):
             out = g.enforce_text("1달러=1,350원")

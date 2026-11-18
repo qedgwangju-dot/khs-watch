@@ -238,6 +238,14 @@ REPORTS = (
         "date": "2026-11-18",
         "group": "roadshow",
         "label": "TrendForce 로드쇼: HBM4 제품별 Gb당 가격과 HBM4E 초기 제시가",
+        "short_title": "HBM4·HBM4E 가격 전망",
+        "brief_facts": (
+            "HBM4 가격: 2026년 2.05달러/Gb 이상 → 2027년 3~5.5달러/Gb 전망. HBM4E는 5달러/Gb 초과 초기 제시·논의 단계.",
+            "2026년 2.05달러 최소치 대비 HBM4 상승폭 +46~168%; 실제 기준가격이 더 높으면 상승률 축소. 전체 가격대가 100% 이상 상승한다는 뜻 아님.",
+            "전체 HBM 혼합 평균판매단가: 2026년 1.67달러/Gb → 2027년 3.70달러/Gb(+121.6%, 현장 기사 +122%). 9/29 TrendForce 공식 +121% 전망과 동일한 방향이며 HBM4 개별 가격과 분모가 다름.",
+            "확인 지표: 고객별 계약 갱신·가격·용량, 8단/12단 비중, 고객 검증·실제 양산 출하. 보도 당일 참고 환율은 11/18 서울외국환중개 15:30 기준 1달러=1,333.00원.",
+        ),
+        "brief_caution": "가격은 전망·초기 제시가로 확정 납품가격, HBM4E 고객 승인, 2027년 실현 매출이 아님. 행사 유료 발표자료 전문 미확보.",
         "sources": (
             ("조선비즈 로드쇼 현장 취재", "https://biz.chosun.com/it-science/ict/2026/11/18/62CPYNPGWNG4BIG5N2WUWKGKJE/", "현장 취재 원보도·TrendForce 발표 인용"),
             ("ZDNet Korea 로드쇼 취재", "https://zdnet.co.kr/view/?no=20261118120439", "별도 현장 취재·TrendForce 발표 인용"),
@@ -262,6 +270,14 @@ REPORTS = (
         "date": "2026-11-18",
         "group": "roadshow",
         "label": "TrendForce: 2027년 범용 DRAM 분기별 가격 증가율·NAND 2분기 하락 시나리오",
+        "short_title": "DRAM 분기별 가격·NAND 하락 전환",
+        "brief_facts": (
+            "범용 DRAM 평균판매단가 전분기비: 2026년 4분기 +10~15% → 2027년 1분기 +5~10% → 2분기 +3~8% → 3·4분기 각각 +0~5%. 상승률 둔화이지 가격 하락 확정이 아님.",
+            "전체 NAND 계약가 하락 시작 예상은 기존 2027년 하반기(3분기) → 2027년 2분기. 11월 17일 TrendForce 선행 자료로 이미 감지한 전망이며 실현 가격 하락·계약 취소·새로운 독립 상향/하향이 아님.",
+            "배경: AI 서버·HBM 증산으로 범용 DRAM 웨이퍼가 부족한 반면, NAND는 YMTC 공정 전환·중국 증설·소비자 수요 약세 가능성.",
+            "확인 지표: 분기별 DRAM/NAND 계약가, DDR4/DDR5 현물가, YMTC 실제 비트 생산, 중국·북미 기업용 SSD 주문·재고. 현물가·계약가·고객별 SSD 가격은 별개.",
+        ),
+        "brief_caution": "2027년 예상 경로이지 확정 거래·매출 아님; 11월 17일 선행 NAND 신호는 중복 전송 금지.",
         "sources": (
             ("ZDNet Korea 서울 로드쇼 취재", "https://zdnet.co.kr/view/?no=20261118120439", "현장 취재 원보도"),
             ("IT之家 ZDNet 인용 비교", "https://www.ithome.com/1/028/814.htm", "원기사 재인용·독립 출처 아님"),
@@ -288,6 +304,15 @@ REPORTS = (
         "date": "2026-11-18",
         "group": "roadshow",
         "label": "TrendForce: HBM4 비중·구글/NVIDIA 수요·삼성/SK TSV 생산능력 전망",
+        "short_title": "HBM4 비중·고객·TSV 공급능력",
+        "brief_facts": (
+            "전체 HBM 출하 중 HBM4 비중 2026년 31%→2027년 51%(+20%p). 2027년 하반기 8단이 12단보다 주력이 될 가능성; 제품 구성에 따른 평균단가 상승과 개별 가격 인상은 구분.",
+            "HBM 최종 수요처: 구글 TPU 등 2026년 22%→2027년 31%(+9%p), NVIDIA는 2027년 42%로 최대. 메모리 공급사의 고객별 확정 계약비중이 아님.",
+            "HBM용 TSV 웨이퍼 처리능력(2026년 말→2027년 말): 삼성전자 월 18만→28만장(+10만, +55.6%), SK하이닉스 월 20만→26만장(+6만, +30%). 실제 양품 HBM 출하량 또는 전체 DRAM 웨이퍼 능력과 다름.",
+            "HBM의 웨이퍼 자원 소모는 범용 DRAM의 약 3~4배, 메모리 3사의 HBM 웨이퍼 배분율 2026년 23%→2027년 약 30% 전망.",
+            "2027년 전망: 추론 반도체 출하 +78%, 전체 AI 반도체 +54%, 클라우드 설비투자 +60%, 첨단 패키징 매출 +118%. 서로 다른 분모로 미확정 발주·양산·매출과 구분.",
+        ),
+        "brief_caution": "고객 비중·생산능력·수요 증가는 TrendForce 전망이며 회사의 실제 계약·완성품 출하·매출 확정이 아님.",
         "sources": (
             ("조선비즈 HBM 제품구성·고객·TSV 현장 보도", "https://biz.chosun.com/it-science/ict/2026/11/18/62CPYNPGWNG4BIG5N2WUWKGKJE/", "현장 취재 원보도"),
             ("조선비즈 동일 취재 영문판", "https://biz.chosun.com/en/en-it/2026/11/18/YCDJTCE5CVFFND7AW5NJRISJDA/", "같은 취재 영문 전재·독립 근거 아님"),
@@ -311,6 +336,14 @@ REPORTS = (
         "date": "2026-11-18",
         "group": "roadshow",
         "label": "TrendForce: 2028년 P5·용인·CXMT 증설과 데이터센터 지연 위험",
+        "short_title": "2028년 증설·공급과잉 위험",
+        "brief_facts": (
+            "설비투자 시나리오: 삼성 P5 1·2단계 각각 월 웨이퍼 20만장 목표, SK하이닉스 용인 월 30만장 목표, CXMT 2028년 이후 월 10만~20만장 추가 증설 검토. 가동·출하 확정 아님.",
+            "CXMT 2026년 월 3만장→2027년 월 3만6,000장 현장 수치는 과거 회사 전체 월 20만장 중반~30만장 이상 추정과 불일치. 공장·제품·분모 확인 전 전체 생산능력으로 단정 금지.",
+            "미국 데이터센터의 허가·전력 접속·공사 지연은 2028년 이후 잠재 수요 위험이며 이미 취소된 주문·매출 감소 확정이 아님.",
+            "확인 순서: P5·용인·중국 장비 반입→전원 인가→웨이퍼 투입→HBM/범용 DRAM 수율·출하, 서버 실수요·기업용 SSD 주문·재고, 2028년 분기 계약가 변화.",
+        ),
+        "brief_caution": "11/16 키움증권 공급과잉 전망과 별개 시나리오. P5 물량 중복 합산 금지, 장비 반입·고객 승인 이전 매출 확정 금지.",
         "sources": (
             ("ZDNet Korea 2028년 증설 시나리오 현장 보도", "https://zdnet.co.kr/view/?no=20261118120439", "현장 취재 원보도"),
             ("ZDNet 기사 동일 원문 정리", "https://theddari.com/trends/telegram/3692986659/13726", "원보도 요약·독립 증거 아님"),
@@ -381,25 +414,51 @@ def probe(report: dict, fetcher=fetch_article) -> tuple[dict | None, list[dict]]
             return {"key": report["key"], "group": report["group"], "label": report["label"],
                     "date": report["date"], "facts": report["facts"], "caution": report["caution"],
                     "source": url, "source_label": label, "lineage": lineage,
-                    "verified_kind": "reported_not_issuer_confirmed"}, gaps
+                    "verified_kind": "reported_not_issuer_confirmed",
+                    "short_title": report.get("short_title"),
+                    "brief_facts": report.get("brief_facts"),
+                    "brief_caution": report.get("brief_caution")}, gaps
         except Exception as exc:
             gaps.append({"key": report["key"], "origin": label,
                          "status": "source_unavailable", "error_type": type(exc).__name__})
     return None, gaps
 
 def render(group: str, items: list[dict], checked_at: str) -> str:
-    lines = [
-        "<b>[HBM 기존 감시 보강 | 중요 신규·누락 사건]</b>",
-        f"<b>{html.escape(GROUPS[group])}</b>",
-        f"확인: {html.escape(checked_at)} · 최초 보도일 기준 · 원보도/재인용 구분",
-    ]
+    """Readable, source-linked Telegram digest; keep all material facts visible.
+
+    Break only at entire-event boundaries; never chop an item mid-sentence or
+    silently truncate because the 4096-unit Telegram HTML limit is near.
+    """
+    header = ("<b>[HBM 기존 감시 | 중요 신규 변화]</b>\n"
+              f"<b>{html.escape(GROUPS[group])}</b>\n"
+              f"확인 {html.escape(checked_at[:16].replace('T', ' '))} KST · 전망/실적 단계 구분")
+    sections = []
     for item in items:
-        lines.extend(("", f"<b>■ {html.escape(item['label'])}</b>",
-                      f"• 최초 보도: {item['date']} · 출처 단계: {html.escape(item['lineage'])}"))
-        lines.extend("• " + html.escape(line) for line in item["facts"])
-        lines.append("• 구분·위험: " + html.escape(item["caution"]))
-        lines.append(f'• <a href="{html.escape(item["source"], quote=True)}">근거 기사</a> ({html.escape(item["source_label"])})')
-    return "\n".join(lines).strip() + "\n"
+        name = item.get("short_title") or item["label"]
+        lines = [f"<b>■ {html.escape(name)}</b>"]
+        if not item.get("brief_facts"):
+            lines.append(f"• 최초 보도 {html.escape(item['date'])} · {html.escape(item['lineage'])}")
+        lines.extend("• " + html.escape(line) for line in
+                     (item.get("brief_facts") or item["facts"]))
+        caution = item.get("brief_caution") or item["caution"]
+        lines.append("• 주의: " + html.escape(caution))
+        lines.append(f'• <a href="{html.escape(item["source"], quote=True)}">근거 기사</a>'
+                     f' ({html.escape(item["source_label"])})')
+        sections.append("\n".join(lines))
+    # The downstream currency guard may expand each USD price with KRW;
+    # reserve room before GitHub's 3600-unit safe Telegram chunk limit.
+    pages = []
+    page = header
+    for section in sections:
+        candidate = page + "\n\n" + section
+        if len(candidate.encode("utf-16-le")) // 2 > 2600 and page != header:
+            pages.append(page)
+            page = header + " · 계속\n\n" + section
+        else:
+            page = candidate
+    if page != header:
+        pages.append(page)
+    return ("\n\n" + BREAK + "\n\n").join(pages).strip() + "\n"
 
 def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict, list[str], dict]:
     result = copy.deepcopy(previous)

@@ -117,6 +117,14 @@ def _already_parenthesized(tail: str) -> bool:
     return bool(re.match(r"\s*\([^)]*원(?:/[^)]*)?\)", tail))
 
 
+def _is_exchange_rate_quote(token: str, tail: str) -> bool:
+    """1달러당 1,333원 is an FX rate reference, not a USD purchase price."""
+    return bool(
+        re.fullmatch(r"1(?:\.0+)?\s*달러", token.strip())
+        and re.match(r"\s*당\s*\d[\d,]*(?:\.\d+)?\s*원", tail)
+    )
+
+
 def _normalize_existing_separate_krw(text: str) -> str:
     # 과거 고정환율로 본문에 박혀 있던 "223억달러 ≈ 29조..." 같은 값을 제거한 뒤
     # 아래 enforce 단계에서 실행 시점의 검증된 API 환율로 다시 계산한다.
@@ -332,7 +340,8 @@ def enforce_text(text: str, *, hbm_mode: bool = False) -> str:
     )
     def repl_word_plain(m):
         tail = text[m.end():]
-        if tail.lstrip().startswith("=") or _already_parenthesized(tail):
+        if (tail.lstrip().startswith("=") or _already_parenthesized(tail)
+                or _is_exchange_rate_quote(m.group(0), tail)):
             return m.group(0)
         # Large-unit amounts were already handled.
         before = text[max(0, m.start()-4):m.start()]
@@ -391,7 +400,7 @@ def validate_text(text: str, *, hbm_mode: bool = False) -> None:
         tail = visible[m.end():]
         # Exchange-rate basis lines such as 1달러=1,350원 are not monetary
         # values requiring a second KRW conversion.
-        if re.match(r"\s*=", tail):
+        if re.match(r"\s*=", tail) or _is_exchange_rate_quote(token, tail):
             continue
         if not _already_parenthesized(tail):
             unpaired.append(token)

@@ -353,5 +353,43 @@ class MaterialEventTests(unittest.TestCase):
         self.assertIn("전체 생산능력으로 확정 사용 금지", " ".join(
             next(r for r in m.REPORTS if "2028_dram_supply_risk" in r["key"])["facts"]))
 
+    def test_trendforce_digest_preserves_all_numeric_facts_in_short_visible_sections(self):
+        import currency_krw_guard as krw
+        roadshow = [r for r in m.REPORTS if r["date"] == "2026-11-18"]
+        items = [{**r, "source": r["sources"][0][1],
+                  "source_label": r["sources"][0][0],
+                  "lineage": r["sources"][0][2]} for r in roadshow]
+        short = m.render("roadshow", items, "2026-11-18T18:33:49+09:00")
+        long = m.render("roadshow", [
+            {**r, "short_title": None, "brief_facts": None, "brief_caution": None}
+            for r in items
+        ], "2026-11-18T18:33:49+09:00")
+        self.assertLess(len(short), len(long) * 0.8)
+        self.assertEqual(short.count("<b>■ "), 4)
+        self.assertEqual(short.count("근거 기사"), 4)
+        self.assertNotIn("• 최초 보도", short)
+        for part in ("2.05달러/Gb", "3~5.5달러/Gb", "5달러/Gb",
+                     "1.67달러/Gb", "3.70달러/Gb", "+121.6%",
+                     "10~15%", "5~10%", "3~8%", "+0~5%",
+                     "2027년 2분기", "11월 17일", "31%→2027년 51%",
+                     "22%→2027년 31%", "2027년 42%", "18만→28만",
+                     "20만→26만", "3~4배", "23%→2027년 약 30%",
+                     "+78%", "+54%", "+60%", "+118%", "월 20만장",
+                     "월 30만장", "10만~20만장", "월 3만6,000장",
+                     "전원 인가", "전체 가격대가 100% 이상"):
+            self.assertIn(part, short)
+        with patch("currency_krw_guard._rate", return_value=(1336.21, "test")):
+            paired = krw.enforce_text(short, hbm_mode=True)
+        self.assertIn("1달러=1,333.00원", paired)
+        self.assertNotIn("1달러(약", paired)
+        self.assertNotIn("달러당(약", paired)
+        self.assertNotIn("달러(약 40,086원)", paired)
+        segments = d.chunks(paired)
+        self.assertTrue(segments)
+        self.assertLessEqual(len(segments), 3)
+        self.assertTrue(all(len(part.encode("utf-16-le")) // 2 <= 3600
+                            for part in segments))
+        self.assertEqual(sum(part.count("근거 기사") for part in segments), 4)
+
 if __name__ == "__main__":
     unittest.main()
