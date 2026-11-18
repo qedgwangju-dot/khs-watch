@@ -438,6 +438,8 @@ def _primary_topic(row):
         return '이란 · 종전 전 핵시설 사찰 제한 입장'
     if _us_north_korea_possible_meeting_headline(row):
         return '미국·북한 · 정상 회동 가능성 발언'
+    if _north_korea_meeting_possibility_observation(row):
+        return '북미 회담 가능성 관측'
     if _summit_venue_description_only(row):
         return _diplomatic_group(title) + ' · 정상회담 장소 보도'
     if _us_china_russia_trilateral_summit_headline(row):
@@ -1455,6 +1457,8 @@ def non_military_kind(row):
         return 'diplomatic_position'
     if _us_north_korea_possible_meeting_headline(row):
         return 'diplomatic_plan'
+    if _north_korea_meeting_possibility_observation(row):
+        return 'diplomatic_analysis'
     if _summit_venue_description_only(row):
         return 'diplomatic_analysis'
     if _us_china_russia_trilateral_summit_headline(row):
@@ -1745,6 +1749,20 @@ def _us_north_korea_possible_meeting_headline(row):
                 and re.search(r'만날\s*수도|만남\s*가능성|회동\s*가능성', title)
                 and not re.search(r'(?:트럼프|김정은).{0,25}'
                                   r'(?:만났다|회동했다|회담했다|회동\s*확정|회담\s*성사)', title))
+
+
+def _north_korea_meeting_possibility_observation(row):
+    """Third-party signs or forecasts are not an attack or a held meeting."""
+    title = _headline(row)
+    if not (re.search(r'북미\s*(?:정상)?회담', title)
+            and re.search(r'가능성\s*(?:시사|관측|전망|제기)', title)
+            and re.search(r'러\s*반응|러시아\s*반응|전문가|관측|분석|전망|징후', title)):
+        return False
+    return not bool(re.search(
+        r'공격|공습|폭격|포격|타격|피격|미사일|폭발|'
+        r'회담\s*(?:개최|확정|성사|예정|진행|재개|무산|결렬|거부)|'
+        r'회담.{0,8}(?:열렸|이뤄졌)|합의|제안|'
+        r'\b(?:attack\w*|airstrikes?|missiles?)\b', title))
 
 
 def _us_china_russia_trilateral_summit_headline(row):

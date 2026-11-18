@@ -9,7 +9,7 @@ SCRIPTS = ('test_war_peace_runtime.py', 'test_war_peace_regression.py',
            'test_war_peace_oct04_regression.py', 'test_war_peace_integrity.py',
            'test_war_peace_two_color.py', 'test_war_peace_operations.py',
            'test_war_peace_run893_semantics.py', 'test_war_peace_run894_semantics.py',
-           'test_war_peace_run897_semantics.py')
+           'test_war_peace_run897_semantics.py', 'test_war_peace_run898_semantics.py')
 BOOTSTRAP = '''
 import runpy, socket, sys, urllib.request
 from pathlib import Path

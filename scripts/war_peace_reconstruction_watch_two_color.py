@@ -261,6 +261,7 @@ def direction(stage, row):
     tags = {str(tag).strip() for tag in row.get('tags', [])}
     if (_title_only_war_end_pledge(stage, row)
             or stage._conditional_nuclear_inspection_headline(row)
+            or stage._north_korea_meeting_possibility_observation(row)
             or stage._summit_venue_description_only(row)):
         return None
     # An order to end an indeterminate "neither war nor peace" state does not
@@ -440,6 +441,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         satellite_disruption = _unattributed_satellite_disruption(title, row)
         title_only_pledge = _title_only_war_end_pledge(stage, row)
         summit_venue = stage._summit_venue_description_only(row)
+        meeting_observation = stage._north_korea_meeting_possibility_observation(row)
         inspection_condition = stage._conditional_nuclear_inspection_headline(row)
         postwar = (bool({str(tag).strip() for tag in row.get('tags', [])} & DIPLOMATIC_TAGS)
                    and _postwar_compromise_context(title))
@@ -448,7 +450,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             {'원인미확정', '공식확인대기'} <= source_tags
             or (re.search(r'재공격\s*가능성.{0,12}매우\s*작', title)
                 and '폭발음 보도·공격 원인 미확인' in source_tags)))
-        context = (commentary or policy_options or hypothetical or postwar or title_only_pledge or summit_venue or inspection_condition
+        context = (commentary or policy_options or hypothetical or postwar or title_only_pledge or summit_venue or meeting_observation or inspection_condition
                    or satellite_disruption
                    or uncertain or stalemate_statement)
         row['semantic_classification_color'] = row.get('classification_color')
