@@ -76,7 +76,7 @@
     "https://www.koreaittimes.com/news/articleView.html?idxno=159114",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-11-18T22:59:47+09:00",
+  "last_checked_at_kst": "2026-11-19T07:19:47+09:00",
   "metric_observation_count": 1,
   "event_count": 0,
   "latest_evidence_urls": [
@@ -820,12 +820,12 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-11-18T22:59:47+09:00",
+    "last_checked_at_kst": "2026-11-19T07:19:47+09:00",
     "last_error": "",
     "pending_month": "2026-10"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-18T23:01:12+09:00",
+    "checked_at_kst": "2026-11-19T07:21:13+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-14T01:46:15+09:00",
@@ -1008,27 +1008,27 @@
       }
     },
     "latest_official_us_month": "2026-10",
-    "last_attempt_day": "2026-11-18",
-    "last_checked_at_kst": "2026-11-18T07:39:01+09:00",
+    "last_attempt_day": "2026-11-19",
+    "last_checked_at_kst": "2026-11-19T07:19:47+09:00",
     "last_status": "verified",
     "last_error_kind": "",
-    "last_attempt_at_kst": "2026-11-18T07:39:01+09:00",
+    "last_attempt_at_kst": "2026-11-19T07:19:47+09:00",
     "fetch_revision": 3,
     "source_blocker_notified": false,
     "connection_restored_notified": true,
     "alert_layout_version": 2
   },
   "discovery_health": {
-    "rss_ok": 59,
-    "rss_failed": 2,
-    "urls_resolved": 119,
+    "rss_ok": 60,
+    "rss_failed": 1,
+    "urls_resolved": 118,
     "pages_opened": 16,
     "bing_ok": 40,
     "bing_failed": 0,
-    "google_ok": 19,
+    "google_ok": 20,
     "gdelt_ok": 0,
     "gdelt_failed": 0,
-    "news_candidates": 54
+    "news_candidates": 53
   },
   "power_squeeze_alerts": {
     "sent_fact_keys": [
@@ -1054,7 +1054,7 @@
   "news_collection_outage": {
     "consecutive_failures": 0,
     "alerted": false,
-    "last_success_at_kst": "2026-11-18T22:59:47+09:00",
+    "last_success_at_kst": "2026-11-19T07:19:47+09:00",
     "last_failure_at_kst": "2026-11-17T12:08:45+09:00"
   }
 }
