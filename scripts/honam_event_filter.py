@@ -401,6 +401,11 @@ EXECUTION_UPGRADE_TERMS = [
 
 
 def _is_known_baseline_only(item):
+    # An independently reviewed, expressly non-confirmed schedule lead is not a
+    # mere 2026-09-22 roadmap reprint even if it cites several old figures.
+    # Generic RSS articles do not get this privileged bypass.
+    if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith("honam_fab_lead_"):
+        return False
     # 회장의 신규 현장방문은 과거 팹 로드맵 수치를 함께 언급해도 별개 사건이다.
     if _executive_visit_signal(item):
         return False
@@ -448,6 +453,10 @@ def _is_proposal_only(item):
 
 
 def _action_level(item):
+    # A forecast/conflicting media report can never be marked as executed
+    # merely because its text says "착공", "확정 전", or mentions a signed contract.
+    if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith("honam_fab_lead_"):
+        return 1
     power = _power_event(item)
     if power:
         return power['level']
@@ -468,6 +477,10 @@ def _action_level(item):
 
 
 def _event_family(item):
+    # Stable incident key for reviewed preliminary developments.  Never use
+    # the broader 2030 roadmap family or a fresh news URL as its identity.
+    if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith("honam_fab_lead_"):
+        return str(item["event_family"])
     power = _power_event(item)
     if power:
         return power['family']
@@ -594,8 +607,11 @@ def _merge_group(items):
     first["evidence_count"] = len(evidence)
     first["evidence_sources"] = evidence[:5]
     first["verification_level"] = level
-    first["verification_status"] = _verification_status(level)
-    first["source_status"] = _verification_status(level)
+    first["verification_status"] = (
+        _verification_status(level) + " · 실행·계약 확정 아님"
+        if first.get("alert_type") == "선행경보" else _verification_status(level)
+    )
+    first["source_status"] = first["verification_status"]
     first["stages"] = merged_stages
     first["stage_labels"] = merged_labels
     # 방문 장소에서 전력·용수를 논의할 예정이라는 내용은

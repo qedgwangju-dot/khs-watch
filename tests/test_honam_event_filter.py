@@ -22,6 +22,8 @@ from scripts.honam_event_filter import (
     main as event_filter_main,
 )
 from scripts.honam_semiconductor_watch import canonical_headline_key, canonical_url_key, verified_intake_events
+from scripts.honam_telegram_formatter import build_message, split_message
+from scripts.honam_event_filter import _action_level
 
 
 class HonamEventFilterRegressionTest(unittest.TestCase):
@@ -647,6 +649,49 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
                 event_filter_main()
             self.assertEqual(json.loads(alert.read_text(encoding="utf-8"))["new_count"], 1)
 
+
+
+    def test_nov18_leads_remain_preliminary_and_separately_keyed(self):
+        vetted = verified_intake_events({"seen_event_keys": []})
+        allocation = [i for i in vetted if i.get("event_family") == "honam_fab_lead_site_allocation_20261118"]
+        forecast = [i for i in vetted if i.get("event_family") == "honam_fab_lead_groundbreaking_forecast_20261118"]
+        self.assertEqual(len(allocation), 3)
+        self.assertEqual(len(forecast), 1)
+        self.assertNotEqual(_event_family(allocation[0]), _event_family(forecast[0]))
+        for item in allocation + forecast:
+            self.assertEqual(item["alert_type"], "선행경보")
+            self.assertFalse(_is_known_baseline_only(item))
+            self.assertEqual(_action_level(item), 1)
+            self.assertEqual(item["source_status"], "보도 단계")
+        generic_rehash = dict(forecast[0], intake_verified=False)
+        self.assertTrue(_is_known_baseline_only(generic_rehash))
+
+    def test_nov18_verified_leads_render_full_numbers_and_source_levels(self):
+        vetted = verified_intake_events({"seen_event_keys": []})
+        items = [i for i in vetted if str(i.get("event_family") or "").startswith("honam_fab_lead_")]
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            alert, state, pending = (root / n for n in ("alert.json", "state.json", "pending.json"))
+            alert.write_text(json.dumps({"new_items": items, "official_changes": [], "new_count": len(items)}, ensure_ascii=False), encoding="utf-8")
+            state.write_text(json.dumps({"seen_event_keys": [], "event_action_levels": {}, "event_status_levels": {}}, ensure_ascii=False), encoding="utf-8")
+            pending.write_text(state.read_text(encoding="utf-8"), encoding="utf-8")
+            with patch("scripts.honam_event_filter.ALERT_PATH", alert), patch("scripts.honam_event_filter.STATE_PATH", state), patch("scripts.honam_event_filter.PENDING_PATH", pending):
+                event_filter_main()
+            report = json.loads(alert.read_text(encoding="utf-8"))
+            self.assertEqual(report["new_count"], 2)
+            by_family = {i["event_family"]: i for i in report["new_items"]}
+            self.assertEqual(by_family["honam_fab_lead_site_allocation_20261118"]["verification_level"], 2)
+            self.assertEqual(by_family["honam_fab_lead_groundbreaking_forecast_20261118"]["verification_level"], 1)
+            rendered = build_message({"checked_at_kst": "2026-11-18T19:00:00+09:00", **report})
+            for number in ("120만평", "100만평", "30만평", "63만평", "2027년 7월", "2028년", "2029년 중순", "2030년 6월", "3.1GW", "23㎞", "15만t", "310억원"):
+                self.assertIn(number, rendered, number)
+            self.assertIn("단일 보도", rendered)
+            self.assertIn("선행경보", rendered)
+            self.assertIn("원문", rendered)
+            self.assertLessEqual(max(map(len, split_message(rendered))), 3900)
+            # A successfully sent key must suppress repeated intake, not reset earlier records.
+            delivered = json.loads(pending.read_text(encoding="utf-8"))["seen_event_keys"]
+            self.assertFalse(verified_intake_events({"seen_event_keys": delivered}))
 
     def test_existing_2029_first_fab_completion_target_is_not_a_new_event(self):
         items = [

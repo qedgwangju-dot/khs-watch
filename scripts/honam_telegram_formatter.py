@@ -121,9 +121,10 @@ def build_message(data: dict) -> str:
             if stage in active:
                 active[stage] = True
 
+    lead_count = sum(1 for item in official + news if item.get("alert_type") == "선행경보")
     lines = [
         "🚨 <b>호남 반도체 국가산단</b>",
-        f"신규 변화 <b>{total}건</b> · 조회 {esc(fmt_checked(data.get('checked_at_kst', '')))}",
+        f"신규 변화 <b>{total - lead_count}건</b> · 선행경보 <b>{lead_count}건</b> · 조회 {esc(fmt_checked(data.get('checked_at_kst', '')))}",
         "• 기준: 주제·사건·공식 상태 변화",
         "• 기사 링크: 감지 근거·교차검증용",
         "",
@@ -169,6 +170,15 @@ def build_message(data: dict) -> str:
             f"<b>{esc(label)}</b>",
             f"• 무엇이 달라졌나: {esc(title)}",
         ]
+        if item.get("alert_type") == "선행경보":
+            lines.append("<b>선행경보 · 공식 배치/착공 확정 전</b>")
+            for point in item.get("summary_lines") or []:
+                lines.append(f"• {esc(point)}")
+            for detail in item.get("detail_lines") or []:
+                lines.append(f"  - {esc(detail)}")
+            note = (item.get("verification_note") or "").strip()
+            if note:
+                lines.append(f"• 검증 범위: {esc(note)}")
         reason = (item.get("reason") or "").strip()
         if reason:
             lines.append(f"• 왜 중요: {esc(reason)}")

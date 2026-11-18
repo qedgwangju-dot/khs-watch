@@ -64,6 +64,10 @@ QUERIES = [
     # 산단·기업투자·팹 일정
     '"호남권 반도체 국가산업단지" 삼성전자 SK하이닉스 투자 팹',
     '"호남권 반도체 국가산업단지" 착공 양산 준공 일정',
+    '호남 반도체 팹 착공 2027년 7월 2028년 일정 조정 국토부',
+    '호남 반도체 삼성전자 남측 SK하이닉스 북측 120만평 100만평 배치 입주협약',
+    '호남 반도체 63만평 우선개발 성토재 공사 허가 시유지 야적',
+    '호남 반도체 신장성 신광주 23㎞ 3.1GW 전원 인가 15만t 송수관로',
     '"호남권 반도체 국가산업단지" 확장 추가 부지 조성계획',
     '광주공항 함평 무안 반도체 클러스터 팹 배후기지',
     '함평 반도체 직접 팹 국가산단 후보지',
@@ -441,11 +445,16 @@ def verified_intake_events(state: dict) -> list[dict]:
                 "url_resolved": True,
                 "source_status": "보도 단계",
                 "event_family": family,
+                "intake_verified": True,
+                "alert_type": str(event.get("alert_type") or ""),
+                "verification_note": str(event.get("verification_note") or ""),
+                "summary_lines": list(event.get("summary_lines") or []),
+                "detail_lines": list(event.get("detail_lines") or []),
                 "event_phase": str(event.get("event_phase") or "scheduled"),
                 "stages": list(event.get("stages") or ["6_산단투자_기업일정"]),
                 "stage_labels": [STAGE_LABELS.get(s, s) for s in (event.get("stages") or ["6_산단투자_기업일정"])],
-                "impact": "경영진 현장점검 예정·실제 투자 확정 아님",
-                "reason": "기존 사장단 부지검토에서 회장 현장방문 예정으로 진전, 향후 투자계약·전력·용수 및 인허가 협의 추적",
+                "impact": str(event.get("impact") or "경영진 현장점검 예정·실제 투자 확정 아님"),
+                "reason": str(event.get("reason") or "기존 사장단 부지검토에서 회장 현장방문 예정으로 진전, 향후 투자계약·전력·용수 및 인허가 협의 추적"),
             })
     return out
 
