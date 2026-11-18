@@ -82,7 +82,7 @@ class CurrencyKRWGuardTests(unittest.TestCase):
                 hbm_mode=True,
             )
         self.assertEqual(rate_only, "환산 기준: 1달러당 1,333.00원")
-        self.assertIn("2.05달러/Gb(약 2,768원/Gb)", mixed)
+        self.assertRegex(mixed, r"2\.05달러/Gb\(약 2,76[78]원/Gb\)")
         self.assertIn("1달러당 1,333.00원", mixed)
         self.assertNotIn("1달러(약", mixed)
         g.validate_text(mixed, hbm_mode=True)

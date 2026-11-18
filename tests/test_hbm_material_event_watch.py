@@ -326,7 +326,7 @@ class MaterialEventTests(unittest.TestCase):
         self.assertEqual(len(alerts), 1)  # one grouped Telegram alert, not four notifications
         alert = alerts[0]
         for needle in ("2.05", "3~5.5", "5달러", "2027년 2분기",
-                       "31%→51%", "22%→2027년 31%", "2028년", "3만6,000"):
+                       "31%→2027년 51%", "22%→2027년 31%", "2028년", "3만6,000"):
             self.assertIn(needle, alert)
         self.assertIn("전체 가격대가 100% 이상", alert)
         self.assertIn("11월 17일", alert)  # already monitored NAND event, no duplicate
