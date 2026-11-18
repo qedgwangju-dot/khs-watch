@@ -298,8 +298,7 @@ def load_state():
     if state.get("version")!=1 or not isinstance(state.get("sent_events"),dict):
         raise RuntimeError("Public remarks state invalid; refuse to send")
     if state.get("pending"):
-        print("DRUCKENMILLER_DELIVERY_UNCERTAIN pending GitHub reservation; manual reconciliation required")
-        return None
+        raise RuntimeError("DRUCKENMILLER_DELIVERY_UNCERTAIN: pending GitHub reservation requires manual reconciliation")
     return state
 
 
@@ -435,14 +434,16 @@ def telegram_send(message):
 def main():
     now=iso_now()
     state=load_state()
-    if state is None:
-        return 0  # block new sends; do not overwrite the pending state
     probe=(os.getenv("DRUCKENMILLER_PROBE_ONLY") or "false").lower()=="true"
     source_items,health=discover(now)
     healthy=sum(1 for x in health.values() if x.get("ok"))
     print(f"DRUCKENMILLER_NEWS_SOURCE_HEALTH={healthy}/3 "
           f"matches={len(source_items)} detail={json.dumps(health,ensure_ascii=False)}")
 
+    # A single surviving RSS source cannot support reliable surveillance:
+    # mark the run as FAILED, never report a false all-clear.
+    if healthy<2:
+        raise RuntimeError("Druckenmiller news source degradation: fewer than 2/3 independent discovery feeds healthy")
     boot=seed_ready(state,now)
     changes=news_candidates(state,source_items,now)
     if boot:
