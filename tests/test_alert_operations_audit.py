@@ -67,6 +67,37 @@ class AlertOperationsAuditTest(unittest.TestCase):
             self.assertIn("direct_send_without_message_id_check",
                           audit.inspect_workflow(bad)["risks"])
 
+    def test_all_scheduled_cancel_and_shared_group_are_review_only(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            folder = root / ".github" / "workflows"
+            folder.mkdir(parents=True)
+            for name in ("alpha-telegram-watch.yml", "beta-telegram-watch.yml"):
+                (folder / name).write_text(
+                    'name: existing alert\non:\n  schedule:\n'
+                    '    - cron: "17 * * * *"\nconcurrency:\n'
+                    '  group: shared-existing-alert\n'
+                    '  cancel-in-progress: true\n',
+                    encoding="utf-8",
+                )
+            (folder / "gamma-telegram-watch.yml").write_text(
+                'name: existing isolated alert\non:\n  schedule:\n'
+                '    - cron: "42 * * * *"\njobs:\n  monitor:\n'
+                '    runs-on: ubuntu-latest\n',
+                encoding="utf-8",
+            )
+            findings = audit.audit_static(root)
+            by_path = {row["path"]: set(row["risks"]) for row in findings["findings"]}
+            for name in ("alpha", "beta"):
+                risks = by_path[f".github/workflows/{name}-telegram-watch.yml"]
+                self.assertIn("scheduled_run_can_be_cancelled", risks)
+                self.assertIn("shared_concurrency_group_review", risks)
+            self.assertIn("scheduled_alert_without_concurrency",
+                          by_path[".github/workflows/gamma-telegram-watch.yml"])
+            self.assertEqual(findings["workflow_files"], 3)
+            self.assertEqual(findings["risk_counts"]["shared_concurrency_group_review"], 2)
+            self.assertNotIn("Telegram delivery confirmed", str(findings))
+
     def test_runtime_preserves_failure_cancel_and_disabled_distinction(self):
         rows = [
             {"id": 1, "path": ".github/workflows/a.yml", "event": "pull_request", "conclusion": "success", "created_at": "2026-10-12T14:00:00Z"},

@@ -75,6 +75,11 @@ def inspect_workflow(path: pathlib.Path) -> dict[str, Any]:
     if (is_schedule and "workflow_run:" in body and
             re.search(r"(?m)^\s+cancel-in-progress:\s*true\s*$", body)):
         risks.append("schedule_workflow_run_cancellation_risk")
+    if (is_schedule and is_active_alert and not is_one_shot and
+            not re.search(r"(?m)^concurrency:\s*$", body)):
+        risks.append("scheduled_alert_without_concurrency")
+    if (is_schedule and re.search(r"(?m)^\s+cancel-in-progress:\s*true\s*$", body)):
+        risks.append("scheduled_run_can_be_cancelled")
     if is_schedule:
         crons = re.findall(r"(?m)^\s*-\s*cron:\s*['\"]?([^'\"\n#]+)", body)
         if not crons:
@@ -108,6 +113,24 @@ def audit_static(root: pathlib.Path) -> dict[str, Any]:
         row = inspect_workflow(p)
         row["path"] = str(p.relative_to(root))
         rows.append(row)
+    # Identical literal concurrency groups across independent watches can
+    # replace a pending scheduled check even when cancel-in-progress is false.
+    # A collision is a review candidate, not proof of a dropped notification.
+    shared_groups: dict[str, list[dict[str, Any]]] = collections.defaultdict(list)
+    for row, path in zip(rows, paths):
+        if not row["schedule"]:
+            continue
+        body = path.read_text(encoding="utf-8")
+        match = re.search(r"(?m)^\s+group:\s*([^\n#]+)", body)
+        if not match:
+            continue
+        group = match.group(1).strip().strip("'\"")
+        if group and "${{" not in group:
+            shared_groups[group].append(row)
+    for members in shared_groups.values():
+        if len(members) > 1:
+            for row in members:
+                row["risks"] = sorted(set(row["risks"] + ["shared_concurrency_group_review"]))
     counts = collections.Counter(risk for row in rows for risk in row["risks"])
     return {
         "workflow_files": len(rows),
