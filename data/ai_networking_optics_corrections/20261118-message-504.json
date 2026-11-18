@@ -1,0 +1,50 @@
+{
+  "api_response": {
+    "ok": true,
+    "result": {
+      "chat": {
+        "id": "[redacted]",
+        "type": "private"
+      },
+      "date": 1794967459,
+      "edit_date": 1794968102,
+      "from": {
+        "id": "[redacted]",
+        "is_bot": true,
+        "username": "khs88798879887988798879_bot"
+      },
+      "message_id": 504,
+      "text": "정정 — Lambda 광통신 알림\n\n■ 2026년 11월 18일 11:04에 표시된 이 알림은 11월 16일 Lambda·NVIDIA의 기존 발표를 다룬 재보도여서 신규 알림으로 취급하지 않습니다.\n\n■ 원제목은 “Lambda, Blackwell GPU 기반 첫 CPO 구축 사례 강조”이며, 앞선 본문은 자동번역 실패로 제목이 빠져 있었습니다.\n\n■ 이번 기사에서 별도 신규 고객·계약·추가 가동은 확인되지 않았으며, 검색 분류 간 중복 판정과 번역 실패 처리를 수정했습니다.\n\n공식 발표: https://blogs.nvidia.com/blog/lambda-photonics/\n재보도: https://www.hpcwire.com/2026/11/17/lambda-touts-first-cpo-deployment-of-blackwell-gpus/"
+    }
+  },
+  "bot_identity_verified": true,
+  "bot_username": "khs88798879887988798879_bot",
+  "bundle_key": "9fc3aa5c7e228759a22505ecdffb6c0305238adb2a458c80f572f4394d1edacf",
+  "correction_sha256": "a68c10a5f50c002c4899cb82aee3d51bb9c6b23e01741c3321d5738797f7b9e8",
+  "correction_text": "정정 — Lambda 광통신 알림\n\n■ 2026년 11월 18일 11:04에 표시된 이 알림은 11월 16일 Lambda·NVIDIA의 기존 발표를 다룬 재보도여서 신규 알림으로 취급하지 않습니다.\n\n■ 원제목은 “Lambda, Blackwell GPU 기반 첫 CPO 구축 사례 강조”이며, 앞선 본문은 자동번역 실패로 제목이 빠져 있었습니다.\n\n■ 이번 기사에서 별도 신규 고객·계약·추가 가동은 확인되지 않았으며, 검색 분류 간 중복 판정과 번역 실패 처리를 수정했습니다.\n\n공식 발표: https://blogs.nvidia.com/blog/lambda-photonics/\n재보도: https://www.hpcwire.com/2026/11/17/lambda-touts-first-cpo-deployment-of-blackwell-gpus/",
+  "deadline_utc": "2026-11-19T02:04:19+00:00",
+  "finished_at_utc": "2026-11-18T02:15:02.218489+00:00",
+  "ledger_modified": false,
+  "ledger_sha256_before": "96dfad9aad7612ab498fac0f4870d73893b2a7e825c0319cd18ef078b9ca4c93",
+  "ledger_unchanged_verified": true,
+  "message_id": 504,
+  "new_message_created": false,
+  "original_part_sha256": "4440df731dcacb74d52eb024f7870db059d38d78ea6bdcc5597edd02e41e5a9c",
+  "original_source_sha": "8cf89a3bd32f794cc8287d94927c7e89904a3ffc",
+  "original_text": "🚨 <b>AI 네트워킹·광통신 구조 변화 감지</b>\n조회시각(KST): 2026-11-18 11:03:04\n신규 변화: <b>1건</b>\n\n<b>1) 엔비디아 (NVDA) — CPO·실리콘 포토닉스</b>\n• 단계: 고객 검증·채택\n\n• 제목 번역: 확인 불가 — 기사 내용은 원문 링크에서 직접 확인\n• 번역 경고: 자동번역 오류(RuntimeError)로 제목 의미를 임의 작성하지 않음\n• 투자 의미: 스위치와 광학을 더 가깝게 결합해 전력·대역폭 병목을 줄이는 구조 변화로, 기존 플러거블 광모듈의 가치 배분까지 바꿀 수 있습니다.\n• 역풍 확인: 레이저 신뢰성·수율·현장 교체 난도와 플러거블 대비 경제성이 핵심 실패 경로입니다.\n• <a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxPY1hhV29uYnJYOGFBUU82MFFKeVBIRVFtZk1ScEV4dm4tdmVmQTVzMW5Jc01FbEl0bmpqeFZyeDJIM0hXMV9LM2E4Zm9YSDM3eGNvSm02V0hzN21QQTZiX2k2VmEtV2FHMXE0LTlxUFd2WWtlS0Q0Q0lOd0NkVzZ1RGQ3QkJDR0x0ZU9LTlU1ZE4?oc=5\">원문 링크</a>\n\n<b>감시 기준</b>\n• 고객·수주·양산: 3M EBO 실제 구매·대한광통신 출하·1.6T·NPO/CPO 고객 검증\n• 병목·정책: 광섬유 현물가격·모재 증설·루멘텀 공급예약·FAU·전력·미국 규제\n• 제외: 전시·데모·단순 주가반응·기존 기사 재탕은 알림하지 않음",
+  "repair_source_sha": "79b5e72afe8051e83685bf85916a4488a822286d",
+  "response_checks": {
+    "bot": true,
+    "chat": true,
+    "message_id": true,
+    "ok": true,
+    "text": true
+  },
+  "route_identity_verified": true,
+  "route_key": "e06789d08ffbc610316e034294fc31cc16aee21380f9465db7a03610b61897c0",
+  "started_at_utc": "2026-11-18T02:15:00.327208+00:00",
+  "status": "verified_edit",
+  "verified_edit": true,
+  "verification_run_url": "https://github.com/qedgwangju-dot/khs-watch/actions/runs/44221823974",
+  "verification_artifact_id": 14391386008
+}
