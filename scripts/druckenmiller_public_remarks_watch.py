@@ -66,6 +66,12 @@ SPEECH_PATTERNS={
     "ai_applications":(r"ai\s+(?:use\s+cases|applications).{0,65}(?:as\s+opposed|rather|infrastructure)",
                         r"(?:focus|shifting|shift).{0,80}(?:ai\s+applications|ai\s+use\s+cases)",
                         r"(?:tasks|outcomes)\s+instead\s+of\s+tokens"),
+    "fed_hawkish":(r"fed\s+is\s+not\s+cutting.{0,30}(?:hiking|raising)",
+                   r"federal\s+reserve.{0,50}hiking\s+rates"),
+    "credit_stress":(r"credit\s+spreads\s+(?:widening|widened|are\s+wider)",
+                     r"widening\s+credit\s+spreads"),
+    "dollar_long":(r"(?:small|modest)\s+(?:long\s+)?(?:u\.s\.\s+)?dollar\s+(?:long\s+)?position",
+                   r"(?:small|modest)\s+long\s+(?:u\.s\.\s+)?dollar"),
 }
 LABELS={
     "copper_short":"구리 매도 포지션",
@@ -74,6 +80,9 @@ LABELS={
     "equity_risk_on":"주식 위험노출 확대",
     "growth_2027":"2027년 하반기 경기 둔화 우려",
     "ai_applications":"AI 인프라보다 활용·성과 중심",
+    "fed_hawkish":"연준 긴축 전망(당사자 판단, 공식 결정 아님)",
+    "credit_stress":"신용 스프레드 확대 경계",
+    "dollar_long":"미국 달러 매수 포지션",
 }
 # Independent FIRST-PARTY editorial publishers. Republishing mirrors do not
 # create a second confirmation. Google/Bing are discoverers, NOT publishers.
@@ -307,6 +316,7 @@ def seed_message():
         "■ 구리: 매도(숏) 포지션 보유 발언",
         "■ 경기: 2027년 하반기 둔화 가능성 경계, 지금 경기침체 확정 아님",
         "■ 투자전략: 큰 베팅보다 자본 보존·불확실성 해소를 우선",
+        "■ 경계 신호: 신용 스프레드 확대·원자재 약세",
         "■ AI: 인프라 투자 기업보다 AI 적용·수익모델을 중시",
         "■ 연준: 발언의 '긴축'은 그의 정책 판단; 10월 28일 FOMC는 3.75~4.00% 동결",
         "※ 11월 17일 발언과 9월 30일 13F 보유 신고는 날짜와 조사 대상이 다릅니다.",
@@ -434,7 +444,11 @@ def main():
                   for key in ("copper_short","equity_defensive","growth_2027","ai_applications")}
         # Also treat the specific 11/17 remarks as prior coverage; reused
         # summaries should not trigger multiple follow-up alerts.
-        for key in ("copper_short","equity_defensive","growth_2027","ai_applications"):
+        # All of these are part of the 2026-11-17 interview; do not send
+        # follow-up fragments merely because another outlet covers one point.
+        for key in ("copper_short","equity_defensive","growth_2027","ai_applications",
+                    "fed_hawkish","credit_stress","dollar_long"):
+            recorded[key]={"value":key,"event_date":SEED_DATE+"T00:00:00+00:00"}
             changes=[item for item in changes if item[0]!=key]
     elif changes and healthy>=1:
         labels=";".join(key for key,_ in changes)
