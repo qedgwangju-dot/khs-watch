@@ -5,11 +5,7 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [
-      "Google News RSS 실패: \"Cathedral\" \"Anthropic\" (security research OR breach OR… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"training pause… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: Anthropic Mythos vulnerabilities critical high severity… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
+    "errors": [],
     "material_items": 11,
     "new_material_items": 0,
     "raw_items": 97,
@@ -1364,5 +1360,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-18T13:40:54+09:00"
+  "updated_at_kst": "2026-11-18T13:44:51+09:00"
 }
