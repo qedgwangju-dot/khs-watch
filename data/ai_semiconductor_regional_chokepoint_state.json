@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-18T05:53:49+09:00",
-  "last_scan_count": 7,
+  "updated_at_kst": "2026-11-18T11:55:53+09:00",
+  "last_scan_count": 5,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -132,7 +132,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -180,6 +180,7 @@
     "bbf6d84c3fbe067d2860a715",
     "c21f43569955742f3d6b1742",
     "c579cb29ce77119cfbcdf008",
+    "d40b2844e29cf4f3e355e905",
     "d48264b617e856e8ce2d499e",
     "d545efe8109e5a327521088c",
     "d598b87380cce293712421fa",
@@ -198,7 +199,14 @@
     "ff50414926b6dd08d66adea3"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "korea|capacity|SK hynix|hbm4",
+      "source": "파이낸셜뉴스",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-11-18T05:29:00+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
   "telegram_message_ids": [
     397
