@@ -5,11 +5,16 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [],
+    "errors": [
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (Anthropic OR Claude) (Mythos OR \"Cyber Verification Pr… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: Anthropic Mythos vulnerabilities critical high severity… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (\"AI worm\" OR \"self-propagating AI\" OR \"autonomous AI r… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
     "material_items": 11,
     "new_material_items": 0,
     "raw_items": 104,
-    "replication_reference_suppressed": 1,
+    "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
   "openai_insider_case_stages": {
@@ -1250,5 +1255,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-18T23:30:07+09:00"
+  "updated_at_kst": "2026-11-18T23:31:00+09:00"
 }
