@@ -206,6 +206,7 @@ def crossing_message(date, current_bp, previous_date, previous_bp, triggers, url
         "[미 국채 30년물 기술선 신규 돌파]",
         f"전체 판정: {status}",
         f"공식 종가: {previous_date} {pct(previous_bp)} → {date} {pct(current_bp)}",
+        "관측 기준: 장중 실시간 돌파가 아닌 공식 일별 관측치입니다.",
         "새로 확인된 기준선:",
         *parts,
         f"시장 의미: {market}",
