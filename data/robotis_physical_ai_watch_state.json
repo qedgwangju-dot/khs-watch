@@ -1472,6 +1472,14 @@
           "verification": "reply_message_id_recipient_text_equal",
           "chat_verification": "numeric_id_equal",
           "response_text_sha256": "f2236a35d171506605a1fbe17b94d241d33fad65a3bffc143bd472b8b24c14fb"
+        },
+        "379": {
+          "message_id": 379,
+          "status": "in_flight",
+          "request_sha256": "c1963d49ff739628eba550701ed8a50eee417d5eaedb6bbaf3b8987666df7a64",
+          "replacement_sha256": "54d557ca9c743be916810e098f7edf3de89970ef0db2e92bb72ad57722efdf2d",
+          "request_count": 1,
+          "requested_at_utc": "2026-11-18T05:27:04.201323+00:00"
         }
       },
       "completed_message_ids": [
