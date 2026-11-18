@@ -79,6 +79,57 @@ class FoldableMarketAccessTests(unittest.TestCase):
         self.assertEqual((v["idc_2026_foldable_m"],v["idc_2026_foldable_yoy_pct"]),(22.9,12.6))
         self.assertEqual((v["trendforce_2026_foldable_m"],v["trendforce_2026_foldable_yoy_pct"]),(20.2,0.5))
 
+    def test_quettai_source_metrics_are_comparable_within_study(self):
+        s=m.SENTIMENT_STUDY
+        m._verify_sentiment_source_numbers(s)
+        self.assertEqual(s["fold8_net_sentiment_pp"],41.9)
+        self.assertEqual(s["duo_net_sentiment_pp"],-3.4)
+        self.assertEqual(s["net_sentiment_gap_pp"],45.3)
+        self.assertFalse(s["search_is_sales"])
+        self.assertEqual(s["published_date"],"2026-11-18")
+        self.assertEqual(s["observation_period"],"2026-01-01..2026-10-31")
+
+    def test_study_uses_independent_denominator_for_first_week(self):
+        s=m.SENTIMENT_STUDY
+        self.assertEqual(s["independent_classified_posts_fold8"],838)
+        self.assertEqual(s["independent_classified_posts_duo"],1047)
+        self.assertNotEqual(s["independent_sample_period"],s["observation_period"])
+        self.assertIn("합산 금지",s["independent_denominator_note"])
+
+    def test_social_sentiment_alert_is_not_sales_or_hardware_generations(self):
+        msg=m._sentiment_baseline_alert(m.SENTIMENT_STUDY)
+        for marker in ("50.2%","21.2%","45.3%p","588,800회",
+                       "103,000회","20% 초과","동일조건 시험"):
+            self.assertIn(marker,msg)
+        self.assertIn("구매량 아님",msg)
+        self.assertIn("미공개",msg)
+
+    def test_fake_sentiment_gap_is_rejected(self):
+        s=dict(m.SENTIMENT_STUDY,net_sentiment_gap_pp=52.5)
+        with self.assertRaises(ValueError):
+            m._verify_sentiment_source_numbers(s)
+
+    def test_concurrent_checkpoint_keeps_once_sent_study_receipt(self):
+        original={"updated_at_kst":"2026-11-18T08:50:00+09:00",
+                  "sentiment_baseline_sent":True,
+                  "sentiment_fact_keys":[m.SENTIMENT_STUDY_KEY],
+                  "sentiment_study":dict(m.SENTIMENT_STUDY)}
+        stale={"updated_at_kst":"2026-11-18T08:49:00+09:00",
+               "sentiment_baseline_sent":False,
+               "sentiment_fact_keys":[]}
+        merged=m._merge_market_state(original,stale)
+        self.assertTrue(merged["sentiment_baseline_sent"])
+        self.assertEqual(merged["sentiment_fact_keys"],[m.SENTIMENT_STUDY_KEY])
+        self.assertEqual(merged["sentiment_study"]["fold8_net_sentiment_pp"],41.9)
+
+    def test_net_sentiment_does_not_change_existing_demand_metrics(self):
+        s=dict(m.BASELINE)
+        m._verify_sentiment_source_numbers(m.SENTIMENT_STUDY)
+        self.assertEqual(s["fold8_demand_change_pct"],16.0)
+        self.assertEqual(s["fold8_korea_sales_wow_pct"],10.0)
+        self.assertEqual(s["samsung_foldable_google_search_change_pct"],300.0)
+
+
     def test_concurrent_checkpoint_preserves_alert_history(self):
         old={"updated_at_kst":"2026-10-20T20:00:00+09:00", "initial_alert_sent":True,
              "seen_ids":["abc"], "metrics":{"fold8_demand_change_pct":16},

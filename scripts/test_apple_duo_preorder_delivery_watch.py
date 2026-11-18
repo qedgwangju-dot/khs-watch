@@ -476,12 +476,15 @@ class DuoPreorderTests(unittest.TestCase):
 
     def test_publisher_owned_rss_article_body_preserves_improved_order_dates(self):
         from unittest.mock import patch
+        from email.utils import format_datetime
+        import datetime as _dt
+        stamp = format_datetime(_dt.datetime.now(_dt.timezone.utc))
         xml=(
             '<rss xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><item>'
             '<title>Some iPhone Duo orders getting moved up to earlier dates</title>'
             '<description>Short delivery news summary</description>'
             '<link>https://9to5mac.com/2026/10/19/some-iphone-duo-orders-getting-moved-up-to-earlier-dates/</link>'
-            '<pubDate>Mon, 19 Oct 2026 19:31:00 GMT</pubDate>'
+            f'<pubDate>{stamp}</pubDate>'
             '<content:encoded><![CDATA[In Japan, a customer had an iPhone Duo '
             'original delivery December 3 to December 10. Now delivery October 23, 2026.]]>'
             '</content:encoded></item></channel></rss>'

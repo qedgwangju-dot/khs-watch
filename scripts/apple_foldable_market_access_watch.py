@@ -53,10 +53,90 @@ BASELINE = {
     "trendforce_2026_foldable_yoy_pct": 0.5,
     "official_launch_date": "2026-10-23",
 }
+SENTIMENT_STUDY_KEY = "quettai_hankyung_20261118_fold8_vs_duo_2026jan_oct"
+SENTIMENT_STUDY = {
+    "source_kind": "한경·뉴엔AI 퀘타아이 민간 소셜게시물 AI 감성분석·제조사 공식 실판매 아님",
+    "published_date": "2026-11-18",
+    "observation_period": "2026-01-01..2026-10-31",
+    "source_url": "https://www.hankyung.com/article/202611172385g",
+    "fold8_positive_pct": 50.2,
+    "fold8_negative_pct": 8.3,
+    "duo_positive_pct": 21.2,
+    "duo_negative_pct": 24.6,
+    "fold8_net_sentiment_pp": 41.9,
+    "duo_net_sentiment_pp": -3.4,
+    "net_sentiment_gap_pp": 45.3,
+    "fold8_mention_count_reported": 109825,
+    "duo_mention_count_reported": 72070,
+    "naver_search_period": "2026-10-13..2026-11-12",
+    "fold8_naver_search_count": 103000,
+    "duo_naver_search_count": 588800,
+    "search_is_sales": False,
+    "sample_versus_market": "게시물 감정·검색 관심도. 전체 소비자 선호도·판매대수·기술 세대 증명 아님",
+    "independent_directional_source": "https://blog.hashscraper.com/posts/why-was-the-iphone-duo-remembered-for-its-hinge-iphone-duo-vs-galaxy-fold8-through-2-485-social-mentions-in-their-first-week-after-launch?locale=ko",
+    "independent_sample_period": "2026-10-22..2026-10-28",
+    "independent_classified_posts_fold8": 838,
+    "independent_classified_posts_duo": 1047,
+    "independent_negative_pct_fold8": 17.5,
+    "independent_negative_pct_duo": 51.5,
+    "independent_denominator_note": "해시스크래퍼는 뉴스 포함·출시 첫주 표본, 퀘타아이와 비율 합산 금지",
+    "fold8_korean_weekly_sales_change_at_least_pct_reported": 20.0,
+    "fold8_korean_weekly_sales_period": "2026-10-23..2026-10-29 vs 2026-10-16..2026-10-22",
+    "fold8_sales_source": "https://nwww.newsis.com/view/NISX20261103_0003851966",
+    "fold8_sales_status": "통신업계 익명 보도·실제 절대 판매 대수·삼성 공식 수치 미공개",
+    "apple_display_issue_source": "https://www.reuters.com/business/media-telecom/apple-says-it-will-replace-iphone-duo-units-showing-screen-problems-2026-10-26/",
+    "apple_display_issue_status": "애플은 소수 내측화면 문제 인정·교환 안내. 불량률·원인·전량 리콜 미확인",
+}
+
+
+def _verify_sentiment_source_numbers(study: dict) -> None:
+    """Sentiment, search traffic, sales and physical reliability stay separate."""
+    if round(float(study["fold8_positive_pct"])-float(study["fold8_negative_pct"]),1) != float(study["fold8_net_sentiment_pp"]):
+        raise ValueError("Quettai Fold8 sentiment numerator mismatch")
+    if round(float(study["duo_positive_pct"])-float(study["duo_negative_pct"]),1) != float(study["duo_net_sentiment_pp"]):
+        raise ValueError("Quettai Duo sentiment numerator mismatch")
+    if round(float(study["fold8_net_sentiment_pp"])-float(study["duo_net_sentiment_pp"]),1) != float(study["net_sentiment_gap_pp"]):
+        raise ValueError("Quettai net sentiment gap mismatch")
+    if study.get("search_is_sales") is not False:
+        raise ValueError("Search interest is not sales")
+    if int(study["fold8_naver_search_count"]) <= 0 or int(study["duo_naver_search_count"]) <= 0:
+        raise ValueError("Unverified search denominator")
+
+
+def _sentiment_baseline_alert(study: dict) -> str:
+    _verify_sentiment_source_numbers(study)
+    return "\n".join([
+        "📱 <b>[폴더블 경쟁·소비자 반응 | 11월 18일 신규 조사 기준선]</b>",
+        "━━━━━━━━━━━━━━━━",
+        "• 한경·뉴엔AI 퀘타아이 <b>2026년 1~10월 온라인 게시물 감성분석</b> (제조사 공식 판매조사 아님).",
+        "• Galaxy Z Fold8: 긍정 <b>50.2%</b> / 부정 <b>8.3%</b> / 순호감 <b>+41.9%p</b>.",
+        "• iPhone Duo: 긍정 <b>21.2%</b> / 부정 <b>24.6%</b> / 순호감 <b>-3.4%p</b>.",
+        "• 순호감 격차 <b>45.3%p</b>로 갤럭시 우세. 이 비율은 AI가 분류한 언급이며 실제 구매율이 아닙니다.",
+        "• 네이버 검색(10/13~11/12): Duo <b>588,800회</b>, Fold8 <b>103,000회</b> → 화제성은 Duo 우세, 구매량 아님.",
+        "• 독립 분석(해시스크래퍼, 10/22~28): Duo 부정 <b>51.5%</b>(분류 1,047건), "
+        "Fold8 부정 <b>17.5%</b>(분류 838건). 기간·표본·뉴스 포함 기준이 달라 위 조사와 합산 불가.",
+        "• 국내 Fold8 10/23~29 주간 판매 <b>직전주 대비 20% 초과</b>는 통신업계 보도이며, 실제 대수·삼성 공식치는 미공개.",
+        "• 애플은 Duo 일부 기기의 안쪽 화면 문제를 인정하고 교환을 안내했습니다. "
+        "불량률·힌지 원인·차기 모델 개선효과는 아직 확인되지 않았습니다.",
+        "• 힌지 기술이 Galaxy Fold4 이하라는 세대별 비교는 공인 동일조건 시험 없이 확정할 수 없습니다.",
+        "",
+        "<b>[향후 확인할 변화]</b>",
+        "• 같은 표본·기간 정의로 반복 측정한 브랜드 호감도 변화",
+        "• 실제 판매·교환·반품 건수, 보증 비용과 앱 호환성 개선의 객관적 수치",
+        "",
+        f'<a href="{study["source_url"]}">원문 · 한경·뉴엔AI 퀘타아이</a>',
+        f'<a href="{study["independent_directional_source"]}">별도 표본 · 해시스크래퍼</a>',
+        f'<a href="{study["fold8_sales_source"]}">폴드8 주간 판매 보도</a>',
+        f'<a href="{study["apple_display_issue_source"]}">Apple 화면 교환 입장 · Reuters</a>',
+    ])+"\n"
+
+
 APPLE_PAGES = {"한국": APPLE_KR, "일본": APPLE_JP}
 SEARCHES = [
     ("ko", '"갤럭시 Z 폴드8" 고객 수요 16% 검색량 300%'),
     ("ko", '"아이폰 듀오" "현장 구매" "애플스토어" "일본"'),
+    ("ko", '"갤럭시Z폴드8" "아이폰 듀오" 호감도 퀘타아이 제품 평가'),
+    ("ko", '"아이폰 듀오" 갤럭시 폴드8 화면 교환 앱 최적화 비교'),
     ("en", '"Galaxy Z Fold8" "customer demand" "searches"'),
     ("en", '"iPhone Duo" walk-in Japan South Korea Apple Store policy'),
 ]
@@ -236,6 +316,12 @@ def _merge_market_state(remote: dict, local: dict) -> dict:
     out = dict(old)
     out.update(newer)
     out["initial_alert_sent"] = bool(remote.get("initial_alert_sent") or local.get("initial_alert_sent"))
+    out["sentiment_baseline_sent"] = bool(
+        remote.get("sentiment_baseline_sent") or local.get("sentiment_baseline_sent")
+    )
+    out["sentiment_fact_keys"] = sorted(
+        set(remote.get("sentiment_fact_keys") or []) | set(local.get("sentiment_fact_keys") or [])
+    )[-100:]
     out["seen_ids"] = sorted(set(remote.get("seen_ids") or []) | set(local.get("seen_ids") or []))[-500:]
     out["access"] = dict(old.get("access") or {})
     out["access"].update(newer.get("access") or {})
@@ -342,6 +428,17 @@ def main() -> None:
                     f'<a href="{APPLE_PAGES[market]}">Apple 공식 국가별 공지</a>'
                 )
 
+    sent_keys = set(state.get("sentiment_fact_keys") or [])
+    sentiment_release = dt.datetime(2026,11,18,6,0,tzinfo=KST)
+    if (now >= sentiment_release and state.get("initial_alert_sent")
+            and SENTIMENT_STUDY_KEY not in sent_keys):
+        _verify_sentiment_source_numbers(SENTIMENT_STUDY)
+        alerts.append(_sentiment_baseline_alert(SENTIMENT_STUDY))
+        sent_keys.add(SENTIMENT_STUDY_KEY)
+        state["sentiment_baseline_sent"] = True
+        state["sentiment_study"] = dict(SENTIMENT_STUDY)
+    state["sentiment_fact_keys"] = sorted(sent_keys)[-100:]
+
     for row in rows:
         seen.add(row["id"])
         if pending_baseline:
@@ -393,7 +490,8 @@ def main() -> None:
         f"- Apple 공식 정책 확인: {official}\n"
         f"- 기준선 송출상태: {state.get('initial_alert_sent')}\n"
         f"- 뉴스 검색: {len(rows)}건 / 신규 신호: {len(alerts)}건\n"
-        f"- 조회 오류: {errors}\n", encoding="utf-8",
+        f"- 조회 오류: {errors}\n"
+        f"- 감성조사 기준선 사실키: {len(state.get('sentiment_fact_keys') or [])}\n", encoding="utf-8",
     )
 
 
