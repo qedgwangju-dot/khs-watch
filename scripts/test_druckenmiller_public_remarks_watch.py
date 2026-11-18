@@ -142,7 +142,7 @@ class WatchTests(unittest.TestCase):
         state=watcher.empty_state()
         state["sent_events"][watcher.SEED_KEY]={"receipt":{"message_id":1}}
         with patch.object(watcher,"load_state",return_value=state),\
-             patch.object(watcher,"discover",return_value=([],{"google":{"ok":True}})),\
+             patch.object(watcher,"discover",return_value=([],{"google":{"ok":True},"bing":{"ok":True}})),\
              patch.object(watcher,"telegram_send") as sending,\
              patch.object(watcher,"save_state") as saving:
             self.assertEqual(watcher.main(),0)
