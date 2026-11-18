@@ -1,19 +1,19 @@
 {
-  "observation_key": "2026-11-17|3.3842|0.6122",
+  "observation_key": "2026-11-18|3.2093|0.6118",
   "latest": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "release": "FRED/Atlanta Fed 공식 GDPNow",
     "quarter": "2026-Q4",
-    "gdp": 3.3842,
-    "cipi": 0.6122,
-    "final_sales": 2.772,
-    "pce": 1.7226,
-    "equipment": 0.7355,
-    "ipp": 0.4279,
-    "nonres": 0.1904,
-    "residential": -0.121,
-    "govt": 0.2735,
-    "net_exports": -0.457
+    "gdp": 3.2093,
+    "cipi": 0.6118,
+    "final_sales": 2.5974999999999997,
+    "pce": 1.7212,
+    "equipment": 0.7349,
+    "ipp": 0.4276,
+    "nonres": 0.1903,
+    "residential": -0.2932,
+    "govt": 0.2733,
+    "net_exports": -0.4567
   },
-  "checked_at_kst": "2026-11-18T04:48:14+09:00"
+  "checked_at_kst": "2026-11-19T04:00:57+09:00"
 }
