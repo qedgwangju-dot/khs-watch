@@ -52,6 +52,45 @@ def _semantic_delivery_digest(parts: list[str], *, digest: str, route: str, titl
     return digest
 
 
+
+def validate_telegram_send_receipt(
+    response: dict, *, configured_chat: str, route: str,
+    expected_thread_id: int | None = None,
+) -> int:
+    """Require the real Telegram send response to identify the intended chat.
+
+    A bot getMe success alone does not establish destination delivery. An
+    @username destination is verified against the response chat username,
+    whereas a numeric destination is compared with the actual chat.id.
+    """
+    if not isinstance(response, dict) or response.get("ok") is not True:
+        raise RuntimeError(f"Telegram API did not confirm send route={route}")
+    result = response.get("result")
+    if not isinstance(result, dict):
+        raise RuntimeError(f"Telegram send response missing result route={route}")
+    chat = result.get("chat")
+    if not isinstance(chat, dict):
+        raise RuntimeError(f"Telegram send response missing chat identity route={route}")
+    expected = str(configured_chat or "").strip()
+    if expected.startswith("@"):
+        actual = str(chat.get("username") or "").strip().removeprefix("@")
+        if not expected[1:] or actual.casefold() != expected[1:].casefold():
+            raise RuntimeError(f"Telegram send chat username mismatch route={route}")
+    else:
+        actual_chat_id = chat.get("id")
+        if not expected or not expected.lstrip("-").isdigit() or (
+            type(actual_chat_id) is not int or str(actual_chat_id) != expected
+        ):
+            raise RuntimeError(f"Telegram send chat.id mismatch route={route}")
+    if expected_thread_id is not None:
+        if result.get("message_thread_id") != expected_thread_id:
+            raise RuntimeError(f"Telegram send message topic mismatch route={route}")
+    message_id = result.get("message_id")
+    if type(message_id) is not int or message_id <= 0:
+        raise RuntimeError(f"Telegram send message_id invalid route={route}")
+    return message_id
+
+
 def deliver_policy_parts(
     parts: list[str], *, digest: str, route: str, title: str,
     sent_state: dict, now_utc: dt.datetime, dedupe_hours: int,
