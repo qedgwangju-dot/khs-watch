@@ -65,7 +65,10 @@ def inspect_workflow(path: pathlib.Path) -> dict[str, Any]:
     crons: list[str] = []
     if r"\${{" in body:
         risks.append("escaped_github_expression")
-    if direct_send and not is_one_shot and not re.search(r"\bmessage_id\b", body):
+    # The European yield sender validates the Telegram receipt through a
+    # tested helper rather than reading message_id directly in YAML.
+    receipt_marker = bool(re.search(r"\bmessage_id\b|\bverified_telegram_message_id\s*\(", body))
+    if direct_send and not is_one_shot and not receipt_marker:
         risks.append("direct_send_without_message_id_check")
     if is_schedule and not is_dispatch and is_active_alert and not is_one_shot:
         risks.append("no_manual_dispatch_for_scheduled_watch")
@@ -85,7 +88,7 @@ def inspect_workflow(path: pathlib.Path) -> dict[str, Any]:
         "schedule": is_schedule,
         "dispatch": is_dispatch,
         "inline_telegram_send": direct_send,
-        "receipt_marker": bool(re.search(r"\bmessage_id\b", body)),
+        "receipt_marker": receipt_marker,
         "one_shot_or_test": is_one_shot,
         "schedule_max_gap_hours": (
             min(limits) if (limits := [gap for cron in crons if (gap := conservative_schedule_gap_hours(cron)) is not None])
