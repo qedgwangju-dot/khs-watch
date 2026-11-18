@@ -5,10 +5,12 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [],
+    "errors": [
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
     "material_items": 11,
     "new_material_items": 0,
-    "raw_items": 103,
+    "raw_items": 101,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1127,16 +1129,6 @@
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaFoxZkxQS1BGRVVfWHF5R3Azd2xvb3VuR3ZibU44Mk51RVF1UjE2YUZ6elRaVmtTaGxfdTcwMjU4bDh3QTRabUtJdmd0MlVXYURSMnhSSlJKS2Z0ZWRvb2VIM29aMU5GR2g3WFMzeGdfaG5xaEdmSlkxRG8zby1xWWQ5LU5vZHlaallOWTFCMmJuQkduWW4tdS1tcw?oc=5",
       "vendor": "PHP 재단"
     },
-    "e8f9fec166c7df21157fead0": {
-      "category": "AI 자율복제·사물인터넷 모의평가",
-      "first_seen_at": "2026-10-14T15:21:21.863443+00:00",
-      "published_at": "2026-10-14T15:19:02+00:00",
-      "severity": 1,
-      "source": "The Verge",
-      "title": "Anthropic’s self-replicating AI warning is an alarming deja vu - The Verge",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPVmlsZkg4MjVmSXE4WDBLY29yUEZxZmo1SG9hcHlZdmRFLTF3V2lyWUpqbEZhNHF1aXpaWG9BdGdhREx6Tnk5Mjc4dWpkRUIyR0huejRDN29tM2hZQW1iNjJqM1FSdUF3cVJKS2VScUVNbG1mRFBjM3ZUV3RHeXV6TjNFM01EeW1vS2Q3SHc0TXJZcnNPb2JoMmNhNk5nQk9tTXprczFfbmlKeFBx?oc=5",
-      "vendor": "Anthropic"
-    },
     "ea03d8412daacffa54292eca": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-25T02:48:14.168396+00:00",
@@ -1250,5 +1242,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-19T00:14:27+09:00"
+  "updated_at_kst": "2026-11-19T00:31:49+09:00"
 }
