@@ -1403,7 +1403,7 @@
         "1af7318eee48e5dae7836d7901a4d520d77ebdde324e6c5b9ad321765f0d0579"
       ],
       "payload_sha256": "bab2e7feea6feeec8db7396fc8eb97f2888cb2eda84a20361a9a924d671497d2",
-      "status": "partial",
+      "status": "completed",
       "messages": {
         "376": {
           "message_id": 376,
@@ -1419,17 +1419,23 @@
         },
         "377": {
           "message_id": 377,
-          "status": "in_flight",
+          "status": "confirmed",
           "request_sha256": "508e0799cca7c622789d3831d0832ddebb1a9367fc7f94af1a08c242f74e9540",
           "replacement_sha256": "1af7318eee48e5dae7836d7901a4d520d77ebdde324e6c5b9ad321765f0d0579",
           "request_count": 1,
-          "requested_at_utc": "2026-11-18T05:26:56.418877+00:00"
+          "requested_at_utc": "2026-11-18T05:26:56.418877+00:00",
+          "confirmed_at_utc": "2026-11-18T05:26:58.844074+00:00",
+          "verification": "reply_message_id_recipient_text_equal",
+          "chat_verification": "numeric_id_equal",
+          "response_text_sha256": "670dab89dcc7ecfdcca4e3202d285cfbea36faa9ab76a8f05e397290864581f4"
         }
       },
       "completed_message_ids": [
-        376
+        376,
+        377
       ],
-      "prepared_at_utc": "2026-11-18T05:26:52.556988+00:00"
+      "prepared_at_utc": "2026-11-18T05:26:52.556988+00:00",
+      "completed_at_utc": "2026-11-18T05:26:59.159368+00:00"
     }
   }
 }
