@@ -5,7 +5,10 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [],
+    "errors": [
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) model release c… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) tool-use traini… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
     "material_items": 11,
     "new_material_items": 0,
     "raw_items": 108,
@@ -66,16 +69,6 @@
       "title": "Mitigating PHP2Shell Vulnerabilities (CVE-2026-109618 & CVE-2026-109619) With the Cortex Platform - Palo Alto Networks",
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQemFiaDAxRzZFSFhQdXotSjNoZHBrYmM2MHF5RlN1Z1d4OVNYOVM3OXV3bC1SQ1RBb193NTdISkJwLUZlalBLN1pHSl8zcXJua0ptbjVUVmNlNHU3TWppek0yNDlYLXlaVk10QmZGV1lBWVUtQlJ0RnBHSWJiRlVicDZSUGlMWFpEODJmUWg1aWNGRnB1bGNwb21USE51YUxYNjNCTC1vMzc1ck80bU1MWXRxWEg4M1AyS1ZqRy1WRFluTEk?oc=5",
       "vendor": "PHP 재단"
-    },
-    "032796d8c1e41720a8979aae": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T17:36:20.869464+00:00",
-      "published_at": "2026-10-14T00:00:00+00:00",
-      "severity": 2,
-      "source": "Bloomberg.com",
-      "title": "Watch OpenAI Employee Arrested Over Hidden Recording Device - Bloomberg.com",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPalA3b3Q0ZDAyYVd1X0g0SFhHcGtfTW9EZ1RkNkc2NWw0MF9sTURaQ0U0X09Jamd4d1lGaHhwUm1LMzhXd0I2OUgzNkJDMDc5MS1aYWE3TjhVdnVrVmZmczV4YXJsVDJJOU51bEI3QVRnLTdiYlUzN012ZXJfYWFkS1VFaG1uNkt6dU5BZ3h1Y2hwTFFNTk9RM0w5czJtMFpFQW95YnhKZERGNHRE?oc=5",
-      "vendor": "OpenAI"
     },
     "035b19ad0746530155ca1939": {
       "category": "PHP 코어 취약점·공식 보안패치",
@@ -466,16 +459,6 @@
       "title": "PHP2Shell shows how AI is shrinking the window for Indian enterprises to respond to cyber threats - Fortune India",
       "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxORTh5TEZWdll1RkVMSjJzenU0eFJOTmhLOXRpZi1yWWpHSEtfNDVaMXA1bkRkYVFJYXNUWXNISTRqdFZQZmZGSkJ2dFk5b1MzRG0tUy11dmNobUpNSFRkdFBTZmlBOGtWNmZkOU1UM0VnZnFmYWMxUkRkTFNmTUppQUYzbGUyZ0xqd3V5SWU0VXc4ai1CMXE0Z1BSUjh6dEI2Rzgwa2h6anJjd2lXcmlXaUY1QVRLdzhtZm9oSHVlNGlIRVVPZFZFY2VEMUtvSjVZemVMaUNsWE51dnZV0gHqAUFVX3lxTE80WHNpRThUYkNZYi1CbmdEaHA2cDhDdmVkM01kMTZVWG1fY2U0UG9qMXdoX1NjVEFVdnNGMnV4QWRjcVpFNVNadjRmMGVWcUpjX3g5ZkpLSE9DUDBpMWRiMUF6SVZoM3dvT2RqajhxQVBPNG5TWU1DX1RVaDltdUg2ZWc3akpZTkh4clpzcnpsTFRZTmtrR1hWNUtlM2RRT25PVHFnVWVPbVhQcWdSZnAtMGNzQlRnam5qajhpS1VUME5YRFVoQzBmcUpMWWY1Ylk0Vl9iZHpJZGNXbU9uRDVZZ1FXaGxMemM3UQ?oc=5",
       "vendor": "PHP 재단"
-    },
-    "636cc0f0bf58e929b31622aa": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T17:36:20.869464+00:00",
-      "published_at": "2026-10-14T17:12:00+00:00",
-      "severity": 2,
-      "source": "Fortune",
-      "title": "FBI says an OpenAI engineer used his wife's AI chatbot to figure out how to plant a secret recording device at the office - Fortune",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPc29qbG10Z0twWkNSV2U5Q01rWW0yZzBaSGdhQ2RLV3VfVzVMNnBYU1k4dW12TnpSeGFUbmZuSlhsU0RPTElIaHEwbUEwSjZ0TjQwWE1udW5aY1Q1VkR0NTlESzl0SXZwTFkzZ1JGUXROc19MUmJELU5uNlNnWVBmZU5MZEFkYjlTTDRkcG5lMmhrVHV6TVlIMlJR?oc=5",
-      "vendor": "OpenAI"
     },
     "654ec051245881d84785930e": {
       "category": "AI 자율복제·사물인터넷 모의평가",
@@ -1220,5 +1203,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-19T02:28:07+09:00"
+  "updated_at_kst": "2026-11-19T02:47:08+09:00"
 }
