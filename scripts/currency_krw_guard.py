@@ -128,7 +128,7 @@ def _normalize_existing_separate_krw(text: str) -> str:
     return pat.sub(lambda m: m.group("fx"), text)
 
 
-def enforce_text(text: str) -> str:
+def enforce_text(text: str, *, hbm_mode: bool = False) -> str:
     # Protect URL payload before currency replacement; original links restored.
     urls: dict[str, str] = {}
     def protect_url(m: re.Match) -> str:
@@ -297,8 +297,37 @@ def enforce_text(text: str) -> str:
         return f"{m.group(0)}({_krw_text(_number(m.group('num')), currency, per)})"
     text = symbol_plain.sub(repl_symbol_plain, text)
 
+    if hbm_mode:
+        # An unscaled range shares one currency word: preserve both endpoints.
+        plain_range = re.compile(
+            r"(?<![\d,.:])(?P<a>\d[\d,]*(?:\.\d+)?)\s*"
+            r"(?P<sep>[~～∼–—-])\s*(?P<b>\d[\d,]*(?:\.\d+)?)\s*"
+            r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|" + _JPY_UNIT_WORD + r"|링깃|위안|파운드)"
+            r"(?P<per>/" + PER_UNIT_PATTERN + r")?"
+        )
+        def repl_plain_range(m):
+            tail = text[m.end():]
+            if _already_parenthesized(tail):
+                annotation = re.match(r"\s*\(([^)]*)\)", tail).group(1)
+                if not re.search(
+                    r"\d[\d,]*(?:\.\d+)?\s*(?:[조억천백만원]+)?"
+                    r"(?:/" + PER_UNIT_PATTERN + r")?\s*"
+                    r"[~～∼–—-]\s*(?:약\s*)?\d[\d,]*(?:\.\d+)?",
+                    annotation,
+                ):
+                    raise RuntimeError("외화 범위의 원화 양 끝 누락—알림 발송 보류")
+                return m.group(0)
+            currency = CURRENCY_WORDS[m.group("word")]
+            per = m.group("per") or ""
+            a = _krw_text(_number(m.group("a")), currency, per)
+            b = _krw_text(_number(m.group("b")), currency, per)
+            return f"{m.group(0)}({a}~{b})"
+        text = plain_range.sub(repl_plain_range, text)
+
+    # A clock such as 15:30 달러당 is not a 30-dollar amount in HBM alerts.
+    clock_boundary = r"(?<![\d,.:])" if hbm_mode else ""
     word_plain = re.compile(
-        r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|" + _JPY_UNIT_WORD + r"|링깃|위안|파운드)"
+        clock_boundary + r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|" + _JPY_UNIT_WORD + r"|링깃|위안|파운드)"
         r"(?P<per>/" + PER_UNIT_PATTERN + r")?"
     )
     def repl_word_plain(m):
@@ -319,15 +348,15 @@ def enforce_text(text: str) -> str:
             for currency, (rate, basis) in sorted(_USED_FX.items())
         ]
         text += "\n환율 기준: " + " / ".join(refs) + "\n"
-    validate_text(text)
+    validate_text(text, hbm_mode=hbm_mode)
     for key, url in urls.items():
         text = text.replace(key, url)
     return text
 
 
-def _money_candidates(text: str):
+def _money_candidates(text: str, *, hbm_mode: bool = False):
     word = (
-        r"\d[\d,.]*(?:\.\d+)?\s*"
+        (r"(?<![\d,.:])" if hbm_mode else "") + r"\d[\d,.]*(?:\.\d+)?\s*"
         r"(?:(?:조|십억|억|백만|천만|만)"
         r"(?:\s*\d[\d,.]*(?:\.\d+)?\s*(?:억|천만|만)){0,2})?"
         r"\s*(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔화|" + _JPY_UNIT_WORD + r"|링깃|위안|파운드)"
@@ -353,11 +382,11 @@ def _money_candidates(text: str):
         yield m
 
 
-def validate_text(text: str) -> None:
+def validate_text(text: str, *, hbm_mode: bool = False) -> None:
     unpaired = []
     # A URL is an opaque identifier, not visible contract or exchange-rate text.
     visible = URL_TOKEN_RE.sub("", text)
-    for m in _money_candidates(visible):
+    for m in _money_candidates(visible, hbm_mode=hbm_mode):
         token = m.group(0)
         tail = visible[m.end():]
         # Exchange-rate basis lines such as 1달러=1,350원 are not monetary
@@ -371,12 +400,12 @@ def validate_text(text: str) -> None:
         raise RuntimeError("외화 금액 뒤 원화 괄호 누락—알림 발송 보류: " + sample)
 
 
-def enforce_file(path: str | pathlib.Path) -> bool:
+def enforce_file(path: str | pathlib.Path, *, hbm_mode: bool = False) -> bool:
     p = pathlib.Path(path)
     if not p.exists():
         return False
     original = p.read_text(encoding="utf-8")
-    updated = enforce_text(original)
+    updated = enforce_text(original, hbm_mode=hbm_mode)
     if updated != original:
         p.write_text(updated, encoding="utf-8")
         return True

@@ -564,7 +564,7 @@ def run_collectors():
                 command_timeout = 720 if args[0].endswith('hbm_memory_axes.py') else 440
                 subprocess.run(['python', *args], cwd=ROOT, check=True, timeout=command_timeout)
             alert_path = ROOT / ROUTES[name][1]
-            currency_krw_guard.enforce_file(alert_path)
+            currency_krw_guard.enforce_file(alert_path, hbm_mode=True)
             results[name] = finish(name)
         except Exception as exc:
             # A second failure during cleanup must not cancel the next route.
