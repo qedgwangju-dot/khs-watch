@@ -1112,7 +1112,7 @@ def sc26_milestone(company: str, title: str) -> tuple[str, str, str] | None:
     if is_noise(t):
         return None
     if company == SC26_NVIDIA:
-        if "lambda" in t and "nvidia" in t and re.search(r"\bcpo\b|co[- ]packaged optics?|photonics", t, re.I):
+        if "lambda" in t and re.search(r"\bnvidia\b|\bblackwell\b", t, re.I) and re.search(r"\bcpo\b|co[- ]packaged optics?|photonics", t, re.I):
             if re.search(r"second (?:site|deployment|cluster)|additional (?:site|deployment|cluster)|"
                          r"expands? (?:its |the )?(?:deployment|cluster)|new site|new order|new contract", t, re.I):
                 amount = re.search(r"\d[\d,]*(?:\+)?\s*(?:gpus?|mw|sites?|clusters?)", t, re.I)
@@ -1237,6 +1237,13 @@ def cpo_coupe_milestone(title: str) -> tuple[str, str, str] | None:
 
 
 def canonical_story_key(company: str, title: str) -> str | None:
+    # The same named event may arrive through a broad company query and its
+    # dedicated conference lane. Normalize its explicit identity before scope
+    # separation; e.g. the HPCwire Lambda/Blackwell reprint of the Nov-16 release.
+    if company == "NVIDIA":
+        event = sc26_milestone(SC26_NVIDIA, title)
+        if event:
+            return event[2]
     if company in SC26_COMPANIES:
         event = sc26_milestone(company, title)
         return event[2] if event else None
@@ -2345,7 +2352,11 @@ def merge_article_scopes(current: dict, candidate: dict) -> dict:
 
 def same_underlying_story(a: dict, b: dict) -> bool:
     if a.get("company") != b.get("company"):
-        return False
+        # Equal, namespaced event identities are valid across thematic scopes.
+        # Keep each same-scope specialist's checks below unchanged.
+        a_key = canonical_story_key(a.get("company", ""), a.get("title", ""))
+        b_key = canonical_story_key(b.get("company", ""), b.get("title", ""))
+        return bool(a_key and b_key and a_key == b_key)
     if a.get("company") in NEW_OPTICAL_INFRA_SCOPES:
         ea = new_infra_milestone(a.get("company"), a.get("title") or "")
         eb = new_infra_milestone(b.get("company"), b.get("title") or "")

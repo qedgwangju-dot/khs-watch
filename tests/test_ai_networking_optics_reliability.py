@@ -13,6 +13,38 @@ SPEC.loader.exec_module(watch)
 
 
 class OpticsReliabilityTests(unittest.TestCase):
+    def test_lambda_blackwell_reprint_keeps_original_event_identity(self):
+        official = "Lambda Boosts AI Factory Resiliency and Efficiency With NVIDIA Photonics - NVIDIA Blog"
+        reprint = "Lambda Touts First CPO Deployment of Blackwell GPUs - HPCwire"
+        expected = "sc26|lambda|cpo|first-deployment-2026-11-16"
+        self.assertEqual(watch.canonical_story_key(watch.SC26_NVIDIA, official), expected)
+        self.assertEqual(watch.canonical_story_key("NVIDIA", reprint), expected)
+        self.assertEqual(watch.canonical_story_key(watch.SC26_NVIDIA, reprint), expected)
+
+    def test_explicit_event_identity_merges_reprints_across_query_scopes(self):
+        official = {"company": watch.SC26_NVIDIA,
+                    "title": "Lambda Boosts AI Factory Resiliency and Efficiency With NVIDIA Photonics"}
+        reprint = {"company": "NVIDIA", "title": "Lambda Touts First CPO Deployment of Blackwell GPUs"}
+        self.assertTrue(watch.same_underlying_story(official, reprint))
+        self.assertTrue(watch.same_underlying_story(reprint, official))
+
+    def test_lambda_new_cluster_and_contract_are_not_first_deployment_reprints(self):
+        original = {"company": watch.SC26_NVIDIA,
+                    "title": "Lambda Boosts AI Factory Resiliency and Efficiency With NVIDIA Photonics"}
+        for title in ("Lambda expands its cluster with Blackwell CPO to 20,000 GPUs",
+                      "Lambda signs new contract for NVIDIA CPO Blackwell GPUs"):
+            item = {"company": "NVIDIA", "title": title}
+            with self.subTest(title=title):
+                self.assertIn("|expansion|", watch.canonical_story_key("NVIDIA", title))
+                self.assertFalse(watch.same_underlying_story(original, item))
+
+    def test_unrelated_lambda_or_cross_company_text_is_not_globally_deduplicated(self):
+        title = "Lambda Touts First CPO Deployment for New Cloud Infrastructure"
+        self.assertIsNone(watch.sc26_milestone(watch.SC26_NVIDIA, title))
+        a = {"company": "AlphaOptics", "title": "New 1.6T optical module starts volume production"}
+        b = {"company": "BetaOptics", "title": a["title"]}
+        self.assertFalse(watch.same_underlying_story(a, b))
+
     def test_finalizing_is_pending_and_cannot_consume_final_event(self):
         draft = "FCC is finalizing a ban on Chinese optical transceivers"
         final = "FCC finalizes a ban on Chinese optical transceivers"
