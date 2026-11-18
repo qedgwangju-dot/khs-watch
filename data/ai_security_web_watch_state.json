@@ -5,14 +5,10 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [
-      "Google News RSS 실패: (Anthropic OR Claude) security vulnerability exploit \"p… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (Gemini OR \"Google AI\") security vulnerability exploit … / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (Copilot OR \"Microsoft AI\") security vulnerability expl… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
+    "errors": [],
     "material_items": 11,
     "new_material_items": 0,
-    "raw_items": 100,
+    "raw_items": 101,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1304,5 +1300,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-18T19:51:42+09:00"
+  "updated_at_kst": "2026-11-18T19:58:30+09:00"
 }
