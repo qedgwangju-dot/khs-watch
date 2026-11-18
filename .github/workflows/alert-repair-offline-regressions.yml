@@ -80,17 +80,16 @@ jobs:
           python scripts/alert_operations_audit.py
 
       - name: Inspect recent Actions runs and workflow activation states (read only)
-        # Run during PR verification as well so the scheduled API path is tested before merge.
-        if: github.event_name != 'push'
+        # Run in scheduled, manual and code-change audits. Read-only; no Telegram and no state mutation.
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p out
           # GitHub limits filtered workflow-run searches to 1,000 results.
-          # Partition 32 hours into four eight-hour windows to avoid truncation.
+          # Partition 32 hours into sixteen two-hour windows to avoid GitHub's 1,000-result query cap.
           : > out/alert_operations_runs.jsonl
-          for hours_back in 0 8 16 24; do
-            begin=$(date -u -d "$((hours_back + 8)) hours ago" '+%Y-%m-%dT%H:%M:%SZ')
+          for hours_back in $(seq 0 2 30); do
+            begin=$(date -u -d "$((hours_back + 2)) hours ago" '+%Y-%m-%dT%H:%M:%SZ')
             end=$(date -u -d "${hours_back} hours ago" '+%Y-%m-%dT%H:%M:%SZ')
             window_file="out/alert_operations_window_${hours_back}.jsonl"
             gh api --paginate "repos/${GITHUB_REPOSITORY}/actions/runs?created=${begin}..${end}&per_page=100" \
@@ -98,7 +97,7 @@ jobs:
               > "$window_file"
             window_count=$(wc -l < "$window_file")
             if [ "$window_count" -ge 1000 ]; then
-              echo "::error::Workflow-run query capped at 1,000; audit window requires subdivision."
+              echo "::error::Workflow-run query capped at 1,000; two-hour audit window requires further subdivision."
               exit 1
             fi
             cat "$window_file" >> out/alert_operations_runs.jsonl
