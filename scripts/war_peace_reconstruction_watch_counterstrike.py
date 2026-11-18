@@ -172,7 +172,25 @@ def _facility_label(t):
     return ''
 
 
-def _counter_signals(row):
+def _ukrainian_attacker_with_russian_energy_target(row, h):
+    # Match the observed actor-target grammar narrowly. If a separate Russian
+    # attack or Ukrainian location is mentioned, preserve the existing signal.
+    headline = (row.get('title_original') or '').partition('\n')[0].lower()
+    direct = re.search(
+        r"\bukrainian\s+drone\s+strikes?\s+(?:slash|cut|reduce|disrupt)\w*\s+"
+        r"(?:russian|russia(?:'s)?)\s+oil\s+refin\w*\b", headline)
+    ukraine_asset = re.search(
+        r"\b(?:ukrainian|ukraine(?:'s)?)\s+(?:power|energy|electricity|gas|oil|fuel|refiner\w*|pipeline|terminal|depot|substation|grid)\b"
+        r"|\b(?:power plant|energy (?:facility|infrastructure)|refiner(?:y|ies)|substation|gas facility|oil depot)\s+(?:in|across|of)\s+ukraine\b"
+        r"|\b(?:kyiv|kiev|kharkiv|kharkov|lviv|odesa|odessa|zaporizhzhia)\b"
+        r"|우크라이나(?:의)?\s*(?:전력|에너지|발전소|변전소|가스|정유|저유소|송유관|연료)", h)
+    other_attack = re.search(
+        r"\b(?:russian|russia(?:'s)?|moscow)\s+(?:(?:drone|missile|air)\s+)?"
+        r"(?:attacks?|strikes?|bombs?|shells?|bombards?|missiles?|drones?)\b", h)
+    return bool(direct and not ukraine_asset and not other_attack)
+
+
+def _counter_signals(row, *, preserve_legacy_identity=False):
     t = _text(row)
     # 에너지시설 공격 분류는 기사 제목·요약의 현재 사건을 우선한다.
     # 긴 본문에 과거 여러 국가 사례가 함께 나오는 해설기사를 신규 공격으로 오인하지 않는다.
@@ -211,7 +229,8 @@ def _counter_signals(row):
         signals.append('러시아 발전소·변전소·전력망 공격 신호 — 정전·설비 손상·복구기간 확인')
 
     # 우크라이나 에너지 인프라도 대칭적으로 감시한다.
-    if ukr and attack and (refinery or storage or pipeline or terminal or gas or power):
+    if (ukr and attack and (refinery or storage or pipeline or terminal or gas or power)
+            and (preserve_legacy_identity or not _ukrainian_attacker_with_russian_energy_target(row, h))):
         marks += ['우크라이나에너지시설공격','에너지시설공격']
         signals.append('우크라이나 에너지 인프라 공격 신호 — 발전·가스·연료 공급 차질과 복구기간 확인')
 
@@ -292,7 +311,8 @@ watch.score_item = counter_score_item
 
 def counter_item_id(x):
     base_id = _prev_item_id(x)
-    _, marks = _counter_signals(x)
+    # Preserve existing seen IDs even when the displayed target is corrected.
+    _, marks = _counter_signals(x, preserve_legacy_identity=True)
     if not marks:
         return base_id
     stages = [m for m in marks if m in (

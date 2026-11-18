@@ -1,0 +1,244 @@
+{
+  "provenance": {
+    "run_id": "44347798948",
+    "evidence_sha256": "3a38feda42e75951ce422a4253ff1a8037244ac56937ce0a59a3f540eac84fad",
+    "description": "Retained rendered discovery feed input, not original publisher body."
+  },
+  "article": {
+    "id": "b709df8a6e59a7e7a37d",
+    "title_original": "UKRAINIAN DRONE STRIKES SLASH RUSSIAN OIL REFINING BY 45%, THREATENING FUEL SUPPLIES\nUkrainian drone attacks have reduced Russia's crude processing volumes by 45% since late October, according to industry estimates cited by Reuters.\nOperations at 15 of Russia's 35 major refineries have been disru...",
+    "title_ko": "우크라이나 드론 공격으로 러시아 정유 처리량 45% 감소, 연료 공급 위기 로이터 통신이 인용한 업계 추산에 따르면, 우크라이나 드론 공격으로 인해 10월 말 이후 러시아의 원유 처리량이 45% 감소한 것으로 나타났습니다. 러시아의 주요 정유 공장 35곳 중 15곳의 운영이 중단되었습니다...",
+    "description": "UKRAINIAN DRONE STRIKES SLASH RUSSIAN OIL REFINING BY 45%, THREATENING FUEL SUPPLIES\nUkrainian drone attacks have reduced Russia's crude processing volumes by 45% since late October, according to industry estimates cited by Reuters.\nOperations at 15 of Russia's 35 major refineries have been disrupted or halted, up from nine last week.\nDaily refining volumes have fallen from over 700,000 metric tons to roughly 400,000 tons, equivalent to approximately 3 million barrels per day.\nThe escalating strikes threaten to worsen Russian fuel shortages, constrain exports and tighten global diesel markets.\n( @WalterBloomberg )",
+    "source": "Walter Bloomberg",
+    "link": "https://t.me/WalterBloomberg/38628",
+    "published": "Wed, 18 Nov 2026 15:01:24 +0000",
+    "score": 82,
+    "tags": [
+      "반대신호",
+      "에너지위험",
+      "확전"
+    ],
+    "body_checked": true,
+    "signals_ko": [
+      "러시아 정유시설 공격·피격 신호 — 화재·가동중단·처리량 감소 여부 후속 확인",
+      "우크라이나 에너지 인프라 공격 신호 — 발전·가스·연료 공급 차질과 복구기간 확인",
+      "가동·처리·운영 중단 신호 — 실제 공급 감소로 연결되는 단계"
+    ],
+    "classification_color": "red",
+    "body_verified": false,
+    "publication_basis": "discovery_feed",
+    "rendered": true,
+    "article_text_sha256": "61f3cce398ebc380eae0e9b901f6114e25e06e81aeb5d14cea21b0bb8e9580e6",
+    "semantic_classification_color": "red",
+    "display_section": "core"
+  },
+  "queried_at_kst": "2026-11-19T01:31:22.347130+09:00",
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 26941.25,
+      "pct": -0.4958357186386264,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "01:21 KST",
+      "observed_at_kst": "2026-11-19T01:21:33+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 27075.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 27075.5,
+        "chartPreviousClose": 27075.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1795018893,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EST",
+            "start": 1794978000,
+            "end": 1794978000,
+            "gmtoffset": -18000
+          },
+          "regular": {
+            "timezone": "EST",
+            "start": 1794978000,
+            "end": 1795064340,
+            "gmtoffset": -18000
+          },
+          "post": {
+            "timezone": "EST",
+            "start": 1795064340,
+            "end": 1795064340,
+            "gmtoffset": -18000
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 82.94000244140625,
+      "pct": -2.0200798093251704,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "01:21 KST",
+      "observed_at_kst": "2026-11-19T01:21:34+09:00",
+      "symbol": "CL=F",
+      "previous_close": 84.65,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 84.65,
+        "chartPreviousClose": 84.65,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1795018894,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EST",
+            "start": 1794978000,
+            "end": 1794978000,
+            "gmtoffset": -18000
+          },
+          "regular": {
+            "timezone": "EST",
+            "start": 1794978000,
+            "end": 1795064340,
+            "gmtoffset": -18000
+          },
+          "post": {
+            "timezone": "EST",
+            "start": 1795064340,
+            "end": 1795064340,
+            "gmtoffset": -18000
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 88.9800033569336,
+      "pct": -1.538117343218337,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "01:20 KST",
+      "observed_at_kst": "2026-11-19T01:20:53+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 90.37,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 90.37,
+        "chartPreviousClose": 90.37,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1795018853,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EST",
+            "end": 1794978000,
+            "start": 1794978000,
+            "gmtoffset": -18000
+          },
+          "regular": {
+            "timezone": "EST",
+            "end": 1795064340,
+            "start": 1794978000,
+            "gmtoffset": -18000
+          },
+          "post": {
+            "timezone": "EST",
+            "end": 1795064340,
+            "start": 1795064340,
+            "gmtoffset": -18000
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 103.87899780273438,
+      "pct": 0.3807293837120085,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "01:21 KST",
+      "observed_at_kst": "2026-11-19T01:21:36+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 103.485,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 103.485,
+        "chartPreviousClose": 103.485,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1795018896,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EST",
+            "start": 1794978000,
+            "end": 1794978000,
+            "gmtoffset": -18000
+          },
+          "regular": {
+            "timezone": "EST",
+            "start": 1794978000,
+            "end": 1795064340,
+            "gmtoffset": -18000
+          },
+          "post": {
+            "timezone": "EST",
+            "start": 1795064340,
+            "end": 1795064340,
+            "gmtoffset": -18000
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  }
+}
