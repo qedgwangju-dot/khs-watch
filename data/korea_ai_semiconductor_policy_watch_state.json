@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-11-18T12:47:28+09:00",
+  "last_checked_kst": "2026-11-18T21:22:57+09:00",
   "aidc_network_watch_version": 1,
   "aidc_network_last_healthy_kst": "2026-11-18T12:47:28+09:00",
   "seen": {
@@ -640,6 +640,15 @@
       "category": "AIDC 네트워크 국산화·기술개발",
       "first_seen_kst": "2026-11-16T04:31:40+09:00",
       "baseline": true
+    },
+    "69521cb1d2476577080c7ca3": {
+      "title": "한화시스템-美 리벨리온 인더스트리즈, 단거리 AESA 공급계약 - 시사캐스트",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1RVzN0MkRjMHVxNnlXSDctMm1wUHN1SnFhZkNHUWFKb2JRblc4Y3poXzJNMFpxamRNM19XbnBrVUczZERTb09MSzg5dVhfZzc2SVF6NlE0YlQyLVFMZHI4djhaQnNVTUIy?oc=5",
+      "event_signature": "리벨리온|실제 수주·구매|일반",
+      "stage": 5,
+      "category": "실제 수주·구매",
+      "first_seen_kst": "2026-11-18T21:22:57+09:00",
+      "suppressed_low_quality": true
     }
   }
 }
