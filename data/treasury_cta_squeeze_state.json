@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-11-18T21:41:37+09:00",
+  "last_checked_kst": "2026-11-19T02:57:37+09:00",
   "media_id": null,
   "cftc_date": "November 10, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-11-18T21:41:37+09:00",
+    "checked_kst": "2026-11-19T02:57:37+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "November 10, 2026",
@@ -89,8 +89,8 @@
         "settlement": 105.609375,
         "change": 0.171875,
         "pct_change": 0.16301126259632484,
-        "open_interest": 6085766,
-        "oi_change": 113102,
+        "open_interest": 6040505,
+        "oi_change": 67841,
         "volume": 2403289,
         "source": "https://www.cmegroup.com/daily_bulletin/current/Section09_Interest_Rate_Futures.pdf",
         "trade_date_iso": "2026-11-17",
@@ -110,8 +110,8 @@
         "settlement": 105.625,
         "change": 0.09375,
         "pct_change": 0.08883624518803672,
-        "open_interest": 1903293,
-        "oi_change": -27742,
+        "open_interest": 1903081,
+        "oi_change": -27954,
         "volume": 473878,
         "source": "https://www.cmegroup.com/daily_bulletin/current/Section09_Interest_Rate_Futures.pdf",
         "trade_date_iso": "2026-11-17",
@@ -131,8 +131,8 @@
         "settlement": 106.71875,
         "change": 0.15625,
         "pct_change": 0.1466275659824047,
-        "open_interest": 2411915,
-        "oi_change": -3713,
+        "open_interest": 2411864,
+        "oi_change": -3764,
         "volume": 439432,
         "source": "https://www.cmegroup.com/daily_bulletin/current/Section09_Interest_Rate_Futures.pdf",
         "trade_date_iso": "2026-11-17",
@@ -176,28 +176,28 @@
     },
     "repo": {
       "SOFR": {
-        "date": "2026-11-16",
-        "rate": 3.93,
-        "volume_bn": 3170,
-        "previous_date": "2026-11-13",
-        "previous_rate": 3.9,
-        "change_bp": 3.0
+        "date": "2026-11-17",
+        "rate": 3.92,
+        "volume_bn": 3173,
+        "previous_date": "2026-11-16",
+        "previous_rate": 3.93,
+        "change_bp": -1.0
       },
       "BGCR": {
-        "date": "2026-11-16",
+        "date": "2026-11-17",
         "rate": 3.9,
-        "volume_bn": 1251,
-        "previous_date": "2026-11-13",
-        "previous_rate": 3.87,
-        "change_bp": 3.0
+        "volume_bn": 1279,
+        "previous_date": "2026-11-16",
+        "previous_rate": 3.9,
+        "change_bp": 0.0
       },
       "TGCR": {
-        "date": "2026-11-16",
+        "date": "2026-11-17",
         "rate": 3.9,
-        "volume_bn": 1218,
-        "previous_date": "2026-11-13",
-        "previous_rate": 3.87,
-        "change_bp": 3.0
+        "volume_bn": 1240,
+        "previous_date": "2026-11-16",
+        "previous_rate": 3.9,
+        "change_bp": 0.0
       }
     },
     "format_revision": 14,
@@ -220,15 +220,15 @@
         "previous_close": 27284.25,
         "pct_change": -0.7650934146989563,
         "change_points": -208.75,
-        "open_interest": 297805,
-        "oi_change": 7452,
+        "open_interest": 296423,
+        "oi_change": 6070,
         "oi_scope": "CME EMINI NASD FUT total product daily",
         "source": "CME Daily Bulletin PG11 official settlement/OI",
         "official": true,
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-11-17",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026111807"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026111812"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -441,7 +441,7 @@
       "nq_price_fresh": true,
       "nq_price_expected_session": "2026-11-17",
       "nq_weekly_oi_down": true,
-      "nq_daily_oi_change": 7452,
+      "nq_daily_oi_change": 6070,
       "nq_daily_oi_down": false,
       "nq_oi_down": false,
       "nq_short_cover": true,
@@ -467,7 +467,7 @@
       "ten_year_short_oi_share": 47.384234201569306,
       "event_key": null,
       "source_mode": "CFTC TFF live HTML",
-      "report_age_days": 8
+      "report_age_days": 9
     }
   },
   "format_revision": 14,
