@@ -2,7 +2,7 @@
   "seen": {
     "ICI|mmf": "0e7330087a397b169a3c26536cdd63236619c74078db1ee07144081b7ac56c6c",
     "FINRA|margin": "023172414c834c3d51f292db8acbb3313778143e8763992adc96ff53351e53a6",
-    "ICI|combined": "314e9d97b569e4ec1a4ed2ae1087cd446314727f3b422f288fa8421d9fb0442d",
+    "ICI|combined": "3abe718134a004c7e54d4dd19f06d0d4f30233526ca06610d609d805cd9b6fe0",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
     "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64",
     "LSEG Lipper via Reuters|lipper": "322bb6e2516a3f327007042522d224c50a05c059d5697b540dd5b8be9b515502",
@@ -85,32 +85,32 @@
     "ICI|combined": {
       "source": "ICI",
       "kind": "combined",
-      "period": "November 04, 2026",
-      "published": "November 11, 2026",
+      "period": "November 11, 2026",
+      "published": "November 18, 2026",
       "url": "https://www.ici.org/research/stats/combined_flows",
       "metrics": {
-        "equity": 17.432,
-        "domestic": 11.911,
-        "world": 5.521,
-        "hybrid": -2.761,
-        "bond": 2.362,
-        "commodity": 0.129,
-        "total": 17.163,
+        "equity": 37.02,
+        "domestic": 31.505,
+        "world": 5.515,
+        "hybrid": -4.147,
+        "bond": 1.671,
+        "commodity": -0.228,
+        "total": 34.315,
         "domestic_flow_horizons": {
           "m1": {
             "months_back": 1,
-            "target_date": "2026-10-04",
-            "start_week_ended": "2026-10-07",
-            "end_week_ended": "2026-11-04",
+            "target_date": "2026-10-11",
+            "start_week_ended": "2026-10-14",
+            "end_week_ended": "2026-11-11",
             "observation_count": 5,
-            "value_bn": -464.617,
+            "value_bn": -415.036,
             "reason": null
           },
           "m3": {
             "months_back": 3,
-            "target_date": "2026-08-04",
-            "start_week_ended": "2026-10-07",
-            "end_week_ended": "2026-11-04",
+            "target_date": "2026-08-11",
+            "start_week_ended": "2026-10-14",
+            "end_week_ended": "2026-11-11",
             "observation_count": 5,
             "value_bn": null,
             "reason": "weekly_history_does_not_cover_target_window"
@@ -125,7 +125,7 @@
         "categories_total",
         "prose_total"
       ],
-      "fingerprint": "314e9d97b569e4ec1a4ed2ae1087cd446314727f3b422f288fa8421d9fb0442d"
+      "fingerprint": "3abe718134a004c7e54d4dd19f06d0d4f30233526ca06610d609d805cd9b6fe0"
     },
     "JPMorganChase Institute|household_withdrawals": {
       "source": "JPMorganChase Institute",
@@ -205,7 +205,7 @@
       "period": "November 06, 2026",
       "reference_week": "2026-11-06",
       "reference_week_verified": true,
-      "published": "2026-11-15",
+      "published": "2026-11-18",
       "url": "https://qz.com/hedge-funds-tech-stocks-near-record-pace-midterms-110926",
       "metrics": {
         "gross_leverage_pct": 207.5,
@@ -215,20 +215,21 @@
       },
       "crosschecked_sources": [
         "https://qz.com/hedge-funds-tech-stocks-near-record-pace-midterms-110926",
+        "https://econotimes.com/Goldman-U-S-Long-Short-Clients-Cut-Leverage-as-Tech-Leads-Net-Selling-1774324",
         "https://sg.finance.yahoo.com/news/hedge-funds-cut-tech-exposure-161540678.html"
       ],
       "comparison_note": "복수 언론이 Goldman의 동일 자료를 인용한 수치임. Goldman 고객 전용 원자료를 독립적으로 재조회한 것은 아님.",
       "fingerprint": "c8bc5db6711bf93fb0af941c91e9976ad3f3d281c539458e698eda3c6ea81759"
     }
   },
-  "updated_at_kst": "2026-11-15T14:35:45.981084+09:00",
+  "updated_at_kst": "2026-11-19T05:38:56.766079+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-11-13",
-    "sp500_last_value": 7561.669921875,
+    "sp500_last_date": "2026-11-18",
+    "sp500_last_value": 7324.85009765625,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -3.29,
+    "sp500_drawdown_pct": -6.32,
     "hartnett_tracking_version": "2026-10-09-v1",
     "hartnett_treasury_date": "2026-11-17",
     "hartnett_10y_pct": 5.1,
@@ -263,12 +264,12 @@
     "fund_horizon_summary_version": "2026-11-03-front-v1"
   },
   "factual_delivery_receipt": {
-    "timestamp_utc": "2026-11-15T05:36:45.306070+00:00",
-    "date_kst": "2026-11-15",
+    "timestamp_utc": "2026-11-18T20:40:16.011026+00:00",
+    "date_kst": "2026-11-19",
     "bot_username": "khs887900887900008879_bot",
     "message_ids": [
-      2819,
-      2820
+      3207,
+      3208
     ]
   }
 }
