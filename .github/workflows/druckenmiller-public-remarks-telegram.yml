@@ -1,0 +1,78 @@
+name: Druckenmiller Public Remarks Telegram Watch
+
+on:
+  schedule:
+    # Independent of quarterly SEC 13F; twice hourly on GitHub UTC clock.
+    - cron: "23,53 * * * *"
+  workflow_dispatch:
+    inputs:
+      probe_only:
+        description: "Read-only source check; never send Telegram"
+        required: false
+        type: boolean
+        default: true
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/druckenmiller-public-remarks-telegram.yml"
+      - "scripts/druckenmiller_public_remarks_watch.py"
+      - "scripts/test_druckenmiller_public_remarks_watch.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: druckenmiller-public-remarks-telegram
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    env:
+      THIRTEENF_TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
+      THIRTEENF_TELEGRAM_CHAT_ID: ${{ secrets.THIRTEENF_TELEGRAM_CHAT_ID }}
+      KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      DRUCKENMILLER_PROBE_ONLY: ${{ github.event_name == 'push' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.probe_only && 'true' || 'false') }}
+
+    steps:
+      - name: Checkout the existing repo
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 2
+
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check syntax and all no-network regression gates
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/druckenmiller_public_remarks_watch.py scripts/test_druckenmiller_public_remarks_watch.py
+          PYTHONPATH=scripts python scripts/test_druckenmiller_public_remarks_watch.py
+
+      - name: Corroborate new public remarks and notify only on a verified event
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python scripts/druckenmiller_public_remarks_watch.py
+
+      - name: Report no-send, delivered, or blocked status
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path("data/druckenmiller_public_remarks_state.json")
+          if not p.exists():
+              print("DRUCKENMILLER_STATE=not-created (no new event or read-only probe)")
+          else:
+              o=json.loads(p.read_text(encoding="utf-8"))
+              last=o.get("last_success") or {}
+              pending=o.get("pending")
+              print("DRUCKENMILLER_STATE_PERSISTED="+str(bool(o.get("sent_events"))))
+              print("DRUCKENMILLER_PENDING_DELIVERY="+str(bool(pending)))
+              print("DRUCKENMILLER_LATEST_CONFIRMED_MESSAGE_ID="+str(last.get("message_id","none")))
+          PY
