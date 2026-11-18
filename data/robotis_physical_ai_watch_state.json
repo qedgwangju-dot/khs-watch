@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-18T05:00:46.410437+00:00",
+  "updated_at": "2026-11-18T13:54:26.124060+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -959,17 +959,25 @@
     "9a0805a145ece3a108602ef2af62e36b05b3c34e03b0e1f4d2169dac6ad1df60",
     "0c8eb56a48912a16e86ab154a49c841bbf5637a70ab02f60c21749107b3a7a73",
     "9ea27b94225cb659d426b13672a8ed50c454e5468517973f3af4983929a77256",
-    "1366c9aef48c0735b32cb8181f161e54ed3e99ddb953b1e36195cda46bf288b3"
+    "1366c9aef48c0735b32cb8181f161e54ed3e99ddb953b1e36195cda46bf288b3",
+    "5dda8bfa37d5e675a9f22583399e020cdce8d1f8afbaefca99612af95cfe6e7a",
+    "b2e456bf0e455664fa7c82dae8d4f763f0a846d9055b82e551f085e0eeaa36fe",
+    "64bcc65f7441a8a4c1efbe8110a448989eeb83a1af4c6c634a0b4d41398c6f90",
+    "cdf9eb12c5f69be2610dbb9c458424db4fc44eb3301a3f8cbbc909760191336f",
+    "33f8739b79e1c3be68044d405cdf54da6f7572af132ba216a02cdd049eddc1e3",
+    "2c0a881e3dfda421526114c0ea2fef4a2c2e4ee851bf7e7ca29047f0241fca93",
+    "2d2092802571f99642d4c6dd0234e852962cafb141026c1b1374c91a5260a8da",
+    "ed4ffb54e9bff0a972073a3c22de4c8b9c3f3249e3adb5fd4611400a79295df9"
   ],
   "last_selected": [
-    "54b3e2e0871a6c64b7169fdbfcbcb6a0e247901555c99f76aecc651d72832be7",
-    "08ba9399d57d5b611e7ae5cec90c8ecf50bacf6390c9bc135c037e4260842035",
-    "7fd1f578a6668d7cc686779adcbc5c05e0a2f0e2413042433e61ca9823cd9227",
-    "6b8523e85bc346e7a57d367d203c0e24d3b9312345402f5f2031aa321752a2d0",
-    "9a0805a145ece3a108602ef2af62e36b05b3c34e03b0e1f4d2169dac6ad1df60",
-    "0c8eb56a48912a16e86ab154a49c841bbf5637a70ab02f60c21749107b3a7a73",
-    "9ea27b94225cb659d426b13672a8ed50c454e5468517973f3af4983929a77256",
-    "1366c9aef48c0735b32cb8181f161e54ed3e99ddb953b1e36195cda46bf288b3"
+    "5dda8bfa37d5e675a9f22583399e020cdce8d1f8afbaefca99612af95cfe6e7a",
+    "b2e456bf0e455664fa7c82dae8d4f763f0a846d9055b82e551f085e0eeaa36fe",
+    "64bcc65f7441a8a4c1efbe8110a448989eeb83a1af4c6c634a0b4d41398c6f90",
+    "cdf9eb12c5f69be2610dbb9c458424db4fc44eb3301a3f8cbbc909760191336f",
+    "33f8739b79e1c3be68044d405cdf54da6f7572af132ba216a02cdd049eddc1e3",
+    "2c0a881e3dfda421526114c0ea2fef4a2c2e4ee851bf7e7ca29047f0241fca93",
+    "2d2092802571f99642d4c6dd0234e852962cafb141026c1b1374c91a5260a8da",
+    "ed4ffb54e9bff0a972073a3c22de4c8b9c3f3249e3adb5fd4611400a79295df9"
   ],
   "groups": [
     "ess_battery",
@@ -996,15 +1004,6 @@
     "toyota_robot_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 43608246948,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-14T15:05:32.644642+00:00"
-    },
     {
       "run_id": 43618783955,
       "outcome": "normal_silence",
@@ -1276,24 +1275,52 @@
         false
       ],
       "state_timestamp_utc": "2026-11-18T05:00:46.410437+00:00"
+    },
+    {
+      "run_id": 44318354028,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "2c0a881e3dfda421526114c0ea2fef4a2c2e4ee851bf7e7ca29047f0241fca93",
+        "2d2092802571f99642d4c6dd0234e852962cafb141026c1b1374c91a5260a8da",
+        "33f8739b79e1c3be68044d405cdf54da6f7572af132ba216a02cdd049eddc1e3",
+        "5dda8bfa37d5e675a9f22583399e020cdce8d1f8afbaefca99612af95cfe6e7a",
+        "64bcc65f7441a8a4c1efbe8110a448989eeb83a1af4c6c634a0b4d41398c6f90",
+        "b2e456bf0e455664fa7c82dae8d4f763f0a846d9055b82e551f085e0eeaa36fe",
+        "cdf9eb12c5f69be2610dbb9c458424db4fc44eb3301a3f8cbbc909760191336f",
+        "ed4ffb54e9bff0a972073a3c22de4c8b9c3f3249e3adb5fd4611400a79295df9"
+      ],
+      "message_ids": [
+        380,
+        381
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal",
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false,
+        false
+      ],
+      "state_timestamp_utc": "2026-11-18T13:54:26.124060+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44241145265,
+    "run_id": 44318354028,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "08ba9399d57d5b611e7ae5cec90c8ecf50bacf6390c9bc135c037e4260842035",
-      "0c8eb56a48912a16e86ab154a49c841bbf5637a70ab02f60c21749107b3a7a73",
-      "1366c9aef48c0735b32cb8181f161e54ed3e99ddb953b1e36195cda46bf288b3",
-      "54b3e2e0871a6c64b7169fdbfcbcb6a0e247901555c99f76aecc651d72832be7",
-      "6b8523e85bc346e7a57d367d203c0e24d3b9312345402f5f2031aa321752a2d0",
-      "7fd1f578a6668d7cc686779adcbc5c05e0a2f0e2413042433e61ca9823cd9227",
-      "9a0805a145ece3a108602ef2af62e36b05b3c34e03b0e1f4d2169dac6ad1df60",
-      "9ea27b94225cb659d426b13672a8ed50c454e5468517973f3af4983929a77256"
+      "2c0a881e3dfda421526114c0ea2fef4a2c2e4ee851bf7e7ca29047f0241fca93",
+      "2d2092802571f99642d4c6dd0234e852962cafb141026c1b1374c91a5260a8da",
+      "33f8739b79e1c3be68044d405cdf54da6f7572af132ba216a02cdd049eddc1e3",
+      "5dda8bfa37d5e675a9f22583399e020cdce8d1f8afbaefca99612af95cfe6e7a",
+      "64bcc65f7441a8a4c1efbe8110a448989eeb83a1af4c6c634a0b4d41398c6f90",
+      "b2e456bf0e455664fa7c82dae8d4f763f0a846d9055b82e551f085e0eeaa36fe",
+      "cdf9eb12c5f69be2610dbb9c458424db4fc44eb3301a3f8cbbc909760191336f",
+      "ed4ffb54e9bff0a972073a3c22de4c8b9c3f3249e3adb5fd4611400a79295df9"
     ],
     "message_ids": [
-      378,
-      379
+      380,
+      381
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1304,80 +1331,80 @@
       false,
       false
     ],
-    "state_timestamp_utc": "2026-11-18T05:00:46.410437+00:00"
+    "state_timestamp_utc": "2026-11-18T13:54:26.124060+00:00"
   },
   "last_selected_events": [
     {
-      "key": "54b3e2e0871a6c64b7169fdbfcbcb6a0e247901555c99f76aecc651d72832be7",
+      "key": "5dda8bfa37d5e675a9f22583399e020cdce8d1f8afbaefca99612af95cfe6e7a",
       "group": "ess_battery",
-      "title": "삼성SDI, 美 LFP 양산하자마자 4조 대형수주…ESS 공급망 넓힌다 - 서울이코노미뉴스",
-      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBYOWdjcHIyUGZNc19jMmxwR1YzcHVDVnJvZ2VCaUFzQ051SVpva3lVa1FfUWE5Y05JQU9YMUFiUktGMU9zT0dBenU2ZlNVSjN6cjFDUTh5aVgxbWxJRkFwSU1uVGdTeDN6M0JLZS1B?oc=5",
-      "source": "서울이코노미뉴스",
-      "source_url": "http://www.seouleconews.com",
-      "published": "2026-11-16T02:08:30+00:00"
+      "title": "삼성SDI, 美 ESS 대형 수주…누적 공급 27GWh - 에너지프로슈머",
+      "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9oV2VGd3paZGZteUlEbXRmU3FYNFlGTkpDNUZ4MTY4WUstWEdDTFpyZlYwUWVpazhMU3R6cmkza0Z4X2VncmpxbjBaeFk?oc=5",
+      "source": "에너지프로슈머",
+      "source_url": "https://www.energyprosumer.info",
+      "published": "2026-11-17T22:33:00+00:00"
     },
     {
-      "key": "08ba9399d57d5b611e7ae5cec90c8ecf50bacf6390c9bc135c037e4260842035",
-      "group": "nov18_hyundai_bd_ownership",
-      "title": "현대차그룹·정의선, 보스턴다이내믹스 잔여지분 취득 완료 보도",
-      "link": "https://m.newsis.com/view/NISX20261116_0003870194",
-      "source": "뉴시스·분기공시 재게시본",
-      "source_url": null,
-      "published": "2026-11-17T00:00:00+09:00"
-    },
-    {
-      "key": "7fd1f578a6668d7cc686779adcbc5c05e0a2f0e2413042433e61ca9823cd9227",
-      "group": "nov18_amd_worldlabs",
-      "title": "AMD, World Labs 인수 완료 발표…인수 합의에서 거래 종결로 진전",
-      "link": "https://newsroom.amd.com/news/amd-completes-acquisition-world-labs/",
-      "source": "AMD",
-      "source_url": null,
-      "published": "2026-11-16T00:00:00+09:00"
-    },
-    {
-      "key": "6b8523e85bc346e7a57d367d203c0e24d3b9312345402f5f2031aa321752a2d0",
-      "group": "nov18_openai_reorg",
-      "title": "OpenAI 독립 로보틱스팀 재편 보도…사업 철수·실물 성능 입증과 구분",
-      "link": "https://opentools.ai/news/openai-disbands-robotics-team-general-purpose-models",
-      "source": "Fortune 보도·OpenTools 정정",
-      "source_url": null,
-      "published": "2026-11-16T00:00:00+09:00"
-    },
-    {
-      "key": "9a0805a145ece3a108602ef2af62e36b05b3c34e03b0e1f4d2169dac6ad1df60",
-      "group": "nov18_robotis",
-      "title": "로보티즈 한투 3분기 분석…영업손실 26억원·신공장 2027년 2분기 순연 설명",
-      "link": "https://t.me/s/kis_robotics",
-      "source": "한국투자증권 최건",
-      "source_url": null,
-      "published": "2026-11-16T00:00:00+09:00"
-    },
-    {
-      "key": "0c8eb56a48912a16e86ab154a49c841bbf5637a70ab02f60c21749107b3a7a73",
-      "group": "nov18_tesla_germany",
-      "title": "Tesla 독일 Cybercab 증설 계획…30억 유로·연 최대 100만대 능력 목표",
-      "link": "https://brandenburg.de/cms/detail.php?gsid=brandenburg_06.c.918992.de",
-      "source": "브란덴부르크주·Reuters",
-      "source_url": null,
-      "published": "2026-11-16T00:00:00+09:00"
-    },
-    {
-      "key": "9ea27b94225cb659d426b13672a8ed50c454e5468517973f3af4983929a77256",
-      "group": "nov18_foundation",
-      "title": "Foundation 이스라엘 로봇 공급 협의 보도…우크라이나 배치 주장은 반대 취재 존재",
-      "link": "https://www.g-enews.com/article/Global-Biz/2026/11/2026111506455381112bd56fbc3c_1",
-      "source": "글로벌이코노믹·The San Francisco Standard",
-      "source_url": null,
-      "published": "2026-11-15T00:00:00+09:00"
-    },
-    {
-      "key": "1366c9aef48c0735b32cb8181f161e54ed3e99ddb953b1e36195cda46bf288b3",
+      "key": "b2e456bf0e455664fa7c82dae8d4f763f0a846d9055b82e551f085e0eeaa36fe",
       "group": "hyundai_atlas_rollout",
-      "title": "[The Numbers] 현대차, 보스턴다이내믹스 지분은 100%·수익성은 시험대…로봇사업의 다음 관문 - 뉴스스페이스",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1OWkpodGxTaVY1S1YwTE1sVXgyTGphQmI5akNQMGxfMkVGOW5EQ3ZQRjBmV293X2h1djFWTDg1alZ2MEJwS1hQQTVhd3dOVDYwdVhLRkdLbmNSNGc?oc=5",
-      "source": "뉴스스페이스",
-      "source_url": "https://newsspace.kr",
-      "published": "2026-11-17T12:29:54+00:00"
+      "title": "현대차그룹 로봇 '아틀라스', 반도체 공장에 첫 투입 - 한국경제",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBsNzNsNnduUjlrWFlOeC03MFQtakZZdEZGaXI1cmNTR1pKZHpoLUpTMkZleGY3Ul9jc1Rzc3dwWHE0T2tGb1RscExDSVNMV05TNGM1VjlBLUhsZw?oc=5",
+      "source": "한국경제",
+      "source_url": "https://www.hankyung.com",
+      "published": "2026-11-18T09:21:56+00:00"
+    },
+    {
+      "key": "64bcc65f7441a8a4c1efbe8110a448989eeb83a1af4c6c634a0b4d41398c6f90",
+      "group": "hyundai_atlas_rollout",
+      "title": "Hyundai Motor takes full ownership of Boston Dynamics - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9CNEdGSjh6RjlMd3NucFdfN3A4djRwWHpkT3lSSnhlWVVXWXdkU0tpV19NWk15SFFKOVRJcGdSSFBiVkcwLU5VSmpRX08yVDEtZUswWlBPTQ?oc=5",
+      "source": "The Korea Herald",
+      "source_url": null,
+      "published": "2026-11-17T06:31:23+00:00"
+    },
+    {
+      "key": "cdf9eb12c5f69be2610dbb9c458424db4fc44eb3301a3f8cbbc909760191336f",
+      "group": "hyundai_atlas_rollout",
+      "title": "현대차그룹, 보스턴다이내믹스 지분 100% 확보 … 로봇 양산 채비 - 뉴데일리 경제",
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9OdmlDTXhrUDhhUUtNWU5KbXZKZ3lBcUYweFNkcVcwV1VoNG1JNmxhR0hmQVEtMzE3eVlucG1BbDExeWZGaWdEckJGQWQ1eklfbGhFeXI3SUhSamM1ZnYyZ3Q1OVR4SkxNcDVsUnI3UG4tdGIxUi1TQTRIc9IBgAFBVV95cUxPZk42bmlrTDgxUFUxbTFUTmxTVVlmLW84U1lLbnFKZjUteHpJd0xoTDZVcHpiSHVmRjBuYzdoYTlfcnVHdzN5NzdKZGhmM05KREF3NU1PUzJqSmFIZkoyMlpCYjFkSHZvZjhGVllxZkhFWDliYVVwNlYtUXRYV29rOQ?oc=5",
+      "source": "뉴데일리 경제",
+      "source_url": "https://biz.newdaily.co.kr",
+      "published": "2026-11-17T06:24:00+00:00"
+    },
+    {
+      "key": "33f8739b79e1c3be68044d405cdf54da6f7572af132ba216a02cdd049eddc1e3",
+      "group": "lg_factory_loop",
+      "title": "LG전자, 휴머노이드 로봇 클로이드 국내 안전 시범 인증 추진 - 뉴시스",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1hMnVLSWIwcUlyMFZqQVBSZFdtZzJPazJTcmNWYVBmZUxIci1JV2g2a0E1UzZrVzFxdDJweW5aRXpYNFc0UmN0WTV4cFp5ak44cTJjZTZVd0dRTkN3MjUzLVlyRFBlMm9xT2Vhd1d1WjlhM3N6WEIwedIBeEFVX3lxTE1hMnVLSWIwcUlyMFZqQVBSZFdtZzJPazJTcmNWYVBmZUxIci1JV2g2a0E1UzZrVzFxdDJweW5aRXpYNFc0UmN0WTV4cFp5ak44cTJjZTZVd0dRTkN3MjUzLVlyRFBlMm9xT2Vhd1d1WjlhM3N6WEIweQ?oc=5",
+      "source": "뉴시스",
+      "source_url": "https://mobile.newsis.com",
+      "published": "2026-11-16T01:00:00+00:00"
+    },
+    {
+      "key": "2c0a881e3dfda421526114c0ea2fef4a2c2e4ee851bf7e7ca29047f0241fca93",
+      "group": "ess_battery",
+      "title": "삼성SDI, 美서 수조원대 ESS 배터리 수주…\"AI發 수요 선점 지속\" - 뉴시스",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5oWEYxX1NHTnl4V2ZfaDB4aHd4QXAtM2tlNHBzYTVnWW1KZUpLWHk1NmQzSUgtT0pHZGp5VzF6UVBCdzVzWmhGcWVEYW05X1lpbS0zQkt1WG8talBXMVp6edIBeEFVX3lxTE9fOW9qd0hzRThZeG1sOC12NzI5QVJYaEhBdkNPSXZ5Y1VocVhGelFoV3FtTWxSbVByZG5Zb3M5NkloU1FPdGp0R3ZPbkNPWTAxcEV6SUlfVi1OMDVQd2x0OTY2a3ZOdVVLbFBsV0VKeW8wVThfQ05ITQ?oc=5",
+      "source": "뉴시스",
+      "source_url": "https://www.newsis.com",
+      "published": "2026-11-15T23:31:15+00:00"
+    },
+    {
+      "key": "2d2092802571f99642d4c6dd0234e852962cafb141026c1b1374c91a5260a8da",
+      "group": "lg_factory_loop",
+      "title": "LG전자, 클로이드 안전인증 추진…로봇 경쟁력 강화 - 스페셜경제",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBsT3hPWUh4bkdfWjBUVlY3eThVVnhKei1hZk9lMmpZUEFxTHgwS1pkR05ZZC12LXZYcW5CclU0T0dQaTFqdUNFUDlCamxaUE1JY3ZPNF9GTDYyNGw3Nk8tYk1MUzVyVkFUQkJ4aw?oc=5",
+      "source": "스페셜경제",
+      "source_url": "https://www.speconomy.com",
+      "published": "2026-11-16T04:28:40+00:00"
+    },
+    {
+      "key": "ed4ffb54e9bff0a972073a3c22de4c8b9c3f3249e3adb5fd4611400a79295df9",
+      "group": "lg_factory_loop",
+      "title": "“클로이드 안전 인증 받는다”…LG전자·한국로봇산업진흥원, 휴머노이드 품질 향상 맞손 - 헤럴드경제",
+      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE42Slg0eFk1YXFhaTRMTmJMbFJiaURFbVZVa1RKQURyOXpaTzNGS19rTzJMNldocTBwdzdBLWJuZ0NOSE9PXzEyN0wwQjNTSG1DNURRWUJB?oc=5",
+      "source": "헤럴드경제",
+      "source_url": "https://biz.heraldcorp.com",
+      "published": "2026-11-16T01:00:09+00:00"
     }
   ],
   "message_corrections": {
