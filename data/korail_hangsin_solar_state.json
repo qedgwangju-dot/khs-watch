@@ -7,9 +7,9 @@
     "consortium_discussion",
     "tender_open"
   ],
-  "last_checked_at_kst": "2026-11-18T23:00:03+09:00",
+  "last_checked_at_kst": "2026-11-19T06:59:41+09:00",
   "last_message_ids": [],
-  "source_health": "complete",
+  "source_health": "partial",
   "baseline_evidence": [
     {
       "published": "2026-08-20",
@@ -25,7 +25,11 @@
     }
   ],
   "alert_basis": "project_id_plus_confirmed_stage_transition_not_article",
-  "source_success_count": 6,
-  "errors": [],
+  "source_success_count": 4,
+  "errors": [
+    "철도공사 게시판: HTTPSConnectionPool(host='info.korail.com', port=443): Max retries exceeded with url: /info/selectBbsNttList.do?bbsNo=199&key=911 ",
+    "철도공사 게시판: HTTPSConnectionPool(host='info.korail.com', port=443): Max retries exceeded with url: /info/selectBbsNttList.do?bbsNo=200&key=910 ",
+    "철도공사 기존 공식자료: HTTPSConnectionPool(host='info.korail.com', port=443): Max retries exceeded with url: /info/selectBbsNttView.do?bbsNo=199&key=911&"
+  ],
   "last_delivered_event_types": []
 }
