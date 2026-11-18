@@ -1407,14 +1407,20 @@
       "messages": {
         "376": {
           "message_id": 376,
-          "status": "in_flight",
+          "status": "confirmed",
           "request_sha256": "90fd221637214b4d949ed272d5af65161c23633a4267bc83a3e2067f8b44c31c",
           "replacement_sha256": "0bce8d6ba51ccc76557e9aa3b0e480ab0e2c07f1af96045e2e14996db5426f1e",
           "request_count": 1,
-          "requested_at_utc": "2026-11-18T05:26:52.557018+00:00"
+          "requested_at_utc": "2026-11-18T05:26:52.557018+00:00",
+          "confirmed_at_utc": "2026-11-18T05:26:54.312143+00:00",
+          "verification": "reply_message_id_recipient_text_equal",
+          "chat_verification": "numeric_id_equal",
+          "response_text_sha256": "0c0d93af4332cda625c4bb4f4f35e14ad6601fecbb9a3a7dea1f47095c9eacdc"
         }
       },
-      "completed_message_ids": [],
+      "completed_message_ids": [
+        376
+      ],
       "prepared_at_utc": "2026-11-18T05:26:52.556988+00:00"
     }
   }
