@@ -5,13 +5,10 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [
-      "Google News RSS 실패: LLM \"supply chain\" vulnerability exploit security… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"AI agent\" \"undesirable behavior\" OR \"unintended behavi… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
+    "errors": [],
     "material_items": 12,
     "new_material_items": 0,
-    "raw_items": 106,
+    "raw_items": 108,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1183,5 +1180,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-19T03:37:14+09:00"
+  "updated_at_kst": "2026-11-19T03:55:53+09:00"
 }
