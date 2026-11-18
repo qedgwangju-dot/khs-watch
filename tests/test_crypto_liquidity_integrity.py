@@ -605,5 +605,22 @@ class CryptoReportCompletionWordingTest(unittest.TestCase):
                 self.assertNotIn("→ 최종 ", final)
 
 
+class CryptoRun690RoundingTest(unittest.TestCase):
+    """Run 690 displayed -2,270.0 million USD at 1,335.00 KRW/USD."""
+
+    def test_saved_half_eok_conversion_uses_half_up_for_both_signs(self):
+        self.assertEqual(krw.format_krw_from_usd_m(-2270.0, 1335.00), "약 -3조305억원")
+        self.assertEqual(krw.format_krw_from_usd_m(2270.0, 1335.00), "약 +3조305억원")
+        self.assertEqual(krw.format_krw_from_usd_m(-29.7, 1335.00), "약 -396억원")
+
+    def test_new_enrichment_of_saved_display_amount_uses_same_result(self):
+        # Reconstructed from the issued run 690 amount and rate; not raw ECOS bytes.
+        fx = {"rate": 1335.00, "date": "2026-11-17", "source": "ECOS",
+              "crosscheck": "not applicable", "source_url": "https://ecos.bok.or.kr/"}
+        with patch.object(krw, "capital_position_block", return_value=""):
+            output = krw.enrich_text("최근 1개월 -2,270.0백만달러", fx)
+        self.assertIn("-2,270.0백만달러 (약 -3조305억원)", output)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import datetime as dt
+from decimal import Decimal, ROUND_HALF_UP
 import json
 import os
 import pathlib
@@ -233,10 +234,12 @@ def get_usdkrw(target: dt.date) -> dict:
 
 
 def format_krw_from_usd_m(value_usd_m: float, rate: float) -> str:
-    eok = value_usd_m * rate / 100.0
+    # Amount and quoted FX are decimal quantities; binary float plus Python's
+    # ties-to-even round can put an exact half-eok on the wrong side.
+    eok = Decimal(str(value_usd_m)) * Decimal(str(rate)) / Decimal(100)
     sign = "-" if eok < 0 else "+" if eok > 0 else ""
     amount = abs(eok)
-    rounded = int(round(amount))
+    rounded = int(amount.quantize(Decimal(1), rounding=ROUND_HALF_UP))
     jo, rem = divmod(rounded, 10000)
     if jo:
         body = f"{jo:,}조{rem:,}억원" if rem else f"{jo:,}조원"
@@ -355,7 +358,7 @@ def enrich_text(text: str, fx: dict) -> str:
 
     def repl(m: re.Match[str]) -> str:
         raw = m.group("amount")
-        value = float(raw.replace(",", ""))
+        value = Decimal(raw.replace(",", ""))
         return f"{raw}백만달러 ({format_krw_from_usd_m(value, rate)})"
 
     enriched = pattern.sub(repl, text)
