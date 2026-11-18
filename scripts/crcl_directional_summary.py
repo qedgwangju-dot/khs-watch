@@ -488,11 +488,34 @@ def build_compact_alert(pending: dict, original_text: str) -> str:
         take = f"본업 {direct_label} · 단기금리 {proxy_label} · 할인율 {disc_label}"
 
     updated = str(pending.get("updated_at_kst") or "")
+    circle_snapshot = pending.get("circle") or {}
+    usdxx_snapshot = pending.get("usdxx") or {}
+    crcl_snapshot = pending.get("crcl") or {}
+    errors = {str(e).split(":", 1)[0] for e in (pending.get("errors") or [])}
+    headline = (
+        "USDC " +
+        ("조회 보류" if "circle" in errors else _change_direction(
+            circle_snapshot.get("circulation_usd_b"),
+            (circle_snapshot.get("_previous_distinct") or {}).get("circulation_usd_b"),
+        ))
+        + " · 준비금 펀드 수익률 " +
+        ("조회 보류" if "usdxx" in errors else _change_direction(
+            usdxx_snapshot.get("sec_yield_7d"),
+            (usdxx_snapshot.get("_previous_distinct") or {}).get("sec_yield_7d"),
+            rate=True,
+        ))
+        + " · CRCL 주가 " +
+        ("종가 확인 보류" if "crcl" in errors else _change_direction(
+            crcl_snapshot.get("close"), crcl_snapshot.get("prev_close"), rate=True,
+        ))
+    )
     lines = [
         "<b>CRCL · USDC 변화</b>",
         f"<code>조회 {html.escape(updated)}</code>" if updated else "",
         "",
-        f"<blockquote><b>판정 · {html.escape(verdict)}</b>\n{html.escape(take)}</blockquote>",
+        f"<b>오늘 방향: {html.escape(headline)}</b>",
+        f"<blockquote><b>판정 · {html.escape(verdict)}</b>\n{html.escape(take)}\n"
+        "※ 지표의 유불리와 CRCL 주가 등락은 별개입니다.</blockquote>",
     ]
 
     lines += ["", *build_direction_dashboard(pending)]
