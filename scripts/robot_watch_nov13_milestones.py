@@ -7,7 +7,10 @@ from __future__ import annotations
 
 import datetime as dt
 import hashlib
+import json
 import re
+import unicodedata
+import urllib.parse
 
 MERGER = "spacex_tesla_combination"
 DKT = "dkt_auto_oled_expansion"
@@ -45,19 +48,171 @@ def identity(text: str) -> str:
 def _body(item: dict) -> str:
     return " ".join(str(item.get(k) or "") for k in ("title", "description"))
 
+
+def _fact_text(value: str) -> str:
+    """Normalise typography, not the meaning or date of a research finding."""
+    value = unicodedata.normalize("NFKC", value).casefold()
+    return re.sub(r"\s+", " ", value).strip(" .;:")
+
+
+def _cost_document_url(item: dict) -> str:
+    # A publisher's RSS source_url usually identifies its homepage. It is
+    # deliberately not evidence of an individual report or a report version.
+    if str(item.get("source") or "").strip() not in OFFICIAL_COST:
+        return ""
+    for field in ("canonical_url", "original_url", "link"):
+        try:
+            parts = urllib.parse.urlsplit(str(item.get(field) or ""))
+            port = parts.port
+        except ValueError:
+            continue
+        host = (parts.hostname or "").lower().removeprefix("www.")
+        path = parts.path.rstrip("/")
+        if (parts.scheme != "https" or port not in {None, 443} or parts.username or parts.password
+                or not (host == "anthropic.com" or host.endswith(".anthropic.com"))
+                or len([p for p in path.split("/") if p]) < 2
+                or path.split("/")[1] not in {"research", "news", "engineering"}
+                or re.search(r"(?:rss|feed|index)(?:\.xml|\.html)?$", path, re.I)):
+            continue
+        query = urllib.parse.urlencode(sorted(
+            (k, v) for k, v in urllib.parse.parse_qsl(parts.query)
+            if not k.lower().startswith("utm_")
+            and k.lower() not in {"gclid", "fbclid", "ref", "source"}
+        ))
+        return urllib.parse.urlunsplit(("https", host, path, query, ""))
+    return ""
+
+
+def _labelled_fact(text: str, names: str) -> str:
+    match = re.search(rf"(?:{names})\s*[:=]\s*([^;|\n]+)", text, re.I)
+    return _fact_text(match.group(1)) if match else ""
+
+
+def cost_revision(item: dict) -> tuple[dict, list[str]]:
+    """Require an identifiable official document and attributable new values.
+
+    This is an RSS discovery gate, not full-text verification. Ambiguous prose,
+    unlabeled old/new percentages and generic 'new figures' titles stay pending.
+    Publication time is never a revision identifier: a reprint can change it.
+    """
+    text = unicodedata.normalize("NFKC", "\n".join(
+        str(item.get(k) or "") for k in ("title", "description")
+    ))
+    facts = {"document": _cost_document_url(item)}
+    facts["scope"] = _labelled_fact(
+        text, r"analysis\s+scope|study\s+population|sample\s+scope|분석\s*대상|조사\s*대상"
+    )
+    if not facts["scope"]:
+        scope = re.search(
+            r"(?:U\.?S\.?|United States|global|worldwide|미국|전\s*세계|한국|유럽)"
+            r"[^;|.\n]{0,45}(?:occupations?|jobs?|tasks?|workers?|직업|일자리|업무|노동자)",
+            text, re.I,
+        )
+        facts["scope"] = _fact_text(scope.group()) if scope else ""
+    facts["period"] = _labelled_fact(
+        text, r"analysis\s+period|study\s+period|reference\s+period|data\s+period|분석\s*기간|기준\s*기간|자료\s*기간"
+    )
+    facts["version"] = _labelled_fact(text, r"report\s+version|revision|version|보고서\s*버전|개정판|버전")
+    report_date = re.search(
+        r"(?:report\s+date|revised\s+on|updated\s+on|발표일|개정일|수정일|보고서\s*날짜)"
+        r"\s*[:=]?\s*(20\d{2})[-./](\d{1,2})[-./](\d{1,2})", text, re.I,
+    )
+    facts["report_date"] = ""
+    if report_date:
+        try:
+            facts["report_date"] = dt.date(*(int(v) for v in report_date.groups())).isoformat()
+        except ValueError:
+            pass
+    metric_patterns = {
+        "경제적 대체 비중": r"cost[-\s]*competitive\s*(?:share|exposure)|economic(?:ally)?\s*(?:competitive\s*)?(?:share|exposure)|경제(?:적)?\s*대체\s*비중|경제성\s*확보\s*비중",
+        "기술적 노출 비중": r"technical\s*exposure|technically\s*exposed\s*share|기술적\s*노출\s*비중",
+        "비용 하락 조건": r"cost\s*(?:reduction|decline|drop)\s*(?:threshold|required)|비용\s*하락\s*조건|필요\s*비용\s*감소율",
+    }
+    metrics = {}
+    ambiguous = False
+    for name, pattern in metric_patterns.items():
+        values = {
+            format(float(m.group(1)), ".12g") + "%"
+            for m in re.finditer(
+                rf"(?:{pattern})\s*(?:is\s*|now\s*|[:=]\s*)?(\d+(?:\.\d+)?)\s*%", text, re.I,
+            )
+        }
+        if len(values) > 1:
+            ambiguous = True
+        elif values:
+            metrics[name] = next(iter(values))
+    facts["metrics"] = metrics
+    missing = []
+    for field, label in (("document", "개별 공식 문서 URL"), ("scope", "분석 대상"),
+                         ("period", "자료 기준기간"), ("metrics", "라벨이 있는 수정 수치")):
+        if not facts[field]:
+            missing.append(label)
+    if facts["period"] and not re.search(r"(?<!\d)20\d{2}(?!\d)", facts["period"]):
+        missing.append("연도를 포함한 절대 자료 기준기간")
+    if any(not 0 <= float(value.rstrip("%")) <= 100 for value in metrics.values()):
+        missing.append("백분율 지표의 유효 범위")
+    if ambiguous:
+        missing.append("같은 지표의 과거값·수정값 구분")
+    if facts["report_date"] and facts["report_date"] <= "2026-11-12":
+        missing.append("기존 기준선 이후의 실제 개정일")
+    return facts, missing
+
+
+# Qualify the matched milestone itself. A later closing target must not erase
+# an already signed contract, and an actual termination is a material event.
+_UNCONFIRMED_PREFIX = re.compile(
+    r"\b(?:no|not|never|without|pending|awaiting|awaits|cannot|won['’]t|can['’]t|"
+    r"(?:is|are|was|were|has|have|had|will|would|could|can|should)n['’]t|"
+    r"(?:will|would|could|may|might|should|must)|"
+    r"(?:expected|planned|scheduled|intended|targeted|set)\s+to|"
+    r"(?:plans?|intends?|aims?|hopes?|expects?)\s+to)"
+    r"(?:\s+(?:yet|be|been|being|have|already|actually|officially|finally))*\s*$|"
+    r"(?:미|불|안\s*|못\s*|아직\s*|미처\s*)$",
+    re.I,
+)
+_UNCONFIRMED_SUFFIX = re.compile(
+    r"^\s*(?:[,:'’\"“”‘’]\s*)*(?:"
+    r"(?:is\s+|are\s+|was\s+|were\s+|has\s+been\s+|have\s+been\s+)?"
+    r"(?:not\b|never\b|pending\b|awaited\b|required\b|unconfirmed\b|denied\b|"
+    r"planned\b|scheduled\b|expected\b|targeted\b|anticipated\b|"
+    r"(?:claim|report)s?\s+(?:(?:is|are|was|were)\s+)?denied\b)|"
+    r"(?:은|는|이|가|을|를)?\s*(?:"
+    r"(?:하|되|받)(?:지\s*(?:않|못)|지는\s*(?:않|못))|"
+    r"(?:한|된)\s*바\s*없|하지\s*않|되지\s*않|"
+    r"아니|없|아직|미완료|미체결|미승인|미확인|"
+    r"예정|계획|목표|전망|검토|추진|대기|필요|조건부|가능성|불확실|"
+    r"부인|불발|연기|지연|보류|결렬|설\s*부인|"
+    r"하기로|되기로|할\s|될\s|할$|될$))",
+    re.I,
+)
+
+
+def _confirmed_headline(title: str, pattern: str) -> bool:
+    """Keep existing positive matches, excluding attached denial/future claims."""
+    for match in re.finditer(pattern, title, re.I):
+        action = "action" if match.groupdict().get("action") else "standalone"
+        start, end = match.span(action)
+        before = title[:start].rstrip(" \t\"'“”‘’")
+        after = title[end:]
+        if _UNCONFIRMED_PREFIX.search(before) or _UNCONFIRMED_SUFFIX.search(after):
+            continue
+        return True
+    return False
+
+
 def stage(item: dict, group: str) -> str:
     title = str(item.get("title") or "")
     body = _body(item)
     src = str(item.get("source") or "").strip()
     if group == MERGER:
         if src in OFFICIAL_MERGER:
-            if re.search(r"(합병|기업결합|merger|combination).{0,65}(완료|종결|closing completed|closed)", title, re.I):
+            if _confirmed_headline(title, r"(합병|기업결합|merger|combination).{0,65}(?P<action>완료|종결|closing completed|closed)"):
                 return "official_close"
-            if re.search(r"(합병|기업결합|merger|combination).{0,80}(주주총회 승인|주주 승인|shareholder approval|shareholder vote approved)|shareholders? approved", title, re.I):
+            if _confirmed_headline(title, r"(합병|기업결합|merger|combination).{0,80}(?P<action>주주총회 승인|주주 승인|shareholder approval|shareholder vote approved)|(?P<standalone>shareholders? approved)"):
                 return "official_approval"
-            if re.search(r"(합병|기업결합|merger|combination).{0,80}(철회|중단|무산|terminated|abandoned)", title, re.I):
+            if _confirmed_headline(title, r"(합병|기업결합|merger|combination).{0,80}(?P<action>철회|중단|무산|terminated|abandoned)"):
                 return "official_termination"
-            if re.search(r"(합병|기업결합|merger|combination).{0,80}(본계약 체결|최종 계약 체결|definitive agreement signed|binding agreement signed)", title, re.I):
+            if _confirmed_headline(title, r"(합병|기업결합|merger|combination).{0,80}(?P<action>본계약 체결|최종 계약 체결|definitive agreement signed|binding agreement signed)"):
                 return "official_signed"
         if re.search(r"합병|merger|combination", title, re.I) and (
             re.search(r"협상.{0,12}진전|합병.{0,18}협상.{0,18}진전|talks? progress|advanced merger talks|merger talks advance", title, re.I)
@@ -68,9 +223,9 @@ def stage(item: dict, group: str) -> str:
         return "baseline_committee"
     if group == DKT:
         if src in OFFICIAL_DKT:
-            if re.search(r"(차량용|완성차|OLED).{0,65}(정식 공급계약 체결|구매계약 체결|binding supply contract signed)", title, re.I):
+            if _confirmed_headline(title, r"(차량용|완성차|OLED).{0,65}(?P<action>정식 공급계약 체결|구매계약 체결|binding supply contract signed)"):
                 return "official_auto_oled_contract"
-            if re.search(r"(차량용|완성차|OLED).{0,65}(첫 출하 완료|초도 출하 완료|first shipment completed)", title, re.I):
+            if _confirmed_headline(title, r"(차량용|완성차|OLED).{0,65}(?P<action>첫 출하 완료|초도 출하 완료|first shipment completed)"):
                 return "official_auto_oled_shipment"
         has_new = re.search(r"신규\s*(고객|완성차)|새\s*고객|추가\s*(수주|확보|따내)|물량\s*더\s*커|앞좌석|뒷좌석|front and rear", body, re.I)
         headline_actual = re.search(r"(본격\s*양산|양산\s*(시작|개시)|양산.{0,10}물량|양산…|mass production started)", title, re.I)
@@ -78,13 +233,15 @@ def stage(item: dict, group: str) -> str:
             return "reported_sop_expansion_20261113"
         return "prior_guidance"
     if group == COST:
-        if src in OFFICIAL_COST and re.search(r"(revised|updated|new follow-up|수정|후속\s*조사|재추정)", title, re.I):
+        if src in OFFICIAL_COST and _confirmed_headline(title, r"(?P<action>revised|updated|new follow-up|수정|후속\s*조사|재추정)"):
             try:
                 pub = dt.datetime.fromisoformat(item.get("published") or "")
             except (TypeError, ValueError):
                 pub = None
             if pub and pub.date() > dt.date(2026, 11, 12):
-                return "official_revised_estimate"
+                _, missing = cost_revision(item)
+                return "revision_verification_pending" if missing else "official_revised_estimate"
+            return "revision_verification_pending"
         return "sep30_baseline"
     return ""
 
@@ -142,7 +299,13 @@ def install(base) -> None:
         g = identity(_body(item))
         if not g:
             return previous["key"](item)
-        return hashlib.sha256(f"robot-nov13|{g}|{stage(item, g)}".encode("utf-8")).hexdigest()
+        s = stage(item, g)
+        if g == COST and s == "official_revised_estimate":
+            facts, _ = cost_revision(item)
+            fingerprint = json.dumps(facts, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+            return hashlib.sha256(f"robot-nov13|{g}|{s}|{fingerprint}".encode("utf-8")).hexdigest()
+        # All historical baseline/merger/DKT keys are deliberately unchanged.
+        return hashlib.sha256(f"robot-nov13|{g}|{s}".encode("utf-8")).hexdigest()
 
     def category(text: str, g: str):
         return CATEGORIES[g] if g in CATEGORIES else previous["category"](text, g)
@@ -153,7 +316,7 @@ def install(base) -> None:
         if cat == CATEGORIES[DKT]:
             return "북미 자동차 OLED용 모듈 양산·추가 고객 확보 보도입니다. 기존 2026~2028년 수주잔고와 신규 수주를 중복 합산하지 않고 실제 출하·매출을 확인합니다."
         if cat == CATEGORIES[COST]:
-            return "2026-09-30 앤트로픽 연구의 0.3% 경제성·70% 비용 하락 조건은 기존 기준선입니다. 새 추정치만 변화로 알립니다."
+            return "공식 후속 문서의 수정 수치·분석 대상·자료 기준기간을 구분합니다. 과거 연구 수치를 이번 개정의 현재값으로 재사용하지 않으며 경제적 대체와 기술적 노출을 별도로 확인합니다."
         return previous["meaning"](cat)
 
     def risk(cat: str):
@@ -177,6 +340,19 @@ def install(base) -> None:
                 return "디케이티 명의 공식 발표 주장 · 실제 매출·고객·수량 별도 확인"
             return "더스탁·증권사 보도 단계 · 고객 실명·계약·양산 물량의 회사 공시 독립 확인 전"
         if g == COST:
+            s = stage(item, g)
+            if s == "official_revised_estimate":
+                facts, _ = cost_revision(item)
+                metrics = ", ".join(f"{label} {value}" for label, value in sorted(facts["metrics"].items()))
+                revision = ", ".join(filter(None, (
+                    "문서 개정일 " + facts["report_date"] if facts["report_date"] else "",
+                    "문서 버전 " + facts["version"] if facts["version"] else "",
+                ))) or "문서 개정일·버전 미표기"
+                return (f"앤트로픽 공식 도메인 개별 문서의 제목·요약 검색색인 · 원문 추가 검증; "
+                        f"수정 수치 {metrics}; 분석 대상 {facts['scope']}; 자료 기준기간 {facts['period']}; {revision}")
+            if s == "revision_verification_pending":
+                _, missing = cost_revision(item)
+                return "공식 후속 제목 검증 대기 · " + ", ".join(missing or ["실제 개정 시점"]) + " 미식별; 새 수치 확정 전"
             return "앤트로픽 2026-09-30 원문 연구 · 새 수정 수치는 공식 후속 발표와 대조"
         return previous["verification"](item, g, text)
 
@@ -205,3 +381,4 @@ def install(base) -> None:
     for q in QUERIES:
         if q not in base.QUERIES:
             base.QUERIES.append(q)
+

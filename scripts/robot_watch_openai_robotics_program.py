@@ -19,7 +19,9 @@ import datetime as dt
 import email.utils
 import hashlib
 import html
+import json
 import re
+import unicodedata
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -173,6 +175,167 @@ def achieved(item: dict) -> str:
             return stage
     return ""
 
+
+def _fact_value(value: str) -> str:
+    value = unicodedata.normalize("NFKC", html.unescape(value)).casefold()
+    aliases = (
+        (r"텍사스", "texas"), (r"애리조나|아리조나", "arizona"),
+        (r"애빌린|애빌레네", "abilene"), (r"스타게이트", "stargate"),
+        (r"아틀라스", "atlas"), (r"옵티머스", "optimus"),
+    )
+    for pattern, replacement in aliases:
+        value = re.sub(pattern, replacement, value)
+    value = re.sub(r"[^\w\s.-]", " ", value)
+    return re.sub(r"\s+", " ", value).strip(" .-")
+
+
+def _official_article_url(item: dict) -> str:
+    """Identify an individual official URL; source grade remains separate.
+
+    A trusted outlet may link to the same original OpenAI document. Its event
+    key stays the same, without upgrading the outlet to official confirmation.
+    """
+    source = str(item.get("source") or "").strip()
+    if source not in COMPANY and source not in TRUSTED:
+        return ""
+    # Google RSS source_url is normally a homepage, never an event identifier.
+    for field in ("canonical_url", "original_url", "link"):
+        try:
+            parts = urllib.parse.urlsplit(str(item.get(field) or ""))
+            port = parts.port
+        except ValueError:
+            continue
+        host = (parts.hostname or "").lower().removeprefix("www.")
+        path = parts.path.rstrip("/")
+        if (parts.scheme != "https" or port not in {None, 443} or parts.username or parts.password
+                or not (host == "openai.com" or host.endswith(".openai.com"))
+                or len([p for p in path.split("/") if p]) < 2
+                or path.split("/")[1] not in {"news", "index", "research", "blog"}
+                or re.search(r"(?:rss|feed|index)(?:\.xml|\.html)?$", path, re.I)):
+            continue
+        query = urllib.parse.urlencode(sorted(
+            (k, v) for k, v in urllib.parse.parse_qsl(parts.query)
+            if not k.lower().startswith("utm_")
+            and k.lower() not in {"gclid", "fbclid", "ref", "source"}
+        ))
+        return urllib.parse.urlunsplit(("https", host, path, query, ""))
+    return ""
+
+
+def event_facts(item: dict) -> dict:
+    """Extract explicit facts, not outlet names or the date a story recirculated.
+
+    This deliberately is not a general named-entity resolver. Explicit labels
+    and a few grammatical site/model patterns are supported; unrecognised names
+    require the individual official article or later manual reconciliation.
+    """
+    text = unicodedata.normalize("NFKC", html.unescape("\n".join(
+        str(item.get(k) or "") for k in ("title", "description")
+    )))
+    facts = {}
+    label_patterns = {
+        "site": r"site|location|현장|장소|지역",
+        "product": r"product|model|제품|모델",
+        "project": r"project|프로젝트",
+        "counterparty": r"counterparty|partner|customer|계약\s*상대방|상대방|고객|협력사",
+    }
+    for field, pattern in label_patterns.items():
+        values = {
+            _fact_value(m.group(1)) for m in re.finditer(
+                rf"(?:^|[\s;|])(?:{pattern})\s*[:=]\s*([^;|\n]+)", text, re.I
+            )
+        }
+        if values:
+            facts[field] = sorted(v for v in values if v)
+
+    if "site" not in facts:
+        sites = set()
+        patterns = (
+            r"\b(?:at|in|near)\s+(?:a\s+|the\s+)?([A-Za-z][A-Za-z0-9 -]{1,65}?)\s+(?:data\s*cent(?:er|re)|construction\s*site|facility|factory)\b",
+            r"\b(?:data\s*cent(?:er|re)(?:\s+construction\s+site)?|construction\s*site)\s+(?:at|in|near)\s+([A-Za-z][A-Za-z0-9 -]{1,65}?)(?=[;,.]|\s+(?:where|with|using|and|after|before)\b|$)",
+            r"(?:^|[,;\s])([가-힣A-Za-z][가-힣A-Za-z0-9 -]{1,35}?)\s*(?:의\s*)?(?:데이터\s*센터|건설\s*현장)",
+        )
+        for pattern in patterns:
+            for match_site in re.finditer(pattern, text, re.I):
+                value = _fact_value(match_site.group(1))
+                value = re.sub(r"^(?:openai|robots?|로봇)\s+", "", value)
+                value = re.sub(r"^(?:(?:a|the|new|existing|first)\s+)+", "", value)
+                generic = {"a", "the", "new", "existing", "first", "actual", "construction", "openai",
+                           "data", "center", "centre", "datacenter", "datacentre", "site", "facility",
+                           "factory", "데이터센터", "데이터", "센터", "건설", "현장", "공장"}
+                if value and not set(value.split()).issubset(generic):
+                    sites.add(value)
+        if sites:
+            facts["site"] = sorted(sites)
+    if "product" not in facts:
+        products = {
+            _fact_value(m.group(1)) for m in re.finditer(
+                r"\b([A-Z][A-Za-z0-9-]+(?:\s+\d+)?)\s+(?:robots|humanoids)\b", text
+            ) if m.group(1).casefold() not in {"openai", "the", "industrial", "construction", "ai", "autonomous", "humanoid", "new"}
+        }
+        if products:
+            facts["product"] = sorted(products)
+    if "project" not in facts:
+        projects = {
+            _fact_value(m.group(1)) for m in re.finditer(
+                r"\b[Pp]roject\s+([A-Z][A-Za-z0-9-]+)\b", text
+            )
+        }
+        if projects:
+            facts["project"] = sorted(projects)
+    if "counterparty" not in facts:
+        counterparties = {
+            _fact_value(m.group(1)) for m in re.finditer(
+                r"\b(?:contract|agreement)\s+with\s+([A-Z][A-Za-z0-9-]+(?:\s+[A-Z][A-Za-z0-9-]+){0,3})\b", text
+            )
+        }
+        if counterparties:
+            facts["counterparty"] = sorted(counterparties)
+
+    quantities = set()
+    for match_quantity in re.finditer(
+        r"(?<![\w.])(\d[\d,]*(?:\.\d+)?)\s*(robots?|humanoids?|units?|대|%|km|hours?|시간|MW|GW)(?!\w)", text, re.I
+    ):
+        number, unit = match_quantity.groups()
+        unit = unit.casefold()
+        if unit in {"robot", "robots", "humanoid", "humanoids", "unit", "units", "대"}:
+            unit = "robots"
+        elif unit in {"hour", "hours", "시간"}:
+            unit = "hours"
+        quantities.add(format(float(number.replace(",", "")), ".12g") + " " + unit)
+    # '20 Atlas robots' has the same physical quantity as '20 robots'.
+    for model_quantity in re.finditer(
+        r"(?<![\w.])(\d[\d,]*(?:\.\d+)?)\s+[A-Z][A-Za-z0-9-]+\s+(?:robots|humanoids)\b", text
+    ):
+        quantities.add(format(float(model_quantity.group(1).replace(",", "")), ".12g") + " robots")
+    if quantities:
+        facts["quantities"] = sorted(quantities)
+    dates = set()
+    for event_date in re.finditer(
+        r"(?:event\s*date|deployment\s*date|contract\s*date|실제\s*사건일|사건일|배치일|계약일|시험일|가동일)"
+        r"\s*[:=]?\s*(20\d{2})[-./](\d{1,2})[-./](\d{1,2})", text, re.I,
+    ):
+        try:
+            dates.add(dt.date(*(int(v) for v in event_date.groups())).isoformat())
+        except ValueError:
+            pass
+    if dates:
+        facts["event_dates"] = sorted(dates)
+    return facts
+
+
+def event_identity(item: dict) -> tuple[str, str]:
+    facts = event_facts(item)
+    anchors = {key for key in ("site", "product", "project", "counterparty") if facts.get(key)}
+    if (facts.get("site") or facts.get("counterparty")
+            or (anchors and (len(anchors) >= 2 or facts.get("quantities")))):
+        return "facts:" + json.dumps(facts, ensure_ascii=False, sort_keys=True, separators=(",", ":")), "사건 지문"
+    canonical = _official_article_url(item)
+    if canonical:
+        return "official-document:" + canonical, "개별 공식 문서 URL"
+    return "", "고유 현장·제품/프로젝트·상대방·물량 또는 개별 공식 문서 URL 미식별"
+
+
 def _read_publisher_rss(url: str, source: str) -> list[dict]:
     """Fetch primary RSS; error is surfaced to base watcher status, not a silent no-op."""
     request = urllib.request.Request(
@@ -238,10 +401,11 @@ def install(base) -> None:
         if item.get("openai_direct_program_recovery"):
             return 57
         stage = achieved(item)
-        if not stage:
+        if not stage or not event_identity(item)[0]:
             return 0
         source = str(item.get("source") or "")
-        return 73 if source in COMPANY else 32
+        # A source label alone does not verify an official document or body.
+        return 73 if source in COMPANY and _official_article_url(item) else 32
 
     def key(item):
         if item.get("openai_direct_program_recovery"):
@@ -252,18 +416,14 @@ def install(base) -> None:
         stage = achieved(item)
         if not stage:
             return hashlib.sha256(b"openai|robotics-infra|baseline").hexdigest()
-        source=str(item.get("source") or "")
-        grade="issuer" if source in COMPANY else "press"
-        pub=str(item.get("published") or "")[:10]
-        # News-syndication URLs may vary; one achieved stage per
-        # evidence source/UTC week is a stable but conservative alert unit.
-        try:
-            day=dt.date.fromisoformat(pub)
-            period=f"{day.isocalendar().year}-W{day.isocalendar().week:02d}"
-        except ValueError:
-            period="undated"
+        fingerprint, _ = event_identity(item)
+        if not fingerprint:
+            # Not selectable; keep source/date-free diagnostic identity too.
+            fingerprint = "pending:" + _fact_value(" ".join(
+                str(item.get(k) or "") for k in ("title", "description")
+            ))
         return hashlib.sha256(
-            f"openai|robotics-infra|{stage}|{grade}|{period}".encode()
+            f"openai|robotics-infra|{stage}|{fingerprint}".encode()
         ).hexdigest()
 
     def category(text,g):
@@ -285,9 +445,9 @@ def install(base) -> None:
             )
         if cat in CATEGORY_STAGES.values():
             return (
-                "기존 장기 구상에서 새로운 실제 단계로 전진·후퇴했다는 "
-                "기업/언론 근거입니다. 실물 시연·현장 배치·양산·구속력 있는 "
-                "계약·실제 매출을 구분하고 고객·물량·가동률을 추가 확인합니다."
+                "제목·요약에서 기존 구상 이후의 새 단계가 보도됐습니다. "
+                "실물 시연·현장 배치·양산·구속력 있는 계약·실제 매출을 "
+                "구분하고 원문과 고객·물량·가동률을 추가 확인합니다."
             )
         return previous["meaning"](cat)
 
@@ -312,8 +472,18 @@ def install(base) -> None:
                     "현장 투입·실제 수주·매출은 확인되지 않음"
                 )
             source=str(item.get("source") or "")
-            grade="OpenAI 직접 발표" if source in COMPANY else "신뢰 언론 보도(회사 확정 전)"
-            return f"{grade}·{achieved(item) or '사업 계획 기존 기준선'}; 실제 고객·계약·현장 규모 추가 확인 전"
+            stage = achieved(item)
+            fingerprint, basis = event_identity(item)
+            if stage and not fingerprint:
+                return f"원문 검증 대기 · {basis}; 제목만으로 새 사건이나 실제 배치 확정 불가"
+            if source in COMPANY and _official_article_url(item):
+                grade = "OpenAI 공식 도메인 개별 문서의 제목·요약 검색색인"
+            elif source in COMPANY:
+                grade = "OpenAI 명의 제목·요약 · 공식 개별 원문 URL 미확인"
+            else:
+                grade = "신뢰 언론 제목·요약 보도 · 회사 확정 전"
+            return (f"{grade} · 원문 추가 검증; {stage or '사업 계획 기존 기준선'}; "
+                    f"중복 판정 근거 {basis}; 실제 사건일·고객·계약·현장 규모 추가 확인 전")
         return previous["verification"](item,g,text)
 
     def tag(g):
@@ -345,3 +515,4 @@ def install(base) -> None:
     for query in (RECOVERY_QUERY,OPENAI_NEWS_FEED_QUERY,CHEEKY_PINT_FEED_QUERY,*QUERIES):
         if query not in base.QUERIES:
             base.QUERIES.append(query)
+

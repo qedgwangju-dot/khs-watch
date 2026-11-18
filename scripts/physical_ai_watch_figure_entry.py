@@ -340,10 +340,13 @@ MONTHS = {
 
 
 def _figure_date_from_text(text: str) -> dt.datetime | None:
-    m = re.search(r'(January|February|March|April|May|June|July|August|September|October|November|December)\\s+(\\d{1,2}),\\s+(20\\d{2})', text)
+    m = re.search(r'\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s+(20\d{2})\b', text)
     if not m:
         return None
-    return dt.datetime(int(m.group(3)), MONTHS[m.group(1)], int(m.group(2)), 12, 0, tzinfo=dt.timezone.utc)
+    try:
+        return dt.datetime(int(m.group(3)), MONTHS[m.group(1)], int(m.group(2)), 12, 0, tzinfo=dt.timezone.utc)
+    except ValueError:
+        return None  # An invalid calendar date must not become a news timestamp.
 
 
 def _fetch_figure_official_news() -> list[dict]:
@@ -377,6 +380,7 @@ def _fetch_figure_official_news() -> list[dict]:
                 'link': url,
                 'description': clean[:7000],
                 'published': pub.isoformat(),
+                'published_precision': 'day',
                 'source': 'Figure AI',
                 'direct_primary': True,
                 'figure_official_slug': path.rsplit('/', 1)[-1],
@@ -575,3 +579,4 @@ if __name__ == '__main__':
     if base.ALERT_PATH.exists():
         rendered = base.ALERT_PATH.read_text(encoding='utf-8')
         base.ALERT_PATH.write_text(legacy.display._inline_original_link(rendered), encoding='utf-8')
+

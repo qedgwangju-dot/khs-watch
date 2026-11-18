@@ -84,13 +84,15 @@ def run():
 
     later_real=item(
         "OpenAI robot data center construction deployment",
-        "OpenAI robots deployed at a data center construction site; verified actual operation.",
+        "OpenAI robots deployed at a Texas data center construction site; 20 robots; verified actual operation.",
         "OpenAI",
     )
+    later_real["link"]="https://openai.com/news/robotics-texas-deployment"
     g,s,k,c=classify(base,later_real)
     assert g==m.TOPIC and s>=11 and k!=m.RECOVERY_KEY,(g,s,k,c)
     assert "실제" in c,c
-    assert base.verification(later_real,g,later_real["description"]).startswith("OpenAI 직접")
+    assert base.verification(later_real,g,later_real["description"]).startswith("OpenAI 공식 도메인")
+    assert "원문 추가 검증" in base.verification(later_real,g,later_real["description"])
 
     future=item(
         "OpenAI to deploy robots at new data centers",
@@ -101,9 +103,69 @@ def run():
 
     external_unverified=dict(later_real,source="Anonymous Blog")
     assert classify(base,external_unverified)[1]==0,"unverified blog is not an official deployment"
-    syndicated=dict(later_real,source="The Next Web")
+    syndicated=dict(later_real,source="The Next Web",link="https://thenextweb.com/news/syndicated-deployment")
     assert 11<=classify(base,syndicated)[1]<s,"reported vs issuer confirmed"
-    assert classify(base,syndicated)[2]!=k,"reported vs official evidence keys separate"
+    assert classify(base,syndicated)[2]==k,"The same event is not split by publisher grade"
+    next_week=dict(syndicated,published="2026-11-09T02:00:00+00:00")
+    assert classify(base,next_week)[2]==k,"A next-week reprint is not a second deployment"
+    undated=dict(syndicated,published=None)
+    assert classify(base,undated)[2]==k,"Unknown publication date does not change event identity"
+    # Same week, stage and source can still contain different real milestones.
+    arizona=dict(later_real,description=later_real["description"].replace("Texas","Arizona"))
+    more_robots=dict(later_real,description=later_real["description"].replace("20 robots","30 robots"))
+    assert classify(base,arizona)[2]!=k,"Different sites must not collide"
+    assert classify(base,more_robots)[2]!=k,"Different physical quantities must not collide"
+    dated_first=dict(later_real,description=later_real["description"]+"; deployment date: 2026-11-02")
+    dated_next=dict(later_real,description=later_real["description"]+"; deployment date: 2026-11-09")
+    assert classify(base,dated_first)[2]!=classify(base,dated_next)[2],"Actual event dates, not publication weeks, separate batches"
+    models=dict(later_real,description=later_real["description"]+"; model: Atlas; project: Stargate; partner: ACME")
+    for old,new in (("model: Atlas","model: Digit"),("project: Stargate","project: SampleB"),("partner: ACME","partner: OtherCo")):
+        changed=dict(models,description=models["description"].replace(old,new))
+        assert classify(base,changed)[2]!=classify(base,models)[2],(old,new)
+    model_count=dict(later_real,description=later_real["description"].replace("20 robots","20 Atlas robots"))
+    other_count=dict(model_count,description=model_count["description"].replace("20 Atlas","21 Atlas"))
+    assert classify(base,model_count)[2]!=classify(base,other_count)[2]
+    equivalent_count=dict(later_real,description=later_real["description"].replace("20 robots","20.0 robots"))
+    assert classify(base,equivalent_count)[2]==k
+
+    # Neither a company source name nor its RSS homepage proves an individual
+    # article. Missing strong event identity is explicitly held for review.
+    vague=item("OpenAI robots data center deployment",
+               "OpenAI robots deployed at a data center construction site.","OpenAI")
+    for blocked in (
+        vague,
+        dict(vague,source_url="https://openai.com/",link="https://news.google.com/rss/articles/opaque"),
+        dict(vague,link="https://openai.com/"),
+        dict(vague,link="https://openai.com/news/"),
+        dict(vague,link="https://openai.com.evil.invalid/news/fake"),
+        dict(vague,link="https://openai.com:8443/news/fake"),
+        dict(vague,source="Reuters",link="https://reuters.com/ambiguous-report"),
+    ):
+        assert classify(base,blocked)[1]==0,blocked
+        assert "검증 대기" in base.verification(blocked,m.TOPIC,blocked["description"])
+    claimed=dict(later_real,link="https://example.invalid/unknown")
+    assert classify(base,claimed)[1]<s
+    assert "공식 개별 원문 URL 미확인" in base.verification(claimed,m.TOPIC,claimed["description"])
+    # Explicit official-document fallback handles a specific article when the
+    # short RSS summary lacks a site. Cross-document aliases need manual review.
+    original_doc=dict(vague,link="https://openai.com/index/robotics-example")
+    repeated_doc=dict(original_doc,published="2026-11-09T00:00:00+00:00",
+                      link="https://www.openai.com/index/robotics-example/?utm_source=rss#details")
+    assert classify(base,original_doc)[1]>=11
+    assert classify(base,repeated_doc)[2]==classify(base,original_doc)[2]
+    same_original=dict(repeated_doc,source="Reuters")
+    assert classify(base,same_original)[2]==classify(base,original_doc)[2]
+    assert "회사 확정 전" in base.verification(same_original,m.TOPIC,same_original["description"])
+    different_doc=dict(original_doc,link="https://openai.com/index/robotics-another-example")
+    assert classify(base,different_doc)[2]!=classify(base,original_doc)[2]
+    # Existing fixed recovery/baseline identities and caller state are intact.
+    assert m.RECOVERY_KEY=="ea8753527da594520445e46c399d8b03ef140e33ce7e1d5ff10ff06ed561ea68"
+    assert classify(base,retelling)[2]=="cb7ee63fd0248d92f7fa8077c7328b008b9b242885437be36d15b2577304d918"
+    seen={f"old-{i}" for i in range(941)}|{k}
+    snapshot=seen.copy()
+    rerun=dict(next_week,key=k,score=classify(base,next_week)[1],group=m.TOPIC)
+    assert base.select_diverse([rerun],seen,False,8)==[]
+    assert seen==snapshot and len(seen)==942
 
     # Primary-source RSS parsing is checked with fake bytes and no HTTP.
     podcast_rss = b"""<?xml version="1.0" encoding="utf-8"?>
@@ -146,3 +208,4 @@ def run():
 if __name__=="__main__":
     run()
     print("OpenAI robotics program no-send regression: PASS")
+

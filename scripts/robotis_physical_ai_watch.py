@@ -217,6 +217,9 @@ def query_news(q: str) -> list[dict]:
                 "description": desc,
                 "published": pub.isoformat() if pub else None,
                 "source": src,
+                # Keep publisher provenance from RSS; it does not mean that
+                # the original article body has been fetched or verified.
+                "source_url": norm(src_node.get("url") if src_node is not None else ""),
             })
     return out
 
@@ -551,7 +554,6 @@ def main() -> None:
                 errors.append(f"{q}: {type(fetch_error).__name__}: {fetch_error}")
                 continue
             try:
-                ok_queries += 1
                 for x in items:
                     text = f"{x['title']} {x.get('description','')} {x.get('source','')}"
                     group = topic_group(text)
@@ -564,11 +566,12 @@ def main() -> None:
                     prev = all_items.get(k)
                     if prev is None or x["score"] > prev["score"]:
                         all_items[k] = x
+                ok_queries += 1
             except Exception as e:
                 errors.append(f"{q}: {type(e).__name__}: {e}")
 
     if ok_queries == 0:
-        raise SystemExit("All Google News RSS queries failed")
+        raise SystemExit("All source queries failed to fetch or process")
 
     cutoff = NOW - dt.timedelta(days=4)
     recent: list[dict] = []
@@ -603,6 +606,11 @@ def main() -> None:
         "updated_at": NOW.isoformat(),
         "seen": seen_list,
         "last_selected": [x["key"] for x in selected],
+        "last_selected_events": [
+            {field: x.get(field) for field in
+             ("key", "group", "title", "link", "source", "source_url", "published")}
+            for x in selected
+        ],
         "groups": sorted({x.get("group", "") for x in recent}),
     }
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -623,7 +631,8 @@ def main() -> None:
             when = ""
             if x.get("published"):
                 try:
-                    when = dt.datetime.fromisoformat(x["published"]).astimezone(KST).strftime("%m/%d %H:%M")
+                    date_format = "%Y-%m-%d" if x.get("published_precision") == "day" else "%m/%d %H:%M"
+                    when = dt.datetime.fromisoformat(x["published"]).astimezone(KST).strftime(date_format)
                 except Exception:
                     pass
 
@@ -685,5 +694,39 @@ def main() -> None:
     STATUS_PATH.write_text("\n".join(status) + "\n", encoding="utf-8")
 
 
+def reconcile_pending_with_rendered(pre_state: dict) -> None:
+    """Only retire selected events that survive all final message filters.
+
+    Historical keys are immutable, and first-run silent seeding is unchanged.
+    Public event provenance is kept alongside the hashes for subsequent audits.
+    Delivery is still committed only after the workflow verifies send receipts.
+    """
+    if not pre_state.get("seeded") or not PENDING_PATH.exists():
+        return
+    pending = json.loads(PENDING_PATH.read_text(encoding="utf-8"))
+    events = pending.get("last_selected_events")
+    if not isinstance(events, list):
+        return
+    rendered = ALERT_PATH.read_text(encoding="utf-8") if ALERT_PATH.exists() else ""
+    links = {html.unescape(url) for url in
+             re.findall(r'''href=["']([^"']+)["']''', rendered)}
+    kept = [event for event in events if event.get("link") in links]
+    kept_keys = {event.get("key") for event in kept}
+    rejected = set(pending.get("last_selected") or []) - kept_keys
+    old_seen = set(pre_state.get("seen") or [])
+    pending["seen"] = list(dict.fromkeys(
+        list(pre_state.get("seen") or []) +
+        [key for key in pending.get("seen", []) if key not in rejected]
+    ))
+    pending["last_selected"] = [key for key in pending.get("last_selected", [])
+                                if key in kept_keys]
+    pending["last_selected_events"] = kept
+    PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n",
+                            encoding="utf-8")
+    print(f"ROBOTIS final rendering: {len(kept)} retained, "
+          f"{len(rejected - old_seen)} unsent keys remain eligible", flush=True)
+
+
 if __name__ == "__main__":
     main()
+

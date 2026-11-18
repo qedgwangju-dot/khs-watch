@@ -8860,6 +8860,13 @@ _hungary_battery.install(base)
 import robot_watch_jpm_humanoid_outlook as _jpm_humanoid
 _jpm_humanoid.install(base)
 
+# Reviewed November source corrections and delivered-event aliases share the
+# existing route. Both retain historical state and the existing selection cap.
+import robot_watch_nov18_verified_events as _nov18_verified
+_nov18_verified.install(base)
+import robot_watch_verified_delivery_aliases as _verified_delivery_aliases
+_verified_delivery_aliases.install(base)
+
 
 if __name__ == '__main__':
     pre_state = base.load_state()
@@ -8869,3 +8876,6 @@ if __name__ == '__main__':
     qty.current._append_value_estimate()
     qty.enrich_quantity_values()
     _finalize_airan_criteria()
+    # Only articles still present after all final filters can become delivered.
+    base.reconcile_pending_with_rendered(pre_state)
+

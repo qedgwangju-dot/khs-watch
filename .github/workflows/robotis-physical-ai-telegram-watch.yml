@@ -106,12 +106,25 @@ jobs:
           python scripts/physical_ai_watch_regression_check.py
           python -m py_compile scripts/robot_watch_nov13_milestones.py scripts/test_robot_watch_nov13_milestones.py
           python scripts/test_robot_watch_nov13_milestones.py
+          python -m py_compile scripts/robot_watch_nov18_verified_events.py scripts/robot_watch_verified_delivery_aliases.py
+          python scripts/test_robot_watch_nov18_verified_events.py
+          python scripts/test_robot_watch_verified_delivery_aliases.py
+          python scripts/test_robot_watch_delivery_provenance.py
+          python scripts/test_robot_watch_nov18_pipeline.py
+          python scripts/test_robot_watch_figure_official_dates.py
+          python scripts/test_robot_watch_delivery.py
+          python scripts/test_robot_watch_state_commit.py
           python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py'
 
       - name: Refresh latest ROBOTIS dedup state without changing checked-out code
         run: |
           git fetch origin main --depth=1
           git show origin/main:data/robotis_physical_ai_watch_state.json > data/robotis_physical_ai_watch_state.json
+
+      - name: Recover confirmed deliveries from interrupted runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/robot_watch_delivery.py recover
 
       - name: Scan physical AI / battery / grid / ROBOTIS-NVIDIA / Figure AI / Tesla Optimus China / AI-RAN sources
         run: python scripts/physical_ai_watch_airan_guard.py
@@ -122,81 +135,14 @@ jobs:
           python scripts/currency_krw_guard.py out/robotis_physical_ai_watch_telegram.txt
 
       - name: Send Telegram only on meaningful change
+        id: delivery
         if: success()
-        run: |
-          if [ -s out/robotis_physical_ai_watch_telegram.txt ]; then
-            python - <<'PY'
-          import datetime, hashlib, json, os, pathlib, urllib.parse, urllib.request
-          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
-          chat = os.environ["TELEGRAM_CHAT_ID"].strip()
-          text = pathlib.Path("out/robotis_physical_ai_watch_telegram.txt").read_text(encoding="utf-8").strip()
+        run: python scripts/robot_watch_delivery.py send
 
-          chunks, cur = [], ""
-          for line in text.splitlines(True):
-              if cur and len(cur) + len(line) > 3500:
-                  chunks.append(cur.rstrip())
-                  cur = ""
-              cur += line
-          if cur.strip():
-              chunks.append(cur.rstrip())
-
-          # Append-only per-attempt receipts. Never store bot token or chat ID.
-          receipts = []
-          receipt_file = pathlib.Path("out/robotis_physical_ai_watch_delivery_receipts.json")
-          for chunk in chunks:
-              payload = urllib.parse.urlencode({
-                  "chat_id": chat,
-                  "text": chunk,
-                  "parse_mode": "HTML",
-                  "disable_web_page_preview": "true",
-              }).encode()
-              req = urllib.request.Request(
-                  f"https://api.telegram.org/bot{token}/sendMessage",
-                  data=payload,
-                  method="POST",
-              )
-              with urllib.request.urlopen(req, timeout=30) as r:
-                  data = json.loads(r.read().decode())
-              if not data.get("ok"):
-                  raise SystemExit("Telegram API returned ok=false")
-              reply = data.get("result") or {}
-              reply_chat = reply.get("chat") or {}
-              reply_id = reply_chat.get("id")
-              if reply_id is None:
-                  raise SystemExit("Telegram success reply missing chat.id")
-              # Do not expose private numeric chat IDs in public Actions logs.
-              if chat.lstrip("-").isdigit():
-                  if str(reply_id) != chat:
-                      raise SystemExit("Telegram recipient mismatch (IDs redacted)")
-                  print("Telegram recipient: configured numeric chat matches API reply")
-                  chat_verification = "numeric_id_equal"
-              elif chat.startswith("@") and reply_chat.get("username"):
-                  if reply_chat["username"].casefold() != chat[1:].casefold():
-                      raise SystemExit("Telegram recipient username mismatch")
-                  print("Telegram recipient: configured alias matches API reply")
-                  chat_verification = "username_equal"
-              else:
-                  print("Telegram recipient: reply chat.id present; alias comparison unverified")
-                  chat_verification = "present_but_alias_unverified"
-              message_id = reply.get("message_id")
-              if not isinstance(message_id, int) or message_id <= 0:
-                  raise SystemExit("Telegram success reply missing valid message_id")
-              print(f"Telegram sent: message_id={message_id}")
-              receipts.append({
-                  "delivered_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-                  "chat_verification": chat_verification,
-                  "message_id": message_id,
-                  "message_thread_id": reply.get("message_thread_id"),
-                  "sha256": hashlib.sha256(chunk.encode("utf-8")).hexdigest(),
-              })
-              receipt_file.write_text(json.dumps(receipts, ensure_ascii=False, indent=2), encoding="utf-8")
-          PY
-          else
-            echo "No meaningful new physical-AI/battery/grid/ROBOTIS-NVIDIA/Figure-AI/Tesla-Optimus-China change; Telegram silent."
-          fi
-
-      - name: Save dedup state after successful route/send
-        if: success()
+      - name: Save dedup state after confirmed full or partial delivery
+        if: always() && (steps.delivery.outcome == 'success' || steps.delivery.outcome == 'failure')
+        env:
+          DELIVERY_OUTCOME: ${{ steps.delivery.outcome }}
         run: |
           set -euo pipefail
           mkdir -p data
@@ -213,7 +159,9 @@ jobs:
             # A queued GitHub job can be based on an older checkout: never drop
             # confirmed delivery keys just because an older run finishes later.
             python - <<'PY'
-          import json, os, pathlib
+          import json, os, pathlib, sys
+          sys.path.insert(0, "scripts")
+          from robot_watch_delivery import check_receipts, route_fingerprint
           latest_path = pathlib.Path("data/robotis_physical_ai_watch_state.json")
           proposed_path = pathlib.Path("/tmp/robotis_watch_final_state.json")
           existing = json.loads(latest_path.read_text(encoding="utf-8")) if latest_path.exists() else {}
@@ -227,33 +175,49 @@ jobs:
 
           alert = pathlib.Path("out/robotis_physical_ai_watch_telegram.txt")
           receipt_file = pathlib.Path("out/robotis_physical_ai_watch_delivery_receipts.json")
-          sent_text = alert.exists() and bool(alert.read_text(encoding="utf-8").strip())
+          rendered = alert.read_text(encoding="utf-8").strip() if alert.exists() else ""
+          selected = set(proposed.get("last_selected") or [])
+          send_succeeded = os.environ.get("DELIVERY_OUTCOME") == "success"
           receipts = []
-          if sent_text:
-              if not receipt_file.exists():
-                  raise SystemExit("ROBOTIS nonempty alert has no Telegram send receipt; state not committed")
-              receipts = json.loads(receipt_file.read_text(encoding="utf-8"))
-              if not isinstance(receipts, list) or not receipts:
-                  raise SystemExit("ROBOTIS nonempty alert has empty delivery receipts")
-              if any(not isinstance(x.get("message_id"), int) or x["message_id"] <= 0 for x in receipts):
-                  raise SystemExit("ROBOTIS delivery receipt contains invalid message_id")
-              if any(x.get("chat_verification") not in {
-                  "numeric_id_equal", "username_equal", "present_but_alias_unverified"
-              } for x in receipts):
-                  raise SystemExit("ROBOTIS delivery receipt missing recipient check")
+          confirmed = set()
+          if rendered:
+              if receipt_file.exists():
+                  receipts = json.loads(receipt_file.read_text(encoding="utf-8"))
+              confirmed = check_receipts(
+                  rendered, proposed, receipts,
+                  route_fingerprint(os.environ["TELEGRAM_CHAT_ID"]),
+              )
+              if send_succeeded and confirmed != selected:
+                  raise SystemExit("ROBOTIS successful send has incomplete confirmed event keys; state not committed")
+              # A confirmed full article survives a later chunk failure. An
+              # attempted or partially rendered article does not become seen.
+              proposed_seen = [key for key in proposed_seen
+                               if key not in selected or key in confirmed or key in old_seen]
+              if newer:
+                  new_state["last_selected"] = [key for key in proposed.get("last_selected", []) if key in confirmed]
+                  new_state["last_selected_events"] = [row for row in proposed.get("last_selected_events", []) if row.get("key") in confirmed]
           else:
               # Selected before final rendering but filtered as marketing/noise
               # must remain eligible later; no receipt means no successful send.
-              selected = set(proposed.get("last_selected") or [])
               proposed_seen = [key for key in proposed_seen if key not in selected or key in old_seen]
               if newer:
                   new_state["last_selected"] = []
+                  new_state["last_selected_events"] = []
+
+          if not send_succeeded:
+              # Do not advance the recovery checkpoint past an ambiguous POST
+              # or partial failure. The next run must inspect its artifacts.
+              new_state["updated_at"] = existing.get("updated_at")
+          outcome = ("normal_silence" if not rendered and send_succeeded else
+                     "sent" if send_succeeded else
+                     "partial_send" if confirmed else "send_failed")
 
           new_state["seen"] = list(dict.fromkeys(old_seen + proposed_seen))
           run_id = os.environ.get("GITHUB_RUN_ID", "")
           run_record = {
               "run_id": int(run_id) if run_id.isdigit() else None,
-              "outcome": "sent" if sent_text else "normal_silence",
+              "outcome": outcome,
+              "confirmed_event_keys": sorted(confirmed),
               "message_ids": [x["message_id"] for x in receipts],
               "recipient_verified": all(x.get("chat_verification") in {
                   "numeric_id_equal", "username_equal"
@@ -308,5 +272,7 @@ jobs:
             out/robotis_physical_ai_watch_telegram.txt
             out/robotis_physical_ai_watch_pending_state.json
             out/robotis_physical_ai_watch_delivery_receipts.json
+            out/robotis_physical_ai_watch_delivery_attempts.json
           if-no-files-found: ignore
           retention-days: 7
+
