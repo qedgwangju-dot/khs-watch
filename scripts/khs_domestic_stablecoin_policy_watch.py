@@ -28,6 +28,7 @@ OUT_DIR = ROOT / "out"
 DATA_DIR = ROOT / "data"
 ALERTS_JSON_PATH = OUT_DIR / "khs_policy_watch_alerts.json"
 SEEN_PATH = DATA_DIR / "khs_domestic_stablecoin_policy_seen.json"
+PENDING_SEEN_PATH = OUT_DIR / "khs_domestic_stablecoin_pending_seen.json"
 KST = ZoneInfo("Asia/Seoul")
 MAX_AGE_HOURS = int(os.getenv("KHS_SOURCE_MAX_AGE_HOURS", "72"))
 MAX_ALERTS = int(os.getenv("KHS_DOMESTIC_STABLECOIN_MAX_ALERTS", "3"))
@@ -896,6 +897,7 @@ def main() -> int:
     seen = load_seen()
     seen_map = seen.setdefault("seen", {})
     new_alerts: list[dict] = []
+    pending_seen: dict[str, dict] = {}
     for item in sorted(candidates, key=lambda x: x.get("importance") != "상"):
         fps = [str(item.get("fingerprint") or "")]
         fps.extend(str(fp) for fp in item.get("source_fingerprints", []) if fp)
@@ -911,11 +913,12 @@ def main() -> int:
             "importance": item.get("importance"),
         }
         for fp in fps:
-            seen_map[fp] = seen_entry
+            pending_seen[fp] = seen_entry
         if len(new_alerts) >= MAX_ALERTS:
             break
 
     if not new_alerts:
+        PENDING_SEEN_PATH.unlink(missing_ok=True)
         print(
             f"domestic_stablecoin_alerts=0 candidates={len(candidates)} "
             f"official_cbdc_candidates={sum(bool(x.get('cbdc_policy_watch')) for x in candidates)} "
@@ -932,8 +935,15 @@ def main() -> int:
             merged.append(item)
             existing_keys.add(key)
     write_alerts(merged)
-    save_seen(seen, now)
-    print(f"domestic_stablecoin_alerts={len(new_alerts)} candidates={len(candidates)}")
+    # Preserve candidates without acknowledging them until their exact policy bundle
+    # has a confirmed Telegram message_id and survives the final delivery guard.
+    PENDING_SEEN_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PENDING_SEEN_PATH.write_text(
+        json.dumps({"created_at_kst": now.isoformat(timespec="seconds"), "seen": pending_seen},
+                   ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    print(f"domestic_stablecoin_pending={len(new_alerts)} candidates={len(candidates)}")
     return 0
 
 
