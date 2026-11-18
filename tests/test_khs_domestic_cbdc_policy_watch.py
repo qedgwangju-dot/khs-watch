@@ -410,5 +410,52 @@ class CbdcOfficialPolicyWatch(unittest.TestCase):
                 self.assertIn("raw-source-identity", seen)
                 self.assertIn(alerts[0]["fingerprint"], seen)
 
+
+    def test_telegram_numeric_chat_and_message_id_are_both_required(self):
+        from scripts.khs_policy_telegram_delivery import validate_telegram_send_receipt
+        valid = {
+            "ok": True,
+            "result": {"chat": {"id": -1001234567890, "type": "supergroup"}, "message_id": 47},
+        }
+        self.assertEqual(
+            validate_telegram_send_receipt(valid, configured_chat="-1001234567890", route="policy"),
+            47,
+        )
+        with self.assertRaisesRegex(RuntimeError, "chat.id mismatch"):
+            validate_telegram_send_receipt(valid, configured_chat="-1009999999999", route="policy")
+        with self.assertRaisesRegex(RuntimeError, "message_id invalid"):
+            validate_telegram_send_receipt(
+                {"ok": True, "result": {"chat": valid["result"]["chat"], "message_id": 0}},
+                configured_chat="-1001234567890", route="policy",
+            )
+        with self.assertRaisesRegex(RuntimeError, "missing chat identity"):
+            validate_telegram_send_receipt(
+                {"ok": True, "result": {"message_id": 47}},
+                configured_chat="-1001234567890", route="policy",
+            )
+        with self.assertRaisesRegex(RuntimeError, "not confirm"):
+            validate_telegram_send_receipt(
+                {"ok": False, "result": valid["result"]},
+                configured_chat="-1001234567890", route="policy",
+            )
+
+    def test_telegram_username_destination_and_topic_guard(self):
+        from scripts.khs_policy_telegram_delivery import validate_telegram_send_receipt
+        response = {
+            "ok": True,
+            "result": {"chat": {"id": -1001234567890, "username": "VerifiedNews"}, "message_id": 11,
+                       "message_thread_id": 29},
+        }
+        self.assertEqual(
+            validate_telegram_send_receipt(response, configured_chat="@verifiednews",
+                                           route="policy", expected_thread_id=29),
+            11,
+        )
+        with self.assertRaisesRegex(RuntimeError, "username mismatch"):
+            validate_telegram_send_receipt(response, configured_chat="@otherchannel", route="policy")
+        with self.assertRaisesRegex(RuntimeError, "topic mismatch"):
+            validate_telegram_send_receipt(response, configured_chat="@VerifiedNews",
+                                           route="policy", expected_thread_id=30)
+
 if __name__ == "__main__":
     unittest.main()
