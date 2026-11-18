@@ -3203,7 +3203,7 @@ def render_hbm_hybrid_bonding_notice(e: dict, now: datetime) -> str:
 
 def hbm4e_source_company(event: dict, full_text: str = "") -> str:
     """Use headline subject before article context containing rival companies."""
-    pattern = r"samsung(?:\\s+electronics)?|sk[\\s-]?(?:hynix|하이닉스)|micron|삼성전자|삼성"
+    pattern = r"samsung(?:\s+electronics)?|sk[\s-]?(?:hynix|하이닉스)|micron|삼성전자|삼성"
     headline = str(event.get("title") or event.get("article_title") or "")
     match = re.search(pattern, headline, re.I) or re.search(pattern, full_text, re.I)
     if not match:
