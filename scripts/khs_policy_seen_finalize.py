@@ -13,6 +13,10 @@ DATA = ROOT / "data"
 PENDING_PATH = OUT / "khs_policy_watch_pending_seen.json"
 DELIVERY_PATH = OUT / "khs_telegram_delivery_confirmed.json"
 SEEN_PATH = DATA / "khs_policy_watch_seen.json"
+DOMESTIC_PENDING_PATH = OUT / "khs_domestic_stablecoin_pending_seen.json"
+DOMESTIC_STATE_PATH = DATA / "khs_domestic_stablecoin_policy_seen.json"
+POLICY_ALERTS_PATH = OUT / "khs_policy_watch_alerts.json"
+POLICY_TITLE_PATH = OUT / "khs_policy_watch_alert_title.txt"
 TRUSTED_ALERTS_PATH = OUT / "khs_trusted_policy_news_alerts.json"
 TRUSTED_TITLE_PATH = OUT / "khs_trusted_policy_news_title.txt"
 TRUSTED_STATE_PATH = DATA / "khs_trusted_policy_news_seen.json"
@@ -132,8 +136,69 @@ def finalize_confirmed_outbound_alert(delivery: dict) -> None:
     print(f"trusted_oisp_seen_finalize=committed confirmed={len(selected)}")
 
 
+
+def finalize_confirmed_domestic_stablecoin(delivery: dict) -> None:
+    """Acknowledge only domestic events present in the actually sent policy bundle."""
+    if not DOMESTIC_PENDING_PATH.exists():
+        return
+    if delivery.get("status") != "confirmed" or int(delivery.get("sent") or 0) <= 0:
+        print("domestic_stablecoin_seen_finalize=deferred no_confirmed_send")
+        return
+    try:
+        raw_title = POLICY_TITLE_PATH.read_text(encoding="utf-8").strip()
+        surviving = json.loads(POLICY_ALERTS_PATH.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        print("domestic_stablecoin_seen_finalize=deferred no_policy_bundle")
+        return
+    if not isinstance(surviving, list):
+        return
+    # The live Telegram formatter removes the leading KHS prefix.
+    expected_title = raw_title.removeprefix("KHS ").strip()
+    title_acked = any(
+        isinstance(item, dict)
+        and item.get("route") == "policy"
+        and item.get("title") == expected_title
+        for item in (delivery.get("sent_titles") or [])
+    )
+    message_acked = any(
+        isinstance(item, dict)
+        and item.get("route") == "policy"
+        and isinstance(item.get("message_id"), int)
+        and not isinstance(item.get("message_id"), bool)
+        and item["message_id"] > 0
+        for item in (delivery.get("message_ids") or [])
+    )
+    if not (title_acked and message_acked):
+        print("domestic_stablecoin_seen_finalize=deferred other_lane_or_bundle")
+        return
+    included: set[str] = set()
+    for alert in surviving:
+        if not isinstance(alert, dict) or not alert.get("domestic_stablecoin_policy_watch"):
+            continue
+        fingerprint = str(alert.get("fingerprint") or "").strip()
+        if fingerprint:
+            included.add(fingerprint)
+        included.update(str(fp) for fp in (alert.get("source_fingerprints") or []) if fp)
+    pending = load_object(DOMESTIC_PENDING_PATH, {"seen": {}})
+    entries = pending.get("seen") if isinstance(pending.get("seen"), dict) else {}
+    confirmed = {key: value for key, value in entries.items() if key in included}
+    if not confirmed:
+        print(f"domestic_stablecoin_seen_finalize=deferred not_in_sent_bundle pending={len(entries)}")
+        return
+    state = load_object(DOMESTIC_STATE_PATH, {"seen": {}, "updated_at_kst": ""})
+    state.setdefault("seen", {}).update(confirmed)
+    state["updated_at_kst"] = str(delivery.get("confirmed_at_kst") or pending.get("created_at_kst") or "")
+    DOMESTIC_STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    DOMESTIC_STATE_PATH.write_text(
+        json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    print(f"domestic_stablecoin_seen_finalize=committed keys={len(confirmed)}")
+
+
 def main() -> int:
     delivery = load_object(DELIVERY_PATH, {})
+    finalize_confirmed_domestic_stablecoin(delivery)
     finalize_confirmed_outbound_alert(delivery)
     if not PENDING_PATH.exists():
         print("policy_seen_finalize=no_pending")
