@@ -1011,9 +1011,9 @@
       "first_seen_kst": "2026-11-18T06:02:40+09:00"
     }
   },
-  "updated_at_kst": "2026-11-18T06:02:40+09:00",
-  "last_scan_count": 11,
-  "last_new_count": 1,
+  "updated_at_kst": "2026-11-18T10:42:06+09:00",
+  "last_scan_count": 9,
+  "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -1073,21 +1073,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-17T20:58:52+09:00",
+  "last_successful_delivery_kst": "2026-11-18T10:42:19+09:00",
   "telegram_message_ids": [
-    492
+    503
   ],
-  "telegram_message_id": 492,
+  "telegram_message_id": 503,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      492
+      503
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-17T20:58:52+09:00",
-    "alert_signature": "5951885b15506cf5c74c150d28cc1db093e17c411221e723b1af6d0b9ac2ec35"
+    "confirmed_at_kst": "2026-11-18T10:42:19+09:00",
+    "alert_signature": "e530b04e24b67dd37b14ebcee2781dfcc82382dfd6f1b20ac0227020538fd4a0"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1406,5 +1406,21 @@
     "fact_key": "semia-accel-hbm-20261113-secondary-v1",
     "nvidia_details_id": "semia-nvidia-20261113-vendor-price-detail-v2",
     "capex_mix_id": "semia-20261117-capex-share-scenario-and-scope-v1"
+  },
+  "nand_2027_reversal_samr": {
+    "fact_key": "trendforce-20261117-nand-2q27-china-cssd-regulatory-context-v1",
+    "research_published": "2026-11-17",
+    "old_contract_price_fall_quarter": "2027-Q3",
+    "new_contract_price_fall_quarter": "2027-Q2",
+    "forecast_scope": "overall_nand_contract_not_enterprise_q4_2026",
+    "china_csp_cut_offsets_north_american_growth": true,
+    "china_csp_cancelled_signed_contracts_confirmed": false,
+    "publisher_source": "https://www.trendforce.com/research/download/RP261116WI",
+    "china_samr_decision_source": "https://www.samr.gov.cn/fldes/tzgg/ftj/art/2023/art_f03608bf1b8042b78705f412e3948588.html",
+    "china_samr_decision_effective": "2021-12-22",
+    "china_samr_review_earliest_date": "2026-12-22",
+    "china_samr_price_rule_scope": "China PCIe/SATA enterprise SSD, not NAND wafer spot",
+    "china_samr_restriction_revocation_status": "not_officially_confirmed",
+    "source_grade": "2026-11-17 TrendForce publisher public summary + 2021 SAMR original legal source"
   }
 }
