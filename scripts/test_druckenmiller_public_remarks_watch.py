@@ -112,7 +112,7 @@ class WatchTests(unittest.TestCase):
         for needle in ("2027년 하반기","구리","자본 보존","10월 28일",
                        "3.75~4.00%","CoinDesk","Barron's",
                        "13F 보유 신고","전체 영상은 별도 미열람"):
-            self.assertIn(needle,message)
+            self.assertIn(needle,html_unescape(message))
         self.assertLess(len(message),3800)
         self.assertEqual(len(watcher.SEED_PUBLISHERS),2)
     def test_dynamic_message(self):
@@ -123,7 +123,7 @@ class WatchTests(unittest.TestCase):
              "published":NOW.isoformat(),"url":"https://www.barrons.com/b"},
         ]
         msg=watcher.news_message([("copper_short",proof)])
-        self.assertIn("독립 출처",msg)
+        self.assertIn("독립 매체 2곳",msg)
         self.assertIn("매도 포지션",msg)
         self.assertIn("원문 발언 전문",msg)
         self.assertLess(len(msg),3600)
