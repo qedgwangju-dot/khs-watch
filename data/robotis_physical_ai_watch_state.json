@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-18T14:31:44.686134+00:00",
+  "updated_at": "2026-11-18T22:19:12.570303+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -970,23 +970,32 @@
     "ed4ffb54e9bff0a972073a3c22de4c8b9c3f3249e3adb5fd4611400a79295df9",
     "73875f5f579e8b394f4bce75cbb2125f9c30b8dd48269149dbeb620acc72837c",
     "cb6ab7d8da9791a779bf3fbe793b32c04442f529e8af715e7979789a6310ba71",
-    "e177996a7db6eeb1e5cadce37a49736941928ccd7fddfb462bc20ff3d5f0a07f"
+    "e177996a7db6eeb1e5cadce37a49736941928ccd7fddfb462bc20ff3d5f0a07f",
+    "a085f47699959f7fd13246f37aff5c6cbf2debdc758f34a907e18409df14993b",
+    "6f4869ebe1a47dc7bbd865f2e19efda97bd0e6f7516ad492b363a33998656f26",
+    "663ff8ecccdecd02827e416c9729a9784696451614e0136388d993e91f3bfef9",
+    "369cf2773360bf6065bc41cd363dc4dacffd0b4e91f5f6fa6b32f7cfe8580cdd",
+    "33051b434ee0778ddd6db6bc0d84144f2518bf00df80d32525611406244b9786",
+    "528ea0fb1db16fa1e3968ca3eb795d1f1166660da7e78f88520283e6ec8c3126",
+    "4d68bc58673beca5c19a4a86f618e593f913e7a6852091846a16bfe31fc79c39"
   ],
   "last_selected": [
-    "73875f5f579e8b394f4bce75cbb2125f9c30b8dd48269149dbeb620acc72837c",
-    "cb6ab7d8da9791a779bf3fbe793b32c04442f529e8af715e7979789a6310ba71",
-    "e177996a7db6eeb1e5cadce37a49736941928ccd7fddfb462bc20ff3d5f0a07f"
+    "a085f47699959f7fd13246f37aff5c6cbf2debdc758f34a907e18409df14993b",
+    "6f4869ebe1a47dc7bbd865f2e19efda97bd0e6f7516ad492b363a33998656f26",
+    "663ff8ecccdecd02827e416c9729a9784696451614e0136388d993e91f3bfef9",
+    "369cf2773360bf6065bc41cd363dc4dacffd0b4e91f5f6fa6b32f7cfe8580cdd",
+    "33051b434ee0778ddd6db6bc0d84144f2518bf00df80d32525611406244b9786",
+    "528ea0fb1db16fa1e3968ca3eb795d1f1166660da7e78f88520283e6ec8c3126",
+    "4d68bc58673beca5c19a4a86f618e593f913e7a6852091846a16bfe31fc79c39"
   ],
   "groups": [
     "ess_battery",
-    "hungary_battery_environment",
     "hyundai_atlas_rollout",
     "jpm_humanoid_component_outlook",
     "lg_factory_loop",
     "nov18_amd_worldlabs",
     "nov18_bd_gf",
     "nov18_everybot",
-    "nov18_foundation",
     "nov18_genesis",
     "nov18_hyundai_bd_ownership",
     "nov18_knr",
@@ -998,18 +1007,10 @@
     "nov18_tesla_germany",
     "robotis",
     "robotis_excess_demand",
-    "samhyun"
+    "samhyun",
+    "toyota_robot_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 43632172291,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-14T19:27:38.753663+00:00"
-    },
     {
       "run_id": 43642737658,
       "outcome": "normal_silence",
@@ -1311,55 +1312,125 @@
         false
       ],
       "state_timestamp_utc": "2026-11-18T14:31:44.686134+00:00"
+    },
+    {
+      "run_id": 44410240911,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "33051b434ee0778ddd6db6bc0d84144f2518bf00df80d32525611406244b9786",
+        "369cf2773360bf6065bc41cd363dc4dacffd0b4e91f5f6fa6b32f7cfe8580cdd",
+        "4d68bc58673beca5c19a4a86f618e593f913e7a6852091846a16bfe31fc79c39",
+        "528ea0fb1db16fa1e3968ca3eb795d1f1166660da7e78f88520283e6ec8c3126",
+        "663ff8ecccdecd02827e416c9729a9784696451614e0136388d993e91f3bfef9",
+        "6f4869ebe1a47dc7bbd865f2e19efda97bd0e6f7516ad492b363a33998656f26",
+        "a085f47699959f7fd13246f37aff5c6cbf2debdc758f34a907e18409df14993b"
+      ],
+      "message_ids": [
+        383,
+        384
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal",
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false,
+        false
+      ],
+      "state_timestamp_utc": "2026-11-18T22:19:12.570303+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44325014142,
+    "run_id": 44410240911,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "73875f5f579e8b394f4bce75cbb2125f9c30b8dd48269149dbeb620acc72837c",
-      "cb6ab7d8da9791a779bf3fbe793b32c04442f529e8af715e7979789a6310ba71",
-      "e177996a7db6eeb1e5cadce37a49736941928ccd7fddfb462bc20ff3d5f0a07f"
+      "33051b434ee0778ddd6db6bc0d84144f2518bf00df80d32525611406244b9786",
+      "369cf2773360bf6065bc41cd363dc4dacffd0b4e91f5f6fa6b32f7cfe8580cdd",
+      "4d68bc58673beca5c19a4a86f618e593f913e7a6852091846a16bfe31fc79c39",
+      "528ea0fb1db16fa1e3968ca3eb795d1f1166660da7e78f88520283e6ec8c3126",
+      "663ff8ecccdecd02827e416c9729a9784696451614e0136388d993e91f3bfef9",
+      "6f4869ebe1a47dc7bbd865f2e19efda97bd0e6f7516ad492b363a33998656f26",
+      "a085f47699959f7fd13246f37aff5c6cbf2debdc758f34a907e18409df14993b"
     ],
     "message_ids": [
-      382
+      383,
+      384
     ],
     "recipient_verified": true,
     "recipient_checks": [
+      "numeric_id_equal",
       "numeric_id_equal"
     ],
     "message_topic_present": [
+      false,
       false
     ],
-    "state_timestamp_utc": "2026-11-18T14:31:44.686134+00:00"
+    "state_timestamp_utc": "2026-11-18T22:19:12.570303+00:00"
   },
   "last_selected_events": [
     {
-      "key": "73875f5f579e8b394f4bce75cbb2125f9c30b8dd48269149dbeb620acc72837c",
+      "key": "a085f47699959f7fd13246f37aff5c6cbf2debdc758f34a907e18409df14993b",
       "group": "ess_battery",
-      "title": "삼성SDI, ‘RE+ 2026’서 AI 데이터센터용 배터리 공개…ESS·UPS·BBU 3개 존 - 팍스경제TV",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9GOTZOLVo0ZV9rMnlCenM1VTFzNzZKTVEtWmxhYnVWcHc1Y1REZVRCMWpIUG56NUloQ1hnUXNJXzZyckg5bWRTaC1VVjFHa1ZMQUN6M3oyV0ZleE4wX0lZd1J0TW1TRzQ?oc=5",
-      "source": "팍스경제TV",
-      "source_url": "http://www.paxetv.com",
-      "published": "2026-11-18T07:23:56+00:00"
-    },
-    {
-      "key": "cb6ab7d8da9791a779bf3fbe793b32c04442f529e8af715e7979789a6310ba71",
-      "group": "hyundai_atlas_rollout",
-      "title": "Hyundai Takes 100% Ownership of Boston Dynamics - Retail News Asia",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9QWmxLRlMyY2pWV25FeHBOOUdDN1hUZmxUYnpTVUJldDRSUlFpaUFkcXlxcW1Pb05YRFJSZGhXUzVacDV6NElZbHhLd3RUYy04cm1IdFpHQjM5TGpOWU13azBUTVQtd0V6c1BjWHpkVG56b3hKRXZXY0JB?oc=5",
-      "source": "Retail News Asia",
-      "source_url": null,
-      "published": "2026-11-18T07:30:34+00:00"
-    },
-    {
-      "key": "e177996a7db6eeb1e5cadce37a49736941928ccd7fddfb462bc20ff3d5f0a07f",
-      "group": "ess_battery",
-      "title": "삼성SDI \"ESS 물량, 2031년까지 확보\" - 머니투데이 - 머니투데이",
-      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5RMmU1ZTVoY3U0T3J5d2lzSEd2TWJYd25Nc3VURlVBWi1kcVl3cml5N21XanRtdlFxTzh4WF9KNldiZUNheTEzYWhOSGZIZXFITG5OQlVrcWhGa1dVS3VKNFVKMlpOM0xSMC1oVdIBckFVX3lxTE92SEFMZDRoTXJwN2RTWnJMS29kamNCRnVFci16a1lsYnhkbGxQc1l6bGJtUWY4cGpxeEptSDBENmF5VXNzcC1VcEVvVTg2THZRWFY4QTloenREUjFHLV96SUtWdFFtYWEyUl9SV2ZlRFNYdw?oc=5",
+      "title": "SK온 대만 1.2GWh ESS 수주전 뛰어든다…12월 입찰 - 머니투데이 - 머니투데이",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE50TW02WVNKQmtoQzcxdVE3MVNfNWRpLTBGUjYzZnVhMEFPNGNXUTJzUnUyT3NZNGswMWVWRDZrS01fRW1FTlNoRm9HMTRsTkdvSWwxUm5CWWRBdnVxUzN2UnVHSTNYOTY4TzNZdUxSQkNZQ0JOMVBuc0pB0gF_QVVfeXFMT1Y1UTFnakNJR2JKUG50N0djdG1sbkdqMmNtOHNsYnVGUE5EaHhrNXFKaEJsVW8yd1IySk9RRXV5cFdqUFVSOHoyekdmTC1OSkMwTXQtQkZCWUFhcE9aTTladUs2SUUtMFNoaUlOVVN3U2lndmROQnlPLWJwbXpfWQ?oc=5",
       "source": "머니투데이",
       "source_url": "https://www.mt.co.kr",
-      "published": "2026-11-17T18:53:10+00:00"
+      "published": "2026-11-18T20:50:00+00:00"
+    },
+    {
+      "key": "6f4869ebe1a47dc7bbd865f2e19efda97bd0e6f7516ad492b363a33998656f26",
+      "group": "hyundai_atlas_rollout",
+      "title": "현대차그룹, 보스턴다이내믹스 지분 100% 확보…아틀라스 양산 가속화 - 글로벌이코노믹",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBlSkhDaFFyTngtbXNITEExZERKYlN3cmpmaGtOekNlLTMwdWlUX0JvdlQ5RWQ0X0hSMEdpcEhJZUtxLUlnZlhlZGVUMmZXcGI5b1VxOFdVbXozZWwzWmpzenZ6dVQtZUFCenNtdXZYYw?oc=5",
+      "source": "글로벌이코노믹",
+      "source_url": "http://m.g-enews.com",
+      "published": "2026-11-17T20:18:37+00:00"
+    },
+    {
+      "key": "663ff8ecccdecd02827e416c9729a9784696451614e0136388d993e91f3bfef9",
+      "group": "hyundai_atlas_rollout",
+      "title": "Hyundai Motor Group Secures 100% Stake in Boston Dynamics... Speeds Up Robot Mass Production - 파이낸셜뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9WVWZSQmh0Z2dTOU1aRzJIMDBmN25PXzI4MkhlaXZXN3BPYzVQRzY0ZFJLMFZob1d4U3liRkVKWjhIRXFwS3BxejBic04zMGtJY3JSZmdnTkc?oc=5",
+      "source": "파이낸셜뉴스",
+      "source_url": null,
+      "published": "2026-11-16T23:05:38+00:00"
+    },
+    {
+      "key": "369cf2773360bf6065bc41cd363dc4dacffd0b4e91f5f6fa6b32f7cfe8580cdd",
+      "group": "hyundai_atlas_rollout",
+      "title": "Hyundai acquires full ownership of Boston Dynamics - Just Auto",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOaDM1WGtqTGZWYWVVZ3RJelFyYjNNZmZiLUlzLVJ2Y0xGUE10UFJMcHdzREZwX2JFWG84Q0RzYlZkVndNMVBaRzB6QTI1dlRRNWlMaW4wOTZiTnZTLXdabGFYWEM2YlRDOTBnZ0VSVGpabzlCaHVzNnEzb3k0QVdmMG96MTZqb09TVlE?oc=5",
+      "source": "Just Auto",
+      "source_url": null,
+      "published": "2026-11-18T08:54:39+00:00"
+    },
+    {
+      "key": "33051b434ee0778ddd6db6bc0d84144f2518bf00df80d32525611406244b9786",
+      "group": "ess_battery",
+      "title": "삼성SDI, ESS 배터리 또 잭팟…美 주피터파워와 수조원대 계약 - 서울경제",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9QSV9tSTNUdGFEZ2xYd0Q1cVBiVWxVWmd5ZnVWVTY1Q1BEMDZBNWtQQjN2QUtmUzEtZnNBenJNdnZBUm9nZzFKVW1yZ0lETmxUUlHSAVNBVV95cUxNTlRUNU1jaWNfenZiNFE4cVRsWjdvV0s1UmtMUHVOM1dISUcybXZzT3p0S1ZCbGRxSW51VThRdnNSZXdxZHN2WWlnRzlVdG11bW5xOA?oc=5",
+      "source": "서울경제",
+      "source_url": "https://www.sedaily.com",
+      "published": "2026-11-16T00:49:08+00:00"
+    },
+    {
+      "key": "528ea0fb1db16fa1e3968ca3eb795d1f1166660da7e78f88520283e6ec8c3126",
+      "group": "lg_factory_loop",
+      "title": "LG전자, 로봇산업진흥원과 휴머노이드 안전성 검증…클로이드 시범인증 추진 - 투데이e코노믹",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9uNmJlMXE5Z1FtRWdfbGdTVDdiOFZ4STdMdks2eVk1dDFoX2dwTWR1bW5yUnVEMUdZd0NnMEx5V2ZxVXgtRDRLazR0X2V6anVlTDFyYWlGUHV2ZGhyWTRDQlVpNkZZdnM?oc=5",
+      "source": "투데이e코노믹",
+      "source_url": "https://www.todayeconomic.com",
+      "published": "2026-11-16T08:16:49+00:00"
+    },
+    {
+      "key": "4d68bc58673beca5c19a4a86f618e593f913e7a6852091846a16bfe31fc79c39",
+      "group": "ess_battery",
+      "title": "삼성SDI, 美서 수조원 규모 LFP ESS 수주...\"경쟁력 입증\" - 지디넷코리아",
+      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBfbm5GY3VKWUZka2ZlRzdmZk5PXzdFSXNDUlM1bVkxNGdJQ1JVb21lX0tHaXNiYkFoSVBTb0Y0dDVBcWdoNFg5UWstbEFWSm44bkZKcWJn?oc=5",
+      "source": "지디넷코리아",
+      "source_url": "https://zdnet.co.kr",
+      "published": "2026-11-15T23:55:05+00:00"
     }
   ],
   "message_corrections": {
