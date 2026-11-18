@@ -386,7 +386,7 @@ class MaterialEventTests(unittest.TestCase):
         self.assertNotIn("달러(약 40,086원)", paired)
         segments = d.chunks(paired)
         self.assertTrue(segments)
-        self.assertLessEqual(len(segments), 3)
+        self.assertEqual(len(segments), 1)  # four complete topics + FX reference in one message
         self.assertTrue(all(len(part.encode("utf-16-le")) // 2 <= 3600
                             for part in segments))
         self.assertEqual(sum(part.count("근거 기사") for part in segments), 4)

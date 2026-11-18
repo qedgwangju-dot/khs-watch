@@ -451,7 +451,7 @@ def render(group: str, items: list[dict], checked_at: str) -> str:
     page = header
     for section in sections:
         candidate = page + "\n\n" + section
-        if len(candidate.encode("utf-16-le")) // 2 > 2600 and page != header:
+        if len(candidate.encode("utf-16-le")) // 2 > (3100 if group == "roadshow" else 2600) and page != header:
             pages.append(page)
             page = header + " · 계속\n\n" + section
         else:
