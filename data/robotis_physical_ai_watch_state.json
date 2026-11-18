@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-16T12:00:16.541673+00:00",
+  "updated_at": "2026-11-18T04:57:07.759936+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -943,39 +943,51 @@
     "97a6e31a218129c4139622a50124c18e671de9f929737d63b888a7beeb68b757",
     "6cfce30fa10d0f1ea8475144bfdc3a2d4fe27f50d3b5563a8b81c2b218a5c766",
     "1f3a67b1011a4495ebcca54a1a7dd2793e2ceb5630fa7e8c8eb6009a022f6b1c",
-    "61e7d1fb7fd206fe7af9b3d91809f38afb77356c94ee8e0c286fc872c2a031a7"
+    "61e7d1fb7fd206fe7af9b3d91809f38afb77356c94ee8e0c286fc872c2a031a7",
+    "732dfc880d05d37816f7548cbe2f28b9a292d1e571cd0d7ded178164c9612bb5",
+    "ac27b7e72d387fde3f20c9a4332f7999192808dc66a245ac736abb38090bcb7c",
+    "38ab3ce8c29cc5171a790c4b6016a011112441d35ed59515ef2d6c25afe2c4fd",
+    "566193e2d8c71c6d1c7634e27645bf45fb7f751a47903402f1dfe1154e3bb199",
+    "83d7fed4807294b0de7d1b2215798785f8ba441daa5fc420ad6c65bc092e0787",
+    "c6c881cd7ae6c453ad621e136e4e773450ac1e410bb7c7af08b263f3b5f59607",
+    "fb39a9d3a29637cf9e878072eeec1f5d35533c2fe74f28f48b19e90d337efaa7",
+    "5f91956e960702ee65d66ed2e3b99320fda48dc54446e1039fbbd928083ff4c0"
   ],
   "last_selected": [
-    "74b8af0633e381675eceda39d2b49eecea704846622d7dc2021c7de98fb923bb",
-    "8f644ea76e3242fe4ea4dc4a3e64cdad3c437f676a1d4633e0e7f3faae465154",
-    "dbb9fc997183fbd404b03ff3281d1f3b0db3277f77e8c8517f845e38befe815b",
-    "df5ed2e98d898262d3f40710a990b07027c78cc9f45f9d4ec7150e5bb2b6b1c8",
-    "97a6e31a218129c4139622a50124c18e671de9f929737d63b888a7beeb68b757",
-    "6cfce30fa10d0f1ea8475144bfdc3a2d4fe27f50d3b5563a8b81c2b218a5c766",
-    "1f3a67b1011a4495ebcca54a1a7dd2793e2ceb5630fa7e8c8eb6009a022f6b1c",
-    "61e7d1fb7fd206fe7af9b3d91809f38afb77356c94ee8e0c286fc872c2a031a7"
+    "732dfc880d05d37816f7548cbe2f28b9a292d1e571cd0d7ded178164c9612bb5",
+    "ac27b7e72d387fde3f20c9a4332f7999192808dc66a245ac736abb38090bcb7c",
+    "38ab3ce8c29cc5171a790c4b6016a011112441d35ed59515ef2d6c25afe2c4fd",
+    "566193e2d8c71c6d1c7634e27645bf45fb7f751a47903402f1dfe1154e3bb199",
+    "83d7fed4807294b0de7d1b2215798785f8ba441daa5fc420ad6c65bc092e0787",
+    "c6c881cd7ae6c453ad621e136e4e773450ac1e410bb7c7af08b263f3b5f59607",
+    "fb39a9d3a29637cf9e878072eeec1f5d35533c2fe74f28f48b19e90d337efaa7",
+    "5f91956e960702ee65d66ed2e3b99320fda48dc54446e1039fbbd928083ff4c0"
   ],
   "groups": [
-    "dkt_auto_oled_expansion",
     "ess_battery",
     "hungary_battery_environment",
+    "hyundai_atlas_rollout",
     "jpm_humanoid_component_outlook",
     "lg_factory_loop",
+    "nov18_amd_worldlabs",
+    "nov18_bd_gf",
+    "nov18_everybot",
+    "nov18_foundation",
+    "nov18_genesis",
+    "nov18_hyundai_bd_ownership",
+    "nov18_knr",
+    "nov18_lg_safety",
+    "nov18_openai_reorg",
+    "nov18_robotis",
+    "nov18_samhyun",
+    "nov18_samsung_humanoid",
+    "nov18_tesla_germany",
+    "robotis",
     "robotis_excess_demand",
     "samhyun",
-    "spacex_tesla_combination",
     "toyota_robot_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 43605040758,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-14T14:28:51.023373+00:00"
-    },
     {
       "run_id": 43607360330,
       "outcome": "sent",
@@ -1215,14 +1227,52 @@
         false
       ],
       "state_timestamp_utc": "2026-11-16T12:00:16.541673+00:00"
+    },
+    {
+      "run_id": 44240720425,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "38ab3ce8c29cc5171a790c4b6016a011112441d35ed59515ef2d6c25afe2c4fd",
+        "566193e2d8c71c6d1c7634e27645bf45fb7f751a47903402f1dfe1154e3bb199",
+        "5f91956e960702ee65d66ed2e3b99320fda48dc54446e1039fbbd928083ff4c0",
+        "732dfc880d05d37816f7548cbe2f28b9a292d1e571cd0d7ded178164c9612bb5",
+        "83d7fed4807294b0de7d1b2215798785f8ba441daa5fc420ad6c65bc092e0787",
+        "ac27b7e72d387fde3f20c9a4332f7999192808dc66a245ac736abb38090bcb7c",
+        "c6c881cd7ae6c453ad621e136e4e773450ac1e410bb7c7af08b263f3b5f59607",
+        "fb39a9d3a29637cf9e878072eeec1f5d35533c2fe74f28f48b19e90d337efaa7"
+      ],
+      "message_ids": [
+        376,
+        377
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal",
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false,
+        false
+      ],
+      "state_timestamp_utc": "2026-11-18T04:57:07.759936+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 43862615845,
+    "run_id": 44240720425,
     "outcome": "sent",
+    "confirmed_event_keys": [
+      "38ab3ce8c29cc5171a790c4b6016a011112441d35ed59515ef2d6c25afe2c4fd",
+      "566193e2d8c71c6d1c7634e27645bf45fb7f751a47903402f1dfe1154e3bb199",
+      "5f91956e960702ee65d66ed2e3b99320fda48dc54446e1039fbbd928083ff4c0",
+      "732dfc880d05d37816f7548cbe2f28b9a292d1e571cd0d7ded178164c9612bb5",
+      "83d7fed4807294b0de7d1b2215798785f8ba441daa5fc420ad6c65bc092e0787",
+      "ac27b7e72d387fde3f20c9a4332f7999192808dc66a245ac736abb38090bcb7c",
+      "c6c881cd7ae6c453ad621e136e4e773450ac1e410bb7c7af08b263f3b5f59607",
+      "fb39a9d3a29637cf9e878072eeec1f5d35533c2fe74f28f48b19e90d337efaa7"
+    ],
     "message_ids": [
-      374,
-      375
+      376,
+      377
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1233,6 +1283,80 @@
       false,
       false
     ],
-    "state_timestamp_utc": "2026-11-16T12:00:16.541673+00:00"
-  }
+    "state_timestamp_utc": "2026-11-18T04:57:07.759936+00:00"
+  },
+  "last_selected_events": [
+    {
+      "key": "732dfc880d05d37816f7548cbe2f28b9a292d1e571cd0d7ded178164c9612bb5",
+      "group": "robotis",
+      "title": "한화투자證 \"로보티즈, 3분기 적자전환 아쉽지만...내년 생산능력 2배 확대, 연간 흑자 기대\" - 이투데이",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1Yal81dnljbzRYaENwY3ZNQkdQRHFrV2g0VEU2RjdCTUJPQlNmRUFfdUtTOW1WamticmFQUzlJR1Q1Y0NMR042TGxyRkxlaXVOWVRwSQ?oc=5",
+      "source": "이투데이",
+      "source_url": "https://www.etoday.co.kr",
+      "published": "2026-11-17T23:10:00+00:00"
+    },
+    {
+      "key": "ac27b7e72d387fde3f20c9a4332f7999192808dc66a245ac736abb38090bcb7c",
+      "group": "ess_battery",
+      "title": "북미 ESS 시장 '뭉칫돈'…삼성SDI, 16GWh 공급 계약 - 데일리메이커",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1US2hKRGtzU2czaFFlSWRDYUFEWkJRS2RJSjl1Zkx0UDBpNXNDa0p2bmFGdjgyaXNfakhCc2tzaDJfM0U3M21LV2plLXBOTkh4Q1RvOEp0T2pfTEtrSVlwbmUwWGVHQQ?oc=5",
+      "source": "데일리메이커",
+      "source_url": "http://www.d-maker.kr",
+      "published": "2026-11-18T02:18:21+00:00"
+    },
+    {
+      "key": "38ab3ce8c29cc5171a790c4b6016a011112441d35ed59515ef2d6c25afe2c4fd",
+      "group": "nov18_everybot",
+      "title": "에브리봇 사업본부 출범·AGIBOT 골드파트너 보도…누적 순이익과 본업 이익 구분",
+      "link": "https://www.newspim.com/news/view/20261118000268",
+      "source": "뉴스핌·매일경제",
+      "source_url": null,
+      "published": "2026-11-18T00:00:00+09:00"
+    },
+    {
+      "key": "566193e2d8c71c6d1c7634e27645bf45fb7f751a47903402f1dfe1154e3bb199",
+      "group": "nov18_knr",
+      "title": "케이엔알시스템 슈퍼휴머노이드 하체 보행 성공…2톤 전신 통합은 12월 목표",
+      "link": "https://ekn.kr/web/view.php?key=20261118023561209",
+      "source": "에너지경제·뉴시스",
+      "source_url": null,
+      "published": "2026-11-18T00:00:00+09:00"
+    },
+    {
+      "key": "83d7fed4807294b0de7d1b2215798785f8ba441daa5fc420ad6c65bc092e0787",
+      "group": "nov18_bd_gf",
+      "title": "보스턴다이내믹스·GlobalFoundries, 4개 팹 Spot 확대·2027년 초 Atlas 시험 계획",
+      "link": "https://bostondynamics.com/news/boston-dynamics-globalfoundries-expand-robotics-collaboration/",
+      "source": "Boston Dynamics",
+      "source_url": null,
+      "published": "2026-11-17T00:00:00+09:00"
+    },
+    {
+      "key": "c6c881cd7ae6c453ad621e136e4e773450ac1e410bb7c7af08b263f3b5f59607",
+      "group": "nov18_genesis",
+      "title": "Genesis AI, 시리즈A 5억 달러 조달…삼성·NVIDIA·AMD 참여는 같은 투자 사건",
+      "link": "https://www.prnewswire.com/news-releases/genesis-ai-raises-500m-series-a-at-3-5b-valuation-to-master-human-level-dexterity-in-general-purpose-robots-and-deploy-at-scale-302941249.html",
+      "source": "Genesis AI 공식 발표·Forbes",
+      "source_url": null,
+      "published": "2026-11-17T00:00:00+09:00"
+    },
+    {
+      "key": "fb39a9d3a29637cf9e878072eeec1f5d35533c2fe74f28f48b19e90d337efaa7",
+      "group": "nov18_samsung_humanoid",
+      "title": "삼성 휴머노이드 CES 2027 HR·HE 보도 추가…손 구동 방식은 매체 간 상충",
+      "link": "https://www.hani.co.kr/arti/economy/marketing/1287815.html",
+      "source": "한겨레·뉴스웍스",
+      "source_url": null,
+      "published": "2026-11-17T00:00:00+09:00"
+    },
+    {
+      "key": "5f91956e960702ee65d66ed2e3b99320fda48dc54446e1039fbbd928083ff4c0",
+      "group": "nov18_samhyun",
+      "title": "삼현 북미 고객 양산 2027년 1분기→2026년 4분기 전망…매출 200억원은 한투 추정",
+      "link": "https://www4.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02276326645646704",
+      "source": "한국투자증권·이데일리",
+      "source_url": null,
+      "published": "2026-11-17T00:00:00+09:00"
+    }
+  ]
 }
