@@ -441,7 +441,11 @@ QUERIES = [
     ),
     (
         "hbm4e_validation",
-        'HBM4E (qualification OR validation OR sample OR mass production OR production) (Samsung OR "SK hynix" OR Micron)',
+        'HBM4E (qualification OR validation OR evaluation OR "positive feedback" OR sample OR mass production OR production) (Samsung OR "SK hynix" OR Micron)',
+    ),
+    (
+        "hbm4e_validation",
+        '삼성전자 HBM4E 고객 평가 주요 파트너 긍정적 피드백 인증 양산',
     ),
     (
         "hbm_hybrid_bonding",
@@ -607,7 +611,7 @@ def relevant(category: str, text: str) -> bool:
             and any(k in low for k in ("share", "market share", "progress", "pricing", "점유율", "진척", "가격"))
         )
     if category == "hbm4e_validation":
-        return "hbm4e" in low and any(k in low for k in ("samsung", "sk hynix", "sk하이닉스", "micron")) and any(k in low for k in ("qualification", "validation", "sample", "mass production", "production", "yield", "수율", "양산", "검증", "샘플"))
+        return "hbm4e" in low and any(k in low for k in ("samsung", "삼성전자", "sk hynix", "sk하이닉스", "micron")) and any(k in low for k in ("qualification", "validation", "evaluation", "evaluating", "assessment", "feedback", "sample", "mass production", "production", "yield", "수율", "양산", "검증", "평가", "피드백", "샘플"))
     if category == "hbm_hybrid_bonding":
         return (
             "hbm" in low
@@ -3197,6 +3201,26 @@ def render_hbm_hybrid_bonding_notice(e: dict, now: datetime) -> str:
     return "\n".join(line for line in lines if line).strip() + "\n"
 
 
+def hbm4e_positive_customer_feedback(text: str) -> bool:
+    """Detect early customer evaluation feedback, not a qualification milestone.
+
+    Require product, feedback/evaluation and positivity within one clause so
+    unrelated positive news or article sidebars cannot imply customer approval.
+    """
+    for clause in re.split(r"(?<!\\d)\\.(?!\\d)|[。；;\\n]+", text or ""):
+        low = clause.casefold()
+        if "hbm4e" not in low:
+            continue
+        if not any(v in low for v in ("evaluation", "evaluating", "assessment", "feedback", "평가", "피드백")):
+            continue
+        if not any(v in low for v in ("very positive", "positive feedback", "positive results", "positive initial", "긍정", "호평")):
+            continue
+        if any(v in low for v in ("not positive", "no positive", "negative feedback", "부정적", "긍정적이지 않")):
+            continue
+        return True
+    return False
+
+
 def make_fact(event: dict) -> dict | None:
     e = dict(event)
     text = compact_fact_text(e)
@@ -3318,11 +3342,26 @@ def make_fact(event: dict) -> dict | None:
         if not company:
             return None
 
-        if any(k in low for k in ("qualification completed", "qualified", "validation completed", "certification completed", "인증 완료", "검증 완료")):
+        qualification_done = any(k in low for k in ("qualification completed", "qualified", "validation completed", "certification completed", "인증 완료", "검증 완료"))
+        qualification_negated = any(k in low for k in (
+            "not yet qualified", "not qualified", "no qualification", "qualification not completed",
+            "qualification unconfirmed", "formal qualification not confirmed",
+            "인증 미완료", "검증 미완료", "인증 전", "검증 통과 미확인",
+        ))
+        if qualification_done and not qualification_negated:
             fact_key = f"{company}_hbm4e_customer_validation"
             headline = f"{company}, HBM4E 고객 검증 완료 신호"
             bullets.append("• 확인된 사실: 기사에서 HBM4E 고객 검증·인증 완료를 명시했습니다.")
             verdict = "🟢 가장 중요한 강세 조건 중 하나인 고객 인증 완료에 해당합니다. 실제 양산 개시일과 계약물량을 다음으로 확인해야 합니다."
+        elif hbm4e_positive_customer_feedback(text):
+            fact_key = f"{company}_hbm4e_customer_feedback_positive"
+            headline = f"{company}, HBM4E 고객 초기평가 긍정적 — 정식 인증·공급계약과 구분"
+            bullets.append("• 보도 단계: 고객·주요 파트너 평가가 진행 중이고 긍정적인 피드백이 전해졌습니다.")
+            if company == "삼성전자":
+                bullets.append("• 기존 기준: 삼성전자는 2026년 10월 29일 실적발표에서 이미 HBM4E 고객의 초기 긍정 평가를 밝혔습니다. 같은 표현의 재인용은 신규 인증·계약이 아닙니다.")
+            bullets.append("• 미확인: 상대 고객 실명, 정식 고객 인증 통과, 추가 계약 물량·단가, 신규 양산 매출.")
+            bullets.append("• 다음 확인: 고객사 또는 삼성전자 공식 인증·양산 발표, HBM4E 고객별 발주·출하·가동률.")
+            verdict = "고객 검증 단계의 긍정 신호입니다. 정식 인증 통과·양산·확정 매출로 승격하지 않습니다."
         elif any(k in low for k in ("yield", "수율")):
             ym = re.search(r"(?:yield|수율)[^%]{0,80}?([0-9]{1,3}(?:\.[0-9]+)?)\s*%", text, re.I)
             if not ym:
@@ -3535,6 +3574,12 @@ def make_fact(event: dict) -> dict | None:
 def fact_signature_from_raw(event: dict) -> str:
     text = f"{event.get('title','')} {event.get('description','')}".lower()
     cat = event.get("category") or ""
+    if cat == "hbm4e_validation" and hbm4e_positive_customer_feedback(text):
+        company = ("삼성전자" if ("samsung" in text or "삼성전자" in text)
+                   else "SK하이닉스" if ("sk hynix" in text or "sk하이닉스" in text)
+                   else "Micron" if "micron" in text else "")
+        if company:
+            return f"{company}_hbm4e_customer_feedback_positive"
     if "hbm4e" in text and "indiana" in text and "2029" in text and "sk hynix" in text:
         return "skhynix_indiana_hbm4e_2029"
     if (

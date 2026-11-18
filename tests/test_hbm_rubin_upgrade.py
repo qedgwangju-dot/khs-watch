@@ -109,6 +109,44 @@ class RubinHBMUpgradeTests(unittest.TestCase):
         self.assertIn("final", x["fact_key"])
         self.assertIn("8hi", x["fact_key"])
 
+    def test_hbm4e_positive_partner_evaluation_is_not_qualification(self):
+        text = ("Samsung's HBM4E chip is undergoing evaluation with a major partner, "
+                "with results described as very positive.")
+        e = self.base_event("hbm4e_validation", text)
+        self.assertTrue(r.relevant("hbm4e_validation", text))
+        self.assertTrue(r.hbm4e_positive_customer_feedback(text))
+        fact = r.make_fact(e)
+        self.assertIsNotNone(fact)
+        self.assertEqual(fact["fact_key"], "삼성전자_hbm4e_customer_feedback_positive")
+        self.assertIn("초기평가", fact["headline_ko"])
+        self.assertIn("인증", " ".join(fact["fact_bullets"]))
+        self.assertNotIn("검증 완료 신호", fact["headline_ko"])
+        self.assertEqual(r.fact_signature_from_raw(e), fact["fact_key"])
+
+    def test_hbm4e_positive_reposts_get_same_dedupe_key(self):
+        a = self.base_event("hbm4e_validation",
+                            "Samsung HBM4E customer evaluation very positive feedback")
+        b = self.base_event("hbm4e_validation",
+                            "Samsung Electronics HBM4E major partner positive feedback in evaluation")
+        self.assertEqual(r.make_fact(a)["fact_key"], r.make_fact(b)["fact_key"])
+        self.assertNotIn("2026-11-18", r.make_fact(a)["fact_key"])
+
+    def test_hbm4e_negative_qualifications_and_unrelated_optimism_not_upgraded(self):
+        bad = self.base_event("hbm4e_validation",
+                              "Samsung HBM4E not yet qualified, evaluation ongoing; positive shares")
+        f = r.make_fact(bad)
+        self.assertIsNone(f)
+        self.assertFalse(r.hbm4e_positive_customer_feedback(
+            "Samsung HBM4E evaluation negative feedback from partner"))
+        self.assertFalse(r.hbm4e_positive_customer_feedback(
+            "Samsung HBM4E evaluation not positive according to customer"))
+        self.assertFalse(r.hbm4e_positive_customer_feedback(
+            "Samsung HBM4E evaluation ongoing. Other chips show very positive feedback."))
+        qualified = self.base_event("hbm4e_validation",
+                                    "Samsung HBM4E customer qualification completed after testing")
+        self.assertEqual(r.make_fact(qualified)["fact_key"],
+                         "삼성전자_hbm4e_customer_validation")
+
     def test_hbm4e_yield_bottleneck_alerts(self):
         e = self.base_event("hbm4e_validation", "Samsung HBM4E low yield bottleneck at 62%")
         x = r.make_fact(e)
