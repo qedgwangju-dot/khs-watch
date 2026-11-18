@@ -111,8 +111,9 @@ class RateDirectionRegressionTest(unittest.TestCase):
             'date':'2026-11-17','close':54.63,'prev_date':'2026-11-16',
             'prev_close':57.65,'daily_pct':-5.24,
         }
-        with patch.object(watch,'chartexchange_crcl_daily',return_value=cx), \\
-             patch.object(watch,'yahoo_daily',return_value=yahoo):
+        with (patch.object(watch,'chartexchange_crcl_daily',return_value=cx),
+             patch.object(watch,'yahoo_daily',return_value=yahoo),
+        ):
             result = watch.verified_crcl_daily()
         self.assertEqual(result['close'],54.63)
         self.assertEqual(result['daily_pct'],-5.24)
@@ -121,12 +122,14 @@ class RateDirectionRegressionTest(unittest.TestCase):
 
     def test_closing_price_date_mismatch_or_large_gap_does_not_claim_confirmed(self):
         cx = {'date':'2026-11-17','close':54.62,'daily_pct':-5.26}
-        with patch.object(watch,'chartexchange_crcl_daily',return_value=cx), \\
-             patch.object(watch,'yahoo_daily',return_value={'date':'2026-11-16','close':57.65}):
+        with (patch.object(watch,'chartexchange_crcl_daily',return_value=cx),
+             patch.object(watch,'yahoo_daily',return_value={'date':'2026-11-16','close':57.65}),
+        ):
             with self.assertRaisesRegex(RuntimeError,'date mismatch'):
                 watch.verified_crcl_daily()
-        with patch.object(watch,'chartexchange_crcl_daily',return_value=cx), \\
-             patch.object(watch,'yahoo_daily',return_value={'date':'2026-11-17','close':56.62}):
+        with (patch.object(watch,'chartexchange_crcl_daily',return_value=cx),
+             patch.object(watch,'yahoo_daily',return_value={'date':'2026-11-17','close':56.62}),
+        ):
             with self.assertRaisesRegex(RuntimeError,'discrepancy'):
                 watch.verified_crcl_daily()
 
