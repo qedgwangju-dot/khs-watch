@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """No-network tests: source identity, timeline, news gate, format and dedup."""
 from datetime import datetime,timezone,timedelta
+from html import escape as xml_escape
 from unittest.mock import patch
 import io
 import json
@@ -11,8 +12,8 @@ NOW=datetime(2026,11,18,5,0,tzinfo=timezone.utc)
 
 
 def item(title,desc,publisher,date="Tue, 17 Nov 2026 19:20:00 GMT",link="https://example.com/article"):
-    return f"""<item><title>{title}</title><description>{desc}</description>
-    <link>{link}</link><pubDate>{date}</pubDate><source>{publisher}</source></item>"""
+    return f"""<item><title>{xml_escape(title)}</title><description>{xml_escape(desc)}</description>
+    <link>{xml_escape(link)}</link><pubDate>{date}</pubDate><source>{xml_escape(publisher)}</source></item>"""
 
 
 def rss(*items):
@@ -102,7 +103,7 @@ class WatchTests(unittest.TestCase):
         message=watcher.seed_message()
         for needle in ("2027년 하반기","구리","자본 보존","10월 28일",
                        "3.75~4.00%","CoinDesk","Barron's",
-                       "분기 13F","전체 영상은 별도 미열람"):
+                       "13F 보유 신고","전체 영상은 별도 미열람"):
             self.assertIn(needle,message)
         self.assertLess(len(message),3800)
         self.assertEqual(len(watcher.SEED_PUBLISHERS),2)
