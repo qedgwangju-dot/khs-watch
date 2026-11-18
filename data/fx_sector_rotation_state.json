@@ -4,16 +4,20 @@
     {
       "ts": "2026-11-18T09:57:36+09:00",
       "value": 1331.2
+    },
+    {
+      "ts": "2026-11-18T12:50:16+09:00",
+      "value": 1330.0
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-11-18T09:57:36+09:00",
+    "checked_at": "2026-11-18T12:50:16+09:00",
     "market_phase": "정규장",
     "fx": {
-      "value": 1331.2,
+      "value": 1330.0,
       "prev_close": 1338.2,
       "naver_prev_close": 1335.5,
       "date": "2026-11-18",
@@ -23,37 +27,37 @@
       "basis_error": null,
       "basis_reused": false
     },
-    "session_low": 1331.2,
+    "session_low": 1330.0,
     "rebound_krw": 0.0,
     "rebound_pct": 0.0,
-    "daily_krw": -7.0,
-    "daily_pct": -0.5230907188761069,
-    "kospi_pct": 2.92,
+    "daily_krw": -8.200000000000045,
+    "daily_pct": -0.6127634135405846,
+    "kospi_pct": 0.84,
     "ship": {
-      "avg": -0.515,
+      "avg": -1.46,
       "positive": 0,
-      "relative": -3.435,
+      "relative": -2.3,
       "valid": 4,
       "confirmed": false
     },
     "defense": {
-      "avg": 1.3675,
-      "positive": 4,
-      "relative": -1.5525,
+      "avg": 1.0975000000000001,
+      "positive": 3,
+      "relative": 0.2575000000000002,
       "valid": 4,
       "confirmed": false
     },
     "auto": {
-      "avg": 1.0875,
-      "positive": 3,
-      "relative": -1.8325,
+      "avg": -6.938893903907228e-18,
+      "positive": 2,
+      "relative": -0.84,
       "valid": 4,
       "confirmed": false
     },
     "counter": {
-      "avg": -0.895,
-      "positive": 1,
-      "relative": -3.815,
+      "avg": -1.0225,
+      "positive": 2,
+      "relative": -1.8624999999999998,
       "valid": 4,
       "confirmed": false
     }
