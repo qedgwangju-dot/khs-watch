@@ -430,6 +430,7 @@ QUERIES = [
     ("en", 'CXMT 4F2 4F squared DRAM DDR5 RDIMM commercial production customer validation'),
     ("en", 'CXMT DRAM monthly wafers capacity 2027 320000 420000 trendforce'),
     ("en", 'TrendForce notebook shipments 2027 CPU DRAM SSD prices replacement cycle outlook'),
+    ("ko", 'SK하이닉스 솔리다임 중국 SAMR 기업용 SSD 가격 제한 조건 해제 신청 승인 불승인 2026'),
     ("ko", 'DRAM 현물 가격 공급 부족 BofA OR 뱅크오브아메리카'),
     ("ko", 'NAND 현물 가격 공급 부족 TrendForce OR 트렌드포스'),
     ("ko", 'TrendForce 4Q26 메모리 가격 전망 Enterprise SSD QLC KV 캐시 23 28 NAND 15 20'),
@@ -5174,6 +5175,184 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
 
 
 
+
+# China NAND / SK hynix–Solidigm competition remedy, November 2026.
+# Separate verified TrendForce forecast from the 2021 merger condition and
+# never equate the China PCIe/SATA enterprise SSD cap with wafer spot prices.
+NAND_2Q27_REVISION_ID = "trendforce-20261117-nand-2q27-china-cssd-regulatory-context-v1"
+NAND_2Q27_REPORT_URLS = (
+    "https://www.trendforce.com/research/download/RP261116WI",
+    "https://www.trendforce.com/research/category/Semiconductors/NAND%20Flash?page=1",
+    "https://www.trendforce.com.tw/research/download/RP261116KS",
+)
+NAND_2Q27_REPORT = NAND_2Q27_REPORT_URLS[0]
+NAND_2Q27_NEWS = (
+    "https://www.trendforce.com/news/2026/11/17/"
+    "news-nand-spot-prices-reverse-course-sliding-20-in-2-weeks-amid-weak-consumer-demand-ymtc-competition/"
+)
+NAND_Q4_26_ESSD_REPORT = "https://www.trendforce.com/research/download/RP261030MH"
+NAND_SAMR_2021_DECISION = (
+    "https://www.samr.gov.cn/fldes/tzgg/ftj/art/2023/"
+    "art_f03608bf1b8042b78705f412e3948588.html"
+)
+NAND_SK_KRX_RISK = (
+    "https://kind.krx.co.kr/external/2026/06/24/"
+    "001006/20260624002216/10001.htm"
+)
+
+
+def _nand_reversal_primary_words(raw: str) -> bool:
+    """True only for the 2026-11-17 issuer forecast, not a new article index."""
+    s = _clean(raw).lower()
+    en = all(key in s for key in (
+        "enterprise ssd", "2q27", "chinese csp", "north american",
+    )) and any(key in s for key in (
+        "fully offset", "offset north american", "offset the extra demand",
+    ))
+    zh = all(key in s for key in (
+        "enterprise ssd", "北美", "中系",
+    )) and any(key in s for key in (
+        "2027年第二季", "2027年第二季度", "2q27",
+    )) and any(key in s for key in ("抵銷", "抵销", "砍單", "砍单"))
+    return bool(en or zh)
+
+
+def _nand_short_original(url: str) -> str:
+    """Bounded direct original-source access, not a scraped or user quote."""
+    host = (urllib.parse.urlparse(url).hostname or "").lower()
+    if host not in (
+        "www.trendforce.com", "www.trendforce.com.tw",
+        "www.trendforce.cn",
+    ):
+        raise ValueError("NAND model source must be an allowed publisher domain")
+    request = urllib.request.Request(url, headers={
+        "User-Agent": "Mozilla/5.0",
+        "Accept": "text/html,application/xhtml+xml",
+    })
+    with urllib.request.urlopen(request, timeout=11) as response:
+        return response.read(1500000).decode("utf-8", errors="replace")
+
+
+def _nand_live_publisher_report() -> str:
+    """Return an original publisher URL only after confirming the specific delta."""
+    for url in NAND_2Q27_REPORT_URLS:
+        try:
+            if _nand_reversal_primary_words(_nand_short_original(url)):
+                return url
+        except Exception as exc:
+            print(f"nand_trendforce_source_check_unavailable={type(exc).__name__}")
+    return ""
+
+
+def _nand_china_reversal_text(publisher_url: str) -> str:
+    """Source-graded market revision, legal commitments, and unverified causal link."""
+    lines = [
+        "<b>[NAND 2027 가격 반전 조기화·중국 SSD 규제 선행경보]</b>",
+        "<b>■ 11월 17일 TrendForce 신규 전망 — 확정 발주 취소·현재 계약가격 아님</b>",
+        "• 전체 NAND 계약가격 하락 시작: 기존 <b>2027년 3분기 예상"
+        " → 신규 2027년 2분기 예상</b>(1개 분기 앞당김)."
+        " 2027년 하반기 하락폭 확대 가능성.",
+        "• 중국 클라우드사업자(CSP)의 2027년 기업용 SSD 구매계획이 GPU 확보 부족·"
+        "재고 과다·AI 수익화 지연으로 대폭 축소되어, 북미 CSP의 추가 수요를"
+        " 상쇄한다는 TrendForce 분석. 고객별 확정 취소 계약 수량은 미공개.",
+        "• 공급: YMTC는 확장 계획을 소폭 낮췄으나 다른 제조사는 공정 전환·"
+        "QLC(셀당 4비트) 채택을 늘려, 신규 비트 공급 증가율이 수요 증가율을 초과할 수 있음.",
+        "• 상품·기간 구분: 2026년 4분기 기업용 SSD 계약가 <b>전분기 대비 +15~20%</b>는"
+        " 10월 30일 당시 전망; 새 2027년 2분기 하락 전망은 <b>전체 NAND</b> 기준.",
+        "• 단기 현물: 11월 17일 TrendForce 뉴스는 범용 NAND 현물이 2주 약 20%"
+        " 하락했다고 보도. 이는 제품별·기간별 변화로 NAND 전 제품 동일 하락률 아님.",
+        "",
+        "<b>■ 중국 SAMR 기업결합 조건 — 세계 낸드 현물가격 제한과 다름</b>",
+        "• SAMR 2021년 12월 22일 승인: 중국 내 <b>PCIe/SATA 기업용 SSD</b>"
+        " 거래조건이 동등할 때 발효 전 24개월 평균가격을 넘지 못하게 제한.",
+        "• 6가지 약속: 중국 판매가격 제한, 발효 후 5년 생산 확대,"
+        " 중국시장 지속 공급, 배타구매·끼워팔기 금지, 제3 경쟁자 시장진입 지원,"
+        " 경쟁사 간 가격·생산량·판매량 담합 금지.",
+        "• 2026년 12월 22일경 이후 <b>해제 신청 가능</b>. 자동 소멸 아님;"
+        " 중국 당국이 승인해야 해제. 해제 신청·승인·불승인·연장 여부는"
+        " 각각 공식 문서로 확인하기 전까지 미확정.",
+        "• SK하이닉스는 2026년 6월 거래소 공시에서 중국 판매가격 인상 제한,"
+        " 면제 불승인·추가조건의 사업 위험을 기재.",
+        "• <b>인과 판단</b>: 중국 기업용 SSD 가격·생산·공급 규제가"
+        " 범용 NAND 웨이퍼 현물가 20% 급락을 직접 유발했다는 증거는 없음."
+        " 규제 관련 중국 고객 믹스·수익성은 별도 추적.",
+        "• 제3 경쟁자 지원 대상이 YMTC로 공식 특정된 것은 아님.",
+        "",
+        "<b>■ 다음 확인 지표</b>",
+        "• 중국/북미 기업용 SSD 실제 주문량·재고·GPU 공급·용량당 ASP·"
+        " 전체 NAND 계약가격 2027년 1~3분기 수정.",
+        "• 중국 SAMR 해제 신청·실제 결정 문서, SK하이닉스/솔리다임 공시,"
+        " 다롄 낸드 생산·판매 방향, 한국 업체의 중국 매출·이익률.",
+        f'• <a href="{html.escape(publisher_url, quote=True)}">TrendForce 11/17 원문 연구 요약</a>'
+        f' · <a href="{NAND_Q4_26_ESSD_REPORT}">TrendForce 10/30 기업용 SSD 전망</a>',
+        f'• <a href="{NAND_SAMR_2021_DECISION}">중국 SAMR 승인 결정문</a>'
+        f' · <a href="{NAND_SK_KRX_RISK}">SK하이닉스 거래소 공시 위험요인</a>',
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def _stage_nand_verified_reversal(source_errors: list[str],
+                                  now: dt.datetime | None = None) -> bool:
+    """ACK-only delivery event. Source issues never advance other memory axes."""
+    now = now or dt.datetime.now(KST)
+    if not dt.date(2026, 11, 17) <= now.date() <= dt.date(2026, 12, 20):
+        return False
+    prior = load_state()
+    existing = dict(prior.get("nand_2027_reversal_samr") or {})
+    if existing.get("fact_key") == NAND_2Q27_REVISION_ID:
+        return False
+    original = _nand_live_publisher_report()
+    if not original:
+        print("nand_2q27_publisher_source_unverified=true; release_held")
+        return False
+    text = _nand_china_reversal_text(original)
+    required = (
+        "<b>[NAND 2027 가격 반전 조기화·중국 SSD 규제 선행경보]</b>",
+        "2027년 2분기", "2027년 3분기", "PCIe/SATA", "2026년 12월", "자동 소멸 아님",
+    )
+    if any(item not in text for item in required):
+        raise RuntimeError("NAND revised-forecast/legal-stage output validation failed")
+    # When RSS is incomplete, do not silently mark ANY scraped story as seen.
+    if source_errors:
+        pending = dict(prior)
+        prior_alert = ""
+    else:
+        pending = json.loads(PENDING_PATH.read_text(encoding="utf-8")) if PENDING_PATH.exists() else dict(prior)
+        prior_alert = ALERT_PATH.read_text(encoding="utf-8").strip() if ALERT_PATH.exists() else ""
+    record = {
+        "fact_key": NAND_2Q27_REVISION_ID,
+        "research_published": "2026-11-17",
+        "old_contract_price_fall_quarter": "2027-Q3",
+        "new_contract_price_fall_quarter": "2027-Q2",
+        "forecast_scope": "overall_nand_contract_not_enterprise_q4_2026",
+        "china_csp_cut_offsets_north_american_growth": True,
+        "china_csp_cancelled_signed_contracts_confirmed": False,
+        "publisher_source": original,
+        "china_samr_decision_source": NAND_SAMR_2021_DECISION,
+        "china_samr_decision_effective": "2021-12-22",
+        "china_samr_review_earliest_date": "2026-12-22",
+        "china_samr_price_rule_scope": "China PCIe/SATA enterprise SSD, not NAND wafer spot",
+        "china_samr_restriction_revocation_status": "not_officially_confirmed",
+        "source_grade": "2026-11-17 TrendForce publisher public summary + 2021 SAMR original legal source",
+    }
+    pending["nand_2027_reversal_samr"] = record
+    pending["updated_at_kst"] = now.isoformat(timespec="seconds")
+    if source_errors:
+        pending["rss_outage_note"] = "Other source failures; unrelated RSS candidates not acknowledged"
+    PENDING_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PENDING_PATH.write_text(
+        json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    ALERT_PATH.write_text(
+        (prior_alert + "\n<<<TELEGRAM_MESSAGE_BREAK>>>\n" if prior_alert else "") + text,
+        encoding="utf-8",
+    )
+    if STATUS_PATH.exists():
+        with STATUS_PATH.open("a", encoding="utf-8") as f:
+            f.write("- TrendForce 2027-Q3→Q2 NAND 가격 전망 새 하향 경보: 발송 대기\n")
+    return True
+
+
 def _semia_independent_chart_fallback(errors: list[str],
                                       now: dt.datetime | None = None) -> bool:
     """Send only the already-user-supplied scenario when unrelated RSS is 429.
@@ -5231,6 +5410,7 @@ def main() -> int:
     items, errors = collect()
     foxconn, price, warnings = _collect_supplier_followups(dt.datetime.now(KST), load_state())
     write_outputs(items, errors, foxconn, price, warnings)
+    verified_nand_alert = _stage_nand_verified_reversal(errors)
     # A pending semantic key must never be checkpointed unless its exact alert
     # section exists. In particular no-alert state saves must not acknowledge
     # an unsent analyst model detail or future publisher-stage upgrade.
@@ -5250,6 +5430,11 @@ def main() -> int:
             if any(section not in body for section in required):
                 raise RuntimeError("Semia event key staged without its matching Telegram alert; state save blocked")
     if errors:
+        if verified_nand_alert:
+            # Verified, independent official report; no unrelated RSS state promoted.
+            currency_krw_guard.enforce_file(ALERT_PATH)
+            print(f"nand_primary_only_alert=true incomplete_rss_sources={len(errors)}")
+            return 0
         if _semia_independent_chart_fallback(errors):
             # Old RSS and all typed-price baselines remain untouched; only
             # a source-independent event can be acknowledged after sendMessage.

@@ -1363,6 +1363,72 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertTrue(w.CHINA_DRAM_CYCLE_BASELINE["cxmt_lpddr6_xiaomi_18fold_official_mass_production"])
 
 
+
+    def test_nand_reversal_primary_requires_new_quarter_and_offset(self):
+        ok = ("Enterprise SSD Cuts Pull NAND Price Drop to 2Q27 "
+              "Chinese CSPs cut orders and fully offset North American CSP demand. "
+              "The decline starts in 2Q27.")
+        self.assertTrue(w._nand_reversal_primary_words(ok))
+        self.assertFalse(w._nand_reversal_primary_words(
+            ok.replace("2Q27", "3Q27")))
+        self.assertFalse(w._nand_reversal_primary_words(
+            "Consumer NAND prices could decline as YMTC supplies more memory"))
+
+    def test_nand_china_price_cap_is_not_global_wafer_spot_cap(self):
+        notice = w._nand_china_reversal_text(w.NAND_2Q27_REPORT)
+        for expected in (
+            "2027년 3분기", "2027년 2분기", "SAMR",
+            "PCIe/SATA", "거래조건이 동등할 때", "자동 소멸 아님",
+            "미확정", "직접 유발했다는 증거는 없음", "공식 특정된 것은 아님",
+        ):
+            self.assertIn(expected, notice)
+        self.assertEqual(notice.count("<b>"), notice.count("</b>"))
+        self.assertEqual(notice.count("<a href="), notice.count("</a>"))
+
+    def test_nand_verified_primary_stages_only_independent_event_on_rss_failure(self):
+        import json
+        import datetime as dt
+        original = {
+            "initialized": True,
+            "seen": {"old_unique_news": {"title": "previous"}},
+            "nand_divergence": {"enterprise_direction": "up"},
+            "delivery_receipt": {"status": "confirmed", "recipient_verified": True, "message_ids": [474]},
+        }
+        with tempfile.TemporaryDirectory() as td, \
+             patch.object(w, "load_state", return_value=original), \
+             patch.object(w, "_nand_live_publisher_report", return_value=w.NAND_2Q27_REPORT), \
+             patch.object(w, "PENDING_PATH", pathlib.Path(td) / "pending.json"), \
+             patch.object(w, "ALERT_PATH", pathlib.Path(td) / "alert.txt"), \
+             patch.object(w, "STATUS_PATH", pathlib.Path(td) / "status.md"):
+            now = dt.datetime(2026, 11, 18, 10, 30, tzinfo=w.KST)
+            self.assertTrue(w._stage_nand_verified_reversal(["en:RSS 429"], now))
+            pending = json.loads(w.PENDING_PATH.read_text(encoding="utf-8"))
+            self.assertEqual(pending["seen"], original["seen"])
+            self.assertEqual(pending["nand_divergence"], original["nand_divergence"])
+            self.assertEqual(pending["delivery_receipt"], original["delivery_receipt"])
+            self.assertEqual(pending["nand_2027_reversal_samr"]["new_contract_price_fall_quarter"], "2027-Q2")
+            self.assertFalse(pending["nand_2027_reversal_samr"]["china_csp_cancelled_signed_contracts_confirmed"])
+            self.assertIn("2027년 2분기", w.ALERT_PATH.read_text(encoding="utf-8"))
+
+    def test_nand_reversal_refuses_unverified_publisher_and_duplicate(self):
+        import datetime as dt
+        state = {"nand_2027_reversal_samr": {"fact_key": w.NAND_2Q27_REVISION_ID}}
+        now = dt.datetime(2026, 11, 18, tzinfo=w.KST)
+        with patch.object(w, "load_state", return_value=state), \
+             patch.object(w, "_nand_live_publisher_report") as original:
+            self.assertFalse(w._stage_nand_verified_reversal([], now))
+            original.assert_not_called()
+        with tempfile.TemporaryDirectory() as td, \
+             patch.object(w, "load_state", return_value={}), \
+             patch.object(w, "_nand_live_publisher_report", return_value=""), \
+             patch.object(w, "PENDING_PATH", pathlib.Path(td) / "pending.json"), \
+             patch.object(w, "ALERT_PATH", pathlib.Path(td) / "alert.txt"), \
+             patch.object(w, "STATUS_PATH", pathlib.Path(td) / "status.md"):
+            self.assertFalse(w._stage_nand_verified_reversal([], now))
+            self.assertFalse(w.ALERT_PATH.exists())
+            self.assertFalse(w.PENDING_PATH.exists())
+
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
