@@ -538,6 +538,15 @@
       "checked_at_kst": "2026-11-18T12:36:12+09:00",
       "fingerprint": "6db7995028fafea25e61a524d67a0796f51ff36a98fa2f0d738abef6f62f16d1",
       "outcome": "no_send"
+    },
+    "44231338253:1": {
+      "checked_at_kst": "2026-11-18T12:47:54+09:00",
+      "completed": "2026-11-18T03:36:13+00:00",
+      "fingerprint": "4dfcd6fc9e68c3480ce3d0e01ff2bedb9491f9a0124a519cd894727c43e89dfd",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-18T03:36:13+00:00"
     }
   },
   "recovery_holds": {},
