@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "repository": "qedgwangju-dot/khs-watch",
+  "expected_bot": "khs8879008879000088790000_bot",
+  "batches": [
+    {
+      "batch_id": "robot-message-correction-20261118-44240720425-v1",
+      "source_run_id": 44240720425,
+      "artifact_id": 14400120234,
+      "artifact_digest": "sha256:5d1c7e8a7724dc7816fe1917dd6ab73cdeafa6649bfac36f251e9b9a8dad03a4",
+      "route_fingerprint": "14816dc9bc6c054e9fdfc5d6ce0871dffed039dc5e8e27016b34273acffdf94e",
+      "message_ids": [
+        376,
+        377
+      ],
+      "original_alert_sha256": "7625bb06c8d14d58e0b51dd1cb3c03f8694ca26cce373e79c50f5175aab256da",
+      "original_pending_sha256": "ecc1be6ec4936dbabbbca70d50f185b7f244d6b812baf5d443edd1622c94be1a",
+      "original_receipts_sha256": "4130c534681edb2fb76f286ce9d4eaededdd28e6ed15d68e7427704f7ec76efc",
+      "original_chunk_sha256": [
+        "9ac4e11346caf8387f7923d1926cf24b2938bd48c88c2d25b1d170e992d2cceb",
+        "ea655a9651b8b4d75b3b5ad75f6dc17ec87cead993798536049d24c91ce4a3e0"
+      ],
+      "removed_event_keys": [
+        "ac27b7e72d387fde3f20c9a4332f7999192808dc66a245ac736abb38090bcb7c"
+      ],
+      "article_changes": {
+        "732dfc880d05d37816f7548cbe2f28b9a292d1e571cd0d7ded178164c9612bb5": "replace_article",
+        "83d7fed4807294b0de7d1b2215798785f8ba441daa5fc420ad6c65bc092e0787": "title_only"
+      },
+      "corrected_text": "✏️ <b>정정</b> 로보티즈 요약을 한화투자증권 기사에 맞추고, 보스턴다이내믹스 협력 제목을 복구했습니다. 삼성SDI 동일 계약 중복 1건을 제외했습니다.\n\n🚨 <b>피지컬AI·로봇 공급망 구조 변화 감지</b>\n<b>확인 사건 7건</b>\n━━━━━━━━━━━━━━━━━━\n\n<b>1. 로봇 후속 확인 로보티즈, 2027년 생산능력 100만개·매출 1,125억원·영업이익 147억원은 한화투자증권 전망</b>\n<b>분류</b>  로보티즈 · 한화투자증권 실적 검토·2027년 증설 전망\n<b>출처</b>  이투데이·뉴스핌 · 2026-11-18 · <a href=\"https://www.etoday.co.kr/news/view/2649520\"><b>원문</b></a>\n<b>확인</b>  한화투자증권 공식 목록에서 11월 18일 김성래 보고서·3분기 135억원/영업손실 26억원 확인; 두 매체 본문 대조·보고서 PDF 전문 미확인\n\n💡 <b>핵심</b>  한화는 2026년 3분기 매출 135억원이 자체 추정 133억원에 부합하나 시장 예상 153억원을 밑돌고 영업손실 26억원을 기록했다고 설명했습니다. 모터 수급 차질·저가형 제품 구성·원자재 가격과 성과급 부담을 지적했고 경상연구개발비는 42억원입니다. 1~3분기 누적 출하 약 33만개와 2026년 목표 45만개를 제시했습니다. 2027년 국내 연 50만개·우즈베키스탄 연 50만개를 합친 100만개 생산능력 확대와 매출 1,125억원·영업이익 147억원 흑자전환은 한화의 전망입니다. 한국투자증권의 별도 공장 일정·평균판매단가 추정과 구분합니다.\n⚠️ <b>체크</b>  증설 능력과 실제 출하·매출은 다릅니다. 공장 가동·모터 조달·원가·제품 구성에 따라 전망이 달라질 수 있으며 흑자전환은 확정 실적이 아닙니다.\n\n──────────────────\n\n<b>2. 로봇 후속 확인 에브리봇 사업본부 출범·AGIBOT 골드파트너 보도…누적 순이익과 본업 이익 구분</b>\n<b>분류</b>  에브리봇·AGIBOT 피지컬AI · 11월 확인 사건\n<b>출처</b>  뉴스핌·매일경제 · 2026-11-18 KST · <a href=\"https://www.newspim.com/news/view/20261118000268\"><b>원문</b></a>\n<b>확인</b>  보도 확인일 2026-11-18·보도일 2026-11-18; 매일경제 실적 기사 직접 확인; 11월 18일 뉴스핌 검색색인·회사 발표 인용 보도, 해당 회사 원문 추가 확인 필요\n\n💡 <b>핵심</b>  11월 17일 연내 개편 추진 보도에서 18일 피지컬AI사업본부 출범·AGIBOT 한국 골드파트너 선정 보도로 진전했습니다. 기존 DDT 사족보행 로봇 협력에서 휴머노이드로 협력 범위를 넓힌다는 내용입니다. 2026년 1~3분기 누적 연결 순이익 52억원은 본업 영업흑자 확인과 다릅니다. 2027년 산업·서비스 로봇 확대는 회사 계획이며 고객 계약·공급 물량은 별도 확인이 필요합니다.\n⚠️ <b>체크</b>  파트너 선정과 실제 고객 수주·반복 매출은 다릅니다. 누적 순이익만으로 영업이익·현금흐름 개선을 단정하지 않습니다.\n\n──────────────────\n\n<b>3. 로봇 후속 확인 케이엔알시스템 슈퍼휴머노이드 하체 보행 성공…2톤 전신 통합은 12월 목표</b>\n<b>분류</b>  케이엔알시스템 슈퍼휴머노이드 · 11월 확인 사건\n<b>출처</b>  에너지경제·뉴시스 · 2026-11-18 KST · <a href=\"https://ekn.kr/web/view.php?key=20261118023561209\"><b>원문</b></a>\n<b>확인</b>  발표일 2026-11-18·보도일 2026-11-18; 에너지경제 직접 본문·뉴시스 별도 기사 대조; 회사 발표 인용, 당일 공식 시험자료 추가 확인 필요\n\n💡 <b>핵심</b>  11월 18일 발표한 성과는 하체의 전진·방향전환·측면 이족보행 시험입니다. 2.9m·2톤·양팔 가반하중 600kg은 완성체 설계 목표이며 전신 통합은 12월 목표입니다. 하체는 12관절과 1만Nm급 유압 액추에이터를 사용합니다. 시속 3~4km 보행과 경사로·계단·자율주행은 후속 개발·검증 대상입니다.\n⚠️ <b>체크</b>  하체 시제품 성공을 완성체의 600kg 운반 실증·양산·납품으로 올리지 않습니다. 전신 안정성·안전·실제 고객 검증이 남아 있습니다.\n\n──────────────────\n\n<b>4. 로봇 후속 확인 보스턴다이내믹스·GlobalFoundries, 협력 확대…4개 팹 Spot 배치 확대·2027년 초 Atlas 시험 계획</b>\n<b>분류</b>  보스턴다이내믹스·GlobalFoundries 로봇 · 11월 확인 사건\n<b>출처</b>  보스턴다이내믹스 · 2026-11-17 KST · <a href=\"https://bostondynamics.com/news/boston-dynamics-globalfoundries-expand-robotics-collaboration/\"><b>원문</b></a>\n<b>확인</b>  발표일 2026-11-17·보도일 2026-11-17; 11월 17일 회사 공식 발표·독립 보도 대조; Spot 운영 실적과 아틀라스 시험 계획 분리\n\n💡 <b>핵심</b>  11월 17일 협력 확대 발표로 미국 몰타·벌링턴, 독일 드레스덴, 싱가포르 4개 거점에 Spot 배치를 확대합니다. 싱가포르의 Spot 2대가 4월 이후 약 900km·9만 건 이상 점검·미션 성공률 99%를 기록했습니다. 이 수치는 Spot 실적이며 아틀라스 성능이 아닙니다. Atlas는 자동차 외 업종으로 적용처를 넓혀 2027년 초 GlobalFoundries 시설에서 현장시험을 시작할 계획입니다.\n⚠️ <b>체크</b>  Atlas의 상용 납품·검수 완료·구매 대수·계약금액은 미공개입니다. 현장시험 계획을 양산 매출로 보지 않습니다.\n\n──────────────────\n\n<b>5. 로봇 후속 확인 Genesis AI, 시리즈A 5억 달러(약 6,681억원) 조달…삼성·엔비디아·AMD 참여는 같은 투자 사건</b>\n<b>분류</b>  Genesis AI 로봇 · 11월 확인 사건\n<b>출처</b>  Genesis AI 공식 발표·Forbes · 2026-11-17 KST · <a href=\"https://www.prnewswire.com/news-releases/genesis-ai-raises-500m-series-a-at-3-5b-valuation-to-master-human-level-dexterity-in-general-purpose-robots-and-deploy-at-scale-302941249.html\"><b>원문</b></a>\n<b>확인</b>  발표일 2026-11-17·보도일 2026-11-17; 11월 17일 자금조달 발표·Forbes 보도 기준; 참여사별 투자액과 고객별 계약금액 미공개\n\n💡 <b>핵심</b>  11월 17일 Genesis AI가 시리즈A 5억 달러(약 6,681억원)를 조달했고 투자 후 기업가치는 35억 달러(약 4조6,767억원)로 발표했습니다. 엔비디아·AMD Ventures·Samsung Next 등의 참여는 같은 자금조달 사건으로 합쳐 집계합니다. GENE 모델·데이터 수집 장갑·Genesis World 시뮬레이터와 바퀴형 양팔 로봇 Eno를 함께 개발하며 손당 능동 자유도 20개는 Forbes 보도 기준입니다. 산업 고객 공급 확대와 2027년 고객 확대 계획은 실제 반복 매출과 구분합니다.\n⚠️ <b>체크</b>  투자 유치는 로봇 판매 매출이 아닙니다. 양산 수율·현장 신뢰성·납품과 현금회수를 별도로 확인합니다.\n\n──────────────────\n\n<b>6. 로봇 후속 확인 삼성 휴머노이드 CES 2027 HR·HE 보도 추가…손 구동 방식은 매체 간 상충</b>\n<b>분류</b>  삼성전자 HR·HE 휴머노이드 · 11월 확인 사건\n<b>출처</b>  한겨레·뉴스웍스 · 2026-11-17 KST · <a href=\"https://www.hani.co.kr/arti/economy/marketing/1287815.html\"><b>원문</b></a>\n<b>확인</b>  보도일 2026-11-17·보도일 2026-11-17; 뉴스웍스 직접 본문·한겨레 동일 기사 공개 대체본 확인; 삼성 공식 규격 미확인·업계 보도 단계\n\n💡 <b>핵심</b>  한겨레는 11월 17일 CES 2027에서 HR 기본형과 HE 상위형을 공개할 예정이라고 보도했습니다. 양손에 다섯 손가락씩이라는 설명은 있으나 뉴스웍스의 직구동 보도와 한겨레의 케이블 힘줄 구동 보도가 충돌합니다. 공식 규격 확인 전에는 직구동 채택을 확정하지 않습니다. Shadow의 35% 절전은 모터 20→13개·손목 관절 2→0인 서로 다른 손 모델 비교로, 손가락 하나나 로봇 전체 전력의 35%를 뜻하지 않습니다.\n⚠️ <b>체크</b>  CES 공개 계획·시제품과 양산·매출을 구분합니다. 보도 충돌이 해소되기 전 특정 구동부품 수혜를 확정하지 않습니다.\n\n──────────────────\n\n<b>7. 로봇 후속 확인 삼현 북미 고객 양산 2027년 1분기→2026년 4분기 전망…매출 200억원은 한투 추정</b>\n<b>분류</b>  삼현 북미 휴머노이드 · 11월 확인 사건\n<b>출처</b>  한국투자증권·이데일리 · 2026-11-17 KST · <a href=\"https://www4.edaily.co.kr/News/Read?mediaCodeNo=257&amp;newsId=02276326645646704\"><b>원문</b></a>\n<b>확인</b>  전망 보도일 2026-11-17·보도일 2026-11-17; 9월 수주 회사 공지·11월 17일 한투 분석가 요약 및 이데일리 대조; 고객 실명 비공개\n\n💡 <b>핵심</b>  9월 북미 초도 양산 수주는 회사가 이미 발표한 사실입니다. 한투는 11월 12~13일 기업설명회 후 고객 양산 개시가 2027년 1분기에서 2026년 4분기로 앞당겨졌다고 설명했습니다. 2027년 로봇 매출 200억원과 2028년 1,600억원은 증권사 추정입니다. 총 1,000억원 투자와 2027년 4월 생산라인 구축·하반기 자동화 가동은 계획이며 초도 출하는 수작업 소량 생산입니다.\n⚠️ <b>체크</b>  익명 북미 고객을 특정 업체로 단정하지 않습니다. 확정 계약액·실제 출하·자동화 가동률을 확인하고 내부 조립 부품을 외부 판매량과 중복 계산하지 않습니다.\n\n──────────────────\n<b>판정 기준</b>  실적·수급·시간표를 바꾸는 새 사실만 알림. 단순 주가·ETF·테마 반복은 제외.\n환율 기준: USD/KRW 1,336.2100원 · 2026-11-17 일일 기준 · ECB/Frankfurter · 조회 2026-11-18 13:58 KST · 보조 API 2026-11-18 · 차이 0.06% · 일중 기준시각 차이 가능",
+      "corrected_pending": {
+        "last_selected": [
+          "732dfc880d05d37816f7548cbe2f28b9a292d1e571cd0d7ded178164c9612bb5",
+          "38ab3ce8c29cc5171a790c4b6016a011112441d35ed59515ef2d6c25afe2c4fd",
+          "566193e2d8c71c6d1c7634e27645bf45fb7f751a47903402f1dfe1154e3bb199",
+          "83d7fed4807294b0de7d1b2215798785f8ba441daa5fc420ad6c65bc092e0787",
+          "c6c881cd7ae6c453ad621e136e4e773450ac1e410bb7c7af08b263f3b5f59607",
+          "fb39a9d3a29637cf9e878072eeec1f5d35533c2fe74f28f48b19e90d337efaa7",
+          "5f91956e960702ee65d66ed2e3b99320fda48dc54446e1039fbbd928083ff4c0"
+        ],
+        "last_selected_events": [
+          {
+            "key": "732dfc880d05d37816f7548cbe2f28b9a292d1e571cd0d7ded178164c9612bb5",
+            "group": "robotis",
+            "title": "로보티즈 한화투자증권 2027년 증설·실적 전망",
+            "link": "https://www.etoday.co.kr/news/view/2649520",
+            "source": "이투데이·뉴스핌·한화투자증권 공식목록",
+            "source_url": "https://www.etoday.co.kr",
+            "published": "2026-11-18",
+            "published_precision": "day"
+          },
+          {
+            "key": "38ab3ce8c29cc5171a790c4b6016a011112441d35ed59515ef2d6c25afe2c4fd",
+            "group": "nov18_everybot",
+            "title": "에브리봇 사업본부 출범·AGIBOT 골드파트너 보도…누적 순이익과 본업 이익 구분",
+            "link": "https://www.newspim.com/news/view/20261118000268",
+            "source": "뉴스핌·매일경제",
+            "source_url": null,
+            "published": "2026-11-18T00:00:00+09:00"
+          },
+          {
+            "key": "566193e2d8c71c6d1c7634e27645bf45fb7f751a47903402f1dfe1154e3bb199",
+            "group": "nov18_knr",
+            "title": "케이엔알시스템 슈퍼휴머노이드 하체 보행 성공…2톤 전신 통합은 12월 목표",
+            "link": "https://ekn.kr/web/view.php?key=20261118023561209",
+            "source": "에너지경제·뉴시스",
+            "source_url": null,
+            "published": "2026-11-18T00:00:00+09:00"
+          },
+          {
+            "key": "83d7fed4807294b0de7d1b2215798785f8ba441daa5fc420ad6c65bc092e0787",
+            "group": "nov18_bd_gf",
+            "title": "보스턴다이내믹스·GlobalFoundries, 4개 팹 Spot 확대·2027년 초 Atlas 시험 계획",
+            "link": "https://bostondynamics.com/news/boston-dynamics-globalfoundries-expand-robotics-collaboration/",
+            "source": "Boston Dynamics",
+            "source_url": null,
+            "published": "2026-11-17T00:00:00+09:00"
+          },
+          {
+            "key": "c6c881cd7ae6c453ad621e136e4e773450ac1e410bb7c7af08b263f3b5f59607",
+            "group": "nov18_genesis",
+            "title": "Genesis AI, 시리즈A 5억 달러 조달…삼성·NVIDIA·AMD 참여는 같은 투자 사건",
+            "link": "https://www.prnewswire.com/news-releases/genesis-ai-raises-500m-series-a-at-3-5b-valuation-to-master-human-level-dexterity-in-general-purpose-robots-and-deploy-at-scale-302941249.html",
+            "source": "Genesis AI 공식 발표·Forbes",
+            "source_url": null,
+            "published": "2026-11-17T00:00:00+09:00"
+          },
+          {
+            "key": "fb39a9d3a29637cf9e878072eeec1f5d35533c2fe74f28f48b19e90d337efaa7",
+            "group": "nov18_samsung_humanoid",
+            "title": "삼성 휴머노이드 CES 2027 HR·HE 보도 추가…손 구동 방식은 매체 간 상충",
+            "link": "https://www.hani.co.kr/arti/economy/marketing/1287815.html",
+            "source": "한겨레·뉴스웍스",
+            "source_url": null,
+            "published": "2026-11-17T00:00:00+09:00"
+          },
+          {
+            "key": "5f91956e960702ee65d66ed2e3b99320fda48dc54446e1039fbbd928083ff4c0",
+            "group": "nov18_samhyun",
+            "title": "삼현 북미 고객 양산 2027년 1분기→2026년 4분기 전망…매출 200억원은 한투 추정",
+            "link": "https://www4.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02276326645646704",
+            "source": "한국투자증권·이데일리",
+            "source_url": null,
+            "published": "2026-11-17T00:00:00+09:00"
+          }
+        ]
+      },
+      "corrected_chunk_sha256": [
+        "0bce8d6ba51ccc76557e9aa3b0e480ab0e2c07f1af96045e2e14996db5426f1e",
+        "1af7318eee48e5dae7836d7901a4d520d77ebdde324e6c5b9ad321765f0d0579"
+      ],
+      "payload_sha256": "bab2e7feea6feeec8db7396fc8eb97f2888cb2eda84a20361a9a924d671497d2"
+    },
+    {
+      "batch_id": "robot-message-correction-20261118-44241145265-v1",
+      "source_run_id": 44241145265,
+      "artifact_id": 14400150914,
+      "artifact_digest": "sha256:1eb959bdbedb34a6fc36585e80e0b1ae33d33f403253d46860a10533dc6b1003",
+      "route_fingerprint": "14816dc9bc6c054e9fdfc5d6ce0871dffed039dc5e8e27016b34273acffdf94e",
+      "message_ids": [
+        378,
+        379
+      ],
+      "original_alert_sha256": "bb867be0b43b13e13e44c11d806e0923ca853826d17153b165ee448208dce199",
+      "original_pending_sha256": "063b7af419d48b6ab275aac6b7a32cefcc325d954645357796bc2adb6337a400",
+      "original_receipts_sha256": "f6593455278b8da1fb0f470a854f1ac1594f29b0d04e1544f6865918c4e12772",
+      "original_chunk_sha256": [
+        "e1bd3b80b776c2ab9ea460c84e95e537c1e0a3404d8b03f13f301ba7923444a9",
+        "dbe1ad4de88be2f23e0370f4e3510822f03d6f9b05b4ac48f0c00d1da5ec0e65"
+      ],
+      "removed_event_keys": [
+        "54b3e2e0871a6c64b7169fdbfcbcb6a0e247901555c99f76aecc651d72832be7"
+      ],
+      "article_changes": {
+        "1366c9aef48c0735b32cb8181f161e54ed3e99ddb953b1e36195cda46bf288b3": "replace_article"
+      },
+      "corrected_text": "✏️ <b>정정</b> 삼성SDI 동일 계약 중복 1건을 제외하고, 보스턴다이내믹스 지분 반복 항목을 확인된 손익 위험으로 보완했습니다. ‘4조’는 확정 계약금액이 아닙니다.\n\n🚨 <b>피지컬AI·로봇 공급망 구조 변화 감지</b>\n<b>확인 사건 7건</b>\n━━━━━━━━━━━━━━━━━━\n\n<b>1. 로봇 후속 확인 보스턴다이내믹스 지분·완전자회사화 변화</b>\n<b>분류</b>  현대차그룹·보스턴다이내믹스 지분 · 11월 확인 사건\n<b>출처</b>  뉴시스·분기공시 재게시본 · 2026-11-17 KST · <a href=\"https://m.newsis.com/view/NISX20261116_0003870194\"><b>원문</b></a>\n<b>확인</b>  보도 확인일 2026-11-17·보도일 2026-11-17; 뉴시스 직접 본문·접수번호 20261116000562 공시 전문 재게시본 대조; DART 직접 접근 실패\n\n💡 <b>핵심</b>  7월 매도청구권 행사에서 3분기 모든 관련 권리 행사·소멸로 진전했다는 11월 17일 보도입니다. 보스턴다이내믹스 지분 전량은 정의선 회장과 현대차그룹 계열사들의 합계이며 현대차 단일 법인의 100% 소유를 뜻하지 않습니다. 현대글로비스 지분은 11.39%→12.47%로 늘었고 3분기 추가 취득액은 465억원입니다. 지배구조 정리와 아틀라스 양산·매출은 별도 사건입니다.\n⚠️ <b>체크</b>  기존 자회사 잔여지분 취득을 신규 연결매출 발생으로 계산하지 않습니다. 투자부담·추가 자금조달·상용 납품은 별도 확인합니다.\n\n──────────────────\n\n<b>2. 로봇 후속 확인 AMD, World Labs 인수 완료 발표…인수 합의에서 거래 종결로 진전</b>\n<b>분류</b>  AMD·World Labs 공간지능 · 11월 확인 사건\n<b>출처</b>  AMD · 2026-11-16 KST · <a href=\"https://newsroom.amd.com/news/amd-completes-acquisition-world-labs/\"><b>원문</b></a>\n<b>확인</b>  사건일 2026-11-13·보도일 2026-11-16; AMD 11월 16일 공식 발표·SEC 8-K/A(접수번호 0001193125-26-462340) 대조; 거래 완료일 11월 13일은 SEC 공시 근거\n\n💡 <b>핵심</b>  11월 16일 AMD는 World Labs 인수 완료를 발표했으며 SEC 공시의 거래 종결일은 11월 13일입니다. 인수 합의 단계에서 거래 종결로 진전한 사건입니다. 공간지능 모델과 컴퓨팅·메모리·소프트웨어의 통합이 피지컬 AI 사업 확대 경로입니다. World Labs의 아틀라스 모델은 보스턴다이내믹스의 아틀라스 휴머노이드와 다른 제품입니다.\n⚠️ <b>체크</b>  인수 완료만으로 로봇 고객 수주·칩 매출 증가를 확정하지 않습니다. 통합 비용과 실제 고객 채택을 확인합니다.\n\n──────────────────\n\n<b>3. 로봇 후속 확인 OpenAI 독립 로보틱스팀 재편 보도…사업 철수·실물 성능 입증과 구분</b>\n<b>분류</b>  OpenAI 로봇 시연·재편 · 11월 확인 사건\n<b>출처</b>  Fortune 보도·OpenTools 정정 · 2026-11-16 KST · <a href=\"https://opentools.ai/news/openai-disbands-robotics-team-general-purpose-models\"><b>원문</b></a>\n<b>확인</b>  최초 보도일 2026-11-13·보도일 2026-11-16; 11월 13일 Fortune 보도의 11월 16일 재인용·정정 맥락; 조직 원문 독립 검증 한계와 시뮬레이션 조건 표시\n\n💡 <b>핵심</b>  독립 로보틱스팀의 연구 인력은 Mark Chen 산하, 응용·하드웨어 인력은 Greg Brockman 산하 조직으로 이동했다는 보도입니다. 회사 설명은 로보틱스 철수가 아니라 개발 가속화를 위한 재편입니다. GPT-6 Astra의 74.8%와 비교모델 51.0%는 10월 14일 연구의 시뮬레이션 지표로 11월 신규 실물 성과가 아닙니다. 자체 휴머노이드의 2027년 공개 시연은 목표 단계입니다.\n⚠️ <b>체크</b>  범용 모델의 시뮬레이션 우위로 실제 로봇 안전성·저지연 제어·온디바이스 동작까지 입증됐다고 해석하지 않습니다.\n\n──────────────────\n\n<b>4. 로봇 후속 확인 한투 3분기 분석…영업손실 26억원·신공장 2027년 2분기 순연 설명</b>\n<b>분류</b>  로보티즈 신공장·실적 · 11월 확인 사건\n<b>출처</b>  한국투자증권 최건 · 2026-11-16 KST · <a href=\"https://t.me/s/kis_robotics\"><b>원문</b></a>\n<b>확인</b>  분석 공개일 2026-11-16·보도일 2026-11-16; 한투 분석가 자체 공개 요약 확인; 회사 공시·보고서 전문 독립 확인 전\n\n💡 <b>핵심</b>  한투 분석가 요약은 2026년 3분기 매출 135억원·영업손실 26억원을 제시했습니다. 액추에이터 출하 11만~12만대와 평균판매단가 약 12만원은 분석가 추정이며 예상 약 13만원을 밑돌았습니다. 수주잔고의 80% 이상이 저단가 다이나믹셀 X이고 신공장 가동이 2027년 2분기로 순연됐다는 설명입니다. 물량 증가와 제품 구성 악화·생산 지연을 함께 추적합니다.\n⚠️ <b>체크</b>  수주잔고를 출하·매출로 보지 않습니다. 공장 가동일·수율·고단가 제품 비중·현금흐름의 공식 후속 확인이 필요합니다.\n\n──────────────────\n\n<b>5. 로봇 후속 확인 Tesla 독일 Cybercab 증설 계획…30억 유로(약 4조4,051억원)·연 최대 100만대 능력 목표</b>\n<b>분류</b>  Tesla 독일 Cybercab · 11월 확인 사건\n<b>출처</b>  브란덴부르크주·로이터 · 2026-11-16 KST · <a href=\"https://brandenburg.de/cms/detail.php?gsid=brandenburg_06.c.918992.de\"><b>원문</b></a>\n<b>확인</b>  발표일 2026-11-16·보도일 2026-11-16; 브란덴부르크주 11월 16일 발표·로이터 대조; 투자·생산능력과 일정은 계획\n\n💡 <b>핵심</b>  11월 16일 독일 공장에 30억 유로(약 4조4,051억원)를 투자해 Cybercab 연 최대 100만대 생산능력을 구축하는 계획이 발표됐습니다. 연내 허가 신청→2027년 상반기 착공→2029년 생산이 제시된 시간표입니다. 생산능력 목표는 실제 생산량·판매량이 아닙니다. 주정부 발표와 로이터 보도로 계획을 확인했으며 허가 승인·발주 완료 단계는 아닙니다.\n⚠️ <b>체크</b>  인허가·전력·시공과 수요 변화로 일정·가동률이 달라질 수 있습니다. 투자 총액을 특정 공급사 확정 매출로 바꾸지 않습니다.\n\n──────────────────\n\n<b>6. 로봇 후속 확인 Foundation 이스라엘 로봇 공급 협의 보도…우크라이나 배치 주장은 반대 취재 존재</b>\n<b>분류</b>  Foundation 이스라엘 로봇 공급 · 11월 확인 사건\n<b>출처</b>  글로벌이코노믹·The San Francisco Standard · 2026-11-15 KST · <a href=\"https://www.g-enews.com/article/Global-Biz/2026/11/2026111506455381112bd56fbc3c_1\"><b>원문</b></a>\n<b>확인</b>  협의 보도일 2026-11-15·보도일 2026-11-15; 국내 기사 직접 본문·The San Francisco Standard 반대 취재 대조; 협의 보도와 실제 납품 구분\n\n💡 <b>핵심</b>  11월 15일 국내 보도는 Foundation의 이스라엘 로봇 공급 협의를 전했으며 확정 계약 상대방·금액·수량·납품일은 확인되지 않았습니다. 11월 14일 The San Francisco Standard 취재에는 특정 우크라이나 현장 시험 주장에 대한 동행 취재자와 Brave1의 반론이 포함됐습니다. 회사 주장과 반대 증거를 함께 보존하며 실제 전선 배치와 성능을 확정하지 않습니다.\n⚠️ <b>체크</b>  미체결 협의·개발 시연을 실전 배치·검증된 성능·매출로 바꾸지 않습니다. 운용기관 확인과 계약·납품 문서가 필요합니다.\n\n──────────────────\n\n<b>7. 보스턴다이내믹스 1~9월 매출 1,360.2억원·순손실 6,266.4억원…지분 취득과 별개인 수익성 위험</b>\n<b>분류</b>  보스턴다이내믹스 · 관계기업 요약재무·현대글로비스 지분법손실\n<b>출처</b>  뉴스스페이스·현대글로비스 분기공시 재게시본 · 2026-11-17 · <a href=\"https://newsspace.kr/news/article.html?no=16716\"><b>원문</b></a>\n<b>확인</b>  현대글로비스 연결재무제표 주석 10.3의 Boston Dynamics, Inc. 요약재무와 뉴스스페이스 본문 대조; 공시 접수번호 20261116000562 재게시 원문 확인·DART 직접 열람 미완료\n\n💡 <b>핵심</b>  보스턴다이내믹스의 2026년 1~9월 매출은 전년 동기 1,054.2억원→1,360.2억원으로 약 29.0% 늘었으나 순손실은 3,541.4억원→6,266.4억원으로 약 76.9% 증가했습니다. 현대글로비스 연결주석에 기재된 관계기업 요약재무 기준이며 보스턴다이내믹스 자체 연결실적으로 단정하지 않습니다. 글로비스가 같은 기간 인식한 BD 지분법손실은 412.9억원→761.4억원입니다. 지분 취득 완료와 별개로 손실 확대·추가 자금부담·상용 매출 전환을 점검할 근거입니다.\n⚠️ <b>체크</b>  순손실을 같은 금액의 현금 유출이나 연구개발비로 해석하지 않습니다. 주석의 관계기업 손실과 글로비스 지분법손실을 더해 그룹 손실로 중복 합산하지 않습니다.\n\n──────────────────\n<b>판정 기준</b>  실적·수급·시간표를 바꾸는 새 사실만 알림. 단순 주가·ETF·테마 반복은 제외.\n환율 기준: EUR/KRW 1,468.3600원 · 2026-11-17 일일 기준 · ECB/Frankfurter · 조회 2026-11-18 14:01 KST · 보조 API 2026-11-18 · 차이 0.02% · 일중 기준시각 차이 가능",
+      "corrected_pending": {
+        "last_selected": [
+          "08ba9399d57d5b611e7ae5cec90c8ecf50bacf6390c9bc135c037e4260842035",
+          "7fd1f578a6668d7cc686779adcbc5c05e0a2f0e2413042433e61ca9823cd9227",
+          "6b8523e85bc346e7a57d367d203c0e24d3b9312345402f5f2031aa321752a2d0",
+          "9a0805a145ece3a108602ef2af62e36b05b3c34e03b0e1f4d2169dac6ad1df60",
+          "0c8eb56a48912a16e86ab154a49c841bbf5637a70ab02f60c21749107b3a7a73",
+          "9ea27b94225cb659d426b13672a8ed50c454e5468517973f3af4983929a77256",
+          "1366c9aef48c0735b32cb8181f161e54ed3e99ddb953b1e36195cda46bf288b3"
+        ],
+        "last_selected_events": [
+          {
+            "key": "08ba9399d57d5b611e7ae5cec90c8ecf50bacf6390c9bc135c037e4260842035",
+            "group": "nov18_hyundai_bd_ownership",
+            "title": "현대차그룹·정의선, 보스턴다이내믹스 잔여지분 취득 완료 보도",
+            "link": "https://m.newsis.com/view/NISX20261116_0003870194",
+            "source": "뉴시스·분기공시 재게시본",
+            "source_url": null,
+            "published": "2026-11-17T00:00:00+09:00"
+          },
+          {
+            "key": "7fd1f578a6668d7cc686779adcbc5c05e0a2f0e2413042433e61ca9823cd9227",
+            "group": "nov18_amd_worldlabs",
+            "title": "AMD, World Labs 인수 완료 발표…인수 합의에서 거래 종결로 진전",
+            "link": "https://newsroom.amd.com/news/amd-completes-acquisition-world-labs/",
+            "source": "AMD",
+            "source_url": null,
+            "published": "2026-11-16T00:00:00+09:00"
+          },
+          {
+            "key": "6b8523e85bc346e7a57d367d203c0e24d3b9312345402f5f2031aa321752a2d0",
+            "group": "nov18_openai_reorg",
+            "title": "OpenAI 독립 로보틱스팀 재편 보도…사업 철수·실물 성능 입증과 구분",
+            "link": "https://opentools.ai/news/openai-disbands-robotics-team-general-purpose-models",
+            "source": "Fortune 보도·OpenTools 정정",
+            "source_url": null,
+            "published": "2026-11-16T00:00:00+09:00"
+          },
+          {
+            "key": "9a0805a145ece3a108602ef2af62e36b05b3c34e03b0e1f4d2169dac6ad1df60",
+            "group": "nov18_robotis",
+            "title": "로보티즈 한투 3분기 분석…영업손실 26억원·신공장 2027년 2분기 순연 설명",
+            "link": "https://t.me/s/kis_robotics",
+            "source": "한국투자증권 최건",
+            "source_url": null,
+            "published": "2026-11-16T00:00:00+09:00"
+          },
+          {
+            "key": "0c8eb56a48912a16e86ab154a49c841bbf5637a70ab02f60c21749107b3a7a73",
+            "group": "nov18_tesla_germany",
+            "title": "Tesla 독일 Cybercab 증설 계획…30억 유로·연 최대 100만대 능력 목표",
+            "link": "https://brandenburg.de/cms/detail.php?gsid=brandenburg_06.c.918992.de",
+            "source": "브란덴부르크주·Reuters",
+            "source_url": null,
+            "published": "2026-11-16T00:00:00+09:00"
+          },
+          {
+            "key": "9ea27b94225cb659d426b13672a8ed50c454e5468517973f3af4983929a77256",
+            "group": "nov18_foundation",
+            "title": "Foundation 이스라엘 로봇 공급 협의 보도…우크라이나 배치 주장은 반대 취재 존재",
+            "link": "https://www.g-enews.com/article/Global-Biz/2026/11/2026111506455381112bd56fbc3c_1",
+            "source": "글로벌이코노믹·The San Francisco Standard",
+            "source_url": null,
+            "published": "2026-11-15T00:00:00+09:00"
+          },
+          {
+            "key": "1366c9aef48c0735b32cb8181f161e54ed3e99ddb953b1e36195cda46bf288b3",
+            "group": "hyundai_atlas_rollout",
+            "title": "보스턴다이내믹스 2026년 1~9월 실적·글로비스 지분법손실",
+            "link": "https://newsspace.kr/news/article.html?no=16716",
+            "source": "뉴스스페이스·현대글로비스 분기공시 재게시본",
+            "source_url": "https://newsspace.kr",
+            "published": "2026-11-17",
+            "published_precision": "day"
+          }
+        ]
+      },
+      "corrected_chunk_sha256": [
+        "3dbb6684d812a358e9514f5329d6841c98ea5e1f103e2c87d0f3107b0b6d3033",
+        "54d557ca9c743be916810e098f7edf3de89970ef0db2e92bb72ad57722efdf2d"
+      ],
+      "payload_sha256": "115f7ef554523c7dc18341e67a5b26435ed10a34dc2157ca8d5b85f39ad8ce7b"
+    }
+  ]
+}

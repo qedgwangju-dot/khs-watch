@@ -229,6 +229,12 @@ def _jupiter_baseline(item: dict, previous_key: str, title: str, text: str) -> s
         named and (named_in_title or known_headline) and (has_16 or (period and cumulative)))
     if not verified:
         return None
+    # Seoul's original Nov-16 article explicitly made this old-price estimate;
+    # neither the 1-GWh denominator nor the result is a disclosed order change.
+    media_calculations = list(re.finditer(
+        r"과거\s*1\s*GWh.{0,80}3,?000\s*억\s*원.{0,100}"
+        r"(?:4\s*조\s*8,?000\s*억\s*원|4[.]8\s*조\s*원).{0,50}(?:계산|추산)",
+        combined, re.I))
 
     # Do not let historical Jupiter context consume a different new customer.
     for match in re.finditer(r"(?:고객사|계약\s*상대방|공급\s*대상)\s*(?:은|는|:)\s*([^,.;。]{1,80})|"
@@ -244,7 +250,8 @@ def _jupiter_baseline(item: dict, previous_key: str, title: str, text: str) -> s
                  r"공급\s*(?:기간|일정).{0,25}(?:변경|연장|단축|지연)|"
                  r"(?:amended|terminated|cancelled|separate)\s+(?:supply\s+)?contract", combined, re.I):
         return "changed"
-    if any(stage in {"additional_order", "delivery"} for stage in _followup_stages(combined)):
+    stages = _followup_stages(combined)
+    if "delivery" in stages or ("additional_order" in stages and not (has_16 and period and cumulative)):
         return "changed"
     for value, match in volumes:
         if value in {16, 27}:
@@ -252,6 +259,8 @@ def _jupiter_baseline(item: dict, previous_key: str, title: str, text: str) -> s
         # The same official release also reports Jupiter's development pipeline;
         # these are not Samsung's contract quantities.
         near = combined[max(0, match.start() - 70):match.end() + 90]
+        if any(calculation.start() <= match.start() < calculation.end() for calculation in media_calculations):
+            continue
         if value == 11 and re.search(r"앞서|기존|이전|previous|earlier", near, re.I):
             continue
         if value == 1 and re.match(r"\s*당", combined[match.end():]):
@@ -260,6 +269,8 @@ def _jupiter_baseline(item: dict, previous_key: str, title: str, text: str) -> s
             continue
         return "changed"
     monetary_text = combined
+    for match in media_calculations:
+        monetary_text = monetary_text[:match.start()] + " " * (match.end() - match.start()) + monetary_text[match.end():]
     # Nov-16 reports already estimated 3~4 trillion KRW; Seoul's 4-trillion
     # headline is not a disclosed contract price. Only remove that quoted band
     # when it is explicitly an estimate, not an official price confirmation.

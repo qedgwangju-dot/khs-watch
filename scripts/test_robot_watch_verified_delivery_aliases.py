@@ -196,6 +196,16 @@ class VerifiedDeliveryAliasesTest(unittest.TestCase):
         item["description"] = "회사가 계약금액 3조원을 공식 확정했다. 2029년부터 3년간 공급한다."
         self.assertNotEqual(self.base.key(item), aliases.CANONICAL_KEY)
 
+    def test_seoul_original_unit_price_calculation_is_not_new_contract_disclosure(self):
+        text = ("주피터파워와 16GWh 추가 계약·누적 27GWh 확보, 2029년부터 3년간 공급한다. "
+                "계약금액은 공개되지 않았지만 수조원 규모로 추산된다. "
+                "과거 1GWh 배터리의 가격이 3,000억원 수준임을 감안하면, "
+                "추정 계약금액은 단순 4조8000억원에 이를 수 있다는 계산이다.")
+        item = dict(seoul_row(), description=text)
+        self.assertEqual(self.base.key(item), aliases.CANONICAL_KEY)
+        item["description"] += " 이후 회사가 실제 계약금액 4.8조원을 공식 확정했다."
+        self.assertNotIn(self.base.key(item), aliases.HISTORICAL_EVENT_KEYS)
+
     def test_jupiter_named_customer_quantity_period_and_cumulative_are_old_facts(self):
         baseline = ("삼성SDI의 신규 고객은 주피터파워로 확인됐다. 계약물량 16GWh가 공개됐다. "
                     "2029년부터 3년간 공급하며 양사 누적 공급계약은 27GWh, 금액은 수조원 추산이다.")

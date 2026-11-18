@@ -588,6 +588,22 @@ def main() -> None:
             recent.append(x)
     recent.sort(key=lambda x: (x["score"], x.get("published") or ""), reverse=True)
 
+    # Preserve public candidate evidence for audits even when a later retry
+    # meets source throttling. Do not require another live fetch to explain
+    # selection, overflow, or a suspected reprint.
+    candidate_audit = {
+        "checked_at_utc": NOW.isoformat(),
+        "queries_ok": ok_queries, "queries_total": len(QUERIES),
+        "events": [dict(
+            {field: x.get(field) for field in
+             ("key", "group", "score", "title", "link", "source", "source_url", "published")},
+            description_excerpt=str(x.get("description") or "")[:1200],
+            previously_seen=x["key"] in seen,
+        ) for x in recent],
+    }
+    (OUT_DIR / "robotis_physical_ai_watch_candidates.json").write_text(
+        json.dumps(candidate_audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
     first = not bool(state.get("seeded"))
     if first and not FORCE:
         selected: list[dict] = []

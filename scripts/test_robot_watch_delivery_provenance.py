@@ -75,6 +75,11 @@ def run():
             status = base.STATUS_PATH.read_text()
             assert "queries_ok: 1/2" in status
             assert "malformed: KeyError" in status
+            audit = json.loads((root / "robotis_physical_ai_watch_candidates.json").read_text())
+            assert audit["queries_ok"] == 1 and audit["queries_total"] == 2
+            assert len(audit["events"]) == 1
+            assert audit["events"][0]["title"] == "fixture"
+            assert audit["events"][0]["previously_seen"] is False
     print("Malformed fetched source is reported as a processing failure: PASS")
 
 

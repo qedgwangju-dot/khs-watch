@@ -434,7 +434,7 @@ def read_artifact(raw: bytes, metadata: dict, run_id: int) -> dict[str, str]:
     if digest != "sha256:" + hashlib.sha256(raw).hexdigest():
         raise RecoveryBlocked("Artifact archive digest is missing or mismatched")
     allowed = {ALERT_PATH.name, PENDING_PATH.name, RECEIPTS_PATH.name, ATTEMPTS_PATH.name,
-               "robotis_physical_ai_watch_status.md"}
+               "robotis_physical_ai_watch_status.md", "robotis_physical_ai_watch_candidates.json"}
     files, total = {}, 0
     try:
         with zipfile.ZipFile(io.BytesIO(raw)) as archive:
