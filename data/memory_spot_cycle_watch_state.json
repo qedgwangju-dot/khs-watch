@@ -116,9 +116,9 @@
       "first_seen_kst": "2026-09-27T00:10:35+09:00"
     },
     "4634b7d554050c4406f1a803": {
-      "title": "DRAM Market Bulletin - Nov. 4, 2026",
+      "title": "DRAM Market Bulletin - Nov. 18, 2026",
       "source": "TrendForce Research",
-      "published_kst": "2026-11-04T09:00:00+09:00",
+      "published_kst": "2026-11-18T09:00:00+09:00",
       "first_seen_kst": "2026-09-27T00:10:35+09:00"
     },
     "7f775cdafa333a3587426d98": {
@@ -929,13 +929,13 @@
     "791996db5ae0b9a27d6516e3": {
       "title": "Three forecasts that show why BofA thinks the memory chip boom can avoid a 2028 bust - investingLive",
       "source": "investingLive",
-      "published_kst": "2026-11-11T12:00:32+09:00",
+      "published_kst": "2026-11-11T11:47:03+09:00",
       "first_seen_kst": "2026-11-12T03:44:27+09:00"
     },
     "d52c349aa782d2cadd4e0dda": {
       "title": "Memory shortage spurs smartphone makers to melt used memory off old devices, then re-solder it onto new products — recycled memory to keep budget phones affordable; 'reballing' adoption to double by 2027 - Tom's Hardware",
       "source": "Tom's Hardware",
-      "published_kst": "2026-11-09T22:40:00+09:00",
+      "published_kst": "2026-11-09T17:00:00+09:00",
       "first_seen_kst": "2026-11-12T17:25:46+09:00"
     },
     "de8d1f0182b34fe2250124a9": {
@@ -1021,10 +1021,16 @@
       "source": "Seoul Economic Daily",
       "published_kst": "2026-11-16T17:42:19+09:00",
       "first_seen_kst": "2026-11-18T13:26:59+09:00"
+    },
+    "77fdff0646ab1d78cee8c9e8": {
+      "title": "Memory Market Diverges: NAND Prices May Turn Lower in Q2 2027, General DRAM Rally to Last Through Year-End - BigGo Finance",
+      "source": "BigGo Finance",
+      "published_kst": "2026-11-18T16:26:00+09:00",
+      "first_seen_kst": "2026-11-18T19:44:42+09:00"
     }
   },
-  "updated_at_kst": "2026-11-18T13:26:59+09:00",
-  "last_scan_count": 12,
+  "updated_at_kst": "2026-11-18T19:44:42+09:00",
+  "last_scan_count": 14,
   "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -1085,21 +1091,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-18T10:42:19+09:00",
+  "last_successful_delivery_kst": "2026-11-18T19:44:57+09:00",
   "telegram_message_ids": [
-    503
+    519
   ],
-  "telegram_message_id": 503,
+  "telegram_message_id": 519,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      503
+      519
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-18T10:42:19+09:00",
-    "alert_signature": "e530b04e24b67dd37b14ebcee2781dfcc82382dfd6f1b20ac0227020538fd4a0"
+    "confirmed_at_kst": "2026-11-18T19:44:57+09:00",
+    "alert_signature": "75514537f7fd65e4822be93e257d312a79aa8981fb7399d51eb58a9f6209cf0a"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
