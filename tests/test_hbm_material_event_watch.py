@@ -255,7 +255,7 @@ class MaterialEventTests(unittest.TestCase):
         again, no_alert, repeat_audit = m.apply(out, "2026-11-17T15:47:00+09:00", no_repeat)
         self.assertEqual(no_alert, [])
         self.assertEqual(repeat_audit["verified_events"], 0)
-        self.assertEqual(len(again["hbm_material_event_watch"]["seen_keys"]), len(m.REPORTS))
+        self.assertEqual(len(again["hbm_material_event_watch"]["seen_keys"]), sum(r["date"] <= "2026-11-17" for r in m.REPORTS))
 
     def test_skhynix_filing_bogus_big_customer_or_revenue_is_not_promoted(self):
         row = next(x for x in m.REPORTS if "geo_customer_concentration" in x["key"])
