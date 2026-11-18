@@ -38,6 +38,7 @@ OUT.mkdir(exist_ok=True)
 STATE_PATH = DATA / "japan_treasury_spillover_state.json"
 PENDING_PATH = OUT / "japan_treasury_spillover_pending.json"
 ALERT_PATH = OUT / "japan_treasury_spillover_alert.html"
+DETAIL_PATH = OUT / "japan_treasury_spillover_detail.html"
 TITLE_PATH = OUT / "japan_treasury_spillover_title.txt"
 STATUS_PATH = OUT / "japan_treasury_spillover_status.md"
 
@@ -191,15 +192,15 @@ class Auction:
     bids_bn_yen: float
     accepted_bn_yen: float
     low_yield: float
-    avg_yield: float
+    avg_yield: float | None
 
     @property
     def btc(self) -> float:
         return self.bids_bn_yen / self.accepted_bn_yen
 
     @property
-    def tail_bp(self) -> float:
-        return (self.low_yield - self.avg_yield) * 100.0
+    def tail_bp(self) -> float | None:
+        return None if self.avg_yield is None else (self.low_yield - self.avg_yield) * 100.0
 
 
 def absolute(base: str, href: str) -> str:
@@ -218,8 +219,9 @@ def parse_auction(text: str, url: str, tenor: int) -> Auction:
         accepted = num(cells[7])
         low_y = num(cells[9])
         avg_y = num(cells[12])
-        if None not in (bids, accepted, low_y, avg_y):
-            return Auction(tenor, cells[2].strip(), url, float(bids), float(accepted), float(low_y), float(avg_y))
+        # 40Y Dutch-style results do not publish a weighted-average yield/tail.
+        if None not in (bids, accepted, low_y) and (avg_y is not None or tenor == 40):
+            return Auction(tenor, cells[2].strip(), url, float(bids), float(accepted), float(low_y), None if avg_y is None else float(avg_y))
     raise RuntimeError(f"auction row not found: {tenor}Y {url}")
 
 
@@ -325,6 +327,8 @@ def market_snapshot(now: dt.datetime) -> dict:
     spread_cur = (so[cday] - io_[cday]) * 100.0
     return {
         "market_date": max(d10d, d30d, jpyd, cday),
+        "dgs10_date": d10d,
+        "dgs30_date": d30d,
         "dgs10": d10c,
         "dgs10_change_bp": (d10c - d10p) * 100.0,
         "dgs30": d30c,
@@ -357,12 +361,18 @@ def fmt_usd_bn(value: float, quote) -> str:
 
 
 def classify_events(*, first: bool, state: dict, flow: MofFlow | None, yields: tuple[dict, dict] | None,
-                    auctions: dict[str, dict], fima: FimaProxy | None, market: dict | None) -> list[dict]:
+                    auctions: dict[str, dict], fima: FimaProxy | None, market: dict | None,
+                    now: dt.datetime | None = None) -> list[dict]:
     events: list[dict] = []
     old_sources = state.get("source_dates") or {}
     old_snap = state.get("snapshot") or {}
 
     flow_new = bool(flow and flow.latest_week != old_sources.get("mof_week"))
+    market_fresh = bool(market and (now is None or (
+        is_recent_market_date(market.get("dgs10_date"), now)
+        and is_recent_market_date(market.get("dgs30_date"), now)
+    )))
+    fx_fresh = bool(market and (now is None or is_recent_market_date(market.get("usdjpy_date"), now)))
     if not first and flow_new and flow:
         if (flow.latest_lt_debt_trillion_yen <= LT_DEBT_WEEKLY_SELL_TRILLION_YEN or
                 flow.two_week_lt_debt_trillion_yen <= LT_DEBT_TWO_WEEK_SELL_TRILLION_YEN):
@@ -376,7 +386,8 @@ def classify_events(*, first: bool, state: dict, flow: MofFlow | None, yields: t
             weak = (
                 row["btc"] < JGB_BTC_WEAK
                 or row["btc_drop_pct"] <= JGB_BTC_DROP_PCT
-                or (row["tail_bp"] >= JGB_TAIL_BP and row["tail_widen_bp"] >= JGB_TAIL_WIDEN_BP)
+                or (row.get("tail_bp") is not None and row.get("tail_widen_bp") is not None
+                    and row["tail_bp"] >= JGB_TAIL_BP and row["tail_widen_bp"] >= JGB_TAIL_WIDEN_BP)
             )
             if weak:
                 sev = "HIGH" if int(tenor) in (2, 10) else "WATCH"
@@ -388,7 +399,7 @@ def classify_events(*, first: bool, state: dict, flow: MofFlow | None, yields: t
             sev = "HIGH" if fima.level_bn_usd >= FIMA_HIGH_BN_USD else "WATCH"
             events.append({"kind": "fima", "severity": sev})
 
-    if not first and market and market.get("market_date") != old_sources.get("market"):
+    if not first and market_fresh and market and market.get("market_date") != old_sources.get("market"):
         repo_stress = (
             market["sofr_iorb_bp"] >= REPO_SPREAD_BP
             or market["sofr_iorb_change_bp"] >= REPO_SPREAD_JUMP_BP
@@ -397,7 +408,7 @@ def classify_events(*, first: bool, state: dict, flow: MofFlow | None, yields: t
         if repo_stress and long_yield_jump:
             events.append({"kind": "basis_proxy", "severity": "HIGH"})
 
-    if not first and flow_new and flow and yields and market:
+    if not first and flow_new and flow and yields and market and market_fresh and fx_fresh:
         prev_y, cur_y = yields
         jgb2_up = bp(cur_y["jgb2"], prev_y["jgb2"])
         selling = (
@@ -413,7 +424,9 @@ def classify_events(*, first: bool, state: dict, flow: MofFlow | None, yields: t
 
     kinds = {event["kind"] for event in events}
     if "fima" in kinds and ({"lt_debt_sale", "repatriation_combo", "basis_proxy"} & kinds):
-        events.append({"kind": "official_private_overlap", "severity": "CRITICAL"})
+        # H.4.1 is a global proxy, not proof of Japanese official financing.
+        # Its increase may mitigate securities sales; never escalate it alone to CRITICAL.
+        events.append({"kind": "official_private_overlap", "severity": "WATCH"})
     return events
 
 
@@ -432,13 +445,152 @@ def event_text(event: dict) -> str:
     if kind == "ust_spillover":
         return "일본 해외채 매도와 미국 장기금리 상승이 동시 발생"
     if kind == "official_private_overlap":
-        return "공적 달러조달과 민간 해외채 매도가 겹침 — 최상위 복합 경보"
+        return "외국 공식 레포와 일본 민간 해외채 매도가 같은 기간 변동 — 일본 관련성 미확인"
     return kind
+
+
+
+def is_recent_market_date(value: str | None, now: dt.datetime, max_weekdays: int = 1) -> bool:
+    """Reject old daily-market observations, even if a different input is newer."""
+    try:
+        day = dt.date.fromisoformat(str(value or ""))
+    except ValueError:
+        return False
+    today = now.astimezone(KST).date()
+    if day > today:
+        return False
+    weekdays = sum((day + dt.timedelta(days=offset)).weekday() < 5 for offset in range(1, (today - day).days + 1))
+    return weekdays <= max_weekdays
+
+
+def fchr_tail(value: float | None) -> str:
+    return "미공개(40년물 방식)" if value is None else f"{value:.1f}bp"
+
+
+def fetch_current_usdjpy(now: dt.datetime) -> dict | None:
+    """Optional current quote on alert events. Stale or failed quotes cannot set direction."""
+    try:
+        from yen_carry_alert import SYMBOLS
+        from yen_carry_market_data_v2 import fetch_quote
+        q = fetch_quote(SYMBOLS["usd_jpy"])
+        quote_time = dt.datetime.fromtimestamp(q.timestamp_epoch, tz=dt.timezone.utc)
+        age_seconds = (now.astimezone(dt.timezone.utc) - quote_time).total_seconds()
+        if not (0 <= age_seconds <= 2700):
+            return None
+        return {"value": q.price, "change_pct": q.change_pct,
+                "observed_kst": quote_time.astimezone(KST).strftime("%Y-%m-%d %H:%M")}
+    except Exception:
+        return None
+
+
+def build_brief_alert(events: list[dict], flow: MofFlow | None, yields: tuple[dict, dict] | None,
+                      auctions: dict[str, dict], fima: FimaProxy | None, market: dict | None,
+                      quote, now: dt.datetime, live_fx: dict | None = None) -> tuple[str, str]:
+    """Short, direction-first Telegram alert. Full evidence remains in DETAIL_PATH."""
+    severity = max((x["severity"] for x in events), key=lambda x: {"WATCH": 1, "HIGH": 2, "CRITICAL": 3}[x])
+    icon = {"WATCH": "🟡", "HIGH": "🟠", "CRITICAL": "🔴"}[severity]
+    auction_events = [x for x in events if x["kind"] == "jgb_auction"]
+    auction_tenors = "·".join(str(x["tenor"]) for x in auction_events)
+    auction_title = f"일본 {auction_tenors}년물 입찰 경계" if auction_events else "일본발 자금흐름 변화"
+    title = f"{icon} 일본→미국채 | {auction_title}"
+
+    rate_current = bool(market and is_recent_market_date(market.get("dgs10_date"), now)
+                        and is_recent_market_date(market.get("dgs30_date"), now))
+    rate_up = bool(rate_current and market["dgs10_change_bp"] >= 6 and market["dgs30_change_bp"] >= 6)
+    rate_down = bool(rate_current and market["dgs10_change_bp"] <= 0 and market["dgs30_change_bp"] <= 0)
+    repo_current = bool(market and is_recent_market_date(market.get("sofr_iorb_date"), now))
+    repo_stress = bool(repo_current and
+                       (market["sofr_iorb_bp"] >= REPO_SPREAD_BP
+                        or market["sofr_iorb_change_bp"] >= REPO_SPREAD_JUMP_BP))
+    selling_two_weeks = bool(flow and flow.two_week_lt_debt_trillion_yen <= LT_DEBT_TWO_WEEK_SELL_TRILLION_YEN)
+    if rate_up and repo_stress and selling_two_weeks:
+        spillover = "🟠 미국 장기금리·레포 동반 긴장 — 전이 위험 상승(원인 미확정)"
+        outlook = "미국채 매도 압력 전이 가능성 상승, 주식 할인율 부담 주의"
+    elif rate_up:
+        spillover = "🟡 미국 장기금리 동반 상승 — 일본 영향은 별도 확인"
+        outlook = "미국채 수급과 미국 물가·Fed 요인을 분리 확인"
+    elif rate_down:
+        spillover = "↔ 미국 10·30년 금리 동반 안정·하락 — 현재 전이 증거 약함"
+        outlook = "미국채 금리 상승에 따른 주식 할인율 압박은 당일 근거로 미확인"
+    elif rate_current:
+        spillover = "↔ 미국채 방향 혼조 — 일본발 매도 전이 미확정"
+        outlook = "미국 장기금리 추가 상승·레포 스트레스가 생기는지 확인"
+    else:
+        uday = (market or {}).get("dgs10_date") or "확인 불가"
+        spillover = f"⚪ 미국채 전이 현재 판정 보류 — 미국 10·30년 자료 {uday} 기준"
+        outlook = "미국채 최신 금리·환율이 없어 주식시장 현재 전염 여부는 판단 보류"
+
+    lines = ["<b>지금 방향</b>",
+             f"• 일본 국채: {icon} {auction_title} — 미국 전체 채권시장 위기는 별도",
+             f"• 미국채: {spillover}"]
+    if flow:
+        latest = fmt_trillion_yen(flow.latest_lt_debt_trillion_yen, quote) if quote else f"{flow.latest_lt_debt_trillion_yen:+.2f}조엔"
+        two = fmt_trillion_yen(flow.two_week_lt_debt_trillion_yen, quote) if quote else f"{flow.two_week_lt_debt_trillion_yen:+.2f}조엔"
+        if flow.latest_lt_debt_trillion_yen < 0 and flow.two_week_lt_debt_trillion_yen > 0:
+            flow_call = "1주 매도지만 2주 순매수 → 지속 본국회귀 미확인"
+        elif flow.two_week_lt_debt_trillion_yen <= LT_DEBT_TWO_WEEK_SELL_TRILLION_YEN:
+            flow_call = "2주 누적 매도 확대 → 해외채 수요 약화 경계"
+        elif flow.two_week_lt_debt_trillion_yen < 0:
+            flow_call = "2주 소폭 순매도 → 추세 추가 확인"
+        elif flow.two_week_lt_debt_trillion_yen > 0:
+            flow_call = "2주 순매수 → 구조적 본국회귀 확인 전"
+        else:
+            flow_call = "2주 보합"
+        lines.append(f"• 일본 해외채: {flow_call}")
+    else:
+        lines.append("• 일본 해외채: 공식 주간 자료 확인 불가")
+
+    if live_fx:
+        move = live_fx["change_pct"]
+        yen_call = "엔화 약세" if move > 0.1 else "엔화 강세" if move < -0.1 else "보합"
+        lines.append(f"• 엔화: USD/JPY {live_fx['value']:.2f} ({move:+.2f}%, {live_fx['observed_kst']} KST) → {yen_call} · 청산 확정 아님")
+    else:
+        fx_date = (market or {}).get("usdjpy_date") or "확인 불가"
+        lines.append(f"• 엔화: 최신 환율 미확보(참고 FRED {fx_date}) → 현재 청산·재구축 판정 보류")
+
+    lines += ["", "<b>이번에 바뀐 숫자</b>"]
+    for event in auction_events:
+        tenor = str(event["tenor"])
+        row = auctions.get(tenor) or {}
+        lines.append(
+            f"• JGB {tenor}년 입찰 {html.escape(str(row.get('date', '')))}: 응찰 "
+            f"{row['btc']:.2f}배(직전 {row['prev_btc']:.2f}배, {row['btc_drop_pct']:+.1f}%)"
+            f" / 꼬리 {fchr_tail(row.get('tail_bp'))}"
+        )
+    if flow:
+        lines.append(f"• 해외 중장기채: 1주 {latest} / 최근 2주 {two} ({html.escape(flow.latest_week)}까지)")
+    if market:
+        lines.append(
+            f"• 미국 국채 10년 {market['dgs10']:.3f}% ({market['dgs10_change_bp']:+.1f}bp, {market.get('dgs10_date','기준일 미상')})"
+            f" / 30년 {market['dgs30']:.3f}% ({market['dgs30_change_bp']:+.1f}bp, {market.get('dgs30_date','기준일 미상')})"
+        )
+    if fima and fima.level_bn_usd > 0:
+        lines.append(f"• Fed 외국 공식 레포 {fima.level_bn_usd:.2f}십억달러(일본 단독 사용액 아님)")
+
+    lines += [
+        "",
+        "<b>앞으로 어떻게 될까</b>",
+        f"• 현재: {outlook}",
+        "• 위험 강화: 해외채 2주 순매도 확대 + 미국 10·30년 금리 동반 상승 + 레포 비용·엔화 변동성 확대",
+        "• 위험 완화: 다음 JGB 입찰 수요 회복 + 미국채 금리 안정 + 해외채 순매도 지속 안 됨",
+        "",
+        "<b>근거·기준</b>",
+    ]
+    for event in auction_events[:2]:
+        row = auctions.get(str(event["tenor"])) or {}
+        if row.get("url"):
+            lines.append(f"• <a href=\"{html.escape(row['url'], quote=True)}\">일본 재무성 {event['tenor']}년 입찰</a>")
+    lines.append(f"• <a href=\"{MOF_WEEK}\">일본 해외증권투자</a>"
+                 f" · <a href=\"{FED_H41}\">Fed H.4.1</a>")
+    if not rate_current or not live_fx:
+        lines.append("• 주의: 각 숫자의 기준일이 다르며, 지연 수치를 실시간 방향으로 사용하지 않음")
+    lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST")
+    return title, "\n".join(lines) + "\n"
 
 
 def main() -> int:
     now = dt.datetime.now(KST)
-    for path in (ALERT_PATH, TITLE_PATH):
+    for path in (ALERT_PATH, TITLE_PATH, DETAIL_PATH):
         try:
             path.unlink()
         except FileNotFoundError:
@@ -476,7 +628,7 @@ def main() -> int:
                 "btc": new.btc,
                 "btc_drop_pct": pct(new.btc, old.btc),
                 "tail_bp": new.tail_bp,
-                "tail_widen_bp": new.tail_bp - old.tail_bp,
+                "tail_widen_bp": (new.tail_bp - old.tail_bp) if new.tail_bp is not None and old.tail_bp is not None else None,
                 "prev_date": old.date,
                 "prev_btc": old.btc,
                 "prev_tail_bp": old.tail_bp,
@@ -508,14 +660,20 @@ def main() -> int:
         auctions=auctions,
         fima=fima,
         market=market,
+        now=now,
     )
 
+    old_sources = state.get("source_dates") or {}
+    old_snapshot = state.get("snapshot") or {}
     source_dates = {
         "mof_week": flow.latest_week if flow else None,
         "jgb_yield": yields[1]["date"] if yields else None,
         "h41": fima.release_date if fima else None,
         "market": market.get("market_date") if market else None,
     }
+    # Partial source failure must not erase the prior watermark: that caused
+    # duplicate alerts on recovery in the previous implementation.
+    source_dates = {key: value if value is not None else old_sources.get(key) for key, value in source_dates.items()}
     snapshot = {
         "lt_debt_week_trillion_yen": flow.latest_lt_debt_trillion_yen if flow else None,
         "lt_debt_two_week_trillion_yen": flow.two_week_lt_debt_trillion_yen if flow else None,
@@ -524,6 +682,8 @@ def main() -> int:
         "fima_weekly_change_bn_usd": fima.weekly_change_bn_usd if fima else None,
         "market": market,
     }
+    snapshot = {key: value if value is not None else old_snapshot.get(key) for key, value in snapshot.items()}
+    auctions = {**(state.get("auctions") or {}), **auctions}
     pending = {
         "initialized": True,
         "updated_at_kst": now.isoformat(timespec="seconds"),
@@ -577,7 +737,8 @@ def main() -> int:
             row = auctions[str(event["tenor"])]
             lines.append(
                 f"• JGB {event['tenor']}년 입찰: BTC <b>{row['btc']:.3f}배</b> "
-                f"(직전 대비 {row['btc_drop_pct']:+.1f}%) / 꼬리 {row['tail_bp']:.1f}bp"
+                f"(직전 대비 {row['btc_drop_pct']:+.1f}%) / 꼬리 "
+                f"{fchr_tail(row.get('tail_bp'))}"
             )
     if fima:
         fima_text = fmt_usd_bn(fima.level_bn_usd, quote) if quote else f"{fima.level_bn_usd:.2f}십억달러"
@@ -609,7 +770,11 @@ def main() -> int:
         "",
         f"조회 {now.strftime('%Y-%m-%d %H:%M:%S')} KST",
     ]
-    ALERT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    DETAIL_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    live_fx = fetch_current_usdjpy(now)
+    alert_title, brief = build_brief_alert(events, flow, yields, auctions, fima, market, quote, now, live_fx)
+    TITLE_PATH.write_text(alert_title + "\n", encoding="utf-8")
+    ALERT_PATH.write_text(brief, encoding="utf-8")
     return 0
 
 
