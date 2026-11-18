@@ -14,7 +14,7 @@ from __future__ import annotations
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
-from html import unescape
+from html import unescape, escape as html_escape
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, quote, urlparse, unquote
@@ -314,23 +314,42 @@ def seed_ready(state,now):
             start <= now <= start+timedelta(days=4))
 
 
+def source_link(label, url):
+    """Telegram HTML anchor with a validated URL and escaped attributes."""
+    parsed=urlparse(str(url or ""))
+    if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+        raise RuntimeError("Telegram source URL must be a public HTTPS address")
+    safe_url=html_escape(url,quote=True)
+    return f'<a href="{safe_url}">{html_escape(label)}</a>'
+
+
 def seed_message():
     return "\n".join([
-        "[드러켄밀러 투자 기조 변화 | 11월 17일 TomorrowX]",
-        "판정: 행사 주최측 발표와 서로 다른 두 언론 보도 대조",
-        "■ 주식: 순노출 낮게 유지·소규모 롱/숏, 전량 매도 확정 아님",
-        "■ 구리: 매도(숏) 포지션 보유 발언",
-        "■ 경기: 2027년 하반기 둔화 가능성 경계, 지금 경기침체 확정 아님",
-        "■ 투자전략: 큰 베팅보다 자본 보존·불확실성 해소를 우선",
-        "■ 경계 신호: 신용 스프레드 확대·원자재 약세",
-        "■ AI: 인프라 투자 기업보다 AI 적용·수익모델을 중시",
-        "■ 연준: 발언의 '긴축'은 그의 정책 판단; 10월 28일 FOMC는 3.75~4.00% 동결",
-        "※ 11월 17일 발언과 9월 30일 13F 보유 신고는 날짜와 조사 대상이 다릅니다.",
-        "※ 행사 발언 전문·전체 영상은 별도 미열람. 정확한 개별 인용보다 취재로 확인된 내용만 표시.",
-        "행사 공식: "+PRIMARY_EVENT,
-        "CoinDesk: "+SEED_PUBLISHERS["CoinDesk"],
-        "Barron's: "+SEED_PUBLISHERS["Barron's"],
-        "FOMC: "+FED_OFFICIAL,
+        "<b>드러켄밀러 | 투자 기조 변화</b>",
+        "2026년 11월 17일 · TomorrowX 공개 발언 관련 보도",
+        "",
+        "<b>한눈에 보기</b>",
+        "■ <b>주식</b> 순노출 낮게 유지·소규모 매수/매도, 전량 매도 확정 아님",
+        "■ <b>구리</b> 매도(숏) 포지션 보유",
+        "■ <b>경기</b> 2027년 하반기 둔화 경계, 침체 확정 아님",
+        "■ <b>투자전략</b> 큰 베팅보다 자본 보존 우선",
+        "■ <b>위험 신호</b> 신용 스프레드 확대·원자재 약세 주시",
+        "■ <b>AI</b> 인프라 구축보다 AI 활용·수익모델에 관심",
+        "■ <b>연준</b> 추가 긴축 우려는 드러켄밀러의 견해;",
+        "  10월 28일 공식 FOMC는 기준금리 3.75~4.00% 동결",
+        "",
+        "<b>쉽게 해석하면</b>",
+        "지금은 공격적인 큰 투자보다 손실을 피하며 방향을 확인하겠다는 뜻입니다.",
+        "",
+        "<b>확인 범위</b>",
+        "※ 11월 17일 발언과 9월 30일 13F 보유 신고는 기준 시점이 다릅니다.",
+        "※ 행사 발언 전문·전체 영상은 별도 미열람; 보도로 확인된 내용만 전달.",
+        "",
+        "<b>출처 (선택하면 원문 이동)</b>",
+        source_link("CoinDesk 보도", SEED_PUBLISHERS["CoinDesk"])
+        +" · "+source_link("Barron's 보도", SEED_PUBLISHERS["Barron's"]),
+        source_link("TomorrowX 행사 안내",PRIMARY_EVENT)
+        +" · "+source_link("10/28 FOMC 공식 성명",FED_OFFICIAL),
     ])
 
 
@@ -350,15 +369,27 @@ def news_candidates(state,articles,now):
 
 
 def news_message(changed):
-    lines=["[드러켄밀러 새 공개발언 · 독립 출처 교차검증]",
-           "■ 새로운 투자 판단·포지션 변화"]
+    lines=[
+        "<b>드러켄밀러 | 새 공개발언</b>",
+        "독립 매체 2곳 이상에서 같은 투자 판단을 보도한 경우",
+        "",
+        "<b>이번 신규 변화</b>",
+    ]
     for signal,proof in changed:
-        lines.append("• "+LABELS[signal]+" (보도일 "+proof[0]["published"][:10]+")")
-        for article in proof[:2]:
-            lines.append("  "+article["publisher"]+": "+article["url"])
-    lines += ["※ 독립 언론 2곳 이상에서 같은 내용을 보도했을 때만 발송합니다.",
-              "※ 뉴스 검색 RSS 제목·요약 기반 교차검증입니다. 원문 발언 전문과 실제 포지션 명세의 직접 확인은 별개입니다.",
-              "※ 13F 분기말 주식 보유가 구리 선물·주식 공매도·현금잔액을 증명하지 않습니다."]
+        label=html_escape(LABELS[signal])
+        date=html_escape(proof[0]["published"][:10])
+        lines.append("■ <b>"+label+"</b> · 보도일 "+date)
+        original_links=[
+            source_link(a["publisher"],a["url"]) for a in proof[:2]
+        ]
+        lines.append("  원문: "+" · ".join(original_links))
+    lines += [
+        "",
+        "<b>확인 범위</b>",
+        "※ 독립 편집 매체 2곳의 보도 일치에 근거합니다.",
+        "※ 제목·요약문 기반 판정이며 발언 전문과 포지션 증빙은 별도 확인 대상입니다.",
+        "※ 분기별 13F만으로 구리 선물·공매도·현금 보유를 판단하지 않습니다.",
+    ]
     result="\n".join(lines)
     if len(result)>3600:
         raise RuntimeError("Public remarks digest unexpectedly long")
@@ -413,8 +444,8 @@ def telegram_send(message):
     if not me.get("ok") or username!=BOT_USERNAME:
         raise RuntimeError("Wrong Telegram bot; no message sent")
     from urllib.parse import urlencode
-    payload=urlencode({"chat_id":chat,"text":message,
-                       "disable_web_page_preview":"true"}).encode()
+    payload=urlencode({"chat_id":chat,"text":message,"parse_mode":"HTML",
+                       "link_preview_options":json.dumps({"is_disabled":True})}).encode()
     # Deliberate one attempt. A lost response may conceal successful delivery;
     # persistent pending state blocks all future automatic retries.
     req=Request(base+"sendMessage",data=payload)
