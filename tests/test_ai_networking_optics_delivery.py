@@ -22,6 +22,7 @@ class DeliveryTests(unittest.TestCase):
         self.ledger = {"version": 1, "bundles": {}}
         self.snapshots = []
         self.pending = {"seen_keys": ["new"], "last_checked_kst": "2026-11-18T08:00:00+09:00"}
+        self.ancestor = {"seen_keys": ["old"], "last_checked_kst": "2026-11-18T07:00:00+09:00"}
 
     def checkpoint(self, summary):
         self.snapshots.append((copy.deepcopy(self.ledger), copy.deepcopy(summary)))
@@ -30,7 +31,8 @@ class DeliveryTests(unittest.TestCase):
         return delivery.deliver_bundle(text=text, pending_state=kwargs.pop("pending_state", self.pending),
             ledger=self.ledger, route_key=kwargs.pop("route_key", "route-hash"),
             bot_username="existing_bot", source_sha="a" * 40, send=send,
-            checkpoint=kwargs.pop("checkpoint", self.checkpoint), **kwargs)
+            checkpoint=kwargs.pop("checkpoint", self.checkpoint),
+            state_ancestor=kwargs.pop("state_ancestor", self.ancestor), **kwargs)
 
     def test_partial_rejection_then_resume_sends_only_unconfirmed_part(self):
         sender = Mock(side_effect=[101, delivery.DefinitiveRejection("rate limit")])
@@ -113,6 +115,32 @@ class DeliveryTests(unittest.TestCase):
                 with self.assertRaises(delivery.AmbiguousDelivery):
                     self.call(Mock(return_value=value), text="one part")
                 self.assertEqual(next(iter(self.ledger["bundles"].values()))["status"], "ambiguous")
+
+    def test_original_state_is_pinned_and_missing_ancestor_holds_resume(self):
+        with self.assertRaises(delivery.DefinitiveRejection):
+            self.call(Mock(side_effect=[101, delivery.DefinitiveRejection("rejected")]))
+        entry = next(iter(self.ledger["bundles"].values()))
+        original = copy.deepcopy(self.ancestor)
+        self.ancestor["seen_keys"].append("later change")
+        self.assertEqual(entry["state_ancestor"], original)
+        self.assertEqual(entry["state_ancestor_sha256"], delivery.digest(original))
+        entry.pop("state_ancestor")  # Legacy unfinished bundle without its baseline.
+        saved = copy.deepcopy(self.ledger)
+        sender = Mock()
+        with self.assertRaisesRegex(RuntimeError, "original watch state"):
+            self.call(sender)
+        sender.assert_not_called()
+        self.assertEqual(self.ledger, saved)
+        self.assertEqual(entry["receipts"]["0"]["message_id"], 101)
+
+    def test_tampered_original_state_holds_before_resuming_send(self):
+        with self.assertRaises(delivery.DefinitiveRejection):
+            self.call(Mock(side_effect=[101, delivery.DefinitiveRejection("rejected")]))
+        next(iter(self.ledger["bundles"].values()))["state_ancestor"]["seen_keys"].append("tampered")
+        sender = Mock()
+        with self.assertRaisesRegex(RuntimeError, "original watch state"):
+            self.call(sender)
+        sender.assert_not_called()
 
     def test_html_split_preserves_tags_entities_and_utf16_bounds(self):
         source = '<b>' + ('한국😀 &amp; &#60;' * 400) + '</b>\n<a href="https://example.test/">' + ('링크' * 2000) + '</a>'
@@ -246,7 +274,7 @@ class PersistenceTests(unittest.TestCase):
         pending = {"seen_keys": ["new", "old"], "seen_story_records": [], "last_checked_kst": "2026-11-18T08:00:00+09:00"}
         receipt, pinned = delivery.deliver_bundle(text="complete", pending_state=pending, ledger=ledger,
             route_key="route", bot_username="existing_bot", source_sha="a" * 40,
-            send=Mock(return_value=27), checkpoint=lambda _: None)
+            send=Mock(return_value=27), checkpoint=lambda _: None, state_ancestor=self.old)
         for path, value in ((delivery.LEDGER_PATH, ledger), (delivery.DELIVERED_PENDING_PATH, pinned), (delivery.CONFIRMED_PATH, receipt)):
             delivery.atomic_json(path, value)
         return ledger, pending, receipt
@@ -277,6 +305,84 @@ class PersistenceTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "not bound"):
             delivery.persist_state()
         self.assertEqual(delivery.read_json(delivery.STATE_PATH), self.old)
+
+    def test_confirmed_legacy_bundle_without_ancestor_preserves_state_and_receipts(self):
+        ledger, _, receipt = self.complete()
+        ledger["bundles"][receipt["bundle_key"]].pop("state_ancestor")
+        delivery.atomic_json(delivery.LEDGER_PATH, ledger)
+        with self.assertRaisesRegex(RuntimeError, "original watch state"):
+            delivery.persist_state()
+        self.assertEqual(delivery.read_json(delivery.STATE_PATH), self.old)
+        self.assertEqual(delivery.read_json(delivery.LEDGER_PATH), ledger)
+        self.assertEqual(delivery.read_json(delivery.CONFIRMED_PATH), receipt)
+
+    def test_resumed_pinned_state_preserves_concurrent_additions_and_cleanup_through_commit(self):
+        def arrays(labels):
+            return {"seen_keys": list(labels), "seen_story_keys": [label + "-story" for label in labels],
+                "seen_story_records": [{"title": label} for label in labels]}
+        ancestor = {**self.old, **arrays(["existing", "removed-false-positive"])}
+        pinned = {**ancestor, **arrays(["new-delivered", "existing", "removed-false-positive"]),
+            "last_checked_kst": "2026-11-18T08:00:00+09:00"}
+        current = {**ancestor, **arrays(["existing", "concurrent-good"]),
+            "last_checked_kst": "2026-11-18T09:00:00+09:00"}
+        ledger = {"bundles": {}}
+        text = "<b>" + "가" * 4000 + "</b>"
+        common = dict(ledger=ledger, route_key="route", bot_username="existing_bot", source_sha="a" * 40,
+            checkpoint=lambda _: delivery.atomic_json(delivery.LEDGER_PATH, ledger))
+        with self.assertRaises(delivery.DefinitiveRejection):
+            delivery.deliver_bundle(text=text, pending_state=pinned, state_ancestor=ancestor,
+                send=Mock(side_effect=[101, delivery.DefinitiveRejection("rejected")]), **common)
+        delivery.atomic_json(delivery.STATE_PATH, current)
+        fresh_pending = {**current, **arrays(["different-undelivered", "existing", "concurrent-good"])}
+        sender = Mock(return_value=202)
+        receipt, confirmed_pending = delivery.deliver_bundle(text="new unrelated report", pending_state=fresh_pending,
+            state_ancestor=current, send=sender, **common)
+        sender.assert_called_once()
+        self.assertEqual(confirmed_pending, pinned)
+        self.assertEqual(receipt["state_ancestor_sha256"], delivery.digest(ancestor))
+        delivery.atomic_json(delivery.DELIVERED_PENDING_PATH, confirmed_pending)
+        delivery.atomic_json(delivery.CONFIRMED_PATH, receipt)
+        delivery.persist_state()
+        result = delivery.read_json(delivery.STATE_PATH)
+        expected = arrays(["new-delivered", "existing", "concurrent-good"])
+        for key, value in expected.items():
+            self.assertEqual(result[key], value, key)
+        self.assertEqual(result["last_checked_kst"], current["last_checked_kst"])
+
+        # Exercise the actual subsequent workflow commit helper as well.
+        snapshots = Path(self.temp.name) / "snapshots"
+        snapshots.mkdir()
+        delivery.atomic_json(snapshots / delivery.STATE_PATH.name, result)
+        delivery.atomic_json(snapshots / "base-state.json", current)
+        delivery.atomic_json(snapshots / delivery.LEDGER_PATH.name, delivery.read_json(delivery.LEDGER_PATH))
+        remote = {**current, **arrays(["existing", "concurrent-good", "concurrent-newer"]),
+            "last_checked_kst": "2026-11-18T10:00:00+09:00"}
+        delivery.atomic_json(delivery.STATE_PATH, remote)
+        delivery.merge_commit(snapshots)
+        committed = delivery.read_json(delivery.STATE_PATH)
+        for key, value in arrays(["new-delivered", "existing", "concurrent-good", "concurrent-newer"]).items():
+            self.assertEqual(committed[key], value, key)
+
+    def test_persisted_exact_payload_replay_neither_sends_nor_reapplies_new_pending(self):
+        _, _, first = self.complete()
+        delivery.persist_state()
+        current = delivery.read_json(delivery.STATE_PATH)
+        current["seen_keys"].append("concurrent-good")
+        delivery.atomic_json(delivery.STATE_PATH, current)
+        ledger = delivery.read_json(delivery.LEDGER_PATH)
+        entry = ledger["bundles"][first["bundle_key"]]
+        self.assertNotIn("state_ancestor", entry)
+        sender = Mock()
+        receipt, pending = delivery.deliver_bundle(text="complete", pending_state={"seen_keys": ["unconfirmed-new", "removed-false-positive"]},
+            ledger=ledger, state_ancestor=current, route_key="route", bot_username="existing_bot",
+            source_sha="b" * 40, send=sender, checkpoint=lambda _: None)
+        sender.assert_not_called()
+        self.assertTrue(receipt["state_already_persisted"])
+        delivery.atomic_json(delivery.CONFIRMED_PATH, receipt)
+        delivery.atomic_json(delivery.DELIVERED_PENDING_PATH, pending)
+        delivery.persist_state()
+        self.assertEqual(delivery.read_json(delivery.STATE_PATH), current)
+        self.assertEqual(delivery.read_json(delivery.LEDGER_PATH), ledger)
 
     def test_silent_baseline_keeps_prior_normal_receipt(self):
         delivery.atomic_json(delivery.PENDING_PATH, {"seen_keys": ["old"], "last_checked_kst": "2026-11-18T08:00:00+09:00"})

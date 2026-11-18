@@ -175,6 +175,9 @@ def merge_ledgers(base: dict, incoming: dict) -> dict:
         old = target[key]
         if old.get("route_key") != added.get("route_key") or old.get("part_hashes") != added.get("part_hashes"):
             raise RuntimeError("Receipt bundle identity conflict")
+        if (old.get("state_ancestor_sha256") and added.get("state_ancestor_sha256")
+                and old["state_ancestor_sha256"] != added["state_ancestor_sha256"]):
+            raise RuntimeError("Receipt bundle state ancestor conflict")
         merged = {**copy.deepcopy(old), **copy.deepcopy(added)}
         receipts = copy.deepcopy(old.get("receipts", {}))
         for index, receipt in added.get("receipts", {}).items():
@@ -193,6 +196,7 @@ def merge_ledgers(base: dict, incoming: dict) -> dict:
             merged["state_persisted"] = True
             merged.pop("parts", None)
             merged.pop("pending_state", None)
+            merged.pop("state_ancestor", None)
         target[key] = merged
     return result
 
@@ -466,7 +470,7 @@ def merge_watch_state(base: dict, incoming: dict, ancestor: dict | None = None) 
 
 def deliver_bundle(*, text: str | None, pending_state: dict | None, ledger: dict,
                    route_key: str, bot_username: str, source_sha: str,
-                   send, checkpoint) -> tuple[dict | None, dict | None]:
+                   send, checkpoint, state_ancestor: dict | None = None) -> tuple[dict | None, dict | None]:
     bundles = ledger.setdefault("bundles", {})
     if not isinstance(bundles, dict):
         raise RuntimeError("Invalid optics receipt ledger")
@@ -492,14 +496,23 @@ def deliver_bundle(*, text: str | None, pending_state: dict | None, ledger: dict
             if entry.get("status") != "complete":
                 raise RuntimeError("Unexpected inactive optics bundle state")
         else:
+            if not isinstance(state_ancestor, dict):
+                raise RuntimeError("New delivery bundle lacks its original watch state; automatic send held")
             entry = {"route_key": route_key, "bot_username": bot_username,
                      "source_sha": source_sha, "created_at_kst": stamp(), "status": "pending",
                      "parts": parts, "part_hashes": [digest(part) for part in parts],
-                     "pending_state": copy.deepcopy(pending_state), "receipts": {}, "state_persisted": False}
+                     "pending_state": copy.deepcopy(pending_state), "receipts": {}, "state_persisted": False,
+                     "state_ancestor": copy.deepcopy(state_ancestor), "state_ancestor_sha256": digest(state_ancestor)}
             bundles[key] = entry
             checkpoint({"status": "pending", "bundle_key": key})
     else:
         return None, None
+    already_persisted = entry.get("state_persisted") is True
+    if not already_persisted:
+        pinned_ancestor = entry.get("state_ancestor")
+        if (not isinstance(pinned_ancestor, dict)
+                or entry.get("state_ancestor_sha256") != digest(pinned_ancestor)):
+            raise RuntimeError("Unfinished delivery lacks a verified original watch state; automatic resend held for manual review")
     pinned_pending = copy.deepcopy(entry.get("pending_state", pending_state))
     if pinned_pending is None:
         raise RuntimeError("No pending snapshot available for confirmed bundle")
@@ -545,6 +558,8 @@ def deliver_bundle(*, text: str | None, pending_state: dict | None, ledger: dict
             "chat_identity_verified": True, "route_key": route_key, "message_ids": ids,
             "confirmed_at_kst": entry["confirmed_at_kst"], "source_sha": entry.get("source_sha", source_sha),
             "sender_source_sha": source_sha,
+            "state_already_persisted": already_persisted,
+            "state_ancestor_sha256": entry.get("state_ancestor_sha256"),
             "pending_state_sha256": digest(pinned_pending)}, pinned_pending
 
 
@@ -643,7 +658,8 @@ def send_command() -> None:
         atomic_json(LEDGER_PATH, ledger)
         atomic_json(PARTIAL_PATH, {**summary, "checked_at_kst": stamp(), "source_sha": source_sha})
     confirmed, pinned = deliver_bundle(text=text, pending_state=pending, ledger=ledger,
-        route_key=route_key, bot_username=username, source_sha=source_sha, send=send, checkpoint=checkpoint)
+        route_key=route_key, bot_username=username, source_sha=source_sha, send=send, checkpoint=checkpoint,
+        state_ancestor=read_json(STATE_PATH, {}))
     if confirmed:
         atomic_json(DELIVERED_PENDING_PATH, pinned)
         atomic_json(CONFIRMED_PATH, confirmed)
@@ -668,7 +684,18 @@ def persist_state() -> None:
                 or entry.get("route_key") != receipt.get("route_key")
                 or ids != [entry.get("receipts", {}).get(str(i), {}).get("message_id") for i in range(len(entry.get("part_hashes", [])))]):
             raise RuntimeError("Confirmed receipt is not bound to its pending state; state unchanged")
-        updated = merge_watch_state(old, pending)
+        if receipt.get("state_already_persisted") is True:
+            if entry.get("state_persisted") is not True:
+                raise RuntimeError("Already-applied receipt has no persisted bundle; state unchanged")
+            print("optics_state=already_applied_bundle_preserved")
+            return
+        ancestor = entry.get("state_ancestor")
+        if (not isinstance(ancestor, dict) or entry.get("state_ancestor_sha256") != digest(ancestor)
+                or receipt.get("state_ancestor_sha256") != digest(ancestor)
+                or not isinstance(entry.get("pending_state"), dict)
+                or digest(entry["pending_state"]) != digest(pending)):
+            raise RuntimeError("Confirmed delivery lacks a verified original watch state; state unchanged, receipts preserved")
+        updated = merge_watch_state(old, pending, ancestor)
         updated.update({"last_successful_delivery_kst": receipt["confirmed_at_kst"],
                         "telegram_message_ids": ids, "bot_username": receipt["bot_username"],
                         "telegram_chat_identity_verified": True})
@@ -676,6 +703,7 @@ def persist_state() -> None:
         entry["state_persisted"] = True  # Local snapshot; Git commits both files together.
         entry.pop("parts", None)
         entry.pop("pending_state", None)
+        entry.pop("state_ancestor", None)
         atomic_json(LEDGER_PATH, ledger)
         print("optics_state=confirmed_bundle_applied")
     elif (not ALERT_PATH.exists() and not PARTIAL_PATH.exists()
