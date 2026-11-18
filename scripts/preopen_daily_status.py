@@ -293,6 +293,13 @@ def in_workflow_run_window(now, family):
     return start <= minute_of_day < 8 * 60
 
 
+def _receipt_code_sha(topic):
+    # KOFIA refreshes main after the run is queued; the header SHA can be stale.
+    if topic == "kofia":
+        return (os.getenv("KOFIA_CODE_SHA") or "").strip() or None
+    return os.getenv("GITHUB_SHA")
+
+
 def send_message(topic, cfg, message, now):
     day = now.date().isoformat()
     prior = read_json(cfg["state"])
@@ -338,7 +345,7 @@ def send_message(topic, cfg, message, now):
         "telegram_date_utc": dt.datetime.fromtimestamp(telegram_date, dt.timezone.utc).isoformat(),
         "message_sha256": hashlib.sha256(message.encode("utf-8")).hexdigest(),
         "run_id": os.getenv("GITHUB_RUN_ID"),
-        "code_sha": os.getenv("GITHUB_SHA"),
+        "code_sha": _receipt_code_sha(topic),
         "status": message.splitlines()[2] if len(message.splitlines()) > 2 else None,
     }
     cfg["receipt"].parent.mkdir(parents=True, exist_ok=True)
