@@ -43,6 +43,30 @@ class AlertOperationsAuditTest(unittest.TestCase):
             self.assertEqual(summary["risk_counts"]["schedule_workflow_run_cancellation_risk"], 1)
             self.assertEqual(summary["risk_counts"]["no_manual_dispatch_for_scheduled_watch"], 1)
 
+    def test_validated_helper_is_receipt_but_plurals_alone_are_not(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = pathlib.Path(directory)
+            good = base / "europe-sovereign-yield-telegram-watch.yml"
+            good.write_text(
+                'jobs:\\n  send:\\n    steps:\\n      - run: |\\n'
+                '          result = sendMessage(data)\\n'
+                '          ids.append(verified_telegram_message_id(result, chat_id))\\n',
+                encoding="utf-8",
+            )
+            bad = base / "weak-telegram-watch.yml"
+            bad.write_text(
+                'jobs:\\n  send:\\n    steps:\\n      - run: |\\n'
+                '          sendMessage(data)\\n'
+                '          message_ids = []\\n',
+                encoding="utf-8",
+            )
+            self.assertTrue(audit.inspect_workflow(good)["receipt_marker"])
+            self.assertNotIn("direct_send_without_message_id_check",
+                             audit.inspect_workflow(good)["risks"])
+            self.assertFalse(audit.inspect_workflow(bad)["receipt_marker"])
+            self.assertIn("direct_send_without_message_id_check",
+                          audit.inspect_workflow(bad)["risks"])
+
     def test_runtime_preserves_failure_cancel_and_disabled_distinction(self):
         rows = [
             {"id": 1, "path": ".github/workflows/a.yml", "event": "pull_request", "conclusion": "success", "created_at": "2026-10-12T14:00:00Z"},
