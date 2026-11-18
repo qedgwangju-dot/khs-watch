@@ -49,6 +49,7 @@
     "4bc784e14f64b8b907d33c16",
     "4e412b185eb4de9386cc681b",
     "4ed5fd946bab074c0ac0ff69",
+    "53075254837c65b1fb588be5",
     "5606a5c49d34ca5f6b175e19",
     "59b05956390dd11da1d281ae",
     "5cdf82875f0e28d0a8611698",
@@ -125,15 +126,52 @@
     "ff4707277a835ddad5df4280"
   ],
   "last_alert": {
-    "at_kst": "2026-10-20T21:39:24+09:00",
+    "at_kst": "2026-11-18T09:08:27+09:00",
     "count": 1
   },
-  "updated_at_kst": "2026-11-02T18:56:35+09:00",
-  "last_scan_items": 3,
-  "last_new_signal_count": 0,
+  "updated_at_kst": "2026-11-18T09:08:27+09:00",
+  "last_scan_items": 1,
+  "last_new_signal_count": 1,
   "last_official": {
     "한국": "확인 불가",
     "일본": "확인 불가"
   },
-  "errors": []
+  "errors": [],
+  "sentiment_baseline_sent": true,
+  "sentiment_study": {
+    "source_kind": "한경·뉴엔AI 퀘타아이 민간 소셜게시물 AI 감성분석·제조사 공식 실판매 아님",
+    "published_date": "2026-11-18",
+    "observation_period": "2026-01-01..2026-10-31",
+    "source_url": "https://www.hankyung.com/article/202611172385g",
+    "fold8_positive_pct": 50.2,
+    "fold8_negative_pct": 8.3,
+    "duo_positive_pct": 21.2,
+    "duo_negative_pct": 24.6,
+    "fold8_net_sentiment_pp": 41.9,
+    "duo_net_sentiment_pp": -3.4,
+    "net_sentiment_gap_pp": 45.3,
+    "fold8_mention_count_reported": 109825,
+    "duo_mention_count_reported": 72070,
+    "naver_search_period": "2026-10-13..2026-11-12",
+    "fold8_naver_search_count": 103000,
+    "duo_naver_search_count": 588800,
+    "search_is_sales": false,
+    "sample_versus_market": "게시물 감정·검색 관심도. 전체 소비자 선호도·판매대수·기술 세대 증명 아님",
+    "independent_directional_source": "https://blog.hashscraper.com/posts/why-was-the-iphone-duo-remembered-for-its-hinge-iphone-duo-vs-galaxy-fold8-through-2-485-social-mentions-in-their-first-week-after-launch?locale=ko",
+    "independent_sample_period": "2026-10-22..2026-10-28",
+    "independent_classified_posts_fold8": 838,
+    "independent_classified_posts_duo": 1047,
+    "independent_negative_pct_fold8": 17.5,
+    "independent_negative_pct_duo": 51.5,
+    "independent_denominator_note": "해시스크래퍼는 뉴스 포함·출시 첫주 표본, 퀘타아이와 비율 합산 금지",
+    "fold8_korean_weekly_sales_change_at_least_pct_reported": 20.0,
+    "fold8_korean_weekly_sales_period": "2026-10-23..2026-10-29 vs 2026-10-16..2026-10-22",
+    "fold8_sales_source": "https://nwww.newsis.com/view/NISX20261103_0003851966",
+    "fold8_sales_status": "통신업계 익명 보도·실제 절대 판매 대수·삼성 공식 수치 미공개",
+    "apple_display_issue_source": "https://www.reuters.com/business/media-telecom/apple-says-it-will-replace-iphone-duo-units-showing-screen-problems-2026-10-26/",
+    "apple_display_issue_status": "애플은 소수 내측화면 문제 인정·교환 안내. 불량률·원인·전량 리콜 미확인"
+  },
+  "sentiment_fact_keys": [
+    "quettai_hankyung_20261118_fold8_vs_duo_2026jan_oct"
+  ]
 }
