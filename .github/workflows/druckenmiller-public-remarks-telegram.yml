@@ -33,7 +33,7 @@ jobs:
       THIRTEENF_TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
       THIRTEENF_TELEGRAM_CHAT_ID: ${{ secrets.THIRTEENF_TELEGRAM_CHAT_ID }}
       KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
-      DRUCKENMILLER_PROBE_ONLY: "false"  # one approved real first-event delivery; restore after receipt
+      DRUCKENMILLER_PROBE_ONLY: ${{ github.event_name == 'push' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.probe_only && 'true' || 'false') }}
 
     steps:
       - name: Checkout the existing repo
