@@ -1,0 +1,49 @@
+name: Correct verified optics duplicate 20261118
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/optics-duplicate-correction-20261118.yml
+      - scripts/repair_optics_duplicate_20261118.py
+      - tests/test_repair_optics_duplicate_20261118.py
+      - tests/fixtures/optics_duplicate_20261118_original.html
+
+permissions:
+  contents: read
+
+concurrency:
+  group: optics-duplicate-correction-20261118
+  cancel-in-progress: false
+
+jobs:
+  correct:
+    if: github.repository == 'qedgwangju-dot/khs-watch' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact reviewed revision
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: ${{ github.sha }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify correction cannot target another message or send a new one
+        run: python -m unittest discover -s tests -p test_repair_optics_duplicate_20261118.py -v
+      - name: Correct only confirmed duplicate message 504
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+          EXPECTED_TELEGRAM_BOT_USERNAME: khs88798879887988798879_bot
+        run: python -m scripts.repair_optics_duplicate_20261118 --original-path tests/fixtures/optics_duplicate_20261118_original.html
+      - name: Upload exact correction result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: optics-duplicate-correction-20261118-${{ github.run_id }}
+          path: out/optics_duplicate_20261118_correction.json
+          if-no-files-found: warn
+          retention-days: 14
