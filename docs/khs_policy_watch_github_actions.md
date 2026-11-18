@@ -11,6 +11,13 @@ This repository runs the KHS policy/regulatory watch.
 - Opens a GitHub issue only when a new high-impact candidate is detected.
 - Stores seen fingerprints in `data/khs_policy_watch_seen.json` so repeated items are not alerted again.
 
+## Timeline Contract
+
+- Include a timeline for every policy item, including within a multi-item or preliminary-news alert.
+- Keep proposal, comment deadline, adoption/signing, release, gazette publication, effective date, and compliance date separate when verified. Keep local legal dates and label any KST timestamp separately.
+- Use source publication or media dates only as source milestones, never as official action dates. Do not turn a planned or unverified date into a confirmed date. If a date cannot be verified, mark that it still needs source confirmation.
+- Preserve source-specific timelines and original links. A timeline-only formatting change must not resend a previously confirmed alert. Source health alerts are not policy events.
+
 ## Required Setup
 
 ### 1. Add DART API Secret

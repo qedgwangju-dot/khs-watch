@@ -660,6 +660,7 @@ def format_policy_message(
         now = now.astimezone(KST)
 
     title, body = normalize_policy_structure(title, body)
+    body = fill_policy_timelines(body)
     # Keep an already-rendered FX basis on an idempotent second pass.
     # When raw amounts require conversion, discard any stale preexisting basis.
     body = "\n".join(
@@ -737,6 +738,127 @@ def _timeline_parse_day(value: object) -> dt.date | None:
 
 def _timeline_ko_date(day: dt.date) -> str:
     return f"{day.year}년 {day.month}월 {day.day}일"
+
+
+_POLICY_ITEM_HEADING = re.compile(r"(?m)^(?:##[ \t]+)?\d+\.[ \t]+\[[^\]\n]+\][ \t]+\S")
+_POLICY_CORE_ROW = re.compile(r"(?m)^-\s*(?:핵심|핵심 변화|핵심 내용)\s*:")
+_POLICY_SOURCE_ROW = re.compile(r"^\s*-\s*(?:출처|원문/출처|근거·교차검증)\s*:")
+_POLICY_TIMELINE_ROW = re.compile(r"^\s*(?:-\s*)?타임라인(?:\s*:\s*(.*))?\s*$")
+_TIMELINE_CALENDAR = re.compile(
+    r"20\d{2}-\d{2}-\d{2}|(?:20\d{2}\s*년\s*)?\d{1,2}\s*월\s*\d{1,2}\s*일|"
+    r"20\d{2}\s*(?:회계연도|년)"
+)
+_TIMELINE_OPEN = re.compile(r"미확인|미공개|미확정|미정|확인 필요|별도 확인")
+_EXPLICIT_POLICY_DATES = re.compile(
+    r"^\s*-\s*(?P<stage>서명일|의결일|채택일|발표일|공고일|공개일|보도일|"
+    r"공식 발표일|공식 공개일|관보 게재일|연방관보 게시일|"
+    r"규칙안 공개일|의견수렴 마감일|발효일|시행일|준수일)\s*:\s*"
+    r"(?P<day>20\d{2}-\d{2}-\d{2}|20\d{2}년\s*\d{1,2}월\s*\d{1,2}일)"
+    r"(?P<suffix>\s*(?:(?:\d{1,2}:\d{2}\s+)?KST|\([^\n]+\)|예정|목표|미확정))?\s*[.]?\s*$"
+)
+_SOURCE_DATE_IN_ROW = re.compile(
+    r"·\s*(?P<stage>원문 공개일|원천시각)\s*"
+    r"(?P<day>20\d{2}-\d{2}-\d{2}(?:T\d{2}:\d{2}(?::\d{2})?\+09:00)?|"
+    r"20\d{2}년\s*\d{1,2}월\s*\d{1,2}일)(?P<kst>\s+\d{1,2}:\d{2}\s+KST)?"
+)
+
+
+def _policy_item_blocks(body: str) -> tuple[str, list[str]]:
+    starts = [match.start() for match in _POLICY_ITEM_HEADING.finditer(body)]
+    if starts:
+        return body[:starts[0]], [body[a:b] for a, b in zip(starts, starts[1:] + [len(body)])]
+    if _POLICY_CORE_ROW.search(body) and any(_POLICY_SOURCE_ROW.match(line) for line in body.splitlines()):
+        return "", [body]
+    return body, []
+
+
+def _timeline_block(lines: list[str]) -> tuple[int, int, str] | None:
+    for start, line in enumerate(lines):
+        match = _POLICY_TIMELINE_ROW.match(line)
+        if not match:
+            continue
+        end = start + 1
+        while end < len(lines) and lines[end].lstrip().startswith(("•", "·")):
+            end += 1
+        return start, end, " ".join([match[1] or "", *lines[start + 1:end]])
+    return None
+
+
+def _timeline_has_evidence_or_limit(timeline: str) -> bool:
+    return bool(_TIMELINE_CALENDAR.search(timeline) or _TIMELINE_OPEN.search(timeline))
+
+
+def _timeline_from_article_fields(lines: list[str]) -> list[str]:
+    dates: dict[tuple[dt.date, str], None] = {}
+    for line in lines:
+        match = _EXPLICIT_POLICY_DATES.match(line)
+        day = _timeline_parse_day(match["day"]) if match else None
+        if day:
+            label = match["stage"]
+            if match["suffix"]:
+                label += f" · {match['suffix'].strip()}"
+            dates[(day, label)] = None
+    if not dates:
+        for line in lines:
+            if not _POLICY_SOURCE_ROW.match(line):
+                continue
+            match = _SOURCE_DATE_IN_ROW.search(line)
+            day = _timeline_parse_day(match["day"]) if match else None
+            if day:
+                label = "원문 공개일" if match["stage"] == "원문 공개일" else "원천 기록일"
+                if match["kst"] or match["day"].endswith("+09:00"):
+                    label += "(KST)"
+                dates[(day, label)] = None
+                break
+    follow_up = "  • 후속 일정: 원문 확인 필요"
+    if not dates:
+        return [follow_up]
+    ordered = sorted(dates, key=lambda event: event[0])
+    return [*(f"  • {_timeline_ko_date(day)}: {stage}" for day, stage in ordered), follow_up]
+
+
+def fill_policy_timelines(body: str) -> str:
+    """Ensure chronology per article without turning timestamps into legal dates."""
+    prefix, blocks = _policy_item_blocks(body)
+    if not blocks:
+        return body
+    rendered = []
+    for block in blocks:
+        lines = block.splitlines()
+        existing = _timeline_block(lines)
+        if existing:
+            _, end, content = existing
+            if not _timeline_has_evidence_or_limit(content):
+                lines[end:end] = _timeline_from_article_fields(lines)
+        else:
+            source = next((i for i, line in enumerate(lines) if _POLICY_SOURCE_ROW.match(line)), len(lines))
+            lines[source:source] = ["- 타임라인:", *_timeline_from_article_fields(lines)]
+        rendered.append("\n".join(lines).rstrip())
+    return prefix + "\n\n".join(rendered)
+
+
+def policy_document_source_timeline_lines(alert: dict) -> list[str]:
+    """Prefer documentary milestones, then label the source date as provenance only."""
+    timeline = presidential_action_timeline_lines(alert)
+    if timeline:
+        return timeline
+    source = str(alert.get("source") or "").lower()
+    gazette = source.startswith("federal register ")
+    publication = _timeline_parse_day(alert.get("publication_date")) if gazette else None
+    raw_timestamp = str(alert.get("published_kst") or "")
+    # For FR rows, published_kst may be a date-only conversion or a signing date.
+    reference = publication if gazette else _timeline_parse_day(raw_timestamp)
+    if not reference:
+        return []
+    if gazette:
+        label = "연방관보 문서 게재일(미국 현지 날짜)"
+    else:
+        label = "원천 기록일" + ("(KST)" if raw_timestamp.endswith("+09:00") else "")
+    return [
+        "- 타임라인:",
+        f"  • {_timeline_ko_date(reference)}: {label}",
+        "  • 발효·준수 등 후속 일정: 원문 확인 필요",
+    ]
 
 
 def _presidential_action_surface(value: object) -> str:
@@ -1006,6 +1128,11 @@ def validate_final_policy_message(title: str, body: str) -> list[str]:
             errors.append("source_link_raw_or_markdown_url_present")
         if "원문 보기" in stripped or "원문뉴스보기" in stripped:
             errors.append("source_link_verbose_label_present")
+    _, blocks = _policy_item_blocks(re.sub(r"<[^>]+>", "", body))
+    for index, block in enumerate(blocks, 1):
+        timeline = _timeline_block(block.splitlines())
+        if not timeline or not _timeline_has_evidence_or_limit(timeline[2]):
+            errors.append(f"policy_timeline_missing:item_{index}")
     if presidential_action_timeline_required(plain_combined):
         if "- 타임라인:" not in plain_combined:
             errors.append("presidential_action_timeline_missing")

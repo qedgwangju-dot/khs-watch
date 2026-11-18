@@ -130,6 +130,75 @@ class ReadabilityTests(unittest.TestCase):
         title, body = render_cases(CASES)
         self.assertEqual(formatter.format_policy_message(title, body, rates={}, now=NOW), (title, body))
 
+    def test_each_item_keeps_its_own_timeline(self) -> None:
+        raw = "\n".join([
+            "2026년 10월 4일 12:00 KST",
+            "1. [상·확정] 첫 규칙",
+            "- 핵심: 원문에서 첫 규칙의 준수 의무를 확인했습니다.",
+            "- 타임라인: 미국 현지 날짜 기준",
+            "  • 2026년 10월 2일: 관보 게재 및 발효",
+            "  • 2026년 11월 2일: 준수 의무 시작",
+            "- 출처: [원문](https://example.gov/first)",
+            "2. [상·공식 확인 전] 후속 검토 보도",
+            "- 핵심: 기관이 변경안을 검토하고 있다고 보도했습니다.",
+            "- 타임라인:",
+            "- 출처: [원문](https://example.com/report) · 원천시각 2026년 10월 3일 22:01 KST · 조회 12:00 KST",
+            "3. [중·예비] 다음 정책 단계 미확인",
+            "- 핵심: 검토 사실만 확인됐습니다.",
+            "- 출처: [원문](https://example.gov/third) · 조회 12:00 KST",
+        ])
+        self.assertIn("policy_timeline_missing:item_2", formatter.validate_final_policy_message("정책 워치", raw))
+        self.assertIn("policy_timeline_missing:item_3", formatter.validate_final_policy_message("정책 워치", raw))
+        title, body = formatter.format_policy_message("정책 워치", raw, rates={}, now=NOW)
+        self.assertEqual(formatter.validate_final_policy_message(title, body), [])
+        _, blocks = formatter._policy_item_blocks(body)
+        self.assertEqual(len(blocks), 3)
+        self.assertEqual(body.count("- 타임라인:"), 3)
+        self.assertIn("2026년 11월 2일: 준수 의무 시작", blocks[0])
+        self.assertIn("2026년 10월 3일: 원천 기록일(KST)", blocks[1])
+        self.assertNotIn("준수 의무 시작", blocks[1])
+        self.assertNotIn("2026년 10월 4일", blocks[2])
+        self.assertIn("후속 일정: 원문 확인 필요", blocks[2])
+        self.assertEqual(formatter.format_policy_message(title, body, rates={}, now=NOW), (title, body))
+        preview = formatter.prepare_telegram_html(title, body)
+        parser = TelegramHTML()
+        parser.feed(preview)
+        self.assertEqual(parser.urls, ["https://example.gov/first", "https://example.com/report", "https://example.gov/third"])
+        self.assertIn("<b>2026년 10월 3일</b>: 원천 기록일(KST)", preview)
+
+    def test_standalone_policy_keeps_planned_date_and_health_alert_stays_unchanged(self) -> None:
+        raw = (
+            "- 핵심: 당국이 규칙안을 공개했습니다.\n"
+            "- 시행일: 2027년 1월 15일 목표\n"
+            "- 공개일: 2026-10-01\n"
+            "- 출처: [원문](https://example.gov/draft)\n"
+        )
+        title, body = formatter.format_policy_message("정책 워치", raw, rates={}, now=NOW)
+        self.assertEqual(formatter.validate_final_policy_message(title, body), [])
+        public_day = "2026년 10월 1일: 공개일"
+        target_day = "2027년 1월 15일: 시행일 · 목표"
+        self.assertLess(body.index(public_day), body.index(target_day))
+
+        health = "⚠️ 정책 워치 소스 점검 알림\n1. 금융위\n- 조회시각: 2026-10-04T12:00:00+09:00\n"
+        self.assertEqual(formatter.format_policy_message("소스 점검", health, rates={}, now=NOW), ("소스 점검", health))
+
+    def test_gazette_date_is_not_signing_effective_or_observed_date(self) -> None:
+        alert = {
+            "source": "Federal Register FCC",
+            "title": "Example Rule",
+            "document_type": "Rule",
+            "publication_date": "2026-10-02",
+            "signing_date": "2026-09-30",
+            "published_kst": "2026-10-03T01:00:00+09:00",
+            "effective_on": "2026-09-30",
+        }
+        lines = formatter.policy_document_source_timeline_lines(alert)
+        self.assertIn("  • 2026년 10월 2일: 연방관보 문서 게재일(미국 현지 날짜)", lines)
+        self.assertIn("  • 발효·준수 등 후속 일정: 원문 확인 필요", lines)
+        self.assertNotIn("9월 30일", "\n".join(lines))
+        self.assertNotIn("10월 3일", "\n".join(lines))
+        self.assertEqual(formatter.policy_document_source_timeline_lines(dict(alert, publication_date="")), [])
+
     def test_html_headings_dates_and_clickable_links(self) -> None:
         title, body = render_cases(CASES[:3])
         message = formatter.prepare_telegram_html(title, body)
