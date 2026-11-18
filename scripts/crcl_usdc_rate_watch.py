@@ -27,7 +27,7 @@ BLACKROCK_USDXX_ALT_URL = "https://www.blackrock.com/cash/en-us/products/329365/
 NYFED_SOFR_URL = "https://www.newyorkfed.org/markets/reference-rates/sofr"
 TREASURY_CURVE_URL = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView"
 PROSHARES_TBX_URL = "https://www.proshares.com/our-etfs/leveraged-and-inverse/tbx"
-SEC_CRCL_Q2_URL = "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+SEC_CRCL_Q3_URL = "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
 YAHOO_CHART = "https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
 CHARTEXCHANGE_CRCL_URL = "https://chartexchange.com/symbol/nyse-crcl/historical/"
 
@@ -363,30 +363,61 @@ def chartexchange_crcl_daily() -> dict:
 
 
 def verified_crcl_daily() -> dict:
+    """Require matching market dates and close proximity; use Yahoo's final close.
+
+    ChartExchange can differ by a cent even when Yahoo and Circle IR agree.
+    Never present that difference as exact equality or accept mismatched dates.
+    """
     cx = chartexchange_crcl_daily()
     yahoo = yahoo_daily("CRCL")
+    if str(cx.get("date") or "") != str(yahoo.get("date") or ""):
+        raise RuntimeError(
+            f"CRCL cross-source close date mismatch: ChartExchange={cx.get('date')} Yahoo={yahoo.get('date')}"
+        )
     cx_close = float(cx["close"])
     yahoo_close = float(yahoo["close"])
-    same_date = str(cx.get("date") or "") == str(yahoo.get("date") or "")
-    gap_pct = abs(cx_close - yahoo_close) / cx_close * 100.0 if cx_close else 0.0
-
-    if not same_date:
-        status = "yahoo_lagging" if str(yahoo.get("date") or "") < str(cx.get("date") or "") else "date_mismatch"
-    elif gap_pct <= 0.10:
-        status = "confirmed"
-    else:
-        status = "discrepant"
-
-    result = dict(cx)
+    gap_pct = abs(cx_close - yahoo_close) / yahoo_close * 100.0 if yahoo_close else float("inf")
+    if gap_pct > 0.10:
+        raise RuntimeError(
+            f"CRCL cross-source close discrepancy: ChartExchange={cx_close:.2f} Yahoo={yahoo_close:.2f}"
+        )
+    same_close = round(cx_close, 2) == round(yahoo_close, 2)
+    same_pct = round(float(cx.get("daily_pct", 0)), 2) == round(float(yahoo.get("daily_pct", 0)), 2)
+    result = dict(yahoo)
     result.update({
-        "crosscheck_source": "Yahoo Finance chart",
-        "crosscheck_date": yahoo.get("date"),
-        "crosscheck_close": yahoo_close,
-        "crosscheck_daily_pct": float(yahoo.get("daily_pct", 0.0) or 0.0),
-        "crosscheck_gap_pct": round(gap_pct, 3),
-        "crosscheck_status": status,
+        "source": "Yahoo Finance daily chart",
+        "source_url": "https://finance.yahoo.com/quote/CRCL/history/",
+        "crosscheck_source": "ChartExchange historical",
+        "crosscheck_date": cx["date"],
+        "crosscheck_close": cx_close,
+        "crosscheck_daily_pct": float(cx.get("daily_pct", 0.0) or 0.0),
+        "crosscheck_gap_pct": round(gap_pct, 4),
+        "crosscheck_status": "confirmed" if same_close and same_pct else "rounding_difference",
     })
     return result
+
+
+def validate_crcl_telegram_response(response: dict, *, configured_chat: str) -> int:
+    """Validate the destination of an actual sendMessage acknowledgment."""
+    if not isinstance(response, dict) or response.get("ok") is not True:
+        raise RuntimeError("Telegram sendMessage did not confirm success")
+    result = response.get("result")
+    if not isinstance(result, dict) or not isinstance(result.get("chat"), dict):
+        raise RuntimeError("Telegram sendMessage missing result.chat")
+    chat = result["chat"]
+    expected = str(configured_chat or "").strip()
+    if expected.startswith("@"):
+        actual = str(chat.get("username") or "").strip().lstrip("@")
+        if not expected[1:] or actual.casefold() != expected[1:].casefold():
+            raise RuntimeError("Telegram destination username mismatch")
+    elif not expected or not expected.lstrip("-").isdigit() or (
+        type(chat.get("id")) is not int or str(chat["id"]) != expected
+    ):
+        raise RuntimeError("Telegram destination chat.id mismatch")
+    message_id = result.get("message_id")
+    if type(message_id) is not int or message_id <= 0:
+        raise RuntimeError("Telegram sendMessage missing valid message_id")
+    return message_id
 
 
 def fmt_money_b(b: float, fx: float) -> str:
@@ -673,8 +704,8 @@ def main() -> None:
             "CRCL의 직접 실적 변수는 TBX가 아니라 <b>USDC 유통량 × 단기금리(USDXX·SOFR·3개월 국채)</b>입니다.</blockquote>",
             "",
             "<b>고정 기준</b>",
-            "• 2026년 2분기 Circle 준비금 수익은 전체 매출의 95.2%",
-            "• 2026년 6월 말 USDC 준비금 약 84%가 Circle Reserve Fund에 편입",
+            "• 2026년 3분기 Circle 준비금 수익 6.58억달러 / 총매출·준비금 수익 8.65억달러(약 76.1%, 분기 기준)",
+            "• 2026년 3분기 서클 실제 준비금 수익률 3.54%; USDXX 펀드의 일별 7일 SEC 수익률과 다름",
             "• TBX는 7~10년 미 국채 가격의 일간 -1배 상품이라 장기 할인율 방향 확인용이며, 준비금 수익의 직접 기준금리가 아님",
             "",
             f"<b>원화 환산</b> · 1달러={fx_rate:,.2f}원 · 기준일 {html.escape(str(fx.get('date')))} · {html.escape(str(fx.get('source')))}",
@@ -685,7 +716,7 @@ def main() -> None:
             f'• SOFR(New York Fed): <a href="{NYFED_SOFR_URL}">원문</a>',
             f'• 미 국채 금리: <a href="{treasury.get("url") or TREASURY_CURVE_URL}">원문</a>',
             f'• TBX(ProShares): <a href="{PROSHARES_TBX_URL}">원문</a>',
-            f'• Circle 2Q26 10-Q(SEC): <a href="{SEC_CRCL_Q2_URL}">원문</a>',
+            f'• Circle 3Q26 10-Q(SEC): <a href="{SEC_CRCL_Q3_URL}">원문</a>',
             "",
             "※ Circle USDC 공식 웹페이지 유통량은 0.1십억달러 단위 표시라 세부 온체인 수치와 소폭 차이가 날 수 있습니다.",
         ]
