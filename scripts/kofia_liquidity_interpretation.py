@@ -179,7 +179,9 @@ elif dep5_dir == '감소' and cr5_dir == '증가':
     )
 elif dep5_dir == '증가' and cr5_dir != '증가':
     summary_line = (
-        "• <b>종합</b>: 투자자예탁금은 늘고 신용융자 잔액 증가는 제한적인 현금성 잔액 개선 조합입니다."
+        f"• <b>종합</b>: 5D 기준 투자자예탁금 {fmt(dep5)}는 증가, "
+        f"신용융자 {fmt(cr5)}는 {cr5_dir}입니다. "
+        "잔액 차이만으로 실제 매매나 동일 자금의 이동은 확인할 수 없습니다."
     )
 else:
     summary_line = (

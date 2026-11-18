@@ -209,7 +209,14 @@ def run_all():
     trial("five-day low cash and high leverage", expected="신용거래 확대 부담을 점검할 조합")
     trial("five-day improving cash", overrides={
         "deposit":{"d5":5_000_000}, "credit":{"d5":-150_000}
-    }, expected="현금성 잔액 개선 조합")
+    }, expected="5D 기준 투자자예탁금 +5.00조는 증가, 신용융자 -0.15조는 감소입니다.")
+    trial("five-day credit is flat", overrides={
+        "deposit":{"d5":5_000_000}, "credit":{"d5":0}
+    }, expected="5D 기준 투자자예탁금 +5.00조는 증가, 신용융자 +0.00조는 보합입니다.")
+    trial("five-day summary cannot omit its horizon", overrides={
+        "deposit":{"d5":5_000_000}, "credit":{"d5":-150_000}
+    }, corrupt=lambda text: text.replace('5D 기준 투자자예탁금 +5.00조는 증가',
+                                         '투자자예탁금 +5.00조는 증가', 1))
     trial("MMF smaller-than-material movement", overrides={
         "mmf":{"d1":125_000}
     }, expected="당일 MMF는 유의미한 증감 없이 보합")

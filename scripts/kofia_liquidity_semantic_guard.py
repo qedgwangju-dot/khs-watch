@@ -275,6 +275,21 @@ def validate(text, state):
         )
     expect(summary.startswith('• <b>종합</b>: ' + ' '.join(period_claims) + ' '),
            'summary daily/five-period relationship differs from raw values')
+    dep = values['deposit']
+    credit = values['credit']
+    daily_improvement = all(
+        direction(values[key]['d1'], values[key]['value']) == expected
+        for key, expected in (('deposit', '증가'), ('cma', '증가'),
+                              ('mmf', '감소'), ('credit', '감소'))
+    )
+    dep_five = direction(dep['d5'], dep['value'])
+    credit_five = direction(credit['d5'], credit['value'])
+    if not daily_improvement and dep_five == '증가' and credit_five != '증가':
+        expect(
+            f"5D 기준 투자자예탁금 {amount(dep['d5'])}조는 증가, "
+            f"신용융자 {amount(credit['d5'])}조는 {credit_five}입니다." in summary,
+            'summary must identify the five-period basis and both signed changes',
+        )
     if not opposite and not flat_change:
         expect('일치하지 않습니다' not in summary,
                'matching daily/five-period directions mislabeled as disagreement')
