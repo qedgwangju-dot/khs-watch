@@ -3207,7 +3207,7 @@ def hbm4e_positive_customer_feedback(text: str) -> bool:
     Require product, feedback/evaluation and positivity within one clause so
     unrelated positive news or article sidebars cannot imply customer approval.
     """
-    for clause in re.split(r"(?<!\\d)\\.(?!\\d)|[。；;\\n]+", text or ""):
+    for clause in re.split(r"(?<!\d)\.(?!\d)|[。；;\n]+", text or ""):
         low = clause.casefold()
         if "hbm4e" not in low:
             continue
