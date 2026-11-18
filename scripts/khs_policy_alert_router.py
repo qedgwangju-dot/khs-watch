@@ -18,9 +18,9 @@ try:
 except ImportError:  # pragma: no cover - supports module-style local tests.
     from scripts.khs_compact_text import concise_text
 try:
-    from khs_policy_telegram_formatter import presidential_action_timeline_lines
+    from khs_policy_telegram_formatter import policy_document_source_timeline_lines
 except ImportError:  # pragma: no cover - supports module-style local tests.
-    from scripts.khs_policy_telegram_formatter import presidential_action_timeline_lines
+    from scripts.khs_policy_telegram_formatter import policy_document_source_timeline_lines
 
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
@@ -1026,7 +1026,7 @@ def source_markdown(alert: dict) -> str:
 def policy_timeline_lines(alert: dict) -> list[str]:
     section = alert.get("fcc_sim_fraud_section")
     if not section or not alert.get("body_verified"):
-        return presidential_action_timeline_lines(alert)
+        return policy_document_source_timeline_lines(alert)
     lines = [
         f"- 대상: 미국 이동통신사업자(47 CFR {section})",
         "- 타임라인: 미국 현지 날짜 기준",

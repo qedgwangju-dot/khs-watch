@@ -5675,10 +5675,10 @@ def render_auction115_compact_body(now: dt.datetime) -> str:
     )
     return "\n".join([
         f"{now:%Y년 %m월 %d일 %H:%M KST} · FCC 공식 확인",
-        "- 핵심: 2027년 4월 27일 · 3.98~4.14GHz · 160MHz · 3,248개 면허",
+        "- 핵심: FCC가 상단 C대역 3.98~4.14GHz(160MHz) 면허 3,248개를 경매합니다.",
         "- 1,000억달러: Auction 115 단일액 아님 · 향후 여러 경매 누적 전망",
         "- 국내: KMW·에이스테크 / 쏠리드 / 에치에프알 — Auction 115 확정 수주 아님",
-        "- 역풍: 상위 75개 PEA 2030년 12월 31일, 기타 2031년 7월 1일 → 장비매출 시차",
+        "- 타임라인: 2027년 4월 27일 경매 예정 · 지상 서비스 개시 가능일: 상위 75개 PEA 2030년 12월 31일, 기타 2031년 7월 1일(미 현지)",
         f'- 다음: 낙찰자 → 통신사 CAPEX → 삼성전자·Ericsson·Nokia 수주 → 국내 주문 · <a href="{reuters_url}">Reuters</a>',
         f'- 출처: <a href="{fcc_url}">FCC 원문</a>',
     ]) + "\n"
