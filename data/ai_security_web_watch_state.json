@@ -5,14 +5,10 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [
-      "Google News RSS 실패: \"Cathedral\" \"Anthropic\" (security research OR breach OR… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"CYFIRMA\" \"PHP2Shell\" (216 OR scanning OR Lazarus OR co… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (\"AI worm\" OR \"self-propagating AI\" OR \"autonomous AI r… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
+    "errors": [],
     "material_items": 11,
     "new_material_items": 0,
-    "raw_items": 94,
+    "raw_items": 96,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -361,16 +357,6 @@
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQb01MWVUxZF90YV9yNDNpcEdEWkJzOEx5VTEzbGRkT3JpX1kyd21Ta2FsSkFDY0tHMGpNNkNOSmpybGcyYUxWbjd0eXhiNnBFZXlLbElVODJmbGJKLTBuU0xUdzBoU3FER19WWEVxSWUtRmhqZjR5R1Q3Nks5WmdSMU5tNldNckk0clRkQ1AyVXVHcXEzVjRlTFliNC1ld9IBngFBVV95cUxQb01MWVUxZF90YV9yNDNpcEdEWkJzOEx5VTEzbGRkT3JpX1kyd21Ta2FsSkFDY0tHMGpNNkNOSmpybGcyYUxWbjd0eXhiNnBFZXlLbElVODJmbGJKLTBuU0xUdzBoU3FER19WWEVxSWUtRmhqZjR5R1Q3Nks5WmdSMU5tNldNckk0clRkQ1AyVXVHcXEzVjRlTFliNC1ldw?oc=5",
       "vendor": "PHP 재단"
     },
-    "33c08ebb2ad9ad21a0ca2a1b": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:55:26.271540+00:00",
-      "published_at": "2026-10-13T21:42:49+00:00",
-      "severity": 2,
-      "source": "BBC",
-      "title": "Saudi man charged with planting 'sophisticated' recording device in OpenAI office - BBC",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB6MjNkNW5WYWhlZE43SWlVQ1VwOERnZm9Va0szcWtwSDZGZ3RmSEZvUGdJSzg5dmpwSll1cUxOSi1zdkZDRm5Nb0ZoMzdKbFpZcnp6UGhyejhnaGM?oc=5",
-      "vendor": "OpenAI"
-    },
     "37c846e221061ffe44dc7091": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T07:56:11.980136+00:00",
@@ -379,16 +365,6 @@
       "source": "The Guardian",
       "title": "Saudi OpenAI employee arrested after recording device found in headquarters - The Guardian",
       "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPQldkOWVYWjktZ0ZrX3lYdmRTRDhpWV9HUEV0NklDRElhWXJyZkRHNEVHQlJnNUJLR2pwb0U2NWpUUWhyYmhscjB6d2Q0WWRyOWRrRWVMY1ZXMWVydXV4YmZTS1A2c0wwTjF4bHlyUXpUTnhMMUxNcVA3eENpZTdtRVp1aEVwOEFENTVFU0ZXcmdPZ0FaNmJTWUZyb2x6RDRY?oc=5",
-      "vendor": "OpenAI"
-    },
-    "38097417a4dff6449176ead1": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
-      "published_at": "2026-10-13T20:13:49+00:00",
-      "severity": 2,
-      "source": "Bloomberg.com",
-      "title": "OpenAI Says Staffer Arrested for Hidden Recording Device in Office - Bloomberg.com",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQUllwdms5WktzckdPcUU1M1ZhSDJFYV9HTHJpMGs3ck5tNGJ6WXNEeFBiRXZWZ2swMUJfT0tNTjI0UVM2dzh5Y1htQU92TUJuZFJseVRlLV9FYTZGSUZoQ3VxNHBBZTk0QlE3djBtQnV3V0hCX2h2MWxvRWF6VjQ2U3JKcURIdms3TDlPa0QyOHhWSzNMMHVvT1RMUF9JMHk3RkJGdnNaWEpiQWpVdlRNeVNYTDdVNnMt?oc=5",
       "vendor": "OpenAI"
     },
     "38ca5185e927e1d02f7a5d06": {
@@ -420,16 +396,6 @@
       "title": "ESTsecurity releases PHP2Shell tool to counter PHP RCE in South Korea - Chosunbiz",
       "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE93STB2TjBjSFdIdGV3TmZTUncwVHZoXzVidDRKaVRxa05KUW9oV0Eza1U2Q1VuZ1R1QzZYb013UXJMUkdBRnNZMHlqb2hpMDhxb3VGQnBVVWdLVTlSRjVNeW5jWDBFbVRHVVFjQWJJZmlDMmstOW8wSmR30gGOAUFVX3lxTE9WYTdiaXpoektjYjlzZ1kxVGVxX24weGo3eDdNNV9lT0dkSXg2b1R4VlE1d292OUVWYWxjcXdIUDJ4bXk2dGpVYWhoMC1XNWtuUXlVS2JnSGE5NFpNVkVrb2tyTnpHYzdLbC1GX2JHbmcwcEt4MDZTRXFfZ0c3ZThFYUs0NHY5bTFjWW9nVGc?oc=5",
       "vendor": "PHP 재단"
-    },
-    "413f92919de457999b58be26": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
-      "published_at": "2026-10-13T20:55:12+00:00",
-      "severity": 2,
-      "source": "CNBC",
-      "title": "FBI arrests Saudi OpenAI employee who allegedly planted recording device in conference room - CNBC",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNckJQNWJCVWJZSzdEUVRzWHZyZ2I0amJxTVVqX1ltcmZtSGxKWkRUVUdEWnp4Wm9HSUctWlFGNk9mOTQwVXBVd3A4SzQ0YXB3WHFfaE9YaE1mX3ZUZ1BpWWU2dDhIRXd1NENRaTAxdHdaRTFYNm5tVEZxWFQ4anpvdXo2anrSAYoBQVVfeXFMTzdwQXJjWlRmTlVDNXhWSzhsOTBHbjJpVENKRXVsUzhOR28zMjhIbGJxRFNtMTVxQVpqZlFscXhFMmx5eFhJcHRiLXJuSkhiQkZRV0tqSENqdE5TMXpxNy02c1pZb1UxNldGUkIzc3lLNTJaN1Q1QzNfVF9MX1N6bzc3dkRkNGQ0WU53?oc=5",
-      "vendor": "OpenAI"
     },
     "429647f9fabb765703fa3b99": {
       "category": "PHP 취약점 최초 공개·패치 대기",
@@ -471,16 +437,6 @@
       "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1EdDdqNHduOEE5YklCczNqNklJSkVlZERaRHNVTnpEMnJudUd0SEpsdFlOR1R4dy1PamlvQW5EWUtMWl94bkEyWjFTV1kzbDM0NjR2U3RjWm5uQkVITTJpXzlRZnpuQ05MNmIxMWhrTng?oc=5",
       "vendor": "PHP 재단"
     },
-    "4867aef5c65db439693c2c57": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
-      "published_at": "2026-10-13T20:08:26+00:00",
-      "severity": 2,
-      "source": "Department of Justice (.gov)",
-      "title": "Office of Public Affairs | Saudi National Arrested for Installing Surreptitious Audio Recording Device at OpenAI - Department of Justice (.gov)",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxONExsQ3JIYllVOU9YWjREWWNUd0pNajJYOUZrUWNxVzlxN1dzd0xseXJ5UzR0Wnk0NDFoc1hmRkZjY19qaWxKTlF2VnNjdDBoSHJTYjZWSmFmNmFFOVBwLW12QjhoT1JMZ1NfT3lDbUhQZlN6WmN4UmQ0ODhVaUt6b041Y3kxVjY2VXpaQ0VyaHpMS2l3QmtadXBHRHVmRjlwdHJKMTBrdVdteEpIQVE?oc=5",
-      "vendor": "OpenAI"
-    },
     "48f74f0bb312870ac1077c0c": {
       "category": "PHP 취약점 실전 악용 보도·추가 검증",
       "first_seen_at": "2026-10-27T05:11:53.630435+00:00",
@@ -510,16 +466,6 @@
       "title": "PHP Warns of Another Unpatched RCE Two Days After Emergency PHP2Shell Patches - The Hacker News",
       "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOa1ZSODRXV0ZXTTJ1TFh6S19mRXJ0Yld5b3dDd1F2RnMwTXZ2Y1EyMm83ak05WVF3NndRRXhtczJBeG9tVmxWZXRCa2lHYjVkVzFUM0Y1dTFsbXoxaHpzY0lTQzRZeEpWQ2dmdkxBcWphV0gyeGNYNWtDZE1QWHpRSnRB?oc=5",
       "vendor": "PHP 재단"
-    },
-    "4c9b44ac9771f14e8aff5cd1": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
-      "published_at": "2026-10-13T20:59:11+00:00",
-      "severity": 2,
-      "source": "TechCrunch",
-      "title": "FBI arrests OpenAI employee accused of planting hidden recording device in conference room - TechCrunch",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPaUFvbzdDZncxY1I4SXdvTEFiYWt4RC1vdjhKcXkxY3NmZ3dtS1hLZ2lVUUJTNzNoa2ZBeGduYWw2dkNfSHNUTk9LSDVRRG9VQ0dyVHpTM3Q0elh1RG5nczdrSUJMWG5MYVdXNFRLaEtXdHNEbV9nMzhrNF9rcW5fRkt2aHljRmo5SEFobDZlSW5lcDNjaU5CVHdHWjJOampfTWdDYTVaZGZXakFJbjc3R1VzdVVIUC03MjRESkdCWmhwYTg?oc=5",
-      "vendor": "OpenAI"
     },
     "4e2029bb8b5d9297636313f0": {
       "category": "취약점·패치",
@@ -631,16 +577,6 @@
       "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRFNEUXdNODNqRGZZOUU5WU5SS0xGdnRmYWVFczZXTlRxaFB2cllLbm40cEM4ekdvMUdWTmhWMm1fTl92dU8zUnN3eXhIRVNreE5JZHZOV2dhMmQ1SkVvRW5ueEF5Y0ZKQ1ZjZ2U0ZHJHYkF6YjE0UFdTeTVDajVLRVZCSHl0enJVcmNZNk9tVWlGa0R3WVQ0?oc=5",
       "vendor": "PHP 재단"
     },
-    "6667fcaf29c68af8a3ddc4e6": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
-      "published_at": "2026-10-13T22:08:00+00:00",
-      "severity": 2,
-      "source": "The Guardian",
-      "title": "OpenAI employee arrested after recording device found in office - The Guardian",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPQldkOWVYWjktZ0ZrX3lYdmRTRDhpWV9HUEV0NklDRElhWXJyZkRHNEVHQlJnNUJLR2pwb0U2NWpUUWhyYmhscjB6d2Q0WWRyOWRrRWVMY1ZXMWVydXV4YmZTS1A2c0wwTjF4bHlyUXpUTnhMMUxNcVA3eENpZTdtRVp1aEVwOEFENTVFU0ZXcmdPZ0FaNmJTWUZyb2x6RDRY?oc=5",
-      "vendor": "OpenAI"
-    },
     "68265123c6683b0a4006d4aa": {
       "category": "미분류 AI 보안 변화",
       "first_seen_at": "2026-11-17T00:31:40.048193+00:00",
@@ -711,16 +647,6 @@
       "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBIYy1GQVhzVjQ3LTAyVW42QnlOOVZISGJsS05mc0gtRG5WZ2lkVks0REVvcENkYXVPVW1sVUw3dThYY01Ib1FCTUNkanBCMXduYTdGUXFqREdFYUdtVVhsN0ZtT2VoSWJlandTbUxvSVh1OUgxMWc?oc=5",
       "vendor": "OpenAI"
     },
-    "77a79bf6a5991eac43f47ed6": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:51:11.957656+00:00",
-      "published_at": "2026-10-14T01:41:00+00:00",
-      "severity": 2,
-      "source": "Chosunbiz",
-      "title": "FBI arrests OpenAI engineer for planting recording devices, finds no data leak - CHOSUNBIZ - Chosunbiz",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNM213Yi1BUGd0ZTVpdlBET1dqQ0NFdXM0OS11MklNSzNVdmlSUlFCeFR3QUFPSTlseldzSWhOZWRXX3ZkMzZMNjlOY0JWUXEwWFJSOF9KRUg2YklZUzBjQVdqUUtnQ014Z1NGQTFkdUxoX0NRVFBPWVFLTHl4ZkoyS3ZOYnQxeFV40gGcAUFVX3lxTE9qMGtBVGcwWDB1RUIta0ZyQ1Uwa1lFRWJBSXZXU3JxU2x3dkJoUUVReGUxMjAxdGJpTVZYMkdBaVRLNlNyalFacF9rTEFzV3BhZkpQODFORGZkVkllQzA2U3otVTlLa2xWYVRRLWJNbkdWNXZRdWp4eHhFZmZnYW5lVTVFbzlSNVljSmF2VG1jY3doV1d4ZHhuMUlJYQ?oc=5",
-      "vendor": "OpenAI"
-    },
     "7803c7a7703c1ce13c74b4d6": {
       "category": "PHP 취약점 실전 악용 공식 확인",
       "first_seen_at": "2026-10-26T23:19:11.448415+00:00",
@@ -740,16 +666,6 @@
       "title": "'PHP2Shell' Bugs Signal Red Alert for Security Industry - Dark Reading",
       "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNUHBzTlE3YjM5VllleFRhSk00bWk5cTdGcm95M0QwNkdKblVpaEJPbXBKYjBrcTdaZTY2ZFQyUFljVjBwZUc0a0VfSDNvVTE1MGllZWRuMmMxX3pQMjlyUTNHdVhBUzFyUjRQRlhmM0JNR3d1MTN6cUVsUXIyVXZJdE0zdkZ6S1VaTk01NTFSelFKMHo4RXc?oc=5",
       "vendor": "PHP 재단"
-    },
-    "7ab6b56d77275fa4de64d1c8": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:43:04.543652+00:00",
-      "published_at": "2026-10-13T23:29:36+00:00",
-      "severity": 2,
-      "source": "Reuters",
-      "title": "FBI arrests Saudi OpenAI engineer over covert recording device, DOJ says - Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNcjkxNVh4Vlg5aXhHdHJySlBhbC1iZVRDTTF1a2hiUk52eUlqUW1aWWtoeUg2TjQ0OWU1aURzNW5aWmZ1TEFBcGl4NTBIQVZSVnNPaFpFUnZqb2RjRzNQS0xLQjRkMmtJZWhuU1RLRXplcktzVnBHMVVhNThISzMxMVFYbXZoeWE2WFc3b2VzMlQ0Sl92Y0kwLXJ0MUxBOTdUNzFxdjR0VTI?oc=5",
-      "vendor": "OpenAI"
     },
     "7b036a0d9d755b50e504b799": {
       "category": "AI 자율복제·사물인터넷 모의평가",
@@ -1011,16 +927,6 @@
       "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5wY25ETkp0RWNhWVQzZ0xZcXR0RUdSd09HNW52U2JHTmlmTENZcmh0MEdaV0U1RDI4YUk1YTFka196Y3F1NTl5V0NzUFM5NTJjckE1MkpldjEtdjZGRUphbWpDQ1VNVW40azljbTNpWGdpR3hZYUZtMUkzaGdjZw?oc=5",
       "vendor": "PHP 재단"
     },
-    "a83e1baad455d70adaab0ab9": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
-      "published_at": "2026-10-13T21:36:00+00:00",
-      "severity": 2,
-      "source": "CBS News",
-      "title": "FBI arrests OpenAI employee for allegedly planting recording device in company offices - CBS News",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9NWXBrQnpZaXhCSmh3d09BazRrcy1kMzcyTHFWTWFPMVRtazBuUk9CR2VRTVdZc2piQ04wYkVVN3E2eFQ0MzVPMC1lNkttYnJCLUZ6Wl9FdUZLZVcyMmJueTdJdmdvNlhraTRTRENuQ29rRFVSVjVhLQ?oc=5",
-      "vendor": "OpenAI"
-    },
     "ad0c0639f18dd9d0909ebac2": {
       "category": "금융·핵심인프라 AI 사이버 위험 경보",
       "first_seen_at": "2026-10-16T05:21:44.502165+00:00",
@@ -1069,16 +975,6 @@
       "source": "CNBC",
       "title": "DOJ says Saudi national arrested for installing audio recording device at OpenAI - CNBC",
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOTk1nM1J6OUhnaHZUMVdCUmVEZU9BWUtldjJLWVZyaEo5dzJrRWc3R251Vm1PVVo3V3d0MkdjSFpvVHdhcnY3cHN1LUp0R1pDbzNYelBTWi1icGFnMENLMm8tTk1xSXJaM2hqSmJDRVpBVXZoY2FZelk3Q2xoS1VnSlMwb0I3ZFBfbWRnUElPelV0bi1yX3o0TlhzclBjb1c1Z2ZWQUExTnhBNUdzZUVOZ0VvSUpzRTZjT1JnbV9BYko?oc=5",
-      "vendor": "OpenAI"
-    },
-    "b45c3c14adbaaa061683b1af": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
-      "published_at": "2026-10-14T00:09:00+00:00",
-      "severity": 2,
-      "source": "Fortune",
-      "title": "FBI arrests OpenAI employee accused of planting secret recording device in conference room - Fortune",
-      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQXRQaDdsVlBIdDY2ZVBJZFhYbUVGYUVTaEFsMVREQ1U5NnNaWnBrSTB0ZGloTVM0NUgwMDNaTk9JVHdMMlFEU2lNamVDR0V6dTdNWDQ0M3R3RWppQzFSVjlxcEtqTEJtTi1GZ0g5bjZuam5XU1BWQmdBMlFMY0NGTFd4eFN4T18tWWp3dEhNY1dHMXIxbjEtWEl4bDB0UllDeVhCOXd5eG5GRXFiTk1CRGNycEotNmc?oc=5",
       "vendor": "OpenAI"
     },
     "b9b1b1537b21cf2e47e9b993": {
@@ -1291,16 +1187,6 @@
       "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNbXhSTDdfcHVwbG4yRUYyeVRHeFRJWVFNYmRJWFRLc29EaDl2NFh3MkJwZ3lGaVkxbS1PdzZKY2NWa1ZrRHRVNVBwU0ZwbWFPMlhCbktaNzNScVZna0gxRTdWVHRhN3hwUlhOWk1qWUQxcGhOdWpsWVJZRlBmUDJMRlk0UjExQWJuTEZDbVZoemdkdnpuWU8tVmZianZ6YXBaQXczVmowLTRzQzU3bmE4ZVJ3?oc=5",
       "vendor": "PHP 재단"
     },
-    "d4863ba12a27c745b2a7a741": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
-      "published_at": "2026-10-13T20:41:18+00:00",
-      "severity": 2,
-      "source": "Department of Justice (.gov)",
-      "title": "Saudi National Arrested For Installing Surreptitious Audio Recording Device At OpenAI In San Francisco - Department of Justice (.gov)",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNaF9oU3RYQTZYazB3MkJkWXczTXotc1BuNzF3QS02LXZ0TmtBdjB4WXhqMVZCUTdVbTlYZ2psbWZOWTV0VHZvclF6SWtWbk9uSFhQR21rZExSRlNkcW4wakZTbkxoRHFsaUtia3hjZXpaRUduckNnTUJLSXh4Wnp4NlB5cnYzUmh4Qm5uZXZMOTVPcmNmRVU4NXU5dUlpVm51YXZ3TDdoYnlGYkJ6cnBsaW9ad25zNE9xYmVJ?oc=5",
-      "vendor": "OpenAI"
-    },
     "d5bd02247884ac2847fae820": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-30T15:40:39.568912+00:00",
@@ -1329,16 +1215,6 @@
       "source": "Sri Lanka Guardian",
       "title": "OpenAI says AI helped identify employee accused of planting hidden recording device - Sri Lanka Guardian",
       "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxObmE4TkxLNG9VQWstNmhaRVBVbkJvdFdOaE5ReDM0U3pSV0EtY1F0NjBwWWZLS0c2TXZ6anJ5ZWJJdEQxVFlpMUZ0MGR3ZXl1WENSQ1pIM1VETnZIOTJXUXhyNXkxRVZjczlvcW5CN0ZPZnA2S0dEM2pMQk9CT0JTa1NXN1lhRTJ1UkZmOXQ2ZlpwVmljTTgyaDJ6SlFyeU1wdl9kWUExY0NEQXM?oc=5",
-      "vendor": "OpenAI"
-    },
-    "d9f615ff8e89c5043ee223d6": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:55:26.271540+00:00",
-      "published_at": "2026-10-14T00:09:00+00:00",
-      "severity": 2,
-      "source": "Fortune",
-      "title": "FBI arrests OpenAI employee accused of planting secret recording device in conference room - Fortune",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNRXZwZWJra2ZoSGZscjF5TV9fZUJUVjIybG9IUHl0dy1NbEk3SzZZWFZnWGNodzEtY3EwVU1wNDBRd0UxQ1ZRVWh6NDNKYkIzT3ZsUGdXSDhTU2RidldkTHp2MTd1RXc0bThjdnV1bWg4WmZ4VGFPNkJZZlZ6VFhoUEFEdFVMZGdQSW0zZXl5MWFJWEVva2h3Z2lya1dCd2QyVUZRUzNlelRZWTNnQ09EWHB3WkYtUQ?oc=5",
       "vendor": "OpenAI"
     },
     "da766d2d255c49575397ec29": {
@@ -1451,16 +1327,6 @@
       "url": "https://news.google.com/rss/articles/CBMi5wJBVV95cUxNMHFpSTV2T253LUJ5cUR4U0Y5bGlWSkEtSTRsMDdRRHc5eGRxZzJyVlJvZm52dlZFYjF1WFh3anBLSUZ4aHR3VWUtTFFUWXVna1ZFeDhvanZ0X3NqTzZRMVVlakpCUnlGdnI4Tl9TMEdzRk0wc2ZjOXE4VGx6MFlLbzNYVWZNc21ENWpQeHRFdGI5RndRRTNvcHFvbEZaVXZ6aFhLanFxSlY3M0Nrb2JtY1MwVnVUaFB2TUh1elAtNXRleGdENW9oMmdDMGVITGlkQUVtMDdaYnYzb2E0VDdhYjQ0a2VpN2xXSnB5T256Tm1XUzZFN1BBTExFS1pSQXJaRGZiUlJReWZydFRlcWxUaXlOQ3N4eWc1QllpbDVGNnlhUXhPN1JjbFZoaXJmU1phYnRBXzBJMkxmYjhNbVZ1NmVtclJnV3RzX1lJT0E5VGtaQlpGQm9mLXVUaUl6c3cyWVVJOXM2TdIB5wJBVV95cUxNMHFpSTV2T253LUJ5cUR4U0Y5bGlWSkEtSTRsMDdRRHc5eGRxZzJyVlJvZm52dlZFYjF1WFh3anBLSUZ4aHR3VWUtTFFUWXVna1ZFeDhvanZ0X3NqTzZRMVVlakpCUnlGdnI4Tl9TMEdzRk0wc2ZjOXE4VGx6MFlLbzNYVWZNc21ENWpQeHRFdGI5RndRRTNvcHFvbEZaVXZ6aFhLanFxSlY3M0Nrb2JtY1MwVnVUaFB2TUh1elAtNXRleGdENW9oMmdDMGVITGlkQUVtMDdaYnYzb2E0VDdhYjQ0a2VpN2xXSnB5T256Tm1XUzZFN1BBTExFS1pSQXJaRGZiUlJReWZydFRlcWxUaXlOQ3N4eWc1QllpbDVGNnlhUXhPN1JjbFZoaXJmU1phYnRBXzBJMkxmYjhNbVZ1NmVtclJnV3RzX1lJT0E5VGtaQlpGQm9mLXVUaUl6c3cyWVVJOXM2TQ?oc=5",
       "vendor": "OpenAI"
     },
-    "f5a2db300fbf2ede746cc839": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
-      "published_at": "2026-10-13T21:19:02+00:00",
-      "severity": 2,
-      "source": "BBC",
-      "title": "Saudi man charged with planting 'sophisticated' recording device in OpenAI office - BBC",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAzR2tkbXBlSC15bmdLOC15RXdoYWN4RmExYXo2VklpTGlBLTdWV0plN2ZYZ1JpZV9CMG9RLU01T19WWTQwQ051ZDBCTGlFWC0yVkNzMDR2SlNRSmZiY1E?oc=5",
-      "vendor": "OpenAI"
-    },
     "f8610bcb3d594757154e11c3": {
       "category": "PHP2Shell 특정 표적 탐색·공격 준비 보고",
       "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
@@ -1554,5 +1420,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-18T10:31:25+09:00"
+  "updated_at_kst": "2026-11-18T10:56:50+09:00"
 }
