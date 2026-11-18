@@ -481,6 +481,120 @@ def parse_federal_register_json(text: str, source: Source) -> list[dict]:
     return items
 
 
+def is_fcc_sim_fraud_compliance_notice(item: dict) -> bool:
+    if item.get("source") != "Federal Register FCC":
+        return False
+    if item.get("document_number") in {"2026-23522", "2026-23400"}:
+        return True
+    return (
+        item.get("document_type") == "Rule"
+        and str(item.get("title") or "").lower() == "protecting consumers from sim-swap and port-out fraud"
+        and "compliance date" in str(item.get("summary") or "").lower()
+    )
+
+
+def fcc_sim_fraud_compliance_profile(item: dict, raw: str) -> dict | None:
+    body = clean_text(raw)
+    number = re.escape(str(item["document_number"]))
+    if not re.search(rf"\[FR Doc No:\s*{number}\]", body):
+        return None
+    if "WC Docket No. 21-341; FCC 23-95" not in body or not re.search(
+        r"\bACTION: Final rule; announcement of (?:effective and )?compliance dates?\.", body, re.I
+    ):
+        return None
+    dates = re.search(
+        r"\bDATES:\s*Effective date:\s*(.*?)\s+Compliance date:\s*(.*?)\s+ADDRESSES:", body, re.I
+    )
+    if not dates:
+        return None
+    effective_text, compliance_text = dates.groups()
+    section = re.search(r"\bamendments to 47 CFR (52\.37|64\.2010\(h\))(?=[,\s])", compliance_text, re.I)
+    if not section or section[1] not in effective_text:
+        return None
+
+    def day_after(text: str, label: str) -> dt.date | None:
+        match = re.search(rf"{label}\s+([A-Za-z]+ \d{{1,2}}, \d{{4}})\.", text, re.I)
+        parsed = parse_date(match[1]) if match else None
+        return parsed.date() if parsed else None
+
+    effective = day_after(effective_text, r"\bis effective on")
+    compliance = day_after(compliance_text, r"\bis required as of")
+    approved = day_after(body, r"\bOMB Approval Date:")
+    published = dt.date.fromisoformat(item["publication_date"])
+    if not effective or not compliance or not approved or not approved <= published <= effective <= compliance:
+        return None
+
+    scope = "번호이동" if section[1] == "52.37" else "SIM 교체"
+    # These are the milestones of the cited parent order, not dates of this notice.
+    timeline = [
+        {"date": "2023-11-15", "stage": "FCC 23-95 원규칙 채택"},
+        {"date": "2023-11-16", "stage": "FCC 결정문 공개"},
+        {"date": "2023-12-08", "stage": "원규칙 연방관보 게재"},
+        {"date": "2024-01-08", "stage": "원규칙 일부 발효(정보수집 관련 조항 제외)"},
+        {"date": "2024-07-05", "stage": "FCC 준수 유예 결정"},
+        {"date": approved.isoformat(), "stage": "미 예산관리국(OMB) 정보수집 승인"},
+    ]
+    filing = re.search(
+        rf"\[FR Doc\. {number} Filed (\d{{1,2}}-\d{{1,2}}-\d{{2}}; \d{{1,2}}:\d{{2}} [ap]m)\]",
+        body,
+        re.I,
+    )
+    if filing:
+        try:
+            filed_et = dt.datetime.strptime(filing[1], "%m-%d-%y; %I:%M %p").replace(
+                tzinfo=ZoneInfo("America/New_York")
+            )
+        except ValueError:
+            return None
+        timeline.append({
+            "date": filed_et.date().isoformat(),
+            "stage": "관보 사전공개",
+            "detail": f"{filed_et.astimezone(KST):%m/%d %H:%M} KST",
+        })
+    timeline.append({
+        "date": published.isoformat(),
+        "stage": "이번 공지 관보 게재·발효" if published == effective else "이번 공지 관보 게재",
+    })
+    if published != effective:
+        timeline.append({"date": effective.isoformat(), "stage": "규정 발효"})
+    timeline.append({"date": compliance.isoformat(), "stage": "이동통신사 준수 의무 시작"})
+    return {
+        "fcc_sim_fraud_section": section[1],
+        "body_verified": True,
+        "title_ko": f"미 FCC, {scope} 사기 방지 규칙 준수일 공지",
+        "policy_plain_summary": f"미 이동통신사에 {scope} 사전 통지와 무료 계정 잠금 제공을 의무화합니다.",
+        "policy_timeline": timeline,
+        "importance": "중",
+        "impacts": ["시간표"],
+        "sectors": ["미국 이동통신"],
+        "paths": ["규제 준수", "정책 타임라인"],
+    }
+
+
+def enrich_fcc_sim_fraud_compliance_notice(item: dict) -> dict | None:
+    number = str(item.get("document_number") or "")
+    publication = str(item.get("publication_date") or "")
+    if not re.fullmatch(r"\d{4}-\d{5}", number):
+        return None
+    try:
+        date_path = dt.date.fromisoformat(publication).strftime("%Y/%m/%d")
+    except ValueError:
+        return None
+    urls = (
+        f"https://www.govinfo.gov/content/pkg/FR-{publication}/html/{number}.htm",
+        f"https://www.federalregister.gov/documents/full_text/text/{date_path}/{number}.txt",
+    )
+    for url in urls:
+        raw, error = fetch_text(url)
+        if not error and raw:
+            profile = fcc_sim_fraud_compliance_profile(item, raw)
+            if profile:
+                print(f"fcc_sim_fraud_notice=verified document={number} section={profile['fcc_sim_fraud_section']}")
+                return {**profile, "source_body": clean_text(raw), "verified_body_url": url}
+    print(f"fcc_sim_fraud_notice=unverified document={number} no_generic_alert")
+    return None
+
+
 def enrich_korea_trade_remedy_items(items: list[dict]) -> list[dict]:
     """Fetch the official Federal Register body for Korean AD/CVD review notices."""
     enriched: list[dict] = []
@@ -1578,6 +1692,11 @@ def collect_sec_filings(now: dt.datetime) -> tuple[list[dict], list[str]]:
 
 
 def classify_item(item: dict) -> dict | None:
+    fcc_sim_profile = {}
+    if is_fcc_sim_fraud_compliance_notice(item):
+        fcc_sim_profile = enrich_fcc_sim_fraud_compliance_notice(item)
+        if fcc_sim_profile is None:
+            return None
     haystack = " ".join(
         str(item.get(key) or "")
         for key in ("title", "source_title", "source_abstract", "summary", "source_body")
@@ -1637,6 +1756,8 @@ def classify_item(item: dict) -> dict | None:
     if not is_fcc_source:
         matched["fcc_decision_notice"] = []
     matched = {bucket: kws for bucket, kws in matched.items() if kws}
+    if fcc_sim_profile:
+        matched.setdefault("fcc_decision_notice", []).append("effective date")
     if is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_STRONG_TERMS):
         matched.setdefault("fcc_decision_notice", ["fcc official decision/notice source"])
     if not matched:
@@ -1700,6 +1821,7 @@ def classify_item(item: dict) -> dict | None:
     if is_energy_dominance_month_proclamation(result):
         apply_energy_dominance_month_profile(result)
     apply_treasury_borrowing_profile(result, haystack)
+    result.update(fcc_sim_profile)
     return result
 
 

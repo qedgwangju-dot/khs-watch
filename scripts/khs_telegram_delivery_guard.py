@@ -236,6 +236,16 @@ URL_TOPIC_REQUIREMENTS = [
         "source_topic_missing:submarine_cable",
     ),
     (
+        ("/2026-23522/protecting-consumers-from-sim-swap-and-port-out-fraud",),
+        ("번호이동 사기 방지",),
+        "source_topic_missing:fcc_port_out_compliance",
+    ),
+    (
+        ("/2026-23400/protecting-consumers-from-sim-swap-and-port-out-fraud",),
+        ("sim 교체 사기 방지",),
+        "source_topic_missing:fcc_sim_swap_compliance",
+    ),
+    (
         ("covered-communications-equipment", "covered communications equipment"),
         ("통신장비", "보안장비", "수입", "판매", "covered communications equipment", "covered list", "importation", "marketing"),
         "source_topic_missing:covered_communications_equipment",
