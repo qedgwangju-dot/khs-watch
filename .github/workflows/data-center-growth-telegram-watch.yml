@@ -411,6 +411,22 @@ jobs:
           print("jet_turbine_ge_q3_guard_regression=passed telegram_send=false")
           PY
 
+
+      - name: Verify generation patch anchors on code push without network or Telegram
+        run: |
+          python scripts/guard_us_time_to_power_metrics_source.py
+          python scripts/patch_google_constellation_official_ppa.py
+          python -m py_compile scripts/us_data_center_time_to_power_watch.py scripts/us_data_center_generation_buildout_watch.py
+          python - <<'PY'
+          from pathlib import Path
+          source = Path("scripts/us_data_center_generation_buildout_watch.py").read_text(encoding="utf-8")
+          assert "power_changes = detect_power_changes(old, power_metrics)" in source
+          assert "chosen_news = sorted(" in source
+          assert "or bool(power_changes)" in source
+          assert 'PPA_GOOGLE_CONSTELLATION_OFFICIAL = "https://' in source
+          print("data_center_patch_anchor_no_send_regression=passed")
+          PY
+
   monitor:
     outputs:
       telegram_send_outcome: ${{ steps.data_center_telegram_delivery.outcome }}

@@ -205,11 +205,35 @@ if func_anchor not in t:
     raise SystemExit("generation function insertion point not found")
 t = t.replace(func_anchor, "\n" + func_block + func_anchor, 1)
 
-runtime_old = '''gev = parse_gev()\nitems = collect_news()\nold_ids = set(old.get("seen_ids", []))\nnew_items = [x for x in items if x["id"] not in old_ids]\ngev_changes = detect_gev_changes(old, gev)\nbaseline_run = not old.get("initialized")\nformat_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION\nshould_alert = baseline_run or format_upgrade or bool(new_items) or bool(gev_changes)\n'''
-runtime_new = '''gev = parse_gev()\npower_metrics, power_errors = parse_power_metrics(old.get("power_metrics") or {})\nitems = collect_news()\nold_ids = set(old.get("seen_ids", []))\nnew_items = [x for x in items if x["id"] not in old_ids]\ngev_changes = detect_gev_changes(old, gev)\npower_changes = detect_power_changes(old, power_metrics)\nbaseline_run = not old.get("initialized")\nformat_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION\nshould_alert = baseline_run or format_upgrade or bool(new_items) or bool(gev_changes) or bool(power_changes)\n'''
+# Use the shortest stable upstream segment: the generator's news prioritization
+# code between format_upgrade and should_alert is intentionally preserved.
+runtime_old = '''gev = parse_gev()
+items = collect_news()
+old_ids = set(old.get("seen_ids", []))
+new_items = [x for x in items if x["id"] not in old_ids]
+gev_changes = detect_gev_changes(old, gev)
+baseline_run = not old.get("initialized")
+format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
+'''
+runtime_new = '''gev = parse_gev()
+power_metrics, power_errors = parse_power_metrics(old.get("power_metrics") or {})
+items = collect_news()
+old_ids = set(old.get("seen_ids", []))
+new_items = [x for x in items if x["id"] not in old_ids]
+gev_changes = detect_gev_changes(old, gev)
+power_changes = detect_power_changes(old, power_metrics)
+baseline_run = not old.get("initialized")
+format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
+'''
 if runtime_old not in t:
     raise SystemExit("generation runtime insertion point not found")
 t = t.replace(runtime_old, runtime_new, 1)
+# Preserve the recently added chosen_news prioritization; only extend its
+# existing alert decision with verified power-metric changes.
+alert_gate_old = "should_alert = baseline_run or format_upgrade or bool(new_items) or bool(gev_changes)"
+if alert_gate_old not in t:
+    raise SystemExit("generation alert-decision insertion point not found")
+t = t.replace(alert_gate_old, alert_gate_old + " or bool(power_changes)", 1)
 
 pending_old = '''    "baseline": BASELINE,\n    "gev_metrics": gev,\n    "seen_ids": seen,\n'''
 pending_new = '''    "baseline": BASELINE,\n    "gev_metrics": gev,\n    "power_metrics": power_metrics,\n    "power_source_errors": power_errors,\n    "seen_ids": seen,\n'''
