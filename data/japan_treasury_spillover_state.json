@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-11-18T18:41:33+09:00",
+  "updated_at_kst": "2026-11-18T19:24:36+09:00",
   "source_dates": {
     "mof_week": "2026-11-01~11-07",
     "jgb_yield": "2026/11/17",
@@ -15,6 +15,8 @@
     "fima_weekly_change_bn_usd": 0.0,
     "market": {
       "market_date": "2026-11-16",
+      "dgs10_date": "2026-11-16",
+      "dgs30_date": "2026-11-16",
       "dgs10": 5.12,
       "dgs10_change_bp": -3.000000000000025,
       "dgs30": 5.46,
@@ -71,6 +73,17 @@
       "prev_date": "10/8/2026",
       "prev_btc": 3.8766363434657203,
       "prev_tail_bp": 1.2000000000000455
+    },
+    "40": {
+      "date": "9/29/2026",
+      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20260929.htm",
+      "btc": 3.0964297630964297,
+      "btc_drop_pct": 9.638554739141325,
+      "tail_bp": null,
+      "tail_widen_bp": null,
+      "prev_date": "7/22/2026",
+      "prev_btc": 2.8242161440960643,
+      "prev_tail_bp": null
     }
   }
 }
