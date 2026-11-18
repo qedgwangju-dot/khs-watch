@@ -440,6 +440,8 @@ def _primary_topic(row):
         return '미국·북한 · 정상 회동 가능성 발언'
     if _summit_venue_description_only(row):
         return _diplomatic_group(title) + ' · 정상회담 장소 보도'
+    if _us_china_russia_trilateral_summit_headline(row):
+        return '미국·중국·러시아 · 3자 정상회담 보도'
     if kind == 'diplomatic_contact' and _qatar_us_iran_negotiations_contact(title):
         # Iran is the subject of the talks; the named meeting participants are
         # Qatar's prime minister and the U.S. officials.
@@ -810,6 +812,18 @@ def _oil_contract_headline(title):
                 and re.search(r'\b(?:imports?|exports?)\b', title)
                 and re.search(r'\b(?:deals?|contracts?)\b', title)
                 and re.search(r'\b(?:trim\w*|cut\w*|reduc\w*|increas\w*)\b', title))
+
+
+def _oil_price_reaction_only_headline(title):
+    """A price move alone must not inherit an attack from background text."""
+    if not (re.search(r'유가|(?:원유|석유)\s*가격', title)
+            and re.search(r'반등|상승|하락|급등|급락|보합|안정', title)):
+        return False
+    # Preserve a separately reported action or negotiation in the headline.
+    return not bool(re.search(
+        r'공격|공습|폭격|포격|피격|타격|미사일|발사체|드론|폭발|'
+        r'휴전|정전|종전|협상|합의|전쟁|'
+        r'\b(?:attack\w*|airstrikes?|strikes?|missiles?|drones?|ceasefire|peace\s+talks?|agreement)\b', title))
 
 
 def _maritime_mine_incident(row):
@@ -1443,9 +1457,13 @@ def non_military_kind(row):
         return 'diplomatic_plan'
     if _summit_venue_description_only(row):
         return 'diplomatic_analysis'
+    if _us_china_russia_trilateral_summit_headline(row):
+        return 'diplomatic_plan'
     if _title_only_unconfirmed_explosion(row):
         return 'unconfirmed_explosion'
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
+    if _oil_price_reaction_only_headline(title):
+        return 'oil_market'
     if not row.get('body_verified') and _pending_iran_war_decision_outlook(title):
         return 'military_analysis'
     if _election_iran_war_staff_options(title):
@@ -1727,6 +1745,18 @@ def _us_north_korea_possible_meeting_headline(row):
                 and re.search(r'만날\s*수도|만남\s*가능성|회동\s*가능성', title)
                 and not re.search(r'(?:트럼프|김정은).{0,25}'
                                   r'(?:만났다|회동했다|회담했다|회동\s*확정|회담\s*성사)', title))
+
+
+def _us_china_russia_trilateral_summit_headline(row):
+    """Name the participants, without turning background Ukraine into one."""
+    title = _headline(row)
+    if not (re.search(r'(?:미|美)\s*[·ㆍ/]?\s*(?:중|中)\s*[·ㆍ/]?\s*(?:러|露)', title)
+            and re.search(r'3자\s*(?:정상)?회담', title)
+            and re.search(r'주목|개최|예정|개막|열리', title)):
+        return False
+    return not bool(re.search(
+        r'우크라|공격|공습|폭격|포격|타격|피격|미사일|폭발|'
+        r'전쟁|휴전|정전|종전|합의|거부|결렬|취소|불발|무산|부인', title))
 
 
 def _summit_venue_description_only(row):

@@ -123,11 +123,9 @@ def _stage_signals(row, marks):
     elif '러우3자회담가능성' in marks:
         sig.append('크렘린궁: 미·러·우 3자 종전협상 재개 가능성을 열어둠 — 아직 탐색 단계')
 
-    if '이란남부발사체피격' in marks:
-        sig.append('이란 남부 시리크·게슘 일대: 단순 폭발음에서 발사체 피격 보도로 단계 상승')
-        sig.append('공격 주체·정확한 표적·사상자·시설 피해는 공식 후속 확인 전까지 미확정')
-    elif '이란남부복수폭발' in marks:
-        sig.append('이란 남부 시리크·게슘·미나브 일대 복수 폭발음 — 원인 미확인 단계, 발사체·공습 확인 여부 추적')
+    # These marks are broad keyword matches, not evidence for a fixed set of
+    # places, an escalation sequence, or an unknown attacker. Keep the source
+    # headline rather than substituting a summary of an older incident.
     return sig
 
 
@@ -286,12 +284,8 @@ def _verdict(items):
     all_marks = {m for row in items for m in _stage_marks(row)}
 
     if red and not green:
-        if '이란남부발사체피격' in all_marks:
-            core = '이란 남부 폭발음이 발사체 피격 확인 단계로 상승 — 공격 주체·표적·피해 규모 후속 확인 필요'
-            nxt = '공격 주체 공식 확인 → 표적 실명 → 사상자·시설 피해 → 후속 보복 여부'
-        else:
-            core = '신규 변화의 중심은 실제 공격·확전'
-            nxt = '추가 공격·보복 → 피해 규모 → 실제 교전 강도 변화'
+        core = '공격·타격·공격 예고·압박 관련 보도 확인'
+        nxt = '기사별 공격 주체·발생 여부·피해 규모 → 추가 공식 확인'
         return (
             '<b>투자 판정</b>\n'
             f'- <b>핵심:</b> {core}\n'
