@@ -1379,5 +1379,43 @@
       "source_url": "https://newsspace.kr",
       "published": "2026-11-17T12:29:54+00:00"
     }
-  ]
+  ],
+  "message_corrections": {
+    "robot-message-correction-20261118-44240720425-v1": {
+      "schema_version": 1,
+      "source_run_id": 44240720425,
+      "artifact_id": 14400120234,
+      "artifact_digest": "sha256:5d1c7e8a7724dc7816fe1917dd6ab73cdeafa6649bfac36f251e9b9a8dad03a4",
+      "route_fingerprint": "14816dc9bc6c054e9fdfc5d6ce0871dffed039dc5e8e27016b34273acffdf94e",
+      "message_ids": [
+        376,
+        377
+      ],
+      "original_alert_sha256": "7625bb06c8d14d58e0b51dd1cb3c03f8694ca26cce373e79c50f5175aab256da",
+      "original_pending_sha256": "ecc1be6ec4936dbabbbca70d50f185b7f244d6b812baf5d443edd1622c94be1a",
+      "original_receipts_sha256": "4130c534681edb2fb76f286ce9d4eaededdd28e6ed15d68e7427704f7ec76efc",
+      "original_chunk_sha256": [
+        "9ac4e11346caf8387f7923d1926cf24b2938bd48c88c2d25b1d170e992d2cceb",
+        "ea655a9651b8b4d75b3b5ad75f6dc17ec87cead993798536049d24c91ce4a3e0"
+      ],
+      "corrected_chunk_sha256": [
+        "0bce8d6ba51ccc76557e9aa3b0e480ab0e2c07f1af96045e2e14996db5426f1e",
+        "1af7318eee48e5dae7836d7901a4d520d77ebdde324e6c5b9ad321765f0d0579"
+      ],
+      "payload_sha256": "bab2e7feea6feeec8db7396fc8eb97f2888cb2eda84a20361a9a924d671497d2",
+      "status": "partial",
+      "messages": {
+        "376": {
+          "message_id": 376,
+          "status": "in_flight",
+          "request_sha256": "90fd221637214b4d949ed272d5af65161c23633a4267bc83a3e2067f8b44c31c",
+          "replacement_sha256": "0bce8d6ba51ccc76557e9aa3b0e480ab0e2c07f1af96045e2e14996db5426f1e",
+          "request_count": 1,
+          "requested_at_utc": "2026-11-18T05:26:52.557018+00:00"
+        }
+      },
+      "completed_message_ids": [],
+      "prepared_at_utc": "2026-11-18T05:26:52.556988+00:00"
+    }
+  }
 }
