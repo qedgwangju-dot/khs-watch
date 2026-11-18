@@ -1463,14 +1463,20 @@
       "messages": {
         "378": {
           "message_id": 378,
-          "status": "in_flight",
+          "status": "confirmed",
           "request_sha256": "e4b632be6839d65aada1d0d310c80c7218c13566e3bc747deb2c8f3eb74214e5",
           "replacement_sha256": "3dbb6684d812a358e9514f5329d6841c98ea5e1f103e2c87d0f3107b0b6d3033",
           "request_count": 1,
-          "requested_at_utc": "2026-11-18T05:27:00.769185+00:00"
+          "requested_at_utc": "2026-11-18T05:27:00.769185+00:00",
+          "confirmed_at_utc": "2026-11-18T05:27:02.411324+00:00",
+          "verification": "reply_message_id_recipient_text_equal",
+          "chat_verification": "numeric_id_equal",
+          "response_text_sha256": "f2236a35d171506605a1fbe17b94d241d33fad65a3bffc143bd472b8b24c14fb"
         }
       },
-      "completed_message_ids": [],
+      "completed_message_ids": [
+        378
+      ],
       "prepared_at_utc": "2026-11-18T05:27:00.769162+00:00"
     }
   }
