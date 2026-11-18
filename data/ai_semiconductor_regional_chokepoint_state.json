@@ -69,7 +69,7 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-18T19:32:19+09:00",
+  "updated_at_kst": "2026-11-18T20:36:08+09:00",
   "last_scan_count": 9,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
@@ -152,6 +152,7 @@
     "3c256fe8dff8e167b043d264",
     "3feaf19f4178230271f0cbc0",
     "47dbd1ba8dd5c3df6d41d0b9",
+    "49585eaa466a7d653417eba2",
     "4e45cbd21e7fd6755e4b41a7",
     "51e0a57c2a721f4c77c22710",
     "54b6b1272069c443515550b7",
@@ -202,10 +203,10 @@
   "delivered_event_keys": [],
   "last_held": [
     {
-      "event_key": "taiwan|capacity|TSMC|2nm",
-      "source": "FXLeaders",
+      "event_key": "china|capacity|Eoptolink|1.6t",
+      "source": "BigGo Finance",
       "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-18T15:18:05+09:00"
+      "published_kst": "2026-11-18T19:55:00+09:00"
     }
   ],
   "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
