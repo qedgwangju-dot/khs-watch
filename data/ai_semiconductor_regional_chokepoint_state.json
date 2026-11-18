@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-18T11:55:53+09:00",
-  "last_scan_count": 5,
+  "updated_at_kst": "2026-11-18T19:32:19+09:00",
+  "last_scan_count": 9,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -162,6 +162,7 @@
     "64af899b665a191e2b03d200",
     "6c59517c78954937ad7fb5b1",
     "6cb3f9fee458cbd5414c2744",
+    "6d319ecb56e1812ffb012ec4",
     "6f7d4edee62f9cb2d4432ccf",
     "72e51f5d7b884367520ec10d",
     "76bed2e41196356720195d24",
@@ -201,10 +202,10 @@
   "delivered_event_keys": [],
   "last_held": [
     {
-      "event_key": "korea|capacity|SK hynix|hbm4",
-      "source": "파이낸셜뉴스",
+      "event_key": "taiwan|capacity|TSMC|2nm",
+      "source": "FXLeaders",
       "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-11-18T05:29:00+09:00"
+      "published_kst": "2026-11-18T15:18:05+09:00"
     }
   ],
   "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
