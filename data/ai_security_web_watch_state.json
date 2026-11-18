@@ -5,9 +5,7 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [
-      "Google News RSS 실패: (\"AI agent\" OR agentic OR LLM) misalignment \"third part… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
+    "errors": [],
     "material_items": 11,
     "new_material_items": 0,
     "raw_items": 103,
@@ -1209,16 +1207,6 @@
       "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNTi1Ea2haTGZSaHlIaDBIRVBIdURnS2JELXdDU1dXM2p4X09mSENNODRlUzFFYUYzdHNrZlU3T3hWTzRRbmxmVC1nX2xuQnY4eF9iQ2lpS0pIcHFIWnZyOGwybVVqR0ZVMHVhUFZ5ZjQ5T2prdFEySVhIRnQxbjU2RkNDekJ3N3JCU20xMlU4M01lNHBC0gGUAUFVX3lxTE1OLURraFpMZlJoeUhoMEhFUEh1RGdLYkQtd0NTV1czanhfT2ZIQ004NGVTMUVhRjN0c2tmVTdPeFZPNFFubGZULWdfbG5Cdjh4X2JDaWlLSkhwcUhadnI4bDJtVWpHRlUwdWFQVnlmNDlPamt0UTJJWEhGdDFuNTZGQ0N6Qnc3ckJTbTEyVTgzTWU0cEI?oc=5",
       "vendor": "PHP 재단"
     },
-    "f1693a69d948a827f36e55e1": {
-      "category": "AI 연구기관 내부자 도청·접근통제 사건",
-      "first_seen_at": "2026-10-14T12:57:27.575329+00:00",
-      "published_at": "2026-10-14T10:14:34+00:00",
-      "severity": 2,
-      "source": "The Sunday Guardian",
-      "title": "Who is Abdulrahman Alfozan? Former OpenAI Engineer Arrested Over Hidden Recording Device ‘Concealed in Toilet Paper’ at San Francisco Office as FBI Probes Alleged Surveillance - The Sunday Guardian",
-      "url": "https://news.google.com/rss/articles/CBMi5wJBVV95cUxNMHFpSTV2T253LUJ5cUR4U0Y5bGlWSkEtSTRsMDdRRHc5eGRxZzJyVlJvZm52dlZFYjF1WFh3anBLSUZ4aHR3VWUtTFFUWXVna1ZFeDhvanZ0X3NqTzZRMVVlakpCUnlGdnI4Tl9TMEdzRk0wc2ZjOXE4VGx6MFlLbzNYVWZNc21ENWpQeHRFdGI5RndRRTNvcHFvbEZaVXZ6aFhLanFxSlY3M0Nrb2JtY1MwVnVUaFB2TUh1elAtNXRleGdENW9oMmdDMGVITGlkQUVtMDdaYnYzb2E0VDdhYjQ0a2VpN2xXSnB5T256Tm1XUzZFN1BBTExFS1pSQXJaRGZiUlJReWZydFRlcWxUaXlOQ3N4eWc1QllpbDVGNnlhUXhPN1JjbFZoaXJmU1phYnRBXzBJMkxmYjhNbVZ1NmVtclJnV3RzX1lJT0E5VGtaQlpGQm9mLXVUaUl6c3cyWVVJOXM2TdIB5wJBVV95cUxNMHFpSTV2T253LUJ5cUR4U0Y5bGlWSkEtSTRsMDdRRHc5eGRxZzJyVlJvZm52dlZFYjF1WFh3anBLSUZ4aHR3VWUtTFFUWXVna1ZFeDhvanZ0X3NqTzZRMVVlakpCUnlGdnI4Tl9TMEdzRk0wc2ZjOXE4VGx6MFlLbzNYVWZNc21ENWpQeHRFdGI5RndRRTNvcHFvbEZaVXZ6aFhLanFxSlY3M0Nrb2JtY1MwVnVUaFB2TUh1elAtNXRleGdENW9oMmdDMGVITGlkQUVtMDdaYnYzb2E0VDdhYjQ0a2VpN2xXSnB5T256Tm1XUzZFN1BBTExFS1pSQXJaRGZiUlJReWZydFRlcWxUaXlOQ3N4eWc1QllpbDVGNnlhUXhPN1JjbFZoaXJmU1phYnRBXzBJMkxmYjhNbVZ1NmVtclJnV3RzX1lJT0E5VGtaQlpGQm9mLXVUaUl6c3cyWVVJOXM2TQ?oc=5",
-      "vendor": "OpenAI"
-    },
     "f8610bcb3d594757154e11c3": {
       "category": "PHP2Shell 특정 표적 탐색·공격 준비 보고",
       "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
@@ -1302,5 +1290,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-18T21:38:25+09:00"
+  "updated_at_kst": "2026-11-18T22:02:40+09:00"
 }
