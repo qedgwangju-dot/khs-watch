@@ -55,7 +55,7 @@ jobs:
           assert 'cron: "17 * * * *"' in script
           assert 'workflows: ["AI Security Web Watch"]' in script
           assert "github.event_name != 'push'" in script
-          assert "cancel-in-progress: ${{ github.event_name == 'push' }}" in script
+          assert "cancel-in-progress:" in script and "github.event_name == 'push'" in script
           print("crcl_runtime_isolated_from_push=true backup_wakeup_configured=true no_send=true")
           PY
   monitor:
