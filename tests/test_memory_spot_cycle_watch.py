@@ -1432,6 +1432,7 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
+             patch.object(w, "_stage_nand_verified_reversal", return_value=False), \
              patch.object(w.currency_krw_guard, "enforce_file") as guard:
             w.main()
         guard.assert_called_once_with(w.ALERT_PATH)
