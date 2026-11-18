@@ -4,6 +4,12 @@ on:
   schedule:
     # Independent of quarterly SEC 13F; twice hourly on GitHub UTC clock.
     - cron: "23,53 * * * *"
+  # GitHub cron may be delayed or skipped. Reuse the already-active 13F
+  # workflow as a secondary wake-up, without modifying its workflow or state.
+  workflow_run:
+    workflows: ["13F sector rotation Telegram watch"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
     inputs:
       probe_only:
@@ -27,6 +33,9 @@ concurrency:
 
 jobs:
   monitor:
+    # Ignore failed/cancelled upstream runs; push and schedule retain the
+    # original behavior. Dedup and live-send safeguards remain in Python.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 14
     env:
