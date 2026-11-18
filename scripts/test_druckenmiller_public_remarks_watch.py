@@ -102,7 +102,8 @@ class WatchTests(unittest.TestCase):
         with patch.object(watcher,"STATE_PATH") as dummy:
             dummy.exists.return_value=True
             dummy.read_text.return_value=json.dumps(state)
-            self.assertIsNone(watcher.load_state())
+            with self.assertRaisesRegex(RuntimeError,"DELIVERY_UNCERTAIN"):
+                watcher.load_state()
     def test_seed_grounding_and_length(self):
         message=watcher.seed_message()
         for needle in ("2027년 하반기","구리","자본 보존","10월 28일",
@@ -123,6 +124,18 @@ class WatchTests(unittest.TestCase):
         self.assertIn("매도 포지션",msg)
         self.assertIn("원문 발언 전문",msg)
         self.assertLess(len(msg),3600)
+    def test_source_outage_fails_and_never_sends(self):
+        state=watcher.empty_state()
+        state["sent_events"][watcher.SEED_KEY]={"receipt":{"message_id":3}}
+        with patch.object(watcher,"load_state",return_value=state),\
+             patch.object(watcher,"discover",return_value=([],{"google":{"ok":True},"bing":{"ok":False},"coindesk":{"ok":False}})),\
+             patch.object(watcher,"telegram_send") as sender,\
+             patch.object(watcher,"save_state") as saver:
+            with self.assertRaisesRegex(RuntimeError,"fewer than 2/3"):
+                watcher.main()
+            sender.assert_not_called()
+            saver.assert_not_called()
+
     def test_strict_no_live_telegram(self):
         with patch.object(watcher,"http_bytes",return_value=b"<rss/>") as ignored:
             self.assertEqual(watcher.signals_from_text("nothing relevant"),[])
