@@ -10,7 +10,62 @@
     "dc_direct_cost_usd_b": 15.0,
     "behind_meter_share_pct": 30.0,
     "iea_2030_twh": 426.0,
-    "incremental_gas_bcf_day": 4.0
+    "incremental_gas_bcf_day": 4.0,
+    "pwc_total_2026_2050_usd_t": 31.6,
+    "pwc_upside_usd_t": 50.0,
+    "pwc_annual_2026_usd_b": 800.0,
+    "pwc_annual_2030_usd_b": 1100.0,
+    "pwc_annual_2050_usd_b": 1800.0,
+    "pwc_ict_share_2026_pct": 70.0,
+    "pwc_ict_share_2050_pct": 93.0,
+    "pwc_refresh_low_years": 4.0,
+    "pwc_refresh_high_years": 6.0,
+    "pwc_rounds_low": 3.0,
+    "pwc_rounds_high": 5.0,
+    "hyosung_dc_order_krw_eok": 3865.0,
+    "hd_hyundai_dc_framework_krw_eok": 11212.0,
+    "hd_hyundai_delivery_year": 2028.0,
+    "ls_bloom_dc_order_krw_eok": 3190.0,
+    "vinatech_bloom_dc_contract_krw_eok": 412.153938,
+    "vinatech_bloom_contract_sales_pct": 50.12,
+    "vinatech_bloom_contract_end": "2027-04-10",
+    "ls_apr_dc_order_krw_eok": 1703.0,
+    "ls_may_dc_order_krw_eok": 1050.0,
+    "ms_new_power_need_2026_2028_gw": 97.0,
+    "ms_under_construction_gw": 21.0,
+    "ms_available_grid_gw": 19.0,
+    "ms_initial_shortfall_gw": 57.0,
+    "ms_alternative_supply_gw": 24.0,
+    "ms_residual_shortfall_gw": 33.0,
+    "ms_residual_shortfall_2029_gw": 72.0,
+    "gs_us_2030_power_gw": 108.0,
+    "gs_us_prior_2030_power_gw": 83.0,
+    "gs_global_growth_2025_2030_pct": 170.0,
+    "gs_global_prior_growth_pct": 117.0,
+    "gs_btm_gas_capacity_2030_gw": 30.0,
+    "gs_btm_power_delivery_2030_gw": 20.0,
+    "ms_public_need_2026_2028_gw": 68.0,
+    "ms_public_covered_2026_2028_gw": 30.0,
+    "ms_public_shortfall_2026_2028_gw": 38.0,
+    "ms_public_grid_wait_low_years": 5.0,
+    "ms_public_grid_wait_high_years": 7.0,
+    "ms_large_turbine_booking_low_year": 2031.0,
+    "ms_large_turbine_booking_high_year": 2032.0,
+    "ms_small_engine_booking_low_year": 2029.0,
+    "ms_small_engine_booking_high_year": 2030.0,
+    "ms_onsite_contract_low_years": 15.0,
+    "ms_onsite_contract_high_years": 20.0,
+    "ms_ess_us_2025_gwh": 57.0,
+    "ms_ess_us_2030_gwh": 279.0,
+    "ms_ess_dc_2030_gwh": 169.0,
+    "gs_us_capacity_2026_prior_gw": 59.0,
+    "gs_us_capacity_2026_latest_gw": 64.0,
+    "gs_us_capacity_2027_prior_gw": 95.0,
+    "gs_us_capacity_2027_latest_gw": 90.0,
+    "gs_us_demand_increase_2026_gw": 12.0,
+    "gs_us_demand_increase_2027_gw": 17.0,
+    "gs_us_demand_growth_2026_pct": 38.0,
+    "gs_us_demand_growth_2027_pct": 38.0
   },
   "gev_metrics": {
     "gas_contract_slot_gw": 122.0,
@@ -49,7 +104,8 @@
     "eia_wholesale_2027_usd_mwh": 49.0,
     "eia_pjm_2026_yoy_pct": 41.0,
     "eia_northwest_2026_yoy_pct": -23.0,
-    "eia_latest_release_checked": "2026-10-06"
+    "eia_latest_release_checked": "2026-11-10",
+    "eia_unverified_new_release": "2026-11-10"
   },
   "power_source_errors": [
     "IEA DC: HTTPError",
@@ -57,7 +113,8 @@
     "IEA grid supply: HTTPError",
     "IEA AI questions: HTTPError",
     "IEA Electricity 2026 executive: HTTPError",
-    "IEA Electricity 2026 grids: HTTPError"
+    "IEA Electricity 2026 grids: HTTPError",
+    "EIA 2026-11-10 발간, 새 원표 아직 검증 불가: ValueError"
   ],
   "ms_ess_annual_forecast": {
     "source": "사용자 제공 Morgan Stanley Exhibit 7 · 연구 전망, 확정 수주 아님",
@@ -111,12 +168,13 @@
   ],
   "seen_ids": [
     "394b88027aa4cb3c5917",
-    "644835b9ff0f6ea97163"
+    "644835b9ff0f6ea97163",
+    "a7e727f8592e46706967"
   ],
   "last_fx_krw_per_usd": 1335.360704,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-11-18T14:14:19+00:00",
-  "updated_at_utc": "2026-11-18T14:14:22+00:00",
+  "fx_checked_utc": "2026-11-18T19:40:36+00:00",
+  "updated_at_utc": "2026-11-18T19:41:14+00:00",
   "venture_global_power_island": {
     "framework_signed": "2026-10-09",
     "announcement_date": "2026-10-15",
@@ -143,7 +201,7 @@
     "official_release_verified_live": true,
     "baker_official_verified_live": true,
     "sec_verified_live": false,
-    "last_checked_utc": "2026-11-18T14:14:22+00:00",
+    "last_checked_utc": "2026-11-18T19:41:15+00:00",
     "source_errors": [
       "SEC 2026-10-15 8-K 실시간 확인 불가: HTTPError: 403 Client Error: Forbidden for url: https://www.sec.gov/Archives/edgar/data/2007855/00020"
     ],
@@ -266,9 +324,10 @@
       }
     },
     "source_errors": [
-      "Constellation IR newsroom: HTTPError"
+      "Constellation IR newsroom: HTTPError",
+      "Constellation newsroom: HTTPError"
     ],
-    "last_checked_utc": "2026-11-05T11:06:52+00:00",
+    "last_checked_utc": "2026-11-18T19:41:18+00:00",
     "alert_change_count": 0,
     "google_constellation_official_ack": true
   },
@@ -401,6 +460,16 @@
     "crusoe_contract_stage": "signed_equipment_supply_not_energized",
     "ftai_contract_stage": "signed_initial_order_not_delivered",
     "gev_reference_period": "2026-Q3",
-    "prepared_at_utc": "2026-11-13T23:59:33+00:00"
+    "prepared_at_utc": "2026-11-13T23:59:33+00:00",
+    "delivery_receipt": {
+      "status": "confirmed",
+      "telegram_message_ids": [
+        265
+      ],
+      "message_count": 1,
+      "destination_verified": true,
+      "all_chunks_accepted": true,
+      "confirmed_at_utc": "2026-11-18T19:42:44+00:00"
+    }
   }
 }
