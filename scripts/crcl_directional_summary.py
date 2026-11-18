@@ -116,7 +116,7 @@ def direct_earnings(pending: dict) -> tuple[str, str, int]:
         now_proxy = float(c_now) * float(y_now)
         prev_proxy = float(c_prev) * float(y_prev)
         proxy_pct = (now_proxy / prev_proxy - 1.0) * 100.0 if prev_proxy else 0.0
-        parts.append(f"USDC×실제 수익률 프록시 {proxy_pct:+.2f}%")
+        parts.append(f"USDC×USDXX 펀드 수익률 참고 프록시 {proxy_pct:+.2f}% (서클 실제 분기 이익 아님)")
         if proxy_pct >= 1.0:
             return "우호적", " · ".join(parts), 2
         if proxy_pct >= 0.25:
@@ -392,7 +392,7 @@ def build_direction_dashboard(pending: dict) -> list[str]:
         lines.append(
             f"• <b>USDC 유통량 {_change_direction(c, cp)}</b> "
             f"{float(cp):.1f}→{balance}십억달러{krw} · 증감 {delta:+.1f}십억달러({percent:+.2f}%)"
-            f" · {c_prev_date}→{c_now_date}{warn('circle')}"
+            f" · {c_prev_date}→{c_now_date} · 공식 표시값(0.1십억달러 반올림) 기준{warn('circle')}"
         )
     else:
         lines.append("• <b>USDC 유통량 · 비교 보류</b> · 비교 수치 없음")
@@ -574,7 +574,7 @@ def build_compact_alert(pending: dict, original_text: str) -> str:
         lines.append(f"• <b>본업 판정</b> · {html.escape(direct_text)}")
     else:
         proxy_pct = _direct_proxy_pct(pending)
-        proxy_suffix = f" · 이익 프록시 {proxy_pct:+.2f}%" if proxy_pct is not None else ""
+        proxy_suffix = f" · 참고 프록시 {proxy_pct:+.2f}%(실제 순이익 아님)" if proxy_pct is not None else ""
         lines.append(f"• <b>본업 판정 · {html.escape(direct_label)}</b>{html.escape(proxy_suffix)}")
 
     lines.append(f"• <b>단기금리 · {html.escape(proxy_label)}</b> · {html.escape(proxy_text)}")
@@ -616,8 +616,12 @@ def build_compact_alert(pending: dict, original_text: str) -> str:
 
     lines += [
         "",
+        "<b>분기 실적과 펀드 지표 구분</b>",
+        "• 2026년 3분기 서클 실제 준비금 수익률 3.54% · 당시 전체 매출·준비금 수익 중 준비금 수익 비중 약 76.1%",
+        "• USDXX 7일 SEC 수익률은 블랙록 펀드의 시점별 수익률 · 서클의 실현 수익률·순이익과 동일하지 않음",
+        "",
         "<b>읽는 법</b>",
-        "• <b>SOFR</b> ↑ = 준비금 수익에 유리 / ↓ = 불리 · 단, 실제 실적은 <b>USDC × 준비금 수익률</b> 우선",
+        "• <b>SOFR</b> 상승 ↑ = 준비금 수익에 유리 가능 / 하락 ↓ = 불리 가능 · 실제 실적은 서클 분기 공시로 확인",
         "• <b>TBX</b> ↑ = 7~10년 국채 가격↓·금리↑ → CRCL 할인율 부담↑ / TBX ↓ = 반대 · <b>실적 직접지표 아님</b>",
     ]
 
