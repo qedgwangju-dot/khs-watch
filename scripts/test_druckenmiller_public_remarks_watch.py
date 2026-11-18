@@ -85,7 +85,7 @@ class WatchTests(unittest.TestCase):
         self.assertTrue(watcher.seed_ready(state,NOW))
         state["sent_events"][watcher.SEED_KEY]={"receipt":{"message_id":1}}
         self.assertFalse(watcher.seed_ready(state,NOW))
-        state["signal_values"]["copper_short"]={
+        state["signal_values"]["copper"]={
             "value":"copper_short","event_date":"2026-11-17T00:00:00+00:00"}
         sources=[
             {"publisher":"coindesk","signals":["copper_short"],
@@ -94,6 +94,10 @@ class WatchTests(unittest.TestCase):
              "published":NOW.isoformat(),"url":"https://www.barrons.com/b"},
         ]
         self.assertEqual(watcher.news_candidates(state,sources,NOW),[])
+        # A stance REVERSAL on copper must alert even within 90 days.
+        reversal=[dict(x,signals=["copper_long"]) for x in sources]
+        changed=watcher.news_candidates(state,reversal,NOW)
+        self.assertEqual(changed[0][0],"copper_long")
         state["pending"]={"key":"unconfirmed","reserved_at":NOW.isoformat()}
         with patch.object(watcher,"STATE_PATH") as dummy:
             dummy.exists.return_value=True
