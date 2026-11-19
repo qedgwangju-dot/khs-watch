@@ -1,6 +1,6 @@
 {
   "seen": {
-    "ICI|mmf": "0e7330087a397b169a3c26536cdd63236619c74078db1ee07144081b7ac56c6c",
+    "ICI|mmf": "dbe991759e766fc088b479860e35646c6a3e57c29526f2f9c2e9bd9ea457550c",
     "FINRA|margin": "023172414c834c3d51f292db8acbb3313778143e8763992adc96ff53351e53a6",
     "ICI|combined": "3abe718134a004c7e54d4dd19f06d0d4f30233526ca06610d609d805cd9b6fe0",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
@@ -13,30 +13,30 @@
     "ICI|mmf": {
       "source": "ICI",
       "kind": "mmf",
-      "period": "November 11, 2026",
-      "published": "November 12, 2026",
+      "period": "November 18, 2026",
+      "published": "November 19, 2026",
       "url": "https://www.ici.org/research/stats/mmf",
       "horizon_source_url": "https://www.ici.org/mm_summary_data_2026.xls",
       "horizon_error": null,
       "metrics": {
-        "assets_trillion": 7.98002,
-        "weekly_change_bn": -35.72,
-        "assets_bn": 7980.02,
+        "assets_trillion": 7.97644,
+        "weekly_change_bn": -3.58,
+        "assets_bn": 7976.44,
         "asset_balance_horizons": {
           "m1": {
             "months_back": 1,
-            "target_date": "2026-10-11",
-            "anchor_date": "2026-10-07",
-            "end_date": "2026-11-11",
-            "change_bn": 16.471,
+            "target_date": "2026-10-18",
+            "anchor_date": "2026-10-14",
+            "end_date": "2026-11-18",
+            "change_bn": 53.357,
             "reason": null
           },
           "m3": {
             "months_back": 3,
-            "target_date": "2026-08-11",
-            "anchor_date": "2026-08-05",
-            "end_date": "2026-11-11",
-            "change_bn": 70.698,
+            "target_date": "2026-08-18",
+            "anchor_date": "2026-08-12",
+            "end_date": "2026-11-18",
+            "change_bn": 48.861,
             "reason": null
           }
         }
@@ -48,7 +48,7 @@
         "prose_level",
         "history_xls_crosschecked"
       ],
-      "fingerprint": "0e7330087a397b169a3c26536cdd63236619c74078db1ee07144081b7ac56c6c"
+      "fingerprint": "dbe991759e766fc088b479860e35646c6a3e57c29526f2f9c2e9bd9ea457550c"
     },
     "FINRA|margin": {
       "source": "FINRA",
@@ -205,7 +205,7 @@
       "period": "November 06, 2026",
       "reference_week": "2026-11-06",
       "reference_week_verified": true,
-      "published": "2026-11-18",
+      "published": "2026-11-19",
       "url": "https://qz.com/hedge-funds-tech-stocks-near-record-pace-midterms-110926",
       "metrics": {
         "gross_leverage_pct": 207.5,
@@ -222,18 +222,18 @@
       "fingerprint": "c8bc5db6711bf93fb0af941c91e9976ad3f3d281c539458e698eda3c6ea81759"
     }
   },
-  "updated_at_kst": "2026-11-19T05:38:56.766079+09:00",
+  "updated_at_kst": "2026-11-20T07:06:19.789730+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-11-18",
-    "sp500_last_value": 7324.85009765625,
+    "sp500_last_date": "2026-11-19",
+    "sp500_last_value": 7175.830078125,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -6.32,
+    "sp500_drawdown_pct": -8.22,
     "hartnett_tracking_version": "2026-10-09-v1",
-    "hartnett_treasury_date": "2026-11-18",
-    "hartnett_10y_pct": 5.07,
-    "hartnett_10y_5d_bp": 9.0,
+    "hartnett_treasury_date": "2026-11-19",
+    "hartnett_10y_pct": 5.04,
+    "hartnett_10y_5d_bp": -6.0,
     "hartnett_bond_level": "below_5_30",
     "hartnett_bond_momentum": "neutral",
     "hartnett_fed_target_upper_pct": 4.0,
@@ -264,12 +264,12 @@
     "fund_horizon_summary_version": "2026-11-03-front-v1"
   },
   "factual_delivery_receipt": {
-    "timestamp_utc": "2026-11-18T20:40:16.011026+00:00",
-    "date_kst": "2026-11-19",
+    "timestamp_utc": "2026-11-19T22:08:08.056788+00:00",
+    "date_kst": "2026-11-20",
     "bot_username": "khs887900887900008879_bot",
     "message_ids": [
-      3207,
-      3208
+      3310,
+      3311
     ]
   }
 }
