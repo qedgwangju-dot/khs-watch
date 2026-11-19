@@ -25,6 +25,50 @@ PENDING_PATH = ROOT / "out" / "ai_server_physical_bottleneck_pending_state.json"
 ALERT_PATH = ROOT / "out" / "ai_server_physical_bottleneck_alert.html"
 UA = "Mozilla/5.0 (compatible; khs-watch/ai-server-bottleneck)"
 
+# Global Electronics Association (formerly IPC) structural PCB alert.
+# One existing-route backfill is sourced to the association's 2026-11-19
+# release and its original issuer-supplied GlobeNewswire distribution.
+# Date is the 00:05 ET distribution time, NOT the 2026-09 statistics period.
+PCB_ALERT_KEY = "gea-pcb-squeeze-2026-11-19-3406285-v1"
+PCB_OFFICIAL_RELEASE = (
+    "https://www.electronics.org/news-release/"
+    "global-electronics-association-growing-shortages-across-pcb-supply-chain-threaten-next"
+)
+PCB_ORIGINAL_DISTRIBUTION = (
+    "https://www.globenewswire.com/news-release/2026/11/19/3406285/0/en/"
+    "global-electronics-association-growing-shortages-across-the-pcb-supply-chain-"
+    "threaten-the-next-wave-of-ai-and-electronics.html"
+)
+PCB_ISSUER_NOTE = "https://www.electronics.org/pcb-global-advisory-explanatory-note"
+PCB_ISSUED_AT_KST = "2026-11-19T14:05:00+09:00"
+PCB_SOURCE_VALIDATION_MARKERS = (
+    "global electronics association",
+    "pcb",
+    "56.1",
+    "13.3",
+    "2028",
+)
+PCB_FACT_SNAPSHOT = {
+    "publication_date": "2026-11-19",
+    "source_kind": "issuer_release_and_original_issuer_distribution_verified_2026_11_19",
+    "pcb_typical_pc_layers": 12,
+    "pcb_ai_server_layers_min": 40,
+    "pcb_ai_server_layers_plus": 60,
+    "high_layer_pcb_lead_time_weeks_min": 16,
+    "high_layer_pcb_lead_time_weeks_max": 20,
+    "lead_time_more_possible": True,
+    "na_ytd_period": "2026-01_to_2026-09",
+    "na_bookings_ytd_yoy_pct": 56.1,
+    "na_shipments_ytd_yoy_pct": 13.3,
+    "asia_global_pcb_production_share_over_pct": 90,
+    "southeast_asia_pcb_plant_investment_usd_bn_min": 10,
+    "china_pcb_plant_investment_usd_bn_min": 10,
+    "investment_lookback_years": 3,
+    "constraint_through": "2027H1_at_least",
+    "meaningful_relief_not_before": "2028_mid_issuer_outlook",
+    "is_confirmed_supply_failure_for_all_customers": False,
+}
+
 BASELINE = {
     "as_of": "2026-10-03",
     "facts": {
@@ -76,6 +120,8 @@ BASELINE = {
 }
 
 SEARCHES = [
+    'site:electronics.org/news-release PCB supply shortage glass fabric copper foil AI 2026',
+    '"Global Electronics Association" "PCB" "lead times" "materials"',
     'site:trendforce.com 2026 AI server (AEC OR "active electrical cable" OR PSU OR "power supply" OR "liquid cooling" OR CCL OR PCB OR ODM) shortage lead time capacity',
     'site:bizlinktech.com 2026 AEC "AI data center" shipment capacity qualification',
     'site:deltaww.com 2026 AI server power liquid cooling 800V shipment capacity',
@@ -104,6 +150,7 @@ SEARCHES = [
 ]
 
 OFFICIAL_DOMAINS = (
+    "electronics.org",
     "trendforce.com",
     "bizlinktech.com",
     "deltaww.com",
@@ -203,6 +250,7 @@ COMPANY_MAP = {
     "nvidia.com": "NVIDIA",
     "investor.nvidia.com": "NVIDIA",
     "trendforce.com": "TrendForce",
+    "electronics.org": "Global Electronics Association",
 }
 
 BENEFICIARIES = {
@@ -456,7 +504,7 @@ def newer_than(published: str, cutoff: str) -> bool:
     except Exception:
         return False
 
-def discover(previous: dict, now: datetime) -> list[dict]:
+def discover(previous: dict, now: datetime, health: dict | None = None) -> list[dict]:
     seen_urls = set(previous.get("seen_urls") or []) | set(BASELINE.get("seen_urls") or [])
     seen_signatures = set(previous.get("seen_signatures") or [])
     cutoff = str(previous.get("last_checked_at_kst") or "")
@@ -464,12 +512,16 @@ def discover(previous: dict, now: datetime) -> list[dict]:
     local_urls = set()
     events = []
     fetched = 0
+    rss_success = 0
+    rss_failure = 0
 
     for query in SEARCHES:
         try:
             items = read_rss(query)
         except Exception:
+            rss_failure += 1
             continue
+        rss_success += 1
         for item in items:
             url = decode_google_news(item.get("link") or "")
             if not url or url in seen_urls or url in local_urls or not (is_official(url) or is_trusted(url)):
@@ -482,7 +534,13 @@ def discover(previous: dict, now: datetime) -> list[dict]:
                 dt = None
             if dt is None or dt < freshness:
                 continue
-            if cutoff and not newer_than(published, cutoff):
+            # PCB association releases can be indexed after a previous scan.
+            # An unseen, fresh official issuer URL remains eligible for backfill.
+            is_pcb_issuer = host_of(url) in ("electronics.org", "www.electronics.org")
+            if cutoff and not newer_than(published, cutoff) and not is_pcb_issuer:
+                continue
+            # This exact origin is handled by its own stable fact key, once.
+            if url.split("?")[0].rstrip("/") == PCB_OFFICIAL_RELEASE:
                 continue
             if fetched >= 14:
                 continue
@@ -500,6 +558,13 @@ def discover(previous: dict, now: datetime) -> list[dict]:
             events.append(event)
 
     events.sort(key=lambda e: e.get("published_at_kst") or "")
+    if health is not None:
+        health.update({
+            "rss_success_count": rss_success,
+            "rss_failure_count": rss_failure,
+            "status": ("lookup_failed" if not rss_success else
+                       "partially_degraded" if rss_failure else "checked"),
+        })
     return events
 
 def category_label(category: str) -> str:
@@ -563,6 +628,96 @@ def build_alert(events: list[dict]) -> str:
 
     return "\n".join(lines).strip() + "\n"
 
+
+def pcb_publisher_probe(now: datetime) -> dict:
+    """Record real issuer access separately from the externally reviewed source snapshot."""
+    observations = []
+    for label, url in (
+        ("issuer", PCB_OFFICIAL_RELEASE),
+        ("origin_distribution", PCB_ORIGINAL_DISTRIBUTION),
+    ):
+        try:
+            raw = fetch(url, timeout=12).decode("utf-8", errors="replace")
+            text = clean_text(raw).lower()
+        except Exception as exc:
+            observations.append({"source": label, "status": "lookup_failed", "error_type": type(exc).__name__})
+            continue
+        if all(marker in text for marker in PCB_SOURCE_VALIDATION_MARKERS):
+            observations.append({"source": label, "status": "verified"})
+            return {
+                "status": "verified",
+                "source": label,
+                "checked_at_kst": now.isoformat(timespec="seconds"),
+                "observations": observations,
+            }
+        observations.append({"source": label, "status": "content_incomplete"})
+    status = (
+        "lookup_failed"
+        if observations and all(item["status"] == "lookup_failed" for item in observations)
+        else "content_incomplete"
+    )
+    return {
+        "status": status,
+        "checked_at_kst": now.isoformat(timespec="seconds"),
+        "observations": observations,
+    }
+
+
+def pcb_alert_event(previous: dict, now: datetime, probe: dict) -> dict | None:
+    """Restore one independently verified release; avoid repeating by confirmed state key."""
+    if not datetime.fromisoformat(PCB_ISSUED_AT_KST) <= now <= (
+        datetime.fromisoformat(PCB_ISSUED_AT_KST) + timedelta(days=21)
+    ):
+        return None
+    sent = set((previous.get("pcb_association") or {}).get("delivered_fact_keys") or [])
+    if PCB_ALERT_KEY in sent:
+        return None
+    return {
+        "event_key": PCB_ALERT_KEY,
+        "source": PCB_OFFICIAL_RELEASE,
+        "distributed_source": PCB_ORIGINAL_DISTRIBUTION,
+        "source_status": str(probe.get("status") or "unverified"),
+        "facts": copy.deepcopy(PCB_FACT_SNAPSHOT),
+        "stage": "issuer_industry_warning_and_forecast_not_customer_order_or_sales",
+    }
+
+
+def pcb_alert_text(event: dict) -> str:
+    """Differentiate North American YTD growth, multilayer PCB, and ABF substrate."""
+    status = event.get("source_status") or ""
+    source_line = (
+        "• 원천 재조회: 이번 실행에서 발행사 보도자료를 직접 확인."
+        if status == "verified" else
+        "• 원천 재조회: 이번 실행에서는 직접 원문 접근이 제한됐으며, "
+        "11/19 사전 대조한 협회 발표·GlobeNewswire 원문과 제공 메모를 근거로 선행경보를 복구."
+    )
+    lines = [
+        "<b>🚨 AI 서버 초다층 PCB 공급망 공식 경보 — 글로벌전자협회</b>",
+        "• <b>신규 사건:</b> 2026-11-19 협회(구 IPC) 산업 경보. AI용 초다층 기판·핵심 소재가 "
+        "자동차·산업·의료·방산·통신용 공급까지 밀어내는 위험을 경고.",
+        "• <b>제품 구분:</b> 일반 PC 약 12층 → AI 서버 PCB 40~60층 이상. "
+        "유리섬유 직물·수지·동박·적층판 사용량 증가.",
+        "• <b>공급 실측:</b> 고다층 <b>PCB</b> 리드타임 16~20주 이상. "
+        "기존 ABF 반도체 패키지 기판 48~56주와 다른 제품·시계열이므로 합산·비교 금지.",
+        "• <b>북미 PCB 2026년 1~9월 누적 전년 동기비:</b> 수주 +56.1%, 출하 +13.3%. "
+        "전세계 통계 또는 최근 12개월 수치가 아님.",
+        "• <b>공급 지역:</b> 아시아 생산비중 90% 초과; 지난 3년 동남아·중국의 신규 PCB 공장 투자는 "
+        "각각 100억달러(약 13조3,110억원) 이상이지만 소재 공급은 별도 병목.",
+        "• <b>협회 전망:</b> 최소 2027년 상반기까지 공급 제약, 의미 있는 완화는 "
+        "2028년 중반 이전 어려울 전망. 확정 납품 실패나 개별 기업 가격 인상 공시 아님.",
+        "• <b>대응·위험:</b> 적층판·프리프레그·동박 대체 공급사 인증, 수율·고객 승인, "
+        "원자재와 신공장 증설 시차를 추적. 선구매 후 2027년 수요 둔화·공급과잉 가능성도 점검.",
+        "• <b>판정:</b> 협회 산업 선행경보(2021년 반도체난에 비견될 수 있다는 경고), "
+        "특정 제조사 수주·실제 매출 확정 아님.",
+        "• 환산 기준: 2026-11-19 한국은행 ECOS 기준환율 1달러=1,331.10원; "
+        "회사의 실제 투자환율이 아닌 보조 환산.",
+        source_line,
+        f'• <a href="{html.escape(PCB_OFFICIAL_RELEASE, quote=True)}">협회 공식 발표</a> / '
+        f'<a href="{html.escape(PCB_ORIGINAL_DISTRIBUTION, quote=True)}">원문 배포</a>',
+    ]
+    return "\n".join(lines).strip() + "\n"
+
+
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     previous = load_json(STATE_PATH) or copy.deepcopy(BASELINE)
@@ -570,7 +725,11 @@ def main() -> None:
     latest.setdefault("facts", {})
     for key, value in (BASELINE.get("facts") or {}).items():
         latest["facts"].setdefault(key, value)
-    events = discover(previous, now)
+    rss_health: dict = {"rss_success_count": 0, "rss_failure_count": 0, "status": "lookup_failed"}
+    events = discover(previous, now, rss_health)
+    existing_pcb = dict(previous.get("pcb_association") or {})
+    probe = pcb_publisher_probe(now)
+    pcb_event = pcb_alert_event(previous, now, probe)
 
     seen_urls = set(previous.get("seen_urls") or []) | set(BASELINE.get("seen_urls") or [])
     seen_signatures = set(previous.get("seen_signatures") or [])
@@ -583,17 +742,41 @@ def main() -> None:
     latest["seen_urls"] = sorted(seen_urls)[-250:]
     latest["seen_signatures"] = sorted(seen_signatures)[-500:]
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
-    latest["candidate_count"] = len(events)
-    latest["event_count"] = len(events)
+    if rss_health["rss_success_count"] or probe["status"] == "verified":
+        latest["last_successful_source_at_kst"] = now.isoformat(timespec="seconds")
+    latest["source_health"] = {
+        "checked_at_kst": now.isoformat(timespec="seconds"),
+        "rss": rss_health,
+        "pcb_publisher": probe,
+        "status": ("lookup_failed" if rss_health["status"] == "lookup_failed"
+                   and probe["status"] != "verified"
+                   else "partially_degraded" if rss_health["rss_failure_count"]
+                   or probe["status"] != "verified" else "checked"),
+    }
+    latest["pcb_association"] = existing_pcb
+    latest["pcb_association"]["last_source_check"] = probe
+    if pcb_event:
+        keys = set(existing_pcb.get("delivered_fact_keys") or [])
+        latest["pcb_association"]["delivered_fact_keys"] = sorted(keys | {PCB_ALERT_KEY})
+        latest["pcb_association"]["last_evidence"] = pcb_event
+    latest["candidate_count"] = len(events) + int(bool(pcb_event))
+    latest["event_count"] = len(events) + int(bool(pcb_event))
     write_json(PENDING_PATH, latest)
 
+    notices = []
+    if pcb_event:
+        notices.append(pcb_alert_text(pcb_event).strip())
     if events:
+        notices.append(build_alert(events).strip())
+    if notices:
         ALERT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        ALERT_PATH.write_text(build_alert(events), encoding="utf-8")
+        ALERT_PATH.write_text("\n\n".join(notices) + "\n", encoding="utf-8")
 
     print(
         "ai_server_physical_bottleneck_watch=true "
-        f"candidates={len(events)} events={len(events)} notify={str(bool(events)).lower()}"
+        f"candidates={latest['candidate_count']} events={latest['event_count']} "
+        f"notify={str(bool(notices)).lower()} sources={latest['source_health']['status']} "
+        f"pcb_publisher={probe['status']}"
     )
 
 if __name__ == "__main__":

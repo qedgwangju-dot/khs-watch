@@ -200,6 +200,128 @@ class AIServerPhysicalBottleneckTests(unittest.TestCase):
         self.assertNotIn("강한 알림 기준", alert)
         self.assertNotIn("숨은 역풍", alert)
 
+    def test_gea_one_time_alert_is_scope_locked_and_deduplicated(self):
+        import copy
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        kst = ZoneInfo("Asia/Seoul")
+        previous = copy.deepcopy(m.BASELINE)
+        now = datetime(2026, 11, 19, 20, 0, tzinfo=kst)
+        ev = m.pcb_alert_event(previous, now, {"status": "verified"})
+        self.assertIsNotNone(ev)
+        self.assertEqual(ev["facts"]["na_ytd_period"], "2026-01_to_2026-09")
+        self.assertEqual(ev["facts"]["high_layer_pcb_lead_time_weeks_min"], 16)
+        self.assertNotIn("ABF", ev["facts"])
+        notice = m.pcb_alert_text(ev)
+        for term in ("12층", "40~60층", "+56.1%", "+13.3%", "북미", "16~20주",
+                     "ABF", "2028년 중반", "100억달러(약 13조3,110억원)"):
+            self.assertIn(term, notice)
+        previous["pcb_association"] = {"delivered_fact_keys": [m.PCB_ALERT_KEY]}
+        self.assertIsNone(m.pcb_alert_event(previous, now, {"status": "verified"}))
+        self.assertIsNone(m.pcb_alert_event(m.BASELINE, datetime(
+            2026, 11, 19, 13, 0, tzinfo=kst), {"status": "verified"}))
+        self.assertIsNone(m.pcb_alert_event(m.BASELINE, datetime(
+            2026, 12, 12, 9, 0, tzinfo=kst), {"status": "verified"}))
+
+    def test_gea_source_probe_distinguishes_verified_and_lookup_failed(self):
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        from unittest import mock
+        now = datetime(2026, 11, 19, 20, tzinfo=ZoneInfo("Asia/Seoul"))
+        issuer = (
+            "Global Electronics Association warns that PCB supply chains face shortages. "
+            "Bookings grew 56.1% while shipments increased 13.3% and relief before 2028 is unlikely."
+        )
+        with mock.patch.object(m, "fetch", return_value=issuer.encode()):
+            ok = m.pcb_publisher_probe(now)
+        self.assertEqual(ok["status"], "verified")
+        with mock.patch.object(m, "fetch", side_effect=TimeoutError("blocked")):
+            failed = m.pcb_publisher_probe(now)
+        self.assertEqual(failed["status"], "lookup_failed")
+        self.assertEqual(len(failed["observations"]), 2)
+        self.assertTrue(all(o["status"] == "lookup_failed" for o in failed["observations"]))
+
+    def test_official_pcb_issuer_is_not_discarded_due_to_delayed_indexing(self):
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        from unittest import mock
+        now = datetime(2026, 11, 19, 20, tzinfo=ZoneInfo("Asia/Seoul"))
+        item = {
+            "title": "Official PCB supply update",
+            "link": "https://www.electronics.org/news-release/new-ai-pcb-material-supply-update",
+            "description": "PCB shortage lead times now 24 weeks.",
+            "published_at_kst": "2026-11-19T15:00:00+09:00",
+        }
+        previous = {"last_checked_at_kst": "2026-11-19T18:00:00+09:00",
+                    "seen_urls": [], "seen_signatures": []}
+        health = {}
+        feed = lambda query: [item] if "electronics.org" in query else []
+        with mock.patch.object(m, "read_rss", side_effect=feed), \
+             mock.patch.object(m, "article_text", return_value=""):
+            events = m.discover(previous, now, health)
+        self.assertEqual(len(events), 1)
+        self.assertIn("PCB_CCL", events[0]["categories"])
+        self.assertEqual(health["status"], "checked")
+        again = {"last_checked_at_kst": previous["last_checked_at_kst"],
+                 "seen_urls": [item["link"]], "seen_signatures": []}
+        with mock.patch.object(m, "read_rss", side_effect=feed), \
+             mock.patch.object(m, "article_text", return_value=""):
+            self.assertEqual(m.discover(again, now), [])
+
+    def test_rss_lookup_failure_is_not_reported_as_no_new_official_release(self):
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        from unittest import mock
+        now = datetime(2026, 11, 19, 20, tzinfo=ZoneInfo("Asia/Seoul"))
+        health = {}
+        with mock.patch.object(m, "read_rss", side_effect=TimeoutError("timeout")):
+            self.assertEqual(m.discover(m.BASELINE, now, health), [])
+        self.assertEqual(health["status"], "lookup_failed")
+        self.assertEqual(health["rss_success_count"], 0)
+        self.assertGreater(health["rss_failure_count"], 0)
+
+    def test_gea_backfill_keeps_other_state_and_requires_live_ack_promotion(self):
+        import copy
+        import json
+        import tempfile
+        from datetime import datetime
+        from unittest import mock
+        from zoneinfo import ZoneInfo
+        class Clock(m.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                value = cls(2026, 11, 19, 20, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+                return value.astimezone(tz) if tz else value.replace(tzinfo=None)
+        with tempfile.TemporaryDirectory() as folder:
+            root = pathlib.Path(folder)
+            state, pending, alert = (
+                root / "state.json", root / "pending.json", root / "alert.html"
+            )
+            original = copy.deepcopy(m.BASELINE)
+            original["last_checked_at_kst"] = "2026-11-19T18:37:26+09:00"
+            original["other_route"] = {"preserved": True}
+            state.write_text(json.dumps(original), encoding="utf-8")
+            with mock.patch.object(m, "datetime", Clock), \
+                 mock.patch.object(m, "STATE_PATH", state), \
+                 mock.patch.object(m, "PENDING_PATH", pending), \
+                 mock.patch.object(m, "ALERT_PATH", alert), \
+                 mock.patch.object(m, "discover", return_value=[]), \
+                 mock.patch.object(m, "pcb_publisher_probe", return_value={"status": "lookup_failed"}):
+                m.main()
+                staged = json.loads(pending.read_text(encoding="utf-8"))
+                self.assertEqual(staged["pcb_association"]["delivered_fact_keys"], [m.PCB_ALERT_KEY])
+                self.assertEqual(staged["other_route"], {"preserved": True})
+                self.assertEqual(json.loads(state.read_text(encoding="utf-8"))["other_route"], {"preserved": True})
+                self.assertTrue(alert.exists())
+                # The test promotes only a simulated acknowledged state; production
+                # sends are exclusively managed by the pre-existing delivery gate.
+                state.write_text(json.dumps(staged), encoding="utf-8")
+                alert.unlink()
+                m.main()
+                self.assertFalse(alert.exists())
+
+
+
 
 if __name__ == "__main__":
     unittest.main()
