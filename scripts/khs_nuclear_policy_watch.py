@@ -2355,7 +2355,7 @@ def _poland_epc_stage(title: str) -> str | None:
         "expected", "expects", "planning", "plans to", "set to sign", "to sign",
         "will sign", "aims to", "may sign", "due to sign", "prepar",
         "negotiat", "talks", "terms", "framework", "preliminary",
-        "conditional", "main commercial", "early works", "long-lead",
+        "conditional", "main commercial", "early works",
         "podpisanie", "planuje", "planowane", "negocj", "warunki handlowe",
         "uzgodnil", "wstepn", "warunkow", "przygotow",
         "예상", "계획", "예정", "검토", "협상", "합의", "조건부", "본계약 추진",
@@ -2365,6 +2365,7 @@ def _poland_epc_stage(title: str) -> str | None:
     # '허가 신청'이나 부지 준비 공사 허가는 원자력시설 건설허가가 아니다.
     construction_licence = any(x in title for x in (
         "nuclear construction licence", "nuclear construction license",
+        "nuclear construction permit",
         "nuclear plant construction permit", "zezwolenie na budowe obiektu jadrowego",
         "원자력시설 건설허가",
     ))
