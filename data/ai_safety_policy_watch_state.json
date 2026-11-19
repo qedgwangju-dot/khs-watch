@@ -3,38 +3,18 @@
   "last_collection": {
     "all_sources_verified": false,
     "deferred_events": 0,
-    "errors": [
-      "Google News 실패: NAAIMES AI measurement evaluation standard safety insti / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Federal Reserve\" \"GENIUS Act\" (final rule OR proposed  / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"OCC\" \"GENIUS Act\" (final rule OR effective OR amendmen / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"community banks\" \"third-party risk management\" (\"Feder / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: EU AI frontier model safety standard incident reporting / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"특화 인공지능 파운데이션 모델\" 사이버 보안 B200 / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"과기정통부\" \"금융권\" (24시간 비상대응 OR CISO 보안점검 OR C-TAS 차단) / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"금융위원회\" \"580개사\" (전수점검 OR 점검 완료 OR 결과 발표) / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"파이오링크\" \"PHP2Shell\" (점검 OR 계약 OR 유료) / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"엑스게이트\" (PHP2Shell OR \"PHP 취약점\") (수주 OR 방화벽 OR 계약) / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (NAVER Cloud OR S2W OR SandLab OR \"LG CNS\") cybersecuri / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: AI cybersecurity foundation model government procuremen / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (\"Greg Brockman\" OR \"OpenAI president\") (cybersecurity  / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"GPT-6.1 Astra\" (safety cancelled OR release resumed OR / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Andy Jassy\" (\"security tokens\" OR \"cybersecurity token / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (NVIDIA OR BlueField OR Nemotron) cybersecurity inferen / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: NVIDIA \"Open Agent Safety Platform\" OpenShell Sentry pa / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Joint Commitment on Frontier Responsibilities\" AI / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: site:whitehouse.gov \"Super Intelligence\" safety regulat / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 19,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 107,
-    "google_news_queries_succeeded": 88,
-    "google_news_rate_limit_429": 19,
+    "google_news_queries_succeeded": 107,
+    "google_news_rate_limit_429": 0,
     "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 70,
+    "raw_items": 83,
     "sif_new_stages": 0,
     "source_access_limited": true,
     "si_portal_health": "정상",
@@ -122,7 +102,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-19T16:31:07.615341+00:00",
+    "updated_at": "2026-11-19T16:58:25.123265+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -1020,11 +1000,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-20T01:31:07+09:00",
+  "updated_at_kst": "2026-11-20T01:58:25+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-19T16:31:58.991894+00:00",
+    "last_success_at": "2026-11-19T16:59:06.495726+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
