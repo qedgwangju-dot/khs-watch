@@ -21,6 +21,28 @@
       "state_ancestor_sha256": "af5f2c56351455e471ef5e2642bfd3e7c96d27d8ba8a52dea5585dfd88b5cb32",
       "state_persisted": true,
       "status": "complete"
+    },
+    "a1434eb0b272049da89ff014035c02077093e65f03a0dd4b8910c6cca807e21c": {
+      "bot_username": "khs88798879887988798879_bot",
+      "confirmed_at_kst": "2026-11-19T11:09:55+09:00",
+      "created_at_kst": "2026-11-19T11:09:55+09:00",
+      "part_hashes": [
+        "b5bdf73bc3787983861390685639f46003e327af407f5bf3fcafcecf719bf16c"
+      ],
+      "receipts": {
+        "0": {
+          "chat_identity_verified": true,
+          "confirmed_at_kst": "2026-11-19T11:09:55+09:00",
+          "message_id": 525,
+          "source_sha": "4020f01d425443a5636e4aa41503b80443054c3d",
+          "status": "confirmed"
+        }
+      },
+      "route_key": "e06789d08ffbc610316e034294fc31cc16aee21380f9465db7a03610b61897c0",
+      "source_sha": "4020f01d425443a5636e4aa41503b80443054c3d",
+      "state_ancestor_sha256": "e563bca1cd0970c4bac2fc8ffd2aad45cb74c883e11bf646355a89cb9a325b26",
+      "state_persisted": true,
+      "status": "complete"
     }
   },
   "history_cache": {
@@ -1130,6 +1152,25 @@
     "44436935619:1": {
       "checked_at_kst": "2026-11-19T10:31:39+09:00",
       "fingerprint": "45d3ff202309a0c0d99fecffb78e3452169c73e745430fb2e631b63ba4cf4dde",
+      "outcome": "no_send"
+    },
+    "44437278032:1": {
+      "checked_at_kst": "2026-11-19T11:09:54+09:00",
+      "completed": "2026-11-19T01:31:40+00:00",
+      "fingerprint": "714c6bc96d8b2114074306b69ba2dd304cea3a7a22893e1d570b93e916501925",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-19T01:31:40+00:00"
+    },
+    "44438473208:1": {
+      "checked_at_kst": "2026-11-19T11:09:53+09:00",
+      "fingerprint": "7d830584534244366f5f282467a62b8b340138bff579a5395e4dd80ec5dc90bb",
+      "outcome": "no_send"
+    },
+    "44439668429:1": {
+      "checked_at_kst": "2026-11-19T11:09:53+09:00",
+      "fingerprint": "b1e1e1ae5b45596bb6fd2d62f6904949f9dbec296e22ddd2a004edf527ac260c",
       "outcome": "no_send"
     }
   },
