@@ -295,6 +295,9 @@ POLAND_EPC_PRIORITY = {
     "epc_signing_delayed_again": 7, "first_nuclear_concrete": 7,
     "firm_long_lead_order": 6,
 }
+POLAND_EPC_DIRECT_FEEDS = (
+    ("Westinghouse 공식 발표 피드", "https://info.westinghousenuclear.com/news/rss.xml"),
+)
 POLAND_EPC_QUERIES = (
     ("PEJ", "site:pej.pl Westinghouse Bechtel EPC umowa when:7d"),
     ("폴란드 정부", "site:gov.pl PEJ elektrownia jadrowa EPC when:7d"),
@@ -2413,6 +2416,62 @@ def collect_poland_epc_items(now: dt.datetime) -> list[dict]:
     failures = 0
     successes = 0
     now_utc = now.astimezone(UTC)
+    direct_successes = 0
+    for source_name, feed_url in POLAND_EPC_DIRECT_FEEDS:
+        try:
+            feed, error = shared_fetch_text(
+                feed_url, "KHS-Poland-AP1000-official-feed contact=github-actions",
+                timeout=7, attempts=1,
+            )
+            if error is not None or not feed:
+                raise RuntimeError(error or "empty official feed")
+            root = ET.fromstring(feed)
+            if not root.findall(".//item"):
+                raise ValueError("official feed contains no RSS items")
+            direct_successes += 1
+            successes += 1
+        except Exception as exc:
+            failures += 1
+            print(f"poland_epc_direct_source_error source={source_name} error={type(exc).__name__}")
+            continue
+        for node in root.findall(".//item"):
+            title = clean_text(node.findtext("title") or "")
+            stage = _poland_epc_stage(title)
+            link = clean_text(node.findtext("link") or "")
+            if not stage or not _poland_epc_official_publisher(link):
+                continue
+            try:
+                published = parsedate_to_datetime(str(node.findtext("pubDate") or "").strip())
+                if published.tzinfo is None:
+                    continue
+                published = published.astimezone(UTC)
+            except (ValueError, TypeError, OverflowError, IndexError):
+                continue
+            if (
+                published <= POLAND_EPC_CUTOFF_UTC
+                or published > now_utc + dt.timedelta(minutes=10)
+                or now_utc - published > dt.timedelta(hours=72)
+            ):
+                continue
+            event = {
+                "kind": "poland_ap1000_epc",
+                "stage": stage, "status": POLAND_EPC_STAGES[stage],
+                "title": title, "source": source_name,
+                "publisher_url": feed_url, "link": link,
+                "published_utc": published.isoformat(timespec="seconds"),
+                "published_kst": published.astimezone(KST).isoformat(timespec="seconds"),
+                "official_publisher_title": True, "official_direct_feed": True,
+                "verified": False,
+                "verification": "웨스팅하우스 공식 RSS 원문 제목·일시 직접 조회; 개별 계약서 확인 전",
+            }
+            current = candidates.get(stage)
+            if current is None or (
+                bool(event.get("official_direct_feed")), event["published_utc"]
+            ) > (
+                bool(current.get("official_direct_feed")), current["published_utc"]
+            ):
+                candidates[stage] = event
+
     for source_name, query in POLAND_EPC_QUERIES:
         try:
             body, error = shared_fetch_text(
@@ -2469,11 +2528,14 @@ def collect_poland_epc_items(now: dt.datetime) -> list[dict]:
                 "verification": "공식 발행자로 표시된 뉴스 RSS 제목 확인; 원문·최종 계약조건 직접 검증 전",
             }
             current = candidates.get(stage)
-            if current is None or event["published_utc"] > current["published_utc"]:
+            if current is None or (
+                not current.get("official_direct_feed")
+                and event["published_utc"] > current["published_utc"]
+            ):
                 candidates[stage] = event
     status = "unknown" if successes == 0 else ("partial" if failures else "checked")
     print(
-        f"poland_epc_source_status={status} successful_queries={successes} "
+        f"poland_epc_source_status={status} direct_feeds_ok={direct_successes} successful_queries={successes} "
         f"failed_queries={failures} event_candidates={len(candidates)}"
     )
     # 실패한 원천 조회를 '공식 신규 발표 없음'으로 간주하지 않는다.
