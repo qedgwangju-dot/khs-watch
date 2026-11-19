@@ -132,13 +132,15 @@
   },
   "_delivery": {
     "id": "66f0ab09514edff32cdfe917311d12ccfd4f0bfa63fd3d52668e1dfe258bc915",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-11-20T00:48:22+09:00",
     "chunks": [
       "<b>반도체 테스트 후공정 병목 선행경보 — Allegro·Advantest</b>\n• <b>Allegro(ALGM) 10/29 회계연도 2027년 2분기 발언:</b> 2026년 7~9월 테스트에는 큰 제약이 없었으나, 10~12월에는 일부 제품 구성에서 제약이 더 나타날 전망. 3분기 실적 확정치가 아님.\n• <b>Allegro 대응:</b> 회계연도 3·4분기 테스트 처리능력 추가 예정. 전공정은 외부 파운드리 전량 위탁, 후공정은 필리핀 자체시설과 중국 등 아시아 OSAT 병행. 일부 조립 외주 여력은 있으므로 모든 제품의 공급 중단으로 해석 금지.\n• <b>Advantest(6857) 11/12 공식:</b> SoC 테스터 <b>연간 생산능력</b> 2026년 5,000대 이상 → 10,000대 이상 목표. 원래 FY2028 말 목표에서 약 1년 앞당기는 방안을 추진하지만 앞당긴 날짜는 미확정. 생산능력 목표를 실제 출하·수주 물량으로 취급하지 않음.\n• <b>단위 정정:</b> 다음 단계 20,000대는 <b>월산이 아니라 연산</b> 확대 구상이며 정식 달성 일정 미확정. 지난 5~6년 제품 일부 10배·모듈 일부 20배 증설은 모든 제품에 일괄 적용되는 수치가 아님.\n• <b>상류 부품 병목:</b> Advantest 테스터는 DDR4 DRAM·전자기판·케이블·커넥터가 필요하고 AI 시스템과 부품 조달이 경합할 수 있음. 시험 시간·검사 내용이 늘면 장비 수량만 확충해도 처리량이 부족할 수 있음.\n• <b>다음 선행지표:</b> 실제 검사 처리량·장비 리드타임·SoC 테스터 연산능력·모듈 공급·DDR4 조달·고객 추가 주문·OSAT 테스트 가동률·테스트 설비 투자 결정과 실제 가동.\n• <b>구별:</b> 검사 공정 병목은 Allegro의 회사별 현황, Advantest 1만/2만 대는 제조사 연간 능력 목표. 전체 반도체 검사 시장의 실측 부족률·독점 공급·확정 매출로 확대하지 않음.\n• 원천 검증: 일부 문서 재조회 제한. 각 원천의 접근 상태는 운영 기록에 구분 저장했으며, 공식 Q&A 검증값과 독립 컨퍼런스콜 전사를 혼동하지 않음.\n• <a href=\"https://www.advantest.com/document/en/investors/ir-library/briefing/JE_IR%20Fireside_Chat_QA_20261112.pdf\">Advantest 11/12 공식 Q&A</a> / <a href=\"https://www.advantest.com/document/en/investors/ir-library/briefing/JE_IR%20Fireside_Chat_Script_20261112.pdf\">공식 발표 원고</a>\n• <a href=\"https://investors.allegromicro.com/news-releases/news-release-details/allegro-microsystems-reports-second-quarter-2027-results\">Allegro 공식 실적</a> / <a href=\"https://stockanalysis.com/stocks/algm/transcripts/719837-q2-2027/\">컨퍼런스콜 전사(독립 2차 자료)</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      536
+    ],
     "candidate": {
       "as_of": "2026-10-03",
       "facts": {
