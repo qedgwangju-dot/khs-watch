@@ -12,6 +12,7 @@ from pathlib import Path
 from kofia_liquidity_semantic_guard import validate
 
 WORKFLOW = Path(".github/workflows/kofia-liquidity-telegram-watch.yml")
+MMF_GROWTH_NOTE = "기업과 기관이 당장 주식에 투자하지 않고 단기 금융상품에 맡겨둔 자금이 크게 늘었다는 뜻입니다."
 START = "      - name: Build detailed current interpretation"
 HEREDOC = "          python - <<'PY'\n"
 END = "\n          PY"
