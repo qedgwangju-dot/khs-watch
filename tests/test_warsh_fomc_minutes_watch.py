@@ -150,7 +150,7 @@ class TestMinutes(unittest.TestCase):
         self.assertLessEqual(len(re.sub(r'<[^>]+>', '',html.unescape(msg))),3900)
 
     def test_future_meeting_is_not_labeled_as_september(self):
-        sig={key:False for key in watch.extract_signals(MINUTES,'2026-10-28')}
+        sig={key:False for key in watch.extract_signals(OCT_MINUTES,'2026-10-28')}
         with patch.object(watch,'load',return_value={}):
             msg=watch.message('2026-10-28','https://example.com/minutes',
                               'https://example.com/press','2026-11-18',sig)
