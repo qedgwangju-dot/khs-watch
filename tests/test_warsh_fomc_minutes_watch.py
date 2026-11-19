@@ -156,7 +156,7 @@ class TestMinutes(unittest.TestCase):
                               'https://example.com/press','2026-11-18',sig)
         self.assertNotIn('10월 27~28일 FOMC',msg)
         self.assertNotIn('3.75~4.00%',msg)
-        self.assertIn('다음 FOMC',msg)
+        self.assertIn('12월 8~9일 FOMC',msg)
 
     def test_format_upgrade_only_once(self):
         today = datetime.now(watch.ET)
@@ -255,7 +255,7 @@ class TestOctober2026(unittest.TestCase):
     def test_october_missing_key_or_changed_quantifier_blocks_delivery(self):
         for needle in (
             "Policymakers' Discussion of Current Conditions, the Economic Outlook, and Monetary Policy Considerations",
-            "almost all participants judged", "a couple of participants noted",
+            "almost all participants judged", "A couple of participants noted",
             "10 — 2 vote", "off-balance-sheet leasing commitments",
         ):
             with self.subTest(needle=needle):
