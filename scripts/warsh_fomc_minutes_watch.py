@@ -60,7 +60,9 @@ def clean(raw):
 def load(path):
     try:
         return json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
-    except Exception:
+    except Exception as exc:
+        if path == STATE:
+            raise RuntimeError('FOMC 의사록 발송·중복 상태 파일 손상 — 자동 재전송 금지') from exc
         return {}
 
 
@@ -99,8 +101,16 @@ def send(message):
         response = json.loads(r.read().decode('utf-8'))
     result = response.get('result') or {}
     message_id = result.get('message_id')
-    if response.get('ok') is not True or not isinstance(message_id, int):
+    if response.get('ok') is not True or not isinstance(message_id, int) or message_id <= 0:
         raise RuntimeError('Telegram 정상 응답 또는 message_id 확인 실패')
+    delivered_chat = result.get('chat') or {}
+    if CHAT.lstrip('-').isdigit():
+        matched = str(delivered_chat.get('id') or '') == CHAT
+    else:
+        matched = CHAT.startswith('@') and (
+            '@' + str(delivered_chat.get('username') or '')).lower() == CHAT.lower()
+    if not matched:
+        raise RuntimeError('Telegram 수신 채팅 ID 불일치 — 완료 확정 금지')
     return message_id
 
 
@@ -168,12 +178,21 @@ def verify_official_publication(calendar_html, minute_html, release_date, stmt_d
     target = meeting_date_pattern(stmt_date)
     if not re.search(target, raw, re.I):
         raise RuntimeError('의사록 본문 대상 회의 날짜 불일치')
-    if not all(t in raw for t in [
+    general_headers = [
         'Minutes of the Federal Open Market Committee',
-        "Participants' Views on Current Conditions and the Economic Outlook",
         'Committee Policy Actions',
-    ]):
-        raise RuntimeError('의사록 본문 필수 절 누락 — 조기 공개·불완전 페이지 가능성')
+    ]
+    # 2026년 10월 의사록은 9월의 "Participants' Views" 절을
+    # "Policymakers' Discussion ..." 절로 개편했다. 고정 표제 검증은
+    # 정상 공개 자료를 오검출하여 발송을 중단시켰다.
+    required_headers = ([
+        "Staff Review and Policymakers' Discussion of Financial Stability",
+        "Policymakers' Discussion of Current Conditions, the Economic Outlook, and Monetary Policy Considerations",
+    ] if stmt_date == '2026-10-28' else [
+        "Participants' Views on Current Conditions and the Economic Outlook",
+    ])
+    if not all(t in raw for t in general_headers + required_headers):
+        raise RuntimeError('의사록 본문 필수 절 누락 또는 대상 회의 구조 불일치 — 전송 보류')
     pathdate = release_date.replace('-', '')
     press_url = f'https://www.federalreserve.gov/newsevents/pressreleases/monetary{pathdate}a.htm'
     press_html, final_press = fetch(press_url)
@@ -198,6 +217,8 @@ def section(text, start, end):
 def extract_signals(text, stmt_date):
     """원문에서 근거가 잡힌 항목만 참으로 판정. 참가자/시장보고/위원회 결정을 분리."""
     text = ' '.join(text.split())
+    if stmt_date == '2026-10-28':
+        return extract_october2026_signals(text)
     views = section(
         text, "Participants' Views on Current Conditions and the Economic Outlook",
         'Committee Policy Actions',
@@ -330,6 +351,116 @@ def extract_signals(text, stmt_date):
     return signals
 
 
+
+def extract_october2026_signals(text):
+    """회의별 표제·발언 주체·정량 조건을 앵커로 검증: 9월 문구의 재사용 금지."""
+    text = ' '.join(text.split())
+    financial = section(text,
+        "Staff Review and Policymakers' Discussion of Financial Stability",
+        'Developments in Financial Markets and Open Market Operations')
+    manager = section(text,
+        'Developments in Financial Markets and Open Market Operations',
+        'Staff Review of the Economic Situation')
+    staff = section(text, 'Staff Review of the Economic Situation',
+                    'Staff Review of the Financial Situation')
+    views = section(text,
+        "Policymakers' Discussion of Current Conditions, the Economic Outlook, and Monetary Policy Considerations",
+        'Committee Policy Actions')
+    policy_marker = 'In their consideration of monetary policy at this meeting'
+    if policy_marker not in views:
+        raise RuntimeError('10월 의사록 참가자 금리결정·전망 절 분리 실패')
+    prepolicy, policy = views.split(policy_marker, 1)
+    action = text.split('Committee Policy Actions', 1)[-1]
+    has = lambda where, pattern: bool(re.search(pattern, where, re.I | re.S))
+    s = {
+        'oct_hold': has(policy, r'most participants expressed support for maintaining the target range'),
+        'oct_almost_all_hikes': has(policy,
+            r'almost all participants judged.{0,250}?further action to raise the target range'),
+        'oct_gt25_conditional': has(policy,
+            r'a couple of participants noted that an increase of more than 25 basis points'
+            r'.{0,130}?if incoming inflation data were unfavorable'),
+        'oct_sep_alignment': has(policy,
+            r'broadly consistent with the September Summary of Economic Projections'),
+        'oct_10_2': has(action, r'approved the following statement for release by a 10\s*[—–-]\s*2 vote'),
+        'oct_dissent': has(action, r'Voting against this action:\s*Lisa D\. Cook and Beth M\. Hammack'),
+        'oct_ai_financing': has(financial, r'off-balance-sheet leasing commitments and circular financing arrangements'),
+        'oct_ai_repricing': has(financial,
+            r'almost all participants commented on risks associated with a scenario'
+            r'.{0,220}?returns on AI investment'),
+        'oct_fund_vulnerabilities': has(financial, r'elevated asset valuations and leverage at hedge funds'),
+        'oct_broad_inflation': has(prepolicy,
+            r'most remarked that inflation pressures in the economy were broad based'),
+        'oct_ai_spillover': has(prepolicy,
+            r'price pressures were increasingly extending beyond industries directly affected by data center construction'),
+        'oct_energy': has(prepolicy, r'the vast majority noted that high energy prices'),
+        'oct_annual_revision': has(prepolicy,
+            r'annual revision to the national accounts.{0,140}?reduction in measured inflation'),
+        'oct_pce_staff_36': has(staff, r'rose to 3\.6 percent in September'),
+        'oct_pce_staff_31': has(staff, r'3\.1 percent in September'),
+        'oct_ai_market_credit': has(manager,
+            r'high-yield bonds issued to finance data center construction'
+            r'.{0,120}?widening in spreads'),
+        'oct_rate_market': has(manager, r'high probabilities assigned to a 25 basis point hike by year-end'),
+        'oct_ample_reserves': has(action, r'maintaining ample reserves in the banking system'),
+    }
+    mandatory = (
+        'oct_hold', 'oct_almost_all_hikes', 'oct_gt25_conditional',
+        'oct_10_2', 'oct_dissent', 'oct_ai_financing',
+        'oct_ai_repricing', 'oct_broad_inflation', 'oct_ai_spillover',
+        'oct_pce_staff_36', 'oct_pce_staff_31', 'oct_ample_reserves',
+    )
+    missing = [key for key in mandatory if not s[key]]
+    if missing:
+        raise RuntimeError('10월 FOMC 의사록 필수 근거 파싱 실패 — 알림 보류: ' + ','.join(missing))
+    return s
+
+
+def october2026_message(minutes_link, press_link, rel, sig):
+    """최근 공개 의사록: 의견 수량사·실제 표결·시장가격·연준 실무진을 분리."""
+    def row(key, value):
+        return ('■ ' + value) if sig.get(key) else ''
+    lines = [
+        '<b>[Warsh | 10월 FOMC 의사록] 동결 속 추가 인상·AI 금융위험</b>',
+        '회의 2026.10.27~28 · 공개 2026.11.18 미국 동부시간 14:00',
+        '',
+        '<b>핵심 사실</b>',
+        row('oct_almost_all_hikes',
+            '<b>추가 인상:</b> 거의 모든 참가자가 기본 전망을 전제로 향후 추가 금리 인상이 적절할 가능성이 높다고 평가. 12월 결정 확정 아님.'),
+        row('oct_gt25_conditional',
+            '<b>인상 폭:</b> 두어 명은 새 인플레이션 지표가 불리하면 12월 0.25%p를 넘는 인상도 검토할 수 있다고 언급.'),
+        row('oct_10_2',
+            '<b>10월 실제 결정:</b> 기준금리 <b>3.75~4.00% 동결, 찬성 10·반대 2</b>. 쿡·해맥은 0.25%p 인상 선호.'),
+        row('oct_broad_inflation',
+            '<b>물가:</b> 관세 효과가 완화해도 대다수가 물가 압력을 광범위하다고 판단. 연간 국민계정 개정은 근본 전망 개선과 별개.'),
+        row('oct_ai_spillover',
+            '<b>AI 물가 전이:</b> 기술제품 수요가 공급을 압박하고 가격 상승이 데이터센터 직접 건설업종 밖으로도 확대된다는 평가.'),
+        row('oct_pce_staff_36',
+            '<b>회의 당시 연준 실무진 추정:</b> 9월 전체 개인소비지출(PCE) 물가 전년비 <b>3.6%</b>, 근원 <b>3.1%</b>. 의사록의 당시 정보이지 현재 새 발표가 아님.'),
+        row('oct_ai_financing',
+            '<b>AI 차입:</b> 장부 밖 임대 약정과 기업 간 순환 금융은 AI 수익 기대 미달 시 손실을 증폭할 수 있음. 사고 발생 확정 아님.'),
+        row('oct_ai_repricing',
+            '<b>자산가격:</b> 거의 모든 참가자가 AI 투자수익 악화 위험을 논의하고, 많은 참가자가 AI 자산 재평가의 파급을 우려.'),
+        row('oct_fund_vulnerabilities',
+            '<b>금융안정:</b> 높은 자산가격·헤지펀드 차입이 취약점. 은행·가계의 재무상태는 충격 완화 요인.'),
+        row('oct_ai_market_credit',
+            '<b>시장보고:</b> 데이터센터 고위험채권 신용가산금리 확대 관찰. 참가자 표결과 별개인 당시 시장 상황.'),
+        row('oct_rate_market',
+            '<b>당시 금리선물:</b> 연말 0.25%p 인상과 2027년 여름까지 추가 두 차례 가능성을 높게 반영. 최신 실시간 확률로 재사용 금지.'),
+        '',
+        '<b>쉬운 해석</b>',
+        '기본적으로 연준은 물가를 잡기 위해 추가 인상이 필요하다고 보지만 속도·폭은 다음 지표에 달렸습니다. '
+        '높은 금리가 AI 데이터센터의 차입·임대비용을 키워 실제 투자 지연으로 연결되는지를 별도로 확인해야 합니다.',
+        '',
+        '<b>다음 확인</b>',
+        '12월 8~9일 FOMC · 향후 물가·고용 · 데이터센터 투자 조정·회사채 신용가산금리 · 실제 현금흐름.',
+        '금리확률: ' + market_status(),
+        '',
+        '<b>원문</b> ' + link('연준 10월 의사록', minutes_link) + ' · ' +
+        link('연준 11월 18일 발표', press_link) + ' · ' + link('공식 회의 일정', FED_CAL),
+    ]
+    return '\n'.join(x for x in lines if x)
+
+
 def current_sep(stmt_date):
     snapshot = load(SEP_STATE).get('snapshot') or {}
     funds = snapshot.get('funds') or []
@@ -358,6 +489,8 @@ def market_status():
 
 
 def message(stmt_date, minutes_link, press_link, rel, sig, upgraded=False):
+    if stmt_date == '2026-10-28':
+        return october2026_message(minutes_link, press_link, rel, sig)
     sep = current_sep(stmt_date)
     meeting_day = datetime.strptime(stmt_date, '%Y-%m-%d').date()
     # 정례 2일 회의 기준. 다른 형식일 때는 날짜 범위 추정 대신 마지막 날만 표시.
@@ -552,9 +685,11 @@ def main():
         'verified': True, 'sent': should_send, 'already_sent': bool(already),
         'format_upgrade_sent': upgraded,
         'message_id': new.get('message_id'),
-        'most_yearend': signals['most_yearend'],
-        'many_risk': signals['many_risk'],
-        'number_modal': signals['number_modal'],
+        'most_yearend': signals.get('most_yearend'),
+        'many_risk': signals.get('many_risk'),
+        'number_modal': signals.get('number_modal'),
+        'oct_almost_all_hikes': signals.get('oct_almost_all_hikes'),
+        'oct_gt25_conditional': signals.get('oct_gt25_conditional'),
         'balance_sheet_qt_claim': False,
         'delivery_status': new.get('delivery_status'),
     }, ensure_ascii=False))

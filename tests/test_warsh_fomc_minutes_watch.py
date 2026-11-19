@@ -205,5 +205,91 @@ class TestMinutes(unittest.TestCase):
             sender.assert_not_called()
 
 
+
+OCT_MINUTES = """Minutes of the Federal Open Market Committee October 27–28, 2026
+Staff Review and Policymakers' Discussion of Financial Stability
+The staff also highlighted the rapid growth of debt associated with artificial intelligence (AI)
+off-balance-sheet leasing commitments and circular financing arrangements among AI-related firms.
+Almost all participants commented on risks associated with a scenario in which the returns on AI investment
+turned out to be disappointing to investors. Elevated asset valuations and leverage at hedge funds.
+Developments in Financial Markets and Open Market Operations
+High probabilities assigned to a 25 basis point hike by year-end. High-yield bonds issued to finance
+data center construction experiencing an especially notable widening in spreads.
+Staff Review of the Economic Situation
+PCE inflation rose to 3.6 percent in September; core PCE rose to 3.1 percent in September.
+Staff Review of the Financial Situation
+Policymakers' Discussion of Current Conditions, the Economic Outlook, and Monetary Policy Considerations
+Several participants noted that the annual revision to the national accounts had led to a reduction in measured inflation.
+Most remarked that inflation pressures in the economy were broad based.
+The vast majority noted that high energy prices continued to contribute.
+Price pressures were increasingly extending beyond industries directly affected by data center construction.
+In their consideration of monetary policy at this meeting, most participants expressed support for maintaining the target range.
+With regard to the outlook for monetary policy in the months ahead, almost all participants judged that,
+under their baseline outlooks for inflation and the labor market, further action to raise the target range for the
+federal funds rate—broadly consistent with the September Summary of Economic Projections—would likely be appropriate.
+A couple of participants noted that an increase of more than 25 basis points could warrant consideration at the next meeting if incoming inflation data were unfavorable.
+Committee Policy Actions
+The FOMC is maintaining ample reserves in the banking system.
+The Federal Open Market Committee approved the following statement for release by a 10 — 2 vote.
+Voting against this action: Lisa D. Cook and Beth M. Hammack, who preferred an increase.
+"""
+
+
+class TestOctober2026(unittest.TestCase):
+    def test_october_headings_and_unique_evidence_are_accepted(self):
+        sig = watch.extract_signals(OCT_MINUTES, '2026-10-28')
+        for k in ('oct_almost_all_hikes','oct_gt25_conditional','oct_10_2','oct_dissent',
+                  'oct_ai_financing','oct_ai_repricing','oct_broad_inflation','oct_ai_spillover'):
+            self.assertTrue(sig[k],k)
+        text = watch.message('2026-10-28',watch.minutes_url('2026-10-28'),
+                             'https://www.federalreserve.gov/newsevents/pressreleases/monetary20261118a.htm',
+                             '2026-11-18',sig)
+        self.assertIn('거의 모든 참가자',text)
+        self.assertIn('두어 명',text)
+        self.assertIn('찬성 10·반대 2',text)
+        self.assertIn('장부 밖 임대',text)
+        self.assertIn('12월 8~9일',text)
+        self.assertNotIn('참가자 전원 25bp 인상',text)
+        self.assertLessEqual(len(re.sub(r'<[^>]+>', '',html.unescape(text))),3900)
+
+    def test_october_missing_key_or_changed_quantifier_blocks_delivery(self):
+        for needle in (
+            "Policymakers' Discussion of Current Conditions, the Economic Outlook, and Monetary Policy Considerations",
+            "almost all participants judged", "a couple of participants noted",
+            "10 — 2 vote", "off-balance-sheet leasing commitments",
+        ):
+            with self.subTest(needle=needle):
+                with self.assertRaises(RuntimeError):
+                    watch.extract_signals(OCT_MINUTES.replace(needle,'REDACTED'), '2026-10-28')
+
+    def test_corrupt_send_receipt_state_is_not_reset_to_empty(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as p:
+            bad = Path(p) / 'bad.json'
+            bad.write_text('{',encoding='utf-8')
+            with patch.object(watch,'STATE',bad):
+                with self.assertRaisesRegex(RuntimeError,'상태 파일 손상'):
+                    watch.load(bad)
+
+    def test_send_must_match_original_recipient(self):
+        import json
+        from unittest.mock import MagicMock
+        class Fake:
+            def __init__(self,result):
+                self.result=result
+            def __enter__(self):return self
+            def __exit__(self,*args):return False
+            def read(self):return json.dumps(self.result).encode()
+        def io(req,timeout=18):
+            name=req if isinstance(req,str) else req.full_url
+            if name.endswith('/getMe'):
+                return Fake({'ok':True,'result':{'username':'testbot'}})
+            return Fake({'ok':True,'result':{'message_id':987,'chat':{'id':-100123}}})
+        with patch.object(watch,'TOKEN','123:TEST'),patch.object(watch,'CHAT','-100456'),patch.object(watch,'BOT','testbot'),patch.object(watch.urllib.request,'urlopen',side_effect=io):
+            with self.assertRaisesRegex(RuntimeError,'수신 채팅 ID 불일치'):
+                watch.send('의사록 검증')
+
+
+
 if __name__ == '__main__':
     unittest.main()
