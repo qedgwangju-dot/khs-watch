@@ -11,9 +11,9 @@
     "google_news_queries_requested": 65,
     "google_news_queries_succeeded": 65,
     "google_news_rate_limit_429": 0,
-    "material_items": 13,
+    "material_items": 14,
     "new_material_items": 0,
-    "raw_items": 145,
+    "raw_items": 147,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
     "source_access_limited": false
@@ -362,16 +362,6 @@
       "title": "CISA Confirms Active Exploitation of Two PHP2Shell Flaws Enabling Remote Code Execution - The Hacker News",
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQLVhZWGlpeC1icnJacEFkTFhyXzk4M0NUUjlhTDhxbnZSQmE2ZjFmTTRDZ29Fa3l4TVhTUzZSSG5KRjVtcEYxRGpLMWh6aVJ5WndTaGdsSThLUmQ0a0E0VmJEZmx2aTJmaXp6TkdlRFRZT0FGZjJ4Unh4SzVZT045Yw?oc=5",
       "vendor": "PHP 재단"
-    },
-    "4abec9b774ac0231e94bc724": {
-      "category": "금융·핵심인프라 AI 사이버 위험 경보",
-      "first_seen_at": "2026-10-15T21:28:16.165828+00:00",
-      "published_at": "2026-10-15T18:10:00+00:00",
-      "severity": 2,
-      "source": "Fortune",
-      "title": "‘You don’t want rogue agents’: Jamie Dimon bars outside AI agents like Meta’s Muse from JPMorgan accounts - Fortune",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE94cE9GNVdLZHZWM01ydmVLc2lVQVh5Z3BoLURNRFdVREFZVWFJOEltLVR3YXkwclZ5MnBQYXMxTHJVOGE5STM1VlF5azhEd0ZGWUV6dEFLQ0dXTlMwVUNzdURjZDVXZHl4VEJjVm83T1pFb2RnbjZJSjhjaTk?oc=5",
-      "vendor": "AI 생태계"
     },
     "4b2bb6970529773711faf0a6": {
       "category": "PHP 코어 취약점·공식 보안패치",
@@ -763,6 +753,16 @@
       "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5wY25ETkp0RWNhWVQzZ0xZcXR0RUdSd09HNW52U2JHTmlmTENZcmh0MEdaV0U1RDI4YUk1YTFka196Y3F1NTl5V0NzUFM5NTJjckE1MkpldjEtdjZGRUphbWpDQ1VNVW40azljbTNpWGdpR3hZYUZtMUkzaGdjZw?oc=5",
       "vendor": "PHP 재단"
     },
+    "a8dd2ad461d356469a71a72b": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-11-19T21:44:29.035120+00:00",
+      "published_at": "2026-11-19T21:37:30+00:00",
+      "severity": 2,
+      "source": "Dark Reading",
+      "title": "Critical PHP Flaws Allow Code Execution, But Don't Panic 'PHP2Shell'-Style - Dark Reading",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPWUo2Vm9ZX0N2WFgyZkhndnVWM2NIS1hvdXdPSXBJa25KbDNTU0p6LVNYZzQtSVFxaUJBWFlBUk5oOUJWVEdIeVBmcENjNDVyWEFqT29hRHRubEtWYnRaUHFWMEpVZEN4b0lZd3d2TkhFV1M5MVR3eDJqRGRvUzJRSUR1bTBvdUNCMFRxT0Q5SEJTdFRWVWRTSmtvMjFkYk0?oc=5",
+      "vendor": "PHP 재단"
+    },
     "ad0c0639f18dd9d0909ebac2": {
       "category": "금융·핵심인프라 AI 사이버 위험 경보",
       "first_seen_at": "2026-10-16T05:21:44.502165+00:00",
@@ -1136,5 +1136,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-20T06:23:07+09:00"
+  "updated_at_kst": "2026-11-20T06:44:29+09:00"
 }
