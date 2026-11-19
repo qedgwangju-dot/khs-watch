@@ -18,6 +18,14 @@ class RecentShockTests(unittest.TestCase):
         start = 1_800_000_000.0 - (len(prices) - 1) * step
         return [(start + i * step, float(px)) for i, px in enumerate(prices)]
 
+    def test_recent_shock_telegram_receipt_checks_actual_chat_and_message_id(self):
+        from pathlib import Path
+        workflow = (Path(__file__).resolve().parents[1] /
+                    ".github/workflows/yen-carry-recent-shock.yml").read_text(encoding="utf-8")
+        self.assertIn("Recent-shock Telegram receipt missing message_id", workflow)
+        self.assertIn("Recent-shock Telegram receipt chat mismatch", workflow)
+        self.assertIn("'chat_id_verified': True", workflow)
+
     def test_partial_five_minute_reference_retries_using_real_points(self):
         complete = self.points([100.0] * 30)
         target = complete[-1][0] - 30 * 60

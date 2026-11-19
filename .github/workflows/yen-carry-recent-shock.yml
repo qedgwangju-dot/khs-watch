@@ -211,12 +211,23 @@ jobs:
               result = json.loads(r.read().decode('utf-8'))
           if not result.get('ok'):
               raise RuntimeError(f'Telegram rejected recent shock alert: {result}')
+          sent_message = result.get('result') or {}
+          sent_chat = sent_message.get('chat') or {}
+          if not sent_message.get('message_id'):
+              raise RuntimeError('Recent-shock Telegram receipt missing message_id; state unchanged')
+          if chat_id.lstrip('-').isdigit():
+              recipient_ok = str(sent_chat.get('id') or '') == chat_id
+          else:
+              recipient_ok = chat_id.startswith('@') and str(sent_chat.get('username') or '').lower() == chat_id[1:].lower()
+          if not recipient_ok:
+              raise RuntimeError('Recent-shock Telegram receipt chat mismatch; state unchanged')
 
           confirmed = {
               'status': 'confirmed',
               'lane': 'yen_carry_recent_shock',
               'bot_username': actual,
-              'message_ids': [(result.get('result') or {}).get('message_id')],
+              'message_ids': [sent_message['message_id']],
+              'chat_id_verified': True,
               'confirmed_at_kst': dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
           }
           pathlib.Path('out/yen_carry_composite_telegram_confirmed.json').write_text(

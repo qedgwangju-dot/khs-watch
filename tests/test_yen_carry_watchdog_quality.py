@@ -27,6 +27,14 @@ class YenCarryWatchdogQualityTests(unittest.TestCase):
     def setUp(self):
         self.now = dt.datetime(2026, 10, 30, 15, 9, tzinfo=KST)
 
+    def test_watchdog_telegram_receipt_requires_message_id_and_chat_identity(self):
+        from pathlib import Path
+        workflow = (Path(__file__).resolve().parents[1] /
+                    ".github/workflows/yen-carry-watchdog.yml").read_text(encoding="utf-8")
+        self.assertIn("Watchdog Telegram receipt missing message_id", workflow)
+        self.assertIn("Watchdog Telegram receipt chat mismatch", workflow)
+        self.assertIn("'chat_id_verified': True", workflow)
+
     def test_fresh_eligible_quote_clears_prior_incident(self):
         row = quality.evaluate([status(self.now)], self.now)
         self.assertTrue(row["healthy"])

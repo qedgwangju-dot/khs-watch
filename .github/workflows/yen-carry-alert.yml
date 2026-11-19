@@ -41,7 +41,8 @@ permissions:
 
 concurrency:
   group: yen-carry-alert
-  cancel-in-progress: true
+  # Never terminate an in-flight send/receipt/state transaction.
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -243,11 +244,21 @@ jobs:
                   if not result.get("ok"):
                       raise RuntimeError(result)
                   message = result.get("result") or {}
+                  sent_chat = message.get("chat") or {}
+                  if not message.get("message_id"):
+                      raise RuntimeError("Yen-carry Telegram receipt missing message_id; state unchanged")
+                  if chat_id.lstrip("-").isdigit():
+                      recipient_ok = str(sent_chat.get("id") or "") == chat_id
+                  else:
+                      recipient_ok = chat_id.startswith("@") and str(sent_chat.get("username") or "").lower() == chat_id[1:].lower()
+                  if not recipient_ok:
+                      raise RuntimeError("Yen-carry Telegram receipt chat mismatch; state unchanged")
                   sent.append(
                       {
                           "path": str(path),
                           "chunk": index,
-                          "message_id": message.get("message_id"),
+                          "message_id": message["message_id"],
+                          "chat_id_verified": True,
                       }
                   )
           pathlib.Path("out").mkdir(exist_ok=True)

@@ -481,11 +481,22 @@ jobs:
               result = json.loads(response.read().decode('utf-8'))
           if not result.get('ok'):
               raise RuntimeError(f'Telegram rejected watchdog alert: {result}')
+          sent_message = result.get('result') or {}
+          sent_chat = sent_message.get('chat') or {}
+          if not sent_message.get('message_id'):
+              raise RuntimeError('Watchdog Telegram receipt missing message_id; incident state unchanged')
+          if chat_id.lstrip('-').isdigit():
+              recipient_ok = str(sent_chat.get('id') or '') == chat_id
+          else:
+              recipient_ok = chat_id.startswith('@') and str(sent_chat.get('username') or '').lower() == chat_id[1:].lower()
+          if not recipient_ok:
+              raise RuntimeError('Watchdog Telegram receipt chat mismatch; incident state unchanged')
 
           confirmation = {
               'status': 'confirmed',
               'bot_username': actual,
-              'message_id': (result.get('result') or {}).get('message_id'),
+              'message_id': sent_message['message_id'],
+              'chat_id_verified': True,
               'confirmed_at_kst': dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
           }
           pathlib.Path('out/yen_carry_watchdog_telegram_confirmed.json').write_text(
