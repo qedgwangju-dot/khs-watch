@@ -1,12 +1,12 @@
 {
-  "last_signal_key": "02839ac8d8214aae5e550dca",
-  "last_alert_at_kst": "2026-11-16T17:28:55+09:00",
-  "last_published_at_kst": "2026-11-16T17:00:00+09:00",
+  "last_signal_key": "e52d4e831333157a0e8213d0",
+  "last_alert_at_kst": "2026-11-19T10:20:23+09:00",
+  "last_published_at_kst": "2026-11-19T10:13:00+09:00",
   "last_source": "Bank of Japan",
-  "last_title": "Highlights of the Outlook for Economic Activity and Prices (October 2026)",
+  "last_title": "Statement by Governor UEDA concerning the Bank's Semiannual Report on Currency and Monetary Control (Committee on Financial Affairs, Senate)",
   "signature": {
     "level": 1,
-    "event_type": "decision",
+    "event_type": "official_speech",
     "policy_rate": null,
     "hike_bp": null,
     "vote_for": null,
@@ -19,18 +19,18 @@
     "expected_move": false,
     "hawkish_tail_50bp": false,
     "inflation_spillover": false,
-    "cpi_h2_clearly_above_2": true,
-    "stabilize_underlying_around_2": true,
+    "cpi_h2_clearly_above_2": false,
+    "stabilize_underlying_around_2": false,
     "outlook_dissenters": [],
     "outlook_dissent_view": null,
-    "official_statement_detail_verified": true,
-    "further_hikes": true,
-    "conditional_pace": true,
+    "official_statement_detail_verified": false,
+    "further_hikes": false,
+    "conditional_pace": false,
     "accommodative": false,
     "neutral_rate": false,
-    "inflation_upside": true,
+    "inflation_upside": false,
     "risk_channels": true,
     "rate_unchanged": false,
-    "underlying_target_reached": true
+    "underlying_target_reached": false
   }
 }
