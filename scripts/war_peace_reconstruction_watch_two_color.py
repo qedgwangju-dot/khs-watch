@@ -292,11 +292,20 @@ def _trilateral_summit_time_allocation(title):
 
 def _trilateral_peace_meeting(title):
     """An actual first trilateral meeting about peace is dialogue, not a strike."""
-    participants = re.search(r'미\s*[·ㆍ/]?\s*중\s*[·ㆍ/]?\s*러|트럼프.{0,8}푸틴.{0,8}시진핑', title)
-    meeting = re.search(r'첫\s*대면|3자\s*(?:정상)?회담\s*(?:개최|시작|진행)|정상회담\s*(?:개최|시작|진행)', title)
+    participants = re.search(
+        r'미\s*[·ㆍ/]?\s*중\s*[·ㆍ/]?\s*러|트럼프.{0,8}푸틴.{0,8}시진핑|3대\s*핵보유국',
+        title)
+    meeting = re.search(
+        r'첫\s*(?:대면|회동)|3자\s*(?:정상)?회담\s*(?:개최|시작|진행|성사)|'
+        r'정상회담\s*(?:개최|시작|진행)', title)
     peace = re.search(r'우크라|종전|휴전|정전|평화|협상', title)
+    actual_summit = (re.search(r'3대\s*핵보유국', title)
+                     and re.search(r'첫\s*회동|3자\s*(?:정상)?회담', title))
+    canceled = re.search(r'(?:회담|회동|만남).{0,20}(?:취소|무산|불발|연기|철회)|'
+                         r'(?:합의|협상).{0,12}(?:실패|결렬)', title)
     attack = re.search(r'공격|공습|폭격|포격|타격|피격|미사일|드론|폭발', title)
-    return bool(participants and meeting and peace and not attack
+    return bool(participants and meeting and (peace or actual_summit)
+                and not canceled and not attack
                 and not _active_adverse(title)
                 and not _separate_attack_headline(title)
                 and not _completed_attack_headline(title))

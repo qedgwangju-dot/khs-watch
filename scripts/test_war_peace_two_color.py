@@ -89,6 +89,14 @@ class TwoColorTests(unittest.TestCase):
             return {'title_original': title, 'title_ko': title, 'tags': tags,
                     'body_verified': False}
         self.assertEqual(presentation.direction(stage, row(summit, ['종전·협상'])), 'green')
+        # Actual verified headline from run 44499484708. A meeting with
+        # uncertain outcome does not establish an attack or failed talks.
+        verified_summit = '3대 핵보유국 정상 첫 회동… "밀실 담판" "합의 미지수" [미중러 첫 3자회담]'
+        self.assertEqual(presentation.direction(stage, row(verified_summit, ['종전·협상'])), 'green')
+        self.assertEqual(presentation.direction(stage, row(
+            '3대 핵보유국 정상 첫 회동 취소…우크라 종전 협상 무산', ['종전·협상'])), 'red')
+        self.assertEqual(presentation.direction(stage, row(
+            '3대 핵보유국 정상 첫 회동 뒤 미사일 공격 재개', ['종전·협상'])), 'red')
         self.assertEqual(presentation.direction(stage, row(ultimatum, ['외교 접촉 보도'])), 'red')
         self.assertEqual(presentation.direction(stage, row(
             '트럼프·푸틴·시진핑 첫 대면 뒤 우크라 종전 협상 결렬', ['종전·협상'])), 'red')

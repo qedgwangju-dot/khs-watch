@@ -178,6 +178,12 @@ class OperationsWarningTests(unittest.TestCase):
         self.assertEqual(workflow.count('bot{token}/sendMessage'), 1)
         # Same five-minute cadence, offset to avoid the top-of-hour scheduler peak.
         self.assertIn('cron: "2-57/5 * * * *"', workflow)
+        # A no-send push is exclusively an offline regression. It must not
+        # add another 227-query live source burst and trigger rate limiting.
+        collection = workflow.split('- name: Check war peace reconstruction conditions', 1)[1].split('- name: Prepare source coverage operational warning', 1)[0]
+        warnings = workflow.split('- name: Prepare source coverage operational warning', 1)[1].split('- name: Publish status summary', 1)[0]
+        self.assertIn("if: env.DRY_RUN != 'true'", collection)
+        self.assertIn("if: always() && env.DRY_RUN != 'true'", warnings)
 
 
 if __name__ == '__main__':

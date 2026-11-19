@@ -121,6 +121,7 @@ jobs:
           python scripts/test_war_peace_offline.py
       - name: Check war peace reconstruction conditions
         id: check_conditions
+        if: env.DRY_RUN != 'true'
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
             python scripts/war_peace_reconstruction_watch_integrity.py --telegram-test
@@ -129,7 +130,7 @@ jobs:
           fi
       - name: Prepare source coverage operational warning
         id: prepare_ops
-        if: always()
+        if: always() && env.DRY_RUN != 'true'
         run: python scripts/war_peace_reconstruction_watch_operations.py --prepare
       - name: Publish status summary
         if: always()
