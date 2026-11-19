@@ -36,9 +36,9 @@ SP_REVIEW_DATE = dt.date(2026, 11, 27)
 # not treat it as a live agency rating or a rating decision.
 VERIFIED_AFT_SNAPSHOT = {
     "agency": "Moody's", "rating": "Aa3", "outlook": "Negative",
-    "decision_date": "2026-04-10", "next_review": "2026-10-23",
+    "decision_date": "2026-10-23", "next_review": None,
     "url": AFT_EN, "source_kind": "historical_official_snapshot",
-    "verified_on": "2026-10-14",
+    "verified_on": "2026-11-19",
 }
 MILESTONES = {7: "일주일 전", 3: "3일 전", 1: "하루 전", 0: "당일"}
 # Historical AFT index snapshot, independently verified 2026-10-22.
@@ -450,10 +450,11 @@ def add_market_carry_context(existing: str, pending: dict, local_day: dt.date) -
     if gap < 125.0 or "■ 캐리·레버리지 전염 확인" in existing:
         return existing
     review = (
-        "• Moody’s 프랑스 등급 검토는 10월 23일 예정(10월 14일 공식 확인 기준)."
-        " 강등이나 포지션 청산 마감일은 확정되지 않았습니다."
-        if local_day <= REVIEW_DATE else
-        "• 10월 23일 예정됐던 Moody’s 등급 검토 결과는 새 공식 발표로 확인해야 합니다."
+        "• 10월 23일 예정된 Moody’s 심사는 채권 포지션 청산의 확정 마감일이 아닙니다."
+        if local_day < REVIEW_DATE else
+        "• Moody’s는 2026년 10월 23일 프랑스 Aa3·부정적 전망을 유지했습니다"
+        " (11월 19일 AFT 등급표·독립 보도 교차확인; 실시간 공식 페이지 직접 열람과 구분)."
+        " 다음 예정 심사: S&P 11월 27일."
     )
     section = "\n".join([
         "■ 캐리·레버리지 전염 확인",
@@ -462,6 +463,16 @@ def add_market_carry_context(existing: str, pending: dict, local_day: dt.date) -
         "• 메모리주에 직접 영향을 줬는지는 미확인입니다."
         " 국채 유동성 악화·달러 및 엔화 변화·기술주 동반 매도가 확인돼야 전염 가설을 강화할 수 있습니다.",
         review,
+        *(
+            [
+                "• ECB 11월 18일 금융안정보고서: 국채 레포시장의 헤지펀드 레버리지와"
+                " 급격한 포지션 축소가 변동성을 증폭할 수 있다고 분석했습니다.",
+                "• ECB 분석은 유럽 국채시장 전염 위험을 뒷받침하지만"
+                " 한국 메모리주 매도의 직접 원인이나 특정 펀드 청산 규모를 입증하지는 않습니다.",
+                "• ECB Financial Stability Review: "
+                "https://www.ecb.europa.eu/press/financial-stability-publications/fsr/html/ecb.fsr202611~e03b919d36.en.html",
+            ] if local_day >= dt.date(2026, 11, 18) else []
+        ),
     ])
     marker = "■ 시장 영향"
     return existing.replace(marker, section + "\n\n" + marker, 1) if marker in existing else existing + "\n\n" + section
@@ -484,11 +495,21 @@ def main() -> int:
                    int(existing_credit.get("source_fail_streak") or 0) + 1)
     # Do not fabricate a live rating when the issuer website and proxy reject
     # automation. Carry forward the date-stamped official snapshot only.
-    rating = official if source_ok else {
-        **(existing_credit.get("last_official") or VERIFIED_AFT_SNAPSHOT),
-        "source_kind": "historical_official_snapshot",
-        "verified_on": (existing_credit.get("last_official") or VERIFIED_AFT_SNAPSHOT).get("verified_on", "2026-10-14"),
-    }
+    if source_ok:
+        rating = official
+    else:
+        previously_seen = existing_credit.get("last_official") or {}
+        # Never restore the obsolete April 2026 Moody's value when the
+        # October 23 result is already independently verified.
+        # A live official page, if available, still takes priority.
+        previous_date = str(previously_seen.get("decision_date") or "")
+        baseline_date = VERIFIED_AFT_SNAPSHOT["decision_date"]
+        best = previously_seen if previous_date > baseline_date else VERIFIED_AFT_SNAPSHOT
+        rating = {
+            **best,
+            "source_kind": "historical_official_snapshot",
+            "verified_on": best.get("verified_on", "2026-11-19"),
+        }
     local_day = now.astimezone(PARIS).date()
     events = credit_events(local_day, existing_credit, rating)
     delivered = set(existing_credit.get("sent_keys") or [])
@@ -526,13 +547,14 @@ def main() -> int:
         key = "official_rating_source_unavailable:2026-10"
         if key not in delivered:
             events.append({"kind": "source_outage", "key": key})
-    if not source_ok and now.astimezone(PARIS).date() >= dt.date(2026, 10, 24):
+    if (not source_ok and rating.get("decision_date", "") < REVIEW_DATE.isoformat()
+            and now.astimezone(PARIS).date() >= dt.date(2026, 10, 24)):
         key = "review_unverified_after_due:2026-10-23"
         if key not in delivered:
             events.append({"kind": "review_overdue", "key": key})
 
     next_credit = {
-        "last_official": rating if source_ok else (existing_credit.get("last_official") or VERIFIED_AFT_SNAPSHOT),
+        "last_official": rating,
         "sp_last_official": (sp_live if sp_live is not None else sp_previous),
         "sent_keys": list(existing_credit.get("sent_keys") or [])[-30:],
         "checked_at_kst": now.isoformat(timespec="seconds"),
@@ -571,8 +593,8 @@ def main() -> int:
         "\n".join([
             "# 프랑스 신용등급·국채 캐리 감시",
             f"- 조회: {now.isoformat(timespec='seconds')}",
-            f"- 출처 상태: {'공식 페이지 직접 확인' if direct_official else '공식 페이지 직접 검증 미완료·보조 복원' if source_ok else '접근 제한·2026-10-14 AFT 검색 색인 참고'}",
-            f"- 최근 공식확인: Moody's {rating['rating']}, {rating['outlook']}, {rating['decision_date']}",
+            f"- 출처 상태: {'공식 페이지 직접 확인' if direct_official else '공식 페이지 직접 검증 미완료·보조 복원' if source_ok else '접근 제한·2026-11-19 AFT 검증 스냅샷 참고'}",
+            f"- 최근 확인된 평가: Moody's {rating['rating']}, {rating['outlook']}, {rating['decision_date']}; 출처 단계 {rating.get('source_kind')}",
             f"- S&P 관측: {sp_live['rating'] + '/' + sp_live['outlook'] + '/' + sp_live['decision_date'] if sp_live else '실시간 공식 등급표 확인 불가 (과거 스냅샷만 보유)'}",
             f"- 다음 심사: {rating['next_review'] or '미게시'}",
             f"- 연속 원문 오류: {fail_streak}",
