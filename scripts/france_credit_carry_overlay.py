@@ -31,6 +31,10 @@ AFT_TEXT_RECOVERY = "https://r.jina.ai/https://www.aft.gouv.fr/en/frances-credit
 ORIGINAL_STORY = "https://www.briefs.co/news/hedge-funds-scramble-as-french-bond-rout-blows-out-spreads/"
 REVIEW_DATE = dt.date(2026, 10, 23)
 SP_REVIEW_DATE = dt.date(2026, 11, 27)
+ECB_FSR_DATE = dt.date(2026, 11, 18)
+ECB_FSR_URL = "https://www.ecb.europa.eu/press/financial-stability-publications/fsr/html/ecb.fsr202611~e03b919d36.en.html"
+ECB_FSR_KEY = "ecb_fsr:2026-11-18:hedge_fund_repo_deleveraging"
+
 # AFT official-site indexed table was cross-checked with Reuters on 2026-10-14.
 # This is NOT an AFT live-page fetch. Historical baseline is ONLY for reminders; do
 # not treat it as a live agency rating or a rating decision.
@@ -241,6 +245,36 @@ def fetch_rating(*, fetch=None) -> tuple[dict | None, list[str]]:
     return None, errors
 
 
+def ecb_financial_stability_event(
+    today: dt.date,
+    sent_keys: set[str],
+    fetch=None,
+) -> dict | None:
+    """One-off new official ECB publication, not a recycled October news alert.
+
+    Confirm the official November 2026 report directly. Generic search snippets
+    and stale cached summaries do not qualify for automated delivery.
+    """
+    if today < ECB_FSR_DATE or today > dt.date(2026, 12, 2) or ECB_FSR_KEY in sent_keys:
+        return None
+    if fetch is None:
+        def fetch(url: str) -> str:
+            data, err = fetch_text(
+                url, "Mozilla/5.0 (khs-france-credit-carry/1.0)",
+                timeout=13, attempts=1, accept="text/html",
+            )
+            if err is not None or not data:
+                raise RuntimeError(err or "ECB report empty")
+            return data
+    document = fetch(ECB_FSR_URL)
+    plain = re.sub(r"<[^>]+>", " ", html.unescape(document))
+    plain = re.sub(r"\\s+", " ", plain).casefold()
+    if not all(p in plain for p in ("november 2026", "hedge funds", "repo", "sovereign")):
+        raise ValueError("ECB Financial Stability Review verification incomplete")
+    return {"kind": "ecb_fsr", "key": ECB_FSR_KEY, "date": ECB_FSR_DATE.isoformat(),
+            "url": ECB_FSR_URL}
+
+
 def credit_events(now: dt.date, old: dict, rating: dict) -> list[dict]:
     """A verified future event, or a changed official rating/decision, only once."""
     delivered = set(old.get("sent_keys") or [])
@@ -353,6 +387,17 @@ def format_event(rating: dict, events: list[dict], pending: dict,
             status = (f"공식 최신 확인 일정: 2026-10-23(프랑스 현지 날짜), "
                       f"등급 {rating['rating']}·전망 {rating['outlook']}.")
         caveat = "등급 강등 확정이 아닌 예정된 심사입니다. 포지션 청산 마감일도 아닙니다."
+    elif any(x["kind"] == "ecb_fsr" for x in events):
+        name = "ECB 11월 금융안정보고서 — 국채 레버리지 청산 전염 위험"
+        status = (
+            "2026년 11월 18일 ECB 공식 금융안정보고서가 "
+            "유럽 국채 레포시장 헤지펀드의 높은 차입과 "
+            "급격한 포지션 축소 시 국채가격·시장 유동성 악화 가능성을 경고했습니다."
+        )
+        caveat = (
+            "ECB의 구조적 경고이지 11월 당일 특정 프랑스 펀드의 "
+            "포지션 청산 규모나 한국 메모리주 직접 매도를 입증하는 자료는 아닙니다."
+        )
     elif any(x["kind"] == "sp_milestone" for x in events):
         days = min(x["days"] for x in events if x["kind"] == "sp_milestone")
         name = f"프랑스 S&P 신용등급 검토 D-{days}"
@@ -381,6 +426,8 @@ def format_event(rating: dict, events: list[dict], pending: dict,
     sp_only = name.startswith("프랑스 S&P")
     primary_link = ("• AFT France S&P rating calendar: " + AFT_EN if sp_only else
                     "• AFT France Moody's rating calendar: " + rating["url"])
+    if any(e["kind"] == "ecb_fsr" for e in events):
+        primary_link = "• ECB Financial Stability Review: " + ECB_FSR_URL
     next_boundary = base.next_spread_marker(
         float(spread.replace("bp", "")) if re.fullmatch(r"\d+(?:\.\d+)?bp", spread) else None
     )
@@ -400,6 +447,10 @@ def format_event(rating: dict, events: list[dict], pending: dict,
             companion.append(
                 f"• 프랑스 재무부의 별도 공식 대응 발표: {event['date']} "
                 "(신용등급 결과와 구분)"
+            )
+        elif event["kind"] == "ecb_fsr" and "ECB 11월 금융안정보고서" not in name:
+            companion.append(
+                "• ECB 2026년 11월 18일 금융안정 새 보고서: 국채 레버리지 청산 전염 위험"
             )
         elif event["kind"] == "source_outage" and "조회 장애" not in name:
             companion.append("• 공식 AFT 신용등급표 접근 제한: 등급 변경 확정 불가")
@@ -552,6 +603,17 @@ def main() -> int:
         key = "review_unverified_after_due:2026-10-23"
         if key not in delivered:
             events.append({"kind": "review_overdue", "key": key})
+
+    # A fresh, separately dated ECB official publication is a valid new
+    # catalyst even when French bond yields have not crossed a new threshold.
+    # Its event ID is stable and shares the existing Telegram dedupe lane.
+    if ECB_FSR_KEY not in delivered:
+        try:
+            fsr_event = ecb_financial_stability_event(local_day, delivered)
+            if fsr_event:
+                events.append(fsr_event)
+        except Exception as exc:
+            errors.append(f"ECB November financial stability source: {type(exc).__name__}: {str(exc)[:120]}")
 
     next_credit = {
         "last_official": rating,
