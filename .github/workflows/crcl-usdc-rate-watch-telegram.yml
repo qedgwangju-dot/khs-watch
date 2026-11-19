@@ -76,7 +76,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -129,7 +129,8 @@ jobs:
           assert "SOFR 방향 읽는 법 — 고정" not in rendered
           assert "TBX → CRCL 쉽게 해석" not in rendered
           assert "<b>고정 기준</b>" not in rendered
-          assert len(rendered) < 1900, len(rendered)
+          # Preserve every material line; Telegram sender enforces 3900-character chunks.
+          assert len(rendered) < 3900, len(rendered)
 
           lag = copy.deepcopy(state)
           lag["treasury"]["date"] = "2026-09-25"
