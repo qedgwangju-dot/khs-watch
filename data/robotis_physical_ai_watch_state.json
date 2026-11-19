@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-19T03:20:11.797999+00:00",
+  "updated_at": "2026-11-19T03:49:53.776832+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -980,12 +980,11 @@
     "4d68bc58673beca5c19a4a86f618e593f913e7a6852091846a16bfe31fc79c39",
     "b38e1c3178572ec2f9770536856a2c927a5c8a8add92adf03dbe83b4209d76d0",
     "cb2161aa4683436005647a3d6f815294dde60910c9c01328623e0f1b20bb3d24",
-    "4ccba1cca2cfc99ca1c51781e04e6eb4f9b5aba8262aad16969f9727f4b2e7d4"
+    "4ccba1cca2cfc99ca1c51781e04e6eb4f9b5aba8262aad16969f9727f4b2e7d4",
+    "e6838c2e0d2fbd098f64ec756681864ec47b0e9826bef8b73e291888847adb6a"
   ],
   "last_selected": [
-    "b38e1c3178572ec2f9770536856a2c927a5c8a8add92adf03dbe83b4209d76d0",
-    "cb2161aa4683436005647a3d6f815294dde60910c9c01328623e0f1b20bb3d24",
-    "4ccba1cca2cfc99ca1c51781e04e6eb4f9b5aba8262aad16969f9727f4b2e7d4"
+    "e6838c2e0d2fbd098f64ec756681864ec47b0e9826bef8b73e291888847adb6a"
   ],
   "groups": [
     "ess_battery",
@@ -1010,21 +1009,6 @@
     "toyota_robot_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 43652811800,
-      "outcome": "sent",
-      "message_ids": [
-        364
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-14T23:21:28.584849+00:00"
-    },
     {
       "run_id": 43664999695,
       "outcome": "sent",
@@ -1349,18 +1333,34 @@
         false
       ],
       "state_timestamp_utc": "2026-11-19T03:20:11.797999+00:00"
+    },
+    {
+      "run_id": 44454066905,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "e6838c2e0d2fbd098f64ec756681864ec47b0e9826bef8b73e291888847adb6a"
+      ],
+      "message_ids": [
+        386
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-19T03:49:53.776832+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44450601512,
+    "run_id": 44454066905,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "4ccba1cca2cfc99ca1c51781e04e6eb4f9b5aba8262aad16969f9727f4b2e7d4",
-      "b38e1c3178572ec2f9770536856a2c927a5c8a8add92adf03dbe83b4209d76d0",
-      "cb2161aa4683436005647a3d6f815294dde60910c9c01328623e0f1b20bb3d24"
+      "e6838c2e0d2fbd098f64ec756681864ec47b0e9826bef8b73e291888847adb6a"
     ],
     "message_ids": [
-      385
+      386
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1369,35 +1369,17 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-19T03:20:11.797999+00:00"
+    "state_timestamp_utc": "2026-11-19T03:49:53.776832+00:00"
   },
   "last_selected_events": [
     {
-      "key": "b38e1c3178572ec2f9770536856a2c927a5c8a8add92adf03dbe83b4209d76d0",
-      "group": "ess_battery",
-      "title": "삼성SDI, 美서 수조원대 ESS 배터리 수주…16GWh 공급 - 매일일보",
-      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1GQUdMelRkU2FzckxQSFhjS2VrOXBXMTVxRUJudUNId1Vuakh4TkxCRmtXRjJ0Y01aa0cxVXp3U01ad2pnNEl2X0dlU0l0YUliNkxYR0diMU1ZRjdvVGU5ZVY2Wnc?oc=5",
-      "source": "매일일보",
-      "source_url": "https://www.m-i.kr",
-      "published": "2026-11-16T06:50:08+00:00"
-    },
-    {
-      "key": "cb2161aa4683436005647a3d6f815294dde60910c9c01328623e0f1b20bb3d24",
-      "group": "ess_battery",
-      "title": "\"ESS 화재 징후 사흘 전 감지\"⋯삼성SDI, AI 안전 기술 확대 - 아이뉴스24",
-      "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5WdHd6MG9IQkxWZjJ1dVUtRXJMVDJ0bDZ0ZThxYjM5b2FjcDFVYnRZbE5rVGFXRGpvZlZ2dm9aaFo2Z1dmV3pZMVBmVQ?oc=5",
-      "source": "아이뉴스24",
-      "source_url": "http://www.inews24.com",
-      "published": "2026-11-19T01:23:55+00:00"
-    },
-    {
-      "key": "4ccba1cca2cfc99ca1c51781e04e6eb4f9b5aba8262aad16969f9727f4b2e7d4",
-      "group": "ess_battery",
-      "title": "삼성SDI, ESS 화재징후 사흘 전 잡는다…AI 진단 SW 도입 - 이데일리",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNM0U2d2NwWDlTYWJ4dzN3TGdPaGd3NzNvQ09FdFFMbWRqZ3drcUZfVU9QYnpDY20wNV9qNEZCUGNkeGVzSkMxa3hTNmI5OVdFVEo4Y3JFVmRveXpDcG1MVEItSDV4dk5YbzB3VlFQY05rNTV2dzBPTnZzb0YtcUFyXw?oc=5",
-      "source": "이데일리",
-      "source_url": "https://www.edaily.co.kr",
-      "published": "2026-11-18T23:43:07+00:00"
+      "key": "e6838c2e0d2fbd098f64ec756681864ec47b0e9826bef8b73e291888847adb6a",
+      "group": "lg_factory_loop",
+      "title": "LG 클로이드 안전성 높인다…LG전자·로봇진흥원 협약, 휴머노이드 국내 안전 시범인증 추진 : 기업·산업 - 재경일보",
+      "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE93OWJHZjFaSmQ4Skc4Z2l3cmZCUURsb1h3ak9VTHpKN05ZZllseHFZbVNteE9rX2k4cldZdlA5bktBRVQ4WmNqTHhfRQ?oc=5",
+      "source": "재경일보",
+      "source_url": "https://news.jkn.co.kr",
+      "published": "2026-11-16T06:47:00+00:00"
     }
   ],
   "message_corrections": {
