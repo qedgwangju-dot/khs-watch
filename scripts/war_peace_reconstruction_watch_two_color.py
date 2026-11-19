@@ -34,7 +34,7 @@ CONSTRUCTIVE_KINDS = frozenset(('diplomatic_contact', 'diplomatic_plan',
 DIPLOMATIC_TAGS = frozenset(('종전·협상', '휴전·평화'))
 ITEM_START = re.compile(r'^[🔴🟢🟡]?\s*\[(?:신규|속보|후속)\]\s*<b>\d+\.')
 ADVERSE = re.compile(
-    r'압박|제재|결렬|교착|지연|미루|붕괴|무너|걷어찼|거부|배제|봉쇄|보복|'
+    r'압박|최후통첩|최종통첩|제재|결렬|교착|지연|미루|붕괴|무너|걷어찼|거부|배제|봉쇄|보복|'
     r'설득력\s*없|'
     r'(?:협상|대화|회담|휴전|정전).{0,10}(?:파기|중단|종료|무산|불발|깨졌|거절)|'
     r'공격\s*(?:예고|경고|위협|계획)|공습\s*(?:예고|검토)|파괴공작|'
@@ -290,6 +290,18 @@ def _trilateral_summit_time_allocation(title):
     )
 
 
+def _trilateral_peace_meeting(title):
+    """An actual first trilateral meeting about peace is dialogue, not a strike."""
+    participants = re.search(r'미\s*[·ㆍ/]?\s*중\s*[·ㆍ/]?\s*러|트럼프.{0,8}푸틴.{0,8}시진핑', title)
+    meeting = re.search(r'첫\s*대면|3자\s*(?:정상)?회담\s*(?:개최|시작|진행)|정상회담\s*(?:개최|시작|진행)', title)
+    peace = re.search(r'우크라|종전|휴전|정전|평화|협상', title)
+    attack = re.search(r'공격|공습|폭격|포격|타격|피격|미사일|드론|폭발', title)
+    return bool(participants and meeting and peace and not attack
+                and not _active_adverse(title)
+                and not _separate_attack_headline(title)
+                and not _completed_attack_headline(title))
+
+
 def direction(stage, row):
     """Return a display color, or None for a neutral market reference."""
     kind = stage.non_military_kind(row)
@@ -369,6 +381,10 @@ def direction(stage, row):
         return None
     if _unattributed_satellite_disruption(title, row):
         return None
+    # A documented summit meeting discussing peace is not an attack even if
+    # an older classifier inferred a red marker from Ukraine war background.
+    if _trilateral_peace_meeting(title):
+        return 'green'
     # A separate actual action wins over a diplomatic or financial background.
     if color == 'red':
         return 'red'

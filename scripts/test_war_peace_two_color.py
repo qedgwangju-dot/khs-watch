@@ -81,6 +81,20 @@ class TwoColorTests(unittest.TestCase):
         self.assertEqual(json.loads(self.watch.PENDING.read_text())['ids'], ids)
         self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
 
+    def test_live_nov19_summit_and_ultimatum_directions(self):
+        # Exact headline shapes from scheduled run 44456199277; title-only stage.
+        summit = 'APEC｜트럼프·푸틴·시진핑 선전서 첫 대면…우크라 종전 놓고 동상이몽 - OBC 뉴스'
+        ultimatum = '진단｜트럼프 특사, 푸틴에 최후통첩…“종전 협상 시간 없다” - OBC 뉴스'
+        def row(title, tags):
+            return {'title_original': title, 'title_ko': title, 'tags': tags,
+                    'body_verified': False}
+        self.assertEqual(presentation.direction(stage, row(summit, ['종전·협상'])), 'green')
+        self.assertEqual(presentation.direction(stage, row(ultimatum, ['외교 접촉 보도'])), 'red')
+        self.assertEqual(presentation.direction(stage, row(
+            '트럼프·푸틴·시진핑 첫 대면 뒤 우크라 종전 협상 결렬', ['종전·협상'])), 'red')
+        self.assertEqual(presentation.direction(stage, row(
+            '트럼프·푸틴·시진핑 첫 대면 뒤 우크라 드론 공격 재개', ['종전·협상'])), 'red')
+
     def test_repeat_gate_and_projection_are_idempotent(self):
         self.present()
         before = [path.read_bytes() for path in (self.watch.ALERT, self.watch.AUDIT, self.watch.PENDING)]

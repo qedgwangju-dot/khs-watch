@@ -2,7 +2,7 @@ name: War peace reconstruction Telegram watch
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "2-59/5 * * * *"
   push:
     branches: [main]
     paths:
@@ -150,19 +150,20 @@ jobs:
 
           def request_json(req, retries=3, *, retry_read_timeout=False):
               last = None
+              mutating = isinstance(req, urllib.request.Request) and req.get_method() != "GET"
               for attempt in range(1, retries + 1):
                   try:
                       with urllib.request.urlopen(req, timeout=25) as r:
                           return json.loads(r.read().decode())
                   except urllib.error.HTTPError as e:
                       last = e
-                      if e.code not in (429, 500, 502, 503, 504) or attempt == retries:
+                      if (mutating and e.code != 429) or e.code not in (429, 500, 502, 503, 504) or attempt == retries:
                           raise
                       retry_after = e.headers.get("Retry-After")
                       time.sleep(float(retry_after) if retry_after else 2 * attempt)
                   except urllib.error.URLError as e:
                       last = e
-                      if attempt == retries:
+                      if mutating or attempt == retries:
                           raise
                       time.sleep(2 * attempt)
                   except TimeoutError:
@@ -236,13 +237,22 @@ jobs:
               )
               result = request_json(req)
               if not result.get("ok"): raise RuntimeError(f"Telegram rejected: {result}")
-              message_id = result.get("result", {}).get("message_id")
+              sent = result.get("result", {})
+              returned_chat = sent.get("chat") or {}
+              if chat_id.lstrip("-").isdigit():
+                  target_matches = str(returned_chat.get("id")) == chat_id
+              else:
+                  target_matches = (returned_chat.get("username") or "").casefold() == chat_id.lstrip("@").casefold()
+              if not target_matches:
+                  raise RuntimeError("Telegram response chat differs from the configured destination")
+              message_id = sent.get("message_id")
               if not message_id: raise RuntimeError(f"Telegram response missing message_id: {result}")
               message_ids.append(message_id)
               print(f"telegram_chunk_confirmed={idx}/{len(chunks)} message_id={message_id}")
 
           pathlib.Path("out/war_peace_reconstruction_delivery.json").write_text(json.dumps({
               "status": "confirmed", "bot_username": actual, "message_ids": message_ids,
+              "target_chat_verified": True,
               "kind": kind,
               "source_coverage_complete": coverage.get("source_coverage_complete") if alert_path.exists() and os.environ.get("TELEGRAM_TEST") != "true" else None,
               "confirmed_at_kst": dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat(),
