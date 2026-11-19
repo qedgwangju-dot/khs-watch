@@ -275,6 +275,21 @@ def _apec_contact_outlook(stage, row):
     )
 
 
+def _trilateral_summit_time_allocation(title):
+    """Preserve a reported US-China-Russia meeting time as diplomacy."""
+    return bool(
+        re.search(r'^\s*(?:미|美)\s*[·ㆍ/]\s*(?:중|中)\s*[·ㆍ/]\s*(?:러|露)\s*'
+                  r'(?:\d+\s*자\s*)?정상\s*회담(?:에|의)?\s*(?:약\s*)?'
+                  r'\d+\s*시간\s*(?:배정|할당)', title)
+        and not re.search(r'우크라|공격|공습|폭격|포격|타격|피격|미사일|드론|폭발|'
+                          r'위협|압박|제재|봉쇄|전쟁|휴전|정전|종전|합의|'
+                          r'거부|결렬|취소|불발|무산|부인|중단|철회', title)
+        and not _active_adverse(title)
+        and not _separate_attack_headline(title)
+        and not _completed_attack_headline(title)
+    )
+
+
 def direction(stage, row):
     """Return a display color, or None for a neutral market reference."""
     kind = stage.non_military_kind(row)
@@ -357,6 +372,8 @@ def direction(stage, row):
     # A separate actual action wins over a diplomatic or financial background.
     if color == 'red':
         return 'red'
+    if _trilateral_summit_time_allocation(title):
+        return 'green'
     if kind in REFERENCE_KINDS:
         return None
     adverse = _active_adverse(title) or _explicit_no_deal_position(title)
@@ -484,7 +501,11 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         if color:
             first = re.sub(r'^[🔴🟢🟡]?\s*', MARKERS[color] + ' ', block[0])
             first = re.sub(r'(<b>)\d+\.', lambda m: m[1] + str(len(core) + 1) + '.', first, count=1)
-            if ((stage.non_military_kind(row) == 'diplomatic_contact'
+            if color == 'green' and _trilateral_summit_time_allocation(title):
+                label = '미국·중국·러시아 · 정상회담 시간 배정 보도'
+                first = re.sub(r'<b>\d+\.[^<]*</b>',
+                               f'<b>{len(core) + 1}. {label}</b>', first, count=1)
+            elif ((stage.non_military_kind(row) == 'diplomatic_contact'
                     and (stage._nuclear_talks_resumption_report(title)
                          or stage._qatar_us_iran_negotiations_contact(title)))
                     or (stage._iran_attack_restraint_statement(row)
