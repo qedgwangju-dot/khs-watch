@@ -1,16 +1,22 @@
 {
   "initialized": true,
   "last_collection": {
+    "all_sources_verified": false,
     "deferred_events": 0,
     "errors": [],
-    "material_items": 23,
+    "google_news_queries_failed": 0,
+    "google_news_queries_requested": 107,
+    "google_news_queries_succeeded": 107,
+    "google_news_rate_limit_429": 0,
+    "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 59,
+    "raw_items": 82,
     "sif_new_stages": 0,
+    "source_access_limited": true,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
     "si_portal_pending_candidates": 0,
@@ -96,7 +102,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-19T03:57:19.278769+00:00",
+    "updated_at": "2026-11-19T03:59:14.336203+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -108,6 +114,24 @@
       "source": "머니투데이",
       "title": "유엔 연설 앞둔 오픈AI \"美 주도 AI 표준 수립, 한국도 참여\" 제안 - 머니투데이 - 머니투데이",
       "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1ucThaWjVXT1Z3a0lHbEI3ZHl5SURjZTJKYU13ZWFJSE1keGJNQjBOS2FDNkxEZmlQWks1Y3ViNlVaQ3U0U0o3aU96RnB6Nms2LU1SdXdrQTkzN0V2bnZ6ZWFuXzFLWWhHenRMOEtPMmpRUmFTb1HSAXtBVV95cUxOdVFxeURxWUF1QUc4UTVxMlRyVWhIeVk1QjVGeHBxcF81YV9lWlBWUXpkTS1EV2hFdFFCV1FheHo2VmFuNG5maUtSd1ZBZUZvV3lkVGJjQUo0azhORlRZNG1RVHBzTFluTFJ6Z2x0ZW54SjJEX2hNazZ4eUU?oc=5"
+    },
+    "0acd95a557df158a1980cc6a": {
+      "category": "오픈AI ChatGPT·Codex·Dots 기업 플랫폼 통합 단계",
+      "entity": "오픈AI·기업용 ChatGPT",
+      "first_seen_at": "2026-11-19T03:59:14.336203+00:00",
+      "published_at": null,
+      "source": "The Information",
+      "title": "OpenAI ChatGPT Codex teams merged and Dots integrated into superapp strategy",
+      "url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety"
+    },
+    "13e49145184cab499bcc38f9": {
+      "category": "오픈AI GPT-6.1 Astra 안전성 기준·출시 보류 단계",
+      "entity": "오픈AI·안전성 평가",
+      "first_seen_at": "2026-11-19T03:59:14.336203+00:00",
+      "published_at": null,
+      "source": "Reuters",
+      "title": "OpenAI shelves GPT-6.1 Astra model release September 28 2026 on safety",
+      "url": "https://www.reuters.com/business/openai-shelves-new-ai-model-after-internal-safety-tests-wsj-reports-2026-09-28/"
     },
     "1e18622e42701c749b3e3c6c": {
       "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
@@ -135,6 +159,24 @@
       "source": "Office of the Comptroller of the Currency",
       "title": "OCC Cybersecurity Supervision Work Program updated without new examination procedures",
       "url": "https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-48.html"
+    },
+    "2139211c30428d49bd052153": {
+      "category": "오픈AI 기업영업 최고매출책임자 개편 단계",
+      "entity": "오픈AI·기업영업",
+      "first_seen_at": "2026-11-19T03:59:14.336203+00:00",
+      "published_at": null,
+      "source": "OpenAI",
+      "title": "OpenAI appoints Dali Rajic as chief revenue officer from Wiz August 13 2026",
+      "url": "https://openai.com/index/dali-rajic-chief-revenue-officer/"
+    },
+    "23f552d9a83af2591c8357ed": {
+      "category": "오픈AI Daybreak 보안 서비스 고객·반복매출 단계",
+      "entity": "오픈AI·Daybreak",
+      "first_seen_at": "2026-11-19T03:59:14.336203+00:00",
+      "published_at": null,
+      "source": "OpenAI",
+      "title": "OpenAI Daybreak cybersecurity program started May 2026",
+      "url": "https://openai.com/daybreak/"
     },
     "2497fbf99044977cb5c9a15d": {
       "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
@@ -263,6 +305,15 @@
       "title": "정부, 민간기반시설 172곳 긴급 점검...이찬진 “IT 보안 강화를” - 매일경제",
       "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPa0JqNXJWOEw3eDBqd1d5OEZWVUhjWkdlMEZDaUJmRllFWm02RUZBd3F3ZzVrSjlLY2VUa0wxQTR5OG5vWTY1RDNPcnNlS00tcjlFOEItcFplTVRKU3E0TDhpUElfLUZhRGNjR29JMERwWWo4U2NCUFNSLWxpMWFVemxhcXZUNGJp?oc=5"
     },
+    "524abf6841dcc06059a9b831": {
+      "category": "오픈AI 제품 개발 일시중단·내부 보안 강화 단계",
+      "entity": "오픈AI·내부 보안",
+      "first_seen_at": "2026-11-19T03:59:14.336203+00:00",
+      "published_at": null,
+      "source": "The Information",
+      "title": "OpenAI product work 25% paused for weeks to strengthen security under Brockman",
+      "url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety"
+    },
     "55d4697fe3fe3cd3400398c4": {
       "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
       "entity": "금융위원회·금융감독원·금융보안원",
@@ -335,6 +386,15 @@
       "title": "과기정통부 금융권 해킹 CISO 신고기업 약 2만8000곳 보안점검 권고 메일 발송",
       "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148973069"
     },
+    "6be3953b0593da8ece4b8c56": {
+      "category": "오픈AI 브록먼 경영개편·보안사업 성장 단계",
+      "entity": "오픈AI·그렉 브록먼",
+      "first_seen_at": "2026-11-19T03:59:14.336203+00:00",
+      "published_at": null,
+      "source": "The Information",
+      "title": "To Strengthen OpenAI, Brockman Goes Full Management Mode with cybersecurity bigger than coding",
+      "url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety"
+    },
     "6c0bb9f30a599b228973dd91": {
       "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
       "entity": "금융위원회·금융감독원·금융보안원",
@@ -389,6 +449,15 @@
       "title": "정부, 민간기반시설 172곳 긴급 점검...이찬진 “IT 보안 강화를” - 매일경제 마켓",
       "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9uV2pHOXA0OUk1bUwzZ25DZEZ4VFhwckRXRkxBMjAyaDkzeUNnVm1vNG9vdGQyUF94elZYLTFEZWhLWlFwUk1YZTdYYm9aTWVRU3c?oc=5"
     },
+    "82431f4eebf7a3c2cf3c2a15": {
+      "category": "오픈AI GPT-6 Cyber 보안모델 상용화·접근확대 단계",
+      "entity": "오픈AI·GPT-6 Cyber",
+      "first_seen_at": "2026-11-19T03:59:14.336203+00:00",
+      "published_at": null,
+      "source": "OpenAI",
+      "title": "OpenAI GPT-6 Cyber approved Daybreak Red model release November 5 2026",
+      "url": "https://openai.com/index/introducing-gpt-6-cyber/"
+    },
     "85267e4e8a5708e305f315f5": {
       "category": "과기정통부 금융권 해킹 24시간 비상대응·위협공유",
       "entity": "과학기술정보통신부·한국인터넷진흥원",
@@ -406,6 +475,24 @@
       "source": "MTN 머니투데이방송",
       "title": "과기정통부, PHP 보안 우려에 민간 분야 사이버위기 경보 '주의'로 상향 - MTN 머니투데이방송",
       "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE04MldTXzI5bkRWNUhCc1V4QUdBRUxSd0Z3U0lubGRRbG5GRlJwX3FBU1BSdXBnWGZhejIzNVN5YXlLRkJ0MkVSTy01aWkxTmJXTW5ZQ09hWm9jVVNpMXJB?oc=5"
+    },
+    "8f2bc4341c18084a66bc04cc": {
+      "category": "오픈AI Daybreak 보안 서비스 고객·반복매출 단계",
+      "entity": "오픈AI·Daybreak",
+      "first_seen_at": "2026-11-19T03:59:14.336203+00:00",
+      "published_at": null,
+      "source": "The Information",
+      "title": "OpenAI Daybreak thousands of organizations use cybersecurity tools including Cloudflare Cisco IBM",
+      "url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety"
+    },
+    "91a604e7c3e278c4a1233ac1": {
+      "category": "오픈AI 브록먼 경영개편·보안사업 성장 단계",
+      "entity": "오픈AI·그렉 브록먼",
+      "first_seen_at": "2026-11-19T03:59:14.336203+00:00",
+      "published_at": "2026-11-17T16:46:00+00:00",
+      "source": "The Information",
+      "title": "To Strengthen OpenAI, Brockman Goes ‘Full Management Mode’ - The Information",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNdW1HeHlNRWRETDJkY2RPT0k2bkxHQWdJVWtrSFVaRmpJSHRsUHc1ZklxVmgxemdCcHNpWGdRalVrZE40UE0yOGxxQWlUbFY5ODFvUmhibVl2Vkw5b3dYYnhqZ3Ffa24wdU1keG5paktpOGZaYlNzTGNIRVVlbGNMVnNCamNzQkF0Q3NZODNrT21NektEZGFTNWk5TVRTZHN2b2NrQnVWZXUwQQ?oc=5"
     },
     "98b418ba4c6ce8f7ffab4e0f": {
       "category": "연준 은행 사이버보안 감독·금융사기 대응 단계",
@@ -606,6 +693,15 @@
       "source": "보안뉴스",
       "title": "파이오링크, EDR과 MDR 결합한 보안관제 제공 - 보안뉴스",
       "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9ZaWdJU1ZYRFFNXzFXTkE4ZmxtbGU3c2stNi1iRjMwOFlFaUtEYjc1YnE2ejI5Mko2T2U4ek9QclJmeEVXTF9ERUdOMG5MOUhVTm01UGo1RFZBMGE0Tk53YzZiVEhaaVBSRGhZ?oc=5"
+    },
+    "e2f53785e9cfdc418fe9ce8f": {
+      "category": "오픈AI Daybreak 핵심시설 보안 접근 지원 단계",
+      "entity": "오픈AI·Daybreak",
+      "first_seen_at": "2026-11-19T03:59:14.336203+00:00",
+      "published_at": null,
+      "source": "OpenAI",
+      "title": "OpenAI Daybreak for Frontline Defenders subsidized access announced September 2026",
+      "url": "https://openai.com/index/daybreak-for-frontline-defenders/"
     },
     "e71261312acf996251d755a6": {
       "category": "파이오링크 관리형 탐지·대응 상용화 단계",
@@ -833,6 +929,42 @@
       "source_url": "https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-50.html",
       "status": "2026-10-21 OCC final payment stablecoin rule; effective 2027-01-18; applies only to OCC jurisdiction, separate from pending Fed proposals"
     },
+    "openai_brockman:management_cyber_outlook_20261117": {
+      "source_url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety",
+      "status": "2026-11-17 Brockman expanded operating remit and believes cyber eventually larger than coding; article reports cyber already significant/growing but no disclosed revenue"
+    },
+    "openai_cyber_models:gpt6_cyber_approved_20261105": {
+      "source_url": "https://openai.com/index/introducing-gpt-6-cyber/",
+      "status": "2026-11-05 GPT-6 Cyber restricted approved Daybreak Red access: ExploitGym 48.5pct vs GPT-5.6 Cyber 32.1pct, Linux 948, Firefox 81; not universal release"
+    },
+    "openai_daybreak:program_started_202605": {
+      "source_url": "https://openai.com/daybreak/",
+      "status": "Daybreak program first launched in May 2026, access verified, some products restricted to approved security teams"
+    },
+    "openai_daybreak:thousands_orgs_reported_20261117": {
+      "source_url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety",
+      "status": "2026-11-17 The Information reports thousands of Daybreak organizations incl Cloudflare Cisco IBM, token usage billing; paid organization count and product revenue not disclosed"
+    },
+    "openai_frontline:subsidy_announced_20260903": {
+      "source_url": "https://openai.com/index/daybreak-for-frontline-defenders/",
+      "status": "2026-09-03 USD1bn subsidized Daybreak capacity/support commitment for essential-service defenders, not company earned revenue or already spent"
+    },
+    "openai_revenue_exec:rajic_appointed_20260813": {
+      "source_url": "https://openai.com/index/dali-rajic-chief-revenue-officer/",
+      "status": "2026-08-13 Dali Rajic former Wiz president COO replaced Denise Dresser as OpenAI CRO; staffing change not new customer contract"
+    },
+    "openai_safety_astra:astra61_release_shelved_20260928": {
+      "source_url": "https://www.reuters.com/business/openai-shelves-new-ai-model-after-internal-safety-tests-wsj-reports-2026-09-28/",
+      "status": "2026-09-28 GPT-6.1 Astra RELEASE canceled on safety-scope/deceptive-reporting issues; NOT GPT-6 Astra discontinued"
+    },
+    "openai_safety_work:quarter_product_work_paused_reported_20261117": {
+      "source_url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety",
+      "status": "2026-11-17 The Information reports about one quarter product work paused for several weeks, engineers assigned internal security; not 25pct of company research budget"
+    },
+    "openai_superapp:chatgpt_codex_teams_merged_20261117": {
+      "source_url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety",
+      "status": "2026-11-17 The Information reports ChatGPT and Codex teams combined and desktop integration; Dots agent added, not all separate products discontinued"
+    },
     "php_korea_response:caution_elevated_20261022": {
       "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148974113",
       "status": "2026-10-22 12:00 KST: 민간 분야 사이버위기 경보 관심→주의 상향; 기존 기준선"
@@ -868,11 +1000,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-19T12:57:19+09:00",
+  "updated_at_kst": "2026-11-19T12:59:14+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-19T03:58:03.132004+00:00",
+    "last_success_at": "2026-11-19T03:59:53.347372+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
