@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-11-19T11:49:26+09:00",
+  "last_checked_kst": "2026-11-19T13:06:13+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": true,
@@ -949,6 +949,7 @@
     "uk10": "공식자료 이전 관측일 2026-11-13 대비",
     "fr_mkt": "자료제공사가 명시한 전 거래일 대비",
     "de_mkt": "자료제공사가 명시한 전 거래일 대비",
+    "it10": "자료제공사가 명시한 전 거래일 대비",
     "uk_mkt": "자료제공사가 명시한 전 거래일 대비"
   },
   "stale": [
@@ -985,8 +986,8 @@
       "government_notice:2026-10-23:5c2852fb1bc60309",
       "ecb_fsr:2026-11-18:hedge_fund_repo_deleveraging"
     ],
-    "checked_at_kst": "2026-11-19T11:49:40+09:00",
-    "source_fail_streak": 195,
+    "checked_at_kst": "2026-11-19T13:06:30+09:00",
+    "source_fail_streak": 196,
     "source_access": "access_restricted"
   }
 }
