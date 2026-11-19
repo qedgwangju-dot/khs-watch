@@ -5515,7 +5515,6 @@ def _stage_nand_nov19_press_update(source_errors: list[str],
     PENDING_PATH.parent.mkdir(parents=True, exist_ok=True)
     PENDING_PATH.write_text(
         json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    )
     ALERT_PATH.write_text(
         (existing_alert + "\n<<<TELEGRAM_MESSAGE_BREAK>>>\n" if existing_alert else "")
         + message, encoding="utf-8")
