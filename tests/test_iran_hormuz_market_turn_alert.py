@@ -2285,5 +2285,19 @@ class GlobalOilSurplusWatchTests(unittest.TestCase):
                     setattr(MODULE, key, value)
 
 
+    def test_preparation_success_suppresses_redundant_primary_fetch(self):
+        from unittest import mock
+        now = dt.datetime(2026, 11, 19, 13, 0, tzinfo=dt.timezone.utc)
+        state = {"alerted_events": {
+            "trilateral_refined_supply_plan:2026-11-19": "2026-11-19T21:50:37+09:00",
+            "iran_oil_loading_preparation:2026-11": "2026-11-19T21:50:37+09:00"}}
+        with mock.patch.object(MODULE, "_global_oil_surplus_run_monitor", return_value=0), \
+             mock.patch.object(MODULE, "load_state", return_value=state), \
+             mock.patch.object(MODULE, "_trilateral_refined_update", return_value=None), \
+             mock.patch.object(MODULE, "fetch_bytes") as fetch:
+            self.assertEqual(MODULE._verified_oil_supply_overlay(now), 0)
+            fetch.assert_not_called()
+
+
 if __name__ == "__main__":
     unittest.main()
