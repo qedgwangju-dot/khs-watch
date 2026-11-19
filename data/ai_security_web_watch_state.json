@@ -5,13 +5,10 @@
   "last_collection": {
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [
-      "Google News RSS 실패: \"php2shell\" (CISA OR CERT-EU OR exploit OR update OR at… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"CVE-2026-115560\" PHP (advisory OR patch OR fix OR expl… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
+    "errors": [],
     "material_items": 13,
     "new_material_items": 0,
-    "raw_items": 111,
+    "raw_items": 116,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -1153,5 +1150,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-19T10:10:58+09:00"
+  "updated_at_kst": "2026-11-19T10:18:27+09:00"
 }
