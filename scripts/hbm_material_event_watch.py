@@ -400,6 +400,64 @@ REPORTS = (
             "기존 MR-MUF 16단 생산과 20단 하이브리드 본딩 기술 검증을 혼동하지 않음."
         ),
     },
+    {
+        "key": "20261119_hbm_hybrid_bonder_supplier_names_correction",
+        "date": "2026-11-19",
+        "max_age_days": 30,
+        "requires_prior_keys": ("20261119_munhwa_skhynix_20high_hybrid_bonder_report",),
+        "group": "hybrid_equipment",
+        "label": "정정·업체 실명: SK하이닉스 평가용 하이브리드 본더 제조사·모델",
+        "short_title": "하이브리드 본더 평가 업체 실명·모델 보완",
+        "brief_facts": (
+            "① 한화세미텍: SHB2 Nano(2세대 하이브리드 본더) — 2026년 4월 SK하이닉스 라인 반입·품질 평가 보도. 회사는 2월 개발 완료·상반기 고객사 시험 계획 발표. 평가용 장비 공급과 양산 장비 확정 수주를 구분.",
+            "② 어플라이드 머티어리얼즈(AMAT)·베시(Besi): Kinex(키넥스) 통합 공정 시스템 — AMAT 표면처리·계측 + 베시의 Datacon 8800 CHAMEO ultra plus AC 하이브리드 본더; 2026년 초 SK하이닉스 파일럿 평가 보도.",
+            "③ 한미반도체(042700): 2026년 6월 SK하이닉스 대상 442억원 수주품은 TC Bonder 4.5 Griffin(열압착 본더)이며, 이번 20단 하이브리드 본더 공급계약이 아님. 세메스는 삼성전자 중심 개발 업체로 SK 납품 확정과 구분.",
+            "11월 19일 문화일보의 이번 추가 투입 장비 제조사는 해당 기사 원문·발주처 계약으로 별도 확인 전. 위 업체명은 기존 평가 공급 관계를 교차확인한 것.",
+        ),
+        "brief_caution": "2026년 2~6월 보도·공식 제품자료에 근거한 공급망 보완 알림. 11월 19일 신규 계약 상대방·대수·금액, 고객 승인·20단 HBM 양산 확정 아님. 원천 조회 실패나 독립 출처 부족 시 발송 보류.",
+        "sources": (
+            ("아이뉴스24 기존 SK하이닉스 장비 평가 보도", "https://www.inews24.com/v/1959204", "독립 언론 보도"),
+            ("녹색경제신문 SK하이닉스 Kinex·Besi 보도", "https://www.greened.kr/news/articleView.html?idxno=337399", "별도 언론 보도"),
+            ("한화세미텍 공식 SHB2 Nano 자료", "https://www.hanwhasemitech.com/ko-mo/media/news/detail.asp?board_id=3470", "장비업체 공식자료"),
+        ),
+        "need": (("SK하이닉스",), ("하이브리드",), ("한화세미텍",), ("베시",)),
+        "facts": (
+            "한화세미텍 2세대 SHB2 Nano 2026년 4월 SK하이닉스 반입·평가 관련 디일렉·아이뉴스24·딜사이트 보도와 한화세미텍 2월 개발 공식자료를 구분.",
+            "어플라이드 머티어리얼즈와 베시의 Kinex 통합시스템 및 베시 Datacon 8800 CHAMEO ultra plus AC는 SK하이닉스 2026년 초 파일럿 평가 보도 단계.",
+            "한미반도체 TC Bonder 4.5 Griffin 442억원 계약은 하이브리드 본더 계약이 아니며 이번 문화일보 추가 투입 공급사 단정 금지.",
+            "11월 19일 문화일보 본문 내 특정 신규 계약 상대방은 독립 확인 전이며 20단 제품 양산·고객 검증 통과는 확인되지 않음.",
+        ),
+        "caution": "기존 평가 공급업체의 실명 보완으로, 신규 공급계약 확정 공시나 20단 HBM 양산을 의미하지 않음.",
+        "evidence_groups": (
+            ("한화 SHB2 회사 공식 장비",
+             (
+                ("한화세미텍 공식 신제품", "https://www.hanwhasemitech.com/ko-mo/media/news/detail.asp?board_id=3470",
+                 (("SHB2 Nano",), ("0.1",), ("고객사",)), "공식 제품 발표"),
+                ("한화세미텍 공식 대체본", "https://eco.hanwhatechwin.co.kr/ko/media/news/detail.asp?board_id=3470",
+                 (("SHB2 Nano",), ("고객사",), ("하이브리드",)), "동일 회사 공식 재게시"),
+             )),
+            ("한화→SK하이닉스 평가용 반입",
+             (
+                ("아이뉴스24 한화 평가 보도", "https://www.inews24.com/v/1959204",
+                 (("한화세미텍",), ("SK하이닉스",), ("2세대",), ("하이브리드",)), "독립 언론 보도"),
+                ("딜사이트 한화 평가 보도", "https://dealsite.co.kr/articles/172804",
+                 (("한화세미텍",), ("SK하이닉스",), ("SHB2",), ("4월",)), "별도 언론 보도"),
+                ("디일렉 한화 통합 시스템 보도", "https://www.thelec.kr/news/articleView.html?idxno=57884",
+                 (("한화세미텍",), ("SK하이닉스",), ("SHB2",), ("4월",)), "별도 언론 보도"),
+             )),
+            ("AMAT·Besi→SK하이닉스 파일럿 평가",
+             (
+                ("녹색경제신문 Kinex·Besi 원보도", "https://www.greened.kr/news/articleView.html?idxno=337399",
+                 (("SK하이닉스",), ("베시",), ("키넥스",), ("Datacon",)), "별도 언론 보도"),
+                ("녹색경제신문 원보도 AMP", "https://www.greened.kr/news/articleViewAmp.html?idxno=337399",
+                 (("SK하이닉스",), ("베시",), ("키넥스",), ("Datacon",)), "동일 언론 AMP"),
+                ("Bits&Chips 하이브리드 로드맵 취재", "https://bits-chips.com/article/besi-faces-longer-wait-as-sk-hynix-pushes-hybrid-bonding-to-hbm5/",
+                 (("SK Hynix",), ("Besi",), ("Applied Materials",), ("pilot",)), "독립 전문매체"),
+                ("아이뉴스24 AMAT·Besi 이전 평가", "https://www.inews24.com/v/1959204",
+                 (("SK하이닉스",), ("어플라이드",), ("BESI",), ("하이브리드",)), "아이뉴스24 동일 기사 재활용"),
+             )),
+        ),
+    },
 )
 
 GROUPS = {
@@ -444,6 +502,41 @@ def fetch_article(url: str) -> str:
     return html.unescape(soup.get_text(" ", strip=True))
 
 def probe(report: dict, fetcher=fetch_article) -> tuple[dict | None, list[dict]]:
+    if report.get("evidence_groups"):
+        # A supplier-name correction needs an issuer product source AND distinct
+        # independent customer-evaluation reporting for both equipment families.
+        gaps, proven = [], []
+        for lane, choices in report["evidence_groups"]:
+            accepted = None
+            for label, url, terms, lineage in choices:
+                try:
+                    body = fetcher(url)
+                    if text_matches(body, terms):
+                        accepted = (label, url, lineage)
+                        break
+                    gaps.append({"key": report["key"], "lane": lane, "origin": label,
+                                 "status": "required_article_facts_not_verified"})
+                except Exception as exc:
+                    gaps.append({"key": report["key"], "lane": lane, "origin": label,
+                                 "status": "source_unavailable", "error_type": type(exc).__name__})
+            if accepted is None:
+                gaps.append({"key": report["key"], "lane": lane, "status": "required_independent_evidence_missing"})
+                return None, gaps
+            proven.append(accepted)
+        hosts = [(urlparse(item[1]).hostname or "").lower().removeprefix("www.") for item in proven]
+        if len(set(hosts)) != len(proven):
+            gaps.append({"key": report["key"], "status": "independent_publishers_insufficient"})
+            return None, gaps
+        label, url, lineage = proven[1]
+        return {
+            "key": report["key"], "group": report["group"], "label": report["label"],
+            "date": report["date"], "facts": report["facts"], "caution": report["caution"],
+            "source": url, "source_label": label, "lineage": lineage,
+            "verified_kind": "multi_origin_reported_supplier_evaluation_not_new_contract",
+            "verified_source_links": tuple((item[0], item[1]) for item in proven),
+            "short_title": report.get("short_title"), "brief_facts": report.get("brief_facts"),
+            "brief_caution": report.get("brief_caution"),
+        }, gaps
     gaps = []
     for label, url, lineage in report["sources"]:
         try:
@@ -483,8 +576,13 @@ def render(group: str, items: list[dict], checked_at: str) -> str:
                      (item.get("brief_facts") or item["facts"]))
         caution = item.get("brief_caution") or item["caution"]
         lines.append("• 주의: " + html.escape(caution))
-        lines.append(f'• <a href="{html.escape(item["source"], quote=True)}">근거 기사</a>'
-                     f' ({html.escape(item["source_label"])})')
+        if item.get("verified_source_links"):
+            lines.append("• 업체별 확인 근거: " + " · ".join(
+                f'<a href="{html.escape(url, quote=True)}">{html.escape(label)}</a>'
+                for label, url in item["verified_source_links"]))
+        else:
+            lines.append(f'• <a href="{html.escape(item["source"], quote=True)}">근거 기사</a>'
+                         f' ({html.escape(item["source_label"])})')
         if item.get("context_links"):
             related = " · ".join(
                 f'<a href="{html.escape(url, quote=True)}">{html.escape(label)}</a>'
@@ -515,6 +613,8 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
     gaps = []
     for report in REPORTS:
         if report["key"] in existing:
+            continue
+        if not set(report.get("requires_prior_keys") or ()) <= existing:
             continue
         # A publication scheduled in the future must not be fetched or sent.
         if date.fromisoformat(checked_at[:10]) < date.fromisoformat(report["date"]):

@@ -454,5 +454,86 @@ class MaterialEventTests(unittest.TestCase):
         self.assertEqual(again_audit["verified_events"], 0)
         self.assertIn(report["key"], repeated["hbm_material_event_watch"]["seen_keys"])
 
+    def test_named_supplier_context_requires_three_distinct_evidence_lanes(self):
+        correction = next(r for r in m.REPORTS
+                          if r["key"] == "20261119_hbm_hybrid_bonder_supplier_names_correction")
+        munhwa_key = "20261119_munhwa_skhynix_20high_hybrid_bonder_report"
+        previous = {
+            "delivery_receipt": {"status": "confirmed", "message_ids": [526]},
+            "hbm_hybrid_bonding": {"skhynix_official_hybrid_stage": "technical_feasibility"},
+            "hbm_material_event_watch": {"seen_keys": [
+                r["key"] for r in m.REPORTS if r is not correction
+            ]},
+        }
+        def never(url):
+            raise AssertionError("No unscheduled/acknowledged fetch: " + url)
+        absent_prior = copy.deepcopy(previous)
+        absent_prior["hbm_material_event_watch"]["seen_keys"].remove(munhwa_key)
+        blocked_prior, out_prior, _ = m.apply(
+            absent_prior, "2026-11-19T16:00:00+09:00",
+            lambda _: (_ for _ in ()).throw(TimeoutError("no publisher"))
+        )
+        self.assertEqual(out_prior, [])
+        self.assertNotIn(correction["key"],
+                         blocked_prior["hbm_material_event_watch"]["seen_keys"])
+
+        url_h = "https://www.hanwhasemitech.com/ko-mo/media/news/detail.asp?board_id=3470"
+        url_n = "https://www.inews24.com/v/1959204"
+        url_g = "https://www.greened.kr/news/articleView.html?idxno=337399"
+        bodies = {
+            url_h: "SHB2 Nano 0.1 고객사 하이브리드 본더 평가",
+            url_n: "한화세미텍 SK하이닉스 2세대 하이브리드 본더. 어플라이드머티어리얼즈 BESI",
+            url_g: "SK하이닉스 베시 키넥스 Datacon 본딩 시스템 평가",
+        }
+        def confirmed(url):
+            if url not in bodies:
+                raise TimeoutError("source not reachable")
+            return bodies[url]
+        verified, messages, audit = m.apply(
+            previous, "2026-11-19T17:00:00+09:00", confirmed
+        )
+        self.assertEqual(audit["verified_events"], 1)
+        self.assertEqual(audit["verified_keys"], [correction["key"]])
+        self.assertEqual(len(messages), 1)
+        rendered = messages[0]
+        for expected in ("한화세미텍", "SHB2 Nano", "Datacon 8800 CHAMEO",
+                         "어플라이드 머티어리얼즈", "베시(Besi)",
+                         "TC Bonder 4.5 Griffin", "442억원",
+                         "양산 장비 확정", "신규 계약 상대방"):
+            self.assertIn(expected, rendered)
+        self.assertIn(url_h, rendered)
+        self.assertIn(url_n, rendered)
+        self.assertIn(url_g, rendered)
+        self.assertTrue(all(len(x.encode("utf-16-le")) // 2 <= 3600
+                            for x in d.chunks(rendered)))
+        self.assertEqual(verified["delivery_receipt"], previous["delivery_receipt"])
+        self.assertEqual(verified["hbm_hybrid_bonding"], previous["hbm_hybrid_bonding"])
+        self.assertEqual(len(verified["hbm_material_event_watch"]["seen_keys"]),
+                         len(m.REPORTS))
+        _, repeated, again = m.apply(verified, "2026-11-20T10:00:00+09:00", never)
+        self.assertEqual(repeated, [])
+        self.assertEqual(again["verified_events"], 0)
+
+        def inews_only(url):
+            if url in (url_h, url_n):
+                return bodies[url]
+            raise TimeoutError("other media not reachable")
+        held, no_send, gaps = m.apply(
+            previous, "2026-11-19T18:00:00+09:00", inews_only
+        )
+        self.assertEqual(no_send, [])
+        self.assertNotIn(correction["key"], held["hbm_material_event_watch"]["seen_keys"])
+        self.assertIn("independent_publishers_insufficient",
+                      [e["status"] for e in gaps["gaps"]])
+
+        held2, no_send2, gaps2 = m.apply(
+            previous, "2026-11-19T18:00:00+09:00",
+            lambda _: (_ for _ in ()).throw(TimeoutError("offline"))
+        )
+        self.assertEqual(no_send2, [])
+        self.assertNotIn(correction["key"], held2["hbm_material_event_watch"]["seen_keys"])
+        self.assertIn("required_independent_evidence_missing",
+                      [e["status"] for e in gaps2["gaps"]])
+
 if __name__ == "__main__":
     unittest.main()
