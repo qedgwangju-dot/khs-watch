@@ -42,6 +42,16 @@ class YenCarryWatchdogQualityTests(unittest.TestCase):
         self.assertFalse(tr["recovered_incident"])
         self.assertEqual(row["issue_kind"], "execution_stale")
 
+    def test_failed_market_poll_is_source_error_not_schedule_gap(self):
+        broken = status(self.now, last_minutes=1, observed_minutes=181, eligible=False)
+        broken[1]["fx_observed_at_kst"] = None
+        broken[1]["issue_kind"] = "market_data_unavailable"
+        observed = quality.evaluate([broken], self.now)
+        self.assertFalse(observed["healthy"])
+        self.assertEqual(observed["issue_kind"], "market_data_unavailable")
+        self.assertLess(observed["execution_age_minutes"], 10)
+        self.assertFalse(quality.transition({"alert_active": True}, observed)["recovered_incident"])
+
     def test_new_bad_data_heartbeat_does_not_clear_incident(self):
         row = quality.evaluate([status(self.now, last_minutes=1, observed_minutes=181, eligible=False)], self.now)
         self.assertFalse(row["healthy"])

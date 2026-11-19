@@ -63,21 +63,25 @@ jobs:
         run: PYTHONPATH=scripts python scripts/yen_carry_recent_shock.py
 
       - name: Write market-check heartbeat independently of Telegram delivery
-        if: always() && hashFiles('out/yen_carry_recent_shock_pending_state.json') != ''
+        if: always() && (hashFiles('out/yen_carry_recent_shock_pending_state.json') != '' || hashFiles('out/yen_carry_recent_shock_market_check.json') != '')
         run: |
           python - <<'PY'
           import json
           import pathlib
 
           pending_path = pathlib.Path('out/yen_carry_recent_shock_pending_state.json')
+          failed_path = pathlib.Path('out/yen_carry_recent_shock_market_check.json')
           heartbeat_path = pathlib.Path('data/yen_carry_monitor_heartbeat.json')
-          pending = json.loads(pending_path.read_text(encoding='utf-8'))
+          path = pending_path if pending_path.exists() else failed_path
+          observation = json.loads(path.read_text(encoding='utf-8'))
           heartbeat = {
-              'updated_at_kst': pending.get('updated_at_kst'),
-              'fx_observed_at_kst': pending.get('fx_observed_at_kst'),
-              'fx_signal_eligible': pending.get('fx_signal_eligible'),
-              'fx_age_seconds': pending.get('fx_age_seconds'),
+              'updated_at_kst': observation.get('updated_at_kst'),
+              'fx_observed_at_kst': observation.get('fx_observed_at_kst'),
+              'fx_signal_eligible': observation.get('fx_signal_eligible') is True,
+              'fx_age_seconds': observation.get('fx_age_seconds'),
               'source': 'yen-carry-recent-shock',
+              'issue_kind': observation.get('issue_kind'),
+              'source_error': observation.get('source_error'),
           }
           heartbeat_path.write_text(
               json.dumps(heartbeat, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
@@ -254,6 +258,7 @@ jobs:
             data/yen_carry_monitor_heartbeat.json
             out/yen_carry_recent_shock_status.md
             out/yen_carry_recent_shock_pending_state.json
+            out/yen_carry_recent_shock_market_check.json
             out/yen_carry_composite_alert_title.txt
             out/yen_carry_composite_alert.md
             out/yen_carry_composite_alert.json

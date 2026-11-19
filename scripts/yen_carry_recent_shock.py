@@ -569,6 +569,66 @@ def finalize() -> int:
     return 0
 
 
+def fetch_one_day_5m_snapshot():
+    """Second real-data retrieval route for incomplete five-day Yahoo windows.
+
+    Uses the existing one-day, five-minute Yahoo endpoint; never interpolates
+    missing prices or converts an unverified short window into a market signal.
+    """
+    sources = []
+    failures = []
+    for base in fx.YAHOO_BASES:
+        raw, error = fx.fetch_text(
+            fx.yahoo_url(base), fx.USER_AGENT, timeout=15, attempts=1,
+            accept="application/json",
+        )
+        if error or not raw:
+            failures.append(error or "empty one-day five-minute chart")
+            continue
+        try:
+            rows = fx.valid_points(json.loads(raw))
+            shot = calculate(rows)
+            sources.append((rows, shot))
+        except (ValueError, RuntimeError, KeyError, TypeError) as exc:
+            failures.append(f"{type(exc).__name__}: {exc}")
+    if not sources:
+        raise RuntimeError("one-day five-minute fallback incomplete: " + " | ".join(failures))
+    if len(sources) > 1:
+        first, second = sources[:2]
+        a, b = first[1], second[1]
+        price_gap = abs(a.latest_price - b.latest_price) / max(a.latest_price, b.latest_price) * 100.0
+        if (price_gap > 0.03 or abs(a.latest_epoch - b.latest_epoch) > 600
+                or abs(a.change_15m_pct - b.change_15m_pct) > 0.05
+                or abs(a.change_30m_pct - b.change_30m_pct) > 0.08):
+            raise RuntimeError("one-day Yahoo query1/query2 price/window mismatch")
+    return max(sources, key=lambda row: row[1].latest_epoch)
+
+
+def write_market_data_failure(now: dt.datetime, error: Exception) -> None:
+    """Record the attempted check, without updating shock state or claim of fresh FX."""
+    reason = f"{type(error).__name__}: {error}"[:320]
+    check = {
+        "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
+        "fx_observed_at_kst": None,
+        "fx_signal_eligible": False,
+        "fx_age_seconds": None,
+        "source": "yen-carry-recent-shock",
+        "issue_kind": "market_data_unavailable",
+        "source_error": reason,
+    }
+    path = OUT / "yen_carry_recent_shock_market_check.json"
+    path.write_text(json.dumps(check, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    STATUS_PATH.write_text(
+        "# 엔캐리 환율 충격 감시\n\n"
+        "- 원천자료 검사: 실패 — 정상 실행과 별개로 기록\n"
+        "- 현재·과거 6시간 급락 판정: 보류; 전송 상태·기존 이력 보존\n"
+        f"- 실행시각: {check['updated_at_kst']}\n"
+        f"- 문제: {reason}\n", encoding="utf-8",
+    )
+    print(json.dumps({"yen_recent_shock": "market_data_unavailable",
+                      "checked_at_kst": check["updated_at_kst"]}, ensure_ascii=False))
+
+
 def fetch_complete_snapshot(*, attempts: int = 2, retry_pause_seconds: float = 3.0):
     """Retry actual source observations when a partial 5-minute bar window is returned.
 
@@ -590,8 +650,17 @@ def fetch_complete_snapshot(*, attempts: int = 2, retry_pause_seconds: float = 3
                     "five-minute observations insufficient",
                 )
             )
-            if attempt >= attempts or not source_gap:
+            if not source_gap:
                 raise
+            if attempt >= attempts:
+                try:
+                    fallback_points, fallback_snapshot = fetch_one_day_5m_snapshot()
+                    print("yen_carry_fx_real_one_day_fallback=validated")
+                    return fallback_points, fallback_snapshot
+                except Exception as backup_error:
+                    raise RuntimeError(
+                        f"{exc}; alternate actual five-minute observations unavailable: {backup_error}"
+                    ) from backup_error
             print(f"yen_carry_fx_partial_window_retry={attempt}/{attempts} reason={str(exc)}")
             if retry_pause_seconds > 0:
                 time.sleep(retry_pause_seconds)
@@ -605,7 +674,13 @@ def main() -> int:
         return finalize()
 
     now = dt.datetime.now(KST)
-    points, snapshot = fetch_complete_snapshot()
+    for stale_output in (OUT / "yen_carry_recent_shock_market_check.json", PENDING_PATH):
+        stale_output.unlink(missing_ok=True)
+    try:
+        points, snapshot = fetch_complete_snapshot()
+    except Exception as error:
+        write_market_data_failure(now, error)
+        return 1
     previous = load_json(STATE_PATH, {})
     signal_eligible, fx_age_seconds, fx_observed_at_kst = fx_freshness(snapshot, now)
     gap = monitor_gap_minutes(previous, now)
