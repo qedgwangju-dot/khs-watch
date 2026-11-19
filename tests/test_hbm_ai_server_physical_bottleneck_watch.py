@@ -306,7 +306,8 @@ class AIServerPhysicalBottleneckTests(unittest.TestCase):
                  mock.patch.object(m, "PENDING_PATH", pending), \
                  mock.patch.object(m, "ALERT_PATH", alert), \
                  mock.patch.object(m, "discover", return_value=[]), \
-                 mock.patch.object(m, "pcb_publisher_probe", return_value={"status": "lookup_failed"}):
+                 mock.patch.object(m, "pcb_publisher_probe", return_value={"status": "lookup_failed"}), \
+                 mock.patch.object(m, "tester_source_probe", return_value={"status": "lookup_failed", "accessible_count": 0}):
                 m.main()
                 staged = json.loads(pending.read_text(encoding="utf-8"))
                 self.assertEqual(staged["pcb_association"]["delivered_fact_keys"], [m.PCB_ALERT_KEY])
@@ -319,6 +320,101 @@ class AIServerPhysicalBottleneckTests(unittest.TestCase):
                 alert.unlink()
                 m.main()
                 self.assertFalse(alert.exists())
+
+
+
+    def test_testers_are_annual_capacity_not_monthly_sales(self):
+        facts = m.TESTER_FACTS
+        self.assertEqual(facts["advantest_2026_annual_systems_at_least"], 5000)
+        self.assertEqual(facts["advantest_target_annual_systems_at_least"], 10000)
+        self.assertEqual(facts["advantest_next_annual_capacity_aspiration"], 20000)
+        self.assertFalse(facts["advantest_20000_monthly"])
+        self.assertEqual(facts["advantest_20000_schedule"], "undetermined")
+        self.assertEqual(facts["allegro_actual_quarter"], "FY2027Q2_2026_Jul-Sep")
+        self.assertFalse(facts["shipment_contract_or_realized_capacity_verified"])
+
+    def test_testers_one_time_source_verified_and_date_window(self):
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        kst = ZoneInfo("Asia/Seoul")
+        now = datetime(2026, 11, 20, 0, 30, tzinfo=kst)
+        available = {"status": "partial", "accessible_count": 1,
+                     "observations": [{"source": "advantest_qa", "status": "accessible"}]}
+        event = m.tester_signal(m.BASELINE, now, available)
+        self.assertEqual(event["key"], m.TESTER_EVENT_KEY)
+        notice = m.tester_notice(event)
+        for token in ("2026년 5,000대", "10,000대", "월산이 아니라 연산",
+                      "20,000대", "미확정", "DDR4", "OSAT", "Allegro", "Advantest"):
+            self.assertIn(token, notice)
+        before = {"tester_supply": {"delivered_fact_keys": [m.TESTER_EVENT_KEY]}}
+        self.assertIsNone(m.tester_signal(before, now, available))
+        self.assertIsNone(m.tester_signal(m.BASELINE, now, {"status": "lookup_failed",
+                                                           "accessible_count": 0}))
+        self.assertIsNone(m.tester_signal(
+            m.BASELINE, datetime(2026, 11, 11, 21, tzinfo=kst), available))
+        self.assertIsNone(m.tester_signal(
+            m.BASELINE, datetime(2026, 12, 8, 0, tzinfo=kst), available))
+
+    def test_tester_source_probe_tracks_read_error_separately(self):
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        from unittest import mock
+        now = datetime(2026, 11, 20, 0, 30, tzinfo=ZoneInfo("Asia/Seoul"))
+        dummy_pdf = b"%PDF-1.6" + b"0" * 15000
+        with mock.patch.object(m, "fetch", return_value=dummy_pdf):
+            result = m.tester_source_probe(now)
+        self.assertEqual(result["accessible_count"], 2)
+        self.assertEqual(result["status"], "partial")
+        with mock.patch.object(m, "fetch", side_effect=TimeoutError("network down")):
+            result = m.tester_source_probe(now)
+        self.assertEqual(result["status"], "lookup_failed")
+        self.assertEqual(result["accessible_count"], 0)
+        self.assertEqual(len(result["observations"]), 3)
+
+    def test_tester_pending_receipt_and_existing_pcb_state_preserved(self):
+        import tempfile
+        import json
+        import copy
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        from unittest import mock
+        class FakeClock(m.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                dt = cls(2026, 11, 20, 0, 30, tzinfo=ZoneInfo("Asia/Seoul"))
+                return dt.astimezone(tz) if tz else dt.replace(tzinfo=None)
+        with tempfile.TemporaryDirectory() as folder:
+            root = pathlib.Path(folder)
+            file_state = root / "state.json"
+            pending = root / "pending.json"
+            notice_file = root / "alert.html"
+            before = copy.deepcopy(m.BASELINE)
+            before["last_checked_at_kst"] = "2026-11-19T20:18:12+09:00"
+            before["pcb_association"] = {"delivered_fact_keys": [m.PCB_ALERT_KEY]}
+            before["delivery_receipt"] = {"status": "confirmed", "message_ids": [533]}
+            file_state.write_text(json.dumps(before), encoding="utf-8")
+            issuer = {"status": "partial", "accessible_count": 1,
+                      "observations": [{"source": "advantest_qa", "status": "accessible"}]}
+            with mock.patch.object(m, "datetime", FakeClock), \
+                 mock.patch.object(m, "STATE_PATH", file_state), \
+                 mock.patch.object(m, "PENDING_PATH", pending), \
+                 mock.patch.object(m, "ALERT_PATH", notice_file), \
+                 mock.patch.object(m, "discover", return_value=[]), \
+                 mock.patch.object(m, "pcb_publisher_probe", return_value={"status": "lookup_failed"}), \
+                 mock.patch.object(m, "tester_source_probe", return_value=issuer):
+                m.main()
+                staged = json.loads(pending.read_text(encoding="utf-8"))
+                self.assertEqual(staged["tester_supply"]["delivered_fact_keys"],
+                                 [m.TESTER_EVENT_KEY])
+                self.assertEqual(staged["pcb_association"]["delivered_fact_keys"],
+                                 [m.PCB_ALERT_KEY])
+                self.assertEqual(staged["delivery_receipt"]["message_ids"], [533])
+                self.assertNotIn("tester_supply", json.loads(file_state.read_text()))
+                self.assertTrue(notice_file.exists())
+                file_state.write_text(json.dumps(staged), encoding="utf-8")
+                notice_file.unlink()
+                m.main()
+                self.assertFalse(notice_file.exists())
 
 
 

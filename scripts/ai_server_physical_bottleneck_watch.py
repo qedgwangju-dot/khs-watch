@@ -69,6 +69,51 @@ PCB_FACT_SNAPSHOT = {
     "is_confirmed_supply_failure_for_all_customers": False,
 }
 
+# Two dated, source-separated evidence items for the existing physical
+# bottleneck watcher. No new Telegram bot, schedule, or shared delivery changes.
+TESTER_EVENT_KEY = "tester-allegro-fy27q2-advantest-ir-20261112-v1"
+TESTER_EVENT_DATE_KST = "2026-11-12T00:00:00+09:00"
+TESTER_ADVANTEST_QA = (
+    "https://www.advantest.com/document/en/investors/ir-library/briefing/"
+    "JE_IR%20Fireside_Chat_QA_20261112.pdf"
+)
+TESTER_ADVANTEST_SCRIPT = (
+    "https://www.advantest.com/document/en/investors/ir-library/briefing/"
+    "JE_IR%20Fireside_Chat_Script_20261112.pdf"
+)
+TESTER_ALLEGRO_IR = (
+    "https://investors.allegromicro.com/news-releases/news-release-details/"
+    "allegro-microsystems-reports-second-quarter-2027-results"
+)
+TESTER_ALLEGRO_TRANSCRIPT = (
+    "https://stockanalysis.com/stocks/algm/transcripts/719837-q2-2027/"
+)
+TESTER_FACTS = {
+    "allegro_report_date": "2026-10-29",
+    "allegro_actual_quarter": "FY2027Q2_2026_Jul-Sep",
+    "allegro_q2_test_constraints": "not_major",
+    "allegro_fq3_constraints": "increasing_outlook_not_yet_actual_FQ3",
+    "allegro_fq3_fq4_capacity": "management_plan_not_completed",
+    "allegro_test_scope": "product_mix_dependent_backend_testing",
+    "allegro_fab_wafer": "fully_outsourced",
+    "allegro_backend": "own_philippines_plus_asia_osat",
+    "advantest_source_date": "2026-11-12",
+    "advantest_scope": "SoC_test_systems_annual_manufacturing_capacity",
+    "advantest_2021_annual_systems_at_least": 1000,
+    "advantest_2025_annual_systems_at_least": 3000,
+    "advantest_2026_annual_systems_at_least": 5000,
+    "advantest_target_annual_systems_at_least": 10000,
+    "advantest_original_target": "FY2028_end",
+    "advantest_acceleration": "approximately_one_fiscal_year_earlier_attempt_not_confirmed",
+    "advantest_next_annual_capacity_aspiration": 20000,
+    "advantest_20000_schedule": "undetermined",
+    "advantest_20000_monthly": False,
+    "advantest_past_specific_products_capacity_multiple_max": 10,
+    "advantest_past_some_modules_capacity_multiple_max": 20,
+    "shipment_contract_or_realized_capacity_verified": False,
+}
+
+
 BASELINE = {
     "as_of": "2026-10-03",
     "facts": {
@@ -718,6 +763,107 @@ def pcb_alert_text(event: dict) -> str:
     return "\n".join(lines).strip() + "\n"
 
 
+def tester_source_probe(now: datetime) -> dict:
+    """Check real issuer documents; PDF bytes validate access, not parsed facts."""
+    observed = []
+    for label, url, kind in (
+        ("advantest_qa", TESTER_ADVANTEST_QA, "pdf"),
+        ("advantest_script", TESTER_ADVANTEST_SCRIPT, "pdf"),
+        ("allegro_ir", TESTER_ALLEGRO_IR, "html"),
+    ):
+        try:
+            raw = fetch(url, timeout=12)
+            if kind == "pdf":
+                valid = raw[:5] == b"%PDF-" and len(raw) > 10000
+            else:
+                body = clean_text(raw.decode("utf-8", errors="replace")).lower()
+                valid = (
+                    "allegro microsystems" in body
+                    and "second quarter" in body
+                    and "2026" in body
+                    and len(body) > 1200
+                )
+            observed.append({"source": label,
+                             "status": "accessible" if valid else "content_incomplete"})
+        except Exception as exc:
+            observed.append({"source": label, "status": "lookup_failed",
+                             "error_type": type(exc).__name__})
+    valid_count = sum(x["status"] == "accessible" for x in observed)
+    status = (
+        "checked" if valid_count == len(observed)
+        else "partial" if valid_count else
+        "lookup_failed" if all(x["status"] == "lookup_failed" for x in observed)
+        else "content_incomplete"
+    )
+    return {
+        "status": status, "accessible_count": valid_count,
+        "observations": observed,
+        "checked_at_kst": now.isoformat(timespec="seconds"),
+    }
+
+
+def tester_signal(previous: dict, now: datetime, evidence: dict) -> dict | None:
+    """One dated backfill only after some issuer access; delivery gates own dedupe."""
+    start = datetime.fromisoformat(TESTER_EVENT_DATE_KST)
+    if not start <= now <= start + timedelta(days=22):
+        return None
+    keys = set((previous.get("tester_supply") or {}).get("delivered_fact_keys") or [])
+    if TESTER_EVENT_KEY in keys or int(evidence.get("accessible_count") or 0) < 1:
+        return None
+    return {
+        "key": TESTER_EVENT_KEY,
+        "event_date": "2026-11-12",
+        "allegro_statement_date": "2026-10-29",
+        "source_status": str(evidence.get("status") or "unknown"),
+        "source_access": list(evidence.get("observations") or []),
+        "facts": copy.deepcopy(TESTER_FACTS),
+        "stage": "backend_test_constraint_and_issuer_annual_capacity_plan_not_shipment",
+    }
+
+
+def tester_notice(signal: dict) -> str:
+    fact = signal["facts"]
+    assert fact["advantest_20000_monthly"] is False
+    assert fact["advantest_20000_schedule"] == "undetermined"
+    issuer = signal["source_status"]
+    status_line = (
+        "• 원천 검증: 이번 실행에서 공식 문서 3개 접근 성공."
+        if issuer == "checked"
+        else "• 원천 검증: 일부 문서 재조회 제한. 각 원천의 접근 상태는 운영 기록에 구분 저장했으며, "
+             "공식 Q&A 검증값과 독립 컨퍼런스콜 전사를 혼동하지 않음."
+    )
+    rows = [
+        "<b>반도체 테스트 후공정 병목 선행경보 — Allegro·Advantest</b>",
+        "• <b>Allegro(ALGM) 10/29 회계연도 2027년 2분기 발언:</b> "
+        "2026년 7~9월 테스트에는 큰 제약이 없었으나, 10~12월에는 "
+        "일부 제품 구성에서 제약이 더 나타날 전망. 3분기 실적 확정치가 아님.",
+        "• <b>Allegro 대응:</b> 회계연도 3·4분기 테스트 처리능력 추가 예정. "
+        "전공정은 외부 파운드리 전량 위탁, 후공정은 필리핀 자체시설과 중국 등 아시아 OSAT 병행. "
+        "일부 조립 외주 여력은 있으므로 모든 제품의 공급 중단으로 해석 금지.",
+        "• <b>Advantest(6857) 11/12 공식:</b> SoC 테스터 <b>연간 생산능력</b> "
+        "2026년 5,000대 이상 → 10,000대 이상 목표. 원래 FY2028 말 목표에서 "
+        "약 1년 앞당기는 방안을 추진하지만 앞당긴 날짜는 미확정. "
+        "생산능력 목표를 실제 출하·수주 물량으로 취급하지 않음.",
+        "• <b>단위 정정:</b> 다음 단계 20,000대는 <b>월산이 아니라 연산</b> 확대 구상이며 "
+        "정식 달성 일정 미확정. 지난 5~6년 제품 일부 10배·모듈 일부 20배 증설은 "
+        "모든 제품에 일괄 적용되는 수치가 아님.",
+        "• <b>상류 부품 병목:</b> Advantest 테스터는 DDR4 DRAM·전자기판·케이블·커넥터가 필요하고 "
+        "AI 시스템과 부품 조달이 경합할 수 있음. 시험 시간·검사 내용이 늘면 "
+        "장비 수량만 확충해도 처리량이 부족할 수 있음.",
+        "• <b>다음 선행지표:</b> 실제 검사 처리량·장비 리드타임·SoC 테스터 연산능력·모듈 공급·"
+        "DDR4 조달·고객 추가 주문·OSAT 테스트 가동률·테스트 설비 투자 결정과 실제 가동.",
+        "• <b>구별:</b> 검사 공정 병목은 Allegro의 회사별 현황, "
+        "Advantest 1만/2만 대는 제조사 연간 능력 목표. "
+        "전체 반도체 검사 시장의 실측 부족률·독점 공급·확정 매출로 확대하지 않음.",
+        status_line,
+        f'• <a href="{html.escape(TESTER_ADVANTEST_QA, quote=True)}">Advantest 11/12 공식 Q&A</a> / '
+        f'<a href="{html.escape(TESTER_ADVANTEST_SCRIPT, quote=True)}">공식 발표 원고</a>',
+        f'• <a href="{html.escape(TESTER_ALLEGRO_IR, quote=True)}">Allegro 공식 실적</a> / '
+        f'<a href="{html.escape(TESTER_ALLEGRO_TRANSCRIPT, quote=True)}">컨퍼런스콜 전사(독립 2차 자료)</a>',
+    ]
+    return "\n".join(rows).strip() + "\n"
+
+
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     previous = load_json(STATE_PATH) or copy.deepcopy(BASELINE)
@@ -730,6 +876,8 @@ def main() -> None:
     existing_pcb = dict(previous.get("pcb_association") or {})
     probe = pcb_publisher_probe(now)
     pcb_event = pcb_alert_event(previous, now, probe)
+    tester_probe = tester_source_probe(now)
+    tester_event = tester_signal(previous, now, tester_probe)
 
     seen_urls = set(previous.get("seen_urls") or []) | set(BASELINE.get("seen_urls") or [])
     seen_signatures = set(previous.get("seen_signatures") or [])
@@ -759,11 +907,20 @@ def main() -> None:
         keys = set(existing_pcb.get("delivered_fact_keys") or [])
         latest["pcb_association"]["delivered_fact_keys"] = sorted(keys | {PCB_ALERT_KEY})
         latest["pcb_association"]["last_evidence"] = pcb_event
-    latest["candidate_count"] = len(events) + int(bool(pcb_event))
-    latest["event_count"] = len(events) + int(bool(pcb_event))
+    tester_state = dict(previous.get("tester_supply") or {})
+    tester_state["last_source_check"] = tester_probe
+    if tester_event:
+        sent = set(tester_state.get("delivered_fact_keys") or [])
+        tester_state["delivered_fact_keys"] = sorted(sent | {TESTER_EVENT_KEY})
+        tester_state["last_evidence"] = tester_event
+    latest["tester_supply"] = tester_state
+    latest["candidate_count"] = len(events) + int(bool(pcb_event)) + int(bool(tester_event))
+    latest["event_count"] = len(events) + int(bool(pcb_event)) + int(bool(tester_event))
     write_json(PENDING_PATH, latest)
 
     notices = []
+    if tester_event:
+        notices.append(tester_notice(tester_event).strip())
     if pcb_event:
         notices.append(pcb_alert_text(pcb_event).strip())
     if events:
@@ -776,7 +933,7 @@ def main() -> None:
         "ai_server_physical_bottleneck_watch=true "
         f"candidates={latest['candidate_count']} events={latest['event_count']} "
         f"notify={str(bool(notices)).lower()} sources={latest['source_health']['status']} "
-        f"pcb_publisher={probe['status']}"
+        f"pcb_publisher={probe['status']} tester_source={tester_probe['status']}"
     )
 
 if __name__ == "__main__":
