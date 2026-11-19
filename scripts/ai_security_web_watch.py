@@ -468,6 +468,19 @@ def fetch_bytes(url: str, timeout: int = 25) -> bytes:
         return resp.read()
 
 
+def source_coverage_summary(requested: int, successful: int, errors: list[str]) -> dict:
+    """Source failures are a coverage gap, never evidence of zero new events."""
+    failed = max(0, requested - successful)
+    return {
+        "google_news_queries_requested": requested,
+        "google_news_queries_succeeded": successful,
+        "google_news_queries_failed": failed,
+        "google_news_rate_limit_429": sum("HTTP Error 429" in error for error in errors),
+        "source_access_limited": bool(errors or failed),
+        "all_sources_verified": not (errors or failed),
+    }
+
+
 def strip_html(value: str) -> str:
     text = html.unescape(re.sub(r"<[^>]+>", " ", value or ""))
     return " ".join(text.replace("\xa0", " ").split())
@@ -1863,10 +1876,12 @@ def main() -> int:
     state = load_state()
     errors: list[str] = []
     raw_items: list[dict] = []
+    google_news_succeeded = 0
 
     for query in NEWS_QUERIES:
         try:
             raw_items.extend(parse_google_news(query, now))
+            google_news_succeeded += 1
         except Exception as exc:
             errors.append(f"Google News RSS 실패: {query[:55]}… / {type(exc).__name__}: {exc}")
 
@@ -2068,6 +2083,7 @@ def main() -> int:
             "deferred_material_items": len(deferred_fps),
             "replication_reference_suppressed": replication_baseline_suppressed,
             "replication_watch_version": REPLICATION_WATCH_VERSION,
+            **source_coverage_summary(len(NEWS_QUERIES), google_news_succeeded, errors),
             "errors": errors,
         },
     }
@@ -2100,6 +2116,8 @@ def main() -> int:
         f"- 중요 필터 통과: {len(current)}건",
         f"- 신규 중요 기사: {len(new_items)}건",
         f"- 신규 중요 사건: {len(alert_events)}건",
+        f"- 뉴스 검색어 조회 성공: {google_news_succeeded}/{len(NEWS_QUERIES)}개",
+        f"- 원천자료 상태: {'조회 실패 있음 — 신규 사건 0건도 전체 확인으로 간주 불가' if errors else '조회 오류 감지 없음'}",
         f"- 전송 상한 초과 다음 회차 대기: {len(deferred_fps)}건",
         f"- AI 자율복제 기존 연구 중복 차단: {replication_baseline_suppressed}건",
         f"- PHP 긴급 취약점 확인 단계: {len(php_stages)}건",

@@ -679,6 +679,34 @@ jobs:
           print("ai_security_research_crime_source_stage_dedup_regression=PASS")
           PY
 
+      - name: Verify source access failures are not treated as all-clear
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_security_web_watch import source_coverage_summary
+          partial = source_coverage_summary(40, 37, [
+              "Google News RSS 실패: HTTPError: HTTP Error 429: Too Many Requests",
+              "CISA KEV 실패: HTTPError: HTTP Error 503",
+          ])
+          assert partial["google_news_queries_requested"] == 40
+          assert partial["google_news_queries_succeeded"] == 37
+          assert partial["google_news_queries_failed"] == 3
+          assert partial["google_news_rate_limit_429"] == 1
+          assert partial["source_access_limited"]
+          assert not partial["all_sources_verified"]
+          clean = source_coverage_summary(40, 40, [])
+          assert clean["google_news_queries_failed"] == 0
+          assert clean["google_news_rate_limit_429"] == 0
+          assert not clean["source_access_limited"]
+          assert clean["all_sources_verified"]
+          direct_failure = source_coverage_summary(40, 40, [
+              "공식 연구페이지 직접 감시 실패: HTTP 403",
+          ])
+          assert direct_failure["source_access_limited"]
+          assert not direct_failure["all_sources_verified"]
+          print("ai_security_source_coverage_gap_classification_regression=PASS")
+          PY
+
       - name: Verify alert overflow deferral
         shell: bash
         run: |
