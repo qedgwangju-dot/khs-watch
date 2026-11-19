@@ -224,6 +224,23 @@ def _pending_iran_war_decision(title):
                 and not _active_adverse(title))
 
 
+def _iran_not_rushing_decision(stage, row):
+    """A title-only statement about decision timing is not itself escalation."""
+    if row.get('body_verified'):
+        return False
+    title = stage._headline(row)
+    if not (re.search(r'\biran\b', title)
+            and re.search(r'\bnot\s+rushing\s+into\s+(?:a|the)\s+decision\b', title)):
+        return False
+    # A separate attack, threat, diplomatic action, or explicit pressure in
+    # the same headline keeps its existing direction and cannot be masked.
+    return not bool(re.search(
+        r'\b(?:attack\w*|airstrike\w*|strike\w*|struck|bomb\w*|missiles?|rockets?|drones?|'
+        r'launch\w*|order\w*|threat\w*|sanction\w*|pressure|retaliat\w*|'
+        r'negotiat\w*|talks?|ceasefire|truce|peace|diploma\w*|met|meet\w*|agree\w*|refus\w*|reject\w*)\b|'
+        r'공격|공습|폭격|포격|타격|미사일|드론|위협|압박|제재|보복|협상|회담|휴전|정전', title))
+
+
 def _political_war_pressure_commentary(title):
     return bool(re.search(r'민주', title) and re.search(r'트럼프', title)
                 and re.search(r'이란전|종전', title)
@@ -333,6 +350,7 @@ def direction(stage, row):
             or stage._iran_war_policy_options_headline(title)):
         return None
     if (_hypothetical_war_options(title) or _pending_iran_war_decision(title)
+            or _iran_not_rushing_decision(stage, row)
             or (not row.get('body_verified')
                 and stage._pending_iran_war_decision_outlook(title))):
         return None
@@ -503,6 +521,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         policy_options = stage._iran_war_policy_options_headline(title)
         hypothetical = (_hypothetical_war_options(title)
                         or _pending_iran_war_decision(title))
+        pending_decision = _iran_not_rushing_decision(stage, row)
         satellite_disruption = _unattributed_satellite_disruption(title, row)
         title_only_pledge = _title_only_war_end_pledge(stage, row)
         summit_venue = stage._summit_venue_description_only(row)
@@ -516,7 +535,7 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
             {'원인미확정', '공식확인대기'} <= source_tags
             or (re.search(r'재공격\s*가능성.{0,12}매우\s*작', title)
                 and '폭발음 보도·공격 원인 미확인' in source_tags)))
-        context = (commentary or policy_options or hypothetical or postwar or title_only_pledge or summit_venue or meeting_observation or apec_outlook or inspection_condition
+        context = (commentary or policy_options or hypothetical or pending_decision or postwar or title_only_pledge or summit_venue or meeting_observation or apec_outlook or inspection_condition
                    or satellite_disruption
                    or uncertain or stalemate_statement)
         row['semantic_classification_color'] = row.get('classification_color')
@@ -574,6 +593,9 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                 label = '종전 후 타협 구상'
             elif policy_options:
                 label = '이란전 대응 방안·정책 이견'
+            elif pending_decision:
+                label = '이란 대응 결정 발언 · 본문 미확인'
+                block = [line.replace(' · 확전 · ', ' · 대응 결정 발언 · ') for line in block]
             elif hypothetical:
                 label = '종전·확전 전망'
             elif title_only_pledge:
