@@ -268,7 +268,7 @@ def ecb_financial_stability_event(
             return data
     document = fetch(ECB_FSR_URL)
     plain = re.sub(r"<[^>]+>", " ", html.unescape(document))
-    plain = re.sub(r"\\s+", " ", plain).casefold()
+    plain = re.sub(r"\s+", " ", plain).casefold()
     if not all(p in plain for p in ("november 2026", "hedge funds", "repo", "sovereign")):
         raise ValueError("ECB Financial Stability Review verification incomplete")
     return {"kind": "ecb_fsr", "key": ECB_FSR_KEY, "date": ECB_FSR_DATE.isoformat(),
