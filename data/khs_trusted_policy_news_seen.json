@@ -804,6 +804,15 @@
       "status": "공식 확인 전",
       "title": "트럼프 대통령 직접 발언, 시장 영향 정책 신호"
     },
+    "389eebd209970314e7d957df": {
+      "first_seen_kst": "2026-11-19T19:39:26+09:00",
+      "key": "us_bis_overseas_gpu_remote_access_rule",
+      "sources": [
+        "미 연방관보·BIS 원문"
+      ],
+      "status": "공식 확인",
+      "title": "미 상무부, 제3국 데이터센터 GPU 원격 접근 제한 추진"
+    },
     "39a106bb8a529135c90353e1": {
       "first_seen_kst": "2026-08-28T02:38:22+09:00",
       "key": "trump_direct_policy_remarks_watch",
@@ -3772,5 +3781,5 @@
       "title": "트럼프 대통령 직접 발언, 시장 영향 정책 신호"
     }
   },
-  "updated_at_kst": "2026-11-19T11:57:50+09:00"
+  "updated_at_kst": "2026-11-19T19:39:26+09:00"
 }
