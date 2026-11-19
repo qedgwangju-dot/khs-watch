@@ -2352,11 +2352,12 @@ def _poland_epc_stage(title: str) -> str | None:
 
     # 계획·기대·주요 상업조건·선행작업 계약을 전체 EPC 계약 체결로 오인하지 않는다.
     if any(x in title for x in (
-        "expected", "expects", "planning", "plans to", "set to sign", "to sign",
+        "expected", "expects", "planned", "planning", "plans to", "scheduled",
+        "targeted", "forecast", "to be poured", "would", "set to sign", "to sign",
         "will sign", "aims to", "may sign", "due to sign", "prepar",
         "negotiat", "talks", "terms", "framework", "preliminary",
         "conditional", "main commercial", "early works",
-        "podpisanie", "planuje", "planowane", "negocj", "warunki handlowe",
+        "podpisanie", "planuje", "planowane", "planowan", "negocj", "warunki handlowe",
         "uzgodnil", "wstepn", "warunkow", "przygotow",
         "예상", "계획", "예정", "검토", "협상", "합의", "조건부", "본계약 추진",
     )):
@@ -2393,7 +2394,7 @@ def _poland_epc_stage(title: str) -> str | None:
         return "firm_long_lead_order"
 
     signed = (
-        bool(re.search(r"(?:signs|signed|executed|concluded|podpisano|podpisala|"
+        bool(re.search(r"(?:\bsign\b|signs|signed|executed|concluded|podpisano|podpisala|"
                        r"zawarto|zawar[a-z]+).{0,85}(?:epc|"
                        r"engineering procurement construction|kontrakt|umow)", title))
         or bool(re.search(r"(?:epc|kontrakt epc|umow[a-z ]{0,15}epc).{0,85}"
@@ -2530,6 +2531,8 @@ def _poland_epc_reconcile_confirmed(seen: dict) -> int:
         print(f"poland_epc_delivery_state=unreadable error={type(exc).__name__}")
         return 0
     confirmed = _poland_epc_confirmed_receipts(delivered.get("sent"))
+    if not confirmed:
+        return 0
     records = seen.setdefault("poland_epc_confirmed_stages", {})
     created = 0
     for stage, receipt in confirmed.items():
@@ -2548,6 +2551,8 @@ def _self_test_poland_epc_milestones() -> None:
         ("PEJ and Westinghouse Begin Long-Lead Item Procurement Process for Poland's First Nuclear Power Plant", None),
         ("PEJ signed preparatory engineering contract for Poland AP1000", None),
         ("Poland PEJ signs EPC contract with Westinghouse and Bechtel", "epc_signed"),
+        ("Poland PEJ and Bechtel Sign EPC contract with Westinghouse", "epc_signed"),
+        ("Poland PEJ first nuclear concrete planned for 2028", None),
         ("PEJ and Westinghouse executed EPC contract for Polish AP1000 plant", "epc_signed"),
         ("Poland PEJ EPC contract signing postponed to second half of 2027", "epc_signing_delayed_again"),
         ("PEJ Poland nuclear construction permit issued by PAA", "nuclear_construction_license"),
