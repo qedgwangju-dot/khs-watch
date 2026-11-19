@@ -7,22 +7,16 @@
     "deferred_material_items": 0,
     "direct_official_items": 56,
     "errors": [
-      "Google News RSS 실패: (\"CVE-2026-109618\" OR \"CVE-2026-109619\" OR \"php2shell\")… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (\"php2shell\" OR \"CVE-2026-109618\") (\"10 million\" OR \"10… / HTTPError: HTTP Error 429: Too Many Requests",
       "Google News RSS 실패: \"Cathedral\" \"Anthropic\" (security research OR breach OR… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"CYFIRMA\" \"PHP2Shell\" (216 OR scanning OR Lazarus OR co… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) agent misalignm… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) \"security release\" OR \"… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenShell OR Sentry OR BlueField-4) policy bypass sand… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (JPMorgan OR Citi OR Goldman OR bank OR \"critical infra… / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Critical cyber… / HTTPError: HTTP Error 429: Too Many Requests"
     ],
-    "google_news_queries_failed": 8,
+    "google_news_queries_failed": 2,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 57,
-    "google_news_rate_limit_429": 8,
-    "material_items": 12,
+    "google_news_queries_succeeded": 63,
+    "google_news_rate_limit_429": 2,
+    "material_items": 13,
     "new_material_items": 0,
-    "raw_items": 112,
+    "raw_items": 126,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
     "source_access_limited": true
@@ -1165,5 +1159,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-20T00:20:59+09:00"
+  "updated_at_kst": "2026-11-20T00:23:01+09:00"
 }
