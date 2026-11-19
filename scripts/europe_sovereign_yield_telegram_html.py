@@ -21,6 +21,7 @@ LINKS = (
     ("• AFT France Moody\'s rating calendar: ", "프랑스 국채관리청 Moody’s 공식 신용등급 일정", "www.aft.gouv.fr"),
     ("• AFT France S&P rating calendar: ", "프랑스 국채관리청 S&P 공식 신용등급 일정", "www.aft.gouv.fr"),
     ("• Briefs France carry story: ", "프랑스 헤지펀드 캐리 청산 보도", "www.briefs.co"),
+    ("• ECB Financial Stability Review: ", "ECB 11월 금융안정보고서·헤지펀드 레버리지", "www.ecb.europa.eu"),
     ("• France government Moody press: ", "프랑스 재무부 Moody’s 공식 입장", "presse.economie.gouv.fr"),
 )
 
