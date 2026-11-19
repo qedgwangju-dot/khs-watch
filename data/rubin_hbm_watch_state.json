@@ -1383,13 +1383,15 @@
   },
   "_delivery": {
     "id": "4bd85110cc4fb53a2dca891821919701426f9807f41524c82fb9bab10242cc88",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-11-19T12:37:30+09:00",
     "chunks": [
       "<b>[HBM 기존 감시 | 중요 신규 변화]</b>\n<b>SK하이닉스 20단 HBM · 하이브리드 본더 검증·도입 단계</b>\n확인 2026-11-19 12:37 KST · 전망/실적 단계 구분\n\n<b>■ 하이브리드 본더 평가 업체 실명·모델 보완</b>\n• ① 한화세미텍: SHB2 Nano(2세대 하이브리드 본더) — 2026년 4월 SK하이닉스 라인 반입·품질 평가 보도. 회사는 2월 개발 완료·상반기 고객사 시험 계획 발표. 평가용 장비 공급과 양산 장비 확정 수주를 구분.\n• ② 어플라이드 머티어리얼즈(AMAT)·베시(Besi): Kinex(키넥스) 통합 공정 시스템 — AMAT 표면처리·계측 + 베시의 Datacon 8800 CHAMEO ultra plus AC 하이브리드 본더; 2026년 초 SK하이닉스 파일럿 평가 보도.\n• ③ 한미반도체(042700): 2026년 6월 SK하이닉스 대상 442억원 수주품은 TC Bonder 4.5 Griffin(열압착 본더)이며, 이번 20단 하이브리드 본더 공급계약이 아님. 세메스는 삼성전자 중심 개발 업체로 SK 납품 확정과 구분.\n• 11월 19일 문화일보의 이번 추가 투입 장비 제조사는 해당 기사 원문·발주처 계약으로 별도 확인 전. 위 업체명은 기존 평가 공급 관계를 교차확인한 것.\n• 주의: 2026년 2~6월 보도·공식 제품자료에 근거한 공급망 보완 알림. 11월 19일 신규 계약 상대방·대수·금액, 고객 승인·20단 HBM 양산 확정 아님. 원천 조회 실패나 독립 출처 부족 시 발송 보류.\n• 업체별 확인 근거: <a href=\"https://www.hanwhasemitech.com/ko-mo/media/news/detail.asp?board_id=3470\">한화세미텍 공식 신제품</a> · <a href=\"https://www.inews24.com/v/1959204\">아이뉴스24 한화 평가 보도</a> · <a href=\"https://www.greened.kr/news/articleView.html?idxno=337399\">녹색경제신문 Kinex·Besi 원보도</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      527
+    ],
     "candidate": {
       "updated_at_kst": "2026-11-19T12:33:36+09:00",
       "seen_ids": [
