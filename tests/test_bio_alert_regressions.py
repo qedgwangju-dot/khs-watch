@@ -807,6 +807,76 @@ class BioAlertRegressionTests(unittest.TestCase):
                 "final_unpatentable",
             )
 
+    def test_halozyme_pgr_last_two_lead_notice_is_one_time_and_never_a_final_verdict(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_path = pathlib.Path(directory) / "halozyme.json"
+            state_path.write_text(json.dumps({
+                "initialized": True,
+                "seen_portfolio_updates": [
+                    halo.portfolio_scorecard_key(halo.PTAB_NOV9_PORTFOLIO_SCORECARD["score"])
+                ],
+                "seen_events": [],
+            }), encoding="utf-8")
+            now = dt.datetime(2026, 11, 18, 19, tzinfo=dt.timezone(dt.timedelta(hours=-5)))
+            with patch.object(halo.base, "STATE", state_path), \
+                 patch.dict(os.environ, {"BIO_TELEGRAM_BOT_TOKEN": "offline-token"}), \
+                 patch.object(halo.base, "resolve_chat_id", return_value="-100123456"), \
+                 patch.object(halo, "_send_verified_pgr_lead", return_value=922) as sender:
+                self.assertEqual(halo.maybe_send_pgr_deadline_lead_notice(now), [922])
+                self.assertEqual(halo.maybe_send_pgr_deadline_lead_notice(now), [])
+                sender.assert_called_once()
+                text = sender.call_args.args[2]
+                self.assertIn("최종결정 미확인", text)
+                self.assertIn("14전 14승은 아직 확정하지 않습니다", text)
+                saved = json.loads(state_path.read_text(encoding="utf-8"))
+                self.assertIn(halo.PGR_FINAL_WINDOW_LEAD_KEY, saved["seen_lead_warning_keys"])
+                self.assertTrue(saved["last_pgr_lead_notice_receipt"]["destination_verified"])
+
+    def test_halozyme_pgr_lead_skips_after_any_actual_final_or_outside_window(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_path = pathlib.Path(directory) / "halozyme.json"
+            state = {
+                "initialized": True,
+                "seen_portfolio_updates": [
+                    halo.portfolio_scorecard_key(halo.PTAB_NOV9_PORTFOLIO_SCORECARD["score"])
+                ],
+                "seen_events": [halo.base.digest("PGR2025-00050|final_decision")],
+            }
+            state_path.write_text(json.dumps(state), encoding="utf-8")
+            now = dt.datetime(2026, 11, 19, 12, tzinfo=dt.timezone(dt.timedelta(hours=-5)))
+            with patch.object(halo.base, "STATE", state_path), \
+                 patch.object(halo, "_send_verified_pgr_lead") as sender:
+                self.assertEqual(halo.maybe_send_pgr_deadline_lead_notice(now), [])
+                state["seen_events"] = []
+                state_path.write_text(json.dumps(state), encoding="utf-8")
+                self.assertEqual(halo.maybe_send_pgr_deadline_lead_notice(
+                    dt.datetime(2026, 11, 23, 12, tzinfo=now.tzinfo)
+                ), [])
+                sender.assert_not_called()
+
+    def test_halozyme_pgr_lead_ambiguous_receipt_quarantined_without_dedup_success(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_path = pathlib.Path(directory) / "halozyme.json"
+            state_path.write_text(json.dumps({
+                "initialized": True,
+                "seen_portfolio_updates": [
+                    halo.portfolio_scorecard_key(halo.PTAB_NOV9_PORTFOLIO_SCORECARD["score"])
+                ],
+                "seen_events": [],
+            }), encoding="utf-8")
+            now = dt.datetime(2026, 11, 19, 12, tzinfo=dt.timezone(dt.timedelta(hours=-5)))
+            with patch.object(halo.base, "STATE", state_path), \
+                 patch.dict(os.environ, {"BIO_TELEGRAM_BOT_TOKEN": "offline-token"}), \
+                 patch.object(halo.base, "resolve_chat_id", return_value="-100123456"), \
+                 patch.object(halo, "_send_verified_pgr_lead", side_effect=TimeoutError("offline")) as sender:
+                with self.assertRaisesRegex(RuntimeError, "automatic resend blocked"):
+                    halo.maybe_send_pgr_deadline_lead_notice(now)
+                saved = json.loads(state_path.read_text(encoding="utf-8"))
+                self.assertEqual(saved["pgr_deadline_lead_uncertain"]["key"], halo.PGR_FINAL_WINDOW_LEAD_KEY)
+                self.assertNotIn("seen_lead_warning_keys", saved)
+                self.assertEqual(halo.maybe_send_pgr_deadline_lead_notice(now), [])
+                sender.assert_called_once()
+
     def test_halozyme_unknown_fwd_does_not_assume_invalidity(self):
         for case in ("PGR2025-00050", "PGR2025-00053"):
             self.assertEqual(

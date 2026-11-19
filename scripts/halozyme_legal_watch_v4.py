@@ -4,6 +4,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import html
 import json
+import datetime as dt
+import urllib.request
+from zoneinfo import ZoneInfo
 import os
 import re
 import time
@@ -1262,6 +1265,115 @@ def send_portfolio_updates() -> list[int]:
     base.STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return sent
 
+# Separate lead warning: this is not a PTAB decision or proof of 14/14.
+# Only one notice is eligible around the two outstanding 2025-11-19 institutions.
+PGR_FINAL_WINDOW_LEAD_KEY = base.digest(
+    "pgr2025-00050|pgr2025-00053|2026-11-19-et|predecision-lead-v1"
+)
+
+
+def _send_verified_pgr_lead(token: str, chat: str, message: str) -> int:
+    """Use the existing bio Telegram route, and check the actual send receipt."""
+    from qlex_telegram_send import correct_destination
+
+    payload = urllib.parse.urlencode({
+        "chat_id": chat,
+        "text": message,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": "true",
+    }).encode("utf-8")
+    req = urllib.request.Request(
+        f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST"
+    )
+    # Do not blindly retry an ambiguous POST: it may already have reached Telegram.
+    with urllib.request.urlopen(req, timeout=25) as response:
+        receipt = json.loads(response.read().decode("utf-8"))
+    result = receipt.get("result") or {}
+    message_id = int(result.get("message_id") or 0)
+    if not receipt.get("ok") or message_id <= 0 or not correct_destination(chat, result):
+        raise RuntimeError("PGR lead warning Telegram receipt or destination mismatch")
+    return message_id
+
+
+def maybe_send_pgr_deadline_lead_notice(now_et: dt.datetime | None = None) -> list[int]:
+    """Warn of expected timing once, without relaxing final-decision proof gates."""
+    eastern = ZoneInfo("America/New_York")
+    now = (now_et or dt.datetime.now(eastern)).astimezone(eastern)
+    if not (dt.date(2026, 11, 18) <= now.date() <= dt.date(2026, 11, 20)):
+        return []
+    try:
+        state = json.loads(base.STATE.read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        # Never reset a missing/corrupted baseline just to send a lead notice.
+        return []
+    if not state.get("initialized"):
+        return []
+    score_keys = set(state.get("seen_portfolio_updates") or [])
+    if portfolio_scorecard_key(PTAB_NOV9_PORTFOLIO_SCORECARD["score"]) not in score_keys:
+        return []
+    if portfolio_scorecard_key({"total": 14, "won": 14, "pending": 0}) in score_keys:
+        return []
+
+    events = set(state.get("seen_events") or [])
+    remaining = ("PGR2025-00050", "PGR2025-00053")
+    if any(
+        base.digest(f"{case}|{stage}") in events
+        for case in remaining
+        for stage in ("final_decision", "final_unpatentable")
+    ):
+        return []
+    if (
+        PGR_FINAL_WINDOW_LEAD_KEY in set(state.get("seen_lead_warning_keys") or [])
+        or state.get("pgr_deadline_lead_uncertain")
+    ):
+        return []
+
+    token = (os.getenv("BIO_TELEGRAM_BOT_TOKEN") or "").strip()
+    chat = base.resolve_chat_id(token) if token else ""
+    if not token or not chat:
+        return []
+
+    message = (
+        "<b>[바이오 감시] Halozyme PGR 선행경보 — 최종결정 미확인</b>\n\n"
+        "<b>미국 11월 19일 전후, MDASE 특허 마지막 PGR 2건의 최종판단 예상</b>\n"
+        "- <b>현재 확인:</b> 14건 중 12건은 심판 대상 청구항의 특허성이 부정됐고, "
+        "나머지 2건은 아직 PTAB 최종 결정문 확인 전입니다.\n"
+        "- <b>대기 사건:</b> PGR2025-00050(US 12,077,791), "
+        "PGR2025-00053(US 12,195,773).\n"
+        "- <b>예상 시점:</b> 2025년 11월 19일 심판 개시 후 통상 1년 기준인 "
+        "2026년 11월 19일(미국 동부) 전후. 결정일은 연장될 수 있습니다.\n"
+        "- <b>확정경보:</b> 각 사건의 최종서면결정·청구항별 결과를 "
+        "공식 기록과 대조한 후 별도 발송합니다. 14전 14승은 아직 확정하지 않습니다.\n"
+        "- <b>구분:</b> PTAB 미국 판단은 특허 소멸·항소 종결이나 "
+        "유럽의 별도 판결을 뜻하지 않습니다.\n"
+        '- <a href="https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557844">'
+        "PGR2025-00050 미국 특허심판원 사건기록</a>"
+    )
+    try:
+        message_id = _send_verified_pgr_lead(token, chat, message)
+    except Exception as exc:
+        # POST receipt absent: quarantine this notice, never blindly retransmit.
+        state["pgr_deadline_lead_uncertain"] = {
+            "key": PGR_FINAL_WINDOW_LEAD_KEY,
+            "cause_type": type(exc).__name__,
+            "recorded_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+        }
+        base.STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        raise RuntimeError("PGR lead warning receipt not verified; automatic resend blocked") from exc
+
+    state["seen_lead_warning_keys"] = sorted(
+        set(state.get("seen_lead_warning_keys") or []) | {PGR_FINAL_WINDOW_LEAD_KEY}
+    )
+    state["last_pgr_lead_notice_receipt"] = {
+        "message_id": message_id,
+        "destination_verified": True,
+        "sent_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+    }
+    base.STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"pgr_predecision_lead_sent=true message_id={message_id} destination_verified=true")
+    return [message_id]
+
+
 _sent_ids: list[int] = []
 _original_send = base.send
 
@@ -1299,6 +1411,8 @@ def main() -> int:
     rc = base.main()
     portfolio_sent = send_portfolio_updates()
     _sent_ids.extend(mid for mid in portfolio_sent if mid not in _sent_ids)
+    lead_sent = maybe_send_pgr_deadline_lead_notice()
+    _sent_ids.extend(mid for mid in lead_sent if mid not in _sent_ids)
     try:
         state = json.loads(base.STATE.read_text(encoding="utf-8"))
     except Exception:
