@@ -18,6 +18,7 @@ import json
 import os
 import pathlib
 import re
+import socket
 import time
 import urllib.parse
 import urllib.request
@@ -451,7 +452,8 @@ def starmind_execution_stage(title: str) -> str | None:
                      r".{0,45}(achieved|begins?|starts?|completed|달성|시작)",t):
             return "weekly_cadence_report"
     if re.search(r"spacex|스타마인드|starmind|ai1",t) and re.search(r"ai1|starmind|스타마인드",t):
-        if re.search(r"(first|maiden|첫|최초).{0,35}(ai1|starmind|스타마인드).{0,40}"
+        if re.search(r"(?:launches|launched|deploys|deployed).{0,30}(?:first|maiden).{0,30}(?:ai1|starmind)|"
+                     r"(first|maiden|첫|최초).{0,35}(ai1|starmind|스타마인드).{0,40}"
                      r"(launched|deployed|in orbit|발사 성공|궤도 진입|배치)|"
                      r"(ai1|starmind|스타마인드).{0,50}"
                      r"(launched|deployed|reaches orbit|발사 성공|궤도 배치)",t):
@@ -499,12 +501,13 @@ def render_starmind_milestone(item: dict) -> str:
             "동일 기체 재비행은 따로 확인해야 합니다."),
         "ai1_first_deployment_report":(
             "• 기준: SpaceX AI1 공식 제품자료는 위성당 평균 연산전력 175kW·"
-            "최대 250kW입니다. LS증권 2027년 4분기 발사 가능 전망과 회사의 "
-            "기존 2028년 투자설명자료 배치 일정을 분리합니다."),
+            "최대 250kW입니다. 기존 회사 투자설명자료의 2028년 계획과 최근 "
+            "회사 제품자료의 '이르면 2027년 말' 배치 목표·LS증권의 2027년 4분기 "
+            "가정을 구별하고 실제 최초 발사를 확인해야 합니다."),
         "sst_commercial_start_report":(
-            "• 기존: 세아의 SST 설계 생산능력은 연 6,000톤이며 "
-            "기존 공식 2026년 하반기 전망과 2027년 1분기 보도가 다릅니다. "
-            "공장 완공·상업가동·고객 승인·실제 공급량을 각각 확인해야 합니다."),
+            "• 기존: 세아 SST 설계 생산능력은 연 6,000톤입니다. 공식 발표의 "
+            "2026년 하반기 공장 준공 계획과 후속 보도의 2027년 1분기 "
+            "상업가동 예정은 서로 다른 단계로, 고객 승인·실제 공급량도 확인해야 합니다."),
         "seah_new_spacex_order_report":(
             "• 기존: 세아창원특수강의 과거 SpaceX 소재 공급 보도와 "
             "이번 신규 계약은 별개입니다. 계약 상대·금액·물량·확정 단계는 미확인입니다."),
@@ -1390,6 +1393,8 @@ def self_test() -> int:
     assert starmind_execution_stage("SeAH SST expects commercial operation in first quarter 2027") is None
     assert starmind_execution_stage("SpaceX Starship achieves weekly launches after four consecutive weeks")=="weekly_cadence_report"
     assert starmind_execution_stage("SpaceX launches first Starmind AI1 satellite into orbit")=="ai1_first_deployment_report"
+    assert starmind_execution_stage("SpaceX announces Starmind AI1 first launch target for 2027") is None
+    assert starmind_execution_stage("SpaceX AI1 satellite deployed successfully into orbit")=="ai1_first_deployment_report"
     assert starmind_execution_stage("SeAH SST Texas plant begins commercial production")=="sst_commercial_start_report"
     assert starmind_execution_stage("SeAH signs new SpaceX alloy supply contract")=="seah_new_spacex_order_report"
     sample_new={"title":"SpaceX Starship achieves weekly launches after four consecutive weeks",
