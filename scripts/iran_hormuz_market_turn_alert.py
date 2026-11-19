@@ -6610,16 +6610,20 @@ def _verified_oil_supply_overlay(current: dt.datetime) -> int:
     if first:
         updates.append(first)
 
-    try:
-        raw = fetch_bytes(TANKERTRACKERS_PUBLIC_TELEGRAM_URL, timeout=6, attempts=1)
-        prep = _parse_tankertrackers_preparation(
-            raw.decode("utf-8", "replace"), current)
-        if prep and prep["id"] not in (state.get("alerted_events") or {}):
-            updates.append(prep)
-        else:
-            print("iran_loading_preparation=not_new_or_not_in_author_owned_text")
-    except Exception as exc:
-        print(f"iran_loading_preparation_source_failure={type(exc).__name__}")
+    prep_id = "iran_oil_loading_preparation:" + current.astimezone(KST).strftime("%Y-%m")
+    if prep_id not in (state.get("alerted_events") or {}):
+        try:
+            raw = fetch_bytes(TANKERTRACKERS_PUBLIC_TELEGRAM_URL, timeout=6, attempts=1)
+            prep = _parse_tankertrackers_preparation(
+                raw.decode("utf-8", "replace"), current)
+            if prep and prep["id"] not in (state.get("alerted_events") or {}):
+                updates.append(prep)
+            else:
+                print("iran_loading_preparation=not_new_or_not_in_author_owned_text")
+        except Exception as exc:
+            print(f"iran_loading_preparation_source_failure={type(exc).__name__}")
+    else:
+        print("iran_loading_preparation=already_delivered_no_extra_fetch")
     if not updates:
         return result
 
