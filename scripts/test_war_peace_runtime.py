@@ -156,6 +156,26 @@ class RuntimeTests(unittest.TestCase):
                                           payload_retry_delay=0)
         return queries, traces, report
 
+    def test_google_news_requests_are_paced_across_workers(self):
+        # A 429 from one shared provider must not be encouraged by parallel bursts.
+        def timed_request(url, timeout=20):
+            return f'{time.monotonic():.6f}'.encode()
+        watch = fake_watch(self.root, ['one', 'two', 'three'], req=timed_request)
+        def news(query):
+            url = 'https://news.google.com/rss/search?q=' + query
+            return [{'raw': watch.req(url)}], None
+        watch.google_news = news
+        report = {'complete': False}
+        _, traces = runtime.prefetch(
+            watch, report, watch.OUT/'coverage.json',
+            seconds=3, workers=3, payload_retry_delay=0, google_interval=0.08,
+        )
+        stamps = sorted(float(item[2]) for group in traces.values() for item in group
+                        if item[3] is None)
+        self.assertEqual(len(stamps), 3)
+        self.assertGreaterEqual(min(b - a for a, b in zip(stamps, stamps[1:])), 0.055)
+        self.assertEqual(report['google_news_min_interval_seconds'], 0.08)
+
     def test_all_queries_parallel_and_ordered_replay_preserves_parent_signals(self):
         watch = fake_watch(self.root, ['slow-deep', 'fast-normal', 'late-material'])
         bucket = []

@@ -130,7 +130,7 @@ class _ProviderBlocks:
         self.buffer.value = encoded
 
 
-def _source_worker(connection, watch, blocked, gate_lock):
+def _source_worker(connection, watch, blocked, gate_lock, next_google_at, google_interval):
     """A private copy of every parser/global; return only an HTTP transcript."""
     original_req = watch.req
     original_hook = getattr(watch, '_before_source_request', None)
@@ -150,6 +150,22 @@ def _source_worker(connection, watch, blocked, gate_lock):
                     'reason': type(exc).__name__, 'code': getattr(exc, 'code', None),
                     'observed_monotonic': time.monotonic(),
                 })
+
+    # Limit burst traffic to the shared Google News RSS provider across all
+    # collection workers. The original request hook still checks the circuit;
+    # pacing is performed once per logical request, including fixture sources.
+    def paced_admit(url):
+        admit(url)
+        if provider(url) != 'news.google.com' or google_interval <= 0:
+            return
+        with gate_lock:
+            now = time.monotonic()
+            ready = max(now, next_google_at.value)
+            next_google_at.value = ready + google_interval
+        if ready > now:
+            time.sleep(ready - now)
+        # Another worker may have observed a rate-limit response while waiting.
+        admit(url)
 
     # Also gate a retry already inside the shared HTTP helper.
     watch._before_source_request = admit
@@ -175,7 +191,7 @@ def _source_worker(connection, watch, blocked, gate_lock):
                     return value
                 reused.append(False)
                 try:
-                    admit(url)
+                    paced_admit(url)
                     value = original_req(url, timeout)
                 except Exception as exc:
                     mark_block(url, exc)
@@ -266,19 +282,27 @@ def _payload_retry_eligible(record, blocked):
 
 
 def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retry_delay=0.5,
-             allow_partial=False):
+             allow_partial=False, google_interval=None):
     """Collect each query; retain failed queries as explicit gaps in partial mode."""
     if seconds <= 0 or workers < 1 or payload_retry_delay < 0:
         raise ValueError('collection budget and workers must be positive')
     queries = list(watch.QUERIES)
     if not queries:
         raise IncompleteCoverage('no source queries configured')
+    # Preserve lightweight offline fixtures; pace only broad production sweeps
+    # unless a fixture explicitly provides its own interval.
+    if google_interval is None:
+        google_interval = 0.9 if len(queries) >= 100 else 0.0
+    if google_interval < 0:
+        raise ValueError('Google News request interval cannot be negative')
+    report['google_news_min_interval_seconds'] = google_interval
     report['news'] = [dict(index=i, query=q, status='not_started') for i, q in enumerate(queries)]
     report['query_count'] = len(queries)
     _save(report_path, report)
     context = mp.get_context('fork')
     deadline = time.monotonic() + seconds
     blocked, gate_lock = _ProviderBlocks(context), context.RLock()
+    next_google_at = context.RawValue('d', 0.0)
     active, processes, traces = {}, [], {}
     failed_transcripts = {}
     pending_indices = list(range(len(queries)))
@@ -286,7 +310,7 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
     try:
         for _ in range(min(workers, len(queries))):
             parent, child = context.Pipe()
-            process = context.Process(target=_source_worker, args=(child, watch, blocked, gate_lock), daemon=True)
+            process = context.Process(target=_source_worker, args=(child, watch, blocked, gate_lock, next_google_at, google_interval), daemon=True)
             process.start()
             child.close()
             processes.append((process, parent))
