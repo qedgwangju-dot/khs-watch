@@ -2188,5 +2188,101 @@ class GlobalOilSurplusWatchTests(unittest.TestCase):
                     setattr(MODULE,key,value)
 
 
+    def test_trilateral_refined_declaration_authenticity(self):
+        original = """<html><body>2026/11/19 中俄美元首和平宣言
+        中国国家主席习近平、俄罗斯总统普京、美国总统特朗普会晤。
+        二、三国计划增加精炼石油产品的生产和供应，以造福世界各国。
+        三国重申能源稳定流动的重要性。</body></html>"""
+        self.assertTrue(MODULE._parse_trilateral_refined_declaration(original))
+        self.assertFalse(MODULE._parse_trilateral_refined_declaration(
+            original.replace("精炼石油产品", "原油")))
+        self.assertFalse(MODULE._parse_trilateral_refined_declaration(
+            original.replace("2026/11/19", "2026/11/18")))
+        self.assertFalse(MODULE._parse_trilateral_refined_declaration(
+            "<html><body>三国计划增加精炼石油产品的生产和供应</body></html>"))
+
+    def test_trilateral_original_dated_once_and_no_requery_after_delivery(self):
+        from unittest import mock
+        original = """<html>2026/11/19 中俄美元首和平宣言
+        中国国家主席习近平 俄罗斯总统普京 美国总统特朗普
+        三国计划增加精炼石油产品的生产和供应
+        三国重申能源稳定流动的重要性</html>"""
+        now = dt.datetime(2026, 11, 19, 12, 50, tzinfo=dt.timezone.utc)
+        with mock.patch.object(MODULE, "fetch_bytes", return_value=original.encode()):
+            event = MODULE._trilateral_refined_update(now, {"alerted_events": {}})
+        self.assertIsNotNone(event)
+        self.assertEqual(event["id"], "trilateral_refined_supply_plan:2026-11-19")
+        self.assertIn("신규 생산·수출 실적은 미확인", event["body"])
+        with mock.patch.object(MODULE, "fetch_bytes") as fetch:
+            self.assertIsNone(MODULE._trilateral_refined_update(
+                now, {"alerted_events": {event["id"]: now.isoformat()}}))
+            fetch.assert_not_called()
+        future = now + dt.timedelta(days=4)
+        with mock.patch.object(MODULE, "fetch_bytes") as fetch:
+            self.assertIsNone(MODULE._trilateral_refined_update(future, {}))
+            fetch.assert_not_called()
+
+    def test_tankertrackers_preparation_never_claims_physical_export(self):
+        now = dt.datetime(2026, 11, 19, 12, 52, tzinfo=dt.timezone.utc)
+        sample = """<div class="tgme_widget_message" data-post="tankertrackers/2888">
+            <time datetime="2026-11-19T11:12:00+00:00"></time>
+            <div class="tgme_widget_message_text">Iran appears to be preparing
+            to resume oil shipments.</div>
+        </div>"""
+        row = MODULE._parse_tankertrackers_preparation(sample, now)
+        self.assertIsNotNone(row)
+        self.assertEqual(row["id"], "iran_oil_loading_preparation:2026-11")
+        self.assertIn("실제 적재·출항·봉쇄선 통과·고객 인도는 아직 미확인", row["body"])
+        self.assertIn("원유 여부 미확인", row["body"])
+        self.assertEqual(row["url"], "https://t.me/TankerTrackers/2888")
+        self.assertIsNone(MODULE._parse_tankertrackers_preparation(
+            sample.replace("tankertrackers/2888", "fakeaccount/2888"), now))
+        self.assertIsNone(MODULE._parse_tankertrackers_preparation(
+            sample, now + dt.timedelta(days=3)))
+        self.assertIsNone(MODULE._parse_tankertrackers_preparation(
+            sample.replace("<time ", '<span class="tgme_widget_message_forwarded_from">Elsewhere</span><time '),
+            now))
+        self.assertIsNone(MODULE._parse_tankertrackers_preparation(
+            sample.replace("appears to be preparing", "has not yet begun"), now))
+
+    def test_new_oil_supply_overlay_never_persists_before_telegram_confirmation(self):
+        import tempfile
+        from unittest import mock
+        now = dt.datetime(2026, 11, 19, 12, 52, tzinfo=dt.timezone.utc)
+        event = {
+            "id": "trilateral_refined_supply_plan:2026-11-19",
+            "kind": "trilateral_refined_supply_plan",
+            "title": "미·중·러 정제유 공급 확대 공동선언",
+            "body": "공식 계획 발표 · 실제 출하 전\n원문: https://example.com/official",
+            "url": "https://example.com/official",
+        }
+        paths = ("OUT_DIR", "TITLE_PATH", "BODY_PATH", "ALERT_JSON_PATH",
+                 "PENDING_STATE_PATH", "TELEGRAM_CONFIRMED_PATH", "STATE_PATH")
+        with tempfile.TemporaryDirectory() as tmp:
+            base = pathlib.Path(tmp)
+            originals = {key: getattr(MODULE, key) for key in paths}
+            try:
+                MODULE.OUT_DIR = base
+                for key in paths[1:]:
+                    setattr(MODULE, key, base / originals[key].name)
+                prior = {"last_event_id": "earlier",
+                         "alerted_events": {"earlier": "2026-11-19T10:00:00+09:00"}}
+                MODULE.STATE_PATH.write_text(json.dumps(prior), encoding="utf-8")
+                with mock.patch.object(MODULE, "_global_oil_surplus_run_monitor", return_value=0), \
+                     mock.patch.object(MODULE, "_trilateral_refined_update", return_value=event), \
+                     mock.patch.object(MODULE, "fetch_bytes", return_value=b"<html>no fresh primary post</html>"):
+                    self.assertEqual(MODULE._verified_oil_supply_overlay(now), 0)
+                pending = json.loads(MODULE.PENDING_STATE_PATH.read_text())
+                self.assertIn(event["id"], pending["alerted_events"])
+                self.assertIn("earlier", pending["alerted_events"])
+                self.assertFalse(MODULE.TELEGRAM_CONFIRMED_PATH.exists())
+                self.assertEqual(json.loads(MODULE.STATE_PATH.read_text()), prior)
+                self.assertEqual(MODULE.finalize_state(), 0)
+                self.assertEqual(json.loads(MODULE.STATE_PATH.read_text()), prior)
+            finally:
+                for key, value in originals.items():
+                    setattr(MODULE, key, value)
+
+
 if __name__ == "__main__":
     unittest.main()
