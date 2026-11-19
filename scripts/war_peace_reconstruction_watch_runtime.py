@@ -292,7 +292,7 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
     # Preserve lightweight offline fixtures; pace only broad production sweeps
     # unless a fixture explicitly provides its own interval.
     if google_interval is None:
-        google_interval = 0.9 if len(queries) >= 100 else 0.0
+        google_interval = 0.9 if len(queries) >= 100 and seconds >= 60 else 0.0
     if google_interval < 0:
         raise ValueError('Google News request interval cannot be negative')
     report['google_news_min_interval_seconds'] = google_interval
