@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-19T23:41:54+09:00",
+  "updated_at_kst": "2026-11-19T23:58:41+09:00",
   "circle": {
     "date": "2026-11-16",
     "circulation_usd_b": 68.0,
@@ -50,26 +50,26 @@
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-11-18",
-    "close": 53.310001373291016,
-    "prev_date": "2026-11-17",
-    "prev_close": 54.630001068115234,
-    "daily_pct": -2.42,
+    "date": "2026-11-19",
+    "close": 55.154998779296875,
+    "prev_date": "2026-11-18",
+    "prev_close": 53.310001373291016,
+    "daily_pct": 3.46,
     "source": "Yahoo Finance daily chart",
     "source_url": "https://finance.yahoo.com/quote/CRCL/history/",
     "crosscheck_source": "ChartExchange historical",
-    "crosscheck_date": "2026-11-18",
-    "crosscheck_close": 53.31,
-    "crosscheck_daily_pct": -2.42,
-    "crosscheck_gap_pct": 0.0,
-    "crosscheck_status": "confirmed"
+    "crosscheck_date": "2026-11-19",
+    "crosscheck_close": 55.13,
+    "crosscheck_daily_pct": 3.41,
+    "crosscheck_gap_pct": 0.0453,
+    "crosscheck_status": "rounding_difference"
   },
   "tbx": {
-    "date": "2026-11-18",
-    "close": 29.450000762939453,
-    "prev_date": "2026-11-17",
-    "prev_close": 29.530000686645508,
-    "daily_pct": -0.27
+    "date": "2026-11-19",
+    "close": 29.445199966430664,
+    "prev_date": "2026-11-18",
+    "prev_close": 29.450000762939453,
+    "daily_pct": -0.02
   },
   "fx": {
     "rate": 1338.8,
@@ -82,7 +82,5 @@
   },
   "crcl_last_alerted_close_date": "2026-11-18",
   "correction_pending": false,
-  "errors": [
-    "crcl: CRCL cross-source close discrepancy: ChartExchange=55.93 Yahoo=56.14"
-  ]
+  "errors": []
 }
