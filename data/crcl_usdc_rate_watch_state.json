@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-18T13:23:10+09:00",
+  "updated_at_kst": "2026-11-19T09:55:15+09:00",
   "circle": {
     "date": "2026-11-16",
     "circulation_usd_b": 68.0,
@@ -30,57 +30,57 @@
     }
   },
   "sofr": {
-    "date": "2026-11-16",
-    "rate": 3.93,
-    "prev_date": "2026-11-13",
-    "prev_rate": 3.9,
-    "daily_bp": 3.0,
+    "date": "2026-11-17",
+    "rate": 3.92,
+    "prev_date": "2026-11-16",
+    "prev_rate": 3.93,
+    "daily_bp": -1.0,
     "source": "FRED 재게시·원출처 Federal Reserve Bank of New York",
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-11-17",
-    "three_month": 4.33,
-    "ten_year": 5.1,
-    "prev_date": "2026-11-16",
-    "prev_three_month": 4.34,
-    "prev_ten_year": 5.12,
-    "daily_3m_bp": -1.0,
-    "daily_10y_bp": -2.0,
+    "date": "2026-11-18",
+    "three_month": 4.34,
+    "ten_year": 5.07,
+    "prev_date": "2026-11-17",
+    "prev_three_month": 4.33,
+    "prev_ten_year": 5.1,
+    "daily_3m_bp": 1.0,
+    "daily_10y_bp": -3.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-11-17",
-    "close": 54.62,
-    "prev_date": "2026-11-16",
-    "prev_close": 57.65,
-    "daily_pct": -5.26,
-    "source": "ChartExchange historical",
-    "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
-    "crosscheck_source": "Yahoo Finance chart",
-    "crosscheck_date": "2026-11-17",
-    "crosscheck_close": 54.630001068115234,
-    "crosscheck_daily_pct": -5.24,
-    "crosscheck_gap_pct": 0.018,
-    "crosscheck_status": "confirmed"
+    "date": "2026-11-18",
+    "close": 53.310001373291016,
+    "prev_date": "2026-11-17",
+    "prev_close": 54.630001068115234,
+    "daily_pct": -2.42,
+    "source": "Yahoo Finance daily chart",
+    "source_url": "https://finance.yahoo.com/quote/CRCL/history/",
+    "crosscheck_source": "ChartExchange historical",
+    "crosscheck_date": "2026-11-18",
+    "crosscheck_close": 53.3,
+    "crosscheck_daily_pct": -2.44,
+    "crosscheck_gap_pct": 0.0188,
+    "crosscheck_status": "rounding_difference"
   },
   "tbx": {
-    "date": "2026-11-17",
-    "close": 29.530000686645508,
-    "prev_date": "2026-11-16",
-    "prev_close": 29.610000610351562,
-    "daily_pct": -0.27
+    "date": "2026-11-18",
+    "close": 29.445199966430664,
+    "prev_date": "2026-11-17",
+    "prev_close": 29.530000686645508,
+    "daily_pct": -0.29
   },
   "fx": {
-    "rate": 1335.0,
-    "date": "2026-11-17",
-    "requested_date": "2026-11-17",
+    "rate": 1338.8,
+    "date": "2026-11-18",
+    "requested_date": "2026-11-18",
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,335.67원, 차이 0.05%"
+    "crosscheck": "Yahoo Finance 1,333.01원, 차이 0.43%"
   },
-  "crcl_last_alerted_close_date": "2026-11-17",
+  "crcl_last_alerted_close_date": "2026-11-18",
   "correction_pending": false,
   "errors": []
 }
