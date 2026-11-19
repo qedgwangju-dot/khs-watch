@@ -4294,6 +4294,9 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
             continue
         if _extract_nand_divergence(x) or _extract_legacy_dram_state(x):
             continue
+        if _is_nand_nov19_press_story(x):
+            # Routed into one verified 11/19 revision, not headline-based alerts.
+            continue
         new_items.append(x)
     force_notify = os.getenv("FORCE_NOTIFY", "").strip().lower() in {"1", "true", "yes"}
     if force_notify:
@@ -5364,6 +5367,164 @@ def _stage_nand_verified_reversal(source_errors: list[str],
     return True
 
 
+
+# 2026-11-19 public TrendForce press release: NEW versus 11/17 paid-research
+# summary. The market-wide 1Q27 reversal is NOT the 2Q27 all-product reversal.
+NAND_NOV19_PRESS_EVENT_ID = "trendforce-nand-20261119-overall-1q27-all-products-2q27-v1"
+NAND_NOV19_PRIMARY_URLS = (
+    "https://www.trendforce.com/presscenter/news/20261119-13314.html",
+    "https://www.trendforce.com.tw/presscenter/news/20261119-13313.html",
+)
+
+
+def _nand_nov19_primary_verifiable(raw: str) -> bool:
+    """Require date-specific prices, capex AND supply in the publisher body."""
+    s = _clean(raw).lower().replace(",", "").replace("–", "-").replace("—", "-").replace("～", "-")
+    if "2027" not in s or "nand flash" not in s:
+        return False
+    numeric = all(re.search(pattern, s) for pattern in (
+        r"0\s*-\s*5\s*%",
+        r"8\s*-\s*13\s*%",
+        r"25\s*-\s*30\s*%",
+        r"26[.]7\s*%",
+    ))
+    if not numeric:
+        return False
+    english = all(x in s for x in (
+        "first quarter", "second quarter", "contract prices",
+        "chinese csps", "29.9 billion",
+    ))
+    traditional = all(x in s for x in (
+        "第一季", "第二季", "合約", "299億美元",
+    ))
+    return english or traditional
+
+
+def _nand_nov19_live_publisher() -> str:
+    """Only direct TrendForce publisher pages may promote this forecast."""
+    for url in NAND_NOV19_PRIMARY_URLS:
+        try:
+            if _nand_nov19_primary_verifiable(_nand_short_original(url)):
+                return url
+        except Exception as exc:
+            print(f"nand_nov19_publisher_url_unavailable={type(exc).__name__}")
+    return ""
+
+
+def _is_nand_nov19_press_story(item: dict) -> bool:
+    """Route official and syndicated reprints into one typed event, not news spam."""
+    link = str(item.get("link") or "")
+    title = _clean(item.get("title") or "").lower()
+    source = _clean(item.get("source") or "").lower()
+    return (
+        "20261119-13314" in link or "20261119-13313" in link
+        or (
+            "nand flash prices set to decline in 2027" in title
+            and "chinese csp" in title
+            and "trendforce" in (title + source)
+        )
+    )
+
+
+def _nand_nov19_alert(primary_url: str) -> str:
+    """Single concise correction to prior 2Q27 date, without recurring SAMR alert."""
+    lines = [
+        "<b>[NAND 가격 전망 11/19 공식 상향 위험 경보 — 하락 시작 앞당김]</b>",
+        "■ <b>새 공식 발표: 전 세계 NAND 계약가격 예상 하락 시작 2027년 2분기 → 1분기</b>",
+        "• 기존 11월 17일 TrendForce 연구 요약은 2Q27 하락 시작을 제시했지만, "
+        "11월 19일 공식 보도자료는 전체 NAND 계약가격이 <b>1Q27 전분기 대비 0~5% 하락</b>"
+        "할 것으로 전망을 구체화했습니다.",
+        "• <b>2Q27부터는 모든 NAND 제품군이 하락 국면</b>에 진입할 전망입니다."
+        " '1Q 전체 평균 하락'과 '2Q 전 품목 하락'은 서로 다른 기준이며 모순이 아닙니다.",
+        "• <b>2026년 4분기 전체 NAND 계약가격은 하락이 아닌 상승률 둔화</b>: "
+        "기존 9월 말 기준 +15~20% 전망 → 11월 19일 +8~13% 전망(전분기 대비)."
+        " 해당 분기 실제 계약 체결가와 구분.",
+        "• <b>단기 현물은 최근 20% 이상 하락</b>했지만, 개별 웨이퍼 현물가를"
+        " 전 세계 기업용 SSD 계약가로 혼동하지 않습니다.",
+        "• 중국 CSP(클라우드 서비스 기업)들의 2027년 기업용 SSD 주문 축소가"
+        " 북미 CSP 증가분을 초과하고, 소비자 PC·스마트폰 수요 둔화와"
+        " 저장용량 축소까지 겹친다는 기관 전망입니다. 확정 계약 취소 수량은 미공개.",
+        "• <b>2027년 세계 NAND 업계 설비투자 +26.7%, 299억달러</b>"
+        " 전망과 공급 비트 증가율 <b>전년 대비 +25~30%</b>가"
+        " 수요 감소와 동시에 발생해 공급과잉 위험이 커졌습니다.",
+        "• 2026년 4분기부터 이미 전체 NAND 계약가격이 하락했다는 뜻은 아닙니다."
+        " 2027년 1분기 전체 가격 하락, 2분기 전 품목 확산을 구분합니다.",
+        "• 기존 중국 SAMR 기업결합 조건의 해제 신청·승인 여부는"
+        " 이번 TrendForce 시장 전망과 별개이며 새로운 공식 결정은 확인하지 않았습니다.",
+        "• 다음 선행지표: 중국 CSP 재고·해외 GPU 조달 규제, 북미 실제 발주,"
+        " SSD 용량당 평균판매단가, 제조사 QLC·고단 적층 생산능력 및"
+        " 2027년 1~2분기 계약가격 재수정, 미국 데이터센터 승인·전원 인가.",
+        f'• <a href="{html.escape(primary_url, quote=True)}">TrendForce 11월 19일 발표 원문</a>'
+        f' · <a href="{NAND_2Q27_REPORT}">11월 17일 이전 전망</a>',
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def _stage_nand_nov19_press_update(source_errors: list[str],
+                                   now: dt.datetime | None = None) -> bool:
+    """Source-confirmed event is staged; only Telegram ACK commits its key."""
+    now = now or dt.datetime.now(KST)
+    if not dt.date(2026, 11, 19) <= now.date() <= dt.date(2026, 12, 19):
+        return False
+    previous = load_state()
+    prev_nand = dict(previous.get("nand_2027_reversal_samr") or {})
+    if prev_nand.get("press_20261119_event_id") == NAND_NOV19_PRESS_EVENT_ID:
+        return False
+    primary = _nand_nov19_live_publisher()
+    if not primary:
+        print("nand_nov19_new_press_primary_unverified=true; do_not_advance_state")
+        return False
+    message = _nand_nov19_alert(primary)
+    required = ("2027년 2분기 → 1분기", "0~5% 하락",
+                "2Q27부터", "+8~13%", "299억달러", "25~30%")
+    if any(key not in message for key in required):
+        raise RuntimeError("November 19 NAND alert lost required facts; refuse checkpoint")
+    if source_errors:
+        pending = dict(previous)
+        existing_alert = ""
+    else:
+        pending = (json.loads(PENDING_PATH.read_text(encoding="utf-8"))
+                   if PENDING_PATH.exists() else dict(previous))
+        existing_alert = (ALERT_PATH.read_text(encoding="utf-8").strip()
+                          if ALERT_PATH.exists() else "")
+    next_nand = dict(pending.get("nand_2027_reversal_samr") or prev_nand)
+    if next_nand.get("press_20261119_event_id") == NAND_NOV19_PRESS_EVENT_ID:
+        return False
+    # Keep the 11/17 Q3→Q2 event key as its historical fact; layer new update.
+    next_nand["research_forecast_20261117_previous"] = "2027-Q3"
+    next_nand["research_forecast_20261117_revised"] = "2027-Q2"
+    next_nand["old_contract_price_fall_quarter"] = "2027-Q2"
+    next_nand["new_contract_price_fall_quarter"] = "2027-Q1"
+    next_nand["all_nand_categories_price_decline_quarter"] = "2027-Q2"
+    next_nand["press_20261119_event_id"] = NAND_NOV19_PRESS_EVENT_ID
+    next_nand["press_20261119_date"] = "2026-11-19"
+    next_nand["press_20261119_primary_source"] = primary
+    next_nand["contract_price_2027q1_qoq_pct"] = [-5.0, 0.0]
+    next_nand["contract_price_2026q4_qoq_forecast_pct"] = [8.0, 13.0]
+    next_nand["nand_capex_2027_usd_b"] = 29.9
+    next_nand["nand_capex_2027_yoy_pct"] = 26.7
+    next_nand["nand_bit_supply_2027_yoy_pct"] = [25.0, 30.0]
+    next_nand["spot_price_correction_reported_gt_pct"] = 20.0
+    next_nand["customer_signed_order_cancellations_unverified"] = True
+    next_nand["source_grade"] = "TrendForce 2026-11-19 direct press release"
+    pending["nand_2027_reversal_samr"] = next_nand
+    pending["updated_at_kst"] = now.isoformat(timespec="seconds")
+    if source_errors:
+        pending["rss_outage_note"] = (
+            "NAND primary only; RSS collection errors not acknowledged")
+    PENDING_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PENDING_PATH.write_text(
+        json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    )
+    ALERT_PATH.write_text(
+        (existing_alert + "\n<<<TELEGRAM_MESSAGE_BREAK>>>\n" if existing_alert else "")
+        + message, encoding="utf-8")
+    if STATUS_PATH.exists():
+        with STATUS_PATH.open("a", encoding="utf-8") as f:
+            f.write("- 11/19 NAND Q1 전체 -0~5%·Q2 전품목 공식 전망: Telegram 발송 대기\n")
+    return True
+
+
 def _semia_independent_chart_fallback(errors: list[str],
                                       now: dt.datetime | None = None) -> bool:
     """Send only the already-user-supplied scenario when unrelated RSS is 429.
@@ -5422,6 +5583,7 @@ def main() -> int:
     foxconn, price, warnings = _collect_supplier_followups(dt.datetime.now(KST), load_state())
     write_outputs(items, errors, foxconn, price, warnings)
     verified_nand_alert = _stage_nand_verified_reversal(errors)
+    verified_nand_nov19 = _stage_nand_nov19_press_update(errors)
     # A pending semantic key must never be checkpointed unless its exact alert
     # section exists. In particular no-alert state saves must not acknowledge
     # an unsent analyst model detail or future publisher-stage upgrade.
@@ -5436,12 +5598,16 @@ def main() -> int:
             required.append("<b>[SemiAnalysis 엔비디아 출하·가격 전망 세부 보강]</b>")
         if staged_semia.get("capex_mix_id") != previous_semia.get("capex_mix_id"):
             required.append("<b>[SemiAnalysis 40% 가정·전체 AI 설비투자 해석 보강]</b>")
+        old_nand = dict(load_state().get("nand_2027_reversal_samr") or {})
+        new_nand = dict(staged_doc.get("nand_2027_reversal_samr") or {})
+        if new_nand.get("press_20261119_event_id") != old_nand.get("press_20261119_event_id"):
+            required.append("<b>[NAND 가격 전망 11/19 공식 상향 위험 경보 — 하락 시작 앞당김]</b>")
         if required:
             body = ALERT_PATH.read_text(encoding="utf-8") if ALERT_PATH.exists() else ""
             if any(section not in body for section in required):
                 raise RuntimeError("Semia event key staged without its matching Telegram alert; state save blocked")
     if errors:
-        if verified_nand_alert:
+        if verified_nand_alert or verified_nand_nov19:
             # Verified, independent official report; no unrelated RSS state promoted.
             currency_krw_guard.enforce_file(ALERT_PATH)
             print(f"nand_primary_only_alert=true incomplete_rss_sources={len(errors)}")

@@ -1414,6 +1414,110 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
 
 
 
+
+    def test_nand_nov19_official_requires_both_quarters_and_numeric_scope(self):
+        body = (
+            "NAND Flash Prices Set to Decline in 2027 as Chinese CSPs Cut Enterprise SSD Orders. "
+            "Overall contract prices will decline in the first quarter of 2027 by 0–5%. "
+            "All categories follow in the second quarter. "
+            "Fourth quarter of 2026 price increases lowered to 8–13%. "
+            "2027 CapEx rises 26.7% to US$29.9 billion and bit supply grows 25–30%.")
+        self.assertTrue(w._nand_nov19_primary_verifiable(body))
+        self.assertFalse(w._nand_nov19_primary_verifiable(
+            body.replace("first quarter", "third quarter")))
+        self.assertFalse(w._nand_nov19_primary_verifiable(
+            body.replace("8–13%", "15–20%")))
+        self.assertFalse(w._nand_nov19_primary_verifiable(
+            "NAND prices to decline starting in 2Q27 after Chinese orders cut."))
+        chinese = (
+            "2027年NAND Flash合約價第一季季減0-5%，第二季全面下跌。"
+            "第四季2026漲幅8-13%；2027年資本支出299億美元年增26.7%，"
+            "供給位元增長25-30%。")
+        self.assertTrue(w._nand_nov19_primary_verifiable(chinese))
+
+    def test_nand_nov19_release_is_not_generic_duplicate(self):
+        row = {"title": "NAND Flash Prices Set to Decline in 2027 "
+                        "as Chinese CSP Order Cuts Outweigh North American Demand Growth, Says TrendForce",
+               "link": "https://news.google.com/rss/articles/abc",
+               "source": "TrendForce"}
+        self.assertTrue(w._is_nand_nov19_press_story(row))
+        self.assertFalse(w._is_nand_nov19_press_story({
+            "title": "New enterprise SSD price model in 2027",
+            "link": "https://www.trendforce.com/research/download/RP261116WI",
+            "source": "TrendForce",
+        }))
+
+    def test_nand_nov19_update_preserves_history_and_earlier_delivery(self):
+        import json
+        import datetime as dt
+        existing = {
+            "initialized": True,
+            "seen": {"older": {"title": "preexisting news"}},
+            "delivery_receipt": {"status": "confirmed",
+                                 "recipient_verified": True,
+                                 "message_ids": [503]},
+            "nand_2027_reversal_samr": {
+                "fact_key": w.NAND_2Q27_REVISION_ID,
+                "old_contract_price_fall_quarter": "2027-Q3",
+                "new_contract_price_fall_quarter": "2027-Q2",
+                "china_samr_restriction_revocation_status": "not_officially_confirmed",
+            }
+        }
+        with tempfile.TemporaryDirectory() as td, \
+             patch.object(w, "load_state", return_value=existing), \
+             patch.object(w, "_nand_nov19_live_publisher",
+                          return_value=w.NAND_NOV19_PRIMARY_URLS[0]), \
+             patch.object(w, "PENDING_PATH", pathlib.Path(td) / "pending.json"), \
+             patch.object(w, "ALERT_PATH", pathlib.Path(td) / "alert.txt"), \
+             patch.object(w, "STATUS_PATH", pathlib.Path(td) / "status.md"):
+            today = dt.datetime(2026, 11, 19, 20, 40, tzinfo=w.KST)
+            self.assertTrue(w._stage_nand_nov19_press_update(
+                ["en:NAND RSS HTTP Error 429"], today))
+            p = json.loads(w.PENDING_PATH.read_text(encoding="utf-8"))
+            self.assertEqual(p["seen"], existing["seen"])
+            self.assertEqual(p["delivery_receipt"], existing["delivery_receipt"])
+            n = p["nand_2027_reversal_samr"]
+            self.assertEqual(n["fact_key"], w.NAND_2Q27_REVISION_ID)
+            self.assertEqual(n["research_forecast_20261117_previous"], "2027-Q3")
+            self.assertEqual(n["research_forecast_20261117_revised"], "2027-Q2")
+            self.assertEqual(n["new_contract_price_fall_quarter"], "2027-Q1")
+            self.assertEqual(n["all_nand_categories_price_decline_quarter"], "2027-Q2")
+            self.assertEqual(n["china_samr_restriction_revocation_status"],
+                             "not_officially_confirmed")
+            self.assertIn("0~5% 하락", w.ALERT_PATH.read_text(encoding="utf-8"))
+            self.assertNotIn("preexisting news", w.ALERT_PATH.read_text(encoding="utf-8"))
+
+    def test_nand_nov19_duplicate_and_missing_primary_do_not_change_state(self):
+        import datetime as dt
+        from pathlib import Path
+        today = dt.datetime(2026, 11, 19, tzinfo=w.KST)
+        committed = {
+            "nand_2027_reversal_samr": {
+                "press_20261119_event_id": w.NAND_NOV19_PRESS_EVENT_ID
+            }
+        }
+        with patch.object(w, "load_state", return_value=committed), \
+             patch.object(w, "_nand_nov19_live_publisher") as source:
+            self.assertFalse(w._stage_nand_nov19_press_update([], today))
+            source.assert_not_called()
+        with tempfile.TemporaryDirectory() as td, \
+             patch.object(w, "load_state", return_value={}), \
+             patch.object(w, "_nand_nov19_live_publisher", return_value=""), \
+             patch.object(w, "PENDING_PATH", Path(td) / "pending.json"), \
+             patch.object(w, "ALERT_PATH", Path(td) / "alert.txt"):
+            self.assertFalse(w._stage_nand_nov19_press_update([], today))
+            self.assertFalse(w.PENDING_PATH.exists())
+            self.assertFalse(w.ALERT_PATH.exists())
+
+    def test_nand_nov19_correction_keeps_2026q4_positive_not_negative(self):
+        out = w._nand_nov19_alert(w.NAND_NOV19_PRIMARY_URLS[0])
+        for value in ("2027년 2분기 → 1분기", "0~5% 하락",
+                      "2Q27부터", "2026년 4분기", "+8~13%", "299억달러",
+                      "26.7%", "25~30%", "20%", "원문"):
+            self.assertIn(value, out)
+        self.assertEqual(out.count("<b>"), out.count("</b>"))
+        self.assertEqual(out.count("<a href="), out.count("</a>"))
+
     def test_nand_reversal_primary_requires_new_quarter_and_offset(self):
         ok = ("Enterprise SSD Cuts Pull NAND Price Drop to 2Q27 "
               "Chinese CSPs cut orders and fully offset North American CSP demand. "
@@ -1483,6 +1587,7 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
              patch.object(w, "_stage_nand_verified_reversal", return_value=False), \
+             patch.object(w, "_stage_nand_nov19_press_update", return_value=False), \
              patch.object(w.currency_krw_guard, "enforce_file") as guard:
             w.main()
         guard.assert_called_once_with(w.ALERT_PATH)
