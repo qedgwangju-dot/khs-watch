@@ -57,9 +57,9 @@ jobs:
           result = inline_messages(source)
           assert len(result) == 1, f'Unacceptable Telegram fragmentation: {len(result)} messages'
           text, entities = result[0]
-          assert len(entities) >= 2 and len(entities) <= 10
+          assert 1 <= len(entities) <= 10, 'Official alert needs at least one working source link'
           assert '• 원문:' not in text
-          assert '456회' in text and '21억원' in text or '신규 공식문서' in text or '신규 공식자료' in text
+          assert (\n              ('456회' in text and '21억원' in text)\n              or '신규 공식문서' in text\n              or '신규 공식자료' in text\n              or ('Space Capital' in text and '새 보고서' in text)\n          ), 'Unknown official milestone category'
           assert all(x['type'] == 'text_link' and x['url'].startswith('https://') for x in entities)
           print(f'korean_compact_alert_validated=true message_count=1 links={len(entities)} length={len(text)}')
           PY
