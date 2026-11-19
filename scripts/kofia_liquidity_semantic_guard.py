@@ -159,7 +159,7 @@ def validate(text, state):
     # negative official balance. Older published fixtures need not contain
     # the newly requested wording; reject it if added with the wrong sign.
     mmf_growth_note = "기업과 기관이 당장 주식에 투자하지 않고 단기 금융상품에 맡겨둔 자금이 크게 늘었다는 뜻입니다."
-    mmf_explanations = re.findall(r"^• MMF 설정원본(?:\\(([^)\\n]*)\\))? <b>", head, re.M)
+    mmf_explanations = re.findall(r"^• MMF 설정원본(?:\(([^)\n]*)\))? <b>", head, re.M)
     expect(len(mmf_explanations) == 1, "MMF headline description missing/duplicated")
     has_growth_note = mmf_growth_note in mmf_explanations[0]
     expect(mmf_growth_note not in head or has_growth_note, "MMF growth explanation outside its parentheses")
