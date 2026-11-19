@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-20T01:58:23+09:00",
+  "updated_at_kst": "2026-11-20T02:20:06+09:00",
   "circle": {
     "date": "2026-11-16",
     "circulation_usd_b": 68.0,
@@ -51,25 +51,25 @@
   },
   "crcl": {
     "date": "2026-11-19",
-    "close": 54.720001220703125,
+    "close": 53.56999969482422,
     "prev_date": "2026-11-18",
     "prev_close": 53.310001373291016,
-    "daily_pct": 2.64,
+    "daily_pct": 0.49,
     "source": "Yahoo Finance daily chart",
     "source_url": "https://finance.yahoo.com/quote/CRCL/history/",
     "crosscheck_source": "ChartExchange historical",
     "crosscheck_date": "2026-11-19",
-    "crosscheck_close": 54.7,
-    "crosscheck_daily_pct": 2.61,
-    "crosscheck_gap_pct": 0.0366,
+    "crosscheck_close": 53.55,
+    "crosscheck_daily_pct": 0.45,
+    "crosscheck_gap_pct": 0.0373,
     "crosscheck_status": "rounding_difference"
   },
   "tbx": {
     "date": "2026-11-19",
-    "close": 29.482099533081055,
+    "close": 29.434999465942383,
     "prev_date": "2026-11-18",
     "prev_close": 29.450000762939453,
-    "daily_pct": 0.11
+    "daily_pct": -0.05
   },
   "fx": {
     "rate": 1338.8,
@@ -82,7 +82,5 @@
   },
   "crcl_last_alerted_close_date": "2026-11-18",
   "correction_pending": false,
-  "errors": [
-    "crcl: CRCL cross-source close discrepancy: ChartExchange=53.61 Yahoo=53.55"
-  ]
+  "errors": []
 }
