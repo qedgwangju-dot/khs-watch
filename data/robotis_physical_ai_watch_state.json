@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-19T13:52:35.228111+00:00",
+  "updated_at": "2026-11-19T21:28:21.795843+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -987,47 +987,36 @@
     "5be4aa553893d6fe549d85fa181df92ca5e2d8822c245a3de48d90315aaaf7e4",
     "8e087f7824ff0f7eff4a08b2f7a52d67e60ec0b43b3df79e9943b1120cb0c6b2",
     "7959b2496120d2117a50ee47252abe940adace7015ee12e0e7265d5726973e58",
-    "59c29d790a2033d7fb971a602cfd284ce430b13eaa2073888098eab81e182cae"
+    "59c29d790a2033d7fb971a602cfd284ce430b13eaa2073888098eab81e182cae",
+    "16812d46c411f3f83419051faa27f4934df8eaa5873242769150f8524d8c5e67",
+    "14d93a73761c3ea22b063cd20bd3e8a022d195ef3c0de7811049577d2dfcffa2",
+    "bbe34a040271e365b022520bb2d8a571ed30741e86e08d03bdbe32cd1cbc59c0",
+    "32bc1d9c8cb2bcd9c662a3d45e5b7735f18794030c695ecb737f1e17aab72c32"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "16812d46c411f3f83419051faa27f4934df8eaa5873242769150f8524d8c5e67",
+    "14d93a73761c3ea22b063cd20bd3e8a022d195ef3c0de7811049577d2dfcffa2",
+    "bbe34a040271e365b022520bb2d8a571ed30741e86e08d03bdbe32cd1cbc59c0",
+    "32bc1d9c8cb2bcd9c662a3d45e5b7735f18794030c695ecb737f1e17aab72c32"
+  ],
   "groups": [
     "ess_battery",
     "hyundai_atlas_rollout",
     "jpm_humanoid_component_outlook",
     "lg_factory_loop",
-    "nov18_amd_worldlabs",
     "nov18_bd_gf",
     "nov18_everybot",
     "nov18_genesis",
     "nov18_hyundai_bd_ownership",
     "nov18_knr",
-    "nov18_lg_safety",
-    "nov18_openai_reorg",
-    "nov18_robotis",
     "nov18_samhyun",
     "nov18_samsung_humanoid",
-    "nov18_tesla_germany",
     "robotis",
     "robotis_excess_demand",
     "samhyun",
     "toyota_robot_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 43698445420,
-      "outcome": "sent",
-      "message_ids": [
-        367
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-15T09:16:46.703208+00:00"
-    },
     {
       "run_id": 43709031335,
       "outcome": "sent",
@@ -1361,19 +1350,88 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-19T13:52:35.228111+00:00"
+    },
+    {
+      "run_id": 44618918281,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "14d93a73761c3ea22b063cd20bd3e8a022d195ef3c0de7811049577d2dfcffa2",
+        "16812d46c411f3f83419051faa27f4934df8eaa5873242769150f8524d8c5e67",
+        "32bc1d9c8cb2bcd9c662a3d45e5b7735f18794030c695ecb737f1e17aab72c32",
+        "bbe34a040271e365b022520bb2d8a571ed30741e86e08d03bdbe32cd1cbc59c0"
+      ],
+      "message_ids": [
+        389
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-19T21:28:21.795843+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44537637009,
-    "outcome": "normal_silence",
-    "confirmed_event_keys": [],
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-19T13:52:35.228111+00:00"
+    "run_id": 44618918281,
+    "outcome": "sent",
+    "confirmed_event_keys": [
+      "14d93a73761c3ea22b063cd20bd3e8a022d195ef3c0de7811049577d2dfcffa2",
+      "16812d46c411f3f83419051faa27f4934df8eaa5873242769150f8524d8c5e67",
+      "32bc1d9c8cb2bcd9c662a3d45e5b7735f18794030c695ecb737f1e17aab72c32",
+      "bbe34a040271e365b022520bb2d8a571ed30741e86e08d03bdbe32cd1cbc59c0"
+    ],
+    "message_ids": [
+      389
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-19T21:28:21.795843+00:00"
   },
-  "last_selected_events": [],
+  "last_selected_events": [
+    {
+      "key": "16812d46c411f3f83419051faa27f4934df8eaa5873242769150f8524d8c5e67",
+      "group": "ess_battery",
+      "title": "1차는 삼성SDI, 2차는 SK온…2조원 ESS 수주전, 이번 승부처는? - 데일리안",
+      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMHhySnMwOEF1eFUwS1FOMG1iY2JEWVRpb19RZDFzZml2N19jMm9tMkNCMEpjOE5Fa3JpVXJ5bW01Mko5ZnVfYzFDczVPT09DSER0dzBhUlVfTElLYW9rcTVqVkNzM2lyTVp2endFbGxHYkNUNW8wdGpPanhfMEVad2hpT2ZvdENjc0g2aG1iOGdEYnFxSGF2c2d4NUpNN20xQ0tHb3FFeThnbGhoWGxDYW1weEdFcE1LaWU3Slh1RnZCTkU?oc=5",
+      "source": "데일리안",
+      "source_url": "https://www.dailian.co.kr",
+      "published": "2026-11-19T21:00:00+00:00"
+    },
+    {
+      "key": "14d93a73761c3ea22b063cd20bd3e8a022d195ef3c0de7811049577d2dfcffa2",
+      "group": "hyundai_atlas_rollout",
+      "title": "현대차 보스턴다이나믹스, 반도체 공장에 아틀라스 투입 - PRESS9",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9nTHlxbGpQMzJ0TktqTzVzOUxqTERSaEFhVnZ6cEdLeUVPR1cyRmp1Z0JzRlpsYnZuOGFSY0s5YWIyTnZURGZlTHcwSHBrMlBlRER0Z0w0LWJuVzVoaE93YmlkMFdHZw?oc=5",
+      "source": "PRESS9",
+      "source_url": "https://www.press9.kr",
+      "published": "2026-11-18T00:19:15+00:00"
+    },
+    {
+      "key": "bbe34a040271e365b022520bb2d8a571ed30741e86e08d03bdbe32cd1cbc59c0",
+      "group": "ess_battery",
+      "title": "삼성SDI, 미국기업에 수조원대 ESS 배터리 공급 - 문화일보",
+      "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5DUWxlM29GS19nQWpTOTkzRFVpcXhzMUYzQ1NxLVNPR3JnS1hkQ0R5UG9fWnJoMEpyOWtaSWw0eGprYjh4X3FGRUZWWjBzQmdN?oc=5",
+      "source": "문화일보",
+      "source_url": "https://www.munhwa.com",
+      "published": "2026-11-16T02:59:57+00:00"
+    },
+    {
+      "key": "32bc1d9c8cb2bcd9c662a3d45e5b7735f18794030c695ecb737f1e17aab72c32",
+      "group": "ess_battery",
+      "title": "삼성SDI, 美서 수조원 규모 LFP 배터리 수주…북미 ESS 공략 가속 - https://www.moneystorm.kr/",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9JTXpieXhsNXNIVUlENDFManFTMXNwd0psN0dOWVZoN09wdHQ2cVl2Z3V6RjJWSkJSLTV4dzFjYnNTN1FmNU5qam5JdmJpeUlCZk5VMEo1VFUtOXUtdEtydmtDNE1nYV93RUE?oc=5",
+      "source": "https://www.moneystorm.kr/",
+      "source_url": "https://www.moneystorm.kr",
+      "published": "2026-11-16T00:57:35+00:00"
+    }
+  ],
   "message_corrections": {
     "robot-message-correction-20261118-44240720425-v1": {
       "schema_version": 1,
