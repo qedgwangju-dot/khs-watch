@@ -158,6 +158,7 @@ def record_source_failure(
     source_url: str,
     error: str,
     checked_at: dt.datetime,
+    failure_kind: str = "source_unavailable",
 ) -> None:
     OUT_DIR.mkdir(exist_ok=True)
     failures = _load_failures()
@@ -172,6 +173,7 @@ def record_source_failure(
             "error": html.unescape(str(error))[:900],
             "checked_at_kst": checked_at.isoformat(timespec="seconds"),
             "proxy_configured": bool(os.getenv("KHS_SOURCE_PROXY_URL", "").strip()),
+            "failure_kind": failure_kind,
         }
     )
     FAILURES_PATH.write_text(json.dumps(failures, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")

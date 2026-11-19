@@ -22,6 +22,8 @@ on:
       - "tests/test_khs_ai_policy_integration.py"
       - "scripts/khs_source_fetch.py"
       - "scripts/verify_khs_source_fetch_contract.py"
+      - "scripts/khs_policy_source_status_alert.py"
+      - "scripts/verify_khs_source_status_contract.py"
       - "scripts/khs_policy_seen_finalize.py"
       - "scripts/khs_policy_telegram_formatter.py"
       - "scripts/khs_policy_readability_patch.py"
@@ -252,6 +254,7 @@ jobs:
           PY
           python -m py_compile scripts/gamejoa_preopen_news_radar_full_compact_runner.py
           PYTHONPATH=. python tests/test_polysilicon_policy_guard.py
+          python scripts/verify_khs_source_status_contract.py
           python scripts/verify_khs_policy_delivery_contract.py
           python scripts/verify_gamejoa_delivery_contract.py
           python scripts/verify_khs_policy_readability.py --write-previews
@@ -1049,6 +1052,9 @@ jobs:
             out/khs_policy_watch_alert.md
             out/khs_policy_watch_alerts.json
             out/khs_policy_watch_pending_seen.json
+            out/khs_source_failures.json
+            out/khs_policy_source_status_title.txt
+            out/khs_policy_source_status_alert.md
             out/khs_trusted_policy_news_alert.md
             out/khs_trusted_policy_news_title.txt
             out/khs_trusted_policy_news_alerts.json
