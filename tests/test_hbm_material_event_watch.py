@@ -549,5 +549,91 @@ class MaterialEventTests(unittest.TestCase):
         self.assertIn("required_independent_evidence_missing",
                       [e["status"] for e in gaps2["gaps"]])
 
+
+    def test_nvidia_390bn_commitment_official_and_independent_sources_once(self):
+        record = next(row for row in m.REPORTS if
+                      row["key"] == "20261118_nvidia_fy27q3_memory_supply_capacity_390bn")
+        official = "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27cfocommentary.htm"
+        news1 = "https://www.news1.kr/industry/general-industry/6357997"
+        bodies = {
+            official: ("As of October 25, 2026 NVIDIA supply commitments increased "
+                       "from $279 billion last quarter to $390 billion, primarily "
+                       "related to multi-year procurement of memory supply. "
+                       "Remainder 2027 69, 2028 $ 203, 2029 $ 92."),
+            news1: ("엔비디아 공급약정 3900억 달러, 전분기 2790억 달러에서 증가. "
+                    "메모리 장기구매 확대. 2028 회계연도 2030억 달러, "
+                    "2029 회계연도 920억 달러."),
+        }
+        past = {
+            "delivery_receipt": {"status": "confirmed", "message_ids": [527]},
+            "hbm_material_event_watch": {"seen_keys": [
+                row["key"] for row in m.REPORTS if row is not record
+            ]},
+        }
+        def fetch(url):
+            return bodies[url]
+        before, alerts_early, audit_early = m.apply(
+            past, "2026-11-18T23:59:00+09:00",
+            lambda _: (_ for _ in ()).throw(AssertionError("before recovery gate")))
+        self.assertEqual(alerts_early, [])
+        self.assertEqual(audit_early["verified_events"], 0)
+
+        after, alerts, audit = m.apply(
+            past, "2026-11-19T23:30:00+09:00", fetch)
+        self.assertEqual(audit["verified_events"], 1)
+        self.assertEqual(audit["verified_keys"], [record["key"]])
+        self.assertEqual(len(alerts), 1)
+        content = alerts[0]
+        for item in ("3,900억달러", "+1,110억달러", "+39.8%", "2,030억달러",
+                     "920억달러", "5,180억달러", "HBM4", "SOCAMM",
+                     "전액 HBM4", "확정 매출", "공식 제출·독립 보도"):
+            self.assertIn(item, content)
+        self.assertIn(official, content)
+        self.assertIn(news1, content)
+        self.assertNotIn("업체별 확인 근거", content)
+        self.assertEqual(after["delivery_receipt"], past["delivery_receipt"])
+        m.require_durable_seen_keys(past, after)
+        self.assertTrue(all(len(x.encode("utf-16-le")) // 2 <= 3600
+                            for x in d.chunks(content)))
+        _, repeated, check = m.apply(
+            after, "2026-11-20T06:23:00+09:00",
+            lambda _: (_ for _ in ()).throw(AssertionError("already acknowledged")))
+        self.assertEqual(repeated, [])
+        self.assertEqual(check["verified_events"], 0)
+
+    def test_nvidia_390bn_official_failure_and_unverified_media_hold_state(self):
+        record = next(row for row in m.REPORTS if
+                      row["key"] == "20261118_nvidia_fy27q3_memory_supply_capacity_390bn")
+        official = record["evidence_groups"][0][1][0][1]
+        news1 = record["evidence_groups"][1][1][0][1]
+        valid_official = ("NVIDIA supply commitments from $279 billion last quarter "
+                          "to $390 billion, primarily related to multi-year procurement "
+                          "of memory supply; 2028 203, 2029 92.")
+        valid_news = ("엔비디아 3900억 2790억 메모리 2028 2029.")
+        existing = {"hbm_material_event_watch": {"seen_keys": [
+            row["key"] for row in m.REPORTS if row is not record
+        ]}}
+        scenarios = (
+            lambda url: (_ for _ in ()).throw(TimeoutError("offline")),
+            lambda url: valid_news if url == news1 else
+                (_ for _ in ()).throw(TimeoutError("official blocked")),
+            lambda url: valid_official if url == official else
+                (_ for _ in ()).throw(TimeoutError("press blocked")),
+            lambda url: (valid_official.replace("$390 billion", "$290 billion")
+                         if url == official else valid_news),
+            lambda url: (valid_official if url == official else
+                         valid_news.replace("3900억", "3000억").replace("2790억", "2700억")),
+        )
+        for fetch in scenarios:
+            with self.subTest(scenario=repr(fetch)):
+                state, output, audit = m.apply(
+                    existing, "2026-11-19T23:35:00+09:00", fetch)
+                self.assertEqual(output, [])
+                self.assertEqual(audit["verified_events"], 0)
+                self.assertNotIn(record["key"], state["hbm_material_event_watch"]["seen_keys"])
+                self.assertTrue(audit["gaps"])
+                self.assertIn("required_independent_evidence_missing",
+                              [x["status"] for x in audit["gaps"]])
+
 if __name__ == "__main__":
     unittest.main()

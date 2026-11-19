@@ -458,6 +458,76 @@ REPORTS = (
              )),
         ),
     },
+    {
+        "key": "20261118_nvidia_fy27q3_memory_supply_capacity_390bn",
+        # Backfill starts on Nov 19 KST; the original announcement is Nov 17 US
+        # (Nov 18 in Korea). This is not a newly published Nov 19 filing.
+        "date": "2026-11-19",
+        "max_age_days": 45,
+        "group": "nvidia_commitments",
+        "label": "엔비디아 2027 회계연도 3분기 공급·생산능력 약정 증가 — 메모리 다년 조달",
+        "short_title": "엔비디아 공급약정 2,790억→3,900억달러 · 메모리 장기조달",
+        "brief_facts": (
+            "공식 발표 2026년 11월 17일(미국), 기준 10월 25일: 공급·생산능력 약정 2,790억달러(뉴스1 당시 환산 약 372조5,000억원) → 3,900억달러(약 520조8,000억원), +1,110억달러(약 148조2,000억원, +39.8%). 증가의 주된 이유는 수년에 걸친 메모리 조달이라고 엔비디아가 공식 설명.",
+            "연도별 약정(달력연도 아님): 2027 회계연도 잔여 690억달러, 2028 회계연도 2,030억달러(기사 환산 약 271조원, 전체 약 52.1%), 2029 회계연도 920억달러(약 122조8,000억원); 2030·2031·2032 이후 각각 100억·80억·80억달러.",
+            "총 미래 약정은 5,180억달러로, 공급·생산능력 3,900억달러 외에 클라우드 이용 280억달러·미개시 데이터센터 임차 740억달러·지분투자 200억달러·설비투자 60억달러를 별도 포함. 이를 메모리 계약액에 중복 합산하지 않음.",
+            "2027 회계연도 3분기 엔비디아 매출 1,158억달러(기사 환산 약 154조6,000억원, 전년 대비 +103%, 전분기 대비 +20%), 데이터센터 1,076억달러(약 143조7,000억원, 전년 대비 +110%); 4분기 매출 전망은 1,300억달러(약 173조6,000억원, ±3%).",
+            "Vera Rubin NVL72의 공식 출하 개시는 확인. GPU의 HBM4와 Vera CPU의 저전력 D램·SOCAMM 수요는 구별하며, 3,900억달러의 HBM4·일반 D램·공정투자별 비중, 삼성전자·SK하이닉스별 구매금액·물량은 미공개.",
+            "SK하이닉스 회사 3분기 발표: M15X 연말 최대 가동 확대 목표, 4분기 HBM4가 HBM3E를 출하량·매출에서 추월할 것으로 예상; 삼성전자 회사 발표: HBM4 판매 확대, HBM4E 양산 추진. 뉴스1의 삼성 HBM4 전분기 대비 3배 이상·HBM 매출 내 약 60% 및 2028 성장률 전망 70→75%는 동일 수치 공식 독립 확인 전 보도값으로 보존.",
+        ),
+        "brief_caution": (
+            "공급·생산능력 약정은 엔비디아의 복수 부품·생산시설 관련 미래 지출 약정으로 "
+            "전액 HBM4 확정 발주나 한국 메모리 업체 확정 매출이 아님. 일부 약정은 발주 전 "
+            "일정 조정·취소 가능하므로 고객별 계약·가격·물량·출하·현금회수는 별도 확인. "
+            "원문·독립 보도 조회 실패면 발송 보류하고 중복 키를 소비하지 않음."
+        ),
+        "sources": (
+            ("엔비디아 공식 SEC 제출 CFO 설명", "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27cfocommentary.htm", "공식 원천"),
+        ),
+        "need": (("supply commitments",), ("390",), ("279",), ("memory supply",)),
+        "facts": (
+            "엔비디아 2026년 11월 17일 공식 CFO Commentary 3분기 약정 279→390십억달러(+111십억달러, +39.8%). 주로 메모리 다년 조달.",
+            "2028 회계연도 203십억달러와 2029 회계연도 92십억달러는 전체 공급·생산능력 약정 배분이지 해당 연도 HBM4 확정 구매액이 아님.",
+            "Vera Rubin 출하와 SK하이닉스·삼성전자 HBM4 공급 확대 전망을 연결하되 고객별 공급계약·단가·물량·매출 확정으로 승격하지 않음.",
+        ),
+        "caution": "SEC 공식 자료 및 독립 언론 보도 교차확인 전 발송 보류; 불확실한 전송은 상태 확정 금지.",
+        "verified_kind": "official_nvidia_supply_commitment_with_independent_press_not_hbm_contract",
+        "verified_source_caption": "엔비디아 공식 제출·독립 보도",
+        "context_links": (
+            ("엔비디아 공식 실적", "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/"),
+            ("SK하이닉스 3분기 공식 실적", "https://news.skhynix.com/en/q3-2026-business-results/"),
+            ("삼성전자 3분기 공식 실적", "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-2026%EB%85%84-3%EB%B6%84%EA%B8%B0-%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C"),
+        ),
+        "evidence_groups": (
+            ("엔비디아 SEC 공식 발표·정확한 금액 및 기간",
+             (
+                ("미 SEC 8-K 첨부 CFO 설명",
+                 "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27cfocommentary.htm",
+                 (("supply commitments",), ("$390 billion",), ("$279 billion",),
+                  ("multi-year",), ("memory supply",), ("2028",), ("2029",),
+                  ("203",), ("92",)),
+                 "NVIDIA SEC 8-K 공식 별첨 99.2"),
+             )),
+            ("독립 언론의 동일 공식 숫자 보도",
+             (
+                ("뉴스1 11월 18일 원보도",
+                 "https://www.news1.kr/industry/general-industry/6357997",
+                 (("엔비디아",), ("3900", "3천900"), ("2790", "2천790"),
+                  ("메모리",), ("2028",), ("2029",)),
+                 "뉴스1 독립 보도"),
+                ("연합뉴스 11월 18일 보도",
+                 "https://www.yna.co.kr/view/AKR20261118027500009",
+                 (("엔비디아",), ("3900", "3천900"), ("2790", "2천790"),
+                  ("메모리",), ("2028",)),
+                 "연합뉴스 독립 보도"),
+                ("머니투데이 11월 18일 보도",
+                 "https://www.mt.co.kr/index.php/tech/2026/11/18/2026111807254685008",
+                 (("엔비디아",), ("3900", "3천900"), ("2790", "2천790"),
+                  ("메모리",), ("2028",)),
+                 "머니투데이 독립 보도"),
+             )),
+        ),
+    },
 )
 
 GROUPS = {
@@ -469,6 +539,7 @@ GROUPS = {
     "cycle": "2027~2028 DRAM·NAND 공급과잉 전망 vs HBM 수요·고객 계약",
     "roadshow": "TrendForce 2026.11.18 로드쇼 — HBM4 가격·2027 수급·2028 증설 위험",
     "hybrid_equipment": "SK하이닉스 20단 HBM · 하이브리드 본더 검증·도입 단계",
+    "nvidia_commitments": "엔비디아 공급·생산능력 약정 및 HBM4 수요 검증",
 }
 
 def text_matches(body: str, required: tuple) -> bool:
@@ -532,10 +603,12 @@ def probe(report: dict, fetcher=fetch_article) -> tuple[dict | None, list[dict]]
             "key": report["key"], "group": report["group"], "label": report["label"],
             "date": report["date"], "facts": report["facts"], "caution": report["caution"],
             "source": url, "source_label": label, "lineage": lineage,
-            "verified_kind": "multi_origin_reported_supplier_evaluation_not_new_contract",
+            "verified_kind": report.get("verified_kind", "multi_origin_reported_supplier_evaluation_not_new_contract"),
             "verified_source_links": tuple((item[0], item[1]) for item in proven),
             "short_title": report.get("short_title"), "brief_facts": report.get("brief_facts"),
             "brief_caution": report.get("brief_caution"),
+            "verified_source_caption": report.get("verified_source_caption", "업체별 확인 근거"),
+            "context_links": report.get("context_links", ()),
         }, gaps
     gaps = []
     for label, url, lineage in report["sources"]:
@@ -577,7 +650,7 @@ def render(group: str, items: list[dict], checked_at: str) -> str:
         caution = item.get("brief_caution") or item["caution"]
         lines.append("• 주의: " + html.escape(caution))
         if item.get("verified_source_links"):
-            lines.append("• 업체별 확인 근거: " + " · ".join(
+            lines.append("• " + item.get("verified_source_caption", "업체별 확인 근거") + ": " + " · ".join(
                 f'<a href="{html.escape(url, quote=True)}">{html.escape(label)}</a>'
                 for label, url in item["verified_source_links"]))
         else:
@@ -635,7 +708,7 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
         "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield",
     }
     rendered = [render(group, [x for x in new if x["group"] == group], checked_at)
-                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow", "hybrid_equipment")
+                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow", "hybrid_equipment", "nvidia_commitments")
                 if any(x["group"] == group for x in new)]
     audit = {"checked_at_kst": checked_at, "verified_events": len(new),
              "verified_keys": [x["key"] for x in new], "gaps": gaps[-20:],
