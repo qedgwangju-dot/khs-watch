@@ -2269,6 +2269,7 @@ class GlobalOilSurplusWatchTests(unittest.TestCase):
                          "alerted_events": {"earlier": "2026-11-19T10:00:00+09:00"}}
                 MODULE.STATE_PATH.write_text(json.dumps(prior), encoding="utf-8")
                 with mock.patch.object(MODULE, "_global_oil_surplus_run_monitor", return_value=0), \
+                     mock.patch.object(MODULE, "load_state", return_value=prior), \
                      mock.patch.object(MODULE, "_trilateral_refined_update", return_value=event), \
                      mock.patch.object(MODULE, "fetch_bytes", return_value=b"<html>no fresh primary post</html>"):
                     self.assertEqual(MODULE._verified_oil_supply_overlay(now), 0)
