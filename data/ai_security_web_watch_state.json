@@ -7,18 +7,19 @@
     "deferred_material_items": 0,
     "direct_official_items": 56,
     "errors": [
-      "Google News RSS 실패: \"AI agent\" \"third-party\" impact security controls… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"AI agent\" \"undesirable behavior\" OR \"unintended behavi… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenShell OR Sentry OR BlueField-4) policy bypass sand… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: Anthropic Mythos vulnerabilities critical high severity… / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News RSS 실패: \"php2shell\" (CISA OR CERT-EU OR exploit OR update OR at… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (\"php2shell\" OR \"CVE-2026-109618\") (\"10 million\" OR \"10… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"Claude\" \"Georgia\" (vote counts OR voter data OR unauth… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (\"AI agent\" OR agentic) \"sandbox escape\" OR \"unauthoriz… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell OR NemoClaw) security vu… / HTTPError: HTTP Error 429: Too Many Requests"
     ],
-    "google_news_queries_failed": 4,
+    "google_news_queries_failed": 5,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 61,
-    "google_news_rate_limit_429": 4,
+    "google_news_queries_succeeded": 60,
+    "google_news_rate_limit_429": 5,
     "material_items": 14,
     "new_material_items": 0,
-    "raw_items": 150,
+    "raw_items": 136,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
     "source_access_limited": true
@@ -1141,5 +1142,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-20T07:50:55+09:00"
+  "updated_at_kst": "2026-11-20T08:06:03+09:00"
 }
