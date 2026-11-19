@@ -1,4 +1,4 @@
-"""Actual run 909 semantic input; never use the network or live state."""
+"""Run 909 headline and redacted fixture; never use network or live state."""
 import base64
 import copy
 import hashlib
@@ -25,7 +25,7 @@ class Run909PendingDecision(unittest.TestCase):
         self.pending = base64.b64decode(self.data['pending_utf8_base64'])
         self.row = json.loads(self.evidence)['articles'][0]
 
-    def test_actual_saved_input_through_presentation_gate(self):
+    def test_saved_title_through_presentation_gate(self):
         proof = self.data['semantic_proof']
         self.assertEqual(hashlib.sha256(self.alert).hexdigest(), proof['alert_sha256'])
         self.assertEqual(hashlib.sha256(self.evidence).hexdigest(), proof['evidence_sha256'])
