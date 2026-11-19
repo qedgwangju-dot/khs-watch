@@ -195,6 +195,14 @@ def run_all():
               "MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모)",
               f"MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모; {MMF_GROWTH_NOTE})", 1
           ))
+    trial("large-growth note must stay inside MMF parentheses",
+          corrupt=lambda text: text.replace(
+              f"MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모; {MMF_GROWTH_NOTE})",
+              "MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모)", 1
+          ).replace(
+              "<b>현재 판정</b>",
+              f"• {MMF_GROWTH_NOTE}\\n<b>현재 판정</b>", 1
+          ))
     trial(
         "2026-10-07 real positive MMF", expected="당일에도 MMF가 증가해 5개 공표구간 누적 증가 방향과 일치합니다.",
         forbidden=("당일 MMF 급감", "당일 MMF는 감소", "당일 MMF 감소"),
