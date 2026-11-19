@@ -2473,7 +2473,13 @@ def parse_eia_weekly_stock_balance(raw_html: str, current: dt.datetime) -> NewsI
         abs(d_change) >= 1500 and d_change * previous_dist_change < 0
         and abs(g_change) >= 2500
     )
-    if not (material_draw or material_reversal):
+    # Treat synchronized major inventory builds as bearish surplus pressure.
+    # This is distinct from a week-on-week distillate sign reversal or an SPR release.
+    material_joint_build = (
+        (c_change >= 3000 and g_change >= 3000)
+        or (g_change >= 4000 and d_change >= 1500)
+    )
+    if not (material_draw or material_reversal or material_joint_build):
         raise RuntimeError("EIA 재고 경보 변화 임계치 미충족")
     title=(f"EIA stocks week {dates[-1].isoformat()} kbar;"
            f" commercial {com[-1]} delta {com[-1]-com[-2]:+d};"
@@ -2600,6 +2606,9 @@ def _build_eia_stock_body(rows: list[NewsItem], oil: Quote | None,
     m=_eia_stock_metrics(rows)
     if m is None: raise RuntimeError("EIA 원자료 검증 실패 · 알림 생성 중단")
     def mm(k): return int(m[k])/1000.0
+    # The EIA reference period is the week-end, not the publication date.
+    # A large joint crude/gasoline inventory build is not a direct measure of demand.
+    joint_build = int(m["c_delta"]) >= 3000 and int(m["g_delta"]) >= 3000
     lines=[
         current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),"",
         "[현재 숫자]",f"기준               {m['week']} · 단위 백만 배럴",
@@ -2610,6 +2619,12 @@ def _build_eia_stock_body(rows: list[NewsItem], oil: Quote | None,
         "","[핵심]",
         "상업용 원유 재고와 전략비축유는 다른 계정입니다. 증류유는 경유·난방유 포함.",
         "상업용 원유 감소만으로 모든 정제품 부족을 확정하지 않습니다.",
+        *(
+            [
+                "상업용 원유·휘발유 재고 동반 증가가 확인됐습니다. 정제품 재고와 분리해 해석합니다.",
+                "대폭 재고 증가가 곧바로 수요 급감 확정은 아닙니다. 정제 투입·수입·수출과 함께 확인해야 합니다.",
+            ] if joint_build else []
+        ),
         "","[다음 확인]",
         "본업               원유 생산·수입·정유시설 가동률·가공물량",
         "정제품             경유·휘발유 재고와 제품별 정제마진",

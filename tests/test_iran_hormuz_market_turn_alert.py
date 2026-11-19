@@ -1749,6 +1749,68 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertEqual((m["c_delta"],m["g_delta"],m["d_delta"],m["spr_delta"]),
                          (-3060,-2952,1675,-300))
 
+
+    @staticmethod
+    def _eia_2026_nov13_joint_stock_build_fixture():
+        # EIA WPSR observation 2026-11-13, first published 2026-11-18.
+        # 6 aligned weekly columns; units: thousand barrels, NOT bbl/day.
+        return """<html><body>Weekly Stocks Thousand Barrels
+        10/09/26 10/16/26 10/23/26 10/30/26 11/06/26 11/13/26
+        Total Crude Oil and Petroleum Products (Incl. SPR)
+        1,506,999 1,498,245 1,495,139 1,486,558 1,495,268 1,501,299
+        Crude Oil (Including SPR)
+        698,560 695,200 693,208 691,944 693,952 694,158
+        Commercial Crude Oil (Excl. Lease Stock)
+        415,577 412,517 410,625 409,760 414,417 417,797
+        SPR 282,983 282,683 282,583 282,184 279,535 276,361
+        Total Motor Gasoline
+        208,262 205,310 209,180 208,958 210,757 215,949
+        Distillate Fuel Oil
+        102,611 104,286 102,824 99,259 103,330 104,901
+        </body></html>"""
+
+    def test_eia_nov13_synchronized_large_build_triggers_once(self):
+        now=dt.datetime(2026,11,19,0,20,tzinfo=dt.timezone.utc)
+        official=MODULE.parse_eia_weekly_stock_balance(
+            self._eia_2026_nov13_joint_stock_build_fixture(),now)
+        m=MODULE._eia_stock_metrics([official])
+        self.assertEqual(m["week"],"2026-11-13")
+        self.assertEqual(m["commercial"],417797)
+        self.assertEqual(m["c_delta"],3380)
+        self.assertEqual(m["g_delta"],5192)
+        self.assertEqual(m["d_delta"],1571)
+        self.assertEqual(m["spr_delta"],-3174)
+        kind="eia_weekly_stock_balance"
+        self.assertEqual(MODULE.confirm_event([official])[0],kind)
+        key=MODULE.event_id(kind,[official])
+        self.assertEqual(key,"eia_weekly_stock_balance:2026-11-13")
+        self.assertFalse(MODULE.event_recently_alerted({"alerted_events":{}},key,now))
+        self.assertTrue(MODULE.event_recently_alerted(
+            {"alerted_events":{key:now.astimezone(MODULE.KST).isoformat()}},key,now))
+        body=MODULE.build_physical_flow_alert_body(kind,[official],None,now)
+        self.assertIn("417.797",body)
+        self.assertIn("+3.380",body)
+        self.assertIn("+5.192",body)
+        self.assertIn("+1.571",body)
+        self.assertIn("-3.174",body)
+        self.assertIn("동반 증가",body)
+        self.assertIn("상업용 원유",body)
+
+    def test_eia_weekly_old_date_block_and_minor_build_stay_silent(self):
+        fixture=self._eia_2026_nov13_joint_stock_build_fixture()
+        with self.assertRaisesRegex(RuntimeError,"기간 초과"):
+            MODULE.parse_eia_weekly_stock_balance(
+                fixture,dt.datetime(2026,11,23,12,tzinfo=dt.timezone.utc))
+        # Smaller increases must not trigger solely because their sign is positive.
+        small=(fixture
+               .replace("417,797","415,800")
+               .replace("694,158","692,161")
+               .replace("215,949","211,550")
+               .replace("104,901","103,800"))
+        with self.assertRaisesRegex(RuntimeError,"임계치 미충족"):
+            MODULE.parse_eia_weekly_stock_balance(
+                small,dt.datetime(2026,11,19,0,20,tzinfo=dt.timezone.utc))
+
     def test_eia_oct16_old_news_cannot_fire_on_oct25(self):
         now=dt.datetime(2026,10,25,1,tzinfo=dt.timezone.utc)
         with self.assertRaisesRegex(RuntimeError,"기간 초과"):
