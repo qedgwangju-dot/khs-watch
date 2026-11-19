@@ -15,25 +15,25 @@
     "maplight|nobel-optogenetics-bridge",
     "maplight|portfolio|discovery-paused"
   ],
-  "last_checked_kst": "2026-11-20T00:37:34+09:00",
+  "last_checked_kst": "2026-11-20T01:02:05+09:00",
   "nobel_2026_verified": true,
   "seen_event_keys": [
+    "d3e43c74900cbe45ced82930",
+    "b1cc89521f331c60687c52a6",
+    "04e42a53cc7c2d6238d6b466",
+    "5cd11afbac5793bf83427fb4",
     "89edfd25162fb70a90bc15ef",
     "3b9006d3c6cdc45c8b4799ae",
     "a168e38fecc4618002c9078e",
-    "c5a24b19156b204bb494d543",
     "00ed4a9deda349c6d10d12e3",
-    "3de48d588d966736624346ad",
-    "d3e43c74900cbe45ced82930",
+    "c86d41ca8fb34c35eec7ea49",
     "f9150ec8a2689f8d887bf8b4",
-    "04e42a53cc7c2d6238d6b466",
     "518319b133f8374c9c1ae187",
     "8866680814947b6d915472c7",
-    "5cd11afbac5793bf83427fb4",
     "c5b07942c2f87f613c2d6534",
     "7068d58d13d508a32621ac78",
-    "c86d41ca8fb34c35eec7ea49",
-    "b1cc89521f331c60687c52a6"
+    "3de48d588d966736624346ad",
+    "c5a24b19156b204bb494d543"
   ],
   "trial_snapshots": {
     "NCT06460844": {
@@ -303,9 +303,8 @@
     }
   },
   "cns_trial_ids": [],
-  "relevant_press_events": 3,
+  "relevant_press_events": 7,
   "source_errors": [
-    "Nanoscope Therapeutics: HTTPError",
     "GenSight Biologics: HTTPError"
   ],
   "maplight_source_errors": [
