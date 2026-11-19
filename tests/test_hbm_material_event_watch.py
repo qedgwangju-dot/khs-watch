@@ -676,11 +676,12 @@ class MaterialEventTests(unittest.TestCase):
         self.assertTrue(blocked["gaps"])
 
 
-    def test_nvidia_hbm_alert_separates_old_article_krw_from_fresh_fx_and_uses_exact_units(self):
+    def test_nvidia_hbm_alert_compact_single_fx_and_complete_facts(self):
         import currency_krw_guard as krw
         row = next(x for x in m.REPORTS
                    if x["key"] == "20261118_nvidia_fy27q3_memory_supply_capacity_390bn")
-        self.assertIn("2,790억달러 → 3,900억달러", row["short_title"])
+        self.assertIn("메모리 장기조달", row["short_title"])
+        self.assertNotIn("2,790억달러", row["short_title"])
         obs = {**row, "source": "https://www.stocktitan.net/example",
                "source_label": "SEC 동일 재게시", "lineage": "동일 원문",
                "verified_source_links": (
@@ -691,15 +692,35 @@ class MaterialEventTests(unittest.TestCase):
         raw = m.render("nvidia_commitments", [obs], "2026-11-20T00:11:00+09:00")
         with patch("currency_krw_guard._rate", return_value=(1328.45, "test")):
             converted = krw.enforce_text(raw, hbm_mode=True)
-        for term in ("기사 발표 당시 원화 환산", "약 520조8,000억원",
-                     "2,790억달러", "3,900억달러", "1,110억달러",
-                     "2030 회계연도 100억달러", "2031 회계연도 80억달러",
-                     "2032 이후 80억달러", "엔비디아 CFO 설명 동일 공시 재게시"):
+        for term in ("2,790억달러", "3,900억달러", "1,110억달러",
+                     "2,030억달러", "920억달러", "100억달러", "80억달러",
+                     "5,180억달러", "280억달러", "740억달러", "200억달러",
+                     "60억달러", "1,158억달러", "1,076억달러", "1,300억달러",
+                     "70→75%", "SOCAMM", "HBM4E", "확정 매출"):
             self.assertIn(term, converted)
-        for wrong in ("달러(기사 환산", "억원)(약 ", "달러(약 520조8,000억원)"):
+        for wrong in ("기사 발표 당시 원화 환산", "약 520조8,000억원", "억원)(약 "):
             self.assertNotIn(wrong, converted)
-        self.assertTrue(all(len(chunk.encode("utf-16-le")) // 2 <= 3600
-                            for chunk in d.chunks(converted)))
+        self.assertEqual(len(d.chunks(converted)), 1)
+        self.assertLessEqual(len(converted.encode("utf-16-le")) // 2, 3300)
+        import html as html_module, re as re_module
+        visible = html_module.unescape(re_module.sub(r"<[^>]+>", "", converted))
+        self.assertLessEqual(len(visible), 1900)
+        self.assertIn("엔비디아 CFO 설명 동일 공시 재게시", visible)
+        self.assertIn("USD/KRW", visible)
+
+
+    def test_nvidia_compact_layout_never_resends_acknowledged_key(self):
+        key = "20261118_nvidia_fy27q3_memory_supply_capacity_390bn"
+        previous = {"delivery_receipt": {"status": "confirmed", "message_ids": [535]},
+                    "hbm_material_event_watch": {"seen_keys": [r["key"] for r in m.REPORTS]}}
+        def no_fetch(_):
+            raise AssertionError("Already acknowledged material event must not refetch or resend")
+        updated, messages, audit = m.apply(previous, "2026-11-20T07:23:00+09:00", no_fetch)
+        self.assertEqual(messages, [])
+        self.assertEqual(audit["verified_events"], 0)
+        self.assertIn(key, updated["hbm_material_event_watch"]["seen_keys"])
+        self.assertEqual(previous["delivery_receipt"], updated["delivery_receipt"])
+
 
 if __name__ == "__main__":
     unittest.main()

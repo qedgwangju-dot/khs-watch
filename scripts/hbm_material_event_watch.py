@@ -466,21 +466,19 @@ REPORTS = (
         "max_age_days": 45,
         "group": "nvidia_commitments",
         "label": "엔비디아 2027 회계연도 3분기 공급·생산능력 약정 증가 — 메모리 다년 조달",
-        "short_title": "엔비디아 공급약정 2,790억달러 → 3,900억달러 · 메모리 장기조달",
+        "short_title": "엔비디아 메모리 장기조달 · 공급약정 +39.8%",
         "brief_facts": (
-            "공식 발표 2026년 11월 17일(미국), 기준 10월 25일: 공급·생산능력 약정 2,790억달러에서 3,900억달러로 증가. 증가폭 +1,110억달러는 전분기 대비 +39.8%이며, 주요 원인은 수년에 걸친 메모리 조달이라고 엔비디아가 공식 설명.",
-            "연도별 약정(달력연도 아님): 2027 회계연도 잔여 690억달러, 2028 회계연도 2,030억달러, 2029 회계연도 920억달러, 2030 회계연도 100억달러, 2031 회계연도 80억달러, 2032 이후 80억달러. 2028 회계연도 몫은 3,900억달러 기준 약 52.1%.",
-            "총 미래 약정은 5,180억달러로, 공급·생산능력 3,900억달러 외에 클라우드 이용 280억달러·미개시 데이터센터 임차 740억달러·지분투자 200억달러·설비투자 60억달러를 별도 포함. 이를 메모리 계약액에 중복 합산하지 않음.",
-            "2027 회계연도 3분기 엔비디아 매출 1,158억달러는 전년 동기 대비 +103%, 전분기 대비 +20%; 데이터센터 매출 1,076억달러는 전년 동기 대비 +110%. 4분기 매출 전망은 1,300억달러이며 허용 범위는 ±3%.",
-            "기사 발표 당시 원화 환산(최신 환율 재계산과 별도): 공급 약정 전분기 약 372조5,000억원 → 신규 약 520조8,000억원(증가 약 148조2,000억원), 2028 회계연도 약 271조원, 2029 회계연도 약 122조8,000억원, 3분기 매출 약 154조6,000억원, 데이터센터 약 143조7,000억원, 4분기 매출 전망 약 173조6,000억원.",
-            "Vera Rubin NVL72의 공식 출하 개시는 확인. GPU의 HBM4와 Vera CPU의 저전력 D램·SOCAMM 수요는 구별하며, 3,900억달러의 HBM4·일반 D램·공정투자별 비중, 삼성전자·SK하이닉스별 구매금액·물량은 미공개.",
-            "SK하이닉스 회사 3분기 발표: M15X 연말 최대 가동 확대 목표, 4분기 HBM4가 HBM3E를 출하량·매출에서 추월할 것으로 예상; 삼성전자 회사 발표: HBM4 판매 확대, HBM4E 양산 추진. 뉴스1의 삼성 HBM4 전분기 대비 3배 이상·HBM 매출 내 약 60% 및 2028 성장률 전망 70→75%는 동일 수치 공식 독립 확인 전 보도값으로 보존.",
+            "약정(11월17일 발표·10월25일 기준): 2,790억달러 → 3,900억달러(+1,110억달러·+39.8%). 증가분 대부분은 다년 메모리 확보 관련.",
+            "기간별(엔비디아 회계연도): 2027 잔여 690억달러 / 2028 2,030억달러(전체의 52.1%) / 2029 920억달러 / 2030 100억달러 / 2031 80억달러 / 2032 이후 80억달러.",
+            "전체 미래약정 5,180억달러 = 위 공급·생산능력 약정 + 클라우드 280억달러 + 미개시 데이터센터 임차 740억달러 + 지분투자 200억달러 + 설비투자 60억달러. 별개 항목을 HBM 계약에 합산하지 않음.",
+            "실적(FY27 3분기): 매출 1,158억달러(전년 +103%·전분기 +20%), 데이터센터 1,076억달러(전년 +110%). FY27 4분기 매출 전망 1,300억달러(±3%).",
+            "수요 연결: Vera Rubin NVL72 출하 개시; GPU는 HBM4, Vera CPU는 저전력 D램·SOCAMM. 공급약정의 HBM4 비중·삼성전자/하이닉스별 금액·물량은 미공개.",
+            "국내 업체: SK하이닉스 M15X 연말 최대 가동 목표·4분기 HBM4 출하·매출이 HBM3E 추월 예상. 삼성전자 HBM4 확대·HBM4E 추진; 3분기 HBM4 매출 3배 이상·HBM 내 60%와 FY28 성장전망 70→75%는 뉴스1 보도(공식 개별 수치 미확인).",
         ),
         "brief_caution": (
-            "공급·생산능력 약정은 엔비디아의 복수 부품·생산시설 관련 미래 지출 약정으로 "
-            "전액 HBM4 확정 발주나 한국 메모리 업체 확정 매출이 아님. 일부 약정은 발주 전 "
-            "일정 조정·취소 가능하므로 고객별 계약·가격·물량·출하·현금회수는 별도 확인. "
-            "원문·독립 보도 조회 실패면 발송 보류하고 중복 키를 소비하지 않음."
+            "위 공급·생산능력 약정은 엔비디아의 미래 지출 약정으로, 전액 HBM4 "
+            "또는 삼성·SK의 확정 매출이 아님. 발주 전 조정·취소 가능. "
+            "원화는 조회시점 환율로 환산하며 기사 당시 환산액과 구별."
         ),
         "sources": (
             ("엔비디아 공식 SEC 제출 CFO 설명", "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27cfocommentary.htm", "공식 원천"),
@@ -493,12 +491,12 @@ REPORTS = (
         ),
         "caution": "SEC 공식 자료 및 독립 언론 보도 교차확인 전 발송 보류; 불확실한 전송은 상태 확정 금지.",
         "verified_kind": "official_nvidia_supply_commitment_with_independent_press_not_hbm_contract",
-        "verified_source_caption": "엔비디아 공식 제출·독립 보도",
+        "verified_source_caption": "공식 제출·독립 보도",
         "context_links": (
-            ("엔비디아 SEC 공시 원문", "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27cfocommentary.htm"),
-            ("엔비디아 공식 실적", "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/"),
-            ("SK하이닉스 3분기 공식 실적", "https://news.skhynix.com/en/q3-2026-business-results/"),
-            ("삼성전자 3분기 공식 실적", "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-2026%EB%85%84-3%EB%B6%84%EA%B8%B0-%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C"),
+            ("SEC 공시", "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27cfocommentary.htm"),
+            ("엔비디아 실적", "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/"),
+            ("SK하이닉스 실적", "https://news.skhynix.com/en/q3-2026-business-results/"),
+            ("삼성전자 실적", "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-2026%EB%85%84-3%EB%B6%84%EA%B8%B0-%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C"),
         ),
         "evidence_groups": (
             ("엔비디아 SEC 공식 발표·정확한 금액 및 기간",
@@ -668,9 +666,14 @@ def render(group: str, items: list[dict], checked_at: str) -> str:
     Break only at entire-event boundaries; never chop an item mid-sentence or
     silently truncate because the 4096-unit Telegram HTML limit is near.
     """
-    header = ("<b>[HBM 기존 감시 | 중요 신규 변화]</b>\n"
-              f"<b>{html.escape(GROUPS[group])}</b>\n"
-              f"확인 {html.escape(checked_at[:16].replace('T', ' '))} KST · 전망/실적 단계 구분")
+    if group == "nvidia_commitments":
+        # Only the NVIDIA supply-commitment notice uses the compact display.
+        header = ("<b>[HBM 감시 | 엔비디아 공급약정 변화]</b>\n"
+                  f"확인 {html.escape(checked_at[:16].replace('T', ' '))} KST")
+    else:
+        header = ("<b>[HBM 기존 감시 | 중요 신규 변화]</b>\n"
+                  f"<b>{html.escape(GROUPS[group])}</b>\n"
+                  f"확인 {html.escape(checked_at[:16].replace('T', ' '))} KST · 전망/실적 단계 구분")
     sections = []
     for item in items:
         name = item.get("short_title") or item["label"]
