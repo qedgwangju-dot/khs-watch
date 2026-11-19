@@ -155,6 +155,17 @@ def validate(text, state):
                    and display_m3.strip() == horizon_delta(horizons["m3"], key),
                    f"{key} signed 1M/3M balance change mismatch")
 
+    # Interpretation must not claim a large MMF increase on a flat or
+    # negative official balance. Older published fixtures need not contain
+    # the newly requested wording; reject it if added with the wrong sign.
+    mmf_growth_note = "기업과 기관이 당장 주식에 투자하지 않고 단기 금융상품에 맡겨둔 자금이 크게 늘었다는 뜻입니다."
+    mmf_explanations = re.findall(r"^• MMF 설정원본(?:\(([^)\n]*)\))? <b>", head, re.M)
+    expect(len(mmf_explanations) == 1, "MMF headline description missing/duplicated")
+    has_growth_note = mmf_growth_note in mmf_explanations[0]
+    expect(mmf_growth_note not in head or has_growth_note, "MMF growth explanation outside its parentheses")
+    expect(not has_growth_note or values["mmf"]["d1"] >= 3_000_000,
+           "large MMF growth wording is not supported by the daily balance change")
+
     # The receivable and actual forced-sale amounts are also Telegram-facing
     # financial figures. An incorrect amount here must block the whole alert.
     rec = values.get("receivable") or {}

@@ -263,8 +263,16 @@ start = text.index(start_marker)
 end = text.index(end_marker, start)
 text = text[:start] + new_section + '\n\n' + text[end:]
 
-# 괄호 설명은 사용자가 요청한 MMF와 CMA에만 붙인다.
-text = text.replace('MMF 설정원본 <b>', 'MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모) <b>')
+# 괄호 설명은 MMF·CMA에만 붙인다. '크게 늘었다'는 1D MMF 공식
+# 큰 변동 경보(3조원 이상 증가) 때만 붙여 보합·감소 시 오해를 막는다.
+mmf_growth_note = (
+    '; 기업과 기관이 당장 주식에 투자하지 않고 단기 금융상품에 맡겨둔 자금이 크게 늘었다는 뜻입니다.'
+    if mmf1 >= 3_000_000 else ''
+)
+text = text.replace(
+    'MMF 설정원본 <b>',
+    f'MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모{mmf_growth_note}) <b>'
+)
 text = text.replace('CMA 잔고 <b>', 'CMA 잔고(증권사 현금관리계좌에 머무는 단기자금) <b>')
 
 alert_path.write_text(text, encoding='utf-8')

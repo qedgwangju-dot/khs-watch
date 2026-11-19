@@ -12,6 +12,7 @@ from pathlib import Path
 from kofia_liquidity_semantic_guard import validate
 
 WORKFLOW = Path(".github/workflows/kofia-liquidity-telegram-watch.yml")
+MMF_GROWTH_NOTE = "기업과 기관이 당장 주식에 투자하지 않고 단기 금융상품에 맡겨둔 자금이 크게 늘었다는 뜻입니다."
 START = "      - name: Build detailed current interpretation"
 HEREDOC = "          python - <<'PY'\n"
 END = "\n          PY"
@@ -129,8 +130,13 @@ def trial(name, overrides=None, expected=None, forbidden=(), bad_dates=False, co
             pattern = rf"^• {re.escape(full)}(?:\([^\n)]*\))? <b>[\d.]+조</b> \(10/7\) \| 1D [+-]?\d+\.\d{{2}}조 \| 5D [+-]?\d+\.\d{{2}}조$"
             row = (
                 f"• {full}"
-                + ("(단기금융상품에 투자하는 펀드의 투자원금 기준 규모)" if k == "mmf"
-                   else "(증권사 현금관리계좌에 머무는 단기자금)" if k == "cma" else "")
+                + (
+                    "(단기금융상품에 투자하는 펀드의 투자원금 기준 규모"
+                    + ("; " + MMF_GROWTH_NOTE if v["d1"] >= 3_000_000 else "")
+                    + ")"
+                    if k == "mmf"
+                    else "(증권사 현금관리계좌에 머무는 단기자금)" if k == "cma" else ""
+                )
                 + f" <b>{v['value']/1_000_000:.2f}조</b> (10/7)"
                 + f" | 1D {v['d1']/1_000_000:+.2f}조 | 5D {v['d5']/1_000_000:+.2f}조"
             )
@@ -174,6 +180,29 @@ def run_all():
     trial('stale mismatch appended after matching claim rejected', overrides=matching,
           corrupt=lambda text: text.replace('각 항목별로 일치합니다.',
                                             '각 항목별로 일치합니다. 당일과 5개 공표구간의 방향이 아직 완전히 일치하지 않습니다.', 1))
+    trial("large positive MMF note appears in parentheses",
+          expected=f"MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모; {MMF_GROWTH_NOTE})")
+    trial("exact large-increase threshold", overrides={"mmf": {"d1": 3_000_000}},
+          expected=MMF_GROWTH_NOTE)
+    trial("below large-increase threshold is not called large", overrides={"mmf": {"d1": 2_999_999}},
+          forbidden=(MMF_GROWTH_NOTE,))
+    trial("flat MMF does not claim large increase", overrides={"mmf": {"d1": 0}},
+          forbidden=(MMF_GROWTH_NOTE,))
+    trial("declining MMF does not claim large increase", overrides={"mmf": {"d1": -4_000_000}},
+          forbidden=(MMF_GROWTH_NOTE,))
+    trial("tampered flat-MMF growth explanation blocked", overrides={"mmf": {"d1": 0}},
+          corrupt=lambda text: text.replace(
+              "MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모)",
+              f"MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모; {MMF_GROWTH_NOTE})", 1
+          ))
+    trial("large-growth note must stay inside MMF parentheses",
+          corrupt=lambda text: text.replace(
+              f"MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모; {MMF_GROWTH_NOTE})",
+              "MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모)", 1
+          ).replace(
+              "<b>현재 판정</b>",
+              f"• {MMF_GROWTH_NOTE}\\n<b>현재 판정</b>", 1
+          ))
     trial(
         "2026-10-07 real positive MMF", expected="당일에도 MMF가 증가해 5개 공표구간 누적 증가 방향과 일치합니다.",
         forbidden=("당일 MMF 급감", "당일 MMF는 감소", "당일 MMF 감소"),
