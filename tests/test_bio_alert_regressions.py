@@ -877,6 +877,55 @@ class BioAlertRegressionTests(unittest.TestCase):
                 self.assertEqual(halo.maybe_send_pgr_deadline_lead_notice(now), [])
                 sender.assert_called_once()
 
+    def test_halozyme_report_explicit_event_date_precedes_later_publication(self):
+        item = {
+            "event_date": "2026-11-18",
+            "published": "Thu, 19 Nov 2026 07:30:00 GMT",
+            "title": "PGR2025-00050 Final Written Decision",
+        }
+        self.assertEqual(halo._event_date(item), "2026-11-18")
+        rendered = halo.timeline_html("PGR2025-00050", "final_decision", item)
+        self.assertIn("2026년 11월 18일", rendered)
+        self.assertIn("2026년 11월 19일", rendered)
+        self.assertIn("자료 게시일", rendered)
+        self.assertEqual(halo._event_date({**item, "event_date": "2026-11-99"}), "")
+
+    def test_halozyme_german_confirmed_appeal_suppresses_stale_planned_hearing(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_file = pathlib.Path(directory) / "state.json"
+            event = {
+                "event_date": "2026-11-19",
+                "published": "Thu, 19 Nov 2026 14:20:00 GMT",
+                "title": "Halozyme German Higher Regional Court Keytruda SC appeal",
+            }
+            state_file.write_text(json.dumps({"case_event_timelines": {
+                halo.GERMAN_EP622_CASE: [
+                    {"date": "2026-11-19", "kind": "",
+                     "label": "독일 가처분 항소심 예정"},
+                    {"date": "2026-11-19", "kind": "de_appeal_decision",
+                     "label": "독일 가처분 항소심 — 2025년 판매금지명령 취소"},
+                ],
+            }}), encoding="utf-8")
+            with patch.object(halo.base, "STATE", state_file):
+                rendered = halo.timeline_html(halo.GERMAN_EP622_CASE, "de_appeal_decision", event)
+                self.assertIn("가처분 항소심 — 2025년 판매금지명령 취소", rendered)
+                self.assertNotIn("독일 가처분 항소심 예정", rendered)
+                self.assertIn("2025년 12월 4일", rendered)
+                # The original state file is not reset, silently rewritten, or deleted.
+                self.assertEqual(len(json.loads(state_file.read_text())["case_event_timelines"][
+                    halo.GERMAN_EP622_CASE]), 2)
+
+    def test_halozyme_material_alerts_label_event_report_and_future_dates(self):
+        usa = halo._verified_material_report("pgr14")
+        germany = halo._verified_material_report("de_reversal")
+        for expected in ("확정 타임라인", "2025년 11월 19일",
+                         "2026년 11월 18일", "보도일", "후속 확인"):
+            self.assertIn(expected, usa)
+        for expected in ("확정 타임라인", "2025년 12월 4일",
+                         "2026년 11월 19일", "공식 발표일", "후속 예정", "계획 단계"):
+            self.assertIn(expected, germany)
+        self.assertNotIn("독일 본안 최종 판결", germany)
+
     def test_halozyme_nov18_last_two_final_and_german_reversal_recognition(self):
         for case in ("PGR2025-00050", "PGR2025-00053"):
             self.assertEqual(

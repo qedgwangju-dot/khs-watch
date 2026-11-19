@@ -495,6 +495,14 @@ _pending_timeline_event: dict | None = None
 
 
 def _event_date(item: dict) -> str:
+    # A dated judicial event must never be silently replaced with a later article date.
+    # Event-date metadata takes precedence; older feeds without it retain legacy parsing.
+    explicit = str(item.get("event_date") or item.get("decision_date") or "").strip()
+    if explicit:
+        try:
+            return dt.date.fromisoformat(explicit).isoformat()
+        except ValueError:
+            return ""  # Invalid judicial date is not permission to infer one.
     published = str(item.get("published") or "").strip()
     if published:
         try:
@@ -778,6 +786,18 @@ def timeline_line(case: str, kind: str, item: dict) -> str:
         if current:
             rows.append((str(current.get("date") or ""), str(current.get("label") or "")))
 
+        # Keep the underlying historical state intact, but do not show a
+        # scheduled hearing as still pending on a day with a confirmed ruling.
+        if case == GERMAN_EP622_CASE:
+            completed_dates = {
+                date for date, label in rows
+                if "가처분 항소심" in label and "취소" in label
+            }
+            rows = [
+                (date, label) for date, label in rows
+                if not ("예정" in label and date in completed_dates)
+            ]
+
         unique: dict[tuple[str, str], tuple[str, str]] = {}
         for date, label in rows:
             if label:
@@ -821,6 +841,21 @@ def timeline_html(case: str, kind: str, item: dict) -> str:
             )
         else:
             rows.append(f"• {html.escape(segment)}")
+    # An explicitly verified event date and the publication date are different
+    # clocks. Disclose both when they differ, without guessing release hours.
+    explicit = str(item.get("event_date") or item.get("decision_date") or "").strip()
+    published = str(item.get("published") or "").strip()
+    if explicit and published:
+        try:
+            from email.utils import parsedate_to_datetime
+            publication_day = parsedate_to_datetime(published).date().isoformat()
+        except (TypeError, ValueError, IndexError):
+            publication_day = ""
+        if publication_day and publication_day != explicit:
+            rows.append(
+                f"• <b>{_korean_date_label(publication_day)}</b> 자료 게시일 "
+                f"(사건 발생일과 구분)"
+            )
     return "\n".join(rows)
 
 
@@ -1446,6 +1481,13 @@ def _verified_material_report(event_id: str) -> str:
         return (
             "<b>[바이오 감시] MSD·Halozyme 미국 PGR 최종결정 — 14건 모두 MSD에 유리</b>\n\n"
             "<b>2026년 11월 18일 PTAB 최종서면결정 2건 추가: 12/14 → 14/14</b>\n"
+            "- <b>확정 타임라인(미국 현지 날짜):</b>\n"
+            "• <b>2025년 11월 19일</b> 두 사건 심판 개시 — 아직 최종결정 아님\n"
+            "• <b>2026년 11월 9일</b> 이전 결정까지 MSD 우위 12/14 확인\n"
+            "• <b>2026년 11월 18일</b> 두 최종서면결정으로 14/14 도달\n"
+            "- <b>보도일:</b> 2026년 11월 19일 한국 기사 게시. PTAB 결정일과 구분합니다.\n"
+            "- <b>후속 확인:</b> 재검토·재심 신청 여부 → 실제 결정 → 항소 제기·결과. "
+            "절차 일정은 공식 접수 후 별도 확정합니다.\n"
             "- <b>신규 사건 1:</b> PGR2025-00050 · US 12,077,791 · 심판 대상 청구항 "
             "1~3·6~10(8개) 전부 특허성 부정.\n"
             "- <b>신규 사건 2:</b> PGR2025-00053 · US 12,195,773 · 심판 대상 청구항 "
@@ -1468,6 +1510,12 @@ def _verified_material_report(event_id: str) -> str:
             "<b>[바이오 감시] MSD·Halozyme 독일 법원 판결 — 기존 가처분 취소</b>\n\n"
             "<b>2026년 11월 19일 뮌헨 고등법원: Keytruda SC 독일 "
             "판매금지 가처분을 항소심에서 뒤집음</b>\n"
+            "- <b>확정 타임라인(독일 현지 날짜):</b>\n"
+            "• <b>2025년 12월 4일</b> 뮌헨 지방법원 판매·유통금지 가처분\n"
+            "• <b>2026년 11월 19일</b> 뮌헨 고등법원 항소심에서 해당 가처분 취소\n"
+            "- <b>공식 발표일:</b> 2026년 11월 19일 할로자임 보도자료. 실제 법원 결정과 별도 구분합니다.\n"
+            "- <b>후속 예정:</b> 독일 본안 침해소송은 할로자임 제기 계획 단계로, "
+            "실제 제출·심리·선고 날짜는 확인되지 않았습니다.\n"
             "- <b>기존 → 신규:</b> 2025년 12월 독일 판매·유통금지 가처분 "
             "→ 2026년 11월 19일 항소심에서 그 가처분 취소.\n"
             "- <b>공식 확인:</b> 패소 당사자인 Halozyme이 판결 결과를 직접 발표했습니다.\n"
