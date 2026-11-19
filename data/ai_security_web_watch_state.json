@@ -13,7 +13,7 @@
     "google_news_rate_limit_429": 0,
     "material_items": 13,
     "new_material_items": 0,
-    "raw_items": 134,
+    "raw_items": 136,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
     "source_access_limited": false
@@ -422,16 +422,6 @@
       "title": "Exposed to PHP2Shell? Cyber Experts Weigh in With Advice - Dark Reading",
       "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNUEgyQ1JhTWNraS1LakZoNldKNWx0c0pLQ0k4X2lPaHZ4cVpWamk2RjltV2JFRU04bWhkMUhNU1Z6VEVUTkdlS3NDU1BUTTZJUHk1NmJNYWRSQ2RXNzhILW5TSG0yRXdWWDdwVVJJSnZnVXdJVmZBMUlYMHpXdk5rRFZuWGxuc1hXVldqZlVWamg?oc=5",
       "vendor": "PHP 재단"
-    },
-    "582e6cb1e72bf952ec7ae300": {
-      "category": "금융·핵심인프라 AI 사이버 위험 경보",
-      "first_seen_at": "2026-10-15T18:23:25.728325+00:00",
-      "published_at": "2026-10-15T18:10:00+00:00",
-      "severity": 2,
-      "source": "Fortune",
-      "title": "‘You don’t want rogue agents': Jamie Dimon bars outside AI agents like Meta's Muse from JPMorgan accounts - Fortune",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE94cE9GNVdLZHZWM01ydmVLc2lVQVh5Z3BoLURNRFdVREFZVWFJOEltLVR3YXkwclZ5MnBQYXMxTHJVOGE5STM1VlF5azhEd0ZGWUV6dEFLQ0dXTlMwVUNzdURjZDVXZHl4VEJjVm83T1pFb2RnbjZJSjhjaTk?oc=5",
-      "vendor": "AI 생태계"
     },
     "592133392c0a5eb7c8faacd8": {
       "category": "미분류 AI 보안 변화",
@@ -1146,5 +1136,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-20T03:12:42+09:00"
+  "updated_at_kst": "2026-11-20T03:24:44+09:00"
 }
