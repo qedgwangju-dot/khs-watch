@@ -926,6 +926,20 @@ class BioAlertRegressionTests(unittest.TestCase):
             self.assertIn(expected, germany)
         self.assertNotIn("독일 본안 최종 판결", germany)
 
+    def test_halozyme_uk_window_and_latest_scheduled_trial_distinguished(self):
+        timeline = halo.CASE_TIMELINES[halo.UK_EP347_CASE]
+        self.assertIn(
+            ("2026-11-23",
+             "영국 법원 7월 결정의 심리 가능 기간 시작(이전 일정, 실제 개시 아님)"),
+            timeline,
+        )
+        self.assertIn(
+            ("2026-11-30",
+             "MSD 11월 4일 미국 공시 기준 영국 EP347 본안 심리 시작 예정"),
+            timeline,
+        )
+        self.assertNotIn(("2026-11-23", "영국 EP347 본안 심리 시작 예정"), timeline)
+
     def test_halozyme_nov18_last_two_final_and_german_reversal_recognition(self):
         for case in ("PGR2025-00050", "PGR2025-00053"):
             self.assertEqual(
