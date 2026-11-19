@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-19T12:56:59.921994+00:00",
+  "updated_at": "2026-11-19T13:52:35.228111+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -989,14 +989,7 @@
     "7959b2496120d2117a50ee47252abe940adace7015ee12e0e7265d5726973e58",
     "59c29d790a2033d7fb971a602cfd284ce430b13eaa2073888098eab81e182cae"
   ],
-  "last_selected": [
-    "0fb2ea37368f694269948ca3328d97d02ed23ceb046ddbdb3bf106770d67d88e",
-    "c7eb3288da755f09374a953329c9ab1f498faf56b2160fa9afed4e7cb2ef6a81",
-    "5be4aa553893d6fe549d85fa181df92ca5e2d8822c245a3de48d90315aaaf7e4",
-    "8e087f7824ff0f7eff4a08b2f7a52d67e60ec0b43b3df79e9943b1120cb0c6b2",
-    "7959b2496120d2117a50ee47252abe940adace7015ee12e0e7265d5726973e58",
-    "59c29d790a2033d7fb971a602cfd284ce430b13eaa2073888098eab81e182cae"
-  ],
+  "last_selected": [],
   "groups": [
     "ess_battery",
     "hyundai_atlas_rollout",
@@ -1020,21 +1013,6 @@
     "toyota_robot_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 43670479533,
-      "outcome": "sent",
-      "message_ids": [
-        366
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-15T03:02:18.574713+00:00"
-    },
     {
       "run_id": 43698445420,
       "outcome": "sent",
@@ -1373,90 +1351,29 @@
         false
       ],
       "state_timestamp_utc": "2026-11-19T12:56:59.921994+00:00"
+    },
+    {
+      "run_id": 44537637009,
+      "outcome": "normal_silence",
+      "confirmed_event_keys": [],
+      "message_ids": [],
+      "recipient_verified": null,
+      "recipient_checks": [],
+      "message_topic_present": [],
+      "state_timestamp_utc": "2026-11-19T13:52:35.228111+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44528501867,
-    "outcome": "sent",
-    "confirmed_event_keys": [
-      "0fb2ea37368f694269948ca3328d97d02ed23ceb046ddbdb3bf106770d67d88e",
-      "59c29d790a2033d7fb971a602cfd284ce430b13eaa2073888098eab81e182cae",
-      "5be4aa553893d6fe549d85fa181df92ca5e2d8822c245a3de48d90315aaaf7e4",
-      "7959b2496120d2117a50ee47252abe940adace7015ee12e0e7265d5726973e58",
-      "8e087f7824ff0f7eff4a08b2f7a52d67e60ec0b43b3df79e9943b1120cb0c6b2",
-      "c7eb3288da755f09374a953329c9ab1f498faf56b2160fa9afed4e7cb2ef6a81"
-    ],
-    "message_ids": [
-      387,
-      388
-    ],
-    "recipient_verified": true,
-    "recipient_checks": [
-      "numeric_id_equal",
-      "numeric_id_equal"
-    ],
-    "message_topic_present": [
-      false,
-      false
-    ],
-    "state_timestamp_utc": "2026-11-19T12:56:59.921994+00:00"
+    "run_id": 44537637009,
+    "outcome": "normal_silence",
+    "confirmed_event_keys": [],
+    "message_ids": [],
+    "recipient_verified": null,
+    "recipient_checks": [],
+    "message_topic_present": [],
+    "state_timestamp_utc": "2026-11-19T13:52:35.228111+00:00"
   },
-  "last_selected_events": [
-    {
-      "key": "0fb2ea37368f694269948ca3328d97d02ed23ceb046ddbdb3bf106770d67d88e",
-      "group": "robotis",
-      "title": "중국 매출 두 배 뛴 로보티즈…우즈벡 공장으로 공급 병목 푼다 - 아이뉴스24",
-      "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9vTmE5b1A2RWtScGNNVWtzYTV4UkNjX1Y2RTJSbmFqb0tub2I1ZmNOZEVKUzl1bVBZclRwVG9nV2ZfUnFaN1pBXzBhRQ?oc=5",
-      "source": "아이뉴스24",
-      "source_url": "http://www.inews24.com",
-      "published": "2026-11-19T06:02:05+00:00"
-    },
-    {
-      "key": "c7eb3288da755f09374a953329c9ab1f498faf56b2160fa9afed4e7cb2ef6a81",
-      "group": "ess_battery",
-      "title": "조 단위 ESS 수주…K배터리, 가동률·생산능력 동반 확대 - MTN 머니투데이방송",
-      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1zcGszOHQ5enFzdU04MU5hMDc2QjBvSW9IM215RVRCTDE5VjJ4bWNWYzBpbVkxU2xIQ2RsVWY2bUNXTGFocWdndUszVVRXeDBpTWQyMmJYVGx4LURScmFF?oc=5",
-      "source": "MTN 머니투데이방송",
-      "source_url": "https://news.mtn.co.kr",
-      "published": "2026-11-19T08:58:14+00:00"
-    },
-    {
-      "key": "5be4aa553893d6fe549d85fa181df92ca5e2d8822c245a3de48d90315aaaf7e4",
-      "group": "lg_factory_loop",
-      "title": "진화한 LG이노텍 '스마트홈 통신모듈', LG전자 홈로봇에 탑재될까 - 시사저널e",
-      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE96c3cxSmFmdUZCY0xVa196Q3o5WDRKTE16bk5ZU01ZS1BxODN0bktDYzdpcmxpZUtrY3FoZEplcmNMMFdidU9CTTY5Qi0yeHpWRU5vWElWLXVfRlJKYk9PcDF2Qkh2Q3VNS043c1dlc0pJUdIBdkFVX3lxTFBjXzlKMVdmRXA4aV9PRkNEUjlyM004VDJ2Umk2dFpPek5VSkl3WVNZY0xCQ0VkclZWRnQ4cmZyamg5dG91aExEcjFlWDlPcHdBQmpPRTZfZEM5VUlIOU1iT2hzeW4yMkV4MjFqSmJDUFd6eFNpUEE?oc=5",
-      "source": "시사저널e",
-      "source_url": "https://www.sisajournal-e.com",
-      "published": "2026-11-16T02:20:29+00:00"
-    },
-    {
-      "key": "8e087f7824ff0f7eff4a08b2f7a52d67e60ec0b43b3df79e9943b1120cb0c6b2",
-      "group": "lg_factory_loop",
-      "title": "LG전자, 로봇·AIDC 냉각솔루션·모빌리티·스마트팩토리 조직 전격 강화 - 위키리크스한국",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5scVd5YU1VWFFCc3FnWko2Qm9OUldyVXo3NGVhdnVuY1VTMkFwSHlhWnQzVjRVbDNqd1VyR0EyNXp4T1k3cS1yVzEwZmNQODRQUFRENEt1b0Q3MTFFQWQ5cG1jMGl4OFU4WHZKXzQ0aHg?oc=5",
-      "source": "위키리크스한국",
-      "source_url": "https://www.wikileaks-kr.org",
-      "published": "2026-11-19T08:23:54+00:00"
-    },
-    {
-      "key": "7959b2496120d2117a50ee47252abe940adace7015ee12e0e7265d5726973e58",
-      "group": "lg_factory_loop",
-      "title": "베어로보틱스 몸집 키우는 LG전자…키니시 인수로 피지컬 AI 역량 강화 - 연합인포맥스",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5RakMtUHJBREltZVZLbTltbm9nbFNRSVFHRnBLWGt0WFMxNEx6RjF3TjBGcWV2QzJuUVE4dklRYjdFWElXbWhxQkJlZFR3S1I5Y1F2R3RCR1BwNWRBUUk2LVJhSzJDM2FlbUczaTFzeE4?oc=5",
-      "source": "연합인포맥스",
-      "source_url": "https://news.einfomax.co.kr",
-      "published": "2026-11-17T00:07:27+00:00"
-    },
-    {
-      "key": "59c29d790a2033d7fb971a602cfd284ce430b13eaa2073888098eab81e182cae",
-      "group": "ess_battery",
-      "title": "삼성SDI, 북미 ESS 수주 확대…EV 라인 전환해 LFP 생산 늘린다 - 더트래커",
-      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9FdWZGR1VEazNUZ0dTMXdZcEJFaFRqTno4NGdLVzNvTjJKMXdFWFRXdWRMQ25WUm52LWZpclhtX0dMb2FaRXJXVkNOU3FOSG9sQWoyR292eFY?oc=5",
-      "source": "더트래커",
-      "source_url": "https://thetracker.co.kr",
-      "published": "2026-11-19T06:27:42+00:00"
-    }
-  ],
+  "last_selected_events": [],
   "message_corrections": {
     "robot-message-correction-20261118-44240720425-v1": {
       "schema_version": 1,
