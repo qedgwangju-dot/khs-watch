@@ -108,6 +108,16 @@ NEWS_QUERIES = [
     # English company / paid-contract paths.
     '(NAVER Cloud OR S2W OR SandLab OR "LG CNS") cybersecurity AI contract pilot procurement',
     'AI cybersecurity foundation model government procurement pilot contract Korea',
+    '("Greg Brockman" OR "OpenAI president") (cybersecurity OR cyber revenue OR sales oversight OR management)',
+    '"OpenAI" "cybersecurity" (revenue disclosed OR contracts signed OR paying customers OR bookings)',
+    '"GPT-6 Cyber" (Daybreak Red OR security research OR extended access OR customers OR evaluation)',
+    '"GPT-5.6 Cyber" (Daybreak OR GPT-6 Cyber OR model safety)',
+    '"Daybreak" "OpenAI" (paid customers OR customer count OR token usage OR contract value)',
+    '"Daybreak for Frontline Defenders" (subsidized use OR funding allocated OR rollout)',
+    '"OpenAI" "ChatGPT" "Codex" (teams merged OR enterprise platform OR Dots integration)',
+    '"Dali Rajic" "OpenAI" (cyber security revenue OR customer contracts OR chief revenue officer)',
+    '"GPT-6.1 Astra" (safety cancelled OR release resumed OR safety tests)',
+    '"OpenAI" "security infrastructure" (product work paused OR resumed OR incident remediation)',
     '"AWS Continuum" (new paid customer OR revenue OR production deployment OR usage growth OR contract)',
     '"AWS Continuum" ("Claude Code" OR Codex OR Kiro) (available OR launch OR integration live)',
     '"AWS Continuum" (autonomous remediation OR enforce mode OR patch rollback OR incident)',
@@ -178,6 +188,16 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "openai_brockman:management_cyber_outlook_20261117": {"source_url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety", "status": "2026-11-17 Brockman expanded operating remit and believes cyber eventually larger than coding; article reports cyber already significant/growing but no disclosed revenue"},
+    "openai_cyber_models:gpt6_cyber_approved_20261105": {"source_url": "https://openai.com/index/introducing-gpt-6-cyber/", "status": "2026-11-05 GPT-6 Cyber restricted approved Daybreak Red access: ExploitGym 48.5pct vs GPT-5.6 Cyber 32.1pct, Linux 948, Firefox 81; not universal release"},
+    "openai_daybreak:thousands_orgs_reported_20261117": {"source_url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety", "status": "2026-11-17 The Information reports thousands of Daybreak organizations incl Cloudflare Cisco IBM, token usage billing; paid organization count and product revenue not disclosed"},
+    "openai_daybreak:program_started_202605": {"source_url": "https://openai.com/daybreak/", "status": "Daybreak program first launched in May 2026, access verified, some products restricted to approved security teams"},
+    "openai_frontline:subsidy_announced_20260903": {"source_url": "https://openai.com/index/daybreak-for-frontline-defenders/", "status": "2026-09-03 USD1bn subsidized Daybreak capacity/support commitment for essential-service defenders, not company earned revenue or already spent"},
+    "openai_revenue_exec:rajic_appointed_20260813": {"source_url": "https://openai.com/index/dali-rajic-chief-revenue-officer/", "status": "2026-08-13 Dali Rajic former Wiz president COO replaced Denise Dresser as OpenAI CRO; staffing change not new customer contract"},
+    "openai_superapp:chatgpt_codex_teams_merged_20261117": {"source_url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety", "status": "2026-11-17 The Information reports ChatGPT and Codex teams combined and desktop integration; Dots agent added, not all separate products discontinued"},
+    "openai_safety_astra:astra61_release_shelved_20260928": {"source_url": "https://www.reuters.com/business/openai-shelves-new-ai-model-after-internal-safety-tests-wsj-reports-2026-09-28/", "status": "2026-09-28 GPT-6.1 Astra RELEASE canceled on safety-scope/deceptive-reporting issues; NOT GPT-6 Astra discontinued"},
+    "openai_safety_work:quarter_product_work_paused_reported_20261117": {"source_url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety", "status": "2026-11-17 The Information reports about one quarter product work paused for several weeks, engineers assigned internal security; not 25pct of company research budget"},
+
     "msit_finance_2026:emergency_24h_20261004": {"source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148973069", "status": "10/04 KISC 24-hour emergency response and response staff, not 11/09 new activation"},
     "msit_finance_2026:ciso_28000_advice_20261004": {"source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148973069", "status": "10/04 advice emailed to ~28,000 CISO registrants; recommendation not completed mandatory audits"},
     "msit_finance_2026:ctas_5900_two_shares_20261007": {"source_url": "https://m.inews24.com/view/mrld/2012873", "status": "10/07 two rounds IP intelligence sent to ~5,900 C-TAS member firms, blocking was requested"},
@@ -303,6 +323,8 @@ OFFICIAL_SOURCE_HINTS = (
 TRUSTED_SOURCE_HINTS = (
     "reuters", "axios", "politico", "the information", "softbank group", "allied universal", "yonhap", "연합뉴스", "financial times", "bloomberg",
     "the information", "zdnet", "전자신문", "etnews", "파이낸셜뉴스",
+    "openai blog", "openai news", "openai developers", "openai daybreak",
+
     "아이뉴스24", "inews24", "정책브리핑", "금융위원회", "금융보안원", "금융감독원",
 
     "매일경제", "한국경제", "머니투데이", "이데일리", "조선비즈",
@@ -640,7 +662,13 @@ def google_news_url(query: str) -> str:
     # Keep existing Korean feeds unchanged. Search the two newly added US
     # company/legislative storylines in the edition where they originate.
     global_story = (
-        ("SoftBank" in query and "Allied Universal" in query)
+        any(term in query for term in (
+            "Greg Brockman", "OpenAI president", "GPT-6 Cyber",
+            "GPT-5.6 Cyber", "Daybreak", "Dali Rajic",
+            "GPT-6.1 Astra", "OpenAI\" \"ChatGPT",
+            "OpenAI\" \"security infrastructure",
+        ))
+        or ("SoftBank" in query and "Allied Universal" in query)
         or ("Anthropic" in query and (
             "AI safety bill" in query or "frontier AI" in query and "bill" in query
         ))
@@ -1465,6 +1493,177 @@ def korean_finance_issuer_verified(item: dict) -> bool:
     return any((host == domain or host.endswith("." + domain)) and any(n in source for n in names) for names,domain in issuers)
 
 
+def openai_cyber_growth_stage(item: dict) -> tuple[str, str] | None:
+    """Company strategy, restricted cyber release, customer usage, and safety
+    controls are separate stages. Plans/quotes are not measured revenue.
+    """
+    title = str(item.get("title") or "").lower().translate(
+        str.maketrans({"‑": "-", "–": "-", "—": "-", "’": "'"})
+    )
+    context = f"{title} {item.get('description','')}".lower().translate(
+        str.maketrans({"‑": "-", "–": "-", "—": "-", "’": "'"})
+    )
+    is_openai = any(x in context for x in ("openai", "오픈ai", "오픈에이아이"))
+    if not is_openai:
+        return None
+    planned = any(x in title for x in (
+        "plans to", "planning", "may ", "could ", "would ", "expected",
+        "proposed", "rumored", "rumoured", "검토", "예정", "계획", "추진", "전망", "기대",
+    ))
+    if "gpt-6.1 astra" in title or (
+        "astra" in title and any(x in title for x in ("shelves", "shelved", "출시 취소", "출시 보류"))
+    ):
+        if not planned and any(x in title for x in (
+            "release restored", "release resumed", "now generally available",
+            "출시 재개 확정", "정식 출시 완료",
+        )):
+            return "openai_safety_astra", "release_restored_reported"
+        return "openai_safety_astra", "astra61_release_shelved_20260928"
+
+    if "product work" in title or "제품 개발 업무" in title or "product development" in title:
+        if any(x in title for x in ("resumes", "resumed", "재개 완료")) and not planned:
+            return "openai_safety_work", "product_security_work_resumed_reported"
+        if any(x in context for x in ("25%", "quarter", "security", "보안")):
+            return "openai_safety_work", "quarter_product_work_paused_reported_20261117"
+
+    if ("dali rajic" in title or "달리 라이치" in title) and any(
+        x in context for x in ("revenue", "영업", "매출", "cro", "wiz", "위즈")
+    ):
+        if any(x in title for x in (
+            "chief revenue officer replaced again", "revenue leadership replaced",
+            "매출책임자 교체 확정",
+        )):
+            return "openai_revenue_exec", "executive_replaced_reported"
+        return "openai_revenue_exec", "rajic_appointed_20260813"
+
+    if ("chatgpt" in title and "codex" in title and any(
+        x in context for x in ("merge", "merged", "combined", "integration", "통합", "superapp", "super app")
+    )) or ("dots" in title and "chatgpt" in title and "openai" in title):
+        if not planned and any(x in title for x in (
+            "fully integrated enterprise platform launched",
+            "combined enterprise superapp now available",
+            "enterprise bundle revenue disclosed", "통합 플랫폼 매출 공개",
+            "기업용 통합 플랫폼 정식 출시",
+        )):
+            return "openai_superapp", "combined_platform_commercial_milestone_reported"
+        return "openai_superapp", "chatgpt_codex_teams_merged_20261117"
+
+    if "daybreak" in title and any(x in title for x in (
+        "frontline", "subsidy", "subsidized", "subsidies", "grants", "지원금", "보조",
+    )):
+        if not planned and any(x in title for x in (
+            "grant dollars disbursed", "subsidy fully deployed",
+            "subsidized usage realized", "지원액 집행 완료", "지원 실적 공개",
+        )):
+            return "openai_frontline", "funding_usage_disclosed_reported"
+        return "openai_frontline", "subsidy_announced_20260903"
+
+    model = bool(re.search(r"gpt-6(?:\.\d+)? cyber", title)) or "gpt-5.6 cyber" in title or "gpt6 cyber" in title
+    if model:
+        if not planned and any(x in title for x in (
+            "red access now expanded", "red access expanded", "approved daybreak red general access",
+            "daybreak red 전체 승인 고객에 개방", "승인 고객 접근 확대 완료",
+        )):
+            return "openai_cyber_models", "red_access_expanded_reported"
+        if not planned and any(x in title for x in (
+            "new cyber model released", "gpt-6.2 cyber released",
+            "gpt-6.1 cyber released", "새 보안 특화 모델 출시",
+        )):
+            return "openai_cyber_models", "next_cyber_model_released_reported"
+        if not planned and any(x in title for x in (
+            "exploits revised", "new evaluation score published", "benchmark results updated",
+            "평가 결과 수정", "안전성 재평가 결과",
+        )):
+            return "openai_cyber_models", "benchmark_or_safety_revised_reported"
+        return "openai_cyber_models", "gpt6_cyber_approved_20261105"
+
+    if "daybreak" in title:
+        if not planned and any(x in title for x in (
+            "new paid customer contract signed", "signed security contract",
+            "secured paid customers", "유료 계약 체결", "유료 고객 계약 체결",
+        )):
+            return "openai_daybreak", "new_paid_contract_reported"
+        if not planned and any(x in title for x in (
+            "daybreak revenue reported", "cyber revenue disclosed",
+            "daybreak annual recurring revenue", "독립 매출액 공개", "보안사업 매출 공개",
+        )):
+            return "openai_daybreak", "revenue_disclosed_reported"
+        if not planned and any(x in title for x in (
+            "paying customer count disclosed", "verified paid customer count",
+            "유료 고객 수 공개", "유료 이용기관 수 공개",
+        )):
+            return "openai_daybreak", "paying_customer_count_disclosed_reported"
+        if not planned and any(x in title for x in (
+            "thousands of organizations", "thousands of users", "수천 조직",
+            "수천 개 조직", "수천곳",
+        )):
+            return "openai_daybreak", "thousands_orgs_reported_20261117"
+        return "openai_daybreak", "program_started_202605"
+
+    if "openai" in title and not planned and any(x in title for x in (
+        "cybersecurity revenue disclosed", "cyber annual revenue reported",
+        "cybersecurity sales figures released", "사이버보안 매출액 공개",
+    )):
+        return "openai_brockman", "measured_cyber_revenue_reported"
+    if "openai" in title and not planned and any(x in title for x in (
+        "enterprise cyber contract signed", "security customer deal announced",
+        "기업 보안 계약 체결", "기업 보안 신규 수주",
+    )):
+        return "openai_brockman", "new_enterprise_cyber_contract_reported"
+    if "brockman" in title or "브록먼" in title:
+        if not planned and any(x in title for x in (
+            "cybersecurity revenue disclosed", "cyber annual revenue reported",
+            "cybersecurity sales figures released", "사이버보안 매출액 공개",
+        )):
+            return "openai_brockman", "measured_cyber_revenue_reported"
+        if not planned and any(x in title for x in (
+            "enterprise cyber contract signed", "security customer deal announced",
+            "기업 보안 계약 체결", "기업 보안 신규 수주",
+        )):
+            return "openai_brockman", "new_enterprise_cyber_contract_reported"
+        if any(x in context for x in (
+            "management", "cyber", "product", "sales", "coding", "경영",
+            "보안", "영업", "코딩",
+        )):
+            return "openai_brockman", "management_cyber_outlook_20261117"
+    return None
+
+
+def openai_cyber_growth_publisher_verified(item: dict) -> bool:
+    """Verify source host before turning a cyber headline into a revenue stage."""
+    if not openai_cyber_growth_stage(item):
+        return True
+    source = str(item.get("source") or "").strip().lower()
+    url = str(item.get("publisher_url") or item.get("url") or "")
+    try:
+        host = (urllib.parse.urlsplit(url).hostname or "").lower()
+    except ValueError:
+        return False
+    if not host:
+        return False
+    domains = (
+        (("openai",), "openai.com"),
+        (("the information",), "theinformation.com"),
+        (("reuters",), "reuters.com"),
+        (("techcrunch",), "techcrunch.com"),
+        (("axios",), "axios.com"),
+        (("wall street journal", "wsj"), "wsj.com"),
+    )
+    for names, domain in domains:
+        if any(name in source for name in names):
+            return host == domain or host.endswith("." + domain)
+    return source_trusted(source)
+
+
+def openai_cyber_growth_issuer_verified(item: dict) -> bool:
+    if not openai_cyber_growth_stage(item):
+        return False
+    source = str(item.get("source") or "").lower()
+    if not source.startswith("openai"):
+        return False
+    return openai_cyber_growth_publisher_verified(item)
+
+
 def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """Classify a new *reported* milestone from the headline, never from a
     speculative paragraph about what could happen. No issuer/legislative
@@ -1473,6 +1672,9 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
 
+    openai_growth_stage = openai_cyber_growth_stage(item)
+    if openai_growth_stage:
+        return openai_growth_stage
     finance_stage = korean_finance_cyber_stage(item)
     if finance_stage:
         return finance_stage
@@ -1743,6 +1945,18 @@ def detect_category(text: str) -> str:
         t in low for t in ("subpoena", "complaint", "investigation", "sues", "settlement", "consent order")
     ):
         return "FTC 프런티어 AI 소비자보호 조사·집행 단계"
+    cyber_growth = openai_cyber_growth_stage({"title": text})
+    if cyber_growth:
+        return {
+            "openai_brockman": "오픈AI 브록먼 경영개편·보안사업 성장 단계",
+            "openai_cyber_models": "오픈AI GPT-6 Cyber 보안모델 상용화·접근확대 단계",
+            "openai_daybreak": "오픈AI Daybreak 보안 서비스 고객·반복매출 단계",
+            "openai_frontline": "오픈AI Daybreak 핵심시설 보안 접근 지원 단계",
+            "openai_revenue_exec": "오픈AI 기업영업 최고매출책임자 개편 단계",
+            "openai_superapp": "오픈AI ChatGPT·Codex·Dots 기업 플랫폼 통합 단계",
+            "openai_safety_astra": "오픈AI GPT-6.1 Astra 안전성 기준·출시 보류 단계",
+            "openai_safety_work": "오픈AI 제품 개발 일시중단·내부 보안 강화 단계",
+        }[cyber_growth[0]]
     finance_stage = korean_finance_cyber_stage({"title": text})
     if finance_stage:
         return {
@@ -1818,6 +2032,18 @@ def detect_entity(text: str) -> str:
         if "openai" in low and "anthropic" in low:
             return "FTC–OpenAI·Anthropic"
         return "FTC–OpenAI" if "openai" in low else "FTC–Anthropic"
+    cyber_growth = openai_cyber_growth_stage({"title": text})
+    if cyber_growth:
+        return {
+            "openai_brockman": "오픈AI·그렉 브록먼",
+            "openai_cyber_models": "오픈AI·GPT-6 Cyber",
+            "openai_daybreak": "오픈AI·Daybreak",
+            "openai_frontline": "오픈AI·Daybreak",
+            "openai_revenue_exec": "오픈AI·기업영업",
+            "openai_superapp": "오픈AI·기업용 ChatGPT",
+            "openai_safety_astra": "오픈AI·안전성 평가",
+            "openai_safety_work": "오픈AI·내부 보안",
+        }[cyber_growth[0]]
     finance_stage = korean_finance_cyber_stage({"title": text})
     if finance_stage:
         return {
@@ -1956,6 +2182,8 @@ def material(item: dict) -> bool:
         return False
     milestone = tracked_policy_event_stage(item)
     if milestone:
+        if milestone[0] in ("openai_brockman", "openai_cyber_models", "openai_daybreak", "openai_frontline", "openai_revenue_exec", "openai_superapp", "openai_safety_astra", "openai_safety_work") and not openai_cyber_growth_publisher_verified(item):
+            return False
         if milestone[0] in ("msit_finance_2026","fsc_finance_2026") and not korean_finance_publisher_verified(item):
             return False
         if milestone[0] in ("fed_bowman_cyber", "fed_genius", "fed_third_party", "fed_fraud_group", "occ_genius", "occ_cyber_work_program") and not fed_bank_security_publisher_verified(item):
@@ -2033,7 +2261,7 @@ def normalize(item: dict) -> dict:
     out["fingerprint"] = fingerprint(item)
     out["category"] = detect_category(combined)
     out["entity"] = detect_entity(combined)
-    out["official"] = ((source_official(item.get("source","")) or aws_security_issuer_verified(item) or fed_bank_security_official(item) or korean_finance_issuer_verified(item)) and
+    out["official"] = ((source_official(item.get("source","")) or aws_security_issuer_verified(item) or fed_bank_security_official(item) or korean_finance_issuer_verified(item) or openai_cyber_growth_issuer_verified(item)) and
         cohere_aisle_publisher_verified(item) and crowdstrike_nvidia_publisher_verified(item)
         and php_korea_publisher_verified(item)
         and k_security_business_publisher_verified(item)
@@ -2041,7 +2269,8 @@ def normalize(item: dict) -> dict:
         and php_business_publisher_verified(item)
         and aws_security_publisher_verified(item)
         and fed_bank_security_publisher_verified(item)
-        and korean_finance_publisher_verified(item))
+        and korean_finance_publisher_verified(item)
+        and openai_cyber_growth_publisher_verified(item))
     return out
 
 
@@ -2411,6 +2640,64 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"• {html.escape(concise_fact(rep))}",
         ]
         if rep["category"] in (
+            "오픈AI 브록먼 경영개편·보안사업 성장 단계",
+            "오픈AI GPT-6 Cyber 보안모델 상용화·접근확대 단계",
+            "오픈AI Daybreak 보안 서비스 고객·반복매출 단계",
+            "오픈AI Daybreak 핵심시설 보안 접근 지원 단계",
+            "오픈AI 기업영업 최고매출책임자 개편 단계",
+            "오픈AI ChatGPT·Codex·Dots 기업 플랫폼 통합 단계",
+            "오픈AI GPT-6.1 Astra 안전성 기준·출시 보류 단계",
+            "오픈AI 제품 개발 일시중단·내부 보안 강화 단계",
+        ):
+            stage = openai_cyber_growth_stage(rep)
+            labels = {
+                "management_cyber_outlook_20261117": "브록먼의 경영 총괄 강화·사이버보안 사업 확대 전망 보도",
+                "measured_cyber_revenue_reported": "사이버보안 실제 매출 수치 공개 보도",
+                "new_enterprise_cyber_contract_reported": "기업 보안 유료 계약 체결 보도",
+                "gpt6_cyber_approved_20261105": "GPT-6 Cyber 보안모델 11월 5일 제한적 출시",
+                "red_access_expanded_reported": "승인된 보안 연구고객 대상 모델 접근 확대 보도",
+                "next_cyber_model_released_reported": "차세대 보안 특화 모델 정식 출시 보도",
+                "benchmark_or_safety_revised_reported": "보안모델 성능·안전성 평가 갱신 보도",
+                "thousands_orgs_reported_20261117": "Daybreak 수천 개 조직 사용 보도·유료 비중 미공개",
+                "program_started_202605": "Daybreak 보안 접근 프로그램 5월 출범",
+                "new_paid_contract_reported": "Daybreak 신규 유료 계약 체결 보도",
+                "revenue_disclosed_reported": "Daybreak 별도 보안서비스 매출 공개 보도",
+                "paying_customer_count_disclosed_reported": "Daybreak 실제 유료 고객 수 공개 보도",
+                "subsidy_announced_20260903": "9월 핵심시설 보안 방어조직 접근 지원 약속",
+                "funding_usage_disclosed_reported": "핵심시설 방어조직 지원금 실제 집행액 공개 보도",
+                "rajic_appointed_20260813": "8월 13일 Wiz 출신 달리 라이치 최고매출책임자 선임",
+                "executive_replaced_reported": "기업영업 최고매출책임자 후속 교체 보도",
+                "chatgpt_codex_teams_merged_20261117": "ChatGPT·Codex 개발조직 통합·Dots 연계 전략 보도",
+                "combined_platform_commercial_milestone_reported": "기업용 통합 플랫폼 신규 상용화·매출 공개 보도",
+                "astra61_release_shelved_20260928": "GPT-6.1 Astra 출시 계획 9월 철회·안전성 기준 미달",
+                "release_restored_reported": "GPT-6.1 Astra 해당 버전 출시 재개 보도",
+                "quarter_product_work_paused_reported_20261117": "제품 개발 업무 약 25% 일시 중단·내부 보안 강화 보도",
+                "product_security_work_resumed_reported": "일시 중단된 제품 개발 업무 재개 보도",
+            }
+            current = labels.get(stage[1], "후속 단계 독립 확인 필요") if stage else "후속 단계 확인 필요"
+            lines.append(f"• <b>확인 단계</b>: {html.escape(current)} · 계획·보도·정식 출시·유료 매출 구분")
+            if stage and stage[0] == "openai_brockman":
+                lines.append("• <b>경영</b>: 브록먼이 인프라·영업·마케팅·ChatGPT·Codex 운영을 확대 관할한다는 The Information 인터뷰 보도")
+                lines.append("• <b>매출</b>: '사이버보안이 장기적으로 코딩보다 더 큰 사업'은 미래 전망. 현재 보안 매출이 상당하고 빠르게 성장한다는 발언은 있으나 분기 매출·이익·유료 고객수 미공개")
+            elif stage and stage[0] == "openai_cyber_models":
+                lines.append("• <b>기존 확정</b>: 11월 5일 GPT-6 Cyber 출시, 승인된 Daybreak Red 고객에게 제한 접근. ExploitGym GPT-5.6 Cyber 32.1% → GPT-6 Cyber 48.5%")
+                lines.append("• <b>실제 연구</b>: 리눅스 권한 상승 공격 재현 948건·파이어폭스 고위험 취약점 81건 보고. 모델 실험 성능과 상용 고객 피해 차단률은 구분")
+                lines.append("• <b>안전</b>: 허용 범위 준수 평가 99.93%·배포용 안전 안내 적용시 100%는 제한된 시험 결과이며 실제 모든 환경의 무오류 보장이 아님")
+            elif stage and stage[0] == "openai_daybreak":
+                lines.append("• <b>도입</b>: The Information은 수천 개 조직과 클라우드플레어·시스코·IBM 사용을 보도. 전체가 유료 고객인지는 미공개")
+                lines.append("• <b>수익 구조</b>: 보안 AI 토큰 사용량에 따른 과금 보도. 실제 유료 고객 수·이용량·계약액·매출·현금 회수는 구분")
+            elif stage and stage[0] == "openai_frontline":
+                lines.append("• <b>공급 단계</b>: 9월 핵심시설 방어조직에 Daybreak 접근권·교육·기술 지원을 보조하겠다는 약속. 집행액·유료 고객 계약·매출 발생과 구분")
+            elif stage and stage[0] == "openai_revenue_exec":
+                lines.append("• <b>인사</b>: 8월 Wiz 출신 달리 라이치가 데니스 드레서를 대신해 영업 총괄. 인사 이동을 신규 수주로 판단하지 않음")
+            elif stage and stage[0] == "openai_superapp":
+                lines.append("• <b>제품</b>: ChatGPT·Codex 개발조직 통합 및 데스크톱 결합·Dots 확대 보도. 모든 별도 제품이 종료됐다는 뜻은 아님")
+            elif stage and stage[0] == "openai_safety_astra":
+                lines.append("• <b>출시</b>: 9월 보류 대상은 GPT-6.1 Astra 해당 버전이며 GPT-6 Astra 전체가 아님. 승인 범위·행동 보고의 안전성 기준 검증이 선행 조건")
+            else:
+                lines.append("• <b>기존 보도</b>: 제품 개발 작업 약 25%를 수주간 중단하고 내부 보안 강화에 인력 재배치. 전체 연구개발비 25% 삭감으로 해석 금지")
+            lines.append("• <b>다음 확인</b>: 고객 실명·실제 유료 계약·매출·토큰 과금·제품 배포·안전성 검증·접근 승인·모델 출시 보류 해제")
+        elif rep["category"] in (
             "과기정통부 금융권 해킹 24시간 비상대응·위협공유",
             "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
         ):
@@ -2705,10 +2992,13 @@ def main() -> int:
     state = load_state()
     raw: list[dict] = []
     errors: list[str] = []
+    google_news_failed_queries: list[str] = []
+    google_news_success_count = 0
 
     for query in NEWS_QUERIES:
         try:
             fetched = parse_google_news(query, now)
+            google_news_success_count += 1
             raw.extend(fetched)
             if ("SoftBank" in query and "Allied Universal" in query) or (
                 "Anthropic" in query and ("AI safety bill" in query or ("frontier AI" in query and "bill" in query))
@@ -2716,7 +3006,22 @@ def main() -> int:
                 relevant = sum(bool(tracked_policy_event_stage(item)) for item in fetched)
                 print(f"ai_policy_new_topic_feed total={len(fetched)} relevant={relevant}")
         except Exception as exc:
+            google_news_failed_queries.append(query)
             errors.append(f"Google News 실패: {query[:55]} / {type(exc).__name__}: {exc}")
+
+    # Dated primary and independent references. The already-known historical
+    # milestones are seeded in POLICY_EVENT_BASELINES and are never replayed.
+    raw.extend([
+        {"kind": "news", "query": "verified OpenAI cyber business historical reference", "title": "To Strengthen OpenAI, Brockman Goes Full Management Mode with cybersecurity bigger than coding", "description": "2026-11-17 interview: Brockman operational remit spans compute, sales, marketing and product; cyber already substantial revenue but no disclosed number; prediction cyber will outgrow coding.", "source": "The Information", "publisher_url": "https://www.theinformation.com/", "url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety", "published_at": None},
+        {"kind": "official", "query": "verified OpenAI cyber business historical reference", "title": "OpenAI GPT-6 Cyber approved Daybreak Red model release November 5 2026", "description": "2026-11-05 official model announcement: ExploitGym 32.1 percent GPT-5.6 Cyber to 48.5 percent GPT-6 Cyber; 948 Linux privilege escalation exploits and 81 Firefox high severity findings; restricted vetted access; scope compliance evaluations.", "source": "OpenAI", "publisher_url": "https://openai.com/", "url": "https://openai.com/index/introducing-gpt-6-cyber/", "published_at": None},
+        {"kind": "news", "query": "verified OpenAI cyber business historical reference", "title": "OpenAI Daybreak thousands of organizations use cybersecurity tools including Cloudflare Cisco IBM", "description": "2026-11-17 The Information reports token-based billing, thousands of organizations accessing tools; actual paid subset and recognized revenue undisclosed.", "source": "The Information", "publisher_url": "https://www.theinformation.com/", "url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety", "published_at": None},
+        {"kind": "official", "query": "verified OpenAI cyber business historical reference", "title": "OpenAI Daybreak cybersecurity program started May 2026", "description": "Defensive Blue and authorized offensive Red access, verified applicants and usage controls. No universal public access to Cyber models.", "source": "OpenAI", "publisher_url": "https://openai.com/", "url": "https://openai.com/daybreak/", "published_at": None},
+        {"kind": "official", "query": "verified OpenAI cyber business historical reference", "title": "OpenAI Daybreak for Frontline Defenders subsidized access announced September 2026", "description": "2026-09-03 official commitment of USD 1 billion subsidized access, training, technical support and partner services for frontline defenders; commitment is not already disbursed revenue.", "source": "OpenAI", "publisher_url": "https://openai.com/", "url": "https://openai.com/index/daybreak-for-frontline-defenders/", "published_at": None},
+        {"kind": "official", "query": "verified OpenAI cyber business historical reference", "title": "OpenAI appoints Dali Rajic as chief revenue officer from Wiz August 13 2026", "description": "2026-08-13 issuer appointment replaced Denise Dresser, formerly Wiz president COO; appointment not signed cyber supply contract.", "source": "OpenAI", "publisher_url": "https://openai.com/", "url": "https://openai.com/index/dali-rajic-chief-revenue-officer/", "published_at": None},
+        {"kind": "news", "query": "verified OpenAI cyber business historical reference", "title": "OpenAI ChatGPT Codex teams merged and Dots integrated into superapp strategy", "description": "2026-11-17 The Information reports combined product teams and desktop Codex integration, with Dots; not all independent apps discontinued.", "source": "The Information", "publisher_url": "https://www.theinformation.com/", "url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety", "published_at": None},
+        {"kind": "news", "query": "verified OpenAI cyber business historical reference", "title": "OpenAI shelves GPT-6.1 Astra model release September 28 2026 on safety", "description": "Safety alignment scope and truthful reporting concerns: held release of GPT-6.1 Astra specifically, not all GPT-6 Astra.", "source": "Reuters", "publisher_url": "https://www.reuters.com/", "url": "https://www.reuters.com/business/openai-shelves-new-ai-model-after-internal-safety-tests-wsj-reports-2026-09-28/", "published_at": None},
+        {"kind": "news", "query": "verified OpenAI cyber business historical reference", "title": "OpenAI product work 25% paused for weeks to strengthen security under Brockman", "description": "2026-11-17 The Information reported about a quarter of product development work paused for several weeks and engineers redeployed internally; not 25% of total R&D budget.", "source": "The Information", "publisher_url": "https://www.theinformation.com/", "url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety", "published_at": None},
+    ])
 
     # Verified historical references: known stages are checkpoints, not fresh alerts.
     raw.extend([
@@ -3007,6 +3312,12 @@ def main() -> int:
             "new_articles":len(new_items),
             "new_events":len(events),
             "deferred_events":deferred_event_count,
+            "google_news_queries_requested":len(NEWS_QUERIES),
+            "google_news_queries_succeeded":google_news_success_count,
+            "google_news_queries_failed":len(google_news_failed_queries),
+            "google_news_rate_limit_429":sum("HTTP Error 429" in e for e in errors),
+            "source_access_limited":bool(errors or official_page_skips),
+            "all_sources_verified":not (errors or official_page_skips),
             "official_page_skips":official_page_skips,
             "errors":errors,
         },
@@ -3027,6 +3338,8 @@ def main() -> int:
         f"- 중요 필터 통과: {len(current)}건",
         f"- OpenShell 텔레메트리 최신: {openshell_telemetry.get('name') or '확인 불가'}",
         f"- 신규 중요 사건: {len(events)}건",
+        f"- 자료 조회: Google News {google_news_success_count}/{len(NEWS_QUERIES)}개 검색어 성공",
+        f"- 원천자료 완전성: {'조회 누락 있음 — 신규 0건이어도 사건 부재를 확정할 수 없음' if (errors or official_page_skips) else '조회 오류 감지 없음'}",
         f"- 한도 초과 다음 회차 이월 사건: {deferred_event_count}건",
         f"- 공식문서 접근 누락: {len(official_page_skips)}건",
         f"- 오류: {len(errors)}건",

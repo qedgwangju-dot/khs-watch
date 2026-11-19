@@ -783,6 +783,102 @@ jobs:
           print("ai_policy_fed_bank_cyber_genius_thirdparty_regression=PASS")
           PY
 
+      - name: Verify OpenAI cyber product, users, revenue caveats and safety checkpoints
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          from scripts.ai_safety_policy_watch import (
+              POLICY_EVENT_BASELINES, build_alert, cluster_events, material,
+              normalize, openai_cyber_growth_stage,
+              openai_cyber_growth_publisher_verified, tracked_policy_event_key,
+          )
+          def item(title, source, host, details=""):
+              return normalize({
+                  "kind":"news", "title":title, "description":details,
+                  "source":source, "publisher_url":host, "url":host+"story",
+              })
+          oai="https://openai.com/"
+          info="https://www.theinformation.com/"
+          reuters="https://www.reuters.com/"
+          examples=[
+              item("To Strengthen OpenAI, Brockman Goes Full Management Mode with cybersecurity bigger than coding",
+                   "The Information",info),
+              item("OpenAI GPT-6 Cyber approved Daybreak Red model release November 5 2026",
+                   "OpenAI",oai),
+              item("OpenAI Daybreak thousands of organizations use cybersecurity tools including Cloudflare Cisco IBM",
+                   "The Information",info),
+              item("OpenAI Daybreak cybersecurity program started May 2026",
+                   "OpenAI",oai),
+              item("OpenAI Daybreak for Frontline Defenders subsidized access announced September 2026",
+                   "OpenAI",oai),
+              item("OpenAI appoints Dali Rajic as chief revenue officer from Wiz August 13 2026",
+                   "OpenAI",oai),
+              item("OpenAI ChatGPT Codex teams merged and Dots integrated into superapp strategy",
+                   "The Information",info),
+              item("OpenAI shelves GPT-6.1 Astra model release September 28 2026 on safety",
+                   "Reuters",reuters),
+              item("OpenAI product work 25% paused for weeks to strengthen security under Brockman",
+                   "The Information",info),
+          ]
+          known=[
+              "openai_brockman:management_cyber_outlook_20261117",
+              "openai_cyber_models:gpt6_cyber_approved_20261105",
+              "openai_daybreak:thousands_orgs_reported_20261117",
+              "openai_daybreak:program_started_202605",
+              "openai_frontline:subsidy_announced_20260903",
+              "openai_revenue_exec:rajic_appointed_20260813",
+              "openai_superapp:chatgpt_codex_teams_merged_20261117",
+              "openai_safety_astra:astra61_release_shelved_20260928",
+              "openai_safety_work:quarter_product_work_paused_reported_20261117",
+          ]
+          assert [tracked_policy_event_key(x) for x in examples] == known
+          assert all(k in POLICY_EVENT_BASELINES for k in known)
+          assert all(material(x) and openai_cyber_growth_publisher_verified(x) for x in examples)
+          assert all(examples[i]["official"] for i in (1,3,4,5))
+          assert all(not examples[i]["official"] for i in (0,2,6,7,8))
+          assert len(cluster_events(examples)) == len(examples)
+          new_cases=[
+              ("OpenAI Daybreak new paid customer contract signed",
+                "openai_daybreak:new_paid_contract_reported"),
+              ("OpenAI Daybreak paying customer count disclosed",
+                "openai_daybreak:paying_customer_count_disclosed_reported"),
+              ("OpenAI GPT-6 Cyber Red access now expanded",
+                "openai_cyber_models:red_access_expanded_reported"),
+              ("OpenAI GPT-6.2 Cyber released",
+                "openai_cyber_models:next_cyber_model_released_reported"),
+              ("OpenAI cybersecurity revenue disclosed",
+                "openai_brockman:measured_cyber_revenue_reported"),
+              ("OpenAI GPT-6.1 Astra release restored",
+                "openai_safety_astra:release_restored_reported"),
+              ("OpenAI product work resumed after security hardening",
+                "openai_safety_work:product_security_work_resumed_reported"),
+          ]
+          for title,expected in new_cases:
+              check=item(title,"Reuters",reuters)
+              assert tracked_policy_event_key(check)==expected, (title,tracked_policy_event_key(check))
+              assert material(check)
+              assert expected not in POLICY_EVENT_BASELINES
+          forward=item("OpenAI Daybreak plans to sign paid contract",
+                       "Reuters",reuters)
+          assert tracked_policy_event_key(forward)=="openai_daybreak:program_started_202605"
+          fake=item("OpenAI GPT-6 Cyber Red access now expanded",
+                    "OpenAI","https://fake-openai.example.invalid/")
+          assert not openai_cyber_growth_publisher_verified(fake)
+          assert not material(fake) and not fake["official"]
+          falsepress=item("OpenAI Daybreak new paid customer contract signed",
+                          "The Information","https://fake-info.example.invalid/")
+          assert not material(falsepress)
+          unrelated=item("Anthropic unveils a new security model",
+                         "Reuters",reuters)
+          assert openai_cyber_growth_stage(unrelated) is None
+          msg=build_alert([[examples[2]]],dt.datetime(2026,11,19,tzinfo=dt.timezone.utc))[1]
+          assert "수천" in msg and "유료" in msg
+          assert "thousands_orgs_reported" not in msg
+          assert "고객" in msg
+          print("ai_policy_openai_cyber_business_revenue_and_safety_regression=PASS")
+          PY
+
       - name: Verify AWS Continuum launched service, client references, and 20pct estimate
         shell: bash
         run: |
