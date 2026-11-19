@@ -530,6 +530,14 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
                 label = '미국·중국·러시아 · 정상회담 시간 배정 보도'
                 first = re.sub(r'<b>\d+\.[^<]*</b>',
                                f'<b>{len(core) + 1}. {label}</b>', first, count=1)
+            elif (color == 'green' and _trilateral_peace_meeting(title)
+                  and (re.search(r'(?:미|美)\s*[·ㆍ/]?\s*(?:중|中)\s*[·ㆍ/]?\s*(?:러|露)', title)
+                       or re.search(r'트럼프.{0,8}푸틴.{0,8}시진핑', title))):
+                # The inherited topic can name the war's parties instead of
+                # the explicitly named participants in this summit.
+                label = '미국·중국·러시아 · 3자 정상회담 보도'
+                first = re.sub(r'<b>\d+\.[^<]*</b>',
+                               f'<b>{len(core) + 1}. {label}</b>', first, count=1)
             elif ((stage.non_military_kind(row) == 'diplomatic_contact'
                     and (stage._nuclear_talks_resumption_report(title)
                          or stage._qatar_us_iran_negotiations_contact(title)))

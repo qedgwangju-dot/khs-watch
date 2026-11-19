@@ -103,6 +103,35 @@ class TwoColorTests(unittest.TestCase):
         self.assertEqual(presentation.direction(stage, row(
             '트럼프·푸틴·시진핑 첫 대면 뒤 우크라 드론 공격 재개', ['종전·협상'])), 'red')
 
+    def test_trilateral_summit_projection_keeps_named_participants(self):
+        # The semantic blocks in runs 902/907 incorrectly used the parties to
+        # the Ukraine war as the label for a US-China-Russia summit.
+        titles = (
+            'APEC｜트럼프·푸틴·시진핑 선전서 첫 대면…우크라 종전 놓고 동상이몽 - OBC 뉴스',
+            '3대 핵보유국 정상 첫 회동… "밀실 담판" "합의 미지수" [미중러 첫 3자회담]',
+        )
+
+        def render(title):
+            link = 'https://example.com/article'
+            row = {'id': 'actual-title', 'title_original': title, 'title_ko': title,
+                   'description': title, 'tags': ['종전·협상'], 'link': link,
+                   'body_verified': False, 'classification_color': 'red',
+                   'rendered': True}
+            semantic = ('<b>전쟁·종전·재건 웹감시</b>\n<b>핵심 변화</b>\n'
+                        '🔴 [신규] <b>1. 우크라이나·러시아</b>\n'
+                        + html.escape(title) + '\n<a href="' + link + '">기사</a>\n'
+                        + '<b>투자 판정</b>')
+            return presentation.project(stage, semantic, {'articles': [row]}, {}, {})[0]
+
+        for title in titles:
+            with self.subTest(title=title):
+                projected = render(title)
+                self.assertIn('🟢 [신규] <b>1. 미국·중국·러시아 · 3자 정상회담 보도</b>', projected)
+                self.assertIn(html.escape(title), projected)
+        separate_attack = render('트럼프·푸틴·시진핑 첫 대면 뒤 우크라 드론 공격 재개')
+        self.assertIn('🔴 [신규]', separate_attack)
+        self.assertNotIn('미국·중국·러시아 · 3자 정상회담 보도', separate_attack)
+
     def test_repeat_gate_and_projection_are_idempotent(self):
         self.present()
         before = [path.read_bytes() for path in (self.watch.ALERT, self.watch.AUDIT, self.watch.PENDING)]
