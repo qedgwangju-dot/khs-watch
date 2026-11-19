@@ -18,6 +18,7 @@ import json
 import os
 import pathlib
 import re
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -175,6 +176,29 @@ CATEGORIES = (
         meaning="목표주가보다 Flight 15와 재사용·궤도 컴퓨팅 진전이 실제 이익성장률과 멀티플 확대 가정을 검증하는지 봅니다.",
         failure="재사용 회전시간 또는 AI·전력 인프라 수익화가 늦으면 높은 성장 가정이 먼저 훼손됩니다.",
         indicator="Flight 15 시험목표 달성, Starship 재비행 간격, 궤도 컴퓨팅 시제품 일정, 증권사 이익 추정치 변경",
+    ),
+    Category(
+        key="starmind_execution",
+        tag="[실제 진행·검증 대기]",
+        name="Starship 발사빈도·StarMind AI1·세아 특수합금 실제 실행",
+        queries=(
+            '"SpaceX" "Starship" ("weekly launches" OR "weekly cadence" OR "four consecutive weeks") when:7d',
+            '"SpaceX" ("Starmind" OR "AI1") ("launched" OR "deployed" OR "in orbit" OR "first launch") when:7d',
+            '"SeAH" ("SST" OR "superalloy" OR "Texas") ("commercial production" OR "operations begin") when:7d',
+            '"SeAH" "SpaceX" ("new supply contract" OR "additional alloy order") when:7d',
+            '스타십 매주 발사 달성 스타마인드 AI1 위성 최초 발사 세아 SST 상업가동 when:7d',
+        ),
+        relevance=re.compile(
+            r"(SpaceX|Starship|스타십|스페이스X).*(weekly|cadence|every week|"
+            r"Starmind|AI1|연속 발사|주 1회|매주 발사)|"
+            r"(Starmind|AI1|스타마인드).*(SpaceX|launch|deploy|발사|궤도)|"
+            r"(SeAH|세아|SST).*(Texas|superalloy|SpaceX|production|가동|수주)|"
+            r"(weekly|cadence|StarMind).*(Starship|SpaceX)",
+            re.I,
+        ),
+        meaning="2027년 발사빈도는 회사 목표, AI1 비용은 증권사 추정입니다. 실제 달성·발사·공장 가동·납품을 별도 사건으로 확인합니다.",
+        failure="1·2단 재사용 검증·발사허가·전력/방열/광통신·설비 시운전과 고객 품질승인 지연",
+        indicator="실제 주간 발사 4주 연속·AI1 첫 궤도 배치·SST 상업가동 공시·SpaceX 신규 납품 계약",
     ),
     Category(
         key="golden_dome",
@@ -407,6 +431,101 @@ def item_text(item: dict) -> str:
     return f'{item.get("title","")} {item.get("description","")} {item.get("source","")}'
 
 
+# Existing LS Securities 2026-11-17 research is a forecast, not a fresh
+# launch, sale, production start or SpaceX signing. Do not auto-rebroadcast it.
+STARMIND_PRODUCT_URL="https://new.spacex.com/spacexai/starmind"
+SEAH_PLANT_RELEASE_URL=("https://www.prnewswire.com/news-releases/"
+    "seah-besteel-holdings-accelerates-global-aerospace-expansion-through-new-us-production-hub-302809044.html")
+
+def starmind_execution_stage(title: str) -> str | None:
+    """Return only a concrete later milestone, never an analyst scenario."""
+    t=title.casefold()
+    if re.search(r"\b(plans?|planning|targets?|aims?|forecasts?|projects?|"
+                 r"expects?|could|may|will|to launch|to start|estimated|"
+                 r"projection|hypothetical)\b|목표|전망|추정|가능성|계획|예정|내년부터",t):
+        return None
+    if re.search(r"starship|스타십",t) and re.search(r"spacex|스페이스x|스타십",t):
+        if re.search(r"(reaches?|achieves?|begins?|starts?|maintains?)"
+                     r".{0,55}(weekly|one launch per week|every week|주 1회|매주)|"
+                     r"(weekly|four consecutive weekly|4 consecutive weekly|주 1회|매주)"
+                     r".{0,45}(achieved|begins?|starts?|completed|달성|시작)",t):
+            return "weekly_cadence_report"
+    if re.search(r"spacex|스타마인드|starmind|ai1",t) and re.search(r"ai1|starmind|스타마인드",t):
+        if re.search(r"(first|maiden|첫|최초).{0,35}(ai1|starmind|스타마인드).{0,40}"
+                     r"(launched|deployed|in orbit|발사 성공|궤도 진입|배치)|"
+                     r"(ai1|starmind|스타마인드).{0,50}"
+                     r"(launched|deployed|reaches orbit|발사 성공|궤도 배치)",t):
+            return "ai1_first_deployment_report"
+    if re.search(r"\bseah\b|세아|sst|superalloy",t):
+        if re.search(r"sst|seah superalloy|세아.*(미국|텍사스|특수합금)",t) and re.search(
+            r"(begins?|starts?|commences?|launched).{0,35}"
+            r"(commercial|production|operations)|"
+            r"(commercial production|commercial operation).{0,35}"
+            r"(begins?|starts?|commences?)|상업가동 (시작|개시)|상업 생산 개시",t):
+            return "sst_commercial_start_report"
+        if re.search(r"spacex|스페이스x",t) and re.search(
+            r"(signs?|signed|awarded|wins?).{0,40}(new|additional).{0,30}"
+            r"(supply|alloy|contract|order)|"
+            r"(new|additional).{0,35}(supply contract|alloy order)|"
+            r"(신규|추가).{0,25}(납품계약|공급계약|수주)",t):
+            return "seah_new_spacex_order_report"
+    return None
+
+
+def starmind_event_identity(stage: str, title: str, published: str) -> str:
+    if stage in {"weekly_cadence_report","ai1_first_deployment_report",
+                 "sst_commercial_start_report"}:
+        return "starmind:actual:"+stage
+    # An independently awarded later alloy order is not automatically the
+    # same order as an earlier one; keep its publication month.
+    pub=dt.datetime.fromisoformat(published).strftime("%Y-%m")
+    return "starmind:reported:"+stage+":"+pub
+
+
+def render_starmind_milestone(item: dict) -> str:
+    stage=starmind_execution_stage(item["title"])
+    if not stage:
+        raise ValueError("A forecast or unclassified headline cannot be sent")
+    labels={
+        "weekly_cadence_report":"[실행 보도·공식 완료 확인 전] Starship 주간 발사 빈도",
+        "ai1_first_deployment_report":"[배치 보도·공식 완료 확인 전] Starmind AI1 위성",
+        "sst_commercial_start_report":"[가동 보도·공시 확인 전] 세아 미국 SST 공장",
+        "seah_new_spacex_order_report":"[수주 보도·계약 확인 전] 세아–SpaceX 특수합금",
+    }
+    note={
+        "weekly_cadence_report":(
+            "• 기존: SpaceX 2026년 3분기 컨퍼런스콜의 2027년 상반기 주 1회·"
+            "하반기 주 2회 이상은 목표였습니다. 여러 회 연속 실제 발사횟수와 "
+            "동일 기체 재비행은 따로 확인해야 합니다."),
+        "ai1_first_deployment_report":(
+            "• 기준: SpaceX AI1 공식 제품자료는 위성당 평균 연산전력 175kW·"
+            "최대 250kW입니다. LS증권 2027년 4분기 발사 가능 전망과 회사의 "
+            "기존 2028년 투자설명자료 배치 일정을 분리합니다."),
+        "sst_commercial_start_report":(
+            "• 기존: 세아의 SST 설계 생산능력은 연 6,000톤이며 "
+            "기존 공식 2026년 하반기 전망과 2027년 1분기 보도가 다릅니다. "
+            "공장 완공·상업가동·고객 승인·실제 공급량을 각각 확인해야 합니다."),
+        "seah_new_spacex_order_report":(
+            "• 기존: 세아창원특수강의 과거 SpaceX 소재 공급 보도와 "
+            "이번 신규 계약은 별개입니다. 계약 상대·금액·물량·확정 단계는 미확인입니다."),
+    }
+    base=(STARMIND_PRODUCT_URL if "ai1" in stage or "weekly" in stage
+          else SEAH_PLANT_RELEASE_URL)
+    other_url=item.get("_peer_link")
+    return "\n".join([
+        labels[stage],
+        "■ 새로운 사건 보도: "+item["title"],
+        "• 확인 수준: 서로 다른 두 언론사 보도 제목 대조. 동일 원보도 재전송 "
+        "가능성이 있으며 당사자 공식 완료 원문·공시 직접 확인 전입니다.",
+        note[stage],
+        "• 후속: 원문·고객·발사/납품 실적을 확인하기 전까지 신규 확정 매출 "
+        "또는 가동률로 환산하지 않습니다.",
+        "• 원문: "+item["link"],
+        *(["• 원문: "+other_url] if other_url and other_url!=item["link"] else []),
+        "• 원문: "+base,
+    ])
+
+
 def signal_score(category: Category, item: dict) -> int:
     text = item_text(item)
     if NOISE.search(text):
@@ -484,6 +603,30 @@ def corroborated(category: Category, item: dict, peers: Iterable[dict]) -> bool:
     # An issuer-sourced article is not proof of an external broker's
     # recommendation or of the before/after target value.
     if category.key in {"rocketlab", "spacex_valuation"} and kind(category.key, str(item.get("title") or "")) == "analyst":
+        return False
+    if category.key == "starmind_execution":
+        # Do not promote recycled 2027 goals/LS forecasts into actual
+        # launch, operating or signed-contract events.
+        milestone=starmind_execution_stage(item.get("title") or "")
+        if not milestone or not source_is_trusted(item):
+            return False
+        for peer in peers:
+            if peer is item or not source_is_trusted(peer):
+                continue
+            if (peer.get("source") or "").casefold().strip()==(
+                    item.get("source") or "").casefold().strip():
+                continue
+            if starmind_execution_stage(peer.get("title") or "") != milestone:
+                continue
+            try:
+                a=dt.datetime.fromisoformat(item["published"])
+                b=dt.datetime.fromisoformat(peer["published"])
+            except (TypeError,ValueError,KeyError):
+                continue
+            if abs((a-b).total_seconds())>72*3600:
+                continue
+            item["_peer_link"]=peer.get("link")
+            return True
         return False
     if source_is_official(item):
         # Primary evidence for the named organization, never proof of unrelated
@@ -608,6 +751,8 @@ def save_pending_state(state: dict) -> None:
 
 
 def render_item(category: Category, item: dict, rate: float | None) -> str:
+    if category.key == "starmind_execution":
+        return render_starmind_milestone(item)
     from space_launch_event_guard import kind
 
     tag, meaning, failure, indicator = category.tag, category.meaning, category.failure, category.indicator
@@ -1036,15 +1181,21 @@ def main() -> int:
     initialized: list[str] = state.setdefault("initialized_categories", [])
     newly_initialized: list[str] = []
     all_by_category: dict[str, list[dict]] = {}
+    query_success_by_category: dict[str,int] = {}
+    query_fail_by_category: dict[str,int] = {}
     fetch_errors: list[str] = []
 
     for category in CATEGORIES:
         rows: list[dict] = []
+        query_success_by_category[category.key]=0
+        query_fail_by_category[category.key]=0
         for query in category.queries:
             locale = ("ko", "KR", "KR:ko") if re.search(r"[가-힣]", query) else ("en-US", "US", "US:en")
             try:
                 rows.extend(google_news(query, *locale))
+                query_success_by_category[category.key]+=1
             except Exception as exc:
+                query_fail_by_category[category.key]+=1
                 fetch_errors.append(f"{category.key}: {type(exc).__name__}: {exc}")
         dedup: dict[str, dict] = {}
         for item in rows:
@@ -1092,6 +1243,8 @@ def main() -> int:
         peers = all_by_category[category.key]
         candidates: list[dict] = []
         for item in peers:
+            if category.key == "starmind_execution" and not starmind_execution_stage(item.get("title") or ""):
+                continue
             if previously_reported_flight15_summary(item, seen):
                 continue
             score = signal_score(category, item)
@@ -1110,7 +1263,11 @@ def main() -> int:
             item["_verified"] = corroborated(category, item, peers)
             if item["_verified"]:
                 from space_launch_event_guard import semantic_id
-                item["_semantic_id"] = semantic_id(category.key, item)
+                item["_semantic_id"] = (
+                    starmind_event_identity(starmind_execution_stage(item["title"]),
+                                            item["title"],item["published"])
+                    if category.key=="starmind_execution"
+                    else semantic_id(category.key, item))
                 candidates.append(item)
 
         candidates.sort(key=lambda x: (x.get("_score", 0), x.get("published") or ""), reverse=True)
@@ -1194,7 +1351,13 @@ def main() -> int:
         "## 카테고리별 검색 결과",
     ]
     for category in CATEGORIES:
-        status_lines.append(f"- {category.name}: {len(all_by_category[category.key])}개 검색")
+        success_count=query_success_by_category[category.key]
+        fail_count=query_fail_by_category[category.key]
+        scan_status=("조회 실패·해당 항목 신규 발표 여부 미확인" if success_count==0
+                     else "일부 출처 조회 장애" if fail_count
+                     else "조회 정상·신규 적격 변화 없으면 Telegram 생략")
+        status_lines.append(f"- {category.name}: {len(all_by_category[category.key])}개 검색; "
+                            f"성공 {success_count}, 실패 {fail_count} ({scan_status})")
     if fetch_errors:
         status_lines.extend(["", "## 조회 오류"])
         status_lines.extend(f"- {x}" for x in fetch_errors[:20])
@@ -1219,6 +1382,37 @@ def self_test() -> int:
     assert any("amendment OR ceiling" in query for query in next(x for x in CATEGORIES if x.key=="moon_base_clps").queries)
     assert "starlink_optical" in [x.key for x in CATEGORIES]
     assert "starship_flight_results" in [x.key for x in CATEGORIES]
+    assert "starmind_execution" in [x.key for x in CATEGORIES]
+    # Broker projections must not trigger actual weekly launch or AI1 alerts.
+    assert starmind_execution_stage("SpaceX targets weekly Starship launches in first half of 2027") is None
+    assert starmind_execution_stage("LS Securities estimates Starship V3 costs $200/kg and V4 $100/kg") is None
+    assert starmind_execution_stage("Starmind AI1 satellite expected to launch in fourth quarter 2027") is None
+    assert starmind_execution_stage("SeAH SST expects commercial operation in first quarter 2027") is None
+    assert starmind_execution_stage("SpaceX Starship achieves weekly launches after four consecutive weeks")=="weekly_cadence_report"
+    assert starmind_execution_stage("SpaceX launches first Starmind AI1 satellite into orbit")=="ai1_first_deployment_report"
+    assert starmind_execution_stage("SeAH SST Texas plant begins commercial production")=="sst_commercial_start_report"
+    assert starmind_execution_stage("SeAH signs new SpaceX alloy supply contract")=="seah_new_spacex_order_report"
+    sample_new={"title":"SpaceX Starship achieves weekly launches after four consecutive weeks",
+                "source":"Reuters","source_url":"https://www.reuters.com",
+                "published":NOW.isoformat(),"link":"https://www.reuters.com/a",
+                "description":""}
+    another_new=dict(sample_new,source="SpaceNews",source_url="https://spacenews.com",
+                     title="SpaceX Starship weekly cadence achieved four consecutive weeks",
+                     link="https://spacenews.com/b")
+    target_report=dict(sample_new,title="SpaceX plans weekly Starship launches in 2027")
+    econ=next(x for x in CATEGORIES if x.key=="starmind_execution")
+    assert not corroborated(econ,target_report,[target_report,another_new])
+    assert not corroborated(econ,sample_new,[sample_new])
+    assert corroborated(econ,sample_new,[sample_new,another_new])
+    assert starmind_event_identity("weekly_cadence_report",sample_new["title"],sample_new["published"])==starmind_event_identity(
+        "weekly_cadence_report",another_new["title"],another_new["published"])
+    assert starmind_event_identity("ai1_first_deployment_report","AI1 first",NOW.isoformat())!=starmind_event_identity(
+        "weekly_cadence_report","Starship weekly",NOW.isoformat())
+    report=render_item(econ,sample_new,None)
+    assert "당사자 공식 완료" in report and report.count("• 원문: ")==3
+    assert "신규 확정 매출" in report
+    assert round(43*175/1000,3)==7.525 and round(86*175/1000,2)==15.05
+    assert abs((1000*1000/175)*2.3*1000*200/1e9-2.62857)<0.0001
     assert NASA_CLPS2_EVENT != STARLINK_V4_VISION_EVENT
     assert FLIGHT15_COMPLETED_KEY not in {NASA_CLPS2_EVENT,STARLINK_V4_VISION_EVENT}
     seen_flight15={FLIGHT15_COMPLETED_KEY:"2026-11-15T18:23:43Z"}
