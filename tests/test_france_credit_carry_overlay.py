@@ -84,7 +84,13 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         self.assertIn("AFT France Moody's rating calendar:", msg)
 
     def test_dated_official_snapshot_can_remind_but_not_assert_downgrade(self):
-        snapshot = dict(watch.VERIFIED_AFT_SNAPSHOT)
+        # Pre-review historical fixture, not the updated November baseline.
+        snapshot = {
+            **watch.VERIFIED_AFT_SNAPSHOT,
+            "decision_date": "2026-04-10",
+            "next_review": "2026-10-23",
+            "verified_on": "2026-10-14",
+        }
         old = {"last_official": snapshot}
         event = watch.credit_events(dt.date(2026, 10, 16), old, snapshot)
         self.assertEqual([x["kind"] for x in event], ["milestone"])
@@ -95,6 +101,24 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         _, msg = watch.format_event(snapshot, event, {}, dt.datetime(
             2026, 10, 16, tzinfo=watch.KST))
         self.assertIn("최신 일정 변경 여부는 확인 불가", msg)
+
+    def test_latest_verified_moodys_is_not_an_unverified_october_result(self):
+        baseline = dict(watch.VERIFIED_AFT_SNAPSHOT)
+        self.assertEqual(baseline["decision_date"], "2026-10-23")
+        self.assertEqual(baseline["rating"], "Aa3")
+        self.assertEqual(baseline["outlook"], "Negative")
+        self.assertIsNone(baseline["next_review"])
+        self.assertFalse(watch.credit_events(
+            dt.date(2026, 11, 19), {"last_official": baseline}, baseline))
+        pending = {"last_values": {"fr_mkt": 4.87, "de_mkt": 3.37},
+                   "last_source_dates": {"fr_mkt": "2026-11-18",
+                                         "de_mkt": "2026-11-18"}, "stale": []}
+        updated = watch.add_market_carry_context(
+            "■ 시장 영향\\n• 미 국채 영향", pending, dt.date(2026, 11, 19))
+        self.assertIn("Aa3", updated)
+        self.assertIn("2026년 10월 23일", updated)
+        self.assertIn("ECB 11월 18일 금융안정보고서", updated)
+        self.assertIn("직접 원인", updated)
 
     def test_outage_alert_is_labeled_source_failure_not_rating_result(self):
         snapshot = dict(watch.VERIFIED_AFT_SNAPSHOT)
