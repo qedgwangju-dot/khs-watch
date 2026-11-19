@@ -1027,11 +1027,23 @@
       "source": "BigGo Finance",
       "published_kst": "2026-11-18T16:26:00+09:00",
       "first_seen_kst": "2026-11-18T19:44:42+09:00"
+    },
+    "6b3f1741a6debc7a6f936ff0": {
+      "title": "HBM4 Memory Price Forecast: TrendForce Sees $3 to $5.50 Per Gigabit Next Year, Up From $2.05 Now - Tech Times",
+      "source": "Tech Times",
+      "published_kst": "2026-11-19T08:35:02+09:00",
+      "first_seen_kst": "2026-11-19T10:36:51+09:00"
+    },
+    "bc07b8f42f27371b2bdf1c96": {
+      "title": "[News] Memory Makers Reportedly Plan New Price Hikes While AI Demand Widens Enterprise-Consumer Divide - TrendForce",
+      "source": "TrendForce",
+      "published_kst": "2026-11-12T13:15:21+09:00",
+      "first_seen_kst": "2026-11-19T10:36:51+09:00"
     }
   },
-  "updated_at_kst": "2026-11-19T04:44:26+09:00",
+  "updated_at_kst": "2026-11-19T10:36:51+09:00",
   "last_scan_count": 15,
-  "last_new_count": 0,
+  "last_new_count": 2,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -1091,21 +1103,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-18T19:44:57+09:00",
+  "last_successful_delivery_kst": "2026-11-19T10:37:08+09:00",
   "telegram_message_ids": [
-    519
+    524
   ],
-  "telegram_message_id": 519,
+  "telegram_message_id": 524,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      519
+      524
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-18T19:44:57+09:00",
-    "alert_signature": "75514537f7fd65e4822be93e257d312a79aa8981fb7399d51eb58a9f6209cf0a"
+    "confirmed_at_kst": "2026-11-19T10:37:08+09:00",
+    "alert_signature": "812193025eced4fbf18ea1dcab25df8d18392ef79a662a894c61ee102cc7d1e1"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
