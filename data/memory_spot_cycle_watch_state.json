@@ -1063,11 +1063,17 @@
       "source": "TrendForce Research",
       "published_kst": "2026-11-19T09:00:00+09:00",
       "first_seen_kst": "2026-11-19T18:37:56+09:00"
+    },
+    "991036e1fd5b898ce5750644": {
+      "title": "SSDs, laptops, and phones may get cheaper as consumer NAND spot pricing drops 20% — Bank of America expects contract price drops, report cites oversupply in consumer market amid declining demand and growing Chinese competition - Tom's Hardware",
+      "source": "Tom's Hardware",
+      "published_kst": "2026-11-18T21:00:00+09:00",
+      "first_seen_kst": "2026-11-19T20:56:54+09:00"
     }
   },
-  "updated_at_kst": "2026-11-19T18:37:56+09:00",
-  "last_scan_count": 17,
-  "last_new_count": 4,
+  "updated_at_kst": "2026-11-19T20:56:58+09:00",
+  "last_scan_count": 18,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -1127,21 +1133,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-19T18:38:19+09:00",
+  "last_successful_delivery_kst": "2026-11-19T20:57:10+09:00",
   "telegram_message_ids": [
-    532
+    534
   ],
-  "telegram_message_id": 532,
+  "telegram_message_id": 534,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      532
+      534
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-19T18:38:19+09:00",
-    "alert_signature": "2e9502916982050239de67139dc90781363eae9e43ef10b6c0a31e012c3e0031"
+    "confirmed_at_kst": "2026-11-19T20:57:10+09:00",
+    "alert_signature": "30ffaed4c31c3ae7ad3a5d13e47ca51431129c73a9778bc955ff5fa7557f1891"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1464,8 +1470,8 @@
   "nand_2027_reversal_samr": {
     "fact_key": "trendforce-20261117-nand-2q27-china-cssd-regulatory-context-v1",
     "research_published": "2026-11-17",
-    "old_contract_price_fall_quarter": "2027-Q3",
-    "new_contract_price_fall_quarter": "2027-Q2",
+    "old_contract_price_fall_quarter": "2027-Q2",
+    "new_contract_price_fall_quarter": "2027-Q1",
     "forecast_scope": "overall_nand_contract_not_enterprise_q4_2026",
     "china_csp_cut_offsets_north_american_growth": true,
     "china_csp_cancelled_signed_contracts_confirmed": false,
@@ -1475,6 +1481,28 @@
     "china_samr_review_earliest_date": "2026-12-22",
     "china_samr_price_rule_scope": "China PCIe/SATA enterprise SSD, not NAND wafer spot",
     "china_samr_restriction_revocation_status": "not_officially_confirmed",
-    "source_grade": "2026-11-17 TrendForce publisher public summary + 2021 SAMR original legal source"
+    "source_grade": "TrendForce 2026-11-19 direct press release",
+    "research_forecast_20261117_previous": "2027-Q3",
+    "research_forecast_20261117_revised": "2027-Q2",
+    "all_nand_categories_price_decline_quarter": "2027-Q2",
+    "press_20261119_event_id": "trendforce-nand-20261119-overall-1q27-all-products-2q27-v1",
+    "press_20261119_date": "2026-11-19",
+    "press_20261119_primary_source": "https://www.trendforce.com/presscenter/news/20261119-13314.html",
+    "contract_price_2027q1_qoq_pct": [
+      -5.0,
+      0.0
+    ],
+    "contract_price_2026q4_qoq_forecast_pct": [
+      8.0,
+      13.0
+    ],
+    "nand_capex_2027_usd_b": 29.9,
+    "nand_capex_2027_yoy_pct": 26.7,
+    "nand_bit_supply_2027_yoy_pct": [
+      25.0,
+      30.0
+    ],
+    "spot_price_correction_reported_gt_pct": 20.0,
+    "customer_signed_order_cancellations_unverified": true
   }
 }
