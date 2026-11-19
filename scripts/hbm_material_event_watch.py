@@ -361,6 +361,45 @@ REPORTS = (
         ),
         "caution": "이전 키움증권 11월 16일 2028년 공급과잉 모델과는 근거·시나리오가 다른 TrendForce의 증설 일정 설명. P5 단계별 웨이퍼 목표가 중복·과대 합산되지 않도록 향후 설비 공시와 대조해야 하며 실제 가동·고객 승인 이전에는 확정 매출로 계산하지 않음.",
     },
+    {
+        "key": "20261119_munhwa_skhynix_20high_hybrid_bonder_report",
+        "date": "2026-11-19",
+        "max_age_days": 30,
+        "group": "hybrid_equipment",
+        "label": "문화일보 단독: SK하이닉스 20단 HBM 하이브리드 본더 투입 보도",
+        "short_title": "20단 HBM 하이브리드 본더 투입 보도",
+        "brief_facts": (
+            "2026년 11월 19일 문화일보 단독 보도: SK하이닉스 20단 HBM용 하이브리드 본더 '투입'. 확인 단계는 언론 보도이며, SK하이닉스 공식 구매계약·설치·양산 확정과 구분.",
+            "기존 대비: 2026년 2월 Applied Materials·Besi 키넥스 파일럿 평가 보도가 존재. 이번 건이 장비 신규 반입·증설인지, 기존 평가의 후속인지 원문·발주처로 확인 필요.",
+            "다음 확인: 장비 제조사·대수·공급금액·실제 반입→설치·파일럿 가동→수율·신뢰성 검증→고객 승인→20단 HBM 양산·출하·매출.",
+        ),
+        "brief_caution": (
+            "기사 제목만으로 공급사·대수·계약·양산을 확정하지 않음. "
+            "원문 확보 실패 시 발송하지 않고 확인 대기. 20단 기술 개발과 양품 양산은 다른 단계."
+        ),
+        "sources": (
+            ("문화일보 11월 19일 단독 기사", "https://munhwa.com/article/11632525",
+             "단일 언론 원보도·독립 회사 확인 전"),
+        ),
+        "context_links": (
+            ("SK하이닉스 공식 기술 설명", "https://news.skhynix.com/en/tech-note-series-ep2/"),
+            ("2026년 2월 파일럿 보도", "https://www.greened.kr/news/articleViewAmp.html?idxno=337399"),
+        ),
+        "need": (
+            ("SK하이닉스", "SK hynix"), ("20단", "20-layer", "20-high"),
+            ("HBM",), ("하이브리드 본더", "하이브리드본더", "hybrid bonder"),
+            ("투입", "도입", "반입", "평가", "설치"),
+        ),
+        "facts": (
+            "2026년 11월 19일 문화일보 단독 제목상 SK하이닉스가 20단 HBM용 하이브리드 본더를 투입한다는 보도. 장비 투입·구매·설치의 정확한 단계는 기사 본문과 발주처 공식 근거로 추가 확인.",
+            "기존 대비 2026년 2월 Applied Materials·Besi 장비 파일럿 평가 보도가 선행하므로 이번 건이 처음 도입된 장비인지, 추가 도입·평가 확대인지 확인 전 단정 금지.",
+            "향후 독립 확인할 항목: 제조사·발주 상대방·설비 대수·계약금액·설치·성능검증·양품 수율·고객 승인·20단 HBM 양산 및 매출 시점.",
+        ),
+        "caution": (
+            "단독 언론 보도이며 SK하이닉스의 장비 계약·납품·20단 HBM 양산 공식 확인 전. "
+            "기존 MR-MUF 16단 생산과 20단 하이브리드 본딩 기술 검증을 혼동하지 않음."
+        ),
+    },
 )
 
 GROUPS = {
@@ -371,6 +410,7 @@ GROUPS = {
     "financial": "SK하이닉스 지역별 매출·고객 집중도·설비투자·연구개발비",
     "cycle": "2027~2028 DRAM·NAND 공급과잉 전망 vs HBM 수요·고객 계약",
     "roadshow": "TrendForce 2026.11.18 로드쇼 — HBM4 가격·2027 수급·2028 증설 위험",
+    "hybrid_equipment": "SK하이닉스 20단 HBM · 하이브리드 본더 검증·도입 단계",
 }
 
 def text_matches(body: str, required: tuple) -> bool:
@@ -417,7 +457,8 @@ def probe(report: dict, fetcher=fetch_article) -> tuple[dict | None, list[dict]]
                     "verified_kind": "reported_not_issuer_confirmed",
                     "short_title": report.get("short_title"),
                     "brief_facts": report.get("brief_facts"),
-                    "brief_caution": report.get("brief_caution")}, gaps
+                    "brief_caution": report.get("brief_caution"),
+                    "context_links": report.get("context_links", ())}, gaps
         except Exception as exc:
             gaps.append({"key": report["key"], "origin": label,
                          "status": "source_unavailable", "error_type": type(exc).__name__})
@@ -444,6 +485,12 @@ def render(group: str, items: list[dict], checked_at: str) -> str:
         lines.append("• 주의: " + html.escape(caution))
         lines.append(f'• <a href="{html.escape(item["source"], quote=True)}">근거 기사</a>'
                      f' ({html.escape(item["source_label"])})')
+        if item.get("context_links"):
+            related = " · ".join(
+                f'<a href="{html.escape(url, quote=True)}">{html.escape(label)}</a>'
+                for label, url in item["context_links"]
+            )
+            lines.append("• 비교 근거: " + related)
         sections.append("\n".join(lines))
     # The downstream currency guard may expand each USD price with KRW;
     # reserve room before GitHub's 3600-unit safe Telegram chunk limit.
@@ -472,7 +519,7 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
         # A publication scheduled in the future must not be fetched or sent.
         if date.fromisoformat(checked_at[:10]) < date.fromisoformat(report["date"]):
             continue
-        if (date.fromisoformat(checked_at[:10]) - date.fromisoformat(report["date"])).days > MAX_AGE_DAYS:
+        if (date.fromisoformat(checked_at[:10]) - date.fromisoformat(report["date"])).days > report.get("max_age_days", MAX_AGE_DAYS):
             gaps.append({"key": report["key"], "status": "older_than_backfill_window"})
             continue
         obs, err = probe(report, fetcher)
@@ -488,7 +535,7 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
         "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield",
     }
     rendered = [render(group, [x for x in new if x["group"] == group], checked_at)
-                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow")
+                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow", "hybrid_equipment")
                 if any(x["group"] == group for x in new)]
     audit = {"checked_at_kst": checked_at, "verified_events": len(new),
              "verified_keys": [x["key"] for x in new], "gaps": gaps[-20:],

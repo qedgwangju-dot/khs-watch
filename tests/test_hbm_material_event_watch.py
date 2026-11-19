@@ -331,7 +331,8 @@ class MaterialEventTests(unittest.TestCase):
         self.assertIn("전체 가격대가 100% 이상", alert)
         self.assertIn("11월 17일", alert)  # already monitored NAND event, no duplicate
         self.assertEqual(updated["delivery_receipt"], previous["delivery_receipt"])
-        self.assertEqual(len(updated["hbm_material_event_watch"]["seen_keys"]), len(m.REPORTS))
+        self.assertEqual(len(updated["hbm_material_event_watch"]["seen_keys"]),
+                         sum(row["date"] <= "2026-11-18" for row in m.REPORTS))
         for chunk in d.chunks(alert):
             self.assertTrue(chunk.strip())
         _, repeated, repeated_audit = m.apply(
@@ -390,6 +391,68 @@ class MaterialEventTests(unittest.TestCase):
         self.assertTrue(all(len(part.encode("utf-16-le")) // 2 <= 3600
                             for part in segments))
         self.assertEqual(sum(part.count("근거 기사") for part in segments), 4)
+
+    def test_munhwa_20high_equipment_article_gate_and_safe_retry(self):
+        """Single-source equipment lead stays unverified until exact publisher body."""
+        report = next(row for row in m.REPORTS if row["key"] ==
+                      "20261119_munhwa_skhynix_20high_hybrid_bonder_report")
+        previous = {
+            "delivery_receipt": {"status": "confirmed", "message_ids": [512, 513]},
+            "hbm_hybrid_bonding": {"skhynix_official_hybrid_stage": "technical_feasibility"},
+            "hbm_material_event_watch": {"seen_keys": [
+                row["key"] for row in m.REPORTS if row["date"] < "2026-11-19"
+            ]},
+        }
+        def no_fetch(_):
+            raise AssertionError("No future or acknowledged article fetch")
+        out, msgs, audit = m.apply(previous, "2026-11-18T23:59:59+09:00", no_fetch)
+        self.assertEqual(msgs, [])
+        self.assertEqual(audit["verified_events"], 0)
+        self.assertNotIn(report["key"], out["hbm_material_event_watch"]["seen_keys"])
+
+        def inaccessible(_):
+            raise TimeoutError("publisher unavailable")
+        blocked, alerts, audit = m.apply(previous, "2026-11-19T12:00:00+09:00", inaccessible)
+        self.assertEqual(alerts, [])
+        self.assertEqual(audit["verified_events"], 0)
+        self.assertIn(report["key"], [v["key"] for v in audit["gaps"]])
+        self.assertNotIn(report["key"], blocked["hbm_material_event_watch"]["seen_keys"])
+
+        incomplete = "SK하이닉스 20단 HBM 하이브리드 본더"
+        found, missing = m.probe(report, lambda url: incomplete)
+        self.assertIsNone(found)
+        self.assertEqual(len(missing), 1)
+        self.assertEqual(missing[0]["status"], "required_article_facts_not_verified")
+
+        exact_article = (
+            "2026년 11월 19일 문화일보 단독. "
+            "SK하이닉스 20단 HBM 하이브리드 본더 투입 보도. "
+            "고객 승인·양산 장비 대수·구매계약 미공개. "
+        ) * 8
+        later, notices, checked = m.apply(
+            blocked, "2026-11-19T12:15:00+09:00",
+            lambda url: exact_article if url == "https://munhwa.com/article/11632525"
+            else (_ for _ in ()).throw(AssertionError("unexpected source"))
+        )
+        self.assertEqual(checked["verified_events"], 1)
+        self.assertEqual(checked["verified_keys"], [report["key"]])
+        self.assertEqual(len(notices), 1)
+        msg = notices[0]
+        self.assertIn("하이브리드 본더 투입 보도", msg)
+        self.assertIn("문화일보 단독 보도", msg)
+        self.assertIn("https://munhwa.com/article/11632525", msg)
+        self.assertIn("https://news.skhynix.com/en/tech-note-series-ep2/", msg)
+        self.assertIn("기존 평가의 후속인지", msg)
+        self.assertEqual(later["delivery_receipt"], previous["delivery_receipt"])
+        self.assertEqual(later["hbm_hybrid_bonding"], previous["hbm_hybrid_bonding"])
+        self.assertEqual(sum(v.count("근거 기사") for v in d.chunks(msg)), 1)
+        m.require_durable_seen_keys(previous, later)
+        repeated, repeated_alerts, again_audit = m.apply(
+            later, "2026-11-20T09:00:00+09:00", no_fetch
+        )
+        self.assertEqual(repeated_alerts, [])
+        self.assertEqual(again_audit["verified_events"], 0)
+        self.assertIn(report["key"], repeated["hbm_material_event_watch"]["seen_keys"])
 
 if __name__ == "__main__":
     unittest.main()
