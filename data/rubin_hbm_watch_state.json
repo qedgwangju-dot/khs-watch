@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-20T00:06:43+09:00",
+  "updated_at_kst": "2026-11-20T00:46:42+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "00c1b5afae079534fa6aa588",
@@ -344,11 +344,13 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1328.45,
-    "date": "2026-11-19 일일 기준 · ECB/Frankfurter · 조회 2026-11-20 00:07 KST · 보조 API 2026-11-19 · 차이 0.28% · 일중 기준시각 차이 가능",
+    "date": "2026-11-19 일일 기준 · ECB/Frankfurter · 조회 2026-11-20 00:46 KST · 보조 API 2026-11-19 · 차이 0.28% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "samsung_hbm4_price/en: HTTPError: HTTP Error 429: Too Many Requests"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-11-16",
     "source": "https://insights.trendforce.com/p/weekly-radar-010",
@@ -478,8 +480,8 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-11-20T00:07:01+09:00",
-    "candidate_count": 5,
+    "last_checked_at_kst": "2026-11-20T00:46:59+09:00",
+    "candidate_count": 3,
     "mlcc_vendor_watch": {
       "version": 2,
       "as_of": "2026-10-23",
@@ -544,8 +546,8 @@
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-11-20T00:11:21+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-11-20T00:48:03+09:00",
+    "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-20T00:11:21+09:00",
   "telegram_message_ids": [
@@ -613,7 +615,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-11-20",
-    "last_checked_at_kst": "2026-11-20T00:11:01+09:00",
+    "last_checked_at_kst": "2026-11-20T00:47:29+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -672,16 +674,16 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-11-20T00:11:01+09:00",
+        "checked_at_kst": "2026-11-20T00:47:29+09:00",
         "rss_attempts": 11,
-        "rss_successes": 10,
-        "rss_failures": 1,
+        "rss_successes": 11,
+        "rss_failures": 0,
         "verified_observations": 0,
         "deadline_exhausted": false,
         "rss_coverage_unavailable": false
       },
       "primary_source_audit": {
-        "checked_at_kst": "2026-11-19T18:36:41+09:00",
+        "checked_at_kst": "2026-11-20T00:47:29+09:00",
         "sources": {
           "bnpp_public": {
             "status": "retrieval_unavailable",
@@ -750,7 +752,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-11-20",
-    "last_checked_at_kst": "2026-11-20T00:11:05+09:00",
+    "last_checked_at_kst": "2026-11-20T00:47:55+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -794,7 +796,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-11-20T00:11:06+09:00",
+    "last_checked_at_kst": "2026-11-20T00:47:57+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -918,7 +920,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-11-20T00:11:06+09:00",
+      "checked_at_kst": "2026-11-20T00:47:57+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
@@ -1245,7 +1247,7 @@
     "last_official_stage_change_at": null
   },
   "feed_checks": 52,
-  "feed_healthy": 52,
+  "feed_healthy": 51,
   "nvhbm_foundry_track_version": 1,
   "nvhbm_foundry_strategy": {
     "source_editorial": "TrendForce News 편집 기사(독자 취재/독립 원출처로 중복 계산 금지)",
@@ -1358,7 +1360,7 @@
   },
   "hbm_material_event_watch": {
     "version": 1,
-    "checked_at_kst": "2026-11-20T00:10:57+09:00",
+    "checked_at_kst": "2026-11-20T00:47:29+09:00",
     "seen_keys": [
       "20261112_intel_hbmfree_lpddr_inference_proposal",
       "20261112_intel_kai_23_company_alliance",
@@ -1379,40 +1381,9 @@
       "20261119_hbm_hybrid_bonder_supplier_names_correction",
       "20261119_munhwa_skhynix_20high_hybrid_bonder_report"
     ],
-    "last_new_fact_keys": [
-      "20261118_nvidia_fy27q3_memory_supply_capacity_390bn"
-    ],
-    "unconfirmed_source_count": 1,
-    "unconfirmed_sources": [
-      {
-        "key": "20261118_nvidia_fy27q3_memory_supply_capacity_390bn",
-        "lane": "엔비디아 SEC 공식 발표·정확한 금액 및 기간",
-        "origin": "미 SEC 8-K 첨부 CFO 설명",
-        "status": "source_unavailable",
-        "error_type": "HTTPError"
-      },
-      {
-        "key": "20261118_nvidia_fy27q3_memory_supply_capacity_390bn",
-        "lane": "엔비디아 SEC 공식 발표·정확한 금액 및 기간",
-        "origin": "MarketScreener CFO 설명 동일 재게시",
-        "status": "source_unavailable",
-        "error_type": "HTTPError"
-      },
-      {
-        "key": "20261118_nvidia_fy27q3_memory_supply_capacity_390bn",
-        "lane": "엔비디아 SEC 공식 발표·정확한 금액 및 기간",
-        "origin": "Fintel SEC 8-K 동일 재게시",
-        "status": "source_unavailable",
-        "error_type": "HTTPError"
-      },
-      {
-        "key": "20261118_nvidia_fy27q3_memory_supply_capacity_390bn",
-        "lane": "독립 언론의 동일 공식 숫자 보도",
-        "origin": "뉴스1 11월 18일 원보도",
-        "status": "source_unavailable",
-        "error_type": "HTTPError"
-      }
-    ],
+    "last_new_fact_keys": [],
+    "unconfirmed_source_count": 0,
+    "unconfirmed_sources": [],
     "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield"
   }
 }
