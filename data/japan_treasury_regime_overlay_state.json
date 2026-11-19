@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-11-19T09:35:52+09:00",
+  "updated_at_kst": "2026-11-19T16:57:17+09:00",
   "levels": {
     "official_funding": 0,
     "structural_repatriation": 0,
@@ -18,11 +18,18 @@
     "intervention_usd_bn": 0.0,
     "funding_ratio": null,
     "fima_bn_usd": 0.0,
-    "flow": null,
+    "flow": {
+      "latest_week": "2026-11-08~11-14",
+      "one_week": -0.4407,
+      "two_week": -0.9748,
+      "four_week": 0.25540000000000007,
+      "twelve_week": -2.7858,
+      "negative_streak": 2
+    },
     "market": {
-      "observed_at_utc": "2026-11-19T00:36:18Z",
-      "usdjpy": 159.39999389648438,
-      "usdjpy_change_pct": -0.06333074971936442,
+      "observed_at_utc": "2026-11-19T07:57:24Z",
+      "usdjpy": 159.71800231933594,
+      "usdjpy_change_pct": 0.22275918052197174,
       "ust2": null,
       "ust2_change_bp": null,
       "ust10": 5.066,
