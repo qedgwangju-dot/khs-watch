@@ -102,6 +102,34 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
             2026, 10, 16, tzinfo=watch.KST))
         self.assertIn("최신 일정 변경 여부는 확인 불가", msg)
 
+    def test_ecb_fsr_event_requires_official_report_content_and_is_once(self):
+        doc = (
+            "<html><h1>Financial Stability Review, November 2026</h1>"
+            "<p>The footprint of hedge funds in euro area sovereign bond markets "
+            "via repo markets shows leverage and procyclical deleveraging.</p></html>"
+        )
+        day = dt.date(2026, 11, 19)
+        item = watch.ecb_financial_stability_event(
+            day, set(), fetch=lambda url: doc)
+        self.assertEqual(item["kind"], "ecb_fsr")
+        self.assertEqual(item["key"], watch.ECB_FSR_KEY)
+        self.assertIsNone(watch.ecb_financial_stability_event(
+            day, {watch.ECB_FSR_KEY}, fetch=lambda url: doc))
+        self.assertIsNone(watch.ecb_financial_stability_event(
+            dt.date(2026, 11, 17), set(), fetch=lambda url: doc))
+        with self.assertRaises(ValueError):
+            watch.ecb_financial_stability_event(
+                day, set(), fetch=lambda url: "<p>ECB interest rates</p>")
+        rating = dict(watch.VERIFIED_AFT_SNAPSHOT)
+        name, body = watch.format_event(
+            rating, [item], {}, dt.datetime(2026, 11, 19, tzinfo=watch.KST))
+        self.assertIn("ECB 11월 금융안정보고서", name)
+        self.assertIn("국채 레포시장", body)
+        self.assertIn("ECB Financial Stability Review: ", body)
+        from scripts.europe_sovereign_yield_telegram_html import render_chunks
+        output = "\\n".join(render_chunks(body))
+        self.assertIn("ECB 11월 금융안정보고서·헤지펀드 레버리지", output)
+
     def test_latest_verified_moodys_is_not_an_unverified_october_result(self):
         baseline = dict(watch.VERIFIED_AFT_SNAPSHOT)
         self.assertEqual(baseline["decision_date"], "2026-10-23")
