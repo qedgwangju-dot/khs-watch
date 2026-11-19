@@ -6481,6 +6481,192 @@ def _global_oil_surplus_run_monitor(current: dt.datetime) -> int:
 
 run_monitor = _global_oil_surplus_run_monitor
 
+# Dated first-party oil-supply developments only. Keep this inside the existing
+# Iran/Hormuz workflow and its Telegram delivery/finalization path.
+_TRILATERAL_REFINED_EVENT = "trilateral_refined_supply_plan:2026-11-19"
+_TRILATERAL_REFINED_AT = dt.datetime(2026, 11, 19, 10, 13, tzinfo=UTC)
+_TRILATERAL_REFINED_SOURCES = (
+    ("중국 주미대사관", "https://us.china-embassy.gov.cn/zgyw/202611/t20261119_12063191.htm"),
+    ("신화통신", "https://www.news.cn/politics/leaders/20261119/52ee3a20593f4b3db7642db2a7ece1a7/c.html"),
+)
+
+
+def _parse_trilateral_refined_declaration(raw_html: str) -> bool:
+    """An authored dated original, not a market headline or an enacted output quota."""
+    raw = re.sub(r"\s+", "", _visible_text(raw_html))
+    return (
+        "中俄美元首和平宣言" in raw
+        and "中国国家主席习近平" in raw
+        and "俄罗斯总统普京" in raw
+        and "美国总统特朗普" in raw
+        and bool(re.search(r"2026(?:年|/|-|\\.)11(?:月|/|-|\\.)19", raw))
+        and "三国计划增加精炼石油产品的生产和供应" in raw
+        and "三国重申能源稳定流动的重要性" in raw
+    )
+
+
+def _trilateral_refined_update(current: dt.datetime, state: dict) -> dict | None:
+    if _TRILATERAL_REFINED_EVENT in (state.get("alerted_events") or {}):
+        return None
+    hours = (current.astimezone(UTC) - _TRILATERAL_REFINED_AT).total_seconds() / 3600.0
+    if hours < 0 or hours > 72:
+        return None
+
+    def check(spec):
+        label, url = spec
+        try:
+            raw = fetch_bytes(url, timeout=6, attempts=1).decode("utf-8", "replace")
+            return (label, url) if _parse_trilateral_refined_declaration(raw) else None
+        except Exception as exc:
+            print(f"trilateral_primary_source_error={label}:{type(exc).__name__}")
+            return None
+
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        checked = list(pool.map(check, _TRILATERAL_REFINED_SOURCES))
+    verified = next((value for value in checked if value is not None), None)
+    if verified is None:
+        print("trilateral_first_party=unavailable_or_unverified; no_alert")
+        return None
+    label, url = verified
+    body = "\n".join((
+        "[미국·중국·러시아 정제유 공급 확대 공동선언]",
+        "공식 발표: 2026년 11월 19일 · 3국 정상 공동선언",
+        "핵심: 3개국이 정제 석유제품 생산·공급을 늘릴 계획을 발표",
+        "현재 단계: 공식 공동계획 발표 · 신규 생산·수출 실적은 미확인",
+        "미공개: 국가별 물량·제품별 물량·증산 착수일·출하일·수출 배정량",
+        "구분: 휘발유·경유 등 정제품에 관한 계획이며 원유 증산이나 휴전 완료가 아님",
+        "의미: 실제 정유 가동률·정제품 수출·항만 선적이 증가하는지 후속 확인 필요",
+        f"근거: {label} · 공동선언 원문",
+        f"원문: {url}",
+    ))
+    return {"id": _TRILATERAL_REFINED_EVENT,
+            "kind": "trilateral_refined_supply_plan",
+            "title": "미·중·러 정제유 공급 확대 공동선언",
+            "body": body, "url": url}
+
+
+def _parse_tankertrackers_preparation(raw_html: str, current: dt.datetime) -> dict | None:
+    """Only author-owned, fresh public posts; a prepared loading is not a cargo export."""
+    posts = list(re.finditer(
+        r'<div\b[^>]*\bdata-post=["\x27]tankertrackers/([1-9][0-9]*)["\x27][^>]*>',
+        raw_html, flags=re.I))
+    candidates = []
+    for idx, entry in enumerate(posts):
+        block = raw_html[entry.start():posts[idx + 1].start()
+                         if idx + 1 < len(posts) else len(raw_html)]
+        if "tgme_widget_message_forwarded_from" in block:
+            continue
+        when = re.search(r'<time\b[^>]*\bdatetime=["\x27]([^"\x27]+)', block, re.I)
+        content = re.search(
+            r'<div\b[^>]*class=["\x27][^"\x27]*tgme_widget_message_text\b[^"\x27]*["\x27][^>]*>(.*?)</div\s*>',
+            block, re.I | re.S)
+        if not (when and content):
+            continue
+        try:
+            pub = dt.datetime.fromisoformat(when.group(1).replace("Z", "+00:00")).astimezone(UTC)
+        except ValueError:
+            continue
+        age = (current.astimezone(UTC) - pub).total_seconds() / 3600.0
+        if age < -0.17 or age > 48:
+            continue
+        snippet = normalize_text(_visible_text(content.group(1)))
+        if not (re.search(r"\biran(?:ian)?\b|이란", snippet)
+                and any(x in snippet for x in ("crude", "oil", "원유"))
+                and any(x in snippet for x in ("prepar", "appears ready", "seems ready", "준비"))
+                and any(x in snippet for x in ("resum", "restart", "reload", "load", "ship", "재개"))
+                and not any(x in snippet for x in
+                            ("not preparing", "not ready", "fake report", "false rumor"))):
+            continue
+        candidates.append((pub, entry.group(1), "crude" in snippet or "원유" in snippet))
+    if not candidates:
+        return None
+    published, post_id, crude_explicit = max(candidates)
+    period = published.astimezone(KST).strftime("%Y-%m")
+    url = f"https://t.me/TankerTrackers/{post_id}"
+    return {
+        "id": f"iran_oil_loading_preparation:{period}",
+        "kind": "iran_oil_loading_preparation",
+        "title": "이란 석유 선적 재개 준비 정황",
+        "body": "\n".join((
+            "[이란 원유 선적 재개 선행경보]",
+            f"관측 게시: {published.astimezone(KST).strftime('%Y년 %m월 %d일 %H:%M KST')}",
+            "관측: TankerTrackers 공식 계정이 이란의 선적 재개 준비 정황을 보고",
+            "단계: 선행 정황 · 실제 적재·출항·봉쇄선 통과·고객 인도는 아직 미확인",
+            "품목: 원유 명시" if crude_explicit else "품목: 석유로만 명시 · 원유 여부 미확인",
+            "다음 확인: 선박명·IMO·위성 적재 확인·통과 시각·독립 선박 추적 교차확인",
+            f"원문: {url}",
+        )),
+        "url": url,
+    }
+
+
+def _verified_oil_supply_overlay(current: dt.datetime) -> int:
+    result = _global_oil_surplus_run_monitor(current)
+    if result != 0 or os.getenv("TELEGRAM_TEST", "false").lower() == "true":
+        return result
+    state = load_state()
+    updates = []
+    first = _trilateral_refined_update(current, state)
+    if first:
+        updates.append(first)
+
+    try:
+        raw = fetch_bytes(TANKERTRACKERS_PUBLIC_TELEGRAM_URL, timeout=6, attempts=1)
+        prep = _parse_tankertrackers_preparation(
+            raw.decode("utf-8", "replace"), current)
+        if prep and prep["id"] not in (state.get("alerted_events") or {}):
+            updates.append(prep)
+        else:
+            print("iran_loading_preparation=not_new_or_not_in_author_owned_text")
+    except Exception as exc:
+        print(f"iran_loading_preparation_source_failure={type(exc).__name__}")
+    if not updates:
+        return result
+
+    existing = BODY_PATH.read_text(encoding="utf-8").strip() if BODY_PATH.exists() else ""
+    if existing and (not PENDING_STATE_PATH.exists() or not ALERT_JSON_PATH.exists()):
+        print("oil_supply_overlay=existing_alert_missing_pending_metadata; preserve_existing")
+        return result
+    pending = json.loads(PENDING_STATE_PATH.read_text(encoding="utf-8")) if existing else None
+    metadata = json.loads(ALERT_JSON_PATH.read_text(encoding="utf-8")) if existing else None
+    title = TITLE_PATH.read_text(encoding="utf-8").strip() if existing else ""
+    emitted = []
+    for item in updates:
+        if item["id"] in ((pending or {}).get("alerted_events") or {}):
+            continue
+        candidate = (existing + "\n\n" if existing else "") + item["body"]
+        if len(candidate) > 3000:
+            print(f"oil_supply_update_deferred_length={item['kind']}")
+            continue
+        existing = candidate
+        emitted.append(item)
+        if pending is None:
+            pending = build_pending_state(
+                state, item["id"], item["kind"], current, {})
+            title = item["title"]
+            metadata = {"test_mode": False,
+                        "created_at_kst": current.astimezone(KST).isoformat(timespec="seconds"),
+                        "event_kind": item["kind"], "event_id": item["id"]}
+        else:
+            pending.setdefault("alerted_events", {})[item["id"]] = (
+                current.astimezone(KST).isoformat(timespec="seconds"))
+            metadata.setdefault("additional_verified_oil_supply", []).append(
+                {"event_kind": item["kind"], "event_id": item["id"], "url": item["url"]})
+    if not emitted:
+        return result
+    BODY_PATH.write_text(existing + "\n", encoding="utf-8")
+    TITLE_PATH.write_text(title + "\n", encoding="utf-8")
+    ALERT_JSON_PATH.write_text(
+        json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    PENDING_STATE_PATH.write_text(
+        json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print("verified_oil_supply_pending_telegram=" +
+          ",".join(item["kind"] for item in emitted) + "; delivered=false")
+    return result
+
+
+run_monitor = _verified_oil_supply_overlay
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--finalize", action="store_true")
