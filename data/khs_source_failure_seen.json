@@ -14,9 +14,9 @@
     },
     "trusted_policy|federalregister.gov": {
       "lane": "trusted_policy",
-      "last_seen_kst": "2026-11-19T19:39:24+09:00",
+      "last_seen_kst": "2026-11-19T20:06:57+09:00",
       "source": "BIS remote rule material conditions",
-      "streak": 1
+      "streak": 2
     }
   },
   "seen": {
@@ -171,6 +171,14 @@
       "logical_failure_count": 1,
       "sources": [
         "Financial Services Commission stablecoin releases"
+      ]
+    },
+    "4ab6538e6867d55e": {
+      "failure_count": 1,
+      "first_seen_kst": "2026-11-19T20:06:57+09:00",
+      "logical_failure_count": 1,
+      "sources": [
+        "BIS remote rule material conditions"
       ]
     },
     "4b26dd15a2c8d732": {
