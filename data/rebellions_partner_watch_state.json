@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-19T22:39:19+09:00",
+  "last_checked_kst": "2026-11-19T23:45:21+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -4150,6 +4150,24 @@
       "material_stage": 1,
       "first_seen_kst": "2026-11-16T14:06:01+09:00",
       "alerted": true
+    },
+    "319d8cd9c55472947d632b6e": {
+      "title": "SKT, 엔비디아·리벨리온과 한국형 소버린 AI 인프라 구축 위한 MOU 체결 - 핀테크경제신문",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBhWnhjSUx1bU15NTBueTZqQWZSdE9Rdy1TNXVhOFg4VTlaVXpkcjI2REM2M04xZE5qZnV0RnpwaTY3RUN6TU5fbFg4cEJ2Q3lxME05b21tdXM2LWthdWRkanhYeEVIY0NY?oc=5",
+      "summary": "SKT, 엔비디아·리벨리온과 한국형 소버린 AI 인프라 구축 위한 MOU 체결 핀테크경제신문",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-19T23:45:21+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "f387bd4d06a20ae50da57024": {
+      "title": "SKT, 엔비디아·리벨리온과 GPU·NPU 통합 시스템 개발 MOU…한국형 소버린 AI 인프라 구축 - 넥스트데일리",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE11WjdZYTVTc0s2OTRkcnRFbjREMjJpVUNqQ1FBZXF1QWNZUi13SFNxYlo2OE03NnhRbkN1VVdPX0dHQllHNGQ3aG1LSlFkQVo3bEh0cmlGc3JZS3NOS0tGeUZGRkhZREhVMTNhRzkxSdIBc0FVX3lxTFA0eERnSUNlZnNodXZVZTRORmJ2WnN0V2V0bWVUcmNtd08zVEdWY3oxekUxZENjR3Y5djBTRU9faWcwYURubzQ1QUxmbFBGbnR2R1l5ZUk2VkY4aUthTlA2eUpNbVp0MjdjSDM2Nk5ZR2RnZ3M?oc=5",
+      "summary": "SKT, 엔비디아·리벨리온과 GPU·NPU 통합 시스템 개발 MOU…한국형 소버린 AI 인프라 구축 넥스트데일리",
+      "event_signature": "skt|npu|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-19T23:45:21+09:00",
+      "suppressed_duplicate": "same_event:skt|npu|general"
     }
   }
 }
