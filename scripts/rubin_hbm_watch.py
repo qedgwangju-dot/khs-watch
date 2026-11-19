@@ -452,6 +452,10 @@ QUERIES = [
         '("SK hynix" OR SK하이닉스 OR Samsung OR 삼성전자) HBM ("hybrid bonding" OR 하이브리드본딩 OR "하이브리드 본딩") (sample OR 샘플 OR pilot OR 파일럿 OR validation OR 인증 OR 양산 OR difficulty OR 지연 OR 난항)',
     ),
     (
+        "hbm_hybrid_bonding",
+        '("SK hynix" OR SK하이닉스 OR Samsung OR 삼성전자) HBM ("hybrid bonder" OR "하이브리드 본더" OR 하이브리드본더 OR "SHB2 Nano" OR Kinex OR Besi OR 베시 OR 한화세미텍) (evaluation OR 평가 OR 반입 OR 투입 OR 납품 OR 고객 OR qualification OR 도입 OR 수주 OR 양산)',
+    ),
+    (
         "hbm4e_thermal_package",
         'Samsung HBM4E (thermal OR heat OR cooling OR HCB OR HPB OR "hybrid bonding" OR interposer OR reticle OR package OR 발열 OR 냉각 OR 하이브리드본딩 OR 하이브리드 본딩 OR 인터포저 OR 열저항 OR 패키지)',
     ),
@@ -615,9 +619,9 @@ def relevant(category: str, text: str) -> bool:
     if category == "hbm_hybrid_bonding":
         return (
             "hbm" in low
-            and any(t in low for t in ("hybrid bonding", "hybrid copper bonding", "하이브리드 본딩", "하이브리드본딩"))
+            and any(t in low for t in ("hybrid bonding", "hybrid copper bonding", "hybrid bonder", "hybrid bonders", "하이브리드 본딩", "하이브리드본딩", "하이브리드 본더", "하이브리드본더"))
             and any(t in low for t in ("sk hynix", "sk하이닉스", "samsung", "삼성전자"))
-            and any(t in low for t in ("sample", "샘플", "customer", "고객", "pilot", "파일럿", "mass production", "양산", "difficulty", "지연", "난항", "qualification", "검증", "bonding"))
+            and any(t in low for t in ("sample", "샘플", "customer", "고객", "pilot", "파일럿", "mass production", "양산", "difficulty", "지연", "난항", "qualification", "검증", "bonding", "bonder", "평가", "반입", "투입", "납품", "도입", "수주"))
         )
     if category == "hbm4e_thermal_package":
         return (

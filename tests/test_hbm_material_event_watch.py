@@ -454,6 +454,20 @@ class MaterialEventTests(unittest.TestCase):
         self.assertEqual(again_audit["verified_events"], 0)
         self.assertIn(report["key"], repeated["hbm_material_event_watch"]["seen_keys"])
 
+    def test_hybrid_bonder_vendor_queries_do_not_confuse_tc_bonders(self):
+        self.assertTrue(r.relevant(
+            "hbm_hybrid_bonding",
+            "SK하이닉스 20단 HBM 하이브리드 본더 SHB2 Nano 반입 평가"))
+        self.assertTrue(r.relevant(
+            "hbm_hybrid_bonding",
+            "SK hynix HBM5 hybrid bonder Kinex Besi pilot evaluation"))
+        self.assertFalse(r.relevant(
+            "hbm_hybrid_bonding",
+            "SK하이닉스 HBM4 한미반도체 TC 본더 442억원 수주"))
+        self.assertFalse(r.relevant(
+            "hbm_hybrid_bonding",
+            "삼성전자 HBM4E 패키징 수율 반도체 시장 전망"))
+
     def test_named_supplier_context_requires_three_distinct_evidence_lanes(self):
         correction = next(r for r in m.REPORTS
                           if r["key"] == "20261119_hbm_hybrid_bonder_supplier_names_correction")
