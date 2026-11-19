@@ -291,6 +291,8 @@ class BisRemoteRuleTests(unittest.TestCase):
         active = bis.make_item(meta, BODY.replace("[INSERT DATE OF PUBLICATION IN THE FEDERAL REGISTER]", "November 19, 2026"), now, inspection=False)
         self.assertEqual(active["bis_gpu_remote_stage"], "official-effective-2026-23529")
         self.assertEqual(active["bis_rule_effective_date"], "2026-11-19")
+        self.assertIn("2026-11-19 발효", active["bis_rule_profile"]["timeline"])
+        self.assertIn("관보 정식 게재(미국 현지 날짜)", active["bis_rule_profile"]["timeline"])
 
     def test_body_and_metadata_must_both_identify_the_same_rule(self):
         self.assertIsNone(bis.make_item({**META, "document_number": "2026-18535"}, BODY, NOW, inspection=True))
@@ -361,6 +363,32 @@ class BisRemoteRuleTests(unittest.TestCase):
         self.assertEqual(published["bis_gpu_remote_stage"], "official-effective-2026-23529")
         self.assertEqual(published["bis_rule_material_signature"], item["bis_rule_material_signature"])
 
+    def test_govinfo_print_markup_is_not_a_change_to_material_conditions(self):
+        govinfo = BODY.replace("§", "Sec. ").replace("12,000,000 “aggregate TPP”", "12,000,000 ``aggregate TPP''")
+        govinfo = govinfo.replace("less than 21,000", "[[Page 74977]] less than 21,000")
+        govinfo = govinfo.replace("EAR.Reports@bis.doc.gov", "[email protected]")
+        resolved = re.sub(r"\[INSERT DATE OF PUBLICATION IN (?:THE )?FEDERAL REGISTER\]",
+                          "November 19, 2026", govinfo)
+        meta = {**META, "html_url": "https://www.federalregister.gov/documents/2026/11/19/2026-23529/remote-access"}
+        item = bis.make_item(meta, resolved, NOW + dt.timedelta(days=3), inspection=False)
+        self.assertTrue(item["bis_rule_conditions_verified"])
+        self.assertEqual(item["bis_gpu_remote_stage"], "official-effective-2026-23529")
+        self.assertEqual(item["bis_rule_material_signature"], bis.VERIFIED_MATERIAL_SIGNATURE)
+
+    def test_real_country_exception_and_reporting_changes_still_need_review(self):
+        for label, changed in (
+            ("country", BODY.replace("Indonesia", "Vietnam")),
+            ("reporting deadline", re.sub(r"first\s+business day", "fifth business day", BODY)),
+            ("exception", BODY.replace("The prohibitions under this section do not apply", "The prohibitions under this section apply")),
+            ("grace period", BODY.replace("must obtain a license with 90 days", "must obtain a license with 120 days")),
+            ("extra reporting rule", BODY.replace("PART 744", "(f) All reports are optional. PART 744")),
+        ):
+            with self.subTest(change=label):
+                self.assertNotEqual(changed, BODY)
+                item = bis.make_item(META, changed, NOW, inspection=True)
+                self.assertFalse(item["bis_rule_conditions_verified"])
+                self.assertIn("문안 변화", item["bis_rule_profile"]["title"])
+
     def test_changed_conditions_leave_source_health_evidence(self):
         changed = BODY.replace("more than 12,000,000", "more than 13,000,000", 1)
         def fetch(url, timeout=8):
@@ -371,6 +399,7 @@ class BisRemoteRuleTests(unittest.TestCase):
         self.assertFalse(items[0]["bis_rule_conditions_verified"])
         self.assertEqual(len(bis.get_source_failures()), 1)
         self.assertIn("material conditions", bis.get_source_failures()[0]["source"])
+        self.assertEqual(bis.get_source_failures()[0]["failure_kind"], "content_review")
 
     def test_outage_has_no_candidate_and_retains_failure_evidence(self):
         def fetch(*args, **kwargs):

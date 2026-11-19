@@ -2139,6 +2139,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             record_policy_source_failure(
                 lane="trusted_policy", source_name=failure["source"],
                 source_url=failure["url"], error=failure["error"], checked_at=now,
+                failure_kind=failure.get("failure_kind", "source_unavailable"),
             )
         # Restore the November 11 reporting stage once, but only if its actual
         # publisher identity can be established. Never consume seen on failure.

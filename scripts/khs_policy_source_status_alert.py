@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a throttled Telegram notice when KHS official sources are unreachable."""
+"""Distinguish unavailable sources from verified documents awaiting review."""
 
 from __future__ import annotations
 
@@ -54,6 +54,20 @@ def failure_key(item: dict) -> str:
     return f"{item.get('lane')}|{item.get('source')}|{item.get('url')}"
 
 
+def failure_kind(item: dict) -> str:
+    kind = str(item.get("failure_kind") or "")
+    if kind in {"content_review", "publication_unverified"}:
+        return kind
+    # Older checkpoints did not carry a typed outcome.
+    source = str(item.get("source") or "").lower()
+    error = str(item.get("error") or "").lower()
+    if "material conditions" in source or "material conditions differ" in error:
+        return "content_review"
+    if "public-inspection fallback is not publication" in error:
+        return "publication_unverified"
+    return "source_unavailable"
+
+
 def source_domain(url: object) -> str:
     try:
         parsed = urllib.parse.urlparse(str(url or ""))
@@ -67,7 +81,12 @@ def logical_failure_key(item: dict) -> str:
     lane = str(item.get("lane") or "unknown_lane").strip().lower()
     domain = source_domain(item.get("url"))
     if domain:
-        return f"{lane}|{domain}"
+        key = f"{lane}|{domain}"
+        # Review of a fetched document is not an outage of the same host.
+        kind = failure_kind(item)
+        if kind != "source_unavailable":
+            key += f"|{kind}|{urllib.parse.urlparse(str(item.get('url') or '')).path}"
+        return key
     source = " ".join(str(item.get("source") or "").lower().split())
     return f"{lane}|{source or 'unknown_source'}"
 
@@ -168,51 +187,88 @@ def clear_streaks_if_needed() -> None:
 
 
 def render(failures: list[dict], now: dt.datetime) -> tuple[str, str]:
-    day = now.strftime("%Y-%m-%d")
     time_label = now.strftime("%Y년 %m월 %d일 %H:%M KST")
-    title = "KHS 정책 워치: 국내 공식 소스 확인 불가"
+    groups = collapse_logical_failures(failures)
+    has_outage = any(failure_kind(item) == "source_unavailable" for item in groups)
+    has_review = any(failure_kind(item) != "source_unavailable" for item in groups)
+    title = "정책 워치: " + (
+        "원문 검증·소스 접속 상태 점검" if has_outage and has_review
+        else "일부 공식 소스 접속 지연" if has_outage
+        else "공식 원문 재검증 필요"
+    )
+    scope_names = {
+        "domestic_telecom": "국내 통신정책",
+        "domestic_stablecoin": "국내 스테이블코인·디지털자산 정책",
+        "trusted_policy": "국외 정책 원문·신뢰외신",
+    }
+    lanes = {str(item.get("lane") or "") for item in groups}
+    scope = " / ".join(scope_names.get(lane, lane or "해당 감시 항목") for lane in sorted(lanes))
     lines = [
-        f"⚠️ KHS 정책 워치 소스 점검 알림 · {time_label}",
+        f"정책 워치 점검 · {time_label}",
         "",
-        "국내 정책 공식 소스 일부가 GitHub Actions 실행환경에서 확인되지 않았습니다.",
-        "이번 실행의 `0건`은 순수한 뉴스 부재가 아니라 `확인 불가`가 섞인 상태입니다.",
+        "접속 실패와 원문 검증 보류를 구분한 감시 상태 알림입니다.",
+        "정책 뉴스 전체가 없거나 감시 전체가 중단됐다는 뜻은 아닙니다.",
         "",
-        "- 상태: 확인 불가",
-        "- 영향: 국내 통신비, 스테이블코인/디지털자산 등 국내 정책 라인 감시 공백 가능",
-        "- 처리: 직접 조회 실패 후 Cloudflare 공식소스 프록시 fallback까지 시도",
-        "- 송출 기준: 같은 실패 묶음은 하루 1회만 알림",
+        f"- 점검 범위: {scope}",
+        "- 송출 기준: 같은 점검 항목은 하루 1회만 알림",
         "",
-        "실패 소스:",
     ]
-    for idx, item in enumerate(failures[:8], start=1):
-        source = item.get("source") or "unknown source"
-        lane = item.get("lane") or "unknown lane"
+    for idx, item in enumerate(groups[:8], start=1):
+        source = item.get("source") or "해당 소스"
+        if source_domain(item.get("url")) == "fsc.go.kr":
+            source = "금융위원회 공식 게시판"
+        elif str(source).startswith("BIS remote rule"):
+            source = "미 BIS 반도체 원격접근 규칙"
         url = item.get("url") or ""
-        error = item.get("error") or "unknown error"
-        checked = item.get("checked_at_kst") or day
+        error = str(item.get("error") or "").lower()
+        checked = item.get("checked_at_kst") or "조회시각 확인 필요"
+        kind = failure_kind(item)
+        if kind == "content_review":
+            status = "원문 수집 완료·세부 조건 재검증 필요"
+            reason = "검증한 기준본과 문안이 일치하지 않습니다. 정책 변경 확정이나 접속 실패로 단정하지 않습니다."
+            action = "원문 조항을 대조할 때까지 기존 숫자·대상·예외를 재사용하지 않습니다."
+        elif kind == "publication_unverified":
+            status = "공개열람본 확인·정식 관보 게재 확인 보류"
+            reason = "공개열람본만 확인된 상태입니다. 예정일 경과만으로 정식 게재·발효 처리하지 않습니다."
+            action = "정식 관보와 발효일을 별도 재조회합니다."
+        else:
+            status = "이번 실행에서 접속 실패"
+            reason = (
+                "응답시간 초과 또는 중계 서버 오류로 원문을 읽지 못했습니다."
+                if any(term in error for term in ("timeout", "timed out", "502", "503", "504"))
+                else "이번 실행에서 해당 원문을 확인하지 못했습니다."
+            )
+            action = "다음 정기 실행에서 재조회합니다. 새 정책이 없다고 판단하지 않습니다."
+            tried = []
+            if "direct " in error:
+                tried.append("직접 조회")
+            if "proxy " in error:
+                tried.append("설정된 프록시")
+            if tried:
+                action = " / ".join(tried) + " 확인 실패. " + action
         lines.extend(
             [
                 f"{idx}. {source}",
-                f"- 라인: {lane}",
-                f"- 상태: 확인 불가",
+                f"- 상태: {status}",
                 f"- 조회시각: {checked}",
-                f"- 오류: {error[:260]}",
-                f"- 원문: {url}",
+                f"- 사유: {reason}",
+                f"- 처리: {action}",
+                f"- 출처: [원문]({url})",
+                "",
             ]
         )
-    if len(failures) > 8:
-        lines.append(f"- 추가 실패 소스: {len(failures) - 8}건")
-
-    lines.extend(
-        [
-            "",
-            "판단: 이 알림은 투자 뉴스가 아니라 감시 품질 알림입니다. 국내 정책 뉴스가 없다고 단정하지 말고 다음 정상 조회 때 재확인해야 합니다.",
-        ]
-    )
+        count = len(item.get("related_sources") or [])
+        if count > 1:
+            lines.insert(len(lines) - 1, f"- 묶인 조회: 같은 기관의 검색·게시판 {count}개")
+    if len(groups) > 8:
+        lines.append(f"- 추가 점검 항목: {len(groups) - 8}건")
+    lines.append("세부 오류와 요청 주소는 실행 로그에 보존합니다. 이 알림은 정책 시행·변경 발표가 아닙니다.")
     return title, "\n".join(lines)
 
 
 def main() -> int:
+    for path in (TITLE_PATH, BODY_PATH):
+        path.unlink(missing_ok=True)
     failures = load_json(FAILURES_PATH, [])
     if not failures:
         clear_streaks_if_needed()
@@ -228,7 +284,22 @@ def main() -> int:
     decision_failures = collapse_logical_failures(failures)
     max_streak = update_streaks(seen, decision_failures, now)
     min_streak = current_min_streak(seen, decision_failures)
-    alert_ok, alert_reason = should_alert(decision_failures, max_streak, min_streak)
+    outages = [item for item in decision_failures if failure_kind(item) == "source_unavailable"]
+    reviews = [item for item in decision_failures if failure_kind(item) != "source_unavailable"]
+
+    def streak(item: dict) -> int:
+        return int(seen.get("failure_streaks", {}).get(item["logical_key"], {}).get("streak", 0))
+
+    alert_ok, alert_reason = should_alert(
+        outages, max((streak(item) for item in outages), default=0), current_min_streak(seen, outages)
+    )
+    if reviews:
+        alert_ok, alert_reason = True, "verified_document_review"
+        decision_failures = reviews + [
+            item for item in outages
+            if len(outages) >= max(1, MULTI_SOURCE_MIN_FAILURES)
+            or streak(item) >= max(1, SINGLE_SOURCE_MIN_STREAK)
+        ]
     if not alert_ok:
         save_seen(seen)
         print(
@@ -238,14 +309,32 @@ def main() -> int:
         )
         return 0
 
-    fp = fingerprint(decision_failures, day)
     seen_map = seen.setdefault("seen", {})
+    notified_keys = set()
+    legacy_sources = set()
+    for previous in seen_map.values():
+        if str(previous.get("first_seen_kst") or "")[:10] == day:
+            notified_keys.update(previous.get("logical_keys") or [])
+            if not previous.get("logical_keys"):
+                legacy_sources.update(previous.get("sources") or [])
+    decision_failures = [
+        item for item in decision_failures
+        if item["logical_key"] not in notified_keys
+        and not set(item.get("related_sources") or []).intersection(legacy_sources)
+    ]
+    if not decision_failures:
+        save_seen(seen)
+        print(f"source_status_alert=skipped_duplicate failures={len(failures)}")
+        return 0
+    fp = fingerprint(decision_failures, day)
     if fp in seen_map:
         save_seen(seen)
         print(f"source_status_alert=skipped_duplicate failures={len(failures)}")
         return 0
 
-    title, body = render(failures, now)
+    selected_keys = {item["logical_key"] for item in decision_failures}
+    selected = [item for item in failures if logical_failure_key(item) in selected_keys]
+    title, body = render(selected, now)
     OUT_DIR.mkdir(exist_ok=True)
     TITLE_PATH.write_text(title + "\n", encoding="utf-8")
     BODY_PATH.write_text(body + "\n", encoding="utf-8")
@@ -254,7 +343,8 @@ def main() -> int:
         "first_seen_kst": now.isoformat(timespec="seconds"),
         "failure_count": len(failures),
         "logical_failure_count": len(decision_failures),
-        "sources": [item.get("source") for item in failures],
+        "sources": [item.get("source") for item in selected],
+        "logical_keys": sorted(selected_keys),
     }
     if len(seen_map) > 60:
         for key in list(seen_map.keys())[:-60]:

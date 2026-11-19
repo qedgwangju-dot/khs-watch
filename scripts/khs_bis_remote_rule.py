@@ -25,7 +25,7 @@ INSPECTION_URL = f"https://www.federalregister.gov/public-inspection/{DOCUMENT}/
 # Summary and operative §§742.6, 743.10, 744.24 from the verified 2026-11-16
 # public-inspection text. Dates are canonicalized relative to publication;
 # whitespace/typography are excluded, but scope, thresholds and duties are not.
-VERIFIED_MATERIAL_SIGNATURE = 'ac88bc8650019031d482bc7ebf0ed97ba9b5fe9720e9850b93b7efd59f589aa4'
+VERIFIED_MATERIAL_SIGNATURE = 'e9cc36c0914b6a190953dcacff2fe212bcadb53cdae6012c363df33d95d2f2eb'
 _FAILURES: list[dict] = []
 
 
@@ -68,6 +68,12 @@ def body_verified(raw: str) -> bool:
 def material_signature(raw: str, publication: dt.date | None = None) -> str:
     """Fingerprint controlling passages, not isolated words anywhere in the text."""
     body = unicodedata.normalize("NFKC", plain(raw))
+    # GovInfo uses "Sec." and print-page markers where the inspection PDF uses
+    # section symbols. Neither is a change to the operative legal conditions.
+    body = re.sub(r"\[\[Page\s+\d+\]\]", " ", body, flags=re.I)
+    body = re.sub(r"\b(?:Sec\.|Section)\s+(?=\d+\.\d)", "§ ", body)
+    body = body.translate(str.maketrans({"`": '"', "“": '"', "”": '"', "‘": "'", "’": "'"}))
+    body = re.sub(r'["\']{2,}', '"', body)
     scopes = (
         (r"SUMMARY:", r"DATES:"),
         (r"(?:§|Section)\s*742\.6\s+Regional stability\.", r"PART\s+743\b"),
@@ -75,7 +81,7 @@ def material_signature(raw: str, publication: dt.date | None = None) -> str:
         (r"(?:§|Section)\s*744\.24\s+Restrictions on exports", r"PART\s+748\b"),
     )
     sections = []
-    for start_pattern, end_pattern in scopes:
+    for index, (start_pattern, end_pattern) in enumerate(scopes):
         # References in the preamble may repeat a section title. The actual
         # amendment is the last matching title preceding the next CFR part.
         starts = list(re.finditer(start_pattern, body, re.I))
@@ -85,6 +91,16 @@ def material_signature(raw: str, publication: dt.date | None = None) -> str:
             if end:
                 section = body[start.start():start.end() + end.start()]
                 break
+        if index == 2:
+            # Administrative contact addresses are sometimes Cloudflare-masked.
+            # Normalize that address only; preserve all surrounding legal text.
+            section = re.sub(
+                r"(\(e\)\s*Contacts\..*?\bor email:\s*)"
+                r"(?:EAR\.Reports@bis\.doc\.gov|\[email protected\])",
+                r"\1CONTACT_EMAIL",
+                section,
+                flags=re.I,
+            )
         sections.append(section or "MISSING_OPERATIVE_SECTION")
 
     month = r"(?:January|February|March|April|May|June|July|August|September|October|November|December)"
@@ -191,6 +207,21 @@ def make_item(meta: dict, body: str, now: dt.datetime, *, inspection: bool) -> d
     else:
         bullets.append("요약·적용 조항이 검증한 공개열람본과 달라 국가·성능·예외·이행기한의 세부 숫자 재사용을 보류하며 문안 재검증이 필요합니다.")
     event_day = observed.date().isoformat()
+    if inspection:
+        timeline = f"{event_day} 공개열람 등록(한국시간) → {publication.isoformat()} 관보 게재 예정 → 정식 게재·발효일은 별도 확인"
+    else:
+        timeline = f"{publication.isoformat()} 관보 정식 게재(미국 현지 날짜)"
+        timeline += f" → {effective.isoformat()} 발효" if effective else " → 발효일 확인 보류"
+        dates = re.search(r"\bDATES:(.*?)\bADDRESSES:", plain(body), re.I)
+        deadline = re.search(r"Comment due date:.*?no later than ([A-Za-z]+ \d{1,2}, \d{4})\.", dates[1], re.I) if dates else None
+        if deadline:
+            try:
+                comment_day = dt.datetime.strptime(deadline[1], "%B %d, %Y").date()
+            except ValueError:
+                comment_day = None
+            if comment_day:
+                timeline += f" → {comment_day.isoformat()} 의견제출 마감"
+        timeline += " → 기존 대상 서비스는 발효 후 90일 내 허가" if detail_ok else " → 세부 이행기한 원문 재검증"
     profile = {
         "title": "미 BIS, GPU 원격접근 잠정 최종규칙 공개열람" if inspection else
                  "미 BIS, GPU 원격접근 규칙 관보 게재·효력일 확인" if active else
@@ -199,7 +230,7 @@ def make_item(meta: dict, body: str, now: dt.datetime, *, inspection: bool) -> d
         "stage": legal_label, "event_date": event_day,
         "event_date_label": "공개열람 등록일(한국시간)" if inspection else "관보 게재일(미국 기준)",
         "actual_bullets": bullets,
-        "timeline": "11월 11일 보도 → 11월 16일 BIS 공개 → 공개열람 → 실제 관보 게재·효력일 → 허가·이행기한",
+        "timeline": timeline,
         "scope_note": "행정규칙 공개와 RASA 제정은 별개이며 미국 GPU·중국 연구자 전체의 일괄 사용 금지로 해석하지 않습니다.",
         "next": "관보 정식판·효력일·90일 이행기한, 허가 예외·최종사용자 및 GPU 주문·납기 변화를 확인합니다.",
         "investment": "허가 심사와 고객 확인은 GPU·HBM·데이터센터 장비 주문 및 현금 회수 시점을 바꿀 수 있습니다.",
@@ -248,11 +279,13 @@ def collect_current_bis_items(now: dt.datetime, fetch_text) -> list[dict]:
                 due = dt.datetime.combine(publication, dt.time(9), tzinfo=EASTERN)
                 if now.astimezone(EASTERN) >= due:
                     _FAILURES.append({"source": "BIS remote rule official publication", "url": PUBLISHED_API,
+                                      "failure_kind": "publication_unverified",
                                       "error": "Scheduled publication day 09:00 Eastern has passed, but the published document was not verified. Public-inspection fallback is not publication or effectiveness evidence. " + ", ".join(errors)})
                     item["bis_rule_profile"]["stage"] = "공식 공개열람본 확인·정식 게재 및 효력 확인 보류"
                     item["bis_rule_profile"]["actual_bullets"][0] = f"문서 {DOCUMENT}·규제 식별번호 {RIN}: 공개열람본은 확인했으나 예정일 경과 후 정식 관보 조회는 확인되지 않았습니다."
             if not item["bis_rule_conditions_verified"]:
                 _FAILURES.append({"source": "BIS remote rule material conditions", "url": text_url,
+                                  "failure_kind": "content_review",
                                   "error": "Material conditions differ from validated snapshot; detailed facts withheld."})
             print(f"trusted_policy_news=bis_remote_document_verified document={DOCUMENT} stage={item['bis_gpu_remote_stage']} full_text=true")
             return [item]
