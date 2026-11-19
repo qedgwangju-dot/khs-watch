@@ -5,14 +5,18 @@
     "109872ca6be87c62b6641709",
     "11f48eb8a2b96c1b3845fd02",
     "15250d27c48a2fcb77cd5866",
+    "17621e684349495f395f6617",
+    "18f846b2a1c58e9785add610",
     "1f3df1ee0ac6a5946bcc3248",
     "36c8dc198c272bbeb5f0df2f",
     "397fd23021765b9ec6fe83a7",
     "45b9cab6011a827c780922af",
     "4fee83ae2ca90b01db9bb45b",
+    "6704d5ee61c2425318e72f1b",
     "91db3265d08e14299db49ab6",
     "96bda5ef87c6602628dfaca6",
     "9d8f26ec4a37c98bb9d7275e",
+    "a0692a2131c7c9c9fb5f02c5",
     "bd25574d0cdfab6fecacba7c",
     "c2c4fb7ed2c04ac4f11c1e4f",
     "e17cfc3e43849d135d2f19f5",
@@ -21,7 +25,8 @@
     "ee71c800bbbfc903a324c27f",
     "f504f69ebcdccef74c51c5de",
     "fb0c3c6521bf1eafc74dbaa2",
-    "fe820a4eae44b8edc69d3618"
+    "fe820a4eae44b8edc69d3618",
+    "ffd164700f02aa25df154c68"
   ],
   "seen_urls": [
     "http://the-biz.co.kr/news/articleView.html?idxno=728392",
@@ -36,7 +41,7 @@
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959",
     "https://www.pearceip.law/2026/09/09/update-on-msds-challenges-to-us-halozyme-patents-in-sc-keytruda-pembrolizumab-dispute/"
   ],
-  "last_check_kst": "2026-11-19T23:22:35+09:00",
+  "last_check_kst": "2026-11-20T00:37:27+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -57,7 +62,9 @@
     "IPR2026-00313": "11,041,149",
     "IPR2026-00314": "11,066,656"
   },
-  "errors_last_run": [],
+  "errors_last_run": [
+    "Google 뉴스:RuntimeError:\"PGR2025-00050\" \"Final Written Decision\" Halozyme"
+  ],
   "tracked_known_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -101,7 +108,10 @@
   ],
   "legal_v4_initialized": true,
   "search_mode": "개별 사건번호 + 미국/한국 뉴스 + Bing 웹 + 판결기술근거 (공식 PTAB 개별 문서 미연동)",
-  "last_sent_message_ids": [],
+  "last_sent_message_ids": [
+    383,
+    384
+  ],
   "final_decision_classification_version": 2,
   "seen_portfolio_updates": [
     "0cd0016561efdc8d4474dfc1",
@@ -110,11 +120,12 @@
     "59b126deb6f074e59bff83e7",
     "8a5bb96672d580e8ab93df46",
     "b273edc4ebad85e76f1e53ee",
+    "bf2b3203414e1402566c6128",
     "d7710430be5eb7fdbb6a8a82",
     "e62bb472a3a6994df7788d46"
   ],
   "last_portfolio_message_ids": [
-    331
+    383
   ],
   "case_event_timelines": {
     "PGR2025-00033": [
@@ -230,6 +241,11 @@
       },
       {
         "date": "2026-11-19",
+        "kind": "de_appeal_decision",
+        "label": "독일 가처분 항소심 — 2025년 판매금지명령 취소"
+      },
+      {
+        "date": "2026-11-19",
         "kind": "",
         "label": "독일 가처분 항소심 예정"
       }
@@ -323,23 +339,21 @@
   "search_query_count": 40,
   "search_task_count": 80,
   "search_workers": 8,
-  "search_elapsed_seconds": 2.113,
-  "search_completed_tasks": 80,
-  "search_failed_tasks": 0,
+  "search_elapsed_seconds": 3.598,
+  "search_completed_tasks": 79,
+  "search_failed_tasks": 1,
   "search_completed_by_engine": {
     "Bing 웹": 40,
-    "Google 뉴스": 40
+    "Google 뉴스": 39
   },
-  "source_health": "ok",
+  "source_health": "partial",
   "ptab_direct_document_coverage": {
     "status": "not_verified",
     "reason": "USPTO ODP trial document API requires account/API key; no direct docket fetch in this workflow",
     "backfilled_case": "PGR2025-00042",
     "evidence": "user-supplied Paper 95 first page and independent USPTO case/patent identification",
-    "pending_fwd_cases": [
-      "PGR2025-00050",
-      "PGR2025-00053"
-    ]
+    "pending_fwd_cases": [],
+    "late_2026_fwd_source_level": "independent_news_plus_official_docket_identity; final_pdfs_not_directly_fetched"
   },
   "seen_lead_warning_keys": [
     "8d0023ab1b91fe46fe4790d7"
@@ -348,5 +362,21 @@
     "message_id": 380,
     "destination_verified": true,
     "sent_at_kst": "2026-11-19T09:18:56+09:00"
-  }
+  },
+  "halozyme_verified_delivery_receipts": [
+    {
+      "event_id": "pgr14",
+      "message_id": 383,
+      "destination_verified": true,
+      "source_level": "news_and_ptab_case_metadata",
+      "sent_at_kst": "2026-11-20T00:37:23+09:00"
+    },
+    {
+      "event_id": "de_reversal",
+      "message_id": 384,
+      "destination_verified": true,
+      "source_level": "issuer_official",
+      "sent_at_kst": "2026-11-20T00:37:23+09:00"
+    }
+  ]
 }
