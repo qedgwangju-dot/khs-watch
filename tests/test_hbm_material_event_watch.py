@@ -635,5 +635,45 @@ class MaterialEventTests(unittest.TestCase):
                 self.assertIn("required_independent_evidence_missing",
                               [x["status"] for x in audit["gaps"]])
 
+
+    def test_nvidia_sec_http_blocked_accepts_exact_original_mirror_only_with_independent_news(self):
+        row = next(x for x in m.REPORTS
+                   if x["key"] == "20261118_nvidia_fy27q3_memory_supply_capacity_390bn")
+        primary = row["evidence_groups"][0][1][0][1]
+        mirror = row["evidence_groups"][0][1][1][1]
+        news1 = row["evidence_groups"][1][1][0][1]
+        exact = ("NVIDIA CFO Commentary supply commitments increased from "
+                 "$279 billion last quarter to $390 billion primarily related "
+                 "to the multi-year procurement of memory supply. "
+                 "Fiscal 2028 $203 2029 $92.")
+        press = ("엔비디아 메모리 3900억 달러, 종전 2790억 달러로 "
+                 "2028 회계연도 2030억 달러, 2029 회계연도 920억 달러.")
+        state = {"delivery_receipt": {"status": "confirmed", "message_ids": [527]},
+                 "hbm_material_event_watch": {"seen_keys": [
+                     r["key"] for r in m.REPORTS if r is not row]}}
+        def simulated(url):
+            if url == primary:
+                raise OSError("SEC rejects hosted runner")
+            if url == mirror:
+                return exact
+            if url == news1:
+                return press
+            raise OSError("not needed")
+        candidate, alerts, audit = m.apply(state, "2026-11-19T23:58:00+09:00", simulated)
+        self.assertEqual(audit["verified_events"], 1)
+        self.assertIn(row["key"], candidate["hbm_material_event_watch"]["seen_keys"])
+        self.assertEqual(candidate["delivery_receipt"], state["delivery_receipt"])
+        self.assertEqual(len(alerts), 1)
+        self.assertIn(mirror, alerts[0])
+        self.assertIn(news1, alerts[0])
+        self.assertIn(primary, alerts[0])  # Original SEC link retained for user.
+        self.assertIn("동일 재게시", alerts[0])
+        self.assertTrue(d.chunks(alerts[0]))
+        failed_fetch=lambda url: exact if url == mirror else (_ for _ in ()).throw(OSError("blocked"))
+        no_change, notice, blocked = m.apply(state, "2026-11-19T23:58:00+09:00", failed_fetch)
+        self.assertEqual(notice, [])
+        self.assertNotIn(row["key"], no_change["hbm_material_event_watch"]["seen_keys"])
+        self.assertTrue(blocked["gaps"])
+
 if __name__ == "__main__":
     unittest.main()

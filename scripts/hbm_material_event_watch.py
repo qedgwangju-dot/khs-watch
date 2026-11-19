@@ -494,6 +494,7 @@ REPORTS = (
         "verified_kind": "official_nvidia_supply_commitment_with_independent_press_not_hbm_contract",
         "verified_source_caption": "엔비디아 공식 제출·독립 보도",
         "context_links": (
+            ("엔비디아 SEC 공시 원문", "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27cfocommentary.htm"),
             ("엔비디아 공식 실적", "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/"),
             ("SK하이닉스 3분기 공식 실적", "https://news.skhynix.com/en/q3-2026-business-results/"),
             ("삼성전자 3분기 공식 실적", "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-2026%EB%85%84-3%EB%B6%84%EA%B8%B0-%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C"),
@@ -507,6 +508,27 @@ REPORTS = (
                   ("multi-year",), ("memory supply",), ("2028",), ("2029",),
                   ("203",), ("92",)),
                  "NVIDIA SEC 8-K 공식 별첨 99.2"),
+                # Reprints of the exact issuer-authored SEC CFO commentary.
+                # Do not count reprints as a second independent publisher;
+                # the separate news outlet evidence lane remains mandatory.
+                ("MarketScreener CFO 설명 동일 재게시",
+                 "https://www.marketscreener.com/news/nvidia-third-quarter-2027-cfo-commentary-ce785edcdc81f420",
+                 (("supply commitments",), ("$390 billion",), ("$279 billion",),
+                  ("multi-year",), ("memory supply",), ("2028",), ("2029",),
+                  ("203",), ("92",)),
+                 "SEC 공시의 CFO 설명 동일 재게시·SEC 원문 직접 열람 아님"),
+                ("Fintel SEC 8-K 동일 재게시",
+                 "https://fintel.io/doc/sec-nvidia-corporation-1045810-8k-2026-november-17-20774-6201",
+                 (("supply commitments",), ("$390 billion",), ("$279 billion",),
+                  ("multi-year",), ("memory supply",), ("2028",), ("2029",),
+                  ("203",), ("92",)),
+                 "SEC 공시 동일 재게시·SEC 원문 직접 열람 아님"),
+                ("StockTitan SEC 8-K 동일 재게시",
+                 "https://www.stocktitan.net/sec-filings/NVDA/8-k-nvidia-corp-reports-material-event-1b8846aa7232.html",
+                 (("supply commitments",), ("$390 billion",), ("$279 billion",),
+                  ("multi-year",), ("memory supply",), ("2028",), ("2029",),
+                  ("203",), ("92",)),
+                 "SEC 공시 동일 재게시·SEC 원문 직접 열람 아님"),
              )),
             ("독립 언론의 동일 공식 숫자 보도",
              (
@@ -603,7 +625,12 @@ def probe(report: dict, fetcher=fetch_article) -> tuple[dict | None, list[dict]]
             "key": report["key"], "group": report["group"], "label": report["label"],
             "date": report["date"], "facts": report["facts"], "caution": report["caution"],
             "source": url, "source_label": label, "lineage": lineage,
-            "verified_kind": report.get("verified_kind", "multi_origin_reported_supplier_evaluation_not_new_contract"),
+            "verified_kind": (
+                "issuer_statement_verbatim_reprint_with_independent_press_not_contract"
+                if report.get("group") == "nvidia_commitments"
+                and "sec.gov" not in proven[0][1]
+                else report.get("verified_kind", "multi_origin_reported_supplier_evaluation_not_new_contract")
+            ),
             "verified_source_links": tuple((item[0], item[1]) for item in proven),
             "short_title": report.get("short_title"), "brief_facts": report.get("brief_facts"),
             "brief_caution": report.get("brief_caution"),
