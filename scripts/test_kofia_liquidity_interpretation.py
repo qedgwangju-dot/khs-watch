@@ -130,8 +130,13 @@ def trial(name, overrides=None, expected=None, forbidden=(), bad_dates=False, co
             pattern = rf"^• {re.escape(full)}(?:\([^\n)]*\))? <b>[\d.]+조</b> \(10/7\) \| 1D [+-]?\d+\.\d{{2}}조 \| 5D [+-]?\d+\.\d{{2}}조$"
             row = (
                 f"• {full}"
-                + ("(단기금융상품에 투자하는 펀드의 투자원금 기준 규모)" if k == "mmf"
-                   else "(증권사 현금관리계좌에 머무는 단기자금)" if k == "cma" else "")
+                + (
+                    "(단기금융상품에 투자하는 펀드의 투자원금 기준 규모"
+                    + ("; " + MMF_GROWTH_NOTE if v["d1"] >= 3_000_000 else "")
+                    + ")"
+                    if k == "mmf"
+                    else "(증권사 현금관리계좌에 머무는 단기자금)" if k == "cma" else ""
+                )
                 + f" <b>{v['value']/1_000_000:.2f}조</b> (10/7)"
                 + f" | 1D {v['d1']/1_000_000:+.2f}조 | 5D {v['d5']/1_000_000:+.2f}조"
             )
