@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-19T11:11:58+09:00",
+  "updated_at_kst": "2026-11-19T11:32:51+09:00",
   "circle": {
     "date": "2026-11-16",
     "circulation_usd_b": 68.0,
@@ -66,10 +66,10 @@
   },
   "tbx": {
     "date": "2026-11-18",
-    "close": 29.445199966430664,
+    "close": 29.450000762939453,
     "prev_date": "2026-11-17",
     "prev_close": 29.530000686645508,
-    "daily_pct": -0.29
+    "daily_pct": -0.27
   },
   "fx": {
     "rate": 1338.8,
@@ -83,8 +83,6 @@
   "crcl_last_alerted_close_date": "2026-11-18",
   "correction_pending": false,
   "errors": [
-    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-11-18 sec=[(datetime.date(2026, 11, 17), 3.89), (datetime.date(2026, 11, 17), 3.89)] seven=[(datetime.date(2026, 11, 17), 3.89)] | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-11-18 sec=[(datetime.date(2026, 11, 17), 3.89), (datetime.date(2026, 11, 17), 3.89)] seven=[(datetime.date(2026, 11, 17), 3.89)]",
-    "crcl: CRCL cross-source close date mismatch: ChartExchange=2026-11-18 Yahoo=2026-11-17",
-    "tbx: source date regressed 2026-11-17 < 2026-11-18; previous snapshot kept"
+    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-11-18 sec=[(datetime.date(2026, 11, 17), 3.89), (datetime.date(2026, 11, 17), 3.89)] seven=[(datetime.date(2026, 11, 17), 3.89)] | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-11-18 sec=[(datetime.date(2026, 11, 17), 3.89), (datetime.date(2026, 11, 17), 3.89)] seven=[(datetime.date(2026, 11, 17), 3.89)]"
   ]
 }
