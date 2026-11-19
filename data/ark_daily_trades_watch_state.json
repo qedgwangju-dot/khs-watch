@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "last_date": "2026-11-17",
-  "digest": "dd9250dc4b14ccb81408b518",
+  "last_date": "2026-11-18",
+  "digest": "4ea8718079cd5b2d25cf78be",
   "format_version": 3,
   "sector_history": [
     {
@@ -441,22 +441,36 @@
         "자동차·자율주행": 1,
         "우주·방산": 2
       }
+    },
+    {
+      "date": "2026-11-18",
+      "digest": "4ea8718079cd5b2d25cf78be",
+      "complete": true,
+      "buy_complete": true,
+      "sell_complete": true,
+      "buy_usd": {
+        "바이오·헬스케어": 716390.433921,
+        "자동차·자율주행": 536447.951042
+      },
+      "sell_usd": {
+        "업종 미확인": 391426.706718,
+        "자동차·자율주행": 481338.829079
+      },
+      "buy_rows": {
+        "바이오·헬스케어": 3,
+        "자동차·자율주행": 1
+      }
     }
   ],
-  "updated_at": "2026-11-18T03:02:03.583874+00:00",
+  "updated_at": "2026-11-19T02:44:53.973973+00:00",
   "last_delivery": {
-    "last_date": "2026-11-17",
-    "digest": "dd9250dc4b14ccb81408b518",
+    "last_date": "2026-11-18",
+    "digest": "4ea8718079cd5b2d25cf78be",
     "message_ids": [
-      157
+      159
     ],
     "chat_id": "1551003698",
     "bot": "khs887988798879_bot",
-    "confirmed_at": "2026-11-18T03:02:06.906715+00:00"
-  },
-  "pending_delivery": {
-    "last_date": "2026-11-18",
-    "digest": "4ea8718079cd5b2d25cf78be",
-    "reserved_at": "2026-11-19T02:44:54.425509+00:00"
+    "confirmed_at": "2026-11-19T02:44:57.245985+00:00"
   }
 }
