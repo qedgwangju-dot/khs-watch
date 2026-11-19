@@ -68,7 +68,7 @@ base.SEARCHES = [
     'Halozyme MSD 특허심판원 무효',
     '"알테오젠 파트너 MSD" 할로자임 PH20 특허 특허성 없음',
     '"할로자임 PH20" MSD 특허성 없음',
-    '"Halozyme" "PH20" Merck unpatentable',
+    '"Halozyme" "Merck" Munich preliminary injunction overturned',
 ]
 for case in base.KNOWN_CASES:
     base.SEARCHES.append(f'"{case}" Halozyme Merck')
@@ -139,6 +139,19 @@ PTAB_VERIFIED_PORTFOLIO_SCORECARD = {
 
 DUTCH_VRO_CASE = "NL-VRO-C09-695432"
 GERMAN_EP622_CASE = "DE-EP622-KEYTRUDA"
+HALOZYME_GERMAN_REVERSAL_URL = (
+    "https://ir.halozyme.com/news/news-details/2026/"
+    "Halozyme-Provides-Update-on-German-Preliminary-Injunction-Hearing/default.aspx"
+)
+PGR_LAST_TWO_NEWS_URL = "https://www.thebionews.net/news/articleView.html?idxno=30460"
+PGR_LAST_TWO_CORROBORATION_URL = (
+    "https://www4.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02368166645647360"
+)
+PGR_LAST_TWO_FINAL_CASES = {
+    "PGR2025-00050": "12,077,791",
+    "PGR2025-00053": "12,195,773",
+}
+PGR_LAST_TWO_SCORE = {"total": 14, "won": 14, "pending": 0}
 UK_EP347_CASE = "UK-EP347-KEYTRUDA"
 DUTCH_VRO_PATENT = "EP 2,797,622"
 HALOZYME_DUTCH_INJUNCTION_URL = (
@@ -675,7 +688,21 @@ def classify(text: str, case: str) -> str:
         return ""
 
     if case == GERMAN_EP622_CASE:
-        if any(term in low for term in (
+        reversed_injunction = (
+            any(term in low for term in (
+                "overturned", "reversed", "lifted", "set aside", "vacated",
+                "취소", "뒤집", "해제", "번복",
+            ))
+            and any(term in low for term in (
+                "preliminary injunction", "distribution ban", "sale ban",
+                "가처분", "판매금지", "판매 금지",
+            ))
+            and any(term in low for term in (
+                "higher regional court", "appeals court", "appeal court",
+                "oberlandesgericht", "고등법원", "항소심",
+            ))
+        )
+        if reversed_injunction or any(term in low for term in (
             "appeal court ruled", "appeals court held", "appeal judgment issued",
             "appeal decision published", "oberlandesgericht ruled", "oberlandesgericht decided",
             "항소심 선고", "항소심 판결",
@@ -706,6 +733,16 @@ def classify(text: str, case: str) -> str:
         ):
             if any(term in low for term in terms):
                 return key
+
+    # Nov 18 final decisions are one legal milestone each; don't split their
+    # initial claim-by-claim reporting into duplicate "rationale" alerts.
+    if case in PGR_LAST_TWO_FINAL_CASES and any(term in low for term in (
+        "all challenged claims unpatentable",
+        "determining all challenged claims unpatentable",
+        "심판 대상 청구항 전부의 특허성을 부정",
+        "심판 대상 청구항 전부 특허성 부정",
+    )):
+        return "final_unpatentable"
 
     # An explanatory follow-up can carry NEW claim counts and reasoning while
     # the case's final-decision status stays unchanged. Use its own event key.
@@ -990,6 +1027,17 @@ def get_case(text: str) -> tuple[str, str]:
 
     low = text.lower()
     normalized = re.sub(r"[,\s]", "", low)
+    # Halozyme's Nov 19 official release describes the German appeal outcome
+    # without spelling out EP622. Require jurisdiction + drug + final action.
+    if (
+        ("keytruda" in low or "키트루다" in low)
+        and ("halozyme" in low or "할로자임" in low)
+        and ("merck" in low or "msd" in low or "머크" in low)
+        and any(x in low for x in ("germany", "german", "munich", "독일", "뮌헨"))
+        and any(x in low for x in ("preliminary injunction", "가처분", "판매금지", "판매 금지"))
+        and any(x in low for x in ("overturned", "reversed", "vacated", "lifted", "취소", "뒤집", "해제"))
+    ):
+        return GERMAN_EP622_CASE, DUTCH_VRO_PATENT
     if "c/09/695432" in low or (
         ("ep622" in normalized or "ep2797622" in normalized)
         and "keytruda" in low
@@ -1024,6 +1072,14 @@ _original_event_already_sent = base.event_already_sent
 def stage_aware_event_already_sent(
     key: str, url: str, kind: str, seen_events: set[str], seen_urls: set[str]
 ) -> bool:
+    # An ambiguous Telegram receipt must never authorize a blind resend.
+    try:
+        legal_state = json.loads(base.STATE.read_text(encoding="utf-8"))
+        uncertain = legal_state.get("halozyme_delivery_uncertain") or {}
+        if key in set(uncertain.get("event_keys") or []):
+            return True
+    except (ValueError, OSError, TypeError, AttributeError):
+        pass
     # An institution or older filing can share the case URL with a new FWD.
     # Still suppress repeated FWD notices by the exact case+stage event key.
     if kind in {"final_unpatentable", "decision_rationale"}:
@@ -1252,6 +1308,9 @@ def send_portfolio_updates() -> list[int]:
     for item in portfolio_updates():
         s = item["score"]
         key = portfolio_scorecard_key(s)
+        uncertain = state.get("halozyme_delivery_uncertain") or {}
+        if uncertain.get("event_id") == "pgr14" and key == portfolio_scorecard_key(PGR_LAST_TWO_SCORE):
+            continue
         if key in seen or seen.intersection(_legacy_portfolio_scorecard_keys(s)):
             seen.add(key)
             continue
@@ -1374,6 +1433,148 @@ def maybe_send_pgr_deadline_lead_notice(now_et: dt.datetime | None = None) -> li
     return [message_id]
 
 
+
+# Dated event recovery limited to the two November 2026 material changes.
+# PGR sources: the 2026-11-18 PTAB decision cover images published by TheBioNews
+# plus separate coverage by Edaily and ChosunBiz, and USPTO case identification.
+# The complete PTAB decision PDFs have NOT been accessed by this workflow.
+# German source: Halozyme's own November 19 official public release.
+# Neither the existence of this fixture nor generic RSS success means the
+# original official PTAB documents were fetched in the current runtime.
+def _verified_material_report(event_id: str) -> str:
+    if event_id == "pgr14":
+        return (
+            "<b>[바이오 감시] MSD·Halozyme 미국 PGR 최종결정 — 14건 모두 MSD에 유리</b>\n\n"
+            "<b>2026년 11월 18일 PTAB 최종서면결정 2건 추가: 12/14 → 14/14</b>\n"
+            "- <b>신규 사건 1:</b> PGR2025-00050 · US 12,077,791 · 심판 대상 청구항 "
+            "1~3·6~10(8개) 전부 특허성 부정.\n"
+            "- <b>신규 사건 2:</b> PGR2025-00053 · US 12,195,773 · 심판 대상 청구항 "
+            "1~3·5~15(14개) 전부 특허성 부정.\n"
+            "- <b>범위:</b> 합계 22개 심판 대상 청구항 판단. 기존 포기 청구항 "
+            "(791호 4·5, 773호 4)은 최종심결로 무효화한 청구항과 구분합니다.\n"
+            "- <b>알테오젠 영향:</b> KEYTRUDA QLEX에 적용된 ALT-B4의 미국 MDASE "
+            "특허분쟁 부담이 완화되는 방향입니다. 매출·로열티 증가액은 이 판정만으로 확정되지 않습니다.\n"
+            "- <b>법적 범위:</b> PTAB 최종서면결정은 미국 특허권 취소·항소 종료가 "
+            "법적으로 모두 완료됐다는 뜻이 아닙니다. 뉴저지 침해소송·유럽 특허소송은 별개입니다.\n"
+            "- <b>근거 수준:</b> 11월 18일 결정 표지 이미지·사건번호/특허번호와 "
+            "독립 보도를 대조했습니다. 미국 특허청 최종결정문 전문은 직접 열람하지 못했습니다.\n"
+            '- <a href="https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557844">'
+            '미국 특허청 PGR2025-00050 사건기록</a>\n'
+            f'- <a href="{html.escape(PGR_LAST_TWO_NEWS_URL, quote=True)}">11월 19일 최초 확인 보도</a>\n'
+            f'- <a href="{html.escape(PGR_LAST_TWO_CORROBORATION_URL, quote=True)}">독립 교차확인 보도</a>'
+        )
+    if event_id == "de_reversal":
+        return (
+            "<b>[바이오 감시] MSD·Halozyme 독일 법원 판결 — 기존 가처분 취소</b>\n\n"
+            "<b>2026년 11월 19일 뮌헨 고등법원: Keytruda SC 독일 "
+            "판매금지 가처분을 항소심에서 뒤집음</b>\n"
+            "- <b>기존 → 신규:</b> 2025년 12월 독일 판매·유통금지 가처분 "
+            "→ 2026년 11월 19일 항소심에서 그 가처분 취소.\n"
+            "- <b>공식 확인:</b> 패소 당사자인 Halozyme이 판결 결과를 직접 발표했습니다.\n"
+            "- <b>법적 제한:</b> 이번 결정은 독일 가처분에 관한 것이며 "
+            "EP622 특허 자체의 무효 확정이나 모든 본안소송 종결이 아닙니다.\n"
+            "- <b>반대 위험:</b> Halozyme은 독일에서 금지명령을 구하는 "
+            "정식 침해소송을 제기하겠다고 밝혔습니다. 네덜란드 법원의 "
+            "별도 유럽 8개국 금지명령도 이번 결정으로 자동 취소되지 않습니다.\n"
+            "- <b>알테오젠 영향:</b> 독일 시장 출시 제약이 완화될 수 있으나 "
+            "실제 판매 재개·공급·로열티는 별도 확인이 필요합니다.\n"
+            f'- <a href="{html.escape(HALOZYME_GERMAN_REVERSAL_URL, quote=True)}">'
+            'Halozyme 공식 보도자료</a>'
+        )
+    raise ValueError("Unknown Halozyme material event")
+
+
+def send_missing_verified_material(now_kst: dt.datetime | None = None) -> list[int]:
+    """Backfill exactly the two verified facts, on the existing chat and keys."""
+    now = (now_kst or dt.datetime.now(ZoneInfo("Asia/Seoul"))).astimezone(ZoneInfo("Asia/Seoul"))
+    try:
+        state = json.loads(base.STATE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []  # An invalid checkpoint is not permission to replay old events.
+    if not state.get("initialized"):
+        return []
+
+    final_case_keys = {
+        base.digest(f"{case}|{stage}")
+        for case in PGR_LAST_TWO_FINAL_CASES
+        for stage in ("final_unpatentable", "final_decision")
+    }
+    score_key = portfolio_scorecard_key(PGR_LAST_TWO_SCORE)
+    german_key = base.digest(f"{GERMAN_EP622_CASE}|de_appeal_decision")
+    seen = set(state.get("seen_events") or [])
+    seen_scores = set(state.get("seen_portfolio_updates") or [])
+    delivered: list[int] = []
+
+    for event_id, cutoff in (
+        ("pgr14", dt.datetime(2026, 11, 19, 12, 25, tzinfo=ZoneInfo("Asia/Seoul"))),
+        ("de_reversal", dt.datetime(2026, 11, 19, 23, 20, tzinfo=ZoneInfo("Asia/Seoul"))),
+    ):
+        if now < cutoff:
+            continue
+        # The cumulative PGR update is enough; no individual-case duplicate
+        # messages for the two decisions already described in the one alert.
+        if event_id == "pgr14" and score_key in seen_scores:
+            continue
+        if event_id == "de_reversal" and german_key in seen:
+            continue
+        marker = state.get("halozyme_delivery_uncertain") or {}
+        if marker.get("event_id") == event_id:
+            continue
+        token = (os.getenv("BIO_TELEGRAM_BOT_TOKEN") or "").strip()
+        chat = base.resolve_chat_id(token) if token else ""
+        if not token or not chat:
+            raise RuntimeError("Halozyme event recovery route unavailable")
+
+        message = _verified_material_report(event_id)
+        try:
+            receipt = _send_verified_pgr_lead(token, chat, message)
+        except Exception as exc:
+            # The POST may have been accepted even when the receipt is missing.
+            # Persist uncertainty BEFORE allowing a later check/retry.
+            state["halozyme_delivery_uncertain"] = {
+                "event_id": event_id,
+                "event_keys": sorted(final_case_keys if event_id == "pgr14" else {german_key}),
+                "message_sha": base.digest(message),
+                "recorded_at_kst": now.isoformat(timespec="seconds"),
+                "cause_type": type(exc).__name__,
+                "retransmission_allowed": False,
+            }
+            base.STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            raise RuntimeError(f"Halozyme {event_id} receipt unconfirmed; automatic resend disabled") from exc
+
+        if event_id == "pgr14":
+            seen.update(final_case_keys)
+            seen_scores.add(score_key)
+            state["seen_portfolio_updates"] = sorted(seen_scores)[-500:]
+            state["last_portfolio_message_ids"] = [receipt]
+        else:
+            seen.add(german_key)
+            _successful_timeline_events.append({
+                "case": GERMAN_EP622_CASE,
+                "date": "2026-11-19",
+                "kind": "de_appeal_decision",
+                "label": "독일 가처분 항소심 — 2025년 판매금지명령 취소",
+            })
+
+        state["seen_events"] = sorted(seen)[-5000:]
+        state.setdefault("halozyme_verified_delivery_receipts", [])
+        state["halozyme_verified_delivery_receipts"] = (
+            list(state["halozyme_verified_delivery_receipts"])[-19:]
+            + [{
+                "event_id": event_id,
+                "message_id": receipt,
+                "destination_verified": True,
+                "source_level": "news_and_ptab_case_metadata" if event_id == "pgr14" else "issuer_official",
+                "sent_at_kst": now.isoformat(timespec="seconds"),
+            }]
+        )
+        base.STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        _sent_ids.append(receipt)
+        delivered.append(receipt)
+        print(f"halozyme_material_alert_confirmed event={event_id} message_id={receipt} destination_verified=true")
+    return delivered
+
+
 _sent_ids: list[int] = []
 _original_send = base.send
 
@@ -1408,6 +1609,12 @@ def main() -> int:
     state0["seen_events"] = sorted(seen0)[-5000:]
     base.STATE.write_text(json.dumps(state0, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
+    material_failure = ""
+    try:
+        send_missing_verified_material()
+    except Exception as exc:
+        material_failure = f"{type(exc).__name__}: {exc}"
+        print(f"halozyme_material_alert_error={material_failure}")
     rc = base.main()
     portfolio_sent = send_portfolio_updates()
     _sent_ids.extend(mid for mid in portfolio_sent if mid not in _sent_ids)
@@ -1424,7 +1631,12 @@ def main() -> int:
         "reason": "USPTO ODP trial document API requires account/API key; no direct docket fetch in this workflow",
         "backfilled_case": "PGR2025-00042",
         "evidence": "user-supplied Paper 95 first page and independent USPTO case/patent identification",
-        "pending_fwd_cases": ["PGR2025-00050", "PGR2025-00053"],
+        "pending_fwd_cases": (
+            [] if portfolio_scorecard_key(PGR_LAST_TWO_SCORE)
+            in set(state.get("seen_portfolio_updates") or [])
+            else ["PGR2025-00050", "PGR2025-00053"]
+        ),
+        "late_2026_fwd_source_level": "independent_news_plus_official_docket_identity; final_pdfs_not_directly_fetched",
     }
     state["last_sent_message_ids"] = _sent_ids
     state["final_decision_classification_version"] = 2
@@ -1444,7 +1656,7 @@ def main() -> int:
         "errors": errors[-10:],
         "critical_errors": critical,
     }, ensure_ascii=False))
-    if critical:
+    if critical or material_failure:
         return 2
     return rc
 

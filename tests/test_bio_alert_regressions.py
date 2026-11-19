@@ -877,6 +877,94 @@ class BioAlertRegressionTests(unittest.TestCase):
                 self.assertEqual(halo.maybe_send_pgr_deadline_lead_notice(now), [])
                 sender.assert_called_once()
 
+    def test_halozyme_nov18_last_two_final_and_german_reversal_recognition(self):
+        for case in ("PGR2025-00050", "PGR2025-00053"):
+            self.assertEqual(
+                halo.classify("Final Written Decision Determining All Challenged Claims Unpatentable", case),
+                "final_unpatentable",
+            )
+        release = ("Halozyme and Merck Keytruda SC German Higher Regional Court "
+                   "overturned the preliminary injunction in Munich")
+        self.assertEqual(halo.get_case(release), (halo.GERMAN_EP622_CASE, halo.DUTCH_VRO_PATENT))
+        self.assertEqual(halo.classify(release, halo.GERMAN_EP622_CASE), "de_appeal_decision")
+        self.assertEqual(
+            halo.classify("Merck will appeal preliminary injunction in Germany",
+                          halo.GERMAN_EP622_CASE),
+            "",
+        )
+        self.assertIn("14/14", halo._verified_material_report("pgr14"))
+        self.assertIn("독일", halo._verified_material_report("de_reversal"))
+
+    def test_halozyme_two_material_events_share_existing_route_and_dedupe(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = pathlib.Path(directory) / "halo_state.json"
+            path.write_text(json.dumps({
+                "initialized": True,
+                "seen_events": [],
+                "seen_portfolio_updates": [],
+                "seen_urls": [],
+            }), encoding="utf-8")
+            when = dt.datetime.fromisoformat("2026-11-20T00:30:00+09:00")
+            with patch.object(halo.base, "STATE", path), \
+                 patch.object(halo, "_sent_ids", []), \
+                 patch.object(halo, "_successful_timeline_events", []), \
+                 patch.dict(os.environ, {"BIO_TELEGRAM_BOT_TOKEN": "offline-token"}), \
+                 patch.object(halo.base, "resolve_chat_id", return_value="-100123456"), \
+                 patch.object(halo, "_send_verified_pgr_lead", side_effect=[714, 715]) as sender:
+                self.assertEqual(halo.send_missing_verified_material(when), [714, 715])
+                self.assertEqual(halo.send_missing_verified_material(when), [])
+                self.assertEqual(sender.call_count, 2)
+                state = json.loads(path.read_text(encoding="utf-8"))
+                self.assertIn(halo.portfolio_scorecard_key(halo.PGR_LAST_TWO_SCORE),
+                              state["seen_portfolio_updates"])
+                for case in halo.PGR_LAST_TWO_FINAL_CASES:
+                    for stage in ("final_decision", "final_unpatentable"):
+                        self.assertIn(halo.base.digest(f"{case}|{stage}"), state["seen_events"])
+                self.assertIn(halo.base.digest(f"{halo.GERMAN_EP622_CASE}|de_appeal_decision"),
+                              state["seen_events"])
+                self.assertEqual([x["message_id"] for x in
+                                  state["halozyme_verified_delivery_receipts"]], [714, 715])
+                self.assertTrue(all(x["destination_verified"] for x in
+                                    state["halozyme_verified_delivery_receipts"]))
+
+    def test_halozyme_uncertain_final_receipt_quarantined_never_marked_sent(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = pathlib.Path(directory) / "halo_state.json"
+            german_event = halo.base.digest(f"{halo.GERMAN_EP622_CASE}|de_appeal_decision")
+            path.write_text(json.dumps({
+                "initialized": True, "seen_events": [german_event],
+                "seen_portfolio_updates": [], "seen_urls": [],
+            }), encoding="utf-8")
+            when = dt.datetime.fromisoformat("2026-11-20T00:30:00+09:00")
+            with patch.object(halo.base, "STATE", path), \
+                 patch.object(halo, "_sent_ids", []), \
+                 patch.dict(os.environ, {"BIO_TELEGRAM_BOT_TOKEN": "offline-token"}), \
+                 patch.object(halo.base, "resolve_chat_id", return_value="-100123456"), \
+                 patch.object(halo, "_send_verified_pgr_lead",
+                              side_effect=TimeoutError("no reply")) as sender:
+                with self.assertRaisesRegex(RuntimeError, "automatic resend disabled"):
+                    halo.send_missing_verified_material(when)
+                state = json.loads(path.read_text(encoding="utf-8"))
+                self.assertEqual(state["halozyme_delivery_uncertain"]["event_id"], "pgr14")
+                self.assertFalse(state["halozyme_delivery_uncertain"]["retransmission_allowed"])
+                self.assertNotIn(halo.portfolio_scorecard_key(halo.PGR_LAST_TWO_SCORE),
+                                 state["seen_portfolio_updates"])
+                self.assertEqual(halo.send_missing_verified_material(when), [])
+                self.assertEqual(sender.call_count, 1)
+
+    def test_halozyme_dated_recovery_does_not_send_before_publication(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = pathlib.Path(directory) / "halo_state.json"
+            path.write_text(json.dumps({"initialized": True, "seen_events": [],
+                                        "seen_portfolio_updates": []}), encoding="utf-8")
+            with patch.object(halo.base, "STATE", path), \
+                 patch.object(halo, "_send_verified_pgr_lead") as sender:
+                result = halo.send_missing_verified_material(
+                    dt.datetime.fromisoformat("2026-11-19T10:00:00+09:00")
+                )
+                self.assertEqual(result, [])
+                sender.assert_not_called()
+
     def test_halozyme_unknown_fwd_does_not_assume_invalidity(self):
         for case in ("PGR2025-00050", "PGR2025-00053"):
             self.assertEqual(
