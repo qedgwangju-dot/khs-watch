@@ -1093,6 +1093,20 @@
       "saved": true,
       "sent_success": true,
       "started": "2026-11-18T23:47:34+00:00"
+    },
+    "44427286375:1": {
+      "checked_at_kst": "2026-11-19T09:57:03+09:00",
+      "completed": "2026-11-19T00:15:43+00:00",
+      "fingerprint": "9b767b8c8233fac914ef542f5d101d2b52d64c57e980299f827581e04ef54f9c",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-19T00:15:43+00:00"
+    },
+    "44429280980:1": {
+      "checked_at_kst": "2026-11-19T09:57:02+09:00",
+      "fingerprint": "f23e6fca55e35969d9031fccfaedfa06a31898ae5dadce8b95e272d587654cba",
+      "outcome": "no_send"
     }
   },
   "recovery_holds": {},
