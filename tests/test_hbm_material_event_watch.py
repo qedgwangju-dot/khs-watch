@@ -675,5 +675,31 @@ class MaterialEventTests(unittest.TestCase):
         self.assertNotIn(row["key"], no_change["hbm_material_event_watch"]["seen_keys"])
         self.assertTrue(blocked["gaps"])
 
+
+    def test_nvidia_hbm_alert_separates_old_article_krw_from_fresh_fx_and_uses_exact_units(self):
+        import currency_krw_guard as krw
+        row = next(x for x in m.REPORTS
+                   if x["key"] == "20261118_nvidia_fy27q3_memory_supply_capacity_390bn")
+        self.assertIn("2,790억달러 → 3,900억달러", row["short_title"])
+        obs = {**row, "source": "https://www.stocktitan.net/example",
+               "source_label": "SEC 동일 재게시", "lineage": "동일 원문",
+               "verified_source_links": (
+                   ("SEC 동일 재게시", "https://www.stocktitan.net/example"),
+                   ("연합뉴스 독립 보도", "https://www.yna.co.kr/view/AKR20261118027500009"),
+               ),
+               "verified_source_caption": "엔비디아 CFO 설명 동일 공시 재게시·독립 보도"}
+        raw = m.render("nvidia_commitments", [obs], "2026-11-20T00:11:00+09:00")
+        with patch("currency_krw_guard._rate", return_value=(1328.45, "test")):
+            converted = krw.enforce_text(raw, hbm_mode=True)
+        for term in ("기사 발표 당시 원화 환산", "약 520조8,000억원",
+                     "2,790억달러", "3,900억달러", "1,110억달러",
+                     "2030 회계연도 100억달러", "2031 회계연도 80억달러",
+                     "2032 이후 80억달러", "엔비디아 CFO 설명 동일 공시 재게시"):
+            self.assertIn(term, converted)
+        for wrong in ("달러(기사 환산", "억원)(약 ", "달러(약 520조8,000억원)"):
+            self.assertNotIn(wrong, converted)
+        self.assertTrue(all(len(chunk.encode("utf-16-le")) // 2 <= 3600
+                            for chunk in d.chunks(converted)))
+
 if __name__ == "__main__":
     unittest.main()
