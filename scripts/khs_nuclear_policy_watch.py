@@ -273,6 +273,39 @@ TEMELIN_HISTORICAL_BASELINE = {
     },
 }
 
+
+# 폴란드 PEJ·Westinghouse·Bechtel EPC는 기존 원전 워처의 독립 사건축이다.
+# 2026-09-23 주요 상업조건 합의, 2026-10-08 선행 기자재 조달 착수,
+# 2026-11-05 PEJ의 2027년 서명 전망 및 11월 WSJ 보도는 최초 기준선이다.
+# 이전 사건의 기사 재게시를 신규 EPC 본계약으로 송출하지 않는다.
+POLAND_EPC_CUTOFF_UTC = dt.datetime(2026, 11, 19, 15, 0, tzinfo=UTC)
+POLAND_EPC_TITLE_PREFIX = "폴란드 AP1000 원전 EPC: "
+POLAND_EPC_STAGES = {
+    "epc_signed": "본계약 정식 체결",
+    "epc_negotiations_terminated": "기존 본계약 협상 공식 종료",
+    "epc_signing_delayed_again": "2027년 1분기 이후 본계약 추가 지연",
+    "nuclear_construction_license": "원자력시설 건설허가 정식 발급",
+    "financing_closed": "사업 금융조달 종결",
+    "firm_long_lead_order": "주요 원전 기자재 확정 제작발주",
+    "first_nuclear_concrete": "원자로 구조물 첫 콘크리트 타설",
+}
+POLAND_EPC_PRIORITY = {
+    "epc_signed": 9, "epc_negotiations_terminated": 9,
+    "nuclear_construction_license": 8, "financing_closed": 8,
+    "epc_signing_delayed_again": 7, "first_nuclear_concrete": 7,
+    "firm_long_lead_order": 6,
+}
+POLAND_EPC_QUERIES = (
+    ("PEJ", "site:pej.pl Westinghouse Bechtel EPC umowa when:7d"),
+    ("폴란드 정부", "site:gov.pl PEJ elektrownia jadrowa EPC when:7d"),
+    ("Westinghouse", "site:info.westinghousenuclear.com Poland Westinghouse Bechtel AP1000 when:7d"),
+    ("Bechtel", "site:bechtel.com Poland nuclear AP1000 EPC when:7d"),
+)
+POLAND_EPC_HISTORICAL_SOURCES = (
+    "https://info.westinghousenuclear.com/news/westinghouse-bechtel-and-pej-agree-on-main-commercial-terms-to-deliver-first-polish-nuclear-power-plant",
+    "https://info.westinghousenuclear.com/news/pej-and-westinghouse-begin-long-lead-item-procurement-process-for-polands-first-nuclear-power-plant",
+)
+
 SOURCES = [
     {"name": "Westinghouse strategic partnership", "url": "https://westinghousenuclear.com/strategic-partnership/press-releases/brookfield/"},
     {"name": "DOE Nuclear Energy", "url": "https://www.energy.gov/ne/articles/9-key-takeaways-president-trumps-executive-orders-nuclear-energy"},
@@ -2239,6 +2272,7 @@ def _self_test_temelin_milestones() -> None:
     assert TEMELIN_OPTION_EXPECTED_NET_MW_PER_UNIT == 1000
     if TEMELIN_HISTORICAL_BASELINE["option_2025"]["option_tenor_years"] != 5:
         raise RuntimeError("Temelin 5-year option baseline regression")
+    _self_test_poland_epc_milestones()
 
 
 def _render_temelin_milestone(item: dict, idx: int) -> list[str]:
@@ -2267,6 +2301,298 @@ def _render_temelin_milestone(item: dict, idx: int) -> list[str]:
         "",
     ]
 
+
+
+
+def _poland_epc_official_publisher(url: str) -> bool:
+    try:
+        host = (urllib.parse.urlsplit(url).hostname or "").lower().rstrip(".")
+    except (ValueError, TypeError):
+        return False
+    hosts = ("pej.pl", "gov.pl", "paa.gov.pl", "westinghousenuclear.com", "bechtel.com")
+    return any(host == base or host.endswith("." + base) for base in hosts)
+
+
+def _poland_epc_stage(title: str) -> str | None:
+    title = _temelin_fold(title)[:340]
+    # 계약 당사자·현장 또는 폴란드 최초 원전의 명시적인 문맥이 필수다.
+    is_poland = any(x in title for x in (
+        "poland", "polsk", "pej", "lubiatowo", "kopalino",
+        "폴란드", "초대형 폴란드 원전",
+    ))
+    is_project = any(x in title for x in (
+        "nuclear", "jadrow", "elektrown", "원전", "ap1000", "westinghouse",
+        "bechtel", "epc",
+    ))
+    if not (is_poland and is_project):
+        return None
+
+    # 2026년 말→2027년 1분기 목표 변경은 이미 확인된 과거 기준선이다.
+    # 그 이후의 명시적 추가 연기만 별도 사건으로 인정한다.
+    late = any(x in title for x in (
+        "2028", "second half of 2027", "2027 h2", "2027 q2", "2027 q3",
+        "2027 q4", "2nd quarter 2027", "3rd quarter 2027",
+        "2027년 하반기", "2027년 2분기", "2027년 3분기", "2027년 4분기",
+        "drugiej polowie 2027", "ii kwartale 2027", "iii kwartale 2027",
+    ))
+    shift = any(x in title for x in (
+        "delay", "postpon", "defer", "push back", "przesunie",
+        "opozn", "odloz", "지연", "연기", "늦춰",
+    ))
+    if "epc" in title and late and shift:
+        return "epc_signing_delayed_again"
+
+    if (
+        any(x in title for x in ("negotiations collapsed", "negotiations terminated",
+                                 "talks ended", "zerwan", "zakonczono negocjacje",
+                                 "협상 결렬", "협상 종료"))
+        and any(x in title for x in ("epc", "westinghouse", "bechtel"))
+    ):
+        return "epc_negotiations_terminated"
+
+    # 계획·기대·주요 상업조건·선행작업 계약을 전체 EPC 계약 체결로 오인하지 않는다.
+    if any(x in title for x in (
+        "expected", "expects", "planning", "plans to", "set to sign", "to sign",
+        "will sign", "aims to", "may sign", "due to sign", "prepar",
+        "negotiat", "talks", "terms", "framework", "preliminary",
+        "conditional", "main commercial", "early works", "long-lead",
+        "podpisanie", "planuje", "planowane", "negocj", "warunki handlowe",
+        "uzgodnil", "wstepn", "warunkow", "przygotow",
+        "예상", "계획", "예정", "검토", "협상", "합의", "조건부", "본계약 추진",
+    )):
+        return None
+
+    # '허가 신청'이나 부지 준비 공사 허가는 원자력시설 건설허가가 아니다.
+    construction_licence = any(x in title for x in (
+        "nuclear construction licence", "nuclear construction license",
+        "nuclear plant construction permit", "zezwolenie na budowe obiektu jadrowego",
+        "원자력시설 건설허가",
+    ))
+    granted = any(x in title for x in (
+        "issued", "granted", "approved", "wydano", "udzielono", "otrzymal",
+        "발급", "승인",
+    ))
+    if construction_licence and granted:
+        return "nuclear_construction_license"
+
+    if any(x in title for x in ("financial close", "financing closed", "financial closing",
+                                "zamkniecie finansowania", "금융 종결", "금융조달 종결")):
+        return "financing_closed"
+
+    if any(x in title for x in ("first nuclear concrete poured", "first nuclear concrete",
+                                "pierwszy beton jadrowy", "원자로 첫 콘크리트 타설")):
+        return "first_nuclear_concrete"
+
+    firm_order = any(x in title for x in (
+        "firm orders placed", "unconditional purchase orders", "manufacturing orders placed",
+        "production orders signed", "bezwarunkowe zamowienie",
+        "확정 제작발주", "본제작 발주",
+    ))
+    if firm_order and any(x in title for x in ("reactor", "ap1000", "원자로", "jadrow", "원전")):
+        return "firm_long_lead_order"
+
+    signed = (
+        bool(re.search(r"(?:signs|signed|executed|concluded|podpisano|podpisala|"
+                       r"zawarto|zawar[a-z]+).{0,85}(?:epc|"
+                       r"engineering procurement construction|kontrakt|umow)", title))
+        or bool(re.search(r"(?:epc|kontrakt epc|umow[a-z ]{0,15}epc).{0,85}"
+                          r"(?:signed|executed|podpisan|zawart|체결)", title))
+        or bool(re.search(r"(?:epc|건설 본계약).{0,45}(?:정식 체결|체결 완료)", title))
+    )
+    if signed and any(x in title for x in (
+        "epc", "engineering procurement construction", "건설 본계약",
+    )):
+        return "epc_signed"
+    return None
+
+
+def collect_poland_epc_items(now: dt.datetime) -> list[dict]:
+    candidates: dict[str, dict] = {}
+    failures = 0
+    successes = 0
+    now_utc = now.astimezone(UTC)
+    for source_name, query in POLAND_EPC_QUERIES:
+        try:
+            body, error = shared_fetch_text(
+                _google_news_url(query),
+                "KHS-Poland-AP1000-EPC-watch contact=github-actions",
+                timeout=7, attempts=1,
+            )
+            if error is not None or not body:
+                raise RuntimeError(error or "empty RSS")
+            root = ET.fromstring(body)
+            successes += 1
+        except Exception as exc:
+            failures += 1
+            print(f"poland_epc_rss_error source={source_name} error={type(exc).__name__}")
+            continue
+        for node in root.findall(".//item"):
+            source_node = node.find("source")
+            publisher_url = (
+                str(source_node.attrib.get("url") or "")
+                if source_node is not None else ""
+            )
+            if not _poland_epc_official_publisher(publisher_url):
+                continue
+            title = _clean_rss_title(node.findtext("title") or "")
+            stage = _poland_epc_stage(title)
+            if not stage:
+                continue
+            try:
+                published = parsedate_to_datetime(
+                    str(node.findtext("pubDate") or "").strip()
+                )
+                if published.tzinfo is None:
+                    continue
+                published = published.astimezone(UTC)
+            except (ValueError, TypeError, OverflowError, IndexError):
+                continue
+            if (
+                published <= POLAND_EPC_CUTOFF_UTC
+                or published > now_utc + dt.timedelta(minutes=10)
+                or now_utc - published > dt.timedelta(hours=72)
+            ):
+                continue
+            event = {
+                "kind": "poland_ap1000_epc",
+                "stage": stage, "status": POLAND_EPC_STAGES[stage],
+                "title": title,
+                "source": clean_text(source_node.text) or source_name,
+                "publisher_url": publisher_url,
+                "link": clean_text(node.findtext("link") or ""),
+                "published_utc": published.isoformat(timespec="seconds"),
+                "published_kst": published.astimezone(KST).isoformat(timespec="seconds"),
+                "official_publisher_title": True,
+                "verified": False,
+                "verification": "공식 발행자로 표시된 뉴스 RSS 제목 확인; 원문·최종 계약조건 직접 검증 전",
+            }
+            current = candidates.get(stage)
+            if current is None or event["published_utc"] > current["published_utc"]:
+                candidates[stage] = event
+    status = "unknown" if successes == 0 else ("partial" if failures else "checked")
+    print(
+        f"poland_epc_source_status={status} successful_queries={successes} "
+        f"failed_queries={failures} event_candidates={len(candidates)}"
+    )
+    # 실패한 원천 조회를 '공식 신규 발표 없음'으로 간주하지 않는다.
+    return sorted(candidates.values(), key=lambda x: (
+        POLAND_EPC_PRIORITY.get(x["stage"], 0), x["published_utc"]
+    ), reverse=True)
+
+
+def _poland_epc_confirmed_receipts(sent: dict) -> dict[str, dict]:
+    confirmed: dict[str, dict] = {}
+    if not isinstance(sent, dict):
+        return confirmed
+    for row in sent.values():
+        if not isinstance(row, dict) or row.get("route") != "westinghouse":
+            continue
+        try:
+            message_id = int(row.get("message_id") or 0)
+        except (TypeError, ValueError):
+            continue
+        if message_id <= 0:
+            continue
+        title = str(row.get("title") or "").strip()
+        sent_at = str(row.get("sent_at_utc") or "")
+        if not title.startswith(POLAND_EPC_TITLE_PREFIX) or not sent_at:
+            continue
+        try:
+            at = dt.datetime.fromisoformat(sent_at.replace("Z", "+00:00"))
+            if at.tzinfo is None or at.astimezone(UTC) <= POLAND_EPC_CUTOFF_UTC:
+                continue
+        except (ValueError, TypeError):
+            continue
+        for stage, label in POLAND_EPC_STAGES.items():
+            if title == POLAND_EPC_TITLE_PREFIX + label:
+                before = confirmed.get(stage) or {}
+                if sent_at > str(before.get("sent_at_utc") or ""):
+                    confirmed[stage] = {
+                        "status": label,
+                        "route": "westinghouse",
+                        "message_id": message_id,
+                        "sent_at_utc": sent_at,
+                        "evidence": "Telegram delivery_seen confirmed receipt",
+                    }
+                break
+    return confirmed
+
+
+def _poland_epc_reconcile_confirmed(seen: dict) -> int:
+    path = DATA_DIR / "khs_telegram_delivery_seen.json"
+    try:
+        delivered = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print("poland_epc_delivery_state=missing; confirmed stages not advanced")
+        return 0
+    except (OSError, json.JSONDecodeError) as exc:
+        print(f"poland_epc_delivery_state=unreadable error={type(exc).__name__}")
+        return 0
+    confirmed = _poland_epc_confirmed_receipts(delivered.get("sent"))
+    records = seen.setdefault("poland_epc_confirmed_stages", {})
+    created = 0
+    for stage, receipt in confirmed.items():
+        if stage not in records:
+            records[stage] = receipt
+            created += 1
+    if created:
+        print(f"poland_epc_confirmed_after_telegram_ack={created}")
+    return created
+
+
+def _self_test_poland_epc_milestones() -> None:
+    fixtures = (
+        ("Poland expects deal with US consortium for $50 billion nuclear plant", None),
+        ("Westinghouse-Bechtel and PEJ Agree on Main Commercial Terms to Deliver First Polish Nuclear Power Plant", None),
+        ("PEJ and Westinghouse Begin Long-Lead Item Procurement Process for Poland's First Nuclear Power Plant", None),
+        ("PEJ signed preparatory engineering contract for Poland AP1000", None),
+        ("Poland PEJ signs EPC contract with Westinghouse and Bechtel", "epc_signed"),
+        ("PEJ and Westinghouse executed EPC contract for Polish AP1000 plant", "epc_signed"),
+        ("Poland PEJ EPC contract signing postponed to second half of 2027", "epc_signing_delayed_again"),
+        ("PEJ Poland nuclear construction permit issued by PAA", "nuclear_construction_license"),
+        ("PEJ Poland AP1000 plant financial close achieved", "financing_closed"),
+        ("PEJ Poland nuclear plant first nuclear concrete poured", "first_nuclear_concrete"),
+        ("Poland PEJ AP1000 reactor firm orders placed for long-lead equipment", "firm_long_lead_order"),
+        ("Westinghouse signs AP1000 EPC contract in Bulgaria", None),
+        ("Poland's Pomerania PEJ submits application for nuclear construction permit", None),
+    )
+    for title, want in fixtures:
+        got = _poland_epc_stage(title)
+        if got != want:
+            raise RuntimeError(f"Poland EPC classification regression {title!r}: {got!r} != {want!r}")
+    if not _poland_epc_official_publisher("https://pej.pl/") or not _poland_epc_official_publisher("https://bechtel.com/"):
+        raise RuntimeError("Poland EPC official publisher allowlist regression")
+    if _poland_epc_official_publisher("https://bechtel.com.attacker.invalid"):
+        raise RuntimeError("Poland EPC publisher spoof regression")
+    title = POLAND_EPC_TITLE_PREFIX + POLAND_EPC_STAGES["epc_signed"]
+    raw = {
+        "valid": {"route": "westinghouse", "title": title, "message_id": 2301,
+                  "sent_at_utc": "2026-11-21T00:00:00+00:00"},
+        "no_ack": {"route": "westinghouse", "title": POLAND_EPC_TITLE_PREFIX +
+                   POLAND_EPC_STAGES["financing_closed"], "message_id": None,
+                   "sent_at_utc": "2026-11-21T00:00:00+00:00"},
+        "wrong_route": {"route": "policy", "title": POLAND_EPC_TITLE_PREFIX +
+                        POLAND_EPC_STAGES["nuclear_construction_license"],
+                        "message_id": 2302, "sent_at_utc": "2026-11-21T00:00:00+00:00"},
+    }
+    got = _poland_epc_confirmed_receipts(raw)
+    if set(got) != {"epc_signed"} or got["epc_signed"]["message_id"] != 2301:
+        raise RuntimeError("Poland EPC receipt-only seen-state regression")
+
+
+def _render_poland_epc(item: dict, idx: int) -> list[str]:
+    stage = str(item["stage"])
+    return [
+        f"## {idx}. [공식 발행자 제목·원문 검증 전] 폴란드 첫 AP1000 원전",
+        f"- 이번 변화: {POLAND_EPC_STAGES[stage]} — {item['title']}",
+        "- 기존 기준선: 2026-09-23 EPC 주요 상업조건 합의 → 10-08 장기 제작 기자재 조달 착수 → 11월 PEJ의 2027년 서명 전망. 이번 보도는 별도 EPC 본계약 체결 사실과 구분합니다.",
+        "- 규모: AP1000 3기 · 발전용량 총 3,750MW · 2036/2037/2038년 순차 가동 목표. 전체 사업비를 웨스팅하우스의 확정 수주·매출로 계산하지 않습니다.",
+        "- 확정 구분: 계약서·발주금액·핵심 원자력 기자재 발주·건설허가·현지 공급사 선정은 각각 별도의 사건입니다. 공식 발행자로 표기된 RSS 제목에 근거한 최초 경보이므로 원문 세부조건 검증이 필요합니다.",
+        "- 한국기업 영향: 한국 원전 관련주에 곧바로 확정 매출을 배정할 수 없으며, 폴란드 PEJ–미국 컨소시엄 계약과 체코·한국 사업은 구별합니다.",
+        f"- 출처: [{item['source']}]({item['link']}) · {item['published_kst']} · [발행기관]({item['publisher_url']})",
+        "- 다음 확인: 발주처·원청 공식 계약서와 최종 총액 → 현지 공급·장기 제작 기자재 본발주 → 원자력시설 건설허가 → 첫 콘크리트 → 전력공급. 조건부 발주는 확정 제작발주와 분리합니다.",
+        "",
+    ]
 
 def load_seen() -> dict:
     if not SEEN_PATH.exists():
@@ -2387,6 +2713,8 @@ def render(alerts: list[dict], now: dt.datetime) -> str:
             block = _render_hanul4_operation(item, idx, now)
         elif kind == "temelin_large_nuclear":
             block = _render_temelin_milestone(item, idx)
+        elif kind == "poland_ap1000_epc":
+            block = _render_poland_epc(item, idx)
         else:
             block = _render_direct(item, idx, now)
         if len(alerts) == 1 and block and block[0].startswith("## 1. "):
@@ -2764,6 +3092,23 @@ def main() -> int:
         }
         print(f"temelin_large_state_change=true stage={milestone}")
 
+    # 폴란드 EPC 단계는 기존 원전 정책 워처에서만 감시한다.
+    # 다른 알림 후보가 있는 실행에서는 섞어 전송하지 않고 다음 실행으로 이월한다.
+    # 성공 응답의 route/message_id가 전용 발송 이력에 남은 뒤에만 상태를 확정한다.
+    _poland_epc_reconcile_confirmed(seen)
+    poland_candidates = collect_poland_epc_items(now)
+    poland_confirmed = seen.get("poland_epc_confirmed_stages") or {}
+    pending_poland = next(
+        (item for item in poland_candidates if item["stage"] not in poland_confirmed),
+        None,
+    )
+    if pending_poland and not alerts:
+        pending_poland["trigger"] = "official_publisher_poland_ap1000_epc_milestone"
+        alerts.append(pending_poland)
+        print(f"poland_epc_alert_pending_ack=true stage={pending_poland['stage']}")
+    elif pending_poland:
+        print(f"poland_epc_deferred_for_isolated_delivery=true stage={pending_poland['stage']}")
+
     if not alerts:
         # 기준선 복구·상태모델 전환 같은 내부 상태 변화는 알림이 없어도 반드시 저장한다.
         current_seen_snapshot = json.dumps(seen, ensure_ascii=False, sort_keys=True)
@@ -2783,8 +3128,12 @@ def main() -> int:
         TITLE_PATH.write_text("국내 원전 운전·재가동 웹감시: 확인된 상태 변화\n", encoding="utf-8")
     elif all(item.get("kind") == "temelin_large_nuclear" for item in alerts):
         TITLE_PATH.write_text("체코 테믈린 3·4호기 대형원전 후속 계약·규제 웹감시\n", encoding="utf-8")
+    elif len(alerts) == 1 and alerts[0].get("kind") == "poland_ap1000_epc":
+        TITLE_PATH.write_text(POLAND_EPC_TITLE_PREFIX + POLAND_EPC_STAGES[alerts[0]["stage"]] + "\n", encoding="utf-8")
     else:
         TITLE_PATH.write_text("원전·Westinghouse·SMR 웹감시: 물질적 상태 변화\n", encoding="utf-8")
+    # 폴란드 신규 단계는 발송 전 선반영 금지. 위 확정 상태는 다음 실행에서
+    # 실제 Telegram 전송 영수증을 읽은 뒤에만 nuclear seen에 추가된다.
     save_seen(seen, now)
     print(
         f"nuclear_policy_alerts={len(alerts)} "
