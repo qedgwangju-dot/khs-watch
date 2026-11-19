@@ -13,33 +13,34 @@
     "kepco_notice": [],
     "kogas_press": [],
     "kepco_press": [
-      "kepco:3190"
+      "kepco:3190",
+      "kepco:3196"
     ]
   },
   "sources": {
     "motir_press": {
-      "last_ok_kst": "2026-11-19T09:18:00+09:00",
+      "last_ok_kst": "2026-11-19T19:14:13+09:00",
       "matched": 0
     },
     "motir_clarification": {
-      "last_ok_kst": "2026-11-19T09:18:00+09:00",
+      "last_ok_kst": "2026-11-19T19:14:13+09:00",
       "matched": 3
     },
     "kepco_notice": {
-      "last_ok_kst": "2026-11-19T09:18:00+09:00",
+      "last_ok_kst": "2026-11-19T19:14:13+09:00",
       "matched": 0
     },
     "kogas_press": {
-      "last_ok_kst": "2026-11-19T09:18:00+09:00",
+      "last_ok_kst": "2026-11-19T19:14:13+09:00",
       "matched": 0
     },
     "kepco_press": {
-      "last_ok_kst": "2026-11-19T09:18:00+09:00",
-      "matched": 1
+      "last_ok_kst": "2026-11-19T19:14:13+09:00",
+      "matched": 2
     }
   },
   "seeded_date": "2026-11-16",
-  "updated_at_kst": "2026-11-19T09:18:00+09:00",
+  "updated_at_kst": "2026-11-19T19:14:13+09:00",
   "source_health": {
     "ok": [
       "kepco_notice",
