@@ -24,8 +24,10 @@
     "aidc|power-demand|revision-review": 30
   },
   "material_signatures": {},
-  "updated_at": "2026-11-19T09:34:31.692901+00:00",
-  "source_errors": [],
+  "updated_at": "2026-11-19T10:51:12.115728+00:00",
+  "source_errors": [
+    "국내 AIDC 사업 실행: HTTPError"
+  ],
   "dedupe_version": 4,
   "held_for_verification_count": 1,
   "held_examples": [
