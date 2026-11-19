@@ -371,8 +371,10 @@
       "고신뢰 생산 변화"
     ]
   },
-  "last_scan_kst": "2026-11-19T13:38:14+09:00",
-  "errors": [],
+  "last_scan_kst": "2026-11-19T22:56:31+09:00",
+  "errors": [
+    "en:\"Apple foldable\" production target shipmen… -> HTTPError: HTTP Error 429: Too Many Requests"
+  ],
   "seen_fact_keys": [
     "assembly_yield_60",
     "sep17_assembly_bottleneck"
