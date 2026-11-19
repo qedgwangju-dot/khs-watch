@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-20T05:29:19+09:00",
+  "updated_at_kst": "2026-11-20T05:58:50+09:00",
   "circle": {
     "date": "2026-11-16",
     "circulation_usd_b": 68.0,
@@ -39,37 +39,37 @@
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "three_month": 4.34,
-    "ten_year": 5.07,
-    "prev_date": "2026-11-17",
-    "prev_three_month": 4.33,
-    "prev_ten_year": 5.1,
-    "daily_3m_bp": 1.0,
+    "ten_year": 5.04,
+    "prev_date": "2026-11-18",
+    "prev_three_month": 4.34,
+    "prev_ten_year": 5.07,
+    "daily_3m_bp": 0.0,
     "daily_10y_bp": -3.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
     "date": "2026-11-19",
-    "close": 52.400001525878906,
+    "close": 51.849998474121094,
     "prev_date": "2026-11-18",
     "prev_close": 53.310001373291016,
-    "daily_pct": -1.71,
+    "daily_pct": -2.74,
     "source": "Yahoo Finance daily chart",
     "source_url": "https://finance.yahoo.com/quote/CRCL/history/",
     "crosscheck_source": "ChartExchange historical",
     "crosscheck_date": "2026-11-19",
-    "crosscheck_close": 52.4,
-    "crosscheck_daily_pct": -1.71,
-    "crosscheck_gap_pct": 0.0,
-    "crosscheck_status": "confirmed"
+    "crosscheck_close": 51.84,
+    "crosscheck_daily_pct": -2.76,
+    "crosscheck_gap_pct": 0.0193,
+    "crosscheck_status": "rounding_difference"
   },
   "tbx": {
     "date": "2026-11-19",
-    "close": 29.459999084472656,
+    "close": 29.43280029296875,
     "prev_date": "2026-11-18",
     "prev_close": 29.450000762939453,
-    "daily_pct": 0.03
+    "daily_pct": -0.06
   },
   "fx": {
     "rate": 1338.8,
@@ -82,5 +82,7 @@
   },
   "crcl_last_alerted_close_date": "2026-11-18",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "fx: 2026-11-19 한국은행 ECOS 원/미국달러 매매기준율 조회 실패"
+  ]
 }
