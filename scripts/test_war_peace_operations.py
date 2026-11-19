@@ -176,7 +176,8 @@ class OperationsWarningTests(unittest.TestCase):
         self.assertIn('out/war_peace_reconstruction_ops_warning.txt', sender)
         self.assertIn('secrets.WAR_PEACE_TELEGRAM_BOT_TOKEN', sender)
         self.assertEqual(workflow.count('bot{token}/sendMessage'), 1)
-        self.assertIn('cron: "*/5 * * * *"', workflow)
+        # Same five-minute cadence, offset to avoid the top-of-hour scheduler peak.
+        self.assertIn('cron: "2-59/5 * * * *"', workflow)
 
 
 if __name__ == '__main__':
