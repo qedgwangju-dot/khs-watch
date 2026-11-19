@@ -6516,18 +6516,21 @@ def _trilateral_refined_update(current: dt.datetime, state: dict) -> dict | None
         label, url = spec
         try:
             raw = fetch_bytes(url, timeout=6, attempts=1).decode("utf-8", "replace")
-            return (label, url) if _parse_trilateral_refined_declaration(raw) else None
+            matched = _parse_trilateral_refined_declaration(raw)
+            return ("verified" if matched else "reachable_unmatched", label, url)
         except Exception as exc:
             print(f"trilateral_primary_source_error={label}:{type(exc).__name__}")
-            return None
+            return ("lookup_failed", label, url)
 
     with ThreadPoolExecutor(max_workers=2) as pool:
         checked = list(pool.map(check, _TRILATERAL_REFINED_SOURCES))
-    verified = next((value for value in checked if value is not None), None)
+    verified = next((value for value in checked if value[0] == "verified"), None)
     if verified is None:
-        print("trilateral_first_party=unavailable_or_unverified; no_alert")
+        outcome = ("lookup_failed" if all(x[0] == "lookup_failed" for x in checked)
+                   else "reachable_but_declaration_not_verified")
+        print(f"trilateral_first_party={outcome}; new_publication_unknown; no_alert")
         return None
-    label, url = verified
+    _, label, url = verified
     body = "\n".join((
         "[미국·중국·러시아 정제유 공급 확대 공동선언]",
         "공식 발표: 2026년 11월 19일 · 3국 정상 공동선언",
@@ -6616,10 +6619,12 @@ def _verified_oil_supply_overlay(current: dt.datetime) -> int:
             raw = fetch_bytes(TANKERTRACKERS_PUBLIC_TELEGRAM_URL, timeout=6, attempts=1)
             prep = _parse_tankertrackers_preparation(
                 raw.decode("utf-8", "replace"), current)
-            if prep and prep["id"] not in (state.get("alerted_events") or {}):
+            if prep is None:
+                print("iran_loading_preparation=source_reachable_no_fresh_authored_post")
+            elif prep["id"] not in (state.get("alerted_events") or {}):
                 updates.append(prep)
             else:
-                print("iran_loading_preparation=not_new_or_not_in_author_owned_text")
+                print("iran_loading_preparation=already_reported_duplicate")
         except Exception as exc:
             print(f"iran_loading_preparation_source_failure={type(exc).__name__}")
     else:
