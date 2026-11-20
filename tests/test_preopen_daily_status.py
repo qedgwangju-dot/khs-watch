@@ -57,6 +57,17 @@ class PreopenDailyStatusTests(unittest.TestCase):
         self.assertIn("FINRA 마진부채 잔액 차이: 1M/3M 확인 불가", message)
         self.assertNotIn("+262.2억달러", message)
 
+    def test_run1632_us_status_preserves_horizons_and_explains_direction(self):
+        fixture = json.loads((Path(__file__).parent / "fixtures/us_preopen_run1632_horizons.json").read_text(encoding="utf-8"))
+        with patch("urllib.request.urlopen", side_effect=AssertionError("network/send forbidden")):
+            message = "\n".join(status._us_horizon_details(fixture["status_text"], {"values": fixture["values"]}))
+        for expected in (
+            "ICI 국내주식형 주간 순유입 합계", "ICI MMF 잔액 차이", "FINRA 마진부채 잔액 차이",
+            "3M 확인 불가 (동일 정의 주간 이력이 목표일까지 이어지지 않음)", "10/14 ICI 집합투자신탁",
+            "채권가격 상승·수익률 하락", "상승·하락 양방향", "↑/↓는 지표값의 증감 부호이지 주가 방향",
+        ):
+            self.assertIn(expected, message)
+
     def test_kofia_misaligned_dates_are_explicit(self):
         self.cfg["evidence"].write_text(json.dumps({"phase": "alignment_pending", "latest_dates": {"deposit": "2026-11-02", "mmf": "2026-10-30"}}), encoding="utf-8")
         with patch.dict(status.CONFIG, {"kofia": {"title": "국내 증시 대기자금", **self.cfg}}):
