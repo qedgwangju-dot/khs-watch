@@ -1993,6 +1993,20 @@
       "saved": true,
       "sent_success": true,
       "started": "2026-11-20T08:13:47+00:00"
+    },
+    "44702467750:1": {
+      "checked_at_kst": "2026-11-20T17:52:33+09:00",
+      "completed": "2026-11-20T08:28:10+00:00",
+      "fingerprint": "afeacca9af82ed315ab3b4fdcfe4dfa5b8972cb12f4052c88c2785abe2e07406",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-20T08:28:09+00:00"
+    },
+    "44703634425:1": {
+      "checked_at_kst": "2026-11-20T17:52:32+09:00",
+      "fingerprint": "9fdfafcb9cff130e54b729927a31740ad8994d31e92f4ae67b12325b39ee04a1",
+      "outcome": "no_send"
     }
   },
   "recovery_holds": {},
