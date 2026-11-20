@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "last_checked_kst": "2026-11-20T06:27:11+09:00",
+  "last_checked_kst": "2026-11-20T11:36:30+09:00",
   "seen_event_keys": [
     "3acb402324f8efa8dfe28d17b67eebcd41ec7249fbd9f70032bd15ae594b7c74",
     "b0f0fef63f3dc128673f3556acf2cf3f06026db113d25a3516c9fd8657a88978",
@@ -10,7 +10,7 @@
   "source_errors": [
     "Coinbase-Citi official direct: HTTP Error 403: Forbidden",
     "Coinbase-Citi mirror: HTTP Error 403: Forbidden",
-    "Coinbase-Citi trusted RSS fallback: HTTP Error 503: Service Unavailable",
+    "Coinbase-Citi trusted RSS fallback: HTTP Error 429: Too Many Requests",
     "Coinbase blog landing: HTTP Error 403: Forbidden"
   ]
 }
