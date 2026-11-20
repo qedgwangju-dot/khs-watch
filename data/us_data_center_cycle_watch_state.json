@@ -11,50 +11,42 @@
     "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
     "reported_mom_pct": 8.6,
     "reported_yoy_pct": 90.3,
-    "retrieved_at_utc": "2026-11-02T20:21:02.922078+00:00",
+    "retrieved_at_utc": "2026-11-20T00:58:13.622584+00:00",
     "source": "U.S. Census Bureau Construction Spending",
     "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
     "year_ago_saar_musd": 50700
   },
   "dodge": {
-    "article_sha256": "097daba39e37470ece3bdd3df07adeabff8d5e52f61950e7e0297aad811d9c81",
-    "commercial_12m_change_pct": 47.7,
-    "commercial_change_pct": -18.4,
-    "data_center_mention_count": 4,
+    "article_sha256": "989f75da0593e9975524066ed680ca7a203ab41360a19d5ae0f7e6acbae2db18",
+    "commercial_12m_change_pct": 47.8,
+    "commercial_change_pct": null,
+    "data_center_mention_count": 1,
     "data_center_projects": [
       {
-        "amount_usd_bn": 4.6,
-        "label_ko": "South Valley Data Center"
-      },
-      {
-        "amount_usd_bn": 4.3,
-        "label_ko": "Beacon Point Data Center"
-      },
-      {
-        "amount_usd_bn": 2.0,
-        "label_ko": "Vantage V41 Data Center Campus"
+        "amount_usd_bn": 4.9,
+        "label_ko": "Mattameade Data Center Campus-Amazon Bldgs 2-7"
       }
     ],
     "index_url": "https://www.construction.com/category/total-construction-starts/",
-    "nonresidential_change_pct": -6.3,
+    "nonresidential_change_pct": 47.7,
     "office_dc_change_pct": null,
-    "published": "2026-10-21T19:05:15+00:00",
-    "retrieved_at_utc": "2026-11-02T20:21:03.464693+00:00",
+    "published": "2026-11-19T19:13:31+00:00",
+    "retrieved_at_utc": "2026-11-20T00:58:14.028276+00:00",
     "source": "Dodge Construction Network Total Construction Starts",
-    "title": "Construction Starts Recede 1 5 In September",
-    "total_change_pct": -1.5,
-    "total_starts_saar_usd_bn": 1330.0,
-    "url": "https://www.construction.com/construction-starts-recede-1-5-in-september/",
+    "title": "Construction Starts Jump 22 8 In October",
+    "total_change_pct": 22.8,
+    "total_starts_saar_usd_bn": 1630.0,
+    "url": "https://www.construction.com/construction-starts-jump-22-8-in-october/",
     "utility_change_pct": null,
-    "utility_ytd_change_pct": 70.1
+    "utility_ytd_change_pct": 35.1
   },
   "format_version": 6,
   "fx": {
-    "basis_kst": "2026-11-02 일일 기준 · ECB/Frankfurter · 조회 2026-11-03 05:21 KST · 보조 API 2026-11-02 · 차이 0.75% · 일중 기준시각 차이 가능",
+    "basis_kst": "2026-11-19 일일 기준 · ECB/Frankfurter · 조회 2026-11-20 09:58 KST · 보조 API 2026-11-20 · 차이 0.19% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "source_type": "교차검증 일일 기준환율",
-    "usdkrw": 1342.9
+    "usdkrw": 1328.45
   },
-  "updated_at_utc": "2026-11-02T20:21:02.078106+00:00",
+  "updated_at_utc": "2026-11-20T00:58:13.192176+00:00",
   "watch": "US data center construction starts vs spending"
 }
