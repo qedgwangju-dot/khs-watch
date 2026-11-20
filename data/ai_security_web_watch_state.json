@@ -7,16 +7,20 @@
     "deferred_material_items": 0,
     "direct_official_items": 56,
     "errors": [
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) system card cyb… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) model release c… / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News RSS 실패: (\"CVE-2026-109618\" OR \"CVE-2026-109619\" OR \"php2shell\")… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"CVE-2026-115560\" PHP (advisory OR patch OR fix OR expl… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"CYFIRMA\" \"PHP2Shell\" (216 OR scanning OR Lazarus OR co… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) agent misalignm… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic) model behavior guardrail sandbox … / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) limited release… / HTTPError: HTTP Error 429: Too Many Requests"
     ],
-    "google_news_queries_failed": 2,
+    "google_news_queries_failed": 6,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 63,
-    "google_news_rate_limit_429": 2,
-    "material_items": 14,
+    "google_news_queries_succeeded": 59,
+    "google_news_rate_limit_429": 6,
+    "material_items": 13,
     "new_material_items": 0,
-    "raw_items": 150,
+    "raw_items": 116,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
     "source_access_limited": true
@@ -766,16 +770,6 @@
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPWUo2Vm9ZX0N2WFgyZkhndnVWM2NIS1hvdXdPSXBJa25KbDNTU0p6LVNYZzQtSVFxaUJBWFlBUk5oOUJWVEdIeVBmcENjNDVyWEFqT29hRHRubEtWYnRaUHFWMEpVZEN4b0lZd3d2TkhFV1M5MVR3eDJqRGRvUzJRSUR1bTBvdUNCMFRxT0Q5SEJTdFRWVWRTSmtvMjFkYk0?oc=5",
       "vendor": "PHP 재단"
     },
-    "ad0c0639f18dd9d0909ebac2": {
-      "category": "금융·핵심인프라 AI 사이버 위험 경보",
-      "first_seen_at": "2026-10-16T05:21:44.502165+00:00",
-      "published_at": "2026-10-15T18:10:00+00:00",
-      "severity": 2,
-      "source": "Fortune",
-      "title": "‘You don’t want rogue agents': Jamie Dimon bars outside AI agents like Meta's Muse from JPMorgan accounts - Fortune",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9WWTU4alY2TFA3S0E4V1JiTUtkWm5SMGZEVG93d1daWldkVmxuTkRWNUNQX3ZhcGwwTENVdGcwallaaUhTU2lGQWgyQjhGNUh0TzhWNEtkWTA2cGF5VFl5RkxrQ1d6V2h3RFRzMmdmODlYdnVHM2lwMHh4QQ?oc=5",
-      "vendor": "AI 생태계"
-    },
     "afe7a95eba29ba77c4b6efbc": {
       "category": "PHP 취약점 실전 악용 보도·추가 검증",
       "first_seen_at": "2026-11-04T16:28:03.917880+00:00",
@@ -1139,5 +1133,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-20T14:10:46+09:00"
+  "updated_at_kst": "2026-11-20T14:31:25+09:00"
 }
