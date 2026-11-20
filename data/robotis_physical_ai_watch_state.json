@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-19T22:26:36.890341+00:00",
+  "updated_at": "2026-11-20T03:06:57.571137+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -991,9 +991,26 @@
     "16812d46c411f3f83419051faa27f4934df8eaa5873242769150f8524d8c5e67",
     "14d93a73761c3ea22b063cd20bd3e8a022d195ef3c0de7811049577d2dfcffa2",
     "bbe34a040271e365b022520bb2d8a571ed30741e86e08d03bdbe32cd1cbc59c0",
-    "32bc1d9c8cb2bcd9c662a3d45e5b7735f18794030c695ecb737f1e17aab72c32"
+    "32bc1d9c8cb2bcd9c662a3d45e5b7735f18794030c695ecb737f1e17aab72c32",
+    "44e38c418d8b624501e53e833075280cbb24234df30454c4e1425da953799ffb",
+    "f4a7563b41a35004dedc6aa25d50067a7f8b7fd373769de17646df277819e5ee",
+    "02498ce3a077d8108e250d3afaf02a9ae5c5e7e1f8da58228ed1715aaa8eb462",
+    "175f33a31af626f9d21ae518d70cc74a7623602cabf2877d184680cb27ca68cf",
+    "77151594658e8b506dc434291e77f6aa11deb817bff3cbe5293e9c42a15a41b4",
+    "adbb738721747ed8e65e7d0c1ce63fcf0eb3e5e3d7b9b24f76b2aaa12db72c6a",
+    "5b814cf1e25688249bf1e5fb8055895dc18ddd13ca730ac1567b30e06906f9e5",
+    "d42bac6d65d442d0cb7ed5693a2642eb48ec7b7d9aae8bd598ad1808c2b9eab6"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "44e38c418d8b624501e53e833075280cbb24234df30454c4e1425da953799ffb",
+    "f4a7563b41a35004dedc6aa25d50067a7f8b7fd373769de17646df277819e5ee",
+    "02498ce3a077d8108e250d3afaf02a9ae5c5e7e1f8da58228ed1715aaa8eb462",
+    "175f33a31af626f9d21ae518d70cc74a7623602cabf2877d184680cb27ca68cf",
+    "77151594658e8b506dc434291e77f6aa11deb817bff3cbe5293e9c42a15a41b4",
+    "adbb738721747ed8e65e7d0c1ce63fcf0eb3e5e3d7b9b24f76b2aaa12db72c6a",
+    "5b814cf1e25688249bf1e5fb8055895dc18ddd13ca730ac1567b30e06906f9e5",
+    "d42bac6d65d442d0cb7ed5693a2642eb48ec7b7d9aae8bd598ad1808c2b9eab6"
+  ],
   "groups": [
     "ess_battery",
     "hyundai_atlas_rollout",
@@ -1012,15 +1029,6 @@
     "toyota_robot_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 43738881477,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-15T17:03:17.743923+00:00"
-    },
     {
       "run_id": 43741269057,
       "outcome": "sent",
@@ -1361,19 +1369,138 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-19T22:26:36.890341+00:00"
+    },
+    {
+      "run_id": 44665364824,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "02498ce3a077d8108e250d3afaf02a9ae5c5e7e1f8da58228ed1715aaa8eb462",
+        "175f33a31af626f9d21ae518d70cc74a7623602cabf2877d184680cb27ca68cf",
+        "44e38c418d8b624501e53e833075280cbb24234df30454c4e1425da953799ffb",
+        "5b814cf1e25688249bf1e5fb8055895dc18ddd13ca730ac1567b30e06906f9e5",
+        "77151594658e8b506dc434291e77f6aa11deb817bff3cbe5293e9c42a15a41b4",
+        "adbb738721747ed8e65e7d0c1ce63fcf0eb3e5e3d7b9b24f76b2aaa12db72c6a",
+        "d42bac6d65d442d0cb7ed5693a2642eb48ec7b7d9aae8bd598ad1808c2b9eab6",
+        "f4a7563b41a35004dedc6aa25d50067a7f8b7fd373769de17646df277819e5ee"
+      ],
+      "message_ids": [
+        390,
+        391
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal",
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false,
+        false
+      ],
+      "state_timestamp_utc": "2026-11-20T03:06:57.571137+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44628528888,
-    "outcome": "normal_silence",
-    "confirmed_event_keys": [],
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-19T22:26:36.890341+00:00"
+    "run_id": 44665364824,
+    "outcome": "sent",
+    "confirmed_event_keys": [
+      "02498ce3a077d8108e250d3afaf02a9ae5c5e7e1f8da58228ed1715aaa8eb462",
+      "175f33a31af626f9d21ae518d70cc74a7623602cabf2877d184680cb27ca68cf",
+      "44e38c418d8b624501e53e833075280cbb24234df30454c4e1425da953799ffb",
+      "5b814cf1e25688249bf1e5fb8055895dc18ddd13ca730ac1567b30e06906f9e5",
+      "77151594658e8b506dc434291e77f6aa11deb817bff3cbe5293e9c42a15a41b4",
+      "adbb738721747ed8e65e7d0c1ce63fcf0eb3e5e3d7b9b24f76b2aaa12db72c6a",
+      "d42bac6d65d442d0cb7ed5693a2642eb48ec7b7d9aae8bd598ad1808c2b9eab6",
+      "f4a7563b41a35004dedc6aa25d50067a7f8b7fd373769de17646df277819e5ee"
+    ],
+    "message_ids": [
+      390,
+      391
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal",
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false,
+      false
+    ],
+    "state_timestamp_utc": "2026-11-20T03:06:57.571137+00:00"
   },
-  "last_selected_events": [],
+  "last_selected_events": [
+    {
+      "key": "44e38c418d8b624501e53e833075280cbb24234df30454c4e1425da953799ffb",
+      "group": "robotis",
+      "title": "로보티즈, 39.8억 규모 공급계약 체결 - 이데일리",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNUE96bUhNbW9PX0FQZXhlcVBHT2o5T3hCejJZUFpTNjBYeF81MXZPU0ExSzhrel84YjRtZ1ozcUtITWtWekZKZUd1Sk1XcDhTWWYtR2FaOThKRjJSX2lxTDVCS2hoOFg4a19pLXBqb1p5V29FWnM4NkdtZnVQMlZpcg?oc=5",
+      "source": "이데일리",
+      "source_url": "https://www.edaily.co.kr",
+      "published": "2026-11-20T00:21:51+00:00"
+    },
+    {
+      "key": "f4a7563b41a35004dedc6aa25d50067a7f8b7fd373769de17646df277819e5ee",
+      "group": "ess_battery",
+      "title": "ESS 수주 60GWh 돌파…삼성SDI, 북미 양산 본격화 - 경제타임스",
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9aeW9IR3B1VmJzYi1sMEJkSkN6bEdya2FLNk8ybnVDWE5wbVhoQk1ZTndXa2hlY1RQeXZEQjRsVTVHRmpKM2xPY2hGRjVMd2wwTFU4?oc=5",
+      "source": "경제타임스",
+      "source_url": "https://ket.kr",
+      "published": "2026-11-20T01:14:42+00:00"
+    },
+    {
+      "key": "02498ce3a077d8108e250d3afaf02a9ae5c5e7e1f8da58228ed1715aaa8eb462",
+      "group": "robotis_excess_demand",
+      "title": "로보티즈, 프랑스 Pollen Robotics와 39억7813만원 규모 DYNAMIXEL-X 공급계약 - 디지털투데이",
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE84Uzc0X1l2WXoyZHNJRnR6OVFNRUxCWFFpbURwVWtCOVlja2xaLTF4OVNhS3ZvSlFuYjhTSUxGV1NJSUYxTC1zWWhGbzZxX2xGTk05RzdQU3dqSXRrUGQyWWszY05jQktRdDVIc3lkaEc3WG1MT0xLZFRQdw?oc=5",
+      "source": "디지털투데이",
+      "source_url": "https://www.digitaltoday.co.kr",
+      "published": "2026-11-20T00:11:01+00:00"
+    },
+    {
+      "key": "175f33a31af626f9d21ae518d70cc74a7623602cabf2877d184680cb27ca68cf",
+      "group": "robotis",
+      "title": "씽크풀 : 로보티즈 수주공시 - DYNAMIXEL-X 공급계약 39.8억원 (매출액대비 10.22 %) - ThinkPool",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9NWFdyUTU1WnRxS3NVdTNMWFkxMWVQSWM0bnpJclFobGdrMVZPR003UW8tZ0YyWWFtNFNHUFNBaGp1aTJQNEdJMEhVNmtZWDVqMU82MQ?oc=5",
+      "source": "ThinkPool",
+      "source_url": "https://m.thinkpool.com",
+      "published": "2026-11-20T00:00:00+00:00"
+    },
+    {
+      "key": "77151594658e8b506dc434291e77f6aa11deb817bff3cbe5293e9c42a15a41b4",
+      "group": "robotis",
+      "title": "로보티즈, 폴렌로보틱스와 40억원 부품 공급계약 - 이데일리",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQaklnVGhhT0l6TG14QVN5RERadk5vaEdVZENKaFliaFZCbzA0VE5VQ211b2YxTWZZZ01yU0xvVDVnRUE3MjFqaS1fY3ZNSHZxQW15TXF0Q3hTVW9UUTkwLUJyR1c0aEhYQ0Fncmd6WHlIbGZrV0FSX21xMjdMdkpaUg?oc=5",
+      "source": "이데일리",
+      "source_url": "https://www.edaily.co.kr",
+      "published": "2026-11-20T00:07:55+00:00"
+    },
+    {
+      "key": "adbb738721747ed8e65e7d0c1ce63fcf0eb3e5e3d7b9b24f76b2aaa12db72c6a",
+      "group": "robotis",
+      "title": "로보티즈, 39억원 규모 DYNAMIXEL-X 공급계약 - 데이터투자",
+      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1idU5ZRWQwQ3Y4ZDQtRXRoQXlDamRMYVNINUNEMjlrZFVhdHdGVHM4dE1jTFpfcWNOMXNNTXJ0U1ZKMUk3WGRPMG9yNGhqVHRHMUs0ZlUwTU5mdGVTUVh6SzJTWXVaS1JmcDAyc1RkM1ctZw?oc=5",
+      "source": "데이터투자",
+      "source_url": "https://www.datatooza.com",
+      "published": "2026-11-19T23:55:53+00:00"
+    },
+    {
+      "key": "5b814cf1e25688249bf1e5fb8055895dc18ddd13ca730ac1567b30e06906f9e5",
+      "group": "ess_battery",
+      "title": "SK온, 25년 장주기 제주 ESS 사업 도전 - 디일렉",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1FN2o1VlVKeW1NOUZlYVBZM212d2JQVGlzelFGOU00eVR2R2Rxc3dIRllid3VTZDZZQm9vdTRfcnVtVm9ZdnRmc2VIVGpXeGgyVzVpYXdLbFRvRVZuVFpjNTBZQm1Ldw?oc=5",
+      "source": "디일렉",
+      "source_url": "https://www.thelec.kr",
+      "published": "2026-11-20T02:39:05+00:00"
+    },
+    {
+      "key": "d42bac6d65d442d0cb7ed5693a2642eb48ec7b7d9aae8bd598ad1808c2b9eab6",
+      "group": "ess_battery",
+      "title": "교보증권 \"삼성SDI, 미국 ESS 생산 본격화…실적 개선 기대\" - 연합뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5lTEwyUGJCblUtRWlsNGw5WGpUQzJuR0tuY3ByZ05XdUFTVDFnWEkxRF9nSEFBdWNzTEswVkJtLXdRb2F2dkFrRWVxZ0l0YzRtZERpTGtwNWlnYm_SAWBBVV95cUxPUndxR2MyRWRqWG9WX00xSlZGMlBvTktwQ3A1NEllclhGTWI1SkY4WjZqWUZzZ3BKZ3JIWUxlbk9lVmVpOEtDNXdPOVdsRVpETWludHhCVVpMR0luQ1RPNmE?oc=5",
+      "source": "연합뉴스",
+      "source_url": "https://www.yna.co.kr",
+      "published": "2026-11-19T23:32:33+00:00"
+    }
+  ],
   "message_corrections": {
     "robot-message-correction-20261118-44240720425-v1": {
       "schema_version": 1,
