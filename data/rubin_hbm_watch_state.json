@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-20T22:24:12+09:00",
+  "updated_at_kst": "2026-11-21T03:07:59+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "00c1b5afae079534fa6aa588",
@@ -143,6 +143,7 @@
     "7093ff7a0f077fda1f385ca3",
     "709b3fc6612d64794f7a06c4",
     "7310bace62d2a5a4af5e422b",
+    "750193391ee5d847424b4894",
     "76f6aabe7d3a7e8cf74e88aa",
     "7905a269e5f79330a355c833",
     "794f80194983716de6cec9e9",
@@ -177,6 +178,7 @@
     "90d5c938fe379b2192956536",
     "911e1e8af4aae8a9e034d2b9",
     "91f80bd100cd8ec35f195057",
+    "929f9a220aa59ef4585afa3b",
     "92a9488842a3f019af6ec9e9",
     "938a3ca7a8d5c62207b3659e",
     "942249bed778a37a967938bc",
@@ -243,6 +245,7 @@
     "c66bcba5501ce4414506b0e6",
     "c7de4375db090e66cbc97fc5",
     "c9e407cd1ed0f3d6dc97200a",
+    "caa4c697a640609dff5f9a6c",
     "caf236d0d63266773b9b11da",
     "cb6dd9640d654a2f0ecb6c91",
     "cc31effda73b7d0a9dc51907",
@@ -312,6 +315,7 @@
     "f6e246805ead648dc9a4691c",
     "f6eb05cbe117632aaf7ffd50",
     "f76219a558338db79fb9c93c",
+    "f808c73082b975027a267d38",
     "f8f31accbbf29b396581a278",
     "f90b21bc4788937b6c57cbb1",
     "f9c423730a2aa19b4fba6af0",
@@ -340,17 +344,20 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 4,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1328.45,
-    "date": "2026-11-19 일일 기준 · ECB/Frankfurter · 조회 2026-11-20 22:24 KST · 보조 API 2026-11-20 · 차이 0.19% · 일중 기준시각 차이 가능",
+    "rate": 1339.44,
+    "date": "2026-11-20 일일 기준 · ECB/Frankfurter · 조회 2026-11-21 03:08 KST · 보조 API 2026-11-20 · 차이 0.63% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "memory_migration/ko: HTTPError: HTTP Error 429: Too Many Requests",
+    "hbm_supply_allocation/en: HTTPError: HTTP Error 429: Too Many Requests"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-11-16",
     "source": "https://insights.trendforce.com/p/weekly-radar-010",
@@ -480,7 +487,7 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-11-20T22:24:30+09:00",
+    "last_checked_at_kst": "2026-11-21T03:08:15+09:00",
     "candidate_count": 3,
     "mlcc_vendor_watch": {
       "version": 2,
@@ -546,7 +553,7 @@
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-11-20T22:25:18+09:00",
+    "checked_at_kst": "2026-11-21T03:09:13+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-20T00:11:21+09:00",
@@ -614,8 +621,8 @@
       "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
-    "last_validation_cutoff": "2026-11-20",
-    "last_checked_at_kst": "2026-11-20T22:25:04+09:00",
+    "last_validation_cutoff": "2026-11-21",
+    "last_checked_at_kst": "2026-11-21T03:08:39+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -674,7 +681,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-11-20T22:25:04+09:00",
+        "checked_at_kst": "2026-11-21T03:08:39+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -683,7 +690,7 @@
         "rss_coverage_unavailable": false
       },
       "primary_source_audit": {
-        "checked_at_kst": "2026-11-20T18:16:17+09:00",
+        "checked_at_kst": "2026-11-21T03:08:39+09:00",
         "sources": {
           "bnpp_public": {
             "status": "retrieval_unavailable",
@@ -751,8 +758,8 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461",
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
-    "last_checked_cutoff": "2026-11-20",
-    "last_checked_at_kst": "2026-11-20T22:25:09+09:00",
+    "last_checked_cutoff": "2026-11-21",
+    "last_checked_at_kst": "2026-11-21T03:09:05+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -796,7 +803,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-11-20T22:25:10+09:00",
+    "last_checked_at_kst": "2026-11-21T03:09:07+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -920,7 +927,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-11-20T22:25:10+09:00",
+      "checked_at_kst": "2026-11-21T03:09:07+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
@@ -1247,7 +1254,7 @@
     "last_official_stage_change_at": null
   },
   "feed_checks": 52,
-  "feed_healthy": 52,
+  "feed_healthy": 50,
   "nvhbm_foundry_track_version": 1,
   "nvhbm_foundry_strategy": {
     "source_editorial": "TrendForce News 편집 기사(독자 취재/독립 원출처로 중복 계산 금지)",
@@ -1360,7 +1367,7 @@
   },
   "hbm_material_event_watch": {
     "version": 1,
-    "checked_at_kst": "2026-11-20T22:25:04+09:00",
+    "checked_at_kst": "2026-11-21T03:08:39+09:00",
     "seen_keys": [
       "20261112_intel_hbmfree_lpddr_inference_proposal",
       "20261112_intel_kai_23_company_alliance",
