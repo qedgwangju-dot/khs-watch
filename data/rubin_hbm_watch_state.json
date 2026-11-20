@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-20T10:01:18+09:00",
+  "updated_at_kst": "2026-11-20T12:42:53+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "00c1b5afae079534fa6aa588",
@@ -346,30 +346,11 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1328.45,
-    "date": "2026-11-19 일일 기준 · ECB/Frankfurter · 조회 2026-11-20 10:01 KST · 보조 API 2026-11-20 · 차이 0.19% · 일중 기준시각 차이 가능",
+    "date": "2026-11-19 일일 기준 · ECB/Frankfurter · 조회 2026-11-20 12:43 KST · 보조 API 2026-11-20 · 차이 0.19% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [
-    "rubin_spec/en: HTTPError: HTTP Error 429: Too Many Requests",
-    "rubin_broker_model/ko: HTTPError: HTTP Error 429: Too Many Requests",
-    "hbm_supplier_relative/en: HTTPError: HTTP Error 429: Too Many Requests",
-    "hbm4e_validation/en: HTTPError: HTTP Error 429: Too Many Requests",
-    "hbm_hybrid_bonding/ko: HTTPError: HTTP Error 429: Too Many Requests",
-    "rubin_hbm_option_set/en: HTTPError: HTTP Error 429: Too Many Requests",
-    "samsung_hbm4_price/ko: HTTPError: HTTP Error 429: Too Many Requests",
-    "samsung_nextgen_hbm/ko: HTTPError: HTTP Error 429: Too Many Requests",
-    "nvhbm_foundry_strategy/ko: HTTPError: HTTP Error 429: Too Many Requests",
-    "nvhbm_architecture/en: HTTPError: HTTP Error 429: Too Many Requests",
-    "nvhbm_architecture/ko: HTTPError: HTTP Error 429: Too Many Requests",
-    "hbm_2027_contract/ko: HTTPError: HTTP Error 429: Too Many Requests",
-    "jpm_hbm_structural/en: HTTPError: HTTP Error 429: Too Many Requests",
-    "jpm_hbm_structural/ko: HTTPError: HTTP Error 429: Too Many Requests",
-    "micron_sca_visibility/en: HTTPError: HTTP Error 429: Too Many Requests",
-    "citi_hbm_outlook/ko: HTTPError: HTTP Error 429: Too Many Requests",
-    "hbf_roadmap/en: HTTPError: HTTP Error 429: Too Many Requests",
-    "hbm_supply_allocation/ko: HTTPError: HTTP Error 429: Too Many Requests"
-  ],
+  "errors": [],
   "ai_component_leadtime": {
     "as_of": "2026-11-16",
     "source": "https://insights.trendforce.com/p/weekly-radar-010",
@@ -499,8 +480,8 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-11-20T10:01:35+09:00",
-    "candidate_count": 3,
+    "last_checked_at_kst": "2026-11-20T12:43:10+09:00",
+    "candidate_count": 7,
     "mlcc_vendor_watch": {
       "version": 2,
       "as_of": "2026-10-23",
@@ -561,14 +542,11 @@
       "source_kind": "2026-10-23 CASPA participant statements; not company guidance"
     },
     "image_verified_issue": "weekly-radar-010-mlcc-public",
-    "errors": [
-      "mlcc_vendor_source:HTTPError",
-      "mlcc_vendor_source:HTTPError"
-    ]
+    "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-11-20T10:01:51+09:00",
+    "checked_at_kst": "2026-11-20T12:43:48+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-20T00:11:21+09:00",
@@ -637,7 +615,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-11-20",
-    "last_checked_at_kst": "2026-11-20T10:01:39+09:00",
+    "last_checked_at_kst": "2026-11-20T12:43:34+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -696,7 +674,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-11-20T10:01:39+09:00",
+        "checked_at_kst": "2026-11-20T12:43:34+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -774,7 +752,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-11-20",
-    "last_checked_at_kst": "2026-11-20T10:01:43+09:00",
+    "last_checked_at_kst": "2026-11-20T12:43:39+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -818,7 +796,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-11-20T10:01:45+09:00",
+    "last_checked_at_kst": "2026-11-20T12:43:40+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -942,7 +920,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-11-20T10:01:45+09:00",
+      "checked_at_kst": "2026-11-20T12:43:40+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
@@ -1269,7 +1247,7 @@
     "last_official_stage_change_at": null
   },
   "feed_checks": 52,
-  "feed_healthy": 34,
+  "feed_healthy": 52,
   "nvhbm_foundry_track_version": 1,
   "nvhbm_foundry_strategy": {
     "source_editorial": "TrendForce News 편집 기사(독자 취재/독립 원출처로 중복 계산 금지)",
@@ -1382,7 +1360,7 @@
   },
   "hbm_material_event_watch": {
     "version": 1,
-    "checked_at_kst": "2026-11-20T10:01:38+09:00",
+    "checked_at_kst": "2026-11-20T12:43:34+09:00",
     "seen_keys": [
       "20261112_intel_hbmfree_lpddr_inference_proposal",
       "20261112_intel_kai_23_company_alliance",
