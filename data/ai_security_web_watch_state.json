@@ -3,31 +3,20 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": false,
+    "all_sources_verified": true,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [
-      "Google News RSS 실패: (\"AI agent\" OR agentic OR LLM) misalignment \"third part… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"AI agent\" \"undesirable behavior\" OR \"unintended behavi… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic) unauthorized access incidents tra… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenShell OR Sentry OR BlueField-4) policy bypass sand… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Safety Case\" f… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) tool-use traini… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (Anthropic OR Claude) (Mythos OR \"Cyber Verification Pr… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"Jamie Dimon\" (Mythos OR Anthropic) cyber risk bank fin… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: site:justice.gov (\"OpenAI\" OR \"AI researcher\") (wiretap… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 10,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 55,
-    "google_news_rate_limit_429": 10,
+    "google_news_queries_succeeded": 65,
+    "google_news_rate_limit_429": 0,
     "material_items": 14,
     "new_material_items": 0,
-    "raw_items": 153,
+    "raw_items": 152,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": true
+    "source_access_limited": false
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -1137,5 +1126,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-20T22:00:52+09:00"
+  "updated_at_kst": "2026-11-20T22:12:05+09:00"
 }
