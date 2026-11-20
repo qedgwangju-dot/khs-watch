@@ -2007,6 +2007,20 @@
       "checked_at_kst": "2026-11-20T17:52:32+09:00",
       "fingerprint": "9fdfafcb9cff130e54b729927a31740ad8994d31e92f4ae67b12325b39ee04a1",
       "outcome": "no_send"
+    },
+    "44705719423:1": {
+      "checked_at_kst": "2026-11-20T18:21:40+09:00",
+      "completed": "2026-11-20T08:52:33+00:00",
+      "fingerprint": "b23816281df08de2a6a34d3688db56b67b328db620fec9ae11d0dae670b04394",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-20T08:52:33+00:00"
+    },
+    "44706721977:1": {
+      "checked_at_kst": "2026-11-20T18:21:40+09:00",
+      "fingerprint": "c1a7ae14b69483a4c99d307f62497090fe7cfc2c2113b09871f37e80b3651799",
+      "outcome": "no_send"
     }
   },
   "recovery_holds": {},
