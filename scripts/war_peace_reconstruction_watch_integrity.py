@@ -74,9 +74,12 @@ def _ukraine_january_peace_target_report(row):
                'yonhap', 'yna.co.kr', '연합뉴스', '뉴시스', '뉴스1')
     # Walter Bloomberg carried FT's original attribution at 01:19 KST;
     # treat it as an attributed relay, not as an independent FT confirmation.
-    wire_ft = ('walter bloomberg' in source or 'walterbloomberg' in source)
-    wire_ft = wire_ft and bool(re.search(r'(?:[-—]\s*ft\b|\bfinancial times\b|파이낸셜타임스)', title))
-    if not (wire_ft or any(name in source for name in trusted)):
+    # A Walter Bloomberg relay can render the FT credit as "-FT", ": FT",
+    # "FT:", or omit the credit in its short headline. Recognize the exact
+    # Trump/Ukraine/early-January/peace-target event below without treating
+    # an unverified relay as independently confirmed FT reporting.
+    walter_relay = ('walter bloomberg' in source or 'walterbloomberg' in source)
+    if not (walter_relay or any(name in source for name in trusted)):
         return False
     if not re.search(r'\bukrain\w*\b|\bkyiv\b|우크라|키이우', title):
         return False
@@ -91,7 +94,7 @@ def _ukraine_january_peace_target_report(row):
         return False
     if not re.search(r'\b(?:seeks?|seeking|push(?:es|ing)?|press(?:es|ed|ing)?|'
                      r'pressure|pressures|aims?|wants?|target(?:s|ing)?|'
-                     r'plans?|planning|deadline)\b|추진|목표|서두|압박|시한|기한', title):
+                     r'plans?|planning|deadline)\b|추진|목표|서두|압박|시한|기한|원하|촉구|희망', title):
         return False
     if re.search(r'\b(?:already signed|signed agreement|deal signed|deal reached|'
                  r'fully agreed|ratified|cancelled|collapsed)\b|'
