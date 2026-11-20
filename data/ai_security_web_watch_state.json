@@ -8,15 +8,17 @@
     "direct_official_items": 56,
     "errors": [
       "Google News RSS 실패: (OpenAI OR ChatGPT OR Codex) security vulnerability exp… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) \"security release\" OR \"… / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News RSS 실패: (Gemini OR \"Google AI\") security vulnerability exploit … / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (\"AI agent\" OR agentic) \"bypassed security controls\" OR… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) data exfiltration netwo… / HTTPError: HTTP Error 429: Too Many Requests"
     ],
-    "google_news_queries_failed": 2,
+    "google_news_queries_failed": 4,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 63,
-    "google_news_rate_limit_429": 2,
+    "google_news_queries_succeeded": 61,
+    "google_news_rate_limit_429": 4,
     "material_items": 14,
     "new_material_items": 0,
-    "raw_items": 152,
+    "raw_items": 151,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
     "source_access_limited": true
@@ -1129,5 +1131,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-20T20:51:08+09:00"
+  "updated_at_kst": "2026-11-20T21:07:03+09:00"
 }
