@@ -241,6 +241,33 @@ def _iran_not_rushing_decision(stage, row):
         r'공격|공습|폭격|포격|타격|미사일|드론|위협|압박|제재|보복|협상|회담|휴전|정전', title))
 
 
+def _iran_attack_decision_deferred_ko(stage, row):
+    """A title-only postponement of an attack decision reports no new attack."""
+    if row.get('body_verified'):
+        return False
+    title = stage._headline(row)
+    subject = re.search(r'이란.{0,16}(?:공습|공격|타격).{0,8}결정', title)
+    if subject is None:
+        return False
+    future = re.match(
+        r'[\s,.:…\-"“”]{0,8}(?:새해|내년)(?:\s*(?:초|연초))?'
+        r'(?:\s*(?:이후(?:에)?|후(?:에)?|으로|에))?\s*'
+        r'(?:논의|미뤄|미루|미룰|미룸|연기)', title[subject.end():])
+    if future is None:
+        return False
+    # Do not suppress an independent attack, threat, pressure or diplomatic
+    # action merely because the same headline postpones this decision.
+    return not bool(
+        _separate_attack_headline(title) or _completed_attack_headline(title)
+        or re.search(r'(?:공습|공격|폭격|포격|타격).{0,12}'
+                     r'(?:지시|명령|예고|위협|계획|재개|감행|실시|발생|시작|착수|했다)|'
+                     r'미사일|드론|피격|폭발|발사|위협|압박|제재|보복|봉쇄|최후통첩|결렬|'
+                     r'협상|회담|휴전|정전|평화|합의|'
+                     r'\b(?:attacks?|airstrikes?|strikes?|struck|bombed|launched|ordered|'
+                     r'missiles?|rockets?|drones?|threat\w*|pressure|sanction\w*|'
+                     r'retaliat\w*|negotiat\w*|talks?|ceasefire|truce|peace)\b', title))
+
+
 def _political_war_pressure_commentary(title):
     return bool(re.search(r'민주', title) and re.search(r'트럼프', title)
                 and re.search(r'이란전|종전', title)
@@ -351,6 +378,7 @@ def direction(stage, row):
         return None
     if (_hypothetical_war_options(title) or _pending_iran_war_decision(title)
             or _iran_not_rushing_decision(stage, row)
+            or _iran_attack_decision_deferred_ko(stage, row)
             or (not row.get('body_verified')
                 and stage._pending_iran_war_decision_outlook(title))):
         return None
@@ -521,7 +549,8 @@ def project(stage, semantic_text, semantic_evidence, proof, snapshot):
         policy_options = stage._iran_war_policy_options_headline(title)
         hypothetical = (_hypothetical_war_options(title)
                         or _pending_iran_war_decision(title))
-        pending_decision = _iran_not_rushing_decision(stage, row)
+        pending_decision = (_iran_not_rushing_decision(stage, row)
+                            or _iran_attack_decision_deferred_ko(stage, row))
         satellite_disruption = _unattributed_satellite_disruption(title, row)
         title_only_pledge = _title_only_war_end_pledge(stage, row)
         summit_venue = stage._summit_venue_description_only(row)
