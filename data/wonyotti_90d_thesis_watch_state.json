@@ -1,78 +1,78 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-11-21T03:55:40+09:00",
+  "updated_at_kst": "2026-11-21T03:59:36+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
-        "funding": -3e-06,
-        "index_price": 58601.1,
-        "mark_price": 58575.7,
-        "last_price": 58578.4,
-        "open_interest": 627551440.0,
-        "open_interest_value": 3658191884.7064,
-        "turnover24h": 703402437076.0,
+        "funding": 3.5e-06,
+        "index_price": 58467.69,
+        "mark_price": 58435.36,
+        "last_price": 58417.7,
+        "open_interest": 627122600.0,
+        "open_interest_value": 3672499556.2086,
+        "turnover24h": 703413621397.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": -0.0001766,
-        "index_price": 1622.94,
-        "mark_price": 1622.66,
-        "last_price": 1622.41,
-        "open_interest": 79597118.0,
-        "open_interest_value": 1287387867.1084,
-        "turnover24h": 193009482503.0,
+        "funding": -0.0001599,
+        "index_price": 1619.55,
+        "mark_price": 1618.61,
+        "last_price": 1618.45,
+        "open_interest": 79649622.0,
+        "open_interest_value": 1293963864.1254,
+        "turnover24h": 193011870678.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
-        "funding": -0.0002644,
-        "index_price": 69.116,
-        "mark_price": 69.09,
-        "last_price": 69.24,
-        "open_interest": 6942384.0,
-        "open_interest_value": 477705443.04,
-        "turnover24h": 4640971541.0,
+        "funding": -0.0002634,
+        "index_price": 68.934,
+        "mark_price": 68.9,
+        "last_price": 68.85,
+        "open_interest": 6959604.0,
+        "open_interest_value": 480491060.16,
+        "turnover24h": 4640985317.0,
         "source": "Gate.io Futures API"
       }
     },
     "prices": {
       "BTC": {
-        "usd": 58509.0,
-        "change24": -7.207848429061249,
-        "volume24": 49376250489.02185,
+        "usd": 58552.0,
+        "change24": -6.797296429757912,
+        "volume24": 49818312000.10362,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 58392.0,
-          "Coinbase": 58509.0,
-          "Gate.io Spot": 58596.7
+          "CoinGecko": 58552.0,
+          "Coinbase": 58569.28,
+          "Gate.io Spot": 58465.2
         },
-        "dispersion_pct": 0.3498607051906495
+        "dispersion_pct": 0.17775652411531928
       },
       "ETH": {
-        "usd": 1621.45,
-        "change24": -8.88141985467355,
-        "volume24": 16561978409.422544,
+        "usd": 1624.52,
+        "change24": -8.527823062626256,
+        "volume24": 16720980774.92148,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 1621.45,
-          "Coinbase": 1619.27,
-          "Gate.io Spot": 1623.95
+          "CoinGecko": 1624.52,
+          "Coinbase": 1625.53,
+          "Gate.io Spot": 1619.96
         },
-        "dispersion_pct": 0.2886305467328665
+        "dispersion_pct": 0.34287050944278535
       },
       "SOL": {
-        "usd": 69.01,
-        "change24": -7.046914811175191,
-        "volume24": 3157508571.979001,
+        "usd": 69.05,
+        "change24": -6.656700230517294,
+        "volume24": 3188337888.113906,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 68.94,
-          "Coinbase": 69.01,
-          "Gate.io Spot": 69.12
+          "CoinGecko": 69.09,
+          "Coinbase": 69.05,
+          "Gate.io Spot": 68.94
         },
-        "dispersion_pct": 0.2608317635125443
+        "dispersion_pct": 0.21723388848661215
       }
     },
     "price_verified": true,
@@ -167,7 +167,7 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-11-21T03:56:28+09:00"
+    "checked_at_kst": "2026-11-21T04:00:22+09:00"
   },
   "news_seen": [
     "01dd2dd9ae7aac7c855518c6",
