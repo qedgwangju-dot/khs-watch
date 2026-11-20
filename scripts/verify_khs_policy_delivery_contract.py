@@ -777,6 +777,7 @@ def main() -> int:
     assert_trusted_heat_mortality_is_source_faithful_and_deduped()
     assert_iran_hormuz_story_is_source_faithful_and_cooldown_deduped()
     assert_state_smr_moc_reaches_policy_lane()
+    assert_whitehouse_trilateral_fact_sheet_is_not_smr_moc()
     assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered()
     assert_boem_space_launch_is_excluded()
     assert_boem_arctic_drilling_is_source_faithful()
@@ -2217,18 +2218,22 @@ def assert_iran_hormuz_story_is_source_faithful_and_cooldown_deduped() -> None:
 
 
 def assert_state_smr_moc_reaches_policy_lane() -> None:
+    source_body = (
+        "On July 7, 2026, while visiting Türkiye for the NATO Summit and commencing at 6:40 p.m. local time "
+        "(0:40 a.m. on July 8, Japan time), "
+        "the Foreign Ministers of Japan, the United States, and the Republic of Korea signed the "
+        "Memorandum of Cooperation on Small Modular Reactor (SMR) Cooperation. The MOC promotes "
+        "coordination on deployment of SMRs in third-party countries and energy security in the Indo-Pacific. "
+        "The overview says to identify interested host countries, support SMR deployment in industrial "
+        "power facilities, encourage consortia among the three countries' nuclear industries, and mobilize financing and investment."
+    )
     item = {
-        "source": "State Department office spokesperson",
-        "title": "The United States, Japan, and the Republic of Korea Sign a Trilateral Memorandum of Cooperation on Small Modular Reactor Deployments in Other Countries",
-        "summary": (
-            "U.S. Department of State media note. Secretary of State Marco Rubio, Japanese Foreign Minister "
-            "Motegi Toshimitsu, and Republic of Korea Foreign Minister Cho Hyun signed a Memorandum of "
-            "Cooperation to accelerate small modular reactor deployments in other countries, initially focused "
-            "on the Indo-Pacific. The United States is committing over $10 million in new FIRST Program funding "
-            "and announced an industry initiative among GE Vernova, Hitachi, Samsung C&T, and SGE to advance "
-            "BWRX-300 SMR deployments across Europe."
-        ),
-        "link": "https://www.state.gov/releases/office-of-the-spokesperson/2026/07/the-united-states-japan-and-the-republic-of-korea-sign-a-trilateral-memorandum-of-cooperation-on-small-modular-reactor-deployments-in-other-countries",
+        "source": "Japan Ministry of Foreign Affairs",
+        "title": "Japan-U.S.-ROK Foreign Ministers’ Meeting",
+        "source_title": "Japan-U.S.-ROK Foreign Ministers’ Meeting",
+        "source_body": source_body,
+        "summary": source_body,
+        "link": "https://www.mofa.go.jp/a_o/na2/pageite_000001_01712.html",
         "published_kst": "2026-07-07T00:00:00+09:00",
     }
     classified = khs_policy_watch.classify_item(item)
@@ -2246,12 +2251,15 @@ def assert_state_smr_moc_reaches_policy_lane() -> None:
     )
     required = [
         "미·일·한, 제3국 SMR 배치 협력 MOC 체결",
-        "삼성물산",
-        "BWRX-300",
-        "FIRST",
+        "후보국 발굴",
+        "금융·투자 동원",
         "확정 매출 확인 불가",
-        "원전/SMR",
-        "미 국무부 대변인실",
+        "SMR·원전 개발",
+        "2026년 7월 7일",
+        "튀르키예 현지 18:40",
+        "2026년 7월 8일",
+        "일본 시각 00:40",
+        "발효·준수 일정은 원문에 별도 날짜로 명시되지 않음",
     ]
     for marker in required:
         if marker not in rendered:
@@ -2264,6 +2272,49 @@ def assert_state_smr_moc_reaches_policy_lane() -> None:
     for marker in forbidden:
         if marker in rendered:
             raise AssertionError(f"State Department SMR MOC raw text leaked: {marker}")
+    unsupported = ["FIRST", "Samsung C&T", "삼성물산", "GE Vernova", "BWRX-300"]
+    for marker in unsupported:
+        if marker in rendered:
+            raise AssertionError(f"SMR MOC summary added a fact absent from its source: {marker}")
+
+
+def assert_whitehouse_trilateral_fact_sheet_is_not_smr_moc() -> None:
+    source_body = (
+        "The White House November 20, 2026. President Donald J. Trump concluded a four-day visit to the "
+        "Philippines and China. This week, in the Indo-Pacific, the President secured trade and energy wins. "
+        "The page describes an Alaska LNG pipeline funded by South Korea and Taiwan and a first-ever trilateral "
+        "meeting with the Presidents of Russia and China, where Trump called for reducing nuclear weapons."
+    )
+    item = {
+        "source": "White House fact sheets",
+        "title": "President Trump Brings Home Billions in Economic Growth and Strengthens America’s Security",
+        "source_title": "President Trump Brings Home Billions in Economic Growth and Strengthens America’s Security",
+        "source_abstract": "President Donald J. Trump concluded a four-day visit to the Philippines and China.",
+        "source_body": source_body,
+        "summary": source_body,
+        "link": "https://www.whitehouse.gov/fact-sheets/2026/11/president-trump-brings-home-billions-in-economic-growth-and-strengthens-americas-security/",
+        "published_kst": "2026-11-21T00:39:53+09:00",
+        "body_verified": True,
+        "document_type": "Fact Sheet",
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if classified and "state_smr_moc_policy" in (classified.get("matched") or {}):
+        raise AssertionError(f"General Indo-Pacific/trilateral wording matched SMR MOC: {classified['matched']}")
+
+    stale_marker_item = {
+        **item,
+        "matched": {"state_smr_moc_policy": ["trilateral", "indo-pacific"]},
+    }
+    khs_policy_alert_explainer.ensure_explained(stale_marker_item)
+    title = khs_policy_alert_router.safe_title(stale_marker_item)
+    fields = " ".join(
+        str(stale_marker_item.get(key) or "")
+        for key in ("title_ko", "policy_plain_summary", "investment_view", "korea_market_impact", "sectors")
+    )
+    if "제3국 SMR 배치 협력 MOC" in title or any(
+        marker in fields for marker in ("제3국 SMR 배치 MOC", "FIRST 1,000만", "Samsung C&T", "BWRX-300")
+    ):
+        raise AssertionError(f"Unrelated White House fact sheet received an SMR MOC profile: {title} / {fields}")
 
 
 def assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered() -> None:

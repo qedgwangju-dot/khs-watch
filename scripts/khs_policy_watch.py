@@ -22,11 +22,11 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 try:
-    from khs_policy_alert_explainer import ensure_explained, explanation_lines
+    from khs_policy_alert_explainer import ensure_explained, explanation_lines, is_state_smr_moc_policy
     from khs_article_detail import extract_article_detail
     from khs_source_fetch import fetch_text as shared_fetch_text
 except ImportError:  # pragma: no cover - supports module-style local tests.
-    from scripts.khs_policy_alert_explainer import ensure_explained, explanation_lines
+    from scripts.khs_policy_alert_explainer import ensure_explained, explanation_lines, is_state_smr_moc_policy
     from scripts.khs_article_detail import extract_article_detail
     from scripts.khs_source_fetch import fetch_text as shared_fetch_text
 
@@ -114,11 +114,9 @@ STAGE_KEYWORDS = {
         "grid deployment", "transmission facilitation", "critical materials", "nuclear fuel",
     ],
     "state_smr_moc_policy": [
-        "state department", "department of state", "office of the spokesperson",
-        "memorandum of cooperation", "moc", "trilateral", "small modular reactor",
+        "memorandum of cooperation", "moc", "small modular reactor",
         "small modular reactors", "smr", "bwrx-300", "first program",
-        "samsung c&t", "ge vernova", "hitachi", "sge", "indo-pacific",
-        "smr regional training hub",
+        "samsung c&t", "ge vernova", "hitachi", "sge", "smr regional training hub",
     ],
     "agriculture_supply_policy": [
         "fertilizer", "phosphate", "phosphate fertilizer", "agriculture", "farm resilience",
@@ -1744,6 +1742,8 @@ def classify_item(item: dict) -> dict | None:
     if is_space_pv_pia_base_rehash_item(item, haystack):
         return None
     matched = {bucket: [kw for kw in keywords if keyword_in_text(haystack, kw)] for bucket, keywords in STAGE_KEYWORDS.items()}
+    if matched.get("state_smr_moc_policy") and not is_state_smr_moc_policy(haystack, item):
+        matched["state_smr_moc_policy"] = []
     if matched.get("energy_security_policy") and not is_doe_energy_security_policy_item(item, haystack):
         matched["energy_security_policy"] = []
     if is_treasury_source:

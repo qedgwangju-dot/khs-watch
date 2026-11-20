@@ -10,9 +10,9 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 try:
-    from khs_policy_alert_explainer import ensure_explained, explanation_lines
+    from khs_policy_alert_explainer import ensure_explained, explanation_lines, is_state_smr_moc_policy
 except ImportError:  # pragma: no cover - supports module-style local tests.
-    from scripts.khs_policy_alert_explainer import ensure_explained, explanation_lines
+    from scripts.khs_policy_alert_explainer import ensure_explained, explanation_lines, is_state_smr_moc_policy
 try:
     from khs_compact_text import concise_text
 except ImportError:  # pragma: no cover - supports module-style local tests.
@@ -596,6 +596,8 @@ def line_value(lines: list[str], prefix: str, fallback: object = "") -> str:
 
 def compact_core_fallback(alert: dict, title: str) -> tuple[str, bool]:
     text = alert_text(alert)
+    if is_state_smr_moc_policy(text, alert):
+        return "미·일·한 MOC는 제3국 후보국 발굴·산업용 SMR 배치·금융·투자 동원 협력 틀입니다.", True
     if "pac-3" in text and "amraam" in text and "nato" in text:
         return "NATO 방위투자에 PAC-3·AMRAAM 생산이 포함됐습니다.", True
     if "trump" in text and "iran" in text and "hormuz" in text:
