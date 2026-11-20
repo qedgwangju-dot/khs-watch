@@ -1,6 +1,6 @@
 {
-  "status": "degraded",
-  "checked_at_kst": "2026-11-20T09:49:54+09:00",
+  "status": "ok",
+  "checked_at_kst": "2026-11-20T10:17:13+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -9,18 +9,18 @@
   "jemperli_collector_rc": 0,
   "enhertu_collector_rc": 0,
   "halozyme_collector_rc": 0,
-  "qlex_alert_present": true,
+  "qlex_alert_present": false,
   "qlex_wac_alert_present": false,
   "intismeran_alert_present": false,
   "jemperli_alert_present": false,
   "enhertu_alert_present": false,
-  "qlex_send_outcome": "failure",
+  "qlex_send_outcome": "skipped",
   "qlex_wac_send_outcome": "skipped",
   "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
   "halozyme_run_outcome": "success",
-  "qlex_state_persisted": false,
+  "qlex_state_persisted": true,
   "qlex_wac_state_persisted": true,
   "intismeran_state_persisted": true,
   "jemperli_state_persisted": true,
@@ -42,17 +42,12 @@
   ],
   "last_jemperli_telegram_sent_at_kst": "2026-11-13T07:21:43+09:00",
   "last_qlex_telegram_sent_at_kst": "2026-11-11T15:00:07+09:00",
-  "errors": [
-    "QLEX sender rc=1: RuntimeError: 한국어 송출 검증 실패 — 번역되지 않은 한자: 獨"
-  ],
-  "failed_component": "QLEX Telegram",
-  "failed_components": [
-    "QLEX Telegram"
-  ],
+  "errors": [],
+  "failed_component": "",
+  "failed_components": [],
   "last_wac_telegram_message_ids": [],
   "last_wac_telegram_sent_at_kst": "",
-  "failure_notice_signatures": [
-    "QLEX Telegram|language_validation"
-  ],
-  "error_signature": "QLEX Telegram|language_validation"
+  "failure_notice_signatures": [],
+  "error_signature": "",
+  "recovery_notice_message_id": 388
 }
