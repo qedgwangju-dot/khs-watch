@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-20T13:34:21.369986+00:00",
+  "updated_at": "2026-11-20T20:06:15.827352+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1009,37 +1009,25 @@
     "e2d3519a31971327901db04cd67074fee5fc08da613819c24d1af512a125b935",
     "17a04f89ab92a656d3dda35b625fc53f2d0fa298ea3407196a98c63a47d8cc0e",
     "cf37b7a676e2e2dcbe0779854d0510de6a330a92d584923a07c3c399beda07cc",
-    "27a147feec176c131cf40afa77c6ffc386995413745fdc824fd2bcf84df75814"
+    "27a147feec176c131cf40afa77c6ffc386995413745fdc824fd2bcf84df75814",
+    "a5a377daabcd14ecda97220f6552d20569fb685772cb21d45790d64df4c537ca",
+    "cd9ba234e4710a1c318c6319fee087173cc2484a47132cd3bd74c70e368c3938"
   ],
   "last_selected": [
-    "27a147feec176c131cf40afa77c6ffc386995413745fdc824fd2bcf84df75814"
+    "a5a377daabcd14ecda97220f6552d20569fb685772cb21d45790d64df4c537ca",
+    "cd9ba234e4710a1c318c6319fee087173cc2484a47132cd3bd74c70e368c3938"
   ],
   "groups": [
     "ess_battery",
     "hyundai_atlas_rollout",
-    "jpm_humanoid_component_outlook",
     "lg_factory_loop",
-    "nov18_bd_gf",
     "nov18_everybot",
-    "nov18_genesis",
-    "nov18_hyundai_bd_ownership",
     "nov18_knr",
-    "nov18_samhyun",
-    "nov18_samsung_humanoid",
     "robotis",
     "robotis_excess_demand",
     "samhyun"
   ],
   "delivery_history": [
-    {
-      "run_id": 43765284612,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-15T21:44:03.411949+00:00"
-    },
     {
       "run_id": 43789331016,
       "outcome": "sent",
@@ -1430,16 +1418,36 @@
         false
       ],
       "state_timestamp_utc": "2026-11-20T13:34:21.369986+00:00"
+    },
+    {
+      "run_id": 44808136856,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "a5a377daabcd14ecda97220f6552d20569fb685772cb21d45790d64df4c537ca",
+        "cd9ba234e4710a1c318c6319fee087173cc2484a47132cd3bd74c70e368c3938"
+      ],
+      "message_ids": [
+        396
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-20T20:06:15.827352+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44745346035,
+    "run_id": 44808136856,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "27a147feec176c131cf40afa77c6ffc386995413745fdc824fd2bcf84df75814"
+      "a5a377daabcd14ecda97220f6552d20569fb685772cb21d45790d64df4c537ca",
+      "cd9ba234e4710a1c318c6319fee087173cc2484a47132cd3bd74c70e368c3938"
     ],
     "message_ids": [
-      395
+      396
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1448,17 +1456,26 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-20T13:34:21.369986+00:00"
+    "state_timestamp_utc": "2026-11-20T20:06:15.827352+00:00"
   },
   "last_selected_events": [
     {
-      "key": "27a147feec176c131cf40afa77c6ffc386995413745fdc824fd2bcf84df75814",
-      "group": "robotis",
-      "title": "로보티즈 수주 39억7812만원, 매출 대비 10.22% - 데일리인베스트",
-      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9RcFgxc0N3ZHBlRWdDQ1VTcTFrOHhBa1BxcGNFSnlYc2dsMXF2TTBVbVp1TmdZanpiWlUteldSX1FyZ0w2OWNVU01ycWdjUmk1RU9hQnZwNHRWbWJZeGxLZ3BqX3k4WElKR0t2Z9IBb0FVX3lxTE83MnFMajVwaExvdkZfUVlDS01BSXQ1ZnI0UGNpNXY3ank4enl4MzZIRU95YWtLd0c0MTBpbUFIb1hYdjhkeWpKb0x4UkNkN1FpX2I0ZmFsb2ZRRWdKZE5vVWlUVldNeFJKWlQyTUMxQQ?oc=5",
-      "source": "데일리인베스트",
-      "source_url": "https://www.dailyinvest.kr",
-      "published": "2026-11-20T00:12:28+00:00"
+      "key": "a5a377daabcd14ecda97220f6552d20569fb685772cb21d45790d64df4c537ca",
+      "group": "hyundai_atlas_rollout",
+      "title": "현대차 아틀라스, 자동차 밖 첫 시험대는 ‘美 반도체 공장’ - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPR1Y5TjZpdExDN2pLYzEwZmRpa2V5YjNZOVhpNkNkV1FFaGxrMkpnc0RsZTlsaXNwa1ZKVWR5Z3gyeXA1MUFwNWIzcFRGaU5ENlhGWFl0dFA1T0pNUW5lV2hqLXVNYXdnelFfaG5YdTh3UjA5eDh2MUR2aGJZbFdTRkN4ZzhiSlROU3VSVmVYVQ?oc=5",
+      "source": "조선일보",
+      "source_url": "https://www.chosun.com",
+      "published": "2026-11-18T01:50:01+00:00"
+    },
+    {
+      "key": "cd9ba234e4710a1c318c6319fee087173cc2484a47132cd3bd74c70e368c3938",
+      "group": "hyundai_atlas_rollout",
+      "title": "Boston Dynamics' Humanoid Robot Secures First Chip Plant Customer - Gasgoo",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPQjF0Sl9iak1MZnFUWFNlWFlkUDhHc3l3Z2ZBSlF4bDhhUlhJaXlDRWVhU25UQy0yaVFYTDB3RHBEWTBKNXl5cV9UUHpNa3RQWjNPMVhIVmVVZkV6UXZNXzV2RkdhNVNKMHJ6TENoTUFmdEl0eXFHS0Faby1nM1hVeVNoUXJITllhU3FwRFNhWjJvOUZlSnBjSHFQMllWTFYtUF9rU0RFMVEtd1FZc1lSMHZ2YWJzNW5tLTBwNE1tR09PTG1E?oc=5",
+      "source": "Gasgoo",
+      "source_url": null,
+      "published": "2026-11-20T13:48:57+00:00"
     }
   ],
   "message_corrections": {
