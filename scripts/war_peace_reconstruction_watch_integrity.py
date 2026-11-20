@@ -94,7 +94,7 @@ def _ukraine_january_peace_target_report(row):
         return False
     if not re.search(r'\b(?:seeks?|seeking|push(?:es|ing)?|press(?:es|ed|ing)?|'
                      r'pressure|pressures|aims?|wants?|target(?:s|ing)?|'
-                     r'plans?|planning|deadline)\b|추진|목표|서두|압박|시한|기한|원하|촉구|희망|모색', title):
+                     r'plans?|planning|deadline)\b|추진|목표|서두|압박|시한|기한|원하|원한|원한다|원하는|원해|촉구|희망|모색', title):
         return False
     if re.search(r'\b(?:already signed|signed agreement|deal signed|deal reached|'
                  r'fully agreed|ratified|cancelled|collapsed)\b|'
