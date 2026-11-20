@@ -76,7 +76,7 @@
     "https://www.koreaittimes.com/news/articleView.html?idxno=159114",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-11-20T07:43:25+09:00",
+  "last_checked_at_kst": "2026-11-20T12:44:50+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
   "latest_evidence_urls": [],
@@ -818,12 +818,12 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-11-20T07:43:25+09:00",
+    "last_checked_at_kst": "2026-11-20T12:44:50+09:00",
     "last_error": "",
     "pending_month": "2026-10"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-20T07:44:42+09:00",
+    "checked_at_kst": "2026-11-20T12:48:06+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-14T01:46:15+09:00",
@@ -1017,16 +1017,16 @@
     "alert_layout_version": 2
   },
   "discovery_health": {
-    "rss_ok": 60,
-    "rss_failed": 0,
-    "urls_resolved": 118,
-    "pages_opened": 17,
+    "rss_ok": 40,
+    "rss_failed": 21,
+    "urls_resolved": 115,
+    "pages_opened": 15,
     "bing_ok": 40,
     "bing_failed": 0,
-    "google_ok": 20,
+    "google_ok": 0,
     "gdelt_ok": 0,
     "gdelt_failed": 0,
-    "news_candidates": 52
+    "news_candidates": 50
   },
   "power_squeeze_alerts": {
     "sent_fact_keys": [
@@ -1052,7 +1052,7 @@
   "news_collection_outage": {
     "consecutive_failures": 0,
     "alerted": false,
-    "last_success_at_kst": "2026-11-20T07:43:25+09:00",
+    "last_success_at_kst": "2026-11-20T12:44:50+09:00",
     "last_failure_at_kst": "2026-11-17T12:08:45+09:00"
   }
 }
