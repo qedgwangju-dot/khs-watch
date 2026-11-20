@@ -199,6 +199,48 @@ class TwoColorTests(unittest.TestCase):
         attack = dict(row, title_original='러시아, 호르무즈 원유시설 드론 공격 재개')
         self.assertEqual(presentation.direction(stage, attack), 'red')
 
+    def test_real_nov21_0157_ft_three_relays_one_green_and_real_strike_red(self):
+        # Three distinct Telegram posts quoted the SAME FT report in the
+        # 01:57 KST production payload (before the classifier was fixed).
+        published = ['Sat, 21 Nov 2026 01:26:00 +0900',
+                     'Sat, 21 Nov 2026 01:19:00 +0900',
+                     'Sat, 21 Nov 2026 01:19:00 +0900']
+        titles = [
+            '파이낸셜타임스(FT)에 따르면 트럼프 행정부는 우크라이나가 '
+            '2027년 1월 초까지 러시아와 평화협정을 맺기를 원한다고 4명의 관계자가 전했다',
+            '트럼프 행정부는 유럽과 우크라이나 관리들에게 키예프가 1월 초까지 '
+            '러시아와 평화 협정을 맺기를 원한다고 밝혔습니다(@WalterBloomberg)',
+            '도널드 트럼프, 1월 이전 우크라이나 평화 협정 모색: FT(@WalterBloomberg)',
+        ]
+        now = dt.datetime(2026, 11, 21, 1, 57, tzinfo=self.watch.KST)
+        rows = []
+        for idx, (title, pub) in enumerate(zip(titles, published), 38785):
+            row = {
+                'title_original': title, 'title_ko': title, 'source': 'Walter Bloomberg',
+                'source_url': 'https://t.me/WalterBloomberg',
+                'link': f'https://t.me/WalterBloomberg/{idx}',
+                'published': pub, 'body_verified': False, 'tags': ['종전·협상'],
+                'signals_ko': [], 'forced_tags': [],
+            }
+            self.assertTrue(stage._ukraine_january_peace_target_report(row), title)
+            self.assertEqual(stage.non_military_kind(row), 'diplomatic_plan')
+            self.assertEqual(presentation.direction(stage, row), 'green')
+            self.assertEqual(stage.score_item(row, now)[0], 98)
+            rows.append(row)
+        # The three source posts are one source-attributed event, and #485
+        # was already delivered with this exact retained event identifier.
+        ids = {self.watch.item_id(row) for row in rows}
+        self.assertEqual(ids, {'bd4d1e34edb44c7987e7'})
+        strike = {
+            'title_original': ('러, 미중러 회담 직후 우크라에 미사일 '
+                               '110발·드론 400대 대공습…키이우 교량·에너지망 타격'),
+            'source': '파이낸셜뉴스', 'body_verified': True,
+            'tags': ['확전'], 'description': '',
+        }
+        self.assertEqual(presentation.direction(stage, strike), 'red')
+        self.assertNotEqual(self.watch.item_id(strike), next(iter(ids)))
+        self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
+
     def test_repeat_gate_and_projection_are_idempotent(self):
         self.present()
         before = [path.read_bytes() for path in (self.watch.ALERT, self.watch.AUDIT, self.watch.PENDING)]
