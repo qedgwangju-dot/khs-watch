@@ -8,56 +8,60 @@
     {
       "ts": "2026-11-20T11:58:24+09:00",
       "value": 1339.4
+    },
+    {
+      "ts": "2026-11-20T16:00:01+09:00",
+      "value": 1336.2
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-11-20T11:58:24+09:00",
-    "market_phase": "정규장",
+    "checked_at": "2026-11-20T16:00:01+09:00",
+    "market_phase": "장마감 후",
     "fx": {
-      "value": 1339.4,
+      "value": 1336.2,
       "prev_close": 1330.0,
       "naver_prev_close": 1335.5,
       "date": "2026-11-20",
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
-      "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20261119155338172",
+      "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20261119155319354",
       "basis_error": null,
       "basis_reused": false
     },
-    "session_low": 1337.5,
-    "rebound_krw": 1.900000000000091,
-    "rebound_pct": 0.14205607476636128,
-    "daily_krw": 9.400000000000091,
-    "daily_pct": 0.7067669172932334,
-    "kospi_pct": -4.57,
+    "session_low": 1336.2,
+    "rebound_krw": 0.0,
+    "rebound_pct": 0.0,
+    "daily_krw": 6.2000000000000455,
+    "daily_pct": 0.46616541353383667,
+    "kospi_pct": -5.21,
     "ship": {
-      "avg": -4.615,
+      "avg": -5.51,
       "positive": 0,
-      "relative": -0.04499999999999993,
+      "relative": -0.2999999999999998,
       "valid": 4,
       "confirmed": false
     },
     "defense": {
-      "avg": -3.9299999999999997,
+      "avg": -5.3,
       "positive": 0,
-      "relative": 0.6400000000000006,
+      "relative": -0.08999999999999986,
       "valid": 4,
       "confirmed": false
     },
     "auto": {
-      "avg": -3.74,
+      "avg": -4.445,
       "positive": 0,
-      "relative": 0.8300000000000001,
+      "relative": 0.7649999999999997,
       "valid": 4,
       "confirmed": false
     },
     "counter": {
-      "avg": 1.8475,
+      "avg": -0.3100000000000001,
       "positive": 2,
-      "relative": 6.4175,
+      "relative": 4.8999999999999995,
       "valid": 4,
       "confirmed": false
     }
