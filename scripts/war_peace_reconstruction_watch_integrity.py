@@ -48,6 +48,63 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
                'oil_pressure': '유가 압박·정치일정 보도'}
 
 
+
+# This is the existing war watch's time-bound Ukraine negotiation story, not a
+# new notification task. Keep the five-minute schedule, destination, and state.
+_JANUARY_PEACE_QUERY = (
+    '(Trump OR 트럼프) (Ukraine OR 우크라이나) '
+    '("early January" OR "before January" OR "1월 초" OR "내년 1월") '
+    '("peace deal" OR "peace agreement" OR peace OR 종전 OR 평화협정) when:1d'
+)
+if _JANUARY_PEACE_QUERY not in watch.QUERIES:
+    watch.QUERIES.insert(0, _JANUARY_PEACE_QUERY)
+for _i, _query in enumerate(watch.QUERIES):
+    if _query.startswith('site:ft.com (Iran OR Ukraine)') and _query.endswith('when:6h'):
+        watch.QUERIES[_i] = _query[:-len('when:6h')] + 'when:1d'
+
+
+def _ukraine_january_peace_target_report(row):
+    """Source-attributed push for an early-January deal, NOT an actual deal."""
+    title = _headline(row)
+    source = ' '.join(str(row.get(key) or '') for key in
+                      ('source', 'source_url', 'resolved_url')).lower()
+    trusted = ('financial times', 'ft.com', '파이낸셜타임스', 'reuters',
+               'associated press', 'apnews', 'ap news', 'bloomberg',
+               'the guardian', 'kyiv independent', 'rferl',
+               'yonhap', 'yna.co.kr', '연합뉴스', '뉴시스', '뉴스1')
+    if not any(name in source for name in trusted):
+        return False
+    if not re.search(r'\bukrain\w*\b|\bkyiv\b|우크라|키이우', title):
+        return False
+    if not re.search(r'\btrump\b|\bunited states\b|\bu\.s\.\b|트럼프|미국', title):
+        return False
+    if not re.search(r'\bpeace\s*(?:deal|agreement|talks?)\b|'
+                     r'\b(?:ceasefire|negotiations?)\b|종전|평화\s*협정|휴전|협상', title):
+        return False
+    if not re.search(r'\b(?:before|by|in)\s+(?:early\s+)?january\b|'
+                     r'\bearly\s+january\b|(?:2027년\s*)?1월\s*(?:초|까지|이전)|'
+                     r'내년\s*1월', title):
+        return False
+    if not re.search(r'\b(?:seeks?|seeking|push(?:es|ing)?|press(?:es|ed|ing)?|'
+                     r'pressure|pressures|aims?|wants?|target(?:s|ing)?|'
+                     r'plans?|planning|deadline)\b|추진|목표|서두|압박|시한|기한', title):
+        return False
+    if re.search(r'\b(?:already signed|signed agreement|deal signed|deal reached|'
+                 r'fully agreed|ratified|cancelled|collapsed)\b|'
+                 r'(?:협정|합의).{0,8}(?:체결\s*완료|발효\s*완료|무산|결렬)', title):
+        return False
+    if re.search(r'\b(?:missile|drone|airstrike)\s+attack\b|'
+                 r'(?:공격|공습|폭격|타격).{0,12}(?:개시|재개|실행|감행)', title):
+        return False
+    return True
+
+
+def _january_peace_target_in_recovery_window(row, now):
+    stamp = watch.parse_pub(row.get('published'))
+    return bool(_ukraine_january_peace_target_report(row)
+                and stamp is not None and stamp <= now + dt.timedelta(minutes=5)
+                and dt.timedelta() <= now - stamp <= dt.timedelta(hours=24))
+
 def _headline(row):
     return html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
 
@@ -432,6 +489,8 @@ def _statement_with_actual_action(title):
 
 
 def _primary_topic(row):
+    if _ukraine_january_peace_target_report(row):
+        return '미국·우크라이나·러시아 · 2027년 1월 초 종전 목표 보도'
     title = _headline(row)
     kind = non_military_kind(row)
     if _conditional_nuclear_inspection_headline(row):
@@ -1453,6 +1512,8 @@ def _title_only_unconfirmed_explosion(row):
 
 
 def non_military_kind(row):
+    if _ukraine_january_peace_target_report(row):
+        return 'diplomatic_plan'
     if _conditional_nuclear_inspection_headline(row):
         return 'diplomatic_position'
     if _us_north_korea_possible_meeting_headline(row):
@@ -1594,6 +1655,8 @@ def _clear_market_event_cache(row):
 
 
 def _headline_event_label(row, kind):
+    if _ukraine_january_peace_target_report(row):
+        return '1월 초 평화협정 추진 보도·실제 합의 미확정'
     if _conditional_nuclear_inspection_headline(row):
         return '종전 전 사찰 제한 입장'
     if _us_north_korea_possible_meeting_headline(row):
@@ -1797,8 +1860,13 @@ def score_item(row, now):
         return 0, []
     stamp = watch.parse_pub(row.get('published'))
     age = watch.age_minutes(row, now)
-    if stamp is None or stamp > now + dt.timedelta(minutes=5) or age > 3 * 60:
+    delayed_target = _january_peace_target_in_recovery_window(row, now)
+    if (stamp is None or stamp > now + dt.timedelta(minutes=5)
+            or (age > 3 * 60 and not delayed_target)):
         return 0, []
+    if delayed_target:
+        _clear_headline_event_cache(row, 'diplomatic_plan')
+        return 98, list(row['tags'])
     if _reported_major_airstrike(_headline(row)) and not _headline_attack_casualties(row):
         _clear_headline_event_cache(row, None)
         score, _ = source_score._original_score(row, now)
@@ -2264,7 +2332,8 @@ def build_alert(items, markets, now):
             continue
         metadata = row.get('source_metadata') or {}
         dates = [dt.datetime.fromisoformat(value['at_kst']) for value in metadata.get('publication_candidates', [])]
-        if dates and (min(dates) < now - dt.timedelta(hours=3) or max(dates) > now + dt.timedelta(minutes=5)):
+        allowed_age = dt.timedelta(hours=24 if _january_peace_target_in_recovery_window(row, now) else 3)
+        if dates and (min(dates) < now - allowed_age or max(dates) > now + dt.timedelta(minutes=5)):
             row['render_withheld'] = 'origin_publication_stale_or_future'
             continue
         stamp = watch.parse_pub(row.get('published'))
@@ -2272,7 +2341,7 @@ def build_alert(items, markets, now):
             row['render_withheld'] = 'discovery_publication_unverified' if stamp is None else 'discovery_publication_future'
             continue
         age = watch.age_minutes(row, now)
-        if age is not None and age > 3 * 60:
+        if age is not None and age > 3 * 60 and not _january_peace_target_in_recovery_window(row, now):
             row['render_withheld'] = 'discovery_publication_stale'
             continue
         visible.append(row)
@@ -2449,7 +2518,7 @@ def verify_alert(test_mode=False):
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered topic differs from headline event')
         queried = dt.datetime.fromisoformat(receipt['queried_at_kst'])
         age = watch.age_minutes(row, queried)
-        if age is not None and age > 3 * 60:
+        if age is not None and age > 3 * 60 and not _january_peace_target_in_recovery_window(row, queried):
             raise RuntimeError('WAR_INTEGRITY_GATE: stale discovery publication in rendered source')
         if non_military_kind(row) in ('military_statement', 'support_statement', 'military_position', 'corporate_spending', 'market_reaction', 'commodity_market', 'security_activity', 'maritime_routing', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping', 'trade_proposal', 'diplomatic_contact', 'diplomatic_analysis', 'diplomatic_position', 'diplomatic_plan', 'diplomatic_statement', 'diplomatic_appeal', 'operational_disruption', 'maritime_shipping', 'oil_market', 'oil_pressure') and (
                 row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
@@ -2515,6 +2584,20 @@ def verify_alert(test_mode=False):
             raise RuntimeError('WAR_INTEGRITY_GATE: undated comparison close labelled as previous day')
 
 
+_previous_item_id = watch.item_id
+
+
+def _january_peace_item_id(row):
+    if _ukraine_january_peace_target_report(row):
+        published = watch.parse_pub(row.get('published'))
+        if published is not None:
+            week = published.isocalendar()
+            key = f'ukraine-peace|early-jan-2027-us-target|{week.year}-W{week.week:02d}'
+            return hashlib.sha256(key.encode('utf-8')).hexdigest()[:20]
+    return _previous_item_id(row)
+
+
+watch.item_id = _january_peace_item_id
 watch.parse_pub = parse_pub
 watch.score_item, watch.topic_label, watch.build_alert = score_item, topic_label, build_alert
 watch.finalize = finalize
