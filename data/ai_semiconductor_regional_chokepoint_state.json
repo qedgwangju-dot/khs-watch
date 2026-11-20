@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-20T09:58:59+09:00",
-  "last_scan_count": 6,
+  "updated_at_kst": "2026-11-20T17:32:53+09:00",
+  "last_scan_count": 8,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -132,7 +132,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 2,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -168,7 +168,9 @@
     "72e51f5d7b884367520ec10d",
     "76bed2e41196356720195d24",
     "781240f795d70b6a2663b3fd",
+    "846034484cc2e5ff3727fde9",
     "89e73411422b9d710eee6410",
+    "8d939bc47244d5b36157bde5",
     "8e83ced6f5ddad839f021a48",
     "928e5521196664bfaa5b475c",
     "987df34c57b8538f8a0b23e4",
@@ -201,7 +203,20 @@
     "ff50414926b6dd08d66adea3"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "taiwan|regulation|TSMC|core",
+      "source": "CEO Insights Asia",
+      "reason": "규제 이슈는 공식자료 또는 신뢰자료 2곳 필요",
+      "published_kst": "2026-11-20T10:55:28+09:00"
+    },
+    {
+      "event_key": "taiwan|regulation|TSMC|malaysia",
+      "source": "BusinessToday Malaysia",
+      "reason": "규제 이슈는 공식자료 또는 신뢰자료 2곳 필요",
+      "published_kst": "2026-11-20T09:40:54+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
   "telegram_message_ids": [
     397
