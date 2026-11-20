@@ -166,6 +166,17 @@ class TwoColorTests(unittest.TestCase):
                      published='Sat, 21 Nov 2026 03:00:00 +0900')
         self.assertTrue(stage._ukraine_january_peace_target_report(relay))
         self.assertEqual(self.watch.item_id(ft), self.watch.item_id(relay))
+        ft_wire = dict(ft, title_original=(
+            'TRUMP ADMINISTRATION HAS TOLD EUROPEAN AND UKRAINIAN OFFICIALS '
+            'IT WANTS KYIV TO REACH A PEACE DEAL WITH RUSSIA BY EARLY JANUARY-FT'),
+            title_ko='트럼프 행정부, 우크라이나에 1월 초까지 종전 협정 촉구',
+            source='Walter Bloomberg', source_url='https://t.me/WalterBloomberg',
+            link='https://t.me/WalterBloomberg/38785',
+            published='Fri, 20 Nov 2026 16:19:16 +0000')
+        self.assertTrue(stage._ukraine_january_peace_target_report(ft_wire))
+        self.assertEqual(self.watch.item_id(ft_wire), 'bd4d1e34edb44c7987e7')
+        self.assertEqual(self.watch.item_id(ft_wire), self.watch.item_id(ft))
+        self.assertEqual(presentation.direction(stage, ft_wire), 'green')
         self.assertEqual(presentation.direction(stage, relay), 'green')
         signed = dict(ft, title_original='Trump and Ukraine signed peace agreement in January')
         self.assertFalse(stage._ukraine_january_peace_target_report(signed))
@@ -174,6 +185,19 @@ class TwoColorTests(unittest.TestCase):
         ordinary = dict(ft, title_original='Trump Ukraine peace talks with European officials')
         self.assertEqual(stage.score_item(ordinary, now), (0, []))
         self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
+
+    def test_record_crude_flow_observation_is_not_new_attack(self):
+        # Real 02:03 KST alert message #485 showed this market flow as red.
+        row = {
+            'title_original': ("BESSENT: LAST NIGHT WAS BIGGEST AMOUNT OF CRUDE OIL "
+                               "THAT'S COME THROUGH STRAIT OF HORMUZ SINCE CONFLICT STARTED"),
+            'title_ko': '베선트, 분쟁 시작 이래 최대 원유량이 호르무즈 통과',
+            'source': 'Walter Bloomberg', 'body_verified': False,
+            'tags': ['확전'],
+        }
+        self.assertIsNone(presentation.direction(stage, row))
+        attack = dict(row, title_original='러시아, 호르무즈 원유시설 드론 공격 재개')
+        self.assertEqual(presentation.direction(stage, attack), 'red')
 
     def test_repeat_gate_and_projection_are_idempotent(self):
         self.present()
