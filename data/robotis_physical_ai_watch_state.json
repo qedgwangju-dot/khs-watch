@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-20T11:27:37.533969+00:00",
+  "updated_at": "2026-11-20T13:34:21.369986+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1008,12 +1008,11 @@
     "f4918db38597449cafbb0e5fbb2991ee2627900611f78a658b6fcee738baa353",
     "e2d3519a31971327901db04cd67074fee5fc08da613819c24d1af512a125b935",
     "17a04f89ab92a656d3dda35b625fc53f2d0fa298ea3407196a98c63a47d8cc0e",
-    "cf37b7a676e2e2dcbe0779854d0510de6a330a92d584923a07c3c399beda07cc"
+    "cf37b7a676e2e2dcbe0779854d0510de6a330a92d584923a07c3c399beda07cc",
+    "27a147feec176c131cf40afa77c6ffc386995413745fdc824fd2bcf84df75814"
   ],
   "last_selected": [
-    "e2d3519a31971327901db04cd67074fee5fc08da613819c24d1af512a125b935",
-    "17a04f89ab92a656d3dda35b625fc53f2d0fa298ea3407196a98c63a47d8cc0e",
-    "cf37b7a676e2e2dcbe0779854d0510de6a330a92d584923a07c3c399beda07cc"
+    "27a147feec176c131cf40afa77c6ffc386995413745fdc824fd2bcf84df75814"
   ],
   "groups": [
     "ess_battery",
@@ -1032,15 +1031,6 @@
     "samhyun"
   ],
   "delivery_history": [
-    {
-      "run_id": 43744014407,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-15T17:58:33.615152+00:00"
-    },
     {
       "run_id": 43765284612,
       "outcome": "normal_silence",
@@ -1422,18 +1412,34 @@
         false
       ],
       "state_timestamp_utc": "2026-11-20T11:27:37.533969+00:00"
+    },
+    {
+      "run_id": 44745346035,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "27a147feec176c131cf40afa77c6ffc386995413745fdc824fd2bcf84df75814"
+      ],
+      "message_ids": [
+        395
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-20T13:34:21.369986+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44727660640,
+    "run_id": 44745346035,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "17a04f89ab92a656d3dda35b625fc53f2d0fa298ea3407196a98c63a47d8cc0e",
-      "cf37b7a676e2e2dcbe0779854d0510de6a330a92d584923a07c3c399beda07cc",
-      "e2d3519a31971327901db04cd67074fee5fc08da613819c24d1af512a125b935"
+      "27a147feec176c131cf40afa77c6ffc386995413745fdc824fd2bcf84df75814"
     ],
     "message_ids": [
-      394
+      395
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1442,35 +1448,17 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-20T11:27:37.533969+00:00"
+    "state_timestamp_utc": "2026-11-20T13:34:21.369986+00:00"
   },
   "last_selected_events": [
     {
-      "key": "e2d3519a31971327901db04cd67074fee5fc08da613819c24d1af512a125b935",
+      "key": "27a147feec176c131cf40afa77c6ffc386995413745fdc824fd2bcf84df75814",
       "group": "robotis",
-      "title": "[11.20] 젠슨 황이 띄운 ‘오리 로봇’ 관절은 한국산…코스닥社 로보티즈 공급계약 확정 - 르데스크",
-      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1UcU8wOHd6b0wwdlp2a2N3VTNsZS00a1hza0RFbW1LaVc1WnBWYUo5eGlqNEkxaWFHdUJqRzBuRHF2eTFUUW1meUJmVlM1a0c3NzNWVktn?oc=5",
-      "source": "르데스크",
-      "source_url": "https://www.ledesk.co.kr",
-      "published": "2026-11-20T05:07:47+00:00"
-    },
-    {
-      "key": "17a04f89ab92a656d3dda35b625fc53f2d0fa298ea3407196a98c63a47d8cc0e",
-      "group": "ess_battery",
-      "title": "삼성SDI, 내년 영업익 1조원대 전망…북미 ESS 수주 60GWh 돌파에 현지 양산 '날개' - 위키리크스한국",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5LVG51N1BFbHBCNkdnc0hoeXpNbzFUdWRCQkl3V0ZRYXZxMWtjNERLWF83LWhNeTM3TjNManFJeDNGRG11MnRWVnhjUkdWMmJBaWNSa2RlUEJISWg1N25oOTVscndkeE41bFV6Snlfc1U?oc=5",
-      "source": "위키리크스한국",
-      "source_url": "https://www.wikileaks-kr.org",
-      "published": "2026-11-20T07:14:42+00:00"
-    },
-    {
-      "key": "cf37b7a676e2e2dcbe0779854d0510de6a330a92d584923a07c3c399beda07cc",
-      "group": "ess_battery",
-      "title": "'최주선 체제' 유지하는 삼성SDI…북미 ESS 확대·전고체 양산 잰걸음 - 뉴시스",
-      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9ieURYRjVEVENKYzQzLUozTUM3UWwxRjNJYkdSVVp0QW1ZblJmWGJsbVJVY1JZdlRsNFljSDkxUERWc1hpcEpDQU5RZ0ZpMFd1WWFpRGRnWkwyeHpETXNRctIBeEFVX3lxTE1JRU5vSXNmTXVSZ0M3MU1HQVZwS0JSaVQ1TWViREFtMTlZMlFxSUh6QTg4OHVNOU5HR0tneUsybGdFZnMtYTh2THJXQjZtTTZ0UUo2TnQzMUFPaV9SUXBrN1lQQ2ZWS2VpLU1hMmpzMEFzWkY5RUxhZQ?oc=5",
-      "source": "뉴시스",
-      "source_url": "https://www.newsis.com",
-      "published": "2026-11-20T05:13:56+00:00"
+      "title": "로보티즈 수주 39억7812만원, 매출 대비 10.22% - 데일리인베스트",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9RcFgxc0N3ZHBlRWdDQ1VTcTFrOHhBa1BxcGNFSnlYc2dsMXF2TTBVbVp1TmdZanpiWlUteldSX1FyZ0w2OWNVU01ycWdjUmk1RU9hQnZwNHRWbWJZeGxLZ3BqX3k4WElKR0t2Z9IBb0FVX3lxTE83MnFMajVwaExvdkZfUVlDS01BSXQ1ZnI0UGNpNXY3ank4enl4MzZIRU95YWtLd0c0MTBpbUFIb1hYdjhkeWpKb0x4UkNkN1FpX2I0ZmFsb2ZRRWdKZE5vVWlUVldNeFJKWlQyTUMxQQ?oc=5",
+      "source": "데일리인베스트",
+      "source_url": "https://www.dailyinvest.kr",
+      "published": "2026-11-20T00:12:28+00:00"
     }
   ],
   "message_corrections": {
