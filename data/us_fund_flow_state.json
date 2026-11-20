@@ -205,7 +205,7 @@
       "period": "November 06, 2026",
       "reference_week": "2026-11-06",
       "reference_week_verified": true,
-      "published": "2026-11-19",
+      "published": "2026-11-20",
       "url": "https://qz.com/hedge-funds-tech-stocks-near-record-pace-midterms-110926",
       "metrics": {
         "gross_leverage_pct": 207.5,
@@ -222,20 +222,20 @@
       "fingerprint": "c8bc5db6711bf93fb0af941c91e9976ad3f3d281c539458e698eda3c6ea81759"
     }
   },
-  "updated_at_kst": "2026-11-20T07:06:19.789730+09:00",
+  "updated_at_kst": "2026-11-21T07:28:04.617970+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-11-19",
-    "sp500_last_value": 7175.830078125,
+    "sp500_last_date": "2026-11-20",
+    "sp500_last_value": 6910.39013671875,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -8.22,
+    "sp500_drawdown_pct": -11.62,
     "hartnett_tracking_version": "2026-10-09-v1",
-    "hartnett_treasury_date": "2026-11-19",
-    "hartnett_10y_pct": 5.04,
-    "hartnett_10y_5d_bp": -6.0,
+    "hartnett_treasury_date": "2026-11-20",
+    "hartnett_10y_pct": 4.92,
+    "hartnett_10y_5d_bp": -23.0,
     "hartnett_bond_level": "below_5_30",
-    "hartnett_bond_momentum": "neutral",
+    "hartnett_bond_momentum": "fall_20bp",
     "hartnett_fed_target_upper_pct": 4.0,
     "hartnett_fed_effective_date": "2026-10-28",
     "hartnett_election_stage": "past",
@@ -264,12 +264,12 @@
     "fund_horizon_summary_version": "2026-11-03-front-v1"
   },
   "factual_delivery_receipt": {
-    "timestamp_utc": "2026-11-19T22:08:08.056788+00:00",
-    "date_kst": "2026-11-20",
+    "timestamp_utc": "2026-11-20T22:29:27.593820+00:00",
+    "date_kst": "2026-11-21",
     "bot_username": "khs887900887900008879_bot",
     "message_ids": [
-      3310,
-      3311
+      3415,
+      3416
     ]
   }
 }
