@@ -72,7 +72,11 @@ def _ukraine_january_peace_target_report(row):
                'associated press', 'apnews', 'ap news', 'bloomberg',
                'the guardian', 'kyiv independent', 'rferl',
                'yonhap', 'yna.co.kr', '연합뉴스', '뉴시스', '뉴스1')
-    if not any(name in source for name in trusted):
+    # Walter Bloomberg carried FT's original attribution at 01:19 KST;
+    # treat it as an attributed relay, not as an independent FT confirmation.
+    wire_ft = ('walter bloomberg' in source or 'walterbloomberg' in source)
+    wire_ft = wire_ft and bool(re.search(r'(?:[-—]\s*ft\b|\bfinancial times\b|파이낸셜타임스)', title))
+    if not (wire_ft or any(name in source for name in trusted)):
         return False
     if not re.search(r'\bukrain\w*\b|\bkyiv\b|우크라|키이우', title):
         return False
@@ -2592,6 +2596,11 @@ def _january_peace_item_id(row):
         published = watch.parse_pub(row.get('published'))
         if published is not None:
             week = published.isocalendar()
+            # Reuse the actual confirmed 02:03 KST delivery's seen ID for
+            # the SAME reporting week; do not re-alert as the FT original
+            # becomes accessible after the Walter Bloomberg FT-attributed wire.
+            if week.year == 2026 and week.week == 47:
+                return 'bd4d1e34edb44c7987e7'
             key = f'ukraine-peace|early-jan-2027-us-target|{week.year}-W{week.week:02d}'
             return hashlib.sha256(key.encode('utf-8')).hexdigest()[:20]
     return _previous_item_id(row)
