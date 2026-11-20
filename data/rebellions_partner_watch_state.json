@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-20T16:14:12+09:00",
+  "last_checked_kst": "2026-11-20T16:59:47+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -4213,6 +4213,12 @@
       "material_stage": 1,
       "first_seen_kst": "2026-11-20T15:39:49+09:00",
       "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "5cb3fd9513bf11549f2d2fdd": {
+      "title": "미래에셋생명, AI 반도체 '리벨리온' 투자 확정…'한국형 버크셔 해서웨이' 시동 - 뉴스핌",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBqMzA0NnRHU01INm1nNnFWaTliZUt2d1BUUDExNXJobHYtNmtjSnpCaUF2ZHo5VFh3alRBOWQxUWV2R2N4YWtoSWxCUldkWjV1bktFZEt1M0hfSmZX?oc=5",
+      "first_seen_kst": "2026-11-20T16:59:47+09:00",
+      "suppressed_stale": true
     }
   }
 }
