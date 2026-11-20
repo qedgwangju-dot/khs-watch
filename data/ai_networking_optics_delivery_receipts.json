@@ -1,5 +1,27 @@
 {
   "bundles": {
+    "551988700ff884dd3414f3bf5db29af118b362dd086f7d67d69465886900db12": {
+      "bot_username": "khs88798879887988798879_bot",
+      "confirmed_at_kst": "2026-11-20T13:07:54+09:00",
+      "created_at_kst": "2026-11-20T13:07:53+09:00",
+      "part_hashes": [
+        "ff22c4e2ae1e365548fb28b747275e59b8d01bc56f8f52e1d67fbfd76215dd5f"
+      ],
+      "receipts": {
+        "0": {
+          "chat_identity_verified": true,
+          "confirmed_at_kst": "2026-11-20T13:07:54+09:00",
+          "message_id": 546,
+          "source_sha": "1a800aa69810fb32740f30f53d4102fb0fbd453f",
+          "status": "confirmed"
+        }
+      },
+      "route_key": "e06789d08ffbc610316e034294fc31cc16aee21380f9465db7a03610b61897c0",
+      "source_sha": "1a800aa69810fb32740f30f53d4102fb0fbd453f",
+      "state_ancestor_sha256": "957c3c3dbd345340392dbf2f15f4edea0f00d03179a73237b4939a0637550919",
+      "state_persisted": true,
+      "status": "complete"
+    },
     "9fc3aa5c7e228759a22505ecdffb6c0305238adb2a458c80f572f4394d1edacf": {
       "bot_username": "khs88798879887988798879_bot",
       "confirmed_at_kst": "2026-11-18T11:04:19+09:00",
@@ -1853,6 +1875,25 @@
     "44664514811:1": {
       "checked_at_kst": "2026-11-20T12:22:45+09:00",
       "fingerprint": "f34e367e81ac0c3b94f0dc5983932dd7f530cff1da6a22e9c3fa9de7f6d1bd50",
+      "outcome": "no_send"
+    },
+    "44667072171:1": {
+      "checked_at_kst": "2026-11-20T13:07:52+09:00",
+      "completed": "2026-11-20T03:22:46+00:00",
+      "fingerprint": "625c85117753b85a1dc3ccc18a588e8e46bf9a803a995a489b44c774287ecb99",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-20T03:22:46+00:00"
+    },
+    "44669094216:1": {
+      "checked_at_kst": "2026-11-20T13:07:52+09:00",
+      "fingerprint": "3e565f847fc90a45f7bd372e63d117aa6fc93f3158d0feb491cfe940495e1b65",
+      "outcome": "no_send"
+    },
+    "44669969907:1": {
+      "checked_at_kst": "2026-11-20T13:07:51+09:00",
+      "fingerprint": "0aeaff4b15698772737a89319a8ac157d9325d84cd1d96e467d34f5399af7f88",
       "outcome": "no_send"
     }
   },
