@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-20T23:23:55+09:00",
+  "updated_at_kst": "2026-11-20T23:41:21+09:00",
   "circle": {
     "date": "2026-11-16",
     "circulation_usd_b": 68.0,
@@ -82,5 +82,7 @@
   },
   "crcl_last_alerted_close_date": "2026-11-19",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "crcl: CRCL cross-source close discrepancy: ChartExchange=51.88 Yahoo=51.94"
+  ]
 }
