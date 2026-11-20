@@ -427,6 +427,17 @@ def direction(stage, row):
             and not _completed_attack_headline(title)
             and not _active_adverse(title)):
         return 'green'
+    # An attributed record crude-flow observation is a supply/market update,
+    # not a new strike, ceasefire, or military escalation. Its numbers still
+    # need the named authority's primary publication to be confirmed.
+    if (re.search(r'\bbessent\b|베선트', title)
+            and re.search(r'\bcrude\s+oil\b|원유', title)
+            and re.search(r'\bstrait\s+of\s+hormuz\b|호르무즈', title)
+            and re.search(r'\bbiggest\s+amount\b|\b(?:highest|most)\s+(?:volume|amount)\b|최대\s*물량', title)
+            and re.search(r'\bsince\s+(?:the\s+)?conflict\s+start|분쟁\s*시작\s*이후', title)
+            and not _separate_attack_headline(title)
+            and not _completed_attack_headline(title)):
+        return None
     # A headline about oil prices responding to peace expectations is market
     # context, not an independent attack or a signed peace agreement.
     if (re.search(r'유가|\b(?:oil|crude)\s+prices?\b', title)
