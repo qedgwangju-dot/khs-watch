@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-21T05:59:58+09:00",
+  "updated_at_kst": "2026-11-21T06:28:56+09:00",
   "circle": {
     "date": "2026-11-19",
     "circulation_usd_b": 67.3,
@@ -51,25 +51,25 @@
   },
   "crcl": {
     "date": "2026-11-20",
-    "close": 47.7599983215332,
+    "close": 47.54499816894531,
     "prev_date": "2026-11-19",
     "prev_close": 51.880001068115234,
-    "daily_pct": -7.94,
+    "daily_pct": -8.36,
     "source": "Yahoo Finance daily chart",
     "source_url": "https://finance.yahoo.com/quote/CRCL/history/",
     "crosscheck_source": "ChartExchange historical",
     "crosscheck_date": "2026-11-20",
-    "crosscheck_close": 47.77,
-    "crosscheck_daily_pct": -7.92,
-    "crosscheck_gap_pct": 0.0209,
+    "crosscheck_close": 47.53,
+    "crosscheck_daily_pct": -8.38,
+    "crosscheck_gap_pct": 0.0315,
     "crosscheck_status": "rounding_difference"
   },
   "tbx": {
     "date": "2026-11-20",
-    "close": 29.170000076293945,
+    "close": 29.200000762939453,
     "prev_date": "2026-11-19",
     "prev_close": 29.440000534057617,
-    "daily_pct": -0.92
+    "daily_pct": -0.82
   },
   "fx": {
     "rate": 1330.8,
@@ -78,11 +78,9 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,346.30원, 차이 1.16% · 기준 차이 주의"
+    "crosscheck": "Yahoo Finance 1,345.80원, 차이 1.13% · 기준 차이 주의"
   },
-  "crcl_last_alerted_close_date": "2026-11-19",
+  "crcl_last_alerted_close_date": "2026-11-20",
   "correction_pending": false,
-  "errors": [
-    "crcl: CRCL cross-source close discrepancy: ChartExchange=47.53 Yahoo=47.59"
-  ]
+  "errors": []
 }
