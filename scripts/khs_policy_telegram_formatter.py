@@ -842,6 +842,21 @@ def policy_document_source_timeline_lines(alert: dict) -> list[str]:
     timeline = presidential_action_timeline_lines(alert)
     if timeline:
         return timeline
+    events = alert.get("policy_timeline") or []
+    event_lines: list[str] = []
+    for event in events:
+        if not isinstance(event, dict):
+            continue
+        day = _timeline_parse_day(event.get("date"))
+        stage = _clean(event.get("stage"))
+        if day and stage:
+            event_lines.append(f"  • {_timeline_ko_date(day)}: {stage}")
+    if event_lines:
+        lines = ["- 타임라인:", *event_lines]
+        note = _clean(alert.get("policy_timeline_note"))
+        if note:
+            lines.append(f"  • 후속 일정: {note}")
+        return lines
     source = str(alert.get("source") or "").lower()
     gazette = source.startswith("federal register ")
     publication = _timeline_parse_day(alert.get("publication_date")) if gazette else None

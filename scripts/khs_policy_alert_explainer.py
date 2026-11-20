@@ -713,13 +713,88 @@ def is_doe_energy_security_policy(text: str, item: dict) -> bool:
 
 
 def is_state_smr_moc_policy(text: str, item: dict) -> bool:
-    matched = item.get("matched") or {}
-    return "state_smr_moc_policy" in matched or (
-        has_any(text, ["state department", "department of state", "office of the spokesperson", "state.gov", "미 국무부"])
-        and has_any(text, ["memorandum of cooperation", "moc", "협력각서"])
-        and has_any(text, ["small modular reactor", "small modular reactors", "smr", "소형모듈원전"])
-        and has_any(text, ["republic of korea", "south korea", "korea", "japan", "trilateral", "samsung c&t", "ge vernova", "bwrx-300"])
+    source_text = " ".join(
+        str(item.get(key) or "")
+        for key in (
+            "source", "title", "original_title", "source_title", "source_abstract",
+            "source_body", "summary", "link",
+        )
+    ).lower()
+    has_smr = has_any(
+        source_text,
+        ["small modular reactor", "small modular reactors", "smr", "소형모듈원전"],
     )
+    has_moc = has_any(
+        source_text,
+        ["memorandum of cooperation", "협력각서", "moc"],
+    )
+    has_signed = has_any(
+        source_text,
+        ["signed", "signs", "signing", "entered into", "체결", "서명"],
+    )
+    has_deployment = has_any(
+        source_text,
+        ["deployment", "deployments", "deploy smr", "third-party countr", "other countries", "제3국"],
+    )
+    has_us = has_any(source_text, ["united states", "u.s.", "u.s.-", "미국"])
+    has_japan = has_any(source_text, ["japan", "japanese", "일본"])
+    has_korea = has_any(source_text, ["republic of korea", "south korea", "rok", "korea", "대한민국", "한국"])
+    return all((has_smr, has_moc, has_signed, has_deployment, has_us, has_japan, has_korea))
+
+
+def state_smr_moc_timeline(item: dict) -> list[dict[str, str]]:
+    source_text = " ".join(
+        str(item.get(key) or "")
+        for key in ("title", "original_title", "source_title", "source_abstract", "source_body", "summary")
+    )
+    months = {
+        name.lower(): number
+        for number, name in enumerate(
+            ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"),
+            start=1,
+        )
+    }
+    dates = list(re.finditer(
+        r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s*(20\d{2})\b",
+        source_text,
+        re.IGNORECASE,
+    ))
+    event_date = None
+    for match in dates:
+        context = source_text[max(0, match.start() - 180): min(len(source_text), match.end() + 420)].lower()
+        if has_any(context, ["memorandum of cooperation", "moc", "협력각서"]) and has_any(
+            context, ["signed", "signs", "signing", "체결", "서명"]
+        ):
+            event_date = f"{match.group(3)}-{months[match.group(1).lower()]:02d}-{int(match.group(2)):02d}"
+            break
+    if not event_date:
+        return []
+
+    local_time = re.search(r"\b(\d{1,2}):(\d{2})\s*(a\.m\.|p\.m\.)\s+local time\b", source_text, re.IGNORECASE)
+    stage = "3국 SMR 협력각서(MOC) 서명"
+    if local_time:
+        hour = int(local_time.group(1)) % 12
+        if local_time.group(3).lower().startswith("p"):
+            hour += 12
+        local_label = "튀르키예 현지" if has_any(source_text.lower(), ["türkiye", "turkiye", "turkey", "튀르키예"]) else "현지"
+        stage += f"({local_label} {hour:02d}:{local_time.group(2)})"
+
+    timeline = [{"date": event_date, "stage": stage}]
+    japan_time = re.search(
+        r"\b(\d{1,2}):(\d{2})\s*(a\.m\.|p\.m\.)\s+on\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s*(?:Japan time|Japan Standard Time)",
+        source_text,
+        re.IGNORECASE,
+    )
+    if japan_time:
+        hour = int(japan_time.group(1)) % 12
+        if japan_time.group(3).lower().startswith("p"):
+            hour += 12
+        japan_date = f"{event_date[:4]}-{months[japan_time.group(4).lower()]:02d}-{int(japan_time.group(5)):02d}"
+        timeline.append({
+            "date": japan_date,
+            "stage": f"같은 서명 시점(일본 시각 {hour:02d}:{japan_time.group(2)})",
+        })
+    return timeline
 
 
 def is_agriculture_supply_policy(text: str, item: dict) -> bool:
@@ -1172,20 +1247,23 @@ def ensure_explained(item: dict) -> dict:
             failure_signal="FCC 공식 규칙안, Covered List·장비인증 제한 범위, 적용 장비, 한국 기업의 미국향 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
         )
     elif is_state_smr_moc_policy(text, item):
+        timeline = state_smr_moc_timeline(item)
         put(
             item,
             importance="상",
             title_ko="미·일·한, 제3국 SMR 배치 협력 MOC 체결",
             impacts=["시간표", "수급", "돈 버는 능력", "할인율"],
             paths=["정책 타임라인", "계약 가시성", "원전 밸류체인", "프로젝트 파이낸싱", "수급"],
-            sectors=["원전/SMR", "삼성물산/건설·EPC", "원전 기자재/전력기기", "BWRX-300 밸류체인"],
-            korea_value_chain=["삼성물산", "원전/SMR EPC", "원전 기자재", "전력기기", "SMR 프로젝트 개발"],
-            policy_plain_summary="미 국무부 기준 미·일·한이 제3국 SMR 배치 MOC를 체결했습니다. 초기 초점은 인도·태평양이고, FIRST 1,000만 달러+ 지원 및 GE Vernova·Hitachi·Samsung C&T·SGE BWRX-300 유럽 배치가 함께 언급됐습니다.",
-            investment_view="이 뉴스는 확정 수주가 아니라 SMR 프로젝트 개발의 정책 시간표, 파이낸싱 신뢰도, 삼성물산 등 민간 파트너의 밸류체인 기대를 바꾸는 재료입니다. MOC 단계라 매출 인식은 아직 계산하지 말고 후속 국가·부지·EPC 범위·계약 서명을 봐야 합니다.",
-            korea_market_impact="한국장에서는 삼성물산이 원문에 직접 언급된 핵심 노출이고, 원전/SMR·두산에너빌리티·원전 기자재·전력기기 테마는 후속 계약·공시·공급 범위가 확인될 때만 실적 재료로 연결합니다.",
-            priced_in="낮음~중간. 원전·SMR 테마는 선반영이 강하지만, 미·일·한 정부 협력과 삼성물산/GE Vernova/BWRX-300 조합은 장전 수급을 다시 자극할 수 있습니다.",
-            counter="확정 매출 확인 불가. MOC는 EPC·공급계약이 아니고 FIRST 자금은 기술지원·훈련허브 성격입니다. 국가·부지·라이선스·금융조건·계약 서명이 확인돼야 실적 재료입니다.",
-            failure_signal="삼성물산·GE Vernova·Hitachi·SGE의 후속 공시, BWRX-300 프로젝트 국가·부지·계약 범위, 인허가·금융 일정, 한국 기자재 공급망 노출이 확인되지 않으면 정책 테마 기대에 그칩니다.",
+            sectors=["SMR·원전 개발", "원전 EPC·기자재", "프로젝트 파이낸싱"],
+            korea_value_chain=["국내 SMR·원전 사업자·EPC·기자재 (프로젝트 참여 확인 필요)"],
+            policy_plain_summary="미·일·한 외교장관이 제3국 산업용 전력시설에 소형모듈원전(SMR)을 배치하기 위한 협력각서(MOC)를 체결했습니다. 원문은 후보국 발굴, 배치 지원, 3국 원전업계 컨소시엄과 금융·투자 동원을 협력 범위로 제시합니다.",
+            investment_view="MOC는 협력 틀이지 특정 국가의 사업 선정, 건설·공급 계약이나 매출 확정이 아닙니다. 실제 투자 판단에는 후보국, 사업자, 부지, 인허가, 금융조달과 EPC·기자재 계약의 후속 확정이 필요합니다.",
+            korea_market_impact="한국은 협력 당사국이지만, 이 MOC 원문에는 개별 한국 상장사나 수주 기업이 지정되지 않았습니다. 국내 기업은 후속 컨소시엄 참여와 사업·공급 계약이 확인될 때만 직접 노출로 분류합니다.",
+            priced_in="정책 협력 발표만으로 개별 기업의 실적 기여를 산정할 수 없습니다. 프로젝트·입찰·계약이 구체화되기 전에는 테마 기대와 확정 매출을 구분해야 합니다.",
+            counter="확정 매출 확인 불가. MOC는 특정 SMR 노형·국가·부지·공사비·사업자·건설일정을 확정하지 않습니다. 발효·준수일이나 구속력도 원문에서 별도 날짜로 확인되지 않습니다.",
+            failure_signal="후속 후보국 선정, 3국 기업 컨소시엄, 금융·인허가, 입찰·공급계약이 발표되지 않으면 협력 프레임워크에 그칩니다.",
+            policy_timeline=timeline or None,
+            policy_timeline_note="발효·준수 일정은 원문에 별도 날짜로 명시되지 않음" if timeline else None,
         )
     elif is_doe_energy_security_policy(text, item):
         put(
