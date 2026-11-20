@@ -3,18 +3,40 @@
   "last_collection": {
     "all_sources_verified": false,
     "deferred_events": 0,
-    "errors": [],
-    "google_news_queries_failed": 0,
+    "errors": [
+      "Google News 실패: NIST frontier AI safety standard evaluation cybersecuri / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"사이버보안 특화 AI\" 네이버클라우드 과기정통부 NIPA / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"과기정통부\" \"금융권\" (24시간 비상대응 OR CISO 보안점검 OR C-TAS 차단) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"금융위원회\" \"580개사\" (전수점검 OR 점검 완료 OR 결과 발표) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"금융권\" \"FIRST\" (시범운영 OR 정식운영 OR 고도화) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: 네이버클라우드 S2W 샌즈랩 LG CNS 사이버보안 AI 계약 실증 / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"파이오링크\" (MDR OR \"관리형 탐지\" OR 보안관제) (고객 OR 계약 OR 유료 OR 확대 / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"파이오링크\" \"PHP2Shell\" (점검 OR 계약 OR 유료) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"엑스게이트\" (PHP2Shell OR \"PHP 취약점\") (수주 OR 방화벽 OR 계약) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"111개 기관\" \"172개\" 기반시설 점검 / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (\"지니언스\" OR \"Genians\") (\"넥서스 프레임워크\" OR \"Nexus Framework\" / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) safety case pro / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: site:whitehouse.gov \"Super Intelligence\" safety regulat / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (Anthropic \"Cyber Mission\" OR \"Critical Infrastructure  / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Thomas Lind\" OpenAI ONCD cyber strategic risk / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"OpenAI\" \"Trail of Bits\" (acquisition OR buy OR agreeme / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (\"SoftBank\" \"Allied Universal\") (acquisition OR takeove / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Anthropic\" \"AI safety bill\" (lawmakers OR Congress OR  / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Aidan Gomez\" \"AISLE\" (CNBC OR \"rogue agents\" OR cybers / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"CrowdStrike\" \"NVIDIA\" \"Falcon Guardian\" (\"OpenShell\" O / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"FTC\" (\"OpenAI\" OR \"Anthropic\") (\"AI agents\" OR \"AI mod / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "google_news_queries_failed": 21,
     "google_news_queries_requested": 107,
-    "google_news_queries_succeeded": 107,
-    "google_news_rate_limit_429": 0,
+    "google_news_queries_succeeded": 86,
+    "google_news_rate_limit_429": 21,
     "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 74,
+    "raw_items": 72,
     "sif_new_stages": 0,
     "source_access_limited": true,
     "si_portal_health": "정상",
@@ -102,7 +124,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-20T12:33:45.417676+00:00",
+    "updated_at": "2026-11-20T13:01:37.240188+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -1000,11 +1022,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-20T21:33:45+09:00",
+  "updated_at_kst": "2026-11-20T22:01:37+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-20T12:34:32.055974+00:00",
+    "last_success_at": "2026-11-20T13:02:23.442344+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
