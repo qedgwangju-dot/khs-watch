@@ -3,34 +3,18 @@
   "last_collection": {
     "all_sources_verified": false,
     "deferred_events": 0,
-    "errors": [
-      "Google News 실패: \"Michelle Bowman\" (cybersecurity OR fraud OR scams) (ba / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Bowman\" (\"third-party risk\" OR \"cyber exam\" OR \"fraud  / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"금융권\" \"보안 내부통제 가이드라인\" (확정 OR 발표 OR 시행) / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"파이오링크\" \"PHP2Shell\" (점검 OR 계약 OR 유료) / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"SGA솔루션즈\" \"PHP2Shell\" (가상패치 OR 유료 OR 계약) / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"엑스게이트\" (PHP2Shell OR \"PHP 취약점\") (수주 OR 방화벽 OR 계약) / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (\"지니언스\" OR \"Genians\") (\"넥서스 프레임워크\" OR \"Nexus Framework\" / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (NAVER Cloud OR S2W OR SandLab OR \"LG CNS\") cybersecuri / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (\"Greg Brockman\" OR \"OpenAI president\") (cybersecurity  / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"OpenAI\" \"security infrastructure\" (product work paused / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (\"Unit 42\" OR \"Frontier AI Defense\" OR SafeMind OR \"AI  / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: NVIDIA \"Open Agent Safety Platform\" OpenShell Sentry pa / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) safety case pro / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"OpenAI\" \"Trail of Bits\" (acquisition OR buy OR agreeme / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Falcon Guardian\" \"BlueField-4\" (availability OR rollou / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 15,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 107,
-    "google_news_queries_succeeded": 92,
-    "google_news_rate_limit_429": 15,
-    "material_items": 32,
+    "google_news_queries_succeeded": 107,
+    "google_news_rate_limit_429": 0,
+    "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 68,
+    "raw_items": 74,
     "sif_new_stages": 0,
     "source_access_limited": true,
     "si_portal_health": "정상",
@@ -56,9 +40,9 @@
       "url": "https://nipa.kr/home/bsnsAll/00/detail?bsnsDtlsIemNo=909"
     },
     "NVIDIA OpenShell 개요·지원": {
-      "candidate_count": 0,
-      "candidate_digest": null,
-      "candidate_first_seen_at": null,
+      "candidate_count": 1,
+      "candidate_digest": "651d6ca380301f099ab180c69f832c16855ad7153907f23e93d6171e1b96c4aa",
+      "candidate_first_seen_at": "2026-11-20T19:19:37.691012+00:00",
       "digest": "d1ee4f553fad2540d60230766a5c2f813992c2004ea48b04dd74d44ebf8ca423",
       "updated_at": "2026-11-11T14:11:47.564994+00:00",
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/README.md"
@@ -118,7 +102,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-20T19:01:40.447141+00:00",
+    "updated_at": "2026-11-20T19:19:37.691012+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -1016,11 +1000,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-21T04:01:40+09:00",
+  "updated_at_kst": "2026-11-21T04:19:37+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-20T19:02:30.175218+00:00",
+    "last_success_at": "2026-11-20T19:20:27.022035+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
