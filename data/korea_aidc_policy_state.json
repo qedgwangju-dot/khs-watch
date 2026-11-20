@@ -24,11 +24,13 @@
     "aidc|power-demand|revision-review": 30
   },
   "material_signatures": {},
-  "updated_at": "2026-11-20T03:10:20.674093+00:00",
+  "updated_at": "2026-11-20T03:29:05.795947+00:00",
   "source_errors": [],
   "dedupe_version": 4,
-  "held_for_verification_count": 1,
+  "held_for_verification_count": 3,
   "held_examples": [
+    "aidc|decree-preannouncement: Google News 원문 링크 복원 실패",
+    "aidc|power-special: Google News 원문 링크 복원 실패",
     "미분류: 구체적인 사업·정책 상태 추출 필요"
   ],
   "eligible_backlog_count": 0,
