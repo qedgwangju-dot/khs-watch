@@ -31,6 +31,18 @@ STATUS_PATH = ROOT / "out" / "ai_networking_optics_watch_status.md"
 
 KST = ZoneInfo("Asia/Seoul")
 NOW = dt.datetime.now(dt.timezone.utc)
+# Apple data-center optical-I/O developments are monitored in this existing
+# AI-optics watch, not in the unrelated iPhone Duo or Apple memory workflows.
+APPLE_SIPH_COMPANY = "Apple Data Center Silicon Photonics"
+APPLE_SIPH_HIRING_KEY = "apple|datacenter-siph|2026-11-official-hiring"
+APPLE_SIPH_ROLE_SOURCES = (
+    ("200684866", "2026-11-03", "https://jobs.apple.com/en-us/details/200684866-0836/silicon-photonics-epm-data-center-soc?team=APPST"),
+    ("200695336", "2026-11-16", "https://jobs.apple.com/en-in/details/200695336-3401/silicon-photonics-optical-packaging-eng?team=HRDWR"),
+)
+APPLE_SIPH_MARKET_REFERENCE = (
+    "https://www.trendforce.com/presscenter/news/20260615-13098.html"
+)
+
 # Distinct R&D-only channel inside the existing optics workflow; no new runner,
 # state file, schedule, credential or Telegram destination is introduced.
 COUPE_FUNDA_PRIOR_KEYS = {"cpo-coupe|funda|2026-11-13|bonding-test-ramp-delay"}
@@ -437,6 +449,14 @@ COMPANIES = {
         "aliases": ["Corning"],
         "query": 'Corning (AI data center OR datacenter OR optical communications OR fiber OR fibre OR cable OR connector OR CPO OR "co-packaged optics" OR photonics OR "glass substrate" OR advanced packaging)',
     },
+    "Apple Data Center Silicon Photonics": {
+        "ticker": "AAPL",
+        "aliases": ["Apple", "Apple Data Center SoC", "SiPh"],
+        "queries": [
+            '("Apple" OR "애플") ("silicon photonics" OR "optical I/O" OR "optical packaging" OR "optical chip") (hiring OR recruit OR "data center" OR contract OR production) when:14d',
+            '("Apple" OR "애플") ("Samsung" OR "SK hynix" OR "삼성전자" OR "SK하이닉스") (CPO OR NPO OR photonics OR "optical chip" OR "광학 칩") when:14d',
+        ],
+    },
     "Samsung Electronics": {
         "ticker": "005930.KS",
         "aliases": ["Samsung Electronics", "Samsung Foundry"],
@@ -534,6 +554,7 @@ DISPLAY_NAMES_KO = {
     "Astera Labs": "아스테라 랩스",
     "Corning": "코닝",
     "Meta Optical Demand": "메타 광모듈·공급망",
+    "Apple Data Center Silicon Photonics": "애플 데이터센터 실리콘 포토닉스",
     "Samsung Electronics": "삼성전자",
     "CPO Equipment Supply Chain": "CPO 장비 공급망",
     "OCS Optical Circuit Switching": "광회로 스위칭(OCS)",
@@ -694,6 +715,7 @@ SOURCE_PRIORITY = {
     "Federal Communications Commission": 100, "FCC": 100,
     "Engineering at Meta": 100, "Meta Platforms": 100, "Meta Data Centers": 100,
     "U.S. Senate": 100, "Congress.gov": 100, "Astera Labs": 100, "Corning": 100,
+    "Apple Jobs": 100, "Apple Careers": 100, "Apple Newsroom": 100,
     "Samsung Electronics": 100, "Samsung Global Newsroom": 100,
     "Reuters": 95, "Bloomberg": 94, "Financial Times": 93,
     "The Wall Street Journal": 93, "CNBC": 88, "DigiTimes": 85, "DIGITIMES": 85,
@@ -1236,10 +1258,158 @@ def cpo_coupe_milestone(title: str) -> tuple[str, str, str] | None:
     return None
 
 
+def apple_siph_milestone(title: str) -> tuple[str, str, str | None] | None:
+    """Keep the November 2026 hiring event separate from later commercial steps."""
+    text = html.unescape(title or "")
+    if not re.search(r"\bapple(?:'s)?\b|애플", text, re.I):
+        return None
+    if not re.search(
+        r"silicon.?photonics?|\bSiPh\b|optical (?:chip|I/O|packag|interconnect)|"
+        r"co[- ]packaged optics|\bCPO\b|\bNPO\b|실리콘.?포토닉스|"
+        r"광학.?칩|광반도체|광인터커넥트|광패키징|빛의 반도체",
+        text, re.I,
+    ):
+        return None
+    recruitment = bool(re.search(
+        r"\bhir(?:es?|ing|ed)\b|\brecruit(?:s|ing|ment|ed)?\b|"
+        r"\bjob (?:opening|posting)\b|\bengineer(?:s)?\b.{0,25}\b(?:hire|wanted|seek)|"
+        r"채용|인력 확보|엔지니어 모집",
+        text, re.I,
+    ))
+    # The Nov-19/20 market-entrance headline reports the verified Nov-03/16
+    # Apple hiring; it is not a new $39B Apple order or mass-production event.
+    known_report = bool(re.search(
+        r"(?:joins?|enters?|합류|참전).{0,85}(?:samsung|삼성).{0,85}(?:sk(?:\s|-)?hynix|하이닉스)",
+        text, re.I,
+    ))
+    if recruitment or known_report:
+        # Do not permanently collapse future optical engineer hirings into the
+        # 2026 event. This key covers only the reviewed November job/reference.
+        reviewed = bool(re.search(
+            r"200684866|200695336|2026.{0,12}(?:nov|11월|11[-./])|"
+            r"(?:nov|11월).{0,12}2026|390억|39\s*(?:bn|billion)|"
+            r"(?:samsung|삼성).{0,60}(?:sk(?:\s|-)?hynix|하이닉스)",
+            text, re.I,
+        ))
+        return (
+            "애플 데이터센터 광연결 연구개발·채용",
+            "공식 채용 확인·고객 계약 및 양산 전",
+            APPLE_SIPH_HIRING_KEY if reviewed else None,
+        )
+    if re.search(
+        r"purchase order|supply agreement|sign(?:s|ed)? contract|"
+        r"confirmed customer order|design win|공급계약|수주|발주서",
+        text, re.I,
+    ):
+        return ("애플 광연결 고객·공급계약", "계약 원문·상대방·금액 확인 필요", None)
+    if re.search(
+        r"mass production|volume production|volume shipment|"
+        r"commercial deployment|first shipment|양산 개시|대량 출하|상용 공급",
+        text, re.I,
+    ):
+        return ("애플 광연결 실제 양산·출하", "양산·검수·매출 공식 확인 필요", None)
+    if re.search(
+        r"customer validation|qualification|certif|prototype|tape[- ]?out|"
+        r"실리콘 검증|신뢰성 검증|시험생산|시제품|고객 승인",
+        text, re.I,
+    ):
+        return ("애플 광연결 고객 검증·시험", "시험·인증 단계, 상용화 전", None)
+    return None
+
+
+def apple_siph_hiring_item(fetcher=None, on_date: dt.date | None = None) -> tuple[dict | None, list[str]]:
+    """Direct official career checks; never declare a job from a blocked page."""
+    today = on_date or NOW.date()
+    if today > dt.date(2026, 11, 30):
+        return None, []
+    if fetcher is None:
+        fetcher = fetch
+    verified: list[tuple[str, str, str]] = []
+    errors: list[str] = []
+    for role_id, posted, url in APPLE_SIPH_ROLE_SOURCES:
+        try:
+            body = fetcher(url, timeout=12).decode("utf-8", "replace")
+        except Exception as exc:
+            errors.append(f"Apple official career {role_id}: {type(exc).__name__}")
+            continue
+        if role_id not in body or not re.search(r"silicon.?photonics?", body, re.I):
+            errors.append(f"Apple official career {role_id}: content_identity_unverified")
+            continue
+        if not re.search(r"data.?cent(?:er|re)|SoC|optical packag|optical I/O", body, re.I):
+            errors.append(f"Apple official career {role_id}: application_scope_unverified")
+            continue
+        verified.append((role_id, posted, url))
+    if not verified:
+        return None, errors
+    newest = max(verified, key=lambda r: r[1])
+    title = (
+        "Apple recruits silicon photonics engineers for data center SoC / "
+        "optical packaging in Nov 2026 (official roles "
+        + ", ".join(role[0] for role in verified) + ")"
+    )
+    return {
+        "company": APPLE_SIPH_COMPANY,
+        "ticker": "AAPL",
+        "title": title,
+        "source": "Apple Jobs",
+        "source_url": "https://jobs.apple.com",
+        "link": newest[2],
+        "published": newest[1] + "T00:00:00+00:00",
+        "official_posted_date": newest[1],
+        "official_apple_job_verified": True,
+        "verified_role_ids": [r[0] for r in verified],
+        "score": 24,
+        "key": event_key(APPLE_SIPH_COMPANY, title, "Apple Jobs"),
+        "category": "애플 데이터센터 광연결 연구개발·채용",
+        "stage": "공식 채용 확인·고객 계약 및 양산 전",
+    }, errors
+
+
+def apple_siph_source_verified(item: dict, candidates: list[dict]) -> bool:
+    if item.get("company") != APPLE_SIPH_COMPANY:
+        return True
+    signal = apple_siph_milestone(str(item.get("title") or ""))
+    if not signal:
+        return False
+    host = (urllib.parse.urlparse(str(item.get("source_url") or "")).hostname or "").lower()
+    source = normalize_text(str(item.get("source") or "")).lower()
+    if host == "jobs.apple.com" and source in {"apple jobs", "apple careers"}:
+        linked = urllib.parse.urlparse(str(item.get("link") or "")).hostname or ""
+        if item.get("official_apple_job_verified") is True and linked.lower() == "jobs.apple.com":
+            return bool(set(item.get("verified_role_ids") or []) & {r[0] for r in APPLE_SIPH_ROLE_SOURCES})
+    if host == "apple.com" or host.endswith(".apple.com"):
+        return source in {"apple", "apple newsroom", "apple careers", "apple jobs"}
+    if signal[2] == APPLE_SIPH_HIRING_KEY:
+        # One original media report is allowed only for this particular
+        # independently verified Apple posting; repeated portals stay one key.
+        # Other publisher domains or future commercial claims do NOT inherit it.
+        if host in {"www.mk.co.kr", "mk.co.kr", "pulse.mk.co.kr"}:
+            return source in {
+                "매일경제", "매일경제 영문뉴스 펄스(pulse)",
+                "maeil business newspaper", "pulse", "mk",
+            }
+    # Future contracts/production must have a primary announcement, or two
+    # independently published, credible reports of that same specific stage.
+    if source_priority(item.get("source") or "") < 80 or not host:
+        return False
+    return any(
+        other is not item
+        and other.get("company") == APPLE_SIPH_COMPANY
+        and (urllib.parse.urlparse(str(other.get("source_url") or "")).hostname or "").lower() not in {"", host}
+        and source_priority(other.get("source") or "") >= 80
+        and not same_article_identity(other, item)
+        and same_underlying_story(other, item)
+        for other in candidates
+    )
+
+
 def canonical_story_key(company: str, title: str) -> str | None:
     # The same named event may arrive through a broad company query and its
     # dedicated conference lane. Normalize its explicit identity before scope
     # separation; e.g. the HPCwire Lambda/Blackwell reprint of the Nov-16 release.
+    if company == APPLE_SIPH_COMPANY:
+        event = apple_siph_milestone(title)
+        return event[2] if event else None
     if company == "NVIDIA":
         event = sc26_milestone(SC26_NVIDIA, title)
         if event:
@@ -2850,6 +3020,10 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "애플 데이터센터 광연결 연구개발·채용": "애플 공식 채용은 데이터센터용 실리콘 포토닉스 설계·광패키징 인력 확보 증거이며, 제품 출시·고객 수주·양산매출 증거가 아닙니다. 390억달러(2026년 기사 환산 약 51조원)는 트렌드포스의 2030년 CPO·NPO 산업 전망입니다.",
+        "애플 광연결 고객·공급계약": "실제 광엔진·광패키징 공급계약의 상대방·물량·금액·승인 일정을 원문으로 확인해야 미래 매출 경로가 만들어집니다.",
+        "애플 광연결 실제 양산·출하": "광엔진 생산과 검사 통과·고객 인도·매출 인식은 서로 다른 단계입니다.",
+        "애플 광연결 고객 검증·시험": "실리콘 포토닉스 시험·고객 승인 여부를 확인해야 하며, 시제품은 양산매출이 아닙니다.",
         "3M·Amazon 주식매수권 계약": "SEC 8-K: 최대 316만2,015주·주당 164.89달러·7년. 85%는 광연결·데이터센터 제품 누적 구매 60억달러 권리확정 기준이며 실제 확정 수주잔고가 아닙니다. 나머지 15%는 별도 사건 조건입니다.",
         "3M·Amazon 구매 실적·권리확정": "실제 누적 구매 실적 및 주식매수권 권리확정 단계와 3M 매출 인식·주식 발행 대금은 구분합니다.",
         "3M·Amazon 광연결 추가 계약·출하": "기존 계약 이외에 새롭게 확정된 광연결 제품 발주·고객 인도·매출 인식 변화를 추적합니다.",
@@ -3015,6 +3189,10 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "애플 데이터센터 광연결 연구개발·채용": "구형 채용 공고를 신규 진입·계약으로 오인할 위험이 있습니다. 광결합 손실·레이저 발열·패키징 수율·검사시간과 고객 인증·양산 비용이 아직 미확정입니다.",
+        "애플 광연결 고객·공급계약": "루머·협의와 계약·발주를 구분하고, 공급사 실명·최소 구매약정·검수 및 대금회수 조건을 확인해야 합니다.",
+        "애플 광연결 실제 양산·출하": "광학 정렬·고온 신뢰성·수율·광원 안정성과 고객 검수 지연이 실제 매출을 낮출 수 있습니다.",
+        "애플 광연결 고객 검증·시험": "시제품 성공 이후 광학 결합 수율과 고온동작 검사·현장 교체 신뢰성 확보가 지연될 수 있습니다.",
         "3M·Amazon 주식매수권 계약": "60억달러는 구매 의무가 아니므로 실제 구매 미달, 주식 희석, 계약변경·취소를 점검합니다.",
         "3M·Amazon 구매 실적·권리확정": "권리확정과 매출 인식·현금 유입은 다른 사건이며 고객 구매 지연 위험이 있습니다.",
         "3M·Amazon 광연결 추가 계약·출하": "커넥터 광결합 손실·오염·검수 지연·보증 비용에 따라 실제 실적이 달라집니다.",
@@ -3766,6 +3944,9 @@ def main() -> None:
                 continue
             title = item["title"]
             source = item.get("source") or ""
+            apple_event = apple_siph_milestone(title) if company == APPLE_SIPH_COMPANY else None
+            if company == APPLE_SIPH_COMPANY and apple_event is None:
+                continue
             sc26_event = sc26_milestone(company, title) if company in SC26_COMPANIES else None
             if company in SC26_COMPANIES and sc26_event is None:
                 continue
@@ -3857,6 +4038,8 @@ def main() -> None:
                     continue
 
             score = signal_score(title, source)
+            if apple_event:
+                score = max(score, 16)
             if infra_event:
                 # Stage-checked fiber preform, warrant or 864-core delivery titles
                 # can be meaningful without "CPO" or 1.6T in the headline.
@@ -3891,7 +4074,7 @@ def main() -> None:
             has_high = any(re.search(p, title, re.I) for p in HIGH_SIGNAL_PATTERNS)
             has_action = any(re.search(p, title, re.I) for p in ACTION_PATTERNS)
             very_strong = bool(re.search(r"\b3\.2\s*[Tt]\b", title, re.I))
-            if not infra_event and not ooi_event and not power_event and not lite_event and not meta_event and not credo_event and not networking_event and not cpo_event and not sc26_event and (
+            if not apple_event and not infra_event and not ooi_event and not power_event and not lite_event and not meta_event and not credo_event and not networking_event and not cpo_event and not sc26_event and (
                 score < 7 or not has_high or (not has_action and not very_strong)
             ):
                 continue
@@ -3901,10 +4084,25 @@ def main() -> None:
                 "ticker": meta["ticker"],
                 "score": score,
                 "key": key,
-                "stage": infra_event[1] if infra_event else ooi_event[1] if ooi_event else networking_event[1] if networking_event else credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else sc26_event[1] if sc26_event else cpo_event[1] if cpo_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
-                "category": infra_event[0] if infra_event else ooi_event[0] if ooi_event else networking_event[0] if networking_event else credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else sc26_event[0] if sc26_event else cpo_event[0] if cpo_event else category_for(title, company),
+                "stage": apple_event[1] if apple_event else infra_event[1] if infra_event else ooi_event[1] if ooi_event else networking_event[1] if networking_event else credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else sc26_event[1] if sc26_event else cpo_event[1] if cpo_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
+                "category": apple_event[0] if apple_event else infra_event[0] if infra_event else ooi_event[0] if ooi_event else networking_event[0] if networking_event else credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else sc26_event[0] if sc26_event else cpo_event[0] if cpo_event else category_for(title, company),
             })
             all_relevant.append(item)
+
+    # Complement Google News RSS with a first-party Apple job check. A failed
+    # official lookup is a source error, never evidence of "no announcement".
+    # Only the reviewed November hiring can be backfilled; no stale replay.
+    apple_job_status = "existing_history_or_outside_backfill_window"
+    if (APPLE_SIPH_COMPANY in COMPANIES
+            and APPLE_SIPH_HIRING_KEY not in (state.get("seen_story_keys") or [])
+            and NOW.date() <= dt.date(2026, 11, 30)):
+        apple_item, apple_errors = apple_siph_hiring_item()
+        if apple_item:
+            all_relevant.append(apple_item)
+            apple_job_status = "official_role_identity_verified"
+        else:
+            apple_job_status = "official_source_unavailable_or_unverified"
+        errors.extend(apple_errors)
 
     # Check the direct reported September shipment if not already sent.
     # It must not be relabeled as a new 355억원 contract or as booked revenue.
@@ -3955,6 +4153,8 @@ def main() -> None:
     # Source-quality gate: unknown/low-quality sources cannot trigger by themselves.
     # They are admitted only when a higher-quality source independently reports the same event.
     def source_is_corroborated(item: dict) -> bool:
+        if item.get("company") == APPLE_SIPH_COMPANY:
+            return apple_siph_source_verified(item, all_relevant)
         if item.get("company") in SC26_COMPANIES:
             return sc26_source_verified(item, all_relevant)
         if item.get("company") == "CPO Packaging & Test" and str(item.get("source") or "").lower() in {"funda", "fundaai"}:
@@ -4302,7 +4502,9 @@ def main() -> None:
         policy_only = all(item.get("company") == "US Optical Policy" for item in alert_items)
         korea_optics_only = all(item.get("company") in {"Opticore", "OE Solutions"} for item in alert_items)
         photonic_compute_only = all(item.get("company") in {"Volantis", "Lightmatter", "Ayar Labs", "Xscape Photonics"} for item in alert_items)
-        if policy_only:
+        if all(item.get("company") == APPLE_SIPH_COMPANY for item in alert_items):
+            alert_header = "🚨 <b>애플 데이터센터 실리콘 포토닉스·광연결 실제 변화</b>"
+        elif policy_only:
             alert_header = "🚨 <b>미국 광트랜시버 규제 변화 감지</b>"
         elif korea_optics_only:
             alert_header = "🚨 <b>국내 AI 광통신 수주·검증 변화 감지</b>"
@@ -4344,6 +4546,8 @@ def main() -> None:
                     pub = pub_dt.strftime("%Y-%m-%d %H:%M KST")
                 except Exception:
                     pub = item["published"]
+            if item.get("company") == APPLE_SIPH_COMPANY and item.get("official_apple_job_verified"):
+                pub = (item.get("official_posted_date") or "공식") + " (공고일·시각 미공개)"
             category = item["category"]
             public_title = item["title"]
             if item.get("company") == LITE_CAPACITY_COMPANY:
@@ -4379,6 +4583,12 @@ def main() -> None:
                 f"• 원문 제목: {html.escape(public_title)}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
+            if item.get("company") == APPLE_SIPH_COMPANY:
+                if canonical_story_key(item["company"], item["title"]) == APPLE_SIPH_HIRING_KEY:
+                    lines.append("• 독립 공식 근거: 애플 채용공고 200684866(11/03)·200695336(11/16), 실제 확인된 역할만 공식 확인")
+                    lines.append("• <a href=\"https://jobs.apple.com/en-us/details/200684866-0836/silicon-photonics-epm-data-center-soc?team=APPST\">Apple 데이터센터 SoC 채용</a> / <a href=\"https://jobs.apple.com/en-in/details/200695336-3401/silicon-photonics-optical-packaging-eng?team=HRDWR\">Apple 광학 패키징 채용</a>")
+                    lines.append("• 390억달러(기존 기사 약 51조원)는 트렌드포스의 2030년 CPO·NPO 시장 전망이지 애플 투자·수주액이 아님")
+                lines.append("• 계약·고객·생산량·실매출: 공식 확인 전에는 절대 확정 표현 금지")
             if item.get("company") in SC26_COMPANIES:
                 lines.append("• 확인 수준: " + ("발표기관 공식 원천(계약·실가동 단계 구분)" if (
                     any((urllib.parse.urlparse(item.get("source_url") or "").hostname or "").endswith(d) for d in SC26_OFFICIAL_DOMAINS)
@@ -4436,6 +4646,7 @@ def main() -> None:
         f"- 조회시각(KST): {dt.datetime.now(KST).isoformat(timespec='seconds')}",
         f"- 기준선 초기화 여부: {'예' if initialized else '아니오 — 이번 실행은 기준선만 저장'}",
         f"- 관련 신규 사건 후보: {len(new_items)}건",
+        f"- Apple 데이터센터 실리콘 포토닉스 채용 공식 조회: {apple_job_status}",
         f"- Telegram 전송 대상 사건: {len(alert_items)}건(실제 전송 여부는 수신 확인 기록으로 판정)",
         f"- 발송 한도 초과로 다음 조회에 남긴 사건: {len(deferred_items)}건",
         f"- 중복 기사 통합 후 사건 기준선: {len(deduped)}건",

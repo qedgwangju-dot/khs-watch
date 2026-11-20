@@ -118,5 +118,91 @@ class OpticsReliabilityTests(unittest.TestCase):
                     self.assertEqual(len(item_keys & set(baseline_pending["seen_keys"])), 9)
 
 
+    def test_apple_november_siph_hiring_and_market_reprint_are_one_event(self):
+        company = watch.APPLE_SIPH_COMPANY
+        hiring = "Apple recruits silicon photonics engineers for data center SoC (official roles 200684866, 200695336) Nov 2026"
+        article = "Apple joins Samsung, SK hynix in $39 bn optical chip race"
+        self.assertEqual(
+            watch.canonical_story_key(company, hiring),
+            watch.APPLE_SIPH_HIRING_KEY,
+        )
+        self.assertEqual(
+            watch.canonical_story_key(company, article),
+            watch.APPLE_SIPH_HIRING_KEY,
+        )
+        self.assertTrue(watch.same_underlying_story(
+            {"company": company, "title": hiring},
+            {"company": company, "title": article},
+        ))
+        self.assertNotIn("양산", watch.apple_siph_milestone(article)[1])
+        self.assertIsNone(watch.apple_siph_milestone(
+            "Apple stock rallies on a $39 billion optical chip market forecast"
+        ))
+        self.assertIsNone(watch.apple_siph_milestone(
+            "Apple iPhone Duo hinge camera module production update"
+        ))
+
+    def test_apple_contract_is_not_conflated_with_official_hiring(self):
+        company = watch.APPLE_SIPH_COMPANY
+        contract = "Apple signs data center silicon photonics optical chip supply agreement"
+        hiring = "Apple hiring silicon photonics engineers in Nov 2026"
+        self.assertNotEqual(
+            watch.apple_siph_milestone(contract)[0],
+            watch.apple_siph_milestone(hiring)[0],
+        )
+        self.assertFalse(watch.same_underlying_story(
+            {"company": company, "title": contract, "category": watch.apple_siph_milestone(contract)[0]},
+            {"company": company, "title": hiring, "category": watch.apple_siph_milestone(hiring)[0]},
+        ))
+
+    def test_apple_official_job_role_identity_is_required(self):
+        urls = watch.APPLE_SIPH_ROLE_SOURCES
+        def valid_fetch(url, timeout=12):
+            role = next(role_id for role_id, _, u in urls if u == url)
+            return f"<html>Role Number: {role} Silicon Photonics Data Center SoC optical packaging</html>".encode()
+        item, problems = watch.apple_siph_hiring_item(fetcher=valid_fetch, on_date=watch.dt.date(2026, 11, 20))
+        self.assertEqual(item["verified_role_ids"], ["200684866", "200695336"])
+        self.assertEqual(item["source"], "Apple Jobs")
+        self.assertEqual(problems, [])
+        self.assertTrue(watch.apple_siph_source_verified(item, [item]))
+        self.assertEqual(watch.canonical_story_key(item["company"], item["title"]), watch.APPLE_SIPH_HIRING_KEY)
+        self.assertIsNone(watch.apple_siph_hiring_item(
+            fetcher=valid_fetch, on_date=watch.dt.date(2026, 12, 1))[0])
+        invalid, failures = watch.apple_siph_hiring_item(
+            fetcher=lambda url, timeout=12: b"Silicon Photonics anonymous job, missing role",
+            on_date=watch.dt.date(2026, 11, 20),
+        )
+        self.assertIsNone(invalid)
+        self.assertEqual(len(failures), 2)
+
+    def test_apple_media_scope_cannot_bootstrap_future_contract(self):
+        company = watch.APPLE_SIPH_COMPANY
+        old = "Apple joins Samsung, SK hynix in $39 bn optical chip race"
+        valid_news = {
+            "company": company, "title": old, "source": "Pulse",
+            "source_url": "https://pulse.mk.co.kr", "link": "https://pulse.mk.co.kr/news/all/12214394"
+        }
+        self.assertTrue(watch.apple_siph_source_verified(valid_news, [valid_news]))
+        untrusted = {**valid_news, "source_url": "https://stock-blog.example"}
+        self.assertFalse(watch.apple_siph_source_verified(untrusted, [untrusted]))
+        contract = {
+            "company": company, "title": "Apple signs data center silicon photonics chip supply agreement",
+            "category": "애플 광연결 고객·공급계약", "source": "Reuters",
+            "source_url": "https://www.reuters.com", "link": "https://reuters.com/a"
+        }
+        self.assertFalse(watch.apple_siph_source_verified(contract, [contract]))
+        independent = {**contract, "source": "Bloomberg",
+                       "source_url": "https://www.bloomberg.com",
+                       "title": "Apple signs new agreement to supply silicon photonics chips for data center",
+                       "link": "https://bloomberg.com/b"}
+        self.assertTrue(watch.apple_siph_source_verified(contract, [contract, independent]))
+        self.assertFalse(watch.apple_siph_source_verified(
+            {**valid_news, "official_apple_job_verified": True,
+             "source": "Apple Jobs", "source_url": "https://jobs.apple.com",
+             "link": "https://malicious.example/job"},
+            [],
+        ))
+
+
 if __name__ == "__main__":
     unittest.main()
