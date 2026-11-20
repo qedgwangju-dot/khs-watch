@@ -2260,6 +2260,25 @@
       "saved": true,
       "sent_success": true,
       "started": "2026-11-20T18:41:21+00:00"
+    },
+    "44796557803:1": {
+      "checked_at_kst": "2026-11-21T04:21:25+09:00",
+      "completed": "2026-11-20T18:50:46+00:00",
+      "fingerprint": "6095523407c16b64d3683642ff16dc56bcd403d29b1c51044a1580404b9fe615",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-20T18:50:46+00:00"
+    },
+    "44797624701:1": {
+      "checked_at_kst": "2026-11-21T04:21:25+09:00",
+      "fingerprint": "a7952da7004488f85cfbd8499b42989a49ebee03589630cef62f08574fbf79a6",
+      "outcome": "no_send"
+    },
+    "44798240292:1": {
+      "checked_at_kst": "2026-11-21T04:21:24+09:00",
+      "fingerprint": "050d07072331f7d5cc29d59b2631ee13c617a828865e34e9ef2d26e9cae6e4ea",
+      "outcome": "no_send"
     }
   },
   "recovery_holds": {},
