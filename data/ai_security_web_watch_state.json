@@ -3,27 +3,20 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": false,
+    "all_sources_verified": true,
     "deferred_material_items": 0,
     "direct_official_items": 56,
-    "errors": [
-      "Google News RSS 실패: (\"CVE-2026-109618\" OR \"CVE-2026-109619\" OR \"php2shell\")… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"CVE-2026-115560\" PHP (advisory OR patch OR fix OR expl… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"CYFIRMA\" \"PHP2Shell\" (216 OR scanning OR Lazarus OR co… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) agent misalignm… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic) model behavior guardrail sandbox … / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) limited release… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 6,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 59,
-    "google_news_rate_limit_429": 6,
-    "material_items": 13,
+    "google_news_queries_succeeded": 65,
+    "google_news_rate_limit_429": 0,
+    "material_items": 14,
     "new_material_items": 0,
-    "raw_items": 116,
+    "raw_items": 155,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": true
+    "source_access_limited": false
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -1133,5 +1126,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-20T14:31:25+09:00"
+  "updated_at_kst": "2026-11-20T14:50:58+09:00"
 }
