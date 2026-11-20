@@ -2218,6 +2218,20 @@
       "saved": true,
       "sent_success": true,
       "started": "2026-11-20T17:15:23+00:00"
+    },
+    "44783181885:1": {
+      "checked_at_kst": "2026-11-21T02:56:55+09:00",
+      "completed": "2026-11-20T17:26:02+00:00",
+      "fingerprint": "6c0275a90515c963fbde53a804045cba85126adcfb3c6899b9a3fe47102ee160",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-20T17:26:02+00:00"
+    },
+    "44784249635:1": {
+      "checked_at_kst": "2026-11-21T02:56:55+09:00",
+      "fingerprint": "52730a24f91ec25e0c22d0b97a17a4a1a1948ade7880cde48b815951b4637e19",
+      "outcome": "no_send"
     }
   },
   "recovery_holds": {},
