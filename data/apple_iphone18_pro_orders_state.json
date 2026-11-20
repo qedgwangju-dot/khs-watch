@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at_kst": "2026-11-20T07:10:01+09:00",
+  "updated_at_kst": "2026-11-20T12:11:31+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-09T15:05:00+09:00",
   "seen": [
@@ -219,10 +219,12 @@
     }
   },
   "last_scan_items": 0,
-  "feed_errors": [],
-  "successful_sources": 10,
+  "feed_errors": [
+    "google_en:HTTPError"
+  ],
+  "successful_sources": 9,
   "new_signal_count": 0,
-  "source_status": "ok",
+  "source_status": "partial_source_errors",
   "consecutive_source_failures": 0,
   "source_degraded_notice_sent": false,
   "last_alert": {
