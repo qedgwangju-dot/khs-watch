@@ -4,19 +4,23 @@
     "all_sources_verified": false,
     "deferred_events": 0,
     "errors": [
-      "Google News 실패: \"AI Safety Institute\" standard evaluation incident repo / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News 실패: \"community banks\" \"third-party risk management\" (\"Feder / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"금융위원회\" \"580개사\" (전수점검 OR 점검 완료 OR 결과 발표) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"금융권\" \"연 2회\" \"취약점\" (의무화 OR 규정 개정 OR 시행) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"AWS Continuum\" (new paid customer OR revenue OR produc / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (\"Unit 42\" OR \"Frontier AI Defense\" OR SafeMind OR \"AI  / HTTPError: HTTP Error 429: Too Many Requests"
     ],
-    "google_news_queries_failed": 1,
+    "google_news_queries_failed": 5,
     "google_news_queries_requested": 107,
-    "google_news_queries_succeeded": 106,
-    "google_news_rate_limit_429": 1,
-    "material_items": 33,
+    "google_news_queries_succeeded": 102,
+    "google_news_rate_limit_429": 5,
+    "material_items": 31,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 72,
+    "raw_items": 46,
     "sif_new_stages": 0,
     "source_access_limited": true,
     "si_portal_health": "정상",
@@ -104,7 +108,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-20T15:45:26.063968+00:00",
+    "updated_at": "2026-11-20T16:08:06.433875+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -1002,11 +1006,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-21T00:45:26+09:00",
+  "updated_at_kst": "2026-11-21T01:08:06+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-20T15:46:14.667715+00:00",
+    "last_success_at": "2026-11-20T16:08:49.999813+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
