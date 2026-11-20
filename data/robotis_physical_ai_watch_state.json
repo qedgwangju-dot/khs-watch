@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-20T20:06:15.827352+00:00",
+  "updated_at": "2026-11-20T21:31:39.338663+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1011,11 +1011,17 @@
     "cf37b7a676e2e2dcbe0779854d0510de6a330a92d584923a07c3c399beda07cc",
     "27a147feec176c131cf40afa77c6ffc386995413745fdc824fd2bcf84df75814",
     "a5a377daabcd14ecda97220f6552d20569fb685772cb21d45790d64df4c537ca",
-    "cd9ba234e4710a1c318c6319fee087173cc2484a47132cd3bd74c70e368c3938"
+    "cd9ba234e4710a1c318c6319fee087173cc2484a47132cd3bd74c70e368c3938",
+    "6c83aa0e4f7f1e29e0ff014b0830604eb0117ea04f7cf26bfd07823389b72e75",
+    "c0e453dddfcb42e11fe9ec803191225d9800db7540982b9c6aeac41b6448113d",
+    "572398d3af4f2aa04c8d6cec24d0ba8c7e1dc0c5446859fe4228b028ccbf2f93",
+    "849ca58b1cd3888ac01354183d16769edcd03b139c65b535425c0759a3f3bbc6"
   ],
   "last_selected": [
-    "a5a377daabcd14ecda97220f6552d20569fb685772cb21d45790d64df4c537ca",
-    "cd9ba234e4710a1c318c6319fee087173cc2484a47132cd3bd74c70e368c3938"
+    "6c83aa0e4f7f1e29e0ff014b0830604eb0117ea04f7cf26bfd07823389b72e75",
+    "c0e453dddfcb42e11fe9ec803191225d9800db7540982b9c6aeac41b6448113d",
+    "572398d3af4f2aa04c8d6cec24d0ba8c7e1dc0c5446859fe4228b028ccbf2f93",
+    "849ca58b1cd3888ac01354183d16769edcd03b139c65b535425c0759a3f3bbc6"
   ],
   "groups": [
     "ess_battery",
@@ -1028,24 +1034,6 @@
     "samhyun"
   ],
   "delivery_history": [
-    {
-      "run_id": 43789331016,
-      "outcome": "sent",
-      "message_ids": [
-        370,
-        371
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal",
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false,
-        false
-      ],
-      "state_timestamp_utc": "2026-11-16T01:58:39.479462+00:00"
-    },
     {
       "run_id": 43795866726,
       "outcome": "sent",
@@ -1437,17 +1425,40 @@
         false
       ],
       "state_timestamp_utc": "2026-11-20T20:06:15.827352+00:00"
+    },
+    {
+      "run_id": 44820940413,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "572398d3af4f2aa04c8d6cec24d0ba8c7e1dc0c5446859fe4228b028ccbf2f93",
+        "6c83aa0e4f7f1e29e0ff014b0830604eb0117ea04f7cf26bfd07823389b72e75",
+        "849ca58b1cd3888ac01354183d16769edcd03b139c65b535425c0759a3f3bbc6",
+        "c0e453dddfcb42e11fe9ec803191225d9800db7540982b9c6aeac41b6448113d"
+      ],
+      "message_ids": [
+        397
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-20T21:31:39.338663+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44808136856,
+    "run_id": 44820940413,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "a5a377daabcd14ecda97220f6552d20569fb685772cb21d45790d64df4c537ca",
-      "cd9ba234e4710a1c318c6319fee087173cc2484a47132cd3bd74c70e368c3938"
+      "572398d3af4f2aa04c8d6cec24d0ba8c7e1dc0c5446859fe4228b028ccbf2f93",
+      "6c83aa0e4f7f1e29e0ff014b0830604eb0117ea04f7cf26bfd07823389b72e75",
+      "849ca58b1cd3888ac01354183d16769edcd03b139c65b535425c0759a3f3bbc6",
+      "c0e453dddfcb42e11fe9ec803191225d9800db7540982b9c6aeac41b6448113d"
     ],
     "message_ids": [
-      396
+      397
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1456,26 +1467,44 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-20T20:06:15.827352+00:00"
+    "state_timestamp_utc": "2026-11-20T21:31:39.338663+00:00"
   },
   "last_selected_events": [
     {
-      "key": "a5a377daabcd14ecda97220f6552d20569fb685772cb21d45790d64df4c537ca",
-      "group": "hyundai_atlas_rollout",
-      "title": "현대차 아틀라스, 자동차 밖 첫 시험대는 ‘美 반도체 공장’ - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPR1Y5TjZpdExDN2pLYzEwZmRpa2V5YjNZOVhpNkNkV1FFaGxrMkpnc0RsZTlsaXNwa1ZKVWR5Z3gyeXA1MUFwNWIzcFRGaU5ENlhGWFl0dFA1T0pNUW5lV2hqLXVNYXdnelFfaG5YdTh3UjA5eDh2MUR2aGJZbFdTRkN4ZzhiSlROU3VSVmVYVQ?oc=5",
-      "source": "조선일보",
-      "source_url": "https://www.chosun.com",
-      "published": "2026-11-18T01:50:01+00:00"
+      "key": "6c83aa0e4f7f1e29e0ff014b0830604eb0117ea04f7cf26bfd07823389b72e75",
+      "group": "ess_battery",
+      "title": "교보증권 \"삼성SDI, 미국 ESS 수주 60GWh 돌파…내년 영업이익 1조원 넘본다\" - 핀포인트뉴스",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB4Ylg1LWkwYVRKYnhqNmVFbVk1RFl3dW1yWnY4YjQ0WjZsQVRXUjFpeFRVYVd3NGdiQTA4MXdQOUhaSGI2aDUweFFaTDR0bVc3c2NTb2VEQnRNZFd5U3U4TnFxU2trWUduaFMzMWo1UUZLVmc?oc=5",
+      "source": "핀포인트뉴스",
+      "source_url": "https://www.pinpointnews.co.kr",
+      "published": "2026-11-19T23:42:42+00:00"
     },
     {
-      "key": "cd9ba234e4710a1c318c6319fee087173cc2484a47132cd3bd74c70e368c3938",
+      "key": "c0e453dddfcb42e11fe9ec803191225d9800db7540982b9c6aeac41b6448113d",
       "group": "hyundai_atlas_rollout",
-      "title": "Boston Dynamics' Humanoid Robot Secures First Chip Plant Customer - Gasgoo",
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPQjF0Sl9iak1MZnFUWFNlWFlkUDhHc3l3Z2ZBSlF4bDhhUlhJaXlDRWVhU25UQy0yaVFYTDB3RHBEWTBKNXl5cV9UUHpNa3RQWjNPMVhIVmVVZkV6UXZNXzV2RkdhNVNKMHJ6TENoTUFmdEl0eXFHS0Faby1nM1hVeVNoUXJITllhU3FwRFNhWjJvOUZlSnBjSHFQMllWTFYtUF9rU0RFMVEtd1FZc1lSMHZ2YWJzNW5tLTBwNE1tR09PTG1E?oc=5",
-      "source": "Gasgoo",
-      "source_url": null,
-      "published": "2026-11-20T13:48:57+00:00"
+      "title": "현대차그룹 계열 Boston Dynamics, GlobalFoundries 반도체 공장에 Atlas 투입 확대 - Traders Union",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQNVFWZ3huYTNSVUhfYnpQTDViUFczUTVReGtBYTRlMlpvQkxScnZ1MXNyREE5Q1pzRDM3OWlWQzgzRW94WGJERmgzalVfcnJ3SDl3aVY4TjVTelJTdzhpazBseUxGSENDdWVvZ25aZkRUb1JwWTdRSmNpazFZcjdFM1lhVHhUSjNuYmo1OHFEQ1llbE42M3U3ZjlkRXJDbUtSV3pIdm1tZmltblh1RGhKSUF1dy1EWmhKNFE?oc=5",
+      "source": "Traders Union",
+      "source_url": "https://tradersunion.com",
+      "published": "2026-11-18T08:53:29+00:00"
+    },
+    {
+      "key": "572398d3af4f2aa04c8d6cec24d0ba8c7e1dc0c5446859fe4228b028ccbf2f93",
+      "group": "hyundai_atlas_rollout",
+      "title": "보스턴다이내믹스 100% 품은 현대차, '아틀라스' 美 공장 투입 - 한국신용신문",
+      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE4wX0tjQkQyWnpJYWN1TU5xeUNLWDE3bmUxNnVCUHFrc0hyWnl4SmJzOU5OejFVd1p2WFllM3NxUzR2OEgzVUp6R3psS0Nib1ZtbjNEUHF1d3kxb1JaQ19YdEw5SHF5Smh4R19R?oc=5",
+      "source": "한국신용신문",
+      "source_url": "https://www.creditnews.kr",
+      "published": "2026-11-20T15:25:00+00:00"
+    },
+    {
+      "key": "849ca58b1cd3888ac01354183d16769edcd03b139c65b535425c0759a3f3bbc6",
+      "group": "ess_battery",
+      "title": "LG엔솔·삼성SDI, 올해 설비투자 5.7조 '돌파'…\"생산 확대로 ESS 수요 선점\" - 뉴시스",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE4yMmh2aE5zSzU0cndzNnlmYjVybFlBWGZzLTlfR3hCLWdvY0VLM044N1Vjc2kwRWdpMGc3SVJ0T0U5TG9oR1JoSGpTVWJKR09mMG1qVXRqMnItVzN0dVVxZE9rbDAzb3VseFZoRU5reHdEakRDRVFOV9IBeEFVX3lxTE4yMmh2aE5zSzU0cndzNnlmYjVybFlBWGZzLTlfR3hCLWdvY0VLM044N1Vjc2kwRWdpMGc3SVJ0T0U5TG9oR1JoSGpTVWJKR09mMG1qVXRqMnItVzN0dVVxZE9rbDAzb3VseFZoRU5reHdEakRDRVFOVw?oc=5",
+      "source": "뉴시스",
+      "source_url": "https://mobile.newsis.com",
+      "published": "2026-11-17T02:34:19+00:00"
     }
   ],
   "message_corrections": {
