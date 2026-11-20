@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-20T03:06:57.571137+00:00",
+  "updated_at": "2026-11-20T03:43:20.290229+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -999,17 +999,21 @@
     "77151594658e8b506dc434291e77f6aa11deb817bff3cbe5293e9c42a15a41b4",
     "adbb738721747ed8e65e7d0c1ce63fcf0eb3e5e3d7b9b24f76b2aaa12db72c6a",
     "5b814cf1e25688249bf1e5fb8055895dc18ddd13ca730ac1567b30e06906f9e5",
-    "d42bac6d65d442d0cb7ed5693a2642eb48ec7b7d9aae8bd598ad1808c2b9eab6"
+    "d42bac6d65d442d0cb7ed5693a2642eb48ec7b7d9aae8bd598ad1808c2b9eab6",
+    "6bdd4420d5ec28e49d268684f6ddd82ceea503ce2a969c969673719f931735af",
+    "6b549a9b98ad3e94e426c69446c33d05aef0ec66544e6bf204c0a8d6c24c763c",
+    "d0535945435c5ef97e6f6d58bb987292b535cd959c7417cca01b10c5fb7c316b",
+    "c7d913f2973242c2c5d54a916b977b84305271a2d87ac4448f4a29ebe388b552",
+    "1d7d87934c8654d73119667643ecbe70dfd7536fd7cb3c59bd7d4bb188e210b1",
+    "f4918db38597449cafbb0e5fbb2991ee2627900611f78a658b6fcee738baa353"
   ],
   "last_selected": [
-    "44e38c418d8b624501e53e833075280cbb24234df30454c4e1425da953799ffb",
-    "f4a7563b41a35004dedc6aa25d50067a7f8b7fd373769de17646df277819e5ee",
-    "02498ce3a077d8108e250d3afaf02a9ae5c5e7e1f8da58228ed1715aaa8eb462",
-    "175f33a31af626f9d21ae518d70cc74a7623602cabf2877d184680cb27ca68cf",
-    "77151594658e8b506dc434291e77f6aa11deb817bff3cbe5293e9c42a15a41b4",
-    "adbb738721747ed8e65e7d0c1ce63fcf0eb3e5e3d7b9b24f76b2aaa12db72c6a",
-    "5b814cf1e25688249bf1e5fb8055895dc18ddd13ca730ac1567b30e06906f9e5",
-    "d42bac6d65d442d0cb7ed5693a2642eb48ec7b7d9aae8bd598ad1808c2b9eab6"
+    "6bdd4420d5ec28e49d268684f6ddd82ceea503ce2a969c969673719f931735af",
+    "6b549a9b98ad3e94e426c69446c33d05aef0ec66544e6bf204c0a8d6c24c763c",
+    "d0535945435c5ef97e6f6d58bb987292b535cd959c7417cca01b10c5fb7c316b",
+    "c7d913f2973242c2c5d54a916b977b84305271a2d87ac4448f4a29ebe388b552",
+    "1d7d87934c8654d73119667643ecbe70dfd7536fd7cb3c59bd7d4bb188e210b1",
+    "f4918db38597449cafbb0e5fbb2991ee2627900611f78a658b6fcee738baa353"
   ],
   "groups": [
     "ess_battery",
@@ -1029,21 +1033,6 @@
     "toyota_robot_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 43741269057,
-      "outcome": "sent",
-      "message_ids": [
-        369
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-15T17:28:33.073416+00:00"
-    },
     {
       "run_id": 43743941574,
       "outcome": "normal_silence",
@@ -1397,24 +1386,48 @@
         false
       ],
       "state_timestamp_utc": "2026-11-20T03:06:57.571137+00:00"
+    },
+    {
+      "run_id": 44669556081,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "1d7d87934c8654d73119667643ecbe70dfd7536fd7cb3c59bd7d4bb188e210b1",
+        "6b549a9b98ad3e94e426c69446c33d05aef0ec66544e6bf204c0a8d6c24c763c",
+        "6bdd4420d5ec28e49d268684f6ddd82ceea503ce2a969c969673719f931735af",
+        "c7d913f2973242c2c5d54a916b977b84305271a2d87ac4448f4a29ebe388b552",
+        "d0535945435c5ef97e6f6d58bb987292b535cd959c7417cca01b10c5fb7c316b",
+        "f4918db38597449cafbb0e5fbb2991ee2627900611f78a658b6fcee738baa353"
+      ],
+      "message_ids": [
+        392,
+        393
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal",
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false,
+        false
+      ],
+      "state_timestamp_utc": "2026-11-20T03:43:20.290229+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44665364824,
+    "run_id": 44669556081,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "02498ce3a077d8108e250d3afaf02a9ae5c5e7e1f8da58228ed1715aaa8eb462",
-      "175f33a31af626f9d21ae518d70cc74a7623602cabf2877d184680cb27ca68cf",
-      "44e38c418d8b624501e53e833075280cbb24234df30454c4e1425da953799ffb",
-      "5b814cf1e25688249bf1e5fb8055895dc18ddd13ca730ac1567b30e06906f9e5",
-      "77151594658e8b506dc434291e77f6aa11deb817bff3cbe5293e9c42a15a41b4",
-      "adbb738721747ed8e65e7d0c1ce63fcf0eb3e5e3d7b9b24f76b2aaa12db72c6a",
-      "d42bac6d65d442d0cb7ed5693a2642eb48ec7b7d9aae8bd598ad1808c2b9eab6",
-      "f4a7563b41a35004dedc6aa25d50067a7f8b7fd373769de17646df277819e5ee"
+      "1d7d87934c8654d73119667643ecbe70dfd7536fd7cb3c59bd7d4bb188e210b1",
+      "6b549a9b98ad3e94e426c69446c33d05aef0ec66544e6bf204c0a8d6c24c763c",
+      "6bdd4420d5ec28e49d268684f6ddd82ceea503ce2a969c969673719f931735af",
+      "c7d913f2973242c2c5d54a916b977b84305271a2d87ac4448f4a29ebe388b552",
+      "d0535945435c5ef97e6f6d58bb987292b535cd959c7417cca01b10c5fb7c316b",
+      "f4918db38597449cafbb0e5fbb2991ee2627900611f78a658b6fcee738baa353"
     ],
     "message_ids": [
-      390,
-      391
+      392,
+      393
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1425,80 +1438,62 @@
       false,
       false
     ],
-    "state_timestamp_utc": "2026-11-20T03:06:57.571137+00:00"
+    "state_timestamp_utc": "2026-11-20T03:43:20.290229+00:00"
   },
   "last_selected_events": [
     {
-      "key": "44e38c418d8b624501e53e833075280cbb24234df30454c4e1425da953799ffb",
+      "key": "6bdd4420d5ec28e49d268684f6ddd82ceea503ce2a969c969673719f931735af",
       "group": "robotis",
-      "title": "로보티즈, 39.8억 규모 공급계약 체결 - 이데일리",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNUE96bUhNbW9PX0FQZXhlcVBHT2o5T3hCejJZUFpTNjBYeF81MXZPU0ExSzhrel84YjRtZ1ozcUtITWtWekZKZUd1Sk1XcDhTWWYtR2FaOThKRjJSX2lxTDVCS2hoOFg4a19pLXBqb1p5V29FWnM4NkdtZnVQMlZpcg?oc=5",
-      "source": "이데일리",
-      "source_url": "https://www.edaily.co.kr",
-      "published": "2026-11-20T00:21:51+00:00"
+      "title": "[공시]로보티즈, 프랑스서 40억원 수주···1차 공급계약 확정 - 현대경제신문",
+      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9pUDNoZVBWT3dFSkphME50S2RSQnFSeGZYWVNmUUYyLWstSE1jV3VWb0J5NDZLZUl2bm1leWFEcnRyUlZmUjBZblF6anRGbUNkUGZyUEZ2RHlJYTZHT2IwRFhkVDkzaDRLdHlJ0gFrQVVfeXFMT2lQM2hlUFZPd0VKSmEwTnRLZFJCcVJ4ZlhZU2ZRRjItay1ITWNXdVZvQnk0NktlSXZubWV5YURydHJSVmZSMFluUXpqdEZtQ2RQZnJQRnZEeUlhNkdPYjBEWGRUOTNoNEt0eUk?oc=5",
+      "source": "현대경제신문",
+      "source_url": "http://www.finomy.com",
+      "published": "2026-11-20T03:00:10+00:00"
     },
     {
-      "key": "f4a7563b41a35004dedc6aa25d50067a7f8b7fd373769de17646df277819e5ee",
+      "key": "6b549a9b98ad3e94e426c69446c33d05aef0ec66544e6bf204c0a8d6c24c763c",
       "group": "ess_battery",
-      "title": "ESS 수주 60GWh 돌파…삼성SDI, 북미 양산 본격화 - 경제타임스",
-      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9aeW9IR3B1VmJzYi1sMEJkSkN6bEdya2FLNk8ybnVDWE5wbVhoQk1ZTndXa2hlY1RQeXZEQjRsVTVHRmpKM2xPY2hGRjVMd2wwTFU4?oc=5",
-      "source": "경제타임스",
-      "source_url": "https://ket.kr",
-      "published": "2026-11-20T01:14:42+00:00"
-    },
-    {
-      "key": "02498ce3a077d8108e250d3afaf02a9ae5c5e7e1f8da58228ed1715aaa8eb462",
-      "group": "robotis_excess_demand",
-      "title": "로보티즈, 프랑스 Pollen Robotics와 39억7813만원 규모 DYNAMIXEL-X 공급계약 - 디지털투데이",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE84Uzc0X1l2WXoyZHNJRnR6OVFNRUxCWFFpbURwVWtCOVlja2xaLTF4OVNhS3ZvSlFuYjhTSUxGV1NJSUYxTC1zWWhGbzZxX2xGTk05RzdQU3dqSXRrUGQyWWszY05jQktRdDVIc3lkaEc3WG1MT0xLZFRQdw?oc=5",
-      "source": "디지털투데이",
-      "source_url": "https://www.digitaltoday.co.kr",
-      "published": "2026-11-20T00:11:01+00:00"
-    },
-    {
-      "key": "175f33a31af626f9d21ae518d70cc74a7623602cabf2877d184680cb27ca68cf",
-      "group": "robotis",
-      "title": "씽크풀 : 로보티즈 수주공시 - DYNAMIXEL-X 공급계약 39.8억원 (매출액대비 10.22 %) - ThinkPool",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9NWFdyUTU1WnRxS3NVdTNMWFkxMWVQSWM0bnpJclFobGdrMVZPR003UW8tZ0YyWWFtNFNHUFNBaGp1aTJQNEdJMEhVNmtZWDVqMU82MQ?oc=5",
-      "source": "ThinkPool",
-      "source_url": "https://m.thinkpool.com",
-      "published": "2026-11-20T00:00:00+00:00"
-    },
-    {
-      "key": "77151594658e8b506dc434291e77f6aa11deb817bff3cbe5293e9c42a15a41b4",
-      "group": "robotis",
-      "title": "로보티즈, 폴렌로보틱스와 40억원 부품 공급계약 - 이데일리",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQaklnVGhhT0l6TG14QVN5RERadk5vaEdVZENKaFliaFZCbzA0VE5VQ211b2YxTWZZZ01yU0xvVDVnRUE3MjFqaS1fY3ZNSHZxQW15TXF0Q3hTVW9UUTkwLUJyR1c0aEhYQ0Fncmd6WHlIbGZrV0FSX21xMjdMdkpaUg?oc=5",
-      "source": "이데일리",
-      "source_url": "https://www.edaily.co.kr",
-      "published": "2026-11-20T00:07:55+00:00"
-    },
-    {
-      "key": "adbb738721747ed8e65e7d0c1ce63fcf0eb3e5e3d7b9b24f76b2aaa12db72c6a",
-      "group": "robotis",
-      "title": "로보티즈, 39억원 규모 DYNAMIXEL-X 공급계약 - 데이터투자",
-      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1idU5ZRWQwQ3Y4ZDQtRXRoQXlDamRMYVNINUNEMjlrZFVhdHdGVHM4dE1jTFpfcWNOMXNNTXJ0U1ZKMUk3WGRPMG9yNGhqVHRHMUs0ZlUwTU5mdGVTUVh6SzJTWXVaS1JmcDAyc1RkM1ctZw?oc=5",
+      "title": "삼성SDI, 미국 ESS 생산 본격화로 실적 개선…내년 영업이익 1조 돌파 전망 - 데이터투자",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9aWk04MXNBYzY2bS13bGc5MHRxZzNtQ2NsbVdkeGpCZVpHbG9HT2l2YjVvZ2ZuQzJ5VU5veXBma0VuLUI3cFk2dDZCTWdlVG1CaXVCOU9SaXVpUUIyakpmWEItdy1SSGh2cmozMGZVNEd0TVE?oc=5",
       "source": "데이터투자",
       "source_url": "https://www.datatooza.com",
-      "published": "2026-11-19T23:55:53+00:00"
+      "published": "2026-11-20T01:15:54+00:00"
     },
     {
-      "key": "5b814cf1e25688249bf1e5fb8055895dc18ddd13ca730ac1567b30e06906f9e5",
-      "group": "ess_battery",
-      "title": "SK온, 25년 장주기 제주 ESS 사업 도전 - 디일렉",
-      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1FN2o1VlVKeW1NOUZlYVBZM212d2JQVGlzelFGOU00eVR2R2Rxc3dIRllid3VTZDZZQm9vdTRfcnVtVm9ZdnRmc2VIVGpXeGgyVzVpYXdLbFRvRVZuVFpjNTBZQm1Ldw?oc=5",
-      "source": "디일렉",
-      "source_url": "https://www.thelec.kr",
-      "published": "2026-11-20T02:39:05+00:00"
+      "key": "d0535945435c5ef97e6f6d58bb987292b535cd959c7417cca01b10c5fb7c316b",
+      "group": "robotis",
+      "title": "로보티즈, 폴렌로보틱스와 40억 규모 액추에이터 공급계약 - 비즈니스포스트",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9VMWRxTktMNWcxa0RITFpkOGF0ekM4dmd1bGVPQ0FvcGVKU253Qk8xeXpGa0o5SURramZLZGJpSTFXeHpfVWZsRlp5Nl8wSTJTUlBRTGFoTmIyU0d3dWV1V3JMTldmY0xIRjZRcXBhaG1DTG8?oc=5",
+      "source": "비즈니스포스트",
+      "source_url": "https://www.businesspost.co.kr",
+      "published": "2026-11-20T01:06:06+00:00"
     },
     {
-      "key": "d42bac6d65d442d0cb7ed5693a2642eb48ec7b7d9aae8bd598ad1808c2b9eab6",
+      "key": "c7d913f2973242c2c5d54a916b977b84305271a2d87ac4448f4a29ebe388b552",
       "group": "ess_battery",
-      "title": "교보증권 \"삼성SDI, 미국 ESS 생산 본격화…실적 개선 기대\" - 연합뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5lTEwyUGJCblUtRWlsNGw5WGpUQzJuR0tuY3ByZ05XdUFTVDFnWEkxRF9nSEFBdWNzTEswVkJtLXdRb2F2dkFrRWVxZ0l0YzRtZERpTGtwNWlnYm_SAWBBVV95cUxPUndxR2MyRWRqWG9WX00xSlZGMlBvTktwQ3A1NEllclhGTWI1SkY4WjZqWUZzZ3BKZ3JIWUxlbk9lVmVpOEtDNXdPOVdsRVpETWludHhCVVpMR0luQ1RPNmE?oc=5",
-      "source": "연합뉴스",
-      "source_url": "https://www.yna.co.kr",
-      "published": "2026-11-19T23:32:33+00:00"
+      "title": "교보證 삼성SDI, 美 ESS 생산 확대에 실적 개선 기대 - 아주경제",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5oakI3RkxrOUczNENKay1IVkE4ZHlVaWdiUWVuekpVTGt0bWlMMVZ4SlpaUmdWQXdEMG5KOVo2Ni1TZG5Sd19nU1dfQkVKRkllWEk1MzhmclBnZ9IBWEFVX3lxTE1kdXc1UmQ4NDhLNHZOR0IwSEphaDFOMHdPMmp4dC1HeEZzYlg4MF9IdDNubWE5WG5WTkk4bUpGcFFWODRTNTY0bTZXbnFidDFKTmwxVUVsQzA?oc=5",
+      "source": "아주경제",
+      "source_url": "https://www.ajunews.com",
+      "published": "2026-11-19T23:18:19+00:00"
+    },
+    {
+      "key": "1d7d87934c8654d73119667643ecbe70dfd7536fd7cb3c59bd7d4bb188e210b1",
+      "group": "robotis",
+      "title": "로보티즈, 39.8억원 규모 공급계약 체결… 매출의 10.22% - CEO경제신문",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1wcjBqS3ptNkhaS3I2VE5IRzN4Uk5pRjVNeGZVQ1JxZDZQLXMweFU4eV9LOURDZzFvVjgxZURLWEZGeEk4SVZKWEJ0bU4zMEUzUUhhS1J3OS1OTkFPUVhGRTkwb1htSXFxa2p3Sw?oc=5",
+      "source": "CEO경제신문",
+      "source_url": "https://www.ceoeconomy.com",
+      "published": "2026-11-20T00:11:12+00:00"
+    },
+    {
+      "key": "f4918db38597449cafbb0e5fbb2991ee2627900611f78a658b6fcee738baa353",
+      "group": "robotis",
+      "title": "[속보] 로보티즈, 프랑스 폴렌 로보틱스와 39억7812만원 규모 공급계약…지난해 매출액의 10.22% - CBC뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9NTEQyUGdJcWdzcFZ0eDZBWHp1YUVvZEppNTdzQ3FMamkyR3AwQUNXZkdRRmJ6U19nSGV6dE1nUFhCTEs4VzNCXy1KU3ZOVFBaMThGQkxpclhiNVo1ZFAzcG1YSDNfTXNn?oc=5",
+      "source": "CBC뉴스",
+      "source_url": "https://www.cbci.co.kr",
+      "published": "2026-11-20T00:04:36+00:00"
     }
   ],
   "message_corrections": {
