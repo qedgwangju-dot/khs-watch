@@ -132,6 +132,49 @@ class TwoColorTests(unittest.TestCase):
         self.assertIn('🔴 [신규]', separate_attack)
         self.assertNotIn('미국·중국·러시아 · 3자 정상회담 보도', separate_attack)
 
+    def test_ft_early_january_ukraine_deadline_is_bounded_deduplicated_and_not_a_signed_deal(self):
+        # Actual FT headline relayed at 2026-11-21 01:19 KST; no network/send.
+        self.assertIn('when:1d', stage._JANUARY_PEACE_QUERY)
+        self.assertIn(stage._JANUARY_PEACE_QUERY, self.watch.QUERIES)
+        self.assertTrue(any(q.startswith('site:ft.com (Iran OR Ukraine)')
+                            and q.endswith('when:1d') for q in self.watch.QUERIES))
+        ft = {
+            'title_original': 'Donald Trump seeks Ukraine peace deal before January - Financial Times',
+            'title_ko': '트럼프, 1월 초 전까지 우크라이나 종전 협정 추진',
+            'description': '', 'source': 'Financial Times',
+            'source_url': 'https://www.ft.com',
+            'link': 'https://www.ft.com/content/6c1b8a64-35f9-4aba-8605-45a4abdce6b8',
+            'published': 'Fri, 20 Nov 2026 16:19:00 +0000',
+            'body_verified': False, 'tags': ['종전·협상'],
+            'signals_ko': [], 'forced_tags': [],
+        }
+        now = dt.datetime(2026, 11, 21, 9, 0, tzinfo=self.watch.KST)
+        self.assertTrue(stage._ukraine_january_peace_target_report(ft))
+        self.assertTrue(stage._january_peace_target_in_recovery_window(ft, now))
+        self.assertEqual(stage.non_military_kind(ft), 'diplomatic_plan')
+        score, tags = stage.score_item(ft, now)
+        self.assertEqual(score, 98)
+        self.assertEqual(tags, ['1월 초 평화협정 추진 보도·실제 합의 미확정'])
+        self.assertEqual(presentation.direction(stage, ft), 'green')
+        self.assertEqual(stage._primary_topic(ft),
+                         '미국·우크라이나·러시아 · 2027년 1월 초 종전 목표 보도')
+        relay = dict(ft,
+                     title_original='트럼프, 내년 1월 초까지 우크라이나 종전협정 추진 - 연합뉴스',
+                     title_ko='트럼프, 내년 1월 초까지 우크라이나 종전협정 추진',
+                     source='연합뉴스', source_url='https://www.yna.co.kr',
+                     link='https://www.yna.co.kr/example',
+                     published='Sat, 21 Nov 2026 03:00:00 +0900')
+        self.assertTrue(stage._ukraine_january_peace_target_report(relay))
+        self.assertEqual(self.watch.item_id(ft), self.watch.item_id(relay))
+        self.assertEqual(presentation.direction(stage, relay), 'green')
+        signed = dict(ft, title_original='Trump and Ukraine signed peace agreement in January')
+        self.assertFalse(stage._ukraine_january_peace_target_report(signed))
+        stale_now = now + dt.timedelta(hours=26)
+        self.assertEqual(stage.score_item(dict(ft), stale_now), (0, []))
+        ordinary = dict(ft, title_original='Trump Ukraine peace talks with European officials')
+        self.assertEqual(stage.score_item(ordinary, now), (0, []))
+        self.assertEqual(self.watch.STATE.read_bytes(), self.state_before)
+
     def test_repeat_gate_and_projection_are_idempotent(self):
         self.present()
         before = [path.read_bytes() for path in (self.watch.ALERT, self.watch.AUDIT, self.watch.PENDING)]
