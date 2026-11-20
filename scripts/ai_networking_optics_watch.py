@@ -1377,6 +1377,7 @@ def apple_siph_source_verified(item: dict, candidates: list[dict]) -> bool:
         linked = urllib.parse.urlparse(str(item.get("link") or "")).hostname or ""
         if item.get("official_apple_job_verified") is True and linked.lower() == "jobs.apple.com":
             return bool(set(item.get("verified_role_ids") or []) & {r[0] for r in APPLE_SIPH_ROLE_SOURCES})
+        return False  # Never allow a forged job through the generic apple.com rule.
     if host == "apple.com" or host.endswith(".apple.com"):
         return source in {"apple", "apple newsroom", "apple careers", "apple jobs"}
     if signal[2] == APPLE_SIPH_HIRING_KEY:

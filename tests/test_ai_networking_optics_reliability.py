@@ -134,7 +134,7 @@ class OpticsReliabilityTests(unittest.TestCase):
             {"company": company, "title": hiring},
             {"company": company, "title": article},
         ))
-        self.assertNotIn("양산", watch.apple_siph_milestone(article)[1])
+        self.assertIn("양산 전", watch.apple_siph_milestone(article)[1])
         self.assertIsNone(watch.apple_siph_milestone(
             "Apple stock rallies on a $39 billion optical chip market forecast"
         ))
