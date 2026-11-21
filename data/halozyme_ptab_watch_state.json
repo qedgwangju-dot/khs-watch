@@ -41,7 +41,7 @@
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959",
     "https://www.pearceip.law/2026/09/09/update-on-msds-challenges-to-us-halozyme-patents-in-sc-keytruda-pembrolizumab-dispute/"
   ],
-  "last_check_kst": "2026-11-21T13:21:04+09:00",
+  "last_check_kst": "2026-11-21T17:16:04+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -63,7 +63,7 @@
     "IPR2026-00314": "11,066,656"
   },
   "errors_last_run": [
-    "Google 뉴스:RuntimeError:\"Halozyme\" \"Merck\" \"Final Written Decision\""
+    "Google 뉴스:RuntimeError:\"PGR2025-00050\" \"Final Written Decision\" Halozyme"
   ],
   "tracked_known_cases": {
     "PGR2025-00003": "11,952,600",
@@ -346,7 +346,7 @@
   "search_query_count": 40,
   "search_task_count": 80,
   "search_workers": 8,
-  "search_elapsed_seconds": 2.727,
+  "search_elapsed_seconds": 2.835,
   "search_completed_tasks": 79,
   "search_failed_tasks": 1,
   "search_completed_by_engine": {
