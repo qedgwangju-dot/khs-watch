@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-21T01:28:02.255537+00:00",
+  "updated_at": "2026-11-21T02:48:19.362520+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1015,9 +1015,12 @@
     "6c83aa0e4f7f1e29e0ff014b0830604eb0117ea04f7cf26bfd07823389b72e75",
     "c0e453dddfcb42e11fe9ec803191225d9800db7540982b9c6aeac41b6448113d",
     "572398d3af4f2aa04c8d6cec24d0ba8c7e1dc0c5446859fe4228b028ccbf2f93",
-    "849ca58b1cd3888ac01354183d16769edcd03b139c65b535425c0759a3f3bbc6"
+    "849ca58b1cd3888ac01354183d16769edcd03b139c65b535425c0759a3f3bbc6",
+    "ff3e5540e431e45aa454dadaefedc9c946f8b20db7455596b5fe0ae7cadf7092"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "ff3e5540e431e45aa454dadaefedc9c946f8b20db7455596b5fe0ae7cadf7092"
+  ],
   "groups": [
     "ess_battery",
     "hyundai_atlas_rollout",
@@ -1025,18 +1028,10 @@
     "nov18_everybot",
     "nov18_knr",
     "robotis",
-    "robotis_excess_demand"
+    "robotis_excess_demand",
+    "toyota_robot_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 43840639041,
-      "outcome": "normal_silence",
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-16T09:32:40.576934+00:00"
-    },
     {
       "run_id": 43862615845,
       "outcome": "sent",
@@ -1432,19 +1427,55 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-21T01:28:02.255537+00:00"
+    },
+    {
+      "run_id": 44857784720,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "ff3e5540e431e45aa454dadaefedc9c946f8b20db7455596b5fe0ae7cadf7092"
+      ],
+      "message_ids": [
+        398
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-21T02:48:19.362520+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44850248989,
-    "outcome": "normal_silence",
-    "confirmed_event_keys": [],
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-21T01:28:02.255537+00:00"
+    "run_id": 44857784720,
+    "outcome": "sent",
+    "confirmed_event_keys": [
+      "ff3e5540e431e45aa454dadaefedc9c946f8b20db7455596b5fe0ae7cadf7092"
+    ],
+    "message_ids": [
+      398
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-21T02:48:19.362520+00:00"
   },
-  "last_selected_events": [],
+  "last_selected_events": [
+    {
+      "key": "ff3e5540e431e45aa454dadaefedc9c946f8b20db7455596b5fe0ae7cadf7092",
+      "group": "ess_battery",
+      "title": "교보證 “삼성SDI, 북미 ESS 수주·미국 생산 확대…내년 영업이익 두 배 뛴다” - 팝콘뉴스",
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9QbkdDS1IyeEctemJHLXZWVU1XWWFTX3VxSXVXS1dFX3pOVWE1ZXYyNDZYcVk5czk4djJZTnNHR1Vjczg2bmd6WkRscXhmck85V29ubzZMSl9KN3lqZ2NZTVduXzJuYk1fQXZJSU530gFyQVVfeXFMTnlId01SRDhCTmV3eHRKVWk0clV3YVJFLVVNcnVTNVpzTzJqQWpsWm1GWU5odWczRFE0eFdQOTVfQ3Nkd0FoczBsVkNENkwzQzhYMlNGVHlzdTVJOWtncEM5Tlg3aEFRM29YSmR4NHd0Ujl3?oc=5",
+      "source": "팝콘뉴스",
+      "source_url": "http://www.popcornnews.net",
+      "published": "2026-11-19T23:41:14+00:00"
+    }
+  ],
   "message_corrections": {
     "robot-message-correction-20261118-44240720425-v1": {
       "schema_version": 1,
