@@ -1320,9 +1320,14 @@ BAAJA_RHODIUM_NOV2 = "https://rhg.com/research/baaja-us-energy-system-impacts/"
 BAAJA_HOUSE_RPA_VOTE = "https://clerk.house.gov/evs/2026/roll312"
 BAAJA_MCKINSEY = "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-capex-crucible-what-finance-teams-can-learn-from-data-center-builds"
 BAAJA_SANDERS_POST = "https://x.com/SenSanders/status/2118131101562454038"
-BAAJA_PUBLIC_STATUS = "2026-11-09 Senate cloture on MOTION TO PROCEED 73-25; NOT final passage"
+BAAJA_SENATE_FINAL_NOV19 = "https://www.energy.senate.gov/press/rep/senate-resoundingly-passes-chairman-lees-landmark-bipartisan-american-affordability-and-jobs-act/"
+BAAJA_SENATE_CONGRESSIONAL_RECORD_NOV19 = "https://www.govinfo.gov/content/pkg/CREC-2026-11-19/html/CREC-2026-11-19-pt1-PgS5797-2.htm"
+BAAJA_PUBLIC_STATUS = "2026-11-19 Senate BAAJA H.R.2347 as amended passed 62-33; House action required; NOT law"
 BAAJA_POLICY_REFERENCE = {
     "date": "2026-11-09",
+    "latest_as_of": "2026-11-19 Senate final passage 62-33; awaiting House",
+    "senate_final_passage": [62, 33],
+    "senate_final_vote_number": 270,
     "bill_original": "S.5653, introduced 2026-09-30",
     "senate_vehicle": "H.R.2347 (motion to proceed), NOT H.R.9340",
     "substitute_amendment_released": "2026-11-07",
@@ -1344,7 +1349,8 @@ BAAJA_POLICY_REFERENCE = {
     "ferc_final_implementation": False,
     "scope": "절차 표결 != 최종 통과 != 시행; 주택 전기요금과 기업 부담의 실제 효과는 별도 규칙·시나리오",
     "primary_sources": [BAAJA_SENATE_WRAP, BAAJA_EPW_NOV9, BAAJA_ENR_NOV7,
-                        BAAJA_GPO_SEP30, BAAJA_HOUSE_RPA_VOTE],
+                        BAAJA_GPO_SEP30, BAAJA_HOUSE_RPA_VOTE,
+                        BAAJA_SENATE_FINAL_NOV19, BAAJA_SENATE_CONGRESSIONAL_RECORD_NOV19],
     "research_sources": [BAAJA_BPC_NOV8, BAAJA_RHODIUM_NOV2, BAAJA_MCKINSEY],
 }
 
@@ -1580,12 +1586,30 @@ def baaja_run_existing_risk_watch() -> None:
     baaja_policy_regression_checks()
     previous = dict(old.get("baaja_permitting_policy") or {})
     initial_needed = previous.get("procedural_id") != BAAJA_PROCEDURAL_ID
-    source_checks = baaja_primary_source_checks() if initial_needed else {}
-    due = baaja_procedural_due(previous, not old.get("initialized"), source_checks,
-                               fx is not None and fx_source != "직전 저장값")
+    # A November 9 procedural vote is historical after Nov 12. Never
+    # reannounce it as new just because the state key was lost in a prior run.
+    procedural_age_days = (dt.datetime.now(dt.timezone.utc).date() - dt.date(2026, 11, 9)).days
+    procedural_window_open = 0 <= procedural_age_days <= 3
+    source_checks = baaja_primary_source_checks() if initial_needed and procedural_window_open else {}
+    due = procedural_window_open and baaja_procedural_due(
+        previous, not old.get("initialized"), source_checks,
+        fx is not None and fx_source != "직전 저장값")
     later_events, feed_health = baaja_collect_future_official()
     previous_seen = list(previous.get("official_later_event_ids") or [])
     new_events = [x for x in later_events if x["id"] not in set(previous_seen)]
+    # Once a later official stage exists, don't prepend the superseded
+    # Nov 9 procedural bulletin to a newer passage/House/signature report.
+    stage_rank = {
+        "절차표결 통과, 상원 본안 가결 전": 1,
+        "상원 본안 최종 의결 공식 발표": 2,
+        "하원 본안 최종 의결 공식 발표": 3,
+        "대통령 서명·법률 제정 공식 발표": 4,
+        "FERC 시행 세부규칙 최종 발표": 5,
+    }
+    new_events.sort(key=lambda row: stage_rank.get(row["stage"], 0), reverse=True)
+    has_later_stage = any(stage_rank.get(row["stage"], 0) >= 2 for row in new_events)
+    if has_later_stage:
+        due = False
     if not due and not new_events:
         if STATUS.exists():
             with STATUS.open("a", encoding="utf-8") as fd:
@@ -1603,9 +1627,16 @@ def baaja_run_existing_risk_watch() -> None:
         chunks.append(baaja_procedural_alert(fx, source_checks).strip())
     if new_events:
         msgs = [
-            "<b>미국 BAAJA 정식 입법·시행 단계 변화 (공식기관 자료)</b>",
-            "• <b>절차표결·최종 가결·법률 제정·실제 시행을 서로 구분</b>",
+            "<b>미국 BAAJA 입법·시행 단계 신규 변화 (공식기관 자료)</b>",
+            f"• <b>최신 공식 단계</b> │ {h(new_events[0]['stage'])}. "
+            "이미 통과한 절차표결과 미완료된 법률 제정을 분리.",
         ]
+        if any(event["stage"] == "상원 본안 최종 의결 공식 발표" for event in new_events):
+            msgs.append("• <b>11월 19일 상원 본안 62대33 가결</b> │ H.R.2347 수정안·상원 표결번호 270. "
+                        "11월 9일 73대25는 심의 개시 절차표결이며 이번 본안 가결표가 아님.")
+            msgs.append(f"• {a('미 상원 11월19일 공식 통과 발표', BAAJA_SENATE_FINAL_NOV19)}"
+                        f" · {a('의회회의록 62대33 공식 기록', BAAJA_SENATE_CONGRESSIONAL_RECORD_NOV19)}")
+            msgs.append("• 하원 동일안 처리 및 대통령 서명 전이므로 아직 연방 법률 시행은 아님.")
         for event in new_events:
             msgs.append(f"• {h(event['stage'])} │ {a(event['title'], event['url'])}"
                         f" · {h(event['source'])}")
