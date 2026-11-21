@@ -69,7 +69,7 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-21T08:23:39+09:00",
+  "updated_at_kst": "2026-11-21T13:19:22+09:00",
   "last_scan_count": 7,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
@@ -132,7 +132,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 1,
+  "last_held_count": 0,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -204,14 +204,7 @@
     "ff50414926b6dd08d66adea3"
   ],
   "delivered_event_keys": [],
-  "last_held": [
-    {
-      "event_key": "taiwan|regulation|TSMC|core",
-      "source": "Tekedia",
-      "reason": "규제 이슈는 공식자료 또는 신뢰자료 2곳 필요",
-      "published_kst": "2026-11-21T02:00:53+09:00"
-    }
-  ],
+  "last_held": [],
   "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
   "telegram_message_ids": [
     397
