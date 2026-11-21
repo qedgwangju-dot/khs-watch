@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-21T09:42:18.513162+00:00",
+  "updated_at": "2026-11-21T11:44:19.696801+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1016,9 +1016,12 @@
     "c0e453dddfcb42e11fe9ec803191225d9800db7540982b9c6aeac41b6448113d",
     "572398d3af4f2aa04c8d6cec24d0ba8c7e1dc0c5446859fe4228b028ccbf2f93",
     "849ca58b1cd3888ac01354183d16769edcd03b139c65b535425c0759a3f3bbc6",
-    "ff3e5540e431e45aa454dadaefedc9c946f8b20db7455596b5fe0ae7cadf7092"
+    "ff3e5540e431e45aa454dadaefedc9c946f8b20db7455596b5fe0ae7cadf7092",
+    "eea1e1a4e99a025446b0ef5eb960c2decc3d54f1d762e116a51b8f2f6e7140db"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "eea1e1a4e99a025446b0ef5eb960c2decc3d54f1d762e116a51b8f2f6e7140db"
+  ],
   "groups": [
     "ess_battery",
     "hyundai_atlas_rollout",
@@ -1029,34 +1032,6 @@
     "robotis_excess_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 44240720425,
-      "outcome": "sent",
-      "confirmed_event_keys": [
-        "38ab3ce8c29cc5171a790c4b6016a011112441d35ed59515ef2d6c25afe2c4fd",
-        "566193e2d8c71c6d1c7634e27645bf45fb7f751a47903402f1dfe1154e3bb199",
-        "5f91956e960702ee65d66ed2e3b99320fda48dc54446e1039fbbd928083ff4c0",
-        "732dfc880d05d37816f7548cbe2f28b9a292d1e571cd0d7ded178164c9612bb5",
-        "83d7fed4807294b0de7d1b2215798785f8ba441daa5fc420ad6c65bc092e0787",
-        "ac27b7e72d387fde3f20c9a4332f7999192808dc66a245ac736abb38090bcb7c",
-        "c6c881cd7ae6c453ad621e136e4e773450ac1e410bb7c7af08b263f3b5f59607",
-        "fb39a9d3a29637cf9e878072eeec1f5d35533c2fe74f28f48b19e90d337efaa7"
-      ],
-      "message_ids": [
-        376,
-        377
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal",
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false,
-        false
-      ],
-      "state_timestamp_utc": "2026-11-18T04:57:07.759936+00:00"
-    },
     {
       "run_id": 44241145265,
       "outcome": "sent",
@@ -1434,19 +1409,55 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-21T09:42:18.513162+00:00"
+    },
+    {
+      "run_id": 44900458710,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "eea1e1a4e99a025446b0ef5eb960c2decc3d54f1d762e116a51b8f2f6e7140db"
+      ],
+      "message_ids": [
+        399
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-21T11:44:19.696801+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44890757787,
-    "outcome": "normal_silence",
-    "confirmed_event_keys": [],
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-21T09:42:18.513162+00:00"
+    "run_id": 44900458710,
+    "outcome": "sent",
+    "confirmed_event_keys": [
+      "eea1e1a4e99a025446b0ef5eb960c2decc3d54f1d762e116a51b8f2f6e7140db"
+    ],
+    "message_ids": [
+      399
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-21T11:44:19.696801+00:00"
   },
-  "last_selected_events": [],
+  "last_selected_events": [
+    {
+      "key": "eea1e1a4e99a025446b0ef5eb960c2decc3d54f1d762e116a51b8f2f6e7140db",
+      "group": "robotis",
+      "title": "제이에스링크, 로보티즈와 휴머노이드 자석 공급망 구축 협력 - Traders Union",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOcWJiZjBKSFl6bWhCbmZ6SnM4TzBZOWJQMUJsc0trRl9YeDFnUkltMzdMYlZUQVl4b0F1U2VjbWhFWFdwX0RvR0tnbjYtb3VEZ2U4VjhSX1BlQ1FpN0M3RDVVWFRhdHNsVUhvalhhLXQ3WWdDQzlQLTlQLVphVVRUNENqN3F4MkhidEV1Rm8tU2x4c01lUC1NZTZn?oc=5",
+      "source": "Traders Union",
+      "source_url": "https://tradersunion.com",
+      "published": "2026-11-20T06:17:30+00:00"
+    }
+  ],
   "message_corrections": {
     "robot-message-correction-20261118-44240720425-v1": {
       "schema_version": 1,
