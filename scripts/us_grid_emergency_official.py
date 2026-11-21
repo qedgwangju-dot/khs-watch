@@ -287,6 +287,14 @@ def parse_doe_detail_html(raw: str, url: str) -> dict | None:
     issue_date = parse_english_date(issue_match.group(1)) if issue_match else None
     start_date, end_date = parse_doe_effective_period(text)
 
+    # DOE order 202-26-52 is specific to Eddystone Units 3/4.
+    # A mismatched redirected/abbreviated page must not be advertised as a
+    # system-wide backup-generator authorization.
+    if order_no == "202-26-52":
+        lower = text.lower()
+        if not ("eddystone" in lower and re.search(r"units?\s+3\s+(?:and|&)\s+4", lower)):
+            return None
+
     return {
         "kind": "doe",
         "id": f"doe:{order_no}",
@@ -496,9 +504,32 @@ def doe_content(event: dict) -> tuple[str, str]:
     low = body.lower()
     party = event.get("party", "")
     if party == "PJM":
-        content = "PJM이 지정 발전자원을 필요 시 급전하고, EEA3 직전 또는 EEA3에서 최후수단으로 대형부하 백업발전을 지시할 수 있도록 한 명령입니다."
-        distinction = "필요 시 동원 권한이며 모든 지정자원의 상시 최대출력 운전이나 일반 고객 순환정전을 뜻하지 않습니다."
-        return content, distinction
+        if event.get("order_no") == "202-26-52" and "eddystone" in low:
+            content = (
+                "PJM과 Constellation이 펜실베이니아 Eddystone 발전소 3·4호기의 "
+                "가동 가능 상태를 유지하고, 전력망 비상 대응에 필요한 시간에만 "
+                "경제급전해 비용을 최소화하도록 하는 명령입니다."
+            )
+            distinction = (
+                "특정 발전소 2개 호기의 운전 가능 상태 유지 지시입니다. "
+                "PJM 전역의 백업발전기·대형부하 상시 동원이나 "
+                "최대출력 운전·순환정전을 지시한 것은 아닙니다."
+            )
+            return content, distinction
+        # Historical DOE 202-26-45/50 orders included a last-resort backup
+        # generator authorization. Never transfer that wording to every PJM order.
+        if ("backup generation" in low or "back-up generator" in low) and (
+            "last resort" in low or "eea 3" in low
+        ):
+            content = (
+                "PJM이 명령서 지정 발전자원을 필요 시 급전하며, EEA3 직전·"
+                "EEA3에서는 최후수단으로 백업발전기를 운용할 수 있게 한 명령입니다."
+            )
+            return content, "실제 개별 급전 여부는 후속 운전지시로 확인해야 하며 상시 최대출력 지시가 아닙니다."
+        return (
+            "PJM에 관한 연방전력법 202(c) 명령입니다. 개별 지정자원·운전조건을 원문에서 확인해야 합니다.",
+            "명령 자체로 대형부하 백업발전기 전역 동원이나 순환정전을 뜻하지 않습니다.",
+        )
     if party == "NIPSCO·MISO":
         content = "NIPSCO·MISO가 R.M. Schahfer 발전소 17·18호기를 운전 가능한 상태로 유지하고 비용 최소화를 위해 경제급전을 적용하도록 한 명령입니다."
         distinction = "PJM의 대형부하 백업발전 명령이 아니며, 폐지·정지 예정 발전자원의 공급능력을 계속 보존하는 조치입니다."
@@ -671,6 +702,35 @@ def self_test() -> None:
     Indiana are available to operate and to employ economic dispatch to minimize costs for the American people.
     The order is in effect beginning on September 20, 2026, through December 18, 2026.
     """
+    doe52 = """
+    On November 20, 2026, the U.S. Department of Energy (DOE) issued
+    emergency DOE Order No. 202-26-52 pursuant to section 202(c) of the
+    Federal Power Act to PJM Interconnection L.L.C. (PJM).
+    The order directs PJM, in coordination with Constellation Energy,
+    to ensure Units 3 and 4 of the Eddystone Generating Station in Pennsylvania
+    remain available to operate. The order also directs PJM to employ economic
+    dispatch only during the hours necessary to meet the emergency and minimize
+    costs. The order is in effect beginning on November 21, 2026, through February 18, 2027.
+    """
+    d52 = parse_doe_detail_html(
+        doe52,
+        "https://www.energy.gov/ceser/federal-power-act-section-202c-pjm-interconnection-llc-pjm-order-no-202-26-52"
+    )
+    assert d52 and d52["order_no"] == "202-26-52" and d52["party"] == "PJM"
+    assert d52["issue_date"] == dt.date(2026, 11, 20)
+    assert d52["effective_start_date"] == dt.date(2026, 11, 21)
+    assert d52["effective_end_date"] == dt.date(2027, 2, 18)
+    c52, x52 = doe_content(d52)
+    assert "Eddystone" in c52 and "3·4호기" in c52 and "경제급전" in c52
+    assert "EEA3" not in c52 and "최후수단으로 대형부하 백업발전" not in c52
+    assert "전역" in x52 and "상시" in x52
+    assert "Eddystone 발전소 3·4호기" in render_event(
+        d52, dt.datetime(2026, 11, 21, 22, 8, tzinfo=KST))
+    assert parse_doe_detail_html(
+        doe52.replace("Eddystone", "another plant"),
+        d52["url"],
+    ) is None, "DOE 52 source mismatch must not be sent"
+
     d46 = parse_doe_detail_html(doe46, "https://www.energy.gov/ceser/example-202-26-46")
     assert d46 and d46["party"] == "NIPSCO·MISO" and d46["order_no"] == "202-26-46"
     c46, distinction46 = doe_content(d46)
