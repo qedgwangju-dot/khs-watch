@@ -1153,7 +1153,16 @@ def inbound_collect_official_announcements() -> tuple[list[dict], int]:
     return list(found.values()), successes
 
 
+def inbound_context_window(day: dt.date | None = None) -> bool:
+    """An old November 8 overview is not new news two weeks later."""
+    today = day or dt.datetime.now(dt.timezone.utc).date()
+    age = (today - dt.date(2026, 11, 8)).days
+    return 0 <= age <= 5
+
+
 def inbound_regression_checks() -> None:
+    assert inbound_context_window(dt.date(2026, 11, 9))
+    assert not inbound_context_window(dt.date(2026, 11, 21))
     assert inbound_official_stage("Korea data center investment may rise") is None
     assert inbound_official_stage("Korea data center investor signs MOU") == "투자유치 양해각서(구속력·실제 집행 미확인)"
     assert inbound_official_stage("AWS South Korea AI data center signed contract") == "계약 체결 공식 발표(구체적 구속력 별도 확인)"
@@ -1247,7 +1256,7 @@ def run_inbound_diversion_extension() -> None:
     context_needed = previous.get("last_context_id") != INBOUND_DIVERSION_ID
     probe = inbound_primary_check() if context_needed else {}
     first = not old.get("initialized")
-    perspective_due = inbound_is_due(previous, first, probe)
+    perspective_due = inbound_context_window() and inbound_is_due(previous, first, probe)
     official_rows, scan_ok = inbound_collect_official_announcements()
     previous_seen = list(previous.get("seen_official_event_ids") or [])
     new_events = [row for row in official_rows if row["key"] not in set(previous_seen)]
