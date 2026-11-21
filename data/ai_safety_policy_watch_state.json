@@ -1,27 +1,20 @@
 {
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": false,
+    "all_sources_verified": true,
     "deferred_events": 0,
-    "errors": [
-      "Google News 실패: (OpenShell OR \"Open Agent Safety Platform\") AI Enterpri / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (\"Open Agent Safety Platform\" OR OpenShell OR Sentry) p / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) frontier AI ind / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) safety case ado / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Joint Commitment on Frontier Responsibilities\" AI / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"White House Accord on Super Intelligence\" AI / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 6,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 107,
-    "google_news_queries_succeeded": 101,
-    "google_news_rate_limit_429": 6,
+    "google_news_queries_succeeded": 107,
+    "google_news_rate_limit_429": 0,
     "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [],
     "raw_items": 71,
     "sif_new_stages": 0,
-    "source_access_limited": true,
+    "source_access_limited": false,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
     "si_portal_pending_candidates": 0,
@@ -69,9 +62,9 @@
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/docs/about/support-matrix.mdx"
     },
     "OpenAI 프런티어 학습 Safety Case": {
-      "candidate_count": 0,
-      "candidate_digest": null,
-      "candidate_first_seen_at": null,
+      "candidate_count": 1,
+      "candidate_digest": "655db4276e3ce44f0a15757a675a154400074f31f91748587b609a88eba568e6",
+      "candidate_first_seen_at": "2026-11-21T15:47:34.837318+00:00",
       "digest": "34aca096d8b46233bab40766bc879fd4d3826fd4fc866d705eb9411f2fd9a235",
       "updated_at": "2026-11-21T11:22:24.288872+00:00",
       "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training/"
@@ -107,7 +100,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-21T15:45:50.789884+00:00",
+    "updated_at": "2026-11-21T15:47:34.837318+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -1005,11 +998,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-22T00:45:50+09:00",
+  "updated_at_kst": "2026-11-22T00:47:34+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-21T15:46:57.901982+00:00",
+    "last_success_at": "2026-11-21T15:48:23.234206+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
