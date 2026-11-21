@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-21T09:54:00+09:00",
+  "updated_at_kst": "2026-11-21T10:23:44+09:00",
   "circle": {
     "date": "2026-11-19",
     "circulation_usd_b": 67.3,
@@ -83,6 +83,8 @@
   "crcl_last_alerted_close_date": "2026-11-20",
   "correction_pending": false,
   "errors": [
-    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: The read operation timed out | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: The read operation timed out"
+    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-11-20 sec=[(datetime.date(2026, 11, 19), 3.89), (datetime.date(2026, 11, 19), 3.89)] seven=[(datetime.date(2026, 11, 19), 3.89)] | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-11-20 sec=[(datetime.date(2026, 11, 19), 3.89), (datetime.date(2026, 11, 19), 3.89)] seven=[(datetime.date(2026, 11, 19), 3.89)]",
+    "crcl: CRCL cross-source close date mismatch: ChartExchange=2026-11-20 Yahoo=2026-11-19",
+    "tbx: source date regressed 2026-11-19 < 2026-11-20; previous snapshot kept"
   ]
 }
