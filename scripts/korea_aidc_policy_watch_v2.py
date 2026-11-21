@@ -120,6 +120,17 @@ AIDC_ECOSYSTEM_OFFICIAL_BASELINE = {
     "stage": 3,
 }
 
+AIDC_ULSAN_PRESIDENTIAL_BRIEFING = {
+    "id": "aidc-ulsan-sk-presidential-progress-20261121",
+    "title": "대통령 울산 SK 인공지능 데이터센터 현장 방문·공정률 71% 확인",
+    "publisher": "대한민국 청와대",
+    "source": "청와대 공식 브리핑",
+    "official": True,
+    "url": "https://www.president.go.kr/briefings/zXB9A2D7",
+    "published": "2026-11-21",
+    "category": "울산 SK AIDC 현장 진행",
+    "stage": 4,
+}
 
 
 def digest(value: str) -> str:
@@ -129,7 +140,12 @@ def digest(value: str) -> str:
 def semantic_key(row: dict[str, Any]) -> str:
     """URL·언론사·기사 제목 해시가 아니라 사업·법령의 의미 있는 상태로 분류."""
     title = base.norm(str(row.get("title", ""))).lower()
-    aidc_topic = any(x in title for x in ("aidc", "인공지능 데이터센터", "ai 데이터센터"))
+    aidc_topic = any(x in title for x in ("aidc", "인공지능 데이터센터", "ai 데이터센터", "ai데이터센터"))
+    # 1회성 사업 현장점검: 정책 확정 및 다른 AIDC 법령 사건과 분리.
+    if aidc_topic and "울산" in title and "sk" in title and "대통령" in title and any(
+        x in title for x in ("현장 방문", "현장 점검", "공정률 71%")
+    ):
+        return "aidc|ulsan-sk|presidential-progress|20261121"
     # 12차 전기본 AIDC '추가 전력수요' 감축 검토는 규제완화 예산안과 별도 사건이다.
     # 최종 확정은 반드시 정부 공식문서로 검증한다.
     if aidc_topic and any(x in title for x in ("전력수요", "전력 수요", "전기본", "전력계획", "최대전력")) and any(
@@ -181,6 +197,8 @@ def semantic_key(row: dict[str, Any]) -> str:
 
 def event_level(row: dict[str, Any]) -> int:
     key = semantic_key(row)
+    if key == "aidc|ulsan-sk|presidential-progress|20261121":
+        return 45 if verified_ulsan_presidential_briefing(row) else 0
     if key == "aidc|power-demand|revision-review":
         # 한 번 검증된 '검토'는 기사 수·재인용·신문사 변경으로 승격되지 않는다.
         return 30
@@ -363,6 +381,13 @@ def verified_official_url(row: dict[str, Any]) -> bool:
         host == root or host.endswith("." + root) for root in OFFICIAL_HOSTS
     )
 
+def verified_ulsan_presidential_briefing(row: dict[str, Any]) -> bool:
+    from urllib.parse import urlparse
+    parsed = urlparse(str(row.get("url", "")))
+    return (bool(row.get("official")) and parsed.scheme == "https"
+            and parsed.hostname in ("president.go.kr", "www.president.go.kr")
+            and parsed.path.rstrip("/") == "/briefings/zXB9A2D7")
+
 
 def material_signature(row: dict[str, Any]) -> str:
     """입법예고·세제·전력 용량의 실제 상태값만 별도로 지문에 반영한다."""
@@ -398,8 +423,22 @@ def verify_change(row: dict[str, Any]) -> tuple[bool, str]:
     if len(body) < 300:
         return False, "기사·공식자료 본문 직접 검증 실패"
 
-    if not ("aidc" in body or "인공지능 데이터센터" in body or "ai 데이터센터" in body):
+    if not ("aidc" in body or "인공지능 데이터센터" in body
+            or "ai 데이터센터" in body or "ai데이터센터" in body):
         return False, "본문의 AIDC 관련성을 검증하지 못함"
+
+    if key == "aidc|ulsan-sk|presidential-progress|20261121":
+        if not verified_ulsan_presidential_briefing(row):
+            return False, "대통령실 현장 점검 공식 원문·경로 미확인"
+        if not all(x in body for x in ("이재명 대통령", "울산", "sk", "공정률", "전력")):
+            return False, "현장·공정률·전력 근거 확인 부족"
+        if not re.search(r"(?:71\s*%.{0,40}공정률|공정률.{0,40}71\s*%)", body):
+            return False, "공정률 71%의 실제 현장 설명 확인 실패"
+        if not ("2027년" in body and "운영" in body and ("말" in body or "연말" in body)):
+            return False, "2027년 말 운영 목표 근거 확인 실패"
+        if not any(x in body for x in ("전문인력", "인력 부족", "인력 양성")):
+            return False, "인력 병목 관련 공식 발언 확인 실패"
+        return True, "대통령 공식 현장 방문과 공정률 확인, 추가 지원정책은 미확정"
 
     if key == "aidc|power-demand|revision-review":
         if not any(x in body for x in ("12차 전력수급기본계획", "12차 전기본", "제12차 전력수급기본계획")):
@@ -504,6 +543,22 @@ def fact_lines(row: dict[str, Any]) -> tuple[list[str], list[str], list[str]]:
     body = str(row.get("article_body", ""))
     lower = body.lower()
 
+    if key == "aidc|ulsan-sk|presidential-progress|20261121":
+        return (
+            [
+                "• <b>11월 21일 대통령 울산 SK AI데이터센터 현장 점검·공정률 71%</b>를 청와대가 공식 확인",
+                "• <b>2027년 말 운영 개시</b>는 계획 단계이며 SK그룹의 <b>5GW급 구축 구상</b>은 이 현장 단일 가동용량이 아님",
+                "• 비상발전기 전환 약 3초는 <b>무정전 전원장치(UPS)</b>로 공급한다는 현장 설명이며, 전력 사고 발생 보고가 아님",
+            ],
+            [
+                "• 대통령이 <b>전문 공사인력 부족·저렴하고 안정적인 재생에너지 전력 공급</b>을 주요 제약으로 지목",
+                "• 공식 방문·공정률 확인은 신규 진행정보지만 <b>예산 배정·전력공급계약·인력지원책 확정</b>은 아님",
+            ],
+            [
+                "• 실제 사업의 선행지표는 <b>전문인력 확보·지역 계통접속·전원 인가·서버 반입·실제 가동</b> 순서",
+                "• AI 서버·전력기기·UPS·냉각 설비의 구체 납품계약과 전원 인가가 확인되기 전에는 확정 매출로 계산하지 않음",
+            ],
+        )
     if key == "aidc|power-demand|revision-review":
         return (
             [
@@ -691,7 +746,9 @@ def render(row: dict[str, Any]) -> str:
     if str(row.get("event_key")) == "aidc|tax-credit|eligibility":
         category = "공식 세제 변경" if verified_official_url(row) else "산업계 세제 개선 요구"
     new, changed, invest = fact_lines(row)
-    project_event = str(row.get("event_key", "")).startswith("aidc|sgc-gunsan|")
+    project_event = str(row.get("event_key", "")).startswith(
+        ("aidc|sgc-gunsan|", "aidc|ulsan-sk|")
+    )
     header = "<b>한국 AIDC 사업 실행 새 변화</b>" if project_event else "<b>한국 AIDC 정책·전력 특례 새 변화</b>"
     evidence = dict(row.get("timeline_evidence") or {})
     rss_date = str(row.get("rss_published") or row.get("published") or "")
@@ -785,6 +842,12 @@ def main() -> int:
         recent.append(dict(AIDC_POWER_DEMAND_MEDIA_BASELINE))
         recent.append(dict(AIDC_POWER_DEMAND_MEDIA_BASELINE_ALT))
 
+    # 검색색인과 무관하게 대통령실 공식 브리핑을 직접 조회한다.
+    # 출처가 열리지 않으면 사건을 소비하지 않고 다음 실행에서 재시도한다.
+    visit_date = base.parse_date(AIDC_ULSAN_PRESIDENTIAL_BRIEFING["published"])
+    if visit_date and timedelta(0) <= now - visit_date.astimezone(timezone.utc) <= timedelta(days=MAX_AGE_DAYS):
+        recent.append(dict(AIDC_ULSAN_PRESIDENTIAL_BRIEFING))
+
     events = collapse(recent)
     seen = {str(k): int(v) for k, v in dict(state.get("seen_events", {})).items()}
     known_signatures = {str(k): str(v) for k, v in dict(state.get("material_signatures", {})).items()}
@@ -821,6 +884,7 @@ def main() -> int:
         )
         verified = None
         reject_reasons: list[str] = []
+        official_fetch_failed = False
         # 정부 종합자료·언론 원문 양쪽을 확인할 수 있도록 이 사건만 최대 5개 출처 확인.
         max_candidates = 5 if key in (
             "aidc|ecosystem-support|government-proposal",
@@ -835,10 +899,14 @@ def main() -> int:
                 verified["verification"] = reason
                 break
             reason = str(enriched.get("enrich_error") or reason)
+            if key == "aidc|ulsan-sk|presidential-progress|20261121" and enriched.get("enrich_error"):
+                official_fetch_failed = True
             reject_reasons.append(reason)
 
         if verified is None:
             held.append(f"{key}: {'; '.join(reject_reasons[:2]) or '본문 직접 검증 실패'}")
+            if official_fetch_failed:
+                errors.append("청와대 울산 AIDC 공식 브리핑 원문 조회·추출 실패")
             continue
 
         evidence = dict(verified.get("timeline_evidence") or {})

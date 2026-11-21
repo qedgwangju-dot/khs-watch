@@ -35,6 +35,39 @@ BODY = (
 
 
 class AIDCSemanticRegression(unittest.TestCase):
+    def test_ulsan_presidential_site_visit_requires_official_progress(self):
+        source = dict(v2.AIDC_ULSAN_PRESIDENTIAL_BRIEFING)
+        source["event_key"] = v2.semantic_key(source)
+        source["article_body"] = (
+            "2026년 11월 21일 이재명 대통령은 울산 SK AI데이터센터 건설 현장을 방문했다. "
+            "SK에코플랜트 현장소장은 공정률 71%라고 설명했으며 대통령이 전력 공급과 "
+            "전문인력 부족 문제를 확인했다. 울산 SK AI데이터센터는 2027년 말 운영 개시를 "
+            "목표로 추진 중이다. 한국 정부는 인공지능 인프라가 지역 균형발전에 기여할 수 "
+            "있다는 점에 주목했고, 재생에너지를 통한 저렴하고 안정적인 전력 공급을 강조했다. "
+            "정전 이후 비상발전기로 바뀌는 약 3초 사이에는 무정전 전원장치 UPS가 가동된다. "
+            "현장 방문은 사업 진행 확인이며 신규 예산 확정이나 전력공급계약 체결을 의미하지 않는다. "
+        )
+        self.assertEqual(source["event_key"], "aidc|ulsan-sk|presidential-progress|20261121")
+        self.assertEqual(v2.event_level(source), 45)
+        self.assertTrue(v2.verify_change(source)[0])
+        report = v2.render(source)
+        self.assertIn("공정률 71%", report)
+        self.assertIn("2027년 말", report)
+        self.assertIn("추가 지원정책", v2.verify_change(source)[1])
+        self.assertIn("사업 실행 새 변화", report)
+        for altered in (
+            dict(source, official=False, url="https://www.yna.co.kr/test"),
+            dict(source, url="https://www.president.go.kr/briefings/unrelated"),
+            dict(source, article_body=source["article_body"].replace("71%", "17%")),
+        ):
+            self.assertFalse(v2.verify_change(altered)[0])
+
+    def test_ulsan_headline_reprints_collapse_to_one_event(self):
+        a = dict(v2.AIDC_ULSAN_PRESIDENTIAL_BRIEFING)
+        b = dict(a, title="대통령 울산 SK AI데이터센터 현장 방문 71% 공정률")
+        self.assertEqual(v2.semantic_key(a), v2.semantic_key(b))
+        self.assertEqual(len(v2.collapse([a, b])), 1)
+
     def test_tax_policy_articles_group_by_topic_not_headline_or_date(self):
         a = row("AIDC 특별법 실효성 논란 세액공제 의미 살펴야")
         b = row("AIDC 세액공제 자가소비 인정 범위 논란",
