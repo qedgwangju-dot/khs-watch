@@ -496,7 +496,30 @@ def nscale_is_same_initial_retelling(title: str, published: dt.datetime) -> bool
     )
 
 
+def preserve_risk_substates(previous: dict, candidate: dict) -> dict:
+    """Keep only this watcher's two pre-existing addendum gates.
+    
+    Before this fix, writing the base pending JSON deleted both keys from prior
+    runs, causing the next successful fetch to resend old reports. Preserve
+    a prior key unless the current run replaces it with fresh evidence.
+    """
+    for name in ("us_korea_investment_watch", "baaja_permitting_policy"):
+        if name not in candidate and isinstance(previous.get(name), dict):
+            candidate[name] = dict(previous[name])
+    return candidate
+
+
 def regression_checks() -> None:
+    old_extra = {
+        "us_korea_investment_watch": {"last_context_id": "korea-sent"},
+        "baaja_permitting_policy": {"procedural_id": "baaja-sent"},
+    }
+    p = preserve_risk_substates(old_extra, {"initialized": True})
+    assert p["us_korea_investment_watch"]["last_context_id"] == "korea-sent"
+    assert p["baaja_permitting_policy"]["procedural_id"] == "baaja-sent"
+    p["baaja_permitting_policy"] = {"procedural_id": "newer-stage"}
+    assert preserve_risk_substates(old_extra, p)["baaja_permitting_policy"]["procedural_id"] == "newer-stage"
+    assert preserve_risk_substates({}, {"initialized": True}) == {"initialized": True}
     assert ms_finance_addendum_due({"initialized": True}, False)
     assert not ms_finance_addendum_due({"ms_finance_addendum_id": MS_FINANCE_EVENT}, False)
     assert not ms_finance_addendum_due({}, True)
@@ -712,6 +735,7 @@ pending = {
         "historical_official_link": NSCALE_OFFICIAL_2025,
     },
 }
+pending = preserve_risk_substates(old, pending)
 if old.get("ai_credit_baseline_confirmed_at_utc") and pending.get("ai_credit_baseline_confirmed_at_utc") != old["ai_credit_baseline_confirmed_at_utc"]:
     raise RuntimeError("AI credit verified baseline timestamp would be lost")
 PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
