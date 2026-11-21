@@ -27,8 +27,8 @@
   ],
   "last_fx_krw_per_usd": 1330.972965,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-11-21T09:48:22+00:00",
-  "updated_at_utc": "2026-11-21T09:48:28+00:00",
+  "fx_checked_utc": "2026-11-21T11:17:59+00:00",
+  "updated_at_utc": "2026-11-21T11:18:06+00:00",
   "ai_credit_initialized": true,
   "ai_credit_rss_success_count": 6,
   "ai_credit_rss_failure_count": 0,
@@ -89,58 +89,70 @@
     "news_link": "https://www.reuters.com/business/media-telecom/microsoft-pulls-out-uk-data-center-deal-with-nscale-telegraph-reports-2026-10-18/",
     "historical_official_link": "https://www.nscale.com/press-releases/nscale-uk-ai-infrastructure-announcement"
   },
-  "us_korea_investment_watch": {
-    "last_context_id": "us-tx-approval-delay-korea-investment-diversion-source-graded-20261108",
-    "context_sent_at_utc": "2026-11-21T09:48:33+00:00",
-    "source_snapshot": {
-      "as_of": "2026-11-08",
-      "texas_permit_pause_since": "2026-09-21, 기존 주지사 행정조치·감사 기한부",
-      "texas_governor_elect": "2026-11-03 당선, 2027-01 취임 후 추가 승인 중단 공약·아직 시행 전",
-      "hana_research_date": "2026-11-06 발행처 목록 검색 색인",
-      "hana_2030_incremental_base_gw": [
-        3.0,
-        4.2
+  "baaja_permitting_policy": {
+    "procedural_id": "baaja-20261109-hr2347-motion-to-proceed-cloture-73-25",
+    "procedural_at_utc": "2026-11-21T11:18:13+00:00",
+    "reference": {
+      "date": "2026-11-09",
+      "bill_original": "S.5653, introduced 2026-09-30",
+      "senate_vehicle": "H.R.2347 (motion to proceed), NOT H.R.9340",
+      "substitute_amendment_released": "2026-11-07",
+      "senate_motion_to_proceed_cloture_yes": 73,
+      "senate_motion_to_proceed_cloture_no": 25,
+      "stage": "심의 개시 관련 절차표결 통과, 상원 본안 최종 가결 전",
+      "BAAJA_new_computational_load_mw_threshold": 20,
+      "BAAJA_full_incremental_costs": "발전·저장·송전·배전 증분비용, 조기 사업철회 비용보호",
+      "RPA_HR9340_house_threshold_mw": 100,
+      "RPA_HR9340_house_vote": [
+        417,
+        3
       ],
-      "hana_2030_incremental_bull_gw": [
-        5.1,
-        7.0
+      "RPA_HR9340_senate_cloture_sept30": [
+        57,
+        43
       ],
-      "hana_4_to_5gw_epc_krw_trillion": [
-        30,
-        40
+      "rhodium_model_initial_bill_nov2_power_price_increase_pct": [
+        88,
+        102
       ],
-      "hana_report_pdf_confirmed": false,
-      "nh_analyst_original_report_confirmed": false,
-      "kotra_kdcc_mou_date": "2026-11-04",
-      "kotra_kdcc_mou_stage": "투자유치 협력 양해각서·실제 외국인 투자계약 아님",
-      "sk_aws_ulsan_existing_contract_year": 2025,
-      "sk_aws_ulsan_target_mw_2027_11": 41,
-      "sk_aws_ulsan_target_mw_2029_02": 103,
-      "post_us_election_relocation_to_korea_confirmed": false,
-      "korea_power_and_land_constraints": "CBRE 2026-07 수도권 전력·부지 부족, 비수도권도 실제 접속확약 별도 확인",
+      "rhodium_model_1gw_annualized_capex_plus_opex_increase_pct": [
+        10,
+        11
+      ],
+      "rhodium_based_on_pre_nov7_substitute": true,
+      "mckinsey_global_dc_construction_through_2030_usd_t_range": [
+        1.7,
+        1.9
+      ],
+      "mckinsey_1p8tn_as_enactment_unlocked_capex_verified": false,
+      "sanders_moratorium_post_date": "2026-11-04",
+      "nationwide_moratorium_implemented": false,
+      "ferc_final_implementation": false,
+      "scope": "절차 표결 != 최종 통과 != 시행; 주택 전기요금과 기업 부담의 실제 효과는 별도 규칙·시나리오",
       "primary_sources": [
-        "https://gov.texas.gov/news/post/governor-abbott-directs-tceq-to-halt-data-center-permits",
-        "https://www.ercot.com/about/legal/data-center-impact-rfi",
-        "https://english.motir.go.kr/eng/article/EATCLdfa319ada/2779/view?bbsCdN=2&pageIndex=1",
-        "https://news.sktelecom.com/en/1948",
-        "https://msit.go.kr/eng/bbs/view.do?bbsSeqNo=42&mId=4&nttSeqNo=1130&sCode=eng"
+        "https://www.democrats.senate.gov/2026/11/09/wrap-up-for-monday-november-9-2026",
+        "https://www.epw.senate.gov/public/index.cfm/press-releases-republican?ID=CCD27C16-CBA8-4E56-BFAE-C30D16E0AE61",
+        "https://www.energy.senate.gov/press/rep/lee-capito-heinrich-and-whitehouse-release-substitute-amendment-to-bipartisan-american-affordability-and-jobs-act-of-2026/",
+        "https://www.govinfo.gov/content/pkg/BILLS-119s5653is/html/BILLS-119s5653is.htm",
+        "https://clerk.house.gov/evs/2026/roll312"
       ],
-      "reported_sources": [
-        "https://www.texastribune.org/2026/11/04/data-center-texas-pause-gina-hinojosa-governor-policies/",
-        "https://www.khan.co.kr/article/202611081638001",
-        "https://www.hanaw.com/main/research/research/list.cmd?cid=1&pid=3",
-        "https://tele.wiki/t/post/455884571",
-        "https://biz.heraldcorp.com/article/10926277",
-        "https://www.cbre.com/insights/reports/korea-data-center-investment"
+      "research_sources": [
+        "https://bipartisanpolicy.org/explainer/explaining-the-affordability-in-the-bipartisan-american-affordability-and-jobs-act/",
+        "https://rhg.com/research/baaja-us-energy-system-impacts/",
+        "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-capex-crucible-what-finance-teams-can-learn-from-data-center-builds"
       ]
     },
-    "live_primary_checks": {
-      "texas_governor": true,
-      "texas_independent": true,
-      "korea_government": true,
-      "korea_signed_earlier": true
+    "source_checks": {
+      "senate_vote": true,
+      "senate_sponsor": true,
+      "cost_threshold": true,
+      "govinfo_bill": true,
+      "rhodium_model": true
     },
-    "seen_official_event_ids": [],
-    "last_event_count": 0
+    "latest_stage": "상원 본안 최종 의결 공식 발표",
+    "official_later_event_ids": [
+      "51cc4aa7757a9e93cb45"
+    ],
+    "last_new_event_count": 1
   }
 }
