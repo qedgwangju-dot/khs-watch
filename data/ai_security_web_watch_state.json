@@ -3,20 +3,27 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": true,
+    "all_sources_verified": false,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [],
-    "google_news_queries_failed": 0,
+    "errors": [
+      "Google News RSS 실패: \"CVE-2026-115560\" PHP (advisory OR patch OR fix OR expl… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"Claude\" \"Georgia\" (vote counts OR voter data OR unauth… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"CYFIRMA\" \"PHP2Shell\" (216 OR scanning OR Lazarus OR co… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"Meta Muse\" security vulnerability exploit privacy patc… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"rogue agent\" AI OpenAI Anthropic Google Meta security… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: \"AI agent\" \"third-party\" impact security controls… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "google_news_queries_failed": 6,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 65,
-    "google_news_rate_limit_429": 0,
+    "google_news_queries_succeeded": 59,
+    "google_news_rate_limit_429": 6,
     "material_items": 13,
     "new_material_items": 0,
-    "raw_items": 155,
+    "raw_items": 123,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": false
+    "source_access_limited": true
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -1126,5 +1133,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-21T09:24:07+09:00"
+  "updated_at_kst": "2026-11-21T09:31:22+09:00"
 }
