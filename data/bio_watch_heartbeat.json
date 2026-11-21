@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at_kst": "2026-11-21T09:54:20+09:00",
+  "checked_at_kst": "2026-11-21T11:35:40+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -48,6 +48,5 @@
   "last_wac_telegram_message_ids": [],
   "last_wac_telegram_sent_at_kst": "",
   "failure_notice_signatures": [],
-  "error_signature": "",
-  "health_notice_message_id": 394
+  "error_signature": ""
 }
