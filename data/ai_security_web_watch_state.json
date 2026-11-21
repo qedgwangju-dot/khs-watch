@@ -11,9 +11,9 @@
     "google_news_queries_requested": 65,
     "google_news_queries_succeeded": 65,
     "google_news_rate_limit_429": 0,
-    "material_items": 13,
-    "new_material_items": 0,
-    "raw_items": 153,
+    "material_items": 14,
+    "new_material_items": 1,
+    "raw_items": 154,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
     "source_access_limited": false
@@ -432,6 +432,16 @@
       "title": "PHP2Shell shows how AI is shrinking the window for Indian enterprises to respond to cyber threats - Fortune India",
       "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxORTh5TEZWdll1RkVMSjJzenU0eFJOTmhLOXRpZi1yWWpHSEtfNDVaMXA1bkRkYVFJYXNUWXNISTRqdFZQZmZGSkJ2dFk5b1MzRG0tUy11dmNobUpNSFRkdFBTZmlBOGtWNmZkOU1UM0VnZnFmYWMxUkRkTFNmTUppQUYzbGUyZ0xqd3V5SWU0VXc4ai1CMXE0Z1BSUjh6dEI2Rzgwa2h6anJjd2lXcmlXaUY1QVRLdzhtZm9oSHVlNGlIRVVPZFZFY2VEMUtvSjVZemVMaUNsWE51dnZV0gHqAUFVX3lxTE80WHNpRThUYkNZYi1CbmdEaHA2cDhDdmVkM01kMTZVWG1fY2U0UG9qMXdoX1NjVEFVdnNGMnV4QWRjcVpFNVNadjRmMGVWcUpjX3g5ZkpLSE9DUDBpMWRiMUF6SVZoM3dvT2RqajhxQVBPNG5TWU1DX1RVaDltdUg2ZWc3akpZTkh4clpzcnpsTFRZTmtrR1hWNUtlM2RRT25PVHFnVWVPbVhQcWdSZnAtMGNzQlRnam5qajhpS1VUME5YRFVoQzBmcUpMWWY1Ylk0Vl9iZHpJZGNXbU9uRDVZZ1FXaGxMemM3UQ?oc=5",
       "vendor": "PHP 재단"
+    },
+    "6544dfc8526a45d21833942f": {
+      "category": "평가 인식·모니터 회피",
+      "first_seen_at": "2026-11-21T00:53:20.324583+00:00",
+      "published_at": "2026-11-20T21:04:22+00:00",
+      "severity": 1,
+      "source": "OpenAI",
+      "title": "Metagaming matters for training, evaluation, and oversight - OpenAI",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE93Ql9CWkw4NmdBdmtWQXY4bHNiQ1pHMGhXbmlrSnY5S0Y2a0RIcnRwb3NZQ3pkTVdIYkVrcnc4Z201bXFhZ0ZWTTlnbU1GbzRnbk9tMjZITGNES2c?oc=5",
+      "vendor": "OpenAI"
     },
     "654ec051245881d84785930e": {
       "category": "AI 자율복제·사물인터넷 모의평가",
@@ -1126,5 +1136,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-21T09:48:46+09:00"
+  "updated_at_kst": "2026-11-21T09:53:20+09:00"
 }
