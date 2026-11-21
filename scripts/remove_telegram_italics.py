@@ -178,6 +178,46 @@ def main() -> None:
                 continue
         if alert_path.name in migration_suppressed:
             continue
+        # PJM policy and DOE/PJM emergency alerts share one pending-state JSON,
+        # but use DIFFERENT Telegram message files. A DOE-only alert must retain
+        # only its newly alerted emergency IDs; do not silently advance PJM
+        # baseline numbers or the ordinary PJM news deduplication.
+        if (
+            alert_path.name == "pjm_data_center_policy_alert.txt"
+            and not (alert_path.exists() and alert_path.read_text(encoding="utf-8").strip())
+        ):
+            emergency_alert = Path("out/us_grid_emergency_alert.txt")
+            if emergency_alert.exists() and emergency_alert.read_text(encoding="utf-8").strip():
+                if not pending_path.exists() or not confirmed_path.exists():
+                    raise RuntimeError("DOE/PJM emergency alert present without complete pending/confirmed state")
+                previous = load_json(confirmed_path)
+                candidate = load_json(pending_path)
+                previously_seen = previous.get("grid_emergency_seen_ids")
+                candidate_seen = candidate.get("grid_emergency_seen_ids")
+                if not isinstance(previously_seen, list) or not isinstance(candidate_seen, list):
+                    raise RuntimeError("DOE/PJM emergency dedupe state unreadable; refusing to send")
+                added = set(candidate_seen) - set(previously_seen)
+                if not added:
+                    raise RuntimeError("DOE/PJM emergency alert has no new event ID; refusing duplicate")
+                merged = dict(previous)
+                for key in (
+                    "grid_emergency_initialized",
+                    "grid_emergency_seen_ids",
+                    "grid_emergency_source_errors",
+                ):
+                    if key in candidate:
+                        merged[key] = candidate[key]
+                if candidate.get("updated_at_utc"):
+                    merged["updated_at_utc"] = candidate["updated_at_utc"]
+                pending_path.write_text(
+                    json.dumps(merged, ensure_ascii=False, indent=2) + "\n",
+                    encoding="utf-8",
+                )
+                print(
+                    "doe_only_pending_state_preserved=true "
+                    f"new_event_ids={len(added)} pj_m_baseline_unchanged=true"
+                )
+                continue
         if alert_path.exists() and alert_path.read_text(encoding="utf-8").strip():
             continue
         if pending_path.exists() and confirmed_path.exists():
