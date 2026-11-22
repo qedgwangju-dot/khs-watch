@@ -1,20 +1,44 @@
 {
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": true,
+    "all_sources_verified": false,
     "deferred_events": 0,
-    "errors": [],
-    "google_news_queries_failed": 0,
+    "errors": [
+      "Google News 실패: \"President's Working Group on Scams and Fraud\" (third m / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"OCC\" \"GENIUS Act\" (final rule OR effective OR amendmen / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"특화 인공지능 파운데이션 모델\" 사이버 보안 B200 / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"과기정통부\" \"금융권\" (24시간 비상대응 OR CISO 보안점검 OR C-TAS 차단) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"금융권\" \"외부접점\" (\"11월 30일\" OR \"12월 31일\") / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"파이오링크\" \"PHP2Shell\" (점검 OR 계약 OR 유료) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"SGA솔루션즈\" \"PHP2Shell\" (가상패치 OR 유료 OR 계약) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (\"케이사인\" OR \"KSign\") (\"전기차 충전\" OR \"EV charging\") (취약점 OR / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"OpenAI\" \"cybersecurity\" (revenue disclosed OR contract / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"GPT-5.6 Cyber\" (Daybreak OR GPT-6 Cyber OR model safet / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"GPT-6.1 Astra\" (safety cancelled OR release resumed OR / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"OpenAI\" \"security infrastructure\" (product work paused / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (Palo Alto Networks OR CrowdStrike OR IBM OR Microsoft  / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: AI security agent autonomous SOC continuous monitoring  / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (NVIDIA OpenShell OR \"agent safety runtime\") enterprise / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: NVIDIA Sentry standalone SKU pricing license subscripti / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Safety Case\" t / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) frontier AI ind / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"White House Accord on Super Intelligence\" AI / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Frontier Responsibilities\" Google Anthropic Meta OpenA / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"AI accord\" signatory added withdrew external auditor b / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: site:federalregister.gov \"Super Intelligence\" executive / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Cohere Cyber\" \"AISLE\" (customer OR contract OR product / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "google_news_queries_failed": 23,
     "google_news_queries_requested": 107,
-    "google_news_queries_succeeded": 107,
-    "google_news_rate_limit_429": 0,
+    "google_news_queries_succeeded": 84,
+    "google_news_rate_limit_429": 23,
     "material_items": 33,
-    "new_articles": 0,
-    "new_events": 0,
+    "new_articles": 1,
+    "new_events": 1,
     "official_page_skips": [],
     "raw_items": 68,
     "sif_new_stages": 0,
-    "source_access_limited": false,
+    "source_access_limited": true,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
     "si_portal_pending_candidates": 0,
@@ -62,11 +86,11 @@
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/docs/about/support-matrix.mdx"
     },
     "OpenAI 프런티어 학습 Safety Case": {
-      "candidate_count": 1,
-      "candidate_digest": "655db4276e3ce44f0a15757a675a154400074f31f91748587b609a88eba568e6",
-      "candidate_first_seen_at": "2026-11-21T23:49:02.665426+00:00",
-      "digest": "34aca096d8b46233bab40766bc879fd4d3826fd4fc866d705eb9411f2fd9a235",
-      "updated_at": "2026-11-21T20:31:23.947955+00:00",
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "digest": "655db4276e3ce44f0a15757a675a154400074f31f91748587b609a88eba568e6",
+      "updated_at": "2026-11-22T00:01:05.390653+00:00",
       "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training/"
     },
     "미 하원의장실 White House Accord 공식 발표": {
@@ -100,7 +124,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-21T23:49:02.665426+00:00",
+    "updated_at": "2026-11-22T00:01:05.390653+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -998,11 +1022,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-22T08:49:02+09:00",
+  "updated_at_kst": "2026-11-22T09:01:05+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-21T23:49:52.006169+00:00",
+    "last_success_at": "2026-11-22T00:01:57.456439+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
