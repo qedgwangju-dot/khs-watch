@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-21T23:09:24.258340+00:00",
+  "updated_at": "2026-11-22T00:39:56.527924+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1018,9 +1018,12 @@
     "849ca58b1cd3888ac01354183d16769edcd03b139c65b535425c0759a3f3bbc6",
     "ff3e5540e431e45aa454dadaefedc9c946f8b20db7455596b5fe0ae7cadf7092",
     "eea1e1a4e99a025446b0ef5eb960c2decc3d54f1d762e116a51b8f2f6e7140db",
-    "af5ff16c02fc770de1b601d74fdd1f6f6fb868e6980cdab61aaa32c94039fe46"
+    "af5ff16c02fc770de1b601d74fdd1f6f6fb868e6980cdab61aaa32c94039fe46",
+    "4063b017a2f94e0402efa9363f4f585069aa799a96c3c5e3aba57b29a412576d"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "4063b017a2f94e0402efa9363f4f585069aa799a96c3c5e3aba57b29a412576d"
+  ],
   "groups": [
     "ess_battery",
     "hyundai_atlas_rollout",
@@ -1029,33 +1032,6 @@
     "robotis_excess_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 44410240911,
-      "outcome": "sent",
-      "confirmed_event_keys": [
-        "33051b434ee0778ddd6db6bc0d84144f2518bf00df80d32525611406244b9786",
-        "369cf2773360bf6065bc41cd363dc4dacffd0b4e91f5f6fa6b32f7cfe8580cdd",
-        "4d68bc58673beca5c19a4a86f618e593f913e7a6852091846a16bfe31fc79c39",
-        "528ea0fb1db16fa1e3968ca3eb795d1f1166660da7e78f88520283e6ec8c3126",
-        "663ff8ecccdecd02827e416c9729a9784696451614e0136388d993e91f3bfef9",
-        "6f4869ebe1a47dc7bbd865f2e19efda97bd0e6f7516ad492b363a33998656f26",
-        "a085f47699959f7fd13246f37aff5c6cbf2debdc758f34a907e18409df14993b"
-      ],
-      "message_ids": [
-        383,
-        384
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal",
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false,
-        false
-      ],
-      "state_timestamp_utc": "2026-11-18T22:19:12.570303+00:00"
-    },
     {
       "run_id": 44450601512,
       "outcome": "sent",
@@ -1386,19 +1362,55 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-21T23:09:24.258340+00:00"
+    },
+    {
+      "run_id": 44967660229,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "4063b017a2f94e0402efa9363f4f585069aa799a96c3c5e3aba57b29a412576d"
+      ],
+      "message_ids": [
+        401
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-22T00:39:56.527924+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44960304879,
-    "outcome": "normal_silence",
-    "confirmed_event_keys": [],
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-21T23:09:24.258340+00:00"
+    "run_id": 44967660229,
+    "outcome": "sent",
+    "confirmed_event_keys": [
+      "4063b017a2f94e0402efa9363f4f585069aa799a96c3c5e3aba57b29a412576d"
+    ],
+    "message_ids": [
+      401
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-22T00:39:56.527924+00:00"
   },
-  "last_selected_events": [],
+  "last_selected_events": [
+    {
+      "key": "4063b017a2f94e0402efa9363f4f585069aa799a96c3c5e3aba57b29a412576d",
+      "group": "hyundai_atlas_rollout",
+      "title": "현대차그룹 휴머노이드 ‘아틀라스’, 내년부터 반도체 공장 첫 투입 - 미주중앙일보",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5RMmc0QUFYTDNsZEtzbE5rdUUxYnBqcVhhRTQzMThkWWMwemVRblVIYXJ6M0JEZkxTWndWdmVXcVJjdGhWa3dVdzEtcjVGYWxKQlpqUXBMR3ZOYjdhenEzNGJn?oc=5",
+      "source": "미주중앙일보",
+      "source_url": "https://www.koreadaily.com",
+      "published": "2026-11-18T01:44:00+00:00"
+    }
+  ],
   "message_corrections": {
     "robot-message-correction-20261118-44240720425-v1": {
       "schema_version": 1,
