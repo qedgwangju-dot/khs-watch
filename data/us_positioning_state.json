@@ -3,7 +3,7 @@
     "Nasdaq SOX|sox": "a1c3efdecf089a3608c44a14b226e3cf45097425fbad89df0e6720399bc3c274",
     "Cboe|options": "97a2476da36a415f6b467cc6ce232e31ec90cfc5b0d1b9408a62d3a1e4dc9b21",
     "CFTC|cot": "3d173fc52715d9aa837ca85d48a5655f1df70ce8f6c4db6313305f6ea006c878",
-    "미국 주요지수·시장 확산·옵션 과거 비교|context": "e8da67efd1af3e975a9138b0132dedb09ec47db3061321df756b69f272fd7021"
+    "미국 주요지수·시장 확산·옵션 과거 비교|context": "15aa1158431b17da477660d4abea39c7ef7e9c2cb6597cc52e2600d0a0ef2e9b"
   },
   "values": {
     "Nasdaq SOX|sox": {
@@ -2463,7 +2463,7 @@
                 ],
                 [
                   "2026-05-27",
-                  746.6774291992188
+                  746.677490234375
                 ],
                 [
                   "2026-05-28",
@@ -2475,7 +2475,7 @@
                 ],
                 [
                   "2026-06-01",
-                  754.7166748046875
+                  754.7167358398438
                 ],
                 [
                   "2026-06-02",
@@ -2499,7 +2499,7 @@
                 ],
                 [
                   "2026-06-09",
-                  733.3350830078125
+                  733.3350219726562
                 ],
                 [
                   "2026-06-10",
@@ -34318,12 +34318,12 @@
         }
       },
       "url": "https://www.cboe.com/markets/us/options/market-statistics/daily",
-      "fingerprint": "e8da67efd1af3e975a9138b0132dedb09ec47db3061321df756b69f272fd7021"
+      "fingerprint": "15aa1158431b17da477660d4abea39c7ef7e9c2cb6597cc52e2600d0a0ef2e9b"
     }
   },
-  "updated_at_kst": "2026-11-22T10:38:16.795339+09:00",
+  "updated_at_kst": "2026-11-23T07:51:29.364831+09:00",
   "presentation_version": "us-positioning-auto-direction-20261016-v1",
-  "daily_digest_sent_date_kst": "2026-11-22",
+  "daily_digest_sent_date_kst": "2026-11-23",
   "last_verified_context_fx": {
     "fx": {
       "status": "verified",
