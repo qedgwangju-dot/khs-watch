@@ -945,5 +945,46 @@ class MaterialEventTests(unittest.TestCase):
             x["key"] for x in m.REPORTS
         ])  # Previously notified in separate memory route: never duplicate.
 
+
+    def test_citi_compact_full_facts_one_message_and_evidence_links(self):
+        import html as html_module
+        import re as re_module
+        row = next(r for r in m.REPORTS if r["key"] ==
+                   "20261122_citi_dram_nand_2027_asp_revision_repost")
+        source = row["sources"][2][1]
+        view = {**row, "source": source,
+                "source_label": "원 게시물", "lineage": "전달본"}
+        text = m.render("citi_price_revision", [view], "2026-11-23T07:07:00+09:00")
+        visible = html_module.unescape(re_module.sub(r"<[^>]+>", "", text))
+        for token in ("+23%→+35%", "+12%p", "+45%→+25%", "-20%p",
+                      "+3%/+2%/+4%/+2%→+5%/+1%/+7%/+11%",
+                      "+5%/+3%/+2%/+1%→-3%/-1%/0%/+3%",
+                      "64GB", "DDR5", "RDIMM", "3,300달러", "2,000달러",
+                      "-39.4%", "공급 +24%", "수요 +28%", "-3.8%",
+                      "공급 +22%", "수요 +26%", "-3.3%",
+                      "0~5%", "+25~30%", "씨티 원본 미확인",
+                      "HBM 약 +100%", "확정 실적"):
+            self.assertIn(token, visible)
+        self.assertLessEqual(len(visible), 980)
+        self.assertEqual(len(d.chunks(text)), 1)
+        self.assertLessEqual(len(text.encode("utf-16-le")) // 2, 2000)
+        for url in (source, row["context_links"][0][1], row["context_links"][1][1]):
+            self.assertEqual(text.count(url), 1)
+        self.assertNotIn("비교 근거:", text)
+        self.assertNotIn("근거 기사", text)
+
+    def test_citi_compact_view_keeps_prior_sent_event_silent(self):
+        item = "20261122_citi_dram_nand_2027_asp_revision_repost"
+        previous = {"delivery_receipt": {"status": "confirmed", "message_ids": [553]},
+                    "hbm_material_event_watch": {"seen_keys": [x["key"] for x in m.REPORTS]}}
+        def unexpected(url):
+            raise AssertionError("Already delivered event must not refetch or resend")
+        result, alerts, audit = m.apply(previous, "2026-11-23T08:23:00+09:00", unexpected)
+        self.assertEqual(alerts, [])
+        self.assertEqual(audit["verified_events"], 0)
+        self.assertIn(item, result["hbm_material_event_watch"]["seen_keys"])
+        self.assertEqual(result["delivery_receipt"], previous["delivery_receipt"])
+
+
 if __name__ == "__main__":
     unittest.main()

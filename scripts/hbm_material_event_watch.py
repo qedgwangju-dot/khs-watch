@@ -638,19 +638,19 @@ REPORTS = (
         "max_age_days": 35,
         "group": "citi_price_revision",
         "label": "씨티 2027 DRAM·NAND ASP·서버 RDIMM 가격 전망 변경: 전달 메모",
-        "short_title": "씨티 2027 DRAM +35%·NAND +25% 전망(리포트 전달본)",
+        "short_title": "씨티 2027년 DRAM 상향·NAND 하향(전달본)",
         "brief_facts": (
-            "11월22일 공개 전달 메모 기준(씨티 원본 독립 확인 전): 2027년 DRAM 계약 평균판매단가 전년비 +23%→+35%(+12%p). 분기 전분기비 기존 +3%/+2%/+4%/+2%→+5%/+1%/+7%/+11%. HBM 가격 약 +100% 인상 가정의 비교기준은 미확인.",
-            "NAND 계약 평균판매단가 전년비 +45%→+25%(-20%p). 분기 전분기비 기존 +5%/+3%/+2%/+1%→-3%/-1%/0%/+3%. 연간 평균의 전년비와 분기별 전분기비는 다른 기준.",
-            "서버 DDR5 64GB RDIMM 현물: 2026년 9~10월 약 3,300달러→2027년 상반기 약 2,000달러(-39.4%)는 씨티 전달 전망. 현재 실제 현물 시세·개별 고객 계약가격으로 확정 금지.",
-            "기존 씨티 11월3일 보도(과거 수급모델): 2027년 DRAM 공급 증가율 +24%·수요 +28%·부족률 -3.8%, NAND 공급 +22%·수요 +26%·부족률 -3.3%; 11월22일 가격 전망 전달본과 발표일·전망 정의 분리.",
-            "반대 근거(새 발송 아님): 트렌드포스 11월19일 공식 NAND 계약가격 2027년 1분기 0~5% 하락·2분기부터 전 품목 약세, 2027년 비트 공급 +25~30%. 별도 메모리 알림에서 이미 처리된 발표이며 이 알림에서는 비교만.",
+            "DRAM 평균판매단가(2027년 전년비): +23%→+35%(+12%p). 분기 전분기비 기존 +3%/+2%/+4%/+2%→+5%/+1%/+7%/+11%.",
+            "NAND 평균판매단가(2027년 전년비): +45%→+25%(-20%p). 분기 기존 +5%/+3%/+2%/+1%→-3%/-1%/0%/+3%.",
+            "서버 DDR5 64GB RDIMM 현물 전망: 2026년 9~10월 약 3,300달러→2027년 상반기 약 2,000달러(-39.4%); 현재 실제 시세 미확인.",
+            "씨티 기존 11/3 수급 전망(2027년): DRAM 공급 +24%·수요 +28%·부족률 -3.8%, NAND 공급 +22%·수요 +26%·부족률 -3.3%.",
+            "트렌드포스 11/19 공식 반대 전망: 2027년 NAND 계약가격 1분기 0~5% 하락·2분기부터 전 품목 약세, 비트 공급 +25~30%(기존 별도 알림 발송).",
         ),
         "brief_caution": (
-            "새 씨티 가격 전망은 KK Kontemporaries의 전달문 재게시(2026-11-22) 기준이며 "
-            "씨티 원본 보고서·최신 64GB 현물가격은 독립 확인 전. "
-            "시장 평균 계약가와 모듈 현물가, 연간 전년비와 분기 전분기비를 혼동 금지. "
-            "NAND 공급 부족·과잉은 서로 다른 날짜·모델의 예측이며 확정 거래·실적 아님."
+            "11/22 KK Kontemporaries 전달본 기준(씨티 원본 미확인). "
+            "HBM 약 +100% 가격 인상 가정의 비교기준 미확인. "
+            "계약 평균판매단가≠현물가격, 연간 전년비≠분기 전분기비; "
+            "두 기관 전망은 실제 거래·확정 실적이 아님."
         ),
         "sources": (
             ("KK Kontemporaries 씨티 메모 재게시",
@@ -849,6 +849,38 @@ def render_samsung_memory_lta(items: list[dict], checked_at: str) -> str:
     return ("\n\n" + BREAK + "\n\n").join(parts).strip() + ("\n" if parts else "")
 
 
+def render_citi_price_revision(items: list[dict], checked_at: str) -> str:
+    """Compact the Citi price-revision view only; keep sources and delivery dedupe unchanged."""
+    pages = []
+    for item in items:
+        lines = [
+            "<b>[HBM | 씨티 메모리 가격 전망]</b>",
+            "확인 " + html.escape(checked_at[:16].replace("T", " ")) + " KST",
+            "<b>■ " + html.escape(item.get("short_title") or item["label"]) + "</b>",
+        ]
+        lines.extend("• " + html.escape(fact) for fact in
+                     (item.get("brief_facts") or item["facts"]))
+        lines.append("• 주의: " + html.escape(item.get("brief_caution") or item["caution"]))
+        source = item.get("source") or ""
+        links = []
+        if source:
+            links.append('<a href="' + html.escape(source, quote=True) +
+                         '">씨티 전망 전달문</a>')
+        for label, url in item.get("context_links", ()):
+            if "investing.com" in (urlparse(url).hostname or ""):
+                short = "씨티 11/3"
+            elif "trendforce.com" in (urlparse(url).hostname or ""):
+                short = "트렌드포스 11/19"
+            else:
+                short = label
+            links.append('<a href="' + html.escape(url, quote=True) +
+                         '">' + html.escape(short) + '</a>')
+        if links:
+            lines.append("근거: " + " · ".join(links))
+        pages.append("\n".join(lines))
+    return ("\n\n" + BREAK + "\n\n").join(pages).strip() + ("\n" if pages else "")
+
+
 def render(group: str, items: list[dict], checked_at: str) -> str:
     """Readable, source-linked Telegram digest; keep all material facts visible.
 
@@ -857,6 +889,8 @@ def render(group: str, items: list[dict], checked_at: str) -> str:
     """
     if group == "samsung_memory_lta":
         return render_samsung_memory_lta(items, checked_at)
+    if group == "citi_price_revision":
+        return render_citi_price_revision(items, checked_at)
     if group == "nvidia_commitments":
         # Only the NVIDIA supply-commitment notice uses the compact display.
         header = ("<b>[HBM 감시 | 엔비디아 공급약정 변화]</b>\n"
