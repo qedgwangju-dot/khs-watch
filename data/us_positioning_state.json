@@ -1,114 +1,109 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "c82e428265bef6aec2c017f659ec5cba03ffa39ad66059a74d9b98175735c7f9",
-    "Cboe|options": "97a54daf357c4275df0a860e70ff9dce5b6d7309430987a826ac587d799de92c",
-    "CFTC|cot": "ed1bf99ede7547de56690953d96455ed5027921078ce045b2559a488124bc12c",
-    "미국 주요지수·시장 확산·옵션 과거 비교|context": "f99d5486d0874b751ca2bf85dcbec5d6b653c1f55da949ea529e70f8e5992bbd"
+    "Nasdaq SOX|sox": "a1c3efdecf089a3608c44a14b226e3cf45097425fbad89df0e6720399bc3c274",
+    "Cboe|options": "97a2476da36a415f6b467cc6ce232e31ec90cfc5b0d1b9408a62d3a1e4dc9b21",
+    "CFTC|cot": "3d173fc52715d9aa837ca85d48a5655f1df70ce8f6c4db6313305f6ea006c878",
+    "미국 주요지수·시장 확산·옵션 과거 비교|context": "e8da67efd1af3e975a9138b0132dedb09ec47db3061321df756b69f272fd7021"
   },
   "values": {
     "Nasdaq SOX|sox": {
       "source": "Nasdaq SOX",
       "kind": "sox",
-      "period": "11/19/2026",
+      "period": "11/20/2026",
       "metrics": {
-        "value": 9419.72,
-        "previous_close": 9652.7998046875,
+        "value": 8408.59,
+        "previous_close": 9419.7197265625,
         "previous_close_source": "Yahoo daily close cross-check",
-        "net_change": -233.07980468750065,
+        "net_change": -1011.1297265624999,
         "net_change_source": "Nasdaq official completed close minus Yahoo prior daily close",
-        "pct": -2.414634193224585,
-        "d1_pct": -2.414634193224585,
-        "official_overview_url": "https://indexes.nasdaq.com/Index/History/SOX",
+        "pct": -10.73418059043979,
+        "d1_pct": -10.73418059043979,
+        "official_overview_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-10&todate=2026-11-20&limit=200",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=6mo&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": 0.0002734374993451638,
+        "crosscheck_close_diff": 0.00015625000014551915,
         "final_close_confirmed": true,
-        "expected_completed_session": "2026-11-19",
-        "d3_pct": -1.9866570554761709,
-        "d5_pct": -10.34533494813098,
+        "expected_completed_session": "2026-11-20",
+        "d3_pct": -12.800014664317272,
+        "d5_pct": -17.126706187357023,
         "month_windows": {
           "1m": {
             "calendar_months": 1,
-            "cutoff_date": "2026-10-19",
-            "end_date": "2026-11-19",
-            "end_close": 9419.72,
+            "cutoff_date": "2026-10-20",
+            "end_date": "2026-11-20",
+            "end_close": 8408.59,
             "basis": "calendar months; latest observed close on or before cutoff",
             "status": "verified",
-            "base_date": "2026-10-19",
-            "yahoo_base_close": 11316.33984375,
-            "nasdaq_base_close": 11316.34,
+            "base_date": "2026-10-20",
+            "yahoo_base_close": 11283.8095703125,
+            "nasdaq_base_close": 11283.81,
             "cutoff_gap_days": 0,
-            "base_close": 11316.34,
-            "base_crosscheck_diff": 0.00015625000014551915,
-            "return_pct": -16.76001251287961
+            "base_close": 11283.81,
+            "base_crosscheck_diff": 0.00042968749949068297,
+            "return_pct": -25.48093241555821
           },
           "3m": {
             "calendar_months": 3,
-            "cutoff_date": "2026-08-19",
-            "end_date": "2026-11-19",
-            "end_close": 9419.72,
+            "cutoff_date": "2026-08-20",
+            "end_date": "2026-11-20",
+            "end_close": 8408.59,
             "basis": "calendar months; latest observed close on or before cutoff",
             "status": "verified",
-            "base_date": "2026-08-19",
-            "yahoo_base_close": 11738.23046875,
-            "nasdaq_base_close": 11738.23,
+            "base_date": "2026-08-20",
+            "yahoo_base_close": 11800.01953125,
+            "nasdaq_base_close": 11800.02,
             "cutoff_gap_days": 0,
-            "base_close": 11738.23,
-            "base_crosscheck_diff": -0.00046875000043655746,
-            "return_pct": -19.75178540546574
+            "base_close": 11800.02,
+            "base_crosscheck_diff": 0.00046875000043655746,
+            "return_pct": -28.74088349002798
           }
         },
-        "month_window_history_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-09&todate=2026-11-19&limit=200",
+        "month_window_history_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-10&todate=2026-11-20&limit=200",
         "price_path": {
           "status": "verified",
-          "end_date": "2026-11-19",
+          "end_date": "2026-11-20",
           "symbol": "SOX",
           "tolerance_points": 0.1,
           "price_basis": "unadjusted completed-session close",
           "values": {
-            "d1_pct": -2.4146361677440775,
-            "d3_pct": -1.9866502265715624,
-            "d5_pct": -10.345333012267455,
-            "ma20": 10320.530499999999,
-            "ma20_prior5": 10695.661,
-            "ma20_change5_pct": -3.507314788679272,
-            "price_vs_ma20_pct": -8.728335234317653,
-            "ma60": 11436.510666666667,
-            "ma60_prior5": 11598.0185,
-            "ma60_change5_pct": -1.392546781446613,
-            "price_vs_ma60_pct": -17.634667823507478,
-            "close": 9419.72,
+            "d1_pct": -10.73418318166569,
+            "d3_pct": -12.800014103670264,
+            "d5_pct": -17.126702094946733,
+            "ma20": 10201.987,
+            "ma20_prior5": 10646.1125,
+            "ma20_change5_pct": -4.1717152622612215,
+            "price_vs_ma20_pct": -17.578899090931987,
+            "ma60": 11378.617666666665,
+            "ma60_prior5": 11570.456833333334,
+            "ma60_change5_pct": -1.6580085767573083,
+            "price_vs_ma60_pct": -26.101831994647963,
+            "close": 8408.59,
             "peak63_close": 13217.82,
             "peak63_date": "2026-10-06",
-            "drawdown63_pct": -28.73469301291741,
+            "drawdown63_pct": -36.384441609887254,
             "trend": "하락"
           },
           "month_windows": {
             "1m": {
               "status": "verified",
-              "base_date": "2026-10-19",
-              "end_date": "2026-11-19",
-              "base_primary_close": 11316.34,
-              "base_secondary_close": 11316.33984375,
-              "end_close": 9419.72,
-              "return_pct": -16.76001251287961
+              "base_date": "2026-10-20",
+              "end_date": "2026-11-20",
+              "base_primary_close": 11283.81,
+              "base_secondary_close": 11283.8095703125,
+              "end_close": 8408.59,
+              "return_pct": -25.48093241555821
             },
             "3m": {
               "status": "verified",
-              "base_date": "2026-08-19",
-              "end_date": "2026-11-19",
-              "base_primary_close": 11738.23,
-              "base_secondary_close": 11738.23046875,
-              "end_close": 9419.72,
-              "return_pct": -19.75178540546574
+              "base_date": "2026-08-20",
+              "end_date": "2026-11-20",
+              "base_primary_close": 11800.02,
+              "base_secondary_close": 11800.01953125,
+              "end_close": 8408.59,
+              "return_pct": -28.74088349002798
             }
           },
           "operands": [
-            [
-              "2026-08-19",
-              11738.23,
-              11738.23046875
-            ],
             [
               "2026-08-20",
               11800.02,
@@ -433,10 +428,14 @@
               "2026-11-19",
               9419.72,
               9419.7197265625
+            ],
+            [
+              "2026-11-20",
+              8408.59,
+              8408.58984375
             ]
           ],
           "session_dates": [
-            "2026-08-20",
             "2026-08-21",
             "2026-08-24",
             "2026-08-25",
@@ -500,42 +499,43 @@
             "2026-11-16",
             "2026-11-17",
             "2026-11-18",
-            "2026-11-19"
+            "2026-11-19",
+            "2026-11-20"
           ]
         }
       },
-      "url": "https://indexes.nasdaq.com/Index/History/SOX",
-      "fingerprint": "c82e428265bef6aec2c017f659ec5cba03ffa39ad66059a74d9b98175735c7f9"
+      "url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-10&todate=2026-11-20&limit=200",
+      "fingerprint": "a1c3efdecf089a3608c44a14b226e3cf45097425fbad89df0e6720399bc3c274"
     },
     "Cboe|options": {
       "source": "Cboe",
       "kind": "options",
-      "period": "Thursday, November 19, 2026",
+      "period": "Friday, November 20, 2026",
       "metrics": {
-        "total_pc_ratio": 1.01,
-        "total_calls": 8839656,
-        "total_puts": 8927036,
+        "total_pc_ratio": 1.13,
+        "total_calls": 10439201,
+        "total_puts": 11753144,
         "total_time_ct": "일별 마감",
-        "equity_pc_ratio": 0.62,
-        "equity_calls": 2553995,
-        "equity_puts": 1582288,
+        "equity_pc_ratio": 0.77,
+        "equity_calls": 3360800,
+        "equity_puts": 2576245,
         "equity_time_ct": "일별 마감",
-        "index_pc_ratio": 1.2,
-        "index_calls": 4419844,
-        "index_puts": 5307844,
+        "index_pc_ratio": 1.27,
+        "index_calls": 4689971,
+        "index_puts": 5944675,
         "index_time_ct": "일별 마감",
         "snapshot_type": "cboe_daily_eod",
         "final_snapshot": true,
         "daily_ratio_crosscheck": {
-          "date": "2026-11-19",
-          "total": 1.01,
-          "index": 1.2,
-          "equity": 0.62,
-          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-19"
+          "date": "2026-11-20",
+          "total": 1.13,
+          "index": 1.27,
+          "equity": 0.77,
+          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-20"
         }
       },
-      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-19",
-      "fingerprint": "97a54daf357c4275df0a860e70ff9dce5b6d7309430987a826ac587d799de92c"
+      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-20",
+      "fingerprint": "97a2476da36a415f6b467cc6ce232e31ec90cfc5b0d1b9408a62d3a1e4dc9b21"
     },
     "CFTC|cot": {
       "source": "CFTC",
@@ -748,113 +748,113 @@
     "미국 주요지수·시장 확산·옵션 과거 비교|context": {
       "source": "미국 주요지수·시장 확산·옵션 과거 비교",
       "kind": "context",
-      "period": "2026-11-19",
+      "period": "2026-11-20",
       "metrics": {
         "indices": {
           "NDX": {
             "status": "unavailable",
-            "end_date": "2026-11-19",
+            "end_date": "2026-11-20",
             "symbol": "NDX",
             "tolerance_points": 0.1,
             "price_basis": "unadjusted completed-session close",
             "reason": "제공처 종가 불일치: 2026-10-06",
-            "primary_url": "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&fromdate=2026-05-13&todate=2026-11-19&limit=200",
+            "primary_url": "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&fromdate=2026-05-14&todate=2026-11-20&limit=200",
             "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ENDX?range=6mo&interval=1d",
             "returns": {
               "status": "verified",
               "symbol": "NDX",
-              "end_date": "2026-11-19",
+              "end_date": "2026-11-20",
               "windows": {
                 "1d": {
                   "status": "verified",
-                  "base_date": "2026-11-18",
-                  "end_date": "2026-11-19",
-                  "base_primary": 27116.26,
-                  "base_secondary": 27116.259765625,
-                  "end_primary": 26517.05,
-                  "end_secondary": 26517.05078125,
-                  "return_pct": -2.2097811423846814
+                  "base_date": "2026-11-19",
+                  "end_date": "2026-11-20",
+                  "base_primary": 26517.05,
+                  "base_secondary": 26517.05078125,
+                  "end_primary": 25028.98,
+                  "end_secondary": 25028.98046875,
+                  "return_pct": -5.611747913135135
                 },
                 "3d": {
                   "status": "verified",
-                  "base_date": "2026-11-16",
-                  "end_date": "2026-11-19",
-                  "base_primary": 27197.15,
-                  "base_secondary": 27197.150390625,
-                  "end_primary": 26517.05,
-                  "end_secondary": 26517.05078125,
-                  "return_pct": -2.5006296615638135
+                  "base_date": "2026-11-17",
+                  "end_date": "2026-11-20",
+                  "base_primary": 27001.78,
+                  "base_secondary": 27001.779296875,
+                  "end_primary": 25028.98,
+                  "end_secondary": 25028.98046875,
+                  "return_pct": -7.306184999655574
                 },
                 "5d": {
                   "status": "verified",
-                  "base_date": "2026-11-12",
-                  "end_date": "2026-11-19",
-                  "base_primary": 28289.19,
-                  "base_secondary": 28289.189453125,
-                  "end_primary": 26517.05,
-                  "end_secondary": 26517.05078125,
-                  "return_pct": -6.264371655745538
+                  "base_date": "2026-11-13",
+                  "end_date": "2026-11-20",
+                  "base_primary": 27943.74,
+                  "base_secondary": 27943.740234375,
+                  "end_primary": 25028.98,
+                  "end_secondary": 25028.98046875,
+                  "return_pct": -10.430815631694257
                 },
                 "1m": {
                   "status": "verified",
-                  "base_date": "2026-10-19",
-                  "end_date": "2026-11-19",
-                  "base_primary": 29529.34,
-                  "base_secondary": 29529.349609375,
-                  "end_primary": 26517.05,
-                  "end_secondary": 26517.05078125,
-                  "return_pct": -10.201006863004725
+                  "base_date": "2026-10-20",
+                  "end_date": "2026-11-20",
+                  "base_primary": 29490.28,
+                  "base_secondary": 29490.279296875,
+                  "end_primary": 25028.98,
+                  "end_secondary": 25028.98046875,
+                  "return_pct": -15.128035406920514
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-08-19",
-                  "end_date": "2026-11-19",
-                  "base_primary": 29426.02,
-                  "base_secondary": 29426.01953125,
-                  "end_primary": 26517.05,
-                  "end_secondary": 26517.05078125,
-                  "return_pct": -9.885706595727184
+                  "base_date": "2026-08-20",
+                  "end_date": "2026-11-20",
+                  "base_primary": 29213.16,
+                  "base_secondary": 29213.16015625,
+                  "end_primary": 25028.98,
+                  "end_secondary": 25028.98046875,
+                  "return_pct": -14.32292843362375
                 }
               },
-              "close": 26517.05,
-              "peer_close": 26517.05078125,
+              "close": 25028.98,
+              "peer_close": 25028.98046875,
               "operands": [
                 [
-                  "2026-08-19",
-                  29426.02,
-                  29426.01953125
+                  "2026-08-20",
+                  29213.16,
+                  29213.16015625
                 ],
                 [
-                  "2026-10-19",
-                  29529.34,
-                  29529.349609375
+                  "2026-10-20",
+                  29490.28,
+                  29490.279296875
                 ],
                 [
-                  "2026-11-12",
-                  28289.19,
-                  28289.189453125
+                  "2026-11-13",
+                  27943.74,
+                  27943.740234375
                 ],
                 [
-                  "2026-11-16",
-                  27197.15,
-                  27197.150390625
-                ],
-                [
-                  "2026-11-18",
-                  27116.26,
-                  27116.259765625
+                  "2026-11-17",
+                  27001.78,
+                  27001.779296875
                 ],
                 [
                   "2026-11-19",
                   26517.05,
                   26517.05078125
+                ],
+                [
+                  "2026-11-20",
+                  25028.98,
+                  25028.98046875
                 ]
               ]
             }
           },
           "SPX": {
             "status": "unavailable",
-            "end_date": "2026-11-19",
+            "end_date": "2026-11-20",
             "symbol": "SPX",
             "reason": "403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/_SPX.json"
           }
@@ -863,54 +863,49 @@
           "series": {
             "RSP": {
               "status": "verified",
-              "end_date": "2026-11-19",
+              "end_date": "2026-11-20",
               "symbol": "RSP",
               "tolerance_points": 0.1,
               "price_basis": "unadjusted completed-session close",
               "values": {
-                "d1_pct": -1.7639140324003155,
-                "d3_pct": -3.334399123007359,
-                "d5_pct": -4.118339978252994,
-                "ma20": 218.5365,
-                "ma20_prior5": 218.30149999999998,
-                "ma20_change5_pct": 0.10764928321611578,
-                "price_vs_ma20_pct": -3.1603416362941616,
-                "ma60": 215.47766666666666,
-                "ma60_prior5": 215.89183333333332,
-                "ma60_change5_pct": -0.19183989513267274,
-                "price_vs_ma60_pct": -1.7856452254139232,
-                "close": 211.63,
+                "d1_pct": -1.9798705287530138,
+                "d3_pct": -3.8561364479050786,
+                "d5_pct": -6.203653463555792,
+                "ma20": 218.0815,
+                "ma20_prior5": 218.65500000000003,
+                "ma20_change5_pct": -0.2622853353456467,
+                "price_vs_ma20_pct": -4.879597765055732,
+                "ma60": 215.24416666666667,
+                "ma60_prior5": 215.9065,
+                "ma60_change5_pct": -0.30676859350381447,
+                "price_vs_ma60_pct": -3.625727371628351,
+                "close": 207.44,
                 "peak63_close": 223.33,
                 "peak63_date": "2026-11-04",
-                "drawdown63_pct": -5.238884162450197,
+                "drawdown63_pct": -7.115031567635343,
                 "trend": "혼재"
               },
               "month_windows": {
                 "1m": {
                   "status": "verified",
-                  "base_date": "2026-10-19",
-                  "end_date": "2026-11-19",
-                  "base_primary_close": 213.4,
-                  "base_secondary_close": 213.39999389648438,
-                  "end_close": 211.63,
-                  "return_pct": -0.8294283036551109
+                  "base_date": "2026-10-20",
+                  "end_date": "2026-11-20",
+                  "base_primary_close": 215.86,
+                  "base_secondary_close": 215.86000061035156,
+                  "end_close": 207.44,
+                  "return_pct": -3.900676364310207
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-08-19",
-                  "end_date": "2026-11-19",
-                  "base_primary_close": 222.07,
-                  "base_secondary_close": 222.07000732421875,
-                  "end_close": 211.63,
-                  "return_pct": -4.7012203359301115
+                  "base_date": "2026-08-20",
+                  "end_date": "2026-11-20",
+                  "base_primary_close": 220.28,
+                  "base_secondary_close": 220.27999877929688,
+                  "end_close": 207.44,
+                  "return_pct": -5.828944979117489
                 }
               },
               "operands": [
-                [
-                  "2026-08-19",
-                  222.07,
-                  222.07000732421875
-                ],
                 [
                   "2026-08-20",
                   220.28,
@@ -1235,10 +1230,14 @@
                   "2026-11-19",
                   211.63,
                   211.6300048828125
+                ],
+                [
+                  "2026-11-20",
+                  207.44,
+                  207.44000244140625
                 ]
               ],
               "session_dates": [
-                "2026-08-20",
                 "2026-08-21",
                 "2026-08-24",
                 "2026-08-25",
@@ -1302,106 +1301,103 @@
                 "2026-11-16",
                 "2026-11-17",
                 "2026-11-18",
-                "2026-11-19"
+                "2026-11-19",
+                "2026-11-20"
               ],
-              "primary_url": "https://api.nasdaq.com/api/quote/RSP/historical?assetclass=etf&fromdate=2026-05-13&todate=2026-11-19&limit=200",
+              "primary_url": "https://api.nasdaq.com/api/quote/RSP/historical?assetclass=etf&fromdate=2026-05-14&todate=2026-11-20&limit=200",
               "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/RSP?range=6mo&interval=1d",
               "returns": {
                 "status": "verified",
                 "symbol": "RSP",
-                "end_date": "2026-11-19",
+                "end_date": "2026-11-20",
                 "windows": {
                   "1d": {
                     "status": "verified",
-                    "base_date": "2026-11-18",
-                    "end_date": "2026-11-19",
-                    "base_primary": 215.43,
-                    "base_secondary": 215.42999267578125,
-                    "end_primary": 211.63,
-                    "end_secondary": 211.6300048828125,
-                    "return_pct": -1.7639140324003155
+                    "base_date": "2026-11-19",
+                    "end_date": "2026-11-20",
+                    "base_primary": 211.63,
+                    "base_secondary": 211.6300048828125,
+                    "end_primary": 207.44,
+                    "end_secondary": 207.44000244140625,
+                    "return_pct": -1.9798705287530138
                   },
                   "3d": {
                     "status": "verified",
-                    "base_date": "2026-11-16",
-                    "end_date": "2026-11-19",
-                    "base_primary": 218.93,
-                    "base_secondary": 218.92999267578125,
-                    "end_primary": 211.63,
-                    "end_secondary": 211.6300048828125,
-                    "return_pct": -3.334399123007359
+                    "base_date": "2026-11-17",
+                    "end_date": "2026-11-20",
+                    "base_primary": 215.76,
+                    "base_secondary": 215.75999450683594,
+                    "end_primary": 207.44,
+                    "end_secondary": 207.44000244140625,
+                    "return_pct": -3.8561364479050786
                   },
                   "5d": {
                     "status": "verified",
-                    "base_date": "2026-11-12",
-                    "end_date": "2026-11-19",
-                    "base_primary": 220.72,
-                    "base_secondary": 220.72000122070312,
-                    "end_primary": 211.63,
-                    "end_secondary": 211.6300048828125,
-                    "return_pct": -4.118339978252994
+                    "base_date": "2026-11-13",
+                    "end_date": "2026-11-20",
+                    "base_primary": 221.16,
+                    "base_secondary": 221.16000366210938,
+                    "end_primary": 207.44,
+                    "end_secondary": 207.44000244140625,
+                    "return_pct": -6.203653463555792
                   },
                   "1m": {
                     "status": "verified",
-                    "base_date": "2026-10-19",
-                    "end_date": "2026-11-19",
-                    "base_primary": 213.4,
-                    "base_secondary": 213.39999389648438,
-                    "end_primary": 211.63,
-                    "end_secondary": 211.6300048828125,
-                    "return_pct": -0.8294283036551109
+                    "base_date": "2026-10-20",
+                    "end_date": "2026-11-20",
+                    "base_primary": 215.86,
+                    "base_secondary": 215.86000061035156,
+                    "end_primary": 207.44,
+                    "end_secondary": 207.44000244140625,
+                    "return_pct": -3.900676364310207
                   },
                   "3m": {
                     "status": "verified",
-                    "base_date": "2026-08-19",
-                    "end_date": "2026-11-19",
-                    "base_primary": 222.07,
-                    "base_secondary": 222.07000732421875,
-                    "end_primary": 211.63,
-                    "end_secondary": 211.6300048828125,
-                    "return_pct": -4.7012203359301115
+                    "base_date": "2026-08-20",
+                    "end_date": "2026-11-20",
+                    "base_primary": 220.28,
+                    "base_secondary": 220.27999877929688,
+                    "end_primary": 207.44,
+                    "end_secondary": 207.44000244140625,
+                    "return_pct": -5.828944979117489
                   }
                 },
-                "close": 211.63,
-                "peer_close": 211.6300048828125,
+                "close": 207.44,
+                "peer_close": 207.44000244140625,
                 "operands": [
                   [
-                    "2026-08-19",
-                    222.07,
-                    222.07000732421875
+                    "2026-08-20",
+                    220.28,
+                    220.27999877929688
                   ],
                   [
-                    "2026-10-19",
-                    213.4,
-                    213.39999389648438
+                    "2026-10-20",
+                    215.86,
+                    215.86000061035156
                   ],
                   [
-                    "2026-11-12",
-                    220.72,
-                    220.72000122070312
+                    "2026-11-13",
+                    221.16,
+                    221.16000366210938
                   ],
                   [
-                    "2026-11-16",
-                    218.93,
-                    218.92999267578125
-                  ],
-                  [
-                    "2026-11-18",
-                    215.43,
-                    215.42999267578125
+                    "2026-11-17",
+                    215.76,
+                    215.75999450683594
                   ],
                   [
                     "2026-11-19",
                     211.63,
                     211.6300048828125
+                  ],
+                  [
+                    "2026-11-20",
+                    207.44,
+                    207.44000244140625
                   ]
                 ]
               },
               "adjusted_operands": [
-                [
-                  "2026-05-20",
-                  202.2832794189453
-                ],
                 [
                   "2026-05-21",
                   203.1566162109375
@@ -1909,59 +1905,58 @@
                 [
                   "2026-11-19",
                   211.6300048828125
+                ],
+                [
+                  "2026-11-20",
+                  207.44000244140625
                 ]
               ]
             },
             "SPY": {
               "status": "verified",
-              "end_date": "2026-11-19",
+              "end_date": "2026-11-20",
               "symbol": "SPY",
               "tolerance_points": 0.1,
               "price_basis": "unadjusted completed-session close",
               "values": {
-                "d1_pct": -1.9624760339633007,
-                "d3_pct": -3.2542739374282093,
-                "d5_pct": -5.448277683854608,
-                "ma20": 751.3154999999999,
-                "ma20_prior5": 759.4655,
-                "ma20_change5_pct": -1.0731231372590466,
-                "price_vs_ma20_pct": -4.71779166009485,
-                "ma60": 762.4576666666667,
-                "ma60_prior5": 764.9735000000001,
-                "ma60_change5_pct": -0.3288784949195489,
-                "price_vs_ma60_pct": -6.110197156301133,
-                "close": 715.87,
+                "d1_pct": -3.640325757469942,
+                "d3_pct": -5.820271967669721,
+                "d5_pct": -8.558134602383449,
+                "ma20": 747.8075,
+                "ma20_prior5": 759.0215000000001,
+                "ma20_change5_pct": -1.477428504989653,
+                "price_vs_ma20_pct": -7.755672415695225,
+                "ma60": 761.1028333333333,
+                "ma60_prior5": 764.8363333333333,
+                "ma60_change5_pct": -0.48814365077670674,
+                "price_vs_ma60_pct": -9.367043480983838,
+                "close": 689.81,
                 "peak63_close": 779.09,
                 "peak63_date": "2026-10-06",
-                "drawdown63_pct": -8.114595232899923,
+                "drawdown63_pct": -11.45952328999218,
                 "trend": "하락"
               },
               "month_windows": {
                 "1m": {
                   "status": "verified",
-                  "base_date": "2026-10-19",
-                  "end_date": "2026-11-19",
-                  "base_primary_close": 766.48,
-                  "base_secondary_close": 766.47998046875,
-                  "end_close": 715.87,
-                  "return_pct": -6.602912013359774
+                  "base_date": "2026-10-20",
+                  "end_date": "2026-11-20",
+                  "base_primary_close": 769.05,
+                  "base_secondary_close": 769.0499877929688,
+                  "end_close": 689.81,
+                  "return_pct": -10.303621351017489
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-08-19",
-                  "end_date": "2026-11-19",
-                  "base_primary_close": 769.06,
-                  "base_secondary_close": 769.0599975585938,
-                  "end_close": 715.87,
-                  "return_pct": -6.916235404259741
+                  "base_date": "2026-08-20",
+                  "end_date": "2026-11-20",
+                  "base_primary_close": 762.6,
+                  "base_secondary_close": 762.5999755859375,
+                  "end_close": 689.81,
+                  "return_pct": -9.544977707841607
                 }
               },
               "operands": [
-                [
-                  "2026-08-19",
-                  769.06,
-                  769.0599975585938
-                ],
                 [
                   "2026-08-20",
                   762.6,
@@ -2286,10 +2281,14 @@
                   "2026-11-19",
                   715.87,
                   715.8699951171875
+                ],
+                [
+                  "2026-11-20",
+                  689.81,
+                  689.8099975585938
                 ]
               ],
               "session_dates": [
-                "2026-08-20",
                 "2026-08-21",
                 "2026-08-24",
                 "2026-08-25",
@@ -2353,106 +2352,103 @@
                 "2026-11-16",
                 "2026-11-17",
                 "2026-11-18",
-                "2026-11-19"
+                "2026-11-19",
+                "2026-11-20"
               ],
-              "primary_url": "https://api.nasdaq.com/api/quote/SPY/historical?assetclass=etf&fromdate=2026-05-13&todate=2026-11-19&limit=200",
+              "primary_url": "https://api.nasdaq.com/api/quote/SPY/historical?assetclass=etf&fromdate=2026-05-14&todate=2026-11-20&limit=200",
               "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?range=6mo&interval=1d",
               "returns": {
                 "status": "verified",
                 "symbol": "SPY",
-                "end_date": "2026-11-19",
+                "end_date": "2026-11-20",
                 "windows": {
                   "1d": {
                     "status": "verified",
-                    "base_date": "2026-11-18",
-                    "end_date": "2026-11-19",
-                    "base_primary": 730.2,
-                    "base_secondary": 730.2000122070312,
-                    "end_primary": 715.87,
-                    "end_secondary": 715.8699951171875,
-                    "return_pct": -1.9624760339633007
+                    "base_date": "2026-11-19",
+                    "end_date": "2026-11-20",
+                    "base_primary": 715.87,
+                    "base_secondary": 715.8699951171875,
+                    "end_primary": 689.81,
+                    "end_secondary": 689.8099975585938,
+                    "return_pct": -3.640325757469942
                   },
                   "3d": {
                     "status": "verified",
-                    "base_date": "2026-11-16",
-                    "end_date": "2026-11-19",
-                    "base_primary": 739.95,
-                    "base_secondary": 739.9500122070312,
-                    "end_primary": 715.87,
-                    "end_secondary": 715.8699951171875,
-                    "return_pct": -3.2542739374282093
+                    "base_date": "2026-11-17",
+                    "end_date": "2026-11-20",
+                    "base_primary": 732.44,
+                    "base_secondary": 732.4400024414062,
+                    "end_primary": 689.81,
+                    "end_secondary": 689.8099975585938,
+                    "return_pct": -5.820271967669721
                   },
                   "5d": {
                     "status": "verified",
-                    "base_date": "2026-11-12",
-                    "end_date": "2026-11-19",
-                    "base_primary": 757.12,
-                    "base_secondary": 757.1199951171875,
-                    "end_primary": 715.87,
-                    "end_secondary": 715.8699951171875,
-                    "return_pct": -5.448277683854608
+                    "base_date": "2026-11-13",
+                    "end_date": "2026-11-20",
+                    "base_primary": 754.37,
+                    "base_secondary": 754.3699951171875,
+                    "end_primary": 689.81,
+                    "end_secondary": 689.8099975585938,
+                    "return_pct": -8.558134602383449
                   },
                   "1m": {
                     "status": "verified",
-                    "base_date": "2026-10-19",
-                    "end_date": "2026-11-19",
-                    "base_primary": 766.48,
-                    "base_secondary": 766.47998046875,
-                    "end_primary": 715.87,
-                    "end_secondary": 715.8699951171875,
-                    "return_pct": -6.602912013359774
+                    "base_date": "2026-10-20",
+                    "end_date": "2026-11-20",
+                    "base_primary": 769.05,
+                    "base_secondary": 769.0499877929688,
+                    "end_primary": 689.81,
+                    "end_secondary": 689.8099975585938,
+                    "return_pct": -10.303621351017489
                   },
                   "3m": {
                     "status": "verified",
-                    "base_date": "2026-08-19",
-                    "end_date": "2026-11-19",
-                    "base_primary": 769.06,
-                    "base_secondary": 769.0599975585938,
-                    "end_primary": 715.87,
-                    "end_secondary": 715.8699951171875,
-                    "return_pct": -6.916235404259741
+                    "base_date": "2026-08-20",
+                    "end_date": "2026-11-20",
+                    "base_primary": 762.6,
+                    "base_secondary": 762.5999755859375,
+                    "end_primary": 689.81,
+                    "end_secondary": 689.8099975585938,
+                    "return_pct": -9.544977707841607
                   }
                 },
-                "close": 715.87,
-                "peer_close": 715.8699951171875,
+                "close": 689.81,
+                "peer_close": 689.8099975585938,
                 "operands": [
                   [
-                    "2026-08-19",
-                    769.06,
-                    769.0599975585938
+                    "2026-08-20",
+                    762.6,
+                    762.5999755859375
                   ],
                   [
-                    "2026-10-19",
-                    766.48,
-                    766.47998046875
+                    "2026-10-20",
+                    769.05,
+                    769.0499877929688
                   ],
                   [
-                    "2026-11-12",
-                    757.12,
-                    757.1199951171875
+                    "2026-11-13",
+                    754.37,
+                    754.3699951171875
                   ],
                   [
-                    "2026-11-16",
-                    739.95,
-                    739.9500122070312
-                  ],
-                  [
-                    "2026-11-18",
-                    730.2,
-                    730.2000122070312
+                    "2026-11-17",
+                    732.44,
+                    732.4400024414062
                   ],
                   [
                     "2026-11-19",
                     715.87,
                     715.8699951171875
+                  ],
+                  [
+                    "2026-11-20",
+                    689.81,
+                    689.8099975585938
                   ]
                 ]
               },
               "adjusted_operands": [
-                [
-                  "2026-05-20",
-                  737.5138549804688
-                ],
                 [
                   "2026-05-21",
                   738.9764404296875
@@ -2960,48 +2956,52 @@
                 [
                   "2026-11-19",
                   715.8699951171875
+                ],
+                [
+                  "2026-11-20",
+                  689.8099975585938
                 ]
               ]
             }
           },
           "comparison": {
             "status": "verified",
-            "end_date": "2026-11-19",
+            "end_date": "2026-11-20",
             "basis": "RSP vs SPY; Yahoo dividend/split-adjusted closes; Nasdaq raw-close cross-check",
             "population": "ETF relative performance; not advancing-stock percentage",
             "windows": {
               "5d": {
-                "base_date": "2026-11-12",
-                "end_date": "2026-11-19",
-                "rsp_base": 220.72000122070312,
-                "rsp_end": 211.6300048828125,
-                "spy_base": 757.1199951171875,
-                "spy_end": 715.8699951171875,
-                "rsp_return_pct": -4.1183382963111415,
-                "spy_return_pct": -5.448277718991601,
-                "difference_pp": 1.32993942268046
+                "base_date": "2026-11-13",
+                "end_date": "2026-11-20",
+                "rsp_base": 221.16000366210938,
+                "rsp_end": 207.44000244140625,
+                "spy_base": 754.3699951171875,
+                "spy_end": 689.8099975585938,
+                "rsp_return_pct": -6.203653912786455,
+                "spy_return_pct": -8.558134334142586,
+                "difference_pp": 2.354480421356131
               },
               "1m": {
-                "base_date": "2026-10-19",
-                "end_date": "2026-11-19",
-                "rsp_base": 213.39999389648438,
-                "rsp_end": 211.6300048828125,
-                "spy_base": 766.47998046875,
-                "spy_end": 715.8699951171875,
-                "rsp_return_pct": -0.8294231791451945,
-                "spy_return_pct": -6.602910270482387,
-                "difference_pp": 5.773487091337193
+                "base_date": "2026-10-20",
+                "end_date": "2026-11-20",
+                "rsp_base": 215.86000061035156,
+                "rsp_end": 207.44000244140625,
+                "spy_base": 769.0499877929688,
+                "spy_end": 689.8099975585938,
+                "rsp_return_pct": -3.900675505020601,
+                "spy_return_pct": -10.303620244735857,
+                "difference_pp": 6.402944739715256
               },
               "3m": {
-                "base_date": "2026-08-19",
-                "end_date": "2026-11-19",
-                "rsp_base": 221.23837280273438,
-                "rsp_end": 211.6300048828125,
-                "spy_base": 767.1549682617188,
-                "spy_end": 715.8699951171875,
-                "rsp_return_pct": -4.342993395855932,
-                "spy_return_pct": -6.685086490508807,
-                "difference_pp": 2.342093094652875
+                "base_date": "2026-08-20",
+                "end_date": "2026-11-20",
+                "rsp_base": 219.455078125,
+                "rsp_end": 207.44000244140625,
+                "spy_base": 760.7109985351562,
+                "spy_end": 689.8099975585938,
+                "rsp_return_pct": -5.474959060528118,
+                "spy_return_pct": -9.32035965210063,
+                "difference_pp": 3.8454005915725116
               }
             }
           }
@@ -3009,19 +3009,719 @@
         "options": {
           "1m": {
             "status": "verified",
-            "start_date": "2026-10-19",
-            "end_exclusive": "2026-11-19",
+            "start_date": "2026-10-20",
+            "end_exclusive": "2026-11-20",
             "expected_sessions": 23,
             "basis": "published daily P/C; current day excluded; <= tie convention",
             "values": {
               "equity": {
-                "current_pc": 0.62,
+                "current_pc": 0.77,
                 "sample_n": 23,
-                "median_pc": 0.6,
-                "current_le_percent": 52.17391304347826,
+                "median_pc": 0.62,
+                "current_le_percent": 95.65217391304348,
                 "min_pc": 0.44,
                 "max_pc": 0.89,
                 "operands": [
+                  {
+                    "date": "2026-10-20",
+                    "calls": 1826125,
+                    "puts": 1021207,
+                    "pc_ratio": 0.56
+                  },
+                  {
+                    "date": "2026-10-21",
+                    "calls": 2323206,
+                    "puts": 1205880,
+                    "pc_ratio": 0.52
+                  },
+                  {
+                    "date": "2026-10-22",
+                    "calls": 2110715,
+                    "puts": 1446499,
+                    "pc_ratio": 0.69
+                  },
+                  {
+                    "date": "2026-10-23",
+                    "calls": 2197255,
+                    "puts": 1482825,
+                    "pc_ratio": 0.67
+                  },
+                  {
+                    "date": "2026-10-26",
+                    "calls": 2117482,
+                    "puts": 1261189,
+                    "pc_ratio": 0.6
+                  },
+                  {
+                    "date": "2026-10-27",
+                    "calls": 1969246,
+                    "puts": 1162839,
+                    "pc_ratio": 0.59
+                  },
+                  {
+                    "date": "2026-10-28",
+                    "calls": 2119311,
+                    "puts": 1151683,
+                    "pc_ratio": 0.54
+                  },
+                  {
+                    "date": "2026-10-29",
+                    "calls": 2277666,
+                    "puts": 1324620,
+                    "pc_ratio": 0.58
+                  },
+                  {
+                    "date": "2026-10-30",
+                    "calls": 2904468,
+                    "puts": 1912367,
+                    "pc_ratio": 0.66
+                  },
+                  {
+                    "date": "2026-11-02",
+                    "calls": 2222521,
+                    "puts": 1482266,
+                    "pc_ratio": 0.67
+                  },
+                  {
+                    "date": "2026-11-03",
+                    "calls": 1760460,
+                    "puts": 1063868,
+                    "pc_ratio": 0.6
+                  },
+                  {
+                    "date": "2026-11-04",
+                    "calls": 3803410,
+                    "puts": 1677994,
+                    "pc_ratio": 0.44
+                  },
+                  {
+                    "date": "2026-11-05",
+                    "calls": 2719490,
+                    "puts": 2430016,
+                    "pc_ratio": 0.89
+                  },
+                  {
+                    "date": "2026-11-06",
+                    "calls": 2749110,
+                    "puts": 1609514,
+                    "pc_ratio": 0.59
+                  },
+                  {
+                    "date": "2026-11-09",
+                    "calls": 2596139,
+                    "puts": 1455559,
+                    "pc_ratio": 0.56
+                  },
+                  {
+                    "date": "2026-11-10",
+                    "calls": 1913847,
+                    "puts": 1473533,
+                    "pc_ratio": 0.77
+                  },
+                  {
+                    "date": "2026-11-11",
+                    "calls": 2573609,
+                    "puts": 1519524,
+                    "pc_ratio": 0.59
+                  },
+                  {
+                    "date": "2026-11-12",
+                    "calls": 2978797,
+                    "puts": 2159352,
+                    "pc_ratio": 0.72
+                  },
+                  {
+                    "date": "2026-11-13",
+                    "calls": 2947987,
+                    "puts": 1868770,
+                    "pc_ratio": 0.63
+                  },
+                  {
+                    "date": "2026-11-16",
+                    "calls": 2393752,
+                    "puts": 1737568,
+                    "pc_ratio": 0.73
+                  },
+                  {
+                    "date": "2026-11-17",
+                    "calls": 1832478,
+                    "puts": 1293231,
+                    "pc_ratio": 0.71
+                  },
+                  {
+                    "date": "2026-11-18",
+                    "calls": 2391267,
+                    "puts": 1712787,
+                    "pc_ratio": 0.72
+                  },
+                  {
+                    "date": "2026-11-19",
+                    "calls": 2553995,
+                    "puts": 1582288,
+                    "pc_ratio": 0.62
+                  }
+                ]
+              },
+              "index": {
+                "current_pc": 1.27,
+                "sample_n": 23,
+                "median_pc": 1.02,
+                "current_le_percent": 100.0,
+                "min_pc": 0.95,
+                "max_pc": 1.26,
+                "operands": [
+                  {
+                    "date": "2026-10-20",
+                    "calls": 3394817,
+                    "puts": 3431789,
+                    "pc_ratio": 1.01
+                  },
+                  {
+                    "date": "2026-10-21",
+                    "calls": 3280446,
+                    "puts": 3341259,
+                    "pc_ratio": 1.02
+                  },
+                  {
+                    "date": "2026-10-22",
+                    "calls": 3805545,
+                    "puts": 3890474,
+                    "pc_ratio": 1.02
+                  },
+                  {
+                    "date": "2026-10-23",
+                    "calls": 2932114,
+                    "puts": 3232795,
+                    "pc_ratio": 1.1
+                  },
+                  {
+                    "date": "2026-10-26",
+                    "calls": 3075251,
+                    "puts": 2948760,
+                    "pc_ratio": 0.96
+                  },
+                  {
+                    "date": "2026-10-27",
+                    "calls": 3235168,
+                    "puts": 3423619,
+                    "pc_ratio": 1.06
+                  },
+                  {
+                    "date": "2026-10-28",
+                    "calls": 2405043,
+                    "puts": 2542240,
+                    "pc_ratio": 1.06
+                  },
+                  {
+                    "date": "2026-10-29",
+                    "calls": 3366506,
+                    "puts": 3199516,
+                    "pc_ratio": 0.95
+                  },
+                  {
+                    "date": "2026-10-30",
+                    "calls": 4991846,
+                    "puts": 5155780,
+                    "pc_ratio": 1.03
+                  },
+                  {
+                    "date": "2026-11-02",
+                    "calls": 3983263,
+                    "puts": 3832719,
+                    "pc_ratio": 0.96
+                  },
+                  {
+                    "date": "2026-11-03",
+                    "calls": 3011999,
+                    "puts": 3067285,
+                    "pc_ratio": 1.02
+                  },
+                  {
+                    "date": "2026-11-04",
+                    "calls": 4278253,
+                    "puts": 4158224,
+                    "pc_ratio": 0.97
+                  },
+                  {
+                    "date": "2026-11-05",
+                    "calls": 5855427,
+                    "puts": 6267449,
+                    "pc_ratio": 1.07
+                  },
+                  {
+                    "date": "2026-11-06",
+                    "calls": 3404221,
+                    "puts": 4276138,
+                    "pc_ratio": 1.26
+                  },
+                  {
+                    "date": "2026-11-09",
+                    "calls": 3823843,
+                    "puts": 4042364,
+                    "pc_ratio": 1.06
+                  },
+                  {
+                    "date": "2026-11-10",
+                    "calls": 3320619,
+                    "puts": 3387742,
+                    "pc_ratio": 1.02
+                  },
+                  {
+                    "date": "2026-11-11",
+                    "calls": 3910877,
+                    "puts": 4098221,
+                    "pc_ratio": 1.05
+                  },
+                  {
+                    "date": "2026-11-12",
+                    "calls": 3541710,
+                    "puts": 3437725,
+                    "pc_ratio": 0.97
+                  },
+                  {
+                    "date": "2026-11-13",
+                    "calls": 3977979,
+                    "puts": 3809669,
+                    "pc_ratio": 0.96
+                  },
+                  {
+                    "date": "2026-11-16",
+                    "calls": 3987427,
+                    "puts": 4024586,
+                    "pc_ratio": 1.01
+                  },
+                  {
+                    "date": "2026-11-17",
+                    "calls": 5225402,
+                    "puts": 5100748,
+                    "pc_ratio": 0.98
+                  },
+                  {
+                    "date": "2026-11-18",
+                    "calls": 3391447,
+                    "puts": 3873903,
+                    "pc_ratio": 1.14
+                  },
+                  {
+                    "date": "2026-11-19",
+                    "calls": 4419844,
+                    "puts": 5307844,
+                    "pc_ratio": 1.2
+                  }
+                ]
+              },
+              "total": {
+                "current_pc": 1.13,
+                "sample_n": 23,
+                "median_pc": 0.9,
+                "current_le_percent": 100.0,
+                "min_pc": 0.8,
+                "max_pc": 1.06,
+                "operands": [
+                  {
+                    "date": "2026-10-20",
+                    "calls": 6589338,
+                    "puts": 5745809,
+                    "pc_ratio": 0.87
+                  },
+                  {
+                    "date": "2026-10-21",
+                    "calls": 6831027,
+                    "puts": 5916502,
+                    "pc_ratio": 0.87
+                  },
+                  {
+                    "date": "2026-10-22",
+                    "calls": 7427065,
+                    "puts": 7015903,
+                    "pc_ratio": 0.94
+                  },
+                  {
+                    "date": "2026-10-23",
+                    "calls": 6899437,
+                    "puts": 6400131,
+                    "pc_ratio": 0.93
+                  },
+                  {
+                    "date": "2026-10-26",
+                    "calls": 6425254,
+                    "puts": 5554901,
+                    "pc_ratio": 0.86
+                  },
+                  {
+                    "date": "2026-10-27",
+                    "calls": 6654616,
+                    "puts": 6161509,
+                    "pc_ratio": 0.93
+                  },
+                  {
+                    "date": "2026-10-28",
+                    "calls": 5582664,
+                    "puts": 5037851,
+                    "pc_ratio": 0.9
+                  },
+                  {
+                    "date": "2026-10-29",
+                    "calls": 6900576,
+                    "puts": 5851785,
+                    "pc_ratio": 0.85
+                  },
+                  {
+                    "date": "2026-10-30",
+                    "calls": 10250848,
+                    "puts": 9251263,
+                    "pc_ratio": 0.9
+                  },
+                  {
+                    "date": "2026-11-02",
+                    "calls": 7971384,
+                    "puts": 6917180,
+                    "pc_ratio": 0.87
+                  },
+                  {
+                    "date": "2026-11-03",
+                    "calls": 6034465,
+                    "puts": 5168990,
+                    "pc_ratio": 0.86
+                  },
+                  {
+                    "date": "2026-11-04",
+                    "calls": 9638101,
+                    "puts": 7703135,
+                    "pc_ratio": 0.8
+                  },
+                  {
+                    "date": "2026-11-05",
+                    "calls": 10589764,
+                    "puts": 11225416,
+                    "pc_ratio": 1.06
+                  },
+                  {
+                    "date": "2026-11-06",
+                    "calls": 7752661,
+                    "puts": 7339138,
+                    "pc_ratio": 0.95
+                  },
+                  {
+                    "date": "2026-11-09",
+                    "calls": 7988433,
+                    "puts": 7001264,
+                    "pc_ratio": 0.88
+                  },
+                  {
+                    "date": "2026-11-10",
+                    "calls": 6632948,
+                    "puts": 6319117,
+                    "pc_ratio": 0.95
+                  },
+                  {
+                    "date": "2026-11-11",
+                    "calls": 8279111,
+                    "puts": 7636823,
+                    "pc_ratio": 0.92
+                  },
+                  {
+                    "date": "2026-11-12",
+                    "calls": 7902622,
+                    "puts": 7057000,
+                    "pc_ratio": 0.89
+                  },
+                  {
+                    "date": "2026-11-13",
+                    "calls": 8587615,
+                    "puts": 7315789,
+                    "pc_ratio": 0.85
+                  },
+                  {
+                    "date": "2026-11-16",
+                    "calls": 8018994,
+                    "puts": 7655860,
+                    "pc_ratio": 0.95
+                  },
+                  {
+                    "date": "2026-11-17",
+                    "calls": 8818350,
+                    "puts": 8605041,
+                    "pc_ratio": 0.98
+                  },
+                  {
+                    "date": "2026-11-18",
+                    "calls": 7187041,
+                    "puts": 7575055,
+                    "pc_ratio": 1.05
+                  },
+                  {
+                    "date": "2026-11-19",
+                    "calls": 8839656,
+                    "puts": 8927036,
+                    "pc_ratio": 1.01
+                  }
+                ]
+              }
+            },
+            "missing_dates": []
+          },
+          "3m": {
+            "status": "verified",
+            "start_date": "2026-08-20",
+            "end_exclusive": "2026-11-20",
+            "expected_sessions": 65,
+            "basis": "published daily P/C; current day excluded; <= tie convention",
+            "values": {
+              "equity": {
+                "current_pc": 0.77,
+                "sample_n": 65,
+                "median_pc": 0.59,
+                "current_le_percent": 98.46153846153847,
+                "min_pc": 0.38,
+                "max_pc": 0.89,
+                "operands": [
+                  {
+                    "date": "2026-08-20",
+                    "calls": 2755261,
+                    "puts": 1584740,
+                    "pc_ratio": 0.58
+                  },
+                  {
+                    "date": "2026-08-21",
+                    "calls": 3535632,
+                    "puts": 1811166,
+                    "pc_ratio": 0.51
+                  },
+                  {
+                    "date": "2026-08-24",
+                    "calls": 2091611,
+                    "puts": 1422757,
+                    "pc_ratio": 0.68
+                  },
+                  {
+                    "date": "2026-08-25",
+                    "calls": 1755910,
+                    "puts": 1009521,
+                    "pc_ratio": 0.57
+                  },
+                  {
+                    "date": "2026-08-26",
+                    "calls": 1884970,
+                    "puts": 1200896,
+                    "pc_ratio": 0.64
+                  },
+                  {
+                    "date": "2026-08-27",
+                    "calls": 3100690,
+                    "puts": 1209707,
+                    "pc_ratio": 0.39
+                  },
+                  {
+                    "date": "2026-08-28",
+                    "calls": 3055639,
+                    "puts": 1880977,
+                    "pc_ratio": 0.62
+                  },
+                  {
+                    "date": "2026-08-31",
+                    "calls": 2073559,
+                    "puts": 1459658,
+                    "pc_ratio": 0.7
+                  },
+                  {
+                    "date": "2026-09-01",
+                    "calls": 2149891,
+                    "puts": 1433085,
+                    "pc_ratio": 0.67
+                  },
+                  {
+                    "date": "2026-09-02",
+                    "calls": 2524943,
+                    "puts": 1401404,
+                    "pc_ratio": 0.56
+                  },
+                  {
+                    "date": "2026-09-03",
+                    "calls": 3111669,
+                    "puts": 1473628,
+                    "pc_ratio": 0.47
+                  },
+                  {
+                    "date": "2026-09-04",
+                    "calls": 3189180,
+                    "puts": 1845989,
+                    "pc_ratio": 0.58
+                  },
+                  {
+                    "date": "2026-09-08",
+                    "calls": 2695317,
+                    "puts": 1297497,
+                    "pc_ratio": 0.48
+                  },
+                  {
+                    "date": "2026-09-09",
+                    "calls": 2750934,
+                    "puts": 1845750,
+                    "pc_ratio": 0.67
+                  },
+                  {
+                    "date": "2026-09-10",
+                    "calls": 2380020,
+                    "puts": 1431502,
+                    "pc_ratio": 0.6
+                  },
+                  {
+                    "date": "2026-09-11",
+                    "calls": 2927213,
+                    "puts": 1695334,
+                    "pc_ratio": 0.58
+                  },
+                  {
+                    "date": "2026-09-14",
+                    "calls": 2581495,
+                    "puts": 1716826,
+                    "pc_ratio": 0.67
+                  },
+                  {
+                    "date": "2026-09-15",
+                    "calls": 2198898,
+                    "puts": 1239484,
+                    "pc_ratio": 0.56
+                  },
+                  {
+                    "date": "2026-09-16",
+                    "calls": 2335804,
+                    "puts": 1614247,
+                    "pc_ratio": 0.69
+                  },
+                  {
+                    "date": "2026-09-17",
+                    "calls": 2746490,
+                    "puts": 1432442,
+                    "pc_ratio": 0.52
+                  },
+                  {
+                    "date": "2026-09-18",
+                    "calls": 3493359,
+                    "puts": 2036627,
+                    "pc_ratio": 0.58
+                  },
+                  {
+                    "date": "2026-09-21",
+                    "calls": 3144451,
+                    "puts": 1663575,
+                    "pc_ratio": 0.53
+                  },
+                  {
+                    "date": "2026-09-22",
+                    "calls": 2460777,
+                    "puts": 1145629,
+                    "pc_ratio": 0.47
+                  },
+                  {
+                    "date": "2026-09-23",
+                    "calls": 2647370,
+                    "puts": 1205941,
+                    "pc_ratio": 0.46
+                  },
+                  {
+                    "date": "2026-09-24",
+                    "calls": 2187281,
+                    "puts": 1212705,
+                    "pc_ratio": 0.55
+                  },
+                  {
+                    "date": "2026-09-25",
+                    "calls": 2949196,
+                    "puts": 1536751,
+                    "pc_ratio": 0.52
+                  },
+                  {
+                    "date": "2026-09-28",
+                    "calls": 2617529,
+                    "puts": 1523011,
+                    "pc_ratio": 0.58
+                  },
+                  {
+                    "date": "2026-09-29",
+                    "calls": 2631843,
+                    "puts": 1012424,
+                    "pc_ratio": 0.38
+                  },
+                  {
+                    "date": "2026-09-30",
+                    "calls": 2184408,
+                    "puts": 1154484,
+                    "pc_ratio": 0.53
+                  },
+                  {
+                    "date": "2026-10-01",
+                    "calls": 2039492,
+                    "puts": 1155828,
+                    "pc_ratio": 0.57
+                  },
+                  {
+                    "date": "2026-10-02",
+                    "calls": 2847792,
+                    "puts": 1655977,
+                    "pc_ratio": 0.58
+                  },
+                  {
+                    "date": "2026-10-05",
+                    "calls": 2584689,
+                    "puts": 1520104,
+                    "pc_ratio": 0.59
+                  },
+                  {
+                    "date": "2026-10-06",
+                    "calls": 2235079,
+                    "puts": 1273152,
+                    "pc_ratio": 0.57
+                  },
+                  {
+                    "date": "2026-10-07",
+                    "calls": 2407137,
+                    "puts": 1510620,
+                    "pc_ratio": 0.63
+                  },
+                  {
+                    "date": "2026-10-08",
+                    "calls": 3135783,
+                    "puts": 1956246,
+                    "pc_ratio": 0.62
+                  },
+                  {
+                    "date": "2026-10-09",
+                    "calls": 3165640,
+                    "puts": 1777507,
+                    "pc_ratio": 0.56
+                  },
+                  {
+                    "date": "2026-10-12",
+                    "calls": 2200758,
+                    "puts": 1370007,
+                    "pc_ratio": 0.62
+                  },
+                  {
+                    "date": "2026-10-13",
+                    "calls": 2558250,
+                    "puts": 1372565,
+                    "pc_ratio": 0.54
+                  },
+                  {
+                    "date": "2026-10-14",
+                    "calls": 2931155,
+                    "puts": 1799662,
+                    "pc_ratio": 0.61
+                  },
+                  {
+                    "date": "2026-10-15",
+                    "calls": 3113579,
+                    "puts": 1933377,
+                    "pc_ratio": 0.62
+                  },
+                  {
+                    "date": "2026-10-16",
+                    "calls": 3284761,
+                    "puts": 2130650,
+                    "pc_ratio": 0.65
+                  },
                   {
                     "date": "2026-10-19",
                     "calls": 2402245,
@@ -3159,17 +3859,269 @@
                     "calls": 2391267,
                     "puts": 1712787,
                     "pc_ratio": 0.72
+                  },
+                  {
+                    "date": "2026-11-19",
+                    "calls": 2553995,
+                    "puts": 1582288,
+                    "pc_ratio": 0.62
                   }
                 ]
               },
               "index": {
-                "current_pc": 1.2,
-                "sample_n": 23,
-                "median_pc": 1.02,
-                "current_le_percent": 95.65217391304348,
-                "min_pc": 0.95,
+                "current_pc": 1.27,
+                "sample_n": 65,
+                "median_pc": 0.99,
+                "current_le_percent": 100.0,
+                "min_pc": 0.8,
                 "max_pc": 1.26,
                 "operands": [
+                  {
+                    "date": "2026-08-20",
+                    "calls": 3041944,
+                    "puts": 2803835,
+                    "pc_ratio": 0.92
+                  },
+                  {
+                    "date": "2026-08-21",
+                    "calls": 3265582,
+                    "puts": 2771177,
+                    "pc_ratio": 0.85
+                  },
+                  {
+                    "date": "2026-08-24",
+                    "calls": 2417431,
+                    "puts": 2405855,
+                    "pc_ratio": 1.0
+                  },
+                  {
+                    "date": "2026-08-25",
+                    "calls": 2400814,
+                    "puts": 2326722,
+                    "pc_ratio": 0.97
+                  },
+                  {
+                    "date": "2026-08-26",
+                    "calls": 2466011,
+                    "puts": 2313689,
+                    "pc_ratio": 0.94
+                  },
+                  {
+                    "date": "2026-08-27",
+                    "calls": 3405007,
+                    "puts": 3119273,
+                    "pc_ratio": 0.92
+                  },
+                  {
+                    "date": "2026-08-28",
+                    "calls": 3423961,
+                    "puts": 3378433,
+                    "pc_ratio": 0.99
+                  },
+                  {
+                    "date": "2026-08-31",
+                    "calls": 2770886,
+                    "puts": 2556168,
+                    "pc_ratio": 0.92
+                  },
+                  {
+                    "date": "2026-09-01",
+                    "calls": 3388306,
+                    "puts": 3498106,
+                    "pc_ratio": 1.03
+                  },
+                  {
+                    "date": "2026-09-02",
+                    "calls": 2856119,
+                    "puts": 2609717,
+                    "pc_ratio": 0.91
+                  },
+                  {
+                    "date": "2026-09-03",
+                    "calls": 3354367,
+                    "puts": 3138750,
+                    "pc_ratio": 0.94
+                  },
+                  {
+                    "date": "2026-09-04",
+                    "calls": 3326202,
+                    "puts": 2956282,
+                    "pc_ratio": 0.89
+                  },
+                  {
+                    "date": "2026-09-08",
+                    "calls": 3123445,
+                    "puts": 3095468,
+                    "pc_ratio": 0.99
+                  },
+                  {
+                    "date": "2026-09-09",
+                    "calls": 3146221,
+                    "puts": 2990903,
+                    "pc_ratio": 0.95
+                  },
+                  {
+                    "date": "2026-09-10",
+                    "calls": 3774357,
+                    "puts": 3200293,
+                    "pc_ratio": 0.85
+                  },
+                  {
+                    "date": "2026-09-11",
+                    "calls": 3206101,
+                    "puts": 3384200,
+                    "pc_ratio": 1.06
+                  },
+                  {
+                    "date": "2026-09-14",
+                    "calls": 3411726,
+                    "puts": 3272788,
+                    "pc_ratio": 0.96
+                  },
+                  {
+                    "date": "2026-09-15",
+                    "calls": 2980566,
+                    "puts": 3012263,
+                    "pc_ratio": 1.01
+                  },
+                  {
+                    "date": "2026-09-16",
+                    "calls": 3437596,
+                    "puts": 3489234,
+                    "pc_ratio": 1.02
+                  },
+                  {
+                    "date": "2026-09-17",
+                    "calls": 2999717,
+                    "puts": 3200462,
+                    "pc_ratio": 1.07
+                  },
+                  {
+                    "date": "2026-09-18",
+                    "calls": 3186742,
+                    "puts": 3108405,
+                    "pc_ratio": 0.98
+                  },
+                  {
+                    "date": "2026-09-21",
+                    "calls": 4243715,
+                    "puts": 3395144,
+                    "pc_ratio": 0.8
+                  },
+                  {
+                    "date": "2026-09-22",
+                    "calls": 3100473,
+                    "puts": 2890190,
+                    "pc_ratio": 0.93
+                  },
+                  {
+                    "date": "2026-09-23",
+                    "calls": 3315697,
+                    "puts": 3460119,
+                    "pc_ratio": 1.04
+                  },
+                  {
+                    "date": "2026-09-24",
+                    "calls": 3502781,
+                    "puts": 3063792,
+                    "pc_ratio": 0.87
+                  },
+                  {
+                    "date": "2026-09-25",
+                    "calls": 3189669,
+                    "puts": 3015719,
+                    "pc_ratio": 0.95
+                  },
+                  {
+                    "date": "2026-09-28",
+                    "calls": 3046682,
+                    "puts": 2943792,
+                    "pc_ratio": 0.97
+                  },
+                  {
+                    "date": "2026-09-29",
+                    "calls": 2969471,
+                    "puts": 2988911,
+                    "pc_ratio": 1.01
+                  },
+                  {
+                    "date": "2026-09-30",
+                    "calls": 3087519,
+                    "puts": 3176710,
+                    "pc_ratio": 1.03
+                  },
+                  {
+                    "date": "2026-10-01",
+                    "calls": 3623629,
+                    "puts": 3661053,
+                    "pc_ratio": 1.01
+                  },
+                  {
+                    "date": "2026-10-02",
+                    "calls": 3890213,
+                    "puts": 3359275,
+                    "pc_ratio": 0.86
+                  },
+                  {
+                    "date": "2026-10-05",
+                    "calls": 3440625,
+                    "puts": 3136869,
+                    "pc_ratio": 0.91
+                  },
+                  {
+                    "date": "2026-10-06",
+                    "calls": 3735252,
+                    "puts": 3274289,
+                    "pc_ratio": 0.88
+                  },
+                  {
+                    "date": "2026-10-07",
+                    "calls": 3399886,
+                    "puts": 3174569,
+                    "pc_ratio": 0.93
+                  },
+                  {
+                    "date": "2026-10-08",
+                    "calls": 3421456,
+                    "puts": 3527761,
+                    "pc_ratio": 1.03
+                  },
+                  {
+                    "date": "2026-10-09",
+                    "calls": 2644077,
+                    "puts": 2996837,
+                    "pc_ratio": 1.13
+                  },
+                  {
+                    "date": "2026-10-12",
+                    "calls": 2277757,
+                    "puts": 2237563,
+                    "pc_ratio": 0.98
+                  },
+                  {
+                    "date": "2026-10-13",
+                    "calls": 2710186,
+                    "puts": 2874712,
+                    "pc_ratio": 1.06
+                  },
+                  {
+                    "date": "2026-10-14",
+                    "calls": 4150856,
+                    "puts": 4181999,
+                    "pc_ratio": 1.01
+                  },
+                  {
+                    "date": "2026-10-15",
+                    "calls": 3562147,
+                    "puts": 3528946,
+                    "pc_ratio": 0.99
+                  },
+                  {
+                    "date": "2026-10-16",
+                    "calls": 5086849,
+                    "puts": 5327785,
+                    "pc_ratio": 1.05
+                  },
                   {
                     "date": "2026-10-19",
                     "calls": 3186699,
@@ -3307,17 +4259,269 @@
                     "calls": 3391447,
                     "puts": 3873903,
                     "pc_ratio": 1.14
+                  },
+                  {
+                    "date": "2026-11-19",
+                    "calls": 4419844,
+                    "puts": 5307844,
+                    "pc_ratio": 1.2
                   }
                 ]
               },
               "total": {
-                "current_pc": 1.01,
-                "sample_n": 23,
-                "median_pc": 0.9,
-                "current_le_percent": 91.30434782608695,
-                "min_pc": 0.8,
+                "current_pc": 1.13,
+                "sample_n": 65,
+                "median_pc": 0.87,
+                "current_le_percent": 100.0,
+                "min_pc": 0.72,
                 "max_pc": 1.06,
                 "operands": [
+                  {
+                    "date": "2026-08-20",
+                    "calls": 7883354,
+                    "puts": 6143979,
+                    "pc_ratio": 0.78
+                  },
+                  {
+                    "date": "2026-08-21",
+                    "calls": 8725112,
+                    "puts": 6297274,
+                    "pc_ratio": 0.72
+                  },
+                  {
+                    "date": "2026-08-24",
+                    "calls": 5760085,
+                    "puts": 5232724,
+                    "pc_ratio": 0.91
+                  },
+                  {
+                    "date": "2026-08-25",
+                    "calls": 5417318,
+                    "puts": 4487360,
+                    "pc_ratio": 0.83
+                  },
+                  {
+                    "date": "2026-08-26",
+                    "calls": 5372475,
+                    "puts": 4671720,
+                    "pc_ratio": 0.87
+                  },
+                  {
+                    "date": "2026-08-27",
+                    "calls": 7805911,
+                    "puts": 5678797,
+                    "pc_ratio": 0.73
+                  },
+                  {
+                    "date": "2026-08-28",
+                    "calls": 8601823,
+                    "puts": 7185632,
+                    "pc_ratio": 0.84
+                  },
+                  {
+                    "date": "2026-08-31",
+                    "calls": 6481420,
+                    "puts": 5412900,
+                    "pc_ratio": 0.84
+                  },
+                  {
+                    "date": "2026-09-01",
+                    "calls": 6916122,
+                    "puts": 6603472,
+                    "pc_ratio": 0.95
+                  },
+                  {
+                    "date": "2026-09-02",
+                    "calls": 6473738,
+                    "puts": 5439577,
+                    "pc_ratio": 0.84
+                  },
+                  {
+                    "date": "2026-09-03",
+                    "calls": 7924751,
+                    "puts": 6011424,
+                    "pc_ratio": 0.76
+                  },
+                  {
+                    "date": "2026-09-04",
+                    "calls": 8097199,
+                    "puts": 6151527,
+                    "pc_ratio": 0.76
+                  },
+                  {
+                    "date": "2026-09-08",
+                    "calls": 7456774,
+                    "puts": 5981179,
+                    "pc_ratio": 0.8
+                  },
+                  {
+                    "date": "2026-09-09",
+                    "calls": 7231061,
+                    "puts": 6354384,
+                    "pc_ratio": 0.88
+                  },
+                  {
+                    "date": "2026-09-10",
+                    "calls": 7503900,
+                    "puts": 6205771,
+                    "pc_ratio": 0.83
+                  },
+                  {
+                    "date": "2026-09-11",
+                    "calls": 7663144,
+                    "puts": 6598314,
+                    "pc_ratio": 0.86
+                  },
+                  {
+                    "date": "2026-09-14",
+                    "calls": 7506539,
+                    "puts": 6834365,
+                    "pc_ratio": 0.91
+                  },
+                  {
+                    "date": "2026-09-15",
+                    "calls": 6549846,
+                    "puts": 5606310,
+                    "pc_ratio": 0.86
+                  },
+                  {
+                    "date": "2026-09-16",
+                    "calls": 7210431,
+                    "puts": 7095601,
+                    "pc_ratio": 0.98
+                  },
+                  {
+                    "date": "2026-09-17",
+                    "calls": 7656055,
+                    "puts": 6079335,
+                    "pc_ratio": 0.79
+                  },
+                  {
+                    "date": "2026-09-18",
+                    "calls": 8611443,
+                    "puts": 6965360,
+                    "pc_ratio": 0.81
+                  },
+                  {
+                    "date": "2026-09-21",
+                    "calls": 9354684,
+                    "puts": 6958239,
+                    "pc_ratio": 0.74
+                  },
+                  {
+                    "date": "2026-09-22",
+                    "calls": 7370404,
+                    "puts": 5727319,
+                    "pc_ratio": 0.78
+                  },
+                  {
+                    "date": "2026-09-23",
+                    "calls": 7416936,
+                    "puts": 6364419,
+                    "pc_ratio": 0.86
+                  },
+                  {
+                    "date": "2026-09-24",
+                    "calls": 7312099,
+                    "puts": 5870338,
+                    "pc_ratio": 0.8
+                  },
+                  {
+                    "date": "2026-09-25",
+                    "calls": 7971692,
+                    "puts": 5968172,
+                    "pc_ratio": 0.75
+                  },
+                  {
+                    "date": "2026-09-28",
+                    "calls": 7471856,
+                    "puts": 6540544,
+                    "pc_ratio": 0.88
+                  },
+                  {
+                    "date": "2026-09-29",
+                    "calls": 7169741,
+                    "puts": 5423575,
+                    "pc_ratio": 0.76
+                  },
+                  {
+                    "date": "2026-09-30",
+                    "calls": 7297095,
+                    "puts": 6437396,
+                    "pc_ratio": 0.88
+                  },
+                  {
+                    "date": "2026-10-01",
+                    "calls": 7261792,
+                    "puts": 6561036,
+                    "pc_ratio": 0.9
+                  },
+                  {
+                    "date": "2026-10-02",
+                    "calls": 8733513,
+                    "puts": 6780536,
+                    "pc_ratio": 0.78
+                  },
+                  {
+                    "date": "2026-10-05",
+                    "calls": 7720926,
+                    "puts": 6429431,
+                    "pc_ratio": 0.83
+                  },
+                  {
+                    "date": "2026-10-06",
+                    "calls": 7555563,
+                    "puts": 6203551,
+                    "pc_ratio": 0.82
+                  },
+                  {
+                    "date": "2026-10-07",
+                    "calls": 7309174,
+                    "puts": 6323143,
+                    "pc_ratio": 0.87
+                  },
+                  {
+                    "date": "2026-10-08",
+                    "calls": 8394179,
+                    "puts": 7506470,
+                    "pc_ratio": 0.89
+                  },
+                  {
+                    "date": "2026-10-09",
+                    "calls": 7463236,
+                    "puts": 6089102,
+                    "pc_ratio": 0.82
+                  },
+                  {
+                    "date": "2026-10-12",
+                    "calls": 5671790,
+                    "puts": 5151235,
+                    "pc_ratio": 0.91
+                  },
+                  {
+                    "date": "2026-10-13",
+                    "calls": 6526041,
+                    "puts": 5413989,
+                    "pc_ratio": 0.83
+                  },
+                  {
+                    "date": "2026-10-14",
+                    "calls": 9084651,
+                    "puts": 7998416,
+                    "pc_ratio": 0.88
+                  },
+                  {
+                    "date": "2026-10-15",
+                    "calls": 8771116,
+                    "puts": 6976420,
+                    "pc_ratio": 0.8
+                  },
+                  {
+                    "date": "2026-10-16",
+                    "calls": 10401864,
+                    "puts": 9619756,
+                    "pc_ratio": 0.92
+                  },
                   {
                     "date": "2026-10-19",
                     "calls": 6886914,
@@ -3455,58 +4659,52 @@
                     "calls": 7187041,
                     "puts": 7575055,
                     "pc_ratio": 1.05
+                  },
+                  {
+                    "date": "2026-11-19",
+                    "calls": 8839656,
+                    "puts": 8927036,
+                    "pc_ratio": 1.01
                   }
                 ]
               }
             },
             "missing_dates": []
-          },
-          "3m": {
-            "status": "unavailable",
-            "start_date": "2026-08-19",
-            "end_exclusive": "2026-11-19",
-            "expected_sessions": 65,
-            "basis": "published daily P/C; current day excluded; <= tie convention",
-            "reason": "기간 내 공식 일별 자료 누락",
-            "missing_dates": [
-              "2026-08-26"
-            ]
           }
         },
         "amounts": {
           "turnover": {
             "status": "verified",
-            "end_date": "2026-11-19",
+            "end_date": "2026-11-20",
             "currency": "USD",
             "scope": "US consolidated equities; all exchanges and TRFs; Tapes A/B/C",
             "basis": "sum of each execution price times shares; Cboe published notional",
             "source_url": "https://www.cboe.com/markets/us/equities/market-statistics/historical-market-volume/",
-            "daily_usd": "1219883728859.091014",
-            "previous_date": "2026-11-18",
-            "previous_daily_usd": "956755458412.543793",
-            "change_usd": "263128270446.547221",
-            "change_pct": "27.50214468419461372578610040",
+            "daily_usd": "1572000096392.002560",
+            "previous_date": "2026-11-19",
+            "previous_daily_usd": "1219883728859.091014",
+            "change_usd": "352116367532.911546",
+            "change_pct": "28.86474827090546185160122090",
             "windows": {
               "5d": {
-                "start_date": "2026-11-13",
-                "end_date": "2026-11-19",
+                "start_date": "2026-11-16",
+                "end_date": "2026-11-20",
                 "sessions": 5,
                 "session_dates": [
-                  "2026-11-13",
                   "2026-11-16",
                   "2026-11-17",
                   "2026-11-18",
-                  "2026-11-19"
+                  "2026-11-19",
+                  "2026-11-20"
                 ],
-                "total_usd": "5055123418110.534544",
-                "average_daily_usd": "1011024683622.1069088"
+                "total_usd": "5745668308802.849605",
+                "average_daily_usd": "1149133661760.569921"
               },
               "1m": {
-                "start_date": "2026-10-20",
-                "end_date": "2026-11-19",
+                "start_date": "2026-10-21",
+                "end_date": "2026-11-20",
                 "sessions": 23,
                 "session_dates": [
-                  "2026-10-20",
                   "2026-10-21",
                   "2026-10-22",
                   "2026-10-23",
@@ -3528,17 +4726,17 @@
                   "2026-11-16",
                   "2026-11-17",
                   "2026-11-18",
-                  "2026-11-19"
+                  "2026-11-19",
+                  "2026-11-20"
                 ],
-                "total_usd": "24593820661477.038934",
-                "average_daily_usd": "1069296550499.001692782608696"
+                "total_usd": "25286850563427.097549",
+                "average_daily_usd": "1099428285366.395545608695652"
               },
               "3m": {
-                "start_date": "2026-08-20",
-                "end_date": "2026-11-19",
+                "start_date": "2026-08-21",
+                "end_date": "2026-11-20",
                 "sessions": 65,
                 "session_dates": [
-                  "2026-08-20",
                   "2026-08-21",
                   "2026-08-24",
                   "2026-08-25",
@@ -3602,165 +4800,14 @@
                   "2026-11-16",
                   "2026-11-17",
                   "2026-11-18",
-                  "2026-11-19"
+                  "2026-11-19",
+                  "2026-11-20"
                 ],
-                "total_usd": "64528866896619.377597",
-                "average_daily_usd": "992751798409.5288861076923077"
+                "total_usd": "65185383713017.929254",
+                "average_daily_usd": "1002852057123.352757753846154"
               }
             },
             "daily_operands": [
-              [
-                "2026-08-20",
-                [
-                  [
-                    "A",
-                    "427866576.974500",
-                    "377303096.730800",
-                    "579128605.847600",
-                    "1384298279.552900"
-                  ],
-                  [
-                    "B",
-                    "772025250.456100",
-                    "508873669.098400",
-                    "1105035315.785600",
-                    "2385934235.340100"
-                  ],
-                  [
-                    "C",
-                    "710371904.724900",
-                    "467262248.990100",
-                    "856030433.697600",
-                    "2033664587.412600"
-                  ],
-                  [
-                    "DB",
-                    "733299169.038639",
-                    "535346837.532536",
-                    "2906013602.648130",
-                    "4174659609.219305"
-                  ],
-                  [
-                    "DN",
-                    "5982991686.907836",
-                    "3341511575.526692",
-                    "10437828132.162656",
-                    "19762331394.597184"
-                  ],
-                  [
-                    "DQ",
-                    "131537079279.229412",
-                    "80939758695.414917",
-                    "207913954262.736187",
-                    "420390792237.380516"
-                  ],
-                  [
-                    "F",
-                    "87986397.798400",
-                    "42827452.025000",
-                    "155940192.124200",
-                    "286754041.947600"
-                  ],
-                  [
-                    "G",
-                    "64998692.308300",
-                    "92092187.747500",
-                    "204550141.358500",
-                    "361641021.414300"
-                  ],
-                  [
-                    "H",
-                    "750291598.514400",
-                    "1353734777.374100",
-                    "1771915813.861300",
-                    "3875942189.749800"
-                  ],
-                  [
-                    "J",
-                    "1194735343.287200",
-                    "1078726260.414400",
-                    "1681463791.351702",
-                    "3954925395.053302"
-                  ],
-                  [
-                    "K",
-                    "6384580339.920700",
-                    "7771767895.128900",
-                    "17786464383.780607",
-                    "31942812618.830207"
-                  ],
-                  [
-                    "L",
-                    "27060273.140000",
-                    "13607097.191800",
-                    "32923138.332000",
-                    "73590508.663800"
-                  ],
-                  [
-                    "M",
-                    "2862357278.505201",
-                    "1483028694.074900",
-                    "5788490744.832897",
-                    "10133876717.412998"
-                  ],
-                  [
-                    "N",
-                    "70495187148.441693",
-                    "3857223967.877900",
-                    "5727685655.928799",
-                    "80080096772.248392"
-                  ],
-                  [
-                    "P",
-                    "12815545358.592107",
-                    "30248328799.098599",
-                    "35254677693.870123",
-                    "78318551851.560829"
-                  ],
-                  [
-                    "Q",
-                    "25425993488.524212",
-                    "19794443773.772190",
-                    "116719088052.872771",
-                    "161939525315.169173"
-                  ],
-                  [
-                    "U",
-                    "2741024854.054501",
-                    "3053897000.661701",
-                    "6380724214.308301",
-                    "12175646069.024503"
-                  ],
-                  [
-                    "V",
-                    "14367352000.521701",
-                    "7145574120.956002",
-                    "16112631101.221900",
-                    "37625557222.699603"
-                  ],
-                  [
-                    "X",
-                    "343989787.687700",
-                    "363842438.005600",
-                    "569699513.064700",
-                    "1277531738.758000"
-                  ],
-                  [
-                    "Y",
-                    "1539365797.003600",
-                    "1327930919.163000",
-                    "2292407549.395101",
-                    "5159704265.561701"
-                  ],
-                  [
-                    "Z",
-                    "11684555863.244102",
-                    "9746695647.960801",
-                    "16714192410.649187",
-                    "38145443921.854090"
-                  ]
-                ]
-              ],
               [
                 "2026-08-21",
                 [
@@ -13488,6 +14535,158 @@
                     "56473398816.073614"
                   ]
                 ]
+              ],
+              [
+                "2026-11-20",
+                [
+                  [
+                    "A",
+                    "555225791.084600",
+                    "854311883.552900",
+                    "1258842789.060300",
+                    "2668380463.697800"
+                  ],
+                  [
+                    "B",
+                    "987403587.051300",
+                    "1267273067.790200",
+                    "2123590192.584600",
+                    "4378266847.426100"
+                  ],
+                  [
+                    "C",
+                    "1142439496.081700",
+                    "1069474272.964200",
+                    "1613559823.828400",
+                    "3825473592.874300"
+                  ],
+                  [
+                    "DB",
+                    "18264465757.166151",
+                    "5001559903.464497",
+                    "23708361748.444163",
+                    "46974387409.074811"
+                  ],
+                  [
+                    "DN",
+                    "12094864856.742378",
+                    "10813729831.320725",
+                    "27617869626.472336",
+                    "50526464314.535439"
+                  ],
+                  [
+                    "DQ",
+                    "132585546034.244644",
+                    "173598984632.533936",
+                    "301781647347.710247",
+                    "607966178014.488827"
+                  ],
+                  [
+                    "F",
+                    "301846961.259200",
+                    "1094395225.496000",
+                    "865704751.079800",
+                    "2261946937.835000"
+                  ],
+                  [
+                    "G",
+                    "59847723.631800",
+                    "143879823.584300",
+                    "307709913.336400",
+                    "511437460.552500"
+                  ],
+                  [
+                    "H",
+                    "941832789.389400",
+                    "3097439175.078200",
+                    "3141218071.377900",
+                    "7180490035.845500"
+                  ],
+                  [
+                    "J",
+                    "1653052177.258800",
+                    "2632325760.989300",
+                    "4308265016.883399",
+                    "8593642955.131499"
+                  ],
+                  [
+                    "K",
+                    "8459594852.271698",
+                    "17320130548.981516",
+                    "31644140488.340273",
+                    "57423865889.593487"
+                  ],
+                  [
+                    "L",
+                    "14704435.145000",
+                    "122717849.600000",
+                    "56401111.675500",
+                    "193823396.420500"
+                  ],
+                  [
+                    "M",
+                    "3656744180.554201",
+                    "3539808335.468800",
+                    "15822386675.962910",
+                    "23018939191.985911"
+                  ],
+                  [
+                    "N",
+                    "101170151797.654477",
+                    "8667578207.788398",
+                    "11371499007.355296",
+                    "121209229012.798171"
+                  ],
+                  [
+                    "P",
+                    "17998810418.087912",
+                    "71857769389.917239",
+                    "72733757079.698063",
+                    "162590336887.703214"
+                  ],
+                  [
+                    "Q",
+                    "33373079697.117396",
+                    "46402151807.698833",
+                    "228505639164.926874",
+                    "308280870669.743103"
+                  ],
+                  [
+                    "U",
+                    "3175380165.876498",
+                    "6341084347.273402",
+                    "8740515555.180294",
+                    "18256980068.330194"
+                  ],
+                  [
+                    "V",
+                    "20049017023.715300",
+                    "13274129274.117900",
+                    "28260637069.953494",
+                    "61583783367.786694"
+                  ],
+                  [
+                    "X",
+                    "586255202.608600",
+                    "1601835477.372000",
+                    "1288754321.446600",
+                    "3476845001.427200"
+                  ],
+                  [
+                    "Y",
+                    "1967408282.798400",
+                    "3151804000.596700",
+                    "4768871177.838901",
+                    "9888083461.234001"
+                  ],
+                  [
+                    "Z",
+                    "15354120779.568107",
+                    "21388948040.974989",
+                    "34447602592.975213",
+                    "71190671413.518309"
+                  ]
+                ]
               ]
             ],
             "required_venue_codes": [
@@ -13516,7 +14715,7 @@
           },
           "turnover_comparisons": {
             "status": "verified",
-            "end_date": "2026-11-19",
+            "end_date": "2026-11-20",
             "currency": "USD",
             "scope": "US consolidated equities; all exchanges and TRFs; Tapes A/B/C",
             "basis": "adjacent nonoverlapping periods; comparison of average daily actual turnover",
@@ -13525,44 +14724,43 @@
               "5d": {
                 "status": "verified",
                 "current": {
-                  "start_date": "2026-11-13",
-                  "end_date": "2026-11-19",
+                  "start_date": "2026-11-16",
+                  "end_date": "2026-11-20",
                   "sessions": 5,
                   "session_dates": [
-                    "2026-11-13",
                     "2026-11-16",
                     "2026-11-17",
                     "2026-11-18",
-                    "2026-11-19"
+                    "2026-11-19",
+                    "2026-11-20"
                   ],
-                  "total_usd": "5055123418110.534544",
-                  "average_daily_usd": "1011024683622.1069088"
+                  "total_usd": "5745668308802.849605",
+                  "average_daily_usd": "1149133661760.569921"
                 },
                 "previous": {
-                  "start_date": "2026-11-06",
-                  "end_date": "2026-11-12",
+                  "start_date": "2026-11-09",
+                  "end_date": "2026-11-13",
                   "sessions": 5,
                   "session_dates": [
-                    "2026-11-06",
                     "2026-11-09",
                     "2026-11-10",
                     "2026-11-11",
-                    "2026-11-12"
+                    "2026-11-12",
+                    "2026-11-13"
                   ],
-                  "total_usd": "5227162891792.271465",
-                  "average_daily_usd": "1045432578358.454293"
+                  "total_usd": "4963222041713.878932",
+                  "average_daily_usd": "992644408342.7757864"
                 },
-                "average_change_usd": "-34407894736.3473842",
-                "average_change_pct": "-3.291259087255048666369536290"
+                "average_change_usd": "156489253417.7941346",
+                "average_change_pct": "15.76488540131441758855762470"
               },
               "1m": {
                 "status": "verified",
                 "current": {
-                  "start_date": "2026-10-20",
-                  "end_date": "2026-11-19",
+                  "start_date": "2026-10-21",
+                  "end_date": "2026-11-20",
                   "sessions": 23,
                   "session_dates": [
-                    "2026-10-20",
                     "2026-10-21",
                     "2026-10-22",
                     "2026-10-23",
@@ -13584,15 +14782,16 @@
                     "2026-11-16",
                     "2026-11-17",
                     "2026-11-18",
-                    "2026-11-19"
+                    "2026-11-19",
+                    "2026-11-20"
                   ],
-                  "total_usd": "24593820661477.038934",
-                  "average_daily_usd": "1069296550499.001692782608696"
+                  "total_usd": "25286850563427.097549",
+                  "average_daily_usd": "1099428285366.395545608695652"
                 },
                 "previous": {
                   "start_date": "2026-09-21",
-                  "end_date": "2026-10-19",
-                  "sessions": 21,
+                  "end_date": "2026-10-20",
+                  "sessions": 22,
                   "session_dates": [
                     "2026-09-21",
                     "2026-09-22",
@@ -13614,22 +14813,22 @@
                     "2026-10-14",
                     "2026-10-15",
                     "2026-10-16",
-                    "2026-10-19"
+                    "2026-10-19",
+                    "2026-10-20"
                   ],
-                  "total_usd": "20397918893389.329588",
-                  "average_daily_usd": "971329471113.7775994285714286"
+                  "total_usd": "21276889087831.273533",
+                  "average_daily_usd": "967131322174.1487969545454545"
                 },
-                "average_change_usd": "97967079385.2240933540372674",
-                "average_change_pct": "10.08587531817498272279427020"
+                "average_change_usd": "132296963192.2467486541501975",
+                "average_change_pct": "13.67931739557747277449444130"
               },
               "3m": {
                 "status": "verified",
                 "current": {
-                  "start_date": "2026-08-20",
-                  "end_date": "2026-11-19",
+                  "start_date": "2026-08-21",
+                  "end_date": "2026-11-20",
                   "sessions": 65,
                   "session_dates": [
-                    "2026-08-20",
                     "2026-08-21",
                     "2026-08-24",
                     "2026-08-25",
@@ -13693,17 +14892,17 @@
                     "2026-11-16",
                     "2026-11-17",
                     "2026-11-18",
-                    "2026-11-19"
+                    "2026-11-19",
+                    "2026-11-20"
                   ],
-                  "total_usd": "64528866896619.377597",
-                  "average_daily_usd": "992751798409.5288861076923077"
+                  "total_usd": "65185383713017.929254",
+                  "average_daily_usd": "1002852057123.352757753846154"
                 },
                 "previous": {
-                  "start_date": "2026-05-20",
-                  "end_date": "2026-08-19",
+                  "start_date": "2026-05-21",
+                  "end_date": "2026-08-20",
                   "sessions": 63,
                   "session_dates": [
-                    "2026-05-20",
                     "2026-05-21",
                     "2026-05-22",
                     "2026-05-26",
@@ -13765,161 +14964,17 @@
                     "2026-08-14",
                     "2026-08-17",
                     "2026-08-18",
-                    "2026-08-19"
+                    "2026-08-19",
+                    "2026-08-20"
                   ],
-                  "total_usd": "70106566575448.513355",
-                  "average_daily_usd": "1112802644054.738307222222222"
+                  "total_usd": "69986254185899.209509",
+                  "average_daily_usd": "1110892923585.701738238095238"
                 },
-                "average_change_usd": "-120050845645.2094211145299143",
-                "average_change_pct": "-10.78815244433443034539990342"
+                "average_change_usd": "-108040866462.348980484249084",
+                "average_change_pct": "-9.725587783349848901980734190"
               }
             },
             "daily_operands": [
-              [
-                "2026-05-20",
-                [
-                  [
-                    "A",
-                    "318076998.080900",
-                    "455138446.438100",
-                    "437791269.983900",
-                    "1211006714.502900"
-                  ],
-                  [
-                    "B",
-                    "1091740073.480400",
-                    "837712344.094900",
-                    "1703848979.018800",
-                    "3633301396.594100"
-                  ],
-                  [
-                    "C",
-                    "830321408.432300",
-                    "716797654.910300",
-                    "1001609482.856500",
-                    "2548728546.199100"
-                  ],
-                  [
-                    "DB",
-                    "792131999.561864",
-                    "579769785.654928",
-                    "3325352851.935076",
-                    "4697254637.151868"
-                  ],
-                  [
-                    "DN",
-                    "6313225238.958700",
-                    "3012106952.173048",
-                    "10107740676.621759",
-                    "19433072867.753507"
-                  ],
-                  [
-                    "DQ",
-                    "133134397992.346905",
-                    "88978717789.469115",
-                    "223628923431.089899",
-                    "445742039212.905919"
-                  ],
-                  [
-                    "G",
-                    "68554160.806400",
-                    "110012345.929400",
-                    "219277077.639700",
-                    "397843584.375500"
-                  ],
-                  [
-                    "H",
-                    "823191231.760400",
-                    "2279550573.011600",
-                    "2373418789.629700",
-                    "5476160594.401700"
-                  ],
-                  [
-                    "J",
-                    "1470986389.357300",
-                    "1590542790.847200",
-                    "2498677228.146199",
-                    "5560206408.350699"
-                  ],
-                  [
-                    "K",
-                    "7944041434.181099",
-                    "9683965251.342596",
-                    "22939615946.981115",
-                    "40567622632.504810"
-                  ],
-                  [
-                    "L",
-                    "35383616.708000",
-                    "29602928.245800",
-                    "45457276.419400",
-                    "110443821.373200"
-                  ],
-                  [
-                    "M",
-                    "2360502599.557999",
-                    "1356514642.846600",
-                    "6020170517.094301",
-                    "9737187759.498900"
-                  ],
-                  [
-                    "N",
-                    "76342288621.589297",
-                    "4795009565.564699",
-                    "6234430612.774501",
-                    "87371728799.928497"
-                  ],
-                  [
-                    "P",
-                    "14502587120.246097",
-                    "39004832057.067901",
-                    "40458673887.389622",
-                    "93966093064.703620"
-                  ],
-                  [
-                    "Q",
-                    "31546665702.500200",
-                    "25550234374.623812",
-                    "148196188789.265311",
-                    "205293088866.389323"
-                  ],
-                  [
-                    "U",
-                    "3425881874.443699",
-                    "3873509808.678300",
-                    "9199242200.643997",
-                    "16498633883.765996"
-                  ],
-                  [
-                    "V",
-                    "16554745614.447402",
-                    "8120709484.343702",
-                    "18192709267.221302",
-                    "42868164366.012406"
-                  ],
-                  [
-                    "X",
-                    "471697952.359200",
-                    "566367889.148400",
-                    "787891274.527200",
-                    "1825957116.034800"
-                  ],
-                  [
-                    "Y",
-                    "1754039725.982300",
-                    "1672921880.860201",
-                    "2803353107.039999",
-                    "6230314713.882500"
-                  ],
-                  [
-                    "Z",
-                    "11855151641.857003",
-                    "10949473166.437997",
-                    "19822195748.130404",
-                    "42626820556.425404"
-                  ]
-                ]
-              ],
               [
                 "2026-05-21",
                 [
@@ -32992,6 +34047,158 @@
                     "56473398816.073614"
                   ]
                 ]
+              ],
+              [
+                "2026-11-20",
+                [
+                  [
+                    "A",
+                    "555225791.084600",
+                    "854311883.552900",
+                    "1258842789.060300",
+                    "2668380463.697800"
+                  ],
+                  [
+                    "B",
+                    "987403587.051300",
+                    "1267273067.790200",
+                    "2123590192.584600",
+                    "4378266847.426100"
+                  ],
+                  [
+                    "C",
+                    "1142439496.081700",
+                    "1069474272.964200",
+                    "1613559823.828400",
+                    "3825473592.874300"
+                  ],
+                  [
+                    "DB",
+                    "18264465757.166151",
+                    "5001559903.464497",
+                    "23708361748.444163",
+                    "46974387409.074811"
+                  ],
+                  [
+                    "DN",
+                    "12094864856.742378",
+                    "10813729831.320725",
+                    "27617869626.472336",
+                    "50526464314.535439"
+                  ],
+                  [
+                    "DQ",
+                    "132585546034.244644",
+                    "173598984632.533936",
+                    "301781647347.710247",
+                    "607966178014.488827"
+                  ],
+                  [
+                    "F",
+                    "301846961.259200",
+                    "1094395225.496000",
+                    "865704751.079800",
+                    "2261946937.835000"
+                  ],
+                  [
+                    "G",
+                    "59847723.631800",
+                    "143879823.584300",
+                    "307709913.336400",
+                    "511437460.552500"
+                  ],
+                  [
+                    "H",
+                    "941832789.389400",
+                    "3097439175.078200",
+                    "3141218071.377900",
+                    "7180490035.845500"
+                  ],
+                  [
+                    "J",
+                    "1653052177.258800",
+                    "2632325760.989300",
+                    "4308265016.883399",
+                    "8593642955.131499"
+                  ],
+                  [
+                    "K",
+                    "8459594852.271698",
+                    "17320130548.981516",
+                    "31644140488.340273",
+                    "57423865889.593487"
+                  ],
+                  [
+                    "L",
+                    "14704435.145000",
+                    "122717849.600000",
+                    "56401111.675500",
+                    "193823396.420500"
+                  ],
+                  [
+                    "M",
+                    "3656744180.554201",
+                    "3539808335.468800",
+                    "15822386675.962910",
+                    "23018939191.985911"
+                  ],
+                  [
+                    "N",
+                    "101170151797.654477",
+                    "8667578207.788398",
+                    "11371499007.355296",
+                    "121209229012.798171"
+                  ],
+                  [
+                    "P",
+                    "17998810418.087912",
+                    "71857769389.917239",
+                    "72733757079.698063",
+                    "162590336887.703214"
+                  ],
+                  [
+                    "Q",
+                    "33373079697.117396",
+                    "46402151807.698833",
+                    "228505639164.926874",
+                    "308280870669.743103"
+                  ],
+                  [
+                    "U",
+                    "3175380165.876498",
+                    "6341084347.273402",
+                    "8740515555.180294",
+                    "18256980068.330194"
+                  ],
+                  [
+                    "V",
+                    "20049017023.715300",
+                    "13274129274.117900",
+                    "28260637069.953494",
+                    "61583783367.786694"
+                  ],
+                  [
+                    "X",
+                    "586255202.608600",
+                    "1601835477.372000",
+                    "1288754321.446600",
+                    "3476845001.427200"
+                  ],
+                  [
+                    "Y",
+                    "1967408282.798400",
+                    "3151804000.596700",
+                    "4768871177.838901",
+                    "9888083461.234001"
+                  ],
+                  [
+                    "Z",
+                    "15354120779.568107",
+                    "21388948040.974989",
+                    "34447602592.975213",
+                    "71190671413.518309"
+                  ]
+                ]
               ]
             ],
             "venue_roster": {
@@ -33046,9 +34253,9 @@
           },
           "fx": {
             "status": "verified",
-            "requested_date": "2026-11-19",
-            "date": "2026-11-19",
-            "krw_per_usd": "1331.1",
+            "requested_date": "2026-11-20",
+            "date": "2026-11-20",
+            "krw_per_usd": "1330.8",
             "base_currency": "USD",
             "quote_currency": "KRW",
             "unit": "원/미국달러",
@@ -33064,8 +34271,8 @@
                     "ITEM_CODE1": "0000001",
                     "ITEM_NAME1": "원/미국달러(매매기준율)",
                     "UNIT_NAME": "원",
-                    "TIME": "20261119",
-                    "DATA_VALUE": "1331.1"
+                    "TIME": "20261120",
+                    "DATA_VALUE": "1330.8"
                   }
                 ]
               }
@@ -33073,19 +34280,19 @@
           },
           "nq_reference": {
             "status": "verified",
-            "date": "2026-11-10",
+            "date": "2026-11-17",
             "symbol": "NDX",
             "basis": "same-date cash NDX close reference; not expiry-specific futures settlement",
             "multiplier_usd_per_point": "20",
             "contract_source": "https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html",
-            "primary_close": 27740.8,
-            "secondary_close": 27740.7890625
+            "primary_close": 27001.78,
+            "secondary_close": 27001.779296875
           },
           "nq_fx": {
             "status": "verified",
-            "requested_date": "2026-11-10",
-            "date": "2026-11-10",
-            "krw_per_usd": "1355.7",
+            "requested_date": "2026-11-17",
+            "date": "2026-11-17",
+            "krw_per_usd": "1335",
             "base_currency": "USD",
             "quote_currency": "KRW",
             "unit": "원/미국달러",
@@ -33101,8 +34308,8 @@
                     "ITEM_CODE1": "0000001",
                     "ITEM_NAME1": "원/미국달러(매매기준율)",
                     "UNIT_NAME": "원",
-                    "TIME": "20261110",
-                    "DATA_VALUE": "1355.7"
+                    "TIME": "20261117",
+                    "DATA_VALUE": "1335"
                   }
                 ]
               }
@@ -33111,18 +34318,18 @@
         }
       },
       "url": "https://www.cboe.com/markets/us/options/market-statistics/daily",
-      "fingerprint": "f99d5486d0874b751ca2bf85dcbec5d6b653c1f55da949ea529e70f8e5992bbd"
+      "fingerprint": "e8da67efd1af3e975a9138b0132dedb09ec47db3061321df756b69f272fd7021"
     }
   },
-  "updated_at_kst": "2026-11-21T09:21:08.657759+09:00",
+  "updated_at_kst": "2026-11-22T10:38:16.795339+09:00",
   "presentation_version": "us-positioning-auto-direction-20261016-v1",
-  "daily_digest_sent_date_kst": "2026-11-20",
+  "daily_digest_sent_date_kst": "2026-11-22",
   "last_verified_context_fx": {
     "fx": {
       "status": "verified",
-      "requested_date": "2026-11-19",
-      "date": "2026-11-19",
-      "krw_per_usd": "1331.1",
+      "requested_date": "2026-11-20",
+      "date": "2026-11-20",
+      "krw_per_usd": "1330.8",
       "base_currency": "USD",
       "quote_currency": "KRW",
       "unit": "원/미국달러",
@@ -33138,8 +34345,8 @@
               "ITEM_CODE1": "0000001",
               "ITEM_NAME1": "원/미국달러(매매기준율)",
               "UNIT_NAME": "원",
-              "TIME": "20261119",
-              "DATA_VALUE": "1331.1"
+              "TIME": "20261120",
+              "DATA_VALUE": "1330.8"
             }
           ]
         }
@@ -33147,9 +34354,9 @@
     },
     "nq_fx": {
       "status": "verified",
-      "requested_date": "2026-11-10",
-      "date": "2026-11-10",
-      "krw_per_usd": "1355.7",
+      "requested_date": "2026-11-17",
+      "date": "2026-11-17",
+      "krw_per_usd": "1335",
       "base_currency": "USD",
       "quote_currency": "KRW",
       "unit": "원/미국달러",
@@ -33165,8 +34372,8 @@
               "ITEM_CODE1": "0000001",
               "ITEM_NAME1": "원/미국달러(매매기준율)",
               "UNIT_NAME": "원",
-              "TIME": "20261110",
-              "DATA_VALUE": "1355.7"
+              "TIME": "20261117",
+              "DATA_VALUE": "1335"
             }
           ]
         }
