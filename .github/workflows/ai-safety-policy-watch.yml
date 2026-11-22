@@ -347,6 +347,29 @@ jobs:
           if alert1 or alert2 or alert3 or state3.get("digest") != "A":
               raise RuntimeError("Immutable White House page render jitter could create a duplicate alert")
 
+          # The Sep-28 OpenAI Safety Case article is a published reference,
+          # not a continuously updated training-approval register. On Nov-22,
+          # its page HTML alternated between two digests and produced 5 repeats.
+          safety_name = "OpenAI 프런티어 학습 Safety Case"
+          safety_state = {
+              "digest": "A",
+              "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training/",
+              "updated_at": t0.isoformat(),
+              "candidate_digest": "B",
+              "candidate_count": 1,
+              "candidate_first_seen_at": t0.isoformat(),
+          }
+          for index, digest in enumerate(("B", "A", "B", "A", "B"), start=1):
+              safety_state, safety_alert = advance_official_page_state(
+                  safety_name,
+                  safety_state,
+                  {"digest": digest, "url": safety_state["url"], "material": "render variation"},
+                  t0 + dt.timedelta(minutes=20 * index),
+              )
+              if safety_alert or safety_state["digest"] != "A" or safety_state["candidate_digest"] is not None:
+                  raise RuntimeError("OpenAI Safety Case page replayed render jitter as a new policy event")
+          print("ai_policy_openai_safety_page_jitter_regression=PASS")
+
           # Mutable pages require the same changed digest to persist for at
           # least 10 minutes and two observations before alerting.
           mutable_base = {
