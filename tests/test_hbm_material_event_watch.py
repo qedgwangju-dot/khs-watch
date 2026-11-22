@@ -722,5 +722,109 @@ class MaterialEventTests(unittest.TestCase):
         self.assertEqual(previous["delivery_receipt"], updated["delivery_receipt"])
 
 
+
+    def test_samsung_2029_booking_2031_demand_report_preserves_contract_stages(self):
+        report = next(row for row in m.REPORTS
+                      if row["key"] == "20261121_samsung_memory_2029_booking_2031_lta_report")
+        official = report["evidence_groups"][0][1][0][1]
+        call = report["evidence_groups"][1][1][0][1]
+        article = report["evidence_groups"][2][1][0][1]
+        valid = {
+            official: "삼성전자 2026년 3분기 HBM4 서버용 SSD 시설투자 메모리 판매 확대",
+            call: "삼성전자 주요 10곳 LTA 체결 추가 10곳 협상. 60~70% 목표, 2027 HBM 물량.",
+            article: ("삼성전자 2027~2029년 메모리 공급능력 대부분 계약 확보, 2031년 "
+                      "장기계약 요청. 주요 10곳 2030년 60~70% 목표. "
+                      "HBM D램 비트 연간 20~25% 상승, 기업용 SSD 충족률 50%."),
+        }
+        other_keys = [r["key"] for r in m.REPORTS if r is not report]
+        previous = {
+            "delivery_receipt": {"status": "confirmed", "message_ids": [535]},
+            "hbm_material_event_watch": {"seen_keys": other_keys},
+        }
+        def no_fetch(_):
+            raise AssertionError("Future or already delivered event must not query sources")
+        before, early, _ = m.apply(previous, "2026-11-20T23:59:00+09:00", no_fetch)
+        self.assertEqual(early, [])
+        self.assertNotIn(report["key"], before["hbm_material_event_watch"]["seen_keys"])
+        after, msgs, audit = m.apply(
+            previous, "2026-11-22T17:30:00+09:00", lambda url: valid[url])
+        self.assertEqual(audit["verified_events"], 1)
+        self.assertEqual(audit["verified_keys"], [report["key"]])
+        self.assertEqual(len(msgs), 1)
+        notice = msgs[0]
+        for term in ("2027~2029년", "2031년", "고객 10곳", "추가 10곳",
+                     "60~70%", "20~25%", "기업용 SSD 50%", "HBM",
+                     "공급 충족률", "독립", "기사", "미공개", "가격"):
+            self.assertIn(term, notice)
+        for source in (official, call, article):
+            self.assertIn(source, notice)
+        self.assertEqual(after["delivery_receipt"], previous["delivery_receipt"])
+        self.assertIn(report["key"], after["hbm_material_event_watch"]["seen_keys"])
+        m.require_durable_seen_keys(previous, after)
+        self.assertEqual(len(d.chunks(notice)), 1)
+        self.assertTrue(all(len(chunk.encode("utf-16-le")) // 2 <= 3600 for chunk in d.chunks(notice)))
+        repeat, no_msg, checked = m.apply(after, "2026-11-22T18:00:00+09:00", no_fetch)
+        self.assertEqual(no_msg, [])
+        self.assertEqual(checked["verified_events"], 0)
+        self.assertEqual(repeat["hbm_material_event_watch"]["seen_keys"],
+                         after["hbm_material_event_watch"]["seen_keys"])
+
+    def test_samsung_2031_only_reported_and_independent_evidence_gates(self):
+        report = next(row for row in m.REPORTS
+                      if row["key"] == "20261121_samsung_memory_2029_booking_2031_lta_report")
+        official = report["evidence_groups"][0][1][0][1]
+        call = report["evidence_groups"][1][1][0][1]
+        article = report["evidence_groups"][2][1][0][1]
+        mirror = report["evidence_groups"][2][1][1][1]
+        official_body = "삼성전자 2026년 3분기 HBM4 SSD 시설투자"
+        call_body = "삼성전자 10곳 계약, 추가 10곳 협상. 60~70% 2027 HBM4."
+        article_body = ("삼성전자 2027~2029 메모리 생산능력 대부분 계약 2031 "
+                        "요청 10곳, 2030 60~70% HBM 비트 20~25% SSD 50%")
+        reprint_body = ("Samsung memory manufacturing capacity 2027 2029 booked "
+                        "through 2031 according to Economy Tribune. 60% HBM")
+        base = {"hbm_material_event_watch": {"seen_keys": [
+            r["key"] for r in m.REPORTS if r is not report]}}
+        def blocked(_):
+            raise TimeoutError("provider unavailable")
+        no_update, notices, audit = m.apply(base, "2026-11-22T17:45:00+09:00", blocked)
+        self.assertEqual(notices, [])
+        self.assertNotIn(report["key"], no_update["hbm_material_event_watch"]["seen_keys"])
+        self.assertTrue(audit["gaps"])
+        cases = [
+            lambda url: official_body if url == official else blocked(url),
+            lambda url: article_body if url == article else blocked(url),
+            lambda url: call_body if url == call else blocked(url),
+            lambda url: {
+                official: official_body,
+                call: call_body,
+                article: article_body.replace("2031", "2028"),
+            }.get(url, "") if url in (official, call, article) else blocked(url),
+        ]
+        for fetch in cases:
+            out, msgs, audit = m.apply(base, "2026-11-22T17:45:00+09:00", fetch)
+            self.assertEqual(msgs, [])
+            self.assertNotIn(report["key"], out["hbm_material_event_watch"]["seen_keys"])
+            self.assertIn("required_independent_evidence_missing",
+                          [g["status"] for g in audit["gaps"]])
+        def fallback(url):
+            if url == official:
+                return official_body
+            if url == call:
+                return call_body
+            if url == mirror:
+                return reprint_body
+            raise TimeoutError("original publisher unavailable")
+        out, msgs, audit = m.apply(base, "2026-11-22T17:55:00+09:00", fallback)
+        self.assertEqual(len(msgs), 1)
+        self.assertIn(report["key"], out["hbm_material_event_watch"]["seen_keys"])
+        self.assertIn("Wccftech", msgs[0])
+        self.assertIn("별도 독립 입증이 아님", msgs[0])
+        self.assertIn(article, msgs[0])
+        self.assertEqual(audit["verified_events"], 1)
+        # No secondary story becomes official 2029 contracted output.
+        self.assertIn("공식", report["brief_caution"])
+        self.assertIn("협의", " ".join(report["brief_facts"]))
+        self.assertIn("2029년", " ".join(report["brief_facts"]))
+
 if __name__ == "__main__":
     unittest.main()
