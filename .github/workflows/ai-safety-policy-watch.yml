@@ -163,6 +163,9 @@ jobs:
           from unittest.mock import patch
           from scripts.ai_safety_policy_watch import (
               UTC,
+              GOOGLE_NEWS_QUERY_TIMEOUT_SECONDS,
+              GOOGLE_NEWS_SCAN_BUDGET_SECONDS,
+              news_scan_over_budget,
               detect_category,
               detect_entity,
               source_official,
@@ -369,6 +372,11 @@ jobs:
               if safety_alert or safety_state["digest"] != "A" or safety_state["candidate_digest"] is not None:
                   raise RuntimeError("OpenAI Safety Case page replayed render jitter as a new policy event")
           print("ai_policy_openai_safety_page_jitter_regression=PASS")
+          assert 0 < GOOGLE_NEWS_QUERY_TIMEOUT_SECONDS <= 10
+          assert 0 < GOOGLE_NEWS_SCAN_BUDGET_SECONDS <= 300
+          assert not news_scan_over_budget(100.0, 100.0 + GOOGLE_NEWS_SCAN_BUDGET_SECONDS - 1)
+          assert news_scan_over_budget(100.0, 100.0 + GOOGLE_NEWS_SCAN_BUDGET_SECONDS)
+          print("ai_policy_rss_timeout_budget_regression=PASS")
 
           # Mutable pages require the same changed digest to persist for at
           # least 10 minutes and two observations before alerting.
