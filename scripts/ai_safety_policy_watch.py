@@ -18,6 +18,7 @@ import html
 import json
 import pathlib
 import re
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -42,6 +43,10 @@ CONFIRMED_PATH = OUT / "ai_safety_policy_watch_telegram_confirmed.json"
 GOOGLE_NEWS = "https://news.google.com/rss/search"
 USER_AGENT = "Mozilla/5.0 khs-ai-safety-policy-watch/1.0"
 MAX_AGE_HOURS = 168
+# Prevent one slow RSS provider from exhausting the 12-minute Actions job.
+# Skipped queries remain a visible source-coverage gap and can be retried by the next scheduled run.
+GOOGLE_NEWS_QUERY_TIMEOUT_SECONDS = 10
+GOOGLE_NEWS_SCAN_BUDGET_SECONDS = 300
 SEEN_RETENTION_DAYS = 90
 MAX_ALERT_EVENTS = 5
 OFFICIAL_SNAPSHOT_SCHEMA_VERSION = 3
@@ -683,7 +688,7 @@ def google_news_url(query: str) -> str:
 
 
 def parse_google_news(query: str, now: dt.datetime) -> list[dict]:
-    root = ET.fromstring(fetch_bytes(google_news_url(query)))
+    root = ET.fromstring(fetch_bytes(google_news_url(query), timeout=GOOGLE_NEWS_QUERY_TIMEOUT_SECONDS))
     out = []
     for node in root.findall(".//item"):
         title = strip_html(node.findtext("title") or "")
@@ -2985,6 +2990,10 @@ def prune_seen(seen: dict, now: dt.datetime) -> dict:
     return out
 
 
+def news_scan_over_budget(started: float, current: float) -> bool:
+    return current - started >= GOOGLE_NEWS_SCAN_BUDGET_SECONDS
+
+
 def main() -> int:
     for p in (ALERT_TITLE, ALERT_BODY, CONFIRMED_PATH):
         p.unlink(missing_ok=True)
@@ -2996,7 +3005,16 @@ def main() -> int:
     google_news_failed_queries: list[str] = []
     google_news_success_count = 0
 
-    for query in NEWS_QUERIES:
+    news_scan_started = time.monotonic()
+    for index, query in enumerate(NEWS_QUERIES):
+        if news_scan_over_budget(news_scan_started, time.monotonic()):
+            skipped = NEWS_QUERIES[index:]
+            google_news_failed_queries.extend(skipped)
+            errors.append(
+                f"Google News RSS 조회 시간 한도 초과: {len(skipped)}개 미조회; "
+                "공식 발표 없음으로 판정 금지, 다음 정기 실행에서 재조회"
+            )
+            break
         try:
             fetched = parse_google_news(query, now)
             google_news_success_count += 1
