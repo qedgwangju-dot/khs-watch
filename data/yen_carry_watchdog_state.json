@@ -1,8 +1,8 @@
 {
   "alert_active": true,
-  "first_invalid_at_kst": null,
+  "first_invalid_at_kst": "2026-11-23T08:01:06+09:00",
   "last_alert_at_kst": "2026-11-23T07:12:10+09:00",
-  "last_repair_at_kst": "2026-11-23T07:35:10+09:00",
+  "last_repair_at_kst": "2026-11-23T07:56:59+09:00",
   "last_recovered_at_kst": "2026-11-23T06:39:15+09:00",
-  "last_failure_detail": "독립 시장확인 heartbeat: 마지막 정상 확인 2026-11-23T07:35:29+09:00"
+  "last_failure_detail": "독립 시장확인 heartbeat: 마지막 정상 확인 2026-11-21T06:55:00+09:00"
 }
