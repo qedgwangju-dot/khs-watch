@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-22T07:27:35.059624+00:00",
+  "updated_at": "2026-11-22T11:17:27.853210+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1019,9 +1019,12 @@
     "ff3e5540e431e45aa454dadaefedc9c946f8b20db7455596b5fe0ae7cadf7092",
     "eea1e1a4e99a025446b0ef5eb960c2decc3d54f1d762e116a51b8f2f6e7140db",
     "af5ff16c02fc770de1b601d74fdd1f6f6fb868e6980cdab61aaa32c94039fe46",
-    "4063b017a2f94e0402efa9363f4f585069aa799a96c3c5e3aba57b29a412576d"
+    "4063b017a2f94e0402efa9363f4f585069aa799a96c3c5e3aba57b29a412576d",
+    "421f6a90603f57855a8055685306350c14813743ed53b0abbc2f7bca3a5447e6"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "421f6a90603f57855a8055685306350c14813743ed53b0abbc2f7bca3a5447e6"
+  ],
   "groups": [
     "ess_battery",
     "hyundai_atlas_rollout",
@@ -1030,32 +1033,6 @@
     "robotis_excess_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 44528501867,
-      "outcome": "sent",
-      "confirmed_event_keys": [
-        "0fb2ea37368f694269948ca3328d97d02ed23ceb046ddbdb3bf106770d67d88e",
-        "59c29d790a2033d7fb971a602cfd284ce430b13eaa2073888098eab81e182cae",
-        "5be4aa553893d6fe549d85fa181df92ca5e2d8822c245a3de48d90315aaaf7e4",
-        "7959b2496120d2117a50ee47252abe940adace7015ee12e0e7265d5726973e58",
-        "8e087f7824ff0f7eff4a08b2f7a52d67e60ec0b43b3df79e9943b1120cb0c6b2",
-        "c7eb3288da755f09374a953329c9ab1f498faf56b2160fa9afed4e7cb2ef6a81"
-      ],
-      "message_ids": [
-        387,
-        388
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal",
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false,
-        false
-      ],
-      "state_timestamp_utc": "2026-11-19T12:56:59.921994+00:00"
-    },
     {
       "run_id": 44537637009,
       "outcome": "normal_silence",
@@ -1360,19 +1337,55 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-22T07:27:35.059624+00:00"
+    },
+    {
+      "run_id": 45016510940,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "421f6a90603f57855a8055685306350c14813743ed53b0abbc2f7bca3a5447e6"
+      ],
+      "message_ids": [
+        402
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-22T11:17:27.853210+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 44998263049,
-    "outcome": "normal_silence",
-    "confirmed_event_keys": [],
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-22T07:27:35.059624+00:00"
+    "run_id": 45016510940,
+    "outcome": "sent",
+    "confirmed_event_keys": [
+      "421f6a90603f57855a8055685306350c14813743ed53b0abbc2f7bca3a5447e6"
+    ],
+    "message_ids": [
+      402
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-22T11:17:27.853210+00:00"
   },
-  "last_selected_events": [],
+  "last_selected_events": [
+    {
+      "key": "421f6a90603f57855a8055685306350c14813743ed53b0abbc2f7bca3a5447e6",
+      "group": "ess_battery",
+      "title": "삼성SDI, ESS 신규 수주 60GWh 돌파···美생산 본격화 - 현대경제신문",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE53MlFVZ1lHOHNpTmx1Wm05enMtZHBQM0VZZTN0dDI3MXZBMGVYRGRTc0lfMXFCcms1dUVvSW1sNU5mQ2ZOczIzUEdGVUZSaUJXejFzaVpZY1ZhR25yV0U3XzdWbVRfcmFQ0gFrQVVfeXFMUC1GaGhERUo0Uy13Y3drNzUxVW1tR1pYdTZRNjl6SWJ1YlUwdFZyU2ZnX1NLSDVUSkdzbnVjbEtwUXVES0xyd0R0MjJnM2tkbnFjNVdOZmdGRktaVjhIanJRcFFKc0Z1TmZsMTQ?oc=5",
+      "source": "현대경제신문",
+      "source_url": "https://www.finomy.com",
+      "published": "2026-11-20T00:14:51+00:00"
+    }
+  ],
   "message_corrections": {
     "robot-message-correction-20261118-44240720425-v1": {
       "schema_version": 1,
