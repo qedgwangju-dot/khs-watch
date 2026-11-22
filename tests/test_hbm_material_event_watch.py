@@ -826,5 +826,51 @@ class MaterialEventTests(unittest.TestCase):
         self.assertIn("협의", " ".join(report["brief_facts"]))
         self.assertIn("2029년", " ".join(report["brief_facts"]))
 
+
+    def test_samsung_lta_compact_visual_and_complete_numerics(self):
+        import html as html_module
+        import re as re_module
+        row = next(x for x in m.REPORTS
+                   if x["key"] == "20261121_samsung_memory_2029_booking_2031_lta_report")
+        official = row["evidence_groups"][0][1][0][1]
+        call = row["evidence_groups"][1][1][0][1]
+        article = row["evidence_groups"][2][1][0][1]
+        proof = {**row, "source": article, "source_label": "단독 원보도",
+                 "verified_source_links": (
+                     ("삼성 공식", official), ("회사발언 취재", call),
+                     ("이코노미트리뷴", article))}
+        notice = m.render("samsung_memory_lta", [proof], "2026-11-22T17:33:00+09:00")
+        visible = html_module.unescape(re_module.sub(r"<[^>]+>", "", notice))
+        for term in ("2027~2029년", "2031년", "10곳", "추가 10곳",
+                     "2030년", "60~70%", "20~25%", "HBM", "범용 D램",
+                     "기업용 SSD 50%", "소비자용", "키옥시아", "가격",
+                     "선수금", "미공개", "재인용", "독립"):
+            self.assertIn(term, visible)
+        self.assertLessEqual(len(visible), 1350)
+        self.assertEqual(len(d.chunks(notice)), 1)
+        self.assertEqual(notice.count(article), 1)
+        self.assertEqual(notice.count(official), 1)
+        self.assertEqual(notice.count(call), 1)
+        self.assertNotIn("비교 근거:", notice)
+        self.assertNotIn("삼성 공식 실적·컨퍼런스콜 검증·원보도", notice)
+
+    def test_samsung_lta_compact_reprint_keeps_original_link_and_stage(self):
+        row = next(x for x in m.REPORTS
+                   if x["key"] == "20261121_samsung_memory_2029_booking_2031_lta_report")
+        official = row["evidence_groups"][0][1][0][1]
+        call = row["evidence_groups"][1][1][0][1]
+        mirror = row["evidence_groups"][2][1][1][1]
+        article = row["evidence_groups"][2][1][0][1]
+        proof = {**row, "source": mirror, "source_label": "재인용",
+                 "verified_source_links": (
+                     ("삼성 실적", official), ("컨콜", call), ("Wccftech 재인용", mirror))}
+        rendered = m.render("samsung_memory_lta", [proof], "2026-11-22T17:45:00+09:00")
+        self.assertIn("Wccftech(재인용)", rendered)
+        self.assertIn("원문(직접 확인 전)", rendered)
+        for url in (official, call, mirror, article):
+            self.assertIn(url, rendered)
+        self.assertEqual(len(d.chunks(rendered)), 1)
+
+
 if __name__ == "__main__":
     unittest.main()

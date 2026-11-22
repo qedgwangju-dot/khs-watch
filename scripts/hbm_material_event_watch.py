@@ -557,19 +557,18 @@ REPORTS = (
         "label": "삼성전자 2027~2029 메모리 계약 확보 보도·2031 장기공급 요청",
         "short_title": "삼성 메모리 2029년까지 대부분 계약 확보 보도·2031년 협의",
         "brief_facts": (
-            "11월21일 이코노미트리뷴 단독·익명 업계 관계자: 삼성 2027~2029년 메모리 생산능력 대부분 계약 확보 보도; 2031년까지 추가 공급·연장 요청은 협의 단계. 삼성의 2029년 전체 확정 수주 공시가 아님.",
-            "공식 10월29일 실적발표: 주요 고객 10곳 다년 공급계약 체결, 추가 10곳 협상 중(일부 최종 단계). 중장기 생산능력의 60~70%를 2030년까지 장기계약으로 확보한다는 회사 목표와 이번 업계 보도의 '대부분 확보'는 분모·계약 단계가 다름.",
-            "장기계약 조건: 기존 계약은 가격 하한 조건 적용이라는 기사 인용; 선수금·가격 상한을 포함한 추가 구조는 업계 협의 보도. 실제 선수금·최소 물량·고객별 단가·계약금액은 공개 확인 전.",
-            "2027년 HBM 공급 물량 판매 완료는 10월29일 삼성 발표; 2027년 범용 D램 웨이퍼 공급능력 사실상 완판은 11월21일 업계 보도. HBM 증산이 범용 D램 웨이퍼 생산능력을 잠식할 수 있으나 두 제품군의 계약·물량은 별개.",
-            "제공 기사·업계 추정: 주요 제조사 공급 충족률 현재 60~70%(요청 수요 대비), D램 비트 공급 증가율 연간 최대 20~25%; 삼성 LTA 목표 60~70%(생산능력 대비)와 다른 분모이며 공식 산업통계로 독립 확인 전.",
-            "기업용 낸드: 소비자용 낸드 공급 충족률 70% vs 기업용 SSD 50% 초과라는 업계 보도(정확한 공급 수요 분모 미공개). 키옥시아 2027년 낸드 수요 전망 상향도 원문 관계자 언급 기준·독립 확인 전.",
-            "2027~2029년 확정 계약률·2031년 신규 체결 건수·가격 상하한·선수금·실제 수주 물량은 미공개. 회사 공식 갱신→추가 계약·연장→제품별 물량·평균판매단가→출하·매출로 확인할 필요.",
+            "신규(11/21 단독 기사): 2027~2029년 메모리 생산능력 대부분 계약 확보 주장; 일부 고객은 2031년까지 추가 공급·계약 연장 요청. 삼성 공식 계약률 미공개.",
+            "회사 발표(10/29): 주요 고객 10곳 다년 계약 완료, 추가 10곳 협상(일부 최종 단계). 2030년까지 생산능력의 60~70% 장기계약 확보 목표.",
+            "가격·선수금: 기존 계약의 최저가격 보장선 적용(회사 발언 인용). 선수금·가격 상한은 업계 협의 보도; 실제 약정 물량·금액·납입 미공개.",
+            "2027년 제품: HBM 공급 목표물량 판매 완료(회사 발표) / 범용 D램 웨이퍼 사실상 완판(업계 보도). HBM 증산으로 범용 D램 생산 여력 감소 가능.",
+            "수급(업계 추정): 주요사 공급 충족률 60~70%(요청량 대비), D램 비트 공급 증가율 최대 연 20~25%. 장기계약 목표 60~70%(생산능력 대비)와 분모가 다름.",
+            "낸드(업계 보도): 소비자용 공급 충족률 70%, 기업용 SSD 50% 초과(정확한 수요 분모 미공개). 키옥시아 2027년 낸드 수요 전망 상향 언급.",
         ),
         "brief_caution": (
-            "2029년 '사실상 완판'과 2031년 계약 추진은 한 언론의 업계 취재 단계; "
-            "Wccftech는 이를 재인용했으므로 별도 독립 입증이 아님. "
-            "공식 10곳 체결+10곳 협상과 2030년 60~70% 목표를 2029년 전량 계약으로 승격 금지. "
-            "고객 수요 둔화·설비투자 확대·가격 재협상에 따른 일정/실적 위험 유의."
+            "2029년 완판·2031년 계약은 취재·협의 단계(확정 아님). "
+            "Wccftech 재인용은 별도 독립 입증이 아님. "
+            "2027~2029년 계약률·2031년 신규 체결 건수·고객·단가·물량·매출 미공개. "
+            "수요 둔화·설비투자 증설·가격 재협상 위험 유의."
         ),
         "sources": (
             ("이코노미트리뷴 11월21일 원보도",
@@ -745,12 +744,57 @@ def probe(report: dict, fetcher=fetch_article) -> tuple[dict | None, list[dict]]
                          "status": "source_unavailable", "error_type": type(exc).__name__})
     return None, gaps
 
+def render_samsung_memory_lta(items: list[dict], checked_at: str) -> str:
+    """Compact one-event Samsung LTA display; never remove underlying evidence or change the dedupe key."""
+    parts = []
+    for item in items:
+        lines = [
+            "<b>[HBM | 삼성 메모리 장기계약]</b>",
+            "확인 " + html.escape(checked_at[:16].replace("T", " ")) + " KST",
+            "<b>■ " + html.escape(item.get("short_title") or item["label"]) + "</b>",
+        ]
+        lines.extend("• " + html.escape(value) for value in
+                     (item.get("brief_facts") or item["facts"]))
+        lines.append("• 주의: " + html.escape(item.get("brief_caution") or item["caution"]))
+        evidence = item.get("verified_source_links") or (
+            (item.get("source_label", "기사"), item["source"]),)
+        links = []
+        for label, url in evidence:
+            host = (urlparse(url).hostname or "").lower()
+            if "news.samsung.com" in host:
+                short = "삼성 실적"
+            elif "yna.co.kr" in host:
+                short = "컨퍼런스콜"
+            elif "economytribune.co.kr" in host:
+                short = "단독 원문"
+            elif "wccftech.com" in host:
+                short = "Wccftech(재인용)"
+            else:
+                short = label
+            links.append('<a href="' + html.escape(url, quote=True) +
+                         '">' + html.escape(short) + '</a>')
+        # A verified reprint is NOT an original publisher fetch. Preserve the
+        # original link separately and label the actual read path as a reprint.
+        if not any("economytribune.co.kr" in (urlparse(url).hostname or "").lower()
+                   for _, url in evidence):
+            for label, url in item.get("context_links", ()):
+                if "economytribune.co.kr" in (urlparse(url).hostname or "").lower():
+                    links.append('<a href="' + html.escape(url, quote=True) +
+                                 '">원문(직접 확인 전)</a>')
+                    break
+        lines.append("근거: " + " · ".join(links))
+        parts.append("\n".join(lines))
+    return ("\n\n" + BREAK + "\n\n").join(parts).strip() + ("\n" if parts else "")
+
+
 def render(group: str, items: list[dict], checked_at: str) -> str:
     """Readable, source-linked Telegram digest; keep all material facts visible.
 
     Break only at entire-event boundaries; never chop an item mid-sentence or
     silently truncate because the 4096-unit Telegram HTML limit is near.
     """
+    if group == "samsung_memory_lta":
+        return render_samsung_memory_lta(items, checked_at)
     if group == "nvidia_commitments":
         # Only the NVIDIA supply-commitment notice uses the compact display.
         header = ("<b>[HBM 감시 | 엔비디아 공급약정 변화]</b>\n"
