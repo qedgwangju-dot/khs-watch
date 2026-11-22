@@ -13,6 +13,52 @@ SPEC.loader.exec_module(watch)
 
 
 class OpticsReliabilityTests(unittest.TestCase):
+
+    def test_huang_exit_cpo_raises_questions_is_not_new_investment(self):
+        headline = (
+            "[News] Huang’s Exit Raises Questions Over NVIDIA’s CPO Roadmap "
+            "and Supply Chain; TSMC Ties Expected to Hold - TrendForce"
+        )
+        self.assertTrue(watch.nvidia_cpo_leadership_outlook_only(headline))
+        self.assertEqual(
+            watch.canonical_story_key("NVIDIA", headline),
+            watch.NVIDIA_HUANG_CPO_OUTLOOK_KEY,
+        )
+        self.assertEqual(
+            watch.canonical_story_key("CPO Packaging & Test", headline),
+            watch.NVIDIA_HUANG_CPO_OUTLOOK_KEY,
+        )
+        self.assertNotEqual(watch.stage_for(headline), "투자·개발자금")
+        self.assertEqual(
+            watch.category_for(headline, "NVIDIA"),
+            "CPO 경영진 교체·공급망 영향 전망",
+        )
+        self.assertFalse(
+            any(watch.re.search(p, headline, watch.re.I) for p in watch.ACTION_PATTERNS),
+            "Raises questions cannot masquerade as a financing or new commercial event",
+        )
+
+    def test_stale_cpo_opinion_blocked_but_actual_deals_remain_eligible(self):
+        now = watch.dt.datetime(2026, 11, 22, 11, 47, tzinfo=watch.dt.timezone.utc)
+        published = watch.dt.datetime(2026, 11, 16, 8, 25, tzinfo=watch.dt.timezone.utc)
+        stale = "NVIDIA CPO roadmap raises questions over TSMC ties and supply chain"
+        self.assertTrue(watch.stale_nvidia_cpo_commentary("NVIDIA", stale, published, now))
+        self.assertTrue(watch.stale_nvidia_cpo_commentary(
+            "CPO Packaging & Test", stale, published, now))
+        self.assertFalse(watch.stale_nvidia_cpo_commentary(
+            "NVIDIA", stale, now - watch.dt.timedelta(hours=4), now))
+        actual = "NVIDIA signs new CPO supply contract with TSMC amid questions over executive exit"
+        self.assertFalse(watch.stale_nvidia_cpo_commentary("NVIDIA", actual, published, now))
+        self.assertFalse(watch.nvidia_cpo_leadership_outlook_only(actual))
+        self.assertFalse(watch.stale_nvidia_cpo_commentary(
+            "Fabrinet", stale, published, now))
+
+    def test_real_optical_funding_remains_detected(self):
+        funding = "Ayar Labs raises $650 million in series B funding for optical compute"
+        self.assertEqual(watch.stage_for(funding), "투자·개발자금")
+        self.assertTrue(any(watch.re.search(p, funding, watch.re.I)
+                            for p in watch.ACTION_PATTERNS))
+
     def test_lambda_blackwell_reprint_keeps_original_event_identity(self):
         official = "Lambda Boosts AI Factory Resiliency and Efficiency With NVIDIA Photonics - NVIDIA Blog"
         reprint = "Lambda Touts First CPO Deployment of Blackwell GPUs - HPCwire"

@@ -45,6 +45,10 @@ APPLE_SIPH_MARKET_REFERENCE = (
 
 # Distinct R&D-only channel inside the existing optics workflow; no new runner,
 # state file, schedule, credential or Telegram destination is introduced.
+NVIDIA_HUANG_CPO_OUTLOOK_KEY = "nvidia|huang-resignation|cpo-outlook|2026-11-16"
+# Preserve the earlier confirmed CEO resignation while not presenting Nov-16
+# third-party CPO speculation as a new investment or manufacturing decision.
+
 COUPE_FUNDA_PRIOR_KEYS = {"cpo-coupe|funda|2026-11-13|bonding-test-ramp-delay"}
 COUPE_SIGNAL_CATEGORIES = {
     "COUPE W2W 진공본딩 장비·수율",
@@ -662,7 +666,7 @@ ACTION_PATTERNS = [
     r"assembly line", r"factory expansion", r"capacity", r"CAPA", r"utilization",
     r"qualification", r"validation", r"verification", r"sampling", r"sample",
     r"silicon", r"tape[- ]?out", r"benchmark", r"commercialization", r"delivery",
-    r"funding", r"financing", r"raises?", r"series\s+[abc]",
+    r"\bfunding\b|\bfinancing\b|\bseries\s+[abc]\b|\bstrategic investment\b|\braises?\s+(?:(?:US)?\$|[€£]|\d|funding\b|capital\b|series\s+[abc]\b|(?:an?\s+)?(?:new\s+)?funding\s+round\b)",
     r"reliability", r"lifetime", r"MTBF", r"failure rate", r"thermal",
     r"blind[- ]mate", r"insertion loss", r"hot[- ]swap", r"field[- ]replaceable",
     r"OIF[- ]ELSFP", r"reach", r"meter", r"metre",
@@ -1405,6 +1409,8 @@ def apple_siph_source_verified(item: dict, candidates: list[dict]) -> bool:
 
 
 def canonical_story_key(company: str, title: str) -> str | None:
+    if company in {"NVIDIA", "CPO Packaging & Test", "CPO Equipment Supply Chain"} and nvidia_cpo_leadership_outlook_only(title):
+        return NVIDIA_HUANG_CPO_OUTLOOK_KEY
     # The same named event may arrive through a broad company query and its
     # dedicated conference lane. Normalize its explicit identity before scope
     # separation; e.g. the HPCwire Lambda/Blackwell reprint of the Nov-16 release.
@@ -2677,7 +2683,7 @@ def signal_score(title: str, source: str) -> int:
         score += 4
     if re.search(r"reliability|lifetime|MTBF|failure rate|thermal|laser failure", text, re.I):
         score += 3
-    if re.search(r"funding|financing|raises?|series\s+[abc]", text, re.I):
+    if re.search(r"\bfunding\b|\bfinancing\b|\bseries\s+[abc]\b|\bstrategic investment\b|\braises?\s+(?:(?:US)?\$|[€£]|\d|funding\b|capital\b|series\s+[abc]\b|(?:an?\s+)?(?:new\s+)?funding\s+round\b)", text, re.I):
         score += 3
     if re.search(
         r"tokens? per second|tok/s|20\s*trillion|10\s*trillion|240\s*TB/s|>200\s*TB/s|10\s*TB|"
@@ -2754,14 +2760,79 @@ def optical_policy_is_pending(title: str) -> bool:
     ))
 
 
+
+def nvidia_cpo_leadership_outlook_only(title: str) -> bool:
+    """An opinion about the already-announced CEO exit is not a new CPO deal."""
+    value = html.unescape(title or "")
+    if not re.search(r"\bnvidia\b", value, re.I):
+        return False
+    if not re.search(r"\bhuang\b", value, re.I):
+        return False
+    if not re.search(r"\bcpo\b|co[- ]packaged optics?|\btsmc\b", value, re.I):
+        return False
+    if not re.search(r"\bexit\b|\bdeparture\b|\bresignation\b|\bresigned\b|steps? down", value, re.I):
+        return False
+    # An actual changed agreement/order or confirmed change to product production
+    # remains eligible for the ordinary commercial-event filters below.
+    if re.search(
+        r"(?:\b(?:signs?|signed|wins?|awards?|cancels?|halts?|suspends?|"
+        r"confirms?|announces?|revises?)\b.{0,70}\b(?:cpo|tsmc|optical|roadmap|"
+        r"supply agreement|contract)\b)|"
+        r"(?:\b(?:cpo|tsmc)\b.{0,65}\b(?:contract signed|orders? confirmed|"
+        r"production halted|shipments? suspended)\b)",
+        value, re.I,
+    ):
+        return False
+    return bool(re.search(
+        r"raises?\s+questions?|questions?\s+over|uncertainty|uncertain|"
+        r"concerns?|may\s+|could\s+|might\s+|expected to hold|"
+        r"potential impact|supply chain questions?",
+        value, re.I,
+    ))
+
+
+def stale_nvidia_cpo_commentary(
+    company: str, title: str, published: dt.datetime | None, now: dt.datetime | None = None
+) -> bool:
+    """Do not turn a days-old, non-contract risk article into a fresh change.
+
+    This narrow check does not suppress verified customer/production milestones.
+    A failed source fetch is handled separately by existing health/receipt gates.
+    """
+    if company not in {"NVIDIA", "CPO Packaging & Test", "CPO Equipment Supply Chain"}:
+        return False
+    if published is None:
+        return False
+    ref = now if now is not None else NOW
+    if published.tzinfo is None:
+        published = published.replace(tzinfo=dt.timezone.utc)
+    if ref - published <= dt.timedelta(hours=48):
+        return False
+    value = html.unescape(title or "")
+    if not re.search(r"\bnvidia\b", value, re.I):
+        return False
+    if not re.search(r"\bcpo\b|co[- ]packaged optics?|silicon photonics?", value, re.I):
+        return False
+    if not re.search(r"raises?\s+questions?|questions?\s+over|uncertainty|"
+                     r"concerns?|expected to hold|potential impact|may\s+|could\s+", value, re.I):
+        return False
+    if re.search(r"\b(?:signed|signs|contract awarded|new purchase order|"
+                 r"first commercial shipment|begins mass production|"
+                 r"volume shipments|officially confirms|confirmed new customer)\b", value, re.I):
+        return False
+    return True
+
+
 def stage_for(title: str) -> str:
+    if nvidia_cpo_leadership_outlook_only(title):
+        return "경영진 교체의 CPO 영향 전망(계약·양산 변경 미확정)"
     if optical_policy_is_pending(title):
         return "규제 검토·추진(최종 확정 전)"
     if re.search(r"reliability|lifetime|MTBF|failure rate|thermal|laser failure", title, re.I):
         return "신뢰성·열검증"
     if re.search(r"blind[- ]mate|insertion loss|hot[- ]swap|field[- ]replaceable|OIF[- ]ELSFP", title, re.I):
         return "광결합·커넥터 검증"
-    if re.search(r"funding|financing|raises?|series\s+[abc]|strategic investment", title, re.I):
+    if re.search(r"\bfunding\b|\bfinancing\b|\bseries\s+[abc]\b|\bstrategic investment\b|\braises?\s+(?:(?:US)?\$|[€£]|\d|funding\b|capital\b|series\s+[abc]\b|(?:an?\s+)?(?:new\s+)?funding\s+round\b)", title, re.I):
         return "투자·개발자금"
     if re.search(r"customer delivery|customer deployment|integrated inference engines?", title, re.I):
         return "고객 샘플·배치"
@@ -2817,6 +2888,8 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company == "NVIDIA" and nvidia_cpo_leadership_outlook_only(title):
+        return "CPO 경영진 교체·공급망 영향 전망"
     if company in SC26_COMPANIES:
         event = sc26_milestone(company, title)
         return event[0] if event else "SC26 관련성 확인 대기"
@@ -3118,6 +3191,7 @@ def meaning_for(category: str) -> str:
         "CPO 광패키징 기판·수율·열검증": "고집적 CPO 패키지의 휨·열팽창계수·삽입손실·저손실 특성·수율 검증은 광엔진과 ASIC을 같은 패키지에서 대량생산할 수 있는지를 좌우하는 핵심 병목입니다.",
         "CPO 광패키징 기판·인터포저": "CPO는 광학과 실리콘을 하나의 패키지 기판·인터포저 계층에서 통합하므로, 고밀도 배선·저손실·열안정성이 확보될수록 광연결의 전력·거리 병목을 줄일 수 있습니다.",
         "CPO 첨단패키징·COUPE": "CPO는 광엔진과 SiPh 칩을 정밀 패키징해야 하며, COUPE 같은 첨단패키징 생산능력·수율이 CPO 양산 속도를 직접 제한할 수 있습니다.",
+        "CPO 경영진 교체·공급망 영향 전망": "황 CEO 사임은 공식 확인되었지만 CPO 투자·고객 계약·공급수량·양산 일정 변경은 보도된 우려와 구별합니다.",
         "Rubin HPC 신제품 발표": "엔비디아의 5만 CUDA 코어 이상 HPC GPU 발표는 신제품 공개이며 출하·고객 매출 확정은 아닙니다. 7세대 NVLink와 실제 고객 적용을 따로 감시합니다.",
         "Rubin HPC 고객·양산": "Rubin HPC의 실제 주문·출하, GPU 당 수량과 계약금액, 제조·패키징 수율, 고객 검수를 분리합니다.",
         "Lambda CPO 실제 가동": "Lambda 퀘벡 클러스터에 Blackwell Ultra GPU 1만 개 이상과 NVIDIA Photonics CPO 스위치가 실제 도입됐다는 고객사 발표입니다. TSMC COUPE 기반 미래 Spectrum-X 대량 양산과 동일한 사건이 아닙니다.",
@@ -3287,6 +3361,7 @@ def risk_for(category: str) -> str:
         "CPO 광패키징 기판·수율·열검증": "대형 패키지의 휨·열팽창 불일치·광결합 오차·삽입손실이 높으면 재작업과 검사시간이 늘고 양품률이 떨어져 고객 승인과 양산 일정이 지연될 수 있습니다.",
         "CPO 광패키징 기판·인터포저": "유리기판·유리인터포저는 TGV 성숙도와 대량생산 수율이 아직 핵심 변수이고, 기존 ABF·실리콘 인터포저가 예상보다 오래 유지되면 신소재 기판 전환 시점이 늦어질 수 있습니다.",
         "CPO 첨단패키징·COUPE": "CPO가 AI 칩과 동일한 2.5D·3D 패키징 자원을 놓고 경쟁하면 생산능력 확보가 늦어지고, 패키징 수율 저하는 광엔진보다 더 큰 출하 병목이 될 수 있습니다.",
+        "CPO 경영진 교체·공급망 영향 전망": "업계 분석과 실질적인 CPO 로드맵 변경을 혼동하면 채택 시점·매출 영향이 과장됩니다.",
         "Rubin HPC 신제품 발표": "발표사양·양산수율·HBM 공급·NVLink 신뢰성·전력 및 냉각과 제품 출시 시점을 분리해야 합니다.",
         "Rubin HPC 고객·양산": "고온 동작 검사, 칩 수율·열·패키징 및 주문 취소·검수 지연이 매출 인식에 영향을 줄 수 있습니다.",
         "Lambda CPO 실제 가동": "첫 대규모 설치와 공급 생태계 전체 양산 성숙도는 다릅니다. 광원 수명·열·결합 손실·재작업 비용과 검수 규모를 확인해야 합니다.",
@@ -3945,6 +4020,11 @@ def main() -> None:
                 continue
             title = item["title"]
             source = item.get("source") or ""
+            # The Nov-16 Huang/TSMC CPO analysis is historical commentary.
+            # A late index appearance is not a newly signed order or roadmap revision.
+            if company in {"NVIDIA", "CPO Packaging & Test", "CPO Equipment Supply Chain"}:
+                if nvidia_cpo_leadership_outlook_only(title) or stale_nvidia_cpo_commentary(company, title, published):
+                    continue
             apple_event = apple_siph_milestone(title) if company == APPLE_SIPH_COMPANY else None
             if company == APPLE_SIPH_COMPANY and apple_event is None:
                 continue
@@ -4249,6 +4329,7 @@ def main() -> None:
         | set(OOI_REFERENCE_BASELINE_KEYS)
         | set(NEW_OPTICAL_INFRA_BASELINES)
         | set(COUPE_FUNDA_PRIOR_KEYS)
+        | {NVIDIA_HUANG_CPO_OUTLOOK_KEY}
         | set(SC26_KNOWN_KEYS)
     )
     seen_story_records = [
