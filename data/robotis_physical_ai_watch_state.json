@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-22T15:39:52.388389+00:00",
+  "updated_at": "2026-11-22T19:31:20.498199+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1032,27 +1032,6 @@
   ],
   "delivery_history": [
     {
-      "run_id": 44618918281,
-      "outcome": "sent",
-      "confirmed_event_keys": [
-        "14d93a73761c3ea22b063cd20bd3e8a022d195ef3c0de7811049577d2dfcffa2",
-        "16812d46c411f3f83419051faa27f4934df8eaa5873242769150f8524d8c5e67",
-        "32bc1d9c8cb2bcd9c662a3d45e5b7735f18794030c695ecb737f1e17aab72c32",
-        "bbe34a040271e365b022520bb2d8a571ed30741e86e08d03bdbe32cd1cbc59c0"
-      ],
-      "message_ids": [
-        389
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-19T21:28:21.795843+00:00"
-    },
-    {
       "run_id": 44628528888,
       "outcome": "normal_silence",
       "confirmed_event_keys": [],
@@ -1353,17 +1332,27 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-22T15:39:52.388389+00:00"
+    },
+    {
+      "run_id": 45061133448,
+      "outcome": "normal_silence",
+      "confirmed_event_keys": [],
+      "message_ids": [],
+      "recipient_verified": null,
+      "recipient_checks": [],
+      "message_topic_present": [],
+      "state_timestamp_utc": "2026-11-22T19:31:20.498199+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 45039488297,
+    "run_id": 45061133448,
     "outcome": "normal_silence",
     "confirmed_event_keys": [],
     "message_ids": [],
     "recipient_verified": null,
     "recipient_checks": [],
     "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-22T15:39:52.388389+00:00"
+    "state_timestamp_utc": "2026-11-22T19:31:20.498199+00:00"
   },
   "last_selected_events": [],
   "message_corrections": {
