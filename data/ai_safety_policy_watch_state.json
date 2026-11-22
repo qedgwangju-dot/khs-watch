@@ -1,20 +1,27 @@
 {
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": true,
+    "all_sources_verified": false,
     "deferred_events": 0,
-    "errors": [],
-    "google_news_queries_failed": 0,
+    "errors": [
+      "Google News 실패: \"Dali Rajic\" \"OpenAI\" (cyber security revenue OR custom / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (Palo Alto Networks OR CrowdStrike OR IBM OR Microsoft  / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Safety Case\" t / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Joint Commitment on Frontier Responsibilities\" AI / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"frontier AI\" common standards best practices external  / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Cohere\" \"AISLE\" (\"letter of intent\" OR acquisition OR  / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "google_news_queries_failed": 6,
     "google_news_queries_requested": 107,
-    "google_news_queries_succeeded": 107,
-    "google_news_rate_limit_429": 0,
+    "google_news_queries_succeeded": 101,
+    "google_news_rate_limit_429": 6,
     "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [],
-    "raw_items": 67,
+    "raw_items": 68,
     "sif_new_stages": 0,
-    "source_access_limited": false,
+    "source_access_limited": true,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
     "si_portal_pending_candidates": 0,
@@ -100,7 +107,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-22T11:27:53.138607+00:00",
+    "updated_at": "2026-11-22T11:45:54.549155+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -998,11 +1005,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-22T20:27:53+09:00",
+  "updated_at_kst": "2026-11-22T20:45:54+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-22T11:28:53.787238+00:00",
+    "last_success_at": "2026-11-22T11:46:49.789174+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
