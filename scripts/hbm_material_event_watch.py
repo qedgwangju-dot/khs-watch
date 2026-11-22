@@ -632,6 +632,53 @@ REPORTS = (
              )),
         ),
     },
+    {
+        "key": "20261122_citi_dram_nand_2027_asp_revision_repost",
+        "date": "2026-11-22",
+        "max_age_days": 35,
+        "group": "citi_price_revision",
+        "label": "씨티 2027 DRAM·NAND ASP·서버 RDIMM 가격 전망 변경: 전달 메모",
+        "short_title": "씨티 2027 DRAM +35%·NAND +25% 전망(리포트 전달본)",
+        "brief_facts": (
+            "11월22일 공개 전달 메모 기준(씨티 원본 독립 확인 전): 2027년 DRAM 계약 평균판매단가 전년비 +23%→+35%(+12%p). 분기 전분기비 기존 +3%/+2%/+4%/+2%→+5%/+1%/+7%/+11%. HBM 가격 약 +100% 인상 가정의 비교기준은 미확인.",
+            "NAND 계약 평균판매단가 전년비 +45%→+25%(-20%p). 분기 전분기비 기존 +5%/+3%/+2%/+1%→-3%/-1%/0%/+3%. 연간 평균의 전년비와 분기별 전분기비는 다른 기준.",
+            "서버 DDR5 64GB RDIMM 현물: 2026년 9~10월 약 3,300달러→2027년 상반기 약 2,000달러(-39.4%)는 씨티 전달 전망. 현재 실제 현물 시세·개별 고객 계약가격으로 확정 금지.",
+            "기존 씨티 11월3일 보도(과거 수급모델): 2027년 DRAM 공급 증가율 +24%·수요 +28%·부족률 -3.8%, NAND 공급 +22%·수요 +26%·부족률 -3.3%; 11월22일 가격 전망 전달본과 발표일·전망 정의 분리.",
+            "반대 근거(새 발송 아님): 트렌드포스 11월19일 공식 NAND 계약가격 2027년 1분기 0~5% 하락·2분기부터 전 품목 약세, 2027년 비트 공급 +25~30%. 별도 메모리 알림에서 이미 처리된 발표이며 이 알림에서는 비교만.",
+        ),
+        "brief_caution": (
+            "새 씨티 가격 전망은 KK Kontemporaries의 전달문 재게시(2026-11-22) 기준이며 "
+            "씨티 원본 보고서·최신 64GB 현물가격은 독립 확인 전. "
+            "시장 평균 계약가와 모듈 현물가, 연간 전년비와 분기 전분기비를 혼동 금지. "
+            "NAND 공급 부족·과잉은 서로 다른 날짜·모델의 예측이며 확정 거래·실적 아님."
+        ),
+        "sources": (
+            ("KK Kontemporaries 씨티 메모 재게시",
+             "https://theddari.com/ja/trends/telegram/2098793993/2855",
+             "2026-11-22 사회관계망 전달문·씨티 원본 아님"),
+            ("동일 게시물 다른 언어 경로",
+             "https://theddari.com/trends/telegram/2098793993/2855",
+             "동일 전달문 대체 경로·독립 출처 아님"),
+        ),
+        "need": (
+            ("씨티", "Citi"), ("2027",), ("DRAM",), ("NAND",),
+            ("+35%",), ("+23%",), ("+25%",), ("+45%",),
+            ("DDR5",), ("64GB",), ("RDIMM", "RRIMM"),
+            ("3,300", "3300"), ("2,000", "2000"),
+        ),
+        "context_links": (
+            ("씨티 11월3일 과거 수급 전망",
+             "https://www.investing.com/news/stock-market-news/citi-expects-continued-memory-undersupply-in-2027-4995860"),
+            ("트렌드포스 11월19일 공식 NAND 전망",
+             "https://www.trendforce.com/presscenter/news/20261119-13314.html"),
+        ),
+        "facts": (
+            "11월22일 공개 전달 메모의 씨티 2027년 DRAM ASP 기존 +23%→+35%, NAND ASP 기존 +45%→+25%는 씨티 원본 미확인·전언 단계.",
+            "2027년 분기별 DRAM 전분기 대비 +5/+1/+7/+11%, NAND -3/-1/0/+3%; 64GB DDR5 RDIMM 현물 3,300→2,000달러 전망과 계약가 전망을 구별.",
+            "11월3일 씨티 과거 수급 부족 DRAM -3.8%, NAND -3.3%는 11월19일 트렌드포스 NAND 공급과잉 전망과 시점·기관·분모가 다른 별도 추정.",
+        ),
+        "caution": "11월19일 트렌드포스 공식 뉴스는 이미 별도 메모리 감시에서 발송되어 재발송하지 않음; 씨티 원본 미확보.",
+    },
 )
 
 GROUPS = {
@@ -645,6 +692,7 @@ GROUPS = {
     "hybrid_equipment": "SK하이닉스 20단 HBM · 하이브리드 본더 검증·도입 단계",
     "nvidia_commitments": "엔비디아 공급·생산능력 약정 및 HBM4 수요 검증",
     "samsung_memory_lta": "삼성전자 메모리 장기계약·2029~2031 확인 단계",
+    "citi_price_revision": "씨티 2027년 메모리 가격 전망·트렌드포스 반대 근거",
 }
 
 def text_matches(body: str, required: tuple) -> bool:
@@ -872,7 +920,7 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
         "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield",
     }
     rendered = [render(group, [x for x in new if x["group"] == group], checked_at)
-                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow", "hybrid_equipment", "nvidia_commitments", "samsung_memory_lta")
+                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow", "hybrid_equipment", "nvidia_commitments", "samsung_memory_lta", "citi_price_revision")
                 if any(x["group"] == group for x in new)]
     audit = {"checked_at_kst": checked_at, "verified_events": len(new),
              "verified_keys": [x["key"] for x in new], "gaps": gaps[-20:],

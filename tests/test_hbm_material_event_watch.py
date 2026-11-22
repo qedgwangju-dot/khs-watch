@@ -872,5 +872,69 @@ class MaterialEventTests(unittest.TestCase):
         self.assertEqual(len(d.chunks(rendered)), 1)
 
 
+
+    def test_citi_2027_asp_revision_only_reported_memo_is_recoverable_once(self):
+        row = next(x for x in m.REPORTS if x["key"] ==
+                   "20261122_citi_dram_nand_2027_asp_revision_repost")
+        body = (
+            "2026년 11월 22일 씨티 Citi 2027년 DRAM 계약 ASP +23% to +35%. "
+            "NAND 계약 ASP +45% to +25%. 서버 DDR5 64GB RDIMM 현물 "
+            "3,300달러에서 2,000달러 전망. 이 가격은 전달문으로 은행 원문 미확인."
+        )
+        earlier = {"delivery_receipt": {"status": "confirmed", "message_ids": [551]},
+                   "hbm_material_event_watch": {"seen_keys": [
+                       v["key"] for v in m.REPORTS if v is not row
+                   ]}}
+        def avoid(_):
+            raise AssertionError("No source lookup for a future or acknowledged event")
+        future, notices, audit = m.apply(
+            earlier, "2026-11-21T23:59:00+09:00", avoid)
+        self.assertEqual(notices, [])
+        self.assertNotIn(row["key"], future["hbm_material_event_watch"]["seen_keys"])
+
+        after, msgs, audit = m.apply(earlier, "2026-11-23T06:51:00+09:00",
+                                    lambda _: body)
+        self.assertEqual(audit["verified_events"], 1)
+        self.assertEqual(audit["verified_keys"], [row["key"]])
+        self.assertEqual(len(msgs), 1)
+        msg = msgs[0]
+        for token in ("+23%→+35%", "+45%→+25%", "+12%p", "-20%p",
+                      "+5%/+1%/+7%/+11%", "-3%/-1%/0%/+3%",
+                      "3,300달러", "2,000달러", "64GB", "RDIMM",
+                      "2027년", "NAND", "DRAM", "씨티 원본",
+                      "트렌드포스", "분기", "계약"):
+            self.assertIn(token, msg)
+        self.assertEqual(after["delivery_receipt"], earlier["delivery_receipt"])
+        self.assertIn(row["key"], after["hbm_material_event_watch"]["seen_keys"])
+        m.require_durable_seen_keys(earlier, after)
+        self.assertEqual(len(d.chunks(msg)), 1)
+        self.assertTrue(all(len(x.encode("utf-16-le")) // 2 <= 3600
+                            for x in d.chunks(msg)))
+        _, repeat, audit2 = m.apply(after, "2026-11-23T07:23:00+09:00", avoid)
+        self.assertEqual(repeat, [])
+        self.assertEqual(audit2["verified_events"], 0)
+
+    def test_citi_2027_price_revision_fail_closed_missing_or_unreachable_source(self):
+        row = next(x for x in m.REPORTS if x["key"] ==
+                   "20261122_citi_dram_nand_2027_asp_revision_repost")
+        prior = {"hbm_material_event_watch": {"seen_keys": [
+            v["key"] for v in m.REPORTS if v is not row
+        ]}}
+        for fetcher in (
+            lambda _: (_ for _ in ()).throw(TimeoutError("source unavailable")),
+            lambda _: "씨티 Citi 2027 DRAM NAND +35% +23% +25% +45% DDR5 64GB RDIMM 3,300",
+            lambda _: "2027 DRAM +35% NAND +25% other bank no original memo",
+        ):
+            pending, msgs, audit = m.apply(prior, "2026-11-23T06:55:00+09:00",
+                                           fetcher)
+            self.assertEqual(msgs, [])
+            self.assertNotIn(row["key"],
+                             pending["hbm_material_event_watch"]["seen_keys"])
+            self.assertTrue(audit["gaps"])
+        self.assertIn("독립 확인 전", row["brief_caution"])
+        self.assertNotIn("20261119_trendforce_nand_2027", [
+            x["key"] for x in m.REPORTS
+        ])  # Previously notified in separate memory route: never duplicate.
+
 if __name__ == "__main__":
     unittest.main()
