@@ -1,29 +1,20 @@
 {
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": false,
+    "all_sources_verified": true,
     "deferred_events": 0,
-    "errors": [
-      "Google News 실패: \"AI 보안모델\" 조달 실증 수주 계약 / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"금융권\" \"연 2회\" \"취약점\" (의무화 OR 규정 개정 OR 시행) / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"111개 기관\" \"172개\" 기반시설 점검 / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"AI 안전연구소\" 한국 국제 표준 평가 / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: AI cybersecurity foundation model government procuremen / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Dali Rajic\" \"OpenAI\" (cyber security revenue OR custom / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"GPT-6.1 Astra\" (safety cancelled OR release resumed OR / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (Palo Alto Networks OR CrowdStrike) AI security ARR ann / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 8,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 107,
-    "google_news_queries_succeeded": 99,
-    "google_news_rate_limit_429": 8,
-    "material_items": 31,
+    "google_news_queries_succeeded": 107,
+    "google_news_rate_limit_429": 0,
+    "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [],
-    "raw_items": 39,
+    "raw_items": 68,
     "sif_new_stages": 0,
-    "source_access_limited": true,
+    "source_access_limited": false,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
     "si_portal_pending_candidates": 0,
@@ -109,7 +100,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-22T21:10:51.533413+00:00",
+    "updated_at": "2026-11-22T21:16:54.684533+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -1007,11 +998,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-23T06:10:51+09:00",
+  "updated_at_kst": "2026-11-23T06:16:54+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-22T21:11:41.791449+00:00",
+    "last_success_at": "2026-11-22T21:17:58.363771+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
