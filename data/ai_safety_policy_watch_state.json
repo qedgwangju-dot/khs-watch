@@ -9,8 +9,8 @@
     "google_news_queries_succeeded": 107,
     "google_news_rate_limit_429": 0,
     "material_items": 33,
-    "new_articles": 0,
-    "new_events": 0,
+    "new_articles": 1,
+    "new_events": 1,
     "official_page_skips": [],
     "raw_items": 67,
     "sif_new_stages": 0,
@@ -62,11 +62,11 @@
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/docs/about/support-matrix.mdx"
     },
     "OpenAI 프런티어 학습 Safety Case": {
-      "candidate_count": 2,
-      "candidate_digest": "34aca096d8b46233bab40766bc879fd4d3826fd4fc866d705eb9411f2fd9a235",
-      "candidate_first_seen_at": "2026-11-22T00:11:53.541701+00:00",
-      "digest": "655db4276e3ce44f0a15757a675a154400074f31f91748587b609a88eba568e6",
-      "updated_at": "2026-11-22T00:01:05.390653+00:00",
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "digest": "34aca096d8b46233bab40766bc879fd4d3826fd4fc866d705eb9411f2fd9a235",
+      "updated_at": "2026-11-22T00:41:25.900865+00:00",
       "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training/"
     },
     "미 하원의장실 White House Accord 공식 발표": {
@@ -100,7 +100,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-22T00:19:33.282340+00:00",
+    "updated_at": "2026-11-22T00:41:25.900865+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -998,11 +998,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-22T09:19:33+09:00",
+  "updated_at_kst": "2026-11-22T09:41:25+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-22T00:20:33.882156+00:00",
+    "last_success_at": "2026-11-22T00:42:24.939480+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
