@@ -70,6 +70,7 @@
     "https://finance.yahoo.com/technology/ai/articles/data-center-transformer-market-research-141800508.html",
     "https://www.cushmanwakefield.com/en/united-states/insights/data-center-development-cost-guide",
     "https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-expands-operations-in-nebraska-with-new-manufacturing-facility.html",
+    "https://www.eurasiareview.com/20112026-industry-opportunities-in-global-power-grid-construction-analysis/",
     "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/hitachi-deepens-commitment-to-u-s-manufacturing-with-528-million-mississippi-transformer-factory",
     "https://www.hitachienergy.com/us/en/news-and-events/press-releases/2026/06/hitachi-energy-breaks-ground-on-the-nation-s-largest-facility-for-the-production-of-large-power-transformers-in-south-boston-virginia",
     "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
@@ -77,8 +78,8 @@
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/",
     "https://www.techtimes.com/articles/327932/20260923/trench-group-eyes-billion-euro-sale-ai-powers-indispensable-substation-maker.htm"
   ],
-  "last_checked_at_kst": "2026-11-22T11:40:05+09:00",
-  "metric_observation_count": 0,
+  "last_checked_at_kst": "2026-11-22T19:19:54+09:00",
+  "metric_observation_count": 1,
   "event_count": 0,
   "latest_evidence_urls": [],
   "transformer_imports": {
@@ -819,12 +820,12 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-11-22T11:40:05+09:00",
+    "last_checked_at_kst": "2026-11-22T19:19:54+09:00",
     "last_error": "",
     "pending_month": "2026-10"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-22T11:41:32+09:00",
+    "checked_at_kst": "2026-11-22T19:21:13+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-14T01:46:15+09:00",
@@ -1018,16 +1019,16 @@
     "alert_layout_version": 2
   },
   "discovery_health": {
-    "rss_ok": 59,
+    "rss_ok": 60,
     "rss_failed": 0,
     "urls_resolved": 126,
     "pages_opened": 16,
     "bing_ok": 40,
     "bing_failed": 0,
-    "google_ok": 19,
+    "google_ok": 20,
     "gdelt_ok": 0,
     "gdelt_failed": 0,
-    "news_candidates": 57
+    "news_candidates": 56
   },
   "power_squeeze_alerts": {
     "sent_fact_keys": [
@@ -1053,7 +1054,7 @@
   "news_collection_outage": {
     "consecutive_failures": 0,
     "alerted": false,
-    "last_success_at_kst": "2026-11-22T11:40:05+09:00",
+    "last_success_at_kst": "2026-11-22T19:19:54+09:00",
     "last_failure_at_kst": "2026-11-21T22:31:17+09:00"
   }
 }
