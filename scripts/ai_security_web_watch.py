@@ -113,7 +113,24 @@ SECURITY_REFERENCE_EVENTS = (
     },
 )
 
+OPENAI_EVAL_REPORT_URL = (
+    "https://openai.com/safety-alignment/misalignment-reports/"
+    "using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/"
+)
+OPENAI_EVAL_STAGE_KEY = "openai_exploitgym:research_cluster_access_20260719"
+# The July 19 evaluation access was disclosed in August and detailed on Nov 10.
+# Google News re-indexing is not evidence of a fresh security incident.
+KNOWN_SECURITY_CASE_BASELINES = {
+    OPENAI_EVAL_STAGE_KEY: {
+        "source_url": OPENAI_EVAL_REPORT_URL,
+        "source": "OpenAI",
+        "first_seen_at": "2026-11-10T00:00:00+00:00",
+        "status": "July 19 evaluation; disclosed Aug 26; Nov 10 follow-up",
+    },
+}
+
 SECURITY_CASE_LABELS = {
+    "openai_exploitgym": ("OpenAI 내부 평가·연구 인프라 비인가 접근(기존 공개)", "OpenAI", 2),
     "anthropic_cathedral": ("Anthropic 제3자 업무시스템 보안 연구·모의침투", "Anthropic", 2),
     "claude_georgia": ("Claude 승인 없는 유료 공개자료 접근·통제 이탈", "Anthropic", 2),
     "artex_storm0940": ("ARTEX 국가 연계 실전 공격·공급망 침해", "Microsoft 위협정보", 3),
@@ -122,6 +139,7 @@ SECURITY_CASE_LABELS = {
 }
 
 SECURITY_CASE_FACTS = {
+    "openai_exploitgym": "7월 19일 OpenAI 내부 ExploitGym 평가에서 에이전트 5개가 연구 클러스터의 작업에 관리자 권한으로 접근. 기존 사건은 8월 공개·11월 10일 후속 보고됨. OpenAI는 평가 중단·접근경로 차단·환경 재구축·격리 강화를 발표했으며, 11월 23일 신규 침해가 아님",
     "anthropic_cathedral": "Cathedral의 AI 보안 연구진이 12시간 이내에 Anthropic의 제3자 업무용 소프트웨어를 통해 영업·인사·정보기술 시스템 일부에 접근. 공식 연구 프로그램 내 활동이며 모델 가중치·고객 대화 탈취 및 외부 악용은 확인되지 않음. 범위·공개 준수 여부에는 이견",
     "claude_georgia": "Claude가 조지아주 유료 공개 집계 투표수 자료에 사람의 지시 없이 접근. 유권자 등록 DB 침입·개별 투표 기록 조회·변경은 아니며, 접근 제한 우회와 에이전트 통제 실패로 분류",
     "artex_storm0940": "Microsoft 위협보고: 중국 연계 Storm-0940이 ARTEX로 수백 개 조직을 표적화하고 일부 클라우드 권한 탈취·ConnectWise 공급망 침해에 관여. 표적 수를 실제 피해 조직 수로 환산 금지",
@@ -715,6 +733,11 @@ def security_case_stage(item: dict) -> tuple[str, str] | None:
     """Return stable, distinct milestones; no inference of victim compromise."""
     title = str(item.get("title") or "").lower()
     context = f" {title} {item.get('description','')} ".lower()
+    report_slug = "using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure"
+    normalized_title = re.sub(r"[^a-z0-9]+", " ", title).strip()
+    if (report_slug in str(item.get("url") or "").lower()
+            or "using peers work to gain unauthorized access to openai research infrastructure" in normalized_title):
+        return "openai_exploitgym", "research_cluster_access_20260719"
     if "cathedral" in context and "anthropic" in context and any(
         x in context for x in ("security", "penetrat", "third-party", "third party", "12 hours", "12시간")
     ):
@@ -745,7 +768,8 @@ def security_case_key(item: dict) -> str | None:
 
 def security_case_publisher_verified(item: dict) -> bool:
     """Require authentic publisher domain for brand-labelled case reports."""
-    if not security_case_stage(item):
+    case = security_case_stage(item)
+    if not case:
         return True
     source = str(item.get("source") or "").strip().lower()
     url = str(item.get("publisher_url") or item.get("url") or "").strip()
@@ -753,6 +777,10 @@ def security_case_publisher_verified(item: dict) -> bool:
         host = (urllib.parse.urlsplit(url).hostname or "").lower()
     except ValueError:
         return False
+    if case[0] == "openai_exploitgym":
+        # A Google News OpenAI label alone cannot authenticate a fake domain.
+        return (source in {"openai", "openai alignment"}
+                and (host == "openai.com" or host.endswith(".openai.com")))
     publisher_domains = (
         (("washington post",), "washingtonpost.com"),
         (("axios",), "axios.com"),
@@ -1939,6 +1967,8 @@ def main() -> int:
     insider_stages = dict(state.get("openai_insider_case_stages") or {})
     php_stages = dict(state.get("php_critical_stages") or {})
     security_cases = dict(state.get("tracked_security_cases") or {})
+    for key, baseline_record in KNOWN_SECURITY_CASE_BASELINES.items():
+        security_cases.setdefault(key, dict(baseline_record))
     # Existing Oct-23 official disclosure is a historical baseline, not a new
     # patch or confirmed attack. Preserve every prior stage/seen entry.
     php_stages.setdefault("session_advisory", {
