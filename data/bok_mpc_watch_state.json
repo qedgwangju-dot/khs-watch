@@ -51,8 +51,8 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-11-21T18:44:01+09:00",
-    "risk_score": 4,
+    "updated_at_kst": "2026-11-22T15:39:47+09:00",
+    "risk_score": 3,
     "grade_emoji": "🟡",
     "grade_label": "추가인상 가능성 유지",
     "next_mpc_date": "2026-11-26",
@@ -83,8 +83,8 @@
       "housing": null,
       "oil": {
         "date": "2026-11-20",
-        "brent_usd": 92.57,
-        "change_5d_pct": -3.41,
+        "brent_usd": 89.95,
+        "change_5d_pct": -6.15,
         "price_type": "최근 확정 일봉 종가",
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
