@@ -53,6 +53,7 @@ OFFICIAL_CHANGE_CONFIRM_SECONDS = 600
 # those presentation changes must never generate a policy alert. Follow-up
 # policy changes are discovered as new official documents/news items instead.
 IMMUTABLE_OFFICIAL_REFERENCE_PAGES = {
+    "OpenAI 프런티어 학습 Safety Case",
     "미 하원의장실 White House Accord 공식 발표",
     "백악관 Super Intelligence 행정명령",
     "백악관 Super Intelligence 팩트시트",
