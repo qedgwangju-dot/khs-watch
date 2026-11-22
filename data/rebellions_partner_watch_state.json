@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-22T08:51:44+09:00",
+  "last_checked_kst": "2026-11-22T09:44:46+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -4243,6 +4243,21 @@
       "material_stage": 1,
       "first_seen_kst": "2026-11-21T07:43:05+09:00",
       "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "bc060724694bcc46454ba8ff": {
+      "title": "SKT·엔비디아·리벨리온, 한국형 소버린 AI 인프라 협력 - 포인트데일리",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5ZMklMV1ExaV9MaGtnV20zUTllWFY1WmR0OURtT0JUaWptejk5cDA2cXdLbGlEQ05PZ3VEbnRoR09HTDFaZzFCMkFkbTFPcG5sbmVzeVdXY1YzU1JqWFJuQkxQbUc0UFpRMl9tZ09TOXfSAXRBVV95cUxPd2hTbzEtSW4tQ2N6cUMtTG9HNGNhMmtObHVVTkY1UWFCMFhmaFBjV2h1cllkWDVYSm9sdXJUWFBEWHNmSVpDVEpvQUktd25DUG4yZ1RfeU9rZm03YXVNaTlDQlZyT09GRFlyaUloME5TVTRWLQ?oc=5",
+      "summary": "SKT·엔비디아·리벨리온, 한국형 소버린 AI 인프라 협력 포인트데일리",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-22T09:44:46+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
+    },
+    "048ea3acefb22b6c296c7956": {
+      "title": "CCK솔루션, 리벨리온 투자 유치 - 데일리바이트(DAILY BYTE)",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOTkZBNWVTWUhUQm5Ycm9YSUFWemJUWHVCeVJuMG4xeGlPVlY1MUt5WFFtSjFGOHRLbndqdWUtdnlyMENWRXQxMEJmRW42cnpCTXVORUlKR040T0RodUNibXVKRDVud3JFVEJHSVJwWnllVC1CaUU5dlQtT0NNR2EySmxjVktsZw?oc=5",
+      "first_seen_kst": "2026-11-22T09:44:46+09:00",
+      "suppressed_stale": true
     }
   }
 }
