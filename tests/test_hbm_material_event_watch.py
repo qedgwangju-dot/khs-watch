@@ -932,6 +932,15 @@ class MaterialEventTests(unittest.TestCase):
                              pending["hbm_material_event_watch"]["seen_keys"])
             self.assertTrue(audit["gaps"])
         self.assertIn("독립 확인 전", row["brief_caution"])
+        incomplete = "씨티 Citi 2027 DRAM NAND"
+        found, detail = m.probe(row, lambda _: incomplete)
+        self.assertIsNone(found)
+        self.assertTrue(all("missing_required" in x for x in detail if
+                            x["status"] == "required_article_facts_not_verified"))
+        self.assertIn("+35%", detail[0]["missing_required"])
+        self.assertEqual(detail[0]["response_text_chars"], len(incomplete))
+        self.assertEqual(len(row["sources"]), 3)
+        self.assertTrue(row["sources"][2][1].startswith("https://t.me/kkkontemp/2855"))
         self.assertNotIn("20261119_trendforce_nand_2027", [
             x["key"] for x in m.REPORTS
         ])  # Previously notified in separate memory route: never duplicate.

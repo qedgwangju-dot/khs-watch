@@ -659,6 +659,9 @@ REPORTS = (
             ("동일 게시물 다른 언어 경로",
              "https://theddari.com/trends/telegram/2098793993/2855",
              "동일 전달문 대체 경로·독립 출처 아님"),
+            ("KK Kontemporaries 원 게시물 직접 보기",
+             "https://t.me/kkkontemp/2855?embed=1",
+             "2026-11-22 동일 Telegram 게시물·씨티 보고서 원본 아님"),
         ),
         "need": (
             ("씨티", "Citi"), ("2027",), ("DRAM",), ("NAND",),
@@ -777,7 +780,18 @@ def probe(report: dict, fetcher=fetch_article) -> tuple[dict | None, list[dict]]
         try:
             body = fetcher(url)
             if not text_matches(body, report["need"]):
-                gaps.append({"key": report["key"], "origin": label, "status": "required_article_facts_not_verified"})
+                gap = {"key": report["key"], "origin": label,
+                       "status": "required_article_facts_not_verified"}
+                if report.get("group") == "citi_price_revision":
+                    # Record only expected missing tokens, never publisher body,
+                    # credentials or user data. A partial page must not send.
+                    low_body = body.casefold()
+                    gap["missing_required"] = [
+                        terms[0] for terms in report["need"]
+                        if not any(term.casefold() in low_body for term in terms)
+                    ]
+                    gap["response_text_chars"] = len(body)
+                gaps.append(gap)
                 continue
             return {"key": report["key"], "group": report["group"], "label": report["label"],
                     "date": report["date"], "facts": report["facts"], "caution": report["caution"],
