@@ -3141,6 +3141,15 @@
       "checked_at_kst": "2026-11-22T14:31:01+09:00",
       "fingerprint": "aa473435ac3d50d11b3bdfbbceddcf589d8c5ea4a58df16b7c970dcf83a6fb04",
       "outcome": "no_send"
+    },
+    "44989594810:1": {
+      "checked_at_kst": "2026-11-22T15:01:57+09:00",
+      "completed": "2026-11-22T05:31:02+00:00",
+      "fingerprint": "597f856501047d2de4f4788803fff9801c5bf44e1c7f3bff39ef35b2aa8903f8",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-22T05:31:02+00:00"
     }
   },
   "recovery_holds": {},
