@@ -321,6 +321,8 @@
       }
     ]
   },
-  "last_scan_kst": "2026-11-22T18:04:57+09:00",
-  "errors": []
+  "last_scan_kst": "2026-11-23T02:07:12+09:00",
+  "errors": [
+    "en:Apple foldable panel procurement share Samsun… -> HTTPError: HTTP Error 429: Too Many Requests"
+  ]
 }
