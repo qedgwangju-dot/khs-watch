@@ -1,20 +1,34 @@
 {
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": true,
+    "all_sources_verified": false,
     "deferred_events": 0,
-    "errors": [],
-    "google_news_queries_failed": 0,
+    "errors": [
+      "Google News 실패: \"AI Safety Institute\" standard evaluation incident repo / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: NIST frontier AI safety standard evaluation cybersecuri / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Michelle Bowman\" (cybersecurity OR fraud OR scams) (ba / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Federal Reserve\" \"GENIUS Act\" (final rule OR proposed  / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"OCC\" \"Cybersecurity Supervision Work Program\" (updated / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"사이버보안 특화 AI\" 네이버클라우드 과기정통부 NIPA / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"PHP\" \"사이버위기 경보\" (과학기술정보통신부 OR 과기정통부 OR KISA) (상향 OR 하향 / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"과기정통부\" \"금융권\" (24시간 비상대응 OR CISO 보안점검 OR C-TAS 차단) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"금융위원회\" \"580개사\" (전수점검 OR 점검 완료 OR 결과 발표) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: 네이버클라우드 S2W 샌즈랩 LG CNS 사이버보안 AI 계약 실증 / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (\"케이사인\" OR \"KSign\") (\"전기차 충전\" OR \"EV charging\") (취약점 OR / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"Daybreak for Frontline Defenders\" (subsidized use OR f / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"OpenAI\" \"security infrastructure\" (product work paused / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "google_news_queries_failed": 13,
     "google_news_queries_requested": 107,
-    "google_news_queries_succeeded": 107,
-    "google_news_rate_limit_429": 0,
+    "google_news_queries_succeeded": 94,
+    "google_news_rate_limit_429": 13,
     "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [],
-    "raw_items": 69,
+    "raw_items": 67,
     "sif_new_stages": 0,
-    "source_access_limited": false,
+    "source_access_limited": true,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
     "si_portal_pending_candidates": 0,
@@ -100,7 +114,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-22T19:24:31.548283+00:00",
+    "updated_at": "2026-11-22T19:31:02.894740+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -998,11 +1012,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-23T04:24:31+09:00",
+  "updated_at_kst": "2026-11-23T04:31:02+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-22T19:25:16.837288+00:00",
+    "last_success_at": "2026-11-22T19:31:58.804297+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
