@@ -82,8 +82,8 @@ jobs:
 
       - name: Validate and run thesis watcher
         run: |
-          rm -f out/wonyotti_90d_thesis_alert.html out/wonyotti_90d_thesis_status.md out/wonyotti_90d_thesis_pending_state.json
-          python -m py_compile scripts/wonyotti_90d_thesis_watch.py
+          rm -f out/wonyotti_90d_thesis_alert.html out/wonyotti_90d_thesis_status.md out/wonyotti_90d_thesis_pending_state.json out/wonyotti_90d_thesis_delivery_meta.json out/wonyotti_90d_thesis_delivery_receipt.json
+          python -m py_compile scripts/wonyotti_90d_thesis_watch.py scripts/wonyotti_90d_delivery_guard.py
           python -m unittest discover -s tests -p 'test_wonyotti_direction.py' -v
           python - <<'PY'
           import datetime as dt
@@ -251,6 +251,21 @@ jobs:
           • NVIDIA는 회계 부정으로 단정하지 않고 고객금융·매출채권·현금회수·수요의 질로 구분
           EOF
 
+      - name: Persist delivery intent before Telegram API
+        if: hashFiles('out/wonyotti_90d_thesis_connection_test.html') != '' || hashFiles('out/wonyotti_90d_thesis_alert.html') != ''
+        run: |
+          python - <<'PY'
+          import pathlib
+          for path in (
+              pathlib.Path("out/wonyotti_90d_thesis_connection_test.html"),
+              pathlib.Path("out/wonyotti_90d_thesis_alert.html"),
+          ):
+              if path.exists() and any(len(line) > 3800 for line in path.read_text(encoding="utf-8").splitlines()):
+                  raise RuntimeError("Telegram line exceeds safe chunk limit; no delivery attempt recorded")
+          PY
+          python scripts/wonyotti_90d_delivery_guard.py prepare
+
+
       - name: Send Telegram alert
         if: hashFiles('out/wonyotti_90d_thesis_connection_test.html') != '' || hashFiles('out/wonyotti_90d_thesis_alert.html') != ''
         run: |
@@ -307,9 +322,22 @@ jobs:
                       result = json.loads(r.read().decode("utf-8"))
                   if not result.get("ok"):
                       raise RuntimeError(f"Telegram rejected message: {result}")
-                  sent.append(result["result"].get("message_id"))
+                  mid = (result.get("result") or {}).get("message_id")
+                  if not isinstance(mid, int) or mid <= 0:
+                      raise RuntimeError("Telegram response without valid message_id; delivery is unconfirmed")
+                  sent.append(mid)
+          if not sent:
+              raise RuntimeError("No successful Telegram messages; delivery remains unconfirmed")
+          pathlib.Path("out/wonyotti_90d_thesis_delivery_receipt.json").write_text(
+              json.dumps({"message_ids": sent}, ensure_ascii=False), encoding="utf-8"
+          )
           print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(sent)} ids={sent}")
           PY
+
+      - name: Persist Telegram receipt before accepting watcher state
+        if: success() && hashFiles('out/wonyotti_90d_thesis_delivery_receipt.json') != ''
+        run: python scripts/wonyotti_90d_delivery_guard.py ack
+
 
       - name: Commit watcher state after successful delivery or silent run
         if: success() && hashFiles('out/wonyotti_90d_thesis_pending_state.json') != ''
@@ -344,5 +372,7 @@ jobs:
             out/wonyotti_90d_thesis_status.md
             out/wonyotti_90d_thesis_alert.html
             out/wonyotti_90d_thesis_connection_test.html
+            out/wonyotti_90d_thesis_delivery_meta.json
+            out/wonyotti_90d_thesis_delivery_receipt.json
           if-no-files-found: ignore
           retention-days: 14

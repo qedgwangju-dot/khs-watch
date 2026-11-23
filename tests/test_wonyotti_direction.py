@@ -154,5 +154,66 @@ class WonyottiRegressionTest(unittest.TestCase):
         self.assertNotIn("63.06B", text)
 
 
+    def test_partial_large_etf_flow_is_not_prematurely_sent(self):
+        prior = {"crypto": {"btc_etf": flow(date="2026-11-19", daily=-582.2, five=-1306.2)}}
+        provisional = flow(date="2026-11-20", daily=-669.2, five=-1790.0, status="partial")
+        provisional["previous_five_day_usd_m"] = -1306.2
+        provisional["trigger_ready"] = True
+        self.assertEqual(w.build_signals(prior, {"crypto": {"btc_etf": provisional}}, []), [])
+        final = dict(provisional, status="complete", five_day_complete=True)
+        hits = w.build_signals(prior, {"crypto": {"btc_etf": final}}, [])
+        self.assertEqual(len(hits), 1)
+        self.assertIn("당일 큰 규모", hits[0][1])
+
+    def test_etf_delivery_event_identity_is_stable(self):
+        event = ("암호화폐", "BTC ETF 당일 큰 규모의 순유출", "test", "", "", w.FARSIDE_BTC)
+        snapshot = {"crypto": {"btc_etf": flow(date="2026-11-20", daily=-669.2, five=-1790.0)}}
+        key = w._signal_delivery_key(event, snapshot, NOW)
+        self.assertEqual(key, "BTC|2026-11-20|large_daily|out")
+
+    def test_nvidia_latest_official_release_is_detectable_separately_from_10q(self):
+        link = "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027"
+        rss = ('<rss><channel><item><title>NVIDIA Announces Financial Results for Third Quarter Fiscal 2027</title>'
+               '<pubDate>Tue, 17 Nov 2026 21:20:00 GMT</pubDate>'
+               '<link>' + link + '</link></item></channel></rss>')
+        body = "<html><body>Revenue of $115.8 billion, up 103 percent from a year ago.</body></html>"
+        def official_fetch(url, *args, **kwargs):
+            return rss.encode() if url == w.NVIDIA_EARNINGS_RSS else body.encode()
+        with patch.object(w, "fetch", side_effect=official_fetch):
+            release, errors = w.nvidia_earnings_snapshot()
+        self.assertFalse(errors, errors)
+        self.assertTrue(release["verified"])
+        self.assertEqual(release["revenue_b"], 115.8)
+        self.assertEqual(release["date"], "2026-11-18")
+
+    def test_one_unconfirmed_news_source_does_not_poison_future_corroboration(self):
+        published = dt.datetime.now(w.KST).isoformat(timespec="seconds")
+        reuters = {
+            "title": "Microsoft raises AI capex guidance 10% for data center buildout",
+            "description": "AI capex guidance increased", "source": "Reuters",
+            "link": "https://example.com/official-article-a", "published": published,
+        }
+        bloomberg = {
+            "title": "Microsoft raises AI capex guidance 10% for data center buildout",
+            "description": "AI capex guidance increased", "source": "Bloomberg",
+            "link": "https://example.com/official-article-b", "published": published,
+        }
+        def single_source(query):
+            return [dict(reuters)] if query.startswith('"Microsoft"') else []
+        def two_sources(query):
+            return [dict(reuters), dict(bloomberg)] if query.startswith('"Microsoft"') else []
+        with patch.object(w, "google_news", side_effect=single_source):
+            alerts, remembered, errors = w.high_signal_news(set())
+        self.assertFalse(alerts)
+        self.assertFalse(remembered)
+        self.assertFalse(errors)
+        with patch.object(w, "google_news", side_effect=two_sources):
+            alerts, remembered, errors = w.high_signal_news(remembered)
+        self.assertEqual(len(alerts), 1)
+        self.assertGreaterEqual(len(remembered), 2)
+        self.assertFalse(errors)
+
+
+
 if __name__ == "__main__":
     unittest.main()

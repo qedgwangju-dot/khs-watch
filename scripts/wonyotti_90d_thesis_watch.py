@@ -53,6 +53,7 @@ TREASURY_REAL = (
     "TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve"
 )
 NVIDIA_HOME = "https://investor.nvidia.com/home/default.aspx"
+NVIDIA_EARNINGS_RSS = "https://nvidianews.nvidia.com/rss.xml"
 NVIDIA_CURRENT_10Q_FALLBACK = "https://investor.nvidia.com/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf"
 
 NEWS_QUERIES = {
@@ -582,6 +583,48 @@ def nvidia_ir_snapshot(old_nv: dict | None = None) -> tuple[dict, list[str]]:
     return out, errors
 
 
+def nvidia_earnings_snapshot(old_release: dict | None = None) -> tuple[dict, list[str]]:
+    """Check official NVIDIA quarterly-release RSS separately from Form 10-Q."""
+    try:
+        root = ET.fromstring(fetch(NVIDIA_EARNINGS_RSS, timeout=25, accept="application/rss+xml"))
+        entries = []
+        for item in root.findall(".//item"):
+            title = clean(item.findtext("title"))
+            if not re.search(r"NVIDIA Announces Financial Results for .*Quarter Fiscal \d{4}", title, re.I):
+                continue
+            url = clean(item.findtext("link"))
+            if not url.startswith(("https://nvidianews.nvidia.com/", "https://investor.nvidia.com/")):
+                continue
+            try:
+                published = parsedate_to_datetime(item.findtext("pubDate") or "")
+                if published.tzinfo is None:
+                    published = published.replace(tzinfo=dt.timezone.utc)
+            except Exception:
+                continue
+            entries.append((published, title, url))
+        if not entries:
+            raise RuntimeError("No dated official quarterly result in RSS")
+        published, title, url = max(entries)
+        published_day = published.astimezone(KST).date().isoformat()
+        if url == (old_release or {}).get("url") and (old_release or {}).get("verified"):
+            data = dict(old_release)
+            data["rss_checked_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
+            return data, []
+        body = BeautifulSoup(fetch(url, timeout=30, accept="text/html").decode("utf-8", errors="replace"), "html.parser")
+        text = body.get_text(" ", strip=True)
+        match = re.search(r"revenue(?: for the .*?)?\s+of\s+\$([\d,.]+)\s+billion", text, re.I)
+        if not match:
+            raise RuntimeError("Cannot verify revenue in official earnings release")
+        return {
+            "url": url, "title": title, "date": published_day,
+            "revenue_b": float(match.group(1).replace(",", "")),
+            "verified": True,
+            "rss_checked_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
+        }, []
+    except Exception as exc:
+        return {}, [f"NVIDIA official earnings RSS: {exc}"]
+
+
 def google_news(query: str) -> list[dict]:
     params = {"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"}
     root = ET.fromstring(fetch("https://news.google.com/rss/search?" + urllib.parse.urlencode(params)))
@@ -692,7 +735,6 @@ def high_signal_news(old_seen: set[str]) -> tuple[list[dict], set[str], list[str
                 if not any(x in blob for x in TRUSTED):
                     continue
                 key = news_key(category, item)
-                all_seen.add(key)
                 item.update({
                     "category": category,
                     "key": key,
@@ -734,6 +776,10 @@ def high_signal_news(old_seen: set[str]) -> tuple[list[dict], set[str], list[str
             continue
         item["link"] = decode_google_news(item.get("link") or "")
         deduped.append(item)
+    for emitted in deduped[:8]:
+        for candidate in candidates:
+            if _same_event(emitted, candidate):
+                all_seen.add(candidate["key"])
     return deduped[:8], all_seen, errors
 
 
@@ -851,6 +897,39 @@ def advance_btc_threshold_state(
     return state, event
 
 
+def _signal_delivery_key(signal: tuple, snapshot: dict, now: dt.datetime) -> str:
+    axis, headline, details, _meaning, _next, url = signal
+    crypto = snapshot.get("crypto") or {}
+    coin_match = re.match(r"^(BTC|ETH) ETF ", headline) if axis == "암호화폐" else None
+    if coin_match:
+        coin = coin_match.group(1)
+        flow = crypto.get("btc_etf" if coin == "BTC" else "eth_etf") or {}
+        kind = "flow5_flip" if "전환" in headline else "large_daily"
+        value = flow.get("five_day_usd_m" if kind == "flow5_flip" else "daily_usd_m")
+        side = "out" if value is not None and float(value) < 0 else "in"
+        return f"{coin}|{flow.get('date') or 'unknown'}|{kind}|{side}"
+    if "85,000달러" in headline:
+        side = "up" if "상향 돌파" in headline else "down"
+        return f"btc85|{now.date().isoformat()}|{side}"
+    if axis in {"감시원천 이상", "감시원천 복구"}:
+        return f"source|{now.date().isoformat()}|{headline}"
+    if url:
+        return "source|" + hashlib.sha256(url.encode("utf-8")).hexdigest()[:32]
+    payload = json.dumps([axis, headline, details], ensure_ascii=False)
+    return "event|" + hashlib.sha256(payload.encode("utf-8")).hexdigest()[:32]
+
+
+def _blocked_delivery_keys() -> set[str]:
+    ledger = ROOT / "data" / "wonyotti_90d_thesis_delivery_ledger.json"
+    if not ledger.exists():
+        return set()
+    data = json.loads(ledger.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or not isinstance(data.get("pending"), dict) or not isinstance(data.get("delivered"), dict):
+        raise RuntimeError("Wonyotti delivery ledger corrupt: fail closed")
+    return set(data["pending"]) | set(data["delivered"])
+
+
+
 def build_signals(old: dict, new: dict, news_items: list[dict], btc_threshold_event: dict | None = None) -> list[tuple]:
     signals = []
 
@@ -877,7 +956,9 @@ def build_signals(old: dict, new: dict, news_items: list[dict], btc_threshold_ev
         daily = after.get("daily_usd_m")
         if new5 is None or daily is None or previous_full5 is None:
             continue
-        if not bool(after.get("trigger_ready")):
+        if not bool(after.get("trigger_ready")) or after.get("status") != "complete":
+            continue
+        if not bool(after.get("five_day_complete")) or not bool(after.get("previous_five_day_complete")):
             continue
         before_daily = before.get("daily_usd_m")
         changed = (
@@ -920,6 +1001,26 @@ def build_signals(old: dict, new: dict, news_items: list[dict], btc_threshold_ev
             "가격·ETF 5거래일 방향이 함께 유지되는지, 반대 흐름으로 돌아서는지",
             after.get("source_url"),
         ))
+
+    previous_release = old.get("nvidia_earnings") or {}
+    latest_release = new.get("nvidia_earnings") or {}
+    if latest_release.get("verified") and latest_release.get("url") != previous_release.get("url"):
+        try:
+            age_days = (dt.datetime.now(KST).date() - dt.date.fromisoformat(latest_release["date"])).days
+        except Exception:
+            age_days = 999
+        if 0 <= age_days <= 14:
+            label = "NVIDIA 신규 분기 공식 실적발표 확인"
+            if not previous_release.get("url"):
+                label += " · 기존 감시 누락 공식 발표 보완"
+            signals.append((
+                "NVIDIA 수요의 질", label,
+                f"발표일 {latest_release['date']} · {latest_release['title']} · 매출 {latest_release['revenue_b']:.1f}십억달러 (회사 발표, 10-Q 아님)",
+                "기존 10-Q와 새로운 실적발표를 구별하고 고객금융·현금회수 변화를 후속 공시에서 검증",
+                "NVIDIA 신규 10-Q 공시 및 매출채권·영업현금흐름 확인",
+                latest_release["url"],
+            ))
+
 
     old_deriv, new_deriv = old_crypto.get("derivatives") or {}, new_crypto.get("derivatives") or {}
     for symbol in ("BTCUSDT", "ETHUSDT", "SOLUSDT"):
@@ -1226,10 +1327,13 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
                 lines.append("• BTC와 ETH ETF가 함께 순유출이어서 암호화폐 전반의 자금 이탈 위험도 커진 상태입니다.")
     if nvidia_event:
         nv = snapshot.get("nvidia_sec") or {}
+        release = snapshot.get("nvidia_earnings") or {}
+        if release.get("verified"):
+            lines.append(f"• NVIDIA 최신 실적발표: {release.get('date')} · 매출 {float(release['revenue_b']):.1f}십억달러 (10-Q와 구별)")
         if nv.get("parsed_ok"):
             lines.extend([
                 "",
-                "<b>[NVIDIA 공식 공시 확인]</b>",
+                "<b>[NVIDIA 기존 10-Q 공시치 — 최신 실적발표와 별도]</b>",
                 f"• 매출채권 {fmt_usd((nv.get('accounts_receivable_m') or 0) * 1_000_000)}, 분기 매출 {fmt_usd((nv.get('revenue_q_m') or 0) * 1_000_000)}",
                 f"• 공급·생산능력 약정 {nv.get('supply_commitments_b')}십억달러, AI 클라우드 약정 {nv.get('ai_cloud_commitments_b')}십억달러",
             ])
@@ -1279,6 +1383,8 @@ def deduplicate_etf_events(signals: list[tuple], crypto: dict, previous_keys: li
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     ALERT.unlink(missing_ok=True)
+    (OUT / "wonyotti_90d_thesis_delivery_meta.json").unlink(missing_ok=True)
+    blocked_keys = _blocked_delivery_keys()
     old = load_state()
     now = dt.datetime.now(KST)
     errors = []
@@ -1301,13 +1407,17 @@ def main() -> None:
         )
         stable_obs = int(previous.get("stable_obs") or 0) + 1 if same else 1
         current["stable_obs"] = stable_obs
-        current["trigger_ready"] = current.get("status") == "complete" or stable_obs >= 2
+        current["trigger_ready"] = current.get("status") == "complete" and bool(current.get("five_day_complete"))
+        if not _fresh_enough(current.get("date"), now):
+            current["trigger_ready"] = False
     rates, part = rates_snapshot()
     errors.extend(part)
     nvidia_sec, part = nvidia_ir_snapshot(old.get("nvidia_sec") or {})
     errors.extend(part)
     news_items, seen, news_errors = high_signal_news(set(old.get("news_seen") or []))
     errors.extend(news_errors)
+    nvidia_earnings, earnings_errors = nvidia_earnings_snapshot(old.get("nvidia_earnings") or {})
+    errors.extend(earnings_errors)
 
     btc_threshold_state, btc_threshold_event = advance_btc_threshold_state(
         old.get("btc_threshold_state") or {},
@@ -1346,6 +1456,7 @@ def main() -> None:
             and fresh_date((rates.get("real10y") or {}).get("date"))
         ),
         "nvidia_10q": bool(nvidia_sec.get("parsed_ok")) and not bool(nvidia_sec.get("stale_due_to_error")),
+        "nvidia_earnings": bool(nvidia_earnings.get("verified")),
         "news_search": len(news_errors) == 0,
     }
     old_streaks = old.get("health_error_streaks") or {}
@@ -1360,6 +1471,7 @@ def main() -> None:
         "crypto": crypto,
         "rates": rates,
         "nvidia_sec": nvidia_sec,
+        "nvidia_earnings": nvidia_earnings,
         "news_seen": sorted(seen)[-5000:],
         "btc_threshold_state": btc_threshold_state,
         "health": health,
@@ -1368,6 +1480,7 @@ def main() -> None:
     signals = []
     if old.get("initialized"):
         signals = build_signals(old, new_state, news_items, btc_threshold_event)
+        signals = [s for s in signals if _signal_delivery_key(s, new_state, now) not in blocked_keys]
         signals, new_keys = deduplicate_etf_events(
             signals, crypto, list(old.get("etf_notified_event_keys") or [])
         )
@@ -1381,6 +1494,7 @@ def main() -> None:
             "eth_etf": "ETH 현물 ETF 자금흐름",
             "rates": "미국 10년 명목·실질금리",
             "nvidia_10q": "NVIDIA 공식 10-Q",
+            "nvidia_earnings": "NVIDIA 공식 실적발표 RSS",
             "news_search": "빅테크·메모리·주주환원 뉴스 교차검색",
         }
         for key, streak in health_streaks.items():
@@ -1405,8 +1519,11 @@ def main() -> None:
                     None,
                 ))
 
+        signals = [s for s in signals if _signal_delivery_key(s, new_state, now) not in blocked_keys]
         if signals:
             ALERT.write_text(build_alert(signals, now, new_state), encoding="utf-8")
+            event_keys = list(dict.fromkeys(_signal_delivery_key(s, new_state, now) for s in signals))
+            write_json(OUT / "wonyotti_90d_thesis_delivery_meta.json", {"keys": event_keys, "created_at_kst": now.isoformat(timespec="seconds")})
 
     # Only the workflow's post-send success step commits this pending state.
     write_json(PENDING, new_state)
@@ -1418,6 +1535,8 @@ def main() -> None:
         f"- 신규 고신호: {len(signals)}건",
         f"- 교차검증 뉴스 후보: {len(news_items)}건",
         f"- 부분 조회 오류: {len(errors)}건",
+        "- ETF 자료단계: " + ", ".join(f"{key}={(crypto.get(key) or {}).get('status', '조회실패')}" for key in ("btc_etf", "eth_etf")),
+        f"- NVIDIA 최근 실적발표: {(nvidia_earnings or {}).get('date') or '조회실패'}",
         (
             "- BTC 85,000달러 확인상태: "
             f"확정={btc_threshold_state.get('confirmed_side') or '미정'}, "
