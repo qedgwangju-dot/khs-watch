@@ -1779,7 +1779,9 @@ def bank_agent_policy_stage(item: dict) -> tuple[str, str] | None:
     title = re.sub(r"[^a-z0-9가-힣]+", " ", headline).strip()
     context = headline + " " + str(item.get("description") or "").lower()
     bank_topic = any(t in context for t in ("bank", "lender", "financial institution",
-        "financial stability board", "occ", "federal reserve", "fsb", "은행", "금융기관"))
+        "financial stability board", "occ", "federal reserve", "fsb", "은행", "금융기관",
+        "jpmorgan", "morgan stanley", "wells fargo", "citigroup", "citibank",
+        "goldman sachs", "bank of america", "charles schwab", "capital one"))
     ai_agent = any(t in context for t in ("ai agent", "ai-agent", "agentic ai",
         "autonomous agent", "super intelligence", "ai 에이전트", "자율형 ai"))
     if not bank_topic or not ai_agent and not (
@@ -1829,7 +1831,8 @@ def bank_agent_policy_stage(item: dict) -> tuple[str, str] | None:
     if not bank:
         return None
     if any(t in headline for t in ("no bank breach", "not compromised", "no evidence",
-        "no incidents", "blocked attempt", "차단 성공", "침해 없음")):
+        "no incidents", "no ai agent breach", "no agent breach", "blocked attempt",
+        "차단 성공", "침해 없음")):
         return None
     if any(t in headline for t in ("confirms ai agent breach", "ai agent breach confirmed",
         "bank systems compromised by ai agent", "ai agent unauthorized transactions confirmed",
