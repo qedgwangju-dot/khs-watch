@@ -4,20 +4,17 @@
     "all_sources_verified": false,
     "deferred_events": 0,
     "errors": [
-      "Google News 실패: \"GPT-6 Cyber\" (Daybreak Red OR security research OR ext / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (NVIDIA OR BlueField OR Nemotron) cybersecurity inferen / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: government procurement insurance \"Safety Case\" frontier / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Aidan Gomez\" \"AISLE\" (CNBC OR \"rogue agents\" OR cybers / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News 실패: \"SGA솔루션즈\" \"PHP2Shell\" (가상패치 OR 유료 OR 계약) / HTTPError: HTTP Error 429: Too Many Requests"
     ],
-    "google_news_queries_failed": 4,
+    "google_news_queries_failed": 1,
     "google_news_queries_requested": 110,
-    "google_news_queries_succeeded": 106,
-    "google_news_rate_limit_429": 4,
+    "google_news_queries_succeeded": 109,
+    "google_news_rate_limit_429": 1,
     "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [],
-    "raw_items": 69,
+    "raw_items": 67,
     "sif_new_stages": 0,
     "source_access_limited": true,
     "si_portal_health": "정상",
@@ -105,7 +102,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-23T11:29:47.014368+00:00",
+    "updated_at": "2026-11-23T11:47:08.492641+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -1015,11 +1012,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-23T20:29:47+09:00",
+  "updated_at_kst": "2026-11-23T20:47:08+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-23T11:30:54.261015+00:00",
+    "last_success_at": "2026-11-23T11:48:15.835214+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
