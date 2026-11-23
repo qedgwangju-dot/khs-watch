@@ -3,20 +3,22 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": true,
+    "all_sources_verified": false,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [],
-    "google_news_queries_failed": 0,
+    "errors": [
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) agent misalignm… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "google_news_queries_failed": 1,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 65,
-    "google_news_rate_limit_429": 0,
-    "material_items": 13,
+    "google_news_queries_succeeded": 64,
+    "google_news_rate_limit_429": 1,
+    "material_items": 14,
     "new_material_items": 0,
-    "raw_items": 111,
+    "raw_items": 115,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": false
+    "source_access_limited": true
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -923,6 +925,16 @@
       "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNNlEzbWo0NE1pc3VuQnRxbDZtNHZGVXd6STNFejRBYTE0T191XzF3dTNWcmc4UmwyUG5Rd0dwNWh5T3Zvb2FTd0IyNm1KTXVhMnpKUlJlUXZRY3B3S0IwRExRV3l6UXVPMlctUGRoV1FPS2dOR096d3M5U3huQVRyZ2sySE1PRGtfU0xmei1ZNA?oc=5",
       "vendor": "OpenAI"
     },
+    "c9c6c158d6c63c13c9196efe": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-11-23T14:45:21.972514+00:00",
+      "published_at": "2026-11-23T13:58:07+00:00",
+      "severity": 2,
+      "source": "SecurityWeek",
+      "title": "phpAfterShell Vulnerability Revives PHP2Shell’s Attack Path - SecurityWeek",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPaDBsc3dzMmZLOHlIU1VIbDdmdlF5bkFYMmVoV1hEZ2xGMmpGWjQzcHRmZEhlYTJfbTFJM0gtSno4dHpNWnF1bGltdVRVV1Zmak15Qy0xZ2dqSkxzX0FTWS1UdXNXeV94eVBaTXo0SDJxM3hmZUNuMGhXS2pVSlU3UFp2T3RWVjRIQlJlMjY0RXIxdw?oc=5",
+      "vendor": "PHP 재단"
+    },
     "cc187387cb8a9991f59d2d25": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-28T12:14:08.462570+00:00",
@@ -1152,5 +1164,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-23T23:21:40+09:00"
+  "updated_at_kst": "2026-11-23T23:45:21+09:00"
 }
