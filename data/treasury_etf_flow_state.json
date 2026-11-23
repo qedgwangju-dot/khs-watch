@@ -817,7 +817,7 @@
         "nav_change_pct": 0.25,
         "net_assets": 26703230610.0,
         "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
-        "fetched_at_kst": "2026-11-22T07:59:32+09:00",
+        "fetched_at_kst": "2026-11-23T12:01:32+09:00",
         "flow_usd": -65272000.0
       }
     ],
@@ -1652,7 +1652,7 @@
         "nav_change_pct": 0.85,
         "net_assets": 43246773168.0,
         "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
-        "fetched_at_kst": "2026-11-22T07:59:33+09:00",
+        "fetched_at_kst": "2026-11-23T12:01:32+09:00",
         "flow_usd": -137385000.0
       }
     ],
@@ -2487,7 +2487,7 @@
         "nav_change_pct": 1.34,
         "net_assets": 48399461972.0,
         "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
-        "fetched_at_kst": "2026-11-22T07:59:33+09:00",
+        "fetched_at_kst": "2026-11-23T12:01:32+09:00",
         "flow_usd": -97656000.0
       }
     ],
@@ -3337,7 +3337,7 @@
         "nav_change_pct": 0.5,
         "net_assets": 32983520741.0,
         "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
-        "fetched_at_kst": "2026-11-22T07:59:34+09:00",
+        "fetched_at_kst": "2026-11-23T12:01:33+09:00",
         "oas_bps": 98.01,
         "oas_date": "2026-11-19",
         "flow_usd": -373176000.0
@@ -4189,7 +4189,7 @@
         "nav_change_pct": -0.39,
         "net_assets": 16641773658.0,
         "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
-        "fetched_at_kst": "2026-11-22T07:59:35+09:00",
+        "fetched_at_kst": "2026-11-23T12:01:35+09:00",
         "oas_bps": 309.74,
         "oas_date": "2026-11-19",
         "flow_usd": -60984000.0
@@ -4197,11 +4197,11 @@
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-11-22T07:59:31+09:00",
+    "at_kst": "2026-11-23T12:01:29+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      640,
-      641
+      644,
+      645
     ],
     "overall": "혼조·추가 확인",
     "treasury_flow": "중·장기채 ETF 동반 유출",
@@ -4211,7 +4211,7 @@
     "credit_oas_date": "2026-11-19",
     "format": "treasury-credit-ishares-oas-v3",
     "data_fingerprint": "5b075dcec866f8f40a98c61d2ee1b578eb900ac180924120c391d3d908267fa8",
-    "daily_delivery_date_kst": "2026-11-22"
+    "daily_delivery_date_kst": "2026-11-23"
   },
   "daily_status_notification": {
     "date_kst": "2026-11-18",
