@@ -20,6 +20,7 @@ import pathlib
 import re
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
 from collections import defaultdict
@@ -720,7 +721,22 @@ def google_news_url(query: str) -> str:
 
 
 def parse_google_news(query: str, now: dt.datetime) -> list[dict]:
-    root = ET.fromstring(fetch_bytes(google_news_url(query), timeout=GOOGLE_NEWS_QUERY_TIMEOUT_SECONDS))
+    # Retry only transient 429 once. Persistent failures are still reported as
+    # coverage gaps, never evidence that no new material has been published.
+    for attempt in range(2):
+        try:
+            payload = fetch_bytes(google_news_url(query), timeout=GOOGLE_NEWS_QUERY_TIMEOUT_SECONDS)
+            break
+        except urllib.error.HTTPError as exc:
+            if exc.code != 429 or attempt == 1:
+                raise
+            try:
+                delay = min(8.0, max(2.0, float(exc.headers.get("Retry-After", 3))))
+            except (TypeError, ValueError, AttributeError):
+                delay = 3.0
+            print(f"ai_policy_google_news_transient_429_retry delay_seconds={delay:g}")
+            time.sleep(delay)
+    root = ET.fromstring(payload)
     out = []
     for node in root.findall(".//item"):
         title = strip_html(node.findtext("title") or "")
