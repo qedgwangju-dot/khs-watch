@@ -82,6 +82,27 @@ class ScopeTest(unittest.TestCase):
                  "description":"현장 시험 완료","source":"공식","published":"2026-11-23T12:00:00+09:00"}
         self.assertEqual(self.base.key(changed),self.upstream(changed))
 
+
+    def test_reviewed_event_reprints_use_stable_keys_and_keep_next_stages(self):
+        cases=[
+          ("hurim_contract","휴림로봇·한화로보틱스, 삼성전기 로봇 본계약 체결","2026-11-23"),
+          ("musk_ai5","머스크, 테슬라 AI5는 옵티머스에 사용","2026-11-23"),
+          ("base_foundation","베이스그룹, 파운데이션에 로봇 2천억원 투자 검토","2026-11-20"),
+          ("jslink_mou","제이에스링크, 로보티즈 영구자석 MOU","2026-11-20"),
+          ("rainbow_broker","레인보우로보틱스 삼성전자 협력 유진투자증권 실적 전망","2026-11-23"),
+          ("rareearth_shortage","중국 희토류 영구자석 수출 제한에 로봇업계 발목","2026-11-22"),
+        ]
+        keyed={name:self.base.key(row) for row in self.base.query_news(fix.SENTINEL)
+               for name in [row["nov23_event"]]}
+        for name,title,date in cases:
+            with self.subTest(name=name):
+                item={"title":title,"source":"다른 매체","description":"",
+                      "published":date+"T12:00:00+09:00"}
+                self.assertEqual(self.base.key(item),keyed[name])
+        upgraded={"title":cases[0][1],"source":"보도","published":"2026-11-23T12:00:00+09:00",
+                  "description":"삼성전기 신규 발주서와 계약금액 확정"}
+        self.assertEqual(self.base.key(upgraded),self.upstream(upgraded))
+
     def test_dates_and_old_methods_and_no_unrelated_edits(self):
         date_mismatch={"title":"로보티즈, 폴렌로보틱스와 40억원 부품 공급계약",
                        "published":"2026-12-20T12:00:00+09:00","source":"뉴스"}
