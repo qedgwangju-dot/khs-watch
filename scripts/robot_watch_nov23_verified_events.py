@@ -14,7 +14,7 @@ SENTINEL = "__robot_watch_20261123_reviewed_events_only__"
 START = dt.datetime(2026,11,23,0,0,tzinfo=KST)
 END = dt.datetime(2026,11,27,0,0,tzinfo=KST)
 # Keys below are evidenced by complete Nov-20 and Nov-18 delivery artifacts.
-POLLEN_DELIVERED = "44e38c418d8b62458b41aa67ae9be72a3fc361ba0f1d5fc57866229df34dd4cb"
+POLLEN_DELIVERED = "44e38c418d8b624501e53e833075280cbb24234df30454c4e1425da953799ffb"
 GF_DELIVERED = "83d7fed4807294b0de7d1b2215798785f8ba441daa5fc420ad6c65bc092e0787"
 JSLINK_EXISTING = "eea1e1a4e99a025446b0ef5eb960c2decc3d54f1d762e116a51b8f2f6e7140db"
 ROOT = "nov23_"
@@ -40,7 +40,7 @@ STORIES = {
   },
   "base_foundation": {
     "title":"베이스그룹, Foundation에 1.5억달러(보도 환산 약 2,000억원) 투자 검토…급여 미지급 위험",
-    "date":"2026-11-19","stage":"potential_equity_investment",
+    "date":"2026-11-19","report_date":"2026-11-20","stage":"potential_equity_investment",
     "source":"Reuters·연합뉴스·한겨레",
     "link":"https://www.reuters.com/world/south-korean-firm-plans-150-million-lifeline-eric-trump-backed-robot-maker-2026-11-19/",
     "meaning":"11월 19일 보도: 베이스그룹이 Foundation Future Industries의 1억5,000만달러(기사 보도 환산 약 2,000억원) 자금조달 투자를 검토 중이라고 인정했습니다. 로봇용 알루미늄과 배터리용 리튬 공급 합작법인도 구상 단계이며, 대상 회사는 직원 급여 미지급으로 유동성 위험이 드러났습니다.",
@@ -154,7 +154,7 @@ def install(base):
             return [
                 {"nov23_event":name,"title":spec["title"],"description":spec["meaning"],
                  "source":spec["source"],"link":spec["link"],
-                 "published":spec["date"]+"T12:00:00+09:00","published_precision":"day"}
+                 "published":spec.get("report_date",spec["date"])+"T12:00:00+09:00","published_precision":"day"}
                 for name,spec in STORIES.items()
             ]
         return old["query_news"](q)
