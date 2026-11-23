@@ -233,7 +233,7 @@ def install(base) -> None:
             )
         if group_name == SI_GROUP:
             return (
-                "발행 기업명·공식 도메인·신규 제목에서 작업 단계 발견; "
+                "발행 기업명·공식 도메인·신규 제목에서 작업 단계 발견; 원문 전문 미열람, "
                 "본문·계약서 미확인으로 고객명·물량·정기 매출 확정 금지"
             )
         prior = existing["verification"](item, group_name, text)
