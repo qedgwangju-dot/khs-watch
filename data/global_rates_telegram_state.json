@@ -3,7 +3,7 @@
   "risk_label": "관찰",
   "market_direction": "🟢 캐리 유지·재구축 우세",
   "market_direction_reason": "엔화 약세 + 금리차 급축소·위험자산 전염 없음",
-  "updated_at_kst": "2026-11-23T19:48:21+09:00",
+  "updated_at_kst": "2026-11-24T03:39:28+09:00",
   "signals": {
     "jgb10_3": false,
     "jgb_curve_up": false,
@@ -12,7 +12,7 @@
     "yen_strong_level": false,
     "yen_surge": false,
     "vix_spike": true,
-    "nikkei_nasdaq_joint_weakness": true,
+    "nikkei_nasdaq_joint_weakness": false,
     "structural_event": false
   }
 }
