@@ -34,6 +34,9 @@ class ScopeTest(unittest.TestCase):
     def test_pinned_six_represent_distinct_events_with_existing_seen_mou(self):
         rows=self.base.query_news(fix.SENTINEL)
         self.assertEqual(len(rows),6)
+        self.assertEqual(fix.POLLEN_DELIVERED,"44e38c418d8b624501e53e833075280cbb24234df30454c4e1425da953799ffb")
+        base=next(r for r in rows if r["nov23_event"]=="base_foundation")
+        self.assertTrue(base["published"].startswith("2026-11-20"),"Reuters Nov19 event was reported in Korea Nov20")
         self.assertEqual(len({self.base.key(row) for row in rows}),6)
         self.assertEqual(set(r["nov23_event"] for r in rows),set(fix.STORIES))
         self.assertEqual(len([r for r in rows if self.base.key(r) not in self.original_seen]),5)
