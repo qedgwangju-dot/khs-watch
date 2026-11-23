@@ -1275,6 +1275,64 @@ jobs:
           print("ai_policy_openshell_telemetry_fallback_regression=PASS")
           PY
 
+      - name: Verify Meta Muse safety and RSI stage regression
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_safety_policy_watch import (
+              POLICY_EVENT_BASELINES, material, normalize, meta_safety_stage,
+              meta_safety_source_verified, tracked_policy_event_key,
+              cluster_events,
+          )
+          def item(title, source="Meta", publisher="https://about.fb.com/"):
+              return normalize({
+                  "kind": "news", "source": source,
+                  "publisher_url": publisher,
+                  "url": publisher+"news/meta-safety-stage",
+                  "title": title, "description": "",
+                  "published_at": "2026-11-23T02:00:00+00:00",
+              })
+          old = [
+              (item("Meta delayed shipping Muse for several months to focus on safety"),
+               "meta_muse:old_safety_delay_20260915"),
+              (item("Meta led SI Accords and signed the White House Accord on Super Intelligence"),
+               "meta_si_accord:original_signing_20260929"),
+              (item("Mark Zuckerberg says significant majority of Meta compute will serve people rather than recursive self-improvement"),
+               "meta_rsi:serving_majority_principle_202608"),
+          ]
+          for row,key in old:
+              assert tracked_policy_event_key(row)==key, (row["title"], tracked_policy_event_key(row))
+              assert key in POLICY_EVENT_BASELINES
+              assert material(row) and row["official"]
+          new = [
+              (item("Meta appoints independent auditor under the SI Accords"),
+               "meta_oversight:auditor_appointed_reported"),
+              (item("Meta publishes external audit findings on Muse safety controls"),
+               "meta_oversight:audit_findings_reported"),
+              (item("Meta delays launch of Muse Wonder 2 after safety gate review"),
+               "meta_muse:wonder_2_new_release_paused_reported"),
+              (item("Meta discloses 72% of compute actually allocated to serving customers rather than RSI"),
+               "meta_rsi:measured_allocation_reported"),
+          ]
+          for row,key in new:
+              assert tracked_policy_event_key(row)==key, (row["title"], tracked_policy_event_key(row))
+              assert key not in POLICY_EVENT_BASELINES
+              assert material(row) and meta_safety_source_verified(row)
+              assert row["official"]
+          assert len(cluster_events([old[0][0],new[0][0]]))==2
+          forged=item("Meta appoints independent auditor under SI Accords",
+                      publisher="https://attacker.example.org/")
+          assert not material(forged)
+          assert not forged["official"]
+          reprint=item("Meta once delayed shipping Muse for several months, Zuckerberg recalls",
+                       source="Reuters",publisher="https://www.reuters.com/")
+          assert tracked_policy_event_key(reprint)==old[0][1]
+          unrelated=item("Meta announces a new AI cybersecurity procurement contract")
+          assert meta_safety_stage(unrelated) is None
+          print("ai_policy_meta_safety_rsi_regression=PASS")
+          PY
+
       - name: Run live policy watch
         run: |
           rm -f out/ai_safety_policy_watch_alert_title.txt out/ai_safety_policy_watch_alert.html out/ai_safety_policy_watch_telegram_confirmed.json
