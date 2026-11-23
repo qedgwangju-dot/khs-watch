@@ -1333,6 +1333,80 @@ jobs:
           print("ai_policy_meta_safety_rsi_regression=PASS")
           PY
 
+      - name: Verify bank agent internal-control reports vs prior AI lab incidents
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          from unittest.mock import patch
+          from scripts.ai_safety_policy_watch import (
+              POLICY_EVENT_BASELINES, bank_agent_policy_stage,
+              bank_agent_publisher_verified, bank_agent_issuer_verified,
+              tracked_policy_event_key, normalize, material, build_alert,
+          )
+          def article(title, source="Reuters", publisher="https://www.reuters.com/"):
+              return normalize({
+                  "kind": "news", "title": title, "description": "",
+                  "source": source, "publisher_url": publisher,
+                  "url": publisher+"bank-agent-safety-story",
+                  "published_at": "2026-11-23T10:01:00+00:00",
+              })
+          old = [
+              (article("Some US banks tighten AI-agent controls on concern about models escaping safeguards"),
+               "bank_agents:internal_controls_reuters_20261123"),
+              (article("US banks are blocking third-party AI agents access to customer accounts"),
+               "bank_agents:external_agent_blocking_20261022"),
+              (article("FSB finalises sound practices for responsible adoption of AI: final report",
+                       "Financial Stability Board", "https://www.fsb.org/"),
+               "bank_agents:fsb_ai_practices_20261015"),
+              (article("OCC Issues Supervisory Framework on Bank Use of Super Intelligence",
+                       "Office of the Comptroller of the Currency", "https://occ.treas.gov/"),
+               "bank_agents:occ_si_framework_20261104"),
+              (article("Federal Reserve Governor Barr warns about AI agents in retail customer accounts",
+                       "Federal Reserve Board", "https://www.federalreserve.gov/"),
+               "bank_agents:fed_barr_remarks_20261116"),
+          ]
+          for row,key in old:
+              assert tracked_policy_event_key(row)==key, (row["title"], tracked_policy_event_key(row))
+              assert key in POLICY_EVENT_BASELINES
+              assert material(row) and bank_agent_publisher_verified(row)
+          # Syndication or RSS publication-date changes must not create a new stage.
+          repeat=article("Some US banks tighten AI-agent controls on concern about models escaping safeguards")
+          repeat["url"]="https://news.google.com/rss/articles/reindexed-reuters-story?oc=5"
+          repeat["published_at"]="2026-11-24T00:00:00+00:00"
+          assert tracked_policy_event_key(repeat)==old[0][1]
+          fresh = [
+              (article("JPMorgan tests AI agent kill switch", "JPMorgan Chase", "https://www.jpmorganchase.com/"),
+               "bank_agent_jpmorgan:shutdown_test_reported"),
+              (article("JPMorgan implements agentic AI access controls for bank production",
+                       "JPMorgan Chase", "https://www.jpmorganchase.com/"),
+               "bank_agent_jpmorgan:production_controls_reported"),
+              (article("JPMorgan confirms AI agent breach"),
+               "bank_agent_jpmorgan:incident_reported"),
+              (article("OCC issues final rule on agentic AI controls for banks",
+                       "Office of the Comptroller of the Currency", "https://occ.treas.gov/"),
+               "bank_agent_supervision:new_mandatory_rule_reported"),
+          ]
+          for row,key in fresh:
+              assert tracked_policy_event_key(row)==key, (row["title"], tracked_policy_event_key(row))
+              assert key not in POLICY_EVENT_BASELINES
+              assert material(row)
+          assert not fresh[2][0]["official"], "Reported bank incident incorrectly upgraded to confirmed"
+          assert fresh[0][0]["official"] and fresh[3][0]["official"]
+          spoof=article("Some US banks tighten AI-agent controls on concern about models escaping safeguards",
+                        "Reuters","https://fake-reuters.example.org/")
+          assert not bank_agent_publisher_verified(spoof)
+          assert not material(spoof) and not spoof["official"]
+          assert bank_agent_policy_stage(article("OpenAI agents compromised Hugging Face in July")) is None
+          assert bank_agent_policy_stage(article("JPMorgan confirms no AI agent breach")) is None
+          assert bank_agent_policy_stage(article("JPMorgan plans to deploy agentic AI access controls")) is None
+          with patch("scripts.ai_safety_policy_watch.translate_alert_text", return_value="은행 AI 에이전트 보안 통제 시험"):
+              _title, msg = build_alert([[fresh[0][0]]], dt.datetime(2026,11,24,tzinfo=dt.timezone.utc))
+          assert "킬 스위치" in msg and "은행 침해가 아님" in msg
+          print("ai_policy_bank_agents_stage_regression=PASS")
+          PY
+
       - name: Run live policy watch
         run: |
           rm -f out/ai_safety_policy_watch_alert_title.txt out/ai_safety_policy_watch_alert.html out/ai_safety_policy_watch_telegram_confirmed.json
