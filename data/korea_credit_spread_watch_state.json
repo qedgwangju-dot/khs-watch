@@ -1,41 +1,43 @@
 {
   "notified_rank": 2,
-  "last_source_date": "20261028",
-  "last_alert_signature": "57abc797ef6c84dce2295039fdeebb42cc093befb5dab4c31c87434af28aed58",
+  "last_source_date": "20261123",
+  "last_alert_signature": "005fabd4f3be5c0f66c46e16de91fb36cdf78af585a3a2fdc1a0e1aa48c9c550",
   "transition": "유지",
-  "last_alert_at_kst": "2026-10-29T01:00:40+09:00",
-  "cp_cd_bp": 54.0,
-  "aa_spread_bp": 68.2,
+  "last_alert_at_kst": "2026-11-24T06:18:48+09:00",
+  "cp_cd_bp": 50.0,
+  "aa_spread_bp": 68.6,
   "source": "https://ecos.bok.or.kr/#/SearchStat",
   "stat_code": "817Y002",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs8879887988798879_bot",
-    "message_id": 509,
-    "delivered_at_kst": "2026-10-29T01:00:45+09:00",
-    "message_sha256": "0dd916a4c8cf869e92c9227b430b3f53b9de39ef3b99ff8f15b85f35707252f7",
-    "run_id": "40721171786"
+    "message_id": 647,
+    "delivered_at_kst": "2026-11-24T06:18:54+09:00",
+    "message_sha256": "ed3b193cf9d622476849f400cc3130c1aa8390badce1cb2be4cbdfd64d91b4d3",
+    "chart_sha256": "09c36d6664cc6407859d809fea41ef961abc46a47907c3301a6bdea4f5856bfe",
+    "photo_verified": true,
+    "run_id": "45267746489"
   },
-  "last_daily_report_date": "20261120",
-  "last_sent_kst_date": "2026-11-21",
+  "last_daily_report_date": "20261123",
+  "last_sent_kst_date": "2026-11-24",
   "last_delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs8879887988798879_bot",
-    "message_id": 634,
-    "delivered_at_kst": "2026-11-21T02:48:41+09:00",
-    "message_sha256": "fad03ee13298d92a2c83bf02a076f9955484e4b4a93284cf4ed6599bbb9ecb33",
-    "chart_sha256": "4987dbb43f8caef3e8d3ffb4e5342623f4760aedadcf2be1a3c4ed057ad3f98b",
+    "message_id": 647,
+    "delivered_at_kst": "2026-11-24T06:18:54+09:00",
+    "message_sha256": "ed3b193cf9d622476849f400cc3130c1aa8390badce1cb2be4cbdfd64d91b4d3",
+    "chart_sha256": "09c36d6664cc6407859d809fea41ef961abc46a47907c3301a6bdea4f5856bfe",
     "photo_verified": true,
-    "run_id": "44786226465"
+    "run_id": "45267746489"
   },
   "last_daily_report_receipt": {
     "status": "confirmed",
     "bot_username": "khs8879887988798879_bot",
-    "message_id": 634,
-    "delivered_at_kst": "2026-11-21T02:48:41+09:00",
-    "message_sha256": "fad03ee13298d92a2c83bf02a076f9955484e4b4a93284cf4ed6599bbb9ecb33",
-    "chart_sha256": "4987dbb43f8caef3e8d3ffb4e5342623f4760aedadcf2be1a3c4ed057ad3f98b",
+    "message_id": 647,
+    "delivered_at_kst": "2026-11-24T06:18:54+09:00",
+    "message_sha256": "ed3b193cf9d622476849f400cc3130c1aa8390badce1cb2be4cbdfd64d91b4d3",
+    "chart_sha256": "09c36d6664cc6407859d809fea41ef961abc46a47907c3301a6bdea4f5856bfe",
     "photo_verified": true,
-    "run_id": "44786226465"
+    "run_id": "45267746489"
   }
 }
