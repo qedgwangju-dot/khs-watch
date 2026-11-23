@@ -1488,9 +1488,13 @@
       "route_fingerprint": "14816dc9bc6c054e9fdfc5d6ce0871dffed039dc5e8e27016b34273acffdf94e",
       "source_sha256": "68edfab4fd82c3869f0a88af8b3679d49254fb655cfa739e52698fce93f9567f",
       "replacement_sha256": "89bc4bb73c132f9090a3d729f3ec981fb951075a5d3db561c8a2a95f378de6bf",
-      "status": "in_flight",
+      "status": "confirmed",
       "attempts": 1,
-      "requested_at_utc": "2026-11-23T12:38:01.872551+00:00"
+      "requested_at_utc": "2026-11-23T12:38:01.872551+00:00",
+      "verified_method": "reply_message_id_recipient_text_equal",
+      "verified_response_text_sha256": "e28eab64c5ad031b21d166819c76f93b1d34c8d832798ebe074d0beeb369a1c2",
+      "chat_verification": "numeric_id_equal",
+      "confirmed_at_utc": "2026-11-23T12:38:04.591209+00:00"
     }
   }
 }
