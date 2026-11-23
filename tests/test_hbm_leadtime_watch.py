@@ -996,6 +996,14 @@ class Weekly011NoChangeRegression(unittest.TestCase):
         prior["components"]["MLCC"] = copy.deepcopy(w.WEEKLY_010_MLCC_LOCK["mlcc"])
         return prior
 
+    def previous_full_state(self):
+        import copy
+        return {
+            "ai_component_leadtime": self.previous_snapshot(),
+            "mlcc_vendor_watch": copy.deepcopy(w.MLCC_VENDOR_BASELINE),
+            "caspa_panel_watch": copy.deepcopy(w.CASPA_PANEL_BASELINE),
+        }
+
     def test_011_exact_seven_rows_no_status_change(self):
         old = self.previous_snapshot()
         snapshot = w.weekly_011_unchanged_update(old, "2026-11-23")
@@ -1054,7 +1062,7 @@ class Weekly011NoChangeRegression(unittest.TestCase):
                 root / "state.json", root / "pending.json", root / "alert.html",
             )
             before = {
-                "ai_component_leadtime": self.previous_snapshot(),
+                **self.previous_full_state(),
                 "telegram_message_id": 554,
                 "delivery_receipt": {"status": "confirmed", "message_ids": [554]},
                 "other_route": {"preserve": True},
@@ -1101,7 +1109,7 @@ class Weekly011NoChangeRegression(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             root = pathlib.Path(folder)
             state, pending, alert = root/"state.json", root/"pending.json", root/"alert.html"
-            state.write_text(json.dumps({"ai_component_leadtime": self.previous_snapshot()}), encoding="utf-8")
+            state.write_text(json.dumps(self.previous_full_state()), encoding="utf-8")
             feed = lambda kind, query: [item] if kind == "trendforce_feed" else []
             with mock.patch.object(w, "datetime", Clock), \
                  mock.patch.object(w, "STATE_PATH", state), \
@@ -1128,7 +1136,7 @@ class Weekly011NoChangeRegression(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             root = pathlib.Path(folder)
             state, pending, alert = root/"state.json", root/"pending.json", root/"alert.html"
-            state.write_text(json.dumps({"ai_component_leadtime": self.previous_snapshot()}), encoding="utf-8")
+            state.write_text(json.dumps(self.previous_full_state()), encoding="utf-8")
             with mock.patch.object(w, "datetime", Clock), \
                  mock.patch.object(w, "STATE_PATH", state), \
                  mock.patch.object(w, "PENDING_PATH", pending), \
