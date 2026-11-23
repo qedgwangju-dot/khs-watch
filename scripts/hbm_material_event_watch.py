@@ -682,6 +682,53 @@ REPORTS = (
         ),
         "caution": "11월19일 트렌드포스 공식 뉴스는 이미 별도 메모리 감시에서 발송되어 재발송하지 않음; 씨티 원본 미확보.",
     },
+    {
+        "key": "20261123_fnnews_samsung_skhynix_supplier_direct_ma_possible",
+        "date": "2026-11-23",
+        "not_before_kst": "2026-11-23T11:14:32+09:00",
+        "max_age_days": 30,
+        "group": "supplier_ownership",
+        "label": "삼성·SK하이닉스 소부장 직접 인수 가능성 제기 — 인수 확정 전",
+        "short_title": "삼성·SK 소부장 직접 인수 가능성 보도",
+        "brief_facts": (
+            "11/23 파이낸셜뉴스 질문형 제목: AI·로봇 수요 확대에 따른 공급망 선점 경쟁과 핵심 소부장 직접 인수 가능성을 제기. '나서나'는 인수계약 체결이 아님.",
+            "확인 범위: 11/23 기사 본문 직접 조회 후에만 단일 언론 보도로 표시. 인수 주체·대상 실명·지분율·인수가격·계약 및 납입은 별도 삼성·SK 공식 확인 전.",
+            "별도 공식 사실: SK하이닉스의 10/29 일본 파트너스데이에는 20개 이상 공급사가 참여. 협력·공동개발·양산 검증 지원과 기업 지분 취득은 별개.",
+            "후속 확인: 대상 회사·병목 공정·거래주체 → 지분취득 결정·계약 → 대금 납입·완료 → 고객별 제품·수주·실제 매출을 구분해 점검.",
+        ),
+        "brief_caution": (
+            "질문형 보도는 인수 확정·상장 소부장 특정 수혜·실제 계약을 뜻하지 않음. "
+            "기사 본문 조회 실패 또는 실질 내용 미확인이면 발송 보류하고 감지 키 유지. "
+            "기존 공급계약·협력과 신규 인수계약 혼동 금지."
+        ),
+        "sources": (
+            ("파이낸셜뉴스 Daum 11월23일 기사",
+             "https://v.daum.net/v/20261123111432176",
+             "단일 언론 보도·삼성/SK 공식 M&A 확인 아님"),
+        ),
+        "context_links": (
+            ("SK하이닉스 일본 공급망 공식 발표",
+             "https://news.skhynix.com/en/2026-partners-day-japan/"),
+            ("SK하이닉스 공식 3분기 실적",
+             "https://news.skhynix.com/en/q3-2026-business-results/"),
+        ),
+        "requires_source_text_chars": 550,
+        "need": (
+            ("삼성", "삼전", "Samsung"),
+            ("하이닉스", "닉스", "SK hynix"),
+            ("소부장", "소재·부품·장비", "semiconductor equipment"),
+            ("인수", "M&A", "acquisition"),
+            ("공급망", "supply chain"),
+            ("AI", "인공지능"),
+            ("로봇", "robot"),
+        ),
+        "facts": (
+            "언론 제목은 인수 가능성을 질문하는 표현이며 특정 기업 지분취득 확정 사실이 아님.",
+            "인수 대상 실명·금액·지분율·계약 당사자·당국 승인·실제 납입은 공식 증빙 대조 필요.",
+            "SK하이닉스 공식 협력사 지원 및 공급망 협력과 직접 인수는 다른 단계.",
+        ),
+        "caution": "인수 가능성을 확정 M&A로 승격하지 않으며 공식 지분취득 결정·계약·납입을 후속 확인.",
+    },
 )
 
 GROUPS = {
@@ -696,6 +743,7 @@ GROUPS = {
     "nvidia_commitments": "엔비디아 공급·생산능력 약정 및 HBM4 수요 검증",
     "samsung_memory_lta": "삼성전자 메모리 장기계약·2029~2031 확인 단계",
     "citi_price_revision": "씨티 2027년 메모리 가격 전망·트렌드포스 반대 근거",
+    "supplier_ownership": "삼성·SK 핵심 소부장 직접 인수 가능성·공식 계약 구분",
 }
 
 def text_matches(body: str, required: tuple) -> bool:
@@ -779,6 +827,10 @@ def probe(report: dict, fetcher=fetch_article) -> tuple[dict | None, list[dict]]
     for label, url, lineage in report["sources"]:
         try:
             body = fetcher(url)
+            if report.get("group") == "supplier_ownership" and len(body) < report.get("requires_source_text_chars", 0):
+                gaps.append({"key": report["key"], "origin": label,
+                             "status": "incomplete_publisher_body", "chars": len(body)})
+                continue
             if not text_matches(body, report["need"]):
                 gap = {"key": report["key"], "origin": label,
                        "status": "required_article_facts_not_verified"}
@@ -952,6 +1004,8 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
         # A publication scheduled in the future must not be fetched or sent.
         if date.fromisoformat(checked_at[:10]) < date.fromisoformat(report["date"]):
             continue
+        if report.get("not_before_kst") and datetime.fromisoformat(checked_at) < datetime.fromisoformat(report["not_before_kst"]):
+            continue
         if (date.fromisoformat(checked_at[:10]) - date.fromisoformat(report["date"])).days > report.get("max_age_days", MAX_AGE_DAYS):
             gaps.append({"key": report["key"], "status": "older_than_backfill_window"})
             continue
@@ -968,7 +1022,7 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
         "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield",
     }
     rendered = [render(group, [x for x in new if x["group"] == group], checked_at)
-                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow", "hybrid_equipment", "nvidia_commitments", "samsung_memory_lta", "citi_price_revision")
+                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow", "hybrid_equipment", "nvidia_commitments", "samsung_memory_lta", "citi_price_revision", "supplier_ownership")
                 if any(x["group"] == group for x in new)]
     audit = {"checked_at_kst": checked_at, "verified_events": len(new),
              "verified_keys": [x["key"] for x in new], "gaps": gaps[-20:],

@@ -986,5 +986,65 @@ class MaterialEventTests(unittest.TestCase):
         self.assertEqual(result["delivery_receipt"], previous["delivery_receipt"])
 
 
+
+    def test_supplier_ownership_m_and_a_possible_article_only_after_actual_publication(self):
+        report = next(x for x in m.REPORTS if
+                      x["key"] == "20261123_fnnews_samsung_skhynix_supplier_direct_ma_possible")
+        old = {"delivery_receipt": {"status": "confirmed", "message_ids": [553]},
+               "hbm_material_event_watch": {"seen_keys": [
+                   x["key"] for x in m.REPORTS if x is not report
+               ]}}
+        def no_fetch(_):
+            raise AssertionError("publication not yet available or already acknowledged")
+        before, msgs, audit = m.apply(old, "2026-11-23T11:14:31+09:00", no_fetch)
+        self.assertEqual(msgs, [])
+        self.assertEqual(audit["verified_events"], 0)
+        self.assertNotIn(report["key"], before["hbm_material_event_watch"]["seen_keys"])
+
+        article = ("[단독] 삼성전자 SK하이닉스 AI·로봇 폭발에 공급망 뺏기면 끝 "
+                   "핵심 소부장 직접 인수 나서나. "
+                   "업계에서 공급망 안정화를 위한 인수 가능성을 거론하나 "
+                   "개별 계약과 기업 실명은 이 테스트 입력에 포함하지 않습니다. ") * 6
+        next_state, notice, audit = m.apply(
+            old, "2026-11-23T11:20:00+09:00",
+            lambda url: article if url == report["sources"][0][1] else no_fetch(url))
+        self.assertEqual(audit["verified_events"], 1)
+        self.assertEqual(audit["verified_keys"], [report["key"]])
+        self.assertEqual(len(notice), 1)
+        alert = notice[0]
+        for word in ("인수 가능성", "확정", "지분율", "공식", "파트너스데이", "20개",
+                     "인수가격", "납입", "기사", "질문형"):
+            self.assertIn(word, alert)
+        self.assertIn(report["sources"][0][1], alert)
+        self.assertEqual(next_state["delivery_receipt"], old["delivery_receipt"])
+        self.assertEqual(len(d.chunks(alert)), 1)
+        m.require_durable_seen_keys(old, next_state)
+        last, repeated, _ = m.apply(
+            next_state, "2026-11-23T12:10:00+09:00", no_fetch)
+        self.assertEqual(repeated, [])
+        self.assertEqual(last["delivery_receipt"], old["delivery_receipt"])
+
+    def test_supplier_ownership_insufficient_article_and_source_failure_hold(self):
+        report = next(x for x in m.REPORTS if
+                      x["key"] == "20261123_fnnews_samsung_skhynix_supplier_direct_ma_possible")
+        old = {"hbm_material_event_watch": {"seen_keys": [
+            x["key"] for x in m.REPORTS if x is not report
+        ]}}
+        headline = '삼성·SK하이닉스 핵심 소부장 직접 인수 나서나 AI 로봇 공급망'
+        irrelevant = ("삼성전자 SK하이닉스 AI·로봇 소부장 공급망 기사. "
+                      "이미 확정된 계약이 없다. ") * 15
+        cases = [
+            lambda _: (_ for _ in ()).throw(TimeoutError("Daum unavailable")),
+            lambda _: headline,
+            lambda _: irrelevant,
+        ]
+        for read in cases:
+            result, alerts, audit = m.apply(old, "2026-11-23T11:21:00+09:00", read)
+            self.assertEqual(alerts, [])
+            self.assertNotIn(report["key"], result["hbm_material_event_watch"]["seen_keys"])
+            self.assertTrue(audit["gaps"])
+        self.assertIn("질문형", report["brief_caution"])
+        self.assertIn("나서나", " ".join(report["brief_facts"]))
+
 if __name__ == "__main__":
     unittest.main()
