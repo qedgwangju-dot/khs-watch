@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-11-23T08:04:25+09:00",
+  "last_checked_kst": "2026-11-23T09:08:25+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -4258,6 +4258,24 @@
       "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOTkZBNWVTWUhUQm5Ycm9YSUFWemJUWHVCeVJuMG4xeGlPVlY1MUt5WFFtSjFGOHRLbndqdWUtdnlyMENWRXQxMEJmRW42cnpCTXVORUlKR040T0RodUNibXVKRDVud3JFVEJHSVJwWnllVC1CaUU5dlQtT0NNR2EySmxjVktsZw?oc=5",
       "first_seen_kst": "2026-11-22T09:44:46+09:00",
       "suppressed_stale": true
+    },
+    "563076355637656a091ba5f4": {
+      "title": "국산 NPU 상용 시대 열었다...리벨리온, SKT에 '리벨' 칩 서버 40대 공급 - 지디넷코리아",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9GRzBBQ2phSXdXSVRNdnE2MlFqSkIzSENaV0dac2N1MjhwbXJlTVJoR1RHMGRGUUZER1NERGFUOVd0NzNkcUw1b215WnZfVVZ0Y0xJNFN3?oc=5",
+      "summary": "국산 NPU 상용 시대 열었다...리벨리온, SKT에 '리벨' 칩 서버 40대 공급 지디넷코리아",
+      "event_signature": "skt|npu|general",
+      "material_stage": 0,
+      "first_seen_kst": "2026-11-23T09:08:25+09:00",
+      "suppressed_duplicate": "same_event:skt|npu|general"
+    },
+    "58a82b33d72981813fa3aadb": {
+      "title": "SKT·리벨리온과 손잡은 엔비디아...NV링크 퓨전 MOU 체결 - 아주경제",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKXzM1b09PdXhMS2ZNWGNRRDNPRDliLUc5VFRkQUhFeWVNbEZzU25qRHJTc2VIeXRUdjVKalJkVDNYaDZ4YlkzdFV6dnExMnB2NGxGWWJha3ZiUdIBWEFVX3lxTE45UE10d1llMmpYdXJfSkJJamVaeUZFMklWM1E1NUd6UHdSc1pyNG83b2lvSjd0dVBQcUtLMjhJdjZ0VTJiNDBKc3RicnljSkp6a2dkckJFNlo?oc=5",
+      "summary": "SKT·리벨리온과 손잡은 엔비디아...NV링크 퓨전 MOU 체결 아주경제",
+      "event_signature": "skt|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-11-23T09:08:25+09:00",
+      "suppressed_duplicate": "same_event:skt|general|general"
     }
   }
 }
