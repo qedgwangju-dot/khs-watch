@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-24T02:42:39+09:00",
+  "updated_at_kst": "2026-11-24T02:56:22+09:00",
   "circle": {
     "date": "2026-11-19",
     "circulation_usd_b": 67.3,
@@ -51,18 +51,18 @@
   },
   "crcl": {
     "date": "2026-11-23",
-    "close": 52.130001068115234,
+    "close": 52.0099983215332,
     "prev_date": "2026-11-20",
     "prev_close": 47.5099983215332,
-    "daily_pct": 9.72,
+    "daily_pct": 9.47,
     "source": "Yahoo Finance daily chart",
     "source_url": "https://finance.yahoo.com/quote/CRCL/history/",
     "crosscheck_source": "ChartExchange historical",
     "crosscheck_date": "2026-11-23",
-    "crosscheck_close": 52.15,
-    "crosscheck_daily_pct": 9.77,
-    "crosscheck_gap_pct": 0.0384,
-    "crosscheck_status": "rounding_difference"
+    "crosscheck_close": 52.01,
+    "crosscheck_daily_pct": 9.47,
+    "crosscheck_gap_pct": 0.0,
+    "crosscheck_status": "confirmed"
   },
   "tbx": {
     "date": "2026-11-23",
@@ -82,5 +82,7 @@
   },
   "crcl_last_alerted_close_date": "2026-11-20",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "fx: 2026-11-20 한국은행 ECOS 원/미국달러 매매기준율 조회 실패"
+  ]
 }
