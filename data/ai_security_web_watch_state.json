@@ -793,6 +793,16 @@
       "url": "https://www.axios.com/2026/10/25/anthropic-claude-georgia-voter-data",
       "vendor": "Anthropic"
     },
+    "b3a7423017a2bb1eb7d72120": {
+      "category": "PHP 취약점 최초 공개·패치 대기",
+      "first_seen_at": "2026-11-23T00:04:46.759727+00:00",
+      "published_at": "2026-11-19T21:37:51+00:00",
+      "severity": 2,
+      "source": "Dark Reading",
+      "title": "Critical PHP Flaws Allow Code Execution, but Don't Panic 'PHP2Shell'-Style - Dark Reading",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPWUo2Vm9ZX0N2WFgyZkhndnVWM2NIS1hvdXdPSXBJa25KbDNTU0p6LVNYZzQtSVFxaUJBWFlBUk5oOUJWVEdIeVBmcENjNDVyWEFqT29hRHRubEtWYnRaUHFWMEpVZEN4b0lZd3d2TkhFV1M5MVR3eDJqRGRvUzJRSUR1bTBvdUNCMFRxT0Q5SEJTdFRWVWRTSmtvMjFkYk0?oc=5",
+      "vendor": "PHP 재단"
+    },
     "bb6cf366e9ef4de84ccc74d5": {
       "category": "PHP 코어 취약점·공식 보안패치",
       "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
@@ -1142,5 +1152,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-23T08:39:38+09:00"
+  "updated_at_kst": "2026-11-23T09:04:46+09:00"
 }
