@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-23T08:58:29.157624+00:00",
+  "updated_at": "2026-11-23T11:14:24.223713+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1044,25 +1044,6 @@
   ],
   "delivery_history": [
     {
-      "run_id": 44808136856,
-      "outcome": "sent",
-      "confirmed_event_keys": [
-        "a5a377daabcd14ecda97220f6552d20569fb685772cb21d45790d64df4c537ca",
-        "cd9ba234e4710a1c318c6319fee087173cc2484a47132cd3bd74c70e368c3938"
-      ],
-      "message_ids": [
-        396
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-20T20:06:15.827352+00:00"
-    },
-    {
       "run_id": 44820940413,
       "outcome": "sent",
       "confirmed_event_keys": [
@@ -1330,17 +1311,27 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-23T08:58:29.157624+00:00"
+    },
+    {
+      "run_id": 45163204918,
+      "outcome": "normal_silence",
+      "confirmed_event_keys": [],
+      "message_ids": [],
+      "recipient_verified": null,
+      "recipient_checks": [],
+      "message_topic_present": [],
+      "state_timestamp_utc": "2026-11-23T11:14:24.223713+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 45142803695,
+    "run_id": 45163204918,
     "outcome": "normal_silence",
     "confirmed_event_keys": [],
     "message_ids": [],
     "recipient_verified": null,
     "recipient_checks": [],
     "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-23T08:58:29.157624+00:00"
+    "state_timestamp_utc": "2026-11-23T11:14:24.223713+00:00"
   },
   "last_selected_events": [],
   "message_corrections": {
