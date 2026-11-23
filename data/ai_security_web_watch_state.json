@@ -3,26 +3,20 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": false,
+    "all_sources_verified": true,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [
-      "Google News RSS 실패: OpenAI \"Hugging Face\" agent incident misalignment… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (\"AI model\" OR \"frontier model\") cybersecurity capabili… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) system card cyb… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) \"security release\" OR \"… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"Jamie Dimon\" (Mythos OR Anthropic) cyber risk bank fin… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 5,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 60,
-    "google_news_rate_limit_429": 5,
-    "material_items": 12,
+    "google_news_queries_succeeded": 65,
+    "google_news_rate_limit_429": 0,
+    "material_items": 13,
     "new_material_items": 0,
-    "raw_items": 106,
+    "raw_items": 110,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": true
+    "source_access_limited": false
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -1158,5 +1152,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-23T14:02:21+09:00"
+  "updated_at_kst": "2026-11-23T14:18:06+09:00"
 }
