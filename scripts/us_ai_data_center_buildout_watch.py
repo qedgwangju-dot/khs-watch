@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import csv, datetime as dt, hashlib, html, io, json, re
+import csv, datetime as dt, hashlib, html, io, json, math, re
 from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
@@ -178,8 +178,11 @@ def val(row,*names):
         if nh(n) in d:return d[nh(n)]
     return ""
 def number(v):
-    try:return float(str(v).replace(",","").strip())
-    except Exception:return None
+    try:
+        result=float(str(v).replace(",","").strip())
+        return result if math.isfinite(result) else None
+    except (ValueError, TypeError):
+        return None
 def pdate(v):
     try:return dt.date.fromisoformat((v or "")[:10])
     except Exception:return None
@@ -191,6 +194,74 @@ def short(v):
     if not v:return "미기재"
     parts=[x.strip() for x in re.split(r"[,;|]",v) if x.strip()]
     return "·".join(dict.fromkeys(SHORT.get(x,x) for x in parts))
+
+# Epoch's Owner column identifies AI hardware ownership, not real estate ownership.
+# Keep the old plain names for state compatibility, and retain source confidence separately.
+AFFILIATION_FIELDS={"owner":"AI 장비 소유주","users":"이용 기업","investors":"투자자"}
+CONFIDENCE_KO={"confident":"Epoch 근거 강함","likely":"Epoch 가능성 높음","speculative":"Epoch 추정","untagged":"Epoch 등급 미기재"}
+
+def affiliation_evidence(value):
+    out={}
+    for raw in re.split(r"[,;|\n]",str(value or "")):
+        name=clean(raw)
+        if not name:continue
+        name=SHORT.get(name,name)
+        tags=re.findall(r"#(confident|likely|speculative)\b",raw,flags=re.I)
+        level=tags[-1].lower() if tags else "untagged"
+        # Conflicting source tags must not be upgraded to certainty.
+        if name in out and out[name]!=level:level="speculative"
+        out[name]=level
+    return out
+
+def affiliation_display(project,field):
+    names=project.get(field) or "미기재"
+    evidence=(project.get("affiliation_evidence") or {}).get(field)
+    if not isinstance(evidence,dict):return names
+    return "·".join(
+        name+(f" ({CONFIDENCE_KO[evidence[name]]})" if evidence.get(name) in CONFIDENCE_KO and evidence[name]!="confident" else "")
+        for name in names.split("·")
+    )
+
+def affiliation_changes(before,after):
+    rows=[]
+    for field,label in AFFILIATION_FIELDS.items():
+        old_names={x for x in (before.get(field) or "").split("·") if x and x!="미기재"}
+        new_names={x for x in (after.get(field) or "").split("·") if x and x!="미기재"}
+        old_evidence=(before.get("affiliation_evidence") or {}).get(field)
+        new_evidence=(after.get("affiliation_evidence") or {}).get(field)
+        if old_names!=new_names:
+            added=", ".join(sorted(new_names-old_names)) or "없음"
+            removed=", ".join(sorted(old_names-new_names)) or "없음"
+            rows.append(f"{label} 목록 변경: 추가 {added} / 제외 {removed} · {affiliation_display(before,field)} → {affiliation_display(after,field)} (Epoch 자료 변경일 기준; 신규 계약·해지·전력 증감 확정 아님)")
+        elif isinstance(old_evidence,dict) and isinstance(new_evidence,dict) and old_evidence!=new_evidence:
+            for name in sorted(old_names & new_names):
+                a,b=old_evidence.get(name),new_evidence.get(name)
+                if a!=b:
+                    rows.append(f"{label} {name} 원천 신뢰도 변경: {CONFIDENCE_KO.get(a,'기존 등급 미기재')} → {CONFIDENCE_KO.get(b,'등급 미기재')} (신규 계약 아님)")
+    return rows
+
+def report_reference(old):
+    """Keep the last successfully reported comparison anchor on silent checks."""
+    ref=old.get("alert_reference_projects")
+    if not isinstance(ref,list) or not ref:ref=old.get("projects") or []
+    return {**old,"projects":ref}
+
+def enrich_reference_confidence(ref,latest):
+    """Seed missing confidence during migration only; never create an upgrade-only alert."""
+    latest_by_name={x["name"]:x for x in latest}
+    result=[]
+    for row in ref:
+        copy=dict(row)
+        new=latest_by_name.get(row.get("name"),{})
+        evidence=dict(copy.get("affiliation_evidence") or {})
+        for field in AFFILIATION_FIELDS:
+            if field not in evidence and set((row.get(field) or "").split("·"))==set((new.get(field) or "").split("·")):
+                candidate=(new.get("affiliation_evidence") or {}).get(field)
+                if isinstance(candidate,dict):evidence[field]=dict(candidate)
+        if evidence:copy["affiliation_evidence"]=evidence
+        result.append(copy)
+    return result
+
 def qlabel(d,progress):
     if progress>=99.5:
         return "Epoch 추정 IT전력 계획치 도달"
@@ -252,15 +323,28 @@ def project_issue_applies(project_name, issue):
         return project_name in explicit
     return False
 
-def updated_label():
+def parse_download_dates(txt):
+    # Metadata CSV and power timeline CSV can have different publication dates.
+    date_re=r"([A-Za-z]{3,9}\.?\s+\d{1,2},\s*\d{4})"
+    def extract(label):
+        m=re.search(r"\b"+label+r"\s+CSV\s*,?\s+Updated\s+"+date_re,txt,re.I)
+        if not m:return None
+        val=m.group(1).replace(".","")
+        for fmt in ("%b %d, %Y","%B %d, %Y"):
+            try:return dt.datetime.strptime(val,fmt).strftime("%b %d, %Y")
+            except ValueError:pass
+        return None
+    return {"metadata":extract("AI Data Centers"),"timeline":extract("AI Data Center Timelines")}
+
+def dataset_dates():
     try:
         txt=" ".join(BeautifulSoup(fetch(DOWNLOADS,25).text,"html.parser").stripped_strings)
-        idx=txt.find("AI Data Centers")
-        snippet=txt[idx:idx+260] if idx>=0 else txt
-        m=re.search(r"Updated\s+([A-Z][a-z]{2}\.?\s+\d{1,2},\s*\d{4})",snippet)
-        if m:return m.group(1).replace(".","")
-    except Exception:pass
-    return "업데이트일 확인 불가"
+        return parse_download_dates(txt)
+    except Exception:
+        return {"metadata":None,"timeline":None}
+
+def updated_label():
+    return dataset_dates().get("metadata") or "업데이트일 확인 불가"
 
 def snapshot(dc_text,tl_text):
     dc=list(csv.DictReader(io.StringIO(dc_text)))
@@ -269,16 +353,25 @@ def snapshot(dc_text,tl_text):
     for r in dc:
         name=val(r,"Name","Data center"); country=val(r,"Country")
         if name and "united states" in country.lower():
-            meta[name]={"owner":clean(val(r,"Owner")),"users":clean(val(r,"Users","User")),"investors":clean(val(r,"Investors"))}
+            meta[name]={"owner":val(r,"Owner"),"users":val(r,"Users","User"),"investors":val(r,"Investors")}
     groups={}
     for r in tl:
         name=val(r,"Data center","Data Center")
-        d=pdate(val(r,"Date")); mw=number(val(r,"IT power (MW)","IT Power (MW)"))
+        raw_date=val(r,"Date"); raw_mw=val(r,"IT power (MW)","IT Power (MW)")
+        d=pdate(raw_date); mw=number(raw_mw)
+        if name in TRACKED_NAMES and ((raw_date and d is None) or (raw_mw and mw is None) or (mw is not None and mw<0)):
+            raise ValueError(f"Epoch tracked timeline invalid date/IT MW: {name}")
         if name in meta and d and mw is not None:
             groups.setdefault(name,[]).append({"date":d,"mw":mw,"status":val(r,"Construction status","Construction Status")})
     today=dt.datetime.now(dt.timezone.utc).date(); out=[]
     for name,rows in groups.items():
-        rows.sort(key=lambda x:x["date"]); planned=max(x["mw"] for x in rows)
+        rows.sort(key=lambda x:x["date"])
+        if name in TRACKED_NAMES:
+            by_date={}
+            for row in rows:
+                prior=by_date.setdefault(row["date"],row["mw"])
+                if prior!=row["mw"]:raise ValueError(f"Epoch conflicting same-date IT MW: {name}")
+        planned=max(x["mw"] for x in rows)
         if planned<=0:continue
         past=[x for x in rows if x["date"]<=today]
         cur=past[-1] if past else {"mw":0.0,"status":"","date":None}
@@ -297,6 +390,7 @@ def snapshot(dc_text,tl_text):
         out.append({
             "name":name,"display":ALIASES.get(name,name),
             "owner":short(m["owner"]),"users":short(m["users"]),"investors":short(m["investors"]),
+            "affiliation_evidence":{field:affiliation_evidence(m[field]) for field in AFFILIATION_FIELDS},
             "current_mw":round(current,1),"planned_mw":round(planned,1),"progress":round(progress,1),
             "completion_date":finish.isoformat(),"completion":qlabel(finish,progress),
             "stage":stg,"risk":risky(cur.get("status","")),
@@ -364,6 +458,7 @@ def _self_test_power_direction():
     assert "→ 변화 없음" in " ".join(_aggregate_directions(old,now))
     assert "비교 불가" in " ".join(_aggregate_directions(old,now+[{"name":"Other","current_mw":0,"planned_mw":100}]))
     assert "최초 기준선" in " ".join(_aggregate_directions({},now))
+    _audit_regression()
 
 def changes(old,new):
     prev={x.get("name"):x for x in old.get("projects",[])}
@@ -382,6 +477,8 @@ def changes(old,new):
         if abs(p["progress"]-float(o.get("progress",0)))>=PROGRESS_DELTA:out.append(f"{p['display']} Epoch 추정 IT전력 비율 {_pp_direction(float(o.get('progress',0)),p['progress'])}")
         od=pdate(o.get("completion_date","")); nd=pdate(p["completion_date"])
         if od and nd and abs((nd-od).days)>=DATE_DELTA:out.append(f"{p['display']} 완료시점 {o.get('completion','')}→{p['completion']} ({'지연' if nd>od else '앞당김'})")
+        if p.get("risk") and not o.get("risk"):
+            out.append(f"{p['display']} 신규 공정 위험 신호 (Epoch 원문상 지연·정지 등, 실제 사건 별도 확인)")
         if p["stage"]!=o.get("stage") and p["progress"]<99.5:
             old_rank=stage_rank(o.get("stage",""))
             new_rank=stage_rank(p["stage"])
@@ -389,10 +486,9 @@ def changes(old,new):
             # 전진 단계만 공정 변화로 알리고, 실제 지연 키워드는 risk 플래그로 별도 감지한다.
             if new_rank>old_rank:
                 out.append(f"{p['display']} 공정 진전 {o.get('stage','')}→{p['stage']}")
-            elif p.get("risk") and not o.get("risk"):
-                out.append(f"{p['display']} 공정 위험 신호 {o.get('stage','')}→{p['stage']}")
+            # New risk is detected separately even when the displayed stage is unchanged.
         if p.get("mw_quality")!=o.get("mw_quality"):out.append(f"{p['display']} MW 품질 {o.get('mw_quality','기존 미분류')}→{p.get('mw_quality')}")
-        if (p["owner"],p["users"],p["investors"])!=(o.get("owner"),o.get("users"),o.get("investors")):out.append(f"{p['display']} 소유·사용·투자자 정보 변경")
+        out.extend(f"{p['display']} {row}" for row in affiliation_changes(o,p))
         if (p.get("energy_site"),p.get("energy_future"),p.get("energy_quality"))!=(o.get("energy_site"),o.get("energy_future"),o.get("energy_quality")):out.append(f"{p['display']} 전력원 정보 변경 (실제 공급 MW 증가·감소는 별도 미확인)")
         old_issue_fps={x.get("fingerprint") for x in o.get("company_issues",[]) if x.get("fingerprint")}
         new_issue_fps={x.get("fingerprint") for x in p.get("company_issues",[]) if x.get("fingerprint")}
@@ -404,26 +500,29 @@ def badge(n):
     return "🔟" if n==10 else "".join(m[c] for c in str(n))
 def h(v):return html.escape(str(v),quote=True)
 
-def render(ps,chg,upd,old=None):
+def render(ps,chg,upd,old=None,source_dates=None):
     planned=sum(x["planned_mw"] for x in ps); current=sum(x["current_mw"] for x in ps); pct=current/planned*100 if planned else 0
     previous={x.get("name"):x for x in (old or {}).get("projects",[]) if x.get("name")}
-    lines=["<b>📊 미국 주요 AI 데이터센터 건설 현황</b>",f"출처: Epoch AI · {h(upd)}",
-           "<b>⚡ 전력 증가·감소 방향 (이전 저장값과 동일 지표 비교)</b>",
+    lines=["<b>📊 미국 주요 AI 데이터센터 건설 현황</b>",
+           f"출처: Epoch AI · 기본정보 {h(upd)} / 전력·공정 시계열 {(h((source_dates or {}).get('timeline') or '갱신일 확인 불가'))}",
+           "<b>⚡ 전력 증가·감소 방향 (직전 의미변화 보고 기준과 동일 지표 비교)</b>",
            *_aggregate_directions(old or {},ps),
            "• 실제 발전·계통 공급·공식 전원 인가 MW 증감: <b>이번 Epoch 자료만으로는 확인 불가</b>",
            "• 추정 IT전력 증가는 전력을 더 쓸 수 있는 추정 용량 증가이며, 실제 전기사용량 또는 발전량 증가 확정이 아님",
            "","용량 = 계획 최종 IT전력 / 비율 = Epoch 현재 추정 IT전력 ÷ 계획 최종 IT전력",
            "","<b>🔄 이번 핵심 변화</b>"]
-    lines += [f"• {h(x)}" for x in chg[:6]]
-    if len(chg)>6:lines.append(f"• 그 외 {len(chg)-6}건은 상태에 반영")
-    lines += ["",f"• 핵심 {len(ps)}개 계획 최종 IT전력 합계 <b>{planned/1000:.1f}GW</b>",f"• Epoch 현재 추정 IT전력 합계 <b>{current/1000:.1f}GW</b> · 계획 IT전력 대비 비율 <b>{pct:.1f}%</b>",f"• GW 품질 │ 계획 {planned/1000:.1f}GW를 실제 전원 인가·상업가동으로 간주하지 않고 Epoch 현재 추정치 {current/1000:.1f}GW와 분리",""]
+    lines += [f"• {h(x)}" for x in chg]
+    if chg and all(any(k in x for k in ("목록 변경:","원천 신뢰도 변경:")) for x in chg):
+        lines.append("• 이번 발송 이유: Epoch 이용기업·장비 소유주·투자자 정보 갱신. 전력 및 계약 신규 발생은 별도 확인.")
+    lines.append("• 비교 기준: 직전 발송 보고서의 수치(소규모 변화가 누적되면 포함).")
+    lines += ["",f"• 고정 추적 {len(ps)}개 계획 최종 IT전력 합계 <b>{_mw_label(planned)}MW ({planned/1000:.3f}GW)</b>",f"• Epoch 현재 추정 IT전력 합계 <b>{_mw_label(current)}MW ({current/1000:.3f}GW)</b> · 계획 대비 <b>{pct:.1f}%</b> · 추정 잔여 {_mw_label(max(planned-current,0))}MW",f"• GW 품질 │ 계획 {planned/1000:.1f}GW를 실제 전원 인가·상업가동으로 간주하지 않고 Epoch 현재 추정치 {current/1000:.1f}GW와 분리",""]
     for i,p in enumerate(ps,1):
-        inv=p["investors"] if p["investors"]!="미기재" else "Epoch 투자자 미기재"
+        inv=affiliation_display(p,"investors") if p["investors"]!="미기재" else "Epoch 투자자 미기재"
         before=previous.get(p["name"])
         direction_now=_mw_direction(before.get("current_mw") if before else None,p["current_mw"])
         direction_plan=_mw_direction(before.get("planned_mw") if before else None,p["planned_mw"])
         lines += [f"<b>{badge(i)} {h(p['display'])}{' ⚠️' if p['risk'] else ''}</b>",
-                  f"{h(p['owner'])} → {h(p['users'])} | {h(inv)}",
+                  f"AI 장비 소유주 {h(affiliation_display(p,'owner'))} | 이용 기업 {h(affiliation_display(p,'users'))} | 투자자 {h(inv)}",
                   f"<b>최종 계획 {p['planned_mw']:,.0f}MW</b> | {h(p['completion'])} | 현재 추정 비율 <b>{p['progress']:.0f}%</b> (추정 {p['current_mw']:,.0f}MW/계획 {p['planned_mw']:,.0f}MW) | {h(p['stage'])}",
                   f"↕ 전력 방향 │ <b>현재 추정</b> {h(direction_now)} | <b>최종 계획</b> {h(direction_plan)}",
                   f"🧭 MW 품질 │ <b>{h(p.get('mw_quality','미분류'))}</b> · 현재 추정 {p['current_mw']:,.0f}MW / 최종 계획 {p['planned_mw']:,.0f}MW (서로 다른 지표·증감 비교 아님) · 공식 전원 인가 별도 검증",
@@ -433,27 +532,81 @@ def render(ps,chg,upd,old=None):
                 f"🚨 기업 이슈 │ [{h(issue.get('relationship','기업 연관'))}] "
                 f"{h(issue.get('label','규제·운영'))} · {h(issue.get('summary',''))}"
             )
-    lines += ["","<b>📌 판정 기준</b>","• IT전력 비율은 Epoch timeline의 현재 추정 IT전력 ÷ 계획 최종 IT전력으로 직접 계산한 보조지표이며 건설 공정률·상업가동률이 아님","• Epoch의 IT power는 GPU 서버·네트워크·스토리지를 포함한 총 IT전력 용량 추정치이며, 공식 전원 인가 MW나 계통 접속계약 MW와 같은 값으로 취급하지 않음","• Epoch 추적대상은 원칙적으로 착공한 프로젝트지만 접속계약·공식 전원 인가·상업가동 문서를 대신하지 않음","• 발표·계획 MW → 착공 → Epoch 현재 추정 IT전력 → 공식 전원 인가·상업가동을 서로 다른 단계로 관리하고 미확인 단계는 임의 승격하지 않음","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, IT전력 비율 ±5%p, MW 품질 단계 변경, 완료 추정시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기","• 프로젝트별 기업 이슈는 동일 부지·동일 프로젝트 직접 연계가 구조화되어 확인될 때만 해당 프로젝트 줄에 표시","• 다른 지역의 기업 공통 규제·환경·소송 이슈는 프로젝트 줄에 복제하지 않고 별도 하이퍼스케일러 기업 리스크 알림에서 처리"]
+    lines += ["","<b>📌 판정 기준</b>","• IT전력 비율은 Epoch timeline의 현재 추정 IT전력 ÷ 계획 최종 IT전력으로 직접 계산한 보조지표이며 건설 공정률·상업가동률이 아님","• Epoch의 IT power는 GPU 서버·네트워크·스토리지를 포함한 총 IT전력 용량 추정치이며, 공식 전원 인가 MW나 계통 접속계약 MW와 같은 값으로 취급하지 않음","• Epoch 추적대상은 원칙적으로 착공한 프로젝트지만 접속계약·공식 전원 인가·상업가동 문서를 대신하지 않음","• 발표·계획 MW → 착공 → Epoch 현재 추정 IT전력 → 공식 전원 인가·상업가동을 서로 다른 단계로 관리하고 미확인 단계는 임의 승격하지 않음","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치; 예상 날짜 경과만으로도 현재 추정치가 바뀔 수 있음. 장비 소유주는 부동산 소유주나 운영사와 다를 수 있음","• Epoch 방법론: 개별 IT전력 추정치 약 80%가 실제값의 1/1.4~1.4배 범위, 일정 약 80%가 ±6개월 범위(확정치 아님)","• 고정 15개 프로젝트: 누적 50MW 이상 용량 변화, IT전력 비율 ±5%p, MW 품질·공정·위험·이용기업/장비 소유주/투자자·전력원 등 의미 있는 변화, 완료 추정시점 ±60일에 보고; 단순 순서 변경은 제외","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기","• 프로젝트별 기업 이슈는 동일 부지·동일 프로젝트 직접 연계가 구조화되어 확인될 때만 해당 프로젝트 줄에 표시","• 다른 지역의 기업 공통 규제·환경·소송 이슈는 프로젝트 줄에 복제하지 않고 별도 하이퍼스케일러 기업 리스크 알림에서 처리"]
     return "\n".join(lines)+"\n"
+
+def _audit_regression():
+    # Previously lost confidence signifiers and generic metadata changes.
+    assert affiliation_evidence("Meta #speculative, OpenAI #likely")=={"Meta":"speculative","OpenAI":"likely"}
+    assert affiliation_evidence("Microsoft #confident")=={"MS":"confident"}
+    before={"name":"Colossus 2","owner":"xAI","users":"Anthropic·Cursor·xAI","investors":"미기재"}
+    after={**before,"users":"Anthropic·Cursor·xAI·Reflection","affiliation_evidence":{"users":{"Reflection":"confident"}}}
+    diff=affiliation_changes(before,after)
+    assert len(diff)==1 and "추가 Reflection" in diff[0] and "신규 계약" in diff[0]
+    assert affiliation_changes(before,{**before,"users":"Cursor·xAI·Anthropic"})==[]
+    assert affiliation_changes(before,{**before,"affiliation_evidence":{"owner":{"xAI":"confident"}}})==[]
+    assert "Epoch 추정" in affiliation_display({"owner":"Meta","affiliation_evidence":{"owner":{"Meta":"speculative"}}},"owner")
+    d=parse_download_dates("AI data centers: All datasets ZIP, Updated Nov. 23, 2026 AI data centers CSV, Updated Nov. 23, 2026 AI data center timelines CSV, Updated Nov. 19, 2026")
+    assert d=={"metadata":"Nov 23, 2026","timeline":"Nov 19, 2026"},d
+    assert number("NaN") is None and number("inf") is None
+    # Three changes below the per-check threshold should not disappear forever.
+    base={"name":"A","display":"A","owner":"MS","users":"MS","investors":"미기재","current_mw":100,"planned_mw":1000,"progress":10,"completion_date":"2028-01-01","completion":"2028.1Q","stage":"건설 중","risk":False,"mw_quality":"현재 추정 IT전력·부분 가동/건설 병행"}
+    p1={**base,"current_mw":125,"progress":12.5}
+    p2={**base,"current_mw":150,"progress":15}
+    assert not changes({"projects":[base]},[p1])
+    assert any("↑ 증가 +50MW" in x for x in changes(report_reference({"projects":[p1],"alert_reference_projects":[base]}),[p2]))
+    assert not changes({"projects":[base]},[dict(base)])
+    risk={**base,"risk":True}
+    assert any("신규 공정 위험 신호" in x for x in changes({"projects":[base]},[risk]))
+    migrated=enrich_reference_confidence([before],[{**before,"affiliation_evidence":{"owner":{"xAI":"confident"}}}])
+    assert migrated[0]["affiliation_evidence"]["owner"]["xAI"]=="confident"
+    print("epoch_top15_audit_regression=passed")
 
 def main():
     _self_test_power_direction()
     OUT.mkdir(exist_ok=True)
     for p in (PENDING,ALERT,STATUS):
         if p.exists():p.unlink()
-    old=load_state(); errs=[]
+    old=load_state()
+    checked=dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     try:
         a=fetch(DC_URL); b=fetch(TL_URL); ps,digest=snapshot(a.text,b.text)
         if len(ps)!=len(TRACKED_NAMES):raise RuntimeError(f"Epoch tracked projects missing: {len(ps)}/{len(TRACKED_NAMES)}")
         src_hash=hashlib.sha256(a.content+b"\n"+b.content).hexdigest()
-    except Exception as e:
+    except Exception as exc:
         if not old.get("projects"):raise
-        ps=old["projects"]; digest=old.get("snapshot_hash",""); src_hash=old.get("source_hash",""); errs=[f"Epoch source: {type(e).__name__}"]
-    upd=updated_label(); chg=changes(old,ps); baseline=not old.get("initialized"); format_upgrade=int(old.get("version",0) or 0)<FORMAT_VERSION; alert=baseline or format_upgrade or bool(chg)
-    pending={"initialized":True,"version":FORMAT_VERSION,"dataset_updated":upd,"source_hash":src_hash,"snapshot_hash":digest,"projects":ps,"last_changes":chg[:20],"source_errors":errs,"updated_at_utc":dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")}
+        # Keep the last verified snapshot, alert reference and delivery history intact.
+        error=f"Epoch source: {type(exc).__name__}"
+        pending={**old,"last_check_status":"source_error","last_checked_at_utc":checked,"source_errors":[error]}
+        PENDING.write_text(json.dumps(pending,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+        STATUS.write_text("# 미국 주요 AI 데이터센터 건설 현황 감시\n\n"+f"- 원천 조회/검증 실패: {error}\n- 기존 검증값 및 비교 기준 유지 · 신규 알림 없음(변화 없음으로 판정하지 않음)\n",encoding="utf-8")
+        print(f"epoch_ai_buildout source_error={type(exc).__name__} baseline_held=True alert=False")
+        return 0
+
+    dates=dataset_dates()
+    upd=dates.get("metadata") or "업데이트일 확인 불가"
+    errs=[f"Epoch {key} 갱신일 미확인" for key in ("metadata","timeline") if not dates.get(key)]
+    reference=report_reference(old)
+    chg=changes(reference,ps)
+    baseline=not old.get("initialized")
+    # No format-only replay for the confidence/wording migration.
+    alert=baseline or bool(chg)
+    if alert:
+        report=render(ps,chg,upd,reference,dates)
+        ALERT.write_text(report,encoding="utf-8")
+    ref_projects=ps if alert else enrich_reference_confidence(reference["projects"],ps)
+    # The existing workflow commits pending state only after Telegram send
+    # succeeds. A silent check updates observed data but not the report anchor.
+    pending={**old,"initialized":True,"version":FORMAT_VERSION,"dataset_updated":upd,
+             "dataset_dates":dates,"source_hash":src_hash,"snapshot_hash":digest,
+             "projects":ps,"alert_reference_projects":ref_projects,
+             "last_changes":chg if alert else [],
+             "last_reported_changes":chg if alert else old.get("last_reported_changes",old.get("last_changes",[])),
+             "last_check_status":"valid_with_date_warning" if errs else ("new_change" if alert else "no_meaningful_change"),
+             "last_checked_at_utc":checked,"source_errors":errs,"updated_at_utc":checked}
     PENDING.write_text(json.dumps(pending,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    if alert:ALERT.write_text(render(ps,chg,upd,old),encoding="utf-8")
-    STATUS.write_text("# 미국 주요 AI 데이터센터 건설 현황 감시\n\n"+f"- Epoch 업데이트: **{upd}**\n- 상위 프로젝트: **{len(ps)}개**\n- 의미 변화: **{len(chg)}건**\n- 알림: **{'예' if alert else '아니오'}**\n- MW 품질 분리 형식: **v{FORMAT_VERSION}**\n- 전력방향 표시: **같은 지표의 전회 대비 증가/감소/불변, 원천 추정과 전원 인가 분리**\n- 원천 오류: **{', '.join(errs) if errs else '없음'}**\n",encoding="utf-8")
+    STATUS.write_text("# 미국 주요 AI 데이터센터 건설 현황 감시\n\n"+f"- 기본정보 갱신일: **{upd}**\n- 전력·공정 시계열 갱신일: **{dates.get('timeline') or '미확인'}**\n- 고정 추적 프로젝트: **{len(ps)}개**\n- 의미 변화: **{len(chg)}건**\n- 알림: **{'예' if alert else '아니오'}**\n- 조회 상태: **{pending['last_check_status']}**\n- 비교 기준: 직전 의미변화 보고(누적 기준)\n- 원천 오류: **{', '.join(errs) if errs else '없음'}**\n",encoding="utf-8")
     print(f"epoch_ai_buildout top={len(ps)} changes={len(chg)} baseline={baseline} alert={alert} errors={len(errs)}")
     return 0
+
 if __name__=="__main__":raise SystemExit(main())
