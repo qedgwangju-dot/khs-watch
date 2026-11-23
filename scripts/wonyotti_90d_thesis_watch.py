@@ -1374,7 +1374,7 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict, fx: dict
     btc = prices.get("BTC") or {}
     btc_flow = crypto.get("btc_etf") or {}
     eth_flow = crypto.get("eth_etf") or {}
-    fx = fx or _read_official_fx(now.date().isoformat())
+    fx = fx or (_read_official_fx(now.date().isoformat()) if not health_only else None)
     overview = _crypto_direction(snapshot, now)
 
     lines = ["<b>워뇨띠 90일 서한 · 중요한 변화</b>", "━━━━━━━━━━━━━━━━"]
@@ -1472,7 +1472,7 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict, fx: dict
             lines.append("• 삼성전자·SK하이닉스의 실제 배당·자사주 매입·소각 집행 공시 확인")
     if fx and not health_only:
         lines.append(
-            f"• 원화 환산 기준: {fx['date']} {fx['source']} ({fx.get('method') or '공식 기준환율'}), "
+            f"• 원화 환산 기준: {fx.get('date') or '기준일 미확인'} {fx.get('source') or '공식 기준환율'} ({fx.get('method') or '일일 기준'}), "
             f"1달러={float(fx['rate']):,.2f}원 · 표시 원화는 근사값"
         )
     lines.append(f"\n<b>조회</b>: {now.strftime('%Y-%m-%d %H:%M:%S KST')}")
