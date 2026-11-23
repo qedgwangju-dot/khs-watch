@@ -1339,9 +1339,10 @@ jobs:
         run: |
           python - <<'PY'
           import datetime as dt
+          import urllib.error
           from unittest.mock import patch
           from scripts.ai_safety_policy_watch import (
-              POLICY_EVENT_BASELINES, bank_agent_policy_stage,
+              POLICY_EVENT_BASELINES, bank_agent_policy_stage, parse_google_news,
               bank_agent_publisher_verified, bank_agent_issuer_verified,
               tracked_policy_event_key, normalize, material, build_alert,
           )
@@ -1404,7 +1405,26 @@ jobs:
           with patch("scripts.ai_safety_policy_watch.translate_alert_text", return_value="은행 AI 에이전트 보안 통제 시험"):
               _title, msg = build_alert([[fresh[0][0]]], dt.datetime(2026,11,24,tzinfo=dt.timezone.utc))
           assert "킬 스위치" in msg and "은행 침해가 아님" in msg
+          rate_limit=urllib.error.HTTPError(
+              "https://news.google.com/rss/search",429,"Too Many Requests",
+              {"Retry-After":"2"},None)
+          with patch("scripts.ai_safety_policy_watch.fetch_bytes",
+                     side_effect=[rate_limit,b"<rss><channel></channel></rss>"]) as fetch:
+              with patch("scripts.ai_safety_policy_watch.time.sleep") as pause:
+                  assert parse_google_news("bank ai agent",dt.datetime.now(dt.timezone.utc))==[]
+                  assert fetch.call_count==2
+                  pause.assert_called_once()
+          with patch("scripts.ai_safety_policy_watch.fetch_bytes",
+                     side_effect=[rate_limit,rate_limit]):
+              with patch("scripts.ai_safety_policy_watch.time.sleep"):
+                  try:
+                      parse_google_news("bank ai agent",dt.datetime.now(dt.timezone.utc))
+                  except urllib.error.HTTPError as exc:
+                      assert exc.code==429
+                  else:
+                      raise AssertionError("Persistent 429 was incorrectly treated as no new events")
           print("ai_policy_bank_agents_stage_regression=PASS")
+          print("ai_policy_google_news_429_bounded_retry_regression=PASS")
           PY
 
       - name: Run live policy watch
