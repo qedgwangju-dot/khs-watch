@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-23T19:44:26+09:00",
-  "last_scan_count": 5,
+  "updated_at_kst": "2026-11-24T07:19:14+09:00",
+  "last_scan_count": 4,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -132,7 +132,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -199,12 +199,20 @@
     "f0a97311dc41ab73008f930b",
     "f2fefec91a3da1f1885a7a2a",
     "f3274f98949ddbb5ad284b00",
+    "f483bf922111c79dea9f55b1",
     "f85f3c97ab7f757538e1c965",
     "fbb3374837c522b4bf3b2884",
     "ff50414926b6dd08d66adea3"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "taiwan|diversification|TSMC|core",
+      "source": "Singapore Economic Development Board (EDB)",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-11-19T17:00:00+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
   "telegram_message_ids": [
     397
