@@ -8868,6 +8868,11 @@ import robot_watch_verified_delivery_aliases as _verified_delivery_aliases
 _verified_delivery_aliases.install(base)
 
 
+# Reviewed Nov-23 milestone layer: this watch only; leaves older rules and state untouched.
+import robot_watch_nov23_verified_events as _nov23_verified
+_nov23_verified.install(base)
+
+
 if __name__ == '__main__':
     pre_state = base.load_state()
     base.main()
