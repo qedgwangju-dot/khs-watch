@@ -9,6 +9,7 @@ on:
       - ".github/workflows/khs-policy-watch.yml"
       - "scripts/khs_policy_watch.py"
       - "scripts/khs_cms_ma_star_watch.py"
+      - "scripts/khs_medicare_biosimilar_bill_watch.py"
       - "scripts/khs_domestic_stablecoin_policy_watch.py"
       - "tests/test_khs_domestic_cbdc_policy_watch.py"
       - "scripts/khs_policy_alert_explainer.py"
@@ -89,6 +90,21 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Verify isolated S5797 Medicare biosimilar legislation watch (offline)
+        run: |
+          python -m py_compile scripts/khs_medicare_biosimilar_bill_watch.py
+          PYTHONPATH=scripts:. python scripts/khs_medicare_biosimilar_bill_watch.py --self-test
+
+      - name: Check S5797 original Senate source (no Telegram)
+        continue-on-error: true
+        timeout-minutes: 2
+        env:
+          KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+          KHS_SOURCE_PROXY_FIRST: "true"
+          KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "15"
+          KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "8"
+        run: PYTHONPATH=scripts:. python scripts/khs_medicare_biosimilar_bill_watch.py --source-check
 
       - name: Verify isolated CMS Medicare Stars policy watch offline (no messages)
         run: |
@@ -1275,6 +1291,16 @@ jobs:
           KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: PYTHONPATH=scripts:. python scripts/khs_cms_ma_star_watch.py
 
+      - name: Watch S5797 Part B biosimilar legislation (existing policy route only)
+        if: always() && env.TELEGRAM_DRY_RUN != 'true' && env.TELEGRAM_TEST != 'true'
+        id: medicare_biosimilar_bill_watch
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          KHS_AI_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
+          KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: PYTHONPATH=scripts:. python scripts/khs_medicare_biosimilar_bill_watch.py
+
       - name: Audit isolated policy subwatch failures after alert and state handling
         if: always()
         shell: bash
@@ -1282,6 +1308,7 @@ jobs:
           set -euo pipefail
           failed=()
           if [ "${{ steps.cms_ma_star_watch.outcome }}" = "failure" ]; then failed+=("CMS Medicare Advantage Star Ratings watch"); fi
+          if [ "${{ steps.medicare_biosimilar_bill_watch.outcome }}" = "failure" ]; then failed+=("Medicare Part B biosimilar S5797 watch"); fi
           if [ "${{ steps.trusted_news_watch.outcome }}" = "failure" ]; then failed+=("Run trusted policy news watch"); fi
           if [ "${{ steps.domestic_telecom_watch.outcome }}" = "failure" ]; then failed+=("Run domestic telecom policy watch"); fi
           if [ "${{ steps.domestic_stablecoin_watch.outcome }}" = "failure" ]; then failed+=("Run domestic stablecoin policy watch"); fi
