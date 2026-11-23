@@ -152,6 +152,9 @@ NEWS_QUERIES = [
     '(OpenAI OR Anthropic OR Google OR Meta) safety case procurement insurance certification requirement',
     '(OpenAI OR Anthropic OR Google OR Meta) safety case adopted implementation frontier training',
     'government procurement insurance "Safety Case" frontier AI training',
+    '("Alexandr Wang" OR "Mark Zuckerberg" OR "Meta") ("Muse" OR "SI Accords") (safety audit release delay independent evaluator)',
+    '("Meta" OR "Muse Wonder") ("safety gate" OR "independent auditor" OR "audit findings" OR "board orders" OR "release suspended")',
+    '("Meta" OR "Zuckerberg") ("recursive self-improvement" OR RSI) ("compute allocation" OR "compute share" OR "serving users")',
     '"Joint Commitment on Frontier Responsibilities" AI',
     '"White House Accord on Super Intelligence" AI',
     '"Frontier Responsibilities" Google Anthropic Meta OpenAI xAI NVIDIA',
@@ -194,6 +197,9 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "meta_muse:old_safety_delay_20260915": {"source_url": "https://www.fidelity.com/news/article/default/202609152221RTRSNEWSCOMBINED_L1N45800I_1", "status": "Prior months-long Muse delay, confirmed by Reuters Sep 15; no new delay"},
+    "meta_si_accord:original_signing_20260929": {"source_url": "https://www.presidency.ucsb.edu/documents/white-house-accord-super-intelligence", "status": "Voluntary original SI Accord, six company signers, not law or all AI labs"},
+    "meta_rsi:serving_majority_principle_202608": {"source_url": "https://about.fb.com/news/2026/08/the-future-is-for-everyone/", "status": "Meta August principle: significant majority human-serving compute, not measured allocation"},
     "openai_brockman:management_cyber_outlook_20261117": {"source_url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety", "status": "2026-11-17 Brockman expanded operating remit and believes cyber eventually larger than coding; article reports cyber already significant/growing but no disclosed revenue"},
     "openai_cyber_models:gpt6_cyber_approved_20261105": {"source_url": "https://openai.com/index/introducing-gpt-6-cyber/", "status": "2026-11-05 GPT-6 Cyber restricted approved Daybreak Red access: ExploitGym 48.5pct vs GPT-5.6 Cyber 32.1pct, Linux 948, Firefox 81; not universal release"},
     "openai_daybreak:thousands_orgs_reported_20261117": {"source_url": "https://www.theinformation.com/articles/brockman-pushes-openai-toward-cybersecurity-and-showdown-ai-safety", "status": "2026-11-17 The Information reports thousands of Daybreak organizations incl Cloudflare Cisco IBM, token usage billing; paid organization count and product revenue not disclosed"},
@@ -1670,6 +1676,77 @@ def openai_cyber_growth_issuer_verified(item: dict) -> bool:
     return openai_cyber_growth_publisher_verified(item)
 
 
+def meta_safety_stage(item: dict) -> tuple[str, str] | None:
+    """Distinguish newly executed Meta safety steps from reprinted old pledges."""
+    title = str(item.get("title") or "").lower()
+    context = f"{item.get('title','')} {item.get('description','')}".lower()
+    if not any(t in context for t in ("meta", "zuckerberg", "alexandr wang", "메타", "알렉산더 왕", "muse")):
+        return None
+    # New concrete actions take priority over any historical agreement
+    # mentioned in the same article.
+    if "muse" in title and any(t in title for t in ("muse wonder", "muse spark", "muse 2")) and any(
+        t in title for t in ("suspends", "halts launch", "delays launch", "delays release",
+                           "postpones", "pauses rollout", "cancels release", "출시 중단")
+    ):
+        model = re.search(r"muse\s+(wonder|spark)(?:\s+(\d+(?:\.\d+)?))?", title)
+        tag = "_".join(x for x in model.groups() if x) if model else "new_model"
+        return "meta_muse", f"{tag}_new_release_paused_reported"
+    if any(t in title for t in ("appoints independent auditor", "names independent auditor",
+                                "selects independent evaluator", "독립 감사인 선임")):
+        return "meta_oversight", "auditor_appointed_reported"
+    if any(t in title for t in ("publishes external audit", "releases independent audit",
+                                "external audit finds", "independent audit finds", "독립 감사 결과 발표")):
+        return "meta_oversight", "audit_findings_reported"
+    if ("board" in title or "이사회" in title) and any(t in title for t in (
+        "orders halt", "orders pause", "orders suspension", "중단 명령"
+    )):
+        return "meta_oversight", "board_order_reported"
+    if ("compute" in title or "컴퓨팅" in title) and re.search(r"\d+(?:\.\d+)?\s*%", title) and any(
+        t in title for t in ("discloses", "measured", "actually allocated", "실제 배분", "실측")
+    ):
+        return "meta_rsi", "measured_allocation_reported"
+
+    if "muse" in context and (
+        any(t in context for t in ("delayed shipping muse", "delayed muse for several months",
+                                   "meta delayed muse for months", "muse 출시를 수개월 연기",
+                                   "muse의 출시를 수개월 연기", "muse launch delayed for months"))
+        or ("delayed" in context and "muse" in context and "for months" in context)
+    ):
+        return "meta_muse", "old_safety_delay_20260915"
+    if any(t in context for t in ("si accords", "white house accord on super intelligence",
+                                  "joint commitment on frontier responsibilities")) and any(
+        t in context for t in ("signed", "signing", "led", "주도", "서명", "체결")
+    ):
+        return "meta_si_accord", "original_signing_20260929"
+    if any(t in context for t in ("recursive self-improvement", "rsi", "재귀적 자기개선")) and (
+        "compute" in context or "컴퓨팅" in context
+    ) and any(t in context for t in ("significant majority", "vast majority", "절대다수", "대부분")):
+        return "meta_rsi", "serving_majority_principle_202608"
+    return None
+
+
+def meta_safety_source_verified(item: dict) -> bool:
+    """Verify actual publishers for Meta safety-specific event stages."""
+    if not meta_safety_stage(item):
+        return True
+    source = str(item.get("source") or "").lower().strip()
+    try:
+        host = (urllib.parse.urlsplit(str(item.get("publisher_url") or item.get("url") or "")).hostname or "").lower()
+    except ValueError:
+        return False
+    allowed = {
+        "meta": ("about.fb.com", "meta.com", "ai.meta.com", "investor.atmeta.com"),
+        "reuters": ("reuters.com",),
+        "associated press": ("apnews.com",),
+        "ap news": ("apnews.com",),
+        "the information": ("theinformation.com",),
+        "fortune": ("fortune.com",),
+        "bloomberg": ("bloomberg.com",),
+        "cnbc": ("cnbc.com",),
+    }
+    return any(host == domain or host.endswith("." + domain) for domain in allowed.get(source, ()))
+
+
 def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """Classify a new *reported* milestone from the headline, never from a
     speculative paragraph about what could happen. No issuer/legislative
@@ -1678,6 +1755,9 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
 
+    meta_stage = meta_safety_stage(item)
+    if meta_stage:
+        return meta_stage
     openai_growth_stage = openai_cyber_growth_stage(item)
     if openai_growth_stage:
         return openai_growth_stage
@@ -2188,6 +2268,9 @@ def material(item: dict) -> bool:
         return False
     milestone = tracked_policy_event_stage(item)
     if milestone:
+        if milestone[0] in ("meta_muse", "meta_si_accord", "meta_rsi",
+                            "meta_oversight") and not meta_safety_source_verified(item):
+            return False
         if milestone[0] in ("openai_brockman", "openai_cyber_models", "openai_daybreak", "openai_frontline", "openai_revenue_exec", "openai_superapp", "openai_safety_astra", "openai_safety_work") and not openai_cyber_growth_publisher_verified(item):
             return False
         if milestone[0] in ("msit_finance_2026","fsc_finance_2026") and not korean_finance_publisher_verified(item):
@@ -2276,7 +2359,8 @@ def normalize(item: dict) -> dict:
         and aws_security_publisher_verified(item)
         and fed_bank_security_publisher_verified(item)
         and korean_finance_publisher_verified(item)
-        and openai_cyber_growth_publisher_verified(item))
+        and openai_cyber_growth_publisher_verified(item)
+        and meta_safety_source_verified(item))
     return out
 
 
