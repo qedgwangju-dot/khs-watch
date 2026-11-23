@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import contextlib
 import datetime as dt
+import html
+import io
 import json
+import math
 import re
+import time
 from typing import Any
 
 import requests
@@ -83,13 +88,7 @@ def _canonical_trade_date(market: str) -> str | None:
             return max(dates)
     except Exception:
         pass
-    state = _state()
-    snap = state.get("snapshot") or {}
-    key = "kospi_close" if market == "KOSPI" else "kosdaq_close"
-    row = snap.get(key) or {}
-    d = str(row.get("date") or "")
-    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", d):
-        return d
+    # A cached close is context, not proof of the current trading date.
     return None
 
 
@@ -148,12 +147,36 @@ def _recompute_three_day(market: str, trade_date: str, daily_eok: float) -> tupl
 
 
 def _canonicalize_flow(original, market: str, now: dt.datetime) -> dict[str, Any]:
-    flow = original(now)
     trade_date = _canonical_trade_date(market)
+    if not trade_date:
+        raise RuntimeError(f"{market} 실제 거래일 원천 조회 실패")
+    if trade_date != now.date().isoformat():
+        # t1601 has no observation date. At the next session's pre-open it
+        # can reset to zero; never relabel that quote as yesterday's flow.
+        return {
+            "date": trade_date, "daily_eok": 0.0, "daily_krw": 0,
+            "three_day_eok": 0.0, "three_day_krw": 0,
+            "three_day_available": False, "source": core.LS_GUIDE,
+            "source_label": "일자 지정 과거 수급 확인 필요",
+            "unavailable": True, "unavailable_reason": "최근 거래일과 조회일이 달라 t1601 장전 초기값 사용 금지",
+        }
+    flow = original(now)
     validation = flow.get("ls_validation") if isinstance(flow, dict) else None
     status = str((validation or {}).get("status") or "")
+    if status == "matched" and str(flow.get("date") or "") != trade_date:
+        core._validation.pop(market, None)
+        raise RuntimeError(f"{market} 네이버와 실제 거래일 불일치")
     if status == "ls_fallback" and trade_date:
-        daily_eok = float(flow.get("daily_eok") or 0.0)
+        daily_eok = float(flow.get("daily_eok"))
+        if not math.isfinite(daily_eok):
+            core._validation.pop(market, None)
+            raise RuntimeError(f"{market} LS 수급 숫자 오류")
+        if daily_eok == 0 and not any(core.ls.fnum((validation or {}).get(k)) not in (None, 0) for k in ("foreign_buy_eok", "foreign_sell_eok")):
+            core._validation.pop(market, None)
+            flow["unavailable"] = True
+            flow["unavailable_reason"] = "LS 매수·매도·순매수 모두 0 또는 누락 — 실거래 확인 불가"
+            flow["three_day_available"] = False
+            return flow
         three_eok, rows = _recompute_three_day(market, trade_date, daily_eok)
         flow["date"] = trade_date
         flow["three_day_eok"] = three_eok if three_eok is not None else 0.0
@@ -389,7 +412,23 @@ def _canonicalize_event_key(key: str, market: str) -> str:
     return re.sub(r"\d{4}-\d{2}-\d{2}", trade_date, key, count=1)
 
 
+def _direct_capex_percentage(text: str) -> bool:
+    """Never use an EPS/share-price percentage as the capex change."""
+    s = html.unescape(text)
+    subject = r"(?:capex|capital expenditures?|capital spending)"
+    modifier = r"(?:(?:guidance|forecast|outlook|budget|estimate|spending|plan)\s+)?"
+    verb = r"(?:up|down|rise[sn]?|rose|fell|fall[sn]?|increase[sd]?|decrease[sd]?|raised|raise[sd]?|cut[s]?|reduced|revised|grow[sn]?|grew|climb[sd]?)"
+    pct = r"([+-]?\d+(?:\.\d+)?)\s*%"
+    patterns = (
+        rf"\b{subject}\s+{modifier}(?:is\s+|was\s+|will\s+|to\s+)?{verb}\s+(?:by\s+)?{pct}",
+        rf"\b{verb}\s+(?:(?:its|their|2026|2027|FY\d+|AI|annual)\s+){{0,3}}{subject}\s+{modifier}(?:by\s+)?{pct}",
+    )
+    return any(abs(float(m.group(1))) >= 10 for p in patterns for m in re.finditer(p, s, re.I))
+
+
 def add_event_strict(events, key: str, text: str, source: str) -> None:
+    if key.startswith("capex:") and not _direct_capex_percentage(text):
+        return
     if key.startswith("foreign1d_") or key.startswith("foreign3d_"):
         if not _flow_event_allowed("KOSPI"):
             return
@@ -441,6 +480,10 @@ def market_flow_lines_strict(
     daily_threshold: int,
     three_day_threshold: int,
 ) -> list[str]:
+    if flow and flow.get("unavailable"):
+        lines = _ORIGINAL_MARKET_FLOW_LINES(market, idx, None, daily_threshold, three_day_threshold)
+        lines.append("• 확정 수급 확인 대기: " + html.escape(str(flow.get("unavailable_reason") or "원천값 미확인")))
+        return lines
     lines = _ORIGINAL_MARKET_FLOW_LINES(market, idx, flow, daily_threshold, three_day_threshold)
     if not flow:
         return lines
@@ -494,7 +537,14 @@ def _persist_candidates_and_final_history() -> None:
 
     candidate_root = dict(old.get("flow_fallback_candidate") or {})
     for market in ("KOSPI", "KOSDAQ"):
-        candidate_root[market] = _candidate_for(market)
+        candidate = _candidate_for(market)
+        # A pre-open/no-data observation must not erase the last dated,
+        # post-final LS candidate needed for safe recovery.
+        old_candidate = candidate_root.get(market) or {}
+        if candidate.get("status") in {"matched", "ls_fallback"} and candidate.get("observations", 0) >= 1:
+            candidate_root[market] = candidate
+        elif not old_candidate:
+            candidate_root[market] = candidate
     pending["flow_fallback_candidate"] = candidate_root
     pending.pop("ls_flow_history", None)
 
@@ -510,7 +560,7 @@ def _persist_candidates_and_final_history() -> None:
         if flow and trade_date:
             flow["date"] = trade_date
 
-        if flow and trade_date and cand.get("stable"):
+        if flow and trade_date and cand.get("stable") and not flow.get("unavailable"):
             try:
                 by_date[trade_date] = float(flow.get("daily_eok"))
             except Exception:
@@ -519,6 +569,11 @@ def _persist_candidates_and_final_history() -> None:
         rows = [{"date": d, "daily_eok": v} for d, v in sorted(by_date.items())][-10:]
         final_root[market] = rows
 
+        if flow and flow.get("unavailable"):
+            flow.update({"daily_eok": None, "daily_krw": None, "three_day_eok": None,
+                         "three_day_krw": None, "three_day_available": False, "finality": "확인 불가"})
+            snap[key] = flow
+            continue
         if flow:
             status = str((flow.get("ls_validation") or {}).get("status") or "")
             if status == "ls_fallback":
@@ -618,6 +673,172 @@ def _postprocess_missing_three_day_status() -> None:
         watch.STATUS_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+
+# Date-addressable, read-only LS history recovery. The public t1665 schema
+# supplies date, foreign amount sa_17 and exchange-specific index code.
+# We require exact KRX identity and two independent already-confirmed dates
+# to calibrate monetary units. A second >=10-minute observation is required
+# before filling a missing date; no fallback can use a different market/unit.
+def _validate_historical_ls(market, response, expected_dates, anchors):
+    summary = response.get("t1665OutBlock") or {}
+    market_name = str(summary.get("mname") or "").replace(" ", "").upper()
+    expected_code = {"KOSPI": "K001", "KOSDAQ": "K301"}[market]
+    names = {"KOSPI": ("KOSPI", "코스피", "거래소", "유가증권"),
+             "KOSDAQ": ("KOSDAQ", "코스닥")}[market]
+    if str(summary.get("ex_upcode") or "").strip().upper() != expected_code:
+        raise ValueError("KRX 거래소별 업종코드 미검증")
+    if not any(name in market_name for name in names) or (market == "KOSPI" and ("KOSDAQ" in market_name or "코스닥" in market_name)):
+        raise ValueError("시장명 불일치")
+    rows = {}
+    for row in response.get("t1665OutBlock1") or []:
+        d = str(row.get("date") or "")
+        if re.fullmatch(r"\d{8}", d):
+            d = f"{d[:4]}-{d[4:6]}-{d[6:]}"
+        if d not in expected_dates:
+            continue
+        value = core.ls.fnum(row.get("sa_17"))
+        if value is None:
+            continue
+        if d in rows and rows[d] != value:
+            raise ValueError("동일 거래일 금액 충돌")
+        rows[d] = value
+    if not rows:
+        raise ValueError("일자별 금액 원천행 없음")
+    matched = [(d, float(v)) for d, v in anchors.items() if d in rows and abs(float(v)) >= 100]
+    if len(matched) < 2:
+        raise ValueError("확정 비교일 2개 부족")
+    # sa_17 is the amount field, never sv_17 (volume). The old API reference
+    # does not state monetary scale. Calibrate a unique scale to known closes.
+    scales = [f for f in (1.0, 0.01, 0.0001, 0.00000001)
+              if all(abs(rows[d] * f - v) <= DUAL_SOURCE_TOLERANCE_EOK for d, v in matched)]
+    if len(scales) != 1:
+        raise ValueError("금액 단위 또는 확정 비교일 불일치")
+    f = scales[0]
+    return {d: round(v * f, 6) for d, v in rows.items() if abs(v * f) <= 200_000 and v != 0}, {
+        "scale_to_eok": f, "anchor_dates": [d for d, _ in matched], "exchange_index": expected_code,
+    }
+
+
+def _recover_historical_ls(pending, old, now):
+    root = pending.get("final_flow_history") or {}
+    previous = old.get("ls_date_backfill_candidates") or {}
+    candidates, health = {}, {}
+    called = False
+    for market, upcode in (("KOSPI", "001"), ("KOSDAQ", "301")):
+        prior = previous.get(market) or {}
+        candidates[market] = dict(prior)
+        info = health[market] = {"status": "미확인", "missing_dates": []}
+        try:
+            valid_dates = _recent_trade_dates(market)
+            completed = sorted(d for d in valid_dates if d < now.date().isoformat())
+            if not completed:
+                raise ValueError("실제 완료 거래일 없음")
+            known = {str(r["date"]): float(r["daily_eok"]) for r in root.get(market, [])}
+            wanted = [d for d in completed[-10:] if d not in known]
+            info["missing_dates"] = wanted
+            if not wanted:
+                info["status"] = "최근 완료 거래일 이력 충분"
+                continue
+            anchors = {d: v for d, v in known.items() if d in valid_dates and abs(v) >= 100}
+            if len(anchors) < 2:
+                raise ValueError("금액 검증용 확정 거래일 부족")
+            if called:
+                time.sleep(1.1)
+            called = True
+            req = {"t1665InBlock": {"market": "1", "upcode": upcode, "gubun2": "1", "gubun3": "1",
+                   "from_date": min(wanted + list(anchors)).replace("-", ""),
+                   "to_date": completed[-1].replace("-", ""), "exchgubun": "K"}}
+            result = core.ls.ls_rest(core._get_token(), "stock/chart", "t1665", req)
+            data, proof = _validate_historical_ls(market, result, set(completed), anchors)
+            info.update(proof)
+            recovered = []
+            for day in wanted:
+                value = data.get(day)
+                if value is None:
+                    continue
+                previous_row = prior.get(day) or {}
+                ptime = _parse_ts(previous_row.get("first_checked_at"))
+                same = (previous_row.get("exchange_index") == proof["exchange_index"]
+                        and previous_row.get("scale_to_eok") == proof["scale_to_eok"]
+                        and previous_row.get("value_eok") is not None
+                        and abs(float(previous_row["value_eok"]) - value) <= DUAL_SOURCE_TOLERANCE_EOK)
+                if same and ptime is not None and (now - ptime).total_seconds() >= FALLBACK_MIN_MINUTES * 60:
+                    known[day] = value
+                    recovered.append(day)
+                    candidates[market].pop(day, None)
+                elif not same or ptime is None:
+                    candidates[market][day] = {"value_eok": value, "first_checked_at": now.isoformat(timespec="seconds"),
+                                              "exchange_index": proof["exchange_index"], "scale_to_eok": proof["scale_to_eok"]}
+            root[market] = [{"date": d, "daily_eok": v} for d, v in sorted(known.items())][-10:]
+            info.update({"status": "과거값 확인 완료" if recovered else "2회 검증 대기",
+                         "recovered_dates": recovered, "rows": len(data), "remaining_dates": [d for d in wanted if d not in recovered]})
+        except Exception as exc:
+            # Do not log request credentials; never treat collection failure as a zero.
+            info["status"] = "과거 수급 조회·검증 실패"
+            info["error_type"] = type(exc).__name__
+            if isinstance(exc, ValueError):
+                info["reason"] = str(exc)
+        candidates[market] = {d: r for d, r in candidates[market].items() if d in info.get("missing_dates", [])}
+    pending["final_flow_history"] = root
+    pending["ls_date_backfill_candidates"] = candidates
+    pending["ls_date_backfill_health"] = health
+    return health
+
+
+def _annotate_operating_evidence():
+    """Use the final pending snapshot, not intermediate legacy status zeros."""
+    if not watch.PENDING_PATH.exists():
+        return
+    pending = json.loads(watch.PENDING_PATH.read_text(encoding="utf-8"))
+    now = dt.datetime.now(watch.KST)
+    old = _state()
+    health = _recover_historical_ls(pending, old, now)
+    snap = pending.get("snapshot") or {}
+    # Persist separately classified source health and observed dates.
+    lines = []
+    for market, key in (("KOSPI", "foreign_flow"), ("KOSDAQ", "kosdaq_foreign_flow")):
+        flow = snap.get(key) or {}
+        latest = str(flow.get("date") or _canonical_trade_date(market) or "")
+        history = {str(r["date"]): float(r["daily_eok"]) for r in (pending.get("final_flow_history") or {}).get(market, [])}
+        if latest and latest in history:
+            three = _three_day_from_confirmed_dates(market, latest, history)
+            # Historical evidence is a display context; do not synthesize a fresh alert.
+            daily = history[latest]
+            msg = f"{market} {latest} 확정 순수급 {daily:+,.0f}억원; "
+            msg += f"3거래일 {three:+,.0f}억원" if three is not None else "3거래일 확인 불가(확정 일별값 부족)"
+        elif flow and flow.get("finality") == "확정" and flow.get("daily_eok") is not None:
+            msg = f"{market} {latest} 확정 순수급 {float(flow['daily_eok']):+,.0f}억원"
+            msg += f"; 3거래일 {float(flow['three_day_eok']):+,.0f}억원" if flow.get("three_day_eok") is not None else "; 3거래일 확인 불가"
+        else:
+            msg = f"{market} {latest or '거래일 미확인'} 확정 수급 확인 불가; 3거래일 판정 보류"
+        lines.append(msg)
+        h = health.get(market) or {}
+        print(f"market_stress_history {market} status={h.get('status')} rows={h.get('rows', 0)} missing={h.get('missing_dates', [])} recovered={h.get('recovered_dates', [])} reason={h.get('reason', h.get('error_type', ''))}")
+    snap["foreign_flow_context"] = lines
+    pending["snapshot"] = snap
+    watch.PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if watch.STATUS_PATH.exists():
+        raw = watch.STATUS_PATH.read_text(encoding="utf-8").splitlines()
+        raw = [l for l in raw if not l.startswith(("- KOSPI 외국인:", "- KOSDAQ 외국인:"))]
+        raw += ["- " + l for l in lines]
+        raw += [f"- {m} 과거 일별 원천: {health[m].get('status')} / 공백 {len(health[m].get('missing_dates', []))}개" for m in health]
+        watch.STATUS_PATH.write_text("\n".join(raw) + "\n", encoding="utf-8")
+    if watch.ALERT_PATH.exists():
+        raw = watch.ALERT_PATH.read_text(encoding="utf-8")
+        u10 = snap.get("ust10") or {}
+        if u10.get("prev_date") and u10.get("date"):
+            raw = re.sub(r"^(• 미국 10년물 일간 (?:상승|하락):[^\n]+)$",
+                         lambda m: m[1] + f" (미국 관측일 {u10['prev_date']} → {u10['date']})", raw, flags=re.M)
+        if "• KOSDAQ 외국인: 1일" not in raw:
+            raw = raw.replace("• KOSPI 외국인: 1일 ±1조원, 최근 3거래일 누적 ±3조원",
+                              "• KOSPI 외국인: 1일 ±1조원, 최근 3거래일 누적 ±3조원\n• KOSDAQ 외국인: 1일 ±2,000억원, 최근 3거래일 누적 ±5,000억원", 1)
+        # The context is always shown (including morning rates alerts), but a
+        # missing source is not a separate market signal or notification.
+        block = "\n<b>한국 증시 확정 수급 확인 상태</b>\n" + "\n".join("• " + html.escape(l) for l in lines) + "\n"
+        raw = raw.replace("\n<b>알림 기준</b>", block + "\n<b>알림 기준</b>", 1)
+        watch.ALERT_PATH.write_text(raw, encoding="utf-8")
+
+
 def main() -> int:
     # Preserve real delivery dedupe keys across every scheduled restart.
     core.LS_DAILY_TOLERANCE_EOK = DUAL_SOURCE_TOLERANCE_EOK
@@ -630,8 +851,10 @@ def main() -> int:
     v15._load_final_history = _sanitized_final_history
     v15._persist_final_history = _persist_candidates_and_final_history
     v15._safe_persist_ls_history = _safe_no_ls_history
+    captured = io.StringIO()
     try:
-        rc = v15.main()
+        with contextlib.redirect_stdout(captured):
+            rc = v15.main()
     finally:
         core.LS_DAILY_TOLERANCE_EOK = _ORIGINAL_LS_TOL_EOK
         core.LS_DAILY_TOLERANCE_PCT = _ORIGINAL_LS_TOL_PCT
@@ -645,6 +868,14 @@ def main() -> int:
         v15._safe_persist_ls_history = _ORIGINAL_SAFE_LS_PERSIST
     _postprocess_source_note()
     _postprocess_missing_three_day_status()
+    _annotate_operating_evidence()
+    for line in captured.getvalue().splitlines():
+        if not line.startswith(('- KOSPI 외국인:', '- KOSDAQ 외국인:')):
+            print(line)
+    if watch.STATUS_PATH.exists():
+        for line in watch.STATUS_PATH.read_text(encoding='utf-8').splitlines():
+            if line.startswith(('- KOSPI ', '- KOSDAQ ')) and ('확정 순수급' in line or '확정 수급 확인 불가' in line):
+                print(line)
     return rc
 
 

@@ -152,6 +152,41 @@ class LSForeignHistoryRegressionTests(unittest.TestCase):
         self.assertEqual(market16._ls_fallback_confirmation_count(old, -15100.0, "2026-11-03", early), 1)
         self.assertEqual(market16._ls_fallback_confirmation_count(old, -15100.0, "2026-11-03", later), 2)
 
+
+    def test_undated_preopen_ls_never_relabels_zero_as_yesterday(self):
+        now = dt.datetime.fromisoformat("2026-11-24T08:52:05+09:00")
+        with patch.object(market16, "_canonical_trade_date", return_value="2026-11-23"):
+            def no_undated_query(_):
+                self.fail("undated t1601 must not be queried for yesterday")
+            row = market16._canonicalize_flow(no_undated_query, "KOSPI", now)
+        self.assertTrue(row["unavailable"])
+        self.assertFalse(row["three_day_available"])
+
+    def test_capex_percentage_must_be_capex_not_eps_or_stock(self):
+        self.assertFalse(market16._direct_capex_percentage("Meta EPS Missed 14%, FCF Hit $784M, Capex Raised Again"))
+        self.assertFalse(market16._direct_capex_percentage("Alphabet share price falls 12%, capex forecast changed"))
+        self.assertTrue(market16._direct_capex_percentage("Meta capex guidance raised by 15%"))
+        self.assertTrue(market16._direct_capex_percentage("Microsoft raises capex by 20%"))
+        self.assertFalse(market16._direct_capex_percentage("Amazon capex raised by 9%"))
+
+    def test_date_specific_history_requires_market_and_calibration(self):
+        dates = {"2026-11-03", "2026-11-06", "2026-11-23"}
+        old = {"2026-11-03": -15100, "2026-11-06": -26892}
+        r = {"t1665OutBlock": {"mname": "KOSPI", "ex_upcode": "K001"},
+             "t1665OutBlock1": [{"date": "20261103", "sa_17": -1510000, "sv_17": 7},
+                                {"date": "20261106", "sa_17": -2689200, "sv_17": 7},
+                                {"date": "20261123", "sa_17": -256500, "sv_17": 7}]}
+        data, proof = market16._validate_historical_ls("KOSPI", r, dates, old)
+        self.assertEqual(data["2026-11-23"], -2565)
+        self.assertEqual(proof["scale_to_eok"], 0.01)
+        with self.assertRaises(ValueError):
+            market16._validate_historical_ls("KOSDAQ", r, dates, old)
+        with self.assertRaises(ValueError):
+            market16._validate_historical_ls("KOSPI", r, dates, {"2026-11-03": -15100})
+        r["t1665OutBlock"]["ex_upcode"] = "U001"
+        with self.assertRaises(ValueError):
+            market16._validate_historical_ls("KOSPI", r, dates, old)
+
     def test_missing_three_day_status_is_not_reported_as_zero(self):
         import tempfile
         with tempfile.TemporaryDirectory() as folder:
