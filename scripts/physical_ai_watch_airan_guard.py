@@ -8872,6 +8872,11 @@ _verified_delivery_aliases.install(base)
 import robot_watch_nov23_verified_events as _nov23_verified
 _nov23_verified.install(base)
 
+# Eugene Securities Nov-23 relative preference chart: outlook, not contracts.
+# Extra SI headline discovery is source-graded and scoped to this robot watcher.
+import robot_watch_eugene_lifecycle_20261123 as _eugene_lifecycle
+_eugene_lifecycle.install(base)
+
 
 if __name__ == '__main__':
     pre_state = base.load_state()
