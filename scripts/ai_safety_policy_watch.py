@@ -1900,6 +1900,9 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
 
+    bank_stage = bank_agent_policy_stage(item)
+    if bank_stage:
+        return bank_stage
     meta_stage = meta_safety_stage(item)
     if meta_stage:
         return meta_stage
@@ -2176,6 +2179,9 @@ def detect_category(text: str) -> str:
         t in low for t in ("subpoena", "complaint", "investigation", "sues", "settlement", "consent order")
     ):
         return "FTC 프런티어 AI 소비자보호 조사·집행 단계"
+    bank_stage = bank_agent_policy_stage({"title": text})
+    if bank_stage:
+        return "미국 금융기관 AI 에이전트 통제·감독·사업화 단계"
     cyber_growth = openai_cyber_growth_stage({"title": text})
     if cyber_growth:
         return {
@@ -2263,6 +2269,9 @@ def detect_entity(text: str) -> str:
         if "openai" in low and "anthropic" in low:
             return "FTC–OpenAI·Anthropic"
         return "FTC–OpenAI" if "openai" in low else "FTC–Anthropic"
+    bank_stage = bank_agent_policy_stage({"title": text})
+    if bank_stage:
+        return "미국 금융감독기관" if bank_stage[0] == "bank_agent_supervision" else "미국 금융기관"
     cyber_growth = openai_cyber_growth_stage({"title": text})
     if cyber_growth:
         return {
@@ -2413,6 +2422,9 @@ def material(item: dict) -> bool:
         return False
     milestone = tracked_policy_event_stage(item)
     if milestone:
+        if (milestone[0] in ("bank_agents", "bank_agent_supervision")
+            or milestone[0].startswith("bank_agent_")) and not bank_agent_publisher_verified(item):
+            return False
         if milestone[0] in ("meta_muse", "meta_si_accord", "meta_rsi",
                             "meta_oversight") and not meta_safety_source_verified(item):
             return False
@@ -2434,7 +2446,10 @@ def material(item: dict) -> bool:
             return False
         if milestone[0] == "crowdstrike_nvidia_guardian" and not crowdstrike_nvidia_publisher_verified(item):
             return False
-        return source_trusted(item.get("source", "")) or (milestone[0] in ("meta_muse", "meta_si_accord", "meta_rsi", "meta_oversight") and str(item.get("source") or "").lower().strip() == "meta" and meta_safety_source_verified(item))
+        return (source_trusted(item.get("source", "")) or bank_agent_issuer_verified(item)
+                or (milestone[0] in ("meta_muse", "meta_si_accord", "meta_rsi", "meta_oversight")
+                    and str(item.get("source") or "").lower().strip() == "meta"
+                    and meta_safety_source_verified(item)))
     stage = trail_of_bits_mna_stage(item)
     if stage:
         # 2026-10-13 The Information initial talks are a historical,
@@ -2495,7 +2510,7 @@ def normalize(item: dict) -> dict:
     out["fingerprint"] = fingerprint(item)
     out["category"] = detect_category(combined)
     out["entity"] = detect_entity(combined)
-    out["official"] = ((source_official(item.get("source","")) or (str(item.get("source") or "").lower().strip() == "meta" and meta_safety_source_verified(item) and bool(meta_safety_stage(item))) or aws_security_issuer_verified(item) or fed_bank_security_official(item) or korean_finance_issuer_verified(item) or openai_cyber_growth_issuer_verified(item)) and
+    out["official"] = ((source_official(item.get("source","")) or bank_agent_issuer_verified(item) or (str(item.get("source") or "").lower().strip() == "meta" and meta_safety_source_verified(item) and bool(meta_safety_stage(item))) or aws_security_issuer_verified(item) or fed_bank_security_official(item) or korean_finance_issuer_verified(item) or openai_cyber_growth_issuer_verified(item)) and
         cohere_aisle_publisher_verified(item) and crowdstrike_nvidia_publisher_verified(item)
         and php_korea_publisher_verified(item)
         and k_security_business_publisher_verified(item)
@@ -2505,7 +2520,8 @@ def normalize(item: dict) -> dict:
         and fed_bank_security_publisher_verified(item)
         and korean_finance_publisher_verified(item)
         and openai_cyber_growth_publisher_verified(item)
-        and meta_safety_source_verified(item))
+        and meta_safety_source_verified(item)
+        and bank_agent_publisher_verified(item))
     return out
 
 
@@ -2874,6 +2890,19 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
+        if rep["category"] == "미국 금융기관 AI 에이전트 통제·감독·사업화 단계":
+            stage = bank_agent_policy_stage(rep)
+            status = {
+                "incident_reported": "은행 실제 침해 보도(은행·감독기관의 공식 피해 확인 필요)",
+                "paid_contract_reported": "유료 보안 계약 보도(금액·검수·매출 별도 확인)",
+                "shutdown_test_reported": "킬 스위치 및 업무 연속성 시험 보도",
+                "production_controls_reported": "은행별 실제 에이전트 운영통제 도입 보도",
+                "new_mandatory_rule_reported": "강제 규정 보도(공식 원문·시행일 검증 필요)",
+                "new_guidance_reported": "은행 감독 지침 보도(권고와 의무 구별)",
+            }.get(stage[1] if stage else "", "금융 AI 에이전트의 새로운 통제 단계")
+            lines.append(f"• <b>확인 단계</b>: {html.escape(status)}")
+            lines.append("• <b>오인 방지</b>: 7월 OpenAI·Hugging Face 침해는 은행 침해가 아님; 기존 외부 에이전트 차단과 내부 통제 강화는 별개")
+            lines.append("• <b>후속 확인</b>: 은행명·사용권한/인증/로그·킬 스위치 시험·대출·사기탐지 업무 연속성·실제 계약/예산·사고 피해·의무규정")
         if rep["category"] in (
             "오픈AI 브록먼 경영개편·보안사업 성장 단계",
             "오픈AI GPT-6 Cyber 보안모델 상용화·접근확대 단계",
