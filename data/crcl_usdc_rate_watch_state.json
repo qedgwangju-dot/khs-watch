@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-24T06:45:10+09:00",
+  "updated_at_kst": "2026-11-24T06:59:40+09:00",
   "circle": {
     "date": "2026-11-19",
     "circulation_usd_b": 67.3,
@@ -78,11 +78,9 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,341.57원, 차이 0.32%"
+    "crosscheck": "Yahoo Finance 1,340.68원, 차이 0.25%"
   },
   "crcl_last_alerted_close_date": "2026-11-23",
   "correction_pending": false,
-  "errors": [
-    "fx: 2026-11-23 한국은행 ECOS 원/미국달러 매매기준율 조회 실패"
-  ]
+  "errors": []
 }
