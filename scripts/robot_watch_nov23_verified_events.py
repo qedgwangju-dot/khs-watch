@@ -157,7 +157,7 @@ def install(base):
 
     def risk(category):
         for spec in STORIES.values():
-            if category=="로봇 후속 확인 · "+spec["stage"]:return spec["risk"]
+            if category=="로봇 후속 확인 · "+STAGE_LABEL[spec["stage"]]:return spec["risk"]
         return old["risk"](category)
 
     def verification(item,group_name,text):
