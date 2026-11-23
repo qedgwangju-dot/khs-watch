@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-24T00:51:03+09:00",
+  "updated_at_kst": "2026-11-24T00:59:38+09:00",
   "circle": {
     "date": "2026-11-19",
     "circulation_usd_b": 67.3,
@@ -51,18 +51,18 @@
   },
   "crcl": {
     "date": "2026-11-23",
-    "close": 52.470001220703125,
+    "close": 52.27000045776367,
     "prev_date": "2026-11-20",
     "prev_close": 47.5099983215332,
-    "daily_pct": 10.44,
+    "daily_pct": 10.02,
     "source": "Yahoo Finance daily chart",
     "source_url": "https://finance.yahoo.com/quote/CRCL/history/",
     "crosscheck_source": "ChartExchange historical",
     "crosscheck_date": "2026-11-23",
-    "crosscheck_close": 52.44,
-    "crosscheck_daily_pct": 10.38,
-    "crosscheck_gap_pct": 0.0572,
-    "crosscheck_status": "rounding_difference"
+    "crosscheck_close": 52.27,
+    "crosscheck_daily_pct": 10.02,
+    "crosscheck_gap_pct": 0.0,
+    "crosscheck_status": "confirmed"
   },
   "tbx": {
     "date": "2026-11-23",
