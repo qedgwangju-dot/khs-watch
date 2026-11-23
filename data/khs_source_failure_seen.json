@@ -20,7 +20,7 @@
     },
     "trusted_policy|federalregister.gov|publication_unverified|/api/v1/documents/2026-23529.json": {
       "lane": "trusted_policy",
-      "last_seen_kst": "2026-11-20T21:11:44+09:00",
+      "last_seen_kst": "2026-11-23T09:09:50+09:00",
       "source": "BIS remote rule official publication",
       "streak": 1
     }
@@ -147,6 +147,17 @@
       "logical_failure_count": 1,
       "sources": [
         "Korea Communications Commission notices"
+      ]
+    },
+    "343b91220057f88e": {
+      "failure_count": 1,
+      "first_seen_kst": "2026-11-23T09:09:50+09:00",
+      "logical_failure_count": 1,
+      "logical_keys": [
+        "trusted_policy|federalregister.gov|publication_unverified|/api/v1/documents/2026-23529.json"
+      ],
+      "sources": [
+        "BIS remote rule official publication"
       ]
     },
     "34fbf9f1423fa8a8": {
