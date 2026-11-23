@@ -4,20 +4,22 @@
     "all_sources_verified": false,
     "deferred_events": 0,
     "errors": [
-      "Google News 실패: \"금융권\" \"보안 내부통제 가이드라인\" (확정 OR 발표 OR 시행) / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Daybreak\" \"OpenAI\" (paid customers OR customer count O / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"OpenAI\" \"ChatGPT\" \"Codex\" (teams merged OR enterprise  / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"AWS Continuum\" (\"Claude Code\" OR Codex OR Kiro) (avail / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News 실패: \"President's Working Group on Scams and Fraud\" (third m / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"금융위원회\" \"580개사\" (전수점검 OR 점검 완료 OR 결과 발표) / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"금융권\" \"외부접점\" (\"11월 30일\" OR \"12월 31일\") / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: \"AI 안전연구소\" 한국 국제 표준 평가 / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: AI cybersecurity foundation model government procuremen / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News 실패: (\"Open Agent Safety Platform\" OR OpenShell OR Sentry) p / HTTPError: HTTP Error 429: Too Many Requests"
     ],
-    "google_news_queries_failed": 4,
+    "google_news_queries_failed": 6,
     "google_news_queries_requested": 110,
-    "google_news_queries_succeeded": 106,
-    "google_news_rate_limit_429": 4,
+    "google_news_queries_succeeded": 104,
+    "google_news_rate_limit_429": 6,
     "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [],
-    "raw_items": 67,
+    "raw_items": 65,
     "sif_new_stages": 0,
     "source_access_limited": true,
     "si_portal_health": "정상",
@@ -105,7 +107,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-23T07:51:08.733730+00:00",
+    "updated_at": "2026-11-23T08:11:00.396884+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -1015,11 +1017,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-23T16:51:08+09:00",
+  "updated_at_kst": "2026-11-23T17:11:00+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-23T07:51:55.996159+00:00",
+    "last_success_at": "2026-11-23T08:12:01.003116+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
