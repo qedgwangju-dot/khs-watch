@@ -1,9 +1,9 @@
 {
-  "updated_at_kst": "2026-11-23T09:32:04+09:00",
-  "fx_observed_at_kst": null,
-  "fx_signal_eligible": false,
-  "fx_age_seconds": null,
+  "updated_at_kst": "2026-11-23T10:02:11+09:00",
+  "fx_observed_at_kst": "2026-11-23T10:02:10+09:00",
+  "fx_signal_eligible": true,
+  "fx_age_seconds": 1.203962,
   "source": "yen-carry-recent-shock",
-  "issue_kind": "market_data_unavailable",
-  "source_error": "RuntimeError: 30-minute reference unavailable; alternate actual five-minute observations unavailable: one-day five-minute fallback incomplete: RuntimeError: USD/JPY five-minute observations insufficient | RuntimeError: USD/JPY five-minute observations insufficient"
+  "issue_kind": null,
+  "source_error": null
 }
