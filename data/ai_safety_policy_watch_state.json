@@ -5,8 +5,8 @@
     "deferred_events": 0,
     "errors": [],
     "google_news_queries_failed": 0,
-    "google_news_queries_requested": 107,
-    "google_news_queries_succeeded": 107,
+    "google_news_queries_requested": 110,
+    "google_news_queries_succeeded": 110,
     "google_news_rate_limit_429": 0,
     "material_items": 33,
     "new_articles": 0,
@@ -100,7 +100,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-23T05:18:45.146010+00:00",
+    "updated_at": "2026-11-23T05:48:54.180768+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -907,6 +907,18 @@
       "source_url": "https://www.yna.co.kr/view/AKR20260903037252017",
       "status": "2026-09-03 NAVER Cloud consortium selected; SandLab participating and KSign owns 42.01% of SandLab (not separate KSign contract)"
     },
+    "meta_muse:old_safety_delay_20260915": {
+      "source_url": "https://www.fidelity.com/news/article/default/202609152221RTRSNEWSCOMBINED_L1N45800I_1",
+      "status": "Prior months-long Muse delay, confirmed by Reuters Sep 15; no new delay"
+    },
+    "meta_rsi:serving_majority_principle_202608": {
+      "source_url": "https://about.fb.com/news/2026/08/the-future-is-for-everyone/",
+      "status": "Meta August principle: significant majority human-serving compute, not measured allocation"
+    },
+    "meta_si_accord:original_signing_20260929": {
+      "source_url": "https://www.presidency.ucsb.edu/documents/white-house-accord-super-intelligence",
+      "status": "Voluntary original SI Accord, six company signers, not law or all AI labs"
+    },
     "msit_finance_2026:ciso_28000_advice_20261004": {
       "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148973069",
       "status": "10/04 advice emailed to ~28,000 CISO registrants; recommendation not completed mandatory audits"
@@ -998,11 +1010,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-23T14:18:45+09:00",
+  "updated_at_kst": "2026-11-23T14:48:54+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-23T05:19:39.315570+00:00",
+    "last_success_at": "2026-11-23T05:49:49.220838+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
