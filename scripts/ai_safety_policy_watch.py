@@ -2289,7 +2289,7 @@ def material(item: dict) -> bool:
             return False
         if milestone[0] == "crowdstrike_nvidia_guardian" and not crowdstrike_nvidia_publisher_verified(item):
             return False
-        return source_trusted(item.get("source", ""))
+        return source_trusted(item.get("source", "")) or (milestone[0] in ("meta_muse", "meta_si_accord", "meta_rsi", "meta_oversight") and str(item.get("source") or "").lower().strip() == "meta" and meta_safety_source_verified(item))
     stage = trail_of_bits_mna_stage(item)
     if stage:
         # 2026-10-13 The Information initial talks are a historical,
