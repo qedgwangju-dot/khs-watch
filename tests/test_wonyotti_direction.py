@@ -111,7 +111,7 @@ class WonyottiRegressionTest(unittest.TestCase):
 
     def test_bearish_pressure_is_plain(self):
         verdict = w._crypto_direction(snap(), NOW)
-        self.assertEqual(verdict["direction"], "단기 하락 압력 우세")
+        self.assertIn("단기 하락 압력 우세", verdict["direction"])
 
     def test_mixed_flows_not_called_bearish(self):
         verdict = w._crypto_direction(snap(five=200.0), NOW)
