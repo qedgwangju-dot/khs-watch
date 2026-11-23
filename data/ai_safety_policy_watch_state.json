@@ -1,39 +1,20 @@
 {
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": false,
+    "all_sources_verified": true,
     "deferred_events": 0,
-    "errors": [
-      "Google News 실패: 네이버클라우드 S2W 샌즈랩 LG CNS 사이버보안 AI 계약 실증 / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (\"지니언스\" OR \"Genians\") (\"넥서스 프레임워크\" OR \"Nexus Framework\" / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"OpenAI\" \"security infrastructure\" (product work paused / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (Palo Alto Networks OR CrowdStrike) AI security ARR ann / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (OpenShell OR \"Open Agent Safety Platform\") AI Enterpri / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Joint Commitment on Frontier Responsibilities\" AI / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"morally binding\" AI accord signatory auditor board com / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"AI accord\" signatory added withdrew external auditor b / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"AI accord\" codified law regulation procurement insuran / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"super intelligence\" accord law regulation audit procur / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: site:federalregister.gov \"Super Intelligence\" executive / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: (Federal Register OR NIST OR FTC) \"AI model\" \"incident\" / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Thomas Lind\" OpenAI ONCD cyber strategic risk / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Dean Ball\" OpenAI OSTP Strategic Futures AI Action Pla / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"OpenAI\" \"Trail of Bits\" (acquisition OR buy OR agreeme / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Cohere Cyber\" \"AISLE\" (customer OR contract OR product / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"Aidan Gomez\" \"AISLE\" (CNBC OR \"rogue agents\" OR cybers / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News 실패: \"FTC\" (\"OpenAI\" OR \"Anthropic\") (\"AI agents\" OR \"AI mod / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 18,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 110,
-    "google_news_queries_succeeded": 92,
-    "google_news_rate_limit_429": 18,
+    "google_news_queries_succeeded": 110,
+    "google_news_rate_limit_429": 0,
     "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [],
-    "raw_items": 64,
+    "raw_items": 66,
     "sif_new_stages": 0,
-    "source_access_limited": true,
+    "source_access_limited": false,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
     "si_portal_pending_candidates": 0,
@@ -119,7 +100,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-23T08:31:04.475163+00:00",
+    "updated_at": "2026-11-23T08:53:44.845986+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -1029,11 +1010,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-23T17:31:04+09:00",
+  "updated_at_kst": "2026-11-23T17:53:44+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-23T08:32:06.680269+00:00",
+    "last_success_at": "2026-11-23T08:54:45.931985+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
