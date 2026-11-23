@@ -6,6 +6,7 @@ import base64
 from contextlib import contextmanager
 import copy
 import hashlib
+import io
 import json
 from pathlib import Path
 import tempfile
@@ -102,6 +103,32 @@ class ScopedEditTest(unittest.TestCase):
             self.assertIn(required, new)
         self.assertNotIn("옛 요약입니다", new)
         self.assertEqual(new.count(SOURCE), 1)
+
+
+    def test_pinned_archive_reader_accepts_only_original_seven_members(self):
+        def mkzip(names):
+            stream = io.BytesIO()
+            with __import__("zipfile").ZipFile(stream,"w",__import__("zipfile").ZIP_DEFLATED) as z:
+                for k in names:
+                    z.writestr(k, "recovery file")
+            return stream.getvalue()
+        payload = mkzip(sorted(e.SOURCE_MEMBERS))
+        digest = "sha256:" + hashlib.sha256(payload).hexdigest()
+        meta = {"name":f"robotis-physical-ai-{e.SOURCE_RUN_ID}",
+                "digest":digest,"size_in_bytes":len(payload),"expired":False}
+        with patch.object(e, "SOURCE_ARTIFACT_DIGEST",digest):
+            self.assertEqual(set(e._read_source_members(payload,meta)),e.SOURCE_MEMBERS)
+            with self.assertRaises(d.DeliveryError):
+                e._read_source_members(mkzip(sorted(e.SOURCE_MEMBERS)+["unexpected.txt"]),meta)
+            with self.assertRaises(d.DeliveryError):
+                e._read_source_members(payload,{**meta,"digest":"sha256:"+("0"*64)})
+            path_bytes=mkzip([k if k!="robotis_physical_ai_watch_status.md" else "unsafe/../robotis_physical_ai_watch_status.md"
+                              for k in sorted(e.SOURCE_MEMBERS)])
+            pathmeta={**meta,"digest":"sha256:"+hashlib.sha256(path_bytes).hexdigest(),
+                      "size_in_bytes":len(path_bytes)}
+            with patch.object(e,"SOURCE_ARTIFACT_DIGEST",pathmeta["digest"]):
+                with self.assertRaises(d.DeliveryError):
+                    e._read_source_members(path_bytes,pathmeta)
 
     def test_different_original_text_rejected_without_api(self):
         with self.fixture():
