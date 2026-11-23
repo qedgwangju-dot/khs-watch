@@ -7,9 +7,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 57,
     "errors": [
-      "Google News RSS 실패: (\"CVE-2026-109618\" OR \"CVE-2026-109619\" OR \"php2shell\")… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) \"security release\" OR \"… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Safety Case\" f… / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell OR NemoClaw) security vu… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenShell OR Sentry OR BlueField-4) policy bypass sand… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (Anthropic OR \"AI model\") (\"self-replicating\" OR \"self … / HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "google_news_queries_failed": 3,
     "google_news_queries_requested": 65,
@@ -17,7 +17,7 @@
     "google_news_rate_limit_429": 3,
     "material_items": 13,
     "new_material_items": 0,
-    "raw_items": 95,
+    "raw_items": 104,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
     "source_access_limited": true
@@ -1156,5 +1156,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-23T17:10:03+09:00"
+  "updated_at_kst": "2026-11-23T17:10:45+09:00"
 }
