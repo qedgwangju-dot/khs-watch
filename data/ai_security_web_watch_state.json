@@ -7,8 +7,8 @@
     "deferred_material_items": 0,
     "direct_official_items": 57,
     "errors": [
-      "Google News RSS 실패: (\"AI agent\" OR agentic OR LLM) misalignment \"third part… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) monitorability … / HTTPError: HTTP Error 429: Too Many Requests"
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Preparedness F… / HTTPError: HTTP Error 429: Too Many Requests",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Safety Case\" f… / HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "google_news_queries_failed": 2,
     "google_news_queries_requested": 65,
@@ -16,7 +16,7 @@
     "google_news_rate_limit_429": 2,
     "material_items": 14,
     "new_material_items": 0,
-    "raw_items": 114,
+    "raw_items": 115,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
     "source_access_limited": true
@@ -1165,5 +1165,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-24T00:08:55+09:00"
+  "updated_at_kst": "2026-11-24T00:12:53+09:00"
 }
