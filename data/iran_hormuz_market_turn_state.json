@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-11-19T21:50:37+09:00",
-  "last_event_kind": "trilateral_refined_supply_plan",
-  "last_event_id": "trilateral_refined_supply_plan:2026-11-19",
+  "last_alert_at_kst": "2026-11-23T13:01:09+09:00",
+  "last_event_kind": "bernstein_oil_balance_forecast_reported",
+  "last_event_id": "bernstein_oil_balance:2026-11-23:2027_gt2500kbpd",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-10-13T21:23:53+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-10-13T21:11:24+09:00",
@@ -39,7 +39,8 @@
     "jpm_global_oil_balance:2026-10:surplus_1400kbpd": "2026-11-06T10:25:00+09:00",
     "eia_weekly_stock_balance:2026-11-13": "2026-11-19T09:24:54+09:00",
     "trilateral_refined_supply_plan:2026-11-19": "2026-11-19T21:50:37+09:00",
-    "iran_oil_loading_preparation:2026-11": "2026-11-19T21:50:37+09:00"
+    "iran_oil_loading_preparation:2026-11": "2026-11-19T21:50:37+09:00",
+    "bernstein_oil_balance:2026-11-23:2027_gt2500kbpd": "2026-11-23T13:01:09+09:00"
   },
   "last_market": {}
 }
