@@ -116,6 +116,7 @@ jobs:
           python scripts/test_robot_watch_delivery.py
           python scripts/test_robot_watch_state_commit.py
           python scripts/test_robot_watch_message_corrections.py
+          python scripts/test_robot_watch_nov23_verified_events.py
           python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py'
 
       - name: Refresh latest ROBOTIS dedup state without changing checked-out code
@@ -133,6 +134,36 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/robot_watch_message_corrections.py
 
+      - name: Check primary news discovery feed before large-scale scan
+        if: success() && env.CORRECTION_ONLY != '1'
+        run: |
+          python - <<'PY'
+          import time
+          import urllib.parse
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          ok = 0
+          errors = []
+          for q in ("ROBOTIS robotics", "Optimus humanoid"):
+              url = "https://news.google.com/rss/search?" + urllib.parse.urlencode(
+                  {"q": q, "hl": "ko", "gl": "KR", "ceid": "KR:ko"})
+              for attempt in range(2):
+                  try:
+                      req = urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0","Accept":"application/rss+xml"})
+                      with urllib.request.urlopen(req,timeout=7) as response:
+                          xml = response.read(2_000_000)
+                      if ET.fromstring(xml).find("channel") is None:
+                          raise ValueError("RSS channel is missing")
+                      ok += 1
+                      break
+                  except Exception as exc:
+                      errors.append(type(exc).__name__)
+                      if attempt == 0: time.sleep(1)
+          if not ok:
+              raise SystemExit("ROBOTIS source outage: no RSS discovery probe succeeded; never equate with no news; no send/state advance")
+          print(f"ROBOTIS discovery preflight {ok}/2; failures={len(errors)}")
+          PY
+
       - name: Scan physical AI / battery / grid / ROBOTIS-NVIDIA / Figure AI / Tesla Optimus China / AI-RAN sources
         if: success() && env.CORRECTION_ONLY != '1'
         run: |
@@ -148,6 +179,8 @@ jobs:
           print(detail)
           if successful != total:
               print("::warning::" + detail + "; successful delivery does not imply complete source coverage")
+          if successful / total < 0.8:
+              raise SystemExit("ROBOTIS source outage: less than 80% of discovery queries succeeded; no quiet-success or new seen checkpoint")
           with pathlib.Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a", encoding="utf-8") as summary:
               summary.write(detail + "\n")
           PY
