@@ -41,7 +41,7 @@
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959",
     "https://www.pearceip.law/2026/09/09/update-on-msds-challenges-to-us-halozyme-patents-in-sc-keytruda-pembrolizumab-dispute/"
   ],
-  "last_check_kst": "2026-11-23T08:48:23+09:00",
+  "last_check_kst": "2026-11-23T09:32:12+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -62,7 +62,10 @@
     "IPR2026-00313": "11,041,149",
     "IPR2026-00314": "11,066,656"
   },
-  "errors_last_run": [],
+  "errors_last_run": [
+    "Google 뉴스:RuntimeError:\"알테오젠 파트너 MSD\" 할로자임 PH20 특허 특허성 없음",
+    "Google 뉴스:RuntimeError:\"EP 3 130 347\" Halozyme Merck Keytruda SC UK"
+  ],
   "tracked_known_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -344,14 +347,14 @@
   "search_query_count": 40,
   "search_task_count": 80,
   "search_workers": 8,
-  "search_elapsed_seconds": 1.99,
-  "search_completed_tasks": 80,
-  "search_failed_tasks": 0,
+  "search_elapsed_seconds": 3.963,
+  "search_completed_tasks": 78,
+  "search_failed_tasks": 2,
   "search_completed_by_engine": {
     "Bing 웹": 40,
-    "Google 뉴스": 40
+    "Google 뉴스": 38
   },
-  "source_health": "ok",
+  "source_health": "partial",
   "ptab_direct_document_coverage": {
     "status": "not_verified",
     "reason": "USPTO ODP trial document API requires account/API key; no direct docket fetch in this workflow",
