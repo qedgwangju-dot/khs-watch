@@ -1015,7 +1015,7 @@ def build_signals(old: dict, new: dict, news_items: list[dict], btc_threshold_ev
                 label += " · 기존 감시 누락 공식 발표 보완"
             signals.append((
                 "NVIDIA 수요의 질", label,
-                f"발표일 {latest_release['date']} · {latest_release['title']} · 매출 {latest_release['revenue_b']:.1f}십억달러 (회사 발표, 10-Q 아님)",
+                f"한국시간 발표일 {latest_release['date']} · {latest_release['title']} · 매출 {latest_release['revenue_b']:.1f}십억달러 (회사 발표, 10-Q 아님)",
                 "기존 10-Q와 새로운 실적발표를 구별하고 고객금융·현금회수 변화를 후속 공시에서 검증",
                 "NVIDIA 신규 10-Q 공시 및 매출채권·영업현금흐름 확인",
                 latest_release["url"],
@@ -1329,7 +1329,7 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
         nv = snapshot.get("nvidia_sec") or {}
         release = snapshot.get("nvidia_earnings") or {}
         if release.get("verified"):
-            lines.append(f"• NVIDIA 최신 실적발표: {release.get('date')} · 매출 {float(release['revenue_b']):.1f}십억달러 (10-Q와 구별)")
+            lines.append(f"• NVIDIA 최신 실적발표(한국시간): {release.get('date')} · 매출 {float(release['revenue_b']):.1f}십억달러 (10-Q와 구별)")
         if nv.get("parsed_ok"):
             lines.extend([
                 "",
