@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-22T19:31:20.498199+00:00",
+  "updated_at": "2026-11-23T00:48:39.526787+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1020,9 +1020,12 @@
     "eea1e1a4e99a025446b0ef5eb960c2decc3d54f1d762e116a51b8f2f6e7140db",
     "af5ff16c02fc770de1b601d74fdd1f6f6fb868e6980cdab61aaa32c94039fe46",
     "4063b017a2f94e0402efa9363f4f585069aa799a96c3c5e3aba57b29a412576d",
-    "421f6a90603f57855a8055685306350c14813743ed53b0abbc2f7bca3a5447e6"
+    "421f6a90603f57855a8055685306350c14813743ed53b0abbc2f7bca3a5447e6",
+    "535d494be6b2719c31e6c2f6db2104d04c18785286d3dedfb4a6a55f45f74386"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "535d494be6b2719c31e6c2f6db2104d04c18785286d3dedfb4a6a55f45f74386"
+  ],
   "groups": [
     "ess_battery",
     "hyundai_atlas_rollout",
@@ -1031,16 +1034,6 @@
     "robotis_excess_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 44628528888,
-      "outcome": "normal_silence",
-      "confirmed_event_keys": [],
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-19T22:26:36.890341+00:00"
-    },
     {
       "run_id": 44665364824,
       "outcome": "sent",
@@ -1342,19 +1335,55 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-22T19:31:20.498199+00:00"
+    },
+    {
+      "run_id": 45090862047,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "535d494be6b2719c31e6c2f6db2104d04c18785286d3dedfb4a6a55f45f74386"
+      ],
+      "message_ids": [
+        403
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-23T00:48:39.526787+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 45061133448,
-    "outcome": "normal_silence",
-    "confirmed_event_keys": [],
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-22T19:31:20.498199+00:00"
+    "run_id": 45090862047,
+    "outcome": "sent",
+    "confirmed_event_keys": [
+      "535d494be6b2719c31e6c2f6db2104d04c18785286d3dedfb4a6a55f45f74386"
+    ],
+    "message_ids": [
+      403
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-23T00:48:39.526787+00:00"
   },
-  "last_selected_events": [],
+  "last_selected_events": [
+    {
+      "key": "535d494be6b2719c31e6c2f6db2104d04c18785286d3dedfb4a6a55f45f74386",
+      "group": "ess_battery",
+      "title": "유진證 “AI가 바꾸는 ESS 시장⋯LG엔솔·삼성SDI, 전력망 제어로 사업 확대” - 이투데이",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1JbmVHVEQ4T3RIOFc1YXdEMVE0SlBjTF9WS3paSGlRVUNjRm9lSm1scExFMVI0b3Q5Q05BTDhPREY1NUY4RVZhVW5HRGpaWVpkVzFzSA?oc=5",
+      "source": "이투데이",
+      "source_url": "https://www.etoday.co.kr",
+      "published": "2026-11-22T23:04:00+00:00"
+    }
+  ],
   "message_corrections": {
     "robot-message-correction-20261118-44240720425-v1": {
       "schema_version": 1,
