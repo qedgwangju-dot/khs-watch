@@ -17,7 +17,8 @@ END = dt.datetime(2026,11,27,0,0,tzinfo=KST)
 POLLEN_DELIVERED = "44e38c418d8b62458b41aa67ae9be72a3fc361ba0f1d5fc57866229df34dd4cb"
 GF_DELIVERED = "83d7fed4807294b0de7d1b2215798785f8ba441daa5fc420ad6c65bc092e0787"
 JSLINK_EXISTING = "eea1e1a4e99a025446b0ef5eb960c2decc3d54f1d762e116a51b8f2f6e7140db"
-ROOT = "nov23_"\nSTAGE_LABEL = {"three_party_execution_contract":"3사 본계약","chip_application_intent":"로봇용 AI 칩 적용 방향","potential_equity_investment":"투자 검토·유동성 위험","reported_supply_constraint":"영구자석 공급 병목","broker_earnings_review":"증권사 실적 전망","magnet_supply_mou":"영구자석 업무협약"}
+ROOT = "nov23_"
+STAGE_LABEL = {"three_party_execution_contract":"3사 본계약","chip_application_intent":"로봇용 AI 칩 적용 방향","potential_equity_investment":"투자 검토·유동성 위험","reported_supply_constraint":"영구자석 공급 병목","broker_earnings_review":"증권사 실적 전망","magnet_supply_mou":"영구자석 업무협약"}
 STORIES = {
   "hurim_contract": {
     "title":"휴림로봇·한화로보틱스·울트라이노베이션, 삼성전기 장비 자동화용 3사 본계약",
