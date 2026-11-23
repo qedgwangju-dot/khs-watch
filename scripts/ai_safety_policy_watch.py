@@ -2350,7 +2350,7 @@ def normalize(item: dict) -> dict:
     out["fingerprint"] = fingerprint(item)
     out["category"] = detect_category(combined)
     out["entity"] = detect_entity(combined)
-    out["official"] = ((source_official(item.get("source","")) or aws_security_issuer_verified(item) or fed_bank_security_official(item) or korean_finance_issuer_verified(item) or openai_cyber_growth_issuer_verified(item)) and
+    out["official"] = ((source_official(item.get("source","")) or (str(item.get("source") or "").lower().strip() == "meta" and meta_safety_source_verified(item) and bool(meta_safety_stage(item))) or aws_security_issuer_verified(item) or fed_bank_security_official(item) or korean_finance_issuer_verified(item) or openai_cyber_growth_issuer_verified(item)) and
         cohere_aisle_publisher_verified(item) and crowdstrike_nvidia_publisher_verified(item)
         and php_korea_publisher_verified(item)
         and k_security_business_publisher_verified(item)
