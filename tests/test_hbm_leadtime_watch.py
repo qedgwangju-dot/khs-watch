@@ -998,11 +998,10 @@ class Weekly011NoChangeRegression(unittest.TestCase):
 
     def previous_full_state(self):
         import copy
-        return {
-            "ai_component_leadtime": self.previous_snapshot(),
-            "mlcc_vendor_watch": copy.deepcopy(w.MLCC_VENDOR_BASELINE),
-            "caspa_panel_watch": copy.deepcopy(w.CASPA_PANEL_BASELINE),
-        }
+        prior = self.previous_snapshot()
+        prior["mlcc_vendor_watch"] = copy.deepcopy(w.MLCC_VENDOR_BASELINE)
+        prior["caspa_panel_watch"] = copy.deepcopy(w.CASPA_PANEL_BASELINE)
+        return {"ai_component_leadtime": prior}
 
     def test_011_exact_seven_rows_no_status_change(self):
         old = self.previous_snapshot()
