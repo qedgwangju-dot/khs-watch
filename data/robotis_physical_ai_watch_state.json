@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-23T03:07:17.525134+00:00",
+  "updated_at": "2026-11-23T03:16:04.602522+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1026,48 +1026,27 @@
     "74f8b8ea2cb6c379c9ea9f1561fcd56ec46366213971a7fbf62c9b76a14d4790",
     "d5e7996fe7d22661cfde97ceb018831917cabb08584cea6c8d61f03638f384cb",
     "670e36c725bca37db67b36c9c61d9b9102266bee614471390cbe2c50f2fb0d64",
-    "44e38c418d8b62458b41aa67ae9be72a3fc361ba0f1d5fc57866229df34dd4cb"
+    "44e38c418d8b62458b41aa67ae9be72a3fc361ba0f1d5fc57866229df34dd4cb",
+    "37bbf19dca92ab02d3019a4be82df7676d0b339ab229fc891898642712188a0d"
   ],
   "last_selected": [
-    "493c07c50075279464f98aef0c38ebbdc17f39aed883297efdabcced86470308",
-    "74f8b8ea2cb6c379c9ea9f1561fcd56ec46366213971a7fbf62c9b76a14d4790",
-    "d5e7996fe7d22661cfde97ceb018831917cabb08584cea6c8d61f03638f384cb",
-    "670e36c725bca37db67b36c9c61d9b9102266bee614471390cbe2c50f2fb0d64",
-    "44e38c418d8b62458b41aa67ae9be72a3fc361ba0f1d5fc57866229df34dd4cb"
+    "37bbf19dca92ab02d3019a4be82df7676d0b339ab229fc891898642712188a0d"
   ],
   "groups": [
     "ess_battery",
     "hyundai_atlas_rollout",
     "lg_factory_loop",
+    "nov23_base_foundation",
     "nov23_hurim_contract",
     "nov23_jslink_mou",
     "nov23_musk_ai5",
     "nov23_rainbow_broker",
     "nov23_rareearth_shortage",
     "robotis",
-    "robotis_excess_demand"
+    "robotis_excess_demand",
+    "tesla"
   ],
   "delivery_history": [
-    {
-      "run_id": 44727660640,
-      "outcome": "sent",
-      "confirmed_event_keys": [
-        "17a04f89ab92a656d3dda35b625fc53f2d0fa298ea3407196a98c63a47d8cc0e",
-        "cf37b7a676e2e2dcbe0779854d0510de6a330a92d584923a07c3c399beda07cc",
-        "e2d3519a31971327901db04cd67074fee5fc08da613819c24d1af512a125b935"
-      ],
-      "message_ids": [
-        394
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-20T11:27:37.533969+00:00"
-    },
     {
       "run_id": 44745346035,
       "outcome": "sent",
@@ -1345,20 +1324,34 @@
         false
       ],
       "state_timestamp_utc": "2026-11-23T03:07:17.525134+00:00"
+    },
+    {
+      "run_id": 45104871131,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "37bbf19dca92ab02d3019a4be82df7676d0b339ab229fc891898642712188a0d"
+      ],
+      "message_ids": [
+        405
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-23T03:16:04.602522+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 45103989370,
+    "run_id": 45104871131,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "44e38c418d8b62458b41aa67ae9be72a3fc361ba0f1d5fc57866229df34dd4cb",
-      "493c07c50075279464f98aef0c38ebbdc17f39aed883297efdabcced86470308",
-      "670e36c725bca37db67b36c9c61d9b9102266bee614471390cbe2c50f2fb0d64",
-      "74f8b8ea2cb6c379c9ea9f1561fcd56ec46366213971a7fbf62c9b76a14d4790",
-      "d5e7996fe7d22661cfde97ceb018831917cabb08584cea6c8d61f03638f384cb"
+      "37bbf19dca92ab02d3019a4be82df7676d0b339ab229fc891898642712188a0d"
     ],
     "message_ids": [
-      404
+      405
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1367,53 +1360,17 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-23T03:07:17.525134+00:00"
+    "state_timestamp_utc": "2026-11-23T03:16:04.602522+00:00"
   },
   "last_selected_events": [
     {
-      "key": "493c07c50075279464f98aef0c38ebbdc17f39aed883297efdabcced86470308",
-      "group": "nov23_hurim_contract",
-      "title": "휴림로봇·한화로보틱스·울트라이노베이션, 삼성전기 장비 자동화용 3사 본계약",
-      "link": "https://www.newspim.com/news/view/20261123000088",
-      "source": "휴림로봇 발표 인용·뉴스핌·이데일리",
+      "key": "37bbf19dca92ab02d3019a4be82df7676d0b339ab229fc891898642712188a0d",
+      "group": "nov23_base_foundation",
+      "title": "베이스그룹, Foundation에 1.5억달러(보도 환산 약 2,000억원) 투자 검토…급여 미지급 위험",
+      "link": "https://www.reuters.com/world/south-korean-firm-plans-150-million-lifeline-eric-trump-backed-robot-maker-2026-11-19/",
+      "source": "Reuters·연합뉴스·한겨레",
       "source_url": null,
-      "published": "2026-11-23T12:00:00+09:00"
-    },
-    {
-      "key": "74f8b8ea2cb6c379c9ea9f1561fcd56ec46366213971a7fbf62c9b76a14d4790",
-      "group": "nov23_rainbow_broker",
-      "title": "레인보우로보틱스 1~3분기 매출 +67%·삼성 협력 확대, 2027년 양산은 기대",
-      "link": "https://www.newsprime.co.kr/news/article/?no=755980&sec_no=67",
-      "source": "유진투자증권 분석 인용·프라임경제",
-      "source_url": null,
-      "published": "2026-11-23T12:00:00+09:00"
-    },
-    {
-      "key": "d5e7996fe7d22661cfde97ceb018831917cabb08584cea6c8d61f03638f384cb",
-      "group": "nov23_musk_ai5",
-      "title": "머스크, 차에는 AI4 충분·AI5는 Optimus용 계획 언급",
-      "link": "https://x.com/elonmusk/status/2124475458150334900",
-      "source": "Elon Musk X 발언·재인용",
-      "source_url": null,
-      "published": "2026-11-22T12:00:00+09:00"
-    },
-    {
-      "key": "670e36c725bca37db67b36c9c61d9b9102266bee614471390cbe2c50f2fb0d64",
-      "group": "nov23_rareearth_shortage",
-      "title": "중국 희토류·영구자석 수출 제한, 로봇 액추에이터 생산 병목 부각",
-      "link": "https://v.daum.net/v/20261122060240744",
-      "source": "조선비즈",
-      "source_url": null,
-      "published": "2026-11-22T12:00:00+09:00"
-    },
-    {
-      "key": "44e38c418d8b62458b41aa67ae9be72a3fc361ba0f1d5fc57866229df34dd4cb",
-      "group": "robotis_excess_demand",
-      "title": "로보티즈, 프랑스 Pollen Robotics와 39억7813만원 규모 DYNAMIXEL-X 공급계약 - 디지털투데이",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE84Uzc0X1l2WXoyZHNJRnR6OVFNRUxCWFFpbURwVWtCOVlja2xaLTF4OVNhS3ZvSlFuYjhTSUxGV1NJSUYxTC1zWWhGbzZxX2xGTk05RzdQU3dqSXRrUGQyWWszY05jQktRdDVIc3lkaEc3WG1MT0xLZFRQdw?oc=5",
-      "source": "디지털투데이",
-      "source_url": "https://www.digitaltoday.co.kr",
-      "published": "2026-11-20T00:11:01+00:00"
+      "published": "2026-11-20T12:00:00+09:00"
     }
   ],
   "message_corrections": {
