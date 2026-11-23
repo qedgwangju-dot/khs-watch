@@ -1084,5 +1084,80 @@ class MaterialEventTests(unittest.TestCase):
         self.assertEqual(old["delivery_receipt"], next_state["delivery_receipt"])
 
 
+
+    def test_xian_v9_report_one_shot_and_comparison_not_total_fab_expansion(self):
+        report = next(r for r in m.REPORTS if
+                      r["key"] == "20261123_sedaily_samsung_xian_x2_v9_10k_to_over50k")
+        original = report["evidence_groups"][0][1][0][1]
+        older = report["evidence_groups"][1][1][0][1]
+        article = ("[단독] 삼성전자 시안 2공장(X2) 낸드 생산 9세대 V9 확대, "
+                   "300mm 웨이퍼 월 1만 장을 월 5만 장 이상으로 늘린다. "
+                   "AI 데이터센터 AIDC 수요 대응. 이 뉴스는 생산시설 전환 계획이라는 보도.") 
+        old_report = ("삼성전자 시안 공장 286단 V9 월 4만 생산 계획, "
+                      "현재 생산능력을 확대하거나 신공장을 짓는 것은 아니라며 "
+                      "미국 반도체 장비 반입 허가를 검토.")
+        old = {"delivery_receipt": {"status": "confirmed", "message_ids": [554]},
+               "hbm_material_event_watch": {"seen_keys": [
+                   r["key"] for r in m.REPORTS if r is not report
+               ]}}
+        def not_ready(_):
+            raise AssertionError("no source lookup on prior date or acknowledged event")
+        _, early, audit0 = m.apply(old, "2026-11-22T23:59:00+09:00", not_ready)
+        self.assertEqual(early, [])
+        self.assertEqual(audit0["verified_events"], 0)
+        def fetch(url):
+            if url == original:
+                return article
+            if url == older:
+                return old_report
+            raise TimeoutError("unavailable alternative source")
+        next_state, messages, audit = m.apply(old, "2026-11-23T17:50:00+09:00", fetch)
+        self.assertEqual(audit["verified_events"], 1)
+        self.assertEqual(audit["verified_keys"], [report["key"]])
+        self.assertEqual(len(messages), 1)
+        msg = messages[0]
+        for keyword in ("1만→5만장 이상", "5배 이상", "286단", "2027년",
+                        "4만장", "+25%", "시안 공장 전체",
+                        "수출", "허가", "식각", "증착", "트렌드포스",
+                        "5만장", "공식", "매출"):
+            self.assertIn(keyword, msg)
+        self.assertIn(original, msg)
+        self.assertIn(older, msg)
+        self.assertEqual(len(d.chunks(msg)), 1)
+        self.assertTrue(all(len(s.encode("utf-16-le"))//2 <= 3600 for s in d.chunks(msg)))
+        m.require_durable_seen_keys(old, next_state)
+        self.assertEqual(next_state["delivery_receipt"], old["delivery_receipt"])
+        after, repeated, repeat_audit = m.apply(next_state, "2026-11-24T07:23:00+09:00", not_ready)
+        self.assertEqual(repeated, [])
+        self.assertEqual(repeat_audit["verified_events"], 0)
+        self.assertEqual(after["delivery_receipt"], old["delivery_receipt"])
+
+    def test_xian_v9_original_missing_or_reuters_only_holds_event_key(self):
+        report = next(r for r in m.REPORTS if
+                      r["key"] == "20261123_sedaily_samsung_xian_x2_v9_10k_to_over50k")
+        old = {"hbm_material_event_watch": {"seen_keys": [
+            r["key"] for r in m.REPORTS if r is not report
+        ]}}
+        older = report["evidence_groups"][1][1][0][1]
+        past_body = ("삼성전자 시안 286단 V9 월 4만장, "
+                     "기존 생산능력을 확대하지 않는다는 입장, 미국 허가")
+        cases = (
+            lambda _: (_ for _ in ()).throw(TimeoutError("all sources offline")),
+            lambda url: past_body if url == older else
+                (_ for _ in ()).throw(TimeoutError("new original missing")),
+            lambda url: ("삼성 시안 2공장 X2 V9 낸드 웨이퍼 5만"
+                         if url != older else past_body),
+        )
+        for fetcher in cases:
+            next_state, messages, audit = m.apply(
+                old, "2026-11-23T18:00:00+09:00", fetcher)
+            self.assertEqual(messages, [])
+            self.assertNotIn(report["key"],
+                             next_state["hbm_material_event_watch"]["seen_keys"])
+            self.assertIn("required_independent_evidence_missing",
+                          [g["status"] for g in audit["gaps"]])
+        self.assertNotIn("확정", report["verified_kind"])
+        self.assertIn("총량", report["brief_facts"][3])
+
 if __name__ == "__main__":
     unittest.main()

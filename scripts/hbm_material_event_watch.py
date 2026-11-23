@@ -729,6 +729,83 @@ REPORTS = (
         ),
         "caution": "인수 가능성을 확정 M&A로 승격하지 않으며 공식 지분취득 결정·계약·납입을 후속 확인.",
     },
+    {
+        "key": "20261123_sedaily_samsung_xian_x2_v9_10k_to_over50k",
+        "date": "2026-11-23",
+        "max_age_days": 35,
+        "group": "xian_nand_v9",
+        "label": "삼성 시안 X2 V9 300㎜ 웨이퍼 월 1만→5만장 이상 증설 보도",
+        "short_title": "삼성 시안 X2 V9 생산능력 1만→5만장 이상(보도)",
+        "brief_facts": (
+            "11/23 서울경제 단독: 삼성 중국 시안 2공장(X2) 300㎜ V9 낸드 웨이퍼 월 약 1만→5만장 이상(+4만장 이상·5배 이상)으로 확대한다는 보도. 삼성 공식 월별 물량 공시는 미확인.",
+            "기존 10/21 로이터: V9(286단) 생산 목표 2026년 12월 월 5,000장→2027년 12월 월 4만장. 이번 보도 5만장 이상은 기존 2027년 4만장 목표보다 최소 +1만장(+25%); 기준시점·생산 범위 차이는 확인 전.",
+            "AI 데이터센터용 낸드 공급 확대 기대와 실제 고객 계약·출하·매출은 별도. V9 제품군 월 생산능력 5배를 시안 공장 전체 웨이퍼 생산능력 5배 증가로 해석하지 않음.",
+            "삼성의 10/21 로이터 공식 입장: 중국 기존 공정 고도화는 진행 중이나 시안 전체 생산능력 확대·신공장 건설은 아니라는 설명. 11/23 보도와의 차이는 V9 전환 물량 vs 전체 팹 총량을 구분해 재확인.",
+            "병목·역풍: 미국산 반도체 장비의 중국 수출·반입 허가 범위, 고적층 채널 식각·증착·검사 장비 공급 및 수율·가동률 확인 전. 11/19 트렌드포스는 2027년 낸드 비트 공급 +25~30%, 1분기 계약가 0~5% 하락 전망.",
+        ),
+        "brief_caution": (
+            "신규 5만장 이상은 서울경제 언론 취재로 삼성 공식 확정 계획·장비 발주·양산 실적 아님. "
+            "장비 제조사·계약금액·도입·전원 인가·수율·매출 시점 미공개. "
+            "10/21 로이터·삼성 발언은 독립 과거 기준이고 11/23 목표 자체를 독립 확증하지 않음."
+        ),
+        "sources": (
+            ("서울경제 11월23일 원문", "https://m.sedaily.com/article/20117864",
+             "서울경제 단독·독립 회사 확인 전"),
+        ),
+        "context_links": (
+            ("삼성 3분기 공식 실적",
+             "https://news.samsung.com/global/samsung-electronics-announces-third-quarter-2026-results"),
+            ("트렌드포스 11/19 NAND 수급",
+             "https://www.trendforce.com/presscenter/news/20261119-13314.html"),
+        ),
+        "facts": (
+            "서울경제 2026년 11월 23일 보도 X2 V9 전용 300㎜ 웨이퍼 월 1만→5만장 이상; 공식 완성·출하 시점과는 구분.",
+            "2026년 10월 21일 로이터 Xian V9 월 5천장(2026.12)→4만장(2027.12)은 다른 기준·시점의 계획.",
+            "삼성 10월 기존 공장 고도화 설명 및 미국 장비 수출 규제 불확실성, 트렌드포스 낸드 공급과잉 전망을 함께 추적.",
+        ),
+        "caution": "V9 전용 생산 규모를 시안 전체 공장 신규 증설·확정 매출로 오인 금지.",
+        "verified_kind": "news_reported_xian_v9_50k_with_separate_older_reuters_context_not_company_confirmed",
+        "verified_source_caption": "11/23 서울경제 신규 보도·10/21 로이터 기반 회사 발언",
+        "evidence_groups": (
+            ("서울경제 11월23일 X2 V9 월 1만→5만장 신규 보도",
+             (
+                ("서울경제 모바일 원문",
+                 "https://m.sedaily.com/article/20117864",
+                 (("삼성",), ("시안",), ("X2", "2공장", "제2공장"),
+                  ("V9", "9세대"), ("1만", "10,000"),
+                  ("5만", "50,000"), ("낸드", "NAND")),
+                 "11월23일 서울경제 직접 기사"),
+                ("서울경제 PC 동일 기사",
+                 "https://www.sedaily.com/article/20117864",
+                 (("삼성",), ("시안",), ("X2", "2공장", "제2공장"),
+                  ("V9", "9세대"), ("1만", "10,000"),
+                  ("5만", "50,000"), ("낸드", "NAND")),
+                 "11월23일 서울경제 동일 원문"),
+                ("서울경제 네이버 동일 기사",
+                 "https://n.news.naver.com/mnews/article/011/0004685235",
+                 (("삼성",), ("시안",), ("X2", "2공장", "제2공장"),
+                  ("V9", "9세대"), ("1만", "10,000"),
+                  ("5만", "50,000"), ("낸드", "NAND")),
+                 "서울경제 기사 제휴 재게시·독립 보도 아님"),
+             )),
+            ("10월21일 기존 V9 4만장 및 삼성 총량 비증설 입장",
+             (
+                ("연합뉴스 10월21일 로이터·삼성 발언",
+                 "https://www.yna.co.kr/view/AKR20261021112400009",
+                 (("삼성",), ("시안",), ("286단", "V9"),
+                  ("4만", "40,000"), ("생산능력",),
+                  ("확대",), ("미국", "허가")),
+                 "로이터의 10월21일 보도에 대한 연합뉴스 재보도·11월23일 독립확증 아님"),
+                ("SBS 10월21일 로이터·삼성 입장 영문",
+                 "https://news.sbs.co.kr/english/article.do?news_id=N1008808616",
+                 (("Samsung",), ("Xi'an", "Xian"),
+                  ("V9", "286-layer"), ("40,000",),
+                  ("production capacity", "capacity"),
+                  ("not", "neither")),
+                 "로이터 취재를 재보도한 과거 회사 입장·11월23일 독립확증 아님"),
+             )),
+        ),
+    },
 )
 
 GROUPS = {
@@ -744,6 +821,7 @@ GROUPS = {
     "samsung_memory_lta": "삼성전자 메모리 장기계약·2029~2031 확인 단계",
     "citi_price_revision": "씨티 2027년 메모리 가격 전망·트렌드포스 반대 근거",
     "supplier_ownership": "삼성·SK 핵심 소부장 직접 인수 가능성·공식 계약 구분",
+    "xian_nand_v9": "삼성 시안 X2 V9 낸드 생산능력·미국 장비 허가",
 }
 
 def text_matches(body: str, required: tuple) -> bool:
@@ -953,6 +1031,38 @@ def render_supplier_ownership(items: list[dict], checked_at: str) -> str:
     return ("\n\n" + BREAK + "\n\n").join(sections).strip() + ("\n" if sections else "")
 
 
+def render_xian_nand_v9(items: list[dict], checked_at: str) -> str:
+    """Compact V9 report only; newly reported 5만 is not a Samsung confirmed plan."""
+    pages = []
+    for item in items:
+        lines = [
+            "<b>[HBM | 삼성 시안 V9 낸드 증설]</b>",
+            "확인 " + html.escape(checked_at[:16].replace("T", " ")) + " KST",
+            "<b>■ " + html.escape(item.get("short_title") or item["label"]) + "</b>",
+        ]
+        lines.extend("• " + html.escape(x) for x in (item.get("brief_facts") or item["facts"]))
+        lines.append("• 주의: " + html.escape(item.get("brief_caution") or item["caution"]))
+        refs = item.get("verified_source_links") or (
+            (item.get("source_label", "서울경제 기사"), item.get("source") or ""),)
+        links = []
+        for i, (label, url) in enumerate(refs):
+            if not url:
+                continue
+            short = ("서울경제 11/23" if i == 0 else "로이터 10/21·삼성 입장")
+            links.append('<a href="' + html.escape(url, quote=True) + '">' + short + '</a>')
+        # Preserve the original link when Naver is the only accessible identical repost.
+        if refs and "sedaily.com" not in (urlparse(refs[0][1]).hostname or "").lower():
+            links.append('<a href="https://m.sedaily.com/article/20117864">서울경제 원문(재게시 확인)</a>')
+        for label, url in item.get("context_links", ()):
+            if "trendforce.com" in (urlparse(url).hostname or "").lower():
+                links.append('<a href="' + html.escape(url, quote=True) + '">트렌드포스 11/19</a>')
+                break
+        if links:
+            lines.append("근거: " + " · ".join(links))
+        pages.append("\n".join(lines))
+    return ("\n\n" + BREAK + "\n\n").join(pages).strip() + ("\n" if pages else "")
+
+
 def render(group: str, items: list[dict], checked_at: str) -> str:
     """Readable, source-linked Telegram digest; keep all material facts visible.
 
@@ -965,6 +1075,8 @@ def render(group: str, items: list[dict], checked_at: str) -> str:
         return render_citi_price_revision(items, checked_at)
     if group == "supplier_ownership":
         return render_supplier_ownership(items, checked_at)
+    if group == "xian_nand_v9":
+        return render_xian_nand_v9(items, checked_at)
     if group == "nvidia_commitments":
         # Only the NVIDIA supply-commitment notice uses the compact display.
         header = ("<b>[HBM 감시 | 엔비디아 공급약정 변화]</b>\n"
@@ -1044,7 +1156,7 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
         "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield",
     }
     rendered = [render(group, [x for x in new if x["group"] == group], checked_at)
-                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow", "hybrid_equipment", "nvidia_commitments", "samsung_memory_lta", "citi_price_revision", "supplier_ownership")
+                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow", "hybrid_equipment", "nvidia_commitments", "samsung_memory_lta", "citi_price_revision", "supplier_ownership", "xian_nand_v9")
                 if any(x["group"] == group for x in new)]
     audit = {"checked_at_kst": checked_at, "verified_events": len(new),
              "verified_keys": [x["key"] for x in new], "gaps": gaps[-20:],
