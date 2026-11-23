@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-23T11:14:24.223713+00:00",
+  "updated_at": "2026-11-23T12:05:10.599538+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1027,11 +1027,15 @@
     "d5e7996fe7d22661cfde97ceb018831917cabb08584cea6c8d61f03638f384cb",
     "670e36c725bca37db67b36c9c61d9b9102266bee614471390cbe2c50f2fb0d64",
     "44e38c418d8b62458b41aa67ae9be72a3fc361ba0f1d5fc57866229df34dd4cb",
-    "37bbf19dca92ab02d3019a4be82df7676d0b339ab229fc891898642712188a0d"
+    "37bbf19dca92ab02d3019a4be82df7676d0b339ab229fc891898642712188a0d",
+    "9ee6061ad293e321ad6c12bef2e6bc408cd57d4c16f7a0b08fa46f8d8bfd2244"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "9ee6061ad293e321ad6c12bef2e6bc408cd57d4c16f7a0b08fa46f8d8bfd2244"
+  ],
   "groups": [
     "ess_battery",
+    "eugene_20261123_humanoid_lifecycle",
     "hyundai_atlas_rollout",
     "nov23_base_foundation",
     "nov23_hurim_contract",
@@ -1043,27 +1047,6 @@
     "robotis_excess_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 44820940413,
-      "outcome": "sent",
-      "confirmed_event_keys": [
-        "572398d3af4f2aa04c8d6cec24d0ba8c7e1dc0c5446859fe4228b028ccbf2f93",
-        "6c83aa0e4f7f1e29e0ff014b0830604eb0117ea04f7cf26bfd07823389b72e75",
-        "849ca58b1cd3888ac01354183d16769edcd03b139c65b535425c0759a3f3bbc6",
-        "c0e453dddfcb42e11fe9ec803191225d9800db7540982b9c6aeac41b6448113d"
-      ],
-      "message_ids": [
-        397
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-20T21:31:39.338663+00:00"
-    },
     {
       "run_id": 44850248989,
       "outcome": "normal_silence",
@@ -1321,19 +1304,55 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-23T11:14:24.223713+00:00"
+    },
+    {
+      "run_id": 45170833591,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "9ee6061ad293e321ad6c12bef2e6bc408cd57d4c16f7a0b08fa46f8d8bfd2244"
+      ],
+      "message_ids": [
+        406
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-23T12:05:10.599538+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 45163204918,
-    "outcome": "normal_silence",
-    "confirmed_event_keys": [],
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-23T11:14:24.223713+00:00"
+    "run_id": 45170833591,
+    "outcome": "sent",
+    "confirmed_event_keys": [
+      "9ee6061ad293e321ad6c12bef2e6bc408cd57d4c16f7a0b08fa46f8d8bfd2244"
+    ],
+    "message_ids": [
+      406
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-23T12:05:10.599538+00:00"
   },
-  "last_selected_events": [],
+  "last_selected_events": [
+    {
+      "key": "9ee6061ad293e321ad6c12bef2e6bc408cd57d4c16f7a0b08fa46f8d8bfd2244",
+      "group": "eugene_20261123_humanoid_lifecycle",
+      "title": "유진투자증권 11월 23일 휴머노이드 밸류체인 선호 변화…개발용→병목부품·SI→OEM·운영",
+      "link": "https://www.eugenefn.com/common/files/amail/20261123_B2030_syyang0901_576.pdf",
+      "source": "유진투자증권 공식 배포·로봇신문",
+      "source_url": "https://t.me/s/eugene2team",
+      "published": "2026-11-23T12:00:00+09:00"
+    }
+  ],
   "message_corrections": {
     "robot-message-correction-20261118-44240720425-v1": {
       "schema_version": 1,
