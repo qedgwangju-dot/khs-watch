@@ -689,17 +689,17 @@ REPORTS = (
         "max_age_days": 30,
         "group": "supplier_ownership",
         "label": "삼성·SK하이닉스 소부장 직접 인수 가능성 제기 — 인수 확정 전",
-        "short_title": "삼성·SK 소부장 직접 인수 가능성 보도",
+        "short_title": "삼성·SK 핵심 소부장 직접 인수 가능성 보도",
         "brief_facts": (
-            "11/23 파이낸셜뉴스 질문형 제목: AI·로봇 수요 확대에 따른 공급망 선점 경쟁과 핵심 소부장 직접 인수 가능성을 제기. '나서나'는 인수계약 체결이 아님.",
-            "확인 범위: 11/23 기사 본문 직접 조회 후에만 단일 언론 보도로 표시. 인수 주체·대상 실명·지분율·인수가격·계약 및 납입은 별도 삼성·SK 공식 확인 전.",
-            "별도 공식 사실: SK하이닉스의 10/29 일본 파트너스데이에는 20개 이상 공급사가 참여. 협력·공동개발·양산 검증 지원과 기업 지분 취득은 별개.",
-            "후속 확인: 대상 회사·병목 공정·거래주체 → 지분취득 결정·계약 → 대금 납입·완료 → 고객별 제품·수주·실제 매출을 구분해 점검.",
+            "11/23 파이낸셜뉴스: AI·로봇 공급망 확보를 위한 삼성·SK 소부장 지분투자·경영권 인수 가능성 제기(투자은행 업계 관측). 아직 계약 아님.",
+            "기사에 언급된 기존 협력사(인수 대상 확정 아님): 엘티씨·자회사 엘에스이(SK 세정), 브이엠(SK 식각), 엑시콘(삼성 메모리 검사), 예스티(HBM 가압·냉각).",
+            "투자 배경(기사 제시): 2040년까지 삼성 2,100조원·SK 1,100조원 장기 반도체 투자 청사진. 기업 인수가격 또는 신규 확정 인수예산이 아님.",
+            "기존 공식 확인: SK 10/29 일본 파트너스데이 20개 이상 협력사 참여. 기존 공급·공동개발≠지분취득.",
+            "다음 확인: 인수 주체·대상·지분율·인수가격·계약 → 실제 납입·완료 → 공급 물량·매출. 기사에는 개별 거래조건 미공개.",
         ),
         "brief_caution": (
-            "질문형 보도는 인수 확정·상장 소부장 특정 수혜·실제 계약을 뜻하지 않음. "
-            "기사 본문 조회 실패 또는 실질 내용 미확인이면 발송 보류하고 감지 키 유지. "
-            "기존 공급계약·협력과 신규 인수계약 혼동 금지."
+            "‘나서나’는 질문형 보도이며 특정 업체 인수 확정·주가 수혜 아님. "
+            "기존 장비 납품·협력 관계와 신규 인수계약을 구분."
         ),
         "sources": (
             ("파이낸셜뉴스 Daum 11월23일 기사",
@@ -933,6 +933,26 @@ def render_citi_price_revision(items: list[dict], checked_at: str) -> str:
     return ("\n\n" + BREAK + "\n\n").join(pages).strip() + ("\n" if pages else "")
 
 
+def render_supplier_ownership(items: list[dict], checked_at: str) -> str:
+    """One compact, evidence-linked supplier M&A *possibility* notice; no changes to collection or dedupe."""
+    sections = []
+    for item in items:
+        lines = [
+            "<b>[HBM | 삼성·SK 소부장 인수 가능성]</b>",
+            "확인 " + html.escape(checked_at[:16].replace("T", " ")) + " KST",
+            "<b>■ " + html.escape(item.get("short_title") or item["label"]) + "</b>",
+        ]
+        lines.extend("• " + html.escape(fact) for fact in
+                     (item.get("brief_facts") or item["facts"]))
+        lines.append("• 주의: " + html.escape(item.get("brief_caution") or item["caution"]))
+        url = item.get("source") or ""
+        if url:
+            lines.append('원문: <a href="' + html.escape(url, quote=True) +
+                         '">파이낸셜뉴스(11/23)</a>')
+        sections.append("\n".join(lines))
+    return ("\n\n" + BREAK + "\n\n").join(sections).strip() + ("\n" if sections else "")
+
+
 def render(group: str, items: list[dict], checked_at: str) -> str:
     """Readable, source-linked Telegram digest; keep all material facts visible.
 
@@ -943,6 +963,8 @@ def render(group: str, items: list[dict], checked_at: str) -> str:
         return render_samsung_memory_lta(items, checked_at)
     if group == "citi_price_revision":
         return render_citi_price_revision(items, checked_at)
+    if group == "supplier_ownership":
+        return render_supplier_ownership(items, checked_at)
     if group == "nvidia_commitments":
         # Only the NVIDIA supply-commitment notice uses the compact display.
         header = ("<b>[HBM 감시 | 엔비디아 공급약정 변화]</b>\n"

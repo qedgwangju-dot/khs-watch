@@ -1046,5 +1046,43 @@ class MaterialEventTests(unittest.TestCase):
         self.assertIn("질문형", report["brief_caution"])
         self.assertIn("나서나", " ".join(report["brief_facts"]))
 
+    def test_supplier_ownership_compact_notice_preserves_real_article_company_names_and_status(self):
+        import html as html_module
+        import re as re_module
+        report = next(x for x in m.REPORTS if
+                      x["key"] == "20261123_fnnews_samsung_skhynix_supplier_direct_ma_possible")
+        item = {**report, "source": report["sources"][0][1],
+                "source_label": "파이낸셜뉴스", "lineage": "직접 기사"}
+        content = m.render("supplier_ownership", [item], "2026-11-23T13:14:00+09:00")
+        visible = html_module.unescape(re_module.sub(r"<[^>]+>", "", content))
+        for term in ("엘티씨", "엘에스이", "브이엠", "엑시콘", "예스티",
+                     "세정", "식각", "검사", "가압", "냉각",
+                     "삼성", "SK", "2,100조원", "1,100조원", "2040년",
+                     "파트너스데이", "20개", "지분율", "인수가격",
+                     "납입", "계약", "인수 확정", "질문형", "나서나",
+                     "인수 대상 확정 아님"):
+            self.assertIn(term, visible)
+        self.assertLessEqual(len(visible), 950)
+        self.assertEqual(len(d.chunks(content)), 1)
+        self.assertLessEqual(len(content.encode("utf-16-le")) // 2, 1400)
+        self.assertEqual(content.count(report["sources"][0][1]), 1)
+        self.assertNotIn("비교 근거:", content)
+        self.assertNotIn("근거 기사", content)
+        self.assertNotIn("https://news.skhynix.com", content)
+
+    def test_supplier_ownership_format_change_does_not_reannounce_message_554(self):
+        report_key = "20261123_fnnews_samsung_skhynix_supplier_direct_ma_possible"
+        old = {"delivery_receipt": {"status": "confirmed", "message_ids": [554]},
+               "hbm_material_event_watch": {"seen_keys": [
+                   x["key"] for x in m.REPORTS]}}
+        def cannot_fetch(_):
+            raise AssertionError("already acknowledged event should never re-fetch")
+        next_state, alerts, audit = m.apply(old, "2026-11-23T13:15:00+09:00", cannot_fetch)
+        self.assertEqual(alerts, [])
+        self.assertEqual(audit["verified_events"], 0)
+        self.assertIn(report_key, next_state["hbm_material_event_watch"]["seen_keys"])
+        self.assertEqual(old["delivery_receipt"], next_state["delivery_receipt"])
+
+
 if __name__ == "__main__":
     unittest.main()
