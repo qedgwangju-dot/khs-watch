@@ -6676,6 +6676,172 @@ def _verified_oil_supply_overlay(current: dt.datetime) -> int:
 
 run_monitor = _verified_oil_supply_overlay
 
+# Dated Bernstein oil-balance research coverage. This is a news report about a
+# broker estimate, not an IEA observation, official research PDF or traded price.
+# The event remains in the existing oil monitor and Telegram delivery route.
+_BERNSTEIN_OIL_REPORT_AT = dt.datetime(2026, 11, 23, 3, 5, tzinfo=UTC)
+_BERNSTEIN_OIL_EVENT_ID = "bernstein_oil_balance:2026-11-23:2027_gt2500kbpd"
+_BERNSTEIN_OIL_ARTICLES = (
+    ("차이롄서 기사", "https://api3.cls.cn/share/article/2541328?app=&os=CailianpressWeb&sv=830"),
+    ("차이롄서 동일 기사", "https://www.cls.cn/detail/2541328"),
+)
+# Actual dated bank quote; not presented as a real-time or future FX forecast.
+_BERNSTEIN_OIL_FX_KRW = 1345.60
+_BERNSTEIN_OIL_FX_TIME = "2026-11-23 10:50:41 KST"
+_BERNSTEIN_OIL_FX_URL = "https://www.knbank.co.kr/ib20/mnu/PEBQCS070100000?DUP_CHK=N"
+
+
+def _parse_bernstein_cls_author_and_numbers(raw_html: str) -> bool:
+    """Require all material values from one article, not a mixed headline feed."""
+    page = html.unescape(raw_html)
+    page = re.sub(
+        r"\\u([a-fA-F0-9]{4})",
+        lambda m: chr(int(m.group(1), 16)), page,
+    )
+    text = re.sub(r"\s+", "", _visible_text(page) + " " +
+                  re.sub(r"(?is)<[^>]+>", " ", page))
+    terms = (
+        "Bernstein", "NeilBeveridge", "11月23", "2027", "2028",
+        "130万桶", "250万桶", "80美元", "75美元", "10亿桶", "本十年末",
+    )
+    if not all(part in text for part in terms):
+        return False
+    # 2026 supply shortfall, 2027 >2.5 mb/d surplus, 2027/28 averages
+    # must coexist in the *same* dated article.
+    if not re.search(r"2027.{0,100}80美元", text):
+        return False
+    if not re.search(r"2028.{0,75}75美元", text):
+        return False
+    if not any(phrase in text for phrase in ("超过250万桶", "逾250万桶", "250万桶/日")):
+        return False
+    return True
+
+
+def _get_bernstein_oil_report(current: dt.datetime) -> dict | None:
+    elapsed = (current.astimezone(UTC) - _BERNSTEIN_OIL_REPORT_AT).total_seconds()
+    if not (0 <= elapsed <= 7 * 86400):
+        return None
+    successes, rejected, failures = [], [], []
+    for label, url in _BERNSTEIN_OIL_ARTICLES:
+        try:
+            content = fetch_bytes(url, timeout=7, attempts=1).decode("utf-8", "replace")
+        except Exception as exc:
+            failures.append(f"{label}:{type(exc).__name__}")
+            continue
+        if _parse_bernstein_cls_author_and_numbers(content):
+            successes.append((label, url))
+            break
+        rejected.append(label)
+    if not successes:
+        if failures and not rejected:
+            print("bernstein_source_status=all_lookup_failed; report_presence_unknown; " +
+                  ",".join(failures), flush=True)
+        else:
+            print("bernstein_source_status=reachable_but_unverified; no_alert; " +
+                  ",".join(rejected + failures), flush=True)
+        return None
+    name, url = successes[0]
+    return {
+        "event_id": _BERNSTEIN_OIL_EVENT_ID,
+        "event_kind": "bernstein_oil_balance_forecast_reported",
+        "publisher": name,
+        "url": url,
+        "published_date": "2026-11-23",
+        "provenance": "CLS authored news report quoting Bernstein; research PDF not inspected",
+        "baseline_deficit_2026_mbd_approx": 1.3,
+        "forecast_surplus_2027_mbd_greater_than": 2.5,
+        "brent_annual_avg_2027_usd": 80,
+        "brent_annual_avg_2028_usd": 75,
+        "forecast_horizon_end": "end of 2020s (not end of 2030s)",
+        "total_surplus_2027_billion_barrels_approx": 1.0,
+    }
+
+
+def _build_bernstein_oil_report_ko(report: dict) -> str:
+    fx = _BERNSTEIN_OIL_FX_KRW
+    return "\n".join((
+        "[Bernstein | 글로벌 석유 수급 전망 변화]",
+        "보도일: 2026년 11월 23일 · 분석가 Neil Beveridge 등",
+        "자료 단계: 차이롄서가 인용한 Bernstein 보고서 · 보고서 전문 직접 확인 전",
+        "2026년: 미국·이란 전쟁 중 공급 부족 약 130만 배럴/일(회사 추정)",
+        "2027년: 공급 증가가 수요를 웃돌아 250만 배럴/일 초과 공급 과잉 예상",
+        "변화: 2026년 공급 부족 → 2027년 공급 과잉(예측, 확정 통계 아님)",
+        f"2027년 브렌트유 연평균 전망: 80달러(약 {80*fx:,.0f}원)/배럴",
+        f"2028년 브렌트유 연평균 전망: 75달러(약 {75*fx:,.0f}원)/배럴",
+        "2027년 연간 누적 공급 과잉: 약 10억 배럴에 접근 가능(회사 전망)",
+        "흡수 요인: 전략비축유 재확보 및 해상에 보관된 원유 재고 증가",
+        "기간 정정: 2030년대 말이 아니라 이번 10년 말(2029년 무렵)까지",
+        "주의: 브렌트 연평균 전망은 연말 목표가·실제 체결가격이 아님",
+        "독립 참고: IEA 2026년 11월 보고서도 2027년 공급 회복·과잉 방향을 전망",
+        "그러나 IEA가 Bernstein의 250만·80달러·75달러 수치를 검증한 것은 아님",
+        "역풍: 호르무즈 재차 봉쇄·정제유 병목·OPEC+ 감산 시 가격 재상승 위험",
+        "다음 확인: 중동 실물 출하·상업/전략비축유 재고·OPEC+ 결정·차기 IEA 보고",
+        f"환산 기준: 1달러={fx:,.2f}원 · {_BERNSTEIN_OIL_FX_TIME} 은행 고시",
+        f"환율 근거: {_BERNSTEIN_OIL_FX_URL}",
+        f"기사 원문: {report['url']}",
+        "IEA 참고: https://www.iea.org/reports/oil-market-report-november-2026",
+    ))
+
+
+_PRE_BERNSTEIN_OIL_RUN_MONITOR = run_monitor
+
+
+def _bernstein_oil_balance_overlay(current: dt.datetime) -> int:
+    result = _PRE_BERNSTEIN_OIL_RUN_MONITOR(current)
+    if result != 0 or os.getenv("TELEGRAM_TEST", "false").lower() == "true":
+        return result
+    state = load_state()
+    if _BERNSTEIN_OIL_EVENT_ID in (state.get("alerted_events") or {}):
+        print("bernstein_forecast_status=previously_delivered; no_recheck", flush=True)
+        return result
+    report = _get_bernstein_oil_report(current)
+    if report is None:
+        return result
+
+    prior = BODY_PATH.read_text(encoding="utf-8").strip() if BODY_PATH.exists() else ""
+    has_existing = bool(prior)
+    if has_existing and not (PENDING_STATE_PATH.exists()
+                             and ALERT_JSON_PATH.exists()
+                             and TITLE_PATH.exists()):
+        print("bernstein_forecast_status=existing_alert_metadata_incomplete; no_override")
+        return result
+    message = _build_bernstein_oil_report_ko(report)
+    candidate = prior + "\n\n" + message if has_existing else message
+    if len(candidate) > 3000:
+        print("bernstein_forecast_status=deferred_over_message_limit; preserve_previous")
+        return result
+
+    if has_existing:
+        pending = json.loads(PENDING_STATE_PATH.read_text(encoding="utf-8"))
+        metadata = json.loads(ALERT_JSON_PATH.read_text(encoding="utf-8"))
+        if not isinstance(pending.get("alerted_events"), dict):
+            print("bernstein_forecast_status=invalid_pending_state; preserve_previous")
+            return result
+        pending["alerted_events"][report["event_id"]] = current.astimezone(KST).isoformat(timespec="seconds")
+        metadata.setdefault("additional_broker_forecasts", []).append(report)
+        title = TITLE_PATH.read_text(encoding="utf-8").strip()
+    else:
+        pending = build_pending_state(
+            state, report["event_id"], report["event_kind"], current, {})
+        metadata = {"test_mode": False,
+                    "created_at_kst": current.astimezone(KST).isoformat(timespec="seconds"),
+                    "event_kind": report["event_kind"],
+                    "event_id": report["event_id"],
+                    "broker_outlook": report}
+        title = "Bernstein 글로벌 석유 공급 과잉 전망"
+
+    BODY_PATH.write_text(candidate + "\n", encoding="utf-8")
+    TITLE_PATH.write_text(title + "\n", encoding="utf-8")
+    ALERT_JSON_PATH.write_text(
+        json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    PENDING_STATE_PATH.write_text(
+        json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"bernstein_forecast_status=pending_delivery_not_confirmed event_id={report['event_id']}")
+    return result
+
+
+run_monitor = _bernstein_oil_balance_overlay
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--finalize", action="store_true")

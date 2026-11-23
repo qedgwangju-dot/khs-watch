@@ -2299,5 +2299,102 @@ class GlobalOilSurplusWatchTests(unittest.TestCase):
             fetch.assert_not_called()
 
 
+    def test_bernstein_cls_author_and_numbers(self):
+        good = """<html><body>Bernstein：未来三年石油市场将转为供应过剩
+        财联社11月23日电，Bernstein称，布伦特原油均价2027年料降至每桶80美元，
+        2028年降至75美元。Neil Beveridge在11月23日报告中表示，今年供应短缺
+        约130万桶/日，但2027年将出现超过250万桶/日的供应过剩，
+        预计持续到本十年末，2027年的过剩可能接近10亿桶。</body></html>"""
+        self.assertTrue(MODULE._parse_bernstein_cls_author_and_numbers(good))
+        self.assertFalse(MODULE._parse_bernstein_cls_author_and_numbers(
+            good.replace("Neil Beveridge", "Unknown analyst")))
+        self.assertFalse(MODULE._parse_bernstein_cls_author_and_numbers(
+            good.replace("超过250万桶", "超过150万桶")))
+        self.assertFalse(MODULE._parse_bernstein_cls_author_and_numbers(
+            good.replace("2028年降至75美元", "2028年降至95美元")))
+        self.assertFalse(MODULE._parse_bernstein_cls_author_and_numbers(
+            good.replace("本十年末", "2030年代末")))
+
+    def test_bernstein_dated_source_and_postdelivery_dedupe(self):
+        from unittest import mock
+        now = dt.datetime(2026, 11, 23, 3, 55, tzinfo=dt.timezone.utc)
+        good = """<html><body>财联社11月23日电 Bernstein
+        Neil Beveridge 2026年约130万桶/日短缺
+        2027年预计超过250万桶/日供应过剩，到本十年末
+        2027年布伦特80美元，2028年布伦特75美元，近10亿桶</body></html>"""
+        with mock.patch.object(MODULE, "fetch_bytes", return_value=good.encode()):
+            report = MODULE._get_bernstein_oil_report(now)
+        self.assertIsNotNone(report)
+        self.assertEqual(report["event_id"], MODULE._BERNSTEIN_OIL_EVENT_ID)
+        self.assertEqual(report["forecast_horizon_end"], "end of 2020s (not end of 2030s)")
+        text = MODULE._build_bernstein_oil_report_ko(report)
+        self.assertIn("보고서 전문 직접 확인 전", text)
+        self.assertIn("10억 배럴", text)
+        self.assertIn("2029년", text)
+        self.assertNotIn("현재가 80달러", text)
+        with mock.patch.object(MODULE, "fetch_bytes") as fetch:
+            self.assertIsNone(MODULE._get_bernstein_oil_report(
+                now + dt.timedelta(days=8)))
+            fetch.assert_not_called()
+
+    def test_bernstein_broker_report_does_not_replace_existing_pending(self):
+        from unittest import mock
+        import tempfile
+        now = dt.datetime(2026, 11, 23, 3, 55, tzinfo=dt.timezone.utc)
+        sample = {
+            "event_id": MODULE._BERNSTEIN_OIL_EVENT_ID,
+            "event_kind": "bernstein_oil_balance_forecast_reported",
+            "url": "https://www.cls.cn/detail/2541328",
+        }
+        saved_paths = {
+            k: getattr(MODULE, k) for k in (
+                "OUT_DIR", "BODY_PATH", "TITLE_PATH", "ALERT_JSON_PATH",
+                "PENDING_STATE_PATH", "TELEGRAM_CONFIRMED_PATH", "STATE_PATH",
+            )
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            try:
+                MODULE.OUT_DIR = root
+                for k in saved_paths:
+                    if k != "OUT_DIR":
+                        setattr(MODULE, k, root / saved_paths[k].name)
+                state = {"last_event_id": "old", "alerted_events": {
+                    "old": "2026-11-20T20:00:00+09:00"}}
+                MODULE.STATE_PATH.write_text(json.dumps(state), encoding="utf-8")
+                MODULE.BODY_PATH.write_text("기존 별도 원유 알림\n", encoding="utf-8")
+                MODULE.TITLE_PATH.write_text("기존 경보\n", encoding="utf-8")
+                MODULE.ALERT_JSON_PATH.write_text(
+                    '{"event_id":"old","event_kind":"eia_weekly_stock_balance"}')
+                MODULE.PENDING_STATE_PATH.write_text(json.dumps(state))
+                with mock.patch.object(MODULE, "_PRE_BERNSTEIN_OIL_RUN_MONITOR", return_value=0), \
+                     mock.patch.object(MODULE, "load_state", return_value=state), \
+                     mock.patch.object(MODULE, "_get_bernstein_oil_report", return_value=sample):
+                    self.assertEqual(MODULE._bernstein_oil_balance_overlay(now), 0)
+                pending = json.loads(MODULE.PENDING_STATE_PATH.read_text())
+                self.assertIn("old", pending["alerted_events"])
+                self.assertIn(sample["event_id"], pending["alerted_events"])
+                self.assertEqual(pending["last_event_id"], "old")
+                self.assertIn("기존 별도 원유 알림", MODULE.BODY_PATH.read_text())
+                self.assertIn("보고서 전문 직접 확인 전", MODULE.BODY_PATH.read_text())
+                self.assertFalse(MODULE.TELEGRAM_CONFIRMED_PATH.exists())
+                self.assertEqual(json.loads(MODULE.STATE_PATH.read_text()), state)
+                with mock.patch.object(MODULE, "_PRE_BERNSTEIN_OIL_RUN_MONITOR", return_value=0), \
+                     mock.patch.object(MODULE, "load_state", return_value={
+                         "alerted_events": {sample["event_id"]: now.isoformat()}}), \
+                     mock.patch.object(MODULE, "_get_bernstein_oil_report") as getter:
+                    self.assertEqual(MODULE._bernstein_oil_balance_overlay(now), 0)
+                    getter.assert_not_called()
+            finally:
+                for k, v in saved_paths.items():
+                    setattr(MODULE, k, v)
+
+    def test_bernstein_source_outage_never_claims_no_new_report(self):
+        from unittest import mock
+        now = dt.datetime(2026, 11, 23, 3, 55, tzinfo=dt.timezone.utc)
+        with mock.patch.object(MODULE, "fetch_bytes", side_effect=RuntimeError("HTTP 403")):
+            self.assertIsNone(MODULE._get_bernstein_oil_report(now))
+
+
 if __name__ == "__main__":
     unittest.main()
