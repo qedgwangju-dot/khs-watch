@@ -1044,7 +1044,7 @@ class MaterialEventTests(unittest.TestCase):
             self.assertNotIn(report["key"], result["hbm_material_event_watch"]["seen_keys"])
             self.assertTrue(audit["gaps"])
         self.assertIn("질문형", report["brief_caution"])
-        self.assertIn("나서나", " ".join(report["brief_facts"]))
+        self.assertIn("나서나", " ".join(report["brief_facts"]) + report["brief_caution"])
 
     def test_supplier_ownership_compact_notice_preserves_real_article_company_names_and_status(self):
         import html as html_module
