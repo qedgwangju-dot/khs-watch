@@ -3847,6 +3847,7 @@ IMMUTABLE_EVENT_PREFIXES = (
     "sts_reroute_expansion:",
     "saudi_bypass_investment:",
     "russia_diesel_supply_transition:",
+    "libya_oil_supply:",
 )
 
 
@@ -6841,6 +6842,332 @@ def _bernstein_oil_balance_overlay(current: dt.datetime) -> int:
 
 
 run_monitor = _bernstein_oil_balance_overlay
+
+
+# Libya is a distinct physical supply driver in the existing oil watch.
+# Dated reports are recovered once; future reports use fresh independent
+# editorial/official evidence, not recycled market-price headlines.
+_LIBYA_KIND = "libya_oil_supply"
+_LIBYA_RESTART_DAY = dt.date(2026, 11, 23)
+_LIBYA_RESTART_ID = "libya_oil_supply:sharara:restart:2026-11-23"
+_LIBYA_DIRECT_SOURCES = (
+    ("NOC 공식 발표", "noc", "https://noc.ly/en/national-oil-corporation-statement-on-the-closure-of-a-valve-on-the-sharara-oil-pipeline-by-an-outlaw-group-resulting-in-a-loss-of-350000-barrels-per-day-amid-the-continued-closure-of-the-hamada-pi/"),
+    ("로이터", "reuters", "https://hydrocarbonprocessing.com/news/2026/11/libyas-sharara-oil-pipeline-reopens-after-closure-threatened-350000-bpd-of-output/"),
+    ("로이터", "reuters", "https://live.euronext.com/en/financial-news/oil-drops-more-3-increased-middle-east-flows-libyan-pipeline-restart"),
+    ("블룸버그", "bloomberg", "https://businessmirror.com.ph/2026/11/23/libyan-oil-pipeline-reopens-after-outlaws-shut-valve/"),
+    ("리비아 옵서버", "observer", "https://libyaobserver.ly/inbrief/noc-reopens-sharara-oil-pipeline-and-resumes-pumping"),
+)
+_LIBYA_FIELDS = {
+    "sharara": (r"\bsharara\b", "샤라라"),
+    "hamada": (r"\bhamada\b", "하마다"),
+    "el_feel": (r"\b(?:el[- ]?feel|al[- ]?feel|elephant oilfield)\b", "엘필"),
+    "waha": (r"\bwaha\b", "와하"),
+    "sarir": (r"\bsarir\b", "사리르"),
+    "messla": (r"\b(?:messla|mesla)\b", "메슬라"),
+}
+_LIBYA_FEEDS = (
+    '"Libya" ("oil pipeline" OR "oilfield" OR "crude production") (reopens OR resumes OR shutdown OR closure) when:3d',
+    '("Sharara" OR "Hamada" OR "El Feel" OR "Waha") (pipeline OR oilfield OR pumping) Libya when:3d',
+)
+_LIBYA_RSS_PUBLISHERS = {
+    "reuters": ("reuters", {"reuters.com"}),
+    "bloomberg": ("bloomberg", {"bloomberg.com"}),
+    "the libya observer": ("observer", {"libyaobserver.ly"}),
+    "libya observer": ("observer", {"libyaobserver.ly"}),
+    "national oil corporation": ("noc", {"noc.ly"}),
+    "noc": ("noc", {"noc.ly"}),
+}
+
+
+def _libya_dated_direct(raw: str, label: str, publisher: str, url: str) -> dict | None:
+    """Require dated text, NOC attribution and actual pumping (not plans)."""
+    page = normalize_text(_visible_text(raw))
+    # The dated direct report is not inferred from today's crawl or RSS time.
+    if not re.search(r"(?:23\s+(?:nov(?:ember)?)[,. ]*\s*2026|(?:nov(?:ember)?)\s+23(?:rd)?(?:[,. ]*\s*2026|\s*\(reuters\))|(?:2026[-/]11[-/]23|11/23/2026|23/11/2026))", page):
+        return None
+    if "sharara" not in page or "pipeline" not in page:
+        return None
+    noc = "national oil corp" in page or re.search(r"\bnoc\b", page)
+    if not noc:
+        return None
+    risk350 = bool(re.search(r"\b(?:350,?000|350\s*thousand)\b.{0,90}(?:barrels|bpd|per day)", page))
+    hamada15 = "hamada" in page and bool(re.search(r"\b15,?000\b.{0,80}(?:barrels|bpd|per day)", page))
+    row = {"publisher": publisher, "label": label, "url": url,
+           "risk350": risk350, "hamada15": hamada15, "ten_hours": False}
+    if publisher == "noc":
+        if risk350 and hamada15 and "closure" in page and ("loss" in page or "production" in page):
+            return dict(row, stage="closure_context")
+        return None
+    # Reuters, Bloomberg and local original reporting quote NOC's chairman.
+    # A headline alone or an intention to reopen is not the physical restart.
+    actual = bool(re.search(r"\b(?:has reopened|reopened|was open again|pipeline (?:is|was) open again|reopens)\b", page))
+    flow = bool(re.search(r"\b(?:beginning to flow|flowing into|flows to zawiya had resumed|pumping (?:has |had )?resumed|crude pumping resumed|oil now flowing|flows (?:have |had )?resumed)\b", page))
+    if not (actual and flow and ("chairman" in page or "masoud suleiman" in page)
+            and "zawiya" in page):
+        return None
+    row["ten_hours"] = bool(re.search(r"(?:nearly|about|approximately)\s+(?:10|ten)\s+hours", page))
+    return dict(row, stage="restart")
+
+
+def _libya_current_report(current: dt.datetime, state: dict) -> tuple[dict | None, str]:
+    if _LIBYA_RESTART_ID in (state.get("alerted_events") or {}):
+        return None, "previously_delivered"
+    elapsed = (current.astimezone(UTC).date() - _LIBYA_RESTART_DAY).days
+    if not 0 <= elapsed <= 7:
+        return None, "dated_recovery_outside_window"
+
+    def _one(spec):
+        label, publisher, url = spec
+        try:
+            raw = fetch_bytes(url, timeout=6, attempts=1).decode("utf-8", "replace")
+            row = _libya_dated_direct(raw, label, publisher, url)
+            return ("verified" if row else "reachable_unverified", row)
+        except Exception:
+            return ("lookup_failed", None)
+
+    with ThreadPoolExecutor(max_workers=5) as pool:
+        checked = list(pool.map(_one, _LIBYA_DIRECT_SOURCES))
+    rows = [row for _, row in checked if row]
+    restarts = {}
+    for row in rows:
+        if row["stage"] == "restart":
+            restarts.setdefault(row["publisher"], row)
+    if len(restarts) < 2:
+        status = "all_lookup_failed" if all(s == "lookup_failed" for s, _ in checked) else "reopening_not_independently_verified"
+        return None, status
+    official = next((x for x in rows if x["stage"] == "closure_context"), None)
+    report = {"id": _LIBYA_RESTART_ID, "kind": _LIBYA_KIND,
+              "field": "sharara", "stage": "restart", "day": _LIBYA_RESTART_DAY.isoformat(),
+              "title": "리비아 샤라라 송유관 재가동",
+              "risk350": any(x["risk350"] for x in rows),
+              "hamada15": any(x["hamada15"] for x in rows),
+              "ten_hours": any(x["ten_hours"] for x in rows if x["stage"] == "restart"),
+              "sources": ([official] if official else []) + list(restarts.values()),
+              "evidence": "dated_full_text_independent_reports"}
+    return report, "verified_restart"
+
+
+def _libya_headline_stage(title: str) -> tuple[str, str] | None:
+    low = normalize_text(title)
+    if not re.search(r"\b(?:libya|libyan|noc|national oil corporation|sharara|hamada)\b", low):
+        return None
+    if not re.search(r"\b(?:oil|crude|pipeline|oilfield|pumping|production)\b", low):
+        return None
+    if re.search(r"\b(?:may|might|could|would|plans?|hopes?|seeks?|expected|expects|urges?|calls? for|considering|to reopen|to resume|to restart|not yet|denies|rumou?rs?)\b", low):
+        return None
+    fields = [key for key, (pattern, _) in _LIBYA_FIELDS.items() if re.search(pattern, low)]
+    # Multi-field summaries are ambiguous: do not assign one stage to both.
+    if len(fields) != 1:
+        return None
+    if re.search(r"\b(?:reopens|reopened|resumes|resumed|restarts|restarted|back online|pumping restored|flows restored)\b", low):
+        return fields[0], "restart"
+    if re.search(r"\b(?:shut down|shuts down|shutdown|shut|closed|closes|closure|halts|halted|suspends|suspended)\b", low):
+        return fields[0], "closure"
+    return None
+
+
+def _libya_future_rss(payload: bytes, current: dt.datetime) -> list[dict]:
+    root = ET.fromstring(payload)
+    if root.tag != "rss" or root.find("channel") is None:
+        raise ValueError("not a Google News RSS feed")
+    results = []
+    for node in root.findall("./channel/item"):
+        title = (node.findtext("title") or "").strip()
+        source = node.find("source")
+        if source is None:
+            continue
+        name = normalize_text(source.text or "")
+        mapping = _LIBYA_RSS_PUBLISHERS.get(name)
+        if not mapping:
+            continue
+        publisher, allowed_hosts = mapping
+        host = (urllib.parse.urlparse(source.get("url", "")).hostname or "").lower().removeprefix("www.")
+        if host not in allowed_hosts:
+            continue
+        link = (node.findtext("link") or "").strip()
+        if urllib.parse.urlparse(link).scheme != "https":
+            continue
+        try:
+            stamp = email.utils.parsedate_to_datetime(node.findtext("pubDate") or "")
+            if stamp.tzinfo is None:
+                continue
+            stamp = stamp.astimezone(UTC)
+        except (TypeError, ValueError, OverflowError):
+            continue
+        if not dt.timedelta() <= current.astimezone(UTC) - stamp <= dt.timedelta(hours=72):
+            continue
+        event = _libya_headline_stage(title)
+        if event is None:
+            continue
+        field, stage = event
+        if field == "sharara" and stamp.date() <= _LIBYA_RESTART_DAY + dt.timedelta(days=1):
+            # The fixed November incident is independently verified above.
+            continue
+        results.append({"field": field, "stage": stage, "publisher": publisher,
+                        "label": source.text.strip(), "url": link, "title": title,
+                        "stamp": stamp})
+    return results
+
+
+def _libya_choose_future(rows: list[dict], state: dict, current: dt.datetime) -> dict | None:
+    grouped = {}
+    for row in rows:
+        grouped.setdefault((row["field"], row["stage"]), []).append(row)
+    choices = []
+    delivered = state.get("alerted_events") or {}
+    for (field, stage), candidates in grouped.items():
+        newest = max(x["stamp"] for x in candidates)
+        nearby = [x for x in candidates if newest - x["stamp"] <= dt.timedelta(hours=36)]
+        distinct = {}
+        for row in sorted(nearby, key=lambda x: x["stamp"]):
+            distinct.setdefault(row["publisher"], row)
+        if len(distinct) < 2:
+            continue
+        earliest = min(x["stamp"] for x in distinct.values())
+        day = earliest.date().isoformat()
+        event_id = f"{_LIBYA_KIND}:{field}:{stage}:{day}"
+        if event_id in delivered:
+            continue
+        # Suppress same-stage reprints across calendar midnight. A new
+        # opposing stage is allowed; a later independent event can be reported.
+        previous = []
+        for key in delivered:
+            match = re.fullmatch(r"libya_oil_supply:" + re.escape(field) + r":(restart|closure):(\d{4}-\d{2}-\d{2})", key)
+            if match:
+                previous.append((dt.date.fromisoformat(match.group(2)), match.group(1)))
+        if previous:
+            prev_day, prev_stage = max(previous)
+            if prev_day > earliest.date():
+                continue
+            if prev_stage == stage and (earliest.date() - prev_day).days <= 3:
+                continue
+        # Conflicting active reporting without a reliable order is not a
+        # confirmed transition. Prefer the newest explicit stage.
+        opposing = grouped.get((field, "closure" if stage == "restart" else "restart"), [])
+        if opposing and max(x["stamp"] for x in opposing) >= newest:
+            continue
+        choices.append((newest, {"id": event_id, "kind": _LIBYA_KIND,
+            "field": field, "stage": stage, "day": day,
+            "title": f"리비아 {_LIBYA_FIELDS[field][1]} 원유 공급 {'재개' if stage == 'restart' else '중단'} 보도",
+            "sources": list(distinct.values()), "evidence": "independent_headline_early_warning"}))
+    return max(choices, key=lambda x: x[0])[1] if choices else None
+
+
+def _libya_future_report(current: dt.datetime, state: dict) -> tuple[dict | None, str]:
+    def _one(query):
+        try:
+            return _libya_future_rss(fetch_bytes(google_news_url(query), timeout=4, attempts=1), current), True
+        except Exception:
+            return [], False
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        feeds = list(pool.map(_one, _LIBYA_FEEDS))
+    rows = [row for items, _ in feeds for row in items]
+    report = _libya_choose_future(rows, state, current)
+    if report:
+        return report, "independent_headline_early_warning"
+    if not any(ok for _, ok in feeds):
+        return None, "all_lookup_failed"
+    if not all(ok for _, ok in feeds):
+        return None, "partial_lookup_failed"
+    return None, "no_verified_new_transition"
+
+
+def _libya_message(report: dict) -> str:
+    physical = report["evidence"] == "dated_full_text_independent_reports"
+    lines = ["[리비아 원유 공급 변화]", f"보도 기준: {report['day']} (현지 보도일)"]
+    if physical:
+        lines.extend(["", "[핵심 변화]",
+            "• 샤라라 송유관 재가동 → 자위야 아카쿠스 저장시설로 원유 이송 재개",
+            "• 확인 단계: NOC 회장 발언을 인용한 독립 매체 본문 2곳 이상 확인"])
+        if report.get("risk350"):
+            lines.append("• 하루 35만 배럴: 중단 당시 생산 차질 위험 규모 · 실제 회복량은 미공개")
+        if report.get("ten_hours"):
+            lines.append("• 중단 시간: 약 10시간(현지 기술진 인용 보도)")
+        if report.get("hamada15"):
+            lines.append("• 하마다 송유관: 폐쇄 지속 · 하루 약 1만5,000배럴 생산 손실")
+        lines.extend(["", "[의미·후속 확인]",
+            "• 공급 차질 완화로 유가 하방압력 요인",
+            "• 생산 정상화·수출 선적·정제유 공급은 아직 별도 확인 필요",
+            "• 다시 중단되거나 수출 회복이 지연되면 하방압력이 약해질 수 있음"])
+    else:
+        field = _LIBYA_FIELDS[report["field"]][1]
+        stage = "재개" if report["stage"] == "restart" else "중단"
+        lines.extend(["", "[공급 선행경보]",
+            f"• {field} 원유 공급 {stage}를 독립 매체 2곳 이상의 최신 제목에서 감지",
+            "• 원문 본문·공식 물량·실제 생산·수출은 아직 미확인",
+            "• 확정 공급 실적이 아닌 선행경보 · 후속 공식 발표와 실제 선적 확인 필요"])
+    lines.extend(["", "[출처]"])
+    for source in report["sources"][:3]:
+        lines.append(source["label"] + (" · 원문 확인" if physical else " · 제목 확인"))
+        lines.append(f"원문: {source['url']}")
+    return "\n".join(lines)
+
+
+_PRE_LIBYA_RUN_MONITOR = run_monitor
+
+
+def _libya_supply_overlay(current: dt.datetime) -> int:
+    result = _PRE_LIBYA_RUN_MONITOR(current)
+    if result != 0 or os.getenv("TELEGRAM_TEST", "false").lower() == "true":
+        return result
+    # Do not synthesize a clean state if its existing file is unreadable.
+    if STATE_PATH.exists():
+        try:
+            raw_state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+            if not isinstance(raw_state, dict) or not isinstance(raw_state.get("alerted_events", {}), dict):
+                raise ValueError("invalid existing state")
+        except (OSError, ValueError):
+            print("libya_supply_status=existing_state_unreadable; no_send")
+            return result
+    state = load_state()
+    report, status = _libya_current_report(current, state)
+    print(f"libya_dated_source_status={status}")
+    if report is None:
+        report, status = _libya_future_report(current, state)
+        print(f"libya_future_source_status={status}")
+    if report is None:
+        return result
+    prior = BODY_PATH.read_text(encoding="utf-8").strip() if BODY_PATH.exists() else ""
+    if prior and not (PENDING_STATE_PATH.exists() and ALERT_JSON_PATH.exists() and TITLE_PATH.exists()):
+        print("libya_supply_status=existing_alert_metadata_incomplete; preserve_existing")
+        return result
+    candidate = prior + "\n\n" + _libya_message(report) if prior else _libya_message(report)
+    if len(candidate) > 3000:
+        print("libya_supply_status=deferred_over_message_limit; preserve_existing")
+        return result
+    event_id = report["id"]
+    evidence = report["evidence"]
+    if prior:
+        pending = json.loads(PENDING_STATE_PATH.read_text(encoding="utf-8"))
+        metadata = json.loads(ALERT_JSON_PATH.read_text(encoding="utf-8"))
+        if not isinstance(pending.get("alerted_events"), dict):
+            print("libya_supply_status=invalid_pending_state; preserve_existing")
+            return result
+        if event_id in pending["alerted_events"]:
+            return result
+        pending["alerted_events"][event_id] = current.astimezone(KST).isoformat(timespec="seconds")
+        metadata.setdefault("additional_libya_supply", []).append(
+            {"event_id": event_id, "evidence": evidence,
+             "sources": [x["url"] for x in report["sources"]]})
+        title = TITLE_PATH.read_text(encoding="utf-8").strip()
+    else:
+        # Preserve every existing success record, including legacy dated keys.
+        pending = build_pending_state(state, event_id, _LIBYA_KIND, current, state.get("last_market") or {})
+        pending["alerted_events"] = {**(state.get("alerted_events") or {}), **pending["alerted_events"]}
+        metadata = {"test_mode": False, "created_at_kst": current.astimezone(KST).isoformat(timespec="seconds"),
+            "event_kind": _LIBYA_KIND, "event_id": event_id, "evidence": evidence,
+            "sources": [x["url"] for x in report["sources"]]}
+        title = report["title"]
+    BODY_PATH.write_text(candidate + "\n", encoding="utf-8")
+    TITLE_PATH.write_text(title + "\n", encoding="utf-8")
+    ALERT_JSON_PATH.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    PENDING_STATE_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"libya_supply_status=pending_delivery_not_confirmed event_id={event_id}; evidence={evidence}")
+    return result
+
+
+run_monitor = _libya_supply_overlay
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()

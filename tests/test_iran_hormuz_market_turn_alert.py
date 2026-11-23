@@ -4,6 +4,7 @@ import importlib.util
 import pathlib
 import sys
 import unittest
+from unittest import mock
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "iran_hormuz_market_turn_alert.py"
@@ -2394,6 +2395,114 @@ class GlobalOilSurplusWatchTests(unittest.TestCase):
         now = dt.datetime(2026, 11, 23, 3, 55, tzinfo=dt.timezone.utc)
         with mock.patch.object(MODULE, "fetch_bytes", side_effect=RuntimeError("HTTP 403")):
             self.assertIsNone(MODULE._get_bernstein_oil_report(now))
+
+
+
+class LibyaOilSupplyRegressionTests(unittest.TestCase):
+    def _official(self):
+        return """23 Nov, 2026. National Oil Corporation (NOC) statement on the closure
+        of a valve on the Sharara oil pipeline, expected to result in a loss of
+        350,000 barrels per day. The Hamada pipeline remains closed with loss of
+        15,000 barrels per day. Calls for efforts to reopen both pipelines."""
+
+    def _reuters(self):
+        return """11/23/2026. Libya's Sharara oil pipeline has reopened,
+        with crude pumping resumed and oil beginning to flow into storage tanks at
+        the Akakus facility in Zawiya, the chairman of the National Oil Corporation
+        told Reuters. Earlier closure threatened 350,000 barrels per day.
+        Engineers said pumping resumed after nearly 10 hours. Hamada remains closed,
+        resulting in the loss of 15,000 bpd."""
+
+    def _bloomberg(self):
+        return """November 23, 2026. NOC Chairman Masoud Suleiman said the Sharara
+        pipeline was open again and flows to Zawiya had resumed. National Oil Corp
+        said the closure cut output by 350,000 barrels a day. Hamada remained closed,
+        reducing production by 15,000 barrels a day."""
+
+    def test_libya_dated_independent_full_body_and_stage(self):
+        a = MODULE._LIBYA_DIRECT_SOURCES
+        self.assertEqual(MODULE._libya_dated_direct(self._official(), *a[0])["stage"], "closure_context")
+        self.assertEqual(MODULE._libya_dated_direct(self._reuters(), *a[1])["stage"], "restart")
+        self.assertIsNone(MODULE._libya_dated_direct(self._official(), *a[1]))
+        self.assertIsNone(MODULE._libya_dated_direct(self._reuters().replace("11/23/2026", "11/22/2026"), *a[1]))
+        now = dt.datetime(2026, 11, 24, 0, 0, tzinfo=dt.timezone.utc)
+        pages = {a[0][2]: self._official(), a[1][2]: self._reuters(), a[2][2]: self._reuters(), a[3][2]: self._bloomberg()}
+        def fetch(url, **kwargs):
+            return pages.get(url, "unrelated page").encode()
+        with mock.patch.object(MODULE, "fetch_bytes", side_effect=fetch):
+            report, status = MODULE._libya_current_report(now, {})
+        self.assertEqual(status, "verified_restart")
+        self.assertEqual(report["id"], MODULE._LIBYA_RESTART_ID)
+        body = MODULE._libya_message(report)
+        for required in ("35만", "실제 회복량은 미공개", "10시간", "1만5,000", "자위야", "원문:"):
+            self.assertIn(required, body)
+        # Two copies of Reuters alone are not independent confirmation.
+        pages.pop(a[3][2])
+        with mock.patch.object(MODULE, "fetch_bytes", side_effect=fetch):
+            self.assertIsNone(MODULE._libya_current_report(now, {})[0])
+        with mock.patch.object(MODULE, "fetch_bytes") as reader:
+            self.assertEqual(MODULE._libya_current_report(now, {"alerted_events": {report["id"]: now.isoformat()}})[1], "previously_delivered")
+            reader.assert_not_called()
+
+    def test_libya_lookup_failure_not_no_event(self):
+        now = dt.datetime(2026, 11, 24, 0, 0, tzinfo=dt.timezone.utc)
+        with mock.patch.object(MODULE, "fetch_bytes", side_effect=RuntimeError("blocked")):
+            self.assertEqual(MODULE._libya_current_report(now, {}), (None, "all_lookup_failed"))
+            self.assertEqual(MODULE._libya_future_report(now, {}), (None, "all_lookup_failed"))
+
+    def test_libya_future_explicit_stage_dedup_and_no_forecast(self):
+        self.assertEqual(MODULE._libya_headline_stage("Libya's Sharara oil pipeline reopens after closure"), ("sharara", "restart"))
+        self.assertEqual(MODULE._libya_headline_stage("Libya's Hamada oil pipeline closed"), ("hamada", "closure"))
+        self.assertIsNone(MODULE._libya_headline_stage("Libya plans to reopen Sharara oil pipeline"))
+        self.assertIsNone(MODULE._libya_headline_stage("Libya Sharara and Hamada oil pipelines reopen"))
+        now = dt.datetime(2026, 12, 2, 14, 0, tzinfo=dt.timezone.utc)
+        row = {"field": "hamada", "stage": "restart", "publisher": "reuters",
+               "stamp": now-dt.timedelta(hours=1), "label": "Reuters", "url": "https://example.com/reuters"}
+        other = dict(row, publisher="bloomberg", label="Bloomberg", url="https://example.com/bloomberg")
+        self.assertIsNone(MODULE._libya_choose_future([row, dict(row)], {}, now))
+        r = MODULE._libya_choose_future([row, other], {}, now)
+        self.assertIsNotNone(r)
+        self.assertIn("선행경보", MODULE._libya_message(r))
+        self.assertIn("미확인", MODULE._libya_message(r))
+        sent = {"alerted_events": {r["id"]: now.isoformat()}}
+        self.assertIsNone(MODULE._libya_choose_future([row, other], sent, now))
+        tomorrow = now + dt.timedelta(days=1)
+        self.assertIsNone(MODULE._libya_choose_future([dict(row, stamp=tomorrow), dict(other, stamp=tomorrow)], sent, tomorrow))
+        self.assertIsNotNone(MODULE._libya_choose_future([dict(row, stage="closure", stamp=tomorrow), dict(other, stage="closure", stamp=tomorrow)], sent, tomorrow))
+
+    def test_libya_pending_state_only_until_confirmed_send(self):
+        import tempfile
+        now = dt.datetime(2026, 11, 24, 0, 0, tzinfo=dt.timezone.utc)
+        report = {"id": MODULE._LIBYA_RESTART_ID, "kind": MODULE._LIBYA_KIND,
+                  "field": "sharara", "stage": "restart", "day": "2026-11-23",
+                  "title": "리비아 샤라라 송유관 재가동",
+                  "risk350": True, "hamada15": True, "ten_hours": True,
+                  "sources": [{"label":"Reuters","url":"https://example.com/a"}],
+                  "evidence": "dated_full_text_independent_reports"}
+        names = ("OUT_DIR", "STATE_PATH", "BODY_PATH", "TITLE_PATH", "ALERT_JSON_PATH",
+                 "PENDING_STATE_PATH", "TELEGRAM_CONFIRMED_PATH")
+        paths = {k: getattr(MODULE, k) for k in names}
+        original = {"last_event_id": "legacy", "alerted_events": {"legacy": "2026-10-01T09:00:00+09:00"}}
+        with tempfile.TemporaryDirectory() as tmp:
+            try:
+                root = pathlib.Path(tmp)
+                MODULE.OUT_DIR = root
+                for k in names[1:]:
+                    setattr(MODULE, k, root / paths[k].name)
+                MODULE.STATE_PATH.write_text(json.dumps(original))
+                with mock.patch.object(MODULE, "_PRE_LIBYA_RUN_MONITOR", return_value=0), \
+                     mock.patch.object(MODULE, "load_state", return_value=original), \
+                     mock.patch.object(MODULE, "_libya_current_report", return_value=(report, "verified_restart")):
+                    self.assertEqual(MODULE._libya_supply_overlay(now), 0)
+                self.assertEqual(json.loads(MODULE.STATE_PATH.read_text()), original)
+                pending = json.loads(MODULE.PENDING_STATE_PATH.read_text())
+                self.assertIn("legacy", pending["alerted_events"])
+                self.assertIn(report["id"], pending["alerted_events"])
+                self.assertEqual(MODULE.finalize_state(), 0)
+                self.assertEqual(json.loads(MODULE.STATE_PATH.read_text()), original)
+            finally:
+                for k,v in paths.items():
+                    setattr(MODULE,k,v)
 
 
 if __name__ == "__main__":
