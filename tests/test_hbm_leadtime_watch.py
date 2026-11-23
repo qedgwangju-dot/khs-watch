@@ -986,6 +986,164 @@ class Weekly010MLCCRegression(unittest.TestCase):
                 self.assertFalse(alert.exists())
 
 
+class Weekly011NoChangeRegression(unittest.TestCase):
+    @staticmethod
+    def previous_snapshot():
+        import copy
+        prior = copy.deepcopy(w.WEEKLY_009_IMAGE_LOCK)
+        prior["as_of"] = "2026-11-16"
+        prior["source"] = w.WEEKLY_010_MLCC_LOCK["source"]
+        prior["components"]["MLCC"] = copy.deepcopy(w.WEEKLY_010_MLCC_LOCK["mlcc"])
+        return prior
+
+    def test_011_exact_seven_rows_no_status_change(self):
+        old = self.previous_snapshot()
+        snapshot = w.weekly_011_unchanged_update(old, "2026-11-23")
+        self.assertIsNotNone(snapshot)
+        self.assertEqual(snapshot["as_of"], "2026-11-23")
+        self.assertEqual(snapshot["source"], w.WEEKLY_011_IMAGE_LOCK["source"])
+        self.assertEqual(
+            w.changed_components(old["components"], snapshot["components"]), [])
+        self.assertEqual(len(snapshot["components"]), 7)
+        self.assertEqual(snapshot["components"]["GPU"],
+                         {"status": "Tightening", "current": "30-45", "balanced": "30-40"})
+        self.assertEqual(snapshot["components"]["MLCC"],
+                         {"status": "Very Tight", "current": "40", "balanced": "12"})
+        self.assertTrue(snapshot["policy_context"]["requires_new_metric_evidence_to_alert"])
+        self.assertIn("remote_access", snapshot["policy_context"]["scope"])
+
+    def test_011_conflicting_or_future_rows_never_overwritten(self):
+        import copy
+        old = self.previous_snapshot()
+        self.assertIsNone(w.weekly_011_unchanged_update(old, "2026-11-22"))
+        self.assertIsNone(w.weekly_011_unchanged_update(old, "2026-12-08"))
+        old["as_of"] = "2026-11-23"
+        self.assertIsNone(w.weekly_011_unchanged_update(old, "2026-11-23"))
+        old = self.previous_snapshot()
+        old["components"]["DRAM"]["current"] = "17"
+        self.assertIsNone(w.weekly_011_unchanged_update(old, "2026-11-23"))
+
+    def test_011_publisher_probe_reports_access_and_error(self):
+        from unittest import mock
+        valid = (
+            "Weekly Radar 011: New U.S. Export Rules Cloud the Supply Outlook. "
+            "This week's radar holds every status unchanged. CPU DRAM eSSD."
+        )
+        with mock.patch.object(w, "fetch", return_value=valid.encode()):
+            self.assertEqual(
+                w.weekly_011_source_probe()["status"], "verified_public_summary")
+        with mock.patch.object(w, "fetch", side_effect=TimeoutError("down")):
+            failed = w.weekly_011_source_probe()
+        self.assertEqual(failed["status"], "lookup_failed")
+        self.assertEqual(failed["error_type"], "TimeoutError")
+        with mock.patch.object(w, "fetch", return_value=b"Weekly Radar 011"):
+            self.assertEqual(
+                w.weekly_011_source_probe()["status"], "content_incomplete")
+
+    def test_011_real_main_no_new_message_preserves_old_receipt_and_retry(self):
+        import copy
+        from unittest import mock
+        class Clock(w.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                fixed = cls.fromisoformat("2026-11-23T21:08:00+09:00")
+                return fixed.astimezone(tz) if tz else fixed.replace(tzinfo=None)
+        with tempfile.TemporaryDirectory() as folder:
+            root = pathlib.Path(folder)
+            state, pending, alert = (
+                root / "state.json", root / "pending.json", root / "alert.html",
+            )
+            before = {
+                "ai_component_leadtime": self.previous_snapshot(),
+                "telegram_message_id": 554,
+                "delivery_receipt": {"status": "confirmed", "message_ids": [554]},
+                "other_route": {"preserve": True},
+            }
+            state.write_text(json.dumps(before, ensure_ascii=False), encoding="utf-8")
+            with mock.patch.object(w, "datetime", Clock), \
+                 mock.patch.object(w, "STATE_PATH", state), \
+                 mock.patch.object(w, "PENDING_PATH", pending), \
+                 mock.patch.object(w, "ALERT_PATH", alert), \
+                 mock.patch.object(w, "read_rss", return_value=[]), \
+                 mock.patch.object(w, "weekly_011_source_probe",
+                                   return_value={"status": "lookup_failed", "error_type": "TimeoutError"}):
+                w.main()
+                candidate = json.loads(pending.read_text(encoding="utf-8"))
+                lead = candidate["ai_component_leadtime"]
+                self.assertEqual(lead["as_of"], "2026-11-23")
+                self.assertEqual(lead["source_health"]["source_observation"], "partial")
+                self.assertEqual(lead["latest_weekly_issue"]["metric_change_count"], 0)
+                self.assertEqual(candidate["delivery_receipt"], before["delivery_receipt"])
+                self.assertEqual(candidate["other_route"], before["other_route"])
+                self.assertFalse(alert.exists())
+                self.assertEqual(json.loads(state.read_text(encoding="utf-8")),
+                                 before)  # pending only; live Telegram gate promotes
+                state.write_text(json.dumps(candidate, ensure_ascii=False), encoding="utf-8")
+                w.main()
+                self.assertFalse(alert.exists())
+                self.assertEqual(json.loads(pending.read_text())["ai_component_leadtime"]["as_of"],
+                                 "2026-11-23")
+
+    def test_011_official_teaser_does_not_create_false_56_week_metric(self):
+        from unittest import mock
+        class Clock(w.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                fixed = cls.fromisoformat("2026-11-23T21:08:00+09:00")
+                return fixed.astimezone(tz) if tz else fixed.replace(tzinfo=None)
+        item = {
+            "kind": "trendforce_feed",
+            "title": "Weekly Radar 011: New U.S. Export Rules Cloud the Supply Outlook",
+            "link": w.WEEKLY_011_IMAGE_LOCK["source"],
+            "description": "Every status unchanged. CPU DRAM eSSD severe shortage, up to 56 weeks lead time.",
+            "published_at_kst": "2026-11-23T20:00:00+09:00",
+        }
+        with tempfile.TemporaryDirectory() as folder:
+            root = pathlib.Path(folder)
+            state, pending, alert = root/"state.json", root/"pending.json", root/"alert.html"
+            state.write_text(json.dumps({"ai_component_leadtime": self.previous_snapshot()}), encoding="utf-8")
+            feed = lambda kind, query: [item] if kind == "trendforce_feed" else []
+            with mock.patch.object(w, "datetime", Clock), \
+                 mock.patch.object(w, "STATE_PATH", state), \
+                 mock.patch.object(w, "PENDING_PATH", pending), \
+                 mock.patch.object(w, "ALERT_PATH", alert), \
+                 mock.patch.object(w, "read_rss", side_effect=feed), \
+                 mock.patch.object(w, "article_text", return_value=""), \
+                 mock.patch.object(w, "weekly_011_source_probe",
+                                   return_value={"status": "verified_public_summary"}):
+                w.main()
+                report = json.loads(pending.read_text())["ai_component_leadtime"]
+                self.assertEqual(report["as_of"], "2026-11-23")
+                self.assertEqual(report["components"]["ABF"]["current"], "48-56")
+                self.assertEqual(report["components"]["DRAM"]["current"], "18")
+                self.assertFalse(alert.exists())
+
+    def test_011_total_rss_outage_is_not_no_new_issuer_claim(self):
+        from unittest import mock
+        class Clock(w.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                fixed = cls.fromisoformat("2026-11-23T21:08:00+09:00")
+                return fixed.astimezone(tz) if tz else fixed.replace(tzinfo=None)
+        with tempfile.TemporaryDirectory() as folder:
+            root = pathlib.Path(folder)
+            state, pending, alert = root/"state.json", root/"pending.json", root/"alert.html"
+            state.write_text(json.dumps({"ai_component_leadtime": self.previous_snapshot()}), encoding="utf-8")
+            with mock.patch.object(w, "datetime", Clock), \
+                 mock.patch.object(w, "STATE_PATH", state), \
+                 mock.patch.object(w, "PENDING_PATH", pending), \
+                 mock.patch.object(w, "ALERT_PATH", alert), \
+                 mock.patch.object(w, "read_rss", side_effect=TimeoutError("blocked")), \
+                 mock.patch.object(w, "weekly_011_source_probe",
+                                   return_value={"status": "lookup_failed", "error_type": "TimeoutError"}):
+                w.main()
+                report = json.loads(pending.read_text())["ai_component_leadtime"]
+                self.assertEqual(report["source_health"]["source_observation"], "lookup_failed")
+                self.assertEqual(report["source_health"]["primary_feed_status"], "lookup_failed")
+                self.assertGreater(report["source_health"]["rss_failure_count"], 0)
+                self.assertFalse(alert.exists())
+
+
 class LeadTimeAlertTests(unittest.TestCase):
     def setUp(self):
         self.old = {

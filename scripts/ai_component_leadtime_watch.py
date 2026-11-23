@@ -237,6 +237,40 @@ WEEKLY_010_MLCC_LOCK = {
 }
 
 
+# 2026-11-23: seven rows read from the user's TrendForce-branded original
+# screenshot. The publisher's public Weekly Radar 011 independently says all
+# statuses are unchanged; the full subscriber table has not been read here.
+# A source-access failure at runtime must remain a visible separate status.
+WEEKLY_011_IMAGE_LOCK = {
+    "as_of": "2026-11-23",
+    "source": "https://insights.trendforce.com/p/weekly-radar-011",
+    "source_kind": (
+        "사용자 제공 TrendForce 2026-11-23 표 7개 행 직접 판독; "
+        "TrendForce Weekly Radar 011 공개 요약에서 모든 상태 유지 확인; "
+        "유료 원문 표 전체 직접 열람 전"
+    ),
+    "components": {
+        "CPU": {"status": "Tight", "current": "25-30", "balanced": "16-20"},
+        "GPU": {"status": "Tightening", "current": "30-45", "balanced": "30-40"},
+        "DRAM": {"status": "Very Tight", "current": "18", "balanced": "8"},
+        "NAND(eSSD)": {"status": "Tight", "current": "16", "balanced": "8"},
+        "HDD": {"status": "Very Tight", "current": "50", "balanced": "16"},
+        "ABF": {"status": "Very Tight", "current": "48-56", "balanced": "12"},
+        "MLCC": {"status": "Very Tight", "current": "40", "balanced": "12"},
+    },
+    "policy_context": {
+        "source": "https://www.bis.gov/press-release/bis-issues-rule-addressing-remote-access-american-super-intelligence-technology",
+        "official_rule_announced": "2026-11-16",
+        "official_rule_effective": "2026-11-19",
+        "weekly_011_analysis_date": "2026-11-23",
+        "affected_supply_demand_watch": ["CPU", "DRAM", "NAND(eSSD)"],
+        "scope": "advanced_computing_export_and_remote_access_controls_not_blanket_cpu_dram_ssd_ban",
+        "potential_allocation_change": "trendforce_risk_not_confirmed_component_shipment_change",
+        "requires_new_metric_evidence_to_alert": True,
+    },
+}
+
+
 TOSHIBA_HDD_OFFICIAL = {
     "as_of": "2026-10-02",
     "source": "https://toshiba.semicon-storage.com/ap-en/company/news/news-topics/2026/10/storage-20261002-1.html",
@@ -1771,6 +1805,49 @@ def build_weekly_010_mlcc_alert(previous: dict, current: dict) -> str:
 
 
 
+def weekly_011_source_probe() -> dict:
+    """Check the original public publisher summary without treating a cache miss as success."""
+    url = WEEKLY_011_IMAGE_LOCK["source"]
+    try:
+        raw = fetch(url, timeout=15)
+        text = clean_text(raw.decode("utf-8", errors="replace")).lower()
+    except Exception as exc:
+        return {"status": "lookup_failed", "error_type": type(exc).__name__, "url": url}
+    if ("weekly radar 011" in text and
+            "every status unchanged" in text and
+            "export rules" in text and
+            "dram" in text and "essd" in text):
+        return {"status": "verified_public_summary", "url": url}
+    return {"status": "content_incomplete", "url": url}
+
+
+def weekly_011_unchanged_update(previous: dict, today_kst: str) -> dict | None:
+    """Promote the supplied seven-row table without a duplicated no-change alert."""
+    lock = WEEKLY_011_IMAGE_LOCK
+    if not lock["as_of"] <= today_kst <= "2026-12-07":
+        return None
+    if str(previous.get("as_of") or "") != WEEKLY_010_MLCC_LOCK["as_of"]:
+        return None
+    previous_components = previous.get("components") or {}
+    if set(previous_components) != set(lock["components"]):
+        return None
+    if any(
+        canonical_component(previous_components.get(name) or {})
+        != canonical_component(expected)
+        for name, expected in lock["components"].items()
+    ):
+        # Never silently overwrite a real new/contradictory weekly reading.
+        return None
+    return {
+        "as_of": lock["as_of"],
+        "source": lock["source"],
+        "source_kind": lock["source_kind"],
+        "components": copy.deepcopy(lock["components"]),
+        "policy_context": copy.deepcopy(lock["policy_context"]),
+    }
+
+
+
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state = load_json(STATE_PATH)
@@ -1794,14 +1871,22 @@ def main() -> None:
 
     candidates: list[dict] = []
     errors: list[str] = []
+    source_health = {"rss_success_count": 0, "rss_failure_count": 0,
+                     "primary_feed_status": "not_checked", "source_observation": "not_checked"}
     cutoff = now - timedelta(days=21)
 
     for kind, query in SEARCHES:
         try:
             items = read_rss(kind, query)
         except Exception as exc:
+            source_health["rss_failure_count"] += 1
+            if kind == "trendforce_feed":
+                source_health["primary_feed_status"] = "lookup_failed"
             errors.append(f"{kind}: {type(exc).__name__}: {exc}")
             continue
+        source_health["rss_success_count"] += 1
+        if kind == "trendforce_feed":
+            source_health["primary_feed_status"] = "checked"
         for item in items:
             direct = candidate_url(item)
             if not direct:
@@ -1827,6 +1912,12 @@ def main() -> None:
             if not is_relevant(full_text) and not is_official_010:
                 continue
             components = extract_components(full_text)
+            if direct.split("?")[0].rstrip("/") == WEEKLY_011_IMAGE_LOCK["source"]:
+                # The free teaser contains narrative and partial numbers, not the
+                # complete structured table. Do not infer a new per-part lead time
+                # from a generic "up to 56 weeks" reference or emit a signal-only
+                # alert for the unchanged official week.
+                components = {}
             if direct.rstrip("/").endswith("weekly-radar-003"):
                 cpu = components.setdefault("CPU", {})
                 cpu.setdefault("status", "Tight")
@@ -1843,6 +1934,8 @@ def main() -> None:
             if direct.rstrip("/") == WEEKLY_008_LOCK["source"]:
                 components = copy.deepcopy(WEEKLY_008_LOCK["components"])
             signals = extract_signals(full_text, direct)
+            if direct.split("?")[0].rstrip("/") == WEEKLY_011_IMAGE_LOCK["source"]:
+                signals = {}  # policy interpretation is stored as context, not a new lead-time delta
             candidates.append(
                 {
                     **item,
@@ -2024,6 +2117,32 @@ def main() -> None:
         latest_source_kind = mlcc_010["source_kind"]
         new_seen.add(latest_source)
 
+    # User-supplied table is an exact seven-row observation. Record its dated
+    # unchanged snapshot and separate policy context without a Telegram
+    # notification. Independently report issuer-page access or failure.
+    official_011_probe = {"status": "not_checked"}
+    unchanged_011 = weekly_011_unchanged_update(
+        previous, now.date().isoformat()
+    )
+    if unchanged_011 is not None:
+        official_011_probe = weekly_011_source_probe()
+        latest_components = unchanged_011["components"]
+        latest_source = unchanged_011["source"]
+        latest_as_of = unchanged_011["as_of"]
+        latest_source_kind = unchanged_011["source_kind"]
+        new_seen.add(latest_source)
+        # The BIS rule and TrendForce possible allocation effects are distinct:
+        # no categorical CPU/DRAM/eSSD export ban and no measured lead-time move.
+    source_health["weekly_011_publisher"] = official_011_probe
+    source_health["source_observation"] = (
+        "lookup_failed" if source_health["primary_feed_status"] == "lookup_failed"
+        and source_health["rss_success_count"] == 0
+        and official_011_probe["status"] == "lookup_failed"
+        else "partial" if source_health["rss_failure_count"]
+        or official_011_probe["status"] in {"lookup_failed", "content_incomplete"}
+        else "checked"
+    )
+
     latest_chain = memory_storage_chain_state(
         latest_components,
         latest_signals,
@@ -2077,9 +2196,30 @@ def main() -> None:
         "seen_urls": sorted(new_seen)[-120:],
         "last_checked_at_kst": now.isoformat(timespec="seconds"),
         "candidate_count": len(candidates),
+        "source_health": source_health,
+        "latest_weekly_issue": {
+            "issue_date": latest_as_of,
+            "source": latest_source,
+            "metric_change_count": (
+                0 if unchanged_011 is not None or
+                str(previous.get("as_of") or "") == WEEKLY_011_IMAGE_LOCK["as_of"]
+                else len(changed_components(previous_components, latest_components))
+            ),
+            "source_kind": latest_source_kind,
+        },
+        "policy_context": (
+            copy.deepcopy(WEEKLY_011_IMAGE_LOCK["policy_context"])
+            if latest_as_of == WEEKLY_011_IMAGE_LOCK["as_of"]
+            else copy.deepcopy(previous.get("policy_context") or {})
+        ),
         "mlcc_vendor_watch": vendor_state,
         "caspa_panel_watch": caspa_state,
-        "image_verified_issue": ("weekly-radar-010-mlcc-public" if (
+        "image_verified_issue": ("weekly-radar-011-user-image-unchanged" if (
+                                     latest_as_of == WEEKLY_011_IMAGE_LOCK["as_of"]
+                                     and all(canonical_component(latest_components.get(name) or {})
+                                                 == canonical_component(expected)
+                                             for name, expected in WEEKLY_011_IMAGE_LOCK["components"].items()))
+                                 else "weekly-radar-010-mlcc-public" if (
                                      latest_as_of == WEEKLY_010_MLCC_LOCK["as_of"]
                                      and canonical_component(latest_components.get("MLCC") or {}) == ("Very Tight", "40", "12"))
                                  else "weekly-radar-009-user-image" if (
@@ -2101,7 +2241,9 @@ def main() -> None:
     print(
         "ai_component_leadtime_watch=true "
         f"candidates={len(candidates)} notify={str(bool(notify_text)).lower()} "
-        f"source={best.get('direct_url') if best else 'none'}"
+        f"source={best.get('direct_url') if best else 'none'} "
+        f"weekly_issue={latest_as_of} source_health={source_health['source_observation']} "
+        f"publisher_011={official_011_probe['status']}"
     )
 
 
