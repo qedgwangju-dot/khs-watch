@@ -5,14 +5,14 @@
     "deferred_events": 0,
     "errors": [],
     "google_news_queries_failed": 0,
-    "google_news_queries_requested": 110,
-    "google_news_queries_succeeded": 110,
+    "google_news_queries_requested": 115,
+    "google_news_queries_succeeded": 115,
     "google_news_rate_limit_429": 0,
     "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [],
-    "raw_items": 76,
+    "raw_items": 70,
     "sif_new_stages": 0,
     "source_access_limited": false,
     "si_portal_health": "정상",
@@ -100,7 +100,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-23T15:33:33.781743+00:00",
+    "updated_at": "2026-11-23T15:43:49.725156+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -817,6 +817,26 @@
       "source_url": "https://www.financialpost.co.kr/news/articleView.html?idxno=282981",
       "status": "Intraday rally on PHP security theme, no new issuer PHP-specific contract"
     },
+    "bank_agents:external_agent_blocking_20261022": {
+      "source_url": "https://www.investing.com/news/stock-market-news/us-banks-detect-unauthorized-ai-agents-in-customer-accounts-axios-reports-4965122",
+      "status": "2026-10-22 Reuters: third-party agents blocked at bank accounts; blocked requests do not establish confirmed account compromise"
+    },
+    "bank_agents:fed_barr_remarks_20261116": {
+      "source_url": "https://www.federalreserve.gov/newsevents/speech/barr20261116a.htm",
+      "status": "2026-11-16 Fed Governor Barr warning on agent authentication and customer consent, not new law"
+    },
+    "bank_agents:fsb_ai_practices_20261015": {
+      "source_url": "https://www.fsb.org/2026/10/fsb-finalises-sound-practices-for-the-responsible-adoption-of-artificial-intelligence-ai/",
+      "status": "2026-10-15 FSB twelve recommended AI practices, not binding US bank law"
+    },
+    "bank_agents:internal_controls_reuters_20261123": {
+      "source_url": "https://www.reuters.com/legal/litigation/some-us-banks-tighten-ai-agent-controls-concern-about-models-escaping-safeguards-2026-11-23/",
+      "status": "2026-11-23 Reuters anonymous-source account: multiple banks tightened INTERNAL agent access, runtime, kill switches, continuity. No identified bank breach, signed security contract or mandatory new rule."
+    },
+    "bank_agents:occ_si_framework_20261104": {
+      "source_url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-97.html",
+      "status": "2026-11-04 OCC examiner framework for bank super intelligence and agentic AI; not a new bank-specific regulatory risk category"
+    },
     "cohere_aisle:letter_of_intent_announced": {
       "source_url": "https://cohere.com/blog/cohere-and-aisle-sign-letter-of-intent-to-advance-cyber-resilient-sovereign-ai",
       "status": "2026-10-15 Cohere and AISLE signed an LOI only; no definitive contract, closing, price or incremental revenue confirmed"
@@ -1010,11 +1030,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-24T00:33:33+09:00",
+  "updated_at_kst": "2026-11-24T00:43:49+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-23T15:34:27.687602+00:00",
+    "last_success_at": "2026-11-23T15:44:56.712832+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
