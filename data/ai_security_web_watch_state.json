@@ -3,20 +3,22 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": true,
+    "all_sources_verified": false,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [],
-    "google_news_queries_failed": 0,
+    "errors": [
+      "Google News RSS 실패: \"AI agent\" \"third-party\" impact security controls… / HTTPError: HTTP Error 429: Too Many Requests"
+    ],
+    "google_news_queries_failed": 1,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 65,
-    "google_news_rate_limit_429": 0,
+    "google_news_queries_succeeded": 64,
+    "google_news_rate_limit_429": 1,
     "material_items": 13,
     "new_material_items": 0,
-    "raw_items": 101,
+    "raw_items": 100,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": false
+    "source_access_limited": true
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -1152,5 +1154,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-23T18:14:36+09:00"
+  "updated_at_kst": "2026-11-23T18:19:47+09:00"
 }
