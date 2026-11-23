@@ -3,32 +3,20 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": false,
+    "all_sources_verified": true,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [
-      "Google News RSS 실패: \"Cathedral\" \"Anthropic\" (security research OR breach OR… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"ARTEX\" \"Storm-0940\" (ConnectWise OR Microsoft OR breac… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"CYFIRMA\" \"PHP2Shell\" (216 OR scanning OR Lazarus OR co… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) agent misalignm… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"rogue agent\" AI OpenAI Anthropic Google Meta security… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic) \"tens of thousands\" security inci… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: frontier AI independent auditor found sandbox unauthori… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic) unauthorized access incidents tra… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic) \"blocking alignment evaluation\" f… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (JPMorgan OR Citi OR Goldman OR bank OR \"critical infra… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 11,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 54,
-    "google_news_rate_limit_429": 11,
+    "google_news_queries_succeeded": 65,
+    "google_news_rate_limit_429": 0,
     "material_items": 14,
     "new_material_items": 0,
-    "raw_items": 116,
+    "raw_items": 118,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": true
+    "source_access_limited": false
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -1174,5 +1162,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-24T00:31:04+09:00"
+  "updated_at_kst": "2026-11-24T00:32:50+09:00"
 }
