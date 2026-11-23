@@ -1,9 +1,9 @@
 {
   "initialized": true,
   "version": 5,
-  "dataset_updated": "Nov 19, 2026",
-  "source_hash": "2a9c3de6ed44649d9764e6c37339bc76a69b7e7429485964aaa698f84fcccedf",
-  "snapshot_hash": "4ba8ab8e58b520745ae00bf26d4e6cf4c2efb3da0db3d384ffc0c43bd64de124",
+  "dataset_updated": "Nov 23, 2026",
+  "source_hash": "65f467a0290d171e77e9c4595cefcc4fdd8d09b30caafcbf1a9bfaed8d6641e0",
+  "snapshot_hash": "b32415f1c919b558f2377239ef337decf4f8530aac96e3fbc8dba28ad5ef3b3c",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -89,7 +89,7 @@
       "name": "Colossus 2",
       "display": "xAI Colossus 2 (TN)",
       "owner": "xAI",
-      "users": "Anthropic·Cursor·xAI",
+      "users": "Anthropic·Cursor·xAI·Reflection",
       "investors": "미기재",
       "current_mw": 946.0,
       "planned_mw": 1531.0,
@@ -306,7 +306,9 @@
       "company_issues": []
     }
   ],
-  "last_changes": [],
+  "last_changes": [
+    "xAI Colossus 2 (TN) 소유·사용·투자자 정보 변경"
+  ],
   "source_errors": [],
-  "updated_at_utc": "2026-11-23T13:47:05+00:00"
+  "updated_at_utc": "2026-11-23T22:22:58+00:00"
 }
