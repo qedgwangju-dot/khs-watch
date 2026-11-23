@@ -118,6 +118,8 @@ jobs:
           python scripts/test_robot_watch_message_corrections.py
           python scripts/test_robot_watch_nov23_verified_events.py
           python scripts/test_robot_watch_eugene_lifecycle_20261123.py
+          python -m py_compile scripts/robot_watch_eugene_406_edit.py
+          python scripts/test_robot_watch_eugene_406_edit.py
           python scripts/test_robot_watch_single_message_correction_404.py
           python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py'
 
@@ -135,6 +137,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/robot_watch_message_corrections.py
+      - name: Improve previously delivered Eugene message 406 with verified full-details edit
+        if: success() && github.event_name == 'push' && contains(github.event.head_commit.message, '[robot-eugene-406-edit]')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/robot_watch_eugene_406_edit.py
 
       - name: Correct proved duplicate in existing ROBOTIS message 404 only once
         env:
@@ -338,6 +345,7 @@ jobs:
             out/robotis_physical_ai_watch_delivery_receipts.json
             out/robotis_physical_ai_watch_delivery_attempts.json
             out/robot_watch_message_correction_receipts.json
+            out/robot_watch_eugene_406_edit_receipt.json
           if-no-files-found: ignore
           retention-days: 7
 
