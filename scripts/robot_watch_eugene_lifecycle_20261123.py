@@ -157,6 +157,11 @@ def install(base) -> None:
             return 0
         if _official_si(item):
             return 36
+        text = " ".join(str(item.get(k) or "") for k in ("title", "description", "source"))
+        if existing["topic_group"](text) is None and ROBOT.search(text) and (
+                SI_TERM.search(text) or OPERATIONS.search(text)):
+            # Discovery query alone is not an official SI order.
+            return 0
         return existing["score"](item)
 
     def key(item):
