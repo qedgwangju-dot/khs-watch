@@ -11,11 +11,16 @@ from __future__ import annotations
 
 import base64
 import copy
+import hashlib
+import io
 import json
 import os
 from pathlib import Path
 import re
+import stat
 import sys
+import zipfile
+from pathlib import PurePosixPath
 
 import robot_watch_delivery as d
 import robot_watch_message_corrections as c
@@ -58,6 +63,52 @@ def replacement(original: str, pending: dict) -> str:
     return revised
 
 
+
+# The archived Nov-23 source additionally contains a dedicated robot-message
+# correction receipt. Its exact seven-member archive hash is pinned above;
+# the shared legacy recovery reader only permits six names. Do not loosen it
+# for any other alert or change the shared recovery implementation.
+SOURCE_MEMBERS = {
+    d.ALERT_PATH.name, d.PENDING_PATH.name,
+    d.RECEIPTS_PATH.name, d.ATTEMPTS_PATH.name,
+    "robotis_physical_ai_watch_status.md",
+    "robotis_physical_ai_watch_candidates.json",
+    "robot_watch_message_correction_receipts.json",
+}
+
+
+def _read_source_members(raw: bytes, metadata: dict) -> dict[str, str]:
+    if (metadata.get("name") != f"robotis-physical-ai-{SOURCE_RUN_ID}"
+            or metadata.get("digest") != SOURCE_ARTIFACT_DIGEST
+            or metadata.get("expired") is True
+            or len(raw) > d.MAX_ARCHIVE
+            or metadata.get("size_in_bytes", 0) > d.MAX_ARCHIVE
+            or "sha256:" + hashlib.sha256(raw).hexdigest() != SOURCE_ARTIFACT_DIGEST):
+        raise d.DeliveryError("Pinned Eugene source artifact integrity check failed")
+    result = {}
+    total = 0
+    try:
+        with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+            members = archive.infolist()
+            if len(members) != len(SOURCE_MEMBERS):
+                raise d.DeliveryError("Pinned Eugene source artifact has unexpected member count")
+            for item in members:
+                name = PurePosixPath(item.filename)
+                if (item.filename != name.name or name.name not in SOURCE_MEMBERS
+                        or name.name in result or (item.flag_bits & 1)
+                        or stat.S_ISLNK(item.external_attr >> 16)):
+                    raise d.DeliveryError("Pinned Eugene archive contains unknown, unsafe, or duplicated entries")
+                total += item.file_size
+                if item.file_size > d.MAX_MEMBER or total > d.MAX_ARCHIVE:
+                    raise d.DeliveryError("Pinned Eugene archive members exceed expected limits")
+                result[name.name] = archive.read(item).decode("utf-8")
+    except (zipfile.BadZipFile, UnicodeError, OSError, RuntimeError):
+        raise d.DeliveryError("Pinned Eugene source archive could not be safely inspected") from None
+    if set(result) != SOURCE_MEMBERS:
+        raise d.DeliveryError("Pinned Eugene source archive member names do not match")
+    return result
+
+
 def _check_original(api, state: dict, chat: str) -> tuple[str, dict, dict]:
     if REPORT_KEY not in set(state.get("seen") or []):
         raise d.DeliveryError("The Eugene report was not delivered in current dedup state")
@@ -80,7 +131,7 @@ def _check_original(api, state: dict, chat: str) -> tuple[str, dict, dict]:
             or (metadata.get("workflow_run") or {}).get("id") != SOURCE_RUN_ID
             or metadata.get("expired") is True):
         raise d.DeliveryError("Eugene original artifact digest or run is invalid")
-    files = d.read_artifact(api.download(SOURCE_ARTIFACT_ID), metadata, SOURCE_RUN_ID)
+    files = _read_source_members(api.download(SOURCE_ARTIFACT_ID), metadata)
     try:
         original = files[d.ALERT_PATH.name]
         pending = json.loads(files[d.PENDING_PATH.name])
