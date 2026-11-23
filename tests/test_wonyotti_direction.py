@@ -1,6 +1,9 @@
 """Offline regression tests for the Wonyotti Telegram watch."""
 import datetime as dt
 import unittest
+import json
+import pathlib
+import tempfile
 from unittest.mock import patch
 
 from scripts import wonyotti_90d_thesis_watch as w
@@ -212,6 +215,99 @@ class WonyottiRegressionTest(unittest.TestCase):
         self.assertEqual(len(alerts), 1)
         self.assertGreaterEqual(len(remembered), 2)
         self.assertFalse(errors)
+
+
+
+    def test_price_rally_with_negative_etf_five_day_is_mixed_not_certain_down(self):
+        current = snap(btc=61433, five=-1790)
+        current["crypto"]["prices"]["BTC"]["change24"] = 3.03
+        current["crypto"]["btc_etf"]["date"] = "2026-11-20"
+        now = dt.datetime(2026, 11, 23, 17, 51, tzinfo=w.KST)
+        result = w._crypto_direction(current, now)
+        self.assertIn("혼조", result["direction"])
+        self.assertIn("반등", result["reason"])
+        self.assertNotIn("단기 하락 압력 우세", result["direction"])
+        self.assertIn("반대", result["counter"])
+
+    def test_official_fx_is_report_date_not_etf_trade_date(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            path = root / "data" / "korea_market_stress_watch_state.json"
+            path.parent.mkdir(parents=True)
+            row = {"snapshot": {"usdkrw": {"ecos_official": {
+                "date": "2026-11-23", "value": 1337.3,
+                "stat_code": "731Y001", "item_code": "0000001",
+            }}}}
+            path.write_text(json.dumps(row), encoding="utf-8")
+            with patch.object(w, "ROOT", root):
+                fx = w._read_official_fx("2026-11-23")
+        self.assertEqual(fx["rate"], 1337.3)
+        self.assertEqual(fx["date"], "2026-11-23")
+        self.assertEqual(fx["source"], "한국은행 ECOS")
+
+    def test_ecb_official_cross_rate_fallback(self):
+        csv_text = (
+            "CURRENCY,TIME_PERIOD,OBS_VALUE\n"
+            "KRW,2026-11-20,1472.04\n"
+            "USD,2026-11-20,1.0990\n"
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            with patch.object(w, "ROOT", pathlib.Path(directory)):
+                with patch.object(w, "fetch", return_value=csv_text.encode("utf-8")):
+                    fx = w._read_official_fx("2026-11-23")
+        self.assertEqual(fx["source"], "유럽중앙은행 ECB")
+        self.assertEqual(fx["method"], "KRW/EUR ÷ USD/EUR 교차환산")
+        self.assertAlmostEqual(fx["rate"], 1472.04 / 1.0990, places=3)
+
+    def test_every_usd_amount_gets_krw_annotation_without_html_url_edits(self):
+        sample = (
+            '<b>BTC 61,433달러</b> · 적정가 85,000달러 '
+            '· ETF -17억9,000만달러 · 달러 집계 -1,306.2백만달러 '
+            '· NVIDIA $115.8B · ETH 1,722달러\n'
+            '• 환율 1달러=1,337.30원\n'
+            '<a href="https://site.example/path?x=$115.8B">원문</a>'
+        )
+        result = w._append_krw_to_text(sample, {"rate": 1337.3})
+        for value in ("61,433달러", "85,000달러", "-17억9,000만달러",
+                      "-1,306.2백만달러", "$115.8B", "1,722달러"):
+            self.assertIn(value + "(약 ", result, value)
+        self.assertIn("1달러=1,337.30원", result)
+        self.assertIn('href="https://site.example/path?x=$115.8B"', result)
+        self.assertEqual(result.count("(약 "), 6)
+        self.assertAlmostEqual(w._usd_token_value("-17억9,000만달러"), -1790000000)
+        self.assertAlmostEqual(w._usd_token_value("8만5,000달러"), 85000)
+
+    def test_alert_currency_direction_and_source_period_labels(self):
+        current = snap(btc=61433, five=-1790)
+        current["crypto"]["prices"]["BTC"]["change24"] = 3.03
+        current["crypto"]["btc_etf"]["date"] = "2026-11-20"
+        current["crypto"]["btc_etf"]["daily_usd_m"] = -669.2
+        now = dt.datetime(2026, 11, 23, 17, 51, tzinfo=w.KST)
+        signal = (
+            "암호화폐", "BTC ETF 당일 큰 규모의 순유출",
+            "이전 -1,306.2백만달러 → 최근 -1,790.0백만달러; 당일 -669.2백만달러",
+            "자금 확인", "다음 ETF 자료 확인", w.FARSIDE_BTC,
+        )
+        message = w.build_alert(
+            [signal], now, current,
+            {"rate": 1337.3, "date": "2026-11-23", "source": "한국은행 ECOS"},
+        )
+        self.assertIn("혼조 — 가격 반등·ETF 자금 순유출", message)
+        self.assertIn("반대 근거", message)
+        self.assertIn("판단 신뢰수준", message)
+        self.assertIn("85,000달러(약 ", message)
+        self.assertIn("61,433달러(약 ", message)
+        self.assertIn("-1,306.2백만달러(약 ", message)
+        self.assertIn("2026-11-23 한국은행 ECOS", message)
+        self.assertIn("1달러=1,337.30원", message)
+
+    def test_alert_reads_fx_at_alert_date_not_older_etf_date(self):
+        with patch.object(w, "_read_official_fx", return_value={"rate": 1337.3, "date": "2026-10-31", "source": "한국은행 ECOS"}) as fx:
+            w.build_alert(
+                [("암호화폐", "ETF 순유출", "ETF 자금 감소", "", "", None)],
+                NOW, snap(),
+            )
+        fx.assert_called_once_with("2026-10-31")
 
 
 

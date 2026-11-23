@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import csv
 import hashlib
 import html
 import io
@@ -1142,15 +1143,15 @@ def link(url: str | None) -> str:
 
 
 def _read_official_fx(target: str | None) -> dict | None:
-    """Use an existing date-matched BOK ECOS observation; never invent FX."""
+    """Use date-valid official USD/KRW; never reinterpret an ETF trading date as FX date."""
     if not target:
         return None
+    needed = dt.date.fromisoformat(target)
     try:
-        file = ROOT / "data" / "korea_market_stress_watch_state.json"
-        state = json.loads(file.read_text(encoding="utf-8"))
+        source = ROOT / "data" / "korea_market_stress_watch_state.json"
+        state = json.loads(source.read_text(encoding="utf-8"))
         row = (((state.get("snapshot") or {}).get("usdkrw") or {}).get("ecos_official") or {})
         day = dt.date.fromisoformat(str(row.get("date") or ""))
-        needed = dt.date.fromisoformat(target)
         rate = float(row.get("value") or 0.0)
         if (
             row.get("stat_code") == "731Y001"
@@ -1158,10 +1159,117 @@ def _read_official_fx(target: str | None) -> dict | None:
             and 0 <= (needed - day).days <= 4
             and 800.0 <= rate <= 2500.0
         ):
-            return {"rate": rate, "date": day.isoformat(), "source": "한국은행 ECOS"}
+            return {"rate": rate, "date": day.isoformat(), "source": "한국은행 ECOS", "method": "직접 고시"}
+    except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError):
+        pass
+
+    # Independent official fallback: ECB KRW/EUR divided by USD/EUR on the same date.
+    # Never call this an intraday Seoul market quote.
+    try:
+        url = (
+            "https://data-api.ecb.europa.eu/service/data/"
+            "EXR/D.USD+KRW.EUR.SP00.A?lastNObservations=5&format=csvdata"
+        )
+        raw = fetch(url, timeout=15, accept="text/csv").decode("utf-8-sig", errors="strict")
+        rows = csv.DictReader(io.StringIO(raw))
+        daily = {}
+        for row in rows:
+            currency = (row.get("CURRENCY") or "").strip()
+            if currency not in {"USD", "KRW"}:
+                continue
+            day = dt.date.fromisoformat(str(row["TIME_PERIOD"]).strip())
+            value = float(row["OBS_VALUE"])
+            if value > 0:
+                daily.setdefault(day, {})[currency] = value
+        for day, pair in sorted(daily.items(), reverse=True):
+            if 0 <= (needed - day).days <= 4 and {"USD", "KRW"} <= pair.keys():
+                cross = pair["KRW"] / pair["USD"]
+                if 800.0 <= cross <= 2500.0:
+                    return {
+                        "rate": round(cross, 4),
+                        "date": day.isoformat(),
+                        "source": "유럽중앙은행 ECB",
+                        "method": "KRW/EUR ÷ USD/EUR 교차환산",
+                    }
     except Exception:
-        return None
+        pass
     return None
+
+
+_KRW_USD_TOKEN = re.compile(
+    r"(?<![0-9A-Za-z가-힣])"
+    r"(?P<value>"
+    r"[+-]?\$\s*\d[\d,]*(?:\.\d+)?\s*[KMBT]?"
+    r"|[+-]?(?:\d[\d,]*(?:\.\d+)?(?:십억|백만|조|억|만|천|백))+(?:\d[\d,]*(?:\.\d+)?)?달러"
+    r"|[+-]?\d[\d,]*(?:\.\d+)?달러"
+    r")"
+)
+
+
+def _usd_token_value(value: str) -> float:
+    token = value.replace(",", "").replace(" ", "").strip()
+    sign = -1 if token.startswith("-") else 1
+    token = token.lstrip("+-")
+    if token.startswith("$"):
+        size = {"T": 1e12, "B": 1e9, "M": 1e6, "K": 1e3}
+        core = token[1:]
+        factor = size.get(core[-1:].upper(), 1.0)
+        if factor != 1:
+            core = core[:-1]
+        return sign * float(core) * factor
+    if not token.endswith("달러"):
+        raise ValueError("not USD currency")
+    core = token[:-2]
+    unit = {"조": 1e12, "십억": 1e9, "억": 1e8, "백만": 1e6, "만": 1e4, "천": 1e3, "백": 1e2}
+    matches = list(re.finditer(r"(\d+(?:\.\d+)?)(십억|백만|조|억|만|천|백)", core))
+    if not matches:
+        return sign * float(core)
+    amount = sum(float(m.group(1)) * unit[m.group(2)] for m in matches)
+    cursor = 0
+    for m in matches:
+        if m.start() != cursor:
+            raise ValueError("unsupported compound amount")
+        cursor = m.end()
+    if cursor < len(core):
+        amount += float(core[cursor:])
+    return sign * amount
+
+
+def _krw_display(krw: float) -> str:
+    mark = "-" if krw < 0 else ""
+    value = abs(float(krw))
+    if value < 10000:
+        return mark + f"{round(value):,.0f}원"
+    ten_thousands = int(round(value / 10000))
+    jo, residue = divmod(ten_thousands, 100_000_000)
+    eok, man = divmod(residue, 10000)
+    parts = []
+    if jo:
+        parts.append(f"{jo:,}조")
+    if eok:
+        parts.append(f"{eok:,}억")
+    if man or not parts:
+        parts.append(f"{man:,}만")
+    return mark + " ".join(parts) + "원"
+
+
+def _append_krw_to_text(body: str, fx: dict | None) -> str:
+    """Annotate all watcher USD amounts in text nodes, leaving HTML tags/links intact."""
+    if not fx or not (800 <= float(fx.get("rate") or 0) <= 2500):
+        return body
+    rate = float(fx["rate"])
+
+    def sub(match: re.Match) -> str:
+        val = match.group("value")
+        remainder = match.string[match.end():]
+        # Preserve exchange rate notation and prevent duplicate KRW annotations.
+        if remainder.startswith("=") or remainder.startswith("(약 "):
+            return val
+        dollars = _usd_token_value(val)
+        return val + "(약 " + _krw_display(dollars * rate) + ")"
+
+    parts = re.split(r"(<[^>]+>)", body)
+    return "".join(part if part.startswith("<") and part.endswith(">") else _KRW_USD_TOKEN.sub(sub, part) for part in parts)
 
 
 def _money_usd_m(value: float | None, fx: dict | None = None) -> str:
@@ -1196,51 +1304,61 @@ def _fresh_enough(date_str: str | None, now: dt.datetime, max_days: int = 4) -> 
 
 
 def _crypto_direction(snapshot: dict, now: dt.datetime) -> dict:
-    """Plain-language pressure assessment, not a price forecast or buy/sell instruction."""
+    """Classify *observed* pressure, not a certain forecast or a fair-value signal."""
     crypto = snapshot.get("crypto") or {}
-    prices = crypto.get("prices") or {}
-    btc = prices.get("BTC") or {}
+    btc = ((crypto.get("prices") or {}).get("BTC") or {})
     etf = crypto.get("btc_etf") or {}
     valid_price = bool(btc.get("verified")) and bool(crypto.get("price_trigger_ready"))
     valid_flow = (
         _fresh_enough(etf.get("date"), now)
         and bool(etf.get("five_day_complete"))
+        and etf.get("status") == "complete"
         and etf.get("five_day_usd_m") is not None
     )
-    if not valid_price or not valid_flow:
+    price24 = btc.get("change24")
+    if not valid_price or not valid_flow or price24 is None:
         return {
             "direction": "판단 보류",
-            "reason": "현물가격 또는 확정 5거래일 ETF 자금흐름 확인이 불충분",
-            "next": "현물가격 교차검증과 5거래일 ETF 집계 완료를 먼저 확인",
+            "confidence": "판정 불가",
+            "reason": "교차검증된 현물가격·24시간 가격변화·완료된 5거래일 ETF 집계 중 일부가 부족",
+            "counter": "미확인 자료를 가격 방향으로 대체하지 않음",
+            "next": "가격·ETF 원천 복구와 공식 집계 완료 확인",
         }
-    price = float(btc["usd"])
-    five = float(etf["five_day_usd_m"])
-    if price < BTC_LINE and five < 0:
-        return {
-            "direction": "단기 하락 압력 우세",
-            "reason": "BTC가 서한의 적정가보다 낮고 최근 5거래일 ETF에도 자금이 순유출",
-            "next": "약세 완화 신호: 5거래일 ETF 순유입 전환과 BTC 8만5,000달러 회복 여부를 함께 확인",
-        }
-    if price < BTC_LINE and five >= 0:
-        return {
-            "direction": "혼조 — 가격은 약하지만 ETF 자금은 유입",
-            "reason": "서한의 적정가 아래이지만 현물 ETF는 아직 자금 유입",
-            "next": "ETF 순유입이 유지되며 가격이 회복하는지, 반대로 ETF까지 순유출로 바뀌는지 확인",
-        }
-    if price >= BTC_LINE and five > 0:
-        return {
-            "direction": "단기 회복 신호 우세",
-            "reason": "BTC가 서한 적정가 위이고 최근 5거래일 ETF도 순유입",
-            "next": "자금 유입과 가격 회복이 추가 거래일에도 이어지는지 확인",
-        }
+
+    daily_pct = float(price24)
+    flow5 = float(etf["five_day_usd_m"])
+    if flow5 < 0 and daily_pct <= -0.5:
+        direction = "단기 하락 압력 우세(가격·ETF 동반 약세)"
+        reason = f"BTC 24시간 {daily_pct:+.1f}% 하락과 ETF 5거래일 순유출이 함께 관측됨"
+        counter = "매도세의 추가 지속 여부는 아직 미확정"
+    elif flow5 > 0 and daily_pct >= 0.5:
+        direction = "단기 회복 압력 우세(가격·ETF 동반 개선)"
+        reason = f"BTC 24시간 {daily_pct:+.1f}% 상승과 ETF 5거래일 순유입이 함께 관측됨"
+        counter = "단기 반등이 추세 상승으로 이어진다는 증거는 아직 부족"
+    elif flow5 < 0 and daily_pct >= 0.5:
+        direction = "혼조 — 가격 반등·ETF 자금 순유출"
+        reason = f"BTC 24시간 {daily_pct:+.1f}% 반등하지만 최근 5거래일 ETF 자금은 순유출"
+        counter = "가격 반등은 지속 하락 전망의 반대 증거이며, ETF 유출은 상승 확인을 제한"
+    elif flow5 > 0 and daily_pct <= -0.5:
+        direction = "혼조 — 가격 하락·ETF 자금 순유입"
+        reason = f"BTC 24시간 {daily_pct:+.1f}% 하락하지만 최근 5거래일 ETF 자금은 순유입"
+        counter = "ETF 자금 순유입은 가격 하락 추세 확정의 반대 증거"
+    else:
+        direction = "혼조 — 가격 변화 미약·ETF 방향만 확인"
+        flow_label = "순유입" if flow5 > 0 else "순유출" if flow5 < 0 else "중립"
+        reason = f"BTC 24시간 {daily_pct:+.1f}%로 방향성이 약하며 ETF 5거래일 {flow_label}"
+        counter = "가격 자체의 추가 확인이 없어 단기 상승·하락을 확정할 수 없음"
+
     return {
-        "direction": "혼조 — 가격은 회복했지만 ETF는 순유출",
-        "reason": "가격과 현물자금 흐름이 일치하지 않아 상승 지속성 확인 부족",
-        "next": "ETF 5거래일 순유입 복귀 여부와 가격 유지 여부를 함께 확인",
+        "direction": direction,
+        "confidence": "제한적(가격 24시간, ETF 5거래일은 서로 다른 관측기간)",
+        "reason": reason,
+        "counter": counter,
+        "next": "최근 ETF 5거래일 순유입·순유출 전환과 BTC 가격 24시간 방향이 동행하는지 확인",
     }
 
 
-def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
+def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict, fx: dict | None = None) -> str:
     """Put the current direction and next reversal condition before raw statistics."""
     axes = {s[0] for s in signals}
     market_axes = axes - {"감시원천 이상", "감시원천 복구"}
@@ -1256,7 +1374,7 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
     btc = prices.get("BTC") or {}
     btc_flow = crypto.get("btc_etf") or {}
     eth_flow = crypto.get("eth_etf") or {}
-    fx = _read_official_fx(btc_flow.get("date"))
+    fx = fx or _read_official_fx(now.date().isoformat())
     overview = _crypto_direction(snapshot, now)
 
     lines = ["<b>워뇨띠 90일 서한 · 중요한 변화</b>", "━━━━━━━━━━━━━━━━"]
@@ -1270,7 +1388,10 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
         lines.append("<b>[지금 방향 — 먼저 읽기]</b>")
         if crypto_event:
             lines.append(f"• 암호화폐 단기(수일~1주): <b>{html.escape(overview['direction'])}</b>")
-            lines.append(f"• 이유: {html.escape(overview['reason'])}")
+            lines.append(f"• 근거: {html.escape(overview['reason'])}")
+            lines.append(f"• 반대 근거·주의: {html.escape(overview['counter'])}")
+            lines.append(f"• 판단 신뢰수준: {html.escape(overview['confidence'])}")
+            lines.append("• 서한의 85,000달러는 작성자의 추정 적정가로, 이 가격 아래라는 이유만으로 단기 하락을 확정하지 않습니다.")
             lines.append("• 중기(수주~3개월): 아직 확정할 수 없음. 하루 ETF 유출만으로 장기 하락을 단정하지 않습니다.")
             lines.append("• 나스닥·코스피: 이번 암호화폐 신호만으로 두 지수의 방향이 정해지는 것은 아닙니다.")
         if rate_event:
@@ -1319,8 +1440,6 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
                 f"• {label} ETF {flow.get('date')}: 당일 {_money_usd_m(flow.get('daily_usd_m'), fx)} "
                 f"/ 최근 5거래일 {_money_usd_m(flow.get('five_day_usd_m'), fx)} ({status})"
             )
-        if fx:
-            lines.append(f"• 원화 환산: {fx['date']} 한국은행 매매기준율 1달러={fx['rate']:,.2f}원")
         lines.append("• 주의: 85,000달러는 서한 작성자의 추정 적정가이며 확정된 기술적 지지선이 아닙니다.")
         if btc_flow.get("five_day_complete") and eth_flow.get("five_day_complete"):
             if (btc_flow.get("five_day_usd_m") or 0) < 0 and (eth_flow.get("five_day_usd_m") or 0) < 0:
@@ -1351,8 +1470,13 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
             lines.append("• 다음 공식 분기보고서의 매출채권·영업현금흐름·고객 보증 증감을 확인")
         if korea_event:
             lines.append("• 삼성전자·SK하이닉스의 실제 배당·자사주 매입·소각 집행 공시 확인")
+    if fx and not health_only:
+        lines.append(
+            f"• 원화 환산 기준: {fx['date']} {fx['source']} ({fx.get('method') or '공식 기준환율'}), "
+            f"1달러={float(fx['rate']):,.2f}원 · 표시 원화는 근사값"
+        )
     lines.append(f"\n<b>조회</b>: {now.strftime('%Y-%m-%d %H:%M:%S KST')}")
-    return "\n".join(lines) + "\n"
+    return _append_krw_to_text("\n".join(lines) + "\n", fx)
 
 
 def deduplicate_etf_events(signals: list[tuple], crypto: dict, previous_keys: list[str]) -> tuple[list[tuple], list[str]]:
@@ -1414,6 +1538,7 @@ def main() -> None:
     errors.extend(part)
     nvidia_sec, part = nvidia_ir_snapshot(old.get("nvidia_sec") or {})
     errors.extend(part)
+    fx_today = _read_official_fx(now.date().isoformat())
     news_items, seen, news_errors = high_signal_news(set(old.get("news_seen") or []))
     errors.extend(news_errors)
     nvidia_earnings, earnings_errors = nvidia_earnings_snapshot(old.get("nvidia_earnings") or {})
@@ -1458,6 +1583,7 @@ def main() -> None:
         "nvidia_10q": bool(nvidia_sec.get("parsed_ok")) and not bool(nvidia_sec.get("stale_due_to_error")),
         "nvidia_earnings": bool(nvidia_earnings.get("verified")),
         "news_search": len(news_errors) == 0,
+        "fx_conversion": fx_today is not None,
     }
     old_streaks = old.get("health_error_streaks") or {}
     health_streaks = {
@@ -1496,6 +1622,7 @@ def main() -> None:
             "nvidia_10q": "NVIDIA 공식 10-Q",
             "nvidia_earnings": "NVIDIA 공식 실적발표 RSS",
             "news_search": "빅테크·메모리·주주환원 뉴스 교차검색",
+            "fx_conversion": "공식 원/달러 환율",
         }
         for key, streak in health_streaks.items():
             old_streak = int(old_health_streaks.get(key) or 0)
@@ -1521,7 +1648,11 @@ def main() -> None:
 
         signals = [s for s in signals if _signal_delivery_key(s, new_state, now) not in blocked_keys]
         if signals:
-            ALERT.write_text(build_alert(signals, now, new_state), encoding="utf-8")
+            market_axes = {signal[0] for signal in signals} - {"감시원천 이상", "감시원천 복구"}
+            if market_axes and fx_today is None:
+                # Keep previous baseline and delivery ledger untouched; retry when a fresh official FX exists.
+                raise RuntimeError("Official USD/KRW unavailable: withholding market alert to preserve KRW-only rule")
+            ALERT.write_text(build_alert(signals, now, new_state, fx_today), encoding="utf-8")
             event_keys = list(dict.fromkeys(_signal_delivery_key(s, new_state, now) for s in signals))
             write_json(OUT / "wonyotti_90d_thesis_delivery_meta.json", {"keys": event_keys, "created_at_kst": now.isoformat(timespec="seconds")})
 
@@ -1535,6 +1666,7 @@ def main() -> None:
         f"- 신규 고신호: {len(signals)}건",
         f"- 교차검증 뉴스 후보: {len(news_items)}건",
         f"- 부분 조회 오류: {len(errors)}건",
+        f"- 원/달러 환율: {fx_today['rate']:,.2f}원 ({fx_today['date']}, {fx_today['source']})" if fx_today else "- 원/달러 환율: 확인 실패·통화 포함 시장알림 보류",
         "- ETF 자료단계: " + ", ".join(f"{key}={(crypto.get(key) or {}).get('status', '조회실패')}" for key in ("btc_etf", "eth_etf")),
         f"- NVIDIA 최근 실적발표: {(nvidia_earnings or {}).get('date') or '조회실패'}",
         (
