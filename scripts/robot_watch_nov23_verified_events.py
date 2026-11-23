@@ -106,6 +106,35 @@ def _already_delivered_reprint(item, fallback):
         return GF_DELIVERED
     return fallback
 
+
+def _nov23_reprint_name(item):
+    """Narrow event-level reprints; changed contracts and achieved stages escape."""
+    day=_stamp(item)
+    if day is None or not dt.date(2026,11,19)<=day<=dt.date(2026,11,25):
+        return None
+    title=str(item.get("title") or "")
+    desc=str(item.get("description") or "")
+    combined=title+" "+desc
+    if re.search(r"휴림로봇|Hurim",title,re.I) and re.search(r"삼성전기|Samsung Electro",title,re.I) and re.search(r"한화로보틱스|Hanwha|본계약",combined,re.I):
+        if day>=dt.date(2026,11,23) and not re.search(r"추가\s*발주|납품\s*완료|구매\s*주문서|추가\s*계약\s*체결|계약금액\s*확정|contract\s*value",combined,re.I):
+            return "hurim_contract"
+    if re.search(r"머스크|Musk|테슬라|Tesla",title,re.I) and re.search(r"AI[-\s]*5",title,re.I) and re.search(r"Optimus|옵티머스",combined,re.I):
+        if day>=dt.date(2026,11,22) and not re.search(r"AI5\s*(?:생산|양산|출하|탑재)\s*(?:개시|완료|시작)|공급계약\s*체결",combined,re.I):
+            return "musk_ai5"
+    if re.search(r"베이스그룹|Base\s*Group",title,re.I) and re.search(r"파운데이션|Foundation",combined,re.I):
+        if not re.search(r"투자\s*(?:완료|납입|확정)|지분\s*취득\s*완료|funding\s*closed|invested",combined,re.I):
+            return "base_foundation"
+    if re.search(r"제이에스링크|JS\s*Link",title,re.I) and re.search(r"로보티즈|ROBOTIS",combined,re.I) and re.search(r"자석|magnet",combined,re.I):
+        if not re.search(r"공급\s*본계약|납품\s*완료|첫\s*출하|실제\s*양산|정식\s*발주",combined,re.I):
+            return "jslink_mou"
+    if re.search(r"레인보우로보틱스|Rainbow\s*Robotics",title,re.I) and re.search(r"삼성전자|Samsung",combined,re.I) and re.search(r"유진투자|57만원|매출\s*67%|실적\s*전망",combined,re.I):
+        if day>=dt.date(2026,11,23) and not re.search(r"신규\s*공급계약|삼성전자\s*발주|고객\s*양산\s*승인",combined,re.I):
+            return "rainbow_broker"
+    if re.search(r"中|중국|China",title,re.I) and re.search(r"희토류|영구자석|rare\s*earth",combined,re.I) and re.search(r"로봇|robot",combined,re.I):
+        if day>=dt.date(2026,11,22) and not re.search(r"신규\s*(?:규제|수출금지)|실제\s*생산중단|허가\s*승인|긴급\s*금수",combined,re.I):
+            return "rareearth_shortage"
+    return None
+
 def install(base):
     if getattr(base,"_nov23_event_scope_installed",False): return
     old={name:getattr(base,name) for name in
@@ -138,6 +167,8 @@ def install(base):
     def key(item):
         name=item.get("nov23_event")
         if name in STORIES: return pin_keys[name]
+        alias=_nov23_reprint_name(item)
+        if alias: return pin_keys[alias]
         return _already_delivered_reprint(item,old["key"](item))
 
     def score(item):
