@@ -1478,5 +1478,19 @@
       "response_plain_sha": "e8f0e9eef8d90069a79b09f7c2c0478cc09ba99da714ae2048ee09e4aacaeb0d",
       "removed_duplicate_key": "44e38c418d8b62458b41aa67ae9be72a3fc361ba0f1d5fc57866229df34dd4cb"
     }
+  },
+  "eugene_message_edits": {
+    "eugene_report_20261123_406_detail_v1": {
+      "schema_version": 1,
+      "source_run_id": 45170833591,
+      "source_artifact_id": 14817380683,
+      "message_id": 406,
+      "route_fingerprint": "14816dc9bc6c054e9fdfc5d6ce0871dffed039dc5e8e27016b34273acffdf94e",
+      "source_sha256": "68edfab4fd82c3869f0a88af8b3679d49254fb655cfa739e52698fce93f9567f",
+      "replacement_sha256": "89bc4bb73c132f9090a3d729f3ec981fb951075a5d3db561c8a2a95f378de6bf",
+      "status": "in_flight",
+      "attempts": 1,
+      "requested_at_utc": "2026-11-23T12:38:01.872551+00:00"
+    }
   }
 }
