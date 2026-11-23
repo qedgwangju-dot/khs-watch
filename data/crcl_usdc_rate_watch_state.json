@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-24T05:34:12+09:00",
+  "updated_at_kst": "2026-11-24T05:56:22+09:00",
   "circle": {
     "date": "2026-11-19",
     "circulation_usd_b": 67.3,
@@ -39,46 +39,46 @@
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-11-20",
-    "three_month": 4.32,
+    "date": "2026-11-23",
+    "three_month": 4.37,
     "ten_year": 4.92,
-    "prev_date": "2026-11-19",
-    "prev_three_month": 4.34,
-    "prev_ten_year": 5.04,
-    "daily_3m_bp": -2.0,
-    "daily_10y_bp": -12.0,
+    "prev_date": "2026-11-20",
+    "prev_three_month": 4.32,
+    "prev_ten_year": 4.92,
+    "daily_3m_bp": 5.0,
+    "daily_10y_bp": 0.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
     "date": "2026-11-23",
-    "close": 51.31100082397461,
+    "close": 51.349998474121094,
     "prev_date": "2026-11-20",
     "prev_close": 47.5099983215332,
-    "daily_pct": 8.0,
+    "daily_pct": 8.08,
     "source": "Yahoo Finance daily chart",
     "source_url": "https://finance.yahoo.com/quote/CRCL/history/",
     "crosscheck_source": "ChartExchange historical",
     "crosscheck_date": "2026-11-23",
-    "crosscheck_close": 51.34,
-    "crosscheck_daily_pct": 8.06,
-    "crosscheck_gap_pct": 0.0565,
-    "crosscheck_status": "rounding_difference"
+    "crosscheck_close": 51.35,
+    "crosscheck_daily_pct": 8.08,
+    "crosscheck_gap_pct": 0.0,
+    "crosscheck_status": "confirmed"
   },
   "tbx": {
     "date": "2026-11-23",
-    "close": 29.229999542236328,
+    "close": 29.200000762939453,
     "prev_date": "2026-11-20",
     "prev_close": 29.200000762939453,
-    "daily_pct": 0.1
+    "daily_pct": 0.0
   },
   "fx": {
-    "rate": 1330.8,
-    "date": "2026-11-20",
-    "requested_date": "2026-11-20",
+    "rate": 1337.3,
+    "date": "2026-11-23",
+    "requested_date": "2026-11-23",
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,334.79원, 차이 0.30%"
+    "crosscheck": "Yahoo Finance 1,341.87원, 차이 0.34%"
   },
   "crcl_last_alerted_close_date": "2026-11-20",
   "correction_pending": false,
