@@ -17,12 +17,16 @@ on:
     paths:
       - ".github/workflows/iran-hormuz-market-turn-alert.yml"
       - "scripts/iran_hormuz_market_turn_alert.py"
+      - "scripts/iran_hormuz_telegram_format.py"
       - "tests/test_iran_hormuz_market_turn_alert.py"
+      - "tests/test_iran_hormuz_telegram_format.py"
   pull_request:
     paths:
       - ".github/workflows/iran-hormuz-market-turn-alert.yml"
       - "scripts/iran_hormuz_market_turn_alert.py"
+      - "scripts/iran_hormuz_telegram_format.py"
       - "tests/test_iran_hormuz_market_turn_alert.py"
+      - "tests/test_iran_hormuz_telegram_format.py"
 
 permissions:
   contents: write
@@ -54,8 +58,8 @@ jobs:
 
       - name: Validate monitor
         run: |
-          python -m py_compile scripts/iran_hormuz_market_turn_alert.py
-          python -m unittest tests/test_iran_hormuz_market_turn_alert.py -v
+          python -m py_compile scripts/iran_hormuz_market_turn_alert.py scripts/iran_hormuz_telegram_format.py
+          python -m unittest tests/test_iran_hormuz_market_turn_alert.py tests/test_iran_hormuz_telegram_format.py -v
 
       - name: Probe official Treasury and Brent sources without sending
         if: github.event_name == 'push'
@@ -111,6 +115,7 @@ jobs:
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
+          from scripts.iran_hormuz_telegram_format import render_telegram_html, telegram_visible_length
 
           token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
           chat_id = (
@@ -135,20 +140,13 @@ jobs:
           title = pathlib.Path("out/iran_hormuz_market_turn_title.txt").read_text(encoding="utf-8").strip()
           body = pathlib.Path("out/iran_hormuz_market_turn_alert.md").read_text(encoding="utf-8").strip()
 
-          rendered_lines = []
-          for line in body.splitlines():
-              if line.startswith("원문: "):
-                  url = line.split("원문: ", 1)[1].strip()
-                  rendered_lines.append(
-                      f'<a href="{html.escape(url, quote=True)}">원문</a>'
-                  )
-              elif re.fullmatch(r"\[[^\]\n]+\]", line):
-                  rendered_lines.append(f"<b>{html.escape(line)}</b>")
-              else:
-                  rendered_lines.append(html.escape(line))
-          text = f"<b>{html.escape(title)}</b>\n\n" + "\n".join(rendered_lines)
-          if len(text) > 4096:
-              raise RuntimeError(f"Telegram message too long after compact formatting: {len(text)} chars")
+          text = render_telegram_html(title, body)
+          visible_len = telegram_visible_length(text)
+          if visible_len > 4096:
+              raise RuntimeError(
+                  f"Telegram message exceeds 4096 visible characters: {visible_len}"
+              )
+          print(f"telegram_format_verified=true visible_chars={visible_len} clickable_sources={text.count('<a href=')}")
 
           payload = urllib.parse.urlencode(
               {
