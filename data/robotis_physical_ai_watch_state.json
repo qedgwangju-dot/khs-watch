@@ -1530,13 +1530,16 @@
       "completed_at_utc": "2026-11-18T05:27:06.267770+00:00"
     },
     "robot-message404-reprint-correction-20261123-v1": {
-      "status": "in_flight",
+      "status": "confirmed",
       "original_sha": "8cc07a14fd3fe269cea67c330f22dd732d4cdd53ff8afa76de9f1c3fcd18151c",
       "corrected_sha": "69020e06483d335f78d6a2b8bd39a48ed3abbc7a23415283f2f736fb1cfb825b",
       "message_id": 404,
       "route_fingerprint": "14816dc9bc6c054e9fdfc5d6ce0871dffed039dc5e8e27016b34273acffdf94e",
       "intent_at_utc": "2026-11-23T03:14:37.428419+00:00",
-      "run_id": 45103989370
+      "run_id": 45103989370,
+      "confirmed_at_utc": "2026-11-23T03:14:38.988625+00:00",
+      "response_plain_sha": "e8f0e9eef8d90069a79b09f7c2c0478cc09ba99da714ae2048ee09e4aacaeb0d",
+      "removed_duplicate_key": "44e38c418d8b62458b41aa67ae9be72a3fc361ba0f1d5fc57866229df34dd4cb"
     }
   }
 }
