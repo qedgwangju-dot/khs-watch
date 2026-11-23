@@ -43,16 +43,16 @@
     "https://www.vertiv.com/en-asia/products-catalog/thermal-management/high-density-solutions/vertiv-coolchip-fluid-network-rack-manifolds/"
   ],
   "seen_signatures": [],
-  "last_checked_at_kst": "2026-11-23T12:58:24+09:00",
+  "last_checked_at_kst": "2026-11-23T13:13:53+09:00",
   "candidate_count": 0,
   "event_count": 0,
   "delivery_check": {
-    "checked_at_kst": "2026-11-23T12:58:34+09:00",
+    "checked_at_kst": "2026-11-23T13:14:05+09:00",
     "status": "no_message_due"
   },
-  "last_successful_source_at_kst": "2026-11-23T12:58:24+09:00",
+  "last_successful_source_at_kst": "2026-11-23T13:13:53+09:00",
   "source_health": {
-    "checked_at_kst": "2026-11-23T12:58:24+09:00",
+    "checked_at_kst": "2026-11-23T13:13:53+09:00",
     "rss": {
       "rss_success_count": 27,
       "rss_failure_count": 0,
@@ -61,7 +61,7 @@
     "pcb_publisher": {
       "status": "verified",
       "source": "issuer",
-      "checked_at_kst": "2026-11-23T12:58:24+09:00",
+      "checked_at_kst": "2026-11-23T13:13:53+09:00",
       "observations": [
         {
           "source": "issuer",
@@ -75,7 +75,7 @@
     "last_source_check": {
       "status": "verified",
       "source": "issuer",
-      "checked_at_kst": "2026-11-23T12:58:24+09:00",
+      "checked_at_kst": "2026-11-23T13:13:53+09:00",
       "observations": [
         {
           "source": "issuer",
@@ -149,7 +149,7 @@
           "error_type": "HTTPError"
         }
       ],
-      "checked_at_kst": "2026-11-23T12:58:24+09:00"
+      "checked_at_kst": "2026-11-23T13:13:53+09:00"
     },
     "delivered_fact_keys": [
       "tester-allegro-fy27q2-advantest-ir-20261112-v1"
