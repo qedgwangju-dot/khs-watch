@@ -8,6 +8,7 @@ on:
     paths:
       - ".github/workflows/khs-policy-watch.yml"
       - "scripts/khs_policy_watch.py"
+      - "scripts/khs_cms_ma_star_watch.py"
       - "scripts/khs_domestic_stablecoin_policy_watch.py"
       - "tests/test_khs_domestic_cbdc_policy_watch.py"
       - "scripts/khs_policy_alert_explainer.py"
@@ -88,6 +89,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Verify isolated CMS Medicare Stars policy watch offline (no messages)
+        run: |
+          python -m py_compile scripts/khs_cms_ma_star_watch.py
+          PYTHONPATH=scripts:. python scripts/khs_cms_ma_star_watch.py --self-test
 
       - name: Verify official Section 232 robotics chronology and Telegram integrity
         run: |
@@ -1259,12 +1265,23 @@ jobs:
           echo "Hanul silent state was not persisted after eight attempts." >&2
           exit 1
 
+      - name: Watch CMS Medicare Advantage Star Ratings (existing policy route only)
+        if: always() && env.TELEGRAM_DRY_RUN != 'true' && env.TELEGRAM_TEST != 'true'
+        id: cms_ma_star_watch
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          KHS_AI_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
+          KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: PYTHONPATH=scripts:. python scripts/khs_cms_ma_star_watch.py
+
       - name: Audit isolated policy subwatch failures after alert and state handling
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           failed=()
+          if [ "${{ steps.cms_ma_star_watch.outcome }}" = "failure" ]; then failed+=("CMS Medicare Advantage Star Ratings watch"); fi
           if [ "${{ steps.trusted_news_watch.outcome }}" = "failure" ]; then failed+=("Run trusted policy news watch"); fi
           if [ "${{ steps.domestic_telecom_watch.outcome }}" = "failure" ]; then failed+=("Run domestic telecom policy watch"); fi
           if [ "${{ steps.domestic_stablecoin_watch.outcome }}" = "failure" ]; then failed+=("Run domestic stablecoin policy watch"); fi
