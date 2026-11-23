@@ -80,6 +80,12 @@ NEWS_QUERIES = [
     '"OCC" "Cybersecurity Supervision Work Program" (updated OR new procedures OR risk-based examination)',
 
     '"community banks" "third-party risk management" ("Federal Reserve" OR FDIC) (finalized OR proposed)',
+    # Internal bank AI agents: identity, kill switch, continuity, law and paid deployment.
+    '("banks" OR "JPMorgan" OR "Citi" OR "Wells Fargo") ("AI agents" OR "agentic AI") ("kill switch" OR "credentials" OR "human approval")',
+    '("bank" OR "financial institution") ("agentic AI" OR "AI agents") ("business continuity" OR "shutdown test" OR "access controls")',
+    '("bank" OR "financial institution") ("AI agents" OR "agentic AI") ("incident confirmed" OR "customer loss" OR "unauthorized transaction")',
+    '("OCC" OR "FSB" OR "Federal Reserve") ("agentic AI" OR "super intelligence") ("new guidance" OR "final rule" OR "mandatory" OR "audit")',
+    '("bank" OR "banking") ("AI agent" OR "agentic AI") ("security contract signed" OR "production deployment" OR "paid security service")',
 
     'EU AI frontier model safety standard incident reporting',
     # Korea: official project / procurement / commercialization.
@@ -197,6 +203,26 @@ NEWS_QUERIES = [
 # These existing stages are silently seeded so syndicated reprints cannot
 # masquerade as a new agreement or an enacted rule.
 POLICY_EVENT_BASELINES = {
+    "bank_agents:external_agent_blocking_20261022": {
+        "source_url": "https://www.investing.com/news/stock-market-news/us-banks-detect-unauthorized-ai-agents-in-customer-accounts-axios-reports-4965122",
+        "status": "2026-10-22 Reuters: third-party agents blocked at bank accounts; blocked requests do not establish confirmed account compromise",
+    },
+    "bank_agents:fsb_ai_practices_20261015": {
+        "source_url": "https://www.fsb.org/2026/10/fsb-finalises-sound-practices-for-the-responsible-adoption-of-artificial-intelligence-ai/",
+        "status": "2026-10-15 FSB twelve recommended AI practices, not binding US bank law",
+    },
+    "bank_agents:occ_si_framework_20261104": {
+        "source_url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-97.html",
+        "status": "2026-11-04 OCC examiner framework for bank super intelligence and agentic AI; not a new bank-specific regulatory risk category",
+    },
+    "bank_agents:fed_barr_remarks_20261116": {
+        "source_url": "https://www.federalreserve.gov/newsevents/speech/barr20261116a.htm",
+        "status": "2026-11-16 Fed Governor Barr warning on agent authentication and customer consent, not new law",
+    },
+    "bank_agents:internal_controls_reuters_20261123": {
+        "source_url": "https://www.reuters.com/legal/litigation/some-us-banks-tighten-ai-agent-controls-concern-about-models-escaping-safeguards-2026-11-23/",
+        "status": "2026-11-23 Reuters anonymous-source account: multiple banks tightened INTERNAL agent access, runtime, kill switches, continuity. No identified bank breach, signed security contract or mandatory new rule.",
+    },
     "meta_muse:old_safety_delay_20260915": {"source_url": "https://www.fidelity.com/news/article/default/202609152221RTRSNEWSCOMBINED_L1N45800I_1", "status": "Prior months-long Muse delay, confirmed by Reuters Sep 15; no new delay"},
     "meta_si_accord:original_signing_20260929": {"source_url": "https://www.presidency.ucsb.edu/documents/white-house-accord-super-intelligence", "status": "Voluntary original SI Accord, six company signers, not law or all AI labs"},
     "meta_rsi:serving_majority_principle_202608": {"source_url": "https://about.fb.com/news/2026/08/the-future-is-for-everyone/", "status": "Meta August principle: significant majority human-serving compute, not measured allocation"},
@@ -1745,6 +1771,125 @@ def meta_safety_source_verified(item: dict) -> bool:
         "cnbc": ("cnbc.com",),
     }
     return any(host == domain or host.endswith("." + domain) for domain in allowed.get(source, ()))
+
+
+def bank_agent_policy_stage(item: dict) -> tuple[str, str] | None:
+    """Distinguish internal banking AI safety adoption from older AI-lab hacks."""
+    headline = str(item.get("title") or "").lower()
+    title = re.sub(r"[^a-z0-9가-힣]+", " ", headline).strip()
+    context = headline + " " + str(item.get("description") or "").lower()
+    bank_topic = any(t in context for t in ("bank", "lender", "financial institution",
+        "financial stability board", "occ", "federal reserve", "fsb", "은행", "금융기관"))
+    ai_agent = any(t in context for t in ("ai agent", "ai-agent", "agentic ai",
+        "autonomous agent", "super intelligence", "ai 에이전트", "자율형 ai"))
+    if not bank_topic or not ai_agent and not (
+        "fsb" in context and "sound practices" in context and "ai" in context
+    ):
+        return None
+
+    # Explicitly dated existing milestones: no new alarm on RSS re-indexing.
+    if "banks tighten ai agent controls" in title and "safeguards" in title:
+        return "bank_agents", "internal_controls_reuters_20261123"
+    if ("banks" in title and "third party ai agents" in title
+            and any(t in title for t in ("blocking", "blocked", "detect"))):
+        return "bank_agents", "external_agent_blocking_20261022"
+    if ("fsb" in context or "financial stability board" in context) and (
+        "sound practices" in context and any(t in context for t in ("final", "finalis", "finaliz"))
+    ):
+        return "bank_agents", "fsb_ai_practices_20261015"
+    if ("occ" in context or "office of the comptroller of the currency" in context) and (
+        "supervisory framework" in context and "super intelligence" in context
+    ) and not any(t in title for t in ("revises", "revised", "updated", "amends")):
+        return "bank_agents", "occ_si_framework_20261104"
+    if "barr" in title and "federal reserve" in context and "ai agent" in context:
+        return "bank_agents", "fed_barr_remarks_20261116"
+
+    # Require actual enacted obligations, not consultations or general warnings.
+    if any(t in title for t in ("occ", "federal reserve", "fdic", "bank regulators")):
+        if any(t in title for t in ("final rule", "mandatory rule", "enforceable regulation",
+            "최종 규정 공포", "은행 의무화")) and not any(t in title for t in (
+            "proposed", "draft", "expected", "might", "could", "예정", "검토")):
+            return "bank_agent_supervision", "new_mandatory_rule_reported"
+        if any(t in title for t in ("issues new agentic ai guidance",
+            "issues updated supervisory framework", "new guidance published",
+            "새 감독 지침 발표")):
+            return "bank_agent_supervision", "new_guidance_reported"
+
+    named = (
+        ("jpmorgan", ("jpmorgan", "jp morgan", "jp모건")),
+        ("morgan_stanley", ("morgan stanley", "모건스탠리")),
+        ("wells_fargo", ("wells fargo", "웰스파고")),
+        ("citi", ("citigroup", "citibank", "씨티은행")),
+        ("goldman", ("goldman sachs", "골드만삭스")),
+        ("bofa", ("bank of america", "뱅크오브아메리카")),
+        ("schwab", ("charles schwab", "찰스슈왑")),
+        ("capitalone", ("capital one", "캐피털원")),
+    )
+    bank = next((k for k, terms in named if any(t in headline for t in terms)), None)
+    if not bank:
+        return None
+    if any(t in headline for t in ("no bank breach", "not compromised", "no evidence",
+        "no incidents", "blocked attempt", "차단 성공", "침해 없음")):
+        return None
+    if any(t in headline for t in ("confirms ai agent breach", "ai agent breach confirmed",
+        "bank systems compromised by ai agent", "ai agent unauthorized transactions confirmed",
+        "은행 ai 에이전트 침해 확인")):
+        return "bank_agent_"+bank, "incident_reported"
+    if any(t in headline for t in ("plans to", "may ", "could ", "expected to",
+        "proposal", "proposed", "considering", "계획", "검토")):
+        return None
+    if any(t in headline for t in ("signed security contract", "signs ai agent security deal",
+        "awards ai agent security contract", "보안 계약 체결")):
+        return "bank_agent_"+bank, "paid_contract_reported"
+    if any(t in headline for t in ("tests ai agent kill switch", "tests kill switch",
+        "kill switch test completed", "tests agent shutdown", "backup continuity tested",
+        "킬 스위치 시험")):
+        return "bank_agent_"+bank, "shutdown_test_reported"
+    if any(t in headline for t in ("deploys", "rolls out", "implements", "introduces",
+        "enforces", "launches", "운영 개시", "도입 완료")) and any(t in headline for t in (
+        "ai agent", "agentic ai", "agent access", "agent credentials", "에이전트")):
+        return "bank_agent_"+bank, "production_controls_reported"
+    return None
+
+
+def bank_agent_publisher_verified(item: dict) -> bool:
+    """A source name is not proof of its publisher or of a bank compromise."""
+    if not bank_agent_policy_stage(item):
+        return True
+    source = str(item.get("source") or "").lower().strip()
+    try:
+        host = (urllib.parse.urlsplit(str(item.get("publisher_url") or item.get("url") or "")).hostname or "").lower()
+    except ValueError:
+        return False
+    trusted = (
+        (("reuters",), ("reuters.com",)),
+        (("bloomberg",), ("bloomberg.com",)),
+        (("financial times",), ("ft.com",)),
+        (("associated press", "ap news"), ("apnews.com",)),
+        (("occ", "office of the comptroller of the currency"), ("occ.treas.gov",)),
+        (("federal reserve", "federal reserve board"), ("federalreserve.gov",)),
+        (("fsb", "financial stability board"), ("fsb.org",)),
+        (("jpmorgan", "jpmorgan chase"), ("jpmorganchase.com", "jpmorgan.com")),
+        (("morgan stanley",), ("morganstanley.com",)),
+        (("wells fargo",), ("wellsfargo.com",)),
+        (("citi", "citigroup"), ("citigroup.com", "citi.com")),
+        (("goldman sachs",), ("goldmansachs.com",)),
+        (("bank of america",), ("bankofamerica.com",)),
+        (("charles schwab",), ("schwab.com",)),
+        (("capital one",), ("capitalone.com",)),
+    )
+    for names, domains in trusted:
+        if source in names:
+            return any(host == d or host.endswith("."+d) for d in domains)
+    return False
+
+
+def bank_agent_issuer_verified(item: dict) -> bool:
+    if not bank_agent_policy_stage(item) or not bank_agent_publisher_verified(item):
+        return False
+    return str(item.get("source") or "").lower().strip() not in {
+        "reuters", "bloomberg", "financial times", "associated press", "ap news",
+    }
 
 
 def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
