@@ -11,9 +11,23 @@
     "ai-qc:baseline:quera-2026-08-27": {
       "url": "https://www.quera.com/press-releases/quera-computing-uses-ai-to-automate-a-critical-quantum-computer-subsystem-enabling-the-acceleration-of-commercial-grade-quantum-computing-deployments-from-quera",
       "status": "2026-08-27 Claude 레이저 제어 연구 미상용화 기준사건"
+    },
+    "ai-qc:28366af0e4df2a27d24593d2": {
+      "key": "ai-qc:28366af0e4df2a27d24593d2",
+      "title": "PRESS RELEASE November 23, 2026 QuEra Computing Joins Harvard-Led, $12 Million DOE Project to Design AI-Driven Error Correction for Fault-Tolerant Quantum Computing Read More .all-news_item:hover .events-pr-btn { color: var(--_v2---purple-600); }",
+      "stage": "논문·결과 정정 또는 재현 실패",
+      "date": "2026-11-19",
+      "url": "https://www.quera.com/press-releases/quera-computing-joins-harvard-led-12-million-doe-project-to-design-ai-driven-error-correction-for-fault-tolerant-quantum-computing",
+      "evidence": "공식 기업·연구기관 발표"
     }
   },
-  "checked_at_kst": "2026-11-23T17:19:53+09:00",
+  "checked_at_kst": "2026-11-24T05:38:12+09:00",
   "official_sources_ok": 5,
-  "official_sources_total": 5
+  "official_sources_total": 5,
+  "last_successful_delivery": {
+    "ok": true,
+    "message_id": 640,
+    "bot": "khs88798879_bot",
+    "at_kst": "2026-11-24T05:38:30+09:00"
+  }
 }
