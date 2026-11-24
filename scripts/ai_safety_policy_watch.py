@@ -1948,7 +1948,8 @@ def kr_finance_security_stage(item: dict) -> tuple[str, str] | None:
     # Strip forward-looking clauses before testing the affirmative stage.
     chunks = [c for c in re.split(r"[.…,;·/]|[—–]", title) if c]
     future = ("미통과", "통과못", "통과실패", "통과할까", "통과여부",
-              "통과가능성", "통과예정", "의결예정", "통과전망", "공포예정",
+              "통과가능성", "의결가능성", "통과예정", "의결예정", "가결예정",
+              "통과전망", "의결전망", "가결전망", "공포예정",
               "시행예정", "시행목표", "시행추진", "시행될", "통과촉구",
               "의결촉구", "통과기대", "통과해야", "통과키로", "의결키로",
               "의결할", "통과할", "통과논의", "의결논의", "예정", "목표",
