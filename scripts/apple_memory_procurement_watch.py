@@ -98,6 +98,16 @@ SUPPLIER_MARKERS = {
 Q2_MARKERS = ("2027 q2", "2q27", "second quarter 2027", "2027년 2분기", "2027년2분기", "2027年二季度")
 Q1_MARKERS = ("2027 q1", "1q27", "first quarter 2027", "2027년 1분기", "2027년1분기", "2027年一季度")
 
+# Same existing consumer-memory scope: Mac configuration changes and retail
+# pass-through are distinct from supplier contracts. Source dates are facts,
+# not a new schedule; the exact November report is eligible only once.
+NEO_REPORT_KEY = "apple_macbook_neo_20261122_feb_march_window_reported"
+NEO_OFFICIAL_KEY = "apple_macbook_neo_2_a19pro_12gb_official"
+NEO_SPEC_URL = "https://www.apple.com/macbook-neo/specs/"
+NEO_REPORT_URL = "https://9to5mac.com/2026/11/22/macbook-neo-2-likely-to-launch-around-march-could-feature-new-colors-report/"
+NEO_EARLIER_URL = "https://www.macrumors.com/2026/04/07/macbook-neo-a19-pro-chip-next-year/"
+NEO_UDN_URL = "https://money.udn.com/money/story/11162/9897323"
+
 UA = "Mozilla/5.0 (compatible; khs-apple-memory-procurement-watch/1.0)"
 
 def _fetch(url: str, timeout: int = 25) -> bytes:
@@ -251,12 +261,19 @@ def _relevant(text: str, source: str) -> bool:
         and any(x.lower() in low for x in PROCURE_MARKERS)
     )
 
-def _collect() -> list[dict]:
+def _collect(diagnostics: dict | None = None) -> list[dict]:
     rows: dict[str, dict] = {}
+    health = diagnostics if diagnostics is not None else {}
+    health.update({"attempted": len(SEARCHES), "successful": 0, "failed": 0, "errors": []})
     for kind, query in SEARCHES:
         try:
             root = ET.fromstring(_fetch(_rss_url(kind, query)))
-        except Exception:
+            if root.find("./channel") is None:
+                raise ValueError("RSS channel missing")
+            health["successful"] += 1
+        except Exception as exc:
+            health["failed"] += 1
+            health["errors"].append(f"{kind}: {type(exc).__name__}")
             continue
         for item in root.findall("./channel/item"):
             title = _clean(item.findtext("title"))
@@ -282,12 +299,13 @@ def _collect() -> list[dict]:
     return sorted(rows.values(), key=lambda x: x.get("published_at_kst") or "")
 
 def _load_state() -> dict:
-    try:
+    if STATE_PATH.exists():
+        # Never silently reinitialize a previously delivered event after a
+        # damaged state file. Hold the run rather than replay the baseline.
         obj = json.loads(STATE_PATH.read_text(encoding="utf-8"))
-        if isinstance(obj, dict):
-            return obj
-    except Exception:
-        pass
+        if not isinstance(obj, dict):
+            raise ValueError("Apple memory state is not a JSON object")
+        return obj
     return {
         "schema_version": 1,
         "initial_alert_sent": False,
@@ -376,16 +394,149 @@ def _event_block(event: dict, nums: dict, fact_key: str) -> str:
     lines += ["", f'<a href="{html.escape(event.get("link") or BASELINE_SOURCE, quote=True)}"><b>원문</b></a>']
     return "\n".join(lines)
 
+def _neo_page_text(url: str, fetcher=None) -> str:
+    fetcher = fetcher or _fetch
+    raw = fetcher(url, timeout=12).decode("utf-8", "replace")
+    # Drop scripts/styles, so a stray JSON keyword, a navigation link or an
+    # embedded ad is not sufficient to classify a new product specification.
+    raw = re.sub(r"<(?:script|style)\b[^>]*>.*?</(?:script|style)>", " ", raw,
+                 flags=re.I | re.S)
+    return _clean(raw)
+
+
+def _neo_current_spec(text: str) -> str:
+    if not re.search(r"MacBook\s+Neo", text, re.I):
+        return "unverified"
+    # Require the chip and unified memory to be visible on the official page.
+    # A dual match means the generation cannot be unambiguously assigned.
+    a18 = bool(re.search(r"\bA18\s+Pro\b", text, re.I))
+    a19 = bool(re.search(r"\bA19\s+Pro\b", text, re.I))
+    old_mem = bool(re.search(r"\b8\s*GB\s+unified\s+memory\b", text, re.I))
+    new_mem = bool(re.search(r"\b12\s*GB\s+unified\s+memory\b", text, re.I))
+    if a18 and old_mem and not a19 and not new_mem:
+        return "a18pro_8gb"
+    if a19 and new_mem and not a18 and not old_mem:
+        return "a19pro_12gb"
+    return "unverified"
+
+
+def _neo_nov22_report_verified(text: str) -> bool:
+    # Specific publisher article: confirm the date window, both generations,
+    # memory amounts and Bloomberg attribution, not merely a headline/keyword.
+    return bool(
+        re.search(r"MacBook\s+Neo", text, re.I)
+        and re.search(r"\bA18\s+Pro\b", text, re.I)
+        and re.search(r"\bA19\s+Pro\b", text, re.I)
+        and re.search(r"\b8\s*GB\b", text, re.I)
+        and re.search(r"\b12\s*GB\b", text, re.I)
+        and re.search(r"\bFebruary\s+(?:and|or|to)\s+March\b|\b(?:around|in|by)\s+March\b", text, re.I)
+        and re.search(r"Bloomberg|Mark\s+Gurman", text, re.I)
+    )
+
+
+def _neo_product_context(title: str, desc: str = "") -> bool:
+    return bool(re.search(r"\bMacBook\s*Neo\b|맥북\s*네오", title or "", re.I))
+
+
+def _neo_explicit_supplier_milestone(text: str) -> bool:
+    return bool(re.search(
+        r"(?i)\b(?:signed|signs|awarded|secured|confirmed)\b.{0,80}"
+        r"\b(?:supply\s+agreement|memory\s+contract|purchase\s+order)\b|"
+        r"공급계약\s*체결|메모리\s*발주\s*확정|簽署.{0,30}(?:供應|采购|採購)合約",
+        text or "",
+    ))
+
+
+def _neo_verified_signal(state: dict, now: dt.datetime, fetcher=None) -> tuple[str | None, str, dict]:
+    """A lead report and a later official specification are separate events.
+
+    Failures do not advance event IDs. The report is a dated, directly checked
+    Bloomberg-derived forecast, not an Apple announcement or an OLED order.
+    The live official spec check continues independently once per KST day.
+    """
+    prior = dict(state.get("macbook_neo_watch") or {})
+    known = set(state.get("seen_fact_keys") or [])
+    diag = {"official_source": "not_checked", "report_source": "not_checked"}
+    today = now.date().isoformat()
+    report_pending = (NEO_REPORT_KEY not in known
+                      and dt.date(2026, 11, 22) <= now.date() <= dt.date(2026, 12, 22))
+    if prior.get("official_checked_date") == today and not report_pending:
+        diag["official_source"] = "verified_today" if prior.get("official_spec") else "unverified_today"
+        return None, "", diag
+    try:
+        spec = _neo_current_spec(_neo_page_text(NEO_SPEC_URL, fetcher))
+    except Exception as exc:
+        diag["official_source"] = "fetch_failed:" + type(exc).__name__
+        return None, "", diag
+    diag["official_source"] = spec
+    if spec == "unverified":
+        return None, "", diag
+    diag["official_checked_date"] = today
+    if spec == "a19pro_12gb":
+        if NEO_OFFICIAL_KEY in known:
+            return None, "", diag
+        return NEO_OFFICIAL_KEY, "\n".join([
+            "<b>[애플 맥북 네오 메모리 사양 공식 변경]</b>",
+            "■ 애플 공식 제품 사양에서 A19 Pro 및 12GB 통합 메모리를 직접 확인했습니다.",
+            "• 기존 A18 Pro·8GB 대비 메모리 탑재량 50% 확대. 실제 공급사·발주량·판매량은 별도 확인이 필요합니다.",
+            "• 디스플레이 사양은 별도 검증 대상이며, 메모리 증량만으로 OLED 전환을 추정하지 않습니다.",
+            f'<a href="{NEO_SPEC_URL}">애플 공식 제품 사양</a>',
+        ]), diag
+    if not report_pending:
+        return None, "", diag
+    try:
+        report = _neo_page_text(NEO_REPORT_URL, fetcher)
+    except Exception as exc:
+        diag["report_source"] = "fetch_failed:" + type(exc).__name__
+        return None, "", diag
+    if not _neo_nov22_report_verified(report):
+        diag["report_source"] = "content_unverified"
+        return None, "", diag
+    diag["report_source"] = "direct_article_verified"
+    return NEO_REPORT_KEY, "\n".join([
+        "<b>[애플 맥북 네오 2세대 — 출시 전망 구체화·메모리 선행지표]</b>",
+        "■ 11월 22일 보도: 2027년 상반기 전망에서 2~3월 출시 가능성으로 구체화. 애플 공식 출시일은 미발표.",
+        "• 기존 A18 Pro·8GB는 애플 공식 사양 확인. A19 Pro·12GB는 4월부터 나온 공급망 전망이며 이번 신규 확정 사양이 아닙니다.",
+        "• 동일 기기 판매량 가정 시 기기당 메모리 탑재량 8→12GB(+50%). 실제 조달단가·공급사·수량·2세대 가격은 미확정.",
+        "• 맥북 네오의 OLED 전환 확인 없음. 같은 시기 OLED 아이패드 에어 전망과 구분.",
+        "• 이번 보도는 Bloomberg 기자 전망을 인용한 것이며, 재인용은 추가 독립 사실이나 별도 수주가 아닙니다.",
+        "• 조기경보: 공식 발표, 실제 판매가격, 제품 판매량과 메모리 조달 물량의 동시 변화.",
+        f'<a href="{NEO_SPEC_URL}">애플 현행 공식 사양</a> · <a href="{NEO_REPORT_URL}">11/22 직접 확인 기사</a> · <a href="{NEO_EARLIER_URL}">4월 기존 전망 참고</a> · <a href="{NEO_UDN_URL}">11/24 대만 보도 참고</a>',
+    ]), diag
+
+
 def main() -> None:
     now = dt.datetime.now(KST)
     state = _load_state()
     seen_ids = set(state.get("seen_ids") or [])
     seen_fact_keys = set(state.get("seen_fact_keys") or [])
     seen_fact_keys.add(CXMT_APPLE_REFUSAL_BASELINE_KEY)
-    events = _collect()
+    health: dict = {}
+    events = _collect(health)
+    neo_key, neo_block, neo_health = _neo_verified_signal(state, now)
+
+    # Record a genuinely failed source separately from a successful empty feed.
+    # Do not stage the old baseline, generic seen IDs or false no-change state
+    # after total RSS failure. An independently checked Neo fact may still
+    # proceed without acknowledging any failed RSS collection.
+    if not health["successful"] and not neo_key:
+        PENDING_PATH.unlink(missing_ok=True)
+        FRAGMENT_PATH.unlink(missing_ok=True)
+        STATUS_PATH.write_text(
+            "# Apple 메모리 조달가격 감시\n"
+            f"- checked_at_kst: {now.isoformat(timespec='seconds')}\n"
+            f"- source_status: fetch_failed (0/{health['attempted']})\n"
+            f"- neo_source_status: {json.dumps(neo_health, ensure_ascii=False)}\n"
+            "- state_advanced: false; 신규 발표 없음으로 판정하지 않음\n",
+            encoding="utf-8")
+        print("apple_memory_source_failed=true state_advanced=false")
+        return
 
     alert_blocks: list[str] = []
-    initial_was_pending = not bool(state.get("initial_alert_sent"))
+    if neo_key and neo_key not in seen_fact_keys and neo_block:
+        alert_blocks.append(neo_block)
+        seen_fact_keys.add(neo_key)
+    initial_was_pending = bool(health["successful"]) and not bool(state.get("initial_alert_sent"))
     if initial_was_pending:
         alert_blocks.append(_initial_block())
         state["initial_alert_sent"] = True
@@ -405,7 +556,12 @@ def main() -> None:
         fkey = _fact_key(blob, nums)
         if e["id"] in seen_ids:
             continue
-        seen_ids.add(e["id"])
+        # Do not turn a product-spec forecast or retail-price article into
+        # a new DRAM/NAND procurement contract. The direct Neo lane has its
+        # own evidence and semantic key; specific real supplier deals keep
+        # their original gate.
+        if _neo_product_context(e.get("title", "")) and not _neo_explicit_supplier_milestone(blob):
+            continue
         if _apple_cxmt_pair(blob):
             if _apple_cxmt_discount_reprint(blob):
                 # The original August refusal cannot become a fresh October deal.
@@ -426,18 +582,41 @@ def main() -> None:
             seen_fact_keys.add(BASELINE_FACT_KEY)
             continue
         if fkey in seen_fact_keys:
+            seen_ids.add(e["id"])
             continue
         fresh_candidates.append((e, nums, fkey, _source_rank(e.get("source") or "")))
 
-    # Highest-trust meaningful change first; avoid flooding.
+    # Do not consume candidates beyond the per-run alert cap. Re-check the
+    # semantic key within the selected batch to collapse same-fact reprints.
     fresh_candidates.sort(key=lambda x: (x[3], x[0].get("published_at_kst") or ""), reverse=True)
-    for e, nums, fkey, rank in fresh_candidates[:2]:
+    sent_candidates = 0
+    for e, nums, fkey, rank in fresh_candidates:
         if rank < 2:
+            continue
+        if fkey in seen_fact_keys:
+            seen_ids.add(e["id"])
+            continue
+        if sent_candidates >= 2:
             continue
         alert_blocks.append(_event_block(e, nums, fkey))
         seen_fact_keys.add(fkey)
+        seen_ids.add(e["id"])
+        sent_candidates += 1
+
+    neo_prior = dict(state.get("macbook_neo_watch") or {})
+    if neo_health.get("official_checked_date"):
+        neo_prior["official_checked_date"] = neo_health["official_checked_date"]
+        neo_prior["official_spec"] = neo_health.get("official_source")
+    if neo_key and neo_block:
+        neo_prior["last_event_key"] = neo_key
+        neo_prior["last_event_source"] = NEO_SPEC_URL if neo_key == NEO_OFFICIAL_KEY else NEO_REPORT_URL
+    state["macbook_neo_watch"] = neo_prior
 
     state.update({
+        "source_health": health,
+        "source_status": ("complete" if not health["failed"] else
+                          "partial" if health["successful"] else "rss_failed_direct_event_only"),
+        "neo_source_health": neo_health,
         "schema_version": 1,
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "baseline_at_kst": BASELINE_AT_KST.isoformat(timespec="seconds"),
@@ -462,6 +641,8 @@ def main() -> None:
         "# Apple 메모리 조달가격 감시\n"
         f"- checked_at_kst: {now.isoformat(timespec='seconds')}\n"
         f"- scanned_items: {len(events)}\n"
+        f"- source_status: {state['source_status']} ({health['successful']}/{health['attempted']})\n"
+        f"- neo_source_status: {json.dumps(neo_health, ensure_ascii=False)}\n"
         f"- alert_generated: {str(bool(alert_blocks)).lower()}\n"
         f"- baseline: DRAM US$2.0/Gb, NAND US$0.33/Gb, +30~40%, 2027Q1 Samsung\n"
         f"- source: {BASELINE_SOURCE}\n",

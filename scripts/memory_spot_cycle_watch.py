@@ -4372,6 +4372,12 @@ def write_outputs(items: list[dict], errors: list[str], foxconn_record: dict | N
     ):
         if state.get(key) is not None:
             pending[key] = state[key]
+    # The separately verified NAND forecast is ACK-gated. Carry its complete
+    # existing record into ordinary scans; otherwise a quiet scan drops the
+    # confirmed 11/19 event ID and the downstream integrity gate mistakes
+    # that deletion for a new, unrendered event, blocking the entire workflow.
+    if "nand_2027_reversal_samr" in state:
+        pending["nand_2027_reversal_samr"] = state["nand_2027_reversal_samr"]
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     status_lines = [
@@ -5599,12 +5605,16 @@ def main() -> int:
             required.append("<b>[SemiAnalysis 40% 가정·전체 AI 설비투자 해석 보강]</b>")
         old_nand = dict(load_state().get("nand_2027_reversal_samr") or {})
         new_nand = dict(staged_doc.get("nand_2027_reversal_samr") or {})
+        if new_nand.get("fact_key") != old_nand.get("fact_key"):
+            required.append("<b>[NAND 2027 가격 반전 조기화·중국 SSD 규제 선행경보]</b>")
         if new_nand.get("press_20261119_event_id") != old_nand.get("press_20261119_event_id"):
             required.append("<b>[NAND 가격 전망 11/19 공식 상향 위험 경보 — 하락 시작 앞당김]</b>")
         if required:
             body = ALERT_PATH.read_text(encoding="utf-8") if ALERT_PATH.exists() else ""
-            if any(section not in body for section in required):
-                raise RuntimeError("Semia event key staged without its matching Telegram alert; state save blocked")
+            missing_sections = [section for section in required if section not in body]
+            if missing_sections:
+                raise RuntimeError("Memory event key staged without matching Telegram section; state save blocked: "
+                                   + ", ".join(missing_sections))
     if errors:
         if verified_nand_alert or verified_nand_nov19:
             # Verified, independent official report; no unrelated RSS state promoted.

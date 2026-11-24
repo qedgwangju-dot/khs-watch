@@ -1583,6 +1583,31 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
             self.assertFalse(w.PENDING_PATH.exists())
 
 
+    def test_quiet_scan_retains_already_confirmed_nand_forecast(self):
+        import json
+        original = {
+            "fact_key": w.NAND_2Q27_REVISION_ID,
+            "press_20261119_event_id": w.NAND_NOV19_PRESS_EVENT_ID,
+            "new_contract_price_fall_quarter": "2027-Q1",
+            "all_nand_categories_price_decline_quarter": "2027-Q2",
+        }
+        prior = dict(w.load_state())
+        prior["nand_2027_reversal_samr"] = original
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            with patch.object(w, "load_state", return_value=prior), \
+                 patch.object(w, "_semia_revision_publisher_probe", return_value=(
+                     prior.get("semianalysis_accelerator_revision") or {}).get("publisher_probe", {})), \
+                 patch.object(w, "OUT_DIR", root), \
+                 patch.object(w, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(w, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root / "status.md"):
+                w.write_outputs([], [])
+                saved = json.loads(w.PENDING_PATH.read_text(encoding="utf-8"))
+                self.assertEqual(saved["nand_2027_reversal_samr"], original)
+                self.assertEqual(saved.get("delivery_receipt"), prior.get("delivery_receipt"))
+                self.assertFalse(w._stage_nand_nov19_press_update([]))
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
@@ -1697,6 +1722,55 @@ class AppleCXMTPriceIntegrityTests(unittest.TestCase):
         self.assertIn("6~10개 분기", notes)
         self.assertIn("독립 재현 전", notes)
         self.assertIn("예측이 아님", notes)
+
+
+class AppleNeoEvidenceTests(unittest.TestCase):
+    def test_current_spec_and_forecast_are_separate(self):
+        import apple_memory_procurement_watch as a
+        import datetime as dt
+        old = "MacBook Neo Apple A18 Pro chip 8GB unified memory"
+        article = ("Bloomberg Mark Gurman MacBook Neo 2 around March. "
+                   "The current A18 Pro has 8GB; A19 Pro has 12GB.")
+        def source(url, timeout=12):
+            return (old if url == a.NEO_SPEC_URL else article).encode()
+        now = dt.datetime(2026, 11, 24, 10, 30, tzinfo=a.KST)
+        key, body, health = a._neo_verified_signal({}, now, source)
+        self.assertEqual(key, a.NEO_REPORT_KEY)
+        self.assertIn("공식 출시일은 미발표", body)
+        self.assertIn("OLED 전환 확인 없음", body)
+        self.assertEqual(health["report_source"], "direct_article_verified")
+        second, _, _ = a._neo_verified_signal({"seen_fact_keys": [key]}, now, source)
+        self.assertIsNone(second)
+        new = lambda url, timeout=12: b"MacBook Neo Apple A19 Pro chip 12GB unified memory"
+        confirmed, _, _ = a._neo_verified_signal({"seen_fact_keys": [key]}, now, new)
+        self.assertEqual(confirmed, a.NEO_OFFICIAL_KEY)
+
+    def test_incomplete_or_failed_source_never_advances_neo_event(self):
+        import apple_memory_procurement_watch as a
+        import datetime as dt
+        now = dt.datetime(2026, 11, 24, tzinfo=a.KST)
+        def fake(url, timeout=12):
+            if url == a.NEO_SPEC_URL:
+                return b"MacBook Neo Apple A18 Pro chip 8GB unified memory"
+            return b"Access denied"
+        key, _, health = a._neo_verified_signal({}, now, fake)
+        self.assertIsNone(key)
+        self.assertEqual(health["report_source"], "content_unverified")
+        with patch.object(a, "_fetch", side_effect=TimeoutError):
+            health = {}
+            self.assertEqual(a._collect(health), [])
+            self.assertEqual(health["successful"], 0)
+            self.assertEqual(health["failed"], len(a.SEARCHES))
+
+    def test_neo_context_does_not_create_supplier_contract(self):
+        import apple_memory_procurement_watch as a
+        title = "MacBook Neo 2 likely to launch around March with A19 Pro and 12GB"
+        self.assertTrue(a._neo_product_context(title))
+        self.assertFalse(a._neo_explicit_supplier_milestone(title))
+        self.assertTrue(a._neo_explicit_supplier_milestone(
+            "Apple signed a memory supply agreement for the MacBook Neo"))
+        self.assertEqual(a._neo_current_spec("MacBook Neo A18 Pro 8GB unified memory A19 Pro 12GB unified memory"),
+                         "unverified")
 
 
 if __name__ == "__main__":
