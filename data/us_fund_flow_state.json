@@ -231,11 +231,11 @@
     "sp500_peak_value": 7818.93017578125,
     "sp500_drawdown_pct": -11.62,
     "hartnett_tracking_version": "2026-10-09-v1",
-    "hartnett_treasury_date": "2026-11-23",
-    "hartnett_10y_pct": 4.92,
-    "hartnett_10y_5d_bp": -20.0,
+    "hartnett_treasury_date": "2026-11-24",
+    "hartnett_10y_pct": 4.91,
+    "hartnett_10y_5d_bp": -19.0,
     "hartnett_bond_level": "below_5_30",
-    "hartnett_bond_momentum": "fall_20bp",
+    "hartnett_bond_momentum": "neutral",
     "hartnett_fed_target_upper_pct": 4.0,
     "hartnett_fed_effective_date": "2026-10-28",
     "hartnett_election_stage": "past",
@@ -251,25 +251,24 @@
         "source_url": "https://www.aaii.com/latest/article/561341-october-aaii-asset-allocation-survey-bond-allocations-rise"
       },
       "conference": {
-        "period": "2026-10",
-        "published_date": "2026-10-27",
-        "confidence_index": 91.7,
-        "headline_move_abs_points": 7.5,
-        "expectations_index": 72.6,
+        "period": "2026-11",
+        "published_date": "2026-11-24",
+        "confidence_index": 103.3,
+        "headline_move_abs_points": 11.4,
+        "expectations_index": 83.6,
         "stock_up_vs_down_majority": true
       },
-      "pair": "2026-10|2026-10",
+      "pair": "2026-10|2026-11",
       "regime": "동반 높은 주식노출·상승기대"
     },
     "fund_horizon_summary_version": "2026-11-03-front-v1"
   },
   "factual_delivery_receipt": {
-    "timestamp_utc": "2026-11-20T22:29:27.593820+00:00",
-    "date_kst": "2026-11-21",
+    "timestamp_utc": "2026-11-24T22:27:03.880222+00:00",
+    "date_kst": "2026-11-25",
     "bot_username": "khs887900887900008879_bot",
     "message_ids": [
-      3415,
-      3416
+      3658
     ]
   }
 }
