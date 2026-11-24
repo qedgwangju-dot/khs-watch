@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-11-23T22:01:10+09:00",
+  "updated_at_kst": "2026-11-24T09:44:45+09:00",
   "policy_rate": 1.25,
   "statement_url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf",
   "opinion_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi261030.pdf",
@@ -8,26 +8,26 @@
   "hawkish_hits": [
     "nimble"
   ],
-  "jgb_source_date": "2026/11/19",
+  "jgb_source_date": "2026/11/20",
   "jgb10_above3_active": false,
   "jgb10_above3_streak": 0,
   "yen_carry_combo_active": false,
   "critical_abnormal_active": false,
   "jgb": {
-    "date": "2026/11/19",
-    "jgb2": 1.853,
-    "jgb10": 2.87,
-    "jgb20": 3.745,
-    "jgb30": 4.03,
-    "jgb40": 4.092
+    "date": "2026/11/20",
+    "jgb2": 1.826,
+    "jgb10": 2.838,
+    "jgb20": 3.717,
+    "jgb30": 4.014,
+    "jgb40": 4.069
   },
   "usdjpy": {
-    "date": "2026-11-23T13:01:10Z",
-    "value": 159.05299377441406,
-    "change_pct": 0.3412951539404348,
+    "date": "2026-11-24T00:44:51Z",
+    "value": 159.06300354003906,
+    "change_pct": 0.1309419395640321,
     "source": "Yahoo query1/query2 5분 데이터 교차확인",
     "signal_eligible": true,
-    "age_seconds": 1.289636
+    "age_seconds": 1.350307
   },
   "auctions": {
     "20": {
@@ -38,15 +38,6 @@
       "prev_date": "10/20/2026",
       "prev_btc": 5.844349283187488,
       "prev_tail_bp": 0.6000000000000227
-    },
-    "30": {
-      "date": "11/10/2026",
-      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20261110.htm",
-      "btc": 3.3561127135566893,
-      "tail_bp": 2.400000000000002,
-      "prev_date": "10/8/2026",
-      "prev_btc": 3.8766363434657203,
-      "prev_tail_bp": 1.2000000000000455
     }
   },
   "news_seen": []
