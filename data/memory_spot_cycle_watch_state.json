@@ -977,7 +977,7 @@
     "7fbdf88be62f0b7bbff4bebf": {
       "title": "[News] U.S. Judge Rejects Samsung, SK hynix, Micron’s DRAM Price-Fixing Dismissal Bid, Citing Plausible Collusion - TrendForce",
       "source": "TrendForce",
-      "published_kst": "2026-11-16T14:23:36+09:00",
+      "published_kst": "2026-11-16T17:00:00+09:00",
       "first_seen_kst": "2026-11-16T21:19:51+09:00"
     },
     "ecd897e3c7879560710705e3": {
@@ -1165,10 +1165,28 @@
       "source": "Andro-News",
       "published_kst": "2026-11-19T22:08:08+09:00",
       "first_seen_kst": "2026-11-24T15:14:25+09:00"
+    },
+    "d19785498d64c7b86e0850a6": {
+      "title": "NAND Wafer Spot Price Drops 24% in Six Weeks: TrendForce - FourWeekMBA",
+      "source": "FourWeekMBA",
+      "published_kst": "2026-11-24T16:28:58+09:00",
+      "first_seen_kst": "2026-11-25T02:51:14+09:00"
+    },
+    "331bdbb19eb27f6276207d2b": {
+      "title": "Micron Stock Price Forecast: Stock May Hit $509 as AI Memory Shortage and NAND Price Cut Expectations Coexist - NewsBreak: Local News & Alerts",
+      "source": "NewsBreak: Local News & Alerts",
+      "published_kst": "2026-11-22T08:12:57+09:00",
+      "first_seen_kst": "2026-11-25T02:51:14+09:00"
+    },
+    "cf643114cbcffa1f67c211f4": {
+      "title": "【Market View】NAND Flash Prices Set to Decline in 2027 as Chinese CSP Order Cuts Outweigh North American Demand Growth, Says TrendForce - DRAMeXchange",
+      "source": "DRAMeXchange",
+      "published_kst": "2026-11-19T16:41:00+09:00",
+      "first_seen_kst": "2026-11-25T02:51:14+09:00"
     }
   },
-  "updated_at_kst": "2026-11-24T15:14:25+09:00",
-  "last_scan_count": 23,
+  "updated_at_kst": "2026-11-25T02:51:14+09:00",
+  "last_scan_count": 27,
   "last_new_count": 2,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -1229,21 +1247,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-24T15:14:44+09:00",
+  "last_successful_delivery_kst": "2026-11-25T02:51:34+09:00",
   "telegram_message_ids": [
-    558
+    560
   ],
-  "telegram_message_id": 558,
+  "telegram_message_id": 560,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      558
+      560
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-24T15:14:44+09:00",
-    "alert_signature": "6acf5e4bae1f1c60accccb87b3288f9c69fe00a76492bddf2e6dfec443b17e18"
+    "confirmed_at_kst": "2026-11-25T02:51:34+09:00",
+    "alert_signature": "e2f5537e955a7303117a7ed69177f76c186f6a7f8f223e46f08e9dc8c747dd07"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1555,7 +1573,7 @@
     "published_model_date": "2026-11-13",
     "comparison_model_date": "2026-11-02",
     "publisher_probe": {
-      "checked_date": "2026-11-24",
+      "checked_date": "2026-11-25",
       "verified": false,
       "source_kind": "publisher_model_numeric_unverified"
     },
