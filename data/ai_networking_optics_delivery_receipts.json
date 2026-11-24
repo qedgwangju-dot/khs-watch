@@ -90,20 +90,6 @@
     }
   },
   "history_cache": {
-    "44273148580:1": {
-      "checked_at_kst": "2026-11-18T18:38:56+09:00",
-      "completed": "2026-11-18T09:10:42+00:00",
-      "fingerprint": "2738cdbc6a42d0425b27968878fc80636a38fedab234fdef1236897359d0b16e",
-      "outcome": "attempted",
-      "saved": true,
-      "sent_success": true,
-      "started": "2026-11-18T09:10:41+00:00"
-    },
-    "44275976393:1": {
-      "checked_at_kst": "2026-11-18T18:38:56+09:00",
-      "fingerprint": "15fa3c0411e0babb350e96db104a2729a7473789b361691a20349845e0acdfeb",
-      "outcome": "no_send"
-    },
     "44277598098:1": {
       "checked_at_kst": "2026-11-18T19:08:50+09:00",
       "completed": "2026-11-18T09:38:56+00:00",
@@ -112,11 +98,6 @@
       "saved": true,
       "sent_success": true,
       "started": "2026-11-18T09:38:56+00:00"
-    },
-    "44280038355:1": {
-      "checked_at_kst": "2026-11-18T19:08:50+09:00",
-      "fingerprint": "1b3b481a08dd90842d9169ef3d81b1150b70c2c3559c24195d47f552fa7e6f6c",
-      "outcome": "no_send"
     },
     "44282287365:1": {
       "checked_at_kst": "2026-11-18T19:38:55+09:00",
@@ -3956,6 +3937,25 @@
     "45482469092:1": {
       "checked_at_kst": "2026-11-25T06:02:18+09:00",
       "fingerprint": "3bf4c9f4b221a9c1c9e568b9803514fab10fb4bef61f0a17d2fb9eebd6b07e0a",
+      "outcome": "no_send"
+    },
+    "45486505841:1": {
+      "checked_at_kst": "2026-11-25T07:19:32+09:00",
+      "completed": "2026-11-24T21:02:18+00:00",
+      "fingerprint": "140161a7fa0a5f756c40c3cc14c880e395adc71a01806d5c279dc300d7232912",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-24T21:02:18+00:00"
+    },
+    "45491106719:1": {
+      "checked_at_kst": "2026-11-25T07:19:32+09:00",
+      "fingerprint": "ee9e23081dd079602e4ebde8636cee8d9fd5bab75dbabd731e7a8ff71981193f",
+      "outcome": "no_send"
+    },
+    "45495367405:1": {
+      "checked_at_kst": "2026-11-25T07:19:31+09:00",
+      "fingerprint": "dc0c0a6f44e657d9298ee457f6274e091617e59b3a09ffcab1fdfcbeaa6b57dc",
       "outcome": "no_send"
     }
   },
