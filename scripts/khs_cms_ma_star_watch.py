@@ -237,11 +237,117 @@ def verify_bot(token: str):
         raise RuntimeError("CMS event policy Telegram bot identity mismatch")
 
 
+def format_medical_alert(message: str) -> dict:
+    """Only this medical subwatch: preserve every body line; use native clickable text."""
+    text = ""
+    entities = []
+    sources = []
+    source_labels = {
+        "CMS 원문", "독립 시장 보도", "공식 최종규칙",
+        "미국 의회 공식 기록", "법안 조회", "상원 공식 발표", "미국 의회 법안",
+    }
+
+    def units(value: str) -> int:
+        return len(value.encode("utf-16-le")) // 2
+
+    def append(value: str, kind: str = "", url: str = ""):
+        nonlocal text
+        if kind:
+            entity = {"type": kind, "offset": units(text), "length": units(value)}
+            if url:
+                entity["url"] = url
+            entities.append(entity)
+        text += value
+
+    for index, line in enumerate(line for line in message.splitlines() if line.strip()):
+        label, colon, body = line.partition(": ")
+        if (label.removeprefix("■ ") in source_labels and colon
+                and body.startswith(("https://", "http://")) and not any(c.isspace() for c in body)
+                and urllib.parse.urlsplit(body).hostname):
+            sources.append((label.removeprefix("■ "), body))
+            continue
+        if text:
+            append("\n\n")
+        if index == 0:
+            append(line, "bold")
+        elif line.startswith("■ ") and colon:
+            append(label, "bold")
+            append(colon + body)
+        else:
+            append(line)
+    if sources:
+        append("\n\n")
+        append("원문 및 출처", "bold")
+        for label, url in sources:
+            append("\n• ")
+            append(label + " 바로가기", "text_link", url)
+    # Do not silently clip a report or reserve its delivery if it cannot fit.
+    if not text or units(text) > 4096:
+        raise ValueError("Medical policy alert exceeds Telegram single-message limit; no truncation")
+    return {"text": text, "entities": entities}
+
+
+def medical_layout_receipt_verified(receipt: dict, layout: dict) -> bool:
+    """Check what Telegram returned, separately from the existing delivery receipt."""
+    result = receipt.get("result") or {}
+    if result.get("text") != layout["text"]:
+        return False
+    def links(items):
+        return sorted((x.get("offset"), x.get("length"), x.get("url"))
+                      for x in items if x.get("type") == "text_link")
+    return links(result.get("entities") or []) == links(layout["entities"])
+
+
+def assert_medical_alert_layout(message: str, expected_urls: list[str]):
+    layout = format_medical_alert(message)
+    visible = layout["text"]
+    encoded = visible.encode("utf-16-le")
+    links = [e for e in layout["entities"] if e["type"] == "text_link"]
+    assert [e["url"] for e in links] == expected_urls
+    for e in links:
+        label = encoded[e["offset"] * 2:(e["offset"] + e["length"]) * 2].decode("utf-16-le")
+        assert label.endswith(" 바로가기") and "http" not in label
+        assert e["url"] not in visible
+    for line in message.splitlines():
+        if line and not any(line.endswith(": " + url) for url in expected_urls):
+            assert line in visible, "Medical alert body lost a line"
+    assert all(e["type"] in ("bold", "text_link") for e in layout["entities"])
+    assert "\n\n■ " in visible
+    assert medical_layout_receipt_verified({"result": layout}, layout)
+    assert not medical_layout_receipt_verified({"result": {"text": visible[:-1]}}, layout)
+
+
+def test_medical_alert_send_payload(message: str):
+    import io
+    import unittest.mock as mock
+    layout = format_medical_alert(message)
+    fake = {"ok": True, "result": {"chat": {"id": 123}, "message_id": 99, **layout}}
+    with mock.patch(__name__ + ".urllib.request.urlopen",
+                    return_value=io.BytesIO(json.dumps(fake).encode("utf-8"))) as network:
+        assert send_once("offline-token", "123", message) == 99
+        assert network.call_count == 1
+        params = urllib.parse.parse_qs(network.call_args.args[0].data.decode("utf-8"))
+        assert params["text"] == [layout["text"]]
+        assert json.loads(params["entities"][0]) == layout["entities"]
+        assert params["disable_web_page_preview"] == ["true"]
+    try:
+        format_medical_alert("x" * 4097)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Oversized medical alert must not be silently truncated")
+    unicode_layout = format_medical_alert("제목 😀\n■ 본문: 한글 & < >\n■ CMS 원문: https://www.cms.gov/")
+    e = next(e for e in unicode_layout["entities"] if e["type"] == "text_link")
+    data = unicode_layout["text"].encode("utf-16-le")
+    assert data[e["offset"]*2:(e["offset"]+e["length"])*2].decode("utf-16-le") == "CMS 원문 바로가기"
+    print("medical_policy_clickable_links_full_body_offline=passed")
+
+
 def send_once(token: str, chat_id: str, message: str) -> int:
-    if len(message) > 4096:
-        raise ValueError("CMS alert exceeds Telegram single-message limit")
+    layout = format_medical_alert(message)
     params = urllib.parse.urlencode({
-        "chat_id": chat_id, "text": message,
+        "chat_id": chat_id, "text": layout["text"],
+        "entities": json.dumps(layout["entities"], ensure_ascii=False),
         "disable_web_page_preview": "true"
     }).encode("utf-8")
     req = urllib.request.Request("https://api.telegram.org/bot" + token + "/sendMessage",
@@ -250,9 +356,11 @@ def send_once(token: str, chat_id: str, message: str) -> int:
     with urllib.request.urlopen(req, timeout=25) as r:
         result = json.loads(r.read().decode("utf-8"))
     from khs_policy_telegram_delivery import validate_telegram_send_receipt
-    return validate_telegram_send_receipt(
+    message_id = validate_telegram_send_receipt(
         result, configured_chat=chat_id, route="policy"
     )
+    print("medical_alert_layout_receipt=" + ("verified" if medical_layout_receipt_verified(result, layout) else "unconfirmed"))
+    return message_id
 
 
 def handle_event(event: dict, repo: str, github_token: str, bot_token: str, chat: str):
@@ -263,6 +371,7 @@ def handle_event(event: dict, repo: str, github_token: str, bot_token: str, chat
         print("cms_ma_stars_event=deduped status=" + str(previous.get("status", "unknown")))
         return
     # All preflight checks occur before the durable claim.
+    format_medical_alert(message)
     verify_bot(bot_token)
     run_id = str(os.environ.get("GITHUB_RUN_ID") or "manual") + "-" + str(
         os.environ.get("GITHUB_RUN_ATTEMPT") or "1")
@@ -306,6 +415,10 @@ def self_test():
                   "2031년", "1,070억달러", "115억달러", "51.5% → 28.0%", "미확정"):
         assert value in msg, value
     assert len(msg) <= 4096
+    assert_medical_alert_layout(msg, [OFFICIAL_FACT, MARKET_REPORT])
+    assert_medical_alert_layout(final_message(detect_final_rule(rules)[0]),
+                                [detect_final_rule(rules)[0]['url']])
+    test_medical_alert_send_payload(msg)
     # Confirm must never mark a different runner's reservation as delivered.
     import unittest.mock as mock
     state = {"schema_version": 1, "events": {PROPOSED_KEY: {
