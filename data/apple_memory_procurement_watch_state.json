@@ -19,6 +19,7 @@
     "20b6575c9786c972ffd09819",
     "277d3a423ea3649e94a0fd43",
     "2d89ea203d9d1ad30e608436",
+    "4b7920d0397c0ff54c1262fe",
     "5111065ca606dd09df9e50a7",
     "5113c871b9ee198b96f4b40a",
     "5257279cea2ef91e142deedf",
@@ -49,12 +50,12 @@
     "apple_samsung_1q27_dram2.0gb_nand0.33gb_up30_40",
     "apple_unspecified_other_procurement_dx_nx_px_x"
   ],
-  "last_scan_count": 9,
+  "last_scan_count": 11,
   "last_new_signal_count": 0,
   "alert_generated": false,
-  "updated_at_kst": "2026-11-24T15:14:33+09:00",
+  "updated_at_kst": "2026-11-25T02:51:23+09:00",
   "macbook_neo_watch": {
-    "official_checked_date": "2026-11-24",
+    "official_checked_date": "2026-11-25",
     "official_spec": "a18pro_8gb",
     "last_event_key": "apple_macbook_neo_20261122_feb_march_window_reported",
     "last_event_source": "https://9to5mac.com/2026/11/22/macbook-neo-2-likely-to-launch-around-march-could-feature-new-colors-report/"
@@ -67,7 +68,8 @@
   },
   "source_status": "complete",
   "neo_source_health": {
-    "official_source": "verified_today",
-    "report_source": "not_checked"
+    "official_source": "a18pro_8gb",
+    "report_source": "not_checked",
+    "official_checked_date": "2026-11-25"
   }
 }
