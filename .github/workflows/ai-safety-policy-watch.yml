@@ -1427,6 +1427,85 @@ jobs:
           print("ai_policy_google_news_429_bounded_retry_regression=PASS")
           PY
 
+      - name: Verify Korean finance cybersecurity legislative stages and missed-report recovery
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          from unittest.mock import patch
+          from scripts.ai_safety_policy_watch import (
+              POLICY_EVENT_BASELINES, MAX_AGE_HOURS, KR_FINANCE_LAW_CATEGORY,
+              KR_FINANCE_RULE_CATEGORY, kr_finance_security_stage,
+              kr_finance_security_recent_references, kr_finance_security_source_verified,
+              normalize, material, tracked_policy_event_key, cluster_events, build_alert,
+          )
+          def row(title, source="머니투데이", domain="https://www.mt.co.kr/", desc=""):
+              return normalize({
+                  "kind": "news", "title": title, "description": desc,
+                  "source": source, "publisher_url": domain, "url": domain+"test",
+                  "published_at": "2026-11-24T06:27:00+00:00",
+              })
+          head = "해킹 금융사 매출 3% 과징금…전금법 개정안, 정무 1소위 통과"
+          initial = row(head)
+          key = "kr_efinance_security_bill:policy_subcommittee_passed_reported"
+          assert material(initial) and not initial["official"]
+          assert initial["category"] == KR_FINANCE_LAW_CATEGORY
+          assert tracked_policy_event_key(initial) == key
+          assert key not in POLICY_EVENT_BASELINES, "A missing report must not be marked delivered by a baseline"
+          cases = [
+              (head + ", 본회의 의결 예정", "policy_subcommittee_passed_reported"),
+              ("전금법 개정안 과징금 3% 정무위 전체회의 통과", "policy_committee_passed_reported"),
+              ("전자금융거래법 정보보호 개정안 법사위 소위 통과", "judiciary_subcommittee_passed_reported"),
+              ("전금법 금융보안 개정안 법사위 전체회의 통과", "judiciary_committee_passed_reported"),
+              ("전금법 개정안 과징금 상향 본회의 가결", "plenary_passed_reported"),
+              ("전금법 개정법 공포, 금융보안 과징금 내년 시행 예정", "statute_promulgated_reported"),
+              ("전자금융거래법 금융보안 개정법 시행", "statute_in_effect_reported"),
+              ("전금법 과징금 시행령 개정안 입법예고", "decree_consultation_reported"),
+              ("전금법 과징금 시행령 최종 확정", "decree_adopted_reported"),
+              ("전금법 금융보안 시행령 시행", "decree_in_effect_reported"),
+              ("전금법 과징금 3% 정무위 심사 보류", "decision_delayed_or_rejected_reported"),
+          ]
+          for title, stage in cases:
+              article=row(title)
+              assert tracked_policy_event_key(article) == "kr_efinance_security_bill:"+stage, (title, tracked_policy_event_key(article))
+          for title in (
+              "전금법 과징금 3% 정무위 소위 통과 예정",
+              "전금법 과징금 상향 정무위 통과할까",
+              "전금법 금융보안 개정안 본회의 의결 전망",
+              "전금법 과징금 개정안 시행 예정",
+              "전금법 과징금 상향 논의",
+          ):
+              article=row(title)
+              assert kr_finance_security_stage(article) is None and not material(article), title
+          rules = [
+              ("금융위 전자금융감독규정 보안 개정안 규정변경예고, 내년 시행 목표", "consultation_notice_reported"),
+              ("전자금융감독규정 취약점 점검 관련 행정지도 확정", "administrative_guidance_issued_reported"),
+              ("전자금융감독규정 정보보호 개정안 금융위 의결", "final_rule_adopted_reported"),
+              ("전자금융감독규정 금융보안 개정규정 시행", "rule_in_effect_reported"),
+          ]
+          for title,stage in rules:
+              article=row(title,"금융위원회","https://www.fsc.go.kr/")
+              assert material(article) and article["official"]
+              assert article["category"] == KR_FINANCE_RULE_CATEGORY
+              assert tracked_policy_event_key(article) == "kr_efinance_security_rule:"+stage
+          fake=row(head,"머니투데이","https://mt.co.kr.attacker.example/")
+          assert not material(fake) and not fake["official"]
+          replay=row(head,"연합뉴스","https://www.yna.co.kr/")
+          future_vote=row(cases[1][0])
+          assert len(cluster_events([initial,replay])) == 1
+          assert len(cluster_events([initial,future_vote])) == 2
+          t=dt.datetime(2026,11,24,6,30,tzinfo=dt.timezone.utc)
+          refs=kr_finance_security_recent_references(t)
+          assert len(refs)==1 and tracked_policy_event_key(normalize(refs[0]))==key
+          assert not kr_finance_security_recent_references(t-dt.timedelta(hours=1))
+          assert not kr_finance_security_recent_references(t+dt.timedelta(hours=MAX_AGE_HOURS+1))
+          with patch("scripts.ai_safety_policy_watch.translate_alert_text",return_value=head):
+              _,body=build_alert([[initial]],t)
+          assert "소위원회 통과" in body and "언론 보도" in body and "50억원" in body and "3%" in body
+          print("ai_policy_kr_efinance_law_stage_regression=PASS")
+          PY
+
       - name: Run live policy watch
         run: |
           rm -f out/ai_safety_policy_watch_alert_title.txt out/ai_safety_policy_watch_alert.html out/ai_safety_policy_watch_telegram_confirmed.json
