@@ -1944,54 +1944,90 @@ def kr_finance_security_stage(item: dict) -> tuple[str, str] | None:
     if not family:
         return None
     title = re.sub(r"\s+", "", str(item.get("title") or ""))
-    negated = any(w in title for w in ("미통과", "통과불발", "통과못", "통과실패",
-        "처리불발", "의결불발", "가결불발", "부결", "보류", "통과할까",
-        "통과여부", "통과가능성", "통과예정", "의결예정", "통과전망",
-        "공포예정", "시행예정", "시행목표", "시행추진", "시행될", "통과촉구",
-        "의결촉구", "통과기대", "통과해야"))
-    if negated:
-        # Explicit delay or rejection is material only when tied to an actual decision.
-        if any(w in title for w in ("부결", "통과불발", "의결불발", "처리불발", "심사보류")):
+    # A later step mentioned as planned does not invalidate an earlier vote.
+    # Strip forward-looking clauses before testing the affirmative stage.
+    chunks = [c for c in re.split(r"[.…,;·/]|[—–]", title) if c]
+    future = ("미통과", "통과못", "통과실패", "통과할까", "통과여부",
+              "통과가능성", "통과예정", "의결예정", "통과전망", "공포예정",
+              "시행예정", "시행목표", "시행추진", "시행될", "통과촉구",
+              "의결촉구", "통과기대", "통과해야", "통과키로", "의결키로",
+              "의결할", "통과할", "통과논의", "의결논의", "예정", "목표",
+              "검토중", "추진중")
+    negative = ("부결", "통과불발", "의결불발", "처리불발", "심사보류", "가결불발")
+    for clause in chunks:
+        if any(w in clause for w in negative):
             return family, "decision_delayed_or_rejected_reported"
-        return None
+    # Announcing a consultation or promulgating a regulation with a future
+    # effective date is a completed act distinct from actual implementation.
     if family == "kr_efinance_security_rule":
-        if any(w in title for w in ("규정변경예고", "개정안예고", "행정예고")):
+        if any(w in title for w in ("규정변경예고", "개정안예고", "행정예고")) and not any(
+            w in title for w in ("예고예정", "예고검토", "예고할", "예고방침")
+        ):
             return family, "consultation_notice_reported"
-        if "행정지도" in title and any(w in title for w in ("의결", "시행", "발령", "확정")):
-            return family, "administrative_guidance_issued_reported"
-        if any(w in title for w in ("금융위의결", "금융위원회의결", "개정안의결",
-                                    "최종확정", "규정개정확정")):
-            return family, "final_rule_adopted_reported"
-        if any(w in title for w in ("개정규정시행", "감독규정시행", "시행개시", "정식시행")):
-            return family, "rule_in_effect_reported"
+        for clause in chunks:
+            if any(w in clause for w in future):
+                continue
+            if "행정지도" in clause and any(w in clause for w in ("의결", "시행", "발령", "확정")):
+                return family, "administrative_guidance_issued_reported"
+            if any(w in clause for w in ("금융위의결", "금융위원회의결", "개정안의결",
+                                        "최종확정", "규정개정확정")):
+                return family, "final_rule_adopted_reported"
+            if any(w in clause for w in ("개정규정시행", "감독규정시행", "시행개시", "정식시행")):
+                return family, "rule_in_effect_reported"
         return None
-    # Specific promulgation / subordinate rules must precede broad vote words.
     if "시행령" in title:
-        if "입법예고" in title or "개정안예고" in title:
+        if any(w in title for w in ("입법예고", "개정안예고")) and not any(
+            w in title for w in ("예고예정", "예고검토", "예고할")
+        ):
             return family, "decree_consultation_reported"
-        if any(w in title for w in ("국무회의의결", "공포", "최종확정")):
-            return family, "decree_adopted_reported"
-        if any(w in title for w in ("시행", "발효")):
-            return family, "decree_in_effect_reported"
-        return None
-    if "공포" in title and any(w in title for w in ("개정법", "개정안", "법공포", "전금법공포")):
-        return family, "statute_promulgated_reported"
-    if any(w in title for w in ("개정법시행", "전금법시행", "법률시행", "개정법률시행", "발효")):
-        return family, "statute_in_effect_reported"
-    # Only affirmative voting language; the body may discuss a future stage.
-    passed = any(w in title for w in ("통과", "가결", "의결", "처리완료"))
-    if passed:
-        if "본회의" in title:
-            return family, "plenary_passed_reported"
-        if "법사위" in title or "법제사법위원회" in title:
-            if "소위" in title:
-                return family, "judiciary_subcommittee_passed_reported"
-            return family, "judiciary_committee_passed_reported"
-        if "소위" in title or "소위원회" in title:
-            return family, "policy_subcommittee_passed_reported"
-        if "정무위" in title or "정무위원회" in title:
-            return family, "policy_committee_passed_reported"
+        for clause in chunks:
+            if "시행령" not in clause or any(w in clause for w in future):
+                continue
+            if any(w in clause for w in ("국무회의의결", "공포", "최종확정")):
+                return family, "decree_adopted_reported"
+            if re.search(r"시행령(?:[가-힣]{0,8})?(?:시행|발효)", clause):
+                return family, "decree_in_effect_reported"
+        # "소위 통과, 시행령에서 정할 예정" is still a bill vote.
+    for clause in chunks:
+        if any(w in clause for w in future):
+            continue
+        if "공포" in clause and any(w in clause for w in ("개정법", "개정안", "법공포", "전금법공포")):
+            return family, "statute_promulgated_reported"
+        if any(w in clause for w in ("개정법시행", "전금법시행", "법률시행", "개정법률시행", "발효")):
+            return family, "statute_in_effect_reported"
+    # Bind each affirmative vote to the body that actually voted, not to the
+    # mere occurrence of "본회의" elsewhere in a headline.
+    votes = (
+        (r"(?:법사위|법제사법위원회)(?:법안심사)?(?:제?\d+)?소위(?:원회)?", "judiciary_subcommittee_passed_reported"),
+        (r"(?:정무위(?:원회)?|정무)(?:법안심사)?(?:제?\d+)?소위(?:원회)?|법안심사(?:제?\d+)?소위(?:원회)?|법안소위", "policy_subcommittee_passed_reported"),
+        (r"본회의", "plenary_passed_reported"),
+        (r"(?:법사위|법제사법위원회)(?:전체회의)?", "judiciary_committee_passed_reported"),
+        (r"정무위(?:원회)?(?:전체회의)?", "policy_committee_passed_reported"),
+    )
+    for clause in chunks:
+        if any(w in clause for w in future):
+            continue
+        for body, stage in votes:
+            if re.search(r"(?:"+body+r")(?:에서|를|서|문턱|안건)?(?:통과|가결|의결|처리완료)", clause):
+                return family, stage
     return None
+
+def kr_finance_security_recent_references(now: dt.datetime) -> list[dict]:
+    # 2026-11-24 15:27 KST, original publisher's indexed breaking headline.
+    # Original article fetch was unavailable; treat only as a press report.
+    published = dt.datetime(2026, 11, 24, 6, 27, tzinfo=UTC)
+    if not (dt.timedelta(0) <= now - published <= dt.timedelta(hours=MAX_AGE_HOURS)):
+        return []
+    return [{
+        "kind": "news",
+        "query": "dated verified press headline recovery",
+        "title": "해킹 금융사 매출 3% 과징금…전금법 개정안, 정무 1소위 통과",
+        "description": "2026-11-24 15:27 KST 머니투데이 속보 제목 확인. 소위 통과 보도이며 국회 당일 의결원문과 최종 매출 분모는 미확보. 본회의 통과 또는 시행 아님.",
+        "source": "머니투데이",
+        "publisher_url": "https://www.mt.co.kr/",
+        "url": "https://www.mt.co.kr/politics/2026/11/24/2026112414395119677",
+        "published_at": published.isoformat(),
+    }]
 
 def kr_finance_security_source_verified(item: dict) -> bool:
     if not kr_finance_security_topic(item):
@@ -3461,6 +3497,13 @@ def main() -> int:
         except Exception as exc:
             google_news_failed_queries.append(query)
             errors.append(f"Google News 실패: {query[:55]} / {type(exc).__name__}: {exc}")
+
+    # A verified same-day press report absent from the two successful
+    # post-publication state snapshots. Re-enter the normal delivery gate;
+    # no direct Telegram send and no artificial delivery checkpoint.
+    # Expire this manual recovery input after the existing news lookback.
+    for row in kr_finance_security_recent_references(now):
+        raw.append(row)
 
     # Dated primary and independent references. The already-known historical
     # milestones are seeded in POLICY_EVENT_BASELINES and are never replayed.
