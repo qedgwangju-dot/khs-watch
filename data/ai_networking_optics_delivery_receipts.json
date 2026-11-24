@@ -90,20 +90,6 @@
     }
   },
   "history_cache": {
-    "44268741394:1": {
-      "checked_at_kst": "2026-11-18T18:10:41+09:00",
-      "completed": "2026-11-18T08:40:26+00:00",
-      "fingerprint": "625e79f876672ce21e6673bac41d4f6cc96e0ae8cff1229543efa89a2824423d",
-      "outcome": "attempted",
-      "saved": true,
-      "sent_success": true,
-      "started": "2026-11-18T08:40:26+00:00"
-    },
-    "44269107440:1": {
-      "checked_at_kst": "2026-11-18T18:10:41+09:00",
-      "fingerprint": "10e8dc90f9e7835425aba462714492891c36a86db9ab68b9a3b5b159dd0f2137",
-      "outcome": "no_send"
-    },
     "44273148580:1": {
       "checked_at_kst": "2026-11-18T18:38:56+09:00",
       "completed": "2026-11-18T09:10:42+00:00",
@@ -116,11 +102,6 @@
     "44275976393:1": {
       "checked_at_kst": "2026-11-18T18:38:56+09:00",
       "fingerprint": "15fa3c0411e0babb350e96db104a2729a7473789b361691a20349845e0acdfeb",
-      "outcome": "no_send"
-    },
-    "44276460504:1": {
-      "checked_at_kst": "2026-11-18T18:38:55+09:00",
-      "fingerprint": "9321c470b7c2d2c7c796189ed175c3f0e0af903ad4272f520d7cfcffc1e0d507",
       "outcome": "no_send"
     },
     "44277598098:1": {
@@ -3957,6 +3938,25 @@
       "saved": true,
       "sent_success": true,
       "started": "2026-11-24T19:44:46+00:00"
+    },
+    "45478663039:1": {
+      "checked_at_kst": "2026-11-25T06:02:18+09:00",
+      "completed": "2026-11-24T20:16:20+00:00",
+      "fingerprint": "2d88b455ba32eb33b9c093e772a1027252dd986599b47da18e014eeaae77c3e2",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-24T20:16:20+00:00"
+    },
+    "45481272438:1": {
+      "checked_at_kst": "2026-11-25T06:02:18+09:00",
+      "fingerprint": "d87f14aacaebdf7fa070bbfcea773bae96bd75f9d37e21c6d9cd4662638b10be",
+      "outcome": "no_send"
+    },
+    "45482469092:1": {
+      "checked_at_kst": "2026-11-25T06:02:18+09:00",
+      "fingerprint": "3bf4c9f4b221a9c1c9e568b9803514fab10fb4bef61f0a17d2fb9eebd6b07e0a",
+      "outcome": "no_send"
     }
   },
   "recovery_holds": {},
