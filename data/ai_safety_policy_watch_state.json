@@ -5,14 +5,14 @@
     "deferred_events": 0,
     "errors": [],
     "google_news_queries_failed": 0,
-    "google_news_queries_requested": 115,
-    "google_news_queries_succeeded": 115,
+    "google_news_queries_requested": 120,
+    "google_news_queries_succeeded": 120,
     "google_news_rate_limit_429": 0,
-    "material_items": 33,
-    "new_articles": 0,
-    "new_events": 0,
+    "material_items": 35,
+    "new_articles": 2,
+    "new_events": 1,
     "official_page_skips": [],
-    "raw_items": 72,
+    "raw_items": 120,
     "sif_new_stages": 0,
     "source_access_limited": false,
     "si_portal_health": "정상",
@@ -100,7 +100,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-24T06:49:32.277954+00:00",
+    "updated_at": "2026-11-24T07:12:47.296377+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -202,6 +202,15 @@
       "source": "Politico",
       "title": "Anthropic quietly pitches its own AI safety bill to lawmakers - Politico",
       "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE0ydWVrbHdHeGNraEdTSHQ5eExwZ2lLRUU1U1BoVFJUTWNLenpWTXJOMHNnWnhaa0thQXlRbk1KdEliVVVGUEJXZWwtcWtUZE9Ielo2X05DaHJKSmJpd05rRl9vMWdQQUE4ZnVRRFBLQ3hlcm9FNG12bg?oc=5"
+    },
+    "2a7f2f3fdc295bf0a640c0f8": {
+      "category": "전자금융거래법 금융보안 과징금·입법 단계",
+      "entity": "국회·전자금융거래법",
+      "first_seen_at": "2026-11-24T07:12:47.296377+00:00",
+      "published_at": "2026-11-24T06:27:00+00:00",
+      "source": "머니투데이",
+      "title": "해킹 금융사 매출 3% 과징금…전금법 개정안, 정무 1소위 통과",
+      "url": "https://www.mt.co.kr/politics/2026/11/24/2026112414395119677"
     },
     "2ba42fa90d7b44dd47a3e27c": {
       "category": "SoftBank–Allied Universal 물리보안·로봇 인수 단계",
@@ -701,6 +710,15 @@
       "title": "OpenAI Daybreak for Frontline Defenders subsidized access announced September 2026",
       "url": "https://openai.com/index/daybreak-for-frontline-defenders/"
     },
+    "e5fb50d334f10ac7703f498b": {
+      "category": "전자금융거래법 금융보안 과징금·입법 단계",
+      "entity": "국회·전자금융거래법",
+      "first_seen_at": "2026-11-24T07:12:47.296377+00:00",
+      "published_at": "2026-11-24T06:27:25+00:00",
+      "source": "머니투데이",
+      "title": "[속보]해킹 금융사 매출 3% 과징금…전금법 개정안, 정무 1소위 통과 - 머니투데이 - 머니투데이",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBTaHFxZkF1UERiNGZJdllrVDBRV2JYU1JHb1RqM0pqd21vOVREWHVBMU9zd0FBa2ZIYzM4b18tbkFIRUxxRjhXU2NJRHBEXy1YaDJGZ1hMUWRsbGJHZFJFMTdsamJtN1ZmaHNVddIBckFVX3lxTFBMOGxzRVVrcmpBaS00N3FndVZrYkdyWWZiVVd4SF9GXzVGbV9Fc0xzZ2FJRFUzNk9hZ1dsT0s4TUQ3WkJEQWdGcE9udjl0eUh2WmlfWFJ0M2xZSmNjNk1nUk9VLXZLbWxwMlpOcV9KX0FWUQ?oc=5"
+    },
     "e71261312acf996251d755a6": {
       "category": "파이오링크 관리형 탐지·대응 상용화 단계",
       "entity": "파이오링크",
@@ -919,6 +937,12 @@
       "source_url": "https://www.yna.co.kr/view/AKR20261028025200017",
       "status": "111 institutions, 172 facilities, existing government inspection; incremental procurement unconfirmed"
     },
+    "kr_efinance_security_bill:policy_subcommittee_passed_reported": {
+      "first_seen_at": "2026-11-24T07:12:47.296377+00:00",
+      "source": "머니투데이",
+      "source_url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBTaHFxZkF1UERiNGZJdllrVDBRV2JYU1JHb1RqM0pqd21vOVREWHVBMU9zd0FBa2ZIYzM4b18tbkFIRUxxRjhXU2NJRHBEXy1YaDJGZ1hMUWRsbGJHZFJFMTdsamJtN1ZmaHNVddIBckFVX3lxTFBMOGxzRVVrcmpBaS00N3FndVZrYkdyWWZiVVd4SF9GXzVGbV9Fc0xzZ2FJRFUzNk9hZ1dsT0s4TUQ3WkJEQWdGcE9udjl0eUh2WmlfWFJ0M2xZSmNjNk1nUk9VLXZLbWxwMlpOcV9KX0FWUQ?oc=5",
+      "status": "trusted_report_not_issuer_or_legislative_confirmation"
+    },
     "ksign_evsec:demonstration_announced_20261020": {
       "source_url": "https://www.newswire.co.kr/newsRead.php?no=1045070",
       "status": "2026-10-20 issuer-distributed EV charging security analysis demo at KOAA SHOW Oct 21-23; demo is not customer purchase"
@@ -1030,11 +1054,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-24T15:49:32+09:00",
+  "updated_at_kst": "2026-11-24T16:12:47+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-24T06:50:25.990728+00:00",
+    "last_success_at": "2026-11-24T07:14:02.812255+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
