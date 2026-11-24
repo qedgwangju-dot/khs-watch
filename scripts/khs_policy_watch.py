@@ -36,6 +36,7 @@ DATA_DIR = ROOT / "data"
 SEEN_PATH = DATA_DIR / "khs_policy_watch_seen.json"
 PENDING_SEEN_PATH = OUT_DIR / "khs_policy_watch_pending_seen.json"
 GRID_SCALED_EVENT_KEY = "us-doe-grid-scaled-funding-opportunity-2026-10-30"
+FCC_UPPER_C_BAND_COORDINATOR_EVENT_KEY = "us-fcc-upper-c-band-relocation-coordinator-rsm-2026-11-24"
 GRID_SCALED_NEWS_URL = (
     "https://www.energy.gov/articles/"
     "energy-department-announces-over-230-million-funding-opportunity-strengthen-americas-grid"
@@ -477,6 +478,83 @@ def parse_federal_register_json(text: str, source: Source) -> list[dict]:
             }
         )
     return items
+
+
+def is_fcc_upper_c_band_coordinator_notice(item: dict) -> bool:
+    if item.get("source") != "Federal Register FCC":
+        return False
+    link = str(item.get("link") or "").lower()
+    return (
+        str(item.get("document_number") or "") == "2026-23905"
+        or "/2026/11/24/2026-23905/" in link
+    )
+
+
+def enrich_fcc_upper_c_band_coordinator_notice(item: dict) -> dict | None:
+    """Require the official notice body before describing the RSM comment process."""
+    if not is_fcc_upper_c_band_coordinator_notice(item):
+        return None
+
+    body = clean_text(str(item.get("source_body") or ""))
+    if not body:
+        url = "https://www.federalregister.gov/documents/full_text/text/2026/11/24/2026-23905.txt"
+        raw, error = fetch_text(url, timeout=12)
+        if error or not raw:
+            return None
+        body = clean_text(raw)
+
+    low = body.lower()
+    required = (
+        "[fr doc. 2026-23905",
+        "gn docket no. 25-59",
+        "da 26-1248",
+        "november 18, 2026",
+        "july 24, 2026",
+        "160 megahertz",
+        "4.0-4.16 ghz",
+        "november 17, 2026",
+        "rsm us llp (rsm)",
+        "december 3, 2026",
+        "december 14, 2026",
+        "final order determining whether the selection criteria have been satisfied",
+        "selection committee will restart",
+    )
+    if any(marker not in low for marker in required):
+        return None
+
+    return {
+        "body_verified": True,
+        "source_body": body,
+        "policy_event_key": FCC_UPPER_C_BAND_COORDINATOR_EVENT_KEY,
+        "title_ko": "FCC, Upper C-band 160MHz 이전조정자 RSM 적격성 의견수렴",
+        "policy_plain_summary": (
+            "FCC는 위성사업자 3곳이 선정한 RSM의 이전조정자 자격을 심사 중입니다. "
+            "기존 위성서비스를 4.0~4.16GHz에서 옮겨 미국 본토 160MHz를 유연사용 대역으로 전환하는 절차입니다."
+        ),
+        "importance": "중",
+        "status": "공식 의견수렴",
+        "impacts": ["시간표"],
+        "paths": ["정책 타임라인", "위성서비스 이전", "주파수 유연사용"],
+        "sectors": ["미국 무선통신/주파수"],
+        "policy_timeline": [
+            {"date": "2026-07-24", "stage": "FCC Upper C-band R&O 채택: 160MHz 유연사용 전환 규칙"},
+            {"date": "2026-11-17", "stage": "적격 위성사업자 3곳이 RSM US LLP를 이전조정자로 선정"},
+            {"date": "2026-11-18", "stage": "FCC 공지 DA 26-1248 공개"},
+            {"date": "2026-11-24", "stage": "Federal Register 게재: RSM 적격성 의견수렴 공지"},
+            {"date": "2026-12-03", "stage": "의견 제출 마감"},
+            {"date": "2026-12-14", "stage": "답변의견 제출 마감"},
+        ],
+        "policy_timeline_note": "의견수렴 후 FCC 최종명령 예정; 명령일 미공개. RSM 부적격 판정 시 조정자 재선정 절차가 다시 시작됩니다.",
+        "investment_view": (
+            "이번 문서는 조정자 적격성 심사로, 160MHz 전환 일정과 신규 무선서비스 개시 시점에 영향을 줄 수 있습니다."
+        ),
+        "korea_market_impact": (
+            "미국 주파수 전환 절차이며, 이 공지에서 한국 상장사의 직접 수주·매출 연결은 확인되지 않았습니다."
+        ),
+        "priced_in": "절차 단계라 최종 조정자 승인과 실제 주파수 전환 전입니다.",
+        "counter": "FCC의 RSM 승인, 신규 경매, 주파수 사용 개시가 이번 공지로 확정된 것은 아닙니다.",
+        "failure_signal": "FCC가 RSM을 승인하지 않거나 재선정·이전 일정이 지연되면 160MHz 활용 시점도 늦어질 수 있습니다.",
+    }
 
 
 def is_fcc_sim_fraud_compliance_notice(item: dict) -> bool:
@@ -1695,6 +1773,13 @@ def classify_item(item: dict) -> dict | None:
         fcc_sim_profile = enrich_fcc_sim_fraud_compliance_notice(item)
         if fcc_sim_profile is None:
             return None
+    fcc_upper_c_band_profile = {}
+    if is_fcc_upper_c_band_coordinator_notice(item):
+        fcc_upper_c_band_profile = enrich_fcc_upper_c_band_coordinator_notice(item)
+        if fcc_upper_c_band_profile is None:
+            print("policy_fcc_upper_c_band_suppressed reason=official_notice_body_unverified")
+            return None
+        item.update(fcc_upper_c_band_profile)
     haystack = " ".join(
         str(item.get(key) or "")
         for key in ("title", "source_title", "source_abstract", "summary", "source_body")
@@ -1758,6 +1843,8 @@ def classify_item(item: dict) -> dict | None:
     matched = {bucket: kws for bucket, kws in matched.items() if kws}
     if fcc_sim_profile:
         matched.setdefault("fcc_decision_notice", []).append("effective date")
+    if fcc_upper_c_band_profile:
+        matched.setdefault("fcc_decision_notice", []).append("upper c-band relocation coordinator comment")
     if is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_STRONG_TERMS):
         matched.setdefault("fcc_decision_notice", ["fcc official decision/notice source"])
     if not matched:
@@ -1822,6 +1909,7 @@ def classify_item(item: dict) -> dict | None:
         apply_energy_dominance_month_profile(result)
     apply_treasury_borrowing_profile(result, haystack)
     result.update(fcc_sim_profile)
+    result.update(fcc_upper_c_band_profile)
     return result
 
 
