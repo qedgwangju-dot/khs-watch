@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-24T23:46:57+09:00",
+  "updated_at_kst": "2026-11-25T00:05:01+09:00",
   "circle": {
     "date": "2026-11-19",
     "circulation_usd_b": 67.3,
@@ -50,19 +50,19 @@
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-11-23",
-    "close": 51.34000015258789,
-    "prev_date": "2026-11-20",
-    "prev_close": 47.5099983215332,
-    "daily_pct": 8.06,
+    "date": "2026-11-24",
+    "close": 49.630001068115234,
+    "prev_date": "2026-11-23",
+    "prev_close": 51.34000015258789,
+    "daily_pct": -3.33,
     "source": "Yahoo Finance daily chart",
     "source_url": "https://finance.yahoo.com/quote/CRCL/history/",
     "crosscheck_source": "ChartExchange historical",
-    "crosscheck_date": "2026-11-23",
-    "crosscheck_close": 51.34,
-    "crosscheck_daily_pct": 8.06,
-    "crosscheck_gap_pct": 0.0,
-    "crosscheck_status": "confirmed"
+    "crosscheck_date": "2026-11-24",
+    "crosscheck_close": 49.59,
+    "crosscheck_daily_pct": -3.41,
+    "crosscheck_gap_pct": 0.0806,
+    "crosscheck_status": "rounding_difference"
   },
   "tbx": {
     "date": "2026-11-24",
@@ -82,7 +82,5 @@
   },
   "crcl_last_alerted_close_date": "2026-11-23",
   "correction_pending": false,
-  "errors": [
-    "crcl: HTTP Error 500: Internal Server Error"
-  ]
+  "errors": []
 }
