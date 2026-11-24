@@ -223,11 +223,6 @@
       "fingerprint": "1ce68c377b4f3fb055e5fe9e68da5eb274798ee48aba8aa8edabeb2a6e5b2aef",
       "outcome": "no_send"
     },
-    "43172203138:1": {
-      "checked_at_kst": "2026-11-18T11:04:05+09:00",
-      "fingerprint": "3ce7ece81c29b2637fd6bf71b6e5365656da0c8fe3bca01f3b3f779c65de6e03",
-      "outcome": "no_send"
-    },
     "44219669485:1": {
       "checked_at_kst": "2026-11-18T11:43:27+09:00",
       "completed": "2026-11-18T02:04:19+00:00",
@@ -3948,6 +3943,11 @@
     "45317996562:1": {
       "checked_at_kst": "2026-11-24T12:45:28+09:00",
       "fingerprint": "5b7cf35e9fbe8ff64c17ccf1a9b6fc3f255ad2ada48ab30dda7593c1092ff52d",
+      "outcome": "no_send"
+    },
+    "45321463743:1": {
+      "checked_at_kst": "2026-11-24T13:02:08+09:00",
+      "fingerprint": "ed191c8cb850f8a8c49199c426bd1ae276df6ea3ddff20309756edd3f8fbbb6c",
       "outcome": "no_send"
     }
   },
