@@ -19,11 +19,11 @@
   },
   "sources": {
     "motir_press": {
-      "last_ok_kst": "2026-11-24T05:06:41+09:00",
+      "last_ok_kst": "2026-11-24T13:43:38+09:00",
       "matched": 0
     },
     "motir_clarification": {
-      "last_ok_kst": "2026-11-24T05:06:41+09:00",
+      "last_ok_kst": "2026-11-24T13:43:38+09:00",
       "matched": 3
     },
     "kepco_notice": {
@@ -31,7 +31,7 @@
       "matched": 0
     },
     "kogas_press": {
-      "last_ok_kst": "2026-11-24T05:06:41+09:00",
+      "last_ok_kst": "2026-11-24T13:43:38+09:00",
       "matched": 0
     },
     "kepco_press": {
@@ -40,16 +40,17 @@
     }
   },
   "seeded_date": "2026-11-16",
-  "updated_at_kst": "2026-11-24T05:06:41+09:00",
+  "updated_at_kst": "2026-11-24T13:43:38+09:00",
   "source_health": {
     "ok": [
-      "kepco_notice",
-      "kepco_press",
       "kogas_press",
       "motir_clarification",
       "motir_press"
     ],
-    "failed": {},
-    "complete": true
+    "failed": {
+      "kepco_notice": "ConnectTimeout: HTTPSConnectionPool(host='www.kepco.co.kr', port=443): Max retries exceeded with url: /home/media/newsroom/notice/boardList.do (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.kepco.co.kr', port=443) at 0x77cbd1626600>, 'Connection to www.kepco.co.kr timed out. (connect timeout=10)'))",
+      "kepco_press": "ConnectTimeout: HTTPSConnectionPool(host='www.kepco.co.kr', port=443): Max retries exceeded with url: /home/media/newsroom/pr/boardList.do (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.kepco.co.kr', port=443) at 0x77cbd1626390>, 'Connection to www.kepco.co.kr timed out. (connect timeout=10)'))"
+    },
+    "complete": false
   }
 }
