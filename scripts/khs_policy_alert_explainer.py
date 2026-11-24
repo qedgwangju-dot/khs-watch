@@ -938,6 +938,11 @@ def is_eu_sanctions_export_policy(text: str, item: dict) -> bool:
 
 
 def ensure_explained(item: dict) -> dict:
+    if (
+        item.get("policy_event_key") == "us-fcc-upper-c-band-relocation-coordinator-rsm-2026-11-24"
+        and item.get("body_verified")
+    ):
+        return item
     default_context(item)
     if item.get("fcc_sim_fraud_section") and item.get("body_verified"):
         return item

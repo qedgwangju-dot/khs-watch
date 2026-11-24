@@ -743,6 +743,7 @@ def main() -> int:
     assert_trusted_policy_bundle_dedupes_and_dates_are_source_faithful()
     assert_domestic_telecom_title_gate_and_semantic_dedupe()
     assert_router_explains_current_fcc_documents()
+    assert_fcc_upper_c_band_coordinator_notice_is_source_faithful()
     assert_runtime_patch_accepts_mofcom_watch_source()
     assert_foreign_first_policy_sources()
     assert_treasury_borrowing_estimate_is_source_faithful()
@@ -3269,6 +3270,109 @@ def assert_router_explains_current_fcc_documents() -> None:
             raise AssertionError(f"FCC rendered report lost source-specific content: {expected_title}")
         if "투자 조언이 아닌 참고용 정책·규제 알림입니다." in report:
             raise AssertionError("removed policy disclaimer leaked into router output")
+
+
+def assert_fcc_upper_c_band_coordinator_notice_is_source_faithful() -> None:
+    title = (
+        "Wireless Telecommunications Bureau Seeks Comment on Whether Proposed Upper C-Band "
+        "Relocation Coordinator Satisfies Selection Criteria"
+    )
+    link = (
+        "https://www.federalregister.gov/documents/2026/11/24/2026-23905/"
+        "wireless-telecommunications-bureau-seeks-comment-on-whether-proposed-upper-c-band-relocation"
+    )
+    body = "\n".join([
+        "FEDERAL COMMUNICATIONS COMMISSION",
+        "[GN Docket No. 25-59; DA 26-1248; FR ID 378982]",
+        "SUMMARY: The Wireless Telecommunications Bureau invites interested parties to comment on whether the proposed Relocation Coordinator selected by the eligible space station operators in the Upper C-band satisfies the criteria established by the Commission.",
+        "DATES: Comments are due on or before December 3, 2026; reply comments are due on or before December 14, 2026.",
+        "On July 24, 2026, the Commission released the Upper C-band R&O, which adopted rules to make 160 megahertz of mid-band spectrum available for flexible use throughout the contiguous United States by transitioning incumbent Fixed Satellite Service operations out of 4.0-4.16 GHz.",
+        "The R&O required eligible Fixed Satellite Service space station operators to select, no later than January 1, 2027, a Relocation Coordinator to manage the overall transition and coordinate relocation actions among satellite operators, incumbent earth station operators, and new Upper C-band flexible use licensees.",
+        "The coordinator will coordinate clearance schedules, engineering analysis, migration obligations, coordination with new licensees, track completion, and mediate scheduling disputes.",
+        "On November 17, 2026, all three eligible space station operators announced that they had selected RSM US LLP (RSM) to serve as the Relocation Coordinator.",
+        "This Public Notice, GN Docket No. 25-59, DA 26-1248, was released on November 18, 2026.",
+        "Following the comment period, the Bureau will issue a final order determining whether the selection criteria have been satisfied. If the criteria are not met, the selection committee will restart its evaluation process and identify a new proposed entity subject to the same public comment and review process.",
+        "[FR Doc. 2026-23905 Filed 11-23-26; 8:45 am]",
+    ])
+    item = {
+        "source": "Federal Register FCC",
+        "title": title,
+        "original_title": title,
+        "link": link,
+        "document_number": "2026-23905",
+        "document_type": "Notice",
+        "publication_date": "2026-11-24",
+        "published_kst": "2026-11-24T00:00:00+09:00",
+        "summary": (
+            "Notice; solicitation of comments. The Bureau invites comments on whether the proposed "
+            "Relocation Coordinator satisfies FCC selection criteria."
+        ),
+        "matched": {},
+    }
+    with patch.object(khs_policy_watch, "fetch_text", return_value=(body, None)):
+        classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("Verified FCC RSM coordinator notice was not classified")
+    expected_title = "FCC, Upper C-band 160MHz 이전조정자 RSM 적격성 의견수렴"
+    if classified.get("title_ko") != expected_title:
+        raise AssertionError(f"FCC RSM notice title mismatch: {classified.get('title_ko')}")
+    if classified.get("status") != "공식 의견수렴" or classified.get("importance") != "중":
+        raise AssertionError("FCC RSM notice status/materiality overstated its current procedural stage")
+
+    rendered = khs_policy_alert_router.render_policy_report(
+        [classified], dt.datetime(2026, 11, 24, 20, 5, tzinfo=ZoneInfo("Asia/Seoul"))
+    )
+    for marker in (
+        "위성사업자 3곳이 11월 17일 선정한 RSM US LLP",
+        "4.0~4.16GHz",
+        "미국 본토에서 160MHz",
+        "12월 3일 의견",
+        "12월 14일 답변의견",
+        "FCC 최종명령",
+        "RSM 부적격이면 조정자 재선정",
+        "2026년 7월 24일",
+        "2026년 11월 18일",
+        "2026년 11월 24일",
+        expected_title,
+    ):
+        if marker not in rendered:
+            raise AssertionError(f"FCC RSM alert missing source fact or timeline stage: {marker}")
+    if "FCC, 통신·주파수·위성 규제 문서 공표" in rendered:
+        raise AssertionError("FCC RSM alert fell back to a generic heading/core")
+    if "[중·공식 의견수렴]" not in rendered or "[중·확정]" in rendered:
+        raise AssertionError("FCC coordinator selection was incorrectly described as confirmed")
+
+    formatted_title, formatted_body = khs_policy_telegram_formatter.format_policy_message(
+        "KHS 정책 워치: [중] " + expected_title,
+        rendered,
+        now=dt.datetime(2026, 11, 24, 20, 5, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    errors = khs_policy_telegram_formatter.validate_final_policy_message(formatted_title, formatted_body)
+    if errors:
+        raise AssertionError(f"FCC RSM final Telegram formatting failed: {errors}")
+    expected_link = f'<a href="{link}">원문</a>'
+    telegram_html = khs_policy_telegram_formatter.prepare_telegram_html(formatted_title, formatted_body)
+    if expected_link not in telegram_html:
+        raise AssertionError("FCC RSM source link was not preserved as a clickable original")
+
+    import hashlib
+    expected_fingerprint = hashlib.sha256(f"Federal Register FCC|{title}|{link}".encode()).hexdigest()[:16]
+    if classified.get("fingerprint") != expected_fingerprint:
+        raise AssertionError("FCC RSM source event changed its existing fingerprint and may resend as a duplicate")
+
+    with patch.object(khs_policy_watch, "fetch_text", return_value=(None, "HTTP 502")):
+        unverified = khs_policy_watch.classify_item({
+            "source": "Federal Register FCC",
+            "title": title,
+            "link": link,
+            "document_number": "2026-23905",
+            "document_type": "Notice",
+            "publication_date": "2026-11-24",
+            "summary": "FCC public notice seeks comment on the coordinator.",
+        })
+    if unverified is not None:
+        raise AssertionError("FCC RSM notice was allowed through after official body retrieval failed")
+    print("fcc_upper_c_band_coordinator_source_fidelity=passed")
 
 
 def cleanup() -> None:

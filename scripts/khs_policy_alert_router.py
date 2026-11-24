@@ -233,6 +233,33 @@ def is_fcc_upper_c_band_auction(alert: dict) -> bool:
     )
 
 
+def is_fcc_upper_c_band_coordinator_notice(alert: dict) -> bool:
+    if alert.get("policy_event_key") == "us-fcc-upper-c-band-relocation-coordinator-rsm-2026-11-24":
+        return True
+    if str(alert.get("source") or "") != "Federal Register FCC":
+        return False
+    link = str(alert.get("link") or "").lower()
+    return (
+        str(alert.get("document_number") or "") == "2026-23905"
+        or "/2026/11/24/2026-23905/" in link
+    )
+
+
+def fcc_upper_c_band_coordinator_body_verified(alert: dict) -> bool:
+    if not is_fcc_upper_c_band_coordinator_notice(alert) or not alert.get("body_verified"):
+        return False
+    body = re.sub(r"\s+", " ", str(alert.get("source_body") or "")).lower()
+    return all(marker in body for marker in (
+        "[fr doc. 2026-23905",
+        "rsm us llp (rsm)",
+        "160 megahertz",
+        "4.0-4.16 ghz",
+        "december 3, 2026",
+        "december 14, 2026",
+        "final order determining whether the selection criteria have been satisfied",
+    ))
+
+
 def is_fcc_optical_transceiver_policy(alert: dict) -> bool:
     text = alert_text(alert)
     source = str(alert.get("source") or "").lower()
@@ -349,6 +376,10 @@ def china_mofcom_title(alert: dict) -> str:
 
 
 def safe_title(alert: dict) -> str:
+    if is_fcc_upper_c_band_coordinator_notice(alert) and fcc_upper_c_band_coordinator_body_verified(alert):
+        title_ko = "FCC, Upper C-band 160MHz 이전조정자 RSM 적격성 의견수렴"
+        alert["title_ko"] = title_ko
+        return title_ko
     title_ko = str(alert.get("title_ko") or "").strip()
     if title_ko:
         return title_ko
@@ -708,6 +739,17 @@ def doe_grid_scaled_detail_lines(alert: dict) -> list[str]:
     ]
 
 
+def fcc_upper_c_band_coordinator_detail_lines(alert: dict) -> list[str]:
+    if not fcc_upper_c_band_coordinator_body_verified(alert):
+        return []
+    return [
+        "- 실제 조치: 위성사업자 3곳이 11월 17일 선정한 RSM US LLP가 FCC의 조정자 기준을 충족하는지 심사합니다.",
+        "- 전환 목적: 기존 위성서비스를 4.0~4.16GHz에서 옮겨 미국 본토에서 160MHz를 유연사용하도록 하는 절차입니다.",
+        "- 다음 단계: 12월 3일 의견, 12월 14일 답변의견 마감 후 FCC가 최종명령을 냅니다. RSM 부적격이면 재선정합니다.",
+        "- 범위: 이번 공지는 RSM 승인·신규 경매·주파수 사용 개시를 확정하지 않으며 한국 기업 수주도 명시하지 않습니다.",
+    ]
+
+
 def apply_router_overrides(alert: dict) -> None:
     if alert.get("policy_event_key") in {
         "us-section232-robotics-machinery-proclamation-2026-10-28",
@@ -715,6 +757,26 @@ def apply_router_overrides(alert: dict) -> None:
     }:
         return  # Preserve source-verified event-specific policy facts.
     text = alert_text(alert)
+    if is_fcc_upper_c_band_coordinator_notice(alert):
+        if not fcc_upper_c_band_coordinator_body_verified(alert):
+            return
+        alert["importance"] = "중"
+        alert["status"] = "공식 의견수렴"
+        alert["title_ko"] = "FCC, Upper C-band 160MHz 이전조정자 RSM 적격성 의견수렴"
+        alert["policy_plain_summary"] = (
+            "FCC는 위성사업자 3곳이 선정한 RSM의 이전조정자 자격을 심사 중입니다. "
+            "기존 위성서비스를 4.0~4.16GHz에서 옮겨 미국 본토 160MHz를 유연사용 대역으로 전환하는 절차입니다."
+        )
+        alert["investment_view"] = "이번 문서는 조정자 적격성 심사로, 160MHz 전환 일정과 신규 무선서비스 개시 시점에 영향을 줄 수 있습니다."
+        alert["korea_market_impact"] = "미국 주파수 전환 절차이며, 이 공지에서 한국 상장사의 직접 수주·매출 연결은 확인되지 않았습니다."
+        alert["impacts"] = ["시간표"]
+        alert["paths"] = ["정책 타임라인", "위성서비스 이전", "주파수 유연사용"]
+        alert["sectors"] = ["미국 무선통신/주파수"]
+        alert["korea_value_chain"] = []
+        alert["priced_in"] = "절차 단계라 최종 조정자 승인과 실제 주파수 전환 전입니다."
+        alert["counter"] = "FCC의 RSM 승인, 신규 경매, 주파수 사용 개시가 이번 공지로 확정된 것은 아닙니다."
+        alert["failure_signal"] = "FCC가 RSM을 승인하지 않거나 재선정·이전 일정이 지연되면 160MHz 활용 시점도 늦어질 수 있습니다."
+        return
     if "알뜰폰" in text and "데이터 안심옵션" in text:
         alert["importance"] = "상"
         alert["title_ko"] = "정부, 알뜰폰 데이터 안심옵션 도입"
@@ -1026,6 +1088,15 @@ def source_markdown(alert: dict) -> str:
 
 
 def policy_timeline_lines(alert: dict) -> list[str]:
+    if is_fcc_upper_c_band_coordinator_notice(alert) and fcc_upper_c_band_coordinator_body_verified(alert):
+        lines = ["- 타임라인: 미국 현지 날짜 기준"]
+        for event in alert.get("policy_timeline") or []:
+            day = dt.date.fromisoformat(event["date"])
+            lines.append(f"  • {day.year}년 {day.month}월 {day.day}일: {event['stage']}")
+        lines.append(
+            "  • FCC 최종명령: 의견수렴 후 예정(날짜 미공개); RSM 부적격이면 조정자 재선정·재심사"
+        )
+        return lines
     section = alert.get("fcc_sim_fraud_section")
     if not section or not alert.get("body_verified"):
         return policy_document_source_timeline_lines(alert)
@@ -1054,6 +1125,7 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
             *compact_explanation_lines(alert),
             *robotics_232_detail_lines(alert),
             *doe_grid_scaled_detail_lines(alert),
+            *fcc_upper_c_band_coordinator_detail_lines(alert),
             *policy_timeline_lines(alert),
             f"- 출처: [원문 보기]({alert.get('link', '')}) · {display_source(alert.get('source'))} · 조회 {now:%H:%M KST}",
             "",
@@ -1104,6 +1176,8 @@ def select_sendable_policy_alerts(alerts: list[dict], now: dt.datetime) -> list[
         source = str(alert.get("source") or "").lower()
         if source.startswith("white house") and "first lady" in original_title:
             reason = "whitehouse_nonpolicy_event"
+        elif is_fcc_upper_c_band_coordinator_notice(alert) and not fcc_upper_c_band_coordinator_body_verified(alert):
+            reason = "fcc_upper_c_band_coordinator_body_unverified"
         elif title in POLICY_UNVERIFIED_GENERIC_TITLES:
             reason = "unverified_generic_title"
         elif has_raw_ascii_heading(block):
