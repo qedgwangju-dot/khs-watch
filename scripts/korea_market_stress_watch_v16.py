@@ -722,6 +722,7 @@ def _validate_historical_ls(market, response, expected_dates, anchors):
 def _recover_historical_ls(pending, old, now):
     root = pending.get("final_flow_history") or {}
     previous = old.get("ls_date_backfill_candidates") or {}
+    previous_health = old.get("ls_date_backfill_health") or {}
     candidates, health = {}, {}
     called = False
     for market, upcode in (("KOSPI", "001"), ("KOSDAQ", "301")):
@@ -742,13 +743,29 @@ def _recover_historical_ls(pending, old, now):
             anchors = {d: v for d, v in known.items() if d in valid_dates and abs(v) >= 100}
             if len(anchors) < 2:
                 raise ValueError("금액 검증용 확정 거래일 부족")
+            last_health = previous_health.get(market) or {}
+            last_attempt = _parse_ts(last_health.get("last_attempt_at"))
+            if (last_health.get("retry_after_failure") is True and last_attempt
+                    and 0 <= (now - last_attempt).total_seconds() < 3 * 3600):
+                info.update(last_health)
+                info["status"] = "이전 원천 검증 실패 · 3시간 재조회 간격 대기"
+                info["missing_dates"] = wanted
+                continue
             if called:
                 time.sleep(1.1)
             called = True
             req = {"t1665InBlock": {"market": "1", "upcode": upcode, "gubun2": "1", "gubun3": "1",
                    "from_date": min(wanted + list(anchors)).replace("-", ""),
                    "to_date": completed[-1].replace("-", ""), "exchgubun": "K"}}
+            info["last_attempt_at"] = now.isoformat(timespec="seconds")
             result = core.ls.ls_rest(core._get_token(), "stock/chart", "t1665", req)
+            summary = result.get("t1665OutBlock") or {}
+            # Only public market identifiers; never retain tokens or account fields.
+            info["response_market"] = {
+                key: re.sub(r"[^\w .\-]", "", str(summary.get(key) or ""))[:40]
+                for key in ("mname", "mcode", "ex_upcode")
+            }
+            info["raw_row_count"] = len(result.get("t1665OutBlock1") or [])
             data, proof = _validate_historical_ls(market, result, set(completed), anchors)
             info.update(proof)
             recovered = []
@@ -776,6 +793,8 @@ def _recover_historical_ls(pending, old, now):
             # Do not log request credentials; never treat collection failure as a zero.
             info["status"] = "과거 수급 조회·검증 실패"
             info["error_type"] = type(exc).__name__
+            if info.get("last_attempt_at"):
+                info["retry_after_failure"] = True
             if isinstance(exc, ValueError):
                 info["reason"] = str(exc)
         candidates[market] = {d: r for d, r in candidates[market].items() if d in info.get("missing_dates", [])}
@@ -813,7 +832,7 @@ def _annotate_operating_evidence():
             msg = f"{market} {latest or '거래일 미확인'} 확정 수급 확인 불가; 3거래일 판정 보류"
         lines.append(msg)
         h = health.get(market) or {}
-        print(f"market_stress_history {market} status={h.get('status')} rows={h.get('rows', 0)} missing={h.get('missing_dates', [])} recovered={h.get('recovered_dates', [])} reason={h.get('reason', h.get('error_type', ''))}")
+        print(f"market_stress_history {market} status={h.get('status')} rows={h.get('rows', 0)} missing={h.get('missing_dates', [])} recovered={h.get('recovered_dates', [])} reason={h.get('reason', h.get('error_type', ''))} response_market={h.get('response_market', {})} raw_rows={h.get('raw_row_count', 0)}")
     snap["foreign_flow_context"] = lines
     pending["snapshot"] = snap
     watch.PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

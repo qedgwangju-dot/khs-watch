@@ -187,6 +187,21 @@ class LSForeignHistoryRegressionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             market16._validate_historical_ls("KOSPI", r, dates, old)
 
+    def test_history_source_failure_cooldown_does_not_repeat_or_erase_history(self):
+        now = dt.datetime.fromisoformat("2026-11-24T09:05:00+09:00")
+        history = [{"date": "2026-11-19", "daily_eok": -4086},
+                   {"date": "2026-11-20", "daily_eok": -10956}]
+        pending = {"final_flow_history": {"KOSPI": list(history), "KOSDAQ": list(history)}}
+        old = {"ls_date_backfill_health": {m: {"last_attempt_at": "2026-11-24T09:00:00+09:00",
+                         "retry_after_failure": True, "reason": "KRX 식별 실패",
+                         "status": "과거 수급 조회·검증 실패"} for m in ("KOSPI", "KOSDAQ")}}
+        with patch.object(market16, "_recent_trade_dates", return_value={"2026-11-19", "2026-11-20", "2026-11-23"}), \
+             patch.object(market16.core.ls, "ls_rest") as api:
+            h = market16._recover_historical_ls(pending, old, now)
+        api.assert_not_called()
+        self.assertIn("재조회 간격 대기", h["KOSPI"]["status"])
+        self.assertEqual(pending["final_flow_history"]["KOSPI"], history)
+
     def test_missing_three_day_status_is_not_reported_as_zero(self):
         import tempfile
         with tempfile.TemporaryDirectory() as folder:
