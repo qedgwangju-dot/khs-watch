@@ -5,6 +5,20 @@
   "prev_value": 4.63,
   "last_alert_date": "2026-11-20",
   "pending_event": null,
-  "last_followup_completed": false,
-  "updated_at_utc": "2026-11-23T21:49:41.549146+00:00"
+  "last_followup_completed": true,
+  "updated_at_utc": "2026-11-23T21:49:41.549146+00:00",
+  "last_followup_event_date": "2026-11-20",
+  "last_followup_date": "2026-11-23",
+  "delivery_records": {
+    "initial:2026-11-20": {
+      "status": "legacy_sent_no_receipt",
+      "state_commit": "340fb37b34428f3101277550e2e84ded49098bcf"
+    },
+    "followup:2026-11-20:2026-11-23": {
+      "status": "legacy_sent_no_receipt",
+      "source_run_id": 45264281352,
+      "state_commit": "2710a2d25acb731364f9e486782289c7fa6ccf81",
+      "note": "Prior run logged followup_done=true; old sender checked ok only, no message_id persisted."
+    }
+  }
 }

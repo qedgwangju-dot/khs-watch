@@ -17,7 +17,7 @@ def integrated_market_date():
 def send_initial_alert(date, value, prev, day_bp, source):
     if not base.FORCE_NOTIFY and integrated_market_date() == date:
         print(json.dumps({'standalone_2y_suppressed': True, 'date': date}, ensure_ascii=False))
-        return
+        return {'status': 'suppressed_integrated'}
     return _original_send_initial(date, value, prev, day_bp, source)
 
 
