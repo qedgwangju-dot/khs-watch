@@ -33,16 +33,16 @@
   },
   "verdict": "에너지 충격 경보 기준 미충족",
   "oil_rates": {
-    "date": "2026-11-20",
+    "date": "2026-11-23",
     "observations": 63,
-    "corr_3m": 0.2079933018710222,
+    "corr_3m": 0.19950853831220225,
     "corr_band": "일반",
-    "beta_bp_per_1pct": 0.27367140552457936,
+    "beta_bp_per_1pct": 0.24975269404125175,
     "beta_hot": false,
-    "wti": 83.9800033569336,
-    "wti_move_pct": -5.17162864489682,
+    "wti": 80.16999816894531,
+    "wti_move_pct": -6.474571830054265,
     "dgs10": 4.92,
-    "dgs10_move_bp": -23.000000000000043,
+    "dgs10_move_bp": -20.000000000000018,
     "move_days": 5,
     "measurement_basis": "WTI 선물 완료 일봉·FRED DGS10 공통 거래일 자체 계산",
     "wti_url": "https://finance.yahoo.com/quote/CL=F/",
@@ -50,7 +50,7 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-11-24T21:04:27.814831+00:00",
+    "date": "2026-11-24T21:31:17.210415+00:00",
     "meeting_date": null,
     "hike25_prob": null,
     "extra_bp": null,
@@ -60,5 +60,5 @@
     "fresh": false
   },
   "oil_rates_verdict": "유가·장기금리 상관 일반 범위",
-  "updated_at_utc": "2026-11-24T21:04:28.609155+00:00"
+  "updated_at_utc": "2026-11-24T21:31:17.978471+00:00"
 }
