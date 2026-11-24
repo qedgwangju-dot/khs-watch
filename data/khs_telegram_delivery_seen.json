@@ -734,6 +734,16 @@
       "sent_at_utc": "2026-11-12T06:58:35.093075Z",
       "title": "신뢰외신 정책 워치: [상·공식 확인 전] 미 상무부, 제3국 데이터센터 GPU 원격 접근 제한 추진"
     },
+    "ce0b1dc0f8ee84e909a2": {
+      "message_id": 643,
+      "message_ids": [
+        643
+      ],
+      "preview": "2026년 11월 24일 16:40 KST 공식 문서 확인 전 정책 뉴스 1건 확인 1. [상·공식 확인 전] 미국, 엔비디아 Jetson 로봇칩 대중 수출통제 검토 - 핵심: Reuters 인용 기사에 따르면 미 NSC·FCC 등 일부 기관이 Jetson을 대중 수출통제에 포함할지 검토 중이며, 의회에서도 논의가 있었다고 합니다. 이는 익명 관계자 기반 보도이지 공식 규칙 발표가 아닙니다.",
+      "route": "policy",
+      "sent_at_utc": "2026-11-24T07:44:34.524145Z",
+      "title": "신뢰외신 정책 워치: [상·공식 확인 전] 미국, 엔비디아 Jetson 로봇칩 대중 수출통제 검토"
+    },
     "ce3f16dec64a503b7547": {
       "message_id": 594,
       "message_ids": [
@@ -1101,6 +1111,15 @@
       "route": "policy",
       "sent_at_utc": "2026-11-17T07:49:18.692836Z",
       "title": "정책 워치: [상] FCC, 통신·주파수·위성 규제 문서 공표"
+    },
+    "part-2d936bd37beeb053b461dda7": {
+      "message_id": 643,
+      "parent_digest": "ce0b1dc0f8ee84e909a2",
+      "part_count": 1,
+      "part_index": 1,
+      "route": "policy",
+      "sent_at_utc": "2026-11-24T07:44:34.524145Z",
+      "title": "신뢰외신 정책 워치: [상·공식 확인 전] 미국, 엔비디아 Jetson 로봇칩 대중 수출통제 검토"
     },
     "part-31723d88bf873495b4fbb8dc": {
       "message_id": 566,
