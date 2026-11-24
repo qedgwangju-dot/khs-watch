@@ -1,5 +1,11 @@
 {
-  "pending": {},
+  "pending": {
+    "BTC|2026-11-23|large_daily|out": {
+      "run_id": "45330271245",
+      "attempted_utc": "2026-11-24T05:05:31+00:00",
+      "status": "unconfirmed"
+    }
+  },
   "delivered": {
     "source|166d6124867c787b073a2d783f59c567": {
       "run_id": "45144713464",
