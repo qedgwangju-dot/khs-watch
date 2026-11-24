@@ -68,6 +68,7 @@ class AiPolicyIntegrationTests(unittest.TestCase):
         self.ndaa_rule = self.rules[host.NDAA_KEY]
         self.bis_rule = self.rules[host.BIS_GPU_REMOTE_KEY]
         self.fcc_rule = self.rules[host.FCC_OPTICS_RULE]
+        self.jetson_rule = self.rules[host.JETSON_EXPORT_RULE]
         self.ndaa_item = ndaa.baseline_item(BASELINE, NOW)
         self.bis_item = bis.make_item(deepcopy(BIS_META), BIS_BODY, NOW, inspection=True)
         raw = '<script type="application/ld+json">' + json.dumps({
@@ -130,6 +131,104 @@ class AiPolicyIntegrationTests(unittest.TestCase):
         self.assertFalse(host.unseen_items_for_rule(self.fcc_rule, [self.fcc_item], fcc_seen))
         for alert in self.alerts[:2]:
             self.assertEqual(host.unseen_items_for_rule(alert["rule"], alert["items"], fcc_seen), alert["items"])
+
+    def test_jetson_baseline_is_body_verified_report_only_and_reprints_dedupe(self):
+        now = dt.datetime(2026, 11, 24, 18, tzinfo=ZoneInfo("Asia/Seoul"))
+        title = "몸체는 中, 두뇌는 엔비디아…美, 로봇칩 수출 규제 검토"
+        body = (
+            "Reuters reports that some U.S. institutions, including the National Security Council (NSC) "
+            "and Federal Communications Commission (FCC), are reviewing whether Nvidia's Jetson "
+            "robotics processor should be included in export controls to China. Congress has also "
+            "discussed Jetson export controls. At least 14 Chinese robotics companies use Nvidia chips "
+            "or robotics software, and replacing that platform could be difficult because of computing "
+            "performance and software compatibility. No rule or effective date has been announced."
+        )
+        raw = '<script type="application/ld+json">' + json.dumps({
+            "@type": "NewsArticle", "headline": title,
+            "datePublished": "2026-11-24T14:47:42+09:00", "articleBody": body,
+            "description": "Reuters 인용: 미 기관이 Jetson 대중 수출통제 포함 여부를 검토 중입니다.",
+        }) + "</script>"
+        with patch.object(host, "fetch_text", return_value=raw), patch.object(
+            host, "load_seen", return_value={"seen": {}}
+        ), patch.object(host, "JETSON_FR_QUERIES", ()):
+            items = host.collect_jetson_policy_items(self.jetson_rule, now)
+
+        self.assertEqual(len(items), 1)
+        item = items[0]
+        self.assertTrue(item["body_verified"])
+        self.assertFalse(item["official_direct_verified"])
+        self.assertEqual(item["jetson_stage"], "reported-review")
+        self.assertEqual(host.alert_confirmation_status(self.jetson_rule, [item])[0], "공식 확인 전")
+        profile = host.item_story_profile(self.jetson_rule, [item])
+        self.assertIn("Jetson을 대중 수출통제에 포함할지 검토", profile["core"])
+        self.assertIn("규칙 발표가 아닙니다", profile["core"])
+        self.assertIn("14곳", " ".join(profile["actual_bullets"]))
+        self.assertIn("Jetson은 데이터센터용", " ".join(profile["actual_bullets"]))
+        alert = self.alert(self.jetson_rule, item)
+        rendered = host.render_alert_bundle([alert], now)
+        self.assertIn("공식 확인 전", rendered)
+        self.assertIn(host.JETSON_BASELINE_URL, rendered)
+        title, formatted = formatter.format_policy_message("신뢰외신 정책 워치", rendered, now=now)
+        self.assertEqual(formatter.validate_final_policy_message(title, formatted), [])
+        self.assertIn("규칙 발표가 아닙니다", formatted)
+
+        mirror = deepcopy(item)
+        mirror.update(title="Reuters: U.S. weighs China controls on Nvidia Jetson", source="Reuters")
+        self.assertEqual(host.semantic_policy_event_key(item), host.semantic_policy_event_key(mirror))
+        self.assertEqual(host.story_event_fingerprint(self.jetson_rule, [item]),
+                         host.story_event_fingerprint(self.jetson_rule, [mirror]))
+        self.assertEqual(len(host.alert_item_groups(self.jetson_rule, [item, mirror])), 1)
+        next_stage = dict(mirror, jetson_stage="reported-draft")
+        self.assertNotEqual(host.semantic_policy_event_key(item), host.semantic_policy_event_key(next_stage))
+
+    def test_jetson_federal_register_rule_stage_requires_matching_full_text(self):
+        now = dt.datetime(2026, 12, 16, 12, tzinfo=ZoneInfo("Asia/Seoul"))
+        api_urls = ("https://example.test/search-1", "https://example.test/search-2")
+        full_text_url = "https://www.federalregister.gov/documents/full_text/text/2026/12/01/2026-29991.txt"
+        document = {
+            "document_number": "2026-29991",
+            "publication_date": "2026-12-01",
+            "type": "Proposed Rule",
+            "title": "Export Controls for NVIDIA Jetson Robotics Processors to China",
+            "abstract": "BIS proposes export licensing requirements for Jetson products destined for China.",
+            "agencies": [{"name": "Bureau of Industry and Security"}],
+            "html_url": "https://www.federalregister.gov/documents/2026/12/01/2026-29991/export-controls-jetson",
+            "raw_text_url": full_text_url,
+            "comments_close_on": "2027-01-15",
+            "effective_on": "",
+        }
+        payload = json.dumps({"results": [document]})
+        full_text = (
+            "Nvidia Jetson processors. The Bureau of Industry and Security proposes export control "
+            "licensing requirements for exports to China. This proposed rule requests comments."
+        )
+
+        def fetch(url, timeout=8):
+            if url in api_urls:
+                return payload
+            if url == full_text_url:
+                return full_text
+            raise AssertionError(f"unexpected test URL: {url}")
+
+        with patch.object(host, "fetch_text", side_effect=fetch), patch.object(
+            host, "load_seen", return_value={"seen": {}}
+        ), patch.object(host, "JETSON_FR_QUERIES", api_urls):
+            items = host.collect_jetson_official_documents(self.jetson_rule, now)
+
+        self.assertEqual(len(items), 1)
+        item = items[0]
+        self.assertTrue(item["official_api_verified"])
+        self.assertTrue(item["official_direct_verified"])
+        self.assertEqual(item["jetson_stage"], "official-proposal")
+        self.assertEqual(host.alert_confirmation_status(self.jetson_rule, [item])[0], "공식 확인")
+        profile = host.item_story_profile(self.jetson_rule, [item])
+        self.assertIn("의견수렴 단계", profile["stage"])
+        self.assertIn("2026-29991", " ".join(profile["actual_bullets"]))
+        self.assertIn("의견 제출기한 2027-01-15", profile["timeline"])
+        reprint = dict(item, title="Mirrored story title", link="https://www.federalregister.gov/mirror")
+        self.assertEqual(host.semantic_policy_event_key(item), host.semantic_policy_event_key(reprint))
+        final = dict(item, jetson_stage="official-final", jetson_document_type="rule")
+        self.assertNotEqual(host.semantic_policy_event_key(item), host.semantic_policy_event_key(final))
 
     def test_mixed_bundle_preserves_stages_and_passes_production_format_validation(self):
         statuses = [host.alert_confirmation_status(alert["rule"], alert["items"])[0] for alert in self.alerts]
