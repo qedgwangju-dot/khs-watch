@@ -1,24 +1,24 @@
 {
   "active": true,
   "first_seen_at": "2026-11-01T10:44:00+00:00",
-  "last_seen_at": "2026-11-23T14:32:42+00:00",
+  "last_seen_at": "2026-11-24T01:52:44+00:00",
   "last_warning_sent_at": "2026-11-21T23:31:52+00:00",
   "last_failure": {
     "query_total": 228,
-    "query_complete": 138,
-    "query_incomplete": 90,
+    "query_complete": 108,
+    "query_incomplete": 120,
     "statuses": {
-      "error": 85,
-      "ok": 138,
+      "error": 115,
+      "ok": 108,
       "partial": 5
     },
     "causes": {
-      "HTTP 401 인증 거부": 2,
+      "HTTP 401 인증 거부": 1,
       "HTTP 403 접근 거부": 2,
       "HTTP 429 요청 제한": 3,
       "대체 원천의 범위 미확인": 5,
       "수집 시간 초과": 2,
-      "원천 응답 오류": 81
+      "원천 응답 오류": 112
     }
   }
 }
