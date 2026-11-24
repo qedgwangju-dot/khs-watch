@@ -1,114 +1,109 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "a1c3efdecf089a3608c44a14b226e3cf45097425fbad89df0e6720399bc3c274",
-    "Cboe|options": "97a2476da36a415f6b467cc6ce232e31ec90cfc5b0d1b9408a62d3a1e4dc9b21",
+    "Nasdaq SOX|sox": "93735b0de44632ec7d2b1b5a80404194018c095a2a4ee60095d365e463bbd3f7",
+    "Cboe|options": "b1bdee2af89e32bdadca0409720e39ffbf2d9cbfafcfb474f5cdb5466df2571e",
     "CFTC|cot": "3d173fc52715d9aa837ca85d48a5655f1df70ce8f6c4db6313305f6ea006c878",
-    "미국 주요지수·시장 확산·옵션 과거 비교|context": "15aa1158431b17da477660d4abea39c7ef7e9c2cb6597cc52e2600d0a0ef2e9b"
+    "미국 주요지수·시장 확산·옵션 과거 비교|context": "55bad8588c36f84d35ee6295bd3939943c39b6a82b6393bd38d70c389dd184fb"
   },
   "values": {
     "Nasdaq SOX|sox": {
       "source": "Nasdaq SOX",
       "kind": "sox",
-      "period": "11/20/2026",
+      "period": "11/23/2026",
       "metrics": {
-        "value": 8408.59,
-        "previous_close": 9419.7197265625,
+        "value": 9588.05,
+        "previous_close": 8408.58984375,
         "previous_close_source": "Yahoo daily close cross-check",
-        "net_change": -1011.1297265624999,
+        "net_change": 1179.4601562499993,
         "net_change_source": "Nasdaq official completed close minus Yahoo prior daily close",
-        "pct": -10.73418059043979,
-        "d1_pct": -10.73418059043979,
-        "official_overview_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-10&todate=2026-11-20&limit=200",
+        "pct": 14.026848474797205,
+        "d1_pct": 14.026848474797205,
+        "official_overview_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-13&todate=2026-11-23&limit=200",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=6mo&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": 0.00015625000014551915,
+        "crosscheck_close_diff": 0.00019531249927240424,
         "final_close_confirmed": true,
-        "expected_completed_session": "2026-11-20",
-        "d3_pct": -12.800014664317272,
-        "d5_pct": -17.126706187357023,
+        "expected_completed_session": "2026-11-23",
+        "d3_pct": -0.6707898362147358,
+        "d5_pct": -0.23516187790523224,
         "month_windows": {
           "1m": {
             "calendar_months": 1,
-            "cutoff_date": "2026-10-20",
-            "end_date": "2026-11-20",
-            "end_close": 8408.59,
+            "cutoff_date": "2026-10-23",
+            "end_date": "2026-11-23",
+            "end_close": 9588.05,
             "basis": "calendar months; latest observed close on or before cutoff",
             "status": "verified",
-            "base_date": "2026-10-20",
-            "yahoo_base_close": 11283.8095703125,
-            "nasdaq_base_close": 11283.81,
+            "base_date": "2026-10-23",
+            "yahoo_base_close": 10779.4599609375,
+            "nasdaq_base_close": 10779.46,
             "cutoff_gap_days": 0,
-            "base_close": 11283.81,
-            "base_crosscheck_diff": 0.00042968749949068297,
-            "return_pct": -25.48093241555821
+            "base_close": 10779.46,
+            "base_crosscheck_diff": 3.9062499126885086e-05,
+            "return_pct": -11.052594471337152
           },
           "3m": {
             "calendar_months": 3,
-            "cutoff_date": "2026-08-20",
-            "end_date": "2026-11-20",
-            "end_close": 8408.59,
+            "cutoff_date": "2026-08-23",
+            "end_date": "2026-11-23",
+            "end_close": 9588.05,
             "basis": "calendar months; latest observed close on or before cutoff",
             "status": "verified",
-            "base_date": "2026-08-20",
-            "yahoo_base_close": 11800.01953125,
-            "nasdaq_base_close": 11800.02,
-            "cutoff_gap_days": 0,
-            "base_close": 11800.02,
-            "base_crosscheck_diff": 0.00046875000043655746,
-            "return_pct": -28.74088349002798
+            "base_date": "2026-08-21",
+            "yahoo_base_close": 11740.3701171875,
+            "nasdaq_base_close": 11740.37,
+            "cutoff_gap_days": 2,
+            "base_close": 11740.37,
+            "base_crosscheck_diff": -0.00011718749919964466,
+            "return_pct": -18.332641986581354
           }
         },
-        "month_window_history_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-10&todate=2026-11-20&limit=200",
+        "month_window_history_url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-13&todate=2026-11-23&limit=200",
         "price_path": {
           "status": "verified",
-          "end_date": "2026-11-20",
+          "end_date": "2026-11-23",
           "symbol": "SOX",
           "tolerance_points": 0.1,
           "price_basis": "unadjusted completed-session close",
           "values": {
-            "d1_pct": -10.73418318166569,
-            "d3_pct": -12.800014103670264,
-            "d5_pct": -17.126702094946733,
-            "ma20": 10201.987,
-            "ma20_prior5": 10646.1125,
-            "ma20_change5_pct": -4.1717152622612215,
-            "price_vs_ma20_pct": -17.578899090931987,
-            "ma60": 11378.617666666665,
-            "ma60_prior5": 11570.456833333334,
-            "ma60_change5_pct": -1.6580085767573083,
-            "price_vs_ma60_pct": -26.101831994647963,
-            "close": 8408.59,
+            "d1_pct": 14.026846355928857,
+            "d3_pct": -0.6707898226421372,
+            "d5_pct": -0.23515579071134995,
+            "ma20": 10127.216,
+            "ma20_prior5": 10560.828,
+            "ma20_change5_pct": -4.105852306277491,
+            "price_vs_ma20_pct": -5.323931078393129,
+            "ma60": 11347.2575,
+            "ma60_prior5": 11534.9615,
+            "ma60_change5_pct": -1.6272616081119962,
+            "price_vs_ma60_pct": -15.50337162966471,
+            "close": 9588.05,
             "peak63_close": 13217.82,
             "peak63_date": "2026-10-06",
-            "drawdown63_pct": -36.384441609887254,
+            "drawdown63_pct": -27.46118497603992,
             "trend": "하락"
           },
           "month_windows": {
             "1m": {
               "status": "verified",
-              "base_date": "2026-10-20",
-              "end_date": "2026-11-20",
-              "base_primary_close": 11283.81,
-              "base_secondary_close": 11283.8095703125,
-              "end_close": 8408.59,
-              "return_pct": -25.48093241555821
+              "base_date": "2026-10-23",
+              "end_date": "2026-11-23",
+              "base_primary_close": 10779.46,
+              "base_secondary_close": 10779.4599609375,
+              "end_close": 9588.05,
+              "return_pct": -11.052594471337152
             },
             "3m": {
               "status": "verified",
-              "base_date": "2026-08-20",
-              "end_date": "2026-11-20",
-              "base_primary_close": 11800.02,
-              "base_secondary_close": 11800.01953125,
-              "end_close": 8408.59,
-              "return_pct": -28.74088349002798
+              "base_date": "2026-08-21",
+              "end_date": "2026-11-23",
+              "base_primary_close": 11740.37,
+              "base_secondary_close": 11740.3701171875,
+              "end_close": 9588.05,
+              "return_pct": -18.332641986581354
             }
           },
           "operands": [
-            [
-              "2026-08-20",
-              11800.02,
-              11800.01953125
-            ],
             [
               "2026-08-21",
               11740.37,
@@ -433,10 +428,14 @@
               "2026-11-20",
               8408.59,
               8408.58984375
+            ],
+            [
+              "2026-11-23",
+              9588.05,
+              9588.0498046875
             ]
           ],
           "session_dates": [
-            "2026-08-21",
             "2026-08-24",
             "2026-08-25",
             "2026-08-26",
@@ -500,42 +499,43 @@
             "2026-11-17",
             "2026-11-18",
             "2026-11-19",
-            "2026-11-20"
+            "2026-11-20",
+            "2026-11-23"
           ]
         }
       },
-      "url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-10&todate=2026-11-20&limit=200",
-      "fingerprint": "a1c3efdecf089a3608c44a14b226e3cf45097425fbad89df0e6720399bc3c274"
+      "url": "https://api.nasdaq.com/api/quote/SOX/historical?assetclass=index&fromdate=2026-08-13&todate=2026-11-23&limit=200",
+      "fingerprint": "93735b0de44632ec7d2b1b5a80404194018c095a2a4ee60095d365e463bbd3f7"
     },
     "Cboe|options": {
       "source": "Cboe",
       "kind": "options",
-      "period": "Friday, November 20, 2026",
+      "period": "Monday, November 23, 2026",
       "metrics": {
-        "total_pc_ratio": 1.13,
-        "total_calls": 10439201,
-        "total_puts": 11753144,
+        "total_pc_ratio": 0.94,
+        "total_calls": 8517656,
+        "total_puts": 7964794,
         "total_time_ct": "일별 마감",
-        "equity_pc_ratio": 0.77,
-        "equity_calls": 3360800,
-        "equity_puts": 2576245,
+        "equity_pc_ratio": 0.55,
+        "equity_calls": 3321053,
+        "equity_puts": 1836973,
         "equity_time_ct": "일별 마감",
-        "index_pc_ratio": 1.27,
-        "index_calls": 4689971,
-        "index_puts": 5944675,
+        "index_pc_ratio": 1.21,
+        "index_calls": 3296495,
+        "index_puts": 3974067,
         "index_time_ct": "일별 마감",
         "snapshot_type": "cboe_daily_eod",
         "final_snapshot": true,
         "daily_ratio_crosscheck": {
-          "date": "2026-11-20",
-          "total": 1.13,
-          "index": 1.27,
-          "equity": 0.77,
-          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-20"
+          "date": "2026-11-23",
+          "total": 0.94,
+          "index": 1.21,
+          "equity": 0.55,
+          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-23"
         }
       },
-      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-20",
-      "fingerprint": "97a2476da36a415f6b467cc6ce232e31ec90cfc5b0d1b9408a62d3a1e4dc9b21"
+      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-11-23",
+      "fingerprint": "b1bdee2af89e32bdadca0409720e39ffbf2d9cbfafcfb474f5cdb5466df2571e"
     },
     "CFTC|cot": {
       "source": "CFTC",
@@ -748,113 +748,113 @@
     "미국 주요지수·시장 확산·옵션 과거 비교|context": {
       "source": "미국 주요지수·시장 확산·옵션 과거 비교",
       "kind": "context",
-      "period": "2026-11-20",
+      "period": "2026-11-23",
       "metrics": {
         "indices": {
           "NDX": {
             "status": "unavailable",
-            "end_date": "2026-11-20",
+            "end_date": "2026-11-23",
             "symbol": "NDX",
             "tolerance_points": 0.1,
             "price_basis": "unadjusted completed-session close",
             "reason": "제공처 종가 불일치: 2026-10-06",
-            "primary_url": "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&fromdate=2026-05-14&todate=2026-11-20&limit=200",
+            "primary_url": "https://api.nasdaq.com/api/quote/NDX/historical?assetclass=index&fromdate=2026-05-17&todate=2026-11-23&limit=200",
             "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ENDX?range=6mo&interval=1d",
             "returns": {
               "status": "verified",
               "symbol": "NDX",
-              "end_date": "2026-11-20",
+              "end_date": "2026-11-23",
               "windows": {
                 "1d": {
                   "status": "verified",
-                  "base_date": "2026-11-19",
-                  "end_date": "2026-11-20",
-                  "base_primary": 26517.05,
-                  "base_secondary": 26517.05078125,
-                  "end_primary": 25028.98,
-                  "end_secondary": 25028.98046875,
-                  "return_pct": -5.611747913135135
+                  "base_date": "2026-11-20",
+                  "end_date": "2026-11-23",
+                  "base_primary": 25028.98,
+                  "base_secondary": 25028.98046875,
+                  "end_primary": 26746.1,
+                  "end_secondary": 26746.099609375,
+                  "return_pct": 6.860527276780748
                 },
                 "3d": {
                   "status": "verified",
-                  "base_date": "2026-11-17",
-                  "end_date": "2026-11-20",
-                  "base_primary": 27001.78,
-                  "base_secondary": 27001.779296875,
-                  "end_primary": 25028.98,
-                  "end_secondary": 25028.98046875,
-                  "return_pct": -7.306184999655574
+                  "base_date": "2026-11-18",
+                  "end_date": "2026-11-23",
+                  "base_primary": 27116.26,
+                  "base_secondary": 27116.259765625,
+                  "end_primary": 26746.1,
+                  "end_secondary": 26746.099609375,
+                  "return_pct": -1.3650850080357713
                 },
                 "5d": {
                   "status": "verified",
-                  "base_date": "2026-11-13",
-                  "end_date": "2026-11-20",
-                  "base_primary": 27943.74,
-                  "base_secondary": 27943.740234375,
-                  "end_primary": 25028.98,
-                  "end_secondary": 25028.98046875,
-                  "return_pct": -10.430815631694257
+                  "base_date": "2026-11-16",
+                  "end_date": "2026-11-23",
+                  "base_primary": 27197.15,
+                  "base_secondary": 27197.150390625,
+                  "end_primary": 26746.1,
+                  "end_secondary": 26746.099609375,
+                  "return_pct": -1.6584458298020355
                 },
                 "1m": {
                   "status": "verified",
-                  "base_date": "2026-10-20",
-                  "end_date": "2026-11-20",
-                  "base_primary": 29490.28,
-                  "base_secondary": 29490.279296875,
-                  "end_primary": 25028.98,
-                  "end_secondary": 25028.98046875,
-                  "return_pct": -15.128035406920514
+                  "base_date": "2026-10-23",
+                  "end_date": "2026-11-23",
+                  "base_primary": 28957.53,
+                  "base_secondary": 28957.529296875,
+                  "end_primary": 26746.1,
+                  "end_secondary": 26746.099609375,
+                  "return_pct": -7.636804658408369
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-08-20",
-                  "end_date": "2026-11-20",
-                  "base_primary": 29213.16,
-                  "base_secondary": 29213.16015625,
-                  "end_primary": 25028.98,
-                  "end_secondary": 25028.98046875,
-                  "return_pct": -14.32292843362375
+                  "base_date": "2026-08-21",
+                  "end_date": "2026-11-23",
+                  "base_primary": 29308.86,
+                  "base_secondary": 29308.859375,
+                  "end_primary": 26746.1,
+                  "end_secondary": 26746.099609375,
+                  "return_pct": -8.743977077238762
                 }
               },
-              "close": 25028.98,
-              "peer_close": 25028.98046875,
+              "close": 26746.1,
+              "peer_close": 26746.099609375,
               "operands": [
                 [
-                  "2026-08-20",
-                  29213.16,
-                  29213.16015625
+                  "2026-08-21",
+                  29308.86,
+                  29308.859375
                 ],
                 [
-                  "2026-10-20",
-                  29490.28,
-                  29490.279296875
+                  "2026-10-23",
+                  28957.53,
+                  28957.529296875
                 ],
                 [
-                  "2026-11-13",
-                  27943.74,
-                  27943.740234375
+                  "2026-11-16",
+                  27197.15,
+                  27197.150390625
                 ],
                 [
-                  "2026-11-17",
-                  27001.78,
-                  27001.779296875
-                ],
-                [
-                  "2026-11-19",
-                  26517.05,
-                  26517.05078125
+                  "2026-11-18",
+                  27116.26,
+                  27116.259765625
                 ],
                 [
                   "2026-11-20",
                   25028.98,
                   25028.98046875
+                ],
+                [
+                  "2026-11-23",
+                  26746.1,
+                  26746.099609375
                 ]
               ]
             }
           },
           "SPX": {
             "status": "unavailable",
-            "end_date": "2026-11-20",
+            "end_date": "2026-11-23",
             "symbol": "SPX",
             "reason": "403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/_SPX.json"
           }
@@ -863,54 +863,49 @@
           "series": {
             "RSP": {
               "status": "verified",
-              "end_date": "2026-11-20",
+              "end_date": "2026-11-23",
               "symbol": "RSP",
               "tolerance_points": 0.1,
               "price_basis": "unadjusted completed-session close",
               "values": {
-                "d1_pct": -1.9798705287530138,
-                "d3_pct": -3.8561364479050786,
-                "d5_pct": -6.203653463555792,
-                "ma20": 218.0815,
-                "ma20_prior5": 218.65500000000003,
-                "ma20_change5_pct": -0.2622853353456467,
-                "price_vs_ma20_pct": -4.879597765055732,
-                "ma60": 215.24416666666667,
-                "ma60_prior5": 215.9065,
-                "ma60_change5_pct": -0.30676859350381447,
-                "price_vs_ma60_pct": -3.625727371628351,
-                "close": 207.44,
+                "d1_pct": 2.5935210181257107,
+                "d3_pct": -1.2115304275170602,
+                "d5_pct": -2.7908463892568514,
+                "ma20": 217.858,
+                "ma20_prior5": 218.9315,
+                "ma20_change5_pct": -0.49033601834364005,
+                "price_vs_ma20_pct": -2.3125154917423285,
+                "ma60": 215.113,
+                "ma60_prior5": 215.86083333333332,
+                "ma60_change5_pct": -0.3464423451838061,
+                "price_vs_ma60_pct": -1.0659513836913659,
+                "close": 212.82,
                 "peak63_close": 223.33,
                 "peak63_date": "2026-11-04",
-                "drawdown63_pct": -7.115031567635343,
+                "drawdown63_pct": -4.706040388662524,
                 "trend": "혼재"
               },
               "month_windows": {
                 "1m": {
                   "status": "verified",
-                  "base_date": "2026-10-20",
-                  "end_date": "2026-11-20",
-                  "base_primary_close": 215.86,
-                  "base_secondary_close": 215.86000061035156,
-                  "end_close": 207.44,
-                  "return_pct": -3.900676364310207
+                  "base_date": "2026-10-23",
+                  "end_date": "2026-11-23",
+                  "base_primary_close": 216.54,
+                  "base_secondary_close": 216.5399932861328,
+                  "end_close": 212.82,
+                  "return_pct": -1.7179274037129377
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-08-20",
-                  "end_date": "2026-11-20",
-                  "base_primary_close": 220.28,
-                  "base_secondary_close": 220.27999877929688,
-                  "end_close": 207.44,
-                  "return_pct": -5.828944979117489
+                  "base_date": "2026-08-21",
+                  "end_date": "2026-11-23",
+                  "base_primary_close": 221.67,
+                  "base_secondary_close": 221.6699981689453,
+                  "end_close": 212.82,
+                  "return_pct": -3.9924211665989917
                 }
               },
               "operands": [
-                [
-                  "2026-08-20",
-                  220.28,
-                  220.27999877929688
-                ],
                 [
                   "2026-08-21",
                   221.67,
@@ -1235,10 +1230,14 @@
                   "2026-11-20",
                   207.44,
                   207.44000244140625
+                ],
+                [
+                  "2026-11-23",
+                  212.82,
+                  212.82000732421875
                 ]
               ],
               "session_dates": [
-                "2026-08-21",
                 "2026-08-24",
                 "2026-08-25",
                 "2026-08-26",
@@ -1302,110 +1301,103 @@
                 "2026-11-17",
                 "2026-11-18",
                 "2026-11-19",
-                "2026-11-20"
+                "2026-11-20",
+                "2026-11-23"
               ],
-              "primary_url": "https://api.nasdaq.com/api/quote/RSP/historical?assetclass=etf&fromdate=2026-05-14&todate=2026-11-20&limit=200",
+              "primary_url": "https://api.nasdaq.com/api/quote/RSP/historical?assetclass=etf&fromdate=2026-05-17&todate=2026-11-23&limit=200",
               "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/RSP?range=6mo&interval=1d",
               "returns": {
                 "status": "verified",
                 "symbol": "RSP",
-                "end_date": "2026-11-20",
+                "end_date": "2026-11-23",
                 "windows": {
                   "1d": {
                     "status": "verified",
-                    "base_date": "2026-11-19",
-                    "end_date": "2026-11-20",
-                    "base_primary": 211.63,
-                    "base_secondary": 211.6300048828125,
-                    "end_primary": 207.44,
-                    "end_secondary": 207.44000244140625,
-                    "return_pct": -1.9798705287530138
+                    "base_date": "2026-11-20",
+                    "end_date": "2026-11-23",
+                    "base_primary": 207.44,
+                    "base_secondary": 207.44000244140625,
+                    "end_primary": 212.82,
+                    "end_secondary": 212.82000732421875,
+                    "return_pct": 2.5935210181257107
                   },
                   "3d": {
                     "status": "verified",
-                    "base_date": "2026-11-17",
-                    "end_date": "2026-11-20",
-                    "base_primary": 215.76,
-                    "base_secondary": 215.75999450683594,
-                    "end_primary": 207.44,
-                    "end_secondary": 207.44000244140625,
-                    "return_pct": -3.8561364479050786
+                    "base_date": "2026-11-18",
+                    "end_date": "2026-11-23",
+                    "base_primary": 215.43,
+                    "base_secondary": 215.42999267578125,
+                    "end_primary": 212.82,
+                    "end_secondary": 212.82000732421875,
+                    "return_pct": -1.2115304275170602
                   },
                   "5d": {
                     "status": "verified",
-                    "base_date": "2026-11-13",
-                    "end_date": "2026-11-20",
-                    "base_primary": 221.16,
-                    "base_secondary": 221.16000366210938,
-                    "end_primary": 207.44,
-                    "end_secondary": 207.44000244140625,
-                    "return_pct": -6.203653463555792
+                    "base_date": "2026-11-16",
+                    "end_date": "2026-11-23",
+                    "base_primary": 218.93,
+                    "base_secondary": 218.92999267578125,
+                    "end_primary": 212.82,
+                    "end_secondary": 212.82000732421875,
+                    "return_pct": -2.7908463892568514
                   },
                   "1m": {
                     "status": "verified",
-                    "base_date": "2026-10-20",
-                    "end_date": "2026-11-20",
-                    "base_primary": 215.86,
-                    "base_secondary": 215.86000061035156,
-                    "end_primary": 207.44,
-                    "end_secondary": 207.44000244140625,
-                    "return_pct": -3.900676364310207
+                    "base_date": "2026-10-23",
+                    "end_date": "2026-11-23",
+                    "base_primary": 216.54,
+                    "base_secondary": 216.5399932861328,
+                    "end_primary": 212.82,
+                    "end_secondary": 212.82000732421875,
+                    "return_pct": -1.7179274037129377
                   },
                   "3m": {
                     "status": "verified",
-                    "base_date": "2026-08-20",
-                    "end_date": "2026-11-20",
-                    "base_primary": 220.28,
-                    "base_secondary": 220.27999877929688,
-                    "end_primary": 207.44,
-                    "end_secondary": 207.44000244140625,
-                    "return_pct": -5.828944979117489
+                    "base_date": "2026-08-21",
+                    "end_date": "2026-11-23",
+                    "base_primary": 221.67,
+                    "base_secondary": 221.6699981689453,
+                    "end_primary": 212.82,
+                    "end_secondary": 212.82000732421875,
+                    "return_pct": -3.9924211665989917
                   }
                 },
-                "close": 207.44,
-                "peer_close": 207.44000244140625,
+                "close": 212.82,
+                "peer_close": 212.82000732421875,
                 "operands": [
                   [
-                    "2026-08-20",
-                    220.28,
-                    220.27999877929688
+                    "2026-08-21",
+                    221.67,
+                    221.6699981689453
                   ],
                   [
-                    "2026-10-20",
-                    215.86,
-                    215.86000061035156
+                    "2026-10-23",
+                    216.54,
+                    216.5399932861328
                   ],
                   [
-                    "2026-11-13",
-                    221.16,
-                    221.16000366210938
+                    "2026-11-16",
+                    218.93,
+                    218.92999267578125
                   ],
                   [
-                    "2026-11-17",
-                    215.76,
-                    215.75999450683594
-                  ],
-                  [
-                    "2026-11-19",
-                    211.63,
-                    211.6300048828125
+                    "2026-11-18",
+                    215.43,
+                    215.42999267578125
                   ],
                   [
                     "2026-11-20",
                     207.44,
                     207.44000244140625
+                  ],
+                  [
+                    "2026-11-23",
+                    212.82,
+                    212.82000732421875
                   ]
                 ]
               },
               "adjusted_operands": [
-                [
-                  "2026-05-21",
-                  203.1566162109375
-                ],
-                [
-                  "2026-05-22",
-                  205.01242065429688
-                ],
                 [
                   "2026-05-26",
                   206.06436157226562
@@ -1420,11 +1412,11 @@
                 ],
                 [
                   "2026-05-29",
-                  207.24533081054688
+                  207.24534606933594
                 ],
                 [
                   "2026-06-01",
-                  207.62246704101562
+                  207.62245178222656
                 ],
                 [
                   "2026-06-02",
@@ -1464,7 +1456,7 @@
                 ],
                 [
                   "2026-06-15",
-                  211.2646026611328
+                  211.26461791992188
                 ],
                 [
                   "2026-06-16",
@@ -1909,59 +1901,58 @@
                 [
                   "2026-11-20",
                   207.44000244140625
+                ],
+                [
+                  "2026-11-23",
+                  212.82000732421875
                 ]
               ]
             },
             "SPY": {
               "status": "verified",
-              "end_date": "2026-11-20",
+              "end_date": "2026-11-23",
               "symbol": "SPY",
               "tolerance_points": 0.1,
               "price_basis": "unadjusted completed-session close",
               "values": {
-                "d1_pct": -3.640325757469942,
-                "d3_pct": -5.820271967669721,
-                "d5_pct": -8.558134602383449,
-                "ma20": 747.8075,
-                "ma20_prior5": 759.0215000000001,
-                "ma20_change5_pct": -1.477428504989653,
-                "price_vs_ma20_pct": -7.755672415695225,
-                "ma60": 761.1028333333333,
-                "ma60_prior5": 764.8363333333333,
-                "ma60_change5_pct": -0.48814365077670674,
-                "price_vs_ma60_pct": -9.367043480983838,
-                "close": 689.81,
+                "d1_pct": 4.708542932111737,
+                "d3_pct": -1.0832648589427674,
+                "d5_pct": -2.3866477464693725,
+                "ma20": 745.6535,
+                "ma20_prior5": 757.6949999999999,
+                "ma20_change5_pct": -1.5892278555355244,
+                "price_vs_ma20_pct": -3.133291803766769,
+                "ma60": 760.3185,
+                "ma60_prior5": 764.4068333333333,
+                "ma60_change5_pct": -0.5348373608207391,
+                "price_vs_ma60_pct": -5.0016539121434,
+                "close": 722.29,
                 "peak63_close": 779.09,
                 "peak63_date": "2026-10-06",
-                "drawdown63_pct": -11.45952328999218,
+                "drawdown63_pct": -7.2905569318050585,
                 "trend": "하락"
               },
               "month_windows": {
                 "1m": {
                   "status": "verified",
-                  "base_date": "2026-10-20",
-                  "end_date": "2026-11-20",
-                  "base_primary_close": 769.05,
-                  "base_secondary_close": 769.0499877929688,
-                  "end_close": 689.81,
-                  "return_pct": -10.303621351017489
+                  "base_date": "2026-10-23",
+                  "end_date": "2026-11-23",
+                  "base_primary_close": 759.97,
+                  "base_secondary_close": 759.969970703125,
+                  "end_close": 722.29,
+                  "return_pct": -4.958090450938856
                 },
                 "3m": {
                   "status": "verified",
-                  "base_date": "2026-08-20",
-                  "end_date": "2026-11-20",
-                  "base_primary_close": 762.6,
-                  "base_secondary_close": 762.5999755859375,
-                  "end_close": 689.81,
-                  "return_pct": -9.544977707841607
+                  "base_date": "2026-08-21",
+                  "end_date": "2026-11-23",
+                  "base_primary_close": 765.72,
+                  "base_secondary_close": 765.719970703125,
+                  "end_close": 722.29,
+                  "return_pct": -5.671786031447534
                 }
               },
               "operands": [
-                [
-                  "2026-08-20",
-                  762.6,
-                  762.5999755859375
-                ],
                 [
                   "2026-08-21",
                   765.72,
@@ -2286,10 +2277,14 @@
                   "2026-11-20",
                   689.81,
                   689.8099975585938
+                ],
+                [
+                  "2026-11-23",
+                  722.29,
+                  722.2899780273438
                 ]
               ],
               "session_dates": [
-                "2026-08-21",
                 "2026-08-24",
                 "2026-08-25",
                 "2026-08-26",
@@ -2353,110 +2348,103 @@
                 "2026-11-17",
                 "2026-11-18",
                 "2026-11-19",
-                "2026-11-20"
+                "2026-11-20",
+                "2026-11-23"
               ],
-              "primary_url": "https://api.nasdaq.com/api/quote/SPY/historical?assetclass=etf&fromdate=2026-05-14&todate=2026-11-20&limit=200",
+              "primary_url": "https://api.nasdaq.com/api/quote/SPY/historical?assetclass=etf&fromdate=2026-05-17&todate=2026-11-23&limit=200",
               "secondary_url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?range=6mo&interval=1d",
               "returns": {
                 "status": "verified",
                 "symbol": "SPY",
-                "end_date": "2026-11-20",
+                "end_date": "2026-11-23",
                 "windows": {
                   "1d": {
                     "status": "verified",
-                    "base_date": "2026-11-19",
-                    "end_date": "2026-11-20",
-                    "base_primary": 715.87,
-                    "base_secondary": 715.8699951171875,
-                    "end_primary": 689.81,
-                    "end_secondary": 689.8099975585938,
-                    "return_pct": -3.640325757469942
+                    "base_date": "2026-11-20",
+                    "end_date": "2026-11-23",
+                    "base_primary": 689.81,
+                    "base_secondary": 689.8099975585938,
+                    "end_primary": 722.29,
+                    "end_secondary": 722.2899780273438,
+                    "return_pct": 4.708542932111737
                   },
                   "3d": {
                     "status": "verified",
-                    "base_date": "2026-11-17",
-                    "end_date": "2026-11-20",
-                    "base_primary": 732.44,
-                    "base_secondary": 732.4400024414062,
-                    "end_primary": 689.81,
-                    "end_secondary": 689.8099975585938,
-                    "return_pct": -5.820271967669721
+                    "base_date": "2026-11-18",
+                    "end_date": "2026-11-23",
+                    "base_primary": 730.2,
+                    "base_secondary": 730.2000122070312,
+                    "end_primary": 722.29,
+                    "end_secondary": 722.2899780273438,
+                    "return_pct": -1.0832648589427674
                   },
                   "5d": {
                     "status": "verified",
-                    "base_date": "2026-11-13",
-                    "end_date": "2026-11-20",
-                    "base_primary": 754.37,
-                    "base_secondary": 754.3699951171875,
-                    "end_primary": 689.81,
-                    "end_secondary": 689.8099975585938,
-                    "return_pct": -8.558134602383449
+                    "base_date": "2026-11-16",
+                    "end_date": "2026-11-23",
+                    "base_primary": 739.95,
+                    "base_secondary": 739.9500122070312,
+                    "end_primary": 722.29,
+                    "end_secondary": 722.2899780273438,
+                    "return_pct": -2.3866477464693725
                   },
                   "1m": {
                     "status": "verified",
-                    "base_date": "2026-10-20",
-                    "end_date": "2026-11-20",
-                    "base_primary": 769.05,
-                    "base_secondary": 769.0499877929688,
-                    "end_primary": 689.81,
-                    "end_secondary": 689.8099975585938,
-                    "return_pct": -10.303621351017489
+                    "base_date": "2026-10-23",
+                    "end_date": "2026-11-23",
+                    "base_primary": 759.97,
+                    "base_secondary": 759.969970703125,
+                    "end_primary": 722.29,
+                    "end_secondary": 722.2899780273438,
+                    "return_pct": -4.958090450938856
                   },
                   "3m": {
                     "status": "verified",
-                    "base_date": "2026-08-20",
-                    "end_date": "2026-11-20",
-                    "base_primary": 762.6,
-                    "base_secondary": 762.5999755859375,
-                    "end_primary": 689.81,
-                    "end_secondary": 689.8099975585938,
-                    "return_pct": -9.544977707841607
+                    "base_date": "2026-08-21",
+                    "end_date": "2026-11-23",
+                    "base_primary": 765.72,
+                    "base_secondary": 765.719970703125,
+                    "end_primary": 722.29,
+                    "end_secondary": 722.2899780273438,
+                    "return_pct": -5.671786031447534
                   }
                 },
-                "close": 689.81,
-                "peer_close": 689.8099975585938,
+                "close": 722.29,
+                "peer_close": 722.2899780273438,
                 "operands": [
                   [
-                    "2026-08-20",
-                    762.6,
-                    762.5999755859375
+                    "2026-08-21",
+                    765.72,
+                    765.719970703125
                   ],
                   [
-                    "2026-10-20",
-                    769.05,
-                    769.0499877929688
+                    "2026-10-23",
+                    759.97,
+                    759.969970703125
                   ],
                   [
-                    "2026-11-13",
-                    754.37,
-                    754.3699951171875
+                    "2026-11-16",
+                    739.95,
+                    739.9500122070312
                   ],
                   [
-                    "2026-11-17",
-                    732.44,
-                    732.4400024414062
-                  ],
-                  [
-                    "2026-11-19",
-                    715.87,
-                    715.8699951171875
+                    "2026-11-18",
+                    730.2,
+                    730.2000122070312
                   ],
                   [
                     "2026-11-20",
                     689.81,
                     689.8099975585938
+                  ],
+                  [
+                    "2026-11-23",
+                    722.29,
+                    722.2899780273438
                   ]
                 ]
               },
               "adjusted_operands": [
-                [
-                  "2026-05-21",
-                  738.9764404296875
-                ],
-                [
-                  "2026-05-22",
-                  741.8817749023438
-                ],
                 [
                   "2026-05-26",
                   746.8068237304688
@@ -2960,48 +2948,52 @@
                 [
                   "2026-11-20",
                   689.8099975585938
+                ],
+                [
+                  "2026-11-23",
+                  722.2899780273438
                 ]
               ]
             }
           },
           "comparison": {
             "status": "verified",
-            "end_date": "2026-11-20",
+            "end_date": "2026-11-23",
             "basis": "RSP vs SPY; Yahoo dividend/split-adjusted closes; Nasdaq raw-close cross-check",
             "population": "ETF relative performance; not advancing-stock percentage",
             "windows": {
               "5d": {
-                "base_date": "2026-11-13",
-                "end_date": "2026-11-20",
-                "rsp_base": 221.16000366210938,
-                "rsp_end": 207.44000244140625,
-                "spy_base": 754.3699951171875,
-                "spy_end": 689.8099975585938,
-                "rsp_return_pct": -6.203653912786455,
-                "spy_return_pct": -8.558134334142586,
-                "difference_pp": 2.354480421356131
+                "base_date": "2026-11-16",
+                "end_date": "2026-11-23",
+                "rsp_base": 218.92999267578125,
+                "rsp_end": 212.82000732421875,
+                "spy_base": 739.9500122070312,
+                "spy_end": 722.2899780273438,
+                "rsp_return_pct": -2.790839791700417,
+                "spy_return_pct": -2.386652326285299,
+                "difference_pp": -0.40418746541511785
               },
               "1m": {
-                "base_date": "2026-10-20",
-                "end_date": "2026-11-20",
-                "rsp_base": 215.86000061035156,
-                "rsp_end": 207.44000244140625,
-                "spy_base": 769.0499877929688,
-                "spy_end": 689.8099975585938,
-                "rsp_return_pct": -3.900675505020601,
-                "spy_return_pct": -10.303620244735857,
-                "difference_pp": 6.402944739715256
+                "base_date": "2026-10-23",
+                "end_date": "2026-11-23",
+                "rsp_base": 216.5399932861328,
+                "rsp_end": 212.82000732421875,
+                "spy_base": 759.969970703125,
+                "spy_end": 722.2899780273438,
+                "rsp_return_pct": -1.7179209740708412,
+                "spy_return_pct": -4.958089678322375,
+                "difference_pp": 3.240168704251534
               },
               "3m": {
-                "base_date": "2026-08-20",
-                "end_date": "2026-11-20",
-                "rsp_base": 219.455078125,
-                "rsp_end": 207.44000244140625,
-                "spy_base": 760.7109985351562,
-                "spy_end": 689.8099975585938,
-                "rsp_return_pct": -5.474959060528118,
-                "spy_return_pct": -9.32035965210063,
-                "difference_pp": 3.8454005915725116
+                "base_date": "2026-08-21",
+                "end_date": "2026-11-23",
+                "rsp_base": 220.83985900878906,
+                "rsp_end": 212.82000732421875,
+                "spy_base": 763.8232421875,
+                "spy_end": 722.2899780273438,
+                "rsp_return_pct": -3.6315236391502803,
+                "spy_return_pct": -5.437549143072662,
+                "difference_pp": 1.8060255039223816
               }
             }
           }
@@ -3009,37 +3001,19 @@
         "options": {
           "1m": {
             "status": "verified",
-            "start_date": "2026-10-20",
-            "end_exclusive": "2026-11-20",
-            "expected_sessions": 23,
+            "start_date": "2026-10-23",
+            "end_exclusive": "2026-11-23",
+            "expected_sessions": 21,
             "basis": "published daily P/C; current day excluded; <= tie convention",
             "values": {
               "equity": {
-                "current_pc": 0.77,
-                "sample_n": 23,
-                "median_pc": 0.62,
-                "current_le_percent": 95.65217391304348,
+                "current_pc": 0.55,
+                "sample_n": 21,
+                "median_pc": 0.63,
+                "current_le_percent": 9.523809523809524,
                 "min_pc": 0.44,
                 "max_pc": 0.89,
                 "operands": [
-                  {
-                    "date": "2026-10-20",
-                    "calls": 1826125,
-                    "puts": 1021207,
-                    "pc_ratio": 0.56
-                  },
-                  {
-                    "date": "2026-10-21",
-                    "calls": 2323206,
-                    "puts": 1205880,
-                    "pc_ratio": 0.52
-                  },
-                  {
-                    "date": "2026-10-22",
-                    "calls": 2110715,
-                    "puts": 1446499,
-                    "pc_ratio": 0.69
-                  },
                   {
                     "date": "2026-10-23",
                     "calls": 2197255,
@@ -3159,35 +3133,23 @@
                     "calls": 2553995,
                     "puts": 1582288,
                     "pc_ratio": 0.62
+                  },
+                  {
+                    "date": "2026-11-20",
+                    "calls": 3360800,
+                    "puts": 2576245,
+                    "pc_ratio": 0.77
                   }
                 ]
               },
               "index": {
-                "current_pc": 1.27,
-                "sample_n": 23,
-                "median_pc": 1.02,
-                "current_le_percent": 100.0,
+                "current_pc": 1.21,
+                "sample_n": 21,
+                "median_pc": 1.03,
+                "current_le_percent": 90.47619047619048,
                 "min_pc": 0.95,
-                "max_pc": 1.26,
+                "max_pc": 1.27,
                 "operands": [
-                  {
-                    "date": "2026-10-20",
-                    "calls": 3394817,
-                    "puts": 3431789,
-                    "pc_ratio": 1.01
-                  },
-                  {
-                    "date": "2026-10-21",
-                    "calls": 3280446,
-                    "puts": 3341259,
-                    "pc_ratio": 1.02
-                  },
-                  {
-                    "date": "2026-10-22",
-                    "calls": 3805545,
-                    "puts": 3890474,
-                    "pc_ratio": 1.02
-                  },
                   {
                     "date": "2026-10-23",
                     "calls": 2932114,
@@ -3307,35 +3269,23 @@
                     "calls": 4419844,
                     "puts": 5307844,
                     "pc_ratio": 1.2
+                  },
+                  {
+                    "date": "2026-11-20",
+                    "calls": 4689971,
+                    "puts": 5944675,
+                    "pc_ratio": 1.27
                   }
                 ]
               },
               "total": {
-                "current_pc": 1.13,
-                "sample_n": 23,
-                "median_pc": 0.9,
-                "current_le_percent": 100.0,
+                "current_pc": 0.94,
+                "sample_n": 21,
+                "median_pc": 0.92,
+                "current_le_percent": 61.904761904761905,
                 "min_pc": 0.8,
-                "max_pc": 1.06,
+                "max_pc": 1.13,
                 "operands": [
-                  {
-                    "date": "2026-10-20",
-                    "calls": 6589338,
-                    "puts": 5745809,
-                    "pc_ratio": 0.87
-                  },
-                  {
-                    "date": "2026-10-21",
-                    "calls": 6831027,
-                    "puts": 5916502,
-                    "pc_ratio": 0.87
-                  },
-                  {
-                    "date": "2026-10-22",
-                    "calls": 7427065,
-                    "puts": 7015903,
-                    "pc_ratio": 0.94
-                  },
                   {
                     "date": "2026-10-23",
                     "calls": 6899437,
@@ -3455,6 +3405,12 @@
                     "calls": 8839656,
                     "puts": 8927036,
                     "pc_ratio": 1.01
+                  },
+                  {
+                    "date": "2026-11-20",
+                    "calls": 10439201,
+                    "puts": 11753144,
+                    "pc_ratio": 1.13
                   }
                 ]
               }
@@ -3463,31 +3419,19 @@
           },
           "3m": {
             "status": "verified",
-            "start_date": "2026-08-20",
-            "end_exclusive": "2026-11-20",
-            "expected_sessions": 65,
+            "start_date": "2026-08-23",
+            "end_exclusive": "2026-11-23",
+            "expected_sessions": 64,
             "basis": "published daily P/C; current day excluded; <= tie convention",
             "values": {
               "equity": {
-                "current_pc": 0.77,
-                "sample_n": 65,
+                "current_pc": 0.55,
+                "sample_n": 64,
                 "median_pc": 0.59,
-                "current_le_percent": 98.46153846153847,
+                "current_le_percent": 25.0,
                 "min_pc": 0.38,
                 "max_pc": 0.89,
                 "operands": [
-                  {
-                    "date": "2026-08-20",
-                    "calls": 2755261,
-                    "puts": 1584740,
-                    "pc_ratio": 0.58
-                  },
-                  {
-                    "date": "2026-08-21",
-                    "calls": 3535632,
-                    "puts": 1811166,
-                    "pc_ratio": 0.51
-                  },
                   {
                     "date": "2026-08-24",
                     "calls": 2091611,
@@ -3865,29 +3809,23 @@
                     "calls": 2553995,
                     "puts": 1582288,
                     "pc_ratio": 0.62
+                  },
+                  {
+                    "date": "2026-11-20",
+                    "calls": 3360800,
+                    "puts": 2576245,
+                    "pc_ratio": 0.77
                   }
                 ]
               },
               "index": {
-                "current_pc": 1.27,
-                "sample_n": 65,
-                "median_pc": 0.99,
-                "current_le_percent": 100.0,
+                "current_pc": 1.21,
+                "sample_n": 64,
+                "median_pc": 0.995,
+                "current_le_percent": 96.875,
                 "min_pc": 0.8,
-                "max_pc": 1.26,
+                "max_pc": 1.27,
                 "operands": [
-                  {
-                    "date": "2026-08-20",
-                    "calls": 3041944,
-                    "puts": 2803835,
-                    "pc_ratio": 0.92
-                  },
-                  {
-                    "date": "2026-08-21",
-                    "calls": 3265582,
-                    "puts": 2771177,
-                    "pc_ratio": 0.85
-                  },
                   {
                     "date": "2026-08-24",
                     "calls": 2417431,
@@ -4265,29 +4203,23 @@
                     "calls": 4419844,
                     "puts": 5307844,
                     "pc_ratio": 1.2
+                  },
+                  {
+                    "date": "2026-11-20",
+                    "calls": 4689971,
+                    "puts": 5944675,
+                    "pc_ratio": 1.27
                   }
                 ]
               },
               "total": {
-                "current_pc": 1.13,
-                "sample_n": 65,
+                "current_pc": 0.94,
+                "sample_n": 64,
                 "median_pc": 0.87,
-                "current_le_percent": 100.0,
-                "min_pc": 0.72,
-                "max_pc": 1.06,
+                "current_le_percent": 84.375,
+                "min_pc": 0.73,
+                "max_pc": 1.13,
                 "operands": [
-                  {
-                    "date": "2026-08-20",
-                    "calls": 7883354,
-                    "puts": 6143979,
-                    "pc_ratio": 0.78
-                  },
-                  {
-                    "date": "2026-08-21",
-                    "calls": 8725112,
-                    "puts": 6297274,
-                    "pc_ratio": 0.72
-                  },
                   {
                     "date": "2026-08-24",
                     "calls": 5760085,
@@ -4665,6 +4597,12 @@
                     "calls": 8839656,
                     "puts": 8927036,
                     "pc_ratio": 1.01
+                  },
+                  {
+                    "date": "2026-11-20",
+                    "calls": 10439201,
+                    "puts": 11753144,
+                    "pc_ratio": 1.13
                   }
                 ]
               }
@@ -4675,39 +4613,36 @@
         "amounts": {
           "turnover": {
             "status": "verified",
-            "end_date": "2026-11-20",
+            "end_date": "2026-11-23",
             "currency": "USD",
             "scope": "US consolidated equities; all exchanges and TRFs; Tapes A/B/C",
             "basis": "sum of each execution price times shares; Cboe published notional",
             "source_url": "https://www.cboe.com/markets/us/equities/market-statistics/historical-market-volume/",
-            "daily_usd": "1572000096392.002560",
-            "previous_date": "2026-11-19",
-            "previous_daily_usd": "1219883728859.091014",
-            "change_usd": "352116367532.911546",
-            "change_pct": "28.86474827090546185160122090",
+            "daily_usd": "1343614319694.666029",
+            "previous_date": "2026-11-20",
+            "previous_daily_usd": "1572000096392.002560",
+            "change_usd": "-228385776697.336531",
+            "change_pct": "-14.52835640541748427252255607",
             "windows": {
               "5d": {
-                "start_date": "2026-11-16",
-                "end_date": "2026-11-20",
+                "start_date": "2026-11-17",
+                "end_date": "2026-11-23",
                 "sessions": 5,
                 "session_dates": [
-                  "2026-11-16",
                   "2026-11-17",
                   "2026-11-18",
                   "2026-11-19",
-                  "2026-11-20"
+                  "2026-11-20",
+                  "2026-11-23"
                 ],
-                "total_usd": "5745668308802.849605",
-                "average_daily_usd": "1149133661760.569921"
+                "total_usd": "6119173869918.878331",
+                "average_daily_usd": "1223834773983.7756662"
               },
               "1m": {
-                "start_date": "2026-10-21",
-                "end_date": "2026-11-20",
-                "sessions": 23,
+                "start_date": "2026-10-26",
+                "end_date": "2026-11-23",
+                "sessions": 21,
                 "session_dates": [
-                  "2026-10-21",
-                  "2026-10-22",
-                  "2026-10-23",
                   "2026-10-26",
                   "2026-10-27",
                   "2026-10-28",
@@ -4727,17 +4662,17 @@
                   "2026-11-17",
                   "2026-11-18",
                   "2026-11-19",
-                  "2026-11-20"
+                  "2026-11-20",
+                  "2026-11-23"
                 ],
-                "total_usd": "25286850563427.097549",
-                "average_daily_usd": "1099428285366.395545608695652"
+                "total_usd": "23678901121993.127219",
+                "average_daily_usd": "1127566720094.910819952380952"
               },
               "3m": {
-                "start_date": "2026-08-21",
-                "end_date": "2026-11-20",
+                "start_date": "2026-08-24",
+                "end_date": "2026-11-23",
                 "sessions": 65,
                 "session_dates": [
-                  "2026-08-21",
                   "2026-08-24",
                   "2026-08-25",
                   "2026-08-26",
@@ -4801,165 +4736,14 @@
                   "2026-11-17",
                   "2026-11-18",
                   "2026-11-19",
-                  "2026-11-20"
+                  "2026-11-20",
+                  "2026-11-23"
                 ],
-                "total_usd": "65185383713017.929254",
-                "average_daily_usd": "1002852057123.352757753846154"
+                "total_usd": "65628340881989.825458",
+                "average_daily_usd": "1009666782799.843468584615385"
               }
             },
             "daily_operands": [
-              [
-                "2026-08-21",
-                [
-                  [
-                    "A",
-                    "325932034.714300",
-                    "424854057.187600",
-                    "365928234.813200",
-                    "1116714326.715100"
-                  ],
-                  [
-                    "B",
-                    "759163933.264400",
-                    "503604063.792500",
-                    "1091324432.655300",
-                    "2354092429.712200"
-                  ],
-                  [
-                    "C",
-                    "818961384.509500",
-                    "446043957.826600",
-                    "823817768.768200",
-                    "2088823111.104300"
-                  ],
-                  [
-                    "DB",
-                    "716950355.909263",
-                    "512851587.338174",
-                    "2836447659.471263",
-                    "4066249602.718700"
-                  ],
-                  [
-                    "DN",
-                    "6216447410.213467",
-                    "3596121517.363895",
-                    "11446501812.300518",
-                    "21259070739.877880"
-                  ],
-                  [
-                    "DQ",
-                    "115817711524.192997",
-                    "82281651863.156337",
-                    "198080162163.079900",
-                    "396179525550.429234"
-                  ],
-                  [
-                    "F",
-                    "88163298.162800",
-                    "46090266.025000",
-                    "127251488.050800",
-                    "261505052.238600"
-                  ],
-                  [
-                    "G",
-                    "49295018.872300",
-                    "86767664.886500",
-                    "167344847.260300",
-                    "303407531.019100"
-                  ],
-                  [
-                    "H",
-                    "654936924.634500",
-                    "1191895446.554300",
-                    "1699860790.706100",
-                    "3546693161.894900"
-                  ],
-                  [
-                    "J",
-                    "1070411529.580000",
-                    "950806066.338200",
-                    "1569488311.069800",
-                    "3590705906.988000"
-                  ],
-                  [
-                    "K",
-                    "6255481515.528301",
-                    "6641079811.826097",
-                    "17745031529.777490",
-                    "30641592857.131888"
-                  ],
-                  [
-                    "L",
-                    "23702179.070000",
-                    "11293890.449700",
-                    "45527847.445000",
-                    "80523916.964700"
-                  ],
-                  [
-                    "M",
-                    "4247909804.066901",
-                    "4847299877.229198",
-                    "15510170167.551404",
-                    "24605379848.847503"
-                  ],
-                  [
-                    "N",
-                    "81152973801.539217",
-                    "3257965070.216201",
-                    "5287105975.078201",
-                    "89698044846.833619"
-                  ],
-                  [
-                    "P",
-                    "11615295224.762603",
-                    "27886557199.035418",
-                    "31641619829.420101",
-                    "71143472253.218122"
-                  ],
-                  [
-                    "Q",
-                    "23308848684.960985",
-                    "17026620998.199201",
-                    "120681785526.089089",
-                    "161017255209.249275"
-                  ],
-                  [
-                    "U",
-                    "2395102553.261800",
-                    "2684344042.207100",
-                    "6206481453.753197",
-                    "11285928049.222097"
-                  ],
-                  [
-                    "V",
-                    "13635685860.154697",
-                    "6378137015.003900",
-                    "15323444155.809601",
-                    "35337267030.968198"
-                  ],
-                  [
-                    "X",
-                    "307315529.419700",
-                    "315109710.022900",
-                    "532293205.476600",
-                    "1154718444.919200"
-                  ],
-                  [
-                    "Y",
-                    "1475035115.379000",
-                    "1164667512.349300",
-                    "2064140381.552200",
-                    "4703843009.280500"
-                  ],
-                  [
-                    "Z",
-                    "10449316165.675598",
-                    "8275131005.039297",
-                    "17497890672.721814",
-                    "36222337843.436709"
-                  ]
-                ]
-              ],
               [
                 "2026-08-24",
                 [
@@ -14687,6 +14471,158 @@
                     "71190671413.518309"
                   ]
                 ]
+              ],
+              [
+                "2026-11-23",
+                [
+                  [
+                    "A",
+                    "447600403.054600",
+                    "578250835.528200",
+                    "841711408.435000",
+                    "1867562647.017800"
+                  ],
+                  [
+                    "B",
+                    "1004297797.725300",
+                    "936979407.966400",
+                    "2221594154.631398",
+                    "4162871360.323098"
+                  ],
+                  [
+                    "C",
+                    "1072681465.822400",
+                    "729209935.958700",
+                    "1544720355.899900",
+                    "3346611757.681000"
+                  ],
+                  [
+                    "DB",
+                    "811294129.130321",
+                    "778566469.948766",
+                    "4173512591.433173",
+                    "5763373190.512260"
+                  ],
+                  [
+                    "DN",
+                    "8095042786.867965",
+                    "5634373379.586715",
+                    "20153682182.287734",
+                    "33883098348.742414"
+                  ],
+                  [
+                    "DQ",
+                    "134582292499.416123",
+                    "129094706537.115603",
+                    "292972927688.685586",
+                    "556649926725.217312"
+                  ],
+                  [
+                    "F",
+                    "209414190.964000",
+                    "559716104.795200",
+                    "684880686.698600",
+                    "1454010982.457800"
+                  ],
+                  [
+                    "G",
+                    "54277154.150000",
+                    "132415353.557500",
+                    "327166655.765400",
+                    "513859163.472900"
+                  ],
+                  [
+                    "H",
+                    "734335635.321300",
+                    "2235674812.274100",
+                    "2883594911.442302",
+                    "5853605359.037702"
+                  ],
+                  [
+                    "J",
+                    "1564691222.060800",
+                    "2171148518.857000",
+                    "3943592997.464100",
+                    "7679432738.381900"
+                  ],
+                  [
+                    "K",
+                    "7211193195.512699",
+                    "13439415843.946892",
+                    "28439639432.348306",
+                    "49090248471.807897"
+                  ],
+                  [
+                    "L",
+                    "28309864.805000",
+                    "34185220.735100",
+                    "77047918.018900",
+                    "139543003.559000"
+                  ],
+                  [
+                    "M",
+                    "2079610207.900500",
+                    "1740634099.265600",
+                    "8678883663.393598",
+                    "12499127970.559698"
+                  ],
+                  [
+                    "N",
+                    "86426028852.852531",
+                    "6641127968.514500",
+                    "10548225584.171601",
+                    "103615382405.538632"
+                  ],
+                  [
+                    "P",
+                    "15852528504.292802",
+                    "58308591528.434618",
+                    "71096098197.097476",
+                    "145257218229.824896"
+                  ],
+                  [
+                    "Q",
+                    "28390287672.592401",
+                    "33486115089.422279",
+                    "206224115508.549612",
+                    "268100518270.564292"
+                  ],
+                  [
+                    "U",
+                    "2551594273.203300",
+                    "4202874192.026899",
+                    "8765518623.280401",
+                    "15519987088.510600"
+                  ],
+                  [
+                    "V",
+                    "17758326252.178805",
+                    "11543317012.941899",
+                    "26120391912.437795",
+                    "55422035177.558499"
+                  ],
+                  [
+                    "X",
+                    "478921628.493300",
+                    "996789622.269800",
+                    "1278597240.650200",
+                    "2754308491.413300"
+                  ],
+                  [
+                    "Y",
+                    "2002593322.848200",
+                    "2507041705.440700",
+                    "5015234474.818297",
+                    "9524869503.107197"
+                  ],
+                  [
+                    "Z",
+                    "12918877441.242305",
+                    "15921405884.307709",
+                    "31676445483.827818",
+                    "60516728809.377832"
+                  ]
+                ]
               ]
             ],
             "required_venue_codes": [
@@ -14715,7 +14651,7 @@
           },
           "turnover_comparisons": {
             "status": "verified",
-            "end_date": "2026-11-20",
+            "end_date": "2026-11-23",
             "currency": "USD",
             "scope": "US consolidated equities; all exchanges and TRFs; Tapes A/B/C",
             "basis": "adjacent nonoverlapping periods; comparison of average daily actual turnover",
@@ -14724,46 +14660,43 @@
               "5d": {
                 "status": "verified",
                 "current": {
-                  "start_date": "2026-11-16",
-                  "end_date": "2026-11-20",
+                  "start_date": "2026-11-17",
+                  "end_date": "2026-11-23",
                   "sessions": 5,
                   "session_dates": [
-                    "2026-11-16",
                     "2026-11-17",
                     "2026-11-18",
                     "2026-11-19",
-                    "2026-11-20"
+                    "2026-11-20",
+                    "2026-11-23"
                   ],
-                  "total_usd": "5745668308802.849605",
-                  "average_daily_usd": "1149133661760.569921"
+                  "total_usd": "6119173869918.878331",
+                  "average_daily_usd": "1223834773983.7756662"
                 },
                 "previous": {
-                  "start_date": "2026-11-09",
-                  "end_date": "2026-11-13",
+                  "start_date": "2026-11-10",
+                  "end_date": "2026-11-16",
                   "sessions": 5,
                   "session_dates": [
-                    "2026-11-09",
                     "2026-11-10",
                     "2026-11-11",
                     "2026-11-12",
-                    "2026-11-13"
+                    "2026-11-13",
+                    "2026-11-16"
                   ],
-                  "total_usd": "4963222041713.878932",
-                  "average_daily_usd": "992644408342.7757864"
+                  "total_usd": "4790788497655.525124",
+                  "average_daily_usd": "958157699531.1050248"
                 },
-                "average_change_usd": "156489253417.7941346",
-                "average_change_pct": "15.76488540131441758855762470"
+                "average_change_usd": "265677074452.6706414",
+                "average_change_pct": "27.72790685527918873610684880"
               },
               "1m": {
                 "status": "verified",
                 "current": {
-                  "start_date": "2026-10-21",
-                  "end_date": "2026-11-20",
-                  "sessions": 23,
+                  "start_date": "2026-10-26",
+                  "end_date": "2026-11-23",
+                  "sessions": 21,
                   "session_dates": [
-                    "2026-10-21",
-                    "2026-10-22",
-                    "2026-10-23",
                     "2026-10-26",
                     "2026-10-27",
                     "2026-10-28",
@@ -14783,19 +14716,17 @@
                     "2026-11-17",
                     "2026-11-18",
                     "2026-11-19",
-                    "2026-11-20"
+                    "2026-11-20",
+                    "2026-11-23"
                   ],
-                  "total_usd": "25286850563427.097549",
-                  "average_daily_usd": "1099428285366.395545608695652"
+                  "total_usd": "23678901121993.127219",
+                  "average_daily_usd": "1127566720094.910819952380952"
                 },
                 "previous": {
-                  "start_date": "2026-09-21",
-                  "end_date": "2026-10-20",
+                  "start_date": "2026-09-24",
+                  "end_date": "2026-10-23",
                   "sessions": 22,
                   "session_dates": [
-                    "2026-09-21",
-                    "2026-09-22",
-                    "2026-09-23",
                     "2026-09-24",
                     "2026-09-25",
                     "2026-09-28",
@@ -14814,22 +14745,24 @@
                     "2026-10-15",
                     "2026-10-16",
                     "2026-10-19",
-                    "2026-10-20"
+                    "2026-10-20",
+                    "2026-10-21",
+                    "2026-10-22",
+                    "2026-10-23"
                   ],
-                  "total_usd": "21276889087831.273533",
-                  "average_daily_usd": "967131322174.1487969545454545"
+                  "total_usd": "21099476137292.496868",
+                  "average_daily_usd": "959067097149.6589485454545455"
                 },
-                "average_change_usd": "132296963192.2467486541501975",
-                "average_change_pct": "13.67931739557747277449444130"
+                "average_change_usd": "168499622945.2518714069264065",
+                "average_change_pct": "17.56911726468686426429225330"
               },
               "3m": {
                 "status": "verified",
                 "current": {
-                  "start_date": "2026-08-21",
-                  "end_date": "2026-11-20",
+                  "start_date": "2026-08-24",
+                  "end_date": "2026-11-23",
                   "sessions": 65,
                   "session_dates": [
-                    "2026-08-21",
                     "2026-08-24",
                     "2026-08-25",
                     "2026-08-26",
@@ -14893,18 +14826,17 @@
                     "2026-11-17",
                     "2026-11-18",
                     "2026-11-19",
-                    "2026-11-20"
+                    "2026-11-20",
+                    "2026-11-23"
                   ],
-                  "total_usd": "65185383713017.929254",
-                  "average_daily_usd": "1002852057123.352757753846154"
+                  "total_usd": "65628340881989.825458",
+                  "average_daily_usd": "1009666782799.843468584615385"
                 },
                 "previous": {
-                  "start_date": "2026-05-21",
-                  "end_date": "2026-08-20",
-                  "sessions": 63,
+                  "start_date": "2026-05-26",
+                  "end_date": "2026-08-21",
+                  "sessions": 62,
                   "session_dates": [
-                    "2026-05-21",
-                    "2026-05-22",
                     "2026-05-26",
                     "2026-05-27",
                     "2026-05-28",
@@ -14965,306 +14897,17 @@
                     "2026-08-17",
                     "2026-08-18",
                     "2026-08-19",
-                    "2026-08-20"
+                    "2026-08-20",
+                    "2026-08-21"
                   ],
-                  "total_usd": "69986254185899.209509",
-                  "average_daily_usd": "1110892923585.701738238095238"
+                  "total_usd": "68981226267625.624839",
+                  "average_daily_usd": "1112600423671.381045790322581"
                 },
-                "average_change_usd": "-108040866462.348980484249084",
-                "average_change_pct": "-9.725587783349848901980734190"
+                "average_change_usd": "-102933640871.537577205707196",
+                "average_change_pct": "-9.251626970613142333650284890"
               }
             },
             "daily_operands": [
-              [
-                "2026-05-21",
-                [
-                  [
-                    "A",
-                    "337997562.266200",
-                    "426554600.349600",
-                    "475776485.799200",
-                    "1240328648.415000"
-                  ],
-                  [
-                    "B",
-                    "925754959.296200",
-                    "748074263.670800",
-                    "1415279037.271200",
-                    "3089108260.238200"
-                  ],
-                  [
-                    "C",
-                    "825589341.936500",
-                    "635622856.065000",
-                    "949247540.462600",
-                    "2410459738.464100"
-                  ],
-                  [
-                    "DB",
-                    "914296113.371898",
-                    "608997028.922433",
-                    "3332344905.616451",
-                    "4855638047.910782"
-                  ],
-                  [
-                    "DN",
-                    "5843565112.945705",
-                    "3109271628.588748",
-                    "11343731136.610223",
-                    "20296567878.144676"
-                  ],
-                  [
-                    "DQ",
-                    "123826529005.207283",
-                    "78867432411.974063",
-                    "224215009008.268947",
-                    "426908970425.450293"
-                  ],
-                  [
-                    "G",
-                    "51776221.200000",
-                    "111065120.227300",
-                    "177606924.794300",
-                    "340448266.221600"
-                  ],
-                  [
-                    "H",
-                    "846650030.945500",
-                    "2139775297.922800",
-                    "2545708071.509999",
-                    "5532133400.378299"
-                  ],
-                  [
-                    "J",
-                    "1350629467.297400",
-                    "1449363203.743000",
-                    "2244537998.675499",
-                    "5044530669.715899"
-                  ],
-                  [
-                    "K",
-                    "8273984592.181299",
-                    "9297123297.234204",
-                    "23989415862.239397",
-                    "41560523751.654900"
-                  ],
-                  [
-                    "L",
-                    "32549068.250000",
-                    "38589482.097700",
-                    "51186212.032500",
-                    "122324762.380200"
-                  ],
-                  [
-                    "M",
-                    "1131387116.823200",
-                    "1012208567.785500",
-                    "5347441169.064800",
-                    "7491036853.673500"
-                  ],
-                  [
-                    "N",
-                    "73588053078.809212",
-                    "4291973061.109201",
-                    "6175552667.238100",
-                    "84055578807.156513"
-                  ],
-                  [
-                    "P",
-                    "13937645640.753901",
-                    "35313459824.607891",
-                    "39769799094.849995",
-                    "89020904560.211787"
-                  ],
-                  [
-                    "Q",
-                    "29474305973.133004",
-                    "23678112894.548997",
-                    "143538225206.287175",
-                    "196690644073.969176"
-                  ],
-                  [
-                    "U",
-                    "3310106920.003300",
-                    "3872403863.535501",
-                    "8996208598.484706",
-                    "16178719382.023507"
-                  ],
-                  [
-                    "V",
-                    "15144596805.399901",
-                    "7749817007.731304",
-                    "17533369293.061896",
-                    "40427783106.193101"
-                  ],
-                  [
-                    "X",
-                    "471634274.404500",
-                    "556208782.395500",
-                    "836675795.817000",
-                    "1864518852.617000"
-                  ],
-                  [
-                    "Y",
-                    "1692351434.582100",
-                    "1463417741.964500",
-                    "2382650718.719700",
-                    "5538419895.266300"
-                  ],
-                  [
-                    "Z",
-                    "11479760982.052500",
-                    "10679257041.314594",
-                    "19600803405.645218",
-                    "41759821429.012312"
-                  ]
-                ]
-              ],
-              [
-                "2026-05-22",
-                [
-                  [
-                    "A",
-                    "452944606.281300",
-                    "433733172.155100",
-                    "624691821.769200",
-                    "1511369600.205600"
-                  ],
-                  [
-                    "B",
-                    "790640649.011300",
-                    "657357377.184900",
-                    "1351640210.791000",
-                    "2799638236.987200"
-                  ],
-                  [
-                    "C",
-                    "828115114.689000",
-                    "516621161.631900",
-                    "1111026718.590500",
-                    "2455762994.911400"
-                  ],
-                  [
-                    "DB",
-                    "830842161.040057",
-                    "556777484.995834",
-                    "3217557258.275344",
-                    "4605176904.311235"
-                  ],
-                  [
-                    "DN",
-                    "5732361410.561923",
-                    "2205241925.511559",
-                    "12542554059.900177",
-                    "20480157395.973659"
-                  ],
-                  [
-                    "DQ",
-                    "112659210669.923026",
-                    "70256649947.819082",
-                    "208162045992.724277",
-                    "391077906610.466385"
-                  ],
-                  [
-                    "G",
-                    "62490215.275000",
-                    "87069020.954600",
-                    "184202588.404900",
-                    "333761824.634500"
-                  ],
-                  [
-                    "H",
-                    "826328411.701300",
-                    "1607426047.189499",
-                    "2327257281.095099",
-                    "4761011739.985898"
-                  ],
-                  [
-                    "J",
-                    "1248403568.567500",
-                    "1106259851.252700",
-                    "2075541362.366500",
-                    "4430204782.186700"
-                  ],
-                  [
-                    "K",
-                    "7792083351.668802",
-                    "7831926748.020906",
-                    "21974175264.793605",
-                    "37598185364.483313"
-                  ],
-                  [
-                    "L",
-                    "26429843.030000",
-                    "19432103.531700",
-                    "30152751.706300",
-                    "76014698.268000"
-                  ],
-                  [
-                    "M",
-                    "1751099025.770700",
-                    "1952562776.323800",
-                    "6784936891.193799",
-                    "10488598693.288299"
-                  ],
-                  [
-                    "N",
-                    "68491275378.319211",
-                    "3259659270.726800",
-                    "6194719937.609300",
-                    "77945654586.655311"
-                  ],
-                  [
-                    "P",
-                    "13551868688.868503",
-                    "29912591260.985196",
-                    "36871651948.998713",
-                    "80336111898.852412"
-                  ],
-                  [
-                    "Q",
-                    "26109174213.225600",
-                    "18921009372.794002",
-                    "132042409615.224325",
-                    "177072593201.243927"
-                  ],
-                  [
-                    "U",
-                    "3087981256.890000",
-                    "2994721608.564398",
-                    "8692891367.156603",
-                    "14775594232.611001"
-                  ],
-                  [
-                    "V",
-                    "13645858571.996002",
-                    "6111433766.512097",
-                    "15763079212.978701",
-                    "35520371551.486800"
-                  ],
-                  [
-                    "X",
-                    "331465180.998900",
-                    "426639134.422300",
-                    "675433523.061100",
-                    "1433537838.482300"
-                  ],
-                  [
-                    "Y",
-                    "1463056681.930700",
-                    "1232486578.954000",
-                    "2362001318.529600",
-                    "5057544579.414300"
-                  ],
-                  [
-                    "Z",
-                    "10525790979.198403",
-                    "8555642924.428905",
-                    "19415977549.181802",
-                    "38497411452.809110"
-                  ]
-                ]
-              ],
               [
                 "2026-05-26",
                 [
@@ -34199,6 +33842,158 @@
                     "71190671413.518309"
                   ]
                 ]
+              ],
+              [
+                "2026-11-23",
+                [
+                  [
+                    "A",
+                    "447600403.054600",
+                    "578250835.528200",
+                    "841711408.435000",
+                    "1867562647.017800"
+                  ],
+                  [
+                    "B",
+                    "1004297797.725300",
+                    "936979407.966400",
+                    "2221594154.631398",
+                    "4162871360.323098"
+                  ],
+                  [
+                    "C",
+                    "1072681465.822400",
+                    "729209935.958700",
+                    "1544720355.899900",
+                    "3346611757.681000"
+                  ],
+                  [
+                    "DB",
+                    "811294129.130321",
+                    "778566469.948766",
+                    "4173512591.433173",
+                    "5763373190.512260"
+                  ],
+                  [
+                    "DN",
+                    "8095042786.867965",
+                    "5634373379.586715",
+                    "20153682182.287734",
+                    "33883098348.742414"
+                  ],
+                  [
+                    "DQ",
+                    "134582292499.416123",
+                    "129094706537.115603",
+                    "292972927688.685586",
+                    "556649926725.217312"
+                  ],
+                  [
+                    "F",
+                    "209414190.964000",
+                    "559716104.795200",
+                    "684880686.698600",
+                    "1454010982.457800"
+                  ],
+                  [
+                    "G",
+                    "54277154.150000",
+                    "132415353.557500",
+                    "327166655.765400",
+                    "513859163.472900"
+                  ],
+                  [
+                    "H",
+                    "734335635.321300",
+                    "2235674812.274100",
+                    "2883594911.442302",
+                    "5853605359.037702"
+                  ],
+                  [
+                    "J",
+                    "1564691222.060800",
+                    "2171148518.857000",
+                    "3943592997.464100",
+                    "7679432738.381900"
+                  ],
+                  [
+                    "K",
+                    "7211193195.512699",
+                    "13439415843.946892",
+                    "28439639432.348306",
+                    "49090248471.807897"
+                  ],
+                  [
+                    "L",
+                    "28309864.805000",
+                    "34185220.735100",
+                    "77047918.018900",
+                    "139543003.559000"
+                  ],
+                  [
+                    "M",
+                    "2079610207.900500",
+                    "1740634099.265600",
+                    "8678883663.393598",
+                    "12499127970.559698"
+                  ],
+                  [
+                    "N",
+                    "86426028852.852531",
+                    "6641127968.514500",
+                    "10548225584.171601",
+                    "103615382405.538632"
+                  ],
+                  [
+                    "P",
+                    "15852528504.292802",
+                    "58308591528.434618",
+                    "71096098197.097476",
+                    "145257218229.824896"
+                  ],
+                  [
+                    "Q",
+                    "28390287672.592401",
+                    "33486115089.422279",
+                    "206224115508.549612",
+                    "268100518270.564292"
+                  ],
+                  [
+                    "U",
+                    "2551594273.203300",
+                    "4202874192.026899",
+                    "8765518623.280401",
+                    "15519987088.510600"
+                  ],
+                  [
+                    "V",
+                    "17758326252.178805",
+                    "11543317012.941899",
+                    "26120391912.437795",
+                    "55422035177.558499"
+                  ],
+                  [
+                    "X",
+                    "478921628.493300",
+                    "996789622.269800",
+                    "1278597240.650200",
+                    "2754308491.413300"
+                  ],
+                  [
+                    "Y",
+                    "2002593322.848200",
+                    "2507041705.440700",
+                    "5015234474.818297",
+                    "9524869503.107197"
+                  ],
+                  [
+                    "Z",
+                    "12918877441.242305",
+                    "15921405884.307709",
+                    "31676445483.827818",
+                    "60516728809.377832"
+                  ]
+                ]
               ]
             ],
             "venue_roster": {
@@ -34253,9 +34048,9 @@
           },
           "fx": {
             "status": "verified",
-            "requested_date": "2026-11-20",
-            "date": "2026-11-20",
-            "krw_per_usd": "1330.8",
+            "requested_date": "2026-11-23",
+            "date": "2026-11-23",
+            "krw_per_usd": "1337.3",
             "base_currency": "USD",
             "quote_currency": "KRW",
             "unit": "원/미국달러",
@@ -34271,8 +34066,8 @@
                     "ITEM_CODE1": "0000001",
                     "ITEM_NAME1": "원/미국달러(매매기준율)",
                     "UNIT_NAME": "원",
-                    "TIME": "20261120",
-                    "DATA_VALUE": "1330.8"
+                    "TIME": "20261123",
+                    "DATA_VALUE": "1337.3"
                   }
                 ]
               }
@@ -34318,18 +34113,18 @@
         }
       },
       "url": "https://www.cboe.com/markets/us/options/market-statistics/daily",
-      "fingerprint": "15aa1158431b17da477660d4abea39c7ef7e9c2cb6597cc52e2600d0a0ef2e9b"
+      "fingerprint": "55bad8588c36f84d35ee6295bd3939943c39b6a82b6393bd38d70c389dd184fb"
     }
   },
-  "updated_at_kst": "2026-11-23T07:51:29.364831+09:00",
+  "updated_at_kst": "2026-11-24T15:21:56.097572+09:00",
   "presentation_version": "us-positioning-auto-direction-20261016-v1",
-  "daily_digest_sent_date_kst": "2026-11-23",
+  "daily_digest_sent_date_kst": "2026-11-24",
   "last_verified_context_fx": {
     "fx": {
       "status": "verified",
-      "requested_date": "2026-11-20",
-      "date": "2026-11-20",
-      "krw_per_usd": "1330.8",
+      "requested_date": "2026-11-23",
+      "date": "2026-11-23",
+      "krw_per_usd": "1337.3",
       "base_currency": "USD",
       "quote_currency": "KRW",
       "unit": "원/미국달러",
@@ -34345,8 +34140,8 @@
               "ITEM_CODE1": "0000001",
               "ITEM_NAME1": "원/미국달러(매매기준율)",
               "UNIT_NAME": "원",
-              "TIME": "20261120",
-              "DATA_VALUE": "1330.8"
+              "TIME": "20261123",
+              "DATA_VALUE": "1337.3"
             }
           ]
         }
