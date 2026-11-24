@@ -590,7 +590,7 @@ def extract_group_statuses(text: str) -> dict[str, str]:
 
     for m in re.finditer(
         rf"{group}\s*(?:은|는|이|가|is|are|remain)?\s*"
-        r"(심각한 공급 부족|심각한 부족|공급 제약(?: 상태)?|균형(?: 상태)?|Very\s+Tight|Tight|Balanced|severe shortage|constrained supply)",
+        r"(심각한 공급 부족|심각한 부족|공급 제약(?: 상태)?|균형(?: 상태)?|공급 악화 중|Very\s+Tight\b|Tightening\b|Tight\b|Balanced\b|severe shortage\b|constrained supply\b)",
         text,
         re.I,
     ):
@@ -603,7 +603,7 @@ def extract_group_statuses(text: str) -> dict[str, str]:
     # 예: "균형 상태인 품목은 GPU뿐"처럼 상태와 품목군이 문법적으로 직접 연결된 경우만 인정한다.
     # 쉼표 뒤의 다음 상태군을 앞 상태가 덮어쓰지 않도록 임의 거리 매칭은 사용하지 않는다.
     for m in re.finditer(
-        r"(심각한 공급 부족|공급 제약|균형|Very\s+Tight|Tight|Balanced)"
+        r"(심각한 공급 부족|공급 제약|균형|공급 악화 중|Very\s+Tight\b|Tightening\b|Tight\b|Balanced\b)"
         r"(?:\s+상태)?(?:인)?\s+품목(?:은|이|으로는)?\s*"
         rf"{group}",
         text,
@@ -1935,8 +1935,11 @@ def main() -> None:
             )
             if not is_relevant(full_text) and not is_official_010:
                 continue
-            components = extract_components(full_text)
-            if direct.split("?")[0].rstrip("/") == WEEKLY_011_IMAGE_LOCK["source"]:
+            # A complete publisher table takes priority over loosely matched teaser/prose statuses.
+            publisher_rows = complete_publisher_weekly_rows(direct, body)
+            components = copy.deepcopy(publisher_rows) if publisher_rows else extract_components(full_text)
+            if (direct.split("?")[0].rstrip("/") == WEEKLY_011_IMAGE_LOCK["source"]
+                    and not publisher_rows):
                 # The free teaser contains narrative and partial numbers, not the
                 # complete structured table. Do not infer a new per-part lead time
                 # from a generic "up to 56 weeks" reference or emit a signal-only
@@ -1966,7 +1969,7 @@ def main() -> None:
                     "direct_url": direct,
                     "full_text": full_text,
                     "components": components,
-                    "publisher_complete_rows": complete_publisher_weekly_rows(direct, body),
+                    "publisher_complete_rows": publisher_rows,
                     "signals": signals,
                     "nand_controller_direct_constraint": extract_nand_controller_direct_constraint(full_text),
                     "score": source_score(direct, components, full_text) + len(signals) * 3,
