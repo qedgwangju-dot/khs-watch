@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     env:
-      TELEGRAM_TOKEN: \${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID: \${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      TELEGRAM_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       EXPECTED_BOT: khs88798879_bot
     steps:
       - name: Send verified one-time policy alert
