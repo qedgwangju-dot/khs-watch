@@ -1,0 +1,98 @@
+name: One-time FCC optical transceiver alert resend
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  resend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      TELEGRAM_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      EXPECTED_BOT: khs88798879_bot
+    steps:
+      - name: Send verified one-time policy alert
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.environ.get("TELEGRAM_TOKEN") or "").strip()
+          chat_id = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+          expected_bot = os.environ["EXPECTED_BOT"]
+          if not token or not chat_id:
+              raise RuntimeError("Policy Telegram token or chat ID is missing")
+
+          def telegram(method, values=None):
+              url = f"https://api.telegram.org/bot{token}/{method}"
+              if values is None:
+                  request = urllib.request.Request(url)
+              else:
+                  request = urllib.request.Request(
+                      url,
+                      data=urllib.parse.urlencode(values).encode("utf-8"),
+                      method="POST",
+                  )
+              with urllib.request.urlopen(request, timeout=20) as response:
+                  return json.loads(response.read().decode("utf-8"))
+
+          identity = telegram("getMe")
+          actual_bot = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual_bot.lower() != expected_bot.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected_bot}, got @{actual_bot or 'unknown'}")
+
+          now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          stamp = now.strftime("%Y년 %m월 %d일 %H:%M KST")
+          message = f"""♻️ 정책 워치 재발송 · {stamp}
+
+<b>[상·공식 최종안 미확인] FCC, 중국산 데이터센터 광트랜시버 신규모델 수입 제한 추진</b>
+
+<b>핵심</b>
+Reuters는 트럼프 행정부가 국가안보를 이유로 FCC가 검토 중인 중국산 광트랜시버 신규 모델 수입 제한을 계속 추진한다고 보도했습니다. 다만 행정부 내 기류가 바뀌면 철회될 수도 있어 확정 규제가 아닙니다. Microsoft와 Amazon·Google·Meta·CoreWeave·Cisco는 백악관에 반대 의견을 냈고, 미국 기업들은 전환에 최대 10년이 걸릴 수 있다고 설명했습니다. 중국 업체가 세계 광트랜시버 시장 약 3분의 2를 차지하고, Coherent·Lumentum도 중국 공급을 대체할 생산 규모가 부족하다는 지적입니다.
+
+<b>증시 연결</b>
+규제가 확정되면 미국 광부품 업체에는 대체 공급 기회가 생길 수 있지만, 증설·인증 전까지는 AI 데이터센터의 조달 지연과 비용 상승 위험이 있습니다. 중국의 인화인듐(InP) 수출 제한 가능성도 공급망 역풍으로 거론됐습니다. 따라서 업체별 수혜는 생산능력·고객 인증·실제 규정 범위가 확인되기 전 단정할 수 없습니다.
+
+<b>타임라인</b>
+• 2026년 8월 4일: Reuters, FCC가 신규 중국산 광트랜시버 수입 제한을 검토·초안 작성 중이라고 최초 보도. 당시 수정·철회 가능성도 보도.
+• 2026년 중: 빅테크 업체들이 백악관에 이행 기간과 공급 차질 우려를 전달.
+• 2026년 11월 17일: Reuters, 행정부가 반대에도 추진을 이어간다고 후속 보도. 다만 철회 가능성은 남아 있음.
+• FCC 최종 의결·관보 공표·발효일·준수 기한: 확인된 공식 일정 없음.
+
+<b>출처</b>
+<a href="https://www.marketscreener.com/news/trump-s-china-data-center-curb-advances-despite-amazon-google-meta-lobbying-ce785edcd98bf423">Reuters 후속 보도 (2026-11-17)</a>
+<a href="https://www.investing.com/news/stock-market-news/exclusivetrump-administration-drafting-ban-on-chinese-data-center-devices-sources-say-4833406">Reuters 최초 보도 (2026-08-04)</a>"""
+
+          if len(message) > 4096:
+              raise RuntimeError(f"Telegram message exceeds limit: {len(message)}")
+
+          result = telegram("sendMessage", {
+              "chat_id": chat_id,
+              "text": message,
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          })
+          delivered = result.get("result") or {}
+          message_id = delivered.get("message_id")
+          delivered_chat = delivered.get("chat") or {}
+          if not result.get("ok") or not isinstance(message_id, int):
+              raise RuntimeError("Telegram send failed or returned no valid message ID")
+          if chat_id.lstrip("-").isdigit():
+              route_ok = str(delivered_chat.get("id")) == chat_id
+          elif chat_id.startswith("@"):
+              route_ok = str(delivered_chat.get("username") or "").lower() == chat_id[1:].lower()
+          else:
+              route_ok = False
+          if not route_ok:
+              raise RuntimeError("Telegram receipt destination does not match configured chat ID")
+
+          print(f"telegram_delivery_confirmed=true bot=@{actual_bot} message_id={message_id} receiver_verified=true sent_at_kst={now.isoformat(timespec='seconds')}")
+          PY
