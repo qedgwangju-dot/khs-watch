@@ -90,24 +90,6 @@
     }
   },
   "history_cache": {
-    "44226237393:1": {
-      "checked_at_kst": "2026-11-18T12:36:13+09:00",
-      "completed": "2026-11-18T02:53:01+00:00",
-      "fingerprint": "57cfd16173c484432e3732dedde6e89eae065250967f0e27a907dfe1e5f7f177",
-      "outcome": "attempted",
-      "saved": true,
-      "sent_success": true,
-      "started": "2026-11-18T02:53:01+00:00"
-    },
-    "44231338253:1": {
-      "checked_at_kst": "2026-11-18T12:47:54+09:00",
-      "completed": "2026-11-18T03:36:13+00:00",
-      "fingerprint": "4dfcd6fc9e68c3480ce3d0e01ff2bedb9491f9a0124a519cd894727c43e89dfd",
-      "outcome": "attempted",
-      "saved": true,
-      "sent_success": true,
-      "started": "2026-11-18T03:36:13+00:00"
-    },
     "44232883822:1": {
       "checked_at_kst": "2026-11-18T13:18:23+09:00",
       "completed": "2026-11-18T03:47:55+00:00",
@@ -116,11 +98,6 @@
       "saved": true,
       "sent_success": true,
       "started": "2026-11-18T03:47:54+00:00"
-    },
-    "44233467259:1": {
-      "checked_at_kst": "2026-11-18T13:18:22+09:00",
-      "fingerprint": "ec63808c51fa0da9a36206295dd23faa68265e548b9bb45300ef9b49722bf2f4",
-      "outcome": "no_send"
     },
     "44236165736:1": {
       "checked_at_kst": "2026-11-18T13:46:37+09:00",
@@ -3952,6 +3929,25 @@
     "45399298004:1": {
       "checked_at_kst": "2026-11-24T22:39:20+09:00",
       "fingerprint": "25c76e137f29bfbef272ef8e5b49de22d838f2883e2672770a2c922a32104baa",
+      "outcome": "no_send"
+    },
+    "45400721183:1": {
+      "checked_at_kst": "2026-11-24T23:10:02+09:00",
+      "fingerprint": "9b02a6fcd6d18dee4ba34f0f5783b593aaa7111b9ebdb5104e029ed83682cd70",
+      "outcome": "no_send"
+    },
+    "45405328812:1": {
+      "checked_at_kst": "2026-11-24T23:10:02+09:00",
+      "completed": "2026-11-24T13:39:20+00:00",
+      "fingerprint": "2cbed839a2d4c7741d2350fd2ee80c2653f2e6d50c63f8ccf86a9cc3700288bd",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-24T13:39:20+00:00"
+    },
+    "45409816902:1": {
+      "checked_at_kst": "2026-11-24T23:10:01+09:00",
+      "fingerprint": "404bec6d877b5d8eb8d453999c626b0c8c4c75d4b36b370e10fd9df87e9e4cf1",
       "outcome": "no_send"
     }
   },
