@@ -405,6 +405,18 @@ DIRECT_STORY_URLS = {
 }
 FCC_OPTICS_RULE = "us_fcc_chinese_optical_transceiver_ban"
 FCC_OPTICS_FOLLOWUP = "us-fcc-optical-transceiver-pursuit-despite-industry-opposition"
+JETSON_EXPORT_RULE = "us_nvidia_jetson_china_export_controls"
+JETSON_BASELINE_URL = "https://www.ekn.kr/web/view.php?key=20261124023103917"
+JETSON_BASELINE_DATE = dt.date(2026, 11, 24)
+JETSON_FR_QUERIES = tuple(
+    "https://www.federalregister.gov/api/v1/documents.json?" + urllib.parse.urlencode({
+        "conditions[term]": term, "order": "newest", "per_page": 30,
+    })
+    for term in (
+        "Nvidia Jetson China export controls",
+        "Jetson robotics export China",
+    )
+)
 FCC_OPTICS_BASELINE = dt.datetime(2026, 11, 17, 20, 2, tzinfo=KST)
 FCC_OPTICS_RECOVERY_SOURCES = (
     (
@@ -455,6 +467,7 @@ RULE_MAX_AGE_HOURS = {
     # One-time recovery for the 2026-10-01 Morgan Stanley 3.2T/65% research
     # story that predates the international outlet parser fix.
     "us_fcc_chinese_optical_transceiver_ban": 24 * 7,
+    JETSON_EXPORT_RULE: 24 * 14,
     # Allow the 2026-10-19 official notices through the Nov 18 effective-date checkpoint.
     "china_mofcom_2026_drone_controls": 24 * 40,
     "china_mofcom_2026_tunnel_machine_controls": 24 * 40,
@@ -1146,6 +1159,50 @@ STORY_RULES = (
         impacts=("시간표", "수급", "돈 버는 능력"),
         paths=("정책 타임라인", "수급", "중국 대체 공급망"),
         follow_up="오늘 바뀐 것은 확정 매출이 아니라 정책 시간표·테마 수급입니다. 공식 상무부 발표, 관세/수입제한 품목, OSC 대출 조건을 후속 확인해야 합니다.",
+    ),
+    StoryRule(
+        key=JETSON_EXPORT_RULE,
+        title="미국, 엔비디아 Jetson 로봇칩 대중 수출통제 검토",
+        google_queries=(
+            '"Nvidia Jetson" China export controls robotics Reuters',
+            '"Jetson processors" China export restriction robot',
+            '"Jetson" "National Security Council" FCC China',
+            'site:bis.gov Jetson China export controls robotics',
+            'site:federalregister.gov Nvidia Jetson China export controls',
+        ),
+        required_groups=(
+            ("jetson",),
+            ("nvidia", "엔비디아"),
+            ("china", "chinese", "중국", "中"),
+            (
+                "export control", "export restriction", "export ban", "export controls",
+                "수출 규제", "수출통제", "수출 제한", "수출금지",
+            ),
+        ),
+        core=(
+            "에너지경제가 Reuters를 인용해 미 NSC·FCC 등 일부 기관이 엔비디아 Jetson을 대중 수출통제에 포함할지 검토 중이라고 보도했습니다. "
+            "익명 관계자 기반 검토 보도이며, 규칙안 발표·수출금지·시행은 확인되지 않았습니다."
+        ),
+        impact="Jetson 엣지AI·로봇 컴퓨팅, 엔비디아의 중국향 공급 및 중국 로봇업체의 개발비·대체조달 | 공급망·실적·정책 시간표",
+        point=(
+            "Jetson은 데이터센터용 H200·Blackwell 가속기와 구분되는 로봇·엣지용 모듈입니다. 실제 규제에 포함될 경우 중국 로봇업체의 "
+            "연산 플랫폼 조달과 NVIDIA의 로보틱스 생태계 공급에 영향을 줄 수 있지만, 현재 한국 상장사의 직접 수혜·매출은 확인되지 않았습니다."
+        ),
+        counter=(
+            "현재는 기관 검토 보도일 뿐입니다. 대상 Jetson 모델·성능 기준·최종사용자·허가 예외·유예기간이 공개되지 않았고, "
+            "기존 첨단 데이터센터 칩 규제가 Jetson에 자동 적용된다고 볼 수 없습니다."
+        ),
+        sectors="엣지AI·로봇 반도체, NVIDIA 중국사업, 중국 휴머노이드·산업로봇 공급망",
+        impacts=("돈 버는 능력", "공급망", "시간표"),
+        paths=("기관 검토", "BIS 규칙안·관보", "적용 칩·허가 기준", "시행·유예", "기업 공급 영향"),
+        follow_up=(
+            "Reuters 후속 보도와 미 상무부 BIS·연방관보 원문을 추적합니다. 기관 검토, 공식 발표, 관보 제안규칙, 최종규칙, "
+            "발효일을 서로 다른 단계로 처리하고, 문서번호·적용 제품·ECCN/성능 문턱·허가 및 예외·준수일이 확인된 변화만 새 알림으로 보냅니다."
+        ),
+        trusted_sources=(
+            "에너지경제", "Energy Economic News", "Reuters", "Bloomberg", "Associated Press",
+            "Federal Register", "Bureau of Industry and Security", "U.S. Department of Commerce",
+        ),
     ),
     StoryRule(
         key="us_dhs_deepseek_federal_civilian_exclusion",
@@ -2111,9 +2168,174 @@ def collect_fcc_optics_followup(rule: StoryRule, now: dt.datetime) -> list[dict]
     return try_articles(candidates)
 
 
+def jetson_reported_stage(title: str, description: str) -> str:
+    text = clean_text(f"{title} {description}").lower()
+    if any(term in text for term in ("withdraw", "scrap", "abandon", "철회", "백지화")):
+        return "reported-withdrawal"
+    if any(term in text for term in ("reject", "rejected", "not pursue", "no plan to", "부인", "추진하지 않")):
+        return "reported-denial"
+    if any(term in text for term in ("final rule", "finalized", "finalizes", "최종 규칙", "최종 확정")):
+        return "reported-final"
+    if any(term in text for term in ("proposed rule", "formal proposal", "notice of proposed", "제안 규칙", "공식 제안")):
+        return "reported-proposal"
+    if any(term in text for term in ("draft rule", "drafting", "drafted", "초안 마련", "규칙 초안")):
+        return "reported-draft"
+    return "reported-review"
+
+
+def verified_jetson_report(raw: str, now: dt.datetime) -> dict | None:
+    detail = extract_article_detail(raw, "몸체는 中, 두뇌는 엔비디아")
+    title = clean_text(detail.get("title"))
+    abstract = clean_text(detail.get("abstract"))
+    body = clean_text(detail.get("body"))
+    evidence = f"{title} {abstract} {body}".lower()
+    published = parse_pub_date(detail.get("published_kst"))
+    if not detail.get("body_verified") or not published:
+        return None
+    if published.date() != JETSON_BASELINE_DATE:
+        return None
+    if not all((
+        "jetson" in evidence,
+        "엔비디아" in evidence or "nvidia" in evidence,
+        "중국" in evidence or "china" in evidence or "中" in evidence,
+        "수출 규제" in evidence or "수출통제" in evidence or "export control" in evidence,
+        "로이터통신" in evidence or "reuters" in evidence,
+    )):
+        return None
+    return {
+        "title": title,
+        "description": abstract,
+        "link": JETSON_BASELINE_URL,
+        "source": "에너지경제 (Reuters 보도 인용)",
+        "published_kst": published.isoformat(timespec="seconds"),
+        "priority": SOURCE_PRIORITY.get("reuters", 0),
+        "body_verified": True,
+        "official_direct_verified": False,
+        "jetson_stage": "reported-review",
+        "jetson_report_body_verified": True,
+    }
+
+
+def collect_jetson_official_documents(rule: StoryRule, now: dt.datetime) -> list[dict]:
+    items: list[dict] = []
+    seen_docs: set[str] = set()
+    seen = load_seen().get("seen") or {}
+    today = now.astimezone(KST).date()
+    minimum_date = JETSON_BASELINE_DATE.isoformat()
+    for api_url in JETSON_FR_QUERIES:
+        try:
+            payload = json.loads(fetch_text(api_url, timeout=9))
+        except Exception as exc:
+            print(f"trusted_policy_news=jetson_fr_search_unavailable error={type(exc).__name__}")
+            continue
+        for doc in (payload.get("results") or [])[:30]:
+            number = str(doc.get("document_number") or "")
+            published = str(doc.get("publication_date") or "")
+            if not re.fullmatch(r"\d{4}-\d{5}", number) or number in seen_docs:
+                continue
+            seen_docs.add(number)
+            if not published or published < minimum_date or published > today.isoformat():
+                continue
+            agencies = " ".join(
+                str(agency.get("name") or "")
+                for agency in (doc.get("agencies") or []) if isinstance(agency, dict)
+            ).lower()
+            if not any(term in agencies for term in ("industry and security", "department of commerce")):
+                continue
+            doc_type = str(doc.get("type") or "").lower()
+            if doc_type not in {"proposed rule", "rule", "notice"}:
+                continue
+            link = str(doc.get("html_url") or "")
+            if not link.startswith("https://www.federalregister.gov/documents/"):
+                continue
+            raw_text_url = str(doc.get("raw_text_url") or "")
+            if not raw_text_url.startswith("https://www.federalregister.gov/"):
+                try:
+                    metadata = json.loads(fetch_text(
+                        f"https://www.federalregister.gov/api/v1/documents/{number}.json", timeout=8
+                    ))
+                    raw_text_url = str(metadata.get("raw_text_url") or "")
+                except Exception as exc:
+                    print(f"trusted_policy_news=jetson_fr_detail_unavailable document={number} error={type(exc).__name__}")
+                    continue
+            if not raw_text_url.startswith("https://www.federalregister.gov/"):
+                continue
+            try:
+                body = clean_text(fetch_text(raw_text_url, timeout=9))
+            except Exception as exc:
+                print(f"trusted_policy_news=jetson_fr_text_unavailable document={number} error={type(exc).__name__}")
+                continue
+            evidence = clean_text(" ".join((str(doc.get("title") or ""), str(doc.get("abstract") or ""), body))).lower()
+            if not all((
+                "jetson" in evidence,
+                "nvidia" in evidence or "엔비디아" in evidence,
+                "china" in evidence or "chinese" in evidence or "중국" in evidence or "prc" in evidence,
+                any(term in evidence for term in ("export control", "export administration regulations", "export restriction", "수출 통제", "수출 규제")),
+            )):
+                continue
+            effective = str(doc.get("effective_on") or "")
+            if doc_type == "proposed rule":
+                stage = "official-proposal"
+            elif doc_type == "rule" and effective and effective <= today.isoformat():
+                stage = "official-effective"
+            elif doc_type == "rule":
+                stage = "official-final"
+            else:
+                stage = "official-notice"
+            item = {
+                "title": clean_text(str(doc.get("title") or "")),
+                "description": clean_text(str(doc.get("abstract") or "")),
+                "link": link,
+                "source": "U.S. BIS / Federal Register",
+                "published_kst": dt.datetime.combine(
+                    dt.date.fromisoformat(published), dt.time(12), tzinfo=KST
+                ).isoformat(timespec="seconds"),
+                "published_precision": "date",
+                "priority": 0,
+                "body_verified": True,
+                "official_direct_verified": True,
+                "official_api_verified": True,
+                "jetson_stage": stage,
+                "jetson_document_number": number,
+                "jetson_document_type": doc_type,
+                "jetson_publication_date": published,
+                "jetson_effective_date": effective,
+                "jetson_comment_deadline": str(doc.get("comments_close_on") or ""),
+            }
+            fp = story_event_fingerprint(rule, [item])
+            if fp in seen:
+                continue
+            items.append(item)
+            print(f"trusted_policy_news=jetson_official_document_verified document={number} stage={stage}")
+    return items
+
+
+def collect_jetson_policy_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
+    items: list[dict] = []
+    baseline_fp = story_event_fingerprint(rule, [{"jetson_stage": "reported-review"}])
+    seen = load_seen().get("seen") or {}
+    age_days = (now.astimezone(KST).date() - JETSON_BASELINE_DATE).days
+    if 0 <= age_days <= max_age_hours_for_rule(rule) // 24 and baseline_fp not in seen:
+        try:
+            item = verified_jetson_report(fetch_text(JETSON_BASELINE_URL, timeout=10), now)
+        except Exception as exc:
+            print(f"trusted_policy_news=jetson_baseline_unavailable error={type(exc).__name__}")
+            item = None
+        if item:
+            items.append(item)
+            print("trusted_policy_news=jetson_baseline_body_verified stage=reported-review")
+        else:
+            print("trusted_policy_news=jetson_baseline_rejected reason=body_identity_or_date")
+    items.extend(collect_jetson_official_documents(rule, now))
+    return items
+
+
 def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     items: list[dict] = []
     seen_links: set[str] = set()
+    if rule.key == JETSON_EXPORT_RULE:
+        items.extend(collect_jetson_policy_items(rule, now))
+        seen_links.update(str(item["link"]) for item in items)
     if rule.key == FCC_OPTICS_RULE:
         items.extend(collect_fcc_optics_followup(rule, now))
         seen_links.update(item["link"] for item in items)
@@ -2891,6 +3113,18 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             if rule.key == FCC_OPTICS_RULE and fcc_optics_followup_rss_only(title):
                 # The opposition follow-up is admitted only in the verified body path.
                 continue
+            jetson_stage = ""
+            if rule.key == JETSON_EXPORT_RULE:
+                publisher_key = source_key(publisher)
+                host = (urllib.parse.urlsplit(link).hostname or "").lower()
+                if publisher_key in {
+                    "federal register", "bureau of industry and security",
+                    "u.s. department of commerce", "department of commerce",
+                } or host.endswith(".gov"):
+                    # First-party policy steps are accepted only by the full-text
+                    # Federal Register verifier above, never by a feed snippet.
+                    continue
+                jetson_stage = jetson_reported_stage(title, description)
             if rule.key == BIS_GPU_REMOTE_KEY:
                 title_low = title.lower()
                 exact_press = (
@@ -2942,6 +3176,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                     "published_kst": published.isoformat(timespec="seconds"),
                     "priority": SOURCE_PRIORITY.get(priority_key, 99),
                     **({"bis_gpu_remote_stage": rss_stage} if rule.key == BIS_GPU_REMOTE_KEY else {}),
+                    **({"jetson_stage": jetson_stage} if jetson_stage else {}),
                 }
             )
     # A publisher outage or empty Google News index must not silently turn
@@ -3115,6 +3350,22 @@ def semantic_policy_event_key(item: dict) -> str:
             for key in ("title", "description", "link", "source")
         )
     ).lower()
+    jetson_stage = str(item.get("jetson_stage") or "")
+    if jetson_stage in {
+        "reported-review", "reported-draft", "reported-proposal", "reported-final",
+        "reported-withdrawal", "reported-denial",
+    }:
+        return f"us-nvidia-jetson-china-export-controls-{jetson_stage}"
+    document_number = str(item.get("jetson_document_number") or "")
+    if (
+        item.get("official_api_verified") is True
+        and item.get("official_direct_verified") is True
+        and re.fullmatch(r"\d{4}-\d{5}", document_number)
+        and jetson_stage in {"official-proposal", "official-notice", "official-final", "official-effective"}
+    ):
+        effective_date = str(item.get("jetson_effective_date") or "")
+        suffix = f"-{effective_date}" if jetson_stage == "official-effective" and re.fullmatch(r"\d{4}-\d{2}-\d{2}", effective_date) else ""
+        return f"us-nvidia-jetson-china-export-controls-{jetson_stage}-{document_number}{suffix}"
     if (
         any(s in text for s in ("中国禁止出口限制出口技术目录", "technology export catalogue",
                                 "technologies prohibited or restricted from export", "技术出口目录", "technology export restrictions"))
@@ -3586,6 +3837,26 @@ def semantic_policy_event_key(item: dict) -> str:
 
 def semantic_policy_title(item: dict) -> str:
     key = semantic_policy_event_key(item)
+    if key == "us-nvidia-jetson-china-export-controls-reported-review":
+        return "미국, 엔비디아 Jetson 로봇칩 대중 수출통제 검토 보도"
+    if key == "us-nvidia-jetson-china-export-controls-reported-draft":
+        return "미국, 엔비디아 Jetson 대중 수출통제 초안 보도"
+    if key == "us-nvidia-jetson-china-export-controls-reported-proposal":
+        return "미국, 엔비디아 Jetson 대중 수출통제 제안 보도"
+    if key == "us-nvidia-jetson-china-export-controls-reported-final":
+        return "미국, 엔비디아 Jetson 대중 수출통제 최종조치 보도"
+    if key == "us-nvidia-jetson-china-export-controls-reported-withdrawal":
+        return "미국, 엔비디아 Jetson 대중 수출통제 철회 보도"
+    if key == "us-nvidia-jetson-china-export-controls-reported-denial":
+        return "미국, 엔비디아 Jetson 수출통제 부인 보도"
+    if key.startswith("us-nvidia-jetson-china-export-controls-official-proposal-"):
+        return "미 BIS, Jetson 대중 수출통제 제안규칙 공표"
+    if key.startswith("us-nvidia-jetson-china-export-controls-official-notice-"):
+        return "미 BIS, Jetson 대중 수출통제 관련 공식 공지"
+    if key.startswith("us-nvidia-jetson-china-export-controls-official-final-"):
+        return "미 BIS, Jetson 대중 수출통제 최종규칙 공표"
+    if key.startswith("us-nvidia-jetson-china-export-controls-official-effective-"):
+        return "미 BIS, Jetson 대중 수출통제 규칙 발효"
     if key == "us-trump-super-intelligence-force-established-2026-10-04":
         return "트럼프, Super Intelligence Force 창설 발표"
     if key == "us-trump-super-intelligence-force-authority":
@@ -3756,6 +4027,7 @@ def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
     if rule.key in {
         "us_dow_project_meridian_future_warfare",
         "us_dow_autonomous_warfare_execution",
+        JETSON_EXPORT_RULE,
         "us_treasury_outbound_ai_robotics_enforcement",
         "us_dhs_deepseek_federal_civilian_exclusion",
         "us_treasury_coins_biotechnology_outbound_nprm",
@@ -4328,6 +4600,81 @@ def korean_trump_story_title(title: str) -> str:
 def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] | None:
     if not items:
         return None
+    if rule.key == JETSON_EXPORT_RULE:
+        item = items[0]
+        stage = str(item.get("jetson_stage") or "reported-review")
+        if item.get("official_api_verified") is True and item.get("official_direct_verified") is True:
+            publication_date = str(item.get("jetson_publication_date") or "확인 불가")
+            effective_date = str(item.get("jetson_effective_date") or "")
+            comment_deadline = str(item.get("jetson_comment_deadline") or "")
+            doc_number = str(item.get("jetson_document_number") or "")
+            stage_text = {
+                "official-proposal": "Federal Register 제안규칙 공표·의견수렴 단계; 최종규칙·발효 전",
+                "official-notice": "Federal Register 공식 공지 확인; 법적 효과는 문서별 확인 필요",
+                "official-final": "Federal Register 최종규칙 공표; 발효일 대기",
+                "official-effective": "Federal Register 최종규칙의 발효일 도래",
+            }.get(stage, "Federal Register 공식문서 확인")
+            timeline = [
+                "2026년 11월 24일 Reuters 인용 보도: Jetson 포함 여부 검토",
+                f"{publication_date} Federal Register {item.get('jetson_document_type', '공식 문서')} ({doc_number})",
+            ]
+            if comment_deadline:
+                timeline.append(f"의견 제출기한 {comment_deadline}")
+            if effective_date:
+                timeline.append(f"발효일 {effective_date}")
+            return {
+                "title": semantic_policy_title(item),
+                "core": f"미 상무부 BIS/Federal Register 원문에서 Jetson·NVIDIA·중국·수출규제 문구를 직접 확인했습니다. 문서 {doc_number}: {clean_text(str(item.get('title') or ''))}.",
+                "stage": stage_text,
+                "event_date": publication_date,
+                "event_date_label": "Federal Register 공개일",
+                "actual_bullets": [
+                    clean_text(str(item.get("description") or "")) or "연방관보 원문 본문을 확인했습니다.",
+                    f"문서 유형: {item.get('jetson_document_type')}; 문서번호: {doc_number}.",
+                ],
+                "timeline": " → ".join(timeline),
+                "scope_note": "규칙의 실제 적용 대상은 본문에 명시된 제품·성능기준·ECCN·허가 예외에 한정해 판단합니다.",
+                "next": "최종 문안·적용 칩 및 ECCN·허가 예외·기존 계약 유예·준수일과 NVIDIA의 중국향 공급 변화를 확인합니다.",
+            }
+        event_date = str(item.get("published_kst") or "")[:10] or "2026-11-24"
+        report_stage = {
+            "reported-review": ("기관 검토 보도·공식 제안 및 수출제한 미확인", "미국, 엔비디아 Jetson 로봇칩 대중 수출통제 검토"),
+            "reported-draft": ("초안 작성 보도·공식 규칙안 미확인", "미국, 엔비디아 Jetson 대중 수출통제 초안 검토"),
+            "reported-proposal": ("제안규칙 보도·관보 원문 미확인", "미국, 엔비디아 Jetson 대중 수출통제 제안 보도"),
+            "reported-final": ("최종조치 보도·공식 규칙 원문 미확인", "미국, 엔비디아 Jetson 대중 수출통제 최종조치 보도"),
+            "reported-withdrawal": ("철회 보도·공식 확인 전", "미국, 엔비디아 Jetson 대중 수출통제 철회 보도"),
+            "reported-denial": ("당국 부인 보도·공식 원문 확인 전", "미국, 엔비디아 Jetson 수출통제 부인 보도"),
+        }
+        stage_text, title = report_stage.get(stage, report_stage["reported-review"])
+        body_verified = item.get("jetson_report_body_verified") is True
+        return {
+            "title": title,
+            "core": (
+                "Reuters 인용 기사에 따르면 미 NSC·FCC 등 일부 기관이 Jetson을 대중 수출통제에 포함할지 검토 중이며, 의회에서도 논의가 있었다고 합니다. "
+                "이는 익명 관계자 기반 보도이지 공식 규칙 발표가 아닙니다."
+                if body_verified else
+                f"신뢰매체 후속 보도: {clean_text(str(item.get('title') or ''))}. 공식 BIS·연방관보 문서와 법적 단계는 별도 확인 전입니다."
+            ),
+            "stage": stage_text,
+            "event_date": event_date,
+            "event_date_label": "보도일",
+            "actual_bullets": (
+                [
+                    "기사에 따르면 중국 로봇업체 최소 14곳이 NVIDIA 반도체 또는 로봇개발 플랫폼을 사용합니다.",
+                    "기사의 관계자 설명은 NVIDIA 플랫폼을 대체할 경우 연산성능·소프트웨어 호환이 제약이 될 수 있다는 취지입니다.",
+                    "Jetson은 데이터센터용 H200·Blackwell과 다른 로봇·엣지용 제품군이며, 실제 통제대상·모델·허가 기준은 미정입니다.",
+                ] if body_verified else [
+                    "기사 제목·요약에 담긴 정책 단계만 반영하며, 적용 제품·허가 예외·시행일은 원문 확인 전에는 확정하지 않습니다."
+                ]
+            ),
+            "timeline": (
+                "2026년 11월 24일 에너지경제의 Reuters 인용 보도 → 기관 검토·의회 논의 보도 → BIS 공식 발표/관보 제안규칙 미확인"
+                if body_verified else
+                f"{event_date} 후속 보도 → BIS 공식 발표·관보 제안규칙 → 최종규칙 → 발효·준수일"
+            ),
+            "scope_note": "검토 보도는 수출금지 확정이 아닙니다. 기존 첨단 데이터센터 칩 통제를 Jetson에 자동 적용하지 않습니다.",
+            "next": "Reuters 후속 취재, BIS·Federal Register 문서번호, 적용 Jetson 모델·성능기준/ECCN·허가 예외·유예·발효 및 준수일을 확인합니다.",
+        }
     if rule.key == NDAA_KEY and items[0].get("official_direct_verified") is True:
         return items[0].get("ndaa_profile")
     if rule.key == BIS_GPU_REMOTE_KEY:
@@ -5486,6 +5833,15 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
+    if rule.key == JETSON_EXPORT_RULE:
+        if any(
+            item.get("official_api_verified") is True
+            and item.get("official_direct_verified") is True
+            and str(item.get("jetson_document_number") or "")
+            for item in items
+        ):
+            return "공식 확인", "Federal Register/BIS 문서 원문·제품 범위 직접 검증"
+        return "공식 확인 전", "Reuters 인용 보도 확인·수출통제 공식문서 미확인"
     if rule.key == FCC_OPTICS_RULE and items and semantic_policy_event_key(items[0]) == FCC_OPTICS_FOLLOWUP:
         return "공식 확인 전", "로이터 후속 보도 본문 확인"
     if rule.key == NDAA_KEY and items and items[0].get("official_direct_verified") is True and items[0].get("ndaa_event_key"):
@@ -6362,6 +6718,7 @@ def main() -> int:
         "us_fcc_hisilicon_first_component_enforcement": 13,
         BIS_GPU_REMOTE_KEY: 17,
         "us_fcc_800mhz_uas_cellular_authorization": 16,
+        JETSON_EXPORT_RULE: 14,
         "us_fcc_intel_agv_one_year_waiver": 12,
         "us_treasury_outbound_ai_robotics_enforcement": 3,
         "us_fcc_chinese_optical_transceiver_ban": 2,
