@@ -1,6 +1,6 @@
 {
   "status": "degraded",
-  "checked_at_kst": "2026-11-24T19:53:29+09:00",
+  "checked_at_kst": "2026-11-24T20:04:55+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -8,7 +8,7 @@
   "intismeran_collector_rc": 0,
   "jemperli_collector_rc": 0,
   "enhertu_collector_rc": 0,
-  "halozyme_collector_rc": 2,
+  "halozyme_collector_rc": 0,
   "qlex_alert_present": false,
   "qlex_wac_alert_present": false,
   "intismeran_alert_present": false,
@@ -19,21 +19,21 @@
   "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "failure",
-  "halozyme_run_outcome": "failure",
+  "halozyme_run_outcome": "success",
   "qlex_state_persisted": true,
   "qlex_wac_state_persisted": true,
   "intismeran_state_persisted": true,
   "jemperli_state_persisted": true,
   "enhertu_state_persisted": false,
-  "halozyme_state_persisted": false,
-  "halozyme_source_health": "degraded",
+  "halozyme_state_persisted": true,
+  "halozyme_source_health": "ok",
   "cms_policy_status": "previously_delivered",
   "maplight_source_health": "last_incomplete",
-  "halozyme_search_failed_tasks": 40,
+  "halozyme_search_failed_tasks": 0,
   "halozyme_search_task_count": 80,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-11-24",
-  "failure_notice_message_id": 412,
+  "failure_notice_message_id": 411,
   "last_qlex_telegram_message_ids": [
     334
   ],
@@ -43,20 +43,16 @@
   "last_jemperli_telegram_sent_at_kst": "2026-11-13T07:21:43+09:00",
   "last_qlex_telegram_sent_at_kst": "2026-11-11T15:00:07+09:00",
   "errors": [
-    "Halozyme 검색 원천 가용성 저하: 정상 응답 부족; 상세 실패 수는 heartbeat와 Halozyme 상태 파일 확인",
-    "Enhertu sender rc=1: RuntimeError: 한국어 자동번역 실패: HTTPError"
+    "Enhertu sender rc=1: RuntimeError: 한국어 송출 검증 실패 — API"
   ],
-  "failed_component": "Halozyme 특허분쟁",
+  "failed_component": "Enhertu",
   "failed_components": [
-    "Enhertu",
-    "Halozyme 특허분쟁"
+    "Enhertu"
   ],
   "last_wac_telegram_message_ids": [],
   "last_wac_telegram_sent_at_kst": "",
   "failure_notice_signatures": [
-    "Enhertu|language_validation",
-    "Enhertu|other",
-    "Halozyme 특허분쟁|source_access"
+    "Enhertu|language_validation"
   ],
-  "error_signature": "Enhertu|other | Halozyme 특허분쟁|source_access"
+  "error_signature": "Enhertu|language_validation"
 }
