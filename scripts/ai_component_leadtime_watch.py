@@ -1805,20 +1805,40 @@ def build_weekly_010_mlcc_alert(previous: dict, current: dict) -> str:
 
 
 
+def weekly_011_summary_verified(text: str) -> bool:
+    low = text.lower()
+    return all(marker in low for marker in (
+        "weekly radar 011", "every status unchanged", "export rules", "dram", "essd"
+    ))
+
+
 def weekly_011_source_probe() -> dict:
     """Check the original public publisher summary without treating a cache miss as success."""
     url = WEEKLY_011_IMAGE_LOCK["source"]
     try:
         raw = fetch(url, timeout=15)
-        text = clean_text(raw.decode("utf-8", errors="replace")).lower()
+        text = clean_text(raw.decode("utf-8", errors="replace"))
     except Exception as exc:
         return {"status": "lookup_failed", "error_type": type(exc).__name__, "url": url}
-    if ("weekly radar 011" in text and
-            "every status unchanged" in text and
-            "export rules" in text and
-            "dram" in text and "essd" in text):
+    if weekly_011_summary_verified(text):
         return {"status": "verified_public_summary", "url": url}
     return {"status": "content_incomplete", "url": url}
+
+
+def complete_publisher_weekly_rows(url: str, body: str) -> dict:
+    """Only a publisher's directly retrieved complete structured table proves an unchanged numeric week."""
+    parsed = urlparse(url)
+    if (parsed.hostname != "insights.trendforce.com"
+            or not re.fullmatch(r"/p/weekly-radar-\d+/?", parsed.path)):
+        return {}
+    rows = {}
+    for name, aliases in ALIASES.items():
+        for alias in aliases:
+            row = extract_structured_row(body, alias)
+            if all(row.get(field) for field in ("status", "current", "balanced")):
+                rows[name] = row
+                break
+    return rows if set(rows) == set(ALIASES) else {}
 
 
 def weekly_011_unchanged_update(previous: dict, today_kst: str) -> dict | None:
@@ -1874,6 +1894,7 @@ def main() -> None:
     source_health = {"rss_success_count": 0, "rss_failure_count": 0,
                      "primary_feed_status": "not_checked", "source_observation": "not_checked"}
     cutoff = now - timedelta(days=21)
+    official_011_body_verified = False
 
     for kind, query in SEARCHES:
         try:
@@ -1903,6 +1924,9 @@ def main() -> None:
             if dt is not None and dt < cutoff:
                 continue
             body = article_text(direct)
+            if (direct.split("?")[0].rstrip("/") == WEEKLY_011_IMAGE_LOCK["source"]
+                    and weekly_011_summary_verified(body)):
+                official_011_body_verified = True
             full_text = clean_text(f"{base_text} {body}")
             is_official_010 = (
                 direct.split("?")[0].rstrip("/") == WEEKLY_010_MLCC_LOCK["source"]
@@ -1942,6 +1966,7 @@ def main() -> None:
                     "direct_url": direct,
                     "full_text": full_text,
                     "components": components,
+                    "publisher_complete_rows": complete_publisher_weekly_rows(direct, body),
                     "signals": signals,
                     "nand_controller_direct_constraint": extract_nand_controller_direct_constraint(full_text),
                     "score": source_score(direct, components, full_text) + len(signals) * 3,
@@ -2035,6 +2060,18 @@ def main() -> None:
             latest_signals = merged_signals
             latest_source = url or latest_source
             latest_as_of = published_date
+            latest_source_kind = (
+                "발행사 직접 조회 전체 구조화 표"
+                if best.get("publisher_complete_rows") == merged
+                else "이번 주 확인 가능한 제공 텍스트에서 변경 항목 추출; 전체 표 직접 확인 여부 미확인"
+            )
+        elif (is_new_release and not changed and not changed_signals
+              and best.get("publisher_complete_rows") == previous_components):
+            # Complete unchanged future issues advance the numeric vintage silently;
+            # a teaser/partial table can never impersonate a complete observation.
+            latest_as_of = published_date
+            latest_source = url
+            latest_source_kind = "발행사 직접 조회 전체 구조화 표 7개 품목 일치; 신규 수치 변화 없음"
         elif is_new_release and is_new_url and exact_weekly_signal and changed_signals:
             # Distinct material narrative, but not an independently checked
             # current lead-time table. Notify once; keep the numeric baseline.
@@ -2124,20 +2161,40 @@ def main() -> None:
     unchanged_011 = weekly_011_unchanged_update(
         previous, now.date().isoformat()
     )
-    if unchanged_011 is not None:
-        official_011_probe = weekly_011_source_probe()
+    # A historical screenshot may never undo a newer numeric observation made
+    # earlier in this same run, including an actually changed 011 table.
+    if (unchanged_011 is not None
+            and latest_as_of == previous.get("as_of")
+            and latest_components == previous_components):
         latest_components = unchanged_011["components"]
         latest_source = unchanged_011["source"]
         latest_as_of = unchanged_011["as_of"]
         latest_source_kind = unchanged_011["source_kind"]
         new_seen.add(latest_source)
-        # The BIS rule and TrendForce possible allocation effects are distinct:
-        # no categorical CPU/DRAM/eSSD export ban and no measured lead-time move.
+    else:
+        unchanged_011 = None
+    # Retry a failed publisher lookup even after the screenshot has advanced
+    # the numeric snapshot; never erase a successful verification timestamp.
+    prior_probe = (previous.get("source_health") or {}).get("weekly_011_publisher") or {}
+    prior_verified = prior_probe.get("last_verified_at_kst")
+    if (not prior_verified and prior_probe.get("status") == "verified_public_summary"):
+        prior_verified = prior_probe.get("checked_at_kst") or previous.get("last_checked_at_kst")
+    if (latest_as_of == WEEKLY_011_IMAGE_LOCK["as_of"]
+            and WEEKLY_011_IMAGE_LOCK["as_of"] <= now.date().isoformat() <= "2026-12-07"):
+        if official_011_body_verified:
+            official_011_probe = {"status": "verified_public_summary",
+                                  "url": WEEKLY_011_IMAGE_LOCK["source"]}
+        else:
+            official_011_probe = weekly_011_source_probe()
+        official_011_probe["checked_at_kst"] = now.isoformat(timespec="seconds")
+        if official_011_probe["status"] == "verified_public_summary":
+            prior_verified = official_011_probe["checked_at_kst"]
+    if prior_verified:
+        official_011_probe["last_verified_at_kst"] = prior_verified
     source_health["weekly_011_publisher"] = official_011_probe
     source_health["source_observation"] = (
-        "lookup_failed" if source_health["primary_feed_status"] == "lookup_failed"
-        and source_health["rss_success_count"] == 0
-        and official_011_probe["status"] == "lookup_failed"
+        "lookup_failed" if source_health["rss_success_count"] == 0
+        and official_011_probe["status"] != "verified_public_summary"
         else "partial" if source_health["rss_failure_count"]
         or official_011_probe["status"] in {"lookup_failed", "content_incomplete"}
         else "checked"
@@ -2200,11 +2257,7 @@ def main() -> None:
         "latest_weekly_issue": {
             "issue_date": latest_as_of,
             "source": latest_source,
-            "metric_change_count": (
-                0 if unchanged_011 is not None or
-                str(previous.get("as_of") or "") == WEEKLY_011_IMAGE_LOCK["as_of"]
-                else len(changed_components(previous_components, latest_components))
-            ),
+            "metric_change_count": len(changed_components(previous_components, latest_components)),
             "source_kind": latest_source_kind,
         },
         "policy_context": (
