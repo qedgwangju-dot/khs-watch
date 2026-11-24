@@ -102,6 +102,11 @@ NEWS_QUERIES = [
     '"금융권" "망분리 규제" (전면해제 TF OR 개정안 확정 OR 시행 OR 제로트러스트)',
 
     '"금융권" "연 2회" "취약점" (의무화 OR 규정 개정 OR 시행)',
+    '("전자금융거래법" OR "전금법") ("해킹" OR "과징금" OR "정보보호") (소위 OR 정무위 OR 법사위 OR 본회의 OR 공포 OR 시행)',
+    '("2214714" OR "2218583") (전자금융거래법 OR 과징금)',
+    '("전자금융거래법" OR "전금법") ("매출액" OR "3%" OR "과징금") (시행령 OR 산정기준 OR 개정안 OR 의결)',
+    '("전자금융감독규정" OR "금융행정지도") (금융위 OR 금융위원회) (취약점 OR 자산 OR 정보보호 OR 점검)',
+    'site:fsc.go.kr ("전자금융거래법" OR "전자금융감독규정") (과징금 OR 정보보호 OR 취약점 OR 자산)',
 
     '"PHP" (범부처 종합대책 OR 의무 점검 OR 정부 지원 예산 OR 보안 의무화) (확정 OR 발표 OR 시행)',
     '네이버클라우드 S2W 샌즈랩 LG CNS 사이버보안 AI 계약 실증',
@@ -1911,6 +1916,120 @@ def bank_agent_issuer_verified(item: dict) -> bool:
     }
 
 
+# Separate the National Assembly bill and the FSC supervisory regulation.
+# A subcommittee vote is not committee passage, a statute, or a penalty.
+KR_FINANCE_LAW_CATEGORY = "전자금융거래법 금융보안 과징금·입법 단계"
+KR_FINANCE_RULE_CATEGORY = "전자금융감독규정 금융보안 의무·행정지도 단계"
+KR_FINANCE_SECURITY_FAMILIES = {"kr_efinance_security_bill", "kr_efinance_security_rule"}
+
+def kr_finance_security_topic(item: dict) -> str | None:
+    title = str(item.get("title") or "")
+    context = title + " " + str(item.get("description") or "")
+    tight = re.sub(r"\s+", "", context)
+    head = re.sub(r"\s+", "", title)
+    security = any(w in tight for w in ("보안", "해킹", "과징금", "정보보호",
+        "정보유출", "개인신용정보", "침해", "취약점", "전자금융거래정보", "IT자산", "전산자산"))
+    if not security:
+        return None
+    if "전자금융감독규정" in head or (
+        "행정지도" in head and "전자금융감독규정" in tight
+    ):
+        return "kr_efinance_security_rule"
+    if any(w in head for w in ("전자금융거래법", "전금법", "2214714", "2218583")):
+        return "kr_efinance_security_bill"
+    return None
+
+def kr_finance_security_stage(item: dict) -> tuple[str, str] | None:
+    family = kr_finance_security_topic(item)
+    if not family:
+        return None
+    title = re.sub(r"\s+", "", str(item.get("title") or ""))
+    negated = any(w in title for w in ("미통과", "통과불발", "통과못", "통과실패",
+        "처리불발", "의결불발", "가결불발", "부결", "보류", "통과할까",
+        "통과여부", "통과가능성", "통과예정", "의결예정", "통과전망",
+        "공포예정", "시행예정", "시행목표", "시행추진", "시행될", "통과촉구",
+        "의결촉구", "통과기대", "통과해야"))
+    if negated:
+        # Explicit delay or rejection is material only when tied to an actual decision.
+        if any(w in title for w in ("부결", "통과불발", "의결불발", "처리불발", "심사보류")):
+            return family, "decision_delayed_or_rejected_reported"
+        return None
+    if family == "kr_efinance_security_rule":
+        if any(w in title for w in ("규정변경예고", "개정안예고", "행정예고")):
+            return family, "consultation_notice_reported"
+        if "행정지도" in title and any(w in title for w in ("의결", "시행", "발령", "확정")):
+            return family, "administrative_guidance_issued_reported"
+        if any(w in title for w in ("금융위의결", "금융위원회의결", "개정안의결",
+                                    "최종확정", "규정개정확정")):
+            return family, "final_rule_adopted_reported"
+        if any(w in title for w in ("개정규정시행", "감독규정시행", "시행개시", "정식시행")):
+            return family, "rule_in_effect_reported"
+        return None
+    # Specific promulgation / subordinate rules must precede broad vote words.
+    if "시행령" in title:
+        if "입법예고" in title or "개정안예고" in title:
+            return family, "decree_consultation_reported"
+        if any(w in title for w in ("국무회의의결", "공포", "최종확정")):
+            return family, "decree_adopted_reported"
+        if any(w in title for w in ("시행", "발효")):
+            return family, "decree_in_effect_reported"
+        return None
+    if "공포" in title and any(w in title for w in ("개정법", "개정안", "법공포", "전금법공포")):
+        return family, "statute_promulgated_reported"
+    if any(w in title for w in ("개정법시행", "전금법시행", "법률시행", "개정법률시행", "발효")):
+        return family, "statute_in_effect_reported"
+    # Only affirmative voting language; the body may discuss a future stage.
+    passed = any(w in title for w in ("통과", "가결", "의결", "처리완료"))
+    if passed:
+        if "본회의" in title:
+            return family, "plenary_passed_reported"
+        if "법사위" in title or "법제사법위원회" in title:
+            if "소위" in title:
+                return family, "judiciary_subcommittee_passed_reported"
+            return family, "judiciary_committee_passed_reported"
+        if "소위" in title or "소위원회" in title:
+            return family, "policy_subcommittee_passed_reported"
+        if "정무위" in title or "정무위원회" in title:
+            return family, "policy_committee_passed_reported"
+    return None
+
+def kr_finance_security_source_verified(item: dict) -> bool:
+    if not kr_finance_security_topic(item):
+        return True
+    source = str(item.get("source") or "").strip().lower()
+    try:
+        host = (urllib.parse.urlsplit(str(item.get("publisher_url") or item.get("url") or "")).hostname or "").lower()
+    except ValueError:
+        return False
+    sources = (
+        (("머니투데이", "moneytoday", "the300", "머니투데이 the300"), ("mt.co.kr",)),
+        (("매일경제", "매경",), ("mk.co.kr",)),
+        (("이데일리",), ("edaily.co.kr",)),
+        (("연합뉴스", "yonhap"), ("yna.co.kr",)),
+        (("한국경제",), ("hankyung.com",)),
+        (("서울경제",), ("sedaily.com",)),
+        (("뉴스1",), ("news1.kr",)),
+        (("뉴시스",), ("newsis.com",)),
+        (("sbs biz", "sbs비즈"), ("biz.sbs.co.kr",)),
+        (("전자신문",), ("etnews.com",)),
+        (("금융위원회", "금융위"), ("fsc.go.kr",)),
+        (("국회", "대한민국국회", "국회 정무위원회", "국회사무처"), ("assembly.go.kr",)),
+        (("법제처", "국민참여입법센터", "국가법령정보센터"), ("lawmaking.go.kr", "law.go.kr", "moleg.go.kr")),
+        (("대한민국 전자관보", "전자관보"), ("gwanbo.go.kr",)),
+        (("대한민국 정책브리핑", "정책브리핑"), ("korea.kr",)),
+    )
+    return any(source in names and any(host == d or host.endswith("."+d) for d in domains)
+               for names, domains in sources)
+
+def kr_finance_security_issuer(item: dict) -> bool:
+    if not kr_finance_security_source_verified(item):
+        return False
+    return str(item.get("source") or "").strip().lower() in {
+        "금융위원회", "금융위", "국회", "대한민국국회", "국회 정무위원회",
+        "국회사무처", "법제처", "국민참여입법센터", "국가법령정보센터",
+        "대한민국 전자관보", "전자관보", "대한민국 정책브리핑", "정책브리핑",
+    }
+
 def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     """Classify a new *reported* milestone from the headline, never from a
     speculative paragraph about what could happen. No issuer/legislative
@@ -1919,6 +2038,8 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
     title = str(item.get("title") or "").lower()
     context = f"{item.get('title','')} {item.get('description','')}".lower()
 
+    if kr_finance_security_topic(item):
+        return kr_finance_security_stage(item)
     bank_stage = bank_agent_policy_stage(item)
     if bank_stage:
         return bank_stage
@@ -2439,6 +2560,8 @@ def material(item: dict) -> bool:
         return False
     if is_anthropic_mission_launch_baseline(item) or is_reported_si_original(item):
         return False
+    if kr_finance_security_topic(item):
+        return bool(kr_finance_security_stage(item) and kr_finance_security_source_verified(item))
     milestone = tracked_policy_event_stage(item)
     if milestone:
         if (milestone[0] in ("bank_agents", "bank_agent_supervision")
@@ -2527,6 +2650,12 @@ def normalize(item: dict) -> dict:
     combined = f"{item.get('title','')} {item.get('description','')}"
     out = dict(item)
     out["fingerprint"] = fingerprint(item)
+    legal_stage = kr_finance_security_stage(item)
+    if legal_stage:
+        out["category"] = KR_FINANCE_LAW_CATEGORY if legal_stage[0] == "kr_efinance_security_bill" else KR_FINANCE_RULE_CATEGORY
+        out["entity"] = "국회·전자금융거래법" if legal_stage[0] == "kr_efinance_security_bill" else "금융위원회"
+        out["official"] = kr_finance_security_issuer(item)
+        return out
     out["category"] = detect_category(combined)
     out["entity"] = detect_entity(combined)
     out["official"] = ((source_official(item.get("source","")) or bank_agent_issuer_verified(item) or (str(item.get("source") or "").lower().strip() == "meta" and meta_safety_source_verified(item) and bool(meta_safety_stage(item))) or aws_security_issuer_verified(item) or fed_bank_security_official(item) or korean_finance_issuer_verified(item) or openai_cyber_growth_issuer_verified(item)) and
@@ -2909,6 +3038,34 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
+        if rep["category"] in (KR_FINANCE_LAW_CATEGORY, KR_FINANCE_RULE_CATEGORY):
+            stage = kr_finance_security_stage(rep)
+            names = {
+                "policy_subcommittee_passed_reported": "정무위 법안심사소위원회 통과",
+                "policy_committee_passed_reported": "정무위 전체회의 의결",
+                "judiciary_subcommittee_passed_reported": "법사위 소위원회 통과",
+                "judiciary_committee_passed_reported": "법사위 전체회의 통과",
+                "plenary_passed_reported": "본회의 의결",
+                "statute_promulgated_reported": "개정법 공포",
+                "statute_in_effect_reported": "개정법 실제 시행",
+                "decree_consultation_reported": "시행령 입법예고",
+                "decree_adopted_reported": "시행령 확정",
+                "decree_in_effect_reported": "시행령 시행",
+                "decision_delayed_or_rejected_reported": "심사 보류·부결 또는 처리 불발",
+                "consultation_notice_reported": "감독규정 개정안 예고",
+                "administrative_guidance_issued_reported": "행정지도 확정·시행",
+                "final_rule_adopted_reported": "감독규정 최종 의결",
+                "rule_in_effect_reported": "감독규정 시행",
+            }
+            label = names.get(stage[1] if stage else "", "단계 추가 확인")
+            evidence = "공식기관 발표" if rep.get("official") else "언론 보도·공식 처리결과 대조 필요"
+            lines.append(f"• <b>확인 단계</b>: {html.escape(label)} · {html.escape(evidence)}")
+            if rep["category"] == KR_FINANCE_LAW_CATEGORY:
+                lines.append("• <b>핵심 조건</b>: 50억원 상한에서 매출액 최대 3%로 확대하는 기존 개정안. 보안의무 위반 및 정보유출 인과관계, 최종 매출액 분모·산정기간·가중감경은 원문 확인 필요")
+                lines.append("• <b>다음 확인</b>: 의안 2214714·2218583 또는 위원회 대안, 소위→전체회의→법사위→본회의→공포→시행령·시행일. 상한을 확정 부과액이나 보안기업 수주로 간주하지 않음")
+            else:
+                lines.append("• <b>기존 계획</b>: 11월 18일 규정변경예고, 11월 30일 의견수렴 종료, 2027년 1분기 시행 목표. 행정지도와 확정 감독규정 별도 추적")
+                lines.append("• <b>다음 확인</b>: 정보기술 자산 식별·관리, 대형 금융사 취약점 평가 연 1→2회, 연결 시스템 범위, 의결·시행일 및 실제 발주")
         if rep["category"] == "미국 금융기관 AI 에이전트 통제·감독·사업화 단계":
             stage = bank_agent_policy_stage(rep)
             status = {
