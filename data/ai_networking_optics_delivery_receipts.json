@@ -121,16 +121,6 @@
       "sent_success": true,
       "started": "2026-11-19T02:09:54+00:00"
     },
-    "44442511846:1": {
-      "checked_at_kst": "2026-11-19T11:52:02+09:00",
-      "fingerprint": "600e7f9be0bdc4b42ea8510903463b2ceb433bbcf55068f598354e495f2744a8",
-      "outcome": "no_send"
-    },
-    "44445089245:1": {
-      "checked_at_kst": "2026-11-19T11:52:01+09:00",
-      "fingerprint": "69c23d5e02717e2962bbfaa3c97a04d32e42270a44a0886b14bfde300773f6b3",
-      "outcome": "no_send"
-    },
     "44447144204:1": {
       "checked_at_kst": "2026-11-19T12:42:29+09:00",
       "completed": "2026-11-19T02:52:02+00:00",
@@ -3991,8 +3981,36 @@
       "checked_at_kst": "2026-11-26T00:17:25+09:00",
       "fingerprint": "17646395f559015ec3d2fd3627883b4be02c76e7b117d13ee357b1db550c5de5",
       "outcome": "no_send"
+    },
+    "45643074177:1": {
+      "checked_at_kst": "2026-11-26T01:08:56+09:00",
+      "completed": "2026-11-25T15:17:26+00:00",
+      "fingerprint": "0c348c8820761208d560123b52ee1255549e4a2f33ca85262a3517fe683b881f",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-25T15:17:25+00:00"
+    },
+    "45648788639:1": {
+      "checked_at_kst": "2026-11-26T01:08:55+09:00",
+      "completed": "2026-11-25T15:49:40+00:00",
+      "fingerprint": "5849e616d0b54ea647a761c2b3d81f2f2d06e31f50513d0ce7d6cfb8d09430bf",
+      "outcome": "attempted",
+      "saved": false,
+      "sent_success": true,
+      "started": "2026-11-25T15:49:39+00:00"
     }
   },
-  "recovery_holds": {},
+  "recovery_holds": {
+    "45648788639:1": {
+      "checked_at_kst": "2026-11-26T01:08:56+09:00",
+      "reason": "sender_attempted_but_state_or_receipt_commit_unconfirmed",
+      "run_attempt": 1,
+      "run_id": 45648788639,
+      "started_at": "2026-11-25T15:49:39+00:00",
+      "status": "unresolved",
+      "url": "https://github.com/qedgwangju-dot/khs-watch/actions/runs/45648788639/attempts/1"
+    }
+  },
   "version": 1
 }
