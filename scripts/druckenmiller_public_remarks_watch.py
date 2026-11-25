@@ -40,6 +40,9 @@ SEED_PUBLISHERS={
     "Barron's":"https://www.barrons.com/livecoverage/stock-market-news-today-111726/card/druckenmiller-says-he-is-short-copper-D9N45T6gjlETmVy8E6he",
 }
 FED_OFFICIAL="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm"
+MS_VIDEO_CHANNEL="UCz6RzD6KG_hH_oHb2kyW5jQ"
+MS_VIDEO_FEED="https://www.youtube.com/feeds/videos.xml?channel_id="+MS_VIDEO_CHANNEL
+CORE_FEEDS=("google","bing","coindesk")
 ALL_SIGNALS={
     "equity":"순주식노출 낮춤·방어적",
     "copper":"구리 매도 포지션",
@@ -54,6 +57,8 @@ SIGNAL_DIMENSION={
     "equity_defensive":"equity","equity_risk_on":"equity",
     "growth_2027":"growth","ai_applications":"ai",
     "fed_hawkish":"fed_view","credit_stress":"credit","dollar_long":"usd",
+    "copper_closed":"copper","equity_net_short":"equity",
+    "fed_dovish":"fed_view","credit_easing":"credit","dollar_short":"usd",
 }
 
 SPEECH_PATTERNS={
@@ -63,6 +68,7 @@ SPEECH_PATTERNS={
     "equity_defensive":(r"little\s+net\s+exposure\s+to\s+equities",
                          r"neither\s+long\s+nor\s+short\s+equities",
                          r"not\s+long\s+or\s+short\s+equities",
+                         r"not\s+long\s+equities.{0,35}not\s+short\s+equities",
                          r"capital\s+preservation",
                          r"preserving\s+capital",
                          r"low\s+net\s+(?:equity|stock)\s+exposure"),
@@ -79,6 +85,12 @@ SPEECH_PATTERNS={
                      r"widening\s+credit\s+spreads"),
     "dollar_long":(r"(?:small|modest)\s+(?:long\s+)?(?:u\.s\.\s+)?dollar\s+(?:long\s+)?position",
                    r"(?:small|modest)\s+long\s+(?:u\.s\.\s+)?dollar"),
+    "copper_closed":(r"\b(?:covered|closed(?: out)?|exited)\s+(?:his|our|their|the)\s+(?:short copper(?: position)?|copper short(?: position)?|short position in copper)\b",
+                     r"\bno longer short copper\b"),
+    "equity_net_short":(r"\b(?:now|currently)\s+net short\s+(?:stocks|equities)\b",),
+    "fed_dovish":(r"\bnow\s+(?:expects?|anticipates?)\s+(?:the\s+)?fed\s+to\s+(?:cut|lower)\s+(?:interest\s+)?rates\b",),
+    "credit_easing":(r"\bcredit spreads\s+(?:are\s+)?(?:now\s+)?(?:narrowing|tightening)\b",),
+    "dollar_short":(r"\b(?:now|currently)\s+short\s+(?:the\s+)?(?:u\.s\.\s+)?dollar\b",),
 }
 LABELS={
     "copper_short":"구리 매도 포지션",
@@ -90,6 +102,11 @@ LABELS={
     "fed_hawkish":"연준 긴축 전망(당사자 판단, 공식 결정 아님)",
     "credit_stress":"신용 스프레드 확대 경계",
     "dollar_long":"미국 달러 매수 포지션",
+    "copper_closed":"구리 매도 포지션 청산",
+    "equity_net_short":"주식 순매도 포지션 전환",
+    "fed_dovish":"연준 금리 인하 전망 전환(당사자 판단)",
+    "credit_easing":"신용 스프레드 축소·위험 완화 판단",
+    "dollar_short":"미국 달러 매도 포지션 전환",
 }
 # Independent FIRST-PARTY editorial publishers. Republishing mirrors do not
 # create a second confirmation. Google/Bing are discoverers, NOT publishers.
@@ -99,6 +116,8 @@ PUBLISHER_ALIASES={
     "bloomberg":"bloomberg", "the wall street journal":"wsj",
     "wall street journal":"wsj","wsj":"wsj","cnbc":"cnbc",
     "financial times":"ft","the information":"theinformation",
+    "realclearpolitics":"realclear","realclearmarkets":"realclear",
+    "the street":"thestreet","thestreet":"thestreet",
 }
 ALLOWED_PUBLISHERS=set(PUBLISHER_ALIASES.values())
 FALLBACK_PUBLISHER_URL={
@@ -106,6 +125,8 @@ FALLBACK_PUBLISHER_URL={
     "marketwatch.com":"marketwatch","reuters.com":"reuters",
     "bloomberg.com":"bloomberg","wsj.com":"wsj","cnbc.com":"cnbc",
     "ft.com":"ft","theinformation.com":"theinformation",
+    "realclearpolitics.com":"realclear","realclearmarkets.com":"realclear",
+    "thestreet.com":"thestreet",
 }
 
 
@@ -153,6 +174,8 @@ def signals_from_text(text):
         if key=="copper_short" and re.search(r"(?:not|no\s+longer)\s+short(?:ing)?\s+copper",value):
             continue
         found.append(key)
+    if "copper_closed" in found:
+        found=[key for key in found if key!="copper_short"]
     return sorted(found)
 
 
@@ -169,6 +192,8 @@ def parse_date(raw):
 def parse_rss(raw,source_name,now=None):
     now=now or iso_now()
     root=ET.fromstring(raw)
+    if root.tag.lower()!="rss" or root.find("channel") is None:
+        raise ValueError("Expected valid RSS channel; not HTML or a challenge page")
     results=[]
     for item in root.findall(".//item")[:80]:
         title=clean(item.findtext("title"))
@@ -184,7 +209,7 @@ def parse_rss(raw,source_name,now=None):
                 src=src or (node.text or "")
         if source_name=="coindesk":
             src="CoinDesk"
-        elif source_name=="google" and not src and " - " in title:
+        elif source_name.startswith("google") and not src and " - " in title:
             src=title.rsplit(" - ",1)[-1]
         label=publisher(src,link)
         if not label or not is_about_druckenmiller(title,description):
@@ -198,23 +223,58 @@ def parse_rss(raw,source_name,now=None):
         events=signals_from_text(title+" "+description)
         if not events:
             continue
+        # A later article about the already delivered 11/17 interview is
+        # retrospective evidence, not a newly reported portfolio decision.
+        seed_day=datetime.fromisoformat(SEED_DATE).date()
+        known_seed=("tomorrowx" in (title+" "+description).lower()
+                    and 0<=(date.date()-seed_day).days<=21)
         results.append({"title":title,"description":description,
                         "url":link,"publisher":label,
                         "published":date.isoformat(),"signals":events,
-                        "source":source_name})
+                        "source":source_name,
+                        "known_event":SEED_KEY if known_seed else None})
     return results
 
 
 def feed_urls():
-    query1='"Stanley Druckenmiller"'
-    query2='"Druckenmiller" copper stocks economy AI'
+    broad='Druckenmiller OR "Duquesne Family Office"'
+    interview='(Druckenmiller OR "Duquesne Family Office") (interview OR summit OR remarks OR portfolio OR outlook)'
     return {
-        "google":"https://news.google.com/rss/search?q="+quote(query1+" when:7d")+
+        "google":"https://news.google.com/rss/search?q="+quote(broad+" when:7d")+
                  "&hl=en-US&gl=US&ceid=US:en",
-        "bing":"https://www.bing.com/news/search?q="+quote(query2)+
+        "google_interviews":"https://news.google.com/rss/search?q="+quote(interview+" when:7d")+
+                 "&hl=en-US&gl=US&ceid=US:en",
+        "bing":"https://www.bing.com/news/search?q="+quote(broad)+
                "&format=rss&setmkt=en-US",
         "coindesk":"https://www.coindesk.com/arc/outboundfeeds/rss/",
     }
+
+
+def official_video_metadata(raw,now):
+    # Official host's video metadata is a discovery aid, not a transcript or
+    # an independent second confirmation of any trading position.
+    ns={"a":"http://www.w3.org/2005/Atom",
+        "yt":"http://www.youtube.com/xml/schemas/2015"}
+    root=ET.fromstring(raw)
+    if root.tag!="{http://www.w3.org/2005/Atom}feed" or root.findtext("yt:channelId",namespaces=ns)!=MS_VIDEO_CHANNEL:
+        raise ValueError("Invalid Morgan Stanley channel feed")
+    result=[]
+    for entry in root.findall("a:entry",ns):
+        title=clean(entry.findtext("a:title",namespaces=ns))
+        published=entry.findtext("a:published",namespaces=ns) or ""
+        if not is_about_druckenmiller(title,""):
+            continue
+        date=datetime.fromisoformat(published.replace("Z","+00:00"))
+        if date.tzinfo is None:
+            raise ValueError("Official video publication time missing timezone")
+        if not -timedelta(hours=6)<=now-date<=timedelta(days=14):
+            continue
+        video_id=entry.findtext("yt:videoId",namespaces=ns) or ""
+        if not re.fullmatch(r"[A-Za-z0-9_-]{11}",video_id):
+            raise ValueError("Invalid official video ID")
+        result.append({"title":title,"video_id":video_id,"published":published,
+                       "same_event":"tomorrowx" in title.lower()})
+    return result
 
 
 def http_bytes(url,max_bytes=3_000_000,attempts=2):
@@ -248,6 +308,12 @@ def discover(now=None,fetch=http_bytes):
             all_items.extend(itemlist)
         except (ET.ParseError,RuntimeError,ValueError) as error:
             health[name]={"ok":False,"error":type(error).__name__}
+    try:
+        videos=official_video_metadata(fetch(MS_VIDEO_FEED),now)
+        health["morgan_stanley_video"]={"ok":True,"kind":"metadata_only","matches":len(videos),
+                                       "videos":videos}
+    except (ET.ParseError,RuntimeError,ValueError) as error:
+        health["morgan_stanley_video"]={"ok":False,"kind":"metadata_only","error":type(error).__name__}
     # De-duplicate indexes of the same editorial story.
     dedup={}
     for article in all_items:
@@ -276,13 +342,14 @@ def corroborated(articles,now=None):
                    for x in ordered):
             continue
         valid[key]=ordered[:3]
-    # Contradictory reports on the SAME position cannot be treated as verified.
-    if "copper_short" in valid and "copper_long" in valid:
-        valid.pop("copper_short")
-        valid.pop("copper_long")
-    if "equity_defensive" in valid and "equity_risk_on" in valid:
-        valid.pop("equity_defensive")
-        valid.pop("equity_risk_on")
+    # Conflicting directions within the same risk dimension fail closed.
+    dimensions=defaultdict(list)
+    for signal in valid:
+        dimensions[SIGNAL_DIMENSION.get(signal,signal)].append(signal)
+    for conflicting in dimensions.values():
+        if len(conflicting)>1:
+            for signal in conflicting:
+                valid.pop(signal,None)
     return valid
 
 
@@ -354,12 +421,16 @@ def seed_message():
 
 
 def news_candidates(state,articles,now):
+    if SEED_KEY in state.get("sent_events",{}):
+        articles=[article for article in articles if article.get("known_event")!=SEED_KEY]
     ready=corroborated(articles,now)
     changed=[]
     for signal,proof in ready.items():
         dimension=SIGNAL_DIMENSION.get(signal,signal)
         last=state.get("signal_values",{}).get(dimension,{})
         published=datetime.fromisoformat(proof[0]["published"])
+        if last.get("event_date") and published<=datetime.fromisoformat(last["event_date"]):
+            continue
         if (last.get("value")==signal and last.get("event_date") and
                 (published.date()-datetime.fromisoformat(last["event_date"]).date()).days<90):
             continue
@@ -429,36 +500,62 @@ def commit_state(message):
     raise RuntimeError("Cannot push delivery state (four attempts); no automatic resend")
 
 
-def telegram_send(message):
+def telegram_preflight(expected_chat=None,check_live_chat=False):
+    """Confirm bot identity and recipient before reserving a delivery."""
     token=(os.getenv("THIRTEENF_TELEGRAM_BOT_TOKEN") or "").strip()
     chat=(os.getenv("THIRTEENF_TELEGRAM_CHAT_ID") or
           os.getenv("KHS_POLICY_TELEGRAM_CHAT_ID") or "").strip()
     if not token or not chat:
         raise RuntimeError("Existing Telegram bot/chat secrets not configured")
+    base=f"https://api.telegram.org/bot{token}/"
+    from urllib.parse import urlencode
+    try:
+        with urlopen(base+"getMe",timeout=20) as resp:
+            me=json.load(resp)
+        username=str((me.get("result") or {}).get("username") or "").lower()
+        if me.get("ok") is not True or username!=BOT_USERNAME:
+            raise RuntimeError("Wrong Telegram bot")
+        resolved=chat
+        if check_live_chat or not chat.lstrip("-").isdigit():
+            with urlopen(base+"getChat?"+urlencode({"chat_id":chat}),timeout=20) as resp:
+                target=json.load(resp)
+            actual=(target.get("result") or {}).get("id")
+            if target.get("ok") is not True or type(actual) is not int or not actual:
+                raise RuntimeError("Telegram getChat did not confirm numeric chat identity")
+            resolved=str(actual)
+            if chat.lstrip("-").isdigit() and resolved!=chat:
+                raise RuntimeError("Configured and resolved chat identities differ")
+        if expected_chat is not None and resolved!=str(expected_chat):
+            raise RuntimeError("Resolved recipient differs from last confirmed delivery")
+    except Exception as exc:
+        raise RuntimeError("Telegram read-only route verification failed: "+type(exc).__name__) from None
+    print("DRUCKENMILLER_ROUTE_VERIFIED=true bot_and_chat=true")
+    return base,username,chat,resolved
+
+
+def telegram_send(message,route=None):
     if len(message)>3800:
         raise RuntimeError("Telegram message exceeds single-send guard")
-    base=f"https://api.telegram.org/bot{token}/"
-    with urlopen(base+"getMe",timeout=20) as resp:
-        me=json.load(resp)
-    username=str((me.get("result") or {}).get("username") or "").lower()
-    if not me.get("ok") or username!=BOT_USERNAME:
-        raise RuntimeError("Wrong Telegram bot; no message sent")
+    base,username,chat,resolved=route or telegram_preflight()
     from urllib.parse import urlencode
     payload=urlencode({"chat_id":chat,"text":message,"parse_mode":"HTML",
                        "link_preview_options":json.dumps({"is_disabled":True})}).encode()
-    # Deliberate one attempt. A lost response may conceal successful delivery;
-    # persistent pending state blocks all future automatic retries.
+    # One send attempt. A lost response may conceal a successful delivery;
+    # persistent pending state blocks automatic retries.
     req=Request(base+"sendMessage",data=payload)
-    with urlopen(req,timeout=28) as resp:
-        result=json.load(resp)
+    try:
+        with urlopen(req,timeout=28) as resp:
+            result=json.load(resp)
+    except Exception as exc:
+        raise RuntimeError("Telegram delivery uncertain: "+type(exc).__name__+"; no auto resend") from None
     receipt=result.get("result") or {}
     mid=receipt.get("message_id")
-    actual=str((receipt.get("chat") or {}).get("id") or "")
-    if not result.get("ok") or mid is None or not actual:
+    actual=(receipt.get("chat") or {}).get("id")
+    if result.get("ok") is not True or type(mid) is not int or mid<=0 or type(actual) is not int:
         raise RuntimeError("Telegram send receipt incomplete; no auto resend")
-    if chat.lstrip("-").isdigit() and actual!=chat:
+    if str(actual)!=resolved:
         raise RuntimeError("Unexpected Telegram chat recipient; no auto resend")
-    return {"bot":username,"message_id":mid,"chat_id":actual,
+    return {"bot":username,"message_id":mid,"chat_id":str(actual),
             "sent_at":iso_now().isoformat()}
 
 
@@ -467,9 +564,12 @@ def main():
     state=load_state()
     probe=(os.getenv("DRUCKENMILLER_PROBE_ONLY") or "false").lower()=="true"
     source_items,health=discover(now)
-    healthy=sum(1 for x in health.values() if x.get("ok"))
+    healthy=sum(1 for name in CORE_FEEDS if health.get(name,{}).get("ok"))
     print(f"DRUCKENMILLER_NEWS_SOURCE_HEALTH={healthy}/3 "
           f"matches={len(source_items)} detail={json.dumps(health,ensure_ascii=False)}")
+    partial=[name for name,entry in health.items() if not entry.get("ok")]
+    if partial:
+        print("DRUCKENMILLER_SOURCE_COVERAGE_PARTIAL="+",".join(partial))
 
     # A single surviving RSS source cannot support reliable surveillance:
     # mark the run as FAILED, never report a false all-clear.
@@ -501,9 +601,12 @@ def main():
         recorded={SIGNAL_DIMENSION.get(key,key):{"value":key,"event_date":proof[0]["published"],
                        "outlets":[x["publisher"] for x in proof[:3]]} for key,proof in changes}
     else:
-        if healthy==0:
-            raise RuntimeError("All three public-news sources unavailable; cannot declare no change")
-        print("DRUCKENMILLER_NO_NEW_SIGNALS")
+        if any(name in CORE_FEEDS for name in partial):
+            raise RuntimeError("Core source coverage incomplete; no verified signal, not a complete all-clear")
+        if partial:
+            print("DRUCKENMILLER_PARTIAL_SCAN_NO_CONFIRMED_SIGNAL")
+        else:
+            print("DRUCKENMILLER_NO_NEW_SIGNALS")
         return 0
 
     if probe:
@@ -512,12 +615,15 @@ def main():
         print("DRUCKENMILLER_PREVIEW_BEGIN\n"+message+"\nDRUCKENMILLER_PREVIEW_END")
         return 0
 
+    # A read-only authentication or routing failure must not reserve an
+    # event that has not reached sendMessage.
+    route=telegram_preflight((state.get("last_success") or {}).get("chat_id"),check_live_chat=True)
     state["pending"]={"key":event,"reserved_at":now.isoformat(),
                       "verified_mode":"two_reported_publishers" if boot else "rss_two_independent_editorial_sources"}
     save_state(state)
     commit_state("Reserve Druckenmiller public remarks Telegram alert before send")
     print("DRUCKENMILLER_PRE_SEND_RESERVATION_COMMITTED")
-    receipt=telegram_send(message)
+    receipt=telegram_send(message,route)
     state["pending"]=None
     state["sent_events"][event]={"receipt":receipt,"date":now.date().isoformat()}
     state["signal_values"].update(recorded)
@@ -530,6 +636,9 @@ def main():
 
 if __name__=="__main__":
     try:
+        if (os.getenv("DRUCKENMILLER_PROBE_ONLY") or "false").lower()=="true":
+            baseline=load_state()
+            telegram_preflight((baseline.get("last_success") or {}).get("chat_id"),check_live_chat=True)
         raise SystemExit(main())
     except Exception as exc:
         print(f"DRUCKENMILLER_WATCH_ERROR={type(exc).__name__} {exc}",file=sys.stderr)
