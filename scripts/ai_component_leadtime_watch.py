@@ -2115,6 +2115,232 @@ def optical_leadtime_update(previous: dict, today: str, fx: dict, read_body=None
     return record, alerts
 
 
+
+# Model-specific NVIDIA procurement reports and consumer allocation rumors
+# have different scopes from the seven-component TrendForce weekly benchmark.
+GPU_REPORT_DATE = "2026-11-25"
+GPU_REPORT_SOURCES = {
+    "new_orders": (
+        "https://www.trendforce.com/news/2026/11/25/news-nvidia-b300-lead-times-reportedly-hit-40-weeks-rtx-60-may-face-delays-as-memory-supply-tightens/",
+        "https://wccftech.com/nvidia-faces-booming-demand-despite-woes-as-b300-lead-times-reportedly-stretch-to-40-weeks-for-new-orders-gb300-buyers-now-face-14-to-26-weeks-says-report/",
+        "https://ww2.money-link.com.tw/realtimenews/NewsContent.aspx?PU=1002&SN=6371041001",
+    ),
+    "gaming_allocation": (
+        "https://videocardz.com/newz/nvidia-reportedly-cuts-gaming-gpu-supply-by-another-20-30-for-q4",
+        "https://wccftech.com/nvidia-notifies-board-partners-of-20-30-reduction-in-gaming-gpu-supply/",
+    ),
+}
+GPU_OFFICIAL_CONTEXT = "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Expands-Commitments-With-Supply-Chain-Partners-to-Support-AI-Infrastructure-Buildout/default.aspx"
+GPU_FOLLOWUP_QUERIES = (
+    'site:trendforce.com/news NVIDIA (B300 OR GB300 OR Rubin) "new orders" "lead times"',
+    'site:trendforce.com/news NVIDIA ("gaming GPU" OR GeForce) (allocation OR supply) (GDDR7 OR "supply reduction")',
+)
+
+
+def gpu_normal_text(body: str) -> str:
+    return re.sub(r"\s+", " ", clean_text(body).lower()).translate(
+        str.maketrans({"–": "-", "—": "-", "～": "-", "−": "-", "至": "-"}))
+
+
+def gpu_seed_matches(kind: str, body: str) -> bool:
+    low = gpu_normal_text(body)
+    if kind == "new_orders":
+        # Only accept the known paired ranges, explicitly new orders, and
+        # Commercial Times attribution; a maximum in a headline is insufficient.
+        if not any(x in low for x in ("commercial times", "china times", "工商時報", "工商时报")):
+            return False
+        if not any(x in low for x in ("new orders", "new order", "新訂單", "新订单", "新單")):
+            return False
+        patterns = (
+            r"\bb300\b[^.!?。；;]{0,100}?\b26\s*(?:-|to)\s*40\s*(?:weeks?|周|週)",
+            r"\bgb300\b[^.!?。；;]{0,85}?\b14\s*(?:-|to)\s*26\s*(?:weeks?|周|週)",
+        )
+        # Wccftech phrases the first range "26 weeks and 40 weeks".
+        patterns = (patterns[0].replace(r"\s*(?:-|to)\s*", r"\s*(?:-|to|weeks?\s+and)\s*", 1), patterns[1])
+        return all(re.search(p, low) for p in patterns)
+    if kind == "gaming_allocation":
+        return (
+            "board channels" in low
+            and bool(re.search(r"\b20\s*%?\s*(?:-|to)\s*30\s*%", low))
+            and any(x in low for x in ("gaming gpu", "consumer/gaming gpu", "consumer and gaming gpu"))
+            and any(x in low for x in ("cut", "reduc", "fewer"))
+            and "november" in low and "january" in low
+        )
+    return False
+
+
+def gpu_seed_evidence(kind: str, read_body) -> dict:
+    failed, incomplete = [], []
+    for url in GPU_REPORT_SOURCES[kind]:
+        try:
+            body = read_body(url)
+            if not isinstance(body, str) or not body.strip():
+                raise ValueError("empty source")
+        except Exception:
+            failed.append(url)
+            continue
+        if gpu_seed_matches(kind, body):
+            return {"status": "report_verified", "source": url, "failed_sources": failed,
+                    "incomplete_sources": incomplete,
+                    "origin": "Commercial Times / Taiwan ODM" if kind == "new_orders" else "Board Channels via VideoCardz",
+                    "official_numeric_confirmation": False}
+        incomplete.append(url)
+    return {"status": "content_incomplete" if incomplete else "lookup_failed",
+            "failed_sources": failed, "incomplete_sources": incomplete}
+
+
+def gpu_seed_notice(kind: str, proof: dict) -> str:
+    url = html.escape(proof["source"], quote=True)
+    if kind == "new_orders":
+        return "\n".join([
+            "<b>GPU 모델별 공급망 납기 경보 — 11/25 대만 ODM 보도</b>",
+            "• 신규 주문: B300 26~40주 / GB300 14~26주. 서로 다른 제품·공급계약 기준.",
+            "• DGX Station용 GB300 약 26주, RTX Pro 서버·워크스테이션용 26주 이상(공급망 추정).",
+            "• 최근 두 분기 신규 프로젝트의 다수는 2027년 2~3분기 이후 인도 예상; 기존 일부 주문은 정상 출하 보도.",
+            "• 서버 DRAM 우선 생산에 따른 GDDR7 제약, RTX 60의 기존 2027년 말 양산 목표 지연 가능성. 확정 연기 아님.",
+            "• 엔비디아 모델별 공식 납기 아님; TrendForce 11/23 산업 GPU 30~45주와 별도 관리.",
+            f'• <a href="{url}">수치 보도(공상시보 인용)</a> / <a href="{GPU_OFFICIAL_CONTEXT}">11/17 공식 공급망 확대 발표(납기 수치 별도)</a>',
+        ])
+    return "\n".join([
+        "<b>게이밍 GPU 공급 배분 선행경보 — 11/25 공급망 보도</b>",
+        "• 회계연도 4분기(2026.11~2027.01) 공급 배정량 20~30% 추가 축소 보도.",
+        "• Board Channels에서 유래한 동일 보도 계열; 엔비디아 공식 확인, 모델·적용 지역·비교 분모 미확인.",
+        "• CEO 복귀와의 인과관계 미확인. 게이밍 GPU 배정량 감소를 전체 GPU 출하 감소로 계산하지 않음.",
+        "• 다음 확인: 보드 파트너 배정·GDDR7 공급·실제 소비자용 출하·가격 및 재고.",
+        f'• <a href="{url}">공급망 보도</a>',
+    ])
+
+
+def gpu_followup_ranges(body: str) -> dict:
+    """Conservative follow-up: paired explicit new-order ranges, not mixed
+    product/old-new numbers or undated headlines. Ambiguous bodies stay pending."""
+    low = gpu_normal_text(body)
+    if not re.search(r"\bnew orders?\b", low) or not re.search(r"\bnvidia\b", low):
+        return {}
+    if not any(x in low for x in ("commercial times", "china times", "taiwanese odm", "supply chain sources", "supply-chain sources")):
+        return {}
+    # No previous/historical ranges allowed in the same matched clause.
+    result = {}
+    for name in ("B300", "GB300"):
+        matches = set()
+        pattern = rf"\b{name.lower()}\b(?P<context>[^.!?;]{{0,85}}?)\b(?P<a>\d{{1,2}})\s*(?:-|to)\s*(?P<b>\d{{1,2}})\s*weeks?\b"
+        for m in re.finditer(pattern, low):
+            ctx = m.group("context")
+            if re.search(r"\b(?:gb300|b300|dgx station|previously|prior|old|formerly|from)\b", ctx):
+                continue
+            a,b = int(m.group("a")),int(m.group("b"))
+            if 1 <= a <= b <= 99:
+                matches.add((a,b))
+        if len(matches) != 1:
+            return {}
+        result[name] = list(next(iter(matches)))
+    return result
+
+
+def gpu_followup_url(item: dict, today: str) -> tuple:
+    raw = str(item.get("direct_url") or item.get("link") or "")
+    parsed = urlparse(raw)
+    if parsed.scheme != "https" or parsed.hostname not in ("www.trendforce.com", "trendforce.com"):
+        return ()
+    match = re.match(r"/news/(20\d{2})/(\d{2})/(\d{2})/", parsed.path)
+    if not match:
+        return ()
+    date = "-".join(match.groups())
+    if not GPU_REPORT_DATE < date <= today:
+        return ()
+    return date, f"https://{parsed.hostname}{parsed.path.rstrip('/')}/"
+
+
+def gpu_report_update(previous: dict, today: str, read_body=None, read_feed=None) -> tuple[dict, list[str]]:
+    read_body = read_body or optical_source_body
+    read_feed = read_feed or read_rss
+    record = copy.deepcopy(previous or {})
+    seen = set(record.get("seen_event_keys") or [])
+    health = copy.deepcopy(record.get("source_health") or {})
+    metrics = copy.deepcopy(record.get("observations") or {})
+    alerts = []
+    if today < GPU_REPORT_DATE:
+        return record, alerts
+    for kind in GPU_REPORT_SOURCES:
+        key = f"nvidia|{GPU_REPORT_DATE}|{kind}"
+        if key in seen:
+            continue
+        proof = gpu_seed_evidence(kind, read_body)
+        proof["checked_date"] = today
+        health[key] = proof
+        if proof["status"] != "report_verified":
+            continue
+        if kind == "new_orders":
+            metrics[kind] = {"as_of": GPU_REPORT_DATE, "B300": [26,40], "GB300": [14,26],
+                             "scope": "new_orders", "source": proof["source"],
+                             "official_numeric_confirmation": False}
+        else:
+            metrics[kind] = {"as_of": GPU_REPORT_DATE, "cut_pct": [20,30],
+                             "period": "2026-11/2027-01", "scope": "gaming_allocation_report",
+                             "source": proof["source"], "official_numeric_confirmation": False}
+        alerts.append(gpu_seed_notice(kind, proof))
+        seen.add(key)  # pending state only; existing delivery transaction promotes after acknowledgement.
+    ok = failed = body_failed = incomplete = 0
+    urls = {}
+    for query in GPU_FOLLOWUP_QUERIES:
+        try:
+            items = read_feed("bing_web", query)
+            ok += 1
+        except Exception:
+            failed += 1
+            continue
+        for item in items[:12]:
+            candidate = gpu_followup_url(item, today)
+            if candidate:
+                date,url = candidate
+                urls[url] = date
+    prior = metrics.get("new_orders") or {}
+    if prior and f"nvidia|{GPU_REPORT_DATE}|new_orders" in seen:
+        # Process chronologically; never advance a metric from stale or
+        # incomplete data, and collapse syndicated repetitions by value.
+        for url,date in sorted(urls.items(), key=lambda x:(x[1],x[0]))[-6:]:
+            if date <= str(prior.get("as_of") or ""):
+                continue
+            try:
+                body = read_body(url)
+                if not body:
+                    raise ValueError("empty")
+            except Exception:
+                body_failed += 1
+                continue
+            current = gpu_followup_ranges(body)
+            if not current:
+                incomplete += 1
+                continue
+            before = {n:prior.get(n) for n in ("B300","GB300")}
+            if current == before:
+                continue
+            fingerprint = "|".join(f"{n}:{'-'.join(map(str,current[n]))}" for n in ("B300","GB300"))
+            key = f"nvidia|{date}|new_orders|{fingerprint}"
+            if key in seen:
+                continue
+            def span(v):
+                return "~".join(map(str,v))+"주" if isinstance(v,list) else "미확인"
+            alerts.append("\n".join([
+                f"<b>GPU 모델별 신규 주문 납기 후속 변화 — {date} 공급망 보도</b>",
+                *[f"• {n}: {span(before[n])} → {span(current[n])}" for n in current if current[n]!=before[n]],
+                "• 신규 주문의 보도상 범위 비교; 공식 납기·산업 평균·실제 출하와 분리.",
+                f'• <a href="{html.escape(url, quote=True)}">후속 보도</a>',
+            ]))
+            seen.add(key)
+            prior = {"as_of":date,**current,"scope":"new_orders","source":url,"official_numeric_confirmation":False}
+            metrics["new_orders"] = prior
+    record["seen_event_keys"] = sorted(seen)
+    record["source_health"] = health
+    record["observations"] = metrics
+    record["followup_health"] = {
+        "checked_date":today,"feed_success":ok,"feed_failure":failed,
+        "article_failure":body_failed,"content_incomplete":incomplete,"candidate_count":len(urls),
+        "status":"lookup_failed" if not ok else "partial" if failed or body_failed or incomplete else "checked",
+    }
+    return record, alerts
+
+
 def main(include_optical_signals: bool = False) -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state = load_json(STATE_PATH)
@@ -2501,6 +2727,12 @@ def main(include_optical_signals: bool = False) -> None:
         for block in optical_alerts:
             notify_text = (notify_text.rstrip() + "\n\n" + block).strip() if notify_text else block
 
+    gpu_state = copy.deepcopy(previous.get("gpu_model_supply_watch") or {})
+    if include_optical_signals:
+        gpu_state, gpu_alerts = gpu_report_update(gpu_state, now.date().isoformat())
+        for block in gpu_alerts:
+            notify_text = (notify_text.rstrip() + "\n\n" + block).strip() if notify_text else block
+
     pending["ai_component_leadtime"] = {
         "as_of": latest_as_of,
         "source": latest_source,
@@ -2527,6 +2759,7 @@ def main(include_optical_signals: bool = False) -> None:
         "mlcc_vendor_watch": vendor_state,
         "caspa_panel_watch": caspa_state,
         **({"optical_supply_capital_watch": optical_state} if optical_state else {}),
+        **({"gpu_model_supply_watch": gpu_state} if gpu_state else {}),
         "image_verified_issue": ("weekly-radar-011-user-image-unchanged" if (
                                      latest_as_of == WEEKLY_011_IMAGE_LOCK["as_of"]
                                      and all(canonical_component(latest_components.get(name) or {})

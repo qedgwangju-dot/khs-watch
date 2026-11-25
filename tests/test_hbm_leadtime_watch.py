@@ -1422,5 +1422,73 @@ class OpticalSupplyCapitalTests(unittest.TestCase):
                          "transceiver minimum purchase. Forward-looking statements: no commitment of capital"))
 
 
+
+class NvidiaModelSupplyReportTests(unittest.TestCase):
+    MODEL_BODY = ("NVIDIA new orders: B300 GPU orders range from 26 to 40 weeks, "
+                  "compared with 14 to 26 weeks for the GB300. Commercial Times.")
+    # Put the subject before the value, as in the alternate article.
+    MODEL_BODY = ("NVIDIA new orders. Commercial Times: B300 GPU orders range from 26 to 40 weeks, "
+                  "GB300 lead time ranges from 14 to 26 weeks.")
+    GAMING_BODY = ("Board Channels: NVIDIA cuts consumer and gaming GPU supply by 20-30% "
+                   "from November 2026 through January 2027.")
+
+    def seed_body(self, url):
+        if url in w.GPU_REPORT_SOURCES["new_orders"]:
+            return self.MODEL_BODY
+        if url in w.GPU_REPORT_SOURCES["gaming_allocation"]:
+            return self.GAMING_BODY
+        raise TimeoutError("unavailable")
+
+    def test_model_and_allocation_distinct_once_not_industry_benchmark(self):
+        state, alerts = w.gpu_report_update({}, "2026-11-26", self.seed_body, lambda *a: [])
+        self.assertEqual(len(alerts), 2)
+        self.assertEqual(state["observations"]["new_orders"]["B300"], [26,40])
+        self.assertEqual(state["observations"]["new_orders"]["GB300"], [14,26])
+        self.assertEqual(state["observations"]["gaming_allocation"]["cut_pct"], [20,30])
+        self.assertFalse(state["observations"]["new_orders"]["official_numeric_confirmation"])
+        self.assertNotIn("components", state)
+        self.assertEqual(len(state["seen_event_keys"]), 2)
+        _, again = w.gpu_report_update(state, "2026-11-27", self.seed_body, lambda *a: [])
+        self.assertEqual(again, [])
+
+    def test_full_body_source_fallback_and_failure_not_seen(self):
+        def down(*args):
+            raise TimeoutError("unavailable")
+        state, alerts = w.gpu_report_update({}, "2026-11-26", down, down)
+        self.assertEqual(alerts, [])
+        self.assertEqual(state["seen_event_keys"], [])
+        self.assertEqual(state["followup_health"]["status"], "lookup_failed")
+        self.assertTrue(all(x["status"]=="lookup_failed" for x in state["source_health"].values()))
+        incomplete, alerts = w.gpu_report_update({}, "2026-11-26", lambda *a:"B300 40 weeks", lambda *a:[])
+        self.assertEqual(alerts, [])
+        self.assertEqual(incomplete["seen_event_keys"], [])
+        self.assertTrue(all(x["status"]=="content_incomplete" for x in incomplete["source_health"].values()))
+        recovered, alerts = w.gpu_report_update(state, "2026-11-26", self.seed_body, lambda *a:[])
+        self.assertEqual(len(alerts), 2)
+
+    def test_seed_scope_source_and_wrong_values_blocked(self):
+        self.assertFalse(w.gpu_seed_matches("new_orders", self.MODEL_BODY.replace("new orders","existing shipments")))
+        self.assertFalse(w.gpu_seed_matches("new_orders", self.MODEL_BODY.replace("26 to 40","26 to 45")))
+        self.assertFalse(w.gpu_seed_matches("gaming_allocation", self.GAMING_BODY.replace("Board Channels","social media")))
+        self.assertFalse(w.gpu_seed_matches("gaming_allocation", self.GAMING_BODY.replace("gaming GPU","AI GPU")))
+
+    def test_future_model_change_unchanged_relay_and_stale_url(self):
+        state, _ = w.gpu_report_update({}, "2026-11-26", self.seed_body, lambda *a:[])
+        url="https://www.trendforce.com/news/2026/11/27/nvidia-test/"
+        old="https://www.trendforce.com/news/2026/11/25/nvidia-old/"
+        feed=lambda *a:[{"link":url+"?utm_source=x"},{"link":url},{"link":old}]
+        same, alerts=w.gpu_report_update(state,"2026-11-27",lambda u:self.MODEL_BODY,feed)
+        self.assertEqual(alerts,[])
+        self.assertEqual(same["observations"]["new_orders"]["as_of"],"2026-11-25")
+        changed, alerts=w.gpu_report_update(state,"2026-11-27",lambda u:self.MODEL_BODY.replace("26 to 40","28 to 42"),feed)
+        self.assertEqual(len(alerts),1)
+        self.assertEqual(changed["observations"]["new_orders"]["B300"],[28,42])
+        self.assertIn("26~40주 → 28~42주",alerts[0])
+        _, again=w.gpu_report_update(changed,"2026-11-28",lambda u:self.MODEL_BODY.replace("26 to 40","28 to 42"),feed)
+        self.assertEqual(again,[])
+        self.assertEqual(w.gpu_followup_ranges("NVIDIA existing shipments. Commercial Times B300 28-42 weeks GB300 14-26 weeks"),{})
+        self.assertEqual(w.gpu_followup_ranges("NVIDIA new orders. Commercial Times B300 28-42 weeks GB300 14-26 weeks. B300 29-44 weeks."),{})
+
+
 if __name__ == "__main__":
     unittest.main()
