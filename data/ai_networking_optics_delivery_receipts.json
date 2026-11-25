@@ -112,20 +112,6 @@
     }
   },
   "history_cache": {
-    "44432842369:1": {
-      "checked_at_kst": "2026-11-19T10:31:40+09:00",
-      "completed": "2026-11-19T00:57:03+00:00",
-      "fingerprint": "c9a6f0548e920da3661360f0f8f96b09698d7832e7512790ef1abeefa0e983b6",
-      "outcome": "attempted",
-      "saved": true,
-      "sent_success": true,
-      "started": "2026-11-19T00:57:03+00:00"
-    },
-    "44434987805:1": {
-      "checked_at_kst": "2026-11-19T10:31:39+09:00",
-      "fingerprint": "b1cbfd319bd8a758a2d58a93900c04505d7b84ce51d4e5a564f54e7d29181e50",
-      "outcome": "no_send"
-    },
     "44437278032:1": {
       "checked_at_kst": "2026-11-19T11:09:54+09:00",
       "completed": "2026-11-19T01:31:40+00:00",
@@ -138,11 +124,6 @@
     "44438473208:1": {
       "checked_at_kst": "2026-11-19T11:09:53+09:00",
       "fingerprint": "7d830584534244366f5f282467a62b8b340138bff579a5395e4dd80ec5dc90bb",
-      "outcome": "no_send"
-    },
-    "44439668429:1": {
-      "checked_at_kst": "2026-11-19T11:09:53+09:00",
-      "fingerprint": "b1e1e1ae5b45596bb6fd2d62f6904949f9dbec296e22ddd2a004edf527ac260c",
       "outcome": "no_send"
     },
     "44442028827:1": {
@@ -3990,6 +3971,25 @@
     "45623072974:1": {
       "checked_at_kst": "2026-11-25T22:43:09+09:00",
       "fingerprint": "54203d47e0486401b5da01435faed59562142466e0fb8fcbf0af69d9c006f472",
+      "outcome": "no_send"
+    },
+    "45626060624:1": {
+      "checked_at_kst": "2026-11-25T23:34:12+09:00",
+      "completed": "2026-11-25T13:43:09+00:00",
+      "fingerprint": "ee6af794248dea1b3ae611957c3eb34dc61fca6e40b3468643ccbcbe326bb521",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-25T13:43:09+00:00"
+    },
+    "45627223700:1": {
+      "checked_at_kst": "2026-11-25T23:34:11+09:00",
+      "fingerprint": "0627736bb30d9770ac8314d2838075be32cfb6eeb4cd15e4042677ab1623f9bb",
+      "outcome": "no_send"
+    },
+    "45630659783:1": {
+      "checked_at_kst": "2026-11-25T23:34:11+09:00",
+      "fingerprint": "3f0e2ddce14f518bf5b551783f74be25a3b2f0e6ea99c4cd4094d884226922a1",
       "outcome": "no_send"
     }
   },
