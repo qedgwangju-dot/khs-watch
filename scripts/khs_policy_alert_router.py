@@ -255,6 +255,7 @@ def fcc_upper_c_band_auction115_body_verified(alert: dict) -> bool:
         "da 26-1219",
         "released on november 13, 2026",
         "3,248 new flexible-use licenses",
+        "at least 100 megahertz of spectrum",
         "3.98-4.14 ghz",
         "160 megahertz",
         "eight 20-megahertz blocks",
@@ -801,6 +802,7 @@ def fcc_upper_c_band_auction115_detail_lines(alert: dict) -> list[str]:
     if not fcc_upper_c_band_auction115_body_verified(alert):
         return []
     return [
+        "- 법정 기준과 실제 경매량: 법정 최소 경매 요건은 100MHz이며, 이번 경매 대상은 실제 160MHz입니다.",
         "- 경매 구조: 20MHz 비페어드 8개 블록/지역(PEA), 15년 갱신형 면허; 4.14~4.16GHz 20MHz는 경매 제외 가드밴드입니다.",
     ]
 
