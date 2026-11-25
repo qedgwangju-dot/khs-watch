@@ -361,6 +361,7 @@
     "4b8b0c3b21aa80a786ae8b16",
     "4b997b434bc291f78911",
     "4b9e046aae93a2723bb5",
+    "4bdde2134efb8751b25f",
     "4c306ac525b99cf2b8e7b946",
     "4c98e16fbd3a68a14516",
     "4cbc32786d3285eb98fd",
@@ -464,6 +465,7 @@
     "5e2609b77c3def9dab1d",
     "5e5abf3a9f197621f30e",
     "5eb0c2d9a4dddac7457b",
+    "5ec6d59e6f5beea7eed4",
     "5f1ac4c609ff87235feb",
     "5f1fd0f9e16d9735835b",
     "5f76b3811516c3498572",
@@ -867,6 +869,7 @@
     "af565fb7589e9563870f",
     "af5a9b23153b0edb2386",
     "af7ab1ce664d04c86a8fd581",
+    "af8b774f2a29026b639c",
     "af8c869cff8c2b522091",
     "afc2788afa5888ffff7f",
     "afddda0b779d923fec07",
@@ -924,6 +927,7 @@
     "b9f193b21f317b1e9504",
     "ba14d4efd179d5d81407",
     "ba2158a4d0cdae158dfe",
+    "ba6f635a1e876231d619",
     "bac033535d4dfc191b0d",
     "baf2ad9e8a13e3ee7c80",
     "bb15c7fbc7e176f26a5c6c24",
@@ -1294,7 +1298,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-11-25T13:06:24+09:00",
+  "last_scan_kst": "2026-11-25T23:21:29+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -1302,8 +1306,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 11,
-  "fetch_errors": [
-    "google Apple M8 Ultra enterprise server NV: HTTPError HTTP Error 429: Too Many Requests"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
