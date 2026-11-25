@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-26T06:17:58+09:00",
+  "updated_at_kst": "2026-11-26T06:37:41+09:00",
   "circle": {
     "date": "2026-11-23",
     "circulation_usd_b": 67.8,
@@ -66,10 +66,10 @@
   },
   "tbx": {
     "date": "2026-11-25",
-    "close": 28.9685001373291,
+    "close": 29.056400299072266,
     "prev_date": "2026-11-24",
     "prev_close": 29.15999984741211,
-    "daily_pct": -0.66
+    "daily_pct": -0.36
   },
   "fx": {
     "rate": 1343.6,
@@ -78,7 +78,7 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,343.11원, 차이 0.04%"
+    "crosscheck": "Yahoo Finance 1,344.47원, 차이 0.06%"
   },
   "crcl_last_alerted_close_date": "2026-11-25",
   "correction_pending": false,
