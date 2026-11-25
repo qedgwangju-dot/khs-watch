@@ -1183,11 +1183,71 @@
       "source": "DRAMeXchange",
       "published_kst": "2026-11-19T16:41:00+09:00",
       "first_seen_kst": "2026-11-25T02:51:14+09:00"
+    },
+    "1c5e58897717e3ed4308934b": {
+      "title": "DRAM price growth to slow as NAND prices fall in 2027, TrendForce says - Chosunbiz",
+      "source": "Chosunbiz",
+      "published_kst": "2026-11-25T18:23:00+09:00",
+      "first_seen_kst": "2026-11-25T19:37:51+09:00"
+    },
+    "9e248249230c89a0984c097d": {
+      "title": "Memory Price Peak Concerns Spread From NAND to DRAM - 매일경제",
+      "source": "매일경제",
+      "published_kst": "2026-11-25T17:38:38+09:00",
+      "first_seen_kst": "2026-11-25T19:37:51+09:00"
+    },
+    "d77a6a1768a7ed9d23f7c42d": {
+      "title": "NAND spot prices plunge 20 percent while DRAM holds up; memory market polarisation seen in 2027 - 디지털투데이",
+      "source": "디지털투데이",
+      "published_kst": "2026-11-25T15:09:24+09:00",
+      "first_seen_kst": "2026-11-25T19:37:51+09:00"
+    },
+    "7de1c3e4e6013658e6f02a67": {
+      "title": "낸드 현물가 20% 급락, D램은 버틴다…2027년 메모리 시장 양극화 - 디지털투데이",
+      "source": "디지털투데이",
+      "published_kst": "2026-11-25T15:09:24+09:00",
+      "first_seen_kst": "2026-11-25T19:37:51+09:00"
+    },
+    "38010a0f3b44577ae51383cf": {
+      "title": "DRAM Demand Concerns Mount, Raising Risk of Contract Price Declines in 2028",
+      "source": "TrendForce Research",
+      "published_kst": "2026-11-25T09:00:00+09:00",
+      "first_seen_kst": "2026-11-25T19:37:51+09:00"
+    },
+    "59826833bf8709ac91748a20": {
+      "title": "Micron's Friday Rout Meets a Split NAND Outlook, a Revived DRAM Suit and a Bullish CEO - ad-hoc-news.de",
+      "source": "ad-hoc-news.de",
+      "published_kst": "2026-11-23T11:50:36+09:00",
+      "first_seen_kst": "2026-11-25T19:37:51+09:00"
+    },
+    "142695877aa001641f74ccd0": {
+      "title": "TrendForce forecasts NAND Flash price fall starting in Q1 2027 - KitGuru",
+      "source": "KitGuru",
+      "published_kst": "2026-11-21T15:53:08+09:00",
+      "first_seen_kst": "2026-11-25T19:37:51+09:00"
+    },
+    "9ae49435f3c8ff49a4911174": {
+      "title": "SanDisk Tumbles 8% as TrendForce Turns Bearish on 2027 NAND Prices; Micron Falls 5%, SK Hynix Slides 4% - 24/7 Wall St.",
+      "source": "24/7 Wall St.",
+      "published_kst": "2026-11-20T23:09:00+09:00",
+      "first_seen_kst": "2026-11-25T19:37:51+09:00"
+    },
+    "c63948a5f52ce03225b9c7a7": {
+      "title": "KB Securities: Samsung Electronics, SK Hynix 2027 DRAM Contract Prices to Rise 40%, Memory Boom in Full Swing - BigGo Finance",
+      "source": "BigGo Finance",
+      "published_kst": "2026-11-20T08:35:00+09:00",
+      "first_seen_kst": "2026-11-25T19:37:51+09:00"
+    },
+    "ec174c693d9707ee648e892c": {
+      "title": "NAND prices fall 20%, and Bank of America expects cheaper SSDs in 2027 - Pasquale Pillitteri",
+      "source": "Pasquale Pillitteri",
+      "published_kst": "2026-11-19T22:23:55+09:00",
+      "first_seen_kst": "2026-11-25T19:37:51+09:00"
     }
   },
-  "updated_at_kst": "2026-11-25T10:45:48+09:00",
-  "last_scan_count": 21,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-11-25T19:37:51+09:00",
+  "last_scan_count": 35,
+  "last_new_count": 10,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -1247,21 +1307,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-25T02:51:34+09:00",
+  "last_successful_delivery_kst": "2026-11-25T19:38:18+09:00",
   "telegram_message_ids": [
-    560
+    563
   ],
-  "telegram_message_id": 560,
+  "telegram_message_id": 563,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      560
+      563
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-25T02:51:34+09:00",
-    "alert_signature": "e2f5537e955a7303117a7ed69177f76c186f6a7f8f223e46f08e9dc8c747dd07"
+    "confirmed_at_kst": "2026-11-25T19:38:18+09:00",
+    "alert_signature": "60912faecd5a6700ea66873716dd03df60e647550de5e6274f104eb10a6054c1"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
