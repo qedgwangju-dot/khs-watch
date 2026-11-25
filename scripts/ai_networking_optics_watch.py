@@ -43,6 +43,27 @@ APPLE_SIPH_MARKET_REFERENCE = (
     "https://www.trendforce.com/presscenter/news/20260615-13098.html"
 )
 
+# Avicena / parallel microLED optical I/O is distinct from laser CPO and VCSEL.
+AVICENA_COMPANY = "Avicena"
+AVICENA_SERIES_C_KEY = "avicena|funding|series-c|2026-11-24"
+AVICENA_PRIOR_KEYS = {
+    "avicena|funding|series-a|2022",
+    "avicena|funding|series-b|2025",
+    "avicena|evaluation-kit|initial-2026-03",
+    "avicena|evaluation-kit|1tbps-2026-08",
+    "avicena|connectorized-demo|2026-09",
+    "avicena|tsmc|pd-development-2025",
+    "avicena|ams-osram|joint-development-2023",
+    "avicena|roadmap|first-commercial-product-2027",
+}
+AVICENA_RELEASE_URL = "https://avicena.tech/avicena-raises-100-million-series-c-to-accelerate-commercialization-of-microled-optical-interconnects-for-ai-infrastructure/"
+AVICENA_WIRE_MIRROR = "https://www.streetinsider.com/Business%2BWire/Avicena%2BRaises%2B%24100%2BMillion%2BSeries%2BC%2Bto%2BAccelerate%2BCommercialization%2Bof%2BmicroLED%2BOptical%2BInterconnects%2Bfor%2BAI%2BInfrastructure/27390064.html"
+AVICENA_INVESTOR_URL = "https://www.mcgc.com/news_release/02799.html"
+AVICENA_MEDIA_URL = "https://ventureburn.com/avicena-raises-100-million-fix-datacenters-microled-optical-links/?amp=1"
+AVICENA_SERIES_C_TITLE = "Avicena Raises $100 Million Series C to Accelerate Commercialization of microLED Optical Interconnects for AI Infrastructure"
+AVICENA_PRIMARY_HOSTS = {"avicena.tech", "mcgc.com", "tsmc.com", "ams-osram.com", "businesswire.com"}
+AVICENA_NEWS_HOSTS = {"ventureburn.com", "axios.com", "biztechjournals.com", "pulse2.com", "newsverse.kr", "photonics.com", "digitimes.com", "reuters.com", "bloomberg.com", "lightreading.com"}
+
 # Distinct R&D-only channel inside the existing optics workflow; no new runner,
 # state file, schedule, credential or Telegram destination is introduced.
 NVIDIA_HUANG_CPO_OUTLOOK_KEY = "nvidia|huang-resignation|cpo-outlook|2026-11-16"
@@ -148,6 +169,18 @@ CREDO_VERIFIED_BASELINE = {
 }
 
 COMPANIES = {
+    "Avicena": {
+        "ticker": "비상장",
+        "aliases": ["Avicena", "AvicenaTech", "LightBundle", "아비세나", "아비센나"],
+        "queries": [
+            '("Avicena" OR "LightBundle" OR 아비세나 OR 아비센나) (microLED OR "optical interconnect" OR 광연결 OR 투자 OR funding OR "Series C" OR customer OR shipment OR qualification OR production OR foundry OR contract OR commercialization) when:21d',
+            'site:avicena.tech (Avicena OR LightBundle) (funding OR evaluation OR customer OR qualification OR shipment OR product OR manufacturing OR partnership) when:21d',
+        ],
+        "locales": [
+            {"hl": "en-US", "gl": "US", "ceid": "US:en"},
+            {"hl": "ko", "gl": "KR", "ceid": "KR:ko"},
+        ],
+    },
     "SC26 NVIDIA Rubin & CPO": {
         "ticker": "NVDA / CPO",
         "aliases": ["NVIDIA", "Lambda", "Rubin HPC", "NVIDIA Photonics"],
@@ -519,6 +552,7 @@ COMPANIES = {
 }
 
 DISPLAY_NAMES_KO = {
+    "Avicena": "아비세나",
     "SC26 NVIDIA Rubin & CPO": "SC26 엔비디아·Lambda",
     "SC26 AMD HPC": "SC26 AMD·HPE",
     "SC26 TOP500 HANGANG": "SC26 TOP500·한강",
@@ -710,6 +744,7 @@ SOURCE_PRIORITY = {
     "Lambda": 100, "Lambda AI": 100, "TOP500": 100, "KISTI": 100,
     "HPE": 100, "Oak Ridge National Laboratory": 100, "ORNL": 100,
     "Volantis": 100, "Lightmatter": 100, "Ayar Labs": 100, "Xscape Photonics": 100,
+    "Avicena": 100,
     "Sungho Electronics": 100, "성호전자": 100, "ADST": 100, "에이디에스테크": 100,
     "POET Technologies": 100, "POET": 100, "Sivers Semiconductors": 100,
     "HyperLight": 100, "AFR Milan": 100, "Advanced Fiber Resources": 100,
@@ -1408,7 +1443,161 @@ def apple_siph_source_verified(item: dict, candidates: list[dict]) -> bool:
     )
 
 
+def avicena_milestone(title: str) -> tuple[str, str, str | None] | None:
+    """A named optical-I/O startup event, not a display/laser CPO keyword match."""
+    raw = normalize_text(html.unescape(title or ""))
+    if not re.search(r"\bAvicena(?:Tech)?\b|\bLightBundle\b|아비세나|아비센나|라이트번들", raw, re.I) or is_noise(raw):
+        return None
+    if re.search(r"stock (?:rally|price)|관련주|특징주|주가 급등|what is|how .* works", raw, re.I):
+        return None
+    funding = bool(re.search(r"\bseries\s+[a-d]\b|\brais(?:es|ed|ing)\b.{0,55}(?:\$|\bmillion\b|\bfunding\b|\bcapital\b)|"
+                             r"\b(?:secures?|secured|closes?|closed)\b.{0,65}(?:funding|investment|million)|"
+                             r"투자\s*유치|자금\s*조달|시리즈\s*[A-D]", raw, re.I))
+    pending = bool(re.search(r"\b(?:plans?|planning|aims?|targets?|expects?|expected|could|might|may|seeks?|seeking|potential|proposed|in talks)\b|"
+                             r"will (?:launch|ship|start|begin)|to (?:launch|ship|start|begin)|예정|전망|목표|검토|협의|가능성|추진", raw, re.I))
+    money = re.search(r"(?:US)?\$\s*100\s*(?:million|mn|m)\b|(?:over|more than)\s+100\s+million|1\s*억\s*(?:미국\s*)?달러", raw, re.I)
+    actual_raise = bool(re.search(r"\brais(?:es|ed)\b|\bsecures?\b|\bsecured\b|\bcloses?\b|\bclosed\b|"
+                                  r"announc(?:es|ed).{0,40}funding|투자\s*유치(?:에\s*성공|성공|완료)?|투자\s*받", raw, re.I))
+    round_match = re.search(r"(?:series|시리즈)\s*([a-z])\b", raw, re.I)
+    if funding and actual_raise and not re.search(r"seeking|aims? to raise|plans? to raise|in talks to raise|유치\s*목표|유치\s*추진", raw, re.I):
+        series = round_match.group(1).lower() if round_match else ""
+        if series == "a":
+            return ("아비세나 투자유치", "2022년 기존 투자", "avicena|funding|series-a|2022")
+        if series == "b" or re.search(r"\$\s*65\s*(?:million|m)\b", raw, re.I):
+            return ("아비세나 투자유치", "2025년 기존 투자", "avicena|funding|series-b|2025")
+        if (series == "c" or money) and not re.search(r"extension|additional (?:round|tranche)|second close|시리즈\s*[d-z]|추가\s*클로징", raw, re.I):
+            # Exact known C round or the same amount without round name.
+            if money or (series == "c" and not re.search(r"\$\s*\d+(?:\.\d+)?\s*(?:million|m|billion|b)\b", raw, re.I)):
+                return ("아비세나 시리즈 C 투자유치", "투자 유치·상용화 자금 확보(고객 수주 아님)", AVICENA_SERIES_C_KEY)
+        amount = _money_tokens(raw)
+        key = "avicena|funding|" + (series or "undisclosed") + "|" + "-".join(amount) if amount else None
+        return ("아비세나 투자유치", "투자 유치 발표·계약/양산 매출과 별개", key)
+    if re.search(r"\b(?:evaluation|e)kits?\b|evaluation kits?|평가\s*(?:키트|제품)", raw, re.I):
+        if re.search(r"connectori[sz]ed|detachable|reconnect|분리|커넥터", raw, re.I) and not re.search(r"new customer|additional order|qualification completed|검증 완료", raw, re.I):
+            return ("아비세나 평가제품·커넥터 검증", "기존 평가·시연 단계", "avicena|connectorized-demo|2026-09")
+        if re.search(r"\b(?:ships?|shipped|shipping|delivers?|delivered|출하|공급)\b|출하|공급", raw, re.I) and not pending:
+            key = "avicena|evaluation-kit|1tbps-2026-08" if re.search(r"(?<![\d.])1\s*Tbps|1\s*테라비트", raw, re.I) and not re.search(r"new customer|additional|추가|신규 고객", raw, re.I) else None
+            return ("아비세나 평가제품·커넥터 검증", "평가제품 출하(상용 제품 양산 아님)", key)
+        if re.search(r"\blaunch(?:es|ed)?\b|\bintroduc(?:es|ed)\b|평가.*공개", raw, re.I):
+            return ("아비세나 평가제품·커넥터 검증", "평가제품 공개(상용화 전)", "avicena|evaluation-kit|initial-2026-03")
+        return None
+    # Roadmap and sample/qualification must never consume a future sales event.
+    optical = bool(re.search(r"LightBundle|micro[- ]?LED|optical (?:interconnect|I/O|link)|chip[- ]to[- ]chip|광연결|광통신|광인터커넥트|라이트번들", raw, re.I))
+    if not optical:
+        return None
+    if re.search(r"\b(?:first commercial|first product|commercial product)\b|상용\s*제품|첫\s*제품", raw, re.I) and pending:
+        year = re.search(r"\b20[2-4]\d\b", raw)
+        if year:
+            return ("아비세나 상용화 일정", "회사 목표·실제 출하 미확정", "avicena|roadmap|first-commercial-product-" + year.group(0))
+        return None
+    if pending:
+        return None
+    if re.search(r"\b(?:purchase order|signed supply agreement|signs? (?:a )?(?:new )?(?:supply agreement|contract)|design win|customer order|supply contract)\b|공급계약\s*체결|수주\s*확정|발주서", raw, re.I):
+        return ("아비세나 고객·공급계약", "계약 발표·상대방/수량/금액/검수 원문 확인", None)
+    if re.search(r"\b(?:starts?|begins?|commences?)\s+(?:volume |mass |commercial )?(?:production|shipments?)\b|"
+                 r"\b(?:now shipping|first commercial shipment|commercial product (?:launches|ships)|mass production begins|volume shipments)\b|양산\s*개시|상용\s*출하|첫\s*상용\s*공급", raw, re.I):
+        return ("아비세나 실제 양산·상용화", "상용제품 출하·양산 주장, 검수/매출 별도 확인", None)
+    if re.search(r"\b(?:qualified by|passes? qualification|customer qualification completed|validation completed|customer sampling|samples? to customers)\b|고객\s*검증\s*완료|고객\s*승인|고객\s*샘플\s*출하", raw, re.I):
+        return ("아비세나 고객 검증·샘플", "고객 평가/인증 단계(양산계약과 별개)", None)
+    if re.search(r"\bTSMC\b", raw, re.I) and re.search(r"photodetector|\bPD arrays\b|광검출기", raw, re.I) and re.search(r"works? with|optim(?:ize|ization)|협력", raw, re.I):
+        return ("아비세나 제조공정 협력", "2025년 기존 공동개발(확정 생산계약 아님)", "avicena|tsmc|pd-development-2025")
+    if re.search(r"\bams\s*[- ]?OSRAM\b", raw, re.I) and re.search(r"partners? with|joint development|공동개발", raw, re.I):
+        return ("아비세나 제조공정 협력", "2023년 기존 제조공정 공동개발", "avicena|ams-osram|joint-development-2023")
+    if re.search(r"\b(?:signs?|signed|announces?)\b.{0,60}\b(?:manufacturing partnership|joint development agreement|foundry agreement)\b|공동개발\s*협약\s*체결|파운드리\s*계약\s*체결", raw, re.I):
+        return ("아비세나 제조공정 협력", "새 제조공정 협약 발표(양산·발주 전)", None)
+    return None
+
+
+def avicena_host(value: str) -> str:
+    return (urllib.parse.urlparse(value or "").hostname or "").lower().removeprefix("www.")
+
+
+def avicena_series_c_backfill(fetcher=None, on_date: dt.date | None = None) -> tuple[dict | None, list[str]]:
+    """Read the specific new issuer release (or authorized press-wire mirror)
+    and independent investor/press evidence; never manufacture a successful read.
+    """
+    today = on_date or NOW.date()
+    if not dt.date(2026, 11, 24) <= today <= dt.date(2026, 12, 8):
+        return None, []
+    fetcher = fetcher or fetch
+    problems = []
+
+    def read(url: str, required: tuple[str, ...]) -> str | None:
+        try:
+            data = fetcher(url, timeout=12).decode("utf-8", "replace")
+            body = normalize_text(html.unescape(re.sub(r"<[^>]+>", " ", data)))
+            if all(re.search(pattern, body, re.I) for pattern in required):
+                return body
+            problems.append(f"Avicena {avicena_host(url)}: content_identity_unverified")
+        except Exception as exc:
+            problems.append(f"Avicena {avicena_host(url)}: {type(exc).__name__}")
+        return None
+
+    common = (r"\bAvicena\b", r"\bSeries C\b", r"\bLightBundle\b",
+              r"(?:\$|USD\s*)100\s*million", r"\bInterVest\b",
+              r"SK\s*hynix\s*Ventures", r"Samsung Catalyst Fund", r"AMD Ventures")
+    release = read(AVICENA_RELEASE_URL, common + (r"November\s+24,\s*2026",))
+    chosen = AVICENA_RELEASE_URL
+    source = "Avicena"
+    if not release:
+        release = read(AVICENA_WIRE_MIRROR, common + (r"BUSINESS\s*WIRE",))
+        chosen, source = AVICENA_WIRE_MIRROR, "Business Wire"
+    independent = read(AVICENA_INVESTOR_URL, (r"Avicena", r"InterVest", r"SK\s*hynix\s*Ventures",
+                        r"Samsung Catalyst Fund", r"(?:シリーズ\s*C|Series C)", r"2026[/.-]11[/.-]25"))
+    independent_url = AVICENA_INVESTOR_URL
+    if not independent:
+        independent = read(AVICENA_MEDIA_URL, (r"Avicena", r"Series C", r"100\s*(?:\+)?\s*million",
+                                r"InterVest", r"24\s+November\s+2026|November\s+24,\s*2026"))
+        independent_url = AVICENA_MEDIA_URL
+    if not release or not independent:
+        return None, problems
+    category, stage, _ = avicena_milestone(AVICENA_SERIES_C_TITLE)
+    item = {
+        "company": AVICENA_COMPANY, "ticker": "비상장", "title": AVICENA_SERIES_C_TITLE,
+        "source": source, "source_url": chosen, "link": chosen,
+        "published": "2026-11-24T00:00:00+00:00",  # publication date only; do not imply exact time
+        "key": event_key(AVICENA_COMPANY, AVICENA_SERIES_C_TITLE, source),
+        "category": category, "stage": stage, "score": 28,
+        "avicena_direct_verified": True, "avicena_independent_url": independent_url,
+    }
+    return item, problems
+
+
+def avicena_source_verified(item: dict, candidates: list[dict]) -> bool:
+    if item.get("company") != AVICENA_COMPANY:
+        return True
+    event = avicena_milestone(item.get("title") or "")
+    if not event:
+        return False
+    host = avicena_host(item.get("source_url") or "")
+    if item.get("avicena_direct_verified") is True:
+        return (event[2] == AVICENA_SERIES_C_KEY
+                and item.get("link") in {AVICENA_RELEASE_URL, AVICENA_WIRE_MIRROR}
+                and item.get("avicena_independent_url") in {AVICENA_INVESTOR_URL, AVICENA_MEDIA_URL})
+    # Official domain RSS is a discovery signal, not a directly read contract.
+    # For known C financing require independent evidence before alerts. News
+    # reprints of one issuer/wire release do not count as two independent origins.
+    if event[2] != AVICENA_SERIES_C_KEY and host in AVICENA_PRIMARY_HOSTS:
+        return host != "businesswire.com" or "business wire" in (item.get("source") or "").lower()
+    if host not in AVICENA_PRIMARY_HOSTS | AVICENA_NEWS_HOSTS or not event[2]:
+        return False
+    peers = {
+        avicena_host(other.get("source_url") or "")
+        for other in candidates if other is not item
+        and other.get("company") == AVICENA_COMPANY
+        and (other_event := avicena_milestone(other.get("title") or "")) and other_event[2] == event[2]
+    }
+    peers.discard(host)
+    return bool((host in AVICENA_PRIMARY_HOSTS and peers & AVICENA_NEWS_HOSTS)
+                or (host in AVICENA_NEWS_HOSTS and peers & AVICENA_PRIMARY_HOSTS))
+
+
 def canonical_story_key(company: str, title: str) -> str | None:
+    avicena = avicena_milestone(title)
+    if avicena and (company == AVICENA_COMPANY or avicena[2] == AVICENA_SERIES_C_KEY):
+        return avicena[2]
+    if company == AVICENA_COMPANY:
+        return None
     if company in {"NVIDIA", "CPO Packaging & Test", "CPO Equipment Supply Chain"} and nvidia_cpo_leadership_outlook_only(title):
         return NVIDIA_HUANG_CPO_OUTLOOK_KEY
     # The same named event may arrive through a broad company query and its
@@ -2587,6 +2776,10 @@ def same_underlying_story(a: dict, b: dict) -> bool:
 
 
 def prefer_story_item(candidate: dict, current: dict) -> bool:
+    if candidate.get("avicena_direct_verified") is True and current.get("avicena_direct_verified") is not True:
+        return True
+    if current.get("avicena_direct_verified") is True and candidate.get("avicena_direct_verified") is not True:
+        return False
     c_rank = source_priority(candidate.get("source") or "")
     o_rank = source_priority(current.get("source") or "")
     if c_rank != o_rank:
@@ -2888,6 +3081,9 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company == AVICENA_COMPANY:
+        event = avicena_milestone(title)
+        return event[0] if event else "아비세나 검증 대기"
     if company == "NVIDIA" and nvidia_cpo_leadership_outlook_only(title):
         return "CPO 경영진 교체·공급망 영향 전망"
     if company in SC26_COMPANIES:
@@ -3094,6 +3290,14 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "아비세나 시리즈 C 투자유치": "마이크로LED 배열과 실리콘 광검출기·다중코어 광섬유를 이용한 근거리 칩 간 광연결의 상용화 자금입니다. 삼성·SK하이닉스·AMD의 투자와 실제 고객 공급계약은 별개입니다.",
+        "아비세나 투자유치": "새로운 투자 라운드와 설비투자·실제 제품 매출을 구분합니다.",
+        "아비세나 평가제품·커넥터 검증": "평가용 제품 출하·탈착형 광연결 검증은 고객 채택의 선행지표이며 상용제품 매출과 다릅니다.",
+        "아비세나 상용화 일정": "예상 출시 연도와 실제 고객 승인·출하 일정을 대조합니다.",
+        "아비세나 고객·공급계약": "계약 법인·수량·가격·고객 검수 및 실제 매출시점을 확인합니다.",
+        "아비세나 고객 검증·샘플": "GPU·메모리 사이 광연결 고객 시험과 신뢰성 검증에서 실제 주문으로 넘어가는지 추적합니다.",
+        "아비세나 실제 양산·상용화": "상용제품 출하·실제 생산량·판매단가·검수·매출을 구분합니다.",
+        "아비세나 제조공정 협력": "TSMC 광검출기 배열, ams OSRAM 질화갈륨 마이크로LED 제조 등 공동개발과 양산 발주를 구분합니다.",
         "애플 데이터센터 광연결 연구개발·채용": "애플 공식 채용은 데이터센터용 실리콘 포토닉스 설계·광패키징 인력 확보 증거이며, 제품 출시·고객 수주·양산매출 증거가 아닙니다. 390억달러(2026년 기사 환산 약 51조원)는 트렌드포스의 2030년 CPO·NPO 산업 전망입니다.",
         "애플 광연결 고객·공급계약": "실제 광엔진·광패키징 공급계약의 상대방·물량·금액·승인 일정을 원문으로 확인해야 미래 매출 경로가 만들어집니다.",
         "애플 광연결 실제 양산·출하": "광엔진 생산과 검사 통과·고객 인도·매출 인식은 서로 다른 단계입니다.",
@@ -3264,6 +3468,14 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "아비세나 시리즈 C 투자유치": "광원 배열 결합 수율·다중코어 광섬유 정렬, 고온 신뢰성·검사시간, 고객 승인과 상용 생산능력이 매출의 관문입니다. 투자자별 금액·확정 구매계약은 미공개입니다.",
+        "아비세나 투자유치": "자금 조달만으로 고객 승인·매출·양산이 보장되지 않습니다.",
+        "아비세나 평가제품·커넥터 검증": "평가제품 성능을 대량생산 수율·실사용 장기 신뢰성과 혼동하지 않습니다.",
+        "아비세나 상용화 일정": "출시 목표가 미뤄지거나 고객 승인·광결합 수율이 낮을 위험입니다.",
+        "아비세나 고객·공급계약": "검증·설치·납기·대금 회수 지연 및 주문 취소를 확인합니다.",
+        "아비세나 고객 검증·샘플": "고온 동작 검사·다중 채널 결합 손실·불량률이 검증과 출하를 지연할 수 있습니다.",
+        "아비세나 실제 양산·상용화": "초기 생산수율·패키징 비용·반품·교환 비용과 반복구매를 확인합니다.",
+        "아비세나 제조공정 협력": "공동 연구와 양산능력·실제 계약의 차이, 광원·검출기·광섬유 공급망을 확인합니다.",
         "애플 데이터센터 광연결 연구개발·채용": "구형 채용 공고를 신규 진입·계약으로 오인할 위험이 있습니다. 광결합 손실·레이저 발열·패키징 수율·검사시간과 고객 인증·양산 비용이 아직 미확정입니다.",
         "애플 광연결 고객·공급계약": "루머·협의와 계약·발주를 구분하고, 공급사 실명·최소 구매약정·검수 및 대금회수 조건을 확인해야 합니다.",
         "애플 광연결 실제 양산·출하": "광학 정렬·고온 신뢰성·수율·광원 안정성과 고객 검수 지연이 실제 매출을 낮출 수 있습니다.",
@@ -4020,6 +4232,15 @@ def main() -> None:
                 continue
             title = item["title"]
             source = item.get("source") or ""
+            # Route the same Series C report to one company-specific event even if found in another optics query.
+            avicena = avicena_milestone(title) if AVICENA_COMPANY in COMPANIES else None
+            if company == AVICENA_COMPANY or (avicena and avicena[2] == AVICENA_SERIES_C_KEY):
+                if avicena and published:
+                    item.update({"company": AVICENA_COMPANY, "ticker": "비상장", "score": 18,
+                                 "key": event_key(AVICENA_COMPANY, title, source),
+                                 "category": avicena[0], "stage": avicena[1]})
+                    all_relevant.append(item)
+                continue
             # The Nov-16 Huang/TSMC CPO analysis is historical commentary.
             # A late index appearance is not a newly signed order or roadmap revision.
             if company in {"NVIDIA", "CPO Packaging & Test", "CPO Equipment Supply Chain"}:
@@ -4170,6 +4391,19 @@ def main() -> None:
             })
             all_relevant.append(item)
 
+    # Recover this recent unsent funding event via issuer plus independent source.
+    # Do not add the current round to a silent baseline or mutate successful receipts.
+    avicena_direct_status = "existing_history_or_outside_backfill_window"
+    if (AVICENA_COMPANY in COMPANIES and AVICENA_SERIES_C_KEY not in (state.get("seen_story_keys") or [])
+            and dt.date(2026, 11, 24) <= NOW.date() <= dt.date(2026, 12, 8)):
+        avicena_item, avicena_errors = avicena_series_c_backfill()
+        errors.extend(avicena_errors)
+        if avicena_item:
+            all_relevant.append(avicena_item)
+            avicena_direct_status = "issuer_and_independent_source_verified"
+        else:
+            avicena_direct_status = "direct_source_unverified; RSS provenance gate remains active"
+
     # Complement Google News RSS with a first-party Apple job check. A failed
     # official lookup is a source error, never evidence of "no announcement".
     # Only the reviewed November hiring can be backfilled; no stale replay.
@@ -4234,6 +4468,8 @@ def main() -> None:
     # Source-quality gate: unknown/low-quality sources cannot trigger by themselves.
     # They are admitted only when a higher-quality source independently reports the same event.
     def source_is_corroborated(item: dict) -> bool:
+        if item.get("company") == AVICENA_COMPANY:
+            return avicena_source_verified(item, all_relevant)
         if item.get("company") == APPLE_SIPH_COMPANY:
             return apple_siph_source_verified(item, all_relevant)
         if item.get("company") in SC26_COMPANIES:
@@ -4330,6 +4566,7 @@ def main() -> None:
         | set(NEW_OPTICAL_INFRA_BASELINES)
         | set(COUPE_FUNDA_PRIOR_KEYS)
         | {NVIDIA_HUANG_CPO_OUTLOOK_KEY}
+        | set(AVICENA_PRIOR_KEYS)
         | set(SC26_KNOWN_KEYS)
     )
     seen_story_records = [
@@ -4439,6 +4676,13 @@ def main() -> None:
         "relevant_item_count": len(deduped),
         "source_errors": errors,
         "query_health": query_health,
+        "avicena_direct_status": avicena_direct_status,
+        "avicena_last_healthy_search_kst": (
+            dt.datetime.now(KST).isoformat(timespec="seconds")
+            if query_health.get(AVICENA_COMPANY, {}).get("attempted", 0) > 0
+            and query_health[AVICENA_COMPANY]["attempted"] == query_health[AVICENA_COMPANY]["successful"]
+            else state.get("avicena_last_healthy_search_kst")
+        ),
         "sc26_event_watch_version": 1,
         "sc26_last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds") if all(
             query_health.get(k, {}).get("successful", 0) == query_health.get(k, {}).get("attempted", -1)
@@ -4632,6 +4876,8 @@ def main() -> None:
                 pub = (item.get("official_posted_date") or "공식") + " (공고일·시각 미공개)"
             category = item["category"]
             public_title = item["title"]
+            if item.get("company") == AVICENA_COMPANY and item.get("story_key") == AVICENA_SERIES_C_KEY:
+                public_title = "아비세나, AI 인프라용 마이크로LED 광연결 상용화 위해 1억달러 이상 시리즈 C 투자 유치"
             if item.get("company") == LITE_CAPACITY_COMPANY:
                 detail = lite_supply_event(public_title)
                 if detail and detail[2] == "lumentum|booking-horizon|2029":
@@ -4665,6 +4911,13 @@ def main() -> None:
                 f"• 원문 제목: {html.escape(public_title)}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
+            if item.get("company") == AVICENA_COMPANY:
+                lines.append("• 확인 수준: " + ("발행사 발표 본문·별도 투자사/언론 원문 대조" if item.get("avicena_direct_verified") else "공식 도메인 검색 제목 또는 공식·독립보도 제목 대조(원문 검증 단계 별도)"))
+                if item.get("story_key") == AVICENA_SERIES_C_KEY:
+                    lines.append("• 공개일: 2026년 11월 24일(공식 페이지 게시일; 본문 9월 24일 표기 불일치). 투자금은 전체 라운드 금액이며 삼성·SK하이닉스 각각의 투자액이 아님.")
+                    lines.append("• 기존 단계: 2026년 8월 평가제품 최대 1Tbps(335채널×3Gbps) 출하, 9월 탈착형 시연, 2027년 첫 상용제품 출시 목표. 실제 공급계약·대량생산 미확정.")
+                    lines.append("• 투자 참여: 인터베스트 주도, 삼성 Catalyst Fund·SK하이닉스 Ventures·AMD Ventures 등. 이전 삼성 2022년, SK하이닉스 2025년 5월 투자와 별개.")
+                    lines.append("• <a href=\"" + html.escape(AVICENA_RELEASE_URL, quote=True) + "\">회사 발표</a> / <a href=\"" + html.escape(AVICENA_INVESTOR_URL, quote=True) + "\">미쓰비시케미칼 투자 발표</a>")
             if item.get("company") == APPLE_SIPH_COMPANY:
                 if canonical_story_key(item["company"], item["title"]) == APPLE_SIPH_HIRING_KEY:
                     lines.append("• 독립 공식 근거: 애플 채용공고 200684866(11/03)·200695336(11/16), 실제 확인된 역할만 공식 확인")
@@ -4728,6 +4981,8 @@ def main() -> None:
         f"- 조회시각(KST): {dt.datetime.now(KST).isoformat(timespec='seconds')}",
         f"- 기준선 초기화 여부: {'예' if initialized else '아니오 — 이번 실행은 기준선만 저장'}",
         f"- 관련 신규 사건 후보: {len(new_items)}건",
+        f"- Avicena LightBundle 직접 원천 확인: {avicena_direct_status}",
+        f"- Avicena 검색 성공/시도: {query_health.get(AVICENA_COMPANY, {}).get('successful', 0)}/{query_health.get(AVICENA_COMPANY, {}).get('attempted', 0)}",
         f"- Apple 데이터센터 실리콘 포토닉스 채용 공식 조회: {apple_job_status}",
         f"- Telegram 전송 대상 사건: {len(alert_items)}건(실제 전송 여부는 수신 확인 기록으로 판정)",
         f"- 발송 한도 초과로 다음 조회에 남긴 사건: {len(deferred_items)}건",

@@ -14,6 +14,62 @@ SPEC.loader.exec_module(watch)
 
 class OpticsReliabilityTests(unittest.TestCase):
 
+    def test_avicena_round_and_evaluation_are_separate_events(self):
+        a = "Avicena Raises $100 Million Series C to Accelerate Commercialization of microLED Optical Interconnects for AI Infrastructure"
+        b = "Avicena raises $100M to commercialize microLED optical links"
+        self.assertEqual(watch.avicena_milestone(a)[2], watch.AVICENA_SERIES_C_KEY)
+        self.assertEqual(watch.avicena_milestone(b)[2], watch.AVICENA_SERIES_C_KEY)
+        self.assertNotIn(watch.AVICENA_SERIES_C_KEY, watch.AVICENA_PRIOR_KEYS)
+        self.assertEqual(watch.canonical_story_key("Samsung Electronics", a), watch.AVICENA_SERIES_C_KEY)
+        self.assertTrue(watch.same_underlying_story({"company":"Avicena","title":a},
+                                                    {"company":"Samsung Electronics","title":b}))
+        for old in (
+            "Avicena raises $25 million in Series A",
+            "Avicena announces Series B funding round led by Tiger Global",
+            "Avicena Ships World's First 1Tbps Evaluation Kits",
+            "Avicena to Demonstrate World's First Connectorized microLED Optical Interconnect Evaluation Kit",
+            "Avicena plans first commercial product launch in 2027 for LightBundle",
+        ):
+            self.assertIn(watch.avicena_milestone(old)[2], watch.AVICENA_PRIOR_KEYS, old)
+        self.assertIsNone(watch.avicena_milestone("Unrelated microLED display maker raises $100M"))
+        self.assertIsNone(watch.avicena_milestone("Avicena stock price rises on microLED"))
+        self.assertIsNone(watch.avicena_milestone("Avicena seeks Series C funding"))
+        self.assertEqual(watch.avicena_milestone("Avicena begins volume production of LightBundle optical interconnects")[0],
+                         "아비세나 실제 양산·상용화")
+        self.assertEqual(watch.avicena_milestone("Avicena signs new supply agreement for LightBundle with SK hynix")[0],
+                         "아비세나 고객·공급계약")
+        self.assertEqual(watch.avicena_milestone("Avicena LightBundle customer qualification completed at Samsung")[0],
+                         "아비세나 고객 검증·샘플")
+
+    def test_avicena_direct_verified_and_unavailable_sources(self):
+        issuer = b"Avicena Series C LightBundle $100 million InterVest SK hynix Ventures Samsung Catalyst Fund AMD Ventures November 24, 2026"
+        investor = "Avicena InterVest SK hynix Ventures Samsung Catalyst Fund シリーズC 2026/11/25".encode()
+        def valid_fetch(url, timeout=12):
+            return {watch.AVICENA_RELEASE_URL: issuer, watch.AVICENA_INVESTOR_URL: investor}[url]
+        today = watch.dt.date(2026, 11, 25)
+        item, errors = watch.avicena_series_c_backfill(fetcher=valid_fetch, on_date=today)
+        self.assertTrue(item["avicena_direct_verified"])
+        self.assertEqual(errors, [])
+        self.assertTrue(watch.avicena_source_verified(item, [item]))
+        self.assertFalse(watch.avicena_source_verified(dict(item, link="https://fake.example"), []))
+        def blocked(url, timeout=12):
+            raise OSError("source unavailable")
+        none, failures = watch.avicena_series_c_backfill(fetcher=blocked, on_date=today)
+        self.assertIsNone(none)
+        self.assertTrue(failures)
+        self.assertEqual(watch.avicena_series_c_backfill(fetcher=blocked, on_date=watch.dt.date(2026, 12, 9)), (None, []))
+
+    def test_avicena_index_requires_primary_and_distinct_news_for_known_round(self):
+        a = {"company":"Avicena", "title":watch.AVICENA_SERIES_C_TITLE, "source":"Avicena",
+             "source_url":"https://avicena.tech", "link":"https://avicena.tech/a"}
+        b = dict(a, source="VentureBurn", source_url="https://ventureburn.com", link="https://ventureburn.com/a")
+        wire = dict(a, source="Business Wire", source_url="https://businesswire.com", link="https://businesswire.com/a")
+        self.assertFalse(watch.avicena_source_verified(a, [a, wire]))
+        self.assertTrue(watch.avicena_source_verified(a, [a, b]))
+        self.assertFalse(watch.avicena_source_verified(dict(a, source_url="https://avicena.tech.fake.example"), [b]))
+        self.assertFalse(watch.avicena_source_verified(b, [b]))
+
+
     def test_huang_exit_cpo_raises_questions_is_not_new_investment(self):
         headline = (
             "[News] Huang’s Exit Raises Questions Over NVIDIA’s CPO Roadmap "
