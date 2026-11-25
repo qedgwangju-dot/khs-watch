@@ -87,6 +87,12 @@ LANES = [
         OUT_DIR / "khs_trusted_policy_news_alerts.json",
     ),
     Lane(
+        "trusted_policy_news",
+        OUT_DIR / "khs_fcc_satellite_agenda_title.txt",
+        OUT_DIR / "khs_fcc_satellite_agenda_alert.md",
+        None,
+    ),
+    Lane(
         "ai_force_policy_news",
         OUT_DIR / "khs_ai_force_policy_title.txt",
         OUT_DIR / "khs_ai_force_policy_alert.md",

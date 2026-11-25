@@ -31,6 +31,7 @@ on:
       - "scripts/khs_policy_readability_patch.py"
       - "scripts/khs_policy_telegram_delivery.py"
       - "scripts/verify_khs_policy_readability.py"
+      - "scripts/khs_fcc_december_satellite_agenda.py"
       - "scripts/khs_nuclear_policy_watch.py"
       - "scripts/patch_bwrx300_independent_milestones.py"
       - "scripts/verify_khs_policy_delivery_contract.py"
@@ -64,6 +65,14 @@ on:
         options:
           - "false"
           - "true"
+      fcc_december_satellite_agenda_supplement:
+        description: "Send the one-time, source-linked FCC December satellite agenda supplement"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
 
 permissions:
   contents: write
@@ -90,6 +99,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Verify FCC December satellite agenda supplement
+        run: |
+          python -m py_compile scripts/khs_fcc_december_satellite_agenda.py
+          PYTHONPATH=. python scripts/khs_fcc_december_satellite_agenda.py --self-test
 
       - name: Verify isolated S5797 Medicare biosimilar legislation watch (offline)
         run: |
@@ -482,6 +496,7 @@ jobs:
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-policy-watch contact=please-set-secret' }}
       TELEGRAM_TEST: ${{ github.event.inputs.telegram_test || 'false' }}
       TELEGRAM_DRY_RUN: ${{ github.event_name == 'push' && 'true' || github.event.inputs.telegram_dry_run || 'false' }}
+      KHS_FCC_DECEMBER_SATELLITE_AGENDA_SUPPLEMENT: ${{ github.event.inputs.fcc_december_satellite_agenda_supplement || 'false' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -620,6 +635,10 @@ jobs:
               print("Korea presidential postprocess skipped: no personnel alert.")
           PY
 
+      - name: Build requested FCC satellite agenda supplement
+        if: github.event_name == 'workflow_dispatch' && env.KHS_FCC_DECEMBER_SATELLITE_AGENDA_SUPPLEMENT == 'true'
+        run: python scripts/khs_fcc_december_satellite_agenda.py --build
+
       - name: Apply Telegram delivery quality guard
         if: always()
         run: python scripts/khs_telegram_delivery_guard.py
@@ -650,6 +669,11 @@ jobs:
           if [ -f out/khs_trusted_policy_news_alert.md ]; then
             printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/khs_trusted_policy_news_alert.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          if [ -f out/khs_fcc_satellite_agenda_alert.md ]; then
+            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/khs_fcc_satellite_agenda_alert.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
           if [ -f out/khs_ai_force_policy_alert.md ]; then
@@ -719,7 +743,7 @@ jobs:
           fi
 
       - name: Send Telegram alert
-        if: hashFiles('out/khs_policy_watch_alert.md') != '' || hashFiles('out/khs_korea_presidential_personnel_alert.md') != '' || hashFiles('out/khs_nuclear_policy_alert.md') != '' || hashFiles('out/khs_trusted_policy_news_alert.md') != '' || hashFiles('out/khs_ai_force_policy_alert.md') != '' || hashFiles('out/khs_policy_source_status_alert.md') != '' || env.TELEGRAM_TEST == 'true' || env.TELEGRAM_DRY_RUN == 'true'
+        if: hashFiles('out/khs_policy_watch_alert.md') != '' || hashFiles('out/khs_korea_presidential_personnel_alert.md') != '' || hashFiles('out/khs_nuclear_policy_alert.md') != '' || hashFiles('out/khs_trusted_policy_news_alert.md') != '' || hashFiles('out/khs_fcc_satellite_agenda_alert.md') != '' || hashFiles('out/khs_ai_force_policy_alert.md') != '' || hashFiles('out/khs_policy_source_status_alert.md') != '' || env.TELEGRAM_TEST == 'true' || env.TELEGRAM_DRY_RUN == 'true'
         env:
           KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
           KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
@@ -776,9 +800,13 @@ jobs:
               (pathlib.Path("out/khs_korea_presidential_personnel_title.txt"), pathlib.Path("out/khs_korea_presidential_personnel_alert.md"), "KHS Korea presidential personnel alert", "policy"),
               (pathlib.Path("out/khs_nuclear_policy_title.txt"), pathlib.Path("out/khs_nuclear_policy_alert.md"), "KHS nuclear AI power alert", "westinghouse"),
               (pathlib.Path("out/khs_trusted_policy_news_title.txt"), pathlib.Path("out/khs_trusted_policy_news_alert.md"), "KHS trusted policy news alert", "policy"),
+              (pathlib.Path("out/khs_fcc_satellite_agenda_title.txt"), pathlib.Path("out/khs_fcc_satellite_agenda_alert.md"), "FCC satellite agenda supplement", "policy"),
               (pathlib.Path("out/khs_ai_force_policy_title.txt"), pathlib.Path("out/khs_ai_force_policy_alert.md"), "미국 AI 정책지휘체계 중요 변화", "ai_force"),
               (pathlib.Path("out/khs_policy_source_status_title.txt"), pathlib.Path("out/khs_policy_source_status_alert.md"), "KHS policy source status alert", "policy"),
           ]
+          if os.environ.get("KHS_FCC_DECEMBER_SATELLITE_AGENDA_SUPPLEMENT", "false").lower() == "true":
+              lanes = [lane for lane in lanes if lane[1].name == "khs_fcc_satellite_agenda_alert.md"]
+              print("fcc_satellite_agenda_supplement_only=true")
 
           messages = []
           for title_file, body_file, fallback_title, route in lanes:
@@ -1080,6 +1108,8 @@ jobs:
             out/khs_trusted_policy_news_alert.md
             out/khs_trusted_policy_news_title.txt
             out/khs_trusted_policy_news_alerts.json
+            out/khs_fcc_satellite_agenda_alert.md
+            out/khs_fcc_satellite_agenda_title.txt
             out/khs_telegram_dry_run.md
             out/khs_telegram_delivery_confirmed.json
             out/khs_telegram_delivery_partial.json
