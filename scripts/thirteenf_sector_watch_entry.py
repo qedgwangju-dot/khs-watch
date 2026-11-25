@@ -4,6 +4,9 @@
 import datetime as dt
 import json
 import os
+import re
+from html import escape, unescape
+from urllib.parse import urlsplit
 import urllib.request
 
 import thirteenf_sector_watch as watch
@@ -156,6 +159,135 @@ watch.money = money_with_krw
 _original_build_message = watch.build_message
 
 
+def build_amendment_with_owner(owner, filing, previous, changes, info_url, current_holdings):
+    meta=filing.get("amendment") or {}
+    kind=meta.get("type")
+    if kind not in ("RESTATEMENT","NEW HOLDINGS","NEW HOLDINGS ENTRIES"):
+        raise RuntimeError("정정공시 표지 검증 없이 발송할 수 없습니다.")
+    title="기존 보고서 정정" if kind=="RESTATEMENT" else "보유증권 추가 신고"
+    lines=[
+        f"[13F 정정공시] {owner}",
+        f"보유 기준 {filing['report_date']} · 제출 {filing['filing_date']}",
+        f"공시 유형: 13F-HR/A · {title}",
+        "■ 정정 내용",
+    ]
+    reason=" ".join(str(meta.get("reason") or "").split())
+    # A filing cover is authoritative. Preserve the source wording, and only
+    # translate this precise known English construction when it is present.
+    if reason:
+        match=re.fullmatch(r"(.+?) is restating its 13F due to the erroneous inclusion of holdings in CUSIPs? ([A-Za-z0-9 ,and]+)\. There are no other changes to the positions reported\.",reason,re.I)
+        if match:
+            ids=re.findall(r"\b[A-Z0-9]{9}\b",match.group(2),re.I)
+            if ids:
+                lines.append("• 잘못 포함한 증권 식별번호(CUSIP) 정정: "+", ".join(ids))
+                lines.append("• 공시 표지상 그 외 신고 포지션 변경 없음")
+            else:
+                lines.append("• 회사 공시 정정 사유(원문): "+reason)
+        else:
+            lines.append("• 회사 공시 정정 사유(원문): "+reason)
+    else:
+        lines.append("• 공시 표지의 별도 정정 사유 미기재")
+    if previous and kind=="RESTATEMENT":
+        lines.append(f"비교 기준: 동일 분기 직전 제출본 ({previous['filing_date']})")
+        lines.append(f"■ 보유수량 정정 {len(changes):,}행")
+        if changes:
+            labels={"신규 매수":"신고 추가","전량 청산":"신고 삭제","보유 확대":"수량 상향 정정","보유 축소":"수량 하향 정정"}
+            ranked=sorted(changes,key=lambda row:max(float(row.get("cur_value") or 0),float(row.get("prev_value") or 0)),reverse=True)
+            for row in ranked[:12]:
+                n=abs(int(round(row.get("delta_shares") or 0)))
+                name=watch.security_name_kr(row)+watch.option_name_kr(row.get("putcall"))
+                lines.append(f"• {name} · {labels.get(row.get('action'),'정정')} {n:,}주"
+                             f" · CUSIP {row.get('cusip','미확인')}")
+            if len(ranked)>12:
+                lines.append(f"• 나머지 {len(ranked)-12:,}행: SEC 정보표에서 확인")
+        else:
+            lines.append("• 수량 변경으로 분류된 행 없음")
+    elif kind=="RESTATEMENT":
+        lines.append("• 동일 분기 이전 완전 신고본 미확인: 증권별 변경 판정 보류")
+    else:
+        lines.append(f"• 이번 추가 신고 정보표 {len(current_holdings or {}):,}개 증권 항목")
+        lines.append("• 추가 신고는 신규 매수나 기존 증권의 보유 종료를 뜻하지 않음")
+    lines.extend([
+        "※ 정정공시는 과거 보유현황 수정이며 이번 제출일의 거래가 아닙니다.",
+        "SEC 정정공시 표지: "+meta["url"],
+        "SEC 공식 원문: "+info_url,
+    ])
+    message="\n".join(lines)
+    if len(message)>3700:
+        raise RuntimeError("13F 정정공시 메시지 길이 초과; 내용 절단 없이 확인 필요")
+    return message
+
+
+def format_13f_telegram_html(message):
+    """Change presentation only: retain all selected rows, escape HTML, hide URLs."""
+    rendered=[]
+    for line in message.splitlines():
+        if line.startswith(("SEC 공식 원문: ","SEC 정정공시 표지: ")):
+            label,url=line.split(": ",1)
+            parsed=urlsplit(url)
+            if parsed.scheme!="https" or parsed.hostname not in ("www.sec.gov","sec.gov","data.sec.gov") or parsed.username or parsed.password:
+                raise RuntimeError("13F 출처는 SEC 공식 HTTPS 주소만 허용")
+            if not rendered or rendered[-1]!="":
+                rendered.append("")
+            rendered.append(f'<a href="{escape(url,quote=True)}">{escape(label)}</a>')
+            continue
+        escaped=escape(line,quote=False)
+        if line.startswith(("[13F 핵심 변화 자동 추출]","[13F 정정공시]")):
+            rendered.append("<b>"+escaped+"</b>")
+        elif line.startswith(("■","▶")):
+            if rendered and rendered[-1]!="":
+                rendered.append("")
+            rendered.append("<b>"+escaped+"</b>")
+        elif line.startswith("※"):
+            if rendered and not rendered[-1].startswith("※") and rendered[-1]!="":
+                rendered.append("")
+            rendered.append(escaped)
+        else:
+            # Bold just the issuer, not all numbers or notes. Do not change
+            # the selected security rows, quantities, currencies, or signs.
+            m=re.match(r"^(• )(.+?)( (?=(?:신규 |신고상 종료 |[+-]\d))| · (?=(?:신고 추가|신고 삭제|수량 상향 정정|수량 하향 정정)))",line)
+            if m:
+                prefix,issuer,sep=m.groups()
+                rendered.append(escape(prefix,quote=False)+"<b>"+escape(issuer,quote=False)+"</b>"+
+                                escape(sep+line[m.end():],quote=False))
+            else:
+                rendered.append(escaped)
+    result="\n".join(rendered)
+    # Telegram counts text after HTML entity parsing; UTF-16 is conservative
+    # for emoji/non-BMP codepoints. Never split in the middle of an HTML tag.
+    visible=unescape(re.sub(r"<[^>]+>","",result))
+    if len(visible.encode("utf-16-le"))//2>4096:
+        raise RuntimeError("13F Telegram 본문 표시 한도 초과; 일부 내용 누락 방지")
+    return result
+
+
+_original_send_message = watch.send_message
+
+def send_13f_message(token,chat_id,message):
+    # Keep unrelated context notices and established test routes unchanged.
+    if not message.startswith(("[13F 핵심 변화 자동 추출]","[13F 정정공시]")):
+        return _original_send_message(token,chat_id,message)
+    html=format_13f_telegram_html(message)
+    configured=str(chat_id).strip()
+    if configured.lstrip("-").isdigit():
+        expected=int(configured)
+    else:
+        chat=watch.telegram_api(token,"getChat",{"chat_id":configured})
+        expected=chat.get("id")
+        if type(expected) is not int:
+            raise RuntimeError("13F Telegram 수신처 확인 실패")
+    receipt=watch.telegram_api(token,"sendMessage",{
+        "chat_id":chat_id,"text":html,"parse_mode":"HTML",
+        "link_preview_options":json.dumps({"is_disabled":True}),
+    })
+    mid=receipt.get("message_id")
+    if type(mid) is not int or mid<=0 or (receipt.get("chat") or {}).get("id")!=expected:
+        raise RuntimeError("13F Telegram 전송 응답 미확인; 성공 처리 금지")
+    print(f"13F_HTML_DELIVERY_CONFIRMED message_id={mid} recipient_verified=true")
+    return receipt
+
+
+
 def build_message_with_owner(label, filing, previous, changes, info_url,
                              current_holdings=None, previous_holdings=None):
     """Automatic SEC 13F position intelligence, not a hand-entered news alert.
@@ -165,6 +297,8 @@ def build_message_with_owner(label, filing, previous, changes, info_url,
     media headlines are neither prerequisites nor substituted for SEC rows.
     """
     owner=PORTFOLIO_OWNER_KR.get(label,watch.MANAGER_KR.get(label,label))
+    if filing.get("form")=="13F-HR/A":
+        return build_amendment_with_owner(owner,filing,previous,changes,info_url,current_holdings)
     validated=sector_rank.verified_change_values(changes,label,filing,previous)
     rate,basis=ensure_fx()
     if current_holdings is not None:
@@ -192,6 +326,7 @@ def build_message_with_owner(label, filing, previous, changes, info_url,
 
 
 watch.build_message = build_message_with_owner
+watch.send_message = send_13f_message
 
 
 def send_purr_test_if_requested() -> bool:

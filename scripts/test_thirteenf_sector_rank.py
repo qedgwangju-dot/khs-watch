@@ -259,6 +259,64 @@ def main():
         lambda x:sector.compact_usd(x),report_scale=None)
     assert "금액 미검증" in check and "3,049만달러" not in check
 
+
+    # Production formatting retains the selected rows, not just the heading.
+    # No HTTP or Telegram send: fake the API's actual response shape.
+    from unittest.mock import patch
+    import re
+    from html import unescape
+    with patch.object(entry,"ensure_fx",return_value=(1344.51,"테스트 기준")):
+        plain=entry.build_message_with_owner(
+            "Morgan Stanley",
+            {"report_date":"2026-09-30","filing_date":"2026-11-13",
+             "form":"13F-HR","accession":"0000895421-26-000309"},
+            {"report_date":"2026-06-30","accession":"0000895421-26-000200"},
+            list_changes,"https://www.sec.gov/Archives/test.xml",
+            current_holdings=holdings)
+    rendered=entry.format_13f_telegram_html(plain)
+    visible=unescape(re.sub(r"<[^>]+>","",rendered))
+    for row in plain.splitlines():
+        if row.startswith(("•","■","▶","※")):
+            assert row in visible,row
+    assert '<a href="https://www.sec.gov/Archives/test.xml">SEC 공식 원문</a>' in rendered
+    assert "\n\n<b>▶" in rendered and "<b>시게이트(STX)</b>" in rendered
+    assert len(visible.encode("utf-16-le"))//2<=4096
+    assert "https://www.sec.gov" not in visible
+    with patch.object(watch,"telegram_api",return_value={"message_id":987,"chat":{"id":123}}) as api:
+        receipt=entry.send_13f_message("fake","123",plain)
+        assert receipt["message_id"]==987
+        assert api.call_args.args[1]=="sendMessage"
+        assert api.call_args.args[2]["parse_mode"]=="HTML"
+        assert api.call_args.args[2]["text"]==rendered
+    with patch.object(watch,"telegram_api",return_value={"message_id":987,"chat":{"id":456}}):
+        try:
+            entry.send_13f_message("fake","123",plain)
+            raise AssertionError("mismatched recipient was accepted")
+        except RuntimeError:
+            pass
+    # Exact SEC cover example: a restatement is not a new quarterly allocation.
+    cover_xml="""<edgarSubmission><formData><coverPage><amendmentNo>1</amendmentNo>
+    <amendmentInfo><amendmentType>RESTATEMENT</amendmentType></amendmentInfo>
+    <additionalInformation>Morgan Stanley is restating its 13F due to the erroneous inclusion of holdings in CUSIPs 958669103 and 464289529. There are no other changes to the positions reported.</additionalInformation>
+    </coverPage></formData></edgarSubmission>"""
+    amended={"cik":"0000895421","report_date":"2026-09-30","filing_date":"2026-11-25",
+             "form":"13F-HR/A","accession":"0000895421-26-000360"}
+    original=dict(amended,form="13F-HR",filing_date="2026-11-13",accession="0000895421-26-000309")
+    prior_q=dict(original,report_date="2026-06-30",accession="0000895421-26-000200")
+    with patch.object(watch,"http_text",return_value=cover_xml):
+        amended["amendment"]=watch.amendment_metadata(amended)
+    prev=watch.amendment_comparison(amended,[amended,original,prior_q],original["accession"],amended["amendment"])
+    assert prev==original
+    assert watch.amendment_comparison(amended,[amended,prior_q],prior_q["accession"],amended["amendment"]) is None
+    correction=entry.build_message_with_owner("Morgan Stanley",amended,prev,[],
+                     "https://www.sec.gov/Archives/amended.xml",current_holdings=holdings)
+    assert correction.startswith("[13F 정정공시] 모건스탠리")
+    assert "958669103" in correction and "464289529" in correction
+    assert "동일 분기" in correction and "그 외 신고 포지션 변경 없음" in correction
+    assert "신규 편입" not in correction
+    assert entry.format_13f_telegram_html(correction).count('<a href=')==2
+    print("13F_HTML_AND_AMENDMENT_REGRESSION_PASS no_network=true no_telegram_send=true")
+
     print("13F sector position-ranking regression checks passed.")
 
 if __name__=="__main__":

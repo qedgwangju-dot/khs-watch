@@ -532,6 +532,40 @@ def save_state(state):
     STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def amendment_metadata(filing):
+    """Read the official cover page, not a news headline or the holdings table."""
+    url=filing_dir(filing["cik"],filing["accession"])+"/primary_doc.xml"
+    root=ET.fromstring(http_text(url))
+    covers=[node for node in root.iter() if local_name(node.tag)=="coverPage"]
+    if len(covers)!=1:
+        raise RuntimeError("13F amendment cover page missing or ambiguous")
+    cover=covers[0]
+    kind=child_text(cover,["amendmentInfo","amendmentType"]).upper()
+    if kind not in ("RESTATEMENT","NEW HOLDINGS","NEW HOLDINGS ENTRIES"):
+        raise RuntimeError("13F amendment type unavailable; refuse misleading quarterly alert")
+    return {"type":kind,"reason":child_text(cover,["additionalInformation"]),
+            "url":url,"number":child_text(cover,["amendmentNo"])}
+
+
+def amendment_comparison(filing, rows, seen, metadata):
+    """Only a complete earlier report for the SAME period can show corrections."""
+    if metadata["type"]!="RESTATEMENT":
+        return None
+    same=[row for row in rows if row["accession"]!=filing["accession"]
+          and row["cik"]==filing["cik"] and row["report_date"]==filing["report_date"]]
+    prior=next((row for row in same if row["accession"]==seen), None)
+    if prior is None:
+        prior=next(iter(same),None)
+    if prior is None:
+        return None
+    # An add-only amendment is not a full portfolio; never compare as if it were.
+    if prior["form"]=="13F-HR":
+        return prior
+    if prior["form"]=="13F-HR/A" and amendment_metadata(prior)["type"]=="RESTATEMENT":
+        return prior
+    return None
+
+
 def main():
     state = load_state()
     token = os.environ.get("THIRTEENF_TELEGRAM_BOT_TOKEN") or os.environ.get("KHS_POLICY_TELEGRAM_BOT_TOKEN") or ""
@@ -573,9 +607,18 @@ def main():
         try:
             cur, info_url = parse_holdings(latest["cik"], latest["accession"])
             prev = {}
-            if previous:
-                prev, _ = parse_holdings(previous["cik"], previous["accession"])
-            changes = classify_changes(cur, prev)
+            if latest["form"]=="13F-HR/A":
+                latest=dict(latest)
+                latest["amendment"]=amendment_metadata(latest)
+                previous=amendment_comparison(latest,rows,seen,latest["amendment"])
+                if previous:
+                    prev,_=parse_holdings(previous["cik"],previous["accession"])
+                # No full prior same-quarter report means no inferred exits or buys.
+                changes=classify_changes(cur,prev) if previous else []
+            else:
+                if previous:
+                    prev, _ = parse_holdings(previous["cik"], previous["accession"])
+                changes = classify_changes(cur, prev)
             alerts.append(build_message(
                 label, latest, previous, changes, info_url,
                 current_holdings=cur, previous_holdings=prev,
