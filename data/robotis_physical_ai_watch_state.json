@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-25T03:09:53.394543+00:00",
+  "updated_at": "2026-11-25T12:44:23.754960+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1033,10 +1033,11 @@
     "751ef7193216b495963c6c97cf6536302ecb5af7301f214f780c899a8778b462",
     "3cdbb85f626f3756cfa515554b61bfcb324eb946fb9eec3523bb1bf59a859af3",
     "661720387e90f563680766e0249177716b86c2fd5dfd5883abfab2cbc8f817a7",
-    "4a37a567bce13695dc75b32e48a8f832cabc09ea89595b51423c4fdf8b5912f5"
+    "4a37a567bce13695dc75b32e48a8f832cabc09ea89595b51423c4fdf8b5912f5",
+    "d3824e567c02540cbe75fd67ef9c964e8463c41f8bb033c63ac85849fb1e32d2"
   ],
   "last_selected": [
-    "4a37a567bce13695dc75b32e48a8f832cabc09ea89595b51423c4fdf8b5912f5"
+    "d3824e567c02540cbe75fd67ef9c964e8463c41f8bb033c63ac85849fb1e32d2"
   ],
   "groups": [
     "ess_battery",
@@ -1049,16 +1050,6 @@
     "robotis_excess_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 44979238986,
-      "outcome": "normal_silence",
-      "confirmed_event_keys": [],
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-22T03:09:06.412981+00:00"
-    },
     {
       "run_id": 44998263049,
       "outcome": "normal_silence",
@@ -1318,16 +1309,34 @@
         false
       ],
       "state_timestamp_utc": "2026-11-25T03:09:53.394543+00:00"
+    },
+    {
+      "run_id": 45616505506,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "d3824e567c02540cbe75fd67ef9c964e8463c41f8bb033c63ac85849fb1e32d2"
+      ],
+      "message_ids": [
+        410
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-25T12:44:23.754960+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 45537965507,
+    "run_id": 45616505506,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "4a37a567bce13695dc75b32e48a8f832cabc09ea89595b51423c4fdf8b5912f5"
+      "d3824e567c02540cbe75fd67ef9c964e8463c41f8bb033c63ac85849fb1e32d2"
     ],
     "message_ids": [
-      409
+      410
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1336,17 +1345,17 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-25T03:09:53.394543+00:00"
+    "state_timestamp_utc": "2026-11-25T12:44:23.754960+00:00"
   },
   "last_selected_events": [
     {
-      "key": "4a37a567bce13695dc75b32e48a8f832cabc09ea89595b51423c4fdf8b5912f5",
-      "group": "robotis",
-      "title": "[종목 포커스] 로보티즈, 내년 우즈벡 공장 가동으로 공급난 해소…주가 우상향? - 데일리인베스트",
-      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFAxaVJQT1pfYUpJU01FbTdzR2RhbWh0V1d6dEtvWTkxd2prT2NlNzNXNkFsVUFkVGtzMXJBOGJET0ZZcFhkM2RzUmRQWUZiY0Y0cjhWTWw0MFUxNmptM0hCejdKSTB1ZVhmX1Z5elpoTdIBb0FVX3lxTFAxaVJQT1pfYUpJU01FbTdzR2RhbWh0V1d6dEtvWTkxd2prT2NlNzNXNkFsVUFkVGtzMXJBOGJET0ZZcFhkM2RzUmRQWUZiY0Y0cjhWTWw0MFUxNmptM0hCejdKSTB1ZVhmX1Z5elpoTQ?oc=5",
-      "source": "데일리인베스트",
-      "source_url": "http://www.dailyinvest.kr",
-      "published": "2026-11-25T01:52:54+00:00"
+      "key": "d3824e567c02540cbe75fd67ef9c964e8463c41f8bb033c63ac85849fb1e32d2",
+      "group": "ess_battery",
+      "title": "삼성SDI, ESS 설계인력 보강…북미 수주 확대에 경쟁력 강화 - 이데일리",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNcVo1TFpHZWVkenlqY00wTlZCMEhxZUhYZ2JZRV9Eb0tFdTNhR3Q4Tk4zR3FrSGNtLVNXWlZWb2NKc2t4SEZFUDlUUWlEZVRUczBKeE9Xdk55WlJ6QnFaZHRUZXVmc1ZZckRsSXBPYnV0WFIwcnJxY1lUZ3RsbTBXNw?oc=5",
+      "source": "이데일리",
+      "source_url": "https://www.edaily.co.kr",
+      "published": "2026-11-25T09:18:50+00:00"
     }
   ],
   "message_corrections": {
