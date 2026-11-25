@@ -1,78 +1,78 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-11-25T12:42:45+09:00",
+  "updated_at_kst": "2026-11-25T12:47:48+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
-        "funding": 1.91e-05,
-        "index_price": 59423.68,
-        "mark_price": 59401.0,
-        "last_price": 59401.3,
-        "open_interest": 593107024.0,
-        "open_interest_value": 3527171885.30656,
-        "turnover24h": 707476397348.0,
+        "funding": 1.93e-05,
+        "index_price": 59460.06,
+        "mark_price": 59431.81,
+        "last_price": 59421.2,
+        "open_interest": 593199438.0,
+        "open_interest_value": 3527721465.81972,
+        "turnover24h": 707477160768.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": 6.28e-05,
-        "index_price": 1663.86,
-        "mark_price": 1663.26,
-        "last_price": 1663.26,
-        "open_interest": 76606516.0,
-        "open_interest_value": 1275238029.2456,
-        "turnover24h": 194135498236.0,
+        "funding": 5.97e-05,
+        "index_price": 1664.7,
+        "mark_price": 1663.88,
+        "last_price": 1663.46,
+        "open_interest": 76543560.0,
+        "open_interest_value": 1274373730.44,
+        "turnover24h": 194135772786.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
         "funding": 9.56e-05,
-        "index_price": 69.276,
-        "mark_price": 69.25,
-        "last_price": 69.25,
-        "open_interest": 7111920.0,
-        "open_interest_value": 492784936.8,
-        "turnover24h": 4652073305.0,
+        "index_price": 69.352,
+        "mark_price": 69.32,
+        "last_price": 69.29,
+        "open_interest": 7116432.0,
+        "open_interest_value": 493026408.96,
+        "turnover24h": 4652075705.0,
         "source": "Gate.io Futures API"
       }
     },
     "prices": {
       "BTC": {
-        "usd": 59415.0,
-        "change24": -1.450753141440304,
-        "volume24": 28494906033.66733,
+        "usd": 59420.0,
+        "change24": -1.369794117288612,
+        "volume24": 28565005960.98189,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 59415.0,
-          "Coinbase": 59389.57,
-          "Gate.io Spot": 59421.9
+          "CoinGecko": 59420.0,
+          "Coinbase": 59397.76,
+          "Gate.io Spot": 59463.7
         },
-        "dispersion_pct": 0.05441386855171546
+        "dispersion_pct": 0.1109727364523646
       },
       "ETH": {
-        "usd": 1663.36,
-        "change24": -1.8048971763354034,
-        "volume24": 9920839450.520636,
+        "usd": 1664.01,
+        "change24": -1.658017705156251,
+        "volume24": 9893143736.481615,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 1663.36,
-          "Coinbase": 1662.75,
-          "Gate.io Spot": 1663.66
+          "CoinGecko": 1663.79,
+          "Coinbase": 1664.01,
+          "Gate.io Spot": 1664.78
         },
-        "dispersion_pct": 0.054708541746830625
+        "dispersion_pct": 0.05949483476661853
       },
       "SOL": {
-        "usd": 69.26,
-        "change24": -2.5695940172036895,
-        "volume24": 2407799490.1906443,
+        "usd": 69.3,
+        "change24": -2.4370748431102616,
+        "volume24": 2411952851.332598,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 69.24,
-          "Coinbase": 69.26,
-          "Gate.io Spot": 69.28
+          "CoinGecko": 69.26,
+          "Coinbase": 69.3,
+          "Gate.io Spot": 69.35
         },
-        "dispersion_pct": 0.05775339301184847
+        "dispersion_pct": 0.12987012987011431
       }
     },
     "price_verified": true,
@@ -167,7 +167,7 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-11-25T12:43:31+09:00"
+    "checked_at_kst": "2026-11-25T12:48:35+09:00"
   },
   "nvidia_earnings": {
     "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027",
@@ -175,7 +175,7 @@
     "date": "2026-11-18",
     "revenue_b": 115.8,
     "verified": true,
-    "rss_checked_at_kst": "2026-11-25T12:43:37+09:00"
+    "rss_checked_at_kst": "2026-11-25T12:48:39+09:00"
   },
   "news_seen": [
     "01dd2dd9ae7aac7c855518c6",
