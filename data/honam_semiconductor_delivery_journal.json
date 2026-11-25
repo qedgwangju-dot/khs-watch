@@ -3,7 +3,9 @@
   "batch_id": "90920f4c7c43137a548c7a6727f3d87d5c8ea2ca8a790e549bd21afdaee8aad1",
   "status": "sending",
   "total_parts": 2,
-  "message_ids": [],
+  "message_ids": [
+    220
+  ],
   "event_keys": [
     "3f42a00606fcaf90effbbec3dbb2",
     "4d7c81f11ad5e763081f232b5849",
