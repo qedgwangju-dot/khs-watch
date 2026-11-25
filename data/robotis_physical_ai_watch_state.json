@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-25T02:21:45.193743+00:00",
+  "updated_at": "2026-11-25T03:09:53.394543+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1032,10 +1032,11 @@
     "4c1e938e5ed073184c87f0998e4e45a0c9f537ec72f10322520015fd0d791f25",
     "751ef7193216b495963c6c97cf6536302ecb5af7301f214f780c899a8778b462",
     "3cdbb85f626f3756cfa515554b61bfcb324eb946fb9eec3523bb1bf59a859af3",
-    "661720387e90f563680766e0249177716b86c2fd5dfd5883abfab2cbc8f817a7"
+    "661720387e90f563680766e0249177716b86c2fd5dfd5883abfab2cbc8f817a7",
+    "4a37a567bce13695dc75b32e48a8f832cabc09ea89595b51423c4fdf8b5912f5"
   ],
   "last_selected": [
-    "661720387e90f563680766e0249177716b86c2fd5dfd5883abfab2cbc8f817a7"
+    "4a37a567bce13695dc75b32e48a8f832cabc09ea89595b51423c4fdf8b5912f5"
   ],
   "groups": [
     "ess_battery",
@@ -1044,27 +1045,10 @@
     "nov23_musk_ai5",
     "nov23_rainbow_broker",
     "nov23_rareearth_shortage",
+    "robotis",
     "robotis_excess_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 44967660229,
-      "outcome": "sent",
-      "confirmed_event_keys": [
-        "4063b017a2f94e0402efa9363f4f585069aa799a96c3c5e3aba57b29a412576d"
-      ],
-      "message_ids": [
-        401
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-22T00:39:56.527924+00:00"
-    },
     {
       "run_id": 44979238986,
       "outcome": "normal_silence",
@@ -1316,16 +1300,34 @@
         false
       ],
       "state_timestamp_utc": "2026-11-25T02:21:45.193743+00:00"
+    },
+    {
+      "run_id": 45537965507,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "4a37a567bce13695dc75b32e48a8f832cabc09ea89595b51423c4fdf8b5912f5"
+      ],
+      "message_ids": [
+        409
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-25T03:09:53.394543+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 45532278230,
+    "run_id": 45537965507,
     "outcome": "sent",
     "confirmed_event_keys": [
-      "661720387e90f563680766e0249177716b86c2fd5dfd5883abfab2cbc8f817a7"
+      "4a37a567bce13695dc75b32e48a8f832cabc09ea89595b51423c4fdf8b5912f5"
     ],
     "message_ids": [
-      408
+      409
     ],
     "recipient_verified": true,
     "recipient_checks": [
@@ -1334,17 +1336,17 @@
     "message_topic_present": [
       false
     ],
-    "state_timestamp_utc": "2026-11-25T02:21:45.193743+00:00"
+    "state_timestamp_utc": "2026-11-25T03:09:53.394543+00:00"
   },
   "last_selected_events": [
     {
-      "key": "661720387e90f563680766e0249177716b86c2fd5dfd5883abfab2cbc8f817a7",
-      "group": "ess_battery",
-      "title": "삼성SDI, ESS 수주 60GWh 돌파…2028년까지 공장 풀가동 물량 확보 - 핀포인트뉴스",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE83aGJ5ZHE2ZGljbGF3ZGFLdGtlT0U1U3NaVkE1b2owVnN5dm5sbjVYMkkzZWtyZ0V2ekRtc0p2S1FxaDcwVkgzWEtfRjlMQkNxZEpxZXNRX3RZN0JOX3lXQmlDWlZ6aUcxQVBJUzBCU2JjcmfSAXdBVV95cUxOeEwxNmd1R1dTdGVqMFo0X3ZYR3JOMi1yOVJnMTNsUkFfUjFTdWpESUFjbjFtRWQzY091VmFzQ0tLYkVNZHZqZDBYdXhtM29mQ2RhbVpvTFNRc0ptaFlrb0g1aVQ2X09iZFdEeFJ5UlR5cXZxMXpLdw?oc=5",
-      "source": "핀포인트뉴스",
-      "source_url": "https://www.pinpointnews.co.kr",
-      "published": "2026-11-24T23:18:29+00:00"
+      "key": "4a37a567bce13695dc75b32e48a8f832cabc09ea89595b51423c4fdf8b5912f5",
+      "group": "robotis",
+      "title": "[종목 포커스] 로보티즈, 내년 우즈벡 공장 가동으로 공급난 해소…주가 우상향? - 데일리인베스트",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFAxaVJQT1pfYUpJU01FbTdzR2RhbWh0V1d6dEtvWTkxd2prT2NlNzNXNkFsVUFkVGtzMXJBOGJET0ZZcFhkM2RzUmRQWUZiY0Y0cjhWTWw0MFUxNmptM0hCejdKSTB1ZVhmX1Z5elpoTdIBb0FVX3lxTFAxaVJQT1pfYUpJU01FbTdzR2RhbWh0V1d6dEtvWTkxd2prT2NlNzNXNkFsVUFkVGtzMXJBOGJET0ZZcFhkM2RzUmRQWUZiY0Y0cjhWTWw0MFUxNmptM0hCejdKSTB1ZVhmX1Z5elpoTQ?oc=5",
+      "source": "데일리인베스트",
+      "source_url": "http://www.dailyinvest.kr",
+      "published": "2026-11-25T01:52:54+00:00"
     }
   ],
   "message_corrections": {
