@@ -1,12 +1,18 @@
 {
   "correction_pending": false,
-  "evidence": [],
+  "evidence": [
+    {
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOdDZWdDhjRm05WnEzWmk4Rld4ZFlIUE1pdWtNT2F5aDJ1dFYtd0ExdnIzTi1wV0xHbGI2NWVuZUk0TGs5M0lIVHJNSlF6UUItTVJOQk1rTHB5cTB6YzlxMHBHR3ZYcHI4Y29SdEdjbEhLcWdZRUllTlBTZm9yQWhmMTJ3?oc=5",
+      "published_utc": "2026-11-25T01:14:20+00:00",
+      "source": "Google News RSS",
+      "title": "What Samsung’s USDC Wallet Means for Stablecoin Payments - OneSafe"
+    }
+  ],
   "official": {
     "article_confirmed": true,
     "bastion_partner_primary": false,
     "errors": [
       "wallet_patent_us: HTTP Error 403: Forbidden",
-      "solana_partner_primary: HTTP Error 403: Forbidden",
       "bastion_partner_primary: HTTP Error 403: Forbidden"
     ],
     "explicit_reversal_confirmed": false,
@@ -16,7 +22,7 @@
     "kbw_executive_primary_confirmed": true,
     "pilot_live_confirmed": false,
     "samsung_support_confirmed": true,
-    "solana_partner_primary": false,
+    "solana_partner_primary": true,
     "sui_partner_primary": true,
     "wallet_patent_family_confirmed": true,
     "wallet_patent_news_confirmed": true,
@@ -31,6 +37,7 @@
     "official_job_scope_now": false,
     "partner_primary_confirmed": true,
     "partner_primary_sources": [
+      "Solana",
       "Sui"
     ],
     "pilot_or_launch": false,
@@ -49,5 +56,5 @@
     "wallet_patent_publication": "US20260212355A1",
     "wallet_patent_publication_date": "2026-07-23"
   },
-  "updated_at_kst": "2026-11-25T03:15:38+09:00"
+  "updated_at_kst": "2026-11-25T11:39:23+09:00"
 }
