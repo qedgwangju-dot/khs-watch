@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-11-25T21:40:20+09:00",
+  "last_checked_kst": "2026-11-25T21:54:13+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": false,
@@ -761,7 +761,7 @@
       },
       {
         "date": "2026-11-25",
-        "value": 3.22
+        "value": 3.23
       }
     ],
     "it10": [
@@ -907,7 +907,7 @@
       },
       {
         "date": "2026-11-25",
-        "value": 4.34
+        "value": 4.35
       }
     ],
     "uk_mkt": [
@@ -1053,7 +1053,7 @@
       },
       {
         "date": "2026-11-25",
-        "value": 5.15
+        "value": 5.16
       }
     ]
   },
@@ -1079,9 +1079,9 @@
     "de10": 3.22,
     "uk10": 5.1793,
     "fr_mkt": 4.72,
-    "de_mkt": 3.22,
-    "it10": 4.34,
-    "uk_mkt": 5.15
+    "de_mkt": 3.23,
+    "it10": 4.35,
+    "uk_mkt": 5.16
   },
   "last_change_basis": {
     "fr10": "공식자료 이전 관측일 2026-11-24 대비",
@@ -1095,6 +1095,7 @@
   "stale": [
     "uk10"
   ],
+  "last_photo_delivery": null,
   "france_credit": {
     "last_official": {
       "agency": "Moody's",
@@ -1128,10 +1129,10 @@
       "sp_milestone:2026-11-27:D-7",
       "sp_milestone:2026-11-27:D-3"
     ],
-    "checked_at_kst": "2026-11-25T21:40:26+09:00",
-    "source_fail_streak": 219,
+    "checked_at_kst": "2026-11-25T21:54:19+09:00",
+    "source_fail_streak": 220,
     "sp_ministry_source_status": "historical_statement_verified",
-    "sp_ministry_last_checked_kst": "2026-11-25T21:40:26+09:00",
+    "sp_ministry_last_checked_kst": "2026-11-25T21:54:19+09:00",
     "source_access": "access_restricted"
   }
 }
