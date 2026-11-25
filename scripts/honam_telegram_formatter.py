@@ -4,6 +4,8 @@ import email.utils
 import html
 import json
 import pathlib
+import re
+from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -71,163 +73,238 @@ def fmt_published(value: str) -> str:
 
 
 def impact_label(value: str) -> str:
-    value = value or ""
-    if "지연" in value or "병목" in value or "보완" in value:
-        return value
-    if "진행" in value:
-        return "한 단계 진행"
-    if "정주" in value or "기반시설" in value or "시간표" in value:
-        return value
-    return "영향 확인 필요"
+    # Do not discard a specific funding or supply warning into a generic label.
+    return str(value or "").strip()
 
 
-def link_line(url: str, label: str = "근거 보기") -> str:
-    if not url:
+def link_line(url: str, label: str = "원문 보기") -> str:
+    parsed = urlparse(url or "")
+    if parsed.scheme not in ("http", "https") or not parsed.hostname:
         return ""
     return f'<a href="{esc(url)}">{esc(label)}</a>'
 
 
+def source_name(value):
+    text = re.sub(r"^Google 뉴스 경유\s*·\s*", "", str(value or "").strip(), flags=re.I)
+    text = re.sub(r"\s+on\s+MSN$", "", text, flags=re.I)
+    text = re.sub(r"\((?:네이버|다음)\)$", "", text).strip()
+    return {"yna.co.kr": "연합뉴스", "newsis.com": "뉴시스", "news1.kr": "뉴스1",
+            "namdonews.com": "남도일보", "mdilbo.com": "무등일보"}.get(text.casefold(), text or "근거자료")
+
+
 def evidence_lines(item: dict):
-    evidence = item.get("evidence_sources") or []
-    if not evidence:
-        url = item.get("url")
-        source = item.get("source") or "근거자료"
-        if not url:
-            return []
-        return [f"• 감지 근거: {esc(source)} · {link_line(url, '근거 보기')}"]
-    lines = [f"• 감지 근거: {len(evidence)}개 링크"]
+    evidence = item.get("evidence_sources") or [{
+        "source": item.get("source"), "url": item.get("url"),
+        "published": item.get("published"), "body_status": item.get("body_status")
+    }]
+    groups = {}
+    seen = set()
     for ev in evidence:
-        source = ev.get("source") or "근거자료"
-        url = ev.get("url") or ""
-        if url:
-            label = "검색 경유 링크(원문 미확보)" if "news.google.com" in url or "bing.com/news" in url else ("발행사 링크(본문 미확보)" if "미확보" in ev.get("body_status", "") else "원문 보기")
-            lines.append(f"  - {esc(source)} · {link_line(url, label)}")
-        else:
-            lines.append(f"  - {esc(source)}")
+        url = str(ev.get("url") or "")
+        name = source_name(ev.get("source"))
+        if not link_line(url) or (name, url) in seen:
+            continue
+        seen.add((name, url))
+        groups.setdefault(name, []).append(ev)
+    if not groups:
+        return []
+    lines = ["<b>출처</b>"]
+    for name, refs in groups.items():
+        # Different articles by the same publisher remain separate links,
+        # without presenting a syndicated copy as an independent publisher.
+        for ev in refs:
+            url = ev["url"]
+            host = (urlparse(url).hostname or "").lower()
+            if host == "news.google.com" or host.endswith(".bing.com") or host == "bing.com":
+                label = "검색 경유 링크(원문 미확보)"
+            elif host == "msn.com" or host.endswith(".msn.com"):
+                label = "재게시 링크"
+            elif "미확보" in str(ev.get("body_status") or ""):
+                label = "발행사 링크(본문 미확보)"
+            else:
+                label = "원문 보기"
+            when = fmt_published(ev.get("published") or "")
+            # A feed timestamp is not a verified publication time.
+            if when and item.get("intake_verified") and ev.get("body_status") == "등록된 출처별 검증 메모":
+                when = when.replace("2026-", "").replace(" KST", "")
+                label = f"{when} · {label}"
+            elif when and not item.get("intake_verified"):
+                label += f" · RSS {when}(송고시각 미확인)"
+            lines.append(f"• {esc(name)} · {link_line(url, label)}")
     return lines
 
 
-def build_message(data: dict) -> str:
-    official = data.get("official_changes", [])
-    news = data.get("new_items", [])
-    total = int(data.get("new_count") or len(official) + len(news))
+def _fact_parts(value):
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if not text:
+        return []
+    # Split complete sentences only, without changing number/date strings.
+    return [part.strip() for part in re.split(r"(?<=[.!?。])\s+(?=[가-힣A-Z0-9\[])", text) if part.strip()]
 
-    active = {key: False for key in STAGE_LABELS}
-    inactive_label = "미확인(일부 원천 조회 실패)" if data.get("rss_failed_queries") or data.get("official_source_partial_failure") else "조회 범위 내 새 변화 미감지"
-    for item in official:
-        stage = item.get("stage")
-        if stage in active:
-            active[stage] = True
-    for item in news:
-        for stage in item.get("stages", []):
-            if stage in active:
-                active[stage] = True
 
-    lead_count = sum(1 for item in official + news if item.get("alert_type") == "선행경보")
+def _fact_identity(value):
+    return re.sub(r"[\s·•\"'“”‘’]+", "", str(value or "")).strip(" .。").casefold()
+
+
+def fact_display(item):
+    lines, seen = [], set()
+    # Reviewed structured facts are the report; raw article copies remain
+    # evidence rather than being printed a second time.
+    reviewed = bool(item.get("summary_lines") or item.get("detail_lines"))
+    fields = list(item.get("summary_lines") or []) + list(item.get("detail_lines") or [])
+    if not reviewed:
+        fields += list(item.get("fact_lines") or [])
+        if not fields and item.get("detail"):
+            fields.append(item["detail"])
+        if fields and item.get("fact_lines"):
+            lines.append("<b>본문 확인 사항(자동 발췌)</b>")
+    for field in fields:
+        if re.fullmatch(r"【[^】]+】", str(field).strip()):
+            title = str(field).strip()[1:-1]
+            lines.extend(["", f"<b>{esc(title)}</b>"])
+            continue
+        for part in _fact_parts(field):
+            key = _fact_identity(part)
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            # Short explicit labels make values easier to find on a phone.
+            labeled = re.match(r"^([^:：]{1,24})[:：]\s*(.+)$", part)
+            if labeled:
+                lines.append(f"• <b>{esc(labeled.group(1))}</b>: {esc(labeled.group(2))}")
+            else:
+                lines.append(f"• {esc(part)}")
+    return lines
+
+
+def event_stages(item):
+    stages = [stage for stage in item.get("stages", []) if stage in STAGE_LABELS]
+    if not stages and item.get("stage") in STAGE_LABELS:
+        stages = [item["stage"]]
+    return list(dict.fromkeys(stages))
+
+
+def _event_block(item, index, official=False):
+    title = clean_title(item.get("title") or item.get("headline") or "관련 변화", item.get("source", ""))
+    stages = event_stages(item)
+    labels = " · ".join(STAGE_LABELS[key] for key in stages) or "관련 변화"
+    if item.get("recovery"):
+        title = re.sub(r"^\d+월\s*\d+일\s*누락 보완:\s*", "", title)
+    lead = item.get("alert_type") == "선행경보"
+    verification = str(item.get("verification_status") or item.get("source_status") or ("공식자료" if official else "보도 단계"))
+    if lead:
+        verification = verification.replace(" · 실행·계약 확정 아님", "")
+        phase = "선행경보 · 검토/계획/보도(실행 확정 아님)"
+    else:
+        phase = "신규 상태 변화"
     lines = [
-        "🚨 <b>호남 반도체 국가산단</b>",
-        f"신규 변화 <b>{total - lead_count}건</b> · 선행경보 <b>{lead_count}건</b> · 조회 {esc(fmt_checked(data.get('checked_at_kst', '')))}",
-        "• 기준: 주제·사건·공식 상태 변화",
-        "• 기사 링크: 감지 근거·교차검증용",
-        "",
-        "<b>핵심 3단계</b>",
+        f"<b>■ {index}. {esc(title)}</b>",
+        f"{esc(labels)} | <b>{esc(phase)}</b>",
+        f"확인도: {esc(verification)}" + (" · 누락 보완" if item.get("recovery") else ""),
     ]
-    for stage, label in CORE_STAGE_LABELS.items():
-        status = "<b>변화 감지</b>" if active[stage] else inactive_label
-        lines.append(f"• {label}: {status}")
+    if item.get("verification_upgrade"):
+        lines.append("검증 변화: 기존 보도보다 확인 단계 상승")
+    facts = fact_display(item)
+    if facts:
+        lines.extend(["", *facts])
+    body_status = str(item.get("body_status") or "")
+    if "미확보" in body_status:
+        lines.extend(["", f"원천 한계: {esc(body_status)}"])
+    elif not facts and not official and not item.get("intake_verified"):
+        lines.extend(["", "세부 내용: 확인된 원문 핵심 수치·일정 없음(추가 확인 필요)"])
+    note = str(item.get("verification_note") or "").strip()
+    if note:
+        lines.extend(["", f"검증 범위: {esc(note)}"])
+    impact = impact_label(item.get("impact", ""))
+    reason = str(item.get("reason") or "").strip()
+    if impact and impact != "영향 확인 필요":
+        lines.extend(["", f"<b>의미</b>: {esc(impact)}"])
+    if reason and _fact_identity(reason) != _fact_identity(impact):
+        lines.append(f"후속 확인: {esc(reason)}")
+    sources = evidence_lines(item)
+    if sources:
+        lines.extend(["", *sources])
+    return "\n".join(lines)
 
-    lines += ["", "<b>추가 프로젝트 변화</b>"]
-    for stage, label in PROJECT_STAGE_LABELS.items():
-        status = "<b>변화 감지</b>" if active[stage] else inactive_label
-        lines.append(f"• {label}: {status}")
 
-    for item in official:
-        label = item.get("stage_label") or STAGE_LABELS.get(item.get("stage"), "공식자료")
-        lines += [
-            "",
-            f"<b>{esc(label)}</b>",
-            f"• 무엇이 달라졌나: {esc(item.get('headline', '공식 핵심정보 변경'))}",
-        ]
-        detail = (item.get("detail") or "").strip()
-        if detail:
-            lines.append(f"• 확인 내용: {esc(detail)}")
-        reason = (item.get("reason") or "").strip()
-        if reason:
-            lines.append(f"• 왜 중요: {esc(reason)}")
-        lines += [
-            f"• 현재 판정: <b>{esc(impact_label(item.get('impact', '')))}</b>",
-            f"• 확인도: {esc(item.get('verification_status') or item.get('source_status') or '공식자료')}",
-        ]
-        if item.get("verification_upgrade"):
-            lines.append("• 검증 변화: <b>기존 보도 신호 → 더 높은 확인 단계로 승격</b>")
-        lines += evidence_lines(item)
-
-    for item in news:
-        stages = item.get("stage_labels") or [STAGE_LABELS.get(stage, stage) for stage in item.get("stages", [])]
-        label = " · ".join(stages) if stages else "관련 변화"
-        source = item.get("source") or "웹 검색"
-        title = clean_title(item.get("title", ""), source)
-        lines += [
-            "",
-            f"<b>{esc(label)}</b>",
-            f"• 무엇이 달라졌나: {esc(title)}",
-        ]
-        if item.get("recovery"):
-            lines.append("<b>누락 보완 · 기존 제목 재발송 아님</b>")
-        if item.get("alert_type") == "선행경보":
-            lines.append("<b>선행경보 · 검토·계획·보도와 확정 단계 구분</b>")
-        for point in item.get("summary_lines") or []:
-            lines.append(f"• {esc(point)}")
-        for detail in item.get("detail_lines") or []:
-            lines.append(f"  - {esc(detail)}")
-        if item.get("body_status"):
-            lines.append(f"• 원천 상태: {esc(item['body_status'])}")
-        if item.get("fact_lines") and not item.get("summary_lines"):
-            lines.append("<b>본문 주요 근거(자동 발췌·전체 요약 아님)</b>")
-            for point in item["fact_lines"]:
-                lines.append(f"• {esc(point)}")
-        note = (item.get("verification_note") or "").strip()
-        if note:
-            lines.append(f"• 검증 범위: {esc(note)}")
-        reason = (item.get("reason") or "").strip()
-        if reason:
-            lines.append(f"• 왜 중요: {esc(reason)}")
-        lines += [
-            f"• 현재 판정: <b>{esc(impact_label(item.get('impact', '')))}</b>",
-            f"• 확인도: {esc(item.get('verification_status') or item.get('source_status') or '보도 단계')}",
-        ]
-        if item.get("verification_upgrade"):
-            lines.append("• 검증 변화: <b>기존 보도 신호 → 더 높은 확인 단계로 승격</b>")
-        published = fmt_published(item.get("published", ""))
-        if published:
-            lines.append(f"• 최초 감지 근거 공개: {esc(published)}")
-        lines += evidence_lines(item)
-
-    lines += [
-        "",
-        "<b>우선 확인 순서</b>",
-        "① 수행업체 선정·현지조사 → ② 수량·수질 조사범위 → ③ 람사르 심사 결과",
-        "정주·주거, 전력·용수·교통, 기업투자·팹 일정도 별도 중요 변화로 함께 감시",
+def build_message(data: dict) -> str:
+    official = list(data.get("official_changes") or [])
+    news = list(data.get("new_items") or [])
+    events = [(item, True) for item in official] + [(item, False) for item in news]
+    total = len(events)
+    lead_count = sum(item.get("alert_type") == "선행경보" for item, _ in events)
+    active = {key: set() for key in STAGE_LABELS}
+    for item, _ in events:
+        for stage in event_stages(item):
+            active[stage].add("선행경보" if item.get("alert_type") == "선행경보" else "상태 변화")
+    header = [
+        "<b>호남 반도체 국가산단</b>",
+        f"신규 변화 <b>{total - lead_count}건</b> · 선행경보 <b>{lead_count}건</b>",
+        f"조회: {esc(fmt_checked(data.get('checked_at_kst', '')))}",
     ]
-    return "\n".join(lines).strip()
+    blocks = ["\n".join(header)]
+    for index, (item, is_official) in enumerate(events, 1):
+        blocks.append(_event_block(item, index, is_official))
+    partial = bool(data.get("rss_failed_queries") or data.get("official_source_partial_failure"))
+    # Unchanged items are summarized once at the bottom, not interposed
+    # between the headline and the facts that the user needs to read.
+    footer = ["<b>감시 상태</b>"]
+    for stages, title in ((CORE_STAGE_LABELS, "환경 3단계"), (PROJECT_STAGE_LABELS, "사업 3단계")):
+        changed = [f"{label}({('/'.join(sorted(active[key])))})" for key, label in stages.items() if active[key]]
+        unchanged = [label for key, label in stages.items() if not active[key]]
+        if changed:
+            footer.append(f"• {title} 감지: {esc(' · '.join(changed))}")
+        if unchanged:
+            status = "미확인(일부 원천 조회 실패)" if partial else "조회 범위 내 변화 미감지"
+            footer.append(f"• {esc(status)}: {esc(' · '.join(unchanged))}")
+    if partial:
+        footer.append("※ 조회 실패를 신규 발표 없음으로 판단하지 않음.")
+    blocks.append("\n".join(footer))
+    return "\n\n".join(blocks).strip()
 
 
 def split_message(text: str, limit: int = 3900):
-    chunks = []
-    current = ""
-    for line in text.splitlines(True):
-        if len(line.rstrip()) > limit - 80:
-            raise ValueError("호남 알림 단일 행 길이 초과: 내용 임의 절단 금지")
-        if len(current) + len(line) > limit - 80 and current:
-            chunks.append(current.rstrip())
+    if not text.strip():
+        return []
+    if len(text) <= limit:
+        return [text]
+    budget = limit - 80
+    if budget < 100:
+        raise ValueError("호남 알림 길이 설정 오류")
+    # Prefer complete event blocks. If a single event is long, split
+    # only between complete lines, and retain its heading on continuation.
+    blocks = re.split(r"\n\n(?=<b>(?:■ \d+\. |감시 상태</b>))", text)
+    chunks, current = [], ""
+    for block in blocks:
+        if len(block) <= budget:
+            joined = current + "\n\n" + block if current else block
+            if len(joined) <= budget:
+                current = joined
+            else:
+                if current:
+                    chunks.append(current)
+                current = block
+            continue
+        if current:
+            chunks.append(current)
             current = ""
-        current += line
+        heading = block.split("\n", 1)[0]
+        continuation = heading[:-4] + " (계속)</b>" if heading.startswith("<b>■ ") and heading.endswith("</b>") else "<b>호남 반도체 상세(계속)</b>"
+        for line in block.split("\n"):
+            if len(line) > budget - len(continuation) - 1:
+                raise ValueError("호남 알림 단일 행 길이 초과: 내용 임의 절단 금지")
+            joined = current + "\n" + line if current else line
+            if len(joined) > budget:
+                chunks.append(current.rstrip())
+                current = continuation + "\n" + line
+            else:
+                current = joined
     if current.strip():
         chunks.append(current.rstrip())
-    if len(chunks) > 1:
-        chunks = [f"<b>호남 반도체 알림 {idx}/{len(chunks)}</b>\n{chunk}" for idx, chunk in enumerate(chunks, 1)]
-    return chunks
-
+    result = [f"<b>호남 반도체 알림 {idx}/{len(chunks)}</b>\n{chunk}" for idx, chunk in enumerate(chunks, 1)]
+    if any(len(chunk) > limit for chunk in result):
+        raise ValueError("호남 알림 분할 길이 오류")
+    return result
 
 def main():
     data = json.loads(IN_PATH.read_text(encoding="utf-8"))

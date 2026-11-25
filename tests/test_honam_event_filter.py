@@ -797,6 +797,69 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             verified_receipt({"ok":True,"result":{"chat":{"id":-123}}},"-123")
 
+
+    def test_honam_readable_report_keeps_all_reviewed_facts_once(self):
+        items = [i for i in verified_intake_events({"seen_event_keys": []}) if i.get("recovery")]
+        groups = {}
+        for item in items:
+            groups.setdefault(_event_family(item), []).append(item)
+        merged = [_merge_group(group) for group in groups.values()]
+        msg = build_message({"new_items": merged, "official_changes": [], "new_count": 7,
+                             "checked_at_kst": "2026-11-25T19:49:00+09:00"})
+        self.assertIn("선행경보 <b>2건</b>", msg)
+        self.assertEqual(msg.count("<b>■ "), 2)
+        self.assertIn("<b>주거 수요·공급 구상</b>", msg)
+        self.assertIn("<b>16:04 연합뉴스 · 시의회 예산심사</b>", msg)
+        for value in ("1만2천~1만3천명", "1만호", "1만4천가구", "6,800", "3,200가구",
+                      "85만2,693㎡", "1조5,790억원", "2027.12", "2031년", "2027년 본예산",
+                      "723억원", "722억8,600만원", "5만t/일", "10만t/일",
+                      "1,350㎜", "1,000㎜", "7천㎥", "2028.12", "66억원",
+                      "168억원", "180억원", "11.9억원", "34.8억원", "253필지", "1.5조원"):
+            self.assertIn(value, msg)
+        self.assertNotIn("왜 중요:", msg)
+        self.assertNotIn("② 장록습지 수량·수질(선행경보)", msg)
+        self.assertIn("조회 범위 내 변화 미감지", msg)
+        self.assertTrue(all(len(chunk) <= 3900 for chunk in split_message(msg)))
+
+    def test_industrial_water_not_reported_as_wetland_or_fab_change(self):
+        item = {"title":"호남 반도체 덕남정수장 개량 예산 검토", "description":"용수 공급을 위한 취수시설 계획",
+                "source":"연합뉴스", "source_status":"보도 단계",
+                "stages":["2_수량수질_조사범위","5_기반시설_생활SOC","6_산단투자_기업일정"],
+                "reason":"장록습지 수량·수질 검증", "impact":"기반시설·전원 인가 시간표 영향"}
+        merged = _merge_group([item])
+        self.assertEqual(merged["stages"], ["5_기반시설_생활SOC"])
+        self.assertNotIn("장록", merged["reason"])
+        self.assertIn("용수", merged["impact"])
+        actual = dict(item, title="호남 반도체 장록습지 수량·수질 현지조사 착수",
+                      description="장록습지의 수위 및 수질 조사", stages=["2_수량수질_조사범위"])
+        self.assertEqual(_merge_group([actual])["stages"], ["2_수량수질_조사범위"])
+
+    def test_msn_reprint_not_independent_source(self):
+        a = {"title":"호남 반도체 주거대책 검토", "source":"연합뉴스", "source_status":"보도 단계",
+             "url":"https://www.yna.co.kr/view/test","stages":["4_정주주거_배후도시"]}
+        b = dict(a, source="연합뉴스 on MSN", url="https://www.msn.com/ko-kr/news/test")
+        merged = _merge_group([a,b])
+        self.assertEqual(merged["verification_level"], 1)
+        self.assertIn("재게시 링크", build_message({"new_items":[merged]}))
+
+    def test_long_message_splits_by_event_and_keeps_continuation_context(self):
+        items = [
+            {"title":"사건 A", "summary_lines":["A 수치: "+str(n)+"억원 "+"가"*55 for n in range(42)],
+             "alert_type":"선행경보","stages":["4_정주주거_배후도시"]},
+            {"title":"사건 B", "summary_lines":["B 수치: "+str(n)+"억원 "+"나"*55 for n in range(22)],
+             "alert_type":"선행경보","stages":["5_기반시설_생활SOC"]}
+        ]
+        chunks = split_message(build_message({"new_items":items}), limit=900)
+        self.assertGreater(len(chunks), 2)
+        self.assertTrue(all(len(chunk) <= 900 for chunk in chunks))
+        self.assertTrue(any("계속" in chunk for chunk in chunks))
+        combined = "\n".join(chunks)
+        for n in range(42):
+            self.assertIn(f"{n}억원 " + "가"*55, combined)
+        for n in range(22):
+            self.assertIn(f"{n}억원 " + "나"*55, combined)
+        self.assertIn("사건 B", combined)
+
     def test_nov18_leads_remain_preliminary_and_separately_keyed(self):
         vetted = verified_intake_events({"seen_event_keys": []})
         allocation = [i for i in vetted if i.get("event_family") == "honam_fab_lead_site_allocation_20261118"]

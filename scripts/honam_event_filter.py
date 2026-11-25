@@ -298,6 +298,7 @@ POWER_PLACE_WORDS = ("호남 반도체", "호남권 반도체", "서남권 반�
 def _power_source(item):
     raw = _norm(item.get("source"))
     raw = re.sub(r"^Google 뉴스 경유\s*·\s*", "", raw, flags=re.I)
+    raw = re.sub(r"\s+on\s+MSN$", "", raw, flags=re.I)
     raw = re.sub(r"\((?:네이버|다음)\)$", "", raw).strip().lower()
     return {"yna.co.kr":"연합뉴스", "yna":"연합뉴스", "newsis.com":"뉴시스", "newsis":"뉴시스", "news1.kr":"뉴스1", "news1":"뉴스1", "namdonews.com":"남도일보", "mdilbo.com":"무등일보"}.get(raw, raw)
 
@@ -681,6 +682,51 @@ def _summarize_event(items):
     return "호남 반도체 관련 상태 변화"
 
 
+def _refine_report_stages(item, ordered):
+    """Stage labels are direct event facts, not incidental keyword matches."""
+    if item.get("intake_verified"):
+        return
+    heading = _norm(item.get("title") or item.get("headline"))
+    texts = [heading]
+    for evidence in ordered:
+        for field in ("title", "headline", "description", "detail"):
+            texts.extend(re.split(r"(?<=[.!?])\s+|\n+", str(evidence.get(field) or "")))
+        texts.extend(str(fact) for fact in evidence.get("fact_lines") or [])
+    def explicit(*terms):
+        return any(all(any(term in line.casefold() for term in alternatives) for alternatives in terms) for line in texts)
+    original = list(item.get("stages") or [])
+    stages = list(original)
+    # An official LH page with a specific stage is already explicitly mapped.
+    fixed = {ev.get("stage") for ev in ordered if ev.get("_kind") == "official" and ev.get("stage")}
+    checks = {
+        "1_용역선정_현지조사": explicit(("환경영향평가", "기후변화영향평가", "장록", "jangrok"), ("용역", "현지조사", "현장조사", "낙찰", "선정", "계약", "착수", "개찰")),
+        "2_수량수질_조사범위": explicit(("장록", "jangrok"), ("수량", "수질", "유량", "수위", "지하수", "취수", "방류", "조사범위", "저감대책", "생태계", "수생태", "조사 지점")),
+        "3_람사르_심사결과": explicit(("람사르", "ramsar"), ("등록", "등재", "심사", "보완", "승인", "지정", "신청")),
+    }
+    stages = [stage for stage in stages if stage in fixed or stage not in checks or checks[stage]]
+    housing = any(x in heading for x in ("건설인력", "공공임대", "주거대책", "모듈러", "정주", "도심융합특구", "주거벨트", "노바"))
+    water = any(x in heading for x in ("덕남정수장", "송수관", "동복댐", "산업용수", "반도체 용수"))
+    fab = bool(re.search(r"(?:팹|반도체\s*(?:공장|생산시설))[^.!?]{0,18}(?:착공|준공|양산|투자계약|건설계약)", heading))
+    if (housing or water) and not fab and "6_산단투자_기업일정" not in fixed:
+        stages = [stage for stage in stages if stage != "6_산단투자_기업일정"]
+    if housing and not water and not any(x in heading for x in ("전력", "용수", "정수장", "송수관", "도로", "교통", "의료", "학교", "전원 인가")):
+        stages = [stage for stage in stages if stage != "5_기반시설_생활SOC" or stage in fixed]
+    if stages != original:
+        labels = {"1_용역선정_현지조사": "① 용역업체 선정·현지조사",
+                  "2_수량수질_조사범위": "② 장록습지 수량·수질",
+                  "3_람사르_심사결과": "③ 람사르 등록 심사",
+                  "4_정주주거_배후도시": "④ 정주·주거·배후도시",
+                  "5_기반시설_생활SOC": "⑤ 전력·용수·교통·생활 인프라",
+                  "6_산단투자_기업일정": "⑥ 산단·기업투자·팹 일정"}
+        item["stages"] = stages
+        item["stage_labels"] = [labels[s] for s in stages if s in labels]
+    if water and "5_기반시설_생활SOC" in stages and "2_수량수질_조사범위" not in stages:
+        if "장록" in str(item.get("reason") or "") or "람사르" in str(item.get("reason") or ""):
+            item["reason"] = "용수원·정수시설·송수관의 재원, 발주, 준공 및 공급 일정 확인"
+        if "전원 인가" in str(item.get("impact") or ""):
+            item["impact"] = "산업용수 공급 준비 및 일정 영향"
+
+
 def _merge_group(items):
     ordered = sorted(
         items,
@@ -774,6 +820,7 @@ def _merge_group(items):
         first["headline"] = summary
     if len(evidence) > 1:
         first["source"] = " · ".join([e["source"] for e in evidence[:3]]) + (f" 외 {len(evidence)-3}곳" if len(evidence) > 3 else "")
+    _refine_report_stages(first, ordered)
     return first
 
 
