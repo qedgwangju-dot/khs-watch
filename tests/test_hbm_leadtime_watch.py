@@ -1358,5 +1358,69 @@ class LeadTimeAlertTests(unittest.TestCase):
             self.assertNotIn(verbose_heading, combined)
 
 
+
+class OpticalSupplyCapitalTests(unittest.TestCase):
+    @staticmethod
+    def body(url):
+        for spec in w.OPTICAL_EVENT_SOURCES.values():
+            if url in spec["official"]:
+                return " ".join(group[0] for group in spec["official_markers"])
+            if url in spec["corroboration"]:
+                return " ".join(group[0] for group in spec["corroboration_markers"])
+        raise TimeoutError("unavailable")
+
+    def test_current_events_verified_once_and_separate_from_weekly_table(self):
+        fx = {"rate": 1343.6, "date": "2026-11-25"}
+        state, alerts = w.optical_leadtime_update({}, "2026-11-25", fx, self.body, lambda *a: [])
+        self.assertEqual(len(alerts), 2)
+        self.assertEqual(len(state["seen_event_keys"]), 2)
+        self.assertIn("59.3%→58.9%", alerts[0])
+        self.assertIn("고객 자본 지원 약정 없음", alerts[1])
+        self.assertIn("22억달러(약 2조9,559억원)", alerts[1])
+        self.assertNotIn("components", state)
+        next_state, again = w.optical_leadtime_update(state, "2026-11-26", fx, self.body, lambda *a: [])
+        self.assertEqual(again, [])
+        self.assertEqual(next_state["seen_event_keys"], state["seen_event_keys"])
+
+    def test_failure_or_incomplete_not_seen_and_retryable(self):
+        fx = {"rate": 1343.6, "date": "2026-11-25"}
+        def down(*args):
+            raise TimeoutError("blocked")
+        state, alerts = w.optical_leadtime_update({}, "2026-11-25", fx, down, down)
+        self.assertEqual(alerts, [])
+        self.assertEqual(state["seen_event_keys"], [])
+        self.assertEqual(state["followup_health"]["status"], "lookup_failed")
+        for evidence in state["source_health"].values():
+            self.assertEqual(evidence["official"]["status"], "lookup_failed")
+        next_state, recovered = w.optical_leadtime_update(state, "2026-11-25", fx, self.body, lambda *a: [])
+        self.assertEqual(len(recovered), 2)
+        self.assertEqual(len(next_state["seen_event_keys"]), 2)
+
+    def test_fx_missing_does_not_consume_aaoi_event(self):
+        state, alerts = w.optical_leadtime_update({}, "2026-11-25", {}, self.body, lambda *a: [])
+        self.assertEqual(len(alerts), 1)
+        self.assertEqual(len(state["seen_event_keys"]), 1)
+        key = next(k for k in w.OPTICAL_EVENT_SOURCES if k.startswith("aaoi|"))
+        self.assertEqual(state["source_health"][key]["status"], "fx_unavailable")
+        _, alerts = w.optical_leadtime_update(state, "2026-11-26", {"rate":1343.6,"date":"2026-11-25"}, self.body, lambda *a: [])
+        self.assertEqual(len(alerts), 1)
+        self.assertIn("AAOI", alerts[0])
+
+    def test_followup_filters_old_undated_and_nonissuer_urls(self):
+        for url in ("https://investors.ao-inc.com/2026-11-24-old",
+                    "https://example.com/2026-11-27-news",
+                    "https://investors.ao-inc.com/news"):
+            self.assertFalse(w.optical_followup_candidate({"link":url}, "2026-11-28"))
+        url = "https://investors.ao-inc.com/2026-11-27-new-contract"
+        self.assertEqual(w.optical_followup_candidate({"link":url+"?utm_source=x"}, "2026-11-28"),
+                         ("aaoi","2026-11-27",url))
+        self.assertEqual(w.optical_followup_kind("aaoi", "New long-term agreement",
+                          "transceiver minimum purchase no commitment of capital"), "new_lta_no_capital")
+        self.assertFalse(w.optical_followup_kind("aaoi", "Quarterly results",
+                         "transceiver minimum purchase no commitment of capital"))
+        self.assertFalse(w.optical_followup_kind("aaoi", "New long-term agreement",
+                         "transceiver minimum purchase. Forward-looking statements: no commitment of capital"))
+
+
 if __name__ == "__main__":
     unittest.main()

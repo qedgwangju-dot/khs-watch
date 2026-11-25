@@ -1868,7 +1868,254 @@ def weekly_011_unchanged_update(previous: dict, today_kst: str) -> dict | None:
 
 
 
-def main() -> None:
+
+# Company-specific optical supply/capital signals are not TrendForce industry
+# lead-time observations. Keep their state under this collector, and let the
+# existing Rubin delivery transaction promote it only after acknowledgement.
+OPTICAL_EVENT_SOURCES = {
+    "smtc|2026-11-23|fy27q3|capacity-pullin": {
+        "date": "2026-11-23",
+        "official": (
+            "https://www.semtech.com/company/press/semtech-announces-third-quarter-of-fiscal-year-2027-results",
+            "https://investors.semtech.com/news/semtech-announces-third-quarter-of-fiscal-year-2027-results/1d4bfc37-9eae-49e8-ad80-a5796d2d0c56",
+            "https://www.sec.gov/Archives/edgar/data/88941/000008894126000045/smtc-10252026x8k991.htm",
+        ),
+        "official_markers": (("semtech",), ("fiscal year 2027",), ("59.3",), ("58.9",), ("64.3",), ("photonics",)),
+        "corroboration": (
+            "https://www.fool.com/earnings/call-transcripts/2026/11/24/semtech-smtc-q3-2027-earnings-call-transcript/",
+            "https://www.marketbeat.com/earnings/reports/2026-11-23-semtech-co-stock/",
+            "https://www.thestockobserver.com/2026/11/24/what-semtech-smtc-said-on-its-q3-earnings-call.html",
+        ),
+        "corroboration_markers": (
+            ("pull in", "pull-in", "pulling in"),
+            ("foundry capacity is not a limitation", "foundry capacity is not a constraint"),
+            ("testers", "tester"),
+            ("lead time", "lead-time"),
+            ("three to four", "three- to four", "3 to 4", "3-4", "3x to 4x", "threefold"),
+            ("photonics",),
+        ),
+    },
+    "aaoi|2026-11-24|800g-laser|min-purchase-no-capital": {
+        "date": "2026-11-24",
+        "official": (
+            "https://investors.ao-inc.com/2026-11-24-AOI-Announces-Multi-Year-Long-Term-Agreement-with-Tier-1-Hyperscale-Datacenter-Customer",
+        ),
+        "official_markers": (
+            ("800g",), ("laser diodes",), ("1.5 billion", "1.5bn"), ("0.7 billion", "700 million", "0.7bn"),
+            ("no commitment of capital",), ("2 million",), ("2030",), ("2027",), ("2028",), ("2029",),
+            ("10 billion",), ("not guaranteed",),
+        ),
+        "corroboration": (
+            "https://www.semiconductor-today.com/news_items/2026/nov/aoi-241126.shtml",
+            "https://ca.investing.com/news/stock-market-news/aoi-secures-22b-supply-deal-with-hyperscale-customer-93CH-4977986",
+        ),
+        "corroboration_markers": (
+            ("800g",), ("laser diodes",), ("1.5bn", "1.5 billion"), ("0.7bn", "0.7 billion"),
+            ("no commitment of capital", "no capital commitment"),
+        ),
+    },
+}
+OPTICAL_FOLLOWUP_QUERIES = (
+    'site:investors.ao-inc.com (800G OR laser OR transceiver) ("purchase commitments" OR "capital commitment" OR "production capacity" OR "qualification")',
+    '("Semtech" OR SMTC) ("photonics" OR FiberEdge) ("pull in" OR "lead time" OR testers OR "capacity") earnings call transcript',
+)
+
+
+def optical_source_body(url: str) -> str:
+    # Full text: the critical earnings Q&A often occurs after the first 24k characters.
+    return clean_text(fetch(url, timeout=15).decode("utf-8", errors="replace"))
+
+
+def optical_evidence_group(urls: tuple, markers: tuple, read_body) -> dict:
+    bodies = []
+    usable = []
+    failures = []
+    for url in urls:
+        try:
+            body = read_body(url)
+            if not isinstance(body, str) or not body.strip():
+                failures.append(url)
+                continue
+            low = re.sub(r"\s+", " ", body.lower())
+            low = low.replace("–", "-").replace("—", "-")
+            bodies.append(low)
+            usable.append(url)
+        except Exception:
+            failures.append(url)
+        joined = "\n".join(bodies)
+        if all(any(marker in joined for marker in group) for group in markers):
+            return {"status": "verified", "sources": usable, "failed_sources": failures}
+    return {"status": "content_incomplete" if usable else "lookup_failed",
+            "sources": usable, "failed_sources": failures}
+
+
+def optical_fx_ready(fx: dict) -> bool:
+    try:
+        return 800 <= float(fx.get("rate")) <= 2500 and bool(fx.get("date"))
+    except (TypeError, ValueError):
+        return False
+
+
+def optical_event_notice(key: str, evidence: dict, fx: dict) -> str:
+    refs = evidence["official"]["sources"][:1] + evidence["corroboration"]["sources"][:2]
+    links = " / ".join(f'<a href="{html.escape(url, quote=True)}">근거 {i+1}</a>' for i, url in enumerate(refs))
+    if key.startswith("smtc|"):
+        return "\n".join([
+            "<b>광통신 공급 병목 선행경보 — 셈텍 11/23 실적발표</b>",
+            "• 고객이 기존 납기보다 빠른 납품을 요청; 산업 평균 납기 변화는 아님.",
+            "• 광소자 생산능력: 2026년 말 3~4배, 2027년 말 추가 3~4배 확대 계획(전사 생산능력 아님).",
+            "• 파운드리 생산능력 제약은 완화됐으나 일부 검사장비의 납기는 길며 회계연도 2028년 계획에 맞춰 확보 추진.",
+            "• 조정 매출총이익률 59.3%→58.9%(전망, -0.4%p); 매각 예정 사업 제외 64.3%(+0.3%p). 증설 초기 비용과 14주 분기 인건비를 구분.",
+            "• 수요 강세와 고정비 부담이 병존. 다음 확인: 검사장비 반입·양품 생산능력·실제 출하·매출총이익률.",
+            links,
+        ])
+    rate = float(fx["rate"])
+    def amount(bn: float, usd: str) -> str:
+        return f"{usd}({usd_bn_krw_text(bn, rate)})"
+    return "\n".join([
+        "<b>광통신 증설·자금 부담 경보 — AAOI 11/24 장기공급계약</b>",
+        f"• 두 번째 대형 클라우드 고객, 2026.12~2030.12; 최소 구매약정 {amount(2.2, '22억달러')}.",
+        f"• 2027년 800G 광트랜시버 {amount(1.5, '15억달러')}; 2028~2029년 레이저 다이오드 {amount(0.7, '7억달러')}.",
+        f"• 고객 자본 지원 약정 없음; 공급사가 인증 촉진 일회성 비용 {amount(0.002, '200만달러')} 부담.",
+        f"• 고객 예상 수요 {amount(10, '100억달러')} 초과는 미보장 전망; 최소 구매약정과 구분. 계약 조건에 따른 물량 감소 가능.",
+        "• 미국산 제품 2027년 1분기부터 출하·연중 확대 약정; 2028년 일부 레이저의 CPO 적용 예상. 실제 설비투자·수율·고객 승인·출하·현금회수 별도 추적.",
+        f"• 원화 환산: 1달러={rate:,.2f}원, {html.escape(str(fx['date']))} 기준.",
+        links,
+    ])
+
+
+def optical_followup_kind(company: str, title: str, body: str) -> str:
+    """Only narrow, explicit new supply/capital milestones, never generic sector news."""
+    low = body.lower().split("forward-looking statements", 1)[0]
+    heading = title.lower()
+    if company == "aaoi":
+        if not any(x in low for x in ("transceiver", "laser diode", "optical")):
+            return ""
+        if any(x in heading for x in ("long-term agreement", "long term agreement", "supply agreement")) and \
+                "no commitment of capital" in low and "minimum" in low and "purchase" in low:
+            return "new_lta_no_capital"
+        if any(x in heading for x in ("amends", "terminates", "cancels", "reduces", "additional purchase commitment")) and \
+                any(x in low for x in ("purchase commitment", "supply agreement", "long-term agreement")):
+            return "contract_change"
+        if any(x in heading for x in ("begins production", "commences production", "starts shipments", "delays production", "delays expansion")) and \
+                any(x in low for x in ("manufacturing capacity", "production capacity", "qualification", "shipment")):
+            return "capacity_milestone"
+    if company == "smtc" and "earnings" in heading and "photonics" in low:
+        if ("pull in" in low or "pull-in" in low) and "lead time" in low and "testers" in low and "capacity" in low:
+            return "pullin_tester"
+    return ""
+
+
+def optical_followup_candidate(item: dict, today: str) -> tuple:
+    url = str(item.get("direct_url") or item.get("link") or "")
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+    path = parsed.path.lower()
+    if parsed.scheme != "https":
+        return ()
+    if host == "investors.ao-inc.com":
+        company = "aaoi"
+    elif host in ("www.fool.com", "www.marketbeat.com", "www.earningswhispers.com") and \
+            ("semtech" in path or "/smtc/" in path):
+        company = "smtc"
+    else:
+        return ()
+    # Require a dated source URL, not a refreshed RSS date on an old story.
+    match = re.search(r"(?<!\d)(20\d{2})[-/](\d{2})[-/](\d{2})(?!\d)", path)
+    if not match:
+        return ()
+    issue = "-".join(match.groups())
+    if not ("2026-11-25" < issue <= today):
+        return ()
+    return company, issue, f"https://{host}{parsed.path.rstrip('/')}"
+
+
+def optical_leadtime_update(previous: dict, today: str, fx: dict, read_body=None, read_feed=None) -> tuple[dict, list[str]]:
+    read_body = read_body or optical_source_body
+    read_feed = read_feed or read_rss
+    record = copy.deepcopy(previous or {})
+    seen = set(record.get("seen_event_keys") or [])
+    health = copy.deepcopy(record.get("source_health") or {})
+    alerts = []
+    for key, spec in OPTICAL_EVENT_SOURCES.items():
+        if key in seen or today < spec["date"]:
+            continue
+        official = optical_evidence_group(spec["official"], spec["official_markers"], read_body)
+        corroboration = optical_evidence_group(spec["corroboration"], spec["corroboration_markers"], read_body)
+        evidence = {"official": official, "corroboration": corroboration, "checked_date": today}
+        health[key] = evidence
+        if official["status"] != "verified" or corroboration["status"] != "verified":
+            continue
+        if key.startswith("aaoi|") and not optical_fx_ready(fx):
+            evidence["status"] = "fx_unavailable"
+            continue
+        evidence["status"] = "verified"
+        alerts.append(optical_event_notice(key, evidence, fx))
+        seen.add(key)  # Candidate only; shared delivery checkpoint owns promotion.
+    feed_ok = 0
+    feed_failed = 0
+    article_failed = 0
+    checked_urls = set()
+    checked_dates = set()
+    followup_labels = {
+        "new_lta_no_capital": "신규 장기공급계약에 고객 자본 지원 미약정 명시",
+        "contract_change": "공급계약 변경·추가 구매약정 확인 대상",
+        "capacity_milestone": "생산·출하·증설 일정의 명시적 변경",
+        "pullin_tester": "고객 조기 납품 요청과 검사장비 납기 제약 동시 확인",
+    }
+    for query in OPTICAL_FOLLOWUP_QUERIES:
+        try:
+            items = read_feed("bing_web", query)
+            feed_ok += 1
+        except Exception:
+            feed_failed += 1
+            continue
+        for item in items[:10]:
+            candidate = optical_followup_candidate(item, today)
+            if not candidate:
+                continue
+            company, issue, url = candidate
+            if url in checked_urls or len(checked_urls) >= 6:
+                continue
+            checked_urls.add(url)
+            try:
+                body = read_body(url)
+                if not body:
+                    raise ValueError("empty source")
+            except Exception:
+                article_failed += 1
+                continue
+            title = clean_text(str(item.get("title") or ""))
+            kind = optical_followup_kind(company, title, body)
+            if not kind:
+                continue
+            key = f"{company}|{issue}|{kind}"
+            checked_dates.add(key)
+            if key in seen:
+                continue
+            # Repeated unchanged pull-in/tester commentary is not a new numeric
+            # lead-time observation; the known event already established that signal.
+            if kind == "pullin_tester":
+                continue
+            name = "AAOI" if company == "aaoi" else "셈텍"
+            alerts.append("\n".join([
+                f"<b>광통신 후속 선행경보 — {name} {issue}</b>",
+                f"• {followup_labels[kind]}; 계약 단계·실제 출하·현금부담은 원문 기준 추가 확인.",
+                "• 산업 평균 납기 수치와 합산하지 않음.",
+                f'• <a href="{html.escape(url, quote=True)}">직접 확인한 발표</a>',
+            ]))
+            seen.add(key)
+    record["seen_event_keys"] = sorted(seen)
+    record["source_health"] = health
+    record["followup_health"] = {
+        "checked_date": today, "feed_success": feed_ok, "feed_failure": feed_failed,
+        "article_failure": article_failed, "candidate_count": len(checked_urls),
+        "status": "lookup_failed" if not feed_ok else "partial" if feed_failed or article_failed else "checked",
+    }
+    return record, alerts
+
+
+def main(include_optical_signals: bool = False) -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state = load_json(STATE_PATH)
     pending = load_json(PENDING_PATH)
@@ -2245,6 +2492,15 @@ def main() -> None:
     if caspa_notice:
         notify_text = (notify_text.rstrip() + "\n\n" + caspa_notice).strip() if notify_text else caspa_notice
 
+    optical_state = copy.deepcopy(previous.get("optical_supply_capital_watch") or {})
+    if include_optical_signals:
+        optical_state, optical_alerts = optical_leadtime_update(
+            optical_state, now.date().isoformat(),
+            pending.get("usdkrw") or state.get("usdkrw") or {},
+        )
+        for block in optical_alerts:
+            notify_text = (notify_text.rstrip() + "\n\n" + block).strip() if notify_text else block
+
     pending["ai_component_leadtime"] = {
         "as_of": latest_as_of,
         "source": latest_source,
@@ -2270,6 +2526,7 @@ def main() -> None:
         ),
         "mlcc_vendor_watch": vendor_state,
         "caspa_panel_watch": caspa_state,
+        **({"optical_supply_capital_watch": optical_state} if optical_state else {}),
         "image_verified_issue": ("weekly-radar-011-user-image-unchanged" if (
                                      latest_as_of == WEEKLY_011_IMAGE_LOCK["as_of"]
                                      and all(canonical_component(latest_components.get(name) or {})
@@ -2304,4 +2561,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    main(include_optical_signals=True)
