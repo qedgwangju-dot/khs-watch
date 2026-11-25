@@ -860,6 +860,61 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
             self.assertIn(f"{n}억원 " + "나"*55, combined)
         self.assertIn("사건 B", combined)
 
+
+    def test_nov25_2152_reprint_is_same_incident(self):
+        family = "honam_settlement_lead_20261125_housing_budget_recovery"
+        article = {"title": "반도체 건설인력 몰려온다…전남광주, 임대주택 우선 활용",
+                   "url": "https://news.jkn.co.kr/post/1122089",
+                   "published": "Tue, 24 Nov 2026 19:32:00 GMT",
+                   "source": "재경일보", "source_status": "보도 단계",
+                   "description": "민간 임대주택 우선 활용, 모듈러 주택 검토",
+                   "stages": ["4_정주주거_배후도시"]}
+        self.assertEqual(_event_family(article), family)
+        key = hashlib.sha256(("family|"+family).encode()).hexdigest()[:28]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            alert,state,pending = (root / n for n in ("alert.json","state.json","pending.json"))
+            alert.write_text(json.dumps({"new_items":[article],"official_changes":[]},ensure_ascii=False),encoding="utf-8")
+            state.write_text(json.dumps({"seen_event_keys":[key],"event_action_levels":{key:1},"event_status_levels":{key:2}}),encoding="utf-8")
+            pending.write_text("{}",encoding="utf-8")
+            with patch("scripts.honam_event_filter.ALERT_PATH",alert),patch("scripts.honam_event_filter.STATE_PATH",state),patch("scripts.honam_event_filter.PENDING_PATH",pending):
+                event_filter_main()
+            self.assertFalse(alert.exists())
+            self.assertIn(key,json.loads(pending.read_text(encoding="utf-8"))["seen_event_keys"])
+
+    def test_same_hearing_body_alias_and_new_contract_distinguished(self):
+        family = "honam_settlement_lead_20261125_housing_budget_recovery"
+        item = {"title":"전남광주 반도체 주거 지원 대책",
+                "published":"Wed, 25 Nov 2026 07:00:00 GMT",
+                "description":"25일 2027년도 본예산안 심사에서 민간 임대주택 우선 활용, 부족하면 모듈러 주택 검토. 5개 자치구와 광주도시공사 협의체. 국제학교·도로·용수 요청. 올해 말 초안 마련."}
+        self.assertEqual(_event_family(item), family)
+        actual = dict(item, title="광주 반도체 공공임대 공급 계약 체결")
+        self.assertNotEqual(_event_family(actual), family)
+        new_day = dict(item, published="Tue, 01 Dec 2026 07:00:00 GMT")
+        self.assertNotEqual(_event_family(new_day), family)
+
+    def test_honam_compact_source_facts_keep_numbers_and_remove_paraphrase(self):
+        from scripts.honam_telegram_formatter import build_message
+        article = {"title":"반도체 건설인력 주거대책", "alert_type":"선행경보",
+                   "verification_status":"단일 보도·공식 미확정",
+                   "stages":["4_정주주거_배후도시"], "source":"재경일보",
+                   "url":"https://news.jkn.co.kr/post/1122089",
+                   "fact_lines":[
+                       "민간 임대주택을 우선 활용하고, 공급이 부족하면 기업과 공공이 모듈러 주택을 공급하는 방안도 검토한다.",
+                       "통합시는 우선 민간 임대주택을 활용하되, 주택 공급이 수요를 따라가지 못할 경우 기업과 공공기관이 협력해 조립식 주택인 모듈러 주택을 공급하는 방안까지 검토하고 있다.",
+                       "통합시는 5개 자치구와 한국토지주택공사(LH), 광주도시공사 등이 참여하는 신속 행정 협의체도 연말까지 구성할 예정이다.",
+                       "마스터플랜 수립을 위한 용역비가 2027년도 본예산에 반영되지 않았기 때문이다.",
+                       "2027년 신규 공급 3,500가구는 아직 확정되지 않았다."
+                   ],
+                   "reason":"2030년 전후 인력 유입을 받을 주택·배후도시 공급 속도가 팹 가동의 정주 병목이 될 수 있음",
+                   "impact":"정주·인력유입 준비도 변화"}
+        msg = build_message({"new_items":[article],"rss_failed_queries":3})
+        self.assertEqual(msg.count("모듈러(조립식)"), 1)
+        for token in ("5개 자치구", "연말 구성 예정", "2027년 본예산 미반영", "3,500가구", "확정되지 않았다", "일부 원천 조회 실패(3건)"):
+            self.assertIn(token,msg)
+        self.assertNotIn("2030년 전후 인력 유입",msg)
+        self.assertNotIn("본문 확인 사항(자동 발췌)",msg)
+
     def test_nov18_leads_remain_preliminary_and_separately_keyed(self):
         vetted = verified_intake_events({"seen_event_keys": []})
         allocation = [i for i in vetted if i.get("event_family") == "honam_fab_lead_site_allocation_20261118"]

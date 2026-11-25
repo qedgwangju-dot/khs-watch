@@ -146,6 +146,50 @@ def _fact_identity(value):
     return re.sub(r"[\s·•\"'“”‘’]+", "", str(value or "")).strip(" .。").casefold()
 
 
+def _compact_source_fact(part):
+    text = re.sub(r"\s+", " ", str(part or "")).strip().rstrip(".")
+    # Common complete-sentence formulations. A replacement must account for
+    # all material information; unmatched sentences pass through intact.
+    templates = [
+        (r"(?:통합시는 우선 )?민간 임대주택을 (?:우선 )?활용하되?,?\s*(?:주택 공급이 수요를 따라가지 못할 경우|공급이 부족하면) 기업과 공공(?:기관)?이 협력해 조립식 주택인 모듈러 주택을 공급하는 방안까지 검토하고 있다",
+         "주거 공급: 민간임대 우선, 부족 시 기업·공공 협력 모듈러(조립식) 주택 검토"),
+        (r"민간 임대주택을 우선 활용하고, 공급이 부족하면 기업과 공공(?:기관)?이 모듈러 주택을 공급하는 방안도 검토한다",
+         "주거 공급: 민간임대 우선, 부족 시 기업·공공 협력 모듈러(조립식) 주택 검토"),
+        (r"전남광주통합특별시는 25일 광역도시국 소관 2027년도 본예산안 심사에서 반도체 산단 조성에 따른 인구 유입에 대비한 정주 여건 개선 대책 초안을 올해 말부터 내년 초까지 마련할 계획이라고 밝혔다",
+         "정주대책: 11/25 광역도시국 2027년 본예산안 심사, 반도체 인력 유입 대응 초안 올해 말~내년 초 마련 목표"),
+        (r"통합시는 5개 자치구와 한국토지주택공사\(LH\), 광주도시공사 등이 참여하는 신속 행정 협의체도 연말까지 구성할 예정이다",
+         "행정협의체: 5개 자치구·LH(한국토지주택공사)·광주도시공사 등 참여, 연말 구성 예정"),
+        (r"지난 10월 현장을 점검하면서 기업 일정에 맞춘 부지 제공과 함께 교통·정주 여건 개선을 병행하겠다고 밝혔다",
+         "기존 10월 현장점검: 기업 일정에 맞춘 부지 제공과 교통·정주 개선 병행 방침"),
+        (r"신재욱 광역도시국장은 삼성 측이 요구한 사항으로 국제학교와 도로, 용수를 들며 관련 부서들이 대응하고 있다고 설명했다",
+         "삼성 요구: 국제학교·도로·용수(신재욱 광역도시국장, 관련 부서 대응 중)"),
+        (r"마스터플랜 수립을 위한 용역비가 2027년도 본예산에 반영되지 않았기 때문이다",
+         "마스터플랜 용역비: 2027년 본예산 미반영"),
+        (r"이어 특구 지정 가능성을 포함해 개발 방향을 구체화한 뒤 내년 추가경정예산에서 용역비를 확보할 방침이라고 밝혔다",
+         "후속 예산: 특구 지정 가능성 등 개발방향 구체화 후 내년 추경 확보 방침"),
+        (r"호남권 반도체 국가산단 예정지 일대는 지난 7월 토지거래허가구역으로 지정됐으며, 광주 군공항 부지 약 250만 평이 국가산단 후보지로 우선 지정됐다",
+         "기존 기준선: 7월 토지거래허가구역 지정, 광주 군공항 약 250만평 국가산단 후보지")
+    ]
+    for pattern, replacement in templates:
+        if re.fullmatch(pattern, text):
+            return replacement
+    # Shorten attribution boilerplate without changing subjects, quantities,
+    # date references, negation, or the distinction between a plan and action.
+    for old, new in (
+        ("할 계획이라고 밝혔다", "할 계획"),
+        ("할 예정이라고 밝혔다", "할 예정"),
+        ("할 방침이라고 밝혔다", "할 방침"),
+        ("하고 있다고 설명했다", "하고 있다고 설명"),
+        ("검토하고 있다", "검토 중"),
+        ("구성할 예정이다", "구성 예정"),
+        ("이라고 설명했다", "이라고 설명"),
+    ):
+        if text.endswith(old):
+            text = text[:-len(old)] + new
+            break
+    return text
+
+
 def fact_display(item):
     lines, seen = [], set()
     # Reviewed structured facts are the report; raw article copies remain
@@ -157,13 +201,15 @@ def fact_display(item):
         if not fields and item.get("detail"):
             fields.append(item["detail"])
         if fields and item.get("fact_lines"):
-            lines.append("<b>본문 확인 사항(자동 발췌)</b>")
+            lines.append("<b>핵심 내용</b>")
     for field in fields:
         if re.fullmatch(r"【[^】]+】", str(field).strip()):
             title = str(field).strip()[1:-1]
             lines.extend(["", f"<b>{esc(title)}</b>"])
             continue
         for part in _fact_parts(field):
+            if not reviewed:
+                part = _compact_source_fact(part)
             key = _fact_identity(part)
             if not key or key in seen:
                 continue
@@ -194,13 +240,12 @@ def _event_block(item, index, official=False):
     verification = str(item.get("verification_status") or item.get("source_status") or ("공식자료" if official else "보도 단계"))
     if lead:
         verification = verification.replace(" · 실행·계약 확정 아님", "")
-        phase = "선행경보 · 검토/계획/보도(실행 확정 아님)"
+        phase = "선행경보(확정 전)"
     else:
         phase = "신규 상태 변화"
     lines = [
         f"<b>■ {index}. {esc(title)}</b>",
-        f"{esc(labels)} | <b>{esc(phase)}</b>",
-        f"확인도: {esc(verification)}" + (" · 누락 보완" if item.get("recovery") else ""),
+        f"{esc(labels)} · <b>{esc(phase)}</b> · {esc(verification)}" + (" · 누락 보완" if item.get("recovery") else ""),
     ]
     if item.get("verification_upgrade"):
         lines.append("검증 변화: 기존 보도보다 확인 단계 상승")
@@ -217,10 +262,17 @@ def _event_block(item, index, official=False):
         lines.extend(["", f"검증 범위: {esc(note)}"])
     impact = impact_label(item.get("impact", ""))
     reason = str(item.get("reason") or "").strip()
-    if impact and impact != "영향 확인 필요":
-        lines.extend(["", f"<b>의미</b>: {esc(impact)}"])
-    if reason and _fact_identity(reason) != _fact_identity(impact):
-        lines.append(f"후속 확인: {esc(reason)}")
+    generic_impacts = {"영향 확인 필요", "정주·인력유입 준비도 변화", "기반시설·전원 인가 시간표 영향", "산단·팹 투자 시간표 변화"}
+    generic_reasons = {
+        "2030년 전후 인력 유입을 받을 주택·배후도시 공급 속도가 팹 가동의 정주 병목이 될 수 있음",
+        "전력·용수·교통·교육·의료가 실제 착공·가동과 인력 정착을 결정",
+        "앵커기업 투자·팹 착공·준공·양산 일정이 후속 발주와 산단 수요를 결정",
+        "호남 반도체 국가산단 진행상황과 직접 연결",
+    }
+    if impact and impact not in generic_impacts:
+        lines.extend(["", f"<b>판정</b>: {esc(impact)}"])
+    if reason and reason not in generic_reasons and _fact_identity(reason) != _fact_identity(impact):
+        lines.append(f"다음 단계: {esc(reason)}")
     sources = evidence_lines(item)
     if sources:
         lines.extend(["", *sources])
@@ -248,18 +300,18 @@ def build_message(data: dict) -> str:
     partial = bool(data.get("rss_failed_queries") or data.get("official_source_partial_failure"))
     # Unchanged items are summarized once at the bottom, not interposed
     # between the headline and the facts that the user needs to read.
-    footer = ["<b>감시 상태</b>"]
-    for stages, title in ((CORE_STAGE_LABELS, "환경 3단계"), (PROJECT_STAGE_LABELS, "사업 3단계")):
-        changed = [f"{label}({('/'.join(sorted(active[key])))})" for key, label in stages.items() if active[key]]
-        unchanged = [label for key, label in stages.items() if not active[key]]
-        if changed:
-            footer.append(f"• {title} 감지: {esc(' · '.join(changed))}")
-        if unchanged:
-            status = "미확인(일부 원천 조회 실패)" if partial else "조회 범위 내 변화 미감지"
-            footer.append(f"• {esc(status)}: {esc(' · '.join(unchanged))}")
+    # Only the exceptional source limitation needs repeating in an alert.
+    # The full six-axis audit remains in the workflow's status file.
+    unchanged = [label[0] for key, label in STAGE_LABELS.items() if not active[key]]
+    footer = []
     if partial:
-        footer.append("※ 조회 실패를 신규 발표 없음으로 판단하지 않음.")
-    blocks.append("\n".join(footer))
+        count = int(data.get("rss_failed_queries") or 0)
+        suffix = f"({count}건)" if count else ""
+        footer.append(f"조회 한계: 일부 원천 조회 실패{suffix} · 미감지 분야는 미확인")
+    elif unchanged:
+        footer.append(f"기타 감시 {'·'.join(unchanged)}: 조회 범위 내 변화 미감지")
+    if footer:
+        blocks.append("\n".join(footer))
     return "\n\n".join(blocks).strip()
 
 

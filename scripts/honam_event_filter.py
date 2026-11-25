@@ -5,6 +5,7 @@ import email.utils
 import json
 import pathlib
 import re
+from urllib.parse import urlparse
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ALERT_PATH = ROOT / "out" / "honam_semiconductor_alert.json"
@@ -464,6 +465,34 @@ def _local_publication_day(item):
     return value.astimezone(dt.timezone(dt.timedelta(hours=9))).date()
 
 
+def _local_url_identity(value):
+    parsed = urlparse(str(value or "").strip())
+    if parsed.scheme not in ("http", "https") or not parsed.hostname:
+        return ""
+    return (parsed.hostname.lower().removeprefix("www."), parsed.path.rstrip("/"))
+
+
+def _same_nov25_housing_hearing(item, incident, published):
+    """Recognize the particular budget hearing, not housing news in general."""
+    if incident != dt.date(2026, 11, 25) or not published or abs((published-incident).days) > 2:
+        return False
+    # Match original source content only, not our generated reason/impact.
+    body = " ".join([str(item.get(k) or "") for k in ("title", "headline", "description", "body_excerpt")])
+    body += " " + " ".join(str(x) for x in (item.get("fact_lines") or []))
+    text = re.sub(r"\s+", "", body).casefold()
+    hearing = "2027년도본예산안심사" in text or "2027년본예산안심사" in text
+    dated = bool(re.search(r"(?:11월)?25일", text))
+    housing = "민간임대주택" in text and "모듈러" in text and ("부족" in text or "따라가지못" in text) and "검토" in text
+    liaison = "5개자치구" in text and ("광주도시공사" in text or "한국토지주택공사" in text)
+    needs = all(x in text for x in ("국제학교", "도로", "용수"))
+    draft = "초안" in text and ("올해말" in text or "연말" in text or "2026년말" in text)
+    if any(word in text for word in ("확정됐다", "계약을체결", "공사에착수", "공급을개시", "협의체를구성했다", "예산을확보했다", "일정을변경")):
+        return False
+    # Only match variants of the actual hearing report whose known main facts
+    # agree. Other housing proposals remain independently eligible.
+    return hearing and dated and housing and liaison and needs and draft
+
+
 def _registered_local_recovery_family(item):
     """Use reviewed same-incident aliases and stable proposal facts; not broad topic suppression."""
     if item.get("intake_verified") or _local_headline_execution(item):
@@ -483,6 +512,17 @@ def _registered_local_recovery_family(item):
             continue
         if signature and signature in entry.get("covered_plan_signatures", []):
             return family
+        known_urls = {_local_url_identity(url) for url in entry.get("covered_article_urls", [])}
+        known_urls.discard("")
+        if _local_url_identity(item.get("url")) in known_urls:
+            return family
+        if family == "honam_settlement_lead_20261125_housing_budget_recovery":
+            try:
+                incident_day = dt.date.fromisoformat(entry["event_date_kst"])
+            except (KeyError, TypeError, ValueError):
+                incident_day = None
+            if _same_nov25_housing_hearing(item, incident_day, published):
+                return family
         if published and title:
             try:
                 incident = dt.date.fromisoformat(entry["event_date_kst"])
