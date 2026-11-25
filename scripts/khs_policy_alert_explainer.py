@@ -943,6 +943,13 @@ def ensure_explained(item: dict) -> dict:
         and item.get("body_verified")
     ):
         return item
+    if (
+        item.get("policy_event_key") == "us-fcc-upper-c-band-auction115-procedures-2026-11-25"
+        and item.get("body_verified")
+        and item.get("title_ko")
+        and item.get("policy_timeline")
+    ):
+        return item
     default_context(item)
     if item.get("fcc_sim_fraud_section") and item.get("body_verified"):
         return item

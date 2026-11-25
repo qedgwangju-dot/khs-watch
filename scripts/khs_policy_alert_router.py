@@ -227,10 +227,48 @@ def is_fcc_submarine_cable_policy(alert: dict) -> bool:
 def is_fcc_upper_c_band_auction(alert: dict) -> bool:
     text = alert_text(alert)
     return (
-        ("fcc" in text or "federalregister.gov" in text)
+        not is_fcc_upper_c_band_auction115_procedures_notice(alert)
+        and ("fcc" in text or "federalregister.gov" in text)
         and "upper c-band" in text
         and any(term in text for term in ("auction", "competitive bidding", "flexible use licenses"))
     )
+
+
+def is_fcc_upper_c_band_auction115_procedures_notice(alert: dict) -> bool:
+    if alert.get("policy_event_key") == "us-fcc-upper-c-band-auction115-procedures-2026-11-25":
+        return True
+    if str(alert.get("source") or "") != "Federal Register FCC":
+        return False
+    link = str(alert.get("link") or "").lower()
+    return (
+        str(alert.get("document_number") or "") == "2026-24013"
+        or "/2026/11/25/2026-24013/" in link
+    )
+
+
+def fcc_upper_c_band_auction115_body_verified(alert: dict) -> bool:
+    if not is_fcc_upper_c_band_auction115_procedures_notice(alert) or not alert.get("body_verified"):
+        return False
+    body = re.sub(r"\s+", " ", str(alert.get("source_body") or "")).lower()
+    return all(marker in body for marker in (
+        "[fr doc no: 2026-24013]",
+        "da 26-1219",
+        "released on november 13, 2026",
+        "3,248 new flexible-use licenses",
+        "3.98-4.14 ghz",
+        "160 megahertz",
+        "eight 20-megahertz blocks",
+        "january 6, 2027",
+        "12:00 p.m. eastern",
+        "filing window opens",
+        "time (et)",
+        "january 20, 2027, 6:00 p.m. et",
+        "march 18, 2027, 6:00 p.m. et",
+        "april 27, 2027",
+        "december 30, 2030",
+        "june 30, 2031",
+        "15-year, renewable license terms",
+    ))
 
 
 def is_fcc_upper_c_band_coordinator_notice(alert: dict) -> bool:
@@ -376,6 +414,10 @@ def china_mofcom_title(alert: dict) -> str:
 
 
 def safe_title(alert: dict) -> str:
+    if fcc_upper_c_band_auction115_body_verified(alert):
+        title_ko = "FCC, Auction 115 최종 절차 확정: 160MHz·3,248개 면허"
+        alert["title_ko"] = title_ko
+        return title_ko
     if is_fcc_upper_c_band_coordinator_notice(alert) and fcc_upper_c_band_coordinator_body_verified(alert):
         title_ko = "FCC, Upper C-band 160MHz 이전조정자 RSM 적격성 의견수렴"
         alert["title_ko"] = title_ko
@@ -647,6 +689,11 @@ def compact_failure_fallback(alert: dict) -> str:
 
 def compact_explanation_lines(alert: dict) -> list[str]:
     apply_router_overrides(alert)
+    if fcc_upper_c_band_auction115_body_verified(alert):
+        return [
+            "- 핵심: FCC가 3.98~4.14GHz 160MHz를 미국 본토 3,248개 지역 면허로 경매하는 최종 절차를 확정했습니다.",
+            "- 진행 상태: 절차·일정은 확정됐지만 신청·입찰·낙찰은 아직입니다. 통신사 구축·장비발주나 한국 기업 수주도 확정되지 않았습니다.",
+        ]
     rendered = explanation_lines(alert)
     # The shared explainer may replace specific FCC/White House fields with a
     # generic profile. Reapply the source-specific override before compacting.
@@ -750,6 +797,14 @@ def fcc_upper_c_band_coordinator_detail_lines(alert: dict) -> list[str]:
     ]
 
 
+def fcc_upper_c_band_auction115_detail_lines(alert: dict) -> list[str]:
+    if not fcc_upper_c_band_auction115_body_verified(alert):
+        return []
+    return [
+        "- 경매 구조: 20MHz 비페어드 8개 블록/지역(PEA), 15년 갱신형 면허; 4.14~4.16GHz 20MHz는 경매 제외 가드밴드입니다.",
+    ]
+
+
 def apply_router_overrides(alert: dict) -> None:
     if alert.get("policy_event_key") in {
         "us-section232-robotics-machinery-proclamation-2026-10-28",
@@ -757,6 +812,29 @@ def apply_router_overrides(alert: dict) -> None:
     }:
         return  # Preserve source-verified event-specific policy facts.
     text = alert_text(alert)
+    if is_fcc_upper_c_band_auction115_procedures_notice(alert):
+        if not fcc_upper_c_band_auction115_body_verified(alert):
+            return
+        alert["importance"] = "상"
+        alert["status"] = "공식 절차 확정"
+        alert["title_ko"] = "FCC, Auction 115 최종 절차 확정: 160MHz·3,248개 면허"
+        alert["policy_plain_summary"] = (
+            "FCC가 3.98~4.14GHz 160MHz를 미국 본토 3,248개 지역 면허로 경매하는 최종 절차를 확정했습니다."
+        )
+        alert["investment_view"] = (
+            "미국 이동통신사의 중대역 주파수 확보 절차입니다. 이후 통신사 망 구축계획과 실제 장비 발주가 확인돼야 공급사 매출로 연결됩니다."
+        )
+        alert["korea_market_impact"] = (
+            "이 문서에는 한국 업체의 공급계약·수주가 없습니다. 미국향 통신장비 매출은 낙찰자와 후속 CAPEX·발주 확인 전까지 미확정입니다."
+        )
+        alert["impacts"] = ["시간표", "미국 통신사 CAPEX", "장비 발주"]
+        alert["paths"] = ["주파수 경매", "통신사 CAPEX", "장비 발주", "정책 타임라인"]
+        alert["sectors"] = ["미국 이동통신", "통신장비", "안테나/RF"]
+        alert["korea_value_chain"] = []
+        alert["priced_in"] = "경매일정은 공식 확정됐지만 입찰·낙찰 및 네트워크 구축은 아직입니다."
+        alert["counter"] = "주파수 확보가 통신사 총 CAPEX 증가나 특정 공급사의 발주로 이어진다는 보장은 없습니다."
+        alert["failure_signal"] = "낙찰 후에도 미국 통신사 CAPEX와 장비 발주가 확인되지 않으면 한국 공급사 실적 연결은 제한됩니다."
+        return
     if is_fcc_upper_c_band_coordinator_notice(alert):
         if not fcc_upper_c_band_coordinator_body_verified(alert):
             return
@@ -1088,6 +1166,14 @@ def source_markdown(alert: dict) -> str:
 
 
 def policy_timeline_lines(alert: dict) -> list[str]:
+    if fcc_upper_c_band_auction115_body_verified(alert):
+        return [
+            "- 타임라인: 미국 현지 날짜 기준 · 신청·납부 시각은 미 동부시간(ET)",
+            "  • 2026년 11월 13일: FCC DA 26-1219 절차 공고 공개 → 11월 25일: 연방관보 게재",
+            "  • 2027년 1월 6일 12:00: 신청 개시 → 1월 20일 18:00: FCC Form 175 마감",
+            "  • 2027년 3월 18일 18:00: 선납금 마감 → 4월 27일: 입찰 시작 예정",
+            "  • 위성 이전: PEA 1-41·43-76은 2030년 12월 30일 1차 기한; 나머지 대상 PEA는 2031년 6월 30일 최종 기한",
+        ]
     if is_fcc_upper_c_band_coordinator_notice(alert) and fcc_upper_c_band_coordinator_body_verified(alert):
         lines = ["- 타임라인: 미국 현지 날짜 기준"]
         for event in alert.get("policy_timeline") or []:
@@ -1125,6 +1211,7 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
             *compact_explanation_lines(alert),
             *robotics_232_detail_lines(alert),
             *doe_grid_scaled_detail_lines(alert),
+            *fcc_upper_c_band_auction115_detail_lines(alert),
             *fcc_upper_c_band_coordinator_detail_lines(alert),
             *policy_timeline_lines(alert),
             f"- 출처: [원문 보기]({alert.get('link', '')}) · {display_source(alert.get('source'))} · 조회 {now:%H:%M KST}",
