@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-25T21:46:56+09:00",
-  "last_scan_count": 4,
+  "updated_at_kst": "2026-11-26T07:31:53+09:00",
+  "last_scan_count": 8,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -131,8 +131,8 @@
     "outlook_direct_checked": false,
     "issuer_index_checked": true
   },
-  "last_eligible_count": 1,
-  "last_held_count": 0,
+  "last_eligible_count": 0,
+  "last_held_count": 2,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
     "0ed7831cd277a62c817ea6a9",
@@ -153,6 +153,7 @@
     "38f540c814822258159b1b90",
     "3c256fe8dff8e167b043d264",
     "3feaf19f4178230271f0cbc0",
+    "411f18a3ea390194f1527e53",
     "47dbd1ba8dd5c3df6d41d0b9",
     "49585eaa466a7d653417eba2",
     "4e45cbd21e7fd6755e4b41a7",
@@ -170,6 +171,8 @@
     "72e51f5d7b884367520ec10d",
     "76bed2e41196356720195d24",
     "781240f795d70b6a2663b3fd",
+    "7d9cdf4127223d8746cd60f7",
+    "7e449929c571318bb53c56ec",
     "846034484cc2e5ff3727fde9",
     "89e73411422b9d710eee6410",
     "8d939bc47244d5b36157bde5",
@@ -186,6 +189,7 @@
     "bbf6d84c3fbe067d2860a715",
     "c21f43569955742f3d6b1742",
     "c579cb29ce77119cfbcdf008",
+    "cc7325ca7e0e3bba11ab1334",
     "cd07e4c8f885b1ddc3b5ff1e",
     "d40b2844e29cf4f3e355e905",
     "d48264b617e856e8ce2d499e",
@@ -209,7 +213,20 @@
   "delivered_event_keys": [
     "taiwan|diversification|TSMC|arizona"
   ],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "taiwan|diversification|TSMC|2nm,arizona",
+      "source": "BigGo Finance",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-11-25T20:55:00+09:00"
+    },
+    {
+      "event_key": "taiwan|diversification|ASE|core",
+      "source": "BigGo Finance",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-11-25T15:56:00+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-11-25T21:46:58+09:00",
   "telegram_message_ids": [
     565
