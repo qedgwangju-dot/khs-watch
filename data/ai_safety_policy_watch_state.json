@@ -8,11 +8,11 @@
     "google_news_queries_requested": 120,
     "google_news_queries_succeeded": 120,
     "google_news_rate_limit_429": 0,
-    "material_items": 32,
+    "material_items": 33,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [],
-    "raw_items": 77,
+    "raw_items": 81,
     "sif_new_stages": 0,
     "source_access_limited": false,
     "si_portal_health": "정상",
@@ -100,7 +100,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-11-25T07:28:04.237879+00:00",
+    "updated_at": "2026-11-25T07:56:55.042842+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -130,6 +130,15 @@
       "source": "머니투데이",
       "title": "[속보]해킹 금융사 매출 3% 과징금…전금법 개정안, 정무 1소위 통과 - 머니투데이 - 머니투데이",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBMOGxzRVVrcmpBaS00N3FndVZrYkdyWWZiVVd4SF9GXzVGbV9Fc0xzZ2FJRFUzNk9hZ1dsT0s4TUQ3WkJEQWdGcE9udjl0eUh2WmlfWFJ0M2xZSmNjNk1nUk9VLXZLbWxwMlpOcV9KX0FWUdIBckFVX3lxTFBMOGxzRVVrcmpBaS00N3FndVZrYkdyWWZiVVd4SF9GXzVGbV9Fc0xzZ2FJRFUzNk9hZ1dsT0s4TUQ3WkJEQWdGcE9udjl0eUh2WmlfWFJ0M2xZSmNjNk1nUk9VLXZLbWxwMlpOcV9KX0FWUQ?oc=5"
+    },
+    "12993d9f143d4cf5a8c461bb": {
+      "category": "금융위 금융권 580개사 점검·사고집계·보안규제 단계",
+      "entity": "금융위원회·금융감독원·금융보안원",
+      "first_seen_at": "2026-11-25T07:56:55.042842+00:00",
+      "published_at": "2026-11-25T07:35:14+00:00",
+      "source": "이데일리",
+      "title": "‘망분리 전면해제’ TF 가동 초읽기…금융권 보안체계부터 손본다 - 이데일리",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNdUViRmdUUWE5Y0NJeDBGeVJfZldieGVmdS0yWXZiYl9IWnc2TzRPR2RIdlBGTVVIMU53NEZUdTZOdjFsczRzUFVPTUtUa0IybDNOYzNrWHhObUhaZUloT3Q1MlczZ1l5N1lVUW4wWjhsbUJhUkFfYU83YWNBWUl4Qg?oc=5"
     },
     "13e49145184cab499bcc38f9": {
       "category": "오픈AI GPT-6.1 Astra 안전성 기준·출시 보류 단계",
@@ -1063,11 +1072,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-11-25T16:28:04+09:00",
+  "updated_at_kst": "2026-11-25T16:56:55+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-11-25T07:29:07.471348+00:00",
+    "last_success_at": "2026-11-25T07:57:55.981576+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
