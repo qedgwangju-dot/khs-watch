@@ -1,12 +1,12 @@
 {
-  "last_checked_kst": "2026-11-25T11:35:47+09:00",
+  "last_checked_kst": "2026-11-25T20:41:27+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": true,
     "fr10:above:5.0": false,
     "fr10:daymove:10.0": false,
     "fr10:5obs:25.0": false,
-    "de10:above:3.25": true,
+    "de10:above:3.25": false,
     "de10:above:3.5": false,
     "de10:above:3.75": false,
     "de10:daymove:10.0": false,
@@ -21,7 +21,7 @@
     "it10:above:5.0": false,
     "fr_de_market_spread:above:100.0": true,
     "fr_de_market_spread:above:125.0": true,
-    "fr_de_market_spread:above:150.0": true,
+    "fr_de_market_spread:above:150.0": false,
     "it10:daymove:10.0": false,
     "fr10:stress:5.1": false,
     "fr10:stress:5.25": false,
@@ -300,6 +300,10 @@
       {
         "date": "2026-11-24",
         "value": 3.27
+      },
+      {
+        "date": "2026-11-25",
+        "value": 3.22
       }
     ],
     "uk10": [
@@ -442,13 +446,13 @@
       {
         "date": "2026-11-20",
         "value": 5.2072
+      },
+      {
+        "date": "2026-11-23",
+        "value": 5.1793
       }
     ],
     "fr_mkt": [
-      {
-        "date": "2026-10-07",
-        "value": 4.89
-      },
       {
         "date": "2026-10-08",
         "value": 4.89
@@ -604,6 +608,10 @@
       {
         "date": "2026-11-24",
         "value": 4.78
+      },
+      {
+        "date": "2026-11-25",
+        "value": 4.7
       }
     ],
     "de_mkt": [
@@ -746,6 +754,10 @@
       {
         "date": "2026-11-24",
         "value": 3.26
+      },
+      {
+        "date": "2026-11-25",
+        "value": 3.21
       }
     ],
     "it10": [
@@ -888,6 +900,10 @@
       {
         "date": "2026-11-24",
         "value": 4.36
+      },
+      {
+        "date": "2026-11-25",
+        "value": 4.32
       }
     ],
     "uk_mkt": [
@@ -1030,6 +1046,10 @@
       {
         "date": "2026-11-24",
         "value": 5.19
+      },
+      {
+        "date": "2026-11-25",
+        "value": 5.11
       }
     ]
   },
@@ -1043,28 +1063,30 @@
   },
   "last_source_dates": {
     "fr10": "2026-11-24",
-    "de10": "2026-11-24",
-    "uk10": "2026-11-20",
-    "fr_mkt": "2026-11-24",
-    "de_mkt": "2026-11-24",
-    "it10": "2026-11-24",
-    "uk_mkt": "2026-11-24"
+    "de10": "2026-11-25",
+    "uk10": "2026-11-23",
+    "fr_mkt": "2026-11-25",
+    "de_mkt": "2026-11-25",
+    "it10": "2026-11-25",
+    "uk_mkt": "2026-11-25"
   },
   "last_values": {
     "fr10": 4.766,
-    "de10": 3.27,
-    "uk10": 5.2072,
-    "fr_mkt": 4.78,
-    "de_mkt": 3.26,
-    "it10": 4.36,
-    "uk_mkt": 5.19
+    "de10": 3.22,
+    "uk10": 5.1793,
+    "fr_mkt": 4.7,
+    "de_mkt": 3.21,
+    "it10": 4.32,
+    "uk_mkt": 5.11
   },
   "last_change_basis": {
     "fr10": "공식자료 이전 관측일 2026-11-23 대비",
-    "de10": "공식자료 이전 관측일 2026-11-23 대비",
-    "uk10": "공식자료 이전 관측일 2026-11-19 대비",
+    "de10": "공식자료 이전 관측일 2026-11-24 대비",
+    "uk10": "공식자료 이전 관측일 2026-11-20 대비",
     "fr_mkt": "자료제공사가 명시한 전 거래일 대비",
-    "de_mkt": "자료제공사가 명시한 전 거래일 대비"
+    "de_mkt": "자료제공사가 명시한 전 거래일 대비",
+    "it10": "자료제공사가 명시한 전 거래일 대비",
+    "uk_mkt": "자료제공사가 명시한 전 거래일 대비"
   },
   "stale": [
     "uk10"
@@ -1102,8 +1124,8 @@
       "sp_milestone:2026-11-27:D-7",
       "sp_milestone:2026-11-27:D-3"
     ],
-    "checked_at_kst": "2026-11-25T11:36:01+09:00",
-    "source_fail_streak": 217,
+    "checked_at_kst": "2026-11-25T20:41:40+09:00",
+    "source_fail_streak": 218,
     "source_access": "access_restricted"
   }
 }
