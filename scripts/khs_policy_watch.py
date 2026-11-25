@@ -521,6 +521,7 @@ def enrich_fcc_upper_c_band_auction115_procedures_notice(item: dict) -> dict | N
         "au docket no. 26-191; da 26-1219",
         "released on november 13, 2026",
         "3,248 new flexible-use licenses",
+        "at least 100 megahertz of spectrum",
         "3.98-4.14 ghz",
         "160 megahertz",
         "eight 20-megahertz blocks",
