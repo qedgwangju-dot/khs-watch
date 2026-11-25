@@ -121,11 +121,6 @@
       "sent_success": true,
       "started": "2026-11-18T19:12:10+00:00"
     },
-    "44378281050:1": {
-      "checked_at_kst": "2026-11-19T04:34:49+09:00",
-      "fingerprint": "f18e456f5771fec3a970212fa82766dccad5f819f470ee131fb0a11a035ff410",
-      "outcome": "no_send"
-    },
     "44381650152:1": {
       "checked_at_kst": "2026-11-19T05:09:52+09:00",
       "completed": "2026-11-18T19:34:50+00:00",
@@ -3987,6 +3982,15 @@
       "checked_at_kst": "2026-11-25T16:29:52+09:00",
       "fingerprint": "1273784ce8485ecd78929a098067d295f00235b2259356338827e4eb8caa5131",
       "outcome": "no_send"
+    },
+    "45568327930:1": {
+      "checked_at_kst": "2026-11-25T16:58:50+09:00",
+      "completed": "2026-11-25T07:29:53+00:00",
+      "fingerprint": "7478a22b449857251ece3a49553eb671338817b854802e06304938ba5f519410",
+      "outcome": "attempted",
+      "saved": true,
+      "sent_success": true,
+      "started": "2026-11-25T07:29:52+00:00"
     }
   },
   "recovery_holds": {},
