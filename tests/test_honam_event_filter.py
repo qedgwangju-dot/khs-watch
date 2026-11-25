@@ -721,6 +721,64 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
         keys = [hashlib.sha256(("family|"+name).encode()).hexdigest()[:28] for name in groups]
         self.assertFalse([x for x in verified_intake_events({"seen_event_keys":keys}) if x.get("recovery")])
 
+
+    def test_nov25_recovery_aliases_group_all_five_reprints(self):
+        housing = "honam_settlement_lead_20261125_housing_budget_recovery"
+        water = "honam_water_lead_20261125_local_budget_recovery"
+        titles = {
+            '민형배 전남광주시장 "반도체 팹 건설인력 1만호 공공임대 필요" - 연합뉴스': housing,
+            "호남 반도체 용수 공급 덕남정수장 생산량 2배로 늘린다": water,
+            '민형배 "반도체 정주여건 핵심 도심융합특구 구체화 서둘러야"': housing,
+            "전남광주, '반도체 16만 인구 유입' 대비 주거벨트 구축 속도전": housing,
+            "민형배 시장 '반도체 공공임대 1만호 필요'": housing,
+        }
+        aliases = [{"title":title,"published":"Wed, 25 Nov 2026 05:00:00 GMT","source":"언론",
+                    "source_status":"보도 단계","description":"기존 계획을 설명했다",
+                    "stages":["2_수량수질_조사범위"],"stage_labels":["② 장록습지 수량·수질"]} for title in titles]
+        for item in aliases:
+            self.assertEqual(_event_family(item), titles[item["title"]])
+            self.assertEqual(_action_level(item), 1)
+        items = [i for i in verified_intake_events({"seen_event_keys":[]}) if i.get("recovery")] + aliases
+        groups = {}
+        for item in items:
+            groups.setdefault(_event_family(item), []).append(item)
+        self.assertEqual(set(groups), {housing, water})
+        merged = {family:_merge_group(group) for family,group in groups.items()}
+        self.assertIn("누락 보완", merged[housing]["title"])
+        self.assertEqual(merged[housing]["stages"], ["4_정주주거_배후도시"])
+        self.assertEqual(merged[water]["stages"], ["5_기반시설_생활SOC"])
+        self.assertIn("723억원", build_message({"new_items":list(merged.values()),"official_changes":[]}))
+
+    def test_nov25_reprint_after_confirmed_delivery_is_not_resent(self):
+        family = "honam_settlement_lead_20261125_housing_budget_recovery"
+        item = {"title":"민형배 시장 '반도체 공공임대 10,000호 필요'",
+                "published":"Thu, 26 Nov 2026 01:00:00 GMT",
+                "source":"보도 A", "description":"공공임대 마련 검토", "source_status":"보도 단계"}
+        self.assertEqual(_event_family(item), family)
+        key = hashlib.sha256(("family|"+family).encode()).hexdigest()[:28]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            alert,state,pending = (root / name for name in ("alert.json","state.json","pending.json"))
+            alert.write_text(json.dumps({"new_items":[item],"official_changes":[]},ensure_ascii=False),encoding="utf-8")
+            state.write_text(json.dumps({"seen_event_keys":[key],"event_action_levels":{key:1},"event_status_levels":{key:2}}),encoding="utf-8")
+            pending.write_text("{}",encoding="utf-8")
+            with patch("scripts.honam_event_filter.ALERT_PATH",alert),patch("scripts.honam_event_filter.STATE_PATH",state),patch("scripts.honam_event_filter.PENDING_PATH",pending):
+                event_filter_main()
+            self.assertFalse(alert.exists())
+            self.assertIn(key,json.loads(pending.read_text(encoding="utf-8"))["seen_event_keys"])
+
+    def test_nov25_new_counts_and_actual_execution_not_folded_into_old_plan(self):
+        old = "honam_settlement_lead_20261125_housing_budget_recovery"
+        new = {"title":"광주 반도체 건설인력 공공임대 1만2천호 필요","description":"추가 공급 검토"}
+        self.assertNotEqual(_event_family(new), old)
+        self.assertEqual(_action_level(new), 1)
+        contract = {"title":"광주 반도체 공공임대 1만호 공급 계약 체결","description":"계약을 체결했다"}
+        self.assertNotEqual(_event_family(contract), old)
+        self.assertGreaterEqual(_action_level(contract), 2)
+        works = {"title":"호남 반도체 덕남정수장 생산량 2배 개량공사 착공","description":"공사에 착수했다"}
+        self.assertNotEqual(_event_family(works), "honam_water_lead_20261125_local_budget_recovery")
+        self.assertGreaterEqual(_action_level(works), 2)
+
     def test_honam_uncertain_delivery_is_held_and_confirmed_recovers(self):
         record = {"status":"sending","message_ids":[1],"total_parts":2,"pending_state":{"seen_event_keys":["x"]}}
         self.assertEqual(decision(None), "clear")

@@ -369,6 +369,8 @@ def _event_key(item):
 
 
 def _is_material_event(item):
+    if _local_event_family(item):
+        return True
     if _power_event(item):
         return True
     if _executive_visit_signal(item):
@@ -409,13 +411,99 @@ def _local_housing_water_update(item):
     return topic and axis and material
 
 
+def _local_title_identity(value):
+    heading = _norm(value).rsplit(" - ", 1)[0]
+    return re.sub(r"[^0-9a-z가-힣]", "", heading.casefold())
+
+
+def _local_headline_execution(item):
+    heading = _norm(item.get("title") or item.get("headline"))
+    return any(term in heading for term in (
+        "계약 체결", "계약체결", "협약 체결", "협약체결", "착공", "준공", "낙찰",
+        "승인 완료", "지정 완료", "공급 개시", "입주 개시", "발주", "확정", "계획 변경",
+        "증액", "감액", "취소", "연기", "중단", "무산"
+    )) and not any(term in heading for term in (
+        "착공 예정", "착공 계획", "준공 목표", "승인 목표", "발주 예정", "미확정"
+    ))
+
+
+def _local_plan_signature(item):
+    """Merge reprints of the same quantified local proposal, never an execution upgrade."""
+    if _local_headline_execution(item):
+        return ""
+    title = _local_title_identity(item.get("title") or item.get("headline"))
+    if not any(s in title for s in ("반도체", "호남", "광주", "민형배")):
+        return ""
+    if "공공임대" in title and any(s in title for s in ("필요", "검토", "구상", "마련", "요구")):
+        count = re.search(r"(?<!\d)(\d+)만(?:([0-9]+)천)?호", title)
+        if count:
+            value = int(count.group(1)) * 10000 + int(count.group(2) or 0) * 1000
+            return f"honam_local_housing_rental_need_{value}"
+        count = re.search(r"(?<!\d)(\d{4,6})호", title)
+        if count:
+            return f"honam_local_housing_rental_need_{int(count.group(1))}"
+    if "덕남정수장" in title and ("2배" in title or ("22만" in title and "44만" in title)):
+        return "honam_local_water_deoknam_double_plan"
+    return ""
+
+
+def _local_publication_day(item):
+    raw = _norm(item.get("published"))
+    if not raw:
+        return None
+    try:
+        value = email.utils.parsedate_to_datetime(raw)
+    except (TypeError, ValueError, OverflowError):
+        try:
+            value = dt.datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        except (TypeError, ValueError):
+            return None
+    if value.tzinfo is None:
+        value = value.replace(tzinfo=dt.timezone(dt.timedelta(hours=9)))
+    return value.astimezone(dt.timezone(dt.timedelta(hours=9))).date()
+
+
+def _registered_local_recovery_family(item):
+    """Use reviewed same-incident aliases and stable proposal facts; not broad topic suppression."""
+    if item.get("intake_verified") or _local_headline_execution(item):
+        return ""
+    signature = _local_plan_signature(item)
+    title = _local_title_identity(item.get("title") or item.get("headline"))
+    published = _local_publication_day(item)
+    try:
+        entries = json.loads((ROOT / "data/honam_verified_event_intake.json").read_text(encoding="utf-8")).get("events", [])
+    except (OSError, ValueError, TypeError):
+        return ""
+    for entry in entries:
+        if not entry.get("recovery"):
+            continue
+        family = str(entry.get("event_family") or "")
+        if not family.startswith(("honam_settlement_lead_", "honam_water_lead_")):
+            continue
+        if signature and signature in entry.get("covered_plan_signatures", []):
+            return family
+        if published and title:
+            try:
+                incident = dt.date.fromisoformat(entry["event_date_kst"])
+            except (KeyError, TypeError, ValueError):
+                continue
+            # Titles alone cannot identify a different day's substantive event.
+            if published == incident and title in {_local_title_identity(t) for t in entry.get("covered_title_aliases", [])}:
+                return family
+    return ""
+
+
+def _local_event_family(item):
+    return _registered_local_recovery_family(item) or _local_plan_signature(item)
+
+
 def _is_known_baseline_only(item):
     # An independently reviewed, expressly non-confirmed schedule lead is not a
     # mere 2026-09-22 roadmap reprint even if it cites several old figures.
     # Generic RSS articles do not get this privileged bypass.
     if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith(("honam_fab_lead_", "honam_settlement_lead_", "honam_water_lead_")):
         return False
-    if _local_housing_water_update(item):
+    if _local_event_family(item) or _local_housing_water_update(item):
         return False
     # 회장의 신규 현장방문은 과거 팹 로드맵 수치를 함께 언급해도 별개 사건이다.
     if _executive_visit_signal(item):
@@ -468,6 +556,8 @@ def _action_level(item):
     # merely because its text says "착공", "확정 전", or mentions a signed contract.
     if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith(("honam_fab_lead_", "honam_settlement_lead_", "honam_water_lead_")):
         return 1
+    if _local_event_family(item):
+        return 1
     power = _power_event(item)
     if power:
         return power['level']
@@ -496,6 +586,9 @@ def _event_family(item):
     # the broader 2030 roadmap family or a fresh news URL as its identity.
     if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith(("honam_fab_lead_", "honam_settlement_lead_", "honam_water_lead_")):
         return str(item["event_family"])
+    local_family = _local_event_family(item)
+    if local_family:
+        return local_family
     power = _power_event(item)
     if power:
         return power['family']
@@ -594,6 +687,7 @@ def _merge_group(items):
         key=lambda i: (
             -_action_level(i),
             0 if (i.get("_kind") == "official" or i.get("source_status") == "공식자료") else 1,
+            0 if i.get("recovery") and i.get("intake_verified") else 1,
             _norm(i.get("published")),
         ),
     )
@@ -656,7 +750,16 @@ def _merge_group(items):
             "군공항 부지·전력·용수·인허가 실제 협의 결과는 후속 확인"
         )
 
-    power_family = str(first.get("event_family") or "")
+    power_family = str(first.get("event_family") or _local_event_family(first) or "")
+    if power_family.startswith(("honam_settlement_lead_", "honam_local_housing_")):
+        first["stages"] = ["4_정주주거_배후도시"]
+        first["stage_labels"] = ["④ 정주·주거·배후도시"]
+    elif power_family.startswith(("honam_water_lead_", "honam_local_water_")):
+        first["stages"] = ["5_기반시설_생활SOC"]
+        first["stage_labels"] = ["⑤ 전력·용수·교통·생활 인프라"]
+        if not first.get("recovery"):
+            first["reason"] = "덕남정수장 개량 및 반도체 산업용수 공급계획의 실제 예산·발주·준공 여부 확인"
+            first["impact"] = "산업용수 공급 준비 단계(공급 개시 확정 아님)"
     if power_family.startswith("honam_power_"):
         first["stages"] = ["5_기반시설_생활SOC"]
         first["stage_labels"] = ["⑤ 전력·용수·교통·생활 인프라"]
@@ -665,7 +768,7 @@ def _merge_group(items):
             "기존 재생에너지·LNG 병행 구상과 2029년 팹 완공 목표는 확정 공급이나 전원 인가가 아님"
         )
         first["impact"] = "발전·전력공급 실행 단계 확인(전원 인가 여부는 별도)"
-    summary = _summarize_event(ordered)
+    summary = _norm(first.get("title")) if first.get("recovery") and first.get("intake_verified") else _summarize_event(ordered)
     if summary:
         first["title"] = summary
         first["headline"] = summary
