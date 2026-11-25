@@ -15,13 +15,16 @@ import json
 import pathlib
 import re
 import urllib.error
+import urllib.parse
 import urllib.request
 from html.parser import HTMLParser
 from zoneinfo import ZoneInfo
 
 from scripts import europe_sovereign_yield_watch as base
 from scripts.khs_source_fetch import fetch_text
-from scripts.france_ministry_moodys_fallback import discover_ministry_notice
+from scripts.france_ministry_moodys_fallback import (
+    discover_ministry_notice, ministry_publish_date, plain_text,
+)
 
 KST = ZoneInfo("Asia/Seoul")
 PARIS = ZoneInfo("Europe/Paris")
@@ -31,6 +34,13 @@ AFT_TEXT_RECOVERY = "https://r.jina.ai/https://www.aft.gouv.fr/en/frances-credit
 ORIGINAL_STORY = "https://www.briefs.co/news/hedge-funds-scramble-as-french-bond-rout-blows-out-spreads/"
 REVIEW_DATE = dt.date(2026, 10, 23)
 SP_REVIEW_DATE = dt.date(2026, 11, 27)
+SP_MINISTRY_HOST = "presse.economie.gouv.fr"
+SP_MINISTRY_BASELINE = "https://presse.economie.gouv.fr/notation-agence-sampp-reaction-de-roland-lescure-ministre-de-leconomie-des-finances-et-de-la-souverainete-industrielle-energetique-et-numerique/"
+SP_MINISTRY_INDEXES = (
+    "https://presse.economie.gouv.fr/?s=S%26P",
+    "https://presse.economie.gouv.fr/?s=notation",
+    "https://presse.economie.gouv.fr/",
+)
 ECB_FSR_DATE = dt.date(2026, 11, 18)
 ECB_FSR_URL = "https://www.ecb.europa.eu/press/financial-stability-publications/fsr/html/ecb.fsr202611~e03b919d36.en.html"
 ECB_FSR_KEY = "ecb_fsr:2026-11-18:hedge_fund_repo_deleveraging"
@@ -196,7 +206,23 @@ def parse_aft_text_recovery(text: str) -> dict:
     }
 
 
-def fetch_rating(*, fetch=None) -> tuple[dict | None, list[str]]:
+def normalized_outlook(value: str) -> str:
+    v = str(value or "").strip().casefold()
+    return {"négative": "negative", "négatif": "negative", "negative": "negative",
+            "positive": "positive", "positif": "positive", "stable": "stable"}.get(v, v)
+
+
+def valid_rating_date(row: dict, floor: str | None, today: dt.date | None) -> bool:
+    date = str(row.get("decision_date") or "")
+    try:
+        parsed = dt.date.fromisoformat(date)
+    except ValueError:
+        return False
+    return (not floor or date >= floor) and (today is None or parsed <= today)
+
+
+def fetch_rating(*, fetch=None, min_moodys_date=None, min_sp_date=None,
+                 today=None) -> tuple[dict | None, list[str]]:
     if fetch is None:
         def fetch(url: str) -> str:
             body, error = fetch_text(
@@ -210,39 +236,129 @@ def fetch_rating(*, fetch=None) -> tuple[dict | None, list[str]]:
                 raise RuntimeError(error or "official rating page was empty")
             return body
     errors = []
+    moodys = sp = None
     for url in (AFT_EN, AFT_FR):
         try:
             document = fetch(url)
-            rating = parse_moodys(document)
-            rating["url"] = url
-            rating["source_kind"] = "official_document"
-            try:
-                sp = parse_sp_official(document)
-                rating["sp_rating"] = {**sp, "url": url,
-                                       "source_kind": "official_document"}
-            except ValueError:
-                # This never upgrades an unverified S&P value into a live rating.
-                pass
-            return rating, errors
         except Exception as exc:
             errors.append(f"{url}: {type(exc).__name__} {str(exc)[:180]}")
-    # Some GitHub runner IP ranges are rejected by AFT (HTTP 403). A text
-    # recovery gateway can still preserve the AFT source attribution. It is
-    # NOT sufficient on its own to assert a newly changed sovereign rating.
+            continue
+        try:
+            row = parse_moodys(document)
+            if not valid_rating_date(row, min_moodys_date, today):
+                raise ValueError("stale or future Moody's decision date")
+            if moodys is None or row["decision_date"] > moodys["decision_date"]:
+                moodys = {**row, "url": url, "source_kind": "official_document"}
+        except ValueError as exc:
+            errors.append(f"{url}: Moody's {exc}")
+        try:
+            row = parse_sp_official(document)
+            if not valid_rating_date(row, min_sp_date, today):
+                raise ValueError("stale or future S&P decision date")
+            if sp is None or row["decision_date"] > sp["decision_date"]:
+                sp = {**row, "url": url, "source_kind": "official_document"}
+        except ValueError as exc:
+            if min_sp_date is not None:
+                errors.append(f"{url}: S&P {exc}")
+        # When the scheduled review is due, a valid but older English row
+        # must not prevent checking the French page for a newer S&P decision.
+        if moodys and (sp or min_sp_date is None):
+            if today is None or today < SP_REVIEW_DATE or (sp and sp["decision_date"] >= SP_REVIEW_DATE.isoformat()):
+                break
+    if moodys:
+        if sp:
+            moodys["sp_rating"] = sp
+        return moodys, errors
+
     recovery_text = ""
     try:
         recovery_text = fetch(AFT_TEXT_RECOVERY)
         rating = parse_aft_text_recovery(recovery_text)
+        if not valid_rating_date(rating, min_moodys_date, today):
+            raise ValueError("stale or future recovered Moody's decision date")
         rating["url"] = AFT_EN
+        if sp:
+            rating["sp_rating"] = sp
         return rating, errors
     except Exception as exc:
         errors.append(f"Government text recovery: {type(exc).__name__} {str(exc)[:180]}")
         if recovery_text:
-            # Public webpage debugging only: no credentials or user data.
             base.OUT.mkdir(parents=True, exist_ok=True)
             (base.OUT / "france_credit_recovery_debug.txt").write_text(
                 recovery_text[:15000], encoding="utf-8")
+    if sp:
+        return {**VERIFIED_AFT_SNAPSHOT, "sp_rating": sp}, errors
     return None, errors
+
+
+def validate_sp_ministry_notice(document: str, url: str, now: dt.datetime,
+                                earliest: dt.date = SP_REVIEW_DATE) -> dict | None:
+    """A government statement, never an S&P agency decision or a search snippet."""
+    parsed = urllib.parse.urlsplit(url)
+    if parsed.scheme != "https" or parsed.hostname != SP_MINISTRY_HOST or parsed.username or parsed.password:
+        return None
+    # A dated release must contain the statement itself, not a navigation link.
+    raw = re.split(r"(?i)<h[1-6][^>]*>\s*Derniers communiqués", document, maxsplit=1)[0]
+    body = plain_text(raw)
+    published = ministry_publish_date(raw)
+    if published is None:
+        m = re.search(r"(?i)\bParis,\s*le\s+(\d{1,2}\s+[a-zàâéêîôûù]+\s+20\d{2})\b", body)
+        stamp = parse_date(m.group(1)) if m else None
+        published = dt.date.fromisoformat(stamp) if stamp else None
+    if not published or not earliest <= published <= now.astimezone(PARIS).date():
+        return None
+    agency = r"(?:S\s*&\s*P|Standard\s*(?:&|and|et)\s*Poor['’]?s)"
+    if not re.search(agency, body, re.I):
+        return None
+    # Match actual government attribution to an already announced decision.
+    m = re.search(r"(?i)(?:prend acte|a pris acte|salue)\s+de\s+la\s+décision.{0,180}?"
+                  + agency + r".{0,180}?(?:note\s+(?:souveraine\s+)?de\s+la\s+France|notation\s+de\s+la\s+France).{0,160}",
+                  body)
+    if not m:
+        return None
+    notice = {"date": published.isoformat(), "url": url,
+              "source_kind": "official_government_press"}
+    # Report only explicitly present grade/outlook; no guessed outcome.
+    excerpt = m.group(0)
+    grade = re.search(r"(?i)\b(?:note\s+(?:souveraine\s+)?de\s+la\s+France|notation\s+de\s+la\s+France)\s+(?:de\s+[A-Z+-]+\s+)?(?:à|au niveau)\s+(AAA|AA[+-]?|A[+-]?|BBB[+-]?|BB[+-]?|B[+-]?|CCC[+-]?|CC|C|D)(?![A-Za-z+-])", excerpt)
+    outlook = re.search(r"(?i)perspective\s+(stable|négative|negative|positive)\b", excerpt)
+    if grade:
+        notice["reported_rating_by_government"] = grade.group(1).upper()
+    if outlook:
+        notice["reported_outlook_by_government"] = normalized_outlook(outlook.group(1)).title()
+    return notice
+
+
+def discover_sp_ministry_notice(fetch, now: dt.datetime) -> tuple[dict | None, list[str]]:
+    errors, candidates, seen = [], [], set()
+    for index in SP_MINISTRY_INDEXES:
+        try:
+            document = fetch(index)
+            for href, inner in re.findall(r'<a\b[^>]*\bhref=["\']([^"\']+)["\'][^>]*>(.*?)</a>', document, re.I | re.S):
+                label = plain_text(inner)
+                if not re.search(r"S\s*&\s*P|Standard\s*(?:&|and|et)\s*Poor", label, re.I):
+                    continue
+                if not re.search(r"notation|note|rating|r[eé]action", label, re.I):
+                    continue
+                url = urllib.parse.urljoin(index, html.unescape(href))
+                p = urllib.parse.urlsplit(url)
+                if p.scheme != "https" or p.hostname != SP_MINISTRY_HOST or p.username or p.password or p.path == "/" or "/wp-" in p.path:
+                    continue
+                url = urllib.parse.urlunsplit((p.scheme, p.netloc, p.path, "", ""))
+                if url not in seen:
+                    seen.add(url)
+                    candidates.append(url)
+        except Exception as exc:
+            errors.append(f"S&P ministry index: {type(exc).__name__} {str(exc)[:120]}")
+    notices = []
+    for url in candidates[:5]:
+        try:
+            notice = validate_sp_ministry_notice(fetch(url), url, now)
+            if notice:
+                notices.append(notice)
+        except Exception as exc:
+            errors.append(f"S&P ministry notice: {type(exc).__name__} {str(exc)[:120]}")
+    return max(notices, key=lambda n: n["date"], default=None), errors
 
 
 def ecb_financial_stability_event(
@@ -283,9 +399,9 @@ def credit_events(now: dt.date, old: dict, rating: dict) -> list[dict]:
     last_old = prev.get("decision_date")
     last_new = rating.get("decision_date")
     changed_rating = bool(prev and (prev.get("rating") != rating["rating"]
-                    or prev.get("outlook") != rating["outlook"]))
+                    or normalized_outlook(prev.get("outlook")) != normalized_outlook(rating["outlook"])))
     new_official_review = bool(prev and last_old and last_new and last_new > last_old)
-    if (changed_rating or new_official_review) and rating.get("source_kind") == "official_document":
+    if (changed_rating or new_official_review) and rating.get("source_kind") == "official_document" and valid_rating_date(rating, last_old, now):
         key = f"decision:{last_new}:{rating['rating']}:{rating['outlook']}"
         if key not in delivered:
             events.append({"kind": "decision", "key": key})
@@ -309,9 +425,9 @@ def sp_review_events(local_day: dt.date, sent_keys: set[str],
         prior_date = str(prior.get("decision_date") or "")
         new_date = str(official.get("decision_date") or "")
         changed = (prior.get("rating") != official.get("rating") or
-                   prior.get("outlook") != official.get("outlook"))
+                   normalized_outlook(prior.get("outlook")) != normalized_outlook(official.get("outlook")))
         new_review = bool(prior_date and new_date > prior_date)
-        if (changed or new_review) and new_date >= prior_date:
+        if (changed or new_review) and valid_rating_date(official, prior_date, local_day):
             key = f"sp_decision:{new_date}:{official['rating']}:{official['outlook']}"
             if key not in sent_keys:
                 return [{"kind": "sp_decision", "key": key,
@@ -363,6 +479,13 @@ def format_event(rating: dict, events: list[dict], pending: dict,
                   f"S&P {event['rating']} / 전망 {event['outlook']} / "
                   f"최근 평가일 {event['decision_date']}.")
         caveat = "이번 최신 결과는 공식 등급표에 근거하며, 이전 평가와 비교해 등급·전망·평가일 변화를 판단합니다."
+    elif any(x["kind"] == "sp_government_notice" for x in events):
+        notice = next(x for x in events if x["kind"] == "sp_government_notice")
+        name = "프랑스 S&P 평가 관련 재무부 공식 입장"
+        status = (f"{notice['date']} 프랑스 재무부가 S&P의 프랑스 신용등급 결정에 대한 공식 입장을 발표했습니다. "
+                  f"정부 발표 내 등급: {notice.get('reported_rating_by_government', '미확인')} / "
+                  f"전망: {notice.get('reported_outlook_by_government', '미확인')}.")
+        caveat = "정부 발표로 확인된 내용이며 S&P 결정문·AFT 최신 등급표 직접 확인과 구분합니다."
     elif any(x["kind"] == "government_rating_notice" for x in events):
         notice = next(x for x in events if x["kind"] == "government_rating_notice")
         name = "프랑스 재무부의 Moody’s 신용등급 관련 공식 입장"
@@ -448,6 +571,8 @@ def format_event(rating: dict, events: list[dict], pending: dict,
                 f"• 프랑스 재무부의 별도 공식 대응 발표: {event['date']} "
                 "(신용등급 결과와 구분)"
             )
+        elif event["kind"] == "sp_government_notice" and "재무부 공식 입장" not in name:
+            companion.append(f"• S&P 관련 재무부 공식 입장: {event['date']} (평가사 직접 결정문과 구분)")
         elif event["kind"] == "ecb_fsr" and "ECB 11월 금융안정보고서" not in name:
             companion.append(
                 "• ECB 2026년 11월 18일 금융안정 새 보고서: 국채 레버리지 청산 전염 위험"
@@ -483,6 +608,8 @@ def format_event(rating: dict, events: list[dict], pending: dict,
         *([f"• AFT France S&P rating calendar: {AFT_EN}"]
           if any(x["kind"] == "sp_decision" for x in events) and not sp_only else []),
         f"• Briefs France carry story: {ORIGINAL_STORY}",
+        *([f"• France government S&P press: {next(x for x in events if x['kind'] == 'sp_government_notice')['url']}"]
+          if any(x["kind"] == "sp_government_notice" for x in events) else []),
         *([f"• France government Moody press: {next(x for x in events if x['kind'] == 'government_rating_notice')['url']}"]
           if any(x["kind"] == "government_rating_notice" for x in events) else []),
     ])
@@ -538,9 +665,16 @@ def main() -> int:
     state = base.load_json(base.STATE, {})
     existing_credit = state.get("france_credit") or {}
     now = dt.datetime.now(KST)
-    official, errors = fetch_rating()
+    local_day = now.astimezone(PARIS).date()
+    sp_previous = existing_credit.get("sp_last_official") or VERIFIED_SP_SNAPSHOT
+    moody_previous = existing_credit.get("last_official") or VERIFIED_AFT_SNAPSHOT
+    official, errors = fetch_rating(
+        min_moodys_date=max(moody_previous.get("decision_date") or "", VERIFIED_AFT_SNAPSHOT["decision_date"]),
+        min_sp_date=max(sp_previous.get("decision_date") or "", VERIFIED_SP_SNAPSHOT["decision_date"]),
+        today=local_day,
+    )
     # A recovery gateway is not equivalent to direct official-source access.
-    source_ok = official is not None
+    source_ok = bool(official and official.get("source_kind") in ("official_document", "secondary_text_recovery"))
     direct_official = bool(official and official.get("source_kind") == "official_document")
     fail_streak = (0 if direct_official else
                    int(existing_credit.get("source_fail_streak") or 0) + 1)
@@ -561,12 +695,39 @@ def main() -> int:
             "source_kind": "historical_official_snapshot",
             "verified_on": best.get("verified_on", "2026-11-19"),
         }
-    local_day = now.astimezone(PARIS).date()
     events = credit_events(local_day, existing_credit, rating)
     delivered = set(existing_credit.get("sent_keys") or [])
-    sp_live = official.get("sp_rating") if direct_official else None
-    sp_previous = existing_credit.get("sp_last_official") or VERIFIED_SP_SNAPSHOT
+    sp_live = official.get("sp_rating") if official else None
     events.extend(sp_review_events(local_day, delivered, sp_live, sp_previous))
+
+    # Independent S&P government lane. Keep the existing rating-source failure
+    # counter and the agency verification requirement intact.
+    sp_notice, sp_errors, sp_probe = None, [], "not_due"
+    def sp_fetch(url):
+        data, err = fetch_text(url, "Mozilla/5.0 (khs-france-rating-press/1.0)",
+                               timeout=13, attempts=1, accept="text/html")
+        if err is not None or not data:
+            raise RuntimeError(err or "empty S&P ministry response")
+        return data
+    if local_day < SP_REVIEW_DATE and not sp_live:
+        try:
+            baseline = validate_sp_ministry_notice(
+                sp_fetch(SP_MINISTRY_BASELINE), SP_MINISTRY_BASELINE, now, dt.date(2026, 5, 29))
+            sp_probe = "historical_statement_verified" if baseline else "historical_statement_unverified"
+        except Exception as exc:
+            sp_probe = "historical_statement_fetch_failed"
+            sp_errors.append(f"S&P ministry preflight: {type(exc).__name__} {str(exc)[:120]}")
+    if local_day >= SP_REVIEW_DATE and not (sp_live and sp_live["decision_date"] >= SP_REVIEW_DATE.isoformat()):
+        sp_notice, sp_errors = discover_sp_ministry_notice(sp_fetch, now)
+        sp_probe = "government_statement_verified" if sp_notice else ("search_incomplete" if sp_errors else "no_matching_statement")
+        if sp_notice:
+            # Suppress only the misleading generic overdue reminder when an
+            # independent government statement has been found.
+            events = [e for e in events if e["kind"] != "sp_review_overdue"]
+            key = f"sp_government_notice:{sp_notice['date']}"
+            if key not in delivered:
+                events.append({**sp_notice, "kind": "sp_government_notice", "key": key})
+
 
     # First-party French Finance Ministry is a backup for the AFT's HTTP 403
     # problem. A ministry response can confirm publication of an official
@@ -621,6 +782,8 @@ def main() -> int:
         "sent_keys": list(existing_credit.get("sent_keys") or [])[-30:],
         "checked_at_kst": now.isoformat(timespec="seconds"),
         "source_fail_streak": fail_streak,
+        "sp_ministry_source_status": sp_probe,
+        "sp_ministry_last_checked_kst": now.isoformat(timespec="seconds"),
         "source_access": ("official_document" if direct_official
                           else "secondary_text_recovery" if source_ok
                           else "access_restricted"),
@@ -658,6 +821,9 @@ def main() -> int:
             f"- 출처 상태: {'공식 페이지 직접 확인' if direct_official else '공식 페이지 직접 검증 미완료·보조 복원' if source_ok else '접근 제한·2026-11-19 AFT 검증 스냅샷 참고'}",
             f"- 최근 확인된 평가: Moody's {rating['rating']}, {rating['outlook']}, {rating['decision_date']}; 출처 단계 {rating.get('source_kind')}",
             f"- S&P 관측: {sp_live['rating'] + '/' + sp_live['outlook'] + '/' + sp_live['decision_date'] if sp_live else '실시간 공식 등급표 확인 불가 (과거 스냅샷만 보유)'}",
+            f"- S&P 재무부 독립 확인: {sp_probe}",
+            *([f"- S&P 재무부: {sp_notice['url']}"] if sp_notice else []),
+            *([f"- S&P 재무부 보조원천: {x}" for x in sp_errors[:3]] if sp_errors else []),
             f"- 다음 심사: {rating['next_review'] or '미게시'}",
             f"- 연속 원문 오류: {fail_streak}",
             f"- 프랑스 재무부 공식 입장: {government_notice['url'] if government_notice else '신규 확인 없음'}",

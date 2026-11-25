@@ -23,6 +23,7 @@ LINKS = (
     ("• Briefs France carry story: ", "프랑스 헤지펀드 캐리 청산 보도", "www.briefs.co"),
     ("• ECB Financial Stability Review: ", "ECB 11월 금융안정보고서·헤지펀드 레버리지", "www.ecb.europa.eu"),
     ("• France government Moody press: ", "프랑스 재무부 Moody’s 공식 입장", "presse.economie.gouv.fr"),
+    ("• France government S&P press: ", "프랑스 재무부 S&P 공식 입장", "presse.economie.gouv.fr"),
 )
 
 

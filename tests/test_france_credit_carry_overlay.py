@@ -348,5 +348,60 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         self.assertEqual(len(errors), 1)
 
 
+    def test_stale_english_moodys_does_not_block_french_recovery(self):
+        newer = EXAMPLE_EN.replace("10 April 2026", "23 October 2026").replace("23 October 2026</td></tr>", "-</td></tr>", 1)
+        def fetch(url):
+            return EXAMPLE_EN if url == watch.AFT_EN else newer
+        rating, errors = watch.fetch_rating(fetch=fetch, min_moodys_date="2026-10-23",
+                                            min_sp_date="2026-05-29", today=dt.date(2026, 11, 25))
+        self.assertEqual(rating["decision_date"], "2026-10-23")
+        self.assertEqual(rating["url"], watch.AFT_FR)
+        self.assertTrue(any("stale" in x for x in errors))
+
+    def test_sp_can_be_verified_without_moodys_row(self):
+        doc = "<table><tr><td>Standard &amp; Poor's</td><td>A+</td><td>Stable</td><td>27 November 2026</td><td>-</td></tr></table>"
+        rating, _ = watch.fetch_rating(fetch=lambda url: doc, min_moodys_date="2026-10-23",
+                                       min_sp_date="2026-05-29", today=dt.date(2026, 11, 28))
+        self.assertEqual(rating["source_kind"], "historical_official_snapshot")
+        self.assertEqual(rating["sp_rating"]["decision_date"], "2026-11-27")
+        self.assertEqual(rating["sp_rating"]["source_kind"], "official_document")
+
+    def test_language_variant_and_stale_review_do_not_create_false_moodys_decision(self):
+        old = {"last_official": dict(watch.VERIFIED_AFT_SNAPSHOT)}
+        row = {**old["last_official"], "outlook": "Négative", "source_kind": "official_document"}
+        self.assertEqual(watch.credit_events(dt.date(2026, 11, 25), old, row), [])
+        row.update({"rating": "A1", "decision_date": "2026-04-10"})
+        self.assertEqual(watch.credit_events(dt.date(2026, 11, 25), old, row), [])
+
+    def test_sp_ministry_fallback_checks_date_and_actual_government_statement(self):
+        url = "https://presse.economie.gouv.fr/notation-sampp-france/"
+        now = dt.datetime(2026, 11, 28, 8, tzinfo=watch.KST)
+        doc = ("<h1>Notation Agence S&amp;P</h1><p>Paris, le 27 novembre 2026</p>"
+               "<p>Le ministre prend acte de la décision de l'agence S&amp;P de maintenir "
+               "la note de la France à A+, perspective stable.</p>")
+        notice = watch.validate_sp_ministry_notice(doc, url, now)
+        self.assertEqual(notice["reported_rating_by_government"], "A+")
+        self.assertEqual(notice["reported_outlook_by_government"], "Stable")
+        self.assertEqual(notice["source_kind"], "official_government_press")
+        self.assertIsNone(watch.validate_sp_ministry_notice(doc.replace("27 novembre", "29 mai"), url, now))
+        self.assertIsNone(watch.validate_sp_ministry_notice(doc, "https://example.com/fake", now))
+        self.assertIsNone(watch.validate_sp_ministry_notice(
+            "<p>Paris, le 27 novembre 2026. S&P pourrait changer la note de la France.</p>", url, now))
+        index = f'<a href="{url}">Notation S&amp;P : réaction du ministre</a>'
+        seen = []
+        def fetch(target):
+            seen.append(target)
+            return doc if target == url else index
+        found, errors = watch.discover_sp_ministry_notice(fetch, now)
+        self.assertEqual(found, notice)
+        self.assertEqual(seen.count(url), 1)
+        self.assertFalse(errors)
+        _, body = watch.format_event(dict(watch.VERIFIED_AFT_SNAPSHOT),
+             [{**notice, "kind": "sp_government_notice", "key": "sp_government_notice:2026-11-27"}], {}, now)
+        self.assertIn("S&P 결정문·AFT 최신 등급표 직접 확인과 구분", body)
+        from scripts.europe_sovereign_yield_telegram_html import render_chunks
+        self.assertIn("프랑스 재무부 S&amp;P 공식 입장", "\n".join(render_chunks(body)))
+
+
 if __name__ == "__main__":
     unittest.main()
