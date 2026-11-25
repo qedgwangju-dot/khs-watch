@@ -50,10 +50,10 @@
     "apple_samsung_1q27_dram2.0gb_nand0.33gb_up30_40",
     "apple_unspecified_other_procurement_dx_nx_px_x"
   ],
-  "last_scan_count": 11,
+  "last_scan_count": 8,
   "last_new_signal_count": 0,
   "alert_generated": false,
-  "updated_at_kst": "2026-11-25T02:51:23+09:00",
+  "updated_at_kst": "2026-11-25T10:45:48+09:00",
   "macbook_neo_watch": {
     "official_checked_date": "2026-11-25",
     "official_spec": "a18pro_8gb",
@@ -62,14 +62,15 @@
   },
   "source_health": {
     "attempted": 12,
-    "successful": 12,
-    "failed": 0,
-    "errors": []
+    "successful": 11,
+    "failed": 1,
+    "errors": [
+      "google_ko: HTTPError"
+    ]
   },
-  "source_status": "complete",
+  "source_status": "partial",
   "neo_source_health": {
-    "official_source": "a18pro_8gb",
-    "report_source": "not_checked",
-    "official_checked_date": "2026-11-25"
+    "official_source": "verified_today",
+    "report_source": "not_checked"
   }
 }
