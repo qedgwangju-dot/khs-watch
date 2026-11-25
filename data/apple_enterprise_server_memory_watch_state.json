@@ -119,12 +119,14 @@
     "1783e528f1dfdb1b36f16172",
     "183e5864e28f39204582",
     "18439061a268a8599c94",
+    "1916906d4435c48f2fc4",
     "1934c021c7e57d154ad56e98",
     "193d24d53ef9502ea525",
     "194d3bb8e29a92105a52",
     "19524ecf2dac614035e4",
     "19c7eeee614c2e53b19b",
     "19fac6082ce7cf9a0364",
+    "1a031a83dabcde2cb4f1",
     "1a074d6243fc00f4eab6ad85",
     "1a0c4fdce72becf1e81c",
     "1a22bf8f05c40bae0e6d",
@@ -142,6 +144,7 @@
     "1c6363a07d3b8102531ba1d6",
     "1c8945e5328b8f264fec8608",
     "1cb75b3e24f4ed45f497",
+    "1ceef8b0e45a6058d5bd",
     "1d5034d4b25a42ba7ad1",
     "1daf0f849f909cb9720f",
     "1dc73b04f0d6d2309b8b",
@@ -1291,7 +1294,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-11-25T06:02:24+09:00",
+  "last_scan_kst": "2026-11-25T13:06:24+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -1301,6 +1304,6 @@
   "observations": [],
   "fetch_ok": 11,
   "fetch_errors": [
-    "google 애플 M8 Ultra 기업 서버 메모리: HTTPError HTTP Error 429: Too Many Requests"
+    "google Apple M8 Ultra enterprise server NV: HTTPError HTTP Error 429: Too Many Requests"
   ]
 }
