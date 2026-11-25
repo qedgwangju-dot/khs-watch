@@ -813,6 +813,7 @@ def main() -> int:
         "last_values": {k: v.value for k, v in latest.items()},
         "last_change_basis": change_basis,
         "stale": stale,
+        "last_photo_delivery": state.get("last_photo_delivery"),
     }
     PENDING.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
