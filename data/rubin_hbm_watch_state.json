@@ -1437,13 +1437,15 @@
   },
   "_delivery": {
     "id": "64ef40d76370e8f1d1a64ecf88aecafecce47eb77ea01bd4100f14b9ae61cf28",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-11-25T21:40:20+09:00",
     "chunks": [
       "<b>광통신 공급 병목 선행경보 — 셈텍 11/23 실적발표</b>\n• 고객이 기존 납기보다 빠른 납품을 요청; 산업 평균 납기 변화는 아님.\n• 광소자 생산능력: 2026년 말 3~4배, 2027년 말 추가 3~4배 확대 계획(전사 생산능력 아님).\n• 파운드리 생산능력 제약은 완화됐으나 일부 검사장비의 납기는 길며 회계연도 2028년 계획에 맞춰 확보 추진.\n• 조정 매출총이익률 59.3%→58.9%(전망, -0.4%p); 매각 예정 사업 제외 64.3%(+0.3%p). 증설 초기 비용과 14주 분기 인건비를 구분.\n• 수요 강세와 고정비 부담이 병존. 다음 확인: 검사장비 반입·양품 생산능력·실제 출하·매출총이익률.\n<a href=\"https://www.semtech.com/company/press/semtech-announces-third-quarter-of-fiscal-year-2027-results\">근거 1</a> / <a href=\"https://www.fool.com/earnings/call-transcripts/2026/11/24/semtech-smtc-q3-2027-earnings-call-transcript/\">근거 2</a>\n\n<b>광통신 증설·자금 부담 경보 — AAOI 11/24 장기공급계약</b>\n• 두 번째 대형 클라우드 고객, 2026.12~2030.12; 최소 구매약정 22억달러(약 2조9,579억원).\n• 2027년 800G 광트랜시버 15억달러(약 2조168억원); 2028~2029년 레이저 다이오드 7억달러(약 9,412억원).\n• 고객 자본 지원 약정 없음; 공급사가 인증 촉진 일회성 비용 200만달러(약 27억원) 부담.\n• 고객 예상 수요 100억달러(약 13조4,451억원) 초과는 미보장 전망; 최소 구매약정과 구분. 계약 조건에 따른 물량 감소 가능.\n• 미국산 제품 2027년 1분기부터 출하·연중 확대 약정; 2028년 일부 레이저의 CPO 적용 예상. 실제 설비투자·수율·고객 승인·출하·현금회수 별도 추적.\n• 원화 환산: 1달러=1,344.51원, 2026-11-24 일일 기준 · ECB/Frankfurter · 조회 2026-11-25 21:40 KST · 보조 API 2026-11-25 · 차이 0.11% · 일중 기준시각 차이 가능 기준.\n<a href=\"https://investors.ao-inc.com/2026-11-24-AOI-Announces-Multi-Year-Long-Term-Agreement-with-Tier-1-Hyperscale-Datacenter-Customer\">근거 1</a> / <a href=\"https://www.semiconductor-today.com/news_items/2026/nov/aoi-241126.shtml\">근거 2</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      564
+    ],
     "candidate": {
       "updated_at_kst": "2026-11-25T21:39:45+09:00",
       "seen_ids": [
