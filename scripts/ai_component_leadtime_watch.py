@@ -2151,13 +2151,21 @@ def gpu_seed_matches(kind: str, body: str) -> bool:
             return False
         if not any(x in low for x in ("new orders", "new order", "新訂單", "新订单", "新單")):
             return False
-        patterns = (
-            r"\bb300\b[^.!?。；;]{0,100}?\b26\s*(?:-|to)\s*40\s*(?:weeks?|周|週)",
-            r"\bgb300\b[^.!?。；;]{0,85}?\b14\s*(?:-|to)\s*26\s*(?:weeks?|周|週)",
+        # The English report puts the GB300 name after the range; the
+        # Taiwanese copy uses Chinese units on both ends. Do not let the
+        # GB300 suffix match the standalone B300 model.
+        unit = r"(?:weeks?|周|週)"
+        sep = rf"\s*(?:{unit}\s*)?(?:-|to|and)\s*"
+        b300 = r"(?<![a-z0-9])b300(?![a-z0-9])"
+        gb300 = r"(?<![a-z0-9])gb300(?![a-z0-9])"
+        b_range = rf"(?<!\d)26{sep}40\s*{unit}"
+        gb_range = rf"(?<!\d)14{sep}26\s*{unit}"
+        b_match = re.search(rf"{b300}[^.!?。；;]{{0,100}}?{b_range}", low)
+        gb_match = (
+            re.search(rf"{gb300}[^.!?。；;]{{0,85}}?{gb_range}", low)
+            or re.search(rf"{gb_range}\s+(?:for|on)\s+(?:the\s+)?{gb300}", low)
         )
-        # Wccftech phrases the first range "26 weeks and 40 weeks".
-        patterns = (patterns[0].replace(r"\s*(?:-|to)\s*", r"\s*(?:-|to|weeks?\s+and)\s*", 1), patterns[1])
-        return all(re.search(p, low) for p in patterns)
+        return bool(b_match and gb_match)
     if kind == "gaming_allocation":
         return (
             "board channels" in low

@@ -1424,9 +1424,6 @@ class OpticalSupplyCapitalTests(unittest.TestCase):
 
 
 class NvidiaModelSupplyReportTests(unittest.TestCase):
-    MODEL_BODY = ("NVIDIA new orders: B300 GPU orders range from 26 to 40 weeks, "
-                  "compared with 14 to 26 weeks for the GB300. Commercial Times.")
-    # Put the subject before the value, as in the alternate article.
     MODEL_BODY = ("NVIDIA new orders. Commercial Times: B300 GPU orders range from 26 to 40 weeks, "
                   "GB300 lead time ranges from 14 to 26 weeks.")
     GAMING_BODY = ("Board Channels: NVIDIA cuts consumer and gaming GPU supply by 20-30% "
@@ -1465,6 +1462,16 @@ class NvidiaModelSupplyReportTests(unittest.TestCase):
         self.assertTrue(all(x["status"]=="content_incomplete" for x in incomplete["source_health"].values()))
         recovered, alerts = w.gpu_report_update(state, "2026-11-26", self.seed_body, lambda *a:[])
         self.assertEqual(len(alerts), 2)
+
+    def test_exact_publisher_word_orders_and_chinese_units(self):
+        for body in (
+            "Commercial Times. Lead times for new B300 GPU orders range from 26 to 40 weeks, compared with 14 to 26 weeks for the GB300.",
+            "China Times. For new orders, for the B300, the delivery time ranges between 26 weeks and 40 weeks, while for the GB300 it is 14 weeks to 26 weeks.",
+            "工商時報：新訂單交期拉長。B300的GPU交期26周至40周，GB300交期約14周～26周。",
+        ):
+            self.assertTrue(w.gpu_seed_matches("new_orders", body), body)
+        self.assertFalse(w.gpu_seed_matches("new_orders",
+            "Commercial Times new orders GB300 26 to 40 weeks, GB300 14 to 26 weeks."))
 
     def test_seed_scope_source_and_wrong_values_blocked(self):
         self.assertFalse(w.gpu_seed_matches("new_orders", self.MODEL_BODY.replace("new orders","existing shipments")))
