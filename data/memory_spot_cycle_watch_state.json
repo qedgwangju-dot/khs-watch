@@ -1243,11 +1243,17 @@
       "source": "Pasquale Pillitteri",
       "published_kst": "2026-11-19T22:23:55+09:00",
       "first_seen_kst": "2026-11-25T19:37:51+09:00"
+    },
+    "f42dcac3eb79322c06914597": {
+      "title": "Next Year: DRAM Shortage, NAND Glut — Cracks Appear in Memory Chip Boom - BigGo Finance",
+      "source": "BigGo Finance",
+      "published_kst": "2026-11-25T18:55:00+09:00",
+      "first_seen_kst": "2026-11-26T05:19:41+09:00"
     }
   },
-  "updated_at_kst": "2026-11-25T19:37:51+09:00",
-  "last_scan_count": 35,
-  "last_new_count": 10,
+  "updated_at_kst": "2026-11-26T05:19:41+09:00",
+  "last_scan_count": 28,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -1307,21 +1313,21 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-11-25T19:38:18+09:00",
+  "last_successful_delivery_kst": "2026-11-26T05:19:54+09:00",
   "telegram_message_ids": [
-    563
+    566
   ],
-  "telegram_message_id": 563,
+  "telegram_message_id": 566,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      563
+      566
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-25T19:38:18+09:00",
-    "alert_signature": "60912faecd5a6700ea66873716dd03df60e647550de5e6274f104eb10a6054c1"
+    "confirmed_at_kst": "2026-11-26T05:19:54+09:00",
+    "alert_signature": "f799f415c63abdb06e3ce443667bf92eed0a15abd749c56636842d26928406df"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -1633,7 +1639,7 @@
     "published_model_date": "2026-11-13",
     "comparison_model_date": "2026-11-02",
     "publisher_probe": {
-      "checked_date": "2026-11-25",
+      "checked_date": "2026-11-26",
       "verified": false,
       "source_kind": "publisher_model_numeric_unverified"
     },
