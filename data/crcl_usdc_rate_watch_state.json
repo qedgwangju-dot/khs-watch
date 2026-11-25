@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-26T03:49:01+09:00",
+  "updated_at_kst": "2026-11-26T03:55:31+09:00",
   "circle": {
     "date": "2026-11-23",
     "circulation_usd_b": 67.8,
@@ -83,6 +83,6 @@
   "crcl_last_alerted_close_date": "2026-11-24",
   "correction_pending": false,
   "errors": [
-    "crcl: HTTP Error 500: Internal Server Error"
+    "crcl: CRCL cross-source close discrepancy: ChartExchange=47.47 Yahoo=47.55"
   ]
 }
