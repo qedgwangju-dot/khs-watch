@@ -78,7 +78,7 @@
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/",
     "https://www.techtimes.com/articles/327932/20260923/trench-group-eyes-billion-euro-sale-ai-powers-indispensable-substation-maker.htm"
   ],
-  "last_checked_at_kst": "2026-11-25T11:49:02+09:00",
+  "last_checked_at_kst": "2026-11-25T13:14:55+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
   "latest_evidence_urls": [],
@@ -820,12 +820,12 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-11-25T11:49:02+09:00",
+    "last_checked_at_kst": "2026-11-25T13:14:55+09:00",
     "last_error": "",
     "pending_month": "2026-10"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-11-25T11:51:01+09:00",
+    "checked_at_kst": "2026-11-25T13:16:51+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-14T01:46:15+09:00",
@@ -1020,15 +1020,15 @@
   },
   "discovery_health": {
     "rss_ok": 40,
-    "rss_failed": 0,
-    "urls_resolved": 0,
-    "pages_opened": 0,
-    "bing_ok": 0,
+    "rss_failed": 2,
+    "urls_resolved": 13,
+    "pages_opened": 1,
+    "bing_ok": 5,
     "bing_failed": 1,
-    "google_ok": 40,
+    "google_ok": 35,
     "gdelt_ok": 0,
-    "gdelt_failed": 1,
-    "news_candidates": 0
+    "gdelt_failed": 0,
+    "news_candidates": 5
   },
   "power_squeeze_alerts": {
     "sent_fact_keys": [
@@ -1052,9 +1052,9 @@
     }
   },
   "news_collection_outage": {
-    "consecutive_failures": 1,
+    "consecutive_failures": 0,
     "alerted": false,
-    "last_success_at_kst": "2026-11-25T06:13:06+09:00",
+    "last_success_at_kst": "2026-11-25T13:14:55+09:00",
     "last_failure_at_kst": "2026-11-25T11:49:02+09:00"
   }
 }
