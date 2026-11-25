@@ -1,13 +1,13 @@
 {
   "schema_version": 6,
   "brent": {
-    "date": "2026-11-23",
-    "value": 89.37000274658203,
-    "d20_pct": -22.830494231410793,
+    "date": "2026-11-24",
+    "value": 91.4000015258789,
+    "d20_pct": -19.740073998697216,
     "last3": [
-      91.9800033569336,
       92.56999969482422,
-      89.37000274658203
+      89.37000274658203,
+      91.4000015258789
     ],
     "active": false,
     "source": "Yahoo Finance 브렌트 선물 완료 일봉",
@@ -50,7 +50,7 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-11-25T04:51:00.151048+00:00",
+    "date": "2026-11-25T05:16:08.895773+00:00",
     "meeting_date": null,
     "hike25_prob": null,
     "extra_bp": null,
@@ -60,5 +60,5 @@
     "fresh": false
   },
   "oil_rates_verdict": "유가·장기금리 상관 일반 범위",
-  "updated_at_utc": "2026-11-25T04:51:00.570759+00:00"
+  "updated_at_utc": "2026-11-25T05:16:09.959346+00:00"
 }
