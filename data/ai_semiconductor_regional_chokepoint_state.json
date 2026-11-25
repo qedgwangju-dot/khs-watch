@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-11-25T11:49:35+09:00",
-  "last_scan_count": 3,
+  "updated_at_kst": "2026-11-25T21:46:56+09:00",
+  "last_scan_count": 4,
   "semi_300mm_track_version": 2,
   "sumco_wafer_squeeze": {
     "sent_fact_keys": [
@@ -131,7 +131,7 @@
     "outlook_direct_checked": false,
     "issuer_index_checked": true
   },
-  "last_eligible_count": 0,
+  "last_eligible_count": 1,
   "last_held_count": 0,
   "seen_fingerprints": [
     "0dc994cc42aaf27654d7dabc",
@@ -150,6 +150,7 @@
     "37036291af05847d86890445",
     "3721dcaa772b61f44f972d28",
     "3898ddc3349f7aa8502740b4",
+    "38f540c814822258159b1b90",
     "3c256fe8dff8e167b043d264",
     "3feaf19f4178230271f0cbc0",
     "47dbd1ba8dd5c3df6d41d0b9",
@@ -185,6 +186,7 @@
     "bbf6d84c3fbe067d2860a715",
     "c21f43569955742f3d6b1742",
     "c579cb29ce77119cfbcdf008",
+    "cd07e4c8f885b1ddc3b5ff1e",
     "d40b2844e29cf4f3e355e905",
     "d48264b617e856e8ce2d499e",
     "d545efe8109e5a327521088c",
@@ -204,22 +206,24 @@
     "fbb3374837c522b4bf3b2884",
     "ff50414926b6dd08d66adea3"
   ],
-  "delivered_event_keys": [],
-  "last_held": [],
-  "last_successful_delivery_kst": "2026-11-12T08:54:55+09:00",
-  "telegram_message_ids": [
-    397
+  "delivered_event_keys": [
+    "taiwan|diversification|TSMC|arizona"
   ],
-  "telegram_message_id": 397,
+  "last_held": [],
+  "last_successful_delivery_kst": "2026-11-25T21:46:58+09:00",
+  "telegram_message_ids": [
+    565
+  ],
+  "telegram_message_id": 565,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      397
+      565
     ],
     "recipient_verified": true,
-    "confirmed_at_kst": "2026-11-12T08:54:55+09:00",
-    "alert_signature": "e9b7c8bf8a3bad8a47ff5b2ff85fe1c573d10ccc9a6cd6da838f81e796029bed"
+    "confirmed_at_kst": "2026-11-25T21:46:58+09:00",
+    "alert_signature": "731f73fade837c12cede0e1bf4735503f44cd7ca8d7b52ccf88b581499a7ff53"
   }
 }
