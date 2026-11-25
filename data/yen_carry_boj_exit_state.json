@@ -1,24 +1,24 @@
 {
   "account": {
-    "change_1m_trillion_yen": 1.3017018689999986,
-    "change_3m_trillion_yen": -13.193312236999986,
+    "change_1m_trillion_yen": 2.20752994999998,
+    "change_3m_trillion_yen": -13.312600155000041,
     "latest": {
-      "date": "2026-11-10",
-      "jgs_trillion_yen": 504.936700731,
-      "total_assets_trillion_yen": 625.819501896,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261110.htm"
+      "date": "2026-11-20",
+      "jgs_trillion_yen": 506.211260704,
+      "total_assets_trillion_yen": 627.112965321,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261120.htm"
     },
     "one_month": {
-      "date": "2026-10-10",
-      "jgs_trillion_yen": 503.634998862,
-      "total_assets_trillion_yen": 624.63270719,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261010.htm"
+      "date": "2026-10-20",
+      "jgs_trillion_yen": 504.003730754,
+      "total_assets_trillion_yen": 624.977993815,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261020.htm"
     },
     "three_month": {
-      "date": "2026-08-10",
-      "jgs_trillion_yen": 518.130012968,
-      "total_assets_trillion_yen": 642.971477644,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260810.htm"
+      "date": "2026-08-20",
+      "jgs_trillion_yen": 519.523860859,
+      "total_assets_trillion_yen": 644.333296849,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260820.htm"
     }
   },
   "classification": {
@@ -106,7 +106,7 @@
   "errors": [],
   "initialized": true,
   "market_stress": {
-    "jgb10": 2.838,
+    "jgb10": 2.781,
     "jgb10_days_ge_3": 0,
     "joint_market_stress": false,
     "weak_auction_10y": false,
@@ -177,5 +177,5 @@
     "plan_revision": false,
     "weak_private_absorption": false
   },
-  "updated_at_kst": "2026-11-25T09:47:00+09:00"
+  "updated_at_kst": "2026-11-25T18:14:45+09:00"
 }
