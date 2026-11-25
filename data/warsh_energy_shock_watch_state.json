@@ -17,9 +17,9 @@
     "measurement_basis": "최근 완료 거래일 종가"
   },
   "macro": {
-    "core_3m_ann": 2.9025218811834064,
-    "core_6m_ann": 2.92269972199517,
-    "core_yoy": 3.1211596029620203,
+    "core_3m_ann": 3.6257459295793826,
+    "core_6m_ann": 2.9849689313400374,
+    "core_yoy": 3.26111744583808,
     "employment_soft": false,
     "payroll_change_k": 165.0,
     "unemployment_rate": 4.1,
@@ -50,7 +50,7 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-11-25T13:45:46.846808+00:00",
+    "date": "2026-11-25T14:12:42.925621+00:00",
     "meeting_date": null,
     "hike25_prob": null,
     "extra_bp": null,
@@ -60,5 +60,5 @@
     "fresh": false
   },
   "oil_rates_verdict": "유가·장기금리 상관 일반 범위",
-  "updated_at_utc": "2026-11-25T13:45:47.745311+00:00"
+  "updated_at_utc": "2026-11-25T14:12:43.625254+00:00"
 }
