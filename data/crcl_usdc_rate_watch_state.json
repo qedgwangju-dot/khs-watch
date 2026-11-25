@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-25T11:59:58+09:00",
+  "updated_at_kst": "2026-11-25T12:24:12+09:00",
   "circle": {
     "date": "2026-11-23",
     "circulation_usd_b": 67.8,
@@ -10,23 +10,23 @@
     }
   },
   "usdxx": {
-    "date": "2026-11-23",
+    "date": "2026-11-24",
     "sec_yield_7d": 3.92,
     "yield_7d": 3.92,
-    "yield_1d": 3.93,
+    "yield_1d": 3.95,
     "yield_crosscheck_gap_bp": 0.0,
-    "visible_nav_date": "2026-11-23",
-    "fund_size_usd_m": 55967.9,
-    "fund_size_date": "2026-11-23",
+    "visible_nav_date": "2026-11-24",
+    "fund_size_usd_m": 55968.0,
+    "fund_size_date": "2026-11-24",
     "source_url": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund",
     "product": "Circle Reserve Fund",
     "ticker": "USDXX",
     "cusip": "09261A870",
     "_previous_distinct": {
-      "date": "2026-11-20",
-      "sec_yield_7d": 3.91,
-      "fund_size_usd_m": 55167.9,
-      "fund_size_date": "2026-11-20"
+      "date": "2026-11-23",
+      "sec_yield_7d": 3.92,
+      "fund_size_usd_m": 55967.9,
+      "fund_size_date": "2026-11-23"
     }
   },
   "sofr": {
@@ -82,7 +82,5 @@
   },
   "crcl_last_alerted_close_date": "2026-11-24",
   "correction_pending": false,
-  "errors": [
-    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-11-24 sec=[(datetime.date(2026, 11, 23), 3.92), (datetime.date(2026, 11, 23), 3.92)] seven=[(datetime.date(2026, 11, 23), 3.92)] | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: 7-day SEC yield failed visible-NAV/date cross-check: nav=2026-11-24 sec=[(datetime.date(2026, 11, 23), 3.92), (datetime.date(2026, 11, 23), 3.92)] seven=[(datetime.date(2026, 11, 23), 3.92)]"
-  ]
+  "errors": []
 }
