@@ -4,10 +4,11 @@ on:
   schedule:
     # Independent of quarterly SEC 13F; twice hourly on GitHub UTC clock.
     - cron: "23,53 * * * *"
-  # GitHub cron may be delayed or skipped. Reuse the already-active 13F
-  # workflow as a secondary wake-up, without modifying its workflow or state.
+  # Keep the existing 13F backup, but also wake directly from the earlier
+  # AI Security workflow. The longer 13F chain can reach GitHub's depth limit.
+  # Neither upstream workflow is modified.
   workflow_run:
-    workflows: ["13F sector rotation Telegram watch"]
+    workflows: ["AI Security Web Watch", "13F sector rotation Telegram watch"]
     types: [completed]
     branches: [main]
   workflow_dispatch:
@@ -35,7 +36,13 @@ jobs:
   monitor:
     # Ignore failed/cancelled upstream runs; push and schedule retain the
     # original behavior. Dedup and live-send safeguards remain in Python.
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.repository.full_name == github.repository &&
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       (github.event.workflow_run.event == 'schedule' ||
+        github.event.workflow_run.event == 'workflow_run'))
     runs-on: ubuntu-latest
     timeout-minutes: 14
     env:
