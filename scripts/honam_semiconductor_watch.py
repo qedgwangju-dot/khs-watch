@@ -42,6 +42,13 @@ QUERIES = [
     '전남광주 반도체 주거정책 정주 주택',
     '광주 반도체 정주 주거 배후도시',
     '"호남 반도체" 산정지구 송정역 상무 주거',
+    "전남광주 반도체 건설인력 공공임대 모듈러 주거대책",
+    "광주 반도체 도심융합특구 상무 산정지구 송정역",
+    "전남광주 반도체 노바 NOVA 용역비 예산 추경",
+    "호남 반도체 덕남정수장 송수관 국비 지방비 용수",
+    "광주 반도체 동복댐 용수 지방재정 시의회",
+    "site:assem.jeonnam-gwangju.go.kr 반도체 정주 용수 예산",
+    "site:council.jeonnam-gwangju.go.kr 반도체 건설인력 주거",
     # 기반시설·생활 인프라
     '"호남권 반도체 국가산업단지" 전력 용수 변전소 송전',
     '국회입법조사처 호남 반도체 클러스터 용수 공급 타당성',
@@ -98,6 +105,14 @@ QUERIES = [
     'site:kepco.co.kr "호남 반도체"',
     'site:me.go.kr "장록습지" 람사르',
     'site:ramsar.org Jangrok Korea wetland',
+]
+
+BING_QUERIES = [
+    "전남광주 반도체 건설인력 공공임대 모듈러 주거대책",
+    "광주 반도체 도심융합특구 상무 산정지구 송정역",
+    "전남광주 반도체 노바 NOVA 용역비 예산 추경",
+    "호남 반도체 덕남정수장 송수관 국비 지방비 용수",
+    "광주 반도체 동복댐 용수 지방재정 시의회"
 ]
 
 STAGES = {
@@ -284,30 +299,57 @@ def source_collection_health(success_count: int, failure_count: int, total_count
     return "조회 성공(신규 발표 여부는 사건 판정 결과 참조)"
 
 
-def google_news_items(query: str):
-    rss = f"https://news.google.com/rss/search?q={urllib.parse.quote(query)}&hl=ko&gl=KR&ceid=KR:ko"
-    root = ET.fromstring(fetch(rss))
+def _direct_news_url(link):
+    link = html.unescape(str(link or "").strip())
+    parsed = urllib.parse.urlparse(link)
+    host = (parsed.hostname or "").lower()
+    if host == "bing.com" or host.endswith(".bing.com"):
+        target = urllib.parse.parse_qs(parsed.query).get("url", [""])[0]
+        if target.startswith("https://"):
+            link = target
+            parsed = urllib.parse.urlparse(link)
+            host = (parsed.hostname or "").lower()
+    if parsed.scheme not in ("http", "https") or not host or host in ("localhost", "127.0.0.1") or re.fullmatch(r"\d+(?:\.\d+){3}", host):
+        return ""
+    return link
+
+
+def _rss_items(root):
     items = []
-    for node in root.findall("./channel/item")[:40]:
+    for node in root.findall("./channel/item"):
         title = clean_text(node.findtext("title") or "")
-        link = clean_text(node.findtext("link") or "")
+        link = _direct_news_url(node.findtext("link") or "")
+        if not title or not link:
+            continue
         desc = clean_text(node.findtext("description") or "")
         pub = clean_text(node.findtext("pubDate") or "")
-        source_el = node.find("source")
-        source = clean_text(source_el.text if source_el is not None and source_el.text else "")
+        source = ""
+        for el in node:
+            if el.tag.split("}")[-1].lower() == "source":
+                source = clean_text(el.text or "")
+                break
+        if not source:
+            host = (urllib.parse.urlparse(link).hostname or "").removeprefix("www.")
+            source = host if host not in ("news.google.com", "bing.com") else ""
         items.append({
             "id": hashlib.sha256((title + "\n" + link).encode()).hexdigest()[:24],
             "story_key": story_key(title, source, pub),
             "headline_key": canonical_headline_key(title, pub),
             "url_key": canonical_url_key(link),
-            "title": title,
-            "link": link,
-            "description": desc,
-            "pubDate": pub,
-            "source": source,
+            "title": title, "link": link, "description": desc,
+            "pubDate": pub, "source": source,
         })
     return items
 
+
+def google_news_items(query: str):
+    rss = f"https://news.google.com/rss/search?q={urllib.parse.quote(query)}&hl=ko&gl=KR&ceid=KR:ko"
+    return _rss_items(ET.fromstring(fetch(rss)))
+
+
+def bing_news_items(query: str):
+    rss = f"https://www.bing.com/news/search?q={urllib.parse.quote(query)}&format=rss&setlang=ko-kr"
+    return _rss_items(ET.fromstring(fetch(rss, timeout=10)))
 
 def detect_stages(text: str):
     low = text.lower()
@@ -360,19 +402,95 @@ def why_it_matters(stages):
     return "호남 반도체 국가산단 진행상황과 직접 연결"
 
 
-def fetch_article_excerpt(url: str, limit: int = 12000) -> str:
-    if not url or (urllib.parse.urlparse(url).hostname or "").lower() == "news.google.com":
+def headline_identity(title):
+    return re.sub(r"[^0-9a-z가-힣]", "", str(title or "").rsplit(" - ", 1)[0].casefold())
+
+
+def article_body(raw, expected_title):
+    """Require a matching publisher headline and an article body, not menu text."""
+    expected = headline_identity(expected_title)
+    heads = re.findall(r"<(?:title|h1)\b[^>]*>(.*?)</(?:title|h1)>", raw, re.I | re.S)
+    if len(expected) < 10 or not any(expected in headline_identity(clean_text(h)) for h in heads):
+        return ""
+    def locate(obj):
+        if isinstance(obj, dict):
+            if isinstance(obj.get("articleBody"), str) and len(obj["articleBody"]) >= 60:
+                return obj["articleBody"]
+            for value in obj.values():
+                if isinstance(value, (dict, list)):
+                    found = locate(value)
+                    if found:
+                        return found
+        if isinstance(obj, list):
+            for value in obj:
+                found = locate(value)
+                if found:
+                    return found
+        return ""
+    for script in re.findall(r'<script\b[^>]*type\s*=\s*["\']application/ld\+json["\'][^>]*>(.*?)</script>', raw, re.I | re.S):
+        try:
+            found = locate(json.loads(script))
+            if found:
+                return "\n".join(clean_text(p) for p in found.splitlines() if clean_text(p))
+        except (ValueError, TypeError):
+            continue
+    areas = re.findall(r"<article\b[^>]*>(.*?)</article>", raw, re.I | re.S)
+    for area in areas:
+        parts = [clean_text(p) for p in re.findall(r"<p\b[^>]*>(.*?)</p>", area, re.I | re.S)]
+        parts = [p for p in parts if len(p) >= 25 and len(re.findall(r"[가-힣]", p)) >= 15 and not any(x in p for x in ("무단 전재", "재판매 및 DB 금지", "저작권자", "제보는 카카오톡"))]
+        if parts:
+            return "\n".join(dict.fromkeys(parts))
+    return ""
+
+
+def fetch_article_excerpt(url: str, limit: int = 12000, expected_title: str = "") -> str:
+    if not url or (urllib.parse.urlparse(url).hostname or "").lower() in {"news.google.com", "bing.com", "www.bing.com"}:
         return ""
     try:
-        raw = fetch(url, timeout=20)
-        text = clean_text(raw.decode("utf-8", errors="ignore"))
-        return text[:limit]
+        return article_body(fetch(url, timeout=14).decode("utf-8", errors="ignore"), expected_title)[:limit]
     except Exception:
         return ""
 
 
+def restore_publisher_url(item):
+    """A bounded exact-title alternative search; never fabricate article URLs."""
+    domains = {"연합뉴스":"yna.co.kr", "뉴시스":"newsis.com", "뉴스1":"news1.kr",
+               "남도일보":"namdonews.com", "무등일보":"mdilbo.com", "전남일보":"jnilbo.com",
+               "KBC광주방송":"ikbc.co.kr", "녹색경제신문":"greened.kr"}
+    source = normalize_publisher_name(item.get("source", ""))
+    domain = domains.get(source)
+    expected = headline_identity(item.get("title"))
+    if not domain or len(expected) < 10:
+        return ""
+    try:
+        for candidate in bing_news_items('"' + item["title"].rsplit(" - ", 1)[0] + '" ' + source):
+            url = candidate.get("link", "")
+            host = (urllib.parse.urlparse(url).hostname or "").lower()
+            if headline_identity(candidate.get("title")) == expected and (host == domain or host.endswith("." + domain)):
+                return url
+    except Exception:
+        pass
+    return ""
+
+
+def article_fact_lines(body):
+    terms = ("건설인력", "공공임대", "모듈러", "주거", "정주", "도심융합특구", "산정지구", "송정역", "노바", "예산", "국비", "지방비", "사업비", "설계", "협의체", "용수", "정수장", "송수관", "동복댐", "전력", "착공", "준공", "양산", "계약", "낙찰", "지정", "공급", "인허가", "환경영향평가", "람사르", "현지조사", "수량", "수질")
+    result = []
+    for part in re.split(r"(?<=[.!?])\s+|\n+", body or ""):
+        text = re.sub(r"\s+", " ", part).strip()
+        if 0 < len(text) <= 450 and any(term in text for term in terms) and (re.search(r"\d[\d,.]*\s*(?:조|억|만|천|명|호|가구|년|월|일|평|㎡|km|㎞|GW|MW|톤|t|%)", text, re.I) or any(s in text for s in ("검토", "미반영", "미편성", "협의", "확보", "착수", "승인", "지시", "요구", "추진", "반려", "지연"))):
+            if text not in result:
+                result.append(text)
+    return result
+
 def compact_news_item(item):
     resolved_url, resolved = resolve_google_news_url(item.get("link", ""))
+    if (urllib.parse.urlparse(resolved_url).hostname or "").lower() in ("news.google.com", "bing.com", "www.bing.com"):
+        alternate = restore_publisher_url(item)
+        if alternate:
+            resolved_url, resolved = alternate, True
+    else:
+        resolved = bool(_direct_news_url(resolved_url))
     stages = item.get("stages", [])
     host = (urllib.parse.urlparse(resolved_url).hostname or "").lower()
     official_hosts = [
@@ -382,16 +500,19 @@ def compact_news_item(item):
         "motir.go.kr", "kpx.or.kr", "energy.or.kr", "news.samsung.com",
     ]
     official = any(host == h or host.endswith("." + h) for h in official_hosts)
-    excerpt = fetch_article_excerpt(resolved_url) if resolved else ""
+    excerpt = fetch_article_excerpt(resolved_url, expected_title=item.get("title", "")) if resolved else ""
+    body_status = "발행사 본문 확인" if excerpt else "본문 미확보(제목·검색 요약만 확인)"
     return {
         "title": item.get("title", ""),
         "description": item.get("description", ""),
         "body_excerpt": excerpt,
+        "body_status": body_status,
+        "fact_lines": article_fact_lines(excerpt),
         "source": identify_publisher(resolved_url, item.get("source", "")),
         "published": item.get("pubDate", ""),
         "url": resolved_url,
         "url_resolved": resolved,
-        "source_status": "공식자료" if official else "보도 단계",
+        "source_status": "공식자료" if official and excerpt else ("공식 링크·본문 미확보" if official else "보도 단계"),
         "stages": stages,
         "stage_labels": [STAGE_LABELS.get(s, s) for s in stages],
         "impact": item.get("impact", "영향 확인 필요"),
@@ -410,8 +531,8 @@ def load_state():
         state.setdefault("seen_url_keys", [])
         state.setdefault("official_page_signatures", {})
         return state
-    except Exception:
-        return {"initialized": False, "seen_ids": [], "seen_story_keys": [], "official_page_signatures": {}}
+    except Exception as exc:
+        raise RuntimeError("호남 상태 파일 읽기 실패: 기존 상태 초기화 금지") from exc
 
 
 def official_signature(url: str):
@@ -423,6 +544,14 @@ def official_signature(url: str):
             parts.append(text[max(0, m.start()-160):m.end()+240])
     joined = " | ".join(dict.fromkeys(parts[:30]))
     return hashlib.sha256(joined.encode()).hexdigest()
+
+
+def registered_covered_headlines():
+    if not VERIFIED_INTAKE_PATH.exists():
+        return set()
+    data = json.loads(VERIFIED_INTAKE_PATH.read_text(encoding="utf-8"))
+    return {str(key) for event in data.get("events", []) for key in event.get("covered_headline_keys", [])
+            if re.fullmatch(r"[0-9a-f]{24}", str(key))}
 
 
 def verified_intake_events(state: dict) -> list[dict]:
@@ -458,6 +587,8 @@ def verified_intake_events(state: dict) -> list[dict]:
                 "event_family": family,
                 "intake_verified": True,
                 "alert_type": str(event.get("alert_type") or ""),
+                "recovery": bool(event.get("recovery")),
+                "body_status": "등록된 출처별 검증 메모",
                 "verification_note": str(event.get("verification_note") or ""),
                 "summary_lines": list(event.get("summary_lines") or []),
                 "detail_lines": list(event.get("detail_lines") or []),
@@ -492,7 +623,18 @@ def main():
             rss_failure_count += 1
             errors.append(f"RSS 실패: {query}: {type(exc).__name__}: {exc}")
 
-    rss_health = source_collection_health(rss_success_count, rss_failure_count, len(QUERIES))
+    priority = [query for query in QUERIES if query in BING_QUERIES]
+    bing_ok, bing_failed = 0, 0
+    for query in priority:
+        try:
+            all_items.extend(bing_news_items(query))
+            bing_ok += 1
+        except Exception as exc:
+            bing_failed += 1
+            errors.append(f"Bing RSS 실패: {query}: {type(exc).__name__}: {exc}")
+    rss_success_count += bing_ok
+    rss_failure_count += bing_failed
+    rss_health = source_collection_health(rss_success_count, rss_failure_count, len(QUERIES) + len(priority))
     if rss_success_count == 0:
         # An outright source outage must not advance dedupe cursors or turn
         # the absence of data into "no news". The next scheduled scan retries.
@@ -510,12 +652,14 @@ def main():
     relevant_items.sort(key=lambda x: parse_news_date(x.get("pubDate", "")) or dt.datetime.min.replace(tzinfo=KST), reverse=True)
 
     new_items, stale = [], []
+    covered_headlines = registered_covered_headlines()
     broad_cutoff = max(monitor_started, now_dt - dt.timedelta(days=7))
     for item in relevant_items:
         if (
             item["id"] in seen_ids
             or item["story_key"] in seen_keys
             or item.get("headline_key") in seen_headlines
+            or item.get("headline_key") in covered_headlines
             or item.get("url_key") in seen_urls
         ):
             continue
@@ -593,6 +737,8 @@ def main():
         "rss_collection_health": rss_health,
         "rss_failed_queries": rss_failure_count,
         "rss_successful_queries": rss_success_count,
+        "bing_successful_queries": bing_ok,
+        "bing_failed_queries": bing_failed,
         "official_source_health": "일부 원천 조회 실패(상태 변화 없음으로 단정 금지)" if any(e.startswith("LH ") for e in errors) else "LH 핵심 페이지 조회 성공",
         "alert_basis": "topic_event_official_state_change",
         "article_role": "evidence_and_crosscheck_only",
@@ -601,7 +747,7 @@ def main():
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if send_items or send_official:
-        ALERT_PATH.write_text(json.dumps({"title": "호남 반도체 국가산단", "checked_at_kst": now, "new_count": len(send_items) + len(send_official), "new_items": send_items[:12], "official_changes": send_official[:5]}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        ALERT_PATH.write_text(json.dumps({"title": "호남 반도체 국가산단", "checked_at_kst": now, "new_count": len(send_items) + len(send_official), "new_items": send_items, "official_changes": send_official, "rss_failed_queries": rss_failure_count, "official_source_partial_failure": any(e.startswith("LH ") for e in errors)}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     elif ALERT_PATH.exists():
         ALERT_PATH.unlink()
 

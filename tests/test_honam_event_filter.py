@@ -25,6 +25,7 @@ from scripts.honam_semiconductor_watch import canonical_headline_key, canonical_
 from scripts import honam_semiconductor_watch as honam_watch
 from scripts.honam_telegram_formatter import build_message, split_message
 from scripts.honam_event_filter import _action_level
+from scripts.honam_delivery_journal import decision, verified_receipt
 
 
 class HonamEventFilterRegressionTest(unittest.TestCase):
@@ -678,6 +679,65 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
             self.assertFalse(pending.exists())
             self.assertFalse(alert.exists())
             self.assertFalse(status.exists())
+
+
+    def test_honam_matching_article_body_and_fact_extraction(self):
+        title = "전남광주 반도체 건설인력 주거대책 마련"
+        raw = '<title>' + title + '</title><article><p>시 관계자는 건설인력 1만3천명과 공공임대 1만호 마련을 검토한다고 설명했다.</p><p>노바 미래도시 용역비는 2027년 본예산에 미반영됐다.</p></article>'
+        body = honam_watch.article_body(raw, title)
+        self.assertIn("1만3천명", body)
+        self.assertIn("미반영", body)
+        self.assertEqual(honam_watch.article_body(raw, "다른 반도체 국가산업단지 관련 기사"), "")
+        self.assertEqual(len(honam_watch.article_fact_lines(body)), 2)
+
+    def test_honam_unresolved_housing_source_is_preliminary(self):
+        item = {"title":"전남광주 반도체 건설인력 주거대책 마련…모듈러 주택도 검토",
+                "description":"2030년 6월 양산 목표, 63만평, 3.1GW 공급 목표",
+                "source":"연합뉴스", "source_status":"보도 단계",
+                "stages":["4_정주주거_배후도시"], "url":"https://news.google.com/rss/articles/example",
+                "body_status":"본문 미확보(제목·검색 요약만 확인)"}
+        self.assertFalse(_is_known_baseline_only(item))
+        self.assertEqual(_action_level(item), 1)
+        merged = _merge_group([item])
+        self.assertEqual(merged["alert_type"], "선행경보")
+        msg = build_message({"new_items":[merged],"official_changes":[],"rss_failed_queries":1})
+        self.assertIn("선행경보 <b>1건", msg)
+        self.assertIn("검색 경유 링크", msg)
+        self.assertIn("일부 원천 조회 실패", msg)
+
+    def test_honam_recovery_keeps_numbers_and_blocks_replay(self):
+        items = [x for x in verified_intake_events({"seen_event_keys":[]}) if x.get("recovery")]
+        groups = {}
+        for x in items:
+            groups.setdefault(_event_family(x), []).append(x)
+            self.assertEqual(_action_level(x), 1)
+            self.assertFalse(_is_known_baseline_only(x))
+        self.assertEqual(len(groups), 2)
+        msg = build_message({"new_items":[_merge_group(g) for g in groups.values()],"official_changes":[]})
+        for fact in ("1만2천~1만3천명","1만호","1조5,790억원","노바","723억원","66억원","168억원","11.9억원","34.8억원","253필지","누락 보완"):
+            self.assertIn(fact, msg)
+        self.assertTrue(all(len(chunk) <= 3900 for chunk in split_message(msg)))
+        self.assertIn("a0fd4038c2911f1e9d94b97a", honam_watch.registered_covered_headlines())
+        keys = [hashlib.sha256(("family|"+name).encode()).hexdigest()[:28] for name in groups]
+        self.assertFalse([x for x in verified_intake_events({"seen_event_keys":keys}) if x.get("recovery")])
+
+    def test_honam_uncertain_delivery_is_held_and_confirmed_recovers(self):
+        record = {"status":"sending","message_ids":[1],"total_parts":2,"pending_state":{"seen_event_keys":["x"]}}
+        self.assertEqual(decision(None), "clear")
+        self.assertEqual(decision(record), "hold_uncertain")
+        self.assertEqual(decision(dict(record,status="uncertain")), "hold_uncertain")
+        self.assertEqual(decision(dict(record,status="confirmed")), "hold_uncertain")
+        self.assertEqual(decision(dict(record,status="confirmed",message_ids=[1,2])), "recover_confirmed")
+        self.assertEqual(decision(dict(record,status="confirmed",message_ids=[1,1])), "hold_uncertain")
+
+    def test_honam_receipt_requires_correct_destination_and_id(self):
+        payload = {"ok":True,"result":{"message_id":5,"chat":{"id":-123,"username":"example"}}}
+        self.assertEqual(verified_receipt(payload,"-123"), (5,-123))
+        self.assertEqual(verified_receipt(payload,"@example"), (5,-123))
+        with self.assertRaises(RuntimeError):
+            verified_receipt(payload,"-124")
+        with self.assertRaises(RuntimeError):
+            verified_receipt({"ok":True,"result":{"chat":{"id":-123}}},"-123")
 
     def test_nov18_leads_remain_preliminary_and_separately_keyed(self):
         vetted = verified_intake_events({"seen_event_keys": []})

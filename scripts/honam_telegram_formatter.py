@@ -95,12 +95,13 @@ def evidence_lines(item: dict):
         if not url:
             return []
         return [f"• 감지 근거: {esc(source)} · {link_line(url, '근거 보기')}"]
-    lines = [f"• 감지 근거: {len(evidence)}곳"]
-    for ev in evidence[:3]:
+    lines = [f"• 감지 근거: {len(evidence)}개 링크"]
+    for ev in evidence:
         source = ev.get("source") or "근거자료"
         url = ev.get("url") or ""
         if url:
-            lines.append(f"  - {esc(source)} · {link_line(url, '원문 보기')}")
+            label = "검색 경유 링크(원문 미확보)" if "news.google.com" in url or "bing.com/news" in url else ("발행사 링크(본문 미확보)" if "미확보" in ev.get("body_status", "") else "원문 보기")
+            lines.append(f"  - {esc(source)} · {link_line(url, label)}")
         else:
             lines.append(f"  - {esc(source)}")
     return lines
@@ -112,6 +113,7 @@ def build_message(data: dict) -> str:
     total = int(data.get("new_count") or len(official) + len(news))
 
     active = {key: False for key in STAGE_LABELS}
+    inactive_label = "미확인(일부 원천 조회 실패)" if data.get("rss_failed_queries") or data.get("official_source_partial_failure") else "조회 범위 내 새 변화 미감지"
     for item in official:
         stage = item.get("stage")
         if stage in active:
@@ -131,12 +133,12 @@ def build_message(data: dict) -> str:
         "<b>핵심 3단계</b>",
     ]
     for stage, label in CORE_STAGE_LABELS.items():
-        status = "<b>변화 감지</b>" if active[stage] else "새 변화 없음"
+        status = "<b>변화 감지</b>" if active[stage] else inactive_label
         lines.append(f"• {label}: {status}")
 
     lines += ["", "<b>추가 프로젝트 변화</b>"]
     for stage, label in PROJECT_STAGE_LABELS.items():
-        status = "<b>변화 감지</b>" if active[stage] else "새 변화 없음"
+        status = "<b>변화 감지</b>" if active[stage] else inactive_label
         lines.append(f"• {label}: {status}")
 
     for item in official:
@@ -170,15 +172,23 @@ def build_message(data: dict) -> str:
             f"<b>{esc(label)}</b>",
             f"• 무엇이 달라졌나: {esc(title)}",
         ]
+        if item.get("recovery"):
+            lines.append("<b>누락 보완 · 기존 제목 재발송 아님</b>")
         if item.get("alert_type") == "선행경보":
-            lines.append("<b>선행경보 · 공식 배치/착공 확정 전</b>")
-            for point in item.get("summary_lines") or []:
+            lines.append("<b>선행경보 · 검토·계획·보도와 확정 단계 구분</b>")
+        for point in item.get("summary_lines") or []:
+            lines.append(f"• {esc(point)}")
+        for detail in item.get("detail_lines") or []:
+            lines.append(f"  - {esc(detail)}")
+        if item.get("body_status"):
+            lines.append(f"• 원천 상태: {esc(item['body_status'])}")
+        if item.get("fact_lines") and not item.get("summary_lines"):
+            lines.append("<b>본문 주요 근거(자동 발췌·전체 요약 아님)</b>")
+            for point in item["fact_lines"]:
                 lines.append(f"• {esc(point)}")
-            for detail in item.get("detail_lines") or []:
-                lines.append(f"  - {esc(detail)}")
-            note = (item.get("verification_note") or "").strip()
-            if note:
-                lines.append(f"• 검증 범위: {esc(note)}")
+        note = (item.get("verification_note") or "").strip()
+        if note:
+            lines.append(f"• 검증 범위: {esc(note)}")
         reason = (item.get("reason") or "").strip()
         if reason:
             lines.append(f"• 왜 중요: {esc(reason)}")
@@ -206,12 +216,16 @@ def split_message(text: str, limit: int = 3900):
     chunks = []
     current = ""
     for line in text.splitlines(True):
-        if len(current) + len(line) > limit and current:
+        if len(line.rstrip()) > limit - 80:
+            raise ValueError("호남 알림 단일 행 길이 초과: 내용 임의 절단 금지")
+        if len(current) + len(line) > limit - 80 and current:
             chunks.append(current.rstrip())
             current = ""
         current += line
     if current.strip():
         chunks.append(current.rstrip())
+    if len(chunks) > 1:
+        chunks = [f"<b>호남 반도체 알림 {idx}/{len(chunks)}</b>\n{chunk}" for idx, chunk in enumerate(chunks, 1)]
     return chunks
 
 

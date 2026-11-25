@@ -8,6 +8,7 @@ on:
       - "scripts/honam_event_filter.py"
       - "scripts/merge_honam_state.py"
       - "scripts/honam_telegram_formatter.py"
+      - "scripts/honam_delivery_journal.py"
       - "tests/test_honam_event_filter.py"
       - "data/honam_verified_event_intake.json"
   schedule:
@@ -42,7 +43,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: main
+          fetch-depth: 1
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -54,8 +56,12 @@ jobs:
 
       - name: Validate watcher and formatter
         run: |
-          python -m py_compile scripts/honam_semiconductor_watch.py scripts/honam_event_filter.py scripts/merge_honam_state.py scripts/honam_telegram_formatter.py
+          git rev-parse HEAD
+          python -m py_compile scripts/honam_semiconductor_watch.py scripts/honam_event_filter.py scripts/merge_honam_state.py scripts/honam_telegram_formatter.py scripts/honam_delivery_journal.py
           python tests/test_honam_event_filter.py -q
+
+      - name: Reconcile previous Honam delivery before scan
+        run: python scripts/honam_delivery_journal.py preflight
 
       - name: Check Honam semiconductor and Jangrok sources
         run: python scripts/honam_semiconductor_watch.py
@@ -141,54 +147,21 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HONAM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
-        run: |
-          python - <<'PY'
-          import datetime as dt, json, os, pathlib, urllib.parse, urllib.request
-          from zoneinfo import ZoneInfo
-          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
-          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
-          chunks = json.loads(pathlib.Path("out/honam_semiconductor_telegram_chunks.json").read_text(encoding="utf-8"))
-          if not chunks:
-              raise RuntimeError("Telegram chunks are empty")
-          ids = []
-          confirmed_chats = set()
-          for chunk in chunks:
-              payload = urllib.parse.urlencode({"chat_id": chat_id, "text": chunk, "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode("utf-8")
-              req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
-              with urllib.request.urlopen(req, timeout=25) as response:
-                  result = json.loads(response.read().decode("utf-8"))
-              if not result.get("ok"):
-                  raise RuntimeError(f"Telegram rejected message: {result}")
-              delivered = result.get("result") or {}
-              message_id = delivered.get("message_id")
-              delivered_chat = delivered.get("chat") or {}
-              actual_chat_id = delivered_chat.get("id")
-              if not isinstance(message_id, int) or actual_chat_id is None:
-                  raise RuntimeError("Telegram sendMessage response is missing chat.id or message_id")
-              if chat_id.lstrip("-").isdigit():
-                  if str(actual_chat_id) != chat_id:
-                      raise RuntimeError("Telegram delivered to an unexpected chat.id")
-              elif chat_id.startswith("@"):
-                  if str(delivered_chat.get("username") or "").casefold() != chat_id[1:].casefold():
-                      raise RuntimeError("Telegram delivered to an unexpected chat username")
-              else:
-                  raise RuntimeError("Telegram destination must be a numeric chat ID or @username")
-              ids.append(message_id)
-              confirmed_chats.add(str(actual_chat_id))
-          confirmed = {"status": "confirmed", "chat_ids": sorted(confirmed_chats), "message_ids": ids, "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")}
-          pathlib.Path("out/honam_semiconductor_telegram_confirmed.json").write_text(json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-          print(f"telegram_delivery_confirmed=true message_ids={ids}")
-          PY
+        run: python scripts/honam_delivery_journal.py deliver
 
       - name: Persist state
         if: success() && (hashFiles('out/honam_semiconductor_alert.json') == '' || hashFiles('out/honam_semiconductor_telegram_confirmed.json') != '')
         run: |
+          if [ -f out/honam_semiconductor_telegram_confirmed.json ]; then
+            python scripts/honam_delivery_journal.py finalize
+            exit 0
+          fi
           cp out/honam_semiconductor_pending_state.json /tmp/honam_pending_state.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           for attempt in 1 2 3; do
-            git fetch origin main
-            git reset --hard origin/main
+            git fetch --no-tags --depth=1 origin main
+            git reset --hard FETCH_HEAD
             python scripts/merge_honam_state.py data/honam_semiconductor_watch_state.json /tmp/honam_pending_state.json data/honam_semiconductor_watch_state.json
             git add data/honam_semiconductor_watch_state.json
             if git diff --cached --quiet; then

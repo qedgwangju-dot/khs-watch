@@ -298,7 +298,8 @@ POWER_PLACE_WORDS = ("호남 반도체", "호남권 반도체", "서남권 반�
 def _power_source(item):
     raw = _norm(item.get("source"))
     raw = re.sub(r"^Google 뉴스 경유\s*·\s*", "", raw, flags=re.I)
-    return re.sub(r"\((?:네이버|다음)\)$", "", raw).strip().lower()
+    raw = re.sub(r"\((?:네이버|다음)\)$", "", raw).strip().lower()
+    return {"yna.co.kr":"연합뉴스", "yna":"연합뉴스", "newsis.com":"뉴시스", "newsis":"뉴시스", "news1.kr":"뉴스1", "news1":"뉴스1", "namdonews.com":"남도일보", "mdilbo.com":"무등일보"}.get(raw, raw)
 
 
 def _power_event(item):
@@ -400,11 +401,21 @@ EXECUTION_UPGRADE_TERMS = [
 ]
 
 
+def _local_housing_water_update(item):
+    heading = _norm(item.get("title") or item.get("headline")).lower()
+    topic = any(x in heading for x in ("호남", "광주", "반도체"))
+    axis = any(x in heading for x in ("건설인력", "공공임대", "모듈러", "주거대책", "도심융합특구", "노바", "용수", "덕남정수장", "송수관", "동복댐"))
+    material = any(x in heading for x in ("필요", "검토", "지시", "예비시행자", "예비사업시행자", "가시화", "미편성", "미반영", "예산", "지방재정", "국비", "지방비", "사업비", "부담", "우려", "공급계획", "착공", "승인", "발주", "변경"))
+    return topic and axis and material
+
+
 def _is_known_baseline_only(item):
     # An independently reviewed, expressly non-confirmed schedule lead is not a
     # mere 2026-09-22 roadmap reprint even if it cites several old figures.
     # Generic RSS articles do not get this privileged bypass.
-    if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith("honam_fab_lead_"):
+    if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith(("honam_fab_lead_", "honam_settlement_lead_", "honam_water_lead_")):
+        return False
+    if _local_housing_water_update(item):
         return False
     # 회장의 신규 현장방문은 과거 팹 로드맵 수치를 함께 언급해도 별개 사건이다.
     if _executive_visit_signal(item):
@@ -455,7 +466,7 @@ def _is_proposal_only(item):
 def _action_level(item):
     # A forecast/conflicting media report can never be marked as executed
     # merely because its text says "착공", "확정 전", or mentions a signed contract.
-    if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith("honam_fab_lead_"):
+    if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith(("honam_fab_lead_", "honam_settlement_lead_", "honam_water_lead_")):
         return 1
     power = _power_event(item)
     if power:
@@ -464,6 +475,10 @@ def _action_level(item):
     if executive_signal:
         return executive_signal
     text = _item_text(item).lower()
+    if _local_housing_water_update(item):
+        heading = _norm(item.get("title") or item.get("headline")).lower()
+        if any(word in heading for word in ("검토", "필요", "목표", "예정", "구상", "계획", "추진")) and not any(word in heading for word in ("체결 완료", "승인 완료", "지정 완료", "실제 착공", "공급 개시")):
+            return 1
     if any(re.search(pattern, text, flags=re.I) for pattern in ACTION_EXECUTION_PATTERNS):
         return 3
     if any(term.lower() in text for term in ACTION_COMMITTED_TERMS):
@@ -479,7 +494,7 @@ def _action_level(item):
 def _event_family(item):
     # Stable incident key for reviewed preliminary developments.  Never use
     # the broader 2030 roadmap family or a fresh news URL as its identity.
-    if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith("honam_fab_lead_"):
+    if item.get("intake_verified") is True and item.get("event_phase") == "lead" and str(item.get("event_family") or "").startswith(("honam_fab_lead_", "honam_settlement_lead_", "honam_water_lead_")):
         return str(item["event_family"])
     power = _power_event(item)
     if power:
@@ -519,9 +534,8 @@ def _verification_level(items):
     if any(i.get("_kind") == "official" or i.get("source_status") == "공식자료" for i in items):
         return 3
     independent = {
-        (_norm(i.get("source")) or _norm(i.get("url"))).lower()
-        for i in items
-        if _norm(i.get("source")) or _norm(i.get("url"))
+        _power_source(i) for i in items
+        if _power_source(i) and _power_source(i) not in ("google 뉴스", "google 뉴스 경유", "bing", "웹 검색")
     }
     if len(independent) >= 2:
         return 2
@@ -601,15 +615,21 @@ def _merge_group(items):
         if key in seen:
             continue
         seen.add(key)
-        evidence.append({"source": source, "url": url, "published": _norm(it.get("published"))})
+        evidence.append({"source": source, "url": url, "published": _norm(it.get("published")), "body_status": it.get("body_status", "")})
     level = _verification_level(ordered)
     evidence.sort(key=lambda ev: (1 if "news.google.com" in str(ev.get("url") or "") else 0))
     first["evidence_count"] = len(evidence)
-    first["evidence_sources"] = evidence[:5]
+    first["evidence_sources"] = evidence
+    for field in ("summary_lines", "detail_lines", "fact_lines"):
+        first[field] = list(dict.fromkeys(str(line) for it in ordered for line in (it.get(field) or []) if str(line).strip()))
+    first["action_level"] = max((_action_level(it) for it in ordered), default=0)
+    if first.get("alert_type") != "선행경보" and (first["action_level"] <= 1 or level == 1):
+        first["alert_type"] = "선행경보"
+        first["inferred_lead_label"] = True
     first["verification_level"] = level
     first["verification_status"] = (
         _verification_status(level) + " · 실행·계약 확정 아님"
-        if first.get("alert_type") == "선행경보" else _verification_status(level)
+        if first.get("alert_type") == "선행경보" and not first.get("inferred_lead_label") else _verification_status(level)
     )
     first["source_status"] = first["verification_status"]
     first["stages"] = merged_stages
