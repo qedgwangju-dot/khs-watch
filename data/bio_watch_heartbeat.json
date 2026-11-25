@@ -1,6 +1,6 @@
 {
   "status": "degraded",
-  "checked_at_kst": "2026-11-25T22:40:37+09:00",
+  "checked_at_kst": "2026-11-25T22:44:31+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -8,51 +8,54 @@
   "intismeran_collector_rc": 0,
   "jemperli_collector_rc": 0,
   "enhertu_collector_rc": 0,
-  "halozyme_collector_rc": 0,
-  "qlex_alert_present": false,
+  "halozyme_collector_rc": 2,
+  "qlex_alert_present": true,
   "qlex_wac_alert_present": false,
   "intismeran_alert_present": false,
   "jemperli_alert_present": false,
   "enhertu_alert_present": true,
-  "qlex_send_outcome": "skipped",
+  "qlex_send_outcome": "success",
   "qlex_wac_send_outcome": "skipped",
   "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "failure",
-  "halozyme_run_outcome": "success",
+  "halozyme_run_outcome": "failure",
   "qlex_state_persisted": true,
   "qlex_wac_state_persisted": true,
   "intismeran_state_persisted": true,
   "jemperli_state_persisted": true,
   "enhertu_state_persisted": false,
-  "halozyme_state_persisted": true,
-  "halozyme_source_health": "ok",
+  "halozyme_state_persisted": false,
+  "halozyme_source_health": "degraded",
   "cms_policy_status": "previously_delivered",
   "maplight_source_health": "last_incomplete",
-  "halozyme_search_failed_tasks": 0,
+  "halozyme_search_failed_tasks": 40,
   "halozyme_search_task_count": 80,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-11-24",
-  "failure_notice_message_id": 411,
+  "failure_notice_message_id": 416,
   "last_qlex_telegram_message_ids": [
-    414
+    415
   ],
   "last_jemperli_telegram_message_ids": [
     341
   ],
   "last_jemperli_telegram_sent_at_kst": "2026-11-13T07:21:43+09:00",
-  "last_qlex_telegram_sent_at_kst": "2026-11-25T12:53:19+09:00",
+  "last_qlex_telegram_sent_at_kst": "2026-11-25T22:51:57+09:00",
   "errors": [
+    "Halozyme 검색 원천 가용성 저하: 정상 응답 부족; 상세 실패 수는 heartbeat와 Halozyme 상태 파일 확인",
     "Enhertu sender rc=1: RuntimeError: 한국어 송출 검증 실패 — API"
   ],
-  "failed_component": "Enhertu",
+  "failed_component": "Halozyme 특허분쟁",
   "failed_components": [
-    "Enhertu"
+    "Enhertu",
+    "Halozyme 특허분쟁"
   ],
   "last_wac_telegram_message_ids": [],
   "last_wac_telegram_sent_at_kst": "",
   "failure_notice_signatures": [
-    "Enhertu|language_validation"
+    "Enhertu|language_validation",
+    "Halozyme 특허분쟁|source_access"
   ],
-  "error_signature": "Enhertu|language_validation"
+  "error_signature": "Enhertu|language_validation | Halozyme 특허분쟁|source_access"
 }
