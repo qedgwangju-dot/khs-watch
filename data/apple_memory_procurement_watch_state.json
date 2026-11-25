@@ -53,7 +53,7 @@
   "last_scan_count": 8,
   "last_new_signal_count": 0,
   "alert_generated": false,
-  "updated_at_kst": "2026-11-25T10:45:48+09:00",
+  "updated_at_kst": "2026-11-25T19:38:07+09:00",
   "macbook_neo_watch": {
     "official_checked_date": "2026-11-25",
     "official_spec": "a18pro_8gb",
@@ -62,13 +62,11 @@
   },
   "source_health": {
     "attempted": 12,
-    "successful": 11,
-    "failed": 1,
-    "errors": [
-      "google_ko: HTTPError"
-    ]
+    "successful": 12,
+    "failed": 0,
+    "errors": []
   },
-  "source_status": "partial",
+  "source_status": "complete",
   "neo_source_health": {
     "official_source": "verified_today",
     "report_source": "not_checked"
