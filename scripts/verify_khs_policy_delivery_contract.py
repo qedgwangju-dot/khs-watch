@@ -744,6 +744,7 @@ def main() -> int:
     assert_domestic_telecom_title_gate_and_semantic_dedupe()
     assert_router_explains_current_fcc_documents()
     assert_fcc_upper_c_band_coordinator_notice_is_source_faithful()
+    assert_fcc_upper_c_band_auction115_procedures_notice_is_source_faithful()
     assert_runtime_patch_accepts_mofcom_watch_source()
     assert_foreign_first_policy_sources()
     assert_treasury_borrowing_estimate_is_source_faithful()
@@ -3373,6 +3374,117 @@ def assert_fcc_upper_c_band_coordinator_notice_is_source_faithful() -> None:
     if unverified is not None:
         raise AssertionError("FCC RSM notice was allowed through after official body retrieval failed")
     print("fcc_upper_c_band_coordinator_source_fidelity=passed")
+
+
+def assert_fcc_upper_c_band_auction115_procedures_notice_is_source_faithful() -> None:
+    title = (
+        "Auction of Flexible-Use Licenses in the Upper C-Band for Next-Generation Wireless Services; "
+        "Notice and Filing Requirements, Minimum Opening Bids, Upfront Payments, and Other Procedures "
+        "for Auction 115; Bidding Scheduled To Begin April 27, 2027"
+    )
+    link = (
+        "https://www.federalregister.gov/documents/2026/11/25/2026-24013/"
+        "auction-of-flexible-use-licenses-in-the-upper-c-band-for-next-generation-wireless-services-notice"
+    )
+    body = " ".join([
+        "FEDERAL COMMUNICATIONS COMMISSION",
+        "47 CFR Parts 1 and 27 [AU Docket No. 26-191; DA 26-1219; FR ID 378621]",
+        "This document summarizes the procedures, deadlines, upfront payment, and minimum opening bid amounts adopted in the Auction 115 Procedures Public Notice.",
+        "The complete text of the Auction 115 Procedures Public Notice was released on November 13, 2026.",
+        "DATES: Applications to participate in Auction 115 must be submitted prior to 6:00 p.m. Eastern Time (ET) on January 20, 2027. Upfront payments must be received prior to 6:00 p.m. ET on March 18, 2027. Bidding is scheduled to start on April 27, 2027.",
+        "Short-Form Application (FCC Form 175): Filing Window Opens January 6, 2027, 12:00 p.m. Eastern Time (ET). Filing Window Deadline January 20, 2027, 6:00 p.m. ET. Upfront Payments March 18, 2027, 6:00 p.m. ET.",
+        "Auction 115 will offer 3,248 new flexible-use licenses for spectrum in the 3.98-4.14 GHz portion of the Upper C-band throughout the contiguous United States.",
+        "OEA and WTB will offer 160 megahertz of spectrum licensed on an unpaired basis in eight 20-megahertz blocks by partial economic area (PEA).",
+        "The 20 megahertz in the 4.14-4.16 GHz portion of the Upper C-band will be a guard band and not available for auction.",
+        "All licenses for the 3.98-4.14 GHz portion of the Upper C-band will be issued for 15-year, renewable license terms.",
+        "Auction 115 will be conducted in two phases using an ascending clock auction format and then an assignment auction phase.",
+        "PEAs 1-41 and 43-76, the incumbent FSS operations have a Primary Transition Deadline of December 30, 2030. In PEAs 77-211, 213-263, 265-297, 299-359, and 361-411, incumbent FSS operations have a Final Transition Deadline of June 30, 2031.",
+        "[FR Doc No: 2026-24013]",
+    ])
+    item = {
+        "source": "Federal Register FCC",
+        "title": title,
+        "original_title": title,
+        "link": link,
+        "document_number": "2026-24013",
+        "document_type": "Rule",
+        "publication_date": "2026-11-25",
+        "published_kst": "2026-11-25T00:00:00+09:00",
+        "summary": (
+            "This document summarizes the procedures, deadlines, upfront payment, and minimum opening bids "
+            "for Auction 115 of 3,248 flexible-use licenses."
+        ),
+        "matched": {},
+    }
+    with patch.object(khs_policy_watch, "fetch_text", return_value=(body, None)):
+        classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("Verified FCC Auction 115 procedures notice was not classified")
+    if classified.get("title_ko") != "FCC, Auction 115 최종 절차 확정: 160MHz·3,248개 면허":
+        raise AssertionError(f"FCC Auction 115 procedure title mismatch: {classified.get('title_ko')}")
+    if classified.get("status") != "공식 절차 확정" or classified.get("importance") != "상":
+        raise AssertionError("FCC Auction 115 procedure status or materiality mismatch")
+
+    rendered = khs_policy_alert_router.render_policy_report(
+        [classified], dt.datetime(2026, 11, 25, 16, 14, tzinfo=ZoneInfo("Asia/Seoul"))
+    )
+    for marker in (
+        "2026년 11월 13일",
+        "2026년 11월 25일",
+        "2027년 1월 6일 12:00",
+        "1월 20일 18:00",
+        "3월 18일 18:00",
+        "4월 27일",
+        "2030년 12월 30일",
+        "2031년 6월 30일",
+        "3.98~4.14GHz 160MHz",
+        "3,248개",
+        "20MHz 비페어드 8개 블록",
+        "4.14~4.16GHz",
+        "한국 기업 수주도 확정되지 않았습니다",
+    ):
+        if marker not in rendered:
+            raise AssertionError(f"FCC Auction 115 alert missing verified milestone or fact: {marker}")
+    if "상단 C대역 차세대 무선통신 주파수 경매 일정 공표" in rendered:
+        raise AssertionError("FCC Auction 115 notice fell back to a generic FCC headline")
+    if "100MHz 이상 면허" in rendered or "상단 C대역 100MHz 이상" in rendered:
+        raise AssertionError("FCC Auction 115 confused the statutory minimum with the 160MHz auction lot")
+
+    formatted_title, formatted_body = khs_policy_telegram_formatter.format_policy_message(
+        "정책 워치: [상·공식 절차 확정] " + classified["title_ko"],
+        rendered,
+        now=dt.datetime(2026, 11, 25, 16, 14, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    errors = khs_policy_telegram_formatter.validate_final_policy_message(formatted_title, formatted_body)
+    if errors:
+        raise AssertionError(f"FCC Auction 115 final Telegram formatting failed: {errors}")
+    telegram_html = khs_policy_telegram_formatter.prepare_telegram_html(formatted_title, formatted_body)
+    expected_link = f'<a href="{link}">원문</a>'
+    if expected_link not in telegram_html:
+        raise AssertionError("FCC Auction 115 official source link was not clickable")
+
+    import hashlib
+    expected_fingerprint = hashlib.sha256(f"Federal Register FCC|{title}|{link}".encode()).hexdigest()[:16]
+    if classified.get("fingerprint") != expected_fingerprint:
+        raise AssertionError("FCC Auction 115 detail profile changed the previous fingerprint and may resend")
+
+    with patch.object(khs_policy_watch, "fetch_text", return_value=("unrelated FCC public notice", None)):
+        mismatched = khs_policy_watch.classify_item({
+            **item,
+            "source_body": "",
+            "verified_body_url": "",
+        })
+    if mismatched is not None:
+        raise AssertionError("FCC Auction 115 generic fallback was allowed after body mismatch")
+    with patch.object(khs_policy_watch, "fetch_text", return_value=(None, "HTTP 502")):
+        unavailable = khs_policy_watch.classify_item({
+            **item,
+            "source_body": "",
+            "verified_body_url": "",
+        })
+    if unavailable is not None:
+        raise AssertionError("FCC Auction 115 generic alert was allowed after official body fetch failed")
+    print("fcc_upper_c_band_auction115_source_fidelity=passed")
 
 
 def cleanup() -> None:

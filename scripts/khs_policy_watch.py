@@ -480,6 +480,97 @@ def parse_federal_register_json(text: str, source: Source) -> list[dict]:
     return items
 
 
+def is_fcc_upper_c_band_auction115_procedures_notice(item: dict) -> bool:
+    if item.get("source") != "Federal Register FCC":
+        return False
+    link = str(item.get("link") or "").lower()
+    return (
+        str(item.get("document_number") or "") == "2026-24013"
+        or "/2026/11/25/2026-24013/" in link
+    )
+
+
+def enrich_fcc_upper_c_band_auction115_procedures_notice(item: dict) -> dict | None:
+    """Verify the Auction 115 procedure notice before describing its milestones."""
+    if not is_fcc_upper_c_band_auction115_procedures_notice(item):
+        return None
+    if str(item.get("publication_date") or "") != "2026-11-25":
+        return None
+
+    body = clean_text(str(item.get("source_body") or ""))
+    verified_url = str(item.get("verified_body_url") or "")
+    if not body:
+        urls = (
+            "https://www.govinfo.gov/content/pkg/FR-2026-11-25/html/2026-24013.htm",
+            "https://www.federalregister.gov/documents/full_text/text/2026/11/25/2026-24013.txt",
+        )
+        for url in urls:
+            raw, error = fetch_text(url, timeout=12)
+            if error or not raw:
+                continue
+            candidate = clean_text(raw)
+            candidate_low = candidate.lower()
+            if "[fr doc no: 2026-24013]" in candidate_low and "da 26-1219" in candidate_low:
+                body = candidate
+                verified_url = url
+                break
+
+    low = body.lower()
+    required = (
+        "[fr doc no: 2026-24013]",
+        "au docket no. 26-191; da 26-1219",
+        "released on november 13, 2026",
+        "3,248 new flexible-use licenses",
+        "3.98-4.14 ghz",
+        "160 megahertz",
+        "eight 20-megahertz blocks",
+        "january 6, 2027",
+        "12:00 p.m. eastern",
+        "filing window opens",
+        "time (et)",
+        "january 20, 2027, 6:00 p.m. et",
+        "march 18, 2027, 6:00 p.m. et",
+        "april 27, 2027",
+        "december 30, 2030",
+        "june 30, 2031",
+        "will be a guard band and not available for auction",
+        "15-year, renewable license terms",
+        "ascending clock auction format",
+        "assignment auction phase",
+    )
+    if any(marker not in low for marker in required):
+        return None
+
+    return {
+        "body_verified": True,
+        "policy_event_key": "us-fcc-upper-c-band-auction115-procedures-2026-11-25",
+        "title_ko": "FCC, Auction 115 최종 절차 확정: 160MHz·3,248개 면허",
+        "status": "공식 절차 확정",
+        "importance": "상",
+        "policy_plain_summary": (
+            "FCC가 2027년 4월 27일 시작할 Auction 115의 최종 입찰 절차를 확정했습니다. "
+            "대상은 미국 본토 3.98~4.14GHz의 160MHz이며, 3,248개 면허를 경매합니다."
+        ),
+        "policy_timeline": [
+            {"date": "2026-11-13", "stage": "FCC Auction 115 절차 공고(DA 26-1219) 공개"},
+            {"date": "2026-11-25", "stage": "연방관보 게재"},
+            {"date": "2027-01-06", "stage": "FCC Form 175 신청 개시(12:00 ET)"},
+            {"date": "2027-01-20", "stage": "FCC Form 175 신청 마감(18:00 ET)"},
+            {"date": "2027-03-18", "stage": "선납금 마감(18:00 ET)"},
+            {"date": "2027-04-27", "stage": "입찰 시작 예정"},
+            {"date": "2030-12-30", "stage": "1차 위성(FSS) 전환기한(PEA 1-41·43-76)"},
+            {"date": "2031-06-30", "stage": "최종 위성(FSS) 전환기한(나머지 대상 PEA)"},
+        ],
+        "policy_timeline_note": "입찰은 예정 일정이며 낙찰·서비스 개시·사업자별 발주는 아직 발생하지 않았습니다.",
+        "impacts": ["시간표", "미국 통신사 CAPEX", "장비 발주"],
+        "paths": ["주파수 경매", "통신사 CAPEX", "장비 발주", "정책 타임라인"],
+        "sectors": ["미국 이동통신", "통신장비", "안테나/RF"],
+        "korea_value_chain": [],
+        "verified_body_url": verified_url,
+        "source_body": body,
+    }
+
+
 def is_fcc_upper_c_band_coordinator_notice(item: dict) -> bool:
     if item.get("source") != "Federal Register FCC":
         return False
@@ -1768,6 +1859,13 @@ def collect_sec_filings(now: dt.datetime) -> tuple[list[dict], list[str]]:
 
 
 def classify_item(item: dict) -> dict | None:
+    fcc_upper_c_band_auction115_profile = {}
+    if is_fcc_upper_c_band_auction115_procedures_notice(item):
+        fcc_upper_c_band_auction115_profile = enrich_fcc_upper_c_band_auction115_procedures_notice(item)
+        if fcc_upper_c_band_auction115_profile is None:
+            print("policy_fcc_upper_c_band_auction115_suppressed reason=official_notice_body_unverified")
+            return None
+        item.update(fcc_upper_c_band_auction115_profile)
     fcc_sim_profile = {}
     if is_fcc_sim_fraud_compliance_notice(item):
         fcc_sim_profile = enrich_fcc_sim_fraud_compliance_notice(item)
@@ -1843,6 +1941,8 @@ def classify_item(item: dict) -> dict | None:
     matched = {bucket: kws for bucket, kws in matched.items() if kws}
     if fcc_sim_profile:
         matched.setdefault("fcc_decision_notice", []).append("effective date")
+    if fcc_upper_c_band_auction115_profile:
+        matched.setdefault("fcc_decision_notice", []).append("Auction 115 final procedures")
     if fcc_upper_c_band_profile:
         matched.setdefault("fcc_decision_notice", []).append("upper c-band relocation coordinator comment")
     if is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_STRONG_TERMS):
@@ -1909,6 +2009,7 @@ def classify_item(item: dict) -> dict | None:
         apply_energy_dominance_month_profile(result)
     apply_treasury_borrowing_profile(result, haystack)
     result.update(fcc_sim_profile)
+    result.update(fcc_upper_c_band_auction115_profile)
     result.update(fcc_upper_c_band_profile)
     return result
 
