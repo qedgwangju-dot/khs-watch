@@ -4,7 +4,12 @@
   "westinghouse_equity_single_owner": "khs-us-investment-telegram-watch.yml",
   "policy_equity_governance_alert_present": false,
   "nuclear_policy_alert_file_present": false,
-  "delivery_confirmation_present": false,
-  "message_ids": [],
-  "validated_at": "2026-11-19T14:27:18.262797+00:00"
+  "delivery_confirmation_present": true,
+  "message_ids": [
+    {
+      "route": "policy",
+      "message_id": 655
+    }
+  ],
+  "validated_at": "2026-11-25T15:26:18.659330+00:00"
 }
