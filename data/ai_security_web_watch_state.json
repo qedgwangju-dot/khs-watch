@@ -3,23 +3,20 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": false,
+    "all_sources_verified": true,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [
-      "Google News RSS 실패: (OpenAI OR ChatGPT OR Codex) security vulnerability exp… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) monitorability … / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 2,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 63,
-    "google_news_rate_limit_429": 2,
+    "google_news_queries_succeeded": 65,
+    "google_news_rate_limit_429": 0,
     "material_items": 11,
     "new_material_items": 0,
-    "raw_items": 113,
+    "raw_items": 111,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": true
+    "source_access_limited": false
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -1145,5 +1142,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-25T15:24:43+09:00"
+  "updated_at_kst": "2026-11-25T15:49:30+09:00"
 }
