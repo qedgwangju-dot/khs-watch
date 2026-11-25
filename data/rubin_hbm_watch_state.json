@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-11-25T21:39:45+09:00",
+  "updated_at_kst": "2026-11-26T01:10:14+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "00c1b5afae079534fa6aa588",
@@ -355,8 +355,8 @@
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1344.51,
-    "date": "2026-11-24 일일 기준 · ECB/Frankfurter · 조회 2026-11-25 21:40 KST · 보조 API 2026-11-25 · 차이 0.11% · 일중 기준시각 차이 가능",
+    "rate": 1345.4,
+    "date": "2026-11-25 일일 기준 · ECB/Frankfurter · 조회 2026-11-26 01:10 KST · 보조 API 2026-11-25 · 차이 0.18% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -491,7 +491,7 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-11-25T21:40:02+09:00",
+    "last_checked_at_kst": "2026-11-26T01:10:31+09:00",
     "candidate_count": 3,
     "source_health": {
       "rss_success_count": 10,
@@ -501,8 +501,8 @@
       "weekly_011_publisher": {
         "status": "verified_public_summary",
         "url": "https://insights.trendforce.com/p/weekly-radar-011",
-        "checked_at_kst": "2026-11-25T21:40:02+09:00",
-        "last_verified_at_kst": "2026-11-25T21:40:02+09:00"
+        "checked_at_kst": "2026-11-26T01:10:31+09:00",
+        "last_verified_at_kst": "2026-11-26T01:10:31+09:00"
       }
     },
     "latest_weekly_issue": {
@@ -628,7 +628,7 @@
         }
       },
       "followup_health": {
-        "checked_date": "2026-11-25",
+        "checked_date": "2026-11-26",
         "feed_success": 2,
         "feed_failure": 0,
         "article_failure": 0,
@@ -641,8 +641,8 @@
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-11-25T21:40:26+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-11-26T01:11:09+09:00",
+    "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-11-25T21:40:26+09:00",
   "telegram_message_ids": [
@@ -709,8 +709,8 @@
       "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
-    "last_validation_cutoff": "2026-11-25",
-    "last_checked_at_kst": "2026-11-25T21:40:08+09:00",
+    "last_validation_cutoff": "2026-11-26",
+    "last_checked_at_kst": "2026-11-26T01:10:35+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -769,7 +769,7 @@
       ],
       "cpu_xpu_ratio_alert_sent": true,
       "scan_health": {
-        "checked_at_kst": "2026-11-25T21:40:08+09:00",
+        "checked_at_kst": "2026-11-26T01:10:35+09:00",
         "rss_attempts": 11,
         "rss_successes": 11,
         "rss_failures": 0,
@@ -778,7 +778,7 @@
         "rss_coverage_unavailable": false
       },
       "primary_source_audit": {
-        "checked_at_kst": "2026-11-25T18:00:23+09:00",
+        "checked_at_kst": "2026-11-26T01:10:35+09:00",
         "sources": {
           "bnpp_public": {
             "status": "retrieval_unavailable",
@@ -846,8 +846,8 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461",
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
-    "last_checked_cutoff": "2026-11-25",
-    "last_checked_at_kst": "2026-11-25T21:40:13+09:00",
+    "last_checked_cutoff": "2026-11-26",
+    "last_checked_at_kst": "2026-11-26T01:11:00+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -891,7 +891,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-11-25T21:40:15+09:00",
+    "last_checked_at_kst": "2026-11-26T01:11:02+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -1015,7 +1015,7 @@
       "milestones": {}
     },
     "nvidia_substrate_source_checks": {
-      "checked_at_kst": "2026-11-25T21:40:15+09:00",
+      "checked_at_kst": "2026-11-26T01:11:02+09:00",
       "nvidia": "verified",
       "samsung": "verified",
       "fully_verified": true
@@ -1455,7 +1455,7 @@
   },
   "hbm_material_event_watch": {
     "version": 1,
-    "checked_at_kst": "2026-11-25T21:40:08+09:00",
+    "checked_at_kst": "2026-11-26T01:10:35+09:00",
     "seen_keys": [
       "20261112_intel_hbmfree_lpddr_inference_proposal",
       "20261112_intel_kai_23_company_alliance",
