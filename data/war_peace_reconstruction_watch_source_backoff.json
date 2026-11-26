@@ -32,9 +32,9 @@
     "news.google.com": {
       "reason": "HTTPError",
       "code": 429,
-      "observed_epoch": 1795656658.603,
-      "retry_at_epoch": 1795657558.603,
-      "denials": 1
+      "observed_epoch": 1795663252.3024437,
+      "retry_at_epoch": 1795665052.3024437,
+      "denials": 2
     },
     "news.err.ee": {
       "reason": "HTTPError",
