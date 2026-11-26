@@ -1751,6 +1751,70 @@ def spacex_job_source_verified(item: dict) -> bool:
                 and spacex_job_story_key(item.get("title", "")) == f"spacex|optical-job|{job_id}")
 
 
+def render_spacex_job_sections(items: list[dict]) -> list[str]:
+    """Presentation only: preserve each verified job, its evidence and feature set."""
+    if not items:
+        return []
+    grouped = {}
+    for item in items:
+        if not spacex_job_source_verified(item):
+            raise ValueError("unverified SpaceX job in alert")
+        grouped.setdefault((item["category"], item["spacex_role_ko"]), []).append(item)
+
+    lines = [
+        f"<b>스페이스X(SpaceX) 공식 채용 {len(items)}건 · 직무군 {len(grouped)}개</b>",
+        "• 단계·확인: 공식 채용공고 본문 확인 · 공급망 선행신호",
+        "• 계약·수주·개별 공급사·수량·수주금액 미확정",
+        "• 공개 흔적은 외부 채용정보 기록이며 최초 포착일과 다릅니다. 공개 흔적이 없는 공고의 원래 게시일은 미확인입니다.",
+    ]
+    observed = {str(item.get("spacex_observed_at") or "") for item in items}
+    shared_observed = next(iter(observed)) if len(observed) == 1 else ""
+    if shared_observed:
+        lines.append("• 최초 포착: " + html.escape(shared_observed))
+    lines.append("")
+
+    for idx, ((category, role), records) in enumerate(grouped.items(), 1):
+        lines.append(f"<b>{idx}. {html.escape(category)} · {len(records)}건</b>")
+        lines.append("• 직무: " + html.escape(role) + " 모집")
+        feature_lists = [list(dict.fromkeys(item.get("spacex_features") or [])) for item in records]
+        common = [feature for feature in feature_lists[0]
+                  if all(feature in features for features in feature_lists)]
+        if common:
+            lines.append("• 공통 직무·기술: " + html.escape(" · ".join(common)))
+        variants = {}
+        for item, features in zip(records, feature_lists):
+            extra = tuple(sorted(set(features) - set(common)))
+            variants.setdefault(extra, []).append(item)
+        for extra, members in variants.items():
+            if extra:
+                ordered = [x for x in dict.fromkeys(members[0]["spacex_features"]) if x in extra]
+                lines.append("• 추가 직무·기술(아래 공고만): " + html.escape(" · ".join(ordered)))
+            elif len(variants) > 1:
+                lines.append("• 추가 확인 기술 없음(공통 직무 적용)")
+            links = []
+            for item in members:
+                job_id = item["spacex_job_id"]
+                link = f'<a href="{html.escape(item["link"], quote=True)}">{job_id}</a>'
+                ref_date = item.get("spacex_date_reference")
+                if ref_date:
+                    ref_url = html.escape(item["spacex_date_reference_url"], quote=True)
+                    link += f' (<a href="{ref_url}">공개 흔적 {html.escape(ref_date)}</a>)'
+                if not shared_observed:
+                    link += " (최초 포착 " + html.escape(str(item.get("spacex_observed_at") or "미확인")) + ")"
+                related = list(dict.fromkeys(str(x.get("category")) for x in item.get("related_scopes") or []
+                                             if x.get("category") and x.get("category") != category))
+                if related:
+                    link += " (연관 감시축: " + html.escape(" + ".join(related)) + ")"
+                links.append(link)
+            lines.append("• 원문 공고 ID: " + " / ".join(links))
+        lines.extend([
+            "• 투자 의미: " + html.escape(meaning_for(category)),
+            "• 역풍 확인: " + html.escape(risk_for(category)),
+            "",
+        ])
+    return lines
+
+
 def canonical_story_key(company: str, title: str) -> str | None:
     if company == SPACEX_OPTICS_COMPANY:
         return spacex_job_story_key(title)
@@ -5061,7 +5125,14 @@ def main() -> None:
             f"{'포착·누락 보완' if any(item.get('company') == SPACEX_OPTICS_COMPANY for item in alert_items) else '신규 변화'}: <b>{len(alert_items)}건</b>",
             "",
         ]
+        spacex_items = [item for item in alert_items if item.get("company") == SPACEX_OPTICS_COMPANY]
+        spacex_rendered = False
         for idx, item in enumerate(alert_items, 1):
+            if item.get("company") == SPACEX_OPTICS_COMPANY:
+                if not spacex_rendered:
+                    lines.extend(render_spacex_job_sections(spacex_items))
+                    spacex_rendered = True
+                continue
             pub = ""
             if item.get("published"):
                 try:
@@ -5073,8 +5144,6 @@ def main() -> None:
                 pub = (item.get("official_posted_date") or "공식") + " (공고일·시각 미공개)"
             category = item["category"]
             public_title = item["title"]
-            if item.get("company") == SPACEX_OPTICS_COMPANY:
-                public_title = "스페이스X, " + item["spacex_role_ko"] + " 모집(공고 ID " + str(item["spacex_job_id"]) + ")"
             if item.get("company") == AVICENA_COMPANY and item.get("story_key") == AVICENA_SERIES_C_KEY:
                 public_title = "아비세나, AI 인프라용 마이크로LED 광연결 상용화 위해 1억달러 이상 시리즈 C 투자 유치"
             if item.get("company") == LITE_CAPACITY_COMPANY:
@@ -5110,16 +5179,6 @@ def main() -> None:
                 f"• 원문 제목: {html.escape(public_title)}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
-            if item.get("company") == SPACEX_OPTICS_COMPANY:
-                lines.append("• 확인 수준: 회사 공식 채용공고 본문 확인 · 개별 공급사·수량·수주금액 미확정")
-                ref_date = item.get("spacex_date_reference")
-                if ref_date:
-                    lines.append("• 공개 흔적: " + ref_date + " (외부 채용정보 기록). 이번 포착일과 원래 게시일은 다릅니다.")
-                    lines.append("• <a href=\"" + html.escape(item["spacex_date_reference_url"], quote=True) + "\">게시일 보조 근거</a>")
-                else:
-                    lines.append("• 최초 포착: " + html.escape(item["spacex_observed_at"]) + ". 원래 게시일 미확인.")
-                if item.get("spacex_features"):
-                    lines.append("• 원문 직무·기술: " + html.escape(" · ".join(item["spacex_features"])))
             if item.get("company") == AVICENA_COMPANY:
                 lines.append("• 확인 수준: " + ("발행사 발표 본문·별도 투자사/언론 원문 대조" if item.get("avicena_direct_verified") else "공식 도메인 검색 제목 또는 공식·독립보도 제목 대조(원문 검증 단계 별도)"))
                 if item.get("story_key") == AVICENA_SERIES_C_KEY:

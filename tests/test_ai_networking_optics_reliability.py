@@ -44,6 +44,62 @@ class OpticsReliabilityTests(unittest.TestCase):
         self.assertIsNone(watch.spacex_job_item(dict(rows[0], title="General accounting specialist"), observed=today))
         self.assertFalse(watch.spacex_job_source_verified(dict(items[0], link=watch.SPACEX_JOB_BOARD+"8563613002")))
 
+    def test_spacex_compact_presentation_preserves_every_job_and_feature_variant(self):
+        today = watch.dt.datetime(2026, 11, 26, 6, 11, 52, tzinfo=watch.dt.timezone.utc)
+        roles = [
+            (8827682002, "Manufacturing Engineer - Supplier Development, Optics & Optomechanical Systems (Starlink)",
+             "Starlink Space Lasers satellite free-space optical communication. Develop suppliers, manufacturing quality and production part approval process (PPAP)."),
+            (8563613002, "Sourcing Specialist, Mechanical & Optical Commodities (Starlink)",
+             "Starlink satellites optical commodities. Develop supply base, capacity planning, long-term agreements and qualification."),
+        ]
+        common_body = "Datacenter network hardware, optical transceivers, supplier capacity reservations, CPO, DSP and optical fiber."
+        for job_id in (8949272002, 8950942002, 8952123002, 8949091002, 8957252002, 8957359002):
+            body = common_body
+            if job_id in (8949272002, 8957252002):
+                body += " 800G, 1.6T, 3.2T, InP, GaAs, 224G SerDes."
+            else:
+                body += " long-term agreements."
+            roles.append((job_id, "Sourcing Manager (Network Infrastructure)", body))
+        items = [watch.spacex_job_item({"id": job_id, "absolute_url": watch.SPACEX_JOB_BOARD + str(job_id),
+                                        "title": title, "content": body}, observed=today)
+                 for job_id, title, body in roles]
+        self.assertTrue(all(items))
+        before = json.dumps(items, sort_keys=True, ensure_ascii=False)
+        rendered = watch.render_spacex_job_sections(items)
+        message = "\n".join(rendered)
+        self.assertEqual(json.dumps(items, sort_keys=True, ensure_ascii=False), before)
+        self.assertIn("공식 채용 8건 · 직무군 3개", message)
+        self.assertEqual(message.count("계약·수주·개별 공급사·수량·수주금액 미확정"), 1)
+        self.assertEqual(message.count("• 투자 의미:"), 3)
+        self.assertEqual(message.count("• 역풍 확인:"), 3)
+        self.assertEqual(message.count("• 최초 포착:"), 1)
+        self.assertIn("원래 게시일은 미확인", message)
+        self.assertIn("공개 흔적 2026-09-23", message)
+        self.assertIn("공개 흔적 2026-07-16", message)
+        self.assertIn("공개 흔적 2026-11-22", message)
+        for item in items:
+            self.assertEqual(message.count(f'>{item["spacex_job_id"]}</a>'), 1)
+            self.assertIn(item["link"], message)
+            for feature in item["spacex_features"]:
+                self.assertIn(watch.html.escape(feature), message)
+            if item.get("spacex_date_reference_url"):
+                self.assertIn(watch.html.escape(item["spacex_date_reference_url"], quote=True), message)
+        # Exact feature variants: the following ID line belongs only to the listed extra features.
+        extra_index = next(i for i, line in enumerate(rendered) if "추가 직무·기술" in line and "224G" in line)
+        self.assertIn("8949272002", rendered[extra_index + 1])
+        self.assertIn("8957252002", rendered[extra_index + 1])
+        self.assertNotIn("8950942002", rendered[extra_index + 1])
+        self.assertIn("8950942002", message)
+        self.assertLess(len(message.encode("utf-16-le")) // 2, 3500)
+        mixed_times = [dict(items[0], spacex_observed_at="2026-11-26T15:11:52+09:00"),
+                       dict(items[1], spacex_observed_at="2026-11-26T15:49:14+09:00")]
+        mixed = "\n".join(watch.render_spacex_job_sections(mixed_times))
+        for item in mixed_times:
+            self.assertIn(item["spacex_observed_at"], mixed)
+        with self.assertRaises(ValueError):
+            watch.render_spacex_job_sections([dict(items[0], link="https://example.com")])
+        self.assertEqual(watch.render_spacex_job_sections([]), [])
+
     def test_spacex_source_failure_is_not_empty_verified_board(self):
         def broken(*args, **kwargs):
             raise OSError("unavailable")
