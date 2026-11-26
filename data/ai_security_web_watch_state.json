@@ -3,33 +3,20 @@
   "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "all_sources_verified": false,
+    "all_sources_verified": true,
     "deferred_material_items": 0,
     "direct_official_items": 57,
-    "errors": [
-      "Google News RSS 실패: (\"CVE-2026-109618\" OR \"CVE-2026-109619\" OR \"php2shell\")… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR ChatGPT OR Codex) security vulnerability exp… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (Copilot OR \"Microsoft AI\") security vulnerability expl… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"rogue agent\" AI OpenAI Anthropic Google Meta security… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (\"AI model\" OR \"frontier model\") cybersecurity capabili… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) system card cyb… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic) \"tens of thousands\" security inci… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic) model behavior guardrail sandbox … / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell OR NemoClaw) security vu… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) data exfiltration netwo… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) deployment bloc… / HTTPError: HTTP Error 429: Too Many Requests",
-      "Google News RSS 실패: \"Abdulrahman Alfozan\" (detention OR court OR hearing OR… / HTTPError: HTTP Error 429: Too Many Requests"
-    ],
-    "google_news_queries_failed": 12,
+    "errors": [],
+    "google_news_queries_failed": 0,
     "google_news_queries_requested": 65,
-    "google_news_queries_succeeded": 53,
-    "google_news_rate_limit_429": 12,
+    "google_news_queries_succeeded": 65,
+    "google_news_rate_limit_429": 0,
     "material_items": 10,
     "new_material_items": 0,
-    "raw_items": 96,
+    "raw_items": 116,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1,
-    "source_access_limited": true
+    "source_access_limited": false
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -116,16 +103,6 @@
       "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNQWNzSUNpbDdTUE9pN25Oa0hlTjBFbS1RZG1IVmFCZVpZckFyOENlTUVRZ0tJRmgyRVZOVWZKWDc0WllSb0ZRRTFFYVJ3RXY5MmZXU3lCN1VKaFcycUo1S2wtdzFwMXdscUdLbnZCUlNHQVlzSHZhSkRoaW5GRUk2blhWQXNPWWRKejhMejBzMlFNaHJ1amtKNklLSFh2R0duSGt1ZlJ1VEgzT1JDRjQwbkRSRVpiQ2tPeEJMX1Z1WU5GUklJ?oc=5",
       "vendor": "PHP 재단"
     },
-    "0780878b05fa415e43ff112d": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T16:50:40+00:00",
-      "severity": 3,
-      "source": "SecurityWeek",
-      "title": "PHP2Shell Patches Land as First Exploitation Attempts Hit Sensors - SecurityWeek",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaFoxZkxQS1BGRVVfWHF5R3Azd2xvb3VuR3ZibU44Mk51RVF1UjE2YUZ6elRaVmtTaGxfdTcwMjU4bDh3QTRabUtJdmd0MlVXYURSMnhSSlJKS2Z0ZWRvb2VIM29aMU5GR2g3WFMzeGdfaG5xaEdmSlkxRG8zby1xWWQ5LU5vZHlaallOWTFCMmJuQkduWW4tdS1tc9IBoAFBVV95cUxNWVdDT1FTeFFwUzJaMlZxaDd0QnpvNEZZazdOTGlSTWtCdnBvLUNuWHd3bTN5OWVFTEZOQ2t0azFMc3VQVmJyaUxFNndIZkZ5X3dIeU1xRWowNnR0YmdaRThISS1SbVQ3MWQtd1hKOV9rWGZyaXdZX1NlOTBPbGhJaTNnZEt5R191TU1LWHoyTzRIMFpBZHA1NzRTWlRNZWUx?oc=5",
-      "vendor": "PHP 재단"
-    },
     "07a2dddc4d0f65ceef8e834f": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-29T14:17:40.047561+00:00",
@@ -134,16 +111,6 @@
       "source": "BleepingComputer",
       "title": "CISA warns of Fragnesia Linux flaw chained in PHP2Shell attacks - BleepingComputer",
       "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOWTBMOUN2emhCRUtzMFBjaUlsVDVhN3lTc2l1NTBDa1NUZGg1SlpiVUtEc01odWFfZFdMUGU0N0VuYkd2cEo5SDBjVlNHN3Z5aEdJTTU0U1FtV0FQcDhaajZNMDZtRENSMHVsRGxnU2ItZ1RJUktYMEUyWVNMOXFxcHBubTVDVG02QlVRVDZ6WlYtXzZzcTNrRDlLdnJWekJYUzZNY2RvdmNFdml2ekl4S9IBtgFBVV95cUxNSndlRlhJZDB1NjlZbm9TR084NUVuYjRiTHFyRU5EbjNia1YzdF9HcmtCXy1CbTFzc0hXMlZmeHcwS3hyQ2s1SVNIS2FtY0dlTHA0emt0MGJCRzVDTTV0OFFlNFlJODdBUVFnRGVtcVNDT1dyci03akQtU3praW1VV3pHNm94d0RQRUNtckVvakwxZUVGQlI2bzBOOUczMTM0dzYxb1o1cVg4VUFTUHdxR2lGM3U4QQ?oc=5",
-      "vendor": "PHP 재단"
-    },
-    "0f050a50569c1ce7feff5c20": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T14:00:00+00:00",
-      "severity": 3,
-      "source": "The Hacker News",
-      "title": "PHP Issues Emergency Patches for Two Critical PHP2Shell RCE Flaws as Exploit Attempts Emerge - The Hacker News",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNMEVWUV9kZDRJd3N3eW5sSnctRFd2dkJkRXBNZ0xiY004czBDMDB4b2l4MU5rdDV6ZHMxaVBzRWJyc3hwTm5PMHJJRjlYWkJBb043SEpsNDlWWUxnYzBvbVhiRm9sZkRoRm9pcHRVdy1ac0thUXo1RjRxUy1BMWtTdA?oc=5",
       "vendor": "PHP 재단"
     },
     "12c74139e0101e3b37a0fed7": {
@@ -175,16 +142,6 @@
       "title": "Claude Model Builds Exploits Across Major Browsers & OSes - Dark Reading",
       "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNdUdTTkVweWU5c2MwajUwLW1WNzdrdFFkZUdLYURmM2NHenFDOFV1dUNSRVlZVFBENnBRbXNxUGdJWEZrV3pFOVRPRE54aDlXdHkxLW1Cb3JPQkdIZDhDeWYyNFR2N2FVallMZ0RSYWc2Ym0yWDJWamNvUnR1TFo0LXQybS1jdHJFMHF5RF9KNHNYSDM1?oc=5",
       "vendor": "Anthropic"
-    },
-    "13af12b066f7d981bf231ba8": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T07:02:06+00:00",
-      "severity": 3,
-      "source": "SecurityWeek",
-      "title": "PHP2Shell: Mass Exploitation Looms for Leaked Critical PHP Flaws - SecurityWeek",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNbjAyRzBiZjlUN0thQ205LThtV2E2ZW5VZFBCM1M1ejN2QkQxSzBRc01MdERHeTJ0SXE5WUF6a3I0anFreHY1cURtY2ZCdncyYmV3MFpjVTFZMGxlZHNSaXZBeW1aRWFUZFA5ME41S0tVZXQ3dDZXRll4cFlZc2x0Mk1UbXpqQnhUR0JsRUFyUUJMQklwMDlLNtIBngFBVV95cUxNX2NMOWR1Q1lodTJuVVRnTTlBT2hNNlQ0aUFkNnVkVWZmVUpXWHp0bGdjdTd4dl9mSVp0dnpyU0Z1WWtaZEh0cDVZUzFqb3lPR3lnWUVDRkxLUHRQWHlCbGhEM3lTRTNfX3M5R2Z4U0F3Y0xHTk0tTGltR25sOXA5OVVhR3dNa1YybmJuX2JYRjVnQ0NYbHNKYnFBSElzQQ?oc=5",
-      "vendor": "PHP 재단"
     },
     "14889c6a898855098359a2e2": {
       "category": "PHP 취약점 최초 공개·패치 대기",
@@ -346,16 +303,6 @@
       "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOWTBMOUN2emhCRUtzMFBjaUlsVDVhN3lTc2l1NTBDa1NUZGg1SlpiVUtEc01odWFfZFdMUGU0N0VuYkd2cEo5SDBjVlNHN3Z5aEdJTTU0U1FtV0FQcDhaajZNMDZtRENSMHVsRGxnU2ItZ1RJUktYMEUyWVNMOXFxcHBubTVDVG02QlVRVDZ6WlYtXzZzcTNrRDlLdnJWekJYUzZNY2RvdmNFdml2ekl4Sw?oc=5",
       "vendor": "PHP 재단"
     },
-    "46aeaa48467ef88fad7dba62": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T13:57:20+00:00",
-      "severity": 3,
-      "source": "Cloudflare Blog",
-      "title": "Cloudflare deploys protections against php2shell vulnerability - Cloudflare Blog",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1EdDdqNHduOEE5YklCczNqNklJSkVlZERaRHNVTnpEMnJudUd0SEpsdFlOR1R4dy1PamlvQW5EWUtMWl94bkEyWjFTV1kzbDM0NjR2U3RjWm5uQkVITTJpXzlRZnpuQ05MNmIxMWhrTng?oc=5",
-      "vendor": "PHP 재단"
-    },
     "48f74f0bb312870ac1077c0c": {
       "category": "PHP 취약점 실전 악용 보도·추가 검증",
       "first_seen_at": "2026-10-27T05:11:53.630435+00:00",
@@ -506,16 +453,6 @@
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE4tOWdrOGlYS2tjeWxKTnl1U3YyN3pqMnM1YTYyZU5wQy05X2FvZFhUUV9SNGt1MVd4cEE0UndMTGJiSXRqZmxmWEVPS0NQazVGVUZNWGxGdWF4Q2hMbDVid192UjFKc2hLVlE2OUxyMFdxY0NLUXdJ?oc=5",
       "vendor": "Anthropic"
     },
-    "707da9e87eaa264e4154794d": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T14:07:05+00:00",
-      "severity": 3,
-      "source": "BleepingComputer",
-      "title": "PHP ships emergency patches for critical PHP2Shell flaws - BleepingComputer",
-      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPOXNpMEF4NE11UzFkYXVzYV9KMERSSlIxV1dlTXB3VUgtOWtNTTNDNW5ueWliNWp6c2hvWUNSRmF4Zk1TZ1JHZDI0ZnZ0ZG1iUWptQ3ozdHBOcGFvTE1aWmNFYnMzOWw5MGlmQjNMcGI1TjkyN3doQm4zSllTeGJWamZFSVpURW5icUQxS3hEeEVPWHVRa0JlOWVjSW9BcTJjX014R2Y2VQ?oc=5",
-      "vendor": "PHP 재단"
-    },
     "74098c773ea47d42d05a7b6b": {
       "category": "Anthropic 제3자 업무시스템 보안 연구·모의침투",
       "first_seen_at": "2026-10-27T06:40:38.648601+00:00",
@@ -544,16 +481,6 @@
       "source": "CISA",
       "title": "PHP Group PHP PHP Memory Corruption Vulnerability",
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
-      "vendor": "PHP 재단"
-    },
-    "7a8bc957348170dfec17b11b": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T19:55:59+00:00",
-      "severity": 3,
-      "source": "Dark Reading",
-      "title": "'PHP2Shell' Bugs Signal Red Alert for Security Industry - Dark Reading",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNUHBzTlE3YjM5VllleFRhSk00bWk5cTdGcm95M0QwNkdKblVpaEJPbXBKYjBrcTdaZTY2ZFQyUFljVjBwZUc0a0VfSDNvVTE1MGllZWRuMmMxX3pQMjlyUTNHdVhBUzFyUjRQRlhmM0JNR3d1MTN6cUVsUXIyVXZJdE0zdkZ6S1VaTk01NTFSelFKMHo4RXc?oc=5",
       "vendor": "PHP 재단"
     },
     "7c249405717c230bf02af605": {
@@ -586,16 +513,6 @@
       "url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
       "vendor": "Anthropic"
     },
-    "84315ef2151b04b6be5ca0aa": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T15:45:53+00:00",
-      "severity": 3,
-      "source": "wiz.io",
-      "title": "PHP2Shell: AI uncovers critical RCE vulnerabilities affecting 70% of the Internet - wiz.io",
-      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBfU2lySGdfMVprRm5nUmxNVVEzYjFPQTRhWV9VNzlJNlVZbWFmMVN4UE1uOFFqbVE4UFBvaWwydHUzT2VhRTVaSWVDeVhGbVpHQnEw?oc=5",
-      "vendor": "PHP 재단"
-    },
     "869166849ebcbdba745779bb": {
       "category": "PHP 취약점 최초 공개·패치 대기",
       "first_seen_at": "2026-10-25T22:32:17.508186+00:00",
@@ -625,16 +542,6 @@
       "title": "Using peers’ work to gain unauthorized access to OpenAI research infrastructure - OpenAI",
       "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOclR2UjhDeEFNbmxxSTRfNjZOMjVNS2dBWmVIYlNqYlZtZ0owVWFZOE15MHJJaVdnRTk4NmYyMk1USGRKalRjNWdHX1Jmam9MMDVvdXowbFVnRnpoMWg2ck1OZkR4RERXM2taN2hLZ2l2cDlGVWMyeHRpUVZMMTBQQXhiYWZPM1NGZ3NvV0lHbndMX3ZXeVMyNUI4ZEZEX2FzdTA1M1NGVW1lNVlrVnhsanAweFhEU1lJakhZYWZrc1dsYzNIdnVVblQ2dDhaSURqckE?oc=5",
       "vendor": "OpenAI"
-    },
-    "88d65434b1f26800a658640b": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T22:36:26+00:00",
-      "severity": 3,
-      "source": "Amazon Web Services (AWS)",
-      "title": "Amazon Threat Intelligence identifies PHP2Shell exploitation prior to public disclosure in MadPot - Amazon Web Services (AWS)",
-      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQQVVWR2dJMXQ5N3plYkRnb1ZMdmVTWlNXS2JseFRMaTV5WmdZVkp3MVhyVk1FQ09XcFQzN3N3Rko3Vl9mTnF3dndiVVVaVU1Rem5Qdk1FU2VzcDJXZjhBeXhURUtRSFNIR3dOc0VadE14ZHQteGltSkd3VzhMbzNEcmhva2xteWVJM1N6T3J4eXc2VUU0VTE1LVhSNzFnRVRnMS12UDJoSFV3QXE5Mnl4VVVHcThUMmdvZEtvMmZ6RjBtVHo0RjdfNkg0UWlEaGN3Smc?oc=5",
-      "vendor": "PHP 재단"
     },
     "8a5622a3ce6323a967c86961": {
       "category": "PHP 취약점 최초 공개·패치 대기",
@@ -674,16 +581,6 @@
       "source": "The Hacker News",
       "title": "PHP2Shell Exploitation Hits Government Entity Amid Global Scanning and Signs of AI-Assisted Hacking - The Hacker News",
       "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOVFFXYm02enI1TjBPck84cXZpOEl0WDlkdERoOThDcGRFajFPNjV1SFpSeUxNWXd5ajJuSmctSjVMb2FFeEZIV0VfWkNFVVpITUVQdV9xaVRfX1ZEN0FwSk1jWFh3dWRxTnpTYVRSa2dZRGQ0d2FGNDFaRDBwMmZhWnhGVQ?oc=5",
-      "vendor": "PHP 재단"
-    },
-    "90ae8cc0aaeabcb68c3b902d": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T14:29:14+00:00",
-      "severity": 3,
-      "source": "Google",
-      "title": "Responding to core PHP vulnerabilities CVE-2026-109618 and CVE-2026-109619 - Google",
-      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOMXE1MTlaZ3ZHc0RqN0E3MnBqM2xDeGJLOEU5MDVodnE4RGsxeWNBZGtwdzluS3UwQ0JEU1BWa1d1dXk4SkJvOGR0alZSODV2bjNTTGQzTnllZkNGWUZXQUdYa1dtNE1IUnF1aXVfZE5pTnJXbVRyZlVQRzJ4T1hGUXYteWd4YXZrMXZTZmRxX2ZWWktLd1BEalpmNGM2YWdXYXQ1d2hxVUV0TFJET0wtTTlSTFZTUWJJM0tyUXdycmZJOEVQOVE?oc=5",
       "vendor": "PHP 재단"
     },
     "97728dc0809c35565f941184": {
@@ -808,7 +705,7 @@
     },
     "bb6cf366e9ef4de84ccc74d5": {
       "category": "PHP 코어 취약점·공식 보안패치",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
+      "first_seen_at": "2026-11-26T03:15:30.679986+00:00",
       "published_at": "2026-10-21T13:40:00+00:00",
       "severity": 3,
       "source": "PHP Security Team",
@@ -886,26 +783,6 @@
       "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4xRGVqQzFoSU5vUk12Y19oNFhMU3JiTGZKN2lNZ0IwakU2WU1LZFdFWC1wVm00ZkEwS1J4UUQ4Z0swXzc5TDVsall2VHFVeGIxal8tR2U1Y0ZfcVA5SFBlTV95NDV4dGtpcnpFMHFNZ1E4RFU?oc=5",
       "vendor": "PHP 재단"
     },
-    "c5223d4a9baa7651580eb6ca": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T16:48:09+00:00",
-      "severity": 3,
-      "source": "wiz.io",
-      "title": "PHP2Shell Emergency Threat Briefing | Wiz - wiz.io",
-      "url": "https://news.google.com/rss/articles/CBMi2wJBVV95cUxNaHkwYUdOTEk5XzlHR0pLd3p2aHVEUWZBX0c4cllxUzF5a3BaemQ2U0dNMlNSYldrTFVqTThZRXdHZUtJLU1sMVdyRUlBdzlmakFGUnNUMmtnZnZCLXNvZVUzRWFYeFZiNWdjR1B6STZKUDMtYXo3bUhKTmNUY1YzM0FtNTNTb2RtQ19JaWpTQnJnenJJaHB1UWZScHV5RWVmRWRJa0RRRFN6ZW1XQ25mamF5cG9zOFRDVnR2amxaWU44TmFvWVBOVnJ0Vl84UWR5TUJDT3VkMGwyUGJxUlFJUGhwOWs3RFZKS1laMndqc25YcGxkaTFmZUp1Y2EzQjBWNUt2N0dNT2xBdFZXd3RwdF9PTTV1TU5pNkJlbmJHb2wtUDZDN2ItUFVyZUtrTmVDN0dacjNhbWRDcExrX1l6Qml6U1ppeGhzM3E2SkYtNktIc3BWbUVIZ1g4RQ?oc=5",
-      "vendor": "PHP 재단"
-    },
-    "c5bb1dbbf79eb80544664ff2": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T16:42:28+00:00",
-      "severity": 3,
-      "source": "Unit 42",
-      "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 - Unit 42",
-      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBaSXRUMkVsWkF3TjhoV29oTXdyZHhrMGZINFBHNVVrNmZubTA4SkFzMzlWMlNMLW15ZWdISDJYeURJbVdpTFB5ZzNTU21aazFfTmc4R0VkLWVyMVY4S1JRYTZ5UjJqWk82SlR5Q0ZMOTJrNEJVeXNV?oc=5",
-      "vendor": "PHP 재단"
-    },
     "c69db8c6d73f7c1a0eddbd65": {
       "category": "PHP 취약점 실전 악용 보도·추가 검증",
       "first_seen_at": "2026-10-26T12:17:12.986969+00:00",
@@ -934,16 +811,6 @@
       "source": "SecurityWeek",
       "title": "China-Linked Hackers Exploit PHP2Shell to Root Firewalls - SecurityWeek",
       "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPS2NIXzhYZHFsOE5nblFXNzQ2QVRHNThRYXdWZ1RzWDJ6R3pyVGFGcGkzRTF5OXhtbmNiRjVfRUdpcjZoX0E1NVJhTXoxdUZIdUxpTlRqaTdSQngzaWZlMzdJM2VCaUtVazZHMFc0VE51SEV4ZGFNR2FWc1EtcWxnWFNRRE1hYWJPWW1mc1QzTdIBlAFBVV95cUxNTi1Ea2haTGZSaHlIaDBIRVBIdURnS2JELXdDU1dXM2p4X09mSENNODRlUzFFYUYzdHNrZlU3T3hWTzRRbmxmVC1nX2xuQnY4eF9iQ2lpS0pIcHFIWnZyOGwybVVqR0ZVMHVhUFZ5ZjQ5T2prdFEySVhIRnQxbjU2RkNDekJ3N3JCU20xMlU4M01lNHBC?oc=5",
-      "vendor": "PHP 재단"
-    },
-    "cdace3f6cdae54d1274235f5": {
-      "category": "PHP 취약점 최초 공개·패치 대기",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T10:36:00+00:00",
-      "severity": 3,
-      "source": "The Hacker News",
-      "title": "PHP2Shell: What Actually Protects You Before the 14:00 UTC PHP RCE Patch, and What Doesn't - The Hacker News",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNlQ0QWdXUWFKXzBZcEo1Z1cwRW5QOVhYR3M2aEVtOWVkbl9iZnZnME52cS1Ya0JWXzVmM0JhVUFpZmRTQlhER0Uwc1ZTRmJyNmtVeTJ0MjNLM09OekJZYmJma3d3VUVVcEtUREFqYU00UEE2V25PMjA1UUFTaEhPWg?oc=5",
       "vendor": "PHP 재단"
     },
     "ceff902e5c4326dbe66991ea": {
@@ -984,16 +851,6 @@
       "source": "The Hacker News",
       "title": "Attackers Exploit PHP2Shell Flaws in Internet-Exposed Palo Alto Networks Management Interfaces - The Hacker News",
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNaTI3NHZ5UmVjWTZiWGY0XzFNaWYtRkpuU1gzVzFHdkJZNFdVLTg4S1paYWdpZmhkczh3d2Z1SGdVLTAycFRmbnhrVFhMOEh0bzJCTDlOT1E1amVNbmRiSGxuVmdlM1VmXzdWVERHTnZRVzdVVFJpNTBXUkpTTU1OQw?oc=5",
-      "vendor": "PHP 재단"
-    },
-    "d322522f7a99c3fd6616df94": {
-      "category": "PHP 코어 취약점·공식 보안패치",
-      "first_seen_at": "2026-10-22T03:10:06.846035+00:00",
-      "published_at": "2026-10-21T06:59:29+00:00",
-      "severity": 3,
-      "source": "The Hacker News",
-      "title": "PHP2Shell: Two Unpatched Critical PHP RCE Flaws (CVSS 9.2) Trigger Emergency Security Alert - The Hacker News",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNbjN3SkNMZnRrQWkwSmJjQWtoOFJQeHN3VWM0VG84eGJwcERUUFRVelVoU1QxM19FRXdwYmdkVVpmNjJjWkhhQXFkeHh5bmxwSmp3NmRaMjdnNGdwV2hkNDY1TENadEFiSUhESy1ydVItYVl4RUFQdVV2M0R3d0Uycg?oc=5",
       "vendor": "PHP 재단"
     },
     "d40a35a29ffdd91a01ae1f0c": {
@@ -1155,5 +1012,5 @@
       "status": "reported milestone, preserve source confidence"
     }
   },
-  "updated_at_kst": "2026-11-26T12:01:46+09:00"
+  "updated_at_kst": "2026-11-26T12:15:30+09:00"
 }
