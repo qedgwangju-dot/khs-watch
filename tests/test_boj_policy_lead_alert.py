@@ -1529,7 +1529,7 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         ))
         allowed, reason = should_alert(headline, {}, item.published)
         self.assertFalse(allowed)
-        self.assertIn("본문", reason)
+        self.assertIn("원문·핵심 조건 확인 대기", reason)
         state = {
             "last_title": "BOJ's Tamura signals chance of faster-pace interest rate hikes - Reuters",
             "last_source": "Reuters",
