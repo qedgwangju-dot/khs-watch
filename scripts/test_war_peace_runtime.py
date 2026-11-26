@@ -748,6 +748,29 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(runtime._load_backoff(state_path), saved)
         self.assertEqual(watch.STATE.read_text(), '{"seen":["confirmed-old"]}')
 
+    def test_longer_inflight_retry_after_and_pending_state_do_not_overwrite_delivery(self):
+        from urllib.error import HTTPError
+        host = 'news.google.com'
+        url = 'https://news.google.com/rss/search?q=fixture'
+        now = time.time()
+        first = runtime._denial_entry(HTTPError(url, 429, 'rate limited', {}, None), now)
+        later = runtime._denial_entry(
+            HTTPError(url, 429, 'rate limited', {'Retry-After': '4000'}, None), now)
+        registry = runtime._ProviderBlocks(mp.get_context('fork'))
+        registry.record_denial(host, first)
+        registry.record_denial(host, later)
+        snapshot = registry.snapshot()
+        self.assertEqual(snapshot[host]['retry_at_epoch'], later['retry_at_epoch'])
+        self.assertEqual(snapshot[host]['denials'], 1)
+        saved = self.root / 'provider-state.json'
+        pending = self.root / 'provider-pending.json'
+        runtime._save(saved, {'version': 1, 'providers': {}})
+        before = saved.read_bytes()
+        self.assertTrue(runtime._save_backoff(
+            saved, {}, {'blocked_providers': snapshot, 'news': []}, pending_path=pending))
+        self.assertEqual(saved.read_bytes(), before)
+        self.assertEqual(runtime._load_backoff(pending), snapshot)
+
     def test_provider_cooldown_expiry_permits_same_source_recovery(self):
         from urllib.error import HTTPError
         from email.utils import format_datetime
