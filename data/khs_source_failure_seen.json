@@ -20,7 +20,7 @@
     },
     "trusted_policy|federalregister.gov|publication_unverified|/api/v1/documents/2026-23529.json": {
       "lane": "trusted_policy",
-      "last_seen_kst": "2026-11-23T09:09:50+09:00",
+      "last_seen_kst": "2026-11-26T20:07:31+09:00",
       "source": "BIS remote rule official publication",
       "streak": 1
     }
@@ -288,6 +288,17 @@
       "sources": [
         "Korea Policy Briefing stablecoin search",
         "Korea Policy Briefing digital asset search"
+      ]
+    },
+    "6926b850da74a95e": {
+      "failure_count": 1,
+      "first_seen_kst": "2026-11-26T20:07:31+09:00",
+      "logical_failure_count": 1,
+      "logical_keys": [
+        "trusted_policy|federalregister.gov|publication_unverified|/api/v1/documents/2026-23529.json"
+      ],
+      "sources": [
+        "BIS remote rule official publication"
       ]
     },
     "6bebd5d215fee280": {
