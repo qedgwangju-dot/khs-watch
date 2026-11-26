@@ -1159,5 +1159,86 @@ class MaterialEventTests(unittest.TestCase):
         self.assertNotIn("확정", report["verified_kind"])
         self.assertIn("총량", report["brief_facts"][3])
 
+    def test_huawei_agenda_one_shot_and_official_fallback(self):
+        report = next(x for x in m.REPORTS if x["key"] == m.HUAWEI_CHBM_KEY)
+        base = {"delivery_receipt":{"status":"confirmed","message_ids":[572]},
+                "hbm_material_event_watch":{"seen_keys":[x["key"] for x in m.REPORTS if x is not report]}}
+        pdf = "22.6 A 64-Channel 4096-DQ Custom HBM with Memory Controllers and 5-Layer Wafer-on-Wafer Hybrid Bonding Huawei Technologies"
+        media = "화웨이 ISSCC 2027 기자간담회 컨퍼런스 64개 채널 4096개 컨트롤러 5단 웨이퍼 하이브리드 본딩 연구"
+        relay = "Huawei ISSCC 2027 session 22.6 64 channels 4,096 DQ memory controllers five-layer wafer hybrid bonding"
+        first = report["evidence_groups"][0][1]
+        second = report["evidence_groups"][1][1][0][1]
+        def source(url):
+            if url == first[0][1]: return pdf
+            if url == second: return media
+            raise TimeoutError()
+        early, no_msg, _ = m.apply(base, "2026-11-25T23:59:00+09:00", source)
+        self.assertEqual(no_msg, [])
+        self.assertNotIn(m.HUAWEI_CHBM_KEY, early["hbm_material_event_watch"]["seen_keys"])
+        state, msgs, audit = m.apply(base, "2026-11-26T16:30:00+09:00", source)
+        self.assertEqual(audit["verified_keys"], [m.HUAWEI_CHBM_KEY])
+        self.assertEqual(len(msgs),1)
+        for fact in ("64채널","4,096","2,048","메모리 컨트롤러","5층","2월 17일 09:00","미공개","수율"):
+            self.assertIn(fact, msgs[0])
+        self.assertEqual(len(d.chunks(msgs[0])),1)
+        self.assertEqual(state["delivery_receipt"],base["delivery_receipt"])
+        m.require_durable_seen_keys(base,state)
+        repeat, msgs, _ = m.apply(state,"2026-11-27T12:00:00+09:00",lambda _:self.fail("seen event was fetched"))
+        self.assertEqual(msgs,[])
+        def fallback(url):
+            if url == first[1][1]: return relay
+            if url == second: return media
+            raise TimeoutError()
+        _, msgs, audit = m.apply(base,"2026-11-26T16:30:00+09:00",fallback)
+        self.assertEqual(audit["verified_keys"],[m.HUAWEI_CHBM_KEY])
+        self.assertIn("일정표 인용",msgs[0])
+        self.assertNotIn("ISSCC 공식 일정표 PDF 본문</a>",msgs[0])
+        _, msgs, audit = m.apply(base,"2026-11-26T16:30:00+09:00",lambda url:pdf if url == first[0][1] else "")
+        self.assertEqual(msgs,[])
+        self.assertNotIn(m.HUAWEI_CHBM_KEY,audit["verified_keys"])
+
+    def test_huawei_followup_requires_exact_scope_real_measurements_and_independent_evidence(self):
+        body = ("Huawei 4096-DQ custom HBM with memory controllers and wafer-on-wafer hybrid bonding. "
+                "Huawei custom HBM achieved bandwidth of 4 TB/s. "
+                "Huawei custom HBM measured power of 12 W. "
+                "Huawei custom HBM has a planned mass production target. "
+                "Huawei custom HBM may achieve bandwidth of 8 TB/s. "
+                "Huawei custom HBM compares Samsung HBM4E measured bandwidth of 6 TB/s.")
+        def article(url,text=body):
+            return {"direct_link":url,"article_fetch_succeeded":True,"official_article_text":text,
+                    "official_article_title":"Huawei 4096-DQ custom HBM","source":url}
+        primary="https://www.huawei.com/en/news/test-hbm"
+        other="https://www.thelec.net/news/test-hbm"
+        facts=m.huawei_followup_facts(article(primary))
+        self.assertIn(("bandwidth","실측 대역폭","4TB/s"),facts)
+        self.assertIn(("power","실측 소비전력","12W"),facts)
+        self.assertEqual(len(facts),2)
+        self.assertEqual(m.huawei_followup_facts(dict(article(primary),article_fetch_succeeded=False)),[])
+        self.assertEqual(m.huawei_followup_facts(article("https://example.com/news")),[])
+        base={"hbm_material_event_watch":{"seen_keys":[m.HUAWEI_CHBM_KEY],"last_new_fact_keys":[]}}
+        stamp="2027-02-17T12:00:00+09:00"
+        def feed(cat,query,lang):
+            return ([{"id":"a","link":primary,"published_at_kst":stamp},
+                     {"id":"b","link":other,"published_at_kst":stamp}],[])
+        def enrich(raw):
+            return article(raw["link"])
+        state=copy.deepcopy(base)
+        msgs,audit=m.huawei_followup_scan(state,stamp,feed,enrich)
+        self.assertEqual(len(msgs),1)
+        self.assertEqual(len(audit["verified_keys"]),2)
+        self.assertIn("4TB/s",msgs[0])
+        self.assertIn("12W",msgs[0])
+        m.require_durable_seen_keys(base,state)
+        again,audit=m.huawei_followup_scan(state,stamp,feed,enrich)
+        self.assertEqual(again,[])
+        hold=copy.deepcopy(base)
+        msgs,audit=m.huawei_followup_scan(hold,stamp,feed,lambda raw:article(other))
+        self.assertEqual(msgs,[])
+        self.assertEqual(set(hold["hbm_material_event_watch"]["seen_keys"]),{m.HUAWEI_CHBM_KEY})
+        self.assertTrue(audit["held_candidates"])
+        self.assertTrue(r.relevant("huawei_custom_hbm_followup","화웨이 4096 맞춤형 HBM 실측"))
+        self.assertFalse(r.relevant("huawei_custom_hbm_followup","Samsung custom HBM 4096"))
+
+
 if __name__ == "__main__":
     unittest.main()

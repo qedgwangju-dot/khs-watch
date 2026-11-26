@@ -9,8 +9,9 @@ import html
 import json
 import pathlib
 import re
+import subprocess
 import urllib.request
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 
@@ -24,6 +25,15 @@ AUDIT = ROOT / "out/hbm_material_event_coverage.json"
 BREAK = "<<<TELEGRAM_MESSAGE_BREAK>>>"
 VERSION = 1
 MAX_AGE_DAYS = 14
+
+HUAWEI_PROGRAM_URL = "https://submissions.mirasmart.com/ISSCC2027/PDF/ISSCC2027AdvanceProgram.pdf"
+HUAWEI_CHBM_KEY = "20261126_isscc2027_huawei_custom_hbm_4096dq"
+HUAWEI_PROGRAM_TERMS = (
+    ("64-channel", "64 channel"), ("4096-dq", "4096 dq", "4,096 dq"),
+    ("custom hbm",), ("memory controllers", "memory controller"),
+    ("5-layer", "five-layer"), ("wafer-on-wafer", "wafer-to-wafer"),
+    ("hybrid bonding",), ("huawei technologies",), ("22.6",),
+)
 
 # Fixed independently traceable facts, not automatic promotions to issuer contracts.
 # Fall-back copies/reprints carry their original lineage rather than pretending to
@@ -806,6 +816,50 @@ REPORTS = (
              )),
         ),
     },
+    {
+        "key": HUAWEI_CHBM_KEY,
+        "date": "2026-11-26",
+        "max_age_days": 110,
+        "group": "huawei_custom_hbm",
+        "label": "화웨이 맞춤형 HBM 64채널·4096-DQ 연구 발표 예정",
+        "short_title": "화웨이 64채널·4,096 DQ 맞춤형 HBM — ISSCC 2027",
+        "brief_facts": (
+            "11/23 공개된 ISSCC 2027 공식 일정표 초안, 논문 22.6: 2027년 2월 16일 16:00 미국 서부시간(한국 2월 17일 09:00) 발표 예정.",
+            "HBM4 기준 32채널·2,048개 데이터 입출력 단자 → 화웨이 64채널·4,096개(각 2배); 동일 핀당 속도 가정에서만 이론 대역폭 2배.",
+            "메모리 컨트롤러 통합 및 5층 웨이퍼 간(WoW) 하이브리드 본딩. 5층을 DRAM 5단 적층으로 단정하지 않음.",
+            "중국의 독자 맞춤형 HBM 구조·접합 기술 연구 선행신호. 삼성전자·SK하이닉스의 상용 제품 성능을 추월했다는 의미는 아님.",
+            "후속 감시: 실제 논문·실측 대역폭·핀 속도·용량·전력·접합 수율·공급사·고객 승인·양산·출하 및 지연.",
+        ),
+        "brief_caution": "일정표 등재·연구 결과와 상용제품·확정 수주·양산은 별개; 논문 전문·측정 결과·제조사 및 양산 일정 미공개. 정렬·접합 수율·발열·신뢰성 병목 확인.",
+        "sources": (("ISSCC 2027 공식 일정표", HUAWEI_PROGRAM_URL, "학회 일정표 초안"),),
+        "facts": ("ISSCC 2027 화웨이 22.6 논문 발표 예정; 64채널·4096-DQ·메모리 컨트롤러·5층 WoW 하이브리드 본딩.",),
+        "caution": "연구 발표 예정이며 양산·공급계약·실측 수치 미확인.",
+        "verified_kind": "official_conference_agenda_or_corroborated_agenda_reporting_not_commercial",
+        "verified_source_caption": "학회 일정표 또는 일정표 인용 보도 + 별도 학회 취재",
+        "evidence_groups": (
+            ("공식 발표 프로그램 및 접근 실패 시 프로그램 인용 보도", (
+                ("ISSCC 공식 일정표 PDF 본문", HUAWEI_PROGRAM_URL, HUAWEI_PROGRAM_TERMS, "공식 학회 초안"),
+                ("Pandaily 일정표 인용(직접 PDF 조회 대체)", "https://pandaily.com/huawei-isscc-2027-logicfolding-stacked-ivr-custom-hbm",
+                 (("huawei",), ("isscc",), ("2027",), ("64 channels", "64-channel"), ("4,096", "4096"),
+                  ("memory controller",), ("five-layer", "5-layer"), ("hybrid bonding",), ("22.6",)),
+                 "공식 프로그램 인용, 독립 실측 결과 아님"),
+            )),
+            ("별도 학회 기자간담회 취재 및 교차 대조", (
+                ("시사저널e 11/25 학회 취재", "https://www.sisajournal-e.com/news/articleView.html?idxno=425302",
+                 (("화웨이",), ("ISSCC",), ("2027",), ("64개", "64채널"), ("4096", "4,096"),
+                  ("컨트롤러",), ("5단", "5층"), ("하이브리드 본딩",), ("컨퍼런스",)),
+                 "별도 국내 기자간담회 취재, 양산 확인 아님"),
+                ("디일렉 11/26 학회 기자간담회", "https://www.thelec.net/news/articleView.html?idxno=15909",
+                 (("huawei",), ("isscc",), ("2027",), ("customized hbm", "custom hbm", "chbm"),
+                  ("memory controller",), ("five-layer", "5-layer"), ("hybrid bonding",), ("press conference",)),
+                 "별도 학회 기자간담회 취재, 실측 수치 독립검증 아님"),
+            )),
+        ),
+        "context_links": (
+            ("ISSCC 공식 프로그램", HUAWEI_PROGRAM_URL),
+            ("HBM4 기준 32채널·2048비트", "https://www.synopsys.com/content/dam/synopsys/resources/dw/hbm4-phy-datasheet.pdf"),
+        ),
+    },
 )
 
 GROUPS = {
@@ -822,6 +876,7 @@ GROUPS = {
     "citi_price_revision": "씨티 2027년 메모리 가격 전망·트렌드포스 반대 근거",
     "supplier_ownership": "삼성·SK 핵심 소부장 직접 인수 가능성·공식 계약 구분",
     "xian_nand_v9": "삼성 시안 X2 V9 낸드 생산능력·미국 장비 허가",
+    "huawei_custom_hbm": "화웨이 맞춤형 HBM·중국 독자 메모리 기술 선행신호",
 }
 
 def text_matches(body: str, required: tuple) -> bool:
@@ -841,10 +896,20 @@ def fetch_article(url: str) -> str:
             return h
         if root(host) != root(expected):
             raise ValueError("publisher_host_changed")
-        raw = response.read(2_500_001)
-        if len(raw) > 2_500_000:
+        # Only this known conference document uses PDF text extraction.
+        # Keep the existing HTML publisher path and its size limit unchanged.
+        limit = 16_000_000 if url == HUAWEI_PROGRAM_URL else 2_500_000
+        raw = response.read(limit + 1)
+        if len(raw) > limit:
             raise ValueError("oversize_publisher_page")
         encoding = response.headers.get_content_charset() or "utf-8"
+    if url == HUAWEI_PROGRAM_URL:
+        if not raw.startswith(b"%PDF"):
+            raise ValueError("official_program_not_pdf")
+        proc = subprocess.run(["pdftotext", "-layout", "-", "-"], input=raw,
+                              stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+                              check=True, timeout=15)
+        return re.sub(r"\s+", " ", proc.stdout.decode("utf-8", "replace")).strip()
     soup = BeautifulSoup(raw.decode(encoding, errors="replace"), "html.parser")
     for tag in soup.select("script, style, noscript, svg, nav, footer, header"):
         tag.decompose()
@@ -1156,12 +1221,182 @@ def apply(previous: dict, checked_at: str, fetcher=fetch_article) -> tuple[dict,
         "evidence_rule": "verified_publisher_body_reported_only_not_contract_or_company_yield",
     }
     rendered = [render(group, [x for x in new if x["group"] == group], checked_at)
-                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow", "hybrid_equipment", "nvidia_commitments", "samsung_memory_lta", "citi_price_revision", "supplier_ownership", "xian_nand_v9")
+                for group in ("glass", "hbm", "intel", "allocation", "financial", "cycle", "roadshow", "hybrid_equipment", "nvidia_commitments", "samsung_memory_lta", "citi_price_revision", "supplier_ownership", "xian_nand_v9", "huawei_custom_hbm")
                 if any(x["group"] == group for x in new)]
     audit = {"checked_at_kst": checked_at, "verified_events": len(new),
              "verified_keys": [x["key"] for x in new], "gaps": gaps[-20:],
              "durable_state_only_after_existing_hbm_delivery_receipt": True}
     return result, rendered, audit
+
+# This additional scan stays inside the existing Rubin delivery transaction.
+# No separate schedule or sender. Original publisher bodies only; RSS snippets
+# and repeated conference titles cannot establish new measured performance.
+HUAWEI_FOLLOWUP_QUERIES = (
+    ("en", '(Huawei OR "Huawei Technologies" OR CXMT) ("custom HBM" OR "4096-DQ" OR "64-channel HBM") (ISSCC OR "hybrid bonding" OR bandwidth OR yield OR qualification OR production)'),
+    ("ko", '(화웨이 OR 화웨이테크놀로지스 OR 창신메모리) (맞춤형 HBM OR 커스텀 HBM OR 4096 OR 4,096) (논문 OR 실측 OR 수율 OR 검증 OR 공급계약 OR 양산 OR 출하 OR 지연)'),
+)
+HUAWEI_PRIMARY_HOSTS = ("huawei.com", "ieee.org", "isscc.org")
+HUAWEI_NEWS_HOSTS = ("thelec.net", "thelec.kr", "sisajournal-e.com", "ajupress.com", "pandaily.com",
+                     "trendforce.com", "reuters.com", "eet-china.com", "etnews.com", "zdnet.co.kr",
+                     "ithome.com", "digitimes.com", "businesskorea.co.kr")
+HUAWEI_SCOPE = r"(?:custom(?:ized)?\s+hbm|chbm|맞춤형\s*hbm|커스텀\s*hbm|定制\s*hbm|4096[\s-]*dq|4,096[\s-]*dq)"
+HUAWEI_NAME = r"(?:huawei|화웨이|华为|華為)"
+HUAWEI_EXCLUDE = r"\b(?:not|no|unconfirmed|undisclosed|unknown|could|would|may|might|planned|plans?|expected|target|forecast|theoretical(?:ly)?|hypothetical|if|upcoming|scheduled|aims?|previously)\b|미확정|미공개|않았|아니다|예정|목표|전망|추정|가능성|이론상|가정|계획|예상|검토|预计|尚未|计划|理论"
+HUAWEI_COMPETITOR = r"\b(?:samsung|micron|sk\s*hynix|hbm4e)\b|삼성전자|마이크론|SK하이닉스|하이닉스"
+HUAWEI_METRICS = (
+    ("bandwidth", "실측 대역폭", r"(?:measured|achieved|demonstrated|actual)\s+(?:memory\s+)?bandwidth\s*(?:of|at|:|=|was)?\s*(\d+(?:\.\d+)?)\s*(tb/s|gb/s|tbps|gbps)\b|(?:실측|측정|실제)\s*대역폭\s*(?:은|이|:|=)?\s*(\d+(?:\.\d+)?)\s*(tb/s|gb/s|tbps|gbps)\b"),
+    ("pin_speed", "실측 핀당 속도", r"(?:measured|achieved|demonstrated|operating at)\s+(?:a\s+)?(?:data rate of\s+)?(\d+(?:\.\d+)?)\s*(gb/s/pin|gbps/pin|gbps per pin|gb/s per pin)\b|(?:실측|측정|실제)\s*핀당\s*(?:속도|전송속도)?\s*(?:은|이|:|=)?\s*(\d+(?:\.\d+)?)\s*(gbps|gb/s)\b"),
+    ("capacity", "실제 연구 칩 용량", r"(?:measured|implemented|prototype|actual)\s+(?:memory\s+)?capacity\s*(?:of|:|=)?\s*(\d+(?:\.\d+)?)\s*(gb|tb)\b|(?:시제품|실제|구현된)\s*(?:메모리\s*)?용량\s*(?:은|이|:|=)?\s*(\d+(?:\.\d+)?)\s*(gb|tb)\b"),
+    ("power", "실측 소비전력", r"(?:measured|actual)\s+power(?:\s+consumption)?\s*(?:of|at|:|=|was)?\s*(\d+(?:\.\d+)?)\s*(mw|w)\b|(?:실측|측정|실제)\s*(?:소비)?전력\s*(?:은|이|:|=)?\s*(\d+(?:\.\d+)?)\s*(mw|w)\b"),
+    ("yield", "실측 수율(분모 원문 별도 확인)", r"(?:measured|actual|achieved)\s+(?:bonding\s+|production\s+|manufacturing\s+)?yield\s*(?:of|at|:|=|was)?\s*(\d+(?:\.\d+)?)\s*(%)|(?:실측|측정|실제)\s*(?:접합\s*|양산\s*)?수율\s*(?:은|이|:|=)?\s*(\d+(?:\.\d+)?)\s*(%)"),
+)
+HUAWEI_STAGES = (
+    ("paper", "논문 전문 공개", r"\b(?:full paper (?:was |has been )?published|published (?:its |the )?full paper)\b|논문\s*전문(?:을|이)?\s*(?:공개했다|공개됐다|게재됐다)"),
+    ("qualification", "고객 검증 완료", r"\b(?:completed customer qualification|passed customer qualification|customer qualification (?:was |has been )?completed)\b|고객\s*(?:검증|인증)(?:을|이)?\s*(?:완료했다|완료됐다|통과했다)"),
+    ("production", "양산 개시", r"\b(?:began mass production|started mass production|entered mass production|mass production (?:has )?(?:begun|started))\b|양산(?:을|에)?\s*(?:시작했다|개시했다|돌입했다)"),
+    ("shipment", "실제 출하 개시", r"\b(?:began shipments|started shipping|shipments (?:have )?(?:begun|started))\b|출하(?:를|가)?\s*(?:시작했다|개시했다|시작됐다)"),
+    ("delay", "확인된 양산·검증 지연", r"\b(?:mass production|customer qualification|shipments)\s+(?:was|has been|have been)\s+delayed\b|(?:양산|고객\s*검증|출하)(?:이|가)?\s*(?:지연됐다|연기됐다)"),
+)
+HUAWEI_SUPPLIERS = (
+    ("CXMT", r"\bcxmt\b|changxin memory|창신메모리|长鑫存储"),
+    ("Tongfu", r"tongfu microelectronics|tongfu|통푸|통푸마이크로|通富微电"),
+    ("SMIC", r"\bsmic\b|중신궈지|中芯国际"),
+)
+
+def huawei_host_kind(url: str) -> str:
+    host = (urlparse(url).hostname or "").casefold().removeprefix("www.")
+    for roots, kind in ((HUAWEI_PRIMARY_HOSTS, "official"), (HUAWEI_NEWS_HOSTS, "news")):
+        if any(host == root or host.endswith("." + root) for root in roots):
+            return kind
+    return ""
+
+def huawei_followup_facts(event: dict) -> list[tuple[str, str, str]]:
+    """Extract conservative new facts with exact scope; no forward claims or comparison chips."""
+    if event.get("article_fetch_succeeded") is not True or not event.get("direct_link"):
+        return []
+    if not huawei_host_kind(event["direct_link"]):
+        return []
+    body = str(event.get("official_article_text") or "")
+    title = str(event.get("official_article_title") or "")
+    if len(body.strip()) < 80:
+        return []
+    text = html.unescape(title + " " + body).casefold()
+    if not re.search(HUAWEI_NAME, text) or not re.search(HUAWEI_SCOPE, text):
+        return []
+    if not (re.search(r"4,?096", text) or ("isscc" in text and "22.6" in text)):
+        return []
+    result = set()
+    for clause in re.split(r"(?<!\d)\.(?!\d)|[。；;\n!?]+", title + "\n" + body):
+        clause = re.sub(r"\s+", " ", html.unescape(clause)).strip().casefold()
+        if not re.search(HUAWEI_SCOPE, clause) or not re.search(HUAWEI_NAME, clause):
+            continue
+        if re.search(HUAWEI_EXCLUDE, clause, re.I) or re.search(HUAWEI_COMPETITOR, clause, re.I):
+            continue
+        for key, label, pattern in HUAWEI_METRICS:
+            values = set()
+            for match in re.finditer(pattern, clause, re.I):
+                a,unit,b,unit2 = match.groups()
+                value = float(a or b)
+                u = (unit or unit2).casefold()
+                if not 0 < value or (key == "yield" and value > 100):
+                    continue
+                if key == "pin_speed":
+                    u = "Gbps/핀"
+                elif key == "bandwidth":
+                    u = {"tb/s":"TB/s","gb/s":"GB/s","tbps":"Tbps","gbps":"Gbps"}[u]
+                elif key in ("capacity", "power"):
+                    u = {"gb":"GB","tb":"TB","mw":"mW","w":"W"}[u]
+                values.add(f"{value:g}{u}")
+            if len(values) == 1:
+                result.add((key, label, next(iter(values))))
+        for key, label, pattern in HUAWEI_STAGES:
+            if re.search(pattern, clause, re.I):
+                result.add((key, label, ""))
+        if re.search(r"\b(?:signed|concluded|entered into)\s+(?:a\s+)?(?:binding\s+)?supply\s+(?:agreement|contract)\b|공급계약(?:을)?\s*체결했다", clause, re.I):
+            for name, pattern in HUAWEI_SUPPLIERS:
+                if re.search(pattern, clause, re.I):
+                    result.add(("supplier_contract", "공급계약 체결 보도·당사자", name))
+    # A report with two inconsistent values for the same metric is ambiguous.
+    return sorted(fact for fact in result if sum(other[0] == fact[0] for other in result) == 1)
+
+def huawei_followup_scan(state: dict, checked_at: str, read_feed, enrich_event) -> tuple[list[str], dict]:
+    sub = state.get("hbm_material_event_watch") or {}
+    seen = set(sub.get("seen_keys") or [])
+    audit = {"checked_at_kst": checked_at, "feed_ok": 0, "feed_errors": 0,
+             "body_errors": 0, "verified_keys": [], "held_candidates": 0}
+    if HUAWEI_CHBM_KEY not in seen:
+        return [], audit
+    now = datetime.fromisoformat(checked_at)
+    candidates = {}
+    for lang, query in HUAWEI_FOLLOWUP_QUERIES:
+        try:
+            rows, errors = read_feed("huawei_custom_hbm_followup", query, lang)
+            audit["feed_ok" if not errors else "feed_errors"] += 1
+        except Exception:
+            audit["feed_errors"] += 1
+            continue
+        for raw in rows:
+            try:
+                published = datetime.fromisoformat(raw["published_at_kst"])
+                if not now - timedelta(days=14) <= published <= now or published.date() < date(2026,11,26):
+                    continue
+            except (ValueError, TypeError, KeyError):
+                continue
+            candidates.setdefault(raw.get("link") or raw["id"], raw)
+    # Bounded follow-up work; the existing collector and other HBM routes
+    # retain their runtime and delivery boundaries.
+    proofs = {}
+    for raw in sorted(candidates.values(), key=lambda v:v.get("published_at_kst",""), reverse=True)[:6]:
+        try:
+            enriched = enrich_event(raw)
+            if not enriched.get("article_fetch_succeeded"):
+                audit["body_errors"] += 1
+                continue
+            url = enriched.get("direct_link") or ""
+            kind = huawei_host_kind(url)
+            host = (urlparse(url).hostname or "").casefold().removeprefix("www.")
+            if not kind:
+                continue
+            # Preserve common attributed wire/press origins, rather than
+            # counting repeated republishers as independent confirmations.
+            attribution = (str(enriched.get("origin_source") or "") + " " +
+                           str(enriched.get("source") or "")).casefold()
+            origin = "reuters" if "reuters" in attribution else host
+            if "thelec" in attribution or "the elec" in attribution:
+                origin = "thelec"
+            for fact in huawei_followup_facts(enriched):
+                proofs.setdefault(fact, {})[origin] = (url, kind, host)
+        except Exception:
+            audit["body_errors"] += 1
+    observations = []
+    for (axis, label, value), origins in sorted(proofs.items()):
+        # Future state changes require an official source and separately
+        # traceable corroboration. Keep press-only candidates retryable.
+        if len(origins) < 2 or not any(p[1] == "official" for p in origins.values()) or len({p[2] for p in origins.values()}) < 2:
+            audit["held_candidates"] += 1
+            continue
+        key = "huawei_chbm_followup|" + axis + "|" + value
+        if key in seen:
+            continue
+        links = list(origins.values())
+        observations.append({
+            "key": key, "group": "huawei_custom_hbm", "label": label + (" " + value if value else ""),
+            "date": checked_at[:10], "brief_facts": ("화웨이 4,096-DQ 맞춤형 HBM 후속 변화: " + label + (" " + value if value else "") + ".",
+                       "연구 실측·고객 검증·양산·출하는 서로 다른 단계이며, HBM4와 동일 기준인지 원문 수치·분모 확인 필요."),
+            "facts": (), "caution": "다른 제품 성능·비교치·이론 계산을 실제 화웨이 맞춤형 HBM 측정값으로 승격하지 않음.",
+            "brief_caution": "단계별 확인; 수율·출하·매출·공급 규모는 별도 검증.",
+            "verified_source_caption": "공식 원문·별도 확인 근거",
+            "verified_source_links": tuple(("공식 원문" if kind == "official" else host, url) for url,kind,host in links),
+        })
+        seen.add(key)
+        audit["verified_keys"].append(key)
+    sub["seen_keys"] = sorted(seen)
+    sub["last_new_fact_keys"] = list(sub.get("last_new_fact_keys") or []) + audit["verified_keys"]
+    audit["status"] = ("lookup_failed" if not audit["feed_ok"] else
+                       "partial" if audit["feed_errors"] or audit["body_errors"] or audit["held_candidates"] else "checked")
+    sub["huawei_followup"] = audit
+    state["hbm_material_event_watch"] = sub
+    return ([render("huawei_custom_hbm", observations, checked_at)] if observations else []), audit
 
 def require_durable_seen_keys(durable: dict, candidate: dict) -> None:
     """Fail closed when a collector drops previously acknowledged event keys.
@@ -1192,6 +1427,15 @@ def main() -> None:
     require_durable_seen_keys(durable, prior)
     checked_at = datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")
     result, rendered, audit = apply(prior, checked_at)
+    # Deliver the original agenda promptly. Begin the bounded follow-up search
+    # only after the initial notice is durably acknowledged, not while seeding it.
+    if HUAWEI_CHBM_KEY in (prior.get("hbm_material_event_watch") or {}).get("seen_keys", []):
+        from rubin_hbm_watch import read_feed, enrich_event
+        followup, followup_audit = huawei_followup_scan(result, checked_at, read_feed, enrich_event)
+        rendered.extend(followup)
+        audit["huawei_followup"] = followup_audit
+        audit["verified_keys"].extend(followup_audit["verified_keys"])
+        audit["verified_events"] += len(followup_audit["verified_keys"])
     # Do not consume these keys outside the existing acknowledged delivery.
     if rendered:
         existing = ALERT.read_text(encoding="utf-8").strip() if ALERT.exists() else ""

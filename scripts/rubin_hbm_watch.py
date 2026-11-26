@@ -597,6 +597,9 @@ def parse_pubdate(value: str) -> datetime | None:
 
 def relevant(category: str, text: str) -> bool:
     low = text.lower()
+    if category == "huawei_custom_hbm_followup":
+        return ("hbm" in low and any(k in low for k in ("huawei", "화웨이", "华为", "華為"))
+                and any(k in low for k in ("custom", "chbm", "맞춤형", "커스텀", "4096", "4,096", "isscc")))
     if category == "rubin_spec":
         return "rubin ultra" in low and any(k in low for k in ("hbm", "192gb", "288gb", "768gb", "1tb", "8-hi", "8hi", "12-hi", "12hi"))
     if category == "rubin_broker_model":
