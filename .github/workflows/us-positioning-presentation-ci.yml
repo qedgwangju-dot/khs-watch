@@ -9,6 +9,8 @@ on:
       - "scripts/us_positioning_context.py"
       - "scripts/us_positioning_amounts.py"
       - "scripts/us_positioning_fx.py"
+      - "scripts/us_positioning_telegram.py"
+      - "tests/test_us_positioning_telegram.py"
       - "tests/test_us_positioning_amounts.py"
       - "tests/test_us_positioning_fx.py"
       - "tests/fixtures/us_positioning_amounts*"
@@ -30,6 +32,8 @@ on:
       - "scripts/us_positioning_context.py"
       - "scripts/us_positioning_amounts.py"
       - "scripts/us_positioning_fx.py"
+      - "scripts/us_positioning_telegram.py"
+      - "tests/test_us_positioning_telegram.py"
       - "tests/test_us_positioning_amounts.py"
       - "tests/test_us_positioning_fx.py"
       - "tests/fixtures/us_positioning_amounts*"
@@ -59,5 +63,6 @@ jobs:
         run: python -m pip install --disable-pip-version-check --quiet requests pandas beautifulsoup4 "exchange_calendars>=4.5,<5"
       - name: Check presentation and real collector gates without network or Telegram
         run: |
-          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py scripts/us_positioning_horizons.py scripts/us_positioning_context.py scripts/us_positioning_amounts.py scripts/us_positioning_fx.py
+          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py scripts/us_positioning_horizons.py scripts/us_positioning_context.py scripts/us_positioning_amounts.py scripts/us_positioning_fx.py scripts/us_positioning_telegram.py
           python -m unittest discover -s tests -p 'test_us_positioning*.py' -v
+
