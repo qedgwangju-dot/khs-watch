@@ -392,6 +392,8 @@ def pubdate(value: str) -> dt.datetime | None:
 
 def parse_rss(text: str, default_source: str = "") -> list[Item]:
     root = ET.fromstring(text)
+    if root.tag.rsplit("}", 1)[-1].lower() != "rss" or root.find("channel") is None:
+        raise ValueError("BOJ RSS feed structure invalid")
     items: list[Item] = []
     for node in root.findall(".//item"):
         published = pubdate(node.findtext("pubDate") or "")
@@ -1222,7 +1224,10 @@ def event_type(item: Item) -> str | None:
     title = item.title.lower()
     source = source_name(item)
 
-    if source in TRUSTED and member_from_title(item.title):
+    if source in TRUSTED and member_from_title(item.title) and (
+        source == "Bank of Japan"
+        or re.search(r"\b(?:speech|speaks?|said|says|signals?|warns?|urges?|calls? for|views?|remarks?|interview|expects?|argues?)\b", title)
+    ) and not re.search(r"\b(?:dissents?|voted against|votes against)\b", title):
         return "official_speech"
     if source == "Bank of Japan":
         if "outlook for economic activity and prices" in title:
