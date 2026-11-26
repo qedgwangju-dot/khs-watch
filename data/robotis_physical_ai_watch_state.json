@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-26T15:06:52.984598+00:00",
+  "updated_at": "2026-11-26T15:44:56.946672+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1043,11 +1043,7 @@
     "7ad2ab80a9ca63d4e1d3b4b726977356bc9f2612daf11d03d15a45c590d8d567",
     "9d9fb28028d84888d0c8b9d76c0c3442c341153f8db64050e0223fecaddfcb00"
   ],
-  "last_selected": [
-    "15dc1f8020be8977859c15f9a18852334d4366178d619a15fb7781888b4bc9d8",
-    "7ad2ab80a9ca63d4e1d3b4b726977356bc9f2612daf11d03d15a45c590d8d567",
-    "9d9fb28028d84888d0c8b9d76c0c3442c341153f8db64050e0223fecaddfcb00"
-  ],
+  "last_selected": [],
   "groups": [
     "ess_battery",
     "eugene_20261123_humanoid_lifecycle",
@@ -1056,28 +1052,6 @@
     "robotis_excess_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 45103989370,
-      "outcome": "sent",
-      "confirmed_event_keys": [
-        "44e38c418d8b62458b41aa67ae9be72a3fc361ba0f1d5fc57866229df34dd4cb",
-        "493c07c50075279464f98aef0c38ebbdc17f39aed883297efdabcced86470308",
-        "670e36c725bca37db67b36c9c61d9b9102266bee614471390cbe2c50f2fb0d64",
-        "74f8b8ea2cb6c379c9ea9f1561fcd56ec46366213971a7fbf62c9b76a14d4790",
-        "d5e7996fe7d22661cfde97ceb018831917cabb08584cea6c8d61f03638f384cb"
-      ],
-      "message_ids": [
-        404
-      ],
-      "recipient_verified": true,
-      "recipient_checks": [
-        "numeric_id_equal"
-      ],
-      "message_topic_present": [
-        false
-      ],
-      "state_timestamp_utc": "2026-11-23T03:07:17.525134+00:00"
-    },
     {
       "run_id": 45104871131,
       "outcome": "sent",
@@ -1338,57 +1312,29 @@
         false
       ],
       "state_timestamp_utc": "2026-11-26T15:06:52.984598+00:00"
+    },
+    {
+      "run_id": 45852033228,
+      "outcome": "normal_silence",
+      "confirmed_event_keys": [],
+      "message_ids": [],
+      "recipient_verified": null,
+      "recipient_checks": [],
+      "message_topic_present": [],
+      "state_timestamp_utc": "2026-11-26T15:44:56.946672+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 45845624717,
-    "outcome": "sent",
-    "confirmed_event_keys": [
-      "15dc1f8020be8977859c15f9a18852334d4366178d619a15fb7781888b4bc9d8",
-      "7ad2ab80a9ca63d4e1d3b4b726977356bc9f2612daf11d03d15a45c590d8d567",
-      "9d9fb28028d84888d0c8b9d76c0c3442c341153f8db64050e0223fecaddfcb00"
-    ],
-    "message_ids": [
-      412
-    ],
-    "recipient_verified": true,
-    "recipient_checks": [
-      "numeric_id_equal"
-    ],
-    "message_topic_present": [
-      false
-    ],
-    "state_timestamp_utc": "2026-11-26T15:06:52.984598+00:00"
+    "run_id": 45852033228,
+    "outcome": "normal_silence",
+    "confirmed_event_keys": [],
+    "message_ids": [],
+    "recipient_verified": null,
+    "recipient_checks": [],
+    "message_topic_present": [],
+    "state_timestamp_utc": "2026-11-26T15:44:56.946672+00:00"
   },
-  "last_selected_events": [
-    {
-      "key": "15dc1f8020be8977859c15f9a18852334d4366178d619a15fb7781888b4bc9d8",
-      "group": "lg_robotics",
-      "title": "LG전자, '악시움' 앞세워 로봇 핵심부품 생태계 주도한다 - 전자신문",
-      "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1KYld1Vld3ZWVveS13ZndqSExMRjFUcWlJZTJwSWN5NWpubDdsZzdlZGZsRy1xVVdrTXZZdE1ZUlU1OHRUTlh5MkkwaFFudw?oc=5",
-      "source": "전자신문",
-      "source_url": "https://www.etnews.com",
-      "published": "2026-11-26T07:00:00+00:00"
-    },
-    {
-      "key": "7ad2ab80a9ca63d4e1d3b4b726977356bc9f2612daf11d03d15a45c590d8d567",
-      "group": "ess_battery",
-      "title": "3차 ESS 우선협상 물량 1194MW 선정…배터리 공급사 미공개 - 매일일보",
-      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBrcXdlWXFlSXRSaXJzTXZfaTF4bmZVUVBsZi1hWFV2R2Jjb25FVmpOQVBoejlqcDl6LWFNcERWYms2Q1ZLc3UwOHVHQXFpNzBNSU5SRFo5VVgzVWxYdzRtX29hUEI?oc=5",
-      "source": "매일일보",
-      "source_url": "https://www.m-i.kr",
-      "published": "2026-11-26T11:23:27+00:00"
-    },
-    {
-      "key": "9d9fb28028d84888d0c8b9d76c0c3442c341153f8db64050e0223fecaddfcb00",
-      "group": "ess_battery",
-      "title": "[배터리 ESS 빌드업] [LG에너지솔루션] 실적 회복 구간 진입, 공급망·수익성 밸런스 조정 - 딜사이트",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE42bEZrVlpvcDFxaUR2M2JnejZQM3U5RTV2cG9hS0J2aDdicU1fSGx0eXJYMHJnX3dDVHFlYTVPZ0kzbWdYbHFhdGRTWmdZVkU?oc=5",
-      "source": "딜사이트",
-      "source_url": "https://dealsite.co.kr",
-      "published": "2026-11-24T23:44:05+00:00"
-    }
-  ],
+  "last_selected_events": [],
   "message_corrections": {
     "robot-message-correction-20261118-44240720425-v1": {
       "schema_version": 1,
