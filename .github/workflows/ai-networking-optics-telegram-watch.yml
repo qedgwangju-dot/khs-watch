@@ -787,10 +787,15 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/ai_networking_optics_delivery.py guard
 
+      - name: Check actual Telegram delivery requirement
+        id: delivery_needed
+        if: steps.runtime_gate.outputs.run_watch == 'true' && github.event_name != 'push'
+        run: python scripts/ai_networking_optics_delivery.py delivery-needed
+
       - name: Send meaningful new signal to exact requested Telegram bot
-        # Code pushes validate only. Existing unfinished bundles resume their
-        # pinned payload; an unknown send outcome blocks automatic retry.
-        if: steps.runtime_gate.outputs.run_watch == 'true' && (github.event_name != 'push' && (hashFiles('out/ai_networking_optics_watch_telegram.html') != '' || hashFiles('data/ai_networking_optics_delivery_receipts.json') != ''))
+        # The presence of an old receipt ledger is not a pending message.
+        # Keep unfinished bundles and real unknown-send protections unchanged.
+        if: steps.runtime_gate.outputs.run_watch == 'true' && github.event_name != 'push' && steps.delivery_needed.outputs.send_required == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}

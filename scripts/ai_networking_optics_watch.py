@@ -43,6 +43,17 @@ APPLE_SIPH_MARKET_REFERENCE = (
     "https://www.trendforce.com/presscenter/news/20260615-13098.html"
 )
 
+# Official employer hiring is a leading supply-chain signal, not an order.
+SPACEX_OPTICS_COMPANY = "SpaceX Optical Supply Chain Hiring"
+SPACEX_JOBS_API = "https://boards-api.greenhouse.io/v1/boards/spacex/jobs"
+SPACEX_JOB_BOARD = "https://job-boards.greenhouse.io/spacex/jobs/"
+SPACEX_JOB_REFERENCES = {
+    8827682002: ("2026-09-23", "https://www.themuse.com/jobs/spacex/manufacturing-engineer-supplier-development-optics-optomechanical-systems-starlink-3c6778"),
+    8563613002: ("2026-07-16", "https://spacejobs.astrotalent.com/jobs/spacex-sourcing-specialist-space-lasers-starlink-3719"),
+    8949272002: ("2026-11-22", "https://careers.investedinthemission.org/companies/starlink/jobs/100514381-sourcing-manager-network-infrastructure"),
+}
+SPACEX_REVIEW_IDS = (8827682002, 8563613002, 8949272002, 8826314002)
+
 # Avicena / parallel microLED optical I/O is distinct from laser CPO and VCSEL.
 AVICENA_COMPANY = "Avicena"
 AVICENA_SERIES_C_KEY = "avicena|funding|series-c|2026-11-24"
@@ -169,6 +180,7 @@ CREDO_VERIFIED_BASELINE = {
 }
 
 COMPANIES = {
+    SPACEX_OPTICS_COMPANY: {"ticker": "SpaceX", "direct_only": True},
     "Avicena": {
         "ticker": "비상장",
         "aliases": ["Avicena", "AvicenaTech", "LightBundle", "아비세나", "아비센나"],
@@ -552,6 +564,7 @@ COMPANIES = {
 }
 
 DISPLAY_NAMES_KO = {
+    SPACEX_OPTICS_COMPANY: "스페이스X",
     "Avicena": "아비세나",
     "SC26 NVIDIA Rubin & CPO": "SC26 엔비디아·Lambda",
     "SC26 AMD HPC": "SC26 AMD·HPE",
@@ -744,7 +757,7 @@ SOURCE_PRIORITY = {
     "Lambda": 100, "Lambda AI": 100, "TOP500": 100, "KISTI": 100,
     "HPE": 100, "Oak Ridge National Laboratory": 100, "ORNL": 100,
     "Volantis": 100, "Lightmatter": 100, "Ayar Labs": 100, "Xscape Photonics": 100,
-    "Avicena": 100,
+    "Avicena": 100, "SpaceX Careers": 100,
     "Sungho Electronics": 100, "성호전자": 100, "ADST": 100, "에이디에스테크": 100,
     "POET Technologies": 100, "POET": 100, "Sivers Semiconductors": 100,
     "HyperLight": 100, "AFR Milan": 100, "Advanced Fiber Resources": 100,
@@ -1592,7 +1605,155 @@ def avicena_source_verified(item: dict, candidates: list[dict]) -> bool:
                 or (host in AVICENA_NEWS_HOSTS and peers & AVICENA_PRIMARY_HOSTS))
 
 
+def spacex_job_url_matches(url: str, job_id: int) -> bool:
+    try:
+        u = urllib.parse.urlsplit(url)
+        host = (u.hostname or "").lower()
+        return u.scheme == "https" and (
+            (host in {"job-boards.greenhouse.io", "boards.greenhouse.io"} and u.path.rstrip("/") == f"/spacex/jobs/{job_id}")
+            or (host in {"spacex.com", "www.spacex.com"} and u.path.rstrip("/") == f"/careers/jobs/{job_id}"))
+    except (TypeError, ValueError):
+        return False
+
+
+def spacex_role_classification(title: str, body: str) -> tuple[str, str] | None:
+    """Require matching duties in the employer body, not title or ticker alone."""
+    title, body = normalize_text(title), normalize_text(body)
+    if not re.search(r"optics?|optical|optomechanical|photonics?|transceivers?|space lasers", body, re.I):
+        return None
+    supply = bool(re.search(r"supplier development|sourcing|procurement|commodity management|supplier quality|supply chain", title, re.I))
+    satellite = bool(re.search(r"starlink", title + " " + body, re.I) and re.search(r"satellites?|space lasers|free[- ]space optical", body, re.I))
+    data_center = bool(re.search(r"data[- ]?cent(?:er|re)s?", body, re.I) and re.search(r"optical transceivers?|optical interconnect|optical components|co[- ]packaged optics|CPO", body, re.I))
+    execution = bool(re.search(r"suppliers?|supply base|supply continuity|qualification|production readiness|manufacturing|capacity|purchase orders?", body, re.I))
+    if not execution:
+        return None
+    if supply and data_center and re.search(r"network|optical|photonics|transceiver|interconnect", title, re.I):
+        return ("SpaceX AI 데이터센터 네트워크 조달", "AI 데이터센터 네트워크 장비·광부품 조달 인력")
+    if supply and satellite and re.search(r"optics?|optical|optomechanical|photonics|space lasers", title, re.I):
+        if re.search(r"supplier development|supplier quality", title, re.I):
+            return ("스타링크 위성 광학 공급업체 개발", "스타링크 위성 광학·광기계 공급업체 개발 인력")
+        return ("스타링크 위성 광학 부품 조달", "스타링크 위성 기계·광학 부품 조달 인력")
+    if satellite and re.search(r"optical transceiver", title, re.I) and re.search(r"design|validation|verification|reliability", body, re.I):
+        return ("스타링크 위성 광트랜시버 개발", "스타링크 위성 고속 광트랜시버 설계·검증 인력")
+    return None
+
+
+def spacex_job_features(body: str) -> list[str]:
+    patterns = (
+        (r"production part approval process|\bPPAP\b", "생산부품 승인 절차(PPAP)"),
+        (r"long[- ]term agreements?|\bLTAs?\b", "장기 공급계약 협상"),
+        (r"capacity planning|capacity investments?|capacity reservations?|scaling|scalable production", "생산능력 확보·확장"),
+        (r"multi[- ]source|second sources?|new suppliers|multiple suppliers", "신규·복수 공급처 발굴"),
+        (r"qualification|verification testing|validation", "품질·신뢰성 검증"),
+        (r"free[- ]space optical|space lasers|laser communication", "위성 자유공간 레이저 통신"),
+        (r"800\s*G\b", "800G"), (r"1\.6\s*T\b", "1.6T"), (r"3\.2\s*T\b", "3.2T"),
+        (r"co[- ]packaged optics|\bCPO\b", "CPO(광학 공동 패키징)"),
+        (r"\bInP\b", "InP(인화인듐)"), (r"\bGaAs\b", "GaAs(갈륨비소)"),
+        (r"photodetectors?|photodiodes?", "광검출기"), (r"\bDSPs?\b", "DSP(디지털 신호처리기)"),
+        (r"224\s*G\b", "224G 고속 신호전송"), (r"\bAEC\b|\bDAC\b", "능동·수동 구리 연결 케이블"),
+        (r"fiber assemblies|structured cabling|fiber optics", "광섬유·광케이블"),
+    )
+    return [label for pattern, label in patterns if re.search(pattern, body, re.I)]
+
+
+def spacex_job_item(row: dict, *, observed: dt.datetime, source_kind: str = "official_board_api") -> dict | None:
+    job_id = row.get("id")
+    if not isinstance(job_id, int) or isinstance(job_id, bool) or job_id <= 0:
+        return None
+    if not spacex_job_url_matches(row.get("absolute_url", ""), job_id):
+        return None
+    title = normalize_text(html.unescape(str(row.get("title") or "")))
+    body = normalize_text(re.sub(r"<[^>]+>", " ", html.unescape(str(row.get("content") or ""))))
+    role = spacex_role_classification(title, body)
+    if not role:
+        return None
+    category, korean_role = role
+    ref = SPACEX_JOB_REFERENCES.get(job_id)
+    # Observation time is NOT the original publication or Greenhouse updated_at.
+    title_with_id = f"SpaceX {title} [공고 ID: {job_id}]"
+    return {
+        "company": SPACEX_OPTICS_COMPANY, "ticker": "SpaceX", "title": title_with_id,
+        "source": "SpaceX Careers", "source_url": "https://job-boards.greenhouse.io/spacex",
+        "link": SPACEX_JOB_BOARD + str(job_id), "published": observed.isoformat(),
+        "key": event_key(SPACEX_OPTICS_COMPANY, title_with_id, "SpaceX Careers"),
+        "category": category, "stage": "공식 채용·공급망 선행신호(계약·수주 미확정)",
+        "score": 30 if job_id in SPACEX_REVIEW_IDS else 16,
+        "spacex_job_id": job_id, "spacex_source_kind": source_kind, "spacex_official_verified": True,
+        "spacex_role_ko": korean_role, "spacex_features": spacex_job_features(body),
+        "spacex_observed_at": observed.astimezone(KST).isoformat(timespec="seconds"),
+        "spacex_date_reference": ref[0] if ref else None, "spacex_date_reference_url": ref[1] if ref else None,
+    }
+
+
+def spacex_optical_jobs(fetcher=None, *, seen_ids=(), observed: dt.datetime | None = None) -> tuple[list[dict], list[str], str]:
+    """Scan official employer board; an unavailable/partial source is not no change."""
+    fetcher, observed = fetcher or fetch, observed or NOW
+    seen = {str(x) for x in seen_ids}
+    errors, items = [], {}
+    try:
+        root = json.loads(fetcher(SPACEX_JOBS_API + "?content=true", timeout=12))
+        rows, total = root.get("jobs"), (root.get("meta") or {}).get("total")
+        if not isinstance(rows, list) or not isinstance(total, int) or total != len(rows) or not rows:
+            raise ValueError("incomplete SpaceX official jobs response")
+        for row in rows:
+            if not isinstance(row, dict):
+                raise ValueError("malformed SpaceX job entry")
+            if re.search(r"sourcing|procurement|supplier development|supplier quality|optical transceiver", str(row.get("title") or ""), re.I) and not row.get("content"):
+                errors.append(f"SpaceX job {row.get('id')}: body unavailable")
+                continue
+            item = spacex_job_item(row, observed=observed)
+            if item:
+                items[item["spacex_job_id"]] = item
+        return list(items.values()), errors, "official_board_verified" if not errors else "official_board_partial"
+    except Exception as exc:
+        errors.append(f"SpaceX official job list: {type(exc).__name__}")
+    # If the complete board is unavailable, retrieve exact reviewed IDs only.
+    for job_id in SPACEX_REVIEW_IDS:
+        if str(job_id) in seen:
+            continue
+        url = SPACEX_JOB_BOARD + str(job_id)
+        try:
+            row = json.loads(fetcher(SPACEX_JOBS_API + "/" + str(job_id), timeout=8))
+            if row.get("id") != job_id:
+                raise ValueError("job identity mismatch")
+            item = spacex_job_item(row, observed=observed, source_kind="official_job_api")
+            if not item:
+                raise ValueError("job scope not verified")
+            items[job_id] = item
+            continue
+        except Exception as exc:
+            errors.append(f"SpaceX job API {job_id}: {type(exc).__name__}")
+        try:
+            page = fetcher(url, timeout=8).decode("utf-8", "replace")
+            match = re.search(r"<h1\b[^>]*>(.*?)</h1>", page, re.I | re.S) or re.search(r"<title\b[^>]*>(.*?)</title>", page, re.I | re.S)
+            title = normalize_text(re.sub(r"<[^>]+>", " ", html.unescape(match.group(1)))) if match else ""
+            title = re.sub(r"^Job Application for\s+|\s+at SpaceX\s*$", "", title, flags=re.I)
+            page = re.sub(r"<(?:script|style)\b[^>]*>.*?</(?:script|style)>", " ", page, flags=re.I | re.S)
+            item = spacex_job_item({"id": job_id, "absolute_url": url, "title": title, "content": page},
+                                    observed=observed, source_kind="official_job_page")
+            if not item:
+                raise ValueError("official job page identity or responsibilities unverified")
+            items[job_id] = item
+        except Exception as exc:
+            errors.append(f"SpaceX official job page {job_id}: {type(exc).__name__}")
+    return list(items.values()), errors, "official_jobs_partial_fallback" if items else "official_source_unavailable"
+
+
+def spacex_job_story_key(title: str) -> str | None:
+    match = re.search(r"\[공고 ID:\s*(\d+)\]\s*$", title or "")
+    return "spacex|optical-job|" + match.group(1) if match else None
+
+
+def spacex_job_source_verified(item: dict) -> bool:
+    job_id = item.get("spacex_job_id")
+    return bool(item.get("spacex_official_verified") is True and isinstance(job_id, int) and not isinstance(job_id, bool)
+                and item.get("source") == "SpaceX Careers" and spacex_job_url_matches(item.get("link", ""), job_id)
+                and spacex_job_story_key(item.get("title", "")) == f"spacex|optical-job|{job_id}")
+
+
 def canonical_story_key(company: str, title: str) -> str | None:
+    if company == SPACEX_OPTICS_COMPANY:
+        return spacex_job_story_key(title)
     avicena = avicena_milestone(title)
     if avicena and (company == AVICENA_COMPANY or avicena[2] == AVICENA_SERIES_C_KEY):
         return avicena[2]
@@ -3290,6 +3451,10 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "스타링크 위성 광학 공급업체 개발": "위성 간 레이저 통신 부품의 제조·측정·품질·납기·생산능력 개선 인력 확보입니다. 특정 업체 발주 확정은 아닙니다.",
+        "스타링크 위성 광학 부품 조달": "정밀 기계·광학 부품의 공급 지속성과 복수 조달망을 확보하려는 채용입니다. 실제 장기 공급계약과는 별개입니다.",
+        "SpaceX AI 데이터센터 네트워크 조달": "지상 AI 데이터센터의 네트워크 장비와 광부품 조달·생산능력 확보 준비입니다. 위성 광학 부품과 별도 용도입니다.",
+        "스타링크 위성 광트랜시버 개발": "위성 고속 광전송 링크 설계·검증 인력을 확보하는 선행신호입니다.",
         "아비세나 시리즈 C 투자유치": "마이크로LED 배열과 실리콘 광검출기·다중코어 광섬유를 이용한 근거리 칩 간 광연결의 상용화 자금입니다. 삼성·SK하이닉스·AMD의 투자와 실제 고객 공급계약은 별개입니다.",
         "아비세나 투자유치": "새로운 투자 라운드와 설비투자·실제 제품 매출을 구분합니다.",
         "아비세나 평가제품·커넥터 검증": "평가용 제품 출하·탈착형 광연결 검증은 고객 채택의 선행지표이며 상용제품 매출과 다릅니다.",
@@ -3468,6 +3633,10 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "스타링크 위성 광학 공급업체 개발": "광학 정렬·정밀 가공·환경 신뢰성, 공급사 승인·실제 발주를 구분합니다.",
+        "스타링크 위성 광학 부품 조달": "복수 공급사 경쟁·내재화·품질 승인·납품 일정에 따라 외부 공급망 매출이 달라집니다.",
+        "SpaceX AI 데이터센터 네트워크 조달": "채용은 채택·수주가 아닙니다. 공급사 승인·생산능력 예약·실제 발주와 납품을 별도 확인합니다.",
+        "스타링크 위성 광트랜시버 개발": "환경·성능·신뢰성 검증, 수량과 상용 출하 여부가 별도 관문입니다.",
         "아비세나 시리즈 C 투자유치": "광원 배열 결합 수율·다중코어 광섬유 정렬, 고온 신뢰성·검사시간, 고객 승인과 상용 생산능력이 매출의 관문입니다. 투자자별 금액·확정 구매계약은 미공개입니다.",
         "아비세나 투자유치": "자금 조달만으로 고객 승인·매출·양산이 보장되지 않습니다.",
         "아비세나 평가제품·커넥터 검증": "평가제품 성능을 대량생산 수율·실사용 장기 신뢰성과 혼동하지 않습니다.",
@@ -4144,6 +4313,8 @@ def main() -> None:
 
     cutoff = NOW - dt.timedelta(days=7)
     for company, meta in COMPANIES.items():
+        if meta.get("direct_only"):
+            continue
         if company in SC26_COMPANIES and NOW.date() > SC26_END_DATE:
             continue  # Event-only coverage after SC26 closes; existing watches continue.
         attempted_company_queries += 1
@@ -4232,6 +4403,8 @@ def main() -> None:
                 continue
             title = item["title"]
             source = item.get("source") or ""
+            if re.search(r"SpaceX|Starlink|스페이스.?X|스타링크", title, re.I) and re.search(r"job application for|job posting|careers|is hiring|채용|모집", title, re.I):
+                continue  # Only official employer job IDs are eligible for hiring alerts.
             # Route the same Series C report to one company-specific event even if found in another optics query.
             avicena = avicena_milestone(title) if AVICENA_COMPANY in COMPANIES else None
             if company == AVICENA_COMPANY or (avicena and avicena[2] == AVICENA_SERIES_C_KEY):
@@ -4442,9 +4615,18 @@ def main() -> None:
             new_infra_source_ok[company] = True
         else:
             errors.append("대한광통신 10/21 원문 직접 검증 보류")
+    spacex_jobs_status = "not_enabled"
+    spacex_jobs_count = 0
+    if SPACEX_OPTICS_COMPANY in COMPANIES:
+        spacex_items, spacex_errors, spacex_jobs_status = spacex_optical_jobs(
+            seen_ids=state.get("spacex_optics_reported_job_ids") or [], observed=NOW)
+        all_relevant.extend(spacex_items)
+        errors.extend(spacex_errors)
+        spacex_jobs_count = len(spacex_items)
+
     # Fail closed when the discovery layer is unhealthy. Never advance baselines
     # or silently report "no change" after a broad upstream outage.
-    required_successes = max(3, (len(COMPANIES) + 1) // 2)
+    required_successes = max(3, (sum(not m.get("direct_only") for m in COMPANIES.values()) + 1) // 2)
     if successful_company_queries < required_successes:
         if PENDING_PATH.exists():
             PENDING_PATH.unlink()
@@ -4468,6 +4650,8 @@ def main() -> None:
     # Source-quality gate: unknown/low-quality sources cannot trigger by themselves.
     # They are admitted only when a higher-quality source independently reports the same event.
     def source_is_corroborated(item: dict) -> bool:
+        if item.get("company") == SPACEX_OPTICS_COMPANY:
+            return spacex_job_source_verified(item)
         if item.get("company") == AVICENA_COMPANY:
             return avicena_source_verified(item, all_relevant)
         if item.get("company") == APPLE_SIPH_COMPANY:
@@ -4577,7 +4761,11 @@ def main() -> None:
     for item in deduped:
         item["story_key"] = canonical_story_key(item["company"], item["title"])
 
+    reported_spacex_ids = {str(x) for x in (state.get("spacex_optics_reported_job_ids") or [])}
+
     def already_seen(item: dict) -> bool:
+        if item.get("company") == SPACEX_OPTICS_COMPANY and str(item.get("spacex_job_id")) in reported_spacex_ids:
+            return True
         if item["key"] in seen:
             return True
         story_key = item.get("story_key")
@@ -4676,6 +4864,8 @@ def main() -> None:
         "relevant_item_count": len(deduped),
         "source_errors": errors,
         "query_health": query_health,
+        "spacex_optics_jobs_status": spacex_jobs_status,
+        "spacex_optics_last_healthy_kst": dt.datetime.now(KST).isoformat(timespec="seconds") if spacex_jobs_status == "official_board_verified" else state.get("spacex_optics_last_healthy_kst"),
         "avicena_direct_status": avicena_direct_status,
         "avicena_last_healthy_search_kst": (
             dt.datetime.now(KST).isoformat(timespec="seconds")
@@ -4814,6 +5004,11 @@ def main() -> None:
             str(record.get("company") or ""), str(record.get("title") or ""),
             str(record.get("source") or "")) not in deferred_keys]
     pending["deferred_alert_count"] = len(deferred_items)
+    # Selected job IDs enter pending state, not the delivered baseline before a receipt.
+    pending["spacex_optics_reported_job_ids"] = sorted(reported_spacex_ids | {
+        str(item["spacex_job_id"]) for item in alert_items
+        if item.get("company") == SPACEX_OPTICS_COMPANY and spacex_job_source_verified(item)
+    })
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
 
@@ -4828,7 +5023,9 @@ def main() -> None:
         policy_only = all(item.get("company") == "US Optical Policy" for item in alert_items)
         korea_optics_only = all(item.get("company") in {"Opticore", "OE Solutions"} for item in alert_items)
         photonic_compute_only = all(item.get("company") in {"Volantis", "Lightmatter", "Ayar Labs", "Xscape Photonics"} for item in alert_items)
-        if all(item.get("company") == APPLE_SIPH_COMPANY for item in alert_items):
+        if all(item.get("company") == SPACEX_OPTICS_COMPANY for item in alert_items):
+            alert_header = "🚨 <b>스페이스X 광학 공급망·조달 선행신호</b>"
+        elif all(item.get("company") == APPLE_SIPH_COMPANY for item in alert_items):
             alert_header = "🚨 <b>애플 데이터센터 실리콘 포토닉스·광연결 실제 변화</b>"
         elif policy_only:
             alert_header = "🚨 <b>미국 광트랜시버 규제 변화 감지</b>"
@@ -4861,7 +5058,7 @@ def main() -> None:
         lines = [
             alert_header,
             f"조회시각(KST): {html.escape(dt.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S'))}",
-            f"신규 변화: <b>{len(alert_items)}건</b>",
+            f"{'포착·누락 보완' if any(item.get('company') == SPACEX_OPTICS_COMPANY for item in alert_items) else '신규 변화'}: <b>{len(alert_items)}건</b>",
             "",
         ]
         for idx, item in enumerate(alert_items, 1):
@@ -4876,6 +5073,8 @@ def main() -> None:
                 pub = (item.get("official_posted_date") or "공식") + " (공고일·시각 미공개)"
             category = item["category"]
             public_title = item["title"]
+            if item.get("company") == SPACEX_OPTICS_COMPANY:
+                public_title = "스페이스X, " + item["spacex_role_ko"] + " 모집(공고 ID " + str(item["spacex_job_id"]) + ")"
             if item.get("company") == AVICENA_COMPANY and item.get("story_key") == AVICENA_SERIES_C_KEY:
                 public_title = "아비세나, AI 인프라용 마이크로LED 광연결 상용화 위해 1억달러 이상 시리즈 C 투자 유치"
             if item.get("company") == LITE_CAPACITY_COMPANY:
@@ -4911,6 +5110,16 @@ def main() -> None:
                 f"• 원문 제목: {html.escape(public_title)}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
+            if item.get("company") == SPACEX_OPTICS_COMPANY:
+                lines.append("• 확인 수준: 회사 공식 채용공고 본문 확인 · 개별 공급사·수량·수주금액 미확정")
+                ref_date = item.get("spacex_date_reference")
+                if ref_date:
+                    lines.append("• 공개 흔적: " + ref_date + " (외부 채용정보 기록). 이번 포착일과 원래 게시일은 다릅니다.")
+                    lines.append("• <a href=\"" + html.escape(item["spacex_date_reference_url"], quote=True) + "\">게시일 보조 근거</a>")
+                else:
+                    lines.append("• 최초 포착: " + html.escape(item["spacex_observed_at"]) + ". 원래 게시일 미확인.")
+                if item.get("spacex_features"):
+                    lines.append("• 원문 직무·기술: " + html.escape(" · ".join(item["spacex_features"])))
             if item.get("company") == AVICENA_COMPANY:
                 lines.append("• 확인 수준: " + ("발행사 발표 본문·별도 투자사/언론 원문 대조" if item.get("avicena_direct_verified") else "공식 도메인 검색 제목 또는 공식·독립보도 제목 대조(원문 검증 단계 별도)"))
                 if item.get("story_key") == AVICENA_SERIES_C_KEY:
@@ -4981,6 +5190,7 @@ def main() -> None:
         f"- 조회시각(KST): {dt.datetime.now(KST).isoformat(timespec='seconds')}",
         f"- 기준선 초기화 여부: {'예' if initialized else '아니오 — 이번 실행은 기준선만 저장'}",
         f"- 관련 신규 사건 후보: {len(new_items)}건",
+        f"- SpaceX 공식 광학 채용 원천: {spacex_jobs_status} · 검증된 공고 {spacex_jobs_count}건",
         f"- Avicena LightBundle 직접 원천 확인: {avicena_direct_status}",
         f"- Avicena 검색 성공/시도: {query_health.get(AVICENA_COMPANY, {}).get('successful', 0)}/{query_health.get(AVICENA_COMPANY, {}).get('attempted', 0)}",
         f"- Apple 데이터센터 실리콘 포토닉스 채용 공식 조회: {apple_job_status}",

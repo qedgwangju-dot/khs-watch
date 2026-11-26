@@ -483,6 +483,30 @@ class PersistenceTests(unittest.TestCase):
 
 
 class HistoryGuardTests(unittest.TestCase):
+
+    def test_reviewed_no_send_resolves_only_exact_fingerprint_bound_incident(self):
+        key = "45648788639:1"
+        proof = delivery.REVIEWED_NO_SEND[key]
+        ledger = {"bundles": {}, "history_cache": {key: {"fingerprint": proof["fingerprint"], "outcome": "attempted"}},
+                  "recovery_holds": {key: {"run_id":45648788639, "run_attempt":1, "started_at":proof["started_at"], "status":"unresolved"},
+                                     "2:1":{"status":"unresolved"}}}
+        self.assertFalse(delivery.apply_reviewed_no_send(ledger, key, "different"))
+        self.assertEqual(ledger["recovery_holds"][key]["status"], "unresolved")
+        self.assertTrue(delivery.apply_reviewed_no_send(ledger, key, proof["fingerprint"]))
+        self.assertEqual(ledger["history_cache"][key]["outcome"], "no_send")
+        self.assertEqual(ledger["recovery_holds"][key]["status"], "reconciled")
+        self.assertEqual(ledger["recovery_holds"]["2:1"]["status"], "unresolved")
+        self.assertEqual(ledger["bundles"], {})
+
+    def test_empty_sender_is_skipped_but_unfinished_receipts_are_not(self):
+        self.assertFalse(delivery.delivery_required({"bundles":{"old":{"state_persisted":True}}}, None))
+        self.assertTrue(delivery.delivery_required({"bundles":{"old":{"state_persisted":False}}}, None))
+        self.assertTrue(delivery.delivery_required({"bundles":{}}, "actual alert"))
+        self.assertFalse(delivery.delivery_required({"bundles":{}}, "  "))
+        state = delivery.merge_watch_state({"spacex_optics_reported_job_ids":["8827682002"]},
+                                          {"spacex_optics_reported_job_ids":["8563613002"]})
+        self.assertEqual(state["spacex_optics_reported_job_ids"], ["8563613002","8827682002"])
+
     def setUp(self):
         self.ledger = {"bundles": {}}
         self.state = {}

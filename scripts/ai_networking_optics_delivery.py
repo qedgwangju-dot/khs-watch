@@ -37,6 +37,45 @@ RUNTIME_EVENTS = {"schedule", "workflow_run", "workflow_dispatch"}
 FRESHNESS_BACKUP = "AI Security Web Watch"
 
 
+# Run 1691 attempt 1: the actual sender log explicitly recorded
+# optics_delivery=no_pending_message. Artifact 15038513168 contains no alert or
+# new/partial receipt; every existing bundle was already persisted. Only Git
+# state persistence failed. This proof must not be mistaken for a send receipt.
+REVIEWED_NO_SEND = {
+    "45648788639:1": {
+        "fingerprint": "5849e616d0b54ea647a761c2b3d81f2f2d06e31f50513d0ce7d6cfb8d09430bf",
+        "started_at": "2026-11-25T15:49:39+00:00",
+        "job_id": 139327156301,
+        "artifact_id": 15038513168,
+        "artifact_sha256": "ab248192937d389329f59161f155a72febcc4cee302f9ffbe7f43efa55bee034",
+    },
+}
+
+
+def apply_reviewed_no_send(ledger: dict, key: str, fingerprint: str) -> bool:
+    """Resolve only an independently inspected, exact run/attempt fingerprint."""
+    proof = REVIEWED_NO_SEND.get(key)
+    if not proof or fingerprint != proof["fingerprint"]:
+        return False
+    cache = ledger.setdefault("history_cache", {})
+    holds = ledger.setdefault("recovery_holds", {})
+    hold = holds.get(key)
+    if hold is not None and (
+        str(hold.get("run_id")) + ":" + str(hold.get("run_attempt")) != key
+        or hold.get("started_at") != proof["started_at"]
+    ):
+        return False
+    cache[key] = {
+        **cache.get(key, {}), "fingerprint": fingerprint, "outcome": "no_send",
+        "checked_at_kst": stamp(), "reviewed_no_send": copy.deepcopy(proof),
+        "resolution": "verified_no_pending_payload_and_no_send",
+    }
+    if hold is not None:
+        hold.update(status="reconciled", resolution="verified_no_pending_payload_and_no_send",
+                    checked_at_kst=stamp(), reviewed_no_send=copy.deepcopy(proof))
+    return True
+
+
 class DefinitiveRejection(RuntimeError):
     """Telegram explicitly rejected a request; retry is permitted on a later run."""
 
@@ -267,6 +306,10 @@ def audit_previous_runs(*, current: dict, runs: list[dict], load_jobs, ledger: d
     observations = []
     holds = ledger.setdefault("recovery_holds", {})
     cache = ledger.setdefault("history_cache", {})
+    # The specifically reviewed no-send attempt may be outside the recent API window.
+    for reviewed_key in REVIEWED_NO_SEND:
+        if holds.get(reviewed_key, {}).get("status") == "unresolved":
+            apply_reviewed_no_send(ledger, reviewed_key, cache.get(reviewed_key, {}).get("fingerprint", ""))
     received = timestamp(state.get("last_successful_delivery_kst"))
     receipt_valid = (received is not None and state.get("telegram_chat_identity_verified") is True
         and str(state.get("bot_username", "")).lower() == expected_bot.lstrip("@").lower()
@@ -281,6 +324,9 @@ def audit_previous_runs(*, current: dict, runs: list[dict], load_jobs, ledger: d
         fingerprint = digest({"repository": repository, "workflow_id": run["workflow_id"],
             "path": run["path"], "head_sha": run.get("head_sha"), "event": run["event"],
             "head_branch": run["head_branch"], "attempt_key": key})
+        if apply_reviewed_no_send(ledger, key, fingerprint):
+            cache_hits += 1
+            return cache[key]
         cached = cache.get(key, {})
         valid = cached.get("fingerprint") == fingerprint
         if valid and (cached.get("outcome") == "no_send" or (
@@ -458,6 +504,8 @@ def merge_watch_state(base: dict, incoming: dict, ancestor: dict | None = None) 
                 identities.add(identity)
         if key in incoming or key in base:
             result[key] = values[:limit]
+    if "spacex_optics_reported_job_ids" in base or "spacex_optics_reported_job_ids" in incoming:
+        result["spacex_optics_reported_job_ids"] = sorted({str(x) for x in base.get("spacex_optics_reported_job_ids", [])} | {str(x) for x in incoming.get("spacex_optics_reported_job_ids", [])})
     for key in set(base) | set(incoming):
         if key.endswith("version") and isinstance(base.get(key), int) and isinstance(incoming.get(key), int):
             result[key] = max(base[key], incoming[key])
@@ -629,6 +677,25 @@ def verify_route_command() -> None:
     print(f"telegram_route_valid=true bot=@{username} chat_identity_verified=true read_only=true")
 
 
+def delivery_required(ledger: dict, text: str | None) -> bool:
+    bundles = ledger.get("bundles", {})
+    if not isinstance(bundles, dict):
+        raise RuntimeError("Invalid optics receipt ledger; no automatic send")
+    return bool((text or "").strip() or any(row.get("state_persisted") is not True for row in bundles.values()))
+
+
+def delivery_needed_command() -> None:
+    ledger = read_json(LEDGER_PATH, {"version": 1, "bundles": {}})
+    text = ALERT_PATH.read_text(encoding="utf-8") if ALERT_PATH.exists() else None
+    needed = delivery_required(ledger, text)
+    output = os.getenv("GITHUB_OUTPUT")
+    if not output:
+        raise RuntimeError("Delivery decision has no GitHub output channel")
+    with Path(output).open("a", encoding="utf-8") as stream:
+        stream.write("send_required=" + str(needed).lower() + "\n")
+    print("optics_actual_delivery_required=" + str(needed).lower())
+
+
 def send_command() -> None:
     if os.getenv("GITHUB_EVENT_NAME") not in RUNTIME_EVENTS:
         raise RuntimeError("This event is validation-only; delivery refused")
@@ -636,7 +703,7 @@ def send_command() -> None:
         stale.unlink(missing_ok=True)
     ledger = read_json(LEDGER_PATH, {"version": 1, "bundles": {}})
     text = ALERT_PATH.read_text(encoding="utf-8").strip() if ALERT_PATH.exists() else None
-    if not text and not any(entry.get("state_persisted") is not True for entry in ledger.get("bundles", {}).values()):
+    if not delivery_required(ledger, text):
         print("optics_delivery=no_pending_message")
         return
     token, chat = os.getenv("TELEGRAM_BOT_TOKEN", "").strip(), os.getenv("TELEGRAM_CHAT_ID", "").strip()
@@ -730,7 +797,7 @@ def merge_commit(snapshot_dir: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=("preflight", "verify-route", "guard", "send", "persist-state", "merge-commit"))
+    parser.add_argument("command", choices=("preflight", "verify-route", "guard", "delivery-needed", "send", "persist-state", "merge-commit"))
     parser.add_argument("--snapshot-dir", type=Path)
     args = parser.parse_args()
     if args.command == "preflight":
@@ -739,6 +806,8 @@ def main() -> None:
         verify_route_command()
     elif args.command == "guard":
         guard_command()
+    elif args.command == "delivery-needed":
+        delivery_needed_command()
     elif args.command == "send":
         send_command()
     elif args.command == "persist-state":

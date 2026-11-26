@@ -14,6 +14,48 @@ SPEC.loader.exec_module(watch)
 
 class OpticsReliabilityTests(unittest.TestCase):
 
+    def test_spacex_official_role_ids_distinguish_satellite_and_datacenter(self):
+        today = watch.dt.datetime(2026, 11, 26, 5, 45, tzinfo=watch.dt.timezone.utc)
+        rows = [
+            {"id":8827682002, "absolute_url":watch.SPACEX_JOB_BOARD+"8827682002",
+             "title":"Manufacturing Engineer - Supplier Development, Optics & Optomechanical Systems (Starlink)",
+             "content":"Starlink Space Lasers satellite free-space optical communication. Develop suppliers, manufacturing quality and production part approval process (PPAP)."},
+            {"id":8563613002, "absolute_url":watch.SPACEX_JOB_BOARD+"8563613002",
+             "title":"Sourcing Specialist, Mechanical & Optical Commodities (Starlink)",
+             "content":"Starlink satellites optical commodities. Develop supply base, capacity planning, long-term agreements and qualification."},
+            {"id":8949272002, "absolute_url":watch.SPACEX_JOB_BOARD+"8949272002",
+             "title":"Sourcing Manager (Network Infrastructure)",
+             "content":"Datacenter network hardware, optical transceivers, supplier capacity reservations, 800G, 1.6T, 3.2T, co-packaged optics, InP, GaAs, 224G SerDes."},
+        ]
+        body = json.dumps({"jobs":rows, "meta":{"total":len(rows)}}).encode()
+        items, errors, status = watch.spacex_optical_jobs(fetcher=lambda *args, **kwargs: body, observed=today)
+        self.assertEqual((len(items), errors, status), (3, [], "official_board_verified"))
+        self.assertEqual({x["category"] for x in items}, {"스타링크 위성 광학 공급업체 개발", "스타링크 위성 광학 부품 조달", "SpaceX AI 데이터센터 네트워크 조달"})
+        for item in items:
+            self.assertTrue(watch.spacex_job_source_verified(item))
+            self.assertEqual(watch.canonical_story_key(watch.SPACEX_OPTICS_COMPANY, item["title"]),
+                             f"spacex|optical-job|{item['spacex_job_id']}")
+            self.assertIn("미확정", item["stage"])
+        self.assertEqual(items[0]["spacex_date_reference"], "2026-09-23")
+        self.assertEqual(items[1]["spacex_date_reference"], "2026-07-16")
+        self.assertIn("224G 고속 신호전송", items[2]["spacex_features"])
+        self.assertIsNone(watch.spacex_job_item(dict(rows[0], absolute_url="https://example.com/jobs/8827682002"), observed=today))
+        self.assertIsNone(watch.spacex_job_item(dict(rows[2], content="Non-optical network software hiring"), observed=today))
+        self.assertIsNone(watch.spacex_job_item(dict(rows[0], title="General accounting specialist"), observed=today))
+        self.assertFalse(watch.spacex_job_source_verified(dict(items[0], link=watch.SPACEX_JOB_BOARD+"8563613002")))
+
+    def test_spacex_source_failure_is_not_empty_verified_board(self):
+        def broken(*args, **kwargs):
+            raise OSError("unavailable")
+        items, errors, status = watch.spacex_optical_jobs(fetcher=broken, seen_ids=watch.SPACEX_REVIEW_IDS)
+        self.assertEqual(items, [])
+        self.assertEqual(status, "official_source_unavailable")
+        self.assertTrue(errors)
+        items, errors, status = watch.spacex_optical_jobs(fetcher=lambda *args, **kwargs: b'{"jobs":[],"meta":{"total":5}}', seen_ids=watch.SPACEX_REVIEW_IDS)
+        self.assertEqual(status, "official_source_unavailable")
+        self.assertTrue(errors)
+
+
     def test_avicena_round_and_evaluation_are_separate_events(self):
         a = "Avicena Raises $100 Million Series C to Accelerate Commercialization of microLED Optical Interconnects for AI Infrastructure"
         b = "Avicena raises $100M to commercialize microLED optical links"
