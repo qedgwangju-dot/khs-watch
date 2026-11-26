@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-11-25T22:43:55.428058+00:00",
+  "updated_at": "2026-11-26T04:59:09.268384+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -1034,30 +1034,27 @@
     "3cdbb85f626f3756cfa515554b61bfcb324eb946fb9eec3523bb1bf59a859af3",
     "661720387e90f563680766e0249177716b86c2fd5dfd5883abfab2cbc8f817a7",
     "4a37a567bce13695dc75b32e48a8f832cabc09ea89595b51423c4fdf8b5912f5",
-    "d3824e567c02540cbe75fd67ef9c964e8463c41f8bb033c63ac85849fb1e32d2"
+    "d3824e567c02540cbe75fd67ef9c964e8463c41f8bb033c63ac85849fb1e32d2",
+    "a6d023b0566f86cb6b8eac76bbcf4e5a70bf9646807857ed367a27500ce3e8e4",
+    "48a4be8f874aae6f5150fede8533bb383c617d59e4483521f4ae725eab8833b2",
+    "65b2ed77b2e5d4c8f62acf955e29c6731d2c1c85ae01f1433a25a1b7f2a221de",
+    "bf89f1f8475f3a2b2367771a11bc31a9ca0a853fba67e4dfa30c586beea788f0"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "a6d023b0566f86cb6b8eac76bbcf4e5a70bf9646807857ed367a27500ce3e8e4",
+    "48a4be8f874aae6f5150fede8533bb383c617d59e4483521f4ae725eab8833b2",
+    "65b2ed77b2e5d4c8f62acf955e29c6731d2c1c85ae01f1433a25a1b7f2a221de",
+    "bf89f1f8475f3a2b2367771a11bc31a9ca0a853fba67e4dfa30c586beea788f0"
+  ],
   "groups": [
     "ess_battery",
     "eugene_20261123_humanoid_lifecycle",
     "nov23_hurim_contract",
-    "nov23_musk_ai5",
     "nov23_rainbow_broker",
-    "nov23_rareearth_shortage",
     "robotis",
     "robotis_excess_demand"
   ],
   "delivery_history": [
-    {
-      "run_id": 45061133448,
-      "outcome": "normal_silence",
-      "confirmed_event_keys": [],
-      "message_ids": [],
-      "recipient_verified": null,
-      "recipient_checks": [],
-      "message_topic_present": [],
-      "state_timestamp_utc": "2026-11-22T19:31:20.498199+00:00"
-    },
     {
       "run_id": 45090862047,
       "outcome": "sent",
@@ -1317,19 +1314,88 @@
       "recipient_checks": [],
       "message_topic_present": [],
       "state_timestamp_utc": "2026-11-25T22:43:55.428058+00:00"
+    },
+    {
+      "run_id": 45758513355,
+      "outcome": "sent",
+      "confirmed_event_keys": [
+        "48a4be8f874aae6f5150fede8533bb383c617d59e4483521f4ae725eab8833b2",
+        "65b2ed77b2e5d4c8f62acf955e29c6731d2c1c85ae01f1433a25a1b7f2a221de",
+        "a6d023b0566f86cb6b8eac76bbcf4e5a70bf9646807857ed367a27500ce3e8e4",
+        "bf89f1f8475f3a2b2367771a11bc31a9ca0a853fba67e4dfa30c586beea788f0"
+      ],
+      "message_ids": [
+        411
+      ],
+      "recipient_verified": true,
+      "recipient_checks": [
+        "numeric_id_equal"
+      ],
+      "message_topic_present": [
+        false
+      ],
+      "state_timestamp_utc": "2026-11-26T04:59:09.268384+00:00"
     }
   ],
   "last_delivery": {
-    "run_id": 45715614139,
-    "outcome": "normal_silence",
-    "confirmed_event_keys": [],
-    "message_ids": [],
-    "recipient_verified": null,
-    "recipient_checks": [],
-    "message_topic_present": [],
-    "state_timestamp_utc": "2026-11-25T22:43:55.428058+00:00"
+    "run_id": 45758513355,
+    "outcome": "sent",
+    "confirmed_event_keys": [
+      "48a4be8f874aae6f5150fede8533bb383c617d59e4483521f4ae725eab8833b2",
+      "65b2ed77b2e5d4c8f62acf955e29c6731d2c1c85ae01f1433a25a1b7f2a221de",
+      "a6d023b0566f86cb6b8eac76bbcf4e5a70bf9646807857ed367a27500ce3e8e4",
+      "bf89f1f8475f3a2b2367771a11bc31a9ca0a853fba67e4dfa30c586beea788f0"
+    ],
+    "message_ids": [
+      411
+    ],
+    "recipient_verified": true,
+    "recipient_checks": [
+      "numeric_id_equal"
+    ],
+    "message_topic_present": [
+      false
+    ],
+    "state_timestamp_utc": "2026-11-26T04:59:09.268384+00:00"
   },
-  "last_selected_events": [],
+  "last_selected_events": [
+    {
+      "key": "a6d023b0566f86cb6b8eac76bbcf4e5a70bf9646807857ed367a27500ce3e8e4",
+      "group": "ess_battery",
+      "title": "[배터리 ESS 빌드업] [삼성SDI] 3차 입찰 단가 반등 기대에도 생산능력 변수 - 딜사이트",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBGQmtNVGhWMllsbEZyZUoxLTlGWnZfWDRrLURKMFN5WWJPcm5lR3RsdWxzYVJyVm9HdlZobF9jUEtGb2psM0lDb1QyaTJ1cmM?oc=5",
+      "source": "딜사이트",
+      "source_url": "https://dealsite.co.kr",
+      "published": "2026-11-26T01:03:10+00:00"
+    },
+    {
+      "key": "48a4be8f874aae6f5150fede8533bb383c617d59e4483521f4ae725eab8833b2",
+      "group": "ess_battery",
+      "title": "[배터리 ESS 빌드업][LG에너지솔루션] 실적 회복 구간 진입, 공급망·수익성 밸런스 조정 : 네이버 블로그 - Naver Blog",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTWl4UVBLSXJ0SFJTakI4c0FvY0YxUjVqa2J0NTZPbWtXNkdvWElJUUdBOXFlaU9oM3RtektXcEhVNTBnZ1oxa3VUbW5HTkpBdlFjckFYa2ZjTmxuYTJEVW9CeVdxNVdrMERXc0JmcE84U1gxQUJrUU5laVhKTkhXY2trMFF0LTVTeVMxbFhwQQ?oc=5",
+      "source": "Naver Blog",
+      "source_url": "https://blog.naver.com",
+      "published": "2026-11-26T00:27:07+00:00"
+    },
+    {
+      "key": "65b2ed77b2e5d4c8f62acf955e29c6731d2c1c85ae01f1433a25a1b7f2a221de",
+      "group": "ess_battery",
+      "title": "[배터리 ESS 빌드업] [LG에너지솔루션] ESS 공급과잉 부담, 美 대선에 쏠린 눈 - 딜사이트",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE4xdkRGYkxaRXNGYUdlb252VWlCOU1vaE42dDFwdmw2X3Y2eTZFcHJXWW5HZEw1Q1V1RzdKSmstblZBd0kzVzVVZGs5TW9pYUk?oc=5",
+      "source": "딜사이트",
+      "source_url": "https://dealsite.co.kr",
+      "published": "2026-11-25T23:06:34+00:00"
+    },
+    {
+      "key": "bf89f1f8475f3a2b2367771a11bc31a9ca0a853fba67e4dfa30c586beea788f0",
+      "group": "ess_battery",
+      "title": "LG에너지솔루션, 북미 ESS 시장 공략…AI 에너지 플랫폼 기업 도약 - 전자신문",
+      "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1sN2pVSVdudXdLQ1lVU1R5NlhJOVVRamxrT2JTaG5nMzh1cmRKTTNpNll5Q0NzWEdTQmlzWWR6NDB3MXhraTZ6ZUsyLVJ5UQ?oc=5",
+      "source": "전자신문",
+      "source_url": "https://www.etnews.com",
+      "published": "2026-11-26T00:27:20+00:00"
+    }
+  ],
   "message_corrections": {
     "robot-message-correction-20261118-44240720425-v1": {
       "schema_version": 1,
