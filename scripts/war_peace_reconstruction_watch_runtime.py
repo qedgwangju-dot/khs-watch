@@ -205,9 +205,12 @@ class _ProviderBlocks:
     def __contains__(self, host):
         return host in self.snapshot()
 
-    def setdefault(self, host, reason):
+    def record_denial(self, host, reason):
         current = self.snapshot()
-        current.setdefault(host, reason)
+        existing = current.setdefault(host, reason)
+        # Concurrent requests already in flight may carry a longer
+        # Retry-After. Honor it without counting another execution/denial.
+        existing['retry_at_epoch'] = max(existing['retry_at_epoch'], reason['retry_at_epoch'])
         encoded = json.dumps(current).encode('utf-8')
         if len(encoded) >= len(self.buffer):
             raise IncompleteCoverage('provider circuit registry capacity exceeded')
@@ -234,8 +237,7 @@ def _source_worker(connection, watch, blocked, gate_lock, next_google_at, google
         if getattr(exc, 'provider_blocked', False) or getattr(exc, 'code', None) in (401, 403, 429):
             with gate_lock:
                 host = provider(url)
-                if host not in blocked:
-                    blocked.setdefault(host, _denial_entry(exc, time.time(), previous_backoff.get(host)))
+                blocked.record_denial(host, _denial_entry(exc, time.time(), previous_backoff.get(host)))
 
     # Limit burst traffic to the shared Google News RSS provider across all
     # collection workers. The original request hook still checks the circuit;
